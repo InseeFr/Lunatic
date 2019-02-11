@@ -1,0 +1,15 @@
+@import 'src/components/index.scss';
+
+.sequence-lunatic {
+	height: 40px;
+	box-sizing: border-box;
+	border-radius: 0px;
+	background-color: $main_color;
+	border: 0.1em solid $main_color;
+	color: white;
+	font-weight: bold;
+	font-size: 130%;
+	padding-left: 10px;
+	display: flex;
+	align-items: center;
+}
