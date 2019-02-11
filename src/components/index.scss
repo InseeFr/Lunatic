@@ -1,0 +1,52 @@
+// Define colors
+$main_color: #e80a4d;
+$progress_back: #d3d3d3;
+$background-warning: rgb(245, 12, 12);
+$disabled: rgb(235, 235, 228);
+
+* {
+	box-sizing: border-box;
+	font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+}
+
+.required:after {
+	content: ' *';
+	color: red;
+}
+
+*:checked + label {
+	color: lime;
+	background: red;
+	text-decoration: underline;
+}
+
+@mixin vertical-placement($reverse: false) {
+	display: flex;
+	flex-direction: if($reverse, column-reverse, column);
+	:first-child {
+		margin-top: 0.5rem;
+	}
+}
+
+@mixin horizontal-placement($reverse: false) {
+	display: flex;
+	flex-direction: if($reverse, row-reverse, row);
+	align-items: baseline;
+	:first-child {
+		margin-right: 1rem;
+	}
+}
+
+.label-top {
+	@include vertical-placement();
+}
+.label-bottom {
+	@include vertical-placement(true);
+}
+.label-right {
+	justify-content: flex-end;
+	@include horizontal-placement(true);
+}
+.label-left {
+	@include horizontal-placement();
+}

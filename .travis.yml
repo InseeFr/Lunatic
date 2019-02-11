@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 9.10.0
+cache: yarn
+install:
+  - yarn
+before_script:
+  - yarn test-coverage
+script:
+  - yarn build-storybook
+
+after_script:
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - bash scripts/gitbook.sh

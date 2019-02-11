@@ -1,0 +1,23 @@
+@import 'src/components/index.scss';
+
+.button-lunatic {
+	width: 100%;
+	color: white;
+	border-color: $main_color;
+	background-color: $main_color;
+	font-size: 1.5em;
+	font-weight: bold;
+	padding: 0.4em;
+	&:hover {
+		color: $main_color;
+		background-color: white;
+		border-color: $main_color;
+	}
+	&:focus {
+		outline: none;
+	}
+	&:disabled {
+		background: #dddddd;
+		color: $main_color;
+	}
+}

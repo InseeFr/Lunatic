@@ -1,0 +1,109 @@
+{
+	"name": "Lunatic",
+	"version": "0.1.0",
+	"description": "Library of questionnaire components",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/InseeFr/Lunatic.git"
+	},
+	"author": "INSEE (http://www.insee.fr)",
+	"contributor": [
+		{
+			"name": "Nicolas Laval",
+			"email": "nicolas.laval@insee.fr"
+		}
+	],
+	"license": "MIT",
+	"main": "build/lunatic.js",
+	"module": "build/lunatic.module.js",
+	"scripts": {
+		"build": "rollup -c rollup.config.js",
+		"test": "cross-env NODE_PATH=src/ jest",
+		"test-watch": "cross-env NODE_PATH=src/ jest --watchAll",
+		"test-coverage": "cross-env NODE_PATH=src/ jest --coverage",
+		"start-storybook": "cross-env NODE_PATH=src/ start-storybook -p 9999",
+		"build-storybook": "cross-env NODE_PATH=src/ build-storybook -o built-storybook/storybook"
+	},
+	"keywords": [
+		"react",
+		"component",
+		"react-component",
+		"library"
+	],
+	"dependencies": {
+		"@babel/polyfill": "^7.0.0",
+		"lodash.camelcase": "^4.3.0",
+		"prop-types": "^15.6.0",
+		"radium": "^0.25.1",
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0"
+	},
+	"devDependencies": {
+		"@storybook/addon-knobs": "^3.4.11",
+		"@storybook/addon-options": "^3.4.11",
+		"@storybook/addon-viewport": "^3.4.11",
+		"@storybook/react": "^3.4.11",
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-eslint": "^10.0.1",
+		"babel-jest": "^22.4.0",
+		"babel-plugin-external-helpers": "^6.22.0",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"babel-register": "^6.26.0",
+		"classnames": "^2.2.5",
+		"cross-env": "^5.2.0",
+		"css-loader": "^0.28.9",
+		"enzyme": "^3.7.0",
+		"enzyme-adapter-react-16": "^1.6.0",
+		"eslint": "5.6.0",
+		"eslint-config-prettier": "^3.1.0",
+		"eslint-config-react-app": "^2.1.0",
+		"eslint-plugin-flowtype": "^2.50.1",
+		"eslint-plugin-import": "^2.14.0",
+		"eslint-plugin-jsx-a11y": "^6.1.1",
+		"eslint-plugin-react": "^7.11.1",
+		"jest": "^22.4.0",
+		"node-sass": "^4.7.2",
+		"postcss-scss": "^1.0.3",
+		"prettier": "^1.14.3",
+		"rollup": "^0.66.6",
+		"rollup-plugin-babel": "^3.0.3",
+		"rollup-plugin-commonjs": "^8.3.0",
+		"rollup-plugin-node-resolve": "^3.0.3",
+		"rollup-plugin-postcss": "^1.2.8",
+		"rollup-plugin-replace": "^2.0.0",
+		"rollup-plugin-serve": "^0.4.2",
+		"rollup-plugin-terser": "^3.0.0",
+		"rollup-plugin-uglify": "^6.0.0",
+		"rollup-watch": "^4.3.1",
+		"sass-loader": "^7.1.0",
+		"storybook-addon-a11y": "^3.1.9",
+		"storybook-addon-jsx": "^5.4.0",
+		"storybook-readme": "^4.0.0-beta1",
+		"style-loader": "^0.20.2",
+		"url-loader": "^0.6.2"
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"src/**/*.{js,jsx}",
+			"!src/**/index.js",
+			"!src/**/*.stories.js"
+		],
+		"testURL": "http://localhost",
+		"moduleNameMapper": {
+			"^.+\\.(css|less|scss)$": "babel-jest"
+		},
+		"setupTestFrameworkScriptFile": "<rootDir>/src/tests/setup/setupTests.js"
+	},
+	"prettier": {
+		"singleQuote": true,
+		"semi": true,
+		"useTabs": true,
+		"bracketSpacing": true,
+		"trailingComma": "es5"
+	}
+}
