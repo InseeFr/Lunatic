@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Button } from 'components';
 import readme from './README.md';
-import titleDecorator from 'utils/title-decorator';
+import titleDecorator from 'utils/decorator/title-decorator';
 import {
 	text,
 	boolean,

@@ -12,8 +12,14 @@ describe('string utils', () => {
 			});
 		});
 		it('should return object with camelCase keys', () => {
-			expect(A.buildStyleObject({ 'border-top': '10' })).toEqual({
+			expect(
+				A.buildStyleObject({
+					'border-top': '10',
+					':hover': { 'background-color': 'pink' },
+				})
+			).toEqual({
 				borderTop: '10',
+				':hover': { backgroundColor: 'pink' },
 			});
 		});
 	});
