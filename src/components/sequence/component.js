@@ -14,9 +14,13 @@ const Sequence = ({ id, label, style }) => (
 );
 
 Sequence.propTypes = {
-	id: PropTypes.string,
+	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	style: PropTypes.object,
+};
+
+Sequence.defaultProps = {
+	style: {},
 };
 
 export default Sequence;
