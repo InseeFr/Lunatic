@@ -14,10 +14,9 @@ $disabled: rgb(235, 235, 228);
 	color: red;
 }
 
-*:checked + label {
-	color: lime;
-	background: red;
-	text-decoration: underline;
+.horizontal-items {
+	display: inline-block;
+	margin-right: 2em;
 }
 
 @mixin vertical-placement($reverse: false) {
