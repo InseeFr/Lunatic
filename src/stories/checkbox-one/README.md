@@ -19,4 +19,4 @@
 
 ## Styles
 
-**CheckboxOne** component has for classes `lunatic-input-number > (.input-lunatic .warning)` and `.lunatic-input-number-errors > error`.
+**CheckboxOne** component has for classes `checkbox-group`, `checkbox-modality` and `checkbox-lunatic`.
