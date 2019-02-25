@@ -1,6 +1,6 @@
 {
-	"name": "lunatic",
-	"version": "0.1.0",
+	"name": "@inseefr/lunatic",
+	"version": "0.1.1",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -99,6 +99,9 @@
 			"^.+\\.(css|less|scss)$": "babel-jest"
 		},
 		"setupTestFrameworkScriptFile": "<rootDir>/src/tests/setup/setupTests.js"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"prettier": {
 		"singleQuote": true,
