@@ -22,7 +22,7 @@
 		"start-storybook": "cross-env NODE_PATH=src/ start-storybook -p 9999",
 		"build-storybook": "cross-env NODE_PATH=src/ build-storybook -o built-storybook/storybook",
 		"build": "rollup -c rollup.config.js",
-		"prepublish": "yarn test && yarn build"
+		"prepublish": "npm test && npm run build"
 	},
 	"keywords": [
 		"react",
