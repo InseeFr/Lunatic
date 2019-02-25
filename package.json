@@ -15,6 +15,7 @@
 	],
 	"license": "MIT",
 	"main": "build/lunatic.js",
+	"module": "build/lunatic.module.js",
 	"scripts": {
 		"test": "cross-env NODE_PATH=src/ jest",
 		"test-watch": "cross-env NODE_PATH=src/ jest --watchAll",
