@@ -8,7 +8,7 @@ import postcss from 'rollup-plugin-postcss';
 export default {
 	input: 'src/components/index.js',
 	output: {
-		name: 'Lunatic',
+		name: 'lunatic',
 		// TEMP
 		file: 'dist/lunatic.js',
 		format: 'cjs',

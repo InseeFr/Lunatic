@@ -15,14 +15,14 @@
 	],
 	"license": "MIT",
 	"main": "build/lunatic.js",
-	"module": "build/lunatic.module.js",
 	"scripts": {
-		"build": "rollup -c rollup.config.js",
 		"test": "cross-env NODE_PATH=src/ jest",
 		"test-watch": "cross-env NODE_PATH=src/ jest --watchAll",
 		"test-coverage": "cross-env NODE_PATH=src/ jest --coverage",
 		"start-storybook": "cross-env NODE_PATH=src/ start-storybook -p 9999",
-		"build-storybook": "cross-env NODE_PATH=src/ build-storybook -o built-storybook/storybook"
+		"build-storybook": "cross-env NODE_PATH=src/ build-storybook -o built-storybook/storybook",
+		"build": "rollup -c rollup.config.js",
+		"prepublish": "npm test && npm run build"
 	},
 	"keywords": [
 		"react",
