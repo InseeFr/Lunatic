@@ -4,9 +4,11 @@
 	border: 0.1em solid $main_color;
 }
 
-.checkbox-lunatic[type='checkbox'] {
+@mixin box-margin($margin: false) {
 	margin: 0;
 	margin-right: 1em;
+	margin-left: if($margin, 1em, 0);
+	margin-top: 0.5em;
 	&:focus {
 		outline: none;
 	}
@@ -16,6 +18,19 @@
 	}
 }
 
+.checkbox-lunatic {
+	@include box-margin(true);
+}
+
+.checkbox-lunatic-no-margin {
+	@include box-margin(false);
+}
+
 .checkbox-modality {
 	margin-top: 1em;
+}
+
+.checkbox-alone {
+	margin-left: 0;
+	margin-top: 0.5em;
 }
