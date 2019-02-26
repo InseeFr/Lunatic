@@ -3,7 +3,6 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import postcss from 'rollup-plugin-postcss';
-//import { terser } from 'rollup-plugin-terser';
 
 export default {
 	input: 'src/components/index.js',
@@ -15,7 +14,6 @@ export default {
 		strict: false,
 		globals: {
 			react: 'React',
-			'react-dom': 'ReactDOM',
 		},
 		sourcemap: true,
 	},
@@ -30,13 +28,6 @@ export default {
 		}),
 		resolve(),
 		commonjs(),
-		//	terser(),
 	],
-	external: [
-		'react',
-		'react-dom',
-		'lodash.camelcase',
-		'prop-types',
-		'@babel/polyfill',
-	],
+	external: ['radium', 'react', 'lodash.camelcase', 'prop-types'],
 };

@@ -15,7 +15,9 @@
 	],
 	"license": "MIT",
 	"main": "build/lunatic.js",
-	"module": "build/lunatic.module.js",
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"test": "cross-env NODE_PATH=src/ jest",
 		"test-watch": "cross-env NODE_PATH=src/ jest --watchAll",
@@ -32,12 +34,10 @@
 		"library"
 	],
 	"dependencies": {
-		"@babel/polyfill": "^7.0.0",
 		"lodash.camelcase": "^4.3.0",
 		"prop-types": "^15.6.0",
 		"radium": "^0.25.1",
-		"react": "^16.2.0",
-		"react-dom": "^16.2.0"
+		"react": "^16.2.0"
 	},
 	"devDependencies": {
 		"@storybook/addon-knobs": "^3.4.11",
