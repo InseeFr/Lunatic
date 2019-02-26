@@ -9,7 +9,7 @@ export default {
 	output: {
 		name: 'lunatic',
 		// TEMP
-		file: 'dist/lunatic.js',
+		file: 'dist/index.js',
 		format: 'cjs',
 		strict: false,
 		globals: {
