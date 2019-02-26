@@ -7,9 +7,9 @@ class CheckboxBoolean extends Component {
 	constructor(props) {
 		super(props);
 		const { value } = props;
-		this.state = { checked: value === '1' ? true : false };
+		this.state = { checked: value === 1 ? true : false };
 		this.onChange = () => {
-			props.handleChange(!this.state.checked ? '1' : '0');
+			props.handleChange(!this.state.checked ? 1 : 0);
 			this.setState({ checked: !this.state.checked });
 		};
 	}
@@ -41,7 +41,7 @@ class CheckboxBoolean extends Component {
 CheckboxBoolean.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
-	value: PropTypes.oneOf(['0', '1']),
+	value: PropTypes.oneOf([0, 1]),
 	handleChange: PropTypes.func.isRequired,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	disabled: PropTypes.bool,
@@ -50,7 +50,7 @@ CheckboxBoolean.propTypes = {
 
 CheckboxBoolean.defaultProps = {
 	label: '',
-	value: '0',
+	value: 0,
 	positioning: 'DEFAULT',
 	disabled: false,
 	style: {},

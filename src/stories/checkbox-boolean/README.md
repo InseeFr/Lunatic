@@ -6,15 +6,15 @@
 | :------------: | :----: | :-----------: | :------: | ------------------------------ |
 |       id       | string |       -       |    ✓     | Id of the checkbox             |
 |     label      | string |      ""       |          | Fieldset label of the checkbox |
+|    value \*    | number |       0       |          | Value of the checkbox          |
 |  handleChange  |  func  |       -       |    ✓     | Handler of the checkbox        |
 |    disabled    |  bool  |     false     |          | Is the checkbox items disabled |
 | positioning \* | string |   "DEFAULT"   |          | Checkbox items positioning     |
-|    style \*    | object |      { }      |          | Style of the checkbox          |
+|     style      | object |      { }      |          | Style of the checkbox          |
 
-- `options` props has to be an array made by objects with a shape of `{label: string, value: string}`
+- `value` props has to be 0 or 1
 - `positioning` props has to be one of `DEFAULT`, `HORIZONTAL` or `VERTICAL`
-- `style` props has to be composed of `fieldsetStyle` and `checkboxStyle`
 
 ## Styles
 
-**CheckboxOne** component has for classes `lunatic-input-number > (.input-lunatic .warning)` and `.lunatic-input-number-errors > error`.
+**CheckboxBoolean** component has for classes `checkbox-lunatic`, `checkbox-lunatic-no-margin` and `checkbox-modality`.

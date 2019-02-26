@@ -24,7 +24,7 @@ describe('checkbox-boolean', () => {
 		const wrapper = shallow(
 			<CheckboxBoolean
 				id="id"
-				value="1"
+				value={1}
 				label={'label'}
 				handleChange={onChange}
 			/>
