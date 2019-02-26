@@ -8,8 +8,7 @@ export default {
 	input: 'src/components/index.js',
 	output: {
 		name: 'lunatic',
-		// TEMP
-		file: 'dist/index.js',
+		file: 'lib/index.js',
 		format: 'cjs',
 		strict: false,
 		globals: {
@@ -24,6 +23,7 @@ export default {
 			plugins: ['external-helpers'],
 		}),
 		replace({
+			exclude: 'node_modules/**',
 			ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
 		}),
 		resolve(),
