@@ -39,7 +39,8 @@
 		"lodash.camelcase": "^4.3.0",
 		"prop-types": "^15.6.0",
 		"radium": "^0.25.1",
-		"react": "^16.2.0"
+		"react": "^16.2.0",
+		"react-dom": "^16.8.3"
 	},
 	"devDependencies": {
 		"@storybook/addon-knobs": "^3.4.11",

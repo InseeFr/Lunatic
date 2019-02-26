@@ -29,5 +29,5 @@ export default {
 		resolve(),
 		commonjs(),
 	],
-	external: ['radium', 'react', 'lodash.camelcase', 'prop-types'],
+	external: ['radium', 'react', 'react-dom', 'lodash.camelcase', 'prop-types'],
 };
