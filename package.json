@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -14,9 +14,9 @@
 		}
 	],
 	"license": "MIT",
-	"main": "lib/lunatic.js",
+	"main": "lib/index.js",
 	"files": [
-		"dist"
+		"lib"
 	],
 	"scripts": {
 		"test": "cross-env NODE_PATH=src/ jest",
