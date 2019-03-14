@@ -10,4 +10,7 @@
 		outline: none;
 		box-shadow: 0 0 10px $main_color;
 	}
+	&:read-only {
+		background-color: $disabled;
+	}
 }
