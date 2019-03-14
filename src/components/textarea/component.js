@@ -21,7 +21,7 @@ const Textarea = ({
 		{label && (
 			<label
 				htmlFor={`textarea-${id}`}
-				id={`input-label-${id}`}
+				id={`textarea-label-${id}`}
 				className={`${required ? 'required' : ''}`}
 			>
 				{label}
