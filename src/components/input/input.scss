@@ -1,41 +1,23 @@
 @import 'src/components/index.scss';
 
-.lunatic-input {
-	.input-lunatic {
-		box-sizing: border-box;
-		border: solid 2px $main_color;
-		border-radius: 10px;
-		padding: 5px;
-		&:focus {
-			outline: none;
-			box-shadow: 0 0 10px $main_color;
-		}
-		&:read-only {
-			background-color: $disabled;
-		}
+.input-lunatic {
+	box-sizing: border-box;
+	border: solid 2px $main_color;
+	border-radius: 10px;
+	padding: 5px;
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 10px $main_color;
+	}
+	&:read-only {
+		background-color: $disabled;
 	}
 }
 
-.lunatic-input-number {
-	.input-lunatic {
-		box-sizing: border-box;
-		border: solid 2px $main_color;
-		border-radius: 10px;
-		padding: 5px;
-		&:focus {
-			outline: none;
-			box-shadow: 0 0 10px $main_color;
-		}
-		&:read-only {
-			background-color: $disabled;
-		}
-	}
-
-	.warning {
-		box-sizing: border-box;
-		border: solid 2px $background-warning;
-		background-color: $background-warning;
-	}
+.warning {
+	box-sizing: border-box;
+	border: solid 2px $background-warning;
+	background-color: $background-warning;
 }
 
 .lunatic-input-number-errors {

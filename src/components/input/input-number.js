@@ -46,29 +46,27 @@ class InputNumber extends React.Component {
 					id={`input-label-${id}`}
 					className={`${required ? 'required' : ''}`}
 				>{`${label} ${unit ? `(${unit})` : ''}`}</label>
-				<div className={`lunatic-input-number`}>
-					<input
-						type="number"
-						id={`input-${id}`}
-						aria-labelledby={`input-label-${id}`}
-						value={value}
-						min={min}
-						max={max}
-						step={decimals ? `${Math.pow(10, -decimals)}` : '0'}
-						placeholder={placeholder}
-						className={`input-lunatic ${
-							this.state.messagesError.length > 0 ? 'warning' : ''
-						}`}
-						style={buildStyleObject(style)}
-						readOnly={readOnly}
-						required={required}
-						aria-required={required}
-						onChange={e => {
-							this.validate(e.target.value);
-							handleChange(e.target.value);
-						}}
-					/>
-				</div>
+				<input
+					type="number"
+					id={`input-${id}`}
+					aria-labelledby={`input-label-${id}`}
+					value={value}
+					min={min}
+					max={max}
+					step={decimals ? `${Math.pow(10, -decimals)}` : '0'}
+					placeholder={placeholder}
+					className={`input-lunatic ${
+						this.state.messagesError.length > 0 ? 'warning' : ''
+					}`}
+					style={buildStyleObject(style)}
+					readOnly={readOnly}
+					required={required}
+					aria-required={required}
+					onChange={e => {
+						this.validate(e.target.value);
+						handleChange(e.target.value);
+					}}
+				/>
 				<div className="lunatic-input-number-errors">
 					{messagesError.map((m, i) => (
 						<div key={i} className="error">

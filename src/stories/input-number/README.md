@@ -19,4 +19,4 @@
 
 ## Styles
 
-**InputNumber** component has for classes `lunatic-input-number > (.input-lunatic .warning)` and `.lunatic-input-number-errors > error`.
+**InputNumber** component has for classes `.input-lunatic`, `.warning` and `.lunatic-input-number-errors > error`.

@@ -25,20 +25,18 @@ const Input = ({
 				{label}
 			</label>
 		)}
-		<div className={`lunatic-input`}>
-			<input
-				type="text"
-				id={`input-${id}`}
-				value={value}
-				placeholder={placeholder}
-				className="input-lunatic"
-				style={buildStyleObject(style)}
-				readOnly={readOnly}
-				required={required}
-				aria-required={required}
-				onChange={e => handleChange(e.target.value)}
-			/>
-		</div>
+		<input
+			type="text"
+			id={`input-${id}`}
+			value={value}
+			placeholder={placeholder}
+			className="input-lunatic"
+			style={buildStyleObject(style)}
+			readOnly={readOnly}
+			required={required}
+			aria-required={required}
+			onChange={e => handleChange(e.target.value)}
+		/>
 	</div>
 );
 

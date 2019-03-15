@@ -16,4 +16,4 @@
 
 ## Styles
 
-**Input** component has for classes `lunatic-input > .input-lunatic`.
+**Input** component has for class `.input-lunatic`.
