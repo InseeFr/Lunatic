@@ -25,9 +25,13 @@ describe('declarations', () => {
 	});
 	it('returns no declaration', () => {
 		const wrapper = shallow(
-			<Declarations {...defaultProps} type={C.DETACHABLE} declarations={[]} />
+			<Declarations
+				{...defaultProps}
+				type={C.DETACHABLE}
+				declarations={declarations}
+			/>
 		);
-		expect(wrapper.find('.declarations').children()).toHaveLength(0);
+		expect(wrapper.find('.declarations-lunatic').children()).toHaveLength(0);
 	});
 	it('returns one declaration', () => {
 		const wrapper = shallow(
@@ -37,6 +41,6 @@ describe('declarations', () => {
 				declarations={declarations}
 			/>
 		);
-		expect(wrapper.find('.declarations').children()).toHaveLength(1);
+		expect(wrapper.find('.declarations-lunatic').children()).toHaveLength(1);
 	});
 });

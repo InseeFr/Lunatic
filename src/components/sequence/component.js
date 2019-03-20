@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import * as C from 'utils/constants';
+import { declarationsPropTypes } from 'utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import './sequence.scss';
 
@@ -31,10 +32,12 @@ const Sequence = ({ id, label, declarations, style }) => (
 Sequence.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
+	declarations: declarationsPropTypes,
 	style: PropTypes.object,
 };
 
 Sequence.defaultProps = {
+	declarations: [],
 	style: {},
 };
 
