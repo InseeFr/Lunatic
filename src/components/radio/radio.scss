@@ -1,0 +1,23 @@
+@import 'src/components/index.scss';
+
+.radio-group {
+	border: 0.1em solid $main_color;
+}
+
+.radio-lunatic {
+	margin: 0;
+	margin-right: 1em;
+	margin-left: 1em;
+	margin-top: 0.5em;
+	&:focus {
+		outline: none;
+	}
+	&:checked + label {
+		border: 0.1em solid $main_color;
+		padding: 0.3em;
+	}
+}
+
+.radio-modality {
+	margin-top: 1em;
+}
