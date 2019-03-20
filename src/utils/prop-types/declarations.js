@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import * as C from 'utils/constants';
+import * as C from '../constants';
 
 export default PropTypes.arrayOf(
 	PropTypes.shape({

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
-import * as C from 'utils/constants';
-import { declarationsPropTypes } from 'utils/prop-types';
+import * as C from '../../utils/constants';
+import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import './sequence.scss';
 

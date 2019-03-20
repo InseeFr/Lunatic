@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { declarationsPropTypes } from 'utils/prop-types';
-import * as C from '../../utils/constants';
+import { declarationsPropTypes } from '../../utils/prop-types';
 import './declarations.scss';
 
 const Declarations = ({ id, type, declarations }) => {
