@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Declarations from '../declarations';
+import * as C from '../../utils/constants';
+import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import { getLabelPositionClass } from '../../utils/label-position';
 import './textarea.scss';
@@ -15,9 +18,15 @@ const Textarea = ({
 	readOnly,
 	labelPosition,
 	required,
+	declarations,
 	style,
 }) => (
 	<div className={getLabelPositionClass(labelPosition)}>
+		<Declarations
+			id={id}
+			type={C.BEFORE_QUESTION_TEXT}
+			declarations={declarations}
+		/>
 		{label && (
 			<label
 				htmlFor={`textarea-${id}`}
@@ -27,6 +36,11 @@ const Textarea = ({
 				{label}
 			</label>
 		)}
+		<Declarations
+			id={id}
+			type={C.AFTER_QUESTION_TEXT}
+			declarations={declarations}
+		/>
 		<textarea
 			id={`textarea-${id}`}
 			placeholder={placeholder}
@@ -40,6 +54,7 @@ const Textarea = ({
 			aria-required={required}
 			onChange={e => handleChange(e.target.value)}
 		/>
+		<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
 	</div>
 );
 
@@ -49,6 +64,7 @@ Textarea.defaultProps = {
 	readOnly: false,
 	labelPosition: 'DEFAULT',
 	required: false,
+	declarations: [],
 };
 
 Textarea.propTypes = {
@@ -62,6 +78,7 @@ Textarea.propTypes = {
 	readOnly: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,
+	declarations: declarationsPropTypes,
 	style: PropTypes.object,
 };
 
