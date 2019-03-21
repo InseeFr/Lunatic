@@ -5,9 +5,9 @@ import * as C from '../../utils/constants';
 import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import { getLabelPositionClass } from '../../utils/label-position';
-import './input.scss';
+import './datepicker.scss';
 
-const Input = ({
+const Datepicker = ({
 	id,
 	label,
 	value,
@@ -28,7 +28,7 @@ const Input = ({
 		<div className={getLabelPositionClass(labelPosition)}>
 			{label && (
 				<label
-					htmlFor={`input-${id}`}
+					htmlFor={`datepicker-${id}`}
 					id={`input-label-${id}`}
 					className={`${required ? 'required' : ''}`}
 				>
@@ -41,11 +41,11 @@ const Input = ({
 				declarations={declarations}
 			/>
 			<input
-				type="text"
-				id={`input-${id}`}
+				type="date"
+				id={`datepicker-${id}`}
 				value={value}
-				placeholder={placeholder}
-				className="input-lunatic"
+				placeholder={placeholder || ''}
+				className="datepicker-lunatic"
 				style={buildStyleObject(style)}
 				readOnly={readOnly}
 				required={required}
@@ -57,7 +57,7 @@ const Input = ({
 	</React.Fragment>
 );
 
-Input.defaultProps = {
+Datepicker.defaultProps = {
 	placeholder: '',
 	readOnly: false,
 	labelPosition: 'DEFAULT',
@@ -65,7 +65,7 @@ Input.defaultProps = {
 	declarations: [],
 };
 
-Input.propTypes = {
+Datepicker.propTypes = {
 	id: PropTypes.string,
 	label: PropTypes.string,
 	value: PropTypes.string,
@@ -78,4 +78,4 @@ Input.propTypes = {
 	style: PropTypes.object,
 };
 
-export default Input;
+export default Datepicker;

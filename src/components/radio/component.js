@@ -6,21 +6,16 @@ import * as C from '../../utils/constants';
 import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import { getItemsPositioningClass } from '../../utils/items-positioning';
-import './checkbox.scss';
+import './radio.scss';
 
-class CheckboxOne extends Component {
+class Radio extends Component {
 	constructor(props) {
 		super(props);
 		const { selectedValue, handleChange } = props;
 		this.state = { selectedValue };
-		this.onChange = value => {
-			if (value === this.state.selectedValue) {
-				handleChange('');
-				this.setState({ selectedValue: '' });
-			} else {
-				handleChange(value);
-				this.setState({ selectedValue: value });
-			}
+		this.onChange = selectedValue => {
+			handleChange(selectedValue);
+			this.setState({ selectedValue });
 		};
 	}
 	render() {
@@ -29,13 +24,12 @@ class CheckboxOne extends Component {
 			id,
 			label,
 			options,
-			positioning,
 			disabled,
 			declarations,
 			style,
+			positioning,
 		} = this.props;
-		const { fieldsetStyle, checkboxStyle } = style;
-
+		const { fieldsetStyle, radioStyle } = style;
 		return (
 			<React.Fragment>
 				<Declarations
@@ -44,8 +38,8 @@ class CheckboxOne extends Component {
 					declarations={declarations}
 				/>
 				<fieldset
-					key={`checkbox-one-${id}`}
-					className="checkbox-group"
+					key={`radio-${id}`}
+					className="radio-group"
 					style={buildStyleObject(fieldsetStyle)}
 				>
 					<legend>{label}</legend>
@@ -58,25 +52,26 @@ class CheckboxOne extends Component {
 						const checked = selectedValue === value;
 						return (
 							<div
-								key={`checkbox-one-${id}-${value}`}
-								className={`checkbox-modality ${getItemsPositioningClass(
+								key={`radio-${id}-${value}`}
+								className={`radio-modality ${getItemsPositioningClass(
 									positioning
 								)}`}
 							>
 								<input
-									type="checkbox"
-									id={`checkbox-one-${id}-${value}`}
-									key={`checkbox-one-${id}-${value}`}
+									type="radio"
+									name={`radio-${id}`}
+									id={`radio-${id}-${value}`}
 									aria-labelledby={`input-label-${id}-${value}`}
-									className="checkbox-lunatic"
-									checked={checked}
+									className="radio-lunatic"
+									style={buildStyleObject(style)}
+									checked={selectedValue === value}
 									disabled={disabled}
 									onChange={() => this.onChange(value)}
 								/>
 								<label
-									htmlFor={`checkbox-one-${id}-${value}`}
+									htmlFor={`radio-${id}-${value}`}
 									id={`input-label-${id}-${value}`}
-									style={checked ? buildStyleObject(checkboxStyle) : {}}
+									style={checked ? buildStyleObject(radioStyle) : {}}
 								>
 									{modLabel}
 								</label>
@@ -90,7 +85,7 @@ class CheckboxOne extends Component {
 	}
 }
 
-CheckboxOne.propTypes = {
+Radio.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
 	options: PropTypes.arrayOf(
@@ -107,13 +102,13 @@ CheckboxOne.propTypes = {
 	style: PropTypes.object,
 };
 
-CheckboxOne.defaultProps = {
+Radio.defaultProps = {
 	label: '',
 	selectedValue: '',
 	positioning: 'DEFAULT',
 	disabled: false,
 	declarations: [],
-	style: { fieldsetStyle: {}, checkboxStyle: {} },
+	style: { fieldsetStyle: {}, radioStyle: {} },
 };
 
-export default Radium(CheckboxOne);
+export default Radium(Radio);

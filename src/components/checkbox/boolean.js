@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Declarations from '../declarations';
+import * as C from '../../utils/constants';
+import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import './checkbox.scss';
 
@@ -15,7 +18,14 @@ class CheckboxBoolean extends Component {
 	}
 	render() {
 		const { checked } = this.state;
-		const { id, label, disabled, positioning, style } = this.props;
+		const {
+			id,
+			label,
+			disabled,
+			positioning,
+			declarations,
+			style,
+		} = this.props;
 		const isVertical = positioning === 'VERTICAL';
 		const input = (
 			<input
@@ -31,8 +41,19 @@ class CheckboxBoolean extends Component {
 		);
 		return (
 			<div key={`checkbox-boolean-${id}`} className={`checkbox-modality`}>
+				<Declarations
+					id={id}
+					type={C.BEFORE_QUESTION_TEXT}
+					declarations={declarations}
+				/>
 				{label && <label htmlFor={`checkbox-boolean-${id}`}>{label}</label>}
+				<Declarations
+					id={id}
+					type={C.AFTER_QUESTION_TEXT}
+					declarations={declarations}
+				/>
 				{isVertical ? <div>{input}</div> : input}
+				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
 			</div>
 		);
 	}
@@ -45,6 +66,7 @@ CheckboxBoolean.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	disabled: PropTypes.bool,
+	declarations: declarationsPropTypes,
 	style: PropTypes.object,
 };
 
@@ -53,6 +75,7 @@ CheckboxBoolean.defaultProps = {
 	value: 0,
 	positioning: 'DEFAULT',
 	disabled: false,
+	declarations: [],
 	style: {},
 };
 
