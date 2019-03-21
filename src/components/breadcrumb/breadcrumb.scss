@@ -1,0 +1,22 @@
+@import 'src/components/index.scss';
+
+.breadcrumb-lunatic {
+	width: 100%;
+	height: 40px;
+	box-sizing: border-box;
+	border-radius: 0px;
+	background-color: $main_color;
+	color: white;
+	font-weight: bold;
+	font-size: 130%;
+	padding-left: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.breadcrumb-element-lunatic:before {
+	content: '>';
+	color: white;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+}
