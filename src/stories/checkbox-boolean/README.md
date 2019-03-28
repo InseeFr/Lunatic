@@ -2,18 +2,17 @@
 
 ## Props
 
-|      Props      |  Type  | Default value | Required | Description                    |
-| :-------------: | :----: | :-----------: | :------: | ------------------------------ |
-|       id        | string |       -       |    ✓     | Id of the checkbox             |
-|      label      | string |      ""       |          | Fieldset label of the checkbox |
-|    value \*     | number |       0       |          | Value of the checkbox          |
-|  handleChange   |  func  |       -       |    ✓     | Handler of the checkbox        |
-|    disabled     |  bool  |     false     |          | Is the checkbox items disabled |
-| positioning \*  | string |   "DEFAULT"   |          | Checkbox items positioning     |
-| declarations \* | array  |      [ ]      |          | Declarations of the checkbox   |
-|      style      | object |      { }      |          | Style of the checkbox          |
+|      Props      |  Type   | Default value | Required | Description                    |
+| :-------------: | :-----: | :-----------: | :------: | ------------------------------ |
+|       id        | string  |       -       |    ✓     | Id of the checkbox             |
+|      label      | string  |      ""       |          | Fieldset label of the checkbox |
+|      value      | boolean |     false     |          | Value of the checkbox          |
+|  handleChange   |  func   |       -       |    ✓     | Handler of the checkbox        |
+|    disabled     |  bool   |     false     |          | Is the checkbox items disabled |
+| positioning \*  | string  |   "DEFAULT"   |          | Checkbox items positioning     |
+| declarations \* |  array  |      [ ]      |          | Declarations of the checkbox   |
+|      style      | object  |      { }      |          | Style of the checkbox          |
 
-- `value` props has to be 0 or 1
 - `positioning` props has to be one of `DEFAULT`, `HORIZONTAL` or `VERTICAL`
 - `declarations` are documented in the `Declarations` component
 
