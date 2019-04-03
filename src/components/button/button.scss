@@ -8,13 +8,16 @@
 	font-size: 1.5em;
 	font-weight: bold;
 	padding: 0.4em;
-	&:hover {
+	&:hover,
+	&:focus:hover {
 		color: $main_color;
 		background-color: white;
 		border-color: $main_color;
 	}
 	&:focus {
 		outline: none;
+		background-color: $second_color;
+		border-color: $second_color;
 	}
 	&:disabled {
 		background: #dddddd;
