@@ -11,6 +11,7 @@
 	margin-top: 0.5em;
 	&:focus {
 		outline: none;
+		box-shadow: 0 0 0.3em 0.3em $main_color;
 	}
 	&:checked + label {
 		border: 0.1em solid $main_color;

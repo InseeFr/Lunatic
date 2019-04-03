@@ -20,6 +20,9 @@
 
 .checkbox-lunatic {
 	@include box-margin(true);
+	&:focus {
+		box-shadow: 0 0 0.3em 0.3em $main_color;
+	}
 }
 
 .checkbox-lunatic-no-margin {
