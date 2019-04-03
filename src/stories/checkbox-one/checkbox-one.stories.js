@@ -44,6 +44,7 @@ stories.addWithJSX('Props', () => (
 		)}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
+		keyboardSelection={boolean('Keyboard selection', false)}
 		options={options}
 		handleChange={console.log}
 	/>

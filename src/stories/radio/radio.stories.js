@@ -45,6 +45,7 @@ stories.addWithJSX('Props', () => (
 		label={text('Label', "I'm the label of the radio")}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
+		keyboardSelection={boolean('Keyboard selection', false)}
 		options={options}
 		handleChange={console.log}
 	/>

@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
+import { hotkeys } from 'react-keyboard-shortcuts';
 import Declarations from '../declarations';
 import * as C from '../../utils/constants';
 import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import { getItemsPositioningClass } from '../../utils/items-positioning';
+import alphabet from '../../utils/alphabet';
 import './radio.scss';
 
 class Radio extends Component {
+	hot_keys = this.props.keyboardSelection
+		? this.props.options.reduce(
+				(_, { value }, i) => ({
+					..._,
+					[alphabet[i]]: { priority: 1, handler: () => this.onChange(value) },
+				}),
+				{}
+		  )
+		: {};
+
 	constructor(props) {
 		super(props);
 		const { selectedValue, handleChange } = props;
@@ -25,6 +37,7 @@ class Radio extends Component {
 			label,
 			options,
 			disabled,
+			keyboardSelection,
 			declarations,
 			style,
 			positioning,
@@ -48,7 +61,7 @@ class Radio extends Component {
 						type={C.AFTER_QUESTION_TEXT}
 						declarations={declarations}
 					/>
-					{options.map(({ label: modLabel, value }) => {
+					{options.map(({ label: modLabel, value }, i) => {
 						const checked = selectedValue === value;
 						return (
 							<div
@@ -73,7 +86,9 @@ class Radio extends Component {
 									id={`input-label-${id}-${value}`}
 									style={checked ? buildStyleObject(radioStyle) : {}}
 								>
-									{modLabel}
+									{keyboardSelection
+										? `${alphabet[i].toUpperCase()} - ${modLabel}`
+										: modLabel}
 								</label>
 							</div>
 						);
@@ -98,6 +113,7 @@ Radio.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	disabled: PropTypes.bool,
+	keyboardSelection: PropTypes.bool,
 	declarations: declarationsPropTypes,
 	style: PropTypes.object,
 };
@@ -107,8 +123,9 @@ Radio.defaultProps = {
 	selectedValue: '',
 	positioning: 'DEFAULT',
 	disabled: false,
+	keyboardSelection: false,
 	declarations: [],
 	style: { fieldsetStyle: {}, radioStyle: {} },
 };
 
-export default Radium(Radio);
+export default Radium(hotkeys(Radio));
