@@ -17,6 +17,7 @@ export default {
 		sourcemap: true,
 	},
 	plugins: [
+		resolve(),
 		postcss(),
 		babel({
 			exclude: 'node_modules/**',
@@ -26,7 +27,6 @@ export default {
 			exclude: 'node_modules/**',
 			ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
 		}),
-		resolve(),
 		commonjs(),
 	],
 	external: ['radium', 'react', 'react-dom', 'lodash.camelcase', 'prop-types'],

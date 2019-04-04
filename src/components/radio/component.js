@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
-import { hotkeys } from 'react-keyboard-shortcuts';
+import hotkeys from 'react-keyboard-shortcuts';
 import Declarations from '../declarations';
 import * as C from '../../utils/constants';
 import { declarationsPropTypes } from '../../utils/prop-types';
@@ -30,6 +30,7 @@ class Radio extends Component {
 			this.setState({ selectedValue });
 		};
 	}
+
 	render() {
 		const { selectedValue } = this.state;
 		const {
