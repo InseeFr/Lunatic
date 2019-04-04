@@ -8,8 +8,9 @@
 |      label      | string  |      ""       |          | Fieldset label of the checkbox |
 |      value      | boolean |     false     |          | Value of the checkbox          |
 |  handleChange   |  func   |       -       |    ✓     | Handler of the checkbox        |
-|    disabled     |  bool   |     false     |          | Is the checkbox items disabled |
-| positioning \*  | string  |   "DEFAULT"   |          | Checkbox items positioning     |
+|    disabled     |  bool   |     false     |          | Is the checkbox item disabled  |
+|     focused     |  bool   |     false     |          | Is the checkbox item focused   |
+| positioning \*  | string  |   "DEFAULT"   |          | Checkbox item positioning      |
 | declarations \* |  array  |      [ ]      |          | Declarations of the checkbox   |
 |      style      | object  |      { }      |          | Style of the checkbox          |
 

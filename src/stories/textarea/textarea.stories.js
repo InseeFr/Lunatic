@@ -41,6 +41,7 @@ stories.addWithJSX('Props', () => (
 		maxLength={number('Max length', 50)}
 		readOnly={boolean('Read only', false)}
 		required={boolean('Required', false)}
+		focused={boolean('Focused', false)}
 		handleChange={console.log}
 		labelPosition={select('Label position', labelPositionOptions)}
 	/>

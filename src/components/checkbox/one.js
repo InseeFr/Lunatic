@@ -23,8 +23,8 @@ class CheckboxOne extends Component {
 
 	constructor(props) {
 		super(props);
-		const { selectedValue, handleChange } = props;
-		this.state = { selectedValue };
+		const { value, handleChange } = props;
+		this.state = { selectedValue: value };
 		this.onChange = value => {
 			if (value === this.state.selectedValue) {
 				handleChange('');
@@ -35,6 +35,12 @@ class CheckboxOne extends Component {
 			}
 		};
 	}
+
+	componentDidMount() {
+		const { focused } = this.props;
+		if (focused) this.nameInput.focus();
+	}
+
 	render() {
 		const { selectedValue } = this.state;
 		const {
@@ -44,6 +50,7 @@ class CheckboxOne extends Component {
 			positioning,
 			disabled,
 			keyboardSelection,
+			focused,
 			declarations,
 			style,
 		} = this.props;
@@ -79,6 +86,9 @@ class CheckboxOne extends Component {
 								<input
 									type="checkbox"
 									id={`checkbox-one-${id}-${value}`}
+									ref={input => {
+										if (focused && i === 0) this.nameInput = input;
+									}}
 									key={`checkbox-one-${id}-${value}`}
 									aria-labelledby={`input-label-${id}-${value}`}
 									className="checkbox-lunatic"
@@ -114,21 +124,23 @@ CheckboxOne.propTypes = {
 			value: PropTypes.string.isRequired,
 		})
 	).isRequired,
-	selectedValue: PropTypes.string,
+	value: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	disabled: PropTypes.bool,
 	keyboardSelection: PropTypes.bool,
+	focused: PropTypes.bool,
 	declarations: declarationsPropTypes,
 	style: PropTypes.object,
 };
 
 CheckboxOne.defaultProps = {
 	label: '',
-	selectedValue: '',
+	value: '',
 	positioning: 'DEFAULT',
 	disabled: false,
 	keyboardSelection: false,
+	focused: false,
 	declarations: [],
 	style: { fieldsetStyle: {}, checkboxStyle: {} },
 };

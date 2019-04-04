@@ -10,6 +10,7 @@
 |    options \*     | array  |                   -                   |    ✓     | Options of the radio                   |
 |   handleChange    |  func  |                   -                   |    ✓     | Handler of the radio                   |
 |     disabled      |  bool  |                 false                 |          | Is the radio items disabled            |
+|      focused      |  bool  |                 false                 |          | Is the radio items focused             |
 | keyboardSelection |  bool  |                 false                 |          | Enable keyboard selection of the radio |
 |  positioning \*   | string |               "DEFAULT"               |          | Checkbox items positioning             |
 |  declarations \*  | array  |                  [ ]                  |          | Declarations of the radio              |

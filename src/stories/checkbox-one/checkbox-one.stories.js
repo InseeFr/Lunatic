@@ -44,6 +44,7 @@ stories.addWithJSX('Props', () => (
 		)}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
+		focused={boolean('Focused', false)}
 		keyboardSelection={boolean('Keyboard selection', false)}
 		options={options}
 		handleChange={console.log}
@@ -59,6 +60,7 @@ stories.addWithJSX('Styled', () => (
 		)}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
+		focused={boolean('Focused', false)}
 		options={options}
 		handleChange={console.log}
 		style={object('Generated style', {

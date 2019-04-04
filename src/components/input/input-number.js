@@ -25,6 +25,11 @@ class InputNumber extends React.Component {
 		this.setState({ messagesError });
 	}
 
+	componentDidMount() {
+		const { focused } = this.props;
+		if (focused) this.nameInput.focus();
+	}
+
 	render() {
 		const {
 			id,
@@ -36,6 +41,7 @@ class InputNumber extends React.Component {
 			placeholder,
 			handleChange,
 			readOnly,
+			focused,
 			style,
 			unit,
 			labelPosition,
@@ -64,6 +70,9 @@ class InputNumber extends React.Component {
 					<input
 						type="number"
 						id={`input-${id}`}
+						ref={input => {
+							if (focused) this.nameInput = input;
+						}}
 						aria-labelledby={`input-label-${id}`}
 						value={value}
 						min={min}
@@ -114,6 +123,7 @@ InputNumber.defaultProps = {
 	readOnly: false,
 	labelPosition: 'DEFAULT',
 	required: false,
+	focused: false,
 	declarations: [],
 };
 
@@ -127,6 +137,7 @@ InputNumber.propTypes = {
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
+	focused: PropTypes.bool,
 	declarations: declarationsPropTypes,
 	style: PropTypes.object,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),

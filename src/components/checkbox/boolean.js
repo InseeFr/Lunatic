@@ -17,6 +17,12 @@ class CheckboxBoolean extends Component {
 			this.setState({ checked });
 		};
 	}
+
+	componentDidMount() {
+		const { focused } = this.props;
+		if (focused) this.nameInput.focus();
+	}
+
 	render() {
 		const { checked } = this.state;
 		const {
@@ -24,6 +30,7 @@ class CheckboxBoolean extends Component {
 			label,
 			disabled,
 			positioning,
+			focused,
 			declarations,
 			style,
 		} = this.props;
@@ -32,6 +39,9 @@ class CheckboxBoolean extends Component {
 			<input
 				type="checkbox"
 				id={`checkbox-boolean-${id}`}
+				ref={input => {
+					if (focused) this.nameInput = input;
+				}}
 				title={label ? label : 'empty-label'}
 				className={`checkbox-lunatic${isVertical ? '-no-margin' : ''}`}
 				style={buildStyleObject(style)}
@@ -67,6 +77,7 @@ CheckboxBoolean.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	disabled: PropTypes.bool,
+	focused: PropTypes.bool,
 	declarations: declarationsPropTypes,
 	style: PropTypes.object,
 };
@@ -76,6 +87,7 @@ CheckboxBoolean.defaultProps = {
 	value: false,
 	positioning: 'DEFAULT',
 	disabled: false,
+	focused: false,
 	declarations: [],
 	style: {},
 };

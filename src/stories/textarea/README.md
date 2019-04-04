@@ -14,6 +14,7 @@
 |    readOnly     |      bool      |     false     |          | Is the textarea read only      |
 |  labelPosition  |     string     |   "DEFAULT"   |          | Position of the textarea label |
 |    required     |      bool      |     false     |          | Is the textarea required       |
+|     focused     |      bool      |     false     |          | Is the textarea focused        |
 | declarations \* |     array      |      [ ]      |          | Declarations of the textarea   |
 |      style      |     object     |      {}       |          | Style of the textarea          |
 

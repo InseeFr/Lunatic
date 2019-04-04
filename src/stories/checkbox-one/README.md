@@ -10,6 +10,7 @@
 |    options \*     | array  |                    -                     |    ✓     | Options of the checkbox                   |
 |   handleChange    |  func  |                    -                     |    ✓     | Handler of the checkbox                   |
 |     disabled      |  bool  |                  false                   |          | Is the checkbox items disabled            |
+|      focused      |  bool  |                  false                   |          | Is the checkbox items focused             |
 | keyboardSelection |  bool  |                  false                   |          | Enable keyboard selection of the checkbox |
 |  positioning \*   | string |                "DEFAULT"                 |          | Checkbox items positioning                |
 |  declarations \*  | array  |                   [ ]                    |          | Declarations of the checkbox              |

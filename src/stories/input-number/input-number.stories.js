@@ -43,6 +43,7 @@ stories.addWithJSX('Props', () => (
 		placeholder={text('Placeholder', 'Placeholder')}
 		readOnly={boolean('Read only', false)}
 		required={boolean('Required', false)}
+		focused={boolean('Focused', false)}
 		handleChange={console.log}
 		labelPosition={select('Label position', labelPositionOptions)}
 	/>
@@ -57,6 +58,7 @@ stories.addWithJSX('Styled', () => (
 		decimals={number('Decimals', 0)}
 		placeholder={text('Placeholder', 'Placeholder')}
 		readOnly={boolean('Read only', false)}
+		focused={boolean('Focused', false)}
 		handleChange={console.log}
 		style={object('Generated style', {
 			'border-color': color('Border color', '#e80a4d'),

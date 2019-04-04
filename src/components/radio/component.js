@@ -31,6 +31,11 @@ class Radio extends Component {
 		};
 	}
 
+	componentDidMount() {
+		const { focused } = this.props;
+		if (focused) this.nameInput.focus();
+	}
+
 	render() {
 		const { selectedValue } = this.state;
 		const {
@@ -38,6 +43,7 @@ class Radio extends Component {
 			label,
 			options,
 			disabled,
+			focused,
 			keyboardSelection,
 			declarations,
 			style,
@@ -74,6 +80,9 @@ class Radio extends Component {
 								<input
 									type="radio"
 									name={`radio-${id}`}
+									ref={input => {
+										if (focused && i === 0) this.nameInput = input;
+									}}
 									id={`radio-${id}-${value}`}
 									aria-labelledby={`input-label-${id}-${value}`}
 									className="radio-lunatic"
@@ -114,6 +123,7 @@ Radio.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	disabled: PropTypes.bool,
+	focused: PropTypes.bool,
 	keyboardSelection: PropTypes.bool,
 	declarations: declarationsPropTypes,
 	style: PropTypes.object,
@@ -124,6 +134,7 @@ Radio.defaultProps = {
 	value: '',
 	positioning: 'DEFAULT',
 	disabled: false,
+	focused: false,
 	keyboardSelection: false,
 	declarations: [],
 	style: { fieldsetStyle: {}, radioStyle: {} },

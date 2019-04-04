@@ -29,6 +29,7 @@ stories.addWithJSX('Props', () => (
 		label={text('Label', "I'm the label of the boolean checkbox")}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
+		focused={boolean('Focused', false)}
 		handleChange={console.log}
 	/>
 ));

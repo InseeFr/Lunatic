@@ -12,6 +12,7 @@
 |    readOnly     |  bool  |     false     |          | Is the datepicker read only      |
 |  labelPosition  | string |   "DEFAULT"   |          | Position of the datepicker label |
 |    required     |  bool  |     false     |          | Is the datepicker required       |
+|     focused     |  bool  |     false     |          | Is the datepicker focused        |
 | declarations \* | array  |      [ ]      |          | Declarations of the datepicker   |
 |      style      | object |      {}       |          | Style of the datepicker          |
 
