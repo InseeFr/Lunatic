@@ -12,6 +12,7 @@
 |    readOnly     |  bool  |     false     |          | Is the input read only      |
 |  labelPosition  | string |   "DEFAULT"   |          | Position of the input label |
 |    required     |  bool  |     false     |          | Is the input required       |
+|     focused     |  bool  |     false     |          | Is the input focused        |
 | declarations \* | array  |      [ ]      |          | Declarations of the input   |
 |      style      | object |      {}       |          | Style of the input          |
 
