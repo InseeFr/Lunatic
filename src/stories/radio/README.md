@@ -6,7 +6,7 @@
 | :---------------: | :----: | :-----------------------------------: | :------: | -------------------------------------- |
 |        id         | string |                   -                   |    ✓     | Id of the radio                        |
 |       label       | string |                  ""                   |          | Fieldset label of the radio            |
-|    selectValue    | string |                  ""                   |          | Value of the radio                     |
+|       value       | string |                  ""                   |          | Value of the radio                     |
 |    options \*     | array  |                   -                   |    ✓     | Options of the radio                   |
 |   handleChange    |  func  |                   -                   |    ✓     | Handler of the radio                   |
 |     disabled      |  bool  |                 false                 |          | Is the radio items disabled            |

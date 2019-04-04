@@ -23,8 +23,8 @@ class Radio extends Component {
 
 	constructor(props) {
 		super(props);
-		const { selectedValue, handleChange } = props;
-		this.state = { selectedValue };
+		const { value, handleChange } = props;
+		this.state = { selectedValue: value };
 		this.onChange = selectedValue => {
 			handleChange(selectedValue);
 			this.setState({ selectedValue });
@@ -110,7 +110,7 @@ Radio.propTypes = {
 			value: PropTypes.string.isRequired,
 		})
 	).isRequired,
-	selectedValue: PropTypes.string,
+	value: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	disabled: PropTypes.bool,
@@ -121,7 +121,7 @@ Radio.propTypes = {
 
 Radio.defaultProps = {
 	label: '',
-	selectedValue: '',
+	value: '',
 	positioning: 'DEFAULT',
 	disabled: false,
 	keyboardSelection: false,

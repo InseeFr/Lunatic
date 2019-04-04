@@ -6,7 +6,7 @@
 | :---------------: | :----: | :--------------------------------------: | :------: | ----------------------------------------- |
 |        id         | string |                    -                     |    ✓     | Id of the checkbox                        |
 |       label       | string |                    ""                    |          | Fieldset label of the checkbox            |
-|    selectValue    | string |                    ""                    |          | Value of the checkbox                     |
+|       value       | string |                    ""                    |          | Value of the checkbox                     |
 |    options \*     | array  |                    -                     |    ✓     | Options of the checkbox                   |
 |   handleChange    |  func  |                    -                     |    ✓     | Handler of the checkbox                   |
 |     disabled      |  bool  |                  false                   |          | Is the checkbox items disabled            |
