@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { InputNumber } from 'components';
 
-const defaultProps = { id: 'id', label: 'label', value: 10 };
+const defaultProps = { id: 'id', label: 'label', value: '10' };
 
 describe('input-number', () => {
 	const handleChange = jest.fn();
