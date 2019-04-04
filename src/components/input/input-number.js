@@ -98,7 +98,7 @@ class InputNumber extends React.Component {
 
 const minMaxValidator = ({ min, max }) => value =>
 	min !== undefined && max !== undefined ? (
-		value < min || value > max ? (
+		Number(value) < min || Number(value) > max ? (
 			<span>{`La valeur doit être comprise entre ${min} et ${max}`}</span>
 		) : (
 			undefined
@@ -120,7 +120,7 @@ InputNumber.defaultProps = {
 InputNumber.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
-	value: PropTypes.number.isRequired,
+	value: PropTypes.string.isRequired,
 	min: PropTypes.number,
 	max: PropTypes.number,
 	decimals: PropTypes.number,

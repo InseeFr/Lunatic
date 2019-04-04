@@ -6,7 +6,7 @@
 | :-------------: | :----: | :---------------------: | :------: | ------------------------------- |
 |       id        | string |            -            |    ✓     | Id of the input                 |
 |      label      | string |            -            |    ✓     | Label of the input              |
-|      value      | number |            -            |    ✓     | Value of the input              |
+|      value      | string |            -            |    ✓     | Value of the input              |
 |       min       | number |            0            |          | Minimum of the input            |
 |       max       | number | Number.MAX_SAFE_INTEGER |          | Maximum of the input            |
 |    decimals     | number |            0            |          | Number of decimals of the input |
