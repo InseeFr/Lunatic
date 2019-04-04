@@ -12,7 +12,9 @@ const Breadcrumb = ({ elements, style }) => (
 		{elements.map((e, i) => (
 			<React.Fragment key={`breadcrumb-${e.toLowerCase()}`}>
 				{e && (
-					<span className={i !== 0 && 'breadcrumb-element-lunatic'}>{e}</span>
+					<span className={i !== 0 ? 'breadcrumb-element-lunatic' : undefined}>
+						{e}
+					</span>
 				)}
 			</React.Fragment>
 		))}
