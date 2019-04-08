@@ -12,11 +12,4 @@ describe('checkbox', () => {
 	it('renders without crashing', () => {
 		mount(<Checkbox id={''} handleChange={onChange} items={items} />);
 	});
-
-	it('test state', () => {
-		const wrapper = mount(
-			<Checkbox id="id" handleChange={onChange} items={items} />
-		);
-		expect(wrapper.state(['items'])[0].value).toBeFalsy();
-	});
 });
