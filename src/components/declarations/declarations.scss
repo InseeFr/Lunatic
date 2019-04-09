@@ -18,3 +18,11 @@
 	font-size: 80%;
 	color: red;
 }
+
+.declaration-message_filter {
+	font-size: 100%;
+	color: rgb(73, 66, 66);
+	&:before {
+		content: '→ ';
+	}
+}

@@ -10,4 +10,4 @@
 
 ## Styles
 
-**Declarations** component has for classes `.declarations-lunatic`, `.declaration-lunatic`, `.declaration-instruction`, `.declaration-comment`, `.declaration-help` and `.declaration-warning`.
+**Declarations** component has for classes `.declarations-lunatic`, `.declaration-lunatic`, `.declaration-instruction`, `.declaration-comment`, `.declaration-help`, `.declaration-warning` and `.declaration-message-filter`.
