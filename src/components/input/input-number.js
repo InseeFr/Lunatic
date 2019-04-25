@@ -119,6 +119,8 @@ const minMaxValidator = ({ min, max }) => value =>
 InputNumber.defaultProps = {
 	min: 0,
 	max: Number.MAX_SAFE_INTEGER,
+	label: '',
+	value: '',
 	placeholder: '',
 	readOnly: false,
 	labelPosition: 'DEFAULT',
@@ -129,8 +131,8 @@ InputNumber.defaultProps = {
 
 InputNumber.propTypes = {
 	id: PropTypes.string.isRequired,
-	label: PropTypes.string.isRequired,
-	value: PropTypes.string.isRequired,
+	label: PropTypes.string,
+	value: PropTypes.string,
 	min: PropTypes.number,
 	max: PropTypes.number,
 	decimals: PropTypes.number,

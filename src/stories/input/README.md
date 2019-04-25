@@ -6,8 +6,8 @@
 | :-------------: | :----: | :-----------: | :------: | --------------------------- |
 |       id        | string |       -       |    ✓     | Id of the input             |
 |      label      | string |       -       |    ✓     | Label of the input          |
-|      value      | number |       -       |    ✓     | Value of the input          |
-|   placeholder   | string |      ""       |          | Placeholder of the input    |
+|      value      | string |      " "      |          | Value of the input          |
+|   placeholder   | string |      " "      |          | Placeholder of the input    |
 |  handleChange   |  func  |       -       |    ✓     | Handler of the input        |
 |    readOnly     |  bool  |     false     |          | Is the input read only      |
 |  labelPosition  | string |   "DEFAULT"   |          | Position of the input label |
