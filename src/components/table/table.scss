@@ -1,0 +1,28 @@
+@import 'src/components/index.scss';
+
+.table-lunatic {
+	table-layout: fixed;
+	border-collapse: collapse;
+	& td {
+		border: 0.15em solid $main_color;
+		padding: 0.2em;
+		fieldset {
+			margin: none;
+			border: none;
+			.radio-modality {
+				margin-top: 0;
+			}
+			.checkbox-modality {
+				margin-top: 0;
+			}
+		}
+	}
+	& > thead > tr > td {
+		padding: 0.5em;
+		text-align: center;
+	}
+}
+
+.table-cell-axis {
+	padding: 0.5em;
+}
