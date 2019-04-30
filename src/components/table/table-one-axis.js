@@ -65,6 +65,7 @@ class TableOneAxis extends Component {
 												options={options}
 												positioning={positioning}
 												readOnly={readOnly}
+												disabled={readOnly}
 												focused={i === 0 && j === 0 && focused}
 											/>
 										</td>
