@@ -71,7 +71,6 @@ class Input extends Component {
 }
 
 Input.defaultProps = {
-	value: '',
 	placeholder: '',
 	readOnly: false,
 	labelPosition: 'DEFAULT',

@@ -120,7 +120,6 @@ InputNumber.defaultProps = {
 	min: 0,
 	max: Number.MAX_SAFE_INTEGER,
 	label: '',
-	value: '',
 	placeholder: '',
 	readOnly: false,
 	labelPosition: 'DEFAULT',
