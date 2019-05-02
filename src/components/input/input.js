@@ -20,7 +20,7 @@ class Input extends Component {
 			placeholder,
 			handleChange,
 			readOnly,
-			autocomplete,
+			autoComplete,
 			labelPosition,
 			required,
 			declarations,
@@ -57,7 +57,7 @@ class Input extends Component {
 						}}
 						value={value}
 						placeholder={placeholder}
-						autocomplete={autocomplete ? 'on' : 'off'}
+						autoComplete={autoComplete ? 'on' : 'off'}
 						className="input-lunatic"
 						style={buildStyleObject(style)}
 						readOnly={readOnly}
@@ -75,7 +75,7 @@ class Input extends Component {
 Input.defaultProps = {
 	placeholder: '',
 	readOnly: false,
-	autocomplete: false,
+	autoComplete: false,
 	labelPosition: 'DEFAULT',
 	required: false,
 	focused: false,
@@ -89,7 +89,7 @@ Input.propTypes = {
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
-	autocomplete: PropTypes.bool,
+	autoComplete: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,
 	focused: PropTypes.bool,

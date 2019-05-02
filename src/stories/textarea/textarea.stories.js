@@ -40,6 +40,7 @@ stories.addWithJSX('Props', () => (
 		rows={number('Rows', 5)}
 		maxLength={number('Max length', 50)}
 		readOnly={boolean('Read only', false)}
+		autoComplete={boolean('Autocomplete', false)}
 		required={boolean('Required', false)}
 		focused={boolean('Focused', false)}
 		handleChange={console.log}

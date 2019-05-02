@@ -41,6 +41,7 @@ class InputNumber extends React.Component {
 			placeholder,
 			handleChange,
 			readOnly,
+			autoComplete,
 			focused,
 			style,
 			unit,
@@ -84,6 +85,7 @@ class InputNumber extends React.Component {
 						}`}
 						style={buildStyleObject(style)}
 						readOnly={readOnly}
+						autoComplete={autoComplete ? 'on' : 'off'}
 						required={required}
 						aria-required={required}
 						onChange={e => {
@@ -122,6 +124,7 @@ InputNumber.defaultProps = {
 	label: '',
 	placeholder: '',
 	readOnly: false,
+	autoComplete: false,
 	labelPosition: 'DEFAULT',
 	required: false,
 	focused: false,
@@ -138,6 +141,7 @@ InputNumber.propTypes = {
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
+	autoComplete: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: declarationsPropTypes,
 	style: PropTypes.object,

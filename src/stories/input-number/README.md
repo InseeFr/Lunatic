@@ -13,6 +13,7 @@
 |   placeholder   | string |           ""            |          | Placeholder of the input        |
 |  handleChange   |  func  |            -            |    ✓     | Handler of the input            |
 |    readOnly     |  bool  |          false          |          | Is the input read only          |
+|  autoComplete   |  bool  |          false          |          | Is the input autocompletable    |
 |  labelPosition  | string |        "DEFAULT"        |          | Position of the input label     |
 |    required     |  bool  |          false          |          | Is the input required           |
 |     focused     |  bool  |          false          |          | Is the input focused            |
