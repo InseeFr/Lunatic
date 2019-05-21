@@ -1,3 +1,5 @@
+<img align="right" src="docs/img/lunatic-logo.png" alt="Lunatic logo"/>
+
 # Lunatic
 
 Library of questionnaire components
