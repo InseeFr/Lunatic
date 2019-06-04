@@ -86,6 +86,7 @@ const SimpleSelect = ({
 	if (valueProps !== initialValue) {
 		setInitialValue(valueProps);
 		setValue(valueProps);
+		handleChange(valueProps);
 	}
 
 	return (

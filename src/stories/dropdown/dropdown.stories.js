@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Dropdown } from 'components';
@@ -37,9 +37,20 @@ const labelPositionOptions = {
 	LEFT: 'Left',
 };
 
-stories.addWithJSX('Default', () => (
-	<Dropdown id="default" options={options} handleChange={console.log} />
-));
+stories.addWithJSX('Default', () => {
+	const [initial] = useState('spain');
+
+	return (
+		<React.Fragment>
+			<Dropdown
+				value={initial}
+				id="default"
+				options={options}
+				handleChange={value => console.log('SET', value)}
+			/>
+		</React.Fragment>
+	);
+});
 
 stories.addWithJSX('Props', () => (
 	<Dropdown
@@ -51,5 +62,6 @@ stories.addWithJSX('Props', () => (
 		writable={boolean('Writable', false)}
 		labelPosition={select('Label position', labelPositionOptions)}
 		handleChange={console.log}
+		value="spain"
 	/>
 ));
