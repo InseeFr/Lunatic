@@ -96,7 +96,7 @@ const SimpleSelect = ({
 			readOnly={readOnly}
 			value={value}
 			placeHolder={placeHolder ? placeHolder : 'Veuillez ...'}
-			setExpanded={expanded => this.setState({ expanded })}
+			setExpanded={ex => setExpanded(ex)}
 			setValue={(val, label) => {
 				setValue(val);
 				setLabel(label);
