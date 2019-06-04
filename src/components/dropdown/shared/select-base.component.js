@@ -15,18 +15,18 @@ class SelectBase extends React.Component {
 	constructor(props) {
 		super(props);
 		this.idSequence = __SELECT_ID__++;
-		this.state.initialValue = this.props.value;
+		this.state.initialValue = this.props.initial;
 	}
 
 	static getDerivedStateFromProps(props, state) {
-		if (props.value !== state.initialValue) {
+		if (props.initial !== state.initialValue) {
 			const values = getValuesFromProps(props);
-
 			const { index, label, value } = Object.entries(values).reduce(
 				(a, [index, { value, label }]) =>
-					value === props.value ? { index, value, label } : a,
+					value === props.initial ? { index, value, label } : a,
 				-1
 			);
+
 			props.setValue(value, label);
 			return {
 				...state,

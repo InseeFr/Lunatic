@@ -38,7 +38,7 @@ const labelPositionOptions = {
 };
 
 stories.addWithJSX('Default', () => {
-	const [initial] = useState('spain');
+	const [initial, setInitial] = useState('spain');
 
 	return (
 		<React.Fragment>
@@ -48,6 +48,9 @@ stories.addWithJSX('Default', () => {
 				options={options}
 				handleChange={value => console.log('SET', value)}
 			/>
+			<button onClick={() => setInitial('france')}>
+				test changement de la valeur initiale !
+			</button>
 		</React.Fragment>
 	);
 });

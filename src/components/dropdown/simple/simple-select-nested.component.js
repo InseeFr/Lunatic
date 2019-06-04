@@ -4,67 +4,6 @@ import classnames from 'classnames';
 import SelectBase from '../shared/select-base.component';
 import './simple-select.scss';
 
-// class SimpleSelect extends React.Component {
-// 	state = { expanded: false, value: null, label: null };
-
-// 	constructor(props) {
-// 		super(props);
-// 		if (props.value) {
-// 			this.state.value = props.value;
-// 		}
-// 	}
-
-// 	handleClick = () => {
-// 		this.setState({ expanded: !this.state.expanded });
-// 	};
-
-// 	setValue = (value, label) => {
-// 		this.setState({ value, label });
-// 		if (this.props.handleChange) {
-// 			this.props.handleChange(value);
-// 		}
-// 		return false;
-// 	};
-
-// 	render() {
-// 		const { expanded, value, label } = this.state;
-// 		const {
-// 			className,
-// 			children,
-// 			name,
-// 			readOnly,
-// 			placeHolder,
-// 			options,
-// 			...rest
-// 		} = this.props;
-// 		return (
-// 			<SelectBase
-// 				id="simple-select"
-// 				options={children}
-// 				expanded={expanded}
-// 				readOnly={readOnly}
-// 				value={value}
-// 				placeHolder={placeHolder ? placeHolder : 'Veuillez ...'}
-// 				setExpanded={expanded => this.setState({ expanded })}
-// 				setValue={this.setValue}
-// 				className={classnames('simple-select', { [className]: className })}
-// 				{...rest}
-// 			>
-// 				<button
-// 					aria-haspopup="listbox"
-// 					className={classnames('bouton', { 'read-only': readOnly })}
-// 					aria-expanded={expanded ? true : undefined}
-// 					onClick={this.handleClick}
-// 					readOnly={readOnly ? true : undefined}
-// 					name={name}
-// 				>
-// 					{label || placeHolder || 'Veuillez....'}
-// 				</button>
-// 			</SelectBase>
-// 		);
-// 	}
-// }
-
 const SimpleSelect = ({
 	className,
 	children,
@@ -86,7 +25,7 @@ const SimpleSelect = ({
 	if (valueProps !== initialValue) {
 		setInitialValue(valueProps);
 		setValue(valueProps);
-		handleChange(valueProps);
+		// handleChange(valueProps);
 	}
 
 	return (
@@ -96,6 +35,7 @@ const SimpleSelect = ({
 			expanded={expanded}
 			readOnly={readOnly}
 			value={value}
+			initial={valueProps}
 			placeHolder={placeHolder ? placeHolder : 'Veuillez ...'}
 			setExpanded={ex => setExpanded(ex)}
 			setValue={(val, label) => {
