@@ -12,7 +12,6 @@
 |   placeholder   |     string     |      ""       |          | Placeholder of the textarea     |
 |  handleChange   |      func      |       -       |    ✓     | Handler of the textarea         |
 |    readOnly     |      bool      |     false     |          | Is the textarea read only       |
-|  autoComplete   |      bool      |     false     |          | Is the textarea autocompletable |
 |  labelPosition  |     string     |   "DEFAULT"   |          | Position of the textarea label  |
 |    required     |      bool      |     false     |          | Is the textarea required        |
 |     focused     |      bool      |     false     |          | Is the textarea focused         |

@@ -23,7 +23,6 @@ class Textarea extends Component {
 			rows,
 			maxLength,
 			readOnly,
-			autoComplete,
 			labelPosition,
 			required,
 			focused,
@@ -63,7 +62,6 @@ class Textarea extends Component {
 					rows={rows}
 					maxLength={maxLength}
 					readOnly={readOnly}
-					autoComplete={autoComplete ? 'on' : 'off'}
 					required={required}
 					aria-required={required}
 					onChange={e => handleChange(e.target.value)}
@@ -78,7 +76,6 @@ Textarea.defaultProps = {
 	placeholder: '',
 	rows: 5,
 	readOnly: false,
-	autoComplete: false,
 	labelPosition: 'DEFAULT',
 	required: false,
 	focused: false,
@@ -94,7 +91,6 @@ Textarea.propTypes = {
 	rows: PropTypes.number.isRequired,
 	maxLength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	readOnly: PropTypes.bool,
-	autoComplete: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,
 	focused: PropTypes.bool,
