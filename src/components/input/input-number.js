@@ -107,19 +107,21 @@ class InputNumber extends React.Component {
 	}
 }
 
-const minMaxValidator = ({ min, max }) => value =>
-	min !== undefined && max !== undefined ? (
-		Number(value) < min || Number(value) > max ? (
-			<span>{`La valeur doit être comprise entre ${min} et ${max}`}</span>
-		) : (
-			undefined
-		)
-	) : (
-		undefined
-	);
+const minMaxValidator = ({ min, max }) => value => {
+	const valueNumber = Number(value);
+	if (!min && isDef(max) && valueNumber > max)
+		return <span>{`La valeur doit être inférieure à ${max}`}</span>;
+	else if (isDef(min) && !max && valueNumber < min)
+		return <span>{`La valeur doit être supérieure à ${min}`}</span>;
+	else if (isDef(min) && isDef(max) && (valueNumber < min || valueNumber > max))
+		return <span>{`La valeur doit être comprise entre ${min} et ${max}`}</span>;
+	return undefined;
+};
+
+const isDef = number => number || number === 0;
 
 InputNumber.defaultProps = {
-	min: 0,
+	min: Number.MIN_SAFE_INTEGER,
 	max: Number.MAX_SAFE_INTEGER,
 	label: '',
 	placeholder: '',
