@@ -20,7 +20,7 @@ const stories = storiesOf('Checkbox', module)
 		return <WrappedComponent title="<Checkbox />" />;
 	});
 
-const items = [
+const options = [
 	{ id: '1', value: false, label: 'France' },
 	{ id: '2', value: false, label: 'Italy' },
 ];
@@ -32,7 +32,7 @@ const positioningOptions = {
 };
 
 stories.addWithJSX('Default', () => (
-	<Checkbox id="default" items={items} handleChange={console.log} />
+	<Checkbox id="default" options={options} handleChange={console.log} />
 ));
 
 stories.addWithJSX('Props', () => (
@@ -43,7 +43,7 @@ stories.addWithJSX('Props', () => (
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		keyboardSelection={boolean('Keyboard selection', false)}
-		items={items}
+		options={options}
 		handleChange={console.log}
 	/>
 ));
@@ -54,7 +54,7 @@ stories.addWithJSX('Styled', () => (
 		label={text('Label', "I'm the label of the checkbox")}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
-		items={items}
+		options={options}
 		handleChange={console.log}
 		style={object('Generated style', {
 			fieldsetStyle: {

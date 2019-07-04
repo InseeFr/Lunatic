@@ -4,12 +4,12 @@ import { Checkbox } from 'components';
 
 describe('checkbox', () => {
 	const onChange = jest.fn();
-	const items = [
+	const options = [
 		{ id: '1', value: false, label: 'France' },
 		{ id: '2', value: false, label: 'Italy' },
 	];
 
 	it('renders without crashing', () => {
-		mount(<Checkbox id={''} handleChange={onChange} items={items} />);
+		mount(<Checkbox id={''} handleChange={onChange} options={options} />);
 	});
 });

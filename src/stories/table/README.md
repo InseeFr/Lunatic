@@ -8,9 +8,9 @@
 |      label      | string |       -       |    ✓     | Label of the table                 |
 |     axis \*     | array  |       -       |    ✓     | Axis options of the table          |
 |   columns \*    | array  |       -       |    ✓     | Column specifications of the table |
-| positioning \*  | string |   "DEFAULT"   |          | Table items positioning            |
-|    readOnly     |  bool  |     false     |          | Is the table items read only       |
-|     focused     |  bool  |     false     |          | Is the table items focused         |
+| positioning \*  | string |   "DEFAULT"   |          | Table options positioning          |
+|    readOnly     |  bool  |     false     |          | Is the table options read only     |
+|     focused     |  bool  |     false     |          | Is the table options focused       |
 | declarations \* | array  |      [ ]      |          | Declarations of the table          |
 |      style      | object |      {}       |          | Style of the table                 |
 

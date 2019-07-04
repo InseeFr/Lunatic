@@ -9,10 +9,10 @@
 |       value       | string |                    ""                    |          | Value of the checkbox                     |
 |    options \*     | array  |                    -                     |    ✓     | Options of the checkbox                   |
 |   handleChange    |  func  |                    -                     |    ✓     | Handler of the checkbox                   |
-|     disabled      |  bool  |                  false                   |          | Is the checkbox items disabled            |
-|      focused      |  bool  |                  false                   |          | Is the checkbox items focused             |
+|     disabled      |  bool  |                  false                   |          | Is the checkbox options disabled          |
+|      focused      |  bool  |                  false                   |          | Is the checkbox options focused           |
 | keyboardSelection |  bool  |                  false                   |          | Enable keyboard selection of the checkbox |
-|  positioning \*   | string |                "DEFAULT"                 |          | Checkbox items positioning                |
+|  positioning \*   | string |                "DEFAULT"                 |          | Checkbox options positioning              |
 |  declarations \*  | array  |                   [ ]                    |          | Declarations of the checkbox              |
 |     style \*      | object | { fieldsetStyle: {}, checkboxStyle: {} } |          | Style of the checkbox                     |
 

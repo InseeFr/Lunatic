@@ -9,10 +9,10 @@
 |       value       | string |                  ""                   |          | Value of the radio                     |
 |    options \*     | array  |                   -                   |    ✓     | Options of the radio                   |
 |   handleChange    |  func  |                   -                   |    ✓     | Handler of the radio                   |
-|     disabled      |  bool  |                 false                 |          | Is the radio items disabled            |
-|      focused      |  bool  |                 false                 |          | Is the radio items focused             |
+|     disabled      |  bool  |                 false                 |          | Is the radio options disabled          |
+|      focused      |  bool  |                 false                 |          | Is the radio options focused           |
 | keyboardSelection |  bool  |                 false                 |          | Enable keyboard selection of the radio |
-|  positioning \*   | string |               "DEFAULT"               |          | Checkbox items positioning             |
+|  positioning \*   | string |               "DEFAULT"               |          | Checkbox options positioning           |
 |  declarations \*  | array  |                  [ ]                  |          | Declarations of the radio              |
 |     style \*      | object | { fieldsetStyle: {}, radioStyle: {} } |          | Style of the radio                     |
 

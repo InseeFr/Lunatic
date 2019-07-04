@@ -6,7 +6,7 @@ import Declarations from '../declarations';
 import * as C from '../../utils/constants';
 import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
-import { getItemsPositioningClass } from '../../utils/items-positioning';
+import { getItemsPositioningClass } from '../../utils/options-positioning';
 import alphabet from '../../utils/alphabet';
 import './radio.scss';
 

@@ -6,13 +6,13 @@ import Declarations from '../declarations';
 import * as C from '../../utils/constants';
 import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
-import { getItemsPositioningClass } from '../../utils/items-positioning';
+import { getItemsPositioningClass } from '../../utils/options-positioning';
 import alphabet from '../../utils/alphabet';
 import './checkbox.scss';
 
 class Checkbox extends Component {
 	hot_keys = this.props.keyboardSelection
-		? this.props.items.reduce(
+		? this.props.options.reduce(
 				(_, item, i) => ({
 					..._,
 					[alphabet[i]]: { priority: 1, handler: () => this.onChange(i) },
@@ -23,14 +23,14 @@ class Checkbox extends Component {
 
 	constructor(props) {
 		super(props);
-		const { items, handleChange } = props;
-		this.state = { items };
+		const { options, handleChange } = props;
+		this.state = { options };
 		this.onChange = index => {
-			const { items: oldItems } = this.state;
-			const items = [...oldItems];
-			items[index] = { ...items[index], value: !items[index].value };
-			this.setState({ items });
-			handleChange(items);
+			const { options: oldItems } = this.state;
+			const options = [...oldItems];
+			options[index] = { ...options[index], value: !options[index].value };
+			this.setState({ options });
+			handleChange(options);
 		};
 	}
 
@@ -40,7 +40,7 @@ class Checkbox extends Component {
 	}
 
 	render() {
-		const { items } = this.state;
+		const { options } = this.state;
 		const {
 			id,
 			label,
@@ -70,7 +70,7 @@ class Checkbox extends Component {
 						type={C.AFTER_QUESTION_TEXT}
 						declarations={declarations}
 					/>
-					{items.map(({ id: modId, label: modLabel, value }, i) => {
+					{options.map(({ id: modId, label: modLabel, value }, i) => {
 						return (
 							<div
 								key={`checkbox-${id}-${modId}`}
@@ -113,7 +113,7 @@ class Checkbox extends Component {
 Checkbox.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
-	items: PropTypes.arrayOf(
+	options: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.string.isRequired,
 			label: PropTypes.string.isRequired,
@@ -131,7 +131,7 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
 	label: '',
-	items: [],
+	options: [],
 	positioning: 'DEFAULT',
 	disabled: false,
 	keyboardSelection: false,

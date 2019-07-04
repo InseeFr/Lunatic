@@ -1,4 +1,4 @@
-import { getItemsPositioningClass } from 'utils/items-positioning';
+import { getItemsPositioningClass } from 'utils/options-positioning';
 
 describe('string utils', () => {
 	describe('getItemsPositioningClass', () => {
@@ -8,9 +8,9 @@ describe('string utils', () => {
 			expect(getItemsPositioningClass('DEFAULT')).toEqual('');
 			expect(getItemsPositioningClass('VERTICAL')).toEqual('');
 		});
-		it('should return "horizontal-items"', () => {
+		it('should return "horizontal-options"', () => {
 			expect(getItemsPositioningClass('HORIZONTAL')).toEqual(
-				'horizontal-items'
+				'horizontal-options'
 			);
 		});
 	});
