@@ -3,7 +3,10 @@
 .table-lunatic {
 	table-layout: fixed;
 	border-collapse: collapse;
-	& td {
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	& td,
+	th {
 		border: 0.15em solid $main_color;
 		padding: 0.2em;
 		fieldset {
@@ -17,11 +20,7 @@
 			}
 		}
 	}
-	& > thead > tr > td {
+	& > tr > td {
 		padding: 0.5em;
 	}
-}
-
-.table-cell-axis {
-	padding: 0.5em;
 }
