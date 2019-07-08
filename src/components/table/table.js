@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as lunatic from 'components';
+import * as lunatic from '../components';
 import './table.scss';
 
 class Table extends Component {
