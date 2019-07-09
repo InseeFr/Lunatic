@@ -62,7 +62,13 @@ class Datepicker extends Component {
 						required={required}
 						aria-required={required}
 						onChange={e =>
-							handleChange(U.getResponseName(response))(e.target.value)
+							handleChange({
+								...variables,
+								collected: {
+									...variables.collected,
+									[U.getResponseName(response)]: e.target.value,
+								},
+							})
 						}
 					/>
 				</div>
@@ -79,7 +85,7 @@ Datepicker.defaultProps = {
 	required: false,
 	focused: false,
 	variables: [],
-	response: [],
+	response: {},
 	declarations: [],
 };
 

@@ -21,6 +21,11 @@ const labelPositionOptions = {
 	LEFT: 'Left',
 };
 
+const defaultProps = {
+	handleChange: console.log,
+	response: { name: 'DATEPICKER', valueState: [] },
+};
+
 const stories = storiesOf('Datepicker', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
@@ -29,7 +34,7 @@ const stories = storiesOf('Datepicker', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<Datepicker id="default" label="Label" handleChange={console.log} />
+	<Datepicker id="default" label="Label" {...defaultProps} />
 ));
 
 stories.addWithJSX('Props', () => (
@@ -40,8 +45,8 @@ stories.addWithJSX('Props', () => (
 		readOnly={boolean('Read only', false)}
 		required={boolean('Required', false)}
 		focused={boolean('Focused', false)}
-		handleChange={() => e => console.log(e)}
 		labelPosition={select('Label position', labelPositionOptions)}
+		{...defaultProps}
 	/>
 ));
 
@@ -49,7 +54,7 @@ stories.addWithJSX('Styled', () => (
 	<Datepicker
 		id="styled"
 		label={text('Label', "I'm the label of the datepicker")}
-		handleChange={console.log}
+		{...defaultProps}
 		style={object('Generated style', {
 			'border-color': color('Border color', '#e80a4d'),
 			'border-width': number('Border-width', 2, {
