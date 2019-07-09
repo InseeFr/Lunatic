@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import * as C from '../../utils/constants';
-import { declarationsPropTypes } from '../../utils/prop-types';
-import { buildStyleObject } from '../../utils/string-utils';
-import { getLabelPositionClass } from '../../utils/label-position';
+import * as U from '../../utils';
 import './datepicker.scss';
 
 class Datepicker extends Component {
@@ -17,7 +15,8 @@ class Datepicker extends Component {
 		const {
 			id,
 			label,
-			value,
+			variables,
+			response,
 			placeholder,
 			handleChange,
 			readOnly,
@@ -34,7 +33,7 @@ class Datepicker extends Component {
 					type={C.BEFORE_QUESTION_TEXT}
 					declarations={declarations}
 				/>
-				<div className={getLabelPositionClass(labelPosition)}>
+				<div className={U.getLabelPositionClass(labelPosition)}>
 					{label && (
 						<label
 							htmlFor={`datepicker-${id}`}
@@ -55,14 +54,16 @@ class Datepicker extends Component {
 						ref={input => {
 							if (focused) this.nameInput = input;
 						}}
-						value={value}
+						value={U.getSimpleResponse(variables)(response)}
 						placeholder={placeholder || ''}
 						className="datepicker-lunatic"
-						style={buildStyleObject(style)}
+						style={U.buildStyleObject(style)}
 						readOnly={readOnly}
 						required={required}
 						aria-required={required}
-						onChange={e => handleChange(e.target.value)}
+						onChange={e =>
+							handleChange(U.getResponseName(response))(e.target.value)
+						}
 					/>
 				</div>
 				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
@@ -77,20 +78,23 @@ Datepicker.defaultProps = {
 	labelPosition: 'DEFAULT',
 	required: false,
 	focused: false,
+	variables: [],
+	response: [],
 	declarations: [],
 };
 
 Datepicker.propTypes = {
 	id: PropTypes.string,
 	label: PropTypes.string,
-	value: PropTypes.string,
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,
 	focused: PropTypes.bool,
-	declarations: declarationsPropTypes,
+	variables: U.variablesPropTypes,
+	response: U.responsePropTypes,
+	declarations: U.declarationsPropTypes,
 	style: PropTypes.object,
 };
 

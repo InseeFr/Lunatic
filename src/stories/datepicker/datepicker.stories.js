@@ -40,7 +40,7 @@ stories.addWithJSX('Props', () => (
 		readOnly={boolean('Read only', false)}
 		required={boolean('Required', false)}
 		focused={boolean('Focused', false)}
-		handleChange={console.log}
+		handleChange={() => e => console.log(e)}
 		labelPosition={select('Label position', labelPositionOptions)}
 	/>
 ));
