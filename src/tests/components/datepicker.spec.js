@@ -38,8 +38,6 @@ describe('datepicker', () => {
 			},
 		});
 		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({
-			collected: { '': 'new value' },
-		});
+		expect(handleChange).toHaveBeenCalledWith({ '': 'new value' });
 	});
 });

@@ -15,7 +15,7 @@ class Datepicker extends Component {
 		const {
 			id,
 			label,
-			variables,
+			valueType,
 			response,
 			placeholder,
 			handleChange,
@@ -54,7 +54,7 @@ class Datepicker extends Component {
 						ref={input => {
 							if (focused) this.nameInput = input;
 						}}
-						value={U.getSimpleResponse(variables)(response)}
+						value={U.getResponseByType(valueType)(response)}
 						placeholder={placeholder || ''}
 						className="datepicker-lunatic"
 						style={U.buildStyleObject(style)}
@@ -62,13 +62,7 @@ class Datepicker extends Component {
 						required={required}
 						aria-required={required}
 						onChange={e =>
-							handleChange({
-								...variables,
-								collected: {
-									...variables.collected,
-									[U.getResponseName(response)]: e.target.value,
-								},
-							})
+							handleChange({ [U.getResponseName(response)]: e.target.value })
 						}
 					/>
 				</div>
@@ -79,6 +73,7 @@ class Datepicker extends Component {
 }
 
 Datepicker.defaultProps = {
+	valueType: 'COLLECTED',
 	placeholder: '',
 	readOnly: false,
 	labelPosition: 'DEFAULT',
@@ -92,13 +87,13 @@ Datepicker.defaultProps = {
 Datepicker.propTypes = {
 	id: PropTypes.string,
 	label: PropTypes.string,
+	valueType: U.valueTypePropTypes,
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,
 	focused: PropTypes.bool,
-	variables: U.variablesPropTypes,
 	response: U.responsePropTypes,
 	declarations: U.declarationsPropTypes,
 	style: PropTypes.object,
