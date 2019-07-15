@@ -1,3 +1,7 @@
+.centered {
+	text-align: center;
+}
+
 .lunatic-img {
 	text-align: center;
 	margin-top: 0.4em;
@@ -5,8 +9,20 @@
 }
 
 .container {
-	margin-left: 20%;
-	width: 60%;
+	margin-left: 5%;
+	width: 90%;
+	display: flex;
+}
+
+.components {
+	width: 70%;
+}
+
+.state {
+	width: 30%;
+	border: 0.1em solid black;
+	border-radius: 1em;
+	padding: 0.4em;
 }
 
 .lunatic-component {
