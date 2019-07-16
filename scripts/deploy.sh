@@ -55,7 +55,7 @@ function publish() {
   ls -l
   cp -R "../$STORYBOOK_FOLDER/." .
   ls -l
-  cp -R "../$EXAMPLE_FOLDER/." "example" .
+  cp -R "../$EXAMPLE_FOLDER/." .
   ls -l
 
   git init
