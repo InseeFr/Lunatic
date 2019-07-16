@@ -969,16 +969,16 @@
   dependencies:
     "@hapi/hoek" "8.x.x"
 
-"@inseefr/lunatic@^0.2.21":
-  version "0.2.21"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.2.21.tgz#cfb04fce6974a80632f95555abec850e9221583c"
-  integrity sha512-YqmetgmHezM9cXoWZj/Ns8QS2An5819G+E9s95Hnf043o93QrVbzMWLcspC8qy5js1zN5nPs4bPnlx0mc37P0Q==
+"@inseefr/lunatic@^0.2.22":
+  version "0.2.22"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.2.22.tgz#9a3020b4412660b9c3aafb2e30b374e7754e716e"
+  integrity sha512-RwbXOGcA4ieyhf6/I/4VOYfLinlIHwovyUEGVmElX5o1x1qQGfLrbvJl3rtnmJs/THpa89PJ9Mew+MJm0yfYig==
   dependencies:
     lodash.camelcase "^4.3.0"
     prop-types "^15.6.0"
     radium "^0.25.1"
-    react "^16.2.0"
-    react-dom "^16.8.3"
+    react "^16.8.6"
+    react-dom "^16.8.6"
     react-keyboard-shortcuts "^1.1.3"
 
 "@jest/console@^24.7.1":
@@ -8144,7 +8144,7 @@ react-dev-utils@^9.0.1:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-dom@^16.8.3, react-dom@^16.8.6:
+react-dom@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
   integrity sha512-1nL7PIq9LTL3fthPqwkvr2zY7phIPjYrT0jp4HjyEQrEROnw4dG41VVwi/wfoCneoleqrNX7iAD+pXebJZwrwA==
@@ -8231,7 +8231,7 @@ react-scripts@3.0.1:
   optionalDependencies:
     fsevents "2.0.6"
 
-react@^16.2.0, react@^16.8.6:
+react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   integrity sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==

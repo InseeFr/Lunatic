@@ -143,11 +143,11 @@ $colorSecondaryContrastText: #ffffff;
 
 .lunatic.checkboxBoolean label::before,
 .lunatic .checkbox-lunatic + label::before {
-	content: url(/images/check_box_outline.svg);
+	content: url(./img/check_box_outline.svg);
 }
 
 .lunatic .radio-lunatic + label::before {
-	content: url(/images/radio_button_unchecked.svg);
+	content: url(./img/radio_button_unchecked.svg);
 }
 
 .lunatic .checkbox-lunatic:checked + label,
@@ -174,11 +174,11 @@ $colorSecondaryContrastText: #ffffff;
 }
 
 .lunatic .checkbox-lunatic:checked + label::before {
-	content: url(/images/check_box.svg);
+	content: url(./img/check_box.svg);
 }
 
 .lunatic .radio-lunatic:checked + label::before {
-	content: url(/images/radio_button_checked.svg);
+	content: url(./img/radio_button_checked.svg);
 }
 
 // LABEL, LEGEND
@@ -244,7 +244,7 @@ $colorSecondaryContrastText: #ffffff;
 	transform: none;
 	float: right;
 	margin-left: 0.3125rem;
-	content: url(/images/menu-down.svg);
+	content: url(./img/menu-down.svg);
 	color: rgba(0, 0, 0, 0.54);
 	padding: 0;
 }
@@ -254,7 +254,7 @@ $colorSecondaryContrastText: #ffffff;
 	transform: none;
 	float: right;
 	margin-left: 0.3125rem;
-	content: url(/images/menu-up.svg);
+	content: url(./img/menu-up.svg);
 	padding: 0;
 }
 
@@ -483,4 +483,33 @@ $colorSecondaryContrastText: #ffffff;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+.lunatic table.table-lunatic {
+	.table-cell-axis {
+		text-align: left;
+	}
+	td,
+	th {
+		border-color: $colorPrimaryDark;
+		padding: 0.4em;
+	}
+	td .input-lunatic {
+		width: 80%;
+		margin-left: 10%;
+	}
+	td .textarea-lunatic {
+		width: 100%;
+	}
+}
+
+.lunatic .button-lunatic {
+	background-color: $colorPrimaryDark;
+	border-color: $colorPrimaryDark;
+	width: 30%;
+	&:hover {
+		background-color: white;
+		color: $colorPrimaryDark;
+		border-color: $colorPrimaryDark;
+	}
 }
