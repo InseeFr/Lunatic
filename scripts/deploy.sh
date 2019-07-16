@@ -4,7 +4,7 @@ set -e
 
 DOC_FOLDER="docs"
 STORYBOOK_FOLDER="built-storybook"
-EXAMPLE_FOLDER="example/build"
+EXAMPLE_FOLDER="example"
 SITE_FOLDER="website"
 
 MAIN_BRANCH="master"
@@ -50,13 +50,10 @@ function publish() {
   mkdir $SITE_FOLDER
   pushd "$SITE_FOLDER"
 
-  ls -l
   cp -a "../$DOC_FOLDER/_book/." .
-  ls -l
   cp -R "../$STORYBOOK_FOLDER/." .
-  ls -l
-  cp -R "../$EXAMPLE_FOLDER/." "../example" .
-  ls -l
+  cp -R "../$EXAMPLE_FOLDER/." .
+  mv "build" "example"
 
   git init
   git remote add upstream "$UPSTREAM"
