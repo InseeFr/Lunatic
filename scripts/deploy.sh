@@ -23,7 +23,7 @@ if [ "$TRAVIS_BRANCH" != "$MAIN_BRANCH" ];then
 fi
 
 function setup() {
-  yarn add -g gitbook-cli
+  npm install -g gitbook-cli
 }
 
 function buildDocumentation() {
@@ -34,13 +34,13 @@ function buildDocumentation() {
 }
 
 function buildStoryBook(){
-  yarn build-storybook
+  npm run build-storybook
 }
 
 function buildExample(){
   cd example
-  yarn
-  yarn build
+  npm install
+  npm run build
 }
 
 function publish() {
