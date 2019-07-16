@@ -10,3 +10,7 @@ Library of questionnaire components
 The documentation can be found in the [docs](https://github.com/InseeFr/Lunatic/tree/master/docs) folder and [browsed online](https://inseefr.github.io/Lunatic).
 
 [Storybook](https://inseefr.github.io/Lunatic/storybook) is also available online.
+
+## Usage
+
+An [example](https://github.com/InseeFr/Lunatic/tree/master/example) of use of Lunatic is available. This simple orchestrator is deployed [online](https://inseefr.github.io/Lunatic/example).
