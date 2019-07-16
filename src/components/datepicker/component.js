@@ -54,7 +54,7 @@ class Datepicker extends Component {
 						ref={input => {
 							if (focused) this.nameInput = input;
 						}}
-						value={U.getResponseByType(valueType)(response)}
+						value={U.getResponseByPreference(valueType)(response)}
 						placeholder={placeholder || ''}
 						className="datepicker-lunatic"
 						style={U.buildStyleObject(style)}
@@ -73,13 +73,12 @@ class Datepicker extends Component {
 }
 
 Datepicker.defaultProps = {
-	valueType: 'COLLECTED',
+	preferences: ['COLLECTED'],
 	placeholder: '',
 	readOnly: false,
 	labelPosition: 'DEFAULT',
 	required: false,
 	focused: false,
-	variables: [],
 	response: {},
 	declarations: [],
 };
@@ -87,7 +86,7 @@ Datepicker.defaultProps = {
 Datepicker.propTypes = {
 	id: PropTypes.string,
 	label: PropTypes.string,
-	valueType: U.valueTypePropTypes,
+	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
