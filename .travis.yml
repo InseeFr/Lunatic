@@ -6,10 +6,6 @@ install:
   - yarn
 before_script:
   - yarn test-coverage
-script:
-  - cd example
-  - yarn
-  - yarn build
 
 after_script:
   - cd ..

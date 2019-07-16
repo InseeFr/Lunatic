@@ -47,10 +47,13 @@ function publish() {
 
   mkdir $SITE_FOLDER
   pushd "$SITE_FOLDER"
-
+  
+  ls -l
   cp -a "../$DOC_FOLDER/_book/." .
+  ls -l
   cp -R "../$STORYBOOK_FOLDER/." .
-  cp -R "../$EXAMPLE_FOLDER/." "example" .
+  ls -l
+  cp -R "../$EXAMPLE_FOLDER/." .
   ls -l
 
   git init
