@@ -4,7 +4,7 @@ set -e
 
 DOC_FOLDER="docs"
 STORYBOOK_FOLDER="built-storybook"
-EXAMPLE_FOLDER="example"
+EXAMPLE_FOLDER="example/build"
 SITE_FOLDER="website"
 
 MAIN_BRANCH="master"
@@ -68,7 +68,7 @@ function publish() {
 }
 
 function main() {
-  setup && buildDocumentation && buildStoryBook && publish
+  setup && buildDocumentation && buildStoryBook && buildExample && publish
 }
 
 main
