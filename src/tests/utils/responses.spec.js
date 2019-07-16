@@ -29,6 +29,17 @@ describe('responses utils', () => {
 				})
 			).toEqual('Collected');
 		});
+		it('should return Collected', () => {
+			expect(
+				R.getResponseByPreference(['COLLECTED', 'FORCED'])({
+					name: 'name',
+					valueState: [
+						{ valueType: 'COLLECTED', value: 'Collected' },
+						{ valueType: 'FORCED', value: '' },
+					],
+				})
+			).toEqual('Collected');
+		});
 		it('should return Forced', () => {
 			expect(
 				R.getResponseByPreference(['COLLECTED', 'FORCED'])({
