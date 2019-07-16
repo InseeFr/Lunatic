@@ -4,7 +4,7 @@ set -e
 
 DOC_FOLDER="docs"
 STORYBOOK_FOLDER="built-storybook"
-EXAMPLE_FOLDER="example/build"
+EXAMPLE_FOLDER="example"
 SITE_FOLDER="website"
 
 MAIN_BRANCH="master"
@@ -47,7 +47,7 @@ function publish() {
 
   mkdir $SITE_FOLDER
   pushd "$SITE_FOLDER"
-  
+
   ls -l
   cp -a "../$DOC_FOLDER/_book/." .
   ls -l
