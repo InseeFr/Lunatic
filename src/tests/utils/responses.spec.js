@@ -6,9 +6,39 @@ describe('responses utils', () => {
 			expect(R.getResponseName({})).toEqual('');
 		});
 	});
-	describe('getResponseByType', () => {
+	describe('getResponseByPreference', () => {
 		it('should return default value', () => {
-			expect(R.getResponseByType('')({})).toEqual('');
+			expect(R.getResponseByPreference([])({})).toEqual('');
+		});
+		it('should return Collected', () => {
+			expect(
+				R.getResponseByPreference(['COLLECTED'])({
+					name: 'name',
+					valueState: [{ valueType: 'COLLECTED', value: 'Collected' }],
+				})
+			).toEqual('Collected');
+		});
+		it('should return Collected', () => {
+			expect(
+				R.getResponseByPreference(['COLLECTED'])({
+					name: 'name',
+					valueState: [
+						{ valueType: 'COLLECTED', value: 'Collected' },
+						{ valueType: 'FORCED', value: 'Forced' },
+					],
+				})
+			).toEqual('Collected');
+		});
+		it('should return Forced', () => {
+			expect(
+				R.getResponseByPreference(['COLLECTED', 'FORCED'])({
+					name: 'name',
+					valueState: [
+						{ valueType: 'COLLECTED', value: 'Collected' },
+						{ valueType: 'FORCED', value: 'Forced' },
+					],
+				})
+			).toEqual('Forced');
 		});
 	});
 });
