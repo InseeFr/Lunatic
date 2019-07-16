@@ -15,7 +15,7 @@ class Datepicker extends Component {
 		const {
 			id,
 			label,
-			valueType,
+			preferences,
 			response,
 			placeholder,
 			handleChange,
@@ -54,7 +54,7 @@ class Datepicker extends Component {
 						ref={input => {
 							if (focused) this.nameInput = input;
 						}}
-						value={U.getResponseByPreference(valueType)(response)}
+						value={U.getResponseByPreference(preferences)(response)}
 						placeholder={placeholder || ''}
 						className="datepicker-lunatic"
 						style={U.buildStyleObject(style)}

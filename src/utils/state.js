@@ -1,4 +1,4 @@
-export const getInitialState = questionnaire => {
+export const getState = questionnaire => {
 	const { components, variables } = questionnaire;
 	const COLLECTED = getVariablesFromComponents(components);
 	//	TODO

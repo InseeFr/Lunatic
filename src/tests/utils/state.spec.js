@@ -1,16 +1,16 @@
-import { getInitialState } from 'utils/init-state';
+import { getState } from 'utils/state';
 
 describe('init-state', () => {
-	describe('getInitialState', () => {
+	describe('getState', () => {
 		it('should return empty object', () => {
-			expect(getInitialState([])).toEqual({
+			expect(getState([])).toEqual({
 				COLLECTED: {},
 				CALCULATED: {},
 				EXTERNAL: {},
 			});
 		});
 		it('should return object', () => {
-			expect(getInitialState(questionnaire)).toEqual(state);
+			expect(getState(questionnaire)).toEqual(state);
 		});
 	});
 });
