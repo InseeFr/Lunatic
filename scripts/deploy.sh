@@ -41,6 +41,7 @@ function buildExample(){
   cd example
   npm install
   npm run build
+  cd ..
 }
 
 function publish() {
@@ -54,7 +55,7 @@ function publish() {
   ls -l
   cp -R "../$STORYBOOK_FOLDER/." .
   ls -l
-  cp -R "../$EXAMPLE_FOLDER/." .
+  cp -R "../$EXAMPLE_FOLDER/." "example" .
   ls -l
 
   git init
