@@ -29,19 +29,11 @@ const Orchestrator = () => {
 	console.log(variables);
 	return (
 		<>
-			<div className="lunatic-img">
-				<img alt="lunatic" src={logo} />
+			<div className="lunatic-img-container">
+				<img className="lunatic-img" alt="lunatic" src={logo} />
 			</div>
 			<div className="container">
 				<div className="components">{components}</div>
-				<div className="state">
-					<h1 className="centered">Collected</h1>
-					<div>
-						{Object.entries(variables.COLLECTED).map(([key, values]) => (
-							<div key={`state-${key}`}>{`${key} : ${values.COLLECTED}`}</div>
-						))}
-					</div>
-				</div>
 			</div>
 		</>
 	);
