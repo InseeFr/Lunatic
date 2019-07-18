@@ -12,7 +12,7 @@ const Tootltip = ({ id, response }) => {
 	return (
 		<Tooltip
 			className="tooltip-lunatic"
-			tooltip={<img alt="" src={img[imgName]} />}
+			tooltip={<img alt="" src={img[imgName].src || img[imgName]} />}
 		>
 			<ul>
 				{content.map(({ key, value }) => (

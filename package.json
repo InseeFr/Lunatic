@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.2.26",
+	"version": "0.2.27",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -78,9 +78,9 @@
 		"postcss-scss": "^1.0.3",
 		"prettier": "^1.14.3",
 		"rollup": "^0.66.6",
-		"rollup-plugin-auto-external": "^2.0.0",
 		"rollup-plugin-babel": "^3.0.3",
 		"rollup-plugin-commonjs": "^8.3.0",
+		"rollup-plugin-image": "^1.0.2",
 		"rollup-plugin-node-resolve": "^3.0.3",
 		"rollup-plugin-postcss": "^1.2.8",
 		"rollup-plugin-replace": "^2.0.0",
