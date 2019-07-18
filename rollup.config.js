@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import postcss from 'rollup-plugin-postcss';
+import image from 'rollup-plugin-image';
 
 export default {
 	input: 'src/components/index.js',
@@ -28,6 +29,7 @@ export default {
 			ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
 		}),
 		commonjs(),
+		image(),
 	],
 	external: ['radium', 'react', 'react-dom', 'lodash.camelcase', 'prop-types'],
 };
