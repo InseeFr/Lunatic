@@ -1,21 +1,21 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { Tooltip } from 'components';
+import { TooltipResponse } from 'components';
 import readme from './README.md';
 import titleDecorator from 'utils/decorator/title-decorator';
 
-const stories = storiesOf('Tooltip', module)
+const stories = storiesOf('TooltipResponse', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
 		const WrappedComponent = titleDecorator(Component);
-		return <WrappedComponent title="<Tooltip />" />;
+		return <WrappedComponent title="<TooltipResponse />" />;
 	});
 
-stories.addWithJSX('Default', () => <Tooltip id="default" />);
+stories.addWithJSX('Default', () => <TooltipResponse id="default" />);
 
 stories.addWithJSX('Forced', () => (
-	<Tooltip
+	<TooltipResponse
 		id="response"
 		response={{
 			name: 'response',
@@ -29,7 +29,7 @@ stories.addWithJSX('Forced', () => (
 ));
 
 stories.addWithJSX('Edited', () => (
-	<Tooltip
+	<TooltipResponse
 		id="response"
 		response={{
 			name: 'response',

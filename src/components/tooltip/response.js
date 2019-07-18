@@ -6,7 +6,7 @@ import * as img from './img';
 import { buildTooltip } from '../../utils/tooltip';
 import './tooltip.scss';
 
-const Tootltip = ({ id, response }) => {
+const TooltipResponse = ({ id, response }) => {
 	const [tooltipElements, setTooltipElements] = useState(
 		buildTooltip(response)
 	);
@@ -20,12 +20,7 @@ const Tootltip = ({ id, response }) => {
 	return (
 		<Tooltip
 			className="tooltip-lunatic"
-			tooltip={
-				<div>
-					<img alt="" src={img[imgName].src || img[imgName]} />
-					<div>{content.map(c => c.key).join(' - ')}</div>
-				</div>
-			}
+			tooltip={<img alt="" src={img[imgName].src || img[imgName]} />}
 		>
 			<ul>
 				{content.map(({ key, value }) => (
@@ -36,13 +31,13 @@ const Tootltip = ({ id, response }) => {
 	);
 };
 
-Tootltip.defaultProps = {
+TooltipResponse.defaultProps = {
 	response: {},
 };
 
-Tootltip.propTypes = {
+TooltipResponse.propTypes = {
 	id: PropTypes.string,
 	response: responsePropTypes,
 };
 
-export default Tootltip;
+export default TooltipResponse;
