@@ -10,3 +10,4 @@ export { default as Radio } from './radio';
 export { default as Sequence } from './sequence';
 export { default as Subsequence } from './subsequence';
 export { default as Textarea } from './textarea';
+export { default as Tooltip } from './tooltip';
