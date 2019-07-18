@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Tooltip from 'react-png-tooltip';
 import { responsePropTypes } from '../../utils';
@@ -7,7 +7,13 @@ import { buildTooltip } from '../../utils/tooltip';
 import './tooltip.scss';
 
 const Tootltip = ({ id, response }) => {
-	const { content, imgName } = buildTooltip(response);
+	const [tooltipElements] = useState(buildTooltip(response));
+	const { content, imgName } = tooltipElements;
+
+	useEffect(() => {
+		buildTooltip(response);
+	}, [tooltipElements]);
+
 	if (!content) return null;
 	return (
 		<Tooltip
