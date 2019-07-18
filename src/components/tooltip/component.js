@@ -15,13 +15,17 @@ const Tootltip = ({ id, response }) => {
 	useEffect(() => {
 		setTooltipElements(buildTooltip(response));
 	}, [response]);
-	console.log(response);
-	console.log(tooltipElements.imgName);
+
 	if (!content) return null;
 	return (
 		<Tooltip
 			className="tooltip-lunatic"
-			tooltip={<img alt="" src={img[imgName].src || img[imgName]} />}
+			tooltip={
+				<div>
+					<img alt="" src={img[imgName].src || img[imgName]} />
+					<div>{content.map(c => c.key).join(' - ')}</div>
+				</div>
+			}
 		>
 			<ul>
 				{content.map(({ key, value }) => (
