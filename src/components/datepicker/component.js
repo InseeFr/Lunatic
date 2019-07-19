@@ -51,11 +51,6 @@ class Datepicker extends Component {
 						declarations={declarations}
 					/>
 					<div className="field-container">
-						{tooltip && (
-							<div className="tooltip">
-								<TooltipResponse id={id} response={response} />
-							</div>
-						)}
 						<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
 							<input
 								type="date"
@@ -77,6 +72,11 @@ class Datepicker extends Component {
 								}
 							/>
 						</div>
+						{tooltip && (
+							<div className="tooltip">
+								<TooltipResponse id={id} response={response} />
+							</div>
+						)}
 					</div>
 				</div>
 				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
