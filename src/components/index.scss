@@ -23,9 +23,6 @@ $disabled: rgb(235, 235, 228);
 @mixin vertical-placement($reverse: false) {
 	display: flex;
 	flex-direction: if($reverse, column-reverse, column);
-	:first-child {
-		margin-top: 0.5rem;
-	}
 }
 
 @mixin horizontal-placement($reverse: false) {
@@ -35,6 +32,10 @@ $disabled: rgb(235, 235, 228);
 	:first-child {
 		margin-right: 1rem;
 	}
+}
+
+label {
+	margin-bottom: 0.5em;
 }
 
 .label-top {
@@ -49,4 +50,27 @@ $disabled: rgb(235, 235, 228);
 }
 .label-left {
 	@include horizontal-placement();
+}
+
+.field-container {
+	display: flex;
+}
+
+.tooltip {
+	width: 10%;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.field-with-tooltip {
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+}
+
+.field {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }

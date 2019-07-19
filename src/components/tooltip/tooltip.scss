@@ -1,9 +1,35 @@
 @import 'src/components/index.scss';
 
+/* Tooltip container */
 .tooltip-lunatic {
+	position: relative;
+	display: inline-block;
+	align-items: center;
+}
+
+/* Tooltip text */
+.tooltip-lunatic .tooltip-text {
+	visibility: hidden;
+	width: 20em;
 	background-color: $main_color;
-	color: white;
-	fill: $main_color;
-	border: none;
-	border-radius: 10px;
+	color: #fff;
+	padding: 5px 0;
+	border-radius: 6px;
+	text-align: left;
+
+	/* Position the tooltip text */
+	position: absolute;
+	z-index: 1;
+	bottom: 110%;
+	left: 80%;
+
+	/* Fade in tooltip */
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-lunatic:hover .tooltip-text {
+	visibility: visible;
+	opacity: 1;
 }

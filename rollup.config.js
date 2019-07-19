@@ -31,12 +31,5 @@ export default {
 		commonjs(),
 		image(),
 	],
-	external: [
-		'radium',
-		'react',
-		'react-dom',
-		'lodash.camelcase',
-		'prop-types',
-		'react-png-tooltip',
-	],
+	external: ['radium', 'react', 'react-dom', 'lodash.camelcase', 'prop-types'],
 };

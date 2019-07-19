@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { TooltipResponse } from '../tooltip';
 import Declarations from '../declarations';
 import * as C from '../../utils/constants';
 import * as U from '../../utils';
@@ -24,6 +25,7 @@ class Datepicker extends Component {
 			required,
 			focused,
 			declarations,
+			tooltip,
 			style,
 		} = this.props;
 		return (
@@ -48,23 +50,34 @@ class Datepicker extends Component {
 						type={C.AFTER_QUESTION_TEXT}
 						declarations={declarations}
 					/>
-					<input
-						type="date"
-						id={`datepicker-${id}`}
-						ref={input => {
-							if (focused) this.nameInput = input;
-						}}
-						value={U.getResponseByPreference(preferences)(response)}
-						placeholder={placeholder || ''}
-						className="datepicker-lunatic"
-						style={U.buildStyleObject(style)}
-						readOnly={readOnly}
-						required={required}
-						aria-required={required}
-						onChange={e =>
-							handleChange({ [U.getResponseName(response)]: e.target.value })
-						}
-					/>
+					<div className="field-container">
+						{tooltip && (
+							<div className="tooltip">
+								<TooltipResponse id={id} response={response} />
+							</div>
+						)}
+						<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+							<input
+								type="date"
+								id={`datepicker-${id}`}
+								ref={input => {
+									if (focused) this.nameInput = input;
+								}}
+								value={U.getResponseByPreference(preferences)(response)}
+								placeholder={placeholder || ''}
+								className="datepicker-lunatic"
+								style={U.buildStyleObject(style)}
+								readOnly={readOnly}
+								required={required}
+								aria-required={required}
+								onChange={e =>
+									handleChange({
+										[U.getResponseName(response)]: e.target.value,
+									})
+								}
+							/>
+						</div>
+					</div>
 				</div>
 				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
 			</React.Fragment>
@@ -81,6 +94,7 @@ Datepicker.defaultProps = {
 	focused: false,
 	response: {},
 	declarations: [],
+	tooltip: false,
 };
 
 Datepicker.propTypes = {
@@ -95,6 +109,7 @@ Datepicker.propTypes = {
 	focused: PropTypes.bool,
 	response: U.responsePropTypes,
 	declarations: U.declarationsPropTypes,
+	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };
 

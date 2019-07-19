@@ -23,7 +23,13 @@ const labelPositionOptions = {
 
 const defaultProps = {
 	handleChange: console.log,
-	response: { name: 'DATEPICKER', valueState: [] },
+	response: {
+		name: 'DATEPICKER',
+		valueState: [
+			{ valueType: 'COLLECTED', value: '1998-07-12' },
+			{ valueType: 'FORCED', value: '2018-07-15' },
+		],
+	},
 };
 
 const stories = storiesOf('Datepicker', module)
@@ -45,6 +51,8 @@ stories.addWithJSX('Props', () => (
 		readOnly={boolean('Read only', false)}
 		required={boolean('Required', false)}
 		focused={boolean('Focused', false)}
+		preferences={['COLLECTED', 'FORCED']}
+		tooltip={boolean('Tooltip', false)}
 		labelPosition={select('Label position', labelPositionOptions)}
 		{...defaultProps}
 	/>

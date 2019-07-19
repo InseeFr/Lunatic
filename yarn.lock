@@ -8176,11 +8176,6 @@ react-onclickoutside@^6.5.0:
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.8.0.tgz#9f91b5b3ed59f4d9e43fd71620dc200773a4d569"
   integrity sha512-5Q4Rn7QLEoh7WIe66KFvYIpWJ49GeHoygP1/EtJyZjXKgrWH19Tf0Ty3lWyQzrEEDyLOwUvvmBFSE3dcDdvagA==
 
-react-png-tooltip@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-png-tooltip/-/react-png-tooltip-1.2.0.tgz#895ebad1a43ccba9d65ea70365e14513110fdc42"
-  integrity sha512-huWkqQVZ/oDZ9D8T8cmE7YjeCsCQbGui7gaSkYtk1EmFJosfzF8WfQ3zuTk5Am/MHBbVUsmvZw60KO3sel2vsA==
-
 react-split-pane@^0.1.77:
   version "0.1.87"
   resolved "https://registry.yarnpkg.com/react-split-pane/-/react-split-pane-0.1.87.tgz#a7027ae554abfacca35f5f780288b07fe4ec4cbd"
