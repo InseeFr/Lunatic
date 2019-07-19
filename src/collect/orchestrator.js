@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import * as lunatic from '@inseefr/lunatic';
 import simspons from './simpsons';
-import logo from './img/lunatic-logo.png';
-import './custom-lunatic.scss';
 
 const updateQuestionnaire = valueType => questionnaire => update => {
 	const [name, value] = Object.entries(update)[0];
@@ -39,9 +37,9 @@ const isComponentsConcernedByResponse = responseName => component =>
 const Orchestrator = () => {
 	const [questionnaire, setQuestionnaire] = useState(simspons);
 	const onChange = update => {
-		setQuestionnaire(updateQuestionnaire('FORCED')(questionnaire)(update));
+		setQuestionnaire(updateQuestionnaire('EDITED')(questionnaire)(update));
 	};
-	console.log(questionnaire.components);
+	console.log(lunatic.getState(questionnaire));
 	const components = questionnaire.components.map(q => {
 		const { id, componentType } = q;
 		const Component = lunatic[componentType];
@@ -51,20 +49,15 @@ const Orchestrator = () => {
 					{...q}
 					handleChange={onChange}
 					labelPosition="TOP"
-					preferences={['COLLECTED', 'FORCED']}
+					preferences={['COLLECTED', 'FORCED', 'EDITED']}
 				/>
 			</div>
 		);
 	});
 	return (
-		<>
-			<div className="lunatic-img-container">
-				<img className="lunatic-img" alt="lunatic" src={logo} />
-			</div>
-			<div className="container">
-				<div className="components">{components}</div>
-			</div>
-		</>
+		<div className="container">
+			<div className="components">{components}</div>
+		</div>
 	);
 };
 

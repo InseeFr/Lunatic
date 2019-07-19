@@ -75,9 +75,6 @@ $colorSecondaryContrastText: #ffffff;
 }
 // sequence-lunatic
 
-.lunatic:first-child {
-	display: none;
-}
 .lunatic .sequence-lunatic {
 	padding: 0;
 	font-size: 0.875rem;
@@ -511,5 +508,13 @@ $colorSecondaryContrastText: #ffffff;
 		background-color: white;
 		color: $colorPrimaryDark;
 		border-color: $colorPrimaryDark;
+	}
+}
+
+.lunatic .tooltip-lunatic {
+	border: none;
+	color: white;
+	.tooltip-text {
+		background-color: $colorPrimaryDark;
 	}
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Orchestrator from './orchestrator';
+import Home from './home';
 import './index.scss';
 
-ReactDOM.render(<Orchestrator />, document.getElementById('root'));
+ReactDOM.render(<Home />, document.getElementById('root'));
