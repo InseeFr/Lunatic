@@ -30,3 +30,22 @@
 .lunatic-component {
 	margin-bottom: 0.4em;
 }
+
+.container-component {
+	display: flex;
+}
+
+.w-5 {
+	width: 5%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	div {
+		text-align: left;
+	}
+}
+
+.w-95 {
+	width: 95%;
+}
