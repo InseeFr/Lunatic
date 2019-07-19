@@ -6,14 +6,15 @@ import { buildTooltip } from '../../utils/tooltip';
 import './tooltip.scss';
 
 const TooltipResponse = ({ id, response }) => {
-	const [tooltipElements, setTooltipElements] = useState(
+	const [tooltipElements, setTooltipElements] = useState(() =>
 		buildTooltip(response)
 	);
-	const { content, imgName } = tooltipElements;
 
 	useEffect(() => {
 		setTooltipElements(buildTooltip(response));
 	}, [response]);
+
+	const { content, imgName } = tooltipElements;
 
 	if (!content) return null;
 	return (
