@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { InputNumber } from 'components';
 
-const defaultProps = { id: 'id', label: 'label', value: '10' };
+const defaultProps = { id: 'id', label: 'label' };
 
 describe('input-number', () => {
 	const handleChange = jest.fn();
@@ -79,7 +79,8 @@ describe('input-number', () => {
 				value: 10,
 			},
 		});
-		expect(handleChange).toHaveBeenCalledWith(10);
+		expect(handleChange).toHaveBeenCalled();
+		expect(handleChange).toHaveBeenCalledWith({ '': 10 });
 	});
 	it('should active warning class', () => {
 		const wrapper = shallow(

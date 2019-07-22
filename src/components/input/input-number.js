@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
+import { TooltipResponse } from '../tooltip';
 import * as C from '../../utils/constants';
+import * as U from '../../utils';
 import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import { getLabelPositionClass } from '../../utils/label-position';
@@ -34,7 +36,8 @@ class InputNumber extends React.Component {
 		const {
 			id,
 			label,
-			value,
+			preferences,
+			response,
 			min,
 			max,
 			decimals,
@@ -47,6 +50,7 @@ class InputNumber extends React.Component {
 			unit,
 			labelPosition,
 			declarations,
+			tooltip,
 			required,
 		} = this.props;
 		const { messagesError } = this.state;
@@ -68,31 +72,42 @@ class InputNumber extends React.Component {
 						type={C.AFTER_QUESTION_TEXT}
 						declarations={declarations}
 					/>
-					<input
-						type="number"
-						id={`input-${id}`}
-						ref={input => {
-							if (focused) this.nameInput = input;
-						}}
-						aria-labelledby={`input-label-${id}`}
-						value={value}
-						min={min}
-						max={max}
-						step={decimals ? `${Math.pow(10, -decimals)}` : '0'}
-						placeholder={placeholder}
-						className={`input-lunatic ${
-							this.state.messagesError.length > 0 ? 'warning' : ''
-						}`}
-						style={buildStyleObject(style)}
-						readOnly={readOnly}
-						autoComplete={autoComplete ? 'on' : 'off'}
-						required={required}
-						aria-required={required}
-						onChange={e => {
-							this.validate(e.target.value);
-							handleChange(e.target.value);
-						}}
-					/>
+					<div className="field-container">
+						<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+							<input
+								type="number"
+								id={`input-${id}`}
+								ref={input => {
+									if (focused) this.nameInput = input;
+								}}
+								aria-labelledby={`input-label-${id}`}
+								value={U.getResponseByPreference(preferences)(response)}
+								min={min}
+								max={max}
+								step={decimals ? `${Math.pow(10, -decimals)}` : '0'}
+								placeholder={placeholder}
+								className={`input-lunatic ${
+									this.state.messagesError.length > 0 ? 'warning' : ''
+								}`}
+								style={buildStyleObject(style)}
+								readOnly={readOnly}
+								autoComplete={autoComplete ? 'on' : 'off'}
+								required={required}
+								aria-required={required}
+								onChange={e => {
+									this.validate(e.target.value);
+									handleChange({
+										[U.getResponseName(response)]: e.target.value,
+									});
+								}}
+							/>
+						</div>
+						{tooltip && (
+							<div className="tooltip">
+								<TooltipResponse id={id} response={response} />
+							</div>
+						)}
+					</div>
 					<div className="lunatic-input-number-errors">
 						{messagesError.map((m, i) => (
 							<div key={i} className="error">
@@ -121,22 +136,28 @@ const minMaxValidator = ({ min, max }) => value => {
 const isDef = number => number || number === 0;
 
 InputNumber.defaultProps = {
+	label: '',
+	preferences: ['COLLECTED'],
+	response: {},
 	min: Number.MIN_SAFE_INTEGER,
 	max: Number.MAX_SAFE_INTEGER,
-	label: '',
+	decimals: 0,
 	placeholder: '',
 	readOnly: false,
 	autoComplete: false,
-	labelPosition: 'DEFAULT',
-	required: false,
 	focused: false,
 	declarations: [],
+	labelPosition: 'DEFAULT',
+	required: false,
+	tooltip: false,
+	style: {},
 };
 
 InputNumber.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
-	value: PropTypes.string,
+	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
+	response: U.responsePropTypes,
 	min: PropTypes.number,
 	max: PropTypes.number,
 	decimals: PropTypes.number,
@@ -146,9 +167,10 @@ InputNumber.propTypes = {
 	autoComplete: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: declarationsPropTypes,
-	style: PropTypes.object,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,
+	tooltip: PropTypes.bool,
+	style: PropTypes.object,
 };
 
 export default InputNumber;

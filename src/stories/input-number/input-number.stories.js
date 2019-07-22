@@ -21,6 +21,18 @@ const labelPositionOptions = {
 	LEFT: 'Left',
 };
 
+const defaultProps = {
+	handleChange: console.log,
+	response: {
+		name: 'DATEPICKER',
+		valueState: [
+			{ valueType: 'COLLECTED', value: '1' },
+			{ valueType: 'FORCED', value: '2' },
+			{ valueType: 'EDITED', value: '3' },
+		],
+	},
+};
+
 const stories = storiesOf('InputNumber', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
@@ -29,7 +41,7 @@ const stories = storiesOf('InputNumber', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<InputNumber id="default" label="Label" handleChange={console.log} />
+	<InputNumber id="default" label="Label" {...defaultProps} />
 ));
 
 stories.addWithJSX('Props', () => (
@@ -45,8 +57,10 @@ stories.addWithJSX('Props', () => (
 		autoComplete={boolean('Autocomplete', false)}
 		required={boolean('Required', false)}
 		focused={boolean('Focused', false)}
-		handleChange={console.log}
+		tooltip={boolean('Tooltip', false)}
 		labelPosition={select('Label position', labelPositionOptions)}
+		preferences={['COLLECTED', 'FORCED', 'EDITED']}
+		{...defaultProps}
 	/>
 ));
 
@@ -61,7 +75,6 @@ stories.addWithJSX('Styled', () => (
 		readOnly={boolean('Read only', false)}
 		autoComplete={boolean('Autocomplete', false)}
 		focused={boolean('Focused', false)}
-		handleChange={console.log}
 		style={object('Generated style', {
 			'border-color': color('Border color', '#e80a4d'),
 			'border-width': number('Border-width', 2, {
@@ -77,5 +90,6 @@ stories.addWithJSX('Styled', () => (
 				step: 1,
 			}),
 		})}
+		{...defaultProps}
 	/>
 ));
