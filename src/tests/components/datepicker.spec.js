@@ -6,7 +6,6 @@ const handleChange = jest.fn();
 const defaultProps = {
 	id: 'id',
 	label: 'label',
-	value: 'value',
 	handleChange,
 };
 

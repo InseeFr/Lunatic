@@ -95,20 +95,20 @@ Datepicker.defaultProps = {
 	response: {},
 	declarations: [],
 	tooltip: false,
+	style: {},
 };
 
 Datepicker.propTypes = {
 	id: PropTypes.string,
 	label: PropTypes.string,
 	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
-	response: PropTypes.arrayOf(U.responsePropTypes),
+	response: U.responsePropTypes,
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,
 	focused: PropTypes.bool,
-	response: U.responsePropTypes,
 	declarations: U.declarationsPropTypes,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
