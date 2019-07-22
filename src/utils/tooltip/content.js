@@ -7,14 +7,25 @@ export const buildTooltip = response => {
 	if (edited && edited.value !== null)
 		return {
 			content: [
-				{ key: 'Brute', value: collected.value },
-				{ key: 'Correction automatique', value: forced.value || ' - ' },
+				{
+					key: 'Brute',
+					value: collected.value !== null ? collected.value : ' - ',
+				},
+				{
+					key: 'Correction automatique',
+					value: forced.value !== null ? collected.value : ' - ',
+				},
 			],
 			imgName: 'editedImg',
 		};
 	if (forced && forced.value !== null)
 		return {
-			content: [{ key: 'Brute', value: collected.value || ' - ' }],
+			content: [
+				{
+					key: 'Brute',
+					value: collected.value !== null ? collected.value : ' - ',
+				},
+			],
 			imgName: 'forcedImg',
 		};
 	return {};
