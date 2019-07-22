@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
@@ -9,118 +9,110 @@ import { buildStyleObject } from '../../utils/string-utils';
 import { getLabelPositionClass } from '../../utils/label-position';
 import './input.scss';
 
-class InputNumber extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { messagesError: [] };
-		this.validators = [minMaxValidator(props)];
-		if (props.validators && props.validators.length > 0) {
-			this.validators = [minMaxValidator(props), ...props.validators];
-		}
-		this.validate = this.validate.bind(this);
-	}
+const InputNumber = ({
+	id,
+	label,
+	preferences,
+	response,
+	min,
+	max,
+	decimals,
+	placeholder,
+	handleChange,
+	readOnly,
+	autoComplete,
+	focused,
+	style,
+	unit,
+	labelPosition,
+	declarations,
+	tooltip,
+	required,
+	validators,
+}) => {
+	const [messagesError, setMessagesError] = useState(
+		[minMaxValidator({ min, max }), ...validators]
+			.map(v => v(U.getResponseByPreference(preferences)(response)))
+			.filter(m => m !== undefined)
+	);
+	const inputRef = useRef();
 
-	validate(value) {
-		const messagesError = this.validators
-			.map(v => v(value))
-			.filter(m => m !== undefined);
-		this.setState({ messagesError });
-	}
+	const validate = value => {
+		setMessagesError(
+			[minMaxValidator({ min, max }), ...validators]
+				.map(v => v(value))
+				.filter(m => m !== undefined)
+		);
+	};
 
-	componentDidMount() {
-		const { focused } = this.props;
-		if (focused) this.nameInput.focus();
-	}
+	useEffect(() => {
+		if (focused) inputRef.current.focus();
+	}, [focused]);
 
-	render() {
-		const {
-			id,
-			label,
-			preferences,
-			response,
-			min,
-			max,
-			decimals,
-			placeholder,
-			handleChange,
-			readOnly,
-			autoComplete,
-			focused,
-			style,
-			unit,
-			labelPosition,
-			declarations,
-			tooltip,
-			required,
-		} = this.props;
-		const { messagesError } = this.state;
-		return (
-			<React.Fragment>
+	return (
+		<React.Fragment>
+			<Declarations
+				id={id}
+				type={C.BEFORE_QUESTION_TEXT}
+				declarations={declarations}
+			/>
+			<div className={getLabelPositionClass(labelPosition)}>
+				<label
+					htmlFor={`input-${id}`}
+					id={`input-label-${id}`}
+					className={`${required ? 'required' : ''}`}
+				>{`${label} ${unit ? `(${unit})` : ''}`}</label>
 				<Declarations
 					id={id}
-					type={C.BEFORE_QUESTION_TEXT}
+					type={C.AFTER_QUESTION_TEXT}
 					declarations={declarations}
 				/>
-				<div className={getLabelPositionClass(labelPosition)}>
-					<label
-						htmlFor={`input-${id}`}
-						id={`input-label-${id}`}
-						className={`${required ? 'required' : ''}`}
-					>{`${label} ${unit ? `(${unit})` : ''}`}</label>
-					<Declarations
-						id={id}
-						type={C.AFTER_QUESTION_TEXT}
-						declarations={declarations}
-					/>
-					<div className="field-container">
-						<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
-							<input
-								type="number"
-								id={`input-${id}`}
-								ref={input => {
-									if (focused) this.nameInput = input;
-								}}
-								aria-labelledby={`input-label-${id}`}
-								value={U.getResponseByPreference(preferences)(response)}
-								min={min}
-								max={max}
-								step={decimals ? `${Math.pow(10, -decimals)}` : '0'}
-								placeholder={placeholder}
-								className={`input-lunatic ${
-									this.state.messagesError.length > 0 ? 'warning' : ''
-								}`}
-								style={buildStyleObject(style)}
-								readOnly={readOnly}
-								autoComplete={autoComplete ? 'on' : 'off'}
-								required={required}
-								aria-required={required}
-								onChange={e => {
-									this.validate(e.target.value);
-									handleChange({
-										[U.getResponseName(response)]: e.target.value,
-									});
-								}}
-							/>
+				<div className="field-container">
+					<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+						<input
+							type="number"
+							id={`input-${id}`}
+							ref={inputRef}
+							aria-labelledby={`input-label-${id}`}
+							value={U.getResponseByPreference(preferences)(response)}
+							min={min}
+							max={max}
+							step={decimals ? `${Math.pow(10, -decimals)}` : '0'}
+							placeholder={placeholder}
+							className={`input-lunatic ${
+								messagesError.length > 0 ? 'warning' : ''
+							}`}
+							style={buildStyleObject(style)}
+							readOnly={readOnly}
+							autoComplete={autoComplete ? 'on' : 'off'}
+							required={required}
+							aria-required={required}
+							onChange={e => {
+								validate(e.target.value);
+								handleChange({
+									[U.getResponseName(response)]: e.target.value,
+								});
+							}}
+						/>
+					</div>
+					{tooltip && (
+						<div className="tooltip">
+							<TooltipResponse id={id} response={response} />
 						</div>
-						{tooltip && (
-							<div className="tooltip">
-								<TooltipResponse id={id} response={response} />
-							</div>
-						)}
-					</div>
-					<div className="lunatic-input-number-errors">
-						{messagesError.map((m, i) => (
-							<div key={i} className="error">
-								{m}
-							</div>
-						))}
-					</div>
+					)}
 				</div>
-				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
-			</React.Fragment>
-		);
-	}
-}
+				<div className="lunatic-input-number-errors">
+					{messagesError.map((m, i) => (
+						<div key={i} className="error">
+							{m}
+						</div>
+					))}
+				</div>
+			</div>
+			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+		</React.Fragment>
+	);
+};
 
 const minMaxValidator = ({ min, max }) => value => {
 	const valueNumber = Number(value);
@@ -151,6 +143,7 @@ InputNumber.defaultProps = {
 	required: false,
 	tooltip: false,
 	style: {},
+	validators: [],
 };
 
 InputNumber.propTypes = {
@@ -171,6 +164,7 @@ InputNumber.propTypes = {
 	required: PropTypes.bool,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
+	validators: PropTypes.arrayOf(PropTypes.func),
 };
 
 export default InputNumber;
