@@ -13,7 +13,7 @@ export const buildTooltip = response => {
 				},
 				{
 					key: 'Correction automatique',
-					value: forced.value !== null ? collected.value : ' - ',
+					value: forced.value !== null ? forced.value : ' - ',
 				},
 			],
 			imgName: 'editedImg',
