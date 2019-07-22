@@ -4,17 +4,17 @@ export const buildTooltip = response => {
 	const edited = get(valueState)('EDITED');
 	const forced = get(valueState)('FORCED');
 	const collected = get(valueState)('COLLECTED');
-	if (edited && edited.value)
+	if (edited && edited.value !== null)
 		return {
 			content: [
 				{ key: 'Brute', value: collected.value },
-				{ key: 'Correction automatique', value: forced.value },
+				{ key: 'Correction automatique', value: forced.value || ' - ' },
 			],
 			imgName: 'editedImg',
 		};
-	if (forced && forced.value)
+	if (forced && forced.value !== null)
 		return {
-			content: [{ key: 'Brute', value: collected.value }],
+			content: [{ key: 'Brute', value: collected.value || ' - ' }],
 			imgName: 'forcedImg',
 		};
 	return {};
