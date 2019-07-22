@@ -1,95 +1,102 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
+import { TooltipResponse } from '../tooltip';
 import * as C from '../../utils/constants';
+import * as U from '../../utils';
 import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import './checkbox.scss';
 
-class CheckboxBoolean extends Component {
-	constructor(props) {
-		super(props);
-		const { value } = props;
-		this.state = { checked: value };
-		this.onChange = () => {
-			const checked = !this.state.checked;
-			props.handleChange(checked);
-			this.setState({ checked });
-		};
-	}
+const CheckboxBoolean = ({
+	id,
+	label,
+	preferences,
+	response,
+	handleChange,
+	disabled,
+	positioning,
+	focused,
+	declarations,
+	tooltip,
+	style,
+}) => {
+	const inputRef = useRef();
 
-	componentDidMount() {
-		const { focused } = this.props;
-		if (focused) this.nameInput.focus();
-	}
+	useEffect(() => {
+		if (focused) inputRef.current.focus();
+	}, [focused]);
 
-	render() {
-		const { checked } = this.state;
-		const {
-			id,
-			label,
-			disabled,
-			positioning,
-			focused,
-			declarations,
-			style,
-		} = this.props;
-		const isVertical = positioning === 'VERTICAL';
-		const input = (
-			<input
-				type="checkbox"
-				id={`checkbox-boolean-${id}`}
-				ref={input => {
-					if (focused) this.nameInput = input;
-				}}
-				title={label ? label : 'empty-label'}
-				className={`checkbox-lunatic${isVertical ? '-no-margin' : ''}`}
-				style={buildStyleObject(style)}
-				checked={checked}
-				disabled={disabled}
-				onChange={this.onChange}
+	const isVertical = positioning === 'VERTICAL';
+	const input = (
+		<input
+			type="checkbox"
+			id={`checkbox-boolean-${id}`}
+			ref={inputRef}
+			title={label ? label : 'empty-label'}
+			className={`checkbox-lunatic${isVertical ? '-no-margin' : ''}`}
+			style={buildStyleObject(style)}
+			checked={U.getResponseByPreference(preferences)(response)}
+			disabled={disabled}
+			onChange={e => {
+				handleChange({
+					[U.getResponseName(response)]: e.target.checked,
+				});
+			}}
+		/>
+	);
+	return (
+		<div key={`checkbox-boolean-${id}`} className={`checkbox-modality`}>
+			<Declarations
+				id={id}
+				type={C.BEFORE_QUESTION_TEXT}
+				declarations={declarations}
 			/>
-		);
-		return (
-			<div key={`checkbox-boolean-${id}`} className={`checkbox-modality`}>
-				<Declarations
-					id={id}
-					type={C.BEFORE_QUESTION_TEXT}
-					declarations={declarations}
-				/>
-				{label && <label htmlFor={`checkbox-boolean-${id}`}>{label}</label>}
-				<Declarations
-					id={id}
-					type={C.AFTER_QUESTION_TEXT}
-					declarations={declarations}
-				/>
-				{isVertical ? <div>{input}</div> : input}
-				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			{label && <label htmlFor={`checkbox-boolean-${id}`}>{label}</label>}
+			<Declarations
+				id={id}
+				type={C.AFTER_QUESTION_TEXT}
+				declarations={declarations}
+			/>
+			<div className="field-container">
+				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+					{isVertical ? <div>{input}</div> : input}
+				</div>
+				{tooltip && (
+					<div className="tooltip">
+						<TooltipResponse id={id} response={response} />
+					</div>
+				)}
 			</div>
-		);
-	}
-}
-
-CheckboxBoolean.propTypes = {
-	id: PropTypes.string.isRequired,
-	label: PropTypes.string,
-	value: PropTypes.bool,
-	handleChange: PropTypes.func.isRequired,
-	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
-	disabled: PropTypes.bool,
-	focused: PropTypes.bool,
-	declarations: declarationsPropTypes,
-	style: PropTypes.object,
+			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+		</div>
+	);
 };
 
 CheckboxBoolean.defaultProps = {
 	label: '',
-	value: false,
-	positioning: 'DEFAULT',
+	preferences: ['COLLECTED'],
+	response: {},
 	disabled: false,
+	positioning: 'DEFAULT',
 	focused: false,
 	declarations: [],
+	tooltip: false,
 	style: {},
+};
+
+CheckboxBoolean.propTypes = {
+	id: PropTypes.string.isRequired,
+	label: PropTypes.string,
+	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
+	response: U.responsePropTypes,
+	handleChange: PropTypes.func.isRequired,
+	disabled: PropTypes.bool,
+	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
+	focused: PropTypes.bool,
+	declarations: declarationsPropTypes,
+	tooltip: PropTypes.bool,
+	style: PropTypes.object,
 };
 
 export default CheckboxBoolean;

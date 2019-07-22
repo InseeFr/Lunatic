@@ -12,6 +12,18 @@ const positioningOptions = {
 	VERTICAL: 'Vertical',
 };
 
+const defaultProps = {
+	handleChange: console.log,
+	response: {
+		name: 'CHECKBOX_ONE',
+		valueState: [
+			{ valueType: 'COLLECTED', value: false },
+			{ valueType: 'FORCED', value: true },
+			{ valueType: 'EDITED', value: null },
+		],
+	},
+};
+
 const stories = storiesOf('CheckboxBoolean', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
@@ -20,7 +32,7 @@ const stories = storiesOf('CheckboxBoolean', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<CheckboxBoolean id="default" handleChange={console.log} />
+	<CheckboxBoolean id="default" {...defaultProps} />
 ));
 
 stories.addWithJSX('Props', () => (
@@ -30,6 +42,8 @@ stories.addWithJSX('Props', () => (
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
-		handleChange={console.log}
+		preferences={['COLLECTED', 'FORCED', 'EDITED']}
+		tooltip={boolean('Tooltip', false)}
+		{...defaultProps}
 	/>
 ));
