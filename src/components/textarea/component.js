@@ -1,78 +1,93 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
+import { TooltipResponse } from '../tooltip';
 import * as C from '../../utils/constants';
+import * as U from '../../utils';
 import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import { getLabelPositionClass } from '../../utils/label-position';
 import './textarea.scss';
 
-class Textarea extends Component {
-	componentDidMount() {
-		const { focused } = this.props;
-		if (focused) this.nameInput.focus();
-	}
+const Textarea = ({
+	id,
+	label,
+	preferences,
+	response,
+	placeholder,
+	handleChange,
+	rows,
+	maxLength,
+	readOnly,
+	labelPosition,
+	required,
+	focused,
+	declarations,
+	tooltip,
+	style,
+}) => {
+	const inputRef = useRef();
 
-	render() {
-		const {
-			id,
-			label,
-			value,
-			placeholder,
-			handleChange,
-			rows,
-			maxLength,
-			readOnly,
-			labelPosition,
-			required,
-			focused,
-			declarations,
-			style,
-		} = this.props;
-		return (
-			<div className={getLabelPositionClass(labelPosition)}>
-				<Declarations
-					id={id}
-					type={C.BEFORE_QUESTION_TEXT}
-					declarations={declarations}
-				/>
-				{label && (
-					<label
-						htmlFor={`textarea-${id}`}
-						id={`textarea-label-${id}`}
-						className={`${required ? 'required' : ''}`}
-					>
-						{label}
-					</label>
+	useEffect(() => {
+		if (focused) inputRef.current.focus();
+	}, [focused]);
+
+	return (
+		<div className={getLabelPositionClass(labelPosition)}>
+			<Declarations
+				id={id}
+				type={C.BEFORE_QUESTION_TEXT}
+				declarations={declarations}
+			/>
+			{label && (
+				<label
+					htmlFor={`textarea-${id}`}
+					id={`textarea-label-${id}`}
+					className={`${required ? 'required' : ''}`}
+				>
+					{label}
+				</label>
+			)}
+			<Declarations
+				id={id}
+				type={C.AFTER_QUESTION_TEXT}
+				declarations={declarations}
+			/>
+			<div className="field-container">
+				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+					<textarea
+						id={`textarea-${id}`}
+						ref={inputRef}
+						placeholder={placeholder}
+						value={U.getResponseByPreference(preferences)(response)}
+						className="textarea-lunatic"
+						style={buildStyleObject(style)}
+						rows={rows}
+						maxLength={maxLength}
+						readOnly={readOnly}
+						required={required}
+						aria-required={required}
+						onChange={e =>
+							handleChange({
+								[U.getResponseName(response)]: e.target.value,
+							})
+						}
+					/>
+				</div>
+				{tooltip && (
+					<div className="tooltip">
+						<TooltipResponse id={id} response={response} />
+					</div>
 				)}
-				<Declarations
-					id={id}
-					type={C.AFTER_QUESTION_TEXT}
-					declarations={declarations}
-				/>
-				<textarea
-					id={`textarea-${id}`}
-					ref={input => {
-						if (focused) this.nameInput = input;
-					}}
-					placeholder={placeholder}
-					value={value}
-					className="textarea-lunatic"
-					style={buildStyleObject(style)}
-					rows={rows}
-					maxLength={maxLength}
-					readOnly={readOnly}
-					required={required}
-					aria-required={required}
-					onChange={e => handleChange(e.target.value)}
-				/>
-				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
 			</div>
-		);
-	}
-}
+			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+		</div>
+	);
+};
 
 Textarea.defaultProps = {
+	preferences: ['COLLECTED'],
+	response: {},
 	placeholder: '',
 	rows: 5,
 	readOnly: false,
@@ -80,12 +95,15 @@ Textarea.defaultProps = {
 	required: false,
 	focused: false,
 	declarations: [],
+	tooltip: false,
+	style: {},
 };
 
 Textarea.propTypes = {
 	id: PropTypes.string,
 	label: PropTypes.string,
-	value: PropTypes.string,
+	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
+	response: U.responsePropTypes,
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	rows: PropTypes.number.isRequired,
@@ -95,6 +113,7 @@ Textarea.propTypes = {
 	required: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: declarationsPropTypes,
+	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };
 

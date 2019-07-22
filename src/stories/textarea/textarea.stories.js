@@ -21,6 +21,18 @@ const labelPositionOptions = {
 	LEFT: 'Left',
 };
 
+const defaultProps = {
+	handleChange: console.log,
+	response: {
+		name: 'INPUT',
+		valueState: [
+			{ valueType: 'COLLECTED', value: 'My collected textarea' },
+			{ valueType: 'FORCED', value: 'My forced textarea' },
+			{ valueType: 'EDITED', value: 'My edited textarea' },
+		],
+	},
+};
+
 const stories = storiesOf('Textarea', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
@@ -29,7 +41,7 @@ const stories = storiesOf('Textarea', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<Textarea id="default" label="Label" handleChange={console.log} />
+	<Textarea id="default" label="Label" {...defaultProps} />
 ));
 
 stories.addWithJSX('Props', () => (
@@ -41,9 +53,11 @@ stories.addWithJSX('Props', () => (
 		maxLength={number('Max length', 50)}
 		readOnly={boolean('Read only', false)}
 		required={boolean('Required', false)}
+		preferences={['COLLECTED', 'FORCED', 'EDITED']}
+		tooltip={boolean('Tooltip', false)}
 		focused={boolean('Focused', false)}
-		handleChange={console.log}
 		labelPosition={select('Label position', labelPositionOptions)}
+		{...defaultProps}
 	/>
 ));
 

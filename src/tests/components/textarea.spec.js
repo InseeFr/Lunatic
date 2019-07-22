@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { Textarea } from 'components';
 
 const handleChange = jest.fn();
-const defaultProps = { id: 'id', label: 'label', value: 'value', handleChange };
+const defaultProps = { id: 'id', label: 'label', handleChange };
 
 describe('textarea', () => {
 	it('renders without crashing', () => {
@@ -32,6 +32,7 @@ describe('textarea', () => {
 				value: 'value',
 			},
 		});
-		expect(handleChange).toHaveBeenCalledWith('value');
+		expect(handleChange).toHaveBeenCalled();
+		expect(handleChange).toHaveBeenCalledWith({ '': 'new value' });
 	});
 });
