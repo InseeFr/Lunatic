@@ -101,6 +101,7 @@ Datepicker.propTypes = {
 	id: PropTypes.string,
 	label: PropTypes.string,
 	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
+	response: PropTypes.arrayOf(U.responsePropTypes),
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
