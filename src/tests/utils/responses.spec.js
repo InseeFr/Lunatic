@@ -35,7 +35,7 @@ describe('responses utils', () => {
 					name: 'name',
 					valueState: [
 						{ valueType: 'COLLECTED', value: 'Collected' },
-						{ valueType: 'FORCED', value: '' },
+						{ valueType: 'FORCED', value: null },
 					],
 				})
 			).toEqual('Collected');
@@ -50,6 +50,19 @@ describe('responses utils', () => {
 					],
 				})
 			).toEqual('Forced');
+		});
+
+		it('should return ""', () => {
+			expect(
+				R.getResponseByPreference(['COLLECTED', 'FORCED', 'EDITED'])({
+					name: 'name',
+					valueState: [
+						{ valueType: 'COLLECTED', value: 'Collected' },
+						{ valueType: 'FORCED', value: '' },
+						{ valueType: 'EDITED', value: null },
+					],
+				})
+			).toEqual('');
 		});
 	});
 });
