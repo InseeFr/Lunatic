@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { Input } from 'components';
 
 const handleChange = jest.fn();
-const defaultProps = { id: 'id', label: 'label', value: 'value', handleChange };
+const defaultProps = { id: 'id', label: 'label', handleChange };
 
 describe('input', () => {
 	it('renders without crashing', () => {
@@ -29,9 +29,10 @@ describe('input', () => {
 		const wrapper = shallow(<Input {...defaultProps} />);
 		wrapper.find('input').simulate('change', {
 			target: {
-				value: 'value',
+				value: 'new value',
 			},
 		});
-		expect(handleChange).toHaveBeenCalledWith('value');
+		expect(handleChange).toHaveBeenCalled();
+		expect(handleChange).toHaveBeenCalledWith({ '': 'new value' });
 	});
 });

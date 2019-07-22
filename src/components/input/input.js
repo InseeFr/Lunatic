@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
+import { TooltipResponse } from '../tooltip';
 import * as C from '../../utils/constants';
+import * as U from '../../utils';
 import { declarationsPropTypes } from '../../utils/prop-types';
 import { buildStyleObject } from '../../utils/string-utils';
 import { getLabelPositionClass } from '../../utils/label-position';
@@ -16,7 +18,8 @@ class Input extends Component {
 		const {
 			id,
 			label,
-			value,
+			preferences,
+			response,
 			placeholder,
 			handleChange,
 			readOnly,
@@ -25,6 +28,7 @@ class Input extends Component {
 			required,
 			declarations,
 			focused,
+			tooltip,
 			style,
 		} = this.props;
 		return (
@@ -49,22 +53,35 @@ class Input extends Component {
 						type={C.AFTER_QUESTION_TEXT}
 						declarations={declarations}
 					/>
-					<input
-						type="text"
-						id={`input-${id}`}
-						ref={input => {
-							if (focused) this.nameInput = input;
-						}}
-						value={value}
-						placeholder={placeholder}
-						autoComplete={autoComplete ? 'on' : 'off'}
-						className="input-lunatic"
-						style={buildStyleObject(style)}
-						readOnly={readOnly}
-						required={required}
-						aria-required={required}
-						onChange={e => handleChange(e.target.value)}
-					/>
+					<div className="field-container">
+						<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+							<input
+								type="text"
+								id={`input-${id}`}
+								ref={input => {
+									if (focused) this.nameInput = input;
+								}}
+								value={U.getResponseByPreference(preferences)(response)}
+								placeholder={placeholder}
+								autoComplete={autoComplete ? 'on' : 'off'}
+								className="input-lunatic"
+								style={buildStyleObject(style)}
+								readOnly={readOnly}
+								required={required}
+								aria-required={required}
+								onChange={e =>
+									handleChange({
+										[U.getResponseName(response)]: e.target.value,
+									})
+								}
+							/>
+						</div>
+						{tooltip && (
+							<div className="tooltip">
+								<TooltipResponse id={id} response={response} />
+							</div>
+						)}
+					</div>
 				</div>
 				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
 			</React.Fragment>
@@ -73,6 +90,8 @@ class Input extends Component {
 }
 
 Input.defaultProps = {
+	preferences: ['COLLECTED'],
+	response: {},
 	placeholder: '',
 	readOnly: false,
 	autoComplete: false,
@@ -80,12 +99,15 @@ Input.defaultProps = {
 	required: false,
 	focused: false,
 	declarations: [],
+	tooltip: false,
+	style: {},
 };
 
 Input.propTypes = {
 	id: PropTypes.string,
 	label: PropTypes.string,
-	value: PropTypes.string,
+	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
+	response: U.responsePropTypes,
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
@@ -94,6 +116,7 @@ Input.propTypes = {
 	required: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: declarationsPropTypes,
+	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };
 

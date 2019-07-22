@@ -21,6 +21,17 @@ const labelPositionOptions = {
 	LEFT: 'Left',
 };
 
+const defaultProps = {
+	handleChange: console.log,
+	response: {
+		name: 'DATEPICKER',
+		valueState: [
+			{ valueType: 'COLLECTED', value: 'My collected input' },
+			{ valueType: 'FORCED', value: 'My forced input' },
+		],
+	},
+};
+
 const stories = storiesOf('Input', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
@@ -29,7 +40,7 @@ const stories = storiesOf('Input', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<Input id="default" label="Label" handleChange={console.log} />
+	<Input id="default" label="Label" {...defaultProps} />
 ));
 
 stories.addWithJSX('Props', () => (
@@ -41,8 +52,10 @@ stories.addWithJSX('Props', () => (
 		autoComplete={boolean('Autocomplete', false)}
 		required={boolean('Required', false)}
 		focused={boolean('Focused', false)}
-		handleChange={console.log}
+		preferences={['COLLECTED', 'FORCED']}
+		tooltip={boolean('Tooltip', false)}
 		labelPosition={select('Label position', labelPositionOptions)}
+		{...defaultProps}
 	/>
 ));
 
