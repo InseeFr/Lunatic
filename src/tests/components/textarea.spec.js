@@ -29,10 +29,10 @@ describe('textarea', () => {
 		const wrapper = shallow(<Textarea {...defaultProps} />);
 		wrapper.find('textarea').simulate('change', {
 			target: {
-				value: 'value',
+				value: 'new textarea value',
 			},
 		});
 		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': 'new value' });
+		expect(handleChange).toHaveBeenCalledWith({ '': 'new textarea value' });
 	});
 });

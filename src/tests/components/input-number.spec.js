@@ -82,15 +82,4 @@ describe('input-number', () => {
 		expect(handleChange).toHaveBeenCalled();
 		expect(handleChange).toHaveBeenCalledWith({ '': 10 });
 	});
-	it('should active warning class', () => {
-		const wrapper = shallow(
-			<InputNumber
-				{...defaultProps}
-				handleChange={handleChange}
-				min={0}
-				max={100}
-			/>
-		);
-		wrapper.setState({ messagesError: ['error'] });
-	});
 });
