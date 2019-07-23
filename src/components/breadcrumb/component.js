@@ -7,7 +7,7 @@ const Breadcrumb = ({ elements, style }) => (
 	<div
 		aria-label={`breadcrumb`}
 		className="breadcrumb-lunatic"
-		style={U.buildStyleObject(style)}
+		style={buildStyleObject(style)}
 	>
 		{elements.map((e, i) => (
 			<React.Fragment key={`breadcrumb-${e.toLowerCase()}`}>

@@ -11,7 +11,7 @@ const ProgressBar = ({ id, value, style }) => {
 		<div
 			id={`progress-${id}`}
 			className="progress-lunatic"
-			style={U.buildStyleObject(style)}
+			style={buildStyleObject(style)}
 		>
 			{`${controledValue.toFixed(0)} %`}
 			<span style={{ width: `${controledValue}%` }} />
