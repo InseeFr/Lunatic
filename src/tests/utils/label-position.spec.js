@@ -1,4 +1,4 @@
-import { getLabelPositionClass } from 'utils/label-position';
+import { getLabelPositionClass } from 'utils/lib';
 
 describe('string utils', () => {
 	describe('getLabelPositionClass', () => {

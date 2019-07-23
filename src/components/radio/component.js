@@ -2,12 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
-import * as C from '../../utils/constants';
-import * as U from '../../utils';
-import { declarationsPropTypes } from '../../utils/prop-types';
-import { buildStyleObject } from '../../utils/string-utils';
-import { getItemsPositioningClass } from '../../utils/options-positioning';
-import alphabet from '../../utils/alphabet';
+import * as U from '../../utils/lib';
 import './radio.scss';
 
 const Radio = ({
@@ -36,7 +31,7 @@ const Radio = ({
 		<React.Fragment>
 			<Declarations
 				id={id}
-				type={C.BEFORE_QUESTION_TEXT}
+				type={U.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			<div className="field-container">
@@ -44,12 +39,12 @@ const Radio = ({
 					<fieldset
 						key={`radio-${id}`}
 						className="radio-group"
-						style={buildStyleObject(fieldsetStyle)}
+						style={U.buildStyleObject(fieldsetStyle)}
 					>
 						<legend>{label}</legend>
 						<Declarations
 							id={id}
-							type={C.AFTER_QUESTION_TEXT}
+							type={U.AFTER_QUESTION_TEXT}
 							declarations={declarations}
 						/>
 						{options.map(({ label: optionLabel, value: optionValue }, i) => {
@@ -59,7 +54,7 @@ const Radio = ({
 							return (
 								<div
 									key={`radio-${id}-${optionValue}`}
-									className={`radio-modality ${getItemsPositioningClass(
+									className={`radio-modality ${U.getItemsPositioningClass(
 										positioning
 									)}`}
 								>
@@ -70,7 +65,7 @@ const Radio = ({
 										id={`radio-${id}-${optionValue}`}
 										aria-labelledby={`input-label-${id}-${optionValue}`}
 										className="radio-lunatic"
-										style={buildStyleObject(style)}
+										style={U.buildStyleObject(style)}
 										checked={checked}
 										disabled={disabled}
 										onChange={() =>
@@ -82,10 +77,10 @@ const Radio = ({
 									<label
 										htmlFor={`radio-${id}-${optionValue}`}
 										id={`input-label-${id}-${optionValue}`}
-										style={checked ? buildStyleObject(radioStyle) : {}}
+										style={checked ? U.buildStyleObject(radioStyle) : {}}
 									>
 										{keyboardSelection
-											? `${alphabet[i].toUpperCase()} - ${optionLabel}`
+											? `${U.getAlphabet()[i].toUpperCase()} - ${optionLabel}`
 											: optionLabel}
 									</label>
 								</div>
@@ -99,7 +94,7 @@ const Radio = ({
 					</div>
 				)}
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
 		</React.Fragment>
 	);
 };
@@ -108,13 +103,13 @@ Radio.defaultProps = {
 	label: '',
 	preferences: ['COLLECTED'],
 	response: {},
-	options:[],
+	options: [],
 	disabled: false,
 	focused: false,
 	keyboardSelection: false,
 	positioning: 'DEFAULT',
 	declarations: [],
-	tooltip:false,
+	tooltip: false,
 	style: { fieldsetStyle: {}, radioStyle: {} },
 };
 
@@ -129,7 +124,7 @@ Radio.propTypes = {
 	focused: PropTypes.bool,
 	keyboardSelection: PropTypes.bool,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
-	declarations: declarationsPropTypes,
+	declarations: U.declarationsPropTypes,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

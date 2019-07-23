@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { buildStyleObject } from '../../utils/string-utils';
+import { buildStyleObject } from '../../utils/lib';
 import './progress-bar.scss';
 
 const ProgressBar = ({ id, value, style }) => {

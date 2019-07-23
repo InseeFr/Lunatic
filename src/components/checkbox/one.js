@@ -2,12 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
-import * as C from '../../utils/constants';
-import * as U from '../../utils';
-import { declarationsPropTypes } from '../../utils/prop-types';
-import { buildStyleObject } from '../../utils/string-utils';
-import { getItemsPositioningClass } from '../../utils/options-positioning';
-import alphabet from '../../utils/alphabet';
+import * as U from '../../utils/lib';
 import './checkbox.scss';
 
 const CheckboxOne = ({
@@ -37,7 +32,7 @@ const CheckboxOne = ({
 		<React.Fragment>
 			<Declarations
 				id={id}
-				type={C.BEFORE_QUESTION_TEXT}
+				type={U.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			<div className="field-container">
@@ -45,12 +40,12 @@ const CheckboxOne = ({
 					<fieldset
 						key={`checkbox-one-${id}`}
 						className="checkbox-group"
-						style={buildStyleObject(fieldsetStyle)}
+						style={U.buildStyleObject(fieldsetStyle)}
 					>
 						<legend>{label}</legend>
 						<Declarations
 							id={id}
-							type={C.AFTER_QUESTION_TEXT}
+							type={U.AFTER_QUESTION_TEXT}
 							declarations={declarations}
 						/>
 						{options.map(({ label: optionLabel, value: optionValue }, i) => {
@@ -60,7 +55,7 @@ const CheckboxOne = ({
 							return (
 								<div
 									key={`checkbox-one-${id}-${optionValue}`}
-									className={`checkbox-modality ${getItemsPositioningClass(
+									className={`checkbox-modality ${U.getItemsPositioningClass(
 										positioning
 									)}`}
 								>
@@ -85,7 +80,7 @@ const CheckboxOne = ({
 										style={checked ? buildStyleObject(checkboxStyle) : {}}
 									>
 										{keyboardSelection
-											? `${alphabet[i].toUpperCase()} - ${optionLabel}`
+											? `${U.getAlphabet()[i].toUpperCase()} - ${optionLabel}`
 											: optionLabel}
 									</label>
 								</div>
@@ -99,7 +94,7 @@ const CheckboxOne = ({
 					</div>
 				)}
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
 		</React.Fragment>
 	);
 };
@@ -128,7 +123,7 @@ CheckboxOne.propTypes = {
 	focused: PropTypes.bool,
 	keyboardSelection: PropTypes.bool,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
-	declarations: declarationsPropTypes,
+	declarations: U.declarationsPropTypes,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

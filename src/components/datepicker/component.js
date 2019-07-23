@@ -2,8 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { TooltipResponse } from '../tooltip';
 import Declarations from '../declarations';
-import * as C from '../../utils/constants';
-import * as U from '../../utils';
+import * as U from '../../utils/lib';
 import './datepicker.scss';
 
 const Datepicker = ({
@@ -31,7 +30,7 @@ const Datepicker = ({
 		<React.Fragment>
 			<Declarations
 				id={id}
-				type={C.BEFORE_QUESTION_TEXT}
+				type={U.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			<div className={U.getLabelPositionClass(labelPosition)}>
@@ -46,7 +45,7 @@ const Datepicker = ({
 				)}
 				<Declarations
 					id={id}
-					type={C.AFTER_QUESTION_TEXT}
+					type={U.AFTER_QUESTION_TEXT}
 					declarations={declarations}
 				/>
 				<div className="field-container">
@@ -76,7 +75,7 @@ const Datepicker = ({
 					)}
 				</div>
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
 		</React.Fragment>
 	);
 };

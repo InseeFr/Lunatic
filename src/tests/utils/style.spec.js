@@ -1,19 +1,19 @@
-import * as A from 'utils/string-utils';
+import { buildStyleObject } from 'utils/lib';
 
-describe('string utils', () => {
+describe('style', () => {
 	describe('buildStyleObject', () => {
 		it('should return an empty object', () => {
-			expect(A.buildStyleObject()).toEqual({});
-			expect(A.buildStyleObject({})).toEqual({});
+			expect(buildStyleObject()).toEqual({});
+			expect(buildStyleObject({})).toEqual({});
 		});
 		it('should return same object', () => {
-			expect(A.buildStyleObject({ border: 'border' })).toEqual({
+			expect(buildStyleObject({ border: 'border' })).toEqual({
 				border: 'border',
 			});
 		});
 		it('should return object with camelCase keys', () => {
 			expect(
-				A.buildStyleObject({
+				buildStyleObject({
 					'border-top': '10',
 					':hover': { 'background-color': 'pink' },
 				})

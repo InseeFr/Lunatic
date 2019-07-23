@@ -2,10 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
-import * as C from '../../utils/constants';
-import * as U from '../../utils';
-import { declarationsPropTypes } from '../../utils/prop-types';
-import { buildStyleObject } from '../../utils/string-utils';
+import * as U from '../../utils/lib';
 import './checkbox.scss';
 
 const CheckboxBoolean = ({
@@ -35,7 +32,7 @@ const CheckboxBoolean = ({
 			ref={inputRef}
 			title={label ? label : 'empty-label'}
 			className={`checkbox-lunatic${isVertical ? '-no-margin' : ''}`}
-			style={buildStyleObject(style)}
+			style={U.buildStyleObject(style)}
 			checked={U.getResponseByPreference(preferences)(response)}
 			disabled={disabled}
 			onChange={e => {
@@ -49,13 +46,13 @@ const CheckboxBoolean = ({
 		<div key={`checkbox-boolean-${id}`} className={`checkbox-modality`}>
 			<Declarations
 				id={id}
-				type={C.BEFORE_QUESTION_TEXT}
+				type={U.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			{label && <label htmlFor={`checkbox-boolean-${id}`}>{label}</label>}
 			<Declarations
 				id={id}
-				type={C.AFTER_QUESTION_TEXT}
+				type={U.AFTER_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			<div className="field-container">
@@ -68,7 +65,7 @@ const CheckboxBoolean = ({
 					</div>
 				)}
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
 		</div>
 	);
 };
@@ -94,7 +91,7 @@ CheckboxBoolean.propTypes = {
 	disabled: PropTypes.bool,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	focused: PropTypes.bool,
-	declarations: declarationsPropTypes,
+	declarations: U.declarationsPropTypes,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

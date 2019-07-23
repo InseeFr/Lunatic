@@ -1,4 +1,4 @@
-import { getItemsPositioningClass } from 'utils/options-positioning';
+import { getItemsPositioningClass } from 'utils/lib';
 
 describe('string utils', () => {
 	describe('getItemsPositioningClass', () => {

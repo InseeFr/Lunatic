@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { declarationsPropTypes } from '../../utils/prop-types';
+import * as U from '../../utils/lib';
 import './declarations.scss';
 
 const Declarations = ({ id, type, declarations }) => {
@@ -27,7 +27,7 @@ Declarations.defaultProps = {
 Declarations.propTypes = {
 	id: PropTypes.string.isRequired,
 	type: PropTypes.string,
-	declarations: declarationsPropTypes,
+	declarations: U.declarationsPropTypes,
 };
 
 export default Declarations;

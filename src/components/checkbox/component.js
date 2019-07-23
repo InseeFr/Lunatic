@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
-import * as C from '../../utils/constants';
-import { declarationsPropTypes } from '../../utils/prop-types';
-import { buildStyleObject } from '../../utils/string-utils';
-import { getItemsPositioningClass } from '../../utils/options-positioning';
-import alphabet from '../../utils/alphabet';
+import * as U from '../../utils/lib';
 import './checkbox.scss';
 
 class Checkbox extends Component {
@@ -44,25 +40,25 @@ class Checkbox extends Component {
 			<React.Fragment>
 				<Declarations
 					id={id}
-					type={C.BEFORE_QUESTION_TEXT}
+					type={U.BEFORE_QUESTION_TEXT}
 					declarations={declarations}
 				/>
 				<fieldset
 					key={`checkbox-${id}`}
 					className="checkbox-group"
-					style={buildStyleObject(fieldsetStyle)}
+					style={U.buildStyleObject(fieldsetStyle)}
 				>
 					<legend>{label}</legend>
 					<Declarations
 						id={id}
-						type={C.AFTER_QUESTION_TEXT}
+						type={U.AFTER_QUESTION_TEXT}
 						declarations={declarations}
 					/>
 					{options.map(({ id: modId, label: modLabel, value }, i) => {
 						return (
 							<div
 								key={`checkbox-${id}-${modId}`}
-								className={`checkbox-modality ${getItemsPositioningClass(
+								className={`checkbox-modality ${U.getItemsPositioningClass(
 									positioning
 								)}`}
 							>
@@ -85,14 +81,14 @@ class Checkbox extends Component {
 									style={value ? buildStyleObject(checkboxStyle) : {}}
 								>
 									{keyboardSelection
-										? `${alphabet[i].toUpperCase()} - ${modLabel}`
+										? `${U.getAlphabet()[i].toUpperCase()} - ${modLabel}`
 										: modLabel}
 								</label>
 							</div>
 						);
 					})}
 				</fieldset>
-				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+				<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
 			</React.Fragment>
 		);
 	}
@@ -113,7 +109,7 @@ Checkbox.propTypes = {
 	disabled: PropTypes.bool,
 	keyboardSelection: PropTypes.bool,
 	focused: PropTypes.bool,
-	declarations: declarationsPropTypes,
+	declarations: U.declarationsPropTypes,
 	style: PropTypes.object,
 };
 

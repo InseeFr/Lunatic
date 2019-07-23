@@ -4,10 +4,7 @@ import Writable from './writable';
 import Simple from './simple';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
-import * as C from '../../utils/constants';
-import * as U from '../../utils';
-import { declarationsPropTypes } from '../../utils/prop-types';
-import { getLabelPositionClass } from '../../utils/label-position';
+import * as U from '../../utils/lib';
 import './dropdown.scss';
 
 const Dropdown = ({
@@ -26,10 +23,10 @@ const Dropdown = ({
 			[U.getResponseName(response)]: value,
 		});
 	return (
-		<div className={getLabelPositionClass(labelPosition)}>
+		<div className={U.getLabelPositionClass(labelPosition)}>
 			<Declarations
 				id={id}
-				type={C.BEFORE_QUESTION_TEXT}
+				type={U.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			{label && (
@@ -43,7 +40,7 @@ const Dropdown = ({
 			)}
 			<Declarations
 				id={id}
-				type={C.AFTER_QUESTION_TEXT}
+				type={U.AFTER_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			<div className="field-container">
@@ -60,7 +57,7 @@ const Dropdown = ({
 					</div>
 				)}
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
 		</div>
 	);
 };
@@ -91,7 +88,7 @@ Dropdown.propTypes = {
 	writable: PropTypes.bool,
 	required: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
-	declarations: declarationsPropTypes,
+	declarations: U.declarationsPropTypes,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

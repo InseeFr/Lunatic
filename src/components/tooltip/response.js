@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { responsePropTypes } from '../../utils';
+import * as U from '../../utils/lib';
 import * as img from './img';
-import { buildTooltip } from '../../utils/tooltip';
 import './tooltip.scss';
 
 const TooltipResponse = ({ id, response }) => {
 	const [tooltipElements, setTooltipElements] = useState(() =>
-		buildTooltip(response)
+		U.buildTooltip(response)
 	);
 
 	useEffect(() => {
-		setTooltipElements(buildTooltip(response));
+		setTooltipElements(U.buildTooltip(response));
 	}, [response]);
 
 	const { content, imgName } = tooltipElements;
@@ -37,7 +36,7 @@ TooltipResponse.defaultProps = {
 
 TooltipResponse.propTypes = {
 	id: PropTypes.string,
-	response: responsePropTypes,
+	response: U.responsePropTypes,
 };
 
 export default TooltipResponse;

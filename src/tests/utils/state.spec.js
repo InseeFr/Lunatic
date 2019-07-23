@@ -1,4 +1,4 @@
-import { getState } from 'utils/state';
+import { getState } from 'utils/to-expose';
 
 describe('init-state', () => {
 	describe('getState', () => {

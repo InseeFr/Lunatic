@@ -1,1 +1,0 @@
-export { buildTooltip } from './content';

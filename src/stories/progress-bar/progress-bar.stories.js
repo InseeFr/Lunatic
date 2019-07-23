@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { ProgressBar } from 'components';
 import readme from './README.md';
-import titleDecorator from 'utils/decorator/title-decorator';
+import { titleDecorator } from 'utils/lib';
 
 const stories = storiesOf('ProgressBar', module)
 	.addDecorator(withReadme(readme))

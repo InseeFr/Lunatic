@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Declarations } from 'components';
 import readme from './README.md';
-import titleDecorator from 'utils/decorator/title-decorator';
-import * as C from 'utils/constants';
+import { titleDecorator } from 'utils/lib';
+import * as C from 'utils/lib/constants';
 
 const declarations = [
 	{
@@ -49,7 +49,7 @@ const stories = storiesOf('Declarations', module)
 stories.addWithJSX('Default', () => (
 	<Declarations
 		id="default"
-		type={C.BEFORE_QUESTION_TEXT}
+		type={U.BEFORE_QUESTION_TEXT}
 		declarations={declarations}
 	/>
 ));

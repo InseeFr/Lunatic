@@ -2,11 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
-import * as C from '../../utils/constants';
-import * as U from '../../utils';
-import { declarationsPropTypes } from '../../utils/prop-types';
-import { buildStyleObject } from '../../utils/string-utils';
-import { getLabelPositionClass } from '../../utils/label-position';
+import * as U from '../../utils/lib';
 import './input.scss';
 
 const Input = ({
@@ -30,15 +26,15 @@ const Input = ({
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
-	
+
 	return (
 		<React.Fragment>
 			<Declarations
 				id={id}
-				type={C.BEFORE_QUESTION_TEXT}
+				type={U.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
-			<div className={getLabelPositionClass(labelPosition)}>
+			<div className={U.getLabelPositionClass(labelPosition)}>
 				{label && (
 					<label
 						htmlFor={`input-${id}`}
@@ -50,7 +46,7 @@ const Input = ({
 				)}
 				<Declarations
 					id={id}
-					type={C.AFTER_QUESTION_TEXT}
+					type={U.AFTER_QUESTION_TEXT}
 					declarations={declarations}
 				/>
 				<div className="field-container">
@@ -63,7 +59,7 @@ const Input = ({
 							placeholder={placeholder}
 							autoComplete={autoComplete ? 'on' : 'off'}
 							className="input-lunatic"
-							style={buildStyleObject(style)}
+							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
 							required={required}
 							aria-required={required}
@@ -81,7 +77,7 @@ const Input = ({
 					)}
 				</div>
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
 		</React.Fragment>
 	);
 };
@@ -112,7 +108,7 @@ Input.propTypes = {
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,
 	focused: PropTypes.bool,
-	declarations: declarationsPropTypes,
+	declarations: U.declarationsPropTypes,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import titleDecorator from 'utils/decorator/title-decorator';
+import { titleDecorator } from 'utils/lib';
 import { shallow } from 'enzyme';
 
 describe('string utils', () => {

@@ -2,11 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
-import * as C from '../../utils/constants';
-import * as U from '../../utils';
-import { declarationsPropTypes } from '../../utils/prop-types';
-import { buildStyleObject } from '../../utils/string-utils';
-import { getLabelPositionClass } from '../../utils/label-position';
+import * as U from '../../utils/lib';
 import './input.scss';
 
 const InputNumber = ({
@@ -53,10 +49,10 @@ const InputNumber = ({
 		<React.Fragment>
 			<Declarations
 				id={id}
-				type={C.BEFORE_QUESTION_TEXT}
+				type={U.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
-			<div className={getLabelPositionClass(labelPosition)}>
+			<div className={U.getLabelPositionClass(labelPosition)}>
 				<label
 					htmlFor={`input-${id}`}
 					id={`input-label-${id}`}
@@ -64,7 +60,7 @@ const InputNumber = ({
 				>{`${label} ${unit ? `(${unit})` : ''}`}</label>
 				<Declarations
 					id={id}
-					type={C.AFTER_QUESTION_TEXT}
+					type={U.AFTER_QUESTION_TEXT}
 					declarations={declarations}
 				/>
 				<div className="field-container">
@@ -82,7 +78,7 @@ const InputNumber = ({
 							className={`input-lunatic ${
 								messagesError.length > 0 ? 'warning' : ''
 							}`}
-							style={buildStyleObject(style)}
+							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
 							autoComplete={autoComplete ? 'on' : 'off'}
 							required={required}
@@ -109,7 +105,7 @@ const InputNumber = ({
 					))}
 				</div>
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
 		</React.Fragment>
 	);
 };
@@ -159,7 +155,7 @@ InputNumber.propTypes = {
 	readOnly: PropTypes.bool,
 	autoComplete: PropTypes.bool,
 	focused: PropTypes.bool,
-	declarations: declarationsPropTypes,
+	declarations: U.declarationsPropTypes,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,
 	tooltip: PropTypes.bool,

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { CheckboxBoolean } from 'components';
 import readme from './README.md';
-import titleDecorator from 'utils/decorator/title-decorator';
+import { titleDecorator } from 'utils/lib';
 import { text, boolean, select } from '@storybook/addon-knobs/react';
 
 const positioningOptions = {

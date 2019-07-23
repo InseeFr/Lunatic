@@ -2,11 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
-import * as C from '../../utils/constants';
-import * as U from '../../utils';
-import { declarationsPropTypes } from '../../utils/prop-types';
-import { buildStyleObject } from '../../utils/string-utils';
-import { getLabelPositionClass } from '../../utils/label-position';
+import * as U from '../../utils/lib';
 import './textarea.scss';
 
 const Textarea = ({
@@ -33,10 +29,10 @@ const Textarea = ({
 	}, [focused]);
 
 	return (
-		<div className={getLabelPositionClass(labelPosition)}>
+		<div className={U.getLabelPositionClass(labelPosition)}>
 			<Declarations
 				id={id}
-				type={C.BEFORE_QUESTION_TEXT}
+				type={U.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			{label && (
@@ -50,7 +46,7 @@ const Textarea = ({
 			)}
 			<Declarations
 				id={id}
-				type={C.AFTER_QUESTION_TEXT}
+				type={U.AFTER_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			<div className="field-container">
@@ -61,7 +57,7 @@ const Textarea = ({
 						placeholder={placeholder}
 						value={U.getResponseByPreference(preferences)(response)}
 						className="textarea-lunatic"
-						style={buildStyleObject(style)}
+						style={U.buildStyleObject(style)}
 						rows={rows}
 						maxLength={maxLength}
 						readOnly={readOnly}
@@ -80,7 +76,7 @@ const Textarea = ({
 					</div>
 				)}
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
 		</div>
 	);
 };
@@ -112,7 +108,7 @@ Textarea.propTypes = {
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,
 	focused: PropTypes.bool,
-	declarations: declarationsPropTypes,
+	declarations: U.declarationsPropTypes,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };
