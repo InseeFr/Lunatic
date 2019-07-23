@@ -37,26 +37,26 @@ const labelPositionOptions = {
 	LEFT: 'Left',
 };
 
-stories.addWithJSX('Default', () => {
-	const [initial, setInitial] = useState('spain');
+const defaultProps = {
+	handleChange: console.log,
+	response: {
+		name: 'DROPDOWN',
+		valueState: [
+			{ valueType: 'COLLECTED', value: 'belgium' },
+			{ valueType: 'FORCED', value: 'italy' },
+		],
+	},
+	options,
+	labelPositionOptions,
+};
 
-	return (
-		<React.Fragment>
-			<Dropdown
-				value={initial}
-				id="default"
-				options={options}
-				handleChange={value => console.log('SET', value)}
-			/>
-			<button onClick={() => setInitial('france')}>
-				test changement de la valeur initiale !
-			</button>
-		</React.Fragment>
-	);
-});
+stories.addWithJSX('Default', () => (
+	<Dropdown id="default" label="Default dropdown" {...defaultProps} />
+));
 
 stories.addWithJSX('Props', () => (
 	<Dropdown
+		{...defaultProps}
 		id="props"
 		label={text('Label', "I'm the label of the dropdown")}
 		options={options}
@@ -64,7 +64,7 @@ stories.addWithJSX('Props', () => (
 		readOnly={boolean('Read only', false)}
 		writable={boolean('Writable', false)}
 		labelPosition={select('Label position', labelPositionOptions)}
-		handleChange={console.log}
-		value="spain"
+		preferences={['COLLECTED', 'FORCED']}
+		tooltip={boolean('Tooltip', false)}
 	/>
 ));
