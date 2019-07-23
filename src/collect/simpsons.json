@@ -25,11 +25,11 @@
 			"response": {
 				"name": "COMMENT",
 				"valueState": [
-					{ "valueType": "PREVIOUS", "value": "" },
-					{ "valueType": "COLLECTED", "value": "" },
-					{ "valueType": "FORCED", "value": "" },
-					{ "valueType": "EDITED", "value": "" },
-					{ "valueType": "INPUTED", "value": "" }
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
 				]
 			}
 		},
@@ -64,11 +64,11 @@
 			"response": {
 				"name": "PRODUCER",
 				"valueState": [
-					{ "valueType": "PREVIOUS", "value": "" },
-					{ "valueType": "COLLECTED", "value": "" },
-					{ "valueType": "FORCED", "value": "" },
-					{ "valueType": "EDITED", "value": "" },
-					{ "valueType": "INPUTED", "value": "" }
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
 				]
 			}
 		},
@@ -83,11 +83,11 @@
 			"response": {
 				"name": "SEASON_NUMBER",
 				"valueState": [
-					{ "valueType": "PREVIOUS", "value": "" },
-					{ "valueType": "COLLECTED", "value": "" },
-					{ "valueType": "FORCED", "value": "" },
-					{ "valueType": "EDITED", "value": "" },
-					{ "valueType": "INPUTED", "value": "" }
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
 				]
 			}
 		},
@@ -107,11 +107,11 @@
 			"response": {
 				"name": "DATEFIRST",
 				"valueState": [
-					{ "valueType": "PREVIOUS", "value": "" },
-					{ "valueType": "COLLECTED", "value": "" },
-					{ "valueType": "FORCED", "value": "" },
-					{ "valueType": "EDITED", "value": "" },
-					{ "valueType": "INPUTED", "value": "" }
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
 				]
 			},
 			"dateFormat": "jj/mm/aaaa"
@@ -127,11 +127,11 @@
 			"response": {
 				"name": "AUDIENCE_SHARE",
 				"valueState": [
-					{ "valueType": "PREVIOUS", "value": "" },
-					{ "valueType": "COLLECTED", "value": "" },
-					{ "valueType": "FORCED", "value": "" },
-					{ "valueType": "EDITED", "value": "" },
-					{ "valueType": "INPUTED", "value": "" }
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
 				]
 			}
 		},
@@ -165,11 +165,11 @@
 			"response": {
 				"name": "CITY",
 				"valueState": [
-					{ "valueType": "PREVIOUS", "value": "" },
-					{ "valueType": "COLLECTED", "value": "" },
-					{ "valueType": "FORCED", "value": "" },
-					{ "valueType": "EDITED", "value": "" },
-					{ "valueType": "INPUTED", "value": "" }
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
 				]
 			},
 			"options": [
@@ -194,11 +194,11 @@
 			"response": {
 				"name": "MAYOR",
 				"valueState": [
-					{ "valueType": "PREVIOUS", "value": "" },
-					{ "valueType": "COLLECTED", "value": "" },
-					{ "valueType": "FORCED", "value": "" },
-					{ "valueType": "EDITED", "value": "" },
-					{ "valueType": "INPUTED", "value": "" }
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
 				]
 			},
 			"options": [
@@ -216,11 +216,11 @@
 			"response": {
 				"name": "STATE",
 				"valueState": [
-					{ "valueType": "PREVIOUS", "value": "" },
-					{ "valueType": "COLLECTED", "value": "" },
-					{ "valueType": "FORCED", "value": "" },
-					{ "valueType": "EDITED", "value": "" },
-					{ "valueType": "INPUTED", "value": "" }
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
 				]
 			},
 			"options": [
@@ -336,11 +336,11 @@
 						"response": {
 							"name": "ICE_FLAVOUR1",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -357,11 +357,11 @@
 						"response": {
 							"name": "ICE_FLAVOUR2",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -378,11 +378,11 @@
 						"response": {
 							"name": "ICE_FLAVOUR3",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -399,11 +399,11 @@
 						"response": {
 							"name": "ICE_FLAVOUR4",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -429,11 +429,11 @@
 						"response": {
 							"name": "NUCLEAR_CHARACTER1",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -450,11 +450,11 @@
 						"response": {
 							"name": "NUCLEAR_CHARACTER2",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -471,11 +471,11 @@
 						"response": {
 							"name": "NUCLEAR_CHARACTER3",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -492,11 +492,11 @@
 						"response": {
 							"name": "NUCLEAR_CHARACTER4",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -525,11 +525,11 @@
 						"response": {
 							"name": "BIRTH_CHARACTER1",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -549,11 +549,11 @@
 						"response": {
 							"name": "BIRTH_CHARACTER2",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -573,11 +573,11 @@
 						"response": {
 							"name": "BIRTH_CHARACTER3",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -597,11 +597,11 @@
 						"response": {
 							"name": "BIRTH_CHARACTER4",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -621,11 +621,11 @@
 						"response": {
 							"name": "BIRTH_CHARACTER5",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -673,11 +673,11 @@
 						"response": {
 							"name": "PERCENTAGE_EXPENSES11",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -694,11 +694,11 @@
 						"response": {
 							"name": "PERCENTAGE_EXPENSES21",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -716,11 +716,11 @@
 						"response": {
 							"name": "PERCENTAGE_EXPENSES31",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -737,11 +737,11 @@
 						"response": {
 							"name": "PERCENTAGE_EXPENSES41",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -758,11 +758,11 @@
 						"response": {
 							"name": "PERCENTAGE_EXPENSES51",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -780,11 +780,11 @@
 						"response": {
 							"name": "PERCENTAGE_EXPENSES61",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -801,11 +801,11 @@
 						"response": {
 							"name": "PERCENTAGE_EXPENSES71",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -844,11 +844,11 @@
 						"response": {
 							"name": "CLOWNING11",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -859,11 +859,11 @@
 						"response": {
 							"name": "CLOWNING12",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -885,11 +885,11 @@
 						"response": {
 							"name": "CLOWNING21",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -900,11 +900,11 @@
 						"response": {
 							"name": "CLOWNING22",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -923,11 +923,11 @@
 						"response": {
 							"name": "CLOWNING31",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -938,11 +938,11 @@
 						"response": {
 							"name": "CLOWNING32",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -964,11 +964,11 @@
 						"response": {
 							"name": "CLOWNING41",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -979,11 +979,11 @@
 						"response": {
 							"name": "CLOWNING42",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1400,11 +1400,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS11",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1417,11 +1417,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS12",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1434,11 +1434,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS21",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1451,11 +1451,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS22",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1468,11 +1468,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS31",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1485,11 +1485,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS32",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1502,11 +1502,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS41",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1519,11 +1519,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS42",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1536,11 +1536,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS51",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1553,11 +1553,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS52",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1570,11 +1570,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS61",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1587,11 +1587,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS62",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1604,11 +1604,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS71",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1621,11 +1621,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS72",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1638,11 +1638,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS81",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1655,11 +1655,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS82",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1672,11 +1672,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS91",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1689,11 +1689,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS92",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1706,11 +1706,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS101",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1723,11 +1723,11 @@
 						"response": {
 							"name": "FAVOURITE_CHARACTERS102",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": "" },
-								{ "valueType": "COLLECTED", "value": "" },
-								{ "valueType": "FORCED", "value": "" },
-								{ "valueType": "EDITED", "value": "" },
-								{ "valueType": "INPUTED", "value": "" }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1749,11 +1749,11 @@
 			"response": {
 				"name": "SURVEY_COMMENT",
 				"valueState": [
-					{ "valueType": "PREVIOUS", "value": "" },
-					{ "valueType": "COLLECTED", "value": "" },
-					{ "valueType": "FORCED", "value": "" },
-					{ "valueType": "EDITED", "value": "" },
-					{ "valueType": "INPUTED", "value": "" }
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
 				]
 			}
 		}
