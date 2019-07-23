@@ -104,7 +104,7 @@
 		},
 		"transform": {
 			"^.+\\.js$": "babel-jest",
-			".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+			".+\\.(png|jpg)$": "jest-transform-stub"
 		},
 		"setupTestFrameworkScriptFile": "<rootDir>/src/tests/setup/setupTests.js"
 	},
