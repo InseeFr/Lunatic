@@ -77,7 +77,7 @@ const CheckboxOne = ({
 									<label
 										htmlFor={`checkbox-one-${id}-${optionValue}`}
 										id={`input-label-${id}-${optionValue}`}
-										style={checked ? buildStyleObject(checkboxStyle) : {}}
+										style={checked ? U.buildStyleObject(checkboxStyle) : {}}
 									>
 										{keyboardSelection
 											? `${U.getAlphabet()[i].toUpperCase()} - ${optionLabel}`
