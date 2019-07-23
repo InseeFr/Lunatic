@@ -195,9 +195,9 @@
 				"name": "MAYOR",
 				"valueState": [
 					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": null },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "COLLECTED", "value": "1" },
+					{ "valueType": "FORCED", "value": "2" },
+					{ "valueType": "EDITED", "value": "1" },
 					{ "valueType": "INPUTED", "value": null }
 				]
 			},
@@ -217,8 +217,8 @@
 				"name": "STATE",
 				"valueState": [
 					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": null },
-					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "COLLECTED", "value": "8" },
+					{ "valueType": "FORCED", "value": "10" },
 					{ "valueType": "EDITED", "value": null },
 					{ "valueType": "INPUTED", "value": null }
 				]
