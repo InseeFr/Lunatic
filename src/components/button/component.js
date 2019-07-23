@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Radium from 'radium';
 import { buildStyleObject } from '../../utils/string-utils';
 import './button.scss';
 
@@ -23,4 +22,4 @@ Button.propTypes = {
 	onClick: PropTypes.func.isRequired,
 };
 
-export default Radium(Button);
+export default Button;

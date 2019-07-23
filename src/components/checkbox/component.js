@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Radium from 'radium';
-import { hotkeys } from 'react-keyboard-shortcuts';
 import Declarations from '../declarations';
 import * as C from '../../utils/constants';
 import { declarationsPropTypes } from '../../utils/prop-types';
@@ -11,16 +9,6 @@ import alphabet from '../../utils/alphabet';
 import './checkbox.scss';
 
 class Checkbox extends Component {
-	hot_keys = this.props.keyboardSelection
-		? this.props.options.reduce(
-				(_, item, i) => ({
-					..._,
-					[alphabet[i]]: { priority: 1, handler: () => this.onChange(i) },
-				}),
-				{}
-		  )
-		: {};
-
 	constructor(props) {
 		super(props);
 		const { options, handleChange } = props;
@@ -140,4 +128,4 @@ Checkbox.defaultProps = {
 	style: { fieldsetStyle: {}, checkboxStyle: {} },
 };
 
-export default Radium(hotkeys(Checkbox));
+export default Checkbox;

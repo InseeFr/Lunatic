@@ -31,5 +31,5 @@ export default {
 		commonjs(),
 		image(),
 	],
-	external: ['radium', 'react', 'react-dom', 'lodash.camelcase', 'prop-types'],
+	external: ['react', 'react-dom', 'lodash.camelcase', 'prop-types'],
 };
