@@ -6,16 +6,20 @@
 | :---------------: | :----: | :--------------------------------------: | :------: | ----------------------------------------- |
 |        id         | string |                    -                     |    ✓     | Id of the checkbox                        |
 |       label       | string |                    ""                    |          | Fieldset label of the checkbox            |
-|       value       | string |                    ""                    |          | Value of the checkbox                     |
+|  preferences \*   | array  |              ["COLLECTED"]               |          | Preferences to manage checkbox response   |
+|    response \*    | object |                    {}                    |          | Response concerned by the component       |
 |    options \*     | array  |                    -                     |    ✓     | Options of the checkbox                   |
 |   handleChange    |  func  |                    -                     |    ✓     | Handler of the checkbox                   |
 |     disabled      |  bool  |                  false                   |          | Is the checkbox options disabled          |
 |      focused      |  bool  |                  false                   |          | Is the checkbox options focused           |
 | keyboardSelection |  bool  |                  false                   |          | Enable keyboard selection of the checkbox |
 |  positioning \*   | string |                "DEFAULT"                 |          | Checkbox options positioning              |
-|  declarations \*  | array  |                   [ ]                    |          | Declarations of the checkbox              |
+|  declarations \*  | array  |                    []                    |          | Declarations of the checkbox              |
+|      tooltip      |  bool  |                  false                   |          | Tooltip of the checkbox                   |
 |     style \*      | object | { fieldsetStyle: {}, checkboxStyle: {} } |          | Style of the checkbox                     |
 
+- `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
+- `response` props has to be a shape of `{name: string, valueState: object}`
 - `options` props has to be an array made by objects with a shape of `{label: string, value: string}`
 - `positioning` props has to be one of `DEFAULT`, `HORIZONTAL` or `VERTICAL`
 - `declarations` are documented in the `Declarations` component

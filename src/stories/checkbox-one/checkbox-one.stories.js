@@ -31,8 +31,19 @@ const positioningOptions = {
 	VERTICAL: 'Vertical',
 };
 
+const defaultProps = {
+	handleChange: console.log,
+	response: {
+		name: 'CHECKBOX_ONE',
+		valueState: [
+			{ valueType: 'COLLECTED', value: 'france' },
+			{ valueType: 'FORCED', value: 'italy' },
+		],
+	},
+};
+
 stories.addWithJSX('Default', () => (
-	<CheckboxOne id="default" options={options} handleChange={console.log} />
+	<CheckboxOne id="default" options={options} {...defaultProps} />
 ));
 
 stories.addWithJSX('Props', () => (
@@ -47,7 +58,9 @@ stories.addWithJSX('Props', () => (
 		focused={boolean('Focused', false)}
 		keyboardSelection={boolean('Keyboard selection', false)}
 		options={options}
-		handleChange={console.log}
+		preferences={['COLLECTED', 'FORCED']}
+		tooltip={boolean('Tooltip', false)}
+		{...defaultProps}
 	/>
 ));
 
@@ -62,7 +75,6 @@ stories.addWithJSX('Styled', () => (
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		options={options}
-		handleChange={console.log}
 		style={object('Generated style', {
 			fieldsetStyle: {
 				'border-color': color('Fieldset color', '#e80a4d'),
@@ -95,5 +107,6 @@ stories.addWithJSX('Styled', () => (
 				}),
 			},
 		})}
+		{...defaultProps}
 	/>
 ));
