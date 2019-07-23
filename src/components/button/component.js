@@ -8,7 +8,7 @@ const Button = ({ label, value, onClick, disabled, style }) => (
 		type="button"
 		aria-label={label || 'button'}
 		className="button-lunatic"
-		style={U.buildStyleObject(style)}
+		style={buildStyleObject(style)}
 		disabled={disabled}
 		onClick={onClick}
 	>
