@@ -1,64 +1,13 @@
-import React, { useState } from 'react';
-import * as lunatic from '@inseefr/lunatic';
+import React from 'react';
+import Orchestrator from '../orchestrator';
 import simspons from './simpsons';
 
-const updateQuestionnaire = valueType => questionnaire => update => {
-	const [name, value] = Object.entries(update)[0];
-	const components = questionnaire.components.reduce((_, c) => {
-		if (!isComponentsConcernedByResponse(name)(c)) {
-			_.push(c);
-			return _;
-		} else if (c.response) {
-			_.push({
-				...c,
-				response: {
-					...c.response,
-					valueState: c.response.valueState.reduce((__, v) => {
-						if (v.valueType === valueType) return [...__, { ...v, value }];
-						return [...__, v];
-					}, []),
-				},
-			});
-		} else if (c.options) console.log('options', c.componentType);
-		else if (c.cells) console.log('cells', c.componentType);
-		else _.push(c);
-		return _;
-	}, []);
-	return { ...questionnaire, components };
-};
+const CollectOrchestrator = () => (
+	<Orchestrator
+		savingType="COLLECTED"
+		preferences={['COLLECTED']}
+		source={simspons}
+	/>
+);
 
-const isComponentsConcernedByResponse = responseName => component =>
-	(component.response && component.response.name === responseName) ||
-	(component.options &&
-		component.options.filter(
-			o => o.response && o.response.name === responseName
-		).length !== 0);
-
-const Orchestrator = () => {
-	const [questionnaire, setQuestionnaire] = useState(simspons);
-	const onChange = update => {
-		setQuestionnaire(updateQuestionnaire('EDITED')(questionnaire)(update));
-	};
-	console.log(lunatic.getState(questionnaire));
-	const components = questionnaire.components.map(q => {
-		const { id, componentType } = q;
-		const Component = lunatic[componentType];
-		return (
-			<div className="lunatic lunatic-component" key={`component-${id}`}>
-				<Component
-					{...q}
-					handleChange={onChange}
-					labelPosition="TOP"
-					preferences={['COLLECTED', 'FORCED', 'EDITED']}
-				/>
-			</div>
-		);
-	});
-	return (
-		<div className="container">
-			<div className="components">{components}</div>
-		</div>
-	);
-};
-
-export default Orchestrator;
+export default CollectOrchestrator;
