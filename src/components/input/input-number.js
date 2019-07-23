@@ -90,7 +90,7 @@ const InputNumber = ({
 							onChange={e => {
 								validate(e.target.value);
 								handleChange({
-									[U.getResponseName(response)]: e.target.value,
+									[U.getResponseName(response)]: Number(e.target.value),
 								});
 							}}
 						/>

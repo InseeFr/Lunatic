@@ -5,7 +5,11 @@ export default PropTypes.shape({
 	valueState: PropTypes.arrayOf(
 		PropTypes.shape({
 			valueType: PropTypes.string,
-			value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+			value: PropTypes.oneOfType([
+				PropTypes.string,
+				PropTypes.number,
+				PropTypes.bool,
+			]),
 		})
 	),
 });
