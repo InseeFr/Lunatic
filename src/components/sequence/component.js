@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
-import * as U from '../../utils/lib';
+import * as U from '../../utils/library';
 import * as C from '../../utils/constants';
 import './sequence.scss';
 

@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Declarations } from 'components';
 import readme from './README.md';
-import { titleDecorator } from 'utils/lib';
-import * as C from 'utils/lib/constants';
+import { titleDecorator } from 'utils/library';
+import * as C from 'C.DETACHABLE/constants';
 
 const declarations = [
 	{

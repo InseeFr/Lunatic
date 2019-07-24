@@ -1,21 +1,18 @@
-import {
-	getResponseName,
-	getResponseByPreference,
-} from '../../utils/lib/responses';
+import * as R from 'utils/library/responses';
 
 describe('responses utils', () => {
 	describe('getResponseName', () => {
 		it('should return default value', () => {
-			expect(getResponseName({})).toEqual('');
+			expect(R.getResponseName({})).toEqual('');
 		});
 	});
 	describe('getResponseByPreference', () => {
 		it('should return default value', () => {
-			expect(getResponseByPreference([])({})).toEqual('');
+			expect(R.getResponseByPreference([])({})).toEqual('');
 		});
 		it('should return Collected', () => {
 			expect(
-				getResponseByPreference(['COLLECTED'])({
+				R.getResponseByPreference(['COLLECTED'])({
 					name: 'name',
 					valueState: [{ valueType: 'COLLECTED', value: 'Collected' }],
 				})
@@ -23,7 +20,7 @@ describe('responses utils', () => {
 		});
 		it('should return Collected', () => {
 			expect(
-				getResponseByPreference(['COLLECTED'])({
+				R.getResponseByPreference(['COLLECTED'])({
 					name: 'name',
 					valueState: [
 						{ valueType: 'COLLECTED', value: 'Collected' },
@@ -34,7 +31,7 @@ describe('responses utils', () => {
 		});
 		it('should return Collected', () => {
 			expect(
-				getResponseByPreference(['COLLECTED', 'FORCED'])({
+				R.getResponseByPreference(['COLLECTED', 'FORCED'])({
 					name: 'name',
 					valueState: [
 						{ valueType: 'COLLECTED', value: 'Collected' },
@@ -45,7 +42,7 @@ describe('responses utils', () => {
 		});
 		it('should return Forced', () => {
 			expect(
-				getResponseByPreference(['COLLECTED', 'FORCED'])({
+				R.getResponseByPreference(['COLLECTED', 'FORCED'])({
 					name: 'name',
 					valueState: [
 						{ valueType: 'COLLECTED', value: 'Collected' },
@@ -57,7 +54,7 @@ describe('responses utils', () => {
 
 		it('should return ""', () => {
 			expect(
-				getResponseByPreference(['COLLECTED', 'FORCED', 'EDITED'])({
+				R.getResponseByPreference(['COLLECTED', 'FORCED', 'EDITED'])({
 					name: 'name',
 					valueState: [
 						{ valueType: 'COLLECTED', value: 'Collected' },

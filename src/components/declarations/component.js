@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as U from '../../utils/lib';
+import * as U from '../../utils/library';
 import './declarations.scss';
 
 const Declarations = ({ id, type, declarations }) => {

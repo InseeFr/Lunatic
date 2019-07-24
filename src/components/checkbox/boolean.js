@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
-import * as U from '../../utils/lib';
+import * as U from '../../utils/library';
 import * as C from '../../utils/constants';
 import './checkbox.scss';
 
@@ -20,9 +20,6 @@ const CheckboxBoolean = ({
 	style,
 }) => {
 	const inputRef = useRef();
-
-	console.log('Log utils');
-	console.log(U);
 
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
