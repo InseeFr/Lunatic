@@ -4,7 +4,7 @@ import { withReadme } from 'storybook-readme';
 import { Declarations } from 'components';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
-import * as C from 'C.DETACHABLE/constants';
+import * as C from 'utils/constants';
 
 const declarations = [
 	{
@@ -32,7 +32,7 @@ const declarations = [
 		declarationType: C.WARNING,
 	},
 	{
-		id: '4',
+		id: '5',
 		label: "I'm the label of the message filter declaration",
 		position: C.BEFORE_QUESTION_TEXT,
 		declarationType: C.MESSAGE_FILTER,
@@ -49,7 +49,7 @@ const stories = storiesOf('Declarations', module)
 stories.addWithJSX('Default', () => (
 	<Declarations
 		id="default"
-		type={U.BEFORE_QUESTION_TEXT}
+		type={C.BEFORE_QUESTION_TEXT}
 		declarations={declarations}
 	/>
 ));
