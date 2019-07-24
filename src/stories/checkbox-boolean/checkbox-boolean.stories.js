@@ -15,7 +15,7 @@ const positioningOptions = {
 const defaultProps = {
 	handleChange: console.log,
 	response: {
-		name: 'CHECKBOX_ONE',
+		name: 'CHECKBOX_BOOLEAN',
 		valueState: [
 			{ valueType: 'COLLECTED', value: false },
 			{ valueType: 'FORCED', value: true },

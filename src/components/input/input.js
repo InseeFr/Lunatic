@@ -84,6 +84,7 @@ const Input = ({
 };
 
 Input.defaultProps = {
+	label: '',
 	preferences: ['COLLECTED'],
 	response: {},
 	placeholder: '',
@@ -98,7 +99,7 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
-	id: PropTypes.string,
+	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
 	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
 	response: U.responsePropTypes,

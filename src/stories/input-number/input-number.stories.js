@@ -24,7 +24,7 @@ const labelPositionOptions = {
 const defaultProps = {
 	handleChange: console.log,
 	response: {
-		name: 'DATEPICKER',
+		name: 'INPUT_NUMBER',
 		valueState: [
 			{ valueType: 'COLLECTED', value: '1' },
 			{ valueType: 'FORCED', value: '2' },
