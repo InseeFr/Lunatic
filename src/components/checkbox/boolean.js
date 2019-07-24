@@ -21,6 +21,9 @@ const CheckboxBoolean = ({
 }) => {
 	const inputRef = useRef();
 
+	console.log('Log utils');
+	console.log(U);
+
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
