@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Declarations } from 'components';
-import * as C from 'utils/lib/constants';
+import * as C from 'utils/constants';
 
 const defaultProps = { id: 'id', label: 'label' };
 const declarations = [

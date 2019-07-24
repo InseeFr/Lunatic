@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
+import * as C from '../../utils/constants';
 import './checkbox.scss';
 
 const CheckboxBoolean = ({
@@ -46,13 +47,13 @@ const CheckboxBoolean = ({
 		<div key={`checkbox-boolean-${id}`} className={`checkbox-modality`}>
 			<Declarations
 				id={id}
-				type={U.BEFORE_QUESTION_TEXT}
+				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			{label && <label htmlFor={`checkbox-boolean-${id}`}>{label}</label>}
 			<Declarations
 				id={id}
-				type={U.AFTER_QUESTION_TEXT}
+				type={C.AFTER_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			<div className="field-container">
@@ -65,7 +66,7 @@ const CheckboxBoolean = ({
 					</div>
 				)}
 			</div>
-			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
 		</div>
 	);
 };
