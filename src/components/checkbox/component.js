@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
+import * as C from '../../utils/constants';
 import './checkbox.scss';
 
 class Checkbox extends Component {
@@ -40,7 +41,7 @@ class Checkbox extends Component {
 			<React.Fragment>
 				<Declarations
 					id={id}
-					type={U.BEFORE_QUESTION_TEXT}
+					type={C.BEFORE_QUESTION_TEXT}
 					declarations={declarations}
 				/>
 				<fieldset
@@ -51,7 +52,7 @@ class Checkbox extends Component {
 					<legend>{label}</legend>
 					<Declarations
 						id={id}
-						type={U.AFTER_QUESTION_TEXT}
+						type={C.AFTER_QUESTION_TEXT}
 						declarations={declarations}
 					/>
 					{options.map(({ id: modId, label: modLabel, value }, i) => {
@@ -88,7 +89,7 @@ class Checkbox extends Component {
 						);
 					})}
 				</fieldset>
-				<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
+				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
 			</React.Fragment>
 		);
 	}

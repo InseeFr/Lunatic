@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
+import * as C from '../../utils/constants';
 import './input.scss';
 
 const InputNumber = ({
@@ -49,7 +50,7 @@ const InputNumber = ({
 		<React.Fragment>
 			<Declarations
 				id={id}
-				type={U.BEFORE_QUESTION_TEXT}
+				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			<div className={U.getLabelPositionClass(labelPosition)}>
@@ -60,7 +61,7 @@ const InputNumber = ({
 				>{`${label} ${unit ? `(${unit})` : ''}`}</label>
 				<Declarations
 					id={id}
-					type={U.AFTER_QUESTION_TEXT}
+					type={C.AFTER_QUESTION_TEXT}
 					declarations={declarations}
 				/>
 				<div className="field-container">
@@ -105,7 +106,7 @@ const InputNumber = ({
 					))}
 				</div>
 			</div>
-			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
 		</React.Fragment>
 	);
 };

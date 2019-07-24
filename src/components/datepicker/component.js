@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TooltipResponse } from '../tooltip';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
+import * as C from '../../utils/constants';
 import './datepicker.scss';
 
 const Datepicker = ({
@@ -30,7 +31,7 @@ const Datepicker = ({
 		<React.Fragment>
 			<Declarations
 				id={id}
-				type={U.BEFORE_QUESTION_TEXT}
+				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
 			<div className={U.getLabelPositionClass(labelPosition)}>
@@ -45,7 +46,7 @@ const Datepicker = ({
 				)}
 				<Declarations
 					id={id}
-					type={U.AFTER_QUESTION_TEXT}
+					type={C.AFTER_QUESTION_TEXT}
 					declarations={declarations}
 				/>
 				<div className="field-container">
@@ -75,7 +76,7 @@ const Datepicker = ({
 					)}
 				</div>
 			</div>
-			<Declarations id={id} type={U.DETACHABLE} declarations={declarations} />
+			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
 		</React.Fragment>
 	);
 };
