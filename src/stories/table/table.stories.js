@@ -4,7 +4,12 @@ import { withReadme } from 'storybook-readme';
 import { Table } from 'components';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
-import { select, boolean } from '@storybook/addon-knobs/react';
+import { boolean } from '@storybook/addon-knobs/react';
+
+const defaultProps = {
+	handleChange: console.log,
+	preferences: ['COLLECTED', 'FORCED', 'EDITED'],
+};
 
 const stories = storiesOf('Table', module)
 	.addDecorator(withReadme(readme))
@@ -33,9 +38,9 @@ stories.addWithJSX('Default', () => (
 
 stories.addWithJSX('OneAxisOneMeasure', () => (
 	<Table
+		{...defaultProps}
 		id="one-axis"
 		label="Have you ever visited these countries?"
-		handleChange={console.log}
 		cells={[
 			[
 				{ value: '1', label: 'Belgium' },
@@ -43,6 +48,13 @@ stories.addWithJSX('OneAxisOneMeasure', () => (
 					id: 'a',
 					componentType: 'Radio',
 					options: [{ value: '1', label: 'Yes' }, { value: '0', label: 'No' }],
+					response: {
+						name: 'RADIO_A',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: '0' },
+						],
+					},
 				},
 			],
 			[
@@ -51,6 +63,13 @@ stories.addWithJSX('OneAxisOneMeasure', () => (
 					id: 'b',
 					componentType: 'Radio',
 					options: [{ value: '1', label: 'Yes' }, { value: '0', label: 'No' }],
+					response: {
+						name: 'RADIO_B',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '0' },
+							{ valueType: 'FORCED', value: '1' },
+						],
+					},
 				},
 			],
 			[
@@ -59,6 +78,14 @@ stories.addWithJSX('OneAxisOneMeasure', () => (
 					id: 'c',
 					componentType: 'Radio',
 					options: [{ value: '1', label: 'Yes' }, { value: '0', label: 'No' }],
+					response: {
+						name: 'RADIO_C',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: '0' },
+							{ valueType: 'EDITED', value: '1' },
+						],
+					},
 				},
 			],
 			[
@@ -67,17 +94,25 @@ stories.addWithJSX('OneAxisOneMeasure', () => (
 					id: 'd',
 					componentType: 'Radio',
 					options: [{ value: '1', label: 'Yes' }, { value: '0', label: 'No' }],
+					response: {
+						name: 'RADIO_D',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: null },
+						],
+					},
 				},
 			],
 		]}
+		tooltip={boolean('Tooltip', false)}
 	/>
 ));
 
 stories.addWithJSX('OneAxisTwoMeasures', () => (
 	<Table
+		{...defaultProps}
 		id="one-axis-two-measures"
 		label="Birth informations"
-		handleChange={console.log}
 		cells={[
 			[
 				{ label: '' },
@@ -86,37 +121,81 @@ stories.addWithJSX('OneAxisTwoMeasures', () => (
 			],
 			[
 				{ value: '1', label: 'Marco' },
-				{ id: 'a-datepicker', componentType: 'Datepicker' },
+				{
+					id: 'a-datepicker',
+					componentType: 'Datepicker',
+					response: {
+						name: 'DATEPICKER_A',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1998-07-12' },
+							{ valueType: 'FORCED', value: null },
+						],
+					},
+				},
 				{
 					id: 'a-dropdown',
 					componentType: 'Dropdown',
 					options: [
-						{ value: 'fr', label: 'France' },
-						{ value: 'other', label: 'Other' },
+						{ value: 'belgium', label: 'Belgium' },
+						{ value: 'france', label: 'France' },
+						{ value: 'italy', label: 'Italy' },
+						{ value: 'netherland', label: 'Netherland' },
+						{ value: 'spain', label: 'Spain' },
+						{ value: 'sweden', label: 'Sweden' },
 					],
+					response: {
+						name: 'DROPDOWN_A',
+						valueState: [
+							{ valueType: 'COLLECTED', value: 'italy' },
+							{ valueType: 'FORCED', value: 'france' },
+							{ valueType: 'EDITED', value: 'italy' },
+						],
+					},
 				},
 			],
 			[
 				{ value: '2', label: 'Kyllian' },
-				{ id: 'b-datepicker', componentType: 'Datepicker' },
+				{
+					id: 'b-datepicker',
+					componentType: 'Datepicker',
+					response: {
+						name: 'DATEPICKER_B',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1998-07-12' },
+							{ valueType: 'FORCED', value: '2018-07-15' },
+						],
+					},
+				},
 				{
 					id: 'b-dropdown',
 					componentType: 'Dropdown',
 					options: [
-						{ value: 'fr', label: 'France' },
-						{ value: 'other', label: 'Other' },
+						{ value: 'belgium', label: 'Belgium' },
+						{ value: 'france', label: 'France' },
+						{ value: 'italy', label: 'Italy' },
+						{ value: 'netherland', label: 'Netherland' },
+						{ value: 'spain', label: 'Spain' },
+						{ value: 'sweden', label: 'Sweden' },
 					],
+					response: {
+						name: 'DROPDOWN_B',
+						valueState: [
+							{ valueType: 'COLLECTED', value: 'belgium' },
+							{ valueType: 'FORCED', value: 'france' },
+						],
+					},
 				},
 			],
 		]}
+		tooltip={boolean('Tooltip', false)}
 	/>
 ));
 
 stories.addWithJSX('OneHierarchicalAxis', () => (
 	<Table
+		{...defaultProps}
 		id="one-hierarchical-axis"
 		label="Hierarchical table"
-		handleChange={console.log}
 		cells={[
 			[{ label: '', colspan: '2' }, { label: 'Percentage', headerCell: true }],
 			[
@@ -127,6 +206,14 @@ stories.addWithJSX('OneHierarchicalAxis', () => (
 					componentType: 'InputNumber',
 					min: 0,
 					max: 100,
+					response: {
+						name: 'INPUT_NUMBER_1',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: '2' },
+							{ valueType: 'EDITED', value: '3' },
+						],
+					},
 				},
 			],
 			[
@@ -136,6 +223,14 @@ stories.addWithJSX('OneHierarchicalAxis', () => (
 					componentType: 'InputNumber',
 					min: 0,
 					max: 100,
+					response: {
+						name: 'INPUT_NUMBER_2',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
 				},
 			],
 			[
@@ -146,6 +241,14 @@ stories.addWithJSX('OneHierarchicalAxis', () => (
 					componentType: 'InputNumber',
 					min: 0,
 					max: 100,
+					response: {
+						name: 'INPUT_NUMBER_3',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
 				},
 			],
 			[
@@ -155,6 +258,14 @@ stories.addWithJSX('OneHierarchicalAxis', () => (
 					componentType: 'InputNumber',
 					min: 0,
 					max: 100,
+					response: {
+						name: 'INPUT_NUMBER_4',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: '3' },
+						],
+					},
 				},
 			],
 			[
@@ -164,21 +275,43 @@ stories.addWithJSX('OneHierarchicalAxis', () => (
 					componentType: 'InputNumber',
 					min: 0,
 					max: 100,
+					response: {
+						name: 'INPUT_NUMBER_5',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: '2' },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
 				},
 			],
 			[
 				{ value: 'other', label: 'Other', colspan: '2' },
-				{ id: 'other', componentType: 'InputNumber', min: 0, max: 100 },
+				{
+					id: 'other',
+					componentType: 'InputNumber',
+					min: 0,
+					max: 100,
+					response: {
+						name: 'INPUT_NUMBER_6',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
 			],
 		]}
+		tooltip={boolean('Tooltip', false)}
 	/>
 ));
 
 stories.addWithJSX('TwoAxisOneMeasure', () => (
 	<Table
+		{...defaultProps}
 		id="two-axis"
 		label="What dimensions do you value and in which countries"
-		handleChange={console.log}
 		cells={[
 			[
 				{ label: '' },
@@ -189,41 +322,218 @@ stories.addWithJSX('TwoAxisOneMeasure', () => (
 			],
 			[
 				{ value: '1', label: 'Belgium' },
-				{ id: '11', componentType: 'CheckboxBoolean' },
-				{ id: '12', componentType: 'CheckboxBoolean' },
-				{ id: '13', componentType: 'CheckboxBoolean' },
-				{ id: '14', componentType: 'CheckboxBoolean' },
+				{
+					id: '11',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_11',
+						valueState: [
+							{ valueType: 'COLLECTED', value: true },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
+				{
+					id: '12',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_12',
+						valueState: [
+							{ valueType: 'COLLECTED', value: false },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
+				{
+					id: '13',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_13',
+						valueState: [
+							{ valueType: 'COLLECTED', value: false },
+							{ valueType: 'FORCED', value: true },
+							{ valueType: 'EDITED', value: false },
+						],
+					},
+				},
+				{
+					id: '14',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_14',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
 			],
 			[
 				{ value: '2', label: 'France' },
-				{ id: '21', componentType: 'CheckboxBoolean' },
-				{ id: '22', componentType: 'CheckboxBoolean' },
-				{ id: '23', componentType: 'CheckboxBoolean' },
-				{ id: '24', componentType: 'CheckboxBoolean' },
+				{
+					id: '21',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_21',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
+				{
+					id: '22',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_22',
+						valueState: [
+							{ valueType: 'COLLECTED', value: false },
+							{ valueType: 'FORCED', value: true },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
+				{
+					id: '23',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_23',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
+				{
+					id: '24',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_24',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
 			],
 			[
 				{ value: '3', label: 'Italy' },
-				{ id: '31', componentType: 'CheckboxBoolean' },
-				{ id: '32', componentType: 'CheckboxBoolean' },
-				{ id: '33', componentType: 'CheckboxBoolean' },
-				{ id: '34', componentType: 'CheckboxBoolean' },
+				{
+					id: '31',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_31',
+						valueState: [
+							{ valueType: 'COLLECTED', value: false },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
+				{
+					id: '32',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_32',
+						valueState: [
+							{ valueType: 'COLLECTED', value: false },
+							{ valueType: 'FORCED', value: true },
+							{ valueType: 'EDITED', value: false },
+						],
+					},
+				},
+				{
+					id: '33',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_33',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: true },
+							{ valueType: 'EDITED', value: false },
+						],
+					},
+				},
+				{
+					id: '34',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_34',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: true },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
 			],
 			[
 				{ value: '4', label: 'Spain' },
-				{ id: '41', componentType: 'CheckboxBoolean' },
-				{ id: '42', componentType: 'CheckboxBoolean' },
-				{ id: '43', componentType: 'CheckboxBoolean' },
-				{ id: '44', componentType: 'CheckboxBoolean' },
+				{
+					id: '41',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_41',
+						valueState: [
+							{ valueType: 'COLLECTED', value: false },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
+				{
+					id: '42',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_42',
+						valueState: [
+							{ valueType: 'COLLECTED', value: false },
+							{ valueType: 'FORCED', value: true },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
+				{
+					id: '43',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_43',
+						valueState: [
+							{ valueType: 'COLLECTED', value: false },
+							{ valueType: 'FORCED', value: true },
+							{ valueType: 'EDITED', value: false },
+						],
+					},
+				},
+				{
+					id: '44',
+					componentType: 'CheckboxBoolean',
+					response: {
+						name: 'CHECKBOX_BOOLEAN_44',
+						valueState: [
+							{ valueType: 'COLLECTED', value: false },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
 			],
 		]}
+		tooltip={boolean('Tooltip', false)}
 	/>
 ));
 
 stories.addWithJSX('Roster', () => (
 	<Table
+		{...defaultProps}
 		id="roster"
 		label="Family composition"
-		handleChange={console.log}
 		lines={{ min: 1, max: 9 }}
 		cells={[
 			[
@@ -240,10 +550,49 @@ stories.addWithJSX('Roster', () => (
 						{ value: '1', label: 'Man' },
 						{ value: '2', label: 'Woman' },
 					],
+					response: {
+						name: 'CHECKBOX_ONE_11',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: '2' },
+							{ valueType: 'EDITED', value: '1' },
+						],
+					},
 				},
-				{ id: '12', componentType: 'Input' },
-				{ id: '13', componentType: 'Input' },
-				{ id: '14', componentType: 'InputNumber' },
+				{
+					id: '12',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_12',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: 'My forced input' },
+						],
+					},
+				},
+				{
+					id: '13',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_13',
+						valueState: [
+							{ valueType: 'COLLECTED', value: 'My collected input' },
+							{ valueType: 'FORCED', value: 'My forced input' },
+							{ valueType: 'EDITED', value: 'My edited input' },
+						],
+					},
+				},
+				{
+					id: '14',
+					componentType: 'InputNumber',
+					response: {
+						name: 'INPUT_NUMBER_14',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: '2' },
+						],
+					},
+				},
 			],
 			[
 				{
@@ -253,10 +602,46 @@ stories.addWithJSX('Roster', () => (
 						{ value: '1', label: 'Man' },
 						{ value: '2', label: 'Woman' },
 					],
+					response: {
+						name: 'CHECKBOX_ONE_21',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: '2' },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
 				},
-				{ id: '22', componentType: 'Input' },
-				{ id: '23', componentType: 'Input' },
-				{ id: '24', componentType: 'InputNumber' },
+				{
+					id: '22',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_22',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
+				{
+					id: '23',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_23',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: 'My forced input' },
+						],
+					},
+				},
+				{
+					id: '24',
+					componentType: 'InputNumber',
+					response: {
+						name: 'INPUT_NUMBER_24',
+						valueState: [{ valueType: 'COLLECTED', value: '1' }],
+					},
+				},
 			],
 			[
 				{
@@ -266,10 +651,50 @@ stories.addWithJSX('Roster', () => (
 						{ value: '1', label: 'Man' },
 						{ value: '2', label: 'Woman' },
 					],
+					response: {
+						name: 'CHECKBOX_ONE_31',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
 				},
-				{ id: '32', componentType: 'Input' },
-				{ id: '33', componentType: 'Input' },
-				{ id: '34', componentType: 'InputNumber' },
+				{
+					id: '32',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_32',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: 'My edited input' },
+						],
+					},
+				},
+				{
+					id: '33',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_33',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+						],
+					},
+				},
+				{
+					id: '34',
+					componentType: 'InputNumber',
+					response: {
+						name: 'INPUT_NUMBER_34',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: '2' },
+							{ valueType: 'EDITED', value: '3' },
+						],
+					},
+				},
 			],
 			[
 				{
@@ -279,10 +704,50 @@ stories.addWithJSX('Roster', () => (
 						{ value: '1', label: 'Man' },
 						{ value: '2', label: 'Woman' },
 					],
+					response: {
+						name: 'CHECKBOX_ONE_11',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '2' },
+							{ valueType: 'FORCED', value: '1' },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
 				},
-				{ id: '42', componentType: 'Input' },
-				{ id: '43', componentType: 'Input' },
-				{ id: '44', componentType: 'InputNumber' },
+				{
+					id: '42',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_42',
+						valueState: [
+							{ valueType: 'COLLECTED', value: 'My collected input' },
+							{ valueType: 'FORCED', value: 'My forced input' },
+						],
+					},
+				},
+				{
+					id: '43',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_43',
+						valueState: [
+							{ valueType: 'COLLECTED', value: 'My collected input' },
+							{ valueType: 'FORCED', value: 'My forced input' },
+							{ valueType: 'EDITED', value: 'My edited input' },
+						],
+					},
+				},
+				{
+					id: '44',
+					componentType: 'InputNumber',
+					response: {
+						name: 'INPUT_NUMBER_44',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: '30' },
+						],
+					},
+				},
 			],
 			[
 				{
@@ -292,10 +757,51 @@ stories.addWithJSX('Roster', () => (
 						{ value: '1', label: 'Man' },
 						{ value: '2', label: 'Woman' },
 					],
+					response: {
+						name: 'CHECKBOX_ONE_51',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '2' },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
 				},
-				{ id: '52', componentType: 'Input' },
-				{ id: '53', componentType: 'Input' },
-				{ id: '54', componentType: 'InputNumber' },
+				{
+					id: '52',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_52',
+						valueState: [
+							{ valueType: 'COLLECTED', value: 'My collected input' },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
+				{
+					id: '53',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_53',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: 'My edited input' },
+						],
+					},
+				},
+				{
+					id: '54',
+					componentType: 'InputNumber',
+					response: {
+						name: 'INPUT_NUMBER_54',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
 			],
 			[
 				{
@@ -305,10 +811,50 @@ stories.addWithJSX('Roster', () => (
 						{ value: '1', label: 'Man' },
 						{ value: '2', label: 'Woman' },
 					],
+					response: {
+						name: 'CHECKBOX_ONE_61',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: '1' },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
 				},
-				{ id: '62', componentType: 'Input' },
-				{ id: '63', componentType: 'Input' },
-				{ id: '64', componentType: 'InputNumber' },
+				{
+					id: '62',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_62',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+						],
+					},
+				},
+				{
+					id: '63',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_63',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: 'My edited input' },
+						],
+					},
+				},
+				{
+					id: '64',
+					componentType: 'InputNumber',
+					response: {
+						name: 'INPUT_NUMBER_64',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: '9' },
+						],
+					},
+				},
 			],
 			[
 				{
@@ -318,10 +864,50 @@ stories.addWithJSX('Roster', () => (
 						{ value: '1', label: 'Man' },
 						{ value: '2', label: 'Woman' },
 					],
+					response: {
+						name: 'CHECKBOX_ONE_71',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: '1' },
+						],
+					},
 				},
-				{ id: '72', componentType: 'Input' },
-				{ id: '73', componentType: 'Input' },
-				{ id: '74', componentType: 'InputNumber' },
+				{
+					id: '72',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_72',
+						valueState: [
+							{ valueType: 'COLLECTED', value: 'My collected input' },
+							{ valueType: 'FORCED', value: 'My forced input' },
+						],
+					},
+				},
+				{
+					id: '73',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_73',
+						valueState: [
+							{ valueType: 'COLLECTED', value: 'My collected input' },
+							{ valueType: 'FORCED', value: 'My forced input' },
+							{ valueType: 'EDITED', value: 'My edited input' },
+						],
+					},
+				},
+				{
+					id: '74',
+					componentType: 'InputNumber',
+					response: {
+						name: 'INPUT_NUMBER_74',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
 			],
 			[
 				{
@@ -331,10 +917,50 @@ stories.addWithJSX('Roster', () => (
 						{ value: '1', label: 'Man' },
 						{ value: '2', label: 'Woman' },
 					],
+					response: {
+						name: 'CHECKBOX_ONE_81',
+						valueState: [
+							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: '2' },
+						],
+					},
 				},
-				{ id: '82', componentType: 'Input' },
-				{ id: '83', componentType: 'Input' },
-				{ id: '84', componentType: 'InputNumber' },
+				{
+					id: '82',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_82',
+						valueState: [
+							{ valueType: 'COLLECTED', value: 'My collected input' },
+							{ valueType: 'FORCED', value: 'My forced input' },
+							{ valueType: 'EDITED', value: 'My edited input' },
+						],
+					},
+				},
+				{
+					id: '83',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_83',
+						valueState: [
+							{ valueType: 'COLLECTED', value: 'My collected input' },
+							{ valueType: 'FORCED', value: null },
+						],
+					},
+				},
+				{
+					id: '84',
+					componentType: 'InputNumber',
+					response: {
+						name: 'INPUT_NUMBER_84',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
 			],
 			[
 				{
@@ -344,11 +970,52 @@ stories.addWithJSX('Roster', () => (
 						{ value: '1', label: 'Man' },
 						{ value: '2', label: 'Woman' },
 					],
+					response: {
+						name: 'CHECKBOX_ONE_91',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: '1' },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
 				},
-				{ id: '92', componentType: 'Input' },
-				{ id: '93', componentType: 'Input' },
-				{ id: '94', componentType: 'InputNumber' },
+				{
+					id: '92',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_92',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: 'My forced input' },
+							{ valueType: 'EDITED', value: 'My edited input' },
+						],
+					},
+				},
+				{
+					id: '93',
+					componentType: 'Input',
+					response: {
+						name: 'INPUT_93',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+						],
+					},
+				},
+				{
+					id: '94',
+					componentType: 'InputNumber',
+					response: {
+						name: 'INPUT_NUMBER_94',
+						valueState: [
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: '2' },
+							{ valueType: 'EDITED', value: null },
+						],
+					},
+				},
 			],
 		]}
+		tooltip={boolean('Tooltip', false)}
 	/>
 ));
