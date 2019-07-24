@@ -103,6 +103,10 @@
 		"moduleNameMapper": {
 			"^.+\\.(css|less|scss)$": "babel-jest"
 		},
+		"moduleDirectories": [
+			"node_modules",
+			"src"
+		],
 		"transform": {
 			"^.+\\.js$": "babel-jest",
 			".+\\.(png|jpg)$": "jest-transform-stub"
