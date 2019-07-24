@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { buildStyleObject } from '../../utils/library';
+import { buildStyleObject } from '../../utils/lib';
 import './button.scss';
 
 const Button = ({ label, value, onClick, disabled, style }) => (

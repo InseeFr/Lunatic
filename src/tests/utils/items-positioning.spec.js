@@ -1,4 +1,4 @@
-import { getItemsPositioningClass } from 'utils/library';
+import { getItemsPositioningClass } from 'utils/lib';
 
 describe('string utils', () => {
 	describe('getItemsPositioningClass', () => {

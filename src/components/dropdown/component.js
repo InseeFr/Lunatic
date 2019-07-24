@@ -4,7 +4,7 @@ import Writable from './writable';
 import Simple from './simple';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
-import * as U from '../../utils/library';
+import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
 import './dropdown.scss';
 

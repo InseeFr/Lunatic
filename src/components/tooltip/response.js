@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import * as U from '../../utils/library';
+import * as U from '../../utils/lib';
 import * as img from './img';
 import './tooltip.scss';
 

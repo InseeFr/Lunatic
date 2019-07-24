@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Sequence } from 'components';
 import readme from './README.md';
-import { titleDecorator } from 'utils/library';
+import { titleDecorator } from 'utils/lib';
 import { text, number, color, object } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Sequence', module)

@@ -9,7 +9,7 @@ yarn-error.log*
 node_modules/
 
 # Built directories
-dist/
-lib/
-coverage/
-built-storybook/
+/dist/
+/lib/
+/coverage/
+/built-storybook/

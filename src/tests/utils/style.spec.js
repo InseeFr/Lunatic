@@ -1,4 +1,4 @@
-import { buildStyleObject } from 'utils/library';
+import { buildStyleObject } from 'utils/lib';
 
 describe('style', () => {
 	describe('buildStyleObject', () => {

@@ -1,4 +1,4 @@
-import * as R from 'utils/library/responses';
+import * as R from 'utils/lib/responses';
 
 describe('responses utils', () => {
 	describe('getResponseName', () => {
