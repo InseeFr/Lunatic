@@ -1,4 +1,7 @@
-import { getResponseName, getResponseByPreference } from 'utils/lib/responses';
+import {
+	getResponseName,
+	getResponseByPreference,
+} from '../../utils/lib/responses';
 
 describe('responses utils', () => {
 	describe('getResponseName', () => {
