@@ -167,7 +167,7 @@
 				"valueState": [
 					{ "valueType": "PREVIOUS", "value": null },
 					{ "valueType": "COLLECTED", "value": "00001" },
-					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "FORCED", "value": "00002" },
 					{ "valueType": "EDITED", "value": null },
 					{ "valueType": "INPUTED", "value": null }
 				]
@@ -195,9 +195,9 @@
 				"name": "MAYOR",
 				"valueState": [
 					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": null },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "COLLECTED", "value": "1" },
+					{ "valueType": "FORCED", "value": "2" },
+					{ "valueType": "EDITED", "value": "1" },
 					{ "valueType": "INPUTED", "value": null }
 				]
 			},
@@ -217,8 +217,8 @@
 				"name": "STATE",
 				"valueState": [
 					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": null },
-					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "COLLECTED", "value": "8" },
+					{ "valueType": "FORCED", "value": "10" },
 					{ "valueType": "EDITED", "value": null },
 					{ "valueType": "INPUTED", "value": null }
 				]
@@ -337,8 +337,8 @@
 							"name": "ICE_FLAVOUR1",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": "0" },
+								{ "valueType": "FORCED", "value": "1" },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -358,8 +358,8 @@
 							"name": "ICE_FLAVOUR2",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": "0" },
+								{ "valueType": "FORCED", "value": "1" },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -379,9 +379,9 @@
 							"name": "ICE_FLAVOUR3",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": "0" },
 								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "EDITED", "value": "1" },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -400,8 +400,8 @@
 							"name": "ICE_FLAVOUR4",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": "1" },
+								{ "valueType": "FORCED", "value": "0" },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -430,9 +430,9 @@
 							"name": "NUCLEAR_CHARACTER1",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": "1" },
 								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "EDITED", "value": "0" },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -472,8 +472,8 @@
 							"name": "NUCLEAR_CHARACTER3",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": "1" },
+								{ "valueType": "FORCED", "value": "0" },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -495,7 +495,7 @@
 								{ "valueType": "PREVIOUS", "value": null },
 								{ "valueType": "COLLECTED", "value": null },
 								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "EDITED", "value": "0" },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -550,7 +550,7 @@
 							"name": "BIRTH_CHARACTER2",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": "1" },
 								{ "valueType": "FORCED", "value": null },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
@@ -574,7 +574,7 @@
 							"name": "BIRTH_CHARACTER3",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": "2" },
 								{ "valueType": "FORCED", "value": null },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
@@ -598,8 +598,8 @@
 							"name": "BIRTH_CHARACTER4",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": "4" },
+								{ "valueType": "FORCED", "value": "3" },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -622,9 +622,9 @@
 							"name": "BIRTH_CHARACTER5",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "COLLECTED", "value": "1" },
+								{ "valueType": "FORCED", "value": "5" },
+								{ "valueType": "EDITED", "value": "2" },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -674,9 +674,9 @@
 							"name": "PERCENTAGE_EXPENSES11",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": 10 },
 								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "EDITED", "value": 20 },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -695,9 +695,9 @@
 							"name": "PERCENTAGE_EXPENSES21",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": 10 },
 								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "EDITED", "value": 0 },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -717,8 +717,8 @@
 							"name": "PERCENTAGE_EXPENSES31",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": 0 },
+								{ "valueType": "FORCED", "value": 10 },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -739,7 +739,7 @@
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
 								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "FORCED", "value": 10 },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -760,7 +760,7 @@
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
 								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "FORCED", "value": 10 },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -782,7 +782,7 @@
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
 								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "FORCED", "value": 10 },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -802,9 +802,9 @@
 							"name": "PERCENTAGE_EXPENSES71",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "COLLECTED", "value": 90 },
+								{ "valueType": "FORCED", "value": 60 },
+								{ "valueType": "EDITED", "value": 90 },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -845,8 +845,8 @@
 							"name": "CLOWNING11",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": "1" },
+								{ "valueType": "FORCED", "value": "4" },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -860,7 +860,7 @@
 							"name": "CLOWNING12",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": "Collected" },
 								{ "valueType": "FORCED", "value": null },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
@@ -901,9 +901,9 @@
 							"name": "CLOWNING22",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "COLLECTED", "value": "Collected" },
+								{ "valueType": "FORCED", "value": "Forced" },
+								{ "valueType": "EDITED", "value": "Edited" },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -924,9 +924,9 @@
 							"name": "CLOWNING31",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "COLLECTED", "value": "3" },
+								{ "valueType": "FORCED", "value": "1" },
+								{ "valueType": "EDITED", "value": "3" },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -980,9 +980,9 @@
 							"name": "CLOWNING42",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": "Collected" },
 								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "EDITED", "value": "Edited" },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -1033,8 +1033,8 @@
 							"name": "TRAVEL11",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": true },
+								{ "valueType": "FORCED", "value": false },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -1047,7 +1047,7 @@
 							"name": "TRAVEL12",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": true },
 								{ "valueType": "FORCED", "value": null },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
@@ -1075,7 +1075,7 @@
 							"name": "TRAVEL14",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": false },
 								{ "valueType": "FORCED", "value": null },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
@@ -1089,8 +1089,8 @@
 							"name": "TRAVEL15",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": false },
+								{ "valueType": "FORCED", "value": true },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -1120,9 +1120,9 @@
 							"name": "TRAVEL21",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "COLLECTED", "value": false },
+								{ "valueType": "FORCED", "value": true },
+								{ "valueType": "EDITED", "value": false },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -1134,9 +1134,9 @@
 							"name": "TRAVEL22",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": true },
 								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "EDITED", "value": false },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -1148,9 +1148,9 @@
 							"name": "TRAVEL23",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": false },
 								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "EDITED", "value": true },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -1207,7 +1207,7 @@
 							"name": "TRAVEL31",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": true },
 								{ "valueType": "FORCED", "value": null },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
@@ -1221,7 +1221,7 @@
 							"name": "TRAVEL32",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": false },
 								{ "valueType": "FORCED", "value": null },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
@@ -1263,9 +1263,9 @@
 							"name": "TRAVEL35",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": false },
 								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "EDITED", "value": true },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -1277,8 +1277,8 @@
 							"name": "TRAVEL36",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": false },
+								{ "valueType": "FORCED", "value": true },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -1322,7 +1322,7 @@
 							"name": "TRAVEL43",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": true },
 								{ "valueType": "FORCED", "value": null },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
@@ -1350,7 +1350,7 @@
 							"name": "TRAVEL45",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": true },
 								{ "valueType": "FORCED", "value": null },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
@@ -1401,8 +1401,8 @@
 							"name": "FAVOURITE_CHARACTERS11",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": "Collected" },
+								{ "valueType": "FORCED", "value": "Forced" },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -1418,9 +1418,9 @@
 							"name": "FAVOURITE_CHARACTERS12",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "COLLECTED", "value": 1 },
 								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "EDITED", "value": 0 },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -1452,9 +1452,9 @@
 							"name": "FAVOURITE_CHARACTERS22",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "COLLECTED", "value": "Collected" },
+								{ "valueType": "FORCED", "value": "Forced" },
+								{ "valueType": "EDITED", "value": "Edited" },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -1469,8 +1469,8 @@
 							"name": "FAVOURITE_CHARACTERS31",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "COLLECTED", "value": 100 },
+								{ "valueType": "FORCED", "value": 10 },
 								{ "valueType": "EDITED", "value": null },
 								{ "valueType": "INPUTED", "value": null }
 							]
@@ -1503,9 +1503,9 @@
 							"name": "FAVOURITE_CHARACTERS41",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "COLLECTED", "value": 1 },
+								{ "valueType": "FORCED", "value": 0 },
+								{ "valueType": "EDITED", "value": 1 },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -1750,9 +1750,9 @@
 				"name": "SURVEY_COMMENT",
 				"valueState": [
 					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "COLLECTED", "value": "Collected comment" },
 					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "EDITED", "value": "Edited comment" },
 					{ "valueType": "INPUTED", "value": null }
 				]
 			}
