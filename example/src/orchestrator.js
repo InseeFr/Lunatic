@@ -9,8 +9,10 @@ const updateQuestionnaire = valueType => questionnaire => preferences => updated
 			return _;
 		} else if (c.response) {
 			_.push(buildUpdatedResponse(c)(preferences)(valueType)(value));
-		} else if (c.options) console.log('options', c.componentType);
-		else if (c.cells) console.log('cells', c.componentType);
+		} else if (c.componentType === 'Checkbox')
+			console.log('options', c.componentType);
+		else if (c.componentType === 'Table')
+			_.push(buildUpdatedTableResponse(c)(preferences)(valueType)(value)(name));
 		else _.push(c);
 		return _;
 	}, []);
@@ -42,12 +44,39 @@ const buildUpdatedResponse = component => preferences => valueType => value => {
 	};
 };
 
+const buildUpdatedTableResponse = component => preferences => valueType => value => name => {
+	const { cells, ...other } = component;
+	const newCells = cells.reduce((_, line) => {
+		_.push(
+			line.reduce((__, cellComponent) => {
+				if (isComponentsConcernedByResponse(name)(cellComponent))
+					__.push(
+						buildUpdatedResponse(cellComponent)(preferences)(valueType)(value)
+					);
+				else __.push(cellComponent);
+				return __;
+			}, [])
+		);
+		return _;
+	}, []);
+	return { ...other, cells: newCells };
+};
+
 const isComponentsConcernedByResponse = responseName => component =>
 	(component.response && component.response.name === responseName) ||
 	(component.options &&
 		component.options.filter(
 			o => o.response && o.response.name === responseName
-		).length !== 0);
+		).length !== 0) ||
+	(component.cells &&
+		component.cells
+			.reduce((_, line) => {
+				line.forEach(l => {
+					if (l.response && l.response.name) _.push(l.response.name);
+				});
+				return _;
+			}, [])
+			.filter(str => str === responseName).length === 1);
 
 const Orchestrator = ({ savingType, preferences, source, tooltip }) => {
 	const [questionnaire, setQuestionnaire] = useState(source);
