@@ -1435,9 +1435,9 @@
 							"name": "FAVOURITE_CHARACTERS21",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "COLLECTED", "value": "Collected" },
+								{ "valueType": "FORCED", "value": "Forced" },
+								{ "valueType": "EDITED", "value": "Edited" },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
@@ -1452,9 +1452,9 @@
 							"name": "FAVOURITE_CHARACTERS22",
 							"valueState": [
 								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": "Collected" },
-								{ "valueType": "FORCED", "value": "Forced" },
-								{ "valueType": "EDITED", "value": "Edited" },
+								{ "valueType": "COLLECTED", "value": 1 },
+								{ "valueType": "FORCED", "value": 3 },
+								{ "valueType": "EDITED", "value": 10 },
 								{ "valueType": "INPUTED", "value": null }
 							]
 						}
