@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { Checkbox } from 'components';
+import { CheckboxGroup } from 'components';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import {
@@ -13,14 +13,14 @@ import {
 	select,
 } from '@storybook/addon-knobs/react';
 
-const stories = storiesOf('Checkbox', module)
+const stories = storiesOf('CheckboxGroup', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
 		const WrappedComponent = titleDecorator(Component);
-		return <WrappedComponent title="<Checkbox />" />;
+		return <WrappedComponent title="<CheckboxGroup />" />;
 	});
 
-const options = [
+const responses = [
 	{ id: '1', value: false, label: 'France' },
 	{ id: '2', value: false, label: 'Italy' },
 ];
@@ -32,29 +32,33 @@ const positioningOptions = {
 };
 
 stories.addWithJSX('Default', () => (
-	<Checkbox id="default" options={options} handleChange={console.log} />
+	<CheckboxGroup
+		id="default"
+		responses={responses}
+		handleChange={console.log}
+	/>
 ));
 
 stories.addWithJSX('Props', () => (
-	<Checkbox
+	<CheckboxGroup
 		id="props"
-		label={text('Label', "I'm the label of the checkbox")}
+		label={text('Label', "I'm the label of the checkbox group")}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		keyboardSelection={boolean('Keyboard selection', false)}
-		options={options}
+		responses={responses}
 		handleChange={console.log}
 	/>
 ));
 
 stories.addWithJSX('Styled', () => (
-	<Checkbox
+	<CheckboxGroup
 		id="styled"
-		label={text('Label', "I'm the label of the checkbox")}
+		label={text('Label', "I'm the label of the checkbox group")}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
-		options={options}
+		responses={responses}
 		handleChange={console.log}
 		style={object('Generated style', {
 			fieldsetStyle: {

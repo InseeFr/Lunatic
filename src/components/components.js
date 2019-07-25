@@ -1,6 +1,6 @@
 export { default as Breadcrumb } from './breadcrumb';
 export { default as Button } from './button';
-export { Checkbox, CheckboxOne, CheckboxBoolean } from './checkbox';
+export { CheckboxGroup, CheckboxOne, CheckboxBoolean } from './checkbox';
 export { default as Datepicker } from './datepicker';
 export { default as Declarations } from './declarations';
 export { default as Dropdown } from './dropdown';

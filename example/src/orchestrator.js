@@ -9,7 +9,7 @@ const updateQuestionnaire = valueType => questionnaire => preferences => updated
 			return _;
 		} else if (c.response) {
 			_.push(buildUpdatedResponse(c)(preferences)(valueType)(value));
-		} else if (c.componentType === 'Checkbox')
+		} else if (c.componentType === 'CheckboxGroup')
 			console.log('options', c.componentType);
 		else if (c.componentType === 'Table')
 			_.push(buildUpdatedTableResponse(c)(preferences)(valueType)(value)(name));

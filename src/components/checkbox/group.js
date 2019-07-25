@@ -5,17 +5,20 @@ import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
 import './checkbox.scss';
 
-class Checkbox extends Component {
+class CheckboxGroup extends Component {
 	constructor(props) {
 		super(props);
-		const { options, handleChange } = props;
-		this.state = { options };
+		const { responses, handleChange } = props;
+		this.state = { responses };
 		this.onChange = index => {
-			const { options: oldItems } = this.state;
-			const options = [...oldItems];
-			options[index] = { ...options[index], value: !options[index].value };
-			this.setState({ options });
-			handleChange(options);
+			const { responses: oldItems } = this.state;
+			const responses = [...oldItems];
+			responses[index] = {
+				...responses[index],
+				value: !responses[index].value,
+			};
+			this.setState({ responses });
+			handleChange(responses);
 		};
 	}
 
@@ -25,7 +28,7 @@ class Checkbox extends Component {
 	}
 
 	render() {
-		const { options } = this.state;
+		const { responses } = this.state;
 		const {
 			id,
 			label,
@@ -55,7 +58,7 @@ class Checkbox extends Component {
 						type={C.AFTER_QUESTION_TEXT}
 						declarations={declarations}
 					/>
-					{options.map(({ id: modId, label: modLabel, value }, i) => {
+					{responses.map(({ id: modId, label: modLabel, value }, i) => {
 						return (
 							<div
 								key={`checkbox-${id}-${modId}`}
@@ -79,7 +82,7 @@ class Checkbox extends Component {
 								<label
 									htmlFor={`checkbox-${id}-${modId}`}
 									id={`input-label-${id}-${modId}`}
-									style={value ? buildStyleObject(checkboxStyle) : {}}
+									style={value ? U.buildStyleObject(checkboxStyle) : {}}
 								>
 									{keyboardSelection
 										? `${U.getAlphabet()[i].toUpperCase()} - ${modLabel}`
@@ -95,10 +98,10 @@ class Checkbox extends Component {
 	}
 }
 
-Checkbox.propTypes = {
+CheckboxGroup.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
-	options: PropTypes.arrayOf(
+	responses: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.string.isRequired,
 			label: PropTypes.string.isRequired,
@@ -114,9 +117,9 @@ Checkbox.propTypes = {
 	style: PropTypes.object,
 };
 
-Checkbox.defaultProps = {
+CheckboxGroup.defaultProps = {
 	label: '',
-	options: [],
+	responses: [],
 	positioning: 'DEFAULT',
 	disabled: false,
 	keyboardSelection: false,
@@ -125,4 +128,4 @@ Checkbox.defaultProps = {
 	style: { fieldsetStyle: {}, checkboxStyle: {} },
 };
 
-export default Checkbox;
+export default CheckboxGroup;
