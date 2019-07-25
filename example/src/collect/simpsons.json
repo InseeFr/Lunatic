@@ -245,78 +245,7 @@
 			"label": "III - Characters",
 			"conditionFilter": "#if((!( $READY != '1')))normal#{else}hidden#end"
 		},
-		{
-			"id": "j334akov",
-			"componentType": "CheckboxGroup",
-			"label": "➡ 1. What are the pet names that the Simpsons family had?",
-			"declarations": [
-				{
-					"id": "j334akov-d5",
-					"declarationType": "INSTRUCTION",
-					"position": "AFTER_QUESTION_TEXT",
-					"label": "Several possible answers"
-				}
-			],
-			"conditionFilter": "#if((!( $READY != '1')))normal#{else}hidden#end",
-			"responses": [
-				{
-					"id": "j334akov-QOP-jbgd8qmn",
-					"label": "Santa's Little Helper",
-					"response": {
-						"name": "PET1",
-						"valueState": [
-							{ "valueType": "PREVIOUS", "value": false },
-							{ "valueType": "COLLECTED", "value": false },
-							{ "valueType": "FORCED", "value": false },
-							{ "valueType": "EDITED", "value": false },
-							{ "valueType": "INPUTED", "value": false }
-						]
-					}
-				},
-				{
-					"id": "j334akov-QOP-jbgd60vl",
-					"label": "Snowball I",
-					"response": {
-						"name": "PET2",
-						"valueState": [
-							{ "valueType": "PREVIOUS", "value": false },
-							{ "valueType": "COLLECTED", "value": false },
-							{ "valueType": "FORCED", "value": false },
-							{ "valueType": "EDITED", "value": false },
-							{ "valueType": "INPUTED", "value": false }
-						]
-					}
-				},
-				{
-					"id": "j334akov-QOP-jbgda2jo",
-					"label": "Coltrane",
-					"response": {
-						"name": "PET3",
-						"valueState": [
-							{ "valueType": "PREVIOUS", "value": false },
-							{ "valueType": "COLLECTED", "value": false },
-							{ "valueType": "FORCED", "value": false },
-							{ "valueType": "EDITED", "value": false },
-							{ "valueType": "INPUTED", "value": false }
-						]
-					}
-				},
-				{
-					"id": "j334akov-QOP-jbgdfssy",
-					"label": "Mojo the Helper Monkey",
-					"response": {
-						"name": "PET4",
-						"valueState": [
-							{ "valueType": "PREVIOUS", "value": false },
-							{ "valueType": "COLLECTED", "value": false },
-							{ "valueType": "FORCED", "value": false },
-							{ "valueType": "EDITED", "value": false },
-							{ "valueType": "INPUTED", "value": false }
-						]
-					}
-				}
-			]
-		},
+
 		{
 			"id": "j6p29i81",
 			"componentType": "Table",
