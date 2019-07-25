@@ -17,7 +17,7 @@ const Dropdown = ({
 	declarations,
 	...props
 }) => {
-	const { preferences, response, handleChange, tooltip } = props;
+	const { preferences, response, handleChange, tooltip, options } = props;
 	const value = U.getResponseByPreference(preferences)(response);
 	const handler = value =>
 		handleChange({
@@ -54,7 +54,10 @@ const Dropdown = ({
 				</div>
 				{tooltip && (
 					<div className="tooltip">
-						<TooltipResponse id={id} response={response} />
+						<TooltipResponse
+							id={id}
+							response={U.buildResponse(options)(response)}
+						/>
 					</div>
 				)}
 			</div>

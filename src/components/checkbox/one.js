@@ -91,7 +91,7 @@ const CheckboxOne = ({
 				</div>
 				{tooltip && (
 					<div className="tooltip">
-						<TooltipResponse id={id} response={response} />
+						<TooltipResponse id={id} response={U.buildResponse(options)(response)} />
 					</div>
 				)}
 			</div>
