@@ -247,7 +247,7 @@
 		},
 		{
 			"id": "j334akov",
-			"componentType": "Checkbox",
+			"componentType": "CheckboxGroup",
 			"label": "➡ 1. What are the pet names that the Simpsons family had?",
 			"declarations": [
 				{
@@ -258,7 +258,7 @@
 				}
 			],
 			"conditionFilter": "#if((!( $READY != '1')))normal#{else}hidden#end",
-			"options": [
+			"responses": [
 				{
 					"id": "j334akov-QOP-jbgd8qmn",
 					"label": "Santa's Little Helper",
