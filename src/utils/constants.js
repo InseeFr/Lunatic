@@ -11,3 +11,4 @@ export const COMMENT = 'COMMENT';
 export const HELP = 'HELP';
 export const WARNING = 'WARNING';
 export const MESSAGE_FILTER = 'MESSAGE_FILTER';
+export const STATEMENT = 'STATEMENT';

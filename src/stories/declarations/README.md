@@ -10,7 +10,7 @@
 
 - `declarations` props has to be an array made by objects with a shape of `{id : string, label: string, position: position *, declarationType: declarationType *}`
 - `position` props has to be `BEFORE_QUESTION_TEXT`, `AFTER_QUESTION_TEXT` or `DETACHABLE`
-- `declarationType` props has to be `INSTRUCTION`, `COMMENT`, `HELP`, `WARNING`, or `MESSAGE_FILTER`
+- `declarationType` props has to be `INSTRUCTION`, `COMMENT`, `HELP`, `WARNING`, `MESSAGE_FILTER` or `STATEMENT`
 
 ## Styles
 

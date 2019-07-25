@@ -7,6 +7,12 @@
 	font-size: 80%;
 }
 
+.declaration-statement {
+	font-style: italic;
+	font-size: 80%;
+	color: blue;
+}
+
 .declaration-help {
 	font-style: italic;
 	font-size: 80%;
@@ -14,7 +20,7 @@
 }
 
 .declaration-warning {
-	font-style: italic;
+	font-style: bold;
 	font-size: 80%;
 	color: red;
 }

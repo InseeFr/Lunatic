@@ -9,6 +9,8 @@ export default PropTypes.arrayOf(
 			C.COMMENT,
 			C.HELP,
 			C.WARNING,
+			C.MESSAGE_FILTER,
+			C.STATEMENT,
 		]),
 		position: PropTypes.oneOf([
 			C.BEFORE_QUESTION_TEXT,

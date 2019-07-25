@@ -37,6 +37,12 @@ const declarations = [
 		position: C.BEFORE_QUESTION_TEXT,
 		declarationType: C.MESSAGE_FILTER,
 	},
+	{
+		id: '6',
+		label: "I'm the label of the statement declaration",
+		position: C.BEFORE_QUESTION_TEXT,
+		declarationType: C.STATEMENT,
+	},
 ];
 
 const stories = storiesOf('Declarations', module)
