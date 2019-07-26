@@ -41,11 +41,11 @@
 			"response": {
 				"name": "READY",
 				"valueState": [
-					{ "valueType": "PREVIOUS", "value": false },
-					{ "valueType": "COLLECTED", "value": false },
-					{ "valueType": "FORCED", "value": false },
-					{ "valueType": "EDITED", "value": false },
-					{ "valueType": "INPUTED", "value": false }
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
 				]
 			}
 		},
@@ -245,7 +245,78 @@
 			"label": "III - Characters",
 			"conditionFilter": "#if((!( $READY != '1')))normal#{else}hidden#end"
 		},
-
+		{
+			"id": "j334akov",
+			"componentType": "CheckboxGroup",
+			"label": "➡ 1. What are the pet names that the Simpsons family had?",
+			"declarations": [
+				{
+					"id": "j334akov-d5",
+					"declarationType": "INSTRUCTION",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": "Several possible answers"
+				}
+			],
+			"conditionFilter": "#if((!( $READY != '1')))normal#{else}hidden#end",
+			"responses": [
+				{
+					"id": "j334akov-QOP-jbgd8qmn",
+					"label": "Santa's Little Helper",
+					"response": {
+						"name": "PET1",
+						"valueState": [
+							{ "valueType": "PREVIOUS", "value": null },
+							{ "valueType": "COLLECTED", "value": null },
+							{ "valueType": "FORCED", "value": null },
+							{ "valueType": "EDITED", "value": null },
+							{ "valueType": "INPUTED", "value": null }
+						]
+					}
+				},
+				{
+					"id": "j334akov-QOP-jbgd60vl",
+					"label": "Snowball I",
+					"response": {
+						"name": "PET2",
+						"valueState": [
+							{ "valueType": "PREVIOUS", "value": null },
+							{ "valueType": "COLLECTED", "value": null },
+							{ "valueType": "FORCED", "value": null },
+							{ "valueType": "EDITED", "value": null },
+							{ "valueType": "INPUTED", "value": null }
+						]
+					}
+				},
+				{
+					"id": "j334akov-QOP-jbgda2jo",
+					"label": "Coltrane",
+					"response": {
+						"name": "PET3",
+						"valueState": [
+							{ "valueType": "PREVIOUS", "value": null },
+							{ "valueType": "COLLECTED", "value": null },
+							{ "valueType": "FORCED", "value": null },
+							{ "valueType": "EDITED", "value": null },
+							{ "valueType": "INPUTED", "value": null }
+						]
+					}
+				},
+				{
+					"id": "j334akov-QOP-jbgdfssy",
+					"label": "Mojo the Helper Monkey",
+					"response": {
+						"name": "PET4",
+						"valueState": [
+							{ "valueType": "PREVIOUS", "value": null },
+							{ "valueType": "COLLECTED", "value": null },
+							{ "valueType": "FORCED", "value": null },
+							{ "valueType": "EDITED", "value": null },
+							{ "valueType": "INPUTED", "value": null }
+						]
+					}
+				}
+			]
+		},
 		{
 			"id": "j6p29i81",
 			"componentType": "Table",
@@ -961,11 +1032,11 @@
 						"response": {
 							"name": "TRAVEL11",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -975,11 +1046,11 @@
 						"response": {
 							"name": "TRAVEL12",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -989,11 +1060,11 @@
 						"response": {
 							"name": "TRAVEL13",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1003,11 +1074,11 @@
 						"response": {
 							"name": "TRAVEL14",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1017,11 +1088,11 @@
 						"response": {
 							"name": "TRAVEL15",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1031,11 +1102,11 @@
 						"response": {
 							"name": "TRAVEL16",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1048,11 +1119,11 @@
 						"response": {
 							"name": "TRAVEL21",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1062,11 +1133,11 @@
 						"response": {
 							"name": "TRAVEL22",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1076,11 +1147,11 @@
 						"response": {
 							"name": "TRAVEL23",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1090,11 +1161,11 @@
 						"response": {
 							"name": "TRAVEL24",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1104,11 +1175,11 @@
 						"response": {
 							"name": "TRAVEL25",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1118,11 +1189,11 @@
 						"response": {
 							"name": "TRAVEL26",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1135,11 +1206,11 @@
 						"response": {
 							"name": "TRAVEL31",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1149,11 +1220,11 @@
 						"response": {
 							"name": "TRAVEL32",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1163,11 +1234,11 @@
 						"response": {
 							"name": "TRAVEL33",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1177,11 +1248,11 @@
 						"response": {
 							"name": "TRAVEL34",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1191,11 +1262,11 @@
 						"response": {
 							"name": "TRAVEL35",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1205,11 +1276,11 @@
 						"response": {
 							"name": "TRAVEL36",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
@@ -1222,11 +1293,11 @@
 						"response": {
 							"name": "TRAVEL41",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1236,11 +1307,11 @@
 						"response": {
 							"name": "TRAVEL42",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1250,11 +1321,11 @@
 						"response": {
 							"name": "TRAVEL43",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1264,11 +1335,11 @@
 						"response": {
 							"name": "TRAVEL44",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1278,11 +1349,11 @@
 						"response": {
 							"name": "TRAVEL45",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					},
@@ -1292,11 +1363,11 @@
 						"response": {
 							"name": "TRAVEL46",
 							"valueState": [
-								{ "valueType": "PREVIOUS", "value": false },
-								{ "valueType": "COLLECTED", "value": false },
-								{ "valueType": "FORCED", "value": false },
-								{ "valueType": "EDITED", "value": false },
-								{ "valueType": "INPUTED", "value": false }
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
 							]
 						}
 					}
