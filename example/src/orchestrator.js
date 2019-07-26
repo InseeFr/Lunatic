@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import * as lunatic from '@inseefr/lunatic';
 
+const mergeQuestionnaireAndData = questionnaire => data => {
+	const { components, ...props } = questionnaire;
+	const filledComponents = components.reduce((_, c) => [..._, c], []);
+	return { ...props, components: filledComponents };
+};
+
 const updateQuestionnaire = valueType => questionnaire => preferences => updatedValue => {
 	const [name, value] = Object.entries(updatedValue)[0];
 	const components = questionnaire.components.reduce((_, c) => {
@@ -78,8 +84,10 @@ const isComponentsConcernedByResponse = responseName => component =>
 			}, [])
 			.filter(str => str === responseName).length === 1);
 
-const Orchestrator = ({ savingType, preferences, source, tooltip }) => {
-	const [questionnaire, setQuestionnaire] = useState(source);
+const Orchestrator = ({ savingType, preferences, source, data, tooltip }) => {
+	const [questionnaire, setQuestionnaire] = useState(
+		mergeQuestionnaireAndData(source)(data)
+	);
 	const onChange = updatedValue => {
 		setQuestionnaire(
 			updateQuestionnaire(savingType)(questionnaire)(preferences)(updatedValue)
