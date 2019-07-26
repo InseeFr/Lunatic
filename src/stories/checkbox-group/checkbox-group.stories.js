@@ -31,12 +31,38 @@ const positioningOptions = {
 	VERTICAL: 'Vertical',
 };
 
+const defaultProps = {
+	handleChange: console.log,
+	responses: [
+		{
+			id: '1',
+			label: 'France',
+			response: {
+				name: 'FRANCE',
+				valueState: [
+					{ valueType: 'COLLECTED', value: null },
+					{ valueType: 'FORCED', value: null },
+					{ valueType: 'EDITED', value: null },
+				],
+			},
+		},
+		{
+			id: '2',
+			label: 'Italy',
+			response: {
+				name: 'ITALY',
+				valueState: [
+					{ valueType: 'COLLECTED', value: false },
+					{ valueType: 'FORCED', value: true },
+					{ valueType: 'EDITED', value: null },
+				],
+			},
+		},
+	],
+};
+
 stories.addWithJSX('Default', () => (
-	<CheckboxGroup
-		id="default"
-		responses={responses}
-		handleChange={console.log}
-	/>
+	<CheckboxGroup id="default" {...defaultProps} />
 ));
 
 stories.addWithJSX('Props', () => (
@@ -47,8 +73,9 @@ stories.addWithJSX('Props', () => (
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		keyboardSelection={boolean('Keyboard selection', false)}
-		responses={responses}
-		handleChange={console.log}
+		preferences={['COLLECTED', 'FORCED']}
+		tooltip={boolean('Tooltip', false)}
+		{...defaultProps}
 	/>
 ));
 
@@ -58,8 +85,7 @@ stories.addWithJSX('Styled', () => (
 		label={text('Label', "I'm the label of the checkbox group")}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
-		responses={responses}
-		handleChange={console.log}
+		{...defaultProps}
 		style={object('Generated style', {
 			fieldsetStyle: {
 				'border-color': color('Fieldset color', '#e80a4d'),

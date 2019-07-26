@@ -1,131 +1,128 @@
-import React, { Component } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
+import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
 import './checkbox.scss';
 
-class CheckboxGroup extends Component {
-	constructor(props) {
-		super(props);
-		const { responses, handleChange } = props;
-		this.state = { responses };
-		this.onChange = index => {
-			const { responses: oldItems } = this.state;
-			const responses = [...oldItems];
-			responses[index] = {
-				...responses[index],
-				value: !responses[index].value,
-			};
-			this.setState({ responses });
-			handleChange(responses);
-		};
-	}
+const CheckboxGroup = ({
+	id,
+	label,
+	preferences,
+	responses,
+	handleChange,
+	disabled,
+	focused,
+	keyboardSelection,
+	positioning,
+	declarations,
+	tooltip,
+	style,
+}) => {
+	const { fieldsetStyle, checkboxStyle } = style;
+	const inputRef = useRef();
 
-	componentDidMount() {
-		const { focused } = this.props;
-		if (focused) this.nameInput.focus();
-	}
+	useEffect(() => {
+		if (focused) inputRef.current.focus();
+	}, [focused]);
 
-	render() {
-		const { responses } = this.state;
-		const {
-			id,
-			label,
-			positioning,
-			disabled,
-			keyboardSelection,
-			focused,
-			declarations,
-			style,
-		} = this.props;
-		const { fieldsetStyle, checkboxStyle } = style;
-		return (
-			<React.Fragment>
+	return (
+		<React.Fragment>
+			<Declarations
+				id={id}
+				type={C.BEFORE_QUESTION_TEXT}
+				declarations={declarations}
+			/>
+
+			<fieldset
+				key={`checkbox-${id}`}
+				className="checkbox-group"
+				style={U.buildStyleObject(fieldsetStyle)}
+			>
+				<legend>{label}</legend>
 				<Declarations
 					id={id}
-					type={C.BEFORE_QUESTION_TEXT}
+					type={C.AFTER_QUESTION_TEXT}
 					declarations={declarations}
 				/>
-				<fieldset
-					key={`checkbox-${id}`}
-					className="checkbox-group"
-					style={U.buildStyleObject(fieldsetStyle)}
-				>
-					<legend>{label}</legend>
-					<Declarations
-						id={id}
-						type={C.AFTER_QUESTION_TEXT}
-						declarations={declarations}
-					/>
-					{responses.map(({ id: modId, label: modLabel, value }, i) => {
-						return (
-							<div
-								key={`checkbox-${id}-${modId}`}
-								className={`checkbox-modality ${U.getItemsPositioningClass(
-									positioning
-								)}`}
-							>
-								<input
-									type="checkbox"
-									id={`checkbox-${id}-${modId}`}
-									ref={input => {
-										if (focused && i === 0) this.nameInput = input;
-									}}
-									key={`checkbox-${id}-${modId}`}
-									aria-labelledby={`input-label-${id}-${modId}`}
-									className="checkbox-lunatic"
-									checked={value}
-									disabled={disabled}
-									onChange={() => this.onChange(i)}
-								/>
-								<label
-									htmlFor={`checkbox-${id}-${modId}`}
-									id={`input-label-${id}-${modId}`}
-									style={value ? U.buildStyleObject(checkboxStyle) : {}}
+				{responses.map(({ id: modId, label: modLabel, response }, i) => {
+					const checked = U.getResponseByPreference(preferences)(response);
+					return (
+						<div className="field-container" key={`checkbox-${id}-${modId}`}>
+							<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+								<div
+									className={`checkbox-modality ${U.getItemsPositioningClass(
+										positioning
+									)}`}
 								>
-									{keyboardSelection
-										? `${U.getAlphabet()[i].toUpperCase()} - ${modLabel}`
-										: modLabel}
-								</label>
+									<input
+										type="checkbox"
+										id={`checkbox-${id}-${modId}`}
+										ref={inputRef}
+										key={`checkbox-${id}-${modId}`}
+										aria-labelledby={`input-label-${id}-${modId}`}
+										className="checkbox-lunatic"
+										checked={checked}
+										disabled={disabled}
+										onChange={e => {
+											handleChange({
+												[U.getResponseName(response)]: e.target.checked,
+											});
+										}}
+									/>
+									<label
+										htmlFor={`checkbox-${id}-${modId}`}
+										id={`input-label-${id}-${modId}`}
+										style={checked ? U.buildStyleObject(checkboxStyle) : {}}
+									>
+										{keyboardSelection
+											? `${U.getAlphabet()[i].toUpperCase()} - ${modLabel}`
+											: modLabel}
+									</label>
+								</div>
 							</div>
-						);
-					})}
-				</fieldset>
-				<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
-			</React.Fragment>
-		);
-	}
-}
+							{tooltip && (
+								<div className="tooltip">
+									<TooltipResponse id={id} response={response} />
+								</div>
+							)}
+						</div>
+					);
+				})}
+			</fieldset>
 
-CheckboxGroup.propTypes = {
-	id: PropTypes.string.isRequired,
-	label: PropTypes.string,
-	responses: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.string.isRequired,
-			label: PropTypes.string.isRequired,
-			value: PropTypes.bool.isRequired,
-		})
-	).isRequired,
-	handleChange: PropTypes.func.isRequired,
-	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
-	disabled: PropTypes.bool,
-	keyboardSelection: PropTypes.bool,
-	focused: PropTypes.bool,
-	declarations: U.declarationsPropTypes,
-	style: PropTypes.object,
+			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+		</React.Fragment>
+	);
 };
 
 CheckboxGroup.defaultProps = {
 	label: '',
+	preferences: ['COLLECTED'],
 	responses: [],
-	positioning: 'DEFAULT',
 	disabled: false,
-	keyboardSelection: false,
 	focused: false,
+	keyboardSelection: false,
+	positioning: 'DEFAULT',
 	declarations: [],
+	tooltip: false,
 	style: { fieldsetStyle: {}, checkboxStyle: {} },
+};
+
+CheckboxGroup.propTypes = {
+	id: PropTypes.string.isRequired,
+	label: PropTypes.string,
+	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
+	response: U.responsePropTypes,
+	handleChange: PropTypes.func.isRequired,
+	disabled: PropTypes.bool,
+	focused: PropTypes.bool,
+	keyboardSelection: PropTypes.bool,
+	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
+	declarations: U.declarationsPropTypes,
+	tooltip: PropTypes.bool,
+	style: PropTypes.object,
 };
 
 export default CheckboxGroup;

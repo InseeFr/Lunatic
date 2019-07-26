@@ -6,16 +6,19 @@
 | :---------------: | :----: | :--------------------------------------: | :------: | ----------------------------------------- |
 |        id         | string |                    -                     |    ✓     | Id of the checkbox                        |
 |       label       | string |                    ""                    |          | Fieldset label of the checkbox            |
-|   responses \*    | array  |                    -                     |    ✓     | Options of the checkbox                   |
+|  preferences \*   | array  |              ["COLLECTED"]               |          | Preferences to manage checkbox response   |
+|   responses \*    | object |                    []                    |          | Responses concerned by the component      |
 |   handleChange    |  func  |                    -                     |    ✓     | Handler of the checkbox                   |
 |     disabled      |  bool  |                  false                   |          | Is the checkbox responses disabled        |
 |      focused      |  bool  |                  false                   |          | Is the checkbox responses focused         |
 | keyboardSelection |  bool  |                  false                   |          | Enable keyboard selection of the checkbox |
 |  positioning \*   | string |                "DEFAULT"                 |          | CheckboxGroup responses positioning       |
-|  declarations \*  | array  |                   [ ]                    |          | Declarations of the checkbox              |
+|  declarations \*  | array  |                    []                    |          | Declarations of the checkbox              |
+|      tooltip      |  bool  |                  false                   |          | Tooltip of the input                      |
 |     style \*      | object | { fieldsetStyle: {}, checkboxStyle: {} } |          | Style of the checkbox                     |
 
-- `responses` props has to be an array made by objects with a shape of `{id: string, label: string, value: bool}`
+- `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
+- `responses` props has to be an array of shape of `{id: string, label: string, response: {name: string, valueState: object}}`
 - `positioning` props has to be one of `DEFAULT`, `HORIZONTAL` or `VERTICAL`
 - `declarations` are documented in the `Declarations` component
 - `style` props has to be composed of `fieldsetStyle` and `checkboxStyle`
