@@ -34,8 +34,8 @@ const questionnaire = {
 			},
 		},
 		{
-			componentType: 'Checkbox',
-			options: [
+			componentType: 'CheckboxGroup',
+			responses: [
 				{
 					response: {
 						name: 'PET1',
@@ -84,8 +84,8 @@ const questionnaire = {
 				[
 					{ value: '2', label: 'Other' },
 					{
-						componentType: 'Checkbox',
-						options: [
+						componentType: 'CheckboxGroup',
+						responses: [
 							{
 								response: {
 									name: 'ICE_FLAVOUR21',

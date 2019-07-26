@@ -13,14 +13,14 @@ export const getState = questionnaire => {
 
 const getVariablesFromComponents = components =>
 	Array.isArray(components)
-		? components.reduce((_, { componentType, response, options, cells }) => {
+		? components.reduce((_, { componentType, response, responses, cells }) => {
 				if (
 					!componentType ||
 					['Sequence', 'Subsequence'].includes(componentType)
 				)
 					return _;
-				else if (componentType === 'Checkbox') {
-					return { ..._, ...getVariableFromOptions(options) };
+				else if (componentType === 'CheckboxGroup') {
+					return { ..._, ...getVariableFromResponses(responses) };
 				} else if (componentType === 'Table') {
 					return { ..._, ...getVariableFromCells(cells) };
 				} else {
@@ -38,8 +38,8 @@ const getVariableFromResponse = response => {
 	return { [name]: values };
 };
 
-const getVariableFromOptions = options =>
-	options.reduce(
+const getVariableFromResponses = responses =>
+	responses.reduce(
 		(_, { response }) => ({ ..._, ...getVariableFromResponse(response) }),
 		{}
 	);
