@@ -16,7 +16,11 @@ const updateQuestionnaire = valueType => questionnaire => preferences => updated
 		} else if (c.response) {
 			_.push(buildUpdatedResponse(c)(preferences)(valueType)(value));
 		} else if (c.componentType === 'CheckboxGroup')
-			console.log('options', c.componentType);
+			_.push(
+				buildUpdatedCheckboxGroupResponse(c)(preferences)(valueType)(value)(
+					name
+				)
+			);
 		else if (c.componentType === 'Table')
 			_.push(buildUpdatedTableResponse(c)(preferences)(valueType)(value)(name));
 		else _.push(c);
@@ -50,18 +54,29 @@ const buildUpdatedResponse = component => preferences => valueType => value => {
 	};
 };
 
+const buildUpdatedVectorResponse = responses => preferences => valueType => value => name =>
+	responses.reduce((_, cellComponent) => {
+		if (isComponentsConcernedByResponse(name)(cellComponent))
+			_.push(
+				buildUpdatedResponse(cellComponent)(preferences)(valueType)(value)
+			);
+		else _.push(cellComponent);
+		return _;
+	}, []);
+
+const buildUpdatedCheckboxGroupResponse = component => preferences => valueType => value => name => {
+	const { responses, ...other } = component;
+	const newResponses = buildUpdatedVectorResponse(responses)(preferences)(
+		valueType
+	)(value)(name);
+	return { ...other, responses: newResponses };
+};
+
 const buildUpdatedTableResponse = component => preferences => valueType => value => name => {
 	const { cells, ...other } = component;
 	const newCells = cells.reduce((_, line) => {
 		_.push(
-			line.reduce((__, cellComponent) => {
-				if (isComponentsConcernedByResponse(name)(cellComponent))
-					__.push(
-						buildUpdatedResponse(cellComponent)(preferences)(valueType)(value)
-					);
-				else __.push(cellComponent);
-				return __;
-			}, [])
+			buildUpdatedVectorResponse(line)(preferences)(valueType)(value)(name)
 		);
 		return _;
 	}, []);
@@ -70,8 +85,8 @@ const buildUpdatedTableResponse = component => preferences => valueType => value
 
 const isComponentsConcernedByResponse = responseName => component =>
 	(component.response && component.response.name === responseName) ||
-	(component.options &&
-		component.options.filter(
+	(component.responses &&
+		component.responses.filter(
 			o => o.response && o.response.name === responseName
 		).length !== 0) ||
 	(component.cells &&
