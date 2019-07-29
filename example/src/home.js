@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import logo from './img/lunatic-logo.png';
-import CollectOrchestrator from './collect';
-import ManagementOrchestrator from './management';
+import { CollectOrchestrator, ManagementOrchestrator } from './orchestrator';
 import './custom-lunatic.scss';
 
 const Home = () => {

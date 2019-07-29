@@ -3,29 +3,73 @@ import * as lunatic from '@inseefr/lunatic';
 
 const mergeQuestionnaireAndData = questionnaire => data => {
 	const { components, ...props } = questionnaire;
-	const filledComponents = components.reduce((_, c) => [..._, c], []);
+	const filledComponents = components.reduce((_, component) => {
+		const { response, componentType } = component;
+		if (response) return [..._, mergeSimpleComponentAndData(component)(data)];
+		else if (componentType === 'CheckboxGroup')
+			return [..._, mergeCheckboxGroupAndData(component)(data)];
+		else if (componentType === 'Table')
+			return [..._, mergeTableAndData(component)(data)];
+		else return [..._, component];
+	}, []);
 	return { ...props, components: filledComponents };
+};
+
+const mergeSimpleComponentAndData = component => data => {
+	const { response, ...other } = component;
+	const { name, valueState } = response;
+	const newValueState = valueState.map(({ valueType, value }) => {
+		const newValue =
+			data[name] !== undefined && data[name][valueType] !== undefined
+				? data[name][valueType]
+				: value;
+		return { valueType, value: newValue };
+	});
+	return { ...other, response: { name, valueState: newValueState } };
+};
+
+const mergeCheckboxGroupAndData = component => data => {
+	const { responses, ...other } = component;
+	const newResponses = responses.map(c => mergeSimpleComponentAndData(c)(data));
+	return { ...other, responses: newResponses };
+};
+
+const mergeTableAndData = component => data => {
+	const { cells, ...other } = component;
+	const newCells = cells.reduce((_, line) => {
+		const newLine = line.map(component =>
+			component.response
+				? mergeSimpleComponentAndData(component)(data)
+				: component
+		);
+		return [..._, newLine];
+	}, []);
+	return { ...other, cells: newCells };
+};
+
+const updateComponent = valueType => component => preferences => name => value => {
+	const { response, componentType } = component;
+	if (!isComponentsConcernedByResponse(name)(component)) {
+		return component;
+	} else if (response) {
+		return buildUpdatedResponse(component)(preferences)(valueType)(value);
+	} else if (componentType === 'CheckboxGroup')
+		return buildUpdatedCheckboxGroupResponse(component)(preferences)(valueType)(
+			value
+		)(name);
+	else if (componentType === 'Table')
+		return buildUpdatedTableResponse(component)(preferences)(valueType)(value)(
+			name
+		);
+	else return component;
 };
 
 const updateQuestionnaire = valueType => questionnaire => preferences => updatedValue => {
 	const [name, value] = Object.entries(updatedValue)[0];
-	const components = questionnaire.components.reduce((_, c) => {
-		if (!isComponentsConcernedByResponse(name)(c)) {
-			_.push(c);
-			return _;
-		} else if (c.response) {
-			_.push(buildUpdatedResponse(c)(preferences)(valueType)(value));
-		} else if (c.componentType === 'CheckboxGroup')
-			_.push(
-				buildUpdatedCheckboxGroupResponse(c)(preferences)(valueType)(value)(
-					name
-				)
-			);
-		else if (c.componentType === 'Table')
-			_.push(buildUpdatedTableResponse(c)(preferences)(valueType)(value)(name));
-		else _.push(c);
-		return _;
-	}, []);
+	const components = questionnaire.components.reduce(
+		(_, c) => [..._, updateComponent(valueType)(c)(preferences)(name)(value)],
+		[]
+	);
 	return { ...questionnaire, components };
 };
 
