@@ -485,18 +485,12 @@ $colorSecondaryContrastText: #ffffff;
 .lunatic table.table-lunatic {
 	.table-cell-axis {
 		text-align: left;
+		width: 100%;
 	}
 	td,
 	th {
 		border-color: $colorPrimaryDark;
 		padding: 0.4em;
-	}
-	td .input-lunatic {
-		width: 80%;
-		margin-left: 10%;
-	}
-	td .textarea-lunatic {
-		width: 100%;
 	}
 }
 
