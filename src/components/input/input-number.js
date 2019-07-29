@@ -89,7 +89,6 @@ const InputNumber = ({
 									target: { value },
 								} = e;
 								validate(value);
-								console.log(e.target);
 								handleChange({
 									[U.getResponseName(response)]:
 										value || value === 0 ? Number(value) : null,
