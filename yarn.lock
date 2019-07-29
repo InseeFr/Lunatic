@@ -976,10 +976,10 @@
   dependencies:
     "@hapi/hoek" "8.x.x"
 
-"@inseefr/lunatic@^0.2.56":
-  version "0.2.56"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.2.56.tgz#a6b108b9889156a04ccac0aa0062ed81e4ff3599"
-  integrity sha512-y6Ey/IbeP4RmYGnLbxJkuGY6yKMhXw9n/mq3rkqQz7bZFTg3kF+PDuBJp8hLilwGWUg3co7DiS12Bmmgxk2JbQ==
+"@inseefr/lunatic@^0.2.57":
+  version "0.2.57"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.2.57.tgz#4d860ce032a4a9e90028df222f3e7411ef119a1c"
+  integrity sha512-cO7/cLP7OK8d3tzZkvo+wYjCm/1BAWcsYUfdMuNk7p1sBf5MjWjh4lBMXBimZNRH2cpDbsrse3W6SNAbmRbsmw==
   dependencies:
     lodash.camelcase "^4.3.0"
     prop-types "^15.6.0"
