@@ -1,6 +1,11 @@
 export const mergeQuestionnaireAndData = questionnaire => data => {
-	if (!questionnaire || !questionnaire.components || !data)
-		return questionnaire || {};
+	if (
+		!questionnaire ||
+		!questionnaire.components ||
+		questionnaire.components.length === 0
+	)
+		return {};
+	if (!data) return questionnaire;
 	const { components, ...props } = questionnaire;
 	const filledComponents = components.reduce((_, component) => {
 		const { response, componentType } = component;
