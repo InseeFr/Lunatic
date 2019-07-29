@@ -59,7 +59,7 @@ export const buildUpdatedResponse = component => preferences => valueType => val
 				_,
 			''
 		);
-		if (value === lastValue) newValue = null;
+		if (value == lastValue) newValue = null;
 	}
 	return {
 		...component,
