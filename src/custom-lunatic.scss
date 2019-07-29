@@ -512,3 +512,15 @@ $colorSecondaryContrastText: #ffffff;
 		background-color: $colorPrimaryDark;
 	}
 }
+
+.field-container {
+	width: 100%;
+}
+
+.field-with-tooltip {
+	width: 90%;
+}
+
+.tooltip {
+	width: 10%;
+}
