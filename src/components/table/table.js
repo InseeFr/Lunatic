@@ -92,7 +92,7 @@ const Table = ({
 					)}
 				</tbody>
 			</table>
-			{minLines && lines < maxLines && (
+			{Number.isInteger(minLines) && lines < maxLines && (
 				<Button
 					label="addLine"
 					value="Add a line"
