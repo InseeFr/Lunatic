@@ -2,7 +2,7 @@ import {
 	getState,
 	getCollectedState,
 	getCollectedStateByValueType,
-} from 'utils/to-expose';
+} from 'utils/to-expose/state';
 
 describe('init-state', () => {
 	describe('getState', () => {
