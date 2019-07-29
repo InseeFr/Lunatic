@@ -707,8 +707,8 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'CHECKBOX_ONE_11',
 						valueState: [
-							{ valueType: 'COLLECTED', value: '2' },
-							{ valueType: 'FORCED', value: '1' },
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
 							{ valueType: 'EDITED', value: null },
 						],
 					},
@@ -719,8 +719,8 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'INPUT_42',
 						valueState: [
-							{ valueType: 'COLLECTED', value: 'My collected input' },
-							{ valueType: 'FORCED', value: 'My forced input' },
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
 						],
 					},
 				},
@@ -730,9 +730,9 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'INPUT_43',
 						valueState: [
-							{ valueType: 'COLLECTED', value: 'My collected input' },
-							{ valueType: 'FORCED', value: 'My forced input' },
-							{ valueType: 'EDITED', value: 'My edited input' },
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
 						],
 					},
 				},
@@ -742,9 +742,9 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'INPUT_NUMBER_44',
 						valueState: [
-							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'COLLECTED', value: null },
 							{ valueType: 'FORCED', value: null },
-							{ valueType: 'EDITED', value: '30' },
+							{ valueType: 'EDITED', value: null },
 						],
 					},
 				},
@@ -760,7 +760,7 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'CHECKBOX_ONE_51',
 						valueState: [
-							{ valueType: 'COLLECTED', value: '2' },
+							{ valueType: 'COLLECTED', value: null },
 							{ valueType: 'FORCED', value: null },
 							{ valueType: 'EDITED', value: null },
 						],
@@ -772,7 +772,7 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'INPUT_52',
 						valueState: [
-							{ valueType: 'COLLECTED', value: 'My collected input' },
+							{ valueType: 'COLLECTED', value: null },
 							{ valueType: 'FORCED', value: null },
 							{ valueType: 'EDITED', value: null },
 						],
@@ -786,7 +786,7 @@ stories.addWithJSX('Roster', () => (
 						valueState: [
 							{ valueType: 'COLLECTED', value: null },
 							{ valueType: 'FORCED', value: null },
-							{ valueType: 'EDITED', value: 'My edited input' },
+							{ valueType: 'EDITED', value: null },
 						],
 					},
 				},
@@ -815,7 +815,7 @@ stories.addWithJSX('Roster', () => (
 						name: 'CHECKBOX_ONE_61',
 						valueState: [
 							{ valueType: 'COLLECTED', value: null },
-							{ valueType: 'FORCED', value: '1' },
+							{ valueType: 'FORCED', value: null },
 							{ valueType: 'EDITED', value: null },
 						],
 					},
@@ -839,7 +839,7 @@ stories.addWithJSX('Roster', () => (
 						valueState: [
 							{ valueType: 'COLLECTED', value: null },
 							{ valueType: 'FORCED', value: null },
-							{ valueType: 'EDITED', value: 'My edited input' },
+							{ valueType: 'EDITED', value: null },
 						],
 					},
 				},
@@ -851,7 +851,7 @@ stories.addWithJSX('Roster', () => (
 						valueState: [
 							{ valueType: 'COLLECTED', value: null },
 							{ valueType: 'FORCED', value: null },
-							{ valueType: 'EDITED', value: '9' },
+							{ valueType: 'EDITED', value: null },
 						],
 					},
 				},
@@ -869,7 +869,7 @@ stories.addWithJSX('Roster', () => (
 						valueState: [
 							{ valueType: 'COLLECTED', value: null },
 							{ valueType: 'FORCED', value: null },
-							{ valueType: 'EDITED', value: '1' },
+							{ valueType: 'EDITED', value: null },
 						],
 					},
 				},
@@ -879,8 +879,8 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'INPUT_72',
 						valueState: [
-							{ valueType: 'COLLECTED', value: 'My collected input' },
-							{ valueType: 'FORCED', value: 'My forced input' },
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
 						],
 					},
 				},
@@ -890,9 +890,9 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'INPUT_73',
 						valueState: [
-							{ valueType: 'COLLECTED', value: 'My collected input' },
-							{ valueType: 'FORCED', value: 'My forced input' },
-							{ valueType: 'EDITED', value: 'My edited input' },
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
 						],
 					},
 				},
@@ -902,7 +902,7 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'INPUT_NUMBER_74',
 						valueState: [
-							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'COLLECTED', value: null },
 							{ valueType: 'FORCED', value: null },
 							{ valueType: 'EDITED', value: null },
 						],
@@ -920,9 +920,9 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'CHECKBOX_ONE_81',
 						valueState: [
-							{ valueType: 'COLLECTED', value: '1' },
+							{ valueType: 'COLLECTED', value: null },
 							{ valueType: 'FORCED', value: null },
-							{ valueType: 'EDITED', value: '2' },
+							{ valueType: 'EDITED', value: null },
 						],
 					},
 				},
@@ -932,9 +932,9 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'INPUT_82',
 						valueState: [
-							{ valueType: 'COLLECTED', value: 'My collected input' },
-							{ valueType: 'FORCED', value: 'My forced input' },
-							{ valueType: 'EDITED', value: 'My edited input' },
+							{ valueType: 'COLLECTED', value: null },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
 						],
 					},
 				},
@@ -944,7 +944,7 @@ stories.addWithJSX('Roster', () => (
 					response: {
 						name: 'INPUT_83',
 						valueState: [
-							{ valueType: 'COLLECTED', value: 'My collected input' },
+							{ valueType: 'COLLECTED', value: null },
 							{ valueType: 'FORCED', value: null },
 						],
 					},
@@ -974,7 +974,7 @@ stories.addWithJSX('Roster', () => (
 						name: 'CHECKBOX_ONE_91',
 						valueState: [
 							{ valueType: 'COLLECTED', value: null },
-							{ valueType: 'FORCED', value: '1' },
+							{ valueType: 'FORCED', value: null },
 							{ valueType: 'EDITED', value: null },
 						],
 					},
@@ -986,8 +986,8 @@ stories.addWithJSX('Roster', () => (
 						name: 'INPUT_92',
 						valueState: [
 							{ valueType: 'COLLECTED', value: null },
-							{ valueType: 'FORCED', value: 'My forced input' },
-							{ valueType: 'EDITED', value: 'My edited input' },
+							{ valueType: 'FORCED', value: null },
+							{ valueType: 'EDITED', value: null },
 						],
 					},
 				},
@@ -1009,7 +1009,7 @@ stories.addWithJSX('Roster', () => (
 						name: 'INPUT_NUMBER_94',
 						valueState: [
 							{ valueType: 'COLLECTED', value: null },
-							{ valueType: 'FORCED', value: '2' },
+							{ valueType: 'FORCED', value: null },
 							{ valueType: 'EDITED', value: null },
 						],
 					},

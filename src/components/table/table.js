@@ -16,7 +16,9 @@ const Table = ({
 	declarations,
 	tooltip,
 }) => {
-	const minLines = initLines ? initLines.min : undefined;
+	const minLines = initLines
+		? Math.max(initLines.min, U.getRosterInitLines(cells))
+		: undefined;
 	const maxLines = initLines ? initLines.max : undefined;
 	const [lines, setLines] = useState(minLines);
 
@@ -44,48 +46,50 @@ const Table = ({
 			/>
 			<table id={`table-${tableId}`} className="table-lunatic">
 				<tbody>
-					{(minLines ? cells.slice(0, lines + 1) : cells).map((line, i) => (
-						<tr key={`table-${tableId}-line${i}`}>
-							{line.map((component, j) => {
-								const {
-									label,
-									headerCell,
-									colspan,
-									rowspan,
-									componentType,
-									...componentProps
-								} = component;
-								if (componentType) {
-									const Component = lunatic[componentType];
-									return (
-										<td
-											key={`table-${tableId}-line${i}-cell-${j}`}
-											style={{ width }}
-										>
-											<Component
-												label={label}
-												handleChange={handleChange}
-												preferences={preferences}
-												tooltip={tooltip}
-												{...componentProps}
-											/>
-										</td>
+					{(minLines || minLines === 0 ? cells.slice(0, lines + 1) : cells).map(
+						(line, i) => (
+							<tr key={`table-${tableId}-line${i}`}>
+								{line.map((component, j) => {
+									const {
+										label,
+										headerCell,
+										colspan,
+										rowspan,
+										componentType,
+										...componentProps
+									} = component;
+									if (componentType) {
+										const Component = lunatic[componentType];
+										return (
+											<td
+												key={`table-${tableId}-line${i}-cell-${j}`}
+												style={{ width }}
+											>
+												<Component
+													label={label}
+													handleChange={handleChange}
+													preferences={preferences}
+													tooltip={tooltip}
+													{...componentProps}
+												/>
+											</td>
+										);
+									}
+									const cellOptions = {
+										key: `table-${tableId}-line${i}-cell-${j}`,
+										style: { width },
+										colSpan: colspan || 1,
+										rowSpan: rowspan || 1,
+									};
+									return headerCell ? (
+										<th {...cellOptions}>{label}</th>
+									) : (
+										<td {...cellOptions}>{label}</td>
 									);
-								}
-								const cellOptions = {
-									key: `table-${tableId}-line${i}-cell-${j}`,
-									style: { width },
-									colSpan: colspan || 1,
-									rowSpan: rowspan || 1,
-								};
-								return headerCell ? (
-									<th {...cellOptions}>{label}</th>
-								) : (
-									<td {...cellOptions}>{label}</td>
-								);
-							})}
-						</tr>
-					))}
+								})}
+							</tr>
+						)
+					)}
 				</tbody>
 			</table>
 			{minLines && lines < maxLines && (
