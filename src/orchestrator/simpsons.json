@@ -16,6 +16,7 @@
       
       { "id" : "j6p3dkx6",
         "componentType" : "Textarea",
+        "mandatory" : false,
         "maxLength" : "500",
         "label" : "➡ 1. Before starting, do you have any comments about the Simpsons family?",
         "conditionFilter" : "normal",
@@ -40,6 +41,7 @@
       
       { "id" : "j6p0np9q",
         "componentType" : "CheckboxBoolean",
+        "mandatory" : false,
         "label" : "➡ 2. Are you ready?",
         "conditionFilter" : "normal",
         "response" : 
@@ -68,6 +70,7 @@
       
       { "id" : "j3343qhx",
         "componentType" : "Input",
+        "mandatory" : false,
         "maxLength" : "30",
         "label" : "➡ 3. Who is the producer?",
         "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
@@ -92,6 +95,7 @@
       
       { "id" : "j6q9h8tj",
         "componentType" : "InputNumber",
+        "mandatory" : false,
         "min" : 0,
         "max" : 99,
         "decimals" : 0,
@@ -118,6 +122,7 @@
       
       { "id" : "j334cyqb",
         "componentType" : "Datepicker",
+        "mandatory" : false,
         "label" : "➡ 5. When was the first episode of the Simpsons?",
         "declarations" : 
         [ 
@@ -148,6 +153,7 @@
       
       { "id" : "j6z06z1e",
         "componentType" : "InputNumber",
+        "mandatory" : false,
         "min" : 0,
         "max" : 99,
         "decimals" : 1,
@@ -185,6 +191,7 @@
       
       { "id" : "j3343clt",
         "componentType" : "Radio",
+        "mandatory" : false,
         "label" : "➡ 1. In which city do the Simpsons reside?",
         "declarations" : 
         [ 
@@ -224,6 +231,7 @@
       
       { "id" : "j6qdfhvw",
         "componentType" : "CheckboxOne",
+        "mandatory" : false,
         "label" : "➡ 2. Who is the Simpsons city mayor?",
         "declarations" : 
         [ 
@@ -266,6 +274,7 @@
       
       { "id" : "j4nw5cqz",
         "componentType" : "Dropdown",
+        "mandatory" : false,
         "label" : "➡ 3. In which state do The Simpsons reside?",
         "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
         "response" : 
@@ -430,6 +439,7 @@
       
       { "id" : "j6p29i81",
         "componentType" : "Table",
+        "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "➡ 2. Does Jay like the following ice cream flavours?",
         "declarations" : 
@@ -571,6 +581,7 @@
       
       { "id" : "j6qefnga",
         "componentType" : "Table",
+        "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "➡ 3. Which character works in the nuclear power plant?",
         "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
@@ -706,6 +717,7 @@
       
       { "id" : "j6yzoc6g",
         "componentType" : "Table",
+        "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "➡ 4. In which city each character was born?",
         "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
@@ -928,6 +940,7 @@
       
       { "id" : "j4nwc63q",
         "componentType" : "Table",
+        "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "➡ 1. Please, specify the percentage of Jay's expenses in the Kwik-E-Mart for each product?",
         "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
@@ -1163,6 +1176,7 @@
       
       { "id" : "j4nw0rr6",
         "componentType" : "Table",
+        "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "➡ 2. Who did these clownings and tell us what you remember?",
         "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
@@ -1425,6 +1439,7 @@
       
       { "id" : "j6p2lwuj",
         "componentType" : "Table",
+        "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "➡ 3. Which of the following means of transport were used by the hero and in which country?",
         "declarations" : 
@@ -1985,6 +2000,7 @@
       
       { "id" : "j6qg8rc6",
         "componentType" : "Table",
+        "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "➡ 1. Please, complete the following grid with your favourite characters",
         "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
@@ -2477,6 +2493,7 @@
       
       { "id" : "j6z0z3us",
         "componentType" : "Textarea",
+        "mandatory" : false,
         "maxLength" : "255",
         "label" : "➡ 1. Do you have any comment about the survey?",
         "conditionFilter" : "normal",
