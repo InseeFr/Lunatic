@@ -4,7 +4,7 @@ import {
 	getCollectedStateByValueType,
 } from 'utils/to-expose/state';
 
-describe('init-state', () => {
+describe('state', () => {
 	describe('getState', () => {
 		it('should return empty object', () => {
 			expect(getState([])).toEqual({
