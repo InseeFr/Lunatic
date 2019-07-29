@@ -91,7 +91,7 @@ const InputNumber = ({
 								validate(value);
 								handleChange({
 									[U.getResponseName(response)]:
-										value || value === 0 ? Number(value) : null,
+										value || value === 0 ? Number(value) : '',
 								});
 							}}
 						/>
