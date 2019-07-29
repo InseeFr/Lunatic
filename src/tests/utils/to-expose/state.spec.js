@@ -116,7 +116,14 @@ const questionnaire = {
 			],
 		},
 	],
-	variables: [],
+	variables: [
+		{ variableType: 'EXTERNAL', name: 'EXT', label: 'EXT value' },
+		{
+			variableType: 'CALCULATED',
+			name: 'CALC',
+			value: 'XXX',
+		},
+	],
 };
 const state = {
 	COLLECTED: {
@@ -163,6 +170,6 @@ const state = {
 			INPUTED: true,
 		},
 	},
-	CALCULATED: {},
-	EXTERNAL: {},
+	EXTERNAL: { EXT: 'EXT value' },
+	CALCULATED: { CALC: 'Evaluation is coming soon!' },
 };

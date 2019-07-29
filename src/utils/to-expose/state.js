@@ -1,14 +1,23 @@
 export const getState = questionnaire => {
 	const { components, variables } = questionnaire;
 	const COLLECTED = getVariablesFromComponents(components);
-	//	TODO
-	// const CALCULATED = Array.isArray(variables)
-	// 	? variables.filter(({ variableType }) => variableType === 'CALCULATED')
-	// 	: {};
-	// const EXTERNAL = Array.isArray(variables)
-	// 	? variables.filter(({ variableType }) => variableType === 'EXTERNAL')
-	// 	: {};
-	return { COLLECTED, CALCULATED: {}, EXTERNAL: {} };
+	const CALCULATED = Array.isArray(variables)
+		? variables
+				.filter(({ variableType }) => variableType === 'CALCULATED')
+				.reduce(
+					(_, { name }) => ({ ..._, [name]: 'Evaluation is coming soon!' }),
+					{}
+				)
+		: {};
+	const EXTERNAL =
+		Array.isArray(variables) &&
+		variables.filter(({ variableType }) => variableType === 'EXTERNAL').length >
+			0
+			? variables
+					.filter(({ variableType }) => variableType === 'EXTERNAL')
+					.reduce((_, { name, label }) => ({ ..._, [name]: label }), {})
+			: {};
+	return { COLLECTED, CALCULATED, EXTERNAL };
 };
 
 const getVariablesFromComponents = components =>
