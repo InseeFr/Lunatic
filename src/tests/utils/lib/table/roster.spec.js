@@ -9,7 +9,7 @@ const cells = [
 	[{ response: { valueState: [{ value: 'ok' }] } }],
 	[],
 	[{ response: { valueState: [{ value: null }] } }],
-	[{ response: { valueState: [{ value: 'ok' }] } }],
+	[{ response: { valueState: [{ value: 'ok' }, { value: 'ok2' }] } }],
 ];
 
 describe('roster utils', () => {
