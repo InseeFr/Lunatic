@@ -90,8 +90,7 @@ const InputNumber = ({
 								} = e;
 								validate(value);
 								handleChange({
-									[U.getResponseName(response)]:
-										value || value === 0 ? Number(value) : '',
+									[U.getResponseName(response)]: value,
 								});
 							}}
 						/>
