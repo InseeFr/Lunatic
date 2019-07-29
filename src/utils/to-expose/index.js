@@ -1,3 +1,3 @@
-export * from './handler';
-export * from './init-questionnaire';
+export { updateQuestionnaire } from './handler';
+export { mergeQuestionnaireAndData } from './init-questionnaire';
 export { getState } from './state';
