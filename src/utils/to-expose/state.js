@@ -20,6 +20,21 @@ export const getState = questionnaire => {
 	return { COLLECTED, CALCULATED, EXTERNAL };
 };
 
+export const getCollectedState = questionnaire =>
+	getState(questionnaire).COLLECTED;
+
+export const getCollectedStateByValueType = questionnaire => valueType =>
+	['PREVIOUS', 'COLLECTED', 'FORCED', 'EDITED', 'INPUTED'].includes(valueType)
+		? Object.entries(getCollectedState(questionnaire)).reduce((_, v) => {
+				if (v[1][valueType] !== null)
+					return {
+						..._,
+						[v[0]]: v[1][valueType],
+					};
+				return _;
+		  }, {})
+		: {};
+
 const getVariablesFromComponents = components =>
 	Array.isArray(components)
 		? components.reduce((_, { componentType, response, responses, cells }) => {

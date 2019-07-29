@@ -1,4 +1,8 @@
-import { getState } from 'utils/to-expose';
+import {
+	getState,
+	getCollectedState,
+	getCollectedStateByValueType,
+} from 'utils/to-expose';
 
 describe('init-state', () => {
 	describe('getState', () => {
@@ -11,6 +15,25 @@ describe('init-state', () => {
 		});
 		it('should return object', () => {
 			expect(getState(questionnaire)).toEqual(state);
+		});
+	});
+	describe('getCollectedState', () => {
+		it('should return empty object', () => {
+			expect(getCollectedState([])).toEqual({});
+		});
+		it('should return object', () => {
+			expect(getCollectedState(questionnaire)).toEqual(collectedState);
+		});
+	});
+	describe('getCollectedStateByValueType', () => {
+		it('should return empty object', () => {
+			expect(getCollectedStateByValueType([])('')).toEqual({});
+			expect(getCollectedStateByValueType(questionnaire)('')).toEqual({});
+		});
+		it('should return object', () => {
+			expect(getCollectedStateByValueType(questionnaire)('COLLECTED')).toEqual(
+				collectedStateCollected
+			);
 		});
 	});
 });
@@ -90,11 +113,11 @@ const questionnaire = {
 								response: {
 									name: 'ICE_FLAVOUR21',
 									valueState: [
-										{ valueType: 'PREVIOUS', value: false },
-										{ valueType: 'COLLECTED', value: false },
-										{ valueType: 'FORCED', value: false },
-										{ valueType: 'EDITED', value: false },
-										{ valueType: 'INPUTED', value: false },
+										{ valueType: 'PREVIOUS', value: null },
+										{ valueType: 'COLLECTED', value: null },
+										{ valueType: 'FORCED', value: null },
+										{ valueType: 'EDITED', value: null },
+										{ valueType: 'INPUTED', value: null },
 									],
 								},
 							},
@@ -156,11 +179,11 @@ const state = {
 			INPUTED: '',
 		},
 		ICE_FLAVOUR21: {
-			PREVIOUS: false,
-			COLLECTED: false,
-			FORCED: false,
-			EDITED: false,
-			INPUTED: false,
+			PREVIOUS: null,
+			COLLECTED: null,
+			FORCED: null,
+			EDITED: null,
+			INPUTED: null,
 		},
 		ICE_FLAVOUR22: {
 			PREVIOUS: true,
@@ -172,4 +195,57 @@ const state = {
 	},
 	EXTERNAL: { EXT: 'EXT value' },
 	CALCULATED: { CALC: 'Evaluation is coming soon!' },
+};
+
+const collectedState = {
+	COMMENT: {
+		PREVIOUS: 'PREVIOUS',
+		COLLECTED: 'COLLECTED',
+		FORCED: 'FORCED',
+		EDITED: 'EDITED',
+		INPUTED: 'INPUTED',
+	},
+	PET1: {
+		PREVIOUS: false,
+		COLLECTED: false,
+		FORCED: false,
+		EDITED: false,
+		INPUTED: false,
+	},
+	PET2: {
+		PREVIOUS: false,
+		COLLECTED: false,
+		FORCED: false,
+		EDITED: false,
+		INPUTED: false,
+	},
+	ICE_FLAVOUR1: {
+		PREVIOUS: '',
+		COLLECTED: '',
+		FORCED: '',
+		EDITED: '',
+		INPUTED: '',
+	},
+	ICE_FLAVOUR21: {
+		PREVIOUS: null,
+		COLLECTED: null,
+		FORCED: null,
+		EDITED: null,
+		INPUTED: null,
+	},
+	ICE_FLAVOUR22: {
+		PREVIOUS: true,
+		COLLECTED: true,
+		FORCED: true,
+		EDITED: true,
+		INPUTED: true,
+	},
+};
+
+const collectedStateCollected = {
+	COMMENT: 'COLLECTED',
+	PET1: false,
+	PET2: false,
+	ICE_FLAVOUR1: '',
+	ICE_FLAVOUR22: true,
 };

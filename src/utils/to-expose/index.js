@@ -1,1 +1,1 @@
-export { getState } from './state';
+export * from './state';
