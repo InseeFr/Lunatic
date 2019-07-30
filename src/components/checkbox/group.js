@@ -91,7 +91,6 @@ const CheckboxGroup = ({
 					);
 				})}
 			</fieldset>
-
 			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
 		</React.Fragment>
 	);

@@ -4,6 +4,9 @@ describe('init-questionnaire', () => {
 	describe('mergeQuestionnaireAndData', () => {
 		it('should return empty object', () => {
 			expect(I.mergeQuestionnaireAndData()()).toEqual({});
+			expect(I.mergeQuestionnaireAndData(questionnaire)()).toEqual(
+				questionnaire
+			);
 			expect(I.mergeQuestionnaireAndData({})({})).toEqual({});
 			expect(I.mergeQuestionnaireAndData({ components: [] })({})).toEqual({});
 		});
@@ -15,6 +18,7 @@ describe('init-questionnaire', () => {
 
 const questionnaire = {
 	components: [
+		{ componentType: 'Sequence' },
 		{
 			componentType: 'Input',
 			response: {
@@ -49,6 +53,7 @@ const questionnaire = {
 			componentType: 'Table',
 			cells: [
 				[
+					{ label: 'label' },
 					{
 						componentType: 'Radio',
 						response: {
@@ -71,6 +76,7 @@ const data = {
 
 const result = {
 	components: [
+		{ componentType: 'Sequence' },
 		{
 			componentType: 'Input',
 			response: {
@@ -105,6 +111,7 @@ const result = {
 			componentType: 'Table',
 			cells: [
 				[
+					{ label: 'label' },
 					{
 						componentType: 'Radio',
 						response: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Datepicker } from 'components';
 
 const handleChange = jest.fn();
@@ -27,6 +27,15 @@ describe('datepicker', () => {
 	it('returns required component', () => {
 		const wrapper = shallow(<Datepicker {...defaultProps} required />);
 		expect(wrapper.find('input').prop('required')).toBeTruthy();
+	});
+
+	it('returns tooltip component', () => {
+		shallow(<Datepicker {...defaultProps} tooltip />);
+	});
+
+	it('renders firing useEffect', () => {
+		const wrapper = mount(<Datepicker {...defaultProps} />);
+		wrapper.setProps({ focused: true });
 	});
 
 	it('should trigger the change event', () => {

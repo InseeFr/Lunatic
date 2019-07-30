@@ -10,8 +10,8 @@ describe('input', () => {
 		shallow(<Input {...defaultProps} />);
 	});
 
-	it('returns readOnly component', () => {
-		const wrapper = shallow(<Input {...defaultProps} readOnly />);
+	it('returns readOnly and autoComplete component', () => {
+		const wrapper = shallow(<Input {...defaultProps} readOnly autoComplete />);
 		expect(wrapper.find('input').prop('readOnly')).toBeTruthy();
 	});
 

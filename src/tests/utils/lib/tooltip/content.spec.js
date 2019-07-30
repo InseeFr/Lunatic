@@ -84,6 +84,44 @@ describe('build tooltip content', () => {
 				],
 				imgName: 'editedImg',
 			});
+			expect(
+				buildTooltip({
+					valueState: [
+						{ valueType: 'COLLECTED', value: 'Collected' },
+						{ valueType: 'FORCED', value: null },
+						{ valueType: 'EDITED', value: 'Edited' },
+					],
+				})
+			).toEqual({
+				content: [
+					{
+						key: 'Brute',
+						value: 'Collected',
+					},
+				],
+				imgName: 'editedImg',
+			});
+			expect(
+				buildTooltip({
+					valueState: [
+						{ valueType: 'COLLECTED', value: null },
+						{ valueType: 'FORCED', value: 'Forced' },
+						{ valueType: 'EDITED', value: 'Edited' },
+					],
+				})
+			).toEqual({
+				content: [
+					{
+						key: 'Brute',
+						value: ' - ',
+					},
+					{
+						key: 'Correction automatique',
+						value: 'Forced',
+					},
+				],
+				imgName: 'editedImg',
+			});
 		});
 	});
 });

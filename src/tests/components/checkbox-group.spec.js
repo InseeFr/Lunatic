@@ -1,17 +1,47 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { CheckboxGroup } from 'components';
 
 describe('checkbox-group', () => {
-	const onChange = jest.fn();
+	const handleChange = jest.fn();
 	const responses = [
-		{ id: '1', value: false, label: 'France' },
-		{ id: '2', value: false, label: 'Italy' },
+		{
+			id: '1',
+			response: { valueState: [{ valueType: 'COLLECTED', value: true }] },
+			label: 'France',
+		},
+		{
+			id: '2',
+			response: { valueState: [{ valueType: 'COLLECTED', value: false }] },
+			label: 'Italy',
+		},
 	];
+	const defaultProps = { id: 'id', handleChange, responses };
 
 	it('renders without crashing', () => {
-		mount(
-			<CheckboxGroup id={''} handleChange={onChange} responses={responses} />
-		);
+		mount(<CheckboxGroup {...defaultProps} keyboardSelection />);
+	});
+
+	it('returns tooltip component', () => {
+		shallow(<CheckboxGroup {...defaultProps} tooltip />);
+	});
+
+	it('renders firing useEffect', () => {
+		const wrapper = mount(<CheckboxGroup {...defaultProps} />);
+		wrapper.setProps({ focused: true });
+	});
+
+	it('should trigger the change event', () => {
+		const wrapper = shallow(<CheckboxGroup {...defaultProps} />);
+		wrapper
+			.find('input')
+			.first()
+			.simulate('change', {
+				target: {
+					checked: false,
+				},
+			});
+		expect(handleChange).toHaveBeenCalled();
+		expect(handleChange).toHaveBeenCalledWith({ '': false });
 	});
 });
