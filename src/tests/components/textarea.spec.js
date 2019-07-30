@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Textarea } from 'components';
 
 const handleChange = jest.fn();
@@ -23,6 +23,15 @@ describe('textarea', () => {
 	it('returns required component', () => {
 		const wrapper = shallow(<Textarea {...defaultProps} required />);
 		expect(wrapper.find('textarea').prop('required')).toBeTruthy();
+	});
+
+	it('returns tooltip component', () => {
+		shallow(<Textarea {...defaultProps} tooltip />);
+	});
+
+	it('renders firing useEffect', () => {
+		const wrapper = mount(<Textarea {...defaultProps} />);
+		wrapper.setProps({ focused: true });
 	});
 
 	it('should trigger the change event', () => {

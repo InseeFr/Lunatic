@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { InputNumber } from 'components';
 
 const defaultProps = { id: 'id', label: 'label' };
@@ -25,14 +25,14 @@ describe('input-number', () => {
 		);
 	});
 
-	it('returns readOnly component', () => {
+	it('returns readOnly and autoComplete component', () => {
 		const wrapper = shallow(
 			<InputNumber
 				{...defaultProps}
 				handleChange={handleChange}
-				min={0}
 				max={100}
 				readOnly
+				autoComplete
 			/>
 		);
 		expect(wrapper.find('input').prop('readOnly')).toBe(true);
@@ -44,11 +44,23 @@ describe('input-number', () => {
 				{...defaultProps}
 				handleChange={handleChange}
 				min={0}
-				max={100}
 				readOnly
 			/>
 		);
 		expect(wrapper.find('input').prop('readOnly')).toBe(true);
+	});
+
+	it('returns tooltip component', () => {
+		shallow(
+			<InputNumber {...defaultProps} handleChange={handleChange} tooltip />
+		);
+	});
+
+	it('renders firing useEffect', () => {
+		const wrapper = mount(
+			<InputNumber {...defaultProps} handleChange={handleChange} />
+		);
+		wrapper.setProps({ focused: true });
 	});
 
 	it('returns enabled component', () => {
@@ -66,20 +78,40 @@ describe('input-number', () => {
 	});
 
 	it('should trigger the change event', () => {
-		const wrapper = shallow(
-			<InputNumber
-				{...defaultProps}
-				handleChange={handleChange}
-				min={0}
-				max={100}
-			/>
+		const wrapperMin = shallow(
+			<InputNumber {...defaultProps} handleChange={handleChange} min={0} />
 		);
-		wrapper.find('input').simulate('change', {
+		wrapperMin.find('input').simulate('change', {
 			target: {
-				value: 10,
+				value: '-10',
 			},
 		});
 		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': 10 });
+		expect(handleChange).toHaveBeenCalledWith({ '': '-10' });
+		const wrapperMax = shallow(
+			<InputNumber {...defaultProps} handleChange={handleChange} max={100} />
+		);
+		wrapperMax.find('input').simulate('change', {
+			target: {
+				value: '1000',
+			},
+		});
+		expect(handleChange).toHaveBeenCalled();
+		expect(handleChange).toHaveBeenCalledWith({ '': '1000' });
+		const wrapperMinMax = shallow(
+			<InputNumber
+				{...defaultProps}
+				handleChange={handleChange}
+				min={5}
+				max={100}
+			/>
+		);
+		wrapperMinMax.find('input').simulate('change', {
+			target: {
+				value: '10',
+			},
+		});
+		expect(handleChange).toHaveBeenCalled();
+		expect(handleChange).toHaveBeenCalledWith({ '': '10' });
 	});
 });

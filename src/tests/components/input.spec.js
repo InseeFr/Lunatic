@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Input } from 'components';
 
 const handleChange = jest.fn();
@@ -23,6 +23,15 @@ describe('input', () => {
 	it('returns required component', () => {
 		const wrapper = shallow(<Input {...defaultProps} required />);
 		expect(wrapper.find('input').prop('required')).toBeTruthy();
+	});
+
+	it('returns tooltip component', () => {
+		shallow(<Input {...defaultProps} tooltip />);
+	});
+
+	it('renders firing useEffect', () => {
+		const wrapper = mount(<Input {...defaultProps} />);
+		wrapper.setProps({ focused: true });
 	});
 
 	it('should trigger the change event', () => {
