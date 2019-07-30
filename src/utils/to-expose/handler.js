@@ -30,7 +30,6 @@ export const updateComponent = valueType => component => preferences => name => 
 		return buildUpdatedTableResponse(component)(preferences)(valueType)(value)(
 			name
 		);
-	else return component;
 };
 
 export const isComponentsConcernedByResponse = responseName => component =>
