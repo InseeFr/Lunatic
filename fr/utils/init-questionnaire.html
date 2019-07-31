@@ -268,6 +268,71 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="initialisation-dun-questionnaire">Initialisation d&apos;un questionnaire</h1>
+<p>En pr&#xE9;sence de donn&#xE9;es de personnalisation, la fonction <code>mergeQuestionnaireAndData</code> permet d&apos;ins&#xE9;rer les donn&#xE9;es de personnalisation dans le questionnaire.</p>
+<h2 id="mergequestionnaireanddataquestionnairedata"><code>mergeQuestionnaireAndData(questionnaire)(data)</code></h2>
+<h4 id="arguments">Arguments</h4>
+<p><code>questionnaire</code> (<code>object</code>) : au format Lunatic-Model</p>
+<p><code>data</code> (<code>object</code>) :</p>
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;variable1&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;PREVIOUS&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Previous&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;COLLECTED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Collected&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;FORCED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Forced&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;EDITED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Edited&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;INPUTED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Inputed&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;variable2&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;COLLECTED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Var 2&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    ...
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="retour">Retour</h4>
+<p>(<code>object</code>) : questionnaire au format Lunatic-Model</p>
+<h4 id="exemple">Exemple</h4>
+<p><code>questionnaire</code></p>
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;components&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;componentType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Input&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;response&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;variable1&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;valueState&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span> <span class="token property">&quot;valueType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;PREVIOUS&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span> <span class="token property">&quot;valueType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;COLLECTED&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span> <span class="token property">&quot;valueType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;FORCED&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span> <span class="token property">&quot;valueType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;EDITED&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span> <span class="token property">&quot;valueType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;INPUTED&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span> <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>data</code></p>
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;variable1&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">&quot;COLLECTED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Variable 1&quot;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>mergeQuestionnaireAndData</code></p>
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;components&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;componentType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Input&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;response&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;variable1&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;valueState&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span> <span class="token property">&quot;valueType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;PREVIOUS&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span> <span class="token property">&quot;valueType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;COLLECTED&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Variable 1&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span> <span class="token property">&quot;valueType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;FORCED&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span> <span class="token property">&quot;valueType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;EDITED&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span> <span class="token property">&quot;valueType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;INPUTED&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span> <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
                                 
                                 </section>
@@ -311,7 +376,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Initialisation d'un questionnaire","level":"1.5.1","depth":2,"next":{"title":"Mise à jour d'un questionnaire","level":"1.5.2","depth":2,"path":"utils/handler.md","ref":"utils/handler.md","articles":[]},"previous":{"title":"Utilitaires","level":"1.5","depth":1,"path":"utils/index.md","ref":"utils/index.md","articles":[{"title":"Initialisation d'un questionnaire","level":"1.5.1","depth":2,"path":"utils/init-questionnaire.md","ref":"utils/init-questionnaire.md","articles":[]},{"title":"Mise à jour d'un questionnaire","level":"1.5.2","depth":2,"path":"utils/handler.md","ref":"utils/handler.md","articles":[]},{"title":"Récupération des données d'un questionnaire","level":"1.5.3","depth":2,"path":"utils/get-data.md","ref":"utils/get-data.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anchorjs","image-captions","include-codeblock","collapsible-chapters"],"root":"./","styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/InseeFr/Lunatic/"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/InseeFr/Lunatic/tree/master/docs"},"theme-default":{"styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Lunatic","language":"fr","gitbook":"*"},"file":{"path":"utils/init-questionnaire.md","mtime":"2019-07-31T10:22:07.866Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-07-31T10:24:14.462Z"},"basePath":"..","book":{"language":"fr"}});
+            gitbook.page.hasChanged({"page":{"title":"Initialisation d'un questionnaire","level":"1.5.1","depth":2,"next":{"title":"Mise à jour d'un questionnaire","level":"1.5.2","depth":2,"path":"utils/handler.md","ref":"utils/handler.md","articles":[]},"previous":{"title":"Utilitaires","level":"1.5","depth":1,"path":"utils/index.md","ref":"utils/index.md","articles":[{"title":"Initialisation d'un questionnaire","level":"1.5.1","depth":2,"path":"utils/init-questionnaire.md","ref":"utils/init-questionnaire.md","articles":[]},{"title":"Mise à jour d'un questionnaire","level":"1.5.2","depth":2,"path":"utils/handler.md","ref":"utils/handler.md","articles":[]},{"title":"Récupération des données d'un questionnaire","level":"1.5.3","depth":2,"path":"utils/get-data.md","ref":"utils/get-data.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anchorjs","image-captions","include-codeblock","collapsible-chapters"],"root":"./","styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/InseeFr/Lunatic/"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/InseeFr/Lunatic/tree/master/docs"},"theme-default":{"styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Lunatic","language":"fr","gitbook":"*"},"file":{"path":"utils/init-questionnaire.md","mtime":"2019-07-31T12:04:25.888Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-07-31T12:06:26.803Z"},"basePath":"..","book":{"language":"fr"}});
         });
     </script>
 </div>
