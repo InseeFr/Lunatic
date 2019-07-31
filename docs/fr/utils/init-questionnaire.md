@@ -2,7 +2,7 @@
 
 En présence de données de personnalisation, la fonction `mergeQuestionnaireAndData` permet d'insérer les données de personnalisation dans le questionnaire.
 
-## `mergeQuestionnaireAndData(questionnaire)(data)`
+### `mergeQuestionnaireAndData(questionnaire)(data)`
 
 #### Arguments
 
