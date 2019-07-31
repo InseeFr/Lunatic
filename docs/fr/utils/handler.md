@@ -1,6 +1,6 @@
 # Mise à jour d'un questionnaire
 
-La fonction `updateQuestionnaire` permet de mettre à jour simplement le questionnaire en fonction des évènements générés par les composants.
+La fonction `updateQuestionnaire` permet de mettre à jour simplement le questionnaire en fonction des évènements transmis par les composants.
 
 ### `updateQuestionnaire(savingType)(questionnaire)(preferences)(updatedValue)`
 

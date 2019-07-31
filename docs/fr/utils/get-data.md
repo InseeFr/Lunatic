@@ -15,7 +15,13 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 
 ```json
 {
-	"COLLECTED": { "var": { "COLLECTED": "var value", ... }, ... },
+	"COLLECTED": {
+        "var": {
+            "COLLECTED": "var value",
+            ...
+        },
+        ...
+    },
 	"EXTERNAL": {},
 	"CALCULATED": {}
 }
@@ -72,7 +78,8 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 
 ```json
 {
-	"var": { "FORCED": "var value", ... },
+    "var": { "FORCED": "var value", ... },
+    ...
 }
 ```
 
@@ -117,7 +124,7 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 
 `questionnaire` (`object`) : au format Lunatic-Model
 
-`valueType` (`string`) :
+`valueType` (`string`) : un des cinq valueType du Lunatic-Model
 
 #### Retour
 
