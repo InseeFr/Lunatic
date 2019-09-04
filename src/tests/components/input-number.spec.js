@@ -114,4 +114,53 @@ describe('input-number', () => {
 		expect(handleChange).toHaveBeenCalled();
 		expect(handleChange).toHaveBeenCalledWith({ '': '10' });
 	});
+
+	it('render message error', () => {
+		const wrapperMin = shallow(
+			<InputNumber {...defaultProps} handleChange={handleChange} min={1} />
+		);
+		expect(wrapperMin.find('.lunatic-input-number-errors').text()).toEqual('');
+		wrapperMin.find('input').simulate('change', {
+			target: {
+				value: '-1',
+			},
+		});
+		expect(wrapperMin.find('.lunatic-input-number-errors').text()).toEqual(
+			'La valeur doit être supérieure à 1'
+		);
+
+		const wrapperMax = shallow(
+			<InputNumber {...defaultProps} handleChange={handleChange} max={9.8} />
+		);
+		expect(wrapperMax.find('.lunatic-input-number-errors').text()).toEqual('');
+		wrapperMax.find('input').simulate('change', {
+			target: {
+				value: '10',
+			},
+		});
+		expect(wrapperMax.find('.lunatic-input-number-errors').text()).toEqual(
+			'La valeur doit être inférieure à 9.8'
+		);
+
+		const wrapperMinMax = shallow(
+			<InputNumber
+				{...defaultProps}
+				handleChange={handleChange}
+				min={1}
+				max={10}
+			/>
+		);
+		expect(wrapperMinMax.find('.lunatic-input-number-errors').text()).toEqual(
+			''
+		);
+
+		wrapperMinMax.find('input').simulate('change', {
+			target: {
+				value: '20',
+			},
+		});
+		expect(wrapperMinMax.find('.lunatic-input-number-errors').text()).toEqual(
+			'La valeur doit être comprise entre 1 et 10'
+		);
+	});
 });
