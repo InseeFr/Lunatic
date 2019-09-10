@@ -115,6 +115,9 @@ const InputNumber = ({
 };
 
 const minMaxValidator = ({ min, max }) => value => {
+	if (!value) {
+		return undefined;
+	}
 	const valueNumber = Number(value);
 	if (!min && isDef(max) && valueNumber > max)
 		return <span>{`La valeur doit être inférieure à ${max}`}</span>;
