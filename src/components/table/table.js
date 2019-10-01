@@ -14,6 +14,7 @@ const Table = ({
 	handleChange,
 	lines: initLines,
 	declarations,
+	addBtnLabel,
 	tooltip,
 }) => {
 	const minLines = initLines
@@ -95,7 +96,7 @@ const Table = ({
 			{Number.isInteger(minLines) && lines < maxLines && (
 				<Button
 					label="addLine"
-					value="Add a line"
+					value={addBtnLabel}
 					onClick={() => setLines(lines + 1)}
 				/>
 			)}
@@ -114,6 +115,7 @@ Table.defaultProps = {
 	cells: [],
 	lines: {},
 	declarations: [],
+	addBtnLabel: 'Add a line',
 	tooltip: false,
 	style: {},
 };
@@ -126,6 +128,7 @@ Table.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	lines: U.linesPropTypes,
 	declarations: U.declarationsPropTypes,
+	addBtnLabel: PropTypes.string,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

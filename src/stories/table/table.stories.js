@@ -4,7 +4,7 @@ import { withReadme } from 'storybook-readme';
 import { Table } from 'components';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
-import { boolean } from '@storybook/addon-knobs/react';
+import { boolean, text } from '@storybook/addon-knobs/react';
 
 const defaultProps = {
 	handleChange: console.log,
@@ -1016,6 +1016,7 @@ stories.addWithJSX('Roster', () => (
 				},
 			],
 		]}
+		addBtnLabel={text('Add line button label', 'Add a line')}
 		tooltip={boolean('Tooltip', false)}
 	/>
 ));
