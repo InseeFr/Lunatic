@@ -34,7 +34,6 @@ const CheckboxGroup = ({
 				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 			/>
-
 			<fieldset
 				key={`checkbox-${id}`}
 				className="checkbox-group"
@@ -49,44 +48,45 @@ const CheckboxGroup = ({
 				{responses.map(({ id: modId, label: modLabel, response }, i) => {
 					const checked = U.getResponseByPreference(preferences)(response);
 					return (
-						<div className="field-container" key={`checkbox-${id}-${modId}`}>
-							<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
-								<div
-									className={`checkbox-modality ${U.getItemsPositioningClass(
-										positioning
-									)}`}
-								>
-									<input
-										type="checkbox"
-										id={`checkbox-${id}-${modId}`}
-										ref={inputRef}
-										key={`checkbox-${id}-${modId}`}
-										aria-labelledby={`input-label-${id}-${modId}`}
-										className="checkbox-lunatic"
-										checked={checked}
-										disabled={disabled}
-										onChange={e => {
-											handleChange({
-												[U.getResponseName(response)]: e.target.checked,
-											});
-										}}
-									/>
-									<label
-										htmlFor={`checkbox-${id}-${modId}`}
-										id={`input-label-${id}-${modId}`}
-										style={checked ? U.buildStyleObject(checkboxStyle) : {}}
-									>
-										{keyboardSelection
-											? `${U.getAlphabet()[i].toUpperCase()} - ${modLabel}`
-											: modLabel}
-									</label>
+						<div
+							className={`${U.getItemsPositioningClass(positioning)}`}
+							key={`checkbox-${id}-${modId}`}
+						>
+							<div className="field-container">
+								<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+									<div className="checkbox-modality">
+										<input
+											type="checkbox"
+											id={`checkbox-${id}-${modId}`}
+											ref={inputRef}
+											key={`checkbox-${id}-${modId}`}
+											aria-labelledby={`input-label-${id}-${modId}`}
+											className="checkbox-lunatic"
+											checked={checked}
+											disabled={disabled}
+											onChange={e => {
+												handleChange({
+													[U.getResponseName(response)]: e.target.checked,
+												});
+											}}
+										/>
+										<label
+											htmlFor={`checkbox-${id}-${modId}`}
+											id={`input-label-${id}-${modId}`}
+											style={checked ? U.buildStyleObject(checkboxStyle) : {}}
+										>
+											{keyboardSelection
+												? `${U.getAlphabet()[i].toUpperCase()} - ${modLabel}`
+												: modLabel}
+										</label>
+									</div>
 								</div>
+								{tooltip && (
+									<div className="tooltip">
+										<TooltipResponse id={id} response={response} />
+									</div>
+								)}
 							</div>
-							{tooltip && (
-								<div className="tooltip">
-									<TooltipResponse id={id} response={response} />
-								</div>
-							)}
 						</div>
 					);
 				})}

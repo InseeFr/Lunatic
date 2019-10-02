@@ -11,11 +11,13 @@
 |  handleChange   |  func  |       -       |    ✓     | Handler of the table                  |
 |      lines      | object |      {}       |          | Min and max lines for evolutive table |
 | declarations \* | array  |      []       |          | Declarations of the table             |
+| positioning \*  | string |   "DEFAULT"   |          | Cell options positioning              |
 |     tooltip     |  bool  |     false     |          | Tooltip of the table                  |
 |      style      | object |      {}       |          | Style of the table                    |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
 - `cells` props has to be an array of array's components
+- `positioning` props has to be one of `DEFAULT`, `HORIZONTAL` or `VERTICAL`
 - `declarations` are documented in the `Declarations` component
 
 ## Styles

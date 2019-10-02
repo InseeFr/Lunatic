@@ -4,11 +4,17 @@ import { withReadme } from 'storybook-readme';
 import { Table } from 'components';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
-import { boolean, text } from '@storybook/addon-knobs/react';
+import { boolean, text, select } from '@storybook/addon-knobs/react';
 
 const defaultProps = {
 	handleChange: console.log,
 	preferences: ['COLLECTED', 'FORCED', 'EDITED'],
+};
+
+const positioningOptions = {
+	DEFAULT: 'Default',
+	HORIZONTAL: 'Horizontal',
+	VERTICAL: 'Vertical',
 };
 
 const stories = storiesOf('Table', module)
@@ -104,6 +110,7 @@ stories.addWithJSX('OneAxisOneMeasure', () => (
 				},
 			],
 		]}
+		positioning={select('Items positioning', positioningOptions)}
 		tooltip={boolean('Tooltip', false)}
 	/>
 ));
@@ -1016,6 +1023,7 @@ stories.addWithJSX('Roster', () => (
 				},
 			],
 		]}
+		positioning={select('Items positioning', positioningOptions)}
 		addBtnLabel={text('Add line button label', 'Add a line')}
 		tooltip={boolean('Tooltip', false)}
 	/>

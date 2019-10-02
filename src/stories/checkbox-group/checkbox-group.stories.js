@@ -20,11 +20,6 @@ const stories = storiesOf('CheckboxGroup', module)
 		return <WrappedComponent title="<CheckboxGroup />" />;
 	});
 
-const responses = [
-	{ id: '1', value: false, label: 'France' },
-	{ id: '2', value: false, label: 'Italy' },
-];
-
 const positioningOptions = {
 	DEFAULT: 'Default',
 	HORIZONTAL: 'Horizontal',

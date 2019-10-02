@@ -13,6 +13,7 @@ const Table = ({
 	cells,
 	handleChange,
 	lines: initLines,
+	positioning,
 	declarations,
 	addBtnLabel,
 	tooltip,
@@ -70,6 +71,7 @@ const Table = ({
 													label={label}
 													handleChange={handleChange}
 													preferences={preferences}
+													positioning={positioning}
 													tooltip={tooltip}
 													{...componentProps}
 												/>
@@ -114,6 +116,7 @@ Table.defaultProps = {
 	preferences: ['COLLECTED'],
 	cells: [],
 	lines: {},
+	positioning: 'DEFAULT',
 	declarations: [],
 	addBtnLabel: 'Add a line',
 	tooltip: false,
@@ -127,6 +130,7 @@ Table.propTypes = {
 	cells: PropTypes.array,
 	handleChange: PropTypes.func.isRequired,
 	lines: U.linesPropTypes,
+	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	declarations: U.declarationsPropTypes,
 	addBtnLabel: PropTypes.string,
 	tooltip: PropTypes.bool,
