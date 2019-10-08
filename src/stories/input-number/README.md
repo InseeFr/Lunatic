@@ -17,6 +17,7 @@
 |   autoComplete   |  bool  |     false     |          | Is the input autocompletable         |
 |     focused      |  bool  |     false     |          | Is the input focused                 |
 | labelPosition \* | string |   "DEFAULT"   |          | Position of the input label          |
+| unitPosition \*  | string |   "DEFAULT"   |          | Position of the unit label           |
 | declarations \*  | array  |      [ ]      |          | Declarations of the input            |
 |     required     |  bool  |     false     |          | Is the input required                |
 |     tooltip      |  bool  |     false     |          | Tooltip of the input                 |
@@ -25,8 +26,9 @@
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
 - `response` props has to be a shape of `{name: string, valueState: object}`
 - `labelPosition` props has to be one of `DEFAULT`, `TOP`, `BOTTOM`, `RIGHT` or `LEFT`
+- `unitPosition` props has to be one of `DEFAULT`, `BEFORE` or `AFTER`
 - `declarations` are documented in the `Declarations` component
 
 ## Styles
 
-**InputNumber** component has for classes `.input-lunatic`, `.warning` and `.lunatic-input-number-errors > error`.
+**InputNumber** component has for classes `.input-lunatic`, `.warning`, `.unit` and `.lunatic-input-number-errors > error`.

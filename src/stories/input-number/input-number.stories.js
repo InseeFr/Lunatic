@@ -21,6 +21,12 @@ const labelPositionOptions = {
 	LEFT: 'Left',
 };
 
+const unitPositionOptions = {
+	DEFAULT: 'Default',
+	BEFORE: 'Before',
+	AFTER: 'After',
+};
+
 const defaultProps = {
 	handleChange: console.log,
 	response: {
@@ -59,6 +65,7 @@ stories.addWithJSX('Props', () => (
 		focused={boolean('Focused', false)}
 		tooltip={boolean('Tooltip', false)}
 		labelPosition={select('Label position', labelPositionOptions)}
+		unitPosition={select('Unit position', unitPositionOptions)}
 		preferences={['COLLECTED', 'FORCED', 'EDITED']}
 		{...defaultProps}
 	/>

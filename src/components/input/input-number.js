@@ -22,6 +22,7 @@ const InputNumber = ({
 	style,
 	unit,
 	labelPosition,
+	unitPosition,
 	declarations,
 	tooltip,
 	required,
@@ -58,7 +59,14 @@ const InputNumber = ({
 					htmlFor={`input-${id}`}
 					id={`input-label-${id}`}
 					className={`${required ? 'required' : ''}`}
-				>{`${label} ${unit ? `(${unit})` : ''}`}</label>
+				>
+					{label}{' '}
+					<span className="unit">
+						{unit && ['DEFAULT', 'BEFORE'].includes(unitPosition)
+							? `(${unit})`
+							: ''}
+					</span>
+				</label>
 				<Declarations
 					id={id}
 					type={C.AFTER_QUESTION_TEXT}
@@ -101,6 +109,7 @@ const InputNumber = ({
 						</div>
 					)}
 				</div>
+				<div className="unit">{unitPosition === 'AFTER' && unit}</div>
 				<div className="lunatic-input-number-errors">
 					{messagesError.map((m, i) => (
 						<div key={i} className="error">
@@ -143,6 +152,7 @@ InputNumber.defaultProps = {
 	focused: false,
 	declarations: [],
 	labelPosition: 'DEFAULT',
+	unitPositioni: 'DEFAULT',
 	required: false,
 	tooltip: false,
 	style: {},
@@ -164,6 +174,7 @@ InputNumber.propTypes = {
 	focused: PropTypes.bool,
 	declarations: U.declarationsPropTypes,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
+	unitPosition: PropTypes.oneOf(['DEFAULT', 'BEFORE', 'AFTER']),
 	required: PropTypes.bool,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
