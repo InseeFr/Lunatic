@@ -9,4 +9,6 @@
   - [Initialisation d'un questionnaire](utils/init-questionnaire.md)
   - [Mise à jour d'un questionnaire](utils/handler.md)
   - [Récupération des données d'un questionnaire](utils/get-data.md)
-- [Versions](versions.md)
+- [Versions](versions/index.md)
+  - Releases
+    - [1.0.1](versions/1-0-1.md)
