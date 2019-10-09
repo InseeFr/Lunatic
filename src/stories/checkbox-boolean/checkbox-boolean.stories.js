@@ -1,27 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { CheckboxBoolean } from 'components';
+import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
+import data from './data';
 import { text, boolean, select } from '@storybook/addon-knobs/react';
 
 const positioningOptions = {
 	DEFAULT: 'Default',
 	HORIZONTAL: 'Horizontal',
 	VERTICAL: 'Vertical',
-};
-
-const defaultProps = {
-	handleChange: console.log,
-	response: {
-		name: 'CHECKBOX_BOOLEAN',
-		valueState: [
-			{ valueType: 'COLLECTED', value: false },
-			{ valueType: 'FORCED', value: true },
-			{ valueType: 'EDITED', value: null },
-		],
-	},
 };
 
 const stories = storiesOf('CheckboxBoolean', module)
@@ -32,18 +21,17 @@ const stories = storiesOf('CheckboxBoolean', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<CheckboxBoolean id="default" {...defaultProps} />
+	<Orchestrator id="default" source={data} />
 ));
 
 stories.addWithJSX('Props', () => (
-	<CheckboxBoolean
+	<Orchestrator
 		id="props"
+		source={data}
 		label={text('Label', "I'm the label of the boolean checkbox")}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
-		preferences={['COLLECTED', 'FORCED', 'EDITED']}
 		tooltip={boolean('Tooltip', false)}
-		{...defaultProps}
 	/>
 ));

@@ -1,0 +1,20 @@
+{
+	"components": [
+		{
+			"id": "j6p0np9q",
+			"componentType": "CheckboxBoolean",
+			"mandatory": false,
+			"label": "➡ 2. Are you ready?",
+			"response": {
+				"name": "READY",
+				"valueState": [
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": true },
+					{ "valueType": "FORCED", "value": false },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
+				]
+			}
+		}
+	]
+}

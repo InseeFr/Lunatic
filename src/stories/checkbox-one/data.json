@@ -5,35 +5,20 @@
 			"componentType": "CheckboxOne",
 			"mandatory": false,
 			"label": "➡ 2. Who is the Simpsons city mayor?",
-			"declarations": [
-				{
-					"id": "j6qdfhvw-d4",
-					"declarationType": "INSTRUCTION",
-					"position": "AFTER_QUESTION_TEXT",
-					"label": "Only one possible answer"
-				}
-			],
 			"response": {
 				"name": "MAYOR",
 				"valueState": [
 					{ "valueType": "PREVIOUS", "value": null },
-
 					{ "valueType": "COLLECTED", "value": "2" },
-
 					{ "valueType": "FORCED", "value": "1" },
-
 					{ "valueType": "EDITED", "value": null },
-
 					{ "valueType": "INPUTED", "value": null }
 				]
 			},
 			"options": [
 				{ "value": "1", "label": "Constance Harm" },
-
 				{ "value": "2", "label": "Timothy Lovejoy" },
-
 				{ "value": "3", "label": "Joe Quimby" },
-
 				{ "value": "4", "label": "Poochie" }
 			]
 		}

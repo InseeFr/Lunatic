@@ -53,8 +53,10 @@ export const buildUpdatedResponse = component => preferences => valueType => val
 	if (preferences.includes(valueType)) {
 		const lastValue = preferences.reduce(
 			(_, type) =>
-				component.response.valueState.find(v => v.valueType === type).value ||
-				_,
+				component.response.valueState.find(v => v.valueType === type).value !==
+				null
+					? component.response.valueState.find(v => v.valueType === type).value
+					: _,
 			''
 		);
 		if (value === lastValue) newValue = null;

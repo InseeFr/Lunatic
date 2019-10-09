@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { Datepicker } from 'components';
+import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
+import data from './data';
 import {
 	text,
 	boolean,
@@ -21,17 +22,6 @@ const labelPositionOptions = {
 	LEFT: 'Left',
 };
 
-const defaultProps = {
-	handleChange: console.log,
-	response: {
-		name: 'DATEPICKER',
-		valueState: [
-			{ valueType: 'COLLECTED', value: '1998-07-12' },
-			{ valueType: 'FORCED', value: '2018-07-15' },
-		],
-	},
-};
-
 const stories = storiesOf('Datepicker', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
@@ -40,29 +30,27 @@ const stories = storiesOf('Datepicker', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<Datepicker id="default" label="Label" {...defaultProps} />
+	<Orchestrator id="default" source={data} />
 ));
 
 stories.addWithJSX('Props', () => (
-	<Datepicker
+	<Orchestrator
 		id="props"
+		source={data}
 		label={text('Label', "I'm the label of the datepicker")}
 		placeholder={text('Placeholder', 'Placeholder')}
 		readOnly={boolean('Read only', false)}
 		required={boolean('Required', false)}
 		focused={boolean('Focused', false)}
-		preferences={['COLLECTED', 'FORCED']}
 		tooltip={boolean('Tooltip', false)}
 		labelPosition={select('Label position', labelPositionOptions)}
-		{...defaultProps}
 	/>
 ));
 
 stories.addWithJSX('Styled', () => (
-	<Datepicker
+	<Orchestrator
 		id="styled"
-		label={text('Label', "I'm the label of the datepicker")}
-		{...defaultProps}
+		source={data}
 		style={object('Generated style', {
 			'border-color': color('Border color', '#e80a4d'),
 			'border-width': number('Border-width', 2, {
