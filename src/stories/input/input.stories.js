@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { Input } from 'components';
+import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
+import data from './data';
 import {
 	text,
 	boolean,
@@ -21,17 +22,6 @@ const labelPositionOptions = {
 	LEFT: 'Left',
 };
 
-const defaultProps = {
-	handleChange: console.log,
-	response: {
-		name: 'INPUT',
-		valueState: [
-			{ valueType: 'COLLECTED', value: 'My collected input' },
-			{ valueType: 'FORCED', value: 'My forced input' },
-		],
-	},
-};
-
 const stories = storiesOf('Input', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
@@ -40,35 +30,29 @@ const stories = storiesOf('Input', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<Input id="default" label="Label" {...defaultProps} />
+	<Orchestrator id="default" source={data} />
 ));
 
 stories.addWithJSX('Props', () => (
-	<Input
-		id="props"
+	<Orchestrator
+		id="default"
+		source={data}
 		label={text('Label', "I'm the label of the input")}
 		placeholder={text('Placeholder', 'Placeholder')}
 		readOnly={boolean('Read only', false)}
+		maxLength={number('Max length', 50)}
 		autoComplete={boolean('Autocomplete', false)}
 		required={boolean('Required', false)}
 		focused={boolean('Focused', false)}
-		preferences={['COLLECTED', 'FORCED']}
 		tooltip={boolean('Tooltip', false)}
 		labelPosition={select('Label position', labelPositionOptions)}
-		{...defaultProps}
 	/>
 ));
 
 stories.addWithJSX('Styled', () => (
-	<Input
-		id="styled"
-		label={text('Label', "I'm the label of the input")}
-		placeholder={text('Placeholder', 'Placeholder')}
-		readOnly={boolean('Read only', false)}
-		autoComplete={boolean('Autocomplete', false)}
-		required={boolean('Required', false)}
-		focused={boolean('Focused', false)}
-		handleChange={console.log}
+	<Orchestrator
+		id="default"
+		source={data}
 		style={object('Generated style', {
 			'border-color': color('Border color', '#e80a4d'),
 			'border-width': number('Border-width', 2, {

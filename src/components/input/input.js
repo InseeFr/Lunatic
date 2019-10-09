@@ -13,6 +13,7 @@ const Input = ({
 	response,
 	placeholder,
 	handleChange,
+	maxLength,
 	readOnly,
 	autoComplete,
 	labelPosition,
@@ -62,6 +63,7 @@ const Input = ({
 							className="input-lunatic"
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
+							maxLength={maxLength}
 							required={required}
 							aria-required={required}
 							onChange={e =>
@@ -106,6 +108,7 @@ Input.propTypes = {
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
+	maxLength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	autoComplete: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	required: PropTypes.bool,

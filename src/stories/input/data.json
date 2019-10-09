@@ -1,0 +1,28 @@
+{
+	"components": [
+		{
+			"id": "j3343qhx",
+			"componentType": "Input",
+			"mandatory": false,
+			"maxLength": "30",
+			"label": "➡ 3. Who is the producer?",
+			"response": {
+				"name": "PRODUCER",
+				"valueState": [
+					{ "valueType": "PREVIOUS", "value": null },
+
+					{ "valueType": "COLLECTED", "value": "Matt Groening" },
+
+					{ "valueType": "FORCED", "value": null },
+
+					{
+						"valueType": "EDITED",
+						"value": "Matt Groening and James L. Brooks"
+					},
+
+					{ "valueType": "INPUTED", "value": null }
+				]
+			}
+		}
+	]
+}
