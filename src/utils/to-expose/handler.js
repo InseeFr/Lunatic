@@ -51,8 +51,7 @@ export const isComponentsConcernedByResponse = responseName => component =>
 export const buildUpdatedResponse = component => preferences => valueType => value => {
 	let newValue = value;
 	if (preferences.includes(valueType)) {
-		const toCheck = preferences.slice(0, preferences.indexOf(valueType));
-		const lastValue = toCheck.reduce(
+		const lastValue = preferences.reduce(
 			(_, type) =>
 				component.response.valueState.find(v => v.valueType === type).value ||
 				_,
