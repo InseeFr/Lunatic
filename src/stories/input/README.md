@@ -11,7 +11,7 @@
 |   placeholder    |     string     |      " "      |          | Placeholder of the input             |
 |   handleChange   |      func      |       -       |    ✓     | Handler of the input                 |
 |     readOnly     |      bool      |     false     |          | Is the input read only               |
-|    maxLength     | number, string |   Unlimited   |          | Maximum length of the input          |
+|    maxLength     | number, string |    524 288    |          | Maximum length of the input          |
 |   autoComplete   |      bool      |     false     |          | Is the input autocompletable         |
 | labelPosition \* |     string     |   "DEFAULT"   |          | Position of the input label          |
 |     required     |      bool      |     false     |          | Is the input required                |

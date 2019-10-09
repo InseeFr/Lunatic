@@ -63,7 +63,7 @@ const Input = ({
 							className="input-lunatic"
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
-							maxLength={maxLength}
+							maxLength={maxLength || 524288}
 							required={required}
 							aria-required={required}
 							onChange={e =>
