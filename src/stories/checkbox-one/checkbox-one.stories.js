@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { CheckboxOne } from 'components';
+import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
+import data from './data';
 import {
-	text,
 	boolean,
 	number,
 	color,
@@ -20,61 +20,27 @@ const stories = storiesOf('CheckboxOne', module)
 		return <WrappedComponent title="<CheckboxOne />" />;
 	});
 
-const options = [
-	{ value: 'france', label: 'France' },
-	{ value: 'italy', label: 'Italy' },
-];
-
 const positioningOptions = {
 	DEFAULT: 'Default',
 	HORIZONTAL: 'Horizontal',
 	VERTICAL: 'Vertical',
 };
 
-const defaultProps = {
-	handleChange: console.log,
-	response: {
-		name: 'CHECKBOX_ONE',
-		valueState: [
-			{ valueType: 'COLLECTED', value: 'france' },
-			{ valueType: 'FORCED', value: 'italy' },
-		],
-	},
-};
-
-stories.addWithJSX('Default', () => (
-	<CheckboxOne id="default" options={options} {...defaultProps} />
-));
+stories.addWithJSX('Default', () => <Orchestrator source={data} />);
 
 stories.addWithJSX('Props', () => (
-	<CheckboxOne
-		id="props"
-		label={text(
-			'Label',
-			"I'm the label of the checkbox with a single response"
-		)}
+	<Orchestrator
+		source={data}
 		positioning={select('Items positioning', positioningOptions)}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
-		keyboardSelection={boolean('Keyboard selection', false)}
-		options={options}
-		preferences={['COLLECTED', 'FORCED']}
 		tooltip={boolean('Tooltip', false)}
-		{...defaultProps}
 	/>
 ));
 
 stories.addWithJSX('Styled', () => (
-	<CheckboxOne
-		id="styled"
-		label={text(
-			'Label',
-			"I'm the label of the checkbox with a single response"
-		)}
-		positioning={select('Items positioning', positioningOptions)}
-		disabled={boolean('Disabled', false)}
-		focused={boolean('Focused', false)}
-		options={options}
+	<Orchestrator
+		source={data}
 		style={object('Generated style', {
 			fieldsetStyle: {
 				'border-color': color('Fieldset color', '#e80a4d'),
@@ -107,6 +73,5 @@ stories.addWithJSX('Styled', () => (
 				}),
 			},
 		})}
-		{...defaultProps}
 	/>
 ));
