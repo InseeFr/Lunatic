@@ -50,22 +50,29 @@ export const isComponentsConcernedByResponse = responseName => component =>
 
 export const buildUpdatedResponse = component => preferences => valueType => value => {
 	let newValue = value;
-	if (preferences.length > 1 && preferences.splice(-1, 1).includes(valueType)) {
-		const lastValue = preferences.reduce(
-			(_, type) =>
-				component.response.valueState.find(v => v.valueType === type).value !==
-				null
-					? component.response.valueState.find(v => v.valueType === type).value
-					: _,
-			''
-		);
+	const { valueState } = component.response;
+	if (preferences.length > 1 && preferences.includes(valueType)) {
+		const lastValue = preferences
+			.slice(0, preferences.length - 1)
+			.reduce(
+				(_, type) =>
+					valueState.find(v => v.valueType === type).value !== null
+						? valueState.find(v => v.valueType === type).value
+						: _,
+				''
+			);
 		if (value === lastValue) newValue = null;
 	}
+	if (
+		component.componentType === 'CheckboxOne' &&
+		valueState.find(v => v.valueType === valueType).value === newValue
+	)
+		newValue = null;
 	return {
 		...component,
 		response: {
 			...component.response,
-			valueState: component.response.valueState.reduce((__, v) => {
+			valueState: valueState.reduce((__, v) => {
 				if (v.valueType === valueType)
 					return [...__, { ...v, value: newValue }];
 				return [...__, v];
