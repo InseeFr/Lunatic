@@ -50,7 +50,7 @@ export const isComponentsConcernedByResponse = responseName => component =>
 
 export const buildUpdatedResponse = component => preferences => valueType => value => {
 	let newValue = value;
-	if (preferences.includes(valueType)) {
+	if (preferences.length > 1 && preferences.splice(-1, 1).includes(valueType)) {
 		const lastValue = preferences.reduce(
 			(_, type) =>
 				component.response.valueState.find(v => v.valueType === type).value !==
