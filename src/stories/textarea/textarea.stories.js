@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { Textarea } from 'components';
+import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
+import data from './data';
 import {
 	text,
 	boolean,
@@ -21,18 +22,6 @@ const labelPositionOptions = {
 	LEFT: 'Left',
 };
 
-const defaultProps = {
-	handleChange: console.log,
-	response: {
-		name: 'INPUT',
-		valueState: [
-			{ valueType: 'COLLECTED', value: 'My collected textarea' },
-			{ valueType: 'FORCED', value: 'My forced textarea' },
-			{ valueType: 'EDITED', value: 'My edited textarea' },
-		],
-	},
-};
-
 const stories = storiesOf('Textarea', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
@@ -41,31 +30,29 @@ const stories = storiesOf('Textarea', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<Textarea id="default" label="Label" {...defaultProps} />
+	<Orchestrator id="default" source={data} />
 ));
 
 stories.addWithJSX('Props', () => (
-	<Textarea
+	<Orchestrator
 		id="props"
+		source={data}
 		label={text('Label', "I'm the label of the textarea")}
 		placeholder={text('Placeholder', 'Placeholder')}
 		rows={number('Rows', 5)}
-		maxLength={number('Max length', 50)}
+		maxLength={number('Max length', 500)}
 		readOnly={boolean('Read only', false)}
 		required={boolean('Required', false)}
-		preferences={['COLLECTED', 'FORCED', 'EDITED']}
 		tooltip={boolean('Tooltip', false)}
 		focused={boolean('Focused', false)}
-		labelPosition={select('Label position', labelPositionOptions)}
-		{...defaultProps}
+		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
 	/>
 ));
 
 stories.addWithJSX('Styled', () => (
-	<Textarea
+	<Orchestrator
 		id="styled"
-		label={text('Label', "I'm the label of the textarea")}
-		handleChange={console.log}
+		source={data}
 		style={object('Generated style', {
 			'border-color': color('Border color', '#e80a4d'),
 			'border-width': number('Border-width', 5, {

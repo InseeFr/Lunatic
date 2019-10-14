@@ -35,7 +35,7 @@ stories.addWithJSX('Default', () => (
 
 stories.addWithJSX('Props', () => (
 	<Orchestrator
-		id="default"
+		id="props"
 		source={data}
 		label={text('Label', "I'm the label of the input")}
 		placeholder={text('Placeholder', 'Placeholder')}
@@ -51,7 +51,7 @@ stories.addWithJSX('Props', () => (
 
 stories.addWithJSX('Styled', () => (
 	<Orchestrator
-		id="default"
+		id="syled"
 		source={data}
 		style={object('Generated style', {
 			'border-color': color('Border color', '#e80a4d'),

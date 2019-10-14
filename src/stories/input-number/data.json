@@ -1,0 +1,27 @@
+{
+	"components": [
+		{
+			"id": "j6q9h8tj",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"min": 0,
+			"max": 99,
+			"decimals": 0,
+			"label": "➡ 4. What is the current season number?",
+			"response": {
+				"name": "SEASON_NUMBER",
+				"valueState": [
+					{ "valueType": "PREVIOUS", "value": null },
+
+					{ "valueType": "COLLECTED", "value": "29" },
+
+					{ "valueType": "FORCED", "value": "30" },
+
+					{ "valueType": "EDITED", "value": null },
+
+					{ "valueType": "INPUTED", "value": null }
+				]
+			}
+		}
+	]
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { InputNumber } from 'components';
+import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
+import data from './data';
 import {
 	text,
 	boolean,
@@ -27,18 +28,6 @@ const unitPositionOptions = {
 	AFTER: 'After',
 };
 
-const defaultProps = {
-	handleChange: console.log,
-	response: {
-		name: 'INPUT_NUMBER',
-		valueState: [
-			{ valueType: 'COLLECTED', value: '1' },
-			{ valueType: 'FORCED', value: '2' },
-			{ valueType: 'EDITED', value: '3' },
-		],
-	},
-};
-
 const stories = storiesOf('InputNumber', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator(Component => {
@@ -47,16 +36,17 @@ const stories = storiesOf('InputNumber', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<InputNumber id="default" label="Label" {...defaultProps} />
+	<Orchestrator id="default" source={data} />
 ));
 
 stories.addWithJSX('Props', () => (
-	<InputNumber
+	<Orchestrator
 		id="props"
+		source={data}
 		label={text('Label', "I'm the label of the number input")}
 		unit={text('Unit', 'euros')}
 		min={number('Min', 0)}
-		max={number('Max', 10)}
+		max={number('Max', 50)}
 		decimals={number('Decimals', 1)}
 		placeholder={text('Placeholder', 'Placeholder')}
 		readOnly={boolean('Read only', false)}
@@ -64,24 +54,15 @@ stories.addWithJSX('Props', () => (
 		required={boolean('Required', false)}
 		focused={boolean('Focused', false)}
 		tooltip={boolean('Tooltip', false)}
-		labelPosition={select('Label position', labelPositionOptions)}
-		unitPosition={select('Unit position', unitPositionOptions)}
-		preferences={['COLLECTED', 'FORCED', 'EDITED']}
-		{...defaultProps}
+		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
+		unitPosition={select('Unit position', unitPositionOptions, 'DEFAULT')}
 	/>
 ));
 
 stories.addWithJSX('Styled', () => (
-	<InputNumber
+	<Orchestrator
 		id="styled"
-		label={text('Label', "I'm the label of the number input")}
-		min={number('Min', 0)}
-		max={number('Max', 0)}
-		decimals={number('Decimals', 0)}
-		placeholder={text('Placeholder', 'Placeholder')}
-		readOnly={boolean('Read only', false)}
-		autoComplete={boolean('Autocomplete', false)}
-		focused={boolean('Focused', false)}
+		source={data}
 		style={object('Generated style', {
 			'border-color': color('Border color', '#e80a4d'),
 			'border-width': number('Border-width', 2, {
@@ -97,6 +78,5 @@ stories.addWithJSX('Styled', () => (
 				step: 1,
 			}),
 		})}
-		{...defaultProps}
 	/>
 ));
