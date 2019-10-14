@@ -1,0 +1,95 @@
+{
+	"components": [
+		{
+			"id": "j6p29i81",
+			"componentType": "Table",
+			"mandatory": false,
+			"cells": [
+				[
+					{ "label": "Vanilla", "value": "1" },
+					{
+						"componentType": "Radio",
+						"id": "j6p29i81-QOP-jbgdb3jx",
+						"response": {
+							"name": "ICE_FLAVOUR1",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": "1" },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						},
+						"options": [
+							{ "value": "1", "label": "Yes" },
+							{ "value": "0", "label": "No" }
+						]
+					}
+				],
+				[
+					{ "label": "Strawberry", "value": "2" },
+					{
+						"componentType": "Radio",
+						"id": "j6p29i81-QOP-jbgdb61k",
+						"response": {
+							"name": "ICE_FLAVOUR2",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": "1" },
+								{ "valueType": "FORCED", "value": "0" },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						},
+						"options": [
+							{ "value": "1", "label": "Yes" },
+							{ "value": "0", "label": "No" }
+						]
+					}
+				],
+				[
+					{ "label": "Apple", "value": "3" },
+					{
+						"componentType": "Radio",
+						"id": "j6p29i81-QOP-jbgdl3kc",
+						"response": {
+							"name": "ICE_FLAVOUR3",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						},
+						"options": [
+							{ "value": "1", "label": "Yes" },
+							{ "value": "0", "label": "No" }
+						]
+					}
+				],
+				[
+					{ "label": "Bacon", "value": "4" },
+					{
+						"componentType": "Radio",
+						"id": "j6p29i81-QOP-jbgdcobo",
+						"response": {
+							"name": "ICE_FLAVOUR4",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						},
+						"options": [
+							{ "value": "1", "label": "Yes" },
+							{ "value": "0", "label": "No" }
+						]
+					}
+				]
+			]
+		}
+	]
+}

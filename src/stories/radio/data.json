@@ -5,14 +5,6 @@
 			"componentType": "Radio",
 			"mandatory": false,
 			"label": "➡ 1. In which city do the Simpsons reside?",
-			"declarations": [
-				{
-					"id": "j3343clt-d3",
-					"declarationType": "INSTRUCTION",
-					"position": "AFTER_QUESTION_TEXT",
-					"label": "One possible answer"
-				}
-			],
 			"response": {
 				"name": "CITY",
 				"valueState": [

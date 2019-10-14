@@ -1,0 +1,167 @@
+{
+	"components": [
+		{
+			"id": "j4nwc63q",
+			"componentType": "Table",
+			"mandatory": false,
+			"positioning": "HORIZONTAL",
+			"label": "➡ 1. Please, specify the percentage of Jay's expenses in the Kwik-E-Mart for each product?",
+			"cells": [
+				[
+					{ "headerCell": true, "colspan": 2, "label": "" },
+					{ "headerCell": true, "label": "Percentage" }
+				],
+				[
+					{ "rowspan": 2, "label": "Frozen products", "value": "A" },
+					{ "label": "Ice creams", "value": "A1" },
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 100,
+						"decimals": 1,
+						"id": "j4nwc63q-QOP-jbgde5yl",
+						"unit": "%",
+						"response": {
+							"name": "PERCENTAGE_EXPENSES11",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+				[
+					{ "label": "Jasper Beardly", "value": "A2" },
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 100,
+						"decimals": 1,
+						"id": "j4nwc63q-QOP-jbgd2x2t",
+						"unit": "%",
+						"response": {
+							"name": "PERCENTAGE_EXPENSES21",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+				[
+					{ "rowspan": 3, "label": "Meat", "value": "B" },
+					{ "label": "Bacon", "value": "B1" },
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 100,
+						"decimals": 1,
+						"id": "j4nwc63q-QOP-jbgdjypz",
+						"unit": "%",
+						"response": {
+							"name": "PERCENTAGE_EXPENSES31",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+				[
+					{ "label": "Pork chop", "value": "B2" },
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 100,
+						"decimals": 1,
+						"id": "j4nwc63q-QOP-jbgdcftu",
+						"unit": "%",
+						"response": {
+							"name": "PERCENTAGE_EXPENSES41",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+				[
+					{ "label": "Chicken", "value": "B3" },
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 100,
+						"decimals": 1,
+						"id": "j4nwc63q-QOP-jbgdiyfe",
+						"unit": "%",
+						"response": {
+							"name": "PERCENTAGE_EXPENSES51",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+				[
+					{ "label": "Compote", "value": "C" },
+					{ "label": "Powersauce", "value": "C1" },
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 100,
+						"decimals": 1,
+						"id": "j4nwc63q-QOP-jbgdj1wd",
+						"unit": "%",
+						"response": {
+							"name": "PERCENTAGE_EXPENSES61",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+				[
+					{ "colspan": 2, "label": "Other", "value": "D" },
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 100,
+						"decimals": 1,
+						"id": "j4nwc63q-QOP-jbgddylk",
+						"unit": "%",
+						"response": {
+							"name": "PERCENTAGE_EXPENSES71",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				]
+			]
+		}
+	]
+}

@@ -1,0 +1,380 @@
+{
+	"components": [
+		{
+			"id": "j6qg8rc6",
+			"componentType": "Table",
+			"mandatory": false,
+			"positioning": "HORIZONTAL",
+			"label": "➡ 1. Please, complete the following grid with your favourite characters",
+			"conditionFilter": "#if((!( $READY != '1')))normal#{else}hidden#end",
+			"cells": [
+				[
+					{ "headerCell": true, "label": "Name" },
+
+					{ "headerCell": true, "label": "Age" }
+				],
+
+				[
+					{
+						"componentType": "Textarea",
+						"maxLength": "255",
+						"id": "j6qg8rc6-QOP-jbgdl5jb",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS11",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": "Hop" },
+								{ "valueType": "FORCED", "value": "Hip" },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					},
+
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 120,
+						"decimals": 0,
+						"id": "j6qg8rc6-QOP-jbgdfndq",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS12",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": "30" },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+
+				[
+					{
+						"componentType": "Textarea",
+						"maxLength": "255",
+						"id": "j6qg8rc6-QOP-jbgd8lwo",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS21",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					},
+
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 120,
+						"decimals": 0,
+						"id": "j6qg8rc6-QOP-jbgd7osi",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS22",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+
+				[
+					{
+						"componentType": "Textarea",
+						"maxLength": "255",
+						"id": "j6qg8rc6-QOP-jbgdbfag",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS31",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					},
+
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 120,
+						"decimals": 0,
+						"id": "j6qg8rc6-QOP-jbgd7bnw",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS32",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+
+				[
+					{
+						"componentType": "Textarea",
+						"maxLength": "255",
+						"id": "j6qg8rc6-QOP-jbgdlgja",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS41",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					},
+
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 120,
+						"decimals": 0,
+						"id": "j6qg8rc6-QOP-jbgd9k71",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS42",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+
+				[
+					{
+						"componentType": "Textarea",
+						"maxLength": "255",
+						"id": "j6qg8rc6-QOP-jbgd745y",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS51",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					},
+
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 120,
+						"decimals": 0,
+						"id": "j6qg8rc6-QOP-jbgdimks",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS52",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+
+				[
+					{
+						"componentType": "Textarea",
+						"maxLength": "255",
+						"id": "j6qg8rc6-QOP-jbgdjkts",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS61",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					},
+
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 120,
+						"decimals": 0,
+						"id": "j6qg8rc6-QOP-jbgdjquz",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS62",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+
+				[
+					{
+						"componentType": "Textarea",
+						"maxLength": "255",
+						"id": "j6qg8rc6-QOP-jbgdcax7",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS71",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					},
+
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 120,
+						"decimals": 0,
+						"id": "j6qg8rc6-QOP-jbgdd2w3",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS72",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+
+				[
+					{
+						"componentType": "Textarea",
+						"maxLength": "255",
+						"id": "j6qg8rc6-QOP-jbgdjye1",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS81",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					},
+
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 120,
+						"decimals": 0,
+						"id": "j6qg8rc6-QOP-jbgdkosc",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS82",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+
+				[
+					{
+						"componentType": "Textarea",
+						"maxLength": "255",
+						"id": "j6qg8rc6-QOP-jbgd5jet",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS91",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					},
+
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 120,
+						"decimals": 0,
+						"id": "j6qg8rc6-QOP-jbgdk0x4",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS92",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				],
+
+				[
+					{
+						"componentType": "Textarea",
+						"maxLength": "255",
+						"id": "j6qg8rc6-QOP-jbgdjw90",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS101",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					},
+
+					{
+						"componentType": "InputNumber",
+						"min": 0,
+						"max": 120,
+						"decimals": 0,
+						"id": "j6qg8rc6-QOP-jbgd2wgf",
+						"response": {
+							"name": "FAVOURITE_CHARACTERS102",
+							"valueState": [
+								{ "valueType": "PREVIOUS", "value": null },
+								{ "valueType": "COLLECTED", "value": null },
+								{ "valueType": "FORCED", "value": null },
+								{ "valueType": "EDITED", "value": null },
+								{ "valueType": "INPUTED", "value": null }
+							]
+						}
+					}
+				]
+			],
+			"lines": { "min": 1, "max": 10 }
+		}
+	]
+}
