@@ -23,10 +23,13 @@ export const getState = questionnaire => {
 export const getCollectedState = questionnaire =>
 	getState(questionnaire).COLLECTED;
 
-export const getCollectedStateByValueType = questionnaire => valueType =>
+export const getCollectedStateByValueType = questionnaire => (
+	valueType,
+	displayNull
+) =>
 	['PREVIOUS', 'COLLECTED', 'FORCED', 'EDITED', 'INPUTED'].includes(valueType)
 		? Object.entries(getCollectedState(questionnaire)).reduce((_, v) => {
-				if (v[1][valueType] !== null)
+				if (displayNull || v[1][valueType] !== null)
 					return {
 						..._,
 						[v[0]]: v[1][valueType],

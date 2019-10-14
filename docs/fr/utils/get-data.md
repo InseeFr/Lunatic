@@ -124,7 +124,7 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 
 `questionnaire` (`object`) : au format Lunatic-Model
 
-`valueType` (`string`) : un des cinq valueType du Lunatic-Model
+(`valueType` (`string`), `displayNull` (`boolean`)) : un des cinq valueType du Lunatic-Model et un boolean pour retourner - ou non - les variables dont la valeur est nulle
 
 #### Retour
 
@@ -155,6 +155,19 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 					{ "valueType": "INPUTED", "value": null }
 				]
 			}
+		},
+		{
+			"componentType": "Input",
+			"response": {
+				"name": "variable2",
+				"valueState": [
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": null },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
+				]
+			}
 		}
 	],
 	"variables": [
@@ -163,10 +176,23 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 }
 ```
 
-`getCollectedStateByValueType`
+`valueType`
+
+'FORCED'
+
+`getCollectedStateByValueType` (displayNull : false or undefined)
 
 ```json
 {
 	"variable1": "value forced"
+}
+```
+
+`getCollectedStateByValueType` (displayNull : true)
+
+```json
+{
+	"variable1": "value forced",
+	"variable2": null
 }
 ```

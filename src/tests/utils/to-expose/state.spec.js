@@ -34,6 +34,9 @@ describe('state', () => {
 			expect(getCollectedStateByValueType(questionnaire)('COLLECTED')).toEqual(
 				collectedStateCollected
 			);
+			expect(
+				getCollectedStateByValueType(questionnaire)('COLLECTED', true)
+			).toEqual(collectedStateCollectedWithNull);
 		});
 	});
 });
@@ -247,5 +250,14 @@ const collectedStateCollected = {
 	PET1: false,
 	PET2: false,
 	ICE_FLAVOUR1: '',
+	ICE_FLAVOUR22: true,
+};
+
+const collectedStateCollectedWithNull = {
+	COMMENT: 'COLLECTED',
+	PET1: false,
+	PET2: false,
+	ICE_FLAVOUR1: '',
+	ICE_FLAVOUR21: null,
 	ICE_FLAVOUR22: true,
 };
