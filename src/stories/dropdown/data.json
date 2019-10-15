@@ -1,0 +1,35 @@
+{
+	"components": [
+		{
+			"id": "j4nw5cqz",
+			"componentType": "Dropdown",
+			"mandatory": false,
+			"label": "➡ 3. In which state do The Simpsons reside?",
+			"response": {
+				"name": "STATE",
+				"valueState": [
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": "3" },
+					{ "valueType": "FORCED", "value": "2" },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
+				]
+			},
+			"options": [
+				{ "value": "1", "label": "Washington" },
+				{ "value": "2", "label": "Kentucky" },
+				{ "value": "3", "label": "Ohio" },
+				{ "value": "4", "label": "Maine" },
+				{ "value": "5", "label": "North Dakota" },
+				{ "value": "6", "label": "Florida" },
+				{ "value": "7", "label": "North Takoma" },
+				{ "value": "8", "label": "California" },
+				{ "value": "9", "label": "Texas" },
+				{ "value": "10", "label": "Massachusetts" },
+				{ "value": "11", "label": "Nevada" },
+				{ "value": "12", "label": "Illinois" },
+				{ "value": "13", "label": "Not in any state, you fool!" }
+			]
+		}
+	]
+}
