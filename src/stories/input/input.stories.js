@@ -45,7 +45,7 @@ stories.addWithJSX('Props', () => (
 		required={boolean('Required', false)}
 		focused={boolean('Focused', false)}
 		tooltip={boolean('Tooltip', false)}
-		labelPosition={select('Label position', labelPositionOptions)}
+		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
 	/>
 ));
 

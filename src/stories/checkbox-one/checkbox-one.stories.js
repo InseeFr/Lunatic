@@ -31,7 +31,7 @@ stories.addWithJSX('Default', () => <Orchestrator source={data} />);
 stories.addWithJSX('Props', () => (
 	<Orchestrator
 		source={data}
-		positioning={select('Items positioning', positioningOptions)}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		tooltip={boolean('Tooltip', false)}

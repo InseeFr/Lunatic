@@ -34,7 +34,7 @@ stories.addWithJSX('OneAxisOneMeasure', () => (
 		id="default"
 		source={dataOneAxisOneMeasure}
 		tooltip={boolean('Tooltip', false)}
-		positioning={select('Items positioning', positioningOptions)}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
 ));
 
@@ -43,7 +43,7 @@ stories.addWithJSX('OneAxisTwoMeasure', () => (
 		id="default"
 		source={dataOneAxisTwoMeasures}
 		tooltip={boolean('Tooltip', false)}
-		positioning={select('Items positioning', positioningOptions)}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
 ));
 
@@ -52,7 +52,7 @@ stories.addWithJSX('OneHierarchicalAxis', () => (
 		id="default"
 		source={dataOneHierarchicalAxis}
 		tooltip={boolean('Tooltip', false)}
-		positioning={select('Items positioning', positioningOptions)}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
 ));
 
@@ -61,7 +61,7 @@ stories.addWithJSX('TwoAxisOneMeasure', () => (
 		id="default"
 		source={dataTwoAxisOneMeasure}
 		tooltip={boolean('Tooltip', false)}
-		positioning={select('Items positioning', positioningOptions)}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
 ));
 
@@ -70,6 +70,6 @@ stories.addWithJSX('Roster', () => (
 		id="default"
 		source={dataRoster}
 		tooltip={boolean('Tooltip', false)}
-		positioning={select('Items positioning', positioningOptions)}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
 ));
