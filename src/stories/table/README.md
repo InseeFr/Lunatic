@@ -12,6 +12,7 @@
 |      lines      | object |      {}       |          | Min and max lines for evolutive table |
 | declarations \* | array  |      []       |          | Declarations of the table             |
 | positioning \*  | string |   "DEFAULT"   |          | Cell options positioning              |
+|   addBtnLabel   | string | "Add a line"  |          | Label of the button to add lines      |
 |     tooltip     |  bool  |     false     |          | Tooltip of the table                  |
 |      style      | object |      {}       |          | Style of the table                    |
 
