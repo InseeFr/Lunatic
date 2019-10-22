@@ -102,6 +102,7 @@ const InputNumber = ({
 								});
 							}}
 						/>
+						{unitPosition === 'AFTER' && <span className="unit">{unit}</span>}
 					</div>
 					{tooltip && (
 						<div className="tooltip">
@@ -109,7 +110,6 @@ const InputNumber = ({
 						</div>
 					)}
 				</div>
-				<div className="unit">{unitPosition === 'AFTER' && unit}</div>
 				<div className="lunatic-input-number-errors">
 					{messagesError.map((m, i) => (
 						<div key={i} className="error">
