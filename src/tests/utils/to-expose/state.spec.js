@@ -2,6 +2,7 @@ import {
 	getState,
 	getCollectedState,
 	getCollectedStateByValueType,
+	getBindings,
 } from 'utils/to-expose/state';
 
 describe('state', () => {
@@ -37,6 +38,14 @@ describe('state', () => {
 			expect(
 				getCollectedStateByValueType(questionnaire)('COLLECTED', true)
 			).toEqual(collectedStateCollectedWithNull);
+		});
+	});
+	describe('getBindings', () => {
+		it('should return empty object', () => {
+			expect(getBindings([])).toEqual({});
+		});
+		it('should return object', () => {
+			expect(getBindings(questionnaire)).toEqual(bindingsResults);
 		});
 	});
 });
@@ -142,14 +151,15 @@ const questionnaire = {
 			],
 		},
 	],
-	variables: [
-		{ variableType: 'EXTERNAL', name: 'EXT', label: 'EXT value' },
-		{
-			variableType: 'CALCULATED',
-			name: 'CALC',
-			value: 'XXX',
+	variables: {
+		EXTERNAL: { EXT: 'EXT value' },
+		CALCULATED: {
+			CALC: {
+				expression: 'expression',
+				value: 'XXX',
+			},
 		},
-	],
+	},
 };
 const state = {
 	COLLECTED: {
@@ -197,7 +207,7 @@ const state = {
 		},
 	},
 	EXTERNAL: { EXT: 'EXT value' },
-	CALCULATED: { CALC: 'Evaluation is coming soon!' },
+	CALCULATED: { CALC: 'XXX' },
 };
 
 const collectedState = {
@@ -260,4 +270,10 @@ const collectedStateCollectedWithNull = {
 	ICE_FLAVOUR1: '',
 	ICE_FLAVOUR21: null,
 	ICE_FLAVOUR22: true,
+};
+
+const bindingsResults = {
+	...collectedStateCollectedWithNull,
+	EXT: 'EXT value',
+	CALC: 'XXX',
 };

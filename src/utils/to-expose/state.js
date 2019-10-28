@@ -1,22 +1,8 @@
 export const getState = questionnaire => {
 	const { components, variables } = questionnaire;
 	const COLLECTED = getVariablesFromComponents(components);
-	const CALCULATED = Array.isArray(variables)
-		? variables
-				.filter(({ variableType }) => variableType === 'CALCULATED')
-				.reduce(
-					(_, { name }) => ({ ..._, [name]: 'Evaluation is coming soon!' }),
-					{}
-				)
-		: {};
-	const EXTERNAL =
-		Array.isArray(variables) &&
-		variables.filter(({ variableType }) => variableType === 'EXTERNAL').length >
-			0
-			? variables
-					.filter(({ variableType }) => variableType === 'EXTERNAL')
-					.reduce((_, { name, label }) => ({ ..._, [name]: label }), {})
-			: {};
+	const CALCULATED = getCalculatedFromVariables(variables);
+	const EXTERNAL = getExternalFromVariables(variables);
 	return { COLLECTED, CALCULATED, EXTERNAL };
 };
 
@@ -76,3 +62,28 @@ const getVariableFromCells = cells =>
 		(_, components) => ({ ..._, ...getVariablesFromComponents(components) }),
 		{}
 	);
+
+const getCalculatedFromVariables = variables =>
+	variables && variables.CALCULATED
+		? Object.entries(variables.CALCULATED).reduce(
+				(_, [name, { value }]) => ({ ..._, [name]: value }),
+				{}
+		  )
+		: {};
+
+const getExternalFromVariables = variables =>
+	variables && variables.EXTERNAL
+		? Object.entries(variables.EXTERNAL).reduce(
+				(_, [name, value]) => ({ ..._, [name]: value }),
+				{}
+		  )
+		: {};
+
+export const getBindings = questionnaire => {
+	const { variables } = questionnaire;
+	return {
+		...getCollectedStateByValueType(questionnaire)('COLLECTED', true),
+		...getCalculatedFromVariables(variables),
+		...getExternalFromVariables(variables),
+	};
+};

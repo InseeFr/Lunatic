@@ -65,13 +65,26 @@ const questionnaire = {
 			],
 		},
 	],
+	variables: [
+		{ variableType: 'EXTERNAL', name: 'VAR_EXTERNAL', value: null },
+		{
+			variableType: 'CALCULATED',
+			name: 'VAR_CALCULATED',
+			expression: 'VTL expression',
+		},
+	],
 };
 
 const data = {
-	input: { COLLECTED: 'My input' },
-	check1: { COLLECTED: true },
-	check2: { COLLECTED: false, FORCED: true },
-	table11: { COLLECTED: '1' },
+	COLLECTED: {
+		input: { COLLECTED: 'My input' },
+		check1: { COLLECTED: true },
+		check2: { COLLECTED: false, FORCED: true },
+		table11: { COLLECTED: '1' },
+	},
+	EXTERNAL: {
+		VAR_EXTERNAL: 'Value VAR_EXTERNAL',
+	},
 };
 
 const result = {
@@ -123,4 +136,10 @@ const result = {
 			],
 		},
 	],
+	variables: {
+		EXTERNAL: { VAR_EXTERNAL: 'Value VAR_EXTERNAL' },
+		CALCULATED: {
+			VAR_CALCULATED: { expression: 'VTL expression', value: null },
+		},
+	},
 };

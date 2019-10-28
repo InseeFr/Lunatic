@@ -4,4 +4,5 @@ export {
 	getState,
 	getCollectedState,
 	getCollectedStateByValueType,
+	getBindings,
 } from './state';
