@@ -67,7 +67,7 @@ class SelectPanel extends React.Component {
 						<Option
 							{...rest}
 							hidden={
-								prefix ? (children.startsWith(prefix) ? false : true) : false
+								prefix ? (children.includes(prefix) ? false : true) : false
 							}
 							key={i}
 							value={val}

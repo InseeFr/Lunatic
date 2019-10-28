@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import SelectBase from '../shared/select-base.component';
-import PropTypes from 'prop-types';
+import Option from '../shared/option.component';
+import { selectCommonPropTypes, allowedTypes } from '../simple/prop-types';
 import './writable-select.scss';
 
 class WritableSelect extends React.Component {
@@ -48,12 +50,23 @@ class WritableSelect extends React.Component {
 
 	render() {
 		const { expanded, value, label, prefix } = this.state;
-		const { children, className, placeHolder, readOnly, ...rest } = this.props;
+		const {
+			options: initOpts,
+			className,
+			placeHolder,
+			readOnly,
+			...rest
+		} = this.props;
+		const options = initOpts.map(({ label, value }, i) => (
+			<Option key={i} value={value}>
+				{label}
+			</Option>
+		));
 		return (
 			<SelectBase
 				id="writable-select"
 				prefix={prefix}
-				options={children}
+				options={options}
 				expanded={expanded}
 				readOnly={readOnly}
 				value={value}
@@ -88,11 +101,14 @@ class WritableSelect extends React.Component {
 }
 
 WritableSelect.propTypes = {
-	value: PropTypes.object,
-	handleChange: PropTypes.func,
 	className: PropTypes.string,
-	placeHolder: PropTypes.string,
-	readOnly: PropTypes.bool,
+	...selectCommonPropTypes,
+	options: PropTypes.arrayOf(
+		PropTypes.shape({
+			label: PropTypes.string.isRequired,
+			value: allowedTypes,
+		})
+	),
 };
 
 export default WritableSelect;
