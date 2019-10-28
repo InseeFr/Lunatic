@@ -28,7 +28,9 @@ export default {
 			exclude: 'node_modules/**',
 			ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
 		}),
-		commonjs(),
+		commonjs({
+			ignore: ['antlr4', 'antlr4/index'],
+		}),
 		image(),
 	],
 	external: ['react', 'react-dom', 'lodash.camelcase', 'prop-types'],
