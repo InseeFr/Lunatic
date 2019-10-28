@@ -36,6 +36,7 @@
 		"library"
 	],
 	"dependencies": {
+		"@inseefr/vtl-tools": "^0.1.10",
 		"lodash.camelcase": "^4.3.0",
 		"prop-types": "^15.6.0",
 		"react": "^16.8.6",
