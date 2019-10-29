@@ -6,12 +6,7 @@ import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
 import { text, boolean, select } from '@storybook/addon-knobs/react';
-
-const positioningOptions = {
-	DEFAULT: 'Default',
-	HORIZONTAL: 'Horizontal',
-	VERTICAL: 'Vertical',
-};
+import { positioningOptions } from '../utils/options';
 
 const stories = storiesOf('CheckboxBoolean', module)
 	.addDecorator(withReadme(readme))

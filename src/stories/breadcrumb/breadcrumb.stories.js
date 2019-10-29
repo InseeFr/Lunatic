@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { Breadcrumb } from 'components';
+import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import { number, color, object } from '@storybook/addon-knobs/react';
@@ -14,8 +14,6 @@ const stories = storiesOf('Breadcrumb', module)
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<Breadcrumb />" />;
 	});
-
-stories.addWithJSX('Props', () => <Breadcrumb elements={elements} />);
 
 stories.addWithJSX('Styled', () => (
 	<Breadcrumb

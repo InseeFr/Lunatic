@@ -3,7 +3,9 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import postcss from 'rollup-plugin-postcss';
-import image from 'rollup-plugin-image';
+import image from '@timdp/rollup-plugin-image';
+
+const { dependencies } = require('./package.json');
 
 export default {
 	input: 'src/components/index.js',
@@ -22,7 +24,6 @@ export default {
 		postcss(),
 		babel({
 			exclude: 'node_modules/**',
-			plugins: ['external-helpers'],
 		}),
 		replace({
 			exclude: 'node_modules/**',
@@ -33,5 +34,5 @@ export default {
 		}),
 		image(),
 	],
-	external: ['react', 'react-dom', 'lodash.camelcase', 'prop-types'],
+	external: ['react', ...Object.keys(dependencies)],
 };

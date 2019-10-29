@@ -10,13 +10,8 @@ import dataOneAxisTwoMeasures from './data-one-axis-two-measures';
 import dataOneHierarchicalAxis from './data-one-hierarchical-axis';
 import dataTwoAxisOneMeasure from './data-two-axis-one-measure';
 import dataRoster from './data-roster';
-import { boolean, text, select } from '@storybook/addon-knobs/react';
-
-const positioningOptions = {
-	DEFAULT: 'Default',
-	HORIZONTAL: 'Horizontal',
-	VERTICAL: 'Vertical',
-};
+import { positioningOptions } from '../utils/options';
+import { boolean, select } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Table', module)
 	.addDecorator(withReadme(readme))

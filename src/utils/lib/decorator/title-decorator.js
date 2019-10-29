@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const titleDecorator = WrappedComponent => {
-	class TitleComponent extends Component {
-		render() {
-			const { title } = this.props;
-			return (
-				<React.Fragment>
-					<h1>{title}</h1>
-					<WrappedComponent />
-				</React.Fragment>
-			);
-		}
-	}
+	const TitleComponent = props => {
+		const { title } = props;
+		return (
+			<>
+				<h1>{title}</h1>
+				<WrappedComponent />
+			</>
+		);
+	};
 	return TitleComponent;
 };
 

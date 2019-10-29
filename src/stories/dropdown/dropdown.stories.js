@@ -5,6 +5,7 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
+import { labelPositionOptions } from '../utils/options';
 import { text, boolean, select } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Dropdown', module)
@@ -13,14 +14,6 @@ const stories = storiesOf('Dropdown', module)
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<Dropdown />" />;
 	});
-
-const labelPositionOptions = {
-	DEFAULT: 'Default',
-	TOP: 'Top',
-	RIGHT: 'Right',
-	BOTTOM: 'Bottom',
-	LEFT: 'Left',
-};
 
 stories.addWithJSX('Default', () => (
 	<Orchestrator id="default" source={data} />

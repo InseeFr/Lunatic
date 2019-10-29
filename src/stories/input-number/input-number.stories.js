@@ -5,6 +5,7 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
+import { labelPositionOptions, unitPositionOptions } from '../utils/options';
 import {
 	text,
 	boolean,
@@ -13,20 +14,6 @@ import {
 	object,
 	select,
 } from '@storybook/addon-knobs/react';
-
-const labelPositionOptions = {
-	DEFAULT: 'Default',
-	TOP: 'Top',
-	RIGHT: 'Right',
-	BOTTOM: 'Bottom',
-	LEFT: 'Left',
-};
-
-const unitPositionOptions = {
-	DEFAULT: 'Default',
-	BEFORE: 'Before',
-	AFTER: 'After',
-};
 
 const stories = storiesOf('InputNumber', module)
 	.addDecorator(withReadme(readme))

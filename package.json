@@ -37,26 +37,26 @@
 	],
 	"dependencies": {
 		"@inseefr/vtl-tools": "^0.1.10",
+		"keycode": "^2.2.0",
 		"lodash.camelcase": "^4.3.0",
-		"prop-types": "^15.6.0",
-		"react": "^16.8.6",
-		"react-dom": "^16.8.6"
+		"prop-types": "^15.7.2"
 	},
 	"devDependencies": {
-		"@storybook/addon-knobs": "^3.4.11",
-		"@storybook/addon-options": "^3.4.11",
-		"@storybook/addon-viewport": "^3.4.11",
-		"@storybook/react": "^3.4.11",
-		"babel-cli": "^6.26.0",
-		"babel-core": "^6.26.3",
-		"babel-eslint": "^10.0.2",
-		"babel-plugin-external-helpers": "^6.22.0",
-		"babel-plugin-transform-class-properties": "^6.24.1",
-		"babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-		"babel-plugin-transform-object-rest-spread": "^6.26.0",
-		"babel-preset-env": "^1.7.0",
-		"babel-preset-react": "^6.24.1",
-		"babel-register": "^6.26.0",
+		"@babel/core": "^7.6.4",
+		"@babel/plugin-proposal-class-properties": "^7.5.5",
+		"@babel/plugin-syntax-dynamic-import": "^7.2.0",
+		"@babel/plugin-transform-modules-commonjs": "^7.6.0",
+		"@babel/plugin-transform-react-jsx": "^7.3.0",
+		"@babel/preset-env": "^7.6.3",
+		"@babel/preset-react": "^7.6.3",
+		"@storybook/addon-a11y": "^5.2.5",
+		"@storybook/addon-knobs": "^5.2.5",
+		"@storybook/addon-options": "^5.2.5",
+		"@storybook/addon-viewport": "^5.2.5",
+		"@storybook/react": "^5.2.5",
+		"@timdp/rollup-plugin-image": "^1.0.3",
+		"babel-eslint": "^10.0.3",
+		"babel-loader": "^8.0.6",
 		"classnames": "^2.2.5",
 		"coveralls": "^3.0.2",
 		"cross-env": "^5.2.0",
@@ -71,26 +71,24 @@
 		"eslint-plugin-jsx-a11y": "^6.1.1",
 		"eslint-plugin-react": "^7.11.1",
 		"file-loader": "^4.0.0",
-		"jest": "^22.4.0",
+		"jest": "^24.9.0",
 		"jest-transform-stub": "^2.0.0",
 		"node-sass": "^4.7.2",
 		"postcss-scss": "^1.0.3",
 		"prettier": "^1.14.3",
-		"rollup": "^0.66.6",
-		"rollup-plugin-babel": "^3.0.3",
-		"rollup-plugin-commonjs": "^8.3.0",
-		"rollup-plugin-image": "^1.0.2",
-		"rollup-plugin-node-resolve": "^3.0.3",
-		"rollup-plugin-postcss": "^1.2.8",
-		"rollup-plugin-replace": "^2.0.0",
-		"rollup-plugin-serve": "^0.4.2",
-		"rollup-plugin-terser": "^3.0.0",
-		"rollup-plugin-uglify": "^6.0.0",
+		"rollup": "^1.26.0",
+		"rollup-plugin-babel": "^4.3.3",
+		"rollup-plugin-commonjs": "^10.1.0",
+		"rollup-plugin-node-resolve": "^5.2.0",
+		"rollup-plugin-postcss": "^2.0.3",
+		"rollup-plugin-replace": "^2.2.0",
+		"rollup-plugin-serve": "^1.0.1",
+		"rollup-plugin-terser": "^5.1.2",
+		"rollup-plugin-uglify": "^6.0.3",
 		"rollup-watch": "^4.3.1",
 		"sass-loader": "^7.1.0",
-		"storybook-addon-a11y": "^3.1.9",
-		"storybook-addon-jsx": "^5.4.0",
-		"storybook-readme": "^4.0.0-beta1",
+		"storybook-addon-jsx": "^7.1.13",
+		"storybook-readme": "^5.0.8",
 		"style-loader": "^0.20.2",
 		"url-loader": "^0.6.2"
 	},
@@ -108,7 +106,9 @@
 			"^.+\\.js$": "babel-jest",
 			".+\\.(png|jpg)$": "jest-transform-stub"
 		},
-		"setupTestFrameworkScriptFile": "<rootDir>/src/tests/setup/setupTests.js"
+		"setupFilesAfterEnv": [
+			"<rootDir>/src/tests/setup/setupTests.js"
+		]
 	},
 	"publishConfig": {
 		"access": "public"
@@ -119,5 +119,8 @@
 		"useTabs": true,
 		"bracketSpacing": true,
 		"trailingComma": "es5"
+	},
+	"peerDependencies": {
+		"react": "^16.11.0"
 	}
 }

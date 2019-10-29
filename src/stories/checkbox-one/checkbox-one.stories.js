@@ -5,6 +5,7 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
+import { positioningOptions } from '../utils/options';
 import {
 	boolean,
 	number,
@@ -19,12 +20,6 @@ const stories = storiesOf('CheckboxOne', module)
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<CheckboxOne />" />;
 	});
-
-const positioningOptions = {
-	DEFAULT: 'Default',
-	HORIZONTAL: 'Horizontal',
-	VERTICAL: 'Vertical',
-};
 
 stories.addWithJSX('Default', () => <Orchestrator source={data} />);
 
