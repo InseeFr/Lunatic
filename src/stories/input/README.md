@@ -17,6 +17,8 @@
 |     required     |      bool      |     false     |          | Is the input required                |
 |     focused      |      bool      |     false     |          | Is the input focused                 |
 | declarations \*  |     array      |      []       |          | Declarations of the input            |
+|     features     |     array      |      [ ]      |          | Component features for labels        |
+|     bindings     |     object     |      [ ]      |          | Questionnaire bindings               |
 |     tooltip      |      bool      |     false     |          | Tooltip of the input                 |
 |      style       |     object     |      {}       |          | Style of the input                   |
 

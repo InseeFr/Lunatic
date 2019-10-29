@@ -4,6 +4,7 @@ import { TooltipResponse } from '../tooltip';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
+import { interpret } from '../../utils/to-expose';
 import './datepicker.scss';
 
 const Datepicker = ({
@@ -18,6 +19,8 @@ const Datepicker = ({
 	required,
 	focused,
 	declarations,
+	features,
+	bindings,
 	tooltip,
 	style,
 }) => {
@@ -28,11 +31,13 @@ const Datepicker = ({
 	}, [focused]);
 
 	return (
-		<React.Fragment>
+		<>
 			<Declarations
 				id={id}
 				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
 			<div className={U.getLabelPositionClass(labelPosition)}>
 				{label && (
@@ -41,13 +46,15 @@ const Datepicker = ({
 						id={`input-label-${id}`}
 						className={`${required ? 'required' : ''}`}
 					>
-						{label}
+						{interpret(features)(bindings)(label)}
 					</label>
 				)}
 				<Declarations
 					id={id}
 					type={C.AFTER_QUESTION_TEXT}
 					declarations={declarations}
+					features={features}
+					bindings={bindings}
 				/>
 				<div className="field-container">
 					<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
@@ -76,8 +83,14 @@ const Datepicker = ({
 					)}
 				</div>
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
-		</React.Fragment>
+			<Declarations
+				id={id}
+				type={C.DETACHABLE}
+				declarations={declarations}
+				features={features}
+				bindings={bindings}
+			/>
+		</>
 	);
 };
 
@@ -90,6 +103,8 @@ Datepicker.defaultProps = {
 	focused: false,
 	response: {},
 	declarations: [],
+	features: [],
+	bindings: {},
 	tooltip: false,
 	style: {},
 };
@@ -106,6 +121,8 @@ Datepicker.propTypes = {
 	required: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: U.declarationsPropTypes,
+	features: PropTypes.arrayOf(PropTypes.string),
+	bindings: PropTypes.object,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

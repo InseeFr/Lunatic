@@ -4,6 +4,7 @@ import * as lunatic from '../components';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
+import { interpret } from '../../utils/to-expose';
 import './table.scss';
 
 const Table = ({
@@ -15,6 +16,8 @@ const Table = ({
 	lines: initLines,
 	positioning,
 	declarations,
+	features,
+	bindings,
 	addBtnLabel,
 	tooltip,
 }) => {
@@ -27,24 +30,28 @@ const Table = ({
 	const width = `${100 / Math.max(...cells.map(line => line.length))}%`;
 	const Button = lunatic.Button;
 	return (
-		<React.Fragment>
+		<>
 			<Declarations
 				id={tableId}
 				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
 			{tableLabel && (
 				<label
 					htmlFor={`table-one-axis-${tableId}`}
 					id={`table-one-axis-label-${tableId}`}
 				>
-					{tableLabel}
+					{interpret(features)(bindings)(tableLabel)}
 				</label>
 			)}
 			<Declarations
 				id={tableId}
 				type={C.AFTER_QUESTION_TEXT}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
 			<table id={`table-${tableId}`} className="table-lunatic">
 				<tbody>
@@ -73,6 +80,8 @@ const Table = ({
 													preferences={preferences}
 													positioning={positioning}
 													tooltip={tooltip}
+													features={features}
+													bindings={bindings}
 													{...componentProps}
 												/>
 											</td>
@@ -106,8 +115,10 @@ const Table = ({
 				id={tableId}
 				type={C.DETACHABLE}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
-		</React.Fragment>
+		</>
 	);
 };
 
@@ -118,6 +129,8 @@ Table.defaultProps = {
 	lines: {},
 	positioning: 'DEFAULT',
 	declarations: [],
+	features: [],
+	bindings: {},
 	addBtnLabel: 'Add a line',
 	tooltip: false,
 	style: {},
@@ -132,6 +145,8 @@ Table.propTypes = {
 	lines: U.linesPropTypes,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	declarations: U.declarationsPropTypes,
+	features: PropTypes.arrayOf(PropTypes.string),
+	bindings: PropTypes.object,
 	addBtnLabel: PropTypes.string,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,

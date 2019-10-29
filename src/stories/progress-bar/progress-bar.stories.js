@@ -13,12 +13,12 @@ const stories = storiesOf('ProgressBar', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<React.Fragment>
+	<>
 		{Array.from(new Array(11), (a, i) => (
 			<React.Fragment key={i}>
 				<ProgressBar id={`default-${i * 10}`} value={i * 10} />
 				<br />
 			</React.Fragment>
 		))}
-	</React.Fragment>
+	</>
 ));

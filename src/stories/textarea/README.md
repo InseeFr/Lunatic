@@ -17,6 +17,8 @@
 |     required     |      bool      |     false     |          | Is the textarea required                |
 |     focused      |      bool      |     false     |          | Is the textarea focused                 |
 | declarations \*  |     array      |      [ ]      |          | Declarations of the textarea            |
+|     features     |     array      |      [ ]      |          | Component features for labels           |
+|     bindings     |     object     |      [ ]      |          | Questionnaire bindings                  |
 |     tooltip      |      bool      |     false     |          | Tooltip of the textarea                 |
 |      style       |     object     |      {}       |          | Style of the textarea                   |
 

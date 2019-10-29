@@ -15,6 +15,8 @@
 | keyboardSelection |  bool  |                  false                   |          | Enable keyboard selection of the checkbox |
 |  positioning \*   | string |                "DEFAULT"                 |          | Checkbox options positioning              |
 |  declarations \*  | array  |                    []                    |          | Declarations of the checkbox              |
+|     features      | array  |                   [ ]                    |          | Component features for labels             |
+|     bindings      | object |                   [ ]                    |          | Questionnaire bindings                    |
 |      tooltip      |  bool  |                  false                   |          | Tooltip of the checkbox                   |
 |     style \*      | object | { fieldsetStyle: {}, checkboxStyle: {} } |          | Style of the checkbox                     |
 

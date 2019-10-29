@@ -15,6 +15,8 @@
 |     required     |  bool  |     false     |          | Is the datepicker required                |
 |     focused      |  bool  |     false     |          | Is the datepicker focused                 |
 | declarations \*  | array  |      []       |          | Declarations of the datepicker            |
+|     features     | array  |      [ ]      |          | Component features for labels             |
+|     bindings     | object |      [ ]      |          | Questionnaire bindings                    |
 |     tooltip      |  bool  |     false     |          | Tooltip of the datepicker                 |
 |      style       | object |      {}       |          | Style of the datepicker                   |
 

@@ -11,6 +11,8 @@
 |  handleChange   |  func  |       -       |    ✓     | Handler of the table                  |
 |      lines      | object |      {}       |          | Min and max lines for evolutive table |
 | declarations \* | array  |      []       |          | Declarations of the table             |
+|    features     | array  |      [ ]      |          | Component features for labels         |
+|    bindings     | object |      [ ]      |          | Questionnaire bindings                |
 | positioning \*  | string |   "DEFAULT"   |          | Cell options positioning              |
 |   addBtnLabel   | string | "Add a line"  |          | Label of the button to add lines      |
 |     tooltip     |  bool  |     false     |          | Tooltip of the table                  |

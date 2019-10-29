@@ -15,6 +15,8 @@
 | keyboardSelection |  bool  |                 false                 |          | Enable keyboard selection of the radio |
 |  positioning \*   | string |               "DEFAULT"               |          | Checkbox options positioning           |
 |  declarations \*  | array  |                  []                   |          | Declarations of the radio              |
+|     features      | array  |                  [ ]                  |          | Component features for labels          |
+|     bindings      | object |                  [ ]                  |          | Questionnaire bindings                 |
 |      tooltip      |  bool  |                 false                 |          | Tooltip of the radio                   |
 |     style \*      | object | { fieldsetStyle: {}, radioStyle: {} } |          | Style of the radio                     |
 

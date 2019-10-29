@@ -4,6 +4,7 @@ import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
+import { interpret } from '../../utils/to-expose';
 import './radio.scss';
 
 const Radio = ({
@@ -17,6 +18,8 @@ const Radio = ({
 	focused,
 	keyboardSelection,
 	declarations,
+	features,
+	bindings,
 	tooltip,
 	style,
 	positioning,
@@ -29,11 +32,13 @@ const Radio = ({
 
 	const { fieldsetStyle, radioStyle } = style;
 	return (
-		<React.Fragment>
+		<>
 			<Declarations
 				id={id}
 				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
 			<div className="field-container">
 				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
@@ -42,11 +47,13 @@ const Radio = ({
 						className="radio-group"
 						style={U.buildStyleObject(fieldsetStyle)}
 					>
-						<legend>{label}</legend>
+						<legend>{interpret(features)(bindings)(label)}</legend>
 						<Declarations
 							id={id}
 							type={C.AFTER_QUESTION_TEXT}
 							declarations={declarations}
+							features={features}
+							bindings={bindings}
 						/>
 						{options.map(({ label: optionLabel, value: optionValue }, i) => {
 							const checked =
@@ -98,8 +105,14 @@ const Radio = ({
 					</div>
 				)}
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
-		</React.Fragment>
+			<Declarations
+				id={id}
+				type={C.DETACHABLE}
+				declarations={declarations}
+				features={features}
+				bindings={bindings}
+			/>
+		</>
 	);
 };
 
@@ -113,6 +126,8 @@ Radio.defaultProps = {
 	keyboardSelection: false,
 	positioning: 'DEFAULT',
 	declarations: [],
+	features: [],
+	bindings: {},
 	tooltip: false,
 	style: { fieldsetStyle: {}, radioStyle: {} },
 };
@@ -129,6 +144,8 @@ Radio.propTypes = {
 	keyboardSelection: PropTypes.bool,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	declarations: U.declarationsPropTypes,
+	features: PropTypes.arrayOf(PropTypes.string),
+	bindings: PropTypes.object,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

@@ -4,6 +4,7 @@ import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
+import { interpret } from '../../utils/to-expose';
 import './input.scss';
 
 const InputNumber = ({
@@ -24,6 +25,8 @@ const InputNumber = ({
 	labelPosition,
 	unitPosition,
 	declarations,
+	features,
+	bindings,
 	tooltip,
 	required,
 	validators,
@@ -48,11 +51,13 @@ const InputNumber = ({
 	}, [focused]);
 
 	return (
-		<React.Fragment>
+		<>
 			<Declarations
 				id={id}
 				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
 			<div className={U.getLabelPositionClass(labelPosition)}>
 				<label
@@ -60,7 +65,7 @@ const InputNumber = ({
 					id={`input-label-${id}`}
 					className={`${required ? 'required' : ''}`}
 				>
-					{label}{' '}
+					{interpret(features)(bindings)(label)}{' '}
 					<span className="unit">
 						{unit && ['DEFAULT', 'BEFORE'].includes(unitPosition)
 							? `(${unit})`
@@ -71,6 +76,8 @@ const InputNumber = ({
 					id={id}
 					type={C.AFTER_QUESTION_TEXT}
 					declarations={declarations}
+					features={features}
+					bindings={bindings}
 				/>
 				<div className="field-container">
 					<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
@@ -118,8 +125,14 @@ const InputNumber = ({
 					))}
 				</div>
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
-		</React.Fragment>
+			<Declarations
+				id={id}
+				type={C.DETACHABLE}
+				declarations={declarations}
+				features={features}
+				bindings={bindings}
+			/>
+		</>
 	);
 };
 
@@ -151,6 +164,8 @@ InputNumber.defaultProps = {
 	autoComplete: false,
 	focused: false,
 	declarations: [],
+	features: [],
+	bindings: {},
 	labelPosition: 'DEFAULT',
 	unitPositioni: 'DEFAULT',
 	required: false,
@@ -173,6 +188,8 @@ InputNumber.propTypes = {
 	autoComplete: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: U.declarationsPropTypes,
+	features: PropTypes.arrayOf(PropTypes.string),
+	bindings: PropTypes.object,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	unitPosition: PropTypes.oneOf(['DEFAULT', 'BEFORE', 'AFTER']),
 	required: PropTypes.bool,

@@ -16,6 +16,8 @@
 |     required     |  bool  |     false     |          | Is the dropdown required                |
 | labelPosition \* | string |   "DEFAULT"   |          | Position of the dropdown label          |
 | declarations \*  | array  |      []       |          | Declarations of the dropdown            |
+|     features     | array  |      [ ]      |          | Component features for labels           |
+|     bindings     | object |      [ ]      |          | Questionnaire bindings                  |
 |     tooltip      |  bool  |     false     |          | Tooltip of the dropdown                 |
 |      style       | object |      {}       |          | Style of the dropdown                   |
 

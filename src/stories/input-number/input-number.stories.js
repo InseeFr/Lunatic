@@ -5,7 +5,11 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
-import { labelPositionOptions, unitPositionOptions } from '../utils/options';
+import {
+	labelPositionOptions,
+	unitPositionOptions,
+	featuresOptions,
+} from '../utils/options';
 import {
 	text,
 	boolean,
@@ -30,12 +34,14 @@ stories.addWithJSX('Props', () => (
 	<Orchestrator
 		id="props"
 		source={data}
-		label={text('Label', "I'm the label of the number input")}
+		label={text('Label', '"I\'m the label of the number input"')}
 		unit={text('Unit', 'euros')}
 		min={number('Min', 0)}
 		max={number('Max', 50)}
 		decimals={number('Decimals', 1)}
 		placeholder={text('Placeholder', 'Placeholder')}
+		features={select('Features', featuresOptions, [])}
+		bindings={object('Bindings', { test: 'test' })}
 		readOnly={boolean('Read only', false)}
 		autoComplete={boolean('Autocomplete', false)}
 		required={boolean('Required', false)}

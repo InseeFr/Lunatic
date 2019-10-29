@@ -4,6 +4,7 @@ import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
+import { interpret } from '../../utils/to-expose';
 import './checkbox.scss';
 
 const CheckboxGroup = ({
@@ -17,6 +18,8 @@ const CheckboxGroup = ({
 	keyboardSelection,
 	positioning,
 	declarations,
+	features,
+	bindings,
 	tooltip,
 	style,
 }) => {
@@ -28,22 +31,26 @@ const CheckboxGroup = ({
 	}, [focused]);
 
 	return (
-		<React.Fragment>
+		<>
 			<Declarations
 				id={id}
 				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
 			<fieldset
 				key={`checkbox-${id}`}
 				className="checkbox-group"
 				style={U.buildStyleObject(fieldsetStyle)}
 			>
-				<legend>{label}</legend>
+				<legend>{interpret(features)(bindings)(label)}</legend>
 				<Declarations
 					id={id}
 					type={C.AFTER_QUESTION_TEXT}
 					declarations={declarations}
+					features={features}
+					bindings={bindings}
 				/>
 				{responses.map(({ id: modId, label: modLabel, response }, i) => {
 					const checked = U.getResponseByPreference(preferences)(response);
@@ -91,8 +98,14 @@ const CheckboxGroup = ({
 					);
 				})}
 			</fieldset>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
-		</React.Fragment>
+			<Declarations
+				id={id}
+				type={C.DETACHABLE}
+				declarations={declarations}
+				features={features}
+				bindings={bindings}
+			/>
+		</>
 	);
 };
 
@@ -105,6 +118,8 @@ CheckboxGroup.defaultProps = {
 	keyboardSelection: false,
 	positioning: 'DEFAULT',
 	declarations: [],
+	features: [],
+	bindings: {},
 	tooltip: false,
 	style: { fieldsetStyle: {}, checkboxStyle: {} },
 };
@@ -120,6 +135,8 @@ CheckboxGroup.propTypes = {
 	keyboardSelection: PropTypes.bool,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	declarations: U.declarationsPropTypes,
+	features: PropTypes.arrayOf(PropTypes.string),
+	bindings: PropTypes.object,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

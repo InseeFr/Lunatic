@@ -4,6 +4,7 @@ import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
+import { interpret } from '../../utils/to-expose';
 import './textarea.scss';
 
 const Textarea = ({
@@ -20,6 +21,8 @@ const Textarea = ({
 	required,
 	focused,
 	declarations,
+	features,
+	bindings,
 	tooltip,
 	style,
 }) => {
@@ -35,6 +38,8 @@ const Textarea = ({
 				id={id}
 				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
 			{label && (
 				<label
@@ -42,13 +47,15 @@ const Textarea = ({
 					id={`textarea-label-${id}`}
 					className={`${required ? 'required' : ''}`}
 				>
-					{label}
+					{interpret(features)(bindings)(label)}
 				</label>
 			)}
 			<Declarations
 				id={id}
 				type={C.AFTER_QUESTION_TEXT}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
 			<div className="field-container">
 				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
@@ -77,7 +84,13 @@ const Textarea = ({
 					</div>
 				)}
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			<Declarations
+				id={id}
+				type={C.DETACHABLE}
+				declarations={declarations}
+				features={features}
+				bindings={bindings}
+			/>
 		</div>
 	);
 };
@@ -92,6 +105,8 @@ Textarea.defaultProps = {
 	required: false,
 	focused: false,
 	declarations: [],
+	features: [],
+	bindings: {},
 	tooltip: false,
 	style: {},
 };
@@ -110,6 +125,8 @@ Textarea.propTypes = {
 	required: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: U.declarationsPropTypes,
+	features: PropTypes.arrayOf(PropTypes.string),
+	bindings: PropTypes.object,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

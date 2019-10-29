@@ -5,8 +5,9 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
-import { positioningOptions } from '../utils/options';
+import { positioningOptions, featuresOptions } from '../utils/options';
 import {
+	text,
 	boolean,
 	number,
 	color,
@@ -26,7 +27,10 @@ stories.addWithJSX('Default', () => <Orchestrator source={data} />);
 stories.addWithJSX('Props', () => (
 	<Orchestrator
 		source={data}
+		label={text('Label', '"I\'m the label of the CheckboxOne"')}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		features={select('Features', featuresOptions, [])}
+		bindings={object('Bindings', { test: 'test' })}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		tooltip={boolean('Tooltip', false)}

@@ -5,8 +5,8 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
-import { labelPositionOptions } from '../utils/options';
-import { text, boolean, select } from '@storybook/addon-knobs/react';
+import { labelPositionOptions, featuresOptions } from '../utils/options';
+import { text, boolean, select, object } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Dropdown', module)
 	.addDecorator(withReadme(readme))
@@ -23,8 +23,10 @@ stories.addWithJSX('Props', () => (
 	<Orchestrator
 		id="props"
 		source={data}
-		label={text('Label', "I'm the label of the dropdown")}
+		label={text('Label', '"I\'m the label of the dropdown"')}
 		placeholder={text('Placeholder', 'Placeholder')}
+		features={select('Features', featuresOptions, [])}
+		bindings={object('Bindings', { test: 'test' })}
 		readOnly={boolean('Read only', false)}
 		writable={boolean('Writable', false)}
 		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}

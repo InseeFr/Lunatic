@@ -30,12 +30,14 @@ stories.addWithJSX('Props', () => (
 	<Orchestrator
 		id="props"
 		source={data}
-		label={text('Label', "I'm the label of the textarea")}
+		label={text('Label', '"Hello " || NAME')}
 		placeholder={text('Placeholder', 'Placeholder')}
 		rows={number('Rows', 5)}
 		maxLength={number('Max length', 500)}
 		readOnly={boolean('Read only', false)}
 		required={boolean('Required', false)}
+		features={select('Features', featuresOptions, [])}
+		bindings={object('Bindings', { NAME: 'Mauro' })}
 		tooltip={boolean('Tooltip', false)}
 		focused={boolean('Focused', false)}
 		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}

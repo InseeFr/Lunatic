@@ -6,6 +6,7 @@ import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
+import { interpret } from '../../utils/to-expose';
 import './dropdown.scss';
 
 const Dropdown = ({
@@ -15,6 +16,8 @@ const Dropdown = ({
 	writable,
 	required,
 	declarations,
+	features,
+	bindings,
 	...props
 }) => {
 	const { preferences, response, handleChange, tooltip, options } = props;
@@ -29,6 +32,8 @@ const Dropdown = ({
 				id={id}
 				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
 			{label && (
 				<label
@@ -36,13 +41,15 @@ const Dropdown = ({
 					id={`textarea-label-${id}`}
 					className={`${required ? 'required' : ''}`}
 				>
-					{label}
+					{interpret(features)(bindings)(label)}
 				</label>
 			)}
 			<Declarations
 				id={id}
 				type={C.AFTER_QUESTION_TEXT}
 				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
 			<div className="field-container">
 				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
@@ -61,7 +68,13 @@ const Dropdown = ({
 					</div>
 				)}
 			</div>
-			<Declarations id={id} type={C.DETACHABLE} declarations={declarations} />
+			<Declarations
+				id={id}
+				type={C.DETACHABLE}
+				declarations={declarations}
+				features={features}
+				bindings={bindings}
+			/>
 		</div>
 	);
 };
@@ -76,6 +89,8 @@ Dropdown.defaultProps = {
 	tooltip: false,
 	labelPosition: 'DEFAULT',
 	declarations: [],
+	features: [],
+	bindings: {},
 	tooltip: false,
 	style: {},
 };
@@ -93,6 +108,8 @@ Dropdown.propTypes = {
 	required: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	declarations: U.declarationsPropTypes,
+	features: PropTypes.arrayOf(PropTypes.string),
+	bindings: PropTypes.object,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

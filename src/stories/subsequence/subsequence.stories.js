@@ -4,7 +4,14 @@ import { withReadme } from 'storybook-readme';
 import { Subsequence } from 'components';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
-import { text, number, color, object } from '@storybook/addon-knobs/react';
+import { featuresOptions } from '../utils/options';
+import {
+	text,
+	number,
+	color,
+	object,
+	select,
+} from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Subsequence', module)
 	.addDecorator(withReadme(readme))
@@ -18,7 +25,12 @@ stories.addWithJSX('Default', () => (
 ));
 
 stories.addWithJSX('Props', () => (
-	<Subsequence id="props" label={text('Label', 'Label of my subsequence')} />
+	<Subsequence
+		id="props"
+		label={text('Label', '"Label of my subsequence: " || test')}
+		features={select('Features', featuresOptions, [])}
+		bindings={object('Bindings', { test: 'test' })}
+	/>
 ));
 
 stories.addWithJSX('Styled', () => (
