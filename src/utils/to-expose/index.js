@@ -6,3 +6,4 @@ export {
 	getCollectedStateByValueType,
 	getBindings,
 } from './state';
+export { interpret } from './interpret';
