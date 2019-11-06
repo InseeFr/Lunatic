@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import VtlActivator from './vtl-activator';
 import * as lunatic from '@inseefr/lunatic';
 import './custom-lunatic.scss';
 
 const Questionnaire = ({ source, data, error }) => {
   const [questionnaire, setQuestionnaire] = useState(lunatic.mergeQuestionnaireAndData(source)({}));
-  console.log(data);
+  const [vtl, setVtl] = useState(true);
+
   useEffect(() => {
     setQuestionnaire(lunatic.mergeQuestionnaireAndData(source)(data));
   }, [source, data]);
@@ -24,11 +26,9 @@ const Questionnaire = ({ source, data, error }) => {
 
   const bindings = lunatic.getBindings(questionnaire);
 
-  console.log(bindings);
-
   const components = questionnaire.components
-    .filter(
-      ({ conditionFilter }) => lunatic.interpret(['VTL'])(bindings)(conditionFilter) === 'normal'
+    .filter(({ conditionFilter }) =>
+      vtl ? lunatic.interpret(['VTL'])(bindings)(conditionFilter) === 'normal' : true
     )
     .map(q => {
       const { id, componentType } = q;
@@ -42,14 +42,15 @@ const Questionnaire = ({ source, data, error }) => {
             handleChange={onChange}
             labelPosition="TOP"
             preferences={preferences}
-            features={['VTL']}
-            bindings={bindings}
+            features={vtl ? ['VTL'] : []}
+            bindings={vtl ? bindings : {}}
           />
         </div>
       );
     });
   return (
     <div className="container">
+      <VtlActivator value={vtl} onChange={() => setVtl(!vtl)} />
       <h1 className="title">{questionnaire.label}</h1>
       <div className="components">{components}</div>
     </div>
