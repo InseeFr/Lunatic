@@ -39,6 +39,9 @@ function buildStoryBook(){
 }
 
 function buildOrchestrator(){
+
+  if [ -d "$SITE_FOLDER" ]; then rm -Rf $SITE_FOLDER; fi
+
   cd example/orchestrator
   npm install
   npm run build
@@ -65,7 +68,6 @@ function buildEditor(){
 }
 
 function publish() {
-  if [ -d "$SITE_FOLDER" ]; then rm -Rf $SITE_FOLDER; fi
 
   mkdir $SITE_FOLDER
   pushd "$SITE_FOLDER"
