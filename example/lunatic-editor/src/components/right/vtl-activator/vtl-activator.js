@@ -5,7 +5,7 @@ import './vtl-activator.scss';
 const VtlActivator = ({ value, onChange }) => (
   <div className="vtl-activator">
     <input id="vtl-activator" type="checkbox" checked={value} onChange={onChange} />
-    <label htmlFor="vtl-activator">VTL interpretation</label>
+    <label htmlFor="vtl-activator">{`VTL interpretation (labels & filters)`}</label>
   </div>
 );
 
