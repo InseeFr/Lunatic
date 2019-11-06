@@ -72,7 +72,7 @@ const Input = ({
 							readOnly={readOnly}
 							maxLength={maxLength || 524288}
 							mandatory={mandatory}
-							aria-mandatory={mandatory}
+							aria-required={mandatory}
 							onChange={e =>
 								handleChange({
 									[U.getResponseName(response)]: e.target.value,

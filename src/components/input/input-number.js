@@ -98,7 +98,7 @@ const InputNumber = ({
 							readOnly={readOnly}
 							autoComplete={autoComplete ? 'on' : 'off'}
 							mandatory={mandatory}
-							aria-mandatory={mandatory}
+							aria-required={mandatory}
 							onChange={e => {
 								const {
 									target: { value },

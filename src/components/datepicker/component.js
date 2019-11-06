@@ -68,7 +68,7 @@ const Datepicker = ({
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
 							mandatory={mandatory}
-							aria-mandatory={mandatory}
+							aria-required={mandatory}
 							onChange={e =>
 								handleChange({
 									[U.getResponseName(response)]: e.target.value,
