@@ -22,7 +22,7 @@ describe('textarea', () => {
 
 	it('returns mandatory component', () => {
 		const wrapper = shallow(<Textarea {...defaultProps} mandatory />);
-		expect(wrapper.find('textarea').prop('mandatory')).toBeTruthy();
+		expect(wrapper.find('textarea').prop('required')).toBeTruthy();
 	});
 
 	it('returns tooltip component', () => {

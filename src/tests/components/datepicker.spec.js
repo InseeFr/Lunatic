@@ -26,7 +26,7 @@ describe('datepicker', () => {
 
 	it('returns mandatory component', () => {
 		const wrapper = shallow(<Datepicker {...defaultProps} mandatory />);
-		expect(wrapper.find('input').prop('mandatory')).toBeTruthy();
+		expect(wrapper.find('input').prop('required')).toBeTruthy();
 	});
 
 	it('returns tooltip component', () => {
