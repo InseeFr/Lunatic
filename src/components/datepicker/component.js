@@ -67,7 +67,7 @@ const Datepicker = ({
 							className="datepicker-lunatic"
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
-							mandatory={mandatory}
+							required={mandatory}
 							aria-required={mandatory}
 							onChange={e =>
 								handleChange({

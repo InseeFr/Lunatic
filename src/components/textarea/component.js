@@ -69,7 +69,7 @@ const Textarea = ({
 						rows={rows}
 						maxLength={maxLength || 524288}
 						readOnly={readOnly}
-						mandatory={mandatory}
+						required={mandatory}
 						aria-required={mandatory}
 						onChange={e =>
 							handleChange({

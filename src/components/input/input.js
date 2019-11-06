@@ -71,7 +71,7 @@ const Input = ({
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
 							maxLength={maxLength || 524288}
-							mandatory={mandatory}
+							required={mandatory}
 							aria-required={mandatory}
 							onChange={e =>
 								handleChange({

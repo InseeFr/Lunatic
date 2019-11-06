@@ -97,7 +97,7 @@ const InputNumber = ({
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
 							autoComplete={autoComplete ? 'on' : 'off'}
-							mandatory={mandatory}
+							required={mandatory}
 							aria-required={mandatory}
 							onChange={e => {
 								const {
