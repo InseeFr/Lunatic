@@ -39,19 +39,10 @@ function buildStoryBook(){
 }
 
 function buildOrchestrator(){
-
-  if [ -d "$SITE_FOLDER" ]; then rm -Rf $SITE_FOLDER; fi
-
   cd example/orchestrator
   npm install
   npm run build
   cd ../..
-
-  mkdir $SITE_FOLDER
-  pushd "$SITE_FOLDER"
-
-  cp -R "../$ORCHESTRATOR_FOLDER/." .
-  mv "build" "orchestrator"
 }
 
 function buildEditor(){
@@ -59,21 +50,21 @@ function buildEditor(){
   npm install
   npm run build
   cd ../..
-
-  mkdir $SITE_FOLDER
-  pushd "$SITE_FOLDER"
-
-  cp -R "../$EDITOR_FOLDER/." .
-  mv "build" "orchestrator"
 }
 
 function publish() {
+
+    if [ -d "$SITE_FOLDER" ]; then rm -Rf $SITE_FOLDER; fi
 
   mkdir $SITE_FOLDER
   pushd "$SITE_FOLDER"
 
   cp -a "../$DOC_FOLDER/_book/." .
   cp -R "../$STORYBOOK_FOLDER/." .
+  cp -R "../$ORCHESTRATOR_FOLDER/." .
+  mv "build" "orchestrator"
+  cp -R "../$EDITOR_FOLDER/." .
+  mv "build" "editor"
 
   git init
   git remote add upstream "$UPSTREAM"
