@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "./static/css/main.d6fd1874.chunk.css",
-    "main.js": "./static/js/main.c6fb3107.chunk.js",
-    "main.js.map": "./static/js/main.c6fb3107.chunk.js.map",
+    "main.js": "./static/js/main.ad83f936.chunk.js",
+    "main.js.map": "./static/js/main.ad83f936.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.f1255d99.js",
     "runtime-main.js.map": "./static/js/runtime-main.f1255d99.js.map",
-    "static/js/2.bf55ff3d.chunk.js": "./static/js/2.bf55ff3d.chunk.js",
-    "static/js/2.bf55ff3d.chunk.js.map": "./static/js/2.bf55ff3d.chunk.js.map",
+    "static/js/2.53866849.chunk.js": "./static/js/2.53866849.chunk.js",
+    "static/js/2.53866849.chunk.js.map": "./static/js/2.53866849.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.6e0320efeef4eb7b207c752a10188782.js": "./precache-manifest.6e0320efeef4eb7b207c752a10188782.js",
+    "precache-manifest.a20d23a8bbe91e83a5a5eb199d6ea628.js": "./precache-manifest.a20d23a8bbe91e83a5a5eb199d6ea628.js",
     "service-worker.js": "./service-worker.js",
     "static/css/main.d6fd1874.chunk.css.map": "./static/css/main.d6fd1874.chunk.css.map",
     "static/media/custom-lunatic.scss": "./static/media/radio_button_unchecked.6a19a534.svg",
@@ -16,8 +16,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.f1255d99.js",
-    "static/js/2.bf55ff3d.chunk.js",
+    "static/js/2.53866849.chunk.js",
     "static/css/main.d6fd1874.chunk.css",
-    "static/js/main.c6fb3107.chunk.js"
+    "static/js/main.ad83f936.chunk.js"
   ]
 }

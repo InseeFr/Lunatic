@@ -1,98 +1,101 @@
 {
-	"COMMENT": {
-		"COLLECTED": "Simpsons family is the most famous family in the world for sure. Funny, crazy and full of societal references."
-	},
-	"PRODUCER": {
-		"COLLECTED": "Matt Groening",
-		"EDITED": "Matt Groening and James L. Brooks"
-	},
-	"SEASON_NUMBER": { "COLLECTED": "29", "EDITED": "30" },
-	"DATEFIRST": {
-		"COLLECTED": "2000-07-12",
+	"COLLECTED": {
+		"COMMENT": {
+			"COLLECTED": "Simpsons family is the most famous family in the world for sure. Funny, crazy and full of societal references."
+		},
+		"PRODUCER": {
+			"COLLECTED": "Matt Groening",
+			"EDITED": "Matt Groening and James L. Brooks"
+		},
+		"SEASON_NUMBER": { "COLLECTED": "29", "EDITED": "30" },
+		"DATEFIRST": {
+			"COLLECTED": "2000-07-12",
 
-		"EDITED": "1989-12-17"
+			"EDITED": "1989-12-17"
+		},
+		"AUDIENCE_SHARE": { "COLLECTED": "6.5", "FORCED": "8.2" },
+		"CITY": { "COLLECTED": "00002", "EDITED": "00001" },
+		"MAYOR": { "FORCED": "2", "EDITED": "3" },
+		"STATE": { "COLLECTED": "5", "FORCED": "13", "EDITED": "10" },
+		"PET1": { "COLLECTED": true },
+		"PET2": { "COLLECTED": false, "EDITED": true },
+		"PET3": { "COLLECTED": false, "FORCED": true },
+		"PET4": { "COLLECTED": true, "FORCED": false, "EDITED": true },
+		"ICE_FLAVOUR2": { "EDITED": "1" },
+		"ICE_FLAVOUR3": { "FORCED": "1" },
+		"ICE_FLAVOUR4": { "FORCED": "1", "EDITED": "0" },
+		"NUCLEAR_CHARACTER1": { "COLLECTED": "1" },
+		"NUCLEAR_CHARACTER2": { "COLLECTED": "0", "EDITED": "1" },
+		"NUCLEAR_CHARACTER3": { "COLLECTED": "1", "EDITED": "0" },
+		"NUCLEAR_CHARACTER4": { "COLLECTED": "1", "FORCED": "0", "EDITED": "1" },
+		"BIRTH_CHARACTER2": { "COLLECTED": "1" },
+		"BIRTH_CHARACTER3": { "FORCED": "1" },
+		"BIRTH_CHARACTER4": { "EDITED": "1" },
+		"BIRTH_CHARACTER5": { "FORCED": "2", "EDITED": "3" },
+		"PERCENTAGE_EXPENSES11": { "COLLECTED": "10.1" },
+		"PERCENTAGE_EXPENSES21": { "COLLECTED": "5", "FORCED": "10" },
+		"PERCENTAGE_EXPENSES31": { "COLLECTED": "3", "EDITED": "20" },
+		"PERCENTAGE_EXPENSES71": {
+			"COLLECTED": "81.9",
+			"FORCED": "76.9",
+			"EDITED": "59.9"
+		},
+		"CLOWNING12": {
+			"COLLECTED": "Bart playing with megaphone plus speaker volume."
+		},
+		"CLOWNING21": {
+			"FORCED": "3"
+		},
+		"CLOWNING31": {
+			"EDITED": "4"
+		},
+		"CLOWNING32": {
+			"EDITED": "An accident, really?"
+		},
+		"CLOWNING41": {
+			"COLLECTED": "1"
+		},
+		"CLOWNING42": {
+			"COLLECTED": "Homer's way of conceiving teleworking"
+		},
+		"TRAVEL11": { "COLLECTED": true },
+		"TRAVEL12": { "FORCED": true },
+		"TRAVEL13": { "EDITED": true },
+		"TRAVEL14": { "COLLECTED": false, "FORCED": true, "EDITED": false },
+		"TRAVEL15": { "COLLECTED": false },
+		"TRAVEL31": { "COLLECTED": true, "EDITED": false },
+		"TRAVEL32": { "FORCED": true },
+		"TRAVEL33": { "COLLECTED": false, "EDITED": true },
+		"TRAVEL34": { "COLLECTED": true, "FORCED": false, "EDITED": true },
+		"TRAVEL35": { "COLLECTED": false },
+		"TRAVEL41": { "COLLECTED": true },
+		"TRAVEL42": { "COLLECTED": false, "FORCED": true },
+		"TRAVEL43": { "COLLECTED": false, "EDITED": true },
+		"TRAVEL44": { "COLLECTED": true, "FORCED": false },
+		"TRAVEL45": { "COLLECTED": false },
+		"FAVOURITE_CHARACTERS11": { "COLLECTED": "Bart" },
+		"FAVOURITE_CHARACTERS12": { "COLLECTED": "8" },
+		"FAVOURITE_CHARACTERS21": { "COLLECTED": "Maggy" },
+		"FAVOURITE_CHARACTERS22": { "FORCED": "1" },
+		"FAVOURITE_CHARACTERS31": { "COLLECTED": "Homer", "FORCED": "Jay" },
+		"FAVOURITE_CHARACTERS32": { "COLLECTED": "45", "FORCED": "39" },
+		"FAVOURITE_CHARACTERS41": { "COLLECTED": "Otto", "FORCED": "Otto Man" },
+		"FAVOURITE_CHARACTERS42": { "COLLECTED": "32", "FORCED": "24" },
+		"FAVOURITE_CHARACTERS51": {
+			"COLLECTED": "Wigum",
+			"FORCED": "Wiggum",
+			"EDITED": "Clancy Wiggum"
+		},
+		"FAVOURITE_CHARACTERS52": {
+			"COLLECTED": "40",
+			"FORCED": "44",
+			"EDITED": "47"
+		},
+		"SURVEY_COMMENT": {
+			"COLLECTED": "No, I ve not",
+			"FORCED": "No, I've not",
+			"EDITED": "No, I have not"
+		}
 	},
-	"AUDIENCE_SHARE": { "COLLECTED": "6.5", "FORCED": "8.2" },
-	"CITY": { "COLLECTED": "00002", "EDITED": "00001" },
-	"MAYOR": { "FORCED": "2", "EDITED": "3" },
-	"STATE": { "COLLECTED": "5", "FORCED": "13", "EDITED": "10" },
-	"PET1": { "COLLECTED": true },
-	"PET2": { "COLLECTED": false, "EDITED": true },
-	"PET3": { "COLLECTED": false, "FORCED": true },
-	"PET4": { "COLLECTED": true, "FORCED": false, "EDITED": true },
-	"ICE_FLAVOUR2": { "EDITED": "1" },
-	"ICE_FLAVOUR3": { "FORCED": "1" },
-	"ICE_FLAVOUR4": { "FORCED": "1", "EDITED": "0" },
-	"NUCLEAR_CHARACTER1": { "COLLECTED": "1" },
-	"NUCLEAR_CHARACTER2": { "COLLECTED": "0", "EDITED": "1" },
-	"NUCLEAR_CHARACTER3": { "COLLECTED": "1", "EDITED": "0" },
-	"NUCLEAR_CHARACTER4": { "COLLECTED": "1", "FORCED": "0", "EDITED": "1" },
-	"BIRTH_CHARACTER2": { "COLLECTED": "1" },
-	"BIRTH_CHARACTER3": { "FORCED": "1" },
-	"BIRTH_CHARACTER4": { "EDITED": "1" },
-	"BIRTH_CHARACTER5": { "FORCED": "2", "EDITED": "3" },
-	"PERCENTAGE_EXPENSES11": { "COLLECTED": "10.1" },
-	"PERCENTAGE_EXPENSES21": { "COLLECTED": "5", "FORCED": "10" },
-	"PERCENTAGE_EXPENSES31": { "COLLECTED": "3", "EDITED": "20" },
-	"PERCENTAGE_EXPENSES71": {
-		"COLLECTED": "81.9",
-		"FORCED": "76.9",
-		"EDITED": "59.9"
-	},
-	"CLOWNING12": {
-		"COLLECTED": "Bart playing with megaphone plus speaker volume."
-	},
-	"CLOWNING21": {
-		"FORCED": "3"
-	},
-	"CLOWNING31": {
-		"EDITED": "4"
-	},
-	"CLOWNING32": {
-		"EDITED": "An accident, really?"
-	},
-	"CLOWNING41": {
-		"COLLECTED": "1"
-	},
-	"CLOWNING42": {
-		"COLLECTED": "Homer's way of conceiving teleworking"
-	},
-	"TRAVEL11": { "COLLECTED": true },
-	"TRAVEL12": { "FORCED": true },
-	"TRAVEL13": { "EDITED": true },
-	"TRAVEL14": { "COLLECTED": false, "FORCED": true, "EDITED": false },
-	"TRAVEL15": { "COLLECTED": false },
-	"TRAVEL31": { "COLLECTED": true, "EDITED": false },
-	"TRAVEL32": { "FORCED": true },
-	"TRAVEL33": { "COLLECTED": false, "EDITED": true },
-	"TRAVEL34": { "COLLECTED": true, "FORCED": false, "EDITED": true },
-	"TRAVEL35": { "COLLECTED": false },
-	"TRAVEL41": { "COLLECTED": true },
-	"TRAVEL42": { "COLLECTED": false, "FORCED": true },
-	"TRAVEL43": { "COLLECTED": false, "EDITED": true },
-	"TRAVEL44": { "COLLECTED": true, "FORCED": false },
-	"TRAVEL45": { "COLLECTED": false },
-	"FAVOURITE_CHARACTERS11": { "COLLECTED": "Bart" },
-	"FAVOURITE_CHARACTERS12": { "COLLECTED": "8" },
-	"FAVOURITE_CHARACTERS21": { "COLLECTED": "Maggy" },
-	"FAVOURITE_CHARACTERS22": { "FORCED": "1" },
-	"FAVOURITE_CHARACTERS31": { "COLLECTED": "Homer", "FORCED": "Jay" },
-	"FAVOURITE_CHARACTERS32": { "COLLECTED": "45", "FORCED": "39" },
-	"FAVOURITE_CHARACTERS41": { "COLLECTED": "Otto", "FORCED": "Otto Man" },
-	"FAVOURITE_CHARACTERS42": { "COLLECTED": "32", "FORCED": "24" },
-	"FAVOURITE_CHARACTERS51": {
-		"COLLECTED": "Wigum",
-		"FORCED": "Wiggum",
-		"EDITED": "Clancy Wiggum"
-	},
-	"FAVOURITE_CHARACTERS52": {
-		"COLLECTED": "40",
-		"FORCED": "44",
-		"EDITED": "47"
-	},
-	"SURVEY_COMMENT": {
-		"COLLECTED": "No, I ve not",
-		"FORCED": "No, I've not",
-		"EDITED": "No, I have not"
-	}
+	"EXTERNAL": { "LAST_BROADCAST": "12-07-1998" }
 }
