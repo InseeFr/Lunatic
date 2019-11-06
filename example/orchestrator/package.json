@@ -1,6 +1,6 @@
 {
-	"name": "example",
-	"version": "0.1.0",
+	"name": "orchestrator",
+	"version": "0.2.0",
 	"description": "Example of usage of Lunatic",
 	"author": "INSEE (http://www.insee.fr)",
 	"contributor": [
