@@ -14,7 +14,7 @@
 |    maxLength     | number, string |    524 288    |          | Maximum length of the input          |
 |   autoComplete   |      bool      |     false     |          | Is the input autocompletable         |
 | labelPosition \* |     string     |   "DEFAULT"   |          | Position of the input label          |
-|     required     |      bool      |     false     |          | Is the input required                |
+|     mandatory     |      bool      |     false     |          | Is the input mandatory                |
 |     focused      |      bool      |     false     |          | Is the input focused                 |
 | declarations \*  |     array      |      []       |          | Declarations of the input            |
 |     features     |     array      |      [ ]      |          | Component features for labels        |

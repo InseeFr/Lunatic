@@ -14,7 +14,7 @@ const Dropdown = ({
 	label,
 	labelPosition,
 	writable,
-	required,
+	mandatory,
 	declarations,
 	features,
 	bindings,
@@ -39,7 +39,7 @@ const Dropdown = ({
 				<label
 					htmlFor={`textarea-${id}`}
 					id={`textarea-label-${id}`}
-					className={`${required ? 'required' : ''}`}
+					className={`${mandatory ? 'mandatory' : ''}`}
 				>
 					{interpret(features)(bindings)(label)}
 				</label>
@@ -85,7 +85,7 @@ Dropdown.defaultProps = {
 	response: {},
 	placeholder: '',
 	writable: false,
-	required: false,
+	mandatory: false,
 	tooltip: false,
 	labelPosition: 'DEFAULT',
 	declarations: [],
@@ -105,7 +105,7 @@ Dropdown.propTypes = {
 	placeholder: PropTypes.string,
 	readOnly: PropTypes.bool,
 	writable: PropTypes.bool,
-	required: PropTypes.bool,
+	mandatory: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),

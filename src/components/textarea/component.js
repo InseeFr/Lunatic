@@ -18,7 +18,7 @@ const Textarea = ({
 	maxLength,
 	readOnly,
 	labelPosition,
-	required,
+	mandatory,
 	focused,
 	declarations,
 	features,
@@ -45,7 +45,7 @@ const Textarea = ({
 				<label
 					htmlFor={`textarea-${id}`}
 					id={`textarea-label-${id}`}
-					className={`${required ? 'required' : ''}`}
+					className={`${mandatory ? 'mandatory' : ''}`}
 				>
 					{interpret(features)(bindings)(label)}
 				</label>
@@ -69,8 +69,8 @@ const Textarea = ({
 						rows={rows}
 						maxLength={maxLength || 524288}
 						readOnly={readOnly}
-						required={required}
-						aria-required={required}
+						mandatory={mandatory}
+						aria-mandatory={mandatory}
 						onChange={e =>
 							handleChange({
 								[U.getResponseName(response)]: e.target.value,
@@ -102,7 +102,7 @@ Textarea.defaultProps = {
 	rows: 5,
 	readOnly: false,
 	labelPosition: 'DEFAULT',
-	required: false,
+	mandatory: false,
 	focused: false,
 	declarations: [],
 	features: [],
@@ -122,7 +122,7 @@ Textarea.propTypes = {
 	maxLength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	readOnly: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
-	required: PropTypes.bool,
+	mandatory: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),

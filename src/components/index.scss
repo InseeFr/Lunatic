@@ -10,7 +10,7 @@ $disabled: rgb(235, 235, 228);
 	font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
 }
 
-.required:after {
+.mandatory:after {
 	content: ' *';
 	color: red;
 }

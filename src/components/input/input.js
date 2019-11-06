@@ -18,7 +18,7 @@ const Input = ({
 	readOnly,
 	autoComplete,
 	labelPosition,
-	required,
+	mandatory,
 	declarations,
 	features,
 	bindings,
@@ -46,7 +46,7 @@ const Input = ({
 					<label
 						htmlFor={`input-${id}`}
 						id={`input-label-${id}`}
-						className={`${required ? 'required' : ''}`}
+						className={`${mandatory ? 'mandatory' : ''}`}
 					>
 						{interpret(features)(bindings)(label)}
 					</label>
@@ -71,8 +71,8 @@ const Input = ({
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
 							maxLength={maxLength || 524288}
-							required={required}
-							aria-required={required}
+							mandatory={mandatory}
+							aria-mandatory={mandatory}
 							onChange={e =>
 								handleChange({
 									[U.getResponseName(response)]: e.target.value,
@@ -106,7 +106,7 @@ Input.defaultProps = {
 	readOnly: false,
 	autoComplete: false,
 	labelPosition: 'DEFAULT',
-	required: false,
+	mandatory: false,
 	focused: false,
 	declarations: [],
 	features: [],
@@ -126,7 +126,7 @@ Input.propTypes = {
 	maxLength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	autoComplete: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
-	required: PropTypes.bool,
+	mandatory: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),

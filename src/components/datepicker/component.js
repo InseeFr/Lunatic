@@ -16,7 +16,7 @@ const Datepicker = ({
 	handleChange,
 	readOnly,
 	labelPosition,
-	required,
+	mandatory,
 	focused,
 	declarations,
 	features,
@@ -44,7 +44,7 @@ const Datepicker = ({
 					<label
 						htmlFor={`datepicker-${id}`}
 						id={`input-label-${id}`}
-						className={`${required ? 'required' : ''}`}
+						className={`${mandatory ? 'mandatory' : ''}`}
 					>
 						{interpret(features)(bindings)(label)}
 					</label>
@@ -67,8 +67,8 @@ const Datepicker = ({
 							className="datepicker-lunatic"
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
-							required={required}
-							aria-required={required}
+							mandatory={mandatory}
+							aria-mandatory={mandatory}
 							onChange={e =>
 								handleChange({
 									[U.getResponseName(response)]: e.target.value,
@@ -99,7 +99,7 @@ Datepicker.defaultProps = {
 	placeholder: '',
 	readOnly: false,
 	labelPosition: 'DEFAULT',
-	required: false,
+	mandatory: false,
 	focused: false,
 	response: {},
 	declarations: [],
@@ -118,7 +118,7 @@ Datepicker.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
-	required: PropTypes.bool,
+	mandatory: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),

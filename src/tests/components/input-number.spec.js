@@ -18,9 +18,9 @@ describe('input-number', () => {
 				handleChange={handleChange}
 				min={0}
 				max={100}
-				required={true}
+				mandatory={true}
 				unit="euros"
-				validators={[({ value }) => (value ? undefined : 'Value is required')]}
+				validators={[({ value }) => (value ? undefined : 'Value is mandatory')]}
 			/>
 		);
 	});
@@ -70,7 +70,7 @@ describe('input-number', () => {
 				handleChange={handleChange}
 				min={0}
 				max={100}
-				required={true}
+				mandatory={true}
 				decimals={1}
 			/>
 		);

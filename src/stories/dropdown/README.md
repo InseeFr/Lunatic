@@ -13,7 +13,7 @@
 |   placeholder    | string |      ""       |          | Placeholder of the dropdown             |
 |     readOnly     |  bool  |     false     |          | Is the dropdown read only               |
 |     writable     |  bool  |     false     |          | Is the dropdown writable                |
-|     required     |  bool  |     false     |          | Is the dropdown required                |
+|     mandatory     |  bool  |     false     |          | Is the dropdown mandatory                |
 | labelPosition \* | string |   "DEFAULT"   |          | Position of the dropdown label          |
 | declarations \*  | array  |      []       |          | Declarations of the dropdown            |
 |     features     | array  |      [ ]      |          | Component features for labels           |

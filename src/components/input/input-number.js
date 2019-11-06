@@ -28,7 +28,7 @@ const InputNumber = ({
 	features,
 	bindings,
 	tooltip,
-	required,
+	mandatory,
 	validators,
 }) => {
 	const [messagesError, setMessagesError] = useState(
@@ -63,7 +63,7 @@ const InputNumber = ({
 				<label
 					htmlFor={`input-${id}`}
 					id={`input-label-${id}`}
-					className={`${required ? 'required' : ''}`}
+					className={`${mandatory ? 'mandatory' : ''}`}
 				>
 					{interpret(features)(bindings)(label)}{' '}
 					<span className="unit">
@@ -97,8 +97,8 @@ const InputNumber = ({
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
 							autoComplete={autoComplete ? 'on' : 'off'}
-							required={required}
-							aria-required={required}
+							mandatory={mandatory}
+							aria-mandatory={mandatory}
 							onChange={e => {
 								const {
 									target: { value },
@@ -168,7 +168,7 @@ InputNumber.defaultProps = {
 	bindings: {},
 	labelPosition: 'DEFAULT',
 	unitPositioni: 'DEFAULT',
-	required: false,
+	mandatory: false,
 	tooltip: false,
 	style: {},
 	validators: [],
@@ -192,7 +192,7 @@ InputNumber.propTypes = {
 	bindings: PropTypes.object,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	unitPosition: PropTypes.oneOf(['DEFAULT', 'BEFORE', 'AFTER']),
-	required: PropTypes.bool,
+	mandatory: PropTypes.bool,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 	validators: PropTypes.arrayOf(PropTypes.func),

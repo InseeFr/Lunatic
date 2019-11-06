@@ -14,7 +14,7 @@
 |    maxLength     | number, string |    524288     |          | Maximum length of the textarea          |
 |     readOnly     |      bool      |     false     |          | Is the textarea read only               |
 | labelPosition \* |     string     |   "DEFAULT"   |          | Position of the textarea label          |
-|     required     |      bool      |     false     |          | Is the textarea required                |
+|     mandatory     |      bool      |     false     |          | Is the textarea mandatory                |
 |     focused      |      bool      |     false     |          | Is the textarea focused                 |
 | declarations \*  |     array      |      [ ]      |          | Declarations of the textarea            |
 |     features     |     array      |      [ ]      |          | Component features for labels           |

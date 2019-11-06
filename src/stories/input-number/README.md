@@ -21,7 +21,7 @@
 | declarations \*  | array  |      [ ]      |          | Declarations of the input            |
 |     features     | array  |      [ ]      |          | Component features for labels        |
 |     bindings     | object |      [ ]      |          | Questionnaire bindings               |
-|     required     |  bool  |     false     |          | Is the input required                |
+|     mandatory     |  bool  |     false     |          | Is the input mandatory                |
 |     tooltip      |  bool  |     false     |          | Tooltip of the input                 |
 |      style       | object |      {}       |          | Style of the input                   |
 

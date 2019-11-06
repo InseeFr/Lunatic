@@ -20,9 +20,9 @@ describe('input', () => {
 		expect(wrapper.find('input').prop('readOnly')).toBeFalsy();
 	});
 
-	it('returns required component', () => {
-		const wrapper = shallow(<Input {...defaultProps} required />);
-		expect(wrapper.find('input').prop('required')).toBeTruthy();
+	it('returns mandatory component', () => {
+		const wrapper = shallow(<Input {...defaultProps} mandatory />);
+		expect(wrapper.find('input').prop('mandatory')).toBeTruthy();
 	});
 
 	it('returns tooltip component', () => {
