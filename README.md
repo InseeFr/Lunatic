@@ -14,4 +14,4 @@ The documentation can be found in the [docs](https://github.com/InseeFr/Lunatic/
 
 ## Usage
 
-An [example](https://github.com/InseeFr/Lunatic/tree/master/example) of use of Lunatic is available. This simple orchestrator is deployed [online](https://inseefr.github.io/Lunatic/example).
+An [example](https://github.com/InseeFr/Lunatic/tree/master/example/orchestrator) of use of Lunatic is available. This simple orchestrator is deployed [online](https://inseefr.github.io/Lunatic/orchestrator).
