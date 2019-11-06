@@ -12,17 +12,23 @@ En présence de données de personnalisation, la fonction `mergeQuestionnaireAnd
 
 ```json
 {
-	"variable1": {
-		"PREVIOUS": "Previous",
-		"COLLECTED": "Collected",
-		"FORCED": "Forced",
-		"EDITED": "Edited",
-		"INPUTED": "Inputed"
+	"COLLECTED": {
+		"variable1": {
+			"PREVIOUS": "Previous",
+			"COLLECTED": "Collected",
+			"FORCED": "Forced",
+			"EDITED": "Edited",
+			"INPUTED": "Inputed"
+		},
+		"variable2": {
+			"COLLECTED": "Var 2"
+		},
+		...
 	},
-	"variable2": {
-		"COLLECTED": "Var 2"
-    },
-    ...
+	"EXTERNAL": {
+		"ext": "External var",
+		...
+	}
 }
 ```
 
@@ -50,6 +56,14 @@ En présence de données de personnalisation, la fonction `mergeQuestionnaireAnd
 				]
 			}
 		}
+	],
+	"variables": [
+		{ "variableType": "EXTERNAL", "name": "VAR_EXTERNAL", "value": null },
+		{
+			"variableType": "CALCULATED",
+			"name": "VAR_CALCULATED",
+			"expression": "VTL expression"
+		}
 	]
 }
 ```
@@ -58,7 +72,14 @@ En présence de données de personnalisation, la fonction `mergeQuestionnaireAnd
 
 ```json
 {
-	"variable1": { "COLLECTED": "Variable 1" }
+	"COLLECTED": {
+		"variable1": {
+			"COLLECTED": "Variable 1"
+		}
+	},
+	"EXTERNAL": {
+		"ext": "External var"
+	}
 }
 ```
 
@@ -80,6 +101,17 @@ En présence de données de personnalisation, la fonction `mergeQuestionnaireAnd
 				]
 			}
 		}
-	]
+	],
+	"variables": {
+		"EXTERNAL": {
+			"ext": "External var"
+		},
+		"CALCULATED": {
+			"VAR_CALCULATED": {
+				"expression": "VTL expression",
+				"value": null
+			}
+		}
+	}
 }
 ```

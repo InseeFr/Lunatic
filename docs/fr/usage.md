@@ -19,7 +19,7 @@ Un exemple complet d'orchestration des [composants](./components.md) est propos�
 
 ```javascript
 import React, { useState } from 'react';
-import * as lunatic from '@inseefr/lunatic';
+import * as lunatic from './lunatic';
 
 const Orchestrator = ({ savingType, preferences, source, data, tooltip }) => {
 	const [questionnaire, setQuestionnaire] = useState(
@@ -33,21 +33,31 @@ const Orchestrator = ({ savingType, preferences, source, data, tooltip }) => {
 		);
 	};
 	console.log('State : ', lunatic.getState(questionnaire));
-	const components = questionnaire.components.map(q => {
-		const { id, componentType } = q;
-		const Component = lunatic[componentType];
-		return (
-			<div className="lunatic lunatic-component" key={`component-${id}`}>
-				<Component
-					{...q}
-					handleChange={onChange}
-					labelPosition="TOP"
-					preferences={preferences}
-					tooltip={tooltip}
-				/>
-			</div>
-		);
-	});
+	const bindings = lunatic.getBindings(questionnaire);
+
+	const components = questionnaire.components
+		.filter(({ conditionFilter }) =>
+			tooltip
+				? true
+				: lunatic.interpret(['VTL'])(bindings)(conditionFilter) === 'normal'
+		)
+		.map(q => {
+			const { id, componentType } = q;
+			const Component = lunatic[componentType];
+			return (
+				<div className="lunatic lunatic-component" key={`component-${id}`}>
+					<Component
+						{...q}
+						handleChange={onChange}
+						labelPosition="TOP"
+						preferences={preferences}
+						tooltip={tooltip}
+						features={['VTL']}
+						bindings={bindings}
+					/>
+				</div>
+			);
+		});
 	return (
 		<div className="container">
 			<div className="components">{components}</div>
@@ -85,3 +95,16 @@ const Management = () => (
 	/>
 );
 ```
+
+## Interprétation des labels et déclarations
+
+Les labels et déclarations d'un questionnaire peuvent être au format :
+
+- string
+- VTL
+
+Dans le cas où ils seraient sous forme de string, aucune configuration particulière n'est requise.
+Dans le cas où ils seraient spécifiés en VTL, les props suivantes sont à valoriser :
+
+- features={['VTL']}
+- bindings={lunatic.getBindings(questionnaire)}
