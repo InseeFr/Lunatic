@@ -1,3 +1,4 @@
-# Orchestrator example
+# Lunatic Editor
 
-A simple orchestrator, showing how Lunatic can be used, is deployed [online](https://inseefr.github.io/Lunatic/example).
+A simple editor, allowing to edit Lunatic Model specification looking dynamically to the questionnaire produced by Lunatic, is deployed [online](https://inseefr.github.io/Lunatic/Editor).
+
