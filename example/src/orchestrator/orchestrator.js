@@ -12,22 +12,34 @@ const Orchestrator = ({ savingType, preferences, source, data, tooltip }) => {
 			)
 		);
 	};
+
 	console.log('State : ', lunatic.getState(questionnaire));
-	const components = questionnaire.components.map(q => {
-		const { id, componentType } = q;
-		const Component = lunatic[componentType];
-		return (
-			<div className="lunatic lunatic-component" key={`component-${id}`}>
-				<Component
-					{...q}
-					handleChange={onChange}
-					labelPosition="TOP"
-					preferences={preferences}
-					tooltip={tooltip}
-				/>
-			</div>
-		);
-	});
+
+	const bindings = lunatic.getBindings(questionnaire);
+
+	const components = questionnaire.components
+		.filter(({ conditionFilter }) =>
+			tooltip
+				? true
+				: lunatic.interpret(['VTL'])(bindings)(conditionFilter) === 'normal'
+		)
+		.map(q => {
+			const { id, componentType } = q;
+			const Component = lunatic[componentType];
+			return (
+				<div className="lunatic lunatic-component" key={`component-${id}`}>
+					<Component
+						{...q}
+						handleChange={onChange}
+						labelPosition="TOP"
+						preferences={preferences}
+						tooltip={tooltip}
+						features={['VTL']}
+						bindings={bindings}
+					/>
+				</div>
+			);
+		});
 	return (
 		<div className="container">
 			<div className="components">{components}</div>

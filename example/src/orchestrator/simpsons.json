@@ -1,25 +1,25 @@
 
-  { "id" : "i6vwid",
+  { "id" : "i6vwi0",
     "label" : "Questionnaire SIMPSONS",
     "components" : 
     [ 
       { "id" : "j6p0ti5h",
         "componentType" : "Sequence",
-        "label" : "I - Introduction",
+        "label" : "\"I - Introduction\"",
         "declarations" : 
         [ 
           { "id" : "j6p0ti5h-d1",
             "declarationType" : "COMMENT",
             "position" : "AFTER_QUESTION_TEXT",
-            "label" : "We're going to test your knowledge about the simpsons series.Welcome in the simspons world!" } ],
-        "conditionFilter" : "normal" },
+            "label" : "\"We're going to test your knowledge about the simpsons series.Welcome in the simspons world!\"" } ],
+        "conditionFilter" : "\"normal\"" },
       
       { "id" : "j6p3dkx6",
         "componentType" : "Textarea",
         "mandatory" : false,
-        "maxLength" : "500",
-        "label" : "➡ 1. Before starting, do you have any comments about the Simpsons family?",
-        "conditionFilter" : "normal",
+        "maxLength" : 500,
+        "label" : "\"➡ 1. Before starting, do you have any comments about the Simpsons family?\"",
+        "conditionFilter" : "\"normal\"",
         "response" : 
         { "name" : "COMMENT",
           "valueState" : 
@@ -42,8 +42,8 @@
       { "id" : "j6p0np9q",
         "componentType" : "CheckboxBoolean",
         "mandatory" : false,
-        "label" : "➡ 2. Are you ready?",
-        "conditionFilter" : "normal",
+        "label" : "\"➡ 2. Are you ready?\"",
+        "conditionFilter" : "\"normal\"",
         "response" : 
         { "name" : "READY",
           "valueState" : 
@@ -65,15 +65,15 @@
       
       { "id" : "j6p0s7o5",
         "componentType" : "Subsequence",
-        "label" : "General knowledge of the series",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end" },
+        "label" : "\"General knowledge of the series\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j3343qhx",
         "componentType" : "Input",
         "mandatory" : false,
-        "maxLength" : "30",
-        "label" : "➡ 3. Who is the producer?",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+        "maxLength" : 30,
+        "label" : "\"➡ 3. Who is the producer?\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "PRODUCER",
           "valueState" : 
@@ -99,8 +99,8 @@
         "min" : 0,
         "max" : 99,
         "decimals" : 0,
-        "label" : "➡ 4. What is the current season number?",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+        "label" : "\"➡ 4. What is the current season number?\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "SEASON_NUMBER",
           "valueState" : 
@@ -123,14 +123,14 @@
       { "id" : "j334cyqb",
         "componentType" : "Datepicker",
         "mandatory" : false,
-        "label" : "➡ 5. When was the first episode of the Simpsons?",
+        "label" : "\"➡ 5. When was the first episode of the Simpsons?\"",
         "declarations" : 
         [ 
           { "id" : "j334cyqb-d11",
             "declarationType" : "COMMENT",
             "position" : "AFTER_QUESTION_TEXT",
-            "label" : "For your information, the date of the last broadcast was on øLAST_BROADCASTø" } ],
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+            "label" : "\"For your information, the date of the last broadcast was on \" || cast(cast(LAST_BROADCAST,string),string) || \" \"" } ],
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "DATEFIRST",
           "valueState" : 
@@ -149,7 +149,7 @@
             
             { "valueType" : "INPUTED",
               "value" : null } ] },
-        "dateFormat" : "jj/mm/aaaa" },
+        "dateFormat" : "YYYY-MM-DD" },
       
       { "id" : "j6z06z1e",
         "componentType" : "InputNumber",
@@ -157,8 +157,8 @@
         "min" : 0,
         "max" : 99,
         "decimals" : 1,
-        "label" : "➡ 6. In your opinion, how much is the part of audience share in US for the 2016 season?",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+        "label" : "\"➡ 6. In your opinion, how much is the part of audience share in US for the 2016 season?\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "AUDIENCE_SHARE",
           "valueState" : 
@@ -180,26 +180,26 @@
       
       { "id" : "j3341528",
         "componentType" : "Sequence",
-        "label" : "II - Simpsons' city",
+        "label" : "\"II - Simpsons' city\"",
         "declarations" : 
         [ 
           { "id" : "j3341528-d2",
             "declarationType" : "COMMENT",
             "position" : "AFTER_QUESTION_TEXT",
-            "label" : "This module asks about your general knowledge of the Simpsons city" } ],
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end" },
+            "label" : "\"This module asks about your general knowledge of the Simpsons city\"" } ],
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j3343clt",
         "componentType" : "Radio",
-        "mandatory" : false,
-        "label" : "➡ 1. In which city do the Simpsons reside?",
+        "mandatory" : true,
+        "label" : "\"➡ 1. In which city do the Simpsons reside?\"",
         "declarations" : 
         [ 
           { "id" : "j3343clt-d3",
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
-            "label" : "One possible answer" } ],
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+            "label" : "\"One possible answer\"" } ],
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "CITY",
           "valueState" : 
@@ -232,14 +232,14 @@
       { "id" : "j6qdfhvw",
         "componentType" : "CheckboxOne",
         "mandatory" : false,
-        "label" : "➡ 2. Who is the Simpsons city mayor?",
+        "label" : "\"➡ 2. Who is the Simpsons city mayor?\"",
         "declarations" : 
         [ 
           { "id" : "j6qdfhvw-d4",
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
-            "label" : "Only one possible answer" } ],
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+            "label" : "\"Only one possible answer\"" } ],
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "MAYOR",
           "valueState" : 
@@ -275,8 +275,8 @@
       { "id" : "j4nw5cqz",
         "componentType" : "Dropdown",
         "mandatory" : false,
-        "label" : "➡ 3. In which state do The Simpsons reside?",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+        "label" : "\"➡ 3. In which state do The Simpsons reside?\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "STATE",
           "valueState" : 
@@ -338,19 +338,19 @@
       
       { "id" : "j6qe0h9q",
         "componentType" : "Sequence",
-        "label" : "III - Characters",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end" },
+        "label" : "\"III - Characters\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j334akov",
         "componentType" : "CheckboxGroup",
-        "label" : "➡ 1. What are the pet names that the Simpsons family had?",
+        "label" : "\"➡ 1. What are the pet names that the Simpsons family had?\"",
         "declarations" : 
         [ 
           { "id" : "j334akov-d5",
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
-            "label" : "Several possible answers" } ],
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+            "label" : "\"Several possible answers\"" } ],
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "responses" : 
         [ 
           { "id" : "j334akov-QOP-jbgd8qmn",
@@ -441,14 +441,14 @@
         "componentType" : "Table",
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
-        "label" : "➡ 2. Does Jay like the following ice cream flavours?",
+        "label" : "\"➡ 2. Does Jay like the following ice cream flavours?\"",
         "declarations" : 
         [ 
           { "id" : "d12-SI",
             "declarationType" : "STATEMENT",
             "position" : "BEFORE_QUESTION_TEXT",
-            "label" : "Now we are going to know if you think that Jay is a gluton." } ],
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+            "label" : "\"Now we are going to know if you think that Jay is a gluton.\"" } ],
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -583,8 +583,8 @@
         "componentType" : "Table",
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
-        "label" : "➡ 3. Which character works in the nuclear power plant?",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+        "label" : "\"➡ 3. Which character works in the nuclear power plant?\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -719,8 +719,8 @@
         "componentType" : "Table",
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
-        "label" : "➡ 4. In which city each character was born?",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+        "label" : "\"➡ 4. In which city each character was born?\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -930,20 +930,20 @@
       
       { "id" : "j4nw88h2",
         "componentType" : "Sequence",
-        "label" : "IV - General questions",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end" },
+        "label" : "\"IV - General questions\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j6qe237q",
         "componentType" : "Subsequence",
-        "label" : "Kwik-E-Mart",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end" },
+        "label" : "\"Kwik-E-Mart\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j4nwc63q",
         "componentType" : "Table",
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
-        "label" : "➡ 1. Please, specify the percentage of Jay's expenses in the Kwik-E-Mart for each product?",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+        "label" : "\"➡ 1. Please, specify the percentage of Jay's expenses in the Kwik-E-Mart for each product?\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -1171,15 +1171,15 @@
       
       { "id" : "j6qejudb",
         "componentType" : "Subsequence",
-        "label" : "Clowning",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end" },
+        "label" : "\"Clowning\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j4nw0rr6",
         "componentType" : "Table",
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
-        "label" : "➡ 2. Who did these clownings and tell us what you remember?",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+        "label" : "\"➡ 2. Who did these clownings and tell us what you remember?\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -1231,7 +1231,7 @@
                   "label" : "Maggie" } ] },
             
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j4nw0rr6-QOP-jbgdit3o",
               "response" : 
               { "name" : "CLOWNING12",
@@ -1291,7 +1291,7 @@
                   "label" : "Maggie" } ] },
             
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j4nw0rr6-QOP-jbgd366k",
               "response" : 
               { "name" : "CLOWNING22",
@@ -1351,7 +1351,7 @@
                   "label" : "Maggie" } ] },
             
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j4nw0rr6-QOP-jbgdax06",
               "response" : 
               { "name" : "CLOWNING32",
@@ -1411,7 +1411,7 @@
                   "label" : "Maggie" } ] },
             
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j4nw0rr6-QOP-jbgdfo1j",
               "response" : 
               { "name" : "CLOWNING42",
@@ -1434,21 +1434,21 @@
       
       { "id" : "j6qeh91y",
         "componentType" : "Subsequence",
-        "label" : "Transport",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end" },
+        "label" : "\"Transport\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j6p2lwuj",
         "componentType" : "Table",
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
-        "label" : "➡ 3. Which of the following means of transport were used by the hero and in which country?",
+        "label" : "\"➡ 3. Which of the following means of transport were used by the hero and in which country?\"",
         "declarations" : 
         [ 
           { "id" : "j6p2lwuj-d10",
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
-            "label" : "Several answers possible: check off all the relevant boxes" } ],
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+            "label" : "\"Several answers possible: check off all the relevant boxes\"" } ],
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -1995,15 +1995,15 @@
       
       { "id" : "j6qfx9qe",
         "componentType" : "Sequence",
-        "label" : "V - Favourite characters",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end" },
+        "label" : "\"V - Favourite characters\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j6qg8rc6",
         "componentType" : "Table",
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
-        "label" : "➡ 1. Please, complete the following grid with your favourite characters",
-        "conditionFilter" : "#if((!( $READY != '1')))normal#{else}hidden#end",
+        "label" : "\"➡ 1. Please, complete the following grid with your favourite characters\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -2015,7 +2015,7 @@
           
           [ 
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j6qg8rc6-QOP-jbgdl5jb",
               "response" : 
               { "name" : "FAVOURITE_CHARACTERS11",
@@ -2062,7 +2062,7 @@
           
           [ 
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j6qg8rc6-QOP-jbgd8lwo",
               "response" : 
               { "name" : "FAVOURITE_CHARACTERS21",
@@ -2109,7 +2109,7 @@
           
           [ 
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j6qg8rc6-QOP-jbgdbfag",
               "response" : 
               { "name" : "FAVOURITE_CHARACTERS31",
@@ -2156,7 +2156,7 @@
           
           [ 
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j6qg8rc6-QOP-jbgdlgja",
               "response" : 
               { "name" : "FAVOURITE_CHARACTERS41",
@@ -2203,7 +2203,7 @@
           
           [ 
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j6qg8rc6-QOP-jbgd745y",
               "response" : 
               { "name" : "FAVOURITE_CHARACTERS51",
@@ -2250,7 +2250,7 @@
           
           [ 
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j6qg8rc6-QOP-jbgdjkts",
               "response" : 
               { "name" : "FAVOURITE_CHARACTERS61",
@@ -2297,7 +2297,7 @@
           
           [ 
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j6qg8rc6-QOP-jbgdcax7",
               "response" : 
               { "name" : "FAVOURITE_CHARACTERS71",
@@ -2344,7 +2344,7 @@
           
           [ 
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j6qg8rc6-QOP-jbgdjye1",
               "response" : 
               { "name" : "FAVOURITE_CHARACTERS81",
@@ -2391,7 +2391,7 @@
           
           [ 
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j6qg8rc6-QOP-jbgd5jet",
               "response" : 
               { "name" : "FAVOURITE_CHARACTERS91",
@@ -2438,7 +2438,7 @@
           
           [ 
             { "componentType" : "Textarea",
-              "maxLength" : "255",
+              "maxLength" : 255,
               "id" : "j6qg8rc6-QOP-jbgdjw90",
               "response" : 
               { "name" : "FAVOURITE_CHARACTERS101",
@@ -2488,15 +2488,15 @@
       
       { "id" : "j6z12s2d",
         "componentType" : "Sequence",
-        "label" : "VI - Comment",
-        "conditionFilter" : "normal" },
+        "label" : "\"VI - Comment\"",
+        "conditionFilter" : "\"normal\"" },
       
       { "id" : "j6z0z3us",
         "componentType" : "Textarea",
         "mandatory" : false,
-        "maxLength" : "255",
-        "label" : "➡ 1. Do you have any comment about the survey?",
-        "conditionFilter" : "normal",
+        "maxLength" : 255,
+        "label" : "\"➡ 1. Do you have any comment about the survey?\"",
+        "conditionFilter" : "\"normal\"",
         "response" : 
         { "name" : "SURVEY_COMMENT",
           "valueState" : 
@@ -2519,7 +2519,7 @@
     [ 
       { "variableType" : "EXTERNAL",
         "name" : "LAST_BROADCAST",
-        "label" : "LAST_BROADCAST label" },
+        "value" : null },
       
       { "variableType" : "COLLECTED",
         "name" : "COMMENT",
@@ -2867,4 +2867,4 @@
       
       { "variableType" : "CALCULATED",
         "name" : "SUM_EXPENSES",
-        "value" : "$PERCENTAGE_EXPENSES11 + $PERCENTAGE_EXPENSES21 + $PERCENTAGE_EXPENSES31 + $PERCENTAGE_EXPENSES41 + $PERCENTAGE_EXPENSES51 + $PERCENTAGE_EXPENSES61 + $PERCENTAGE_EXPENSES71 + $PERCENTAGE_EXPENSES81 + $PERCENTAGE_EXPENSES91 + $PERCENTAGE_EXPENSES101" } ] }
+        "expression" : "cast(PERCENTAGE_EXPENSES11,number) + cast(PERCENTAGE_EXPENSES21,number) + cast(PERCENTAGE_EXPENSES31,number)+ cast(PERCENTAGE_EXPENSES41,number)+ cast(PERCENTAGE_EXPENSES51,number)+ cast(PERCENTAGE_EXPENSES61,number)+ cast(PERCENTAGE_EXPENSES71,number)+ cast(PERCENTAGE_EXPENSES81,number)+ cast(PERCENTAGE_EXPENSES91,number)+ cast(PERCENTAGE_EXPENSES101,number)" } ] }
