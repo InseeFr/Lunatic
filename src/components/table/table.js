@@ -19,6 +19,7 @@ const Table = ({
 	features,
 	bindings,
 	addBtnLabel,
+	hideBtn,
 	tooltip,
 }) => {
 	const minLines = initLines
@@ -104,7 +105,7 @@ const Table = ({
 					)}
 				</tbody>
 			</table>
-			{Number.isInteger(minLines) && lines < maxLines && (
+			{Number.isInteger(minLines) && lines < maxLines && !hideBtn && (
 				<Button
 					label="addLine"
 					value={addBtnLabel}
@@ -133,6 +134,7 @@ Table.defaultProps = {
 	bindings: {},
 	addBtnLabel: 'Add a line',
 	tooltip: false,
+	hideBtn: false,
 	style: {},
 };
 
@@ -148,6 +150,7 @@ Table.propTypes = {
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
 	addBtnLabel: PropTypes.string,
+	hideBtn: PropTypes.bool,
 	tooltip: PropTypes.bool,
 	style: PropTypes.object,
 };

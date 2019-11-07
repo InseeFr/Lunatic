@@ -72,5 +72,6 @@ stories.addWithJSX('Roster', () => (
 		source={dataRoster}
 		tooltip={boolean('Tooltip', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		hideBtn={boolean('Hide button', false)}
 	/>
 ));

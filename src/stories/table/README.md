@@ -15,6 +15,7 @@
 |    bindings     | object |      [ ]      |          | Questionnaire bindings                |
 | positioning \*  | string |   "DEFAULT"   |          | Cell options positioning              |
 |   addBtnLabel   | string | "Add a line"  |          | Label of the button to add lines      |
+|     hideBtn     |  bool  |     false     |          | Hide the add button                   |
 |     tooltip     |  bool  |     false     |          | Tooltip of the table                  |
 |      style      | object |      {}       |          | Style of the table                    |
 
