@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "./static/css/main.d6fd1874.chunk.css",
-    "main.js": "./static/js/main.77b61c22.chunk.js",
-    "main.js.map": "./static/js/main.77b61c22.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.e50a423b.js",
-    "runtime-main.js.map": "./static/js/runtime-main.e50a423b.js.map",
-    "static/js/2.10959ad6.chunk.js": "./static/js/2.10959ad6.chunk.js",
-    "static/js/2.10959ad6.chunk.js.map": "./static/js/2.10959ad6.chunk.js.map",
+    "main.js": "./static/js/main.d2be881f.chunk.js",
+    "main.js.map": "./static/js/main.d2be881f.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.a93fbb14.js",
+    "runtime-main.js.map": "./static/js/runtime-main.a93fbb14.js.map",
+    "static/js/2.781e54ef.chunk.js": "./static/js/2.781e54ef.chunk.js",
+    "static/js/2.781e54ef.chunk.js.map": "./static/js/2.781e54ef.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.b4c886ec245dbe53164b835669ef8373.js": "./precache-manifest.b4c886ec245dbe53164b835669ef8373.js",
+    "precache-manifest.4de85d1f4e1afb084641127f829777ad.js": "./precache-manifest.4de85d1f4e1afb084641127f829777ad.js",
     "service-worker.js": "./service-worker.js",
     "static/css/main.d6fd1874.chunk.css.map": "./static/css/main.d6fd1874.chunk.css.map",
     "static/media/custom-lunatic.scss": "./static/media/radio_button_unchecked.6a19a534.svg",
     "static/media/lunatic-logo.png": "./static/media/lunatic-logo.f2d2cbf3.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.e50a423b.js",
-    "static/js/2.10959ad6.chunk.js",
+    "static/js/runtime-main.a93fbb14.js",
+    "static/js/2.781e54ef.chunk.js",
     "static/css/main.d6fd1874.chunk.css",
-    "static/js/main.77b61c22.chunk.js"
+    "static/js/main.d2be881f.chunk.js"
   ]
 }
