@@ -49,6 +49,14 @@ const InputNumber = ({
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
+	
+	useEffect(() => {
+        	setMessagesError(
+           	        [minMaxValidator({ min, max }), ...validators]
+            		   	.map(v => v(U.getResponseByPreference(preferences)(response)))
+              		   	.filter(m => m !== undefined)
+                 );
+        }, [response]);
 
 	return (
 		<>
