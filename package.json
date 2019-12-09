@@ -71,6 +71,7 @@
 		"eslint-plugin-jsx-a11y": "^6.1.1",
 		"eslint-plugin-react": "^7.17.0",
 		"file-loader": "^5.0.2",
+		"identity-obj-proxy": "^3.0.0",
 		"jest": "^24.9.0",
 		"jest-transform-stub": "^2.0.0",
 		"node-sass": "^4.7.2",
@@ -100,7 +101,7 @@
 		],
 		"testURL": "http://localhost",
 		"moduleNameMapper": {
-			"^.+\\.(css|less|scss)$": "babel-jest"
+			"^.+\\.(css|less|scss)$": "identity-obj-proxy"
 		},
 		"transform": {
 			"^.+\\.js$": "babel-jest",
