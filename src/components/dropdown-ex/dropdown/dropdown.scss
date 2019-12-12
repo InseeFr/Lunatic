@@ -1,0 +1,162 @@
+$inputHeight: 32px;
+$boxShadowColor: #aaa;
+
+@mixin defaultFont {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 16px;
+}
+
+.lunatic-dropdown-classic {
+  display: block;
+  width: 100%;
+  &:focus-within {
+    outline: none;
+  }
+
+  &.label-left {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &.label-right {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  &.label-top {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &.label-bottom {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .lunatic-dropdown-label {
+    @include defaultFont();
+    color: rgb(0, 123, 255);
+    opacity: 1;
+  }
+  .lunatic-dropdown-container {
+    display: block;
+    position: relative;
+    height: $inputHeight;
+    width: 100%;
+
+    .lunatic-dropdown-content {
+      background-color: lavenderblush;
+      border-radius: 20px 20px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      width: 100%;
+
+      &.visible {
+        border-radius: 16px 16px;
+        height: auto;
+      }
+      &:focus {
+        outline: none;
+      }
+
+      box-shadow: 0em 0em 0.1em 0.1em $boxShadowColor;
+      &.focused {
+        box-shadow: 0 0 0 0.2em rgba(0, 123, 255, 0.25);
+      }
+
+      .lunatic-dropdown-button {
+        button {
+          @include defaultFont();
+          padding: 0;
+          margin: 0px 30px 0px 20px;
+          width: calc(100% - 37px);
+          background-color: transparent;
+          height: $inputHeight;
+          border: none;
+          outline: none;
+          text-align: left;
+        }
+      }
+
+      .lunatic-icone {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 7px;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .lunatic-transition {
+        visibility: hidden;
+        overflow-y: hidden;
+        opacity: 0;
+
+        &:focus {
+          outline: none;
+        }
+
+        &.visible {
+          visibility: visible;
+          opacity: 1;
+          transition: opacity 1s ease-out;
+        }
+
+        .lunatic-dropdown-panel {
+          background-color: transparent;
+          margin: 0 10px 12px 10px;
+          list-style: none;
+          padding: 0;
+          &:focus {
+            outline: none;
+          }
+          max-height: 100px;
+          overflow-y: auto;
+
+          &::-webkit-scrollbar {
+            width: 8px;
+          }
+          &::-webkit-scrollbar-track {
+            background-color: lightgray;
+          }
+          &::-webkit-scrollbar-thumb {
+            background: orange;
+          }
+          &::-webkit-scrollbar-thumb:hover {
+            background: goldenrod;
+          }
+        }
+
+        /** options style */
+        .lunatic-dropdown-option {
+          cursor: pointer;
+          @include defaultFont();
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: black;
+
+          display: block;
+
+          &.lunatic-dropdown-option-active {
+            color: ivory;
+            background-color: midnightblue;
+          }
+
+          &.lunatic-dropdown-option-selected {
+            color: snow;
+            background-color: rgb(136, 19, 151);
+
+            &.lunatic-dropdown-option-active {
+              color: khaki;
+              background-color: rgb(188, 90, 201);
+            }
+          }
+        }
+      }
+    }
+  }
+}
