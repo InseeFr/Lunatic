@@ -524,3 +524,17 @@ $colorSecondaryContrastText: #ffffff;
 .tooltip {
 	width: 10%;
 }
+
+table {
+	.field-with-tooltip {
+		width: 95%;
+	}
+	.tooltip {
+		width: 5%;
+	}
+	.tooltip-lunatic {
+		img {
+			width: 1em;
+		}
+	}
+}
