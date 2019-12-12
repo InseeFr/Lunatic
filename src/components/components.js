@@ -5,6 +5,7 @@ export { default as Datepicker } from './datepicker';
 export { default as Declarations } from './declarations';
 export { default as Dropdown } from './dropdown';
 export { Input, InputNumber } from './input';
+export { default as FilterDescription } from './filter-description';
 export { default as ProgressBar } from './progress-bar';
 export { default as Radio } from './radio';
 export { default as Sequence } from './sequence';
