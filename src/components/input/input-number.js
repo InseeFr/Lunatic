@@ -49,14 +49,14 @@ const InputNumber = ({
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
-	
+
 	useEffect(() => {
-        	setMessagesError(
-           	        [minMaxValidator({ min, max }), ...validators]
-            		   	.map(v => v(U.getResponseByPreference(preferences)(response)))
-              		   	.filter(m => m !== undefined)
-                 );
-        }, [response]);
+		setMessagesError(
+			[minMaxValidator({ min, max }), ...validators]
+				.map(v => v(U.getResponseByPreference(preferences)(response)))
+				.filter(m => m !== undefined)
+		);
+	}, [response]);
 
 	return (
 		<>
@@ -111,10 +111,12 @@ const InputNumber = ({
 								const {
 									target: { value },
 								} = e;
-								validate(value);
-								handleChange({
-									[U.getResponseName(response)]: value,
-								});
+								if (value) {
+									validate(value);
+									handleChange({
+										[U.getResponseName(response)]: value,
+									});
+								}
 							}}
 						/>
 						{unitPosition === 'AFTER' && <span className="unit">{unit}</span>}
