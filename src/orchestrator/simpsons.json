@@ -63,6 +63,11 @@
             { "valueType" : "INPUTED",
               "value" : null } ] } },
       
+      { "id" : "j6p6my1d",
+        "componentType" : "FilterDescription",
+        "filterDescription" : true,
+        "label" : "\"If you are not ready, please go to the end of the questionnaire\"" },
+      
       { "id" : "j6p0s7o5",
         "componentType" : "Subsequence",
         "label" : "\"General knowledge of the series\"",
