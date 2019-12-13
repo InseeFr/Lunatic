@@ -9,6 +9,7 @@ import { labelPositionOptions, featuresOptions } from '../utils/options';
 import { text, boolean, select, object } from '@storybook/addon-knobs/react';
 import './dropdown.scss';
 import '../../components/dropdown-ex/themes/lunatic-dropdown-basic.scss';
+import '../../components/dropdown-ex/themes/lunatic-dropdown-pump-my-theme.scss';
 
 const stories = storiesOf('Dropdown-ex', module)
 	.addDecorator(withReadme(readme))
@@ -25,7 +26,7 @@ stories.addWithJSX('Default', () => (
 				id="default"
 				source={data}
 				writable={boolean('Writable', true)}
-				zIndex={1}
+				zIndex={2}
 			/>
 		</div>
 		<div className="drowpdown-simple">
@@ -33,6 +34,16 @@ stories.addWithJSX('Default', () => (
 			<Orchestrator
 				id="default"
 				className="lunatic-dropdown-basic"
+				source={data}
+				writable={boolean('Writable', true)}
+				zIndex={1}
+			/>
+		</div>
+		<div className="drowpdown-simple">
+			<p>css theme lunatic-dropdown-pump-my-theme</p>
+			<Orchestrator
+				id="default"
+				className="lunatic-dropdown-pump-my-theme"
 				source={data}
 				writable={boolean('Writable', true)}
 				zIndex={0}

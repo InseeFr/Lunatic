@@ -6,9 +6,9 @@ $inputHeight: 32px;
 }
 /* */
 .lunatic-dropdown-basic {
-	// position: relative;
 	height: $inputHeight;
 	width: 100%;
+	height: auto;
 
 	/** */
 	.lunatic-dropdown-label {
@@ -24,7 +24,7 @@ $inputHeight: 32px;
 		width: 100%;
 
 		.lunatic-dropdown-content {
-			background-color: lavenderblush;
+			background-color: transparent;
 			border-radius: 20px 20px;
 			position: absolute;
 			left: 0;
