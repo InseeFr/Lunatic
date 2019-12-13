@@ -5,7 +5,13 @@ import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import { featuresOptions } from '../utils/options';
-import { boolean, select, color, object } from '@storybook/addon-knobs/react';
+import {
+	text,
+	boolean,
+	select,
+	color,
+	object,
+} from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('FilterDescription', module)
 	.addDecorator(withReadme(readme))
@@ -42,6 +48,10 @@ const dataProps = {
 stories.addWithJSX('Props', () => (
 	<Orchestrator
 		source={dataProps}
+		label={text(
+			'Label',
+			'"If you are not ready, please go to the end of the questionnaire: " || TITLE'
+		)}
 		filterDescription={boolean('Filter description', true)}
 		features={select('Features', featuresOptions, [])}
 		bindings={object('Bindings', { TITLE: 'Title' })}
