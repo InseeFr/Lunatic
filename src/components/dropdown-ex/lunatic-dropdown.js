@@ -11,6 +11,7 @@ const DropdownEx = ({
 	zIndex,
 	disabled,
 	value,
+	handleChange,
 }) => {
 	return writable ? (
 		<DropdownEdit
@@ -20,6 +21,7 @@ const DropdownEx = ({
 			className={className}
 			zIndex={zIndex}
 			value={value}
+			onSelect={handleChange}
 		/>
 	) : (
 		<Dropdown
@@ -29,6 +31,7 @@ const DropdownEx = ({
 			className={className}
 			zIndex={zIndex}
 			value={value}
+			onSelect={handleChange}
 		/>
 	);
 };
@@ -45,6 +48,7 @@ DropdownEx.propTypes = {
 	label: PropTypes.string,
 	className: PropTypes.string,
 	zIndex: PropTypes.number,
+	handleChange: PropTypes.func,
 };
 
 DropdownEx.defaultProps = {
@@ -55,6 +59,7 @@ DropdownEx.defaultProps = {
 	className: undefined,
 	zIndex: 0,
 	disabled: false,
+	handleChange: () => null,
 };
 
 export default DropdownEx;
