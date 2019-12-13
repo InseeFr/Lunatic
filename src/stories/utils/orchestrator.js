@@ -22,9 +22,8 @@ const OrchestratorForStories = ({ source, tooltip, ...props }) => {
 		const { id, componentType } = q;
 		const Component = lunatic[componentType];
 		return (
-			<div className="lunatic-input">
+			<div className="lunatic-input" key={`component-${id}`}>
 				<Component
-					key={`component-${id}`}
 					{...q}
 					handleChange={onChange}
 					labelPosition="TOP"

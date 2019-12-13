@@ -76,6 +76,10 @@ $boxShadowColor: #aaa;
 					box-shadow: 0 0 0 0.2em rgba(202, 39, 140, 0.25);
 				}
 
+				&.disabled {
+					background-color: rgb(240, 222, 233);
+				}
+
 				input {
 					@include defaultFont();
 					margin: 0px 25px 0px 12px;
@@ -84,6 +88,7 @@ $boxShadowColor: #aaa;
 					height: $inputHeight;
 					border: none;
 					outline: none;
+					text-align: left;
 				}
 			}
 

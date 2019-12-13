@@ -8,7 +8,7 @@ import { preparePrefix } from './prefix-tools';
 import reducer, { initial } from './reducer';
 import Option from './option';
 import Icone from './icone';
-import './dropdown-edit.scss';
+import '../themes/lunatic-dropdown-default.scss';
 
 /* **/
 const isDisplay = ({ visible, visibleOptions }) =>
@@ -41,10 +41,12 @@ const Dropdown = ({
 	label,
 	value: valueFromProps,
 	zIndex,
+	disabled,
 }) => {
 	const [state, dispatch] = useReducer(reducer, {
 		...initial,
 		id: `dropdown-${new Date().getMilliseconds()}`,
+		disabled,
 	});
 	const {
 		prefix,
@@ -60,7 +62,7 @@ const Dropdown = ({
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
 	return (
 		<DropdownContainer
-			className={className || 'lunatic-dropdown-edit'}
+			className={className || 'lunatic-dropdown'}
 			state={state}
 			dispatch={dispatch}
 			options={options}
@@ -69,24 +71,30 @@ const Dropdown = ({
 			value={valueFromProps}
 			zIndex={zIndex}
 		>
-			<div className={classnames('lunatic-dropdown-input', { focused })}>
+			<div
+				className={classnames('lunatic-dropdown-input', { focused, disabled })}
+			>
 				<input
 					type="text"
 					ref={inputEl}
 					value={value}
+					disabled={disabled}
 					placeholder={placeHolder}
 					autoComplete="list"
 					autoCorrect="off"
 					autoCapitalize="off"
 					spellCheck="false"
 					tabIndex="0"
-					onFocus={() => dispatch(actions.setFocused(true))}
+					onFocus={() => {
+						dispatch(actions.setFocused(true && !disabled));
+					}}
 					onChange={onChangeCallback(state, dispatch)}
 				/>
 			</div>
 			<Icone
 				prefix={prefix}
 				visible={visible}
+				disabled={disabled}
 				onDelete={e => {
 					e.stopPropagation();
 					inputEl.current.value = '';
@@ -108,7 +116,7 @@ const Dropdown = ({
 				<Panel
 					idDropdown={id}
 					options={visibleOptions}
-					display={isDisplay(state)}
+					display={isDisplay(state) && !disabled}
 					prefix={prefix}
 					activeIndex={activeIndex}
 					optionComponent={Option}
@@ -123,6 +131,7 @@ const Dropdown = ({
 
 Dropdown.propTypes = {
 	zIndex: PropTypes.number,
+	disabled: PropTypes.bool,
 	className: PropTypes.string,
 	id: PropTypes.string,
 	options: PropTypes.array.isRequired,
@@ -140,6 +149,7 @@ Dropdown.defaultProps = {
 	zIndex: 0,
 	onSelect: () => null,
 	placeHolder: 'Search...',
+	disabled: false,
 };
 
 export default Dropdown;

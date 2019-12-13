@@ -4,7 +4,7 @@
 			"id": "j4nw5cqz",
 			"componentType": "DropdownEx",
 			"mandatory": false,
-			"label": "➡ 3. In which state do The Simpsons reside?",
+			"label": "In which state do The Simpsons reside?",
 			"response": {
 				"name": "STATE",
 				"valueState": [

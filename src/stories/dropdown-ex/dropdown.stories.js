@@ -26,6 +26,8 @@ stories.addWithJSX('Default', () => (
 				id="default"
 				source={data}
 				writable={boolean('Writable', true)}
+				disabled={boolean('Disabled', false)}
+				value="4"
 				zIndex={2}
 			/>
 		</div>
@@ -36,6 +38,7 @@ stories.addWithJSX('Default', () => (
 				className="lunatic-dropdown-basic"
 				source={data}
 				writable={boolean('Writable', true)}
+				disabled={boolean('Disabled', false)}
 				zIndex={1}
 			/>
 		</div>
@@ -46,6 +49,7 @@ stories.addWithJSX('Default', () => (
 				className="lunatic-dropdown-pump-my-theme"
 				source={data}
 				writable={boolean('Writable', true)}
+				disabled={boolean('Disabled', false)}
 				zIndex={0}
 			/>
 		</div>
