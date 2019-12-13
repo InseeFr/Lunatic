@@ -29,7 +29,9 @@ const getVariablesFromComponents = components =>
 		? components.reduce((_, { componentType, response, responses, cells }) => {
 				if (
 					!componentType ||
-					['Sequence', 'Subsequence'].includes(componentType)
+					['Sequence', 'Subsequence', 'FilterDescription'].includes(
+						componentType
+					)
 				)
 					return _;
 				else if (componentType === 'CheckboxGroup') {
