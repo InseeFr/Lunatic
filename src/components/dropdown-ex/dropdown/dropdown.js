@@ -8,33 +8,42 @@ import OpenedIcon from '../commons/components/opened.icon';
 import DropdownContainer from '../commons/components/dropdown-container';
 import reducer, { initial } from './reducer';
 import Option from './option';
-import './dropdown.scss';
+import '../themes/lunatic-dropdown-default.scss';
 
 /* **/
 const isDisplay = ({ visible, options }) => visible && options.length > 0;
 
 /** */
-const getIcon = (_, dispatch) => visible => (
-	<span
-		className="lunatic-icone"
-		tabIndex="-1"
-		onMouseDown={e => {
-			e.stopPropagation();
-			e.preventDefault();
-			if (visible) {
-				dispatch(actions.hidePanel());
-			} else {
-				dispatch(actions.showPanel());
-			}
-		}}
-	>
-		{visible ? (
-			<OpenedIcon width={10} height={10} />
-		) : (
-			<ClosedIcon width={10} height={10} />
-		)}
-	</span>
-);
+const getIcon = ({ disabled }, dispatch) => visible => {
+	if (disabled) {
+		return (
+			<span className="lunatic-icone">
+				<ClosedIcon width={10} height={10} />
+			</span>
+		);
+	}
+	return (
+		<span
+			className="lunatic-icone"
+			tabIndex="-1"
+			onMouseDown={e => {
+				e.stopPropagation();
+				e.preventDefault();
+				if (visible) {
+					dispatch(actions.hidePanel());
+				} else {
+					dispatch(actions.showPanel());
+				}
+			}}
+		>
+			{visible ? (
+				<OpenedIcon width={10} height={10} />
+			) : (
+				<ClosedIcon width={10} height={10} />
+			)}
+		</span>
+	);
+};
 
 const createOnSelect = (_, dispatch, onSelect) => option => {
 	dispatch(actions.setSelectedOption(option));
@@ -50,16 +59,18 @@ const Dropdown = ({
 	label,
 	value: valueFromProps,
 	zIndex,
+	disabled,
 }) => {
 	const [state, dispatch] = useReducer(reducer, {
 		...initial,
 		id: `dropdown-${new Date().getMilliseconds()}`,
+		disabled,
 	});
 	const { focused, selectedOption, visible, activeIndex, id } = state;
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
 	return (
 		<DropdownContainer
-			className={className || 'lunatic-dropdown-classic'}
+			className={className || 'lunatic-dropdown'}
 			state={state}
 			dispatch={dispatch}
 			options={options}
@@ -71,6 +82,7 @@ const Dropdown = ({
 			<span className={classnames('lunatic-dropdown-input', { focused })}>
 				<input
 					type="button"
+					disabled={disabled}
 					value={selectedOption ? selectedOption.label : placeHolder || ''}
 				/>
 			</span>
@@ -97,6 +109,7 @@ const Dropdown = ({
 };
 
 Dropdown.propTypes = {
+	disabled: PropTypes.bool,
 	zIndex: PropTypes.number,
 	className: PropTypes.string,
 	id: PropTypes.string,
@@ -111,6 +124,7 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps = {
+	disabled: false,
 	options: [],
 	zIndex: 0,
 	onSelect: () => null,
