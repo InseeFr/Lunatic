@@ -17,6 +17,7 @@ $boxShadowColor: #aaa;
 .lunatic-dropdown-pump-my-theme {
 	display: block;
 	width: 100%;
+	height: auto;
 	&:focus {
 		outline: none;
 	}
@@ -108,7 +109,7 @@ $boxShadowColor: #aaa;
 				&.visible {
 					visibility: visible;
 					opacity: 1;
-					transition: opacity 1s ease-out;
+					transition: opacity 0.5s ease-in;
 				}
 
 				.lunatic-dropdown-panel {
@@ -169,7 +170,7 @@ $boxShadowColor: #aaa;
 
 					&.lunatic-dropdown-option-selected {
 						color: snow;
-						background-color: #000000;
+						background-color: #420c3e;
 						.lunatic-prefix {
 							color: lightgray;
 							font-weight: bold;

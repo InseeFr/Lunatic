@@ -6,9 +6,9 @@ $inputHeight: 32px;
 }
 /* */
 .lunatic-dropdown-basic {
-	// position: relative;
 	height: $inputHeight;
 	width: 100%;
+	height: auto;
 
 	/** */
 	.lunatic-dropdown-label {
