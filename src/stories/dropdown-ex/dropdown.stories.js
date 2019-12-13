@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
@@ -18,43 +18,54 @@ const stories = storiesOf('Dropdown-ex', module)
 		return <WrappedComponent title="<DropdownEx />" />;
 	});
 
-stories.addWithJSX('Default', () => (
-	<>
-		<div className="drowpdown-simple">
-			<p>css default</p>
-			<Orchestrator
-				id="default"
-				source={data}
-				writable={boolean('Writable', true)}
-				disabled={boolean('Disabled', false)}
-				value="4"
-				zIndex={2}
-			/>
-		</div>
-		<div className="drowpdown-simple">
-			<p>css theme lunatic-dropdown-basic</p>
-			<Orchestrator
-				id="default"
-				className="lunatic-dropdown-basic"
-				source={data}
-				writable={boolean('Writable', true)}
-				disabled={boolean('Disabled', false)}
-				zIndex={1}
-			/>
-		</div>
-		<div className="drowpdown-simple">
-			<p>css theme lunatic-dropdown-pump-my-theme</p>
-			<Orchestrator
-				id="default"
-				className="lunatic-dropdown-pump-my-theme"
-				source={data}
-				writable={boolean('Writable', true)}
-				disabled={boolean('Disabled', false)}
-				zIndex={0}
-			/>
-		</div>
-	</>
-));
+stories.addWithJSX('Default', () => {
+	const [selection, setSelection] = useState(undefined);
+	return (
+		<>
+			<h2>
+				{selection
+					? `${selection.label} ${selection.value}`
+					: `Selection : nothing yet !`}
+			</h2>
+			<div className="drowpdown-simple">
+				<p>css default</p>
+				<Orchestrator
+					id="default"
+					source={data}
+					writable={boolean('Writable', true)}
+					disabled={boolean('Disabled', false)}
+					value="4"
+					zIndex={2}
+					handleChange={sel => setSelection(sel)}
+				/>
+			</div>
+			<div className="drowpdown-simple">
+				<p>css theme lunatic-dropdown-basic</p>
+				<Orchestrator
+					id="default"
+					className="lunatic-dropdown-basic"
+					source={data}
+					writable={boolean('Writable', true)}
+					disabled={boolean('Disabled', false)}
+					zIndex={1}
+					handleChange={sel => setSelection(sel)}
+				/>
+			</div>
+			<div className="drowpdown-simple">
+				<p>css theme lunatic-dropdown-pump-my-theme</p>
+				<Orchestrator
+					id="default"
+					className="lunatic-dropdown-pump-my-theme"
+					source={data}
+					writable={boolean('Writable', true)}
+					disabled={boolean('Disabled', false)}
+					zIndex={0}
+					handleChange={sel => setSelection(sel)}
+				/>
+			</div>
+		</>
+	);
+});
 
 stories.addWithJSX('Props', () => (
 	<Orchestrator
