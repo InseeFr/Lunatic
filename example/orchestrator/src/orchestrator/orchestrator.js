@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import * as lunatic from '@inseefr/lunatic';
 
-const Orchestrator = ({ savingType, preferences, source, data, tooltip }) => {
+const Orchestrator = ({
+	savingType,
+	preferences,
+	source,
+	data,
+	tooltip,
+	filterDescription,
+}) => {
 	const [questionnaire, setQuestionnaire] = useState(
 		lunatic.mergeQuestionnaireAndData(source)(data)
 	);
@@ -34,6 +41,7 @@ const Orchestrator = ({ savingType, preferences, source, data, tooltip }) => {
 						labelPosition="TOP"
 						preferences={preferences}
 						tooltip={tooltip}
+						filterDescription={filterDescription}
 						features={['VTL']}
 						bindings={bindings}
 					/>

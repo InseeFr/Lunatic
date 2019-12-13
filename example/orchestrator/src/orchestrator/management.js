@@ -9,7 +9,8 @@ const Management = () => (
 		preferences={['COLLECTED', 'FORCED', 'EDITED']}
 		source={simpsons}
 		data={data}
-		tooltip={true}
+		tooltip
+		filterDescription
 	/>
 );
 
