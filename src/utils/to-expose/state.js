@@ -24,32 +24,43 @@ export const getCollectedStateByValueType = questionnaire => (
 		  }, {})
 		: {};
 
-const getVariablesFromComponents = components =>
+const getVariablesFromComponents = (components, replaceLabel) =>
 	Array.isArray(components)
-		? components.reduce((_, { componentType, response, responses, cells }) => {
-				if (
-					!componentType ||
-					['Sequence', 'Subsequence', 'FilterDescription'].includes(
-						componentType
+		? components.reduce(
+				(_, { componentType, response, responses, cells, options }) => {
+					if (
+						!componentType ||
+						['Sequence', 'Subsequence', 'FilterDescription'].includes(
+							componentType
+						)
 					)
-				)
-					return _;
-				else if (componentType === 'CheckboxGroup') {
-					return { ..._, ...getVariableFromResponses(responses) };
-				} else if (componentType === 'Table') {
-					return { ..._, ...getVariableFromCells(cells) };
-				} else {
-					return { ..._, ...getVariableFromResponse(response) };
-				}
-		  }, {})
+						return _;
+					else if (componentType === 'CheckboxGroup') {
+						return { ..._, ...getVariableFromResponses(responses) };
+					} else if (componentType === 'Table') {
+						return { ..._, ...getVariableFromCells(cells) };
+					} else if (componentType === 'Radio') {
+						return {
+							..._,
+							...getVariableFromResponse(response, replaceLabel, options),
+						};
+					} else {
+						return { ..._, ...getVariableFromResponse(response) };
+					}
+				},
+				{}
+		  )
 		: {};
 
-const getVariableFromResponse = response => {
+const getVariableFromResponse = (response, replaceLabel, options) => {
 	const { name, valueState } = response;
-	const values = valueState.reduce(
-		(__, { valueType, value }) => ({ ...__, [valueType]: value }),
-		{}
-	);
+	const values = valueState.reduce((__, { valueType, value }) => {
+		const v =
+			replaceLabel && value
+				? options.find(o => o.value === value).label || ''
+				: value;
+		return { ...__, [valueType]: v };
+	}, {});
 	return { [name]: values };
 };
 
@@ -81,11 +92,28 @@ const getExternalFromVariables = variables =>
 		  )
 		: {};
 
+const getCollectedFromObject = obj =>
+	Object.entries(obj).reduce(
+		(_, o) => ({
+			..._,
+			[o[0]]: typeof o[1] === 'object' ? o[1].COLLECTED : o[1],
+		}),
+		{}
+	);
+
+const convertTrueAndFalse = bindings =>
+	Object.entries(bindings).reduce((_, b) => {
+		if (b[1] === true) return { ..._, [b[0]]: 'Vrai' };
+		else if (b[1] === false) return { ..._, [b[0]]: 'Faux' };
+		return { ..._, [b[0]]: b[1] };
+	}, {});
+
 export const getBindings = questionnaire => {
-	const { variables } = questionnaire;
-	return {
-		...getCollectedStateByValueType(questionnaire)('COLLECTED', true),
+	const { components, variables } = questionnaire;
+	const bindings = {
+		...getCollectedFromObject(getVariablesFromComponents(components, true)),
 		...getCalculatedFromVariables(variables),
 		...getExternalFromVariables(variables),
 	};
+	return convertTrueAndFalse(bindings);
 };

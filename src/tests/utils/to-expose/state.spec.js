@@ -98,6 +98,27 @@ const questionnaire = {
 			],
 		},
 		{
+			id: 'j3343clt',
+			componentType: 'Radio',
+			mandatory: false,
+			label: '➡ 1. In which city do the Simpsons reside?',
+			response: {
+				name: 'CITY',
+				valueState: [
+					{ valueType: 'PREVIOUS', value: null },
+					{ valueType: 'COLLECTED', value: '00002' },
+					{ valueType: 'FORCED', value: '00001' },
+					{ valueType: 'EDITED', value: null },
+					{ valueType: 'INPUTED', value: null },
+				],
+			},
+			options: [
+				{ value: '00001', label: 'Springfield' },
+				{ value: '00002', label: 'Shelbyville' },
+				{ value: '00003', label: 'Seinfeld' },
+			],
+		},
+		{
 			componentType: 'Table',
 			cells: [
 				[
@@ -184,6 +205,13 @@ const state = {
 			EDITED: false,
 			INPUTED: false,
 		},
+		CITY: {
+			PREVIOUS: null,
+			COLLECTED: '00002',
+			FORCED: '00001',
+			EDITED: null,
+			INPUTED: null,
+		},
 		ICE_FLAVOUR1: {
 			PREVIOUS: '',
 			COLLECTED: '',
@@ -232,6 +260,13 @@ const collectedState = {
 		EDITED: false,
 		INPUTED: false,
 	},
+	CITY: {
+		PREVIOUS: null,
+		COLLECTED: '00002',
+		FORCED: '00001',
+		EDITED: null,
+		INPUTED: null,
+	},
 	ICE_FLAVOUR1: {
 		PREVIOUS: '',
 		COLLECTED: '',
@@ -259,6 +294,7 @@ const collectedStateCollected = {
 	COMMENT: 'COLLECTED',
 	PET1: false,
 	PET2: false,
+	CITY: '00002',
 	ICE_FLAVOUR1: '',
 	ICE_FLAVOUR22: true,
 };
@@ -267,13 +303,20 @@ const collectedStateCollectedWithNull = {
 	COMMENT: 'COLLECTED',
 	PET1: false,
 	PET2: false,
+	CITY: '00002',
 	ICE_FLAVOUR1: '',
 	ICE_FLAVOUR21: null,
 	ICE_FLAVOUR22: true,
 };
 
 const bindingsResults = {
-	...collectedStateCollectedWithNull,
+	COMMENT: 'COLLECTED',
+	PET1: 'Faux',
+	PET2: 'Faux',
+	ICE_FLAVOUR1: '',
+	ICE_FLAVOUR21: null,
+	ICE_FLAVOUR22: 'Vrai',
+	CITY: 'Shelbyville',
 	EXT: 'EXT value',
 	CALC: 'XXX',
 };
