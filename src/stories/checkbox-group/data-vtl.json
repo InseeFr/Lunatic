@@ -1,0 +1,67 @@
+{
+	"components": [
+		{
+			"id": "j334akov",
+			"componentType": "CheckboxGroup",
+			"label": "➡ 1. What are the pet names that the Simpsons family had?",
+			"responses": [
+				{
+					"id": "j334akov-QOP-jbgd8qmn",
+					"label": "Santa's Little Helper",
+					"response": {
+						"name": "PET1",
+						"valueState": [
+							{ "valueType": "PREVIOUS", "value": null },
+							{ "valueType": "COLLECTED", "value": true },
+							{ "valueType": "FORCED", "value": false },
+							{ "valueType": "EDITED", "value": null },
+							{ "valueType": "INPUTED", "value": null }
+						]
+					}
+				},
+				{
+					"id": "j334akov-QOP-jbgd60vl",
+					"label": "Snowball I",
+					"response": {
+						"name": "PET2",
+						"valueState": [
+							{ "valueType": "PREVIOUS", "value": null },
+							{ "valueType": "COLLECTED", "value": true },
+							{ "valueType": "FORCED", "value": null },
+							{ "valueType": "EDITED", "value": null },
+							{ "valueType": "INPUTED", "value": null }
+						]
+					}
+				},
+				{
+					"id": "j334akov-QOP-jbgda2jo",
+					"label": "Coltrane",
+					"response": {
+						"name": "PET3",
+						"valueState": [
+							{ "valueType": "PREVIOUS", "value": null },
+							{ "valueType": "COLLECTED", "value": null },
+							{ "valueType": "FORCED", "value": null },
+							{ "valueType": "EDITED", "value": null },
+							{ "valueType": "INPUTED", "value": null }
+						]
+					}
+				},
+				{
+					"id": "j334akov-QOP-jbgdfssy",
+					"label": "NAME || \" the Helper Monkey\"",
+					"response": {
+						"name": "PET4",
+						"valueState": [
+							{ "valueType": "PREVIOUS", "value": null },
+							{ "valueType": "COLLECTED", "value": null },
+							{ "valueType": "FORCED", "value": null },
+							{ "valueType": "EDITED", "value": null },
+							{ "valueType": "INPUTED", "value": null }
+						]
+					}
+				}
+			]
+		}
+	]
+}

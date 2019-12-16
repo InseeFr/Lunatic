@@ -5,6 +5,7 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
+import dataVTL from './data-vtl';
 import { positioningOptions, featuresOptions } from '../utils/options';
 import {
 	text,
@@ -29,11 +30,11 @@ stories.addWithJSX('Default', () => (
 stories.addWithJSX('Props', () => (
 	<Orchestrator
 		id="props"
-		source={data}
+		source={dataVTL}
 		label={text('Label', '"I\'m the label of the checkbox group"')}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={select('Features', featuresOptions, [])}
-		bindings={object('Bindings', { test: 'test' })}
+		bindings={object('Bindings', { NAME: 'Mojo' })}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		keyboardSelection={boolean('Keyboard selection', false)}

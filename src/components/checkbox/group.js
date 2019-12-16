@@ -54,6 +54,7 @@ const CheckboxGroup = ({
 				/>
 				{responses.map(({ id: modId, label: modLabel, response }, i) => {
 					const checked = U.getResponseByPreference(preferences)(response);
+					const interpretedLabel = interpret(features)(bindings)(modLabel)
 					return (
 						<div
 							className={`${U.getItemsPositioningClass(positioning)}`}
@@ -83,8 +84,8 @@ const CheckboxGroup = ({
 											style={checked ? U.buildStyleObject(checkboxStyle) : {}}
 										>
 											{keyboardSelection
-												? `${U.getAlphabet()[i].toUpperCase()} - ${modLabel}`
-												: modLabel}
+												? `${U.getAlphabet()[i].toUpperCase()} - ${interpretedLabel}`
+												: interpretedLabel}
 										</label>
 									</div>
 								</div>

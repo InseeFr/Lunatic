@@ -59,6 +59,7 @@ const Radio = ({
 							const checked =
 								U.getResponseByPreference(preferences)(response) ===
 								optionValue;
+							const interpretedLabel = interpret(features)(bindings)(optionLabel)
 							return (
 								<div
 									key={`radio-${id}-${optionValue}`}
@@ -88,8 +89,8 @@ const Radio = ({
 										style={checked ? U.buildStyleObject(radioStyle) : {}}
 									>
 										{keyboardSelection
-											? `${U.getAlphabet()[i].toUpperCase()} - ${optionLabel}`
-											: optionLabel}
+											? `${U.getAlphabet()[i].toUpperCase()} - ${interpretedLabel}`
+											: interpretedLabel}
 									</label>
 								</div>
 							);
