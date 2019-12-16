@@ -23,6 +23,7 @@ const Orchestrator = ({
 	console.log('State : ', lunatic.getState(questionnaire));
 
 	const bindings = lunatic.getBindings(questionnaire);
+	const labelBindings = lunatic.getLabelBindings(questionnaire);
 
 	const components = questionnaire.components
 		.filter(({ conditionFilter }) =>
@@ -43,7 +44,7 @@ const Orchestrator = ({
 						tooltip={tooltip}
 						filterDescription={filterDescription}
 						features={['VTL']}
-						bindings={bindings}
+						bindings={labelBindings}
 					/>
 				</div>
 			);

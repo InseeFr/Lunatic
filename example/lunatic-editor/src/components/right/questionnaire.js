@@ -25,6 +25,7 @@ const Questionnaire = ({ source, data, error }) => {
   };
 
   const bindings = lunatic.getBindings(questionnaire);
+  const labelBindings = lunatic.getLabelBindings(questionnaire);
 
   const components = questionnaire.components
     .filter(({ conditionFilter }) =>
@@ -43,7 +44,7 @@ const Questionnaire = ({ source, data, error }) => {
             labelPosition="TOP"
             preferences={preferences}
             features={vtl ? ['VTL'] : []}
-            bindings={vtl ? bindings : {}}
+            bindings={vtl ? labelBindings : {}}
           />
         </div>
       );
