@@ -109,6 +109,15 @@ const convertTrueAndFalse = bindings =>
 	}, {});
 
 export const getBindings = questionnaire => {
+	const { variables } = questionnaire;
+	return {
+		...getCollectedStateByValueType(questionnaire)('COLLECTED', true),
+		...getCalculatedFromVariables(variables),
+		...getExternalFromVariables(variables),
+	};
+};
+
+export const getLabelBindings = questionnaire => {
 	const { components, variables } = questionnaire;
 	const bindings = {
 		...getCollectedFromObject(getVariablesFromComponents(components, true)),

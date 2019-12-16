@@ -3,6 +3,7 @@ import {
 	getCollectedState,
 	getCollectedStateByValueType,
 	getBindings,
+	getLabelBindings,
 } from 'utils/to-expose/state';
 
 describe('state', () => {
@@ -46,6 +47,14 @@ describe('state', () => {
 		});
 		it('should return object', () => {
 			expect(getBindings(questionnaire)).toEqual(bindingsResults);
+		});
+	});
+	describe('getLabelBindings', () => {
+		it('should return empty object', () => {
+			expect(getLabelBindings([])).toEqual({});
+		});
+		it('should return object', () => {
+			expect(getLabelBindings(questionnaire)).toEqual(labelBindingsResults);
 		});
 	});
 });
@@ -310,6 +319,17 @@ const collectedStateCollectedWithNull = {
 };
 
 const bindingsResults = {
+	COMMENT: 'COLLECTED',
+	PET1: false,
+	PET2: false,
+	ICE_FLAVOUR1: '',
+	ICE_FLAVOUR21: null,
+	ICE_FLAVOUR22: true,
+	CITY: '00002',
+	EXT: 'EXT value',
+	CALC: 'XXX',
+};
+const labelBindingsResults = {
 	COMMENT: 'COLLECTED',
 	PET1: 'Faux',
 	PET2: 'Faux',
