@@ -64,3 +64,78 @@ Afin de valoriser les labels variabilisés, ou d'injecter les valeurs des variab
 	"VAR_CALCULATED": "Vtl expression"
 }
 ```
+
+### `getLabelBindings(questionnaire)`
+
+#### Arguments
+
+`questionnaire` (`object`) : initialement au format Lunatic-Model, transformé en amont par la fonction `mergeQuestionnaireAndData`
+
+#### Retour
+
+(`object`) :
+
+```json
+{
+    "var1": "value1",
+    "var2": "value2",
+    ...
+}
+```
+
+#### Exemple
+
+`questionnaire`
+
+```json
+{
+	"components": [
+		{
+			"components": [
+				{
+					"id": "j3343clt",
+					"componentType": "Radio",
+					"mandatory": false,
+					"label": "➡ 1. In which city do the Simpsons reside?",
+					"response": {
+						"name": "VAR1",
+						"valueState": [
+							{ "valueType": "PREVIOUS", "value": null },
+							{ "valueType": "COLLECTED", "value": "00002" },
+							{ "valueType": "FORCED", "value": null },
+							{ "valueType": "EDITED", "value": null },
+							{ "valueType": "INPUTED", "value": null }
+						]
+					},
+					"options": [
+						{ "value": "00001", "label": "Springfield" },
+						{ "value": "00002", "label": "Shelbyville" },
+						{ "value": "00003", "label": "Seinfeld" }
+					]
+				}
+			]
+		}
+	],
+	"variables": {
+		"EXTERNAL": {
+			"ext": "External var"
+		},
+		"CALCULATED": {
+			"VAR_CALCULATED": {
+				"expression": "VTL expression",
+				"value": null
+			}
+		}
+	}
+}
+```
+
+`getLabelBindings`
+
+```json
+{
+	"VAR1": "Shelbyville",
+	"ext": "External var",
+	"VAR_CALCULATED": "Vtl expression"
+}
+```
