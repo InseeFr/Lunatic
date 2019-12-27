@@ -4,7 +4,6 @@ export { CheckboxGroup, CheckboxOne, CheckboxBoolean } from './checkbox';
 export { default as Datepicker } from './datepicker';
 export { default as Declarations } from './declarations';
 export { default as Dropdown } from './dropdown';
-export { default as DropdownEx } from './dropdown-ex';
 export { Input, InputNumber } from './input';
 export { default as ProgressBar } from './progress-bar';
 export { default as Radio } from './radio';

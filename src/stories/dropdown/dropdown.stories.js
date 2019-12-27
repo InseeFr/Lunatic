@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
@@ -7,6 +7,9 @@ import { titleDecorator } from 'utils/lib';
 import data from './data';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import { text, boolean, select, object } from '@storybook/addon-knobs/react';
+import './dropdown.scss';
+import '../../components/dropdown/themes/lunatic-dropdown-basic.scss';
+import '../../components/dropdown/themes/lunatic-dropdown-pump-my-theme.scss';
 
 const stories = storiesOf('Dropdown', module)
 	.addDecorator(withReadme(readme))
@@ -15,9 +18,54 @@ const stories = storiesOf('Dropdown', module)
 		return <WrappedComponent title="<Dropdown />" />;
 	});
 
-stories.addWithJSX('Default', () => (
-	<Orchestrator id="default" source={data} />
-));
+stories.addWithJSX('Default', () => {
+	const [selection, setSelection] = useState(undefined);
+	return (
+		<>
+			<h2>
+				{selection
+					? `${selection.label} ${selection.value}`
+					: `Selection : nothing yet !`}
+			</h2>
+			<div className="drowpdown-simple">
+				<p>css default</p>
+				<Orchestrator
+					id="default"
+					source={data}
+					writable={boolean('Writable', true)}
+					disabled={boolean('Disabled', false)}
+					value="4"
+					zIndex={2}
+					handleChange={sel => setSelection(sel)}
+				/>
+			</div>
+			<div className="drowpdown-simple">
+				<p>css theme lunatic-dropdown-basic</p>
+				<Orchestrator
+					id="default"
+					className="lunatic-dropdown-basic"
+					source={data}
+					writable={boolean('Writable', true)}
+					disabled={boolean('Disabled', false)}
+					zIndex={1}
+					handleChange={sel => setSelection(sel)}
+				/>
+			</div>
+			<div className="drowpdown-simple">
+				<p>css theme lunatic-dropdown-pump-my-theme</p>
+				<Orchestrator
+					id="default"
+					className="lunatic-dropdown-pump-my-theme"
+					source={data}
+					writable={boolean('Writable', true)}
+					disabled={boolean('Disabled', false)}
+					zIndex={0}
+					handleChange={sel => setSelection(sel)}
+				/>
+			</div>
+		</>
+	);
+});
 
 stories.addWithJSX('Props', () => (
 	<Orchestrator
