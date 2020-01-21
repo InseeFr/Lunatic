@@ -22,7 +22,7 @@ const OrchestratorForStories = ({ source, tooltip, ...props }) => {
 		const { id, componentType } = q;
 		const Component = lunatic[componentType];
 		return (
-			<div key={`component-${id}`}>
+			<div className="lunatic-input" key={`component-${id}`}>
 				<Component
 					{...q}
 					handleChange={onChange}
@@ -34,11 +34,7 @@ const OrchestratorForStories = ({ source, tooltip, ...props }) => {
 			</div>
 		);
 	});
-	return (
-		<div>
-			<div className="components">{components}</div>
-		</div>
-	);
+	return <div className="lunatic-forms">{components}</div>;
 };
 
 export default OrchestratorForStories;

@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Writable from './writable';
-import Simple from './simple';
+import DropdownSimple from './dropdown-simple';
+import DropdownEdit from './dropdown-edit';
 import Declarations from '../declarations';
-import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../utils/constants';
 import { interpret } from '../../utils/to-expose';
@@ -12,22 +11,29 @@ import './dropdown.scss';
 const Dropdown = ({
 	id,
 	label,
-	labelPosition,
+	preferences,
+	response,
+	handleChange,
+	options,
 	writable,
-	mandatory,
 	declarations,
 	features,
 	bindings,
-	...props
+	tooltip,
+	...rest
 }) => {
-	const { preferences, response, handleChange, tooltip, options } = props;
+	const interpretedLabel = interpret(features)(bindings)(label);
 	const value = U.getResponseByPreference(preferences)(response);
-	const handler = value =>
+	const interpretedOptions = options.map(({ value, label: labelOption }) => ({
+		value,
+		label: interpret(features)(bindings)(labelOption),
+	}));
+	const onSelect = e =>
 		handleChange({
-			[U.getResponseName(response)]: value,
+			[U.getResponseName(response)]: e.value,
 		});
 	return (
-		<div className={U.getLabelPositionClass(labelPosition)}>
+		<>
 			<Declarations
 				id={id}
 				type={C.BEFORE_QUESTION_TEXT}
@@ -35,15 +41,6 @@ const Dropdown = ({
 				features={features}
 				bindings={bindings}
 			/>
-			{label && (
-				<label
-					htmlFor={`textarea-${id}`}
-					id={`textarea-label-${id}`}
-					className={`${mandatory ? 'mandatory' : ''}`}
-				>
-					{interpret(features)(bindings)(label)}
-				</label>
-			)}
 			<Declarations
 				id={id}
 				type={C.AFTER_QUESTION_TEXT}
@@ -51,23 +48,29 @@ const Dropdown = ({
 				features={features}
 				bindings={bindings}
 			/>
-			<div className="field-container">
-				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
-					{writable ? (
-						<Writable {...props} value={value} handleChange={handler} />
-					) : (
-						<Simple {...props} value={value} handleChange={handler} />
-					)}
-				</div>
-				{tooltip && (
-					<div className="tooltip">
-						<TooltipResponse
-							id={id}
-							response={U.buildResponse(options)(response)}
-						/>
-					</div>
-				)}
-			</div>
+			{writable ? (
+				<DropdownEdit
+					{...rest}
+					id={id}
+					value={value}
+					response={response}
+					label={interpretedLabel}
+					options={interpretedOptions}
+					onSelect={onSelect}
+					tooltip={tooltip}
+				/>
+			) : (
+				<DropdownSimple
+					{...rest}
+					id={id}
+					value={value}
+					response={response}
+					label={interpretedLabel}
+					options={interpretedOptions}
+					onSelect={onSelect}
+					tooltip={tooltip}
+				/>
+			)}
 			<Declarations
 				id={id}
 				type={C.DETACHABLE}
@@ -75,43 +78,34 @@ const Dropdown = ({
 				features={features}
 				bindings={bindings}
 			/>
-		</div>
+		</>
 	);
 };
 
-Dropdown.defaultProps = {
-	label: '',
-	preferences: ['COLLECTED'],
-	response: {},
-	placeholder: '',
-	writable: false,
-	mandatory: false,
-	tooltip: false,
-	labelPosition: 'DEFAULT',
-	declarations: [],
-	features: [],
-	bindings: {},
-	tooltip: false,
-	style: {},
+Dropdown.propTypes = {
+	value: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.string,
+		PropTypes.number,
+	]),
+	disabled: PropTypes.bool,
+	writable: PropTypes.bool,
+	handleChange: PropTypes.func,
+	label: PropTypes.string,
+	className: PropTypes.string,
+	zIndex: PropTypes.number,
+	handleChange: PropTypes.func,
 };
 
-Dropdown.propTypes = {
-	id: PropTypes.string.isRequired,
-	label: PropTypes.string,
-	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
-	response: U.responsePropTypes,
-	options: U.optionsPropTypes,
-	handleChange: PropTypes.func.isRequired,
-	placeholder: PropTypes.string,
-	readOnly: PropTypes.bool,
-	writable: PropTypes.bool,
-	mandatory: PropTypes.bool,
-	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
-	declarations: U.declarationsPropTypes,
-	features: PropTypes.arrayOf(PropTypes.string),
-	bindings: PropTypes.object,
-	tooltip: PropTypes.bool,
-	style: PropTypes.object,
+Dropdown.defaultProps = {
+	value: undefined,
+	writable: false,
+	handleChange: () => null,
+	label: undefined,
+	className: undefined,
+	zIndex: 0,
+	disabled: false,
+	handleChange: () => null,
 };
 
 export default Dropdown;

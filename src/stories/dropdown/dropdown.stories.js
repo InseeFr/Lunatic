@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
+import dataProps from './data-props';
+import dataNAF from './data-naf';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import { text, boolean, select, object } from '@storybook/addon-knobs/react';
 
@@ -16,20 +18,38 @@ const stories = storiesOf('Dropdown', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<Orchestrator id="default" source={data} />
+	<Orchestrator id="default" source={data} handleChange={console.log} />
 ));
 
 stories.addWithJSX('Props', () => (
 	<Orchestrator
 		id="props"
-		source={data}
-		label={text('Label', '"I\'m the label of the dropdown"')}
+		source={dataProps}
+		handleChange={console.log}
 		placeholder={text('Placeholder', 'Placeholder')}
 		features={select('Features', featuresOptions, [])}
-		bindings={object('Bindings', { test: 'test' })}
-		readOnly={boolean('Read only', false)}
+		bindings={object('Bindings', { NAME: 'Simpsons', TEXAS: 'Texas' })}
+		disabled={boolean('Disabled', false)}
 		writable={boolean('Writable', false)}
 		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
+		mandatory={boolean('Mandatory', false)}
+		preferences={['COLLECTED', 'FORCED']}
+		tooltip={boolean('Tooltip', false)}
+	/>
+));
+
+stories.addWithJSX('Naf', () => (
+	<Orchestrator
+		id="props"
+		source={dataNAF}
+		handleChange={console.log}
+		placeholder={text('Placeholder', 'Placeholder')}
+		features={select('Features', featuresOptions, [])}
+		bindings={object('Bindings', { NAME: 'Simpsons', TEXAS: 'Texas' })}
+		disabled={boolean('Disabled', false)}
+		writable={boolean('Writable', false)}
+		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
+		mandatory={boolean('Mandatory', false)}
 		preferences={['COLLECTED', 'FORCED']}
 		tooltip={boolean('Tooltip', false)}
 	/>

@@ -33,7 +33,8 @@ $disabled: rgb(235, 235, 228);
 	}
 }
 
-label {
+label,
+.lunatic-dropdown-label {
 	margin-bottom: 0.5em;
 }
 
@@ -63,10 +64,13 @@ label {
 }
 
 .field-with-tooltip {
-	display: flex;
+	// display: flex;
+	width: calc(100% - 25px);
+	position: relative;
 }
 
 .field {
 	width: 100%;
-	display: flex;
+	// display: flex;
+	position: relative;
 }

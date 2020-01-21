@@ -4,7 +4,7 @@
 			"id": "j4nw5cqz",
 			"componentType": "Dropdown",
 			"mandatory": false,
-			"label": "In which state do The Simpsons reside?",
+			"label": "\"In which state do The \" || NAME || \" reside?\"",
 			"response": {
 				"name": "STATE",
 				"valueState": [
@@ -24,7 +24,7 @@
 				{ "value": "6", "label": "Florida" },
 				{ "value": "7", "label": "North Takoma" },
 				{ "value": "8", "label": "California" },
-				{ "value": "9", "label": "Texas" },
+				{ "value": "9", "label": "TEXAS" },
 				{ "value": "10", "label": "Massachusetts" },
 				{ "value": "11", "label": "Nevada" },
 				{ "value": "12", "label": "Illinois" },
