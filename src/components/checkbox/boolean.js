@@ -30,21 +30,24 @@ const CheckboxBoolean = ({
 
 	const isVertical = positioning === 'VERTICAL';
 	const input = (
-		<input
-			type="checkbox"
-			id={`checkbox-boolean-${id}`}
-			ref={inputRef}
-			title={label ? label : 'empty-label'}
-			className={`checkbox-lunatic${isVertical ? '-no-margin' : ''}`}
-			style={U.buildStyleObject(style)}
-			checked={U.getResponseByPreference(preferences)(response)}
-			disabled={disabled}
-			onChange={e => {
-				handleChange({
-					[U.getResponseName(response)]: e.target.checked,
-				});
-			}}
-		/>
+		<>
+			<input
+				type="checkbox"
+				id={`checkbox-boolean-${id}`}
+				ref={inputRef}
+				title={label ? label : 'empty-label'}
+				className={`checkbox-boolean-lunatic${isVertical ? '-no-margin' : ''}`}
+				style={U.buildStyleObject(style)}
+				checked={U.getResponseByPreference(preferences)(response)}
+				disabled={disabled}
+				onChange={e => {
+					handleChange({
+						[U.getResponseName(response)]: e.target.checked,
+					});
+				}}
+			/>
+			<span></span>
+		</>
 	);
 	return (
 		<div key={`checkbox-boolean-${id}`} className={`checkbox-boolean-modality`}>
