@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Label from './label';
+import { TooltipResponse } from '../../../tooltip';
+import * as U from '../../../../utils/lib';
 import * as CLEAN from '../cleaner-callbacks';
 import * as actions from '../actions';
 import {
@@ -33,13 +35,17 @@ const onKeyDownCallback_ = (state, dispatch, onSelect) => e => {
 };
 
 const DropdownContainer = ({
-	options = [],
+	options,
 	children,
 	onSelect,
+	response,
 	className,
 	label,
+	labelPosition,
+	mandatory,
 	value: valueFromProps,
 	zIndex,
+	tooltip,
 	state,
 	dispatch,
 }) => {
@@ -85,31 +91,45 @@ const DropdownContainer = ({
 
 	return (
 		<div
-			className={classnames(className, {
-				focused,
-				disabled,
-			})}
+			className={classnames(
+				`${className} ${U.getLabelPositionClass(labelPosition)}`,
+				{
+					focused,
+					disabled,
+				}
+			)}
 			tabIndex="-1"
 			id={id}
 			onMouseDown={onMouseDownCallback(state, dispatch, 'id')}
 			onKeyDown={onKeyDownCallback_(state, dispatch, onSelect)}
 			onFocus={() => dispatch(actions.setFocused(true && !disabled))}
 		>
-			{label ? <Label content={label} focused={focused} /> : null}
-			<div
-				tabIndex="-1"
-				style={{ zIndex: zIndex || 0 }}
-				className="lunatic-dropdown-container"
-			>
-				<span
-					className={classnames('lunatic-dropdown-content', {
-						focused,
-						visible,
-						disabled,
-					})}
-				>
-					{children}
-				</span>
+			{label ? (
+				<Label content={label} focused={focused} mandatory={mandatory} />
+			) : null}
+			<div className="field-container">
+				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+					<div
+						tabIndex="-1"
+						style={{ zIndex: zIndex || 0 }}
+						className="lunatic-dropdown-container"
+					>
+						<span
+							className={classnames(`lunatic-dropdown-content`, {
+								focused,
+								visible,
+								disabled,
+							})}
+						>
+							{children}
+						</span>
+					</div>
+				</div>
+				{tooltip && (
+					<div className="tooltip">
+						<TooltipResponse id={id} response={response} />
+					</div>
+				)}
 			</div>
 		</div>
 	);

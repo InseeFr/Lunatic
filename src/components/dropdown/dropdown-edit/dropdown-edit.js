@@ -8,7 +8,6 @@ import { preparePrefix } from './prefix-tools';
 import reducer, { initial } from './reducer';
 import Option from './option';
 import Icone from './icone';
-import '../themes/lunatic-dropdown-default.scss';
 
 /* **/
 const isDisplay = ({ visible, visibleOptions }) =>
@@ -36,11 +35,15 @@ const createOnSelect = (_, dispatch, onSelect) => option => {
 const Dropdown = ({
 	options = [],
 	onSelect,
+	response,
 	className,
 	placeHolder,
 	label,
+	labelPosition,
+	mandatory,
 	value: valueFromProps,
 	zIndex,
+	tooltip,
 	disabled,
 }) => {
 	const [state, dispatch] = useReducer(reducer, {
@@ -67,9 +70,13 @@ const Dropdown = ({
 			dispatch={dispatch}
 			options={options}
 			label={label}
+			labelPosition={labelPosition}
+			mandatory={mandatory}
+			response={response}
 			onSelect={onSelect_}
 			value={valueFromProps}
 			zIndex={zIndex}
+			tooltip={tooltip}
 		>
 			<div
 				className={classnames('lunatic-dropdown-input', { focused, disabled })}
@@ -99,6 +106,7 @@ const Dropdown = ({
 					e.stopPropagation();
 					inputEl.current.value = '';
 					dispatch(actions.resetSelection());
+					onSelect_({ value: null });
 				}}
 				onSwitch={e => {
 					e.stopPropagation();

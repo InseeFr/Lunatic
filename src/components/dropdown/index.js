@@ -1,1 +1,1 @@
-export { default } from './lunatic-dropdown';
+export { default } from './component';

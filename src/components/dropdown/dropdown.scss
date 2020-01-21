@@ -1,10 +1,5 @@
-$inputHeight: 32px;
-$boxShadowColor: #aaa;
-
-@mixin defaultFont {
-	font-family: Georgia, Times, 'Times New Roman', serif;
-	font-size: 16px;
-}
+@import 'src/components/index.scss';
+$inputHeight: 2em;
 
 @mixin disableSelect {
 	-moz-user-select: none; /* Firefox */
@@ -16,7 +11,7 @@ $boxShadowColor: #aaa;
 
 .lunatic-dropdown {
 	display: block;
-	width: 100%;
+
 	&:focus {
 		outline: none;
 	}
@@ -41,12 +36,6 @@ $boxShadowColor: #aaa;
 		flex-direction: column-reverse;
 	}
 
-	.lunatic-dropdown-label {
-		@include defaultFont();
-		color: rgb(0, 123, 255);
-		opacity: 1;
-	}
-
 	.lunatic-dropdown-container {
 		position: relative;
 		height: $inputHeight;
@@ -56,32 +45,25 @@ $boxShadowColor: #aaa;
 		}
 
 		.lunatic-dropdown-content {
-			background-color: lavenderblush;
-			box-shadow: 0em 0em 0.1em 0.1em $boxShadowColor;
-			border-radius: 20px 20px;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			position: absolute;
-
-			&.visible {
-				border-radius: 16px 16px;
-				height: auto;
-			}
-
-			&.focused {
-				box-shadow: 0 0 0 0.2em rgba(0, 123, 255, 0.25);
-			}
-
-			&.disabled {
-				background-color: whitesmoke;
-			}
-
+			/*** */
 			.lunatic-dropdown-input {
+				display: block;
+				background-color: snow;
+				width: 100%;
+				border: none;
+				height: $inputHeight;
+				border-radius: 0px 0px;
+				box-shadow: 0em 0em 0.1em 0.1em $main_color;
+
+				&.focused {
+					box-shadow: 0 0 0 0.2em $main_color;
+				}
+
+				&.disabled {
+					background-color: $disabled;
+				}
+
 				input {
-					@include defaultFont();
-					@include disableSelect();
 					margin: 0px 25px 0px 12px;
 					width: calc(100% - 37px);
 					background-color: transparent;
@@ -114,70 +96,81 @@ $boxShadowColor: #aaa;
 				&.visible {
 					visibility: visible;
 					opacity: 1;
-					transition: opacity 1s ease-out;
+					transition: opacity 0.5s ease-in;
 				}
 
 				.lunatic-dropdown-panel {
-					background-color: transparent;
-					margin: 0 10px 12px 10px;
-					list-style: none;
 					padding: 0;
+					margin: 0;
+					margin-top: 12px;
+					list-style: none;
+					background-color: $second_color;
 					&:focus {
 						outline: none;
 					}
-					max-height: 100px;
+					max-height: 200px;
 					overflow-y: auto;
 
+					/* width */
 					&::-webkit-scrollbar {
 						width: 8px;
 					}
+
+					/* Track */
 					&::-webkit-scrollbar-track {
-						background-color: lightgray;
+						background-color: #ffe9e8;
+						border-radius: 4px 4px;
 					}
+
+					/* Handle */
 					&::-webkit-scrollbar-thumb {
-						background: orange;
+						background: $main_color;
+						border-radius: 4px 4px;
 					}
+
+					/* Handle on hover */
 					&::-webkit-scrollbar-thumb:hover {
-						background: goldenrod;
+						background: Indigo;
 					}
 				}
 
 				/** options style */
 				.lunatic-dropdown-option {
 					cursor: pointer;
-					@include defaultFont();
+
 					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;
-					color: black;
-
+					color: $disabled;
+					padding: 5px 5px;
 					display: block;
+					border-bottom: solid 1px #ffe9e8;
 
 					&.lunatic-dropdown-option-active {
-						color: ivory;
-						background-color: midnightblue;
+						color: $disabled;
+						background-color: $main_color;
 						.lunatic-prefix {
-							color: darkgoldenrod;
+							color: Indigo;
 							font-weight: bold;
 						}
 					}
 
 					&.lunatic-dropdown-option-selected {
-						color: snow;
-						background-color: rgb(136, 19, 151);
+						color: $disabled;
+						background-color: Indigo;
 						.lunatic-prefix {
-							color: lightgray;
+							color: $disabled;
 							font-weight: bold;
 						}
 
 						&.lunatic-dropdown-option-active {
-							color: khaki;
-							background-color: rgb(188, 90, 201);
+							color: $disabled;
+							background-color: $second_color;
 						}
 					}
 
 					.lunatic-prefix {
-						color: cornflowerblue;
+						color: Indigo;
 						font-weight: bold;
 					}
 				}
