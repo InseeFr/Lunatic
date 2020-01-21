@@ -995,15 +995,16 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-1.1.3.tgz#639853539678d81da1ad820bf4756a6dfc061bcd"
-  integrity sha512-psRNvmG6IdHnho3/Wpc2sdWnCSrZ9RqKy5Xu+MWLu4S1dqXZFQKEheVi7vX4yD2JGcyGZZNlHVo0l462CWjkSA==
+"@inseefr/lunatic@^1.2.1-rc":
+  version "1.2.1-rc"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-1.2.1-rc.tgz#b6d42435bdc400c60491163cbcc9154e66d0163c"
+  integrity sha512-5qCff3d/BEEBtdSpMQvcdJXWgnjmctCR1EROOno7E+l/aQBhqiesWLXjAy1j6yrs6NIH6zIEYM3wwpmrfw/91A==
   dependencies:
     "@inseefr/vtl-tools" "^0.1.10"
     keycode "^2.2.0"
     lodash.camelcase "^4.3.0"
     prop-types "^15.7.2"
+    remove-accents "^0.4.2"
 
 "@inseefr/vtl-tools@^0.1.10":
   version "0.1.10"
@@ -9087,6 +9088,11 @@ relateurl@0.2.x:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
+
+remove-accents@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/remove-accents/-/remove-accents-0.4.2.tgz#0a43d3aaae1e80db919e07ae254b285d9e1c7bb5"
+  integrity sha1-CkPTqq4egNuRngeuJUsoXZ4ce7U=
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"

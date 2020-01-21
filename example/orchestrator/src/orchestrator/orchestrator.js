@@ -45,6 +45,7 @@ const Orchestrator = ({
 						filterDescription={filterDescription}
 						features={['VTL']}
 						bindings={labelBindings}
+						writable
 					/>
 				</div>
 			);

@@ -181,7 +181,8 @@ $colorSecondaryContrastText: #ffffff;
 // LABEL, LEGEND
 .lunatic label,
 .lunatic legend,
-.lunatic .subsequence-lunatic {
+.lunatic .subsequence-lunatic,
+.lunatic-dropdown-label {
 	color: $colorPrimaryDark;
 	background-color: $colorPrimaryContrastText;
 	border: 0;
@@ -211,7 +212,7 @@ $boxShadowColor: #aaa;
 	-webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 
-.lunatic-dropdown {
+.lunatic .lunatic-dropdown {
 	display: block;
 	width: 100%;
 	&:focus {
@@ -239,8 +240,6 @@ $boxShadowColor: #aaa;
 	}
 
 	.lunatic-dropdown-label {
-		@include defaultFont();
-		color: rgb(0, 123, 255);
 		opacity: 1;
 	}
 
@@ -256,6 +255,7 @@ $boxShadowColor: #aaa;
 			background-color: lavenderblush;
 			box-shadow: 0em 0em 0.1em 0.1em $boxShadowColor;
 			border-radius: 20px 20px;
+			border-color: white;
 			left: 0;
 			top: 0;
 			width: 100%;
@@ -329,13 +329,13 @@ $boxShadowColor: #aaa;
 						width: 8px;
 					}
 					&::-webkit-scrollbar-track {
-						background-color: lightgray;
+						background-color: $boxShadowColor;
 					}
 					&::-webkit-scrollbar-thumb {
-						background: orange;
+						background: $colorPrimaryMain;
 					}
 					&::-webkit-scrollbar-thumb:hover {
-						background: goldenrod;
+						background: $colorPrimaryDark;
 					}
 				}
 
