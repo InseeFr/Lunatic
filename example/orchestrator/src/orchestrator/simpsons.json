@@ -71,14 +71,14 @@
       { "id" : "j6p0s7o5",
         "componentType" : "Subsequence",
         "label" : "\"General knowledge of the series\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j3343qhx",
         "componentType" : "Input",
         "mandatory" : false,
         "maxLength" : 30,
         "label" : "\"➡ 3. Who is the producer?\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "PRODUCER",
           "valueState" : 
@@ -105,7 +105,7 @@
         "max" : 99,
         "decimals" : 0,
         "label" : "\"➡ 4. What is the current season number?\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "SEASON_NUMBER",
           "valueState" : 
@@ -135,7 +135,7 @@
             "declarationType" : "COMMENT",
             "position" : "AFTER_QUESTION_TEXT",
             "label" : "\"For your information, the date of the last broadcast was on \" || cast(cast(LAST_BROADCAST,string),string) || \" \"" } ],
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "DATEFIRST",
           "valueState" : 
@@ -163,7 +163,7 @@
         "max" : 99,
         "decimals" : 1,
         "label" : "\"➡ 6. In your opinion, how much is the part of audience share in US for the 2016 season?\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "AUDIENCE_SHARE",
           "valueState" : 
@@ -192,7 +192,7 @@
             "declarationType" : "COMMENT",
             "position" : "AFTER_QUESTION_TEXT",
             "label" : "\"This module asks about your general knowledge of the Simpsons city\"" } ],
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j3343clt",
         "componentType" : "Radio",
@@ -204,7 +204,7 @@
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
             "label" : "\"One possible answer\"" } ],
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "CITY",
           "valueState" : 
@@ -244,7 +244,7 @@
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
             "label" : "\"Only one possible answer\"" } ],
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "MAYOR",
           "valueState" : 
@@ -281,7 +281,7 @@
         "componentType" : "Dropdown",
         "mandatory" : false,
         "label" : "\"➡ 3. In which state do The Simpsons reside?\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "response" : 
         { "name" : "STATE",
           "valueState" : 
@@ -344,7 +344,7 @@
       { "id" : "j6qe0h9q",
         "componentType" : "Sequence",
         "label" : "\"III - Characters\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j334akov",
         "componentType" : "CheckboxGroup",
@@ -355,7 +355,7 @@
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
             "label" : "\"Several possible answers\"" } ],
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "responses" : 
         [ 
           { "id" : "j334akov-QOP-jbgd8qmn",
@@ -453,7 +453,7 @@
             "declarationType" : "STATEMENT",
             "position" : "BEFORE_QUESTION_TEXT",
             "label" : "\"Now we are going to know if you think that Jay is a gluton.\"" } ],
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -589,7 +589,7 @@
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "\"➡ 3. Which character works in the nuclear power plant?\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -725,7 +725,7 @@
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "\"➡ 4. In which city each character was born?\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -936,19 +936,19 @@
       { "id" : "j4nw88h2",
         "componentType" : "Sequence",
         "label" : "\"IV - General questions\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j6qe237q",
         "componentType" : "Subsequence",
         "label" : "\"Kwik-E-Mart\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j4nwc63q",
         "componentType" : "Table",
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "\"➡ 1. Please, specify the percentage of Jay's expenses in the Kwik-E-Mart for each product?\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -1177,14 +1177,14 @@
       { "id" : "j6qejudb",
         "componentType" : "Subsequence",
         "label" : "\"Clowning\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j4nw0rr6",
         "componentType" : "Table",
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "\"➡ 2. Who did these clownings and tell us what you remember?\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -1440,7 +1440,7 @@
       { "id" : "j6qeh91y",
         "componentType" : "Subsequence",
         "label" : "\"Transport\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j6p2lwuj",
         "componentType" : "Table",
@@ -1453,7 +1453,7 @@
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
             "label" : "\"Several answers possible: check off all the relevant boxes\"" } ],
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
@@ -2001,14 +2001,14 @@
       { "id" : "j6qfx9qe",
         "componentType" : "Sequence",
         "label" : "\"V - Favourite characters\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"" },
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"" },
       
       { "id" : "j6qg8rc6",
         "componentType" : "Table",
         "mandatory" : false,
         "positioning" : "HORIZONTAL",
         "label" : "\"➡ 1. Please, complete the following grid with your favourite characters\"",
-        "conditionFilter" : "if ((not( cast(READY,integer) <> '1') )) then \"normal\" else \"hidden\"",
+        "conditionFilter" : "if ((not( cast(READY,integer) <> 1) )) then \"normal\" else \"hidden\"",
         "cells" : 
         [ 
           [ 
