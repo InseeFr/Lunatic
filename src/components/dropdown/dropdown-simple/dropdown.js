@@ -14,6 +14,7 @@ const Dropdown = ({
 	label,
 	value,
 	options,
+	response,
 	onSelect,
 	placeHolder,
 	disabled,
@@ -36,6 +37,7 @@ const Dropdown = ({
 			state={state}
 			dispatch={dispatch}
 			options={options}
+			response={response}
 			tooltip={tooltip}
 			label={label}
 			labelPosition={labelPosition}

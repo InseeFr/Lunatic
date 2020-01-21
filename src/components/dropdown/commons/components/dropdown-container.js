@@ -50,6 +50,9 @@ const DropdownContainer = ({
 	dispatch,
 }) => {
 	const { visible, focused, id, disabled } = state;
+	console.log(options);
+	console.log(response);
+	console.log(U.buildResponse(options)(response));
 
 	CLEAN.add(id, () => {
 		dispatch(actions.hidePanel());
@@ -127,7 +130,10 @@ const DropdownContainer = ({
 				</div>
 				{tooltip && (
 					<div className="tooltip">
-						<TooltipResponse id={id} response={response} />
+						<TooltipResponse
+							id={id}
+							response={U.buildResponse(options)(response)}
+						/>
 					</div>
 				)}
 			</div>
