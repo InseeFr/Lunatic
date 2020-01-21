@@ -111,12 +111,10 @@ const InputNumber = ({
 								const {
 									target: { value },
 								} = e;
-								if (value) {
-									validate(value);
-									handleChange({
-										[U.getResponseName(response)]: value,
-									});
-								}
+								validate(value);
+								handleChange({
+									[U.getResponseName(response)]: value,
+								});
 							}}
 						/>
 						{unitPosition === 'AFTER' && <span className="unit">{unit}</span>}
