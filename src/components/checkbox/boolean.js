@@ -46,7 +46,7 @@ const CheckboxBoolean = ({
 					});
 				}}
 			/>
-			<span></span>
+			<label htmlFor={`checkbox-boolean-${id}`}></label>
 		</>
 	);
 	return (
