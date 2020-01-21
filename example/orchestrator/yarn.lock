@@ -995,10 +995,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^1.2.1-rc5":
-  version "1.2.1-rc5"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-1.2.1-rc5.tgz#d3909b79fae7427f8551f815e8829d96019ce982"
-  integrity sha512-0OM9mdFH6LBLni80WZcWPt8Cvpbs89krXpSOp7D1HXfrJMZrCZCoxZ5EGnlW//4nvPO84DrOhpWvxokEhLlFQA==
+"@inseefr/lunatic@^1.2.1-rc6":
+  version "1.2.1-rc6"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-1.2.1-rc6.tgz#1c90642b8f185aafb7100963f0674aaf05945d34"
+  integrity sha512-HpUuMsRWhpo5/8pXOscLNB3PwqtGcS+5TZuf6Dhf6Ig/pxsqw+Bh8bQ2lRJIYOU1qfyVrUZTSEp5Srsj4gcG1w==
   dependencies:
     "@inseefr/vtl-tools" "^0.1.10"
     keycode "^2.2.0"
