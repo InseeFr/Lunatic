@@ -50,9 +50,6 @@ const DropdownContainer = ({
 	dispatch,
 }) => {
 	const { visible, focused, id, disabled } = state;
-	console.log(options);
-	console.log(response);
-	console.log(U.buildResponse(options)(response));
 
 	CLEAN.add(id, () => {
 		dispatch(actions.hidePanel());
