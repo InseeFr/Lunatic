@@ -47,7 +47,7 @@ const CheckboxBoolean = ({
 		/>
 	);
 	return (
-		<div key={`checkbox-boolean-${id}`} className={`checkbox-modality`}>
+		<div key={`checkbox-boolean-${id}`} className={`checkbox-boolean-modality`}>
 			<Declarations
 				id={id}
 				type={C.BEFORE_QUESTION_TEXT}
