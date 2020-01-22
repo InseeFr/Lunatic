@@ -45,6 +45,7 @@ const Questionnaire = ({ source, data, error }) => {
             preferences={preferences}
             features={vtl ? ['VTL'] : []}
             bindings={vtl ? labelBindings : {}}
+            writable
           />
         </div>
       );
