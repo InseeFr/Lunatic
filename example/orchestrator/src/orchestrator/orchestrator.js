@@ -46,6 +46,7 @@ const Orchestrator = ({
 						features={['VTL']}
 						bindings={labelBindings}
 						writable
+						zIndex={1}
 					/>
 				</div>
 			);

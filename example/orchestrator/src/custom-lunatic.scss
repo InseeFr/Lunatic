@@ -229,7 +229,7 @@ $colorSecondaryContrastText: #ffffff;
 // DROPDOWN
 
 $inputHeight: 32px;
-$boxShadowColor: #aaa;
+$boxShadowColor: $colorPrimaryMain;
 
 @mixin defaultFont {
 	font-family: Georgia, Times, 'Times New Roman', serif;
@@ -300,7 +300,7 @@ $boxShadowColor: #aaa;
 			}
 
 			&.focused {
-				box-shadow: 0 0 0 0.2em rgba(0, 123, 255, 0.25);
+				box-shadow: 0 0 0 0.2em $colorPrimaryMain;
 			}
 
 			&.disabled {
@@ -308,12 +308,15 @@ $boxShadowColor: #aaa;
 			}
 
 			.lunatic-dropdown-input {
+				border-radius: 10px 10px;
+				box-shadow: 0 0 0 0.2em $colorPrimaryDark;
 				input {
 					@include defaultFont();
 					@include disableSelect();
 					margin: 0px 25px 0px 12px;
 					width: calc(100% - 37px);
 					background-color: transparent;
+					border-color: transparent;
 					height: $inputHeight;
 					border: none;
 					outline: none;
@@ -349,8 +352,8 @@ $boxShadowColor: #aaa;
 				.lunatic-dropdown-panel {
 					background-color: transparent;
 					margin: 0 10px 12px 10px;
+					padding-top: 3px;
 					list-style: none;
-					padding: 0;
 					&:focus {
 						outline: none;
 					}
@@ -384,7 +387,7 @@ $boxShadowColor: #aaa;
 
 					&.lunatic-dropdown-option-active {
 						color: ivory;
-						background-color: midnightblue;
+						background-color: $colorPrimaryMain;
 						.lunatic-prefix {
 							color: darkgoldenrod;
 							font-weight: bold;
