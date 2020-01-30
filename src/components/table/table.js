@@ -94,10 +94,11 @@ const Table = ({
 										colSpan: colspan || 1,
 										rowSpan: rowspan || 1,
 									};
+									const interpretedLabel = interpret(features)(bindings)(label);
 									return headerCell ? (
-										<th {...cellOptions}>{label}</th>
+										<th {...cellOptions}>{interpretedLabel}</th>
 									) : (
-										<td {...cellOptions}>{label}</td>
+										<td {...cellOptions}>{interpretedLabel}</td>
 									);
 								})}
 							</tr>
