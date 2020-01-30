@@ -8,7 +8,7 @@
 				[
 					{ "label": "Vanilla", "value": "1" },
 					{
-						"componentType": "Radio",
+						"componentType": "Dropdown",
 						"id": "j6p29i81-QOP-jbgdb3jx",
 						"response": {
 							"name": "ICE_FLAVOUR1",
@@ -29,7 +29,7 @@
 				[
 					{ "label": "Strawberry", "value": "2" },
 					{
-						"componentType": "Radio",
+						"componentType": "Dropdown",
 						"id": "j6p29i81-QOP-jbgdb61k",
 						"response": {
 							"name": "ICE_FLAVOUR2",
@@ -50,7 +50,7 @@
 				[
 					{ "label": "Apple", "value": "3" },
 					{
-						"componentType": "Radio",
+						"componentType": "Dropdown",
 						"id": "j6p29i81-QOP-jbgdl3kc",
 						"response": {
 							"name": "ICE_FLAVOUR3",
@@ -71,7 +71,7 @@
 				[
 					{ "label": "Bacon", "value": "4" },
 					{
-						"componentType": "Radio",
+						"componentType": "Dropdown",
 						"id": "j6p29i81-QOP-jbgdcobo",
 						"response": {
 							"name": "ICE_FLAVOUR4",

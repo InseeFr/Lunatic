@@ -21,7 +21,6 @@ const Table = ({
 	addBtnLabel,
 	hideBtn,
 	tooltip,
-	...rest
 }) => {
 	const minLines = initLines
 		? Math.max(initLines.min, U.getRosterInitLines(cells))
@@ -85,7 +84,7 @@ const Table = ({
 													features={features}
 													bindings={bindings}
 													{...componentProps}
-													{...rest}
+													zIndex={cells.length - i || 0}
 												/>
 											</td>
 										);
