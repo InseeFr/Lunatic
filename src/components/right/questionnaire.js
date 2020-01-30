@@ -46,6 +46,7 @@ const Questionnaire = ({ source, data, error }) => {
             features={vtl ? ['VTL'] : []}
             bindings={vtl ? labelBindings : {}}
             writable
+            zIndex={1}
           />
         </div>
       );
