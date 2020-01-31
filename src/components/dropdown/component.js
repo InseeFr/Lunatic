@@ -83,11 +83,6 @@ const Dropdown = ({
 };
 
 Dropdown.propTypes = {
-	value: PropTypes.oneOfType([
-		PropTypes.bool,
-		PropTypes.string,
-		PropTypes.number,
-	]),
 	disabled: PropTypes.bool,
 	writable: PropTypes.bool,
 	handleChange: PropTypes.func,
@@ -98,7 +93,6 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps = {
-	value: undefined,
 	writable: false,
 	handleChange: () => null,
 	label: undefined,

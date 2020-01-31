@@ -5,7 +5,7 @@
 |      Props       |  Type  | Default value | Required | Description                             |
 | :--------------: | :----: | :-----------: | :------: | --------------------------------------- |
 |        id        | string |       -       |    ✓     | Id of the dropdown                      |
-|      label       | string |      ""       |          | Fieldset label of the dropdown          |
+|      label       | string |      ""       |          | Label of the dropdown                   |
 |  preferences \*  | array  | ["COLLECTED"] |          | Preferences to manage dropdown response |
 |   response \*    | object |      {}       |          | Response concerned by the component     |
 |    options \*    | array  |       -       |    ✓     | Options of the dropdown                 |
@@ -13,12 +13,13 @@
 |   placeholder    | string |      ""       |          | Placeholder of the dropdown             |
 |     readOnly     |  bool  |     false     |          | Is the dropdown read only               |
 |     writable     |  bool  |     false     |          | Is the dropdown writable                |
-|     mandatory     |  bool  |     false     |          | Is the dropdown mandatory                |
+|    mandatory     |  bool  |     false     |          | Is the dropdown mandatory               |
 | labelPosition \* | string |   "DEFAULT"   |          | Position of the dropdown label          |
 | declarations \*  | array  |      []       |          | Declarations of the dropdown            |
 |     features     | array  |      [ ]      |          | Component features for labels           |
 |     bindings     | object |      [ ]      |          | Questionnaire bindings                  |
 |     tooltip      |  bool  |     false     |          | Tooltip of the dropdown                 |
+|      zIndex      | number |       0       |          | z-index of the dropdown                 |
 |      style       | object |      {}       |          | Style of the dropdown                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
@@ -29,4 +30,14 @@
 
 ## Styles
 
-**Dropdown** component has for classes XXX
+**Dropdown** component has cascade classes:
+
+- `lunatic-dropdown`
+- `lunatic-dropdown-container`
+- `lunatic-dropdown-content`
+- `lunatic-dropdown-input`
+- `lunatic-icone`
+- `lunatic-transition`
+- `lunatic-dropdown-panel`
+- `lunatic-dropdown-option`
+- `lunatic-prefix`
