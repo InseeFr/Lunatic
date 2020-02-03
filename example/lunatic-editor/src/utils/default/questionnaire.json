@@ -63,6 +63,11 @@
             { "valueType" : "INPUTED",
               "value" : null } ] } },
       
+      { "id" : "j6p6my1d",
+        "componentType" : "FilterDescription",
+        "filterDescription" : true,
+        "label" : "\"If you are not ready, please go to the end of the questionnaire\"" },
+      
       { "id" : "j6p0s7o5",
         "componentType" : "Subsequence",
         "label" : "\"General knowledge of the series\"",
@@ -221,13 +226,13 @@
         "options" : 
         [ 
           { "value" : "00001",
-            "label" : "Springfield" },
+            "label" : "\"Springfield\"" },
           
           { "value" : "00002",
-            "label" : "Shelbyville" },
+            "label" : "\"Shelbyville\"" },
           
           { "value" : "00003",
-            "label" : "Seinfeld" } ] },
+            "label" : "\"Seinfeld\"" } ] },
       
       { "id" : "j6qdfhvw",
         "componentType" : "CheckboxOne",
@@ -261,16 +266,16 @@
         "options" : 
         [ 
           { "value" : "1",
-            "label" : "Constance Harm" },
+            "label" : "\"Constance Harm\"" },
           
           { "value" : "2",
-            "label" : "Timothy Lovejoy" },
+            "label" : "\"Timothy Lovejoy\"" },
           
           { "value" : "3",
-            "label" : "Joe Quimby" },
+            "label" : "\"Joe Quimby\"" },
           
           { "value" : "4",
-            "label" : "Poochie" } ] },
+            "label" : "\"Poochie\"" } ] },
       
       { "id" : "j4nw5cqz",
         "componentType" : "Dropdown",
@@ -298,43 +303,43 @@
         "options" : 
         [ 
           { "value" : "1",
-            "label" : "Washington" },
+            "label" : "\"Washington\"" },
           
           { "value" : "2",
-            "label" : "Kentucky" },
+            "label" : "\"Kentucky\"" },
           
           { "value" : "3",
-            "label" : "Ohio" },
+            "label" : "\"Ohio\"" },
           
           { "value" : "4",
-            "label" : "Maine" },
+            "label" : "\"Maine\"" },
           
           { "value" : "5",
-            "label" : "North Dakota" },
+            "label" : "\"North Dakota\"" },
           
           { "value" : "6",
-            "label" : "Florida" },
+            "label" : "\"Florida\"" },
           
           { "value" : "7",
-            "label" : "North Takoma" },
+            "label" : "\"North Takoma\"" },
           
           { "value" : "8",
-            "label" : "California" },
+            "label" : "\"California\"" },
           
           { "value" : "9",
-            "label" : "Texas" },
+            "label" : "\"Texas\"" },
           
           { "value" : "10",
-            "label" : "Massachusetts" },
+            "label" : "\"Massachusetts\"" },
           
           { "value" : "11",
-            "label" : "Nevada" },
+            "label" : "\"Nevada\"" },
           
           { "value" : "12",
-            "label" : "Illinois" },
+            "label" : "\"Illinois\"" },
           
           { "value" : "13",
-            "label" : "Not in any state, you fool!" } ] },
+            "label" : "\"Not in any state, you fool!\"" } ] },
       
       { "id" : "j6qe0h9q",
         "componentType" : "Sequence",
@@ -354,7 +359,7 @@
         "responses" : 
         [ 
           { "id" : "j334akov-QOP-jbgd8qmn",
-            "label" : "Santa's Little Helper",
+            "label" : "\"Santa's Little Helper\"",
             "response" : 
             { "name" : "PET1",
               "valueState" : 
@@ -375,7 +380,7 @@
                   "value" : null } ] } },
           
           { "id" : "j334akov-QOP-jbgd60vl",
-            "label" : "Snowball I",
+            "label" : "\"Snowball I\"",
             "response" : 
             { "name" : "PET2",
               "valueState" : 
@@ -396,7 +401,7 @@
                   "value" : null } ] } },
           
           { "id" : "j334akov-QOP-jbgda2jo",
-            "label" : "Coltrane",
+            "label" : "\"Coltrane\"",
             "response" : 
             { "name" : "PET3",
               "valueState" : 
@@ -417,7 +422,7 @@
                   "value" : null } ] } },
           
           { "id" : "j334akov-QOP-jbgdfssy",
-            "label" : "Mojo the Helper Monkey",
+            "label" : "\"Mojo the Helper Monkey\"",
             "response" : 
             { "name" : "PET4",
               "valueState" : 
@@ -452,7 +457,7 @@
         "cells" : 
         [ 
           [ 
-            { "label" : "Vanilla",
+            { "label" : "\"Vanilla\"",
               "value" : "1" },
             
             { "componentType" : "Radio",
@@ -478,13 +483,13 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Yes" },
+                  "label" : "\"Yes\"" },
                 
                 { "value" : "0",
-                  "label" : "No" } ] } ],
+                  "label" : "\"No\"" } ] } ],
           
           [ 
-            { "label" : "Strawberry",
+            { "label" : "\"Strawberry\"",
               "value" : "2" },
             
             { "componentType" : "Radio",
@@ -510,13 +515,13 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Yes" },
+                  "label" : "\"Yes\"" },
                 
                 { "value" : "0",
-                  "label" : "No" } ] } ],
+                  "label" : "\"No\"" } ] } ],
           
           [ 
-            { "label" : "Apple",
+            { "label" : "\"Apple\"",
               "value" : "3" },
             
             { "componentType" : "Radio",
@@ -542,13 +547,13 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Yes" },
+                  "label" : "\"Yes\"" },
                 
                 { "value" : "0",
-                  "label" : "No" } ] } ],
+                  "label" : "\"No\"" } ] } ],
           
           [ 
-            { "label" : "Bacon",
+            { "label" : "\"Bacon\"",
               "value" : "4" },
             
             { "componentType" : "Radio",
@@ -574,10 +579,10 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Yes" },
+                  "label" : "\"Yes\"" },
                 
                 { "value" : "0",
-                  "label" : "No" } ] } ] ] },
+                  "label" : "\"No\"" } ] } ] ] },
       
       { "id" : "j6qefnga",
         "componentType" : "Table",
@@ -588,7 +593,7 @@
         "cells" : 
         [ 
           [ 
-            { "label" : "Charles Montgomery Burns",
+            { "label" : "\"Charles Montgomery Burns\"",
               "value" : "1" },
             
             { "componentType" : "Dropdown",
@@ -614,13 +619,13 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Yes" },
+                  "label" : "\"Yes\"" },
                 
                 { "value" : "0",
-                  "label" : "No" } ] } ],
+                  "label" : "\"No\"" } ] } ],
           
           [ 
-            { "label" : "Carl Carlson",
+            { "label" : "\"Carl Carlson\"",
               "value" : "2" },
             
             { "componentType" : "Dropdown",
@@ -646,13 +651,13 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Yes" },
+                  "label" : "\"Yes\"" },
                 
                 { "value" : "0",
-                  "label" : "No" } ] } ],
+                  "label" : "\"No\"" } ] } ],
           
           [ 
-            { "label" : "Otto Mann",
+            { "label" : "\"Otto Mann\"",
               "value" : "3" },
             
             { "componentType" : "Dropdown",
@@ -678,13 +683,13 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Yes" },
+                  "label" : "\"Yes\"" },
                 
                 { "value" : "0",
-                  "label" : "No" } ] } ],
+                  "label" : "\"No\"" } ] } ],
           
           [ 
-            { "label" : "Carl Carlson",
+            { "label" : "\"Carl Carlson\"",
               "value" : "4" },
             
             { "componentType" : "Dropdown",
@@ -710,10 +715,10 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Yes" },
+                  "label" : "\"Yes\"" },
                 
                 { "value" : "0",
-                  "label" : "No" } ] } ] ] },
+                  "label" : "\"No\"" } ] } ] ] },
       
       { "id" : "j6yzoc6g",
         "componentType" : "Table",
@@ -724,7 +729,7 @@
         "cells" : 
         [ 
           [ 
-            { "label" : "Selma Bouvier",
+            { "label" : "\"Selma Bouvier\"",
               "value" : "1" },
             
             { "componentType" : "CheckboxOne",
@@ -750,22 +755,22 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Albuquerque" },
+                  "label" : "\"Albuquerque\"" },
                 
                 { "value" : "2",
-                  "label" : "Springfield" },
+                  "label" : "\"Springfield\"" },
                 
                 { "value" : "3",
-                  "label" : "Portland" },
+                  "label" : "\"Portland\"" },
                 
                 { "value" : "4",
-                  "label" : "Shelbyville" },
+                  "label" : "\"Shelbyville\"" },
                 
                 { "value" : "5",
-                  "label" : "Dagstuhl" } ] } ],
+                  "label" : "\"Dagstuhl\"" } ] } ],
           
           [ 
-            { "label" : "Kent Brockman",
+            { "label" : "\"Kent Brockman\"",
               "value" : "2" },
             
             { "componentType" : "CheckboxOne",
@@ -791,22 +796,22 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Albuquerque" },
+                  "label" : "\"Albuquerque\"" },
                 
                 { "value" : "2",
-                  "label" : "Springfield" },
+                  "label" : "\"Springfield\"" },
                 
                 { "value" : "3",
-                  "label" : "Portland" },
+                  "label" : "\"Portland\"" },
                 
                 { "value" : "4",
-                  "label" : "Shelbyville" },
+                  "label" : "\"Shelbyville\"" },
                 
                 { "value" : "5",
-                  "label" : "Dagstuhl" } ] } ],
+                  "label" : "\"Dagstuhl\"" } ] } ],
           
           [ 
-            { "label" : "Milhouse Van Houten",
+            { "label" : "\"Milhouse Van Houten\"",
               "value" : "3" },
             
             { "componentType" : "CheckboxOne",
@@ -832,22 +837,22 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Albuquerque" },
+                  "label" : "\"Albuquerque\"" },
                 
                 { "value" : "2",
-                  "label" : "Springfield" },
+                  "label" : "\"Springfield\"" },
                 
                 { "value" : "3",
-                  "label" : "Portland" },
+                  "label" : "\"Portland\"" },
                 
                 { "value" : "4",
-                  "label" : "Shelbyville" },
+                  "label" : "\"Shelbyville\"" },
                 
                 { "value" : "5",
-                  "label" : "Dagstuhl" } ] } ],
+                  "label" : "\"Dagstuhl\"" } ] } ],
           
           [ 
-            { "label" : "Nelson Muntz",
+            { "label" : "\"Nelson Muntz\"",
               "value" : "4" },
             
             { "componentType" : "CheckboxOne",
@@ -873,22 +878,22 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Albuquerque" },
+                  "label" : "\"Albuquerque\"" },
                 
                 { "value" : "2",
-                  "label" : "Springfield" },
+                  "label" : "\"Springfield\"" },
                 
                 { "value" : "3",
-                  "label" : "Portland" },
+                  "label" : "\"Portland\"" },
                 
                 { "value" : "4",
-                  "label" : "Shelbyville" },
+                  "label" : "\"Shelbyville\"" },
                 
                 { "value" : "5",
-                  "label" : "Dagstuhl" } ] } ],
+                  "label" : "\"Dagstuhl\"" } ] } ],
           
           [ 
-            { "label" : "Crazy Cat Lady",
+            { "label" : "\"Crazy Cat Lady\"",
               "value" : "5" },
             
             { "componentType" : "CheckboxOne",
@@ -914,19 +919,19 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Albuquerque" },
+                  "label" : "\"Albuquerque\"" },
                 
                 { "value" : "2",
-                  "label" : "Springfield" },
+                  "label" : "\"Springfield\"" },
                 
                 { "value" : "3",
-                  "label" : "Portland" },
+                  "label" : "\"Portland\"" },
                 
                 { "value" : "4",
-                  "label" : "Shelbyville" },
+                  "label" : "\"Shelbyville\"" },
                 
                 { "value" : "5",
-                  "label" : "Dagstuhl" } ] } ] ] },
+                  "label" : "\"Dagstuhl\"" } ] } ] ] },
       
       { "id" : "j4nw88h2",
         "componentType" : "Sequence",
@@ -952,14 +957,14 @@
               "label" : "" },
             
             { "headerCell" : true,
-              "label" : "Percentage" } ],
+              "label" : "\"Percentage\"" } ],
           
           [ 
             { "rowspan" : 2,
-              "label" : "Frozen products",
+              "label" : "\"Frozen products\"",
               "value" : "A" },
             
-            { "label" : "Ice creams",
+            { "label" : "\"Ice creams\"",
               "value" : "A1" },
             
             { "componentType" : "InputNumber",
@@ -988,7 +993,7 @@
                     "value" : null } ] } } ],
           
           [ 
-            { "label" : "Jasper Beardly",
+            { "label" : "\"Jasper Beardly\"",
               "value" : "A2" },
             
             { "componentType" : "InputNumber",
@@ -1018,10 +1023,10 @@
           
           [ 
             { "rowspan" : 3,
-              "label" : "Meat",
+              "label" : "\"Meat\"",
               "value" : "B" },
             
-            { "label" : "Bacon",
+            { "label" : "\"Bacon\"",
               "value" : "B1" },
             
             { "componentType" : "InputNumber",
@@ -1050,7 +1055,7 @@
                     "value" : null } ] } } ],
           
           [ 
-            { "label" : "Pork chop",
+            { "label" : "\"Pork chop\"",
               "value" : "B2" },
             
             { "componentType" : "InputNumber",
@@ -1079,7 +1084,7 @@
                     "value" : null } ] } } ],
           
           [ 
-            { "label" : "Chicken",
+            { "label" : "\"Chicken\"",
               "value" : "B3" },
             
             { "componentType" : "InputNumber",
@@ -1108,10 +1113,10 @@
                     "value" : null } ] } } ],
           
           [ 
-            { "label" : "Compote",
+            { "label" : "\"Compote\"",
               "value" : "C" },
             
-            { "label" : "Powersauce",
+            { "label" : "\"Powersauce\"",
               "value" : "C1" },
             
             { "componentType" : "InputNumber",
@@ -1141,7 +1146,7 @@
           
           [ 
             { "colspan" : 2,
-              "label" : "Other",
+              "label" : "\"Other\"",
               "value" : "D" },
             
             { "componentType" : "InputNumber",
@@ -1187,13 +1192,13 @@
               "label" : "" },
             
             { "headerCell" : true,
-              "label" : "Clowning" },
+              "label" : "\"Clowning\"" },
             
             { "headerCell" : true,
-              "label" : "Remember?" } ],
+              "label" : "\"Remember?\"" } ],
           
           [ 
-            { "label" : "Break the windows of the whole city",
+            { "label" : "\"Break the windows of the whole city\"",
               "value" : "1" },
             
             { "componentType" : "Dropdown",
@@ -1219,16 +1224,16 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Jay" },
+                  "label" : "\"Jay\"" },
                 
                 { "value" : "2",
-                  "label" : "Bart" },
+                  "label" : "\"Bart\"" },
                 
                 { "value" : "3",
-                  "label" : "Krusty the clown" },
+                  "label" : "\"Krusty the clown\"" },
                 
                 { "value" : "4",
-                  "label" : "Maggie" } ] },
+                  "label" : "\"Maggie\"" } ] },
             
             { "componentType" : "Textarea",
               "maxLength" : 255,
@@ -1253,7 +1258,7 @@
                     "value" : null } ] } } ],
           
           [ 
-            { "label" : "Loose the violin of his daughter playing poker",
+            { "label" : "\"Loose the violin of his daughter playing poker\"",
               "value" : "2" },
             
             { "componentType" : "Dropdown",
@@ -1279,16 +1284,16 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Jay" },
+                  "label" : "\"Jay\"" },
                 
                 { "value" : "2",
-                  "label" : "Bart" },
+                  "label" : "\"Bart\"" },
                 
                 { "value" : "3",
-                  "label" : "Krusty the clown" },
+                  "label" : "\"Krusty the clown\"" },
                 
                 { "value" : "4",
-                  "label" : "Maggie" } ] },
+                  "label" : "\"Maggie\"" } ] },
             
             { "componentType" : "Textarea",
               "maxLength" : 255,
@@ -1313,7 +1318,7 @@
                     "value" : null } ] } } ],
           
           [ 
-            { "label" : "Kill Mr Burns",
+            { "label" : "\"Kill Mr Burns\"",
               "value" : "3" },
             
             { "componentType" : "Dropdown",
@@ -1339,16 +1344,16 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Jay" },
+                  "label" : "\"Jay\"" },
                 
                 { "value" : "2",
-                  "label" : "Bart" },
+                  "label" : "\"Bart\"" },
                 
                 { "value" : "3",
-                  "label" : "Krusty the clown" },
+                  "label" : "\"Krusty the clown\"" },
                 
                 { "value" : "4",
-                  "label" : "Maggie" } ] },
+                  "label" : "\"Maggie\"" } ] },
             
             { "componentType" : "Textarea",
               "maxLength" : 255,
@@ -1373,7 +1378,7 @@
                     "value" : null } ] } } ],
           
           [ 
-            { "label" : "Leaving a mechanical object to control the nuclear power plant",
+            { "label" : "\"Leaving a mechanical object to control the nuclear power plant\"",
               "value" : "4" },
             
             { "componentType" : "Dropdown",
@@ -1399,16 +1404,16 @@
               "options" : 
               [ 
                 { "value" : "1",
-                  "label" : "Jay" },
+                  "label" : "\"Jay\"" },
                 
                 { "value" : "2",
-                  "label" : "Bart" },
+                  "label" : "\"Bart\"" },
                 
                 { "value" : "3",
-                  "label" : "Krusty the clown" },
+                  "label" : "\"Krusty the clown\"" },
                 
                 { "value" : "4",
-                  "label" : "Maggie" } ] },
+                  "label" : "\"Maggie\"" } ] },
             
             { "componentType" : "Textarea",
               "maxLength" : 255,
@@ -1456,25 +1461,25 @@
               "label" : "" },
             
             { "headerCell" : true,
-              "label" : "Brazil" },
+              "label" : "\"Brazil\"" },
             
             { "headerCell" : true,
-              "label" : "Canada" },
+              "label" : "\"Canada\"" },
             
             { "headerCell" : true,
-              "label" : "Japan" },
+              "label" : "\"Japan\"" },
             
             { "headerCell" : true,
-              "label" : "France" },
+              "label" : "\"France\"" },
             
             { "headerCell" : true,
-              "label" : "Other country" },
+              "label" : "\"Other country\"" },
             
             { "headerCell" : true,
-              "label" : "Other planet" } ],
+              "label" : "\"Other planet\"" } ],
           
           [ 
-            { "label" : "Car",
+            { "label" : "\"Car\"",
               "value" : "1" },
             
             { "componentType" : "CheckboxBoolean",
@@ -1604,7 +1609,7 @@
                     "value" : null } ] } } ],
           
           [ 
-            { "label" : "Bike",
+            { "label" : "\"Bike\"",
               "value" : "2" },
             
             { "componentType" : "CheckboxBoolean",
@@ -1734,7 +1739,7 @@
                     "value" : null } ] } } ],
           
           [ 
-            { "label" : "Skateboard",
+            { "label" : "\"Skateboard\"",
               "value" : "3" },
             
             { "componentType" : "CheckboxBoolean",
@@ -1864,7 +1869,7 @@
                     "value" : null } ] } } ],
           
           [ 
-            { "label" : "Plane",
+            { "label" : "\"Plane\"",
               "value" : "4" },
             
             { "componentType" : "CheckboxBoolean",
@@ -2008,10 +2013,10 @@
         [ 
           [ 
             { "headerCell" : true,
-              "label" : "Name" },
+              "label" : "\"Name\"" },
             
             { "headerCell" : true,
-              "label" : "Age" } ],
+              "label" : "\"Age\"" } ],
           
           [ 
             { "componentType" : "Textarea",
