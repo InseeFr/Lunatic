@@ -8,6 +8,8 @@ install:
   - yarn
 before_script:
   - yarn test-coverage
+script:
+  - sonar-scanner
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - bash scripts/deploy.sh
