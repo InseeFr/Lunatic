@@ -756,6 +756,19 @@ $boxShadowColor: $colorPrimaryMain;
   }
 }
 
+.lunatic .filter-description-lunatic {
+  display: inline;
+  color: $colorPrimaryDark;
+  background-color: #dcdcdc;
+  font-weight: bold;
+  padding: 0.2em;
+}
+.lunatic .filter-description-lunatic::before {
+  content: url(./img/arrow.png);
+  vertical-align: -40%;
+  margin-right: 0.5em;
+}
+
 .field-container {
   width: 100%;
 }

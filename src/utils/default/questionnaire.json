@@ -66,7 +66,8 @@
       { "id" : "j6p6my1d",
         "componentType" : "FilterDescription",
         "filterDescription" : true,
-        "label" : "\"If you are not ready, please go to the end of the questionnaire\"" },
+        "label" : "\"If you are not ready, please go to the end of the questionnaire\"",
+        "conditionFilter" : "\"normal\"" },
       
       { "id" : "j6p0s7o5",
         "componentType" : "Subsequence",
