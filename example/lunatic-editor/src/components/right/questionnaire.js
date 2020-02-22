@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as lunatic from '@inseefr/lunatic';
-import VtlActivator from './vtl-activator';
-import FilterDescriptionActivator from './filter-description-activator';
+import Activator from './activator';
 import './custom-lunatic.scss';
 
 const Questionnaire = ({ source, data, error }) => {
@@ -56,8 +55,16 @@ const Questionnaire = ({ source, data, error }) => {
     });
   return (
     <div className="container">
-      <VtlActivator value={vtl} onChange={() => setVtl(!vtl)} />
-      <FilterDescriptionActivator value={filter} onChange={() => setFilter(!filter)} />
+      <Activator
+        label={`VTL interpretation (labels & filters)`}
+        value={vtl}
+        onChange={() => setVtl(!vtl)}
+      />
+      <Activator
+        label={`Display filter description`}
+        value={filter}
+        onChange={() => setFilter(!filter)}
+      />
       <h1 className="title">{questionnaire.label}</h1>
       <div className="components">{components}</div>
     </div>
