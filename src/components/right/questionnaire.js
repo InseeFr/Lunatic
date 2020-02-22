@@ -56,11 +56,13 @@ const Questionnaire = ({ source, data, error }) => {
   return (
     <div className="container">
       <Activator
+        id="vtl"
         label={`VTL interpretation (labels & filters)`}
         value={vtl}
         onChange={() => setVtl(!vtl)}
       />
       <Activator
+        id="filter-decsription"
         label={`Display filter description`}
         value={filter}
         onChange={() => setFilter(!filter)}
