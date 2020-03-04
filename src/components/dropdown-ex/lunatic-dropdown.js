@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Dropdown from './dropdown';
 import DropdownEdit from './dropdown-edit';
 
-function DropdownEx({
+const DropdownEx = ({
 	writable,
 	options,
 	label,
@@ -11,16 +11,15 @@ function DropdownEx({
 	zIndex,
 	disabled,
 	value,
-	handleChange,
-}) {
+}) => {
 	return writable ? (
 		<DropdownEdit
 			disabled={disabled}
 			options={options}
 			label={label}
 			className={className}
+			zIndex={zIndex}
 			value={value}
-			onSelect={handleChange}
 		/>
 	) : (
 		<Dropdown
@@ -30,10 +29,9 @@ function DropdownEx({
 			className={className}
 			zIndex={zIndex}
 			value={value}
-			onSelect={handleChange}
 		/>
 	);
-}
+};
 
 DropdownEx.propTypes = {
 	value: PropTypes.oneOfType([

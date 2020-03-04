@@ -106,7 +106,10 @@ function Dropdown({
 					e.stopPropagation();
 					if (visible) {
 						dispatch(actions.hidePanel());
-					} else dispatch(actions.showPanel());
+					} else {
+						dispatch(actions.showPanel());
+						dispatch(actions.setFocused(true && !disabled));
+					}
 				}}
 			/>
 			<div
