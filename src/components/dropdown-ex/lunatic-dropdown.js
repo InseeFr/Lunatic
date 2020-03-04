@@ -11,6 +11,7 @@ const DropdownEx = ({
 	zIndex,
 	disabled,
 	value,
+	handleChange,
 }) => {
 	return writable ? (
 		<DropdownEdit
@@ -20,6 +21,7 @@ const DropdownEx = ({
 			className={className}
 			zIndex={zIndex}
 			value={value}
+			onSelect={handleChange}
 		/>
 	) : (
 		<Dropdown
@@ -29,6 +31,7 @@ const DropdownEx = ({
 			className={className}
 			zIndex={zIndex}
 			value={value}
+			onSelect={handleChange}
 		/>
 	);
 };

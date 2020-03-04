@@ -35,7 +35,10 @@ stories.addWithJSX('Default', () => {
 					writable={boolean('Writable', true)}
 					disabled={boolean('Disabled', false)}
 					value="4"
-					handleChange={sel => setSelection(sel)}
+					handleChange={sel => {
+						console.log(sel);
+						setSelection(sel);
+					}}
 				/>
 			</div>
 			<div className="drowpdown-simple">
