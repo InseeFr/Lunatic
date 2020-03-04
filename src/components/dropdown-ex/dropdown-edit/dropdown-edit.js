@@ -59,11 +59,13 @@ function Dropdown({
 		id,
 	} = state;
 	const inputEl = useRef();
+	const containerEl = useRef();
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
 	return (
 		<DropdownContainer
 			className={className || 'lunatic-dropdown'}
 			state={state}
+			ref={containerEl}
 			dispatch={dispatch}
 			options={options}
 			label={label}

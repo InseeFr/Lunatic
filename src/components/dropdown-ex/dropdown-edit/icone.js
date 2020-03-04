@@ -11,11 +11,10 @@ const getIcon = visible =>
 		<ClosedIcon width={10} height={10} />
 	);
 
-const Icone = ({ prefix, visible, disabled, onDelete, onSwitch }) => {
+function Icone({ prefix, visible, disabled, onDelete, onSwitch }) {
 	if (disabled) {
 		return (
 			<span className="lunatic-icone" tabIndex="-1" onMouseDown={onSwitch}>
-				{' '}
 				<ClosedIcon width={10} height={10} />
 			</span>
 		);
@@ -29,6 +28,6 @@ const Icone = ({ prefix, visible, disabled, onDelete, onSwitch }) => {
 			{getIcon(visible)}
 		</span>
 	);
-};
+}
 
 export default Icone;
