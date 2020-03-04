@@ -32,7 +32,11 @@ const onKeyDownCallback_ = (state, dispatch, onSelect) => e => {
 	}
 };
 
-const DropdownContainer = ({
+function getZIndex(z) {
+	return z ? z : 0;
+}
+
+function DropdownContainer({
 	options = [],
 	children,
 	onSelect,
@@ -42,7 +46,7 @@ const DropdownContainer = ({
 	zIndex,
 	state,
 	dispatch,
-}) => {
+}) {
 	const { visible, focused, id, disabled } = state;
 
 	CLEAN.add(id, () => {
@@ -83,6 +87,8 @@ const DropdownContainer = ({
 		}
 	}, [valueFromProps, options, dispatch]);
 
+	const z = getZIndex(zIndex);
+
 	return (
 		<div
 			className={classnames(className, {
@@ -98,8 +104,8 @@ const DropdownContainer = ({
 			{label ? <Label content={label} focused={focused} /> : null}
 			<div
 				tabIndex="-1"
-				style={{ zIndex: zIndex || 0 }}
 				className="lunatic-dropdown-container"
+				style={{ zIndex: focused ? z + 1 : z }}
 			>
 				<span
 					className={classnames('lunatic-dropdown-content', {
@@ -113,7 +119,7 @@ const DropdownContainer = ({
 			</div>
 		</div>
 	);
-};
+}
 
 DropdownContainer.propTypes = {
 	zIndex: PropTypes.number,
