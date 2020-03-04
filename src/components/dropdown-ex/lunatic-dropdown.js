@@ -47,7 +47,6 @@ DropdownEx.propTypes = {
 	label: PropTypes.string,
 	className: PropTypes.string,
 	zIndex: PropTypes.number,
-	handleChange: PropTypes.func,
 };
 
 DropdownEx.defaultProps = {
@@ -58,7 +57,6 @@ DropdownEx.defaultProps = {
 	className: undefined,
 	zIndex: 0,
 	disabled: false,
-	handleChange: () => null,
 };
 
 export default DropdownEx;
