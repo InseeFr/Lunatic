@@ -33,7 +33,7 @@ const createOnSelect = (_, dispatch, onSelect) => option => {
  *
  * @param {props}
  */
-const Dropdown = ({
+function Dropdown({
 	options = [],
 	onSelect,
 	className,
@@ -42,7 +42,7 @@ const Dropdown = ({
 	value: valueFromProps,
 	zIndex,
 	disabled,
-}) => {
+}) {
 	const [state, dispatch] = useReducer(reducer, {
 		...initial,
 		id: `dropdown-${new Date().getMilliseconds()}`,
@@ -127,7 +127,7 @@ const Dropdown = ({
 			</div>
 		</DropdownContainer>
 	);
-};
+}
 
 Dropdown.propTypes = {
 	zIndex: PropTypes.number,

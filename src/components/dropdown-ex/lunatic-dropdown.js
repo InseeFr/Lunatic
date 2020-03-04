@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Dropdown from './dropdown';
 import DropdownEdit from './dropdown-edit';
 
-const DropdownEx = ({
+function DropdownEx({
 	writable,
 	options,
 	label,
@@ -12,14 +12,13 @@ const DropdownEx = ({
 	disabled,
 	value,
 	handleChange,
-}) => {
+}) {
 	return writable ? (
 		<DropdownEdit
 			disabled={disabled}
 			options={options}
 			label={label}
 			className={className}
-			zIndex={zIndex}
 			value={value}
 			onSelect={handleChange}
 		/>
@@ -34,7 +33,7 @@ const DropdownEx = ({
 			onSelect={handleChange}
 		/>
 	);
-};
+}
 
 DropdownEx.propTypes = {
 	value: PropTypes.oneOfType([

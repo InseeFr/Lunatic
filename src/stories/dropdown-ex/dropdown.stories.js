@@ -35,7 +35,6 @@ stories.addWithJSX('Default', () => {
 					writable={boolean('Writable', true)}
 					disabled={boolean('Disabled', false)}
 					value="4"
-					zIndex={2}
 					handleChange={sel => setSelection(sel)}
 				/>
 			</div>
@@ -47,7 +46,6 @@ stories.addWithJSX('Default', () => {
 					source={data}
 					writable={boolean('Writable', true)}
 					disabled={boolean('Disabled', false)}
-					zIndex={1}
 					handleChange={sel => setSelection(sel)}
 				/>
 			</div>
@@ -59,7 +57,6 @@ stories.addWithJSX('Default', () => {
 					source={data}
 					writable={boolean('Writable', true)}
 					disabled={boolean('Disabled', false)}
-					zIndex={0}
 					handleChange={sel => setSelection(sel)}
 				/>
 			</div>
