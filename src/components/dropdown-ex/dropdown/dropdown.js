@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useRef } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import * as actions from '../commons/actions';
@@ -14,7 +14,7 @@ import '../themes/lunatic-dropdown-default.scss';
 const isDisplay = ({ visible, options }) => visible && options.length > 0;
 
 /** */
-const getIcon = ({ disabled }, dispatch) => visible => {
+const getIcon = ({ disabled }, dispatch) => (visible, containerEl) => {
 	if (disabled) {
 		return (
 			<span className="lunatic-icone">
@@ -33,6 +33,7 @@ const getIcon = ({ disabled }, dispatch) => visible => {
 					dispatch(actions.hidePanel());
 				} else {
 					dispatch(actions.showPanel());
+					containerEl.current.focus();
 				}
 			}}
 		>
@@ -61,6 +62,7 @@ const Dropdown = ({
 	zIndex,
 	disabled,
 }) => {
+	const containerEl = useRef();
 	const [state, dispatch] = useReducer(reducer, {
 		...initial,
 		id: `dropdown-${new Date().getMilliseconds()}`,
@@ -71,6 +73,7 @@ const Dropdown = ({
 	return (
 		<DropdownContainer
 			className={className || 'lunatic-dropdown'}
+			ref={containerEl}
 			state={state}
 			dispatch={dispatch}
 			options={options}
@@ -86,7 +89,7 @@ const Dropdown = ({
 					value={selectedOption ? selectedOption.label : placeHolder || ''}
 				/>
 			</span>
-			{getIcon(state, dispatch)(visible)}
+			{getIcon(state, dispatch)(visible, containerEl)}
 			<div
 				tabIndex="-1"
 				className={classnames('lunatic-transition', {
