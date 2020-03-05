@@ -86,9 +86,7 @@ const CheckboxGroup = ({
 											style={checked ? U.buildStyleObject(checkboxStyle) : {}}
 										>
 											{keyboardSelection
-												? `${U.getAlphabet()[
-														i
-												  ].toUpperCase()} - ${interpretedLabel}`
+												? `${U.getAlphabet()[i].toUpperCase()} - ${interpretedLabel}`
 												: interpretedLabel}
 										</label>
 									</div>
