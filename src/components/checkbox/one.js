@@ -60,13 +60,15 @@ const CheckboxOne = ({
 							const checked =
 								U.getResponseByPreference(preferences)(response) ===
 								optionValue;
-							const interpretedLabel = interpret(features)(bindings)(optionLabel)
+							const interpretedLabel = interpret(features)(bindings)(
+								optionLabel
+							);
 							return (
 								<div
 									key={`checkbox-one-${id}-${optionValue}`}
 									className={`checkbox-modality ${U.getItemsPositioningClass(
 										positioning
-									)}`}
+									)} ${checked ? 'checked' : ''}`}
 								>
 									<input
 										type="checkbox"
@@ -89,7 +91,9 @@ const CheckboxOne = ({
 										style={checked ? U.buildStyleObject(checkboxStyle) : {}}
 									>
 										{keyboardSelection
-											? `${U.getAlphabet()[i].toUpperCase()} - ${interpretedLabel}`
+											? `${U.getAlphabet()[
+													i
+											  ].toUpperCase()} - ${interpretedLabel}`
 											: interpretedLabel}
 									</label>
 								</div>

@@ -54,7 +54,7 @@ const CheckboxGroup = ({
 				/>
 				{responses.map(({ id: modId, label: modLabel, response }, i) => {
 					const checked = U.getResponseByPreference(preferences)(response);
-					const interpretedLabel = interpret(features)(bindings)(modLabel)
+					const interpretedLabel = interpret(features)(bindings)(modLabel);
 					return (
 						<div
 							className={`${U.getItemsPositioningClass(positioning)}`}
@@ -62,7 +62,9 @@ const CheckboxGroup = ({
 						>
 							<div className="field-container">
 								<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
-									<div className="checkbox-modality">
+									<div
+										className={`checkbox-modality ${checked ? 'checked' : ''}`}
+									>
 										<input
 											type="checkbox"
 											id={`checkbox-${id}-${modId}`}
@@ -84,7 +86,9 @@ const CheckboxGroup = ({
 											style={checked ? U.buildStyleObject(checkboxStyle) : {}}
 										>
 											{keyboardSelection
-												? `${U.getAlphabet()[i].toUpperCase()} - ${interpretedLabel}`
+												? `${U.getAlphabet()[
+														i
+												  ].toUpperCase()} - ${interpretedLabel}`
 												: interpretedLabel}
 										</label>
 									</div>
