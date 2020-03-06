@@ -101,7 +101,9 @@ function DropdownContainer({
 			id={id}
 			onMouseDown={onMouseDownCallback(state, dispatch, 'id')}
 			onKeyDown={onKeyDownCallback_(state, dispatch, onSelect)}
-			onFocus={() => dispatch(actions.setFocused(true && !disabled))}
+			onFocus={() => {
+				dispatch(actions.setFocused(true && !disabled));
+			}}
 			onBlur={function() {
 				dispatch(actions.hidePanel());
 				dispatch(actions.setFocused(false));

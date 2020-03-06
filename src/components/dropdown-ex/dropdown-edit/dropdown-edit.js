@@ -86,10 +86,11 @@ function Dropdown({
 					autoCorrect="off"
 					autoCapitalize="off"
 					spellCheck="false"
-					tabIndex="0"
-					onFocus={() => {
-						dispatch(actions.setFocused(true && !disabled));
-					}}
+					tabIndex="-1"
+					// onFocus={() => {
+
+					// 	dispatch(actions.setFocused(true && !disabled));
+					// }}
 					onChange={onChangeCallback(state, dispatch)}
 				/>
 			</div>
@@ -104,11 +105,12 @@ function Dropdown({
 				}}
 				onSwitch={e => {
 					e.stopPropagation();
+					e.preventDefault();
 					if (visible) {
 						dispatch(actions.hidePanel());
 					} else {
 						dispatch(actions.showPanel());
-						dispatch(actions.setFocused(true && !disabled));
+						containerEl.current.focus();
 					}
 				}}
 			/>
