@@ -16,7 +16,7 @@ const Dropdown = ({
 	options,
 	response,
 	onSelect,
-	placeHolder,
+	placeholder,
 	disabled,
 	mandatory,
 	labelPosition,
@@ -51,7 +51,7 @@ const Dropdown = ({
 				<input
 					type="button"
 					disabled={disabled}
-					value={selectedOption ? selectedOption.label : placeHolder || ''}
+					value={selectedOption ? selectedOption.label : placeholder || ''}
 				/>
 			</span>
 			{getIcon(state, dispatch)(visible)}
@@ -83,7 +83,7 @@ Dropdown.propTypes = {
 	id: PropTypes.string,
 	options: PropTypes.array.isRequired,
 	onSelect: PropTypes.func,
-	placeHolder: PropTypes.string,
+	placeholder: PropTypes.string,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
@@ -96,7 +96,7 @@ Dropdown.defaultProps = {
 	options: [],
 	zIndex: 0,
 	onSelect: () => null,
-	placeHolder: 'Search...',
+	placeholder: 'Search...',
 };
 
 export default Dropdown;

@@ -37,7 +37,7 @@ const Dropdown = ({
 	onSelect,
 	response,
 	className,
-	placeHolder,
+	placeholder,
 	label,
 	labelPosition,
 	mandatory,
@@ -86,7 +86,7 @@ const Dropdown = ({
 					ref={inputEl}
 					value={value}
 					disabled={disabled}
-					placeholder={placeHolder}
+					placeholder={placeholder}
 					autoComplete="list"
 					autoCorrect="off"
 					autoCapitalize="off"
@@ -144,7 +144,7 @@ Dropdown.propTypes = {
 	id: PropTypes.string,
 	options: PropTypes.array.isRequired,
 	onSelect: PropTypes.func,
-	placeHolder: PropTypes.string,
+	placeholder: PropTypes.string,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
@@ -156,7 +156,7 @@ Dropdown.defaultProps = {
 	options: [],
 	zIndex: 0,
 	onSelect: () => null,
-	placeHolder: 'Search...',
+	placeholder: 'Search...',
 	disabled: false,
 };
 
