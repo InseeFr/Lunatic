@@ -60,13 +60,13 @@ const CheckboxOne = ({
 							const checked =
 								U.getResponseByPreference(preferences)(response) ===
 								optionValue;
-							const interpretedLabel = interpret(features)(bindings)(optionLabel)
+							const interpretedLabel = interpret(features)(bindings)(optionLabel);
 							return (
 								<div
 									key={`checkbox-one-${id}-${optionValue}`}
 									className={`checkbox-modality ${U.getItemsPositioningClass(
 										positioning
-									)}`}
+									)} ${checked ? 'content-checked' : ''}`}
 								>
 									<input
 										type="checkbox"
