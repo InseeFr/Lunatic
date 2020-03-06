@@ -87,10 +87,6 @@ function Dropdown({
 					autoCapitalize="off"
 					spellCheck="false"
 					tabIndex="-1"
-					// onFocus={() => {
-
-					// 	dispatch(actions.setFocused(true && !disabled));
-					// }}
 					onChange={onChangeCallback(state, dispatch)}
 				/>
 			</div>
