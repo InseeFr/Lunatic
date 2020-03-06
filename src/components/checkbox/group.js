@@ -63,7 +63,7 @@ const CheckboxGroup = ({
 							<div className="field-container">
 								<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
 									<div
-										className={`checkbox-modality ${checked ? 'checked' : ''}`}
+										className={`checkbox-modality ${checked ? 'content-checked' : ''}`}
 									>
 										<input
 											type="checkbox"

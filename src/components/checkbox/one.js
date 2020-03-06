@@ -66,7 +66,7 @@ const CheckboxOne = ({
 									key={`checkbox-one-${id}-${optionValue}`}
 									className={`checkbox-modality ${U.getItemsPositioningClass(
 										positioning
-									)} ${checked ? 'checked' : ''}`}
+									)} ${checked ? 'content-checked' : ''}`}
 								>
 									<input
 										type="checkbox"
