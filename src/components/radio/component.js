@@ -59,7 +59,9 @@ const Radio = ({
 							const checked =
 								U.getResponseByPreference(preferences)(response) ===
 								optionValue;
-							const interpretedLabel = interpret(features)(bindings)(optionLabel)
+							const interpretedLabel = interpret(features)(bindings)(
+								optionLabel
+							);
 							return (
 								<div
 									key={`radio-${id}-${optionValue}`}
@@ -70,7 +72,7 @@ const Radio = ({
 									<input
 										type="radio"
 										name={`radio-${id}`}
-										ref={inputRef}
+										ref={i === 0 ? inputRef : null}
 										id={`radio-${id}-${optionValue}`}
 										aria-labelledby={`input-label-${id}-${optionValue}`}
 										className="radio-lunatic"
@@ -89,7 +91,9 @@ const Radio = ({
 										style={checked ? U.buildStyleObject(radioStyle) : {}}
 									>
 										{keyboardSelection
-											? `${U.getAlphabet()[i].toUpperCase()} - ${interpretedLabel}`
+											? `${U.getAlphabet()[
+													i
+											  ].toUpperCase()} - ${interpretedLabel}`
 											: interpretedLabel}
 									</label>
 								</div>

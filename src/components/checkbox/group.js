@@ -63,12 +63,14 @@ const CheckboxGroup = ({
 							<div className="field-container">
 								<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
 									<div
-										className={`checkbox-modality ${checked ? 'content-checked' : ''}`}
+										className={`checkbox-modality ${
+											checked ? 'content-checked' : ''
+										}`}
 									>
 										<input
 											type="checkbox"
 											id={`checkbox-${id}-${modId}`}
-											ref={inputRef}
+											ref={i === 0 ? inputRef : null}
 											key={`checkbox-${id}-${modId}`}
 											aria-labelledby={`input-label-${id}-${modId}`}
 											className="checkbox-lunatic"
@@ -86,7 +88,9 @@ const CheckboxGroup = ({
 											style={checked ? U.buildStyleObject(checkboxStyle) : {}}
 										>
 											{keyboardSelection
-												? `${U.getAlphabet()[i].toUpperCase()} - ${interpretedLabel}`
+												? `${U.getAlphabet()[
+														i
+												  ].toUpperCase()} - ${interpretedLabel}`
 												: interpretedLabel}
 										</label>
 									</div>

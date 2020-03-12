@@ -60,7 +60,9 @@ const CheckboxOne = ({
 							const checked =
 								U.getResponseByPreference(preferences)(response) ===
 								optionValue;
-							const interpretedLabel = interpret(features)(bindings)(optionLabel);
+							const interpretedLabel = interpret(features)(bindings)(
+								optionLabel
+							);
 							return (
 								<div
 									key={`checkbox-one-${id}-${optionValue}`}
@@ -71,7 +73,7 @@ const CheckboxOne = ({
 									<input
 										type="checkbox"
 										id={`checkbox-one-${id}-${optionValue}`}
-										ref={inputRef}
+										ref={i === 0 ? inputRef : null}
 										key={`checkbox-one-${id}-${optionValue}`}
 										aria-labelledby={`input-label-${id}-${optionValue}`}
 										className="checkbox-lunatic"
@@ -89,7 +91,9 @@ const CheckboxOne = ({
 										style={checked ? U.buildStyleObject(checkboxStyle) : {}}
 									>
 										{keyboardSelection
-											? `${U.getAlphabet()[i].toUpperCase()} - ${interpretedLabel}`
+											? `${U.getAlphabet()[
+													i
+											  ].toUpperCase()} - ${interpretedLabel}`
 											: interpretedLabel}
 									</label>
 								</div>
