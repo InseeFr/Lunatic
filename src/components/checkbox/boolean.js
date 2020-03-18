@@ -29,6 +29,7 @@ const CheckboxBoolean = ({
 	}, [focused]);
 
 	const isVertical = positioning === 'VERTICAL';
+	const isHorizontal = positioning === 'HORIZONTAL';
 	const input = (
 		<>
 			<input
@@ -46,7 +47,12 @@ const CheckboxBoolean = ({
 					});
 				}}
 			/>
-			<label htmlFor={`checkbox-boolean-${id}`}></label>
+			{label &&  (
+				<label htmlFor={`checkbox-boolean-${id}`} 
+				>
+					{isHorizontal ? interpret(features)(bindings)(label) : ''}
+				</label>
+			)}
 		</>
 	);
 	return (
@@ -58,7 +64,7 @@ const CheckboxBoolean = ({
 				features={features}
 				bindings={bindings}
 			/>
-			{label && (
+			{label && !isHorizontal && (
 				<label htmlFor={`checkbox-boolean-${id}`}>
 					{interpret(features)(bindings)(label)}
 				</label>
