@@ -47,9 +47,8 @@ const CheckboxBoolean = ({
 					});
 				}}
 			/>
-			{label &&  (
-				<label htmlFor={`checkbox-boolean-${id}`} 
-				>
+			{label && (
+				<label htmlFor={`checkbox-boolean-${id}`}>
 					{isHorizontal ? interpret(features)(bindings)(label) : ''}
 				</label>
 			)}
