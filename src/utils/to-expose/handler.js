@@ -50,7 +50,8 @@ export const isComponentsConcernedByResponse = responseName => component =>
 
 export const buildUpdatedResponse = component => preferences => valueType => value => {
 	let newValue = value;
-	const { valueState } = component.response;
+	const { response, componentType } = component;
+	const { valueState } = response;
 	if (preferences.length > 1 && preferences.includes(valueType)) {
 		const lastValue = preferences
 			.slice(0, preferences.length - 1)
@@ -64,8 +65,16 @@ export const buildUpdatedResponse = component => preferences => valueType => val
 		if (value === lastValue) newValue = null;
 	}
 	if (
-		component.componentType === 'CheckboxOne' &&
+		componentType === 'CheckboxOne' &&
 		valueState.find(v => v.valueType === valueType).value === newValue
+	)
+		newValue = null;
+	if (
+		componentType === 'CheckboxBoolean' &&
+		value === false &&
+		response.valueState.filter(
+			vs => !(vs.value === null || vs.valueType === valueType)
+		).length === 0
 	)
 		newValue = null;
 	return {
@@ -83,12 +92,14 @@ export const buildUpdatedResponse = component => preferences => valueType => val
 
 export const buildUpdatedVectorResponse = responses => preferences => valueType => value => name =>
 	responses.reduce((_, cellComponent) => {
-		if (isComponentsConcernedByResponse(name)(cellComponent))
-			_.push(
-				buildUpdatedResponse(cellComponent)(preferences)(valueType)(value)
-			);
-		else _.push(cellComponent);
-		return _;
+		if (isComponentsConcernedByResponse(name)(cellComponent)) {
+			const component = { ...cellComponent, componentType: 'CheckboxBoolean' };
+			return [
+				..._,
+				buildUpdatedResponse(component)(preferences)(valueType)(value),
+			];
+		}
+		return [..._, cellComponent];
 	}, []);
 
 export const buildUpdatedCheckboxGroupResponse = component => preferences => valueType => value => name => {

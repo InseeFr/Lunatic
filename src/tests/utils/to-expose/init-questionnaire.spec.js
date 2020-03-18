@@ -27,6 +27,17 @@ const questionnaire = {
 			},
 		},
 		{
+			componentType: 'CheckboxBoolean',
+			response: {
+				name: 'checkbox-boolean',
+				valueState: [
+					{ valueType: 'COLLECTED', value: null },
+					{ valueType: 'FORCED', value: null },
+					{ valueType: 'EDITED', value: null },
+				],
+			},
+		},
+		{
 			componentType: 'CheckboxGroup',
 			responses: [
 				{
@@ -95,6 +106,17 @@ const result = {
 			response: {
 				name: 'input',
 				valueState: [{ valueType: 'COLLECTED', value: 'My input' }],
+			},
+		},
+		{
+			componentType: 'CheckboxBoolean',
+			response: {
+				name: 'checkbox-boolean',
+				valueState: [
+					{ valueType: 'COLLECTED', value: null },
+					{ valueType: 'FORCED', value: null },
+					{ valueType: 'EDITED', value: null },
+				],
 			},
 		},
 		{
