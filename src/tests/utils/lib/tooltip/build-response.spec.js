@@ -1,6 +1,9 @@
-import { buildResponse } from 'utils/lib';
+import { buildMultiTooltipResponse } from 'utils/lib';
 
-const options = [{ value: '1', label: 'Yes' }, { value: '0', label: 'No' }];
+const options = [
+	{ value: '1', label: 'Yes' },
+	{ value: '0', label: 'No' },
+];
 
 const responseNull = {
 	name: 'Response',
@@ -36,15 +39,19 @@ const finalResponse = {
 };
 
 describe('build response', () => {
-	describe('buildResponse', () => {
+	describe('buildMultiTooltipResponse', () => {
 		it('should return default value', () => {
-			expect(buildResponse()()).toEqual({});
+			expect(buildMultiTooltipResponse()()).toEqual({});
 		});
 		it('should return same response', () => {
-			expect(buildResponse(options)(responseNull)).toEqual(responseNull);
+			expect(buildMultiTooltipResponse(options)(responseNull)).toEqual(
+				responseNull
+			);
 		});
 		it('should return updated response', () => {
-			expect(buildResponse(options)(response)).toEqual(finalResponse);
+			expect(buildMultiTooltipResponse(options)(response)).toEqual(
+				finalResponse
+			);
 		});
 	});
 });

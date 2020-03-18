@@ -105,7 +105,7 @@ const CheckboxOne = ({
 					<div className="tooltip">
 						<TooltipResponse
 							id={id}
-							response={U.buildResponse(options)(response)}
+							response={U.buildMultiTooltipResponse(options)(response)}
 						/>
 					</div>
 				)}

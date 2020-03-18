@@ -10,7 +10,7 @@
 				"valueState": [
 					{ "valueType": "PREVIOUS", "value": null },
 					{ "valueType": "COLLECTED", "value": true },
-					{ "valueType": "FORCED", "value": false },
+					{ "valueType": "FORCED", "value": null },
 					{ "valueType": "EDITED", "value": null },
 					{ "valueType": "INPUTED", "value": null }
 				]
