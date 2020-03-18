@@ -66,6 +66,7 @@ const inputComponent = {
 
 const checkboxGroupResponses = [
 	{
+		componentType: 'CheckboxBoolean',
 		response: {
 			name: 'check1',
 			valueState: [
@@ -75,6 +76,7 @@ const checkboxGroupResponses = [
 		},
 	},
 	{
+		componentType: 'CheckboxBoolean',
 		response: {
 			name: 'check2',
 			valueState: [
@@ -129,6 +131,7 @@ const vectorialUpdatedQuestionnaire = {
 			componentType: 'CheckboxGroup',
 			responses: [
 				{
+					componentType: 'CheckboxBoolean',
 					response: {
 						name: 'check1',
 						valueState: [
@@ -138,6 +141,7 @@ const vectorialUpdatedQuestionnaire = {
 					},
 				},
 				{
+					componentType: 'CheckboxBoolean',
 					response: {
 						name: 'check2',
 						valueState: [

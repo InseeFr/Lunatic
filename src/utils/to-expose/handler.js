@@ -92,21 +92,21 @@ export const buildUpdatedResponse = component => preferences => valueType => val
 
 export const buildUpdatedVectorResponse = responses => preferences => valueType => value => name =>
 	responses.reduce((_, cellComponent) => {
-		if (isComponentsConcernedByResponse(name)(cellComponent)) {
-			const component = { ...cellComponent, componentType: 'CheckboxBoolean' };
+		if (isComponentsConcernedByResponse(name)(cellComponent))
 			return [
 				..._,
-				buildUpdatedResponse(component)(preferences)(valueType)(value),
+				buildUpdatedResponse(cellComponent)(preferences)(valueType)(value),
 			];
-		}
+
 		return [..._, cellComponent];
 	}, []);
 
 export const buildUpdatedCheckboxGroupResponse = component => preferences => valueType => value => name => {
 	const { responses, ...other } = component;
-	const newResponses = buildUpdatedVectorResponse(responses)(preferences)(
-		valueType
-	)(value)(name);
+	const res = responses.map(r => ({ ...r, componentType: 'CheckboxBoolean' }));
+	const newResponses = buildUpdatedVectorResponse(res)(preferences)(valueType)(
+		value
+	)(name);
 	return { ...other, responses: newResponses };
 };
 
