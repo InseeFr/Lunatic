@@ -1,4 +1,4 @@
-import { interpret } from 'utils/to-expose/interpret';
+import { interpret, replaceNullBindings } from 'utils/to-expose/interpret';
 
 describe('interpret', () => {
 	describe('interpret', () => {
@@ -15,6 +15,23 @@ describe('interpret', () => {
 			expect(interpret(['VTL'])({ NAME: 'Mauro' })('"Hello " || NAME')).toEqual(
 				'Hello Mauro'
 			);
+		});
+	});
+	describe('replaceNullBindings', () => {
+		it('should return empty object', () => {
+			expect(replaceNullBindings()).toEqual({});
+		});
+		it('should return empty object', () => {
+			expect(replaceNullBindings({})).toEqual({});
+		});
+		it('should return the same object', () => {
+			const bindings = { NAME: 'toto' };
+			expect(replaceNullBindings(bindings)).toEqual(bindings);
+		});
+		it('should return replaced object', () => {
+			const bindings = { NAME: 'toto', AGE: null };
+			const res = { NAME: 'toto', AGE: 'AGE' };
+			expect(replaceNullBindings(bindings)).toEqual(res);
 		});
 	});
 });
