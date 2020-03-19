@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1.1.1 · Lunatic</title>
+        <title>1.2.2 · Lunatic</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -65,10 +65,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="1-0-2.html" />
+    <link rel="next" href="1-2-1.html" />
     
-    
-    <link rel="prev" href="1-1-3.html" />
     
 
     </head>
@@ -237,7 +235,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1.1" data-path="1-2-2.html">
+        <li class="chapter active" data-level="1.6.1.1" data-path="1-2-2.html">
             
                 <a href="1-2-2.html">
             
@@ -276,7 +274,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.1.4" data-path="1-1-1.html">
+        <li class="chapter " data-level="1.6.1.4" data-path="1-1-1.html">
             
                 <a href="1-1-1.html">
             
@@ -355,7 +353,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >1.1.1</a>
+        <a href=".." >1.2.2</a>
     </h1>
 </div>
 
@@ -370,14 +368,17 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="111">1.1.1</h1>
+                                <h1 id="122">1.2.2</h1>
 <ul>
-<li>ajout d&apos;une props <code>unitPosition</code> pour le composant <code>InputNumber</code></li>
-<li>remplacement de la props <code>required</code> par la props <code>mandatory</code></li>
-<li>support des variables externes et calcul&#xE9;es dans l&apos;ensemble des phases : initialisation, handler, bindings. ATTENTION, la structure du fichier <code>data.json</code> initialisant un questionnaire a &#xE9;t&#xE9; modifi&#xE9;e (<a href="utils/init-questionnaire.md">voir la doc</a>)</li>
-<li>mise &#xE0; jour des d&#xE9;pendances (notamment Babel 7, Storybook 5 et Rollup 1)</li>
-<li>mise &#xE0; disposition d&apos;un nouvel utilitaire : <code>getBindings</code> (<a href="utils/bindings.md">voir la doc</a>)</li>
-<li>ajout des props <code>features</code> et <code>bindings</code> sur l&apos;ensemble des composants (<a href="usage.md">voir la doc</a>)</li>
+<li>Harmonisation de la props <code>placeholder</code></li>
+<li>Ajout d&apos;un className <code>content-checked</code> sur la div wrappant les input coch&#xE9;s des composants <code>CheckboxOne</code> et <code>CheckboxGroup</code></li>
+<li>Correction du focus par d&#xE9;faut des composants <code>CheckboxGroup</code>, <code>CheckboxOne</code> et <code>Radio</code> sur le premier &#xE9;l&#xE9;ment</li>
+<li>Correction du positionnement du label des <code>CheckboxBoolean</code></li>
+<li>Mise &#xE0; jour de l&apos;interpretation des labels VTL : les variables &#xE0; valoriser absentes sont replac&#xE9;es par le nom de la variable</li>
+<li><p>Correction du comportement des composants <code>CheckboxBoolean</code> et <code>CheckboxGroup</code> lorsque plusieurs &#xE9;tats de la variables sont pr&#xE9;sents (lorsque <code>preferences</code> contient 2 &#xE9;tats a minima)</p>
+</li>
+<li><p>TODO : Dropdown</p>
+</li>
 </ul>
 
                                 
@@ -406,12 +407,8 @@
 
             
                 
-                <a href="1-1-3.html" class="navigation navigation-prev " aria-label="Previous page: 1.1.3">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="1-0-2.html" class="navigation navigation-next " aria-label="Next page: 1.0.2">
+                <a href="1-2-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 1.2.1">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -422,7 +419,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.1.1","level":"1.6.1.4","depth":3,"next":{"title":"1.0.2","level":"1.6.1.5","depth":3,"path":"versions/1-0-2.md","ref":"versions/1-0-2.md","articles":[]},"previous":{"title":"1.1.3","level":"1.6.1.3","depth":3,"path":"versions/1-1-3.md","ref":"versions/1-1-3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anchorjs","image-captions","include-codeblock","collapsible-chapters"],"root":"./","styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/InseeFr/Lunatic/"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/InseeFr/Lunatic/tree/master/docs"},"theme-default":{"styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Lunatic","language":"fr","gitbook":"*"},"file":{"path":"versions/1-1-1.md","mtime":"2020-03-19T09:22:41.953Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-03-19T09:24:41.035Z"},"basePath":"..","book":{"language":"fr"}});
+            gitbook.page.hasChanged({"page":{"title":"1.2.2","level":"1.6.1.1","depth":3,"next":{"title":"1.2.1","level":"1.6.1.2","depth":3,"path":"versions/1-2-1.md","ref":"versions/1-2-1.md","articles":[]},"previous":{"title":"Releases","level":"1.6.1","depth":2,"ref":"","articles":[{"title":"1.2.2","level":"1.6.1.1","depth":3,"path":"versions/1-2-2.md","ref":"versions/1-2-2.md","articles":[]},{"title":"1.2.1","level":"1.6.1.2","depth":3,"path":"versions/1-2-1.md","ref":"versions/1-2-1.md","articles":[]},{"title":"1.1.3","level":"1.6.1.3","depth":3,"path":"versions/1-1-3.md","ref":"versions/1-1-3.md","articles":[]},{"title":"1.1.1","level":"1.6.1.4","depth":3,"path":"versions/1-1-1.md","ref":"versions/1-1-1.md","articles":[]},{"title":"1.0.2","level":"1.6.1.5","depth":3,"path":"versions/1-0-2.md","ref":"versions/1-0-2.md","articles":[]},{"title":"1.0.1","level":"1.6.1.6","depth":3,"path":"versions/1-0-1.md","ref":"versions/1-0-1.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anchorjs","image-captions","include-codeblock","collapsible-chapters"],"root":"./","styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/InseeFr/Lunatic/"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/InseeFr/Lunatic/tree/master/docs"},"theme-default":{"styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Lunatic","language":"fr","gitbook":"*"},"file":{"path":"versions/1-2-2.md","mtime":"2020-03-19T09:22:41.953Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-03-19T09:24:41.035Z"},"basePath":"..","book":{"language":"fr"}});
         });
     </script>
 </div>
