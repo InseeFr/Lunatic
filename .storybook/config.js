@@ -6,24 +6,25 @@ import {
 	addParameters,
 } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs/react';
-import { checkA11y } from '@storybook/addon-a11y';
+import { withA11y } from '@storybook/addon-a11y';
 import JSXAddon from 'storybook-addon-jsx';
 
 const globalContainer = { margin: '5%' };
 addDecorator(story => <div style={globalContainer}>{story()}</div>);
 addDecorator(withKnobs({ escapeHTML: false }));
-addDecorator(checkA11y);
+addDecorator(withA11y);
 setAddon(JSXAddon);
 
 addParameters({
 	options: {
-		name: 'Lunatic',
-		addonPanelInRight: true,
+		theme: { brandTitle: 'Lunatic' },
+		panelPosition: 'right',
 	},
 });
 
 const requireAll = requireContext => requireContext.keys().map(requireContext);
-const loadStories = () =>
+const loadStories = () => {
 	requireAll(require.context('stories', true, /stories\.js?$/));
+};
 
 configure(loadStories, module);
