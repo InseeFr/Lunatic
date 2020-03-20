@@ -18,6 +18,7 @@ const Dropdown = ({
 	onSelect,
 	placeholder,
 	disabled,
+	focused: initFocused,
 	mandatory,
 	labelPosition,
 	tooltip,
@@ -29,6 +30,7 @@ const Dropdown = ({
 		...initial,
 		id: `dropdown-${initId}-${new Date().getMilliseconds()}`,
 		disabled,
+		focused: initFocused,
 	});
 	const { focused, selectedOption, visible, activeIndex, id } = state;
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
@@ -79,6 +81,7 @@ const Dropdown = ({
 
 Dropdown.propTypes = {
 	disabled: PropTypes.bool,
+	focused: PropTypes.bool,
 	zIndex: PropTypes.number,
 	className: PropTypes.string,
 	id: PropTypes.string,
@@ -94,6 +97,7 @@ Dropdown.propTypes = {
 
 Dropdown.defaultProps = {
 	disabled: false,
+	focused: false,
 	options: [],
 	zIndex: 0,
 	onSelect: () => null,

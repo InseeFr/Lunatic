@@ -45,11 +45,13 @@ const Dropdown = ({
 	zIndex,
 	tooltip,
 	disabled,
+	focused: initFocused,
 }) => {
 	const [state, dispatch] = useReducer(reducer, {
 		...initial,
 		id: `dropdown-${new Date().getMilliseconds()}`,
 		disabled,
+		focused: initFocused,
 	});
 	const {
 		prefix,
@@ -143,6 +145,7 @@ const Dropdown = ({
 Dropdown.propTypes = {
 	zIndex: PropTypes.number,
 	disabled: PropTypes.bool,
+	focused: PropTypes.bool,
 	className: PropTypes.string,
 	id: PropTypes.string,
 	options: PropTypes.array.isRequired,
@@ -161,6 +164,7 @@ Dropdown.defaultProps = {
 	onSelect: () => null,
 	placeholder: 'Search...',
 	disabled: false,
+	focused: false,
 };
 
 export default Dropdown;
