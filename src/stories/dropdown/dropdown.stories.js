@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
@@ -8,7 +8,13 @@ import data from './data';
 import dataProps from './data-props';
 import dataNAF from './data-naf';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
-import { text, boolean, select, object } from '@storybook/addon-knobs/react';
+import {
+	text,
+	boolean,
+	select,
+	object,
+	number,
+} from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Dropdown', module)
 	.addDecorator(withReadme(readme))
@@ -35,6 +41,7 @@ stories.addWithJSX('Props', () => (
 		mandatory={boolean('Mandatory', false)}
 		preferences={['COLLECTED', 'FORCED']}
 		tooltip={boolean('Tooltip', false)}
+		zIndex={number('zIndex', 0)}
 	/>
 ));
 
@@ -52,5 +59,6 @@ stories.addWithJSX('Naf', () => (
 		mandatory={boolean('Mandatory', false)}
 		preferences={['COLLECTED', 'FORCED']}
 		tooltip={boolean('Tooltip', false)}
+		zIndex={number('zIndex', 0)}
 	/>
 ));

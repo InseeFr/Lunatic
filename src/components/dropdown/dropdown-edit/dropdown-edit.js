@@ -62,11 +62,13 @@ const Dropdown = ({
 		id,
 	} = state;
 	const inputEl = useRef();
+	const containerEl = useRef();
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
 	return (
 		<DropdownContainer
 			className={className || 'lunatic-dropdown'}
 			state={state}
+			ref={containerEl}
 			dispatch={dispatch}
 			options={options}
 			label={label}
@@ -91,10 +93,7 @@ const Dropdown = ({
 					autoCorrect="off"
 					autoCapitalize="off"
 					spellCheck="false"
-					tabIndex="0"
-					onFocus={() => {
-						dispatch(actions.setFocused(true && !disabled));
-					}}
+					tabIndex="-1"
 					onChange={onChangeCallback(state, dispatch)}
 				/>
 			</div>
@@ -110,9 +109,13 @@ const Dropdown = ({
 				}}
 				onSwitch={e => {
 					e.stopPropagation();
+					e.preventDefault();
 					if (visible) {
 						dispatch(actions.hidePanel());
-					} else dispatch(actions.showPanel());
+					} else {
+						dispatch(actions.showPanel());
+						containerEl.current.focus();
+					}
 				}}
 			/>
 			<div

@@ -34,6 +34,8 @@ const onKeyDownCallback_ = (state, dispatch, onSelect) => e => {
 	}
 };
 
+const getZIndex = z => z || 0;
+
 const DropdownContainer = ({
 	options,
 	children,
@@ -48,6 +50,8 @@ const DropdownContainer = ({
 	tooltip,
 	state,
 	dispatch,
+	refs,
+	ref,
 }) => {
 	const { visible, focused, id, disabled } = state;
 
@@ -89,6 +93,8 @@ const DropdownContainer = ({
 		}
 	}, [valueFromProps, options, dispatch]);
 
+	const z = getZIndex(zIndex);
+
 	return (
 		<div
 			className={classnames(
@@ -103,6 +109,11 @@ const DropdownContainer = ({
 			onMouseDown={onMouseDownCallback(state, dispatch, 'id')}
 			onKeyDown={onKeyDownCallback_(state, dispatch, onSelect)}
 			onFocus={() => dispatch(actions.setFocused(true && !disabled))}
+			onBlur={function() {
+				dispatch(actions.hidePanel());
+				dispatch(actions.setFocused(false));
+			}}
+			ref={refs}
 		>
 			{label ? (
 				<Label content={label} focused={focused} mandatory={mandatory} />
@@ -111,7 +122,7 @@ const DropdownContainer = ({
 				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
 					<div
 						tabIndex="-1"
-						style={{ zIndex: zIndex || 0 }}
+						style={{ zIndex: focused ? z + 1 : z }}
 						className="lunatic-dropdown-container"
 					>
 						<span
@@ -129,7 +140,7 @@ const DropdownContainer = ({
 					<div className="tooltip">
 						<TooltipResponse
 							id={id}
-							response={U.buildResponse(options)(response)}
+							response={U.buildMultiTooltipResponse(options)(response)}
 						/>
 					</div>
 				)}
@@ -158,4 +169,6 @@ DropdownContainer.defaultProps = {
 	onSelect: () => null,
 };
 
-export default DropdownContainer;
+export default React.forwardRef((props, ref) => (
+	<DropdownContainer {...props} refs={ref} />
+));

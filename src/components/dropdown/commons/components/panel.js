@@ -25,7 +25,7 @@ const Panel = ({
 						key={value}
 						id={`${idDropdown}-option-${value}`}
 						onMouseEnter={() => handleActive(index)}
-						onClick={e => {
+						onMouseDown={e => {
 							e.stopPropagation();
 							e.preventDefault();
 							onSelect({ label, value });
