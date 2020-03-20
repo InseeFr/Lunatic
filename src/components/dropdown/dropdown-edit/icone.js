@@ -15,7 +15,6 @@ const Icone = ({ prefix, visible, disabled, onDelete, onSwitch }) => {
 	if (disabled) {
 		return (
 			<span className="lunatic-icone" tabIndex="-1" onMouseDown={onSwitch}>
-				{' '}
 				<ClosedIcon width={10} height={10} />
 			</span>
 		);

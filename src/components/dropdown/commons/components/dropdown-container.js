@@ -50,6 +50,8 @@ const DropdownContainer = ({
 	tooltip,
 	state,
 	dispatch,
+	refs,
+	ref,
 }) => {
 	const { visible, focused, id, disabled } = state;
 
@@ -107,6 +109,11 @@ const DropdownContainer = ({
 			onMouseDown={onMouseDownCallback(state, dispatch, 'id')}
 			onKeyDown={onKeyDownCallback_(state, dispatch, onSelect)}
 			onFocus={() => dispatch(actions.setFocused(true && !disabled))}
+			onBlur={function() {
+				dispatch(actions.hidePanel());
+				dispatch(actions.setFocused(false));
+			}}
+			ref={refs}
 		>
 			{label ? (
 				<Label content={label} focused={focused} mandatory={mandatory} />
@@ -162,4 +169,6 @@ DropdownContainer.defaultProps = {
 	onSelect: () => null,
 };
 
-export default DropdownContainer;
+export default React.forwardRef((props, ref) => (
+	<DropdownContainer {...props} refs={ref} />
+));
