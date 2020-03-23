@@ -110,7 +110,6 @@ const DropdownContainer = ({
 			onKeyDown={onKeyDownCallback_(state, dispatch, onSelect)}
 			onFocus={() => dispatch(actions.setFocused(true && !disabled))}
 			onBlur={function() {
-				dispatch(actions.hidePanel());
 				dispatch(actions.setFocused(false));
 			}}
 			ref={refs}
