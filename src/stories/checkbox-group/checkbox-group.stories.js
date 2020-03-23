@@ -62,7 +62,7 @@ stories.addWithJSX('Styled', () => (
 					step: 1,
 				}),
 			},
-			checkboxStyle: {
+			modalityStyle: {
 				'border-color': color('Checked label border color', '#e80a4d'),
 				'border-width': number('Checked label border width', 3, {
 					range: true,

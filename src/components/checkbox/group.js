@@ -23,7 +23,7 @@ const CheckboxGroup = ({
 	tooltip,
 	style,
 }) => {
-	const { fieldsetStyle, checkboxStyle } = style;
+	const { fieldsetStyle, modalityStyle } = style;
 	const inputRef = useRef();
 
 	useEffect(() => {
@@ -85,7 +85,7 @@ const CheckboxGroup = ({
 										<label
 											htmlFor={`checkbox-${id}-${modId}`}
 											id={`input-label-${id}-${modId}`}
-											style={checked ? U.buildStyleObject(checkboxStyle) : {}}
+											style={checked ? U.buildStyleObject(modalityStyle) : {}}
 										>
 											{keyboardSelection
 												? `${U.getAlphabet()[
@@ -128,7 +128,7 @@ CheckboxGroup.defaultProps = {
 	features: [],
 	bindings: {},
 	tooltip: false,
-	style: { fieldsetStyle: {}, checkboxStyle: {} },
+	style: { fieldsetStyle: {}, modalityStyle: {} },
 };
 
 CheckboxGroup.propTypes = {

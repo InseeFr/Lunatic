@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Declarations from '../declarations';
+import { SimpleDeclarationsWrapper } from '../declarations/wrappers';
 import * as U from '../../utils/lib';
-import * as C from '../../utils/constants';
 import { interpret } from '../../utils/to-expose';
 import './subsequence.scss';
 
@@ -14,14 +13,12 @@ const Subsequence = ({
 	bindings,
 	style,
 }) => (
-	<>
-		<Declarations
-			id={id}
-			type={C.BEFORE_QUESTION_TEXT}
-			declarations={declarations}
-			features={features}
-			bindings={bindings}
-		/>
+	<SimpleDeclarationsWrapper
+		id={id}
+		declarations={declarations}
+		features={features}
+		bindings={bindings}
+	>
 		<div
 			aria-label={`subsequence-${id}`}
 			className="subsequence-lunatic"
@@ -29,21 +26,7 @@ const Subsequence = ({
 		>
 			{interpret(features)(bindings)(label)}
 		</div>
-		<Declarations
-			id={id}
-			type={C.AFTER_QUESTION_TEXT}
-			declarations={declarations}
-			features={features}
-			bindings={bindings}
-		/>
-		<Declarations
-			id={id}
-			type={C.DETACHABLE}
-			declarations={declarations}
-			features={features}
-			bindings={bindings}
-		/>
-	</>
+	</SimpleDeclarationsWrapper>
 );
 
 Subsequence.defaultProps = {

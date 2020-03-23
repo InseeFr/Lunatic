@@ -17,13 +17,13 @@
 |     features      | array  |                   [ ]                    |          | Component features for labels             |
 |     bindings      | object |                   [ ]                    |          | Questionnaire bindings                    |
 |      tooltip      |  bool  |                  false                   |          | Tooltip of the input                      |
-|     style \*      | object | { fieldsetStyle: {}, checkboxStyle: {} } |          | Style of the checkbox                     |
+|     style \*      | object | { fieldsetStyle: {}, modalityStyle: {} } |          | Style of the checkbox                     |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
 - `responses` props has to be an array of shape of `{id: string, label: string, response: {name: string, valueState: object}}`
 - `positioning` props has to be one of `DEFAULT`, `HORIZONTAL` or `VERTICAL`
 - `declarations` are documented in the `Declarations` component
-- `style` props has to be composed of `fieldsetStyle` and `checkboxStyle`
+- `style` props has to be composed of `fieldsetStyle` and `modalityStyle`
 
 ## Styles
 

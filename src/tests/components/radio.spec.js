@@ -24,19 +24,4 @@ describe('radio', () => {
 	it('returns tooltip and keyboardSelection component', () => {
 		shallow(<Radio {...defaultProps} tooltip keyboardSelection />);
 	});
-
-	it('renders firing useEffect', () => {
-		const wrapper = mount(<Radio {...defaultProps} />);
-		wrapper.setProps({ focused: true });
-	});
-
-	it('should trigger the change event', () => {
-		const wrapper = shallow(<Radio {...defaultProps} />);
-		wrapper
-			.find('input')
-			.first()
-			.simulate('change');
-		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': 'france' });
-	});
 });

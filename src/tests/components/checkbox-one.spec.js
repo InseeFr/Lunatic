@@ -25,19 +25,4 @@ describe('checkbox-one', () => {
 	it('returns tooltip and keyboardSelection component', () => {
 		shallow(<CheckboxOne {...defaultProps} tooltip keyboardSelection />);
 	});
-
-	it('renders firing useEffect', () => {
-		const wrapper = mount(<CheckboxOne {...defaultProps} />);
-		wrapper.setProps({ focused: true });
-	});
-
-	it('should trigger the change event', () => {
-		const wrapper = shallow(<CheckboxOne {...defaultProps} />);
-		wrapper
-			.find('input')
-			.first()
-			.simulate('change');
-		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': 'france' });
-	});
 });
