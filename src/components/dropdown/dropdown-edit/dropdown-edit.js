@@ -88,7 +88,7 @@ const Dropdown = ({
 				<input
 					type="text"
 					ref={inputEl}
-					value={value}
+					value={value || ''}
 					disabled={disabled}
 					placeholder={placeholder}
 					autoComplete="list"
