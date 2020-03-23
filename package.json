@@ -11,7 +11,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@inseefr/lunatic": "^1.2.1",
+    "@inseefr/lunatic": "^1.2.2-rc1",
     "jsoneditor": "^8.6.3",
     "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
