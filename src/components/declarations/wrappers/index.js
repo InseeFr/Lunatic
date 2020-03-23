@@ -1,1 +1,1 @@
-export { default as SimpleDeclarationsWrapper } from './simple-wrapper';
+export { default as SimpleDeclarationsWrapper } from './simple-declarations-wrapper';
