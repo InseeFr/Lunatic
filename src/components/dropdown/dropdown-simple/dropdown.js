@@ -6,7 +6,7 @@ import Panel from '../commons/components/panel';
 import ClosedIcon from '../commons/components/closed.icon';
 import OpenedIcon from '../commons/components/opened.icon';
 import DropdownContainer from '../commons/components/dropdown-container';
-import reducer, { initial } from './reducer';
+import reducer, { initial } from '../commons/reducer';
 import Option from './option';
 
 const Dropdown = ({

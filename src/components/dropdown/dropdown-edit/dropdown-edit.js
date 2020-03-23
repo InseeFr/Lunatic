@@ -5,7 +5,7 @@ import * as actions from '../commons/actions';
 import Panel from '../commons/components/panel';
 import DropdownContainer from '../commons/components/dropdown-container';
 import { preparePrefix } from './prefix-tools';
-import reducer, { initial } from './reducer';
+import reducer, { initial } from '../commons/reducer';
 import Option from './option';
 import Icone from './icone';
 
