@@ -1,0 +1,17 @@
+@import 'src/components/index.scss';
+
+.lunatic-loop {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	border: solid 2px $main_color;
+	padding: 2em;
+	.loop-label {
+		text-align: center;
+		font-weight: bold;
+		font-size: 2em;
+	}
+	.loop-component {
+		margin-top: 0.4em;
+		margin-bottom: 0.4em;
+	}
+}
