@@ -14,6 +14,10 @@ describe('checkbox-boolean', () => {
 		shallow(<CheckboxBoolean {...defaultProps} label="label" tooltip />);
 	});
 
+	it('returns disabled component', () => {
+		shallow(<CheckboxBoolean {...defaultProps} label="label" disabled />);
+	});
+
 	it('renders firing useEffect', () => {
 		const wrapper = mount(<CheckboxBoolean {...defaultProps} />);
 		wrapper.setProps({ focused: true });

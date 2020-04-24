@@ -15,6 +15,7 @@ const InputDeclarationsWrapper = ({
 	handleChange,
 	maxLength,
 	readOnly,
+	disabled,
 	autoComplete,
 	labelPosition,
 	mandatory,
@@ -73,10 +74,11 @@ const InputDeclarationsWrapper = ({
 							className={`${roleType}-lunatic`}
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
+							disabled={disabled}
 							maxLength={maxLength || 524288}
 							required={mandatory}
 							aria-required={mandatory}
-							onChange={e =>
+							onChange={(e) =>
 								handleChange({
 									[U.getResponseName(response)]: e.target.value,
 								})
@@ -107,6 +109,7 @@ InputDeclarationsWrapper.defaultProps = {
 	response: {},
 	placeholder: '',
 	readOnly: false,
+	disabled: false,
 	autoComplete: false,
 	labelPosition: 'DEFAULT',
 	mandatory: false,
@@ -126,6 +129,7 @@ InputDeclarationsWrapper.propTypes = {
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
+	disabled: PropTypes.bool,
 	maxLength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	autoComplete: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),

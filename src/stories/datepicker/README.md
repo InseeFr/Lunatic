@@ -11,8 +11,9 @@
 |   placeholder    | string |      ""       |          | Placeholder of the datepicker             |
 |   handleChange   |  func  |       -       |    ✓     | Handler of the datepicker                 |
 |     readOnly     |  bool  |     false     |          | Is the datepicker read only               |
+|     disabled     |  bool  |     false     |          | Is the datepicker disabled                |
 | labelPosition \* | string |   "DEFAULT"   |          | Position of the datepicker label          |
-|     mandatory     |  bool  |     false     |          | Is the datepicker mandatory                |
+|    mandatory     |  bool  |     false     |          | Is the datepicker mandatory               |
 |     focused      |  bool  |     false     |          | Is the datepicker focused                 |
 | declarations \*  | array  |      []       |          | Declarations of the datepicker            |
 |     features     | array  |      [ ]      |          | Component features for labels             |

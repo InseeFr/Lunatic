@@ -1,2 +1,5 @@
 export { buildTooltip } from './content';
-export { buildMultiTooltipResponse } from './build-response';
+export {
+	buildMultiTooltipResponse,
+	buildBooleanTooltipResponse,
+} from './build-response';

@@ -12,7 +12,7 @@ const Orchestrator = ({
 	const [questionnaire, setQuestionnaire] = useState(
 		lunatic.mergeQuestionnaireAndData(source)(data)
 	);
-	const onChange = updatedValue => {
+	const onChange = (updatedValue) => {
 		setQuestionnaire(
 			lunatic.updateQuestionnaire(savingType)(questionnaire)(preferences)(
 				updatedValue
@@ -23,7 +23,6 @@ const Orchestrator = ({
 	console.log('State : ', lunatic.getState(questionnaire));
 
 	const bindings = lunatic.getBindings(questionnaire);
-	const labelBindings = lunatic.getLabelBindings(questionnaire);
 
 	const components = questionnaire.components
 		.filter(({ conditionFilter }) =>
@@ -31,7 +30,7 @@ const Orchestrator = ({
 				? true
 				: lunatic.interpret(['VTL'])(bindings)(conditionFilter) === 'normal'
 		)
-		.map(q => {
+		.map((q) => {
 			const { id, componentType } = q;
 			const Component = lunatic[componentType];
 			return (
@@ -44,7 +43,7 @@ const Orchestrator = ({
 						tooltip={tooltip}
 						filterDescription={filterDescription}
 						features={['VTL']}
-						bindings={labelBindings}
+						bindings={bindings}
 						writable
 						zIndex={1}
 					/>

@@ -26,6 +26,10 @@ describe('checkbox-group', () => {
 		shallow(<CheckboxGroup {...defaultProps} tooltip />);
 	});
 
+	it('returns disabled component', () => {
+		shallow(<CheckboxGroup {...defaultProps} label="label" disabled />);
+	});
+
 	it('renders firing useEffect', () => {
 		const wrapper = mount(<CheckboxGroup {...defaultProps} />);
 		wrapper.setProps({ focused: true });

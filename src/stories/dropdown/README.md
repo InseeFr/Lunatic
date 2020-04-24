@@ -11,7 +11,7 @@
 |    options \*    | array  |       -       |    ✓     | Options of the dropdown                 |
 |   handleChange   |  func  |       -       |    ✓     | Handler of the dropdown                 |
 |   placeholder    | string |      ""       |          | Placeholder of the dropdown             |
-|     readOnly     |  bool  |     false     |          | Is the dropdown read only               |
+|     disabled     |  bool  |     false     |          | Is the dropdown disabled                |
 |     writable     |  bool  |     false     |          | Is the dropdown writable                |
 |    mandatory     |  bool  |     false     |          | Is the dropdown mandatory               |
 | labelPosition \* | string |   "DEFAULT"   |          | Position of the dropdown label          |

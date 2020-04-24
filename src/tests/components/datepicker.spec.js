@@ -13,4 +13,10 @@ describe('datepicker', () => {
 	it('renders without crashing', () => {
 		shallow(<Datepicker {...defaultProps} />);
 	});
+	it('returns tooltip component', () => {
+		shallow(<Datepicker {...defaultProps} label="label" tooltip />);
+	});
+	it('returns disabled & readOnly component', () => {
+		shallow(<Datepicker {...defaultProps} label="label" disabled readOnly />);
+	});
 });

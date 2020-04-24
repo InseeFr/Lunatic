@@ -18,6 +18,7 @@ const InputNumber = ({
 	placeholder,
 	handleChange,
 	readOnly,
+	disabled,
 	autoComplete,
 	focused,
 	style,
@@ -33,16 +34,16 @@ const InputNumber = ({
 }) => {
 	const [messagesError, setMessagesError] = useState(
 		[minMaxValidator({ min, max }), ...validators]
-			.map(v => v(U.getResponseByPreference(preferences)(response)))
-			.filter(m => m !== undefined)
+			.map((v) => v(U.getResponseByPreference(preferences)(response)))
+			.filter((m) => m !== undefined)
 	);
 	const inputRef = useRef();
 
-	const validate = value => {
+	const validate = (value) => {
 		setMessagesError(
 			[minMaxValidator({ min, max }), ...validators]
-				.map(v => v(value))
-				.filter(m => m !== undefined)
+				.map((v) => v(value))
+				.filter((m) => m !== undefined)
 		);
 	};
 
@@ -53,8 +54,8 @@ const InputNumber = ({
 	useEffect(() => {
 		setMessagesError(
 			[minMaxValidator({ min, max }), ...validators]
-				.map(v => v(U.getResponseByPreference(preferences)(response)))
-				.filter(m => m !== undefined)
+				.map((v) => v(U.getResponseByPreference(preferences)(response)))
+				.filter((m) => m !== undefined)
 		);
 	}, [response]);
 
@@ -104,10 +105,11 @@ const InputNumber = ({
 							}`}
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
+							disabled={disabled}
 							autoComplete={autoComplete ? 'on' : 'off'}
 							required={mandatory}
 							aria-required={mandatory}
-							onChange={e => {
+							onChange={(e) => {
 								const {
 									target: { value },
 								} = e;
@@ -144,7 +146,7 @@ const InputNumber = ({
 	);
 };
 
-const minMaxValidator = ({ min, max }) => value => {
+const minMaxValidator = ({ min, max }) => (value) => {
 	if (!value) {
 		return undefined;
 	}
@@ -158,7 +160,7 @@ const minMaxValidator = ({ min, max }) => value => {
 	return undefined;
 };
 
-const isDef = number => number || number === 0;
+const isDef = (number) => number || number === 0;
 
 InputNumber.defaultProps = {
 	label: '',
@@ -169,6 +171,7 @@ InputNumber.defaultProps = {
 	decimals: 0,
 	placeholder: '',
 	readOnly: false,
+	disabled: false,
 	autoComplete: false,
 	focused: false,
 	declarations: [],
@@ -193,6 +196,7 @@ InputNumber.propTypes = {
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
+	disabled: PropTypes.bool,
 	autoComplete: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: U.declarationsPropTypes,

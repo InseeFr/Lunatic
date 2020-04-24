@@ -13,8 +13,9 @@
 |       rows       |     number     |       5       |          | Number of rows of the textarea          |
 |    maxLength     | number, string |    524288     |          | Maximum length of the textarea          |
 |     readOnly     |      bool      |     false     |          | Is the textarea read only               |
+|     disabled     |      bool      |     false     |          | Is the textarea disabled                |
 | labelPosition \* |     string     |   "DEFAULT"   |          | Position of the textarea label          |
-|     mandatory     |      bool      |     false     |          | Is the textarea mandatory                |
+|    mandatory     |      bool      |     false     |          | Is the textarea mandatory               |
 |     focused      |      bool      |     false     |          | Is the textarea focused                 |
 | declarations \*  |     array      |      [ ]      |          | Declarations of the textarea            |
 |     features     |     array      |      [ ]      |          | Component features for labels           |
