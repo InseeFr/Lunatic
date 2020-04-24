@@ -76,7 +76,7 @@ const CheckboxGroup = ({
 											className="checkbox-lunatic"
 											checked={checked}
 											disabled={disabled}
-											onChange={e => {
+											onChange={(e) => {
 												handleChange({
 													[U.getResponseName(response)]: e.target.checked,
 												});
@@ -97,7 +97,10 @@ const CheckboxGroup = ({
 								</div>
 								{tooltip && (
 									<div className="tooltip">
-										<TooltipResponse id={id} response={response} />
+										<TooltipResponse
+											id={id}
+											response={U.buildBooleanTooltipResponse(response)}
+										/>
 									</div>
 								)}
 							</div>

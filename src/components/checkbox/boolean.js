@@ -41,7 +41,7 @@ const CheckboxBoolean = ({
 				style={U.buildStyleObject(style)}
 				checked={U.getResponseByPreference(preferences)(response)}
 				disabled={disabled}
-				onChange={e => {
+				onChange={(e) => {
 					handleChange({
 						[U.getResponseName(response)]: e.target.checked,
 					});
@@ -81,7 +81,10 @@ const CheckboxBoolean = ({
 				</div>
 				{tooltip && (
 					<div className="tooltip">
-						<TooltipResponse id={id} response={response} />
+						<TooltipResponse
+							id={id}
+							response={U.buildBooleanTooltipResponse(response)}
+						/>
 					</div>
 				)}
 			</div>
