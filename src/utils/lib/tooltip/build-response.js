@@ -1,5 +1,5 @@
 export const buildMultiTooltipResponse = (options) => (response) => {
-	if (!response || !options) return {};
+	if (!response || Object.keys(response).length === 0 || !options) return {};
 	const { name, valueState } = response;
 	const newValueState = valueState.map(({ valueType, value }) =>
 		value === null
@@ -10,7 +10,7 @@ export const buildMultiTooltipResponse = (options) => (response) => {
 };
 
 export const buildBooleanTooltipResponse = (response) => {
-	if (!response) return {};
+	if (!response || Object.keys(response).length === 0) return {};
 	const { name, valueState } = response;
 	const newValueState = valueState.map(({ valueType, value }) =>
 		value === null
