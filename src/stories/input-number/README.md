@@ -14,6 +14,7 @@
 |   placeholder    | string |      ""       |          | Placeholder of the input             |
 |   handleChange   |  func  |       -       |    ✓     | Handler of the input                 |
 |     readOnly     |  bool  |     false     |          | Is the input read only               |
+|     disabled     |  bool  |     false     |          | Is the input disabled                |
 |   autoComplete   |  bool  |     false     |          | Is the input autocompletable         |
 |     focused      |  bool  |     false     |          | Is the input focused                 |
 | labelPosition \* | string |   "DEFAULT"   |          | Position of the input label          |
@@ -21,7 +22,7 @@
 | declarations \*  | array  |      [ ]      |          | Declarations of the input            |
 |     features     | array  |      [ ]      |          | Component features for labels        |
 |     bindings     | object |      [ ]      |          | Questionnaire bindings               |
-|     mandatory     |  bool  |     false     |          | Is the input mandatory                |
+|    mandatory     |  bool  |     false     |          | Is the input mandatory               |
 |     tooltip      |  bool  |     false     |          | Tooltip of the input                 |
 |      style       | object |      {}       |          | Style of the input                   |
 
