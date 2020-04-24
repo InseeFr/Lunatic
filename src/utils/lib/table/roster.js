@@ -1,3 +1,9 @@
+const isResponseEmpty = response =>
+	response.valueState.reduce((_, { value }) => {
+		if (!_) return _;
+		return value === null;
+	}, true);
+
 export const getRosterInitLines = cells =>
 	Array.isArray(cells)
 		? cells
@@ -14,8 +20,16 @@ export const getRosterInitLines = cells =>
 				.filter(b => b).length
 		: 0;
 
-const isResponseEmpty = response =>
-	response.valueState.reduce((_, { value }) => {
-		if (!_) return _;
-		return value === null;
-	}, true);
+// TOD: Improve
+export const getRosterVectorInitLines = components =>
+	Array.isArray(components)
+		? components.reduce(
+				(_, c) =>
+					c.response
+						? c.response.valueState[0].value.length > _
+							? c.response.valueState[0].value.length
+							: _
+						: _,
+				0
+		  )
+		: 0;

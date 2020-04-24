@@ -14,7 +14,13 @@ const defaultProps = {
 describe('input-declarations-wrapper', () => {
 	it('renders without crashing', () => {
 		shallow(<InputDeclarationsWrapper {...defaultProps} />);
-		shallow(<InputDeclarationsWrapper type={null} roleType="textarea" />);
+		shallow(
+			<InputDeclarationsWrapper
+				{...defaultProps}
+				type={null}
+				roleType="textarea"
+			/>
+		);
 	});
 	it('returns readOnly and autoComplete component', () => {
 		const wrapper = shallow(

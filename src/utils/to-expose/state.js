@@ -27,7 +27,17 @@ export const getCollectedStateByValueType = questionnaire => (
 const getVariablesFromComponents = (components, replaceLabel) =>
 	Array.isArray(components)
 		? components.reduce(
-				(_, { componentType, response, responses, cells, options }) => {
+				(
+					_,
+					{
+						componentType,
+						response,
+						responses,
+						cells,
+						options,
+						components: inComponents,
+					}
+				) => {
 					if (
 						!componentType ||
 						['Sequence', 'Subsequence', 'FilterDescription'].includes(
@@ -35,9 +45,11 @@ const getVariablesFromComponents = (components, replaceLabel) =>
 						)
 					)
 						return _;
-					else if (componentType === 'CheckboxGroup') {
+					else if (['CheckboxGroup'].includes(componentType)) {
 						return { ..._, ...getVariableFromResponses(responses) };
-					} else if (componentType === 'Table') {
+					} else if (['TableVector', 'Loop'].includes(componentType)) {
+						return { ..._, ...getVariableFromResponses(inComponents) };
+					} else if (['Table'].includes(componentType)) {
 						return { ..._, ...getVariableFromCells(cells) };
 					} else if (componentType === 'Radio') {
 						return {
@@ -64,11 +76,13 @@ const getVariableFromResponse = (response, replaceLabel, options) => {
 	return { [name]: values };
 };
 
-const getVariableFromResponses = responses =>
-	responses.reduce(
-		(_, { response }) => ({ ..._, ...getVariableFromResponse(response) }),
+export const getVariableFromResponses = responses => {
+	return responses.reduce(
+		(_, { response }) =>
+			response ? { ..._, ...getVariableFromResponse(response) } : _,
 		{}
 	);
+};
 
 const getVariableFromCells = cells =>
 	cells.reduce(
