@@ -21,7 +21,7 @@ describe('radio', () => {
 		mount(<Radio {...defaultProps} />);
 	});
 
-	it('returns tooltip and keyboardSelection component', () => {
-		shallow(<Radio {...defaultProps} tooltip keyboardSelection />);
+	it('returns tooltip & disabled component', () => {
+		shallow(<Radio {...defaultProps} tooltip disabled />);
 	});
 });

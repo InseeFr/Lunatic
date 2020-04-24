@@ -22,7 +22,11 @@ describe('checkbox-one', () => {
 		mount(<CheckboxOne {...defaultProps} />);
 	});
 
-	it('returns tooltip and keyboardSelection component', () => {
-		shallow(<CheckboxOne {...defaultProps} tooltip keyboardSelection />);
+	it('returns tooltip component', () => {
+		shallow(<CheckboxOne {...defaultProps} tooltip />);
+	});
+
+	it('returns disabled component', () => {
+		shallow(<CheckboxOne {...defaultProps} label="label" disabled />);
 	});
 });

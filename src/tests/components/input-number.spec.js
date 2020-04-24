@@ -25,13 +25,14 @@ describe('input-number', () => {
 		);
 	});
 
-	it('returns readOnly and autoComplete component', () => {
+	it('returns readOnly & disabled & autoComplete component', () => {
 		const wrapper = shallow(
 			<InputNumber
 				{...defaultProps}
 				handleChange={handleChange}
 				max={100}
 				readOnly
+				disabled
 				autoComplete
 			/>
 		);
