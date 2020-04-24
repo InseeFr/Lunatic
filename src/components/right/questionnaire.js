@@ -19,20 +19,19 @@ const Questionnaire = ({ source, data, error }) => {
 
   const preferences = ['COLLECTED'];
 
-  const onChange = updatedValue => {
+  const onChange = (updatedValue) => {
     setQuestionnaire(
       lunatic.updateQuestionnaire('COLLECTED')(questionnaire)(preferences)(updatedValue)
     );
   };
 
   const bindings = lunatic.getBindings(questionnaire);
-  const labelBindings = lunatic.getLabelBindings(questionnaire);
 
   const components = questionnaire.components
     .filter(({ conditionFilter }) =>
       vtl ? lunatic.interpret(['VTL'])(bindings)(conditionFilter) === 'normal' : true
     )
-    .map(q => {
+    .map((q) => {
       const { id, componentType } = q;
       const Component = lunatic[componentType];
       if (!Component)
@@ -45,7 +44,7 @@ const Questionnaire = ({ source, data, error }) => {
             labelPosition="TOP"
             preferences={preferences}
             features={vtl ? ['VTL'] : []}
-            bindings={vtl ? labelBindings : {}}
+            bindings={vtl ? bindings : {}}
             writable
             zIndex={1}
             filterDescription={filter}
