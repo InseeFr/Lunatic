@@ -1,6 +1,23 @@
 {
 	"components": [
 		{
+			"id": "j3343qhx",
+			"componentType": "Input",
+			"mandatory": false,
+			"maxLength": "30",
+			"label": "Input to test dropdown render",
+			"response": {
+				"name": "NAME",
+				"valueState": [
+					{ "valueType": "PREVIOUS", "value": null },
+					{ "valueType": "COLLECTED", "value": "Hello" },
+					{ "valueType": "FORCED", "value": null },
+					{ "valueType": "EDITED", "value": null },
+					{ "valueType": "INPUTED", "value": null }
+				]
+			}
+		},
+		{
 			"id": "j4nw5cqz",
 			"componentType": "Dropdown",
 			"mandatory": false,

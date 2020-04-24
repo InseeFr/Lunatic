@@ -18,20 +18,19 @@ import {
 
 const stories = storiesOf('Dropdown', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<Dropdown />" />;
 	});
 
 stories.addWithJSX('Default', () => (
-	<Orchestrator id="default" source={data} handleChange={console.log} />
+	<Orchestrator id="default" source={data} />
 ));
 
 stories.addWithJSX('Props', () => (
 	<Orchestrator
 		id="props"
 		source={dataProps}
-		handleChange={console.log}
 		placeholder={text('Placeholder', 'Placeholder')}
 		features={select('Features', featuresOptions, [])}
 		bindings={object('Bindings', { NAME: 'Simpsons', TEXAS: 'Texas' })}
@@ -43,6 +42,7 @@ stories.addWithJSX('Props', () => (
 		preferences={['COLLECTED', 'FORCED']}
 		tooltip={boolean('Tooltip', false)}
 		zIndex={number('zIndex', 0)}
+		freezeOptions={boolean('Freeze options', false)}
 	/>
 ));
 
@@ -50,7 +50,6 @@ stories.addWithJSX('Naf', () => (
 	<Orchestrator
 		id="props"
 		source={dataNAF}
-		handleChange={console.log}
 		placeholder={text('Placeholder', 'Placeholder')}
 		features={select('Features', featuresOptions, [])}
 		bindings={object('Bindings', { NAME: 'Simpsons', TEXAS: 'Texas' })}
@@ -62,5 +61,6 @@ stories.addWithJSX('Naf', () => (
 		preferences={['COLLECTED', 'FORCED']}
 		tooltip={boolean('Tooltip', false)}
 		zIndex={number('zIndex', 0)}
+		freezeOptions={boolean('Freeze options', true)}
 	/>
 ));
