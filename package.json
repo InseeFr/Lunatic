@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "1.2.3-rc1",
+	"version": "1.2.3-rc2",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -36,7 +36,7 @@
 		"library"
 	],
 	"dependencies": {
-		"@inseefr/vtl-tools": "^0.1.13",
+		"@inseefr/vtl-tools": "0.1.12",
 		"keycode": "^2.2.0",
 		"lodash.camelcase": "^4.3.0",
 		"prop-types": "^15.7.2",
