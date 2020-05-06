@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Declarations from '../';
 import { TooltipResponse } from '../../tooltip';
 import * as U from '../../../utils/lib';
-import * as C from '../../../utils/constants';
+import * as C from '../../../constants';
 import { interpret } from '../../../utils/to-expose';
 
 const InputDeclarationsWrapper = ({

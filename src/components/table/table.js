@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as lunatic from '../components';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
-import * as C from '../../utils/constants';
+import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import './table.scss';
 
@@ -28,7 +28,7 @@ const Table = ({
 	const maxLines = initLines ? initLines.max : undefined;
 	const [lines, setLines] = useState(minLines);
 
-	const width = `${100 / Math.max(...cells.map(line => line.length))}%`;
+	const width = `${100 / Math.max(...cells.map((line) => line.length))}%`;
 	const Button = lunatic.Button;
 	return (
 		<>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as lunatic from '../../components';
 import Declarations from '../../declarations';
 import * as U from '../../../utils/lib';
-import * as C from '../../../utils/constants';
+import * as C from '../../../constants';
 import { interpret, getVariableFromResponses } from '../../../utils/to-expose';
 import { buildTableComponents } from './build-components';
 
@@ -29,7 +29,7 @@ const Table = ({
 	const maxLines = initLines ? initLines.max : undefined;
 	const [lines, setLines] = useState(minLines);
 
-	const width = `${100 / Math.max(...components.map(line => line.length))}%`;
+	const width = `${100 / Math.max(...components.map((line) => line.length))}%`;
 	const Button = lunatic.Button;
 
 	const uiComponents = buildTableComponents(headers)(components);
@@ -108,7 +108,7 @@ const Table = ({
 												{...componentProps}
 												id={`${id}-row-${i}`}
 												label={label}
-												handleChange={v => onChange(v, i - 1)}
+												handleChange={(v) => onChange(v, i - 1)}
 												preferences={preferences}
 												positioning={positioning}
 												tooltip={tooltip}
