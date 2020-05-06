@@ -1,13 +1,45 @@
+import * as C from '../../constants';
+
 export const getState = (questionnaire) => {
-	const { components, variables } = questionnaire;
-	const COLLECTED = getVariablesFromComponents(components);
-	const CALCULATED = getCalculatedFromVariables(variables);
-	const EXTERNAL = getExternalFromVariables(variables);
-	return { COLLECTED, CALCULATED, EXTERNAL };
+	const { variables } = questionnaire;
+	return {
+		[C.CALCULATED]: getCalculatedFromVariables(variables),
+		[C.COLLECTED]: getCollectedState(questionnaire),
+		[C.EXTERNAL]: getExternalFromVariables(variables),
+	};
 };
 
-export const getCollectedState = (questionnaire) =>
-	getState(questionnaire).COLLECTED;
+export const getCollectedState = (questionnaire) => {
+	const collectedVars =
+		(questionnaire &&
+			questionnaire.variables &&
+			questionnaire.variables[C.COLLECTED]) ||
+		{};
+	return Object.entries(collectedVars).reduce(
+		(acc, [name, { valueState }]) => ({
+			...acc,
+			[name]: valueStateAsObj(valueState),
+		}),
+		{}
+	);
+};
+
+const valueStateAsObj = (vs) =>
+	vs.reduce(
+		(acc, { valueType, value }) => ({ ...acc, [valueType]: value }),
+		{}
+	);
+
+const getCalculatedFromVariables = (variables) =>
+	variables && variables[C.CALCULATED]
+		? Object.entries(variables[C.CALCULATED]).reduce(
+				(_, [name, { value }]) => ({ ..._, [name]: value }),
+				{}
+		  )
+		: {};
+
+const getExternalFromVariables = (variables) =>
+	(variables && variables[C.EXTERNAL]) || {};
 
 export const getCollectedStateByValueType = (questionnaire) => (
 	valueType,
@@ -23,104 +55,6 @@ export const getCollectedStateByValueType = (questionnaire) => (
 				return _;
 		  }, {})
 		: {};
-
-const getVariablesFromComponents = (components, replaceLabel) =>
-	Array.isArray(components)
-		? components.reduce(
-				(
-					_,
-					{
-						componentType,
-						response,
-						responses,
-						cells,
-						options,
-						components: inComponents,
-					}
-				) => {
-					if (
-						!componentType ||
-						['Sequence', 'Subsequence', 'FilterDescription'].includes(
-							componentType
-						)
-					)
-						return _;
-					else if (['CheckboxGroup'].includes(componentType)) {
-						return { ..._, ...getVariableFromResponses(responses) };
-					} else if (['TableVector', 'Loop'].includes(componentType)) {
-						return { ..._, ...getVariableFromResponses(inComponents) };
-					} else if (['Table'].includes(componentType)) {
-						return { ..._, ...getVariableFromCells(cells) };
-					} else if (componentType === 'Radio') {
-						return {
-							..._,
-							...getVariableFromResponse(response, replaceLabel, options),
-						};
-					} else {
-						return { ..._, ...getVariableFromResponse(response) };
-					}
-				},
-				{}
-		  )
-		: {};
-
-const getVariableFromResponse = (response, replaceLabel, options) => {
-	const { name, valueState } = response;
-	const values = valueState.reduce((__, { valueType, value }) => {
-		const v =
-			replaceLabel && value
-				? options.find((o) => o.value === value).label || ''
-				: value;
-		return { ...__, [valueType]: v };
-	}, {});
-	return { [name]: values };
-};
-
-export const getVariableFromResponses = (responses) => {
-	return responses.reduce(
-		(_, { response }) =>
-			response ? { ..._, ...getVariableFromResponse(response) } : _,
-		{}
-	);
-};
-
-const getVariableFromCells = (cells) =>
-	cells.reduce(
-		(_, components) => ({ ..._, ...getVariablesFromComponents(components) }),
-		{}
-	);
-
-const getCalculatedFromVariables = (variables) =>
-	variables && variables.CALCULATED
-		? Object.entries(variables.CALCULATED).reduce(
-				(_, [name, { value }]) => ({ ..._, [name]: value }),
-				{}
-		  )
-		: {};
-
-const getExternalFromVariables = (variables) =>
-	variables && variables.EXTERNAL
-		? Object.entries(variables.EXTERNAL).reduce(
-				(_, [name, value]) => ({ ..._, [name]: value }),
-				{}
-		  )
-		: {};
-
-const getCollectedFromObject = (obj) =>
-	Object.entries(obj).reduce(
-		(_, o) => ({
-			..._,
-			[o[0]]: typeof o[1] === 'object' ? o[1].COLLECTED : o[1],
-		}),
-		{}
-	);
-
-const convertTrueAndFalse = (bindings) =>
-	Object.entries(bindings).reduce((_, b) => {
-		if (b[1] === true) return { ..._, [b[0]]: 'Vrai' };
-		else if (b[1] === false) return { ..._, [b[0]]: 'Faux' };
-		return { ..._, [b[0]]: b[1] };
-	}, {});
 
 export const getBindings = (questionnaire) => {
 	const { variables } = questionnaire;
