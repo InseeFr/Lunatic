@@ -1,0 +1,99 @@
+{
+	"components": [
+		{ "id": "1", "componentType": "Sequence" },
+		{
+			"id": "2",
+			"componentType": "Input",
+			"response": {
+				"name": "input"
+			}
+		},
+		{
+			"id": "3",
+			"componentType": "CheckboxGroup",
+			"responses": [
+				{
+					"response": {
+						"name": "check1"
+					}
+				},
+				{
+					"response": {
+						"name": "check2"
+					}
+				}
+			]
+		},
+		{
+			"id": "4",
+			"componentType": "Table",
+			"cells": [
+				[
+					{ "label": "label" },
+					{
+						"componentType": "Radio",
+						"response": {
+							"name": "table11"
+						}
+					}
+				]
+			]
+		}
+	],
+	"variables": [
+		{ "variableType": "EXTERNAL", "name": "VAR_EXTERNAL", "value": null },
+		{
+			"variableType": "CALCULATED",
+			"name": "VAR_CALCULATED",
+			"expression": "VTL expression"
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "2",
+			"name": "input",
+			"valueState": [
+				{ "valueType": "PREVIOUS", "value": null },
+				{ "valueType": "COLLECTED", "value": null },
+				{ "valueType": "FORCED", "value": null },
+				{ "valueType": "EDITED", "value": null },
+				{ "valueType": "INPUTED", "value": null }
+			]
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "3",
+			"name": "check1",
+			"valueState": [
+				{ "valueType": "PREVIOUS", "value": null },
+				{ "valueType": "COLLECTED", "value": null },
+				{ "valueType": "FORCED", "value": null },
+				{ "valueType": "EDITED", "value": null },
+				{ "valueType": "INPUTED", "value": null }
+			]
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "3",
+			"name": "check2",
+			"valueState": [
+				{ "valueType": "PREVIOUS", "value": null },
+				{ "valueType": "COLLECTED", "value": null },
+				{ "valueType": "FORCED", "value": null },
+				{ "valueType": "EDITED", "value": null },
+				{ "valueType": "INPUTED", "value": null }
+			]
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "4",
+			"name": "table11",
+			"valueState": [
+				{ "valueType": "PREVIOUS", "value": null },
+				{ "valueType": "COLLECTED", "value": null },
+				{ "valueType": "FORCED", "value": null },
+				{ "valueType": "EDITED", "value": null },
+				{ "valueType": "INPUTED", "value": null }
+			]
+		}
+	]
+}

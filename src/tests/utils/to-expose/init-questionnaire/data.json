@@ -1,0 +1,11 @@
+{
+	"COLLECTED": {
+		"input": { "COLLECTED": "My input" },
+		"check1": { "COLLECTED": true },
+		"check2": { "COLLECTED": false, "FORCED": true },
+		"table11": { "COLLECTED": "1" }
+	},
+	"EXTERNAL": {
+		"VAR_EXTERNAL": "Value VAR_EXTERNAL"
+	}
+}

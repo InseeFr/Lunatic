@@ -1,77 +1,87 @@
-export const mergeQuestionnaireAndData = questionnaire => data => {
+import * as C from '../../constants';
+
+export const mergeQuestionnaireAndData = (questionnaire) => (data) => {
+	if (!questionnaire || !questionnaire.components) return {};
 	if (
-		!questionnaire ||
-		!questionnaire.components ||
-		questionnaire.components.length === 0
+		questionnaire.components.length === 0 ||
+		!data ||
+		Object.keys(data).length === 0
 	)
-		return {};
-	if (!data || Object.keys(data).length === 0) return questionnaire;
-	const { COLLECTED: collectedData } = data;
+		return questionnaire;
 	const { components, variables, ...props } = questionnaire;
-	const filledComponents = components.reduce((_, component) => {
-		const { response, componentType } = component;
-		if (response)
-			return [..._, mergeSimpleComponentAndData(component)(collectedData)];
-		else if (componentType === 'CheckboxGroup')
-			return [..._, mergeCheckboxGroupAndData(component)(collectedData)];
-		else if (componentType === 'Table')
-			return [..._, mergeTableAndData(component)(collectedData)];
-		else return [..._, component];
-	}, []);
-	const filledVariables = {
-		EXTERNAL: variables
-			? variables
-					.filter(({ variableType }) => variableType === 'EXTERNAL')
-					.reduce((_, v) => ({ ..._, ...initExternalVariable(v)(data) }), {})
-			: [],
-		CALCULATED: variables
-			? variables
-					.filter(({ variableType }) => variableType === 'CALCULATED')
-					.reduce((_, v) => ({ ..._, ...initCalculatedVariable(v)(data) }), {})
-			: [],
-	};
-	return { ...props, components: filledComponents, variables: filledVariables };
+
+	const vars = buildVars(data)(variables);
+	const filledComponents = buildFilledComponents(vars[C.COLLECTED])(components);
+
+	return { ...props, components: filledComponents, variables: vars };
 };
 
-const mergeSimpleComponentAndData = component => data => {
-	if (!data || Object.keys(data).length === 0) return component;
-	const { response, ...other } = component;
-	const { name, valueState } = response;
-	const newValueState = valueState.map(({ valueType, value }) => {
-		const newValue =
-			data[name] !== undefined && data[name][valueType] !== undefined
-				? data[name][valueType]
-				: value;
-		return { valueType, value: newValue };
-	});
-	return { ...other, response: { name, valueState: newValueState } };
-};
-
-const mergeCheckboxGroupAndData = component => data => {
-	if (!data || Object.keys(data).length === 0) return component;
-	const { responses, ...other } = component;
-	const newResponses = responses.map(c => mergeSimpleComponentAndData(c)(data));
-	return { ...other, responses: newResponses };
-};
-
-const mergeTableAndData = component => data => {
-	if (!data || Object.keys(data).length === 0) return component;
-	const { cells, ...other } = component;
-	const newCells = cells.reduce((_, line) => {
-		const newLine = line.map(component =>
-			component.response
-				? mergeSimpleComponentAndData(component)(data)
-				: component
+const buildVars = (data) => (variables) => {
+	if (!Array.isArray(variables)) return {};
+	const { COLLECTED: collectedData } = data;
+	const collected = variables
+		.filter(({ variableType }) => variableType === C.COLLECTED)
+		.reduce(
+			(acc, { valueState, name, componentRef }) => ({
+				...acc,
+				[name]: {
+					componentRef,
+					valueState: buildValueState(valueState)(collectedData[name]),
+				},
+			}),
+			{}
 		);
-		return [..._, newLine];
-	}, []);
-	return { ...other, cells: newCells };
+	return {
+		EXTERNAL: variables
+			.filter(({ variableType }) => variableType === C.EXTERNAL)
+			.reduce((_, v) => ({ ..._, ...initExternalVariable(v)(data) }), {}),
+		CALCULATED: variables
+			.filter(({ variableType }) => variableType === C.CALCULATED)
+			.reduce((_, v) => ({ ..._, ...initCalculatedVariable(v)(data) }), {}),
+		COLLECTED: collected,
+	};
 };
 
-const initExternalVariable = ({ name }) => data => ({
+const buildValueState = (vs) => (data) =>
+	vs.map(({ valueType, value }) => ({
+		valueType,
+		value: [undefined, null].includes(data[valueType])
+			? value
+			: data[valueType],
+	}));
+
+const buildFilledComponents = (vars) => (components) =>
+	components.map((c) => {
+		if (c.response) return buildResponseComponent(vars)(c);
+		else if (c.responses) return buildResponsesComponent(vars)(c);
+		else if (c.cells) return buildCellsComponent(vars)(c);
+		return c;
+	});
+
+const buildResponseComponent = (vars) => (c) => ({
+	...c,
+	response: {
+		name: c.response.name,
+		valueState: vars[c.response.name].valueState,
+	},
+});
+
+const buildResponsesComponent = (vars) => (c) => {
+	const { responses, ...rest } = c;
+	const filledResponses = responses.map((r) => buildResponseComponent(vars)(r));
+	return { ...rest, responses: filledResponses };
+};
+
+const buildCellsComponent = (vars) => (c) => {
+	const { cells, ...rest } = c;
+	const filledCells = cells.map((row) => buildFilledComponents(vars)(row));
+	return { ...rest, cells: filledCells };
+};
+
+const initExternalVariable = ({ name }) => (data) => ({
 	[name]: (data && data.EXTERNAL && data.EXTERNAL[name]) || null,
 });
 
-const initCalculatedVariable = ({ name, expression }) => data => ({
+const initCalculatedVariable = ({ name, expression }) => (data) => ({
 	[name]: { expression, value: null },
 });
