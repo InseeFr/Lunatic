@@ -37,9 +37,15 @@ describe('state', () => {
 			expect(getCollectedStateByValueType(questionnaire)('COLLECTED')).toEqual(
 				R.collectedStateCollected
 			);
+			expect(getCollectedStateByValueType(questionnaire)('FORCED')).toEqual(
+				R.collectedStateForced
+			);
 			expect(
 				getCollectedStateByValueType(questionnaire)('COLLECTED', true)
 			).toEqual(R.collectedStateCollectedWithNull);
+			expect(
+				getCollectedStateByValueType(questionnaire)('FORCED', true)
+			).toEqual(R.collectedStateForcedWithNull);
 		});
 	});
 	describe('getBindings', () => {

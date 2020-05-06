@@ -51,49 +51,49 @@
 			"variableType": "COLLECTED",
 			"componentRef": "2",
 			"name": "input",
-			"valueState": [
-				{ "valueType": "PREVIOUS", "value": null },
-				{ "valueType": "COLLECTED", "value": null },
-				{ "valueType": "FORCED", "value": null },
-				{ "valueType": "EDITED", "value": null },
-				{ "valueType": "INPUTED", "value": null }
-			]
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"componentRef": "3",
 			"name": "check1",
-			"valueState": [
-				{ "valueType": "PREVIOUS", "value": null },
-				{ "valueType": "COLLECTED", "value": null },
-				{ "valueType": "FORCED", "value": null },
-				{ "valueType": "EDITED", "value": null },
-				{ "valueType": "INPUTED", "value": null }
-			]
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"componentRef": "3",
 			"name": "check2",
-			"valueState": [
-				{ "valueType": "PREVIOUS", "value": null },
-				{ "valueType": "COLLECTED", "value": null },
-				{ "valueType": "FORCED", "value": null },
-				{ "valueType": "EDITED", "value": null },
-				{ "valueType": "INPUTED", "value": null }
-			]
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"componentRef": "4",
 			"name": "table11",
-			"valueState": [
-				{ "valueType": "PREVIOUS", "value": null },
-				{ "valueType": "COLLECTED", "value": null },
-				{ "valueType": "FORCED", "value": null },
-				{ "valueType": "EDITED", "value": null },
-				{ "valueType": "INPUTED", "value": null }
-			]
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
 		}
 	]
 }

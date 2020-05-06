@@ -59,6 +59,18 @@ export const collectedStateCollectedWithNull = {
 	table12: null,
 };
 
+export const collectedStateForced = {
+	check2: true,
+};
+
+export const collectedStateForcedWithNull = {
+	input: null,
+	check1: null,
+	check2: true,
+	table11: null,
+	table12: null,
+};
+
 export const bindingsResults = {
 	...collectedStateCollectedWithNull,
 	VAR_CALCULATED: null,

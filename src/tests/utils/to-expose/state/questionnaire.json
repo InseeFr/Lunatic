@@ -8,53 +8,53 @@
 		"COLLECTED": {
 			"input": {
 				"componentRef": "2",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "My input" },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "My input",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			},
 			"check1": {
 				"componentRef": "3",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": true },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			},
 			"check2": {
 				"componentRef": "3",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": false },
-					{ "valueType": "FORCED", "value": true },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": false,
+					"FORCED": true,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			},
 			"table11": {
 				"componentRef": "4",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "1" },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "1",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			},
 			"table12": {
 				"componentRef": "4",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": null },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
 	}

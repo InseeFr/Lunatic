@@ -10,25 +10,17 @@ export const getState = (questionnaire) => {
 };
 
 export const getCollectedState = (questionnaire) => {
-	const collectedVars =
-		(questionnaire &&
-			questionnaire.variables &&
-			questionnaire.variables[C.COLLECTED]) ||
-		{};
-	return Object.entries(collectedVars).reduce(
-		(acc, [name, { valueState }]) => ({
-			...acc,
-			[name]: valueStateAsObj(valueState),
-		}),
+	const { variables } = questionnaire;
+	return (
+		(variables &&
+			variables[C.COLLECTED] &&
+			Object.entries(variables[C.COLLECTED]).reduce(
+				(acc, [name, { values }]) => ({ ...acc, [name]: values }),
+				{}
+			)) ||
 		{}
 	);
 };
-
-const valueStateAsObj = (vs) =>
-	vs.reduce(
-		(acc, { valueType, value }) => ({ ...acc, [valueType]: value }),
-		{}
-	);
 
 const getCalculatedFromVariables = (variables) =>
 	variables && variables[C.CALCULATED]

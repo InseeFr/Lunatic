@@ -22,11 +22,11 @@ const buildVars = (data) => (variables) => {
 	const collected = variables
 		.filter(({ variableType }) => variableType === C.COLLECTED)
 		.reduce(
-			(acc, { valueState, name, componentRef }) => ({
+			(acc, { values, name, componentRef }) => ({
 				...acc,
 				[name]: {
 					componentRef,
-					valueState: buildValueState(valueState)(collectedData[name]),
+					values: { ...values, ...collectedData[name] },
 				},
 			}),
 			{}
@@ -42,14 +42,6 @@ const buildVars = (data) => (variables) => {
 	};
 };
 
-const buildValueState = (vs) => (data) =>
-	vs.map(({ valueType, value }) => ({
-		valueType,
-		value: [undefined, null].includes(data[valueType])
-			? value
-			: data[valueType],
-	}));
-
 const buildFilledComponents = (vars) => (components) =>
 	components.map((c) => {
 		if (c.response) return buildResponseComponent(vars)(c);
@@ -62,7 +54,7 @@ const buildResponseComponent = (vars) => (c) => ({
 	...c,
 	response: {
 		name: c.response.name,
-		valueState: vars[c.response.name].valueState,
+		values: vars[c.response.name].values,
 	},
 });
 
