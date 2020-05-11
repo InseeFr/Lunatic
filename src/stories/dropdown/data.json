@@ -37,7 +37,7 @@
 			"mandatory": false,
 			"label": "In which state do The Simpsons reside?",
 			"response": {
-				"name": "STATE",
+				"name": "STATE2",
 				"valueState": [
 					{ "valueType": "PREVIOUS", "value": null },
 					{ "valueType": "COLLECTED", "value": "3" },
