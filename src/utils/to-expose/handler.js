@@ -1,4 +1,6 @@
-export const updateQuestionnaire = valueType => questionnaire => preferences => updatedValue => {
+export const updateQuestionnaire = (valueType) => (questionnaire) => (
+	preferences
+) => (updatedValues) => {
 	if (
 		!['PREVIOUS', 'COLLECTED', 'FORCED', 'EDITED', 'INPUTED'].includes(
 			valueType
@@ -6,16 +8,46 @@ export const updateQuestionnaire = valueType => questionnaire => preferences => 
 		preferences.length === 0
 	)
 		return questionnaire;
-	const components = questionnaire.components.reduce(
-		(_, c) => [..._, updateComponent(valueType)(c)(preferences)(updatedValue)],
-		[]
+	const { variables, ...other } = questionnaire;
+	let componentRefs = [];
+	const newVariables = Object.entries(updatedValues).reduce(
+		(acc, [key, value]) => {
+			// TODO Update CALCULATED vars with VTL
+			const { COLLECTED, ...otherVars } = acc;
+			const { componentRef, values } = COLLECTED[key];
+			componentRefs.push(componentRef);
+			const updated = {
+				componentRef,
+				values: {
+					...values,
+					[valueType]: buildNewValue(preferences)(valueType)(values)(value),
+				},
+			};
+			return {
+				...otherVars,
+				COLLECTED: { ...COLLECTED, [key]: updated },
+			};
+		},
+		variables
 	);
-	return { ...questionnaire, components };
+	return { ...other, variables: newVariables };
 };
 
-export const updateComponent = valueType => component => preferences => updatedValue => {
+const buildNewValue = (preferences) => (valueType) => (oldValues) => (
+	value
+) => {
+	if (preferences.length === 1) return value;
+	const index = preferences.indexOf(valueType);
+	if (index < 1) return value;
+	const before = preferences[index - 1];
+	return oldValues[before] === value ? null : value;
+};
+
+export const updateComponent = (valueType) => (component) => (preferences) => (
+	updatedValues
+) => {
 	const { response, componentType } = component;
-	return Object.entries(updatedValue).reduce((acc, [name, value]) => {
+	return Object.entries(updatedValues).reduce((acc, [name, value]) => {
 		if (!isComponentsConcernedByResponse(name)(component)) {
 			return acc;
 		} else if (response) {
@@ -36,11 +68,11 @@ export const updateComponent = valueType => component => preferences => updatedV
 	}, component);
 };
 
-export const isComponentsConcernedByResponse = responseName => component =>
+export const isComponentsConcernedByResponse = (responseName) => (component) =>
 	(component.response && component.response.name === responseName) ||
 	(component.responses &&
 		component.responses.filter(
-			o => o.response && o.response.name === responseName
+			(o) => o.response && o.response.name === responseName
 		).length !== 0) ||
 	(component.components &&
 		component.components
@@ -49,18 +81,20 @@ export const isComponentsConcernedByResponse = responseName => component =>
 					c.response && c.response.name ? [...acc, c.response.name] : acc,
 				[]
 			)
-			.filter(str => str === responseName).length === 1) ||
+			.filter((str) => str === responseName).length === 1) ||
 	(component.cells &&
 		component.cells
 			.reduce((_, line) => {
-				line.forEach(l => {
+				line.forEach((l) => {
 					if (l.response && l.response.name) _.push(l.response.name);
 				});
 				return _;
 			}, [])
-			.filter(str => str === responseName).length === 1);
+			.filter((str) => str === responseName).length === 1);
 
-export const buildUpdatedResponse = component => preferences => valueType => value => {
+export const buildUpdatedResponse = (component) => (preferences) => (
+	valueType
+) => (value) => {
 	let newValue = value;
 	const { response, componentType } = component;
 	const { valueState } = response;
@@ -69,8 +103,8 @@ export const buildUpdatedResponse = component => preferences => valueType => val
 			.slice(0, preferences.length - 1)
 			.reduce(
 				(_, type) =>
-					valueState.find(v => v.valueType === type).value !== null
-						? valueState.find(v => v.valueType === type).value
+					valueState.find((v) => v.valueType === type).value !== null
+						? valueState.find((v) => v.valueType === type).value
 						: _,
 				''
 			);
@@ -84,14 +118,14 @@ export const buildUpdatedResponse = component => preferences => valueType => val
 	}
 	if (
 		componentType === 'CheckboxOne' &&
-		valueState.find(v => v.valueType === valueType).value === newValue
+		valueState.find((v) => v.valueType === valueType).value === newValue
 	)
 		newValue = null;
 	if (
 		componentType === 'CheckboxBoolean' &&
 		value === false &&
 		response.valueState.filter(
-			vs => !(vs.value === null || vs.valueType === valueType)
+			(vs) => !(vs.value === null || vs.valueType === valueType)
 		).length === 0
 	)
 		newValue = null;
@@ -108,7 +142,9 @@ export const buildUpdatedResponse = component => preferences => valueType => val
 	};
 };
 
-export const buildUpdatedVectorResponse = responses => preferences => valueType => value => name => {
+export const buildUpdatedVectorResponse = (responses) => (preferences) => (
+	valueType
+) => (value) => (name) => {
 	return responses.reduce((_, cellComponent) => {
 		if (isComponentsConcernedByResponse(name)(cellComponent))
 			return [
@@ -119,16 +155,23 @@ export const buildUpdatedVectorResponse = responses => preferences => valueType 
 	}, []);
 };
 
-export const buildUpdatedCheckboxGroupResponse = component => preferences => valueType => value => name => {
+export const buildUpdatedCheckboxGroupResponse = (component) => (
+	preferences
+) => (valueType) => (value) => (name) => {
 	const { responses, ...other } = component;
-	const res = responses.map(r => ({ ...r, componentType: 'CheckboxBoolean' }));
+	const res = responses.map((r) => ({
+		...r,
+		componentType: 'CheckboxBoolean',
+	}));
 	const newResponses = buildUpdatedVectorResponse(res)(preferences)(valueType)(
 		value
 	)(name);
 	return { ...other, responses: newResponses };
 };
 
-export const buildUpdatedTableVectorResponse = component => preferences => valueType => value => name => {
+export const buildUpdatedTableVectorResponse = (component) => (preferences) => (
+	valueType
+) => (value) => (name) => {
 	const { components, ...other } = component;
 	const newComponents = components.reduce(
 		(_, c) =>
@@ -140,7 +183,9 @@ export const buildUpdatedTableVectorResponse = component => preferences => value
 	return { ...other, components: newComponents };
 };
 
-export const buildUpdatedTableResponse = component => preferences => valueType => value => name => {
+export const buildUpdatedTableResponse = (component) => (preferences) => (
+	valueType
+) => (value) => (name) => {
 	const { cells, ...other } = component;
 	const newCells = cells.reduce((_, line) => {
 		_.push(

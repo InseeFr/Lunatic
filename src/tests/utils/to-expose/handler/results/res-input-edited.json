@@ -1,0 +1,119 @@
+{
+	"components": [
+		{ "id": "1", "componentType": "Sequence" },
+		{
+			"id": "2",
+			"componentType": "Input",
+			"response": {
+				"name": "input",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "My input",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		},
+		{
+			"id": "3",
+			"componentType": "CheckboxGroup",
+			"responses": [
+				{
+					"response": {
+						"name": "check1",
+						"values": {
+							"PREVIOUS": null,
+							"COLLECTED": true,
+							"FORCED": null,
+							"EDITED": null,
+							"INPUTED": null
+						}
+					}
+				},
+				{
+					"response": {
+						"name": "check2",
+						"values": {
+							"PREVIOUS": null,
+							"COLLECTED": false,
+							"FORCED": true,
+							"EDITED": null,
+							"INPUTED": null
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "4",
+			"componentType": "Table",
+			"cells": [
+				[
+					{ "label": "label" },
+					{
+						"componentType": "Radio",
+						"response": {
+							"name": "table11",
+							"values": {
+								"PREVIOUS": null,
+								"COLLECTED": "1",
+								"FORCED": null,
+								"EDITED": null,
+								"INPUTED": null
+							}
+						}
+					}
+				]
+			]
+		}
+	],
+	"variables": {
+		"EXTERNAL": { "VAR_EXTERNAL": "Value VAR_EXTERNAL" },
+		"CALCULATED": {
+			"VAR_CALCULATED": { "expression": "VTL expression", "value": null }
+		},
+		"COLLECTED": {
+			"input": {
+				"componentRef": "2",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "My input",
+					"FORCED": null,
+					"EDITED": "My new input",
+					"INPUTED": null
+				}
+			},
+			"check1": {
+				"componentRef": "3",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"check2": {
+				"componentRef": "3",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": false,
+					"FORCED": true,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"table11": {
+				"componentRef": "4",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "1",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		}
+	}
+}
