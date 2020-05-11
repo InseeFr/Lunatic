@@ -15,10 +15,10 @@ export const initial = {
 };
 
 /** */
-const isPrefix = prefix => prefix !== undefined && prefix.length > 0;
+const isPrefix = (prefix) => prefix !== undefined && prefix.length > 0;
 
 /** */
-const reduceArrowDownPressed = state => {
+const reduceArrowDownPressed = (state) => {
 	const { visibleOptions, activeIndex } = state;
 	const next = visibleOptions.length
 		? Math.min(
@@ -33,7 +33,7 @@ const reduceArrowDownPressed = state => {
 };
 
 /** */
-const reduceArrowUpPressed = state => {
+const reduceArrowUpPressed = (state) => {
 	const { visibleOptions, activeIndex } = state;
 	const next = visibleOptions.length
 		? Math.max(0, activeIndex === undefined ? 0 : activeIndex - 1)

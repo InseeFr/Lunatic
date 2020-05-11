@@ -13,13 +13,13 @@ import {
 } from '../event-callbacks';
 
 /** */
-const stopAndPrevent = e => {
+const stopAndPrevent = (e) => {
 	e.preventDefault();
 	e.stopPropagation();
 };
 
 /** */
-const onKeyDownCallback_ = (state, dispatch, onSelect) => e => {
+const onKeyDownCallback_ = (state, dispatch, onSelect) => (e) => {
 	switch (e.key) {
 		case BINDED_KEYS.enter:
 		case BINDED_KEYS.arrowUp:
@@ -34,7 +34,7 @@ const onKeyDownCallback_ = (state, dispatch, onSelect) => e => {
 	}
 };
 
-const getZIndex = z => z || 0;
+const getZIndex = (z) => z || 0;
 
 const DropdownContainer = ({
 	options,
@@ -51,7 +51,6 @@ const DropdownContainer = ({
 	state,
 	dispatch,
 	refs,
-	ref,
 }) => {
 	const { visible, focused, id, disabled } = state;
 
@@ -60,8 +59,8 @@ const DropdownContainer = ({
 		dispatch(actions.setFocused(false));
 	});
 	useEffect(
-		e => {
-			const hook = e => {
+		(e) => {
+			const hook = (e) => {
 				dispatch(actions.hidePanel());
 				dispatch(actions.setFocused(false));
 			};
@@ -109,7 +108,7 @@ const DropdownContainer = ({
 			onMouseDown={onMouseDownCallback(state, dispatch, 'id')}
 			onKeyDown={onKeyDownCallback_(state, dispatch, onSelect)}
 			onFocus={() => dispatch(actions.setFocused(true && !disabled))}
-			onBlur={function() {
+			onBlur={function () {
 				dispatch(actions.setFocused(false));
 			}}
 			ref={refs}

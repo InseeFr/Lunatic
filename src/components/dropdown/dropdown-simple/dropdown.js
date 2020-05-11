@@ -32,8 +32,9 @@ const Dropdown = ({
 		disabled,
 		focused: initFocused,
 	});
-	const { focused, selectedOption, visible, activeIndex, id } = state;
+	const { focused, visible, activeIndex, id } = state;
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
+	const selectedOption = options.find((o) => o.value === value);
 	return (
 		<DropdownContainer
 			className={className || 'lunatic-dropdown'}
@@ -72,7 +73,7 @@ const Dropdown = ({
 					optionComponent={Option}
 					selectedOption={selectedOption}
 					onSelect={onSelect_}
-					handleActive={index => dispatch(actions.setActiveOption(index))}
+					handleActive={(index) => dispatch(actions.setActiveOption(index))}
 				/>
 			</div>
 		</DropdownContainer>
@@ -122,7 +123,7 @@ const getIcon = ({ disabled }, dispatch) => (visible, containerEl) => {
 		<span
 			className="lunatic-icone"
 			tabIndex="-1"
-			onMouseDown={e => {
+			onMouseDown={(e) => {
 				e.stopPropagation();
 				e.preventDefault();
 				if (visible) {
@@ -142,7 +143,7 @@ const getIcon = ({ disabled }, dispatch) => (visible, containerEl) => {
 	);
 };
 
-const createOnSelect = (_, dispatch, onSelect) => option => {
+const createOnSelect = (_, dispatch, onSelect) => (option) => {
 	dispatch(actions.setSelectedOption(option));
 	dispatch(actions.hidePanel());
 	onSelect(option);

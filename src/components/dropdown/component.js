@@ -24,9 +24,6 @@ const Dropdown = ({
 	...rest
 }) => {
 	const [opts, setOpts] = useState(options);
-	const [value, setValue] = useState(
-		U.getResponseByPreference(preferences)(response)
-	);
 
 	useEffect(() => {
 		if (!freezeOptions) {
@@ -39,10 +36,7 @@ const Dropdown = ({
 	}, [freezeOptions, features, bindings, options]);
 
 	const interpretedLabel = interpret(features)(bindings)(label);
-
-	useEffect(() => {
-		setValue(U.getResponseByPreference(preferences)(response));
-	}, [preferences, response]);
+	const value = U.getResponseByPreference(preferences)(response);
 
 	const onSelect = (e) =>
 		handleChange({
