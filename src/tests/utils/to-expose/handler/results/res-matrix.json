@@ -8,7 +8,7 @@
 				"name": "input",
 				"values": {
 					"PREVIOUS": null,
-					"COLLECTED": "My new input",
+					"COLLECTED": "My input",
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null
@@ -57,7 +57,7 @@
 							"name": "table11",
 							"values": {
 								"PREVIOUS": null,
-								"COLLECTED": "1",
+								"COLLECTED": "My new input",
 								"FORCED": null,
 								"EDITED": null,
 								"INPUTED": null
@@ -78,7 +78,7 @@
 				"componentRef": "2",
 				"values": {
 					"PREVIOUS": null,
-					"COLLECTED": "My new input",
+					"COLLECTED": "My input",
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null
@@ -108,7 +108,7 @@
 				"componentRef": "4",
 				"values": {
 					"PREVIOUS": null,
-					"COLLECTED": "1",
+					"COLLECTED": "My new input",
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null

@@ -50,7 +50,7 @@ const buildFilledComponents = (vars) => (components) =>
 		return c;
 	});
 
-const buildResponseComponent = (vars) => (c) => ({
+export const buildResponseComponent = (vars) => (c) => ({
 	...c,
 	response: {
 		name: c.response.name,
@@ -58,13 +58,13 @@ const buildResponseComponent = (vars) => (c) => ({
 	},
 });
 
-const buildResponsesComponent = (vars) => (c) => {
+export const buildResponsesComponent = (vars) => (c) => {
 	const { responses, ...rest } = c;
 	const filledResponses = responses.map((r) => buildResponseComponent(vars)(r));
 	return { ...rest, responses: filledResponses };
 };
 
-const buildCellsComponent = (vars) => (c) => {
+export const buildCellsComponent = (vars) => (c) => {
 	const { cells, ...rest } = c;
 	const filledCells = cells.map((row) => buildFilledComponents(vars)(row));
 	return { ...rest, cells: filledCells };

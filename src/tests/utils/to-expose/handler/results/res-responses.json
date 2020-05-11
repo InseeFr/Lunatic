@@ -8,7 +8,7 @@
 				"name": "input",
 				"values": {
 					"PREVIOUS": null,
-					"COLLECTED": "My new input",
+					"COLLECTED": "My input",
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null
@@ -37,7 +37,7 @@
 						"values": {
 							"PREVIOUS": null,
 							"COLLECTED": false,
-							"FORCED": true,
+							"FORCED": null,
 							"EDITED": null,
 							"INPUTED": null
 						}
@@ -78,7 +78,7 @@
 				"componentRef": "2",
 				"values": {
 					"PREVIOUS": null,
-					"COLLECTED": "My new input",
+					"COLLECTED": "My input",
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null
@@ -99,7 +99,7 @@
 				"values": {
 					"PREVIOUS": null,
 					"COLLECTED": false,
-					"FORCED": true,
+					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null
 				}

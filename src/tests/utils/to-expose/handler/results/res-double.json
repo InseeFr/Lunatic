@@ -24,7 +24,7 @@
 						"name": "check1",
 						"values": {
 							"PREVIOUS": null,
-							"COLLECTED": true,
+							"COLLECTED": false,
 							"FORCED": null,
 							"EDITED": null,
 							"INPUTED": null
@@ -57,7 +57,7 @@
 							"name": "table11",
 							"values": {
 								"PREVIOUS": null,
-								"COLLECTED": "1",
+								"COLLECTED": "2",
 								"FORCED": null,
 								"EDITED": null,
 								"INPUTED": null

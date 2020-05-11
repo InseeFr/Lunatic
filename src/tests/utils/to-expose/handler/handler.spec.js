@@ -26,12 +26,13 @@ describe('handler', () => {
 				)
 			).toEqual(questionnaire);
 		});
-		it('should return simple updated questionnaire', () => {
+		it('should return an updated questionnaire with response component', () => {
 			expect(
 				H.updateQuestionnaire('COLLECTED')(questionnaire)(['COLLECTED'])({
 					input: 'My new input',
 				})
 			).toEqual(R.resInputCollected);
+
 			expect(
 				H.updateQuestionnaire('EDITED')(questionnaire)(['COLLECTED', 'EDITED'])(
 					{
@@ -40,22 +41,22 @@ describe('handler', () => {
 				)
 			).toEqual(R.resInputEdited);
 		});
-		// it('should return vectorial updated questionnaire', () => {
-		// 	expect(
-		// 		H.updateQuestionnaire('FORCED')(questionnaire)(['COLLECTED', 'FORCED'])(
-		// 			{
-		// 				check2: false,
-		// 			}
-		// 		)
-		// 	).toEqual(vectorialUpdatedQuestionnaire);
-		// });
-		// it('should return matrix updated questionnaire', () => {
-		// 	expect(
-		// 		H.updateQuestionnaire('COLLECTED')(questionnaire)(['COLLECTED'])({
-		// 			table11: 'My new input',
-		// 		})
-		// 	).toEqual(matrixUpdatedQuestionnaire);
-		// });
+		it('should return an updated questionnaire with responses component', () => {
+			expect(
+				H.updateQuestionnaire('FORCED')(questionnaire)(['COLLECTED', 'FORCED'])(
+					{
+						check2: false,
+					}
+				)
+			).toEqual(R.resResponses);
+		});
+		it('should return an updated questionnaire with matrix component', () => {
+			expect(
+				H.updateQuestionnaire('COLLECTED')(questionnaire)(['COLLECTED'])({
+					table11: 'My new input',
+				})
+			).toEqual(R.resMatrix);
+		});
 
 		it('should return double updated questionnaire', () => {
 			expect(
