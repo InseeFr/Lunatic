@@ -5,6 +5,5 @@ export {
 	getCollectedState,
 	getCollectedStateByValueType,
 	getBindings,
-	getVariableFromResponses,
 } from './state';
 export { interpret } from './interpret';

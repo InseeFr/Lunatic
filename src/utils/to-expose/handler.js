@@ -4,14 +4,13 @@ import {
 	buildResponsesComponent,
 	buildCellsComponent,
 } from './init-questionnaire';
+import { supportedPreferences } from '../../constants';
 
 export const updateQuestionnaire = (valueType) => (questionnaire) => (
 	preferences
 ) => (updatedValues) => {
 	if (
-		!['PREVIOUS', 'COLLECTED', 'FORCED', 'EDITED', 'INPUTED'].includes(
-			valueType
-		) ||
+		!supportedPreferences.includes(valueType) ||
 		preferences.length === 0 ||
 		!updatedValues
 	)

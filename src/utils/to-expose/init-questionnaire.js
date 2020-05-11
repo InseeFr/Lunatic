@@ -21,16 +21,16 @@ const buildVars = (data) => (variables) => {
 	const { COLLECTED: collectedData } = data;
 	const collected = variables
 		.filter(({ variableType }) => variableType === C.COLLECTED)
-		.reduce(
-			(acc, { values, name, componentRef }) => ({
+		.reduce((acc, { values, name, componentRef }) => {
+			const d = (collectedData && collectedData[name]) || {};
+			return {
 				...acc,
 				[name]: {
 					componentRef,
-					values: { ...values, ...collectedData[name] },
+					values: { ...values, ...d },
 				},
-			}),
-			{}
-		);
+			};
+		}, {});
 	return {
 		EXTERNAL: variables
 			.filter(({ variableType }) => variableType === C.EXTERNAL)
