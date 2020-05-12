@@ -14,7 +14,7 @@ describe('responses utils', () => {
 			expect(
 				R.getResponseByPreference(['COLLECTED'])({
 					name: 'name',
-					valueState: [{ valueType: 'COLLECTED', value: 'Collected' }],
+					values: { COLLECTED: 'Collected' },
 				})
 			).toEqual('Collected');
 		});
@@ -22,10 +22,7 @@ describe('responses utils', () => {
 			expect(
 				R.getResponseByPreference(['COLLECTED'])({
 					name: 'name',
-					valueState: [
-						{ valueType: 'COLLECTED', value: 'Collected' },
-						{ valueType: 'FORCED', value: 'Forced' },
-					],
+					values: { COLLECTED: 'Collected', FORCED: 'Forced' },
 				})
 			).toEqual('Collected');
 		});
@@ -33,10 +30,10 @@ describe('responses utils', () => {
 			expect(
 				R.getResponseByPreference(['COLLECTED', 'FORCED'])({
 					name: 'name',
-					valueState: [
-						{ valueType: 'COLLECTED', value: 'Collected' },
-						{ valueType: 'FORCED', value: null },
-					],
+					values: {
+						COLLECTED: 'Collected',
+						FORCED: null,
+					},
 				})
 			).toEqual('Collected');
 		});
@@ -44,10 +41,7 @@ describe('responses utils', () => {
 			expect(
 				R.getResponseByPreference(['COLLECTED', 'FORCED'])({
 					name: 'name',
-					valueState: [
-						{ valueType: 'COLLECTED', value: 'Collected' },
-						{ valueType: 'FORCED', value: 'Forced' },
-					],
+					values: { COLLECTED: 'Collected', FORCED: 'Forced' },
 				})
 			).toEqual('Forced');
 		});
@@ -56,11 +50,7 @@ describe('responses utils', () => {
 			expect(
 				R.getResponseByPreference(['COLLECTED', 'FORCED', 'EDITED'])({
 					name: 'name',
-					valueState: [
-						{ valueType: 'COLLECTED', value: 'Collected' },
-						{ valueType: 'FORCED', value: '' },
-						{ valueType: 'EDITED', value: null },
-					],
+					values: { COLLECTED: 'Collected', FORCED: '', EDITED: null },
 				})
 			).toEqual('');
 		});
