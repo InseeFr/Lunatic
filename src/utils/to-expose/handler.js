@@ -4,7 +4,7 @@ import {
 	buildResponsesComponent,
 	buildCellsComponent,
 } from './init-questionnaire';
-import { supportedPreferences } from '../../constants';
+import { supportedPreferences } from '../../constants/supported-preferences';
 
 export const updateQuestionnaire = (valueType) => (questionnaire) => (
 	preferences

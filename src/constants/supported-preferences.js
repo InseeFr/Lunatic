@@ -1,8 +1,10 @@
+import * as C from './value-types';
+
 // ORDERED ARRAY
 export const supportedPreferences = [
-	'PREVIOUS',
-	'COLLECTED',
-	'FORCED',
-	'EDITED',
-	'INPUTED',
+	C.PREVIOUS,
+	C.COLLECTED,
+	C.FORCED,
+	C.EDITED,
+	C.INPUTED,
 ];
