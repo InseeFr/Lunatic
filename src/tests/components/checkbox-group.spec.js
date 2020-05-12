@@ -7,12 +7,12 @@ describe('checkbox-group', () => {
 	const responses = [
 		{
 			id: '1',
-			response: { valueState: [{ valueType: 'COLLECTED', value: true }] },
+			response: { name: 'a', values: { COLLECTED: true } },
 			label: 'France',
 		},
 		{
 			id: '2',
-			response: { valueState: [{ valueType: 'COLLECTED', value: false }] },
+			response: { name: 'b', values: { COLLECTED: false } },
 			label: 'Italy',
 		},
 	];
@@ -46,6 +46,6 @@ describe('checkbox-group', () => {
 				},
 			});
 		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': false });
+		expect(handleChange).toHaveBeenCalledWith({ a: false });
 	});
 });

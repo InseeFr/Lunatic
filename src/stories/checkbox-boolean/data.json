@@ -1,13 +1,13 @@
 {
 	"components": [
 		{
-			"id": "j6p0np9q",
+			"id": "1",
 			"componentType": "CheckboxBoolean",
 			"mandatory": false,
 			"label": "➡ 2. Are you ready?",
 			"response": {
 				"name": "READY",
-				"valueState": [
+				"values": [
 					{ "valueType": "PREVIOUS", "value": null },
 					{ "valueType": "COLLECTED", "value": true },
 					{ "valueType": "FORCED", "value": null },
@@ -15,6 +15,20 @@
 					{ "valueType": "INPUTED", "value": null }
 				]
 			}
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "READY",
+			"componentRef": "1",
+			"values": [
+				{ "valueType": "PREVIOUS", "value": null },
+				{ "valueType": "COLLECTED", "value": true },
+				{ "valueType": "FORCED", "value": null },
+				{ "valueType": "EDITED", "value": null },
+				{ "valueType": "INPUTED", "value": null }
+			]
 		}
 	]
 }
