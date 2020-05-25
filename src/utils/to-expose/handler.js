@@ -62,6 +62,10 @@ const buildNewValue = (preferences) => (valueType) => (oldValues) => (
 	if (preferences.length === 1) return value;
 	const index = preferences.indexOf(valueType);
 	if (index < 1) return value;
-	const before = preferences[index - 1];
-	return oldValues[before] === value ? null : value;
+	const valuesByPreference = preferences
+		.slice(0, index)
+		.map((p) => oldValues[p])
+		.filter((v) => v !== null);
+	const lastValue = valuesByPreference[valuesByPreference.length - 1];
+	return lastValue === value ? null : value;
 };

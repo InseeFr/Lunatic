@@ -19,6 +19,15 @@ describe('handler', () => {
 				)
 			).toEqual(questionnaire);
 			expect(
+				H.updateQuestionnaire('EDITED')(questionnaire)([
+					'COLLECTED',
+					'FORCED',
+					'EDITED',
+				])({
+					input: 'My input',
+				})
+			).toEqual(questionnaire);
+			expect(
 				H.updateQuestionnaire('FORCED')(questionnaire)(['COLLECTED', 'FORCED'])(
 					{
 						check2: true,

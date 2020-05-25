@@ -11,8 +11,8 @@ export const buildTooltip = (response) => {
 	const edited = values[C.EDITED];
 	const forced = values[C.FORCED];
 	const collected = values[C.COLLECTED];
-	if (edited) {
-		if (!forced)
+	if (has(edited)) {
+		if (!has(forced))
 			return {
 				content: [
 					{
@@ -36,7 +36,7 @@ export const buildTooltip = (response) => {
 			imgName: 'editedImg',
 		};
 	}
-	if (forced)
+	if (has(forced))
 		return {
 			content: [
 				{
@@ -48,3 +48,5 @@ export const buildTooltip = (response) => {
 		};
 	return {};
 };
+
+const has = (status) => status !== undefined && status !== null;
