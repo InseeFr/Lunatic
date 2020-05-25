@@ -18,10 +18,6 @@ describe('checkbox-group', () => {
 	];
 	const defaultProps = { id: 'id', handleChange, responses };
 
-	it('renders without crashing', () => {
-		mount(<CheckboxGroup {...defaultProps} keyboardSelection />);
-	});
-
 	it('returns tooltip component', () => {
 		shallow(<CheckboxGroup {...defaultProps} tooltip />);
 	});

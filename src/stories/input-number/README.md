@@ -27,7 +27,7 @@
 |      style       | object |      {}       |          | Style of the input                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
-- `response` props has to be a shape of `{name: string, valueState: object}`
+- `response` props has to be a shape of `{name: string, values: object}`
 - `labelPosition` props has to be one of `DEFAULT`, `TOP`, `BOTTOM`, `RIGHT` or `LEFT`
 - `unitPosition` props has to be one of `DEFAULT`, `BEFORE` or `AFTER`
 - `declarations` are documented in the `Declarations` component
