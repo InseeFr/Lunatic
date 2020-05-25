@@ -7,7 +7,7 @@ import { titleDecorator } from 'utils/lib';
 
 const stories = storiesOf('TooltipResponse', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<TooltipResponse />" />;
 	});
@@ -19,11 +19,11 @@ stories.addWithJSX('Forced', () => (
 		id="response"
 		response={{
 			name: 'response',
-			valueState: [
-				{ valueType: 'COLLECTED', value: 'Collected' },
-				{ valueType: 'FORCED', value: 'Forced' },
-				{ valueType: 'EDITED', value: '' },
-			],
+			values: {
+				COLLECTED: 'Collected',
+				FORCED: 'Forced',
+				EDITED: '',
+			},
 		}}
 	/>
 ));
@@ -33,11 +33,11 @@ stories.addWithJSX('Edited', () => (
 		id="response"
 		response={{
 			name: 'response',
-			valueState: [
-				{ valueType: 'COLLECTED', value: 'Collected' },
-				{ valueType: 'FORCED', value: 'Forced' },
-				{ valueType: 'EDITED', value: 'Edited' },
-			],
+			values: {
+				COLLECTED: 'Collected',
+				FORCED: 'Forced',
+				EDITED: 'Edited',
+			},
 		}}
 	/>
 ));

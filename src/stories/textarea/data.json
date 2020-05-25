@@ -1,24 +1,35 @@
 {
 	"components": [
 		{
-			"id": "j6p3dkx6",
+			"id": "ta",
 			"componentType": "Textarea",
 			"mandatory": false,
 			"maxLength": "500",
 			"label": "➡ 1. Before starting, do you have any comments about the Simpsons family?",
 			"response": {
 				"name": "COMMENT",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{
-						"valueType": "COLLECTED",
-						"value": "Simpsons family is the most famous family in the world for sure. Funny, crazy and full of societal references."
-					},
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "Simpsons family is the most famous family in the world for sure. Funny, crazy and full of societal references.",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
-	]
+	],
+	"variables": {
+		"COLLECTED": {
+			"COMMENT": {
+				"componentRef": "ta",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "Simpsons family is the most famous family in the world for sure. Funny, crazy and full of societal references.",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		}
+	}
 }

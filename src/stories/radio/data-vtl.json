@@ -1,19 +1,19 @@
 {
 	"components": [
 		{
-			"id": "j3343clt",
+			"id": "rr",
 			"componentType": "Radio",
 			"mandatory": false,
 			"label": "➡ 1. In which city do the Simpsons reside?",
 			"response": {
 				"name": "CITY",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "00002" },
-					{ "valueType": "FORCED", "value": "00001" },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "00002",
+					"FORCED": "00001",
+					"EDITED": null,
+					"INPUTED": null
+				}
 			},
 			"options": [
 				{ "value": "00001", "label": "Springfield" },
@@ -21,5 +21,19 @@
 				{ "value": "00003", "label": "CITY" }
 			]
 		}
-	]
+	],
+	"variables": {
+		"COLLECTED": {
+			"CITY": {
+				"componentRef": "rr",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "00002",
+					"FORCED": "00001",
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		}
+	}
 }
