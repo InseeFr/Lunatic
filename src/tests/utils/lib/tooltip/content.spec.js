@@ -4,20 +4,17 @@ describe('build tooltip content', () => {
 	describe('buildTooltip', () => {
 		it('should return default value', () => {
 			expect(buildTooltip()).toEqual({});
-			expect(buildTooltip({ valueState: [] })).toEqual({});
+			expect(buildTooltip({ values: {} })).toEqual({});
 			expect(
 				buildTooltip({
-					valueState: [{ valueType: 'COLLECTED', value: 'Collected' }],
+					values: { COLLECTED: 'Collected' },
 				})
 			).toEqual({});
 		});
 		it('should return COLLECTED', () => {
 			expect(
 				buildTooltip({
-					valueState: [
-						{ valueType: 'COLLECTED', value: 'Collected' },
-						{ valueType: 'FORCED', value: 'Forced' },
-					],
+					values: { COLLECTED: 'Collected', FORCED: 'Forced' },
 				})
 			).toEqual({
 				content: [
@@ -30,10 +27,7 @@ describe('build tooltip content', () => {
 			});
 			expect(
 				buildTooltip({
-					valueState: [
-						{ valueType: 'COLLECTED', value: null },
-						{ valueType: 'FORCED', value: 'Forced' },
-					],
+					values: { COLLECTED: null, FORCED: 'Forced' },
 				})
 			).toEqual({
 				content: [
@@ -48,11 +42,11 @@ describe('build tooltip content', () => {
 		it('should return COLLECTED FORCED', () => {
 			expect(
 				buildTooltip({
-					valueState: [
-						{ valueType: 'COLLECTED', value: 'Collected' },
-						{ valueType: 'FORCED', value: 'Forced' },
-						{ valueType: 'EDITED', value: 'Edited' },
-					],
+					values: {
+						COLLECTED: 'Collected',
+						FORCED: 'Forced',
+						EDITED: 'Edited',
+					},
 				})
 			).toEqual({
 				content: [
@@ -69,11 +63,7 @@ describe('build tooltip content', () => {
 			});
 			expect(
 				buildTooltip({
-					valueState: [
-						{ valueType: 'COLLECTED', value: null },
-						{ valueType: 'FORCED', value: null },
-						{ valueType: 'EDITED', value: 'Edited' },
-					],
+					values: { COLLECTED: null, FORCED: null, EDITED: 'Edited' },
 				})
 			).toEqual({
 				content: [
@@ -86,11 +76,7 @@ describe('build tooltip content', () => {
 			});
 			expect(
 				buildTooltip({
-					valueState: [
-						{ valueType: 'COLLECTED', value: 'Collected' },
-						{ valueType: 'FORCED', value: null },
-						{ valueType: 'EDITED', value: 'Edited' },
-					],
+					values: { COLLECTED: 'Collected', FORCED: null, EDITED: 'Edited' },
 				})
 			).toEqual({
 				content: [
@@ -103,11 +89,7 @@ describe('build tooltip content', () => {
 			});
 			expect(
 				buildTooltip({
-					valueState: [
-						{ valueType: 'COLLECTED', value: null },
-						{ valueType: 'FORCED', value: 'Forced' },
-						{ valueType: 'EDITED', value: 'Edited' },
-					],
+					values: { COLLECTED: null, FORCED: 'Forced', EDITED: 'Edited' },
 				})
 			).toEqual({
 				content: [
