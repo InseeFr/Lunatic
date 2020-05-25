@@ -10,7 +10,8 @@ const OrchestratorForStories = ({ source, tooltip, ...props }) => {
 	const [questionnaire, setQuestionnaire] = useState(
 		utils.mergeQuestionnaireAndData(source)({})
 	);
-	const onChange = updatedValue => {
+
+	const onChange = (updatedValue) => {
 		setQuestionnaire(
 			utils.updateQuestionnaire(savingType)(questionnaire)(preferences)(
 				updatedValue
@@ -18,7 +19,7 @@ const OrchestratorForStories = ({ source, tooltip, ...props }) => {
 		);
 	};
 
-	const components = questionnaire.components.map(q => {
+	const components = questionnaire.components.map((q) => {
 		const { id, componentType } = q;
 		const Component = lunatic[componentType];
 		return (

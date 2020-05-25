@@ -7,5 +7,4 @@ export * from './options-positioning';
 export * from './responses';
 export { buildStyleObject } from './style';
 export * from './table';
-export * from './checkbox';
 export * from './loops';

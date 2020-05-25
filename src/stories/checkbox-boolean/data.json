@@ -7,28 +7,28 @@
 			"label": "➡ 2. Are you ready?",
 			"response": {
 				"name": "READY",
-				"values": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": true },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
 	],
-	"variables": [
-		{
-			"variableType": "COLLECTED",
-			"name": "READY",
-			"componentRef": "1",
-			"values": [
-				{ "valueType": "PREVIOUS", "value": null },
-				{ "valueType": "COLLECTED", "value": true },
-				{ "valueType": "FORCED", "value": null },
-				{ "valueType": "EDITED", "value": null },
-				{ "valueType": "INPUTED", "value": null }
-			]
+	"variables": {
+		"COLLECTED": {
+			"READY": {
+				"componentRef": "1",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
 		}
-	]
+	}
 }
