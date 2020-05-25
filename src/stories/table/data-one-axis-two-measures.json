@@ -1,7 +1,7 @@
 {
 	"components": [
 		{
-			"id": "j6p29i81",
+			"id": "table",
 			"componentType": "Table",
 			"mandatory": false,
 			"cells": [
@@ -12,13 +12,13 @@
 						"id": "j6p29i81-QOP-jbgdb3jx",
 						"response": {
 							"name": "ICE_FLAVOUR1",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"values": {
+								"PREVIOUS": null,
+								"COLLECTED": null,
+								"FORCED": null,
+								"EDITED": null,
+								"INPUTED": null
+							}
 						},
 						"options": [
 							{ "value": "1", "label": "Yes" },
@@ -30,13 +30,13 @@
 						"id": "A",
 						"response": {
 							"name": "INPUT_1",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": "Hop" },
-								{ "valueType": "FORCED", "value": "Hip" },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"values": {
+								"PREVIOUS": null,
+								"COLLECTED": "Hop",
+								"FORCED": "Hip",
+								"EDITED": null,
+								"INPUTED": null
+							}
 						}
 					}
 				],
@@ -47,13 +47,13 @@
 						"id": "j6p29i81-QOP-jbgdb61k",
 						"response": {
 							"name": "ICE_FLAVOUR2",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"values": {
+								"PREVIOUS": null,
+								"COLLECTED": null,
+								"FORCED": null,
+								"EDITED": null,
+								"INPUTED": null
+							}
 						},
 						"options": [
 							{ "value": "1", "label": "Yes" },
@@ -65,13 +65,13 @@
 						"id": "B",
 						"response": {
 							"name": "INPUT_2",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"values": {
+								"PREVIOUS": null,
+								"COLLECTED": null,
+								"FORCED": null,
+								"EDITED": null,
+								"INPUTED": null
+							}
 						}
 					}
 				],
@@ -82,13 +82,13 @@
 						"id": "j6p29i81-QOP-jbgdl3kc",
 						"response": {
 							"name": "ICE_FLAVOUR3",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"values": {
+								"PREVIOUS": null,
+								"COLLECTED": null,
+								"FORCED": null,
+								"EDITED": null,
+								"INPUTED": null
+							}
 						},
 						"options": [
 							{ "value": "1", "label": "Yes" },
@@ -100,13 +100,13 @@
 						"id": "C",
 						"response": {
 							"name": "INPUT_3",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"values": {
+								"PREVIOUS": null,
+								"COLLECTED": null,
+								"FORCED": null,
+								"EDITED": null,
+								"INPUTED": null
+							}
 						}
 					}
 				],
@@ -117,13 +117,13 @@
 						"id": "j6p29i81-QOP-jbgdcobo",
 						"response": {
 							"name": "ICE_FLAVOUR4",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"values": {
+								"PREVIOUS": null,
+								"COLLECTED": null,
+								"FORCED": null,
+								"EDITED": null,
+								"INPUTED": null
+							}
 						},
 						"options": [
 							{ "value": "1", "label": "Yes" },
@@ -135,17 +135,101 @@
 						"id": "D",
 						"response": {
 							"name": "INPUT_4",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": "Hop" },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"values": {
+								"PREVIOUS": null,
+								"COLLECTED": "Hup",
+								"FORCED": null,
+								"EDITED": null,
+								"INPUTED": null
+							}
 						}
 					}
 				]
 			]
 		}
-	]
+	],
+	"variables": {
+		"COLLECTED": {
+			"ICE_FLAVOUR1": {
+				"componentRef": "table",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"ICE_FLAVOUR2": {
+				"componentRef": "table",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"ICE_FLAVOUR3": {
+				"componentRef": "table",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"ICE_FLAVOUR4": {
+				"componentRef": "table",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"INPUT_1": {
+				"componentRef": "table",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "Hop",
+					"FORCED": "Hip",
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"INPUT_2": {
+				"componentRef": "table",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"INPUT_3": {
+				"componentRef": "table",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"INPUT_4": {
+				"componentRef": "table",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "Hup",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		}
+	}
 }
