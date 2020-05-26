@@ -112,4 +112,4 @@ Dropdown.defaultProps = {
 	freezeOptions: false,
 };
 
-export default Dropdown;
+export default React.memo(Dropdown, U.areEqual);

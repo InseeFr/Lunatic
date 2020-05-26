@@ -157,4 +157,4 @@ Table.propTypes = {
 	style: PropTypes.object,
 };
 
-export default Table;
+export default React.memo(Table, U.areEqual);

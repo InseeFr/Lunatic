@@ -38,4 +38,4 @@ Sequence.propTypes = {
 	style: PropTypes.object,
 };
 
-export default Sequence;
+export default React.memo(Sequence, U.areEqual);

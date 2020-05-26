@@ -210,4 +210,4 @@ InputNumber.propTypes = {
 	validators: PropTypes.arrayOf(PropTypes.func),
 };
 
-export default InputNumber;
+export default React.memo(InputNumber, U.areEqual);

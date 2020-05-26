@@ -129,4 +129,4 @@ CheckboxBoolean.propTypes = {
 	style: PropTypes.object,
 };
 
-export default CheckboxBoolean;
+export default React.memo(CheckboxBoolean, U.areEqual);

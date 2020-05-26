@@ -151,4 +151,4 @@ CheckboxGroup.propTypes = {
 	style: PropTypes.object,
 };
 
-export default CheckboxGroup;
+export default React.memo(CheckboxGroup, U.areEqual);
