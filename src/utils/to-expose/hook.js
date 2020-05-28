@@ -4,14 +4,19 @@ import { mergeQuestionnaireAndData } from './init-questionnaire';
 import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
 
-const filterComponents = (components, tooltip, bindings, preferences) =>
+const filterComponents = (components, tooltip, bindings, features) =>
 	components.filter(({ conditionFilter }) =>
-		tooltip
-			? true
-			: interpret(preferences)(bindings)(conditionFilter) === 'normal'
+		tooltip ? true : interpret(features)(bindings)(conditionFilter) === 'normal'
 	);
 
-const useLunatic = (source, data, savingType, preferences, hasToFilter) => {
+const useLunatic = (
+	source,
+	data,
+	savingType,
+	preferences,
+	features,
+	hasToFilter
+) => {
 	const [questionnaire, setQuestionnaire] = useState(
 		mergeQuestionnaireAndData(source)(data)
 	);
@@ -20,7 +25,7 @@ const useLunatic = (source, data, savingType, preferences, hasToFilter) => {
 			questionnaire.components,
 			hasToFilter,
 			getBindings(questionnaire),
-			preferences
+			features
 		)
 	);
 	const [todo, setTodo] = useState({});
@@ -40,12 +45,12 @@ const useLunatic = (source, data, savingType, preferences, hasToFilter) => {
 					newQ.components,
 					hasToFilter,
 					getBindings(newQ),
-					preferences
+					features
 				)
 			);
 			setTodo({});
 		}
-	}, [todo, preferences, questionnaire, savingType, hasToFilter]);
+	}, [todo, preferences, questionnaire, savingType, features, hasToFilter]);
 
 	const bindings = getBindings(questionnaire);
 
