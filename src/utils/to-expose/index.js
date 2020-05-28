@@ -7,3 +7,4 @@ export {
 	getBindings,
 } from './state';
 export { interpret } from './interpret';
+export { default as useLunatic } from './hook';
