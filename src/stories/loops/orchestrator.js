@@ -1,44 +1,56 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as lunatic from 'components';
-import * as utils from 'utils/to-expose';
 
-const OrchestratorForStories = ({ source, tooltip, ...props }) => {
-	const savingType = tooltip ? 'EDITED' : 'COLLECTED';
-	const preferences = tooltip
-		? ['COLLECTED', 'FORCED', 'EDITED']
-		: ['COLLECTED'];
-	const [questionnaire, setQuestionnaire] = useState(
-		utils.mergeQuestionnaireAndData(source)({})
+const OrchestratorForStories = ({
+	savingType,
+	preferences,
+	source,
+	data,
+	tooltip,
+	features,
+	filterDescription,
+}) => {
+	const {
+		questionnaire,
+		handleChange,
+		components,
+		bindings,
+	} = lunatic.useLunatic(
+		source,
+		data,
+		savingType,
+		preferences,
+		features,
+		tooltip
 	);
 
-	const onChange = updatedValue => {
-		setQuestionnaire(
-			utils.updateQuestionnaire(savingType)(questionnaire)(preferences)(
-				updatedValue
-			)
-		);
-	};
+	console.log(lunatic.getCollectedState(questionnaire));
 
-	const bindings = utils.getBindings(questionnaire);
-
-	const components = questionnaire.components.map(q => {
-		const { id, componentType } = q;
-		const Component = lunatic[componentType];
-		return (
-			<div className="lunatic-input" key={`component-${id}`}>
-				<Component
-					{...q}
-					{...props}
-					handleChange={onChange}
-					labelPosition="TOP"
-					preferences={preferences}
-					tooltip={tooltip}
-					bindings={bindings}
-				/>
+	return (
+		<div className="container">
+			<div className="components">
+				{components.map((q) => {
+					const { id, componentType } = q;
+					const Component = lunatic[componentType];
+					return (
+						<div className="lunatic lunatic-component" key={`component-${id}`}>
+							<Component
+								{...q}
+								handleChange={handleChange}
+								labelPosition="TOP"
+								preferences={preferences}
+								tooltip={tooltip}
+								filterDescription={filterDescription}
+								features={features}
+								bindings={bindings}
+								writable
+							/>
+						</div>
+					);
+				})}
 			</div>
-		);
-	});
-	return <div className="lunatic-forms">{components}</div>;
+		</div>
+	);
 };
 
 export default OrchestratorForStories;
