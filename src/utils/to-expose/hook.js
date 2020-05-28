@@ -4,9 +4,11 @@ import { mergeQuestionnaireAndData } from './init-questionnaire';
 import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
 
-const filterComponents = (components, tooltip, bindings) =>
+const filterComponents = (components, tooltip, bindings, preferences) =>
 	components.filter(({ conditionFilter }) =>
-		tooltip ? true : interpret(['VTL'])(bindings)(conditionFilter) === 'normal'
+		tooltip
+			? true
+			: interpret(preferences)(bindings)(conditionFilter) === 'normal'
 	);
 
 const useLunatic = (source, data, savingType, preferences, hasToFilter) => {
@@ -17,7 +19,8 @@ const useLunatic = (source, data, savingType, preferences, hasToFilter) => {
 		filterComponents(
 			questionnaire.components,
 			hasToFilter,
-			getBindings(questionnaire)
+			getBindings(questionnaire),
+			preferences
 		)
 	);
 	const [todo, setTodo] = useState({});
@@ -27,14 +30,18 @@ const useLunatic = (source, data, savingType, preferences, hasToFilter) => {
 	}, []);
 
 	useEffect(() => {
-		console.log('effect');
 		if (Object.keys(todo).length !== 0) {
 			const newQ = updateQuestionnaire(savingType)(questionnaire)(preferences)(
 				todo
 			);
 			setQuestionnaire(newQ);
 			setComponents(
-				filterComponents(newQ.components, hasToFilter, getBindings(newQ))
+				filterComponents(
+					newQ.components,
+					hasToFilter,
+					getBindings(newQ),
+					preferences
+				)
 			);
 			setTodo({});
 		}
