@@ -3,6 +3,7 @@ import {
 	buildResponseComponent,
 	buildResponsesComponent,
 	buildCellsComponent,
+	buildComponentsComponent,
 } from './init-questionnaire';
 import { supportedPreferences } from '../../constants/supported-preferences';
 
@@ -49,6 +50,7 @@ export const updateQuestionnaire = (valueType) => (questionnaire) => (
 			if (c.response) return buildResponseComponent(collectedVars)(c);
 			else if (c.responses) return buildResponsesComponent(collectedVars)(c);
 			else if (c.cells) return buildCellsComponent(collectedVars)(c);
+			else if (c.components) return buildComponentsComponent(collectedVars)(c);
 			return c;
 		}
 		return c;

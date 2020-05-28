@@ -47,6 +47,7 @@ const buildFilledComponents = (vars) => (components) =>
 		if (c.response) return buildResponseComponent(vars)(c);
 		else if (c.responses) return buildResponsesComponent(vars)(c);
 		else if (c.cells) return buildCellsComponent(vars)(c);
+		else if (c.components) return buildComponentsComponent(vars)(c);
 		return c;
 	});
 
@@ -68,6 +69,12 @@ export const buildCellsComponent = (vars) => (c) => {
 	const { cells, ...rest } = c;
 	const filledCells = cells.map((row) => buildFilledComponents(vars)(row));
 	return { ...rest, cells: filledCells };
+};
+
+export const buildComponentsComponent = (vars) => (component) => {
+	const { components, ...rest } = component;
+	const filledComponents = buildFilledComponents(vars)(components);
+	return { ...rest, components: filledComponents };
 };
 
 const initExternalVariable = ({ name }) => (data) => ({
