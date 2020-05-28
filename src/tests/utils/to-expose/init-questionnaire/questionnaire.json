@@ -38,6 +38,19 @@
 					}
 				]
 			]
+		},
+		{
+			"id": "5",
+			"componentType": "RosterForLoop",
+			"components": [
+				{
+					"componentType": "Input",
+					"id": "k3yn2qmr",
+					"response": {
+						"name": "Roster"
+					}
+				}
+			]
 		}
 	],
 	"variables": [
@@ -93,6 +106,18 @@
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "5",
+			"name": "Roster",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		}
 	]
