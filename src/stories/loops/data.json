@@ -21,6 +21,7 @@
 			"components": [
 				{
 					"componentType": "Input",
+					"conditionFilter": "\"normal\"",
 					"maxLength": 30,
 					"id": "k3yn2qmr",
 					"response": {
@@ -36,6 +37,7 @@
 				},
 				{
 					"componentType": "InputNumber",
+					"conditionFilter": "\"normal\"",
 					"min": 0,
 					"max": 120,
 					"decimals": 0,
@@ -58,6 +60,7 @@
 			"label": "boucle individu",
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
+			"conditionFilter": "\"normal\"",
 			"components": [
 				{
 					"id": "k3ymch91",
@@ -117,6 +120,7 @@
 					"id": "k3ym6x16",
 					"label": "Quel est votre temps de trajet domicile-travail ?",
 					"componentType": "InputNumber",
+					"conditionFilter": "\"normal\"",
 					"mandatory": false,
 					"min": 0,
 					"max": 180,
@@ -167,6 +171,7 @@
 			"label": "Quelle est la superficie du logement ?",
 			"unit": "m²",
 			"componentType": "InputNumber",
+			"conditionFilter": "\"normal\"",
 			"mandatory": false,
 			"min": 0,
 			"max": 500,
