@@ -66,6 +66,25 @@
 					}
 				]
 			]
+		},
+		{
+			"id": "5",
+			"componentType": "RosterForLoop",
+			"components": [
+				{
+					"componentType": "Input",
+					"response": {
+						"name": "Roster",
+						"values": {
+							"PREVIOUS": [null],
+							"COLLECTED": ["ok"],
+							"FORCED": [null],
+							"EDITED": [null],
+							"INPUTED": [null]
+						}
+					}
+				}
+			]
 		}
 	],
 	"variables": {
@@ -112,6 +131,16 @@
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null
+				}
+			},
+			"Roster": {
+				"componentRef": "5",
+				"values": {
+					"PREVIOUS": [null],
+					"COLLECTED": ["ok"],
+					"FORCED": [null],
+					"EDITED": [null],
+					"INPUTED": [null]
 				}
 			}
 		}

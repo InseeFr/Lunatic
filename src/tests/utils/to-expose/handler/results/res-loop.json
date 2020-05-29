@@ -10,7 +10,7 @@
 					"PREVIOUS": null,
 					"COLLECTED": "My input",
 					"FORCED": null,
-					"EDITED": "My new input",
+					"EDITED": null,
 					"INPUTED": null
 				}
 			}
@@ -77,7 +77,7 @@
 						"name": "Roster",
 						"values": {
 							"PREVIOUS": [null],
-							"COLLECTED": ["ok"],
+							"COLLECTED": ["ko"],
 							"FORCED": [null],
 							"EDITED": [null],
 							"INPUTED": [null]
@@ -99,7 +99,7 @@
 					"PREVIOUS": null,
 					"COLLECTED": "My input",
 					"FORCED": null,
-					"EDITED": "My new input",
+					"EDITED": null,
 					"INPUTED": null
 				}
 			},
@@ -137,7 +137,7 @@
 				"componentRef": "5",
 				"values": {
 					"PREVIOUS": [null],
-					"COLLECTED": ["ok"],
+					"COLLECTED": ["ko"],
 					"FORCED": [null],
 					"EDITED": [null],
 					"INPUTED": [null]

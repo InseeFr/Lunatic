@@ -75,5 +75,12 @@ describe('handler', () => {
 				})
 			).toEqual(R.resDouble);
 		});
+		it('should return loop updated questionnaire', () => {
+			expect(
+				H.updateQuestionnaire('COLLECTED')(questionnaire)(['COLLECTED'])({
+					Roster: ['ko'],
+				})
+			).toEqual(R.resLoop);
+		});
 	});
 });
