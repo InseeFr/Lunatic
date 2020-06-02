@@ -1,22 +1,22 @@
-import { emptyTableRow } from '../../../utils/lib';
+import * as C from '../../../constants';
 
-export const buildTableComponents = headers => components => {
-	const uiComponents = components.map(comp => {
+export const buildRosterUIComponents = (headers) => (components) => {
+	const uiComponents = components.map((comp) => {
 		const { response, ...other } = comp;
-		const { name, valueState } = response;
-		const size = valueState.find(v => v.valueType === 'COLLECTED').value.length;
-		return [...Array(size).keys()].map(i => {
-			const newValueState = valueState.map(({ valueType, value }) => ({
-				valueType,
-				value: value[i],
+		const { name, values } = response;
+		const size = values[C.COLLECTED].length;
+		return [...Array(size).keys()].map((i) => {
+			const newValues = Object.entries(values).reduce((acc, [key, value]) => ({
+				...acc,
+				[key]: value[i],
 			}));
 			return {
 				...other,
-				response: { name, valueState: newValueState },
+				response: { name, values: newValues },
 			};
 		});
 	}, []);
-	const transpose = m => m[0].map((x, i) => m.map(x => x[i]));
+	const transpose = (m) => m[0].map((x, i) => m.map((x) => x[i]));
 	const rows = transpose(uiComponents);
 	return [headers, ...rows];
 };

@@ -2,14 +2,16 @@ import React from 'react';
 import * as lunatic from 'components';
 
 const OrchestratorForStories = ({
-	savingType,
-	preferences,
 	source,
 	data,
 	tooltip,
 	features,
 	filterDescription,
 }) => {
+	const preferences = tooltip
+		? ['COLLECTED', 'FORCED', 'EDITED']
+		: ['COLLECTED'];
+	const savingType = tooltip ? 'EDITED' : 'COLLECTED';
 	const {
 		questionnaire,
 		handleChange,
