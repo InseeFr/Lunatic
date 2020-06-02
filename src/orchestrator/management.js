@@ -10,7 +10,7 @@ const Management = () => (
 		source={simpsons}
 		features={['VTL']}
 		data={data}
-		tooltip
+		management
 		filterDescription
 	/>
 );
