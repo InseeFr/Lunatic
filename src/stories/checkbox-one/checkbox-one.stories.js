@@ -18,7 +18,7 @@ import {
 
 const stories = storiesOf('CheckboxOne', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<CheckboxOne />" />;
 	});
@@ -34,7 +34,7 @@ stories.addWithJSX('Props', () => (
 		bindings={object('Bindings', { NAME: 'Poochie' })}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 	/>
 ));
 

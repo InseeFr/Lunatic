@@ -19,7 +19,7 @@ const ListDeclarationsWrapper = ({
 	declarations,
 	features,
 	bindings,
-	tooltip,
+	management,
 	style,
 	positioning,
 	type,
@@ -41,7 +41,7 @@ const ListDeclarationsWrapper = ({
 				bindings={bindings}
 			/>
 			<div className="field-container">
-				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+				<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 					<fieldset
 						key={`${type}-${id}`}
 						className={`${type}-group`}
@@ -101,7 +101,7 @@ const ListDeclarationsWrapper = ({
 						})}
 					</fieldset>
 				</div>
-				{tooltip && (
+				{management && (
 					<div className="tooltip">
 						<TooltipResponse
 							id={id}
@@ -133,7 +133,7 @@ ListDeclarationsWrapper.defaultProps = {
 	declarations: [],
 	features: [],
 	bindings: {},
-	tooltip: false,
+	management: false,
 	style: { fieldsetStyle: {}, modalityStyle: {} },
 };
 
@@ -151,7 +151,7 @@ ListDeclarationsWrapper.propTypes = {
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 	type: PropTypes.oneOf(['radio', 'checkbox']),
 };

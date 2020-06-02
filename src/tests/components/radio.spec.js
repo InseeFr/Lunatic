@@ -21,7 +21,7 @@ describe('radio', () => {
 		mount(<Radio {...defaultProps} />);
 	});
 
-	it('returns tooltip & disabled component', () => {
-		shallow(<Radio {...defaultProps} tooltip disabled />);
+	it('returns management & disabled component', () => {
+		shallow(<Radio {...defaultProps} management disabled />);
 	});
 });

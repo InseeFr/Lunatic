@@ -5,9 +5,11 @@ import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
 import { COLLECTED } from '../../constants';
 
-const filterComponents = (components, tooltip, bindings, features) =>
+const filterComponents = (components, management, bindings, features) =>
 	components.filter(({ conditionFilter }) =>
-		tooltip ? true : interpret(features)(bindings)(conditionFilter) === 'normal'
+		management
+			? true
+			: interpret(features)(bindings)(conditionFilter) === 'normal'
 	);
 
 const useLunatic = (

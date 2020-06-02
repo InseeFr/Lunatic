@@ -41,8 +41,8 @@ describe('input-declarations-wrapper', () => {
 		expect(wrapper.find('input').prop('required')).toBeTruthy();
 	});
 
-	it('returns tooltip component', () => {
-		shallow(<InputDeclarationsWrapper {...defaultProps} tooltip />);
+	it('returns management component', () => {
+		shallow(<InputDeclarationsWrapper {...defaultProps} management />);
 	});
 
 	it('renders firing useEffect', () => {

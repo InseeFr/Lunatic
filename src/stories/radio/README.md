@@ -16,7 +16,7 @@
 | declarations \* | array  |                    []                    |          | Declarations of the radio            |
 |    features     | array  |                   [ ]                    |          | Component features for labels        |
 |    bindings     | object |                   [ ]                    |          | Questionnaire bindings               |
-|     tooltip     |  bool  |                  false                   |          | Tooltip of the radio                 |
+|   management    |  bool  |                  false                   |          | Management mode of the radio         |
 |    style \*     | object | { fieldsetStyle: {}, modalityStyle: {} } |          | Style of the radio                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`

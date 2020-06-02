@@ -21,7 +21,7 @@ const RosterForLoop = ({
 	bindings,
 	addBtnLabel,
 	hideBtn,
-	tooltip,
+	management,
 }) => {
 	const minLines = Math.max(
 		initLines.min,
@@ -110,7 +110,7 @@ const RosterForLoop = ({
 												handleChange={(v) => onChange(v, i - 1)}
 												preferences={preferences}
 												positioning={positioning}
-												tooltip={tooltip}
+												management={management}
 												features={features}
 												bindings={bindings}
 												zIndex={uiComponents.length - i || 0}
@@ -164,7 +164,7 @@ RosterForLoop.defaultProps = {
 	features: [],
 	bindings: {},
 	addBtnLabel: 'Add a line',
-	tooltip: false,
+	management: false,
 	hideBtn: false,
 	style: {},
 };
@@ -182,7 +182,7 @@ RosterForLoop.propTypes = {
 	bindings: PropTypes.object,
 	addBtnLabel: PropTypes.string,
 	hideBtn: PropTypes.bool,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 };
 

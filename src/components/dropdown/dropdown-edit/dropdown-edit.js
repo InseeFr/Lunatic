@@ -43,7 +43,7 @@ const Dropdown = ({
 	mandatory,
 	value: valueFromProps,
 	zIndex,
-	tooltip,
+	management,
 	disabled,
 	focused: initFocused,
 }) => {
@@ -80,7 +80,7 @@ const Dropdown = ({
 			onSelect={onSelect_}
 			value={valueFromProps}
 			zIndex={zIndex}
-			tooltip={tooltip}
+			management={management}
 		>
 			<div
 				className={classnames('lunatic-dropdown-input', { focused, disabled })}

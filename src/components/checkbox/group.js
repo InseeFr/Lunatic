@@ -20,7 +20,7 @@ const CheckboxGroup = ({
 	declarations,
 	features,
 	bindings,
-	tooltip,
+	management,
 	style,
 }) => {
 	const { fieldsetStyle, modalityStyle } = style;
@@ -61,7 +61,9 @@ const CheckboxGroup = ({
 							key={`checkbox-${id}-${modId}`}
 						>
 							<div className="field-container">
-								<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+								<div
+									className={`${management ? 'field-with-tooltip' : 'field'}`}
+								>
 									<div
 										className={`checkbox-modality ${
 											checked ? 'content-checked' : ''
@@ -95,7 +97,7 @@ const CheckboxGroup = ({
 										</label>
 									</div>
 								</div>
-								{tooltip && (
+								{management && (
 									<div className="tooltip">
 										<TooltipResponse
 											id={id}
@@ -130,7 +132,7 @@ CheckboxGroup.defaultProps = {
 	declarations: [],
 	features: [],
 	bindings: {},
-	tooltip: false,
+	management: false,
 	style: { fieldsetStyle: {}, modalityStyle: {} },
 };
 
@@ -147,7 +149,7 @@ CheckboxGroup.propTypes = {
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 };
 

@@ -23,7 +23,7 @@ const InputDeclarationsWrapper = ({
 	features,
 	bindings,
 	focused,
-	tooltip,
+	management,
 	style,
 	type,
 	roleType,
@@ -63,7 +63,7 @@ const InputDeclarationsWrapper = ({
 					bindings={bindings}
 				/>
 				<div className="field-container">
-					<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+					<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 						<Component
 							type={type}
 							id={`${roleType}-${id}`}
@@ -85,7 +85,7 @@ const InputDeclarationsWrapper = ({
 							}
 						/>
 					</div>
-					{tooltip && (
+					{management && (
 						<div className="tooltip">
 							<TooltipResponse id={id} response={response} />
 						</div>
@@ -117,7 +117,7 @@ InputDeclarationsWrapper.defaultProps = {
 	declarations: [],
 	features: [],
 	bindings: {},
-	tooltip: false,
+	management: false,
 	style: {},
 };
 
@@ -138,7 +138,7 @@ InputDeclarationsWrapper.propTypes = {
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 	type: PropTypes.oneOf(['text', 'date', null]),
 	roleType: PropTypes.oneOf(['input', 'datepicker', 'textarea']),

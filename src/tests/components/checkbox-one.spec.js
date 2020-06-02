@@ -22,8 +22,8 @@ describe('checkbox-one', () => {
 		mount(<CheckboxOne {...defaultProps} />);
 	});
 
-	it('returns tooltip component', () => {
-		shallow(<CheckboxOne {...defaultProps} tooltip />);
+	it('returns management component', () => {
+		shallow(<CheckboxOne {...defaultProps} management />);
 	});
 
 	it('returns disabled component', () => {

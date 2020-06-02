@@ -18,7 +18,7 @@
 | declarations \*  | array  |      []       |          | Declarations of the dropdown            |
 |     features     | array  |      [ ]      |          | Component features for labels           |
 |     bindings     | object |      [ ]      |          | Questionnaire bindings                  |
-|     tooltip      |  bool  |     false     |          | Tooltip of the dropdown                 |
+|    management    |  bool  |     false     |          | Management mode of the dropdown         |
 |      zIndex      | number |       0       |          | z-index of the dropdown                 |
 |      style       | object |      {}       |          | Style of the dropdown                   |
 

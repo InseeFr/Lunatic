@@ -39,8 +39,7 @@ stories.addWithJSX('Props', () => (
 		writable={boolean('Writable', false)}
 		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
 		mandatory={boolean('Mandatory', false)}
-		preferences={['COLLECTED', 'FORCED']}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		zIndex={number('zIndex', 0)}
 		freezeOptions={boolean('Freeze options', false)}
 	/>
@@ -58,8 +57,7 @@ stories.addWithJSX('Naf', () => (
 		writable={boolean('Writable', false)}
 		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
 		mandatory={boolean('Mandatory', false)}
-		preferences={['COLLECTED', 'FORCED', 'EDITED']}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		zIndex={number('zIndex', 0)}
 		freezeOptions={boolean('Freeze options', true)}
 	/>

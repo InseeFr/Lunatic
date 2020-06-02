@@ -19,7 +19,7 @@ const CheckboxBoolean = ({
 	declarations,
 	features,
 	bindings,
-	tooltip,
+	management,
 	style,
 }) => {
 	const inputRef = useRef();
@@ -76,10 +76,10 @@ const CheckboxBoolean = ({
 				bindings={bindings}
 			/>
 			<div className="field-container">
-				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+				<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 					{isVertical ? <div>{input}</div> : input}
 				</div>
-				{tooltip && (
+				{management && (
 					<div className="tooltip">
 						<TooltipResponse
 							id={id}
@@ -109,7 +109,7 @@ CheckboxBoolean.defaultProps = {
 	declarations: [],
 	features: [],
 	bindings: {},
-	tooltip: false,
+	management: false,
 	style: {},
 };
 
@@ -125,7 +125,7 @@ CheckboxBoolean.propTypes = {
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 };
 

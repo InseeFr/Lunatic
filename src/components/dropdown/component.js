@@ -19,7 +19,7 @@ const Dropdown = ({
 	declarations,
 	features,
 	bindings,
-	tooltip,
+	management,
 	freezeOptions,
 	...rest
 }) => {
@@ -67,7 +67,7 @@ const Dropdown = ({
 					label={interpretedLabel}
 					options={opts}
 					onSelect={onSelect}
-					tooltip={tooltip}
+					management={management}
 				/>
 			) : (
 				<DropdownSimple
@@ -78,7 +78,7 @@ const Dropdown = ({
 					label={interpretedLabel}
 					options={opts}
 					onSelect={onSelect}
-					tooltip={tooltip}
+					management={management}
 				/>
 			)}
 			<Declarations

@@ -4,14 +4,14 @@ import * as lunatic from 'components';
 const OrchestratorForStories = ({
 	source,
 	data,
-	tooltip,
+	management,
 	features,
 	filterDescription,
 }) => {
-	const preferences = tooltip
+	const preferences = management
 		? ['COLLECTED', 'FORCED', 'EDITED']
 		: ['COLLECTED'];
-	const savingType = tooltip ? 'EDITED' : 'COLLECTED';
+	const savingType = management ? 'EDITED' : 'COLLECTED';
 	const {
 		questionnaire,
 		handleChange,
@@ -23,7 +23,7 @@ const OrchestratorForStories = ({
 		savingType,
 		preferences,
 		features,
-		tooltip
+		management
 	);
 
 	console.log(lunatic.getCollectedState(questionnaire));
@@ -41,7 +41,7 @@ const OrchestratorForStories = ({
 								handleChange={handleChange}
 								labelPosition="TOP"
 								preferences={preferences}
-								tooltip={tooltip}
+								management={management}
 								filterDescription={filterDescription}
 								features={features}
 								bindings={bindings}

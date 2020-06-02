@@ -21,7 +21,7 @@ const Dropdown = ({
 	focused: initFocused,
 	mandatory,
 	labelPosition,
-	tooltip,
+	management,
 	className,
 	zIndex,
 }) => {
@@ -43,7 +43,7 @@ const Dropdown = ({
 			dispatch={dispatch}
 			options={options}
 			response={response}
-			tooltip={tooltip}
+			management={management}
 			label={label}
 			labelPosition={labelPosition}
 			mandatory={mandatory}

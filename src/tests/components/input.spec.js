@@ -9,8 +9,8 @@ describe('input', () => {
 	it('renders without crashing', () => {
 		shallow(<Input {...defaultProps} />);
 	});
-	it('returns tooltip component', () => {
-		shallow(<Input {...defaultProps} label="label" tooltip />);
+	it('returns management component', () => {
+		shallow(<Input {...defaultProps} label="label" management />);
 	});
 	it('returns disabled & readOnly component', () => {
 		shallow(<Input {...defaultProps} label="label" disabled readOnly />);

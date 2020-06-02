@@ -18,8 +18,8 @@ describe('checkbox-group', () => {
 	];
 	const defaultProps = { id: 'id', handleChange, responses };
 
-	it('returns tooltip component', () => {
-		shallow(<CheckboxGroup {...defaultProps} tooltip />);
+	it('returns management component', () => {
+		shallow(<CheckboxGroup {...defaultProps} management />);
 	});
 
 	it('returns disabled component', () => {

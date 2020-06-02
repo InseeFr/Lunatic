@@ -51,9 +51,9 @@ describe('input-number', () => {
 		expect(wrapper.find('input').prop('readOnly')).toBe(true);
 	});
 
-	it('returns tooltip component', () => {
+	it('returns management component', () => {
 		shallow(
-			<InputNumber {...defaultProps} handleChange={handleChange} tooltip />
+			<InputNumber {...defaultProps} handleChange={handleChange} management />
 		);
 	});
 

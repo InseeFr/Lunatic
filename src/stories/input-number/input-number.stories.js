@@ -21,7 +21,7 @@ import {
 
 const stories = storiesOf('InputNumber', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<InputNumber />" />;
 	});
@@ -46,7 +46,7 @@ stories.addWithJSX('Props', () => (
 		autoComplete={boolean('Autocomplete', false)}
 		mandatory={boolean('Mandatory', false)}
 		focused={boolean('Focused', false)}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
 		unitPosition={select('Unit position', unitPositionOptions, 'DEFAULT')}
 	/>

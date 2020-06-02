@@ -20,7 +20,7 @@
 | declarations \*  |     array      |      [ ]      |          | Declarations of the textarea            |
 |     features     |     array      |      [ ]      |          | Component features for labels           |
 |     bindings     |     object     |      [ ]      |          | Questionnaire bindings                  |
-|     tooltip      |      bool      |     false     |          | Tooltip of the textarea                 |
+|    management    |      bool      |     false     |          | Management mode of the textarea         |
 |      style       |     object     |      {}       |          | Style of the textarea                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`

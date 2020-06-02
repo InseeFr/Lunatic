@@ -4,7 +4,7 @@
 
 |    Props    |  Type  | Default value | Required | Description             |
 | :---------: | :----: | :-----------: | :------: | ----------------------- |
-|     id      | string |       -       |    ✓     | Id of the tooltip       |
+|     id      | string |       -       |    ✓     | Id of the               |
 | response \* | string |      " "      |          | Response of the tooltip |
 
 - `response` props has to be a shape of `{name: string, values: object}`

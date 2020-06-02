@@ -10,7 +10,7 @@ import { positioningOptions, featuresOptions } from '../utils/options';
 
 const stories = storiesOf('CheckboxBoolean', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<CheckboxBoolean />" />;
 	});
@@ -29,6 +29,6 @@ stories.addWithJSX('Props', () => (
 		bindings={object('Bindings', { test: 'test' })}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 	/>
 ));

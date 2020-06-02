@@ -17,7 +17,7 @@ import {
 
 const stories = storiesOf('Datepicker', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<Datepicker />" />;
 	});
@@ -37,7 +37,7 @@ stories.addWithJSX('Props', () => (
 		readOnly={boolean('Read only', false)}
 		mandatory={boolean('Mandatory', false)}
 		focused={boolean('Focused', false)}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		labelPosition={select('Label position', labelPositionOptions)}
 	/>
 ));

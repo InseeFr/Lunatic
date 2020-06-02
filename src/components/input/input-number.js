@@ -28,7 +28,7 @@ const InputNumber = ({
 	declarations,
 	features,
 	bindings,
-	tooltip,
+	management,
 	mandatory,
 	validators,
 }) => {
@@ -89,7 +89,7 @@ const InputNumber = ({
 					bindings={bindings}
 				/>
 				<div className="field-container">
-					<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+					<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 						<input
 							type="number"
 							id={`input-${id}`}
@@ -121,7 +121,7 @@ const InputNumber = ({
 						/>
 						{unitPosition === 'AFTER' && <span className="unit">{unit}</span>}
 					</div>
-					{tooltip && (
+					{management && (
 						<div className="tooltip">
 							<TooltipResponse id={id} response={response} />
 						</div>
@@ -180,7 +180,7 @@ InputNumber.defaultProps = {
 	labelPosition: 'DEFAULT',
 	unitPositioni: 'DEFAULT',
 	mandatory: false,
-	tooltip: false,
+	management: false,
 	style: {},
 	validators: [],
 };
@@ -205,7 +205,7 @@ InputNumber.propTypes = {
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	unitPosition: PropTypes.oneOf(['DEFAULT', 'BEFORE', 'AFTER']),
 	mandatory: PropTypes.bool,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 	validators: PropTypes.arrayOf(PropTypes.func),
 };

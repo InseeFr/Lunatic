@@ -47,7 +47,7 @@ const DropdownContainer = ({
 	mandatory,
 	value: valueFromProps,
 	zIndex,
-	tooltip,
+	management,
 	state,
 	dispatch,
 	refs,
@@ -117,7 +117,7 @@ const DropdownContainer = ({
 				<Label content={label} focused={focused} mandatory={mandatory} />
 			) : null}
 			<div className="field-container">
-				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+				<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 					<div
 						tabIndex="-1"
 						style={{ zIndex: focused ? z + 1 : z }}
@@ -134,7 +134,7 @@ const DropdownContainer = ({
 						</span>
 					</div>
 				</div>
-				{tooltip && (
+				{management && (
 					<div className="tooltip">
 						<TooltipResponse
 							id={id}

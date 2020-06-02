@@ -18,7 +18,7 @@
 | declarations \*  | array  |      []       |          | Declarations of the datepicker            |
 |     features     | array  |      [ ]      |          | Component features for labels             |
 |     bindings     | object |      [ ]      |          | Questionnaire bindings                    |
-|     tooltip      |  bool  |     false     |          | Tooltip of the datepicker                 |
+|    management    |  bool  |     false     |          | Management mode of the datepicker         |
 |      style       | object |      {}       |          | Style of the datepicker                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`

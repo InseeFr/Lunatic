@@ -20,7 +20,7 @@ const Table = ({
 	bindings,
 	addBtnLabel,
 	hideBtn,
-	tooltip,
+	management,
 }) => {
 	const minLines = initLines
 		? Math.max(initLines.min, U.getRosterInitLines(cells))
@@ -80,7 +80,7 @@ const Table = ({
 													handleChange={handleChange}
 													preferences={preferences}
 													positioning={positioning}
-													tooltip={tooltip}
+													management={management}
 													features={features}
 													bindings={bindings}
 													{...componentProps}
@@ -135,7 +135,7 @@ Table.defaultProps = {
 	features: [],
 	bindings: {},
 	addBtnLabel: 'Add a line',
-	tooltip: false,
+	management: false,
 	hideBtn: false,
 	style: {},
 };
@@ -153,7 +153,7 @@ Table.propTypes = {
 	bindings: PropTypes.object,
 	addBtnLabel: PropTypes.string,
 	hideBtn: PropTypes.bool,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 };
 

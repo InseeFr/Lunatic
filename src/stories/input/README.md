@@ -20,7 +20,7 @@
 | declarations \*  |     array      |      []       |          | Declarations of the input            |
 |     features     |     array      |      [ ]      |          | Component features for labels        |
 |     bindings     |     object     |      [ ]      |          | Questionnaire bindings               |
-|     tooltip      |      bool      |     false     |          | Tooltip of the input                 |
+|    management    |      bool      |     false     |          | Management mode of the input         |
 |      style       |     object     |      {}       |          | Style of the input                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`

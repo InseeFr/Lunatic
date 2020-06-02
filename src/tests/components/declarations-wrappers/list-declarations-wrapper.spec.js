@@ -23,8 +23,10 @@ describe('list-declarations-wrapper', () => {
 		mount(<ListDeclarationsWrapper {...defaultProps} type="checkbox" />);
 	});
 
-	it('returns tooltip component', () => {
-		shallow(<ListDeclarationsWrapper {...defaultProps} tooltip type="radio" />);
+	it('returns management component', () => {
+		shallow(
+			<ListDeclarationsWrapper {...defaultProps} management type="radio" />
+		);
 	});
 
 	it('renders firing useEffect', () => {

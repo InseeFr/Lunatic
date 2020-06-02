@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import * as lunatic from 'components';
 import * as utils from 'utils/to-expose';
 
-const OrchestratorForStories = ({ source, tooltip, ...props }) => {
-	const savingType = tooltip ? 'EDITED' : 'COLLECTED';
-	const preferences = tooltip
+const OrchestratorForStories = ({ source, management, ...props }) => {
+	const savingType = management ? 'EDITED' : 'COLLECTED';
+	const preferences = management
 		? ['COLLECTED', 'FORCED', 'EDITED']
 		: ['COLLECTED'];
 	const [questionnaire, setQuestionnaire] = useState(
@@ -29,7 +29,7 @@ const OrchestratorForStories = ({ source, tooltip, ...props }) => {
 					handleChange={onChange}
 					labelPosition="TOP"
 					preferences={preferences}
-					tooltip={tooltip}
+					management={management}
 					{...props}
 				/>
 			</div>

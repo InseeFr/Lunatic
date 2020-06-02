@@ -17,7 +17,7 @@ import {
 
 const stories = storiesOf('Textarea', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<Textarea />" />;
 	});
@@ -38,7 +38,7 @@ stories.addWithJSX('Props', () => (
 		mandatory={boolean('Mandatory', false)}
 		features={select('Features', featuresOptions, [])}
 		bindings={object('Bindings', { NAME: 'Mauro' })}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		focused={boolean('Focused', false)}
 		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
 	/>
