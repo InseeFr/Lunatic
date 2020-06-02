@@ -14,7 +14,7 @@ const isDisplay = ({ visible, visibleOptions }) =>
 	visible && visibleOptions.length > 0;
 
 /** */
-const onChangeCallback = (state, dispatch) => e => {
+const onChangeCallback = (state, dispatch) => (e) => {
 	e.stopPropagation();
 	e.preventDefault();
 	dispatch(actions.setValue(e.target.value));
@@ -22,7 +22,7 @@ const onChangeCallback = (state, dispatch) => e => {
 };
 
 /** */
-const createOnSelect = (_, dispatch, onSelect) => option => {
+const createOnSelect = (_, dispatch, onSelect) => (option) => {
 	dispatch(actions.setSelectedOption(option));
 	dispatch(actions.hidePanel());
 	onSelect(option);
@@ -58,7 +58,6 @@ const Dropdown = ({
 		visible,
 		activeIndex,
 		visibleOptions,
-		selectedOption,
 		value,
 		focused,
 		id,
@@ -66,6 +65,7 @@ const Dropdown = ({
 	const inputEl = useRef();
 	const containerEl = useRef();
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
+	const selectedOption = options.find((o) => o.value === value);
 	return (
 		<DropdownContainer
 			className={className || 'lunatic-dropdown'}
@@ -103,13 +103,13 @@ const Dropdown = ({
 				prefix={prefix}
 				visible={visible}
 				disabled={disabled}
-				onDelete={e => {
+				onDelete={(e) => {
 					e.stopPropagation();
 					inputEl.current.value = '';
 					dispatch(actions.resetSelection());
 					onSelect_({ value: null });
 				}}
-				onSwitch={e => {
+				onSwitch={(e) => {
 					e.stopPropagation();
 					e.preventDefault();
 					if (visible) {
@@ -135,7 +135,7 @@ const Dropdown = ({
 					optionComponent={Option}
 					selectedOption={selectedOption}
 					onSelect={onSelect_}
-					handleActive={index => dispatch(actions.setActiveOption(index))}
+					handleActive={(index) => dispatch(actions.setActiveOption(index))}
 				/>
 			</div>
 		</DropdownContainer>
