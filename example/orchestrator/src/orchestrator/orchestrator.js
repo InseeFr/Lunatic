@@ -7,7 +7,7 @@ const Orchestrator = ({
 	source,
 	features,
 	data,
-	tooltip,
+	management,
 	filterDescription,
 }) => {
 	const {
@@ -15,14 +15,12 @@ const Orchestrator = ({
 		components,
 		handleChange,
 		bindings,
-	} = lunatic.useLunatic(
-		source,
-		data,
+	} = lunatic.useLunatic(source, data, {
 		savingType,
 		preferences,
 		features,
-		tooltip
-	);
+		management,
+	});
 
 	console.log(lunatic.getCollectedState(questionnaire));
 
@@ -39,9 +37,9 @@ const Orchestrator = ({
 								handleChange={handleChange}
 								labelPosition="TOP"
 								preferences={preferences}
-								tooltip={tooltip}
+								management={management}
 								filterDescription={filterDescription}
-								features={['VTL']}
+								features={features}
 								bindings={bindings}
 								writable
 								zIndex={1}

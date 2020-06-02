@@ -1,27 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import * as lunatic from '@inseefr/lunatic';
 import Activator from './activator';
-import './custom-lunatic.scss';
+import Orchestrator from './orchestrator';
 
-const preferences = ['COLLECTED'];
-const savingType = 'COLLECTED';
+function useForceUpdate() {
+  const [value, setValue] = useState(0); // integer state
+  return () => setValue(value => ++value); // update the state to force render
+}
 
 const Questionnaire = ({ source, data, error }) => {
   const [vtl, setVtl] = useState(true);
   const [filter, setFilter] = useState(false);
-  const { questionnaire, components, handleChange, bindings } = lunatic.useLunatic(
-    source,
-    data,
-    savingType,
-    preferences,
-    vtl ? ['VTL'] : [],
-    false
-  );
 
   if (error) return <h2 className="error">{error}</h2>;
-  if (!Array.isArray(questionnaire.components))
-    return <h2 className="error">Missing components</h2>;
+  if (!Array.isArray(source.components)) return <h2 className="error">Missing components</h2>;
 
   return (
     <div className="container">
@@ -29,38 +21,20 @@ const Questionnaire = ({ source, data, error }) => {
         id="vtl"
         label={`VTL interpretation (labels & filters)`}
         value={vtl}
-        onChange={() => setVtl(!vtl)}
+        onChange={() => {
+          setVtl(!vtl);
+        }}
       />
       <Activator
         id="filter-decsription"
         label={`Display filter description`}
         value={filter}
-        onChange={() => setFilter(!filter)}
+        onChange={() => {
+          setFilter(!filter);
+        }}
       />
-      <h1 className="title">{questionnaire.label}</h1>
-      <div className="components">
-        {components.map(q => {
-          const { id, componentType } = q;
-          const Component = lunatic[componentType];
-          if (!Component)
-            return <h4 key={`component-${id}`}>{`${id} component type is not supported`}</h4>;
-          return (
-            <div className="lunatic lunatic-component" key={`component-${id}`}>
-              <Component
-                {...q}
-                handleChange={handleChange}
-                labelPosition="TOP"
-                preferences={preferences}
-                features={vtl ? ['VTL'] : []}
-                bindings={vtl ? bindings : {}}
-                writable
-                zIndex={1}
-                filterDescription={filter}
-              />
-            </div>
-          );
-        })}
-      </div>
+      <h1 className="title">{source.label}</h1>
+      <Orchestrator source={source} data={data} features={vtl ? ['VTL'] : []} filter={filter} />
     </div>
   );
 };
