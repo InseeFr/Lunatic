@@ -1,16 +1,23 @@
-export const buildTooltip = response => {
-	if (!response || !response.valueState) return {};
-	const { valueState } = response;
-	const edited = get(valueState)('EDITED');
-	const forced = get(valueState)('FORCED');
-	const collected = get(valueState)('COLLECTED');
-	if (edited && edited.value !== null) {
-		if (forced && forced.value === null)
+import * as C from '../../../constants';
+
+export const buildTooltip = (response) => {
+	if (
+		!response ||
+		!response.values ||
+		Object.keys(response.values).length === 0
+	)
+		return {};
+	const { values } = response;
+	const edited = values[C.EDITED];
+	const forced = values[C.FORCED];
+	const collected = values[C.COLLECTED];
+	if (has(edited)) {
+		if (!has(forced))
 			return {
 				content: [
 					{
 						key: 'Brute',
-						value: collected.value !== null ? collected.value : ' - ',
+						value: collected || ' - ',
 					},
 				],
 				imgName: 'editedImg',
@@ -19,22 +26,22 @@ export const buildTooltip = response => {
 			content: [
 				{
 					key: 'Brute',
-					value: collected.value !== null ? collected.value : ' - ',
+					value: collected || ' - ',
 				},
 				{
 					key: 'Correction automatique',
-					value: forced.value,
+					value: forced,
 				},
 			],
 			imgName: 'editedImg',
 		};
 	}
-	if (forced && forced.value !== null)
+	if (has(forced))
 		return {
 			content: [
 				{
 					key: 'Brute',
-					value: collected.value !== null ? collected.value : ' - ',
+					value: collected || ' - ',
 				},
 			],
 			imgName: 'forcedImg',
@@ -42,5 +49,4 @@ export const buildTooltip = response => {
 	return {};
 };
 
-const get = valueState => valueType =>
-	valueState.find(v => v.valueType === valueType);
+const has = (status) => status !== undefined && status !== null;

@@ -118,7 +118,12 @@ describe('input-number', () => {
 
 	it('render message error', () => {
 		const wrapperMin = shallow(
-			<InputNumber {...defaultProps} handleChange={handleChange} min={1} />
+			<InputNumber
+				{...defaultProps}
+				handleChange={handleChange}
+				min={1}
+				bindingsDependency
+			/>
 		);
 		expect(wrapperMin.find('.lunatic-input-number-errors').text()).toEqual('');
 		wrapperMin.find('input').simulate('change', {
@@ -131,7 +136,12 @@ describe('input-number', () => {
 		);
 
 		const wrapperMax = shallow(
-			<InputNumber {...defaultProps} handleChange={handleChange} max={9.8} />
+			<InputNumber
+				{...defaultProps}
+				handleChange={handleChange}
+				max={9.8}
+				bindingsDependency
+			/>
 		);
 		expect(wrapperMax.find('.lunatic-input-number-errors').text()).toEqual('');
 		wrapperMax.find('input').simulate('change', {
@@ -149,6 +159,7 @@ describe('input-number', () => {
 				handleChange={handleChange}
 				min={1}
 				max={10}
+				bindingsDependency
 			/>
 		);
 		expect(wrapperMinMax.find('.lunatic-input-number-errors').text()).toEqual(

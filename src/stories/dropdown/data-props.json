@@ -7,13 +7,13 @@
 			"label": "\"In which state do The \" || NAME || \" reside?\"",
 			"response": {
 				"name": "STATE",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "1" },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "3",
+					"FORCED": "2",
+					"EDITED": null,
+					"INPUTED": null
+				}
 			},
 			"options": [
 				{ "value": "1", "label": "Washington" },
@@ -37,14 +37,14 @@
 			"mandatory": false,
 			"label": "\"In which state do The \" || NAME || \" reside?\"",
 			"response": {
-				"name": "STATE",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "3" },
-					{ "valueType": "FORCED", "value": "2" },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"name": "STATE2",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "3",
+					"FORCED": "2",
+					"EDITED": null,
+					"INPUTED": null
+				}
 			},
 			"options": [
 				{ "value": "1", "label": "Washington" },
@@ -62,5 +62,29 @@
 				{ "value": "13", "label": "Not in any state, you fool!" }
 			]
 		}
-	]
+	],
+	"variables": {
+		"COLLECTED": {
+			"STATE": {
+				"componentRef": "j4nw5cqz",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "3",
+					"FORCED": "2",
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"STATE2": {
+				"componentRef": "j4nw5cqz-bis",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "3",
+					"FORCED": "2",
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		}
+	}
 }

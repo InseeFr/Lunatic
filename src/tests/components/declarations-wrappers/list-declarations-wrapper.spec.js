@@ -7,7 +7,7 @@ const options = [
 	{ value: 'france', label: 'France' },
 	{ value: 'italy', label: 'Italy' },
 ];
-const response = { valueState: [{ valueType: 'COLLECTED', value: 'italy' }] };
+const response = { values: { COLLECTED: 'italy' } };
 
 const defaultProps = {
 	id: 'id',
@@ -23,15 +23,8 @@ describe('list-declarations-wrapper', () => {
 		mount(<ListDeclarationsWrapper {...defaultProps} type="checkbox" />);
 	});
 
-	it('returns tooltip and keyboardSelection component', () => {
-		shallow(
-			<ListDeclarationsWrapper
-				{...defaultProps}
-				tooltip
-				keyboardSelection
-				type="radio"
-			/>
-		);
+	it('returns tooltip component', () => {
+		shallow(<ListDeclarationsWrapper {...defaultProps} tooltip type="radio" />);
 	});
 
 	it('renders firing useEffect', () => {
@@ -45,10 +38,7 @@ describe('list-declarations-wrapper', () => {
 		const wrapper = shallow(
 			<ListDeclarationsWrapper {...defaultProps} type="radio" />
 		);
-		wrapper
-			.find('input')
-			.first()
-			.simulate('change');
+		wrapper.find('input').first().simulate('change');
 		expect(handleChange).toHaveBeenCalled();
 		expect(handleChange).toHaveBeenCalledWith({ '': 'france' });
 	});

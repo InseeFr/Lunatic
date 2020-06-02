@@ -45,4 +45,4 @@ Subsequence.propTypes = {
 	style: PropTypes.object,
 };
 
-export default Subsequence;
+export default React.memo(Subsequence, U.areEqual);

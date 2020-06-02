@@ -10,57 +10,57 @@ const options = [
 
 const responseNull = {
 	name: 'Response',
-	valueState: [
-		{ valueType: 'PREVIOUS', value: null },
-		{ valueType: 'COLLECTED', value: null },
-		{ valueType: 'FORCED', value: null },
-		{ valueType: 'EDITED', value: null },
-		{ valueType: 'INPUTED', value: null },
-	],
+	values: {
+		PREVIOUS: null,
+		COLLECTED: null,
+		FORCED: null,
+		EDITED: null,
+		INPUTED: null,
+	},
 };
 
 const response = {
 	name: 'Response',
-	valueState: [
-		{ valueType: 'PREVIOUS', value: null },
-		{ valueType: 'COLLECTED', value: '1' },
-		{ valueType: 'FORCED', value: '0' },
-		{ valueType: 'EDITED', value: '1' },
-		{ valueType: 'INPUTED', value: null },
-	],
+	values: {
+		PREVIOUS: null,
+		COLLECTED: '1',
+		FORCED: '0',
+		EDITED: '1',
+		INPUTED: null,
+	},
 };
 
 const finalResponse = {
 	name: 'Response',
-	valueState: [
-		{ valueType: 'PREVIOUS', value: null },
-		{ valueType: 'COLLECTED', value: 'Yes' },
-		{ valueType: 'FORCED', value: 'No' },
-		{ valueType: 'EDITED', value: 'Yes' },
-		{ valueType: 'INPUTED', value: null },
-	],
+	values: {
+		PREVIOUS: null,
+		COLLECTED: 'Yes',
+		FORCED: 'No',
+		EDITED: 'Yes',
+		INPUTED: null,
+	},
 };
 
 const booleanResponse = {
 	name: 'Response',
-	valueState: [
-		{ valueType: 'PREVIOUS', value: null },
-		{ valueType: 'COLLECTED', value: true },
-		{ valueType: 'FORCED', value: false },
-		{ valueType: 'EDITED', value: true },
-		{ valueType: 'INPUTED', value: null },
-	],
+	values: {
+		PREVIOUS: null,
+		COLLECTED: true,
+		FORCED: false,
+		EDITED: true,
+		INPUTED: null,
+	},
 };
 
 const booleanFinalResponse = {
 	name: 'Response',
-	valueState: [
-		{ valueType: 'PREVIOUS', value: null },
-		{ valueType: 'COLLECTED', value: 'Vrai' },
-		{ valueType: 'FORCED', value: 'Faux' },
-		{ valueType: 'EDITED', value: 'Vrai' },
-		{ valueType: 'INPUTED', value: null },
-	],
+	values: {
+		PREVIOUS: null,
+		COLLECTED: 'Vrai',
+		FORCED: 'Faux',
+		EDITED: 'Vrai',
+		INPUTED: null,
+	},
 };
 
 describe('build response', () => {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
-import * as C from '../../utils/constants';
+import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import './checkbox.scss';
 
@@ -151,4 +151,4 @@ CheckboxGroup.propTypes = {
 	style: PropTypes.object,
 };
 
-export default CheckboxGroup;
+export default React.memo(CheckboxGroup, U.areEqual);

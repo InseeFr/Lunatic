@@ -1,12 +1,12 @@
-export const buildLoopComponents = index => components => {
-	const flatten = [...Array(index).keys()].map(i =>
+export const buildLoopComponents = (index) => (components) => {
+	const flatten = [...Array(index).keys()].map((i) =>
 		buildFlatten(i)(components)
 	);
 	return flatten.flat();
 };
 
-const buildFlatten = i => components =>
-	components.map(component => {
+const buildFlatten = (i) => (components) =>
+	components.map((component) => {
 		const indexedComponent = { ...component, loopIndex: i };
 		const { componentType, response } = component;
 		if (
@@ -18,17 +18,16 @@ const buildFlatten = i => components =>
 		else return indexedComponent;
 	});
 
-const buildFlattenResponse = component => {
+const buildFlattenResponse = (component) => {
 	const { response, loopIndex, ...other } = component;
-	const { name, valueState } = response;
-	const newValueState = valueState.map(({ valueType, value }) => ({
-		valueType,
-		value: value[loopIndex],
-	}));
-
+	const { name, values } = response;
+	const newValues = Object.entries(values).reduce(
+		(acc, [key, value]) => ({ ...acc, [key]: value[loopIndex] }),
+		{}
+	);
 	return {
 		...other,
-		response: { name, valueState: newValueState },
+		response: { name, values: newValues },
 		loopIndex,
 	};
 };

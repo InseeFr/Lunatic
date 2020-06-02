@@ -7,20 +7,16 @@ describe('checkbox-group', () => {
 	const responses = [
 		{
 			id: '1',
-			response: { valueState: [{ valueType: 'COLLECTED', value: true }] },
+			response: { name: 'a', values: { COLLECTED: true } },
 			label: 'France',
 		},
 		{
 			id: '2',
-			response: { valueState: [{ valueType: 'COLLECTED', value: false }] },
+			response: { name: 'b', values: { COLLECTED: false } },
 			label: 'Italy',
 		},
 	];
 	const defaultProps = { id: 'id', handleChange, responses };
-
-	it('renders without crashing', () => {
-		mount(<CheckboxGroup {...defaultProps} keyboardSelection />);
-	});
 
 	it('returns tooltip component', () => {
 		shallow(<CheckboxGroup {...defaultProps} tooltip />);
@@ -46,6 +42,6 @@ describe('checkbox-group', () => {
 				},
 			});
 		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': false });
+		expect(handleChange).toHaveBeenCalledWith({ a: false });
 	});
 });

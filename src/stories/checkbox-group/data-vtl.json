@@ -1,7 +1,7 @@
 {
 	"components": [
 		{
-			"id": "j334akov",
+			"id": "gg",
 			"componentType": "CheckboxGroup",
 			"label": "➡ 1. What are the pet names that the Simpsons family had?",
 			"responses": [
@@ -10,13 +10,13 @@
 					"label": "Santa's Little Helper",
 					"response": {
 						"name": "PET1",
-						"valueState": [
-							{ "valueType": "PREVIOUS", "value": null },
-							{ "valueType": "COLLECTED", "value": true },
-							{ "valueType": "FORCED", "value": false },
-							{ "valueType": "EDITED", "value": null },
-							{ "valueType": "INPUTED", "value": null }
-						]
+						"values": {
+							"PREVIOUS": null,
+							"COLLECTED": true,
+							"FORCED": false,
+							"EDITED": null,
+							"INPUTED": null
+						}
 					}
 				},
 				{
@@ -24,13 +24,13 @@
 					"label": "Snowball I",
 					"response": {
 						"name": "PET2",
-						"valueState": [
-							{ "valueType": "PREVIOUS", "value": null },
-							{ "valueType": "COLLECTED", "value": true },
-							{ "valueType": "FORCED", "value": null },
-							{ "valueType": "EDITED", "value": null },
-							{ "valueType": "INPUTED", "value": null }
-						]
+						"values": {
+							"PREVIOUS": null,
+							"COLLECTED": true,
+							"FORCED": null,
+							"EDITED": null,
+							"INPUTED": null
+						}
 					}
 				},
 				{
@@ -38,13 +38,13 @@
 					"label": "Coltrane",
 					"response": {
 						"name": "PET3",
-						"valueState": [
-							{ "valueType": "PREVIOUS", "value": null },
-							{ "valueType": "COLLECTED", "value": null },
-							{ "valueType": "FORCED", "value": null },
-							{ "valueType": "EDITED", "value": null },
-							{ "valueType": "INPUTED", "value": null }
-						]
+						"values": {
+							"PREVIOUS": null,
+							"COLLECTED": null,
+							"FORCED": null,
+							"EDITED": null,
+							"INPUTED": null
+						}
 					}
 				},
 				{
@@ -52,16 +52,60 @@
 					"label": "NAME || \" the Helper Monkey\"",
 					"response": {
 						"name": "PET4",
-						"valueState": [
-							{ "valueType": "PREVIOUS", "value": null },
-							{ "valueType": "COLLECTED", "value": null },
-							{ "valueType": "FORCED", "value": null },
-							{ "valueType": "EDITED", "value": null },
-							{ "valueType": "INPUTED", "value": null }
-						]
+						"values": {
+							"PREVIOUS": null,
+							"COLLECTED": null,
+							"FORCED": null,
+							"EDITED": null,
+							"INPUTED": null
+						}
 					}
 				}
 			]
 		}
-	]
+	],
+	"variables": {
+		"COLLECTED": {
+			"PET1": {
+				"componentRef": "gg",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
+					"FORCED": false,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"PET2": {
+				"componentRef": "gg",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"PET3": {
+				"componentRef": "gg",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"PET4": {
+				"componentRef": "gg",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		}
+	}
 }

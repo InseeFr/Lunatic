@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import * as lunatic from '../../components';
 import Declarations from '../../declarations';
 import * as U from '../../../utils/lib';
-import * as C from '../../../utils/constants';
-import { interpret, getVariableFromResponses } from '../../../utils/to-expose';
-import { buildTableComponents } from './build-components';
+import * as C from '../../../constants';
+import { interpret } from '../../../utils/to-expose';
+import { buildRosterUIComponents } from './build-components';
 
-const Table = ({
+const RosterForLoop = ({
 	id: tableId,
 	label: tableLabel,
 	preferences,
@@ -23,22 +23,21 @@ const Table = ({
 	hideBtn,
 	tooltip,
 }) => {
-	const minLines = initLines
-		? Math.max(initLines.min, U.getRosterVectorInitLines(components))
-		: undefined;
+	const minLines = Math.max(
+		initLines.min,
+		U.getRosterForLoopInitLines(components)
+	);
+	const [lines, setLines] = useState(() => minLines);
 	const maxLines = initLines ? initLines.max : undefined;
-	const [lines, setLines] = useState(minLines);
 
-	const width = `${100 / Math.max(...components.map(line => line.length))}%`;
+	const width = `${100 / Math.max(...components.map((line) => line.length))}%`;
 	const Button = lunatic.Button;
 
-	const uiComponents = buildTableComponents(headers)(components);
-
+	const uiComponents = buildRosterUIComponents(headers)(components);
+	console.log(components);
 	const onChange = (up, index) => {
 		const [key, value] = Object.entries(up)[0];
-		const previousValue = getVariableFromResponses(components)[key][
-			'COLLECTED'
-		];
+		const previousValue = bindings[key];
 		const newValue = previousValue.map((v, i) => (i === index ? value : v));
 		handleChange({ [key]: newValue });
 	};
@@ -108,7 +107,7 @@ const Table = ({
 												{...componentProps}
 												id={`${id}-row-${i}`}
 												label={label}
-												handleChange={v => onChange(v, i - 1)}
+												handleChange={(v) => onChange(v, i - 1)}
 												preferences={preferences}
 												positioning={positioning}
 												tooltip={tooltip}
@@ -155,7 +154,7 @@ const Table = ({
 	);
 };
 
-Table.defaultProps = {
+RosterForLoop.defaultProps = {
 	label: '',
 	preferences: ['COLLECTED'],
 	components: [],
@@ -170,7 +169,7 @@ Table.defaultProps = {
 	style: {},
 };
 
-Table.propTypes = {
+RosterForLoop.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
 	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
@@ -187,4 +186,4 @@ Table.propTypes = {
 	style: PropTypes.object,
 };
 
-export default Table;
+export default RosterForLoop;

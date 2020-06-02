@@ -23,7 +23,7 @@
 |      style       | object |      {}       |          | Style of the dropdown                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
-- `response` props has to be a shape of `{name: string, valueState: object}`
+- `response` props has to be a shape of `{name: string, values: object}`
 - `options` props has to be an array made by objects with a shape of `{label: string, value: string}`
 - `labelPosition` props has to be one of `DEFAULT`, `TOP`, `BOTTOM`, `RIGHT` or `LEFT`
 - `declarations` are documented in the `Declarations` component

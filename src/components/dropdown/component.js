@@ -4,7 +4,7 @@ import DropdownSimple from './dropdown-simple';
 import DropdownEdit from './dropdown-edit';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
-import * as C from '../../utils/constants';
+import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import './dropdown.scss';
 
@@ -112,4 +112,4 @@ Dropdown.defaultProps = {
 	freezeOptions: false,
 };
 
-export default Dropdown;
+export default React.memo(Dropdown, U.areEqual);

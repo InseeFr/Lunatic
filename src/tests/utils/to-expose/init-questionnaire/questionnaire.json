@@ -1,0 +1,124 @@
+{
+	"components": [
+		{ "id": "1", "componentType": "Sequence" },
+		{
+			"id": "2",
+			"componentType": "Input",
+			"response": {
+				"name": "input"
+			}
+		},
+		{
+			"id": "3",
+			"componentType": "CheckboxGroup",
+			"responses": [
+				{
+					"response": {
+						"name": "check1"
+					}
+				},
+				{
+					"response": {
+						"name": "check2"
+					}
+				}
+			]
+		},
+		{
+			"id": "4",
+			"componentType": "Table",
+			"cells": [
+				[
+					{ "label": "label" },
+					{
+						"componentType": "Radio",
+						"response": {
+							"name": "table11"
+						}
+					}
+				]
+			]
+		},
+		{
+			"id": "5",
+			"componentType": "RosterForLoop",
+			"components": [
+				{
+					"componentType": "Input",
+					"id": "k3yn2qmr",
+					"response": {
+						"name": "Roster"
+					}
+				}
+			]
+		}
+	],
+	"variables": [
+		{ "variableType": "EXTERNAL", "name": "VAR_EXTERNAL", "value": null },
+		{
+			"variableType": "CALCULATED",
+			"name": "VAR_CALCULATED",
+			"expression": "VTL expression"
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "2",
+			"name": "input",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "3",
+			"name": "check1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "3",
+			"name": "check2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "4",
+			"name": "table11",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "5",
+			"name": "Roster",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		}
+	]
+}

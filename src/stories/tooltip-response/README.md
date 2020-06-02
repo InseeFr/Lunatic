@@ -7,7 +7,7 @@
 |     id      | string |       -       |    ✓     | Id of the tooltip       |
 | response \* | string |      " "      |          | Response of the tooltip |
 
-- `response` props has to be a shape of `{name: string, valueState: object}`
+- `response` props has to be a shape of `{name: string, values: object}`
 
 ## Styles
 

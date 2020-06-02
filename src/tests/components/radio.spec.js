@@ -7,7 +7,7 @@ const options = [
 	{ value: 'france', label: 'France' },
 	{ value: 'italy', label: 'Italy' },
 ];
-const response = { valueState: [{ valueType: 'COLLECTED', value: 'italy' }] };
+const response = { values: { COLLECTED: 'italy' } };
 const defaultProps = {
 	id: 'id',
 	label: 'label',

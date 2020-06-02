@@ -1,20 +1,34 @@
 {
 	"components": [
 		{
-			"id": "j6p0np9q",
+			"id": "1",
 			"componentType": "CheckboxBoolean",
 			"mandatory": false,
 			"label": "➡ 2. Are you ready?",
 			"response": {
 				"name": "READY",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": true },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
-	]
+	],
+	"variables": {
+		"COLLECTED": {
+			"READY": {
+				"componentRef": "1",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		}
+	}
 }

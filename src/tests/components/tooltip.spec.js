@@ -4,13 +4,13 @@ import { TooltipResponse } from 'components';
 
 const response = {
 	name: 'Response',
-	valueState: [
-		{ valueType: 'PREVIOUS', value: null },
-		{ valueType: 'COLLECTED', value: '1' },
-		{ valueType: 'FORCED', value: '0' },
-		{ valueType: 'EDITED', value: '1' },
-		{ valueType: 'INPUTED', value: null },
-	],
+	values: {
+		PREVIOUS: null,
+		COLLECTED: '1',
+		FORCED: '0',
+		EDITED: '1',
+		INPUTED: null,
+	},
 };
 
 describe('tooltip', () => {

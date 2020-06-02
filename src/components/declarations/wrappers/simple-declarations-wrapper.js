@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../';
 import * as U from '../../../utils/lib';
-import * as C from '../../../utils/constants';
+import * as C from '../../../constants';
 
 const SimpleDeclarationsWrapper = ({
 	id,

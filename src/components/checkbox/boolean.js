@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
-import * as C from '../../utils/constants';
+import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import './checkbox.scss';
 
@@ -129,4 +129,4 @@ CheckboxBoolean.propTypes = {
 	style: PropTypes.object,
 };
 
-export default CheckboxBoolean;
+export default React.memo(CheckboxBoolean, U.areEqual);

@@ -1,36 +1,36 @@
 {
 	"components": [
 		{
-			"id": "j3343qhx",
+			"id": "name",
 			"componentType": "Input",
 			"mandatory": false,
 			"maxLength": "30",
 			"label": "Input to test dropdown render",
 			"response": {
 				"name": "NAME",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "Hello" },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "Hello",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		},
 		{
-			"id": "j4nw5cqz",
+			"id": "state",
 			"componentType": "Dropdown",
 			"mandatory": false,
 			"label": "\"What's your activity?\"",
 			"response": {
 				"name": "STATE",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": null },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			},
 			"options": [
 				{
@@ -6947,5 +6947,29 @@
 				}
 			]
 		}
-	]
+	],
+	"variables": {
+		"COLLECTED": {
+			"NAME": {
+				"componentRef": "name",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "Hello",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"STATE": {
+				"componentRef": "state",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		}
+	}
 }
