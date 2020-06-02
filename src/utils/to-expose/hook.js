@@ -3,6 +3,7 @@ import { interpret } from './interpret';
 import { mergeQuestionnaireAndData } from './init-questionnaire';
 import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
+import { COLLECTED } from '../../constants';
 
 const filterComponents = (components, tooltip, bindings, features) =>
 	components.filter(({ conditionFilter }) =>
@@ -12,10 +13,12 @@ const filterComponents = (components, tooltip, bindings, features) =>
 const useLunatic = (
 	source,
 	data,
-	savingType,
-	preferences,
-	features,
-	hasToFilter
+	{
+		savingType = COLLECTED,
+		preferences = [COLLECTED],
+		features = ['VTL'],
+		management = false,
+	}
 ) => {
 	const [questionnaire, setQuestionnaire] = useState(
 		mergeQuestionnaireAndData(source)(data)
@@ -23,7 +26,7 @@ const useLunatic = (
 	const [components, setComponents] = useState(() =>
 		filterComponents(
 			questionnaire.components,
-			hasToFilter,
+			management,
 			getBindings(questionnaire),
 			features
 		)
@@ -43,14 +46,14 @@ const useLunatic = (
 			setComponents(
 				filterComponents(
 					newQ.components,
-					hasToFilter,
+					management,
 					getBindings(newQ),
 					features
 				)
 			);
 			setTodo({});
 		}
-	}, [todo, preferences, questionnaire, savingType, features, hasToFilter]);
+	}, [todo, preferences, questionnaire, savingType, features, management]);
 
 	const bindings = getBindings(questionnaire);
 
