@@ -55,4 +55,4 @@ Les clés suivantes sont prises en compte :
 
 #### Exemple
 
-Un exemple d'utilisation de `useLunatic` est proposé dans la rubrique [Utilisation](usage.md) de la documentation.
+Un exemple d'utilisation de `useLunatic` est proposé dans la rubrique [Utilisation](../usage.md) de la documentation.
