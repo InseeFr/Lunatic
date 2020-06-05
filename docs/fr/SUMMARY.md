@@ -9,6 +9,8 @@
   - [Initialisation d'un questionnaire](utils/init-questionnaire.md)
   - [Mise à jour d'un questionnaire](utils/handler.md)
   - [Récupération des données d'un questionnaire](utils/get-data.md)
+  - [Récupération des variables à binder d'un questionnaire](utils/bindings.md)
+  - [Gestion simplifiée d'un questionnaire](utils/hook.md)
 - [Versions](versions/index.md)
   - Releases
     - [2.0.0](versions/2-0-0.md)

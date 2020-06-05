@@ -7,6 +7,6 @@ Les différentes fonctions utilitaires proposées ont pour but de faciliter la g
 - [récupération des données d'un questionnaire](./get-data.md)
 - [récupération des variables à binder d'un questionnaire](./bindings.md)
 
-Un hook est mis à disposition pour orchestrer directement ces fonctions utilitaires :
+Un hook est mis à disposition pour orchestrer simplement et directement ces fonctions utilitaires :
 
 - [gestion du questionnaire](./hook.md)
