@@ -34,7 +34,7 @@ En présence de données de personnalisation, la fonction `mergeQuestionnaireAnd
 
 #### Retour
 
-(`object`) : questionnaire au format Lunatic-Model
+(`object`) : questionnaire
 
 #### Exemple
 
@@ -44,16 +44,17 @@ En présence de données de personnalisation, la fonction `mergeQuestionnaireAnd
 {
 	"components": [
 		{
+			"id": "1",
 			"componentType": "Input",
 			"response": {
 				"name": "variable1",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": null },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
 	],
@@ -63,6 +64,17 @@ En présence de données de personnalisation, la fonction `mergeQuestionnaireAnd
 			"variableType": "CALCULATED",
 			"name": "VAR_CALCULATED",
 			"expression": "VTL expression"
+		},
+		{
+			"variableType": "COLLECTED",
+			"componentRef": "1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
 		}
 	]
 }
@@ -92,13 +104,13 @@ En présence de données de personnalisation, la fonction `mergeQuestionnaireAnd
 			"componentType": "Input",
 			"response": {
 				"name": "variable1",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "Variable 1" },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "Variable 1",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
 	],
@@ -110,6 +122,16 @@ En présence de données de personnalisation, la fonction `mergeQuestionnaireAnd
 			"VAR_CALCULATED": {
 				"expression": "VTL expression",
 				"value": null
+			}
+		},
+		"COLLECTED": {
+			"componentRef": "1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
 	}

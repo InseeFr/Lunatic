@@ -8,7 +8,7 @@ La fonction `updateQuestionnaire` permet de mettre à jour simplement le questio
 
 `savingType` (`string`) : un des cinq valueType du Lunatic-Model, déterminant le champ de sauvegarde des données saisies au sein des composants.
 
-`questionnaire` (`object`) : au format Lunatic-Model.
+`questionnaire` (`object`) : initialement au format Lunatic-Model, transformé en amont par la fonction `mergeQuestionnaireAndData`
 
 `preferences` (`array`) : tableau de valueType, permettant de prioriser l'affichage des données.
 
@@ -20,7 +20,7 @@ La fonction `updateQuestionnaire` permet de mettre à jour simplement le questio
 
 #### Retour
 
-(`object`) : questionnaire au format Lunatic-Model
+(`object`) : questionnaire
 
 #### Exemple
 
@@ -32,16 +32,17 @@ La fonction `updateQuestionnaire` permet de mettre à jour simplement le questio
 {
 	"components": [
 		{
+			"id": "1",
 			"componentType": "Input",
 			"response": {
 				"name": "variable1",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": null },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
 	]
@@ -62,16 +63,17 @@ La fonction `updateQuestionnaire` permet de mettre à jour simplement le questio
 {
 	"components": [
 		{
+			"id": "1",
 			"componentType": "Input",
 			"response": {
 				"name": "variable1",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "Variable 1" },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "Variable 1",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
 	]

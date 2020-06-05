@@ -14,7 +14,7 @@ const filterComponents = (components, management, bindings, features) =>
 
 const useLunatic = (
 	source,
-	data,
+	data = {},
 	{
 		savingType = COLLECTED,
 		preferences = [COLLECTED],
