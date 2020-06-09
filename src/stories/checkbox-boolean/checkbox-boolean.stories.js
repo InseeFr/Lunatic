@@ -23,7 +23,6 @@ stories.addWithJSX('Props', () => (
 	<Orchestrator
 		id="props"
 		source={data}
-		label={text('Label', '"I\'m the label of the boolean checkbox"')}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={select('Features', featuresOptions, [])}
 		bindings={object('Bindings', { test: 'test' })}

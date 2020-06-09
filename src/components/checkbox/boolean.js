@@ -24,6 +24,14 @@ const CheckboxBoolean = ({
 }) => {
 	const inputRef = useRef();
 
+	const specificHandleChange = (e) => {
+		const [key, value] = Object.entries(e)[0];
+		console.log(response);
+		if (value === false && U.responseToClean(response)(preferences))
+			handleChange({ [key]: null });
+		else handleChange(e);
+	};
+
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
@@ -42,7 +50,7 @@ const CheckboxBoolean = ({
 				checked={U.getResponseByPreference(preferences)(response)}
 				disabled={disabled}
 				onChange={(e) => {
-					handleChange({
+					specificHandleChange({
 						[U.getResponseName(response)]: e.target.checked,
 					});
 				}}

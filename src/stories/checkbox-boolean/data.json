@@ -15,6 +15,22 @@
 					"INPUTED": null
 				}
 			}
+		},
+		{
+			"id": "2",
+			"componentType": "CheckboxBoolean",
+			"mandatory": false,
+			"label": "➡ 2. Are you always ready?",
+			"response": {
+				"name": "READY2",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
 		}
 	],
 	"variables": {
@@ -24,6 +40,16 @@
 				"values": {
 					"PREVIOUS": null,
 					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"READY2": {
+				"componentRef": "2",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null

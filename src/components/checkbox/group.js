@@ -28,7 +28,7 @@ const CheckboxGroup = ({
 
 	const specificHandleChange = (e) => {
 		const [key, value] = Object.entries(e)[0];
-		if (value === false && U.responseToClean(responses)(preferences)(key))
+		if (value === false && U.responsesToClean(responses)(preferences)(key))
 			handleChange({ [key]: null });
 		else handleChange(e);
 	};
