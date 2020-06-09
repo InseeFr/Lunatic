@@ -9,3 +9,4 @@ export { buildStyleObject } from './style';
 export * from './table';
 export * from './loops';
 export * from './memo-check';
+export * from './checkbox';
