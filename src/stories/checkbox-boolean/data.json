@@ -9,7 +9,7 @@
 				"name": "READY",
 				"values": {
 					"PREVIOUS": null,
-					"COLLECTED": true,
+					"COLLECTED": null,
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null
@@ -23,7 +23,7 @@
 				"componentRef": "1",
 				"values": {
 					"PREVIOUS": null,
-					"COLLECTED": true,
+					"COLLECTED": null,
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null
