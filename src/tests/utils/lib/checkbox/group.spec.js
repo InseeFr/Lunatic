@@ -1,24 +1,52 @@
-import { responseToClean } from 'utils/lib';
+import { responseToClean, responsesToClean } from 'utils/lib';
 
 describe('checkbox utils', () => {
 	describe('responseToClean', () => {
 		it('should return default value', () => {
-			expect(responseToClean()()()).toBeFalsy();
-			expect(responseToClean([])(['COLLECTED'])('')).toBeFalsy();
+			expect(responseToClean()()).toBeFalsy();
+			expect(responseToClean({})(['COLLECTED'])).toBeFalsy();
 			expect(
-				responseToClean([
+				responseToClean({
+					name: 'key',
+					values: { COLLECTED: true, EDITED: false },
+				})()
+			).toBeFalsy();
+		});
+		it('should return true', () => {
+			expect(
+				responseToClean({
+					name: 'key',
+					values: { COLLECTED: null, EDITED: true },
+				})(['COLLECTED', 'EDITED'])
+			).toBeTruthy();
+		});
+		it('should return false', () => {
+			expect(
+				responseToClean({
+					name: 'key',
+					values: { COLLECTED: true, EDITED: false },
+				})(['COLLECTED', 'EDITED'])
+			).toBeFalsy();
+		});
+	});
+	describe('responsesToClean', () => {
+		it('should return default value', () => {
+			expect(responsesToClean()()()).toBeFalsy();
+			expect(responsesToClean([])(['COLLECTED'])('')).toBeFalsy();
+			expect(
+				responsesToClean([
 					{ response: { name: 'key', values: { COLLECTED: true } } },
 				])()('key')
 			).toBeFalsy();
 			expect(
-				responseToClean([
+				responsesToClean([
 					{ response: { name: 'key', values: { COLLECTED: true } } },
 				])(['COLLECTED'])()
 			).toBeFalsy();
 		});
 		it('should return true', () => {
 			expect(
-				responseToClean([
+				responsesToClean([
 					{
 						response: {
 							name: 'key',
@@ -30,7 +58,7 @@ describe('checkbox utils', () => {
 		});
 		it('should return false', () => {
 			expect(
-				responseToClean([
+				responsesToClean([
 					{
 						response: {
 							name: 'key',
