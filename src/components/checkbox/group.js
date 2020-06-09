@@ -26,6 +26,13 @@ const CheckboxGroup = ({
 	const { fieldsetStyle, modalityStyle } = style;
 	const inputRef = useRef();
 
+	const specificHandleChange = (e) => {
+		const [key, value] = Object.entries(e)[0];
+		if (value === false && U.responseToClean(responses)(preferences)(key))
+			handleChange({ [key]: null });
+		else handleChange(e);
+	};
+
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
@@ -79,7 +86,7 @@ const CheckboxGroup = ({
 											checked={checked}
 											disabled={disabled}
 											onChange={(e) => {
-												handleChange({
+												specificHandleChange({
 													[U.getResponseName(response)]: e.target.checked,
 												});
 											}}

@@ -42,6 +42,7 @@ describe('checkbox-group', () => {
 				},
 			});
 		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ a: false });
+		/*Cause specificHandler*/
+		expect(handleChange).toHaveBeenCalledWith({ a: null });
 	});
 });
