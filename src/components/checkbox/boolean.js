@@ -26,7 +26,6 @@ const CheckboxBoolean = ({
 
 	const specificHandleChange = (e) => {
 		const [key, value] = Object.entries(e)[0];
-		console.log(response);
 		if (value === false && U.responseToClean(response)(preferences))
 			handleChange({ [key]: null });
 		else handleChange(e);
