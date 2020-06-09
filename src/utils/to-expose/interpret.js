@@ -5,8 +5,8 @@ export const interpret = (features) => (bindings) => (expression) => {
 	if (!Array.isArray(features)) return expression;
 	if (features.includes('VTL')) {
 		try {
-			//const replacedBindings = replaceNullBindings(bindings);
-			const VTLExpr = interpretVtl(expression, bindings);
+			const replacedBindings = replaceNullBindings(bindings);
+			const VTLExpr = interpretVtl(expression, replacedBindings);
 			if (!VTLExpr) return expression;
 			return VTLExpr;
 		} catch (e) {

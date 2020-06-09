@@ -34,7 +34,7 @@ const RosterForLoop = ({
 	const Button = lunatic.Button;
 
 	const uiComponents = buildRosterUIComponents(headers)(components);
-	console.log(components);
+
 	const onChange = (up, index) => {
 		const [key, value] = Object.entries(up)[0];
 		const previousValue = bindings[key];
