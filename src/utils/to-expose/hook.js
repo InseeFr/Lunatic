@@ -9,7 +9,7 @@ const filterComponents = (components, management, bindings, features) =>
 	components.filter(({ conditionFilter }) =>
 		management
 			? true
-			: interpret(features)(bindings)(conditionFilter) === 'normal'
+			: interpret(features)(bindings, true)(conditionFilter) === 'normal'
 	);
 
 const useLunatic = (
