@@ -19,7 +19,7 @@ const Loop = ({
 	const iterationNb = interpret(features)(vectorialBindings)(iterations);
 	const involvedVariables = U.getInvolvedVariables(components);
 
-	const onChange = index => obj => {
+	const onChange = (index) => (obj) => {
 		const [name, value] = Object.entries(obj)[0];
 		const oldValue = bindings[name];
 		const newValue = oldValue.map((v, i) => (i === index ? value : v));
@@ -27,7 +27,7 @@ const Loop = ({
 	};
 
 	useEffect(() => {
-		involvedVariables.forEach(iv => {
+		involvedVariables.forEach((iv) => {
 			if (bindings[iv].length !== iterationNb) {
 				if (iterationNb > bindings[iv].length)
 					handleChange({
@@ -54,8 +54,9 @@ const Loop = ({
 						{...orchetratorProps}
 						{...rest}
 						id={`${id}-loop-${loopIndex}`}
-						handleChange={e => onChange(loopIndex)(e)}
+						handleChange={(e) => onChange(loopIndex)(e)}
 						bindings={loopBindings}
+						bindingsDependency
 					/>
 				</div>
 			);

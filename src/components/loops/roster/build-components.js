@@ -6,10 +6,13 @@ export const buildRosterUIComponents = (headers) => (components) => {
 		const { name, values } = response;
 		const size = values[C.COLLECTED].length;
 		return [...Array(size).keys()].map((i) => {
-			const newValues = Object.entries(values).reduce((acc, [key, value]) => ({
-				...acc,
-				[key]: value[i],
-			}));
+			const newValues = Object.entries(values).reduce(
+				(acc, [key, value]) => ({
+					...acc,
+					[key]: value[i],
+				}),
+				{}
+			);
 			return {
 				...other,
 				response: { name, values: newValues },

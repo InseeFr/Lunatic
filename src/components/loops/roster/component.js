@@ -32,7 +32,6 @@ const RosterForLoop = ({
 
 	const width = `${100 / Math.max(...components.map((line) => line.length))}%`;
 	const Button = lunatic.Button;
-
 	const uiComponents = buildRosterUIComponents(headers)(components);
 
 	const onChange = (up, index) => {
