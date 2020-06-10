@@ -72,7 +72,7 @@ const ListDeclarationsWrapper = ({
 									<input
 										type={type}
 										name={`${type}-${id}`}
-										ref={i === 0 ? inputRef : null}
+										ref={i === 0 || checked ? inputRef : null}
 										id={`${type}-${id}-${optionValue}`}
 										aria-labelledby={`input-label-${id}-${optionValue}`}
 										className={`${type}-lunatic`}

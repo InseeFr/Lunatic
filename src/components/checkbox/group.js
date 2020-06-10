@@ -37,6 +37,8 @@ const CheckboxGroup = ({
 		if (focused) inputRef.current.focus();
 	}, [focused]);
 
+	const checkedArray = [];
+
 	return (
 		<>
 			<Declarations
@@ -61,6 +63,9 @@ const CheckboxGroup = ({
 				/>
 				{responses.map(({ id: modId, label: modLabel, response }, i) => {
 					const checked = U.getResponseByPreference(preferences)(response);
+					if (checked) checkedArray.push(modId);
+					const toRef =
+						i === 0 || (checkedArray[0] && checkedArray[0] === modId);
 					const interpretedLabel = interpret(features)(bindings)(modLabel);
 					return (
 						<div
@@ -79,7 +84,7 @@ const CheckboxGroup = ({
 										<input
 											type="checkbox"
 											id={`checkbox-${id}-${modId}`}
-											ref={i === 0 ? inputRef : null}
+											ref={toRef ? inputRef : null}
 											key={`checkbox-${id}-${modId}`}
 											aria-labelledby={`input-label-${id}-${modId}`}
 											className="checkbox-lunatic"
