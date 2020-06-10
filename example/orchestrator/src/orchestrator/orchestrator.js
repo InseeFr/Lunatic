@@ -22,7 +22,7 @@ const Orchestrator = ({
 		management,
 	});
 
-	console.log(lunatic.getCollectedState(questionnaire));
+	// console.log(lunatic.getCollectedState(questionnaire));
 
 	return (
 		<div className="container">
