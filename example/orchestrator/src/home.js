@@ -19,10 +19,10 @@ const Home = () => {
 							: setFakeRoute('/collect')
 					}
 				/>
-				<span>{`Lunatic version: ${dependencies['@inseefr/lunatic'].replace(
+				<div>{`Lunatic version: ${dependencies['@inseefr/lunatic'].replace(
 					'^',
 					''
-				)}`}</span>
+				)}`}</div>
 			</div>
 			{fakeRoute === '/collect' ? (
 				<CollectOrchestrator />
