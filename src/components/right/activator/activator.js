@@ -4,7 +4,7 @@ import './activator.scss';
 
 const Activator = ({ id, label, value, onChange }) => (
   <div className="activator">
-    <input id={`activator-${id}`} type="checkbox" checked={value} onChange={onChange} disabled />
+    <input id={`activator-${id}`} type="checkbox" checked={value} onChange={onChange} />
     <label htmlFor={`activator-${id}`}>{label}</label>
   </div>
 );
