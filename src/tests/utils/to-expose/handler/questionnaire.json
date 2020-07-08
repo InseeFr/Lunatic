@@ -5,7 +5,7 @@
 			"id": "2",
 			"componentType": "Input",
 			"response": {
-				"name": "input",
+				"name": "inputOk",
 				"values": {
 					"PREVIOUS": null,
 					"COLLECTED": "My input",
@@ -90,10 +90,10 @@
 	"variables": {
 		"EXTERNAL": { "VAR_EXTERNAL": "Value VAR_EXTERNAL" },
 		"CALCULATED": {
-			"VAR_CALCULATED": { "expression": "VTL expression", "value": null }
+			"Test": { "expression": "inputOk || \" ok\"", "value": "My input ok" }
 		},
 		"COLLECTED": {
-			"input": {
+			"inputOk": {
 				"componentRef": "2",
 				"values": {
 					"PREVIOUS": null,

@@ -14,7 +14,7 @@ describe('handler', () => {
 			expect(
 				H.updateQuestionnaire('EDITED')(questionnaire)(['COLLECTED', 'EDITED'])(
 					{
-						input: 'My input',
+						inputOk: 'My input',
 					}
 				)
 			).toEqual(questionnaire);
@@ -24,7 +24,7 @@ describe('handler', () => {
 					'FORCED',
 					'EDITED',
 				])({
-					input: 'My input',
+					inputOk: 'My input',
 				})
 			).toEqual(questionnaire);
 			expect(
@@ -38,14 +38,14 @@ describe('handler', () => {
 		it('should return an updated questionnaire with response component', () => {
 			expect(
 				H.updateQuestionnaire('COLLECTED')(questionnaire)(['COLLECTED'])({
-					input: 'My new input',
+					inputOk: 'My new input',
 				})
 			).toEqual(R.resInputCollected);
 
 			expect(
 				H.updateQuestionnaire('EDITED')(questionnaire)(['COLLECTED', 'EDITED'])(
 					{
-						input: 'My new input',
+						inputOk: 'My new input',
 					}
 				)
 			).toEqual(R.resInputEdited);

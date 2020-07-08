@@ -6,6 +6,7 @@ import {
 	buildComponentsComponent,
 } from './init-questionnaire';
 import { supportedPreferences } from '../../constants/supported-preferences';
+import { interpret } from './interpret';
 
 export const updateQuestionnaire = (valueType) => (questionnaire) => (
 	preferences
@@ -20,7 +21,6 @@ export const updateQuestionnaire = (valueType) => (questionnaire) => (
 	if (!components || components.length === 0) return questionnaire;
 	const varsAndRefs = Object.entries(updatedValues).reduce(
 		(acc, [key, value]) => {
-			// TODO Update CALCULATED vars with VTL
 			const {
 				newVariables: { COLLECTED, ...otherVars },
 				refs,
@@ -33,10 +33,11 @@ export const updateQuestionnaire = (valueType) => (questionnaire) => (
 					[valueType]: buildNewValue(preferences)(valueType)(values)(value),
 				},
 			};
+			const newCollected = { ...COLLECTED, [key]: updated };
 			return {
 				newVariables: {
 					...otherVars,
-					COLLECTED: { ...COLLECTED, [key]: updated },
+					COLLECTED: newCollected,
 				},
 				refs: [...refs, componentRef],
 			};
@@ -44,6 +45,8 @@ export const updateQuestionnaire = (valueType) => (questionnaire) => (
 		{ newVariables: variables, refs: [] }
 	);
 	const { newVariables, refs } = varsAndRefs;
+	const newVariablesWithCalculated =
+		valueType === C.COLLECTED ? addCalculatedVars(newVariables) : newVariables;
 	const collectedVars = newVariables[C.COLLECTED];
 	const newComponents = components.map((c) => {
 		if (refs.includes(c.id)) {
@@ -55,7 +58,11 @@ export const updateQuestionnaire = (valueType) => (questionnaire) => (
 		}
 		return c;
 	});
-	return { ...other, variables: newVariables, components: newComponents };
+	return {
+		...other,
+		variables: newVariablesWithCalculated,
+		components: newComponents,
+	};
 };
 
 const buildNewValue = (preferences) => (valueType) => (oldValues) => (
@@ -70,4 +77,22 @@ const buildNewValue = (preferences) => (valueType) => (oldValues) => (
 		.filter((v) => v !== null);
 	const lastValue = valuesByPreference[valuesByPreference.length - 1];
 	return lastValue === value ? null : value;
+};
+
+const addCalculatedVars = (variables) => {
+	if (Object.keys(variables[C.CALCULATED]).length === 0) return variables;
+	const { COLLECTED, EXTERNAL, CALCULATED } = variables;
+	const collected = Object.entries(COLLECTED).reduce(
+		(acc, [key, { values }]) => ({ ...acc, [key]: values[C.COLLECTED] }),
+		{}
+	);
+	const bindings = { ...collected, ...EXTERNAL };
+	const calculated = Object.entries(CALCULATED).reduce(
+		(acc, [key, { expression }]) => ({
+			...acc,
+			[key]: { expression, value: interpret(['VTL'])(bindings)(expression) },
+		}),
+		{}
+	);
+	return { EXTERNAL, COLLECTED, CALCULATED: calculated };
 };
