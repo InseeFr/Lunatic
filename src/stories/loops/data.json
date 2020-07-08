@@ -260,6 +260,7 @@
 					"INPUTED": null
 				}
 			}
-		}
+		},
+		"CALCULATED": { "Test": { "expression": "SUPERFICIE", "value": "null" } }
 	}
 }

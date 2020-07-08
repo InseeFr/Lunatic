@@ -26,7 +26,7 @@ const OrchestratorForStories = ({
 		management
 	);
 
-	console.log(lunatic.getCollectedState(questionnaire));
+	console.log(lunatic.getState(questionnaire));
 
 	return (
 		<div className="container">
