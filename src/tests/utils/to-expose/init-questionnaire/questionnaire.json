@@ -5,7 +5,7 @@
 			"id": "2",
 			"componentType": "Input",
 			"response": {
-				"name": "input"
+				"name": "inputOk"
 			}
 		},
 		{
@@ -56,14 +56,9 @@
 	"variables": [
 		{ "variableType": "EXTERNAL", "name": "VAR_EXTERNAL", "value": null },
 		{
-			"variableType": "CALCULATED",
-			"name": "VAR_CALCULATED",
-			"expression": "VTL expression"
-		},
-		{
 			"variableType": "COLLECTED",
 			"componentRef": "2",
-			"name": "input",
+			"name": "inputOk",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -119,6 +114,16 @@
 				"EDITED": [null],
 				"INPUTED": [null]
 			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "Test",
+			"expression": "inputMissing || \" world\""
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "TestOk",
+			"expression": "inputOk || \" world\""
 		}
 	]
 }

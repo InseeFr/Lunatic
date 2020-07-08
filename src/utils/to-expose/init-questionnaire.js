@@ -1,4 +1,5 @@
 import * as C from '../../constants';
+import { interpret } from './interpret';
 
 export const mergeQuestionnaireAndData = (questionnaire) => (data) => {
 	if (!questionnaire || !questionnaire.components) return {};
@@ -31,14 +32,21 @@ const buildVars = (data) => (variables) => {
 				},
 			};
 		}, {});
+	const EXTERNAL = variables
+		.filter(({ variableType }) => variableType === C.EXTERNAL)
+		.reduce((_, v) => ({ ..._, ...initExternalVariable(v)(data) }), {});
 	return {
-		EXTERNAL: variables
-			.filter(({ variableType }) => variableType === C.EXTERNAL)
-			.reduce((_, v) => ({ ..._, ...initExternalVariable(v)(data) }), {}),
+		EXTERNAL,
+		COLLECTED: collected,
 		CALCULATED: variables
 			.filter(({ variableType }) => variableType === C.CALCULATED)
-			.reduce((_, v) => ({ ..._, ...initCalculatedVariable(v)(data) }), {}),
-		COLLECTED: collected,
+			.reduce(
+				(_, v) => ({
+					..._,
+					...initCalculatedVariable(v)({ ...EXTERNAL, ...collected }),
+				}),
+				{}
+			),
 	};
 };
 
@@ -81,6 +89,18 @@ const initExternalVariable = ({ name }) => (data) => ({
 	[name]: (data && data.EXTERNAL && data.EXTERNAL[name]) || null,
 });
 
-const initCalculatedVariable = ({ name, expression }) => (data) => ({
-	[name]: { expression, value: null },
-});
+const initCalculatedVariable = ({ name, expression }) => (data) => {
+	const bindings = Object.entries(data).reduce(
+		(acc, [key, value]) => ({
+			...acc,
+			[key]: typeof value === 'string' ? value : value.values[C.COLLECTED],
+		}),
+		{}
+	);
+	return {
+		[name]: {
+			expression,
+			value: interpret(['VTL'])(bindings)(expression),
+		},
+	};
+};

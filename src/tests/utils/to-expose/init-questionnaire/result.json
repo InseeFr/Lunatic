@@ -5,10 +5,10 @@
 			"id": "2",
 			"componentType": "Input",
 			"response": {
-				"name": "input",
+				"name": "inputOk",
 				"values": {
 					"PREVIOUS": null,
-					"COLLECTED": "My input",
+					"COLLECTED": "Hello",
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null
@@ -91,14 +91,21 @@
 	"variables": {
 		"EXTERNAL": { "VAR_EXTERNAL": "Value VAR_EXTERNAL" },
 		"CALCULATED": {
-			"VAR_CALCULATED": { "expression": "VTL expression", "value": null }
+			"Test": {
+				"expression": "inputMissing || \" world\"",
+				"value": "inputMissing || \" world\""
+			},
+			"TestOk": {
+				"expression": "inputOk || \" world\"",
+				"value": "Hello world"
+			}
 		},
 		"COLLECTED": {
-			"input": {
+			"inputOk": {
 				"componentRef": "2",
 				"values": {
 					"PREVIOUS": null,
-					"COLLECTED": "My input",
+					"COLLECTED": "Hello",
 					"FORCED": null,
 					"EDITED": null,
 					"INPUTED": null

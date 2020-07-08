@@ -1,6 +1,6 @@
 {
 	"COLLECTED": {
-		"input": { "COLLECTED": "My input" },
+		"inputOk": { "COLLECTED": "Hello" },
 		"check1": { "COLLECTED": true },
 		"check2": { "COLLECTED": false, "FORCED": true },
 		"table11": { "COLLECTED": "1" },
