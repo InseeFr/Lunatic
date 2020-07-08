@@ -261,6 +261,12 @@
 				}
 			}
 		},
-		"CALCULATED": { "Test": { "expression": "SUPERFICIE", "value": "null" } }
+		"CALCULATED": {
+			"Test": {
+				"expression": "cast(SUPERFICIE, number) + EXT",
+				"value": "null"
+			}
+		},
+		"EXTERNAL": { "EXT": 2 }
 	}
 }
