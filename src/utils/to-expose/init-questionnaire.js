@@ -3,15 +3,11 @@ import { interpret } from './interpret';
 
 export const mergeQuestionnaireAndData = (questionnaire) => (data) => {
 	if (!questionnaire || !questionnaire.components) return {};
-	if (
-		questionnaire.components.length === 0 ||
-		!data ||
-		Object.keys(data).length === 0
-	)
-		return questionnaire;
+	if (questionnaire.components.length === 0) return questionnaire;
 	const { components, variables, ...props } = questionnaire;
 
-	const vars = buildVars(data)(variables);
+	const vars = buildVars(data || {})(variables);
+	console.log(vars);
 	const filledComponents = buildFilledComponents(vars[C.COLLECTED])(components);
 
 	return { ...props, components: filledComponents, variables: vars };
