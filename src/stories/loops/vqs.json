@@ -45,6 +45,7 @@
 			"componentType": "Loop",
 			"min": 1,
 			"iterations": "count(PRENOM)",
+			"conditionFilter": "\"normal\"",
 			"label": "Boucle Individu",
 			"bindingsDependency": true,
 			"components": [
@@ -520,7 +521,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "SEXEDELAPE",
-			"componentRef": "k1g7g974",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -532,7 +533,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "ANNEDENAIS",
-			"componentRef": "k1g7m8vd",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -544,7 +545,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "PARENTE",
-			"componentRef": "k1qcu3wz",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -556,7 +557,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "ETAT",
-			"componentRef": "k1qc7bej",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -568,7 +569,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "CHRONIQUE",
-			"componentRef": "k1qcs1cm",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -580,7 +581,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "LIMITES",
-			"componentRef": "k1qceya0",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -592,7 +593,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "VUE",
-			"componentRef": "k1qckpdo",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -604,7 +605,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "OUIE",
-			"componentRef": "k1qcehyr",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -616,7 +617,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "MARCHE",
-			"componentRef": "k1qctk0b",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -628,7 +629,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "BRAS",
-			"componentRef": "k1qcsr78",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -640,7 +641,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "MAINS",
-			"componentRef": "k1qcqt3g",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -652,7 +653,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "PENCHER",
-			"componentRef": "k1qck2r4",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -664,7 +665,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "SORTIR",
-			"componentRef": "k1qcqjvb",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -676,7 +677,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "LAVER",
-			"componentRef": "k1qcv8tf",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -688,7 +689,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "CONCENTRER",
-			"componentRef": "k1qcu0bm",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -700,7 +701,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "SOUVENIR",
-			"componentRef": "k1qcc6la",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -712,7 +713,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "VIEQUOTIDIENNE",
-			"componentRef": "k1qcqnav",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -724,7 +725,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "COMPRENDRE",
-			"componentRef": "k1qcltb7",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -736,7 +737,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "AIDEPRO",
-			"componentRef": "k1qcee4l",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -748,7 +749,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "AIDEPROCHE",
-			"componentRef": "k1qcgm8s",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -760,7 +761,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "AIDETECHNIQUE",
-			"componentRef": "k1qcr124",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -772,7 +773,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "EQUIPEMENT",
-			"componentRef": "k1qcnyth",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -784,7 +785,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "APA",
-			"componentRef": "k1qce145",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -796,7 +797,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "HANDICAP",
-			"componentRef": "k1qcew3u",
+			"componentRef": "theLoop",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
