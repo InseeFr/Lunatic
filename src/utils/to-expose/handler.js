@@ -80,7 +80,6 @@ const buildNewValue = (preferences) => (valueType) => (oldValues) => (
 };
 
 const addCalculatedVars = (variables) => {
-	console.log(variables);
 	if (
 		!variables[C.CALCULATED] ||
 		Object.keys(variables[C.CALCULATED]).length === 0
