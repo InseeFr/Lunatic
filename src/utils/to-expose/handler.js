@@ -80,7 +80,12 @@ const buildNewValue = (preferences) => (valueType) => (oldValues) => (
 };
 
 const addCalculatedVars = (variables) => {
-	if (Object.keys(variables[C.CALCULATED]).length === 0) return variables;
+	console.log(variables);
+	if (
+		!variables[C.CALCULATED] ||
+		Object.keys(variables[C.CALCULATED]).length === 0
+	)
+		return variables;
 	const { COLLECTED, EXTERNAL, CALCULATED } = variables;
 	const collected = Object.entries(COLLECTED).reduce(
 		(acc, [key, { values }]) => ({ ...acc, [key]: values[C.COLLECTED] }),
