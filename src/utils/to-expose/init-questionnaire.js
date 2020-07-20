@@ -7,7 +7,6 @@ export const mergeQuestionnaireAndData = (questionnaire) => (data) => {
 	const { components, variables, ...props } = questionnaire;
 
 	const vars = buildVars(data || {})(variables);
-	console.log(vars);
 	const filledComponents = buildFilledComponents(vars[C.COLLECTED])(components);
 
 	return { ...props, components: filledComponents, variables: vars };
