@@ -4,9 +4,11 @@ import { withReadme } from 'storybook-readme';
 import Orchestrator from './orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
+import { mergeQuestionnaireAndData } from 'utils/to-expose';
 import data from './data';
+import vqs from './vqs';
 import { positioningOptions, featuresOptions } from '../utils/options';
-import { text, boolean, select, object } from '@storybook/addon-knobs/react';
+import { boolean, select } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Loops', module)
 	.addDecorator(withReadme(readme))
@@ -15,10 +17,21 @@ const stories = storiesOf('Loops', module)
 		return <WrappedComponent title="Let's loop!" />;
 	});
 
-stories.addWithJSX('Loop', () => (
+stories.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={data}
+		management={boolean('Management', false)}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		hideBtn={boolean('Hide button', false)}
+		features={select('Features', featuresOptions, ['VTL'])}
+	/>
+));
+
+stories.addWithJSX('VQS', () => (
+	<Orchestrator
+		id="vqs"
+		source={vqs}
 		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		hideBtn={boolean('Hide button', false)}
