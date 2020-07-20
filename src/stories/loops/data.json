@@ -23,16 +23,10 @@
 					"componentType": "Input",
 					"conditionFilter": "\"normal\"",
 					"maxLength": 30,
+					"bindingsDependency": false,
 					"id": "k3yn2qmr",
 					"response": {
-						"name": "PRENOM",
-						"values": {
-							"PREVIOUS": [null],
-							"COLLECTED": [null],
-							"FORCED": [null],
-							"EDITED": [null],
-							"INPUTED": [null]
-						}
+						"name": "PRENOM"
 					}
 				},
 				{
@@ -41,16 +35,10 @@
 					"min": 0,
 					"max": 120,
 					"decimals": 0,
+					"bindingsDependency": false,
 					"id": "k3ymundt",
 					"response": {
-						"name": "AGE",
-						"values": {
-							"PREVIOUS": [null],
-							"COLLECTED": [null],
-							"FORCED": [null],
-							"EDITED": [null],
-							"INPUTED": [null]
-						}
+						"name": "AGE"
 					}
 				}
 			]
@@ -61,6 +49,7 @@
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
 			"conditionFilter": "\"normal\"",
+			"bindingsDependency": true,
 			"components": [
 				{
 					"id": "k3ymch91",
@@ -74,15 +63,9 @@
 					"mandatory": false,
 					"label": "PRENOM || \", êtes-vous propriétaire du logement ?\"",
 					"conditionFilter": "\"normal\"",
+					"bindingsDependency": true,
 					"response": {
-						"name": "PROPRIO",
-						"values": {
-							"PREVIOUS": [null],
-							"COLLECTED": [null],
-							"FORCED": [null],
-							"EDITED": [null],
-							"INPUTED": [null]
-						}
+						"name": "PROPRIO"
 					},
 					"options": [
 						{ "value": "1", "label": "Oui" },
@@ -101,15 +84,9 @@
 					"mandatory": false,
 					"label": "PRENOM || \", envisagez-vous de déménager d'ici la fin de l'année civile en cours ?\"",
 					"conditionFilter": "\"normal\"",
+					"bindingsDependency": true,
 					"response": {
-						"name": "DEMENAGEMENT",
-						"values": {
-							"PREVIOUS": [null],
-							"COLLECTED": [null],
-							"FORCED": [null],
-							"EDITED": [null],
-							"INPUTED": [null]
-						}
+						"name": "DEMENAGEMENT"
 					},
 					"options": [
 						{ "value": "1", "label": "Oui" },
@@ -122,19 +99,13 @@
 					"componentType": "InputNumber",
 					"conditionFilter": "\"normal\"",
 					"mandatory": false,
+					"bindingsDependency": false,
 					"min": 0,
 					"max": 180,
 					"decimals": 0,
 					"unit": "minute(s)",
 					"response": {
-						"name": "TPSTRAJET",
-						"values": {
-							"PREVIOUS": [null],
-							"COLLECTED": [null],
-							"FORCED": [null],
-							"EDITED": [null],
-							"INPUTED": [null]
-						}
+						"name": "TPSTRAJET"
 					}
 				}
 			]
@@ -152,14 +123,7 @@
 			"label": "\"Diriez-vous que votre logement est confortable ?\"",
 			"conditionFilter": "\"normal\"",
 			"response": {
-				"name": "CONFORT",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
+				"name": "CONFORT"
 			},
 			"options": [
 				{ "value": "1", "label": "Oui" },
@@ -177,96 +141,99 @@
 			"max": 500,
 			"decimals": 0,
 			"response": {
-				"name": "SUPERFICIE",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
+				"name": "SUPERFICIE"
 			}
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"PRENOM": {
-				"componentRef": "k3ylzyo4",
-				"values": {
-					"PREVIOUS": [null],
-					"COLLECTED": [null],
-					"FORCED": [null],
-					"EDITED": [null],
-					"INPUTED": [null]
-				}
-			},
-			"AGE": {
-				"componentRef": "k3ylzyo4",
-				"values": {
-					"PREVIOUS": [null],
-					"COLLECTED": [null],
-					"FORCED": [null],
-					"EDITED": [null],
-					"INPUTED": [null]
-				}
-			},
-			"PROPRIO": {
-				"componentRef": "idLoop",
-				"values": {
-					"PREVIOUS": [null],
-					"COLLECTED": [null],
-					"FORCED": [null],
-					"EDITED": [null],
-					"INPUTED": [null]
-				}
-			},
-			"DEMENAGEMENT": {
-				"componentRef": "idLoop",
-				"values": {
-					"PREVIOUS": [null],
-					"COLLECTED": [null],
-					"FORCED": [null],
-					"EDITED": [null],
-					"INPUTED": [null]
-				}
-			},
-			"TPSTRAJET": {
-				"componentRef": "idLoop",
-				"values": {
-					"PREVIOUS": [null],
-					"COLLECTED": [null],
-					"FORCED": [null],
-					"EDITED": [null],
-					"INPUTED": [null]
-				}
-			},
-			"CONFORT": {
-				"componentRef": "k3ym6i5g",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"SUPERFICIE": {
-				"componentRef": "k3ymkpj2",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		},
-		"CALCULATED": {
-			"Test": {
-				"expression": "cast(SUPERFICIE, number) + EXT",
-				"value": "null"
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		},
-		"EXTERNAL": { "EXT": 2 }
-	}
+		{
+			"variableType": "COLLECTED",
+			"name": "PROPRIO",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "DEMENAGEMENT",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TPSTRAJET",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CONFORT",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "SUPERFICIE",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "cast(SUPERFICIE, number) + EXT",
+			"name": "Test"
+		}
+	]
 }

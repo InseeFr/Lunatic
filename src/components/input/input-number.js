@@ -57,7 +57,7 @@ const InputNumber = ({
 				.map((v) => v(U.getResponseByPreference(preferences)(response)))
 				.filter((m) => m !== undefined)
 		);
-	}, [response]);
+	}, [response, min, max, validators, preferences]);
 
 	return (
 		<>
