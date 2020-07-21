@@ -22,14 +22,7 @@
 						"id": "j4nwc63q-QOP-jbgde5yl",
 						"unit": "%",
 						"response": {
-							"name": "PERCENTAGE_EXPENSES11",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "PERCENTAGE_EXPENSES11"
 						}
 					}
 				],
@@ -43,14 +36,7 @@
 						"id": "j4nwc63q-QOP-jbgd2x2t",
 						"unit": "%",
 						"response": {
-							"name": "PERCENTAGE_EXPENSES21",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "PERCENTAGE_EXPENSES21"
 						}
 					}
 				],
@@ -65,14 +51,7 @@
 						"id": "j4nwc63q-QOP-jbgdjypz",
 						"unit": "%",
 						"response": {
-							"name": "PERCENTAGE_EXPENSES31",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "PERCENTAGE_EXPENSES31"
 						}
 					}
 				],
@@ -86,14 +65,7 @@
 						"id": "j4nwc63q-QOP-jbgdcftu",
 						"unit": "%",
 						"response": {
-							"name": "PERCENTAGE_EXPENSES41",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "PERCENTAGE_EXPENSES41"
 						}
 					}
 				],
@@ -107,14 +79,7 @@
 						"id": "j4nwc63q-QOP-jbgdiyfe",
 						"unit": "%",
 						"response": {
-							"name": "PERCENTAGE_EXPENSES51",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "PERCENTAGE_EXPENSES51"
 						}
 					}
 				],
@@ -129,14 +94,7 @@
 						"id": "j4nwc63q-QOP-jbgdj1wd",
 						"unit": "%",
 						"response": {
-							"name": "PERCENTAGE_EXPENSES61",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "PERCENTAGE_EXPENSES61"
 						}
 					}
 				],
@@ -150,92 +108,97 @@
 						"id": "j4nwc63q-QOP-jbgddylk",
 						"unit": "%",
 						"response": {
-							"name": "PERCENTAGE_EXPENSES71",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "PERCENTAGE_EXPENSES71"
 						}
 					}
 				]
 			]
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"PERCENTAGE_EXPENSES11": {
-				"componentRef": "j4nwc63q",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"PERCENTAGE_EXPENSES21": {
-				"componentRef": "j4nwc63q",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"PERCENTAGE_EXPENSES31": {
-				"componentRef": "j4nwc63q",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"PERCENTAGE_EXPENSES41": {
-				"componentRef": "j4nwc63q",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"PERCENTAGE_EXPENSES51": {
-				"componentRef": "j4nwc63q",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"PERCENTAGE_EXPENSES61": {
-				"componentRef": "j4nwc63q",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"PERCENTAGE_EXPENSES71": {
-				"componentRef": "j4nwc63q",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PERCENTAGE_EXPENSES11",
+			"componentRef": "j4nwc63q",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PERCENTAGE_EXPENSES21",
+			"componentRef": "j4nwc63q",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PERCENTAGE_EXPENSES31",
+			"componentRef": "j4nwc63q",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PERCENTAGE_EXPENSES41",
+			"componentRef": "j4nwc63q",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PERCENTAGE_EXPENSES51",
+			"componentRef": "j4nwc63q",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PERCENTAGE_EXPENSES61",
+			"componentRef": "j4nwc63q",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PERCENTAGE_EXPENSES71",
+			"componentRef": "j4nwc63q",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }

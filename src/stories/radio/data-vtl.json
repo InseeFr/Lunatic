@@ -6,14 +6,7 @@
 			"mandatory": false,
 			"label": "➡ 1. In which city do the Simpsons reside?",
 			"response": {
-				"name": "CITY",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "00002",
-					"FORCED": "00001",
-					"EDITED": null,
-					"INPUTED": null
-				}
+				"name": "CITY"
 			},
 			"options": [
 				{ "value": "00001", "label": "Springfield" },
@@ -22,18 +15,18 @@
 			]
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"CITY": {
-				"componentRef": "rr",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "00002",
-					"FORCED": "00001",
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "CITY",
+			"componentRef": "rr",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "00002",
+				"FORCED": "00001",
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }

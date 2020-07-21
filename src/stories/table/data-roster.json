@@ -18,14 +18,7 @@
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdl5jb",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS11",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": "Homer",
-								"FORCED": "Bart",
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS11"
 						}
 					},
 					{
@@ -35,14 +28,7 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdfndq",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS12",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": "30",
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS12"
 						}
 					}
 				],
@@ -52,14 +38,7 @@
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgd8lwo",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS21",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS21"
 						}
 					},
 					{
@@ -69,14 +48,7 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgd7osi",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS22",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": "20",
-								"FORCED": "21",
-								"EDITED": "22",
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS22"
 						}
 					}
 				],
@@ -86,14 +58,7 @@
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdbfag",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS31",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS31"
 						}
 					},
 					{
@@ -103,14 +68,7 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgd7bnw",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS32",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS32"
 						}
 					}
 				],
@@ -120,14 +78,7 @@
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdlgja",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS41",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS41"
 						}
 					},
 					{
@@ -137,14 +88,7 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgd9k71",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS42",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS42"
 						}
 					}
 				],
@@ -154,14 +98,7 @@
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgd745y",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS51",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS51"
 						}
 					},
 					{
@@ -171,14 +108,7 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdimks",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS52",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS52"
 						}
 					}
 				],
@@ -188,14 +118,7 @@
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdjkts",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS61",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS61"
 						}
 					},
 					{
@@ -205,14 +128,7 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdjquz",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS62",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS62"
 						}
 					}
 				],
@@ -222,14 +138,7 @@
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdcax7",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS71",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS71"
 						}
 					},
 					{
@@ -239,14 +148,7 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdd2w3",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS72",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS72"
 						}
 					}
 				],
@@ -256,14 +158,7 @@
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdjye1",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS81",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS81"
 						}
 					},
 					{
@@ -273,14 +168,7 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdkosc",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS82",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS82"
 						}
 					}
 				],
@@ -290,14 +178,7 @@
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgd5jet",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS91",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS91"
 						}
 					},
 					{
@@ -307,14 +188,7 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdk0x4",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS92",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS92"
 						}
 					}
 				],
@@ -324,14 +198,7 @@
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdjw90",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS101",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS101"
 						}
 					},
 					{
@@ -341,14 +208,7 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgd2wgf",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS102",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "FAVOURITE_CHARACTERS102"
 						}
 					}
 				]
@@ -356,208 +216,246 @@
 			"lines": { "min": 1, "max": 10 }
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"FAVOURITE_CHARACTERS11": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "Homer",
-					"FORCED": "Bart",
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS12": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "30",
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS21": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS22": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "20",
-					"FORCED": "21",
-					"EDITED": "22",
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS31": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS32": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS41": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS42": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS51": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS52": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS61": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS62": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS71": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS72": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS81": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS82": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS91": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS92": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS101": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"FAVOURITE_CHARACTERS102": {
-				"componentRef": "j6qg8rc6",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS11",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "Homer",
+				"FORCED": "Bart",
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS12",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "30",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS21",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS22",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "20",
+				"FORCED": "21",
+				"EDITED": "22",
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS31",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS32",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS41",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS42",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS51",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS52",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS61",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS62",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS71",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS72",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS81",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS82",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS91",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS92",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS101",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS102",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }

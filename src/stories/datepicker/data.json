@@ -6,30 +6,23 @@
 			"mandatory": false,
 			"label": "➡ 5. When was the first episode of the Simpsons?",
 			"response": {
-				"name": "DATEFIRST",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "2000-07-12",
-					"FORCED": "1989-12-17",
-					"EDITED": null,
-					"INPUTED": null
-				}
+				"name": "DATEFIRST"
 			},
 			"dateFormat": "jj/mm/aaaa"
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"DATEFIRST": {
-				"componentRef": "j334cyqb",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "2000-07-12",
-					"FORCED": "1989-12-17",
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "DATEFIRST",
+			"componentRef": "j334cyqb",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "2000-07-12",
+				"FORCED": "1989-12-17",
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }

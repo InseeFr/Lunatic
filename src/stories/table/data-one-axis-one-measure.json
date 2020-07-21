@@ -32,14 +32,7 @@
 						"componentType": "Dropdown",
 						"id": "j6p29i81-QOP-jbgdb61k",
 						"response": {
-							"name": "ICE_FLAVOUR2",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": "1",
-								"FORCED": "0",
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "ICE_FLAVOUR2"
 						},
 						"options": [
 							{ "value": "1", "label": "Yes" },
@@ -53,14 +46,7 @@
 						"componentType": "Dropdown",
 						"id": "j6p29i81-QOP-jbgdl3kc",
 						"response": {
-							"name": "ICE_FLAVOUR3",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "ICE_FLAVOUR3"
 						},
 						"options": [
 							{ "value": "1", "label": "Yes" },
@@ -74,14 +60,7 @@
 						"componentType": "Dropdown",
 						"id": "j6p29i81-QOP-jbgdcobo",
 						"response": {
-							"name": "ICE_FLAVOUR4",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "ICE_FLAVOUR4"
 						},
 						"options": [
 							{ "value": "1", "label": "Yes" },
@@ -92,48 +71,54 @@
 			]
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"ICE_FLAVOUR1": {
-				"componentRef": "table",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "1",
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"ICE_FLAVOUR2": {
-				"componentRef": "table",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "1",
-					"FORCED": "0",
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"ICE_FLAVOUR3": {
-				"componentRef": "table",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"ICE_FLAVOUR4": {
-				"componentRef": "table",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "ICE_FLAVOUR1",
+			"componentRef": "table",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "1",
+				"FORCED": "0",
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ICE_FLAVOUR2",
+			"componentRef": "table",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "1",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ICE_FLAVOUR3",
+			"componentRef": "table",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ICE_FLAVOUR4",
+			"componentRef": "table",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }

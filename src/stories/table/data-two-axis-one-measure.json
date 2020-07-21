@@ -22,84 +22,42 @@
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgd92mb",
 						"response": {
-							"name": "TRAVEL11",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL11"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdnxkt",
 						"response": {
-							"name": "TRAVEL12",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL12"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdcppc",
 						"response": {
-							"name": "TRAVEL13",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL13"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgd4r2a",
 						"response": {
-							"name": "TRAVEL14",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL14"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgd9cff",
 						"response": {
-							"name": "TRAVEL15",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL15"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdiva0",
 						"response": {
-							"name": "TRAVEL16",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL16"
 						}
 					}
 				],
@@ -109,84 +67,42 @@
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdgsat",
 						"response": {
-							"name": "TRAVEL21",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL21"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgd3ef5",
 						"response": {
-							"name": "TRAVEL22",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL22"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgd4cm6",
 						"response": {
-							"name": "TRAVEL23",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL23"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdkfpq",
 						"response": {
-							"name": "TRAVEL24",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL24"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgddwsp",
 						"response": {
-							"name": "TRAVEL25",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL25"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgd7dqf",
 						"response": {
-							"name": "TRAVEL26",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL26"
 						}
 					}
 				],
@@ -196,84 +112,42 @@
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdaxk2",
 						"response": {
-							"name": "TRAVEL31",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL31"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgd8p1v",
 						"response": {
-							"name": "TRAVEL32",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": true,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL32"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdd2lo",
 						"response": {
-							"name": "TRAVEL33",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL33"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgd7u52",
 						"response": {
-							"name": "TRAVEL34",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL34"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdncn8",
 						"response": {
-							"name": "TRAVEL35",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL35"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdnous",
 						"response": {
-							"name": "TRAVEL36",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL36"
 						}
 					}
 				],
@@ -283,332 +157,336 @@
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgd7myn",
 						"response": {
-							"name": "TRAVEL41",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL41"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdgm0c",
 						"response": {
-							"name": "TRAVEL42",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL42"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdo0ay",
 						"response": {
-							"name": "TRAVEL43",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL43"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdgfwl",
 						"response": {
-							"name": "TRAVEL44",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL44"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdnz6b",
 						"response": {
-							"name": "TRAVEL45",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": null,
-								"FORCED": null,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL45"
 						}
 					},
 					{
 						"componentType": "CheckboxBoolean",
 						"id": "j6p2lwuj-QOP-jbgdkfcz",
 						"response": {
-							"name": "TRAVEL46",
-							"values": {
-								"PREVIOUS": null,
-								"COLLECTED": true,
-								"FORCED": false,
-								"EDITED": null,
-								"INPUTED": null
-							}
+							"name": "TRAVEL46"
 						}
 					}
 				]
 			]
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"TRAVEL11": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL12": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL13": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL14": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL15": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL16": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL21": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL22": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL23": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL24": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL25": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL26": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL31": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL32": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": true,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL33": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL34": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL35": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL36": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL41": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL42": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL43": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL44": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL45": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"TRAVEL46": {
-				"componentRef": "j6p2lwuj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": true,
-					"FORCED": false,
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL11",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL12",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL13",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL14",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL15",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL16",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL21",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL22",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL23",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL24",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL25",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL26",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL31",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL32",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": true,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL33",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL34",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL35",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL36",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL41",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL42",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL43",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL44",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL45",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL46",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": true,
+				"FORCED": false,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }

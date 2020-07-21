@@ -6,14 +6,7 @@
 			"mandatory": false,
 			"label": "\"In which state do The \" || NAME || \" reside?\"",
 			"response": {
-				"name": "STATE",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "3",
-					"FORCED": "2",
-					"EDITED": null,
-					"INPUTED": null
-				}
+				"name": "STATE"
 			},
 			"options": [
 				{ "value": "1", "label": "Washington" },
@@ -37,14 +30,7 @@
 			"mandatory": false,
 			"label": "\"In which state do The \" || NAME || \" reside?\"",
 			"response": {
-				"name": "STATE2",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "3",
-					"FORCED": "2",
-					"EDITED": null,
-					"INPUTED": null
-				}
+				"name": "STATE2"
 			},
 			"options": [
 				{ "value": "1", "label": "Washington" },
@@ -63,28 +49,30 @@
 			]
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"STATE": {
-				"componentRef": "j4nw5cqz",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "3",
-					"FORCED": "2",
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"STATE2": {
-				"componentRef": "j4nw5cqz-bis",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "3",
-					"FORCED": "2",
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "STATE",
+			"componentRef": "j4nw5cqz",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "2",
+				"FORCED": "3",
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "STATE2",
+			"componentRef": "j4nw5cqz-bis",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "3",
+				"FORCED": "2",
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }

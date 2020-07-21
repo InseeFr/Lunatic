@@ -9,29 +9,22 @@
 			"decimals": 0,
 			"label": "➡ 4. What is the current season number?",
 			"response": {
-				"name": "SEASON_NUMBER",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "29",
-					"FORCED": "30",
-					"EDITED": null,
-					"INPUTED": null
-				}
+				"name": "SEASON_NUMBER"
 			}
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"SEASON_NUMBER": {
-				"componentRef": "j6q9h8tj",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "29",
-					"FORCED": "30",
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "SEASON_NUMBER",
+			"componentRef": "j6q9h8tj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "29",
+				"FORCED": "30",
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }
