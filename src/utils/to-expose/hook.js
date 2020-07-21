@@ -22,7 +22,7 @@ const useLunatic = (
 		management = false,
 	}
 ) => {
-	const [questionnaire, setQuestionnaire] = useState(
+	const [questionnaire, setQuestionnaire] = useState(() =>
 		mergeQuestionnaireAndData(source)(data)
 	);
 	const [components, setComponents] = useState(() =>
