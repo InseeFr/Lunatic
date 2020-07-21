@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Gestion simplifiée d'un questionnaire · Lunatic</title>
+        <title>Analyse · Lunatic</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -65,10 +65,6 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="init-questionnaire.html" />
-    
-    
-    <link rel="prev" href="./" />
     
 
     </head>
@@ -151,9 +147,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="./">
+        <li class="chapter " data-level="1.5" data-path="../utils/">
             
-                <a href="./">
+                <a href="../utils/">
             
                     
                     Utilitaires
@@ -165,9 +161,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.1" data-path="hook.html">
+        <li class="chapter " data-level="1.5.1" data-path="../utils/hook.html">
             
-                <a href="hook.html">
+                <a href="../utils/hook.html">
             
                     
                     Gestion simplifiée d'un questionnaire
@@ -178,9 +174,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="init-questionnaire.html">
+        <li class="chapter " data-level="1.5.2" data-path="../utils/init-questionnaire.html">
             
-                <a href="init-questionnaire.html">
+                <a href="../utils/init-questionnaire.html">
             
                     
                     Initialisation d'un questionnaire
@@ -191,9 +187,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="handler.html">
+        <li class="chapter " data-level="1.5.3" data-path="../utils/handler.html">
             
-                <a href="handler.html">
+                <a href="../utils/handler.html">
             
                     
                     Mise à jour d'un questionnaire
@@ -204,9 +200,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="get-data.html">
+        <li class="chapter " data-level="1.5.4" data-path="../utils/get-data.html">
             
-                <a href="get-data.html">
+                <a href="../utils/get-data.html">
             
                     
                     Récupération des données d'un questionnaire
@@ -217,9 +213,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="bindings.html">
+        <li class="chapter " data-level="1.5.5" data-path="../utils/bindings.html">
             
-                <a href="bindings.html">
+                <a href="../utils/bindings.html">
             
                     
                     Récupération des variables à binder d'un questionnaire
@@ -378,9 +374,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../bundle/analysis.html">
+        <li class="chapter active" data-level="1.7.1" data-path="analysis.html">
             
-                <a href="../bundle/analysis.html">
+                <a href="analysis.html">
             
                     
                     Analyse
@@ -445,7 +441,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Gestion simplifiée d'un questionnaire</a>
+        <a href=".." >Analyse</a>
     </h1>
 </div>
 
@@ -460,72 +456,13 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="gestion-de-l&#xE9;tat-dun-questionnaire">Gestion de l&apos;&#xE9;tat d&apos;un questionnaire</h1>
-<p>Le hook <code>useLunatic</code> permet de simplifier la gestion de l&apos;&#xE9;tat d&apos;questionnaire dans un orchestrateur client.</p>
-<h3 id="uselunaticsource-data-params"><code>useLunatic(source, data, params)</code></h3>
-<h4 id="arguments">Arguments</h4>
-<p><code>source</code> (<code>object</code>) : questionnaire initial au format Lunatic-Model</p>
-<p><code>data</code> (<code>object</code>) :</p>
-<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
-    <span class="token property">&quot;COLLECTED&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">&quot;variable1&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-            <span class="token property">&quot;PREVIOUS&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Previous&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;COLLECTED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Collected&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;FORCED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Forced&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;EDITED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Edited&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;INPUTED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Inputed&quot;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;variable2&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-            <span class="token property">&quot;COLLECTED&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Var 2&quot;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        ...
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;EXTERNAL&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">&quot;ext&quot;</span><span class="token operator">:</span> <span class="token string">&quot;External var&quot;</span><span class="token punctuation">,</span>
-        ...
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p><code>params</code> (<code>object</code>) : L&apos;objet params permet de personnaliser le mode de fonctionnement de la gestion du questionnaire.</p>
-<p>Les cl&#xE9;s suivantes sont prises en compte :</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Cl&#xE9;</th>
-<th style="text-align:center">Type</th>
-<th style="text-align:center">Valeur par d&#xE9;faut</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">savingType</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&apos;COLLECTED&apos;</td>
-</tr>
-<tr>
-<td style="text-align:center">preferences</td>
-<td style="text-align:center">arrayOf(String)</td>
-<td style="text-align:center">[&apos;COLLECTED&apos;]</td>
-</tr>
-<tr>
-<td style="text-align:center">features</td>
-<td style="text-align:center">arrayOf(String)</td>
-<td style="text-align:center">[&apos;VTL&apos;]</td>
-</tr>
-<tr>
-<td style="text-align:center">management</td>
-<td style="text-align:center">boolean</td>
-<td style="text-align:center">false</td>
-</tr>
-</tbody>
-</table>
-<h4 id="retour">Retour</h4>
-<p><code>questionnaire</code> (<code>object</code>) : questionnaire mis &#xE0; jour par l&apos;orchestrateur.</p>
-<p><code>components</code> (<code>array</code>) : tableau des composants filtr&#xE9;s, permettant d&apos;it&#xE9;rer pour alimenter l&apos;UI.</p>
-<p><code>handleChange</code> (<code>function</code>) : fonction de mise &#xE0; jour, &#xE0; passer en props des composants du questionnaire.</p>
-<p><code>bindings</code> (<code>object</code>) : cl&#xE9;s / valeurs des variables du questionnaire, &#xE0; passer en props du questionnaire.</p>
-<h4 id="exemple">Exemple</h4>
-<p>Un exemple d&apos;utilisation de <code>useLunatic</code> est propos&#xE9; dans la rubrique <a href="../usage.html">Utilisation</a> de la documentation.</p>
+                                <h1 id="analyse-du-livrable">Analyse du livrable</h1>
+<h2 id="analyse-locale">Analyse locale</h2>
+<p>Le rapport d&apos;analyse du livrable est ex&#xE9;cutable localement en ex&#xE9;cutant le script suivant &#xE0; la racine du projet:</p>
+<pre class="language-"><code>yarn analyze
+</code></pre><p>Le rapport sera g&#xE9;n&#xE9;r&#xE9; dans le dossier <code>bundle-report</code> &#xE0; la racine du projet.</p>
+<h2 id="analyse-d&#xE9;ploy&#xE9;e">Analyse d&#xE9;ploy&#xE9;e</h2>
+<p>Le rapport est d&#xE9;ploy&#xE9; en ligne, et est accessible depuis le menu de gauche.</p>
 
                                 
                                 </section>
@@ -553,14 +490,6 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Utilitaires">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="init-questionnaire.html" class="navigation navigation-next " aria-label="Next page: Initialisation d'un questionnaire">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -569,7 +498,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Gestion simplifiée d'un questionnaire","level":"1.5.1","depth":2,"next":{"title":"Initialisation d'un questionnaire","level":"1.5.2","depth":2,"path":"utils/init-questionnaire.md","ref":"utils/init-questionnaire.md","articles":[]},"previous":{"title":"Utilitaires","level":"1.5","depth":1,"path":"utils/index.md","ref":"utils/index.md","articles":[{"title":"Gestion simplifiée d'un questionnaire","level":"1.5.1","depth":2,"path":"utils/hook.md","ref":"utils/hook.md","articles":[]},{"title":"Initialisation d'un questionnaire","level":"1.5.2","depth":2,"path":"utils/init-questionnaire.md","ref":"utils/init-questionnaire.md","articles":[]},{"title":"Mise à jour d'un questionnaire","level":"1.5.3","depth":2,"path":"utils/handler.md","ref":"utils/handler.md","articles":[]},{"title":"Récupération des données d'un questionnaire","level":"1.5.4","depth":2,"path":"utils/get-data.md","ref":"utils/get-data.md","articles":[]},{"title":"Récupération des variables à binder d'un questionnaire","level":"1.5.5","depth":2,"path":"utils/bindings.md","ref":"utils/bindings.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anchorjs","image-captions","include-codeblock","collapsible-chapters"],"root":"./","styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/InseeFr/Lunatic/"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/InseeFr/Lunatic/tree/master/docs"},"theme-default":{"styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Lunatic","language":"fr","gitbook":"*"},"file":{"path":"utils/hook.md","mtime":"2020-07-21T12:15:13.539Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-07-21T12:18:55.432Z"},"basePath":"..","book":{"language":"fr"}});
+            gitbook.page.hasChanged({"page":{"title":"Analyse","level":"1.7.1","depth":2,"next":{"title":"Lunatic","level":"1.7.1.1","depth":3,"url":"https://inseefr.github.io/Lunatic/bundle-report/lunatic.html","ref":"https://inseefr.github.io/Lunatic/bundle-report/lunatic.html","articles":[]},"previous":{"title":"Librable","level":"1.7","depth":1,"ref":"","articles":[{"title":"Analyse","level":"1.7.1","depth":2,"path":"bundle/analysis.md","ref":"bundle/analysis.md","articles":[{"title":"Lunatic","level":"1.7.1.1","depth":3,"url":"https://inseefr.github.io/Lunatic/bundle-report/lunatic.html","ref":"https://inseefr.github.io/Lunatic/bundle-report/lunatic.html","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anchorjs","image-captions","include-codeblock","collapsible-chapters"],"root":"./","styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/InseeFr/Lunatic/"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/InseeFr/Lunatic/tree/master/docs"},"theme-default":{"styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Lunatic","language":"fr","gitbook":"*"},"file":{"path":"bundle/analysis.md","mtime":"2020-07-21T12:15:13.539Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-07-21T12:18:55.432Z"},"basePath":"..","book":{"language":"fr"}});
         });
     </script>
 </div>
