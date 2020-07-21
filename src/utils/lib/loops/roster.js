@@ -21,3 +21,9 @@ export const getInvolvedVariables = (components) =>
 			return [..._, getInvolvedVariables(responses || components)];
 		return _;
 	}, []);
+
+export const lastRosterForLoopLineIsEmpty = (components) =>
+	components
+		.reduce((acc, { response }) => [...acc, response.values[C.COLLECTED]], [])
+		.map((vs) => vs[vs.length - 1])
+		.filter((v) => v !== null).length === 0;

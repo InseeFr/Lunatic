@@ -138,7 +138,10 @@ const RosterForLoop = ({
 				<Button
 					label="addLine"
 					value={addBtnLabel}
-					disabled={Number.isInteger(minLines) && lines === maxLines}
+					disabled={
+						(Number.isInteger(minLines) && lines === maxLines) ||
+						U.lastRosterForLoopLineIsEmpty(components)
+					}
 					onClick={addLine}
 				/>
 			)}
