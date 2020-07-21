@@ -6,14 +6,7 @@
 			"mandatory": false,
 			"label": "➡ 2. Who is the Simpsons city mayor?",
 			"response": {
-				"name": "MAYOR",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "2",
-					"FORCED": "1",
-					"EDITED": null,
-					"INPUTED": null
-				}
+				"name": "MAYOR"
 			},
 			"options": [
 				{ "value": "1", "label": "Constance Harm" },
@@ -23,18 +16,18 @@
 			]
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"MAYOR": {
-				"componentRef": "1",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "2",
-					"FORCED": "1",
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "MAYOR",
+			"componentRef": "1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "2",
+				"FORCED": "1",
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }

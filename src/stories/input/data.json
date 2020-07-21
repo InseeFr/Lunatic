@@ -7,29 +7,22 @@
 			"maxLength": "30",
 			"label": "➡ 3. Who is the producer?",
 			"response": {
-				"name": "PRODUCER",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "Matt Groening",
-					"FORCED": null,
-					"EDITED": "Matt Groening and James L. Brooks",
-					"INPUTED": null
-				}
+				"name": "PRODUCER"
 			}
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"PRODUCER": {
-				"componentRef": "j3343qhx",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": "Matt Groening",
-					"FORCED": null,
-					"EDITED": "Matt Groening and James L. Brooks",
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRODUCER",
+			"componentRef": "j3343qhx",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "Matt Groening",
+				"FORCED": null,
+				"EDITED": "Matt Groening and James L. Brooks",
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }

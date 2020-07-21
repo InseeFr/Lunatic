@@ -6,14 +6,7 @@
 			"mandatory": false,
 			"label": "➡ 2. Are you ready?",
 			"response": {
-				"name": "READY",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
+				"name": "READY"
 			}
 		},
 		{
@@ -22,39 +15,34 @@
 			"mandatory": false,
 			"label": "➡ 2. Are you always ready?",
 			"response": {
-				"name": "READY2",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": true,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
+				"name": "READY2"
 			}
 		}
 	],
-	"variables": {
-		"COLLECTED": {
-			"READY": {
-				"componentRef": "1",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": null,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
-			},
-			"READY2": {
-				"componentRef": "2",
-				"values": {
-					"PREVIOUS": null,
-					"COLLECTED": true,
-					"FORCED": null,
-					"EDITED": null,
-					"INPUTED": null
-				}
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "READY",
+			"componentRef": "1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "READY2",
+			"componentRef": "2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": true,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
-	}
+	]
 }
