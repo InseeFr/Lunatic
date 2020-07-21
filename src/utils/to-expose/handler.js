@@ -94,7 +94,7 @@ const addCalculatedVars = (variables) => {
 	const bindings = buildVectorialBindings({ ...collected, ...EXTERNAL });
 	const calculated = Object.entries(CALCULATED).reduce(
 		(acc, [key, { expression }]) => {
-			// Assume that a calculated varibale has a first level scope
+			// Assume that a calculated variable has a first level scope
 			const res = interpret(['VTL'])(bindings)(expression);
 			const value = Array.isArray(res) ? res[0] : res;
 			return {
