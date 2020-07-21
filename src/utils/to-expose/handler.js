@@ -95,8 +95,10 @@ const addCalculatedVars = (variables) => {
 	const calculated = Object.entries(CALCULATED).reduce(
 		(acc, [key, { expression }]) => {
 			// Assume that a calculated variable has a first level scope
+			// If we need to handle deep calculated variables, we have to
+			// update the shape of bindings, grouping vars by type
 			const res = interpret(['VTL'])(bindings)(expression);
-			const value = Array.isArray(res) ? res[0] : res;
+			const value = Array.isArray(res) ? res.join(',') : res;
 			return {
 				...acc,
 				[key]: { expression, value },
