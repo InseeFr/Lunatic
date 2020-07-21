@@ -7,7 +7,7 @@ import { COLLECTED } from '../../constants';
 
 const filterComponents = (components, management, bindings, features) =>
 	components.filter(({ conditionFilter }) =>
-		management
+		management || !conditionFilter
 			? true
 			: interpret(features)(bindings, true)(conditionFilter) === 'normal'
 	);
