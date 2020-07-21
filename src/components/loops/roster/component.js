@@ -134,11 +134,11 @@ const RosterForLoop = ({
 					))}
 				</tbody>
 			</table>
-			{Number.isInteger(minLines) && lines < maxLines && !hideBtn && (
+			{!hideBtn && (
 				<Button
 					label="addLine"
 					value={addBtnLabel}
-					disabled={false}
+					disabled={Number.isInteger(minLines) && lines === maxLines}
 					onClick={addLine}
 				/>
 			)}
