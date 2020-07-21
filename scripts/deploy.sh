@@ -3,6 +3,7 @@
 set -e
 
 DOC_FOLDER="docs"
+BUNDLE_REPORT_FOLDER="bundle-report"
 STORYBOOK_FOLDER="built-storybook"
 ORCHESTRATOR_FOLDER="example/orchestrator"
 EDITOR_FOLDER="example/lunatic-editor"
@@ -58,9 +59,11 @@ function publish() {
 
   mkdir $SITE_FOLDER
   pushd "$SITE_FOLDER"
+  mkdir $BUNDLE_REPORT_FOLDER
 
   cp -a "../$DOC_FOLDER/_book/." .
   cp -R "../$STORYBOOK_FOLDER/." .
+  cp -a "../$BUNDLE_REPORT_FOLDER/." "./$BUNDLE_REPORT_FOLDER/"
   cp -R "../$ORCHESTRATOR_FOLDER/." .
   mv "build" "orchestrator"
   cp -R "../$EDITOR_FOLDER/." .

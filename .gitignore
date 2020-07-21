@@ -13,3 +13,4 @@ node_modules/
 /lib/
 /coverage/
 /built-storybook/
+/bundle-report
