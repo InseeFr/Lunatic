@@ -53,6 +53,10 @@ function buildEditor(){
   cd ../..
 }
 
+function buildAnalyses() {
+  yarn analyze
+}
+
 function publish() {
 
     if [ -d "$SITE_FOLDER" ]; then rm -Rf $SITE_FOLDER; fi
@@ -81,7 +85,7 @@ function publish() {
 }
 
 function main() {
-  setup && buildDocumentation && buildStoryBook && buildOrchestrator && buildEditor && publish
+  setup && buildDocumentation && buildAnalyses && buildStoryBook && buildOrchestrator && buildEditor && publish
 }
 
 main
