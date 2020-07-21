@@ -7,6 +7,7 @@ import {
 } from './init-questionnaire';
 import { supportedPreferences } from '../../constants/supported-preferences';
 import { interpret } from './interpret';
+import { buildVectorialBindings } from '../lib/loops/bindings';
 
 export const updateQuestionnaire = (valueType) => (questionnaire) => (
 	preferences
@@ -90,7 +91,7 @@ const addCalculatedVars = (variables) => {
 		(acc, [key, { values }]) => ({ ...acc, [key]: values[C.COLLECTED] }),
 		{}
 	);
-	const bindings = { ...collected, ...EXTERNAL };
+	const bindings = buildVectorialBindings({ ...collected, ...EXTERNAL });
 	const calculated = Object.entries(CALCULATED).reduce(
 		(acc, [key, { expression }]) => ({
 			...acc,
