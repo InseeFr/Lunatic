@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { debounce } from 'debounce';
 import Declarations from '../';
 import { TooltipResponse } from '../../tooltip';
 import * as U from '../../../utils/lib';
@@ -30,9 +31,19 @@ const InputDeclarationsWrapper = ({
 }) => {
 	const inputRef = useRef();
 
+	const [value, setValue] = useState(() =>
+		U.getResponseByPreference(preferences)(response)
+	);
+
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
+
+	const onChange = debounce((v) => {
+		handleChange({
+			[U.getResponseName(response)]: v,
+		});
+	}, 200);
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';
 
@@ -68,7 +79,7 @@ const InputDeclarationsWrapper = ({
 							type={type}
 							id={`${roleType}-${id}`}
 							ref={inputRef}
-							value={U.getResponseByPreference(preferences)(response)}
+							value={value}
 							placeholder={placeholder}
 							autoComplete={autoComplete ? 'on' : 'off'}
 							className={`${roleType}-lunatic`}
@@ -78,11 +89,10 @@ const InputDeclarationsWrapper = ({
 							maxLength={maxLength || 524288}
 							required={mandatory}
 							aria-required={mandatory}
-							onChange={(e) =>
-								handleChange({
-									[U.getResponseName(response)]: e.target.value,
-								})
-							}
+							onChange={({ target: { value: v } }) => {
+								setValue(v);
+								onChange(v);
+							}}
 						/>
 					</div>
 					{management && (
