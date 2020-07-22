@@ -1029,12 +1029,13 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^2.0.0-rc5":
-  version "2.0.0-rc5"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.0.0-rc5.tgz#9b35d8626c8ef3be387a403762a7ba37ab63558f"
-  integrity sha512-4idywm2nceqsSmgtz+VsOkMN1XZIPyFKFXfaUjtVaOH59O8294HUddERiKEQI0sj8h/GLSRQdcZxm2Gw2bWXKg==
+"@inseefr/lunatic@^2.0.0-rc6":
+  version "2.0.0-rc6"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.0.0-rc6.tgz#0e36e486f7fe22c5268b9aae9619430734c20981"
+  integrity sha512-t0CvoMxQmxnCVLNot92BVbaZoqNIlYGsK+WxA24zNS5bvW/FCFHHB+dHQg1C0OhspYlKMF1FPLcL3r+Ky/99aA==
   dependencies:
-    "@inseefr/vtl-2.1-engine" "^0.1.2"
+    "@inseefr/vtl-2.1-engine" "^0.1.3"
+    debounce "^1.2.0"
     keycode "^2.2.0"
     lodash.camelcase "^4.3.0"
     lodash.isequal "^4.5.0"
@@ -1048,10 +1049,10 @@
   dependencies:
     antlr4 "^4.8.0"
 
-"@inseefr/vtl-2.1-engine@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@inseefr/vtl-2.1-engine/-/vtl-2.1-engine-0.1.2.tgz#9035bf3a7dc5bde135eff00cab29072144ef38a2"
-  integrity sha512-04amAFpj+SyQpkkDqa+eJ7kwPvmjArF3HSJjgN0yOThY/AK0WfX0zGKGFBRDpcadlhsg2Hld0ZLeSzwiBY4glQ==
+"@inseefr/vtl-2.1-engine@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@inseefr/vtl-2.1-engine/-/vtl-2.1-engine-0.1.3.tgz#f248e972ffd5fe9f6b2158a466524b07b7fbc44f"
+  integrity sha512-41kC+Vt4MzGFVXVJyiE17SabDtSVrNlGDSn54c5fmQz8vemZ0Z2zYEjuwA2VYc6+23wIsdEWNYCRGlQ1ksQ8ew==
   dependencies:
     "@inseefr/vtl-2.1-antlr-tools" "1.0.0-rc1"
     antlr4 "^4.8.0"
@@ -3420,6 +3421,11 @@ dayjs@^1.8.12:
   version "1.8.25"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.25.tgz#d09a8696cee7191bc1289e739f96626391b9c73c"
   integrity sha512-Pk36juDfQQGDCgr0Lqd1kw15w3OS6xt21JaLPE3lCfsEf8KrERGwDNwvK1tRjrjqFC0uZBJncT4smZQ4F+uV5g==
+
+debounce@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.0.tgz#44a540abc0ea9943018dc0eaa95cce87f65cd131"
+  integrity sha512-mYtLl1xfZLi1m4RtQYlZgJUNQjl4ZxVnHzIR8nLLgi4q1YT8o/WM+MK/f8yfcc9s5Ir5zRaPZyZU6xs1Syoocg==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
