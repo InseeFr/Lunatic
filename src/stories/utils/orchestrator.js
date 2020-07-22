@@ -17,14 +17,12 @@ const OrchestratorForStories = ({
 		handleChange,
 		components,
 		bindings,
-	} = lunatic.useLunatic(
-		source,
-		data,
+	} = lunatic.useLunatic(source, data, {
 		savingType,
 		preferences,
 		features,
-		management
-	);
+		management,
+	});
 
 	console.log(lunatic.getState(questionnaire));
 
