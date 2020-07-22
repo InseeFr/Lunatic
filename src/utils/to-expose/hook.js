@@ -33,16 +33,11 @@ const useLunatic = (
 			features
 		)
 	);
-	const [todo, setTodo] = useState({});
 
-	const handleChange = useCallback((updatedValue) => {
-		setTodo(updatedValue);
-	}, []);
-
-	useEffect(() => {
-		if (Object.keys(todo).length !== 0) {
+	const handleChange = useCallback(
+		(up) => {
 			const newQ = updateQuestionnaire(savingType)(questionnaire)(preferences)(
-				todo
+				up
 			);
 			setQuestionnaire(newQ);
 			setComponents(
@@ -53,9 +48,9 @@ const useLunatic = (
 					features
 				)
 			);
-			setTodo({});
-		}
-	}, [todo, preferences, questionnaire, savingType, features, management]);
+		},
+		[savingType, questionnaire, preferences, management, features]
+	);
 
 	const bindings = getBindings(questionnaire);
 
