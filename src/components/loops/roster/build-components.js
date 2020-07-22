@@ -23,3 +23,20 @@ export const buildRosterUIComponents = (headers) => (components) => {
 	const rows = transpose(uiComponents);
 	return [headers, ...rows];
 };
+
+export const getDataVectors = (components) =>
+	components.reduce(
+		(
+			acc,
+			{
+				response: {
+					name,
+					values: { COLLECTED },
+				},
+			}
+		) => ({
+			...acc,
+			[name]: COLLECTED,
+		}),
+		{}
+	);

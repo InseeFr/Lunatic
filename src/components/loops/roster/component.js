@@ -5,7 +5,7 @@ import Declarations from '../../declarations';
 import * as U from '../../../utils/lib';
 import * as C from '../../../constants';
 import { interpret } from '../../../utils/to-expose';
-import { buildRosterUIComponents } from './build-components';
+import { buildRosterUIComponents, getDataVectors } from './build-components';
 
 const RosterForLoop = ({
 	id: tableId,
@@ -14,7 +14,7 @@ const RosterForLoop = ({
 	headers,
 	components,
 	handleChange,
-	lines: initLines,
+	lines,
 	positioning,
 	declarations,
 	features,
@@ -24,36 +24,34 @@ const RosterForLoop = ({
 	management,
 }) => {
 	const minLines = Math.max(
-		initLines.min,
+		lines.min || 0,
 		U.getRosterForLoopInitLines(components)
 	);
-	const [lines, setLines] = useState(() => minLines);
-	const maxLines = initLines ? initLines.max : undefined;
+	const maxLines = lines ? lines.max : undefined;
 
 	const width = `${100 / Math.max(...components.map((line) => line.length))}%`;
 	const Button = lunatic.Button;
 	const uiComponents = buildRosterUIComponents(headers)(components);
+	const dataVectors = getDataVectors(components);
 
 	const onChange = (up, index) => {
 		const [key, value] = Object.entries(up)[0];
-		const previousValue = bindings[key];
+		const previousValue = dataVectors[key];
 		const newValue = previousValue.map((v, i) => (i === index ? value : v));
-		handleChange({ [key]: newValue });
+		handleChange({ [key]: value === '9' ? ['10', '11'] : newValue });
 	};
 
 	const addLine = () => {
-		setLines(lines + 1);
 		const involvedVariables = U.getInvolvedVariables(components);
 		const toHandle = involvedVariables.reduce(
 			(acc, iv) => ({
 				...acc,
-				[iv]: [...bindings[iv], null],
+				[iv]: [...dataVectors[iv], null],
 			}),
 			{}
 		);
 		handleChange(toHandle);
 	};
-
 	return (
 		<>
 			<Declarations
@@ -80,10 +78,7 @@ const RosterForLoop = ({
 			/>
 			<table id={`table-${tableId}`} className="table-lunatic">
 				<tbody>
-					{(minLines || minLines === 0
-						? uiComponents.slice(0, lines + 1)
-						: uiComponents
-					).map((line, i) => (
+					{uiComponents.map((line, i) => (
 						<tr key={`table-${tableId}-line${i}`}>
 							{line.map((component, j) => {
 								const {
@@ -106,7 +101,9 @@ const RosterForLoop = ({
 												{...componentProps}
 												id={`${id}-row-${i}`}
 												label={label}
-												handleChange={(v) => onChange(v, i - 1)}
+												handleChange={(v) => {
+													onChange(v, i - 1);
+												}}
 												preferences={preferences}
 												positioning={positioning}
 												management={management}
