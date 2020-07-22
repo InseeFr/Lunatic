@@ -56,7 +56,6 @@ const Loop = ({
 						id={`${id}-loop-${loopIndex}`}
 						handleChange={(e) => onChange(loopIndex)(e)}
 						bindings={loopBindings}
-						bindingsDependency
 					/>
 				</div>
 			);
