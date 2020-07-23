@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { interpret } from './interpret';
 import { mergeQuestionnaireAndData } from './init-questionnaire';
 import { getBindings } from './state';
@@ -25,14 +25,6 @@ const useLunatic = (
 	const [questionnaire, setQuestionnaire] = useState(() =>
 		mergeQuestionnaireAndData(source)(data)
 	);
-	const [components, setComponents] = useState(() =>
-		filterComponents(
-			questionnaire.components,
-			management,
-			getBindings(questionnaire),
-			features
-		)
-	);
 
 	const handleChange = useCallback(
 		(up) => {
@@ -40,19 +32,17 @@ const useLunatic = (
 				up
 			);
 			setQuestionnaire(newQ);
-			setComponents(
-				filterComponents(
-					newQ.components,
-					management,
-					getBindings(newQ),
-					features
-				)
-			);
 		},
-		[savingType, questionnaire, preferences, management, features]
+		[savingType, questionnaire, preferences]
 	);
 
 	const bindings = getBindings(questionnaire);
+	const components = filterComponents(
+		questionnaire.components,
+		management,
+		bindings,
+		features
+	);
 
 	return { questionnaire, handleChange, components, bindings };
 };
