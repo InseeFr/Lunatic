@@ -4,7 +4,8 @@ import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
-import data from './data';
+import dataLoop from './data-loop';
+import dataRoster from './data-roster';
 import vqs from './vqs';
 import { positioningOptions, featuresOptions } from '../utils/options';
 import { boolean, select } from '@storybook/addon-knobs/react';
@@ -16,10 +17,21 @@ const stories = storiesOf('Loops', module)
 		return <WrappedComponent title="Let's loop!" />;
 	});
 
-stories.addWithJSX('Default', () => (
+stories.addWithJSX('Default Roster', () => (
 	<Orchestrator
 		id="default"
-		source={data}
+		source={dataRoster}
+		management={boolean('Management', false)}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		hideBtn={boolean('Hide button', false)}
+		features={select('Features', featuresOptions, ['VTL'])}
+	/>
+));
+
+stories.addWithJSX('Default Loop', () => (
+	<Orchestrator
+		id="default-loop"
+		source={dataLoop}
 		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		hideBtn={boolean('Hide button', false)}

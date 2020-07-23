@@ -41,15 +41,6 @@
 					"response": {
 						"name": "AGE"
 					}
-				},
-				{
-					"componentType": "Datepicker",
-					"conditionFilter": "\"normal\"",
-					"bindingsDependency": [],
-					"id": "k3ymundt",
-					"response": {
-						"name": "DATE"
-					}
 				}
 			]
 		},
@@ -163,18 +154,6 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
-			"componentRef": "k3ylzyo4",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-		{
-			"variableType": "COLLECTED",
-			"name": "DATE",
 			"componentRef": "k3ylzyo4",
 			"values": {
 				"PREVIOUS": [null],
