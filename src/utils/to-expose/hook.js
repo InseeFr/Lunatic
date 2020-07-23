@@ -36,8 +36,6 @@ const useLunatic = (
 			const newQ = updateQuestionnaire(savingType)(questionnaire)(preferences)(
 				todo
 			);
-			console.log(questionnaire.variables.COLLECTED);
-			console.log(newQ.variables.COLLECTED);
 			setQuestionnaire(newQ);
 			setTodo({});
 		}
