@@ -24,7 +24,7 @@
 					"componentType": "Input",
 					"conditionFilter": "\"normal\"",
 					"maxLength": 30,
-					"bindingsDependency": [],
+					"bindingsDependency": ["PRENOM"],
 					"id": "k3yn2qmr",
 					"response": {
 						"name": "PRENOM"
@@ -36,7 +36,7 @@
 					"min": 0,
 					"max": 120,
 					"decimals": 0,
-					"bindingsDependency": [],
+					"bindingsDependency": ["AGE"],
 					"id": "k3ymundt",
 					"response": {
 						"name": "AGE"

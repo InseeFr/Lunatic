@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import * as lunatic from '../../components';
 import Declarations from '../../declarations';
@@ -32,13 +32,13 @@ const RosterForLoop = ({
 	const width = `${100 / Math.max(...components.map((line) => line.length))}%`;
 	const Button = lunatic.Button;
 	const uiComponents = buildRosterUIComponents(headers)(components);
-	const dataVectors = getDataVectors(components);
 
 	const onChange = (up, index) => {
 		const [key, value] = Object.entries(up)[0];
-		const previousValue = dataVectors[key];
+		const previousValue = getDataVectors(components)[key];
 		const newValue = previousValue.map((v, i) => (i === index ? value : v));
-		handleChange({ [key]: value === '9' ? ['10', '11'] : newValue });
+		// setDataVectors({ ...dataVectors, [key]: newValue });
+		handleChange({ [key]: newValue });
 	};
 
 	const addLine = () => {
@@ -46,12 +46,13 @@ const RosterForLoop = ({
 		const toHandle = involvedVariables.reduce(
 			(acc, iv) => ({
 				...acc,
-				[iv]: [...dataVectors[iv], null],
+				[iv]: [...getDataVectors(components)[iv], null],
 			}),
 			{}
 		);
 		handleChange(toHandle);
 	};
+
 	return (
 		<>
 			<Declarations
