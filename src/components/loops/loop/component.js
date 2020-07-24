@@ -18,6 +18,8 @@ const Loop = ({
 	const { features } = orchetratorProps;
 	const iterationNb = interpret(features)(vectorialBindings)(iterations);
 	const involvedVariables = U.getInvolvedVariables(components);
+	const dataVectors = U.getDataVectors(components);
+	console.log(dataVectors);
 
 	const onChange = (index) => (obj) => {
 		const [name, value] = Object.entries(obj)[0];

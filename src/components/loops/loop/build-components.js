@@ -5,29 +5,29 @@ export const buildLoopComponents = (index) => (components) => {
 	return flatten.flat();
 };
 
-const buildFlatten = (i) => (components) =>
-	components.map((component) => {
-		const indexedComponent = { ...component, loopIndex: i };
-		const { componentType, response } = component;
-		if (
-			!componentType ||
-			['Sequence', 'Subsequence', 'FilterDescription'].includes(componentType)
-		)
-			return indexedComponent;
-		else if (response) return buildFlattenResponse(indexedComponent);
-		else return indexedComponent;
+const buildFlatten = (i) => (parentComponents) =>
+	parentComponents.map((component) => {
+		const { response, responses, components } = component;
+		if (response) return buildFlattenResponse(i)(component);
+		else if (responses)
+			return {
+				...component,
+				responses: responses.map((r) => buildFlattenResponse(i)(r)),
+			};
+		else if (components)
+			return { ...component, component: buildFlatten(i)(components) };
+		else return component;
 	});
 
-const buildFlattenResponse = (component) => {
-	const { response, loopIndex, ...other } = component;
+const buildFlattenResponse = (i) => (component) => {
+	const { response, ...other } = component;
 	const { name, values } = response;
 	const newValues = Object.entries(values).reduce(
-		(acc, [key, value]) => ({ ...acc, [key]: value[loopIndex] }),
+		(acc, [key, value]) => ({ ...acc, [key]: value[i] }),
 		{}
 	);
 	return {
 		...other,
 		response: { name, values: newValues },
-		loopIndex,
 	};
 };
