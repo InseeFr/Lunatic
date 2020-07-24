@@ -1,4 +1,4 @@
-export const buildBindingsForLoopComponents = (index) => (bindings) =>
+export const buildBindingsForComponents = (index) => (bindings) =>
 	bindings
 		? Object.entries(bindings).reduce((_, [name, value]) => {
 				if (Array.isArray(value)) return { ..._, [name]: value[index] || null };

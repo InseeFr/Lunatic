@@ -1,19 +1,19 @@
 import {
-	buildBindingsForLoopComponents,
+	buildBindingsForDeepComponents,
 	buildVectorialBindings,
 } from 'utils/lib';
 
 const bindings = { A: 'AAA', B: ['b', 'bb'] };
 
 describe('loop bindings utils', () => {
-	describe('buildBindingsForLoopComponents', () => {
+	describe('buildBindingsForDeepComponents', () => {
 		it('should return default value', () => {
-			expect(buildBindingsForLoopComponents()()).toEqual({});
-			expect(buildBindingsForLoopComponents(0)()).toEqual({});
-			expect(buildBindingsForLoopComponents()({})).toEqual({});
+			expect(buildBindingsForDeepComponents()()).toEqual({});
+			expect(buildBindingsForDeepComponents(0)()).toEqual({});
+			expect(buildBindingsForDeepComponents()({})).toEqual({});
 		});
 		it('should return bindings for loop', () => {
-			expect(buildBindingsForLoopComponents(1)(bindings)).toEqual({
+			expect(buildBindingsForDeepComponents(1)(bindings)).toEqual({
 				A: 'AAA',
 				B: 'bb',
 			});
