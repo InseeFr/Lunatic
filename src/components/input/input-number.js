@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { debounce } from 'debounce';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
@@ -32,12 +33,22 @@ const InputNumber = ({
 	mandatory,
 	validators,
 }) => {
+	const inputRef = useRef();
+
+	const [value, setValue] = useState(() =>
+		U.getResponseByPreference(preferences)(response)
+	);
 	const [messagesError, setMessagesError] = useState(
 		[minMaxValidator({ min, max }), ...validators]
-			.map((v) => v(U.getResponseByPreference(preferences)(response)))
+			.map((v) => v(value))
 			.filter((m) => m !== undefined)
 	);
-	const inputRef = useRef();
+
+	const onChange = debounce((v) => {
+		handleChange({
+			[U.getResponseName(response)]: v,
+		});
+	}, 200);
 
 	const validate = (value) => {
 		setMessagesError(
@@ -54,10 +65,10 @@ const InputNumber = ({
 	useEffect(() => {
 		setMessagesError(
 			[minMaxValidator({ min, max }), ...validators]
-				.map((v) => v(U.getResponseByPreference(preferences)(response)))
+				.map((v) => v(value))
 				.filter((m) => m !== undefined)
 		);
-	}, [response, min, max, validators, preferences]);
+	}, [value, min, max, validators]);
 
 	return (
 		<>
@@ -95,7 +106,7 @@ const InputNumber = ({
 							id={`input-${id}`}
 							ref={inputRef}
 							aria-labelledby={`input-label-${id}`}
-							value={U.getResponseByPreference(preferences)(response)}
+							value={value}
 							min={min}
 							max={max}
 							step={decimals ? `${Math.pow(10, -decimals)}` : '0'}
@@ -111,12 +122,11 @@ const InputNumber = ({
 							aria-required={mandatory}
 							onChange={(e) => {
 								const {
-									target: { value },
+									target: { value: v },
 								} = e;
-								validate(value);
-								handleChange({
-									[U.getResponseName(response)]: value,
-								});
+								validate(v);
+								setValue(v);
+								onChange(v);
 							}}
 						/>
 						{unitPosition === 'AFTER' && <span className="unit">{unit}</span>}
