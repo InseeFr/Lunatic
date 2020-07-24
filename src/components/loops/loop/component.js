@@ -44,7 +44,7 @@ const Loop = ({
 
 	const loopComponents = flattenComponents.map(
 		({ componentType, loopIndex, id, ...rest }) => {
-			const loopBindings = U.buildBindingsForLoopComponents(loopIndex)(
+			const loopBindings = U.buildBindingsForDeepComponents(loopIndex)(
 				bindings
 			);
 			const Component = lunatic[componentType];
@@ -70,4 +70,4 @@ const Loop = ({
 	);
 };
 
-export default Loop;
+export default React.memo(Loop, U.areEqual);

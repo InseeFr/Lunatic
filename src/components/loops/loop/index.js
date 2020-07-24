@@ -1,1 +1,1 @@
-export { default } from './loop';
+export { default } from './component';
