@@ -1,11 +1,11 @@
 import isEqual from 'lodash.isequal';
 
 export const areEqual = (prevProps, props) => {
-	const { bindingsDependency } = props;
-	if (Array.isArray(bindingsDependency) && bindingsDependency.length > 0) {
+	const { bindingDependencies } = props;
+	if (Array.isArray(bindingDependencies) && bindingDependencies.length > 0) {
 		const { bindings: oldB } = prevProps;
 		const { bindings: newB } = props;
-		return !bindingsDependency
+		return !bindingDependencies
 			.map((d) => isEqual(oldB[d], newB[d]))
 			.includes(false);
 	}

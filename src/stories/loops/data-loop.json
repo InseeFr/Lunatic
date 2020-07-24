@@ -5,7 +5,7 @@
 			"componentType": "Sequence",
 			"label": "\"Description des individus de votre logement\"",
 			"conditionFilter": "\"normal\"",
-			"bindingsDependency": []
+			"bindingDependencies": []
 		},
 		{
 			"id": "k3ylzyo4",
@@ -14,7 +14,7 @@
 			"positioning": "HORIZONTAL",
 			"label": "\"Qui sont les personnes qui habitent dans votre logement ?\"",
 			"conditionFilter": "\"normal\"",
-			"bindingsDependency": ["PRENOM", "AGE"],
+			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 10 },
 			"headers": [
 				{ "headerCell": true, "label": "Prénom" },
@@ -25,7 +25,7 @@
 					"componentType": "Input",
 					"conditionFilter": "\"normal\"",
 					"maxLength": 30,
-					"bindingsDependency": ["PRENOM"],
+					"bindingDependencies": ["PRENOM"],
 					"id": "k3yn2qmr",
 					"response": {
 						"name": "PRENOM"
@@ -37,7 +37,7 @@
 					"min": 0,
 					"max": 120,
 					"decimals": 0,
-					"bindingsDependency": ["AGE"],
+					"bindingDependencies": ["AGE"],
 					"id": "k3ymundt",
 					"response": {
 						"name": "AGE"
@@ -51,13 +51,14 @@
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
 			"conditionFilter": "\"normal\"",
+			"bindingDependencies": ["PRENOM", "PROPRIO", "DEMENAGEMENT", "TPSTRAJET"],
 			"components": [
 				{
 					"id": "k3ymch91",
 					"componentType": "Sequence",
 					"label": "\"Question 1\"",
 					"conditionFilter": "\"normal\"",
-					"bindingsDependency": []
+					"bindingDependencies": []
 				},
 				{
 					"id": "k3ym68i7",
@@ -65,7 +66,7 @@
 					"mandatory": false,
 					"label": "PRENOM || \", êtes-vous propriétaire du logement ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingsDependency": ["PRENOM"],
+					"bindingDependencies": ["PRENOM", "PROPRIO"],
 					"response": {
 						"name": "PROPRIO"
 					},
@@ -79,7 +80,7 @@
 					"componentType": "Sequence",
 					"label": "\"Question\"",
 					"conditionFilter": "\"normal\"",
-					"bindingsDependency": []
+					"bindingDependencies": []
 				},
 				{
 					"id": "k3ym9jil",
@@ -87,7 +88,7 @@
 					"mandatory": false,
 					"label": "PRENOM || \", envisagez-vous de déménager d'ici la fin de l'année civile en cours ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingsDependency": ["PRENOM"],
+					"bindingDependencies": ["PRENOM", "DEMENAGEMENT"],
 					"response": {
 						"name": "DEMENAGEMENT"
 					},
@@ -102,7 +103,7 @@
 					"componentType": "InputNumber",
 					"conditionFilter": "\"normal\"",
 					"mandatory": false,
-					"bindingsDependency": [],
+					"bindingDependencies": ["TPSTRAJET"],
 					"min": 0,
 					"max": 180,
 					"decimals": 0,
@@ -110,6 +111,42 @@
 					"response": {
 						"name": "TPSTRAJET"
 					}
+				},
+				{
+					"id": "gg",
+					"componentType": "CheckboxGroup",
+					"label": "➡ 1. What are the pet names that the Simpsons family had?",
+					"bindingDependencies": ["PET1", "PET2", "PET3", "PET4"],
+					"responses": [
+						{
+							"id": "j334akov-QOP-jbgd8qmn",
+							"label": "Santa's Little Helper",
+							"response": {
+								"name": "PET1"
+							}
+						},
+						{
+							"id": "j334akov-QOP-jbgd60vl",
+							"label": "Snowball I",
+							"response": {
+								"name": "PET2"
+							}
+						},
+						{
+							"id": "j334akov-QOP-jbgda2jo",
+							"label": "Coltrane",
+							"response": {
+								"name": "PET3"
+							}
+						},
+						{
+							"id": "j334akov-QOP-jbgdfssy",
+							"label": "Mojo the Helper Monkey",
+							"response": {
+								"name": "PET4"
+							}
+						}
+					]
 				}
 			]
 		},
@@ -118,7 +155,7 @@
 			"componentType": "Sequence",
 			"label": "\"Questionnaire logement\"",
 			"conditionFilter": "\"normal\"",
-			"bindingsDependency": []
+			"bindingDependencies": []
 		},
 		{
 			"id": "k3ym6i5g",
@@ -126,7 +163,7 @@
 			"mandatory": false,
 			"label": "\"Diriez-vous que votre logement est confortable ?\"",
 			"conditionFilter": "\"normal\"",
-			"bindingsDependency": [],
+			"bindingDependencies": [],
 			"response": {
 				"name": "CONFORT"
 			},
@@ -141,7 +178,7 @@
 			"unit": "m²",
 			"componentType": "InputNumber",
 			"conditionFilter": "\"normal\"",
-			"bindingsDependency": [],
+			"bindingDependencies": [],
 			"mandatory": false,
 			"min": 0,
 			"max": 500,
@@ -214,8 +251,56 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "CONFORT",
+			"name": "PET1",
 			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [true],
+				"FORCED": [false],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PET2",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [true],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PET3",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PET4",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CONFORT",
+			"componentRef": "k3ym6i5g",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -227,7 +312,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "SUPERFICIE",
-			"componentRef": "idLoop",
+			"componentRef": "k3ymkpj2",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
