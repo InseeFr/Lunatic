@@ -38,7 +38,6 @@ const RosterForLoop = ({
 		const [key, value] = Object.entries(up)[0];
 		const previousValue = dataVectors[key];
 		const newValue = previousValue.map((v, i) => (i === index ? value : v));
-		// setDataVectors({ ...dataVectors, [key]: newValue });
 		handleChange({ [key]: newValue });
 	};
 
