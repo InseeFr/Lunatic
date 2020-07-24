@@ -24,13 +24,11 @@ export const getInvolvedVariables = (components) =>
 		  }, [])
 		: [];
 
-export const lastRosterForLoopLineIsEmpty = (components) =>
-	Array.isArray(components)
-		? components
-				.reduce(
-					(acc, { response }) => [...acc, response.values[C.COLLECTED]],
-					[]
-				)
-				.map((vs) => vs[vs.length - 1])
-				.filter((v) => v !== null).length === 0
+export const lastRosterForLoopLineIsEmpty = (dataVectors) => {
+	console.log(dataVectors);
+	return dataVectors
+		? !Object.values(dataVectors)
+				.map((d) => !d[d.length - 1])
+				.includes(false)
 		: true;
+};

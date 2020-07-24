@@ -32,10 +32,11 @@ const RosterForLoop = ({
 	const width = `${100 / Math.max(...components.map((line) => line.length))}%`;
 	const Button = lunatic.Button;
 	const uiComponents = buildRosterUIComponents(headers)(components);
+	const dataVectors = getDataVectors(components);
 
 	const onChange = (up, index) => {
 		const [key, value] = Object.entries(up)[0];
-		const previousValue = getDataVectors(components)[key];
+		const previousValue = dataVectors[key];
 		const newValue = previousValue.map((v, i) => (i === index ? value : v));
 		// setDataVectors({ ...dataVectors, [key]: newValue });
 		handleChange({ [key]: newValue });
@@ -46,7 +47,7 @@ const RosterForLoop = ({
 		const toHandle = involvedVariables.reduce(
 			(acc, iv) => ({
 				...acc,
-				[iv]: [...getDataVectors(components)[iv], null],
+				[iv]: [...dataVectors[iv], null],
 			}),
 			{}
 		);
@@ -137,8 +138,8 @@ const RosterForLoop = ({
 					label="addLine"
 					value={addBtnLabel}
 					disabled={
-						(Number.isInteger(minLines) && lines === maxLines) ||
-						U.lastRosterForLoopLineIsEmpty(components)
+						(Number.isInteger(minLines) && minLines === maxLines) ||
+						U.lastRosterForLoopLineIsEmpty(dataVectors)
 					}
 					onClick={addLine}
 				/>
