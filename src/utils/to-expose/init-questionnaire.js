@@ -88,7 +88,10 @@ const initCalculatedVariable = ({ name, expression }) => (data) => {
 	const bindings = Object.entries(data).reduce(
 		(acc, [key, value]) => ({
 			...acc,
-			[key]: typeof value === 'string' ? value : value.values[C.COLLECTED],
+			[key]:
+				typeof value === 'string' || value === null
+					? value
+					: value.values[C.COLLECTED],
 		}),
 		{}
 	);
