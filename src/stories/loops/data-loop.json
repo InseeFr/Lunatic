@@ -14,6 +14,7 @@
 			"positioning": "HORIZONTAL",
 			"label": "\"Qui sont les personnes qui habitent dans votre logement ?\"",
 			"conditionFilter": "\"normal\"",
+			"bindingsDependency": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 10 },
 			"headers": [
 				{ "headerCell": true, "label": "Prénom" },

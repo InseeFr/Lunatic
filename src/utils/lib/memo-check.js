@@ -5,10 +5,9 @@ export const areEqual = (prevProps, props) => {
 	if (Array.isArray(bindingsDependency) && bindingsDependency.length > 0) {
 		const { bindings: oldB } = prevProps;
 		const { bindings: newB } = props;
-		return bindingsDependency.reduce(
-			(acc, dep) => (acc ? acc : isEqual(oldB[dep], newB[dep])),
-			false
-		);
+		return !bindingsDependency
+			.map((d) => isEqual(oldB[d], newB[d]))
+			.includes(false);
 	}
 	return VarsHasBeenUpdated(prevProps, props);
 };

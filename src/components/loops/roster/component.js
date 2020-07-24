@@ -186,4 +186,4 @@ RosterForLoop.propTypes = {
 	style: PropTypes.object,
 };
 
-export default RosterForLoop;
+export default React.memo(RosterForLoop, U.areEqual);
