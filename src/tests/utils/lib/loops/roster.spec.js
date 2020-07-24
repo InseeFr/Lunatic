@@ -35,15 +35,12 @@ describe('loop roster utils', () => {
 			expect(lastRosterForLoopLineIsEmpty([])).toBeTruthy();
 		});
 		it('should return last line is not empty', () => {
-			expect(lastRosterForLoopLineIsEmpty(componentsForInit)).toBeFalsy();
+			const d = { A: [null, 'a'], B: ['b', null] };
+			expect(lastRosterForLoopLineIsEmpty(d)).toBeFalsy();
 		});
 		it('should return last line is empty', () => {
-			const c = [
-				{ id: '1', response: { name: 'a', values: { COLLECTED: [null] } } },
-				{ id: '2', response: { name: 'b', values: { COLLECTED: [null] } } },
-				{ id: '3', response: { name: 'c', values: { COLLECTED: [null] } } },
-			];
-			expect(lastRosterForLoopLineIsEmpty(c)).toBeTruthy();
+			const d = { A: [null, null], B: ['b', null] };
+			expect(lastRosterForLoopLineIsEmpty(d)).toBeTruthy();
 		});
 	});
 });

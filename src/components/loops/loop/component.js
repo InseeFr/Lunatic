@@ -44,7 +44,7 @@ const Loop = ({
 
 	const loopComponents = flattenComponents.map(
 		({ componentType, loopIndex, id, ...rest }) => {
-			const loopBindings = U.buildBindingsForDeepComponents(loopIndex)(
+			const loopBindings = U.buildBindingsForDeeperComponents(loopIndex)(
 				bindings
 			);
 			const Component = lunatic[componentType];
