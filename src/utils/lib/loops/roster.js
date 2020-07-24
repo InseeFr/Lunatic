@@ -24,11 +24,9 @@ export const getInvolvedVariables = (components) =>
 		  }, [])
 		: [];
 
-export const lastRosterForLoopLineIsEmpty = (dataVectors) => {
-	console.log(dataVectors);
-	return dataVectors
+export const lastRosterForLoopLineIsEmpty = (dataVectors) =>
+	dataVectors
 		? !Object.values(dataVectors)
 				.map((d) => !d[d.length - 1])
 				.includes(false)
 		: true;
-};
