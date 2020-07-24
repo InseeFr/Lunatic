@@ -5,7 +5,7 @@ import Declarations from '../../declarations';
 import * as U from '../../../utils/lib';
 import * as C from '../../../constants';
 import { interpret } from '../../../utils/to-expose';
-import { buildRosterUIComponents, getDataVectors } from './build-components';
+import { buildRosterUIComponents } from './build-components';
 
 const RosterForLoop = ({
 	id: tableId,
@@ -32,7 +32,7 @@ const RosterForLoop = ({
 	const width = `${100 / Math.max(...components.map((line) => line.length))}%`;
 	const Button = lunatic.Button;
 	const uiComponents = buildRosterUIComponents(headers)(components);
-	const dataVectors = getDataVectors(components);
+	const dataVectors = U.getDataVectors(components);
 
 	const onChange = (up, index) => {
 		const [key, value] = Object.entries(up)[0];
