@@ -17,11 +17,24 @@ const Loop = ({
 	const vectorialBindings = U.buildVectorialBindings(bindings);
 	const { features } = orchetratorProps;
 	const iterationNb = interpret(features)(vectorialBindings)(iterations);
+	const involvedVariables = U.getInvolvedVariables(components);
 	const dataVectors = U.getDataVectors(components);
+
+	useEffect(() => {
+		involvedVariables.forEach((iv) => {
+			if (iterationNb > dataVectors[iv].length)
+				handleChange({
+					[iv]: [
+						...dataVectors[iv],
+						...new Array(iterationNb - dataVectors[iv].length).fill(null),
+					],
+				});
+		});
+	}, [iterationNb, dataVectors, handleChange, involvedVariables]);
 
 	const onChange = (index) => (obj) => {
 		const [name, value] = Object.entries(obj)[0];
-		const oldValue = bindings[name];
+		const oldValue = dataVectors[name];
 		const newValue = oldValue.map((v, i) => (i === index ? value : v));
 		handleChange({ [name]: newValue });
 	};
@@ -29,16 +42,18 @@ const Loop = ({
 	const flattenComponents = buildLoopComponents(iterationNb)(components);
 
 	const loopComponents = flattenComponents.map(
-		({ componentType, id, ...rest }, i) => {
-			const loopBindings = U.buildBindingsForDeeperComponents(i)(bindings);
+		({ componentType, id, loopIndex, ...rest }) => {
+			const loopBindings = U.buildBindingsForDeeperComponents(loopIndex)(
+				dataVectors
+			);
 			const Component = lunatic[componentType];
 			return (
-				<div key={`${id}-loop-${i}`} className="loop-component">
+				<div key={`${id}-loop-${loopIndex}`} className="loop-component">
 					<Component
 						{...orchetratorProps}
 						{...rest}
-						id={`${id}-loop-${i}`}
-						handleChange={(e) => onChange(i)(e)}
+						id={`${id}-loop-${loopIndex}`}
+						handleChange={(e) => onChange(loopIndex)(e)}
 						bindings={loopBindings}
 					/>
 				</div>
