@@ -29,24 +29,24 @@ const RosterForLoop = ({
 	);
 	const maxLines = lines ? lines.max : undefined;
 
-	const width = `${100 / Math.max(...components.map((line) => line.length))}%`;
+	const width = `${100 / Math.max(...components.map((row) => row.length))}%`;
 	const Button = lunatic.Button;
 	const uiComponents = buildRosterUIComponents(headers)(components);
-	const dataVectors = U.getDataVectors(components);
+	const involvedVariables = U.getInvolvedVariables(components);
 
-	const onChange = (up, index) => {
+
+	const onChange = (up, rowNumber) => {
 		const [key, value] = Object.entries(up)[0];
-		const previousValue = dataVectors[key];
-		const newValue = previousValue.map((v, i) => (i === index ? value : v));
+		const previousValue = bindings[key];
+		const newValue = previousValue.map((v, i) => (i === rowNumber ? value : v));
 		handleChange({ [key]: newValue });
 	};
 
 	const addLine = () => {
-		const involvedVariables = U.getInvolvedVariables(components);
 		const toHandle = involvedVariables.reduce(
 			(acc, iv) => ({
 				...acc,
-				[iv]: [...dataVectors[iv], null],
+				[iv]: [...bindings[iv], null],
 			}),
 			{}
 		);
@@ -79,9 +79,9 @@ const RosterForLoop = ({
 			/>
 			<table id={`table-${tableId}`} className="table-lunatic">
 				<tbody>
-					{uiComponents.map((line, i) => (
-						<tr key={`table-${tableId}-line${i}`}>
-							{line.map((component, j) => {
+					{uiComponents.map((row, i) => (
+						<tr key={`table-${tableId}-row${i}`}>
+							{row.map((component, j) => {
 								const {
 									label,
 									headerCell,
@@ -89,13 +89,17 @@ const RosterForLoop = ({
 									rowspan,
 									componentType,
 									id,
+									rowNumber,
 									...componentProps
 								} = component;
+								const localBindings = U.buildBindingsForDeeperComponents(
+									rowNumber
+								)(bindings);
 								if (componentType) {
 									const Component = lunatic[componentType];
 									return (
 										<td
-											key={`table-${tableId}-line${i}-cell-${j}`}
+											key={`table-${tableId}-row-${i}-cell-${j}`}
 											style={{ width }}
 										>
 											<Component
@@ -103,20 +107,20 @@ const RosterForLoop = ({
 												id={`${id}-row-${i}`}
 												label={label}
 												handleChange={(v) => {
-													onChange(v, i - 1);
+													onChange(v, rowNumber);
 												}}
 												preferences={preferences}
 												positioning={positioning}
 												management={management}
 												features={features}
-												bindings={bindings}
+												bindings={localBindings}
 												zIndex={uiComponents.length - i || 0}
 											/>
 										</td>
 									);
 								}
 								const cellOptions = {
-									key: `table-${tableId}-line${i}-cell-${j}`,
+									key: `table-${tableId}-row-${i}-cell-${j}`,
 									style: { width },
 									colSpan: colspan || 1,
 									rowSpan: rowspan || 1,
