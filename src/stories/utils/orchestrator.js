@@ -23,8 +23,8 @@ const OrchestratorForStories = ({
 		features,
 		management,
 	});
-
-	console.log(lunatic.getState(questionnaire));
+	//
+	// console.log(lunatic.getState(questionnaire));
 
 	return (
 		<div className="container">

@@ -32,7 +32,8 @@ const createOnSelect = (_, dispatch, onSelect) => (option) => {
  *
  * @param {props}
  */
-const Dropdown = ({
+function Dropdown({
+	widthAuto,
 	options = [],
 	onSelect,
 	response,
@@ -46,7 +47,7 @@ const Dropdown = ({
 	management,
 	disabled,
 	focused: initFocused,
-}) => {
+}) {
 	const [state, dispatch] = useReducer(reducer, {
 		...initial,
 		id: `dropdown-${new Date().getMilliseconds()}`,
@@ -124,6 +125,7 @@ const Dropdown = ({
 				tabIndex="-1"
 				className={classnames('lunatic-transition', {
 					visible: isDisplay(state),
+					'width-auto': widthAuto,
 				})}
 			>
 				<Panel
@@ -140,9 +142,10 @@ const Dropdown = ({
 			</div>
 		</DropdownContainer>
 	);
-};
+}
 
 Dropdown.propTypes = {
+	widthAuto: PropTypes.bool,
 	zIndex: PropTypes.number,
 	disabled: PropTypes.bool,
 	focused: PropTypes.bool,
@@ -165,6 +168,7 @@ Dropdown.defaultProps = {
 	placeholder: 'Search...',
 	disabled: false,
 	focused: false,
+	widthAuto: false,
 };
 
 export default Dropdown;
