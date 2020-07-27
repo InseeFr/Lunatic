@@ -10,6 +10,7 @@ import reducer, { initial } from '../commons/reducer';
 import Option from './option';
 
 const Dropdown = ({
+	widthAuto,
 	id: initId,
 	label,
 	value,
@@ -63,6 +64,7 @@ const Dropdown = ({
 				tabIndex="-1"
 				className={classnames('lunatic-transition', {
 					visible: isDisplay(state),
+					'width-auto': widthAuto,
 				})}
 			>
 				<Panel
@@ -81,6 +83,7 @@ const Dropdown = ({
 };
 
 Dropdown.propTypes = {
+	widthAuto: PropTypes.bool,
 	disabled: PropTypes.bool,
 	focused: PropTypes.bool,
 	zIndex: PropTypes.number,
@@ -103,6 +106,7 @@ Dropdown.defaultProps = {
 	zIndex: 0,
 	onSelect: () => null,
 	placeholder: 'Search...',
+	widthAuto: false,
 };
 
 export default Dropdown;
@@ -126,6 +130,7 @@ const getIcon = ({ disabled }, dispatch) => (visible, containerEl) => {
 			onMouseDown={(e) => {
 				e.stopPropagation();
 				e.preventDefault();
+
 				if (visible) {
 					dispatch(actions.hidePanel());
 				} else {

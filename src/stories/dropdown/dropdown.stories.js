@@ -37,6 +37,7 @@ stories.addWithJSX('Props', () => (
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		writable={boolean('Writable', false)}
+		widthAuto={boolean('Options auto width', false)}
 		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
 		mandatory={boolean('Mandatory', false)}
 		management={boolean('Management', false)}
