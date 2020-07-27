@@ -1,8 +1,8 @@
-export const buildLoopComponents = (index) => (components) => {
-	const flatten = [...Array(index).keys()].map((i) =>
-		buildFlatten(i)(components)
+export const buildLoopComponents = (iterations) => (components) => {
+	const toFlat = [...Array(iterations).keys()].map((loopIndex) =>
+		buildFlatten(loopIndex)(components).map((c) => ({ ...c, loopIndex }))
 	);
-	return flatten.flat();
+	return toFlat.flat();
 };
 
 const buildFlatten = (i) => (parentComponents) =>
