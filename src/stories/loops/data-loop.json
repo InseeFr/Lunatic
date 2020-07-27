@@ -51,14 +51,14 @@
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
 			"conditionFilter": "\"normal\"",
-			"bindingDependencies": ["PRENOM", "PROPRIO", "DEMENAGEMENT", "TPSTRAJET"],
+			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET"],
 			"components": [
 				{
 					"id": "k3ymch91",
 					"componentType": "Sequence",
-					"label": "\"Question 1\"",
+					"label": "PRENOM",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": []
+					"bindingDependencies": ["PRENOM"]
 				},
 				{
 					"id": "k3ym68i7",
@@ -69,28 +69,6 @@
 					"bindingDependencies": ["PRENOM", "PROPRIO"],
 					"response": {
 						"name": "PROPRIO"
-					},
-					"options": [
-						{ "value": "1", "label": "Oui" },
-						{ "value": "2", "label": "Non" }
-					]
-				},
-				{
-					"id": "k3ymch92",
-					"componentType": "Sequence",
-					"label": "\"Question\"",
-					"conditionFilter": "\"normal\"",
-					"bindingDependencies": []
-				},
-				{
-					"id": "k3ym9jil",
-					"componentType": "CheckboxOne",
-					"mandatory": false,
-					"label": "PRENOM || \", envisagez-vous de déménager d'ici la fin de l'année civile en cours ?\"",
-					"conditionFilter": "\"normal\"",
-					"bindingDependencies": ["PRENOM", "DEMENAGEMENT"],
-					"response": {
-						"name": "DEMENAGEMENT"
 					},
 					"options": [
 						{ "value": "1", "label": "Oui" },
@@ -111,42 +89,6 @@
 					"response": {
 						"name": "TPSTRAJET"
 					}
-				},
-				{
-					"id": "gg",
-					"componentType": "CheckboxGroup",
-					"label": "➡ 1. What are the pet names that the Simpsons family had?",
-					"bindingDependencies": ["PET1", "PET2", "PET3", "PET4"],
-					"responses": [
-						{
-							"id": "j334akov-QOP-jbgd8qmn",
-							"label": "Santa's Little Helper",
-							"response": {
-								"name": "PET1"
-							}
-						},
-						{
-							"id": "j334akov-QOP-jbgd60vl",
-							"label": "Snowball I",
-							"response": {
-								"name": "PET2"
-							}
-						},
-						{
-							"id": "j334akov-QOP-jbgda2jo",
-							"label": "Coltrane",
-							"response": {
-								"name": "PET3"
-							}
-						},
-						{
-							"id": "j334akov-QOP-jbgdfssy",
-							"label": "Mojo the Helper Monkey",
-							"response": {
-								"name": "PET4"
-							}
-						}
-					]
 				}
 			]
 		},
@@ -227,67 +169,7 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "DEMENAGEMENT",
-			"componentRef": "idLoop",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-		{
-			"variableType": "COLLECTED",
 			"name": "TPSTRAJET",
-			"componentRef": "idLoop",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-		{
-			"variableType": "COLLECTED",
-			"name": "PET1",
-			"componentRef": "idLoop",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [true],
-				"FORCED": [false],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-		{
-			"variableType": "COLLECTED",
-			"name": "PET2",
-			"componentRef": "idLoop",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [true],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-		{
-			"variableType": "COLLECTED",
-			"name": "PET3",
-			"componentRef": "idLoop",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-		{
-			"variableType": "COLLECTED",
-			"name": "PET4",
 			"componentRef": "idLoop",
 			"values": {
 				"PREVIOUS": [null],
