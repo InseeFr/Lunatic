@@ -5,6 +5,7 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import dataLoop from './data-loop';
+import dataDoubleLoop from './data-double-loop';
 import dataRoster from './data-roster';
 import vqs from './vqs';
 import { positioningOptions, featuresOptions } from '../utils/options';
@@ -21,10 +22,7 @@ stories.addWithJSX('Default Roster', () => (
 	<Orchestrator
 		id="default"
 		source={dataRoster}
-		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		hideBtn={boolean('Hide button', false)}
-		features={select('Features', featuresOptions, ['VTL'])}
 	/>
 ));
 
@@ -32,10 +30,15 @@ stories.addWithJSX('Default Loop', () => (
 	<Orchestrator
 		id="default-loop"
 		source={dataLoop}
-		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		hideBtn={boolean('Hide button', false)}
-		features={select('Features', featuresOptions, ['VTL'])}
+	/>
+));
+
+stories.addWithJSX('Double Loop', () => (
+	<Orchestrator
+		id="double-loop"
+		source={dataDoubleLoop}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
 ));
 
@@ -43,9 +46,6 @@ stories.addWithJSX('VQS', () => (
 	<Orchestrator
 		id="vqs"
 		source={vqs}
-		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		hideBtn={boolean('Hide button', false)}
-		features={select('Features', featuresOptions, ['VTL'])}
 	/>
 ));
