@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as lunatic from '../../components';
 import { buildLoopComponents } from './build-components';
 import { interpret } from '../../../utils/to-expose';
@@ -14,46 +14,56 @@ const Loop = ({
 	handleChange,
 	...orchetratorProps
 }) => {
+	const [todo, setTodo] = useState({});
 	const vectorialBindings = U.buildVectorialBindings(bindings);
 	const { features } = orchetratorProps;
 	const iterationNb = interpret(features)(vectorialBindings)(iterations);
 	const involvedVariables = U.getInvolvedVariables(components);
-	const dataVectors = U.getDataVectors(components);
 
+	/**
+	 * Handle the increase in the number of iterations
+	 */
 	useEffect(() => {
 		involvedVariables.forEach((iv) => {
-			if (iterationNb > dataVectors[iv].length)
+			// iterationNb > bindings[iv].length && console.log('effect');
+			if (iterationNb > bindings[iv].length)
 				handleChange({
 					[iv]: [
-						...dataVectors[iv],
-						...new Array(iterationNb - dataVectors[iv].length).fill(null),
+						...bindings[iv],
+						...new Array(iterationNb - bindings[iv].length).fill(null),
 					],
 				});
 		});
-	}, [iterationNb, dataVectors, handleChange, involvedVariables]);
+	}, [iterationNb, bindings, handleChange, involvedVariables]);
 
-	const onChange = (index) => (obj) => {
-		const [name, value] = Object.entries(obj)[0];
-		const oldValue = dataVectors[name];
-		const newValue = oldValue.map((v, i) => (i === index ? value : v));
-		handleChange({ [name]: newValue });
-	};
+	useEffect(() => {
+		if (Object.keys(todo).length !== 0) {
+			const { up, rowNumber } = todo;
+			const [key, value] = Object.entries(up)[0];
+			const previousValue = bindings[key];
+			const newValue = previousValue.map((v, i) =>
+				i === rowNumber ? value : v
+			);
+			handleChange({ [key]: newValue });
+			setTodo({});
+		}
+	}, [bindings, todo, handleChange]);
 
 	const flattenComponents = buildLoopComponents(iterationNb)(components);
 
 	const loopComponents = flattenComponents.map(
-		({ componentType, id, loopIndex, ...rest }) => {
-			const loopBindings = U.buildBindingsForDeeperComponents(loopIndex)(
-				dataVectors
+		({ componentType, id, rowNumber, ...rest }) => {
+			const loopBindings = U.buildBindingsForDeeperComponents(rowNumber)(
+				bindings
 			);
 			const Component = lunatic[componentType];
 			return (
-				<div key={`${id}-loop-${loopIndex}`} className="loop-component">
+				<div key={`${id}-loop-${rowNumber}`} className="loop-component">
 					<Component
 						{...orchetratorProps}
 						{...rest}
-						id={`${id}-loop-${loopIndex}`}
-						handleChange={(e) => onChange(loopIndex)(e)}
+						id={`${id}-loop-${rowNumber}`}
+						handleChange={(up) => setTodo({ up, rowNumber })}
 						bindings={loopBindings}
 					/>
 				</div>

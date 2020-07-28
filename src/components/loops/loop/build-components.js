@@ -1,6 +1,6 @@
 export const buildLoopComponents = (iterations) => (components) => {
-	const toFlat = [...Array(iterations).keys()].map((loopIndex) =>
-		buildFlatten(loopIndex)(components).map((c) => ({ ...c, loopIndex }))
+	const toFlat = [...Array(iterations).keys()].map((rowNumber) =>
+		buildFlatten(rowNumber)(components).map((c) => ({ ...c, rowNumber }))
 	);
 	return toFlat.flat();
 };
