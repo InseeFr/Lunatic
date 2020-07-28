@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import * as lunatic from '../../components';
 import Declarations from '../../declarations';
@@ -23,6 +23,7 @@ const RosterForLoop = ({
 	hideBtn,
 	management,
 }) => {
+	const [todo, setTodo] = useState({});
 	const minLines = Math.max(
 		lines.min || 0,
 		U.getRosterForLoopInitLines(components)
@@ -34,13 +35,18 @@ const RosterForLoop = ({
 	const uiComponents = buildRosterUIComponents(headers)(components);
 	const involvedVariables = U.getInvolvedVariables(components);
 
-
-	const onChange = (up, rowNumber) => {
-		const [key, value] = Object.entries(up)[0];
-		const previousValue = bindings[key];
-		const newValue = previousValue.map((v, i) => (i === rowNumber ? value : v));
-		handleChange({ [key]: newValue });
-	};
+	useEffect(() => {
+		if (Object.keys(todo).length !== 0) {
+			const { up, rowNumber } = todo;
+			const [key, value] = Object.entries(up)[0];
+			const previousValue = bindings[key];
+			const newValue = previousValue.map((v, i) =>
+				i === rowNumber ? value : v
+			);
+			handleChange({ [key]: newValue });
+			setTodo({});
+		}
+	}, [bindings, todo, handleChange]);
 
 	const addLine = () => {
 		const toHandle = involvedVariables.reduce(
@@ -106,8 +112,8 @@ const RosterForLoop = ({
 												{...componentProps}
 												id={`${id}-row-${i}`}
 												label={label}
-												handleChange={(v) => {
-													onChange(v, rowNumber);
+												handleChange={(up) => {
+													setTodo({ up, rowNumber });
 												}}
 												preferences={preferences}
 												positioning={positioning}

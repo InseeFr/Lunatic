@@ -26,11 +26,12 @@
 				},
 				{
 					"componentType": "InputNumber",
+					"label": "\"Age de \" || PRENOM",
 					"conditionFilter": "\"normal\"",
 					"min": 0,
 					"max": 120,
 					"decimals": 0,
-					"bindingDependencies": ["AGE"],
+					"bindingDependencies": ["AGE", "PRENOM"],
 					"id": "k3ymundt",
 					"response": {
 						"name": "AGE"
