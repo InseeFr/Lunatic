@@ -8,7 +8,7 @@
 			"componentType": "Sequence",
 			"label": "\"I - Votre Logement\"",
 			"conditionFilter": "\"normal\"",
-			"bindingDependencies": false
+			"bindingDependencies": []
 		},
 		{
 			"id": "k1w5jhpk",
@@ -17,7 +17,7 @@
 			"positioning": "HORIZONTAL",
 			"label": "\"➡ 1. Listez ci dessous les personnes de plus de 15 ans qui vivent habituellement dans ce logement.Une personne peut répondre pour une autre.\"",
 			"conditionFilter": "\"normal\"",
-			"bindingDependencies": false,
+			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 10 },
 			"headers": [
 				{ "headerCell": true, "label": "\"Prénom\"" },
@@ -27,6 +27,7 @@
 				{
 					"componentType": "Input",
 					"maxLength": 30,
+					"bindingDependencies": ["PRENOM"],
 					"id": "k1w5jhpk-QOP-k2pvm0om",
 					"response": { "name": "PRENOM" }
 				},
@@ -35,6 +36,7 @@
 					"min": 0,
 					"max": 120,
 					"decimals": 0,
+					"bindingDependencies": ["AGE"],
 					"id": "k1w5jhpk-QOP-k2pvugq4",
 					"response": { "name": "AGE" }
 				}
@@ -47,14 +49,41 @@
 			"iterations": "count(PRENOM)",
 			"conditionFilter": "\"normal\"",
 			"label": "Boucle Individu",
-			"bindingDependencies": true,
+			"bindingDependencies": [
+				"PRENOM",
+				"SEXEDELAPE",
+				"ANNEDENAIS",
+				"PRENOM_REFERENCE",
+				"PARENTE",
+				"ETAT",
+				"CHRONIQUE",
+				"LIMITES",
+				"VUE",
+				"OUIE",
+				"MARCHE",
+				"BRAS",
+				"MAINS",
+				"PENCHER",
+				"SORTIR",
+				"LAVER",
+				"CONCENTRER",
+				"SOUVENIR",
+				"VIEQUOTIDIENNE",
+				"COMPRENDRE",
+				"AIDEPRO",
+				"AIDEPROCHE",
+				"AIDETECHNIQUE",
+				"EQUIPEMENT",
+				"APA",
+				"HANDICAP"
+			],
 			"components": [
 				{
 					"id": "k1g7m79j",
 					"componentType": "Sequence",
 					"label": "PRENOM",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false
+					"bindingDependencies": ["PRENOM"]
 				},
 				{
 					"id": "k1g7g974",
@@ -62,7 +91,7 @@
 					"mandatory": false,
 					"label": "\"➡ 1. Sexe de \" || PRENOM || \" ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["PRENOM", "SEXEDELAPE"],
 					"options": [
 						{ "value": "1", "label": "\"Homme\"" },
 						{ "value": "2", "label": "\"Femme\"" }
@@ -73,6 +102,7 @@
 					"id": "k1g7m8vd",
 					"componentType": "InputNumber",
 					"mandatory": false,
+					"bindingDependencies": ["PRENOM", "ANNEDENAIS"],
 					"min": 1900,
 					"max": 2020,
 					"decimals": 0,
@@ -86,7 +116,6 @@
 						}
 					],
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
 					"response": { "name": "ANNEDENAIS" }
 				},
 				{
@@ -95,7 +124,7 @@
 					"mandatory": false,
 					"label": "\"➡ 3. Lien de parenté ou relation de \" || PRENOM || \" avec \" || PRENOM_REFERENCE || \" ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["PRENOM", "PRENOM_REFERENCE", "PARENTE"],
 					"options": [
 						{ "value": "1", "label": "\"Conjoint\"" },
 						{ "value": "2", "label": "\"Père/Mère\"" },
@@ -118,7 +147,7 @@
 						}
 					],
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["ETAT"],
 					"options": [
 						{ "value": "1", "label": "\"Très bon\"" },
 						{ "value": "2", "label": "\"Bon\"" },
@@ -148,7 +177,7 @@
 						}
 					],
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["CHRONIQUE"],
 					"options": [
 						{ "value": "1", "label": "\"Oui\"" },
 						{ "value": "2", "label": "\"Non\"" }
@@ -169,7 +198,7 @@
 						}
 					],
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["LIMITES"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -183,7 +212,7 @@
 					"mandatory": false,
 					"label": "\"➡ 7. La personne a-t-elle des difficultés pour voir, même avec ses lunettes ou lentilles de contact si elle en porte ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["VUE"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -198,7 +227,7 @@
 					"mandatory": false,
 					"label": "\"➡ 8. A-t-elle des difficultés pour entendre ce qui se dit au cours d’une conversation avec plusieurs personnes, même avec son appareil auditif si elle en porte un ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["OUIE"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -227,7 +256,7 @@
 						}
 					],
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["MARCHE"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -242,7 +271,7 @@
 					"mandatory": false,
 					"label": "\"➡ 10. A-t-elle des difficultés pour lever le bras (par exemple pour attraper un objet en hauteur) ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["BRAS"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -265,7 +294,7 @@
 						}
 					],
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["MAINS"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -280,7 +309,7 @@
 					"mandatory": false,
 					"label": "\"➡ 12. Lorsqu’elle est debout, a-t-elle des difficultés pour se pencher et ramasser un objet ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["PENCHER"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -295,7 +324,7 @@
 					"mandatory": false,
 					"label": "\"➡ 13. A-t-elle des difficultés pour sortir de son logement ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["SORTIR"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -310,7 +339,7 @@
 					"mandatory": false,
 					"label": "\"➡ 14. A-t-elle des difficultés pour se laver seule ? (prendre un bain ou une douche)\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["LAVER"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -325,7 +354,7 @@
 					"mandatory": false,
 					"label": "\"➡ 15. A-t-elle des difficultés pour se concentrer plus de 10 minutes ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["CONCENTRER"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -340,7 +369,7 @@
 					"mandatory": false,
 					"label": "\"➡ 16. A-t-elle des difficultés pour se souvenir des choses importantes ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["SOUVENIR"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -355,7 +384,7 @@
 					"mandatory": false,
 					"label": "\"➡ 17. A-t-elle des difficultés pour résoudre les problèmes de la vie quotidienne ? (comme se repérer sur un itinéraire ou compter l’argent)\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["VIEQUOTIDIENNE"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -378,7 +407,7 @@
 						}
 					],
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["COMPRENDRE"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -393,7 +422,7 @@
 					"mandatory": false,
 					"label": "\"➡ 19. En raison d’un problème de santé, d’un handicap, ou de son âge, la personne reçoit-elle l’aide de professionnels (infirmier, aide ménagère…) dans la vie quotidienne ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["AIDEPRO"],
 					"options": [
 						{ "value": "1", "label": "\"Oui\"" },
 						{ "value": "2", "label": "\"Non\"" }
@@ -414,7 +443,7 @@
 						}
 					],
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["AIDEPROCHE"],
 					"options": [
 						{ "value": "1", "label": "\"Non\"" },
 						{ "value": "2", "label": "\"Oui, un peu\"" },
@@ -428,7 +457,7 @@
 					"mandatory": false,
 					"label": "\"➡ 21. En raison d’un problème de santé, d’un handicap, ou de son âge, utilise-t-elle régulièrement une aide technique pour se déplacer (canne, déambulateur, fauteuil roulant) ?\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["AIDETECHNIQUE"],
 					"options": [
 						{ "value": "1", "label": "\"Oui\"" },
 						{ "value": "2", "label": "\"Non\"" }
@@ -449,7 +478,7 @@
 						}
 					],
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["EQUIPEMENT"],
 					"options": [
 						{ "value": "1", "label": "\"Oui\"" },
 						{ "value": "2", "label": "\"Non\"" }
@@ -470,7 +499,7 @@
 						}
 					],
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["APA"],
 					"options": [
 						{ "value": "1", "label": "\"Oui\"" },
 						{ "value": "2", "label": "\"Non\"" }
@@ -483,7 +512,7 @@
 					"mandatory": false,
 					"label": "\"➡ 24. La personne a-t-elle une reconnaissance officielle ou une allocation du fait d’un handicap ? (pension ou carte d’invalidité, PCH…)\"",
 					"conditionFilter": "\"normal\"",
-					"bindingDependencies": false,
+					"bindingDependencies": ["HANDICAP"],
 					"options": [
 						{ "value": "1", "label": "\"Oui\"" },
 						{ "value": "2", "label": "\"Non\"" }
