@@ -31,20 +31,3 @@ export const lastRosterForLoopLineIsEmpty = (bindings) => (involvedVariables) =>
 		? involvedVariables.filter((iv) => bindings[iv][bindings[iv].length - 1])
 				.length === 0
 		: true;
-
-export const getDataVectors = (parentComponents) =>
-	Array.isArray(parentComponents)
-		? parentComponents.reduce((acc, { response, responses, components }) => {
-				if (response)
-					return {
-						...acc,
-						[response.name]: response.values[C.COLLECTED],
-					};
-				if (responses || components)
-					return {
-						...acc,
-						...getDataVectors(responses || components),
-					};
-				return acc;
-		  }, {})
-		: {};
