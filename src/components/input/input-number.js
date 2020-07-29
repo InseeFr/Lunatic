@@ -50,10 +50,10 @@ const InputNumber = ({
 		});
 	}, 200);
 
-	const validate = (value) => {
+	const validate = (v) => {
 		setMessagesError(
 			[minMaxValidator({ min, max }), ...validators]
-				.map((v) => v(value))
+				.map((f) => f(v))
 				.filter((m) => m !== undefined)
 		);
 	};

@@ -52,17 +52,17 @@ const Loop = ({
 	const flattenComponents = buildLoopComponents(iterationNb)(components);
 
 	const loopComponents = flattenComponents.map(
-		({ componentType, id, rowNumber, ...rest }) => {
+		({ componentType, id: idC, rowNumber, ...rest }) => {
 			const loopBindings = U.buildBindingsForDeeperComponents(rowNumber)(
 				bindings
 			);
 			const Component = lunatic[componentType];
 			return (
-				<div key={`${id}-loop-${rowNumber}`} className="loop-component">
+				<div key={`${idC}-loop-${rowNumber}`} className="loop-component">
 					<Component
 						{...orchetratorProps}
 						{...rest}
-						id={`${id}-loop-${rowNumber}`}
+						id={`${idC}-loop-${rowNumber}`}
 						handleChange={(up) => setTodo({ up, rowNumber })}
 						bindings={loopBindings}
 					/>
