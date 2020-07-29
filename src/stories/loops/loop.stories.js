@@ -23,6 +23,7 @@ stories.addWithJSX('Default Roster', () => (
 		id="default"
 		source={dataRoster}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		features={['VTL']}
 	/>
 ));
 
@@ -31,6 +32,7 @@ stories.addWithJSX('Default Loop', () => (
 		id="default-loop"
 		source={dataLoop}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		features={['VTL']}
 	/>
 ));
 
@@ -39,6 +41,7 @@ stories.addWithJSX('Double Loop', () => (
 		id="double-loop"
 		source={dataDoubleLoop}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		features={['VTL']}
 	/>
 ));
 
@@ -47,5 +50,6 @@ stories.addWithJSX('VQS', () => (
 		id="vqs"
 		source={vqs}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		features={['VTL']}
 	/>
 ));
