@@ -25,8 +25,7 @@ const Loop = ({
 	 */
 	useEffect(() => {
 		involvedVariables.forEach((iv) => {
-			// iterationNb > bindings[iv].length && console.log('effect');
-			if (iterationNb > bindings[iv].length)
+			if (bindings[iv] && iterationNb > bindings[iv].length)
 				handleChange({
 					[iv]: [
 						...bindings[iv],

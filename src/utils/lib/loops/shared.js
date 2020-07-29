@@ -28,6 +28,7 @@ export const getInvolvedVariables = (parentComponents) =>
 
 export const lastRosterForLoopLineIsEmpty = (bindings) => (involvedVariables) =>
 	bindings && involvedVariables
-		? involvedVariables.filter((iv) => bindings[iv][bindings[iv].length - 1])
-				.length === 0
+		? involvedVariables.filter(
+				(iv) => bindings[iv] && bindings[iv][bindings[iv].length - 1]
+		  ).length === 0
 		: true;
