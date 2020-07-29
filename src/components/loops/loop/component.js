@@ -73,7 +73,6 @@ const Loop = ({
 
 	return (
 		<div id={`loop-${id}`} className="lunatic-loop">
-			<div className="loop-label">{label}</div>
 			{loopComponents}
 		</div>
 	);
