@@ -52,11 +52,13 @@ const Loop = ({
 	const flattenComponents = buildLoopComponents(iterationNb)(components);
 
 	const loopComponents = flattenComponents.map(
-		({ componentType, id: idC, rowNumber, ...rest }) => {
+		({ componentType, id: idC, rowNumber, conditionFilter, ...rest }) => {
 			const loopBindings = U.buildBindingsForDeeperComponents(rowNumber)(
 				bindings
 			);
 			const Component = lunatic[componentType];
+			if (interpret(features)(loopBindings, true)(conditionFilter) !== 'normal')
+				return null;
 			return (
 				<div key={`${idC}-loop-${rowNumber}`} className="loop-component">
 					<Component
