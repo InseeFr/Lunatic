@@ -14,7 +14,7 @@ const filterComponents = (components, management, bindings, features) =>
 
 const useLunatic = (
 	source,
-	data = {},
+	data,
 	{
 		savingType = COLLECTED,
 		preferences = [COLLECTED],
@@ -23,7 +23,7 @@ const useLunatic = (
 	}
 ) => {
 	const [questionnaire, setQuestionnaire] = useState(
-		mergeQuestionnaireAndData(source)(data)
+		mergeQuestionnaireAndData(source)(data || {})
 	);
 	const [todo, setTodo] = useState({});
 

@@ -58,21 +58,18 @@ const DropdownContainer = ({
 		dispatch(actions.hidePanel());
 		dispatch(actions.setFocused(false));
 	});
-	useEffect(
-		(e) => {
-			const hook = (e) => {
-				dispatch(actions.hidePanel());
-				dispatch(actions.setFocused(false));
-			};
-			window.addEventListener('mousedown', hook);
+	useEffect(() => {
+		const hook = () => {
+			dispatch(actions.hidePanel());
+			dispatch(actions.setFocused(false));
+		};
+		window.addEventListener('mousedown', hook);
 
-			return () => {
-				window.removeEventListener('mousedown', hook);
-				CLEAN.clear(id);
-			};
-		},
-		[id, dispatch]
-	);
+		return () => {
+			window.removeEventListener('mousedown', hook);
+			CLEAN.clear(id);
+		};
+	}, [id, dispatch]);
 
 	useEffect(() => {
 		dispatch(actions.setOptions(options));

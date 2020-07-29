@@ -1,6 +1,6 @@
 import removeAccents from 'remove-accents';
 
-export const preparePrefix = prefix =>
+export const preparePrefix = (prefix) =>
 	typeof prefix === 'string'
 		? removeAccents(prefix.toLowerCase()).replace(/[- ']/g, '')
 		: prefix;
@@ -40,10 +40,12 @@ export const filterOption = (options, prefix) => {
 	}
 
 	return options
-		.reduce((a, o) => {
+		.reduce((acc, o) => {
 			const { label, search } = o;
 			const how = match(search || label, prefix);
-			return how >= 0.6 ? [{ o, how }, ...a].sort((a, b) => a.how <= b.how) : a;
+			return how >= 0.6
+				? [{ o, how }, ...acc].sort((a, b) => a.how <= b.how)
+				: acc;
 		}, [])
 		.map(({ o }) => o);
 };

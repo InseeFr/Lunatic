@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { lettersMatching, preparePrefix } from './prefix-tools';
 
 export default ({ label, active, prefix, selected }) => {
-	const letters = lettersMatching(label, prefix);
+	const initLetters = lettersMatching(label, prefix);
 	const what = label
 		.split('')
 		.reduce(
@@ -22,7 +22,7 @@ export default ({ label, active, prefix, selected }) => {
 					stack: [...stack, { char: c, className: 'lunatic-normal' }],
 				};
 			},
-			{ letters, stack: [] }
+			{ letters: initLetters, stack: [] }
 		)
 		.stack.reduce(
 			({ last, stack }, { char, className }) => {

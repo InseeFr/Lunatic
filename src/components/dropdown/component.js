@@ -27,10 +27,12 @@ const Dropdown = ({
 
 	useEffect(() => {
 		if (!freezeOptions) {
-			const featOptions = options.map(({ value, label: labelOption }) => ({
-				value,
-				label: interpret(features)(bindings)(labelOption),
-			}));
+			const featOptions = options.map(
+				({ label: labelOption, ...restOpts }) => ({
+					label: interpret(features)(bindings)(labelOption),
+					...restOpts,
+				})
+			);
 			setOpts(featOptions);
 		}
 	}, [freezeOptions, features, bindings, options]);

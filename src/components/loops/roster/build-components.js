@@ -20,7 +20,7 @@ export const buildRosterUIComponents = (headers) => (components) => {
 			};
 		});
 	}, []);
-	const transpose = (m) => m[0].map((x, i) => m.map((x) => x[i]));
+	const transpose = (m) => m[0].map((_, i) => m.map((x) => x[i]));
 	const rows = transpose(uiComponents);
 	return [headers, ...rows];
 };

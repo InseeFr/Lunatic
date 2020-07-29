@@ -45,12 +45,12 @@ export const updateQuestionnaire = (valueType) => (questionnaire) => (
 		},
 		{ newVariables: variables, refs: [] }
 	);
-	const { newVariables, refs } = varsAndRefs;
+	const { newVariables, refs: r } = varsAndRefs;
 	const newVariablesWithCalculated =
 		valueType === C.COLLECTED ? addCalculatedVars(newVariables) : newVariables;
 	const collectedVars = newVariables[C.COLLECTED];
 	const newComponents = components.map((c) => {
-		if (refs.includes(c.id)) {
+		if (r.includes(c.id)) {
 			if (c.response) return buildResponseComponent(collectedVars)(c);
 			else if (c.responses) return buildResponsesComponent(collectedVars)(c);
 			else if (c.cells) return buildCellsComponent(collectedVars)(c);
