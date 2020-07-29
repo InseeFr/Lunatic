@@ -123,7 +123,7 @@
 					"componentType": "CheckboxOne",
 					"mandatory": false,
 					"label": "\"➡ 3. Lien de parenté ou relation de \" || PRENOM || \" avec \" || PRENOM_REFERENCE || \" ?\"",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": "if (PRENOM <> PRENOM_REFERENCE) then \"normal\" else \"hidden\"",
 					"bindingDependencies": ["PRENOM", "PRENOM_REFERENCE", "PARENTE"],
 					"options": [
 						{ "value": "1", "label": "\"Conjoint\"" },
