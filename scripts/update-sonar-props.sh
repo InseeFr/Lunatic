@@ -36,9 +36,9 @@ SONAR_FILE=$(find . -iname 'sonar-project.properties' -type f)
 echo "Sonar file found: ${SONAR_FILE}"
 
 # Update the version
-# REPLACE='^sonar.projectVersion=default-version'
-# WITH="sonar.projectVersion=${PACKAGE_VERSION}"
-# echo "Replaced: sonar.projectVersion=${PACKAGE_VERSION}"
+REPLACE='^sonar.projectVersion=default-version'
+WITH="sonar.projectVersion=${PACKAGE_VERSION}"
+echo "Replaced: sonar.projectVersion=${PACKAGE_VERSION}"
 
 # Update the project name
 REPLACE='^sonar.projectName=default-name'
