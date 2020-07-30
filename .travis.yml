@@ -11,6 +11,6 @@ before_script:
   - bash scripts/update-sonar-props.sh
   - yarn test-coverage
 script:
-  - sonar-scanner -Dsonar.projectKey=InseeFr_Lunatic
+  - sonar-scanner -Dsonar.verbose=true -X
 after_script:
   - bash scripts/deploy.sh
