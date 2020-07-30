@@ -79,6 +79,7 @@
 		"identity-obj-proxy": "^3.0.0",
 		"jest": "^26.1.0",
 		"jest-environment-jsdom-sixteen": "^1.0.3",
+		"jest-sonar-reporter": "^2.0.0",
 		"jest-transform-stub": "^2.0.0",
 		"node-sass": "^4.14.0",
 		"postcss-scss": "^2.0.0",
@@ -118,7 +119,13 @@
 			"<rootDir>/src/tests/setup/setupTests.js"
 		],
 		"coverageProvider": "v8",
-		"testEnvironment": "jest-environment-jsdom-sixteen"
+		"testEnvironment": "jest-environment-jsdom-sixteen",
+		"collectCoverage": true,
+		"testResultsProcessor": "jest-sonar-reporter",
+		"coveragePathIgnorePatterns": [
+			"/node_modules/",
+			"/test/"
+		]
 	},
 	"publishConfig": {
 		"access": "public"

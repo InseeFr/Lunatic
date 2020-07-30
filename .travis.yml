@@ -2,12 +2,18 @@ language: node_js
 node_js:
   - 12.16.1
 cache: yarn
-addons:
-  organization: 'inseefr'
+ addons:
+   sonarcloud:
+     organization: 'inseefr'
+     token:
+       secure: $SONAR_TOKEN
 install:
   - yarn
 before_script:
+  - bash scripts/update-sonar-props.sh
   - yarn test-coverage
+script:
+  - sonar-scanner -Dsonar.projectKey=InseeFr_Lunatic
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - bash scripts/deploy.sh
