@@ -6,7 +6,7 @@ addons:
   sonarcloud:
     organization: 'inseefr'
     token:
-      secure: $SONAR_TOKEN
+      secure: SONAR_TOKEN
 install:
   - yarn
 before_script:
