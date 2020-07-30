@@ -13,7 +13,7 @@ before_script:
   - bash scripts/update-sonar-props.sh
   - yarn test-coverage
 script:
-  - sonar-scanner -Dsonar.projectKey=InseeFr_Lunatic
+  - sonar-scanner -Dsonar.projectKey=InseeFr_Lunatic -Dsonar.login=$SONAR_TOKEN
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - bash scripts/deploy.sh
