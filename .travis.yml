@@ -5,8 +5,6 @@ cache: yarn
 addons:
   sonarcloud:
     organization: 'inseefr'
-    token:
-      secure: $SONAR_TOKEN
 install:
   - yarn
 before_script:
