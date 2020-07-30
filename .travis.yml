@@ -2,11 +2,11 @@ language: node_js
 node_js:
   - 12.16.1
 cache: yarn
- addons:
-   sonarcloud:
-     organization: 'inseefr'
-     token:
-       secure: $SONAR_TOKEN
+addons:
+  sonarcloud:
+    organization: 'inseefr'
+    token:
+      secure: $SONAR_TOKEN
 install:
   - yarn
 before_script:
