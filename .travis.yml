@@ -8,7 +8,6 @@ addons:
 install:
   - yarn
 before_script:
-  - bash scripts/update-sonar-props.sh
   - yarn test-coverage
 script:
   - sonar-scanner
