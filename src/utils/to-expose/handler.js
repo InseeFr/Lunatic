@@ -1,10 +1,5 @@
 import * as C from '../../constants';
-import {
-	buildResponseComponent,
-	buildResponsesComponent,
-	buildCellsComponent,
-	buildComponentsComponent,
-} from './init-questionnaire';
+import { buildFilledComponent } from './init-questionnaire';
 import { supportedPreferences } from '../../constants/supported-preferences';
 import { interpret } from './interpret';
 import { buildVectorialBindings } from '../lib/loops/bindings';
@@ -50,13 +45,7 @@ export const updateQuestionnaire = (valueType) => (questionnaire) => (
 		valueType === C.COLLECTED ? addCalculatedVars(newVariables) : newVariables;
 	const collectedVars = newVariables[C.COLLECTED];
 	const newComponents = components.map((c) => {
-		if (r.includes(c.id)) {
-			if (c.response) return buildResponseComponent(collectedVars)(c);
-			else if (c.responses) return buildResponsesComponent(collectedVars)(c);
-			else if (c.cells) return buildCellsComponent(collectedVars)(c);
-			else if (c.components) return buildComponentsComponent(collectedVars)(c);
-			return c;
-		}
+		if (r.includes(c.id)) return buildFilledComponent(collectedVars)(c);
 		return c;
 	});
 	return {

@@ -45,14 +45,20 @@ const buildVars = (data) => (variables) => {
 	};
 };
 
-const buildFilledComponents = (vars) => (components) =>
+const buildFilledComponents = (vars) => (components) => (depth) =>
 	components.map((c) => {
-		if (c.response) return buildResponseComponent(vars)(c);
-		else if (c.responses) return buildResponsesComponent(vars)(c);
-		else if (c.cells) return buildCellsComponent(vars)(c);
-		else if (c.components) return buildComponentsComponent(vars)(c);
-		return c;
+		const component = { depth, ...c };
+		return buildFilledComponent(vars)(component);
 	});
+
+export const buildFilledComponent = (vars) => (component) => {
+	if (component.response) return buildResponseComponent(vars)(component);
+	else if (component.responses) return buildResponsesComponent(vars)(component);
+	else if (component.cells) return buildCellsComponent(vars)(component);
+	else if (component.components)
+		return buildComponentsComponent(vars)(component);
+	return component;
+};
 
 export const buildResponseComponent = (vars) => (c) => ({
 	...c,
