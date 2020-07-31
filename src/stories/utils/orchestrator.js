@@ -12,19 +12,16 @@ const OrchestratorForStories = ({
 		? ['COLLECTED', 'FORCED', 'EDITED']
 		: ['COLLECTED'];
 	const savingType = management ? 'EDITED' : 'COLLECTED';
-	const {
-		questionnaire,
-		handleChange,
-		components,
-		bindings,
-	} = lunatic.useLunatic(source, data, {
-		savingType,
-		preferences,
-		features,
-		management,
-	});
-	//
-	// console.log(lunatic.getState(questionnaire));
+	const { handleChange, components, bindings } = lunatic.useLunatic(
+		source,
+		data,
+		{
+			savingType,
+			preferences,
+			features,
+			management,
+		}
+	);
 
 	return (
 		<div className="container">

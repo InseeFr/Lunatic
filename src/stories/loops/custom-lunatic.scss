@@ -45,15 +45,6 @@ $colorSecondaryContrastText: #ffffff;
 	}
 }
 
-.lunatic .table-lunatic {
-	width: 100%;
-	& td {
-		border-color: $colorPrimaryDark;
-	}
-	& thead td {
-		text-align: center;
-	}
-}
 // Conteneur
 .component.lunatic {
 	margin-bottom: 0.4375rem;
@@ -711,6 +702,12 @@ $boxShadowColor: $colorPrimaryMain;
 	.table-cell-axis {
 		text-align: left;
 		width: 100%;
+	}
+	& td {
+		border-color: $colorPrimaryDark;
+	}
+	& thead td {
+		text-align: center;
 	}
 	td,
 	th {
