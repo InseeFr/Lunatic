@@ -17,8 +17,9 @@ export const getInvolvedVariables = (parentComponents) =>
 	Array.isArray(parentComponents)
 		? parentComponents
 				.reduce((_, c) => {
-					const { response, responses, components } = c;
-					if (response && response.name) return [..._, response.name];
+					const { response, responses, components, depth } = c;
+					if (response && response.name)
+						return [..._, { name: response.name, depth }];
 					if (responses || components)
 						return [..._, getInvolvedVariables(responses || components)];
 					return _;

@@ -25,6 +25,7 @@ const Loop = ({
 	 */
 	useEffect(() => {
 		involvedVariables.forEach((iv) => {
+		involvedVariables.forEach(({ name: iv }) => {
 			if (bindings[iv] && iterationNb > bindings[iv].length)
 				handleChange({
 					[iv]: [

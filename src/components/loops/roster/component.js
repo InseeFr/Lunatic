@@ -50,7 +50,7 @@ const RosterForLoop = ({
 
 	const addLine = () => {
 		const toHandle = involvedVariables.reduce(
-			(acc, iv) => ({
+			(acc, { name: iv }) => ({
 				...acc,
 				[iv]: [...bindings[iv], null],
 			}),

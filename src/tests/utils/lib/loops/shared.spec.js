@@ -5,9 +5,21 @@ import {
 } from 'utils/lib';
 
 const componentsForInit = [
-	{ id: '1', response: { name: 'a', values: { COLLECTED: [null, 'a'] } } },
-	{ id: '2', response: { name: 'b', values: { COLLECTED: [null, 'b'] } } },
-	{ id: '3', response: { name: 'c', values: { COLLECTED: [null, null] } } },
+	{
+		id: '1',
+		response: { name: 'a', values: { COLLECTED: [null, 'a'] } },
+		depth: 0,
+	},
+	{
+		id: '2',
+		response: { name: 'b', values: { COLLECTED: [null, 'b'] } },
+		depth: 0,
+	},
+	{
+		id: '3',
+		response: { name: 'c', values: { COLLECTED: [null, null] } },
+		depth: 0,
+	},
 ];
 
 describe('loop roster utils', () => {
@@ -26,7 +38,11 @@ describe('loop roster utils', () => {
 			expect(getInvolvedVariables([])).toEqual([]);
 		});
 		it('should return variables involved into roster for loop', () => {
-			expect(getInvolvedVariables(componentsForInit)).toEqual(['a', 'b', 'c']);
+			expect(getInvolvedVariables(componentsForInit)).toEqual([
+				{ name: 'a', depth: 0 },
+				{ name: 'b', depth: 0 },
+				{ name: 'c', depth: 0 },
+			]);
 		});
 	});
 	describe('lastRosterForLoopLineIsEmpty', () => {
