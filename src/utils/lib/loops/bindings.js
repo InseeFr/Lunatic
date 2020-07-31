@@ -21,3 +21,27 @@ export const buildVectorialBindings = (bindings) =>
 				return { ..._, [name]: value };
 		  }, {})
 		: {};
+
+export const displayLoop = (dependencyList) => (bindings) => {
+	if (!Array.isArray(dependencyList) || !bindings) return false;
+	return !(
+		dependencyList
+			.map((iv) =>
+				Array.isArray(bindings[iv][0])
+					? bindings[iv][0].flat()[0]
+					: bindings[iv][0]
+			)
+			.filter((v) => v).length === 0
+	);
+};
+
+export const displayLoopQuestion = (dependencyList) => (bindings) => {
+	if (!Array.isArray(dependencyList) || !bindings) return false;
+	return !(
+		dependencyList
+			.map((iv) =>
+				Array.isArray(bindings[iv]) ? bindings[iv].flat()[0] : bindings[iv]
+			)
+			.filter((v) => v).length === 0
+	);
+};
