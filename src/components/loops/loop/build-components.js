@@ -15,7 +15,7 @@ const buildFlatten = (i) => (parentComponents) =>
 				responses: responses.map((r) => buildFlattenResponse(i)(r)),
 			};
 		else if (components)
-			return { ...component, component: buildFlatten(i)(components) };
+			return { ...component, components: buildFlatten(i)(components) };
 		else return component;
 	});
 
