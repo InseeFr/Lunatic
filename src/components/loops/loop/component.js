@@ -12,6 +12,7 @@ const Loop = ({
 	components,
 	bindings,
 	handleChange,
+	rosterDependencies,
 	...orchetratorProps
 }) => {
 	const [todo, setTodo] = useState({});
@@ -52,11 +53,14 @@ const Loop = ({
 
 	const flattenComponents = buildLoopComponents(iterationNb)(components);
 
+	if (!U.displayLoop(rosterDependencies)(bindings)) return null;
+
 	const loopComponents = flattenComponents.map(
 		({ componentType, id: idC, rowNumber, conditionFilter, ...rest }) => {
 			const loopBindings = U.buildBindingsForDeeperComponents(rowNumber)(
 				bindings
 			);
+			if (!U.displayLoopQuestion(rosterDependencies)(loopBindings)) return null;
 			const Component = lunatic[componentType];
 			if (interpret(features)(loopBindings, true)(conditionFilter) !== 'normal')
 				return null;
