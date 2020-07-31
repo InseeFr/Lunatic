@@ -35,6 +35,7 @@
 			"componentType": "Loop",
 			"iterations": "count(MENAGE)",
 			"conditionFilter": "\"normal\"",
+			"rosterDependencies": ["MENAGE"],
 			"bindingDependencies": ["MENAGE", "FAMILLE", "NOMBRE"],
 			"components": [
 				{
@@ -72,6 +73,7 @@
 					"componentType": "Loop",
 					"iterations": "count(FAMILLE)",
 					"conditionFilter": "\"normal\"",
+					"rosterDependencies": ["FAMILLE"],
 					"bindingDependencies": ["MENAGE", "FAMILLE", "NOMBRE"],
 					"components": [
 						{

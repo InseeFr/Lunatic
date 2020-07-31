@@ -51,7 +51,8 @@
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
 			"conditionFilter": "\"normal\"",
-			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET"],
+			"rosterDependencies": ["PRENOM", "AGE"],
+			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE"],
 			"components": [
 				{
 					"id": "k3ymch91",
