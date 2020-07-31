@@ -5,7 +5,7 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
-import { text, boolean, select, object } from '@storybook/addon-knobs/react';
+import { boolean, select, object } from '@storybook/addon-knobs/react';
 import { positioningOptions, featuresOptions } from '../utils/options';
 
 const stories = storiesOf('CheckboxBoolean', module)
