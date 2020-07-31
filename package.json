@@ -119,11 +119,9 @@
 		],
 		"coverageProvider": "v8",
 		"testEnvironment": "jest-environment-jsdom-sixteen",
-		"collectCoverage": true,
 		"testResultsProcessor": "jest-sonar-reporter",
 		"coveragePathIgnorePatterns": [
-			"/node_modules/",
-			"/test/"
+			"/node_modules/"
 		]
 	},
 	"publishConfig": {
