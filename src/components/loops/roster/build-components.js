@@ -9,7 +9,7 @@ export const buildRosterUIComponents = (headers) => (components) => {
 			const newValues = Object.entries(values).reduce(
 				(acc, [key, value]) => ({
 					...acc,
-					[key]: value[rowNumber],
+					[key]: value ? value[rowNumber] : null,
 				}),
 				{}
 			);

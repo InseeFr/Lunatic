@@ -23,7 +23,7 @@ const buildFlattenResponse = (i) => (component) => {
 	const { response, ...other } = component;
 	const { name, values } = response;
 	const newValues = Object.entries(values).reduce(
-		(acc, [key, value]) => ({ ...acc, [key]: value[i] }),
+		(acc, [key, value]) => ({ ...acc, [key]: value ? value[i] : null }),
 		{}
 	);
 	return {
