@@ -10,6 +10,7 @@ import dataRoster from './data-roster';
 import vqs from './vqs';
 import { positioningOptions } from '../utils/options';
 import { select } from '@storybook/addon-knobs/react';
+import './custom-lunatic.scss';
 
 const stories = storiesOf('Loops', module)
 	.addDecorator(withReadme(readme))
