@@ -24,13 +24,14 @@ const Loop = ({
 	 * Handle the increase in the number of iterations
 	 */
 	useEffect(() => {
-		involvedVariables.forEach((iv) => {
-		involvedVariables.forEach(({ name: iv }) => {
+		involvedVariables.forEach(({ name: iv, depth }) => {
 			if (bindings[iv] && iterationNb > bindings[iv].length)
 				handleChange({
 					[iv]: [
 						...bindings[iv],
-						...new Array(iterationNb - bindings[iv].length).fill(null),
+						...new Array(iterationNb - bindings[iv].length).fill(
+							U.buildEmptyValue(depth)
+						),
 					],
 				});
 		});

@@ -50,9 +50,9 @@ const RosterForLoop = ({
 
 	const addLine = () => {
 		const toHandle = involvedVariables.reduce(
-			(acc, { name: iv }) => ({
+			(acc, { name: iv, depth }) => ({
 				...acc,
-				[iv]: [...bindings[iv], null],
+				[iv]: [...bindings[iv], U.buildEmptyValue(depth)],
 			}),
 			{}
 		);
