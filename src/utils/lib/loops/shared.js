@@ -33,3 +33,10 @@ export const lastRosterForLoopLineIsEmpty = (bindings) => (involvedVariables) =>
 				(iv) => bindings[iv] && bindings[iv][bindings[iv].length - 1]
 		  ).length === 0
 		: true;
+
+export const buildEmptyValue = (depth) => {
+	if (!depth) return null;
+	return new Array(depth)
+		.fill(null)
+		.reduce((acc) => new Array(1).fill(acc), null);
+};

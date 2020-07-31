@@ -2,6 +2,7 @@ import {
 	getRosterForLoopInitLines,
 	getInvolvedVariables,
 	lastRosterForLoopLineIsEmpty,
+	buildEmptyValue,
 } from 'utils/lib';
 
 const componentsForInit = [
@@ -59,6 +60,18 @@ describe('loop roster utils', () => {
 			const d = { A: [null, null], B: ['b', null] };
 			const iv = ['A', 'B'];
 			expect(lastRosterForLoopLineIsEmpty(d)(iv)).toBeTruthy();
+		});
+	});
+
+	describe('buildEmptyValue', () => {
+		it('should return default value', () => {
+			expect(buildEmptyValue()).toBeNull();
+			expect(buildEmptyValue(0)).toBeNull();
+		});
+		it('should return null array thanks to depth', () => {
+			expect(buildEmptyValue(1)).toEqual([null]);
+			expect(buildEmptyValue(2)).toEqual([[null]]);
+			expect(buildEmptyValue(3)).toEqual([[[null]]]);
 		});
 	});
 });
