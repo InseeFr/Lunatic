@@ -67,11 +67,11 @@ describe('loop roster utils', () => {
 		it('should return default value', () => {
 			expect(buildEmptyValue()).toBeNull();
 			expect(buildEmptyValue(0)).toBeNull();
+			expect(buildEmptyValue(1)).toBeNull();
 		});
 		it('should return null array thanks to depth', () => {
-			expect(buildEmptyValue(1)).toEqual([null]);
-			expect(buildEmptyValue(2)).toEqual([[null]]);
-			expect(buildEmptyValue(3)).toEqual([[[null]]]);
+			expect(buildEmptyValue(2)).toEqual([null]);
+			expect(buildEmptyValue(3)).toEqual([[null]]);
 		});
 	});
 });
