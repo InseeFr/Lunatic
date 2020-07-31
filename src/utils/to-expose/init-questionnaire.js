@@ -7,7 +7,9 @@ export const mergeQuestionnaireAndData = (questionnaire) => (data) => {
 	const { components, variables, ...props } = questionnaire;
 
 	const vars = buildVars(data || {})(variables);
-	const filledComponents = buildFilledComponents(vars[C.COLLECTED])(components);
+	const filledComponents = buildFilledComponents(vars[C.COLLECTED])(components)(
+		0
+	);
 
 	return { ...props, components: filledComponents, variables: vars };
 };
@@ -75,15 +77,17 @@ export const buildResponsesComponent = (vars) => (c) => {
 };
 
 export const buildCellsComponent = (vars) => (c) => {
-	const { cells, ...rest } = c;
-	const filledCells = cells.map((row) => buildFilledComponents(vars)(row));
-	return { ...rest, cells: filledCells };
+	const { cells, depth, ...rest } = c;
+	const filledCells = cells.map((row) =>
+		buildFilledComponents(vars)(row)(depth)
+	);
+	return { ...rest, depth, cells: filledCells };
 };
 
 export const buildComponentsComponent = (vars) => (component) => {
-	const { components, ...rest } = component;
-	const filledComponents = buildFilledComponents(vars)(components);
-	return { ...rest, components: filledComponents };
+	const { components, depth, ...rest } = component;
+	const filledComponents = buildFilledComponents(vars)(components)(depth + 1);
+	return { ...rest, depth, components: filledComponents };
 };
 
 const initExternalVariable = ({ name }) => (data) => ({
