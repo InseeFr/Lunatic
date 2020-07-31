@@ -5,11 +5,11 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import dataLoop from './data-loop';
-import dataDoubleLoop from './data-double-loop';
+import dataDeeperLoop from './data-loop-deeper';
 import dataRoster from './data-roster';
 import vqs from './vqs';
-import { positioningOptions, featuresOptions } from '../utils/options';
-import { boolean, select } from '@storybook/addon-knobs/react';
+import { positioningOptions } from '../utils/options';
+import { select } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Loops', module)
 	.addDecorator(withReadme(readme))
@@ -36,10 +36,10 @@ stories.addWithJSX('Default Loop', () => (
 	/>
 ));
 
-stories.addWithJSX('Double Loop', () => (
+stories.addWithJSX('Deeper Loop', () => (
 	<Orchestrator
 		id="double-loop"
-		source={dataDoubleLoop}
+		source={dataDeeperLoop}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
