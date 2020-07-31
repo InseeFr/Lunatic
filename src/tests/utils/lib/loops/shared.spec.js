@@ -53,12 +53,12 @@ describe('loop roster utils', () => {
 		});
 		it('should return last line is not empty', () => {
 			const d = { A: [null, 'a'], B: ['b', null] };
-			const iv = ['A', 'B'];
+			const iv = [{ name: 'A' }, { name: 'B' }];
 			expect(lastRosterForLoopLineIsEmpty(d)(iv)).toBeFalsy();
 		});
 		it('should return last line is empty', () => {
 			const d = { A: [null, null], B: ['b', null] };
-			const iv = ['A', 'B'];
+			const iv = [{ name: 'A' }, { name: 'B' }];
 			expect(lastRosterForLoopLineIsEmpty(d)(iv)).toBeTruthy();
 		});
 	});
