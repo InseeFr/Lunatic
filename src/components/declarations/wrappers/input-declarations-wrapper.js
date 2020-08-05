@@ -39,6 +39,11 @@ const InputDeclarationsWrapper = ({
 		if (focused) inputRef.current.focus();
 	}, [focused]);
 
+	useEffect(() => setValue(U.getResponseByPreference(preferences)(response)), [
+		response,
+		preferences,
+	]);
+
 	const onChange = debounce((v) => {
 		handleChange({
 			[U.getResponseName(response)]: v,
