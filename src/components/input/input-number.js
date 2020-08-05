@@ -44,6 +44,11 @@ const InputNumber = ({
 			.filter((m) => m !== undefined)
 	);
 
+	useEffect(() => setValue(U.getResponseByPreference(preferences)(response)), [
+		response,
+		preferences,
+	]);
+
 	const onChange = debounce((v) => {
 		handleChange({
 			[U.getResponseName(response)]: v,
