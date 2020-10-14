@@ -90,11 +90,14 @@ const ListDeclarationsWrapper = ({
 										id={`input-label-${id}-${optionValue}`}
 										style={checked ? U.buildStyleObject(modalityStyle) : {}}
 									>
-										{keyboardSelection
-											? `${U.getAlphabet()[
-													i
-											  ].toUpperCase()} - ${interpretedLabel}`
-											: interpretedLabel}
+										{keyboardSelection && (
+											<span className="code-modality">
+												{options.length <= 9
+													? i + 1
+													: U.getAlphabet()[i].toUpperCase()}{' '}
+											</span>
+										)}
+										{interpretedLabel}
 									</label>
 								</div>
 							);
