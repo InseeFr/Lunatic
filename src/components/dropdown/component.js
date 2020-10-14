@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DropdownSimple from './dropdown-simple';
 import DropdownEdit from './dropdown-edit';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
-import * as C from '../../utils/constants';
+import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import './dropdown.scss';
 
@@ -19,16 +19,28 @@ const Dropdown = ({
 	declarations,
 	features,
 	bindings,
-	tooltip,
+	management,
+	freezeOptions,
 	...rest
 }) => {
+	const [opts, setOpts] = useState(options);
+
+	useEffect(() => {
+		if (!freezeOptions) {
+			const featOptions = options.map(
+				({ label: labelOption, ...restOpts }) => ({
+					label: interpret(features)(bindings)(labelOption),
+					...restOpts,
+				})
+			);
+			setOpts(featOptions);
+		}
+	}, [freezeOptions, features, bindings, options]);
+
 	const interpretedLabel = interpret(features)(bindings)(label);
 	const value = U.getResponseByPreference(preferences)(response);
-	const interpretedOptions = options.map(({ value, label: labelOption }) => ({
-		value,
-		label: interpret(features)(bindings)(labelOption),
-	}));
-	const onSelect = e =>
+
+	const onSelect = (e) =>
 		handleChange({
 			[U.getResponseName(response)]: e.value,
 		});
@@ -55,9 +67,9 @@ const Dropdown = ({
 					value={value}
 					response={response}
 					label={interpretedLabel}
-					options={interpretedOptions}
+					options={opts}
 					onSelect={onSelect}
-					tooltip={tooltip}
+					management={management}
 				/>
 			) : (
 				<DropdownSimple
@@ -66,9 +78,9 @@ const Dropdown = ({
 					value={value}
 					response={response}
 					label={interpretedLabel}
-					options={interpretedOptions}
+					options={opts}
 					onSelect={onSelect}
-					tooltip={tooltip}
+					management={management}
 				/>
 			)}
 			<Declarations
@@ -89,6 +101,7 @@ Dropdown.propTypes = {
 	label: PropTypes.string,
 	className: PropTypes.string,
 	zIndex: PropTypes.number,
+	freezeOptions: PropTypes.bool,
 };
 
 Dropdown.defaultProps = {
@@ -98,6 +111,7 @@ Dropdown.defaultProps = {
 	className: undefined,
 	zIndex: 0,
 	disabled: false,
+	freezeOptions: false,
 };
 
-export default Dropdown;
+export default React.memo(Dropdown, U.areEqual);

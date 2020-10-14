@@ -9,6 +9,7 @@ const Collect = () => {
 		<Orchestrator
 			savingType={'COLLECTED'}
 			preferences={['COLLECTED']}
+			features={['VTL']}
 			source={simpsons}
 			data={dataForCollect}
 			tooltip={false}

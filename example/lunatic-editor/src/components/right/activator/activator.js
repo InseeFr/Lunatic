@@ -12,7 +12,7 @@ const Activator = ({ id, label, value, onChange }) => (
 export default Activator;
 
 Activator.propTypes = {
-  id:PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,

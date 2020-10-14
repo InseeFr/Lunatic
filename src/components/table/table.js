@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as lunatic from '../components';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
-import * as C from '../../utils/constants';
+import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import './table.scss';
 
@@ -20,7 +20,7 @@ const Table = ({
 	bindings,
 	addBtnLabel,
 	hideBtn,
-	tooltip,
+	management,
 }) => {
 	const minLines = initLines
 		? Math.max(initLines.min, U.getRosterInitLines(cells))
@@ -28,7 +28,7 @@ const Table = ({
 	const maxLines = initLines ? initLines.max : undefined;
 	const [lines, setLines] = useState(minLines);
 
-	const width = `${100 / Math.max(...cells.map(line => line.length))}%`;
+	const width = `${100 / Math.max(...cells.map((line) => line.length))}%`;
 	const Button = lunatic.Button;
 	return (
 		<>
@@ -80,7 +80,7 @@ const Table = ({
 													handleChange={handleChange}
 													preferences={preferences}
 													positioning={positioning}
-													tooltip={tooltip}
+													management={management}
 													features={features}
 													bindings={bindings}
 													{...componentProps}
@@ -135,7 +135,7 @@ Table.defaultProps = {
 	features: [],
 	bindings: {},
 	addBtnLabel: 'Add a line',
-	tooltip: false,
+	management: false,
 	hideBtn: false,
 	style: {},
 };
@@ -153,8 +153,8 @@ Table.propTypes = {
 	bindings: PropTypes.object,
 	addBtnLabel: PropTypes.string,
 	hideBtn: PropTypes.bool,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 };
 
-export default Table;
+export default React.memo(Table, U.areEqual);

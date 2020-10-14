@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { debounce } from 'debounce';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
-import * as C from '../../utils/constants';
+import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import './input.scss';
 
@@ -18,6 +19,7 @@ const InputNumber = ({
 	placeholder,
 	handleChange,
 	readOnly,
+	disabled,
 	autoComplete,
 	focused,
 	style,
@@ -27,22 +29,37 @@ const InputNumber = ({
 	declarations,
 	features,
 	bindings,
-	tooltip,
+	management,
 	mandatory,
 	validators,
 }) => {
-	const [messagesError, setMessagesError] = useState(
-		[minMaxValidator({ min, max }), ...validators]
-			.map(v => v(U.getResponseByPreference(preferences)(response)))
-			.filter(m => m !== undefined)
-	);
 	const inputRef = useRef();
 
-	const validate = value => {
+	const [value, setValue] = useState(() =>
+		U.getResponseByPreference(preferences)(response)
+	);
+	const [messagesError, setMessagesError] = useState(
+		[minMaxValidator({ min, max }), ...validators]
+			.map((v) => v(value))
+			.filter((m) => m !== undefined)
+	);
+
+	useEffect(() => setValue(U.getResponseByPreference(preferences)(response)), [
+		response,
+		preferences,
+	]);
+
+	const onChange = debounce((v) => {
+		handleChange({
+			[U.getResponseName(response)]: v,
+		});
+	}, 200);
+
+	const validate = (v) => {
 		setMessagesError(
 			[minMaxValidator({ min, max }), ...validators]
-				.map(v => v(value))
-				.filter(m => m !== undefined)
+				.map((f) => f(v))
+				.filter((m) => m !== undefined)
 		);
 	};
 
@@ -53,10 +70,10 @@ const InputNumber = ({
 	useEffect(() => {
 		setMessagesError(
 			[minMaxValidator({ min, max }), ...validators]
-				.map(v => v(U.getResponseByPreference(preferences)(response)))
-				.filter(m => m !== undefined)
+				.map((v) => v(value))
+				.filter((m) => m !== undefined)
 		);
-	}, [response]);
+	}, [value, min, max, validators]);
 
 	return (
 		<>
@@ -88,13 +105,13 @@ const InputNumber = ({
 					bindings={bindings}
 				/>
 				<div className="field-container">
-					<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+					<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 						<input
 							type="number"
 							id={`input-${id}`}
 							ref={inputRef}
 							aria-labelledby={`input-label-${id}`}
-							value={U.getResponseByPreference(preferences)(response)}
+							value={value || ''}
 							min={min}
 							max={max}
 							step={decimals ? `${Math.pow(10, -decimals)}` : '0'}
@@ -104,22 +121,22 @@ const InputNumber = ({
 							}`}
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
+							disabled={disabled}
 							autoComplete={autoComplete ? 'on' : 'off'}
 							required={mandatory}
 							aria-required={mandatory}
-							onChange={e => {
+							onChange={(e) => {
 								const {
-									target: { value },
+									target: { value: v },
 								} = e;
-								validate(value);
-								handleChange({
-									[U.getResponseName(response)]: value,
-								});
+								validate(v);
+								setValue(v);
+								onChange(v);
 							}}
 						/>
 						{unitPosition === 'AFTER' && <span className="unit">{unit}</span>}
 					</div>
-					{tooltip && (
+					{management && (
 						<div className="tooltip">
 							<TooltipResponse id={id} response={response} />
 						</div>
@@ -144,7 +161,7 @@ const InputNumber = ({
 	);
 };
 
-const minMaxValidator = ({ min, max }) => value => {
+const minMaxValidator = ({ min, max }) => (value) => {
 	if (!value) {
 		return undefined;
 	}
@@ -158,7 +175,7 @@ const minMaxValidator = ({ min, max }) => value => {
 	return undefined;
 };
 
-const isDef = number => number || number === 0;
+const isDef = (number) => number || number === 0;
 
 InputNumber.defaultProps = {
 	label: '',
@@ -169,6 +186,7 @@ InputNumber.defaultProps = {
 	decimals: 0,
 	placeholder: '',
 	readOnly: false,
+	disabled: false,
 	autoComplete: false,
 	focused: false,
 	declarations: [],
@@ -177,7 +195,7 @@ InputNumber.defaultProps = {
 	labelPosition: 'DEFAULT',
 	unitPositioni: 'DEFAULT',
 	mandatory: false,
-	tooltip: false,
+	management: false,
 	style: {},
 	validators: [],
 };
@@ -193,6 +211,7 @@ InputNumber.propTypes = {
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
+	disabled: PropTypes.bool,
 	autoComplete: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: U.declarationsPropTypes,
@@ -201,9 +220,9 @@ InputNumber.propTypes = {
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	unitPosition: PropTypes.oneOf(['DEFAULT', 'BEFORE', 'AFTER']),
 	mandatory: PropTypes.bool,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 	validators: PropTypes.arrayOf(PropTypes.func),
 };
 
-export default InputNumber;
+export default React.memo(InputNumber, U.areEqual);

@@ -11,17 +11,18 @@
 |   placeholder    | string |      ""       |          | Placeholder of the datepicker             |
 |   handleChange   |  func  |       -       |    ✓     | Handler of the datepicker                 |
 |     readOnly     |  bool  |     false     |          | Is the datepicker read only               |
+|     disabled     |  bool  |     false     |          | Is the datepicker disabled                |
 | labelPosition \* | string |   "DEFAULT"   |          | Position of the datepicker label          |
-|     mandatory     |  bool  |     false     |          | Is the datepicker mandatory                |
+|    mandatory     |  bool  |     false     |          | Is the datepicker mandatory               |
 |     focused      |  bool  |     false     |          | Is the datepicker focused                 |
 | declarations \*  | array  |      []       |          | Declarations of the datepicker            |
 |     features     | array  |      [ ]      |          | Component features for labels             |
 |     bindings     | object |      [ ]      |          | Questionnaire bindings                    |
-|     tooltip      |  bool  |     false     |          | Tooltip of the datepicker                 |
+|    management    |  bool  |     false     |          | Management mode of the datepicker         |
 |      style       | object |      {}       |          | Style of the datepicker                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
-- `response` props has to be a shape of `{name: string, valueState: object}`
+- `response` props has to be a shape of `{name: string, values: object}`
 - `labelPosition` props has to be one of `DEFAULT`, `TOP`, `BOTTOM`, `RIGHT` or `LEFT`
 - `declarations` are documented in the `Declarations` component
 

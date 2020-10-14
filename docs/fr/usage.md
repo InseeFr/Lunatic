@@ -18,49 +18,54 @@ yarn add @inseefr/lunatic
 Un exemple complet d'orchestration des [composants](./components.md) est proposé dans un [projet exemple](https://github.com/InseeFr/Lunatic/tree/master/example). L'orchestrateur mobilise également des [utilitaires](./utils/index.md) de la librairie pour gérer les données de personnalisation et celles saisies :
 
 ```javascript
-import React, { useState } from 'react';
-import * as lunatic from './lunatic';
+import React from 'react';
+import * as lunatic from '@inseefr/lunatic';
 
-const Orchestrator = ({ savingType, preferences, source, data, tooltip }) => {
-	const [questionnaire, setQuestionnaire] = useState(
-		lunatic.mergeQuestionnaireAndData(source)(data)
-	);
-	const onChange = updatedValue => {
-		setQuestionnaire(
-			lunatic.updateQuestionnaire(savingType)(questionnaire)(preferences)(
-				updatedValue
-			)
-		);
-	};
-	console.log('State : ', lunatic.getState(questionnaire));
-	const bindings = lunatic.getBindings(questionnaire);
+const Orchestrator = ({
+	savingType,
+	preferences,
+	source,
+	features,
+	data,
+	management,
+}) => {
+	const {
+		questionnaire,
+		components,
+		handleChange,
+		bindings,
+	} = lunatic.useLunatic(source, data, {
+		savingType,
+		preferences,
+		features,
+		management,
+	});
 
-	const components = questionnaire.components
-		.filter(({ conditionFilter }) =>
-			tooltip
-				? true
-				: lunatic.interpret(['VTL'])(bindings)(conditionFilter) === 'normal'
-		)
-		.map(q => {
-			const { id, componentType } = q;
-			const Component = lunatic[componentType];
-			return (
-				<div className="lunatic lunatic-component" key={`component-${id}`}>
-					<Component
-						{...q}
-						handleChange={onChange}
-						labelPosition="TOP"
-						preferences={preferences}
-						tooltip={tooltip}
-						features={['VTL']}
-						bindings={bindings}
-					/>
-				</div>
-			);
-		});
+	console.log(lunatic.getCollectedState(questionnaire));
+
 	return (
 		<div className="container">
-			<div className="components">{components}</div>
+			<div className="components">
+				{components.map((q) => {
+					const { id, componentType } = q;
+					const Component = lunatic[componentType];
+					return (
+						<div className="lunatic lunatic-component" key={`component-${id}`}>
+							<Component
+								{...q}
+								handleChange={handleChange}
+								labelPosition="TOP"
+								preferences={preferences}
+								management={management}
+								features={features}
+								bindings={bindings}
+								writable
+								zIndex={1}
+							/>
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 };
@@ -72,13 +77,7 @@ export default Orchestrator;
 
 ```javascript
 const Collect = () => (
-	<Orchestrator
-		savingType={'COLLECTED'}
-		preferences={['COLLECTED']}
-		source={simpsons}
-		data={{}}
-		tooltip={false}
-	/>
+	<Orchestrator source={simpsons} data={{}} features={['VTL']} />
 );
 ```
 
@@ -87,11 +86,12 @@ const Collect = () => (
 ```javascript
 const Management = () => (
 	<Orchestrator
-		savingType={'EDITED'}
-		preferences={['COLLECTED', 'FORCED', 'EDITED']}
 		source={simpsons}
 		data={data}
-		tooltip={true}
+		savingType={'EDITED'}
+		preferences={['COLLECTED', 'FORCED', 'EDITED']}
+		features={['VTL']}
+		management
 	/>
 );
 ```

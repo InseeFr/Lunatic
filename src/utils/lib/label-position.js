@@ -1,12 +1,12 @@
-export const getLabelPositionClass = position => {
+export const getLabelPositionClass = (position) => {
 	switch (position) {
-		case 'TOP':
-			return 'label-top';
+		case 'LEFT':
+			return 'label-left';
 		case 'BOTTOM':
 			return 'label-bottom';
 		case 'RIGHT':
 			return 'label-right';
 		default:
-			return 'label-left';
+			return 'label-top';
 	}
 };

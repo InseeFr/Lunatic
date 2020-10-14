@@ -10,8 +10,12 @@ describe('checkbox-boolean', () => {
 		shallow(<CheckboxBoolean {...defaultProps} />);
 	});
 
-	it('returns tooltip component', () => {
-		shallow(<CheckboxBoolean {...defaultProps} label="label" tooltip />);
+	it('returns management component', () => {
+		shallow(<CheckboxBoolean {...defaultProps} label="label" management />);
+	});
+
+	it('returns disabled component', () => {
+		shallow(<CheckboxBoolean {...defaultProps} label="label" disabled />);
 	});
 
 	it('renders firing useEffect', () => {

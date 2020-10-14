@@ -15,7 +15,7 @@ import { text, boolean, select, object } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Table', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<Table />" />;
 	});
@@ -34,7 +34,7 @@ stories.addWithJSX('OneAxisOneMeasure', () => (
 	<Orchestrator
 		id="default"
 		source={dataOneAxisOneMeasure}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
 ));
@@ -43,7 +43,7 @@ stories.addWithJSX('OneAxisTwoMeasure', () => (
 	<Orchestrator
 		id="default"
 		source={dataOneAxisTwoMeasures}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
 ));
@@ -52,7 +52,7 @@ stories.addWithJSX('OneHierarchicalAxis', () => (
 	<Orchestrator
 		id="default"
 		source={dataOneHierarchicalAxis}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
 ));
@@ -61,7 +61,7 @@ stories.addWithJSX('TwoAxisOneMeasure', () => (
 	<Orchestrator
 		id="default"
 		source={dataTwoAxisOneMeasure}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
 ));
@@ -70,7 +70,7 @@ stories.addWithJSX('Roster', () => (
 	<Orchestrator
 		id="default"
 		source={dataRoster}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		hideBtn={boolean('Hide button', false)}
 	/>

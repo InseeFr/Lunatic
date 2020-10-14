@@ -1,0 +1,12 @@
+{
+	"COLLECTED": {
+		"inputOk": { "COLLECTED": "Hello" },
+		"check1": { "COLLECTED": true },
+		"check2": { "COLLECTED": false, "FORCED": true },
+		"table11": { "COLLECTED": "1" },
+		"Roster": { "COLLECTED": ["ok"] }
+	},
+	"EXTERNAL": {
+		"VAR_EXTERNAL": "Value VAR_EXTERNAL"
+	}
+}

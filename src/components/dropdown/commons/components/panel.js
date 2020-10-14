@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 /**
  *
  */
-const Panel = ({
+function Panel({
 	options = [],
 	display,
 	handleActive,
@@ -14,7 +14,7 @@ const Panel = ({
 	onSelect,
 	idDropdown,
 	optionComponent: Option,
-}) => {
+}) {
 	const ulRef = useRef();
 
 	return display ? (
@@ -25,10 +25,12 @@ const Panel = ({
 						key={value}
 						id={`${idDropdown}-option-${value}`}
 						onMouseEnter={() => handleActive(index)}
-						onClick={e => {
+						onMouseDown={(e) => {
 							e.stopPropagation();
 							e.preventDefault();
-							onSelect({ label, value });
+							if (e.button === 0) {
+								onSelect({ label, value });
+							}
 						}}
 					>
 						<Option
@@ -43,7 +45,7 @@ const Panel = ({
 			</ul>
 		</div>
 	) : null;
-};
+}
 
 const propTypesOption = PropTypes.shape({
 	label: PropTypes.string,

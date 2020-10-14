@@ -5,6 +5,6 @@ export {
 	getCollectedState,
 	getCollectedStateByValueType,
 	getBindings,
-	getLabelBindings,
 } from './state';
 export { interpret } from './interpret';
+export { default as useLunatic } from './hook';

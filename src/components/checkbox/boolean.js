@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
-import * as C from '../../utils/constants';
+import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import './checkbox.scss';
 
@@ -19,16 +19,24 @@ const CheckboxBoolean = ({
 	declarations,
 	features,
 	bindings,
-	tooltip,
+	management,
 	style,
 }) => {
 	const inputRef = useRef();
+
+	const specificHandleChange = (e) => {
+		const [key, value] = Object.entries(e)[0];
+		if (value === false && U.responseToClean(response)(preferences))
+			handleChange({ [key]: null });
+		else handleChange(e);
+	};
 
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
 
 	const isVertical = positioning === 'VERTICAL';
+	const isHorizontal = positioning === 'HORIZONTAL';
 	const input = (
 		<>
 			<input
@@ -40,13 +48,17 @@ const CheckboxBoolean = ({
 				style={U.buildStyleObject(style)}
 				checked={U.getResponseByPreference(preferences)(response)}
 				disabled={disabled}
-				onChange={e => {
-					handleChange({
+				onChange={(e) => {
+					specificHandleChange({
 						[U.getResponseName(response)]: e.target.checked,
 					});
 				}}
 			/>
-			<label htmlFor={`checkbox-boolean-${id}`}></label>
+			{label && (
+				<label htmlFor={`checkbox-boolean-${id}`}>
+					{isHorizontal ? interpret(features)(bindings)(label) : ''}
+				</label>
+			)}
 		</>
 	);
 	return (
@@ -58,7 +70,7 @@ const CheckboxBoolean = ({
 				features={features}
 				bindings={bindings}
 			/>
-			{label && (
+			{label && !isHorizontal && (
 				<label htmlFor={`checkbox-boolean-${id}`}>
 					{interpret(features)(bindings)(label)}
 				</label>
@@ -71,12 +83,15 @@ const CheckboxBoolean = ({
 				bindings={bindings}
 			/>
 			<div className="field-container">
-				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+				<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 					{isVertical ? <div>{input}</div> : input}
 				</div>
-				{tooltip && (
+				{management && (
 					<div className="tooltip">
-						<TooltipResponse id={id} response={response} />
+						<TooltipResponse
+							id={id}
+							response={U.buildBooleanTooltipResponse(response)}
+						/>
 					</div>
 				)}
 			</div>
@@ -101,7 +116,7 @@ CheckboxBoolean.defaultProps = {
 	declarations: [],
 	features: [],
 	bindings: {},
-	tooltip: false,
+	management: false,
 	style: {},
 };
 
@@ -117,8 +132,8 @@ CheckboxBoolean.propTypes = {
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 };
 
-export default CheckboxBoolean;
+export default React.memo(CheckboxBoolean, U.areEqual);

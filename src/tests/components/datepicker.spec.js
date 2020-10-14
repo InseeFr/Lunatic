@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { Datepicker } from 'components';
 
 const handleChange = jest.fn();
@@ -13,39 +13,10 @@ describe('datepicker', () => {
 	it('renders without crashing', () => {
 		shallow(<Datepicker {...defaultProps} />);
 	});
-
-	it('returns readOnly component', () => {
-		const wrapper = shallow(<Datepicker {...defaultProps} readOnly />);
-		expect(wrapper.find('input').prop('readOnly')).toBeTruthy();
+	it('returns management component', () => {
+		shallow(<Datepicker {...defaultProps} label="label" management />);
 	});
-
-	it('returns enabled component', () => {
-		const wrapper = shallow(<Datepicker {...defaultProps} />);
-		expect(wrapper.find('input').prop('readOnly')).toBeFalsy();
-	});
-
-	it('returns mandatory component', () => {
-		const wrapper = shallow(<Datepicker {...defaultProps} mandatory />);
-		expect(wrapper.find('input').prop('required')).toBeTruthy();
-	});
-
-	it('returns tooltip component', () => {
-		shallow(<Datepicker {...defaultProps} tooltip />);
-	});
-
-	it('renders firing useEffect', () => {
-		const wrapper = mount(<Datepicker {...defaultProps} />);
-		wrapper.setProps({ focused: true });
-	});
-
-	it('should trigger the change event', () => {
-		const wrapper = shallow(<Datepicker {...defaultProps} />);
-		wrapper.find('input').simulate('change', {
-			target: {
-				value: 'new value',
-			},
-		});
-		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': 'new value' });
+	it('returns disabled & readOnly component', () => {
+		shallow(<Datepicker {...defaultProps} label="label" disabled readOnly />);
 	});
 });

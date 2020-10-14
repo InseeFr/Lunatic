@@ -17,7 +17,6 @@
 		"CITY": { "COLLECTED": "00002", "EDITED": "00001" },
 		"MAYOR": { "FORCED": "2", "EDITED": "3" },
 		"STATE": { "COLLECTED": "5", "FORCED": "13", "EDITED": "10" },
-		"PET1": { "COLLECTED": true },
 		"PET2": { "COLLECTED": false, "EDITED": true },
 		"PET3": { "COLLECTED": false, "FORCED": true },
 		"PET4": { "COLLECTED": true, "FORCED": false, "EDITED": true },

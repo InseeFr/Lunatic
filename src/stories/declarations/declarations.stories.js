@@ -4,13 +4,13 @@ import { withReadme } from 'storybook-readme';
 import { Declarations } from 'components';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
-import * as C from 'utils/constants';
+import * as C from '../../constants';
 import { featuresOptions } from '../utils/options';
 import { object, select } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Declarations', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<Declarations />" />;
 	});

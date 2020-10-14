@@ -8,6 +8,7 @@ export { Input, InputNumber } from './input';
 export { default as FilterDescription } from './filter-description';
 export { default as ProgressBar } from './progress-bar';
 export { default as Radio } from './radio';
+export { RosterForLoop, Loop } from './loops';
 export { default as Sequence } from './sequence';
 export { default as Subsequence } from './subsequence';
 export { default as Textarea } from './textarea';

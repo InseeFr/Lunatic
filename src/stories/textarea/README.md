@@ -13,17 +13,18 @@
 |       rows       |     number     |       5       |          | Number of rows of the textarea          |
 |    maxLength     | number, string |    524288     |          | Maximum length of the textarea          |
 |     readOnly     |      bool      |     false     |          | Is the textarea read only               |
+|     disabled     |      bool      |     false     |          | Is the textarea disabled                |
 | labelPosition \* |     string     |   "DEFAULT"   |          | Position of the textarea label          |
-|     mandatory     |      bool      |     false     |          | Is the textarea mandatory                |
+|    mandatory     |      bool      |     false     |          | Is the textarea mandatory               |
 |     focused      |      bool      |     false     |          | Is the textarea focused                 |
 | declarations \*  |     array      |      [ ]      |          | Declarations of the textarea            |
 |     features     |     array      |      [ ]      |          | Component features for labels           |
 |     bindings     |     object     |      [ ]      |          | Questionnaire bindings                  |
-|     tooltip      |      bool      |     false     |          | Tooltip of the textarea                 |
+|    management    |      bool      |     false     |          | Management mode of the textarea         |
 |      style       |     object     |      {}       |          | Style of the textarea                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
-- `response` props has to be a shape of `{name: string, valueState: object}`
+- `response` props has to be a shape of `{name: string, values: object}`
 - `labelPosition` props has to be one of `DEFAULT`, `TOP`, `BOTTOM`, `RIGHT` or `LEFT`
 - `declarations` are documented in the `Declarations` component
 

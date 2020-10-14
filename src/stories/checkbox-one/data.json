@@ -1,19 +1,12 @@
 {
 	"components": [
 		{
-			"id": "j6qdfhvw",
+			"id": "1",
 			"componentType": "CheckboxOne",
 			"mandatory": false,
 			"label": "➡ 2. Who is the Simpsons city mayor?",
 			"response": {
-				"name": "MAYOR",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "2" },
-					{ "valueType": "FORCED", "value": "1" },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"name": "MAYOR"
 			},
 			"options": [
 				{ "value": "1", "label": "Constance Harm" },
@@ -21,6 +14,20 @@
 				{ "value": "3", "label": "Joe Quimby" },
 				{ "value": "4", "label": "Poochie" }
 			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "MAYOR",
+			"componentRef": "1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "2",
+				"FORCED": "1",
+				"EDITED": null,
+				"INPUTED": null
+			}
 		}
 	]
 }

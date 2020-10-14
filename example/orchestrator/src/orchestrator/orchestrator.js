@@ -1,59 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as lunatic from '@inseefr/lunatic';
 
 const Orchestrator = ({
 	savingType,
 	preferences,
 	source,
+	features,
 	data,
-	tooltip,
+	management,
 	filterDescription,
 }) => {
-	const [questionnaire, setQuestionnaire] = useState(
-		lunatic.mergeQuestionnaireAndData(source)(data)
-	);
-	const onChange = updatedValue => {
-		setQuestionnaire(
-			lunatic.updateQuestionnaire(savingType)(questionnaire)(preferences)(
-				updatedValue
-			)
-		);
-	};
+	const {
+		questionnaire,
+		components,
+		handleChange,
+		bindings,
+	} = lunatic.useLunatic(source, data, {
+		savingType,
+		preferences,
+		features,
+		management,
+	});
 
-	console.log('State : ', lunatic.getState(questionnaire));
+	console.log(lunatic.getCollectedState(questionnaire));
 
-	const bindings = lunatic.getBindings(questionnaire);
-	const labelBindings = lunatic.getLabelBindings(questionnaire);
-
-	const components = questionnaire.components
-		.filter(({ conditionFilter }) =>
-			tooltip
-				? true
-				: lunatic.interpret(['VTL'])(bindings)(conditionFilter) === 'normal'
-		)
-		.map(q => {
-			const { id, componentType } = q;
-			const Component = lunatic[componentType];
-			return (
-				<div className="lunatic lunatic-component" key={`component-${id}`}>
-					<Component
-						{...q}
-						handleChange={onChange}
-						labelPosition="TOP"
-						preferences={preferences}
-						tooltip={tooltip}
-						filterDescription={filterDescription}
-						features={['VTL']}
-						bindings={labelBindings}
-						writable
-						zIndex={1}
-					/>
-				</div>
-			);
-		});
 	return (
 		<div className="container">
-			<div className="components">{components}</div>
+			<div className="components">
+				{components.map((q) => {
+					const { id, componentType } = q;
+					const Component = lunatic[componentType];
+					return (
+						<div className="lunatic lunatic-component" key={`component-${id}`}>
+							<Component
+								{...q}
+								handleChange={handleChange}
+								labelPosition="TOP"
+								preferences={preferences}
+								management={management}
+								filterDescription={filterDescription}
+								features={features}
+								bindings={bindings}
+								writable
+								zIndex={1}
+							/>
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 };

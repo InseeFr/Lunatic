@@ -7,7 +7,7 @@ const options = [
 	{ value: 'france', label: 'France' },
 	{ value: 'italy', label: 'Italy' },
 ];
-const response = { valueState: [{ valueType: 'COLLECTED', value: 'italy' }] };
+const response = { values: { COLLECTED: 'italy' } };
 const defaultProps = {
 	id: 'id',
 	label: 'label',
@@ -21,22 +21,7 @@ describe('radio', () => {
 		mount(<Radio {...defaultProps} />);
 	});
 
-	it('returns tooltip and keyboardSelection component', () => {
-		shallow(<Radio {...defaultProps} tooltip keyboardSelection />);
-	});
-
-	it('renders firing useEffect', () => {
-		const wrapper = mount(<Radio {...defaultProps} />);
-		wrapper.setProps({ focused: true });
-	});
-
-	it('should trigger the change event', () => {
-		const wrapper = shallow(<Radio {...defaultProps} />);
-		wrapper
-			.find('input')
-			.first()
-			.simulate('change');
-		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': 'france' });
+	it('returns management & disabled component', () => {
+		shallow(<Radio {...defaultProps} management disabled />);
 	});
 });

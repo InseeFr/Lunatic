@@ -1,111 +1,99 @@
-export const updateQuestionnaire = valueType => questionnaire => preferences => updatedValue => {
+import * as C from '../../constants';
+import { buildFilledComponent } from './init-questionnaire';
+import { supportedPreferences } from '../../constants/supported-preferences';
+import { interpret } from './interpret';
+import { buildVectorialBindings } from '../lib/loops/bindings';
+
+export const updateQuestionnaire = (valueType) => (questionnaire) => (
+	preferences
+) => (updatedValues) => {
 	if (
-		!['PREVIOUS', 'COLLECTED', 'FORCED', 'EDITED', 'INPUTED'].includes(
-			valueType
-		) ||
+		!supportedPreferences.includes(valueType) ||
 		preferences.length === 0 ||
-		Object.entries(updatedValue).length !== 1
+		!updatedValues
 	)
 		return questionnaire;
-
-	const [name, value] = Object.entries(updatedValue)[0];
-	const components = questionnaire.components.reduce(
-		(_, c) => [..._, updateComponent(valueType)(c)(preferences)(name)(value)],
-		[]
-	);
-	return { ...questionnaire, components };
-};
-
-export const updateComponent = valueType => component => preferences => name => value => {
-	const { response, componentType } = component;
-	if (!isComponentsConcernedByResponse(name)(component)) {
-		return component;
-	} else if (response) {
-		return buildUpdatedResponse(component)(preferences)(valueType)(value);
-	} else if (componentType === 'CheckboxGroup')
-		return buildUpdatedCheckboxGroupResponse(component)(preferences)(valueType)(
-			value
-		)(name);
-	else if (componentType === 'Table')
-		return buildUpdatedTableResponse(component)(preferences)(valueType)(value)(
-			name
-		);
-};
-
-export const isComponentsConcernedByResponse = responseName => component =>
-	(component.response && component.response.name === responseName) ||
-	(component.responses &&
-		component.responses.filter(
-			o => o.response && o.response.name === responseName
-		).length !== 0) ||
-	(component.cells &&
-		component.cells
-			.reduce((_, line) => {
-				line.forEach(l => {
-					if (l.response && l.response.name) _.push(l.response.name);
-				});
-				return _;
-			}, [])
-			.filter(str => str === responseName).length === 1);
-
-export const buildUpdatedResponse = component => preferences => valueType => value => {
-	let newValue = value;
-	const { valueState } = component.response;
-	if (preferences.length > 1 && preferences.includes(valueType)) {
-		const lastValue = preferences
-			.slice(0, preferences.length - 1)
-			.reduce(
-				(_, type) =>
-					valueState.find(v => v.valueType === type).value !== null
-						? valueState.find(v => v.valueType === type).value
-						: _,
-				''
-			);
-		if (value === lastValue) newValue = null;
-	}
-	if (
-		component.componentType === 'CheckboxOne' &&
-		valueState.find(v => v.valueType === valueType).value === newValue
-	)
-		newValue = null;
-	return {
-		...component,
-		response: {
-			...component.response,
-			valueState: valueState.reduce((__, v) => {
-				if (v.valueType === valueType)
-					return [...__, { ...v, value: newValue }];
-				return [...__, v];
-			}, []),
+	const { variables, components, ...other } = questionnaire;
+	if (!components || components.length === 0) return questionnaire;
+	const varsAndRefs = Object.entries(updatedValues).reduce(
+		(acc, [key, value]) => {
+			const {
+				newVariables: { COLLECTED, ...otherVars },
+				refs,
+			} = acc;
+			const { componentRef, values } = COLLECTED[key];
+			const updated = {
+				componentRef,
+				values: {
+					...values,
+					[valueType]: buildNewValue(preferences)(valueType)(values)(value),
+				},
+			};
+			const newCollected = { ...COLLECTED, [key]: updated };
+			return {
+				newVariables: {
+					...otherVars,
+					COLLECTED: newCollected,
+				},
+				refs: [...refs, componentRef],
+			};
 		},
+		{ newVariables: variables, refs: [] }
+	);
+	const { newVariables, refs: r } = varsAndRefs;
+	const newVariablesWithCalculated =
+		valueType === C.COLLECTED ? addCalculatedVars(newVariables) : newVariables;
+	const collectedVars = newVariables[C.COLLECTED];
+	const newComponents = components.map((c) => {
+		if (r.includes(c.id)) return buildFilledComponent(collectedVars)(c);
+		return c;
+	});
+	return {
+		...other,
+		variables: newVariablesWithCalculated,
+		components: newComponents,
 	};
 };
 
-export const buildUpdatedVectorResponse = responses => preferences => valueType => value => name =>
-	responses.reduce((_, cellComponent) => {
-		if (isComponentsConcernedByResponse(name)(cellComponent))
-			_.push(
-				buildUpdatedResponse(cellComponent)(preferences)(valueType)(value)
-			);
-		else _.push(cellComponent);
-		return _;
-	}, []);
-
-export const buildUpdatedCheckboxGroupResponse = component => preferences => valueType => value => name => {
-	const { responses, ...other } = component;
-	const newResponses = buildUpdatedVectorResponse(responses)(preferences)(
-		valueType
-	)(value)(name);
-	return { ...other, responses: newResponses };
+const buildNewValue = (preferences) => (valueType) => (oldValues) => (
+	value
+) => {
+	if (preferences.length === 1) return value;
+	const index = preferences.indexOf(valueType);
+	if (index < 1) return value;
+	const valuesByPreference = preferences
+		.slice(0, index)
+		.map((p) => oldValues[p])
+		.filter((v) => v !== null);
+	const lastValue = valuesByPreference[valuesByPreference.length - 1];
+	return lastValue === value ? null : value;
 };
 
-export const buildUpdatedTableResponse = component => preferences => valueType => value => name => {
-	const { cells, ...other } = component;
-	const newCells = cells.reduce((_, line) => {
-		_.push(
-			buildUpdatedVectorResponse(line)(preferences)(valueType)(value)(name)
-		);
-		return _;
-	}, []);
-	return { ...other, cells: newCells };
+const addCalculatedVars = (variables) => {
+	if (
+		!variables[C.CALCULATED] ||
+		Object.keys(variables[C.CALCULATED]).length === 0
+	)
+		return variables;
+	const { COLLECTED, EXTERNAL, CALCULATED } = variables;
+	const collected = Object.entries(COLLECTED).reduce(
+		(acc, [key, { values }]) => ({ ...acc, [key]: values[C.COLLECTED] }),
+		{}
+	);
+	const bindings = buildVectorialBindings({ ...collected, ...EXTERNAL });
+	const calculated = Object.entries(CALCULATED).reduce(
+		(acc, [key, { expression }]) => {
+			// Assume that a calculated variable has a first level scope
+			// If we need to handle deep calculated variables, we have to
+			// update the shape of bindings, grouping vars by type
+			const res = interpret(['VTL'])(bindings)(expression);
+			const value = Array.isArray(res) ? res.join(',') : res;
+			return {
+				...acc,
+				[key]: { expression, value },
+			};
+		},
+		{}
+	);
+	return { EXTERNAL, COLLECTED, CALCULATED: calculated };
 };

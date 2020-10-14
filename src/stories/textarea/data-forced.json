@@ -1,0 +1,28 @@
+{
+	"components": [
+		{
+			"id": "ta",
+			"componentType": "Textarea",
+			"mandatory": false,
+			"maxLength": "500",
+			"label": "➡ 1. Before starting, do you have any comments about the Simpsons family?",
+			"response": {
+				"name": "COMMENT"
+			}
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "COMMENT",
+			"componentRef": "ta",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "Forced value",
+				"FORCED": "Hello",
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

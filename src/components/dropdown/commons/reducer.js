@@ -1,8 +1,12 @@
-import * as actions from '../commons/actions';
-import { scrollTo } from '../commons/tools';
+import * as actions from './actions';
+import { scrollTo } from './tools';
+import { filterOption } from '../dropdown-edit/prefix-tools';
+import { preparePrefix } from '../dropdown-edit/prefix-tools';
 
 export const initial = {
+	prefix: undefined,
 	options: [],
+	visibleOptions: [],
 	visible: false,
 	activeIndex: undefined,
 	selectedOption: undefined,
@@ -11,46 +15,50 @@ export const initial = {
 };
 
 /** */
-const reduceArrowDownPressed = state => {
-	const { options, activeIndex } = state;
-	const next = options.length
+const isPrefix = (prefix) => prefix !== undefined && prefix.length > 0;
+
+/** */
+const reduceArrowDownPressed = (state) => {
+	const { visibleOptions, activeIndex } = state;
+	const next = visibleOptions.length
 		? Math.min(
-				options.length - 1,
+				visibleOptions.length - 1,
 				activeIndex === undefined ? 0 : activeIndex + 1
 		  )
 		: undefined;
 	if (next !== undefined) {
-		scrollTo(`${state.id}-option-${options[next].value}`);
+		scrollTo(`${state.id}-option-${visibleOptions[next].value}`);
 	}
 	return { ...state, activeIndex: next };
 };
 
 /** */
-const reduceArrowUpPressed = state => {
-	const { options, activeIndex } = state;
-	const next = options.length
+const reduceArrowUpPressed = (state) => {
+	const { visibleOptions, activeIndex } = state;
+	const next = visibleOptions.length
 		? Math.max(0, activeIndex === undefined ? 0 : activeIndex - 1)
 		: undefined;
 
 	if (next !== undefined) {
-		scrollTo(`${state.id}-option-${options[next].value}`);
+		scrollTo(`${state.id}-option-${visibleOptions[next].value}`);
 	}
 	return { ...state, activeIndex: next };
 };
 
 /** */
 const reduceEnterPressed = (state, callback) => {
-	const { activeIndex, options, visible } = state;
+	const { activeIndex, visibleOptions, visible } = state;
 	if (!visible) {
 		return { ...state, visible: true };
 	}
 	if (activeIndex !== undefined) {
-		const option = options[activeIndex];
+		const option = visibleOptions[activeIndex];
 		callback(option);
 		return {
 			...state,
 			selectedOption: option,
 			value: option.label,
+			prefix: preparePrefix(option.label),
 			visible: false,
 		};
 	}
@@ -76,9 +84,23 @@ const reducer = (state, action) => {
 		}
 		case actions.SET_OPTIONS: {
 			const { options } = payload;
+			const { prefix } = state;
 			return {
 				...state,
 				options,
+				visibleOptions: isPrefix(prefix) ? filterOption(options) : options,
+			};
+		}
+		case actions.SET_PREFIX: {
+			const { prefix } = payload;
+			const { options } = state;
+			return {
+				...state,
+				prefix,
+				activeIndex: undefined,
+				visibleOptions: isPrefix(prefix)
+					? filterOption(options, prefix)
+					: options,
 			};
 		}
 		case actions.SET_VALUE: {
@@ -91,6 +113,7 @@ const reducer = (state, action) => {
 				...state,
 				value: option.label,
 				selectedOption: option,
+				prefix: preparePrefix(option.label),
 			};
 		}
 		case actions.SET_FOCUSED: {
@@ -100,10 +123,12 @@ const reducer = (state, action) => {
 		case actions.RESET_SELECTION: {
 			return {
 				...state,
+				prefix: undefined,
 				value: '',
 				selectedOption: undefined,
 				activeIndex: undefined,
 				activeOption: undefined,
+				visibleOptions: state.options,
 			};
 		}
 		case actions.ARROW_UP_PRESSED: {

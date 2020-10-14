@@ -7,23 +7,23 @@ describe('checkbox-group', () => {
 	const responses = [
 		{
 			id: '1',
-			response: { valueState: [{ valueType: 'COLLECTED', value: true }] },
+			response: { name: 'a', values: { COLLECTED: true } },
 			label: 'France',
 		},
 		{
 			id: '2',
-			response: { valueState: [{ valueType: 'COLLECTED', value: false }] },
+			response: { name: 'b', values: { COLLECTED: false } },
 			label: 'Italy',
 		},
 	];
 	const defaultProps = { id: 'id', handleChange, responses };
 
-	it('renders without crashing', () => {
-		mount(<CheckboxGroup {...defaultProps} keyboardSelection />);
+	it('returns management component', () => {
+		shallow(<CheckboxGroup {...defaultProps} management />);
 	});
 
-	it('returns tooltip component', () => {
-		shallow(<CheckboxGroup {...defaultProps} tooltip />);
+	it('returns disabled component', () => {
+		shallow(<CheckboxGroup {...defaultProps} label="label" disabled />);
 	});
 
 	it('renders firing useEffect', () => {
@@ -42,6 +42,7 @@ describe('checkbox-group', () => {
 				},
 			});
 		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': false });
+		/*Cause specificHandler*/
+		expect(handleChange).toHaveBeenCalledWith({ a: null });
 	});
 });

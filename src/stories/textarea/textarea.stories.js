@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
+import dataForced from './data-forced';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import {
 	text,
@@ -17,7 +18,7 @@ import {
 
 const stories = storiesOf('Textarea', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<Textarea />" />;
 	});
@@ -38,11 +39,33 @@ stories.addWithJSX('Props', () => (
 		mandatory={boolean('Mandatory', false)}
 		features={select('Features', featuresOptions, [])}
 		bindings={object('Bindings', { NAME: 'Mauro' })}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 		focused={boolean('Focused', false)}
 		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
 	/>
 ));
+
+stories.addWithJSX('External update', () => {
+	const Fake = () => {
+		const [up, setUp] = useState(false);
+		return (
+			<>
+				{!up && (
+					<button
+						type="button"
+						onClick={() => {
+							setUp(true);
+						}}
+					>
+						Force external update
+					</button>
+				)}
+				<Orchestrator id="default" source={up ? dataForced : data} />
+			</>
+		);
+	};
+	return <Fake />;
+});
 
 stories.addWithJSX('Styled', () => (
 	<Orchestrator

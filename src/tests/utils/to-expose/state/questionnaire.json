@@ -1,0 +1,61 @@
+{
+	"components": [],
+	"variables": {
+		"EXTERNAL": { "VAR_EXTERNAL": "Value VAR_EXTERNAL" },
+		"CALCULATED": {
+			"VAR_CALCULATED": { "expression": "VTL expression", "value": null }
+		},
+		"COLLECTED": {
+			"input": {
+				"componentRef": "2",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "My input",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"check1": {
+				"componentRef": "3",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": true,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"check2": {
+				"componentRef": "3",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": false,
+					"FORCED": true,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"table11": {
+				"componentRef": "4",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "1",
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"table12": {
+				"componentRef": "4",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		}
+	}
+}

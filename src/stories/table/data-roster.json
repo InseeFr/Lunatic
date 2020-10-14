@@ -10,27 +10,17 @@
 			"cells": [
 				[
 					{ "headerCell": true, "label": "Name" },
-
 					{ "headerCell": true, "label": "Age" }
 				],
-
 				[
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdl5jb",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS11",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": "Hop" },
-								{ "valueType": "FORCED", "value": "Hip" },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS11"
 						}
 					},
-
 					{
 						"componentType": "InputNumber",
 						"min": 0,
@@ -38,35 +28,19 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdfndq",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS12",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": "30" },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS12"
 						}
 					}
 				],
-
 				[
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgd8lwo",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS21",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS21"
 						}
 					},
-
 					{
 						"componentType": "InputNumber",
 						"min": 0,
@@ -74,35 +48,19 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgd7osi",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS22",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS22"
 						}
 					}
 				],
-
 				[
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdbfag",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS31",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS31"
 						}
 					},
-
 					{
 						"componentType": "InputNumber",
 						"min": 0,
@@ -110,35 +68,19 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgd7bnw",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS32",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS32"
 						}
 					}
 				],
-
 				[
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdlgja",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS41",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS41"
 						}
 					},
-
 					{
 						"componentType": "InputNumber",
 						"min": 0,
@@ -146,35 +88,19 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgd9k71",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS42",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS42"
 						}
 					}
 				],
-
 				[
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgd745y",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS51",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS51"
 						}
 					},
-
 					{
 						"componentType": "InputNumber",
 						"min": 0,
@@ -182,35 +108,19 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdimks",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS52",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS52"
 						}
 					}
 				],
-
 				[
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdjkts",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS61",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS61"
 						}
 					},
-
 					{
 						"componentType": "InputNumber",
 						"min": 0,
@@ -218,35 +128,19 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdjquz",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS62",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS62"
 						}
 					}
 				],
-
 				[
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdcax7",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS71",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS71"
 						}
 					},
-
 					{
 						"componentType": "InputNumber",
 						"min": 0,
@@ -254,35 +148,19 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdd2w3",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS72",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS72"
 						}
 					}
 				],
-
 				[
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdjye1",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS81",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS81"
 						}
 					},
-
 					{
 						"componentType": "InputNumber",
 						"min": 0,
@@ -290,35 +168,19 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdkosc",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS82",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS82"
 						}
 					}
 				],
-
 				[
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgd5jet",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS91",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS91"
 						}
 					},
-
 					{
 						"componentType": "InputNumber",
 						"min": 0,
@@ -326,35 +188,19 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgdk0x4",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS92",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS92"
 						}
 					}
 				],
-
 				[
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
 						"id": "j6qg8rc6-QOP-jbgdjw90",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS101",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS101"
 						}
 					},
-
 					{
 						"componentType": "InputNumber",
 						"min": 0,
@@ -362,19 +208,254 @@
 						"decimals": 0,
 						"id": "j6qg8rc6-QOP-jbgd2wgf",
 						"response": {
-							"name": "FAVOURITE_CHARACTERS102",
-							"valueState": [
-								{ "valueType": "PREVIOUS", "value": null },
-								{ "valueType": "COLLECTED", "value": null },
-								{ "valueType": "FORCED", "value": null },
-								{ "valueType": "EDITED", "value": null },
-								{ "valueType": "INPUTED", "value": null }
-							]
+							"name": "FAVOURITE_CHARACTERS102"
 						}
 					}
 				]
 			],
 			"lines": { "min": 1, "max": 10 }
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS11",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "Homer",
+				"FORCED": "Bart",
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS12",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "30",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS21",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS22",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "20",
+				"FORCED": "21",
+				"EDITED": "22",
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS31",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS32",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS41",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS42",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS51",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS52",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS61",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS62",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS71",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS72",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS81",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS82",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS91",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS92",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS101",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHARACTERS102",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
 		}
 	]
 }

@@ -18,7 +18,7 @@ import {
 
 const stories = storiesOf('CheckboxGroup', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<CheckboxGroup />" />;
 	});
@@ -37,8 +37,7 @@ stories.addWithJSX('Props', () => (
 		bindings={object('Bindings', { NAME: 'Mojo' })}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
-		keyboardSelection={boolean('Keyboard selection', false)}
-		tooltip={boolean('Tooltip', false)}
+		management={boolean('Management', false)}
 	/>
 ));
 
@@ -62,7 +61,7 @@ stories.addWithJSX('Styled', () => (
 					step: 1,
 				}),
 			},
-			checkboxStyle: {
+			modalityStyle: {
 				'border-color': color('Checked label border color', '#e80a4d'),
 				'border-width': number('Checked label border width', 3, {
 					range: true,

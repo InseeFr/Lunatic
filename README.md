@@ -5,7 +5,7 @@
 Library of questionnaire components
 
 [![Build Status](https://travis-ci.org/InseeFr/Lunatic.svg?branch=master)](https://travis-ci.org/InseeFr/Lunatic)
-[![Coverage Status](https://coveralls.io/repos/github/InseeFr/Lunatic/badge.svg?branch=master)](https://coveralls.io/github/InseeFr/Lunatic?branch=master)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_Lunatic&metric=coverage)](https://sonarcloud.io/dashboard?id=InseeFr_Lunatic)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_Lunatic&metric=alert_status)](https://sonarcloud.io/dashboard?id=InseeFr_Lunatic)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 

@@ -7,7 +7,7 @@ const options = [
 	{ value: 'france', label: 'France' },
 	{ value: 'italy', label: 'Italy' },
 ];
-const response = { valueState: [{ valueType: 'COLLECTED', value: 'italy' }] };
+const response = { values: { COLLECTED: 'italy' } };
 
 const defaultProps = {
 	id: 'id',
@@ -22,22 +22,11 @@ describe('checkbox-one', () => {
 		mount(<CheckboxOne {...defaultProps} />);
 	});
 
-	it('returns tooltip and keyboardSelection component', () => {
-		shallow(<CheckboxOne {...defaultProps} tooltip keyboardSelection />);
+	it('returns management component', () => {
+		shallow(<CheckboxOne {...defaultProps} management />);
 	});
 
-	it('renders firing useEffect', () => {
-		const wrapper = mount(<CheckboxOne {...defaultProps} />);
-		wrapper.setProps({ focused: true });
-	});
-
-	it('should trigger the change event', () => {
-		const wrapper = shallow(<CheckboxOne {...defaultProps} />);
-		wrapper
-			.find('input')
-			.first()
-			.simulate('change');
-		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': 'france' });
+	it('returns disabled component', () => {
+		shallow(<CheckboxOne {...defaultProps} label="label" disabled />);
 	});
 });

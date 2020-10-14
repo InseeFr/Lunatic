@@ -8,8 +8,9 @@ const Management = () => (
 		savingType={'EDITED'}
 		preferences={['COLLECTED', 'FORCED', 'EDITED']}
 		source={simpsons}
+		features={['VTL']}
 		data={data}
-		tooltip
+		management
 		filterDescription
 	/>
 );

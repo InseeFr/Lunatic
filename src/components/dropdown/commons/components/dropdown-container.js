@@ -13,13 +13,13 @@ import {
 } from '../event-callbacks';
 
 /** */
-const stopAndPrevent = e => {
+const stopAndPrevent = (e) => {
 	e.preventDefault();
 	e.stopPropagation();
 };
 
 /** */
-const onKeyDownCallback_ = (state, dispatch, onSelect) => e => {
+const onKeyDownCallback_ = (state, dispatch, onSelect) => (e) => {
 	switch (e.key) {
 		case BINDED_KEYS.enter:
 		case BINDED_KEYS.arrowUp:
@@ -34,6 +34,8 @@ const onKeyDownCallback_ = (state, dispatch, onSelect) => e => {
 	}
 };
 
+const getZIndex = (z) => z || 0;
+
 const DropdownContainer = ({
 	options,
 	children,
@@ -45,9 +47,10 @@ const DropdownContainer = ({
 	mandatory,
 	value: valueFromProps,
 	zIndex,
-	tooltip,
+	management,
 	state,
 	dispatch,
+	refs,
 }) => {
 	const { visible, focused, id, disabled } = state;
 
@@ -55,21 +58,18 @@ const DropdownContainer = ({
 		dispatch(actions.hidePanel());
 		dispatch(actions.setFocused(false));
 	});
-	useEffect(
-		e => {
-			const hook = e => {
-				dispatch(actions.hidePanel());
-				dispatch(actions.setFocused(false));
-			};
-			window.addEventListener('mousedown', hook);
+	useEffect(() => {
+		const hook = () => {
+			dispatch(actions.hidePanel());
+			dispatch(actions.setFocused(false));
+		};
+		window.addEventListener('mousedown', hook);
 
-			return () => {
-				window.removeEventListener('mousedown', hook);
-				CLEAN.clear(id);
-			};
-		},
-		[id, dispatch]
-	);
+		return () => {
+			window.removeEventListener('mousedown', hook);
+			CLEAN.clear(id);
+		};
+	}, [id, dispatch]);
 
 	useEffect(() => {
 		dispatch(actions.setOptions(options));
@@ -89,6 +89,8 @@ const DropdownContainer = ({
 		}
 	}, [valueFromProps, options, dispatch]);
 
+	const z = getZIndex(zIndex);
+
 	return (
 		<div
 			className={classnames(
@@ -103,15 +105,19 @@ const DropdownContainer = ({
 			onMouseDown={onMouseDownCallback(state, dispatch, 'id')}
 			onKeyDown={onKeyDownCallback_(state, dispatch, onSelect)}
 			onFocus={() => dispatch(actions.setFocused(true && !disabled))}
+			onBlur={function () {
+				dispatch(actions.setFocused(false));
+			}}
+			ref={refs}
 		>
 			{label ? (
 				<Label content={label} focused={focused} mandatory={mandatory} />
 			) : null}
 			<div className="field-container">
-				<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+				<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 					<div
 						tabIndex="-1"
-						style={{ zIndex: zIndex || 0 }}
+						style={{ zIndex: focused ? z + 1 : z }}
 						className="lunatic-dropdown-container"
 					>
 						<span
@@ -125,11 +131,11 @@ const DropdownContainer = ({
 						</span>
 					</div>
 				</div>
-				{tooltip && (
+				{management && (
 					<div className="tooltip">
 						<TooltipResponse
 							id={id}
-							response={U.buildResponse(options)(response)}
+							response={U.buildMultiTooltipResponse(options)(response)}
 						/>
 					</div>
 				)}
@@ -158,4 +164,6 @@ DropdownContainer.defaultProps = {
 	onSelect: () => null,
 };
 
-export default DropdownContainer;
+export default React.forwardRef((props, ref) => (
+	<DropdownContainer {...props} refs={ref} />
+));

@@ -14,6 +14,7 @@
 |   placeholder    | string |      ""       |          | Placeholder of the input             |
 |   handleChange   |  func  |       -       |    ✓     | Handler of the input                 |
 |     readOnly     |  bool  |     false     |          | Is the input read only               |
+|     disabled     |  bool  |     false     |          | Is the input disabled                |
 |   autoComplete   |  bool  |     false     |          | Is the input autocompletable         |
 |     focused      |  bool  |     false     |          | Is the input focused                 |
 | labelPosition \* | string |   "DEFAULT"   |          | Position of the input label          |
@@ -21,12 +22,12 @@
 | declarations \*  | array  |      [ ]      |          | Declarations of the input            |
 |     features     | array  |      [ ]      |          | Component features for labels        |
 |     bindings     | object |      [ ]      |          | Questionnaire bindings               |
-|     mandatory     |  bool  |     false     |          | Is the input mandatory                |
-|     tooltip      |  bool  |     false     |          | Tooltip of the input                 |
+|    mandatory     |  bool  |     false     |          | Is the input mandatory               |
+|    management    |  bool  |     false     |          | Management mode of the input         |
 |      style       | object |      {}       |          | Style of the input                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
-- `response` props has to be a shape of `{name: string, valueState: object}`
+- `response` props has to be a shape of `{name: string, values: object}`
 - `labelPosition` props has to be one of `DEFAULT`, `TOP`, `BOTTOM`, `RIGHT` or `LEFT`
 - `unitPosition` props has to be one of `DEFAULT`, `BEFORE` or `AFTER`
 - `declarations` are documented in the `Declarations` component

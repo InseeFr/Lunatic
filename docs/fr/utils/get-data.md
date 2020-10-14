@@ -7,7 +7,7 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 
 #### Arguments
 
-`questionnaire` (`object`) : au format Lunatic-Model
+`questionnaire` (`object`) : initialement au format Lunatic-Model, transformé en amont par la fonction `mergeQuestionnaireAndData`
 
 #### Retour
 
@@ -35,22 +35,35 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 {
 	"components": [
 		{
+			"id": "1",
 			"componentType": "Input",
 			"response": {
 				"name": "variable1",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "value collected" },
-					{ "valueType": "FORCED", "value": "value forced" },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "value collected",
+					"FORCED": "value forced",
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
 	],
-	"variables": [
-		{ "variableType": "EXTERNAL", "name": "ext", "value": "external var" }
-	]
+	"variables": {
+		"COLLECTED": {
+			"variable1": {
+				"componentRef": "1",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "value collected",
+					"FORCED": "value forced",
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		},
+		"EXTERNAL": { "ext": "external var" }
+	}
 }
 ```
 
@@ -70,7 +83,7 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 
 #### Arguments
 
-`questionnaire` (`object`) : au format Lunatic-Model
+`questionnaire` (`object`) : initialement au format Lunatic-Model, transformé en amont par la fonction `mergeQuestionnaireAndData`
 
 #### Retour
 
@@ -91,22 +104,35 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 {
 	"components": [
 		{
+			"id": "1",
 			"componentType": "Input",
 			"response": {
 				"name": "variable1",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "value collected" },
-					{ "valueType": "FORCED", "value": "value forced" },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "value collected",
+					"FORCED": "value forced",
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
 	],
-	"variables": [
-		{ "variableType": "EXTERNAL", "name": "ext", "value": "external var" }
-	]
+	"variables": {
+		"COLLECTED": {
+			"variable1": {
+				"componentRef": "1",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "value collected",
+					"FORCED": "value forced",
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		},
+		"EXTERNAL": { "ext": "external var" }
+	}
 }
 ```
 
@@ -122,7 +148,7 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 
 #### Arguments
 
-`questionnaire` (`object`) : au format Lunatic-Model
+`questionnaire` (`object`) : initialement au format Lunatic-Model, transformé en amont par la fonction `mergeQuestionnaireAndData`
 
 (`valueType` (`string`), `displayNull` (`boolean`)) : un des cinq valueType du Lunatic-Model et un boolean pour retourner - ou non - les variables dont la valeur est nulle
 
@@ -144,35 +170,59 @@ Pour y accéder plus facilement (sauvegarde, exécution de contrôle, ...), troi
 {
 	"components": [
 		{
+			"id": "1",
 			"componentType": "Input",
 			"response": {
 				"name": "variable1",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "value collected" },
-					{ "valueType": "FORCED", "value": "value forced" },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "value collected",
+					"FORCED": "value forced",
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
-		},
+		}
 		{
+			"id": "2",
 			"componentType": "Input",
 			"response": {
 				"name": "variable2",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": null },
-					{ "valueType": "FORCED", "value": null },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
 			}
 		}
 	],
-	"variables": [
-		{ "variableType": "EXTERNAL", "name": "ext", "value": "external var" }
-	]
+	"variables": {
+		"COLLECTED": {
+			"variable1": {
+				"componentRef": "1",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": "value collected",
+					"FORCED": "value forced",
+					"EDITED": null,
+					"INPUTED": null
+				}
+			},
+			"variable2": {
+				"componentRef": "2",
+				"values": {
+					"PREVIOUS": null,
+					"COLLECTED": null,
+					"FORCED": null,
+					"EDITED": null,
+					"INPUTED": null
+				}
+			}
+		},
+		"EXTERNAL": { "ext": "external var" }
+	}
 }
 ```
 

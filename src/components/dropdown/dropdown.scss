@@ -84,6 +84,10 @@ $inputHeight: 2em;
 			}
 
 			.lunatic-transition {
+				&.width-auto  {
+					display: inline-block;// for fix width 
+				}
+				
 				visibility: hidden;
 				overflow-y: hidden;
 				opacity: 0;

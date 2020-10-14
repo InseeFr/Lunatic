@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from './img/lunatic-logo.png';
 import { CollectOrchestrator, ManagementOrchestrator } from './orchestrator';
+import { dependencies } from '../package.json';
 import './custom-lunatic.scss';
 
 const Home = () => {
@@ -18,6 +19,10 @@ const Home = () => {
 							: setFakeRoute('/collect')
 					}
 				/>
+				<div>{`Lunatic version: ${dependencies['@inseefr/lunatic'].replace(
+					'^',
+					''
+				)}`}</div>
 			</div>
 			{fakeRoute === '/collect' ? (
 				<CollectOrchestrator />

@@ -2,20 +2,27 @@
 	"components": [
 		{
 			"id": "j334cyqb",
-			"componentType": "Datepicker",	
+			"componentType": "Datepicker",
 			"mandatory": false,
 			"label": "➡ 5. When was the first episode of the Simpsons?",
 			"response": {
-				"name": "DATEFIRST",
-				"valueState": [
-					{ "valueType": "PREVIOUS", "value": null },
-					{ "valueType": "COLLECTED", "value": "2000-07-12" },
-					{ "valueType": "FORCED", "value": "1989-12-17" },
-					{ "valueType": "EDITED", "value": null },
-					{ "valueType": "INPUTED", "value": null }
-				]
+				"name": "DATEFIRST"
 			},
 			"dateFormat": "jj/mm/aaaa"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "DATEFIRST",
+			"componentRef": "j334cyqb",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "2000-07-12",
+				"FORCED": "1989-12-17",
+				"EDITED": null,
+				"INPUTED": null
+			}
 		}
 	]
 }

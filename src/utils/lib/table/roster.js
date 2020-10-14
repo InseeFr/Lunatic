@@ -1,4 +1,7 @@
-export const getRosterInitLines = cells =>
+const isResponseEmpty = (response) =>
+	Object.values(response.values).filter((v) => v !== null).length === 0;
+
+export const getRosterInitLines = (cells) =>
 	Array.isArray(cells)
 		? cells
 				.reduce(
@@ -11,11 +14,5 @@ export const getRosterInitLines = cells =>
 					],
 					[]
 				)
-				.filter(b => b).length
+				.filter((b) => b).length
 		: 0;
-
-const isResponseEmpty = response =>
-	response.valueState.reduce((_, { value }) => {
-		if (!_) return _;
-		return value === null;
-	}, true);

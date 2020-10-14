@@ -4,7 +4,9 @@ La bibliothèque de composants Lunatic et le modèle Lunatic étant intimement l
 
 | Date de publication | Lunatic | Lunatic-Model |
 | :-----------------: | :-----: | :-----------: |
-|      03/02/19       |  1.2.1  |     1.0.0     |
+|   coming soon...    |  2.0.0  |     X.X.X     |
+|      07/04/20       |  1.2.2  |     1.0.0     |
+|      03/02/20       |  1.2.1  |     1.0.0     |
 |      12/12/19       |  1.1.3  |     1.0.0     |
 |      29/10/19       |  1.1.1  |     1.0.0     |
 |      16/10/19       |  1.0.2  |     1.0.0     |

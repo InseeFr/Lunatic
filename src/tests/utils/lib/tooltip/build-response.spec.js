@@ -1,50 +1,95 @@
-import { buildResponse } from 'utils/lib';
+import {
+	buildMultiTooltipResponse,
+	buildBooleanTooltipResponse,
+} from 'utils/lib';
 
-const options = [{ value: '1', label: 'Yes' }, { value: '0', label: 'No' }];
+const options = [
+	{ value: '1', label: 'Yes' },
+	{ value: '0', label: 'No' },
+];
 
 const responseNull = {
 	name: 'Response',
-	valueState: [
-		{ valueType: 'PREVIOUS', value: null },
-		{ valueType: 'COLLECTED', value: null },
-		{ valueType: 'FORCED', value: null },
-		{ valueType: 'EDITED', value: null },
-		{ valueType: 'INPUTED', value: null },
-	],
+	values: {
+		PREVIOUS: null,
+		COLLECTED: null,
+		FORCED: null,
+		EDITED: null,
+		INPUTED: null,
+	},
 };
 
 const response = {
 	name: 'Response',
-	valueState: [
-		{ valueType: 'PREVIOUS', value: null },
-		{ valueType: 'COLLECTED', value: '1' },
-		{ valueType: 'FORCED', value: '0' },
-		{ valueType: 'EDITED', value: '1' },
-		{ valueType: 'INPUTED', value: null },
-	],
+	values: {
+		PREVIOUS: null,
+		COLLECTED: '1',
+		FORCED: '0',
+		EDITED: '1',
+		INPUTED: null,
+	},
 };
 
 const finalResponse = {
 	name: 'Response',
-	valueState: [
-		{ valueType: 'PREVIOUS', value: null },
-		{ valueType: 'COLLECTED', value: 'Yes' },
-		{ valueType: 'FORCED', value: 'No' },
-		{ valueType: 'EDITED', value: 'Yes' },
-		{ valueType: 'INPUTED', value: null },
-	],
+	values: {
+		PREVIOUS: null,
+		COLLECTED: 'Yes',
+		FORCED: 'No',
+		EDITED: 'Yes',
+		INPUTED: null,
+	},
+};
+
+const booleanResponse = {
+	name: 'Response',
+	values: {
+		PREVIOUS: null,
+		COLLECTED: true,
+		FORCED: false,
+		EDITED: true,
+		INPUTED: null,
+	},
+};
+
+const booleanFinalResponse = {
+	name: 'Response',
+	values: {
+		PREVIOUS: null,
+		COLLECTED: 'Vrai',
+		FORCED: 'Faux',
+		EDITED: 'Vrai',
+		INPUTED: null,
+	},
 };
 
 describe('build response', () => {
-	describe('buildResponse', () => {
+	describe('buildMultiTooltipResponse', () => {
 		it('should return default value', () => {
-			expect(buildResponse()()).toEqual({});
+			expect(buildMultiTooltipResponse()()).toEqual({});
 		});
 		it('should return same response', () => {
-			expect(buildResponse(options)(responseNull)).toEqual(responseNull);
+			expect(buildMultiTooltipResponse(options)(responseNull)).toEqual(
+				responseNull
+			);
 		});
 		it('should return updated response', () => {
-			expect(buildResponse(options)(response)).toEqual(finalResponse);
+			expect(buildMultiTooltipResponse(options)(response)).toEqual(
+				finalResponse
+			);
+		});
+	});
+	describe('buildBooleanTooltipResponse', () => {
+		it('should return default value', () => {
+			expect(buildBooleanTooltipResponse()).toEqual({});
+		});
+		it('should return same response', () => {
+			expect(buildBooleanTooltipResponse(responseNull)).toEqual(responseNull);
+		});
+		it('should return updated response', () => {
+			expect(buildBooleanTooltipResponse(booleanResponse)).toEqual(
+				booleanFinalResponse
+			);
 		});
 	});
 });

@@ -15,11 +15,11 @@
 | declarations \* | array  |      [ ]      |          | Declarations of the checkbox            |
 |    features     | array  |      [ ]      |          | Component features for labels           |
 |    bindings     | object |      [ ]      |          | Questionnaire bindings                  |
-|     tooltip     |  bool  |     false     |          | Tooltip of the checkbox                 |
+|   management    |  bool  |     false     |          | Management mode of the checkbox         |
 |      style      | object |      { }      |          | Style of the checkbox                   |
 
 - `preferences` props has to be an ordered array of `COLLECTED`, `FORCED` or `EDITED`
-- `response` props has to be a shape of `{name: string, valueState: object}`
+- `response` props has to be a shape of `{name: string, values: object}`
 - `declarations` are documented in the `Declarations` component
 
 ## Styles

@@ -1,40 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as lunatic from 'components';
-import * as utils from 'utils/to-expose';
 
-const OrchestratorForStories = ({ source, tooltip, ...props }) => {
-	const savingType = tooltip ? 'EDITED' : 'COLLECTED';
-	const preferences = tooltip
+const OrchestratorForStories = ({
+	source,
+	data = {},
+	management = false,
+	features,
+	...rest
+}) => {
+	const preferences = management
 		? ['COLLECTED', 'FORCED', 'EDITED']
 		: ['COLLECTED'];
-	const [questionnaire, setQuestionnaire] = useState(
-		utils.mergeQuestionnaireAndData(source)({})
+	const savingType = management ? 'EDITED' : 'COLLECTED';
+	const { handleChange, components, bindings } = lunatic.useLunatic(
+		source,
+		data,
+		{
+			savingType,
+			preferences,
+			features,
+			management,
+		}
 	);
-	const onChange = updatedValue => {
-		setQuestionnaire(
-			utils.updateQuestionnaire(savingType)(questionnaire)(preferences)(
-				updatedValue
-			)
-		);
-	};
 
-	const components = questionnaire.components.map(q => {
-		const { id, componentType } = q;
-		const Component = lunatic[componentType];
-		return (
-			<div className="lunatic-input" key={`component-${id}`}>
-				<Component
-					{...q}
-					handleChange={onChange}
-					labelPosition="TOP"
-					preferences={preferences}
-					tooltip={tooltip}
-					{...props}
-				/>
+	return (
+		<div className="container">
+			<div className="components">
+				{components.map((q) => {
+					const { id, componentType } = q;
+					const Component = lunatic[componentType];
+					return (
+						<div className="lunatic lunatic-component" key={`component-${id}`}>
+							<Component
+								{...q}
+								{...rest}
+								handleChange={handleChange}
+								preferences={preferences}
+								management={management}
+								features={features}
+								bindings={bindings}
+								writable
+							/>
+						</div>
+					);
+				})}
 			</div>
-		);
-	});
-	return <div className="lunatic-forms">{components}</div>;
+		</div>
+	);
 };
 
 export default OrchestratorForStories;

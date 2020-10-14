@@ -5,7 +5,7 @@ import * as actions from '../commons/actions';
 import Panel from '../commons/components/panel';
 import DropdownContainer from '../commons/components/dropdown-container';
 import { preparePrefix } from './prefix-tools';
-import reducer, { initial } from './reducer';
+import reducer, { initial } from '../commons/reducer';
 import Option from './option';
 import Icone from './icone';
 
@@ -14,7 +14,7 @@ const isDisplay = ({ visible, visibleOptions }) =>
 	visible && visibleOptions.length > 0;
 
 /** */
-const onChangeCallback = (state, dispatch) => e => {
+const onChangeCallback = (state, dispatch) => (e) => {
 	e.stopPropagation();
 	e.preventDefault();
 	dispatch(actions.setValue(e.target.value));
@@ -22,7 +22,7 @@ const onChangeCallback = (state, dispatch) => e => {
 };
 
 /** */
-const createOnSelect = (_, dispatch, onSelect) => option => {
+const createOnSelect = (_, dispatch, onSelect) => (option) => {
 	dispatch(actions.setSelectedOption(option));
 	dispatch(actions.hidePanel());
 	onSelect(option);
@@ -32,41 +32,46 @@ const createOnSelect = (_, dispatch, onSelect) => option => {
  *
  * @param {props}
  */
-const Dropdown = ({
+function Dropdown({
+	widthAuto,
 	options = [],
 	onSelect,
 	response,
 	className,
-	placeHolder,
+	placeholder,
 	label,
 	labelPosition,
 	mandatory,
 	value: valueFromProps,
 	zIndex,
-	tooltip,
+	management,
 	disabled,
-}) => {
+	focused: initFocused,
+}) {
 	const [state, dispatch] = useReducer(reducer, {
 		...initial,
 		id: `dropdown-${new Date().getMilliseconds()}`,
 		disabled,
+		focused: initFocused,
 	});
 	const {
 		prefix,
 		visible,
 		activeIndex,
 		visibleOptions,
-		selectedOption,
 		value,
 		focused,
 		id,
 	} = state;
 	const inputEl = useRef();
+	const containerEl = useRef();
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
+	const selectedOption = options.find((o) => o.value === value);
 	return (
 		<DropdownContainer
 			className={className || 'lunatic-dropdown'}
 			state={state}
+			ref={containerEl}
 			dispatch={dispatch}
 			options={options}
 			label={label}
@@ -76,7 +81,7 @@ const Dropdown = ({
 			onSelect={onSelect_}
 			value={valueFromProps}
 			zIndex={zIndex}
-			tooltip={tooltip}
+			management={management}
 		>
 			<div
 				className={classnames('lunatic-dropdown-input', { focused, disabled })}
@@ -84,17 +89,14 @@ const Dropdown = ({
 				<input
 					type="text"
 					ref={inputEl}
-					value={value}
+					value={value || ''}
 					disabled={disabled}
-					placeholder={placeHolder}
+					placeholder={placeholder}
 					autoComplete="list"
 					autoCorrect="off"
 					autoCapitalize="off"
 					spellCheck="false"
-					tabIndex="0"
-					onFocus={() => {
-						dispatch(actions.setFocused(true && !disabled));
-					}}
+					tabIndex="-1"
 					onChange={onChangeCallback(state, dispatch)}
 				/>
 			</div>
@@ -102,23 +104,28 @@ const Dropdown = ({
 				prefix={prefix}
 				visible={visible}
 				disabled={disabled}
-				onDelete={e => {
+				onDelete={(e) => {
 					e.stopPropagation();
 					inputEl.current.value = '';
 					dispatch(actions.resetSelection());
 					onSelect_({ value: null });
 				}}
-				onSwitch={e => {
+				onSwitch={(e) => {
 					e.stopPropagation();
+					e.preventDefault();
 					if (visible) {
 						dispatch(actions.hidePanel());
-					} else dispatch(actions.showPanel());
+					} else {
+						dispatch(actions.showPanel());
+						containerEl.current.focus();
+					}
 				}}
 			/>
 			<div
 				tabIndex="-1"
 				className={classnames('lunatic-transition', {
 					visible: isDisplay(state),
+					'width-auto': widthAuto,
 				})}
 			>
 				<Panel
@@ -130,21 +137,23 @@ const Dropdown = ({
 					optionComponent={Option}
 					selectedOption={selectedOption}
 					onSelect={onSelect_}
-					handleActive={index => dispatch(actions.setActiveOption(index))}
+					handleActive={(index) => dispatch(actions.setActiveOption(index))}
 				/>
 			</div>
 		</DropdownContainer>
 	);
-};
+}
 
 Dropdown.propTypes = {
+	widthAuto: PropTypes.bool,
 	zIndex: PropTypes.number,
 	disabled: PropTypes.bool,
+	focused: PropTypes.bool,
 	className: PropTypes.string,
 	id: PropTypes.string,
 	options: PropTypes.array.isRequired,
 	onSelect: PropTypes.func,
-	placeHolder: PropTypes.string,
+	placeholder: PropTypes.string,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
@@ -156,8 +165,10 @@ Dropdown.defaultProps = {
 	options: [],
 	zIndex: 0,
 	onSelect: () => null,
-	placeHolder: 'Search...',
+	placeholder: 'Search...',
 	disabled: false,
+	focused: false,
+	widthAuto: false,
 };
 
 export default Dropdown;

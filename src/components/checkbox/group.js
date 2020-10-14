@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
-import * as C from '../../utils/constants';
+import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import './checkbox.scss';
 
@@ -20,15 +20,24 @@ const CheckboxGroup = ({
 	declarations,
 	features,
 	bindings,
-	tooltip,
+	management,
 	style,
 }) => {
-	const { fieldsetStyle, checkboxStyle } = style;
+	const { fieldsetStyle, modalityStyle } = style;
 	const inputRef = useRef();
+
+	const specificHandleChange = (e) => {
+		const [key, value] = Object.entries(e)[0];
+		if (value === false && U.responsesToClean(responses)(preferences)(key))
+			handleChange({ [key]: null });
+		else handleChange(e);
+	};
 
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
+
+	const checkedArray = [];
 
 	return (
 		<>
@@ -54,6 +63,9 @@ const CheckboxGroup = ({
 				/>
 				{responses.map(({ id: modId, label: modLabel, response }, i) => {
 					const checked = U.getResponseByPreference(preferences)(response);
+					if (checked) checkedArray.push(modId);
+					const toRef =
+						i === 0 || (checkedArray[0] && checkedArray[0] === modId);
 					const interpretedLabel = interpret(features)(bindings)(modLabel);
 					return (
 						<div
@@ -61,21 +73,25 @@ const CheckboxGroup = ({
 							key={`checkbox-${id}-${modId}`}
 						>
 							<div className="field-container">
-								<div className={`${tooltip ? 'field-with-tooltip' : 'field'}`}>
+								<div
+									className={`${management ? 'field-with-tooltip' : 'field'}`}
+								>
 									<div
-										className={`checkbox-modality ${checked ? 'content-checked' : ''}`}
+										className={`checkbox-modality ${
+											checked ? 'content-checked' : ''
+										}`}
 									>
 										<input
 											type="checkbox"
 											id={`checkbox-${id}-${modId}`}
-											ref={inputRef}
+											ref={toRef ? inputRef : null}
 											key={`checkbox-${id}-${modId}`}
 											aria-labelledby={`input-label-${id}-${modId}`}
 											className="checkbox-lunatic"
 											checked={checked}
 											disabled={disabled}
-											onChange={e => {
-												handleChange({
+											onChange={(e) => {
+												specificHandleChange({
 													[U.getResponseName(response)]: e.target.checked,
 												});
 											}}
@@ -83,17 +99,22 @@ const CheckboxGroup = ({
 										<label
 											htmlFor={`checkbox-${id}-${modId}`}
 											id={`input-label-${id}-${modId}`}
-											style={checked ? U.buildStyleObject(checkboxStyle) : {}}
+											style={checked ? U.buildStyleObject(modalityStyle) : {}}
 										>
 											{keyboardSelection
-												? `${U.getAlphabet()[i].toUpperCase()} - ${interpretedLabel}`
+												? `${U.getAlphabet()[
+														i
+												  ].toUpperCase()} - ${interpretedLabel}`
 												: interpretedLabel}
 										</label>
 									</div>
 								</div>
-								{tooltip && (
+								{management && (
 									<div className="tooltip">
-										<TooltipResponse id={id} response={response} />
+										<TooltipResponse
+											id={id}
+											response={U.buildBooleanTooltipResponse(response)}
+										/>
 									</div>
 								)}
 							</div>
@@ -123,8 +144,8 @@ CheckboxGroup.defaultProps = {
 	declarations: [],
 	features: [],
 	bindings: {},
-	tooltip: false,
-	style: { fieldsetStyle: {}, checkboxStyle: {} },
+	management: false,
+	style: { fieldsetStyle: {}, modalityStyle: {} },
 };
 
 CheckboxGroup.propTypes = {
@@ -140,8 +161,8 @@ CheckboxGroup.propTypes = {
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
-	tooltip: PropTypes.bool,
+	management: PropTypes.bool,
 	style: PropTypes.object,
 };
 
-export default CheckboxGroup;
+export default React.memo(CheckboxGroup, U.areEqual);

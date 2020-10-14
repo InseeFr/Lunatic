@@ -1,0 +1,69 @@
+{
+	"components": [
+		{
+			"id": "k3ylzyo4",
+			"componentType": "RosterForLoop",
+			"mandatory": true,
+			"positioning": "HORIZONTAL",
+			"label": "\"Qui sont les personnes qui habitent dans votre logement ?\"",
+			"conditionFilter": "\"normal\"",
+			"bindingDependencies": ["PRENOM", "AGE"],
+			"lines": { "min": 1, "max": 10 },
+			"headers": [
+				{ "headerCell": true, "label": "Prénom" },
+				{ "headerCell": true, "label": "Age" }
+			],
+			"components": [
+				{
+					"componentType": "Input",
+					"conditionFilter": "\"normal\"",
+					"maxLength": 30,
+					"bindingDependencies": ["PRENOM"],
+					"id": "k3yn2qmr",
+					"response": {
+						"name": "PRENOM"
+					}
+				},
+				{
+					"componentType": "InputNumber",
+					"label": "\"Age de \" || PRENOM",
+					"conditionFilter": "\"normal\"",
+					"min": 0,
+					"max": 120,
+					"decimals": 0,
+					"bindingDependencies": ["AGE", "PRENOM"],
+					"id": "k3ymundt",
+					"response": {
+						"name": "AGE"
+					}
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		}
+	]
+}
