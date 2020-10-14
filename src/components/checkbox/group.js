@@ -101,7 +101,7 @@ const CheckboxGroup = ({
 											id={`input-label-${id}-${modId}`}
 											style={checked ? U.buildStyleObject(modalityStyle) : {}}
 										>
-											{true && (
+											{keyboardSelection && (
 												<span className="code-modality">
 													{responses.length <= 9
 														? i + 1
