@@ -103,7 +103,7 @@ const CheckboxGroup = ({
 										>
 											{keyboardSelection && (
 												<span className="code-modality">
-													{responses.length <= 9
+													{responses.length < 10
 														? i + 1
 														: U.getAlphabet()[i].toUpperCase()}{' '}
 												</span>

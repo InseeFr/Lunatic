@@ -92,7 +92,7 @@ const ListDeclarationsWrapper = ({
 									>
 										{keyboardSelection && (
 											<span className="code-modality">
-												{options.length <= 9
+												{options.length < 10
 													? i + 1
 													: U.getAlphabet()[i].toUpperCase()}{' '}
 											</span>
