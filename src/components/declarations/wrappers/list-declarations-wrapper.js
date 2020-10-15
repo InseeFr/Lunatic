@@ -94,7 +94,7 @@ const ListDeclarationsWrapper = ({
 											<span className="code-modality">
 												{options.length < 10
 													? i + 1
-													: U.getAlphabet()[i].toUpperCase()}{' '}
+													: U.getAlphabet()[i].toUpperCase()}
 											</span>
 										)}
 										{interpretedLabel}
