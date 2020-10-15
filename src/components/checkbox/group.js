@@ -101,11 +101,14 @@ const CheckboxGroup = ({
 											id={`input-label-${id}-${modId}`}
 											style={checked ? U.buildStyleObject(modalityStyle) : {}}
 										>
-											{keyboardSelection
-												? `${U.getAlphabet()[
-														i
-												  ].toUpperCase()} - ${interpretedLabel}`
-												: interpretedLabel}
+											{keyboardSelection && (
+												<span className="code-modality">
+													{responses.length < 10
+														? i + 1
+														: U.getAlphabet()[i].toUpperCase()}{' '}
+												</span>
+											)}
+											{interpretedLabel}
 										</label>
 									</div>
 								</div>
