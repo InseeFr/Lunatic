@@ -67,7 +67,7 @@ const ListDeclarationsWrapper = ({
 									key={`${type}-${id}-${optionValue}`}
 									className={`${type}-modality ${U.getItemsPositioningClass(
 										positioning
-									)}`}
+									)} ${checked ? 'content-checked' : ''}`}
 								>
 									<input
 										type={type}
