@@ -38,6 +38,11 @@ const InputNumber = ({
 	const [value, setValue] = useState(() =>
 		U.getResponseByPreference(preferences)(response)
 	);
+
+	// const previousValue = U.usePrevious(
+	// 	U.getResponseByPreference(preferences)(response)
+	// );
+
 	const [messagesError, setMessagesError] = useState(
 		[minMaxValidator({ min, max }), ...validators]
 			.map((v) => v(value))
@@ -48,6 +53,11 @@ const InputNumber = ({
 		response,
 		preferences,
 	]);
+
+	// useEffect(() => {
+	// 	if (previousValue === value)
+	// 		setValue(U.getResponseByPreference(preferences)(response));
+	// }, [response, preferences, previousValue, value]);
 
 	const onChange = debounce((v) => {
 		handleChange({
