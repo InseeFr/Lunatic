@@ -34,24 +34,18 @@ const InputDeclarationsWrapper = ({
 	const [value, setValue] = useState(() =>
 		U.getResponseByPreference(preferences)(response)
 	);
-	// const previousValue = U.usePrevious(
-	// 	U.getResponseByPreference(preferences)(response)
-	// );
+	const previousValue = U.usePrevious(
+		U.getResponseByPreference(preferences)(response)
+	);
 
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
 
 	useEffect(() => {
-		console.log('Response :');
-		console.log(response);
-		setValue(U.getResponseByPreference(preferences)(response));
+		if (previousValue === value)
+			setValue(U.getResponseByPreference(preferences)(response));
 	}, [response, preferences]);
-
-	// useEffect(() => {
-	// 	if (previousValue === value)
-	// 		setValue(U.getResponseByPreference(preferences)(response));
-	// }, [response, preferences, previousValue, value]);
 
 	const onChange = debounce((v) => {
 		handleChange({

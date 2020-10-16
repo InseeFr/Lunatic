@@ -31,6 +31,11 @@ const useLunatic = (
 		setTodo(updatedValue);
 	}, []);
 
+	// Assume we only want to handle source update
+	useEffect(() => {
+		setQuestionnaire(mergeQuestionnaireAndData(source)(data));
+	}, [source]);
+
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
 			const newQ = updateQuestionnaire(savingType)(questionnaire)(preferences)(
