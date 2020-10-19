@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { debounce } from 'debounce';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
@@ -39,26 +38,25 @@ const InputNumber = ({
 		U.getResponseByPreference(preferences)(response)
 	);
 
-	const previousValue = U.usePrevious(
-		U.getResponseByPreference(preferences)(response)
-	);
-
 	const [messagesError, setMessagesError] = useState(
 		[minMaxValidator({ min, max }), ...validators]
 			.map((v) => v(value))
 			.filter((m) => m !== undefined)
 	);
 
+	// Assume we only want to handle enable external updates
+	// Don't need to check all value changes
 	useEffect(() => {
-		if (previousValue === value)
+		if (U.getResponseByPreference(preferences)(response) !== value)
 			setValue(U.getResponseByPreference(preferences)(response));
-	}, [response, preferences, previousValue, value]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [response, preferences]);
 
-	const onChange = debounce((v) => {
+	const handleChangeOnBlur = () => {
 		handleChange({
-			[U.getResponseName(response)]: v,
+			[U.getResponseName(response)]: value,
 		});
-	}, 200);
+	};
 
 	const validate = (v) => {
 		setMessagesError(
@@ -130,14 +128,11 @@ const InputNumber = ({
 							autoComplete={autoComplete ? 'on' : 'off'}
 							required={mandatory}
 							aria-required={mandatory}
-							onChange={(e) => {
-								const {
-									target: { value: v },
-								} = e;
+							onChange={({ target: { value: v } }) => {
 								validate(v);
 								setValue(v);
-								onChange(v);
 							}}
+							onBlur={handleChangeOnBlur}
 						/>
 						{unitPosition === 'AFTER' && <span className="unit">{unit}</span>}
 					</div>

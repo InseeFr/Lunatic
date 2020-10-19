@@ -34,6 +34,7 @@ const useLunatic = (
 	// Assume we only want to handle source update
 	useEffect(() => {
 		setQuestionnaire(mergeQuestionnaireAndData(source)(data));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [source]);
 
 	useEffect(() => {
