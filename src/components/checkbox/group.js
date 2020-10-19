@@ -105,7 +105,7 @@ const CheckboxGroup = ({
 												<span className="code-modality">
 													{responses.length < 10
 														? i + 1
-														: U.getAlphabet()[i].toUpperCase()}{' '}
+														: U.getAlphabet()[i].toUpperCase()}
 												</span>
 											)}
 											{interpretedLabel}

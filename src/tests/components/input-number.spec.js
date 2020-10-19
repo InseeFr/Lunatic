@@ -87,7 +87,7 @@ describe('input-number', () => {
 				value: '-10',
 			},
 		});
-		// TODO: memo or debounce issue ?
+		// TODO: onBlur issue ?
 		// expect(handleChange).toHaveBeenCalled();
 		// expect(handleChange).toHaveBeenCalledWith({ '': '-10' });
 		const wrapperMax = shallow(
@@ -98,7 +98,7 @@ describe('input-number', () => {
 				value: '1000',
 			},
 		});
-		// TODO: memo or debounce issue ?
+		// TODO: onBlur issue ?
 		// expect(handleChange).toHaveBeenCalled();
 		// expect(handleChange).toHaveBeenCalledWith({ '': '1000' });
 		const wrapperMinMax = shallow(
@@ -114,7 +114,7 @@ describe('input-number', () => {
 				value: '10',
 			},
 		});
-		// TODO: memo or debounce issue ?
+		// TODO: onBlur issue ?
 		// expect(handleChange).toHaveBeenCalled();
 		// expect(handleChange).toHaveBeenCalledWith({ '': '10' });
 	});

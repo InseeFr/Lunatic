@@ -50,7 +50,7 @@ describe('input-declarations-wrapper', () => {
 		wrapper.setProps({ focused: true });
 	});
 
-	// TODO: find a way to test with debounce under the hood
+	// TODO: find a way to test with onBlur under the hood
 
 	// it('should trigger the change event', () => {
 	// 	const wrapper = shallow(<InputDeclarationsWrapper {...defaultProps} />);

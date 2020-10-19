@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { debounce } from 'debounce';
 import Declarations from '../';
 import { TooltipResponse } from '../../tooltip';
 import * as U from '../../../utils/lib';
@@ -39,16 +38,19 @@ const InputDeclarationsWrapper = ({
 		if (focused) inputRef.current.focus();
 	}, [focused]);
 
-	useEffect(() => setValue(U.getResponseByPreference(preferences)(response)), [
-		response,
-		preferences,
-	]);
+	// Assume we only want to handle enable external updates
+	// Don't need to check all value changes
+	useEffect(() => {
+		if (U.getResponseByPreference(preferences)(response) !== value)
+			setValue(U.getResponseByPreference(preferences)(response));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [response, preferences]);
 
-	const onChange = debounce((v) => {
+	const handleChangeOnBlur = () => {
 		handleChange({
-			[U.getResponseName(response)]: v,
+			[U.getResponseName(response)]: value,
 		});
-	}, 200);
+	};
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';
 
@@ -96,8 +98,8 @@ const InputDeclarationsWrapper = ({
 							aria-required={mandatory}
 							onChange={({ target: { value: v } }) => {
 								setValue(v);
-								onChange(v);
 							}}
+							onBlur={handleChangeOnBlur}
 						/>
 					</div>
 					{management && (
