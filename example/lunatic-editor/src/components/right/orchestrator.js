@@ -7,7 +7,7 @@ import './custom-lunatic.scss';
 const Questionnaire = ({ source, data, error }) => {
   const [questionnaire, setQuestionnaire] = useState(lunatic.mergeQuestionnaireAndData(source)({}));
   const [vtl, setVtl] = useState(true);
-  const [filter, setFilter] = useState(false);
+  // const [filter, setFilter] = useState(false);
 
   useEffect(() => {
     setQuestionnaire(lunatic.mergeQuestionnaireAndData(source)(data));
@@ -47,7 +47,8 @@ const Questionnaire = ({ source, data, error }) => {
             bindings={vtl ? bindings : {}}
             writable
             zIndex={1}
-            filterDescription={filter}
+            filterDesprition={false}
+            // filterDescription={filter}
           />
         </div>
       );
@@ -60,12 +61,12 @@ const Questionnaire = ({ source, data, error }) => {
         value={vtl}
         onChange={() => setVtl(!vtl)}
       />
-      <Activator
+      {/* <Activator
         id="filter-decsription"
         label={`Display filter description`}
         value={filter}
         onChange={() => setFilter(!filter)}
-      />
+      /> */}
       <h1 className="title">{questionnaire.label}</h1>
       <div className="components">{components}</div>
     </div>
