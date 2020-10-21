@@ -1,15 +1,15 @@
 export { default as Breadcrumb } from './breadcrumb';
 export { default as Button } from './button';
-export { CheckboxGroup, CheckboxOne, CheckboxBoolean } from './checkbox';
+export * from './checkbox';
 export { default as Datepicker } from './datepicker';
 export { default as Declarations } from './declarations';
 export { default as Dropdown } from './dropdown';
-export { Input, InputNumber } from './input';
+export * from './input';
 export { default as FilterDescription } from './filter-description';
 export { default as ProgressBar } from './progress-bar';
 export { default as Radio } from './radio';
 export { default as Loop } from './loop';
-export { RosterForLoop } from './loop-constructor';
+export * from './loop-constructor';
 export { default as Sequence } from './sequence';
 export { default as Subsequence } from './subsequence';
 export { default as Textarea } from './textarea';

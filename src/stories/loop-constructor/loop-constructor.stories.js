@@ -5,7 +5,7 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import dataRoster from './data-roster';
-import dataBlock from './data-roster';
+import dataBlock from './data-block';
 import { positioningOptions } from '../utils/options';
 import { select } from '@storybook/addon-knobs/react';
 
