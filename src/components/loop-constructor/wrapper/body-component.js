@@ -2,11 +2,13 @@ import React from 'react';
 import * as lunatic from '../../components';
 import * as U from '../../../utils/lib';
 import { interpret } from '../../../utils/to-expose';
+import { buildChildComponents } from './build-components';
 
 const BodyComponent = ({
 	componentType,
 	mainId,
-	uiComponents,
+	headers,
+	components,
 	bindings,
 	width,
 	preferences,
@@ -15,7 +17,8 @@ const BodyComponent = ({
 	features,
 	setTodo,
 }) => {
-	if (componentType === 'RosterForLoop')
+	if (componentType === 'RosterForLoop') {
+		const uiComponents = buildChildComponents(headers)(components);
 		return (
 			<table id={`table-${mainId}`} className="table-lunatic">
 				<tbody>
@@ -77,7 +80,9 @@ const BodyComponent = ({
 				</tbody>
 			</table>
 		);
-	else return null;
+	} else {
+		return null;
+	}
 };
 
 export default BodyComponent;

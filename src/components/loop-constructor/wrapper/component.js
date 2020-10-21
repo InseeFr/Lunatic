@@ -6,12 +6,10 @@ import Declarations from '../../declarations';
 import * as U from '../../../utils/lib';
 import * as C from '../../../constants';
 import { interpret } from '../../../utils/to-expose';
-import { buildChildComponents } from './build-components';
 
 const LoopConstructorWrapper = ({
 	id: mainId,
 	label: mainLabel,
-	headers,
 	components,
 	handleChange,
 	lines,
@@ -31,7 +29,6 @@ const LoopConstructorWrapper = ({
 
 	const width = `${100 / Math.max(...components.map((row) => row.length))}%`;
 	const Button = lunatic.Button;
-	const uiComponents = buildChildComponents(headers)(components);
 	const involvedVariables = U.getInvolvedVariables(components);
 
 	useEffect(() => {
@@ -84,7 +81,7 @@ const LoopConstructorWrapper = ({
 			/>
 			<BodyComponent
 				mainId={mainId}
-				uiComponents={uiComponents}
+				components={components}
 				bindings={bindings}
 				width={width}
 				features={features}

@@ -9,13 +9,10 @@
 			"conditionFilter": "\"normal\"",
 			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 10 },
-			"headers": [
-				{ "headerCell": true, "label": "Prénom" },
-				{ "headerCell": true, "label": "Age" }
-			],
 			"components": [
 				{
 					"componentType": "Input",
+					"label": "Prénom",
 					"conditionFilter": "\"normal\"",
 					"maxLength": 30,
 					"bindingDependencies": ["PRENOM"],
@@ -26,6 +23,7 @@
 				},
 				{
 					"componentType": "InputNumber",
+					"label": "Age",
 					"conditionFilter": "\"normal\"",
 					"min": 0,
 					"max": 120,
