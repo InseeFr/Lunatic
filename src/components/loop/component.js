@@ -72,6 +72,7 @@ const Loop = ({
 						id={`${idC}-loop-${rowNumber}`}
 						handleChange={(up) => setTodo({ up, rowNumber })}
 						bindings={loopBindings}
+						componentType={componentType}
 					/>
 				</div>
 			);
