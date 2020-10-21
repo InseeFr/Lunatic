@@ -1,6 +1,6 @@
 import * as C from '../../../constants';
 
-export const getRosterForLoopInitLines = (components) =>
+export const getLoopConstructorInitLines = (components) =>
 	Array.isArray(components)
 		? components.reduce(
 				(_, c) =>
@@ -27,7 +27,7 @@ export const getInvolvedVariables = (parentComponents) =>
 				.flat()
 		: [];
 
-export const lastRosterForLoopLineIsEmpty = (bindings) => (involvedVariables) =>
+export const lastLoopChildLineIsEmpty = (bindings) => (involvedVariables) =>
 	bindings && involvedVariables
 		? involvedVariables
 				.map((iv) => iv.name)
