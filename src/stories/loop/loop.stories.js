@@ -6,26 +6,16 @@ import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import dataLoop from './data-loop';
 import dataDeeperLoop from './data-loop-deeper';
-import dataRoster from './data-roster';
 import vqs from './vqs';
 import { positioningOptions } from '../utils/options';
 import { select } from '@storybook/addon-knobs/react';
 
-const stories = storiesOf('Loops', module)
+const stories = storiesOf('Loop', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
-		return <WrappedComponent title="Let's loop!" />;
+		return <WrappedComponent title="Loop" />;
 	});
-
-stories.addWithJSX('Default Roster', () => (
-	<Orchestrator
-		id="default"
-		source={dataRoster}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		features={['VTL']}
-	/>
-));
 
 stories.addWithJSX('Default Loop', () => (
 	<Orchestrator

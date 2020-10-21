@@ -1,4 +1,4 @@
-# TableVector component
+# Loop component
 
 ## Props
 
@@ -23,7 +23,3 @@
 - `cells` props has to be an array of array's components
 - `positioning` props has to be one of `DEFAULT`, `HORIZONTAL` or `VERTICAL`
 - `declarations` are documented in the `Declarations` component
-
-## Styles
-
-**Table** component has for class `table-lunatic`.

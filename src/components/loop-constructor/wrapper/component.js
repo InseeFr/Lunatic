@@ -6,7 +6,7 @@ import Declarations from '../../declarations';
 import * as U from '../../../utils/lib';
 import * as C from '../../../constants';
 import { interpret } from '../../../utils/to-expose';
-import { buildChildComponents } from '../wrapper/build-components';
+import { buildChildComponents } from './build-components';
 
 const LoopConstructorWrapper = ({
 	id: mainId,
