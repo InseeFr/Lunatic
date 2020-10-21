@@ -5,9 +5,10 @@ import Declarations from '../../declarations';
 import * as U from '../../../utils/lib';
 import * as C from '../../../constants';
 import { interpret } from '../../../utils/to-expose';
-import { buildRosterUIComponents } from './build-components';
+import { buildChildComponents } from '../wrapper/build-components';
 
 const RosterForLoop = ({
+	componentType,
 	id: tableId,
 	label: tableLabel,
 	preferences,
@@ -26,13 +27,13 @@ const RosterForLoop = ({
 	const [todo, setTodo] = useState({});
 	const minLines = Math.max(
 		lines.min || 0,
-		U.getRosterForLoopInitLines(components)
+		U.getLoopConstructorInitLines(components)
 	);
 	const maxLines = lines ? lines.max : undefined;
 
 	const width = `${100 / Math.max(...components.map((row) => row.length))}%`;
 	const Button = lunatic.Button;
-	const uiComponents = buildRosterUIComponents(headers)(components);
+	const uiComponents = buildChildComponents(headers)(components);
 	const involvedVariables = U.getInvolvedVariables(components);
 
 	useEffect(() => {
@@ -148,7 +149,7 @@ const RosterForLoop = ({
 					value={addBtnLabel}
 					disabled={
 						(Number.isInteger(minLines) && minLines === maxLines) ||
-						U.lastRosterForLoopLineIsEmpty(bindings)(involvedVariables)
+						U.lastLoopChildLineIsEmpty(bindings)(involvedVariables)
 					}
 					onClick={addLine}
 				/>
@@ -180,6 +181,7 @@ RosterForLoop.defaultProps = {
 };
 
 RosterForLoop.propTypes = {
+	componentType: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
 	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
