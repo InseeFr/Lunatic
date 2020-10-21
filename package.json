@@ -12,11 +12,11 @@
   "license": "MIT",
   "dependencies": {
     "@inseefr/lunatic": "^2.0.0-rc11",
-    "jsoneditor": "^8.6.3",
+    "jsoneditor": "^9.1.1",
     "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "react-scripts": "3.4.0"
   },
   "homepage": ".",
@@ -42,13 +42,13 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^6.7.2",
+    "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.17.0",
-    "prettier": "^1.19.1"
+    "prettier": "^2.1.2"
   }
 }
