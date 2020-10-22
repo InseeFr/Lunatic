@@ -2,7 +2,7 @@ import React from 'react';
 import * as lunatic from '../../components';
 import * as U from '../../../utils/lib';
 import { interpret } from '../../../utils/to-expose';
-import { buildRosterForLoopChildComponents } from './build-components';
+import { buildContentForLoopConstructor } from './build-components';
 
 const BodyComponent = ({
 	componentType,
@@ -17,8 +17,8 @@ const BodyComponent = ({
 	features,
 	setTodo,
 }) => {
-	if (componentType === 'RosterForLoop') {
-		const uiComponents = buildRosterForLoopChildComponents(headers)(components);
+	const uiComponents = buildContentForLoopConstructor({ components, headers });
+	if (componentType === 'RosterForLoop')
 		return (
 			<table id={`table-${mainId}`} className="table-lunatic">
 				<tbody>
@@ -80,17 +80,17 @@ const BodyComponent = ({
 				</tbody>
 			</table>
 		);
-	} else
+	else
 		return (
 			<div className="block-for-loop">
-				{components.map(
-					({ componentType, id, label, ...componentProps }, i) => {
+				{uiComponents.map((row, i) =>
+					row.map(({ componentType, id, label, ...componentProps }) => {
 						const Component = lunatic[componentType];
 						const localBindings = U.buildBindingsForDeeperComponents(i)(
 							bindings
 						);
 						return (
-							<div className="block-component">
+							<div className="block-component" key={`${id}-row-${i}`}>
 								<Component
 									{...componentProps}
 									id={`${id}-row-${i}`}
@@ -106,7 +106,7 @@ const BodyComponent = ({
 								/>
 							</div>
 						);
-					}
+					})
 				)}
 			</div>
 		);

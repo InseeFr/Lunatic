@@ -1,6 +1,6 @@
 import * as C from '../../../constants';
 
-export const buildRosterForLoopChildComponents = (headers) => (components) => {
+export const buildContentForLoopConstructor = ({ components, headers }) => {
 	const uiComponents = components.map((comp) => {
 		const { response, ...other } = comp;
 		const { name, values } = response;
@@ -22,5 +22,5 @@ export const buildRosterForLoopChildComponents = (headers) => (components) => {
 	}, []);
 	const transpose = (m) => m[0].map((_, i) => m.map((x) => x[i]));
 	const rows = transpose(uiComponents);
-	return [headers, ...rows];
+	return headers ? [headers, ...rows] : rows;
 };
