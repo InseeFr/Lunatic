@@ -4,41 +4,74 @@ import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
-import dataLoop from './data-loop';
-import dataDeeperLoop from './data-loop-deeper';
-import vqs from './vqs';
+import * as R from './with-roster';
+import * as B from './with-block';
 import { positioningOptions } from '../utils/options';
 import { select } from '@storybook/addon-knobs/react';
 
-const stories = storiesOf('Loop', module)
+const storiesR = storiesOf('Loop/With roster', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="Loop" />;
 	});
 
-stories.addWithJSX('Default Loop', () => (
+storiesR.addWithJSX('Default Loop', () => (
 	<Orchestrator
 		id="default-loop"
-		source={dataLoop}
+		source={R.dataLoopWithRoster}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
 ));
 
-stories.addWithJSX('Deeper Loop', () => (
+storiesR.addWithJSX('Deeper Loop', () => (
 	<Orchestrator
 		id="double-loop"
-		source={dataDeeperLoop}
+		source={R.dataLoopDeeperWithRoster}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
 ));
 
-stories.addWithJSX('VQS', () => (
+storiesR.addWithJSX('VQS', () => (
 	<Orchestrator
 		id="vqs"
-		source={vqs}
+		source={R.dataVQSWithRoster}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		features={['VTL']}
+	/>
+));
+
+const storiesB = storiesOf('Loop/With block', module)
+	.addDecorator(withReadme(readme))
+	.addDecorator((Component) => {
+		const WrappedComponent = titleDecorator(Component);
+		return <WrappedComponent title="Loop" />;
+	});
+
+storiesB.addWithJSX('Default Loop', () => (
+	<Orchestrator
+		id="default-loop"
+		source={B.dataLoopWithBlock}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		features={['VTL']}
+	/>
+));
+
+storiesB.addWithJSX('Deeper Loop', () => (
+	<Orchestrator
+		id="double-loop"
+		source={B.dataLoopDeeperWithBlock}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		features={['VTL']}
+	/>
+));
+
+storiesB.addWithJSX('VQS', () => (
+	<Orchestrator
+		id="vqs"
+		source={B.dataVQSWithBlock}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
