@@ -1,6 +1,7 @@
 import React from 'react';
 import LoopConstructorWrapper from '../wrapper';
 import * as U from '../../../utils/lib';
+import './block.scss';
 
 const BlockForLoop = (props) => <LoopConstructorWrapper {...props} />;
 

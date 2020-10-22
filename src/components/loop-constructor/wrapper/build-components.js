@@ -1,6 +1,6 @@
 import * as C from '../../../constants';
 
-export const buildChildComponents = (headers) => (components) => {
+export const buildRosterForLoopChildComponents = (headers) => (components) => {
 	const uiComponents = components.map((comp) => {
 		const { response, ...other } = comp;
 		const { name, values } = response;
