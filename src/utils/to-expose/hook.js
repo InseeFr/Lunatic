@@ -31,6 +31,12 @@ const useLunatic = (
 		setTodo(updatedValue);
 	}, []);
 
+	// Assume we only want to handle source update
+	useEffect(() => {
+		setQuestionnaire(mergeQuestionnaireAndData(source)(data));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [source]);
+
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
 			const newQ = updateQuestionnaire(savingType)(questionnaire)(preferences)(

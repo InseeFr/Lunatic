@@ -1,38 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as lunatic from '../../components';
+import BodyComponent from './body-component';
 import Declarations from '../../declarations';
 import * as U from '../../../utils/lib';
 import * as C from '../../../constants';
 import { interpret } from '../../../utils/to-expose';
-import { buildRosterUIComponents } from './build-components';
 
-const RosterForLoop = ({
-	id: tableId,
-	label: tableLabel,
-	preferences,
-	headers,
+const LoopConstructorWrapper = ({
+	id: mainId,
+	label: mainLabel,
 	components,
 	handleChange,
 	lines,
-	positioning,
 	declarations,
 	features,
 	bindings,
 	addBtnLabel,
 	hideBtn,
-	management,
+	...otherProps
 }) => {
 	const [todo, setTodo] = useState({});
 	const minLines = Math.max(
 		lines.min || 0,
-		U.getRosterForLoopInitLines(components)
+		U.getLoopConstructorInitLines(components)
 	);
 	const maxLines = lines ? lines.max : undefined;
 
 	const width = `${100 / Math.max(...components.map((row) => row.length))}%`;
 	const Button = lunatic.Button;
-	const uiComponents = buildRosterUIComponents(headers)(components);
 	const involvedVariables = U.getInvolvedVariables(components);
 
 	useEffect(() => {
@@ -62,99 +58,49 @@ const RosterForLoop = ({
 	return (
 		<>
 			<Declarations
-				id={tableId}
+				id={mainId}
 				type={C.BEFORE_QUESTION_TEXT}
 				declarations={declarations}
 				features={features}
 				bindings={bindings}
 			/>
-			{tableLabel && (
+			{mainLabel && (
 				<label
-					htmlFor={`table-one-axis-${tableId}`}
-					id={`table-one-axis-label-${tableId}`}
+					htmlFor={`loops-constructor-${mainId}`}
+					id={`loops-constructor-label-${mainId}`}
 				>
-					{interpret(features)(bindings)(tableLabel)}
+					{interpret(features)(bindings)(mainLabel)}
 				</label>
 			)}
 			<Declarations
-				id={tableId}
+				id={mainId}
 				type={C.AFTER_QUESTION_TEXT}
 				declarations={declarations}
 				features={features}
 				bindings={bindings}
 			/>
-			<table id={`table-${tableId}`} className="table-lunatic">
-				<tbody>
-					{uiComponents.map((row, i) => (
-						<tr key={`table-${tableId}-row${i}`}>
-							{row.map((component, j) => {
-								const {
-									label,
-									headerCell,
-									colspan,
-									rowspan,
-									componentType,
-									id,
-									rowNumber,
-									...componentProps
-								} = component;
-								const localBindings = U.buildBindingsForDeeperComponents(
-									rowNumber
-								)(bindings);
-								if (componentType) {
-									const Component = lunatic[componentType];
-									return (
-										<td
-											key={`table-${tableId}-row-${i}-cell-${j}`}
-											style={{ width }}
-										>
-											<Component
-												{...componentProps}
-												id={`${id}-row-${i}`}
-												label={label}
-												handleChange={(up) => {
-													setTodo({ up, rowNumber });
-												}}
-												preferences={preferences}
-												positioning={positioning}
-												management={management}
-												features={features}
-												bindings={localBindings}
-												zIndex={uiComponents.length - i || 0}
-											/>
-										</td>
-									);
-								}
-								const cellOptions = {
-									key: `table-${tableId}-row-${i}-cell-${j}`,
-									style: { width },
-									colSpan: colspan || 1,
-									rowSpan: rowspan || 1,
-								};
-								const interpretedLabel = interpret(features)(bindings)(label);
-								return headerCell ? (
-									<th {...cellOptions}>{interpretedLabel}</th>
-								) : (
-									<td {...cellOptions}>{interpretedLabel}</td>
-								);
-							})}
-						</tr>
-					))}
-				</tbody>
-			</table>
+			<BodyComponent
+				mainId={mainId}
+				components={components}
+				bindings={bindings}
+				width={width}
+				features={features}
+				setTodo={setTodo}
+				{...otherProps}
+			/>
 			{!hideBtn && (
 				<Button
 					label="addLine"
 					value={addBtnLabel}
 					disabled={
 						(Number.isInteger(minLines) && minLines === maxLines) ||
-						U.lastRosterForLoopLineIsEmpty(bindings)(involvedVariables)
+						U.lastLoopChildLineIsEmpty(bindings)(involvedVariables)
 					}
 					onClick={addLine}
 				/>
 			)}
 			<Declarations
-				id={tableId}
+				id={mainId}
 				type={C.DETACHABLE}
 				declarations={declarations}
 				features={features}
@@ -164,7 +110,7 @@ const RosterForLoop = ({
 	);
 };
 
-RosterForLoop.defaultProps = {
+LoopConstructorWrapper.defaultProps = {
 	label: '',
 	preferences: ['COLLECTED'],
 	components: [],
@@ -179,7 +125,8 @@ RosterForLoop.defaultProps = {
 	style: {},
 };
 
-RosterForLoop.propTypes = {
+LoopConstructorWrapper.propTypes = {
+	componentType: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
 	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
@@ -196,4 +143,4 @@ RosterForLoop.propTypes = {
 	style: PropTypes.object,
 };
 
-export default React.memo(RosterForLoop, U.areEqual);
+export default React.memo(LoopConstructorWrapper, U.areEqual);

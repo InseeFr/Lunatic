@@ -2,20 +2,17 @@
 	"components": [
 		{
 			"id": "k3ylzyo4",
-			"componentType": "RosterForLoop",
+			"componentType": "BlockForLoop",
 			"mandatory": true,
 			"positioning": "HORIZONTAL",
 			"label": "\"Qui sont les personnes qui habitent dans votre logement ?\"",
 			"conditionFilter": "\"normal\"",
 			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 10 },
-			"headers": [
-				{ "headerCell": true, "label": "Prénom" },
-				{ "headerCell": true, "label": "Age" }
-			],
 			"components": [
 				{
 					"componentType": "Input",
+					"label": "Prénom",
 					"conditionFilter": "\"normal\"",
 					"maxLength": 30,
 					"bindingDependencies": ["PRENOM"],
@@ -26,12 +23,12 @@
 				},
 				{
 					"componentType": "InputNumber",
-					"label": "\"Age de \" || PRENOM",
+					"label": "Age",
 					"conditionFilter": "\"normal\"",
 					"min": 0,
 					"max": 120,
 					"decimals": 0,
-					"bindingDependencies": ["AGE", "PRENOM"],
+					"bindingDependencies": ["AGE"],
 					"id": "k3ymundt",
 					"response": {
 						"name": "AGE"

@@ -1,5 +1,6 @@
 import React from 'react';
 import * as lunatic from 'components';
+import './custom-lunatic.scss';
 
 const OrchestratorForStories = ({
 	source,

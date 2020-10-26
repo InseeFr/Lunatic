@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import * as lunatic from '../../components';
+import * as lunatic from '../components';
 import { buildLoopComponents } from './build-components';
-import { interpret } from '../../../utils/to-expose';
-import * as U from '../../../utils/lib';
+import { interpret } from '../../utils/to-expose';
+import * as U from '../../utils/lib';
 import './loop.scss';
 
 const Loop = ({
@@ -72,6 +72,7 @@ const Loop = ({
 						id={`${idC}-loop-${rowNumber}`}
 						handleChange={(up) => setTodo({ up, rowNumber })}
 						bindings={loopBindings}
+						componentType={componentType}
 					/>
 				</div>
 			);

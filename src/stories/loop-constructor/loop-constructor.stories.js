@@ -4,22 +4,19 @@ import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
-import dataLoop from './data-loop';
-import dataDeeperLoop from './data-loop-deeper';
 import dataRoster from './data-roster';
-import vqs from './vqs';
+import dataBlock from './data-block';
 import { positioningOptions } from '../utils/options';
 import { select } from '@storybook/addon-knobs/react';
-import './custom-lunatic.scss';
 
-const stories = storiesOf('Loops', module)
+const storiesRoster = storiesOf('LoopConstructor/RosterForLoop', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
-		return <WrappedComponent title="Let's loop!" />;
+		return <WrappedComponent title="RosterForLoop" />;
 	});
 
-stories.addWithJSX('Default Roster', () => (
+storiesRoster.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={dataRoster}
@@ -28,28 +25,17 @@ stories.addWithJSX('Default Roster', () => (
 	/>
 ));
 
-stories.addWithJSX('Default Loop', () => (
-	<Orchestrator
-		id="default-loop"
-		source={dataLoop}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		features={['VTL']}
-	/>
-));
+const storiesBlock = storiesOf('LoopConstructor/BlockForLoop', module)
+	.addDecorator(withReadme(readme))
+	.addDecorator((Component) => {
+		const WrappedComponent = titleDecorator(Component);
+		return <WrappedComponent title="BlockForLoop" />;
+	});
 
-stories.addWithJSX('Deeper Loop', () => (
+storiesBlock.addWithJSX('Default', () => (
 	<Orchestrator
-		id="double-loop"
-		source={dataDeeperLoop}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		features={['VTL']}
-	/>
-));
-
-stories.addWithJSX('VQS', () => (
-	<Orchestrator
-		id="vqs"
-		source={vqs}
+		id="default"
+		source={dataBlock}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
