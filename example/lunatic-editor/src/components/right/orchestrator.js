@@ -4,55 +4,45 @@ import * as lunatic from '@inseefr/lunatic';
 import Activator from './activator';
 import './custom-lunatic.scss';
 
-const Questionnaire = ({ source, data, error }) => {
-  const [questionnaire, setQuestionnaire] = useState(lunatic.mergeQuestionnaireAndData(source)({}));
-  const [vtl, setVtl] = useState(true);
-  // const [filter, setFilter] = useState(false);
+const preferences = ['COLLECTED'];
+const savingType = 'COLLECTED';
+const management = false;
 
-  useEffect(() => {
-    setQuestionnaire(lunatic.mergeQuestionnaireAndData(source)(data));
-  }, [source, data]);
+const Questionnaire = ({ source, data, error }) => {
+  const [vtl, setVtl] = useState(true);
+  const { questionnaire, components, handleChange, bindings } = lunatic.useLunatic(source, data, {
+    savingType,
+    preferences,
+    features: vtl ? ['VTL'] : [],
+    management,
+  });
 
   if (error) return <h2 className="error">{error}</h2>;
   if (!Array.isArray(questionnaire.components))
     return <h2 className="error">Missing components</h2>;
 
-  const preferences = ['COLLECTED'];
-
-  const onChange = updatedValue => {
-    setQuestionnaire(
-      lunatic.updateQuestionnaire('COLLECTED')(questionnaire)(preferences)(updatedValue)
+  const uiComponents = components.map((q) => {
+    const { id, componentType } = q;
+    const Component = lunatic[componentType];
+    if (!Component)
+      return <h4 key={`component-${id}`}>{`${id} component type is not supported`}</h4>;
+    return (
+      <div className="lunatic lunatic-component" key={`component-${id}`}>
+        <Component
+          {...q}
+          handleChange={handleChange}
+          labelPosition="TOP"
+          preferences={preferences}
+          features={vtl ? ['VTL'] : []}
+          bindings={vtl ? bindings : {}}
+          writable
+          zIndex={1}
+          filterDesprition={false}
+        />
+      </div>
     );
-  };
+  });
 
-  const bindings = lunatic.getBindings(questionnaire);
-
-  const components = questionnaire.components
-    .filter(({ conditionFilter }) =>
-      vtl ? lunatic.interpret(['VTL'])(bindings)(conditionFilter) === 'normal' : true
-    )
-    .map(q => {
-      const { id, componentType } = q;
-      const Component = lunatic[componentType];
-      if (!Component)
-        return <h4 key={`component-${id}`}>{`${id} component type is not supported`}</h4>;
-      return (
-        <div className="lunatic lunatic-component" key={`component-${id}`}>
-          <Component
-            {...q}
-            handleChange={onChange}
-            labelPosition="TOP"
-            preferences={preferences}
-            features={vtl ? ['VTL'] : []}
-            bindings={vtl ? bindings : {}}
-            writable
-            zIndex={1}
-            filterDesprition={false}
-            // filterDescription={filter}
-          />
-        </div>
-      );
-    });
   return (
     <div className="container">
       <Activator
@@ -61,14 +51,8 @@ const Questionnaire = ({ source, data, error }) => {
         value={vtl}
         onChange={() => setVtl(!vtl)}
       />
-      {/* <Activator
-        id="filter-decsription"
-        label={`Display filter description`}
-        value={filter}
-        onChange={() => setFilter(!filter)}
-      /> */}
       <h1 className="title">{questionnaire.label}</h1>
-      <div className="components">{components}</div>
+      <div className="components">{uiComponents}</div>
     </div>
   );
 };
