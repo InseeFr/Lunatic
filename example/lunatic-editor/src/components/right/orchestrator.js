@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import * as lunatic from '@inseefr/lunatic';
-import Activator from './activator';
 import './custom-lunatic.scss';
 
 const preferences = ['COLLECTED'];
 const savingType = 'COLLECTED';
 const management = false;
+const features = ['VTL'];
 
 const Questionnaire = ({ source, data, error }) => {
-  const [vtl, setVtl] = useState(true);
   const { questionnaire, components, handleChange, bindings } = lunatic.useLunatic(source, data, {
     savingType,
     preferences,
-    features: vtl ? ['VTL'] : [],
+    features,
     management,
   });
 
@@ -33,8 +32,8 @@ const Questionnaire = ({ source, data, error }) => {
           handleChange={handleChange}
           labelPosition="TOP"
           preferences={preferences}
-          features={vtl ? ['VTL'] : []}
-          bindings={vtl ? bindings : {}}
+          features={features}
+          bindings={bindings}
           writable
           zIndex={1}
           filterDesprition={false}
@@ -45,12 +44,6 @@ const Questionnaire = ({ source, data, error }) => {
 
   return (
     <div className="container">
-      <Activator
-        id="vtl"
-        label={`VTL interpretation (labels & filters)`}
-        value={vtl}
-        onChange={() => setVtl(!vtl)}
-      />
       <h1 className="title">{questionnaire.label}</h1>
       <div className="components">{uiComponents}</div>
     </div>
