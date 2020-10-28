@@ -5,12 +5,16 @@ import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
 import { COLLECTED } from '../../constants';
 
-const filterComponents = (components, management, bindings, features) =>
-	components.filter(({ conditionFilter }) =>
-		management || !conditionFilter
-			? true
-			: interpret(features)(bindings, true)(conditionFilter) === 'normal'
-	);
+const filterComponents = (components, management, bindings, features) => {
+	const filteredComponents = management
+		? components
+		: components.filter(
+				({ conditionFilter }) =>
+					!conditionFilter ||
+					interpret(features)(bindings, true)(conditionFilter) === 'normal'
+		  );
+	return filteredComponents;
+};
 
 const useLunatic = (
 	source,
