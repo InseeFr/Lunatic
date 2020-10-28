@@ -13,7 +13,6 @@ const filterComponents = (components, management, bindings, features) => {
 					!conditionFilter ||
 					interpret(features)(bindings, true)(conditionFilter) === 'normal'
 		  );
-		  if ()
 	return filteredComponents;
 };
 
@@ -57,8 +56,7 @@ const useLunatic = (
 		questionnaire.components,
 		management,
 		bindings,
-		features,
-		
+		features
 	);
 
 	return { questionnaire, handleChange, components, bindings };
