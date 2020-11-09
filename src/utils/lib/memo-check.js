@@ -4,8 +4,8 @@ const VarsHasBeenUpdated = (prevProps, props) => {
 	const { response: oldR, responses: oldRs, cells: oldC } = prevProps;
 	const { response: newR, responses: newRs, cells: newC } = props;
 	if (!newR && !newRs && !newC) return true;
-	return (
-		!(newR && isEqual(oldR, newR)) ||
+	return !(
+		(newR && isEqual(oldR, newR)) ||
 		(newRs && isEqual(oldRs, newRs)) ||
 		(newC && isEqual(oldC, newC))
 	);
