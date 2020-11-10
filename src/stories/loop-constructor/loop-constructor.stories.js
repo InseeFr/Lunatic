@@ -25,11 +25,11 @@ storiesRoster.addWithJSX('Default', () => (
 	/>
 ));
 
-const storiesBlock = storiesOf('LoopConstructor/BlockForLoop', module)
+const storiesBlock = storiesOf('LoopConstructor/Loop', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
-		return <WrappedComponent title="BlockForLoop" />;
+		return <WrappedComponent title="Loop" />;
 	});
 
 storiesBlock.addWithJSX('Default', () => (
