@@ -49,7 +49,7 @@
 			"iterations": "count(PRENOM)",
 			"conditionFilter": "\"normal\"",
 			"label": "Boucle Individu",
-			"rosterDependencies": ["PRENOM", "AGE"],
+			"loopDependencies": ["PRENOM", "AGE"],
 			"bindingDependencies": [
 				"PRENOM",
 				"SEXEDELAPE",
