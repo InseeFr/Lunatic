@@ -38,6 +38,7 @@ storiesR.addWithJSX('VQS', () => (
 	<Orchestrator
 		id="vqs"
 		source={R.dataVQSWithRoster}
+		data={{ EXTERNAL: { NOMCONTACT: 'Bart', ADRESSE: 'Adresse de Bart' } }}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
