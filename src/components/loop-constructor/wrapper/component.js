@@ -18,6 +18,8 @@ const LoopConstructorWrapper = ({
 	bindings,
 	addBtnLabel,
 	hideBtn,
+	componentType,
+	bindingDependencies,
 	...otherProps
 }) => {
 	const [todo, setTodo] = useState({});
@@ -81,8 +83,10 @@ const LoopConstructorWrapper = ({
 			/>
 			<BodyComponent
 				mainId={mainId}
+				componentType={componentType}
 				components={components}
 				bindings={bindings}
+				bindingDependencies={bindingDependencies}
 				width={width}
 				features={features}
 				setTodo={setTodo}

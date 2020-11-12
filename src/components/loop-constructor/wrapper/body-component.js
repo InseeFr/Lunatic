@@ -10,6 +10,7 @@ const BodyComponent = ({
 	headers,
 	components,
 	bindings,
+	bindingDependencies,
 	width,
 	preferences,
 	positioning,
@@ -17,7 +18,11 @@ const BodyComponent = ({
 	features,
 	setTodo,
 }) => {
-	const uiComponents = buildContentForLoopConstructor({ components, headers });
+	const uiComponents = buildContentForLoopConstructor({
+		components,
+		headers,
+		bindingDependencies,
+	});
 	if (componentType === 'RosterForLoop')
 		return (
 			<table id={`table-${mainId}`} className="table-lunatic">
