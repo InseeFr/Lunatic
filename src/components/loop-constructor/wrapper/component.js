@@ -66,7 +66,7 @@ const LoopConstructorWrapper = ({
 				features={features}
 				bindings={bindings}
 			/>
-			{mainLabel && (
+			{componentType === 'RosterForLoop' && mainLabel && (
 				<label
 					htmlFor={`loops-constructor-${mainId}`}
 					id={`loops-constructor-label-${mainId}`}
