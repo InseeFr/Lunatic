@@ -5,7 +5,7 @@ import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import dataRoster from './data-roster';
-import dataBlock from './data-block';
+import dataLoop from './data-loop';
 import { positioningOptions } from '../utils/options';
 import { select } from '@storybook/addon-knobs/react';
 
@@ -35,7 +35,7 @@ const storiesBlock = storiesOf('LoopConstructor/Loop', module)
 storiesBlock.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
-		source={dataBlock}
+		source={dataLoop}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
