@@ -56,6 +56,10 @@ const LoopConstructorWrapper = ({
 		handleChange(toHandle);
 	};
 
+	const customBtnLabel =
+		(componentType === 'Loop' && interpret(features)(bindings)(mainLabel)) ||
+		addBtnLabel;
+
 	return (
 		<>
 			<Declarations
@@ -93,7 +97,7 @@ const LoopConstructorWrapper = ({
 			{!hideBtn && (
 				<Button
 					label="addLine"
-					value={addBtnLabel}
+					value={customBtnLabel}
 					disabled={
 						(Number.isInteger(minLines) && minLines === maxLines) ||
 						U.lastLoopChildLineIsEmpty(bindings)(involvedVariables)
