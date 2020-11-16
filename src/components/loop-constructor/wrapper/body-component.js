@@ -10,7 +10,6 @@ const BodyComponent = ({
 	headers,
 	components,
 	bindings,
-	bindingDependencies,
 	width,
 	preferences,
 	positioning,
@@ -21,7 +20,6 @@ const BodyComponent = ({
 	const uiComponents = buildContentForLoopConstructor({
 		components,
 		headers,
-		bindingDependencies,
 	});
 	if (componentType === 'RosterForLoop')
 		return (

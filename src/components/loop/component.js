@@ -23,20 +23,25 @@ const Loop = ({
 
 	/**
 	 * Handle the increase in the number of iterations
+	 * Assume we only want to update if iterationNb changes
 	 */
 	useEffect(() => {
-		involvedVariables.forEach(({ name: iv, depth }) => {
+		const toUpdate = involvedVariables.reduce((acc, { name: iv, depth }) => {
 			if (bindings[iv] && iterationNb > bindings[iv].length)
-				handleChange({
+				return {
+					...acc,
 					[iv]: [
 						...bindings[iv],
 						...new Array(iterationNb - bindings[iv].length).fill(
 							U.buildEmptyValue(depth)
 						),
 					],
-				});
-		});
-	}, [iterationNb, bindings, handleChange, involvedVariables]);
+				};
+			return acc;
+		}, {});
+		if (Object.keys(toUpdate).length !== 0) handleChange(toUpdate);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [iterationNb]);
 
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {

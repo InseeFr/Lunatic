@@ -1,16 +1,10 @@
 import * as C from '../../../constants';
 
-export const buildContentForLoopConstructor = ({
-	components,
-	headers,
-	bindingDependencies,
-}) => {
+export const buildContentForLoopConstructor = ({ components, headers }) => {
 	// Start hack to find interation number
 	// Refactor if we have to handle complex components (vector, matrix)
 	const iterations =
-		components.find((c) => c.response?.name).response.values[C.COLLECTED]
-			.length || 1;
-
+		components.find((c) => c.response).response.values[C.COLLECTED].length || 1;
 	// End
 	const initialArray = [...Array(iterations).keys()];
 	const uiComponents = components.map((comp) => {
