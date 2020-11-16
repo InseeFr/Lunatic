@@ -185,16 +185,17 @@
 			"response": { "name": "NHAB" }
 		},
 		{
-			"id": "kgrzwsjx",
-			"componentType": "Subsequence",
-			"label": "\"Presentation\"",
-			"conditionFilter": "\"normal\""
-		},
-		{
 			"id": "kgs0f5oz",
-			"componentType": "RosterForLoop",
+			"componentType": "Loop",
+			"label": "\"Ajouter un individu\"",
 			"bindingDependencies": ["THL1", "THL2", "THL3", "THL4"],
 			"components": [
+				{
+					"id": "kgrzwsjx",
+					"componentType": "Subsequence",
+					"label": "\"Presentation\"",
+					"conditionFilter": "\"normal\""
+				},
 				{
 					"id": "kgrud3by",
 					"componentType": "Input",

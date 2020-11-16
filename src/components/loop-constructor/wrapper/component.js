@@ -18,6 +18,7 @@ const LoopConstructorWrapper = ({
 	bindings,
 	addBtnLabel,
 	hideBtn,
+	componentType,
 	...otherProps
 }) => {
 	const [todo, setTodo] = useState({});
@@ -64,7 +65,7 @@ const LoopConstructorWrapper = ({
 				features={features}
 				bindings={bindings}
 			/>
-			{mainLabel && (
+			{componentType === 'RosterForLoop' && mainLabel && (
 				<label
 					htmlFor={`loops-constructor-${mainId}`}
 					id={`loops-constructor-label-${mainId}`}
@@ -81,6 +82,7 @@ const LoopConstructorWrapper = ({
 			/>
 			<BodyComponent
 				mainId={mainId}
+				componentType={componentType}
 				components={components}
 				bindings={bindings}
 				width={width}

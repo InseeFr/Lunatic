@@ -35,7 +35,7 @@
 			"componentType": "Loop",
 			"iterations": "count(MENAGE)",
 			"conditionFilter": "\"normal\"",
-			"rosterDependencies": ["MENAGE"],
+			"loopDependencies": ["MENAGE"],
 			"bindingDependencies": [
 				"MENAGE",
 				"FAMILLE",
@@ -81,7 +81,7 @@
 					"componentType": "Loop",
 					"iterations": "count(FAMILLE)",
 					"conditionFilter": "\"normal\"",
-					"rosterDependencies": ["FAMILLE"],
+					"loopDependencies": ["FAMILLE"],
 					"bindingDependencies": [
 						"MENAGE",
 						"FAMILLE",
@@ -141,7 +141,7 @@
 							"componentType": "Loop",
 							"iterations": "count(INDIV)",
 							"conditionFilter": "\"normal\"",
-							"rosterDependencies": ["INDIV"],
+							"loopDependencies": ["INDIV"],
 							"bindingDependencies": [
 								"MENAGE",
 								"FAMILLE",
