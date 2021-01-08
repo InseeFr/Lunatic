@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "2.0.0-rc15",
+	"version": "2.0.0-rc16",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -42,7 +42,8 @@
 		"lodash.camelcase": "^4.3.0",
 		"lodash.isequal": "^4.5.0",
 		"prop-types": "^15.7.2",
-		"remove-accents": "^0.4.2"
+		"remove-accents": "^0.4.2",
+		"sass": "^1.32.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.9.0",
@@ -78,7 +79,6 @@
 		"jest": "^26.1.0",
 		"jest-sonar-reporter": "^2.0.0",
 		"jest-transform-stub": "^2.0.0",
-		"node-sass": "^4.14.0",
 		"postcss-scss": "^3.0.2",
 		"prettier": "^2.0.5",
 		"rollup": "^2.7.2",
