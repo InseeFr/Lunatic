@@ -130,7 +130,7 @@ const InputNumber = ({
 							aria-required={mandatory}
 							onChange={({ target: { value: v } }) => {
 								validate(v);
-								setValue(v);
+								setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
 						/>

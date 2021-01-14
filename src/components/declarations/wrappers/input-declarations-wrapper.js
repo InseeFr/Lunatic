@@ -97,7 +97,7 @@ const InputDeclarationsWrapper = ({
 							required={mandatory}
 							aria-required={mandatory}
 							onChange={({ target: { value: v } }) => {
-								setValue(v);
+								setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
 						/>
