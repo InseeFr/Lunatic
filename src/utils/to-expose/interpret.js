@@ -35,10 +35,10 @@ export const interpretWithEmptyDefault = (features) => (
 			if (!VTLExpr) return '';
 			return VTLExpr;
 		} catch (e) {
-			return expression;
+			return '';
 		}
 	}
-	return expression;
+	return '';
 };
 
 export const replaceNullBindings = (bindings) =>
