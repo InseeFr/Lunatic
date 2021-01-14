@@ -33,7 +33,7 @@ export const interpretWithEmptyDefault = (features) => (
 				doNotReplaceNullBindings ? replaceNullBindings(bindings) : bindings
 			);
 			if (!VTLExpr) return '';
-			return '';
+			return VTLExpr;
 		} catch (e) {
 			return expression;
 		}
