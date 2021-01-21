@@ -193,7 +193,7 @@ InputNumber.defaultProps = {
 	features: [],
 	bindings: {},
 	labelPosition: 'DEFAULT',
-	unitPositioni: 'DEFAULT',
+	unitPosition: 'DEFAULT',
 	mandatory: false,
 	management: false,
 	style: {},
