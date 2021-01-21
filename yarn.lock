@@ -1365,10 +1365,10 @@
   dependencies:
     antlr4 "4.8.0"
 
-"@inseefr/vtl-2.1-engine@^0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@inseefr/vtl-2.1-engine/-/vtl-2.1-engine-0.1.8.tgz#9f1914f0449edc7cc93ebb658016fb688a0da144"
-  integrity sha512-SiBZmIyhDUpsiIUFp4pznIjtDBoCYxRN33oElXZ7eYoZvtnwrA8KByl0V2jCWf+dR9KCcnMfWkMkvG9SpSzD9w==
+"@inseefr/vtl-2.1-engine@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@inseefr/vtl-2.1-engine/-/vtl-2.1-engine-0.1.9.tgz#885efd3278ded5d4ed9d0102cdd13e87f47fa238"
+  integrity sha512-vtzG+v+QxM+r5ZlFyDefM4oqshgJj8InC6CRylfYgYvCLyJL5DxZ+I0RouTNrj8bxE6CfN5BqZhsfLRyzgH5Kw==
   dependencies:
     "@inseefr/vtl-2.1-antlr-tools" "1.0.0-rc2"
     antlr4 "4.8.0"
