@@ -17,9 +17,9 @@ describe('interpret', () => {
 			);
 		});
 		it('should return VTL interpreted label with default value', () => {
-			expect(
-				interpret(['VTL'])({ NAME: null }, true)('"Hello " || NAME')
-			).toEqual('Hello NAME');
+			expect(interpret(['VTL'])({ NAME: null })('"Hello " || NAME')).toEqual(
+				'Hello NAME'
+			);
 		});
 	});
 	describe('replaceNullBindings', () => {
