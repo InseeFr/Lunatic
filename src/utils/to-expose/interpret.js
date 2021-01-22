@@ -1,6 +1,6 @@
 import { interpret as interpretVtl } from '@inseefr/vtl-2.1-engine';
 
-export const interpret = (features) => (bindings, doNotReplaceNullBindings) => (
+export const interpret = (features) => (bindings, replaceNullBindings) => (
 	expression
 ) => {
 	if (!expression) return '';
@@ -9,7 +9,7 @@ export const interpret = (features) => (bindings, doNotReplaceNullBindings) => (
 		try {
 			const VTLExpr = interpretVtl(
 				expression,
-				doNotReplaceNullBindings ? replaceNullBindings(bindings) : bindings
+				replaceNullBindings ? bindings : replaceNullBindings(bindings)
 			);
 			if (!VTLExpr) return expression;
 			return VTLExpr;
