@@ -6,21 +6,21 @@
     "runtime-main.js": "./static/js/runtime-main.0254e3d1.js",
     "runtime-main.js.map": "./static/js/runtime-main.0254e3d1.js.map",
     "static/css/2.406bd77d.chunk.css": "./static/css/2.406bd77d.chunk.css",
-    "static/js/2.cfd8db70.chunk.js": "./static/js/2.cfd8db70.chunk.js",
-    "static/js/2.cfd8db70.chunk.js.map": "./static/js/2.cfd8db70.chunk.js.map",
+    "static/js/2.48278f0b.chunk.js": "./static/js/2.48278f0b.chunk.js",
+    "static/js/2.48278f0b.chunk.js.map": "./static/js/2.48278f0b.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.a6bab15fd7fb77009becf3b9d83cc653.js": "./precache-manifest.a6bab15fd7fb77009becf3b9d83cc653.js",
+    "precache-manifest.111b2a10a3d96dfffcdd9239324a8942.js": "./precache-manifest.111b2a10a3d96dfffcdd9239324a8942.js",
     "service-worker.js": "./service-worker.js",
     "static/css/2.406bd77d.chunk.css.map": "./static/css/2.406bd77d.chunk.css.map",
     "static/css/main.4daebaf6.chunk.css.map": "./static/css/main.4daebaf6.chunk.css.map",
-    "static/js/2.cfd8db70.chunk.js.LICENSE.txt": "./static/js/2.cfd8db70.chunk.js.LICENSE.txt",
+    "static/js/2.48278f0b.chunk.js.LICENSE.txt": "./static/js/2.48278f0b.chunk.js.LICENSE.txt",
     "static/media/custom-lunatic.scss": "./static/media/radio_button_unchecked.6a19a534.svg",
     "static/media/jsoneditor.css": "./static/media/jsoneditor-icons.2b9b4872.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.0254e3d1.js",
     "static/css/2.406bd77d.chunk.css",
-    "static/js/2.cfd8db70.chunk.js",
+    "static/js/2.48278f0b.chunk.js",
     "static/css/main.4daebaf6.chunk.css",
     "static/js/main.d8d83fd2.chunk.js"
   ]
