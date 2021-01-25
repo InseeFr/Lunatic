@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../';
 import { TooltipResponse } from '../../tooltip';
@@ -23,8 +23,28 @@ const ListDeclarationsWrapper = ({
 	style,
 	positioning,
 	type,
+	hasSpecificHandler,
 }) => {
 	const inputRef = useRef();
+
+	const [value, setValue] = useState(() =>
+		U.getResponseByPreference(preferences)(response)
+	);
+
+	const specificHandleChange = (e) => {
+		const { values } = response;
+		const [key, value] = Object.entries(e)[0];
+		const newValue =
+			values[preferences[preferences.length - 1]] === value ? null : value;
+		handleChange({ [key]: newValue });
+		if (management) {
+			setValue(
+				U.getResponseByPreference(preferences)(
+					U.buildLocalResponse(response, newValue)
+				)
+			);
+		} else setValue(newValue);
+	};
 
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
@@ -56,9 +76,7 @@ const ListDeclarationsWrapper = ({
 							bindings={bindings}
 						/>
 						{options.map(({ label: optionLabel, value: optionValue }, i) => {
-							const checked =
-								U.getResponseByPreference(preferences)(response) ===
-								optionValue;
+							const checked = value === optionValue;
 							const interpretedLabel = interpret(features)(bindings)(
 								optionLabel
 							);
@@ -79,11 +97,18 @@ const ListDeclarationsWrapper = ({
 										style={U.buildStyleObject(style)}
 										checked={checked}
 										disabled={disabled}
-										onChange={() =>
-											handleChange({
+										onChange={() => {
+											const update = {
 												[U.getResponseName(response)]: optionValue,
-											})
-										}
+											};
+											if (hasSpecificHandler) specificHandleChange(update);
+											else {
+												setValue(optionValue);
+												handleChange({
+													[U.getResponseName(response)]: optionValue,
+												});
+											}
+										}}
 									/>
 									<label
 										htmlFor={`${type}-${id}-${optionValue}`}

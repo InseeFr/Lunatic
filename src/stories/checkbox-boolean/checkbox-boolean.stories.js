@@ -15,13 +15,10 @@ const stories = storiesOf('CheckboxBoolean', module)
 		return <WrappedComponent title="<CheckboxBoolean />" />;
 	});
 
-stories.addWithJSX('Default', () => (
-	<Orchestrator id="default" source={data} />
-));
+stories.addWithJSX('Default', () => <Orchestrator source={data} />);
 
 stories.addWithJSX('Props', () => (
 	<Orchestrator
-		id="props"
 		source={data}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={select('Features', featuresOptions, [])}
