@@ -5,6 +5,8 @@ import { TooltipResponse } from '../../tooltip';
 import * as U from '../../../utils/lib';
 import * as C from '../../../constants';
 import { interpret } from '../../../utils/to-expose';
+import { buildNewValue } from '../../../utils/to-expose/handler';
+import { buildLocalResponse } from '../../../utils/lib';
 
 const InputDeclarationsWrapper = ({
 	id,
@@ -50,6 +52,13 @@ const InputDeclarationsWrapper = ({
 		handleChange({
 			[U.getResponseName(response)]: value,
 		});
+		if (management && value === null) {
+			setValue(
+				U.getResponseByPreference(preferences)(
+					buildLocalResponse(response, value)
+				)
+			);
+		}
 	};
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';
@@ -104,7 +113,10 @@ const InputDeclarationsWrapper = ({
 					</div>
 					{management && (
 						<div className="tooltip">
-							<TooltipResponse id={id} response={response} />
+							<TooltipResponse
+								id={id}
+								response={U.buildLocalResponse(response, value)}
+							/>
 						</div>
 					)}
 				</div>
