@@ -5,8 +5,6 @@ import { TooltipResponse } from '../../tooltip';
 import * as U from '../../../utils/lib';
 import * as C from '../../../constants';
 import { interpret } from '../../../utils/to-expose';
-import { buildNewValue } from '../../../utils/to-expose/handler';
-import { buildLocalResponse } from '../../../utils/lib';
 
 const InputDeclarationsWrapper = ({
 	id,
@@ -55,7 +53,7 @@ const InputDeclarationsWrapper = ({
 		if (management && value === null) {
 			setValue(
 				U.getResponseByPreference(preferences)(
-					buildLocalResponse(response, value)
+					U.buildLocalResponse(response, value)
 				)
 			);
 		}
