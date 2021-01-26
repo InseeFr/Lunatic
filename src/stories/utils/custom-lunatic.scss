@@ -5,6 +5,7 @@ $colorPrimaryDark: #2a5885;
 $colorPrimaryLight: rgb(81, 129, 184);
 $colorPrimaryMain: #4a73a4;
 $colorPrimaryContrastText: #ffffff;
+$colorPrimaryFocused: rgba(255, 198, 198, 0.801);
 
 $colorVeryLight: rgb(219, 228, 239);
 $colorCurrentItem: #0d823e;
@@ -291,7 +292,9 @@ $boxShadowColor: $colorPrimaryMain;
 			}
 
 			&.focused {
-				box-shadow: 0 0 0 0.2em $colorPrimaryMain;
+				box-shadow: 0 0 0 0.2em $colorPrimaryMain,
+					-5px -5px 5px $colorPrimaryFocused, 5px -5px 5px $colorPrimaryFocused,
+					-5px 5px 5px $colorPrimaryFocused, 5px 5px 5px $colorPrimaryFocused;
 			}
 
 			&.disabled {

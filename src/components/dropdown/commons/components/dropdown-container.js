@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Label from './label';
@@ -91,23 +91,32 @@ const DropdownContainer = ({
 
 	const z = getZIndex(zIndex);
 
+	const onFocus = useCallback(
+		function () {
+			dispatch(actions.setFocused(true && !disabled));
+		},
+		[dispatch, disabled]
+	);
+
+	const onBlur = useCallback(
+		function () {
+			dispatch(actions.setFocused(false));
+		},
+		[dispatch]
+	);
+
 	return (
 		<div
-			className={classnames(
-				`${className} ${U.getLabelPositionClass(labelPosition)}`,
-				{
-					focused,
-					disabled,
-				}
-			)}
-			tabIndex="-1"
+			className={classnames(className, U.getLabelPositionClass(labelPosition), {
+				focused,
+				disabled,
+			})}
+			tabIndex="0"
 			id={id}
 			onMouseDown={onMouseDownCallback(state, dispatch, 'id')}
 			onKeyDown={onKeyDownCallback_(state, dispatch, onSelect)}
-			onFocus={() => dispatch(actions.setFocused(true && !disabled))}
-			onBlur={function () {
-				dispatch(actions.setFocused(false));
-			}}
+			onFocus={onFocus}
+			onBlur={onBlur}
 			ref={refs}
 		>
 			{label ? (
@@ -117,8 +126,8 @@ const DropdownContainer = ({
 				<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 					<div
 						tabIndex="-1"
-						style={{ zIndex: focused ? z + 1 : z }}
-						className="lunatic-dropdown-container"
+						// style={{ zIndex: focused ? z + 1 : z }}
+						className={classnames('lunatic-dropdown-container', { focused })}
 					>
 						<span
 							className={classnames(`lunatic-dropdown-content`, {
