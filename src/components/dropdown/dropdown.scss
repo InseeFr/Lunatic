@@ -1,5 +1,15 @@
 @import 'src/components/index.scss';
+
 $inputHeight: 2em;
+$colorPrimaryDark: #2a5885;
+$colorPrimaryLight: rgb(81, 129, 184);
+$colorPrimaryMain: #4a73a4;
+$colorPrimaryFocused: $colorPrimaryLight;
+
+@mixin defaultFont {
+	font-family: Georgia, Times, 'Times New Roman', serif;
+	font-size: 16px;
+}
 
 @mixin disableSelect {
 	-moz-user-select: none; /* Firefox */
@@ -9,9 +19,9 @@ $inputHeight: 2em;
 	-webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 
-.lunatic-dropdown {
+.lunatic .lunatic-dropdown {
 	display: block;
-
+	width: 100%;
 	&:focus {
 		outline: none;
 	}
@@ -36,42 +46,54 @@ $inputHeight: 2em;
 		flex-direction: column-reverse;
 	}
 
+	.lunatic-dropdown-label {
+		opacity: 1;
+	}
+
 	.lunatic-dropdown-container {
 		position: relative;
 		height: $inputHeight;
 		width: 100%;
-		z-index: 0;
-
-		&.focused {
-			z-index: 1;
-		}
 		&:focus {
-			
 			outline: none;
 		}
 
 		.lunatic-dropdown-content {
+			background-color: lavenderblush;
+			// box-shadow: 0em 0em 0.1em 0.1em $colorPrimaryMain;
+			border-radius: 20px 20px;
+			border-color: white;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+
+			&.visible {
+				border-radius: 16px 16px;
+				height: auto;
+			}
+
+			&.focused {
+				box-shadow: 0 0 0 0.2em $colorPrimaryMain,
+					-5px -5px 5px $colorPrimaryFocused, 5px -5px 5px $colorPrimaryFocused,
+					-5px 5px 5px $colorPrimaryFocused, 5px 5px 5px $colorPrimaryFocused;
+			}
+
+			&.disabled {
+				background-color: whitesmoke;
+			}
+
 			.lunatic-dropdown-input {
-				display: block;
-				background-color: snow;
-				width: 100%;
-				border: none;
-				height: $inputHeight;
-				border-radius: 0px 0px;
-				box-shadow: 0em 0em 0.1em 0.1em $main_color;
-
-				&.focused {
-					box-shadow: 0 0 0 0.2em $main_color;
-				}
-
-				&.disabled {
-					background-color: $disabled;
-				}
-
+				border-radius: 10px 10px;
+				box-shadow: 0 0 0 0.2em $colorPrimaryDark;
 				input {
+					@include defaultFont();
+					@include disableSelect();
 					margin: 0px 25px 0px 12px;
 					width: calc(100% - 37px);
 					background-color: transparent;
+					border-color: transparent;
 					height: $inputHeight;
 					border: none;
 					outline: none;
@@ -90,10 +112,6 @@ $inputHeight: 2em;
 			}
 
 			.lunatic-transition {
-				&.width-auto  {
-					display: inline-block;// for fix width 
-				}
-				
 				visibility: hidden;
 				overflow-y: hidden;
 				opacity: 0;
@@ -105,81 +123,70 @@ $inputHeight: 2em;
 				&.visible {
 					visibility: visible;
 					opacity: 1;
-					transition: opacity 0.5s ease-in;
+					transition: opacity 1s ease-out;
 				}
 
 				.lunatic-dropdown-panel {
-					padding: 0;
-					margin: 0;
-					margin-top: 12px;
+					background-color: transparent;
+					margin: 0 10px 12px 10px;
+					padding-top: 3px;
 					list-style: none;
-					background-color: $second_color;
 					&:focus {
 						outline: none;
 					}
-					max-height: 200px;
+					max-height: 100px;
 					overflow-y: auto;
 
-					/* width */
 					&::-webkit-scrollbar {
 						width: 8px;
 					}
-
-					/* Track */
 					&::-webkit-scrollbar-track {
-						background-color: #ffe9e8;
-						border-radius: 4px 4px;
+						background-color: $colorPrimaryMain;
 					}
-
-					/* Handle */
 					&::-webkit-scrollbar-thumb {
-						background: $main_color;
-						border-radius: 4px 4px;
+						background: $colorPrimaryMain;
 					}
-
-					/* Handle on hover */
 					&::-webkit-scrollbar-thumb:hover {
-						background: Indigo;
+						background: $colorPrimaryDark;
 					}
 				}
 
 				/** options style */
 				.lunatic-dropdown-option {
 					cursor: pointer;
-
+					@include defaultFont();
 					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;
-					color: $disabled;
-					padding: 5px 5px;
+					color: black;
+
 					display: block;
-					border-bottom: solid 1px #ffe9e8;
 
 					&.lunatic-dropdown-option-active {
-						color: $disabled;
-						background-color: $main_color;
+						color: ivory;
+						background-color: $colorPrimaryMain;
 						.lunatic-prefix {
-							color: Indigo;
+							color: darkgoldenrod;
 							font-weight: bold;
 						}
 					}
 
 					&.lunatic-dropdown-option-selected {
-						color: $disabled;
-						background-color: Indigo;
+						color: snow;
+						background-color: rgb(136, 19, 151);
 						.lunatic-prefix {
-							color: $disabled;
+							color: lightgray;
 							font-weight: bold;
 						}
 
 						&.lunatic-dropdown-option-active {
-							color: $disabled;
-							background-color: $second_color;
+							color: khaki;
+							background-color: rgb(188, 90, 201);
 						}
 					}
 
 					.lunatic-prefix {
-						color: Indigo;
+						color: cornflowerblue;
 						font-weight: bold;
 					}
 				}
