@@ -1,11 +1,18 @@
 import * as C from '../../../constants';
 
 export const buildContentForLoopConstructor = ({ components, headers }) => {
+	// Start hack to find interation number
+	// Refactor if we have to handle complex components (vector, matrix)
+	const iterations =
+		components.find((c) => c.response).response.values[C.COLLECTED].length || 1;
+	// End
+	const initialArray = [...Array(iterations).keys()];
 	const uiComponents = components.map((comp) => {
 		const { response, ...other } = comp;
+		if (!response) return initialArray.map(() => comp);
+		// Handle reponses & cells components ?
 		const { name, values } = response;
-		const size = values[C.COLLECTED] ? values[C.COLLECTED].length : 0;
-		return [...Array(size).keys()].map((rowNumber) => {
+		return initialArray.map((rowNumber) => {
 			const newValues = Object.entries(values).reduce(
 				(acc, [key, value]) => ({
 					...acc,

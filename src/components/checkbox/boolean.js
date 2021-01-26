@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
@@ -24,6 +24,10 @@ const CheckboxBoolean = ({
 }) => {
 	const inputRef = useRef();
 
+	const [value, setValue] = useState(() =>
+		U.getResponseByPreference(preferences)(response)
+	);
+
 	const specificHandleChange = (e) => {
 		const [key, value] = Object.entries(e)[0];
 		if (value === false && U.responseToClean(response)(preferences))
@@ -46,11 +50,12 @@ const CheckboxBoolean = ({
 				title={label ? label : 'empty-label'}
 				className={`checkbox-boolean-lunatic${isVertical ? '-no-margin' : ''}`}
 				style={U.buildStyleObject(style)}
-				checked={U.getResponseByPreference(preferences)(response)}
+				checked={value}
 				disabled={disabled}
-				onChange={(e) => {
+				onChange={({ target: { checked } }) => {
+					setValue(checked);
 					specificHandleChange({
-						[U.getResponseName(response)]: e.target.checked,
+						[U.getResponseName(response)]: checked,
 					});
 				}}
 			/>

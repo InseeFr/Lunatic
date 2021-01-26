@@ -4,7 +4,7 @@
 			"id": "1",
 			"componentType": "CheckboxBoolean",
 			"mandatory": false,
-			"label": "➡ 2. Are you ready?",
+			"label": "➡ 1. Are you ready?",
 			"response": {
 				"name": "READY"
 			}

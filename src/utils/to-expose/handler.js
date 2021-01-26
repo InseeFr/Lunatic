@@ -55,7 +55,7 @@ export const updateQuestionnaire = (valueType) => (questionnaire) => (
 	};
 };
 
-const buildNewValue = (preferences) => (valueType) => (oldValues) => (
+export const buildNewValue = (preferences) => (valueType) => (oldValues) => (
 	value
 ) => {
 	if (preferences.length === 1) return value;

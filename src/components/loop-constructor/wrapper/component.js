@@ -18,6 +18,7 @@ const LoopConstructorWrapper = ({
 	bindings,
 	addBtnLabel,
 	hideBtn,
+	componentType,
 	...otherProps
 }) => {
 	const [todo, setTodo] = useState({});
@@ -55,6 +56,10 @@ const LoopConstructorWrapper = ({
 		handleChange(toHandle);
 	};
 
+	const customBtnLabel =
+		(componentType === 'Loop' && interpret(features)(bindings)(mainLabel)) ||
+		addBtnLabel;
+
 	return (
 		<>
 			<Declarations
@@ -64,7 +69,7 @@ const LoopConstructorWrapper = ({
 				features={features}
 				bindings={bindings}
 			/>
-			{mainLabel && (
+			{componentType === 'RosterForLoop' && mainLabel && (
 				<label
 					htmlFor={`loops-constructor-${mainId}`}
 					id={`loops-constructor-label-${mainId}`}
@@ -81,6 +86,7 @@ const LoopConstructorWrapper = ({
 			/>
 			<BodyComponent
 				mainId={mainId}
+				componentType={componentType}
 				components={components}
 				bindings={bindings}
 				width={width}
@@ -91,7 +97,7 @@ const LoopConstructorWrapper = ({
 			{!hideBtn && (
 				<Button
 					label="addLine"
-					value={addBtnLabel}
+					value={customBtnLabel}
 					disabled={
 						(Number.isInteger(minLines) && minLines === maxLines) ||
 						U.lastLoopChildLineIsEmpty(bindings)(involvedVariables)

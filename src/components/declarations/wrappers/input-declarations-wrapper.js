@@ -50,6 +50,13 @@ const InputDeclarationsWrapper = ({
 		handleChange({
 			[U.getResponseName(response)]: value,
 		});
+		if (management && value === null) {
+			setValue(
+				U.getResponseByPreference(preferences)(
+					U.buildLocalResponse(response, value)
+				)
+			);
+		}
 	};
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';
@@ -97,14 +104,17 @@ const InputDeclarationsWrapper = ({
 							required={mandatory}
 							aria-required={mandatory}
 							onChange={({ target: { value: v } }) => {
-								setValue(v);
+								setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
 						/>
 					</div>
 					{management && (
 						<div className="tooltip">
-							<TooltipResponse id={id} response={response} />
+							<TooltipResponse
+								id={id}
+								response={U.buildLocalResponse(response, value)}
+							/>
 						</div>
 					)}
 				</div>

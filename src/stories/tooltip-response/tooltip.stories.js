@@ -22,7 +22,7 @@ stories.addWithJSX('Forced', () => (
 			values: {
 				COLLECTED: 'Collected',
 				FORCED: 'Forced',
-				EDITED: '',
+				EDITED: null,
 			},
 		}}
 	/>

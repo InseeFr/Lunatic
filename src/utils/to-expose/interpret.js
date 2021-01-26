@@ -9,7 +9,7 @@ export const interpret = (features) => (bindings, doNotReplaceNullBindings) => (
 		try {
 			const VTLExpr = interpretVtl(
 				expression,
-				doNotReplaceNullBindings ? replaceNullBindings(bindings) : bindings
+				doNotReplaceNullBindings ? bindings : replaceNullBindings(bindings)
 			);
 			if (!VTLExpr) return expression;
 			return VTLExpr;
@@ -20,12 +20,33 @@ export const interpret = (features) => (bindings, doNotReplaceNullBindings) => (
 	return expression;
 };
 
-export const replaceNullBindings = (bindings) =>
+export const interpretWithEmptyDefault = (
+	features,
+	doNotReplaceNullBindings
+) => (bindings, replaceNullBindings) => (expression) => {
+	if (!expression) return '';
+	if (!Array.isArray(features)) return expression;
+	if (features.includes('VTL')) {
+		try {
+			const VTLExpr = interpretVtl(
+				expression,
+				doNotReplaceNullBindings ? bindings : replaceNullBindings(bindings, '')
+			);
+			if (!VTLExpr) return '';
+			return VTLExpr;
+		} catch (e) {
+			return '';
+		}
+	}
+	return '';
+};
+
+export const replaceNullBindings = (bindings, defaultValue) =>
 	bindings
 		? Object.entries(bindings).reduce(
 				(acc, [key, value]) => ({
 					...acc,
-					[key]: value === null ? key : value,
+					[key]: value === null ? defaultValue || key : value,
 				}),
 				{}
 		  )

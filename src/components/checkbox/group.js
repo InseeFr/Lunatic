@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
@@ -25,6 +25,12 @@ const CheckboxGroup = ({
 }) => {
 	const { fieldsetStyle, modalityStyle } = style;
 	const inputRef = useRef();
+
+	const [values, setValues] = useState(() =>
+		responses.map(({ response }) =>
+			U.getResponseByPreference(preferences)(response)
+		)
+	);
 
 	const specificHandleChange = (e) => {
 		const [key, value] = Object.entries(e)[0];
@@ -62,7 +68,7 @@ const CheckboxGroup = ({
 					bindings={bindings}
 				/>
 				{responses.map(({ id: modId, label: modLabel, response }, i) => {
-					const checked = U.getResponseByPreference(preferences)(response);
+					const checked = values[i];
 					if (checked) checkedArray.push(modId);
 					const toRef =
 						i === 0 || (checkedArray[0] && checkedArray[0] === modId);
@@ -90,9 +96,12 @@ const CheckboxGroup = ({
 											className="checkbox-lunatic"
 											checked={checked}
 											disabled={disabled}
-											onChange={(e) => {
+											onChange={({ target: { checked } }) => {
+												setValues(
+													values.map((v, j) => (i === j ? checked : v))
+												);
 												specificHandleChange({
-													[U.getResponseName(response)]: e.target.checked,
+													[U.getResponseName(response)]: checked,
 												});
 											}}
 										/>

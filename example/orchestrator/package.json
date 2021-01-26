@@ -11,11 +11,11 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"@inseefr/lunatic": "^2.0.0-rc11",
-		"node-sass": "^4.13.0",
+		"@inseefr/lunatic": "^2.0.1",
 		"react": "^17.0.0",
 		"react-dom": "^17.0.0",
-		"react-scripts": "^3.3.0"
+		"react-scripts": "^3.3.0",
+		"sass": "^1.32.4"
 	},
 	"homepage": ".",
 	"scripts": {

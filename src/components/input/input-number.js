@@ -56,6 +56,13 @@ const InputNumber = ({
 		handleChange({
 			[U.getResponseName(response)]: value,
 		});
+		if (management && value === null) {
+			setValue(
+				U.getResponseByPreference(preferences)(
+					U.buildLocalResponse(response, value)
+				)
+			);
+		}
 	};
 
 	const validate = (v) => {
@@ -130,7 +137,7 @@ const InputNumber = ({
 							aria-required={mandatory}
 							onChange={({ target: { value: v } }) => {
 								validate(v);
-								setValue(v);
+								setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
 						/>
@@ -138,7 +145,10 @@ const InputNumber = ({
 					</div>
 					{management && (
 						<div className="tooltip">
-							<TooltipResponse id={id} response={response} />
+							<TooltipResponse
+								id={id}
+								response={U.buildLocalResponse(response, value)}
+							/>
 						</div>
 					)}
 				</div>
@@ -193,7 +203,7 @@ InputNumber.defaultProps = {
 	features: [],
 	bindings: {},
 	labelPosition: 'DEFAULT',
-	unitPositioni: 'DEFAULT',
+	unitPosition: 'DEFAULT',
 	mandatory: false,
 	management: false,
 	style: {},

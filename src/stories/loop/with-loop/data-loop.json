@@ -9,10 +9,10 @@
 		},
 		{
 			"id": "k3ylzyo4",
-			"componentType": "BlockForLoop",
+			"componentType": "Loop",
 			"mandatory": true,
 			"positioning": "HORIZONTAL",
-			"label": "\"Qui sont les personnes qui habitent dans votre logement ?\"",
+			"label": "\"Ajouter un individu\"",
 			"conditionFilter": "\"normal\"",
 			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 10 },
@@ -49,7 +49,7 @@
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
 			"conditionFilter": "\"normal\"",
-			"rosterDependencies": ["PRENOM", "AGE"],
+			"loopDependencies": ["PRENOM", "AGE"],
 			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE"],
 			"components": [
 				{
