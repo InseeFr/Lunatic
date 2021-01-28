@@ -1,5 +1,5 @@
 export {
-  default as onKeyDownCallback,
-  BINDED_KEYS
-} from "./on-keydown-callback";
-export { default as onMouseDownCallback } from "./on-mousedown-callback";
+	default as createOnKeyDownCallback,
+	BINDED_KEYS,
+} from './on-keydown-callback';
+export { default as createOnMouseDownCallback } from './on-mousedown-callback';

@@ -54,6 +54,11 @@ $colorPrimaryFocused: $colorPrimaryLight;
 		position: relative;
 		height: $inputHeight;
 		width: 100%;
+		z-index: 0;
+
+		&.focused {
+			z-index: 1;
+		}
 		&:focus {
 			outline: none;
 		}
