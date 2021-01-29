@@ -11,7 +11,7 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"@inseefr/lunatic": "^2.0.0-rc25",
+		"@inseefr/lunatic": "^2.0.1",
 		"react": "^17.0.0",
 		"react-dom": "^17.0.0",
 		"react-scripts": "^3.3.0",
