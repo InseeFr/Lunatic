@@ -8,7 +8,13 @@ describe('responses utils', () => {
 	});
 	describe('getResponseByPreference', () => {
 		it('should return default value', () => {
-			expect(R.getResponseByPreference([])({})).toEqual('');
+			expect(R.getResponseByPreference([])({})).toEqual(null);
+			expect(
+				R.getResponseByPreference([])({
+					name: 'name',
+					values: { COLLECTED: 'Collected' },
+				})
+			).toEqual(null);
 		});
 		it('should return Collected', () => {
 			expect(
