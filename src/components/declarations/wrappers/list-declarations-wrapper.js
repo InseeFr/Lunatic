@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash.debounce';
 import Declarations from '../';
 import { TooltipResponse } from '../../tooltip';
 import * as U from '../../../utils/lib';
@@ -12,7 +13,7 @@ const ListDeclarationsWrapper = ({
 	preferences,
 	response,
 	options,
-	handleChange,
+	handleChange: propsHandleChange,
 	disabled,
 	focused,
 	keyboardSelection,
@@ -44,6 +45,19 @@ const ListDeclarationsWrapper = ({
 				)
 			);
 		} else setValue(newValue);
+	};
+
+	const handleChange = debounce((obj) => propsHandleChange(obj), 50);
+
+	const onChange = (v) => {
+		const update = {
+			[U.getResponseName(response)]: v,
+		};
+		if (hasSpecificHandler) specificHandleChange(update);
+		else {
+			setValue(v);
+			handleChange(update);
+		}
 	};
 
 	useEffect(() => {
@@ -97,18 +111,7 @@ const ListDeclarationsWrapper = ({
 										style={U.buildStyleObject(style)}
 										checked={checked}
 										disabled={disabled}
-										onChange={() => {
-											const update = {
-												[U.getResponseName(response)]: optionValue,
-											};
-											if (hasSpecificHandler) specificHandleChange(update);
-											else {
-												setValue(optionValue);
-												handleChange({
-													[U.getResponseName(response)]: optionValue,
-												});
-											}
-										}}
+										onChange={(optionLabel) => onChange(optionValue)}
 									/>
 									<label
 										htmlFor={`${type}-${id}-${optionValue}`}
