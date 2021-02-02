@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { fakeSchedulers } from 'rxjs-marbles/jest';
 import { CheckboxBoolean } from 'components';
 
 describe('checkbox-boolean', () => {
@@ -28,13 +29,17 @@ describe('checkbox-boolean', () => {
 	});
 
 	it('should trigger the change event', () => {
-		const wrapper = shallow(<CheckboxBoolean {...defaultProps} />);
-		wrapper.find('input').simulate('change', {
-			target: {
-				checked: true,
-			},
+		fakeSchedulers((advance) => {
+			const wrapper = shallow(<CheckboxBoolean {...defaultProps} />);
+			wrapper.find('input').simulate('change', {
+				target: {
+					checked: true,
+				},
+			});
+			advance(400);
+			wrapper.update();
+			expect(handleChange).toHaveBeenCalled();
+			expect(handleChange).toHaveBeenCalledWith({ '': true });
 		});
-		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': true });
 	});
 });
