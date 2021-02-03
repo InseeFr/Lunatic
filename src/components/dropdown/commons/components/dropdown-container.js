@@ -13,7 +13,7 @@ const DropdownContainer = React.forwardRef(function (props, ref) {
 	return (
 		<div
 			className={className}
-			tabIndex="0"
+			tabIndex="-1"
 			id={id}
 			onMouseDown={onMouseDown}
 			onKeyDown={onKeyDown}
