@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash.debounce';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
@@ -12,7 +13,7 @@ const CheckboxGroup = ({
 	label,
 	preferences,
 	responses,
-	handleChange,
+	handleChange: propsHandleChange,
 	disabled,
 	focused,
 	keyboardSelection,
@@ -31,6 +32,8 @@ const CheckboxGroup = ({
 			U.getResponseByPreference(preferences)(response)
 		)
 	);
+
+	const handleChange = debounce((obj) => propsHandleChange(obj), 50);
 
 	const specificHandleChange = (e) => {
 		const [key, value] = Object.entries(e)[0];

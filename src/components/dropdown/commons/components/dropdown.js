@@ -146,6 +146,7 @@ function Dropdown({
 			<Label content={label} focused={focused} mandatory={mandatory} />
 			<DropdownField
 				id={id}
+				response={response}
 				options={options}
 				management={management}
 				focused={focused}

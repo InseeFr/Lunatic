@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { fakeSchedulers } from 'rxjs-marbles/jest';
 import { CheckboxGroup } from 'components';
 
 describe('checkbox-group', () => {
@@ -32,17 +33,21 @@ describe('checkbox-group', () => {
 	});
 
 	it('should trigger the change event', () => {
-		const wrapper = shallow(<CheckboxGroup {...defaultProps} />);
-		wrapper
-			.find('input')
-			.first()
-			.simulate('change', {
-				target: {
-					checked: false,
-				},
-			});
-		expect(handleChange).toHaveBeenCalled();
-		/*Cause specificHandler*/
-		expect(handleChange).toHaveBeenCalledWith({ a: null });
+		fakeSchedulers((advance) => {
+			const wrapper = shallow(<CheckboxGroup {...defaultProps} />);
+			wrapper
+				.find('input')
+				.first()
+				.simulate('change', {
+					target: {
+						checked: false,
+					},
+				});
+			advance(400);
+			wrapper.update();
+			expect(handleChange).toHaveBeenCalled();
+			/*Cause specificHandler*/
+			expect(handleChange).toHaveBeenCalledWith({ a: null });
+		});
 	});
 });

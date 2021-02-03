@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { fakeSchedulers } from 'rxjs-marbles/jest';
 import { ListDeclarationsWrapper } from 'components/declarations/wrappers';
 
 const handleChange = jest.fn();
@@ -37,11 +38,15 @@ describe('list-declarations-wrapper', () => {
 	});
 
 	it('should trigger the change event', () => {
-		const wrapper = shallow(
-			<ListDeclarationsWrapper {...defaultProps} type="radio" />
-		);
-		wrapper.find('input').first().simulate('change');
-		expect(handleChange).toHaveBeenCalled();
-		expect(handleChange).toHaveBeenCalledWith({ '': 'france' });
+		fakeSchedulers((advance) => {
+			const wrapper = shallow(
+				<ListDeclarationsWrapper {...defaultProps} type="radio" />
+			);
+			wrapper.find('input').first().simulate('change');
+			advance(400);
+			wrapper.update();
+			expect(handleChange).toHaveBeenCalled();
+			expect(handleChange).toHaveBeenCalledWith({ '': 'france' });
+		});
 	});
 });
