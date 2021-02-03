@@ -5,7 +5,7 @@ import * as actions from '../commons/actions';
 import Panel from '../commons/components/panel';
 import ClosedIcon from '../commons/components/closed.icon';
 import OpenedIcon from '../commons/components/opened.icon';
-import DropdownContainer from '../commons/components/dropdown-container';
+import DropdownContainer from '../commons/components/dropdown';
 import reducer, { initial } from '../commons/reducer';
 import Option from './option';
 

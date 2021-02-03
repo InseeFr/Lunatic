@@ -54,6 +54,11 @@ $colorPrimaryFocused: $colorPrimaryLight;
 		position: relative;
 		height: $inputHeight;
 		width: 100%;
+		z-index: 0;
+
+		&.focused {
+			z-index: 1;
+		}
 		&:focus {
 			outline: none;
 		}
@@ -74,12 +79,6 @@ $colorPrimaryFocused: $colorPrimaryLight;
 				height: auto;
 			}
 
-			&.focused {
-				box-shadow: 0 0 0 0.2em $colorPrimaryMain,
-					-5px -5px 5px $colorPrimaryFocused, 5px -5px 5px $colorPrimaryFocused,
-					-5px 5px 5px $colorPrimaryFocused, 5px 5px 5px $colorPrimaryFocused;
-			}
-
 			&.disabled {
 				background-color: whitesmoke;
 			}
@@ -98,6 +97,12 @@ $colorPrimaryFocused: $colorPrimaryLight;
 					border: none;
 					outline: none;
 					text-align: left;
+				}
+				&.focused {
+					box-shadow: 0 0 0 0.2em $colorPrimaryMain,
+						-5px -5px 5px $colorPrimaryFocused,
+						5px -5px 5px $colorPrimaryFocused, -5px 5px 5px $colorPrimaryFocused,
+						5px 5px 5px $colorPrimaryFocused;
 				}
 			}
 
