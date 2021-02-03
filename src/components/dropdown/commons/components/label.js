@@ -2,18 +2,25 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-const Label = ({ content, focused, mandatory }) => (
-	<div className={classnames('lunatic-dropdown-label', { focused, mandatory })}>
-		{content}
-	</div>
-);
+function Label({ content, focused, mandatory }) {
+	if (!content) {
+		return null;
+	}
+	return (
+		<div
+			className={classnames('lunatic-dropdown-label', { focused, mandatory })}
+		>
+			{content}
+		</div>
+	);
+}
 
 Label.defaultProps = {
 	mandatory: false,
 };
 
 Label.propTypes = {
-	content: PropTypes.string.isRequired,
+	content: PropTypes.string,
 	focused: PropTypes.bool.isRequired,
 	mandatory: PropTypes.bool,
 };

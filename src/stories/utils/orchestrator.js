@@ -33,8 +33,8 @@ const OrchestratorForStories = ({
 					return (
 						<div className="lunatic lunatic-component" key={`component-${id}`}>
 							<Component
-								{...q}
 								{...rest}
+								{...q}
 								handleChange={handleChange}
 								preferences={preferences}
 								management={management}

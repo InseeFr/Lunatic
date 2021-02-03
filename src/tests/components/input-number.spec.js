@@ -2,7 +2,9 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { InputNumber } from 'components';
 
-const defaultProps = { id: 'id', label: 'label' };
+const response = { values: { COLLECTED: '1' } };
+
+const defaultProps = { id: 'id', label: 'label', response };
 
 describe('input-number', () => {
 	const handleChange = jest.fn();
@@ -20,7 +22,7 @@ describe('input-number', () => {
 				max={100}
 				mandatory={true}
 				unit="euros"
-				validators={[({ value }) => (value ? undefined : 'Value is mandatory')]}
+				validators={[(value) => (value ? undefined : 'Value is mandatory')]}
 			/>
 		);
 	});

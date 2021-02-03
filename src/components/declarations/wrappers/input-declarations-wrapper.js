@@ -50,13 +50,6 @@ const InputDeclarationsWrapper = ({
 		handleChange({
 			[U.getResponseName(response)]: value,
 		});
-		if (management && value === null) {
-			setValue(
-				U.getResponseByPreference(preferences)(
-					U.buildLocalResponse(response, value)
-				)
-			);
-		}
 	};
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';
@@ -104,7 +97,8 @@ const InputDeclarationsWrapper = ({
 							required={mandatory}
 							aria-required={mandatory}
 							onChange={({ target: { value: v } }) => {
-								setValue(v === '' ? null : v);
+								if (management) setValue(v);
+								else setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
 						/>
