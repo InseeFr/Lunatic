@@ -2,7 +2,7 @@
 
 // Define colors
 $colorPrimaryDark: #2a5885;
-$colorPrimaryLight: #5181b8;
+$colorPrimaryLight: rgb(81, 129, 184);
 $colorPrimaryMain: #4a73a4;
 $colorPrimaryContrastText: #ffffff;
 
@@ -17,24 +17,6 @@ $colorSecondaryContrastText: #ffffff;
 * {
   box-sizing: border-box;
   font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
-}
-
-.title {
-  margin-top: none;
-  text-align: center;
-  border: 0.2em solid $colorPrimaryDark;
-  color: $colorPrimaryLight;
-}
-
-.error {
-  margin-top: none;
-  text-align: center;
-  border: 0.2em solid red;
-  color: black;
-}
-
-.lunatic-component {
-  margin-top: 0.2em;
 }
 
 .lunatic input[type='number']::-webkit-inner-spin-button,
@@ -125,7 +107,7 @@ $colorSecondaryContrastText: #ffffff;
 .lunatic .checkbox-lunatic,
 .lunatic .radio-lunatic {
   box-shadow: none;
-  opacity: 1;
+  opacity: 0;
   margin-right: -1.1875rem;
 }
 
@@ -161,7 +143,6 @@ $colorSecondaryContrastText: #ffffff;
   top: 0.4375rem;
 }
 
-.lunatic.checkboxBoolean label::before,
 .lunatic .checkbox-lunatic + label::before {
   content: url(./img/check_box_outline.svg);
 }
@@ -232,7 +213,8 @@ $colorSecondaryContrastText: #ffffff;
 // LABEL, LEGEND
 .lunatic label,
 .lunatic legend,
-.lunatic .subsequence-lunatic {
+.lunatic .subsequence-lunatic,
+.lunatic-dropdown-label {
   color: $colorPrimaryDark;
   background-color: $colorPrimaryContrastText;
   border: 0;
@@ -243,368 +225,6 @@ $colorSecondaryContrastText: #ffffff;
   font-weight: bold;
   margin-bottom: 0.375rem;
 }
-
-// DROPDOWN
-
-$inputHeight: 32px;
-$boxShadowColor: $colorPrimaryMain;
-
-@mixin defaultFont {
-  font-family: Georgia, Times, 'Times New Roman', serif;
-  font-size: 16px;
-}
-
-@mixin disableSelect {
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer */
-  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
-  -webkit-user-select: none; /* Chrome, Safari, and Opera */
-  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
-}
-
-.lunatic .lunatic-dropdown {
-  display: block;
-  width: 100%;
-  &:focus {
-    outline: none;
-  }
-
-  &.label-left {
-    display: flex;
-    flex-direction: row;
-  }
-
-  &.label-right {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-
-  &.label-top {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &.label-bottom {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-
-  .lunatic-dropdown-label {
-    opacity: 1;
-  }
-
-  .lunatic-dropdown-container {
-    position: relative;
-    height: $inputHeight;
-    width: 100%;
-    &:focus {
-      outline: none;
-    }
-
-    .lunatic-dropdown-content {
-      background-color: lavenderblush;
-      box-shadow: 0em 0em 0.1em 0.1em $boxShadowColor;
-      border-radius: 20px 20px;
-      border-color: white;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-
-      &.visible {
-        border-radius: 16px 16px;
-        height: auto;
-      }
-
-      &.focused {
-        box-shadow: 0 0 0 0.2em $colorPrimaryMain;
-      }
-
-      &.disabled {
-        background-color: whitesmoke;
-      }
-
-      .lunatic-dropdown-input {
-        border-radius: 10px 10px;
-        box-shadow: 0 0 0 0.2em $colorPrimaryDark;
-        input {
-          @include defaultFont();
-          @include disableSelect();
-          margin: 0px 25px 0px 12px;
-          width: calc(100% - 37px);
-          background-color: transparent;
-          border-color: transparent;
-          height: $inputHeight;
-          border: none;
-          outline: none;
-          text-align: left;
-        }
-      }
-
-      .lunatic-icone {
-        cursor: pointer;
-        position: absolute;
-        right: 10px;
-        top: 7px;
-        &:focus {
-          outline: none;
-        }
-      }
-
-      .lunatic-transition {
-        visibility: hidden;
-        overflow-y: hidden;
-        opacity: 0;
-
-        &:focus {
-          outline: none;
-        }
-
-        &.visible {
-          visibility: visible;
-          opacity: 1;
-          transition: opacity 1s ease-out;
-        }
-
-        .lunatic-dropdown-panel {
-          background-color: transparent;
-          margin: 0 10px 12px 10px;
-          padding-top: 3px;
-          list-style: none;
-          &:focus {
-            outline: none;
-          }
-          max-height: 100px;
-          overflow-y: auto;
-
-          &::-webkit-scrollbar {
-            width: 8px;
-          }
-          &::-webkit-scrollbar-track {
-            background-color: $boxShadowColor;
-          }
-          &::-webkit-scrollbar-thumb {
-            background: $colorPrimaryMain;
-          }
-          &::-webkit-scrollbar-thumb:hover {
-            background: $colorPrimaryDark;
-          }
-        }
-
-        /** options style */
-        .lunatic-dropdown-option {
-          cursor: pointer;
-          @include defaultFont();
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          color: black;
-
-          display: block;
-
-          &.lunatic-dropdown-option-active {
-            color: ivory;
-            background-color: $colorPrimaryMain;
-            .lunatic-prefix {
-              color: darkgoldenrod;
-              font-weight: bold;
-            }
-          }
-
-          &.lunatic-dropdown-option-selected {
-            color: snow;
-            background-color: rgb(136, 19, 151);
-            .lunatic-prefix {
-              color: lightgray;
-              font-weight: bold;
-            }
-
-            &.lunatic-dropdown-option-active {
-              color: khaki;
-              background-color: rgb(188, 90, 201);
-            }
-          }
-
-          .lunatic-prefix {
-            color: cornflowerblue;
-            font-weight: bold;
-          }
-        }
-      }
-    }
-  }
-}
-
-// SELECT
-// .lunatic .simple-select {
-//   display: inline-block;
-//   position: relative;
-// }
-
-// .lunatic .simple-select button {
-//   width: 100%;
-//   height: 2rem;
-//   line-height: 1.1875rem;
-
-//   color: $colorPrimaryMain;
-//   background-color: white;
-//   position: relative;
-
-//   border: 0;
-//   border-radius: 0;
-//   border-bottom-width: 0.0625rem;
-//   border-bottom-color: $colorPrimaryDark;
-//   border-bottom-style: dotted;
-
-//   margin: 0;
-
-//   padding-bottom: 0.4375rem;
-//   padding-left: 0.375rem;
-//   padding-right: 0;
-//   padding-top: 0.375rem;
-
-//   text-decoration: none;
-//   display: block;
-
-//   text-align: left;
-// }
-
-// .lunatic .simple-select button:focus {
-//   border: 0;
-//   outline: none;
-//   box-shadow: none;
-//   background: rgba(0, 0, 0, 0.05);
-//   border-bottom-width: 0.0625rem;
-//   border-bottom-color: $colorPrimaryDark;
-//   border-bottom-style: dotted;
-// }
-// .lunatic .simple-select button:after {
-//   border: 0;
-//   transform: none;
-//   float: right;
-//   margin-left: 0.3125rem;
-//   content: url(./img/menu-down.svg);
-//   color: rgba(0, 0, 0, 0.54);
-//   padding: 0;
-// }
-
-// .lunatic .simple-select button[aria-expanded='true']:after {
-//   border: 0;
-//   transform: none;
-//   float: right;
-//   margin-left: 0.3125rem;
-//   content: url(./img/menu-up.svg);
-//   padding: 0;
-// }
-
-// .lunatic .simple-select ul.options,
-// .lunatic .simple-select ul.options:active {
-//   box-shadow: 0 0.3125rem 0.3125rem -0.1875rem rgba(0, 0, 0, 0.2),
-//     0 0.5rem 0.625rem 0.0625rem rgba(0, 0, 0, 0.14),
-//     0 0.1875rem 0.875rem 0.125rem rgba(0, 0, 0, 0.12);
-//   opacity: 1;
-//   transform: scale(1, 1) translateZ(0);
-//   transition: opacity 343ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-//     transform 228ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-//   transform-origin: 0 12.75rem 0;
-//   padding: 0.5rem 0;
-//   margin: 0;
-//   background-color: white;
-//   position: absolute;
-//   top: -3.125rem;
-//   list-style: none;
-//   border: 0;
-//   list-style-type: none;
-
-//   min-width: 100%;
-//   width: auto;
-
-//   overflow-y: auto;
-//   z-index: 1;
-//   max-height: none;
-// }
-
-// .lunatic .simple-select .hidden {
-//   display: none;
-// }
-
-// .lunatic .simple-select ul.options li.option {
-//   cursor: pointer;
-// }
-
-// .lunatic .simple-select ul.options li.selected {
-//   background-color: rgba(0, 0, 0, 0.14);
-//   color: black;
-// }
-
-// .lunatic .simple-select .read-only {
-//   background-color: #ebebe4;
-//   color: black;
-// }
-
-// .lunatic .simple-select ul.options:focus {
-//   border: 0;
-//   outline: none;
-//   background-color: white;
-// }
-
-// .lunatic .simple-select ul li.option {
-//   display: flex;
-//   justify-content: flex-start;
-//   align-items: center;
-
-//   border-color: rgba(0, 0, 0, 0.87);
-//   border-radius: 0;
-//   border-style: none;
-//   border-width: 0;
-//   border-image-outset: 0;
-//   border-image-repeat: stretch;
-//   border-image-slice: 100%;
-//   border-image-source: none;
-//   border-image-width: 1;
-
-//   box-sizing: content-box;
-//   color: rgba(0, 0, 0, 0.87);
-//   cursor: pointer;
-
-//   font-family: Roboto, Helvetica, Arial, sans-serif;
-//   font-size: 1.1rem;
-//   font-weight: normal;
-//   height: 1.5rem;
-
-//   line-height: 1.65rem;
-//   list-style-image: none;
-//   list-style-position: outside;
-//   list-style-type: none;
-//   margin: 0;
-//   outline-color: rgba(0, 0, 0, 0.87);
-//   outline-style: none;
-//   outline-width: 0;
-//   overflow: hidden;
-
-//   padding: 0.6875rem 1rem;
-
-//   position: relative;
-//   text-align: left;
-//   text-decoration-color: rgba(0, 0, 0, 0.87);
-//   text-decoration-line: none;
-//   text-decoration-style: solid;
-//   transition-delay: 0s;
-//   transition-duration: 0.15s;
-//   transition-property: background-color;
-//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-//   user-select: none;
-//   vertical-align: middle;
-//   white-space: nowrap;
-//   -webkit-appearance: none;
-//   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-// }
-
-// .lunatic .simple-select ul li:hover {
-//   text-decoration: none;
-//   background-color: rgba(0, 0, 0, 0.08);
-// }
 
 //TEXT
 .lunatic .input-lunatic {
@@ -779,4 +399,18 @@ $boxShadowColor: $colorPrimaryMain;
 
 .tooltip {
   width: 10%;
+}
+
+table {
+  .field-with-tooltip {
+    width: 95%;
+  }
+  .tooltip {
+    width: 5%;
+  }
+  .tooltip-lunatic {
+    img {
+      width: 1em;
+    }
+  }
 }
