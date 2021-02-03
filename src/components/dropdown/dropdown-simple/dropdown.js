@@ -61,7 +61,7 @@ const Dropdown = ({
 			</span>
 			{getIcon(state, dispatch)(visible, containerEl)}
 			<div
-				tabIndex="-1"
+				tabIndex="0"
 				className={classnames('lunatic-transition', {
 					visible: isDisplay(state),
 					'width-auto': widthAuto,

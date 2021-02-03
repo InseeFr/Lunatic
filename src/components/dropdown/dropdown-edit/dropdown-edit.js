@@ -107,7 +107,7 @@ function Dropdown({
 					autoCorrect="off"
 					autoCapitalize="off"
 					spellCheck="false"
-					tabIndex="-1"
+					tabIndex="0"
 					onChange={onChangeCallback(state, dispatch)}
 				/>
 			</div>

@@ -45,7 +45,9 @@ function onKeyDownCallbackProxy(state, dispatch, onSelect) {
 				callback(e.key);
 				break;
 			default:
+				return;
 		}
+		return false;
 	};
 }
 
@@ -172,7 +174,6 @@ Dropdown.propTypes = {
 
 Dropdown.defaultProps = {
 	options: [],
-	zIndex: 0,
 	onSelect: () => null,
 };
 
