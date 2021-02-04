@@ -42,6 +42,7 @@
 		"lodash.camelcase": "^4.3.0",
 		"lodash.isequal": "^4.5.0",
 		"prop-types": "^15.7.2",
+		"react-scrollable-div": "^0.7.0",
 		"remove-accents": "^0.4.2",
 		"sass": "^1.32.2"
 	},

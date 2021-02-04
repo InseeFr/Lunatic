@@ -130,29 +130,35 @@ $colorPrimaryFocused: $colorPrimaryLight;
 					opacity: 1;
 					transition: opacity 1s ease-out;
 				}
+				.lunatic-dropdown-panel-container {
+					
+					&.visible {
+						height: 250px;
+					}
 
-				.lunatic-dropdown-panel {
-					background-color: transparent;
-					margin: 0 10px 12px 10px;
-					padding-top: 3px;
-					list-style: none;
-					&:focus {
-						outline: none;
-					}
-					max-height: 100px;
-					overflow-y: auto;
+					.lunatic-dropdown-panel {
+						background-color: transparent;
+						margin: 0 10px 12px 10px;
+						padding-top: 3px;
+						list-style: none;
+						&:focus {
+							outline: none;
+						}
+						max-height: 100px;
+						overflow-y: auto;
 
-					&::-webkit-scrollbar {
-						width: 8px;
-					}
-					&::-webkit-scrollbar-track {
-						background-color: $colorPrimaryMain;
-					}
-					&::-webkit-scrollbar-thumb {
-						background: $colorPrimaryMain;
-					}
-					&::-webkit-scrollbar-thumb:hover {
-						background: $colorPrimaryDark;
+						&::-webkit-scrollbar {
+							width: 8px;
+						}
+						&::-webkit-scrollbar-track {
+							background-color: $colorPrimaryMain;
+						}
+						&::-webkit-scrollbar-thumb {
+							background: $colorPrimaryMain;
+						}
+						&::-webkit-scrollbar-thumb:hover {
+							background: $colorPrimaryDark;
+						}
 					}
 				}
 

@@ -1,5 +1,13 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { ReactLargeList } from 'react-scrollable-div';
+
+function ItemRenderer({ item, height }) {
+	const { label } = item;
+	console.log(item);
+	return <div>{label}</div>;
+}
 
 /**
  *
@@ -14,12 +22,43 @@ function Panel({
 	onSelect,
 	idDropdown,
 	optionComponent: Option,
+	visible,
 }) {
 	const ulRef = useRef();
+	/*
+return {
+      id: `Element-${i}`,
+      value,
+      __height: 30 + randomInt(30),
+      __width: value.length,
+    };
+*/
+
+	const liste = options.map(function ({ label, value }) {
+		return {
+			__height: 20,
+			__width: label.length * 10,
+			value,
+			label,
+			id: `${idDropdown}-option-${value}`,
+		};
+	});
 
 	return display ? (
-		<div className="lunatic-dropdown-panel-container">
-			<ul className="lunatic-dropdown-panel" ref={ulRef} tabIndex="-1">
+		<div
+			className={classnames('lunatic-dropdown-panel-container', { visible })}
+		>
+			<ReactLargeList
+				className="toto"
+				list={liste}
+				itemRenderer={ItemRenderer}
+			/>
+		</div>
+	) : null;
+}
+
+{
+	/* <ul className="lunatic-dropdown-panel" ref={ulRef} tabIndex="-1">
 				{options.map(({ label, value }, index) => (
 					<li
 						key={value}
@@ -42,9 +81,7 @@ function Panel({
 						/>
 					</li>
 				))}
-			</ul>
-		</div>
-	) : null;
+			</ul> */
 }
 
 const propTypesOption = PropTypes.shape({

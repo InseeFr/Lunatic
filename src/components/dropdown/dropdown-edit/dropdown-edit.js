@@ -149,6 +149,7 @@ function Dropdown({
 					selectedOption={selectedOption}
 					onSelect={onSelect_}
 					handleActive={(index) => dispatch(actions.setActiveOption(index))}
+					visible={visible}
 				/>
 			</div>
 		</DropdownContainer>
