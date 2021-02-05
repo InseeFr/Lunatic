@@ -7,7 +7,7 @@ import image from '@timdp/rollup-plugin-image';
 
 const { dependencies } = require('./package.json');
 
-export default {
+const config = {
 	input: 'src/components/index.js',
 	output: {
 		name: 'lunatic',
@@ -36,3 +36,5 @@ export default {
 	],
 	external: ['react', ...Object.keys(dependencies)],
 };
+
+export default config;
