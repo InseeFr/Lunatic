@@ -19,8 +19,8 @@
 	},
 	"homepage": ".",
 	"scripts": {
-		"start": "react-scripts --expose-gc --max-old-space-size=8192 start",
-		"build": "react-scripts --expose-gc --max-old-space-size=8192 build",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
