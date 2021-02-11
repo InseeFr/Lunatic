@@ -66,7 +66,8 @@ function Dropdown({
 	const inputEl = useRef();
 	const containerEl = useRef();
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
-	const selectedOption = options.find((o) => o.value === value);
+	console.log(value);
+	const selectedOption = options.find((o) => o.label === value);
 
 	useEffect(
 		function () {

@@ -1,6 +1,6 @@
 @mixin defaultFont {
-	font-family: Georgia, Times, 'Times New Roman', serif;
-	font-size: 16px;
+	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+	font-size: 12px;
 }
 
 @mixin disableSelect {
@@ -44,6 +44,10 @@
 	}
 
 	.lunatic-dropdown-container {
+		ul {
+			padding-inline-start: 0px;
+			font-size: 1rem;
+		}
 		position: relative;
 		height: 2rem;
 		width: 100%;
@@ -57,7 +61,7 @@
 		}
 
 		.lunatic-dropdown-content {
-			background-color: var(--color-very-very-light);
+			// background-color: var(--color-very-very-light);
 			border-color: white;
 			left: 0;
 			top: 0;
@@ -66,7 +70,7 @@
 			position: absolute;
 			height: auto;
 			&.visible {
-				border-radius: 0 0 16px 16px;
+				// border-radius: 0 0 16px 16px;
 				height: auto;
 			}
 
@@ -75,12 +79,11 @@
 			}
 
 			.lunatic-dropdown-input {
-				border-radius: 10px 10px;
-				box-shadow: 0 0 0 0.2em var(--color-primary-dark);
+				border-bottom: 1px solid var(--color-primary-dark);
 				input {
 					@include defaultFont();
 					@include disableSelect();
-					margin: 0px 25px 0px 12px;
+					margin: 0px 25px 0px 0px;
 					width: calc(100% - 37px);
 					background-color: transparent;
 					border-color: transparent;
@@ -88,13 +91,14 @@
 					border: none;
 					outline: none;
 					text-align: left;
+					cursor: inherit;
+				}
+				&:hover {
+					cursor: pointer;
+					border-bottom: 2px solid var(--color-primary-main);
 				}
 				&.focused {
-					box-shadow: 0 0 0 0.2em var(--color-primary-main),
-						-5px -5px 5px var(--color-primary-light),
-						5px -5px 5px var(--color-primary-light),
-						-5px 5px 5px var(--color-primary-light),
-						5px 5px 5px var(--color-primary-light);
+					background-color: rgba(0, 0, 0, 0.05);
 				}
 			}
 
@@ -124,8 +128,10 @@
 				}
 
 				.lunatic-dropdown-panel {
-					background-color: transparent;
-					margin: 0 10px 12px 10px;
+					background-color: white;
+					margin: 0 0 12px 0;
+					border-radius: 4px;
+					z-index: 100;
 					padding-top: 3px;
 					list-style: none;
 					&:focus {
@@ -133,57 +139,31 @@
 					}
 					max-height: 100px;
 					overflow-y: auto;
-
-					&::-webkit-scrollbar {
-						width: 8px;
-					}
-					&::-webkit-scrollbar-track {
-						background-color: var(--color-secondary-main);
-					}
-					&::-webkit-scrollbar-thumb {
-						background: var(--color-primary-dark);
-					}
-					&::-webkit-scrollbar-thumb:hover {
-						background: var(--color-primary-main);
-					}
 				}
 
 				/** options style */
 				.lunatic-dropdown-option {
+					padding-left: 10px;
 					cursor: pointer;
 					@include defaultFont();
 					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					color: black;
+					line-height: 2rem;
 
 					display: block;
 
 					&.lunatic-dropdown-option-active {
-						color: ivory;
-						background-color: var(--color-primary-main);
-						.lunatic-prefix {
-							color: darkgoldenrod;
-							font-weight: bold;
-						}
+						color: var(--color-primary-dark);
+						background-color: var(--color-dropdown-active);
 					}
-
 					&.lunatic-dropdown-option-selected {
-						color: snow;
-						background-color: rgb(136, 19, 151);
-						.lunatic-prefix {
-							color: lightgray;
-							font-weight: bold;
-						}
-
-						&.lunatic-dropdown-option-active {
-							color: khaki;
-							background-color: rgb(188, 90, 201);
-						}
+						background-color: var(--color-dropdown-selected);
 					}
 
 					.lunatic-prefix {
-						color: cornflowerblue;
+						color: var(--color-prefix);
 						font-weight: bold;
 					}
 				}

@@ -40,7 +40,6 @@ const OrchestratorForStories = ({
 								management={management}
 								features={features}
 								bindings={bindings}
-								writable
 							/>
 						</div>
 					);
