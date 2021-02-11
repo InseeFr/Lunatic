@@ -21,7 +21,6 @@ const config = {
 	},
 	plugins: [
 		resolve(),
-		postcss(),
 		babel({
 			exclude: 'node_modules/**',
 		}),
