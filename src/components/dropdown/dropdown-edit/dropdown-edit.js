@@ -95,7 +95,7 @@ function Dropdown({
 			zIndex={zIndex}
 			management={management}
 		>
-			<div
+			<span
 				className={classnames('lunatic-dropdown-input', { focused, disabled })}
 			>
 				<input
@@ -111,7 +111,7 @@ function Dropdown({
 					tabIndex="0"
 					onChange={onChangeCallback(state, dispatch)}
 				/>
-			</div>
+			</span>
 			<Icone
 				prefix={prefix}
 				visible={visible}
