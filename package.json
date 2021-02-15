@@ -136,6 +136,6 @@
 		"trailingComma": "es5"
 	},
 	"peerDependencies": {
-		"react": "^16.11.0"
+		"react": "^17.0.0"
 	}
 }

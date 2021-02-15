@@ -13,6 +13,7 @@ const Collect = () => {
 			source={simpsons}
 			data={dataForCollect}
 			tooltip={false}
+			writable
 		/>
 	);
 };
