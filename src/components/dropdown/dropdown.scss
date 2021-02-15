@@ -49,12 +49,12 @@
 			font-size: 1rem;
 		}
 		position: relative;
-		height: 2rem;
+		height: 2em;
 		width: 100%;
-		z-index: 0;
+		z-index: 1;
 
 		&.focused {
-			z-index: 1;
+			z-index: 2;
 		}
 		&:focus {
 			outline: none;
@@ -80,6 +80,7 @@
 
 			.lunatic-dropdown-input {
 				border-bottom: 1px solid var(--color-primary-dark);
+				padding: 6px 0 7px;
 				input {
 					@include defaultFont();
 					@include disableSelect();
@@ -87,7 +88,7 @@
 					width: calc(100% - 37px);
 					background-color: transparent;
 					border-color: transparent;
-					height: 2rem;
+					height: 2em;
 					border: none;
 					outline: none;
 					text-align: left;
@@ -99,14 +100,12 @@
 				}
 				&.focused {
 					background-color: rgba(0, 0, 0, 0.05);
+					box-shadow: 12px 0 rgba(0, 0, 0, 0.05);
 				}
 			}
 
 			.lunatic-icone {
 				cursor: pointer;
-				position: absolute;
-				right: 10px;
-				top: 7px;
 				&:focus {
 					outline: none;
 				}
@@ -127,18 +126,24 @@
 					transition: opacity 1s ease-out;
 				}
 
-				.lunatic-dropdown-panel {
-					background-color: white;
-					margin: 0 0 12px 0;
-					border-radius: 4px;
-					z-index: 100;
-					padding-top: 3px;
-					list-style: none;
-					&:focus {
-						outline: none;
+				.lunatic-dropdown-panel-container {
+					box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.9),
+						0px 3px 4px 0px rgba(0, 0, 0, 0.14),
+						0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+
+					.lunatic-dropdown-panel {
+						background-color: white;
+						margin: 0 0 12px 0;
+						border-radius: 4px;
+						z-index: 3;
+						padding-top: 3px;
+						list-style: none;
+						&:focus {
+							outline: none;
+						}
+						max-height: 100px;
+						overflow-y: auto;
 					}
-					max-height: 100px;
-					overflow-y: auto;
 				}
 
 				/** options style */
@@ -151,9 +156,7 @@
 					text-overflow: ellipsis;
 					color: black;
 					line-height: 2rem;
-
 					display: block;
-
 					&.lunatic-dropdown-option-active {
 						color: var(--color-primary-dark);
 						background-color: var(--color-dropdown-active);
