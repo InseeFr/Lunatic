@@ -27,7 +27,7 @@
 		background-color: rgba(0, 0, 0, 0.05);
 		border-right: 0.0625rem solid var(--color-very-light);
 		&::before {
-			content: url(../../images/radio_button_checked.svg);
+			content: var(--radio-checked);
 		}
 	}
 	+ label {
@@ -41,7 +41,7 @@
 			padding: 0;
 			position: relative;
 			top: 0.4375rem;
-			content: url(../../images/radio_button_unchecked.svg);
+			content: var(--radio-unchecked);
 		}
 	}
 }

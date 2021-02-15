@@ -29,7 +29,7 @@
 		background-color: rgba(0, 0, 0, 0.05);
 		border-right: 0.0625rem solid var(--color-very-light);
 		&::before {
-			content: url(../../images/check_box.svg);
+			content: var(--checkbox-checked);
 		}
 	}
 	+ label {
@@ -43,7 +43,7 @@
 			padding: 0;
 			position: relative;
 			top: 0.4375rem;
-			content: url(../../images/check_box_outline.svg);
+			content: var(--checkbox-unchecked);
 		}
 	}
 }
