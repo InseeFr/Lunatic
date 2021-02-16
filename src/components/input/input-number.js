@@ -56,13 +56,6 @@ const InputNumber = ({
 		handleChange({
 			[U.getResponseName(response)]: value,
 		});
-		if (management && value === null) {
-			setValue(
-				U.getResponseByPreference(preferences)(
-					U.buildLocalResponse(response, value)
-				)
-			);
-		}
 	};
 
 	const validate = (v) => {
@@ -137,7 +130,8 @@ const InputNumber = ({
 							aria-required={mandatory}
 							onChange={({ target: { value: v } }) => {
 								validate(v);
-								setValue(v === '' ? null : v);
+								if (management) setValue(v);
+								else setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
 						/>

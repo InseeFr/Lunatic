@@ -1,9 +1,9 @@
-import React, { useReducer, useRef } from 'react';
+import React, { useReducer, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import * as actions from '../commons/actions';
 import Panel from '../commons/components/panel';
-import DropdownContainer from '../commons/components/dropdown-container';
+import DropdownContainer from '../commons/components/dropdown';
 import { preparePrefix } from './prefix-tools';
 import reducer, { initial } from '../commons/reducer';
 import Option from './option';
@@ -67,6 +67,17 @@ function Dropdown({
 	const containerEl = useRef();
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
 	const selectedOption = options.find((o) => o.value === value);
+
+	useEffect(
+		function () {
+			const { current } = inputEl;
+			if (current && focused) {
+				current.focus();
+			}
+		},
+		[inputEl, focused]
+	);
+
 	return (
 		<DropdownContainer
 			className={className || 'lunatic-dropdown'}
@@ -96,7 +107,7 @@ function Dropdown({
 					autoCorrect="off"
 					autoCapitalize="off"
 					spellCheck="false"
-					tabIndex="-1"
+					tabIndex="0"
 					onChange={onChangeCallback(state, dispatch)}
 				/>
 			</div>

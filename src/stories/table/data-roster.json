@@ -6,7 +6,6 @@
 			"mandatory": false,
 			"positioning": "HORIZONTAL",
 			"label": "➡ 1. Please, complete the following grid with your favourite characters",
-			"conditionFilter": "#if((!( $READY != '1')))normal#{else}hidden#end",
 			"cells": [
 				[
 					{ "headerCell": true, "label": "Name" },

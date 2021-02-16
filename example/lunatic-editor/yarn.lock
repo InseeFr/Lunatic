@@ -1708,14 +1708,15 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.0.1.tgz#475590d64d105d6316d20bad6e778f65012acb67"
-  integrity sha512-iQ8iKA0X9n2hIrz3kqqWbsoAKdi8WbMrzgquAf2aSetH7g6GFKA3/fUO/NjjngVIUdf923b95uQx7OOh1DGizA==
+"@inseefr/lunatic@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.0.2.tgz#3142c0abaddd48b4dfd8e429fc2a8090ca7a0e6c"
+  integrity sha512-syhHTa6rVVYlzlLv4cwtYJj9do430/b0j5Yw0m86mm0iYcT/06DD4nf0c8FjxVgNlopHL1MPZcr9+KMl1dMKnA==
   dependencies:
     "@inseefr/vtl-2.1-engine" "^0.1.9"
     keycode "^2.2.0"
     lodash.camelcase "^4.3.0"
+    lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"
     prop-types "^15.7.2"
     remove-accents "^0.4.2"
@@ -7599,6 +7600,11 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
+
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
 lodash.isequal@^4.5.0:
   version "4.5.0"
