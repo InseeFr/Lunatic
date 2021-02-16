@@ -1200,26 +1200,12 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.0.2.tgz#3142c0abaddd48b4dfd8e429fc2a8090ca7a0e6c"
-  integrity sha512-syhHTa6rVVYlzlLv4cwtYJj9do430/b0j5Yw0m86mm0iYcT/06DD4nf0c8FjxVgNlopHL1MPZcr9+KMl1dMKnA==
+"@inseefr/lunatic@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.0.1.tgz#f87e59eda98499a401ab1637c294de8eb6c7b8c4"
+  integrity sha512-dAvz5+HXnVSP46Yqbkhj5eazwOAyPuZlKH0Fnv3Mn+LLvfzw2OwNaADJOOrKc5sM16hDnlz/kGbNNezEg3gSYg==
   dependencies:
     "@inseefr/vtl-2.1-engine" "^0.1.9"
-    keycode "^2.2.0"
-    lodash.camelcase "^4.3.0"
-    lodash.debounce "^4.0.8"
-    lodash.isequal "^4.5.0"
-    prop-types "^15.7.2"
-    remove-accents "^0.4.2"
-    sass "^1.32.2"
-
-"@inseefr/lunatic@https://github.com/InseeFr/Lunatic.git":
-  version "2.0.2"
-  resolved "https://github.com/InseeFr/Lunatic.git#9f9a2348640ac4464319bf6723450fcaa9ebd48f"
-  dependencies:
-    "@inseefr/vtl-2.1-engine" "^0.1.9"
-    keycode "^2.2.0"
     lodash.camelcase "^4.3.0"
     lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"
@@ -6710,11 +6696,6 @@ jsprim@^1.2.2:
   dependencies:
     array-includes "^3.1.2"
     object.assign "^4.1.2"
-
-keycode@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.2.0.tgz#3d0af56dc7b8b8e5cba8d0a97f107204eec22b04"
-  integrity sha1-PQr1bce4uOXLqNCpfxByBO7CKwQ=
 
 killable@^1.0.1:
   version "1.0.1"

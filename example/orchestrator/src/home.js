@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import logo from './img/lunatic-logo.png';
 import { CollectOrchestrator, ManagementOrchestrator } from './orchestrator';
 import { dependencies } from '../package.json';
-import './custom-lunatic.scss';
 
 const Home = () => {
 	const [fakeRoute, setFakeRoute] = useState('/collect');
