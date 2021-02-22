@@ -108,3 +108,10 @@ Dans le cas où ils seraient spécifiés en VTL, les props suivantes sont à val
 
 - features={['VTL']}
 - bindings={lunatic.getBindings(questionnaire)}
+
+## Types
+
+En entrée, lors de l'initialisation de l'orchestrateur (via le paramètre `data`), comme en sortie, les données doivent être typées comme suit, en fonction des composants :
+
+- `boolean` : `CheckboxBoolean`
+- `string` : Autres composants
