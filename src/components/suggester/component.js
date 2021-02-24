@@ -44,7 +44,7 @@ const Suggester = ({
 			/>
 			<div className="field-container">
 				<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
-					TODO
+					TODO: Add suggester component
 				</div>
 				{management && (
 					<div className="tooltip">
@@ -66,4 +66,33 @@ const Suggester = ({
 	);
 };
 
-export default Suggester;
+Suggester.defaultProps = {
+	label: '',
+	preferences: ['COLLECTED'],
+	response: {},
+	disabled: false,
+	focused: false,
+	declarations: [],
+	features: [],
+	bindings: {},
+	management: false,
+	style: {},
+};
+
+Suggester.propTypes = {
+	id: PropTypes.string.isRequired,
+	label: PropTypes.string,
+	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
+	response: U.responsePropTypes,
+	handleChange: PropTypes.func.isRequired,
+	disabled: PropTypes.bool,
+	focused: PropTypes.bool,
+	declarations: U.declarationsPropTypes,
+	features: PropTypes.arrayOf(PropTypes.string),
+	bindings: PropTypes.object,
+	management: PropTypes.bool,
+	path: PropTypes.string.isRequired,
+	style: PropTypes.object,
+};
+
+export default React.memo(Suggester, U.areEqual);
