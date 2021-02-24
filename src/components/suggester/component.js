@@ -19,10 +19,11 @@ const Suggester = ({
 	features,
 	bindings,
 	management,
+	labelPosition,
 	style,
 }) => {
 	return (
-		<div key={`checkbox-boolean-${id}`} className={`checkbox-boolean-modality`}>
+		<>
 			<Declarations
 				id={id}
 				type={C.BEFORE_QUESTION_TEXT}
@@ -30,30 +31,32 @@ const Suggester = ({
 				features={features}
 				bindings={bindings}
 			/>
-			{label && (
-				<label htmlFor={`checkbox-boolean-${id}`}>
-					{interpret(features)(bindings)(label)}
-				</label>
-			)}
-			<Declarations
-				id={id}
-				type={C.AFTER_QUESTION_TEXT}
-				declarations={declarations}
-				features={features}
-				bindings={bindings}
-			/>
-			<div className="field-container">
-				<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
-					TODO: Add suggester component
-				</div>
-				{management && (
-					<div className="tooltip">
-						<TooltipResponse
-							id={id}
-							response={U.buildBooleanTooltipResponse(response)}
-						/>
-					</div>
+			<div className={U.getLabelPositionClass(labelPosition)}>
+				{label && (
+					<label htmlFor={`suggester-${id}`}>
+						{interpret(features)(bindings)(label)}
+					</label>
 				)}
+				<Declarations
+					id={id}
+					type={C.AFTER_QUESTION_TEXT}
+					declarations={declarations}
+					features={features}
+					bindings={bindings}
+				/>
+				<div className="field-container">
+					<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
+						TODO: Add suggester component
+					</div>
+					{management && (
+						<div className="tooltip">
+							<TooltipResponse
+								id={id}
+								response={U.buildBooleanTooltipResponse(response)}
+							/>
+						</div>
+					)}
+				</div>
 			</div>
 			<Declarations
 				id={id}
@@ -62,7 +65,7 @@ const Suggester = ({
 				features={features}
 				bindings={bindings}
 			/>
-		</div>
+		</>
 	);
 };
 
@@ -76,6 +79,7 @@ Suggester.defaultProps = {
 	features: [],
 	bindings: {},
 	management: false,
+	labelPosition: 'DEFAULT',
 	style: {},
 };
 
@@ -92,6 +96,7 @@ Suggester.propTypes = {
 	bindings: PropTypes.object,
 	management: PropTypes.bool,
 	path: PropTypes.string.isRequired,
+	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	style: PropTypes.object,
 };
 
