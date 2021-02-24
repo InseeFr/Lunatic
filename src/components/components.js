@@ -12,5 +12,6 @@ export { default as Loop } from './loop';
 export * from './loop-constructor';
 export { default as Sequence } from './sequence';
 export { default as Subsequence } from './subsequence';
+export { default as Suggester } from './suggester';
 export { default as Textarea } from './textarea';
 export { TooltipResponse } from './tooltip';
