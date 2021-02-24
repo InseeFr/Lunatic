@@ -17,8 +17,12 @@ const isDisplay = ({ visible, visibleOptions }) =>
 const onChangeCallback = (state, dispatch) => (e) => {
 	e.stopPropagation();
 	e.preventDefault();
-	dispatch(actions.setValue(e.target.value));
-	dispatch(actions.setPrefix(preparePrefix(e.target.value)));
+	const {
+		target: { value },
+	} = e;
+	dispatch(actions.setValue(value));
+	dispatch(actions.setPrefix(preparePrefix(value)));
+	if (value && value.length > 1) dispatch(actions.showPanel());
 };
 
 /** */
