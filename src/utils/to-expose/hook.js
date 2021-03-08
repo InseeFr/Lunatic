@@ -3,14 +3,12 @@ import { interpret } from './interpret';
 import { mergeQuestionnaireAndData } from './init-questionnaire';
 import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
+import { getNextPage } from '../lib/pagination';
 import { COLLECTED } from '../../constants';
 
 const cutomFilterPagination = ({ page }, pagination, currentPage) => {
-	return pagination ? page === currentPage.split('.')[0] : true;
+	return pagination ? page === currentPage : true;
 };
-
-// "2.1#6" -> "1#6"
-// "2.1#6.3#1" -> "1#6.3#1" -> "3#1"
 
 const filterComponents = (
 	components,
@@ -40,21 +38,6 @@ const filterComponents = (
 		);
 };
 
-// Recusive function on currentPage
-const getNextPage = (components, bindings, currentPage) => {
-	const newPages = currentPage.split('.');
-	const [first, ...rest] = newPages;
-
-	let result = first;
-	if (newPages.length > 1) {
-		return `${result}.${getNextPage(components, bindings, rest.join('.'))}`;
-	}
-	if (first.includes('#')) {
-	} else {
-		return `${parseInt(first, 10) + 1}`;
-	}
-};
-
 const useLunatic = (
 	source,
 	data,
@@ -76,14 +59,30 @@ const useLunatic = (
 
 	const disabledNext = page === maxPage;
 	const disabledPrevious = page === '1';
-	// 4 : 2 inputs -> 5 ou 7
+
 	const goNext = () => {
-		const nextPage = getNextPage(components, page);
-		if (!disabledNext) setPage(nextPage);
+		if (!disabledNext) {
+			const nextPage = getNextPage(
+				questionnaire.components,
+				bindings,
+				page,
+				features
+			);
+			setPage(nextPage);
+		}
 	};
 
 	const goPrevious = () => {
-		if (!disabledPrevious) setPage((p) => `${parseInt(p, 10) - 1}`);
+		if (!disabledPrevious) {
+			// TODO
+			// const nextPage = getPreviousPage(
+			// 	questionnaire.components,
+			// 	bindings,
+			// 	page,
+			// 	features
+			// );
+			setPage((p) => `${parseInt(p, 10) - 1}`);
+		}
 	};
 
 	const handleChange = useCallback((updatedValue) => {
