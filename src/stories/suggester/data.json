@@ -1,0 +1,28 @@
+{
+	"components": [
+		{
+			"id": "sugg",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "Enjoy the suggester below",
+			"path": "data/cities",
+			"response": {
+				"name": "CITY"
+			}
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "CITY",
+			"componentRef": "sugg",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

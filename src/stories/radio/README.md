@@ -28,4 +28,4 @@
 
 ## Styles
 
-**CheckboxOne** component has for classes `radio-group`, `radio-modality` and `radio-lunatic`.
+**Radio** component has for classes `radio-group`, `radio-modality` and `radio-lunatic`.
