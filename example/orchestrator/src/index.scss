@@ -29,6 +29,17 @@
 
 .lunatic-component {
 	margin-bottom: 0.4em;
+	// Disable inner / outer
+	input[type='number']::-webkit-inner-spin-button,
+	input[type='number']::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	input[type='number'] {
+		text-align: left;
+		-moz-appearance: textfield;
+	}
 }
 
 .container-component {

@@ -12,6 +12,7 @@ const Management = () => (
 		data={data}
 		management
 		filterDescription
+		writable
 	/>
 );
 

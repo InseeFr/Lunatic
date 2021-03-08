@@ -111,6 +111,7 @@ const InputNumber = ({
 					<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 						<input
 							type="number"
+							// add inputmode?
 							id={`input-${id}`}
 							ref={inputRef}
 							aria-labelledby={`input-label-${id}`}

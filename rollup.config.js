@@ -4,10 +4,11 @@ import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import postcss from 'rollup-plugin-postcss';
 import image from '@timdp/rollup-plugin-image';
+import minify from 'rollup-plugin-babel-minify';
 
 const { dependencies } = require('./package.json');
 
-export default {
+const config = {
 	input: 'src/components/index.js',
 	output: {
 		name: 'lunatic',
@@ -21,7 +22,6 @@ export default {
 	},
 	plugins: [
 		resolve(),
-		postcss(),
 		babel({
 			exclude: 'node_modules/**',
 		}),
@@ -32,7 +32,11 @@ export default {
 		commonjs({
 			ignore: ['antlr4', 'antlr4/index'],
 		}),
+		postcss(),
 		image(),
+		minify(),
 	],
 	external: ['react', ...Object.keys(dependencies)],
 };
+
+export default config;

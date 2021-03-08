@@ -1,16 +1,6 @@
-@import 'src/components/index.scss';
+// see input.scss
 
 .textarea-lunatic {
+	height: 3em;
 	width: 100%;
-	box-sizing: border-box;
-	border: solid 2px $main_color;
-	border-radius: 10px;
-	padding: 5px;
-	&:focus {
-		outline: none;
-		box-shadow: 0 0 10px $main_color;
-	}
-	&:read-only {
-		background-color: $disabled;
-	}
 }
