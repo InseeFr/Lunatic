@@ -50,7 +50,8 @@ const getNextPage = (components, bindings, currentPage) => {
 		return `${result}.${getNextPage(components, bindings, rest.join('.'))}`;
 	}
 	if (first.includes('#')) {
-		// TODO
+	} else {
+		return `${parseInt(first, 10) + 1}`;
 	}
 };
 
