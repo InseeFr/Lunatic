@@ -6,6 +6,7 @@ const OrchestratorForStories = ({
 	source,
 	data = {},
 	management = false,
+	pagination = false,
 	features,
 	...rest
 }) => {
@@ -13,16 +14,26 @@ const OrchestratorForStories = ({
 		? ['COLLECTED', 'FORCED', 'EDITED']
 		: ['COLLECTED'];
 	const savingType = management ? 'EDITED' : 'COLLECTED';
-	const { handleChange, components, bindings } = lunatic.useLunatic(
-		source,
-		data,
-		{
-			savingType,
-			preferences,
-			features,
-			management,
-		}
-	);
+	const {
+		handleChange,
+		components,
+		bindings,
+		pagination: {
+			goNext,
+			goPrevious,
+			page,
+			maxPage,
+			disabledNext,
+			disabledPrevious,
+		},
+	} = lunatic.useLunatic(source, data, {
+		savingType,
+		preferences,
+		features,
+		management,
+		pagination,
+	});
+	const Button = lunatic.Button;
 
 	return (
 		<div className="container">
@@ -45,6 +56,19 @@ const OrchestratorForStories = ({
 					);
 				})}
 			</div>
+			{pagination && (
+				<>
+					<div className="pagination">
+						<Button
+							onClick={goPrevious}
+							disabled={disabledPrevious}
+							value="Previous"
+						/>
+						<Button onClick={goNext} disabled={disabledNext} value="Next" />
+					</div>
+					<div>{`Page : ${page}/${maxPage}`}</div>
+				</>
+			)}
 		</div>
 	);
 };
