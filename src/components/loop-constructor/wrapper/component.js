@@ -98,10 +98,11 @@ const LoopConstructorWrapper = ({
 				<Button
 					label="addLine"
 					value={customBtnLabel}
-					disabled={
-						(Number.isInteger(minLines) && minLines === maxLines) ||
-						U.lastLoopChildLineIsEmpty(bindings)(involvedVariables)
-					}
+					// Want to enable addition depsite of empty lines?
+					// disabled={
+					// 	(Number.isInteger(minLines) && minLines === maxLines) ||
+					// 	U.lastLoopChildLineIsEmpty(bindings)(involvedVariables)
+					// }
 					onClick={addLine}
 				/>
 			)}
