@@ -5,15 +5,54 @@ import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
 import { COLLECTED } from '../../constants';
 
-const filterComponents = (components, management, bindings, features) => {
-	const filteredComponents = management
-		? components
-		: components.filter(
-				({ conditionFilter }) =>
-					!conditionFilter ||
-					interpret(features)(bindings, true)(conditionFilter) === 'normal'
-		  );
-	return filteredComponents;
+const cutomFilterPagination = ({ page }, pagination, currentPage) => {
+	return pagination ? page === currentPage.split('.')[0] : true;
+};
+
+// "2.1#6" -> "1#6"
+// "2.1#6.3#1" -> "1#6.3#1" -> "3#1"
+
+const filterComponents = (
+	components,
+	management,
+	bindings,
+	features,
+	currentPage,
+	pagination
+) => {
+	if (management && !pagination) return components;
+	if (management && pagination)
+		return components.filter((c) =>
+			cutomFilterPagination(c, pagination, currentPage)
+		);
+	if (!pagination)
+		return components.filter(
+			({ conditionFilter }) =>
+				!conditionFilter ||
+				interpret(features)(bindings, true)(conditionFilter) === 'normal'
+		);
+	return components
+		.filter((c) => cutomFilterPagination(c, pagination, currentPage))
+		.filter(
+			({ conditionFilter }) =>
+				!conditionFilter ||
+				interpret(features)(bindings, true)(conditionFilter) === 'normal'
+		);
+};
+
+// Recusive function on currentPage
+const getNextPage = (components, bindings, currentPage) => {
+	const newPages = currentPage.split('.');
+	const [first, ...rest] = newPages;
+
+	let result = first;
+	if (newPages.length > 1) {
+		return `${result}.${getNextPage(components, bindings, rest.join('.'))}`;
+	}
+	if (first.includes('#')) {
+	} else {
+		return `${parseInt(first, 10) + 1}`;
+	}
 };
 
 const useLunatic = (
@@ -24,12 +63,28 @@ const useLunatic = (
 		preferences = [COLLECTED],
 		features = ['VTL'],
 		management = false,
+		pagination = false,
 	}
 ) => {
 	const [questionnaire, setQuestionnaire] = useState(
 		mergeQuestionnaireAndData(source)(data || {})
 	);
 	const [todo, setTodo] = useState({});
+	const [page, setPage] = useState('1');
+
+	const { maxPage } = source;
+
+	const disabledNext = page === maxPage;
+	const disabledPrevious = page === '1';
+	// 4 : 2 inputs -> 5 ou 7
+	const goNext = () => {
+		const nextPage = getNextPage(components, page);
+		if (!disabledNext) setPage(nextPage);
+	};
+
+	const goPrevious = () => {
+		if (!disabledPrevious) setPage((p) => `${parseInt(p, 10) - 1}`);
+	};
 
 	const handleChange = useCallback((updatedValue) => {
 		setTodo(updatedValue);
@@ -52,14 +107,31 @@ const useLunatic = (
 	}, [todo, preferences, questionnaire, savingType, features, management]);
 
 	const bindings = getBindings(questionnaire);
+
 	const components = filterComponents(
 		questionnaire.components,
 		management,
 		bindings,
-		features
+		features,
+		page,
+		pagination
 	);
 
-	return { questionnaire, handleChange, components, bindings };
+	return {
+		questionnaire,
+		handleChange,
+		components,
+		bindings,
+		pagination: {
+			page,
+			maxPage,
+			goNext,
+			goPrevious,
+			setPage,
+			disabledNext,
+			disabledPrevious,
+		},
+	};
 };
 
 export default useLunatic;

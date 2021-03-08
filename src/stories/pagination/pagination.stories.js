@@ -10,5 +10,10 @@ const stories = storiesOf('Pagination', module).addDecorator((Component) => {
 });
 
 stories.addWithJSX('SimpleLoop', () => (
-	<Orchestrator id="simple-loop" source={simpleLoop} features={['VTL']} />
+	<Orchestrator
+		id="simple-loop"
+		source={simpleLoop}
+		features={['VTL']}
+		pagination
+	/>
 ));

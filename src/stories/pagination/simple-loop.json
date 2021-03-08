@@ -1,4 +1,5 @@
 {
+	"maxPage": "6",
 	"components": [
 		{
 			"id": "k3ym61vf",
@@ -123,6 +124,22 @@
 			],
 			"page": "4"
 		},
+
+		{
+			"id": "k3ym6x17",
+			"label": "Quelle note metteriez-vous au confort de votre logement ?",
+			"componentType": "InputNumber",
+			"conditionFilter": "if(cast(CONFORT,string) = \"2\") then \"normal\" else \"hidden\"",
+			"mandatory": false,
+			"bindingDependencies": ["NOTECONFORT"],
+			"min": 0,
+			"max": 10,
+			"decimals": 0,
+			"response": {
+				"name": "NOTECONFORT"
+			},
+			"page": "5"
+		},
 		{
 			"id": "k3ymkpj2",
 			"label": "Quelle est la superficie du logement ?",
@@ -137,7 +154,7 @@
 			"response": {
 				"name": "SUPERFICIE"
 			},
-			"page": "5"
+			"page": "6"
 		}
 	],
 	"variables": [
@@ -205,6 +222,18 @@
 			"variableType": "COLLECTED",
 			"name": "SUPERFICIE",
 			"componentRef": "k3ymkpj2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NOTECONFORT",
+			"componentRef": "k3ym6x17",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
