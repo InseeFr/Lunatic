@@ -7,43 +7,20 @@
 .checkbox-lunatic,
 .checkbox-boolean-lunatic,
 .checkbox-lunatic-no-margin {
+	position: absolute;
 	opacity: 0;
-	margin-right: -1.1875rem;
-	margin: 0;
-	margin-left: 1em;
-	margin-top: 0.5em;
+	margin-bottom: 0;
+	margin-top: 0.15rem;
+	margin-left: 0.2rem;
+	height: 18px;
+	width: 18px;
+	+ label {
+		margin-left: 2rem;
+		margin-top: 2rem;
+	}
 	&:focus {
 		+ label {
-			box-shadow: none;
 			background-color: rgba(0, 0, 0, 0.05);
-			border-right: 0.0625rem solid var(--color-very-light);
-			padding-right: 0.3125rem;
-			padding-top: 0.125rem;
-			padding-bottom: 0.125rem;
-		}
-	}
-	&:checked + label {
-		padding-right: 0.3125rem;
-		padding-top: 0.125rem;
-		padding-bottom: 0.125rem;
-		background-color: rgba(0, 0, 0, 0.05);
-		border-right: 0.0625rem solid var(--color-very-light);
-		&::before {
-			content: var(--checkbox-checked);
-		}
-	}
-	+ label {
-		padding-right: 0.3125rem;
-		padding-top: 0.125rem;
-		&::before {
-			border: 0;
-			transform: none;
-			margin: 0;
-			margin-right: 0.375rem;
-			padding: 0;
-			position: relative;
-			top: 0.4375rem;
-			content: var(--checkbox-unchecked);
 		}
 	}
 }
@@ -55,7 +32,7 @@
 .checkbox-modality,
 .checkbox-boolean-modality {
 	margin-top: 0;
-	margin-bottom: 0.4375rem;
+	margin-bottom: 0.8rem;
 }
 
 .checkbox-alone {

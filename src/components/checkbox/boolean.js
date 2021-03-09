@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import Declarations from '../declarations';
+import Icon from '../icon';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
@@ -46,6 +47,7 @@ const CheckboxBoolean = ({
 	const isHorizontal = positioning === 'HORIZONTAL';
 	const input = (
 		<>
+			<Icon type="checkbox" checked={value} />
 			<input
 				type="checkbox"
 				id={`checkbox-boolean-${id}`}
