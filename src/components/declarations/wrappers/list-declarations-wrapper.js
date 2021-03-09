@@ -102,7 +102,7 @@ const ListDeclarationsWrapper = ({
 										positioning
 									)} ${checked ? 'content-checked' : ''}`}
 								>
-									<Icon type={type} checked={checked} />
+									<Icon type={type} checked={checked} disabled={disabled} />
 									<input
 										type={type}
 										name={`${type}-${id}`}

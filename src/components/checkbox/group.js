@@ -91,7 +91,11 @@ const CheckboxGroup = ({
 											checked ? 'content-checked' : ''
 										}`}
 									>
-										<Icon type="checkbox" checked={checked} />
+										<Icon
+											type="checkbox"
+											checked={checked}
+											disabled={disabled}
+										/>
 										<input
 											type="checkbox"
 											id={`checkbox-${id}-${modId}`}

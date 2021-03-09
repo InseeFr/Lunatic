@@ -1,4 +1,7 @@
 .list-icon {
 	position: absolute;
 	margin-top: -0.1rem;
+	&.list-icon-disabled svg {
+		background-color: var(--color-disabled);
+	}
 }

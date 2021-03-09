@@ -118,14 +118,14 @@ const isDisplay = ({ visible, options }) => visible && options.length > 0;
 const getIcon = ({ disabled }, dispatch) => (visible, containerEl) => {
 	if (disabled) {
 		return (
-			<span className="lunatic-icone">
+			<span className="lunatic-icon">
 				<ClosedIcon width={10} height={10} />
 			</span>
 		);
 	}
 	return (
 		<span
-			className="lunatic-icone"
+			className="lunatic-icon"
 			tabIndex="-1"
 			onMouseDown={(e) => {
 				e.stopPropagation();

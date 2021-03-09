@@ -49,7 +49,7 @@ const CheckboxBoolean = ({
 	const isHorizontal = positioning === 'HORIZONTAL';
 	const input = (
 		<>
-			<Icon type="checkbox" checked={value} />
+			<Icon type="checkbox" checked={value} disabled={disabled} />
 			<input
 				type="checkbox"
 				id={`checkbox-boolean-${id}`}
