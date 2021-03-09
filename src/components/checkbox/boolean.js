@@ -43,6 +43,8 @@ const CheckboxBoolean = ({
 		if (focused) inputRef.current.focus();
 	}, [focused]);
 
+	const interpretedLabel = interpret(features)(bindings)(label);
+
 	const isVertical = positioning === 'VERTICAL';
 	const isHorizontal = positioning === 'HORIZONTAL';
 	const input = (
@@ -52,7 +54,7 @@ const CheckboxBoolean = ({
 				type="checkbox"
 				id={`checkbox-boolean-${id}`}
 				ref={inputRef}
-				title={label ? label : 'empty-label'}
+				title={interpretedLabel ? interpretedLabel : 'empty-label'}
 				className={`checkbox-boolean-lunatic${isVertical ? '-no-margin' : ''}`}
 				style={U.buildStyleObject(style)}
 				checked={value}
@@ -64,9 +66,9 @@ const CheckboxBoolean = ({
 					});
 				}}
 			/>
-			{label && (
+			{interpretedLabel && (
 				<label htmlFor={`checkbox-boolean-${id}`}>
-					{isHorizontal ? interpret(features)(bindings)(label) : ''}
+					{isHorizontal ? interpretedLabel : ''}
 				</label>
 			)}
 		</>
