@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import Declarations from '../declarations';
+import Icon from '../icon';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
@@ -90,6 +91,7 @@ const CheckboxGroup = ({
 											checked ? 'content-checked' : ''
 										}`}
 									>
+										<Icon type="checkbox" checked={checked} />
 										<input
 											type="checkbox"
 											id={`checkbox-${id}-${modId}`}

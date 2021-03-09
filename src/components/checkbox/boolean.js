@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import Declarations from '../declarations';
+import Icon from '../icon';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
@@ -42,15 +43,18 @@ const CheckboxBoolean = ({
 		if (focused) inputRef.current.focus();
 	}, [focused]);
 
+	const interpretedLabel = interpret(features)(bindings)(label);
+
 	const isVertical = positioning === 'VERTICAL';
 	const isHorizontal = positioning === 'HORIZONTAL';
 	const input = (
 		<>
+			<Icon type="checkbox" checked={value} />
 			<input
 				type="checkbox"
 				id={`checkbox-boolean-${id}`}
 				ref={inputRef}
-				title={label ? label : 'empty-label'}
+				title={interpretedLabel ? interpretedLabel : 'empty-label'}
 				className={`checkbox-boolean-lunatic${isVertical ? '-no-margin' : ''}`}
 				style={U.buildStyleObject(style)}
 				checked={value}
@@ -62,9 +66,9 @@ const CheckboxBoolean = ({
 					});
 				}}
 			/>
-			{label && (
+			{interpretedLabel && (
 				<label htmlFor={`checkbox-boolean-${id}`}>
-					{isHorizontal ? interpret(features)(bindings)(label) : ''}
+					{isHorizontal ? interpretedLabel : ''}
 				</label>
 			)}
 		</>

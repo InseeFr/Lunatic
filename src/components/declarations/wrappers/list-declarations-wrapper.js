@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import Declarations from '../';
+import Icon from '../../icon';
 import { TooltipResponse } from '../../tooltip';
 import * as U from '../../../utils/lib';
 import * as C from '../../../constants';
@@ -101,6 +102,7 @@ const ListDeclarationsWrapper = ({
 										positioning
 									)} ${checked ? 'content-checked' : ''}`}
 								>
+									<Icon type={type} checked={checked} />
 									<input
 										type={type}
 										name={`${type}-${id}`}
