@@ -18,4 +18,8 @@ export const unitPositionOptions = {
 	After: 'AFTER',
 };
 
-export const featuresOptions = { None: [], Vtl: ['VTL'] };
+export const featuresOptions = {
+	None: [],
+	Vtl: ['VTL'],
+	'Vtl Md': ['VTL', 'MD'],
+};

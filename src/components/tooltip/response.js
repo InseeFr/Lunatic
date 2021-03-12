@@ -38,6 +38,11 @@ const TooltipResponse = ({ id, response }) => {
 			>
 				<img id={id} alt="img-tooltip" src={img[imgName].src || img[imgName]} />
 			</span>
+			<ReactTooltip
+				id={`${id}-management-tooltip`}
+				className="tooltip-text"
+				place="left"
+			/>
 		</div>
 	);
 };

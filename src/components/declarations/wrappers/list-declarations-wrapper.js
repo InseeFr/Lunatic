@@ -119,6 +119,7 @@ const ListDeclarationsWrapper = ({
 										htmlFor={`${type}-${id}-${optionValue}`}
 										id={`input-label-${id}-${optionValue}`}
 										style={checked ? U.buildStyleObject(modalityStyle) : {}}
+										className="modality-label"
 									>
 										{keyboardSelection && (
 											<span className="code-modality">

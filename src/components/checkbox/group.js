@@ -118,6 +118,7 @@ const CheckboxGroup = ({
 											htmlFor={`checkbox-${id}-${modId}`}
 											id={`input-label-${id}-${modId}`}
 											style={checked ? U.buildStyleObject(modalityStyle) : {}}
+											className="modality-label"
 										>
 											{keyboardSelection && (
 												<span className="code-modality">
