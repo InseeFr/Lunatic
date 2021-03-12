@@ -7,6 +7,7 @@ const OrchestratorForStories = ({
 	data = {},
 	management = false,
 	features,
+	bindings: initialBindings,
 	...rest
 }) => {
 	const preferences = management
@@ -39,7 +40,7 @@ const OrchestratorForStories = ({
 								preferences={preferences}
 								management={management}
 								features={features}
-								bindings={bindings}
+								bindings={{ ...bindings, ...initialBindings }}
 							/>
 						</div>
 					);
