@@ -19,8 +19,8 @@ const Content = ({ type, checked }) => {
 	return null;
 };
 
-const Icon = ({ type, checked }) => (
-	<span className="list-icon">
+const Icon = ({ type, checked, disabled }) => (
+	<span className={`list-icon ${disabled ? 'list-icon-disabled' : ''}`}>
 		<Content type={type} checked={checked} />
 	</span>
 );

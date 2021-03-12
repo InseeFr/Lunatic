@@ -91,7 +91,11 @@ const CheckboxGroup = ({
 											checked ? 'content-checked' : ''
 										}`}
 									>
-										<Icon type="checkbox" checked={checked} />
+										<Icon
+											type="checkbox"
+											checked={checked}
+											disabled={disabled}
+										/>
 										<input
 											type="checkbox"
 											id={`checkbox-${id}-${modId}`}
@@ -114,6 +118,7 @@ const CheckboxGroup = ({
 											htmlFor={`checkbox-${id}-${modId}`}
 											id={`input-label-${id}-${modId}`}
 											style={checked ? U.buildStyleObject(modalityStyle) : {}}
+											className="modality-label"
 										>
 											{keyboardSelection && (
 												<span className="code-modality">

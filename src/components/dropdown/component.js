@@ -25,11 +25,17 @@ const Dropdown = ({
 }) => {
 	const [opts, setOpts] = useState(options);
 
+	//TODO: improve feature support for MD, adding plainText to options & search input
+	const updatedFeatures = features.reduce(
+		(acc, f) => (f === 'MD' ? acc : [...acc, f]),
+		[]
+	);
+
 	useEffect(() => {
 		if (!freezeOptions) {
 			const featOptions = options.map(
 				({ label: labelOption, ...restOpts }) => ({
-					label: interpret(features)(bindings)(labelOption),
+					label: interpret(updatedFeatures)(bindings)(labelOption),
 					...restOpts,
 				})
 			);
@@ -97,8 +103,9 @@ const Dropdown = ({
 Dropdown.propTypes = {
 	disabled: PropTypes.bool,
 	writable: PropTypes.bool,
+	features: PropTypes.arrayOf(PropTypes.string),
 	handleChange: PropTypes.func,
-	label: PropTypes.string,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	className: PropTypes.string,
 	zIndex: PropTypes.number,
 	freezeOptions: PropTypes.bool,
@@ -107,6 +114,7 @@ Dropdown.propTypes = {
 Dropdown.defaultProps = {
 	writable: false,
 	handleChange: () => null,
+	features: [],
 	label: undefined,
 	className: undefined,
 	zIndex: 0,

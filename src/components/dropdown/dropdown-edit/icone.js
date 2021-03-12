@@ -4,7 +4,7 @@ import CrossIcon from './cross.icon';
 import ClosedIcon from '../commons/components/closed.icon';
 
 /** */
-const getIcon = visible =>
+const getIcon = (visible) =>
 	visible ? (
 		<OpenedIcon width={10} height={10} />
 	) : (
@@ -14,17 +14,17 @@ const getIcon = visible =>
 const Icone = ({ prefix, visible, disabled, onDelete, onSwitch }) => {
 	if (disabled) {
 		return (
-			<span className="lunatic-icone" tabIndex="-1" onMouseDown={onSwitch}>
+			<span className="lunatic-icon" tabIndex="-1" onMouseDown={onSwitch}>
 				<ClosedIcon width={10} height={10} />
 			</span>
 		);
 	}
 	return prefix && prefix.length > 0 ? (
-		<span className="lunatic-icone" tabIndex="-1" onMouseDown={onDelete}>
+		<span className="lunatic-icon" tabIndex="-1" onMouseDown={onDelete}>
 			<CrossIcon width={10} height={10} />
 		</span>
 	) : (
-		<span className="lunatic-icone" tabIndex="-1" onMouseDown={onSwitch}>
+		<span className="lunatic-icon" tabIndex="-1" onMouseDown={onSwitch}>
 			{getIcon(visible)}
 		</span>
 	);
