@@ -9,27 +9,19 @@
 
 /* Tooltip text */
 .tooltip-lunatic .tooltip-text {
-	visibility: hidden;
-	width: 20em;
-	background-color: $main_color;
+	min-width: 10em;
+	max-width: 20em;
+	background-color: var(--color-primary-dark);
 	color: #fff;
-	padding: 5px 0;
+	padding: 0.5em;
 	border-radius: 6px;
-	text-align: left;
-
-	/* Position the tooltip text */
-	position: absolute;
-	z-index: 1;
-	bottom: 120%;
-	left: -10em;
-
-	/* Fade in tooltip */
-	opacity: 0;
-	transition: opacity 0.3s;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip-lunatic:hover .tooltip-text {
-	visibility: visible;
-	opacity: 1;
+	font-size: 1em;
+	&.place-left {
+		&::before {
+			border-left: 10px solid var(--color-primary-dark);
+		}
+		&::after {
+			content: none;
+		}
+	}
 }

@@ -11,7 +11,6 @@ import {
 	text,
 	boolean,
 	number,
-	color,
 	object,
 	select,
 } from '@storybook/addon-knobs/react';
@@ -66,25 +65,3 @@ stories.addWithJSX('External update', () => {
 	};
 	return <Fake />;
 });
-
-stories.addWithJSX('Styled', () => (
-	<Orchestrator
-		id="styled"
-		source={data}
-		style={object('Generated style', {
-			'border-color': color('Border color', '#e80a4d'),
-			'border-width': number('Border-width', 5, {
-				range: true,
-				min: 2,
-				max: 20,
-				step: 1,
-			}),
-			'border-radius': number('Border-radius', 10, {
-				range: true,
-				min: 0,
-				max: 20,
-				step: 1,
-			}),
-		})}
-	/>
-));

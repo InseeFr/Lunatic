@@ -11,16 +11,16 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"@inseefr/lunatic": "^2.0.2",
+		"@inseefr/lunatic": "^2.1.0",
 		"react": "^17.0.0",
 		"react-dom": "^17.0.0",
-		"react-scripts": "^4.0.2",
-		"sass": "^1.32.4"
+		"react-scripts": "^4.0.3",
+		"sass": "^1.32.8"
 	},
 	"homepage": ".",
 	"scripts": {
-		"start": "react-scripts --expose-gc --max-old-space-size=8192 start",
-		"build": "react-scripts --expose-gc --max-old-space-size=8192 build",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},

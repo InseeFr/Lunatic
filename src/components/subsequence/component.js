@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { SimpleDeclarationsWrapper } from '../declarations/wrappers';
 import * as U from '../../utils/lib';
 import { interpret } from '../../utils/to-expose';
-import './subsequence.scss';
 
 const Subsequence = ({
 	id,

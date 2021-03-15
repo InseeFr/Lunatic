@@ -76,7 +76,7 @@ const Table = ({
 												style={{ width }}
 											>
 												<Component
-													label={label}
+													label={label || ' '}
 													handleChange={handleChange}
 													preferences={preferences}
 													positioning={positioning}

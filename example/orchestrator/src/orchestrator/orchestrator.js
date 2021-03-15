@@ -31,7 +31,7 @@ const Orchestrator = ({
 					const { id, componentType } = q;
 					const Component = lunatic[componentType];
 					return (
-						<div className="lunatic lunatic-component" key={`component-${id}`}>
+						<div className="lunatic-component" key={`component-${id}`}>
 							<Component
 								{...q}
 								handleChange={handleChange}

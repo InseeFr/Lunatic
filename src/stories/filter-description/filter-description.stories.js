@@ -5,17 +5,11 @@ import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import { featuresOptions } from '../utils/options';
-import {
-	text,
-	boolean,
-	select,
-	color,
-	object,
-} from '@storybook/addon-knobs/react';
+import { text, boolean, select, object } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('FilterDescription', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<FilterDescription />" />;
 	});
@@ -55,16 +49,5 @@ stories.addWithJSX('Props', () => (
 		filterDescription={boolean('Filter description', true)}
 		features={select('Features', featuresOptions, [])}
 		bindings={object('Bindings', { TITLE: 'Title' })}
-	/>
-));
-
-stories.addWithJSX('Styled', () => (
-	<Orchestrator
-		id="styled"
-		source={data}
-		style={object('Generated style', {
-			color: color('Label color', '#e80a4d'),
-			'background-color': color('Background color', '#DCDCDC'),
-		})}
 	/>
 ));

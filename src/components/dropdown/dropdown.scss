@@ -1,14 +1,5 @@
-@import 'src/components/index.scss';
-
-$inputHeight: 2em;
-$colorPrimaryDark: #2a5885;
-$colorPrimaryLight: rgb(81, 129, 184);
-$colorPrimaryMain: #4a73a4;
-$colorPrimaryFocused: $colorPrimaryLight;
-
 @mixin defaultFont {
-	font-family: Georgia, Times, 'Times New Roman', serif;
-	font-size: 16px;
+	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
 @mixin disableSelect {
@@ -19,9 +10,10 @@ $colorPrimaryFocused: $colorPrimaryLight;
 	-webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 
-.lunatic .lunatic-dropdown {
+.lunatic-dropdown {
 	display: block;
 	width: 100%;
+	margin-bottom: 1.5rem;
 	&:focus {
 		outline: none;
 	}
@@ -51,66 +43,68 @@ $colorPrimaryFocused: $colorPrimaryLight;
 	}
 
 	.lunatic-dropdown-container {
+		ul {
+			padding-inline-start: 0px;
+			font-size: 1rem;
+		}
 		position: relative;
-		height: $inputHeight;
+		height: 2em;
 		width: 100%;
-		z-index: 0;
+		z-index: 1;
 
 		&.focused {
-			z-index: 1;
+			z-index: 2;
 		}
 		&:focus {
 			outline: none;
 		}
 
 		.lunatic-dropdown-content {
-			background-color: lavenderblush;
-			// box-shadow: 0em 0em 0.1em 0.1em $colorPrimaryMain;
-			border-radius: 20px 20px;
+			// background-color: var(--color-very-very-light);
 			border-color: white;
 			left: 0;
 			top: 0;
 			width: 100%;
 			height: 100%;
 			position: absolute;
-
+			height: auto;
 			&.visible {
-				border-radius: 16px 16px;
+				// border-radius: 0 0 16px 16px;
 				height: auto;
 			}
 
 			&.disabled {
-				background-color: whitesmoke;
+				background-color: var(--color-disabled);
 			}
 
 			.lunatic-dropdown-input {
-				border-radius: 10px 10px;
-				box-shadow: 0 0 0 0.2em $colorPrimaryDark;
+				border-bottom: 1px solid var(--color-primary-dark);
+				padding: 6px 0 7px;
 				input {
 					@include defaultFont();
 					@include disableSelect();
-					margin: 0px 25px 0px 12px;
+					margin: 0px 25px 0px 0px;
 					width: calc(100% - 37px);
 					background-color: transparent;
 					border-color: transparent;
-					height: $inputHeight;
+					height: 2em;
 					border: none;
 					outline: none;
 					text-align: left;
+					cursor: inherit;
+				}
+				&:hover {
+					cursor: pointer;
+					border-bottom: 2px solid var(--color-primary-main);
 				}
 				&.focused {
-					box-shadow: 0 0 0 0.2em $colorPrimaryMain,
-						-5px -5px 5px $colorPrimaryFocused,
-						5px -5px 5px $colorPrimaryFocused, -5px 5px 5px $colorPrimaryFocused,
-						5px 5px 5px $colorPrimaryFocused;
+					background-color: rgba(0, 0, 0, 0.05);
+					box-shadow: 12px 0 rgba(0, 0, 0, 0.05);
 				}
 			}
 
-			.lunatic-icone {
+			.lunatic-icon {
 				cursor: pointer;
-				position: absolute;
-				right: 10px;
-				top: 7px;
 				&:focus {
 					outline: none;
 				}
@@ -128,70 +122,50 @@ $colorPrimaryFocused: $colorPrimaryLight;
 				&.visible {
 					visibility: visible;
 					opacity: 1;
-					transition: opacity 1s ease-out;
+					transition: opacity var(--dropdown-transition-time) ease-out;
 				}
 
-				.lunatic-dropdown-panel {
-					background-color: transparent;
-					margin: 0 10px 12px 10px;
-					padding-top: 3px;
-					list-style: none;
-					&:focus {
-						outline: none;
-					}
-					max-height: 100px;
-					overflow-y: auto;
+				.lunatic-dropdown-panel-container {
+					box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.9),
+						0px 3px 4px 0px rgba(0, 0, 0, 0.14),
+						0px 1px 8px 0px rgba(0, 0, 0, 0.12);
 
-					&::-webkit-scrollbar {
-						width: 8px;
-					}
-					&::-webkit-scrollbar-track {
-						background-color: $colorPrimaryMain;
-					}
-					&::-webkit-scrollbar-thumb {
-						background: $colorPrimaryMain;
-					}
-					&::-webkit-scrollbar-thumb:hover {
-						background: $colorPrimaryDark;
+					.lunatic-dropdown-panel {
+						background-color: white;
+						margin: 0 0 12px 0;
+						border-radius: 4px;
+						z-index: 3;
+						padding-top: 3px;
+						list-style: none;
+						&:focus {
+							outline: none;
+						}
+						max-height: 100px;
+						overflow-y: auto;
 					}
 				}
 
 				/** options style */
 				.lunatic-dropdown-option {
+					padding-left: 10px;
 					cursor: pointer;
 					@include defaultFont();
 					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					color: black;
-
+					line-height: 2rem;
 					display: block;
-
 					&.lunatic-dropdown-option-active {
-						color: ivory;
-						background-color: $colorPrimaryMain;
-						.lunatic-prefix {
-							color: darkgoldenrod;
-							font-weight: bold;
-						}
+						color: var(--color-primary-dark);
+						background-color: var(--color-dropdown-active);
 					}
-
 					&.lunatic-dropdown-option-selected {
-						color: snow;
-						background-color: rgb(136, 19, 151);
-						.lunatic-prefix {
-							color: lightgray;
-							font-weight: bold;
-						}
-
-						&.lunatic-dropdown-option-active {
-							color: khaki;
-							background-color: rgb(188, 90, 201);
-						}
+						background-color: var(--color-dropdown-selected);
 					}
 
 					.lunatic-prefix {
-						color: cornflowerblue;
+						color: var(--color-prefix);
 						font-weight: bold;
 					}
 				}

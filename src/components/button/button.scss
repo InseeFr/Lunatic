@@ -1,26 +1,24 @@
-@import 'src/components/index.scss';
-
 .button-lunatic {
-	width: 100%;
+	min-width: 20%;
 	color: white;
-	border-color: $main_color;
-	background-color: $main_color;
+	border-color: var(--color-primary-dark);
+	background-color: var(--color-primary-dark);
 	font-size: 1.5em;
 	font-weight: bold;
 	padding: 0.4em;
 	&:hover,
 	&:focus:hover {
-		color: $main_color;
+		color: var(--color-primary-dark);
 		background-color: white;
-		border-color: $main_color;
+		border-color: var(--color-primary-dark);
 	}
 	&:focus {
 		outline: none;
-		background-color: $second_color;
-		border-color: $second_color;
+		background-color: var(--color-primary-light);
+		border-color: var(--color-primary-light);
 	}
 	&:disabled {
-		background: #dddddd;
-		color: $main_color;
+		background: var(--color-disabled);
+		color: var(--color-primary-dark);
 	}
 }

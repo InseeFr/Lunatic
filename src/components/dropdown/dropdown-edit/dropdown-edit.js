@@ -17,8 +17,12 @@ const isDisplay = ({ visible, visibleOptions }) =>
 const onChangeCallback = (state, dispatch) => (e) => {
 	e.stopPropagation();
 	e.preventDefault();
-	dispatch(actions.setValue(e.target.value));
-	dispatch(actions.setPrefix(preparePrefix(e.target.value)));
+	const {
+		target: { value },
+	} = e;
+	dispatch(actions.setValue(value));
+	dispatch(actions.setPrefix(preparePrefix(value)));
+	if (value && value.length > 1) dispatch(actions.showPanel());
 };
 
 /** */
@@ -66,7 +70,8 @@ function Dropdown({
 	const inputEl = useRef();
 	const containerEl = useRef();
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
-	const selectedOption = options.find((o) => o.value === value);
+
+	const selectedOption = options.find((o) => o.label === value);
 
 	useEffect(
 		function () {
@@ -94,7 +99,7 @@ function Dropdown({
 			zIndex={zIndex}
 			management={management}
 		>
-			<div
+			<span
 				className={classnames('lunatic-dropdown-input', { focused, disabled })}
 			>
 				<input
@@ -110,7 +115,7 @@ function Dropdown({
 					tabIndex="0"
 					onChange={onChangeCallback(state, dispatch)}
 				/>
-			</div>
+			</span>
 			<Icone
 				prefix={prefix}
 				visible={visible}

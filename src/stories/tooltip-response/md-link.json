@@ -1,0 +1,31 @@
+{
+	"components": [
+		{
+			"id": "uu",
+			"componentType": "Radio",
+			"mandatory": false,
+			"label": "NAME || \", êtes-vous au [chômage](https://www.insee.fr/fr/metadonnees/definition/c1303) ?\"",
+			"response": {
+				"name": "UNEMPLOYMENT"
+			},
+			"options": [
+				{ "value": "0", "label": "Non" },
+				{ "value": "1", "label": "Yes" }
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "UNEMPLOYMENT",
+			"componentRef": "uu",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": "1",
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

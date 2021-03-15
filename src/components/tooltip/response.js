@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import ReactTooltip from 'react-tooltip';
 import * as U from '../../utils/lib';
 import * as img from './img';
 import './tooltip.scss';
@@ -25,16 +26,23 @@ const TooltipResponse = ({ id, response }) => {
 				/>
 			</div>
 		);
+	const text = content
+		.map(({ key, value }) => `${key} : ${value}<br />`)
+		.join('');
 	return (
 		<div className="tooltip-lunatic">
-			<img id={id} alt="img-tooltip" src={img[imgName].src || img[imgName]} />
-			<span className="tooltip-text">
-				<ul>
-					{content.map(({ key, value }) => (
-						<li key={`tooltip-${id}-content-${key}`}>{`${key} : ${value}`}</li>
-					))}
-				</ul>
+			<span
+				data-for={`${id}-management-tooltip`}
+				data-tip={text}
+				data-multiline
+			>
+				<img id={id} alt="img-tooltip" src={img[imgName].src || img[imgName]} />
 			</span>
+			<ReactTooltip
+				id={`${id}-management-tooltip`}
+				className="tooltip-text"
+				place="left"
+			/>
 		</div>
 	);
 };

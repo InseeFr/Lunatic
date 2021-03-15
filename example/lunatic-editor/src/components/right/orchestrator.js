@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as lunatic from '@inseefr/lunatic';
-import './custom-lunatic.scss';
 
 const preferences = ['COLLECTED'];
 const savingType = 'COLLECTED';

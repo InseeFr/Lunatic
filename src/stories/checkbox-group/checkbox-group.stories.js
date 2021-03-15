@@ -7,14 +7,7 @@ import { titleDecorator } from 'utils/lib';
 import data from './data';
 import dataVTL from './data-vtl';
 import { positioningOptions, featuresOptions } from '../utils/options';
-import {
-	text,
-	boolean,
-	number,
-	color,
-	object,
-	select,
-} from '@storybook/addon-knobs/react';
+import { text, boolean, object, select } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('CheckboxGroup', module)
 	.addDecorator(withReadme(readme))
@@ -38,44 +31,5 @@ stories.addWithJSX('Props', () => (
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
-	/>
-));
-
-stories.addWithJSX('Styled', () => (
-	<Orchestrator
-		id="styled"
-		source={data}
-		style={object('Generated style', {
-			fieldsetStyle: {
-				'border-color': color('Fieldset color', '#e80a4d'),
-				'border-width': number('Border-width', 3, {
-					range: true,
-					min: 0,
-					max: 20,
-					step: 1,
-				}),
-				'border-radius': number('Border-radius', 5, {
-					range: true,
-					min: 0,
-					max: 20,
-					step: 1,
-				}),
-			},
-			modalityStyle: {
-				'border-color': color('Checked label border color', '#e80a4d'),
-				'border-width': number('Checked label border width', 3, {
-					range: true,
-					min: 0,
-					max: 20,
-					step: 1,
-				}),
-				'border-radius': number('Checked label border radius', 5, {
-					range: true,
-					min: 0,
-					max: 20,
-					step: 1,
-				}),
-			},
-		})}
 	/>
 ));

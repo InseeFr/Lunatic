@@ -37,7 +37,7 @@
 - `lunatic-dropdown-container`
 - `lunatic-dropdown-content`
 - `lunatic-dropdown-input`
-- `lunatic-icone`
+- `lunatic-icon`
 - `lunatic-transition`
 - `lunatic-dropdown-panel`
 - `lunatic-dropdown-option`
