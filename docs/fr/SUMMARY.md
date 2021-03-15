@@ -7,6 +7,7 @@
 - [Composants](components.md)
 - [Utilitaires](utils/index.md)
   - [Gestion simplifiée d'un questionnaire](utils/hook.md)
+- [Styles](styles.md)
 - [Versions](versions/index.md)
   - Releases
     - [2.0.0](versions/2-0-0.md)
