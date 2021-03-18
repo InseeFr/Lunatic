@@ -58,11 +58,11 @@ const useLunatic = (
 	// TODO: dynamic because of filters (kind of last accessible page)
 	const { maxPage } = source;
 
-	const disabledNext = page === maxPage;
-	const disabledPrevious = page === '1';
+	const isFirstPage = page === maxPage;
+	const isLastPage = page === '1';
 
 	const goNext = () => {
-		if (!disabledNext) {
+		if (!isFirstPage) {
 			const nextPage = getNextPage(
 				questionnaire.components,
 				bindings,
@@ -74,7 +74,7 @@ const useLunatic = (
 	};
 
 	const goPrevious = () => {
-		if (!disabledPrevious) {
+		if (!isLastPage) {
 			const previousPage = getPreviousPage(
 				questionnaire.components,
 				bindings,
@@ -123,12 +123,12 @@ const useLunatic = (
 		bindings,
 		pagination: {
 			page,
+			setPage,
 			maxPage,
 			goNext,
 			goPrevious,
-			setPage,
-			disabledNext,
-			disabledPrevious,
+			isFirstPage,
+			isLastPage,
 		},
 	};
 };
