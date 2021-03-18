@@ -55,7 +55,7 @@
 			"label": "boucle individu",
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
-			"conditionFilter": "if(count(PRENOM) <> 0) then \"normal\" else \"hidden\"",
+			"conditionFilter": "\"normal\"",
 			"loopDependencies": ["PRENOM", "AGE"],
 			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE"],
 			"page": "2",

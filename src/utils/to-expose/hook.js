@@ -25,22 +25,19 @@ const filterComponents = (
 			customFilterPagination(c, pagination, currentPage)
 		);
 
-	const vectorialBindings = buildVectorialBindings(bindings);
-
 	if (!pagination)
 		return components.filter(
 			({ conditionFilter }) =>
 				!conditionFilter ||
-				interpret(features)(vectorialBindings, true)(conditionFilter) ===
-					'normal'
+				interpret(features)(bindings, true)(conditionFilter) === 'normal'
 		);
+
 	return components
 		.filter((c) => customFilterPagination(c, pagination, currentPage))
 		.filter(
 			({ conditionFilter }) =>
 				!conditionFilter ||
-				interpret(features)(vectorialBindings, true)(conditionFilter) ===
-					'normal'
+				interpret(features)(bindings, true)(conditionFilter) === 'normal'
 		);
 };
 
