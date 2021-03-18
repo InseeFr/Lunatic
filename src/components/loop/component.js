@@ -13,6 +13,7 @@ const Loop = ({
 	bindings,
 	handleChange,
 	loopDependencies,
+	pagination,
 	paginatedLoop,
 	currentPage,
 	setPage,
@@ -24,7 +25,8 @@ const Loop = ({
 	const [todo, setTodo] = useState({});
 	const vectorialBindings = U.buildVectorialBindings(bindings);
 	const { features } = orchetratorProps;
-	const iterationNb = interpret(features)(vectorialBindings)(iterations);
+	const iterationNb =
+		parseInt(interpret(features)(vectorialBindings)(iterations), 10) || 0;
 	const involvedVariables = U.getInvolvedVariables(components);
 
 	/**
@@ -78,7 +80,7 @@ const Loop = ({
 
 			if (
 				interpret(features)(loopBindings, true)(conditionFilter) !== 'normal' ||
-				page !== currentPage
+				(pagination && page !== currentPage)
 			)
 				return null;
 			return (

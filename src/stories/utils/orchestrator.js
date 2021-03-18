@@ -55,6 +55,7 @@ const OrchestratorForStories = ({
 								bindings={{ ...bindings, ...initialBindings }}
 								currentPage={page}
 								setPage={setPage}
+								pagination={pagination}
 							/>
 						</div>
 					);
