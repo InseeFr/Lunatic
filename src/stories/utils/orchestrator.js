@@ -19,7 +19,15 @@ const OrchestratorForStories = ({
 		handleChange,
 		components,
 		bindings,
-		pagination: { goNext, goPrevious, page, maxPage, isFirstPage, isLastPage },
+		pagination: {
+			goNext,
+			goPrevious,
+			page,
+			setPage,
+			maxPage,
+			isFirstPage,
+			isLastPage,
+		},
 	} = lunatic.useLunatic(source, data, {
 		savingType,
 		preferences,
@@ -45,6 +53,8 @@ const OrchestratorForStories = ({
 								management={management}
 								features={features}
 								bindings={{ ...bindings, ...initialBindings }}
+								currentPage={page}
+								setPage={setPage}
 							/>
 						</div>
 					);

@@ -13,8 +13,14 @@ const Loop = ({
 	bindings,
 	handleChange,
 	loopDependencies,
+	paginatedLoop,
+	currentPage,
+	setPage,
 	...orchetratorProps
 }) => {
+	if (paginatedLoop && !currentPage.split('#').pop().includes('.'))
+		setPage(`${currentPage}.1`);
+
 	const [todo, setTodo] = useState({});
 	const vectorialBindings = U.buildVectorialBindings(bindings);
 	const { features } = orchetratorProps;
@@ -58,16 +64,20 @@ const Loop = ({
 
 	const flattenComponents = buildLoopComponents(iterationNb)(components);
 
-	if (!U.displayLoop(loopDependencies)(bindings)) return null;
+	// if (!U.displayLoop(loopDependencies)(bindings)) return null;
 
 	const loopComponents = flattenComponents.map(
-		({ componentType, id: idC, rowNumber, conditionFilter, ...rest }) => {
+		({ componentType, id: idC, rowNumber, conditionFilter, page, ...rest }) => {
 			const loopBindings = U.buildBindingsForDeeperComponents(rowNumber)(
 				bindings
 			);
 			if (!U.displayLoopQuestion(loopDependencies)(loopBindings)) return null;
 			const Component = lunatic[componentType];
-			if (interpret(features)(loopBindings, true)(conditionFilter) !== 'normal')
+
+			if (
+				interpret(features)(loopBindings, true)(conditionFilter) !== 'normal' ||
+				page !== currentPage
+			)
 				return null;
 			return (
 				<div key={`${idC}-loop-${rowNumber}`} className="loop-component">

@@ -7,14 +7,19 @@ export const getPreviousPage = (
 	currentPage,
 	features
 ) => {
+	console.log(currentPage);
 	const newPages = currentPage.split('.');
 	const [first, ...rest] = newPages;
 
 	let result = first;
+	//2.1
 	if (newPages.length > 1) {
-		return `${result}.${
-			(getPreviousPage(components, bindings, rest.join('.')), features)
-		}`;
+		return `${result}.${getPreviousPage(
+			components,
+			bindings,
+			rest.join('.'),
+			features
+		)}`;
 	}
 	if (first.includes('#')) {
 		// Loop

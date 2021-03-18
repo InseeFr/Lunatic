@@ -4,6 +4,7 @@ import { interpretMD } from './md';
 export const interpret = (features) => (bindings, doNotReplaceNullBindings) => (
 	expression
 ) => {
+	if (expression.includes('count(PRENOM)')) console.log(bindings);
 	if (!expression) return '';
 	if (!Array.isArray(features)) return expression;
 	if (features.includes('VTL')) {

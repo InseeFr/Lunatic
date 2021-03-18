@@ -20,6 +20,7 @@
 			"lines": { "min": 1, "max": 10 },
 			"page": "1",
 			"maxPage": "1",
+			"paginatedLoop": false,
 			"components": [
 				{
 					"componentType": "Input",
@@ -54,11 +55,12 @@
 			"label": "boucle individu",
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": "if(count(PRENOM) <> 0) then \"normal\" else \"hidden\"",
 			"loopDependencies": ["PRENOM", "AGE"],
 			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE"],
 			"page": "2",
 			"maxPage": "2",
+			"paginatedLoop": true,
 			"components": [
 				{
 					"id": "k3ymch91",
@@ -66,7 +68,7 @@
 					"label": "PRENOM",
 					"conditionFilter": "\"normal\"",
 					"bindingDependencies": ["PRENOM"],
-					"page": "1"
+					"page": "2.1"
 				},
 				{
 					"id": "k3ym68i7",
@@ -82,7 +84,7 @@
 						{ "value": "1", "label": "Oui" },
 						{ "value": "2", "label": "Non" }
 					],
-					"page": "1"
+					"page": "2.1"
 				},
 				{
 					"id": "k3ym6x16",
@@ -98,7 +100,7 @@
 					"response": {
 						"name": "TPSTRAJET"
 					},
-					"page": "2"
+					"page": "2.2"
 				}
 			]
 		},

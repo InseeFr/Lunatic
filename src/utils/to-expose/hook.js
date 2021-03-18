@@ -4,10 +4,11 @@ import { mergeQuestionnaireAndData } from './init-questionnaire';
 import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
 import { getNextPage, getPreviousPage } from '../lib/pagination';
+import { buildVectorialBindings } from '../lib/loops/bindings';
 import { COLLECTED } from '../../constants';
 
 const customFilterPagination = ({ page }, pagination, currentPage) => {
-	return pagination ? page === currentPage : true;
+	return pagination ? currentPage.startsWith(page) : true;
 };
 
 const filterComponents = (
@@ -23,18 +24,23 @@ const filterComponents = (
 		return components.filter((c) =>
 			customFilterPagination(c, pagination, currentPage)
 		);
+
+	const vectorialBindings = buildVectorialBindings(bindings);
+
 	if (!pagination)
 		return components.filter(
 			({ conditionFilter }) =>
 				!conditionFilter ||
-				interpret(features)(bindings, true)(conditionFilter) === 'normal'
+				interpret(features)(vectorialBindings, true)(conditionFilter) ===
+					'normal'
 		);
 	return components
 		.filter((c) => customFilterPagination(c, pagination, currentPage))
 		.filter(
 			({ conditionFilter }) =>
 				!conditionFilter ||
-				interpret(features)(bindings, true)(conditionFilter) === 'normal'
+				interpret(features)(vectorialBindings, true)(conditionFilter) ===
+					'normal'
 		);
 };
 

@@ -7,9 +7,12 @@ export const getNextPage = (components, bindings, currentPage, features) => {
 
 	let result = first;
 	if (newPages.length > 1) {
-		return `${result}.${
-			(getNextPage(components, bindings, rest.join('.')), features)
-		}`;
+		return `${result}.${getNextPage(
+			components,
+			bindings,
+			rest.join('.'),
+			features
+		)}`;
 	}
 	if (first.includes('#')) {
 		// Loop
