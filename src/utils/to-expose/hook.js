@@ -3,7 +3,7 @@ import { interpret } from './interpret';
 import { mergeQuestionnaireAndData } from './init-questionnaire';
 import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
-import { getNextPage } from '../lib/pagination';
+import { getNextPage, getPreviousPage } from '../lib/pagination';
 import { COLLECTED } from '../../constants';
 
 const customFilterPagination = ({ page }, pagination, currentPage) => {
@@ -55,6 +55,7 @@ const useLunatic = (
 	const [todo, setTodo] = useState({});
 	const [page, setPage] = useState('1');
 
+	// TODO: dynamic because of filters (kind of last accessible page)
 	const { maxPage } = source;
 
 	const disabledNext = page === maxPage;
@@ -74,14 +75,13 @@ const useLunatic = (
 
 	const goPrevious = () => {
 		if (!disabledPrevious) {
-			// TODO
-			// const nextPage = getPreviousPage(
-			// 	questionnaire.components,
-			// 	bindings,
-			// 	page,
-			// 	features
-			// );
-			setPage((p) => `${parseInt(p, 10) - 1}`);
+			const previousPage = getPreviousPage(
+				questionnaire.components,
+				bindings,
+				page,
+				features
+			);
+			setPage(previousPage);
 		}
 	};
 
