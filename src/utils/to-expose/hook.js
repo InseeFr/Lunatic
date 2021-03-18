@@ -6,7 +6,7 @@ import { updateQuestionnaire } from './handler';
 import { getNextPage } from '../lib/pagination';
 import { COLLECTED } from '../../constants';
 
-const cutomFilterPagination = ({ page }, pagination, currentPage) => {
+const customFilterPagination = ({ page }, pagination, currentPage) => {
 	return pagination ? page === currentPage : true;
 };
 
@@ -21,7 +21,7 @@ const filterComponents = (
 	if (management && !pagination) return components;
 	if (management && pagination)
 		return components.filter((c) =>
-			cutomFilterPagination(c, pagination, currentPage)
+			customFilterPagination(c, pagination, currentPage)
 		);
 	if (!pagination)
 		return components.filter(
@@ -30,7 +30,7 @@ const filterComponents = (
 				interpret(features)(bindings, true)(conditionFilter) === 'normal'
 		);
 	return components
-		.filter((c) => cutomFilterPagination(c, pagination, currentPage))
+		.filter((c) => customFilterPagination(c, pagination, currentPage))
 		.filter(
 			({ conditionFilter }) =>
 				!conditionFilter ||
