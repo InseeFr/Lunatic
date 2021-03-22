@@ -103,6 +103,16 @@ legend,
 	position: relative;
 }
 
+.field,
+.field-with-tooltip {
+	display: flex;
+	.unit {
+		margin: auto 0;
+		color: var(--color-primary-dark);
+		font-weight: bold;
+	}
+}
+
 .link-md .field {
 	border-bottom: dashed 0.1em var(--color-primary-dark);
 	&:hover {

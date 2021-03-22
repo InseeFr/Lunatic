@@ -1,7 +1,8 @@
-.checkbox-group {
+.checkbox-group,
+.checkbox-group-list {
 	border: 0;
 	outline: 0;
-	margin-top: 0.9375rem;
+	padding: 0;
 }
 
 .checkbox-lunatic,
@@ -16,7 +17,6 @@
 	width: 18px;
 	+ label {
 		margin-left: 2rem;
-		margin-top: 2rem;
 	}
 	&:focus {
 		+ label {
@@ -31,7 +31,22 @@
 
 .checkbox-modality,
 .checkbox-boolean-modality {
-	margin-bottom: 0.8rem;
+	margin-bottom: 0.6rem;
+}
+
+.field,
+.field-with-tooltip {
+	.checkbox-group-list .checkbox-modality {
+		height: 1.375em;
+	}
+}
+
+.checkbox-group .checkbox-modality label {
+	display: flex;
+}
+
+.checkbox-lunatic + label {
+	margin-top: 0.325em;
 }
 
 .checkbox-alone {

@@ -49,28 +49,31 @@ const CheckboxBoolean = ({
 	const isHorizontal = positioning === 'HORIZONTAL';
 	const input = (
 		<>
-			<Icon type="checkbox" checked={value} disabled={disabled} />
-			<input
-				type="checkbox"
-				id={`checkbox-boolean-${id}`}
-				ref={inputRef}
-				title={interpretedLabel ? interpretedLabel : 'empty-label'}
-				className={`checkbox-boolean-lunatic${isVertical ? '-no-margin' : ''}`}
-				style={U.buildStyleObject(style)}
-				checked={value}
-				disabled={disabled}
-				onChange={({ target: { checked } }) => {
-					setValue(checked);
-					specificHandleChange({
-						[U.getResponseName(response)]: checked,
-					});
-				}}
-			/>
-			{interpretedLabel && (
-				<label htmlFor={`checkbox-boolean-${id}`}>
-					{isHorizontal ? interpretedLabel : ''}
-				</label>
-			)}
+			<Icon type="checkbox" checked={value} disabled={disabled}>
+				<input
+					type="checkbox"
+					id={`checkbox-boolean-${id}`}
+					ref={inputRef}
+					title={interpretedLabel ? interpretedLabel : 'empty-label'}
+					className={`checkbox-boolean-lunatic${
+						isVertical ? '-no-margin' : ''
+					}`}
+					style={U.buildStyleObject(style)}
+					checked={value}
+					disabled={disabled}
+					onChange={({ target: { checked } }) => {
+						setValue(checked);
+						specificHandleChange({
+							[U.getResponseName(response)]: checked,
+						});
+					}}
+				/>
+				{interpretedLabel && (
+					<label htmlFor={`checkbox-boolean-${id}`}>
+						{isHorizontal ? interpretedLabel : ''}
+					</label>
+				)}
+			</Icon>
 		</>
 	);
 	return (

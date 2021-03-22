@@ -79,7 +79,7 @@ const ListDeclarationsWrapper = ({
 				<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
 					<fieldset
 						key={`${type}-${id}`}
-						className={`${type}-group`}
+						className={`${type}-group-list`}
 						style={U.buildStyleObject(fieldsetStyle)}
 					>
 						<legend>{interpret(features)(bindings)(label)}</legend>
@@ -102,34 +102,35 @@ const ListDeclarationsWrapper = ({
 										positioning
 									)} ${checked ? 'content-checked' : ''}`}
 								>
-									<Icon type={type} checked={checked} disabled={disabled} />
-									<input
-										type={type}
-										name={`${type}-${id}`}
-										ref={i === 0 || checked ? inputRef : null}
-										id={`${type}-${id}-${optionValue}`}
-										aria-labelledby={`input-label-${id}-${optionValue}`}
-										className={`${type}-lunatic`}
-										style={U.buildStyleObject(style)}
-										checked={checked}
-										disabled={disabled}
-										onChange={(optionLabel) => onChange(optionValue)}
-									/>
-									<label
-										htmlFor={`${type}-${id}-${optionValue}`}
-										id={`input-label-${id}-${optionValue}`}
-										style={checked ? U.buildStyleObject(modalityStyle) : {}}
-										className="modality-label"
-									>
-										{keyboardSelection && (
-											<span className="code-modality">
-												{options.length < 10
-													? i + 1
-													: U.getAlphabet()[i].toUpperCase()}
-											</span>
-										)}
-										{interpretedLabel}
-									</label>
+									<Icon type={type} checked={checked} disabled={disabled}>
+										<input
+											type={type}
+											name={`${type}-${id}`}
+											ref={i === 0 || checked ? inputRef : null}
+											id={`${type}-${id}-${optionValue}`}
+											aria-labelledby={`input-label-${id}-${optionValue}`}
+											className={`${type}-lunatic`}
+											style={U.buildStyleObject(style)}
+											checked={checked}
+											disabled={disabled}
+											onChange={(optionLabel) => onChange(optionValue)}
+										/>
+										<label
+											htmlFor={`${type}-${id}-${optionValue}`}
+											id={`input-label-${id}-${optionValue}`}
+											style={checked ? U.buildStyleObject(modalityStyle) : {}}
+											className="modality-label"
+										>
+											{keyboardSelection && (
+												<span className="code-modality">
+													{options.length < 10
+														? i + 1
+														: U.getAlphabet()[i].toUpperCase()}
+												</span>
+											)}
+											{interpretedLabel}
+										</label>
+									</Icon>
 								</div>
 							);
 						})}
