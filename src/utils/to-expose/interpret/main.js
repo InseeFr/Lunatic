@@ -8,7 +8,6 @@ export const interpret = (features) => (bindings, doNotReplaceNullBindings) => (
 	if (!Array.isArray(features)) return expression;
 	if (features.includes('VTL')) {
 		const vtl = interpretVTL(bindings, doNotReplaceNullBindings)(expression);
-		console.log(vtl)
 		if (features.includes('MD')) {
 			return interpretMD(vtl);
 		}
