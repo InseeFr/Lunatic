@@ -21,6 +21,7 @@ const TooltipResponse = ({ id, response }) => {
 	const text = content
 		.map(({ key, value }) => `${key} : ${value}<br />`)
 		.join('');
+
 	return (
 		<div className="tooltip-lunatic">
 			<span
