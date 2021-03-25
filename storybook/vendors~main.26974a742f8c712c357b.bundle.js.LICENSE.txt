@@ -4,6 +4,13 @@ object-assign
 @license MIT
 */
 
+/* @license
+Papa Parse
+v5.2.0
+https://github.com/mholt/PapaParse
+License: MIT
+*/
+
 /*!
   Copyright (c) 2017 Jed Watson.
   Licensed under the MIT License (MIT), see
@@ -86,6 +93,8 @@ object-assign
 
 /*! https://mths.be/fromcodepoint v0.2.1 by @mathias */
 
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
 /**
  * Prism: Lightweight, robust, elegant syntax highlighting
  *
@@ -131,16 +140,7 @@ object-assign
  * LICENSE file in the root directory of this source tree.
  */
 
-/*@license
-	Papa Parse
-	v4.4.0
-	https://github.com/mholt/PapaParse
-	License: MIT
-*/
-
 //! moment.js
-
-//! moment.js language configuration
 
 //! moment.js locale configuration
 
