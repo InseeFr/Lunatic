@@ -99,7 +99,7 @@ const CheckboxGroup = ({
 												key={`checkbox-${id}-${modId}`}
 												aria-labelledby={`input-label-${id}-${modId}`}
 												className="checkbox-lunatic"
-												checked={checked}
+												checked={checked || false}
 												disabled={disabled}
 												onChange={({ target: { checked } }) => {
 													setValues(

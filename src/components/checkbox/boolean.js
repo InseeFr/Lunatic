@@ -57,7 +57,7 @@ const CheckboxBoolean = ({
 					title={interpretedLabel ? interpretedLabel : 'empty-label'}
 					className={`checkbox-boolean-lunatic`}
 					style={U.buildStyleObject(style)}
-					checked={value}
+					checked={value || false}
 					disabled={disabled}
 					onChange={({ target: { checked } }) => {
 						setValue(checked);
