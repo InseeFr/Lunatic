@@ -55,9 +55,7 @@ const CheckboxBoolean = ({
 					id={`checkbox-boolean-${id}`}
 					ref={inputRef}
 					title={interpretedLabel ? interpretedLabel : 'empty-label'}
-					className={`checkbox-boolean-lunatic${
-						isVertical ? '-no-margin' : ''
-					}`}
+					className={`checkbox-boolean-lunatic`}
 					style={U.buildStyleObject(style)}
 					checked={value}
 					disabled={disabled}

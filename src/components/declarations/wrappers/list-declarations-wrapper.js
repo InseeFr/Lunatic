@@ -98,7 +98,7 @@ const ListDeclarationsWrapper = ({
 							return (
 								<div
 									key={`${type}-${id}-${optionValue}`}
-									className={`${type}-modality ${U.getItemsPositioningClass(
+									className={`${type}-modality ${type}-modality-block ${U.getItemsPositioningClass(
 										positioning
 									)} ${checked ? 'content-checked' : ''}`}
 								>

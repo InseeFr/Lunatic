@@ -34,8 +34,18 @@
 	}
 }
 
-.radio-group-list .radio-modality label {
-	display: flex;
+.radio-group-list {
+	.radio-modality {
+		label {
+			display: flex;
+		}
+	}
+	.radio-modality.radio-modality-block label {
+		padding-top: 0.325em;
+	}
+	.radio-modality.radio-modality-block.horizontal-options label {
+		padding-top: 0;
+	}
 }
 
 .radio-modality {

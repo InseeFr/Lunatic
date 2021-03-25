@@ -24,4 +24,4 @@
 
 ## Styles
 
-**CheckboxBoolean** component has for classes `checkbox-lunatic`, `checkbox-lunatic-no-margin` and `checkbox-boolean-modality`.
+**CheckboxBoolean** component has for classes `checkbox-lunatic` and `checkbox-boolean-modality`.

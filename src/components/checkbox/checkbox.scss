@@ -6,8 +6,7 @@
 }
 
 .checkbox-lunatic,
-.checkbox-boolean-lunatic,
-.checkbox-lunatic-no-margin {
+.checkbox-boolean-lunatic {
 	position: absolute;
 	opacity: 0;
 	margin-bottom: 0;
@@ -42,8 +41,18 @@
 }
 
 .checkbox-group,
-.checkbox-group-list .checkbox-modality label {
-	display: flex;
+.checkbox-group-list {
+	.checkbox-modality {
+		label {
+			display: flex;
+		}
+	}
+	.checkbox-modality.checkbox-modality-block label {
+		padding-top: 0.325em;
+	}
+	.checkbox-modality.checkbox-modality-block.horizontal-options label {
+		padding-top: 0;
+	}
 }
 
 .checkbox-lunatic + label {

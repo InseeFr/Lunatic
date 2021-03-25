@@ -60,7 +60,7 @@ const CheckboxGroup = ({
 			/>
 			<fieldset
 				key={`checkbox-${id}`}
-				className="checkbox-group"
+				className="checkbox-group-list"
 				style={U.buildStyleObject(fieldsetStyle)}
 			>
 				<legend>{interpret(features)(bindings)(label)}</legend>
