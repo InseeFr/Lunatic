@@ -132,7 +132,7 @@ const InputDeclarationsWrapper = ({
 							required={mandatory}
 							aria-required={mandatory}
 							onChange={({ target: { value: v } }) => {
-								validate(v);
+								if (isInputNumber) validate(v);
 								if (management) setValue(v);
 								else setValue(v === '' ? null : v);
 							}}
