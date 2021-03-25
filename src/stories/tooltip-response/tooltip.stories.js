@@ -17,12 +17,6 @@ const stories = storiesOf('Tooltip/Management', module)
 		return <WrappedComponent title="<Tooltip />" />;
 	});
 
-stories.addWithJSX('Default', () => (
-	<div style={{ marginLeft: '50%' }}>
-		<TooltipResponse id="default" />
-	</div>
-));
-
 stories.addWithJSX('Forced', () => (
 	<div style={{ marginLeft: '50%' }}>
 		<TooltipResponse

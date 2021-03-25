@@ -15,9 +15,9 @@ export const interpretVTL = (bindings, doNotReplaceNullBindings) => (
 	}
 };
 
-export const interpretVTLWithEmptyDefault = (doNotReplaceNullBindings) => (
+export const interpretVTLWithEmptyDefault = (
 	bindings,
-	replaceNullBindings
+	doNotReplaceNullBindings
 ) => (expression) => {
 	try {
 		const VTLExpr = interpret(

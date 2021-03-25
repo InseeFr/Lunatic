@@ -60,7 +60,7 @@ const CheckboxGroup = ({
 			/>
 			<fieldset
 				key={`checkbox-${id}`}
-				className="checkbox-group"
+				className="checkbox-group-list"
 				style={U.buildStyleObject(fieldsetStyle)}
 			>
 				<legend>{interpret(features)(bindings)(label)}</legend>
@@ -91,44 +91,41 @@ const CheckboxGroup = ({
 											checked ? 'content-checked' : ''
 										}`}
 									>
-										<Icon
-											type="checkbox"
-											checked={checked}
-											disabled={disabled}
-										/>
-										<input
-											type="checkbox"
-											id={`checkbox-${id}-${modId}`}
-											ref={toRef ? inputRef : null}
-											key={`checkbox-${id}-${modId}`}
-											aria-labelledby={`input-label-${id}-${modId}`}
-											className="checkbox-lunatic"
-											checked={checked}
-											disabled={disabled}
-											onChange={({ target: { checked } }) => {
-												setValues(
-													values.map((v, j) => (i === j ? checked : v))
-												);
-												specificHandleChange({
-													[U.getResponseName(response)]: checked,
-												});
-											}}
-										/>
-										<label
-											htmlFor={`checkbox-${id}-${modId}`}
-											id={`input-label-${id}-${modId}`}
-											style={checked ? U.buildStyleObject(modalityStyle) : {}}
-											className="modality-label"
-										>
-											{keyboardSelection && (
-												<span className="code-modality">
-													{responses.length < 10
-														? i + 1
-														: U.getAlphabet()[i].toUpperCase()}
-												</span>
-											)}
-											{interpretedLabel}
-										</label>
+										<Icon type="checkbox" checked={checked} disabled={disabled}>
+											<input
+												type="checkbox"
+												id={`checkbox-${id}-${modId}`}
+												ref={toRef ? inputRef : null}
+												key={`checkbox-${id}-${modId}`}
+												aria-labelledby={`input-label-${id}-${modId}`}
+												className="checkbox-lunatic"
+												checked={checked || false}
+												disabled={disabled}
+												onChange={({ target: { checked } }) => {
+													setValues(
+														values.map((v, j) => (i === j ? checked : v))
+													);
+													specificHandleChange({
+														[U.getResponseName(response)]: checked,
+													});
+												}}
+											/>
+											<label
+												htmlFor={`checkbox-${id}-${modId}`}
+												id={`input-label-${id}-${modId}`}
+												style={checked ? U.buildStyleObject(modalityStyle) : {}}
+												className="modality-label"
+											>
+												{keyboardSelection && (
+													<span className="code-modality">
+														{responses.length < 10
+															? i + 1
+															: U.getAlphabet()[i].toUpperCase()}
+													</span>
+												)}
+												{interpretedLabel}
+											</label>
+										</Icon>
 									</div>
 								</div>
 								{management && (

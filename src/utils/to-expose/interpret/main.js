@@ -17,16 +17,16 @@ export const interpret = (features) => (bindings, doNotReplaceNullBindings) => (
 	return expression;
 };
 
-export const interpretWithEmptyDefault = (
-	features,
+export const interpretWithEmptyDefault = (features) => (
+	bindings,
 	doNotReplaceNullBindings
-) => (bindings, replaceNullBindings) => (expression) => {
+) => (expression) => {
 	if (!expression) return '';
 	if (!Array.isArray(features)) return '';
 	if (features.includes('VTL')) {
-		const vtl = interpretVTLWithEmptyDefault(doNotReplaceNullBindings)(
+		const vtl = interpretVTLWithEmptyDefault(
 			bindings,
-			replaceNullBindings
+			doNotReplaceNullBindings
 		)(expression);
 		if (features.includes('MD')) {
 			return interpretMD(vtl);

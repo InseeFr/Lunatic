@@ -21,6 +21,7 @@ const Table = ({
 	addBtnLabel,
 	hideBtn,
 	management,
+	numberAsTextfield,
 }) => {
 	const minLines = initLines
 		? Math.max(initLines.min, U.getRosterInitLines(cells))
@@ -85,6 +86,7 @@ const Table = ({
 													bindings={bindings}
 													{...componentProps}
 													zIndex={cells.length - i || 0}
+													numberAsTextfield
 												/>
 											</td>
 										);

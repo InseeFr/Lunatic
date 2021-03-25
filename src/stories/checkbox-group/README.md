@@ -26,4 +26,4 @@
 
 ## Styles
 
-**CheckboxGroup** component has for classes `checkbox-group`, `checkbox-modality` and `checkbox-lunatic`.
+**CheckboxGroup** component has for classes `checkbox-group-list`, `checkbox-modality` and `checkbox-lunatic`.

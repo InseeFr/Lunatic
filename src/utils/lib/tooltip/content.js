@@ -11,6 +11,9 @@ export const buildTooltip = (response) => {
 	const edited = values[C.EDITED];
 	const forced = values[C.FORCED];
 	const collected = values[C.COLLECTED];
+
+	if (edited === '' && !has(forced) && !has(collected)) return {};
+
 	if (has(edited)) {
 		if (!has(forced))
 			return {
@@ -49,4 +52,4 @@ export const buildTooltip = (response) => {
 	return {};
 };
 
-const has = (status) => status !== undefined && status !== null;
+const has = (status) => ![null, undefined].includes(status);

@@ -16,19 +16,12 @@ const TooltipResponse = ({ id, response }) => {
 
 	const { content, imgName } = tooltipElements;
 
-	if (!content)
-		return (
-			<div className="tooltip-lunatic">
-				<img
-					id={id}
-					alt="img-tooltip"
-					src={img.collectedImg.src || img.collectedImg}
-				/>
-			</div>
-		);
+	if (!content) return null;
+
 	const text = content
 		.map(({ key, value }) => `${key} : ${value}<br />`)
 		.join('');
+
 	return (
 		<div className="tooltip-lunatic">
 			<span
