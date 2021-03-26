@@ -7,7 +7,7 @@ import { getNextPage, getPreviousPage, FLOW_NEXT, FLOW_PREVIOUS } from '../lib';
 import { COLLECTED } from '../../constants';
 
 const customFilterPagination = ({ page }, pagination, currentPage) => {
-	return pagination ? currentPage.startsWith(page) : true;
+	return pagination ? currentPage.split('.')[0] === page : true;
 };
 
 const filterComponents = (
