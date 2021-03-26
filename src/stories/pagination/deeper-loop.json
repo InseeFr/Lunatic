@@ -48,6 +48,7 @@
 				"PERMIS",
 				"POINTS"
 			],
+			"depth": "1",
 			"page": "2",
 			"paginatedLoop": true,
 			"maxPage": "2",
@@ -99,6 +100,7 @@
 						"PERMIS",
 						"POINTS"
 					],
+					"depth": "2",
 					"page": "2.2",
 					"paginatedLoop": true,
 					"maxPage": "3",
@@ -164,6 +166,7 @@
 								"PERMIS",
 								"POINTS"
 							],
+							"depth": "3",
 							"page": "2.2.3",
 							"paginatedLoop": true,
 							"maxPage": "2",

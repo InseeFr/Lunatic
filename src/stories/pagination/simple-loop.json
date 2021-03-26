@@ -19,8 +19,6 @@
 			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 10 },
 			"page": "1",
-			"maxPage": "1",
-			"paginatedLoop": false,
 			"components": [
 				{
 					"componentType": "Input",
@@ -58,6 +56,7 @@
 			"conditionFilter": "\"normal\"",
 			"loopDependencies": ["PRENOM", "AGE"],
 			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE", "YEAR"],
+			"depth": "1",
 			"page": "2",
 			"maxPage": "3",
 			"paginatedLoop": true,
