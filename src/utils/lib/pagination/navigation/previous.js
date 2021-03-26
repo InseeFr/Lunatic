@@ -7,7 +7,6 @@ export const getPreviousPage = (
 	currentPage,
 	features
 ) => {
-	console.log(currentPage);
 	const newPages = currentPage.split('.');
 	const [first, ...rest] = newPages;
 

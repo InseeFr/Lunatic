@@ -62,10 +62,44 @@ const PaginatedLoop = ({
 		}
 	}, [bindings, todo, handleChange]);
 
+	/**
+	 * Handle init page
+	 */
+	if (
+		paginatedLoop &&
+		!currentPage.split('#').pop().includes('.') &&
+		!currentPage.split('.').pop().includes('#') &&
+		U.displayLoop(loopDependencies)(bindings)
+	) {
+		setPage(`${currentPage}.1#1`);
+		return null;
+	}
+
 	const flattenComponents = buildLoopComponents(iterationNb)(components);
 
 	if (!U.displayLoop(loopDependencies)(bindings)) {
 		return <div>Pas de questionnaire individuel, passez à la suite</div>;
+	}
+
+	const currentPageWithoutIteration = currentPage
+		.split('#')
+		.slice(0, -1)
+		.join('#');
+
+	const currentComponent = parseInt(
+		currentPageWithoutIteration.split('.').slice().pop()
+	);
+
+	const iteration = parseInt(currentPage.split('#').pop(), 10);
+
+	if (currentComponent > maxPage) {
+		setPage(`2.1#${iteration + 1}`);
+		return null;
+	}
+
+	if (iteration > iterations) {
+		setPage('3');
+		return null;
 	}
 
 	const loopComponents = flattenComponents.map(
@@ -75,7 +109,11 @@ const PaginatedLoop = ({
 			);
 			if (!U.displayLoopQuestion(loopDependencies)(loopBindings)) return null;
 			const Component = lunatic[componentType];
-			if (interpret(features)(loopBindings, true)(conditionFilter) !== 'normal')
+			if (
+				interpret(features)(loopBindings, true)(conditionFilter) !== 'normal' ||
+				(pagination && page !== currentPageWithoutIteration) ||
+				rowNumber + 1 !== iteration
+			)
 				return null;
 			return (
 				<div key={`${idC}-loop-${rowNumber}`} className="loop-component">
@@ -91,6 +129,8 @@ const PaginatedLoop = ({
 			);
 		}
 	);
+
+	console.log(loopComponents);
 
 	return (
 		<div id={`loop-${id}`} className="lunatic-loop">

@@ -6,16 +6,17 @@ export const getNextPage = (components, bindings, currentPage, features) => {
 	const [first, ...rest] = newPages;
 
 	let result = first;
-	if (newPages.length > 1) {
-		return `${result}.${getNextPage(
-			components,
-			bindings,
-			rest.join('.'),
-			features
-		)}`;
-	}
+	// if (newPages.length > 1) {
+	// 	return `${result}.${getNextPage(
+	// 		components,
+	// 		bindings,
+	// 		rest.join('.'),
+	// 		features
+	// 	)}`;
+	// }
 	if (first.includes('#')) {
-		// Loop
+		console.log(currentPage);
+		const iteration = parseInt(currentPage.split('#').pop(), 10);
 	} else {
 		const newPage = getSimpleNewPage(
 			components,
