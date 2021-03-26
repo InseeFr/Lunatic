@@ -19,6 +19,7 @@ const PaginatedLoop = ({
 	currentPage,
 	setPage,
 	flow,
+	depth,
 	...orchetratorProps
 }) => {
 	const [todo, setTodo] = useState({});
@@ -68,8 +69,7 @@ const PaginatedLoop = ({
 	 */
 	if (
 		paginatedLoop &&
-		!currentPage.split('#').pop().includes('.') &&
-		!currentPage.split('.').pop().includes('#') &&
+		depth > `${currentPage.split('.').length - 1}` &&
 		U.displayLoop(loopDependencies)(bindings)
 	) {
 		if (flow === U.FLOW_NEXT) {
@@ -91,6 +91,11 @@ const PaginatedLoop = ({
 		.slice(0, -1)
 		.join('#');
 
+	const currentPageWithoutAnyIteration = currentPage
+		.split('.')
+		.map((e) => e.split('#')[0])
+		.join('.');
+
 	const rootPage = currentPageWithoutIteration
 		.split('.')
 		.slice(0, -1)
@@ -109,13 +114,13 @@ const PaginatedLoop = ({
 	}
 
 	// Next at last component
-	if (currentComponentIndex > maxPage) {
+	if (
+		depth === `${currentPage.split('.').length - 1}` &&
+		currentComponentIndex > maxPage
+	) {
 		setPage(`${rootPage}.1#${currentIteration + 1}`);
 		return null;
 	}
-
-	// 2.2#1
-	// 2.5#1.2#1      2    5#1
 
 	// Previous at first iteration
 	if (currentIteration < 1) {
@@ -160,7 +165,7 @@ const PaginatedLoop = ({
 			const Component = lunatic[componentType];
 			if (
 				interpret(features)(loopBindings, true)(conditionFilter) !== 'normal' ||
-				(pagination && page !== currentPageWithoutIteration) ||
+				(pagination && !currentPageWithoutAnyIteration.startsWith(page)) ||
 				rowNumber + 1 !== currentIteration
 			)
 				return acc;
@@ -174,6 +179,10 @@ const PaginatedLoop = ({
 						handleChange={(up) => setTodo({ up, rowNumber })}
 						bindings={loopBindings}
 						componentType={componentType}
+						pagination={pagination}
+						currentPage={currentPage}
+						setPage={setPage}
+						flow={flow}
 					/>
 				</div>,
 			];
