@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Orchestrator from '../utils/orchestrator';
 import simpleLoop from './simple-loop';
+import deeperLoop from './deeper-loop.json';
 import simpsonsQuestion from './simpsons-question.json';
 import simpsonsSequence from './simpsons-sequence.json';
 import { titleDecorator } from 'utils/lib';
@@ -15,6 +16,15 @@ stories.addWithJSX('SimpleLoop', () => (
 	<Orchestrator
 		id="simple-loop"
 		source={simpleLoop}
+		features={['VTL']}
+		pagination
+	/>
+));
+
+stories.addWithJSX('DeeperLoop', () => (
+	<Orchestrator
+		id="deeper-loop"
+		source={deeperLoop}
 		features={['VTL']}
 		pagination
 	/>
