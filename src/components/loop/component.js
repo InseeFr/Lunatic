@@ -64,10 +64,6 @@ const PaginatedLoop = ({
 
 	const flattenComponents = buildLoopComponents(iterationNb)(components);
 
-	if (!U.displayLoop(loopDependencies)(bindings)) {
-		return <div>Pas de questionnaire individuel, passez à la suite</div>;
-	}
-
 	const loopComponents = flattenComponents.map(
 		({ componentType, id: idC, rowNumber, conditionFilter, page, ...rest }) => {
 			const loopBindings = U.buildBindingsForDeeperComponents(rowNumber)(
