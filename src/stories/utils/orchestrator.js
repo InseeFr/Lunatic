@@ -27,6 +27,7 @@ const OrchestratorForStories = ({
 			maxPage,
 			isFirstPage,
 			isLastPage,
+			flow,
 		},
 	} = lunatic.useLunatic(source, data, {
 		savingType,
@@ -55,6 +56,7 @@ const OrchestratorForStories = ({
 								bindings={{ ...bindings, ...initialBindings }}
 								currentPage={page}
 								setPage={setPage}
+								flow={flow}
 								pagination={pagination}
 							/>
 						</div>

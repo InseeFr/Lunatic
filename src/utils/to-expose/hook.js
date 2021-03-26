@@ -3,8 +3,7 @@ import { interpret } from './interpret';
 import { mergeQuestionnaireAndData } from './init-questionnaire';
 import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
-import { getNextPage, getPreviousPage } from '../lib/pagination';
-import { buildVectorialBindings } from '../lib/loops/bindings';
+import { getNextPage, getPreviousPage, FLOW_NEXT, FLOW_PREVIOUS } from '../lib';
 import { COLLECTED } from '../../constants';
 
 const customFilterPagination = ({ page }, pagination, currentPage) => {
@@ -57,6 +56,7 @@ const useLunatic = (
 	);
 	const [todo, setTodo] = useState({});
 	const [page, setPage] = useState('1');
+	const [flow, setFlow] = useState(FLOW_NEXT);
 
 	// TODO: dynamic because of filters (kind of last accessible page)
 	const { maxPage } = source;
@@ -66,6 +66,9 @@ const useLunatic = (
 
 	const goNext = () => {
 		if (!isFirstPage) {
+			if (flow !== FLOW_NEXT) {
+				setFlow(FLOW_NEXT);
+			}
 			const nextPage = getNextPage(
 				questionnaire.components,
 				bindings,
@@ -78,6 +81,9 @@ const useLunatic = (
 
 	const goPrevious = () => {
 		if (!isLastPage) {
+			if (flow !== FLOW_PREVIOUS) {
+				setFlow(FLOW_PREVIOUS);
+			}
 			const previousPage = getPreviousPage(
 				questionnaire.components,
 				bindings,
@@ -132,6 +138,7 @@ const useLunatic = (
 			goPrevious,
 			isFirstPage,
 			isLastPage,
+			flow,
 		},
 	};
 };

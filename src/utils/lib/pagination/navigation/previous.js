@@ -7,21 +7,24 @@ export const getPreviousPage = (
 	currentPage,
 	features
 ) => {
-	const newPages = currentPage.split('.');
-	const [first, ...rest] = newPages;
+	if (currentPage.includes('#')) {
+		const currentPageWithoutIteration = currentPage
+			.split('#')
+			.slice(0, -1)
+			.join('#');
 
-	let result = first;
-	//2.1
-	if (newPages.length > 1) {
-		return `${result}.${getPreviousPage(
-			components,
-			bindings,
-			rest.join('.'),
-			features
-		)}`;
-	}
-	if (first.includes('#')) {
-		// Loop
+		const rootPage = currentPageWithoutIteration
+			.split('.')
+			.slice(0, -1)
+			.join('.');
+
+		const currentComponentIndex = parseInt(
+			currentPageWithoutIteration.split('.').slice().pop()
+		);
+
+		const currentIteration = parseInt(currentPage.split('#').pop(), 10);
+
+		return `${rootPage}.${currentComponentIndex - 1}#${currentIteration}`;
 	} else {
 		const newPage = getSimpleNewPage(
 			components,
@@ -30,8 +33,6 @@ export const getPreviousPage = (
 			features,
 			'PREVIOUS'
 		);
-		// TODO : redirect when new page display Loop
-		// TODO: Boarder
 		return `${parseInt(newPage, 10)}`;
 	}
 };

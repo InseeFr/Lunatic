@@ -2,21 +2,27 @@ import { getSimpleNewPage } from './shared';
 
 // Recusive function on currentPage
 export const getNextPage = (components, bindings, currentPage, features) => {
-	const newPages = currentPage.split('.');
-	const [first, ...rest] = newPages;
+	// 2.2#2
+	// 2.2#1.2#2
 
-	let result = first;
-	// if (newPages.length > 1) {
-	// 	return `${result}.${getNextPage(
-	// 		components,
-	// 		bindings,
-	// 		rest.join('.'),
-	// 		features
-	// 	)}`;
-	// }
-	if (first.includes('#')) {
-		console.log(currentPage);
-		const iteration = parseInt(currentPage.split('#').pop(), 10);
+	if (currentPage.includes('#')) {
+		const currentPageWithoutIteration = currentPage
+			.split('#')
+			.slice(0, -1)
+			.join('#');
+
+		const rootPage = currentPageWithoutIteration
+			.split('.')
+			.slice(0, -1)
+			.join('.');
+
+		const currentComponentIndex = parseInt(
+			currentPageWithoutIteration.split('.').slice().pop()
+		);
+
+		const currentIteration = parseInt(currentPage.split('#').pop(), 10);
+
+		return `${rootPage}.${currentComponentIndex + 1}#${currentIteration}`;
 	} else {
 		const newPage = getSimpleNewPage(
 			components,
