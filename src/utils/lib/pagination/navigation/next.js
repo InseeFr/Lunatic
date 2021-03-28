@@ -2,9 +2,6 @@ import { getSimpleNewPage } from './shared';
 
 // Recusive function on currentPage
 export const getNextPage = (components, bindings, currentPage, features) => {
-	// 2.2#2
-	// 2.2#1.2#2
-
 	if (currentPage.includes('#')) {
 		const currentPageWithoutIteration = currentPage
 			.split('#')

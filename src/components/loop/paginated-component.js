@@ -19,9 +19,10 @@ const PaginatedLoop = ({
 	currentPage,
 	setPage,
 	flow,
-	depth,
+	depthLoop,
 	...orchetratorProps
 }) => {
+	console.log('id ', id);
 	const [todo, setTodo] = useState({});
 	const vectorialBindings = U.buildVectorialBindings(bindings);
 	const { features } = orchetratorProps;
@@ -67,9 +68,10 @@ const PaginatedLoop = ({
 	/**
 	 * Handle init page
 	 */
+
 	if (
 		paginatedLoop &&
-		depth > `${currentPage.split('.').length - 1}` &&
+		depthLoop > currentPage.split('.').length - 1 &&
 		U.displayLoop(loopDependencies)(bindings)
 	) {
 		if (flow === U.FLOW_NEXT) {
@@ -82,9 +84,9 @@ const PaginatedLoop = ({
 
 	const flattenComponents = buildLoopComponents(iterationNb)(components);
 
-	if (!U.displayLoop(loopDependencies)(bindings)) {
-		return <div>Pas de questionnaire individuel, passez à la suite</div>;
-	}
+	// if (!U.displayLoop(loopDependencies)(bindings)) {
+	// 	return <div>Pas de questionnaire individuel, passez à la suite</div>;
+	// }
 
 	const currentPageWithoutIteration = currentPage
 		.split('#')
@@ -101,57 +103,62 @@ const PaginatedLoop = ({
 		.slice(0, -1)
 		.join('.');
 
-	const currentComponentIndex = parseInt(
-		currentPageWithoutIteration.split('.').slice().pop()
-	);
+	const [currentComponentIndex, currentIteration] = currentPage
+		.split('.')
+		.slice(0, depthLoop + 1) // scoped
+		.pop()
+		.split('#')
+		.map((c) => parseInt(c, 10));
 
-	const currentIteration = parseInt(currentPage.split('#').pop(), 10);
-
-	// Previous at first component
-	if (currentComponentIndex < 1) {
-		setPage(`${rootPage}.${maxPage}#${currentIteration - 1}`);
-		return null;
-	}
-
-	// Next at last component
-	if (
-		depth === `${currentPage.split('.').length - 1}` &&
-		currentComponentIndex > maxPage
-	) {
-		setPage(`${rootPage}.1#${currentIteration + 1}`);
-		return null;
-	}
-
-	// Previous at first iteration
-	if (currentIteration < 1) {
-		const splitRoot = rootPage.split('.');
-		if (splitRoot.length === 1) setPage(`${parseInt(splitRoot[0], 10) - 1}`);
-		else {
-			const withoutLast = splitRoot.slice(0, -1).join('.');
-			const subPagesToUpdate = withoutLast.slice().pop().split('#');
-			const newSubPage = `${parseInt(subPagesToUpdate[0], 10) - 1}#${
-				subPagesToUpdate[1]
-			}`;
-			const newPage = [...withoutLast.slice().pop(), newSubPage].join('.');
-			setPage(`${newPage}`);
+	if (depthLoop === currentPage.split('.').length - 1) {
+		// Previous at first component
+		if (currentComponentIndex < 1) {
+			setPage(`${rootPage}.${maxPage}#${currentIteration - 1}`);
+			return null;
 		}
-		return null;
+
+		// Next at last component
+		if (currentComponentIndex > maxPage) {
+			setPage(`${rootPage}.1#${currentIteration + 1}`);
+			return null;
+		}
+
+		// Previous at first iteration
+		if (currentIteration < 1) {
+			const splitRoot = rootPage.split('.');
+			if (splitRoot.length === 1) setPage(`${parseInt(splitRoot[0], 10) - 1}`);
+			else {
+				const subPagesToUpdate = splitRoot.slice().pop().split('#');
+				const newSubPage = `${parseInt(subPagesToUpdate[0], 10) - 1}#${
+					subPagesToUpdate[1]
+				}`;
+				const newPage = [
+					...splitRoot.slice(0, splitRoot.length - 1),
+					newSubPage,
+				].join('.');
+				setPage(`${newPage}`);
+			}
+			return null;
+		}
+
+		// Next at last iteration
+		if (currentIteration > iterationNb) {
+			const splitRoot = rootPage.split('#');
+			const newRootPage =
+				splitRoot.length === 1
+					? parseInt(splitRoot[0], 10) + 1
+					: splitRoot.slice(0, -1).join('#');
+			if (splitRoot.length === 1) setPage(`${newRootPage}`);
+			else {
+				const newIteration = parseInt(splitRoot.pop(), 10) + 1;
+				setPage(`${newRootPage}#${newIteration}`);
+			}
+			return null;
+		}
 	}
 
-	// Next at last iteration
-	if (currentIteration > iterationNb) {
-		const splitRoot = rootPage.split('#');
-		const newRootPage =
-			splitRoot.length === 1
-				? parseInt(splitRoot[0], 10) + 1
-				: splitRoot.slice(0, -1).join('#');
-		if (splitRoot.length === 1) setPage(`${newRootPage}`);
-		else {
-			const newIteration = parseInt(splitRoot.pop(), 10) + 1;
-			setPage(`${newRootPage}#${newIteration}`);
-		}
-		return null;
-	}
+	//2.2#1.3#1.1#2
+	//2.2#2
 
 	const loopComponents = flattenComponents.reduce(
 		(
@@ -161,7 +168,7 @@ const PaginatedLoop = ({
 			const loopBindings = U.buildBindingsForDeeperComponents(rowNumber)(
 				bindings
 			);
-			if (!U.displayLoopQuestion(loopDependencies)(loopBindings)) return null;
+			if (!U.displayLoopQuestion(loopDependencies)(loopBindings)) return acc;
 			const Component = lunatic[componentType];
 			if (
 				interpret(features)(loopBindings, true)(conditionFilter) !== 'normal' ||
