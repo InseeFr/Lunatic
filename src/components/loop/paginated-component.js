@@ -87,44 +87,29 @@ const PaginatedLoop = ({
 		return <div>Pas de questionnaire individuel, passez à la suite</div>;
 	}
 
-	const currentPageWithoutIteration = currentPage
-		.split('#')
-		.slice(0, -1)
-		.join('#');
-
-	const currentPageWithoutAnyIteration = currentPage
-		.split('.')
-		.map((e) => e.split('#')[0])
-		.join('.');
-
-	const rootPage = currentPageWithoutIteration
-		.split('.')
-		.slice(0, -1)
-		.join('.');
-
-	const [currentComponentIndex, currentIteration] = currentPage
-		.split('.')
-		.slice(0, depth + 1) // scoped
-		.pop()
-		.split('#')
-		.map((c) => parseInt(c, 10));
+	const {
+		currentRootPage,
+		currentComponentIndex,
+		currentIteration,
+		currentPageWithoutAnyIteration,
+	} = U.splitPage(currentPage, depth);
 
 	if (depth === currentPage.split('.').length - 1) {
 		// Previous at first component
 		if (currentComponentIndex < 1) {
-			setPage(`${rootPage}.${maxPage}#${currentIteration - 1}`);
+			setPage(`${currentRootPage}.${maxPage}#${currentIteration - 1}`);
 			return null;
 		}
 
 		// Next at last component
 		if (currentComponentIndex > maxPage) {
-			setPage(`${rootPage}.1#${currentIteration + 1}`);
+			setPage(`${currentRootPage}.1#${currentIteration + 1}`);
 			return null;
 		}
 
 		// Previous at first iteration
 		if (currentIteration < 1) {
-			const splitRoot = rootPage.split('.');
+			const splitRoot = currentRootPage.split('.');
 			if (splitRoot.length === 1) setPage(`${parseInt(splitRoot[0], 10) - 1}`);
 			else {
 				const subPagesToUpdate = splitRoot.slice().pop().split('#');
@@ -142,7 +127,7 @@ const PaginatedLoop = ({
 
 		// Next at last iteration
 		if (currentIteration > iterationNb) {
-			const splitRoot = rootPage.split('#');
+			const splitRoot = currentRootPage.split('#');
 			const newRootPage =
 				splitRoot.length === 1
 					? parseInt(splitRoot[0], 10) + 1
@@ -198,9 +183,13 @@ const PaginatedLoop = ({
 
 	if (loopComponents.length === 0) {
 		if (flow === U.FLOW_NEXT) {
-			setPage(`${rootPage}.${currentComponentIndex + 1}#${currentIteration}`);
+			setPage(
+				`${currentRootPage}.${currentComponentIndex + 1}#${currentIteration}`
+			);
 		} else if (flow === U.FLOW_PREVIOUS) {
-			setPage(`${rootPage}.${currentComponentIndex - 1}#${currentIteration}`);
+			setPage(
+				`${currentRootPage}.${currentComponentIndex - 1}#${currentIteration}`
+			);
 		}
 		return null;
 	}
