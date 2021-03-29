@@ -61,8 +61,8 @@ const useLunatic = (
 	// TODO: dynamic because of filters (kind of last accessible page)
 	const { maxPage } = source;
 
-	const isFirstPage = page === maxPage;
-	const isLastPage = page === '1';
+	const isFirstPage = page === '1';
+	const isLastPage = page === maxPage;
 
 	const goNext = () => {
 		if (!isFirstPage) {
