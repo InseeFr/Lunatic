@@ -68,10 +68,10 @@ const OrchestratorForStories = ({
 					<div className="pagination">
 						<Button
 							onClick={goPrevious}
-							disabled={isLastPage}
+							disabled={isFirstPage}
 							value="Previous"
 						/>
-						<Button onClick={goNext} disabled={isFirstPage} value="Next" />
+						<Button onClick={goNext} disabled={isLastPage} value="Next" />
 					</div>
 					<div>{`Page : ${page}/${maxPage}`}</div>
 				</>

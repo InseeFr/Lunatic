@@ -1,2 +1,1 @@
-export * from './next';
-export * from './previous';
+export * from './shared';

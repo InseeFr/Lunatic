@@ -3,7 +3,7 @@ import { interpret } from './interpret';
 import { mergeQuestionnaireAndData } from './init-questionnaire';
 import { getBindings } from './state';
 import { updateQuestionnaire } from './handler';
-import { getNextPage, getPreviousPage, FLOW_NEXT, FLOW_PREVIOUS } from '../lib';
+import { getPage, FLOW_NEXT, FLOW_PREVIOUS } from '../lib';
 import { COLLECTED } from '../../constants';
 
 const customFilterPagination = ({ page }, pagination, currentPage) => {
@@ -65,31 +65,33 @@ const useLunatic = (
 	const isLastPage = page === maxPage;
 
 	const goNext = () => {
-		if (!isFirstPage) {
+		if (!isLastPage) {
 			if (flow !== FLOW_NEXT) {
 				setFlow(FLOW_NEXT);
 			}
-			const nextPage = getNextPage(
-				questionnaire.components,
+			const nextPage = getPage({
+				components: questionnaire.components,
 				bindings,
-				page,
-				features
-			);
+				currentPage: page,
+				features,
+				flow: FLOW_NEXT,
+			});
 			setPage(nextPage);
 		}
 	};
 
 	const goPrevious = () => {
-		if (!isLastPage) {
+		if (!isFirstPage) {
 			if (flow !== FLOW_PREVIOUS) {
 				setFlow(FLOW_PREVIOUS);
 			}
-			const previousPage = getPreviousPage(
-				questionnaire.components,
+			const previousPage = getPage({
+				components: questionnaire.components,
 				bindings,
-				page,
-				features
-			);
+				currentPage: page,
+				features,
+				flow: FLOW_PREVIOUS,
+			});
 			setPage(previousPage);
 		}
 	};
