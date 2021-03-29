@@ -61,6 +61,8 @@ const useLunatic = (
 	// TODO: dynamic because of filters (kind of last accessible page)
 	const { maxPage } = source;
 
+	const featuresWithoutMD = features.filter((f) => f !== 'MD');
+
 	const isFirstPage = page === '1';
 	const isLastPage = page === maxPage;
 
@@ -73,7 +75,7 @@ const useLunatic = (
 				components: questionnaire.components,
 				bindings,
 				currentPage: page,
-				features,
+				features: featuresWithoutMD,
 				flow: FLOW_NEXT,
 			});
 			setPage(nextPage);
@@ -89,7 +91,7 @@ const useLunatic = (
 				components: questionnaire.components,
 				bindings,
 				currentPage: page,
-				features,
+				features: featuresWithoutMD,
 				flow: FLOW_PREVIOUS,
 			});
 			setPage(previousPage);
