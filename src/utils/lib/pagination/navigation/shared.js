@@ -66,6 +66,23 @@ const getSimpleNewPage = ({
 		}, null);
 
 export const splitPage = (currentPage, depth) => {
+	if (!currentPage || typeof currentPage !== 'string')
+		return {
+			currentRootPage: '1',
+			currentComponentIndex: 1,
+			currentIteration: 1,
+			currentPageWithoutAnyIteration: '1',
+		};
+
+	if (!currentPage.includes('#') && !currentPage.includes('.')) {
+		return {
+			currentRootPage: currentPage,
+			currentComponentIndex: 1,
+			currentIteration: 1,
+			currentPageWithoutAnyIteration: currentPage,
+		};
+	}
+
 	const currentPageWithDepth = depth
 		? currentPage
 				.split('.')

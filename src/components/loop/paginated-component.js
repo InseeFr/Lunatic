@@ -83,9 +83,9 @@ const PaginatedLoop = ({
 
 	const flattenComponents = U.buildLoopComponents(iterationNb)(components);
 
-	if (!U.displayLoop(loopDependencies)(bindings)) {
-		return <div>Pas de questionnaire individuel, passez à la suite</div>;
-	}
+	// if (!U.displayLoop(loopDependencies)(bindings)) {
+	// 	return <div>Pas de questionnaire individuel, passez à la suite</div>;
+	// }
 
 	const {
 		currentRootPage,
