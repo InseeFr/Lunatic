@@ -25,7 +25,7 @@ stories.addWithJSX('DeeperLoop', () => (
 	<Orchestrator
 		id="deeper-loop"
 		source={deeperLoop}
-		features={['VTL']}
+		features={['VTL', 'MD']}
 		pagination
 	/>
 ));

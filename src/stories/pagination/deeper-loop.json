@@ -4,7 +4,7 @@
 		{
 			"id": "seq_1",
 			"componentType": "Sequence",
-			"label": "\"Description des ménages du logement\"",
+			"label": "\"Description des [ménages](. 'Un ménage, au sens statistique du terme, désigne l\u2019ensemble des occupants d\u2019un même logement sans que ces personnes soient nécessairement unies par des liens de parenté (en cas de colocation, par exemple). Un ménage peut être composé d\u2019une seule personne.') du logement\"",
 			"conditionFilter": "\"normal\"",
 			"bindingDependencies": [],
 			"page": "1"
