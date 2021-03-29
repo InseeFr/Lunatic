@@ -68,11 +68,7 @@ const PaginatedLoop = ({
 	 * Handle init page
 	 */
 
-	if (
-		paginatedLoop &&
-		depth > currentPage.split('.').length - 1 &&
-		U.displayLoop(loopDependencies)(bindings)
-	) {
+	if (paginatedLoop && depth > currentPage.split('.').length - 1) {
 		if (flow === U.FLOW_NEXT) {
 			setPage(`${currentPage}.1#1`);
 		} else if (flow === U.FLOW_PREVIOUS) {
