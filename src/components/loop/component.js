@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import * as lunatic from '../components';
-import { buildLoopComponents } from './build-components';
 import { interpret } from '../../utils/to-expose';
 import * as U from '../../utils/lib';
 import './loop.scss';
@@ -62,7 +61,7 @@ const PaginatedLoop = ({
 		}
 	}, [bindings, todo, handleChange]);
 
-	const flattenComponents = buildLoopComponents(iterationNb)(components);
+	const flattenComponents = U.buildLoopComponents(iterationNb)(components);
 
 	const loopComponents = flattenComponents.map(
 		({ componentType, id: idC, rowNumber, conditionFilter, page, ...rest }) => {

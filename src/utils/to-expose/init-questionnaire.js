@@ -1,6 +1,8 @@
 import * as C from '../../constants';
 import { interpret } from './interpret';
 
+const INITIAL_DEPTH = 1;
+
 export const mergeQuestionnaireAndData = (questionnaire) => (data) => {
 	if (!questionnaire || !questionnaire.components) return {};
 	if (questionnaire.components.length === 0) return questionnaire;
@@ -8,7 +10,7 @@ export const mergeQuestionnaireAndData = (questionnaire) => (data) => {
 
 	const vars = buildVars(data || {})(variables);
 	const filledComponents = buildFilledComponents(vars[C.COLLECTED])(components)(
-		0
+		INITIAL_DEPTH
 	);
 
 	return { ...props, components: filledComponents, variables: vars };

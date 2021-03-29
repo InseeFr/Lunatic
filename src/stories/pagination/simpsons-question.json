@@ -2445,7 +2445,6 @@
 			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
 			"bindingDependencies": ["NAME_CHAR", "FAVCHAR", "MEMORY_CHAR"],
 			"loopDependencies": ["NAME_CHAR", "AGE_CHAR"],
-			"depthLoop": 1,
 			"paginatedLoop": true,
 			"components": [
 				{

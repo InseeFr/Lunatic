@@ -56,7 +56,6 @@
 			"conditionFilter": "\"normal\"",
 			"loopDependencies": ["PRENOM", "AGE"],
 			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE", "YEAR"],
-			"depthLoop": 1,
 			"page": "2",
 			"maxPage": "3",
 			"paginatedLoop": true,

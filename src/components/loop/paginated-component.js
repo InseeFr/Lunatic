@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import * as lunatic from '../components';
-import { buildLoopComponents } from './build-components';
 import { interpret } from '../../utils/to-expose';
 import * as U from '../../utils/lib';
 import './loop.scss';
@@ -19,10 +18,10 @@ const PaginatedLoop = ({
 	currentPage,
 	setPage,
 	flow,
-	depthLoop,
+	depth,
 	...orchetratorProps
 }) => {
-	console.log('id ', id);
+	// console.log('id ', id);
 	const [todo, setTodo] = useState({});
 	const vectorialBindings = U.buildVectorialBindings(bindings);
 	const { features } = orchetratorProps;
@@ -71,7 +70,7 @@ const PaginatedLoop = ({
 
 	if (
 		paginatedLoop &&
-		depthLoop > currentPage.split('.').length - 1 &&
+		depth > currentPage.split('.').length - 1 &&
 		U.displayLoop(loopDependencies)(bindings)
 	) {
 		if (flow === U.FLOW_NEXT) {
@@ -82,11 +81,11 @@ const PaginatedLoop = ({
 		return null;
 	}
 
-	const flattenComponents = buildLoopComponents(iterationNb)(components);
+	const flattenComponents = U.buildLoopComponents(iterationNb)(components);
 
-	// if (!U.displayLoop(loopDependencies)(bindings)) {
-	// 	return <div>Pas de questionnaire individuel, passez à la suite</div>;
-	// }
+	if (!U.displayLoop(loopDependencies)(bindings)) {
+		return <div>Pas de questionnaire individuel, passez à la suite</div>;
+	}
 
 	const currentPageWithoutIteration = currentPage
 		.split('#')
@@ -105,12 +104,12 @@ const PaginatedLoop = ({
 
 	const [currentComponentIndex, currentIteration] = currentPage
 		.split('.')
-		.slice(0, depthLoop + 1) // scoped
+		.slice(0, depth + 1) // scoped
 		.pop()
 		.split('#')
 		.map((c) => parseInt(c, 10));
 
-	if (depthLoop === currentPage.split('.').length - 1) {
+	if (depth === currentPage.split('.').length - 1) {
 		// Previous at first component
 		if (currentComponentIndex < 1) {
 			setPage(`${rootPage}.${maxPage}#${currentIteration - 1}`);
