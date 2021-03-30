@@ -5,11 +5,13 @@
 - [Démarrage](getting-started.md)
 - [Utilisation](usage.md)
 - [Composants](components.md)
+- [Pagination](pagination.md)
 - [Utilitaires](utils/index.md)
   - [Gestion simplifiée d'un questionnaire](utils/hook.md)
 - [Styles](styles.md)
 - [Versions](versions/index.md)
   - Releases
+    - [2.2.0](versions/2-2-0.md)
     - [2.1.0](versions/2-1-0.md)
     - [2.0.0](versions/2-0-0.md)
     - [1.2.2](versions/1-2-2.md)

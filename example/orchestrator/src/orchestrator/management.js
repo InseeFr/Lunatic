@@ -2,7 +2,7 @@ import React from 'react';
 import Orchestrator from './orchestrator';
 import data from './data';
 
-const Management = ({ source, pagination, paginationType }) => (
+const Management = ({ source }) => (
 	<Orchestrator
 		savingType={'EDITED'}
 		preferences={['COLLECTED', 'FORCED', 'EDITED']}
