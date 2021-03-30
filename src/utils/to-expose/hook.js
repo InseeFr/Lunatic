@@ -124,7 +124,7 @@ const useLunatic = (
 		questionnaire.components,
 		management,
 		bindings,
-		features,
+		featuresWithoutMD,
 		page,
 		pagination
 	);

@@ -22,8 +22,10 @@ const PaginatedLoop = ({
 	const [todo, setTodo] = useState({});
 	const vectorialBindings = U.buildVectorialBindings(bindings);
 	const { features } = orchetratorProps;
+	const featuresWithoutMD = features.filter((f) => f !== 'MD');
 	const iterationNb =
-		parseInt(interpret(features)(vectorialBindings)(iterations), 10) || 0;
+		parseInt(interpret(featuresWithoutMD)(vectorialBindings)(iterations), 10) ||
+		0;
 	const involvedVariables = U.getInvolvedVariables(components);
 
 	/**
@@ -70,7 +72,10 @@ const PaginatedLoop = ({
 			);
 			if (!U.displayLoopQuestion(loopDependencies)(loopBindings)) return null;
 			const Component = lunatic[componentType];
-			if (interpret(features)(loopBindings, true)(conditionFilter) !== 'normal')
+			if (
+				interpret(featuresWithoutMD)(loopBindings, true)(conditionFilter) !==
+				'normal'
+			)
 				return null;
 			return (
 				<div key={`${idC}-loop-${rowNumber}`} className="loop-component">
