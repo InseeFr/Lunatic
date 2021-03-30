@@ -2,7 +2,7 @@ import React from 'react';
 import Orchestrator from './orchestrator';
 import data from './data';
 
-const Collect = ({ source, pagination, paginationType }) => {
+const Collect = ({ source, pagination }) => {
 	const { COLLECTED, ...dataForCollect } = data;
 	return (
 		<Orchestrator
@@ -13,7 +13,6 @@ const Collect = ({ source, pagination, paginationType }) => {
 			data={dataForCollect}
 			tooltip={false}
 			pagination={pagination}
-			paginationType={paginationType}
 			writable
 		/>
 	);

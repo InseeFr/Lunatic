@@ -7,7 +7,7 @@ const Mode = ({ value, setValue, options }) => (
 		<div className="mode">
 			<Dropdown
 				id="mode"
-				label="Pagination mode"
+				label="Mode"
 				value={value}
 				options={options}
 				handleChange={(e) => setValue(Object.values(e)[0])}
