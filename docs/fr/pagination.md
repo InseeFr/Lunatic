@@ -1,16 +1,25 @@
+# Pagination
+
+## Utilisation
+
+L'ajout des params `pagination` et `initialPage` dans le hook `useLunatic` permet d'activer la pagination ([documentation de `useLunatic`](./utils/hook.md)).
+
+En valorisant `pagination` à `true`, `useLunatic` renvoie de nouvelles props, dont certaines à passer en paramètre des composants.
+
+## Exemple
+
+```javascript
 import React from 'react';
 import * as lunatic from '@inseefr/lunatic';
 
 const Orchestrator = ({
+	source,
+	data,
 	savingType,
 	preferences,
-	source,
 	features,
-	pagination = false,
-	data,
 	management,
-	filterDescription,
-	paginationType,
+	pagination,
 }) => {
 	const {
 		questionnaire,
@@ -36,8 +45,6 @@ const Orchestrator = ({
 	});
 
 	const Button = lunatic.Button;
-
-	console.log(lunatic.getCollectedState(questionnaire));
 
 	return (
 		<div className="container">
@@ -98,3 +105,4 @@ const Orchestrator = ({
 };
 
 export default Orchestrator;
+```
