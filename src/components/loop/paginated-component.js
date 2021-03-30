@@ -21,7 +21,6 @@ const PaginatedLoop = ({
 	depth,
 	...orchetratorProps
 }) => {
-	console.log('id ', id);
 	const [todo, setTodo] = useState({});
 	const vectorialBindings = U.buildVectorialBindings(bindings);
 	const { features } = orchetratorProps;

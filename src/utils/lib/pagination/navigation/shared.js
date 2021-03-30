@@ -69,8 +69,8 @@ export const splitPage = (currentPage, depth) => {
 	const currentPageWithDepth = depth
 		? currentPage
 				.split('.')
-				.slice(0, depth + 1)
-				.join('.') // scoped
+				.slice(0, depth + 1) // scoped
+				.join('.')
 		: currentPage;
 
 	const currentPageWithoutIteration = currentPageWithDepth
