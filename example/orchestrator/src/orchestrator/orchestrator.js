@@ -71,21 +71,14 @@ const Orchestrator = ({
 					<div className="pagination">
 						<Button
 							onClick={goPrevious}
-							// FIX
-							disabled={isLastPage}
+							disabled={isFirstPage}
 							value="Previous"
 						/>
-						<Button
-							onClick={goNext}
-							// FIX
-							disabled={isFirstPage}
-							value="Next"
-						/>
+						<Button onClick={goNext} disabled={isLastPage} value="Next" />
 						<div className="btn-page-init">
 							<Button
 								onClick={() => setPage('1')}
-								// FIX
-								disabled={isLastPage}
+								disabled={isFirstPage}
 								value="Page 1"
 							/>
 						</div>
