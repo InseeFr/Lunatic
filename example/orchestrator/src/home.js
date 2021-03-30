@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './img/lunatic-logo.png';
 import Mode from './mode';
-import { CollectOrchestrator } from './orchestrator';
+import { CollectOrchestrator, ManagementOrchestrator } from './orchestrator';
 import * as S from './sources';
 import { dependencies } from '../package.json';
 
@@ -60,15 +60,14 @@ const Home = () => {
 				/>
 			)}
 			{mode && mode.includes('management') && (
-				// <ManagementOrchestrator
-				// 	source={
-				// 		options.find(({ value }) => value === mode)?.q ||
-				// 		S.simpsonsManagement
-				// 	}
-				// 	pagination={pagination}
-				// 	mode={mode}
-				// />
-				<div style={{ textAlign: 'center' }}>Comming soon...</div>
+				<ManagementOrchestrator
+					source={
+						options.find(({ value }) => value === mode)?.q ||
+						S.simpsonsManagement
+					}
+					pagination={pagination}
+					mode={mode}
+				/>
 			)}
 		</>
 	);
