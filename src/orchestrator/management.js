@@ -9,8 +9,6 @@ const Management = ({ source, pagination, paginationType }) => (
 		source={source}
 		features={['VTL']}
 		data={data}
-		pagination={pagination}
-		paginationType={paginationType}
 		management
 		filterDescription
 		writable
