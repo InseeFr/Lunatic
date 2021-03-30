@@ -6,6 +6,7 @@ import deeperLoop from './deeper-loop.json';
 import simpsonsQuestion from './simpsons-question.json';
 import simpsonsSequence from './simpsons-sequence.json';
 import { titleDecorator } from 'utils/lib';
+import { boolean } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Pagination', module).addDecorator((Component) => {
 	const WrappedComponent = titleDecorator(Component);
@@ -42,7 +43,7 @@ storiesSimpsons.addWithJSX('Question', () => (
 		id="simple-loop"
 		source={simpsonsQuestion}
 		features={['VTL']}
-		pagination
+		pagination={boolean('Pagination', true)}
 	/>
 ));
 
@@ -51,6 +52,6 @@ storiesSimpsons.addWithJSX('Sequence', () => (
 		id="simple-loop"
 		source={simpsonsSequence}
 		features={['VTL']}
-		pagination
+		pagination={boolean('Pagination', true)}
 	/>
 ));

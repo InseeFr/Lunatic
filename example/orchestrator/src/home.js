@@ -38,20 +38,22 @@ const Home = () => {
 					''
 				)}`}</div>
 			</div>
-			<Mode
-				value={paginationType}
-				setValue={setPaginationType}
-				options={options}
-			/>
 			{fakeRoute === '/collect' ? (
-				<CollectOrchestrator
-					source={source}
-					pagination={pagination}
-					paginationType={paginationType}
-				/>
+				<>
+					<Mode
+						value={paginationType}
+						setValue={setPaginationType}
+						options={options}
+					/>
+					<CollectOrchestrator
+						source={source}
+						pagination={pagination}
+						paginationType={paginationType}
+					/>
+				</>
 			) : (
 				<ManagementOrchestrator
-					source={source}
+					source={simpsons}
 					pagination={pagination}
 					paginationType={paginationType}
 				/>
