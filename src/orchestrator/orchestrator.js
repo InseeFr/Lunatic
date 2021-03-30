@@ -10,7 +10,6 @@ const Orchestrator = ({
 	data,
 	management,
 	filterDescription,
-	paginationType,
 }) => {
 	const {
 		questionnaire,

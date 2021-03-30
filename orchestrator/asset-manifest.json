@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "./static/css/main.4ab26f2d.chunk.css",
-    "main.js": "./static/js/main.a45cc82d.chunk.js",
-    "main.js.map": "./static/js/main.a45cc82d.chunk.js.map",
+    "main.js": "./static/js/main.3a89e5ba.chunk.js",
+    "main.js.map": "./static/js/main.3a89e5ba.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.1a9ea62e.js",
     "runtime-main.js.map": "./static/js/runtime-main.1a9ea62e.js.map",
-    "static/js/2.05e11e17.chunk.js": "./static/js/2.05e11e17.chunk.js",
-    "static/js/2.05e11e17.chunk.js.map": "./static/js/2.05e11e17.chunk.js.map",
+    "static/js/2.31f0f427.chunk.js": "./static/js/2.31f0f427.chunk.js",
+    "static/js/2.31f0f427.chunk.js.map": "./static/js/2.31f0f427.chunk.js.map",
     "index.html": "./index.html",
     "static/css/main.4ab26f2d.chunk.css.map": "./static/css/main.4ab26f2d.chunk.css.map",
-    "static/js/2.05e11e17.chunk.js.LICENSE.txt": "./static/js/2.05e11e17.chunk.js.LICENSE.txt",
+    "static/js/2.31f0f427.chunk.js.LICENSE.txt": "./static/js/2.31f0f427.chunk.js.LICENSE.txt",
     "static/media/lunatic-logo.65dab674.png": "./static/media/lunatic-logo.65dab674.png"
   },
   "entrypoints": [
     "static/js/runtime-main.1a9ea62e.js",
-    "static/js/2.05e11e17.chunk.js",
+    "static/js/2.31f0f427.chunk.js",
     "static/css/main.4ab26f2d.chunk.css",
-    "static/js/main.a45cc82d.chunk.js"
+    "static/js/main.3a89e5ba.chunk.js"
   ]
 }
