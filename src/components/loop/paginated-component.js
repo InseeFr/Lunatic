@@ -132,8 +132,11 @@ const PaginatedLoop = ({
 					: splitRoot.slice(0, -1).join('#');
 			if (splitRoot.length === 1) setPage(`${newRootPage}`);
 			else {
-				const newIteration = parseInt(splitRoot.pop(), 10) + 1;
-				setPage(`${newRootPage}#${newIteration}`);
+				const {
+					currentRootPage: newCurrentRootPage,
+					currentIteration: newCurrentIteration,
+				} = U.splitPage(currentRootPage, depth);
+				setPage(`${newCurrentRootPage}.1#${newCurrentIteration + 1}`);
 			}
 			return null;
 		}
