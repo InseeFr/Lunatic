@@ -78,6 +78,7 @@ const useLunatic = (
 				currentPage: page,
 				features: featuresWithoutMD,
 				flow: FLOW_NEXT,
+				management,
 			});
 			setPage(nextPage);
 		}
@@ -94,6 +95,7 @@ const useLunatic = (
 				currentPage: page,
 				features: featuresWithoutMD,
 				flow: FLOW_PREVIOUS,
+				management,
 			});
 			setPage(previousPage);
 		}

@@ -8,6 +8,7 @@ export const getPage = ({
 	features,
 	depth,
 	flow,
+	management,
 }) => {
 	if (currentPage.includes('#')) {
 		const {
@@ -32,6 +33,7 @@ export const getPage = ({
 			currentPage,
 			features,
 			flow,
+			management,
 		});
 		return `${parseInt(newPage, 10)}`;
 	}
@@ -43,6 +45,7 @@ const getSimpleNewPage = ({
 	currentPage,
 	features,
 	flow,
+	management,
 }) =>
 	(flow === FLOW_PREVIOUS ? components.slice().reverse() : components)
 		.filter(({ page }) => {
@@ -57,6 +60,7 @@ const getSimpleNewPage = ({
 		})
 		.reduce((acc, { conditionFilter, page }) => {
 			if (acc) return acc;
+			if (management) return page;
 			if (
 				!conditionFilter ||
 				interpret(features)(bindings, true)(conditionFilter) === 'normal'
