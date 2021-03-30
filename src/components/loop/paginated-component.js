@@ -92,7 +92,7 @@ const PaginatedLoop = ({
 		currentPageWithoutAnyIteration,
 	} = U.splitPage(currentPage, depth);
 
-	if (depth === currentPage.split('.').length - 1) {
+	if (paginatedLoop && depth === currentPage.split('.').length - 1) {
 		// Previous at first component
 		if (currentComponentIndex < 1) {
 			setPage(`${currentRootPage}.${maxPage}#${currentIteration - 1}`);
@@ -152,11 +152,12 @@ const PaginatedLoop = ({
 			);
 			if (!U.displayLoopQuestion(loopDependencies)(loopBindings)) return acc;
 			const Component = lunatic[componentType];
+
 			if (
 				interpret(featuresWithoutMD)(loopBindings, true)(conditionFilter) !==
 					'normal' ||
 				(pagination && !currentPageWithoutAnyIteration.startsWith(page)) ||
-				rowNumber + 1 !== currentIteration
+				(paginatedLoop && rowNumber + 1 !== currentIteration)
 			)
 				return acc;
 			return [
@@ -180,7 +181,7 @@ const PaginatedLoop = ({
 		[]
 	);
 
-	if (loopComponents.length === 0) {
+	if (paginatedLoop && loopComponents.length === 0) {
 		if (flow === U.FLOW_NEXT) {
 			setPage(
 				`${currentRootPage}.${currentComponentIndex + 1}#${currentIteration}`
