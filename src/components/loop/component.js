@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import * as lunatic from '../components';
-import { buildLoopComponents } from './build-components';
 import { interpret } from '../../utils/to-expose';
 import * as U from '../../utils/lib';
 import './loop.scss';
 
-const Loop = ({
+const PaginatedLoop = ({
 	id,
 	label,
 	iterations,
@@ -13,12 +12,20 @@ const Loop = ({
 	bindings,
 	handleChange,
 	loopDependencies,
+	maxPage,
+	pagination,
+	paginatedLoop,
+	currentPage,
+	setPage,
 	...orchetratorProps
 }) => {
 	const [todo, setTodo] = useState({});
 	const vectorialBindings = U.buildVectorialBindings(bindings);
 	const { features } = orchetratorProps;
-	const iterationNb = interpret(features)(vectorialBindings)(iterations);
+	const featuresWithoutMD = features.filter((f) => f !== 'MD');
+	const iterationNb =
+		parseInt(interpret(featuresWithoutMD)(vectorialBindings)(iterations), 10) ||
+		0;
 	const involvedVariables = U.getInvolvedVariables(components);
 
 	/**
@@ -56,18 +63,19 @@ const Loop = ({
 		}
 	}, [bindings, todo, handleChange]);
 
-	const flattenComponents = buildLoopComponents(iterationNb)(components);
-
-	if (!U.displayLoop(loopDependencies)(bindings)) return null;
+	const flattenComponents = U.buildLoopComponents(iterationNb)(components);
 
 	const loopComponents = flattenComponents.map(
-		({ componentType, id: idC, rowNumber, conditionFilter, ...rest }) => {
+		({ componentType, id: idC, rowNumber, conditionFilter, page, ...rest }) => {
 			const loopBindings = U.buildBindingsForDeeperComponents(rowNumber)(
 				bindings
 			);
 			if (!U.displayLoopQuestion(loopDependencies)(loopBindings)) return null;
 			const Component = lunatic[componentType];
-			if (interpret(features)(loopBindings, true)(conditionFilter) !== 'normal')
+			if (
+				interpret(featuresWithoutMD)(loopBindings, true)(conditionFilter) !==
+				'normal'
+			)
 				return null;
 			return (
 				<div key={`${idC}-loop-${rowNumber}`} className="loop-component">
@@ -91,4 +99,4 @@ const Loop = ({
 	);
 };
 
-export default React.memo(Loop, U.areEqual);
+export default React.memo(PaginatedLoop, U.areEqual);

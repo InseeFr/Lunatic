@@ -6,6 +6,7 @@ import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import dataRoster from './data-roster';
 import dataLoop from './data-loop';
+import dataInput from './data-input';
 import { positioningOptions } from '../utils/options';
 import { select } from '@storybook/addon-knobs/react';
 
@@ -36,6 +37,22 @@ storiesBlock.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={dataLoop}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		features={['VTL']}
+	/>
+));
+
+const storiesInput = storiesOf('LoopConstructor/Input', module)
+	.addDecorator(withReadme(readme))
+	.addDecorator((Component) => {
+		const WrappedComponent = titleDecorator(Component);
+		return <WrappedComponent title="Loop" />;
+	});
+
+storiesInput.addWithJSX('Default', () => (
+	<Orchestrator
+		id="default"
+		source={dataInput}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
