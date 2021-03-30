@@ -49,13 +49,14 @@ const useLunatic = (
 		features = ['VTL'],
 		management = false,
 		pagination = false,
+		initialPage = '1',
 	}
 ) => {
 	const [questionnaire, setQuestionnaire] = useState(
 		mergeQuestionnaireAndData(source)(data || {})
 	);
 	const [todo, setTodo] = useState({});
-	const [page, setPage] = useState('1');
+	const [page, setPage] = useState(initialPage);
 	const [flow, setFlow] = useState(FLOW_NEXT);
 
 	// TODO: dynamic because of filters (kind of last accessible page)
