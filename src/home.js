@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './img/lunatic-logo.png';
 import Mode from './mode';
-import { CollectOrchestrator, ManagementOrchestrator } from './orchestrator';
+import { CollectOrchestrator } from './orchestrator';
 import * as S from './sources';
 import { dependencies } from '../package.json';
 
