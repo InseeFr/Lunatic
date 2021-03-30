@@ -1,18 +1,19 @@
 import React from 'react';
 import Orchestrator from './orchestrator';
-import simpsons from './simpsons';
 import data from './data';
 
-const Collect = () => {
+const Collect = ({ source, pagination, paginationType }) => {
 	const { COLLECTED, ...dataForCollect } = data;
 	return (
 		<Orchestrator
 			savingType={'COLLECTED'}
 			preferences={['COLLECTED']}
 			features={['VTL']}
-			source={simpsons}
+			source={source}
 			data={dataForCollect}
 			tooltip={false}
+			pagination={pagination}
+			paginationType={paginationType}
 			writable
 		/>
 	);
