@@ -1,6 +1,7 @@
-.radio-group {
+.radio-group-list {
 	border: 0;
 	outline: 0;
+	padding: 0;
 	margin-top: 0.9375rem;
 }
 
@@ -14,15 +15,43 @@
 	width: 20px;
 	+ label {
 		margin-left: 2rem;
-		margin-top: 2rem;
 	}
 	&:focus {
 		+ label {
 			background-color: rgba(0, 0, 0, 0.05);
 		}
 	}
+	+ label::before {
+		float: left;
+		line-height: 2rem;
+	}
+}
+
+.field,
+.field-with-tooltip {
+	.radio-group-list .radio-modality {
+		height: 1.375em;
+	}
+}
+
+.radio-group-list {
+	.radio-modality {
+		label {
+			display: flex;
+		}
+	}
+	.radio-modality.radio-modality-block label {
+		padding-top: 0.325em;
+	}
+	.radio-modality.radio-modality-block.horizontal-options label {
+		padding-top: 0;
+	}
 }
 
 .radio-modality {
-	margin-bottom: 0.8rem;
+	margin-bottom: 0.8em;
+}
+
+.radio-lunatic + label {
+	margin-top: 0.325em;
 }

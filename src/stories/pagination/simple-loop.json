@@ -1,4 +1,5 @@
 {
+	"maxPage": "5",
 	"components": [
 		{
 			"id": "k3ym61vf",
@@ -54,8 +55,10 @@
 			"iterations": "count(PRENOM)",
 			"conditionFilter": "\"normal\"",
 			"loopDependencies": ["PRENOM", "AGE"],
-			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE"],
+			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE", "YEAR"],
 			"page": "2",
+			"maxPage": "3",
+			"paginatedLoop": true,
 			"components": [
 				{
 					"id": "k3ymch91",
@@ -82,6 +85,18 @@
 					"page": "2.1"
 				},
 				{
+					"id": "year",
+					"componentType": "InputNumber",
+					"mandatory": false,
+					"label": "PRENOM || \", depuis quelle année êtes-vous propriétaire du logement ?\"",
+					"conditionFilter": "if(cast(PROPRIO, integer) = 1) then \"normal\" else \"hidden\"",
+					"bindingDependencies": ["PRENOM", "YEAR"],
+					"response": {
+						"name": "YEAR"
+					},
+					"page": "2.2"
+				},
+				{
 					"id": "k3ym6x16",
 					"label": "Quel est votre temps de trajet domicile-travail ?",
 					"componentType": "InputNumber",
@@ -95,7 +110,7 @@
 					"response": {
 						"name": "TPSTRAJET"
 					},
-					"page": "2.2"
+					"page": "2.3"
 				}
 			]
 		},
@@ -121,6 +136,22 @@
 				{ "value": "1", "label": "Oui" },
 				{ "value": "2", "label": "Non" }
 			],
+			"page": "3"
+		},
+
+		{
+			"id": "k3ym6x17",
+			"label": "Quelle note metteriez-vous au confort de votre logement ?",
+			"componentType": "InputNumber",
+			"conditionFilter": "if(cast(CONFORT,string) = \"2\") then \"normal\" else \"hidden\"",
+			"mandatory": false,
+			"bindingDependencies": ["NOTECONFORT"],
+			"min": 0,
+			"max": 10,
+			"decimals": 0,
+			"response": {
+				"name": "NOTECONFORT"
+			},
 			"page": "4"
 		},
 		{
@@ -179,6 +210,18 @@
 		},
 		{
 			"variableType": "COLLECTED",
+			"name": "YEAR",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
 			"name": "TPSTRAJET",
 			"componentRef": "idLoop",
 			"values": {
@@ -205,6 +248,18 @@
 			"variableType": "COLLECTED",
 			"name": "SUPERFICIE",
 			"componentRef": "k3ymkpj2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NOTECONFORT",
+			"componentRef": "k3ym6x17",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,

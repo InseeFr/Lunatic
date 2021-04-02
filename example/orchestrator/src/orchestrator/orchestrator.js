@@ -6,6 +6,7 @@ const Orchestrator = ({
 	preferences,
 	source,
 	features,
+	pagination = false,
 	data,
 	management,
 	filterDescription,
@@ -15,12 +16,25 @@ const Orchestrator = ({
 		components,
 		handleChange,
 		bindings,
+		pagination: {
+			goNext,
+			goPrevious,
+			page,
+			setPage,
+			maxPage,
+			isFirstPage,
+			isLastPage,
+			flow,
+		},
 	} = lunatic.useLunatic(source, data, {
 		savingType,
 		preferences,
 		features,
 		management,
+		pagination,
 	});
+
+	const Button = lunatic.Button;
 
 	console.log(lunatic.getCollectedState(questionnaire));
 
@@ -42,12 +56,35 @@ const Orchestrator = ({
 								features={features}
 								bindings={bindings}
 								writable
-								zIndex={1}
+								currentPage={page}
+								setPage={setPage}
+								flow={flow}
+								pagination={pagination}
 							/>
 						</div>
 					);
 				})}
 			</div>
+			{pagination && (
+				<>
+					<div className="pagination">
+						<Button
+							onClick={goPrevious}
+							disabled={isFirstPage}
+							value="Previous"
+						/>
+						<Button onClick={goNext} disabled={isLastPage} value="Next" />
+						<div className="btn-page-init">
+							<Button
+								onClick={() => setPage('1')}
+								disabled={isFirstPage}
+								value="Page 1"
+							/>
+						</div>
+					</div>
+					<div>{`Page : ${page}/${maxPage}`}</div>
+				</>
+			)}
 		</div>
 	);
 };

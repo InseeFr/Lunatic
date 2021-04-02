@@ -4,12 +4,17 @@ const isResponseEmpty = (response) =>
 export const getRosterInitLines = (cells) =>
 	Array.isArray(cells)
 		? cells
+				.filter(
+					(line) =>
+						line.filter(({ response }) => !response).length !== line.length
+				)
 				.reduce(
 					(_, line) => [
 						..._,
-						line.reduce((__, component) => {
-							if (!component.response || __) return __;
-							return !isResponseEmpty(component.response);
+						line.reduce((__, { response, label }) => {
+							if (label) return true;
+							if (__ || !response) return __;
+							return !isResponseEmpty(response);
 						}, false),
 					],
 					[]

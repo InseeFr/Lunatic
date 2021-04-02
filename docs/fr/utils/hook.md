@@ -42,6 +42,8 @@ Les clés suivantes sont prises en compte :
 | preferences | arrayOf(String) |   ['COLLECTED']   |
 |  features   | arrayOf(String) |      ['VTL']      |
 | management  |     boolean     |       false       |
+| pagination  |     boolean     |       false       |
+| initialPage |     string      |        '1'        |
 
 #### Retour
 
@@ -53,6 +55,22 @@ Les clés suivantes sont prises en compte :
 
 `bindings` (`object`) : clés / valeurs des variables du questionnaire, à passer en props du questionnaire.
 
-#### Exemple
+`pagination` (`object`) :
 
-Un exemple d'utilisation de `useLunatic` est proposé dans la rubrique [Utilisation](../usage.md) de la documentation.
+Attributs de l'objet `pagination`:
+
+|     Clé     |                Type                |
+| :---------: | :--------------------------------: |
+|   goNext    |              function              |
+| goPrevious  |              function              |
+|    page     |               string               |
+|   setPage   |              function              |
+|   maxPage   |               string               |
+| isFirstPage |              boolean               |
+| isLastPage  |              boolean               |
+|    flow     | oneOf['FLOW_NEXT','FLOW_PREVIOUS'] |
+
+#### Exemples
+
+- Un exemple d'utilisation de `useLunatic` est proposé dans la rubrique [Utilisation](../usage.md) de la documentation.
+- Un exemple d'utilisation de `useLunatic` **avec pagination** est proposé dans la rubrique [Utilisation](../pagination.md) de la documentation.

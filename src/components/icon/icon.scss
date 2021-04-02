@@ -1,3 +1,9 @@
+.list-icon-wrapper {
+	&:focus-within svg {
+		fill: var(--color-primary-dark);
+	}
+}
+
 .list-icon {
 	position: absolute;
 	margin-top: -0.1rem;

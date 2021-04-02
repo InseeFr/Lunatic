@@ -8,10 +8,12 @@
 			"label": "➡ 1. Please, complete the following grid with your favourite characters",
 			"cells": [
 				[
+					{ "headerCell": true, "label": "Id" },
 					{ "headerCell": true, "label": "Name" },
 					{ "headerCell": true, "label": "Age" }
 				],
 				[
+					{ "headerCell": true, "label": "1" },
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
@@ -32,6 +34,7 @@
 					}
 				],
 				[
+					{ "headerCell": true, "label": "2" },
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
@@ -52,6 +55,7 @@
 					}
 				],
 				[
+					{ "headerCell": true, "label": "3" },
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
@@ -72,6 +76,7 @@
 					}
 				],
 				[
+					{ "headerCell": true, "label": "" },
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
@@ -92,6 +97,7 @@
 					}
 				],
 				[
+					{ "headerCell": true, "label": "" },
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
@@ -112,6 +118,7 @@
 					}
 				],
 				[
+					{ "headerCell": true, "label": "" },
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
@@ -132,6 +139,7 @@
 					}
 				],
 				[
+					{ "headerCell": true, "label": "" },
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
@@ -152,6 +160,7 @@
 					}
 				],
 				[
+					{ "headerCell": true, "label": "" },
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
@@ -172,6 +181,7 @@
 					}
 				],
 				[
+					{ "headerCell": true, "label": "" },
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",
@@ -192,6 +202,7 @@
 					}
 				],
 				[
+					{ "headerCell": true, "label": "" },
 					{
 						"componentType": "Textarea",
 						"maxLength": "255",

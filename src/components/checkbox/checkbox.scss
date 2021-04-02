@@ -1,12 +1,12 @@
-.checkbox-group {
+.checkbox-group,
+.checkbox-group-list {
 	border: 0;
 	outline: 0;
-	margin-top: 0.9375rem;
+	padding: 0;
 }
 
 .checkbox-lunatic,
-.checkbox-boolean-lunatic,
-.checkbox-lunatic-no-margin {
+.checkbox-boolean-lunatic {
 	position: absolute;
 	opacity: 0;
 	margin-bottom: 0;
@@ -16,7 +16,6 @@
 	width: 18px;
 	+ label {
 		margin-left: 2rem;
-		margin-top: 2rem;
 	}
 	&:focus {
 		+ label {
@@ -31,7 +30,33 @@
 
 .checkbox-modality,
 .checkbox-boolean-modality {
-	margin-bottom: 0.8rem;
+	margin-bottom: 0.6rem;
+}
+
+.field,
+.field-with-tooltip {
+	.checkbox-group-list .checkbox-modality {
+		height: 1.375em;
+	}
+}
+
+.checkbox-group,
+.checkbox-group-list {
+	.checkbox-modality {
+		label {
+			display: flex;
+		}
+	}
+	.checkbox-modality.checkbox-modality-block label {
+		padding-top: 0.325em;
+	}
+	.checkbox-modality.checkbox-modality-block.horizontal-options label {
+		padding-top: 0;
+	}
+}
+
+.checkbox-lunatic + label {
+	margin-top: 0.325em;
 }
 
 .checkbox-alone {

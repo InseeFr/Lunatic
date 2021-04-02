@@ -17,7 +17,7 @@ const Link = (props) => {
 				data-tip={title}
 				data-event="click focus"
 				data-multiline
-				className="field"
+				className="field-md"
 			>
 				{children}
 			</span>

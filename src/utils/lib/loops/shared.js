@@ -36,8 +36,8 @@ export const lastLoopChildLineIsEmpty = (bindings) => (involvedVariables) =>
 		: true;
 
 export const buildEmptyValue = (depth) => {
-	if (!depth || depth === 1) return null;
-	return new Array(depth - 1)
+	if (!depth || depth === 1 || depth === 2) return null;
+	return new Array(depth - 2)
 		.fill(null)
 		.reduce((acc) => new Array(1).fill(acc), null);
 };

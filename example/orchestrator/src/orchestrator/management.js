@@ -1,15 +1,15 @@
 import React from 'react';
 import Orchestrator from './orchestrator';
-import simpsons from './simpsons';
 import data from './data';
 
-const Management = () => (
+const Management = ({ source, pagination }) => (
 	<Orchestrator
 		savingType={'EDITED'}
 		preferences={['COLLECTED', 'FORCED', 'EDITED']}
-		source={simpsons}
+		source={source}
 		features={['VTL']}
 		data={data}
+		pagination={pagination}
 		management
 		filterDescription
 		writable

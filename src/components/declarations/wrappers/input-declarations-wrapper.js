@@ -27,11 +27,22 @@ const InputDeclarationsWrapper = ({
 	style,
 	type,
 	roleType,
+	min,
+	max,
+	decimals,
+	unit,
+	unitPosition,
+	validators,
+	isInputNumber,
 }) => {
 	const inputRef = useRef();
 
 	const [value, setValue] = useState(() =>
 		U.getResponseByPreference(preferences)(response)
+	);
+
+	const [messagesError, setMessagesError] = useState(
+		validators.map((v) => v(value)).filter((m) => m !== undefined)
 	);
 
 	useEffect(() => {
@@ -45,6 +56,20 @@ const InputDeclarationsWrapper = ({
 			setValue(U.getResponseByPreference(preferences)(response));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [response, preferences]);
+
+	const validate = (v) => {
+		setMessagesError(
+			validators.map((f) => f(v)).filter((m) => m !== undefined)
+		);
+	};
+
+	useEffect(() => {
+		if (isInputNumber) {
+			setMessagesError(
+				validators.map((v) => v(value)).filter((m) => m !== undefined)
+			);
+		}
+	}, [value, min, max, validators, isInputNumber]);
 
 	const handleChangeOnBlur = () => {
 		handleChange({
@@ -71,6 +96,11 @@ const InputDeclarationsWrapper = ({
 						className={`${mandatory ? 'mandatory' : ''}`}
 					>
 						{interpret(features)(bindings)(label)}
+						{isInputNumber &&
+							unit &&
+							['DEFAULT', 'BEFORE'].includes(unitPosition) && (
+								<span className="unit">{` (${unit})`}</span>
+							)}
 					</label>
 				)}
 				<Declarations
@@ -87,9 +117,14 @@ const InputDeclarationsWrapper = ({
 							id={`${roleType}-${id}`}
 							ref={inputRef}
 							value={value || ''}
+							min={min}
+							max={max}
+							step={decimals ? `${Math.pow(10, -decimals)}` : '0'}
 							placeholder={placeholder}
 							autoComplete={autoComplete ? 'on' : 'off'}
-							className={`${roleType}-lunatic`}
+							className={`${roleType}-lunatic ${
+								isInputNumber && messagesError.length > 0 ? 'warning' : ''
+							}`}
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
 							disabled={disabled}
@@ -97,11 +132,15 @@ const InputDeclarationsWrapper = ({
 							required={mandatory}
 							aria-required={mandatory}
 							onChange={({ target: { value: v } }) => {
+								if (isInputNumber) validate(v);
 								if (management) setValue(v);
 								else setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
 						/>
+						{isInputNumber && unit && unitPosition === 'AFTER' && (
+							<span className="unit">{unit}</span>
+						)}
 					</div>
 					{management && (
 						<div className="tooltip">
@@ -112,6 +151,15 @@ const InputDeclarationsWrapper = ({
 						</div>
 					)}
 				</div>
+				{isInputNumber && (
+					<div className="lunatic-input-number-errors">
+						{messagesError.map((m, i) => (
+							<div key={i} className="error">
+								{m}
+							</div>
+						))}
+					</div>
+				)}
 			</div>
 			<Declarations
 				id={id}
@@ -140,6 +188,8 @@ InputDeclarationsWrapper.defaultProps = {
 	bindings: {},
 	management: false,
 	style: {},
+	validators: [],
+	isInputNumber: false,
 };
 
 InputDeclarationsWrapper.propTypes = {
@@ -147,6 +197,9 @@ InputDeclarationsWrapper.propTypes = {
 	label: PropTypes.string,
 	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
 	response: U.responsePropTypes,
+	min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	decimals: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	placeholder: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	readOnly: PropTypes.bool,
@@ -154,6 +207,7 @@ InputDeclarationsWrapper.propTypes = {
 	maxLength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	autoComplete: PropTypes.bool,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
+	unitPosition: PropTypes.oneOf(['DEFAULT', 'BEFORE', 'AFTER']),
 	mandatory: PropTypes.bool,
 	focused: PropTypes.bool,
 	declarations: U.declarationsPropTypes,
@@ -161,8 +215,15 @@ InputDeclarationsWrapper.propTypes = {
 	bindings: PropTypes.object,
 	management: PropTypes.bool,
 	style: PropTypes.object,
-	type: PropTypes.oneOf(['text', 'date', null]),
-	roleType: PropTypes.oneOf(['input', 'datepicker', 'textarea']),
+	type: PropTypes.oneOf(['text', 'date', 'number', null]),
+	roleType: PropTypes.oneOf([
+		'input',
+		'datepicker',
+		'input-number',
+		'textarea',
+	]),
+	validators: PropTypes.arrayOf(PropTypes.func),
+	isInputNumber: PropTypes.bool,
 };
 
 export default InputDeclarationsWrapper;

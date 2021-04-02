@@ -7,15 +7,13 @@
 	th {
 		border: 0.15em solid var(--color-primary-dark);
 		padding: 0.2em;
-		fieldset {
-			margin: none;
-			border: none;
-			.radio-modality {
-				margin-top: 0;
-			}
-			.checkbox-modality {
-				margin-top: 0;
-			}
+	}
+	& td {
+		.field,
+		.field-with-tooltip {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 }
