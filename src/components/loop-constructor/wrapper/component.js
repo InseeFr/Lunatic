@@ -49,7 +49,7 @@ const LoopConstructorWrapper = ({
 		const toHandle = involvedVariables.reduce(
 			(acc, { name: iv, depth }) => ({
 				...acc,
-				[iv]: [...bindings[iv], U.buildEmptyValue(depth)],
+				[iv]: [...bindings[iv], null],
 			}),
 			{}
 		);

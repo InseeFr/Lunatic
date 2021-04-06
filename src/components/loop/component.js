@@ -4,7 +4,7 @@ import { interpret } from '../../utils/to-expose';
 import * as U from '../../utils/lib';
 import './loop.scss';
 
-const PaginatedLoop = ({
+const Loop = ({
 	id,
 	label,
 	iterations,
@@ -17,6 +17,7 @@ const PaginatedLoop = ({
 	paginatedLoop,
 	currentPage,
 	setPage,
+	depth: loopDepth,
 	...orchetratorProps
 }) => {
 	const [todo, setTodo] = useState({});
@@ -40,7 +41,7 @@ const PaginatedLoop = ({
 					[iv]: [
 						...bindings[iv],
 						...new Array(iterationNb - bindings[iv].length).fill(
-							U.buildEmptyValue(depth)
+							U.buildEmptyValue(depth - loopDepth + 1)
 						),
 					],
 				};
@@ -53,12 +54,14 @@ const PaginatedLoop = ({
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
 			const { up, rowNumber } = todo;
-			const [key, value] = Object.entries(up)[0];
-			const previousValue = bindings[key];
-			const newValue = previousValue.map((v, i) =>
-				i === rowNumber ? value : v
-			);
-			handleChange({ [key]: newValue });
+			const todos = Object.entries(up).reduce((acc, [k, value], i) => {
+				const previousValue = bindings[k];
+				const newValue = previousValue.map((v, i) =>
+					i === rowNumber ? value : v
+				);
+				return { ...acc, [k]: newValue };
+			}, {});
+			handleChange(todos);
 			setTodo({});
 		}
 	}, [bindings, todo, handleChange]);
@@ -99,4 +102,4 @@ const PaginatedLoop = ({
 	);
 };
 
-export default React.memo(PaginatedLoop, U.areEqual);
+export default React.memo(Loop, U.areEqual);
