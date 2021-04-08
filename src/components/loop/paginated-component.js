@@ -18,7 +18,7 @@ const PaginatedLoop = ({
 	currentPage,
 	setPage,
 	flow,
-	depth,
+	depth: loopDepth,
 	...orchetratorProps
 }) => {
 	const [todo, setTodo] = useState({});
@@ -55,12 +55,14 @@ const PaginatedLoop = ({
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
 			const { up, rowNumber } = todo;
-			const [key, value] = Object.entries(up)[0];
-			const previousValue = bindings[key];
-			const newValue = previousValue.map((v, i) =>
-				i === rowNumber ? value : v
-			);
-			handleChange({ [key]: newValue });
+			const todos = Object.entries(up).reduce((acc, [k, value], i) => {
+				const previousValue = bindings[k];
+				const newValue = previousValue.map((v, i) =>
+					i === rowNumber ? value : v
+				);
+				return { ...acc, [k]: newValue };
+			}, {});
+			handleChange(todos);
 			setTodo({});
 		}
 	}, [bindings, todo, handleChange]);
@@ -69,7 +71,7 @@ const PaginatedLoop = ({
 	 * Handle init page
 	 */
 
-	if (paginatedLoop && depth > currentPage.split('.').length - 1) {
+	if (paginatedLoop && loopDepth > currentPage.split('.').length - 1) {
 		if (flow === U.FLOW_NEXT) {
 			setPage(`${currentPage}.1#1`);
 		} else if (flow === U.FLOW_PREVIOUS) {
@@ -89,9 +91,9 @@ const PaginatedLoop = ({
 		currentComponentIndex,
 		currentIteration,
 		currentPageWithoutAnyIteration,
-	} = U.splitPage(currentPage, depth);
+	} = U.splitPage(currentPage, loopDepth);
 
-	if (paginatedLoop && depth === currentPage.split('.').length - 1) {
+	if (paginatedLoop && loopDepth === currentPage.split('.').length - 1) {
 		// Previous at first component
 		if (currentComponentIndex < 1) {
 			setPage(`${currentRootPage}.${maxPage}#${currentIteration - 1}`);
@@ -134,15 +136,12 @@ const PaginatedLoop = ({
 				const {
 					currentRootPage: newCurrentRootPage,
 					currentIteration: newCurrentIteration,
-				} = U.splitPage(currentRootPage, depth);
+				} = U.splitPage(currentRootPage, loopDepth);
 				setPage(`${newCurrentRootPage}.1#${newCurrentIteration + 1}`);
 			}
 			return null;
 		}
 	}
-
-	//2.2#1.3#1.1#2
-	//2.2#2
 
 	const loopComponents = flattenComponents.reduce(
 		(
