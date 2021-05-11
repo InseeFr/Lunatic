@@ -1339,10 +1339,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.2.3.tgz#bb46d0fe7645eef00e4344193460ed279b0cec11"
-  integrity sha512-fuNtl51Rmbk//1zCalSQeusnI6p0DfgH9Ze4fjHIDewpcNTvaORMx2hB9mtC9ZTKE2OiA4+oPkiy0oUCEALmxA==
+"@inseefr/lunatic@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.2.4.tgz#3ed286fee0aa441f8324351b9ae73215aefa4acd"
+  integrity sha512-AJl7xGk05xdd+enLRM2wGkx4liinEkd44Mfk93aPZdO4iHCt5fYMadA9D16jXt7nOdRUC9lAZj0jrrjtgUL07g==
   dependencies:
     "@inseefr/vtl-2.1-engine" "^0.1.9"
     lodash.camelcase "^4.3.0"
