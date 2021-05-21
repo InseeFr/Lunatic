@@ -1339,12 +1339,12 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.2.4.tgz#3ed286fee0aa441f8324351b9ae73215aefa4acd"
-  integrity sha512-AJl7xGk05xdd+enLRM2wGkx4liinEkd44Mfk93aPZdO4iHCt5fYMadA9D16jXt7nOdRUC9lAZj0jrrjtgUL07g==
+"@inseefr/lunatic@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-2.3.1.tgz#103bea6eb05ad864ce106daf21fd5e4516f405d2"
+  integrity sha512-eEMcPzTITZDAheso4lrgKSBkFOUI7pdfcmYnKRQ/v+0lkUV1O6ySUdEUiWFHwWJNcjrhf82L98FqgBIANGMktg==
   dependencies:
-    "@inseefr/vtl-2.1-engine" "^0.1.9"
+    "@inseefr/trevas" "^0.1.0"
     lodash.camelcase "^4.3.0"
     lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"
@@ -1354,22 +1354,22 @@
     remove-accents "^0.4.2"
     sass "^1.32.2"
 
-"@inseefr/vtl-2.1-antlr-tools@1.0.0-rc2":
-  version "1.0.0-rc2"
-  resolved "https://registry.yarnpkg.com/@inseefr/vtl-2.1-antlr-tools/-/vtl-2.1-antlr-tools-1.0.0-rc2.tgz#e68c18eded42868be5c0c1f06a77937df9db574d"
-  integrity sha512-8a7CfHarg6ojRLfcEZ9sekRjJeMH1r0kFORNWnbiANznHPxkBg1S7lQkvMKK6cXTC3s+SJr9DuYwIcj+P0/z+A==
+"@inseefr/trevas@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.0.tgz#66ff459302857d41d2c3afb19454d095b97d715a"
+  integrity sha512-J5EP/371sF9M4NVSppDgoRSNe8kher9MJbuwecs2RVh+P7+4mNUm5fmWTk5mrtcR1DZp1tm+fEcxJgDkeBD+hw==
   dependencies:
-    antlr4 "4.8.0"
-
-"@inseefr/vtl-2.1-engine@^0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@inseefr/vtl-2.1-engine/-/vtl-2.1-engine-0.1.9.tgz#885efd3278ded5d4ed9d0102cdd13e87f47fa238"
-  integrity sha512-vtzG+v+QxM+r5ZlFyDefM4oqshgJj8InC6CRylfYgYvCLyJL5DxZ+I0RouTNrj8bxE6CfN5BqZhsfLRyzgH5Kw==
-  dependencies:
-    "@inseefr/vtl-2.1-antlr-tools" "1.0.0-rc2"
+    "@inseefr/vtl-2.0-antlr-tools" "0.1.0"
     antlr4 "4.8.0"
     data-forge "^1.8.8"
     moment "^2.26.0"
+
+"@inseefr/vtl-2.0-antlr-tools@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@inseefr/vtl-2.0-antlr-tools/-/vtl-2.0-antlr-tools-0.1.0.tgz#5c2d13621b4cab0a092b45d9edd64d8062f348d9"
+  integrity sha512-VgNDBE9dqtPFnlk8nCcFD0/dEcuzlhUd5RWsf+dlRsbjSb2wZZhwL8BKCopfLWKLSkTdPyRaosIVL1neiOAB2A==
+  dependencies:
+    antlr4 "4.8.0"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
