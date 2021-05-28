@@ -1,4 +1,4 @@
-name: Trevas JS CI
+name: Lunatic CI
 
 on: [push]
 
@@ -86,8 +86,8 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: deploy
-          path: deploy/  
-                
+          path: deploy/
+
   deploy:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
