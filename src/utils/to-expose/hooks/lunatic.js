@@ -1,44 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { interpret } from './interpret';
-import { mergeQuestionnaireAndData } from './init-questionnaire';
-import { getBindings } from './state';
-import { updateQuestionnaire } from './handler';
-import { getPage, FLOW_NEXT, FLOW_PREVIOUS } from '../lib';
-import { COLLECTED } from '../../constants';
-
-const customFilterPagination = ({ page }, pagination, currentPage) => {
-	return pagination ? currentPage.split('.')[0] === page : true;
-};
-
-const filterComponents = (
-	components,
-	management,
-	bindings,
-	features,
-	currentPage,
-	pagination
-) => {
-	if (management && !pagination) return components;
-	if (management && pagination)
-		return components.filter((c) =>
-			customFilterPagination(c, pagination, currentPage)
-		);
-
-	if (!pagination) {
-		const filtered = components.filter(({ conditionFilter }) => {
-			if (!conditionFilter) return true;
-			const inter = interpret(features)(bindings)(conditionFilter);
-			return inter;
-		});
-		return filtered;
-	}
-	return components
-		.filter((c) => customFilterPagination(c, pagination, currentPage))
-		.filter(({ conditionFilter }) => {
-			if (!conditionFilter) return true;
-			return interpret(features)(bindings)(conditionFilter);
-		});
-};
+import { mergeQuestionnaireAndData } from '../init-questionnaire';
+import { getBindings } from '../state';
+import { updateQuestionnaire } from '../handler';
+import { getPage, FLOW_NEXT, FLOW_PREVIOUS } from '../../lib';
+import { COLLECTED } from '../../../constants';
+import { useFilterComponents } from './filter-components';
 
 const useLunatic = (
 	source,
@@ -58,16 +24,25 @@ const useLunatic = (
 	);
 	const bindings = getBindings(questionnaire);
 	const [page, setPage] = useState(initialPage);
-	const [components, setComponents] = useState(() =>
-		filterComponents(
-			questionnaire.components,
-			management,
-			bindings,
-			featuresWithoutMD,
-			page,
-			pagination
-		)
-	);
+	// const [components, setComponents] = useState(() =>
+	// 	filterComponents(
+	// 		questionnaire.components,
+	// 		management,
+	// 		bindings,
+	// 		featuresWithoutMD,
+	// 		page,
+	// 		pagination
+	// 	)
+	// );
+	const { components } = useFilterComponents({
+		questionnaire,
+		management,
+		bindings,
+		features: featuresWithoutMD,
+		page,
+		pagination,
+	});
+
 	const [todo, setTodo] = useState({});
 	const [flow, setFlow] = useState(FLOW_NEXT);
 
@@ -130,19 +105,19 @@ const useLunatic = (
 		}
 	}, [todo, preferences, questionnaire, savingType, features, management]);
 
-	useEffect(() => {
-		const c = filterComponents(
-			questionnaire.components,
-			management,
-			bindings,
-			featuresWithoutMD,
-			page,
-			pagination
-		);
-		setComponents(c);
-		// Assume we only want to filter after questionnaire update
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [questionnaire]);
+	// useEffect(() => {
+	// 	const c = filterComponents(
+	// 		questionnaire.components,
+	// 		management,
+	// 		bindings,
+	// 		featuresWithoutMD,
+	// 		page,
+	// 		pagination
+	// 	);
+	// 	setComponents(c);
+	// 	// Assume we only want to filter after questionnaire update
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [questionnaire]);
 
 	return {
 		questionnaire,
