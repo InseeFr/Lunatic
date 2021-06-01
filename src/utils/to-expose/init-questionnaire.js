@@ -92,25 +92,30 @@ export const buildComponentsComponent = (vars) => (component) => {
 	return { ...rest, depth, components: filledComponents };
 };
 
-const initExternalVariable = ({ name }) => (data) => ({
-	[name]: (data && data.EXTERNAL && data.EXTERNAL[name]) || null,
-});
+const initExternalVariable =
+	({ name }) =>
+	(data) => ({
+		[name]: (data && data.EXTERNAL && data.EXTERNAL[name]) || null,
+	});
 
-const initCalculatedVariable = ({ name, expression }) => (data) => {
-	const bindings = Object.entries(data).reduce(
-		(acc, [key, value]) => ({
-			...acc,
-			[key]:
-				typeof value === 'string' || value === null
-					? value
-					: value.values[C.COLLECTED],
-		}),
-		{}
-	);
-	return {
-		[name]: {
-			expression,
-			value: interpret(['VTL'])(bindings)(expression),
-		},
+const initCalculatedVariable =
+	({ name, expression, bindingDependencies }) =>
+	(data) => {
+		const bindings = Object.entries(data).reduce(
+			(acc, [key, value]) => ({
+				...acc,
+				[key]:
+					typeof value === 'string' || value === null
+						? value
+						: value.values[C.COLLECTED],
+			}),
+			{}
+		);
+		return {
+			[name]: {
+				expression,
+				bindingDependencies,
+				value: interpret(['VTL'])(bindings)(expression),
+			},
+		};
 	};
-};
