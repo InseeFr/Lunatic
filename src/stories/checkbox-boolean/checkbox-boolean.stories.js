@@ -21,7 +21,7 @@ stories.addWithJSX('Props', () => (
 	<Orchestrator
 		source={data}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		features={select('Features', featuresOptions, [])}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { test: 'test' })}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}

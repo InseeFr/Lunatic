@@ -22,7 +22,7 @@ stories.addWithJSX('Props', () => (
 	<Subsequence
 		id="props"
 		label={text('Label', '"Label of my subsequence: " || test')}
-		features={select('Features', featuresOptions, [])}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { test: 'test' })}
 	/>
 ));
