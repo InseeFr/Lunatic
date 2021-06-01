@@ -1,5 +1,4 @@
 import { interpret } from 'utils/to-expose/interpret';
-import { replaceNullBindings } from 'utils/to-expose/interpret/vtl';
 
 describe('interpret', () => {
 	describe('interpretVTL', () => {
@@ -19,7 +18,7 @@ describe('interpret', () => {
 		});
 		it('should return VTL interpreted label with default value', () => {
 			expect(interpret(['VTL'])({ NAME: null })('"Hello " || NAME')).toEqual(
-				'Hello NAME'
+				'Hello null'
 			);
 		});
 	});
@@ -43,24 +42,7 @@ describe('interpret', () => {
 			expect(
 				interpret(['VTL', 'MD'])({ NAME: null })('"Hello " || NAME').props
 					.source
-			).toEqual('Hello NAME');
-		});
-	});
-	describe('replaceNullBindings', () => {
-		it('should return empty object', () => {
-			expect(replaceNullBindings()).toEqual({});
-		});
-		it('should return empty object', () => {
-			expect(replaceNullBindings({})).toEqual({});
-		});
-		it('should return the same object', () => {
-			const bindings = { NAME: 'toto' };
-			expect(replaceNullBindings(bindings)).toEqual(bindings);
-		});
-		it('should return replaced object', () => {
-			const bindings = { NAME: 'toto', AGE: null };
-			const res = { NAME: 'toto', AGE: 'AGE' };
-			expect(replaceNullBindings(bindings)).toEqual(res);
+			).toEqual('Hello null');
 		});
 	});
 });
