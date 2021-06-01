@@ -24,25 +24,20 @@ const filterComponents = (
 			customFilterPagination(c, pagination, currentPage)
 		);
 
-	if (!pagination)
-		return components.filter(
-			({ conditionFilter }) =>
-				!conditionFilter ||
-				interpret(features)(bindings, true)(conditionFilter) === 'normal'
-		);
-
+	if (!pagination) {
 		const filtered = components.filter(({ conditionFilter }) => {
 			if (!conditionFilter) return true;
-			const inter = interpret(features)(bindings, true)(conditionFilter);
+			const inter = interpret(features)(bindings)(conditionFilter);
 			return inter;
 		});
 		return filtered;
+	}
 	return components
 		.filter((c) => customFilterPagination(c, pagination, currentPage))
-		.filter(
-			({ conditionFilter }) =>
-				!conditionFilter || interpret(features)(bindings, true)(conditionFilter)
-		);
+		.filter(({ conditionFilter }) => {
+			if (!conditionFilter) return true;
+			return interpret(features)(bindings)(conditionFilter);
+		});
 };
 
 const useLunatic = (
@@ -57,17 +52,27 @@ const useLunatic = (
 		initialPage = '1',
 	}
 ) => {
-	const [questionnaire, setQuestionnaire] = useState(
+	const featuresWithoutMD = features.filter((f) => f !== 'MD');
+	const [questionnaire, setQuestionnaire] = useState(() =>
 		mergeQuestionnaireAndData(source)(data || {})
 	);
-	const [todo, setTodo] = useState({});
+	const bindings = getBindings(questionnaire);
 	const [page, setPage] = useState(initialPage);
+	const [components, setComponents] = useState(() =>
+		filterComponents(
+			questionnaire.components,
+			management,
+			bindings,
+			featuresWithoutMD,
+			page,
+			pagination
+		)
+	);
+	const [todo, setTodo] = useState({});
 	const [flow, setFlow] = useState(FLOW_NEXT);
 
 	// TODO: dynamic because of filters (kind of last accessible page)
 	const { maxPage } = source;
-
-	const featuresWithoutMD = features.filter((f) => f !== 'MD');
 
 	const isFirstPage = page === '1';
 	const isLastPage = page === maxPage;
@@ -118,24 +123,26 @@ const useLunatic = (
 
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
-			const newQ = updateQuestionnaire(savingType)(questionnaire)(preferences)(
-				todo
-			);
+			const newQ =
+				updateQuestionnaire(savingType)(questionnaire)(preferences)(todo);
 			setQuestionnaire(newQ);
 			setTodo({});
 		}
 	}, [todo, preferences, questionnaire, savingType, features, management]);
 
-	const bindings = getBindings(questionnaire);
-
-	const components = filterComponents(
-		questionnaire.components,
-		management,
-		bindings,
-		featuresWithoutMD,
-		page,
-		pagination
-	);
+	useEffect(() => {
+		const c = filterComponents(
+			questionnaire.components,
+			management,
+			bindings,
+			featuresWithoutMD,
+			page,
+			pagination
+		);
+		setComponents(c);
+		// Assume we only want to filter after questionnaire update
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [questionnaire]);
 
 	return {
 		questionnaire,
