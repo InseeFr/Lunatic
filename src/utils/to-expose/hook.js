@@ -31,12 +31,17 @@ const filterComponents = (
 				interpret(features)(bindings, true)(conditionFilter) === 'normal'
 		);
 
+		const filtered = components.filter(({ conditionFilter }) => {
+			if (!conditionFilter) return true;
+			const inter = interpret(features)(bindings, true)(conditionFilter);
+			return inter;
+		});
+		return filtered;
 	return components
 		.filter((c) => customFilterPagination(c, pagination, currentPage))
 		.filter(
 			({ conditionFilter }) =>
-				!conditionFilter ||
-				interpret(features)(bindings, true)(conditionFilter) === 'normal'
+				!conditionFilter || interpret(features)(bindings, true)(conditionFilter)
 		);
 };
 
