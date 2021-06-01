@@ -11,11 +11,8 @@ export const getPage = ({
 	management,
 }) => {
 	if (currentPage.includes('#')) {
-		const {
-			currentRootPage,
-			currentComponentIndex,
-			currentIteration,
-		} = splitPage(currentPage, depth);
+		const { currentRootPage, currentComponentIndex, currentIteration } =
+			splitPage(currentPage, depth);
 
 		if (flow === FLOW_NEXT)
 			return `${currentRootPage}.${
@@ -61,10 +58,7 @@ const getSimpleNewPage = ({
 		.reduce((acc, { conditionFilter, page }) => {
 			if (acc) return acc;
 			if (management) return page;
-			if (
-				!conditionFilter ||
-				interpret(features)(bindings, true)(conditionFilter) === 'normal'
-			)
+			if (!conditionFilter || interpret(features)(bindings)(conditionFilter))
 				return page;
 			else return null;
 		}, null);

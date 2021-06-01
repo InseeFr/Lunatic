@@ -36,7 +36,7 @@ const filterComponents = ({
 			cache[conditionFilter] = inter;
 			return inter;
 		});
-		if (isDev) console.log(`End filter: ${new Date().getTime() - start}`);
+		if (isDev) console.log(`End filter: ${new Date().getTime() - start} ms`);
 		return filtered;
 	}
 
@@ -77,9 +77,9 @@ export const useFilterComponents = ({
 			pagination,
 		});
 		setComponents(c);
-		// Assume we only want to filter after questionnaire update
+		// Assume we only want to filter after questionnaire (vars) or page update
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [questionnaire]);
+	}, [questionnaire, page]);
 
 	return { components };
 };

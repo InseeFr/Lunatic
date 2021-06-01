@@ -24,16 +24,7 @@ const useLunatic = (
 	);
 	const bindings = getBindings(questionnaire);
 	const [page, setPage] = useState(initialPage);
-	// const [components, setComponents] = useState(() =>
-	// 	filterComponents(
-	// 		questionnaire.components,
-	// 		management,
-	// 		bindings,
-	// 		featuresWithoutMD,
-	// 		page,
-	// 		pagination
-	// 	)
-	// );
+
 	const { components } = useFilterComponents({
 		questionnaire,
 		management,
