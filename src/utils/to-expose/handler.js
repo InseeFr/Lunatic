@@ -96,7 +96,7 @@ const addCalculatedVars = (variables, updatedValues) => {
 			// Assume that a calculated variable has a first level scope
 			// If we need to handle deep calculated variables, we have to
 			// update the shape of bindings, grouping vars by type
-			const subCollected = bindingDependencies.reduce(
+			const subCollected = (bindingDependencies || []).reduce(
 				(acc, b) => ({ ...acc, [b]: COLLECTED[b].values[C.COLLECTED] }),
 				{}
 			);
