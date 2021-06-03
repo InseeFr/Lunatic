@@ -148,15 +148,13 @@ const PaginatedLoop = ({
 			acc,
 			{ componentType, id: idC, rowNumber, conditionFilter, page, ...rest }
 		) => {
-			const loopBindings = U.buildBindingsForDeeperComponents(rowNumber)(
-				bindings
-			);
+			const loopBindings =
+				U.buildBindingsForDeeperComponents(rowNumber)(bindings);
 			if (!U.displayLoopQuestion(loopDependencies)(loopBindings)) return acc;
 			const Component = lunatic[componentType];
 
 			if (
-				interpret(featuresWithoutMD)(loopBindings, true)(conditionFilter) !==
-					'normal' ||
+				interpret(featuresWithoutMD)(loopBindings)(conditionFilter) ||
 				(pagination && !currentPageWithoutAnyIteration.startsWith(page)) ||
 				(paginatedLoop && rowNumber + 1 !== currentIteration)
 			)
