@@ -154,7 +154,7 @@ const PaginatedLoop = ({
 			const Component = lunatic[componentType];
 
 			if (
-				interpret(featuresWithoutMD)(loopBindings)(conditionFilter) ||
+				interpret(featuresWithoutMD)(loopBindings)(conditionFilter?.value) ||
 				(pagination && !currentPageWithoutAnyIteration.startsWith(page)) ||
 				(paginatedLoop && rowNumber + 1 !== currentIteration)
 			)

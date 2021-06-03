@@ -58,7 +58,10 @@ const getSimpleNewPage = ({
 		.reduce((acc, { conditionFilter, page }) => {
 			if (acc) return acc;
 			if (management) return page;
-			if (!conditionFilter || interpret(features)(bindings)(conditionFilter))
+			if (
+				!conditionFilter?.value ||
+				interpret(features)(bindings)(conditionFilter.value)
+			)
 				return page;
 			else return null;
 		}, null);

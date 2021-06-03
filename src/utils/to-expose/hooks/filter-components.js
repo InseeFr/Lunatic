@@ -29,10 +29,11 @@ const filterComponents = ({
 
 	if (!pagination) {
 		const filtered = components.filter(({ conditionFilter }) => {
-			if (!conditionFilter) return true;
-			if (cache[conditionFilter] !== undefined) return cache[conditionFilter];
-			const inter = interpret(features)(bindings)(conditionFilter);
-			cache[conditionFilter] = inter;
+			if (!conditionFilter || !conditionFilter.value) return true;
+			const { value } = conditionFilter;
+			if (cache[value] !== undefined) return cache[value];
+			const inter = interpret(features)(bindings)(value);
+			cache[value] = inter;
 			return inter;
 		});
 		if (isDev) console.log(`End filter: ${new Date().getTime() - start} ms`);
@@ -45,10 +46,11 @@ const filterComponents = ({
 
 	const pageComponentsFiltered = pageComponents.filter(
 		({ conditionFilter }) => {
-			if (!conditionFilter) return true;
-			if (cache[conditionFilter] !== undefined) return cache[conditionFilter];
-			const inter = interpret(features)(bindings)(conditionFilter);
-			cache[conditionFilter] = inter;
+			if (!conditionFilter || !conditionFilter.value) return true;
+			const { value } = conditionFilter;
+			if (cache[value] !== undefined) return cache[value];
+			const inter = interpret(features)(bindings)(value);
+			cache[value] = inter;
 			return inter;
 		}
 	);

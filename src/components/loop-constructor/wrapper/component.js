@@ -34,7 +34,7 @@ const LoopConstructorWrapper = ({
 
 	// TEMP: Set static number of occurence if min = max
 	useEffect(() => {
-		if (lines.min === lines.max) {
+		if (lines.min && lines.min === lines.max) {
 			const up = involvedVariables.reduce((acc, { name }) => {
 				const toAdd = [...Array(lines.min - bindings[name].length).keys()].map(
 					() => null
