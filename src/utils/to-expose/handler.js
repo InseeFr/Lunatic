@@ -83,11 +83,6 @@ const addCalculatedVars = (variables, updatedValues) => {
 	}
 
 	const { COLLECTED, EXTERNAL, CALCULATED } = variables;
-	const collected = Object.entries(COLLECTED).reduce(
-		(acc, [key, { values }]) => ({ ...acc, [key]: values[C.COLLECTED] }),
-		{}
-	);
-	const bindings = buildVectorialBindings({ ...collected, ...EXTERNAL });
 
 	const updatedVars = Object.keys(updatedValues);
 
@@ -101,6 +96,11 @@ const addCalculatedVars = (variables, updatedValues) => {
 			// Assume that a calculated variable has a first level scope
 			// If we need to handle deep calculated variables, we have to
 			// update the shape of bindings, grouping vars by type
+			const subCollected = bindingDependencies.reduce(
+				(acc, b) => ({ ...acc, [b]: COLLECTED[b].values[C.COLLECTED] }),
+				{}
+			);
+			const bindings = buildVectorialBindings({ ...subCollected, ...EXTERNAL });
 			const res = interpret(['VTL'])(bindings)(expression);
 			const newValue = Array.isArray(res) ? res.join(',') : res;
 			return {
