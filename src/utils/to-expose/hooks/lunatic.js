@@ -96,20 +96,6 @@ const useLunatic = (
 		}
 	}, [todo, preferences, questionnaire, savingType, features, management]);
 
-	// useEffect(() => {
-	// 	const c = filterComponents(
-	// 		questionnaire.components,
-	// 		management,
-	// 		bindings,
-	// 		featuresWithoutMD,
-	// 		page,
-	// 		pagination
-	// 	);
-	// 	setComponents(c);
-	// 	// Assume we only want to filter after questionnaire update
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, [questionnaire]);
-
 	return {
 		questionnaire,
 		handleChange,

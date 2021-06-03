@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { interpret } from '../interpret';
 import { isDev } from '../../lib';
 
@@ -65,21 +64,14 @@ export const useFilterComponents = ({
 	page,
 	pagination,
 }) => {
-	const [components, setComponents] = useState([]);
-
-	useEffect(() => {
-		const c = filterComponents({
-			components: questionnaire.components,
-			management,
-			bindings,
-			features,
-			page,
-			pagination,
-		});
-		setComponents(c);
-		// Assume we only want to filter after questionnaire (vars) or page update
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [questionnaire, page]);
+	const components = filterComponents({
+		components: questionnaire.components,
+		management,
+		bindings,
+		features,
+		page,
+		pagination,
+	});
 
 	return { components };
 };
