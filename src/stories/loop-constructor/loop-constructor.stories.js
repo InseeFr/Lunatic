@@ -6,6 +6,7 @@ import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import dataRoster from './data-roster';
 import dataLoop from './data-loop';
+import dataLoopStatic from './data-loop-static';
 import dataInput from './data-input';
 import { positioningOptions } from '../utils/options';
 import { select } from '@storybook/addon-knobs/react';
@@ -37,6 +38,15 @@ storiesBlock.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={dataLoop}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		features={['VTL']}
+	/>
+));
+
+storiesBlock.addWithJSX('Static', () => (
+	<Orchestrator
+		id="static"
+		source={dataLoopStatic}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
