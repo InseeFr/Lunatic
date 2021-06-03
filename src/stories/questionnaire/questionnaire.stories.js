@@ -2,10 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Orchestrator from '../utils/orchestrator';
 import { titleDecorator } from 'utils/lib';
-import logementDefault from './default/logement';
-import simpsonsDefault from './default/simpsons';
-import logementPaginated from './paginated/logement';
-import simpsonsPaginated from './paginated/simpsons';
+import logement from './logement';
+import simpsons from './simpsons';
 import { positioningOptions, featuresOptions } from '../utils/options';
 import { boolean, select } from '@storybook/addon-knobs/react';
 
@@ -19,7 +17,7 @@ const def = storiesOf('Questionnaire/Default', module).addDecorator(
 def.addWithJSX('Logement', () => (
 	<Orchestrator
 		id="props"
-		source={logementDefault}
+		source={logement}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
@@ -31,7 +29,7 @@ def.addWithJSX('Logement', () => (
 def.addWithJSX('Simpsons', () => (
 	<Orchestrator
 		id="props"
-		source={simpsonsDefault}
+		source={simpsons}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
@@ -50,7 +48,7 @@ const paginated = storiesOf('Questionnaire/Paginated', module).addDecorator(
 paginated.addWithJSX('Logement', () => (
 	<Orchestrator
 		id="props"
-		source={logementPaginated}
+		source={logement}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
@@ -63,7 +61,7 @@ paginated.addWithJSX('Logement', () => (
 paginated.addWithJSX('Simpsons', () => (
 	<Orchestrator
 		id="props"
-		source={simpsonsPaginated}
+		source={simpsons}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
