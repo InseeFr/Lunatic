@@ -24,17 +24,18 @@ const useLunatic = (
 	);
 	const bindings = getBindings(questionnaire);
 	const [page, setPage] = useState(initialPage);
+	const [todo, setTodo] = useState({});
 
-	const { components } = useFilterComponents({
+	const components = useFilterComponents({
 		questionnaire,
 		management,
 		bindings,
 		features: featuresWithoutMD,
 		page,
 		pagination,
+		todo,
 	});
 
-	const [todo, setTodo] = useState({});
 	const [flow, setFlow] = useState(FLOW_NEXT);
 
 	// TODO: dynamic because of filters (kind of last accessible page)

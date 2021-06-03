@@ -58,6 +58,8 @@ const filterComponents = ({
 	return pageComponentsFiltered;
 };
 
+let oldComponents = [];
+
 export const useFilterComponents = ({
 	questionnaire,
 	management,
@@ -65,7 +67,9 @@ export const useFilterComponents = ({
 	features,
 	page,
 	pagination,
+	todo,
 }) => {
+	if (Object.keys(todo).length > 0) return oldComponents;
 	const components = filterComponents({
 		components: questionnaire.components,
 		management,
@@ -74,6 +78,6 @@ export const useFilterComponents = ({
 		page,
 		pagination,
 	});
-
-	return { components };
+	oldComponents = components;
+	return components;
 };
