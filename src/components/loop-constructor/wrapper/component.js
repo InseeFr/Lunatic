@@ -26,7 +26,7 @@ const LoopConstructorWrapper = ({
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
 
 	const minLines = Math.max(
-		parseInt(interpret(featuresWithoutMD)(bindings)(lines.min), 10) || 0,
+		parseInt(interpret(featuresWithoutMD)(bindings)(lines.min), 10) || 1,
 		U.getLoopConstructorInitLines(components)
 	);
 	const maxLines = lines
@@ -41,7 +41,7 @@ const LoopConstructorWrapper = ({
 	useEffect(() => {
 		if (lines.min && lines.min === lines.max) {
 			const min =
-				parseInt(interpret(featuresWithoutMD)(bindings)(lines.min), 10) || 0;
+				parseInt(interpret(featuresWithoutMD)(bindings)(lines.min), 10) || 1;
 			const up = involvedVariables.reduce((acc, { name }) => {
 				const toAdd = [...Array(min - bindings[name].length).keys()].map(
 					() => null
