@@ -22,11 +22,16 @@ const LoopConstructorWrapper = ({
 	...otherProps
 }) => {
 	const [todo, setTodo] = useState({});
+
+	const featuresWithoutMD = features.filter((f) => f !== 'MD');
+
 	const minLines = Math.max(
-		lines.min || 0,
+		parseInt(interpret(featuresWithoutMD)(bindings)(lines.min), 10) || 0,
 		U.getLoopConstructorInitLines(components)
 	);
-	const maxLines = lines ? lines.max : undefined;
+	const maxLines = lines
+		? parseInt(interpret(featuresWithoutMD)(bindings)(lines.max), 10)
+		: undefined;
 
 	const width = `${100 / Math.max(...components.map((row) => row.length))}%`;
 	const Button = lunatic.Button;
@@ -35,8 +40,10 @@ const LoopConstructorWrapper = ({
 	// TEMP: Set static number of occurence if min = max
 	useEffect(() => {
 		if (lines.min && lines.min === lines.max) {
+			const min =
+				parseInt(interpret(featuresWithoutMD)(bindings)(lines.min), 10) || 0;
 			const up = involvedVariables.reduce((acc, { name }) => {
-				const toAdd = [...Array(lines.min - bindings[name].length).keys()].map(
+				const toAdd = [...Array(min - bindings[name].length).keys()].map(
 					() => null
 				);
 				return { ...acc, [name]: [...bindings[name], ...toAdd] };
