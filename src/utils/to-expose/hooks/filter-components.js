@@ -36,18 +36,17 @@ const buildComponents = ({
 	pagination,
 	todo,
 }) => {
-	console.log(cache);
-	if (isDev) {
-		console.log('Start filter');
-		var start = new Date().getTime();
-	}
-
 	if (management && !pagination) return components;
 
 	if (management && pagination)
 		return components.filter((c) =>
 			customFilterPagination(c, pagination, page)
 		);
+
+	if (isDev) {
+		console.log('Start filter');
+		var start = new Date().getTime();
+	}
 
 	const updatedVars = Object.keys(todo);
 
