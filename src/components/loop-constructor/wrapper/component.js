@@ -37,6 +37,11 @@ const LoopConstructorWrapper = ({
 	const Button = lunatic.Button;
 	const involvedVariables = U.getInvolvedVariables(components);
 
+	const values = components.reduce(
+		(acc, c) => `${acc}|${Object.values(c.response.values).join('|')}`,
+		''
+	);
+
 	// TEMP: Set static number of occurence if min = max
 	useEffect(() => {
 		if (lines.min && lines.min === lines.max) {
@@ -52,7 +57,7 @@ const LoopConstructorWrapper = ({
 		}
 		// Assume to only execute this side effect at mount
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [values]);
 
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
