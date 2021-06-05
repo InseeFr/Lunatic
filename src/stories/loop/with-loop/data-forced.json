@@ -1,0 +1,211 @@
+{
+	"components": [
+		{
+			"id": "k3ym61vf",
+			"componentType": "Sequence",
+			"label": "\"Description des individus de votre logement\"",
+			"conditionFilter": "\"normal\"",
+			"bindingDependencies": []
+		},
+		{
+			"id": "k3ylzyo4",
+			"componentType": "Loop",
+			"mandatory": true,
+			"positioning": "HORIZONTAL",
+			"label": "\"Ajouter un individu\"",
+			"conditionFilter": "\"normal\"",
+			"bindingDependencies": ["PRENOM", "AGE"],
+			"lines": { "min": 1, "max": 10 },
+			"components": [
+				{
+					"componentType": "Input",
+					"label": "Prénom",
+					"conditionFilter": "\"normal\"",
+					"maxLength": 30,
+					"bindingDependencies": ["PRENOM"],
+					"id": "k3yn2qmr",
+					"response": {
+						"name": "PRENOM"
+					}
+				},
+				{
+					"componentType": "InputNumber",
+					"label": "Age",
+					"conditionFilter": "\"normal\"",
+					"min": 0,
+					"max": 120,
+					"decimals": 0,
+					"bindingDependencies": ["AGE"],
+					"id": "k3ymundt",
+					"response": {
+						"name": "AGE"
+					}
+				}
+			]
+		},
+		{
+			"id": "idLoop",
+			"label": "boucle individu",
+			"componentType": "Loop",
+			"iterations": "count(PRENOM)",
+			"conditionFilter": "\"normal\"",
+			"loopDependencies": ["PRENOM", "AGE"],
+			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE"],
+			"components": [
+				{
+					"id": "k3ymch91",
+					"componentType": "Sequence",
+					"label": "PRENOM",
+					"conditionFilter": "\"normal\"",
+					"bindingDependencies": ["PRENOM"]
+				},
+				{
+					"id": "k3ym68i7",
+					"componentType": "CheckboxOne",
+					"mandatory": false,
+					"label": "PRENOM || \", êtes-vous propriétaire du logement ?\"",
+					"conditionFilter": "\"normal\"",
+					"bindingDependencies": ["PRENOM", "PROPRIO"],
+					"response": {
+						"name": "PROPRIO"
+					},
+					"options": [
+						{ "value": "1", "label": "Oui" },
+						{ "value": "2", "label": "Non" }
+					]
+				},
+				{
+					"id": "k3ym6x16",
+					"label": "Quel est votre temps de trajet domicile-travail ?",
+					"componentType": "InputNumber",
+					"conditionFilter": "\"normal\"",
+					"mandatory": false,
+					"bindingDependencies": ["TPSTRAJET"],
+					"min": 0,
+					"max": 180,
+					"decimals": 0,
+					"unit": "minute(s)",
+					"response": {
+						"name": "TPSTRAJET"
+					}
+				}
+			]
+		},
+		{
+			"id": "k3ym61vfzzzzzzzzzzzz",
+			"componentType": "Sequence",
+			"label": "\"Questionnaire logement\"",
+			"conditionFilter": "\"normal\"",
+			"bindingDependencies": []
+		},
+		{
+			"id": "k3ym6i5g",
+			"componentType": "CheckboxOne",
+			"mandatory": false,
+			"label": "\"Diriez-vous que votre logement est confortable ?\"",
+			"conditionFilter": "\"normal\"",
+			"bindingDependencies": [],
+			"response": {
+				"name": "CONFORT"
+			},
+			"options": [
+				{ "value": "1", "label": "Oui" },
+				{ "value": "2", "label": "Non" }
+			]
+		},
+		{
+			"id": "k3ymkpj2",
+			"label": "Quelle est la superficie du logement ?",
+			"unit": "m²",
+			"componentType": "InputNumber",
+			"conditionFilter": "\"normal\"",
+			"bindingDependencies": [],
+			"mandatory": false,
+			"min": 0,
+			"max": 500,
+			"decimals": 0,
+			"response": {
+				"name": "SUPERFICIE"
+			}
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": ["Marco"],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PROPRIO",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": ["1"],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TPSTRAJET",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CONFORT",
+			"componentRef": "k3ym6i5g",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "SUPERFICIE",
+			"componentRef": "k3ymkpj2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "30",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "cast(SUPERFICIE, number) + EXT",
+			"name": "Test"
+		}
+	]
+}

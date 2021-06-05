@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
@@ -24,6 +24,32 @@ storiesR.addWithJSX('Default Loop', () => (
 		features={['VTL']}
 	/>
 ));
+
+storiesR.addWithJSX('External update', () => {
+	const Fake = () => {
+		const [up, setUp] = useState(false);
+		return (
+			<>
+				<button
+					type="button"
+					onClick={() => {
+						setUp(true);
+					}}
+					disabled={up}
+				>
+					Force external update
+				</button>
+
+				<Orchestrator
+					id="default"
+					source={up ? R.dataForcedWithRoster : R.dataLoopWithRoster}
+					features={['VTL']}
+				/>
+			</>
+		);
+	};
+	return <Fake />;
+});
 
 storiesR.addWithJSX('Deeper Loop', () => (
 	<Orchestrator
@@ -59,6 +85,32 @@ storiesB.addWithJSX('Default Loop', () => (
 		features={['VTL']}
 	/>
 ));
+
+storiesB.addWithJSX('External update', () => {
+	const Fake = () => {
+		const [up, setUp] = useState(false);
+		return (
+			<>
+				<button
+					type="button"
+					onClick={() => {
+						setUp(true);
+					}}
+					disabled={up}
+				>
+					Force external update
+				</button>
+
+				<Orchestrator
+					id="default"
+					source={up ? B.dataForcedWithLoop : B.dataLoopWithLoop}
+					features={['VTL']}
+				/>
+			</>
+		);
+	};
+	return <Fake />;
+});
 
 storiesB.addWithJSX('Deeper Loop', () => (
 	<Orchestrator

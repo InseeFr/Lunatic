@@ -1,0 +1,66 @@
+{
+	"components": [
+		{
+			"id": "k3ylzyo4",
+			"componentType": "Loop",
+			"mandatory": true,
+			"positioning": "HORIZONTAL",
+			"label": "\"Ajouter un individu\"",
+			"conditionFilter": "\"normal\"",
+			"bindingDependencies": ["PRENOM", "AGE"],
+			"lines": { "min": 3, "max": 3 },
+			"components": [
+				{
+					"componentType": "Input",
+					"label": "Prénom",
+					"conditionFilter": "\"normal\"",
+					"maxLength": 30,
+					"bindingDependencies": ["PRENOM"],
+					"id": "k3yn2qmr",
+					"response": {
+						"name": "PRENOM"
+					}
+				},
+				{
+					"componentType": "InputNumber",
+					"label": "Age",
+					"conditionFilter": "\"normal\"",
+					"min": 0,
+					"max": 120,
+					"decimals": 0,
+					"bindingDependencies": ["AGE"],
+					"id": "k3ymundt",
+					"response": {
+						"name": "AGE"
+					}
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": ["Marco"],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": ["28"],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		}
+	]
+}
