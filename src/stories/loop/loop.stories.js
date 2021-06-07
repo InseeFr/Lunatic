@@ -76,32 +76,6 @@ storiesB.addWithJSX('Default Loop', () => (
 	/>
 ));
 
-storiesB.addWithJSX('External update', () => {
-	const Fake = () => {
-		const [up, setUp] = useState(false);
-		return (
-			<>
-				<button
-					type="button"
-					onClick={() => {
-						setUp(true);
-					}}
-					disabled={up}
-				>
-					Force external update
-				</button>
-
-				<Orchestrator
-					id="default"
-					source={up ? B.dataForcedWithLoop : B.dataLoopWithLoop}
-					features={['VTL']}
-				/>
-			</>
-		);
-	};
-	return <Fake />;
-});
-
 storiesB.addWithJSX('Deeper Loop', () => (
 	<Orchestrator
 		id="double-loop"
