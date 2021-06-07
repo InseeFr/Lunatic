@@ -4,7 +4,7 @@
 			"id": "k3ym61vf",
 			"componentType": "Sequence",
 			"label": "\"Description des individus de votre logement\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"bindingDependencies": []
 		},
 		{
@@ -13,14 +13,14 @@
 			"mandatory": true,
 			"positioning": "HORIZONTAL",
 			"label": "\"Ajouter un individu\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 10 },
 			"components": [
 				{
 					"componentType": "Input",
 					"label": "Prénom",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"maxLength": 30,
 					"bindingDependencies": ["PRENOM"],
 					"id": "k3yn2qmr",
@@ -31,7 +31,7 @@
 				{
 					"componentType": "InputNumber",
 					"label": "Age",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"min": 0,
 					"max": 120,
 					"decimals": 0,
@@ -48,7 +48,7 @@
 			"label": "boucle individu",
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"loopDependencies": ["PRENOM", "AGE"],
 			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE"],
 			"components": [
@@ -56,7 +56,7 @@
 					"id": "k3ymch91",
 					"componentType": "Sequence",
 					"label": "PRENOM",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"bindingDependencies": ["PRENOM"]
 				},
 				{
@@ -64,7 +64,7 @@
 					"componentType": "CheckboxOne",
 					"mandatory": false,
 					"label": "PRENOM || \", êtes-vous propriétaire du logement ?\"",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"bindingDependencies": ["PRENOM", "PROPRIO"],
 					"response": {
 						"name": "PROPRIO"
@@ -75,10 +75,26 @@
 					]
 				},
 				{
+					"id": "radio",
+					"componentType": "CheckboxOne",
+					"mandatory": false,
+					"label": "PRENOM || \", quel est votre lien avec \" || PRENOM_REF \" ?\"",
+					"conditionFilter": { "value": "PRENOM <> PRENOM_REF" },
+					"bindingDependencies": ["PRENOM", "LIEN"],
+					"response": {
+						"name": "LIEN"
+					},
+					"options": [
+						{ "value": "1", "label": "Conjoint" },
+						{ "value": "2", "label": "Enfant" },
+						{ "value": "3", "label": "Autre" }
+					]
+				},
+				{
 					"id": "k3ym6x16",
 					"label": "Quel est votre temps de trajet domicile-travail ?",
 					"componentType": "InputNumber",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"mandatory": false,
 					"bindingDependencies": ["TPSTRAJET"],
 					"min": 0,
@@ -95,7 +111,7 @@
 			"id": "k3ym61vfzzzzzzzzzzzz",
 			"componentType": "Sequence",
 			"label": "\"Questionnaire logement\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"bindingDependencies": []
 		},
 		{
@@ -103,7 +119,7 @@
 			"componentType": "CheckboxOne",
 			"mandatory": false,
 			"label": "\"Diriez-vous que votre logement est confortable ?\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"bindingDependencies": [],
 			"response": {
 				"name": "CONFORT"
@@ -118,7 +134,7 @@
 			"label": "Quelle est la superficie du logement ?",
 			"unit": "m²",
 			"componentType": "InputNumber",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"bindingDependencies": [],
 			"mandatory": false,
 			"min": 0,
@@ -136,7 +152,7 @@
 			"componentRef": "k3ylzyo4",
 			"values": {
 				"PREVIOUS": [null],
-				"COLLECTED": ["Marco"],
+				"COLLECTED": ["Marco", "Mauro"],
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
@@ -148,7 +164,7 @@
 			"componentRef": "k3ylzyo4",
 			"values": {
 				"PREVIOUS": [null],
-				"COLLECTED": [null],
+				"COLLECTED": ["28", null],
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
@@ -160,7 +176,7 @@
 			"componentRef": "idLoop",
 			"values": {
 				"PREVIOUS": [null],
-				"COLLECTED": ["1"],
+				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
@@ -196,16 +212,35 @@
 			"componentRef": "k3ymkpj2",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": "30",
+				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
 			}
 		},
 		{
+			"variableType": "COLLECTED",
+			"name": "LIEN",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
 			"variableType": "CALCULATED",
-			"expression": "cast(SUPERFICIE, number) + EXT",
-			"name": "Test"
+			"expression": "cast(SUPERFICIE, number) + 10",
+			"name": "Test",
+			"bindingDependencies": ["SUPERFICIE"]
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "first_value(PRENOM over())",
+			"name": "PRENOM_REF",
+			"bindingDependencies": ["PRENOM"]
 		}
 	]
 }

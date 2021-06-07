@@ -6,14 +6,14 @@
 			"mandatory": true,
 			"positioning": "HORIZONTAL",
 			"label": "\"Ajouter un individu\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 3, "max": 3 },
 			"components": [
 				{
 					"componentType": "Input",
 					"label": "Prénom",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"maxLength": 30,
 					"bindingDependencies": ["PRENOM"],
 					"id": "k3yn2qmr",
@@ -24,7 +24,7 @@
 				{
 					"componentType": "InputNumber",
 					"label": "Age",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"min": 0,
 					"max": 120,
 					"decimals": 0,

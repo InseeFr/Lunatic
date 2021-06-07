@@ -6,7 +6,7 @@
 			"mandatory": true,
 			"positioning": "HORIZONTAL",
 			"label": "\"Qui sont les personnes qui habitent dans votre logement ?\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 3 },
 			"headers": [
@@ -16,7 +16,7 @@
 			"components": [
 				{
 					"componentType": "Input",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"maxLength": 30,
 					"bindingDependencies": ["PRENOM"],
 					"id": "k3yn2qmr",
@@ -26,7 +26,7 @@
 				},
 				{
 					"componentType": "InputNumber",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"min": 0,
 					"max": 120,
 					"decimals": 0,

@@ -17,7 +17,7 @@
 			"label": "boucle individu",
 			"componentType": "Loop",
 			"iterations": "NUM",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"loopDependencies": ["NUM"],
 			"bindingDependencies": ["PRENOM", "NUM"],
 			"components": [
@@ -25,7 +25,7 @@
 					"id": "k3ym6x16",
 					"label": "Prénom :",
 					"componentType": "Input",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"mandatory": false,
 					"bindingDependencies": ["PRENOM"],
 					"response": {

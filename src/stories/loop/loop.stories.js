@@ -60,16 +60,6 @@ storiesR.addWithJSX('Deeper Loop', () => (
 	/>
 ));
 
-storiesR.addWithJSX('VQS', () => (
-	<Orchestrator
-		id="vqs"
-		source={R.dataVQSWithRoster}
-		data={{ EXTERNAL: { NOMCONTACT: 'Bart', ADRESSE: 'Adresse de Bart' } }}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		features={['VTL']}
-	/>
-));
-
 const storiesB = storiesOf('Loop/With loop', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator((Component) => {
@@ -116,16 +106,6 @@ storiesB.addWithJSX('Deeper Loop', () => (
 	<Orchestrator
 		id="double-loop"
 		source={B.dataLoopDeeperWithLoop}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		features={['VTL']}
-	/>
-));
-
-storiesB.addWithJSX('VQS', () => (
-	<Orchestrator
-		id="vqs"
-		source={B.dataVQSWithLoop}
-		data={{ EXTERNAL: { NOMCONTACT: 'Bart', ADRESSE: 'Adresse de Bart' } }}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
