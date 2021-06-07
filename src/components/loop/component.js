@@ -74,7 +74,8 @@ const Loop = ({
 				U.buildBindingsForDeeperComponents(rowNumber)(bindings);
 			if (!U.displayLoopQuestion(loopDependencies)(loopBindings)) return null;
 			const Component = lunatic[componentType];
-			if (interpret(featuresWithoutMD)(loopBindings)(conditionFilter?.value))
+
+			if (!interpret(featuresWithoutMD)(loopBindings)(conditionFilter?.value))
 				return null;
 			return (
 				<div key={`${idC}-loop-${rowNumber}`} className="loop-component">

@@ -181,7 +181,7 @@ const PaginatedLoop = ({
 			const filterResult = localCache[value] || set();
 
 			if (
-				filterResult ||
+				!filterResult ||
 				(pagination && !currentPageWithoutAnyIteration.startsWith(page)) ||
 				(paginatedLoop && rowNumber + 1 !== currentIteration)
 			)

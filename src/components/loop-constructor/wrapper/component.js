@@ -38,7 +38,7 @@ const LoopConstructorWrapper = ({
 	const involvedVariables = U.getInvolvedVariables(components);
 
 	const values = components.reduce(
-		(acc, c) => `${acc}|${Object.values(c.response.values).join('|')}`,
+		(acc, c) => `${acc}|${Object.values(c.response?.values || {}).join('|')}`,
 		''
 	);
 
