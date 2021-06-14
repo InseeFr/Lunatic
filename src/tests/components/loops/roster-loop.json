@@ -1,0 +1,23 @@
+{
+	"id": "roster_menage",
+	"componentType": "RosterForLoop",
+	"mandatory": true,
+	"positioning": "HORIZONTAL",
+	"label": "\"Qui sont les ménages qui habitent dans votre logement ?\"",
+	"conditionFilter": { "value": "true" },
+	"bindingDependencies": ["MENAGE"],
+	"lines": { "min": 1, "max": 10 },
+	"headers": [{ "headerCell": true, "label": "Ménage" }],
+	"components": [
+		{
+			"id": "input_menage",
+			"componentType": "Input",
+			"conditionFilter": { "value": "true" },
+			"maxLength": 30,
+			"bindingDependencies": ["MENAGE"],
+			"response": {
+				"name": "MENAGE"
+			}
+		}
+	]
+}
