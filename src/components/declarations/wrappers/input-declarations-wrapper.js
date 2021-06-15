@@ -77,6 +77,7 @@ const InputDeclarationsWrapper = ({
 		handleChange({
 			[U.getResponseName(response)]: finalValue,
 		});
+		if (value !== finalValue) setValue(finalValue);
 	};
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';
