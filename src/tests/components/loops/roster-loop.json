@@ -1,22 +1,68 @@
 {
-	"id": "roster_menage",
-	"componentType": "RosterForLoop",
-	"mandatory": true,
-	"positioning": "HORIZONTAL",
-	"label": "\"Qui sont les ménages qui habitent dans votre logement ?\"",
-	"conditionFilter": { "value": "true" },
-	"bindingDependencies": ["MENAGE"],
-	"lines": { "min": 1, "max": 10 },
-	"headers": [{ "headerCell": true, "label": "Ménage" }],
 	"components": [
 		{
-			"id": "input_menage",
-			"componentType": "Input",
+			"id": "k3ylzyo4",
+			"componentType": "RosterForLoop",
+			"mandatory": true,
+			"positioning": "HORIZONTAL",
+			"label": "\"Qui sont les personnes qui habitent dans votre logement ?\"",
 			"conditionFilter": { "value": "true" },
-			"maxLength": 30,
-			"bindingDependencies": ["MENAGE"],
-			"response": {
-				"name": "MENAGE"
+			"bindingDependencies": ["PRENOM", "AGE"],
+			"lines": { "min": 1, "max": 10 },
+			"page": "1",
+			"headers": [
+				{ "headerCell": true, "label": "Prénom" },
+				{ "headerCell": true, "label": "Age" }
+			],
+			"components": [
+				{
+					"componentType": "Input",
+					"conditionFilter": { "value": "true" },
+					"maxLength": 30,
+					"bindingDependencies": ["PRENOM"],
+					"id": "k3yn2qmr",
+					"response": {
+						"name": "PRENOM"
+					}
+				},
+				{
+					"componentType": "InputNumber",
+					"conditionFilter": { "value": "true" },
+					"min": 0,
+					"max": 120,
+					"decimals": 0,
+					"bindingDependencies": ["AGE"],
+					"id": "k3ymundt",
+					"response": {
+						"name": "AGE"
+					}
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": ["Mauro", "Marco"],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		}
 	]

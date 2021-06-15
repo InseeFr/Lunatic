@@ -8,7 +8,7 @@
 			"label": "\"Ajouter un individu\"",
 			"conditionFilter": { "value": "true" },
 			"bindingDependencies": ["PRENOM", "AGE"],
-			"lines": { "min": 3, "max": 3 },
+			"lines": { "min": "3", "max": "3" },
 			"components": [
 				{
 					"componentType": "Input",

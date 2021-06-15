@@ -1,11 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { RosterForLoop } from 'components';
+import { mount } from 'enzyme';
+import Orchestrator from '../../../stories/utils/orchestrator';
+import source from './roster-loop';
 
 describe('RosterForLoop', () => {
-	const handleChange = jest.fn();
-	const defaultProps = { id: 'id', label: '', handleChange };
 	it('renders without crashing', () => {
-		shallow(<RosterForLoop {...defaultProps} />);
+		mount(
+			<Orchestrator
+				source={source}
+				data={{}}
+				management={false}
+				pagination
+				features={['VTL']}
+			/>
+		);
 	});
 });

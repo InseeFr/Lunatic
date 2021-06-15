@@ -1,178 +1,258 @@
 {
-	"id": "loop_menage",
-	"componentType": "Loop",
-	"iterations": "count(MENAGE)",
-	"conditionFilter": { "value": "true" },
-	"loopDependencies": ["MENAGE"],
-	"bindingDependencies": [
-		"MENAGE",
-		"FAMILLE",
-		"INDIV",
-		"NB_VEHICULE",
-		"AGE",
-		"PERMIS",
-		"POINTS"
-	],
 	"components": [
 		{
-			"id": "seq_2",
+			"id": "k3ym61vf",
 			"componentType": "Sequence",
-			"label": "\"Ménage : \" || MENAGE",
+			"label": "\"Description des individus de votre logement\"",
 			"conditionFilter": { "value": "true" },
-			"bindingDependencies": ["MENAGE"]
+			"bindingDependencies": [],
+			"page": "1"
 		},
 		{
-			"id": "roster_famille",
-			"componentType": "RosterForLoop",
+			"id": "k3ylzyo4",
+			"componentType": "Loop",
 			"mandatory": true,
 			"positioning": "HORIZONTAL",
-			"label": "\"Qui sont les familles du ménage \" || MENAGE || \" ?\"",
+			"label": "\"Ajouter un individu\"",
 			"conditionFilter": { "value": "true" },
-			"bindingDependencies": ["MENAGE", "FAMILLE"],
+			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 10 },
-			"headers": [{ "headerCell": true, "label": "Famille" }],
+			"page": "2",
 			"components": [
 				{
-					"id": "input_famille",
 					"componentType": "Input",
+					"label": "Prénom",
 					"conditionFilter": { "value": "true" },
 					"maxLength": 30,
-					"bindingDependencies": ["FAMILLE"],
+					"bindingDependencies": ["PRENOM"],
+					"id": "k3yn2qmr",
 					"response": {
-						"name": "FAMILLE"
-					}
+						"name": "PRENOM"
+					},
+					"page": "2.1"
+				},
+				{
+					"componentType": "InputNumber",
+					"label": "Age",
+					"conditionFilter": { "value": "true" },
+					"min": 0,
+					"max": 120,
+					"decimals": 0,
+					"bindingDependencies": ["AGE"],
+					"id": "k3ymundt",
+					"response": {
+						"name": "AGE"
+					},
+					"page": "2.1"
 				}
 			]
 		},
 		{
-			"id": "loop_famille",
+			"id": "idLoop",
+			"label": "boucle individu",
 			"componentType": "Loop",
-			"iterations": "count(FAMILLE)",
+			"iterations": "count(PRENOM)",
 			"conditionFilter": { "value": "true" },
-			"loopDependencies": ["FAMILLE"],
-			"bindingDependencies": [
-				"MENAGE",
-				"FAMILLE",
-				"NB_VEHICULE",
-				"INDIV",
-				"AGE",
-				"PERMIS",
-				"POINTS"
-			],
+			"loopDependencies": ["PRENOM", "AGE"],
+			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE"],
+			"page": "3",
 			"components": [
 				{
-					"id": "seq_3",
+					"id": "k3ymch91",
 					"componentType": "Sequence",
-					"label": "\"Famille : \" || FAMILLE",
+					"label": "PRENOM",
 					"conditionFilter": { "value": "true" },
-					"bindingDependencies": ["FAMILLE"]
+					"bindingDependencies": ["PRENOM"],
+					"page": "3.1"
 				},
 				{
-					"id": "vehicule",
-					"label": "\"Famille \" || FAMILLE ||\", de combien de véhicule disposez-vous ?\"",
+					"id": "k3ym68i7",
+					"componentType": "CheckboxOne",
+					"mandatory": false,
+					"label": "PRENOM || \", êtes-vous propriétaire du logement ?\"",
+					"conditionFilter": { "value": "true" },
+					"bindingDependencies": ["PRENOM", "PROPRIO"],
+					"response": {
+						"name": "PROPRIO"
+					},
+					"options": [
+						{ "value": "1", "label": "Oui" },
+						{ "value": "2", "label": "Non" }
+					],
+					"page": "3.1"
+				},
+				{
+					"id": "radio",
+					"componentType": "CheckboxOne",
+					"mandatory": false,
+					"label": "PRENOM || \", quel est votre lien avec \" || PRENOM_REF \" ?\"",
+					"conditionFilter": { "value": "PRENOM <> PRENOM_REF" },
+					"bindingDependencies": ["PRENOM", "LIEN"],
+					"response": {
+						"name": "LIEN"
+					},
+					"options": [
+						{ "value": "1", "label": "Conjoint" },
+						{ "value": "2", "label": "Enfant" },
+						{ "value": "3", "label": "Autre" }
+					],
+					"page": "3.1"
+				},
+				{
+					"id": "k3ym6x16",
+					"label": "Quel est votre temps de trajet domicile-travail ?",
 					"componentType": "InputNumber",
 					"conditionFilter": { "value": "true" },
-					"bindingDependencies": ["FAMILLE", "NB_VEHICULE"],
 					"mandatory": false,
+					"bindingDependencies": ["TPSTRAJET"],
 					"min": 0,
-					"max": 20,
+					"max": 180,
 					"decimals": 0,
+					"unit": "minute(s)",
 					"response": {
-						"name": "NB_VEHICULE"
-					}
-				},
-				{
-					"id": "roster_indiv",
-					"componentType": "RosterForLoop",
-					"mandatory": true,
-					"positioning": "HORIZONTAL",
-					"label": "\"Qui sont les individus de la famille \" || FAMILLE || \" ?\"",
-					"conditionFilter": { "value": "true" },
-					"bindingDependencies": ["MENAGE", "FAMILLE", "INDIV"],
-					"lines": { "min": 1, "max": 10 },
-					"headers": [{ "headerCell": true, "label": "Individu" }],
-					"components": [
-						{
-							"id": "input_indiv",
-							"componentType": "Input",
-							"conditionFilter": { "value": "true" },
-							"maxLength": 30,
-							"bindingDependencies": ["INDIV"],
-							"response": {
-								"name": "INDIV"
-							}
-						}
-					]
-				},
-				{
-					"id": "loop_indiv",
-					"componentType": "Loop",
-					"iterations": "count(INDIV)",
-					"conditionFilter": { "value": "true" },
-					"loopDependencies": ["INDIV"],
-					"bindingDependencies": [
-						"MENAGE",
-						"FAMILLE",
-						"INDIV",
-						"AGE",
-						"PERMIS",
-						"POINTS"
-					],
-					"components": [
-						{
-							"id": "seq_4",
-							"componentType": "Sequence",
-							"label": "\"Individu : \" || INDIV",
-							"conditionFilter": { "value": "true" },
-							"bindingDependencies": ["INDIV"]
-						},
-						{
-							"id": "age",
-							"label": "INDIV || \", quel est votre âge ?\"",
-							"componentType": "InputNumber",
-							"conditionFilter": { "value": "true" },
-							"bindingDependencies": ["INDIV", "AGE"],
-							"mandatory": false,
-							"min": 0,
-							"max": 120,
-							"decimals": 0,
-							"response": {
-								"name": "AGE"
-							}
-						},
-						{
-							"id": "permis",
-							"label": "INDIV || \", avez-vous le permis de conduire ?\"",
-							"componentType": "CheckboxOne",
-							"conditionFilter": "if(cast(AGE, integer)>=18) then \"normal\" else \"hidden\"",
-							"bindingDependencies": ["INDIV", "PERMIS"],
-							"mandatory": false,
-							"response": {
-								"name": "PERMIS"
-							},
-							"options": [
-								{ "value": "1", "label": "Oui" },
-								{ "value": "0", "label": "Non" }
-							]
-						},
-						{
-							"id": "points",
-							"label": "INDIV || \", avez-vous 12 points sur votre permis de conduire ?\"",
-							"componentType": "Radio",
-							"conditionFilter": "if(cast(PERMIS, string) = \"1\") then \"normal\" else \"hidden\"",
-							"bindingDependencies": ["INDIV", "POINTS"],
-							"mandatory": false,
-							"response": {
-								"name": "POINTS"
-							},
-							"options": [
-								{ "value": "1", "label": "Oui" },
-								{ "value": "0", "label": "Non" }
-							]
-						}
-					]
+						"name": "TPSTRAJET"
+					},
+					"page": "3.2"
 				}
 			]
+		},
+		{
+			"id": "k3ym61vfzzzzzzzzzzzz",
+			"componentType": "Sequence",
+			"label": "\"Questionnaire logement\"",
+			"conditionFilter": { "value": "true" },
+			"bindingDependencies": [],
+			"page": "4"
+		},
+		{
+			"id": "k3ym6i5g",
+			"componentType": "CheckboxOne",
+			"mandatory": false,
+			"label": "\"Diriez-vous que votre logement est confortable ?\"",
+			"conditionFilter": { "value": "true" },
+			"bindingDependencies": [],
+			"response": {
+				"name": "CONFORT"
+			},
+			"options": [
+				{ "value": "1", "label": "Oui" },
+				{ "value": "2", "label": "Non" }
+			],
+			"page": "4"
+		},
+		{
+			"id": "k3ymkpj2",
+			"label": "Quelle est la superficie du logement ?",
+			"unit": "m²",
+			"componentType": "InputNumber",
+			"conditionFilter": { "value": "true" },
+			"bindingDependencies": [],
+			"mandatory": false,
+			"min": 0,
+			"max": 500,
+			"decimals": 0,
+			"response": {
+				"name": "SUPERFICIE"
+			},
+			"page": "5"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": ["Mauro", "Marco"],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": ["30", "28"],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PROPRIO",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TPSTRAJET",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CONFORT",
+			"componentRef": "k3ym6i5g",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "SUPERFICIE",
+			"componentRef": "k3ymkpj2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "LIEN",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "cast(SUPERFICIE, number) + 10",
+			"name": "Test",
+			"bindingDependencies": ["SUPERFICIE"]
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "first_value(PRENOM over())",
+			"name": "PRENOM_REF",
+			"bindingDependencies": ["PRENOM"]
 		}
 	]
 }
