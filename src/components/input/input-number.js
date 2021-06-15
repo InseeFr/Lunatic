@@ -13,23 +13,32 @@ const InputNumber = ({ numberAsTextfield, ...props }) => {
 			{...props}
 			validators={[minMaxValidator({ min, max }), ...validators]}
 			isInputNumber
+			numberAsTextfield
 		/>
 	);
 };
 
-const minMaxValidator = ({ min, max }) => (value) => {
-	if (!value) {
+const minMaxValidator =
+	({ min, max }) =>
+	(value) => {
+		if (!value) {
+			return undefined;
+		}
+		const valueNumber = Number(value);
+		if (!min && isDef(max) && valueNumber > max)
+			return <span>{`La valeur doit être inférieure à ${max}`}</span>;
+		else if (isDef(min) && !max && valueNumber < min)
+			return <span>{`La valeur doit être supérieure à ${min}`}</span>;
+		else if (
+			isDef(min) &&
+			isDef(max) &&
+			(valueNumber < min || valueNumber > max)
+		)
+			return (
+				<span>{`La valeur doit être comprise entre ${min} et ${max}`}</span>
+			);
 		return undefined;
-	}
-	const valueNumber = Number(value);
-	if (!min && isDef(max) && valueNumber > max)
-		return <span>{`La valeur doit être inférieure à ${max}`}</span>;
-	else if (isDef(min) && !max && valueNumber < min)
-		return <span>{`La valeur doit être supérieure à ${min}`}</span>;
-	else if (isDef(min) && isDef(max) && (valueNumber < min || valueNumber > max))
-		return <span>{`La valeur doit être comprise entre ${min} et ${max}`}</span>;
-	return undefined;
-};
+	};
 
 const isDef = (number) => number || number === 0;
 

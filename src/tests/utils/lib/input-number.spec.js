@@ -3,6 +3,7 @@ import { isNumberValid } from 'utils/lib';
 describe('input number utils', () => {
 	describe('isNumberValid', () => {
 		it('should return default false', () => {
+			expect(isNumberValid('')).toBeFalsy();
 			expect(isNumberValid('r')).toBeFalsy();
 			expect(isNumberValid('1.')).toBeFalsy();
 			expect(isNumberValid('1.0')).toBeFalsy();

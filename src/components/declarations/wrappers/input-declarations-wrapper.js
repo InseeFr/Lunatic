@@ -34,6 +34,7 @@ const InputDeclarationsWrapper = ({
 	unitPosition,
 	validators,
 	isInputNumber,
+	numberAsTextfield,
 }) => {
 	const inputRef = useRef();
 
@@ -131,8 +132,19 @@ const InputDeclarationsWrapper = ({
 							maxLength={maxLength || 524288}
 							required={mandatory}
 							aria-required={mandatory}
-							onChange={({ target: { value: v } }) => {
-								if (isInputNumber) validate(v);
+							onChange={(e) => {
+								const v = e.target.value;
+								if (isInputNumber) {
+									if (
+										numberAsTextfield &&
+										v !== '' &&
+										!U.isNumberValid(v, decimals)
+									) {
+										e.preventDefault();
+										e.stopPropagation();
+										return null;
+									} else validate(v);
+								}
 								if (management) setValue(v);
 								else setValue(v === '' ? null : v);
 							}}
