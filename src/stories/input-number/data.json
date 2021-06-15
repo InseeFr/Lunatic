@@ -6,7 +6,6 @@
 			"mandatory": false,
 			"min": 0,
 			"max": 99,
-			"decimals": 0,
 			"label": "➡ 4. What is the current season number?",
 			"response": {
 				"name": "SEASON_NUMBER"
