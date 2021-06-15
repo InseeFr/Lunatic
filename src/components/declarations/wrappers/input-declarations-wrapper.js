@@ -73,8 +73,9 @@ const InputDeclarationsWrapper = ({
 	}, [value, min, max, validators, isInputNumber]);
 
 	const handleChangeOnBlur = () => {
+		const finalValue = value.endsWith('.') ? value.replace('.', '') : value;
 		handleChange({
-			[U.getResponseName(response)]: value,
+			[U.getResponseName(response)]: finalValue,
 		});
 	};
 
