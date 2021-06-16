@@ -60,7 +60,7 @@ storiesMD.addWithJSX('Link', () => (
 	<Orchestrator
 		id="link"
 		source={mdLink}
-		features={select('Features', featuresOptions, [])}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		bindings={object('Bindings', { NAME: 'Mauro' })}
 		disabled={boolean('Disabled', false)}
@@ -73,7 +73,7 @@ storiesMD.addWithJSX('Tooltip', () => (
 	<Orchestrator
 		id="link"
 		source={mdTooltip}
-		features={select('Features', featuresOptions, [])}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		bindings={object('Bindings', { NAME: 'Mauro' })}
 		disabled={boolean('Disabled', false)}

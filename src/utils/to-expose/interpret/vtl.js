@@ -1,4 +1,4 @@
-import { interpret } from '@inseefr/vtl-2.1-engine';
+import { interpret } from '@inseefr/trevas';
 
 export const interpretVTL = (bindings, doNotReplaceNullBindings) => (
 	expression
