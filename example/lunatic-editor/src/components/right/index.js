@@ -1,1 +1,1 @@
-export { default } from './orchestrator';
+export { default } from './switch';

@@ -11,7 +11,7 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"@inseefr/lunatic": "^2.2.3",
+		"@inseefr/lunatic": "^2.3.1",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-scripts": "^4.0.3",
@@ -39,5 +39,7 @@
 			"last 1 safari version"
 		]
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		"@babel/helper-define-map": "^7.13.12"
+	}
 }

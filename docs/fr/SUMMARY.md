@@ -11,6 +11,7 @@
 - [Styles](styles.md)
 - [Versions](versions/index.md)
   - Releases
+    - [2.3.0](versions/2-3-0.md)
     - [2.2.0](versions/2-2-0.md)
     - [2.1.0](versions/2-1-0.md)
     - [2.0.0](versions/2-0-0.md)

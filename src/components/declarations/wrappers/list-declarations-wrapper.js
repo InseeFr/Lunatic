@@ -33,6 +33,11 @@ const ListDeclarationsWrapper = ({
 		U.getResponseByPreference(preferences)(response)
 	);
 
+	const filledOptions =
+		management && type === 'checkbox'
+			? [...options, { label: 'NR', value: '_N_R_' }]
+			: options;
+
 	const specificHandleChange = (e) => {
 		const { values } = response;
 		const [key, value] = Object.entries(e)[0];
@@ -90,57 +95,61 @@ const ListDeclarationsWrapper = ({
 							features={features}
 							bindings={bindings}
 						/>
-						{options.map(({ label: optionLabel, value: optionValue }, i) => {
-							const checked = value === optionValue;
-							const interpretedLabel = interpret(features)(bindings)(
-								optionLabel
-							);
-							return (
-								<div
-									key={`${type}-${id}-${optionValue}`}
-									className={`${type}-modality ${type}-modality-block ${U.getItemsPositioningClass(
-										positioning
-									)} ${checked ? 'content-checked' : ''}`}
-								>
-									<Icon type={type} checked={checked} disabled={disabled}>
-										<input
-											type={type}
-											name={`${type}-${id}`}
-											ref={i === 0 || checked ? inputRef : null}
-											id={`${type}-${id}-${optionValue}`}
-											aria-labelledby={`input-label-${id}-${optionValue}`}
-											className={`${type}-lunatic`}
-											style={U.buildStyleObject(style)}
-											checked={checked}
-											disabled={disabled}
-											onChange={(optionLabel) => onChange(optionValue)}
-										/>
-										<label
-											htmlFor={`${type}-${id}-${optionValue}`}
-											id={`input-label-${id}-${optionValue}`}
-											style={checked ? U.buildStyleObject(modalityStyle) : {}}
-											className="modality-label"
-										>
-											{keyboardSelection && (
-												<span className="code-modality">
-													{options.length < 10
-														? i + 1
-														: U.getAlphabet()[i].toUpperCase()}
-												</span>
-											)}
-											{interpretedLabel}
-										</label>
-									</Icon>
-								</div>
-							);
-						})}
+						{filledOptions.map(
+							({ label: optionLabel, value: optionValue }, i) => {
+								const checked = value === optionValue;
+								const interpretedLabel = interpret(features)(bindings)(
+									optionLabel
+								);
+								return (
+									<div
+										key={`${type}-${id}-${optionValue}`}
+										className={`${type}-modality ${type}-modality-block ${U.getItemsPositioningClass(
+											positioning
+										)} ${checked ? 'content-checked' : ''} ${
+											optionValue === '_N_R_' ? 'modality_NR' : ''
+										}`}
+									>
+										<Icon type={type} checked={checked} disabled={disabled}>
+											<input
+												type={type}
+												name={`${type}-${id}`}
+												ref={i === 0 || checked ? inputRef : null}
+												id={`${type}-${id}-${optionValue}`}
+												aria-labelledby={`input-label-${id}-${optionValue}`}
+												className={`${type}-lunatic`}
+												style={U.buildStyleObject(style)}
+												checked={checked}
+												disabled={disabled}
+												onChange={(optionLabel) => onChange(optionValue)}
+											/>
+											<label
+												htmlFor={`${type}-${id}-${optionValue}`}
+												id={`input-label-${id}-${optionValue}`}
+												style={checked ? U.buildStyleObject(modalityStyle) : {}}
+												className="modality-label"
+											>
+												{keyboardSelection && (
+													<span className="code-modality">
+														{options.length < 10
+															? i + 1
+															: U.getAlphabet()[i].toUpperCase()}
+													</span>
+												)}
+												{interpretedLabel}
+											</label>
+										</Icon>
+									</div>
+								);
+							}
+						)}
 					</fieldset>
 				</div>
 				{management && (
 					<div className="tooltip">
 						<TooltipResponse
 							id={id}
-							response={U.buildMultiTooltipResponse(options)(response)}
+							response={U.buildMultiTooltipResponse(filledOptions)(response)}
 						/>
 					</div>
 				)}

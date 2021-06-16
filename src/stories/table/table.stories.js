@@ -25,7 +25,7 @@ stories.addWithJSX('Default', () => (
 		id="default"
 		source={dataDefault}
 		label={text('Label', '"I\'m the label of the Table"')}
-		features={select('Features', featuresOptions, [])}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { test: 'test' })}
 	/>
 ));

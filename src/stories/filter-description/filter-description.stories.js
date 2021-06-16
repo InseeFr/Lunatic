@@ -47,7 +47,7 @@ stories.addWithJSX('Props', () => (
 			'"If you are not ready, please go to the end of the questionnaire: " || TITLE'
 		)}
 		filterDescription={boolean('Filter description', true)}
-		features={select('Features', featuresOptions, [])}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { TITLE: 'Title' })}
 	/>
 ));

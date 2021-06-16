@@ -28,7 +28,7 @@ stories.addWithJSX('Props', () => (
 		id="default"
 		type={C.BEFORE_QUESTION_TEXT}
 		declarations={declarationsVtl}
-		features={select('Features', featuresOptions, [])}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { test: 'test' })}
 	/>
 ));

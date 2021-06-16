@@ -42,6 +42,12 @@
 
 .checkbox-group,
 .checkbox-group-list {
+	.modality_NR {
+		margin-top: 1.5em;
+	}
+	.horizontal-options.modality_NR {
+		margin-top: 0;
+	}
 	.checkbox-modality {
 		label {
 			display: flex;

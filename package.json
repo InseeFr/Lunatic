@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "2.2.3",
+	"version": "2.3.1",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -37,7 +37,7 @@
 		"library"
 	],
 	"dependencies": {
-		"@inseefr/vtl-2.1-engine": "^0.1.9",
+		"@inseefr/trevas": "^0.1.0",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.debounce": "^4.0.8",
 		"lodash.isequal": "^4.5.0",
@@ -68,7 +68,7 @@
 		"css-loader": "^5.0.0",
 		"enzyme": "^3.7.0",
 		"enzyme-adapter-react-16": "^1.6.0",
-		"eslint": "7.19.0",
+		"eslint": "7.27.0",
 		"eslint-config-prettier": "^7.2.0",
 		"eslint-config-react-app": "^6.0.0",
 		"eslint-plugin-flowtype": "^5.2.0",
