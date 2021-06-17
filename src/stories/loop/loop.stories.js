@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
@@ -25,20 +25,36 @@ storiesR.addWithJSX('Default Loop', () => (
 	/>
 ));
 
+storiesR.addWithJSX('External update', () => {
+	const Fake = () => {
+		const [up, setUp] = useState(false);
+		return (
+			<>
+				<button
+					type="button"
+					onClick={() => {
+						setUp(true);
+					}}
+					disabled={up}
+				>
+					Force external update
+				</button>
+
+				<Orchestrator
+					id="default"
+					source={up ? R.dataForcedWithRoster : R.dataLoopWithRoster}
+					features={['VTL']}
+				/>
+			</>
+		);
+	};
+	return <Fake />;
+});
+
 storiesR.addWithJSX('Deeper Loop', () => (
 	<Orchestrator
 		id="double-loop"
 		source={R.dataLoopDeeperWithRoster}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		features={['VTL']}
-	/>
-));
-
-storiesR.addWithJSX('VQS', () => (
-	<Orchestrator
-		id="vqs"
-		source={R.dataVQSWithRoster}
-		data={{ EXTERNAL: { NOMCONTACT: 'Bart', ADRESSE: 'Adresse de Bart' } }}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
@@ -64,16 +80,6 @@ storiesB.addWithJSX('Deeper Loop', () => (
 	<Orchestrator
 		id="double-loop"
 		source={B.dataLoopDeeperWithLoop}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		features={['VTL']}
-	/>
-));
-
-storiesB.addWithJSX('VQS', () => (
-	<Orchestrator
-		id="vqs"
-		source={B.dataVQSWithLoop}
-		data={{ EXTERNAL: { NOMCONTACT: 'Bart', ADRESSE: 'Adresse de Bart' } }}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>

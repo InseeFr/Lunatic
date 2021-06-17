@@ -22,15 +22,42 @@ const LoopConstructorWrapper = ({
 	...otherProps
 }) => {
 	const [todo, setTodo] = useState({});
+
+	const featuresWithoutMD = features.filter((f) => f !== 'MD');
+
 	const minLines = Math.max(
-		lines.min || 0,
+		parseInt(interpret(featuresWithoutMD)(bindings)(lines.min), 10) || 1,
 		U.getLoopConstructorInitLines(components)
 	);
-	const maxLines = lines ? lines.max : undefined;
+	const maxLines = lines
+		? parseInt(interpret(featuresWithoutMD)(bindings)(lines.max), 10)
+		: undefined;
 
 	const width = `${100 / Math.max(...components.map((row) => row.length))}%`;
 	const Button = lunatic.Button;
 	const involvedVariables = U.getInvolvedVariables(components);
+
+	const values = components.reduce(
+		(acc, c) => `${acc}|${Object.values(c.response?.values || {}).join('|')}`,
+		''
+	);
+
+	// TEMP: Set static number of occurence if min = max
+	useEffect(() => {
+		if (lines.min && lines.min === lines.max) {
+			const min =
+				parseInt(interpret(featuresWithoutMD)(bindings)(lines.min), 10) || 1;
+			const up = involvedVariables.reduce((acc, { name }) => {
+				const toAdd = [...Array(min - bindings[name].length).keys()].map(
+					() => null
+				);
+				return { ...acc, [name]: [...bindings[name], ...toAdd] };
+			}, {});
+			handleChange(up);
+		}
+		// Assume to only execute this side effect at mount
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [values]);
 
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
@@ -47,7 +74,7 @@ const LoopConstructorWrapper = ({
 
 	const addLine = () => {
 		const toHandle = involvedVariables.reduce(
-			(acc, { name: iv, depth }) => ({
+			(acc, { name: iv }) => ({
 				...acc,
 				[iv]: [...bindings[iv], null],
 			}),
@@ -94,16 +121,16 @@ const LoopConstructorWrapper = ({
 				setTodo={setTodo}
 				{...otherProps}
 			/>
-			{!hideBtn && (
+			{!hideBtn && Number.isInteger(minLines) && minLines !== maxLines && (
 				<Button
 					label="addLine"
 					value={customBtnLabel}
-					disabled={
-						Number.isInteger(minLines) && minLines === maxLines
-						//||
-						// Want to enable addition depsite of empty lines?
-						// 	U.lastLoopChildLineIsEmpty(bindings)(involvedVariables)
-					}
+					// disabled={
+					// Number.isInteger(minLines) && minLines === maxLines
+					//||
+					// Want to enable addition depsite of empty lines?
+					// 	U.lastLoopChildLineIsEmpty(bindings)(involvedVariables)
+					// }
 					onClick={addLine}
 				/>
 			)}

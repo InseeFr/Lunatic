@@ -1,0 +1,64 @@
+{
+	"components": [
+		{
+			"id": "nn",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"min": 1,
+			"max": 4,
+			"decimals": 0,
+			"label": "Loop Num",
+			"response": {
+				"name": "NUM"
+			}
+		},
+		{
+			"id": "idLoop",
+			"label": "boucle individu",
+			"componentType": "Loop",
+			"iterations": "NUM",
+			"conditionFilter": { "value": "true" },
+			"loopDependencies": ["NUM"],
+			"bindingDependencies": ["PRENOM", "NUM"],
+			"components": [
+				{
+					"id": "k3ym6x16",
+					"label": "Prénom :",
+					"componentType": "Input",
+					"conditionFilter": { "value": "true" },
+					"mandatory": false,
+					"bindingDependencies": ["PRENOM"],
+					"response": {
+						"name": "PRENOM"
+					}
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NUM",
+			"componentRef": "nn",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "2",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": ["Mauro", "Marco"],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		}
+	]
+}

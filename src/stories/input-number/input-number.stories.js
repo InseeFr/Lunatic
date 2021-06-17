@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
+import dataForced from './data-forced';
 import {
 	labelPositionOptions,
 	unitPositionOptions,
@@ -36,8 +37,8 @@ stories.addWithJSX('Props', () => (
 		label={text('Label', '"I\'m the label of the number input"')}
 		unit={text('Unit', 'euros')}
 		numberAsTextfield={boolean('numberAsTextfield', false)}
-		min={number('Min', 0)}
-		max={number('Max', 50)}
+		min={number('Min', -99)}
+		max={number('Max', 99)}
 		decimals={number('Decimals', 1)}
 		placeholder={text('Placeholder', 'Placeholder')}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
@@ -51,3 +52,29 @@ stories.addWithJSX('Props', () => (
 		unitPosition={select('Unit position', unitPositionOptions, 'DEFAULT')}
 	/>
 ));
+
+stories.addWithJSX('External update', () => {
+	const Fake = () => {
+		const [up, setUp] = useState(false);
+		return (
+			<>
+				<button
+					type="button"
+					onClick={() => {
+						setUp(true);
+					}}
+					disabled={up}
+				>
+					Force external update
+				</button>
+
+				<Orchestrator
+					id="default"
+					source={up ? dataForced : data}
+					management={boolean('Management', false)}
+				/>
+			</>
+		);
+	};
+	return <Fake />;
+});

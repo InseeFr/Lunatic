@@ -6,6 +6,14 @@ export const buildBindingsForDeeperComponents = (index) => (bindings) =>
 		  }, {})
 		: {};
 
+export const buildLoopBindings = (index) => (vars) =>
+	Array.isArray(vars)
+		? vars.reduce((_, [name, value]) => {
+				if (Array.isArray(value)) return { ..._, [name]: value[index] || null };
+				return { ..._, [name]: value };
+		  }, {})
+		: {};
+
 const getDefaultDatasetStructure = (name, value) => ({
 	[name]: { dataStructure: {}, dataPoints: { [name]: value } },
 });

@@ -5,7 +5,7 @@
 			"id": "k3ym61vf",
 			"componentType": "Sequence",
 			"label": "\"Description des individus de votre logement\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": "true",
 			"bindingDependencies": [],
 			"page": "1"
 		},
@@ -15,7 +15,7 @@
 			"mandatory": true,
 			"positioning": "HORIZONTAL",
 			"label": "\"Ajouter un individu\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": "true",
 			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": { "min": 1, "max": 10 },
 			"page": "1",
@@ -23,7 +23,7 @@
 				{
 					"componentType": "Input",
 					"label": "Prénom",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": "true",
 					"maxLength": 30,
 					"bindingDependencies": ["PRENOM"],
 					"id": "k3yn2qmr",
@@ -35,7 +35,7 @@
 				{
 					"componentType": "InputNumber",
 					"label": "Age",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": "true",
 					"min": 0,
 					"max": 120,
 					"decimals": 0,
@@ -53,7 +53,7 @@
 			"label": "boucle individu",
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": "true",
 			"loopDependencies": ["PRENOM", "AGE"],
 			"bindingDependencies": ["PRENOM", "PROPRIO", "TPSTRAJET", "AGE", "YEAR"],
 			"page": "2",
@@ -64,7 +64,7 @@
 					"id": "k3ymch91",
 					"componentType": "Sequence",
 					"label": "PRENOM",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": "true",
 					"bindingDependencies": ["PRENOM"],
 					"page": "2.1"
 				},
@@ -73,7 +73,7 @@
 					"componentType": "CheckboxOne",
 					"mandatory": false,
 					"label": "PRENOM || \", êtes-vous propriétaire du logement ?\"",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": "true",
 					"bindingDependencies": ["PRENOM", "PROPRIO"],
 					"response": {
 						"name": "PROPRIO"
@@ -100,7 +100,7 @@
 					"id": "k3ym6x16",
 					"label": "Quel est votre temps de trajet domicile-travail ?",
 					"componentType": "InputNumber",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": "true",
 					"mandatory": false,
 					"bindingDependencies": ["TPSTRAJET"],
 					"min": 0,
@@ -118,7 +118,7 @@
 			"id": "k3ym61vfzzzzzzzzzzzz",
 			"componentType": "Sequence",
 			"label": "\"Questionnaire logement\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": "true",
 			"bindingDependencies": [],
 			"page": "3"
 		},
@@ -127,7 +127,7 @@
 			"componentType": "CheckboxOne",
 			"mandatory": false,
 			"label": "\"Diriez-vous que votre logement est confortable ?\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": "true",
 			"bindingDependencies": [],
 			"response": {
 				"name": "CONFORT"
@@ -159,7 +159,7 @@
 			"label": "Quelle est la superficie du logement ?",
 			"unit": "m²",
 			"componentType": "InputNumber",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": "true",
 			"bindingDependencies": [],
 			"mandatory": false,
 			"min": 0,

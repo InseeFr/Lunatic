@@ -49,16 +49,16 @@ stories.addWithJSX('External update', () => {
 		const [up, setUp] = useState(false);
 		return (
 			<>
-				{!up && (
-					<button
-						type="button"
-						onClick={() => {
-							setUp(true);
-						}}
-					>
-						Force external update
-					</button>
-				)}
+				<button
+					type="button"
+					onClick={() => {
+						setUp(true);
+					}}
+					disabled={up}
+				>
+					Force external update
+				</button>
+
 				<Orchestrator id="default" source={up ? dataForced : data} />
 			</>
 		);

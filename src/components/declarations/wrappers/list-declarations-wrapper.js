@@ -66,6 +66,14 @@ const ListDeclarationsWrapper = ({
 		}
 	};
 
+	// Assume we only want to handle enable external updates
+	// Don't need to check all value changes
+	useEffect(() => {
+		if (U.getResponseByPreference(preferences)(response) !== value)
+			setValue(U.getResponseByPreference(preferences)(response));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [response, preferences]);
+
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
@@ -98,9 +106,8 @@ const ListDeclarationsWrapper = ({
 						{filledOptions.map(
 							({ label: optionLabel, value: optionValue }, i) => {
 								const checked = value === optionValue;
-								const interpretedLabel = interpret(features)(bindings)(
-									optionLabel
-								);
+								const interpretedLabel =
+									interpret(features)(bindings)(optionLabel);
 								return (
 									<div
 										key={`${type}-${id}-${optionValue}`}

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
+import dataForced from './data-forced';
 import { boolean, select, object } from '@storybook/addon-knobs/react';
 import { positioningOptions, featuresOptions } from '../utils/options';
 
@@ -28,3 +29,25 @@ stories.addWithJSX('Props', () => (
 		management={boolean('Management', false)}
 	/>
 ));
+
+stories.addWithJSX('External update', () => {
+	const Fake = () => {
+		const [up, setUp] = useState(false);
+		return (
+			<>
+				<button
+					type="button"
+					onClick={() => {
+						setUp(true);
+					}}
+					disabled={up}
+				>
+					Force external update
+				</button>
+
+				<Orchestrator id="default" source={up ? dataForced : data} />
+			</>
+		);
+	};
+	return <Fake />;
+});

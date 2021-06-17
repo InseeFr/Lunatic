@@ -82,10 +82,6 @@ const PaginatedLoop = ({
 
 	const flattenComponents = U.buildLoopComponents(iterationNb)(components);
 
-	// if (!U.displayLoop(loopDependencies)(bindings)) {
-	// 	return <div>Pas de questionnaire individuel, passez à la suite</div>;
-	// }
-
 	const {
 		currentRootPage,
 		currentComponentIndex,
@@ -143,20 +139,48 @@ const PaginatedLoop = ({
 		}
 	}
 
+	const localCache = {};
+
 	const loopComponents = flattenComponents.reduce(
 		(
 			acc,
-			{ componentType, id: idC, rowNumber, conditionFilter, page, ...rest }
+			{
+				componentType,
+				id: idC,
+				rowNumber,
+				conditionFilter,
+				page,
+				bindingDependencies = [],
+				...rest
+			}
 		) => {
-			const loopBindings = U.buildBindingsForDeeperComponents(rowNumber)(
-				bindings
-			);
-			if (!U.displayLoopQuestion(loopDependencies)(loopBindings)) return acc;
+			const loopVars = bindingDependencies.map((b) => {
+				if (bindings[b]) return [b, bindings[b]];
+				return [b, null];
+			});
+			const loopBindings = U.buildLoopBindings(rowNumber)(loopVars);
+
+			if (!U.displayLoopQuestion(bindingDependencies)(bindings)) return acc;
 			const Component = lunatic[componentType];
 
+			const { bindingDependencies: filterDependencies = [], value = '' } =
+				conditionFilter;
+
+			const filterVars = filterDependencies.map((b) => {
+				if (bindings[b]) return [b, bindings[b]];
+				return [b, null];
+			});
+			const filterBindings = U.buildLoopBindings(rowNumber)(filterVars);
+			const set = () => {
+				const v = interpret(featuresWithoutMD)(filterBindings)(value);
+				localCache[`${value}-row-${rowNumber}`] = v;
+				return v;
+			};
+
+			const filterResult = localCache[value] || set();
+
 			if (
-				interpret(featuresWithoutMD)(loopBindings, true)(conditionFilter) !==
-					'normal' ||
+				!filterResult ||
 				(pagination && !currentPageWithoutAnyIteration.startsWith(page)) ||
 				(paginatedLoop && rowNumber + 1 !== currentIteration)
 			)
@@ -170,11 +194,13 @@ const PaginatedLoop = ({
 						id={`${idC}-loop-${rowNumber}`}
 						handleChange={(up) => setTodo({ up, rowNumber })}
 						bindings={loopBindings}
+						bindingDependencies={bindingDependencies}
 						componentType={componentType}
 						pagination={pagination}
 						currentPage={currentPage}
 						setPage={setPage}
 						flow={flow}
+						conditionFilter={conditionFilter}
 					/>
 				</div>,
 			];

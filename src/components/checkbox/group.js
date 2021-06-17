@@ -43,6 +43,16 @@ const CheckboxGroup = ({
 		else handleChange(e);
 	};
 
+	// Assume we only want to handle enable external updates
+	// Don't need to check all value changes
+	useEffect(() => {
+		const newValues = responses.map(({ response }) =>
+			U.getResponseByPreference(preferences)(response)
+		);
+		if (newValues.join('|') !== values.join('|')) setValues(newValues);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [responses, preferences]);
+
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);

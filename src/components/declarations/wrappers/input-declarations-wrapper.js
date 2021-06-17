@@ -34,6 +34,7 @@ const InputDeclarationsWrapper = ({
 	unitPosition,
 	validators,
 	isInputNumber,
+	numberAsTextfield,
 }) => {
 	const inputRef = useRef();
 
@@ -72,9 +73,12 @@ const InputDeclarationsWrapper = ({
 	}, [value, min, max, validators, isInputNumber]);
 
 	const handleChangeOnBlur = () => {
+		const finalValue =
+			value && value.endsWith('.') ? value.replace('.', '') : value;
 		handleChange({
-			[U.getResponseName(response)]: value,
+			[U.getResponseName(response)]: finalValue,
 		});
+		if (value !== finalValue) setValue(finalValue);
 	};
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';
@@ -131,8 +135,19 @@ const InputDeclarationsWrapper = ({
 							maxLength={maxLength || 524288}
 							required={mandatory}
 							aria-required={mandatory}
-							onChange={({ target: { value: v } }) => {
-								if (isInputNumber) validate(v);
+							onChange={(e) => {
+								const v = e.target.value;
+								if (isInputNumber) {
+									if (
+										numberAsTextfield &&
+										v !== '' &&
+										!U.isNumberValid(v, decimals)
+									) {
+										e.preventDefault();
+										e.stopPropagation();
+										return null;
+									} else validate(v);
+								}
 								if (management) setValue(v);
 								else setValue(v === '' ? null : v);
 							}}

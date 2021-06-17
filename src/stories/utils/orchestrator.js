@@ -9,6 +9,7 @@ const OrchestratorForStories = ({
 	pagination = false,
 	features,
 	bindings: initialBindings,
+	initialPage = '1',
 	...rest
 }) => {
 	const preferences = management
@@ -35,6 +36,7 @@ const OrchestratorForStories = ({
 		features,
 		management,
 		pagination,
+		initialPage,
 	});
 	const Button = lunatic.Button;
 

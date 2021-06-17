@@ -96,7 +96,7 @@
 			"componentType": "Subsequence",
 			"page": "1",
 			"label": "\"General knowledge of the series\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -118,7 +118,7 @@
 			"page": "1",
 			"maxLength": 30,
 			"label": "\"➡ 3. Who is the producer?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -144,7 +144,7 @@
 			"max": 99,
 			"decimals": 0,
 			"label": "\"➡ 4. What is the current season number?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -177,7 +177,7 @@
 					"label": "\"Please answer with YYYY-MM-DD format\""
 				}
 			],
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -210,7 +210,7 @@
 					"label": "\"Please answer with YYYY-MM format\""
 				}
 			],
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -244,7 +244,7 @@
 					"label": "\"Please answer with YYYY format\""
 				}
 			],
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -271,7 +271,7 @@
 			"max": 70,
 			"decimals": 2,
 			"label": "\"➡ 8. How long does an episode last?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -298,7 +298,7 @@
 			"max": 366,
 			"decimals": 1,
 			"label": "\"➡ 9. How long does it take to write a new episode?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -325,7 +325,7 @@
 			"max": 12,
 			"decimals": 0,
 			"label": "\"➡ 10. How long will it take you to watch all the existing episodes?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -352,7 +352,7 @@
 			"max": 100,
 			"decimals": 0,
 			"label": "\"➡ 11. For how long have you known the Simpsons family?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -379,7 +379,7 @@
 			"max": 99,
 			"decimals": 1,
 			"label": "\"➡ 15. In your opinion, how much is the part of audience share in US for the 2016 season?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -410,7 +410,7 @@
 					"label": "\"This module asks about your general knowledge of the Simpsons city\""
 				}
 			],
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j3341528",
@@ -434,7 +434,7 @@
 					"label": "\"One possible answer\""
 				}
 			],
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j3341528",
@@ -467,7 +467,7 @@
 					"label": "\"Only one possible answer\""
 				}
 			],
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j3341528",
@@ -494,7 +494,7 @@
 			"mandatory": false,
 			"page": "2",
 			"label": "\"➡ 3. In which state do The Simpsons reside?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j3341528",
@@ -538,7 +538,7 @@
 			"componentType": "Sequence",
 			"page": "3",
 			"label": "\"III - Characters\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qe0h9q",
@@ -561,7 +561,7 @@
 					"label": "\"Several possible answers\""
 				}
 			],
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qe0h9q",
@@ -612,7 +612,7 @@
 					"label": "\"Now we are going to know if you think that Jay is a gluton.\""
 				}
 			],
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qe0h9q",
@@ -700,7 +700,7 @@
 			"page": "3",
 			"positioning": "HORIZONTAL",
 			"label": "\"➡ 3. Which character works in the nuclear power plant?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qe0h9q",
@@ -788,7 +788,7 @@
 			"page": "3",
 			"positioning": "HORIZONTAL",
 			"label": "\"➡ 4. In which city each character was born?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qe0h9q",
@@ -921,7 +921,7 @@
 			"componentType": "Sequence",
 			"page": "4",
 			"label": "\"IV - General questions\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -936,7 +936,7 @@
 			"componentType": "Subsequence",
 			"page": "4",
 			"label": "\"Kwik-E-Mart\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -958,7 +958,7 @@
 			"page": "4",
 			"positioning": "HORIZONTAL",
 			"label": "\"➡ 1. Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -1113,7 +1113,7 @@
 			"page": "4",
 			"positioning": "HORIZONTAL",
 			"label": "\"➡ 2. Please specify if Jay has bought each product in his last food shopping\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -1300,7 +1300,7 @@
 			"componentType": "Subsequence",
 			"page": "4",
 			"label": "\"Clowning\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -1322,7 +1322,7 @@
 			"page": "4",
 			"positioning": "HORIZONTAL",
 			"label": "\"➡ 3. Who did these clownings and tell us what you remember?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -1479,7 +1479,7 @@
 			"componentType": "Subsequence",
 			"page": "4",
 			"label": "\"Transport\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -1509,7 +1509,7 @@
 					"label": "\"Several answers possible: check off all the relevant boxes\""
 				}
 			],
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -1756,7 +1756,7 @@
 			"componentType": "Sequence",
 			"page": "5",
 			"label": "\"V - Favourite characters (dynamic table)\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qfx9qe",
@@ -1773,7 +1773,7 @@
 			"page": "5",
 			"positioning": "HORIZONTAL",
 			"label": "\"➡ 1. Please, complete the following grid with your favourite characters\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qfx9qe",
@@ -2155,7 +2155,7 @@
 			"page": "5",
 			"positioning": "HORIZONTAL",
 			"label": "\"➡ 2. How has your feeling about the following characters evolved over time?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qfx9qe",
@@ -2251,7 +2251,7 @@
 			"page": "5",
 			"positioning": "HORIZONTAL",
 			"label": "\"➡ 3. Can you tell how long Bart Simpson has been on leave for each type and whether there has been another type?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qfx9qe",
@@ -2417,7 +2417,7 @@
 			"componentType": "Sequence",
 			"page": "6",
 			"label": "\"VI - Favourite characters (Loop)\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "kiq5mr0b",
@@ -2436,7 +2436,7 @@
 			"max": 20,
 			"decimals": 0,
 			"label": "\"➡ 1. How many characters from the Simpsons family could you precisely describe?\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "kiq5mr0b",
@@ -2453,7 +2453,7 @@
 			"componentType": "Loop",
 			"page": "6",
 			"label": "\"Add a character\"",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"hierarchy": {
 				"sequence": {
 					"id": "kiq5mr0b",
@@ -2468,7 +2468,7 @@
 					"componentType": "Subsequence",
 					"page": "6",
 					"label": "\"Description of each character\"",
-					"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+					"conditionFilter": "not(cast(READY,integer)  <>  1)",
 					"hierarchy": {
 						"sequence": {
 							"id": "kiq5mr0b",
@@ -2490,7 +2490,7 @@
 					"page": "6",
 					"maxLength": 30,
 					"label": "\"➡ 2. What is the first name of this character?\"",
-					"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+					"conditionFilter": "not(cast(READY,integer)  <>  1)",
 					"hierarchy": {
 						"sequence": {
 							"id": "kiq5mr0b",
@@ -2516,7 +2516,7 @@
 					"max": 120,
 					"decimals": 0,
 					"label": "\"➡ 3. How old is this character in the first episode of the Simpsons family?\"",
-					"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+					"conditionFilter": "not(cast(READY,integer)  <>  1)",
 					"hierarchy": {
 						"sequence": {
 							"id": "kiq5mr0b",
@@ -2542,7 +2542,7 @@
 			"maxPage": "1",
 			"min": 0,
 			"iterations": "count(NAME_CHAR)",
-			"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+			"conditionFilter": "not(cast(READY,integer)  <>  1)",
 			"bindingDependencies": ["NAME_CHAR", "FAVCHAR", "MEMORY_CHAR"],
 			"loopDependencies": ["NAME_CHAR", "AGE_CHAR"],
 			"paginatedLoop": true,
@@ -2552,7 +2552,7 @@
 					"componentType": "Sequence",
 					"page": "7.1",
 					"label": "\"VII - Other details about character named \" || cast(cast(NAME_CHAR,string),string) || \" \"",
-					"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+					"conditionFilter": "not(cast(READY,integer)  <>  1)",
 					"hierarchy": {
 						"sequence": {
 							"id": "kiq5xw5p",
@@ -2568,7 +2568,7 @@
 					"mandatory": false,
 					"page": "7.1",
 					"label": "\"➡ 1. Is character named \" || cast(cast(NAME_CHAR,string),string) || \" your favourite one ? \"",
-					"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+					"conditionFilter": "not(cast(READY,integer)  <>  1)",
 					"hierarchy": {
 						"sequence": {
 							"id": "kiq5xw5p",
@@ -2592,7 +2592,7 @@
 					"page": "7.1",
 					"maxLength": 255,
 					"label": "\"➡ 2. What is your best memory about character named \" || cast(cast(NAME_CHAR,string),string) || \" ? \"",
-					"conditionFilter": "if ((not(cast(READY,integer)  <>  1))) then \"normal\" else \"hidden\"",
+					"conditionFilter": "not(cast(READY,integer)  <>  1)",
 					"hierarchy": {
 						"sequence": {
 							"id": "kiq5xw5p",

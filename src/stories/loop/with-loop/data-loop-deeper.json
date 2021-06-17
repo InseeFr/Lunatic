@@ -4,7 +4,7 @@
 			"id": "seq_1",
 			"componentType": "Sequence",
 			"label": "\"Description des ménages du logement\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"bindingDependencies": []
 		},
 		{
@@ -13,7 +13,7 @@
 			"mandatory": true,
 			"positioning": "HORIZONTAL",
 			"label": "\"Ajouter un ménage\"",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"bindingDependencies": ["MENAGE"],
 			"lines": { "min": 1, "max": 10 },
 			"components": [
@@ -21,7 +21,7 @@
 					"id": "input_menage",
 					"label": "Ménage",
 					"componentType": "Input",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"maxLength": 30,
 					"bindingDependencies": ["MENAGE"],
 					"response": {
@@ -34,7 +34,7 @@
 			"id": "loop_menage",
 			"componentType": "Loop",
 			"iterations": "count(MENAGE)",
-			"conditionFilter": "\"normal\"",
+			"conditionFilter": { "value": "true" },
 			"loopDependencies": ["MENAGE"],
 			"bindingDependencies": [
 				"MENAGE",
@@ -50,7 +50,7 @@
 					"id": "seq_2",
 					"componentType": "Sequence",
 					"label": "\"Ménage : \" || MENAGE",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"bindingDependencies": ["MENAGE"]
 				},
 				{
@@ -59,7 +59,7 @@
 					"mandatory": true,
 					"positioning": "HORIZONTAL",
 					"label": "\"Ajouter une famille\"",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"bindingDependencies": ["MENAGE", "FAMILLE"],
 					"lines": { "min": 1, "max": 10 },
 					"components": [
@@ -67,7 +67,7 @@
 							"id": "input_famille",
 							"label": "Famille",
 							"componentType": "Input",
-							"conditionFilter": "\"normal\"",
+							"conditionFilter": { "value": "true" },
 							"maxLength": 30,
 							"bindingDependencies": ["FAMILLE"],
 							"response": {
@@ -80,7 +80,7 @@
 					"id": "loop_famille",
 					"componentType": "Loop",
 					"iterations": "count(FAMILLE)",
-					"conditionFilter": "\"normal\"",
+					"conditionFilter": { "value": "true" },
 					"loopDependencies": ["FAMILLE"],
 					"bindingDependencies": [
 						"MENAGE",
@@ -96,14 +96,14 @@
 							"id": "seq_3",
 							"componentType": "Sequence",
 							"label": "\"Famille : \" || FAMILLE",
-							"conditionFilter": "\"normal\"",
+							"conditionFilter": { "value": "true" },
 							"bindingDependencies": ["FAMILLE"]
 						},
 						{
 							"id": "vehicule",
 							"label": "\"Famille \" || FAMILLE ||\", de combien de véhicule disposez-vous ?\"",
 							"componentType": "InputNumber",
-							"conditionFilter": "\"normal\"",
+							"conditionFilter": { "value": "true" },
 							"bindingDependencies": ["FAMILLE", "NB_VEHICULE"],
 							"mandatory": false,
 							"min": 0,
@@ -119,7 +119,7 @@
 							"mandatory": true,
 							"positioning": "HORIZONTAL",
 							"label": "\"Ajouter un individu\"",
-							"conditionFilter": "\"normal\"",
+							"conditionFilter": { "value": "true" },
 							"bindingDependencies": ["MENAGE", "FAMILLE", "INDIV"],
 							"lines": { "min": 1, "max": 10 },
 							"components": [
@@ -127,7 +127,7 @@
 									"id": "input_indiv",
 									"label": "Individu",
 									"componentType": "Input",
-									"conditionFilter": "\"normal\"",
+									"conditionFilter": { "value": "true" },
 									"maxLength": 30,
 									"bindingDependencies": ["INDIV"],
 									"response": {
@@ -140,7 +140,7 @@
 							"id": "loop_indiv",
 							"componentType": "Loop",
 							"iterations": "count(INDIV)",
-							"conditionFilter": "\"normal\"",
+							"conditionFilter": { "value": "true" },
 							"loopDependencies": ["INDIV"],
 							"bindingDependencies": [
 								"MENAGE",
@@ -155,14 +155,14 @@
 									"id": "seq_4",
 									"componentType": "Sequence",
 									"label": "\"Individu : \" || INDIV",
-									"conditionFilter": "\"normal\"",
+									"conditionFilter": { "value": "true" },
 									"bindingDependencies": ["INDIV"]
 								},
 								{
 									"id": "age",
 									"label": "INDIV || \", quel est votre âge ?\"",
 									"componentType": "InputNumber",
-									"conditionFilter": "\"normal\"",
+									"conditionFilter": { "value": "true" },
 									"bindingDependencies": ["INDIV", "AGE"],
 									"mandatory": false,
 									"min": 0,

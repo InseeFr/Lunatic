@@ -39,6 +39,14 @@ const CheckboxBoolean = ({
 		else handleChange(e);
 	};
 
+	// Assume we only want to handle enable external updates
+	// Don't need to check all value changes
+	useEffect(() => {
+		if (U.getResponseByPreference(preferences)(response) !== value)
+			setValue(U.getResponseByPreference(preferences)(response));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [response, preferences]);
+
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);

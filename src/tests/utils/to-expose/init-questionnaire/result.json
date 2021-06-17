@@ -1,6 +1,6 @@
 {
 	"components": [
-		{ "id": "1", "componentType": "Sequence", "depth": 1 },
+		{ "id": "1", "componentType": "Sequence", "depth": 1, "page": "1" },
 		{
 			"id": "2",
 			"componentType": "Input",
@@ -14,11 +14,19 @@
 					"INPUTED": null
 				}
 			},
-			"depth": 1
+			"conditionFilter": { "value": "true" },
+			"depth": 1,
+			"page": "1"
 		},
 		{
 			"id": "3",
 			"componentType": "CheckboxGroup",
+			"bindingDependencies": ["inputOk"],
+			"conditionFilter": {
+				"value": "not(isnull(inputOk))",
+				"bindingDependencies": ["inputOk"]
+			},
+			"page": "2",
 			"responses": [
 				{
 					"response": {
@@ -50,6 +58,7 @@
 		{
 			"id": "4",
 			"componentType": "Table",
+			"page": "2",
 			"cells": [
 				[
 					{ "label": "label", "depth": 1 },
@@ -74,6 +83,7 @@
 		{
 			"id": "5",
 			"componentType": "RosterForLoop",
+			"page": "2",
 			"components": [
 				{
 					"componentType": "Input",
