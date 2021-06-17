@@ -22,6 +22,7 @@ const Table = ({
 	hideBtn,
 	management,
 	numberAsTextfield,
+	logFunction,
 }) => {
 	const minLines = initLines
 		? Math.max(initLines.min, U.getRosterInitLines(cells))
@@ -114,6 +115,8 @@ const Table = ({
 					label="addLine"
 					value={addBtnLabel}
 					onClick={() => setLines(lines + 1)}
+					id={tableId}
+					logFunction={logFunction}
 				/>
 			)}
 			<Declarations

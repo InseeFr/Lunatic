@@ -132,6 +132,8 @@ const LoopConstructorWrapper = ({
 					// 	U.lastLoopChildLineIsEmpty(bindings)(involvedVariables)
 					// }
 					onClick={addLine}
+					id={mainId}
+					logFunction={otherProps?.logFunction}
 				/>
 			)}
 			<Declarations
