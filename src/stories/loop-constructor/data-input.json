@@ -7,7 +7,7 @@
 			"min": 1,
 			"max": 4,
 			"decimals": 0,
-			"label": "Loop Num",
+			"label": "Loop Num (affichera le nombre saisi + 1)",
 			"response": {
 				"name": "NUM"
 			}
@@ -16,10 +16,10 @@
 			"id": "idLoop",
 			"label": "boucle individu",
 			"componentType": "Loop",
-			"iterations": "NUM",
+			"iterations": "NUM_ONE",
 			"conditionFilter": { "value": "true" },
-			"loopDependencies": ["NUM"],
-			"bindingDependencies": ["PRENOM", "NUM"],
+			"loopDependencies": ["NUM_ONE"],
+			"bindingDependencies": ["PRENOM", "NUM_ONE"],
 			"components": [
 				{
 					"id": "k3ym6x16",
@@ -59,6 +59,12 @@
 				"EDITED": [null],
 				"INPUTED": [null]
 			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "cast(NUM, integer) + 1",
+			"name": "NUM_ONE",
+			"bindingDependencies": ["NUM"]
 		}
 	]
 }
