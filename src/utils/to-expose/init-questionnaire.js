@@ -1,5 +1,6 @@
 import * as C from '../../constants';
 import { interpret } from './interpret';
+import { buildVectorialBindings } from '../lib/loops/bindings';
 
 const INITIAL_DEPTH = 1;
 
@@ -34,6 +35,21 @@ const buildVars = (data) => (variables) => {
 	const EXTERNAL = variables
 		.filter(({ variableType }) => variableType === C.EXTERNAL)
 		.reduce((_, v) => ({ ..._, ...initExternalVariable(v)(data) }), {});
+	const bindings = Object.entries({ ...collected, ...EXTERNAL }).reduce(
+		(acc, [k, v]) => {
+			if (!v?.values)
+				return {
+					...acc,
+					[k]: v,
+				};
+			return {
+				...acc,
+				[k]: v.values[C.COLLECTED],
+			};
+		},
+		{}
+	);
+	const vectorialBindings = buildVectorialBindings(bindings);
 	return {
 		EXTERNAL,
 		COLLECTED: collected,
@@ -42,7 +58,7 @@ const buildVars = (data) => (variables) => {
 			.reduce(
 				(_, v) => ({
 					..._,
-					...initCalculatedVariable(v)({ ...EXTERNAL, ...collected }),
+					...initCalculatedVariable(v)(vectorialBindings),
 				}),
 				{}
 			),
@@ -100,22 +116,14 @@ const initExternalVariable =
 
 const initCalculatedVariable =
 	({ name, expression, bindingDependencies }) =>
-	(data) => {
-		const bindings = Object.entries(data).reduce(
-			(acc, [key, value]) => ({
-				...acc,
-				[key]:
-					typeof value === 'string' || value === null
-						? value
-						: value.values[C.COLLECTED],
-			}),
-			{}
-		);
+	(bindings) => {
+		const res = interpret(['VTL'])(bindings)(expression);
+		const value = Array.isArray(res) ? res[0] : res;
 		return {
 			[name]: {
 				expression,
 				bindingDependencies,
-				value: interpret(['VTL'])(bindings)(expression),
+				value,
 			},
 		};
 	};

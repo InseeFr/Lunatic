@@ -79,7 +79,7 @@ const useLunatic = (
 	};
 
 	const handleChange = useCallback((updatedValue) => {
-		setTodo(updatedValue);
+		setTodo((t) => ({ ...t, ...updatedValue }));
 	}, []);
 
 	// Assume we only want to handle source update

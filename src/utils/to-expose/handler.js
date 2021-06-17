@@ -103,7 +103,7 @@ const addCalculatedVars = (variables, updatedValues) => {
 			}, {});
 			const bindings = buildVectorialBindings(interestVars);
 			const res = interpret(['VTL'])(bindings)(expression);
-			const newValue = Array.isArray(res) ? res.join(',') : res;
+			const newValue = Array.isArray(res) ? res[0] : res;
 			return {
 				...acc,
 				[key]: { expression, value: newValue, bindingDependencies },

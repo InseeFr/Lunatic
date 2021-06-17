@@ -171,10 +171,9 @@ const PaginatedLoop = ({
 				return [b, null];
 			});
 			const filterBindings = U.buildLoopBindings(rowNumber)(filterVars);
-
 			const set = () => {
 				const v = interpret(featuresWithoutMD)(filterBindings)(value);
-				localCache[value] = v;
+				localCache[`${value}-row-${rowNumber}`] = v;
 				return v;
 			};
 
@@ -201,6 +200,7 @@ const PaginatedLoop = ({
 						currentPage={currentPage}
 						setPage={setPage}
 						flow={flow}
+						conditionFilter={conditionFilter}
 					/>
 				</div>,
 			];
