@@ -24,6 +24,8 @@ const CheckboxGroup = ({
 	bindings,
 	management,
 	style,
+	componentType,
+	logFunction,
 }) => {
 	const { fieldsetStyle, modalityStyle } = style;
 	const inputRef = useRef();
@@ -118,6 +120,15 @@ const CheckboxGroup = ({
 													specificHandleChange({
 														[U.getResponseName(response)]: checked,
 													});
+													if (U.isFunction(logFunction))
+														logFunction({
+															id,
+															componentType,
+															responseName: U.getResponseName(response),
+															value: checked,
+															category: C.INPUT_CATEGORY,
+															type: C.SELECTION,
+														});
 												}}
 											/>
 											<label

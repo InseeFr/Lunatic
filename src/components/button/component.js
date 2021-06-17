@@ -1,20 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { buildStyleObject } from '../../utils/lib';
+import { buildStyleObject, isFunction } from '../../utils/lib';
 import './button.scss';
+import { BUTTON_CATEGORY } from '../../constants';
 
-const Button = ({ label, value, onClick, disabled, style }) => (
-	<button
-		type="button"
-		aria-label={label || 'button'}
-		className="button-lunatic"
-		style={buildStyleObject(style)}
-		disabled={disabled}
-		onClick={onClick}
-	>
-		{value}
-	</button>
-);
+const Button = ({
+	label,
+	value,
+	onClick,
+	disabled,
+	style,
+	logFunction,
+	id,
+}) => {
+	const handleClick = (e) => {
+		onClick(e);
+		if (isFunction(logFunction))
+			logFunction({
+				id: `${id}-button`,
+				value,
+				category: BUTTON_CATEGORY,
+			});
+	};
+	return (
+		<button
+			type="button"
+			aria-label={label || 'button'}
+			className="button-lunatic"
+			style={buildStyleObject(style)}
+			disabled={disabled}
+			onClick={handleClick}
+		>
+			{value}
+		</button>
+	);
+};
 
 Button.propTypes = {
 	value: PropTypes.string.isRequired,

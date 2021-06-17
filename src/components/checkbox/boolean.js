@@ -23,6 +23,8 @@ const CheckboxBoolean = ({
 	bindings,
 	management,
 	style,
+	componentType,
+	logFunction,
 }) => {
 	const inputRef = useRef();
 
@@ -72,6 +74,15 @@ const CheckboxBoolean = ({
 						specificHandleChange({
 							[U.getResponseName(response)]: checked,
 						});
+						if (U.isFunction(logFunction))
+							logFunction({
+								id,
+								componentType,
+								responseName: U.getResponseName(response),
+								value: checked,
+								category: C.INPUT_CATEGORY,
+								type: C.SELECTION,
+							});
 					}}
 				/>
 				{interpretedLabel && (

@@ -35,8 +35,16 @@ const InputDeclarationsWrapper = ({
 	validators,
 	isInputNumber,
 	numberAsTextfield,
+	componentType,
+	logFunction,
 }) => {
 	const inputRef = useRef();
+	const logInfo = {
+		id,
+		componentType,
+		responseName: U.getResponseName(response),
+		category: C.INPUT_CATEGORY,
+	};
 
 	const [value, setValue] = useState(() =>
 		U.getResponseByPreference(preferences)(response)
@@ -78,7 +86,22 @@ const InputDeclarationsWrapper = ({
 		handleChange({
 			[U.getResponseName(response)]: finalValue,
 		});
+		if (U.isFunction(logFunction))
+			logFunction({
+				...logInfo,
+				value: value,
+				type: C.FOCUS_OUT,
+			});
 		if (value !== finalValue) setValue(finalValue);
+	};
+
+	const handleFocusIn = () => {
+		if (U.isFunction(logFunction))
+			logFunction({
+				...logInfo,
+				value: value,
+				type: C.FOCUS_IN,
+			});
 	};
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';
@@ -152,6 +175,7 @@ const InputDeclarationsWrapper = ({
 								else setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
+							onFocus={handleFocusIn}
 						/>
 						{isInputNumber && unit && unitPosition === 'AFTER' && (
 							<span className="unit">{unit}</span>
