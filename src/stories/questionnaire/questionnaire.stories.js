@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Orchestrator from '../utils/orchestrator';
 import { titleDecorator } from 'utils/lib';
+import calcVar from './calc-var';
 import logement from './logement';
 import simpsons from './simpsons';
 import { positioningOptions, featuresOptions } from '../utils/options';
@@ -13,6 +14,18 @@ const def = storiesOf('Questionnaire/Default', module).addDecorator(
 		return <WrappedComponent title="<Questionnaire />" />;
 	}
 );
+
+def.addWithJSX('Calculated Variables', () => (
+	<Orchestrator
+		id="props"
+		source={calcVar}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		disabled={boolean('Disabled', false)}
+		focused={boolean('Focused', false)}
+		management={boolean('Management', false)}
+	/>
+));
 
 def.addWithJSX('Logement', () => (
 	<Orchestrator
@@ -44,6 +57,19 @@ const paginated = storiesOf('Questionnaire/Paginated', module).addDecorator(
 		return <WrappedComponent title="<Questionnaire />" />;
 	}
 );
+
+paginated.addWithJSX('Calculated Variables', () => (
+	<Orchestrator
+		id="props"
+		source={calcVar}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		disabled={boolean('Disabled', false)}
+		focused={boolean('Focused', false)}
+		management={boolean('Management', false)}
+		pagination
+	/>
+));
 
 paginated.addWithJSX('Logement', () => (
 	<Orchestrator
