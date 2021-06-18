@@ -52,7 +52,7 @@ const CheckboxBoolean = ({
 		if (focused) inputRef.current.focus();
 	}, [focused]);
 
-	const interpretedLabel = interpret(features)(bindings)(label);
+	const interpretedLabel = interpret(features, logFunction)(bindings)(label);
 
 	const isVertical = positioning === 'VERTICAL';
 	const isHorizontal = positioning === 'HORIZONTAL';
@@ -104,7 +104,7 @@ const CheckboxBoolean = ({
 			/>
 			{label && !isHorizontal && (
 				<label htmlFor={`checkbox-boolean-${id}`}>
-					{interpret(features)(bindings)(label)}
+					{interpret(features, logFunction)(bindings)(label)}
 				</label>
 			)}
 			<Declarations

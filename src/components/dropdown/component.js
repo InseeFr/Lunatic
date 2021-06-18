@@ -43,7 +43,9 @@ const Dropdown = ({
 		}
 	}, [freezeOptions, features, bindings, options]);
 
-	const interpretedLabel = interpret(features)(bindings)(label);
+	const interpretedLabel = interpret(features, rest?.logFunction)(bindings)(
+		label
+	);
 	const value = U.getResponseByPreference(preferences)(response);
 
 	const onSelect = (e) =>

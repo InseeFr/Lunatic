@@ -106,7 +106,7 @@ const ListDeclarationsWrapper = ({
 						className={`${type}-group-list`}
 						style={U.buildStyleObject(fieldsetStyle)}
 					>
-						<legend>{interpret(features)(bindings)(label)}</legend>
+						<legend>{interpret(features, logFunction)(bindings)(label)}</legend>
 						<Declarations
 							id={id}
 							type={C.AFTER_QUESTION_TEXT}
@@ -117,8 +117,10 @@ const ListDeclarationsWrapper = ({
 						{filledOptions.map(
 							({ label: optionLabel, value: optionValue }, i) => {
 								const checked = value === optionValue;
-								const interpretedLabel =
-									interpret(features)(bindings)(optionLabel);
+								const interpretedLabel = interpret(
+									features,
+									logFunction
+								)(bindings)(optionLabel);
 								return (
 									<div
 										key={`${type}-${id}-${optionValue}`}

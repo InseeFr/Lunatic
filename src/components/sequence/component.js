@@ -5,7 +5,15 @@ import * as U from '../../utils/lib';
 import { interpret } from '../../utils/to-expose';
 import './sequence.scss';
 
-const Sequence = ({ id, label, declarations, features, bindings, style }) => (
+const Sequence = ({
+	id,
+	label,
+	declarations,
+	features,
+	bindings,
+	style,
+	logFunction,
+}) => (
 	<SimpleDeclarationsWrapper
 		id={id}
 		declarations={declarations}
@@ -17,7 +25,7 @@ const Sequence = ({ id, label, declarations, features, bindings, style }) => (
 			className="sequence-lunatic"
 			style={U.buildStyleObject(style)}
 		>
-			{interpret(features)(bindings)(label)}
+			{interpret(features, logFunction)(bindings)(label)}
 		</div>
 	</SimpleDeclarationsWrapper>
 );

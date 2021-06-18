@@ -72,7 +72,10 @@ const BodyComponent = ({
 									colSpan: colspan || 1,
 									rowSpan: rowspan || 1,
 								};
-								const interpretedLabel = interpret(features)(bindings)(label);
+								const interpretedLabel = interpret(
+									features,
+									logFunction
+								)(bindings)(label);
 								return headerCell ? (
 									<th {...cellOptions}>{interpretedLabel}</th>
 								) : (

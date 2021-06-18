@@ -112,7 +112,7 @@ const InputDeclarationsWrapper = ({
 						id={`${roleType}-label-${id}`}
 						className={`${mandatory ? 'mandatory' : ''}`}
 					>
-						{interpret(features)(bindings)(label)}
+						{interpret(features, logFunction)(bindings)(label)}
 						{isInputNumber &&
 							unit &&
 							['DEFAULT', 'BEFORE'].includes(unitPosition) && (

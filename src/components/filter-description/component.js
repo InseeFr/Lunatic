@@ -10,6 +10,7 @@ const FilterDescription = ({
 	features,
 	bindings,
 	style,
+	logFunction,
 }) =>
 	filterDescription ? (
 		<div
@@ -18,7 +19,7 @@ const FilterDescription = ({
 			className="filter-description-lunatic"
 			style={buildStyleObject(style)}
 		>
-			{interpret(features)(bindings)(label)}
+			{interpret(features, logFunction)(bindings)(label)}
 		</div>
 	) : null;
 

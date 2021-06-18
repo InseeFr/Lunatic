@@ -74,7 +74,7 @@ const CheckboxGroup = ({
 				className="checkbox-group-list"
 				style={U.buildStyleObject(fieldsetStyle)}
 			>
-				<legend>{interpret(features)(bindings)(label)}</legend>
+				<legend>{interpret(features, logFunction)(bindings)(label)}</legend>
 				<Declarations
 					id={id}
 					type={C.AFTER_QUESTION_TEXT}

@@ -84,7 +84,8 @@ const LoopConstructorWrapper = ({
 	};
 
 	const customBtnLabel =
-		(componentType === 'Loop' && interpret(features)(bindings)(mainLabel)) ||
+		(componentType === 'Loop' &&
+			interpret(features, otherProps?.logFunction)(bindings)(mainLabel)) ||
 		addBtnLabel;
 
 	return (
@@ -101,7 +102,7 @@ const LoopConstructorWrapper = ({
 					htmlFor={`loops-constructor-${mainId}`}
 					id={`loops-constructor-label-${mainId}`}
 				>
-					{interpret(features)(bindings)(mainLabel)}
+					{interpret(features, otherProps?.logFunction)(bindings)(mainLabel)}
 				</label>
 			)}
 			<Declarations
