@@ -21,6 +21,7 @@ const Suggester = ({
 	management,
 	labelPosition,
 	style,
+	logFunction,
 }) => {
 	return (
 		<>
@@ -34,7 +35,7 @@ const Suggester = ({
 			<div className={U.getLabelPositionClass(labelPosition)}>
 				{label && (
 					<label htmlFor={`suggester-${id}`}>
-						{interpret(features)(bindings)(label)}
+						{interpret(features, logFunction)(bindings)(label)}
 					</label>
 				)}
 				<Declarations

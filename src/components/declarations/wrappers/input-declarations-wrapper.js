@@ -35,9 +35,17 @@ const InputDeclarationsWrapper = ({
 	validators,
 	isInputNumber,
 	numberAsTextfield,
+	logFunction,
 }) => {
 	const inputRef = useRef();
-
+	const createEventFocus = (focusIn = true) =>
+		U.createObjectEvent(
+			`${roleType}-${id}`,
+			C.INPUT_CATEGORY,
+			focusIn ? C.EVENT_FOCUS_IN : C.EVENT_FOCUS_OUT,
+			U.getResponseName(response),
+			value
+		);
 	const [value, setValue] = useState(() =>
 		U.getResponseByPreference(preferences)(response)
 	);
@@ -78,7 +86,12 @@ const InputDeclarationsWrapper = ({
 		handleChange({
 			[U.getResponseName(response)]: finalValue,
 		});
+		if (U.isFunction(logFunction)) logFunction(createEventFocus(false));
 		if (value !== finalValue) setValue(finalValue);
+	};
+
+	const handleFocusIn = () => {
+		if (U.isFunction(logFunction)) logFunction(createEventFocus());
 	};
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';
@@ -99,7 +112,7 @@ const InputDeclarationsWrapper = ({
 						id={`${roleType}-label-${id}`}
 						className={`${mandatory ? 'mandatory' : ''}`}
 					>
-						{interpret(features)(bindings)(label)}
+						{interpret(features, logFunction)(bindings)(label)}
 						{isInputNumber &&
 							unit &&
 							['DEFAULT', 'BEFORE'].includes(unitPosition) && (
@@ -152,6 +165,7 @@ const InputDeclarationsWrapper = ({
 								else setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
+							onFocus={handleFocusIn}
 						/>
 						{isInputNumber && unit && unitPosition === 'AFTER' && (
 							<span className="unit">{unit}</span>

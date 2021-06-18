@@ -22,6 +22,7 @@ const Table = ({
 	hideBtn,
 	management,
 	numberAsTextfield,
+	logFunction,
 }) => {
 	const minLines = initLines
 		? Math.max(initLines.min, U.getRosterInitLines(cells))
@@ -45,7 +46,7 @@ const Table = ({
 					htmlFor={`table-one-axis-${tableId}`}
 					id={`table-one-axis-label-${tableId}`}
 				>
-					{interpret(features)(bindings)(tableLabel)}
+					{interpret(features, logFunction)(bindings)(tableLabel)}
 				</label>
 			)}
 			<Declarations
@@ -97,7 +98,10 @@ const Table = ({
 										colSpan: colspan || 1,
 										rowSpan: rowspan || 1,
 									};
-									const interpretedLabel = interpret(features)(bindings)(label);
+									const interpretedLabel = interpret(
+										features,
+										logFunction
+									)(bindings)(label);
 									return headerCell ? (
 										<th {...cellOptions}>{interpretedLabel}</th>
 									) : (
@@ -114,6 +118,8 @@ const Table = ({
 					label="addLine"
 					value={addBtnLabel}
 					onClick={() => setLines(lines + 1)}
+					id={tableId}
+					logFunction={logFunction}
 				/>
 			)}
 			<Declarations
