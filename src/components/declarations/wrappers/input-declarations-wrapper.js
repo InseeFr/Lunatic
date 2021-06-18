@@ -35,17 +35,17 @@ const InputDeclarationsWrapper = ({
 	validators,
 	isInputNumber,
 	numberAsTextfield,
-	componentType,
 	logFunction,
 }) => {
 	const inputRef = useRef();
-	const logInfo = {
-		id,
-		componentType,
-		responseName: U.getResponseName(response),
-		category: C.INPUT_CATEGORY,
-	};
-
+	const createEventFocus = (focusIn = true) =>
+		U.createObjectEvent(
+			`${roleType}-${id}`,
+			C.INPUT_CATEGORY,
+			focusIn ? C.EVENT_FOCUS_IN : C.EVENT_FOCUS_OUT,
+			U.getResponseName(response),
+			value
+		);
 	const [value, setValue] = useState(() =>
 		U.getResponseByPreference(preferences)(response)
 	);
@@ -86,22 +86,12 @@ const InputDeclarationsWrapper = ({
 		handleChange({
 			[U.getResponseName(response)]: finalValue,
 		});
-		if (U.isFunction(logFunction))
-			logFunction({
-				...logInfo,
-				value: value,
-				type: C.EVENT_FOCUS_OUT,
-			});
+		if (U.isFunction(logFunction)) logFunction(createEventFocus(false));
 		if (value !== finalValue) setValue(finalValue);
 	};
 
 	const handleFocusIn = () => {
-		if (U.isFunction(logFunction))
-			logFunction({
-				...logInfo,
-				value: value,
-				type: C.EVENT_FOCUS_IN,
-			});
+		if (U.isFunction(logFunction)) logFunction(createEventFocus());
 	};
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';

@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { buildStyleObject, isFunction } from '../../utils/lib';
+import {
+	buildStyleObject,
+	createObjectEvent,
+	isFunction,
+} from '../../utils/lib';
 import './button.scss';
 import { BUTTON_CATEGORY, EVENT_CLICK } from '../../constants';
 
@@ -16,12 +20,15 @@ const Button = ({
 	const handleClick = (e) => {
 		onClick(e);
 		if (isFunction(logFunction))
-			logFunction({
-				id: `${id}-button`,
-				type: EVENT_CLICK,
-				value,
-				category: BUTTON_CATEGORY,
-			});
+			logFunction(
+				createObjectEvent(
+					`button-lunatic-${id}`,
+					BUTTON_CATEGORY,
+					EVENT_CLICK,
+					null,
+					value
+				)
+			);
 	};
 	return (
 		<button

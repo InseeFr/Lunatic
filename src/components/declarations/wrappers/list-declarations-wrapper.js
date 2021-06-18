@@ -26,7 +26,6 @@ const ListDeclarationsWrapper = ({
 	positioning,
 	type,
 	hasSpecificHandler,
-	componentType,
 	logFunction,
 }) => {
 	const inputRef = useRef();
@@ -67,14 +66,15 @@ const ListDeclarationsWrapper = ({
 			handleChange(update);
 		}
 		if (U.isFunction(logFunction))
-			logFunction({
-				id,
-				componentType,
-				responseName: U.getResponseName(response),
-				value: v,
-				category: C.INPUT_CATEGORY,
-				type: C.EVENT_SELECTION,
-			});
+			logFunction(
+				U.createObjectEvent(
+					`${type}-${id}-${v}`,
+					C.INPUT_CATEGORY,
+					C.EVENT_SELECTION,
+					U.getResponseName(response),
+					v
+				)
+			);
 	};
 
 	// Assume we only want to handle enable external updates

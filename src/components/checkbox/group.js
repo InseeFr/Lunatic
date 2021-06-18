@@ -24,7 +24,6 @@ const CheckboxGroup = ({
 	bindings,
 	management,
 	style,
-	componentType,
 	logFunction,
 }) => {
 	const { fieldsetStyle, modalityStyle } = style;
@@ -121,14 +120,15 @@ const CheckboxGroup = ({
 														[U.getResponseName(response)]: checked,
 													});
 													if (U.isFunction(logFunction))
-														logFunction({
-															id,
-															componentType,
-															responseName: U.getResponseName(response),
-															value: checked,
-															category: C.INPUT_CATEGORY,
-															type: C.EVENT_SELECTION,
-														});
+														logFunction(
+															U.createObjectEvent(
+																`checkbox-${id}-${modId}`,
+																C.INPUT_CATEGORY,
+																C.EVENT_SELECTION,
+																U.getResponseName(response),
+																checked
+															)
+														);
 												}}
 											/>
 											<label

@@ -23,7 +23,6 @@ const CheckboxBoolean = ({
 	bindings,
 	management,
 	style,
-	componentType,
 	logFunction,
 }) => {
 	const inputRef = useRef();
@@ -75,14 +74,15 @@ const CheckboxBoolean = ({
 							[U.getResponseName(response)]: checked,
 						});
 						if (U.isFunction(logFunction))
-							logFunction({
-								id,
-								componentType,
-								responseName: U.getResponseName(response),
-								value: checked,
-								category: C.INPUT_CATEGORY,
-								type: C.EVENT_SELECTION,
-							});
+							logFunction(
+								U.createObjectEvent(
+									`checkbox-boolean-${id}`,
+									C.INPUT_CATEGORY,
+									C.EVENT_SELECTION,
+									U.getResponseName(response),
+									checked
+								)
+							);
 					}}
 				/>
 				{interpretedLabel && (
