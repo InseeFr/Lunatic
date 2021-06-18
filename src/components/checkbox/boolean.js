@@ -81,7 +81,7 @@ const CheckboxBoolean = ({
 								responseName: U.getResponseName(response),
 								value: checked,
 								category: C.INPUT_CATEGORY,
-								type: C.SELECTION,
+								type: C.EVENT_SELECTION,
 							});
 					}}
 				/>

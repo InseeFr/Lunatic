@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { buildStyleObject, isFunction } from '../../utils/lib';
 import './button.scss';
-import { BUTTON_CATEGORY } from '../../constants';
+import { BUTTON_CATEGORY, EVENT_CLICK } from '../../constants';
 
 const Button = ({
 	label,
@@ -18,6 +18,7 @@ const Button = ({
 		if (isFunction(logFunction))
 			logFunction({
 				id: `${id}-button`,
+				type: EVENT_CLICK,
 				value,
 				category: BUTTON_CATEGORY,
 			});

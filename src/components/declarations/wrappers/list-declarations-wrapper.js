@@ -73,7 +73,7 @@ const ListDeclarationsWrapper = ({
 				responseName: U.getResponseName(response),
 				value: v,
 				category: C.INPUT_CATEGORY,
-				type: C.SELECTION,
+				type: C.EVENT_SELECTION,
 			});
 	};
 

@@ -90,7 +90,7 @@ const InputDeclarationsWrapper = ({
 			logFunction({
 				...logInfo,
 				value: value,
-				type: C.FOCUS_OUT,
+				type: C.EVENT_FOCUS_OUT,
 			});
 		if (value !== finalValue) setValue(finalValue);
 	};
@@ -100,7 +100,7 @@ const InputDeclarationsWrapper = ({
 			logFunction({
 				...logInfo,
 				value: value,
-				type: C.FOCUS_IN,
+				type: C.EVENT_FOCUS_IN,
 			});
 	};
 
