@@ -166,9 +166,8 @@ const Loop = ({
 				if (bindings[b]) return [b, bindings[b]];
 				return [b, null];
 			});
-			console.log(bindings['LIB_FEM']);
 			const loopBindings = U.buildLoopBindings(rowNumber)(loopVars);
-			console.log(loopBindings);
+
 			if (!U.displayLoopQuestion(bindingDependencies)(bindings)) return acc;
 			const Component = lunatic[componentType];
 
