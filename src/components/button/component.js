@@ -26,7 +26,7 @@ const Button = ({
 					BUTTON_CATEGORY,
 					EVENT_CLICK,
 					null,
-					value
+					label
 				)
 			);
 	};
