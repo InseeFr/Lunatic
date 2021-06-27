@@ -88,6 +88,7 @@ const Table = ({
 													{...componentProps}
 													zIndex={cells.length - i || 0}
 													numberAsTextfield
+													logFunction={logFunction}
 												/>
 											</td>
 										);
