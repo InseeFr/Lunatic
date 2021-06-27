@@ -15147,7 +15147,7 @@
 		{
 			"variableType": "CALCULATED",
 			"name": "NHAB",
-			"expression": "if (cast(NBHAB,integer)  <>  \"\") then cast(NBHAB,integer) else 1",
+			"expression": "if (not(isnull(cast(NBHAB,integer)))) then cast(NBHAB,integer) else 1",
 			"bindingDependencies": ["NBHAB"]
 		},
 
