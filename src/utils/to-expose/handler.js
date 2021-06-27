@@ -1,8 +1,7 @@
 import * as C from '../../constants';
 import { buildFilledComponent } from './init-questionnaire';
 import { supportedPreferences } from '../../constants/supported-preferences';
-import { interpret } from './interpret';
-import { buildVectorialBindings } from '../lib/loops/bindings';
+import { getCalculatedVariables } from './init-questionnaire';
 import { isDev } from '../lib';
 
 export const updateQuestionnaire =
@@ -70,6 +69,15 @@ export const buildNewValue =
 		return lastValue === value ? null : value;
 	};
 
+const getCollectedAndExternal = (variables) => {
+	const { COLLECTED } = variables;
+	const collected = Object.entries(COLLECTED).reduce(
+		(acc, [k, { values }]) => ({ ...acc, [k]: values.COLLECTED }),
+		{}
+	);
+	return { ...collected, ...variables.EXTERNAL };
+};
+
 const addCalculatedVars = (variables, updatedValues) => {
 	if (
 		!variables[C.CALCULATED] ||
@@ -86,31 +94,18 @@ const addCalculatedVars = (variables, updatedValues) => {
 
 	const updatedVars = Object.keys(updatedValues);
 
-	const calculated = Object.entries(CALCULATED).reduce(
-		(acc, [key, { expression, value, bindingDependencies }]) => {
-			if (
-				Array.isArray(bindingDependencies) &&
-				!updatedVars.some((ai) => bindingDependencies.includes(ai))
-			)
-				return { ...acc, [key]: { expression, value, bindingDependencies } };
-			// Assume that a calculated variable has a first level scope
-			// If we need to handle deep calculated variables, we have to
-			// update the shape of bindings, grouping vars by type
-			const interestVars = (bindingDependencies || []).reduce((acc, b) => {
-				if (COLLECTED[b])
-					return { ...acc, [b]: COLLECTED[b].values[C.COLLECTED] };
-				return { ...acc, [b]: EXTERNAL[b] };
-			}, {});
-			const bindings = buildVectorialBindings(interestVars);
-			const res = interpret(['VTL'])(bindings)(expression);
-			const newValue = Array.isArray(res) ? res[0] : res;
-			return {
-				...acc,
-				[key]: { expression, value: newValue, bindingDependencies },
-			};
-		},
-		{}
-	);
+	const bindings = getCollectedAndExternal(variables);
+
+	const calculated = Object.entries(CALCULATED).reduce((acc, [key, v]) => {
+		const { bindingDependencies } = v;
+		if (
+			Array.isArray(bindingDependencies) &&
+			!updatedVars.some((ai) => bindingDependencies.includes(ai))
+		) {
+			return { ...acc, [key]: v };
+		}
+		return { ...acc, ...getCalculatedVariables({ name: key, ...v })(bindings) };
+	}, {});
 
 	if (isDev)
 		console.log(`End var calculation: ${new Date().getTime() - start} ms`);

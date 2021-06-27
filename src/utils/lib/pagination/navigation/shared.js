@@ -66,7 +66,7 @@ const getSimpleNewPage = ({
 			else return null;
 		}, null);
 
-export const splitPage = (currentPage, depth) => {
+export const splitPage = (currentPage = '1', depth) => {
 	const currentPageWithDepth = depth
 		? currentPage
 				.split('.')

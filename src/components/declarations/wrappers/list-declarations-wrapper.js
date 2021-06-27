@@ -26,6 +26,7 @@ const ListDeclarationsWrapper = ({
 	positioning,
 	type,
 	hasSpecificHandler,
+	logFunction,
 }) => {
 	const inputRef = useRef();
 
@@ -64,6 +65,16 @@ const ListDeclarationsWrapper = ({
 			setValue(v);
 			handleChange(update);
 		}
+		if (U.isFunction(logFunction))
+			logFunction(
+				U.createObjectEvent(
+					`${type}-${id}-${v}`,
+					C.INPUT_CATEGORY,
+					C.EVENT_SELECTION,
+					U.getResponseName(response),
+					v
+				)
+			);
 	};
 
 	// Assume we only want to handle enable external updates
@@ -95,7 +106,7 @@ const ListDeclarationsWrapper = ({
 						className={`${type}-group-list`}
 						style={U.buildStyleObject(fieldsetStyle)}
 					>
-						<legend>{interpret(features)(bindings)(label)}</legend>
+						<legend>{interpret(features, logFunction)(bindings)(label)}</legend>
 						<Declarations
 							id={id}
 							type={C.AFTER_QUESTION_TEXT}
@@ -106,8 +117,10 @@ const ListDeclarationsWrapper = ({
 						{filledOptions.map(
 							({ label: optionLabel, value: optionValue }, i) => {
 								const checked = value === optionValue;
-								const interpretedLabel =
-									interpret(features)(bindings)(optionLabel);
+								const interpretedLabel = interpret(
+									features,
+									logFunction
+								)(bindings)(optionLabel);
 								return (
 									<div
 										key={`${type}-${id}-${optionValue}`}

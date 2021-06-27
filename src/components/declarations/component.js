@@ -4,7 +4,14 @@ import * as U from '../../utils/lib';
 import { interpret } from '../../utils/to-expose';
 import './declarations.scss';
 
-const Declarations = ({ id, type, declarations, features, bindings }) => {
+const Declarations = ({
+	id,
+	type,
+	declarations,
+	features,
+	bindings,
+	logFunction,
+}) => {
 	const filtered = declarations.filter(({ position }) => position === type);
 	return (
 		<div id={`declarations-${id}-${type}`} className="declarations-lunatic">
@@ -13,7 +20,7 @@ const Declarations = ({ id, type, declarations, features, bindings }) => {
 					key={`${idD}`}
 					className={`declaration-lunatic declaration-${declarationType.toLowerCase()}`}
 				>
-					{interpret(features)(bindings)(label)}
+					{interpret(features, logFunction)(bindings)(label)}
 				</div>
 			))}
 		</div>

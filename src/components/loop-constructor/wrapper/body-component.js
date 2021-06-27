@@ -16,6 +16,7 @@ const BodyComponent = ({
 	management,
 	features,
 	setTodo,
+	logFunction,
 }) => {
 	const uiComponents = buildContentForLoopConstructor({
 		components,
@@ -38,9 +39,8 @@ const BodyComponent = ({
 									rowNumber,
 									...componentProps
 								} = component;
-								const localBindings = U.buildBindingsForDeeperComponents(
-									rowNumber
-								)(bindings);
+								const localBindings =
+									U.buildBindingsForDeeperComponents(rowNumber)(bindings);
 								if (componentType) {
 									const Component = lunatic[componentType];
 									return (
@@ -61,6 +61,7 @@ const BodyComponent = ({
 												features={features}
 												bindings={localBindings}
 												zIndex={uiComponents.length - i || 0}
+												logFunction={logFunction}
 											/>
 										</td>
 									);
@@ -71,7 +72,10 @@ const BodyComponent = ({
 									colSpan: colspan || 1,
 									rowSpan: rowspan || 1,
 								};
-								const interpretedLabel = interpret(features)(bindings)(label);
+								const interpretedLabel = interpret(
+									features,
+									logFunction
+								)(bindings)(label);
 								return headerCell ? (
 									<th {...cellOptions}>{interpretedLabel}</th>
 								) : (
@@ -89,9 +93,8 @@ const BodyComponent = ({
 				{uiComponents.map((row, i) =>
 					row.map(({ componentType, id, label, ...componentProps }) => {
 						const Component = lunatic[componentType];
-						const localBindings = U.buildBindingsForDeeperComponents(i)(
-							bindings
-						);
+						const localBindings =
+							U.buildBindingsForDeeperComponents(i)(bindings);
 						return (
 							<div className="block-component" key={`${id}-row-${i}`}>
 								<Component
@@ -106,6 +109,7 @@ const BodyComponent = ({
 									management={management}
 									features={features}
 									bindings={localBindings}
+									logFunction={logFunction}
 								/>
 							</div>
 						);

@@ -128,12 +128,14 @@
 		{
 			"variableType": "CALCULATED",
 			"name": "Test",
-			"expression": "inputMissing || \" world\""
+			"expression": "inputMissing || \" world\"",
+			"bindingDependencies": ["inputMissing"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "TestOk",
-			"expression": "inputOk || \" world\""
+			"expression": "inputOk || \" world\"",
+			"bindingDependencies": ["inputOk"]
 		}
 	]
 }

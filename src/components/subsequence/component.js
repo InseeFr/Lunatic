@@ -11,6 +11,7 @@ const Subsequence = ({
 	features,
 	bindings,
 	style,
+	logFunction,
 }) => (
 	<SimpleDeclarationsWrapper
 		id={id}
@@ -23,7 +24,7 @@ const Subsequence = ({
 			className="subsequence-lunatic"
 			style={U.buildStyleObject(style)}
 		>
-			{interpret(features)(bindings)(label)}
+			{interpret(features, logFunction)(bindings)(label)}
 		</div>
 	</SimpleDeclarationsWrapper>
 );

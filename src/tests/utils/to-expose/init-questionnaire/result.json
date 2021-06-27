@@ -109,11 +109,13 @@
 		"CALCULATED": {
 			"Test": {
 				"expression": "inputMissing || \" world\"",
-				"value": "inputMissing || \" world\""
+				"value": "inputMissing || \" world\"",
+				"bindingDependencies": ["inputMissing"]
 			},
 			"TestOk": {
 				"expression": "inputOk || \" world\"",
-				"value": "Hello world"
+				"value": "Hello world",
+				"bindingDependencies": ["inputOk"]
 			}
 		},
 		"COLLECTED": {
