@@ -1,6 +1,10 @@
 import * as C from '../../constants';
 import { interpret } from './interpret';
-import { buildVectorialBindings } from '../lib/loops/bindings';
+import {
+	buildVectorialBindings,
+	buildBindingsForDeeperComponents,
+} from '../lib/loops/bindings';
+import { isDev } from '../lib';
 
 const INITIAL_DEPTH = 1;
 
@@ -19,6 +23,12 @@ export const mergeQuestionnaireAndData = (questionnaire) => (data) => {
 
 const buildVars = (data) => (variables) => {
 	if (!Array.isArray(variables)) return {};
+
+	if (isDev) {
+		console.log('Start init vars');
+		var start = new Date().getTime();
+	}
+
 	const { COLLECTED: collectedData } = data;
 	const collected = variables
 		.filter(({ variableType }) => variableType === C.COLLECTED)
@@ -49,19 +59,23 @@ const buildVars = (data) => (variables) => {
 		},
 		{}
 	);
-	const vectorialBindings = buildVectorialBindings(bindings);
+
+	const CALCULATED = variables
+		.filter(({ variableType }) => variableType === C.CALCULATED)
+		.reduce(
+			(_, v) => ({
+				..._,
+				...getCalculatedVariables(v)(bindings),
+			}),
+			{}
+		);
+
+	if (isDev) console.log(`End init vars: ${new Date().getTime() - start} ms`);
+
 	return {
 		EXTERNAL,
 		COLLECTED: collected,
-		CALCULATED: variables
-			.filter(({ variableType }) => variableType === C.CALCULATED)
-			.reduce(
-				(_, v) => ({
-					..._,
-					...initCalculatedVariable(v)(vectorialBindings),
-				}),
-				{}
-			),
+		CALCULATED,
 	};
 };
 
@@ -114,11 +128,24 @@ const initExternalVariable =
 		[name]: (data && data.EXTERNAL && data.EXTERNAL[name]) || null,
 	});
 
-const initCalculatedVariable =
-	({ name, expression, bindingDependencies }) =>
+export const getCalculatedVariables =
+	({ name, expression, bindingDependencies, shapeFrom }) =>
 	(bindings) => {
-		const res = interpret(['VTL'])(bindings)(expression);
-		const value = Array.isArray(res) ? res[0] : res;
+		const value = getValue(
+			bindings,
+			bindingDependencies,
+			expression,
+			shapeFrom
+		);
+		if (shapeFrom)
+			return {
+				[name]: {
+					expression,
+					bindingDependencies,
+					value,
+					shapeFrom,
+				},
+			};
 		return {
 			[name]: {
 				expression,
@@ -127,3 +154,28 @@ const initCalculatedVariable =
 			},
 		};
 	};
+
+const getValue = (bindings, bindingDependencies, expression, shapeFrom) => {
+	const interestBindings = (bindingDependencies || []).reduce(
+		(acc, b) => ({ ...acc, [b]: bindings[b] }),
+		{}
+	);
+	if (!shapeFrom) {
+		const vectorialBindings = buildVectorialBindings(interestBindings);
+		const res = interpret(['VTL'])(vectorialBindings)(expression);
+		return Array.isArray(res) ? res[0] : res;
+	}
+	const shape = bindings[shapeFrom];
+	return buildShape(interestBindings, expression)(shape);
+};
+
+const buildShape = (bindings, expression) => (array) =>
+	array.map((a, i) => {
+		const loopBindings = buildBindingsForDeeperComponents(i)(bindings);
+		if (Array.isArray(a)) {
+			return buildShape(loopBindings, expression)(a);
+		}
+		const vectorialBindings = buildVectorialBindings(loopBindings);
+		const res = interpret(['VTL'])(vectorialBindings)(expression);
+		return Array.isArray(res) ? res[0] : res;
+	});

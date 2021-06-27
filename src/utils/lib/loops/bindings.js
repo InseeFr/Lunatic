@@ -1,7 +1,7 @@
 export const buildBindingsForDeeperComponents = (index) => (bindings) =>
 	bindings
 		? Object.entries(bindings).reduce((_, [name, value]) => {
-				if (Array.isArray(value)) return { ..._, [name]: value[index] || null };
+				if (Array.isArray(value)) return { ..._, [name]: value[index] };
 				return { ..._, [name]: value };
 		  }, {})
 		: {};
@@ -9,7 +9,7 @@ export const buildBindingsForDeeperComponents = (index) => (bindings) =>
 export const buildLoopBindings = (index) => (vars) =>
 	Array.isArray(vars)
 		? vars.reduce((_, [name, value]) => {
-				if (Array.isArray(value)) return { ..._, [name]: value[index] || null };
+				if (Array.isArray(value)) return { ..._, [name]: value[index] };
 				return { ..._, [name]: value };
 		  }, {})
 		: {};
