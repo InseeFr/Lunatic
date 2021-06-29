@@ -1,0 +1,28 @@
+{
+	"components": [
+		{
+			"id": "j3343qhx",
+			"componentType": "Input",
+			"mandatory": false,
+			"maxLength": "30",
+			"label": "➡ 3. Who is the producer?",
+			"response": {
+				"name": "PRODUCER"
+			}
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRODUCER",
+			"componentRef": "j3343qhx",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "James L. Brooks",
+				"FORCED": null,
+				"EDITED": "Matt Groening",
+				"INPUTED": null
+			}
+		}
+	]
+}

@@ -34,9 +34,18 @@ const InputDeclarationsWrapper = ({
 	unitPosition,
 	validators,
 	isInputNumber,
+	numberAsTextfield,
+	logFunction,
 }) => {
 	const inputRef = useRef();
-
+	const createEventFocus = (focusIn = true) =>
+		U.createObjectEvent(
+			`${roleType}-${id}`,
+			C.INPUT_CATEGORY,
+			focusIn ? C.EVENT_FOCUS_IN : C.EVENT_FOCUS_OUT,
+			U.getResponseName(response),
+			value
+		);
 	const [value, setValue] = useState(() =>
 		U.getResponseByPreference(preferences)(response)
 	);
@@ -72,9 +81,17 @@ const InputDeclarationsWrapper = ({
 	}, [value, min, max, validators, isInputNumber]);
 
 	const handleChangeOnBlur = () => {
+		const finalValue =
+			value && value.endsWith('.') ? value.replace('.', '') : value;
 		handleChange({
-			[U.getResponseName(response)]: value,
+			[U.getResponseName(response)]: finalValue,
 		});
+		if (U.isFunction(logFunction)) logFunction(createEventFocus(false));
+		if (value !== finalValue) setValue(finalValue);
+	};
+
+	const handleFocusIn = () => {
+		if (U.isFunction(logFunction)) logFunction(createEventFocus());
 	};
 
 	const Component = roleType === 'textarea' ? 'textarea' : 'input';
@@ -95,7 +112,7 @@ const InputDeclarationsWrapper = ({
 						id={`${roleType}-label-${id}`}
 						className={`${mandatory ? 'mandatory' : ''}`}
 					>
-						{interpret(features)(bindings)(label)}
+						{interpret(features, logFunction)(bindings)(label)}
 						{isInputNumber &&
 							unit &&
 							['DEFAULT', 'BEFORE'].includes(unitPosition) && (
@@ -131,12 +148,24 @@ const InputDeclarationsWrapper = ({
 							maxLength={maxLength || 524288}
 							required={mandatory}
 							aria-required={mandatory}
-							onChange={({ target: { value: v } }) => {
-								if (isInputNumber) validate(v);
+							onChange={(e) => {
+								const v = e.target.value;
+								if (isInputNumber) {
+									if (
+										numberAsTextfield &&
+										v !== '' &&
+										!U.isNumberValid(v, decimals)
+									) {
+										e.preventDefault();
+										e.stopPropagation();
+										return null;
+									} else validate(v);
+								}
 								if (management) setValue(v);
 								else setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
+							onFocus={handleFocusIn}
 						/>
 						{isInputNumber && unit && unitPosition === 'AFTER' && (
 							<span className="unit">{unit}</span>

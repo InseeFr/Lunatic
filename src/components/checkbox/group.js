@@ -24,6 +24,7 @@ const CheckboxGroup = ({
 	bindings,
 	management,
 	style,
+	logFunction,
 }) => {
 	const { fieldsetStyle, modalityStyle } = style;
 	const inputRef = useRef();
@@ -42,6 +43,16 @@ const CheckboxGroup = ({
 			handleChange({ [key]: null });
 		else handleChange(e);
 	};
+
+	// Assume we only want to handle enable external updates
+	// Don't need to check all value changes
+	useEffect(() => {
+		const newValues = responses.map(({ response }) =>
+			U.getResponseByPreference(preferences)(response)
+		);
+		if (newValues.join('|') !== values.join('|')) setValues(newValues);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [responses, preferences]);
 
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
@@ -63,7 +74,7 @@ const CheckboxGroup = ({
 				className="checkbox-group-list"
 				style={U.buildStyleObject(fieldsetStyle)}
 			>
-				<legend>{interpret(features)(bindings)(label)}</legend>
+				<legend>{interpret(features, logFunction)(bindings)(label)}</legend>
 				<Declarations
 					id={id}
 					type={C.AFTER_QUESTION_TEXT}
@@ -108,6 +119,16 @@ const CheckboxGroup = ({
 													specificHandleChange({
 														[U.getResponseName(response)]: checked,
 													});
+													if (U.isFunction(logFunction))
+														logFunction(
+															U.createObjectEvent(
+																`checkbox-${id}-${modId}`,
+																C.INPUT_CATEGORY,
+																C.EVENT_SELECTION,
+																U.getResponseName(response),
+																checked
+															)
+														);
 												}}
 											/>
 											<label

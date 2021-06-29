@@ -7,5 +7,5 @@ export {
 	getCollectedStateByValueType,
 	getBindings,
 } from './state';
-export { interpret, interpretWithEmptyDefault } from './interpret';
-export { default as useLunatic } from './hook';
+export { interpret } from './interpret';
+export { default as useLunatic } from './hooks';

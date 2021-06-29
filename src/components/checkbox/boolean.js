@@ -23,6 +23,7 @@ const CheckboxBoolean = ({
 	bindings,
 	management,
 	style,
+	logFunction,
 }) => {
 	const inputRef = useRef();
 
@@ -39,11 +40,19 @@ const CheckboxBoolean = ({
 		else handleChange(e);
 	};
 
+	// Assume we only want to handle enable external updates
+	// Don't need to check all value changes
+	useEffect(() => {
+		if (U.getResponseByPreference(preferences)(response) !== value)
+			setValue(U.getResponseByPreference(preferences)(response));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [response, preferences]);
+
 	useEffect(() => {
 		if (focused) inputRef.current.focus();
 	}, [focused]);
 
-	const interpretedLabel = interpret(features)(bindings)(label);
+	const interpretedLabel = interpret(features, logFunction)(bindings)(label);
 
 	const isVertical = positioning === 'VERTICAL';
 	const isHorizontal = positioning === 'HORIZONTAL';
@@ -64,6 +73,16 @@ const CheckboxBoolean = ({
 						specificHandleChange({
 							[U.getResponseName(response)]: checked,
 						});
+						if (U.isFunction(logFunction))
+							logFunction(
+								U.createObjectEvent(
+									`checkbox-boolean-${id}`,
+									C.INPUT_CATEGORY,
+									C.EVENT_SELECTION,
+									U.getResponseName(response),
+									checked
+								)
+							);
 					}}
 				/>
 				{interpretedLabel && (
@@ -85,7 +104,7 @@ const CheckboxBoolean = ({
 			/>
 			{label && !isHorizontal && (
 				<label htmlFor={`checkbox-boolean-${id}`}>
-					{interpret(features)(bindings)(label)}
+					{interpret(features, logFunction)(bindings)(label)}
 				</label>
 			)}
 			<Declarations

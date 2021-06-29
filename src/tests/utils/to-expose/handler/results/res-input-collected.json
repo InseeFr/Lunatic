@@ -96,7 +96,11 @@
 	"variables": {
 		"EXTERNAL": { "VAR_EXTERNAL": "Value VAR_EXTERNAL" },
 		"CALCULATED": {
-			"Test": { "expression": "inputOk || \" ok\"", "value": "My new input ok" }
+			"Test": {
+				"expression": "inputOk || \" ok\"",
+				"value": "My new input ok",
+				"bindingDependencies": ["inputOk"]
+			}
 		},
 		"COLLECTED": {
 			"inputOk": {

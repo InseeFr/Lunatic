@@ -1,44 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { interpret } from './interpret';
-import { mergeQuestionnaireAndData } from './init-questionnaire';
-import { getBindings } from './state';
-import { updateQuestionnaire } from './handler';
-import { getPage, FLOW_NEXT, FLOW_PREVIOUS } from '../lib';
-import { COLLECTED } from '../../constants';
-
-const customFilterPagination = ({ page }, pagination, currentPage) => {
-	return pagination ? currentPage.split('.')[0] === page : true;
-};
-
-const filterComponents = (
-	components,
-	management,
-	bindings,
-	features,
-	currentPage,
-	pagination
-) => {
-	if (management && !pagination) return components;
-	if (management && pagination)
-		return components.filter((c) =>
-			customFilterPagination(c, pagination, currentPage)
-		);
-
-	if (!pagination)
-		return components.filter(
-			({ conditionFilter }) =>
-				!conditionFilter ||
-				interpret(features)(bindings, true)(conditionFilter) === 'normal'
-		);
-
-	return components
-		.filter((c) => customFilterPagination(c, pagination, currentPage))
-		.filter(
-			({ conditionFilter }) =>
-				!conditionFilter ||
-				interpret(features)(bindings, true)(conditionFilter) === 'normal'
-		);
-};
+import { mergeQuestionnaireAndData } from '../init-questionnaire';
+import { getBindings } from '../state';
+import { updateQuestionnaire } from '../handler';
+import { getPage, FLOW_NEXT, FLOW_PREVIOUS } from '../../lib';
+import { COLLECTED } from '../../../constants';
+import { useFilterComponents } from './filter-components';
 
 const useLunatic = (
 	source,
@@ -52,17 +18,28 @@ const useLunatic = (
 		initialPage = '1',
 	}
 ) => {
-	const [questionnaire, setQuestionnaire] = useState(
+	const featuresWithoutMD = features.filter((f) => f !== 'MD');
+	const [questionnaire, setQuestionnaire] = useState(() =>
 		mergeQuestionnaireAndData(source)(data || {})
 	);
-	const [todo, setTodo] = useState({});
+	const bindings = getBindings(questionnaire);
 	const [page, setPage] = useState(initialPage);
+	const [todo, setTodo] = useState({});
+
+	const components = useFilterComponents({
+		questionnaire,
+		management,
+		bindings,
+		features: featuresWithoutMD,
+		page,
+		pagination,
+		todo,
+	});
+
 	const [flow, setFlow] = useState(FLOW_NEXT);
 
 	// TODO: dynamic because of filters (kind of last accessible page)
 	const { maxPage } = source;
-
-	const featuresWithoutMD = features.filter((f) => f !== 'MD');
 
 	const isFirstPage = page === '1';
 	const isLastPage = page === maxPage;
@@ -102,7 +79,7 @@ const useLunatic = (
 	};
 
 	const handleChange = useCallback((updatedValue) => {
-		setTodo(updatedValue);
+		setTodo((t) => ({ ...t, ...updatedValue }));
 	}, []);
 
 	// Assume we only want to handle source update
@@ -113,24 +90,12 @@ const useLunatic = (
 
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
-			const newQ = updateQuestionnaire(savingType)(questionnaire)(preferences)(
-				todo
-			);
+			const newQ =
+				updateQuestionnaire(savingType)(questionnaire)(preferences)(todo);
 			setQuestionnaire(newQ);
 			setTodo({});
 		}
 	}, [todo, preferences, questionnaire, savingType, features, management]);
-
-	const bindings = getBindings(questionnaire);
-
-	const components = filterComponents(
-		questionnaire.components,
-		management,
-		bindings,
-		featuresWithoutMD,
-		page,
-		pagination
-	);
 
 	return {
 		questionnaire,

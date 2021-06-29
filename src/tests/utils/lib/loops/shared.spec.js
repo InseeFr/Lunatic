@@ -1,9 +1,4 @@
-import {
-	getLoopConstructorInitLines,
-	getInvolvedVariables,
-	lastLoopChildLineIsEmpty,
-	buildEmptyValue,
-} from 'utils/lib';
+import * as U from 'utils/lib';
 
 const componentsForInit = [
 	{
@@ -18,61 +13,66 @@ const componentsForInit = [
 	},
 	{
 		id: '3',
-		response: { name: 'c', values: { COLLECTED: [null, null] } },
-		depth: 0,
+		responses: [
+			{
+				id: '3.1',
+				depth: 1,
+				response: { name: 'c', values: { COLLECTED: [null, null] } },
+			},
+		],
 	},
 ];
 
 describe('loop roster utils', () => {
 	describe('getLoopConstructorInitLines', () => {
 		it('should return default value', () => {
-			expect(getLoopConstructorInitLines()).toEqual(0);
-			expect(getLoopConstructorInitLines([])).toEqual(0);
+			expect(U.getLoopConstructorInitLines()).toEqual(0);
+			expect(U.getLoopConstructorInitLines([])).toEqual(0);
 		});
 		it('should return roster init line length', () => {
-			expect(getLoopConstructorInitLines(componentsForInit)).toEqual(2);
+			expect(U.getLoopConstructorInitLines(componentsForInit)).toEqual(2);
 		});
 	});
 	describe('getInvolvedVariables', () => {
 		it('should return default value', () => {
-			expect(getInvolvedVariables()).toEqual([]);
-			expect(getInvolvedVariables([])).toEqual([]);
+			expect(U.getInvolvedVariables()).toEqual([]);
+			expect(U.getInvolvedVariables([])).toEqual([]);
 		});
 		it('should return variables involved into roster for loop', () => {
-			expect(getInvolvedVariables(componentsForInit)).toEqual([
+			expect(U.getInvolvedVariables(componentsForInit)).toEqual([
 				{ name: 'a', depth: 0 },
 				{ name: 'b', depth: 0 },
-				{ name: 'c', depth: 0 },
+				{ name: 'c', depth: 1 },
 			]);
 		});
 	});
 	describe('lastLoopChildLineIsEmpty', () => {
 		it('should return default value', () => {
-			expect(lastLoopChildLineIsEmpty()()).toBeTruthy();
-			expect(lastLoopChildLineIsEmpty({})([])).toBeTruthy();
+			expect(U.lastLoopChildLineIsEmpty()()).toBeTruthy();
+			expect(U.lastLoopChildLineIsEmpty({})([])).toBeTruthy();
 		});
 		it('should return last line is not empty', () => {
 			const d = { A: [null, 'a'], B: ['b', null] };
 			const iv = [{ name: 'A' }, { name: 'B' }];
-			expect(lastLoopChildLineIsEmpty(d)(iv)).toBeFalsy();
+			expect(U.lastLoopChildLineIsEmpty(d)(iv)).toBeFalsy();
 		});
 		it('should return last line is empty', () => {
 			const d = { A: [null, null], B: ['b', null] };
 			const iv = [{ name: 'A' }, { name: 'B' }];
-			expect(lastLoopChildLineIsEmpty(d)(iv)).toBeTruthy();
+			expect(U.lastLoopChildLineIsEmpty(d)(iv)).toBeTruthy();
 		});
 	});
 
 	describe('buildEmptyValue', () => {
 		it('should return default value', () => {
-			expect(buildEmptyValue()).toBeNull();
-			expect(buildEmptyValue(0)).toBeNull();
-			expect(buildEmptyValue(1)).toBeNull();
-			expect(buildEmptyValue(2)).toBeNull();
+			expect(U.buildEmptyValue()).toBeNull();
+			expect(U.buildEmptyValue(0)).toBeNull();
+			expect(U.buildEmptyValue(1)).toBeNull();
+			expect(U.buildEmptyValue(2)).toBeNull();
 		});
 		it('should return null array thanks to depth', () => {
-			expect(buildEmptyValue(3)).toEqual([null]);
-			expect(buildEmptyValue(4)).toEqual([[null]]);
+			expect(U.buildEmptyValue(3)).toEqual([null]);
+			expect(U.buildEmptyValue(4)).toEqual([[null]]);
 		});
 	});
 });

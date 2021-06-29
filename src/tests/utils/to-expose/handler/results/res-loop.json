@@ -98,7 +98,8 @@
 		"CALCULATED": {
 			"Test": {
 				"expression": "inputOk || \" ok\"",
-				"value": "My input ok"
+				"value": "My input ok",
+				"bindingDependencies": ["inputOk"]
 			}
 		},
 		"COLLECTED": {

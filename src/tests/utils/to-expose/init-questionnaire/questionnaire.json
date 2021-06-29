@@ -1,16 +1,24 @@
 {
 	"components": [
-		{ "id": "1", "componentType": "Sequence" },
+		{ "id": "1", "componentType": "Sequence", "page": "1" },
 		{
 			"id": "2",
 			"componentType": "Input",
 			"response": {
 				"name": "inputOk"
-			}
+			},
+			"conditionFilter": { "value": "true" },
+			"page": "1"
 		},
 		{
 			"id": "3",
 			"componentType": "CheckboxGroup",
+			"bindingDependencies": ["inputOk"],
+			"conditionFilter": {
+				"value": "not(isnull(inputOk))",
+				"bindingDependencies": ["inputOk"]
+			},
+			"page": "2",
 			"responses": [
 				{
 					"response": {
@@ -27,6 +35,7 @@
 		{
 			"id": "4",
 			"componentType": "Table",
+			"page": "2",
 			"cells": [
 				[
 					{ "label": "label" },
@@ -42,6 +51,7 @@
 		{
 			"id": "5",
 			"componentType": "RosterForLoop",
+			"page": "2",
 			"components": [
 				{
 					"componentType": "Input",
@@ -118,12 +128,14 @@
 		{
 			"variableType": "CALCULATED",
 			"name": "Test",
-			"expression": "inputMissing || \" world\""
+			"expression": "inputMissing || \" world\"",
+			"bindingDependencies": ["inputMissing"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "TestOk",
-			"expression": "inputOk || \" world\""
+			"expression": "inputOk || \" world\"",
+			"bindingDependencies": ["inputOk"]
 		}
 	]
 }

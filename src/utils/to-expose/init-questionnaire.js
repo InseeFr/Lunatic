@@ -1,5 +1,10 @@
 import * as C from '../../constants';
 import { interpret } from './interpret';
+import {
+	buildVectorialBindings,
+	buildBindingsForDeeperComponents,
+} from '../lib/loops/bindings';
+import { isDev } from '../lib';
 
 const INITIAL_DEPTH = 1;
 
@@ -18,6 +23,12 @@ export const mergeQuestionnaireAndData = (questionnaire) => (data) => {
 
 const buildVars = (data) => (variables) => {
 	if (!Array.isArray(variables)) return {};
+
+	if (isDev) {
+		console.log('Start init vars');
+		var start = new Date().getTime();
+	}
+
 	const { COLLECTED: collectedData } = data;
 	const collected = variables
 		.filter(({ variableType }) => variableType === C.COLLECTED)
@@ -34,18 +45,37 @@ const buildVars = (data) => (variables) => {
 	const EXTERNAL = variables
 		.filter(({ variableType }) => variableType === C.EXTERNAL)
 		.reduce((_, v) => ({ ..._, ...initExternalVariable(v)(data) }), {});
+	const bindings = Object.entries({ ...collected, ...EXTERNAL }).reduce(
+		(acc, [k, v]) => {
+			if (!v?.values)
+				return {
+					...acc,
+					[k]: v,
+				};
+			return {
+				...acc,
+				[k]: v.values[C.COLLECTED],
+			};
+		},
+		{}
+	);
+
+	const CALCULATED = variables
+		.filter(({ variableType }) => variableType === C.CALCULATED)
+		.reduce(
+			(_, v) => ({
+				..._,
+				...getCalculatedVariables(v)(bindings),
+			}),
+			{}
+		);
+
+	if (isDev) console.log(`End init vars: ${new Date().getTime() - start} ms`);
+
 	return {
 		EXTERNAL,
 		COLLECTED: collected,
-		CALCULATED: variables
-			.filter(({ variableType }) => variableType === C.CALCULATED)
-			.reduce(
-				(_, v) => ({
-					..._,
-					...initCalculatedVariable(v)({ ...EXTERNAL, ...collected }),
-				}),
-				{}
-			),
+		CALCULATED,
 	};
 };
 
@@ -92,25 +122,60 @@ export const buildComponentsComponent = (vars) => (component) => {
 	return { ...rest, depth, components: filledComponents };
 };
 
-const initExternalVariable = ({ name }) => (data) => ({
-	[name]: (data && data.EXTERNAL && data.EXTERNAL[name]) || null,
-});
+const initExternalVariable =
+	({ name }) =>
+	(data) => ({
+		[name]: (data && data.EXTERNAL && data.EXTERNAL[name]) || null,
+	});
 
-const initCalculatedVariable = ({ name, expression }) => (data) => {
-	const bindings = Object.entries(data).reduce(
-		(acc, [key, value]) => ({
-			...acc,
-			[key]:
-				typeof value === 'string' || value === null
-					? value
-					: value.values[C.COLLECTED],
-		}),
+export const getCalculatedVariables =
+	({ name, expression, bindingDependencies, shapeFrom }) =>
+	(bindings) => {
+		const value = getValue(
+			bindings,
+			bindingDependencies,
+			expression,
+			shapeFrom
+		);
+		if (shapeFrom)
+			return {
+				[name]: {
+					expression,
+					bindingDependencies,
+					value,
+					shapeFrom,
+				},
+			};
+		return {
+			[name]: {
+				expression,
+				bindingDependencies,
+				value,
+			},
+		};
+	};
+
+const getValue = (bindings, bindingDependencies, expression, shapeFrom) => {
+	const interestBindings = (bindingDependencies || []).reduce(
+		(acc, b) => ({ ...acc, [b]: bindings[b] }),
 		{}
 	);
-	return {
-		[name]: {
-			expression,
-			value: interpret(['VTL'])(bindings)(expression),
-		},
-	};
+	if (!shapeFrom) {
+		const vectorialBindings = buildVectorialBindings(interestBindings);
+		const res = interpret(['VTL'])(vectorialBindings)(expression);
+		return Array.isArray(res) ? res[0] : res;
+	}
+	const shape = bindings[shapeFrom];
+	return buildShape(interestBindings, expression)(shape);
 };
+
+const buildShape = (bindings, expression) => (array) =>
+	array.map((a, i) => {
+		const loopBindings = buildBindingsForDeeperComponents(i)(bindings);
+		if (Array.isArray(a)) {
+			return buildShape(loopBindings, expression)(a);
+		}
+		const vectorialBindings = buildVectorialBindings(loopBindings);
+		const res = interpret(['VTL'])(vectorialBindings)(expression);
+		return Array.isArray(res) ? res[0] : res;
+	});
