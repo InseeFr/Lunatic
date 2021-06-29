@@ -39,6 +39,19 @@ def.addWithJSX('Logement', () => (
 	/>
 ));
 
+def.addWithJSX('Missing', () => (
+	<Orchestrator
+		id="props"
+		source={simpsons}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		disabled={boolean('Disabled', false)}
+		focused={boolean('Focused', false)}
+		management={boolean('Management', false)}
+		missing
+	/>
+));
+
 def.addWithJSX('Simpsons', () => (
 	<Orchestrator
 		id="props"
@@ -81,6 +94,20 @@ paginated.addWithJSX('Logement', () => (
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
 		pagination
+	/>
+));
+
+paginated.addWithJSX('NSP-R', () => (
+	<Orchestrator
+		id="props"
+		source={simpsons}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		disabled={boolean('Disabled', false)}
+		focused={boolean('Focused', false)}
+		management={boolean('Management', false)}
+		pagination
+		missing
 	/>
 ));
 
