@@ -58,6 +58,7 @@ const Suggester = ({
 							labelRenderer={labelRenderer}
 							max={max}
 							labelledBy={labelId}
+							version="1"
 						/>
 					</div>
 					{management && (
