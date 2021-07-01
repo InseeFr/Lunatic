@@ -6,6 +6,7 @@ export * from './input-number';
 export * from './label-position';
 export * from './loops';
 export * from './memo-check';
+export * from './missing';
 export * from './options-positioning';
 export * from './pagination';
 export * from './prop-types';
