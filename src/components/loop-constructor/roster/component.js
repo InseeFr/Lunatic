@@ -1,5 +1,5 @@
 import React from 'react';
-import missingWrapper from '../missing-wrapper';
+import missingWrapper from '../../missing-wrapper';
 import LoopConstructorWrapper from '../wrapper';
 import * as U from '../../../utils/lib';
 
