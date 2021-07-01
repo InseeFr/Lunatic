@@ -94,13 +94,26 @@ export const buildFilledComponent = (vars) => (component) => {
 	return component;
 };
 
-export const buildResponseComponent = (vars) => (c) => ({
-	...c,
-	response: {
+export const buildResponseComponent = (vars) => (c) => {
+	const { missingResponse } = c;
+	const response = {
 		name: c.response.name,
 		values: vars[c.response.name].values,
-	},
-});
+	};
+	if (missingResponse)
+		return {
+			...c,
+			response,
+			missingResponse: {
+				name: missingResponse.name,
+				values: vars[missingResponse.name].values,
+			},
+		};
+	return {
+		...c,
+		response,
+	};
+};
 
 export const buildResponsesComponent = (vars) => (c) => {
 	const { responses, ...rest } = c;

@@ -33,6 +33,7 @@ stories.addWithJSX('Props', () => (
 		id="props"
 		source={dataProps}
 		placeholder={text('Placeholder', 'Placeholder')}
+		missing={boolean('Missing', false)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { NAME: 'Simpsons', TEXAS: 'Texas' })}
 		disabled={boolean('Disabled', false)}

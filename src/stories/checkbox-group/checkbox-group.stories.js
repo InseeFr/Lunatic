@@ -26,6 +26,7 @@ stories.addWithJSX('Props', () => (
 		id="props"
 		source={dataVTL}
 		label={text('Label', '"I\'m the label of the checkbox group"')}
+		missing={boolean('Missing', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { NAME: 'Mojo' })}

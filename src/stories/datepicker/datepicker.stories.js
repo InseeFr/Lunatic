@@ -26,6 +26,7 @@ stories.addWithJSX('Props', () => (
 		source={data}
 		label={text('Label', '"I\'m the label of the datepicker"')}
 		placeholder={text('Placeholder', 'Placeholder')}
+		missing={boolean('Missing', false)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { test: 'test' })}
 		readOnly={boolean('Read only', false)}

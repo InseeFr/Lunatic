@@ -45,7 +45,7 @@ const Button = ({
 };
 
 Button.propTypes = {
-	value: PropTypes.string.isRequired,
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
 	disabled: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
 };
