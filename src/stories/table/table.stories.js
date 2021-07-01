@@ -24,6 +24,7 @@ stories.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={dataDefault}
+		missing={boolean('Missing', false)}
 		label={text('Label', '"I\'m the label of the Table"')}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { test: 'test' })}
@@ -34,6 +35,7 @@ stories.addWithJSX('OneAxisOneMeasure', () => (
 	<Orchestrator
 		id="default"
 		source={dataOneAxisOneMeasure}
+		missing={boolean('Missing', false)}
 		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
@@ -43,6 +45,7 @@ stories.addWithJSX('OneAxisTwoMeasure', () => (
 	<Orchestrator
 		id="default"
 		source={dataOneAxisTwoMeasures}
+		missing={boolean('Missing', false)}
 		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
@@ -52,6 +55,7 @@ stories.addWithJSX('OneHierarchicalAxis', () => (
 	<Orchestrator
 		id="default"
 		source={dataOneHierarchicalAxis}
+		missing={boolean('Missing', false)}
 		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
@@ -61,6 +65,7 @@ stories.addWithJSX('TwoAxisOneMeasure', () => (
 	<Orchestrator
 		id="default"
 		source={dataTwoAxisOneMeasure}
+		missing={boolean('Missing', false)}
 		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 	/>
@@ -70,6 +75,7 @@ stories.addWithJSX('Roster', () => (
 	<Orchestrator
 		id="default"
 		source={dataRoster}
+		missing={boolean('Missing', false)}
 		management={boolean('Management', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		hideBtn={boolean('Hide button', false)}

@@ -31,6 +31,7 @@ stories.addWithJSX('Props', () => (
 		id="props"
 		source={data}
 		label={text('Label', '"Hello " || NAME')}
+		missing={boolean('Missing', false)}
 		placeholder={text('Placeholder', 'Placeholder')}
 		rows={number('Rows', 5)}
 		maxLength={number('Max length', 500)}

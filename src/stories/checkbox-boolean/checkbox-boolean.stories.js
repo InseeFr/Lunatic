@@ -23,6 +23,7 @@ stories.addWithJSX('Props', () => (
 		source={data}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		missing={boolean('Missing', false)}
 		bindings={object('Bindings', { test: 'test' })}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}

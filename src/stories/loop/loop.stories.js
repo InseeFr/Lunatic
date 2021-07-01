@@ -7,7 +7,7 @@ import { titleDecorator } from 'utils/lib';
 import * as R from './with-roster';
 import * as B from './with-loop';
 import { positioningOptions } from '../utils/options';
-import { select } from '@storybook/addon-knobs/react';
+import { select, boolean } from '@storybook/addon-knobs/react';
 
 const storiesR = storiesOf('Loop/With roster', module)
 	.addDecorator(withReadme(readme))
@@ -20,6 +20,7 @@ storiesR.addWithJSX('Default Loop', () => (
 	<Orchestrator
 		id="default-loop"
 		source={R.dataLoopWithRoster}
+		missing={boolean('Missing', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
@@ -71,6 +72,7 @@ storiesB.addWithJSX('Default Loop', () => (
 	<Orchestrator
 		id="default-loop"
 		source={B.dataLoopWithLoop}
+		missing={boolean('Missing', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>

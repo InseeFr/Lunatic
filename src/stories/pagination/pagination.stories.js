@@ -17,6 +17,7 @@ stories.addWithJSX('SimpleLoop', () => (
 	<Orchestrator
 		id="simple-loop"
 		source={simpleLoop}
+		missing={boolean('Missing', false)}
 		features={['VTL']}
 		pagination
 	/>
@@ -42,6 +43,7 @@ storiesSimpsons.addWithJSX('Question', () => (
 	<Orchestrator
 		id="simple-loop"
 		source={simpsonsQuestion}
+		missing={boolean('Missing', false)}
 		features={['VTL']}
 		pagination={boolean('Pagination', true)}
 	/>
@@ -51,6 +53,7 @@ storiesSimpsons.addWithJSX('Sequence', () => (
 	<Orchestrator
 		id="simple-loop"
 		source={simpsonsSequence}
+		missing={boolean('Missing', false)}
 		features={['VTL']}
 		pagination={boolean('Pagination', true)}
 	/>

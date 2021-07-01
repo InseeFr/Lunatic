@@ -24,6 +24,7 @@ stories.addWithJSX('Props', () => (
 		source={dataVTL}
 		label={text('Label', '"I\'m the label of the CheckboxOne"')}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		missing={boolean('Missing', false)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { NAME: 'Poochie' })}
 		disabled={boolean('Disabled', false)}

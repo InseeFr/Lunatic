@@ -35,6 +35,7 @@ stories.addWithJSX('Props', () => (
 		id="props"
 		source={data}
 		label={text('Label', '"I\'m the label of the number input"')}
+		missing={boolean('Missing', false)}
 		unit={text('Unit', 'euros')}
 		numberAsTextfield={boolean('numberAsTextfield', false)}
 		min={number('Min', -99)}
