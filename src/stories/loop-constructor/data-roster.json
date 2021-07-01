@@ -13,6 +13,9 @@
 				{ "headerCell": true, "label": "Prénom" },
 				{ "headerCell": true, "label": "Age" }
 			],
+			"missingResponse": {
+				"name": "ROSTER_MISSING"
+			},
 			"components": [
 				{
 					"componentType": "Input",
@@ -62,6 +65,18 @@
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ROSTER_MISSING",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
 	]
