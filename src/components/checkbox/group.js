@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import missingWrapper from '../missing-wrapper';
 import debounce from 'lodash.debounce';
 import Declarations from '../declarations';
 import Icon from '../icon';
@@ -205,4 +206,4 @@ CheckboxGroup.propTypes = {
 	style: PropTypes.object,
 };
 
-export default React.memo(CheckboxGroup, U.areEqual);
+export default React.memo(missingWrapper(CheckboxGroup), U.areEqual);
