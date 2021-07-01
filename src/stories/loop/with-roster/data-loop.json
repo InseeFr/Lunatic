@@ -88,7 +88,7 @@
 					"componentType": "InputNumber",
 					"conditionFilter": { "value": "true" },
 					"mandatory": false,
-					"bindingDependencies": ["TPSTRAJET"],
+					"bindingDependencies": ["PRENOM", "TPSTRAJET"],
 					"min": 0,
 					"max": 180,
 					"decimals": 0,
@@ -236,11 +236,11 @@
 			"name": "PROPRIO_MISSING",
 			"componentRef": "idLoop",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTED": null
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		},
 		{
@@ -248,11 +248,11 @@
 			"name": "TPSTRAJET_MISSING",
 			"componentRef": "idLoop",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTED": null
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		},
 		{
