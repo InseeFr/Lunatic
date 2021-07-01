@@ -33,6 +33,7 @@ stories.addWithJSX('Props', () => (
 		label={text('Label', '"I\'m the label of the input"')}
 		placeholder={text('Placeholder', 'Placeholder')}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		missing={boolean('Missing', false)}
 		bindings={object('Bindings', { test: 'test' })}
 		readOnly={boolean('Read only', false)}
 		maxLength={number('Max length', 50)}
