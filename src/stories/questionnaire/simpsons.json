@@ -3,6 +3,7 @@
     "modele" : "SIMPSONS",
     "enoCoreVersion" : "2.2.9-dev-lunatic-missing_var",
     "lunaticModelVersion" : "2.2.2",
+    "generatingDate" : "01-07-2021 22:54:48",
     "pagination" : "question",
     "maxPage" : "37",
     "label" : "Questionnaire SIMPSONS 20201215",
@@ -39,7 +40,8 @@
           { "id" : "j6p0ti5h",
             "page" : "1",
             "label" : "\"I - Introduction\"" } },
-        "missingResponse" : "COMMENT_MISSING",
+        "missingResponse" : 
+        { "name" : "COMMENT_MISSING" },
         "bindingDependencies" : 
         [ "COMMENT" ],
         "response" : 
@@ -63,7 +65,8 @@
           { "id" : "j6p0ti5h",
             "page" : "1",
             "label" : "\"I - Introduction\"" } },
-        "missingResponse" : "READY_MISSING",
+        "missingResponse" : 
+        { "name" : "READY_MISSING" },
         "bindingDependencies" : 
         [ "READY" ],
         "response" : 
@@ -119,7 +122,8 @@
           { "id" : "j6p0s7o5",
             "page" : "4",
             "label" : "\"General knowledge of the series\"" } },
-        "missingResponse" : "PRODUCER_MISSING",
+        "missingResponse" : 
+        { "name" : "PRODUCER_MISSING" },
         "bindingDependencies" : 
         [ "PRODUCER" ],
         "response" : 
@@ -146,7 +150,8 @@
           { "id" : "j6p0s7o5",
             "page" : "4",
             "label" : "\"General knowledge of the series\"" } },
-        "missingResponse" : "SEASON_NUMBER_MISSING",
+        "missingResponse" : 
+        { "name" : "SEASON_NUMBER_MISSING" },
         "bindingDependencies" : 
         [ "SEASON_NUMBER" ],
         "response" : 
@@ -178,7 +183,8 @@
           { "id" : "j6p0s7o5",
             "page" : "4",
             "label" : "\"General knowledge of the series\"" } },
-        "missingResponse" : "DATEFIRST_MISSING",
+        "missingResponse" : 
+        { "name" : "DATEFIRST_MISSING" },
         "bindingDependencies" : 
         [ "DATEFIRST" ],
         "dateFormat" : "YYYY-MM-DD",
@@ -210,7 +216,8 @@
           { "id" : "j6p0s7o5",
             "page" : "4",
             "label" : "\"General knowledge of the series\"" } },
-        "missingResponse" : "DATEYYYYMM_MISSING",
+        "missingResponse" : 
+        { "name" : "DATEYYYYMM_MISSING" },
         "bindingDependencies" : 
         [ "DATEYYYYMM" ],
         "dateFormat" : "YYYY-MM",
@@ -243,7 +250,8 @@
           { "id" : "j6p0s7o5",
             "page" : "4",
             "label" : "\"General knowledge of the series\"" } },
-        "missingResponse" : "DATEYYYY_MISSING",
+        "missingResponse" : 
+        { "name" : "DATEYYYY_MISSING" },
         "bindingDependencies" : 
         [ "DATEYYYY" ],
         "dateFormat" : "YYYY",
@@ -271,7 +279,8 @@
           { "id" : "j6p0s7o5",
             "page" : "4",
             "label" : "\"General knowledge of the series\"" } },
-        "missingResponse" : "DURATIONH_MISSING",
+        "missingResponse" : 
+        { "name" : "DURATIONH_MISSING" },
         "bindingDependencies" : 
         [ "DURATIONH" ],
         "unit" : "heures",
@@ -299,7 +308,8 @@
           { "id" : "j6p0s7o5",
             "page" : "4",
             "label" : "\"General knowledge of the series\"" } },
-        "missingResponse" : "DURATIOND_MISSING",
+        "missingResponse" : 
+        { "name" : "DURATIOND_MISSING" },
         "bindingDependencies" : 
         [ "DURATIOND" ],
         "unit" : "jours",
@@ -327,7 +337,8 @@
           { "id" : "j6p0s7o5",
             "page" : "4",
             "label" : "\"General knowledge of the series\"" } },
-        "missingResponse" : "DURATIONM_MISSING",
+        "missingResponse" : 
+        { "name" : "DURATIONM_MISSING" },
         "bindingDependencies" : 
         [ "DURATIONM" ],
         "unit" : "mois",
@@ -355,7 +366,8 @@
           { "id" : "j6p0s7o5",
             "page" : "4",
             "label" : "\"General knowledge of the series\"" } },
-        "missingResponse" : "DURATIONY_MISSING",
+        "missingResponse" : 
+        { "name" : "DURATIONY_MISSING" },
         "bindingDependencies" : 
         [ "DURATIONY" ],
         "unit" : "années",
@@ -383,7 +395,8 @@
           { "id" : "j6p0s7o5",
             "page" : "4",
             "label" : "\"General knowledge of the series\"" } },
-        "missingResponse" : "AUDIENCE_SHARE_MISSING",
+        "missingResponse" : 
+        { "name" : "AUDIENCE_SHARE_MISSING" },
         "bindingDependencies" : 
         [ "AUDIENCE_SHARE" ],
         "unit" : "%",
@@ -414,7 +427,7 @@
         "componentType" : "Radio",
         "mandatory" : true,
         "page" : "15",
-        "label" : "\"➡ 16. In which city do the Simpsons reside?\"",
+        "label" : "\"➡ 1. In which city do the Simpsons reside?\"",
         "declarations" : 
         [ 
           { "id" : "j3343clt-d3",
@@ -430,7 +443,8 @@
           { "id" : "j3341528",
             "page" : "14",
             "label" : "\"II - Simpsons’ city\"" } },
-        "missingResponse" : "CITY_MISSING",
+        "missingResponse" : 
+        { "name" : "CITY_MISSING" },
         "bindingDependencies" : 
         [ "CITY" ],
         "options" : 
@@ -450,7 +464,7 @@
         "componentType" : "CheckboxOne",
         "mandatory" : false,
         "page" : "16",
-        "label" : "\"➡ 17. Who is the Simpsons city mayor?\"",
+        "label" : "\"➡ 2. Who is the Simpsons city mayor?\"",
         "declarations" : 
         [ 
           { "id" : "j6qdfhvw-d4",
@@ -466,7 +480,8 @@
           { "id" : "j3341528",
             "page" : "14",
             "label" : "\"II - Simpsons’ city\"" } },
-        "missingResponse" : "MAYOR_MISSING",
+        "missingResponse" : 
+        { "name" : "MAYOR_MISSING" },
         "bindingDependencies" : 
         [ "MAYOR" ],
         "options" : 
@@ -489,7 +504,7 @@
         "componentType" : "Dropdown",
         "mandatory" : false,
         "page" : "17",
-        "label" : "\"➡ 18. In which state do The Simpsons reside?\"",
+        "label" : "\"➡ 3. In which state do The Simpsons reside?\"",
         "conditionFilter" : 
         { "value" : "(not(cast(READY,integer)  <>  1))",
           "bindingDependencies" : 
@@ -499,7 +514,8 @@
           { "id" : "j3341528",
             "page" : "14",
             "label" : "\"II - Simpsons’ city\"" } },
-        "missingResponse" : "STATE_MISSING",
+        "missingResponse" : 
+        { "name" : "STATE_MISSING" },
         "bindingDependencies" : 
         [ "STATE" ],
         "options" : 
@@ -562,7 +578,7 @@
       { "id" : "j334akov",
         "componentType" : "CheckboxGroup",
         "page" : "19",
-        "label" : "\"➡ 19. What are the pet names that the Simpsons family had?\"",
+        "label" : "\"➡ 1. What are the pet names that the Simpsons family had?\"",
         "declarations" : 
         [ 
           { "id" : "j334akov-d5",
@@ -578,7 +594,8 @@
           { "id" : "j6qe0h9q",
             "page" : "18",
             "label" : "\"III - Characters\"" } },
-        "missingResponse" : "PET_MISSING",
+        "missingResponse" : 
+        { "name" : "PET_MISSING" },
         "bindingDependencies" : 
         [ "PET1",
           "PET2",
@@ -611,7 +628,7 @@
         "mandatory" : false,
         "page" : "20",
         "positioning" : "HORIZONTAL",
-        "label" : "\"➡ 20. Does Jay like the following ice cream flavours?\"",
+        "label" : "\"➡ 2. Does Jay like the following ice cream flavours?\"",
         "declarations" : 
         [ 
           { "id" : "d12-SI",
@@ -627,7 +644,8 @@
           { "id" : "j6qe0h9q",
             "page" : "18",
             "label" : "\"III - Characters\"" } },
-        "missingResponse" : "ICE_FLAVOUR_MISSING",
+        "missingResponse" : 
+        { "name" : "ICE_FLAVOUR_MISSING" },
         "bindingDependencies" : 
         [ "ICE_FLAVOUR1",
           "ICE_FLAVOUR2",
@@ -712,7 +730,7 @@
         "mandatory" : false,
         "page" : "21",
         "positioning" : "HORIZONTAL",
-        "label" : "\"➡ 21. Which character works in the nuclear power plant?\"",
+        "label" : "\"➡ 3. Which character works in the nuclear power plant?\"",
         "conditionFilter" : 
         { "value" : "(not(cast(READY,integer)  <>  1))",
           "bindingDependencies" : 
@@ -722,7 +740,8 @@
           { "id" : "j6qe0h9q",
             "page" : "18",
             "label" : "\"III - Characters\"" } },
-        "missingResponse" : "NUCLEAR_CHARACTER_MISSING",
+        "missingResponse" : 
+        { "name" : "NUCLEAR_CHARACTER_MISSING" },
         "bindingDependencies" : 
         [ "NUCLEAR_CHARACTER1",
           "NUCLEAR_CHARACTER2",
@@ -807,7 +826,7 @@
         "mandatory" : false,
         "page" : "22",
         "positioning" : "HORIZONTAL",
-        "label" : "\"➡ 22. In which city each character was born?\"",
+        "label" : "\"➡ 4. In which city each character was born?\"",
         "conditionFilter" : 
         { "value" : "(not(cast(READY,integer)  <>  1))",
           "bindingDependencies" : 
@@ -817,7 +836,8 @@
           { "id" : "j6qe0h9q",
             "page" : "18",
             "label" : "\"III - Characters\"" } },
-        "missingResponse" : "BIRTH_CHARACTER_MISSING",
+        "missingResponse" : 
+        { "name" : "BIRTH_CHARACTER_MISSING" },
         "bindingDependencies" : 
         [ "BIRTH_CHARACTER1",
           "BIRTH_CHARACTER2",
@@ -998,7 +1018,7 @@
         "mandatory" : false,
         "page" : "24",
         "positioning" : "HORIZONTAL",
-        "label" : "\"➡ 23. Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
+        "label" : "\"➡ 1. Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
         "conditionFilter" : 
         { "value" : "(not(cast(READY,integer)  <>  1))",
           "bindingDependencies" : 
@@ -1012,7 +1032,8 @@
           { "id" : "j6qe237q",
             "page" : "24",
             "label" : "\"Kwik-E-Mart\"" } },
-        "missingResponse" : "PERCENTAGE_EXPENSES_MISSING",
+        "missingResponse" : 
+        { "name" : "PERCENTAGE_EXPENSES_MISSING" },
         "bindingDependencies" : 
         [ "PERCENTAGE_EXPENSES11",
           "PERCENTAGE_EXPENSES21",
@@ -1160,7 +1181,7 @@
         "mandatory" : false,
         "page" : "25",
         "positioning" : "HORIZONTAL",
-        "label" : "\"➡ 24. Please specify if Jay has bought each product in his last food shopping\"",
+        "label" : "\"➡ 2. Please specify if Jay has bought each product in his last food shopping\"",
         "conditionFilter" : 
         { "value" : "(not(cast(READY,integer)  <>  1))",
           "bindingDependencies" : 
@@ -1174,7 +1195,8 @@
           { "id" : "j6qe237q",
             "page" : "24",
             "label" : "\"Kwik-E-Mart\"" } },
-        "missingResponse" : "LAST_FOOD_SHOPPING_MISSING",
+        "missingResponse" : 
+        { "name" : "LAST_FOOD_SHOPPING_MISSING" },
         "bindingDependencies" : 
         [ "LAST_FOOD_SHOPPING11",
           "LAST_FOOD_SHOPPING21",
@@ -1398,7 +1420,7 @@
         "mandatory" : false,
         "page" : "26",
         "positioning" : "HORIZONTAL",
-        "label" : "\"➡ 25. Who did these clownings and tell us what you remember?\"",
+        "label" : "\"➡ 3. Who did these clownings and tell us what you remember?\"",
         "conditionFilter" : 
         { "value" : "(not(cast(READY,integer)  <>  1))",
           "bindingDependencies" : 
@@ -1412,7 +1434,8 @@
           { "id" : "j6qejudb",
             "page" : "26",
             "label" : "\"Clowning\"" } },
-        "missingResponse" : "CLOWNING_MISSING",
+        "missingResponse" : 
+        { "name" : "CLOWNING_MISSING" },
         "bindingDependencies" : 
         [ "CLOWNING11",
           "CLOWNING12",
@@ -1585,7 +1608,7 @@
         "mandatory" : false,
         "page" : "27",
         "positioning" : "HORIZONTAL",
-        "label" : "\"➡ 26. Which of the following means of transport were used by the hero and in which country?\"",
+        "label" : "\"➡ 4. Which of the following means of transport were used by the hero and in which country?\"",
         "declarations" : 
         [ 
           { "id" : "j6p2lwuj-d10",
@@ -1605,7 +1628,8 @@
           { "id" : "j6qeh91y",
             "page" : "27",
             "label" : "\"Transport\"" } },
-        "missingResponse" : "TRAVEL_MISSING",
+        "missingResponse" : 
+        { "name" : "TRAVEL_MISSING" },
         "bindingDependencies" : 
         [ "TRAVEL11",
           "TRAVEL12",
@@ -1858,7 +1882,7 @@
         "mandatory" : false,
         "page" : "29",
         "positioning" : "HORIZONTAL",
-        "label" : "\"➡ 27. Please, complete the following grid with your favourite characters\"",
+        "label" : "\"➡ 1. Please, complete the following grid with your favourite characters\"",
         "conditionFilter" : 
         { "value" : "(not(cast(READY,integer)  <>  1))",
           "bindingDependencies" : 
@@ -1868,7 +1892,8 @@
           { "id" : "j6qfx9qe",
             "page" : "28",
             "label" : "\"V - Favourite characters (dynamic table)\"" } },
-        "missingResponse" : "FAVOURITE_CHAR_MISSING",
+        "missingResponse" : 
+        { "name" : "FAVOURITE_CHAR_MISSING" },
         "bindingDependencies" : 
         [ "FAVOURITE_CHAR1",
           "FAVOURITE_CHAR2",
@@ -2263,7 +2288,7 @@
         "mandatory" : false,
         "page" : "30",
         "positioning" : "HORIZONTAL",
-        "label" : "\"➡ 28. How has your feeling about the following characters evolved over time?\"",
+        "label" : "\"➡ 2. How has your feeling about the following characters evolved over time?\"",
         "conditionFilter" : 
         { "value" : "(not(cast(READY,integer)  <>  1))",
           "bindingDependencies" : 
@@ -2273,7 +2298,8 @@
           { "id" : "j6qfx9qe",
             "page" : "28",
             "label" : "\"V - Favourite characters (dynamic table)\"" } },
-        "missingResponse" : "FEELCHAREV_MISSING",
+        "missingResponse" : 
+        { "name" : "FEELCHAREV_MISSING" },
         "bindingDependencies" : 
         [ "FEELCHAREV1",
           "FEELCHAREV2",
@@ -2370,7 +2396,7 @@
         "mandatory" : false,
         "page" : "31",
         "positioning" : "HORIZONTAL",
-        "label" : "\"➡ 29. Can you tell how long Bart Simpson has been on leave for each type and whether there has been another type?\"",
+        "label" : "\"➡ 3. Can you tell how long Bart Simpson has been on leave for each type and whether there has been another type?\"",
         "conditionFilter" : 
         { "value" : "(not(cast(READY,integer)  <>  1))",
           "bindingDependencies" : 
@@ -2380,7 +2406,8 @@
           { "id" : "j6qfx9qe",
             "page" : "28",
             "label" : "\"V - Favourite characters (dynamic table)\"" } },
-        "missingResponse" : "LEAVDURATION_MISSING",
+        "missingResponse" : 
+        { "name" : "LEAVDURATION_MISSING" },
         "bindingDependencies" : 
         [ "LEAVDURATION11",
           "LEAVDURATION12",
@@ -2565,7 +2592,7 @@
         "min" : 0,
         "max" : 20,
         "decimals" : 0,
-        "label" : "\"➡ 30. How many characters from the Simpsons family could you precisely describe?\"",
+        "label" : "\"➡ 1. How many characters from the Simpsons family could you precisely describe?\"",
         "conditionFilter" : 
         { "value" : "(not(cast(READY,integer)  <>  1))",
           "bindingDependencies" : 
@@ -2575,7 +2602,8 @@
           { "id" : "kiq5mr0b",
             "page" : "32",
             "label" : "\"VI - Favourite characters (Loop)\"" } },
-        "missingResponse" : "NB_CHAR_MISSING",
+        "missingResponse" : 
+        { "name" : "NB_CHAR_MISSING" },
         "bindingDependencies" : 
         [ "NB_CHAR" ],
         "response" : 
@@ -2631,7 +2659,7 @@
             "mandatory" : false,
             "page" : "34",
             "maxLength" : 30,
-            "label" : "\"➡ 31. What is the first name of this character?\"",
+            "label" : "\"➡ 2. What is the first name of this character?\"",
             "conditionFilter" : 
             { "value" : "(not(cast(READY,integer)  <>  1))",
               "bindingDependencies" : 
@@ -2645,7 +2673,8 @@
               { "id" : "kiq5u8d5",
                 "page" : "34",
                 "label" : "\"Description of each character\"" } },
-            "missingResponse" : "NAME_CHAR_MISSING",
+            "missingResponse" : 
+            { "name" : "NAME_CHAR_MISSING" },
             "bindingDependencies" : 
             [ "NAME_CHAR" ],
             "response" : 
@@ -2658,7 +2687,7 @@
             "min" : 0,
             "max" : 120,
             "decimals" : 0,
-            "label" : "\"➡ 32. How old is this character in the first episode of the Simpsons family?\"",
+            "label" : "\"➡ 3. How old is this character in the first episode of the Simpsons family?\"",
             "conditionFilter" : 
             { "value" : "(not(cast(READY,integer)  <>  1))",
               "bindingDependencies" : 
@@ -2672,7 +2701,8 @@
               { "id" : "kiq5u8d5",
                 "page" : "34",
                 "label" : "\"Description of each character\"" } },
-            "missingResponse" : "AGE_CHAR_MISSING",
+            "missingResponse" : 
+            { "name" : "AGE_CHAR_MISSING" },
             "bindingDependencies" : 
             [ "AGE_CHAR" ],
             "response" : 
@@ -2718,7 +2748,7 @@
             "componentType" : "CheckboxOne",
             "mandatory" : false,
             "page" : "35.2",
-            "label" : "\"➡ 33. Is character named \" || cast(cast(NAME_CHAR,string),string) || \" your favourite one ? \"",
+            "label" : "\"➡ 1. Is character named \" || cast(cast(NAME_CHAR,string),string) || \" your favourite one ? \"",
             "conditionFilter" : 
             { "value" : "(not(cast(READY,integer)  <>  1))",
               "bindingDependencies" : 
@@ -2728,7 +2758,8 @@
               { "id" : "kiq5xw5p",
                 "page" : "35.1",
                 "label" : "\"VII - Other details about character named \" || cast(cast(NAME_CHAR,string),string) || \" \"" } },
-            "missingResponse" : "FAVCHAR_MISSING",
+            "missingResponse" : 
+            { "name" : "FAVCHAR_MISSING" },
             "bindingDependencies" : 
             [ "NAME_CHAR",
               "FAVCHAR" ],
@@ -2747,7 +2778,7 @@
             "mandatory" : false,
             "page" : "35.3",
             "maxLength" : 255,
-            "label" : "\"➡ 34. What is your best memory about character named \" || cast(cast(NAME_CHAR,string),string) || \" ? \"",
+            "label" : "\"➡ 2. What is your best memory about character named \" || cast(cast(NAME_CHAR,string),string) || \" ? \"",
             "conditionFilter" : 
             { "value" : "(not(cast(READY,integer)  <>  1))",
               "bindingDependencies" : 
@@ -2757,7 +2788,8 @@
               { "id" : "kiq5xw5p",
                 "page" : "35.1",
                 "label" : "\"VII - Other details about character named \" || cast(cast(NAME_CHAR,string),string) || \" \"" } },
-            "missingResponse" : "MEMORY_CHAR_MISSING",
+            "missingResponse" : 
+            { "name" : "MEMORY_CHAR_MISSING" },
             "bindingDependencies" : 
             [ "NAME_CHAR",
               "MEMORY_CHAR" ],
@@ -2781,7 +2813,7 @@
         "mandatory" : false,
         "page" : "37",
         "maxLength" : 255,
-        "label" : "\"➡ 35. Do you have any comment about the survey?\"",
+        "label" : "\"➡ 1. Do you have any comment about the survey?\"",
         "conditionFilter" : 
         { "value" : "true" },
         "hierarchy" : 
@@ -2789,7 +2821,8 @@
           { "id" : "j6z12s2d",
             "page" : "36",
             "label" : "\"VIII - Comment\"" } },
-        "missingResponse" : "SURVEY_COMMENT_MISSING",
+        "missingResponse" : 
+        { "name" : "SURVEY_COMMENT_MISSING" },
         "bindingDependencies" : 
         [ "SURVEY_COMMENT" ],
         "response" : 
