@@ -16,6 +16,7 @@ const useLunatic = (
 		management = false,
 		pagination = false,
 		initialPage = '1',
+		logFunction = null,
 	}
 ) => {
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
@@ -90,12 +91,22 @@ const useLunatic = (
 
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
-			const newQ =
-				updateQuestionnaire(savingType)(questionnaire)(preferences)(todo);
+			const newQ = updateQuestionnaire(savingType)(questionnaire)(
+				preferences,
+				logFunction
+			)(todo);
 			setQuestionnaire(newQ);
 			setTodo({});
 		}
-	}, [todo, preferences, questionnaire, savingType, features, management]);
+	}, [
+		todo,
+		preferences,
+		logFunction,
+		questionnaire,
+		savingType,
+		features,
+		management,
+	]);
 
 	return {
 		questionnaire,
