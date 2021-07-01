@@ -5,6 +5,7 @@ import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
+import IDBSuggester from './idb-suggester';
 
 const Suggester = ({
 	id,
@@ -22,7 +23,11 @@ const Suggester = ({
 	labelPosition,
 	style,
 	logFunction,
+	getStoreInfo,
+	storeName,
 }) => {
+	const { labelRenderer, optionRenderer, max } = getStoreInfo(storeName) | {};
+	const labelId = `suggester-label-${id}`;
 	return (
 		<>
 			<Declarations
@@ -34,7 +39,7 @@ const Suggester = ({
 			/>
 			<div className={U.getLabelPositionClass(labelPosition)}>
 				{label && (
-					<label htmlFor={`suggester-${id}`}>
+					<label htmlFor={`suggester-${id}`} id={labelId}>
 						{interpret(features, logFunction)(bindings)(label)}
 					</label>
 				)}
@@ -47,7 +52,13 @@ const Suggester = ({
 				/>
 				<div className="field-container">
 					<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
-						TODO: Add suggester component
+						<IDBSuggester
+							storeName={storeName}
+							optionRenderer={optionRenderer}
+							labelRenderer={labelRenderer}
+							max={max}
+							labelledBy={labelId}
+						/>
 					</div>
 					{management && (
 						<div className="tooltip">
@@ -82,6 +93,7 @@ Suggester.defaultProps = {
 	management: false,
 	labelPosition: 'DEFAULT',
 	style: {},
+	getStoreInfo: undefined,
 };
 
 Suggester.propTypes = {
@@ -99,6 +111,7 @@ Suggester.propTypes = {
 	path: PropTypes.string.isRequired,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	style: PropTypes.object,
+	getStoreInfo: PropTypes.func,
 };
 
 export default React.memo(Suggester, U.areEqual);

@@ -1,4 +1,5 @@
 {
+	"suggesters": ["cities"],
 	"components": [
 		{
 			"id": "sugg",
@@ -8,7 +9,8 @@
 			"path": "data/cities",
 			"response": {
 				"name": "CITY"
-			}
+			},
+			"storeName": "naf-rev2"
 		}
 	],
 	"variables": [

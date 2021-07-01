@@ -90,8 +90,9 @@ const useLunatic = (
 
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
-			const newQ =
-				updateQuestionnaire(savingType)(questionnaire)(preferences)(todo);
+			const newQ = updateQuestionnaire(savingType)(questionnaire)(preferences)(
+				todo
+			);
 			setQuestionnaire(newQ);
 			setTodo({});
 		}

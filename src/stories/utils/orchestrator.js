@@ -2,6 +2,13 @@ import React from 'react';
 import * as lunatic from 'components';
 import './custom-lunatic.scss';
 
+function getStoreInfoRequired() {
+	console.log(
+		'Function getStoreInfo required for lunatic Suggester in Ochestrator Props.'
+	);
+	return undefined;
+}
+
 const OrchestratorForStories = ({
 	source,
 	data = {},
@@ -10,6 +17,7 @@ const OrchestratorForStories = ({
 	features,
 	bindings: initialBindings,
 	initialPage = '1',
+	getStoreInfo = getStoreInfoRequired,
 	...rest
 }) => {
 	const preferences = management
@@ -60,6 +68,9 @@ const OrchestratorForStories = ({
 								setPage={setPage}
 								flow={flow}
 								pagination={pagination}
+								getStoreInfo={
+									componentType === 'Suggester' ? getStoreInfo : undefined
+								}
 							/>
 						</div>
 					);

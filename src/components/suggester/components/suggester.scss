@@ -1,0 +1,78 @@
+@mixin preventSelect() {
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+}
+
+.lunatic-suggester {
+	position: relative;
+	z-index: 0;
+
+	&:focus {
+		outline: none;
+	}
+
+	&.focused {
+		z-index: 1;
+	}
+
+	.lunatic-suggester-container {
+		position: absolute;
+		width: 100%;
+
+		.lunatic-suggester-selection {
+			position: relative;
+			.lunatic-suggester-input {
+				border: none;
+				margin: 0;
+				padding: 0;
+				background-color: transparent;
+				&:focus {
+					outline: none;
+				}
+
+				width: 100%;
+				/* */
+			}
+
+			.lunatic-suggester-selected {
+				position: absolute;
+				top: 0;
+				white-space: nowrap;
+				overflow-x: hidden;
+				width: 100%;
+				height: 100%;
+				display: none;
+				&.displayed {
+					display: block;
+				}
+
+				.placeholder {
+				}
+				.selection {
+				}
+			}
+		}
+
+		ul,
+		li,
+		div,
+		span {
+			margin: 0;
+			padding: 0;
+			border: none;
+			line-height: 1em;
+			list-style: none;
+		}
+
+		.lunatic-suggester-panel {
+			&:focus {
+				outline: none;
+			}
+			.lunatic-suggester-option {
+				white-space: nowrap;
+				@include preventSelect();
+			}
+		}
+	}
+}
