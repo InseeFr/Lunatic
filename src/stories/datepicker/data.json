@@ -8,7 +8,10 @@
 			"response": {
 				"name": "DATEFIRST"
 			},
-			"dateFormat": "jj/mm/aaaa"
+			"dateFormat": "jj/mm/aaaa",
+			"missingResponse": {
+				"name": "DATEFIRST_MISSING"
+			}
 		}
 	],
 	"variables": [
@@ -20,6 +23,18 @@
 				"PREVIOUS": null,
 				"COLLECTED": "2000-07-12",
 				"FORCED": "1989-12-17",
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "DATEFIRST_MISSING",
+			"componentRef": "j334cyqb",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
 			}

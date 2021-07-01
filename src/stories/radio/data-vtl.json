@@ -12,7 +12,10 @@
 				{ "value": "00001", "label": "Springfield" },
 				{ "value": "00002", "label": "Shelbyville" },
 				{ "value": "00003", "label": "CITY" }
-			]
+			],
+			"missingResponse": {
+				"name": "CITY_MISSING"
+			}
 		}
 	],
 	"variables": [
@@ -24,6 +27,18 @@
 				"PREVIOUS": null,
 				"COLLECTED": "00002",
 				"FORCED": "00001",
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CITY_MISSING",
+			"componentRef": "rr",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
 			}

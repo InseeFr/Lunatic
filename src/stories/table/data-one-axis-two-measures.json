@@ -4,6 +4,9 @@
 			"id": "table",
 			"componentType": "Table",
 			"mandatory": false,
+			"missingResponse": {
+				"name": "TABLE_MISSING"
+			},
 			"cells": [
 				[
 					{ "label": "Vanilla", "value": "1" },
@@ -180,6 +183,18 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "INPUT_4",
+			"componentRef": "table",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TABLE_MISSING",
 			"componentRef": "table",
 			"values": {
 				"PREVIOUS": null,

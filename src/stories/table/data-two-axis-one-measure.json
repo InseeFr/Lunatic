@@ -6,6 +6,9 @@
 			"mandatory": false,
 			"positioning": "HORIZONTAL",
 			"label": "➡ 3. Which of the following means of transport were used by the hero and in which country?",
+			"missingResponse": {
+				"name": "TABLE_MISSING"
+			},
 			"cells": [
 				[
 					{ "headerCell": true, "label": "" },
@@ -484,6 +487,18 @@
 				"PREVIOUS": null,
 				"COLLECTED": true,
 				"FORCED": false,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TABLE_MISSING",
+			"componentRef": "j6p2lwuj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
 			}

@@ -24,7 +24,6 @@ stories.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={dataDefault}
-		missing={boolean('Missing', false)}
 		label={text('Label', '"I\'m the label of the Table"')}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { test: 'test' })}
