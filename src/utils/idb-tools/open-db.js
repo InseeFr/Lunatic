@@ -4,8 +4,7 @@ import getIDB from './get-idb';
 const IDB_REF = getIDB();
 
 function openStorage(name, version = 1) {
-	// const indexedDB = getIDB();
-	return new Promise((resolve, reject) => {
+	return new Promise(function (resolve, reject) {
 		if (!IDB_REF) {
 			reject('indexedDb not supported !');
 		}

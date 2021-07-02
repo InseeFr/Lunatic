@@ -1,5 +1,5 @@
 {
-	"suggesters": ["cities"],
+	"suggesters": ["naf-rev2"],
 	"components": [
 		{
 			"id": "sugg",

@@ -1,16 +1,15 @@
 /* eslint-disable no-restricted-globals */
 import CONSTANTE from './constantes';
-import getIDB from './get-idb';
+import { getIDB } from '../idb-tools';
 
 const IDB_REF = getIDB();
 
-function openStorage(name, version = 1) {
-	// const indexedDB = getIDB();
-	return new Promise((resolve, reject) => {
+function openStorage(name, idbVersion = 1) {
+	return new Promise(function (resolve, reject) {
 		if (!IDB_REF) {
 			reject('indexedDb not supported !');
 		}
-		const request = IDB_REF.open(name, version);
+		const request = IDB_REF.open(name, idbVersion);
 		let db;
 		let doIt = true;
 

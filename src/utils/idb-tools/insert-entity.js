@@ -3,10 +3,10 @@ function insert(db, storeName, entity) {
 		const transaction = db.transaction(storeName, 'readwrite');
 		const store = transaction.objectStore(storeName);
 		const request = store.add(entity);
-		request.onsuccess = () => {
+		request.onsuccess = function () {
 			resolve('success');
 		};
-		request.onerror = (e) => {
+		request.onerror = function (e) {
 			reject(e);
 		};
 	});
