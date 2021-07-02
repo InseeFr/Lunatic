@@ -116,22 +116,49 @@ export const buildResponseComponent = (vars) => (c) => {
 };
 
 export const buildResponsesComponent = (vars) => (c) => {
-	const { responses, ...rest } = c;
+	const { responses, missingResponse, ...rest } = c;
 	const filledResponses = responses.map((r) => buildResponseComponent(vars)(r));
+	if (missingResponse)
+		return {
+			...rest,
+			responses: filledResponses,
+			missingResponse: {
+				name: missingResponse.name,
+				values: vars[missingResponse.name].values,
+			},
+		};
 	return { ...rest, responses: filledResponses };
 };
 
 export const buildCellsComponent = (vars) => (c) => {
-	const { cells, depth, ...rest } = c;
+	const { cells, depth, missingResponse, ...rest } = c;
 	const filledCells = cells.map((row) =>
 		buildFilledComponents(vars)(row)(depth)
 	);
+	if (missingResponse)
+		return {
+			...rest,
+			cells: filledCells,
+			missingResponse: {
+				name: missingResponse.name,
+				values: vars[missingResponse.name].values,
+			},
+		};
 	return { ...rest, depth, cells: filledCells };
 };
 
 export const buildComponentsComponent = (vars) => (component) => {
-	const { components, depth, ...rest } = component;
+	const { components, depth, missingResponse, ...rest } = component;
 	const filledComponents = buildFilledComponents(vars)(components)(depth + 1);
+	if (missingResponse)
+		return {
+			...rest,
+			components: filledComponents,
+			missingResponse: {
+				name: missingResponse.name,
+				values: vars[missingResponse.name].values,
+			},
+		};
 	return { ...rest, depth, components: filledComponents };
 };
 
