@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Suggester } from './components';
+import LunaticSuggester from './lunatic-suggester';
 import { searching } from './searching';
 import CheckStore from './check-store';
 
@@ -12,7 +12,7 @@ function createSearching(storeName, version) {
 
 function IDBSuggester({
 	storeName,
-	version,
+	idbVersion,
 	id,
 	className,
 	labelledBy,
@@ -26,16 +26,20 @@ function IDBSuggester({
 	const cally = useMemo(
 		function () {
 			if (store) {
-				return createSearching(storeName, version);
+				return createSearching(storeName, idbVersion);
 			}
 			return () => [];
 		},
-		[storeName, version, store]
+		[storeName, idbVersion, store]
 	);
 
 	return (
-		<CheckStore storeName={storeName} version={version} setStore={setStore}>
-			<Suggester
+		<CheckStore
+			storeName={storeName}
+			idbVersion={idbVersion}
+			setStore={setStore}
+		>
+			<LunaticSuggester
 				id={id}
 				className={className}
 				labelledBy={labelledBy}
@@ -52,7 +56,7 @@ function IDBSuggester({
 
 IDBSuggester.propTypes = {
 	storeName: PropTypes.string.isRequired,
-	version: PropTypes.string.isRequired,
+	idbVersion: PropTypes.string.isRequired,
 	id: PropTypes.string,
 	className: PropTypes.string,
 	labelledBy: PropTypes.string,

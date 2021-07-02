@@ -1,11 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { openOrCreateStore } from '../../../utils/store-tools';
+import { useStoreIndex } from '../../../utils/store-tools';
+
+function LoaderRow({ storeInfo, idbVersion }) {
+	const { name } = storeInfo;
+	// const db = useStoreIndex(storeInfo, idbVersion);
+	return (
+		<div>
+			<span>{name}</span>
+			<span>
+				<button>Load!</button>
+			</span>
+		</div>
+	);
+}
 
 function SuggesterLoaderWidget({ source, getStoreInfo }) {
 	const { suggesters } = source;
-	const [disabled, setDisabled] = useState(true);
+
 	const [stores, setStores] = useState(undefined);
-	console.log(stores);
+	const [rows, setRows] = useState([]);
+
 	useEffect(
 		function () {
 			if (Array.isArray(suggesters)) {
@@ -14,7 +28,6 @@ function SuggesterLoaderWidget({ source, getStoreInfo }) {
 					return { ...a, [name]: storeInfo };
 				}, {});
 				setStores(str);
-				setDisabled(false);
 			}
 		},
 		[suggesters, getStoreInfo]
@@ -23,23 +36,27 @@ function SuggesterLoaderWidget({ source, getStoreInfo }) {
 	useEffect(
 		function () {
 			if (stores) {
-				Object.entries(stores).map(function ([
-					name,
-					{ storeInfo, idbVersion },
-				]) {
-					const db = openOrCreateStore(name, idbVersion);
-					return undefined;
-				});
+				setRows(
+					Object.entries(stores).map(function ([
+						name,
+						{ storeInfo, idbVersion },
+					]) {
+						// const db = openOrCreateStore(name, idbVersion);
+						return (
+							<LoaderRow
+								key={name}
+								storeInfo={storeInfo}
+								idbVersion={idbVersion}
+							/>
+						);
+					})
+				);
 			}
 		},
 		[stores]
 	);
 
-	return (
-		<div>
-			<button>Load</button>
-		</div>
-	);
+	return <div>{rows}</div>;
 }
 
 export default SuggesterLoaderWidget;

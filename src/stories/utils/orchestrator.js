@@ -3,10 +3,12 @@ import * as lunatic from 'components';
 import './custom-lunatic.scss';
 
 function getStoreInfoRequired() {
-	console.log(
-		'Function getStoreInfo required for lunatic Suggester in Ochestrator Props.'
-	);
-	return undefined;
+	// if (componentType === 'Suggester') {
+	// 	console.log(
+	// 		'Function getStoreInfo required for lunatic Suggester in Ochestrator Props.'
+	// 	);
+	// }
+	return {};
 }
 
 const OrchestratorForStories = ({
@@ -54,11 +56,13 @@ const OrchestratorForStories = ({
 				{components.map((q) => {
 					const { id, componentType } = q;
 					const Component = lunatic[componentType];
+					const { storeName } = q;
 					return (
 						<div className="lunatic lunatic-component" key={`component-${id}`}>
 							<Component
 								{...rest}
 								{...q}
+								{...getStoreInfo(storeName)}
 								handleChange={handleChange}
 								preferences={preferences}
 								management={management}
@@ -68,9 +72,6 @@ const OrchestratorForStories = ({
 								setPage={setPage}
 								flow={flow}
 								pagination={pagination}
-								getStoreInfo={
-									componentType === 'Suggester' ? getStoreInfo : undefined
-								}
 							/>
 						</div>
 					);

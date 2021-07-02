@@ -9,17 +9,25 @@ import dataVTL from './data-vtl';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import { text, boolean, object, select } from '@storybook/addon-knobs/react';
 import SuggesterLoaderWidget from './suggester-loader-widget';
-import getNafStoreInfo from './naf-rev2';
+import { getSuggesterNafInfo, getWidgetLoaderNafInfo } from './naf-rev2';
 
 /**
  *
  */
-function getStoreInfo(name) {
+function getSuggesterInfo(name) {
 	if (name === 'naf-rev2') {
-		return getNafStoreInfo();
+		return getSuggesterNafInfo();
 	}
 	console.warn(`Unknow store : ${name}`);
-	return undefined;
+	return {};
+}
+
+function getWidgetLoaderInfo(name) {
+	if (name === 'naf-rev2') {
+		return getWidgetLoaderNafInfo();
+	}
+	console.warn(`Unknow store : ${name}`);
+	return {};
 }
 
 const stories = storiesOf('Suggester', module)
@@ -35,8 +43,12 @@ const stories = storiesOf('Suggester', module)
 stories.addWithJSX('Default', () => {
 	return (
 		<>
-			<SuggesterLoaderWidget source={data} getStoreInfo={getStoreInfo} />
-			<Orchestrator id="default" source={data} getStoreInfo={getStoreInfo} />
+			<SuggesterLoaderWidget source={data} getStoreInfo={getWidgetLoaderInfo} />
+			<Orchestrator
+				id="default"
+				source={data}
+				getStoreInfo={getSuggesterInfo}
+			/>
 		</>
 	);
 });
@@ -44,7 +56,7 @@ stories.addWithJSX('Default', () => {
 stories.addWithJSX('Props', () => {
 	return (
 		<>
-			<SuggesterLoaderWidget source={data} getStoreInfo={getStoreInfo} />
+			<SuggesterLoaderWidget source={data} getStoreInfo={getWidgetLoaderInfo} />
 			<Orchestrator
 				id="props"
 				source={dataVTL}
@@ -59,7 +71,7 @@ stories.addWithJSX('Props', () => {
 					labelPositionOptions,
 					'DEFAULT'
 				)}
-				getStoreInfo={getStoreInfo}
+				getStoreInfo={getSuggesterInfo}
 			/>
 		</>
 	);
