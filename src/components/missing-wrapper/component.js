@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../button';
 import * as U from '../../utils/lib';
 import './missing.scss';
@@ -8,13 +8,21 @@ const Missing = ({ Component, componentProps }) => {
 		dontKnowButton = "Don't know",
 		refusedButton = 'Refused',
 		missingResponse,
-		response,
 		handleChange,
 		preferences,
 	} = componentProps;
 	const [buttonState, setButtonState] = useState(() =>
 		U.getResponseByPreference(preferences)(missingResponse)
 	);
+
+	// Assume we only want to handle enable external updates
+	// Don't need to check all value changes
+	useEffect(() => {
+		if (U.getResponseByPreference(preferences)(missingResponse) !== buttonState)
+			setButtonState(U.getResponseByPreference(preferences)(missingResponse));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [missingResponse, preferences]);
+
 	return (
 		<div className="missing-wrapper">
 			<div className="missing-component">
