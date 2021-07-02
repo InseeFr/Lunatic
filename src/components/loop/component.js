@@ -168,7 +168,7 @@ const Loop = ({
 			});
 			const loopBindings = U.buildLoopBindings(rowNumber)(loopVars);
 
-			if (!U.displayLoopQuestion(bindingDependencies)(bindings)) return acc;
+			if (!U.displayLoopQuestion(bindingDependencies)(loopBindings)) return acc;
 			const Component = lunatic[componentType];
 
 			const { bindingDependencies: filterDependencies = [], value = '' } =
