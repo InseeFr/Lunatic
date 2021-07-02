@@ -1,4 +1,4 @@
-function clearStore(db, name) {
+async function clearStore(db, name) {
 	new Promise(function (resolve, reject) {
 		try {
 			const transaction = db.transaction(name, 'readwrite');

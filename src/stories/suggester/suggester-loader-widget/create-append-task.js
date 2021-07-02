@@ -2,7 +2,7 @@
  * Only with Worker
  */
 function task(name, version, fields, log = () => null) {
-	const worker = new Worker('worker/lunatic-append-worker-0.1.0.js'); // TODO
+	const worker = new Worker('workers/lunatic-append-worker-0.1.0.js'); // TODO
 	let start = false;
 	let stop = false;
 

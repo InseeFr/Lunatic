@@ -46,7 +46,7 @@ function Loader({
 					if (entities && db) {
 						clearStoreData(db);
 						await start(entities);
-						post(name);
+						post(name, entities.length);
 					}
 				} catch (e) {
 					console.warn(e);
@@ -62,12 +62,7 @@ function Loader({
 		[name, fields, db, entities, idbVersion, post]
 	);
 
-	return (
-		<span style={{ position: 'relative' }}>
-			<span style={{ position: 'absolute', top: 0 }}>{name}</span>
-			<Progress percent={progress} display={true} />
-		</span>
-	);
+	return <Progress percent={progress} display={true} />;
 }
 
 export default Loader;
