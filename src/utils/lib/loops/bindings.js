@@ -14,6 +14,16 @@ export const buildLoopBindings = (index) => (vars) =>
 		  }, {})
 		: {};
 
+export const buildLoopMissingResponse = (index) => (missingResponse) => {
+	if ((!index && index !== 0) || !missingResponse) return undefined;
+	const { name, values } = missingResponse;
+	const newValues = Object.entries(values).reduce(
+		(acc, [k, v]) => ({ ...acc, [k]: v[index] }),
+		{}
+	);
+	return { name, values: newValues };
+};
+
 const getDefaultDatasetStructure = (name, value) => ({
 	[name]: { dataStructure: {}, dataPoints: { [name]: value } },
 });
