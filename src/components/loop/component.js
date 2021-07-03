@@ -159,6 +159,7 @@ const Loop = ({
 				conditionFilter,
 				page,
 				bindingDependencies = [],
+				missingResponse,
 				...rest
 			}
 		) => {
@@ -167,6 +168,9 @@ const Loop = ({
 				return [b, null];
 			});
 			const loopBindings = U.buildLoopBindings(rowNumber)(loopVars);
+
+			const loopMissingResponse =
+				U.buildLoopMissingResponse(rowNumber)(missingResponse);
 
 			if (!U.displayLoopQuestion(bindingDependencies)(loopBindings)) return acc;
 			const Component = lunatic[componentType];
@@ -210,6 +214,7 @@ const Loop = ({
 						setPage={setPage}
 						flow={flow}
 						conditionFilter={conditionFilter}
+						missingResponse={loopMissingResponse}
 					/>
 				</div>,
 			];
