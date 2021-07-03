@@ -3,7 +3,10 @@ import { buildFilledComponent } from './init-questionnaire';
 import { supportedPreferences } from '../../constants/supported-preferences';
 import { getCalculatedVariables } from './init-questionnaire';
 import { isDev, isFunction } from '../lib';
-import { CALCULATED_VAR_CATEGORY, EVENT_VALUE_CHANGE } from '../../constants';
+import {
+	CALCULATED_VAR_CATEGORY,
+	EVENT_VALUE_CHANGE,
+} from '../../constants/event-types';
 
 export const updateQuestionnaire =
 	(valueType) =>
