@@ -3,7 +3,7 @@ import Missing from './component';
 
 const missingWrapper = (Component) => (props) => {
 	const { missing } = props;
-	if (missing) return <Missing Component={Component} componentProps={props} />;
+	if (missing) return <Missing Component={Component} props={props} />;
 	return <Component {...props} />;
 };
 

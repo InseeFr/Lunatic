@@ -113,5 +113,6 @@ paginated.addWithJSX('Simpsons', () => (
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
 		pagination
+		activeGoNextForMissing
 	/>
 ));

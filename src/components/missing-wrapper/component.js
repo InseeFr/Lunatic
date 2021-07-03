@@ -3,22 +3,30 @@ import Button from '../button';
 import * as U from '../../utils/lib';
 import './missing.scss';
 
-const Missing = ({ Component, componentProps }) => {
+const Missing = ({ Component, props }) => {
 	const {
 		dontKnowButton = "Don't know",
 		refusedButton = 'Refused',
 		missingResponse,
 		handleChange,
 		preferences,
-	} = componentProps;
+		missingStrategy,
+	} = props;
 	const [buttonState, setButtonState] = useState(() =>
 		U.getResponseByPreference(preferences)(missingResponse)
 	);
 
+	const onClick = (value) => () => {
+		const newValue = buttonState === value ? null : value;
+		if (U.isFunction(missingStrategy)) missingStrategy();
+		setButtonState(newValue);
+		handleChange({ [U.getResponseName(missingResponse)]: newValue });
+	};
+
 	return (
 		<div className="missing-wrapper">
 			<div className="missing-component">
-				<Component {...componentProps} />
+				<Component {...props} />
 			</div>
 			<div className="missing-buttons">
 				<span
@@ -27,11 +35,7 @@ const Missing = ({ Component, componentProps }) => {
 					<Button
 						label="dont-know-button"
 						value={dontKnowButton}
-						onClick={() => {
-							const newValue = buttonState === U.DK ? null : U.DK;
-							setButtonState(newValue);
-							handleChange({ [U.getResponseName(missingResponse)]: newValue });
-						}}
+						onClick={onClick(U.DK)}
 					/>
 				</span>
 				<span
@@ -40,11 +44,7 @@ const Missing = ({ Component, componentProps }) => {
 					<Button
 						label="refused-button"
 						value={refusedButton}
-						onClick={() => {
-							const newValue = buttonState === U.RF ? null : U.RF;
-							setButtonState(newValue);
-							handleChange({ [U.getResponseName(missingResponse)]: newValue });
-						}}
+						onClick={onClick(U.RF)}
 					/>
 				</span>
 			</div>
