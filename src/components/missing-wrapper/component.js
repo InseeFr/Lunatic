@@ -15,14 +15,6 @@ const Missing = ({ Component, componentProps }) => {
 		U.getResponseByPreference(preferences)(missingResponse)
 	);
 
-	// Assume we only want to handle enable external updates
-	// Don't need to check all value changes
-	useEffect(() => {
-		if (U.getResponseByPreference(preferences)(missingResponse) !== buttonState)
-			setButtonState(U.getResponseByPreference(preferences)(missingResponse));
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [missingResponse, preferences]);
-
 	return (
 		<div className="missing-wrapper">
 			<div className="missing-component">
