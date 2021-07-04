@@ -1,3 +1,7 @@
+const workerPath =
+	process.env.LUNATIC_SEARCH_WORKER_PATH ||
+	process.env.REACT_LUNATIC_SEARCH_WORKER_PATH ||
+	'workers/lunatic-search-worker.js';
 let WORKER = undefined;
 
 export function isWorkerCompatible() {
@@ -14,7 +18,7 @@ function create(searh, name, version, max) {
 				if (WORKER) {
 					WORKER.terminate();
 				}
-				WORKER = new Worker('workers/lunatic-searching-worker-0.1.0.js'); // TODO give worker path in client app
+				WORKER = new Worker(workerPath); // TODO give worker path in client app
 				WORKER.postMessage({ searh, name, version, max });
 				WORKER.addEventListener('message', function (e) {
 					const { data } = e;

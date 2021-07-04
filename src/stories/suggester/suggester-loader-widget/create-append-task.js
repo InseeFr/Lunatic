@@ -1,8 +1,15 @@
+const workerPath =
+	process.env.LUNATIC_LOADER_WORKER_PATH ||
+	process.env.REACT_LUNATIC_LOADER_WORKER_PATH ||
+	'workers/lunatic-loader-worker-0.1.0.js';
+
+console.log(workerPath);
+
 /**
  * Only with Worker
  */
 function task(name, version, fields, log = () => null) {
-	const worker = new Worker('workers/lunatic-append-worker-0.1.0.js'); // TODO
+	const worker = new Worker(workerPath);
 	let start = false;
 	let stop = false;
 
