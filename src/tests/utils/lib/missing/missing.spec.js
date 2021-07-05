@@ -55,4 +55,20 @@ describe('buildLoopMissingResponse', () => {
 		});
 		expect(U.getToClean('COLLECTED')(M.qComponentsFalse)).toEqual({});
 	});
+	it('should return hasToCleanMissing for response', () => {
+		expect(U.hasToCleanMissing('COLLECTED')(M.qRespTrue)).toBeTruthy();
+		expect(U.hasToCleanMissing('COLLECTED')(M.qRespFalse)).toBeFalsy();
+	});
+	it('should return hasToCleanMissing for responses', () => {
+		expect(U.hasToCleanMissing('COLLECTED')(M.qRespsTrue)).toBeTruthy();
+		expect(U.hasToCleanMissing('COLLECTED')(M.qRespsFalse)).toBeFalsy();
+	});
+	it('should return hasToCleanMissing for cells', () => {
+		expect(U.hasToCleanMissing('COLLECTED')(M.qCellsTrue)).toBeTruthy();
+		expect(U.hasToCleanMissing('COLLECTED')(M.qCellsFalse)).toBeFalsy();
+	});
+	it('should return hasToCleanMissing for components', () => {
+		expect(U.hasToCleanMissing('COLLECTED')(M.qComponentsTrue)).toBeTruthy();
+		expect(U.hasToCleanMissing('COLLECTED')(M.qComponentsFalse)).toBeFalsy();
+	});
 });
