@@ -16,6 +16,16 @@
 	font-weight: normal;
 }
 
+.lunatic-suggester-message-error {
+	border: solid 1px darkred;
+	color: darkred;
+	background-color: tomato;
+	display: inline-block;
+	border-radius: 3px;
+	padding: 4px 8px;
+	margin: 4px 4px;
+}
+
 .lunatic-suggester-default-style {
 	&.lunatic-suggester {
 		min-height: 30px;

@@ -12,13 +12,16 @@ export function isWorkerCompatible() {
 }
 
 function create(search, name, version, max) {
+	if (!WORKER_PATH) {
+		throw new Error("Worker path is required for suggester's searchs.");
+	}
 	if (isWorkerCompatible()) {
 		return new Promise(function (resolve) {
 			try {
 				if (WORKER) {
 					WORKER.terminate();
 				}
-				WORKER = new Worker(WORKER_PATH); // TODO give worker path in client app
+				WORKER = new Worker(WORKER_PATH);
 				WORKER.postMessage({ search, name, version, max });
 				WORKER.addEventListener('message', function (e) {
 					const { data } = e;

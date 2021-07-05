@@ -15,7 +15,7 @@ function Suggester({
 }) {
 	const inputEl = useRef();
 	const [state, dispatch] = useContext(SuggesterContext);
-	const { focused, id } = state;
+	const { focused, id, messageError } = state;
 
 	const onFocus = useCallback(
 		function () {
@@ -35,6 +35,11 @@ function Suggester({
 	);
 
 	const onKeyDown = createOnKeyDownCallback(dispatch);
+	if (messageError) {
+		return (
+			<div className="lunatic-suggester-message-error">{messageError}</div>
+		);
+	}
 	return (
 		<SuggesterContainer
 			id={id}

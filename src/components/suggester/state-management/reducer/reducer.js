@@ -6,6 +6,7 @@ import reduceOnBlur from './reduce-on-blur';
 import reduceOnClickOption from './reduce-on-click-option';
 import reduceOnKeyDown from './reduce-on-key-down';
 import reduceOnInit from './reduce-on-init';
+import reduceOnError from './reduce-on-error';
 
 function reduce(state, action) {
 	const { type } = action;
@@ -24,6 +25,8 @@ function reduce(state, action) {
 			return reduceOnKeyDown(state, action);
 		case actions.ON_INIT:
 			return reduceOnInit(state, action);
+		case actions.ON_ERROR:
+			return reduceOnError(state, action);
 		default:
 			return state;
 	}

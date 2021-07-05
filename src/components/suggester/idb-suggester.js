@@ -23,7 +23,7 @@ function IDBSuggester({
 	max,
 }) {
 	const [store, setStore] = useState(undefined);
-	const cally = useMemo(
+	const search = useMemo(
 		function () {
 			if (store) {
 				return createSearching(storeName, idbVersion);
@@ -47,7 +47,7 @@ function IDBSuggester({
 				labelRenderer={labelRenderer}
 				onSelect={onSelect}
 				onChange={onChange}
-				searching={cally}
+				searching={search}
 				max={max}
 			/>
 		</CheckStore>

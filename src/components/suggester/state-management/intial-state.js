@@ -6,6 +6,7 @@ const INITIAL = {
 	expended: false,
 	displayLabel: true,
 	selectedIndex: undefined,
+	messageError: undefined,
 };
 
 export default INITIAL;

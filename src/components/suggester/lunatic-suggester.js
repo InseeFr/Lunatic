@@ -31,9 +31,13 @@ function LunaticSuggester({
 	useEffect(
 		function () {
 			async function doIt() {
-				const { results, search: old } = await searching(search, max);
-				dispatch(actions.onUpdateOptions(results, old));
-				onChange(results, old);
+				try {
+					const { results, search: old } = await searching(search, max);
+					dispatch(actions.onUpdateOptions(results, old));
+					onChange(results, old);
+				} catch (e) {
+					dispatch(actions.onError(e.message || e));
+				}
 			}
 			doIt();
 		},

@@ -27,3 +27,6 @@ export const onClickOption = (index) => ({
 
 export const ON_KEY_DOWN = 'lunatic-suggester/on-key-down';
 export const onKeyDown = (key) => ({ type: ON_KEY_DOWN, payload: { key } });
+
+export const ON_ERROR = 'lunatic-suggester/on-error';
+export const onError = (message) => ({ type: ON_ERROR, payload: { message } });
