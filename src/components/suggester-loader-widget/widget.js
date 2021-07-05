@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useStoreIndex, getStoreCount } from '../../../utils/store-tools';
+import { useStoreIndex, getStoreCount } from '../../utils/store-tools';
 import Loader from './loader';
 import './widget.scss';
 

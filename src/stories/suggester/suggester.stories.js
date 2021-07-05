@@ -8,9 +8,11 @@ import data from './data';
 import dataVTL from './data-vtl';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import { text, boolean, object, select } from '@storybook/addon-knobs/react';
-import SuggesterLoaderWidget from './suggester-loader-widget';
+// import SuggesterLoaderWidget from './suggester-loader-widget';
+import * as lunatic from 'components';
+import { SuggesterLoaderWidget } from 'components';
 import { getSuggesterNafInfo, getWidgetLoaderNafInfo } from './naf-rev2';
-
+console.log(lunatic);
 /**
  *
  */
@@ -26,7 +28,7 @@ function getWidgetLoaderInfo(name) {
 	if (name === 'naf-rev2') {
 		return getWidgetLoaderNafInfo();
 	}
-	console.warn(`Unknow store : ${name}`);
+	console.warn(`Unknown store : ${name}`);
 	return {};
 }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import createAppendTask from './create-append-task';
 import Progress from './progress';
-import { clearStoreData } from '../../../utils/store-tools';
+import { clearStoreData } from '../../utils/store-tools';
 
 function postLoad() {}
 
