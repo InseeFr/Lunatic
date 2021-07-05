@@ -26,7 +26,7 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore }) {
 	);
 
 	return (
-		<div className="widget">
+		<div className="widget-row">
 			<div className="store-name">{name}</div>
 			{start ? (
 				<Loader
@@ -50,8 +50,17 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore }) {
 						className="load"
 						disabled={disabled}
 						onClick={() => setStart(true)}
+						title="load"
 					>
-						Load!
+						l
+					</button>
+					<button
+						className="clear"
+						disabled={disabled}
+						onClick={() => null}
+						title="clear todo"
+					>
+						x
 					</button>
 				</>
 			)}
@@ -101,7 +110,7 @@ function SuggesterLoaderWidget({ source, getStoreInfo }) {
 		[stores]
 	);
 
-	return <div>{rows}</div>;
+	return <div className="lunatic-suggester-widget">{rows}</div>;
 }
 
 export default SuggesterLoaderWidget;

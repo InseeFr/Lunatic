@@ -1,6 +1,6 @@
 const workerPath =
 	process.env.LUNATIC_LOADER_WORKER_PATH ||
-	process.env.REACT_LUNATIC_LOADER_WORKER_PATH ||
+	process.env.REACT_APP_LUNATIC_LOADER_WORKER_PATH ||
 	'workers/lunatic-loader-worker-0.1.0.js';
 
 /**
