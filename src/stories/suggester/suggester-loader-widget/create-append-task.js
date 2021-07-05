@@ -3,8 +3,6 @@ const workerPath =
 	process.env.REACT_LUNATIC_LOADER_WORKER_PATH ||
 	'workers/lunatic-loader-worker-0.1.0.js';
 
-console.log(workerPath);
-
 /**
  * Only with Worker
  */

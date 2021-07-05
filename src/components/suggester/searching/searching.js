@@ -1,7 +1,8 @@
 const workerPath =
 	process.env.LUNATIC_SEARCH_WORKER_PATH ||
-	process.env.REACT_LUNATIC_SEARCH_WORKER_PATH ||
-	'workers/lunatic-search-worker.js';
+	process.env.REACT_LUNATIC_SEARCH_WORKER_PATH;
+
+console.log(workerPath);
 let WORKER = undefined;
 
 export function isWorkerCompatible() {
