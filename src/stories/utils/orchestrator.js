@@ -54,6 +54,7 @@ const OrchestratorForStories = ({
 								{...q}
 								handleChange={handleChange}
 								preferences={preferences}
+								savingType={savingType}
 								management={management}
 								features={features}
 								bindings={{ ...bindings, ...initialBindings }}
