@@ -1,8 +1,7 @@
-const workerPath =
+const WORKER_PATH =
 	process.env.LUNATIC_SEARCH_WORKER_PATH ||
 	process.env.REACT_LUNATIC_SEARCH_WORKER_PATH;
 
-console.log(workerPath);
 let WORKER = undefined;
 
 export function isWorkerCompatible() {
@@ -12,15 +11,15 @@ export function isWorkerCompatible() {
 	return false;
 }
 
-function create(searh, name, version, max) {
+function create(search, name, version, max) {
 	if (isWorkerCompatible()) {
 		return new Promise(function (resolve) {
 			try {
 				if (WORKER) {
 					WORKER.terminate();
 				}
-				WORKER = new Worker(workerPath); // TODO give worker path in client app
-				WORKER.postMessage({ searh, name, version, max });
+				WORKER = new Worker(WORKER_PATH); // TODO give worker path in client app
+				WORKER.postMessage({ search, name, version, max });
 				WORKER.addEventListener('message', function (e) {
 					const { data } = e;
 					resolve(data);
