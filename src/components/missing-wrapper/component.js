@@ -30,7 +30,9 @@ const Missing = ({ Component, props }) => {
 			</div>
 			<div className="missing-buttons">
 				<span
-					className={`missing-button${buttonState === U.DK ? '-active' : ''}`}
+					className={`missing-button${
+						buttonState === U.DK ? '-active' : ''
+					} missing-button-dk${buttonState === U.DK ? '-active' : ''}`}
 				>
 					<Button
 						label="dont-know-button"
@@ -39,7 +41,9 @@ const Missing = ({ Component, props }) => {
 					/>
 				</span>
 				<span
-					className={`missing-button${buttonState === U.RF ? '-active' : ''}`}
+					className={`missing-button${
+						buttonState === U.RF ? '-active' : ''
+					} missing-button-rf${buttonState === U.RF ? '-active' : ''}`}
 				>
 					<Button
 						label="refused-button"
