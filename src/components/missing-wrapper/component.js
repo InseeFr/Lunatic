@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../button';
 import * as U from '../../utils/lib';
 import './missing.scss';
@@ -11,14 +11,55 @@ const Missing = ({ Component, props }) => {
 		handleChange,
 		preferences,
 		missingStrategy,
+		response,
+		responses,
+		cells,
+		components,
+		savingType,
 	} = props;
 	const [buttonState, setButtonState] = useState(() =>
 		U.getResponseByPreference(preferences)(missingResponse)
 	);
 
+	useEffect(() => {
+		if (
+			buttonState !== null &&
+			U.hasToCleanMissing(savingType)({
+				response,
+				responses,
+				cells,
+				components,
+			})
+		) {
+			setButtonState(null);
+			handleChange({ [U.getResponseName(missingResponse)]: null });
+		}
+	}, [
+		buttonState,
+		handleChange,
+		savingType,
+		response,
+		responses,
+		cells,
+		components,
+		missingResponse,
+	]);
+
+	const clean = () => {
+		const toClean = U.getToClean(savingType)({
+			response,
+			responses,
+			cells,
+			components,
+		});
+		if (Object.keys(toClean)) handleChange(toClean);
+	};
+
 	const onClick = (value) => () => {
-		const newValue = buttonState === value ? null : value;
-		if (U.isFunction(missingStrategy)) missingStrategy();
+		const isSameValue = buttonState === value;
+		const newValue = isSameValue ? null : value;
+		clean();
+		if (U.isFunction(missingStrategy) && !isSameValue) missingStrategy();
 		setButtonState(newValue);
 		handleChange({ [U.getResponseName(missingResponse)]: newValue });
 	};
