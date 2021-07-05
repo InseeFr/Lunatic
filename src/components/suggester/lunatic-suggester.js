@@ -7,7 +7,7 @@ import {
 	actions,
 } from './state-management';
 import { Suggester } from './components';
-import DefaultLabelRenderer from './components/selection/defaul-label-renderer';
+import DefaultLabelRenderer from './components/selection/default-label-renderer';
 import { DefaultOptionRenderer } from './components';
 import './default-style.scss';
 
@@ -36,7 +36,7 @@ function LunaticSuggester({
 					dispatch(actions.onUpdateOptions(results, old));
 					onChange(results, old);
 				} catch (e) {
-					dispatch(actions.onError(e.message || e));
+					dispatch(actions.onError('Une erreur est survenue.'));
 				}
 			}
 			doIt();

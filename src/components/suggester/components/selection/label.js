@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { SuggesterContext } from '../../state-management';
-import DefaultLabelRenderer from './defaul-label-renderer';
+import DefaultLabelRenderer from './default-label-renderer';
 
 function Label({
 	labelRenderer: Renderer = DefaultLabelRenderer,
