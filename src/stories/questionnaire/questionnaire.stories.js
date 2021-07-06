@@ -93,6 +93,7 @@ paginated.addWithJSX('Logement', () => (
 		id="props"
 		source={logement}
 		missing={boolean('Missing', false)}
+		activeGoNextForMissing={boolean('Active go next for missing', false)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
@@ -107,12 +108,12 @@ paginated.addWithJSX('Simpsons', () => (
 		id="props"
 		source={simpsons}
 		missing={boolean('Missing', false)}
+		activeGoNextForMissing={boolean('Active go next for missing', false)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
 		pagination
-		activeGoNextForMissing
 	/>
 ));
