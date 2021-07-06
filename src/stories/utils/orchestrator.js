@@ -10,6 +10,7 @@ const OrchestratorForStories = ({
 	features,
 	bindings: initialBindings,
 	initialPage = '1',
+	missing = false,
 	activeGoNextForMissing = false,
 	...rest
 }) => {
@@ -64,6 +65,7 @@ const OrchestratorForStories = ({
 								setPage={setPage}
 								flow={flow}
 								pagination={pagination}
+								missing
 								missingStrategy={activeGoNextForMissing && missingStrategy}
 							/>
 						</div>
