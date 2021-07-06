@@ -21,7 +21,7 @@ const Loop = ({
 	depth: loopDepth,
 	...orchetratorProps
 }) => {
-	const [todo, setTodo] = useState({});
+	const [todos, setTodos] = useState([]);
 	const vectorialBindings = U.buildVectorialBindings(bindings);
 	const { features } = orchetratorProps;
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
@@ -53,19 +53,21 @@ const Loop = ({
 	}, [iterationNb]);
 
 	useEffect(() => {
-		if (Object.keys(todo).length !== 0) {
-			const { up, rowNumber } = todo;
-			const todos = Object.entries(up).reduce((acc, [k, value], i) => {
+		if (todos.length !== 0) {
+			const todosObj = todos.reduce((acc, { up, rowNumber }) => {
+				const entries = Object.entries(up);
+				if (entries.length === 0) return acc;
+				const [k, value] = entries[0];
 				const previousValue = bindings[k];
 				const newValue = previousValue.map((v, i) =>
 					i === rowNumber ? value : v
 				);
 				return { ...acc, [k]: newValue };
 			}, {});
-			handleChange(todos);
-			setTodo({});
+			handleChange(todosObj);
+			setTodos([]);
 		}
-	}, [bindings, todo, handleChange]);
+	}, [bindings, todos, handleChange]);
 
 	/**
 	 * Handle init page
@@ -205,7 +207,10 @@ const Loop = ({
 						{...orchetratorProps}
 						{...rest}
 						id={`${idC}-loop-${rowNumber}`}
-						handleChange={(up) => setTodo({ up, rowNumber })}
+						handleChange={(up) => {
+							console.log('LOOP');
+							setTodos((t) => [...t, { up, rowNumber }]);
+						}}
 						bindings={loopBindings}
 						bindingDependencies={bindingDependencies}
 						componentType={componentType}
