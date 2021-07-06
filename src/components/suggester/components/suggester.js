@@ -33,8 +33,8 @@ function Suggester({
 		},
 		[dispatch, focused]
 	);
-
 	const onKeyDown = createOnKeyDownCallback(dispatch);
+
 	if (messageError) {
 		return (
 			<div className="lunatic-suggester-message-error">{messageError}</div>

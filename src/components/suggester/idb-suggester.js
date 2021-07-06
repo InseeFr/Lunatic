@@ -12,6 +12,7 @@ function createSearching(storeName, version) {
 
 function IDBSuggester({
 	storeName,
+
 	idbVersion,
 	id,
 	className,
@@ -19,6 +20,7 @@ function IDBSuggester({
 	optionRenderer,
 	labelRenderer,
 	onSelect,
+	disabled,
 	onChange,
 	max,
 }) {

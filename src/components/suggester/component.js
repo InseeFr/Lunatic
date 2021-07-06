@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
@@ -12,7 +12,7 @@ const Suggester = ({
 	label,
 	preferences,
 	response,
-	handleChange: propsHandleChange,
+	handleChange,
 	disabled,
 	positioning,
 	focused,
@@ -23,11 +23,22 @@ const Suggester = ({
 	labelPosition,
 	style,
 	logFunction,
-	getStoreInfo,
 	storeName,
+	optionRenderer,
+	labelRenderer,
+	max,
 }) => {
-	const { labelRenderer, optionRenderer, max } = getStoreInfo(storeName) | {};
 	const labelId = `suggester-label-${id}`;
+
+	const onSelect = useCallback(function (suggestion) {
+		const { id } = suggestion;
+		if (id) {
+			handleChange({
+				[U.getResponseName(response)]: id,
+			});
+		}
+	}, []);
+
 	return (
 		<>
 			<Declarations
@@ -59,6 +70,10 @@ const Suggester = ({
 							max={max}
 							labelledBy={labelId}
 							version="1"
+							onSelect={onSelect}
+							focused={focused}
+							disabled={disabled}
+							response={response}
 						/>
 					</div>
 					{management && (

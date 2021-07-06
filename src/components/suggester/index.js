@@ -1,1 +1,1 @@
-export { default } from './idb-suggester';
+export { default } from './component';
