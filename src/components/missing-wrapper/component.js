@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Button from '../button';
 import * as U from '../../utils/lib';
 import './missing.scss';
@@ -18,9 +18,8 @@ const Missing = ({ Component, props }) => {
 		savingType,
 		bindings,
 	} = props;
-	const [buttonState, setButtonState] = useState(() =>
-		U.getResponseByPreference(preferences)(missingResponse)
-	);
+
+	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
 
 	useEffect(() => {
 		if (
@@ -32,7 +31,6 @@ const Missing = ({ Component, props }) => {
 				components,
 			})
 		) {
-			setButtonState(null);
 			handleChange({ [U.getResponseName(missingResponse)]: null });
 		}
 	}, [
@@ -66,7 +64,6 @@ const Missing = ({ Component, props }) => {
 			if (U.isFunction(missingStrategy) && !isSameValue)
 				missingStrategy(bindings);
 		}
-		setButtonState(newValue);
 		handleChange({ [U.getResponseName(missingResponse)]: newValue });
 	};
 

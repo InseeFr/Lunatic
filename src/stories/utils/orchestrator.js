@@ -41,6 +41,8 @@ const OrchestratorForStories = ({
 	});
 	const Button = lunatic.Button;
 
+	const missingStrategy = (b) => goNext(null, b);
+
 	return (
 		<div className="container">
 			<div className="components">
@@ -62,7 +64,7 @@ const OrchestratorForStories = ({
 								setPage={setPage}
 								flow={flow}
 								pagination={pagination}
-								missingStrategy={activeGoNextForMissing && goNext}
+								missingStrategy={activeGoNextForMissing && missingStrategy}
 							/>
 						</div>
 					);

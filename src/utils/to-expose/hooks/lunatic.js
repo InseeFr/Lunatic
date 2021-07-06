@@ -45,7 +45,9 @@ const useLunatic = (
 	const isFirstPage = page === '1';
 	const isLastPage = page === maxPage;
 
-	const goNext = (customBindings) => {
+	// First param is the onClick event, useless for us but we have to keep it safe into
+	// function signature to avoid confusing with customBindings
+	const goNext = (_, customBindings) => {
 		if (!isLastPage) {
 			if (flow !== FLOW_NEXT) {
 				setFlow(FLOW_NEXT);
