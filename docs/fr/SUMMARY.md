@@ -6,6 +6,7 @@
 - [Utilisation](usage.md)
 - [Composants](components.md)
 - [Pagination](pagination.md)
+- [Non réponse](missing.md)
 - [Utilitaires](utils/index.md)
   - [Gestion simplifiée d'un questionnaire](utils/hook.md)
 - [Styles](styles.md)
