@@ -16,6 +16,7 @@ const Missing = ({ Component, props }) => {
 		cells,
 		components,
 		savingType,
+		bindings,
 	} = props;
 	const [buttonState, setButtonState] = useState(() =>
 		U.getResponseByPreference(preferences)(missingResponse)
@@ -45,21 +46,26 @@ const Missing = ({ Component, props }) => {
 		missingResponse,
 	]);
 
-	const clean = () => {
-		const toClean = U.getToClean(savingType)({
+	const getVarsToClean = () =>
+		U.getToClean(savingType)({
 			response,
 			responses,
 			cells,
 			components,
 		});
-		if (Object.keys(toClean)) handleChange(toClean);
-	};
 
 	const onClick = (value) => () => {
 		const isSameValue = buttonState === value;
 		const newValue = isSameValue ? null : value;
-		clean();
-		if (U.isFunction(missingStrategy) && !isSameValue) missingStrategy();
+		const toClean = getVarsToClean();
+		if (Object.keys(toClean)) {
+			handleChange(toClean);
+			if (U.isFunction(missingStrategy) && !isSameValue)
+				missingStrategy({ ...bindings, ...toClean });
+		} else {
+			if (U.isFunction(missingStrategy) && !isSameValue)
+				missingStrategy(bindings);
+		}
 		setButtonState(newValue);
 		handleChange({ [U.getResponseName(missingResponse)]: newValue });
 	};

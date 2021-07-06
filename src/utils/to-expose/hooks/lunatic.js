@@ -45,14 +45,14 @@ const useLunatic = (
 	const isFirstPage = page === '1';
 	const isLastPage = page === maxPage;
 
-	const goNext = () => {
+	const goNext = (customBindings) => {
 		if (!isLastPage) {
 			if (flow !== FLOW_NEXT) {
 				setFlow(FLOW_NEXT);
 			}
 			const nextPage = getPage({
 				components: questionnaire.components,
-				bindings,
+				bindings: customBindings || bindings,
 				currentPage: page,
 				features: featuresWithoutMD,
 				flow: FLOW_NEXT,
