@@ -4,6 +4,7 @@
 			"id": "gg",
 			"componentType": "CheckboxGroup",
 			"label": "➡ 1. What are the pet names that the Simpsons family had?",
+			"missingResponse": { "name": "PET_MISSING" },
 			"responses": [
 				{
 					"id": "j334akov-QOP-jbgd8qmn",
@@ -76,6 +77,18 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "PET4",
+			"componentRef": "gg",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PET_MISSING",
 			"componentRef": "gg",
 			"values": {
 				"PREVIOUS": null,

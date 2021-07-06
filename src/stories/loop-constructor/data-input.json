@@ -10,6 +10,9 @@
 			"label": "Loop Num (affichera le nombre saisi + 1)",
 			"response": {
 				"name": "NUM"
+			},
+			"missingResponse": {
+				"name": "NUM_MISSING"
 			}
 		},
 		{
@@ -20,6 +23,9 @@
 			"conditionFilter": { "value": "true" },
 			"loopDependencies": ["NUM_ONE"],
 			"bindingDependencies": ["PRENOM", "NUM_ONE"],
+			"missingResponse": {
+				"name": "ROSTER_MISSING"
+			},
 			"components": [
 				{
 					"id": "k3ym6x16",
@@ -50,7 +56,31 @@
 		},
 		{
 			"variableType": "COLLECTED",
+			"name": "NUM_MISSING",
+			"componentRef": "nn",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
 			"name": "PRENOM",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ROSTER_MISSING",
 			"componentRef": "idLoop",
 			"values": {
 				"PREVIOUS": [null],

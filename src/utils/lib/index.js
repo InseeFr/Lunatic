@@ -1,4 +1,5 @@
 export { getAlphabet } from './alphabet';
+export * from './array';
 export * from './checkbox';
 export { titleDecorator } from './decorator';
 export * from './env';
@@ -6,6 +7,7 @@ export * from './input-number';
 export * from './label-position';
 export * from './loops';
 export * from './memo-check';
+export * from './missing';
 export * from './options-positioning';
 export * from './pagination';
 export * from './prop-types';

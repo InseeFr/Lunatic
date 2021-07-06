@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import missingWrapper from '../missing-wrapper';
 import debounce from 'lodash.debounce';
 import Declarations from '../declarations';
 import Icon from '../icon';
@@ -168,4 +169,4 @@ CheckboxBoolean.propTypes = {
 	style: PropTypes.object,
 };
 
-export default React.memo(CheckboxBoolean, U.areEqual);
+export default React.memo(missingWrapper(CheckboxBoolean), U.areEqual);

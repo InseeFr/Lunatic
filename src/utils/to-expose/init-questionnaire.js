@@ -94,31 +94,71 @@ export const buildFilledComponent = (vars) => (component) => {
 	return component;
 };
 
-export const buildResponseComponent = (vars) => (c) => ({
-	...c,
-	response: {
+export const buildResponseComponent = (vars) => (c) => {
+	const { missingResponse } = c;
+	const response = {
 		name: c.response.name,
 		values: vars[c.response.name].values,
-	},
-});
+	};
+	if (missingResponse)
+		return {
+			...c,
+			response,
+			missingResponse: {
+				name: missingResponse.name,
+				values: vars[missingResponse.name].values,
+			},
+		};
+	return {
+		...c,
+		response,
+	};
+};
 
 export const buildResponsesComponent = (vars) => (c) => {
-	const { responses, ...rest } = c;
+	const { responses, missingResponse, ...rest } = c;
 	const filledResponses = responses.map((r) => buildResponseComponent(vars)(r));
+	if (missingResponse)
+		return {
+			...rest,
+			responses: filledResponses,
+			missingResponse: {
+				name: missingResponse.name,
+				values: vars[missingResponse.name].values,
+			},
+		};
 	return { ...rest, responses: filledResponses };
 };
 
 export const buildCellsComponent = (vars) => (c) => {
-	const { cells, depth, ...rest } = c;
+	const { cells, depth, missingResponse, ...rest } = c;
 	const filledCells = cells.map((row) =>
 		buildFilledComponents(vars)(row)(depth)
 	);
+	if (missingResponse)
+		return {
+			...rest,
+			cells: filledCells,
+			missingResponse: {
+				name: missingResponse.name,
+				values: vars[missingResponse.name].values,
+			},
+		};
 	return { ...rest, depth, cells: filledCells };
 };
 
 export const buildComponentsComponent = (vars) => (component) => {
-	const { components, depth, ...rest } = component;
+	const { components, depth, missingResponse, ...rest } = component;
 	const filledComponents = buildFilledComponents(vars)(components)(depth + 1);
+	if (missingResponse)
+		return {
+			...rest,
+			components: filledComponents,
+			missingResponse: {
+				name: missingResponse.name,
+				values: vars[missingResponse.name].values,
+			},
+		};
 	return { ...rest, depth, components: filledComponents };
 };
 

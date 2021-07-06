@@ -2,10 +2,17 @@ import * as C from '../../constants';
 import { buildFilledComponent } from './init-questionnaire';
 import { supportedPreferences } from '../../constants/supported-preferences';
 import { getCalculatedVariables } from './init-questionnaire';
-import { isDev } from '../lib';
+import { isDev, isFunction } from '../lib';
+import {
+	CALCULATED_VAR_CATEGORY,
+	EVENT_VALUE_CHANGE,
+} from '../../constants/event-types';
 
 export const updateQuestionnaire =
-	(valueType) => (questionnaire) => (preferences) => (updatedValues) => {
+	(valueType) =>
+	(questionnaire) =>
+	(preferences, logFunction) =>
+	(updatedValues) => {
 		if (
 			!supportedPreferences.includes(valueType) ||
 			preferences.length === 0 ||
@@ -42,7 +49,7 @@ export const updateQuestionnaire =
 		const { newVariables, refs: r } = varsAndRefs;
 		const newVariablesWithCalculated =
 			valueType === C.COLLECTED
-				? addCalculatedVars(newVariables, updatedValues)
+				? addCalculatedVars(newVariables, updatedValues)(logFunction)
 				: newVariables;
 		const collectedVars = newVariables[C.COLLECTED];
 		const newComponents = components.map((c) => {
@@ -78,7 +85,7 @@ const getCollectedAndExternal = (variables) => {
 	return { ...collected, ...variables.EXTERNAL };
 };
 
-const addCalculatedVars = (variables, updatedValues) => {
+const addCalculatedVars = (variables, updatedValues) => (logFunction) => {
 	if (
 		!variables[C.CALCULATED] ||
 		Object.keys(variables[C.CALCULATED]).length === 0
@@ -97,14 +104,30 @@ const addCalculatedVars = (variables, updatedValues) => {
 	const bindings = getCollectedAndExternal(variables);
 
 	const calculated = Object.entries(CALCULATED).reduce((acc, [key, v]) => {
-		const { bindingDependencies } = v;
+		const { bindingDependencies, value } = v;
 		if (
 			Array.isArray(bindingDependencies) &&
 			!updatedVars.some((ai) => bindingDependencies.includes(ai))
 		) {
 			return { ...acc, [key]: v };
 		}
-		return { ...acc, ...getCalculatedVariables({ name: key, ...v })(bindings) };
+		const calculatedVariables = getCalculatedVariables({ name: key, ...v })(
+			bindings
+		);
+		if (
+			isFunction(logFunction) &&
+			// Filter only filterResult vars : key.startsWith('FILTER_RESULT_') &&
+			JSON.stringify(value) !== JSON.stringify(calculatedVariables[key].value)
+		) {
+			logFunction({
+				idParadataObject: `${key}`,
+				typeParadataObject: CALCULATED_VAR_CATEGORY,
+				type: EVENT_VALUE_CHANGE,
+				oldValue: value,
+				newValue: calculatedVariables[key]?.value,
+			});
+		}
+		return { ...acc, ...calculatedVariables };
 	}, {});
 
 	if (isDev)

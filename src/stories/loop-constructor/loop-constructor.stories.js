@@ -13,7 +13,7 @@ import dataLoopStaticForced from './data-loop-static-forced';
 import dataInput from './data-input';
 import dataInputForced from './data-input-forced';
 import { positioningOptions } from '../utils/options';
-import { select } from '@storybook/addon-knobs/react';
+import { select, boolean } from '@storybook/addon-knobs/react';
 
 const storiesRoster = storiesOf('LoopConstructor/RosterForLoop', module)
 	.addDecorator(withReadme(readme))
@@ -26,6 +26,7 @@ storiesRoster.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={dataRoster}
+		missing={boolean('Missing', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
@@ -68,6 +69,7 @@ storiesBlock.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={dataLoop}
+		missing={boolean('Missing', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>
@@ -145,6 +147,7 @@ storiesInput.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={dataInput}
+		missing={boolean('Missing', false)}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		features={['VTL']}
 	/>

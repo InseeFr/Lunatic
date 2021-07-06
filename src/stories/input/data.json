@@ -8,7 +8,8 @@
 			"label": "➡ 3. Who is the producer?",
 			"response": {
 				"name": "PRODUCER"
-			}
+			},
+			"missingResponse": { "name": "PRODUCER_MISSING" }
 		}
 	],
 	"variables": [
@@ -21,6 +22,18 @@
 				"COLLECTED": "Matt Groening",
 				"FORCED": null,
 				"EDITED": "Matt Groening and James L. Brooks",
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRODUCER_MISSING",
+			"componentRef": "j3343qhx",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "DK",
+				"FORCED": null,
+				"EDITED": null,
 				"INPUTED": null
 			}
 		}

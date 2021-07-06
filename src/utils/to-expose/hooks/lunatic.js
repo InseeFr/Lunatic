@@ -16,6 +16,7 @@ const useLunatic = (
 		management = false,
 		pagination = false,
 		initialPage = '1',
+		logFunction = null,
 	}
 ) => {
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
@@ -44,14 +45,16 @@ const useLunatic = (
 	const isFirstPage = page === '1';
 	const isLastPage = page === maxPage;
 
-	const goNext = () => {
+	// First param is the onClick event, useless for us but we have to keep it safe into
+	// function signature to avoid confusing with customBindings
+	const goNext = (_, customBindings) => {
 		if (!isLastPage) {
 			if (flow !== FLOW_NEXT) {
 				setFlow(FLOW_NEXT);
 			}
 			const nextPage = getPage({
 				components: questionnaire.components,
-				bindings,
+				bindings: customBindings || bindings,
 				currentPage: page,
 				features: featuresWithoutMD,
 				flow: FLOW_NEXT,
@@ -90,12 +93,22 @@ const useLunatic = (
 
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
-			const newQ =
-				updateQuestionnaire(savingType)(questionnaire)(preferences)(todo);
+			const newQ = updateQuestionnaire(savingType)(questionnaire)(
+				preferences,
+				logFunction
+			)(todo);
 			setQuestionnaire(newQ);
 			setTodo({});
 		}
-	}, [todo, preferences, questionnaire, savingType, features, management]);
+	}, [
+		todo,
+		preferences,
+		logFunction,
+		questionnaire,
+		savingType,
+		features,
+		management,
+	]);
 
 	return {
 		questionnaire,

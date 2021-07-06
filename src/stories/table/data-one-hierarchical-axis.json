@@ -6,6 +6,9 @@
 			"mandatory": false,
 			"positioning": "HORIZONTAL",
 			"label": "➡ 1. Please, specify the percentage of Jay's expenses in the Kwik-E-Mart for each product?",
+			"missingResponse": {
+				"name": "TABLE_MISSING"
+			},
 			"cells": [
 				[
 					{ "headerCell": true, "colspan": 2, "label": "" },
@@ -191,6 +194,18 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "PERCENTAGE_EXPENSES71",
+			"componentRef": "j4nwc63q",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TABLE_MISSING",
 			"componentRef": "j4nwc63q",
 			"values": {
 				"PREVIOUS": null,

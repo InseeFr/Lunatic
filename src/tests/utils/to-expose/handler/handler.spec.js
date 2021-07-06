@@ -12,6 +12,11 @@ describe('handler', () => {
 				questionnaire
 			);
 			expect(
+				H.updateQuestionnaire('EDITED')({})(['COLLECTED', 'EDITED'])({
+					inputOk: 'My input',
+				})
+			).toEqual({});
+			expect(
 				H.updateQuestionnaire('EDITED')(questionnaire)(['COLLECTED', 'EDITED'])(
 					{
 						inputOk: 'My input',
@@ -75,9 +80,12 @@ describe('handler', () => {
 				})
 			).toEqual(R.resDouble);
 		});
-		it('should return loop updated questionnaire', () => {
+		it('should return loop updated questionnaire with log function', () => {
 			expect(
-				H.updateQuestionnaire('COLLECTED')(questionnaire)(['COLLECTED'])({
+				H.updateQuestionnaire('COLLECTED')(questionnaire)(
+					['COLLECTED'],
+					console.log
+				)({
 					Roster: ['ko'],
 				})
 			).toEqual(R.resLoop);

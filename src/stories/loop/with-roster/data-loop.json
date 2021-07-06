@@ -20,6 +20,9 @@
 				{ "headerCell": true, "label": "Prénom" },
 				{ "headerCell": true, "label": "Age" }
 			],
+			"missingResponse": {
+				"name": "ROSTER_MISSING"
+			},
 			"components": [
 				{
 					"componentType": "Input",
@@ -74,7 +77,10 @@
 					"options": [
 						{ "value": "1", "label": "Oui" },
 						{ "value": "2", "label": "Non" }
-					]
+					],
+					"missingResponse": {
+						"name": "PROPRIO_MISSING"
+					}
 				},
 				{
 					"id": "k3ym6x16",
@@ -82,13 +88,16 @@
 					"componentType": "InputNumber",
 					"conditionFilter": { "value": "true" },
 					"mandatory": false,
-					"bindingDependencies": ["TPSTRAJET"],
+					"bindingDependencies": ["PRENOM", "TPSTRAJET"],
 					"min": 0,
 					"max": 180,
 					"decimals": 0,
 					"unit": "minute(s)",
 					"response": {
 						"name": "TPSTRAJET"
+					},
+					"missingResponse": {
+						"name": "TPSTRAJET_MISSING"
 					}
 				}
 			]
@@ -113,7 +122,10 @@
 			"options": [
 				{ "value": "1", "label": "Oui" },
 				{ "value": "2", "label": "Non" }
-			]
+			],
+			"missingResponse": {
+				"name": "CONFORT_MISSING"
+			}
 		},
 		{
 			"id": "k3ymkpj2",
@@ -128,6 +140,9 @@
 			"decimals": 0,
 			"response": {
 				"name": "SUPERFICIE"
+			},
+			"missingResponse": {
+				"name": "SUPERFICIE_MISSING"
 			}
 		}
 	],
@@ -195,6 +210,66 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "SUPERFICIE",
+			"componentRef": "k3ymkpj2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ROSTER_MISSING",
+			"componentRef": "k3ylzyo4",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PROPRIO_MISSING",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TPSTRAJET_MISSING",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CONFORT_MISSING",
+			"componentRef": "k3ym6i5g",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "SUPERFICIE_MISSING",
 			"componentRef": "k3ymkpj2",
 			"values": {
 				"PREVIOUS": null,

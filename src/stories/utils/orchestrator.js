@@ -10,6 +10,7 @@ const OrchestratorForStories = ({
 	features,
 	bindings: initialBindings,
 	initialPage = '1',
+	activeGoNextForMissing = false,
 	...rest
 }) => {
 	const preferences = management
@@ -40,6 +41,8 @@ const OrchestratorForStories = ({
 	});
 	const Button = lunatic.Button;
 
+	const missingStrategy = (b) => goNext(null, b);
+
 	return (
 		<div className="container">
 			<div className="components">
@@ -53,6 +56,7 @@ const OrchestratorForStories = ({
 								{...q}
 								handleChange={handleChange}
 								preferences={preferences}
+								savingType={savingType}
 								management={management}
 								features={features}
 								bindings={{ ...bindings, ...initialBindings }}
@@ -60,6 +64,7 @@ const OrchestratorForStories = ({
 								setPage={setPage}
 								flow={flow}
 								pagination={pagination}
+								missingStrategy={activeGoNextForMissing && missingStrategy}
 							/>
 						</div>
 					);
