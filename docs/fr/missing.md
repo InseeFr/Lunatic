@@ -9,6 +9,20 @@ Tout composant ayant la props `missing` à `true` sera donc succédé des boutto
 
 De plus, lors de la déclaration de la non réponse pour une question, une stratégie personnelle de navigation peut être injectée via la props `missingStrategy`. Une fonction peut alors être passée en paramètre et sera executée lors des clics sur ces boutons.
 
+## Styles
+
+Lunatic propose un style de base pour les bouttons de non réponse, surchargeable en alimentant les classes css suivantes :
+
+- missing-wrapper
+- missing-component
+- missing-buttons
+- missing-button
+- missing-button-active
+- missing-button-dk
+- missing-button-dk-active
+- missing-button-rf
+- missing-button-rf-active
+
 ## Example
 
 ```javascript
