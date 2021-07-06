@@ -61,7 +61,7 @@ Attributs de l'objet `pagination`:
 
 |     Clé     |                Type                |
 | :---------: | :--------------------------------: |
-|   goNext    |              function              |
+|  goNext \*  |              function              |
 | goPrevious  |              function              |
 |    page     |               string               |
 |   setPage   |              function              |
@@ -69,6 +69,8 @@ Attributs de l'objet `pagination`:
 | isFirstPage |              boolean               |
 | isLastPage  |              boolean               |
 |    flow     | oneOf['FLOW_NEXT','FLOW_PREVIOUS'] |
+
+\* : `goNext` prends jusqu'à 2 arguments : l'event et des bindings (les 2 sont optionnels)
 
 #### Exemples
 
