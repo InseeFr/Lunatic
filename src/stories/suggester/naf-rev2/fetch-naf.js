@@ -12,4 +12,45 @@ async function fetchNaf(path = '') {
 	});
 }
 
+function splitArray(array, size = 100) {
+	return array
+		.reduce(
+			function (stack, entity) {
+				const [last, ...other] = stack;
+				if (last.length < size) {
+					return [[...last, entity], ...other];
+				}
+				return [[entity], last, ...other];
+			},
+			[[]]
+		)
+		.reverse();
+}
+
+const createNextPage = (pages) => (index) => {
+	if (index < pages.length - 1) {
+		return {
+			entities: pages[index],
+			next: async () => createNextPage(pages)(index + 1),
+		};
+	}
+	return { entities: pages[index] };
+};
+
+/**
+ * Mock REST service.
+ * @param {} path
+ */
+export async function createFetchNafPaged(path) {
+	const naf = await fetchNaf(path);
+	const pages = splitArray(naf).map(function (e) {
+		const { code: id } = e;
+		return { ...e, id };
+	});
+
+	return function () {
+		return createNextPage(pages)(0);
+	};
+}
+
 export default fetchNaf;

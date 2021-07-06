@@ -1,103 +1,134 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import {
-	reducer,
-	INITIAL_STATE,
-	SuggesterContext,
-	actions,
-} from './state-management';
-import { Suggester } from './components';
-import DefaultLabelRenderer from './components/selection/default-label-renderer';
-import { DefaultOptionRenderer } from './components';
-import './default-style.scss';
+import Declarations from '../declarations';
+import { TooltipResponse } from '../tooltip';
+import * as U from '../../utils/lib';
+import * as C from '../../constants';
+import { interpret } from '../../utils/to-expose';
+import IDBSuggester from './idb-suggester';
 
-function LunaticSuggester({
+const Suggester = ({
 	id,
-	className,
+	label,
+	preferences,
+	response,
+	handleChange,
+	disabled,
+	positioning,
+	focused,
+	declarations,
+	features,
+	bindings,
+	management,
+	labelPosition,
+	style,
+	logFunction,
 	storeName,
-	version,
-	labelledBy,
-	placeholder,
 	optionRenderer,
-	onSelect,
-	onChange,
-	searching,
 	labelRenderer,
 	max,
-}) {
-	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { search, selectedIndex, options } = state;
-
-	useEffect(
-		function () {
-			async function doIt() {
-				try {
-					const { results, search: old } = await searching(search, max);
-					dispatch(actions.onUpdateOptions(results, old));
-					onChange(results, old);
-				} catch (e) {
-					dispatch(actions.onError('Une erreur est survenue.'));
-				}
-			}
-			doIt();
-		},
-		[search, onChange, searching, max]
-	);
-
-	useEffect(
-		function () {
-			if (selectedIndex !== undefined) {
-				onSelect(options[selectedIndex], selectedIndex);
-			}
-		},
-		[selectedIndex, onSelect, options]
-	);
-
-	useEffect(
-		function () {
-			dispatch(actions.onInit(id));
-		},
-		[id]
-	);
+	idbVersion,
+}) => {
+	const labelId = `suggester-label-${id}`;
+	const onSelect = useCallback(function (suggestion) {
+		const { id } = suggestion;
+		if (id) {
+			handleChange({
+				[U.getResponseName(response)]: id,
+			});
+		}
+	}, []);
 
 	return (
-		<SuggesterContext.Provider value={[state, dispatch]}>
-			<Suggester
-				className={className}
-				placeholder={placeholder}
-				storeName={storeName}
-				version={version}
-				labelledBy={labelledBy}
-				optionRenderer={optionRenderer}
-				labelRenderer={labelRenderer}
+		<>
+			<Declarations
+				id={id}
+				type={C.BEFORE_QUESTION_TEXT}
+				declarations={declarations}
+				features={features}
+				bindings={bindings}
 			/>
-		</SuggesterContext.Provider>
+			<div className={U.getLabelPositionClass(labelPosition)}>
+				{label && (
+					<label htmlFor={`suggester-${id}`} id={labelId}>
+						{interpret(features, logFunction)(bindings)(label)}
+					</label>
+				)}
+				<Declarations
+					id={id}
+					type={C.AFTER_QUESTION_TEXT}
+					declarations={declarations}
+					features={features}
+					bindings={bindings}
+				/>
+				<div className="field-container">
+					<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
+						<IDBSuggester
+							storeName={storeName}
+							optionRenderer={optionRenderer}
+							labelRenderer={labelRenderer}
+							max={max}
+							labelledBy={labelId}
+							version={idbVersion}
+							onSelect={onSelect}
+							focused={focused}
+							disabled={disabled}
+							response={response}
+						/>
+					</div>
+					{management && (
+						<div className="tooltip">
+							<TooltipResponse
+								id={id}
+								response={U.buildBooleanTooltipResponse(response)}
+							/>
+						</div>
+					)}
+				</div>
+			</div>
+			<Declarations
+				id={id}
+				type={C.DETACHABLE}
+				declarations={declarations}
+				features={features}
+				bindings={bindings}
+			/>
+		</>
 	);
-}
-
-LunaticSuggester.propTypes = {
-	id: PropTypes.string,
-	className: PropTypes.string,
-	placeholder: PropTypes.string,
-	labelledBy: PropTypes.string,
-	optionRenderer: PropTypes.func,
-	labelRenderer: PropTypes.func,
-	onSelect: PropTypes.func,
-	onChange: PropTypes.func,
-	max: PropTypes.number,
 };
 
-LunaticSuggester.defaultProps = {
-	id: undefined,
-	max: 30,
-	className: 'lunatic-suggester-default-style',
-	labelledBy: undefined,
-	placeholder: 'Veuillez...',
-	optionRenderer: DefaultOptionRenderer,
-	labelRenderer: DefaultLabelRenderer,
-	language: 'French',
-	onSelect: () => null,
-	onChange: () => null,
+Suggester.defaultProps = {
+	label: '',
+	preferences: ['COLLECTED'],
+	response: {},
+	disabled: false,
+	focused: false,
+	declarations: [],
+	features: [],
+	bindings: {},
+	management: false,
+	labelPosition: 'DEFAULT',
+	style: {},
+	getStoreInfo: undefined,
 };
 
-export default LunaticSuggester;
+Suggester.propTypes = {
+	id: PropTypes.string.isRequired,
+	label: PropTypes.string,
+	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
+	response: U.responsePropTypes,
+	handleChange: PropTypes.func.isRequired,
+	disabled: PropTypes.bool,
+	focused: PropTypes.bool,
+	declarations: U.declarationsPropTypes,
+	features: PropTypes.arrayOf(PropTypes.string),
+	bindings: PropTypes.object,
+	management: PropTypes.bool,
+	path: PropTypes.string.isRequired,
+	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
+	style: PropTypes.object,
+	storeInfo: PropTypes.object, //TODO
+	getStoreInfo: PropTypes.func,
+};
+
+export default React.memo(Suggester, U.areEqual);

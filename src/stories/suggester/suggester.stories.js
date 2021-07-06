@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
@@ -8,25 +8,38 @@ import data from './data';
 import dataVTL from './data-vtl';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import { text, boolean, object, select } from '@storybook/addon-knobs/react';
-// import SuggesterLoaderWidget from './suggester-loader-widget';
-import * as lunatic from 'components';
 import { SuggesterLoaderWidget } from 'components';
-import { getSuggesterNafInfo, getWidgetLoaderNafInfo } from './naf-rev2';
-console.log(lunatic);
+import * as NAF from './naf-rev2';
+
+// async function browseRestNAf() {
+// 	const fetchNaf = await createFetchNafPaged();
+// 	let currentCall = fetchNaf;
+// 	while (currentCall) {
+// 		const { next, entities } = await currentCall();
+// 		console.log({ entities, next });
+// 		currentCall = next;
+// 	}
+// }
+
+// browseRestNAf();
+
 /**
  *
  */
 function getSuggesterInfo(name) {
 	if (name === 'naf-rev2') {
-		return getSuggesterNafInfo();
+		return { optionRenderer: NAF.OptionRenderer, idbVersion: '1' };
 	}
-	console.warn(`Unknow store : ${name}`);
+	console.warn(`Unknown store : ${name}`);
 	return {};
 }
 
 function getWidgetLoaderInfo(name) {
 	if (name === 'naf-rev2') {
-		return getWidgetLoaderNafInfo();
+		return {
+			fetch: NAF.fetch,
+			idbVersion: '1',
+		};
 	}
 	console.warn(`Unknown store : ${name}`);
 	return {};
@@ -38,9 +51,6 @@ const stories = storiesOf('Suggester', module)
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<Suggester />" />;
 	});
-
-// TODO: Load into indexdb, path 'data/cities', with the following shape:
-// [{value: "70285", label: "Héricourt"}]
 
 stories.addWithJSX('Default', () => {
 	return (

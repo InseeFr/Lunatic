@@ -3,11 +3,6 @@ import * as lunatic from 'components';
 import './custom-lunatic.scss';
 
 function getStoreInfoRequired() {
-	// if (componentType === 'Suggester') {
-	// 	console.log(
-	// 		'Function getStoreInfo required for lunatic Suggester in Ochestrator Props.'
-	// 	);
-	// }
 	return {};
 }
 
@@ -57,6 +52,7 @@ const OrchestratorForStories = ({
 					const { id, componentType } = q;
 					const Component = lunatic[componentType];
 					const { storeName } = q;
+
 					return (
 						<div className="lunatic lunatic-component" key={`component-${id}`}>
 							<Component

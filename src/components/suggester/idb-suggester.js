@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import LunaticSuggester from './lunatic-suggester';
+import SuggesterWrapper from './suggester-wrapper';
 import { searching } from './searching';
 import CheckStore from './check-store';
 
@@ -12,7 +12,6 @@ function createSearching(storeName, version) {
 
 function IDBSuggester({
 	storeName,
-
 	idbVersion,
 	id,
 	className,
@@ -41,7 +40,7 @@ function IDBSuggester({
 			idbVersion={idbVersion}
 			setStore={setStore}
 		>
-			<LunaticSuggester
+			<SuggesterWrapper
 				id={id}
 				className={className}
 				labelledBy={labelledBy}
@@ -50,6 +49,7 @@ function IDBSuggester({
 				onSelect={onSelect}
 				onChange={onChange}
 				searching={search}
+				storeName={storeName}
 				max={max}
 			/>
 		</CheckStore>
