@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Utilisation · Lunatic</title>
+        <title>Non réponse · Lunatic</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="components.html" />
+    <link rel="next" href="utils/" />
     
     
-    <link rel="prev" href="getting-started.html" />
+    <link rel="prev" href="pagination.html" />
     
 
     </head>
@@ -125,7 +125,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="usage.html">
+        <li class="chapter " data-level="1.3" data-path="usage.html">
             
                 <a href="usage.html">
             
@@ -164,7 +164,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="missing.html">
+        <li class="chapter active" data-level="1.6" data-path="missing.html">
             
                 <a href="missing.html">
             
@@ -471,7 +471,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Utilisation</a>
+        <a href="." >Non réponse</a>
     </h1>
 </div>
 
@@ -486,39 +486,40 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="utilisation">Utilisation</h1>
-<h2 id="pr&#xE9;requis">Pr&#xE9;requis</h2>
-<p>Pour utiliser la librairie <code>Lunatic</code>, la Web application cliente doit supporter React 16.8 +</p>
-<h2 id="installation-de-la-librairie">Installation de la librairie</h2>
-<p><code>Lunatic</code> est publi&#xE9;e sur <a href="https://www.npmjs.com/package/@inseefr/lunatic" target="_blank">NPM</a>.</p>
-<pre class="language-"><code># Ajout de la d&#xE9;pendance
-yarn add @inseefr/lunatic
-</code></pre><h2 id="orchestration-des-composants">Orchestration des composants</h2>
-<p>Un exemple complet d&apos;orchestration des <a href="components.html">composants</a> est propos&#xE9; dans un <a href="https://github.com/InseeFr/Lunatic/tree/master/example" target="_blank">projet exemple</a>. L&apos;orchestrateur mobilise &#xE9;galement des <a href="utils/">utilitaires</a> de la librairie pour g&#xE9;rer les donn&#xE9;es de personnalisation et celles saisies :</p>
+                                <h1 id="non-r&#xE9;ponse">Non r&#xE9;ponse</h1>
+<p>Afin de pouvoir g&#xE9;rer la non r&#xE9;ponse, Lunatic permet de r&#xE9;pondre <code>Ne sais pas</code> ou <code>Refus</code> au sujet d&apos;une question.</p>
+<h2 id="fonctionnement">Fonctionnement</h2>
+<p>Les composants de Lunatic sont wrapp&#xE9;s pour intercepter la props <code>missing</code>.
+Tout composant ayant la props <code>missing</code> &#xE0; <code>true</code> sera donc succ&#xE9;d&#xE9; des bouttons permettant de traiter la non r&#xE9;ponse (le questionnaire source doit alors &#xEA;tre g&#xE9;n&#xE9;r&#xE9; via Lunatic Model en contenant les attributs <code>missingResponse</code>)</p>
+<p>De plus, lors de la d&#xE9;claration de la non r&#xE9;ponse pour une question, une strat&#xE9;gie personnelle de navigation peut &#xEA;tre inject&#xE9;e via la props <code>missingStrategy</code>. Une fonction peut alors &#xEA;tre pass&#xE9;e en param&#xE8;tre et sera execut&#xE9;e lors des clics sur ces boutons.</p>
+<h2 id="example">Example</h2>
 <pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> lunatic <span class="token keyword">from</span> <span class="token string">&apos;@inseefr/lunatic&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> lunatic <span class="token keyword">from</span> <span class="token string">&apos;components&apos;</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> <span class="token function-variable function">Orchestrator</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>
-    savingType<span class="token punctuation">,</span>
-    preferences<span class="token punctuation">,</span>
-    source<span class="token punctuation">,</span>
-    features<span class="token punctuation">,</span>
-    data<span class="token punctuation">,</span>
-    management<span class="token punctuation">,</span>
-<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<span class="token keyword">const</span> <span class="token function-variable function">OrchestratorForStories</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> source<span class="token punctuation">,</span> data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token operator">...</span>rest <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token punctuation">{</span>
-        questionnaire<span class="token punctuation">,</span>
-        components<span class="token punctuation">,</span>
         handleChange<span class="token punctuation">,</span>
+        components<span class="token punctuation">,</span>
         bindings<span class="token punctuation">,</span>
+        pagination<span class="token operator">:</span> <span class="token punctuation">{</span>
+            goNext<span class="token punctuation">,</span>
+            goPrevious<span class="token punctuation">,</span>
+            page<span class="token punctuation">,</span>
+            setPage<span class="token punctuation">,</span>
+            maxPage<span class="token punctuation">,</span>
+            isFirstPage<span class="token punctuation">,</span>
+            isLastPage<span class="token punctuation">,</span>
+            flow<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span> <span class="token operator">=</span> lunatic<span class="token punctuation">.</span><span class="token function">useLunatic</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        savingType<span class="token punctuation">,</span>
-        preferences<span class="token punctuation">,</span>
+        savingType<span class="token operator">:</span> <span class="token string">&apos;COLLECTED&apos;</span><span class="token punctuation">,</span>
+        preferences<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&apos;COLLECTED&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         features<span class="token punctuation">,</span>
-        management<span class="token punctuation">,</span>
+        pagination<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> Button <span class="token operator">=</span> lunatic<span class="token punctuation">.</span>Button<span class="token punctuation">;</span>
 
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>lunatic<span class="token punctuation">.</span><span class="token function">getCollectedState</span><span class="token punctuation">(</span>questionnaire<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">missingStrategy</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">b</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">goNext</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
         <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;container&quot;</span><span class="token operator">&gt;</span>
@@ -529,61 +530,41 @@ yarn add @inseefr/lunatic
                     <span class="token keyword">return</span> <span class="token punctuation">(</span>
                         <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;lunatic lunatic-component&quot;</span> key<span class="token operator">=</span><span class="token punctuation">{</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">component-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
                             <span class="token operator">&lt;</span>Component
+                                <span class="token punctuation">{</span><span class="token operator">...</span>rest<span class="token punctuation">}</span>
                                 <span class="token punctuation">{</span><span class="token operator">...</span>q<span class="token punctuation">}</span>
                                 handleChange<span class="token operator">=</span><span class="token punctuation">{</span>handleChange<span class="token punctuation">}</span>
-                                labelPosition<span class="token operator">=</span><span class="token string">&quot;TOP&quot;</span>
                                 preferences<span class="token operator">=</span><span class="token punctuation">{</span>preferences<span class="token punctuation">}</span>
-                                management<span class="token operator">=</span><span class="token punctuation">{</span>management<span class="token punctuation">}</span>
+                                savingType<span class="token operator">=</span><span class="token punctuation">{</span>savingType<span class="token punctuation">}</span>
                                 features<span class="token operator">=</span><span class="token punctuation">{</span>features<span class="token punctuation">}</span>
                                 bindings<span class="token operator">=</span><span class="token punctuation">{</span>bindings<span class="token punctuation">}</span>
-                                writable
-                                zIndex<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span>
+                                currentPage<span class="token operator">=</span><span class="token punctuation">{</span>page<span class="token punctuation">}</span>
+                                setPage<span class="token operator">=</span><span class="token punctuation">{</span>setPage<span class="token punctuation">}</span>
+                                flow<span class="token operator">=</span><span class="token punctuation">{</span>flow<span class="token punctuation">}</span>
+                                pagination
+                                missing
+                                missingStrategy<span class="token operator">=</span><span class="token punctuation">{</span>missingStrategy<span class="token punctuation">}</span>
                             <span class="token operator">/</span><span class="token operator">&gt;</span>
                         <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
                     <span class="token punctuation">)</span><span class="token punctuation">;</span>
                 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
             <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;pagination&quot;</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>Button
+                        onClick<span class="token operator">=</span><span class="token punctuation">{</span>goPrevious<span class="token punctuation">}</span>
+                        disabled<span class="token operator">=</span><span class="token punctuation">{</span>isFirstPage<span class="token punctuation">}</span>
+                        value<span class="token operator">=</span><span class="token string">&quot;Previous&quot;</span>
+                    <span class="token operator">/</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>Button onClick<span class="token operator">=</span><span class="token punctuation">{</span>goNext<span class="token punctuation">}</span> disabled<span class="token operator">=</span><span class="token punctuation">{</span>isLastPage<span class="token punctuation">}</span> value<span class="token operator">=</span><span class="token string">&quot;Next&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Page : </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>page<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>maxPage<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
         <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> Orchestrator<span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> OrchestratorForStories<span class="token punctuation">;</span>
 </code></pre>
-<h3 id="collecte">Collecte</h3>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">Collect</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>Orchestrator source<span class="token operator">=</span><span class="token punctuation">{</span>simpsons<span class="token punctuation">}</span> data<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">}</span> features<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token string">&apos;VTL&apos;</span><span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h3 id="gestion-de-la-collecte">Gestion de la collecte</h3>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">Management</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>Orchestrator
-        source<span class="token operator">=</span><span class="token punctuation">{</span>simpsons<span class="token punctuation">}</span>
-        data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">}</span>
-        savingType<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">&apos;EDITED&apos;</span><span class="token punctuation">}</span>
-        preferences<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token string">&apos;COLLECTED&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;FORCED&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;EDITED&apos;</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
-        features<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token string">&apos;VTL&apos;</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
-        management
-    <span class="token operator">/</span><span class="token operator">&gt;</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h2 id="interpr&#xE9;tation-des-labels-et-d&#xE9;clarations">Interpr&#xE9;tation des labels et d&#xE9;clarations</h2>
-<p>Les labels et d&#xE9;clarations d&apos;un questionnaire peuvent &#xEA;tre au format :</p>
-<ul>
-<li>string</li>
-<li>VTL</li>
-</ul>
-<p>Dans le cas o&#xF9; ils seraient sous forme de string, aucune configuration particuli&#xE8;re n&apos;est requise.
-Dans le cas o&#xF9; ils seraient sp&#xE9;cifi&#xE9;s en VTL, les props suivantes sont &#xE0; valoriser :</p>
-<ul>
-<li>features={[&apos;VTL&apos;]}</li>
-<li>bindings={lunatic.getBindings(questionnaire)}</li>
-</ul>
-<h2 id="types">Types</h2>
-<p>En entr&#xE9;e, lors de l&apos;initialisation de l&apos;orchestrateur (via le param&#xE8;tre <code>data</code>), comme en sortie, les donn&#xE9;es doivent &#xEA;tre typ&#xE9;es comme suit, en fonction des composants :</p>
-<ul>
-<li><code>boolean</code> : <code>CheckboxBoolean</code></li>
-<li><code>string</code> : Autres composants</li>
-</ul>
 
                                 
                                 </section>
@@ -611,12 +592,12 @@ Dans le cas o&#xF9; ils seraient sp&#xE9;cifi&#xE9;s en VTL, les props suivantes
 
             
                 
-                <a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page: Démarrage">
+                <a href="pagination.html" class="navigation navigation-prev " aria-label="Previous page: Pagination">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="components.html" class="navigation navigation-next " aria-label="Next page: Composants">
+                <a href="utils/" class="navigation navigation-next " aria-label="Next page: Utilitaires">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -627,7 +608,7 @@ Dans le cas o&#xF9; ils seraient sp&#xE9;cifi&#xE9;s en VTL, les props suivantes
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Utilisation","level":"1.3","depth":1,"next":{"title":"Composants","level":"1.4","depth":1,"path":"components.md","ref":"components.md","articles":[]},"previous":{"title":"Démarrage","level":"1.2","depth":1,"path":"getting-started.md","ref":"getting-started.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anchorjs","image-captions","include-codeblock","collapsible-chapters"],"root":"./","styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/InseeFr/Lunatic/"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/InseeFr/Lunatic/tree/master/docs"},"theme-default":{"styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Lunatic","language":"fr","gitbook":"*"},"file":{"path":"usage.md","mtime":"2021-07-06T14:59:31.658Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-07-06T15:03:18.325Z"},"basePath":".","book":{"language":"fr"}});
+            gitbook.page.hasChanged({"page":{"title":"Non réponse","level":"1.6","depth":1,"next":{"title":"Utilitaires","level":"1.7","depth":1,"path":"utils/index.md","ref":"utils/index.md","articles":[{"title":"Gestion simplifiée d'un questionnaire","level":"1.7.1","depth":2,"path":"utils/hook.md","ref":"utils/hook.md","articles":[]}]},"previous":{"title":"Pagination","level":"1.5","depth":1,"path":"pagination.md","ref":"pagination.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anchorjs","image-captions","include-codeblock","collapsible-chapters"],"root":"./","styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/InseeFr/Lunatic/"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/InseeFr/Lunatic/tree/master/docs"},"theme-default":{"styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Lunatic","language":"fr","gitbook":"*"},"file":{"path":"missing.md","mtime":"2021-07-06T14:59:31.658Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-07-06T15:03:18.325Z"},"basePath":".","book":{"language":"fr"}});
         });
     </script>
 </div>
