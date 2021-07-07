@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
@@ -10,6 +10,7 @@ import { labelPositionOptions, featuresOptions } from '../utils/options';
 import { text, boolean, object, select } from '@storybook/addon-knobs/react';
 import { SuggesterLoaderWidget } from 'components';
 import * as NAF from './naf-rev2';
+import * as COG from './cog-communes';
 
 // async function browseRestNAf() {
 // 	const fetchNaf = await createFetchNafPaged();
@@ -29,6 +30,8 @@ import * as NAF from './naf-rev2';
 function getSuggesterInfo(name) {
 	if (name === 'naf-rev2') {
 		return { optionRenderer: NAF.OptionRenderer, idbVersion: '1' };
+	} else if (name === 'cog-communes') {
+		return { optionRenderer: COG.OptionRenderer, idbVersion: '1' };
 	}
 	console.warn(`Unknown store : ${name}`);
 	return {};
@@ -40,6 +43,8 @@ function getWidgetLoaderInfo(name) {
 			fetch: NAF.fetch,
 			idbVersion: '1',
 		};
+	} else if (name === 'cog-communes') {
+		return { fetch: COG.fetch, idbVersion: '1' };
 	}
 	console.warn(`Unknown store : ${name}`);
 	return {};

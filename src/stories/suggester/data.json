@@ -17,6 +17,17 @@
 			},
 			"version": "1",
 			"display": "libelle"
+		},
+		"cog-communes": {
+			"name": "cog-communes",
+			"fields": [
+				{ "name": "libelle", "rules": "soft" },
+				{ "name": "nccenr", "rules": "soft" },
+				{ "name": "com", "rules": "soft" }
+			],
+			"queryParser": { "type": "soft" },
+			"version": "1",
+			"display": "libelle"
 		}
 	},
 	"components": [
@@ -30,6 +41,17 @@
 			"response": {
 				"name": "CITY"
 			}
+		},
+		{
+			"id": "sugg-communes",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "Enjoy the suggester below",
+			"path": "data/communes",
+			"storeName": "cog-communes",
+			"response": {
+				"name": "COMMUNES"
+			}
 		}
 	],
 	"variables": [
@@ -37,6 +59,18 @@
 			"variableType": "COLLECTED",
 			"name": "CITY",
 			"componentRef": "sugg",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "COMMUNES",
+			"componentRef": "sugg-communes",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
