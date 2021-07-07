@@ -1673,10 +1673,10 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@inseefr/trevas@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.3.tgz#0f430d29b95d9a522b3ed0c55e4387391222b3a7"
-  integrity sha512-aP36k+4rE2RuzBBfpNOxSpw+A9IBkBmajFDcRqFL1IkGnwIlz/+UPI6X6xpZiC9U5+V1REeyajQRUrnFFA2eYQ==
+"@inseefr/trevas@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.4.tgz#625bf22dffde1d4360013626401b79eb25761fdb"
+  integrity sha512-hELT5LxTXYSFA+ta3/zVe00IJ19F2U1vsXX4xsDuff8D3uMe8cJ9aOaxv89CSH8svLlPQ7d0QbSp/ExgwExx4w==
   dependencies:
     "@inseefr/vtl-2.0-antlr-tools" "0.1.0"
     antlr4 "4.8.0"
@@ -11681,10 +11681,10 @@ rollup-watch@^4.3.1:
     require-relative "0.8.7"
     rollup-pluginutils "^2.0.1"
 
-rollup@^2.7.2:
-  version "2.52.7"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.52.7.tgz#e15a8bf734f6e4c204b7cdf33521151310250cb2"
-  integrity sha512-55cSH4CCU6MaPr9TAOyrIC+7qFCHscL7tkNsm1MBfIJRRqRbCEY0mmeFn4Wg8FKsHtEH8r389Fz38r/o+kgXLg==
+rollup@^2.52.8:
+  version "2.52.8"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.52.8.tgz#b6462f9c16ffe8995b9a2b313f2e4247fa75e4d9"
+  integrity sha512-IjAB0C6KK5/lvqzJWAzsvOik+jV5Bt907QdkQ/gDP4j+R9KYNI1tjqdxiPitGPVrWC21Mf/ucXgowUjN/VemaQ==
   optionalDependencies:
     fsevents "~2.3.2"
 
