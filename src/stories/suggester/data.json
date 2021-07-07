@@ -5,7 +5,7 @@
 			"fields": [
 				{
 					"name": "libelle",
-					"rules": ["/[\\w]+/"],
+					"rules": ["[\\w]+"],
 					"language": "French",
 					"min": 3
 				},
@@ -13,7 +13,7 @@
 			],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "/[\\w.]+/" }
+				"params": { "language": "French", "pattern": "[\\w.]+" }
 			},
 			"version": "1",
 			"display": "libelle"
