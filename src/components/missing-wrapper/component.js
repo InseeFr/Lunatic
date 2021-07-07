@@ -1,50 +1,98 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Button from '../button';
 import * as U from '../../utils/lib';
 import './missing.scss';
 
-const Missing = ({ Component, componentProps }) => {
+const Missing = ({ Component, props }) => {
 	const {
 		dontKnowButton = "Don't know",
 		refusedButton = 'Refused',
 		missingResponse,
-		response,
 		handleChange,
 		preferences,
-	} = componentProps;
-	const [buttonState, setButtonState] = useState(() =>
-		U.getResponseByPreference(preferences)(missingResponse)
-	);
+		missingStrategy,
+		response,
+		responses,
+		cells,
+		components,
+		savingType,
+		bindings,
+	} = props;
+
+	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
+
+	useEffect(() => {
+		if (
+			buttonState !== null &&
+			U.hasToCleanMissing(savingType)({
+				response,
+				responses,
+				cells,
+				components,
+			})
+		) {
+			handleChange({ [U.getResponseName(missingResponse)]: null });
+		}
+	}, [
+		buttonState,
+		handleChange,
+		savingType,
+		response,
+		responses,
+		cells,
+		components,
+		missingResponse,
+	]);
+
+	const getVarsToClean = () =>
+		U.getToClean(savingType)({
+			response,
+			responses,
+			cells,
+			components,
+		});
+
+	const onClick = (value) => () => {
+		const isSameValue = buttonState === value;
+		const newValue = isSameValue ? null : value;
+		const toClean = getVarsToClean();
+		if (Object.keys(toClean)) {
+			handleChange(toClean);
+			if (U.isFunction(missingStrategy) && !isSameValue)
+				missingStrategy({ ...bindings, ...toClean });
+		} else {
+			if (U.isFunction(missingStrategy) && !isSameValue)
+				missingStrategy(bindings);
+		}
+		handleChange({ [U.getResponseName(missingResponse)]: newValue });
+	};
+
 	return (
 		<div className="missing-wrapper">
 			<div className="missing-component">
-				<Component {...componentProps} />
+				<Component {...props} />
 			</div>
 			<div className="missing-buttons">
 				<span
-					className={`missing-button${buttonState === U.DK ? '-active' : ''}`}
+					className={`missing-button${
+						buttonState === U.DK ? '-active' : ''
+					} missing-button-dk${buttonState === U.DK ? '-active' : ''}`}
 				>
 					<Button
 						label="dont-know-button"
 						value={dontKnowButton}
-						onClick={() => {
-							const newValue = buttonState === U.DK ? null : U.DK;
-							setButtonState(newValue);
-							handleChange({ [U.getResponseName(missingResponse)]: newValue });
-						}}
+						onClick={onClick(U.DK)}
 					/>
 				</span>
 				<span
-					className={`missing-button${buttonState === U.RF ? '-active' : ''}`}
+					className={`missing-button${
+						buttonState === U.RF ? '-active' : ''
+					} missing-button-rf${buttonState === U.RF ? '-active' : ''}`}
 				>
 					<Button
 						label="refused-button"
 						value={refusedButton}
-						onClick={() => {
-							const newValue = buttonState === U.RF ? null : U.RF;
-							setButtonState(newValue);
-							handleChange({ [U.getResponseName(missingResponse)]: newValue });
-						}}
+						onClick={onClick(U.RF)}
 					/>
 				</span>
 			</div>

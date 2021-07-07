@@ -7,6 +7,9 @@
 			"label": "➡ 1. Are you ready?",
 			"response": {
 				"name": "READY"
+			},
+			"missingResponse": {
+				"name": "READY_MISSING"
 			}
 		},
 		{
@@ -16,6 +19,9 @@
 			"label": "➡ 2. Are you always ready?",
 			"response": {
 				"name": "READY2"
+			},
+			"missingResponse": {
+				"name": "READY_MISSING"
 			}
 		}
 	],
@@ -34,11 +40,35 @@
 		},
 		{
 			"variableType": "COLLECTED",
+			"name": "READY_MISSING",
+			"componentRef": "gg",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
 			"name": "READY2",
 			"componentRef": "2",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": true,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "READY_MISSING",
+			"componentRef": "2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null

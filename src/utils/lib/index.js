@@ -1,4 +1,5 @@
 export { getAlphabet } from './alphabet';
+export * from './array';
 export * from './checkbox';
 export { titleDecorator } from './decorator';
 export * from './env';

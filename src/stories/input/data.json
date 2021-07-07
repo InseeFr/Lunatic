@@ -9,7 +9,7 @@
 			"response": {
 				"name": "PRODUCER"
 			},
-			"missingResponse": "PRODUCER_MISSING"
+			"missingResponse": { "name": "PRODUCER_MISSING" }
 		}
 	],
 	"variables": [
@@ -31,7 +31,7 @@
 			"componentRef": "j3343qhx",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": null,
+				"COLLECTED": "DK",
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null

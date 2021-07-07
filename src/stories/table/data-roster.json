@@ -6,6 +6,9 @@
 			"mandatory": false,
 			"positioning": "HORIZONTAL",
 			"label": "➡ 1. Please, complete the following grid with your favourite characters",
+			"missingResponse": {
+				"name": "TABLE_MISSING"
+			},
 			"cells": [
 				[
 					{ "headerCell": true, "label": "Id" },
@@ -458,6 +461,18 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "FAVOURITE_CHARACTERS102",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TABLE_MISSING",
 			"componentRef": "j6qg8rc6",
 			"values": {
 				"PREVIOUS": null,

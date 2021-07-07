@@ -7,6 +7,9 @@
 			"label": "➡ 4. What is the current season number?",
 			"response": {
 				"name": "SEASON_NUMBER"
+			},
+			"missingResponse": {
+				"name": "SEASON_NUMBER_MISSING"
 			}
 		}
 	],
@@ -19,6 +22,18 @@
 				"PREVIOUS": null,
 				"COLLECTED": "29",
 				"FORCED": "30",
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "SEASON_NUMBER_MISSING",
+			"componentRef": "j6q9h8tj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
 			}

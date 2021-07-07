@@ -4,6 +4,7 @@ const componentsForInit = [
 	{
 		id: '1',
 		response: { name: 'a', values: { COLLECTED: [null, 'a'] } },
+		missingResponse: { name: 'z', depth: 0 },
 		depth: 0,
 	},
 	{
@@ -18,6 +19,7 @@ const componentsForInit = [
 				id: '3.1',
 				depth: 1,
 				response: { name: 'c', values: { COLLECTED: [null, null] } },
+				missingResponse: { name: 'zz', depth: 1 },
 			},
 		],
 	},
@@ -41,8 +43,10 @@ describe('loop roster utils', () => {
 		it('should return variables involved into roster for loop', () => {
 			expect(U.getInvolvedVariables(componentsForInit)).toEqual([
 				{ name: 'a', depth: 0 },
+				{ name: 'z', depth: 0 },
 				{ name: 'b', depth: 0 },
 				{ name: 'c', depth: 1 },
+				{ name: 'zz', depth: 1 },
 			]);
 		});
 	});

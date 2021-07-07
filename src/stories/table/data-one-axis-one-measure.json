@@ -4,6 +4,9 @@
 			"id": "table",
 			"componentType": "Table",
 			"mandatory": false,
+			"missingResponse": {
+				"name": "ICE_FLAVOUR_MISSING"
+			},
 			"cells": [
 				[
 					{ "label": "Vanilla", "value": "1" },
@@ -111,6 +114,18 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "ICE_FLAVOUR4",
+			"componentRef": "table",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ICE_FLAVOUR_MISSING",
 			"componentRef": "table",
 			"values": {
 				"PREVIOUS": null,
