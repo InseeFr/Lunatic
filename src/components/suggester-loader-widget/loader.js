@@ -39,11 +39,17 @@ function Loader({
 
 	useEffect(
 		function () {
-			const [start, abort] = createAppendTask(name, idbVersion, fields, log);
-
+			let abort;
 			async function go() {
 				try {
-					if (entities && db) {
+					if (entities && db && idbVersion && fields) {
+						const [start, abort_] = createAppendTask(
+							name,
+							idbVersion,
+							fields,
+							log
+						);
+						abort = abort_;
 						clearStoreData(db);
 						await start(entities);
 						post(name, entities.length);
@@ -56,7 +62,9 @@ function Loader({
 			go();
 
 			return function () {
-				abort();
+				if (abort) {
+					abort();
+				}
 			};
 		},
 		[name, fields, db, entities, idbVersion, post]

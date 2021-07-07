@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useStoreIndex, getStoreCount } from '../../utils/store-tools';
 import Loader from './loader';
 
@@ -8,6 +8,9 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore }) {
 	const [nbEntities, setNbEntities] = useState(undefined);
 	const [start, setStart] = useState(false);
 	const [disabled, setDisabled] = useState(true);
+	const post = useCallback(function (_, count) {
+		setNbEntities(count);
+	}, []);
 
 	useEffect(
 		function () {
@@ -34,10 +37,7 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore }) {
 					store={storeInfo}
 					idVersion={idbVersion}
 					fetch={fetchStore}
-					post={function (_, count) {
-						// setStart(false);
-						setNbEntities(count);
-					}}
+					post={post}
 				/>
 			) : (
 				<>
