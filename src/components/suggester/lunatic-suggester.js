@@ -30,14 +30,17 @@ const Suggester = ({
 	idbVersion,
 }) => {
 	const labelId = `suggester-label-${id}`;
-	const onSelect = useCallback(function (suggestion) {
-		const { id } = suggestion;
-		if (id) {
-			handleChange({
-				[U.getResponseName(response)]: id,
-			});
-		}
-	}, []);
+	const onSelect = useCallback(
+		function (suggestion) {
+			const { id } = suggestion;
+			if (id) {
+				handleChange({
+					[U.getResponseName(response)]: id,
+				});
+			}
+		},
+		[handleChange, response]
+	);
 
 	return (
 		<>
