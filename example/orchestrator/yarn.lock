@@ -1246,10 +1246,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^0.0.14-experimental":
-  version "0.0.14-experimental"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.0.14-experimental.tgz#fb13cbb86601a10258fa9910a6de626c9d6e617c"
-  integrity sha512-CsSff7ufO5aH4R43o/UpYKN6lS7vJpb3dauPjXEzz6CzgvH8fbBuaVvlsMOiN+h3aasRV5copVhEU9lMCkv+pw==
+"@inseefr/lunatic@^0.0.17-experimental":
+  version "0.0.17-experimental"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.0.17-experimental.tgz#72810c4742edf3d039171b0fdc61c525b248aa4b"
+  integrity sha512-ApN7UE5flz3yW+j30+FMslGxfLEKQAPFQwYv7lJ/rw+uQI0KZytK3EjteLgwIFqAcNdfIMzEv1xlf6gYZDKIxQ==
   dependencies:
     "@inseefr/trevas" "^0.1.3"
     lodash.camelcase "^4.3.0"
@@ -9816,10 +9816,10 @@ sass@^1.32.2:
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 
-sass@^1.34.1:
-  version "1.35.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.35.0.tgz#37c39e60eb3f82149488a9ca9ae48f888bf9324d"
-  integrity sha512-9joxNu7CoIEdZTDZFnH67NoWE/1VTofGPYiSIntWSE391SfmPu6Kd2Y0ZclDu9WQhVvvPwvo8LHeb/8wHIj95Q==
+sass@^1.35.1:
+  version "1.35.1"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.35.1.tgz#90ecf774dfe68f07b6193077e3b42fb154b9e1cd"
+  integrity sha512-oCisuQJstxMcacOPmxLNiLlj4cUyN2+8xJnG7VanRoh2GOLr9RqkvI4AxA4a6LHVg/rsu+PmxXeGhrdSF9jCiQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
