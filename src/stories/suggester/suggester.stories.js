@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
@@ -58,14 +58,20 @@ const stories = storiesOf('Suggester', module)
 	});
 
 stories.addWithJSX('Default', () => {
+	const [message, setMessage] = useState(undefined);
 	return (
 		<>
-			<SuggesterLoaderWidget source={data} getStoreInfo={getWidgetLoaderInfo} />
+			<SuggesterLoaderWidget
+				source={data}
+				getStoreInfo={getWidgetLoaderInfo}
+				onRefresh={(m) => setMessage(m)}
+			/>
 			<Orchestrator
 				id="default"
 				source={data}
 				getStoreInfo={getSuggesterInfo}
 			/>
+			<div>{message}</div>
 		</>
 	);
 });

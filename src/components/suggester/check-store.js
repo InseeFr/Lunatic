@@ -1,34 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { openDb, getEntity } from '../../utils/idb-tools';
 import { CONSTANTES } from '../../utils/store-tools';
 
 function CheckStore({ storeName, version, setStore, children }) {
 	const [ready, setReady] = useState(0);
+	const [refresh, setRefresh] = useState(false);
+	const [disabled, setDisabled] = useState(false);
 
-	useEffect(
-		function () {
-			async function init() {
-				try {
-					const db = await openDb(storeName, version);
-					const info = await getEntity(
-						db,
-						CONSTANTES.STORE_INFO_NAME,
-						storeName
-					);
+	const checkStore = useCallback(
+		async function () {
+			try {
+				const db = await openDb(storeName, version);
+				const info = await getEntity(db, CONSTANTES.STORE_INFO_NAME, storeName);
 
-					if (db && info) {
-						setReady(200);
-						setStore(info);
-					}
-				} catch (e) {
-					setReady(400);
+				if (db && info) {
+					setReady(200);
+					setStore(info);
 				}
+			} catch (e) {
+				setReady(400);
 			}
-
-			init();
 		},
 		[storeName, version, setStore]
 	);
+
+	useEffect(
+		function () {
+			checkStore();
+		},
+		[checkStore]
+	);
+
+	useEffect(
+		function () {
+			if (refresh) {
+				setRefresh(false);
+				setDisabled(true);
+				async function go() {
+					await checkStore();
+					setDisabled(false);
+				}
+
+				go();
+			}
+		},
+		[refresh]
+	);
+
 	if (ready === 0) {
 		return (
 			<div className="lunatic-suggester-in-progress">
@@ -42,6 +60,9 @@ function CheckStore({ storeName, version, setStore, children }) {
 	return (
 		<div className="lunatic-suggester-unvailable">
 			Le store {storeName} n'est pas disponible.
+			<button disabled={disabled} onClick={() => setRefresh(true)}>
+				Refresh
+			</button>
 		</div>
 	);
 }

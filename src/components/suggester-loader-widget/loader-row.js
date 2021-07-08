@@ -1,8 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useStoreIndex, getStoreCount } from '../../utils/store-tools';
+import {
+	useStoreIndex,
+	getStoreCount,
+	clearStoreData,
+} from '../../utils/store-tools';
 import Loader from './loader';
 
-function LoaderRow({ storeInfo, idbVersion, fetchStore }) {
+function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 	const { name } = storeInfo;
 	const db = useStoreIndex(storeInfo, idbVersion);
 	const [nbEntities, setNbEntities] = useState(undefined);
@@ -10,7 +14,17 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore }) {
 	const [disabled, setDisabled] = useState(true);
 	const post = useCallback(function (_, count) {
 		setNbEntities(count);
+		onRefresh(`Store ${name} loaded.`);
 	}, []);
+	const clear = useCallback(
+		function () {
+			if (db) {
+				clearStoreData(db);
+				setNbEntities(0);
+			}
+		},
+		[db]
+	);
 
 	useEffect(
 		function () {
@@ -56,7 +70,7 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore }) {
 					<button
 						className="clear"
 						disabled={disabled}
-						onClick={() => null}
+						onClick={clear}
 						title="clear todo"
 					>
 						x

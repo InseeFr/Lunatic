@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LoaderRow from './loader-row';
 import './widget.scss';
 
-function SuggesterLoaderWidget({ source, getStoreInfo }) {
+function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh }) {
 	const { suggesters } = source;
 	const [stores, setStores] = useState(undefined);
 	const [rows, setRows] = useState([]);
@@ -38,6 +38,7 @@ function SuggesterLoaderWidget({ source, getStoreInfo }) {
 								storeInfo={storeInfo}
 								idbVersion={idbVersion}
 								fetchStore={fetchStore}
+								onRefresh={onRefresh}
 							/>
 						);
 					})
