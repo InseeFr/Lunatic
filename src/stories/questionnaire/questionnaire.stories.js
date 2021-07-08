@@ -5,6 +5,7 @@ import { titleDecorator } from 'utils/lib';
 import calcVar from './calc-var';
 import logement from './logement';
 import simpsons from './simpsons';
+import arithmetic from './arithmetic';
 import { positioningOptions, featuresOptions } from '../utils/options';
 import { boolean, select } from '@storybook/addon-knobs/react';
 
@@ -41,16 +42,13 @@ def.addWithJSX('Logement', () => (
 	/>
 ));
 
-def.addWithJSX('Missing', () => (
+def.addWithJSX('Arithmetic', () => (
 	<Orchestrator
 		id="props"
-		source={simpsons}
-		missing={boolean('Missing', false)}
+		source={arithmetic}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
-		focused={boolean('Focused', false)}
-		management={boolean('Management', false)}
 	/>
 ));
 
