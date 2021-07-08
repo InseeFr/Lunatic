@@ -1,7 +1,7 @@
 import React from 'react';
-import OpenedIcon from '../commons/components/opened.icon';
-import CrossIcon from './cross.icon';
-import ClosedIcon from '../commons/components/closed.icon';
+import OpenedIcon from '../../../utils/icons/opened.icon';
+import CrossIcon from '../../../utils/icons/cross.icon';
+import ClosedIcon from '../../../utils/icons/closed.icon';
 
 /** */
 const getIcon = (visible) =>
@@ -11,7 +11,7 @@ const getIcon = (visible) =>
 		<ClosedIcon width={10} height={10} />
 	);
 
-const Icone = ({ prefix, visible, disabled, onDelete, onSwitch }) => {
+const Icon = ({ prefix, visible, disabled, onDelete, onSwitch }) => {
 	if (disabled) {
 		return (
 			<span className="lunatic-icon" tabIndex="-1" onMouseDown={onSwitch}>
@@ -30,4 +30,4 @@ const Icone = ({ prefix, visible, disabled, onDelete, onSwitch }) => {
 	);
 };
 
-export default Icone;
+export default Icon;

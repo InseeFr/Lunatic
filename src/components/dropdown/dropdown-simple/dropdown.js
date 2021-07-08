@@ -3,8 +3,8 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import * as actions from '../commons/actions';
 import Panel from '../commons/components/panel';
-import ClosedIcon from '../commons/components/closed.icon';
-import OpenedIcon from '../commons/components/opened.icon';
+import ClosedIcon from '../../../utils/icons/closed.icon';
+import OpenedIcon from '../../../utils/icons/opened.icon';
 import DropdownContainer from '../commons/components/dropdown';
 import reducer, { initial } from '../commons/reducer';
 import Option from './option';
@@ -115,38 +115,40 @@ export default Dropdown;
 const isDisplay = ({ visible, options }) => visible && options.length > 0;
 
 /** */
-const getIcon = ({ disabled }, dispatch) => (visible, containerEl) => {
-	if (disabled) {
+const getIcon =
+	({ disabled }, dispatch) =>
+	(visible, containerEl) => {
+		if (disabled) {
+			return (
+				<span className="lunatic-icon">
+					<ClosedIcon width={10} height={10} />
+				</span>
+			);
+		}
 		return (
-			<span className="lunatic-icon">
-				<ClosedIcon width={10} height={10} />
+			<span
+				className="lunatic-icon"
+				tabIndex="-1"
+				onMouseDown={(e) => {
+					e.stopPropagation();
+					e.preventDefault();
+
+					if (visible) {
+						dispatch(actions.hidePanel());
+					} else {
+						dispatch(actions.showPanel());
+						containerEl.current.focus();
+					}
+				}}
+			>
+				{visible ? (
+					<OpenedIcon width={10} height={10} />
+				) : (
+					<ClosedIcon width={10} height={10} />
+				)}
 			</span>
 		);
-	}
-	return (
-		<span
-			className="lunatic-icon"
-			tabIndex="-1"
-			onMouseDown={(e) => {
-				e.stopPropagation();
-				e.preventDefault();
-
-				if (visible) {
-					dispatch(actions.hidePanel());
-				} else {
-					dispatch(actions.showPanel());
-					containerEl.current.focus();
-				}
-			}}
-		>
-			{visible ? (
-				<OpenedIcon width={10} height={10} />
-			) : (
-				<ClosedIcon width={10} height={10} />
-			)}
-		</span>
-	);
-};
+	};
 
 const createOnSelect = (_, dispatch, onSelect) => (option) => {
 	dispatch(actions.setSelectedOption(option));
