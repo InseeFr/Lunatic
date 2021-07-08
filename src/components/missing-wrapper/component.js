@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../button';
 import * as U from '../../utils/lib';
 import './missing.scss';
@@ -20,6 +20,11 @@ const Missing = ({ Component, props }) => {
 	} = props;
 
 	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
+
+	const [init, setInit] = useState(false);
+	useEffect(() => {
+		if (!init) setInit(true);
+	}, [init, buttonState]);
 
 	useEffect(() => {
 		if (
@@ -43,6 +48,19 @@ const Missing = ({ Component, props }) => {
 		components,
 		missingResponse,
 	]);
+
+	// Trigger missingStrategy function when an external update data with handleChange
+	useEffect(() => {
+		if (
+			init &&
+			U.isFunction(missingStrategy) &&
+			[U.DK, U.RF].includes(buttonState)
+		) {
+			missingStrategy();
+		}
+		// Assume this, we don't want to use missingStrategy at first time init=true
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [buttonState, missingStrategy]);
 
 	const getVarsToClean = () =>
 		U.getToClean(savingType)({
