@@ -4,7 +4,7 @@ function reduceArrowDown(state) {
 	const { options, selectedIndex: prec } = state;
 	if (options.length) {
 		const selectedIndex = Math.min(prec + 1 || 0, options.length - 1);
-		return { ...state, selectedIndex, expended: true };
+		return { ...state, selectedIndex, expended: true, displayLabel: true };
 	}
 	return state;
 }
@@ -13,7 +13,7 @@ function reduceArrowUp(state) {
 	const { selectedIndex: prec, options } = state;
 	if (options.length) {
 		const selectedIndex = Math.max(prec - 1 || 0, 0);
-		return { ...state, selectedIndex, expended: true };
+		return { ...state, selectedIndex, expended: true, displayLabel: true };
 	}
 	return state;
 }

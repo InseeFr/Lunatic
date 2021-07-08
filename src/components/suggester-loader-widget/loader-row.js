@@ -4,6 +4,7 @@ import {
 	getStoreCount,
 	clearStoreData,
 } from '../../utils/store-tools';
+import CrossIcon from '../../utils/icons/cross.icon';
 import Loader from './loader';
 
 function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
@@ -65,7 +66,7 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 						onClick={() => setStart(true)}
 						title="load"
 					>
-						l
+						o
 					</button>
 					<button
 						className="clear"
@@ -73,7 +74,7 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 						onClick={clear}
 						title="clear todo"
 					>
-						x
+						<CrossIcon width={8} heigh={8} color="PeachPuff" />
 					</button>
 				</>
 			)}

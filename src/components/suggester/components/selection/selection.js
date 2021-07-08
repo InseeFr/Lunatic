@@ -21,10 +21,12 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 				onChange={onChange}
 				value={search}
 				role="combobox"
+				title="suggester"
 				aria-expanded={expended}
 				aria-autocomplete="list"
 				aria-controls={`${id}-list`}
-				aria-labelledby={labelledBy}
+				aria-labelledBy={labelledBy}
+				aria-label="lunatic-suggester"
 				autoComplete="off"
 				autoCapitalize="off"
 				autoCorrect="off"
