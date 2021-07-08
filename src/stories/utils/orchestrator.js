@@ -65,7 +65,7 @@ const OrchestratorForStories = ({
 								setPage={setPage}
 								flow={flow}
 								pagination={pagination}
-								missing
+								missing={missing}
 								missingStrategy={activeGoNextForMissing && missingStrategy}
 							/>
 						</div>
