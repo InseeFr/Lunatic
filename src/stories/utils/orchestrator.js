@@ -2,6 +2,10 @@ import React from 'react';
 import * as lunatic from 'components';
 import './custom-lunatic.scss';
 
+function getStoreInfoRequired() {
+	return {};
+}
+
 const OrchestratorForStories = ({
 	source,
 	data = {},
@@ -10,6 +14,7 @@ const OrchestratorForStories = ({
 	features,
 	bindings: initialBindings,
 	initialPage = '1',
+	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	activeGoNextForMissing = false,
 	...rest
@@ -50,11 +55,14 @@ const OrchestratorForStories = ({
 				{components.map((q) => {
 					const { id, componentType } = q;
 					const Component = lunatic[componentType];
+					const { storeName } = q;
+
 					return (
 						<div className="lunatic lunatic-component" key={`component-${id}`}>
 							<Component
 								{...rest}
 								{...q}
+								{...getStoreInfo(storeName)}
 								handleChange={handleChange}
 								preferences={preferences}
 								savingType={savingType}
