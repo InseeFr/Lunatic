@@ -119,15 +119,10 @@ const getIcon =
 	({ disabled }, dispatch) =>
 	(visible, containerEl) => {
 		if (disabled) {
-			return (
-				<span className="lunatic-icon">
-					<ClosedIcon width={10} height={10} />
-				</span>
-			);
+			return <ClosedIcon className="lunatic-icon" width={16} height={16} />;
 		}
 		return (
 			<span
-				className="lunatic-icon"
 				tabIndex="-1"
 				onMouseDown={(e) => {
 					e.stopPropagation();
@@ -142,9 +137,9 @@ const getIcon =
 				}}
 			>
 				{visible ? (
-					<OpenedIcon width={10} height={10} />
+					<OpenedIcon className="lunatic-icon" width={16} height={16} />
 				) : (
-					<ClosedIcon width={10} height={10} />
+					<ClosedIcon className="lunatic-icon" width={16} height={16} />
 				)}
 			</span>
 		);
