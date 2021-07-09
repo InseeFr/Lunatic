@@ -19,8 +19,7 @@ const CheckboxGroup = ({
 	handleChange: propsHandleChange,
 	disabled,
 	focused,
-	keyboardSelection,
-	shortCut,
+	shortcut,
 	positioning,
 	declarations,
 	features,
@@ -142,7 +141,7 @@ const CheckboxGroup = ({
 												style={checked ? U.buildStyleObject(modalityStyle) : {}}
 												className="modality-label"
 											>
-												{keyboardSelection && (
+												{shortcut && (
 													<span className="code-modality">
 														{keyboardSelectionKey.toUpperCase()}
 													</span>
@@ -161,7 +160,7 @@ const CheckboxGroup = ({
 									</div>
 								)}
 							</div>
-							{shortCut && (
+							{shortcut && (
 								<KeyboardEventHandler
 									handleKeys={[keyboardSelectionKey.toLowerCase()]}
 									onKeyEvent={(key, e) => {
@@ -205,7 +204,6 @@ CheckboxGroup.defaultProps = {
 	responses: [],
 	disabled: false,
 	focused: false,
-	keyboardSelection: false,
 	positioning: 'DEFAULT',
 	declarations: [],
 	features: [],
@@ -222,7 +220,6 @@ CheckboxGroup.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	disabled: PropTypes.bool,
 	focused: PropTypes.bool,
-	keyboardSelection: PropTypes.bool,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),

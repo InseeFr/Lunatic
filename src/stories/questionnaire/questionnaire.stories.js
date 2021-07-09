@@ -107,6 +107,8 @@ paginated.addWithJSX('Simpsons', () => (
 		source={simpsons}
 		missing={boolean('Missing', false)}
 		activeGoNextForMissing={boolean('Active go next for missing', false)}
+		missingShortcut={{ dontKnow: 'f2', refused: 'f4' }}
+		shortcut
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}

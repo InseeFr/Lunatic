@@ -12,14 +12,14 @@ const Missing = ({ Component, props }) => {
 		handleChange,
 		preferences,
 		missingStrategy,
-		missingShortCut = { dontKnow: '', refused: '' },
+		missingShortcut = { dontKnow: '', refused: '' },
 		response,
 		responses,
 		cells,
 		components,
 		savingType,
 		bindings,
-		shortCut,
+		shortcut,
 	} = props;
 
 	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
@@ -98,16 +98,16 @@ const Missing = ({ Component, props }) => {
 					/>
 				</span>
 			</div>
-			{shortCut &&
-				missingShortCut &&
-				missingShortCut.dontKnow &&
-				missingShortCut.refused && (
+			{shortcut &&
+				missingShortcut &&
+				missingShortcut.dontKnow &&
+				missingShortcut.refused && (
 					<KeyboardEventHandler
-						handleKeys={Object.values(missingShortCut)}
+						handleKeys={Object.values(missingShortcut)}
 						onKeyEvent={(key, e) => {
 							e.preventDefault();
-							if (key === missingShortCut.dontKnow) onClick(U.DK)();
-							if (key === missingShortCut.refused) onClick(U.RF)();
+							if (key === missingShortcut.dontKnow) onClick(U.DK)();
+							if (key === missingShortcut.refused) onClick(U.RF)();
 						}}
 						handleFocusableElements
 					/>
