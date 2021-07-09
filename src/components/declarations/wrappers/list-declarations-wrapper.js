@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import Declarations from '../';
@@ -18,6 +19,7 @@ const ListDeclarationsWrapper = ({
 	disabled,
 	focused,
 	keyboardSelection,
+	shortCut,
 	declarations,
 	features,
 	bindings,
@@ -121,6 +123,8 @@ const ListDeclarationsWrapper = ({
 									features,
 									logFunction
 								)(bindings)(optionLabel);
+								const keyboardSelectionKey =
+									options.length < 10 ? `${i + 1}` : U.getAlphabet()[i];
 								return (
 									<div
 										key={`${type}-${id}-${optionValue}`}
@@ -151,14 +155,22 @@ const ListDeclarationsWrapper = ({
 											>
 												{keyboardSelection && (
 													<span className="code-modality">
-														{options.length < 10
-															? i + 1
-															: U.getAlphabet()[i].toUpperCase()}
+														{keyboardSelectionKey.toUpperCase()}
 													</span>
 												)}
 												{interpretedLabel}
 											</label>
 										</Icon>
+										{shortCut && (
+											<KeyboardEventHandler
+												handleKeys={[keyboardSelectionKey.toLowerCase()]}
+												onKeyEvent={(key, e) => {
+													e.preventDefault();
+													onChange(optionValue);
+												}}
+												handleFocusableElements
+											/>
+										)}
 									</div>
 								);
 							}

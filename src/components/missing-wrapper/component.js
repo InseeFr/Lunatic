@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 import Button from '../button';
 import * as U from '../../utils/lib';
 import './missing.scss';
@@ -11,20 +12,17 @@ const Missing = ({ Component, props }) => {
 		handleChange,
 		preferences,
 		missingStrategy,
+		missingShortCut = { dontKnow: '', refused: '' },
 		response,
 		responses,
 		cells,
 		components,
 		savingType,
 		bindings,
+		shortCut,
 	} = props;
 
 	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
-
-	const [init, setInit] = useState(false);
-	useEffect(() => {
-		if (!init) setInit(true);
-	}, [init, buttonState]);
 
 	useEffect(() => {
 		if (
@@ -48,27 +46,6 @@ const Missing = ({ Component, props }) => {
 		components,
 		missingResponse,
 	]);
-
-	// Trigger missingStrategy function when an external update data with handleChange
-	useEffect(() => {
-		if (
-			init &&
-			U.isFunction(missingStrategy) &&
-			[U.DK, U.RF].includes(buttonState)
-		) {
-			const toClean = getVarsToClean();
-			if (Object.keys(toClean)) {
-				handleChange(toClean);
-				if (U.isFunction(missingStrategy))
-					missingStrategy({ ...bindings, ...toClean });
-			} else {
-				if (U.isFunction(missingStrategy)) missingStrategy(bindings);
-			}
-		}
-		// Assume this, we don't want to use missingStrategy at first time init=true
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [buttonState, missingStrategy]);
-
 	const getVarsToClean = () =>
 		U.getToClean(savingType)({
 			response,
@@ -121,6 +98,20 @@ const Missing = ({ Component, props }) => {
 					/>
 				</span>
 			</div>
+			{shortCut &&
+				missingShortCut &&
+				missingShortCut.dontKnow &&
+				missingShortCut.refused && (
+					<KeyboardEventHandler
+						handleKeys={Object.values(missingShortCut)}
+						onKeyEvent={(key, e) => {
+							e.preventDefault();
+							if (key === missingShortCut.dontKnow) onClick(U.DK)();
+							if (key === missingShortCut.refused) onClick(U.RF)();
+						}}
+						handleFocusableElements
+					/>
+				)}
 		</div>
 	);
 };

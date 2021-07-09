@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 import PropTypes from 'prop-types';
 import missingWrapper from '../missing-wrapper';
 import debounce from 'lodash.debounce';
@@ -19,6 +20,7 @@ const CheckboxGroup = ({
 	disabled,
 	focused,
 	keyboardSelection,
+	shortCut,
 	positioning,
 	declarations,
 	features,
@@ -89,6 +91,8 @@ const CheckboxGroup = ({
 					const toRef =
 						i === 0 || (checkedArray[0] && checkedArray[0] === modId);
 					const interpretedLabel = interpret(features)(bindings)(modLabel);
+					const keyboardSelectionKey =
+						responses.length < 10 ? `${i + 1}` : U.getAlphabet()[i];
 					return (
 						<div
 							className={`${U.getItemsPositioningClass(positioning)}`}
@@ -140,9 +144,7 @@ const CheckboxGroup = ({
 											>
 												{keyboardSelection && (
 													<span className="code-modality">
-														{responses.length < 10
-															? i + 1
-															: U.getAlphabet()[i].toUpperCase()}
+														{keyboardSelectionKey.toUpperCase()}
 													</span>
 												)}
 												{interpretedLabel}
@@ -159,6 +161,29 @@ const CheckboxGroup = ({
 									</div>
 								)}
 							</div>
+							{shortCut && (
+								<KeyboardEventHandler
+									handleKeys={[keyboardSelectionKey.toLowerCase()]}
+									onKeyEvent={(key, e) => {
+										e.preventDefault();
+										setValues(values.map((v, j) => (i === j ? !checked : v)));
+										specificHandleChange({
+											[U.getResponseName(response)]: !checked,
+										});
+										if (U.isFunction(logFunction))
+											logFunction(
+												U.createObjectEvent(
+													`checkbox-${id}-${modId}`,
+													C.INPUT_CATEGORY,
+													C.EVENT_SELECTION,
+													U.getResponseName(response),
+													!checked
+												)
+											);
+									}}
+									handleFocusableElements
+								/>
+							)}
 						</div>
 					);
 				})}
