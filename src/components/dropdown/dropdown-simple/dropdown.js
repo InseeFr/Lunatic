@@ -119,7 +119,9 @@ const getIcon =
 	({ disabled }, dispatch) =>
 	(visible, containerEl) => {
 		if (disabled) {
-			return <ClosedIcon className="lunatic-icon" width={16} height={16} />;
+			return (
+				<ClosedIcon className="lunatic-dropdown-icon" width={16} height={16} />
+			);
 		}
 		return (
 			<span
@@ -137,9 +139,17 @@ const getIcon =
 				}}
 			>
 				{visible ? (
-					<OpenedIcon className="lunatic-icon" width={16} height={16} />
+					<OpenedIcon
+						className="lunatic-dropdown-icon"
+						width={16}
+						height={16}
+					/>
 				) : (
-					<ClosedIcon className="lunatic-icon" width={16} height={16} />
+					<ClosedIcon
+						className="lunatic-dropdown-icon"
+						width={16}
+						height={16}
+					/>
 				)}
 			</span>
 		);

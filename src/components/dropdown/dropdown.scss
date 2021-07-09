@@ -103,12 +103,13 @@
 				}
 			}
 
-			.lunatic-icon {
+			.lunatic-dropdown-icon {
 				cursor: pointer;
 				position: absolute;
 				right: 2px;
-				&:focus {
-					outline: none;
+				top: 2px;
+				svg {
+					fill: rgb(146, 146, 146);
 				}
 			}
 

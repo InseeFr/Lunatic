@@ -1,7 +1,6 @@
-
-$colorA : PeachPuff;
+$colorA: #e9d0d0;
 $colorB: darkred;
-$colorC: gold;
+$colorC: #320000;
 
 .lunatic-suggester-widget {
 	border: solid $colorB 2px;
@@ -9,7 +8,7 @@ $colorC: gold;
 	padding: 4px 4px;
 	border: 2px 2px;
 	width: 300px;
-	box-shadow: rgba(252, 0, 0, 0.24) 0px 3px 8px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 	.widget-row {
 		height: 22px;
@@ -29,24 +28,29 @@ $colorC: gold;
 			overflow-x: hidden;
 			width: 70%;
 		}
-		.load,.clear {
-			margin: 1px 1px;
-			font-size: 12px;font-weight: bold;
-			border: none;
-			 line-height: 20px;;
+		.widget-button {
+			margin: 0 1px 0 0;
 			padding: 0;
-			width: 20px;
-			height: 20px;
-			border-radius: 1px;
+			border: none;
+			width: 18px;
+			height: 18px;
 			background-color: $colorB;
-			color: $colorA;
-			cursor: pointer;
+
 			&:hover {
-				background-color:  $colorC;
+				background-color: $colorC;
+				transition: background-color 1s;
+				cursor: pointer;
 			}
 
-	 
+			.lunatic-suggester-icon {
+				svg {
+					width: 18px;
+					height: 18px;
+					fill: $colorA;
+				}
+			}
 		}
+
 		.lunatic-suggester-loader-progress {
 			height: inherit;
 			border: solid 1px $colorB;

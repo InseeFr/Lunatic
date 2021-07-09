@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import classnames from 'classnames';
 import {
 	useStoreIndex,
 	getStoreCount,
 	clearStoreData,
 } from '../../utils/store-tools';
 import CrossIcon from '../../utils/icons/cross.icon';
+import LoadIcon from '../../utils/icons/load.icon';
 import Loader from './loader';
 
 function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
@@ -13,10 +15,14 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 	const [nbEntities, setNbEntities] = useState(undefined);
 	const [start, setStart] = useState(false);
 	const [disabled, setDisabled] = useState(true);
-	const post = useCallback(function (_, count) {
-		setNbEntities(count);
-		onRefresh(`Store ${name} loaded.`);
-	}, []);
+
+	const post = useCallback(
+		function (_, count) {
+			setNbEntities(count);
+			onRefresh(`Store ${name} loaded.`);
+		},
+		[onRefresh, name]
+	);
 	const clear = useCallback(
 		function () {
 			if (db) {
@@ -61,20 +67,20 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 					</div>
 
 					<button
-						className="load"
+						className={classnames('widget-button')}
 						disabled={disabled}
 						onClick={() => setStart(true)}
 						title="load"
 					>
-						o
+						<LoadIcon className="lunatic-suggester-icon" />
 					</button>
 					<button
-						className="clear"
+						className={classnames('widget-button')}
 						disabled={disabled}
 						onClick={clear}
 						title="clear todo"
 					>
-						<CrossIcon width={8} heigh={8} color="PeachPuff" />
+						<CrossIcon className="lunatic-suggester-icon" />
 					</button>
 				</>
 			)}

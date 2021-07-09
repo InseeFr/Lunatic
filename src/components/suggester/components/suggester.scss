@@ -39,7 +39,14 @@
 				position: absolute;
 				right: 2px;
 				top: 2px;
-				background-color: tomato;
+
+				.lunatic-icon {
+					svg {
+						fill: snow;
+						width: 16px;
+						height: 16px;
+					}
+				}
 			}
 
 			.lunatic-suggester-selected {

@@ -40,10 +40,9 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 			<Fab
 				className={classnames('mini', 'lunatic-suggester-fab')}
 				tabIndex="-1"
+				title="delete"
 			>
-				<span style={{ fontSize: '3em', color: 'Tomato' }}>
-					<i class="fas fa-camera"></i>
-				</span>
+				<CrossIcon className="lunatic-suggester-icon" />
 			</Fab>
 		</div>
 	);
