@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
 import { SuggesterContext, actions } from '../../state-management';
+import classnames from 'classnames';
+import { Fab } from '../../../../utils/components/fab';
+import CrossIcon from '../../../../utils/icons/cross.icon';
 import Label from './label';
 
 function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
@@ -34,6 +37,14 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 				placeholder={placeholder}
 			/>
 			<Label labelRenderer={labelRenderer} placeholder={placeholder} />
+			<Fab
+				className={classnames('mini', 'lunatic-suggester-fab')}
+				tabIndex="-1"
+			>
+				<span style={{ fontSize: '3em', color: 'Tomato' }}>
+					<i class="fas fa-camera"></i>
+				</span>
+			</Fab>
 		</div>
 	);
 }
