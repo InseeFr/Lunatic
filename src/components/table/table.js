@@ -90,6 +90,7 @@ const Table = ({
 													zIndex={cells.length - i || 0}
 													numberAsTextfield
 													logFunction={logFunction}
+													shortCut={false}
 												/>
 											</td>
 										);
