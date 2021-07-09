@@ -56,7 +56,14 @@ const Missing = ({ Component, props }) => {
 			U.isFunction(missingStrategy) &&
 			[U.DK, U.RF].includes(buttonState)
 		) {
-			missingStrategy();
+			const toClean = getVarsToClean();
+			if (Object.keys(toClean)) {
+				handleChange(toClean);
+				if (U.isFunction(missingStrategy))
+					missingStrategy({ ...bindings, ...toClean });
+			} else {
+				if (U.isFunction(missingStrategy)) missingStrategy(bindings);
+			}
 		}
 		// Assume this, we don't want to use missingStrategy at first time init=true
 		// eslint-disable-next-line react-hooks/exhaustive-deps
