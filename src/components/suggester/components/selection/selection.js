@@ -28,7 +28,7 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 				aria-expanded={expended}
 				aria-autocomplete="list"
 				aria-controls={`${id}-list`}
-				aria-labelledBy={labelledBy}
+				aria-labelledby={labelledBy}
 				aria-label="lunatic-suggester"
 				autoComplete="off"
 				autoCapitalize="off"
