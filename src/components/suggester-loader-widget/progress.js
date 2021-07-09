@@ -1,9 +1,15 @@
 import React from 'react';
+import classnames from 'classnames';
 
-function Progress({ display, percent = 0 }) {
+function Progress({ display, percent = 0, handleClick = () => null }) {
 	if (display) {
 		return (
-			<div className="lunatic-suggester-loader-progress">
+			<div
+				className={classnames('lunatic-suggester-loader-progress', {
+					done: percent === 100,
+				})}
+				onClick={() => handleClick(percent)}
+			>
 				<div className="content">
 					<div
 						className="progress"

@@ -3,7 +3,7 @@ import createAppendTask from './create-append-task';
 import Progress from './progress';
 import { clearStoreData } from '../../utils/store-tools';
 
-function postLoad() {}
+function empty() {}
 
 function Loader({
 	start,
@@ -11,7 +11,8 @@ function Loader({
 	store,
 	idbVersion = '1',
 	fetch,
-	post = postLoad,
+	post = empty,
+	handleClick = (p) => null,
 }) {
 	const [progress, setProgress] = useState(0);
 	const [entities, setEntities] = useState(undefined);
@@ -70,7 +71,9 @@ function Loader({
 		[name, fields, db, entities, idbVersion, post]
 	);
 
-	return <Progress percent={progress} display={true} />;
+	return (
+		<Progress percent={progress} display={true} handleClick={handleClick} />
+	);
 }
 
 export default Loader;

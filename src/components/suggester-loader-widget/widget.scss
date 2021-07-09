@@ -7,15 +7,16 @@ $colorC: #320000;
 	background-color: $colorA;
 	padding: 4px 4px;
 	border: 2px 2px;
-	width: 300px;
+	width: 400px;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 	.widget-row {
 		height: 22px;
 		display: flex;
 		flex-direction: row;
+		margin-bottom: 1px;
 		.store-name {
-			width: 30%;
+			width: 60%;
 			color: $colorB;
 			font-size: 18px;
 			white-space: nowrap;
@@ -26,7 +27,7 @@ $colorC: #320000;
 			font-size: 18px;
 			white-space: nowrap;
 			overflow-x: hidden;
-			width: 70%;
+			width: 40%;
 		}
 		.widget-button {
 			margin: 0 1px 0 0;
@@ -56,6 +57,20 @@ $colorC: #320000;
 			border: solid 1px $colorB;
 			border-radius: 2px;
 			width: 70%;
+
+			&.done {
+				&:hover {
+					border-color: $colorC;
+					transition: border-color 1s;
+					.progress {
+						background-color: $colorC;
+						transition: background-color 1s;
+					}
+
+					cursor: pointer;
+				}
+			}
+
 			.content {
 				padding: 2px 2px;
 				height: calc(100%);

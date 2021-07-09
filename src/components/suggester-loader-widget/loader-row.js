@@ -48,6 +48,12 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 		[db]
 	);
 
+	const handleClick = useCallback(function (p) {
+		if (p === 100) {
+			setStart(false);
+		}
+	}, []);
+
 	return (
 		<div className="widget-row">
 			<div className="store-name">{name}</div>
@@ -59,6 +65,7 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 					idVersion={idbVersion}
 					fetch={fetchStore}
 					post={post}
+					handleClick={handleClick}
 				/>
 			) : (
 				<>
@@ -70,7 +77,7 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 						className={classnames('widget-button')}
 						disabled={disabled}
 						onClick={() => setStart(true)}
-						title="load"
+						title="Load"
 					>
 						<LoadIcon className="lunatic-suggester-icon" />
 					</button>
@@ -78,7 +85,7 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 						className={classnames('widget-button')}
 						disabled={disabled}
 						onClick={clear}
-						title="clear todo"
+						title="Clear"
 					>
 						<CrossIcon className="lunatic-suggester-icon" />
 					</button>

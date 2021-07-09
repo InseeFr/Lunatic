@@ -11,7 +11,7 @@ function Fab({ className, children, tabIndex, title, onClick }) {
 			className={classnames('lunatic-fab', className)}
 			tabIndex={tabIndex}
 			title={title}
-			onclick={onClick}
+			onClick={onClick}
 		>
 			{children}
 		</button>
