@@ -7,6 +7,7 @@
 - [Composants](components.md)
 - [Pagination](pagination.md)
 - [Non réponse](missing.md)
+- [Raccourcis clavier](shortcut.md)
 - [Utilitaires](utils/index.md)
   - [Gestion simplifiée d'un questionnaire](utils/hook.md)
 - [Styles](styles.md)

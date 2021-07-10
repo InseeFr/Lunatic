@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 import Button from '../button';
 import * as U from '../../utils/lib';
 import './missing.scss';
@@ -11,12 +12,14 @@ const Missing = ({ Component, props }) => {
 		handleChange,
 		preferences,
 		missingStrategy,
+		missingShortcut = { dontKnow: '', refused: '' },
 		response,
 		responses,
 		cells,
 		components,
 		savingType,
 		bindings,
+		shortcut,
 	} = props;
 
 	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
@@ -43,7 +46,6 @@ const Missing = ({ Component, props }) => {
 		components,
 		missingResponse,
 	]);
-
 	const getVarsToClean = () =>
 		U.getToClean(savingType)({
 			response,
@@ -96,6 +98,20 @@ const Missing = ({ Component, props }) => {
 					/>
 				</span>
 			</div>
+			{shortcut &&
+				missingShortcut &&
+				missingShortcut.dontKnow &&
+				missingShortcut.refused && (
+					<KeyboardEventHandler
+						handleKeys={Object.values(missingShortcut)}
+						onKeyEvent={(key, e) => {
+							e.preventDefault();
+							if (key === missingShortcut.dontKnow) onClick(U.DK)();
+							if (key === missingShortcut.refused) onClick(U.RF)();
+						}}
+						handleFocusableElements
+					/>
+				)}
 		</div>
 	);
 };

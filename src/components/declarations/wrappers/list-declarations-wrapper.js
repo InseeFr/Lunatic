@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import Declarations from '../';
@@ -17,7 +18,7 @@ const ListDeclarationsWrapper = ({
 	handleChange: propsHandleChange,
 	disabled,
 	focused,
-	keyboardSelection,
+	shortcut,
 	declarations,
 	features,
 	bindings,
@@ -121,6 +122,8 @@ const ListDeclarationsWrapper = ({
 									features,
 									logFunction
 								)(bindings)(optionLabel);
+								const keyboardSelectionKey =
+									options.length < 10 ? `${i + 1}` : U.getAlphabet()[i];
 								return (
 									<div
 										key={`${type}-${id}-${optionValue}`}
@@ -149,16 +152,24 @@ const ListDeclarationsWrapper = ({
 												style={checked ? U.buildStyleObject(modalityStyle) : {}}
 												className="modality-label"
 											>
-												{keyboardSelection && (
+												{shortcut && (
 													<span className="code-modality">
-														{options.length < 10
-															? i + 1
-															: U.getAlphabet()[i].toUpperCase()}
+														{keyboardSelectionKey.toUpperCase()}
 													</span>
 												)}
 												{interpretedLabel}
 											</label>
 										</Icon>
+										{shortcut && (
+											<KeyboardEventHandler
+												handleKeys={[keyboardSelectionKey.toLowerCase()]}
+												onKeyEvent={(key, e) => {
+													e.preventDefault();
+													onChange(optionValue);
+												}}
+												handleFocusableElements
+											/>
+										)}
 									</div>
 								);
 							}
@@ -192,7 +203,6 @@ ListDeclarationsWrapper.defaultProps = {
 	options: [],
 	disabled: false,
 	focused: false,
-	keyboardSelection: false,
 	positioning: 'DEFAULT',
 	declarations: [],
 	features: [],
@@ -210,7 +220,6 @@ ListDeclarationsWrapper.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	disabled: PropTypes.bool,
 	focused: PropTypes.bool,
-	keyboardSelection: PropTypes.bool,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),

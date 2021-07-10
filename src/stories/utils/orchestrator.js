@@ -16,6 +16,7 @@ const OrchestratorForStories = ({
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
+	shortcut = false,
 	activeGoNextForMissing = false,
 	...rest
 }) => {
@@ -74,6 +75,7 @@ const OrchestratorForStories = ({
 								flow={flow}
 								pagination={pagination}
 								missing={missing}
+								shortcut={shortcut}
 								missingStrategy={activeGoNextForMissing && missingStrategy}
 							/>
 						</div>
