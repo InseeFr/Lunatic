@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 import PropTypes from 'prop-types';
 import missingWrapper from '../missing-wrapper';
 import debounce from 'lodash.debounce';
@@ -18,7 +19,7 @@ const CheckboxGroup = ({
 	handleChange: propsHandleChange,
 	disabled,
 	focused,
-	keyboardSelection,
+	shortcut,
 	positioning,
 	declarations,
 	features,
@@ -89,6 +90,8 @@ const CheckboxGroup = ({
 					const toRef =
 						i === 0 || (checkedArray[0] && checkedArray[0] === modId);
 					const interpretedLabel = interpret(features)(bindings)(modLabel);
+					const keyboardSelectionKey =
+						responses.length < 10 ? `${i + 1}` : U.getAlphabet()[i];
 					return (
 						<div
 							className={`${U.getItemsPositioningClass(positioning)}`}
@@ -138,11 +141,9 @@ const CheckboxGroup = ({
 												style={checked ? U.buildStyleObject(modalityStyle) : {}}
 												className="modality-label"
 											>
-												{keyboardSelection && (
+												{shortcut && (
 													<span className="code-modality">
-														{responses.length < 10
-															? i + 1
-															: U.getAlphabet()[i].toUpperCase()}
+														{keyboardSelectionKey.toUpperCase()}
 													</span>
 												)}
 												{interpretedLabel}
@@ -159,6 +160,29 @@ const CheckboxGroup = ({
 									</div>
 								)}
 							</div>
+							{shortcut && (
+								<KeyboardEventHandler
+									handleKeys={[keyboardSelectionKey.toLowerCase()]}
+									onKeyEvent={(key, e) => {
+										e.preventDefault();
+										setValues(values.map((v, j) => (i === j ? !checked : v)));
+										specificHandleChange({
+											[U.getResponseName(response)]: !checked,
+										});
+										if (U.isFunction(logFunction))
+											logFunction(
+												U.createObjectEvent(
+													`checkbox-${id}-${modId}`,
+													C.INPUT_CATEGORY,
+													C.EVENT_SELECTION,
+													U.getResponseName(response),
+													!checked
+												)
+											);
+									}}
+									handleFocusableElements
+								/>
+							)}
 						</div>
 					);
 				})}
@@ -180,7 +204,6 @@ CheckboxGroup.defaultProps = {
 	responses: [],
 	disabled: false,
 	focused: false,
-	keyboardSelection: false,
 	positioning: 'DEFAULT',
 	declarations: [],
 	features: [],
@@ -197,7 +220,6 @@ CheckboxGroup.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	disabled: PropTypes.bool,
 	focused: PropTypes.bool,
-	keyboardSelection: PropTypes.bool,
 	positioning: PropTypes.oneOf(['DEFAULT', 'HORIZONTAL', 'VERTICAL']),
 	declarations: U.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),
