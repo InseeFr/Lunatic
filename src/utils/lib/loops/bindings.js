@@ -24,9 +24,15 @@ export const buildLoopMissingResponse = (index) => (missingResponse) => {
 	return { name, values: newValues };
 };
 
-const getDefaultDatasetStructure = (name, value) => ({
-	[name]: { dataStructure: {}, dataPoints: { [name]: value } },
-});
+const getDefaultDatasetStructure = (name, value) => {
+	const typedValues = value.map((v) => {
+		const f = parseFloat(v, 10);
+		return Number.isNaN(f) ? v : f;
+	});
+	return {
+		[name]: { dataStructure: {}, dataPoints: { [name]: typedValues } },
+	};
+};
 
 export const buildVectorialBindings = (bindings) =>
 	bindings
