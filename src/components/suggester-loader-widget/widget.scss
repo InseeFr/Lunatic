@@ -91,8 +91,9 @@ $colorC: #320000;
 
 	.suggester-widget-network {
 		position: absolute;
+		border: solid $colorB 2px;
 		left: 6px;
-		background-color: $colorB;
+		background-color: $colorA;
 		border-radius: 50%;
 		padding: 2px 2px;
 		left: -18px;
@@ -100,14 +101,14 @@ $colorC: #320000;
 		box-shadow: $colorC 0px 3px 8px;
 		&.online {
 			svg {
-				fill: greenyellow;
+				fill: seagreen;
 			}
 		}
 
 		svg {
 			width: 24px;
 			height: 24px;
-			fill: $colorA;
+			fill: $colorB;
 		}
 	}
 }

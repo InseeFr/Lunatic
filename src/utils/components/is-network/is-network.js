@@ -17,7 +17,10 @@ function IsNetwork({ notify = () => null, className }) {
 	useOnlineStatus(onlineCallback, offlineCallback);
 
 	return (
-		<div className={classnames('is-network', className, { online })}>
+		<div
+			className={classnames('is-network', className, { online })}
+			title={`Network ${online ? 'on' : 'off'}`}
+		>
 			<NetworkIcon />
 		</div>
 	);
