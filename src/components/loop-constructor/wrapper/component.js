@@ -48,6 +48,8 @@ const LoopConstructorWrapper = ({
 			const min =
 				parseInt(interpret(featuresWithoutMD)(bindings)(lines.min), 10) || 1;
 			const up = involvedVariables.reduce((acc, { name }) => {
+				if (min <= bindings[name].length)
+					return { ...acc, [name]: [...bindings[name].slice(0, min)] };
 				const toAdd = [...Array(min - bindings[name].length).keys()].map(
 					() => null
 				);

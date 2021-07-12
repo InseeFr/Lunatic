@@ -36,7 +36,12 @@ const Loop = ({
 	 */
 	useEffect(() => {
 		const toUpdate = involvedVariables.reduce((acc, { name: iv, depth }) => {
-			if (bindings[iv] && iterationNb > bindings[iv].length)
+			if (bindings[iv]) {
+				if (iterationNb <= bindings[iv].length)
+					return {
+						...acc,
+						[iv]: [...bindings[iv].splice(0, iterationNb)],
+					};
 				return {
 					...acc,
 					[iv]: [
@@ -46,6 +51,7 @@ const Loop = ({
 						),
 					],
 				};
+			}
 			return acc;
 		}, {});
 		if (Object.keys(toUpdate).length !== 0) handleChange(toUpdate);
@@ -196,7 +202,7 @@ const Loop = ({
 			if (
 				!filterResult ||
 				(pagination &&
-					(!currentPageWithoutAnyIteration.startsWith(page) ||
+					(currentPageWithoutAnyIteration !== page ||
 						(paginatedLoop && rowNumber + 1 !== currentIteration)))
 			)
 				return acc;
