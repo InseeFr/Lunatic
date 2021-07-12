@@ -3,12 +3,13 @@ $colorB: darkred;
 $colorC: #320000;
 
 .lunatic-suggester-widget {
+	position: relative;
 	border: solid $colorB 2px;
 	background-color: $colorA;
 	padding: 4px 4px;
 	border: 2px 2px;
 	width: 400px;
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	box-shadow: $colorC 0px 3px 8px;
 
 	.widget-row {
 		height: 22px;
@@ -94,7 +95,9 @@ $colorC: #320000;
 		background-color: $colorB;
 		border-radius: 50%;
 		padding: 2px 2px;
-		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		left: -18px;
+		top: -18px;
+		box-shadow: $colorC 0px 3px 8px;
 		&.online {
 			svg {
 				fill: greenyellow;
