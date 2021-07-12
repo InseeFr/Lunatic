@@ -235,7 +235,7 @@
 		{
 			"variableType": "CALCULATED",
 			"name": "MEDIAN",
-			"expression": "min(AGE)",
+			"expression": "median(AGE)",
 			"bindingDependencies": ["AGE"]
 		},
 		{

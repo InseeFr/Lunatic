@@ -1673,10 +1673,10 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@inseefr/trevas@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.4.tgz#625bf22dffde1d4360013626401b79eb25761fdb"
-  integrity sha512-hELT5LxTXYSFA+ta3/zVe00IJ19F2U1vsXX4xsDuff8D3uMe8cJ9aOaxv89CSH8svLlPQ7d0QbSp/ExgwExx4w==
+"@inseefr/trevas@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.6.tgz#8bf9f28f5534114cb74208271261562784978eed"
+  integrity sha512-xyd18jPn+H63uI7Z6QwwLwFEij5qGJujZdomotRDRpK5+y7V2zpwbsejcLh+lpwEYRm1BS63J38unia0mviH9g==
   dependencies:
     "@inseefr/vtl-2.0-antlr-tools" "0.1.0"
     antlr4 "4.8.0"
@@ -5140,9 +5140,9 @@ data-urls@^2.0.0:
     whatwg-url "^8.0.0"
 
 dayjs@^1.8.12:
-  version "1.10.4"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
-  integrity sha512-RI/Hh4kqRc1UKLOAf/T5zdMMX5DQIlDxwUe3wSyMMnEbGunnpENCdbUgM+dW7kXidZqCttBrmw7BhN4TMddkCw==
+  version "1.10.6"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.6.tgz#288b2aa82f2d8418a6c9d4df5898c0737ad02a63"
+  integrity sha512-AztC/IOW4L1Q41A86phW5Thhcrco3xuAA+YX/BLpLWWjRcTj5TOt/QImBLmCKlrF7u7k47arTnOyL6GnbG8Hvw==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -11687,9 +11687,9 @@ rollup-watch@^4.3.1:
     rollup-pluginutils "^2.0.1"
 
 rollup@^2.52.8:
-  version "2.52.8"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.52.8.tgz#b6462f9c16ffe8995b9a2b313f2e4247fa75e4d9"
-  integrity sha512-IjAB0C6KK5/lvqzJWAzsvOik+jV5Bt907QdkQ/gDP4j+R9KYNI1tjqdxiPitGPVrWC21Mf/ucXgowUjN/VemaQ==
+  version "2.53.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.53.1.tgz#b60439efd1eb41bdb56630509bd99aae78b575d3"
+  integrity sha512-yiTCvcYXZEulNWNlEONOQVlhXA/hgxjelFSjNcrwAAIfYx/xqjSHwqg/cCaWOyFRKr+IQBaXwt723m8tCaIUiw==
   optionalDependencies:
     fsevents "~2.3.2"
 
@@ -11785,9 +11785,9 @@ sass-loader@^10.0.3:
     semver "^7.3.2"
 
 sass@^1.32.2:
-  version "1.35.1"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.35.1.tgz#90ecf774dfe68f07b6193077e3b42fb154b9e1cd"
-  integrity sha512-oCisuQJstxMcacOPmxLNiLlj4cUyN2+8xJnG7VanRoh2GOLr9RqkvI4AxA4a6LHVg/rsu+PmxXeGhrdSF9jCiQ==
+  version "1.35.2"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.35.2.tgz#b732314fcdaf7ef8d0f1698698adc378043cb821"
+  integrity sha512-jhO5KAR+AMxCEwIH3v+4zbB2WB0z67V1X0jbapfVwQQdjHZUGUyukpnoM6+iCMfsIUC016w9OPKQ5jrNOS9uXw==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 

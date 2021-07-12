@@ -50,7 +50,7 @@ describe('loop bindings utils', () => {
 			expect(U.displayLoop()()).toBeFalsy();
 			expect(U.displayLoop([])({})).toBeFalsy();
 		});
-		it('should not return display loop', () => {
+		it('should return display loop', () => {
 			expect(U.displayLoop(['A'])({ A: [null] })).toBeFalsy();
 		});
 		it('should return display loop', () => {
@@ -62,10 +62,13 @@ describe('loop bindings utils', () => {
 			expect(U.displayLoopQuestion()()).toBeFalsy();
 			expect(U.displayLoopQuestion([])({})).toBeFalsy();
 		});
-		it('should not return display loop', () => {
-			expect(U.displayLoopQuestion(['A'])({ A: [[null]] })).toBeFalsy();
+		it('should return display loop', () => {
+			expect(
+				U.displayLoopQuestion(['A', 'B'])({ A: [[null]], B: null })
+			).toBeFalsy();
 		});
 		it('should return display loop', () => {
+			expect(U.displayLoopQuestion(['A'])({ A: [[null]] })).toBeTruthy();
 			expect(U.displayLoopQuestion(['A'])({ A: 'a' })).toBeTruthy();
 		});
 	});
