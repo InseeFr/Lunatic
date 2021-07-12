@@ -196,7 +196,7 @@ const Loop = ({
 			if (
 				!filterResult ||
 				(pagination &&
-					(!currentPageWithoutAnyIteration.startsWith(page) ||
+					(currentPageWithoutAnyIteration !== page ||
 						(paginatedLoop && rowNumber + 1 !== currentIteration)))
 			)
 				return acc;
