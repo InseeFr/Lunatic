@@ -37,6 +37,11 @@ $colorC: #320000;
 			height: 18px;
 			background-color: $colorB;
 
+			&.disabled {
+				background-color: gray;
+				cursor: default;
+			}
+
 			&:hover {
 				background-color: $colorC;
 				transition: background-color 1s;
@@ -80,6 +85,26 @@ $colorC: #320000;
 					height: 100%;
 				}
 			}
+		}
+	}
+
+	.suggester-widget-network {
+		position: absolute;
+		left: 6px;
+		background-color: $colorB;
+		border-radius: 50%;
+		padding: 2px 2px;
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		&.online {
+			svg {
+				fill: greenyellow;
+			}
+		}
+
+		svg {
+			width: 24px;
+			height: 24px;
+			fill: $colorA;
 		}
 	}
 }

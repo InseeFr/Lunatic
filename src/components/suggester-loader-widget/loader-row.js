@@ -9,12 +9,17 @@ import CrossIcon from '../../utils/icons/cross.icon';
 import LoadIcon from '../../utils/icons/load.icon';
 import Loader from './loader';
 
-function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
+function LoaderRow({
+	storeInfo,
+	idbVersion,
+	fetchStore,
+	onRefresh,
+	disabled = false,
+}) {
 	const { name } = storeInfo;
 	const db = useStoreIndex(storeInfo, idbVersion);
 	const [nbEntities, setNbEntities] = useState(undefined);
 	const [start, setStart] = useState(false);
-	const [disabled, setDisabled] = useState(true);
 
 	const post = useCallback(
 		function (_, count) {
@@ -38,7 +43,6 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 			async function count() {
 				const c = await getStoreCount(db);
 				setNbEntities(c);
-				setDisabled(false);
 			}
 
 			if (db) {
@@ -74,7 +78,7 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 					</div>
 
 					<button
-						className={classnames('widget-button')}
+						className={classnames('widget-button', { disabled })}
 						disabled={disabled}
 						onClick={() => setStart(true)}
 						title="Load"
@@ -82,7 +86,7 @@ function LoaderRow({ storeInfo, idbVersion, fetchStore, onRefresh }) {
 						<LoadIcon className="lunatic-suggester-icon" />
 					</button>
 					<button
-						className={classnames('widget-button')}
+						className={classnames('widget-button', { disabled })}
 						disabled={disabled}
 						onClick={clear}
 						title="Clear"

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import LoaderRow from './loader-row';
+import { IsNetwork } from '../../utils/components/is-network';
 import './widget.scss';
 
 function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh }) {
 	const { suggesters } = source;
 	const [stores, setStores] = useState(undefined);
 	const [rows, setRows] = useState([]);
+	const [disabled, setDisabled] = useState(false);
 
 	useEffect(
 		function () {
@@ -24,6 +26,10 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh }) {
 		[suggesters, getStoreInfo]
 	);
 
+	const notify = useCallback(function (online) {
+		setDisabled(!online);
+	}, []);
+
 	useEffect(
 		function () {
 			if (stores) {
@@ -39,15 +45,21 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh }) {
 								idbVersion={idbVersion}
 								fetchStore={fetchStore}
 								onRefresh={onRefresh}
+								disabled={disabled}
 							/>
 						);
 					})
 				);
 			}
 		},
-		[stores]
+		[stores, disabled]
 	);
-	return <div className="lunatic-suggester-widget">{rows}</div>;
+	return (
+		<div className="lunatic-suggester-widget">
+			<IsNetwork className="suggester-widget-network" notify={notify} />
+			{rows}
+		</div>
+	);
 }
 
 export default SuggesterLoaderWidget;
