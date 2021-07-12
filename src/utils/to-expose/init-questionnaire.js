@@ -177,12 +177,15 @@ export const getCalculatedVariables =
 			expression,
 			shapeFrom
 		);
+		const handleTempMomentValue = value._isAMomentObject
+			? value.format('DD-MM-YYYY')
+			: value;
 		if (shapeFrom)
 			return {
 				[name]: {
 					expression,
 					bindingDependencies,
-					value,
+					value: handleTempMomentValue,
 					shapeFrom,
 				},
 			};
@@ -190,7 +193,7 @@ export const getCalculatedVariables =
 			[name]: {
 				expression,
 				bindingDependencies,
-				value,
+				value: handleTempMomentValue,
 			},
 		};
 	};
