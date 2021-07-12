@@ -67,6 +67,7 @@ export const displayLoop = (dependencyList) => (bindings) => {
 
 export const displayLoopQuestion = (dependencyList) => (bindings) => {
 	if (!Array.isArray(dependencyList) || !bindings) return false;
+	if (dependencyList.length === 1) return true;
 	return !(
 		dependencyList
 			.map((iv) =>
