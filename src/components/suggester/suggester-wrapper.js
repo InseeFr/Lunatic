@@ -23,6 +23,7 @@ function SuggesterWrapper({
 	onChange,
 	searching,
 	labelRenderer,
+	disabled,
 	max,
 }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -55,9 +56,9 @@ function SuggesterWrapper({
 
 	useEffect(
 		function () {
-			dispatch(actions.onInit(id));
+			dispatch(actions.onInit({ id, disabled }));
 		},
-		[id]
+		[id, disabled]
 	);
 	return (
 		<SuggesterContext.Provider value={[state, dispatch]}>

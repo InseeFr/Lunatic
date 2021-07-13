@@ -4,8 +4,8 @@ function getId() {
 
 function reduce(state, action) {
 	const { payload } = action;
-	const { id } = payload;
-	return { ...state, id: id || getId() };
+	const { id, disabled } = payload;
+	return { ...state, id: id || getId(), disabled };
 }
 
 export default reduce;

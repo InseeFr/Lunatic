@@ -1,17 +1,23 @@
 import React, { useContext } from 'react';
 import { SuggesterContext, actions } from '../../state-management';
+import classnames from 'classnames';
 import Label from './label';
 
 function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 	const [state, dispatch] = useContext(SuggesterContext);
-	const { search, expended, id } = state;
+	const { search, expended, id, disabled, focused } = state;
 
 	function onChange(e) {
 		dispatch(actions.onChangeSearch(e.target.value));
 	}
 
 	return (
-		<div className="lunatic-suggester-selection">
+		<div
+			className={classnames('lunatic-suggester-selection', {
+				focused,
+				disabled,
+			})}
+		>
 			<input
 				ref={inputEl}
 				id={`${id}-input`}
@@ -32,6 +38,7 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 				autoCorrect="off"
 				spellCheck="false"
 				placeholder={placeholder}
+				disabled={disabled}
 			/>
 			<Label labelRenderer={labelRenderer} placeholder={placeholder} />
 		</div>

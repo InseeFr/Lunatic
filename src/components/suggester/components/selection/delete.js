@@ -11,7 +11,7 @@ function createOnKeyDown(onClick) {
 	if (typeof onClick === 'function') {
 		return function onKeyDown(e) {
 			const { key } = e;
-			if (e === 'Enter') {
+			if (key === 'Enter') {
 				onClick();
 			}
 		};

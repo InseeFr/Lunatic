@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useRef, useMemo } from 'react';
+import classnames from 'classnames';
 import { actions, SuggesterContext } from '../state-management';
 import SuggesterContent from './suggester-content';
 import Selection from './selection';
@@ -6,7 +7,6 @@ import Panel from './panel';
 import createOnKeyDownCallback from './create-on-keydown-callback';
 import Delete from './selection/delete';
 import './suggester.scss';
-import classnames from 'classnames';
 
 function Suggester({
 	className,
@@ -55,10 +55,9 @@ function Suggester({
 		);
 	}
 	return (
-		<div className="lunatic-suggester-container">
+		<div className={classnames('lunatic-suggester-container', className)}>
 			<SuggesterContent
 				id={id}
-				className={className}
 				focused={focused}
 				onFocus={onFocus}
 				onBlur={onBlur}

@@ -7,7 +7,7 @@ import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import IDBSuggester from './idb-suggester';
 
-const Suggester = ({
+function Suggester({
 	id,
 	label,
 	preferences,
@@ -28,7 +28,7 @@ const Suggester = ({
 	labelRenderer,
 	max,
 	idbVersion,
-}) => {
+}) {
 	const labelId = `suggester-label-${id}`;
 	const onSelect = useCallback(
 		function (suggestion) {
@@ -98,7 +98,7 @@ const Suggester = ({
 			/>
 		</>
 	);
-};
+}
 
 Suggester.defaultProps = {
 	label: '',
