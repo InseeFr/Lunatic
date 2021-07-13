@@ -5,15 +5,7 @@ import { clearStoreData } from '../../utils/store-tools';
 
 function empty() {}
 
-function Loader({
-	start,
-	db,
-	store,
-	idbVersion = '1',
-	fetch,
-	post = empty,
-	handleClick = empty,
-}) {
+function Loader({ start, db, store, idbVersion, fetch, post, handleClick }) {
 	const [progress, setProgress] = useState(0);
 	const [entities, setEntities] = useState(undefined);
 	const { name, fields } = store;
@@ -75,5 +67,7 @@ function Loader({
 		<Progress percent={progress} display={true} handleClick={handleClick} />
 	);
 }
+
+Loader.defaultProps = { idbVersion: '1', post: empty, handleClick: empty };
 
 export default Loader;
