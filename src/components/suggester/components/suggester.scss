@@ -4,88 +4,96 @@
 	-webkit-user-select: none;
 }
 
-.lunatic-suggester {
+.lunatic-suggester-container {
 	position: relative;
-	z-index: 0;
 
-	&:focus {
-		outline: none;
-	}
-
-	&.focused {
-		z-index: 1;
-	}
-
-	.lunatic-suggester-container {
+	.lunatic-suggester-fab {
 		position: absolute;
-		width: 100%;
+		right: 2px;
+		top: 2px;
+		z-index: 0;
+		&.focused {
+			z-index: 1;
+		}
 
-		.lunatic-suggester-selection {
-			position: relative;
-			.lunatic-suggester-input {
-				border: none;
-				margin: 0;
-				padding: 0;
-				background-color: transparent;
-				&:focus {
-					outline: none;
+		.lunatic-icon {
+			svg {
+				fill: snow;
+				width: 16px;
+				height: 16px;
+			}
+		}
+	}
+
+	.lunatic-suggester {
+		position: relative;
+		z-index: 0;
+
+		&:focus {
+			outline: none;
+		}
+
+		&.focused {
+			z-index: 1;
+		}
+
+		.lunatic-suggester-container {
+			position: absolute;
+			width: 100%;
+
+			.lunatic-suggester-selection {
+				position: relative;
+				.lunatic-suggester-input {
+					border: none;
+					margin: 0;
+					padding: 0;
+					background-color: transparent;
+					&:focus {
+						outline: none;
+					}
+
+					width: 100%;
+					/* */
 				}
 
-				width: 100%;
-				/* */
-			}
+				.lunatic-suggester-selected {
+					position: absolute;
+					top: 0;
+					white-space: nowrap;
+					overflow-x: hidden;
+					width: 100%;
+					height: 100%;
+					display: none;
+					&.displayed {
+						display: block;
+					}
 
-			.lunatic-suggester-fab {
-				position: absolute;
-				right: 2px;
-				top: 2px;
-
-				.lunatic-icon {
-					svg {
-						fill: snow;
-						width: 16px;
-						height: 16px;
+					.placeholder {
+					}
+					.selection {
 					}
 				}
 			}
 
-			.lunatic-suggester-selected {
-				position: absolute;
-				top: 0;
-				white-space: nowrap;
-				overflow-x: hidden;
-				width: 100%;
-				height: 100%;
-				display: none;
-				&.displayed {
-					display: block;
-				}
-
-				.placeholder {
-				}
-				.selection {
-				}
+			ul,
+			li,
+			div,
+			span {
+				margin: 0;
+				padding: 0;
+				border: none;
+				line-height: 1em;
+				list-style: none;
 			}
-		}
 
-		ul,
-		li,
-		div,
-		span {
-			margin: 0;
-			padding: 0;
-			border: none;
-			line-height: 1em;
-			list-style: none;
-		}
-
-		.lunatic-suggester-panel {
-			&:focus {
-				outline: none;
-			}
-			.lunatic-suggester-option {
-				white-space: nowrap;
-				@include preventSelect();
+			.lunatic-suggester-panel {
+				&:focus {
+					outline: none;
+				}
+				.lunatic-suggester-option {
+					white-space: nowrap;
+					@include preventSelect();
+				}
 			}
 		}
 	}

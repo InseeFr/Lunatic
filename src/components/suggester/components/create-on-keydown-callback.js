@@ -7,6 +7,7 @@ function create(dispatch) {
 		switch (key) {
 			case BINDED_KEYS.Tab:
 				e.stopPropagation();
+				// e.preventDefault();
 				dispatch(actions.onKeyDown(key));
 				break;
 			case BINDED_KEYS.ArrowDown:
