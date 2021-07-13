@@ -12,7 +12,7 @@ function Loader({
 	idbVersion = '1',
 	fetch,
 	post = empty,
-	handleClick = (p) => null,
+	handleClick = empty,
 }) {
 	const [progress, setProgress] = useState(0);
 	const [entities, setEntities] = useState(undefined);

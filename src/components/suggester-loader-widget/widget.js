@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import LoaderRow from './loader-row';
 import { IsNetwork } from '../../utils/components/is-network';
+import PropTypes from 'prop-types';
 import './widget.scss';
+
+function empty() {}
 
 function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh }) {
 	const { suggesters } = source;
@@ -52,7 +55,7 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh }) {
 				);
 			}
 		},
-		[stores, disabled]
+		[stores, disabled, onRefresh]
 	);
 	return (
 		<div className="lunatic-suggester-widget">
@@ -61,5 +64,15 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh }) {
 		</div>
 	);
 }
+
+SuggesterLoaderWidget.propTypes = {
+	source: PropTypes.object.isRequired,
+	getStoreInfo: PropTypes.func.isRequired,
+	onRefresh: PropTypes.func,
+};
+
+SuggesterLoaderWidget.defaultProps = {
+	onRefresh: empty,
+};
 
 export default SuggesterLoaderWidget;
