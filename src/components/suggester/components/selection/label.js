@@ -21,7 +21,6 @@ function Label({
 				displayed,
 				disabled,
 			})}
-			onClick={() => console.log('ici')}
 			tabIndex="-1"
 		>
 			<Renderer option={option} placeholder={placeholder} search={search} />
