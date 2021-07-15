@@ -54,6 +54,7 @@ function Suggester({
 			/>
 			<LabelWrapper
 				id={id}
+				htmlFor={`suggester-${id}`}
 				labelPosition={labelPosition}
 				bindings={bindings}
 				label={label}

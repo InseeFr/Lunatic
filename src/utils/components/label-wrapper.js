@@ -1,21 +1,22 @@
 import React from 'react';
 import * as U from '../lib';
-import { interpret } from '..//to-expose';
+import { interpret } from '../to-expose';
 
 function LabelWrapper({
 	children,
 	id,
+	htmlFor,
 	labelPosition,
 	bindings,
 	label,
 	features,
 	logFunction,
 }) {
-	const labelId = `suggester-label-${id}`;
+	const labelId = `${htmlFor}-${id}`;
 	return (
 		<div className={U.getLabelPositionClass(labelPosition)}>
 			{label && (
-				<label htmlFor={`suggester-${id}`} id={labelId}>
+				<label htmlFor={`${htmlFor}`} id={labelId}>
 					{interpret(features, logFunction)(bindings)(label)}
 				</label>
 			)}
