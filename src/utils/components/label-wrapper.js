@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import * as U from '../lib';
 import { interpret } from '../to-expose';
 
@@ -12,10 +13,17 @@ function LabelWrapper({
 	features,
 	logFunction,
 }) {
+	const position = U.getLabelPositionClass(labelPosition);
 	return (
-		<div className={U.getLabelPositionClass(labelPosition)}>
+		<div
+			className={classnames('lunatic-component-container', `${position}-ex`)}
+		>
 			{label && (
-				<label htmlFor={htmlFor} id={`${htmlFor}-${id}`}>
+				<label
+					className={classnames('lunatic-label')}
+					htmlFor={htmlFor}
+					id={`${htmlFor}-${id}`}
+				>
 					{interpret(features, logFunction)(bindings)(label)}
 				</label>
 			)}
