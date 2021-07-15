@@ -53,8 +53,8 @@ function Suggester({
 				bindings={bindings}
 			/>
 			<LabelWrapper
-				id={id}
-				htmlFor={`suggester-${id}`}
+				id={labelId}
+				htmlFor={id}
 				labelPosition={labelPosition}
 				bindings={bindings}
 				label={label}
@@ -80,6 +80,7 @@ function Suggester({
 						focused={focused}
 						disabled={disabled}
 						response={response}
+						id={id}
 					/>
 				</FieldWrapper>
 			</LabelWrapper>

@@ -25,7 +25,6 @@ function SuggesterContent({
 
 	return (
 		<div
-			id={id}
 			className={classnames('lunatic-suggester', {
 				focused,
 			})}

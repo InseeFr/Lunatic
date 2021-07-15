@@ -13,6 +13,7 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 
 	return (
 		<div
+			id={id}
 			className={classnames('lunatic-suggester-selection', {
 				focused,
 				disabled,
