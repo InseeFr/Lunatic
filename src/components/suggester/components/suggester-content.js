@@ -5,7 +5,6 @@ import { useDocumentAddEventListener } from '../commons-tools';
 function SuggesterContent({
 	children,
 	id,
-
 	focused,
 	onFocus,
 	onBlur,
@@ -30,12 +29,11 @@ function SuggesterContent({
 			className={classnames('lunatic-suggester', {
 				focused,
 			})}
-			tabIndex="-1"
 			onFocus={onFocus}
 			onKeyDown={onKeyDown}
 			ref={ref}
 		>
-			<div className={classnames('lunatic-suggester-container', { focused })}>
+			<div className={classnames('lunatic-suggester-content', { focused })}>
 				{children}
 			</div>
 		</div>

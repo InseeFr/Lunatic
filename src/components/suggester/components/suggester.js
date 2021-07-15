@@ -17,16 +17,18 @@ function Suggester({
 }) {
 	const inputEl = useRef();
 	const [state, dispatch] = useContext(SuggesterContext);
-	const { focused, id, messageError, search } = state;
+	const { focused, id, messageError, search, disabled } = state;
 
 	const onFocus = useCallback(
 		function () {
-			if (inputEl.current !== document.activeElement) {
+			if (!disabled) {
+				if (inputEl.current !== document.activeElement) {
+				}
+				inputEl.current.focus();
+				dispatch(actions.onFocus());
 			}
-			inputEl.current.focus();
-			dispatch(actions.onFocus());
 		},
-		[dispatch]
+		[dispatch, disabled]
 	);
 
 	const onDelete = useCallback(

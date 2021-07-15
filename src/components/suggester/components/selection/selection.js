@@ -18,8 +18,8 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 				disabled,
 			})}
 			role="combobox"
-			aria-hasPopUp="listbox"
-			aria-labelledBy={labelledBy}
+			aria-haspopup="listbox"
+			aria-labelledby={labelledBy}
 			aria-expanded={expended}
 			aria-autocomplete="list"
 			aria-owns={`${id}-list`}

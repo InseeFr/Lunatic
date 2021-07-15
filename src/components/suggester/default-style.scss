@@ -50,7 +50,7 @@
 		.lunatic-suggester {
 			min-height: 30px;
 			width: 650px;
-			.lunatic-suggester-container {
+			.lunatic-suggester-content {
 				/* */
 
 				&.focused {
@@ -73,6 +73,8 @@
 						&::placeholder {
 							@include placeholder();
 						}
+
+						
 					}
 
 					.lunatic-suggester-selected {
@@ -89,6 +91,10 @@
 						.selection {
 							display: block;
 							line-height: 30px;
+						}
+
+						&.disabled {
+							background-color: GhostWhite;
 						}
 					}
 				}
