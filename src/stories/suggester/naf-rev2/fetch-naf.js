@@ -4,7 +4,11 @@
  * It also could be paged web service.
  */
 async function fetchNaf(path = '') {
-	const response = await fetch(`${path}/naf-rev2.json`);
+	const sbPath =
+		process.env.NODE_ENV === 'development'
+			? `${path}/naf-rev2.json`
+			: `/Lunatic/storybook/naf-rev2.json`;
+	const response = await fetch(sbPath);
 	const naf = await response.json();
 	return Object.values(naf).map(function (rubrique) {
 		const { code } = rubrique;
