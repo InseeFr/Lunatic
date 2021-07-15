@@ -48,12 +48,6 @@ export const buildVectorialBindings = (bindings) =>
 
 export const displayLoop = (dependencyList) => (bindings) => {
 	if (!Array.isArray(dependencyList) || !bindings) return false;
-	if (
-		dependencyList.length === 1 &&
-		(parseInt(bindings[dependencyList[0]], 10) ||
-			bindings[dependencyList[0]] === null)
-	)
-		return true;
 	return !(
 		dependencyList
 			.map((iv) =>
