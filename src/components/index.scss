@@ -43,9 +43,9 @@
 	flex-direction: if($reverse, row-reverse, row);
 	align-items: baseline;
 
-	:first-child {
-		margin-right: 1rem;
-	}
+	// :first-child {
+	// 	margin-right: 1rem;
+	// }
 }
 
 // Label & Legend

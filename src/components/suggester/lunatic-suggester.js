@@ -4,8 +4,9 @@ import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
-import { interpret } from '../../utils/to-expose';
 import IDBSuggester from './idb-suggester';
+import LabelWrapper from '../../utils/components/label-wrapper';
+import FieldWrapper from '../../utils/components/field-wrapper';
 
 function Suggester({
 	id,
@@ -51,12 +52,14 @@ function Suggester({
 				features={features}
 				bindings={bindings}
 			/>
-			<div className={U.getLabelPositionClass(labelPosition)}>
-				{label && (
-					<label htmlFor={`suggester-${id}`} id={labelId}>
-						{interpret(features, logFunction)(bindings)(label)}
-					</label>
-				)}
+			<LabelWrapper
+				id={id}
+				labelPosition={labelPosition}
+				bindings={bindings}
+				label={label}
+				features={features}
+				logFunction={logFunction}
+			>
 				<Declarations
 					id={id}
 					type={C.AFTER_QUESTION_TEXT}
@@ -64,31 +67,21 @@ function Suggester({
 					features={features}
 					bindings={bindings}
 				/>
-				<div className="field-container">
-					<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
-						<IDBSuggester
-							storeName={storeName}
-							optionRenderer={optionRenderer}
-							labelRenderer={labelRenderer}
-							max={max}
-							labelledBy={labelId}
-							idbVersion={idbVersion}
-							onSelect={onSelect}
-							focused={focused}
-							disabled={disabled}
-							response={response}
-						/>
-					</div>
-					{management && (
-						<div className="tooltip">
-							<TooltipResponse
-								id={id}
-								response={U.buildBooleanTooltipResponse(response)}
-							/>
-						</div>
-					)}
-				</div>
-			</div>
+				<FieldWrapper id={id} management={management} response={response}>
+					<IDBSuggester
+						storeName={storeName}
+						optionRenderer={optionRenderer}
+						labelRenderer={labelRenderer}
+						max={max}
+						labelledBy={labelId}
+						idbVersion={idbVersion}
+						onSelect={onSelect}
+						focused={focused}
+						disabled={disabled}
+						response={response}
+					/>
+				</FieldWrapper>
+			</LabelWrapper>
 			<Declarations
 				id={id}
 				type={C.DETACHABLE}
