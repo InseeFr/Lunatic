@@ -12,11 +12,10 @@ function LabelWrapper({
 	features,
 	logFunction,
 }) {
-	const labelId = `${htmlFor}-${id}`;
 	return (
 		<div className={U.getLabelPositionClass(labelPosition)}>
 			{label && (
-				<label htmlFor={`${htmlFor}`} id={labelId}>
+				<label htmlFor={htmlFor} id={`${htmlFor}-${id}`}>
 					{interpret(features, logFunction)(bindings)(label)}
 				</label>
 			)}
