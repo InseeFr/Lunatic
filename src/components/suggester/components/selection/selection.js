@@ -17,6 +17,12 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 				focused,
 				disabled,
 			})}
+			role="combobox"
+			aria-hasPopUp="listbox"
+			aria-labelledBy={labelledBy}
+			aria-expanded={expended}
+			aria-autocomplete="list"
+			aria-owns={`${id}-list`}
 		>
 			<input
 				ref={inputEl}
@@ -26,13 +32,8 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 				type="text"
 				onChange={onChange}
 				value={search}
-				role="combobox"
-				title="suggester"
-				aria-expanded={expended}
-				aria-autocomplete="list"
-				aria-controls={`${id}-list`}
-				aria-labelledby={labelledBy}
 				aria-label="lunatic-suggester"
+				title="suggester"
 				autoComplete="off"
 				autoCapitalize="off"
 				autoCorrect="off"
