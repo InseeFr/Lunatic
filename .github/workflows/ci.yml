@@ -82,6 +82,8 @@ jobs:
         working-directory: ./example/lunatic-editor
       - run: mkdir -p deploy/editor
       - run: cp -a ./example/lunatic-editor/build/. ./deploy/editor
+      # Add json to fetch for suggester stories
+      - run: cp -a ./public/*.json ./deploy
       - name: Upload deploy artifact
         uses: actions/upload-artifact@v2
         with:
