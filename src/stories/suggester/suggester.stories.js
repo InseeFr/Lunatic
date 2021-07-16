@@ -68,6 +68,7 @@ stories.addWithJSX('Default', () => {
 				source={data}
 				getStoreInfo={getWidgetLoaderInfo}
 				onRefresh={onRefresh}
+				absolute
 			/>
 			<Orchestrator
 				id="default"

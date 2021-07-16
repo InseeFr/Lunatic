@@ -1,16 +1,22 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import LoaderRow from './loader-row';
-import { IsNetwork } from '../../utils/components/is-network';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import LoaderRow from './loader-row';
+import { Tools, ActionTool } from './tools';
+import { IsNetwork } from '../../utils/components/is-network';
+import Dragger from '../../utils/components/dragger';
 import './widget.scss';
 
 function empty() {}
 
-function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh }) {
+function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh, absolute }) {
 	const { suggesters } = source;
+	const containerEl = useRef();
+	const { current } = containerEl;
 	const [stores, setStores] = useState(undefined);
 	const [rows, setRows] = useState([]);
 	const [disabled, setDisabled] = useState(false);
+	const [drag, setDrag] = useState(false);
 
 	useEffect(
 		function () {
@@ -32,6 +38,17 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh }) {
 	const notify = useCallback(function (online) {
 		setDisabled(!online);
 	}, []);
+
+	const onDrag = useCallback(
+		function (status) {
+			if (!drag && status) {
+				setDrag(true);
+			} else if (drag && !status) {
+				setDrag(false);
+			}
+		},
+		[drag]
+	);
 
 	useEffect(
 		function () {
@@ -57,15 +74,37 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh }) {
 		},
 		[stores, disabled, onRefresh]
 	);
+
 	return (
-		<div className="lunatic-suggester-widget">
-			<IsNetwork className="suggester-widget-network" notify={notify} />
-			{rows}
+		<div
+			className={classnames('lunatic-suggester-widget-container', {
+				absolute,
+			})}
+			ref={containerEl}
+		>
+			<div className={classnames('lunatic-suggester-widget', { drag })}>
+				<Tools>
+					<ActionTool
+						className={classnames('', { drag })}
+						ariaLabel="drag"
+						display={absolute}
+						title="drag"
+					>
+						<Dragger el={current} onDrag={onDrag} />
+					</ActionTool>
+				</Tools>
+				<IsNetwork
+					className={classnames('suggester-widget-network', { drag })}
+					notify={notify}
+				/>
+				{rows}
+			</div>
 		</div>
 	);
 }
 
 SuggesterLoaderWidget.propTypes = {
+	absolute: PropTypes.bool,
 	source: PropTypes.object.isRequired,
 	getStoreInfo: PropTypes.func.isRequired,
 	onRefresh: PropTypes.func,
@@ -73,6 +112,7 @@ SuggesterLoaderWidget.propTypes = {
 
 SuggesterLoaderWidget.defaultProps = {
 	onRefresh: empty,
+	absolute: false,
 };
 
 export default SuggesterLoaderWidget;

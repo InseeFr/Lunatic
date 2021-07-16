@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import classnames from 'classnames';
-import { useDocumentAddEventListener } from '../commons-tools';
+import useDocumentAddEventListener from '../../../utils/to-expose/hooks/use-document-add-event-listener';
 
 function SuggesterContent({
 	children,
