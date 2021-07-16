@@ -92,7 +92,7 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh, absolute }) {
 						title="drag"
 					>
 						<Dragger el={current} onDrag={onDrag}>
-							<OnDragIcon className="on-drag-icon" />
+							<OnDragIcon className={classnames('on-drag-icon', { drag })} />
 						</Dragger>
 					</ActionTool>
 				</Tools>

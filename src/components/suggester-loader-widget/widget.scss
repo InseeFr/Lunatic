@@ -1,6 +1,7 @@
 $colorA: #e9d0d0;
 $colorB: darkred;
 $colorC: #320000;
+$colorD: goldenrod;
 
 @mixin preventSelect() {
 	-moz-user-select: -moz-none;
@@ -10,7 +11,7 @@ $colorC: #320000;
 
 @mixin onDrag() {
 	&.drag {
-		box-shadow: mediumvioletred 0px 3px 8px;
+		box-shadow: $colorD 0px 3px 8px;
 		transition: box-shadow 0.5s;
 	}
 }
@@ -119,6 +120,7 @@ $colorC: #320000;
 			left: -22px;
 			top: -22px;
 			box-shadow: $colorC 0px 3px 8px;
+
 			&.online {
 				svg {
 					fill: forestgreen;
@@ -149,11 +151,15 @@ $colorC: #320000;
 				margin-left: 2px;
 
 				&.drag {
-					background-color: mediumvioletred;
+					background-color: $colorD;
 					transition: background-color 0.5s;
 				}
 
 				.on-drag-icon {
+					cursor: grab;
+					&.drag {
+						cursor: grabbing;
+					}
 					svg {
 						width: 16px;
 						height: 16px;
