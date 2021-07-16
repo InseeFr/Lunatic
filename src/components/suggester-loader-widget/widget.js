@@ -5,6 +5,7 @@ import LoaderRow from './loader-row';
 import { Tools, ActionTool } from './tools';
 import { IsNetwork } from '../../utils/components/is-network';
 import Dragger from '../../utils/components/dragger';
+import OnDragIcon from '../../utils/icons/on-drag.icon';
 import './widget.scss';
 
 function empty() {}
@@ -90,7 +91,9 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh, absolute }) {
 						display={absolute}
 						title="drag"
 					>
-						<Dragger el={current} onDrag={onDrag} />
+						<Dragger el={current} onDrag={onDrag}>
+							<OnDragIcon className="on-drag-icon" />
+						</Dragger>
 					</ActionTool>
 				</Tools>
 				<IsNetwork

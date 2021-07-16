@@ -8,10 +8,9 @@ $colorC: #320000;
 	-webkit-user-select: none;
 }
 
-
-@mixin onDrag(){
+@mixin onDrag() {
 	&.drag {
-		box-shadow:  mediumvioletred 0px 3px 8px;
+		box-shadow: mediumvioletred 0px 3px 8px;
 		transition: box-shadow 0.5s;
 	}
 }
@@ -149,10 +148,17 @@ $colorC: #320000;
 				border-radius: 50%;
 				margin-left: 2px;
 
-
 				&.drag {
 					background-color: mediumvioletred;
 					transition: background-color 0.5s;
+				}
+
+				.on-drag-icon {
+					svg {
+						width: 16px;
+						height: 16px;
+						fill: $colorA;
+					}
 				}
 			}
 		}
