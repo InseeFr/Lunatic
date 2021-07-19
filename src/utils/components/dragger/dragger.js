@@ -32,7 +32,7 @@ function Dragger({ el, children, onDrag }) {
 				onDrag(true, [dx, dy]);
 			}
 		},
-		[drag, anchor]
+		[drag, anchor, onDrag]
 	);
 
 	useEffect(
@@ -57,8 +57,8 @@ function Dragger({ el, children, onDrag }) {
 	);
 }
 
-Dragger.propTypes = { el: PropTypes.func.isRequired, onDrag: PropTypes.func };
+Dragger.propTypes = { el: PropTypes.object, onDrag: PropTypes.func };
 
-Dragger.defaultProps = { onDrag: () => null };
+Dragger.defaultProps = { el: undefined, onDrag: () => null };
 
 export default Dragger;

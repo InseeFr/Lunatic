@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import LoaderRow from './loader-row';
 import { Tools, ActionTool } from './tools';
 import { IsNetwork } from '../../utils/components/is-network';
+import WidgetContainer from './widget-container';
 import Dragger from '../../utils/components/dragger';
 import OnDragIcon from '../../utils/icons/on-drag.icon';
 import './widget.scss';
@@ -76,33 +77,36 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh, absolute }) {
 		[stores, disabled, onRefresh]
 	);
 
+	useEffect(
+		function () {
+			if (current && absolute) {
+				current.style.top = '30px';
+				current.style.left = '30px';
+			}
+		},
+		[current, absolute]
+	);
+
 	return (
-		<div
-			className={classnames('lunatic-suggester-widget-container', {
-				absolute,
-			})}
-			ref={containerEl}
-		>
-			<div className={classnames('lunatic-suggester-widget', { drag })}>
-				<Tools>
-					<ActionTool
-						className={classnames('', { drag })}
-						ariaLabel="drag"
-						display={absolute}
-						title="drag"
-					>
-						<Dragger el={current} onDrag={onDrag}>
-							<OnDragIcon className={classnames('on-drag-icon', { drag })} />
-						</Dragger>
-					</ActionTool>
-				</Tools>
-				<IsNetwork
-					className={classnames('suggester-widget-network', { drag })}
-					notify={notify}
-				/>
-				{rows}
-			</div>
-		</div>
+		<WidgetContainer ref={containerEl} drag={drag} absolute={absolute}>
+			<Tools>
+				<ActionTool
+					className={classnames('', { drag })}
+					ariaLabel="drag"
+					display={absolute}
+					title="drag"
+				>
+					<Dragger el={current} onDrag={onDrag}>
+						<OnDragIcon className={classnames('on-drag-icon', { drag })} />
+					</Dragger>
+				</ActionTool>
+			</Tools>
+			<IsNetwork
+				className={classnames('suggester-widget-network', { drag })}
+				notify={notify}
+			/>
+			{rows}
+		</WidgetContainer>
 	);
 }
 

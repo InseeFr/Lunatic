@@ -18,7 +18,7 @@ $colorD: goldenrod;
 
 .lunatic-suggester-widget-container {
 	&.absolute {
-		position: absolute;
+		position: fixed;
 		z-index: 1;
 	}
 	.lunatic-suggester-widget {
@@ -149,6 +149,10 @@ $colorD: goldenrod;
 				background-color: $colorB;
 				border-radius: 50%;
 				margin-left: 2px;
+
+				&:hover {
+					box-shadow: $colorC 0px 3px 8px;
+				}
 
 				&.drag {
 					background-color: $colorD;
