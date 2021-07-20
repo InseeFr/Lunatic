@@ -35,7 +35,7 @@
 			]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-s",
 			"componentType": "Sequence",
 			"label": "\"Calculated variables\"",
 			"conditionFilter": {
@@ -45,7 +45,7 @@
 			"bindingDependencies": ["SUM"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-count",
 			"componentType": "Subsequence",
 			"label": "\"Count : \" || cast(COUNT, string)",
 			"conditionFilter": {
@@ -55,7 +55,7 @@
 			"bindingDependencies": ["COUNT"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-first",
 			"componentType": "Subsequence",
 			"label": "\"First value : \" || cast(FIRST_VALUE, string)",
 			"conditionFilter": {
@@ -65,7 +65,7 @@
 			"bindingDependencies": ["FIRST_VALUE"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-last",
 			"componentType": "Subsequence",
 			"label": "\"Last value : \" || cast(LAST_VALUE, string)",
 			"conditionFilter": {
@@ -75,7 +75,7 @@
 			"bindingDependencies": ["LAST_VALUE"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-avg",
 			"componentType": "Subsequence",
 			"label": "\"Average : \" || cast(AVG, string)",
 			"conditionFilter": {
@@ -85,7 +85,7 @@
 			"bindingDependencies": ["AVG"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-max",
 			"componentType": "Subsequence",
 			"label": "\"Max : \" || cast(MAX, string)",
 			"conditionFilter": {
@@ -95,7 +95,7 @@
 			"bindingDependencies": ["MAX"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-min",
 			"componentType": "Subsequence",
 			"label": "\"Min : \" || cast(MIN, string)",
 			"conditionFilter": {
@@ -105,7 +105,7 @@
 			"bindingDependencies": ["MIN"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-median",
 			"componentType": "Subsequence",
 			"label": "\"Median : \" || cast(MEDIAN, string)",
 			"conditionFilter": {
@@ -115,7 +115,7 @@
 			"bindingDependencies": ["MEDIAN"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-sum",
 			"componentType": "Subsequence",
 			"label": "\"Sum : \" || cast(SUM, string)",
 			"conditionFilter": {
@@ -125,7 +125,7 @@
 			"bindingDependencies": ["SUM"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-dev",
 			"componentType": "Subsequence",
 			"label": "\"Sample standard deviation : \" || cast(DEV_SAMPLE, string)",
 			"conditionFilter": {
@@ -135,7 +135,7 @@
 			"bindingDependencies": ["DEV_SAMPLE"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5h-devpop",
 			"componentType": "Subsequence",
 			"label": "\"Population standard deviation : \" || cast(DEV_STANDARD, string)",
 			"conditionFilter": {
@@ -145,7 +145,7 @@
 			"bindingDependencies": ["DEV_STANDARD"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5hvar",
 			"componentType": "Subsequence",
 			"label": "\"Sample variance : \" || cast(VAR_SAMPLE, string)",
 			"conditionFilter": {
@@ -155,7 +155,7 @@
 			"bindingDependencies": ["VAR_SAMPLE"]
 		},
 		{
-			"id": "j6p0ti5h",
+			"id": "j6p0ti5hvarpop",
 			"componentType": "Subsequence",
 			"label": "\"Population variance : \" || cast(VAR_STANDARD, string)",
 			"conditionFilter": {
