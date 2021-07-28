@@ -15,7 +15,7 @@ const useLunatic = (
 		features = ['VTL'],
 		management = false,
 		pagination = false,
-		initialPage = '1',
+		initialPage = null,
 		logFunction = null,
 	}
 ) => {
@@ -24,7 +24,18 @@ const useLunatic = (
 		mergeQuestionnaireAndData(source)(data || {})
 	);
 	const bindings = getBindings(questionnaire);
-	const [page, setPage] = useState(initialPage);
+	const [page, setPage] = useState(() => {
+		if (initialPage !== '1') return initialPage;
+		return getPage({
+			components: questionnaire.components,
+			bindings: bindings,
+			currentPage: '0',
+			features: featuresWithoutMD,
+			flow: FLOW_NEXT,
+			management,
+		});
+	});
+
 	const [todo, setTodo] = useState({});
 
 	const components = useFilterComponents({
