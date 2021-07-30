@@ -64,12 +64,15 @@ const LoopConstructorWrapper = ({
 	useEffect(() => {
 		if (Object.keys(todo).length !== 0) {
 			const { up, rowNumber } = todo;
-			const [key, value] = Object.entries(up)[0];
-			const previousValue = bindings[key];
-			const newValue = previousValue.map((v, i) =>
-				i === rowNumber ? value : v
-			);
-			handleChange({ [key]: newValue });
+			const entries = Object.entries(up);
+			const toUpdate = entries.reduce((_, [key, value]) => {
+				const previousValue = bindings[key];
+				const newValue = previousValue.map((v, i) =>
+					i === rowNumber ? value : v
+				);
+				return { ..._, [key]: newValue };
+			}, {});
+			handleChange(toUpdate);
 			setTodo({});
 		}
 	}, [bindings, todo, handleChange]);
