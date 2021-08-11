@@ -15,7 +15,7 @@ const useLunatic = (
 		features = ['VTL'],
 		management = false,
 		pagination = false,
-		initialPage = null,
+		initialPage = '0',
 		logFunction = null,
 	}
 ) => {
@@ -28,7 +28,7 @@ const useLunatic = (
 		getPage({
 			components: questionnaire.components,
 			bindings: bindings,
-			currentPage: '0',
+			currentPage: initialPage,
 			features: featuresWithoutMD,
 			flow: FLOW_NEXT,
 			management,
