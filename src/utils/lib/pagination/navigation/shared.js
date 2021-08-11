@@ -43,8 +43,10 @@ const getSimpleNewPage = ({
 	features,
 	flow,
 	management,
-}) =>
-	(flow === FLOW_PREVIOUS ? components.slice().reverse() : components)
+}) => {
+	const newPage = (
+		flow === FLOW_PREVIOUS ? components.slice().reverse() : components
+	)
 		.filter(({ page }) => {
 			switch (flow) {
 				case FLOW_NEXT:
@@ -65,6 +67,8 @@ const getSimpleNewPage = ({
 				return page;
 			else return null;
 		}, null);
+	return newPage || currentPage;
+};
 
 export const splitPage = (currentPage = '1', depth) => {
 	const currentPageWithDepth = depth
