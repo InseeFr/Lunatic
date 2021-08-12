@@ -15,25 +15,17 @@ const useLunatic = (
 		features = ['VTL'],
 		management = false,
 		pagination = false,
-		initialPage = '0',
+		initialPage = '1',
 		logFunction = null,
 	}
 ) => {
+	const [initPage, setInitPage] = useState(false);
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
 	const [questionnaire, setQuestionnaire] = useState(() =>
 		mergeQuestionnaireAndData(source)(data || {})
 	);
 	const bindings = getBindings(questionnaire);
-	const [page, setPage] = useState(() =>
-		getPage({
-			components: questionnaire.components,
-			bindings: bindings,
-			currentPage: initialPage,
-			features: featuresWithoutMD,
-			flow: FLOW_NEXT,
-			management,
-		})
-	);
+	const [page, setPage] = useState(initialPage);
 
 	const [todo, setTodo] = useState({});
 
@@ -90,6 +82,32 @@ const useLunatic = (
 			setPage(previousPage);
 		}
 	};
+
+	useEffect(() => {
+		if (!initPage && components && components.length === 0)
+			// no component for initialPage, get next page
+			setPage(
+				getPage({
+					components: questionnaire.components,
+					bindings: bindings,
+					currentPage: page,
+					features: featuresWithoutMD,
+					flow: FLOW_NEXT,
+					management,
+				})
+			);
+		else if (!initPage && components && components.length > 0)
+			// initialPage is correct, end of initPage
+			setInitPage(true);
+	}, [
+		initPage,
+		components,
+		questionnaire.components,
+		bindings,
+		page,
+		featuresWithoutMD,
+		management,
+	]);
 
 	const handleChange = useCallback((updatedValue) => {
 		setTodo((t) => ({ ...t, ...updatedValue }));
