@@ -18,6 +18,8 @@ const OrchestratorForStories = ({
 	missing = false,
 	shortcut = false,
 	activeGoNextForMissing = false,
+	suggesterFetcher,
+	autoSuggesterLoading,
 	...rest
 }) => {
 	const preferences = management
@@ -45,6 +47,8 @@ const OrchestratorForStories = ({
 		management,
 		pagination,
 		initialPage,
+		suggesterFetcher,
+		autoSuggesterLoading,
 	});
 	const Button = lunatic.Button;
 

@@ -2,6 +2,8 @@
 	"suggesters": {
 		"naf-rev2": {
 			"name": "naf-rev2",
+			"url": "https://inseefr.github.io/Lunatic/storybook/naf-rev2.json",
+			"idKey": "code",
 			"fields": [
 				{
 					"name": "libelle",
@@ -20,6 +22,8 @@
 		},
 		"cog-communes": {
 			"name": "cog-communes",
+			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
+			"idKey": "com",
 			"fields": [
 				{ "name": "libelle", "rules": "soft" },
 				{ "name": "nccenr", "rules": "soft" },
@@ -35,7 +39,7 @@
 			"id": "sugg",
 			"componentType": "Suggester",
 			"mandatory": false,
-			"label": "Enjoy the suggester below",
+			"label": "Naf rev. 2",
 			"path": "data/cities",
 			"storeName": "naf-rev2",
 			"response": {
@@ -46,7 +50,7 @@
 			"id": "sugg-communes",
 			"componentType": "Suggester",
 			"mandatory": false,
-			"label": "Enjoy the suggester below",
+			"label": "French municipalities",
 			"path": "data/communes",
 			"storeName": "cog-communes",
 			"response": {

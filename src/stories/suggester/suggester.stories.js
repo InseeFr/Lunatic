@@ -50,7 +50,7 @@ function getWidgetLoaderInfo(name) {
 	return {};
 }
 
-const stories = storiesOf('Suggester', module)
+const stories = storiesOf('Suggester/Manual loading', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
@@ -103,3 +103,27 @@ stories.addWithJSX('Props', () => {
 		</>
 	);
 });
+
+const storiesAuto = storiesOf('Suggester/Auto loading', module)
+	.addDecorator(withReadme(readme))
+	.addDecorator((Component) => {
+		const WrappedComponent = titleDecorator(Component);
+		return <WrappedComponent title="<Suggester />" />;
+	});
+
+async function suggesterFetcher(url, idKey = 'id') {
+	const response = await fetch(url);
+	const res = await response.json();
+	return Object.values(res).map(function (r) {
+		return { ...r, id: r[idKey] };
+	});
+}
+
+storiesAuto.addWithJSX('Default', () => (
+	<Orchestrator
+		id="default"
+		source={data}
+		suggesterFetcher={suggesterFetcher}
+		autoSuggesterLoading
+	/>
+));

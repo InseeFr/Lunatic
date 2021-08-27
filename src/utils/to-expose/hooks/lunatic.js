@@ -5,6 +5,7 @@ import { updateQuestionnaire } from '../handler';
 import { getPage, FLOW_NEXT, FLOW_PREVIOUS } from '../../lib';
 import { COLLECTED } from '../../../constants';
 import { useFilterComponents } from './filter-components';
+import { loadSuggesters } from '../../store-tools/load';
 
 const useLunatic = (
 	source,
@@ -17,6 +18,8 @@ const useLunatic = (
 		pagination = false,
 		initialPage = '1',
 		logFunction = null,
+		autoSuggesterLoading = false,
+		suggesterFetcher = () => {},
 	}
 ) => {
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
@@ -36,6 +39,17 @@ const useLunatic = (
 		pagination,
 		todo,
 	});
+
+	const { suggesters } = source;
+
+	useEffect(() => {
+		const init = async () => {
+			if (autoSuggesterLoading && Object.values(suggesters).length > 0) {
+				loadSuggesters(suggesterFetcher)(suggesters);
+			}
+		};
+		init();
+	}, [autoSuggesterLoading, suggesterFetcher, suggesters]);
 
 	const [flow, setFlow] = useState(FLOW_NEXT);
 
