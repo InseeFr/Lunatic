@@ -115,25 +115,39 @@ const storiesAuto = storiesOf('Suggester/Auto loading', module)
 async function suggesterFetcher(url, idKey = 'id') {
 	const response = await fetch(url);
 	const res = await response.json();
-	return Object.values(res).map(function (r) {
-		return { ...r, id: r[idKey] };
-	});
+	const map = {};
+	// TODO: thrown exception
+	return Object.values(res).reduce((acc, r, i) => {
+		if (r[idKey] in map) return acc;
+		map[r[idKey]] = `i-${i}`;
+		return [...acc, { ...r, id: r[idKey] }];
+	}, []);
 }
 
 storiesAuto.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={dataAuto}
-		suggesters={[
-			{
-				name: 'naf-rev2',
+		suggesters={{
+			'naf-rev2': {
 				url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
+				optionRenderer: ({ option: { libelle, code } }) => (
+					<>{`${code} - ${libelle}`}</>
+				),
+				labelRenderer: ({ option: { libelle, code } }) => (
+					<>{`${code} - ${libelle}`}</>
+				),
 			},
-			{
-				name: 'cog-communes',
+			'cog-communes': {
 				url: 'https://inseefr.github.io/Lunatic/storybook/communes-2019.json',
+				optionRenderer: ({ option: { libelle, code }, selected }) => (
+					<>{`${code} - ${libelle}`}</>
+				),
+				labelRenderer: ({ option: { libelle, code }, placeholder, search }) => (
+					<>{`${code} - ${libelle}`}</>
+				),
 			},
-		]}
+		}}
 		suggesterFetcher={suggesterFetcher}
 		autoSuggesterLoading
 		pagination

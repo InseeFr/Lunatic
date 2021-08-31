@@ -41,18 +41,26 @@ const useLunatic = (
 		todo,
 	});
 
+	const { suggesters: suggesterStrategy } = source;
+
 	useEffect(() => {
 		const init = async () => {
 			if (
 				autoSuggesterLoading &&
-				Array.isArray(suggesters) &&
+				typeof suggesters === 'object' &&
 				Object.values(suggesters).length > 0
 			) {
-				loadSuggesters(suggesterFetcher)(suggesters);
+				// Merge suggester urls & suggester fields contained into lunatic json
+				const s = Object.entries(suggesterStrategy).reduce((acc, [name, d]) => {
+					if (suggesters[name]?.url)
+						return { ...acc, [name]: { ...d, url: suggesters[name].url } };
+					return acc;
+				}, {});
+				loadSuggesters(suggesterFetcher)(s);
 			}
 		};
-		// init();
-	}, [autoSuggesterLoading, suggesterFetcher, suggesters]);
+		init();
+	}, [autoSuggesterLoading, suggesterFetcher, suggesters, suggesterStrategy]);
 
 	const [flow, setFlow] = useState(FLOW_NEXT);
 
