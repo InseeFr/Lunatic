@@ -20,6 +20,7 @@ const useLunatic = (
 		logFunction = null,
 		autoSuggesterLoading = false,
 		suggesterFetcher = () => {},
+		suggesters,
 	}
 ) => {
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
@@ -39,8 +40,6 @@ const useLunatic = (
 		pagination,
 		todo,
 	});
-
-	const { suggesters } = source;
 
 	useEffect(() => {
 		const init = async () => {
