@@ -43,11 +43,15 @@ const useLunatic = (
 
 	useEffect(() => {
 		const init = async () => {
-			if (autoSuggesterLoading && Object.values(suggesters).length > 0) {
+			if (
+				autoSuggesterLoading &&
+				Array.isArray(suggesters) &&
+				Object.values(suggesters).length > 0
+			) {
 				loadSuggesters(suggesterFetcher)(suggesters);
 			}
 		};
-		init();
+		// init();
 	}, [autoSuggesterLoading, suggesterFetcher, suggesters]);
 
 	const [flow, setFlow] = useState(FLOW_NEXT);

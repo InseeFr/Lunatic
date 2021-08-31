@@ -8,10 +8,11 @@ function getStoreInfoRequired() {
 
 const OrchestratorForStories = ({
 	source,
+	suggesters,
 	data = {},
 	management = false,
 	pagination = false,
-	features,
+	features = ['VTL'],
 	bindings: initialBindings,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
@@ -41,6 +42,7 @@ const OrchestratorForStories = ({
 			flow,
 		},
 	} = lunatic.useLunatic(source, data, {
+		suggesters,
 		savingType,
 		preferences,
 		features,
