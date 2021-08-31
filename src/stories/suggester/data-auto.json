@@ -76,7 +76,7 @@
 			"id": "idLoopInd",
 			"label": "boucle individu",
 			"componentType": "Loop",
-			"iterations": "2",
+			"iterations": "count(PRENOM)",
 			"paginatedLoop": true,
 			"conditionFilter": { "value": "true" },
 			"loopDependencies": ["PRENOM"],
