@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
+import dataAuto from './data-auto';
 import dataVTL from './data-vtl';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import { text, boolean, object, select } from '@storybook/addon-knobs/react';
@@ -50,7 +51,7 @@ function getWidgetLoaderInfo(name) {
 	return {};
 }
 
-const stories = storiesOf('Suggester', module)
+const stories = storiesOf('Suggester/Manual loading', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
@@ -59,12 +60,16 @@ const stories = storiesOf('Suggester', module)
 
 stories.addWithJSX('Default', () => {
 	const [message, setMessage] = useState(undefined);
+	const onRefresh = useCallback(function (m) {
+		setMessage(m);
+	}, []);
 	return (
 		<>
 			<SuggesterLoaderWidget
 				source={data}
 				getStoreInfo={getWidgetLoaderInfo}
-				onRefresh={(m) => setMessage(m)}
+				onRefresh={onRefresh}
+				absolute
 			/>
 			<Orchestrator
 				id="default"
@@ -99,3 +104,52 @@ stories.addWithJSX('Props', () => {
 		</>
 	);
 });
+
+const storiesAuto = storiesOf('Suggester/Auto loading', module)
+	.addDecorator(withReadme(readme))
+	.addDecorator((Component) => {
+		const WrappedComponent = titleDecorator(Component);
+		return <WrappedComponent title="<Suggester />" />;
+	});
+
+async function suggesterFetcher(url, idKey = 'id') {
+	const response = await fetch(url);
+	const res = await response.json();
+	const map = {};
+	// TODO: thrown exception
+	return Object.values(res).reduce((acc, r, i) => {
+		if (r[idKey] in map) return acc;
+		map[r[idKey]] = `i-${i}`;
+		return [...acc, { ...r, id: r[idKey] }];
+	}, []);
+}
+
+storiesAuto.addWithJSX('Default', () => (
+	<Orchestrator
+		id="default"
+		source={dataAuto}
+		suggesters={{
+			'naf-rev2': {
+				url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
+				optionRenderer: ({ option: { libelle, code } }) => (
+					<>{`${code} - ${libelle}`}</>
+				),
+				labelRenderer: ({ option: { libelle, code } }) => (
+					<>{`${code} - ${libelle}`}</>
+				),
+			},
+			'cog-communes': {
+				url: 'https://inseefr.github.io/Lunatic/storybook/communes-2019.json',
+				optionRenderer: ({ option: { libelle, code }, selected }) => (
+					<>{`${code} - ${libelle}`}</>
+				),
+				labelRenderer: ({ option: { libelle, code }, placeholder, search }) => (
+					<>{`${code} - ${libelle}`}</>
+				),
+			},
+		}}
+		suggesterFetcher={suggesterFetcher}
+		autoSuggesterLoading
+		pagination
+	/>
+));

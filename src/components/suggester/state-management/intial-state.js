@@ -4,6 +4,7 @@ const INITIAL = {
 	options: [],
 	focused: false,
 	expended: false,
+	disabled: false,
 	displayLabel: true,
 	selectedIndex: undefined,
 	messageError: undefined,

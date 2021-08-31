@@ -50,6 +50,7 @@ function IDBSuggester({
 				onChange={onChange}
 				searching={search}
 				storeName={storeName}
+				disabled={disabled}
 				max={max}
 			/>
 		</CheckStore>

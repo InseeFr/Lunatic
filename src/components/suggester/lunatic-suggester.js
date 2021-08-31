@@ -4,10 +4,11 @@ import Declarations from '../declarations';
 import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
-import { interpret } from '../../utils/to-expose';
 import IDBSuggester from './idb-suggester';
+import LabelWrapper from '../../utils/components/label-wrapper';
+import FieldWrapper from '../../utils/components/field-wrapper';
 
-const Suggester = ({
+function Suggester({
 	id,
 	label,
 	preferences,
@@ -28,7 +29,7 @@ const Suggester = ({
 	labelRenderer,
 	max,
 	idbVersion,
-}) => {
+}) {
 	const labelId = `suggester-label-${id}`;
 	const onSelect = useCallback(
 		function (suggestion) {
@@ -51,12 +52,15 @@ const Suggester = ({
 				features={features}
 				bindings={bindings}
 			/>
-			<div className={U.getLabelPositionClass(labelPosition)}>
-				{label && (
-					<label htmlFor={`suggester-${id}`} id={labelId}>
-						{interpret(features, logFunction)(bindings)(label)}
-					</label>
-				)}
+			<LabelWrapper
+				id={labelId}
+				htmlFor={id}
+				labelPosition={labelPosition}
+				bindings={bindings}
+				label={label}
+				features={features}
+				logFunction={logFunction}
+			>
 				<Declarations
 					id={id}
 					type={C.AFTER_QUESTION_TEXT}
@@ -64,31 +68,22 @@ const Suggester = ({
 					features={features}
 					bindings={bindings}
 				/>
-				<div className="field-container">
-					<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
-						<IDBSuggester
-							storeName={storeName}
-							optionRenderer={optionRenderer}
-							labelRenderer={labelRenderer}
-							max={max}
-							labelledBy={labelId}
-							idbVersion={idbVersion}
-							onSelect={onSelect}
-							focused={focused}
-							disabled={disabled}
-							response={response}
-						/>
-					</div>
-					{management && (
-						<div className="tooltip">
-							<TooltipResponse
-								id={id}
-								response={U.buildBooleanTooltipResponse(response)}
-							/>
-						</div>
-					)}
-				</div>
-			</div>
+				<FieldWrapper id={id} management={management} response={response}>
+					<IDBSuggester
+						storeName={storeName}
+						optionRenderer={optionRenderer}
+						labelRenderer={labelRenderer}
+						max={max}
+						labelledBy={labelId}
+						idbVersion={idbVersion}
+						onSelect={onSelect}
+						focused={focused}
+						disabled={disabled}
+						response={response}
+						id={id}
+					/>
+				</FieldWrapper>
+			</LabelWrapper>
 			<Declarations
 				id={id}
 				type={C.DETACHABLE}
@@ -98,7 +93,7 @@ const Suggester = ({
 			/>
 		</>
 	);
-};
+}
 
 Suggester.defaultProps = {
 	label: '',

@@ -5,6 +5,7 @@ import { updateQuestionnaire } from '../handler';
 import { getPage, FLOW_NEXT, FLOW_PREVIOUS } from '../../lib';
 import { COLLECTED } from '../../../constants';
 import { useFilterComponents } from './filter-components';
+import { loadSuggesters } from '../../store-tools/load';
 
 const useLunatic = (
 	source,
@@ -17,6 +18,9 @@ const useLunatic = (
 		pagination = false,
 		initialPage = '1',
 		logFunction = null,
+		autoSuggesterLoading = false,
+		suggesterFetcher = () => {},
+		suggesters,
 	}
 ) => {
 	const [initPage, setInitPage] = useState(false);
@@ -38,6 +42,27 @@ const useLunatic = (
 		pagination,
 		todo,
 	});
+
+	const { suggesters: suggesterStrategy } = source;
+
+	useEffect(() => {
+		const init = async () => {
+			if (
+				autoSuggesterLoading &&
+				typeof suggesters === 'object' &&
+				Object.values(suggesters).length > 0
+			) {
+				// Merge suggester urls & suggester fields contained into lunatic json
+				const s = Object.entries(suggesterStrategy).reduce((acc, [name, d]) => {
+					if (suggesters[name]?.url)
+						return { ...acc, [name]: { ...d, url: suggesters[name].url } };
+					return acc;
+				}, {});
+				loadSuggesters(suggesterFetcher)(s);
+			}
+		};
+		init();
+	}, [autoSuggesterLoading, suggesterFetcher, suggesters, suggesterStrategy]);
 
 	const [flow, setFlow] = useState(FLOW_NEXT);
 

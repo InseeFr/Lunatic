@@ -8,16 +8,19 @@ function getStoreInfoRequired() {
 
 const OrchestratorForStories = ({
 	source,
+	suggesters,
 	data = {},
 	management = false,
 	pagination = false,
-	features,
+	features = ['VTL'],
 	bindings: initialBindings,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	shortcut = false,
 	activeGoNextForMissing = false,
+	suggesterFetcher,
+	autoSuggesterLoading,
 	...rest
 }) => {
 	const preferences = management
@@ -39,12 +42,15 @@ const OrchestratorForStories = ({
 			flow,
 		},
 	} = lunatic.useLunatic(source, data, {
+		suggesters,
 		savingType,
 		preferences,
 		features,
 		management,
 		pagination,
 		initialPage,
+		suggesterFetcher,
+		autoSuggesterLoading,
 	});
 	const Button = lunatic.Button;
 

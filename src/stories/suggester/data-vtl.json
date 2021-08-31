@@ -1,16 +1,57 @@
 {
-	"suggesters": ["naf-rev2"],
+	"suggesters": {
+		"naf-rev2": {
+			"name": "naf-rev2",
+			"fields": [
+				{
+					"name": "libelle",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 3
+				},
+				{ "name": "code" }
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w.]+" }
+			},
+			"version": "1",
+			"display": "libelle"
+		},
+		"cog-communes": {
+			"name": "cog-communes",
+			"fields": [
+				{ "name": "libelle", "rules": "soft" },
+				{ "name": "nccenr", "rules": "soft" },
+				{ "name": "com", "rules": "soft" }
+			],
+			"queryParser": { "type": "soft" },
+			"version": "1",
+			"display": "libelle"
+		}
+	},
 	"components": [
 		{
 			"id": "sugg",
 			"componentType": "Suggester",
 			"mandatory": false,
-			"label": "\"Enjoy the suggester below\"",
+			"label": "Enjoy the suggester below",
+			"path": "data/cities",
+			"storeName": "naf-rev2",
 			"response": {
 				"name": "CITY"
-			},
-			"path": "data/cities",
-			"storeName": "naf-rev2"
+			}
+		},
+		{
+			"id": "sugg-communes",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "Enjoy the suggester below",
+			"path": "data/communes",
+			"storeName": "cog-communes",
+			"response": {
+				"name": "COMMUNES"
+			}
 		}
 	],
 	"variables": [
@@ -23,8 +64,19 @@
 				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
-				"INPUTED": null,
-				"storeName": "cities"
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "COMMUNES",
+			"componentRef": "sugg-communes",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
 	]

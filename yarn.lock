@@ -1136,6 +1136,18 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.14.5"
 
+"@babel/plugin-transform-runtime@^7.15.0":
+  version "7.15.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.15.0.tgz#d3aa650d11678ca76ce294071fda53d7804183b3"
+  integrity sha512-sfHYkLGjhzWTq6xsuQ01oEsUYjkHRux9fW1iUA68dC7Qd8BS1Unq4aZ8itmQp95zUzIcyR2EbNMTzAicFj+guw==
+  dependencies:
+    "@babel/helper-module-imports" "^7.14.5"
+    "@babel/helper-plugin-utils" "^7.14.5"
+    babel-plugin-polyfill-corejs2 "^0.2.2"
+    babel-plugin-polyfill-corejs3 "^0.2.2"
+    babel-plugin-polyfill-regenerator "^0.2.2"
+    semver "^6.3.0"
+
 "@babel/plugin-transform-shorthand-properties@^7.12.13", "@babel/plugin-transform-shorthand-properties@^7.14.5":
   version "7.14.5"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-shorthand-properties/-/plugin-transform-shorthand-properties-7.14.5.tgz#97f13855f1409338d8cadcbaca670ad79e091a58"
@@ -1673,10 +1685,10 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@inseefr/trevas@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.6.tgz#8bf9f28f5534114cb74208271261562784978eed"
-  integrity sha512-xyd18jPn+H63uI7Z6QwwLwFEij5qGJujZdomotRDRpK5+y7V2zpwbsejcLh+lpwEYRm1BS63J38unia0mviH9g==
+"@inseefr/trevas@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.8.tgz#8c7bc308740c4c1f72205900d875289ab45561c6"
+  integrity sha512-oWKR1DPJ3h371g3c8WN+a8nFmdFiKgi1xh7WiBCbNkl+WQUeojWdzWDZ62ntzj2l7AUeeTjsObCJASGMq96r7Q==
   dependencies:
     "@inseefr/vtl-2.0-antlr-tools" "0.1.0"
     antlr4 "4.8.0"
