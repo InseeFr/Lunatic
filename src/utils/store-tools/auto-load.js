@@ -21,7 +21,7 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 	Object.entries(suggesters).forEach(async ([name, attrs]) => {
 		const { url, idKey, version, fields } = attrs;
 		const a = await suggesterFetcher(url, idKey);
-		const [launch] = task(name, version, fields, console.log);
+		const [launch] = task(name, version, fields);
 		await launch(a);
 	});
 };

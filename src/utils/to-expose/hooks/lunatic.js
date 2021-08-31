@@ -5,7 +5,7 @@ import { updateQuestionnaire } from '../handler';
 import { getPage, FLOW_NEXT, FLOW_PREVIOUS } from '../../lib';
 import { COLLECTED } from '../../../constants';
 import { useFilterComponents } from './filter-components';
-import { loadSuggesters } from '../../store-tools/load';
+import { loadSuggesters } from '../../store-tools/auto-load';
 
 const useLunatic = (
 	source,
