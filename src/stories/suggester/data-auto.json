@@ -100,7 +100,6 @@
 					"componentType": "Suggester",
 					"mandatory": false,
 					"label": "PRENOM || \" what's your favorite NAF code?\"",
-					"path": "data/cities",
 					"storeName": "naf-rev2",
 					"bindingDependencies": ["PRENOM", "NAF"],
 					"conditionFilter": {
@@ -117,7 +116,6 @@
 					"componentType": "Suggester",
 					"mandatory": false,
 					"label": "PRENOM || \" what's your favorite city?\"",
-					"path": "data/communes",
 					"storeName": "cog-communes",
 					"conditionFilter": {
 						"value": "not(isnull(PRENOM))",
