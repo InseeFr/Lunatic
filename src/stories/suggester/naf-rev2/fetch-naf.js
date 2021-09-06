@@ -10,7 +10,7 @@ async function fetchNaf(path = '') {
 			: `/Lunatic/storybook/naf-rev2.json`;
 	const response = await fetch(sbPath);
 	const naf = await response.json();
-	return Object.values(naf).map(function (rubrique) {
+	return naf.map(function (rubrique) {
 		const { code } = rubrique;
 		return { ...rubrique, id: code };
 	});
