@@ -9,7 +9,6 @@ import {
 import { createObjectEvent, isFunction } from '../../lib';
 
 const Link = (props) => {
-	console.log(props);
 	const { href, children, title, logFunction } = props;
 	const listener =
 		(link = true) =>

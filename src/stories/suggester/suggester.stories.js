@@ -131,21 +131,9 @@ storiesAuto.addWithJSX('Default', () => (
 		suggesters={{
 			'naf-rev2': {
 				url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
-				optionRenderer: ({ option: { libelle, code } }) => (
-					<>{`${code} - ${libelle}`}</>
-				),
-				labelRenderer: ({ option: { libelle, code } }) => (
-					<>{`${code} - ${libelle}`}</>
-				),
 			},
 			'cog-communes': {
 				url: 'https://inseefr.github.io/Lunatic/storybook/communes-2019.json',
-				optionRenderer: ({ option: { libelle, code }, selected }) => (
-					<>{`${code} - ${libelle}`}</>
-				),
-				labelRenderer: ({ option: { libelle, code }, placeholder, search }) => (
-					<>{`${code} - ${libelle}`}</>
-				),
 			},
 		}}
 		suggesterFetcher={suggesterFetcher}
