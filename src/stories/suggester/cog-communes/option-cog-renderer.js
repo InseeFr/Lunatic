@@ -3,11 +3,11 @@ import classnames from 'classnames';
 import './theme.scss';
 
 function OptionCogRenderer({ option, selected }) {
-	const { libelle, com } = option;
+	const { label, id } = option;
 	return (
 		<div className={classnames('cog-option', { selected })}>
-			<span className="code">{com}</span>
-			<span className="libelle">{libelle}</span>
+			<span className="id">{id}</span>
+			<span className="label">{label}</span>
 		</div>
 	);
 }

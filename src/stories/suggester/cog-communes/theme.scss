@@ -1,14 +1,12 @@
 .cog-option {
-  &.selected {
-    background-color: goldenrod;
-    .libelle {
-      color: darkgreen;
-    }
-  }
-  .code {
-    color: snow;
-    background-color: darkred;
-  }
-  .libelle {
-  }
+	&.selected {
+		background-color: goldenrod;
+		.libelle {
+			color: darkgreen;
+		}
+	}
+	.id {
+		color: snow;
+		background-color: darkred;
+	}
 }

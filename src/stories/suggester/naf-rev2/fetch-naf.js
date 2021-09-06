@@ -10,10 +10,7 @@ async function fetchNaf(path = '') {
 			: `/Lunatic/storybook/naf-rev2.json`;
 	const response = await fetch(sbPath);
 	const naf = await response.json();
-	return naf.map(function (rubrique) {
-		const { code } = rubrique;
-		return { ...rubrique, id: code };
-	});
+	return naf;
 }
 
 // function splitArray(array, size = 100) {

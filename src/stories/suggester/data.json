@@ -3,35 +3,31 @@
 		"naf-rev2": {
 			"name": "naf-rev2",
 			"url": "https://inseefr.github.io/Lunatic/storybook/naf-rev2.json",
-			"idKey": "code",
 			"fields": [
 				{
-					"name": "libelle",
+					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
 					"min": 3
 				},
-				{ "name": "code" }
+				{ "name": "id" }
 			],
 			"queryParser": {
 				"type": "tokenized",
 				"params": { "language": "French", "pattern": "[\\w.]+" }
 			},
-			"version": "1",
-			"display": "libelle"
+			"version": "1"
 		},
 		"cog-communes": {
 			"name": "cog-communes",
 			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
-			"idKey": "com",
 			"fields": [
-				{ "name": "libelle", "rules": "soft" },
+				{ "name": "label", "rules": "soft" },
 				{ "name": "nccenr", "rules": "soft" },
-				{ "name": "com", "rules": "soft" }
+				{ "name": "id", "rules": "soft" }
 			],
 			"queryParser": { "type": "soft" },
-			"version": "1",
-			"display": "libelle"
+			"version": "1"
 		}
 	},
 	"components": [
