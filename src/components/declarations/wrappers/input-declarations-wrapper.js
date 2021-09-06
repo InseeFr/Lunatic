@@ -149,20 +149,31 @@ const InputDeclarationsWrapper = ({
 							required={mandatory}
 							aria-required={mandatory}
 							onChange={(e) => {
-								const v = e.target.value;
-								if (isInputNumber) {
-									if (
-										numberAsTextfield &&
-										v !== '' &&
-										!U.isNumberValid(v, decimals)
-									) {
-										e.preventDefault();
-										e.stopPropagation();
-										return null;
-									} else validate(v);
+								if (
+									Object.getPrototypeOf(e.nativeEvent).constructor.name ===
+									'Event'
+								) {
+									const v = e.target.value;
+									setValue(v);
+									handleChange({
+										[U.getResponseName(response)]: v,
+									});
+								} else {
+									const v = e.target.value;
+									if (isInputNumber) {
+										if (
+											numberAsTextfield &&
+											v !== '' &&
+											!U.isNumberValid(v, decimals)
+										) {
+											e.preventDefault();
+											e.stopPropagation();
+											return null;
+										} else validate(v);
+									}
+									if (management) setValue(v);
+									else setValue(v === '' ? null : v);
 								}
-								if (management) setValue(v);
-								else setValue(v === '' ? null : v);
 							}}
 							onBlur={handleChangeOnBlur}
 							onFocus={handleFocusIn}
