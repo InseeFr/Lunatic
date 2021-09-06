@@ -9,6 +9,7 @@ import {
 import { createObjectEvent, isFunction } from '../../lib';
 
 const Link = (props) => {
+	console.log(props);
 	const { href, children, title, logFunction } = props;
 	const listener =
 		(link = true) =>
@@ -36,16 +37,15 @@ const Link = (props) => {
 	return (
 		<span className="link-md" onPointerUp={listener(false)}>
 			<span
-				data-for={`${children}-tooltip`}
+				data-for={`${title}-tooltip`}
 				data-tip={title}
-				data-event="click focus"
 				data-multiline
 				className="field-md"
 			>
 				{children}
 			</span>
 			<ReactTooltip
-				id={`${children}-tooltip`}
+				id={`${title}-tooltip`}
 				className="tooltip-content"
 				place="bottom"
 				effect="solid"
