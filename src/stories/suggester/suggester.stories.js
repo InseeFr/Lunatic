@@ -13,18 +13,6 @@ import { SuggesterLoaderWidget } from 'components';
 import * as NAF from './naf-rev2';
 import * as COG from './cog-communes';
 
-// async function browseRestNAf() {
-// 	const fetchNaf = await createFetchNafPaged();
-// 	let currentCall = fetchNaf;
-// 	while (currentCall) {
-// 		const { next, entities } = await currentCall();
-// 		console.log({ entities, next });
-// 		currentCall = next;
-// 	}
-// }
-
-// browseRestNAf();
-
 /**
  *
  */
@@ -112,17 +100,21 @@ const storiesAuto = storiesOf('Suggester/Auto loading', module)
 		return <WrappedComponent title="<Suggester />" />;
 	});
 
-async function suggesterFetcher(url, idKey = 'id') {
+async function suggesterFetcher(url, options) {
 	const response = await fetch(url);
 	const res = await response.json();
-	const map = {};
 	// TODO: thrown exception
-	return Object.values(res).reduce((acc, r, i) => {
-		if (r[idKey] in map) return acc;
-		map[r[idKey]] = `i-${i}`;
-		return [...acc, { ...r, id: r[idKey] }];
-	}, []);
+	return getSingle(res);
 }
+
+const getSingle = (res) => {
+	const map = {};
+	return res.reduce((acc, r, i) => {
+		if (r.id in map) return acc;
+		map[r.id] = `i-${i}`;
+		return [...acc, r];
+	}, []);
+};
 
 storiesAuto.addWithJSX('Default', () => (
 	<Orchestrator
