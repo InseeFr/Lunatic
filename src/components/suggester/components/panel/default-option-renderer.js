@@ -4,10 +4,14 @@ import classnames from 'classnames';
 function DefaultOptionRenderer({ option, selected }) {
 	const { id, label } = option;
 	return (
-		<div
-			className={classnames('lunatic-suggester-default-option', { selected })}
-		>
-			{label || id}
+		<div className={classnames('lunatic-suggester-option', { selected })}>
+			<span className="id">{id}</span>
+			{label && (
+				<>
+					<span> - </span>
+					<span className="label">{label}</span>
+				</>
+			)}
 		</div>
 	);
 }

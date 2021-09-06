@@ -139,7 +139,6 @@ Suggester.propTypes = {
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
 	management: PropTypes.bool,
-	path: PropTypes.string.isRequired,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	style: PropTypes.object,
 	storeInfo: PropTypes.object, //TODO

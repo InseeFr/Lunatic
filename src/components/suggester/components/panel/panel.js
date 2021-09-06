@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-
 import { SuggesterContext } from '../../state-management';
 import PanelContainer from './panel-container';
 import OptionContainer from './option-container';

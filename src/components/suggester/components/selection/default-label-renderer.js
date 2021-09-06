@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 
 function getContent(option, search) {
 	if (option) {
-		const { id } = option;
-
-		return id;
+		const { id, label } = option;
+		return label ? `${id} - ${label}` : id;
 	}
 	if (search && search.trim().length) {
 		return search;
