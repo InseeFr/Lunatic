@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
-import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
 import IDBSuggester from './idb-suggester';
@@ -15,7 +14,6 @@ function Suggester({
 	response,
 	handleChange,
 	disabled,
-	positioning,
 	focused,
 	declarations,
 	features,
@@ -30,11 +28,22 @@ function Suggester({
 	max,
 	idbVersion,
 }) {
+	const [value, setValue] = useState(() =>
+		U.getResponseByPreference(preferences)(response)
+	);
+
 	const labelId = `suggester-label-${id}`;
+
 	const onSelect = useCallback(
 		function (suggestion) {
-			const { id } = suggestion;
-			if (id) {
+			if (suggestion === null) {
+				setValue(null);
+				handleChange({
+					[U.getResponseName(response)]: null,
+				});
+			} else {
+				const { id } = suggestion;
+				setValue(id);
 				handleChange({
 					[U.getResponseName(response)]: id,
 				});
@@ -42,6 +51,14 @@ function Suggester({
 		},
 		[handleChange, response]
 	);
+
+	// Assume we only want to handle enable external updates
+	// Don't need to check all value changes
+	useEffect(() => {
+		if (U.getResponseByPreference(preferences)(response) !== value)
+			setValue(U.getResponseByPreference(preferences)(response));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [response, preferences]);
 
 	return (
 		<>

@@ -14,6 +14,7 @@ function Suggester({
 	labelledBy,
 	optionRenderer,
 	labelRenderer,
+	onSelect,
 }) {
 	const inputEl = useRef();
 	const [state, dispatch] = useContext(SuggesterContext);
@@ -33,9 +34,10 @@ function Suggester({
 
 	const onDelete = useCallback(
 		function () {
+			onSelect(null);
 			dispatch(actions.onChangeSearch(''));
 		},
-		[dispatch]
+		[dispatch, onSelect]
 	);
 
 	const onBlur = useCallback(

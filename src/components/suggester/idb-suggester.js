@@ -20,7 +20,6 @@ function IDBSuggester({
 	labelRenderer,
 	onSelect,
 	disabled,
-	onChange,
 	max,
 }) {
 	const [store, setStore] = useState(undefined);
@@ -47,7 +46,6 @@ function IDBSuggester({
 				optionRenderer={optionRenderer}
 				labelRenderer={labelRenderer}
 				onSelect={onSelect}
-				onChange={onChange}
 				searching={search}
 				storeName={storeName}
 				disabled={disabled}
@@ -66,7 +64,6 @@ IDBSuggester.propTypes = {
 	optionRenderer: PropTypes.func,
 	labelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
-	onChange: PropTypes.func,
 	max: PropTypes.number,
 };
 
