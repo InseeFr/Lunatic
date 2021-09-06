@@ -217,7 +217,6 @@ const Loop = ({
 						{...rest}
 						id={`${idC}-loop-${rowNumber}`}
 						handleChange={(up) => {
-							console.log('LOOP');
 							setTodos((t) => [...t, { up, rowNumber }]);
 						}}
 						bindings={loopBindings}

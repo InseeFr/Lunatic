@@ -100,21 +100,12 @@ const storiesAuto = storiesOf('Suggester/Auto loading', module)
 		return <WrappedComponent title="<Suggester />" />;
 	});
 
-async function suggesterFetcher(url, options) {
-	const response = await fetch(url);
-	const res = await response.json();
-	// TODO: thrown exception
-	return getSingle(res);
+async function suggesterFetcher(url) {
+	const response = await fetch(url, {
+		headers: { Accept: 'application/json' },
+	});
+	return response;
 }
-
-const getSingle = (res) => {
-	const map = {};
-	return res.reduce((acc, r, i) => {
-		if (r.id in map) return acc;
-		map[r.id] = `i-${i}`;
-		return [...acc, r];
-	}, []);
-};
 
 storiesAuto.addWithJSX('Default', () => (
 	<Orchestrator
