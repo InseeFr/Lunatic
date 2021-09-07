@@ -5,8 +5,27 @@
 	"lunaticModelVersion": "2.2.2",
 	"generatingDate": "06-07-2021 15:33:37",
 	"pagination": "question",
-	"maxPage": "37",
+	"maxPage": "38",
 	"label": "Questionnaire SIMPSONS 20201215",
+	"suggesters": {
+		"naf-rev2": {
+			"name": "naf-rev2",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 3
+				},
+				{ "name": "id" }
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w.]+" }
+			},
+			"version": "1"
+		}
+	},
 	"components": [
 		{
 			"id": "j6p0ti5h",
@@ -2792,11 +2811,26 @@
 				}
 			]
 		},
-
+		{
+			"id": "NAF",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "Test Suggester",
+			"storeName": "naf-rev2",
+			"bindingDependencies": ["NAF"],
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
+			"response": {
+				"name": "NAF"
+			},
+			"page": "36"
+		},
 		{
 			"id": "j6z12s2d",
 			"componentType": "Sequence",
-			"page": "36",
+			"page": "37",
 			"label": "\"VIII - Comment\"",
 			"conditionFilter": { "value": "true" },
 			"hierarchy": {
@@ -2812,7 +2846,7 @@
 			"id": "j6z0z3us",
 			"componentType": "Textarea",
 			"mandatory": false,
-			"page": "37",
+			"page": "38",
 			"maxLength": 255,
 			"label": "\"➡ 1. Do you have any comment about the survey?\"",
 			"conditionFilter": { "value": "true" },
@@ -2829,6 +2863,18 @@
 		}
 	],
 	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NAF",
+			"componentRef": "NAF",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
 		{
 			"variableType": "COLLECTED",
 			"name": "FAVOURITE_CHAR1_1_1",
