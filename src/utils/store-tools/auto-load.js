@@ -29,7 +29,8 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 	});
 	Object.entries(suggesters).forEach(([name, attrs]) => {
 		const { url, version, fields } = attrs;
-		suggesterFetcher(url).then(async (res) => {
+		const f = suggesterFetcher || fetch;
+		f(url).then(async (res) => {
 			const data = await res.json();
 			const uniqueData = getUniqueId(data);
 			const [launch] = task(name, version, fields);
