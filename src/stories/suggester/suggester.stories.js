@@ -100,12 +100,10 @@ const storiesAuto = storiesOf('Suggester/Auto loading', module)
 		return <WrappedComponent title="<Suggester />" />;
 	});
 
-async function suggesterFetcher(url) {
-	const response = await fetch(url, {
+const suggesterFetcher = (url) =>
+	fetch(url, {
 		headers: { Accept: 'application/json' },
 	});
-	return response;
-}
 
 storiesAuto.addWithJSX('Default', () => (
 	<Orchestrator

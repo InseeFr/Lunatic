@@ -27,14 +27,14 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 			await updateStoreInfo(db, attrs);
 		}
 	});
-	Object.entries(suggesters).forEach(async ([name, attrs]) => {
+	Object.entries(suggesters).forEach(([name, attrs]) => {
 		const { url, version, fields } = attrs;
-		const f = suggesterFetcher || fetch;
-		const res = await f(url);
-		const data = await res.json();
-		const uniqueData = getUniqueId(data);
-		const [launch] = task(name, version, fields);
-		await launch(uniqueData);
+		suggesterFetcher(url).then(async (res) => {
+			const data = await res.json();
+			const uniqueData = getUniqueId(data);
+			const [launch] = task(name, version, fields);
+			await launch(uniqueData);
+		});
 	});
 };
 

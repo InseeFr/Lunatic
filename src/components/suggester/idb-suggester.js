@@ -55,9 +55,13 @@ function IDBSuggester({
 	);
 }
 
+IDBSuggester.defaultProps = {
+	idbVersion: '1',
+};
+
 IDBSuggester.propTypes = {
 	storeName: PropTypes.string.isRequired,
-	idbVersion: PropTypes.string.isRequired,
+	idbVersion: PropTypes.string,
 	id: PropTypes.string,
 	className: PropTypes.string,
 	labelledBy: PropTypes.string,

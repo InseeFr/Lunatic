@@ -19,7 +19,7 @@ const useLunatic = (
 		initialPage = '1',
 		logFunction = null,
 		autoSuggesterLoading = false,
-		suggesterFetcher = () => {},
+		suggesterFetcher = fetch,
 		suggesters,
 	}
 ) => {
