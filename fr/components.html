@@ -501,6 +501,46 @@
                                 
                                 <h1 id="composants">Composants</h1>
 <p>Les composants de la librairie <code>Lunatic</code> sont directement document&#xE9;s dans un <a href="https://inseefr.github.io/Lunatic/storybook" target="_blank">Storybook</a>.</p>
+<h2 id="composants-complexes">Composants complexes</h2>
+<h3 id="suggester">Suggester</h3>
+<p>L&apos;utilisation du composant <code>Suggester</code>, composant de recherche sur liste longue, n&#xE9;cessite une configuration particuli&#xE8;re :</p>
+<ul>
+<li><p>Ajout des wokers :</p>
+<ul>
+<li>t&#xE9;l&#xE9;charger les <a href="https://github.com/InseeFr/Lunatic/tree/master/public/workers" target="_blank">workers</a></li>
+<li>les d&#xE9;poser dans le projet client (id&#xE9;alement, dans une application CRA, dans le dossier <code>public</code>)</li>
+<li>surcharge des variables d&apos;environnement localisant les workers (<a href="https://github.com/InseeFr/Lunatic/blob/master/example/orchestrator/.env" target="_blank">exemple</a>)</li>
+</ul>
+</li>
+<li><p>Activation au niveau de <code>useLunatic</code> en valorisant les options suivantes :</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">variable</th>
+<th style="text-align:center">valeur</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">autoSuggesterLoading</td>
+<td style="text-align:center">true</td>
+<td style="text-align:left">Permet d&apos;activer le chargement automatique des ressources</td>
+</tr>
+<tr>
+<td style="text-align:center">suggesters</td>
+<td style="text-align:center">{ id: { url: &apos;url_to_fetch } }</td>
+<td style="text-align:left">D&#xE9;finissions des ressources</td>
+</tr>
+<tr>
+<td style="text-align:center">suggesterFetcher</td>
+<td style="text-align:center">url =&gt; fetch(url, options)</td>
+<td style="text-align:left">Permet de surcharger les options de chargement des ressources</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -544,7 +584,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Composants","level":"1.4","depth":1,"next":{"title":"Pagination","level":"1.5","depth":1,"path":"pagination.md","ref":"pagination.md","articles":[]},"previous":{"title":"Utilisation","level":"1.3","depth":1,"path":"usage.md","ref":"usage.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anchorjs","image-captions","include-codeblock","collapsible-chapters"],"root":"./","styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/InseeFr/Lunatic/"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/InseeFr/Lunatic/tree/master/docs"},"theme-default":{"styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Lunatic","language":"fr","gitbook":"*"},"file":{"path":"components.md","mtime":"2021-09-06T12:22:07.787Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-09-06T12:25:49.110Z"},"basePath":".","book":{"language":"fr"}});
+            gitbook.page.hasChanged({"page":{"title":"Composants","level":"1.4","depth":1,"next":{"title":"Pagination","level":"1.5","depth":1,"path":"pagination.md","ref":"pagination.md","articles":[]},"previous":{"title":"Utilisation","level":"1.3","depth":1,"path":"usage.md","ref":"usage.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anchorjs","image-captions","include-codeblock","collapsible-chapters"],"root":"./","styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/InseeFr/Lunatic/"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/InseeFr/Lunatic/tree/master/docs"},"theme-default":{"styles":{"website":"gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Lunatic","language":"fr","gitbook":"*"},"file":{"path":"components.md","mtime":"2021-09-07T14:07:42.331Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-09-07T14:11:15.393Z"},"basePath":".","book":{"language":"fr"}});
         });
     </script>
 </div>
