@@ -36,14 +36,18 @@ Le hook `useLunatic` permet de simplifier la gestion de l'état d'questionnaire 
 
 Les clés suivantes sont prises en compte :
 
-|     Clé     |      Type       | Valeur par défaut |
-| :---------: | :-------------: | :---------------: |
-| savingType  |     string      |    'COLLECTED'    |
-| preferences | arrayOf(String) |   ['COLLECTED']   |
-|  features   | arrayOf(String) |      ['VTL']      |
-| management  |     boolean     |       false       |
-| pagination  |     boolean     |       false       |
-| initialPage |     string      |        '1'        |
+|         Clé          |             Type              | Valeur par défaut |
+| :------------------: | :---------------------------: | :---------------: |
+|      savingType      |            string             |    'COLLECTED'    |
+|     preferences      |        arrayOf(String)        |   ['COLLECTED']   |
+|       features       |        arrayOf(String)        |      ['VTL']      |
+|      management      |            boolean            |       false       |
+|      pagination      |            boolean            |       false       |
+|     initialPage      |            string             |        '1'        |
+| autoSuggesterLoading |             bool              |       false       |
+|   suggesterFetcher   |             func              |       fetch       |
+|      suggesters      | object: {id: {url: 'my_url'}} |        { }        |
+|     logFunction      |             func              |         -         |
 
 #### Retour
 

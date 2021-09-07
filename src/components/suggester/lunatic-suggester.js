@@ -1,20 +1,19 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Declarations from '../declarations';
-import { TooltipResponse } from '../tooltip';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
-import { interpret } from '../../utils/to-expose';
 import IDBSuggester from './idb-suggester';
+import LabelWrapper from '../../utils/components/label-wrapper';
+import FieldWrapper from '../../utils/components/field-wrapper';
 
-const Suggester = ({
+function Suggester({
 	id,
 	label,
 	preferences,
 	response,
 	handleChange,
 	disabled,
-	positioning,
 	focused,
 	declarations,
 	features,
@@ -28,12 +27,23 @@ const Suggester = ({
 	labelRenderer,
 	max,
 	idbVersion,
-}) => {
+}) {
+	const [value, setValue] = useState(() =>
+		U.getResponseByPreference(preferences)(response)
+	);
+
 	const labelId = `suggester-label-${id}`;
+
 	const onSelect = useCallback(
 		function (suggestion) {
-			const { id } = suggestion;
-			if (id) {
+			if (suggestion === null) {
+				setValue(null);
+				handleChange({
+					[U.getResponseName(response)]: null,
+				});
+			} else {
+				const { id } = suggestion;
+				setValue(id);
 				handleChange({
 					[U.getResponseName(response)]: id,
 				});
@@ -41,6 +51,14 @@ const Suggester = ({
 		},
 		[handleChange, response]
 	);
+
+	// Assume we only want to handle enable external updates
+	// Don't need to check all value changes
+	useEffect(() => {
+		if (U.getResponseByPreference(preferences)(response) !== value)
+			setValue(U.getResponseByPreference(preferences)(response));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [response, preferences]);
 
 	return (
 		<>
@@ -51,12 +69,15 @@ const Suggester = ({
 				features={features}
 				bindings={bindings}
 			/>
-			<div className={U.getLabelPositionClass(labelPosition)}>
-				{label && (
-					<label htmlFor={`suggester-${id}`} id={labelId}>
-						{interpret(features, logFunction)(bindings)(label)}
-					</label>
-				)}
+			<LabelWrapper
+				id={labelId}
+				htmlFor={id}
+				labelPosition={labelPosition}
+				bindings={bindings}
+				label={label}
+				features={features}
+				logFunction={logFunction}
+			>
 				<Declarations
 					id={id}
 					type={C.AFTER_QUESTION_TEXT}
@@ -64,31 +85,22 @@ const Suggester = ({
 					features={features}
 					bindings={bindings}
 				/>
-				<div className="field-container">
-					<div className={`${management ? 'field-with-tooltip' : 'field'}`}>
-						<IDBSuggester
-							storeName={storeName}
-							optionRenderer={optionRenderer}
-							labelRenderer={labelRenderer}
-							max={max}
-							labelledBy={labelId}
-							idbVersion={idbVersion}
-							onSelect={onSelect}
-							focused={focused}
-							disabled={disabled}
-							response={response}
-						/>
-					</div>
-					{management && (
-						<div className="tooltip">
-							<TooltipResponse
-								id={id}
-								response={U.buildBooleanTooltipResponse(response)}
-							/>
-						</div>
-					)}
-				</div>
-			</div>
+				<FieldWrapper id={id} management={management} response={response}>
+					<IDBSuggester
+						storeName={storeName}
+						optionRenderer={optionRenderer}
+						labelRenderer={labelRenderer}
+						max={max}
+						labelledBy={labelId}
+						idbVersion={idbVersion}
+						onSelect={onSelect}
+						focused={focused}
+						disabled={disabled}
+						response={response}
+						id={id}
+					/>
+				</FieldWrapper>
+			</LabelWrapper>
 			<Declarations
 				id={id}
 				type={C.DETACHABLE}
@@ -98,7 +110,7 @@ const Suggester = ({
 			/>
 		</>
 	);
-};
+}
 
 Suggester.defaultProps = {
 	label: '',
@@ -127,7 +139,6 @@ Suggester.propTypes = {
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
 	management: PropTypes.bool,
-	path: PropTypes.string.isRequired,
 	labelPosition: PropTypes.oneOf(['DEFAULT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']),
 	style: PropTypes.object,
 	storeInfo: PropTypes.object, //TODO

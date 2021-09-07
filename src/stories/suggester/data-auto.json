@@ -1,0 +1,186 @@
+{
+	"maxPage": "4",
+	"suggesters": {
+		"naf-rev2": {
+			"name": "naf-rev2",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 3
+				},
+				{ "name": "id" }
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w.]+" }
+			},
+			"version": "1"
+		},
+		"cog-communes": {
+			"name": "cog-communes",
+			"fields": [
+				{ "name": "label", "rules": "soft" },
+				{ "name": "nccenr", "rules": "soft" },
+				{ "name": "id", "rules": "soft" }
+			],
+			"queryParser": { "type": "soft" },
+			"version": "1"
+		}
+	},
+	"components": [
+		{
+			"id": "nn",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"min": 1,
+			"max": 4,
+			"decimals": 0,
+			"label": "Number of inhabitants",
+			"response": {
+				"name": "NUM"
+			},
+			"page": "1"
+		},
+		{
+			"id": "idLoop",
+			"label": "boucle individu",
+			"componentType": "Loop",
+			"iterations": "cast(NUM, integer)",
+			"paginatedLoop": false,
+			"conditionFilter": { "value": "true" },
+			"loopDependencies": ["NUM"],
+			"bindingDependencies": ["PRENOM", "NUM"],
+			"page": "2",
+			"components": [
+				{
+					"id": "k3ym6x16",
+					"label": "Prénom :",
+					"componentType": "Input",
+					"conditionFilter": { "value": "true" },
+					"mandatory": false,
+					"bindingDependencies": ["PRENOM"],
+					"response": {
+						"name": "PRENOM"
+					},
+					"page": "2"
+				}
+			]
+		},
+		{
+			"id": "idLoopInd",
+			"label": "boucle individu",
+			"componentType": "Loop",
+			"iterations": "count(PRENOM)",
+			"paginatedLoop": true,
+			"conditionFilter": { "value": "true" },
+			"loopDependencies": ["PRENOM"],
+			"bindingDependencies": ["PRENOM", "NAF", "CITY"],
+			"page": "3",
+			"maxPage": "3",
+			"components": [
+				{
+					"id": "k3ym61vfzzzzzzzzzzzz",
+					"componentType": "Sequence",
+					"label": "\"Questionnaire de : \" || PRENOM",
+					"conditionFilter": {
+						"value": "not(isnull(PRENOM))",
+						"bindingDependencies": ["PRENOM"]
+					},
+					"bindingDependencies": ["PRENOM"],
+					"page": "3.1"
+				},
+				{
+					"id": "sugg",
+					"componentType": "Suggester",
+					"mandatory": false,
+					"label": "PRENOM || \" what's your favorite NAF code?\"",
+					"storeName": "naf-rev2",
+					"bindingDependencies": ["PRENOM", "NAF"],
+					"conditionFilter": {
+						"value": "not(isnull(PRENOM))",
+						"bindingDependencies": ["PRENOM"]
+					},
+					"response": {
+						"name": "NAF"
+					},
+					"page": "3.2"
+				},
+				{
+					"id": "sugg-communes",
+					"componentType": "Suggester",
+					"mandatory": false,
+					"label": "PRENOM || \" what's your favorite city?\"",
+					"storeName": "cog-communes",
+					"conditionFilter": {
+						"value": "not(isnull(PRENOM))",
+						"bindingDependencies": ["PRENOM"]
+					},
+					"bindingDependencies": ["PRENOM", "CITY"],
+					"response": {
+						"name": "CITY"
+					},
+					"page": "3.3"
+				}
+			]
+		},
+		{
+			"id": "kk",
+			"componentType": "Sequence",
+			"label": "END",
+			"conditionFilter": { "value": "true" },
+			"page": "4"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NUM",
+			"componentRef": "nn",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NAF",
+			"componentRef": "idLoopInd",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CITY",
+			"componentRef": "idLoopInd",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		}
+	]
+}

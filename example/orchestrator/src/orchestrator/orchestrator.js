@@ -10,6 +10,9 @@ const Orchestrator = ({
 	data,
 	management,
 	filterDescription,
+	suggesters,
+	autoSuggesterLoading,
+	suggesterFetcher,
 }) => {
 	const {
 		questionnaire,
@@ -32,6 +35,9 @@ const Orchestrator = ({
 		features,
 		management,
 		pagination,
+		suggesters,
+		autoSuggesterLoading,
+		suggesterFetcher,
 	});
 
 	const Button = lunatic.Button;

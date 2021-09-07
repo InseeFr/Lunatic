@@ -1,6 +1,6 @@
 const WORKER_PATH =
 	process.env.LUNATIC_SEARCH_WORKER_PATH ||
-	process.env.REACT_LUNATIC_SEARCH_WORKER_PATH;
+	process.env.REACT_APP_LUNATIC_SEARCH_WORKER_PATH;
 
 let WORKER = undefined;
 

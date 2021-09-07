@@ -20,9 +20,9 @@ function SuggesterWrapper({
 	placeholder,
 	optionRenderer,
 	onSelect,
-	onChange,
 	searching,
 	labelRenderer,
+	disabled,
 	max,
 }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -34,14 +34,13 @@ function SuggesterWrapper({
 				try {
 					const { results, search: old } = await searching(search, max);
 					dispatch(actions.onUpdateOptions(results, old));
-					onChange(results, old);
 				} catch (e) {
 					dispatch(actions.onError('Une erreur est survenue.'));
 				}
 			}
 			doIt();
 		},
-		[search, onChange, searching, max]
+		[search, searching, max]
 	);
 
 	useEffect(
@@ -55,9 +54,9 @@ function SuggesterWrapper({
 
 	useEffect(
 		function () {
-			dispatch(actions.onInit(id));
+			dispatch(actions.onInit({ id, disabled }));
 		},
-		[id]
+		[id, disabled]
 	);
 	return (
 		<SuggesterContext.Provider value={[state, dispatch]}>
@@ -69,6 +68,7 @@ function SuggesterWrapper({
 				labelledBy={labelledBy}
 				optionRenderer={optionRenderer}
 				labelRenderer={labelRenderer}
+				onSelect={onSelect}
 			/>
 		</SuggesterContext.Provider>
 	);
@@ -82,7 +82,6 @@ SuggesterWrapper.propTypes = {
 	optionRenderer: PropTypes.func,
 	labelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
-	onChange: PropTypes.func,
 	storeInfo: PropTypes.object,
 	max: PropTypes.number,
 };
@@ -97,7 +96,6 @@ SuggesterWrapper.defaultProps = {
 	labelRenderer: DefaultLabelRenderer,
 	language: 'French',
 	onSelect: () => null,
-	onChange: () => null,
 };
 
 export default SuggesterWrapper;

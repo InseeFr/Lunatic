@@ -1,8 +1,9 @@
 {
 	"id": "i6vwi2506qf2mms",
 	"modele": "SIMPSONS",
-	"enoCoreVersion": "2.2.3-dev-xml-lunatic-pagination",
-	"lunaticModelVersion": "2.1.0",
+	"enoCoreVersion": "2.2.9-dev-lunatic-missing_var",
+	"lunaticModelVersion": "2.2.2",
+	"generatingDate": "06-07-2021 15:33:37",
 	"pagination": "question",
 	"maxPage": "37",
 	"label": "Questionnaire SIMPSONS 20201215",
@@ -45,7 +46,8 @@
 					"label": "\"I - Introduction\""
 				}
 			},
-			"bindingDependencies": ["COMMENT"],
+			"missingResponse": { "name": "COMMENT_MISSING" },
+			"bindingDependencies": ["COMMENT_MISSING", "COMMENT"],
 			"response": { "name": "COMMENT" }
 		},
 
@@ -71,7 +73,8 @@
 					"label": "\"I - Introduction\""
 				}
 			},
-			"bindingDependencies": ["READY"],
+			"missingResponse": { "name": "READY_MISSING" },
+			"bindingDependencies": ["READY_MISSING", "READY"],
 			"response": { "name": "READY" }
 		},
 
@@ -92,13 +95,39 @@
 		},
 
 		{
+			"id": "j6p0s7o5",
+			"componentType": "Subsequence",
+			"goToPage": "4",
+			"label": "\"General knowledge of the series\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "j6p0ti5h",
+					"page": "1",
+					"label": "\"I - Introduction\""
+				},
+				"subSequence": {
+					"id": "j6p0s7o5",
+					"page": "4",
+					"label": "\"General knowledge of the series\""
+				}
+			}
+		},
+
+		{
 			"id": "j3343qhx",
 			"componentType": "Input",
 			"mandatory": false,
 			"page": "4",
 			"maxLength": 30,
 			"label": "\"➡ 3. Who is the producer?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -111,7 +140,8 @@
 					"label": "\"General knowledge of the series\""
 				}
 			},
-			"bindingDependencies": ["PRODUCER"],
+			"missingResponse": { "name": "PRODUCER_MISSING" },
+			"bindingDependencies": ["PRODUCER_MISSING", "PRODUCER"],
 			"response": { "name": "PRODUCER" }
 		},
 
@@ -124,7 +154,10 @@
 			"max": 99,
 			"decimals": 0,
 			"label": "\"➡ 4. What is the current season number?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -137,7 +170,8 @@
 					"label": "\"General knowledge of the series\""
 				}
 			},
-			"bindingDependencies": ["SEASON_NUMBER"],
+			"missingResponse": { "name": "SEASON_NUMBER_MISSING" },
+			"bindingDependencies": ["SEASON_NUMBER_MISSING", "SEASON_NUMBER"],
 			"response": { "name": "SEASON_NUMBER" }
 		},
 
@@ -157,7 +191,10 @@
 					"label": "\"Please answer with YYYY-MM-DD format\""
 				}
 			],
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -170,7 +207,8 @@
 					"label": "\"General knowledge of the series\""
 				}
 			},
-			"bindingDependencies": ["DATEFIRST"],
+			"missingResponse": { "name": "DATEFIRST_MISSING" },
+			"bindingDependencies": ["DATEFIRST_MISSING", "DATEFIRST"],
 			"dateFormat": "YYYY-MM-DD",
 			"response": { "name": "DATEFIRST" }
 		},
@@ -190,7 +228,10 @@
 					"label": "\"Please answer with YYYY-MM format\""
 				}
 			],
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -203,7 +244,8 @@
 					"label": "\"General knowledge of the series\""
 				}
 			},
-			"bindingDependencies": ["DATEYYYYMM"],
+			"missingResponse": { "name": "DATEYYYYMM_MISSING" },
+			"bindingDependencies": ["DATEYYYYMM_MISSING", "DATEYYYYMM"],
 			"dateFormat": "YYYY-MM",
 			"response": { "name": "DATEYYYYMM" }
 		},
@@ -224,7 +266,10 @@
 					"label": "\"Please answer with YYYY format\""
 				}
 			],
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -237,7 +282,8 @@
 					"label": "\"General knowledge of the series\""
 				}
 			},
-			"bindingDependencies": ["DATEYYYY"],
+			"missingResponse": { "name": "DATEYYYY_MISSING" },
+			"bindingDependencies": ["DATEYYYY_MISSING", "DATEYYYY"],
 			"dateFormat": "YYYY",
 			"response": { "name": "DATEYYYY" }
 		},
@@ -251,7 +297,10 @@
 			"max": 70,
 			"decimals": 2,
 			"label": "\"➡ 8. How long does an episode last?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -264,7 +313,8 @@
 					"label": "\"General knowledge of the series\""
 				}
 			},
-			"bindingDependencies": ["DURATIONH"],
+			"missingResponse": { "name": "DURATIONH_MISSING" },
+			"bindingDependencies": ["DURATIONH_MISSING", "DURATIONH"],
 			"unit": "heures",
 			"response": { "name": "DURATIONH" }
 		},
@@ -278,7 +328,10 @@
 			"max": 366,
 			"decimals": 1,
 			"label": "\"➡ 9. How long does it take to write a new episode?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -291,7 +344,8 @@
 					"label": "\"General knowledge of the series\""
 				}
 			},
-			"bindingDependencies": ["DURATIOND"],
+			"missingResponse": { "name": "DURATIOND_MISSING" },
+			"bindingDependencies": ["DURATIOND_MISSING", "DURATIOND"],
 			"unit": "jours",
 			"response": { "name": "DURATIOND" }
 		},
@@ -305,7 +359,10 @@
 			"max": 12,
 			"decimals": 0,
 			"label": "\"➡ 10. How long will it take you to watch all the existing episodes?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -318,7 +375,8 @@
 					"label": "\"General knowledge of the series\""
 				}
 			},
-			"bindingDependencies": ["DURATIONM"],
+			"missingResponse": { "name": "DURATIONM_MISSING" },
+			"bindingDependencies": ["DURATIONM_MISSING", "DURATIONM"],
 			"unit": "mois",
 			"response": { "name": "DURATIONM" }
 		},
@@ -332,7 +390,10 @@
 			"max": 100,
 			"decimals": 0,
 			"label": "\"➡ 11. For how long have you known the Simpsons family?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -345,7 +406,8 @@
 					"label": "\"General knowledge of the series\""
 				}
 			},
-			"bindingDependencies": ["DURATIONY"],
+			"missingResponse": { "name": "DURATIONY_MISSING" },
+			"bindingDependencies": ["DURATIONY_MISSING", "DURATIONY"],
 			"unit": "années",
 			"response": { "name": "DURATIONY" }
 		},
@@ -359,7 +421,10 @@
 			"max": 99,
 			"decimals": 1,
 			"label": "\"➡ 15. In your opinion, how much is the part of audience share in US for the 2016 season?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
@@ -372,7 +437,8 @@
 					"label": "\"General knowledge of the series\""
 				}
 			},
-			"bindingDependencies": ["AUDIENCE_SHARE"],
+			"missingResponse": { "name": "AUDIENCE_SHARE_MISSING" },
+			"bindingDependencies": ["AUDIENCE_SHARE_MISSING", "AUDIENCE_SHARE"],
 			"unit": "%",
 			"response": { "name": "AUDIENCE_SHARE" }
 		},
@@ -390,7 +456,10 @@
 					"label": "\"This module asks about your general knowledge of the Simpsons city\""
 				}
 			],
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j3341528",
@@ -405,7 +474,7 @@
 			"componentType": "Radio",
 			"mandatory": true,
 			"page": "15",
-			"label": "\"➡ 16. In which city do the Simpsons reside?\"",
+			"label": "\"➡ 1. In which city do the Simpsons reside?\"",
 			"declarations": [
 				{
 					"id": "j3343clt-d3",
@@ -414,7 +483,10 @@
 					"label": "\"One possible answer\""
 				}
 			],
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j3341528",
@@ -422,7 +494,8 @@
 					"label": "\"II - Simpsons’ city\""
 				}
 			},
-			"bindingDependencies": ["CITY"],
+			"missingResponse": { "name": "CITY_MISSING" },
+			"bindingDependencies": ["CITY_MISSING", "CITY"],
 			"options": [
 				{ "value": "00001", "label": "\"Springfield\"" },
 
@@ -438,7 +511,7 @@
 			"componentType": "CheckboxOne",
 			"mandatory": false,
 			"page": "16",
-			"label": "\"➡ 17. Who is the Simpsons city mayor?\"",
+			"label": "\"➡ 2. Who is the Simpsons city mayor?\"",
 			"declarations": [
 				{
 					"id": "j6qdfhvw-d4",
@@ -447,7 +520,10 @@
 					"label": "\"Only one possible answer\""
 				}
 			],
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j3341528",
@@ -455,7 +531,8 @@
 					"label": "\"II - Simpsons’ city\""
 				}
 			},
-			"bindingDependencies": ["MAYOR"],
+			"missingResponse": { "name": "MAYOR_MISSING" },
+			"bindingDependencies": ["MAYOR_MISSING", "MAYOR"],
 			"options": [
 				{ "value": "1", "label": "\"Constance Harm\"" },
 
@@ -473,8 +550,11 @@
 			"componentType": "Dropdown",
 			"mandatory": false,
 			"page": "17",
-			"label": "\"➡ 18. In which state do The Simpsons reside?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"label": "\"➡ 3. In which state do The Simpsons reside?\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j3341528",
@@ -482,7 +562,8 @@
 					"label": "\"II - Simpsons’ city\""
 				}
 			},
-			"bindingDependencies": ["STATE"],
+			"missingResponse": { "name": "STATE_MISSING" },
+			"bindingDependencies": ["STATE_MISSING", "STATE"],
 			"options": [
 				{ "value": "1", "label": "\"Washington\"" },
 
@@ -518,7 +599,10 @@
 			"componentType": "Sequence",
 			"page": "18",
 			"label": "\"III - Characters\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qe0h9q",
@@ -532,7 +616,7 @@
 			"id": "j334akov",
 			"componentType": "CheckboxGroup",
 			"page": "19",
-			"label": "\"➡ 19. What are the pet names that the Simpsons family had?\"",
+			"label": "\"➡ 1. What are the pet names that the Simpsons family had?\"",
 			"declarations": [
 				{
 					"id": "j334akov-d5",
@@ -541,7 +625,10 @@
 					"label": "\"Several possible answers\""
 				}
 			],
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qe0h9q",
@@ -549,7 +636,8 @@
 					"label": "\"III - Characters\""
 				}
 			},
-			"bindingDependencies": ["PET1", "PET2", "PET3", "PET4"],
+			"missingResponse": { "name": "PET_MISSING" },
+			"bindingDependencies": ["PET_MISSING", "PET1", "PET2", "PET3", "PET4"],
 			"responses": [
 				{
 					"id": "j334akov-QOP-khokqjtw",
@@ -583,7 +671,7 @@
 			"mandatory": false,
 			"page": "20",
 			"positioning": "HORIZONTAL",
-			"label": "\"➡ 20. Does Jay like the following ice cream flavours?\"",
+			"label": "\"➡ 2. Does Jay like the following ice cream flavours?\"",
 			"declarations": [
 				{
 					"id": "d12-SI",
@@ -592,7 +680,10 @@
 					"label": "\"Now we are going to know if you think that Jay is a gluton.\""
 				}
 			],
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qe0h9q",
@@ -600,7 +691,9 @@
 					"label": "\"III - Characters\""
 				}
 			},
+			"missingResponse": { "name": "ICE_FLAVOUR_MISSING" },
 			"bindingDependencies": [
+				"ICE_FLAVOUR_MISSING",
 				"ICE_FLAVOUR1",
 				"ICE_FLAVOUR2",
 				"ICE_FLAVOUR3",
@@ -679,8 +772,11 @@
 			"mandatory": false,
 			"page": "21",
 			"positioning": "HORIZONTAL",
-			"label": "\"➡ 21. Which character works in the nuclear power plant?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"label": "\"➡ 3. Which character works in the nuclear power plant?\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qe0h9q",
@@ -688,7 +784,9 @@
 					"label": "\"III - Characters\""
 				}
 			},
+			"missingResponse": { "name": "NUCLEAR_CHARACTER_MISSING" },
 			"bindingDependencies": [
+				"NUCLEAR_CHARACTER_MISSING",
 				"NUCLEAR_CHARACTER1",
 				"NUCLEAR_CHARACTER2",
 				"NUCLEAR_CHARACTER3",
@@ -767,8 +865,11 @@
 			"mandatory": false,
 			"page": "22",
 			"positioning": "HORIZONTAL",
-			"label": "\"➡ 22. In which city each character was born?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"label": "\"➡ 4. In which city each character was born?\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qe0h9q",
@@ -776,7 +877,9 @@
 					"label": "\"III - Characters\""
 				}
 			},
+			"missingResponse": { "name": "BIRTH_CHARACTER_MISSING" },
 			"bindingDependencies": [
+				"BIRTH_CHARACTER_MISSING",
 				"BIRTH_CHARACTER1",
 				"BIRTH_CHARACTER2",
 				"BIRTH_CHARACTER3",
@@ -901,7 +1004,10 @@
 			"componentType": "Sequence",
 			"page": "23",
 			"label": "\"IV - General questions\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -912,13 +1018,39 @@
 		},
 
 		{
+			"id": "j6qe237q",
+			"componentType": "Subsequence",
+			"goToPage": "24",
+			"label": "\"Kwik-E-Mart\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "j4nw88h2",
+					"page": "23",
+					"label": "\"IV - General questions\""
+				},
+				"subSequence": {
+					"id": "j6qe237q",
+					"page": "24",
+					"label": "\"Kwik-E-Mart\""
+				}
+			}
+		},
+
+		{
 			"id": "j4nwc63q",
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "24",
 			"positioning": "HORIZONTAL",
-			"label": "\"➡ 23. Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"label": "\"➡ 1. Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -931,7 +1063,9 @@
 					"label": "\"Kwik-E-Mart\""
 				}
 			},
+			"missingResponse": { "name": "PERCENTAGE_EXPENSES_MISSING" },
 			"bindingDependencies": [
+				"PERCENTAGE_EXPENSES_MISSING",
 				"PERCENTAGE_EXPENSES11",
 				"PERCENTAGE_EXPENSES21",
 				"PERCENTAGE_EXPENSES31",
@@ -1060,7 +1194,6 @@
 
 				[
 					{ "colspan": 2, "value": "E", "label": "\"Total\"" },
-
 					{ "headerCell": false }
 				]
 			]
@@ -1072,8 +1205,11 @@
 			"mandatory": false,
 			"page": "25",
 			"positioning": "HORIZONTAL",
-			"label": "\"➡ 24. Please specify if Jay has bought each product in his last food shopping\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"label": "\"➡ 2. Please specify if Jay has bought each product in his last food shopping\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -1086,7 +1222,9 @@
 					"label": "\"Kwik-E-Mart\""
 				}
 			},
+			"missingResponse": { "name": "LAST_FOOD_SHOPPING_MISSING" },
 			"bindingDependencies": [
+				"LAST_FOOD_SHOPPING_MISSING",
 				"LAST_FOOD_SHOPPING11",
 				"LAST_FOOD_SHOPPING21",
 				"LAST_FOOD_SHOPPING31",
@@ -1256,13 +1394,39 @@
 		},
 
 		{
+			"id": "j6qejudb",
+			"componentType": "Subsequence",
+			"goToPage": "26",
+			"label": "\"Clowning\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "j4nw88h2",
+					"page": "23",
+					"label": "\"IV - General questions\""
+				},
+				"subSequence": {
+					"id": "j6qejudb",
+					"page": "26",
+					"label": "\"Clowning\""
+				}
+			}
+		},
+
+		{
 			"id": "kbkjvgel",
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "26",
 			"positioning": "HORIZONTAL",
-			"label": "\"➡ 25. Who did these clownings and tell us what you remember?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"label": "\"➡ 3. Who did these clownings and tell us what you remember?\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -1275,7 +1439,9 @@
 					"label": "\"Clowning\""
 				}
 			},
+			"missingResponse": { "name": "CLOWNING_MISSING" },
 			"bindingDependencies": [
+				"CLOWNING_MISSING",
 				"CLOWNING11",
 				"CLOWNING12",
 				"CLOWNING21",
@@ -1415,12 +1581,35 @@
 		},
 
 		{
+			"id": "j6qeh91y",
+			"componentType": "Subsequence",
+			"goToPage": "27",
+			"label": "\"Transport\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "j4nw88h2",
+					"page": "23",
+					"label": "\"IV - General questions\""
+				},
+				"subSequence": {
+					"id": "j6qeh91y",
+					"page": "27",
+					"label": "\"Transport\""
+				}
+			}
+		},
+
+		{
 			"id": "j6p2lwuj",
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "27",
 			"positioning": "HORIZONTAL",
-			"label": "\"➡ 26. Which of the following means of transport were used by the hero and in which country?\"",
+			"label": "\"➡ 4. Which of the following means of transport were used by the hero and in which country?\"",
 			"declarations": [
 				{
 					"id": "j6p2lwuj-d10",
@@ -1429,7 +1618,10 @@
 					"label": "\"Several answers possible: check off all the relevant boxes\""
 				}
 			],
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j4nw88h2",
@@ -1442,7 +1634,9 @@
 					"label": "\"Transport\""
 				}
 			},
+			"missingResponse": { "name": "TRAVEL_MISSING" },
 			"bindingDependencies": [
+				"TRAVEL_MISSING",
 				"TRAVEL11",
 				"TRAVEL12",
 				"TRAVEL13",
@@ -1676,7 +1870,10 @@
 			"componentType": "Sequence",
 			"page": "28",
 			"label": "\"V - Favourite characters (dynamic table)\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qfx9qe",
@@ -1692,8 +1889,11 @@
 			"mandatory": false,
 			"page": "29",
 			"positioning": "HORIZONTAL",
-			"label": "\"➡ 27. Please, complete the following grid with your favourite characters\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"label": "\"➡ 1. Please, complete the following grid with your favourite characters\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qfx9qe",
@@ -1701,7 +1901,9 @@
 					"label": "\"V - Favourite characters (dynamic table)\""
 				}
 			},
+			"missingResponse": { "name": "FAVOURITE_CHAR_MISSING" },
 			"bindingDependencies": [
+				"FAVOURITE_CHAR_MISSING",
 				"FAVOURITE_CHAR1",
 				"FAVOURITE_CHAR2",
 				"FAVOURITE_CHAR3",
@@ -2074,8 +2276,11 @@
 			"mandatory": false,
 			"page": "30",
 			"positioning": "HORIZONTAL",
-			"label": "\"➡ 28. How has your feeling about the following characters evolved over time?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"label": "\"➡ 2. How has your feeling about the following characters evolved over time?\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qfx9qe",
@@ -2083,7 +2288,9 @@
 					"label": "\"V - Favourite characters (dynamic table)\""
 				}
 			},
+			"missingResponse": { "name": "FEELCHAREV_MISSING" },
 			"bindingDependencies": [
+				"FEELCHAREV_MISSING",
 				"FEELCHAREV1",
 				"FEELCHAREV2",
 				"FEELCHAREV3",
@@ -2170,8 +2377,11 @@
 			"mandatory": false,
 			"page": "31",
 			"positioning": "HORIZONTAL",
-			"label": "\"➡ 29. Can you tell how long Bart Simpson has been on leave for each type and whether there has been another type?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"label": "\"➡ 3. Can you tell how long Bart Simpson has been on leave for each type and whether there has been another type?\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "j6qfx9qe",
@@ -2179,7 +2389,9 @@
 					"label": "\"V - Favourite characters (dynamic table)\""
 				}
 			},
+			"missingResponse": { "name": "LEAVDURATION_MISSING" },
 			"bindingDependencies": [
+				"LEAVDURATION_MISSING",
 				"LEAVDURATION11",
 				"LEAVDURATION12",
 				"LEAVDURATION21",
@@ -2337,7 +2549,10 @@
 			"componentType": "Sequence",
 			"page": "32",
 			"label": "\"VI - Favourite characters (Loop)\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "kiq5mr0b",
@@ -2355,8 +2570,11 @@
 			"min": 0,
 			"max": 20,
 			"decimals": 0,
-			"label": "\"➡ 30. How many characters from the Simpsons family could you precisely describe?\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"label": "\"➡ 1. How many characters from the Simpsons family could you precisely describe?\"",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "kiq5mr0b",
@@ -2364,7 +2582,8 @@
 					"label": "\"VI - Favourite characters (Loop)\""
 				}
 			},
-			"bindingDependencies": ["NB_CHAR"],
+			"missingResponse": { "name": "NB_CHAR_MISSING" },
+			"bindingDependencies": ["NB_CHAR_MISSING", "NB_CHAR"],
 			"response": { "name": "NB_CHAR" }
 		},
 
@@ -2372,8 +2591,13 @@
 			"id": "kiq7bjam",
 			"componentType": "Loop",
 			"page": "34",
+			"depth": 1,
+			"paginatedLoop": false,
 			"label": "\"Add a character\"",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "kiq5mr0b",
@@ -2381,16 +2605,25 @@
 					"label": "\"VI - Favourite characters (Loop)\""
 				}
 			},
-			"bindingDependencies": ["NAME_CHAR", "AGE_CHAR"],
+			"bindingDependencies": [
+				"NB_CHAR",
+				"LOOP_kiq7bjam_MISSING",
+				"NAME_CHAR",
+				"AGE_CHAR"
+			],
+			"loopDependencies": ["NB_CHAR"],
+			"lines": { "min": "1", "max": "cast(NB_CHAR,integer)" },
 			"components": [
 				{
-					"id": "kiq66gtw",
-					"componentType": "Input",
-					"mandatory": false,
-					"page": "34.1",
-					"maxLength": 30,
-					"label": "\"➡ 31. What is the first name of this character?\"",
-					"conditionFilter": "not(cast(READY,integer)  <>  1)",
+					"id": "kiq5u8d5",
+					"componentType": "Subsequence",
+					"page": "34",
+					"goToPage": "34",
+					"label": "\"Description of each character\"",
+					"conditionFilter": {
+						"value": "(not(cast(READY,integer)  <>  1))",
+						"bindingDependencies": ["READY"]
+					},
 					"hierarchy": {
 						"sequence": {
 							"id": "kiq5mr0b",
@@ -2399,7 +2632,32 @@
 						},
 						"subSequence": {
 							"id": "kiq5u8d5",
-							"page": "34.1",
+							"page": "34",
+							"label": "\"Description of each character\""
+						}
+					}
+				},
+
+				{
+					"id": "kiq66gtw",
+					"componentType": "Input",
+					"mandatory": false,
+					"page": "34",
+					"maxLength": 30,
+					"label": "\"➡ 2. What is the first name of this character?\"",
+					"conditionFilter": {
+						"value": "(not(cast(READY,integer)  <>  1))",
+						"bindingDependencies": ["READY"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kiq5mr0b",
+							"page": "32",
+							"label": "\"VI - Favourite characters (Loop)\""
+						},
+						"subSequence": {
+							"id": "kiq5u8d5",
+							"page": "34",
 							"label": "\"Description of each character\""
 						}
 					},
@@ -2411,12 +2669,15 @@
 					"id": "kiq5r8wu",
 					"componentType": "InputNumber",
 					"mandatory": false,
-					"page": "34.2",
+					"page": "34",
 					"min": 0,
 					"max": 120,
 					"decimals": 0,
-					"label": "\"➡ 32. How old is this character in the first episode of the Simpsons family?\"",
-					"conditionFilter": "not(cast(READY,integer)  <>  1)",
+					"label": "\"➡ 3. How old is this character in the first episode of the Simpsons family?\"",
+					"conditionFilter": {
+						"value": "(not(cast(READY,integer)  <>  1))",
+						"bindingDependencies": ["READY"]
+					},
 					"hierarchy": {
 						"sequence": {
 							"id": "kiq5mr0b",
@@ -2425,7 +2686,7 @@
 						},
 						"subSequence": {
 							"id": "kiq5u8d5",
-							"page": "34.1",
+							"page": "34",
 							"label": "\"Description of each character\""
 						}
 					},
@@ -2440,35 +2701,31 @@
 			"componentType": "Loop",
 			"page": "35",
 			"maxPage": "3",
-			"min": 0,
 			"iterations": "count(NAME_CHAR)",
-			"conditionFilter": "not(cast(READY,integer)  <>  1)",
-			"bindingDependencies": ["NAME_CHAR", "FAVCHAR", "MEMORY_CHAR"],
-			"loopDependencies": ["NAME_CHAR", "AGE_CHAR"],
+			"depth": 1,
 			"paginatedLoop": true,
+			"conditionFilter": {
+				"value": "(not(cast(READY,integer)  <>  1))",
+				"bindingDependencies": ["READY"]
+			},
+			"bindingDependencies": [
+				"NAME_CHAR",
+				"FAVCHAR_MISSING",
+				"MEMORY_CHAR_MISSING",
+				"FAVCHAR",
+				"MEMORY_CHAR"
+			],
+			"loopDependencies": ["NAME_CHAR", "AGE_CHAR"],
 			"components": [
 				{
 					"id": "kiq5xw5p",
 					"componentType": "Sequence",
 					"page": "35.1",
 					"label": "\"VII - Other details about character named \" || cast(cast(NAME_CHAR,string),string) || \" \"",
-					"conditionFilter": "not(cast(READY,integer)  <>  1)",
-					"hierarchy": {
-						"sequence": {
-							"id": "kiq5xw5p",
-							"page": "35.1",
-							"label": "\"VII - Other details about character named \" || cast(cast(NAME_CHAR,string),string) || \" \""
-						}
-					}
-				},
-
-				{
-					"id": "kiq65x3c",
-					"componentType": "CheckboxOne",
-					"mandatory": false,
-					"page": "35.2",
-					"label": "\"➡ 33. Is character named \" || cast(cast(NAME_CHAR,string),string) || \" your favourite one ? \"",
-					"conditionFilter": "not(cast(READY,integer)  <>  1)",
+					"conditionFilter": {
+						"value": "(not(cast(READY,integer)  <>  1))",
+						"bindingDependencies": ["READY"]
+					},
 					"hierarchy": {
 						"sequence": {
 							"id": "kiq5xw5p",
@@ -2476,7 +2733,28 @@
 							"label": "\"VII - Other details about character named \" || cast(cast(NAME_CHAR,string),string) || \" \""
 						}
 					},
-					"bindingDependencies": ["NAME_CHAR", "FAVCHAR"],
+					"bindingDependencies": ["NAME_CHAR"]
+				},
+
+				{
+					"id": "kiq65x3c",
+					"componentType": "CheckboxOne",
+					"mandatory": false,
+					"page": "35.2",
+					"label": "\"➡ 1. Is character named \" || cast(cast(NAME_CHAR,string),string) || \" your favourite one ? \"",
+					"conditionFilter": {
+						"value": "(not(cast(READY,integer)  <>  1))",
+						"bindingDependencies": ["READY"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kiq5xw5p",
+							"page": "35.1",
+							"label": "\"VII - Other details about character named \" || cast(cast(NAME_CHAR,string),string) || \" \""
+						}
+					},
+					"missingResponse": { "name": "FAVCHAR_MISSING" },
+					"bindingDependencies": ["NAME_CHAR", "FAVCHAR_MISSING", "FAVCHAR"],
 					"options": [
 						{ "value": "1", "label": "\"Yes\"" },
 
@@ -2491,8 +2769,11 @@
 					"mandatory": false,
 					"page": "35.3",
 					"maxLength": 255,
-					"label": "\"➡ 34. What is your best memory about character named \" || cast(cast(NAME_CHAR,string),string) || \" ? \"",
-					"conditionFilter": "not(cast(READY,integer)  <>  1)",
+					"label": "\"➡ 2. What is your best memory about character named \" || cast(cast(NAME_CHAR,string),string) || \" ? \"",
+					"conditionFilter": {
+						"value": "(not(cast(READY,integer)  <>  1))",
+						"bindingDependencies": ["READY"]
+					},
 					"hierarchy": {
 						"sequence": {
 							"id": "kiq5xw5p",
@@ -2500,7 +2781,12 @@
 							"label": "\"VII - Other details about character named \" || cast(cast(NAME_CHAR,string),string) || \" \""
 						}
 					},
-					"bindingDependencies": ["NAME_CHAR", "MEMORY_CHAR"],
+					"missingResponse": { "name": "MEMORY_CHAR_MISSING" },
+					"bindingDependencies": [
+						"NAME_CHAR",
+						"MEMORY_CHAR_MISSING",
+						"MEMORY_CHAR"
+					],
 					"response": { "name": "MEMORY_CHAR" }
 				}
 			]
@@ -2527,7 +2813,7 @@
 			"mandatory": false,
 			"page": "37",
 			"maxLength": 255,
-			"label": "\"➡ 35. Do you have any comment about the survey?\"",
+			"label": "\"➡ 1. Do you have any comment about the survey?\"",
 			"conditionFilter": { "value": "true" },
 			"hierarchy": {
 				"sequence": {
@@ -2536,7 +2822,8 @@
 					"label": "\"VIII - Comment\""
 				}
 			},
-			"bindingDependencies": ["SURVEY_COMMENT"],
+			"missingResponse": { "name": "SURVEY_COMMENT_MISSING" },
+			"bindingDependencies": ["SURVEY_COMMENT_MISSING", "SURVEY_COMMENT"],
 			"response": { "name": "SURVEY_COMMENT" }
 		}
 	],
@@ -2948,7 +3235,33 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "COMMENT_MISSING",
+			"componentRef": "j6p3dkx6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "READY",
+			"componentRef": "j6p0np9q",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "READY_MISSING",
 			"componentRef": "j6p0np9q",
 			"values": {
 				"PREVIOUS": null,
@@ -2974,7 +3287,33 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "PRODUCER_MISSING",
+			"componentRef": "j3343qhx",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "SEASON_NUMBER",
+			"componentRef": "j6q9h8tj",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "SEASON_NUMBER_MISSING",
 			"componentRef": "j6q9h8tj",
 			"values": {
 				"PREVIOUS": null,
@@ -3000,7 +3339,33 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "DATEFIRST_MISSING",
+			"componentRef": "kiq71eoi",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "DATEYYYYMM",
+			"componentRef": "k5nvty2o",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "DATEYYYYMM_MISSING",
 			"componentRef": "k5nvty2o",
 			"values": {
 				"PREVIOUS": null,
@@ -3026,7 +3391,33 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "DATEYYYY_MISSING",
+			"componentRef": "k5nw1fir",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "DURATIONH",
+			"componentRef": "k5nw0w05",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "DURATIONH_MISSING",
 			"componentRef": "k5nw0w05",
 			"values": {
 				"PREVIOUS": null,
@@ -3052,7 +3443,33 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "DURATIOND_MISSING",
+			"componentRef": "k5nvu98z",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "DURATIONM",
+			"componentRef": "k5nw8ei1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "DURATIONM_MISSING",
 			"componentRef": "k5nw8ei1",
 			"values": {
 				"PREVIOUS": null,
@@ -3078,7 +3495,33 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "DURATIONY_MISSING",
+			"componentRef": "k5nw9dk4",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "AUDIENCE_SHARE",
+			"componentRef": "j6z06z1e",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "AUDIENCE_SHARE_MISSING",
 			"componentRef": "j6z06z1e",
 			"values": {
 				"PREVIOUS": null,
@@ -3104,6 +3547,19 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "CITY_MISSING",
+			"componentRef": "j3343clt",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "MAYOR",
 			"componentRef": "j6qdfhvw",
 			"values": {
@@ -3117,7 +3573,33 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "MAYOR_MISSING",
+			"componentRef": "j6qdfhvw",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "STATE",
+			"componentRef": "j4nw5cqz",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "STATE_MISSING",
 			"componentRef": "j4nw5cqz",
 			"values": {
 				"PREVIOUS": null,
@@ -3182,6 +3664,32 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "PET_MISSING",
+			"componentRef": "j334akov",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "ICE_FLAVOUR_MISSING",
+			"componentRef": "j6p29i81",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "ICE_FLAVOUR1",
 			"componentRef": "j6p29i81",
 			"values": {
@@ -3234,6 +3742,19 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "NUCLEAR_CHARACTER_MISSING",
+			"componentRef": "j6qefnga",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "NUCLEAR_CHARACTER1",
 			"componentRef": "j6qefnga",
 			"values": {
@@ -3275,6 +3796,19 @@
 			"variableType": "COLLECTED",
 			"name": "NUCLEAR_CHARACTER4",
 			"componentRef": "j6qefnga",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "BIRTH_CHARACTER_MISSING",
+			"componentRef": "j6yzoc6g",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -3340,6 +3874,19 @@
 			"variableType": "COLLECTED",
 			"name": "BIRTH_CHARACTER5",
 			"componentRef": "j6yzoc6g",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "PERCENTAGE_EXPENSES_MISSING",
+			"componentRef": "j4nwc63q",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -3431,6 +3978,19 @@
 			"variableType": "COLLECTED",
 			"name": "PERCENTAGE_EXPENSES71",
 			"componentRef": "j4nwc63q",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "LAST_FOOD_SHOPPING_MISSING",
+			"componentRef": "k9cg2q5t",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -3546,6 +4106,19 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "CLOWNING_MISSING",
+			"componentRef": "kbkjvgel",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "CLOWNING11",
 			"componentRef": "kbkjvgel",
 			"values": {
@@ -3639,6 +4212,19 @@
 			"variableType": "COLLECTED",
 			"name": "CLOWNING42",
 			"componentRef": "kbkjvgel",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAVEL_MISSING",
+			"componentRef": "j6p2lwuj",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -3962,6 +4548,19 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "FAVOURITE_CHAR_MISSING",
+			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "FAVOURITE_CHAR1",
 			"componentRef": "j6qg8rc6",
 			"values": {
@@ -3990,6 +4589,19 @@
 			"variableType": "COLLECTED",
 			"name": "FAVOURITE_CHAR3",
 			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "FEELCHAREV_MISSING",
+			"componentRef": "jvxux0mi",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -4042,6 +4654,19 @@
 			"variableType": "COLLECTED",
 			"name": "FEELCHAREV4",
 			"componentRef": "jvxux0mi",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "LEAVDURATION_MISSING",
+			"componentRef": "jvxwy68n",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -4196,6 +4821,32 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "NB_CHAR_MISSING",
+			"componentRef": "kiq612ky",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "LOOP_kiq7bjam_MISSING",
+			"componentRef": "kiq7bjam",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "NAME_CHAR",
 			"componentRef": "kiq7bjam",
 			"values": {
@@ -4235,6 +4886,19 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "FAVCHAR_MISSING",
+			"componentRef": "kiq7cbgo",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "MEMORY_CHAR",
 			"componentRef": "kiq7cbgo",
 			"values": {
@@ -4248,7 +4912,33 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "MEMORY_CHAR_MISSING",
+			"componentRef": "kiq7cbgo",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
 			"name": "SURVEY_COMMENT",
+			"componentRef": "j6z0z3us",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "SURVEY_COMMENT_MISSING",
 			"componentRef": "j6z0z3us",
 			"values": {
 				"PREVIOUS": null,

@@ -1,64 +1,174 @@
-
-$colorA : PeachPuff;
+$colorA: #e9d0d0;
 $colorB: darkred;
-$colorC: gold;
+$colorC: #320000;
+$colorD: goldenrod;
 
-.lunatic-suggester-widget {
-	border: solid $colorB 2px;
-	background-color: $colorA;
-	padding: 4px 4px;
-	border: 2px 2px;
-	width: 300px;
-	box-shadow: rgba(252, 0, 0, 0.24) 0px 3px 8px;
+@mixin preventSelect() {
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+}
 
-	.widget-row {
-		height: 22px;
-		display: flex;
-		flex-direction: row;
-		.store-name {
-			width: 30%;
-			color: $colorB;
-			font-size: 18px;
-			white-space: nowrap;
-			overflow-x: hidden;
-		}
-		.stats {
-			color: $colorB;
-			font-size: 18px;
-			white-space: nowrap;
-			overflow-x: hidden;
-			width: 70%;
-		}
-		.load,.clear {
-			margin: 1px 1px;
-			font-size: 12px;font-weight: bold;
-			border: none;
-			 line-height: 20px;;
-			padding: 0;
-			width: 20px;
-			height: 20px;
-			border-radius: 1px;
-			background-color: $colorB;
-			color: $colorA;
-			cursor: pointer;
-			&:hover {
-				background-color:  $colorC;
+@mixin onDrag() {
+	&.drag {
+		box-shadow: $colorD 0px 3px 8px;
+		transition: box-shadow 0.5s;
+	}
+}
+
+.lunatic-suggester-widget-container {
+	&.absolute {
+		position: fixed;
+		z-index: 1;
+	}
+	.lunatic-suggester-widget {
+		position: relative;
+		border: solid $colorB 2px;
+		background-color: $colorA;
+		padding: 4px 4px;
+		border: 2px 2px;
+		width: 400px;
+		box-shadow: $colorC 0px 3px 8px;
+
+		@include onDrag();
+
+		.widget-row {
+			height: 22px;
+			display: flex;
+			flex-direction: row;
+			margin-bottom: 1px;
+			.store-name {
+				width: 60%;
+				color: $colorB;
+				font-size: 18px;
+				white-space: nowrap;
+				overflow-x: hidden;
+			}
+			.stats {
+				color: $colorB;
+				font-size: 18px;
+				white-space: nowrap;
+				overflow-x: hidden;
+				width: 40%;
+			}
+			.widget-button {
+				margin: 0 1px 0 0;
+				padding: 0;
+				border: none;
+				width: 18px;
+				height: 18px;
+				background-color: $colorB;
+
+				&.disabled {
+					background-color: gray;
+					cursor: default;
+				}
+
+				&:hover {
+					background-color: $colorC;
+					transition: background-color 1s;
+					cursor: pointer;
+				}
+
+				.lunatic-suggester-icon {
+					svg {
+						width: 18px;
+						height: 18px;
+						fill: $colorA;
+					}
+				}
 			}
 
-	 
+			.lunatic-suggester-loader-progress {
+				height: inherit;
+				border: solid 1px $colorB;
+				border-radius: 2px;
+				width: 70%;
+
+				&.done {
+					&:hover {
+						border-color: $colorC;
+						transition: border-color 1s;
+						.progress {
+							background-color: $colorC;
+							transition: background-color 1s;
+						}
+
+						cursor: pointer;
+					}
+				}
+
+				.content {
+					padding: 2px 2px;
+					height: calc(100%);
+					width: 100%;
+					.progress {
+						background-color: $colorB;
+						height: 100%;
+					}
+				}
+			}
 		}
-		.lunatic-suggester-loader-progress {
-			height: inherit;
-			border: solid 1px $colorB;
-			border-radius: 2px;
-			width: 70%;
-			.content {
-				padding: 2px 2px;
-				height: calc(100%);
-				width: 100%;
-				.progress {
-					background-color: $colorB;
-					height: 100%;
+
+		.suggester-widget-network {
+			position: absolute;
+			border: solid $colorB 2px;
+			left: 6px;
+			background-color: $colorA;
+			border-radius: 50%;
+			padding: 2px 2px;
+			left: -22px;
+			top: -22px;
+			box-shadow: $colorC 0px 3px 8px;
+
+			&.online {
+				svg {
+					fill: forestgreen;
+				}
+			}
+
+			svg {
+				width: 24px;
+				height: 24px;
+				fill: $colorB;
+			}
+
+			@include onDrag();
+		}
+
+		.lunatic-widget-tools {
+			position: absolute;
+			right: 0;
+			top: -18px;
+			margin-top: -4px;
+
+			.lunatic-action-tool {
+				display: inline-block;
+				height: 18px;
+				width: 18px;
+				background-color: $colorB;
+				border-radius: 50%;
+				margin-left: 2px;
+
+				&:hover {
+					box-shadow: $colorC 0px 3px 8px;
+				}
+
+				&.drag {
+					background-color: $colorD;
+					transition: background-color 0.5s;
+				}
+
+				.on-drag-icon {
+					cursor: grab;
+					&.drag {
+						cursor: grabbing;
+					}
+					svg {
+						width: 16px;
+						height: 16px;
+						fill: $colorA;
+					}
 				}
 			}
 		}

@@ -8,7 +8,8 @@ function Label({
 	placeholder,
 }) {
 	const [state] = useContext(SuggesterContext);
-	const { displayLabel, expended, selectedIndex, options, search } = state;
+	const { displayLabel, expended, selectedIndex, options, search, disabled } =
+		state;
 	const displayed = displayLabel || !expended;
 
 	const option =
@@ -16,8 +17,10 @@ function Label({
 
 	return (
 		<div
-			className={classnames('lunatic-suggester-selected', { displayed })}
-			onClick={() => console.log('ici')}
+			className={classnames('lunatic-suggester-selected', {
+				displayed,
+				disabled,
+			})}
 			tabIndex="-1"
 		>
 			<Renderer option={option} placeholder={placeholder} search={search} />

@@ -63,12 +63,15 @@ const Loop = ({
 			const todosObj = todos.reduce((acc, { up, rowNumber }) => {
 				const entries = Object.entries(up);
 				if (entries.length === 0) return acc;
-				const [k, value] = entries[0];
-				const previousValue = bindings[k];
-				const newValue = previousValue.map((v, i) =>
-					i === rowNumber ? value : v
-				);
-				return { ...acc, [k]: newValue };
+				const toUpdate = entries.reduce((_, [key, value]) => {
+					const previousValue = bindings[key];
+					const newValue = previousValue.map((v, i) =>
+						i === rowNumber ? value : v
+					);
+					return { ..._, [key]: newValue };
+				}, {});
+
+				return { ...acc, ...toUpdate };
 			}, {});
 			handleChange(todosObj);
 			setTodos([]);
@@ -214,7 +217,6 @@ const Loop = ({
 						{...rest}
 						id={`${idC}-loop-${rowNumber}`}
 						handleChange={(up) => {
-							console.log('LOOP');
 							setTodos((t) => [...t, { up, rowNumber }]);
 						}}
 						bindings={loopBindings}

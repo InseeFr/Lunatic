@@ -1,17 +1,30 @@
 import React, { useContext } from 'react';
 import { SuggesterContext, actions } from '../../state-management';
+import classnames from 'classnames';
 import Label from './label';
 
 function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 	const [state, dispatch] = useContext(SuggesterContext);
-	const { search, expended, id } = state;
+	const { search, expended, id, disabled, focused } = state;
 
 	function onChange(e) {
 		dispatch(actions.onChangeSearch(e.target.value));
 	}
 
 	return (
-		<div className="lunatic-suggester-selection">
+		<div
+			id={id}
+			className={classnames('lunatic-suggester-selection', {
+				focused,
+				disabled,
+			})}
+			role="combobox"
+			aria-haspopup="listbox"
+			aria-labelledby={labelledBy}
+			aria-expanded={expended}
+			aria-autocomplete="list"
+			aria-owns={`${id}-list`}
+		>
 			<input
 				ref={inputEl}
 				id={`${id}-input`}
@@ -20,18 +33,14 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 				type="text"
 				onChange={onChange}
 				value={search}
-				role="combobox"
-				title="suggester"
-				aria-expanded={expended}
-				aria-autocomplete="list"
-				aria-controls={`${id}-list`}
-				aria-labelledBy={labelledBy}
 				aria-label="lunatic-suggester"
+				title="suggester"
 				autoComplete="off"
 				autoCapitalize="off"
 				autoCorrect="off"
 				spellCheck="false"
 				placeholder={placeholder}
+				disabled={disabled}
 			/>
 			<Label labelRenderer={labelRenderer} placeholder={placeholder} />
 		</div>

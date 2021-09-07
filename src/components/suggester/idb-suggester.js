@@ -20,7 +20,6 @@ function IDBSuggester({
 	labelRenderer,
 	onSelect,
 	disabled,
-	onChange,
 	max,
 }) {
 	const [store, setStore] = useState(undefined);
@@ -47,25 +46,28 @@ function IDBSuggester({
 				optionRenderer={optionRenderer}
 				labelRenderer={labelRenderer}
 				onSelect={onSelect}
-				onChange={onChange}
 				searching={search}
 				storeName={storeName}
+				disabled={disabled}
 				max={max}
 			/>
 		</CheckStore>
 	);
 }
 
+IDBSuggester.defaultProps = {
+	idbVersion: '1',
+};
+
 IDBSuggester.propTypes = {
 	storeName: PropTypes.string.isRequired,
-	idbVersion: PropTypes.string.isRequired,
+	idbVersion: PropTypes.string,
 	id: PropTypes.string,
 	className: PropTypes.string,
 	labelledBy: PropTypes.string,
 	optionRenderer: PropTypes.func,
 	labelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
-	onChange: PropTypes.func,
 	max: PropTypes.number,
 };
 

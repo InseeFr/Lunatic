@@ -103,16 +103,17 @@
 				}
 			}
 
-			.lunatic-icon {
+			.lunatic-dropdown-icon {
 				cursor: pointer;
-				&:focus {
-					outline: none;
+				position: absolute;
+				right: 2px;
+				top: 2px;
+				svg {
+					fill: rgb(146, 146, 146);
 				}
 			}
 
 			.lunatic-transition {
-				// visibility: hidden;
-				// overflow-y: hidden;
 				opacity: 0;
 
 				&:focus {

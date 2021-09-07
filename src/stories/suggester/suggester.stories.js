@@ -1,28 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from 'utils/lib';
 import data from './data';
+import dataAuto from './data-auto';
 import dataVTL from './data-vtl';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import { text, boolean, object, select } from '@storybook/addon-knobs/react';
 import { SuggesterLoaderWidget } from 'components';
 import * as NAF from './naf-rev2';
 import * as COG from './cog-communes';
-
-// async function browseRestNAf() {
-// 	const fetchNaf = await createFetchNafPaged();
-// 	let currentCall = fetchNaf;
-// 	while (currentCall) {
-// 		const { next, entities } = await currentCall();
-// 		console.log({ entities, next });
-// 		currentCall = next;
-// 	}
-// }
-
-// browseRestNAf();
 
 /**
  *
@@ -50,7 +39,7 @@ function getWidgetLoaderInfo(name) {
 	return {};
 }
 
-const stories = storiesOf('Suggester', module)
+const stories = storiesOf('Suggester/Manual loading', module)
 	.addDecorator(withReadme(readme))
 	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
@@ -59,12 +48,16 @@ const stories = storiesOf('Suggester', module)
 
 stories.addWithJSX('Default', () => {
 	const [message, setMessage] = useState(undefined);
+	const onRefresh = useCallback(function (m) {
+		setMessage(m);
+	}, []);
 	return (
 		<>
 			<SuggesterLoaderWidget
 				source={data}
 				getStoreInfo={getWidgetLoaderInfo}
-				onRefresh={(m) => setMessage(m)}
+				onRefresh={onRefresh}
+				absolute
 			/>
 			<Orchestrator
 				id="default"
@@ -99,3 +92,33 @@ stories.addWithJSX('Props', () => {
 		</>
 	);
 });
+
+const storiesAuto = storiesOf('Suggester/Auto loading', module)
+	.addDecorator(withReadme(readme))
+	.addDecorator((Component) => {
+		const WrappedComponent = titleDecorator(Component);
+		return <WrappedComponent title="<Suggester />" />;
+	});
+
+const suggesterFetcher = (url) =>
+	fetch(url, {
+		headers: { Accept: 'application/json' },
+	});
+
+storiesAuto.addWithJSX('Default', () => (
+	<Orchestrator
+		id="default"
+		source={dataAuto}
+		suggesters={{
+			'naf-rev2': {
+				url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
+			},
+			'cog-communes': {
+				url: 'https://inseefr.github.io/Lunatic/storybook/communes-2019.json',
+			},
+		}}
+		suggesterFetcher={suggesterFetcher}
+		autoSuggesterLoading
+		pagination
+	/>
+));
