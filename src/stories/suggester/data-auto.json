@@ -16,6 +16,7 @@
 				"type": "tokenized",
 				"params": { "language": "French", "pattern": "[\\w.]+" }
 			},
+			"stopWords": ["de"],
 			"version": "1"
 		},
 		"cog-communes": {

@@ -28,12 +28,12 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 		}
 	});
 	Object.entries(suggesters).forEach(([name, attrs]) => {
-		const { url, version, fields } = attrs;
+		const { url, version, fields, stopWords } = attrs;
 		const f = suggesterFetcher || fetch;
 		f(url).then(async (res) => {
 			const data = await res.json();
 			const uniqueData = getUniqueId(data);
-			const [launch] = task(name, version, fields);
+			const [launch] = task({ name, fields, stopWords }, version);
 			await launch(uniqueData);
 		});
 	});
@@ -42,7 +42,7 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 /**
  * Only with Worker
  */
-function task(name, version, fields, log = () => null) {
+function task({ name, fields, stopWords }, version, log = () => null) {
 	const worker = new Worker(workerPath);
 	let start = false;
 	let stop = false;
@@ -50,7 +50,13 @@ function task(name, version, fields, log = () => null) {
 	function launch(entities, post = () => null) {
 		return new Promise(function (resolve) {
 			start = true;
-			worker.postMessage({ name, version, fields, entities });
+			worker.postMessage({
+				name,
+				version,
+				fields,
+				entities,
+				stopWords,
+			});
 			worker.addEventListener('message', function (e) {
 				const { data } = e;
 				if (data === 'success') {
