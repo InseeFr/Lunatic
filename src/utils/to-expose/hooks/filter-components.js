@@ -1,5 +1,5 @@
 import { interpret } from '../interpret';
-import { isDev } from '../../lib';
+import { isDev, buildVectorialBindings } from '../../lib';
 
 let cache = {};
 
@@ -19,7 +19,8 @@ const filterComponents = ({ components, updatedVars, features, bindings }) => {
 			cache[value] !== undefined
 		)
 			return cache[value];
-		const inter = interpret(features)(bindings)(value);
+		const vectorialBindings = buildVectorialBindings(bindings);
+		const inter = interpret(features)(vectorialBindings)(value);
 		localCache[value] = inter;
 		return inter;
 	});
