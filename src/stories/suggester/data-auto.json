@@ -2,13 +2,13 @@
 	"maxPage": "4",
 	"suggesters": {
 		"naf-rev2": {
-			"name": "naf-rev2",
+			"name": "naf-rev2", 
 			"fields": [
 				{
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
-					"min": 3
+					"min": 2
 				},
 				{ "name": "id" }
 			],
@@ -16,7 +16,6 @@
 				"type": "tokenized",
 				"params": { "language": "French", "pattern": "[\\w.]+" }
 			},
-			"stopWords": ["de"],
 			"version": "1"
 		},
 		"cog-communes": {

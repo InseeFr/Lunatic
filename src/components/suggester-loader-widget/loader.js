@@ -8,7 +8,6 @@ function empty() {}
 function Loader({ start, db, store, idbVersion, fetch, post, handleClick }) {
 	const [progress, setProgress] = useState(0);
 	const [entities, setEntities] = useState(undefined);
-	const { name, fields } = store;
 
 	useEffect(
 		function () {
@@ -35,17 +34,12 @@ function Loader({ start, db, store, idbVersion, fetch, post, handleClick }) {
 			let abort;
 			async function go() {
 				try {
-					if (entities && db && idbVersion && fields) {
-						const [start, abort_] = createAppendTask(
-							name,
-							idbVersion,
-							fields,
-							log
-						);
+					if (entities && db && idbVersion && store) {
+						const [start, abort_] = createAppendTask(store, idbVersion, log);
 						abort = abort_;
 						clearStoreData(db);
 						await start(entities);
-						post(name, entities.length);
+						post(store.name, entities.length);
 					}
 				} catch (e) {
 					console.warn(e);
@@ -60,7 +54,7 @@ function Loader({ start, db, store, idbVersion, fetch, post, handleClick }) {
 				}
 			};
 		},
-		[name, fields, db, entities, idbVersion, post]
+		[store, db, entities, idbVersion, post]
 	);
 
 	return (

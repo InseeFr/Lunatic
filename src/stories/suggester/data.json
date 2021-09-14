@@ -8,7 +8,7 @@
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
-					"min": 3
+					"min": 2
 				},
 				{ "name": "id" }
 			],
