@@ -2,13 +2,13 @@
 	"maxPage": "4",
 	"suggesters": {
 		"naf-rev2": {
-			"name": "naf-rev2", 
+			"name": "naf-rev2",
 			"fields": [
 				{
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
-					"min": 2
+					"min": 3
 				},
 				{ "name": "id" }
 			],
