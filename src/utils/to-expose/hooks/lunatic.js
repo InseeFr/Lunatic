@@ -55,7 +55,14 @@ const useLunatic = (
 				// Merge suggester urls & suggester fields contained into lunatic json
 				const s = Object.entries(suggesterStrategy).reduce((acc, [name, d]) => {
 					if (suggesters[name]?.url)
-						return { ...acc, [name]: { ...d, url: suggesters[name].url } };
+						return {
+							...acc,
+							[name]: {
+								...d,
+								url: suggesters[name].url,
+								stopWords: suggesters[name].stopWords,
+							},
+						};
 					return acc;
 				}, {});
 				loadSuggesters(suggesterFetcher)(s);
