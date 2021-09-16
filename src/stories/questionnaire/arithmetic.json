@@ -181,13 +181,13 @@
 		{
 			"variableType": "CALCULATED",
 			"name": "SUM",
-			"expression": "sum(AGE)",
+			"expression": "sum(cast(AGE, number))",
 			"bindingDependencies": ["AGE"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "COUNT",
-			"expression": "count(AGE)",
+			"expression": "count(cast(AGE, number))",
 			"bindingDependencies": ["AGE"]
 		},
 		{
@@ -205,49 +205,49 @@
 		{
 			"variableType": "CALCULATED",
 			"name": "AVG",
-			"expression": "avg(AGE)",
+			"expression": "avg(cast(AGE, number))",
 			"bindingDependencies": ["AGE"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "DEV_SAMPLE",
-			"expression": "stddev_samp(AGE)",
+			"expression": "stddev_samp(cast(AGE, number))",
 			"bindingDependencies": ["AGE"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "DEV_STANDARD",
-			"expression": "stddev_pop(AGE)",
+			"expression": "stddev_pop(cast(AGE, number))",
 			"bindingDependencies": ["AGE"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "MAX",
-			"expression": "max(AGE)",
+			"expression": "max(cast(AGE, number))",
 			"bindingDependencies": ["AGE"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "MIN",
-			"expression": "min(AGE)",
+			"expression": "min(cast(AGE, number))",
 			"bindingDependencies": ["AGE"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "MEDIAN",
-			"expression": "median(AGE)",
+			"expression": "median(cast(AGE, number))",
 			"bindingDependencies": ["AGE"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "VAR_SAMPLE",
-			"expression": "var_samp(AGE)",
+			"expression": "var_samp(cast(AGE, number))",
 			"bindingDependencies": ["AGE"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "VAR_STANDARD",
-			"expression": "var_pop(AGE)",
+			"expression": "var_pop(cast(AGE, number))",
 			"bindingDependencies": ["AGE"]
 		}
 	]

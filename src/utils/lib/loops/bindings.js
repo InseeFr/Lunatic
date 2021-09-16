@@ -25,7 +25,7 @@ export const buildLoopMissingResponse = (index) => (missingResponse) => {
 };
 
 const getDefaultDatasetStructure = (name, value) => ({
-	[name]: { dataStructure: {}, dataPoints: { [name]: value } },
+	[name]: { dataStructure: { [name]: {} }, dataPoints: { [name]: value } },
 });
 
 export const buildVectorialBindings = (bindings) =>

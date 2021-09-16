@@ -47,7 +47,10 @@
 			"id": "s2",
 			"componentType": "Sequence",
 			"label": "\"Âge\"",
-			"conditionFilter": { "value": "true" },
+			"conditionFilter": {
+				"value": "not(isnull(PRENOM_REF))",
+				"bindingDependencies": ["PRENOM"]
+			},
 			"bindingDependencies": [],
 			"page": "2"
 		},
@@ -56,7 +59,10 @@
 			"label": "boucle individu",
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
-			"conditionFilter": { "value": "true" },
+			"conditionFilter": {
+				"value": "not(isnull(PRENOM_REF))",
+				"bindingDependencies": ["PRENOM"]
+			},
 			"loopDependencies": ["PRENOM"],
 			"bindingDependencies": ["PRENOM", "AGE", "PRENOM_REF"],
 			"page": "2",
@@ -83,7 +89,10 @@
 			"id": "s3",
 			"componentType": "Sequence",
 			"label": "\"Permis\"",
-			"conditionFilter": { "value": "true" },
+			"conditionFilter": {
+				"value": "not(isnull(PRENOM_REF))",
+				"bindingDependencies": ["PRENOM"]
+			},
 			"bindingDependencies": [],
 			"page": "3"
 		},
@@ -92,7 +101,10 @@
 			"label": "boucle individu",
 			"componentType": "Loop",
 			"iterations": "count(PRENOM)",
-			"conditionFilter": { "value": "true", "bindingDependencies": ["AGE"] },
+			"conditionFilter": {
+				"value": "not(isnull(PRENOM_REF))",
+				"bindingDependencies": ["PRENOM"]
+			},
 			"loopDependencies": ["PRENOM"],
 			"bindingDependencies": ["PRENOM", "AGE", "PERMIS"],
 			"page": "3",
