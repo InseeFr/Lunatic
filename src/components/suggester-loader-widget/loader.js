@@ -35,10 +35,10 @@ function Loader({ start, db, store, idbVersion, fetch, post, handleClick }) {
 			async function go() {
 				try {
 					if (entities && db && idbVersion && store) {
-						const [start, abort_] = createAppendTask(store, idbVersion, log);
+						const [startT, abort_] = createAppendTask(store, idbVersion, log);
 						abort = abort_;
 						clearStoreData(db);
-						await start(entities);
+						await startT(entities);
 						post(store.name, entities.length);
 					}
 				} catch (e) {
