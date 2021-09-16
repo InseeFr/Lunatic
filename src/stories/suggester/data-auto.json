@@ -8,7 +8,24 @@
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
-					"min": 3
+					"min": 2
+				},
+				{ "name": "id" }
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w.]+" }
+			},
+			"version": "1"
+		},
+		"naf-rev2-stop": {
+			"name": "naf-rev2-stop",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 2
 				},
 				{ "name": "id" }
 			],
@@ -76,7 +93,7 @@
 			"paginatedLoop": true,
 			"conditionFilter": { "value": "true" },
 			"loopDependencies": ["PRENOM"],
-			"bindingDependencies": ["PRENOM", "NAF", "CITY"],
+			"bindingDependencies": ["PRENOM", "NAF", "NAF_STOP", "CITY"],
 			"page": "3",
 			"maxPage": "3",
 			"components": [
@@ -92,10 +109,10 @@
 					"page": "3.1"
 				},
 				{
-					"id": "sugg",
+					"id": "sugg1",
 					"componentType": "Suggester",
 					"mandatory": false,
-					"label": "PRENOM || \" what's your favorite NAF code?\"",
+					"label": "PRENOM || \" what's your favorite NAF code? (default stop words)\"",
 					"storeName": "naf-rev2",
 					"bindingDependencies": ["PRENOM", "NAF"],
 					"conditionFilter": {
@@ -104,6 +121,22 @@
 					},
 					"response": {
 						"name": "NAF"
+					},
+					"page": "3.2"
+				},
+				{
+					"id": "sugg2",
+					"componentType": "Suggester",
+					"mandatory": false,
+					"label": "PRENOM || \" what's your favorite NAF code? (without stop words)\"",
+					"storeName": "naf-rev2-stop",
+					"bindingDependencies": ["PRENOM", "NAF_STOP"],
+					"conditionFilter": {
+						"value": "not(isnull(PRENOM))",
+						"bindingDependencies": ["PRENOM"]
+					},
+					"response": {
+						"name": "NAF_STOP"
 					},
 					"page": "3.2"
 				},
@@ -161,6 +194,18 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "NAF",
+			"componentRef": "idLoopInd",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NAF_STOP",
 			"componentRef": "idLoopInd",
 			"values": {
 				"PREVIOUS": [null],

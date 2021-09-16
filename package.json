@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.1.6-experimental",
+	"version": "0.1.8-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -37,7 +37,7 @@
 		"library"
 	],
 	"dependencies": {
-		"@inseefr/trevas": "0.1.6",
+		"@inseefr/trevas": "^0.1.9",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.debounce": "^4.0.8",
 		"lodash.isequal": "^4.5.0",

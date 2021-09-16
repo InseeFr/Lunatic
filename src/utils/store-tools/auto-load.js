@@ -8,15 +8,6 @@ const workerPath =
 	process.env.REACT_APP_LUNATIC_LOADER_WORKER_PATH ||
 	'workers/lunatic-loader-worker-0.1.0.js';
 
-const getUniqueId = (res) => {
-	const map = {};
-	return res.reduce((acc, r, i) => {
-		if (r.id in map) return acc;
-		map[r.id] = `i-${i}`;
-		return [...acc, r];
-	}, []);
-};
-
 export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 	Object.entries(suggesters).forEach(async ([name, attrs]) => {
 		const { version } = attrs;
@@ -28,13 +19,12 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 		}
 	});
 	Object.entries(suggesters).forEach(([name, attrs]) => {
-		const { url, version, fields } = attrs;
+		const { url, version, fields, stopWords } = attrs;
 		const f = suggesterFetcher || fetch;
 		f(url).then(async (res) => {
 			const data = await res.json();
-			const uniqueData = getUniqueId(data);
-			const [launch] = task(name, version, fields);
-			await launch(uniqueData);
+			const [launch] = task({ name, fields, stopWords }, version);
+			await launch(data);
 		});
 	});
 };
@@ -42,7 +32,7 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 /**
  * Only with Worker
  */
-function task(name, version, fields, log = () => null) {
+function task({ name, fields, stopWords }, version, log = () => null) {
 	const worker = new Worker(workerPath);
 	let start = false;
 	let stop = false;
@@ -50,7 +40,13 @@ function task(name, version, fields, log = () => null) {
 	function launch(entities, post = () => null) {
 		return new Promise(function (resolve) {
 			start = true;
-			worker.postMessage({ name, version, fields, entities });
+			worker.postMessage({
+				name,
+				version,
+				fields,
+				entities,
+				stopWords,
+			});
 			worker.addEventListener('message', function (e) {
 				const { data } = e;
 				if (data === 'success') {

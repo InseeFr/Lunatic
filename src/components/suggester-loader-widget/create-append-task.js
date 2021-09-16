@@ -6,7 +6,8 @@ const workerPath =
 /**
  * Only with Worker
  */
-function task(name, version, fields, log = () => null) {
+function task(info, version, log = () => null) {
+	const { name, fields, stopWords } = info;
 	const worker = new Worker(workerPath);
 	let start = false;
 	let stop = false;
@@ -14,7 +15,7 @@ function task(name, version, fields, log = () => null) {
 	function launch(entities, post = () => null) {
 		return new Promise(function (resolve) {
 			start = true;
-			worker.postMessage({ name, version, fields, entities });
+			worker.postMessage({ name, version, fields, stopWords, entities });
 			worker.addEventListener('message', function (e) {
 				const { data } = e;
 				if (data === 'success') {
