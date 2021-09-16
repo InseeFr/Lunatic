@@ -1,7 +1,7 @@
 import { interpret } from '@inseefr/trevas';
 
 const extractDSValue = (v) => {
-	if (typeof v === 'object') {
+	if (v !== null && typeof v === 'object') {
 		const { dataPoints } = v;
 		return Object.values(dataPoints)[0] || null;
 	}
