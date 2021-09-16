@@ -16,8 +16,13 @@ L'utilisation du composant `Suggester`, composant de recherche sur liste longue,
 
 - Activation au niveau de `useLunatic` en valorisant les options suivantes :
 
-|       variable       |             valeur             | description                                                   |
-| :------------------: | :----------------------------: | :------------------------------------------------------------ |
-| autoSuggesterLoading |              true              | Permet d'activer le chargement automatique des ressources     |
-|      suggesters      | { id: { url: 'url_to_fetch } } | Définissions des ressources                                   |
-|   suggesterFetcher   |   url => fetch(url, options)   | Permet de surcharger les options de chargement des ressources |
+|       variable       |                           valeur                            | description                                                   |
+| :------------------: | :---------------------------------------------------------: | :------------------------------------------------------------ |
+| autoSuggesterLoading |                            true                             | Permet d'activer le chargement automatique des ressources     |
+|    suggesters \*     | { id: { url: 'url_to_fetch', stopWords: ['str', 'str1'] } } | Définissions des ressources                                   |
+|   suggesterFetcher   |                 url => fetch(url, options)                  | Permet de surcharger les options de chargement des ressources |
+
+Les valeurs des objets définis au sein de `suggesters` doivent avoir les attributs suivants :
+
+- url : obligatoire
+- stopWords : optionnel - liste de mots à exclure de l'indexation (liste de stop words français par défaut, attention : [] = pas de stop words)
