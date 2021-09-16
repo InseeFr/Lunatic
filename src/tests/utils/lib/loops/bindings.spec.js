@@ -41,7 +41,7 @@ describe('loop bindings utils', () => {
 		it('should return vectorial bindings', () => {
 			expect(U.buildVectorialBindings(bindings)).toEqual({
 				A: 'AAA',
-				B: { dataStructure: {}, dataPoints: { B: ['b', 'bb'] } },
+				B: { dataStructure: { B: {} }, dataPoints: { B: ['b', 'bb'] } },
 			});
 		});
 	});
