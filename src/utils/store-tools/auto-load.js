@@ -8,15 +8,6 @@ const workerPath =
 	process.env.REACT_APP_LUNATIC_LOADER_WORKER_PATH ||
 	'workers/lunatic-loader-worker-0.1.0.js';
 
-const getUniqueId = (res) => {
-	const map = {};
-	return res.reduce((acc, r, i) => {
-		if (r.id in map) return acc;
-		map[r.id] = `i-${i}`;
-		return [...acc, r];
-	}, []);
-};
-
 export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 	Object.entries(suggesters).forEach(async ([name, attrs]) => {
 		const { version } = attrs;
@@ -32,9 +23,8 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 		const f = suggesterFetcher || fetch;
 		f(url).then(async (res) => {
 			const data = await res.json();
-			const uniqueData = getUniqueId(data);
 			const [launch] = task({ name, fields, stopWords }, version);
-			await launch(uniqueData);
+			await launch(data);
 		});
 	});
 };
