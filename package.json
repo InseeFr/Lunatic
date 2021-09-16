@@ -109,7 +109,11 @@
 		"storybook-addon-jsx": "^7.2.3",
 		"storybook-readme": "^5.0.8",
 		"style-loader": "^2.0.0",
-		"url-loader": "^4.1.0"
+		"url-loader": "^4.1.0",
+		"regenerator-runtime": "^0.13.7",
+		"remove-accents": "^0.4.2",
+		"snowball": "^0.3.1",
+		"string-tokenizer": "^0.0.8"
 	},
 	"jest": {
 		"collectCoverageFrom": [
