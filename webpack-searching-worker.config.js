@@ -4,10 +4,10 @@ var version = PACKAGE.version;
 
 module.exports = {
 	mode: 'production',
-	entry: './src/utils/suggester-workers/append-to-index/append.worker.js',
+	entry: './src/utils/suggester-workers/searching/searching.worker.js',
 	output: {
 		path: path.resolve(`./workers-release/${version}`),
-		filename: `lunatic-append-worker-${version}.js`,
+		filename: `lunatic-searching-worker-${version}.js`,
 		libraryTarget: 'umd',
 	},
 	resolve: {
