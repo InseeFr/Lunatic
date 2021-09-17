@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { clearDb, openOnCreateDb, insertEntity } from '../../utils/idb-tools';
 import { CONSTANTES } from '../../utils/store-tools';
 import append from '../../utils/suggester-workers/append-to-index';
+import searching from '../../utils/suggester-workers/searching';
 
 const stories = storiesOf('Suggester/workers', module);
 
@@ -64,22 +65,51 @@ async function loadNaf() {
 	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, infoNaf);
 }
 
+function Search({ storeName, version = '1', max = 30, defaultValue = '' }) {
+	const [value, setValue] = useState(defaultValue);
+	const onClick = useCallback(
+		function () {
+			async function doIt() {
+				const results = await searching(value, storeName, version, max);
+				console.log(results);
+			}
+			if (value.length) {
+				doIt();
+			}
+		},
+		[value, storeName, version, max]
+	);
+	return (
+		<>
+			<input
+				type="search"
+				value={value}
+				onChange={(e) => setValue(e.target.value)}
+			/>
+			<input type="button" onClick={onClick} value="Search!" />
+		</>
+	);
+}
+
 stories.addWithJSX('Default', () => {
 	return (
 		<>
 			<p>
-				Juste pour tester l'intégration du code des workers et faciliter leur
-				mise à jour. Le chargement ne passe pas par les web workers pour
-				permettre le debug.
+				Only for DEV purpose ! Juste pour tester l'intégration du code des
+				workers et faciliter leur mise à jour. Le chargement ne passe pas par
+				les web workers pour permettre le debug.
 			</p>
 			<ul
 				style={{ listStyleType: 'none', margin: 0, padding: 0, border: 'none' }}
 			>
 				<li>
 					<input type="button" value="load COG" onClick={loadCog} />
+					<Search storeName="cog-communes" defaultValue="23025" />
 				</li>
+				<li></li>
 				<li>
 					<input type="button" value="load NAF" onClick={loadNaf} />
+					<Search storeName="naf-rev2" defaultValue="culture du tabac" />
 				</li>
 			</ul>
 		</>

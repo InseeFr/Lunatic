@@ -1,4 +1,5 @@
-import { CONSTANTES, getEntity } from '../commons-idb';
+import { CONSTANTES } from '../../store-tools';
+import { getEntity } from '../../idb-tools';
 import { queryParserTokenized, queryParserSoft } from '../query-parser';
 
 let PARSERS = {};

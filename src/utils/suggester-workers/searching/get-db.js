@@ -1,4 +1,4 @@
-import { openDb } from '../commons-idb';
+import { openDb } from '../../idb-tools';
 
 let STORES = {};
 

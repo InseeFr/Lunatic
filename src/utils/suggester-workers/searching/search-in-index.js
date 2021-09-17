@@ -1,4 +1,4 @@
-import { CONSTANTES } from '../commons-idb';
+import { CONSTANTES } from '../../store-tools';
 
 function search(token, index) {
 	const range = IDBKeyRange.bound(token, `${token}${CONSTANTES.MAX_STRING}`);
