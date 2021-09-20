@@ -18,6 +18,17 @@
 			},
 			"version": "1"
 		},
+		"cog-communes": {
+			"name": "cog-communes",
+			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
+			"fields": [
+				{ "name": "label", "rules": "soft" },
+				{ "name": "nccenr", "rules": "soft" },
+				{ "name": "id", "rules": "soft" }
+			],
+			"queryParser": { "type": "soft" },
+			"version": "1"
+		},
 		"cog-tokenized": {
 			"name": "cog-tokenized",
 			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
@@ -34,17 +45,6 @@
 				"type": "tokenized",
 				"params": { "language": "French", "pattern": "[\\w.]+", "stemmer": false }
 			},
-			"version": "1"
-		},
-		"cog-communes": {
-			"name": "cog-communes",
-			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
-			"fields": [
-				{ "name": "label", "rules": "soft" },
-				{ "name": "nccenr", "rules": "soft" },
-				{ "name": "id", "rules": "soft" }
-			],
-			"queryParser": { "type": "soft" },
 			"version": "1"
 		}
 	},
@@ -75,7 +75,7 @@
 			"id": "sugg-cog-tokenized",
 			"componentType": "Suggester",
 			"mandatory": false,
-			"label": "French municipalities",
+			"label": "French municipalities with tokenized label",
 			"path": "data/communes-tok",
 			"storeName": "cog-tokenized",
 			"response": {
