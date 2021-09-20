@@ -21,6 +21,8 @@ function getSuggesterInfo(name) {
 		return { optionRenderer: NAF.OptionRenderer, idbVersion: '1' };
 	} else if (name === 'cog-communes') {
 		return { optionRenderer: COG.OptionRenderer, idbVersion: '1' };
+	} else if (name === 'cog-tokenized') {
+		return { optionRenderer: COG.OptionRenderer, idbVersion: '1' };
 	}
 	console.warn(`Unknown store : ${name}`);
 	return {};
@@ -33,6 +35,8 @@ function getWidgetLoaderInfo(name) {
 			idbVersion: '1',
 		};
 	} else if (name === 'cog-communes') {
+		return { fetch: COG.fetch, idbVersion: '1' };
+	} else if (name === 'cog-tokenized') {
 		return { fetch: COG.fetch, idbVersion: '1' };
 	}
 	console.warn(`Unknown store : ${name}`);

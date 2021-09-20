@@ -12,6 +12,7 @@ async function searchTokens(tokens, index) {
 	const results = await Promise.all(
 		tokens.map((token) => searchInIndex(token, index))
 	);
+
 	return results.reduce(function (a, step, i) {
 		return { ...a, [tokens[i]]: step };
 	}, {});
@@ -37,6 +38,7 @@ async function searching(search, name, version = '1', max = 30) {
 			const index = store.index(CONSTANTES.STORE_INDEX_NAME);
 			const tokens = parser(search);
 			const tokensSuggestions = await searchTokens(tokens, index);
+
 			const resultat = computeScore(tokensSuggestions);
 			if (max && max < resultat.length) {
 				return { results: prepare(resultat.slice(0, max)), search };

@@ -27,6 +27,26 @@ const infoCog = {
 	display: 'label',
 };
 
+const infoCogTokenized = {
+	name: 'cog-tokenized',
+	fields: [
+		{
+			name: 'label',
+			rules: ['[\\w]+'],
+			language: 'French',
+			stemmer: false,
+			min: 2,
+		},
+		{ name: 'id', rules: 'soft' },
+	],
+	stopWords: [],
+	queryParser: {
+		type: 'tokenized',
+		params: { language: 'French', pattern: '[\\w.]+' },
+	},
+	version: '1',
+};
+
 const infoNaf = {
 	name: 'naf-rev2',
 	fields: [
@@ -55,6 +75,16 @@ async function loadCog() {
 	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, infoCog);
 }
 
+async function loadCogTokenized() {
+	const { name } = infoCogTokenized;
+	const communes = await fetchCog();
+	const db = await openOnCreateDb(name);
+	await clearDb(db, CONSTANTES.STORE_DATA_NAME);
+	await clearDb(db, CONSTANTES.STORE_INFO_NAME);
+	await append(infoCogTokenized, '1', communes, console.log);
+	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, infoCogTokenized);
+}
+
 async function loadNaf() {
 	const { name } = infoNaf;
 	const rubriques = await fetchNaf();
@@ -71,7 +101,6 @@ function Search({ storeName, version = '1', max = 30, defaultValue = '' }) {
 		function () {
 			async function doIt() {
 				const results = await searching(value, storeName, version, max);
-				console.log(results);
 			}
 			if (value.length) {
 				doIt();
@@ -110,6 +139,17 @@ stories.addWithJSX('Default', () => {
 				<li>
 					<input type="button" value="load NAF" onClick={loadNaf} />
 					<Search storeName="naf-rev2" defaultValue="culture du tabac" />
+				</li>
+				<li>
+					<input
+						type="button"
+						value="load COG tokenized"
+						onClick={loadCogTokenized}
+					/>
+					<Search
+						storeName="cog-tokenized"
+						defaultValue="la chapelle taillefert"
+					/>
 				</li>
 			</ul>
 		</>

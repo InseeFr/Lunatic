@@ -18,6 +18,24 @@
 			},
 			"version": "1"
 		},
+		"cog-tokenized": {
+			"name": "cog-tokenized",
+			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
+			"fields": [
+				 
+				{ "name": "label", "rules": ["[\\w]+"],
+					"language": "French",
+					"stemmer": false,
+					"min": 2 }, 
+				{ "name": "id", "rules": "soft" }
+			],
+			"stopWords": [],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w.]+", "stemmer": false }
+			},
+			"version": "1"
+		},
 		"cog-communes": {
 			"name": "cog-communes",
 			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
@@ -49,6 +67,17 @@
 			"label": "French municipalities",
 			"path": "data/communes",
 			"storeName": "cog-communes",
+			"response": {
+				"name": "COMMUNES"
+			}
+		},
+		{
+			"id": "sugg-cog-tokenized",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "French municipalities",
+			"path": "data/communes-tok",
+			"storeName": "cog-tokenized",
 			"response": {
 				"name": "COMMUNES"
 			}

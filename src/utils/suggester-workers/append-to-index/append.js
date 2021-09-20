@@ -3,8 +3,8 @@ import { openDb, idbBulkInsert } from '../../idb-tools';
 import MESSAGES from './store-messages';
 import { createTokenizer } from '../commons-tokenizer';
 
-function prepareEntities(fields, entities, stopWords, log) {
-	const tokenizer = createTokenizer(fields, stopWords);
+function prepareEntities(entities, { fields, stopWords, stemmer }, log) {
+	const tokenizer = createTokenizer(fields, stopWords, stemmer);
 
 	let done = 0;
 	const size = 1000;
@@ -33,7 +33,7 @@ function prepareEntities(fields, entities, stopWords, log) {
 async function append(storeInfo, version, entities, log = () => null) {
 	try {
 		const { name, stopWords, fields } = storeInfo;
-		const prepared = prepareEntities(fields, entities, stopWords, log);
+		const prepared = prepareEntities(entities, { fields, stopWords }, log);
 		const db = await openDb(name, version);
 		log({ message: MESSAGES.startInsertBatch });
 		await idbBulkInsert(db, CONSTANTES.STORE_DATA_NAME, function (args) {
