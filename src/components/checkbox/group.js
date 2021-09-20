@@ -228,4 +228,4 @@ CheckboxGroup.propTypes = {
 	style: PropTypes.object,
 };
 
-export default React.memo(missingWrapper(CheckboxGroup), U.areEqual);
+export default missingWrapper(React.memo(CheckboxGroup), U.areEqual);

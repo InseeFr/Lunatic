@@ -125,4 +125,4 @@ Dropdown.defaultProps = {
 	freezeOptions: false,
 };
 
-export default React.memo(missingWrapper(Dropdown), U.areEqual);
+export default missingWrapper(React.memo(Dropdown), U.areEqual);
