@@ -9,6 +9,14 @@
 	"author": "INSEE (http://www.insee.fr)",
 	"contributor": [
 		{
+			"name": "Laurent Caouissin",
+			"email": "laurent.caouissin@agriculture.gouv.fr"
+		},
+		{
+			"name": "Renaud Genevois",
+			"email": "renaud.genevois@insee.fr"
+		},
+		{
 			"name": "Nicolas Laval",
 			"email": "nicolas.laval@insee.fr"
 		}
