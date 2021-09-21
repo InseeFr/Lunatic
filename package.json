@@ -1,6 +1,7 @@
 {
 	"name": "@inseefr/lunatic",
 	"version": "0.1.8-experimental",
+	"workersVersion": "0.1.0-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -36,7 +37,10 @@
 		"build-storybook": "cross-env NODE_PATH=src/ build-storybook -o built-storybook/storybook",
 		"build": "rollup -c rollup.config.js",
 		"prepublish": "npm test && npm run build",
-		"analyze": "yarn build && source-map-explorer lib/index.js --html bundle-report/lunatic.html"
+		"analyze": "yarn build && source-map-explorer lib/index.js --html bundle-report/lunatic.html",
+		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
+		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
+		"build-workers": "yarn build-append-worker && yarn build-searching-worker"
 	},
 	"keywords": [
 		"react",
@@ -76,6 +80,7 @@
 		"babel-eslint": "^10.0.3",
 		"babel-loader": "^8.0.6",
 		"classnames": "^2.2.5",
+		"core-js": "^3.17.3",
 		"cross-env": "^7.0.2",
 		"css-loader": "^5.0.0",
 		"enzyme": "^3.7.0",
@@ -99,6 +104,8 @@
 		"prettier": "^2.0.5",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
+		"regenerator-runtime": "^0.13.7",
+		"remove-accents": "^0.4.2",
 		"rollup": "^2.52.8",
 		"rollup-plugin-babel": "^4.3.3",
 		"rollup-plugin-babel-minify": "^10.0.0",
@@ -113,11 +120,15 @@
 		"rollup-watch": "^4.3.1",
 		"rxjs-marbles": "^6.0.1",
 		"sass-loader": "^10.0.3",
+		"snowball": "^0.3.1",
 		"source-map-explorer": "^2.4.2",
 		"storybook-addon-jsx": "^7.2.3",
 		"storybook-readme": "^5.0.8",
+		"string-tokenizer": "^0.0.8",
 		"style-loader": "^2.0.0",
-		"url-loader": "^4.1.0"
+		"url-loader": "^4.1.0",
+		"webpack": "^5.53.0",
+		"webpack-cli": "^4.8.0"
 	},
 	"jest": {
 		"collectCoverageFrom": [
