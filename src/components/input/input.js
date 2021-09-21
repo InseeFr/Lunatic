@@ -8,4 +8,4 @@ const Input = (props) => (
 	<InputDeclarationsWrapper type="text" roleType="input" {...props} />
 );
 
-export default React.memo(missingWrapper(Input), areEqual);
+export default missingWrapper(React.memo(Input, areEqual));

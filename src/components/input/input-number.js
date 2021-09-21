@@ -51,4 +51,4 @@ InputNumber.propTypes = {
 	validators: PropTypes.arrayOf(PropTypes.func),
 };
 
-export default React.memo(missingWrapper(InputNumber), areEqual);
+export default missingWrapper(React.memo(InputNumber, areEqual));

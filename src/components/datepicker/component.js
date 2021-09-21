@@ -8,4 +8,4 @@ const Datepicker = (props) => (
 	<InputDeclarationsWrapper type="date" roleType="datepicker" {...props} />
 );
 
-export default React.memo(missingWrapper(Datepicker), areEqual);
+export default missingWrapper(React.memo(Datepicker, areEqual));

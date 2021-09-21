@@ -8,4 +8,4 @@ const CheckboxOne = (props) => (
 	<ListDeclarationsWrapper type="checkbox" {...props} hasSpecificHandler />
 );
 
-export default React.memo(missingWrapper(CheckboxOne), areEqual);
+export default missingWrapper(React.memo(CheckboxOne, areEqual));

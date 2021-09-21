@@ -21,7 +21,7 @@
 				"name": "READY2"
 			},
 			"missingResponse": {
-				"name": "READY_MISSING"
+				"name": "READY2_MISSING"
 			}
 		}
 	],
@@ -41,7 +41,7 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "READY_MISSING",
-			"componentRef": "gg",
+			"componentRef": "1",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -64,7 +64,7 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "READY_MISSING",
+			"name": "READY2_MISSING",
 			"componentRef": "2",
 			"values": {
 				"PREVIOUS": null,

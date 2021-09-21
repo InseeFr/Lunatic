@@ -8,4 +8,4 @@ const Textarea = (props) => (
 	<InputDeclarationsWrapper type={null} roleType="textarea" {...props} />
 );
 
-export default React.memo(missingWrapper(Textarea), areEqual);
+export default missingWrapper(React.memo(Textarea, areEqual));

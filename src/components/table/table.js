@@ -168,4 +168,4 @@ Table.propTypes = {
 	style: PropTypes.object,
 };
 
-export default React.memo(missingWrapper(Table), U.areEqual);
+export default missingWrapper(React.memo(Table), U.areEqual);

@@ -6,4 +6,4 @@ import './block.scss';
 
 const BlockForLoop = (props) => <LoopConstructorWrapper {...props} />;
 
-export default React.memo(missingWrapper(BlockForLoop), U.areEqual);
+export default missingWrapper(React.memo(BlockForLoop), U.areEqual);
