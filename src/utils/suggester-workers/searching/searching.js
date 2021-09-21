@@ -64,6 +64,7 @@ async function searching(search, { name, version = '1', max = 30, order }) {
 		}
 		return { results: [], search };
 	} catch (e) {
+		console.err(e);
 		throw e;
 	}
 }
