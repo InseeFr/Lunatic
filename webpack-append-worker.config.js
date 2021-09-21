@@ -1,6 +1,6 @@
 var path = require('path');
 var PACKAGE = require('./package.json');
-var version = PACKAGE.version;
+var version = PACKAGE.workersVersion;
 
 module.exports = {
 	mode: 'production',
