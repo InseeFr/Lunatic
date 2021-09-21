@@ -25,6 +25,7 @@ const infoCog = {
 	queryParser: { type: 'soft' },
 	version: '1',
 	display: 'label',
+	order: { type: 'ascending', field: 'label' },
 };
 
 const infoCogTokenized = {
@@ -95,18 +96,25 @@ async function loadNaf() {
 	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, infoNaf);
 }
 
-function Search({ storeName, version = '1', max = 30, defaultValue = '' }) {
+function Search({ storeInfo, version = '1', max = 30, defaultValue = '' }) {
+	const { name, order } = storeInfo;
 	const [value, setValue] = useState(defaultValue);
 	const onClick = useCallback(
 		function () {
 			async function doIt() {
-				const results = await searching(value, storeName, version, max);
+				const results = await searching(value, {
+					name,
+					version,
+					max,
+					order,
+				});
+				console.log(results);
 			}
 			if (value.length) {
 				doIt();
 			}
 		},
-		[value, storeName, version, max]
+		[value, name, version, max]
 	);
 	return (
 		<>
@@ -133,12 +141,12 @@ stories.addWithJSX('Default', () => {
 			>
 				<li>
 					<input type="button" value="load COG" onClick={loadCog} />
-					<Search storeName="cog-communes" defaultValue="23025" />
+					<Search storeInfo={infoCog} defaultValue="paris" />
 				</li>
 				<li></li>
 				<li>
 					<input type="button" value="load NAF" onClick={loadNaf} />
-					<Search storeName="naf-rev2" defaultValue="culture du tabac" />
+					<Search storeInfo={infoNaf} defaultValue="culture du tabac" />
 				</li>
 				<li>
 					<input
@@ -147,7 +155,7 @@ stories.addWithJSX('Default', () => {
 						onClick={loadCogTokenized}
 					/>
 					<Search
-						storeName="cog-tokenized"
+						storeInfo={infoCogTokenized}
 						defaultValue="la chapelle taillefert"
 					/>
 				</li>

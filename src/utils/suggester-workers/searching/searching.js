@@ -3,6 +3,7 @@ import { CONSTANTES } from '../../store-tools';
 import searchInIndex from './search-in-index';
 import resolveQueryParser from './resolve-query-parser';
 import computeScore from './compute-score';
+import getOrderingFunction from './order';
 
 function prepare(response) {
 	return response.map(({ suggestion }) => suggestion);
@@ -25,7 +26,14 @@ function isValideSearch(search) {
 	return false;
 }
 
-async function searching(search, name, version = '1', max = 30) {
+function filterSize(response, max) {
+	if (Array.isArray(response)) {
+		return response.slice(0, max);
+	}
+	return response;
+}
+
+async function searching(search, { name, version = '1', max = 30, order }) {
 	try {
 		if (isValideSearch(search)) {
 			const db = await getDb(name, version);
@@ -39,11 +47,20 @@ async function searching(search, name, version = '1', max = 30) {
 			const tokens = parser(search);
 			const tokensSuggestions = await searchTokens(tokens, index);
 
-			const resultat = computeScore(tokensSuggestions);
-			if (max && max < resultat.length) {
-				return { results: prepare(resultat.slice(0, max)), search };
+			const response = computeScore(tokensSuggestions);
+			if (max && max < response.length) {
+				return {
+					results: prepare(
+						getOrderingFunction(order)(filterSize(response), order)
+					),
+					search,
+				};
 			}
-			return { results: prepare(resultat), search };
+
+			return {
+				results: prepare(getOrderingFunction(order)(response, order)),
+				search,
+			};
 		}
 		return { results: [], search };
 	} catch (e) {
