@@ -45,6 +45,7 @@ async function searching(search, name, version = '1', max = 30) {
 		}
 		return { results: [], search };
 	} catch (e) {
+		console.err(e);
 		throw e;
 	}
 }

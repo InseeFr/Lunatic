@@ -41,12 +41,10 @@ function createMapFieldsTokenizer(fields, filterStopWords) {
 				...mapFieldTokenizers,
 				[name]: function (string) {
 					const what = tokenizer().input(string).tokens(tokenRules).resolve();
-					const words = filterStemmer(
+					return filterStemmer(
 						filterStopWords(filterLength(tokensToArray(what), min)),
 						language
 					);
-
-					return words;
 				},
 			};
 		}
@@ -65,8 +63,7 @@ function createTokenizer(fields, stopWords) {
 		const { name } = field;
 		const tokenizeIt = FIELDS_TOKENIZER_MAP[name];
 		const value = `${entity[name]}`;
-		const what = tokenizeIt(removeAccents(`${value}`).toLowerCase());
-		return what;
+		return tokenizeIt(removeAccents(`${value}`).toLowerCase());
 	};
 }
 
