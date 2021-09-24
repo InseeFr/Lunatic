@@ -1,36 +1,10 @@
-.naf-option {
+.option-bailleur {
 	white-space: nowrap;
 	overflow: hidden;
 
 	&.selected {
-		background-color: darkred;
-		.libelle {
-			color: honeydew;
-		}
-	}
-
-	.id {
-		color: snow;
-		text-align: center;
-		padding: 2px 4px;
-		border-radius: 3px;
-		width: 50px;
-		display: inline-block;
-
-		&.division {
-			background-color: olive;
-		}
-		&.section {
-			background-color: firebrick;
-		}
-		&.groupe {
-			background-color: royalblue;
-		}
-		&.classe {
-			background-color: sandybrown;
-		}
-		&.sous-classe {
-			background-color: darkorchid;
+		.bailleur-label {
+			color: goldenrod;
 		}
 	}
 }
