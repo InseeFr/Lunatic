@@ -3,7 +3,7 @@ import getIDB from './get-idb';
 
 const IDB_REF = getIDB();
 
-function create(onSuccess, onUpgradeNeeded) {
+function createOpenDb(onSuccess, onUpgradeNeeded) {
 	return function openStorage(name, version = 1) {
 		return new Promise(function (resolve, reject) {
 			if (!IDB_REF) {
@@ -22,4 +22,4 @@ function create(onSuccess, onUpgradeNeeded) {
 	};
 }
 
-export default create;
+export default createOpenDb;
