@@ -25,7 +25,7 @@ export function tokensToArray(tokenized) {
 
 function createMapFieldsTokenizer(fields, filterStopWords) {
 	return fields.reduce(function (mapFieldTokenizers, f) {
-		const { name, rules = [], min, language = 'French', stemmer } = f;
+		const { name, rules = [], min, language = 'French', stemmer = true } = f;
 		if (rules === 'soft') {
 			return { ...mapFieldTokenizers, [name]: softTokenizer };
 		}
