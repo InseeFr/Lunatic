@@ -3,6 +3,15 @@ import MESSAGES from './store-messages';
 
 const DEFAULT_BATCH_SIZE = 1000;
 
+function createTokensMap(tokens) {
+	return tokens.reduce(function (map, token) {
+		if (token in map) {
+			return { ...map, [token]: { count: map[token] + 1 } };
+		}
+		return { ...map, [token]: { count: 1 } };
+	}, {});
+}
+
 function prepareEntities(entities, { fields, stopWords, stemmer }, log) {
 	const tokenizer = createTokenizer(fields, stopWords, stemmer);
 
@@ -14,6 +23,8 @@ function prepareEntities(entities, { fields, stopWords, stemmer }, log) {
 		const { id } = suggestion;
 		if (id) {
 			const tokens = tokenizer(suggestion);
+			const tokensMap = createTokensMap(tokens);
+
 			done++;
 			if (done % size === 0 || done === max) {
 				log({
@@ -25,7 +36,7 @@ function prepareEntities(entities, { fields, stopWords, stemmer }, log) {
 					},
 				});
 			}
-			return { id, suggestion, tokens };
+			return { id, suggestion, tokens: Object.keys(tokensMap) };
 		} else throw new Error(`Missing id on entity.`);
 	}, []);
 }
