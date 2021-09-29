@@ -26,6 +26,7 @@
 				{ "name": "nccenr", "rules": "soft" },
 				{ "name": "id", "rules": "soft" }
 			],
+			"order": { "type": "ascending", "field": "label" },
 			"queryParser": { "type": "soft" },
 			"version": "1"
 		},
@@ -51,7 +52,7 @@
 				"type": "tokenized",
 				"params": { "language": "French", "pattern": "[\\w]+", "min": "1" }
 			},
-			"max": 5,
+			"max": 10,
 			"version": "1"
 		}
 	},
