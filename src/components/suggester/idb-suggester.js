@@ -20,7 +20,6 @@ function IDBSuggester({
 	labelRenderer,
 	onSelect,
 	disabled,
-	max,
 }) {
 	const [store, setStore] = useState(undefined);
 	const search = useMemo(
@@ -49,7 +48,6 @@ function IDBSuggester({
 				searching={search}
 				storeName={storeName}
 				disabled={disabled}
-				max={max}
 			/>
 		</CheckStore>
 	);
@@ -68,7 +66,6 @@ IDBSuggester.propTypes = {
 	optionRenderer: PropTypes.func,
 	labelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
-	max: PropTypes.number,
 };
 
 export default IDBSuggester;
