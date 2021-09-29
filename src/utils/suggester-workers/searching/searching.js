@@ -1,5 +1,6 @@
 import getDb from './get-db';
 import { CONSTANTES } from '../../store-tools';
+import { getEntity } from '../../idb-tools';
 import searchInIndex from './search-in-index';
 import resolveQueryParser from './resolve-query-parser';
 import computeScore from './compute-score';
@@ -33,11 +34,13 @@ function filterSize(response, max) {
 	return response;
 }
 
-async function searching(search, { name, version = '1', max = 30, order }) {
+async function searching(search, { name, version = '1' }) {
 	try {
 		if (isValideSearch(search)) {
 			const db = await getDb(name, version);
-			const parser = await resolveQueryParser(db, name);
+			const info = await getEntity(db, CONSTANTES.STORE_INFO_NAME, name);
+			const { queryParser, max, order } = info;
+			const parser = await resolveQueryParser(name, queryParser);
 			const transaction = db.transaction(
 				CONSTANTES.STORE_DATA_NAME,
 				'readonly'
