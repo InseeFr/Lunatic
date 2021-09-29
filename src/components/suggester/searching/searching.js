@@ -11,7 +11,7 @@ export function isWorkerCompatible() {
 	return false;
 }
 
-function create(search, name, version, max) {
+function searching(search, name, version) {
 	if (!WORKER_PATH) {
 		throw new Error("Worker path is required for suggester's searchs.");
 	}
@@ -22,7 +22,7 @@ function create(search, name, version, max) {
 					WORKER.terminate();
 				}
 				WORKER = new Worker(WORKER_PATH);
-				WORKER.postMessage({ search, name, version, max });
+				WORKER.postMessage({ search, name, version });
 				WORKER.addEventListener('message', function (e) {
 					const { data } = e;
 					resolve(data);
@@ -36,4 +36,4 @@ function create(search, name, version, max) {
 	}
 }
 
-export default create;
+export default searching;

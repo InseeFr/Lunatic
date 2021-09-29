@@ -23,7 +23,6 @@ function SuggesterWrapper({
 	searching,
 	labelRenderer,
 	disabled,
-	max,
 }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { search, selectedIndex, options } = state;
@@ -32,7 +31,7 @@ function SuggesterWrapper({
 		function () {
 			async function doIt() {
 				try {
-					const { results, search: old } = await searching(search, max);
+					const { results, search: old } = await searching(search);
 					dispatch(actions.onUpdateOptions(results, old));
 				} catch (e) {
 					dispatch(actions.onError('Une erreur est survenue.'));
@@ -40,7 +39,7 @@ function SuggesterWrapper({
 			}
 			doIt();
 		},
-		[search, searching, max]
+		[search, searching]
 	);
 
 	useEffect(
@@ -83,12 +82,10 @@ SuggesterWrapper.propTypes = {
 	labelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
 	storeInfo: PropTypes.object,
-	max: PropTypes.number,
 };
 
 SuggesterWrapper.defaultProps = {
 	id: undefined,
-	max: 30,
 	className: 'lunatic-suggester-default-style',
 	labelledBy: undefined,
 	placeholder: 'Veuillez...',

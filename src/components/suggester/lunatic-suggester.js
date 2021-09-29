@@ -25,7 +25,6 @@ function Suggester({
 	storeName,
 	optionRenderer,
 	labelRenderer,
-	max,
 	idbVersion,
 }) {
 	const [value, setValue] = useState(() =>
@@ -90,7 +89,6 @@ function Suggester({
 						storeName={storeName}
 						optionRenderer={optionRenderer}
 						labelRenderer={labelRenderer}
-						max={max}
 						labelledBy={labelId}
 						idbVersion={idbVersion}
 						onSelect={onSelect}
