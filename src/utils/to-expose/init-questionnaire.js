@@ -168,6 +168,7 @@ const initExternalVariable =
 	});
 
 // TODO: Handle "good" order when a calc var depends on another one
+// TODO: Fix null vs 0 in Trevas JS
 export const getCalculatedVariables =
 	({ name, expression, bindingDependencies, shapeFrom }) =>
 	(bindings, alreadyCalculatedVars) => {

@@ -39,18 +39,15 @@
 			"componentType": "Sequence",
 			"label": "\"Calculated variables\"",
 			"conditionFilter": {
-				"value": "not(isnull(SUM))",
-				"bindingDependencies": ["AGE"]
-			},
-			"bindingDependencies": ["SUM"]
+				"value": "true"
+			}
 		},
 		{
 			"id": "j6p0ti5h-count",
 			"componentType": "Subsequence",
 			"label": "\"Count : \" || cast(COUNT, string)",
 			"conditionFilter": {
-				"value": "not(isnull(COUNT))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["COUNT"]
 		},
@@ -59,8 +56,7 @@
 			"componentType": "Subsequence",
 			"label": "\"First value : \" || cast(FIRST_VALUE, string)",
 			"conditionFilter": {
-				"value": "not(isnull(FIRST_VALUE))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["FIRST_VALUE"]
 		},
@@ -69,8 +65,7 @@
 			"componentType": "Subsequence",
 			"label": "\"Last value : \" || cast(LAST_VALUE, string)",
 			"conditionFilter": {
-				"value": "not(isnull(LAST_VALUE))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["LAST_VALUE"]
 		},
@@ -79,8 +74,7 @@
 			"componentType": "Subsequence",
 			"label": "\"Average : \" || cast(AVG, string)",
 			"conditionFilter": {
-				"value": "not(isnull(AVG))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["AVG"]
 		},
@@ -89,8 +83,7 @@
 			"componentType": "Subsequence",
 			"label": "\"Max : \" || cast(MAX, string)",
 			"conditionFilter": {
-				"value": "not(isnull(MAX))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["MAX"]
 		},
@@ -99,8 +92,7 @@
 			"componentType": "Subsequence",
 			"label": "\"Min : \" || cast(MIN, string)",
 			"conditionFilter": {
-				"value": "not(isnull(MIN))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["MIN"]
 		},
@@ -109,8 +101,7 @@
 			"componentType": "Subsequence",
 			"label": "\"Median : \" || cast(MEDIAN, string)",
 			"conditionFilter": {
-				"value": "not(isnull(MEDIAN))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["MEDIAN"]
 		},
@@ -119,8 +110,7 @@
 			"componentType": "Subsequence",
 			"label": "\"Sum : \" || cast(SUM, string)",
 			"conditionFilter": {
-				"value": "not(isnull(SUM))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["SUM"]
 		},
@@ -129,8 +119,7 @@
 			"componentType": "Subsequence",
 			"label": "\"Sample standard deviation : \" || cast(DEV_SAMPLE, string)",
 			"conditionFilter": {
-				"value": "not(isnull(DEV_SAMPLE))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["DEV_SAMPLE"]
 		},
@@ -139,8 +128,7 @@
 			"componentType": "Subsequence",
 			"label": "\"Population standard deviation : \" || cast(DEV_STANDARD, string)",
 			"conditionFilter": {
-				"value": "not(isnull(DEV_STANDARD))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["DEV_STANDARD"]
 		},
@@ -149,8 +137,7 @@
 			"componentType": "Subsequence",
 			"label": "\"Sample variance : \" || cast(VAR_SAMPLE, string)",
 			"conditionFilter": {
-				"value": "not(isnull(VAR_SAMPLE))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["VAR_SAMPLE"]
 		},
@@ -159,8 +146,7 @@
 			"componentType": "Subsequence",
 			"label": "\"Population variance : \" || cast(VAR_STANDARD, string)",
 			"conditionFilter": {
-				"value": "not(isnull(VAR_STANDARD))",
-				"bindingDependencies": ["AGE"]
+				"value": "true"
 			},
 			"bindingDependencies": ["VAR_STANDARD"]
 		}
@@ -180,75 +166,82 @@
 		},
 		{
 			"variableType": "CALCULATED",
+			"name": "AGE_NUM",
+			"expression": "cast(nvl(AGE, \"0\"), integer)",
+			"bindingDependencies": ["AGE"],
+			"shapeFrom": "AGE"
+		},
+		{
+			"variableType": "CALCULATED",
 			"name": "SUM",
-			"expression": "sum(cast(AGE, number))",
-			"bindingDependencies": ["AGE"]
+			"expression": "sum(AGE_NUM)",
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "COUNT",
-			"expression": "count(cast(AGE, number))",
-			"bindingDependencies": ["AGE"]
+			"expression": "count(AGE_NUM)",
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "FIRST_VALUE",
 			"expression": "first_value(AGE over())",
-			"bindingDependencies": ["AGE"]
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "LAST_VALUE",
 			"expression": "last_value(AGE over())",
-			"bindingDependencies": ["AGE"]
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "AVG",
-			"expression": "avg(cast(AGE, number))",
-			"bindingDependencies": ["AGE"]
+			"expression": "avg(AGE_NUM)",
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "DEV_SAMPLE",
-			"expression": "stddev_samp(cast(AGE, number))",
-			"bindingDependencies": ["AGE"]
+			"expression": "stddev_samp(AGE_NUM)",
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "DEV_STANDARD",
-			"expression": "stddev_pop(cast(AGE, number))",
-			"bindingDependencies": ["AGE"]
+			"expression": "stddev_pop(AGE_NUM)",
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "MAX",
-			"expression": "max(cast(AGE, number))",
-			"bindingDependencies": ["AGE"]
+			"expression": "max(AGE_NUM)",
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "MIN",
-			"expression": "min(cast(AGE, number))",
-			"bindingDependencies": ["AGE"]
+			"expression": "min(AGE_NUM)",
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "MEDIAN",
-			"expression": "median(cast(AGE, number))",
-			"bindingDependencies": ["AGE"]
+			"expression": "median(AGE_NUM)",
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "VAR_SAMPLE",
-			"expression": "var_samp(cast(AGE, number))",
-			"bindingDependencies": ["AGE"]
+			"expression": "var_samp(AGE_NUM)",
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "VAR_STANDARD",
-			"expression": "var_pop(cast(AGE, number))",
-			"bindingDependencies": ["AGE"]
+			"expression": "var_pop(AGE_NUM)",
+			"bindingDependencies": ["AGE", "AGE_NUM"]
 		}
 	]
 }
