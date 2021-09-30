@@ -8,7 +8,7 @@ Le hook `useLunatic` permet de simplifier la gestion de l'état d'questionnaire 
 
 `source` (`object`) : questionnaire initial au format Lunatic-Model
 
-`data` (`object`) :
+`data` (`object`) : données du questionnaire déjà complétées
 
 ```json
 {
