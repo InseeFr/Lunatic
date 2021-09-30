@@ -8,7 +8,15 @@ Le hook `useLunatic` permet de simplifier la gestion de l'état d'questionnaire 
 
 `source` (`object`) : questionnaire initial au format Lunatic-Model
 
-`data` (`object`) : données du questionnaire déjà complétées
+`data` (`object`) : données connues du questionnaire. 
+
+Pour chaque variable collectée, il est possible de garder en mémoire 5 types de données.
+
+* **PREVIOUS** : valeur remplie par l'enquêté lors d'une précédente visite
+* **COLLECTED** : valeur collectées
+* **FORCED** : valeur 
+* **EDITED** : valeur éditiée par un gestionnaire
+* **INPUTED** : valeur inputée
 
 ```json
 {
