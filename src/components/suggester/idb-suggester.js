@@ -20,6 +20,7 @@ function IDBSuggester({
 	labelRenderer,
 	onSelect,
 	disabled,
+	value,
 }) {
 	const [store, setStore] = useState(undefined);
 	const search = useMemo(
@@ -27,7 +28,7 @@ function IDBSuggester({
 			if (store) {
 				return createSearching(storeName, idbVersion);
 			}
-			return () => [];
+			return undefined;
 		},
 		[storeName, idbVersion, store]
 	);
@@ -48,6 +49,7 @@ function IDBSuggester({
 				searching={search}
 				storeName={storeName}
 				disabled={disabled}
+				value={value}
 			/>
 		</CheckStore>
 	);

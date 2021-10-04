@@ -35,7 +35,7 @@ function Suggester({
 
 	const onSelect = useCallback(
 		function (suggestion) {
-			if (suggestion === null) {
+			if (!suggestion) {
 				setValue(null);
 				handleChange({
 					[U.getResponseName(response)]: null,
@@ -51,13 +51,10 @@ function Suggester({
 		[handleChange, response]
 	);
 
-	// Assume we only want to handle enable external updates
-	// Don't need to check all value changes
 	useEffect(() => {
-		if (U.getResponseByPreference(preferences)(response) !== value)
-			setValue(U.getResponseByPreference(preferences)(response));
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [response, preferences]);
+		const current = U.getResponseByPreference(preferences)(response);
+		if (current !== value) setValue(current);
+	}, [response, preferences, value]);
 
 	return (
 		<>
@@ -96,6 +93,7 @@ function Suggester({
 						disabled={disabled}
 						response={response}
 						id={id}
+						value={value}
 					/>
 				</FieldWrapper>
 			</LabelWrapper>

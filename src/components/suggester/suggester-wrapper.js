@@ -11,10 +11,16 @@ import DefaultLabelRenderer from './components/selection/default-label-renderer'
 import { DefaultOptionRenderer } from './components';
 import './default-style.scss';
 
+function getSearch(search, value) {
+	if (search && search.length) {
+		return search;
+	}
+	return value;
+}
+
 function SuggesterWrapper({
 	id,
 	className,
-	storeName,
 	version,
 	labelledBy,
 	placeholder,
@@ -23,6 +29,7 @@ function SuggesterWrapper({
 	searching,
 	labelRenderer,
 	disabled,
+	value,
 }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { search, selectedIndex, options } = state;
@@ -31,15 +38,19 @@ function SuggesterWrapper({
 		function () {
 			async function doIt() {
 				try {
-					const { results, search: old } = await searching(search);
-					dispatch(actions.onUpdateOptions(results, old));
+					const what = getSearch(search, value);
+					if (what && typeof searching === 'function') {
+						const { results, search: old } = await searching(what);
+						dispatch(actions.onUpdateOptions(results, old));
+					}
 				} catch (e) {
+					console.error(e);
 					dispatch(actions.onError('Une erreur est survenue.'));
 				}
 			}
 			doIt();
 		},
-		[search, searching]
+		[search, searching, value]
 	);
 
 	useEffect(
@@ -53,21 +64,22 @@ function SuggesterWrapper({
 
 	useEffect(
 		function () {
-			dispatch(actions.onInit({ id, disabled }));
+			dispatch(actions.onInit({ id, disabled, value }));
 		},
-		[id, disabled]
+		[id, disabled, value]
 	);
+
 	return (
 		<SuggesterContext.Provider value={[state, dispatch]}>
 			<Suggester
 				className={className}
 				placeholder={placeholder}
-				storeName={storeName}
 				version={version}
 				labelledBy={labelledBy}
 				optionRenderer={optionRenderer}
 				labelRenderer={labelRenderer}
 				onSelect={onSelect}
+				value={value}
 			/>
 		</SuggesterContext.Provider>
 	);
@@ -82,6 +94,13 @@ SuggesterWrapper.propTypes = {
 	labelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
 	storeInfo: PropTypes.object,
+	value: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+		PropTypes.bool,
+		PropTypes.object,
+	]),
+	searching: PropTypes.func,
 };
 
 SuggesterWrapper.defaultProps = {
@@ -93,6 +112,8 @@ SuggesterWrapper.defaultProps = {
 	labelRenderer: DefaultLabelRenderer,
 	language: 'French',
 	onSelect: () => null,
+	value: undefined,
+	searching: undefined,
 };
 
 export default SuggesterWrapper;

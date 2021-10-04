@@ -14,7 +14,7 @@
 			],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+" }
+				"params": { "language": "French", "pattern": "[\\w.]+", "min": 1 }
 			},
 			"version": "1"
 		},
@@ -121,11 +121,11 @@
 			"name": "BAILLEURS",
 			"componentRef": "bailleurs-sociaux",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTED": null
+				"PREVIOUS": "123",
+				"COLLECTED": "123",
+				"FORCED": "123",
+				"EDITED": "123",
+				"INPUTED": "123"
 			}
 		}
 	]
