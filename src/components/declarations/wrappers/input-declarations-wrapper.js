@@ -149,17 +149,19 @@ const InputDeclarationsWrapper = ({
 							required={mandatory}
 							aria-required={mandatory}
 							onChange={(e) => {
+								const v = e.target.value;
 								if (
+									// Chrome
 									Object.getPrototypeOf(e.nativeEvent).constructor.name ===
-									'Event'
+										'Event' ||
+									// FF hack: impossible to handle arrow events
+									Math.abs(v - value) === 1
 								) {
-									const v = e.target.value;
 									setValue(v);
 									handleChange({
 										[U.getResponseName(response)]: v,
 									});
 								} else {
-									const v = e.target.value;
 									if (isInputNumber) {
 										if (
 											numberAsTextfield &&

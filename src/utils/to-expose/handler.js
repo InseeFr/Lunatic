@@ -112,7 +112,8 @@ const addCalculatedVars = (variables, updatedValues) => (logFunction) => {
 			return { ...acc, [key]: v };
 		}
 		const calculatedVariables = getCalculatedVariables({ name: key, ...v })(
-			bindings
+			bindings,
+			acc
 		);
 		if (
 			isFunction(logFunction) &&
