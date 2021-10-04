@@ -1,14 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import SuggesterWrapper from './suggester-wrapper';
-import searching from './searching';
+import createSearching from './searching';
 import CheckStore from './check-store';
 
-function createSearching(storeName, version) {
-	return async function (search) {
-		return searching(search, storeName, version);
-	};
-}
+// function createSearching(storeName, version) {
+// 	return async function (search) {
+// 		return searching(search, storeName, version);
+// 	};
+// }
 
 function IDBSuggester({
 	storeName,

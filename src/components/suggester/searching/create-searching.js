@@ -2,8 +2,6 @@ const WORKER_PATH =
 	process.env.LUNATIC_SEARCH_WORKER_PATH ||
 	process.env.REACT_APP_LUNATIC_SEARCH_WORKER_PATH;
 
-let WORKER = undefined;
-
 export function isWorkerCompatible() {
 	if (window.Worker) {
 		return true;
@@ -11,19 +9,19 @@ export function isWorkerCompatible() {
 	return false;
 }
 
-function searching(search, name, version) {
+const searching = (worker) => (search, name, version) => {
 	if (!WORKER_PATH) {
 		throw new Error("Worker path is required for suggester's searchs.");
 	}
 	if (isWorkerCompatible()) {
 		return new Promise(function (resolve) {
 			try {
-				if (WORKER) {
-					WORKER.terminate();
+				if (worker) {
+					worker.terminate();
 				}
-				WORKER = new Worker(WORKER_PATH);
-				WORKER.postMessage({ search, name, version });
-				WORKER.addEventListener('message', function (e) {
+				worker = new Worker(WORKER_PATH);
+				worker.postMessage({ search, name, version });
+				worker.addEventListener('message', function (e) {
 					const { data } = e;
 					resolve(data);
 				});
@@ -34,6 +32,14 @@ function searching(search, name, version) {
 	} else {
 		// TODO
 	}
+};
+
+function createSearching(name, version) {
+	let WORKER = undefined;
+	const searching_ = searching(WORKER);
+	return async function (search) {
+		return searching_(search, name, version);
+	};
 }
 
-export default searching;
+export default createSearching;
