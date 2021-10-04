@@ -37,6 +37,7 @@ const Loop = ({
 	useEffect(() => {
 		const toUpdate = involvedVariables.reduce((acc, { name: iv, depth }) => {
 			if (bindings[iv]) {
+				if (iterationNb === bindings[iv].length) return acc;
 				if (iterationNb <= bindings[iv].length)
 					return {
 						...acc,

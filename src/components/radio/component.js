@@ -6,4 +6,4 @@ import './radio.scss';
 
 const Radio = (props) => <ListDeclarationsWrapper type="radio" {...props} />;
 
-export default React.memo(missingWrapper(Radio), areEqual);
+export default missingWrapper(React.memo(Radio, areEqual));

@@ -169,4 +169,4 @@ CheckboxBoolean.propTypes = {
 	style: PropTypes.object,
 };
 
-export default React.memo(missingWrapper(CheckboxBoolean), U.areEqual);
+export default missingWrapper(React.memo(CheckboxBoolean, U.areEqual));

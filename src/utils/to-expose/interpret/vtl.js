@@ -3,7 +3,7 @@ import { interpret } from '@inseefr/trevas';
 const extractDSValue = (v) => {
 	if (v !== null && typeof v === 'object') {
 		const { dataPoints } = v;
-		return Object.values(dataPoints)[0] || null;
+		return Object.values(dataPoints)[0];
 	}
 	return v;
 };

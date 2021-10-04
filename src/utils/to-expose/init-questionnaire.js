@@ -59,13 +59,12 @@ const buildVars = (data) => (variables) => {
 		},
 		{}
 	);
-
 	const CALCULATED = variables
 		.filter(({ variableType }) => variableType === C.CALCULATED)
 		.reduce(
 			(_, v) => ({
 				..._,
-				...getCalculatedVariables(v)(bindings),
+				...getCalculatedVariables(v)(bindings, _),
 			}),
 			{}
 		);
@@ -168,14 +167,16 @@ const initExternalVariable =
 		[name]: (data && data.EXTERNAL && data.EXTERNAL[name]) || null,
 	});
 
+// TODO: Handle "good" order when a calc var depends on another one
 export const getCalculatedVariables =
 	({ name, expression, bindingDependencies, shapeFrom }) =>
-	(bindings) => {
+	(bindings, alreadyCalculatedVars) => {
 		const value = getValue(
 			bindings,
 			bindingDependencies,
 			expression,
-			shapeFrom
+			shapeFrom,
+			alreadyCalculatedVars
 		);
 		const handleTempMomentValue =
 			value && value._isAMomentObject ? value.format('DD-MM-YYYY') : value;
@@ -197,11 +198,22 @@ export const getCalculatedVariables =
 		};
 	};
 
-const getValue = (bindings, bindingDependencies, expression, shapeFrom) => {
-	const interestBindings = (bindingDependencies || []).reduce(
-		(acc, b) => ({ ...acc, [b]: bindings[b] }),
-		{}
-	);
+const getValue = (
+	bindings,
+	bindingDependencies,
+	expression,
+	shapeFrom,
+	alreadyCalculatedVars = {}
+) => {
+	const interestBindings = (bindingDependencies || []).reduce((acc, b) => {
+		const bind = bindings[b];
+		const bOrCV =
+			!bind & (bind !== null) ? alreadyCalculatedVars[b]?.value : bind;
+		return {
+			...acc,
+			[b]: bOrCV,
+		};
+	}, {});
 	if (!shapeFrom) {
 		const vectorialBindings = buildVectorialBindings(interestBindings);
 		const res = interpret(['VTL'])(vectorialBindings)(expression);
