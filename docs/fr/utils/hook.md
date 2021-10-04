@@ -10,11 +10,11 @@ Le hook `useLunatic` permet de simplifier la gestion de l'état d'questionnaire 
 
 `data` (`object`) : données connues du questionnaire. 
 
-Pour chaque variable collectée, il est possible de garder en mémoire 5 types de données.
+Pour chaque variable, il est possible de garder en mémoire 5 types de données.
 
 * **PREVIOUS** : valeur remplie par l'enquêté lors d'une précédente visite
-* **COLLECTED** : valeur collectées
-* **FORCED** : valeur 
+* **COLLECTED** : valeur collectée
+* **FORCED** : valeur forcée
 * **EDITED** : valeur éditiée par un gestionnaire
 * **INPUTED** : valeur inputée
 
