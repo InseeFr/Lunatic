@@ -1,16 +1,12 @@
-import { CONSTANTES } from '../../store-tools';
-import { getEntity } from '../../idb-tools';
 import { queryParserTokenized, queryParserSoft } from '../query-parser';
 
 let PARSERS = {};
 
-async function resolve(db, name) {
+async function resolve(name, queryParser) {
 	if (name in PARSERS) {
 		return PARSERS[name];
 	}
 	try {
-		const info = await getEntity(db, CONSTANTES.STORE_INFO_NAME, name);
-		const { queryParser } = info;
 		const { type } = queryParser;
 		switch (type) {
 			case 'tokenized':
@@ -23,7 +19,7 @@ async function resolve(db, name) {
 				PARSERS[name] = queryParserSoft;
 				return queryParserSoft;
 			default:
-				throw new Error(`Unknow parser type ${type}`);
+				throw new Error(`Unknown parser type ${type}`);
 		}
 	} catch (e) {
 		throw new Error(e);

@@ -14,7 +14,7 @@
 			],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+" }
+				"params": { "language": "French", "pattern": "[\\w.]+", "min": 1 }
 			},
 			"version": "1"
 		},
@@ -26,25 +26,33 @@
 				{ "name": "nccenr", "rules": "soft" },
 				{ "name": "id", "rules": "soft" }
 			],
+			"order": { "type": "ascending", "field": "label" },
 			"queryParser": { "type": "soft" },
 			"version": "1"
 		},
-		"cog-tokenized": {
-			"name": "cog-tokenized",
-			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
+		"bailleurs-sociaux": {
+			"name": "bailleurs-sociaux",
+			"url": "https://inseefr.github.io/Lunatic/storybook/bailleurs-sociaux.json",
 			"fields": [
-				 
-				{ "name": "label", "rules": ["[\\w]+"],
+				{
+					"name": "libelle1",
+					"rules": ["[\\w]+"],
 					"language": "French",
-					"stemmer": false,
-					"min": 2 }, 
-				{ "name": "id", "rules": "soft" }
+					"stemmer": false
+				},
+				{
+					"name": "libelle2",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"stemmer": false
+				},
+				{ "name": "code" }
 			],
-			"stopWords": [],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+", "stemmer": false }
+				"params": { "language": "French", "pattern": "[\\w]+", "min": "1" }
 			},
+			"max": 10,
 			"version": "1"
 		}
 	},
@@ -72,14 +80,14 @@
 			}
 		},
 		{
-			"id": "sugg-cog-tokenized",
+			"id": "bailleurs-sociaux",
 			"componentType": "Suggester",
 			"mandatory": false,
-			"label": "French municipalities with tokenized label",
-			"path": "data/communes-tok",
-			"storeName": "cog-tokenized",
+			"label": "Bailleurs sociaux",
+			"path": "data/bailleurs",
+			"storeName": "bailleurs-sociaux",
 			"response": {
-				"name": "COMMUNES"
+				"name": "BAILLEURS"
 			}
 		}
 	],
@@ -106,6 +114,18 @@
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "BAILLEURS",
+			"componentRef": "bailleurs-sociaux",
+			"values": {
+				"PREVIOUS": "123",
+				"COLLECTED": "123",
+				"FORCED": "123",
+				"EDITED": "123",
+				"INPUTED": "123"
 			}
 		}
 	]

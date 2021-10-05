@@ -1,5 +1,6 @@
 import getDb from './get-db';
 import { CONSTANTES } from '../../store-tools';
+import { getEntity } from '../../idb-tools';
 import searchInIndex from './search-in-index';
 import resolveQueryParser from './resolve-query-parser';
 import computeScore from './compute-score';
@@ -27,17 +28,19 @@ function isValideSearch(search) {
 }
 
 function filterSize(response, max) {
-	if (Array.isArray(response)) {
+	if (max && max < response.length) {
 		return response.slice(0, max);
 	}
 	return response;
 }
 
-async function searching(search, { name, version = '1', max = 30, order }) {
+async function searching(search, { name, version = '1' }) {
 	try {
 		if (isValideSearch(search)) {
 			const db = await getDb(name, version);
-			const parser = await resolveQueryParser(db, name);
+			const info = await getEntity(db, CONSTANTES.STORE_INFO_NAME, name);
+			const { queryParser, max, order } = info;
+			const parser = await resolveQueryParser(name, queryParser);
 			const transaction = db.transaction(
 				CONSTANTES.STORE_DATA_NAME,
 				'readonly'
@@ -46,19 +49,12 @@ async function searching(search, { name, version = '1', max = 30, order }) {
 			const index = store.index(CONSTANTES.STORE_INDEX_NAME);
 			const tokens = parser(search);
 			const tokensSuggestions = await searchTokens(tokens, index);
-
 			const response = computeScore(tokensSuggestions);
-			if (max && max < response.length) {
-				return {
-					results: prepare(
-						getOrderingFunction(order)(filterSize(response), order)
-					),
-					search,
-				};
-			}
 
 			return {
-				results: prepare(getOrderingFunction(order)(response, order)),
+				results: prepare(
+					getOrderingFunction(order)(filterSize(response, max), order)
+				),
 				search,
 			};
 		}

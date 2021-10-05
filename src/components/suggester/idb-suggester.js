@@ -1,14 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import SuggesterWrapper from './suggester-wrapper';
-import { searching } from './searching';
+import createSearching from './searching';
 import CheckStore from './check-store';
-
-function createSearching(storeName, version) {
-	return async function (search, max) {
-		return searching(search, storeName, version, max);
-	};
-}
 
 function IDBSuggester({
 	storeName,
@@ -20,7 +14,7 @@ function IDBSuggester({
 	labelRenderer,
 	onSelect,
 	disabled,
-	max,
+	value,
 }) {
 	const [store, setStore] = useState(undefined);
 	const search = useMemo(
@@ -28,7 +22,7 @@ function IDBSuggester({
 			if (store) {
 				return createSearching(storeName, idbVersion);
 			}
-			return () => [];
+			return undefined;
 		},
 		[storeName, idbVersion, store]
 	);
@@ -49,7 +43,7 @@ function IDBSuggester({
 				searching={search}
 				storeName={storeName}
 				disabled={disabled}
-				max={max}
+				value={value}
 			/>
 		</CheckStore>
 	);
@@ -68,7 +62,6 @@ IDBSuggester.propTypes = {
 	optionRenderer: PropTypes.func,
 	labelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
-	max: PropTypes.number,
 };
 
 export default IDBSuggester;

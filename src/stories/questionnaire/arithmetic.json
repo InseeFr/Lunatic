@@ -166,13 +166,6 @@
 		},
 		{
 			"variableType": "CALCULATED",
-			"name": "AGE_NUM",
-			"expression": "cast(nvl(AGE, \"0\"), integer)",
-			"bindingDependencies": ["AGE"],
-			"shapeFrom": "AGE"
-		},
-		{
-			"variableType": "CALCULATED",
 			"name": "SUM",
 			"expression": "sum(AGE_NUM)",
 			"bindingDependencies": ["AGE", "AGE_NUM"]
@@ -212,6 +205,13 @@
 			"name": "DEV_STANDARD",
 			"expression": "stddev_pop(AGE_NUM)",
 			"bindingDependencies": ["AGE", "AGE_NUM"]
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "AGE_NUM",
+			"expression": "cast(nvl(AGE, \"0\"), integer)",
+			"bindingDependencies": ["AGE"],
+			"shapeFrom": "AGE"
 		},
 		{
 			"variableType": "CALCULATED",

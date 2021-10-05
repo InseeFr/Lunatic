@@ -15,6 +15,7 @@ function Suggester({
 	optionRenderer,
 	labelRenderer,
 	onSelect,
+	value,
 }) {
 	const inputEl = useRef();
 	const [state, dispatch] = useContext(SuggesterContext);
@@ -34,8 +35,8 @@ function Suggester({
 
 	const onDelete = useCallback(
 		function () {
-			onSelect(null);
-			dispatch(actions.onChangeSearch(''));
+			dispatch(actions.onDeleteSearch());
+			onSelect(undefined);
 		},
 		[dispatch, onSelect]
 	);
@@ -73,7 +74,7 @@ function Suggester({
 					labelledBy={labelledBy}
 					ref={inputEl}
 				/>
-				<Panel optionRenderer={optionRenderer} />
+				<Panel optionRenderer={optionRenderer} value={value} />
 			</SuggesterContent>
 			<Delete
 				className={classnames({ focused })}

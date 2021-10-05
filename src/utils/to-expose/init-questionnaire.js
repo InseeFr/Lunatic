@@ -1,9 +1,5 @@
 import * as C from '../../constants';
-import { interpret } from './interpret';
-import {
-	buildVectorialBindings,
-	buildBindingsForDeeperComponents,
-} from '../lib/loops/bindings';
+import { getCalculatedVariables } from './calculated-variables';
 import { isDev } from '../lib';
 
 const INITIAL_DEPTH = 1;
@@ -59,15 +55,15 @@ const buildVars = (data) => (variables) => {
 		},
 		{}
 	);
-	const CALCULATED = variables
+
+	const calcVarsAsObj = variables
 		.filter(({ variableType }) => variableType === C.CALCULATED)
-		.reduce(
-			(_, v) => ({
-				..._,
-				...getCalculatedVariables(v)(bindings, _),
-			}),
-			{}
-		);
+		.reduce((accV, { name, ...rest }) => ({ ...accV, [name]: rest }), {});
+
+	const CALCULATED = getCalculatedVariables(calcVarsAsObj)({
+		bindings,
+		init: true,
+	});
 
 	if (isDev) console.log(`End init vars: ${new Date().getTime() - start} ms`);
 
@@ -165,71 +161,4 @@ const initExternalVariable =
 	({ name }) =>
 	(data) => ({
 		[name]: (data && data.EXTERNAL && data.EXTERNAL[name]) || null,
-	});
-
-// TODO: Handle "good" order when a calc var depends on another one
-export const getCalculatedVariables =
-	({ name, expression, bindingDependencies, shapeFrom }) =>
-	(bindings, alreadyCalculatedVars) => {
-		const value = getValue(
-			bindings,
-			bindingDependencies,
-			expression,
-			shapeFrom,
-			alreadyCalculatedVars
-		);
-		const handleTempMomentValue =
-			value && value._isAMomentObject ? value.format('DD-MM-YYYY') : value;
-		if (shapeFrom)
-			return {
-				[name]: {
-					expression,
-					bindingDependencies,
-					value: handleTempMomentValue,
-					shapeFrom,
-				},
-			};
-		return {
-			[name]: {
-				expression,
-				bindingDependencies,
-				value: handleTempMomentValue,
-			},
-		};
-	};
-
-const getValue = (
-	bindings,
-	bindingDependencies,
-	expression,
-	shapeFrom,
-	alreadyCalculatedVars = {}
-) => {
-	const interestBindings = (bindingDependencies || []).reduce((acc, b) => {
-		const bind = bindings[b];
-		const bOrCV =
-			!bind & (bind !== null) ? alreadyCalculatedVars[b]?.value : bind;
-		return {
-			...acc,
-			[b]: bOrCV,
-		};
-	}, {});
-	if (!shapeFrom) {
-		const vectorialBindings = buildVectorialBindings(interestBindings);
-		const res = interpret(['VTL'])(vectorialBindings)(expression);
-		return Array.isArray(res) ? res[0] : res;
-	}
-	const shape = bindings[shapeFrom];
-	return buildShape(interestBindings, expression)(shape);
-};
-
-const buildShape = (bindings, expression) => (array) =>
-	array.map((a, i) => {
-		const loopBindings = buildBindingsForDeeperComponents(i)(bindings);
-		if (Array.isArray(a)) {
-			return buildShape(loopBindings, expression)(a);
-		}
-		const vectorialBindings = buildVectorialBindings(loopBindings);
-		const res = interpret(['VTL'])(vectorialBindings)(expression);
-		return Array.isArray(res) ? res[0] : res;
 	});

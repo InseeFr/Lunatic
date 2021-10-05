@@ -12,6 +12,7 @@ import { text, boolean, object, select } from '@storybook/addon-knobs/react';
 import { SuggesterLoaderWidget } from 'components';
 import * as NAF from './naf-rev2';
 import * as COG from './cog-communes';
+import * as BAILLEURS from './bailleurs-sociaux';
 
 /**
  *
@@ -21,8 +22,8 @@ function getSuggesterInfo(name) {
 		return { optionRenderer: NAF.OptionRenderer, idbVersion: '1' };
 	} else if (name === 'cog-communes') {
 		return { optionRenderer: COG.OptionRenderer, idbVersion: '1' };
-	} else if (name === 'cog-tokenized') {
-		return { optionRenderer: COG.OptionRenderer, idbVersion: '1' };
+	} else if (name === 'bailleurs-sociaux') {
+		return { optionRenderer: BAILLEURS.OptionRenderer, idbVersion: '1' };
 	}
 	console.warn(`Unknown store : ${name}`);
 	return {};
@@ -36,8 +37,8 @@ function getWidgetLoaderInfo(name) {
 		};
 	} else if (name === 'cog-communes') {
 		return { fetch: COG.fetch, idbVersion: '1' };
-	} else if (name === 'cog-tokenized') {
-		return { fetch: COG.fetch, idbVersion: '1' };
+	} else if (name === 'bailleurs-sociaux') {
+		return { fetch: BAILLEURS.fetch, idbVersion: '1' };
 	}
 	console.warn(`Unknown store : ${name}`);
 	return {};
