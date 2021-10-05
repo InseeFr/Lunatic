@@ -9,11 +9,11 @@ import {
 	EVENT_VALUE_CHANGE,
 } from '../../constants/event-types';
 
-export const getCalculatedVariablesTest =
+export const getCalculatedVariables =
 	(variables) => (bindings, updatedVars, logFunction) => {
 		let wip = {};
-		return Object.entries(variables).reduce((acc, [name, v]) => {
-			const value = getCalculatedVariable({ name, ...v })(variables)(
+		return Object.entries(variables).reduce((acc, [name, v], i) => {
+			const value = getCalculatedVariable(v, name)(variables)(
 				bindings,
 				wip,
 				updatedVars,
@@ -27,8 +27,8 @@ export const getCalculatedVariablesTest =
 	};
 
 const getCalculatedVariable =
-	(v) => (variables) => (bindings, wip, updatedVars, logFunction) => {
-		const { bindingDependencies, name } = v;
+	(v, name) => (variables) => (bindings, wip, updatedVars, logFunction) => {
+		const { bindingDependencies } = v;
 		if (!Array.isArray(bindingDependencies)) return v;
 		if (
 			Array.isArray(updatedVars) &&
@@ -41,6 +41,7 @@ const getCalculatedVariable =
 			if (bindings[b] !== undefined) return { ...acc, [b]: bindings[b] };
 			if (wip[b] !== undefined) return { ...acc, [b]: wip[b] };
 			const varToCalc = variables[b];
+			if (!varToCalc) return acc;
 			const newValue = getCalculatedVariable(varToCalc)(variables)(
 				bindings,
 				wip,

@@ -1,7 +1,7 @@
 import * as C from '../../constants';
 import { buildFilledComponent } from './init-questionnaire';
 import { supportedPreferences } from '../../constants/supported-preferences';
-import { getCalculatedVariablesTest } from './calculated-variables';
+import { getCalculatedVariables } from './calculated-variables';
 import { isDev } from '../lib';
 
 export const updateQuestionnaire =
@@ -99,7 +99,7 @@ const addCalculatedVars = (variables, updatedValues) => (logFunction) => {
 
 	const bindings = getCollectedAndExternal(variables);
 
-	const CALCULATED = getCalculatedVariablesTest(calculatedVariables)(
+	const CALCULATED = getCalculatedVariables(calculatedVariables)(
 		bindings,
 		updatedVars,
 		logFunction

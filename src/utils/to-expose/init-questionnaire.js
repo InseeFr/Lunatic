@@ -1,5 +1,5 @@
 import * as C from '../../constants';
-import { getCalculatedVariablesTest } from './calculated-variables';
+import { getCalculatedVariables } from './calculated-variables';
 import { isDev } from '../lib';
 
 const INITIAL_DEPTH = 1;
@@ -60,7 +60,7 @@ const buildVars = (data) => (variables) => {
 		.filter(({ variableType }) => variableType === C.CALCULATED)
 		.reduce((accV, { name, ...rest }) => ({ ...accV, [name]: rest }), {});
 
-	const CALCULATED = getCalculatedVariablesTest(calcVarsAsObj)(bindings);
+	const CALCULATED = getCalculatedVariables(calcVarsAsObj)(bindings);
 
 	if (isDev) console.log(`End init vars: ${new Date().getTime() - start} ms`);
 
