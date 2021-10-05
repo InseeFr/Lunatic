@@ -10,15 +10,17 @@ import {
 } from '../../constants/event-types';
 
 export const getCalculatedVariables =
-	(variables) => (bindings, updatedVars, logFunction) => {
+	(variables) =>
+	({ bindings, updatedVars, logFunction, init = false }) => {
 		let wip = {};
-		return Object.entries(variables).reduce((acc, [name, v], i) => {
-			const value = getCalculatedVariable(v, name)(variables)(
+		return Object.entries(variables).reduce((acc, [name, v]) => {
+			const value = getCalculatedVariable(v, name)(variables)({
 				bindings,
 				wip,
 				updatedVars,
-				logFunction
-			);
+				logFunction,
+				init,
+			});
 			return {
 				...acc,
 				[name]: value,
@@ -27,9 +29,11 @@ export const getCalculatedVariables =
 	};
 
 const getCalculatedVariable =
-	(v, name) => (variables) => (bindings, wip, updatedVars, logFunction) => {
+	(v, name) =>
+	(variables) =>
+	({ bindings, wip, updatedVars, logFunction, init }) => {
 		const { bindingDependencies } = v;
-		if (!Array.isArray(bindingDependencies)) return v;
+		if (!init && !Array.isArray(bindingDependencies)) return v;
 		if (
 			Array.isArray(updatedVars) &&
 			updatedVars.length > 0 &&
@@ -37,16 +41,17 @@ const getCalculatedVariable =
 			!updatedVars.some((ai) => bindingDependencies.includes(ai))
 		)
 			return v;
-		const exactBindings = bindingDependencies.reduce((acc, b) => {
+		const exactBindings = (bindingDependencies || []).reduce((acc, b) => {
 			if (bindings[b] !== undefined) return { ...acc, [b]: bindings[b] };
 			if (wip[b] !== undefined) return { ...acc, [b]: wip[b] };
 			const varToCalc = variables[b];
 			if (!varToCalc) return acc;
-			const newValue = getCalculatedVariable(varToCalc)(variables)(
+			const newValue = getCalculatedVariable(varToCalc)(variables)({
 				bindings,
 				wip,
-				updatedVars
-			);
+				updatedVars,
+				init,
+			});
 			wip[b] = newValue.value;
 			return { ...acc, [b]: newValue.value };
 		}, {});

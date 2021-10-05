@@ -99,11 +99,11 @@ const addCalculatedVars = (variables, updatedValues) => (logFunction) => {
 
 	const bindings = getCollectedAndExternal(variables);
 
-	const CALCULATED = getCalculatedVariables(calculatedVariables)(
+	const CALCULATED = getCalculatedVariables(calculatedVariables)({
 		bindings,
 		updatedVars,
-		logFunction
-	);
+		logFunction,
+	});
 
 	if (isDev)
 		console.log(`End var calculation: ${new Date().getTime() - start} ms`);

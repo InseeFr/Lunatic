@@ -60,7 +60,10 @@ const buildVars = (data) => (variables) => {
 		.filter(({ variableType }) => variableType === C.CALCULATED)
 		.reduce((accV, { name, ...rest }) => ({ ...accV, [name]: rest }), {});
 
-	const CALCULATED = getCalculatedVariables(calcVarsAsObj)(bindings);
+	const CALCULATED = getCalculatedVariables(calcVarsAsObj)({
+		bindings,
+		init: true,
+	});
 
 	if (isDev) console.log(`End init vars: ${new Date().getTime() - start} ms`);
 
