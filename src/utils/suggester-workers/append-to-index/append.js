@@ -1,34 +1,7 @@
 import { CONSTANTES } from '../../store-tools';
 import { openDb, idbBulkInsert } from '../../idb-tools';
 import MESSAGES from './store-messages';
-import { createTokenizer } from '../commons-tokenizer';
-
-function prepareEntities(entities, { fields, stopWords, stemmer }, log) {
-	const tokenizer = createTokenizer(fields, stopWords, stemmer);
-
-	let done = 0;
-	const size = 1000;
-	const max = entities.length;
-
-	return entities.map(function (suggestion) {
-		const { id } = suggestion;
-		if (id) {
-			const tokens = tokenizer(suggestion);
-			done++;
-			if (done % size === 0 || done === max) {
-				log({
-					message: {
-						...MESSAGES.indexBatch,
-						max,
-						done,
-						percent: (done / max) * 100,
-					},
-				});
-			}
-			return { id, suggestion, tokens };
-		} else throw new Error(`Missing id on entity.`);
-	}, []);
-}
+import prepareEntities from './prepare-entities';
 
 async function append(storeInfo, version, entities, log = () => null) {
 	try {
@@ -44,7 +17,7 @@ async function append(storeInfo, version, entities, log = () => null) {
 		log({ message: MESSAGES.done });
 		return 'success';
 	} catch (e) {
-		log({ message: 'Errors occured when trying to append data.' });
+		log({ message: 'Errors occurred when trying to append data.' });
 		console.error(e);
 	}
 }

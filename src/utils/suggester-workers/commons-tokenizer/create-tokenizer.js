@@ -25,7 +25,7 @@ export function tokensToArray(tokenized) {
 
 function createMapFieldsTokenizer(fields, filterStopWords) {
 	return fields.reduce(function (mapFieldTokenizers, f) {
-		const { name, rules = [], min, language = 'French', stemmer } = f;
+		const { name, rules = [], min, language = 'French', stemmer = true } = f;
 		if (rules === 'soft') {
 			return { ...mapFieldTokenizers, [name]: softTokenizer };
 		}
@@ -66,8 +66,11 @@ function createTokenizer(fields, stopWords) {
 	return function (field, entity) {
 		const { name } = field;
 		const tokenizeIt = FIELDS_TOKENIZER_MAP[name];
-		const value = `${entity[name]}`;
-		return tokenizeIt(removeAccents(`${value}`).toLowerCase());
+		if (name in entity) {
+			const value = `${entity[name]}`;
+			return tokenizeIt(removeAccents(`${value}`).toLowerCase());
+		}
+		return [];
 	};
 }
 

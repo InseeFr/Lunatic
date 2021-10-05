@@ -1,6 +1,6 @@
-import React, { useContext, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import classnames from 'classnames';
-import { actions, SuggesterContext } from '../../state-management';
+import { actions, SuggesterContext, useDispatch } from '../../state-management';
 
 function getMin(rect) {
 	const { top } = rect;
@@ -21,11 +21,9 @@ function isVisible(optionRect, parentRect) {
 	return false;
 }
 
-function OptionContainer({ children, index }) {
+function OptionContainer({ children, index, selected }) {
 	const ref = useRef();
-	const [state, dispatch] = useContext(SuggesterContext);
-	const { selectedIndex } = state;
-	const selected = index === selectedIndex;
+	const dispatch = useDispatch(SuggesterContext);
 
 	function onClick(e) {
 		e.stopPropagation();

@@ -27,3 +27,18 @@
 ## Styles
 
 **Suggester** component has for classes XXX.
+
+## Json-lunatic store-info
+{
+    suggester: {  [name] : {
+            name,
+            fields: [{ name: string, rules: [regexp]|'soft'|undefined, language: string|undefined, stemmer: boolean, min: integer }],
+            queryParser: 
+                {type: 'soft'}|
+                {type:'tokenized', params: { language: string, rules: [regexp]|undefined, stemmer: boolean|undefined },
+            stopWords: [string]|undefined,
+            order: { type: 'ascending'|'descending', field: string }|undefined,
+            version: string
+        }
+    } , ...
+}

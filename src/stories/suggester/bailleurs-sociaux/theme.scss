@@ -1,0 +1,10 @@
+.option-bailleur {
+	white-space: nowrap;
+	overflow: hidden;
+
+	&.selected {
+		.bailleur-label {
+			color: goldenrod;
+		}
+	}
+}

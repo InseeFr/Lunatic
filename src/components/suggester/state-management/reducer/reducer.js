@@ -7,6 +7,7 @@ import reduceOnClickOption from './reduce-on-click-option';
 import reduceOnKeyDown from './reduce-on-key-down';
 import reduceOnInit from './reduce-on-init';
 import reduceOnError from './reduce-on-error';
+import reduceOnDeleteSearch from './reduce-on-delete-search';
 
 function reduce(state, action) {
 	const { type } = action;
@@ -27,6 +28,8 @@ function reduce(state, action) {
 			return reduceOnInit(state, action);
 		case actions.ON_ERROR:
 			return reduceOnError(state, action);
+		case actions.ON_DELETE_SEARCH:
+			return reduceOnDeleteSearch(state, action);
 		default:
 			return state;
 	}
