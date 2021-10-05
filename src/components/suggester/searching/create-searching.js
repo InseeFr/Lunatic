@@ -11,7 +11,7 @@ export function isWorkerCompatible() {
 
 const searching = (worker) => (search, name, version) => {
 	if (!WORKER_PATH) {
-		throw new Error("Worker path is required for suggester's searchs.");
+		throw new Error("Worker path is required for suggester's searches.");
 	}
 	if (isWorkerCompatible()) {
 		return new Promise(function (resolve) {

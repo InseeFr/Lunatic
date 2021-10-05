@@ -4,12 +4,6 @@ import SuggesterWrapper from './suggester-wrapper';
 import createSearching from './searching';
 import CheckStore from './check-store';
 
-// function createSearching(storeName, version) {
-// 	return async function (search) {
-// 		return searching(search, storeName, version);
-// 	};
-// }
-
 function IDBSuggester({
 	storeName,
 	idbVersion,

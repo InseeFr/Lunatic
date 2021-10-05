@@ -35,8 +35,8 @@ function Suggester({
 
 	const onDelete = useCallback(
 		function () {
-			onSelect(null);
-			dispatch(actions.onChangeSearch(''));
+			dispatch(actions.onDeleteSearch());
+			onSelect(undefined);
 		},
 		[dispatch, onSelect]
 	);

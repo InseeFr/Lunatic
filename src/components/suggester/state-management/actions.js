@@ -33,3 +33,6 @@ export const onKeyDown = (key) => ({ type: ON_KEY_DOWN, payload: { key } });
 
 export const ON_ERROR = 'lunatic-suggester/on-error';
 export const onError = (message) => ({ type: ON_ERROR, payload: { message } });
+
+export const ON_DELETE_SEARCH = 'lunatic-suggester/on-delete-search';
+export const onDeleteSearch = () => ({ type: ON_DELETE_SEARCH });

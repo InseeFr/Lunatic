@@ -7,6 +7,13 @@ import IDBSuggester from './idb-suggester';
 import LabelWrapper from '../../utils/components/label-wrapper';
 import FieldWrapper from '../../utils/components/field-wrapper';
 
+function getSuggestionId(suggestion) {
+	if (suggestion) {
+		return suggestion.id;
+	}
+	return null;
+}
+
 function Suggester({
 	id,
 	label,
@@ -30,31 +37,17 @@ function Suggester({
 	const [value, setValue] = useState(() =>
 		U.getResponseByPreference(preferences)(response)
 	);
-
 	const labelId = `suggester-label-${id}`;
-
 	const onSelect = useCallback(
 		function (suggestion) {
-			if (!suggestion) {
-				setValue(null);
-				handleChange({
-					[U.getResponseName(response)]: null,
-				});
-			} else {
-				const { id } = suggestion;
-				setValue(id);
-				handleChange({
-					[U.getResponseName(response)]: id,
-				});
-			}
+			const ids = getSuggestionId(suggestion);
+			handleChange({
+				[U.getResponseName(response)]: ids,
+			});
+			setValue(ids);
 		},
 		[handleChange, response]
 	);
-
-	useEffect(() => {
-		const current = U.getResponseByPreference(preferences)(response);
-		if (current !== value) setValue(current);
-	}, [response, preferences, value]);
 
 	return (
 		<>

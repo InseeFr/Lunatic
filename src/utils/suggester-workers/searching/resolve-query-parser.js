@@ -19,7 +19,7 @@ async function resolve(name, queryParser) {
 				PARSERS[name] = queryParserSoft;
 				return queryParserSoft;
 			default:
-				throw new Error(`Unknow parser type ${type}`);
+				throw new Error(`Unknown parser type ${type}`);
 		}
 	} catch (e) {
 		throw new Error(e);
