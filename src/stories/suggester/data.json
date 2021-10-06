@@ -53,7 +53,7 @@
 				"params": { "language": "French", "pattern": "[\\w]+", "min": "1" }
 			},
 			"stopWords": [],
-			"max": 6,
+			"max": 30,
 			"version": "1"
 		}
 	},

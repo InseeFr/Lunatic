@@ -10,6 +10,7 @@ function createFindBestLabel() {
 			worker.addEventListener('message', function (e) {
 				const { data } = e;
 				resolve(data);
+				worker.terminate();
 			});
 			worker.postMessage({ option, search });
 		});
