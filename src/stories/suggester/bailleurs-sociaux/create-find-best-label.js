@@ -11,6 +11,7 @@ function createFindBestLabel() {
 				const { data } = e;
 				resolve(data);
 				worker.terminate();
+				worker = undefined;
 			});
 			worker.postMessage({ option, search });
 		});

@@ -3,10 +3,21 @@ import classnames from 'classnames';
 import createFindBestLabel from './create-find-best-label';
 import './theme.scss';
 
+function getLabel(option, attribut) {
+	const { libelle1, libelle2, code } = option;
+	switch (attribut) {
+		case 'libelle2':
+			return `${code} - ${libelle2}`;
+		default:
+			return `${code} - ${libelle1}`;
+	}
+}
+
 function OptionBailleurRenderer({ option, selected, search }) {
-	const { label: il, typorg } = option;
+	const { typorg } = option;
 	const [computed, setComputed] = useState(false);
-	const [label, setLabel] = useState(il);
+	const [attribut, setAttribut] = useState('libelle1');
+
 	const findLabel = useMemo(() => createFindBestLabel(), []);
 	const { tokensMap } = option;
 
@@ -15,9 +26,8 @@ function OptionBailleurRenderer({ option, selected, search }) {
 			let unmount = false;
 			async function doIt() {
 				const best = await findLabel(option, search);
-
 				if (!unmount) {
-					setLabel(option[best]);
+					setAttribut(best);
 					setComputed(true);
 				}
 			}
@@ -38,7 +48,9 @@ function OptionBailleurRenderer({ option, selected, search }) {
 				computed,
 			})}
 		>
-			<span className={classnames('bailleur-label', {})}>{label}</span>
+			<span className={classnames('bailleur-label', {})}>
+				{getLabel(option, attribut)}
+			</span>
 		</div>
 	);
 }
