@@ -40,6 +40,7 @@
 		"analyze": "yarn build && source-map-explorer lib/index.js --html bundle-report/lunatic.html",
 		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
+		"build-tokenize-worker": "webpack --config ./webpack-tokenize-worker.config.js",
 		"build-workers": "yarn build-append-worker && yarn build-searching-worker"
 	},
 	"keywords": [
@@ -83,6 +84,7 @@
 		"core-js": "^3.17.3",
 		"cross-env": "^7.0.2",
 		"css-loader": "^5.0.0",
+		"damerau-levenshtein": "^1.0.7",
 		"enzyme": "^3.7.0",
 		"eslint": "7.30.0",
 		"eslint-config-prettier": "^7.2.0",
