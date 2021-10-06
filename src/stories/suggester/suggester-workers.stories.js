@@ -57,7 +57,7 @@ const bailleursSociaux = {
 	],
 	queryParser: {
 		type: 'tokenized',
-		params: { language: 'French', pattern: '[\\w]+', min: '1' },
+		params: { language: 'French', pattern: '[\\w]+', min: '1', stemmer: false },
 	},
 	max: 10,
 	version: '1',
