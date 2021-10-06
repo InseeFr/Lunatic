@@ -4,10 +4,11 @@ var version = PACKAGE.workersVersion;
 
 module.exports = {
 	mode: 'production',
-	entry: './src/utils/suggester-workers/tokenize/tokenize.worker.js',
+	entry:
+		'./src/utils/suggester-workers/find-best-label/find-best-label.worker.js',
 	output: {
 		path: path.resolve(`./workers-release/${version}`),
-		filename: `lunatic-tokenize-worker-${version}.js`,
+		filename: `lunatic-label-worker-${version}.js`,
 		libraryTarget: 'umd',
 	},
 	resolve: {

@@ -15,6 +15,16 @@ function fetchNaf() {
 	return fetch('naf-rev2.json').then((r) => r.json());
 }
 
+async function fetchBailleurs(path = '') {
+	const response = await fetch('/bailleurs-sociaux.json');
+	const naf = await response.json();
+	return naf.map(function (bailleur) {
+		const { code, libelle1 } = bailleur;
+
+		return { ...bailleur, id: code, label: libelle1, value: code };
+	});
+}
+
 const infoCog = {
 	name: 'cog-communes',
 	fields: [
@@ -28,23 +38,28 @@ const infoCog = {
 	order: { type: 'ascending', field: 'label' },
 };
 
-const infoCogTokenized = {
-	name: 'cog-tokenized',
+const bailleursSociaux = {
+	name: 'bailleurs-sociaux',
 	fields: [
 		{
-			name: 'label',
+			name: 'libelle1',
 			rules: ['[\\w]+'],
 			language: 'French',
 			stemmer: false,
-			min: 2,
 		},
-		{ name: 'id', rules: 'soft' },
+		{
+			name: 'libelle2',
+			rules: ['[\\w]+'],
+			language: 'French',
+			stemmer: false,
+		},
+		{ name: 'code' },
 	],
-	stopWords: [],
 	queryParser: {
 		type: 'tokenized',
-		params: { language: 'French', pattern: '[\\w.]+' },
+		params: { language: 'French', pattern: '[\\w]+', min: '1' },
 	},
+	max: 10,
 	version: '1',
 };
 
@@ -76,14 +91,14 @@ async function loadCog() {
 	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, infoCog);
 }
 
-async function loadCogTokenized() {
-	const { name } = infoCogTokenized;
-	const communes = await fetchCog();
+async function loadBailleurs() {
+	const { name } = bailleursSociaux;
+	const communes = await fetchBailleurs();
 	const db = await openOnCreateDb(name);
 	await clearDb(db, CONSTANTES.STORE_DATA_NAME);
 	await clearDb(db, CONSTANTES.STORE_INFO_NAME);
-	await append(infoCogTokenized, '1', communes, console.log);
-	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, infoCogTokenized);
+	await append(bailleursSociaux, '1', communes, console.log);
+	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, bailleursSociaux);
 }
 
 async function loadNaf() {
@@ -151,13 +166,10 @@ stories.addWithJSX('Default', () => {
 				<li>
 					<input
 						type="button"
-						value="load COG tokenized"
-						onClick={loadCogTokenized}
+						value="load bailleurs sociaux"
+						onClick={loadBailleurs}
 					/>
-					<Search
-						storeInfo={infoCogTokenized}
-						defaultValue="la chapelle taillefert"
-					/>
+					<Search storeInfo={bailleursSociaux} defaultValue="123" />
 				</li>
 			</ul>
 		</>

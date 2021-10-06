@@ -40,7 +40,7 @@
 		"analyze": "yarn build && source-map-explorer lib/index.js --html bundle-report/lunatic.html",
 		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
-		"build-tokenize-worker": "webpack --config ./webpack-tokenize-worker.config.js",
+		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
 		"build-workers": "yarn build-append-worker && yarn build-searching-worker"
 	},
 	"keywords": [

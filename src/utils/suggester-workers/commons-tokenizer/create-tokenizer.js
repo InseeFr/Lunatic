@@ -78,8 +78,9 @@ function createEntityTokenizer(fields, stopWords) {
 	const tokenizeAll = createTokenizer(fields, stopWords);
 	return function (entity) {
 		return fields.reduce(function (a, field) {
-			return [...a, ...tokenizeAll(field, entity)];
-		}, []);
+			const { name } = field;
+			return { ...a, [name]: tokenizeAll(field, entity) };
+		}, {});
 	};
 }
 
