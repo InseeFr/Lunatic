@@ -53,7 +53,6 @@ async function searching(search, { name, version = '1' }) {
 			const tokens = parser(search);
 			const tokensSuggestions = await searchTokens(tokens, index);
 			const response = computeScore(tokensSuggestions);
-
 			return {
 				results: prepare(
 					getOrderingFunction(order)(filterSize(response, max), order)
@@ -63,7 +62,7 @@ async function searching(search, { name, version = '1' }) {
 		}
 		return { results: [], search };
 	} catch (e) {
-		console.err(e);
+		console.error(e);
 		throw e;
 	}
 }
