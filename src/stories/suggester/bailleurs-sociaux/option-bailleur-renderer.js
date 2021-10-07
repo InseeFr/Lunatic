@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import classnames from 'classnames';
-import createFindBestLabel from './create-find-best-label';
+// import createFindBestLabel from './create-find-best-label';
+import findBestLabel from './find-best-label';
 import './theme.scss';
 
 function getLabel(option, attribut) {
@@ -18,14 +19,13 @@ function OptionBailleurRenderer({ option, selected, search }) {
 	const [computed, setComputed] = useState(false);
 	const [attribut, setAttribut] = useState('libelle1');
 
-	const findLabel = useMemo(() => createFindBestLabel(), []);
 	const { tokensMap } = option;
 
 	useEffect(
 		function () {
 			let unmount = false;
 			async function doIt() {
-				const best = await findLabel(option, search);
+				const best = await findBestLabel(option, search);
 				if (!unmount) {
 					setAttribut(best);
 					setComputed(true);
@@ -38,7 +38,7 @@ function OptionBailleurRenderer({ option, selected, search }) {
 				unmount = true;
 			};
 		},
-		[tokensMap, search, findLabel]
+		[tokensMap, search]
 	);
 
 	return (
