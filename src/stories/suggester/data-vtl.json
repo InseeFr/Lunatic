@@ -1,6 +1,5 @@
 {
-	"suggesters": {
-		"naf-rev2": {
+	"suggesters":  [{
 			"name": "naf-rev2",
 			"fields": [
 				{
@@ -17,7 +16,7 @@
 			},
 			"version": "1"
 		},
-		"cog-communes": {
+		 {
 			"name": "cog-communes",
 			"fields": [
 				{ "name": "label", "rules": "soft" },
@@ -27,8 +26,8 @@
 			"queryParser": { "type": "soft" },
 			"version": "1",
 			"display": "label"
-		}
-	},
+		}]
+	 ,
 	"components": [
 		{
 			"id": "sugg",
