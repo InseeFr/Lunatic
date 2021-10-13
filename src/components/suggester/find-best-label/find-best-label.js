@@ -1,3 +1,7 @@
+const WORKER_PATH =
+	process.env.LUNATIC_LABEL_WORKER_PATH ||
+	process.env.REACT_APP_LUNATIC_LABEL_WORKER_PATH;
+
 let WORKER;
 const TASKS = new Map();
 
@@ -11,7 +15,7 @@ function getIdTask() {
 
 function getWorker() {
 	if (!WORKER) {
-		WORKER = new Worker('/workers/lunatic-label-worker-0.1.2-experimental.js');
+		WORKER = new Worker(WORKER_PATH);
 		WORKER.addEventListener('message', function (e) {
 			const { data } = e;
 			const { response, idTask } = data;
@@ -27,7 +31,6 @@ function getWorker() {
  *
  * @param {*} option
  * @param {*} search
- * @param {*} callback
  * @returns
  */
 function findBestLabel(option, search) {

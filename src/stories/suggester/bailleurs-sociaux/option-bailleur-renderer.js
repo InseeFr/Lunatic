@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import classnames from 'classnames';
-// import createFindBestLabel from './create-find-best-label';
-import findBestLabel from './find-best-label';
+import findBestLabel from '../../../components/suggester/find-best-label';
 import './theme.scss';
 
 function getLabel(option, attribut) {
@@ -9,17 +8,19 @@ function getLabel(option, attribut) {
 	switch (attribut) {
 		case 'libelle2':
 			return `${code} - ${libelle2}`;
-		default:
+		case 'libelle1':
 			return `${code} - ${libelle1}`;
+		case 'code':
+			return `${code} - ${libelle1}`;
+		default:
+			return ``;
 	}
 }
 
 function OptionBailleurRenderer({ option, selected, search }) {
 	const { typorg } = option;
 	const [computed, setComputed] = useState(false);
-	const [attribut, setAttribut] = useState('libelle1');
-
-	const { tokensMap } = option;
+	const [attribut, setAttribut] = useState(undefined);
 
 	useEffect(
 		function () {
@@ -28,17 +29,18 @@ function OptionBailleurRenderer({ option, selected, search }) {
 				const best = await findBestLabel(option, search);
 				if (!unmount) {
 					setAttribut(best);
+					console.log({ id: option.id, best });
 					setComputed(true);
 				}
 			}
 
 			doIt();
 
-			return () => {
+			return function () {
 				unmount = true;
 			};
 		},
-		[tokensMap, search]
+		[option, search]
 	);
 
 	return (
