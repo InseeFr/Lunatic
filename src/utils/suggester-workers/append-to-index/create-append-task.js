@@ -15,7 +15,6 @@ function task(info, version, log = () => null) {
 	function launch(entities, post = () => null) {
 		return new Promise(function (resolve) {
 			start = true;
-			worker.postMessage({ name, version, fields, stopWords, entities });
 			worker.addEventListener('message', function (e) {
 				const { data } = e;
 				if (data === 'success') {
@@ -27,6 +26,7 @@ function task(info, version, log = () => null) {
 					log(data);
 				}
 			});
+			worker.postMessage({ name, version, fields, stopWords, entities });
 		});
 	}
 
