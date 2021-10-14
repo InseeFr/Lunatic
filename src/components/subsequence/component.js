@@ -23,6 +23,7 @@ const Subsequence = ({
 			aria-label={`subsequence-${id}`}
 			className="subsequence-lunatic"
 			style={U.buildStyleObject(style)}
+			aria-label={`subsequence-${id}`}
 		>
 			{interpret(features, logFunction)(bindings)(label)}
 		</div>
