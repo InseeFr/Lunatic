@@ -52,7 +52,7 @@
 				"type": "tokenized",
 				"params": { "language": "French", "pattern": "[\\w]+", "min": "1" }
 			},
-			"stopWords": [],
+			"stopWords": ["de", "la", "les", "du", "et", "au", "aux", "en"],
 			"max": 12,
 			"version": "1"
 		}

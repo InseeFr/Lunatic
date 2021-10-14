@@ -42,6 +42,8 @@ function SuggesterWrapper({
 					if (what && typeof searching === 'function') {
 						const { results, search: old } = await searching(what);
 						dispatch(actions.onUpdateOptions(results, old));
+					} else {
+						dispatch(actions.onDeleteSearch());
 					}
 				} catch (e) {
 					console.error(e);
