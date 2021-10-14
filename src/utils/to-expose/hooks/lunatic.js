@@ -43,7 +43,7 @@ const useLunatic = (
 		todo,
 	});
 
-	const { suggesters: suggesterStrategy } = source;
+	const { suggesters: suggestersToLoad } = source;
 
 	useEffect(() => {
 		const init = async () => {
@@ -52,7 +52,7 @@ const useLunatic = (
 				typeof suggesters === 'object' &&
 				Object.values(suggesters).length > 0
 			) {
-				const s = suggesterStrategy.reduce(function (current, storeInfo) {
+				const s = suggestersToLoad.reduce(function (current, storeInfo) {
 					const { name } = storeInfo;
 					return {
 						...current,
@@ -67,7 +67,7 @@ const useLunatic = (
 			}
 		};
 		init();
-	}, [autoSuggesterLoading, suggesterFetcher, suggesters, suggesterStrategy]);
+	}, [autoSuggesterLoading, suggesterFetcher, suggesters, suggestersToLoad]);
 
 	const [flow, setFlow] = useState(FLOW_NEXT);
 
