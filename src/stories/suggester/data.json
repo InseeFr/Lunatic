@@ -1,6 +1,6 @@
 {
-	"suggesters": {
-		"naf-rev2": {
+	"suggesters": [
+		{
 			"name": "naf-rev2",
 			"url": "https://inseefr.github.io/Lunatic/storybook/naf-rev2.json",
 			"fields": [
@@ -18,7 +18,7 @@
 			},
 			"version": "1"
 		},
-		"cog-communes": {
+		{
 			"name": "cog-communes",
 			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
 			"fields": [
@@ -30,7 +30,7 @@
 			"queryParser": { "type": "soft" },
 			"version": "1"
 		},
-		"bailleurs-sociaux": {
+		{
 			"name": "bailleurs-sociaux",
 			"url": "https://inseefr.github.io/Lunatic/storybook/bailleurs-sociaux.json",
 			"fields": [
@@ -56,7 +56,7 @@
 			"max": 12,
 			"version": "1"
 		}
-	},
+	],
 	"components": [
 		{
 			"id": "sugg",
