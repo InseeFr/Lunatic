@@ -3,12 +3,29 @@ import MESSAGES from './store-messages';
 
 const DEFAULT_BATCH_SIZE = 1000;
 
-function createTokensMap(tokens) {
-	return tokens.reduce(function (map, token) {
-		if (token in map) {
-			return { ...map, [token]: { count: map[token] + 1 } };
-		}
-		return { ...map, [token]: { count: 1 } };
+function appendField(fields, field) {
+	if (fields.indexOf(field) !== -1) {
+		return fields;
+	}
+	return [...fields, field];
+}
+
+function createTokensMap(tokensFields) {
+	return Object.entries(tokensFields).reduce(function (map, [field, tokens]) {
+		return tokens.reduce(function (map2, token) {
+			if (token in map2) {
+				const entry = map2[token];
+				const { fields, count } = entry;
+				return {
+					...map2,
+					[token]: {
+						count: count + 1,
+						fields: appendField(fields, field),
+					},
+				};
+			}
+			return { ...map2, [token]: { count: 1, fields: [field] } };
+		}, map);
 	}, {});
 }
 
@@ -22,8 +39,8 @@ function prepareEntities(entities, { fields, stopWords, stemmer }, log) {
 	return entities.map(function (suggestion) {
 		const { id } = suggestion;
 		if (id) {
-			const tokens = tokenizer(suggestion);
-			const tokensMap = createTokensMap(tokens);
+			const tokensFields = tokenizer(suggestion);
+			const tokensMap = createTokensMap(tokensFields);
 
 			done++;
 			if (done % size === 0 || done === max) {
@@ -36,7 +53,7 @@ function prepareEntities(entities, { fields, stopWords, stemmer }, log) {
 					},
 				});
 			}
-			return { id, suggestion, tokens: Object.keys(tokensMap) };
+			return { id, suggestion, tokens: Object.keys(tokensMap), tokensMap };
 		} else throw new Error(`Missing id on entity.`);
 	}, []);
 }
