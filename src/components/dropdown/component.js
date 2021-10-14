@@ -53,18 +53,22 @@ const Dropdown = ({
 		handleChange({
 			[U.getResponseName(response)]: e.value,
 		});
+
+	const DeclarationAfterLabel = () => (
+		<Declarations
+			id={id}
+			type={C.AFTER_QUESTION_TEXT}
+			declarations={declarations}
+			features={features}
+			bindings={bindings}
+		/>
+	);
+
 	return (
 		<>
 			<Declarations
 				id={id}
 				type={C.BEFORE_QUESTION_TEXT}
-				declarations={declarations}
-				features={features}
-				bindings={bindings}
-			/>
-			<Declarations
-				id={id}
-				type={C.AFTER_QUESTION_TEXT}
 				declarations={declarations}
 				features={features}
 				bindings={bindings}
@@ -79,6 +83,7 @@ const Dropdown = ({
 					options={opts}
 					onSelect={onSelect}
 					management={management}
+					DeclarationAfterLabel={DeclarationAfterLabel}
 				/>
 			) : (
 				<DropdownSimple
@@ -90,6 +95,7 @@ const Dropdown = ({
 					options={opts}
 					onSelect={onSelect}
 					management={management}
+					DeclarationAfterLabel={DeclarationAfterLabel}
 				/>
 			)}
 			<Declarations

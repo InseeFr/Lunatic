@@ -51,6 +51,7 @@ function Dropdown({
 	management,
 	disabled,
 	focused: initFocused,
+	DeclarationAfterLabel,
 }) {
 	const [state, dispatch] = useReducer(reducer, {
 		...initial,
@@ -58,15 +59,8 @@ function Dropdown({
 		disabled,
 		focused: initFocused,
 	});
-	const {
-		prefix,
-		visible,
-		activeIndex,
-		visibleOptions,
-		value,
-		focused,
-		id,
-	} = state;
+	const { prefix, visible, activeIndex, visibleOptions, value, focused, id } =
+		state;
 	const inputEl = useRef();
 	const containerEl = useRef();
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
@@ -99,6 +93,7 @@ function Dropdown({
 			zIndex={zIndex}
 			management={management}
 		>
+			<DeclarationAfterLabel />
 			<span
 				className={classnames('lunatic-dropdown-input', { focused, disabled })}
 			>

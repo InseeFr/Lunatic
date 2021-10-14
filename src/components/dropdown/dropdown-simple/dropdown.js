@@ -25,6 +25,7 @@ const Dropdown = ({
 	management,
 	className,
 	zIndex,
+	DeclarationAfterLabel,
 }) => {
 	const containerEl = useRef();
 	const [state, dispatch] = useReducer(reducer, {
@@ -52,6 +53,7 @@ const Dropdown = ({
 			value={value}
 			zIndex={zIndex}
 		>
+			<DeclarationAfterLabel />
 			<span className={classnames('lunatic-dropdown-input', { focused })}>
 				<input
 					type="button"
