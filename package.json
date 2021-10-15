@@ -1,7 +1,7 @@
 {
 	"name": "@inseefr/lunatic",
 	"version": "0.2.0-experimental",
-	"workersVersion": "0.1.2-experimental",
+	"workersVersion": "0.2.0-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -41,7 +41,7 @@
 		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
 		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
-		"build-workers": "yarn build-append-worker && yarn build-searching-worker"
+		"build-workers": "yarn build-append-worker && yarn build-searching-worker && yarn build-label-worker"
 	},
 	"keywords": [
 		"react",

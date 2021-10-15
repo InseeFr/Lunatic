@@ -24,6 +24,8 @@ const searching = (worker) => (search, name, version) => {
 				worker.addEventListener('message', function (e) {
 					const { data } = e;
 					resolve(data);
+					worker.terminate();
+					worker = undefined;
 				});
 			} catch (e) {
 				//TODO
@@ -35,8 +37,8 @@ const searching = (worker) => (search, name, version) => {
 };
 
 function createSearching(name, version) {
-	let WORKER = undefined;
-	const searching_ = searching(WORKER);
+	let worker = undefined;
+	const searching_ = searching(worker);
 	return async function (search) {
 		return searching_(search, name, version);
 	};

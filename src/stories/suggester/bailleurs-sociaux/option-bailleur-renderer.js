@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import findBestLabel from '../../../components/suggester/find-best-label';
 import './theme.scss';

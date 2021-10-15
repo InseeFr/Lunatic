@@ -1,9 +1,9 @@
 import removeAccents from 'remove-accents';
 
-function filter(tokens = []) {
+function filterAccentToLower(tokens = []) {
 	return tokens.map(function (token) {
 		return removeAccents(token.toLowerCase());
 	});
 }
 
-export default filter;
+export default filterAccentToLower;

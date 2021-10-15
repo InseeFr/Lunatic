@@ -8,6 +8,7 @@
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
+					"synonyms": { "st": ["saint"] },
 					"min": 2
 				},
 				{ "name": "id" }
@@ -38,12 +39,14 @@
 					"name": "libelle1",
 					"rules": ["[\\w]+"],
 					"language": "French",
+					"synonyms": { "st": ["saint"] },
 					"stemmer": false
 				},
 				{
 					"name": "libelle2",
 					"rules": ["[\\w]+"],
 					"language": "French",
+					"synonyms": { "st": ["saint"] },
 					"stemmer": false
 				},
 				{ "name": "code" }
@@ -52,7 +55,7 @@
 				"type": "tokenized",
 				"params": { "language": "French", "pattern": "[\\w]+", "min": "1" }
 			},
-			"stopWords": [],
+			"stopWords": ["de", "le", "sur", "la", "au", "et"],
 			"max": 12,
 			"version": "1"
 		}
