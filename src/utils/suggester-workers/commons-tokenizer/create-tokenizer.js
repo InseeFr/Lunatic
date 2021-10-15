@@ -58,19 +58,6 @@ function createMapFieldsTokenizer(fields, filtersStack) {
 				...mapFieldTokenizers,
 				[name]: function (string) {
 					const what = tokenizer().input(string).tokens(tokenRules).resolve();
-					// const words = stemmer
-					// 	? filterStemmer(
-					// 			filterSynonyms(
-					// 				filterStopWords(filterLength(tokensToArray(what), min)),
-					// 				language
-					// 			),
-					// 			synonyms
-					// 	  )
-					// 	: filterSynonyms(
-					// 			filterStopWords(filterLength(tokensToArray(what), min)),
-					// 			synonyms
-					// 	  );
-
 					return filtersStack(tokensToArray(what), {
 						min,
 						language,

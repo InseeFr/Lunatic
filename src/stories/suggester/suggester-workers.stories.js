@@ -53,7 +53,7 @@ const bailleursSociaux = {
 			rules: ['[\\w]+'],
 			language: 'French',
 			stemmer: false,
-			synonyms: { st: ['saint'], ste: ['sainte'] },
+			synonyms: { saint: ['st'], sainte: ['ste'] },
 		},
 		{ name: 'code' },
 	],

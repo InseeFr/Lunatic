@@ -8,7 +8,7 @@
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
-					"synonyms": { "st": ["saint"] },
+					"synonyms": { "saint": ["st"] },
 					"min": 2
 				},
 				{ "name": "id" }

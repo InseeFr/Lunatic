@@ -29,7 +29,6 @@ function OptionBailleurRenderer({ option, selected, search }) {
 				const best = await findBestLabel(option, search);
 				if (!unmount) {
 					setAttribut(best);
-					console.log({ id: option.id, best });
 					setComputed(true);
 				}
 			}
