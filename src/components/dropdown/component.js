@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import missingWrapper from '../missing-wrapper';
 import DropdownSimple from './dropdown-simple';
@@ -8,6 +8,10 @@ import * as U from '../../utils/lib';
 import * as C from '../../constants';
 import { interpret } from '../../utils/to-expose';
 import './dropdown.scss';
+
+function compileFeatures(features = []) {
+	return features.reduce((acc, f) => (f === 'MD' ? acc : [...acc, f]), []);
+}
 
 const Dropdown = ({
 	id,
@@ -27,10 +31,7 @@ const Dropdown = ({
 	const [opts, setOpts] = useState(options);
 
 	//TODO: improve feature support for MD, adding plainText to options & search input
-	const updatedFeatures = features.reduce(
-		(acc, f) => (f === 'MD' ? acc : [...acc, f]),
-		[]
-	);
+	const updatedFeatures = useMemo(() => compileFeatures(features), [features]);
 
 	useEffect(() => {
 		if (!freezeOptions) {
@@ -42,7 +43,7 @@ const Dropdown = ({
 			);
 			setOpts(featOptions);
 		}
-	}, [freezeOptions, features, bindings, options]);
+	}, [freezeOptions, updatedFeatures, features, bindings, options]);
 
 	const interpretedLabel = interpret(features, rest?.logFunction)(bindings)(
 		label
