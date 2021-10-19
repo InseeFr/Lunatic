@@ -7,7 +7,10 @@ import computeScore from './compute-score';
 import getOrderingFunction from './order';
 
 function prepare(response) {
-	return response.map(({ suggestion }) => suggestion);
+	return response.map(({ suggestion, tokensMap }) => ({
+		...suggestion,
+		tokensMap,
+	}));
 }
 
 async function searchTokens(tokens, index) {

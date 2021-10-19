@@ -27,7 +27,7 @@ function findBest(map) {
 	}, undefined);
 }
 
-function findBestLabel(searchTokens, tokensMap) {
+function findBestLabel(searchTokens = [], tokensMap = {}) {
 	const entries = Object.entries(tokensMap);
 	const map = searchTokens.reduce(function (map, word) {
 		return reduceTokensMap(map, entries, word);
