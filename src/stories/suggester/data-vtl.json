@@ -13,7 +13,7 @@
 			],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+" }
+			 	"params": { "language": "French", "pattern": "[\\w.]+" }
 			},
 			"version": "1"
 		},

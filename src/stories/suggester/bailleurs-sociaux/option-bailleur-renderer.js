@@ -9,7 +9,6 @@ function getLabel(option, attribut) {
 		case 'libelle2':
 			return `${code} - ${libelle2}`;
 		case 'libelle1':
-			return `${code} - ${libelle1}`;
 		case 'code':
 			return `${code} - ${libelle1}`;
 		default:
@@ -49,7 +48,7 @@ function OptionBailleurRenderer({ option, selected, search }) {
 				computed,
 			})}
 		>
-			<span className={classnames('bailleur-label', {})}>
+			<span className={classnames('bailleur-label', {})} title={attribut}>
 				{getLabel(option, attribut)}
 			</span>
 		</div>
