@@ -42,7 +42,6 @@ function findBestLabel(option, search) {
 			resolve(response);
 			delete TASKS[idTask];
 		};
-
 		worker.postMessage({ option, search, idTask });
 	});
 }

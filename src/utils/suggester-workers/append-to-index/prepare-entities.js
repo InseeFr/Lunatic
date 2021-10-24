@@ -29,8 +29,8 @@ function createTokensMap(tokensFields) {
 	}, {});
 }
 
-function prepareEntities(entities, { fields, stopWords, stemmer }, log) {
-	const tokenizer = createTokenizer(fields, stopWords, stemmer);
+function prepareEntities(entities, { fields, stopWords }, log) {
+	const tokenizer = createTokenizer(fields, stopWords);
 
 	let done = 0;
 	const size = DEFAULT_BATCH_SIZE;

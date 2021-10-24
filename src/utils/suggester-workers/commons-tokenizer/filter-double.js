@@ -1,4 +1,4 @@
-function filter(tokens = []) {
+function filterDouble(tokens = []) {
 	const map = {};
 	return tokens.reduce(function (a, token) {
 		if (token in map) {
@@ -9,4 +9,4 @@ function filter(tokens = []) {
 	}, []);
 }
 
-export default filter;
+export default filterDouble;
