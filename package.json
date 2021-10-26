@@ -50,7 +50,7 @@
 		"library"
 	],
 	"dependencies": {
-		"@inseefr/trevas": "^0.1.9",
+		"@inseefr/trevas": "^0.1.10",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.debounce": "^4.0.8",
 		"lodash.isequal": "^4.5.0",
