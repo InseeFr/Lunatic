@@ -1282,12 +1282,12 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^0.2.0-experimental":
-  version "0.2.0-experimental"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.2.0-experimental.tgz#59a72d4dce7e09f11287304b71a52fc65173f08e"
-  integrity sha512-qmeYyL4fKACoYKrhjJuT989+/waEYt4kcamB/d8YRCTBTVTx3i+g/QmQxtsG8NRUQwcdY2z132Vvl1O7fbpkkg==
+"@inseefr/lunatic@^0.2.1-experimental":
+  version "0.2.1-experimental"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.2.1-experimental.tgz#9c5570f26d05863dae9821b706beec6cdc0f4e09"
+  integrity sha512-1sqJRo3gz/Ud2FAXNsym849Tx6BQrpmpWqqLYTNUgRoOpuxnVCEnkgGKQclso8nMqnewdhldmwJk0pUWf+c/5A==
   dependencies:
-    "@inseefr/trevas" "^0.1.9"
+    "@inseefr/trevas" "^0.1.10"
     lodash.camelcase "^4.3.0"
     lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"
@@ -1298,10 +1298,10 @@
     remove-accents "^0.4.2"
     sass "^1.32.2"
 
-"@inseefr/trevas@^0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.9.tgz#206002fdeff59785864a45ceec9c70ea7e0f4951"
-  integrity sha512-A7PTn0wkletyleRoha410Xfe5EbqPzk63EeChR0Wm6+vwhDbILjksOVxK4MwvdXRXHJIe2XptMKe4/zJtDnLSQ==
+"@inseefr/trevas@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.10.tgz#78cc502a8b44a98152840820085dc1f09a3ee066"
+  integrity sha512-ZTaSV+IqFknn9KjIoPEh4TsGtLHedZfkdk5HuzHZvoj728uxLlZWXdlGzfSDeh3qu80IQii5R0POioWaD/Yh0A==
   dependencies:
     "@inseefr/vtl-2.0-antlr-tools" "0.1.0"
     antlr4 "4.8.0"
@@ -9888,9 +9888,9 @@ sass@^1.32.2:
     chokidar ">=2.0.0 <4.0.0"
 
 sass@^1.35.2:
-  version "1.42.1"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.42.1.tgz#5ab17bebc1cb1881ad2e0c9a932c66ad64e441e2"
-  integrity sha512-/zvGoN8B7dspKc5mC6HlaygyCBRvnyzzgD5khiaCfglWztY99cYoiTUksVx11NlnemrcfH5CEaCpsUKoW0cQqg==
+  version "1.43.4"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.43.4.tgz#68c7d6a1b004bef49af0d9caf750e9b252105d1f"
+  integrity sha512-/ptG7KE9lxpGSYiXn7Ar+lKOv37xfWsZRtFYal2QHNigyVQDx685VFT/h7ejVr+R8w7H4tmUgtulsKl5YpveOg==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
