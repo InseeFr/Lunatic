@@ -42,7 +42,7 @@ function Dropdown({
 	onSelect,
 	response,
 	className,
-	placeholder,
+	placeholderList,
 	label,
 	labelPosition,
 	mandatory,
@@ -102,7 +102,7 @@ function Dropdown({
 					ref={inputEl}
 					value={value || ''}
 					disabled={disabled}
-					placeholder={placeholder}
+					placeholderList={placeholderList}
 					autoComplete="list"
 					autoCorrect="off"
 					autoCapitalize="off"
@@ -164,7 +164,7 @@ Dropdown.propTypes = {
 	id: PropTypes.string,
 	options: PropTypes.array.isRequired,
 	onSelect: PropTypes.func,
-	placeholder: PropTypes.string,
+	placeholderList: PropTypes.string,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
@@ -176,7 +176,7 @@ Dropdown.defaultProps = {
 	options: [],
 	zIndex: 0,
 	onSelect: () => null,
-	placeholder: 'Search...',
+	placeholderList: 'Search...',
 	disabled: false,
 	focused: false,
 	widthAuto: false,
