@@ -13,6 +13,7 @@ const Declarations = ({
 	logFunction,
 }) => {
 	const filtered = declarations.filter(({ position }) => position === type);
+	if (filtered.length === 0) return null;
 	return (
 		<div id={`declarations-${id}-${type}`} className="declarations-lunatic">
 			{filtered.map(({ id: idD, label, declarationType }) => (

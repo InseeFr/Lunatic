@@ -21,4 +21,12 @@ describe('query-parser-tokenized', function () {
 		expect(result).toContain('unlimited');
 		expect(result).toContain('express');
 	});
+
+	it('no stemmer', function () {
+		const result = parse('habi', {
+			stemmer: false,
+		});
+		expect(result.length).toBe(1);
+		expect(result).toContain('habi');
+	});
 });

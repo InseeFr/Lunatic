@@ -5,7 +5,17 @@ import softTokenizer from './soft-tokenizer';
 import createFilterStopWords from './create-filter-stop-words';
 import filterStemmer from './filter-stemmer';
 import filterLength from './filter-length';
+import filterSynonyms from './filter-synonyms';
 import getRegExpFromPattern from './get-regexp-from-pattern';
+
+function createStemmedFiltersStack({ filterStopWords }) {
+	return [filterStemmer, filterSynonyms, filterStopWords, filterLength].reduce(
+		function (next, current) {
+			return (tokens, args) => next(current(tokens, args), args);
+		},
+		(t) => t
+	);
+}
 
 function defaultTokenizeIt(string) {
 	return [prepareStringIndexation(string)];
@@ -23,9 +33,16 @@ export function tokensToArray(tokenized) {
 	}, []);
 }
 
-function createMapFieldsTokenizer(fields, filterStopWords) {
-	return fields.reduce(function (mapFieldTokenizers, f) {
-		const { name, rules = [], min, language = 'French', stemmer = true } = f;
+function createMapFieldsTokenizer(fields, filtersStack) {
+	return fields.reduce(function (mapFieldTokenizers, field) {
+		const {
+			name,
+			rules = [],
+			min,
+			language = 'French',
+			stemmer = true,
+			synonyms = {},
+		} = field;
 		if (rules === 'soft') {
 			return { ...mapFieldTokenizers, [name]: softTokenizer };
 		}
@@ -41,14 +58,12 @@ function createMapFieldsTokenizer(fields, filterStopWords) {
 				...mapFieldTokenizers,
 				[name]: function (string) {
 					const what = tokenizer().input(string).tokens(tokenRules).resolve();
-					const words = stemmer
-						? filterStemmer(
-								filterStopWords(filterLength(tokensToArray(what), min)),
-								language
-						  )
-						: filterStopWords(filterLength(tokensToArray(what), min));
-
-					return words;
+					return filtersStack(tokensToArray(what), {
+						min,
+						language,
+						stemmer,
+						synonyms,
+					});
 				},
 			};
 		}
@@ -58,9 +73,10 @@ function createMapFieldsTokenizer(fields, filterStopWords) {
 
 function createTokenizer(fields, stopWords) {
 	const filterStopWords = createFilterStopWords(stopWords);
+	const filtersStack = createStemmedFiltersStack({ filterStopWords });
 	const FIELDS_TOKENIZER_MAP = createMapFieldsTokenizer(
 		fields || [],
-		filterStopWords
+		filtersStack
 	);
 
 	return function (field, entity) {
@@ -78,8 +94,9 @@ function createEntityTokenizer(fields, stopWords) {
 	const tokenizeAll = createTokenizer(fields, stopWords);
 	return function (entity) {
 		return fields.reduce(function (a, field) {
-			return [...a, ...tokenizeAll(field, entity)];
-		}, []);
+			const { name } = field;
+			return { ...a, [name]: tokenizeAll(field, entity) };
+		}, {});
 	};
 }
 

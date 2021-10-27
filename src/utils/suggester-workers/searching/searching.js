@@ -7,7 +7,10 @@ import computeScore from './compute-score';
 import getOrderingFunction from './order';
 
 function prepare(response) {
-	return response.map(({ suggestion }) => suggestion);
+	return response.map(({ suggestion, tokensMap }) => ({
+		...suggestion,
+		tokensMap,
+	}));
 }
 
 async function searchTokens(tokens, index) {
@@ -50,7 +53,6 @@ async function searching(search, { name, version = '1' }) {
 			const tokens = parser(search);
 			const tokensSuggestions = await searchTokens(tokens, index);
 			const response = computeScore(tokensSuggestions);
-
 			return {
 				results: prepare(
 					getOrderingFunction(order)(filterSize(response, max), order)

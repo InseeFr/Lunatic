@@ -8,12 +8,26 @@ const management = false;
 const features = ['VTL'];
 
 const Questionnaire = ({ source, data, error }) => {
+	async function suggesterFetcher(url) {
+		const response = await fetch(url, {
+			headers: { Accept: 'application/json' },
+		});
+		return response;
+	}
+
 	const { questionnaire, components, handleChange, bindings } =
 		lunatic.useLunatic(source, data, {
 			savingType,
 			preferences,
 			features,
 			management,
+			suggesters: {
+				'naf-rev2': {
+					url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
+				},
+			},
+			suggesterFetcher,
+			autoSuggesterLoading: true,
 		});
 
 	if (error) return <h2 className="error">{error}</h2>;

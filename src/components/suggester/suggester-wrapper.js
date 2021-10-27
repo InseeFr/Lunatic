@@ -23,7 +23,7 @@ function SuggesterWrapper({
 	className,
 	version,
 	labelledBy,
-	placeholder,
+	placeholderList,
 	optionRenderer,
 	onSelect,
 	searching,
@@ -42,6 +42,8 @@ function SuggesterWrapper({
 					if (what && typeof searching === 'function') {
 						const { results, search: old } = await searching(what);
 						dispatch(actions.onUpdateOptions(results, old));
+					} else {
+						dispatch(actions.onDeleteSearch());
 					}
 				} catch (e) {
 					console.error(e);
@@ -73,7 +75,7 @@ function SuggesterWrapper({
 		<SuggesterContext.Provider value={[state, dispatch]}>
 			<Suggester
 				className={className}
-				placeholder={placeholder}
+				placeholderList={placeholderList}
 				version={version}
 				labelledBy={labelledBy}
 				optionRenderer={optionRenderer}
@@ -88,7 +90,7 @@ function SuggesterWrapper({
 SuggesterWrapper.propTypes = {
 	id: PropTypes.string,
 	className: PropTypes.string,
-	placeholder: PropTypes.string,
+	placeholderList: PropTypes.string,
 	labelledBy: PropTypes.string,
 	optionRenderer: PropTypes.func,
 	labelRenderer: PropTypes.func,
@@ -107,7 +109,7 @@ SuggesterWrapper.defaultProps = {
 	id: undefined,
 	className: 'lunatic-suggester-default-style',
 	labelledBy: undefined,
-	placeholder: 'Veuillez...',
+	placeholderList: 'Veuillez...',
 	optionRenderer: DefaultOptionRenderer,
 	labelRenderer: DefaultLabelRenderer,
 	language: 'French',

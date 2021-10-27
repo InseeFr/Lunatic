@@ -1,7 +1,7 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.2.0-experimental",
-	"workersVersion": "0.1.2-experimental",
+	"version": "0.2.1-experimental",
+	"workersVersion": "0.2.0-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -40,7 +40,8 @@
 		"analyze": "yarn build && source-map-explorer lib/index.js --html bundle-report/lunatic.html",
 		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
-		"build-workers": "yarn build-append-worker && yarn build-searching-worker"
+		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
+		"build-workers": "yarn build-append-worker && yarn build-searching-worker && yarn build-label-worker"
 	},
 	"keywords": [
 		"react",
@@ -49,7 +50,7 @@
 		"library"
 	],
 	"dependencies": {
-		"@inseefr/trevas": "^0.1.9",
+		"@inseefr/trevas": "^0.1.10",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.debounce": "^4.0.8",
 		"lodash.isequal": "^4.5.0",
@@ -83,6 +84,7 @@
 		"core-js": "^3.17.3",
 		"cross-env": "^7.0.2",
 		"css-loader": "^5.0.0",
+		"damerau-levenshtein": "^1.0.7",
 		"enzyme": "^3.7.0",
 		"eslint": "7.30.0",
 		"eslint-config-prettier": "^7.2.0",

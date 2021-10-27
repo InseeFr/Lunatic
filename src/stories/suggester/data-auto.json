@@ -1,7 +1,7 @@
 {
 	"maxPage": "4",
-	"suggesters": {
-		"naf-rev2": {
+	"suggesters": [
+		{
 			"name": "naf-rev2",
 			"fields": [
 				{
@@ -18,7 +18,7 @@
 			},
 			"version": "1"
 		},
-		"naf-rev2-stop": {
+		{
 			"name": "naf-rev2-stop",
 			"fields": [
 				{
@@ -35,7 +35,7 @@
 			},
 			"version": "1"
 		},
-		"cog-communes": {
+		{
 			"name": "cog-communes",
 			"fields": [
 				{ "name": "label", "rules": "soft" },
@@ -45,7 +45,7 @@
 			"queryParser": { "type": "soft" },
 			"version": "1"
 		}
-	},
+	],
 	"components": [
 		{
 			"id": "nn",

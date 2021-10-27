@@ -6,7 +6,7 @@
 	@include defaultFont();
 }
 
-@mixin placeholder {
+@mixin placeholderList {
 	color: gray;
 	@include defaultFont();
 	font-size: 15px;
@@ -55,8 +55,8 @@
 						padding-left: 4px;
 						@include selection();
 
-						&::placeholder {
-							@include placeholder();
+						&::placeholderlist {
+							@include placeholderList();
 						}
 					}
 
@@ -68,13 +68,14 @@
 						padding-left: 4px;
 						@include selection();
 
-						.placeholder {
+						.placeholderList {
 							display: block;
-							@include placeholder();
+							@include placeholderList();
 						}
 						.selection {
 							display: block;
 							line-height: 34px;
+							font-size: 15px;
 						}
 
 						&.disabled {

@@ -23,13 +23,11 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh, absolute }) {
 	useEffect(
 		function () {
 			if (suggesters) {
-				const str = Object.entries(suggesters).reduce(function (
-					a,
-					[name, storeInfo]
-				) {
-					return { ...a, [name]: { storeInfo, ...getStoreInfo(name) } };
-				},
-				{});
+				const str = suggesters.reduce(function (current, storeInfo) {
+					const { name } = storeInfo;
+
+					return { ...current, [name]: { storeInfo, ...getStoreInfo(name) } };
+				}, {});
 
 				setStores(str);
 			}

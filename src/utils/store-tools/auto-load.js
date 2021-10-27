@@ -23,8 +23,9 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 		const f = suggesterFetcher || fetch;
 		f(url).then(async (res) => {
 			const data = await res.json();
-			const [launch] = task({ name, fields, stopWords }, version);
+			const [launch, terminate] = task({ name, fields, stopWords }, version);
 			await launch(data);
+			terminate();
 		});
 	});
 };

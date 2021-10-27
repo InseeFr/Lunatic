@@ -1,6 +1,6 @@
 {
-	"suggesters": {
-		"naf-rev2": {
+	"suggesters": [
+		{
 			"name": "naf-rev2",
 			"url": "https://inseefr.github.io/Lunatic/storybook/naf-rev2.json",
 			"fields": [
@@ -8,6 +8,7 @@
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
+					"synonyms": { "saint": ["st"] },
 					"min": 2
 				},
 				{ "name": "id" }
@@ -18,7 +19,7 @@
 			},
 			"version": "1"
 		},
-		"cog-communes": {
+		{
 			"name": "cog-communes",
 			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
 			"fields": [
@@ -30,7 +31,7 @@
 			"queryParser": { "type": "soft" },
 			"version": "1"
 		},
-		"bailleurs-sociaux": {
+		{
 			"name": "bailleurs-sociaux",
 			"url": "https://inseefr.github.io/Lunatic/storybook/bailleurs-sociaux.json",
 			"fields": [
@@ -38,12 +39,14 @@
 					"name": "libelle1",
 					"rules": ["[\\w]+"],
 					"language": "French",
+					"synonyms": { "st": ["saint"] },
 					"stemmer": false
 				},
 				{
 					"name": "libelle2",
 					"rules": ["[\\w]+"],
 					"language": "French",
+					"synonyms": { "st": ["saint"] },
 					"stemmer": false
 				},
 				{ "name": "code" }
@@ -52,10 +55,11 @@
 				"type": "tokenized",
 				"params": { "language": "French", "pattern": "[\\w]+", "min": "1" }
 			},
-			"max": 10,
+			"stopWords": ["de", "la", "les", "du", "et", "au", "aux", "en"],
+			"max": 12,
 			"version": "1"
 		}
-	},
+	],
 	"components": [
 		{
 			"id": "sugg",

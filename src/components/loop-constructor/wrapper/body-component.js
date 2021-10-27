@@ -17,6 +17,7 @@ const BodyComponent = ({
 	features,
 	setTodo,
 	logFunction,
+	...otherProps
 }) => {
 	const uiComponents = buildContentForLoopConstructor({
 		components,
@@ -49,6 +50,7 @@ const BodyComponent = ({
 											style={{ width }}
 										>
 											<Component
+												{...otherProps}
 												{...componentProps}
 												id={`${id}-row-${i}`}
 												label={label}
@@ -98,6 +100,7 @@ const BodyComponent = ({
 						return (
 							<div className="block-component" key={`${id}-row-${i}`}>
 								<Component
+									{...otherProps}
 									{...componentProps}
 									id={`${id}-row-${i}`}
 									label={label}

@@ -12,19 +12,19 @@ function getContent(option, search) {
 	return undefined;
 }
 
-function DefaultLabelRenderer({ option, placeholder, search }) {
+function DefaultLabelRenderer({ option, placeholderList, search }) {
 	const content = getContent(option, search);
 	if (content) {
 		return <span className="selection">{content}</span>;
 	}
-	return <span className="placeholder">{placeholder}</span>;
+	return <span className="placeholderList">{placeholderList}</span>;
 }
 
 DefaultLabelRenderer.propTypes = {
 	option: PropTypes.shape({
 		id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 	}),
-	placeholder: PropTypes.string,
+	placeholderList: PropTypes.string,
 	search: PropTypes.string,
 };
 
