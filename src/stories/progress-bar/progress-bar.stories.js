@@ -7,18 +7,18 @@ import { titleDecorator } from 'utils/lib';
 
 const stories = storiesOf('ProgressBar', module)
 	.addDecorator(withReadme(readme))
-	.addDecorator(Component => {
+	.addDecorator((Component) => {
 		const WrappedComponent = titleDecorator(Component);
 		return <WrappedComponent title="<ProgressBar />" />;
 	});
 
 stories.addWithJSX('Default', () => (
-	<>
+	<div className="lunatic-component">
 		{Array.from(new Array(11), (a, i) => (
 			<React.Fragment key={i}>
 				<ProgressBar id={`default-${i * 10}`} value={i * 10} />
 				<br />
 			</React.Fragment>
 		))}
-	</>
+	</div>
 ));

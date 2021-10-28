@@ -15,14 +15,18 @@ const stories = storiesOf('Sequence', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<Sequence id="default" label="Label of my sequence" />
+	<div className="lunatic-component">
+		<Sequence id="default" label="Label of my sequence" />
+	</div>
 ));
 
 stories.addWithJSX('Props', () => (
-	<Sequence
-		id="props"
-		label={text('Label', '"Label of my sequence: " || TEST')}
-		features={select('Features', featuresOptions, ['VTL', 'MD'])}
-		bindings={object('Bindings', { TEST: 'test' })}
-	/>
+	<div className="lunatic-component">
+		<Sequence
+			id="props"
+			label={text('Label', '"Label of my sequence: " || TEST')}
+			features={select('Features', featuresOptions, ['VTL', 'MD'])}
+			bindings={object('Bindings', { TEST: 'test' })}
+		/>
+	</div>
 ));
