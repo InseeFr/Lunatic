@@ -1,27 +1,30 @@
+// Import index once for bundle
 @import 'src/components/index.scss';
 
-/* Tooltip container */
-.tooltip-lunatic {
-	position: relative;
-	display: inline-block;
-	align-items: center;
-}
+.lunatic-component {
+	/* Tooltip container */
+	.tooltip-lunatic {
+		position: relative;
+		display: inline-block;
+		align-items: center;
+	}
 
-/* Tooltip text */
-.tooltip-lunatic .tooltip-text {
-	min-width: 10em;
-	max-width: 20em;
-	background-color: var(--color-primary-dark);
-	color: #fff;
-	padding: 0.5em;
-	border-radius: 6px;
-	font-size: 1em;
-	&.place-left {
-		&::before {
-			border-left: 10px solid var(--color-primary-dark);
-		}
-		&::after {
-			content: none;
+	/* Tooltip text */
+	.tooltip-lunatic .tooltip-text {
+		min-width: 10em;
+		max-width: 20em;
+		background-color: var(--color-primary-dark);
+		color: #fff;
+		padding: 0.5em;
+		border-radius: 6px;
+		font-size: 1em;
+		&.place-left {
+			&::before {
+				border-left: 10px solid var(--color-primary-dark);
+			}
+			&::after {
+				content: none;
+			}
 		}
 	}
 }

@@ -1,35 +1,37 @@
-.input-lunatic,
-.datepicker-lunatic,
-.textarea-lunatic {
-	font: inherit;
-	border: 0;
-	border-bottom: 0.125rem double rgba(0, 0, 0, 0.42);
-	margin: 0;
-	padding: 0.375rem 0 0.375rem 0.4375rem;
-	display: block;
-	min-width: 0;
-	box-sizing: content-box;
-	background: none;
-	&:focus {
-		outline: none;
-		border-bottom: 0.125rem solid var(--color-primary-main);
+.lunatic-component {
+	.input-lunatic,
+	.datepicker-lunatic,
+	.textarea-lunatic {
+		font: inherit;
+		border: 0;
+		border-bottom: 0.125rem double rgba(0, 0, 0, 0.42);
+		margin: 0;
+		padding: 0.375rem 0 0.375rem 0.4375rem;
+		display: block;
+		min-width: 0;
+		box-sizing: content-box;
+		background: none;
+		&:focus {
+			outline: none;
+			border-bottom: 0.125rem solid var(--color-primary-main);
+		}
+		&:hover {
+			border-bottom: 0.125rem solid black;
+		}
+		&:read-only {
+			background-color: var(--color-disabled);
+		}
 	}
-	&:hover {
-		border-bottom: 0.125rem solid black;
-	}
-	&:read-only {
-		background-color: var(--color-disabled);
-	}
-}
 
-.warning {
-	box-sizing: border-box;
-	border: solid 2px var(--color-error);
-	background-color: var(--color-error);
-}
+	.warning {
+		box-sizing: border-box;
+		border: solid 2px var(--color-error);
+		background-color: var(--color-error);
+	}
 
-.lunatic-input-number-errors .error {
-	color: var(--color-error);
-	font-size: 80%;
-	margin-top: 0.3125rem;
+	.lunatic-input-number-errors .error {
+		color: var(--color-error);
+		font-size: 80%;
+		margin-top: 0.3125rem;
+	}
 }

@@ -10,7 +10,7 @@ import './suggester.scss';
 
 function Suggester({
 	className,
-	placeholder,
+	placeholderList,
 	labelledBy,
 	optionRenderer,
 	labelRenderer,
@@ -70,7 +70,7 @@ function Suggester({
 			>
 				<Selection
 					labelRenderer={labelRenderer}
-					placeholder={placeholder}
+					placeholderList={placeholderList}
 					labelledBy={labelledBy}
 					ref={inputEl}
 				/>

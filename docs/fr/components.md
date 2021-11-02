@@ -18,8 +18,9 @@ L'utilisation du composant `Suggester`, composant de recherche sur liste longue,
 
 |       Lunatic        |  Lunatic workers   |
 | :------------------: | :----------------: |
-| < 0.2.0-experimental |       0.1.0        |
+|  0.2.1-experimental  | 0.2.0-experimental |
 |  0.2.0-experimental  | 0.1.2-experimental |
+| < 0.2.0-experimental |       0.1.0        |
 
 - Activation au niveau de `useLunatic` en valorisant les options suivantes :
 

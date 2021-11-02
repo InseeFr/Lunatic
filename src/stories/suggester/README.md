@@ -8,6 +8,7 @@
 |      label       | string |                    ""                    |          | Fieldset label of the suggester          |
 |  preferences \*  | array  |              ["COLLECTED"]               |          | Preferences to manage suggester response |
 |   response \*    | object |                    {}                    |          | Response concerned by the component      |
+| placeholderList  | string |                    ""                    |          | Placeholder of the suggester             |
 |   handleChange   |  func  |                    -                     |    ✓     | Handler of the suggester                 |
 |     disabled     |  bool  |                  false                   |          | Is the suggester options disabled        |
 |     focused      |  bool  |                  false                   |          | Is the suggester options focused         |
@@ -29,16 +30,17 @@
 **Suggester** component has for classes XXX.
 
 ## Json-lunatic store-info
+
 {
-    suggester: {  [name] : {
-            name,
-            fields: [{ name: string, rules: [regexp]|'soft'|undefined, language: string|undefined, stemmer: boolean, min: integer }],
-            queryParser: 
-                {type: 'soft'}|
-                {type:'tokenized', params: { language: string, rules: [regexp]|undefined, stemmer: boolean|undefined },
-            stopWords: [string]|undefined,
-            order: { type: 'ascending'|'descending', field: string }|undefined,
-            version: string
-        }
-    } , ...
+suggester: { [name] : {
+name,
+fields: [{ name: string, rules: [regexp]|'soft'|undefined, language: string|undefined, stemmer: boolean, min: integer }],
+queryParser:
+{type: 'soft'}|
+{type:'tokenized', params: { language: string, rules: [regexp]|undefined, stemmer: boolean|undefined },
+stopWords: [string]|undefined,
+order: { type: 'ascending'|'descending', field: string }|undefined,
+version: string
+}
+} , ...
 }

@@ -1,13 +1,15 @@
-.list-icon-wrapper {
-	&:focus-within svg {
-		fill: var(--color-primary-dark);
+.lunatic-component {
+	.list-icon-wrapper {
+		&:focus-within svg {
+			fill: var(--color-primary-dark);
+		}
 	}
-}
 
-.list-icon {
-	position: absolute;
-	margin-top: -0.1rem;
-	&.list-icon-disabled svg {
-		background-color: var(--color-disabled);
+	.list-icon {
+		position: absolute;
+		margin-top: -0.1rem;
+		&.list-icon-disabled svg {
+			background-color: var(--color-disabled);
+		}
 	}
 }
