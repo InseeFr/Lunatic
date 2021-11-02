@@ -1,4 +1,4 @@
-import getStemmer from './get-stemmer';
+import getStemmer from '../get-stemmer';
 
 function filterStemmer(tokens, { language, stemmer = true }) {
 	if (stemmer) {
