@@ -62,7 +62,7 @@ async function searching(search, { name, version = '1' }) {
 		}
 		return { results: [], search };
 	} catch (e) {
-		console.err(e);
+		console.error(e);
 		throw e;
 	}
 }

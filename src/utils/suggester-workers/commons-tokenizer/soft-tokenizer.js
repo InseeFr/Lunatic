@@ -1,4 +1,4 @@
-import prepareStringIndexation from './prepare-string-indexation';
+import { prepareStringIndexation } from '../commons-tokenizer';
 
 function softTokenizer(string) {
 	return [prepareStringIndexation(string, '-')];

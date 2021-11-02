@@ -1,7 +1,7 @@
 import createFilterSW from './create-filter-stop-words';
 
 describe('create-filter-stop-words', function () {
-	it('only last', function () {
+	it('only last ', function () {
 		const sw = ['un', 'de'];
 		const tokens = ['un', 'de', 'trois'];
 

@@ -39,7 +39,7 @@ function Selection({ labelRenderer, placeholderList, labelledBy }, inputEl) {
 				autoCapitalize="off"
 				autoCorrect="off"
 				spellCheck="false"
-				placeholderList={placeholderList}
+				placeholderlist={placeholderList}
 				disabled={disabled}
 			/>
 			<Label labelRenderer={labelRenderer} placeholderList={placeholderList} />
