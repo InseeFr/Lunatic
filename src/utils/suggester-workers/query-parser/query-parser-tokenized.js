@@ -16,7 +16,7 @@ function toArray(tokens) {
 	return [];
 }
 
-function parser(query = '', { pattern, ...args } = {}) {
+function queryParserTokenized(query = '', { pattern, ...args } = {}) {
 	const patternForTokens = { tokens: getRegExpFromPattern(pattern) };
 	const { tokens } = tokenizer()
 		.input(query)
@@ -25,4 +25,4 @@ function parser(query = '', { pattern, ...args } = {}) {
 	return filterTokens(toArray(tokens), args);
 }
 
-export default parser;
+export default queryParserTokenized;
