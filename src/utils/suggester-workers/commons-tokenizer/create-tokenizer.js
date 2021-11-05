@@ -1,5 +1,10 @@
 import createFieldsTokenizer from './create-field-tokenizer';
 import { composeFilters, createFilterStopWords } from './filters';
+import filterStemmer from './filters/filter-stemmer';
+import filterLength from './filters/filter-length';
+import filterSynonyms from './filters/filter-synonyms';
+import filterAccentsToLower from './filters/filter-accents-to-lower';
+import filterDouble from './filters/filter-double';
 
 function createMapFieldsTokenizer(fields, filters) {
 	return fields.reduce(function (mapFieldTokenizers, field) {
@@ -13,8 +18,18 @@ function createMapFieldsTokenizer(fields, filters) {
 
 function createTokenizer(fields, stopWords) {
 	const filterStopWords = createFilterStopWords(stopWords);
-	const filters = composeFilters({ filterStopWords });
-	const FIELDS_TOKENIZER_MAP = createMapFieldsTokenizer(fields || [], filters);
+	const getFilters = composeFilters(
+		filterDouble,
+		filterAccentsToLower,
+		filterStemmer,
+		filterSynonyms,
+		filterStopWords,
+		filterLength
+	);
+	const FIELDS_TOKENIZER_MAP = createMapFieldsTokenizer(
+		fields || [],
+		getFilters
+	);
 
 	return function (field, entity) {
 		const { name } = field;

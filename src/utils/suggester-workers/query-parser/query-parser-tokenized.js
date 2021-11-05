@@ -1,11 +1,13 @@
 import tokenizer from 'string-tokenizer';
-import removeAccents from 'remove-accents';
 import {
 	filterStemmer,
 	filterLength,
 	filterDouble,
 } from '../commons-tokenizer';
+import { composeFilters } from '../commons-tokenizer/filters';
 import { getRegExpFromPattern } from '../commons-tokenizer';
+
+const filterTokens = composeFilters(filterDouble, filterStemmer, filterLength);
 
 function toArray(tokens) {
 	if (tokens) {
@@ -14,18 +16,13 @@ function toArray(tokens) {
 	return [];
 }
 
-function parser(
-	query = '',
-	{ language = 'French', pattern = /[\w]+/, min = 2, stemmer = true } = {}
-) {
+function parser(query = '', { pattern, ...args } = {}) {
 	const patternForTokens = { tokens: getRegExpFromPattern(pattern) };
 	const { tokens } = tokenizer()
-		.input(removeAccents(query).toLowerCase())
+		.input(query)
 		.tokens(patternForTokens)
 		.resolve();
-	return stemmer
-		? filterDouble(filterStemmer(filterLength(toArray(tokens), min), language))
-		: filterDouble(filterLength(toArray(tokens), min));
+	return filterTokens(toArray(tokens), args);
 }
 
 export default parser;
