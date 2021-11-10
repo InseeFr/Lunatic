@@ -30,7 +30,6 @@ export const getPage = ({
 			return parseInt(page, 10) <= parseInt(currentPage, 10);
 		throw new Error('Unknown type');
 	});
-
 	for (let index = 0; index < filteredComponents.length; index++) {
 		const component = filteredComponents[index];
 		const { id, componentType, page, paginatedLoop } = component;
@@ -60,8 +59,13 @@ export const getPage = ({
 				featuresWithoutMD,
 			});
 			const { components: loopComponents } = component;
-			const startedIteration =
-				currentIteration && currentRootPage === page ? currentIteration - 1 : 0;
+			const startedIteration = getStartedIteration({
+				currentIteration,
+				currentRootPage,
+				page,
+				flow,
+				iterations,
+			});
 			const iterationsArray = buildIterationsArray({
 				start: flow === FLOW_NEXT ? startedIteration : 0,
 				end: flow === FLOW_NEXT ? iterations - 1 : startedIteration,
@@ -141,6 +145,18 @@ export const getPage = ({
 	}
 };
 
+const getStartedIteration = ({
+	currentIteration,
+	currentRootPage,
+	page,
+	flow,
+	iterations,
+}) => {
+	if (currentIteration && currentRootPage === page) return currentIteration - 1;
+	if (flow === FLOW_NEXT) return 0;
+	if (flow === FLOW_PREVIOUS) return iterations - 1;
+};
+
 const buildIterationsArray = ({ end, start, flow }) => {
 	const array = [...Array(end - start + 1)].map((_, i) => i + start);
 	return flow === FLOW_PREVIOUS ? array.slice().reverse() : array;
@@ -163,7 +179,6 @@ const hasToBeExcluded = ({
 				loopComponentIndex <= currentComponentIndex) ||
 			!loopComponent.page
 		);
-	// debugger;
 	if (flow === FLOW_PREVIOUS)
 		return (
 			(currentRootPage === page &&

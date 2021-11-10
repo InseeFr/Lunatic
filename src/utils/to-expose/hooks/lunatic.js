@@ -92,7 +92,6 @@ const useLunatic = (
 				flow: FLOW_NEXT,
 				management,
 			});
-			console.log('nextPage : ', nextPage);
 			setPage(nextPage);
 		}
 	};
@@ -110,7 +109,6 @@ const useLunatic = (
 				flow: FLOW_PREVIOUS,
 				management,
 			});
-			console.log('previousPage : ', previousPage);
 			setPage(previousPage);
 		}
 	};
