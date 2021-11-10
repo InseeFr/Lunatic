@@ -1,4 +1,4 @@
-import { prepareStringIndexation } from '../commons-tokenizer';
+import { prepareStringIndexation } from '../../commons-tokenizer';
 
 function parser(string) {
 	return [prepareStringIndexation(string, '-')];

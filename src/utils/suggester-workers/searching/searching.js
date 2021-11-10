@@ -43,7 +43,7 @@ async function searching(search, { name, version = '1' }) {
 			const db = await getDb(name, version);
 			const info = await getEntity(db, CONSTANTES.STORE_INFO_NAME, name);
 			const { queryParser, max, order } = info;
-			const parser = await resolveQueryParser(name, queryParser);
+			const parser = await resolveQueryParser(queryParser);
 			const transaction = db.transaction(
 				CONSTANTES.STORE_DATA_NAME,
 				'readonly'
