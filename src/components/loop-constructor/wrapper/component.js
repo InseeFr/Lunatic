@@ -48,14 +48,15 @@ const LoopConstructorWrapper = ({
 			const min =
 				parseInt(interpret(featuresWithoutMD)(bindings)(lines.min), 10) || 1;
 			const up = involvedVariables.reduce((acc, { name }) => {
-				if (min <= bindings[name].length)
+				if (min === bindings[name].length) return acc;
+				if (min < bindings[name].length)
 					return { ...acc, [name]: [...bindings[name].slice(0, min)] };
 				const toAdd = [...Array(min - bindings[name].length).keys()].map(
 					() => null
 				);
 				return { ...acc, [name]: [...bindings[name], ...toAdd] };
 			}, {});
-			handleChange(up);
+			if (Object.keys(up).length !== 0) handleChange(up);
 		}
 		// Assume to only execute this side effect at mount
 		// eslint-disable-next-line react-hooks/exhaustive-deps
