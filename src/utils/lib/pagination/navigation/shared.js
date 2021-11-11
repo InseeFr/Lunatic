@@ -179,7 +179,6 @@ const hasToBeExcluded = ({
 				loopComponentIndex <= currentComponentIndex) ||
 			!loopComponent.page
 		);
-	debugger;
 	if (flow === FLOW_PREVIOUS)
 		return (
 			(currentRootPage === page &&
