@@ -16,21 +16,25 @@ const stories = storiesOf('Declarations', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<Declarations
-		id="default"
-		type={C.BEFORE_QUESTION_TEXT}
-		declarations={declarations}
-	/>
+	<div className="lunatic-component">
+		<Declarations
+			id="default"
+			type={C.BEFORE_QUESTION_TEXT}
+			declarations={declarations}
+		/>
+	</div>
 ));
 
 stories.addWithJSX('Props', () => (
-	<Declarations
-		id="default"
-		type={C.BEFORE_QUESTION_TEXT}
-		declarations={declarationsVtl}
-		features={select('Features', featuresOptions, ['VTL', 'MD'])}
-		bindings={object('Bindings', { test: 'test' })}
-	/>
+	<div className="lunatic-component">
+		<Declarations
+			id="default"
+			type={C.BEFORE_QUESTION_TEXT}
+			declarations={declarationsVtl}
+			features={select('Features', featuresOptions, ['VTL', 'MD'])}
+			bindings={object('Bindings', { test: 'test' })}
+		/>
+	</div>
 ));
 
 const declarations = [

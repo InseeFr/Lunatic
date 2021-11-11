@@ -15,5 +15,7 @@ const stories = storiesOf('Breadcrumb', module)
 	});
 
 stories.addWithJSX('Default', () => (
-	<Breadcrumb id="default" elements={elements} />
+	<div className="lunatic-component">
+		<Breadcrumb id="default" elements={elements} />
+	</div>
 ));

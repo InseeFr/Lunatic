@@ -4,6 +4,8 @@ import Orchestrator from '../utils/orchestrator';
 import { titleDecorator } from 'utils/lib';
 import calcVar from './calc-var';
 import logement from './logement';
+import logementSequence from './logement-sequence';
+import dataLogement from './data-logement.json';
 import simpsons from './simpsons';
 import arithmetic from './arithmetic';
 import { positioningOptions, featuresOptions } from '../utils/options';
@@ -90,6 +92,23 @@ paginated.addWithJSX('Logement', () => (
 	<Orchestrator
 		id="props"
 		source={logement}
+		data={dataLogement}
+		missing={boolean('Missing', false)}
+		activeGoNextForMissing={boolean('Active go next for missing', false)}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		disabled={boolean('Disabled', false)}
+		focused={boolean('Focused', false)}
+		management={boolean('Management', false)}
+		pagination
+	/>
+));
+
+paginated.addWithJSX('Logement - Sequence', () => (
+	<Orchestrator
+		id="props"
+		source={logementSequence}
+		data={dataLogement}
 		missing={boolean('Missing', false)}
 		activeGoNextForMissing={boolean('Active go next for missing', false)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}

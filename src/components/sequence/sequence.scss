@@ -1,8 +1,10 @@
-.sequence-lunatic {
-	padding: 0;
-	font-size: 0.875rem;
-	color: var(--color-primary-light);
-	background-color: var(--color-secondary-contrast-text);
-	border: 0;
-	height: 1.875rem;
+.lunatic-component {
+	.sequence-lunatic {
+		padding: 0;
+		font-size: 0.875rem;
+		color: var(--color-primary-light);
+		background-color: var(--color-secondary-contrast-text);
+		border: 0;
+		height: 1.875rem;
+	}
 }
