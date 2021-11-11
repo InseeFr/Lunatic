@@ -1282,10 +1282,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^0.2.1-experimental":
-  version "0.2.1-experimental"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.2.1-experimental.tgz#9c5570f26d05863dae9821b706beec6cdc0f4e09"
-  integrity sha512-1sqJRo3gz/Ud2FAXNsym849Tx6BQrpmpWqqLYTNUgRoOpuxnVCEnkgGKQclso8nMqnewdhldmwJk0pUWf+c/5A==
+"@inseefr/lunatic@^0.2.2-experimental":
+  version "0.2.2-experimental"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.2.2-experimental.tgz#d92da70b0112dd4407371588a839ebcaa46f47a9"
+  integrity sha512-zDVlIXrhryg2nVQmMUzK+h1yTm1x856MgJ35Q/qPh/hLE0o9ef2sLb6HWdm0MtGMWhAYxQXwh4grpngzBPv7ug==
   dependencies:
     "@inseefr/trevas" "^0.1.10"
     lodash.camelcase "^4.3.0"
