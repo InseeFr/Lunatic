@@ -81,13 +81,16 @@ const InputDeclarationsWrapper = ({
 	}, [value, min, max, validators, isInputNumber]);
 
 	const handleChangeOnBlur = () => {
-		const finalValue =
-			value && value.endsWith('.') ? value.replace('.', '') : value;
-		handleChange({
-			[U.getResponseName(response)]: finalValue,
-		});
-		if (U.isFunction(logFunction)) logFunction(createEventFocus(false));
-		if (value !== finalValue) setValue(finalValue);
+		const initValue = U.getResponseByPreference(preferences)(response);
+		if (value !== initValue) {
+			const finalValue =
+				value && value.endsWith('.') ? value.replace('.', '') : value;
+			handleChange({
+				[U.getResponseName(response)]: finalValue,
+			});
+			if (U.isFunction(logFunction)) logFunction(createEventFocus(false));
+			if (value !== finalValue) setValue(finalValue);
+		}
 	};
 
 	const handleFocusIn = () => {

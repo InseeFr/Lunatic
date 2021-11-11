@@ -23,7 +23,8 @@
 					"id": "k3yn2qmr",
 					"response": {
 						"name": "PRENOM"
-					}
+					},
+					"page": "1"
 				},
 				{
 					"componentType": "InputNumber",
@@ -35,7 +36,8 @@
 					"id": "k3ymundt",
 					"response": {
 						"name": "AGE"
-					}
+					},
+					"page": "1"
 				}
 			]
 		}

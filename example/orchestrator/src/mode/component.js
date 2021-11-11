@@ -4,7 +4,7 @@ import './mode.scss';
 
 const Mode = ({ value, setValue, options }) => (
 	<div className="mode-container">
-		<div className="mode">
+		<div className="mode lunatic-component">
 			<Dropdown
 				id="mode"
 				label="Mode"
