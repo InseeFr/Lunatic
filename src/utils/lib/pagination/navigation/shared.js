@@ -179,11 +179,12 @@ const hasToBeExcluded = ({
 				loopComponentIndex <= currentComponentIndex) ||
 			!loopComponent.page
 		);
+	debugger;
 	if (flow === FLOW_PREVIOUS)
 		return (
 			(currentRootPage === page &&
 				it === currentIteration - 1 &&
-				loopComponentIndex >= currentComponentIndex - 1) ||
+				loopComponentIndex >= currentComponentIndex) ||
 			!loopComponent.page
 		);
 	return false;
