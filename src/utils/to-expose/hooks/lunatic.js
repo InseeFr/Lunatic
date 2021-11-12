@@ -180,6 +180,7 @@ const useLunatic = (
 			goPrevious,
 			isFirstPage,
 			isLastPage,
+			setPage,
 		},
 	};
 };
