@@ -162,7 +162,7 @@ const InputDeclarationsWrapper = ({
 										'Event' &&
 										roleType !== 'datepicker') ||
 									// FF hack: impossible to handle arrow events
-									Math.abs(v - value) === 1
+									(Math.abs(v - value) === 1 && isInputNumber)
 								) {
 									setValue(v);
 									handleChange({
