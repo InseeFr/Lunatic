@@ -73,12 +73,12 @@ const InputDeclarationsWrapper = ({
 	};
 
 	useEffect(() => {
-		if (isInputNumber) {
+		if (isInputNumber || roleType === 'datepicker') {
 			setMessagesError(
 				validators.map((v) => v(value)).filter((m) => m !== undefined)
 			);
 		}
-	}, [value, min, max, validators, isInputNumber]);
+	}, [value, min, max, validators, isInputNumber, roleType]);
 
 	const handleChangeOnBlur = () => {
 		const initValue = U.getResponseByPreference(preferences)(response);
@@ -143,7 +143,10 @@ const InputDeclarationsWrapper = ({
 							placeholder={placeholder}
 							autoComplete={autoComplete ? 'on' : 'off'}
 							className={`${roleType}-lunatic ${
-								isInputNumber && messagesError.length > 0 ? 'warning' : ''
+								(isInputNumber || roleType === 'datepicker') &&
+								messagesError.length > 0
+									? 'warning'
+									: ''
 							}`}
 							style={U.buildStyleObject(style)}
 							readOnly={readOnly}
@@ -197,7 +200,7 @@ const InputDeclarationsWrapper = ({
 						</div>
 					)}
 				</div>
-				{isInputNumber && (
+				{(isInputNumber || roleType === 'datepicker') && (
 					<div className="lunatic-input-number-errors">
 						{messagesError.map((m, i) => (
 							<div key={i} className="error">
