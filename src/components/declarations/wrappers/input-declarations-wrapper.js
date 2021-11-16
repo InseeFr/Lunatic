@@ -155,8 +155,9 @@ const InputDeclarationsWrapper = ({
 								const v = e.target.value;
 								if (
 									// Chrome
-									Object.getPrototypeOf(e.nativeEvent).constructor.name ===
-										'Event' ||
+									(Object.getPrototypeOf(e.nativeEvent).constructor.name ===
+										'Event' &&
+										roleType !== 'datepicker') ||
 									// FF hack: impossible to handle arrow events
 									Math.abs(v - value) === 1
 								) {
