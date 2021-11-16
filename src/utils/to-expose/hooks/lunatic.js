@@ -54,6 +54,7 @@ const useLunatic = (
 			) {
 				const s = suggestersToLoad.reduce(function (current, storeInfo) {
 					const { name } = storeInfo;
+					if (!suggesters[name]) return current;
 					return {
 						...current,
 						[name]: {
