@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.1.1-hackathon",
+	"version": "0.1.2-hackathon",
 	"workersVersion": "0.2.0-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
