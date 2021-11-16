@@ -28,8 +28,10 @@ const minMaxValidator =
 		}
 		const dateFormat = 'dd/MM/yyyy';
 		const date = new Date(value);
-		const minDate = min ? new Date(min) : null;
-		const maxDate = max ? new Date(max) : null;
+		if (isNaN(Date.parse(min))) return undefined;
+		if (isNaN(Date.parse(max))) return undefined;
+		const minDate = new Date(min);
+		const maxDate = new Date(max);
 		const minDateAsString = minDate ? format(minDate, dateFormat) : '';
 		const maxDateAsString = maxDate ? format(maxDate, dateFormat) : '';
 		if (!min && isDef(max) && compareAsc(date, maxDate) > 0)
