@@ -88,7 +88,7 @@ const useLunatic = (
 				components: questionnaire.components,
 				bindings: customBindings || bindings,
 				currentPage: page,
-				features: featuresWithoutMD,
+				featuresWithoutMD,
 				flow: FLOW_NEXT,
 				management,
 			});
@@ -105,7 +105,7 @@ const useLunatic = (
 				components: questionnaire.components,
 				bindings,
 				currentPage: page,
-				features: featuresWithoutMD,
+				featuresWithoutMD,
 				flow: FLOW_PREVIOUS,
 				management,
 			});
@@ -175,13 +175,12 @@ const useLunatic = (
 		bindings,
 		pagination: {
 			page,
-			setPage,
 			maxPage,
 			goNext,
 			goPrevious,
 			isFirstPage,
 			isLastPage,
-			flow,
+			setPage,
 		},
 	};
 };

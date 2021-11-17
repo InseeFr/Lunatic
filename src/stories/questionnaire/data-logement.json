@@ -1,0 +1,2691 @@
+{
+	"EXTERNAL": {
+		"ADR": "AVENUE CHARLES DE GAULLE",
+		"NUMTH": "29",
+		"CADRTH": null,
+		"CIV_D1": "MONSIEUR",
+		"CIV_D2": null,
+		"LIBCOM": "PARIS",
+		"PREN_D1": "JEAN-MARC",
+		"PREN_D2": null,
+		"CODEPOST1": "75017",
+		"NOMVOUS_D1": "MIERLOT",
+		"NOMVOUS_D2": null
+	},
+	"COLLECTED": {
+		"DAG": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DST": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DTA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DTL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HPA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HPH": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HPP": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HSP": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HST": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HUA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HUP": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HUT": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"IAS": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"IEL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"IMI": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "1"
+		},
+		"KBA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KBD": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KCA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KJA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KJC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSB": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSV": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KVE": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"ODF": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"ODL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIH": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OQA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VIN": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VLR": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VND": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VOP": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VPI": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VSY": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"CADR": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "2"
+		},
+		"DALO": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DDAT": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DDEM": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DORM": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"DSTL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DSTP": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HAUT": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HCHA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HPI1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HPI2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HSI1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HSI2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"ICOI": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "2"
+		},
+		"KAO1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KCU1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KCU2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KGA1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KGA2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KGA3": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KGA4": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KGRA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSE1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSE3": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSJC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSMI": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSOA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSV1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KWC1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KWCD": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KWCI": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"LIEN": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, "1", "3", "3"]
+		},
+		"MAA3": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHD": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHE": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAD": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OQAD": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"SDL2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDL4": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDN1": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDT1": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDT2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SEXE": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["1", "2", "2", "1"]
+		},
+		"UWEB": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VAID": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VDD1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VDSY": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VFFH": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VFLA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VLA1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VLRD": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VPID": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VPRA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VSO1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VTL1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VTLD": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"CHGNC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DAGEO": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DAGRL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"EAMIA": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EAMIH": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EAMIK": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EAMIL": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EPAS1": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EPASB": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EPASC": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EPROJ": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"GARDE": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"HPEUP": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HTLC1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "1"
+		},
+		"IAATC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "5"
+		},
+		"KDLK1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KDLK2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KGA11": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KGA12": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KGA13": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KGA14": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KGRAA": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KPISC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSJPC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSJPI": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KVELO": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"LIMT1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"LIMT2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"LNAIS": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["1", "1", "1", "1"]
+		},
+		"LOGCO": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"MAA2A": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"MAA2M": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"MAA3A": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"MAA3M": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"MCHR1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"MCHR2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"NBHAB": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "4"
+		},
+		"OIHB1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHB2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHB3": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHC1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHC2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHC3": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHC4": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHC5": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHC6": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHF1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHF2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHF3": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHF4": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHF5": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OIHF6": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"SANT1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"SDL11": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDL12": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDL13": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDL14": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDL15": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDL16": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDL17": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDTAD": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SITUA": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["1", "1", "2", "5"]
+		},
+		"STOC1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "1"
+		},
+		"STOC2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"STOCP": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "1"
+		},
+		"TELET": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["3", "5", null, null]
+		},
+		"TRAGE": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"UNLOG": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["1", "1", "1", "1"]
+		},
+		"VLAB1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VSURF": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"COUPLE": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["1", "1", "3", "3"]
+		},
+		"DAGEO1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DAGEO2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DAGEO3": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DEPART": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DURLOG": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"ECOVID": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EPROJB": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EPROJC": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EPROJD": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"ERET11": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"ERET12": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"ERET13": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"ERET14": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"ERET15": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"GRDIPA": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["8", "4", "5", "5"]
+		},
+		"GRDIPB": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"GRDIPC": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["1", null, null, null]
+		},
+		"IAATCD": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"KSJPIT": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"LOGAUT": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"LOGENQ": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"MAA2AC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"MAA2MC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"ODFRA2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR11": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR12": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR13": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR14": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR15": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR21": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR22": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR23": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR24": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR25": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR31": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR32": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"OLAR33": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"SANTE2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"STOCA3": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"STOCA4": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["1", "1", "2", "2"]
+		},
+		"STOCB1": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"TELMOB": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VACHAL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VCRCOM": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VLOYER": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODM1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODM2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODM3": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODM4": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODM5": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODM6": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODM7": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VSURFD": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VVENDL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"CIVCOLL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DALOBIS": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DEPNAIS": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"DSTLOC2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"EAMID11": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EAMID12": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EAMID13": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EAMID14": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EAMID15": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"EAMID16": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"ECOVID2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"ERETOUR": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"HULHUI1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"INDCOLL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"MARRIVC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"NATIO2N": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"NOMCOLL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"RESAUTO": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"STOCA12": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["1", "1", "2", "2"]
+		},
+		"TELFIXE": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"TRAVAIL": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, "2", "2"]
+		},
+		"VANCIEN": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VBILLOG": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODP11": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODP12": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODP13": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODP14": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODP21": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODP22": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VMODP23": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS11": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS12": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS13": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS14": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS21": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS22": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS23": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS24": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS25": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS26": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS31": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS32": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS33": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS34": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS35": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS36": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS41": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS42": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS43": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS44": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"VRAIS45": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"ADR_COLL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "rue Vincent Auriol"
+		},
+		"CIVCOLL2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"DATENAIS": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["1970-09-15", "1970-01-01", "2003-01-01", "2003-02-01"]
+		},
+		"G_PRENOM": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["Jean-Marc", "Magali", "Lauriane", "Mathis"]
+		},
+		"HULHUI21": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HULHUI22": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"HULHUI23": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"INDNVOCC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"MAA2AT_Q": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"NATIO1N1": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [true, true, true, true]
+		},
+		"NATIO1N2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"NATIO1N3": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"NATIO1N4": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"NOMCOLL2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"PAYSNAIS": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"SDL_SIT1": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SDL_SIT2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"TELNVOCC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"TEMPS1_1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"TYPLOGCO": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"testSTOC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"FOYPAGEES": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"LNAISMERE": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"LNAISPERE": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"MAA2ATC_Q": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"MAILNVOCC": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"NOMNVOCC1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"NOMNVOCC2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"NOTELCOLL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"SDT2_SIT2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"NUMTH_COLL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "1"
+		},
+		"PRENOMCOLL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"SDTAD_SIT2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"SITUMATRI1": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [true, true, null, null]
+		},
+		"SITUMATRI2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"SITUMATRI3": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"SITUMATRI4": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"SITUMATRI5": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		},
+		"SITUMATRI6": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, true, true]
+		},
+		"CADRTH_COLL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "1er étage UIA"
+		},
+		"LIBCOM_COLL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "AMIENS"
+		},
+		"NATIONMERE1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"NATIONMERE2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"NATIONMERE3": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"NATIONPERE1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"NATIONPERE2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"NATIONPERE3": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"PRENOMCOLL2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"PAYSNAISMERE": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"PAYSNAISPERE": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"PRENOMNVOCC1": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"PRENOMNVOCC2": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"COMMUNEPASSEE": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": null
+		},
+		"CODEPOST1_COLL": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "80000"
+		},
+		"testfiltreHEB1": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null]
+		},
+		"testfiltreHEB2": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [null, null, null, null]
+		}
+	},
+	"CALCULATED": {
+		"HC": 0,
+		"AGE": [51, 51, 18, 18],
+		"NHAB": 4,
+		"STOC": "1",
+		"STOCA": ["1", "1", "2", "2"],
+		"STOCC": ["1", "1", "1", "1"],
+		"nLIEN": ["9", "1", "3", "3"],
+		"EMPLOI": ["1", "1", "0", "0"],
+		"LIB_SI": ["s il", "si elle", "si elle", "s il"],
+		"MAA1AT": "",
+		"MAA2AT": "",
+		"MAA3AT": "",
+		"PRENOM": ["Jean-Marc", "Magali", "Lauriane", "Mathis"],
+		"STOC_i": ["1", "1", "1", "1"],
+		"TEXT_E": " ",
+		"libHSP": "vos pièces",
+		"libHST": " ",
+		"libHUT": "Ne pas tenir compte des pièces dédiées au télétravail.",
+		"libKAO": "",
+		"libKBA": "",
+		"libKJA": "Avez-vous",
+		"libOIH": "cette personne a-t-elle",
+		"libSDT": [
+			"ces situations",
+			"if (isnull(SDN1)) then \"ces situations\" else if (SDN1=\"1\") then \"cette situation\" else \"ces situations\"",
+			"if (isnull(SDN1)) then \"ces situations\" else if (SDN1=\"1\") then \"cette situation\" else \"ces situations\"",
+			"if (isnull(SDN1)) then \"ces situations\" else if (SDN1=\"1\") then \"cette situation\" else \"ces situations\""
+		],
+		"nblien": "01133",
+		"ADRESSE": "29 AVENUE CHARLES DE GAULLE  75017 PARIS",
+		"ANNEENQ": "2021",
+		"CTR_LOG": [
+			"Vous ne pouvez pas avoir deux résidences principales.",
+			"Magali ne peut pas avoir deux résidences principales.",
+			"Lauriane ne peut pas avoir deux résidences principales.",
+			"Mathis ne peut pas avoir deux résidences principales."
+		],
+		"INDconj": "1",
+		"LIB_FEM": ["", "e", "e", ""],
+		"MAA2ATC": "",
+		"MOISENQ": "10",
+		"NOMOCC1": "MONSIEUR JEAN-MARC MIERLOT",
+		"NOMOCC2": "null null null",
+		"SEXEREF": "1",
+		"liHPHc2": "",
+		"libHPHa": "",
+		"libHPHc": "",
+		"libHPHp": "",
+		"libHSI1": "ces pièces annexes réservées",
+		"libHSI2": "ces pièces annexes réservées",
+		"libHSTa": "",
+		"libHSTc": "",
+		"libHSTp": "",
+		"libHTLC": "individuel",
+		"libKBA1": "",
+		"libKSMI": " et de la véranda",
+		"libMAA3": "votre arrivée",
+		"libOIHB": "ou votre conjoint",
+		"libVFFH": "",
+		"libVFLA": "L'un de ces logements maintenant vendus",
+		"libVOUS": ["Vous", "Magali", "Lauriane", "Mathis"],
+		"persXRP": [0, 0, 0, 0],
+		"persmaj": [1, 1, 1, 1],
+		"ADRCOLLC": "1 rue Vincent Auriol 1er étage UIA 80000 AMIENS",
+		"LIB_FEM2": ["er", "ère", "ère", "er"],
+		"LIB_VEUF": [
+			"Veuf, conjoint(e) décédé(e)",
+			"Veuve, conjoint(e) décédé(e)",
+			"Veuve, conjoint(e) décédé(e)",
+			"Veuf, conjoint(e) décédé(e)"
+		],
+		"NOMCOLLC": "MONSIEUR JEAN-MARC MIERLOT, null null null",
+		"libCHGNC": "MONSIEUR JEAN-MARC MIERLOT",
+		"libENVS1": "pour transmettre votre questionnaire à l'Insee.",
+		"libFINS1": "Vous êtes arrivé(e) à la fin de ce questionnaire. Nous vous remercions de votre participation.",
+		"libGARDE": [
+			"Êtes-vous",
+			"Magali est-elle",
+			"Lauriane est-elle",
+			"Mathis est-il"
+		],
+		"libHTLC2": "la propriété",
+		"libIAATC": "de la maison",
+		"libKSJPI": "",
+		"libKVELO": "l'immeuble",
+		"libSANTE": ", le lieu et la nationalité de naissance de vos parents",
+		"libSTOC1": "",
+		"persconj": [0, 1, 0, 0],
+		"LIB_SUJET": ["il", "elle", "elle", "il"],
+		"PRENOMREF": "Jean-Marc",
+		"libFINS12": "Vous serez contacté(e) à nouveau dans quelques semaines pour participer à la deuxième partie de l’enquête, consacrée aux coûts du logement.",
+		"libHSTmoy": null,
+		"libPCSACT": [
+			"votre catégorie de profession",
+			"la catégorie de profession de Magali",
+			"la catégorie de profession de Lauriane",
+			"la catégorie de profession de Mathis"
+		],
+		"libSTOCA3": [
+			"êtes-vous",
+			"Magali est-elle",
+			"Lauriane est-elle",
+			"Mathis est-il"
+		],
+		"libSTOCB1": "locataire ou colocataire",
+		"nbpersXRP": 0,
+		"nbpersmaj": 4,
+		"perstelet": [1, 0, 0, 0],
+		"testSTOCA": ["1", "1", "1", "1"],
+		"LIB_ENFANT": [
+			"Votre fils, votre beau-fils",
+			"Votre fille, votre belle-fille",
+			"Votre fille, votre belle-fille",
+			"Votre fils, votre beau-fils"
+		],
+		"LIB_PARENT": [
+			"Votre père, votre beau-père",
+			"Votre mère, votre belle-mère",
+			"Votre mère, votre belle-mère",
+			"Votre père, votre beau-père"
+		],
+		"LIB_PRONOM": ["lui", "elle", "elle", "lui"],
+		"PRENOMVIDE": "PRÉNOM",
+		"filtre_HEB": [
+			"if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0",
+			"if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0",
+			"if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0",
+			"if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0"
+		],
+		"filtre_SIT": "1",
+		"filtre_XRP": "0",
+		"libHSTmoy2": null,
+		"libMOISENQ": "Octobre",
+		"nbpersconj": 1,
+		"persparent": [0, 0, 0, 0],
+		"persplus25": [1, 1, 0, 0],
+		"iDEPENDANCE": null,
+		"libVBILLOG1": "logement vendu",
+		"libVBILLOG2": "logement acheté",
+		"nbperstelet": 1,
+		"AGEMILLESIME": [51, 51, 18, 18],
+		"LIB_GDPARENT": [
+			"Votre grand-père, votre beau-grand-père",
+			"Votre grand-mère, votre belle-grand-mère",
+			"Votre grand-mère, votre belle-grand-mère",
+			"Votre grand-père, votre beau-grand-père"
+		],
+		"LIB_PTENFANT": [
+			"Votre petit-fils, votre beau-petit-fils",
+			"Votre petite-fille, votre belle-petite-fille",
+			"Votre petite-fille, votre belle-petite-fille",
+			"Votre petit-fils, votre beau-petit-fils"
+		],
+		"filtre_dest2": "0",
+		"libACTDIPAUT": [
+			"Votre situation",
+			"Situation de Magali",
+			"Situation de Lauriane",
+			"Situation de Mathis"
+		],
+		"nbpersparent": 0,
+		"persplus18TR": ["0", "0", "0", "0"],
+		"persplus25TR": ["0", "0", "0", "0"],
+		"ANNEENQmoins1": 2020,
+		"ANNEENQmoins4": 2017,
+		"ANNEENQmoins8": 2013,
+		"nb_filtre_HEB": "0if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0",
+		"persplus15AGE": ["1", "1", "1", "1"],
+		"persplus18AGE": ["1", "1", "1", "1"],
+		"persplus25AGE": ["1", "1", "0", "0"],
+		"ANNEENQmoins12": 2009,
+		"libINTROPRENOM": "En commençant par vous, indiquez les prénoms des habitants du logement.",
+		"libINTROPRENOM2": "(Si des personnes portent le même prénom, ajoutez un chiffre pour les distinguer).",
+		"test_libMOISENQ": "pas août",
+		"filtre_HebEnfant": [
+			"if (persplus25=1 and (STOCA=\"2\" and not(isnull(STOCA))) and (isnull(STOCB1) or STOCB1<>\"1\") and ((LIEN=\"3\" or LIEN=\"5\") and not(isnull(LIEN)) ) and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\") ) then 1 else 0",
+			"if (persplus25=1 and (STOCA=\"2\" and not(isnull(STOCA))) and (isnull(STOCB1) or STOCB1<>\"1\") and ((LIEN=\"3\" or LIEN=\"5\") and not(isnull(LIEN)) ) and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\") ) then 1 else 0",
+			"if (persplus25=1 and (STOCA=\"2\" and not(isnull(STOCA))) and (isnull(STOCB1) or STOCB1<>\"1\") and ((LIEN=\"3\" or LIEN=\"5\") and not(isnull(LIEN)) ) and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\") ) then 1 else 0",
+			"if (persplus25=1 and (STOCA=\"2\" and not(isnull(STOCA))) and (isnull(STOCB1) or STOCB1<>\"1\") and ((LIEN=\"3\" or LIEN=\"5\") and not(isnull(LIEN)) ) and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\") ) then 1 else 0"
+		],
+		"filtre_autrepers": "1",
+		"FILTER_RESULT_DAG": null,
+		"FILTER_RESULT_DST": null,
+		"FILTER_RESULT_DTA": null,
+		"FILTER_RESULT_DTL": null,
+		"FILTER_RESULT_HPA": false,
+		"FILTER_RESULT_HPH": true,
+		"FILTER_RESULT_HPP": false,
+		"FILTER_RESULT_HSP": false,
+		"FILTER_RESULT_HST": true,
+		"FILTER_RESULT_HUA": true,
+		"FILTER_RESULT_HUP": true,
+		"FILTER_RESULT_HUT": true,
+		"FILTER_RESULT_IAS": null,
+		"FILTER_RESULT_IEL": null,
+		"FILTER_RESULT_IMI": true,
+		"FILTER_RESULT_KBA": true,
+		"FILTER_RESULT_KBD": true,
+		"FILTER_RESULT_KCA": true,
+		"FILTER_RESULT_KGA": true,
+		"FILTER_RESULT_KJA": true,
+		"FILTER_RESULT_KJC": false,
+		"FILTER_RESULT_KSB": false,
+		"FILTER_RESULT_KSE": null,
+		"FILTER_RESULT_KSV": false,
+		"FILTER_RESULT_KVE": true,
+		"FILTER_RESULT_ODF": true,
+		"FILTER_RESULT_ODL": true,
+		"FILTER_RESULT_OIH": true,
+		"FILTER_RESULT_OLA": true,
+		"FILTER_RESULT_OQA": true,
+		"FILTER_RESULT_VIN": true,
+		"FILTER_RESULT_VLR": false,
+		"FILTER_RESULT_VND": false,
+		"FILTER_RESULT_VOP": true,
+		"FILTER_RESULT_VPI": null,
+		"FILTER_RESULT_VSY": null,
+		"FUTURANNIVERSAIRE": [false, false, false, false],
+		"FILTER_RESULT_CADR": true,
+		"FILTER_RESULT_DALO": null,
+		"FILTER_RESULT_DDAT": null,
+		"FILTER_RESULT_DDEM": null,
+		"FILTER_RESULT_DORM": [false, false, false, false],
+		"FILTER_RESULT_DSTL": false,
+		"FILTER_RESULT_DSTP": false,
+		"FILTER_RESULT_HAUT": true,
+		"FILTER_RESULT_HCHA": null,
+		"FILTER_RESULT_HPI1": false,
+		"FILTER_RESULT_HPI2": false,
+		"FILTER_RESULT_HSI1": false,
+		"FILTER_RESULT_HSI2": false,
+		"FILTER_RESULT_ICOI": true,
+		"FILTER_RESULT_KAO1": true,
+		"FILTER_RESULT_KCU1": true,
+		"FILTER_RESULT_KCU2": false,
+		"FILTER_RESULT_KGA1": true,
+		"FILTER_RESULT_KGRA": true,
+		"FILTER_RESULT_KSJC": false,
+		"FILTER_RESULT_KSMI": null,
+		"FILTER_RESULT_KSOA": null,
+		"FILTER_RESULT_KSV1": false,
+		"FILTER_RESULT_KWC1": true,
+		"FILTER_RESULT_LIEN": [false, true, true, true],
+		"FILTER_RESULT_MAA3": true,
+		"FILTER_RESULT_OIHB": false,
+		"FILTER_RESULT_OIHC": false,
+		"FILTER_RESULT_OIHD": false,
+		"FILTER_RESULT_OIHE": false,
+		"FILTER_RESULT_OIHF": false,
+		"FILTER_RESULT_OLAD": true,
+		"FILTER_RESULT_OQAD": true,
+		"FILTER_RESULT_SDL1": [true],
+		"FILTER_RESULT_SDL2": [false],
+		"FILTER_RESULT_SDL4": [false],
+		"FILTER_RESULT_SDN1": [null],
+		"FILTER_RESULT_SDT1": [false],
+		"FILTER_RESULT_SDT2": [null],
+		"FILTER_RESULT_SEXE": [true, true, true, true],
+		"FILTER_RESULT_UWEB": true,
+		"FILTER_RESULT_VAID": null,
+		"FILTER_RESULT_VDD1": false,
+		"FILTER_RESULT_VDSY": false,
+		"FILTER_RESULT_VFFH": null,
+		"FILTER_RESULT_VFLA": false,
+		"FILTER_RESULT_VLA1": true,
+		"FILTER_RESULT_VLRD": false,
+		"FILTER_RESULT_VPID": true,
+		"FILTER_RESULT_VPRA": false,
+		"FILTER_RESULT_VSO1": null,
+		"FILTER_RESULT_VTL1": null,
+		"FILTER_RESULT_CHGNC": true,
+		"FILTER_RESULT_DAGEO": false,
+		"FILTER_RESULT_DAGRL": false,
+		"FILTER_RESULT_EAMIA": [false],
+		"FILTER_RESULT_EAMIH": [false],
+		"FILTER_RESULT_EAMIK": [false],
+		"FILTER_RESULT_EAMIL": [false],
+		"FILTER_RESULT_EPAS1": [false],
+		"FILTER_RESULT_EPASB": [false],
+		"FILTER_RESULT_EPASC": [false],
+		"FILTER_RESULT_EPROJ": [false],
+		"FILTER_RESULT_ERET1": [false],
+		"FILTER_RESULT_GARDE": [false, false, false, false],
+		"FILTER_RESULT_HPEUP": true,
+		"FILTER_RESULT_HTLC1": true,
+		"FILTER_RESULT_IAATC": true,
+		"FILTER_RESULT_KDLK1": null,
+		"FILTER_RESULT_KDLK2": null,
+		"FILTER_RESULT_KGRAA": true,
+		"FILTER_RESULT_KPISC": true,
+		"FILTER_RESULT_KSJPC": false,
+		"FILTER_RESULT_KSJPI": null,
+		"FILTER_RESULT_KVELO": false,
+		"FILTER_RESULT_KWCID": false,
+		"FILTER_RESULT_LIMT1": true,
+		"FILTER_RESULT_LIMT2": [false],
+		"FILTER_RESULT_LNAIS": [true, true, true, true],
+		"FILTER_RESULT_LOGCO": [false, false, false, false],
+		"FILTER_RESULT_MAA2A": true,
+		"FILTER_RESULT_MAA2M": false,
+		"FILTER_RESULT_MAA3A": false,
+		"FILTER_RESULT_MAA3M": false,
+		"FILTER_RESULT_MCHR1": true,
+		"FILTER_RESULT_MCHR2": [false],
+		"FILTER_RESULT_NBHAB": true,
+		"FILTER_RESULT_OLAR1": true,
+		"FILTER_RESULT_OLAR2": true,
+		"FILTER_RESULT_OLAR3": true,
+		"FILTER_RESULT_SDTAD": [false],
+		"FILTER_RESULT_SITUA": [true, true, true, true],
+		"FILTER_RESULT_STOC1": true,
+		"FILTER_RESULT_STOC2": false,
+		"FILTER_RESULT_STOCP": false,
+		"FILTER_RESULT_TELET": [true, true, false, false],
+		"FILTER_RESULT_TRAGE": [false, false, false, false],
+		"FILTER_RESULT_UNLOG": [true, true, true, true],
+		"FILTER_RESULT_VLAB1": false,
+		"FILTER_RESULT_VMODM": true,
+		"FILTER_RESULT_VSURF": null,
+		"FILTER_RESULT_VTLD1": true,
+		"nb_filtre_HebEnfant": "0if (persplus25=1 and (STOCA=\"2\" and not(isnull(STOCA))) and (isnull(STOCB1) or STOCB1<>\"1\") and ((LIEN=\"3\" or LIEN=\"5\") and not(isnull(LIEN)) ) and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\") ) then 1 else 0if (persplus25=1 and (STOCA=\"2\" and not(isnull(STOCA))) and (isnull(STOCB1) or STOCB1<>\"1\") and ((LIEN=\"3\" or LIEN=\"5\") and not(isnull(LIEN)) ) and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\") ) then 1 else 0if (persplus25=1 and (STOCA=\"2\" and not(isnull(STOCA))) and (isnull(STOCB1) or STOCB1<>\"1\") and ((LIEN=\"3\" or LIEN=\"5\") and not(isnull(LIEN)) ) and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\") ) then 1 else 0if (persplus25=1 and (STOCA=\"2\" and not(isnull(STOCA))) and (isnull(STOCB1) or STOCB1<>\"1\") and ((LIEN=\"3\" or LIEN=\"5\") and not(isnull(LIEN)) ) and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\") ) then 1 else 0",
+		"FILTER_RESULT_COUPLE": [true, true, true, true],
+		"FILTER_RESULT_DAGEO1": false,
+		"FILTER_RESULT_DAGEO2": false,
+		"FILTER_RESULT_DAGEO3": false,
+		"FILTER_RESULT_DEPART": false,
+		"FILTER_RESULT_DURLOG": [false, false, false, false],
+		"FILTER_RESULT_EAMID1": [false],
+		"FILTER_RESULT_ECOVID": [false],
+		"FILTER_RESULT_EPROJB": [false],
+		"FILTER_RESULT_EPROJC": [false],
+		"FILTER_RESULT_EPROJD": [false],
+		"FILTER_RESULT_GRDIPA": [true, true, true, true],
+		"FILTER_RESULT_GRDIPB": [false, false, false, false],
+		"FILTER_RESULT_GRDIPC": [true, false, false, false],
+		"FILTER_RESULT_IAATCD": false,
+		"FILTER_RESULT_KSJPIT": null,
+		"FILTER_RESULT_LOGAUT": [false, false, false, false],
+		"FILTER_RESULT_LOGENQ": [false, false, false, false],
+		"FILTER_RESULT_MAA2AC": false,
+		"FILTER_RESULT_MAA2MC": false,
+		"FILTER_RESULT_ODFRA3": false,
+		"FILTER_RESULT_SANTE1": true,
+		"FILTER_RESULT_SANTE2": [false],
+		"FILTER_RESULT_STOCA3": [false, false, false, false],
+		"FILTER_RESULT_STOCA4": [false, false, false, false],
+		"FILTER_RESULT_STOCB1": [false, false, false, false],
+		"FILTER_RESULT_TELMOB": true,
+		"FILTER_RESULT_VACHAL": true,
+		"FILTER_RESULT_VCRCOM": false,
+		"FILTER_RESULT_VLOYER": null,
+		"FILTER_RESULT_VMODP1": true,
+		"FILTER_RESULT_VMODP2": true,
+		"FILTER_RESULT_VRAIS1": null,
+		"FILTER_RESULT_VRAIS2": null,
+		"FILTER_RESULT_VRAIS3": null,
+		"FILTER_RESULT_VRAIS4": null,
+		"FILTER_RESULT_VSURFD": true,
+		"FILTER_RESULT_VVENDL": true,
+		"FILTER_RESULT_CIVCOLL": false,
+		"FILTER_RESULT_DALOBIS": false,
+		"FILTER_RESULT_DEPNAIS": [true, true, true, true],
+		"FILTER_RESULT_DSTLOC2": false,
+		"FILTER_RESULT_ECOVID2": [false],
+		"FILTER_RESULT_ERETOUR": [false],
+		"FILTER_RESULT_HULHUI1": false,
+		"FILTER_RESULT_HULHUI2": false,
+		"FILTER_RESULT_INDCOLL": false,
+		"FILTER_RESULT_MARRIVC": true,
+		"FILTER_RESULT_NATIO1N": [true, true, true, true],
+		"FILTER_RESULT_NATIO2N": [null, null, null, null],
+		"FILTER_RESULT_NOMCOLL": false,
+		"FILTER_RESULT_RESAUTO": false,
+		"FILTER_RESULT_STOCA12": [true, true, true, true],
+		"FILTER_RESULT_TELFIXE": true,
+		"FILTER_RESULT_TRAVAIL": [false, false, true, true],
+		"FILTER_RESULT_VANCIEN": null,
+		"FILTER_RESULT_VBILLOG": null,
+		"FILTER_RESULT_ADR_COLL": true,
+		"FILTER_RESULT_CIVCOLL2": false,
+		"FILTER_RESULT_DATENAIS": [true, true, true, true],
+		"FILTER_RESULT_G_PRENOM": [true, true, true, true],
+		"FILTER_RESULT_INDNVOCC": false,
+		"FILTER_RESULT_MAA2AT_Q": true,
+		"FILTER_RESULT_NOMCOLL2": false,
+		"FILTER_RESULT_PAYSNAIS": [false, false, false, false],
+		"FILTER_RESULT_SDL_SIT1": [null],
+		"FILTER_RESULT_SDL_SIT2": [null],
+		"FILTER_RESULT_TELNVOCC": false,
+		"FILTER_RESULT_TEMPS1_1": true,
+		"FILTER_RESULT_TYPLOGCO": [false, false, false, false],
+		"FILTER_RESULT_testSTOC": true,
+		"FILTER_RESULT_FOYPAGEES": false,
+		"FILTER_RESULT_LNAISMERE": true,
+		"FILTER_RESULT_LNAISPERE": true,
+		"FILTER_RESULT_MAA2ATC_Q": false,
+		"FILTER_RESULT_MAILNVOCC": false,
+		"FILTER_RESULT_NOMNVOCC1": false,
+		"FILTER_RESULT_NOMNVOCC2": false,
+		"FILTER_RESULT_NOTELCOLL": true,
+		"FILTER_RESULT_SDT2_SIT2": [null],
+		"FILTER_RESULT_SITUMATRI": [true, true, true, true],
+		"FILTER_RESULT_NATIONMERE": true,
+		"FILTER_RESULT_NATIONPERE": true,
+		"FILTER_RESULT_NUMTH_COLL": true,
+		"FILTER_RESULT_PRENOMCOLL": false,
+		"FILTER_RESULT_SDTAD_SIT2": [null],
+		"FILTER_RESULT_CADRTH_COLL": true,
+		"FILTER_RESULT_LIBCOM_COLL": true,
+		"FILTER_RESULT_PRENOMCOLL2": false,
+		"FILTER_RESULT_PAYSNAISMERE": false,
+		"FILTER_RESULT_PAYSNAISPERE": false,
+		"FILTER_RESULT_PRENOMNVOCC1": false,
+		"FILTER_RESULT_PRENOMNVOCC2": false,
+		"FILTER_RESULT_COMMUNEPASSEE": false,
+		"FILTER_RESULT_CODEPOST1_COLL": true,
+		"FILTER_RESULT_testfiltreHEB1": [false],
+		"FILTER_RESULT_testfiltreHEB2": [true, true, true, true]
+	}
+}

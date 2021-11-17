@@ -63,16 +63,14 @@ Les clés suivantes sont prises en compte :
 
 Attributs de l'objet `pagination`:
 
-|     Clé     |                Type                |
-| :---------: | :--------------------------------: |
-|  goNext \*  |              function              |
-| goPrevious  |              function              |
-|    page     |               string               |
-|   setPage   |              function              |
-|   maxPage   |               string               |
-| isFirstPage |              boolean               |
-| isLastPage  |              boolean               |
-|    flow     | oneOf['FLOW_NEXT','FLOW_PREVIOUS'] |
+|     Clé     |   Type   |
+| :---------: | :------: |
+|  goNext \*  | function |
+| goPrevious  | function |
+|    page     |  string  |
+|   maxPage   |  string  |
+| isFirstPage | boolean  |
+| isLastPage  | boolean  |
 
 \* : `goNext` prends jusqu'à 2 arguments : l'event et des bindings (les 2 sont optionnels)
 

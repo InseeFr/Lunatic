@@ -78,6 +78,9 @@
 					}
 				]
 			],
+			"conditionFilter": {
+				"value": "true"
+			},
 			"depth": 1
 		},
 		{
@@ -98,9 +101,13 @@
 							"INPUTED": [null]
 						}
 					},
+					"page": "2",
 					"depth": 2
 				}
 			],
+			"conditionFilter": {
+				"value": "true"
+			},
 			"depth": 1
 		}
 	],
