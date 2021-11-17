@@ -40,8 +40,10 @@ const Controls = ({ Component, props }) => {
 		<>
 			<Component {...props} />
 			<div className="lunatic-controls">
-				{filteredControls.map(({ errorMessage }) => (
-					<div className="lunatic-control">{errorMessage}</div>
+				{filteredControls.map(({ id, errorMessage }) => (
+					<div key={`control-${id}`} className="lunatic-control">
+						{errorMessage}
+					</div>
 				))}
 			</div>
 		</>

@@ -157,8 +157,8 @@ const InputDeclarationsWrapper = ({
 							onChange={(e) => {
 								const v = e.target.value;
 								if (
-									([null, ''].includes(v) && value.length === 1) ||
-									([null, ''].includes(value) && v.length === 1)
+									([null, ''].includes(v) && value.length > 0) ||
+									([null, ''].includes(value) && v.length > 0)
 								) {
 									setValue(v);
 									handleChange({

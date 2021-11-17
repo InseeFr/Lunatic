@@ -138,7 +138,7 @@
 				{
 					"id": "kbal4bzb-CI-0",
 					"criticality": "WARN",
-					"control": "ADR_COLL <> \"\"",
+					"control": "not(nvl(ADR_COLL, \"\") = \"\")",
 					"errorMessage": "Vous n’avez pas renseigné votre voie. Merci de renseigner votre adresse complète.",
 					"bindingDependencies": ["ADR_COLL"]
 				}
