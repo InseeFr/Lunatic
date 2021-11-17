@@ -50,7 +50,8 @@ export const getPage = ({
 				interpret(featuresWithoutMD)(loopVectorialB)(loopV) !== true ||
 				(flow === FLOW_PREVIOUS &&
 					currentIteration === 1 &&
-					currentComponentIndex === 1)
+					currentComponentIndex === 1 &&
+					page === currentRootPage)
 			)
 				continue;
 			const iterations = getIterations({
