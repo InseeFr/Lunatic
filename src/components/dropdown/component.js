@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import missingWrapper from '../missing-wrapper';
+import componentWrapper from '../component-wrapper';
 import DropdownSimple from './dropdown-simple';
 import DropdownEdit from './dropdown-edit';
 import Declarations from '../declarations';
@@ -132,4 +132,4 @@ Dropdown.defaultProps = {
 	freezeOptions: false,
 };
 
-export default missingWrapper(React.memo(Dropdown), U.areEqual);
+export default componentWrapper(React.memo(Dropdown), U.areEqual);

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import missingWrapper from '../missing-wrapper';
+import componentWrapper from '../component-wrapper';
 import { InputDeclarationsWrapper } from '../declarations/wrappers';
 import { areEqual } from '../../utils/lib';
 import './input.scss';
@@ -51,4 +51,4 @@ InputNumber.propTypes = {
 	validators: PropTypes.arrayOf(PropTypes.func),
 };
 
-export default missingWrapper(React.memo(InputNumber, areEqual));
+export default componentWrapper(React.memo(InputNumber, areEqual));

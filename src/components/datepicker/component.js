@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import compareAsc from 'date-fns/compareAsc';
 import format from 'date-fns/format';
-import missingWrapper from '../missing-wrapper';
+import componentWrapper from '../component-wrapper';
 import { InputDeclarationsWrapper } from '../declarations/wrappers';
 import { areEqual } from '../../utils/lib';
 import './datepicker.scss';
@@ -59,4 +59,4 @@ Datepicker.propTypes = {
 	validators: PropTypes.arrayOf(PropTypes.func),
 };
 
-export default missingWrapper(React.memo(Datepicker, areEqual));
+export default componentWrapper(React.memo(Datepicker, areEqual));

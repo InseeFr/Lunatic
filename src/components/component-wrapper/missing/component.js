@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import Button from '../button';
-import * as U from '../../utils/lib';
+import Button from '../../button';
+import * as U from '../../../utils/lib';
 import './missing.scss';
 
 const Missing = ({ Component, props }) => {

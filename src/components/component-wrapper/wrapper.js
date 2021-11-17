@@ -1,10 +1,10 @@
 import React from 'react';
-import Missing from './component';
+import Missing from './missing';
 
-const missingWrapper = (Component) => (props) => {
+const componentWrapper = (Component) => (props) => {
 	const { missing } = props;
 	if (missing) return <Missing Component={Component} props={props} />;
 	return <Component {...props} />;
 };
 
-export default missingWrapper;
+export default componentWrapper;
