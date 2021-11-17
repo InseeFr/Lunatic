@@ -14,7 +14,7 @@ const OrchestratorForStories = ({
 	pagination = false,
 	features = ['VTL'],
 	bindings: initialBindings,
-	initialPage = '2',
+	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	shortcut = false,
