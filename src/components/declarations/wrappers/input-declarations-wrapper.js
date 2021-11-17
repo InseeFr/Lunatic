@@ -157,6 +157,14 @@ const InputDeclarationsWrapper = ({
 							onChange={(e) => {
 								const v = e.target.value;
 								if (
+									([null, ''].includes(v) && value.length === 1) ||
+									([null, ''].includes(value) && v.length === 1)
+								) {
+									setValue(v);
+									handleChange({
+										[U.getResponseName(response)]: v,
+									});
+								} else if (
 									// Chrome
 									(Object.getPrototypeOf(e.nativeEvent).constructor.name ===
 										'Event' &&
