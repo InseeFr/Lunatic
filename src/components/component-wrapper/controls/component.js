@@ -4,6 +4,7 @@ import { interpret } from '../../../utils/to-expose/interpret';
 import './controls.scss';
 
 const Controls = ({ Component, props }) => {
+	// handle responses & cells
 	const { response, preferences, missingResponse } = props;
 	const [applyControls, setApplyControls] = useState(
 		() => U.getResponseByPreference(preferences)(response) !== null

@@ -1,5 +1,6 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+import componentWrapper from '../component-wrapper';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
@@ -134,4 +135,4 @@ Suggester.propTypes = {
 	getStoreInfo: PropTypes.func,
 };
 
-export default React.memo(Suggester, U.areEqual);
+export default componentWrapper(React.memo(Suggester, U.areEqual));

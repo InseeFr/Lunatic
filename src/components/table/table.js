@@ -168,4 +168,4 @@ Table.propTypes = {
 	style: PropTypes.object,
 };
 
-export default componentWrapper(React.memo(Table), U.areEqual);
+export default componentWrapper(React.memo(Table, U.areEqual));

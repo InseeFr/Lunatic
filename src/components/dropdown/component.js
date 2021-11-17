@@ -132,4 +132,4 @@ Dropdown.defaultProps = {
 	freezeOptions: false,
 };
 
-export default componentWrapper(React.memo(Dropdown), U.areEqual);
+export default componentWrapper(React.memo(Dropdown, U.areEqual));
