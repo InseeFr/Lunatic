@@ -50,14 +50,15 @@ async function searching(search, { name, version = '1' }) {
 			);
 			const store = transaction.objectStore(CONSTANTES.STORE_DATA_NAME);
 			const index = store.index(CONSTANTES.STORE_INDEX_NAME);
-			const tokens = parser(search);
-			const tokensSuggestions = await searchTokens(tokens, index);
+			const tokensSearch = parser(search);
+			const tokensSuggestions = await searchTokens(tokensSearch, index);
 			const response = computeScore(tokensSuggestions);
 			return {
 				results: prepare(
 					getOrderingFunction(order)(filterSize(response, max), order)
 				),
 				search,
+				tokensSearch,
 			};
 		}
 		return { results: [], search };

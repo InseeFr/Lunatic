@@ -4,6 +4,7 @@ import { clearDb, openOnCreateDb, insertEntity } from '../../utils/idb-tools';
 import { CONSTANTES } from '../../utils/store-tools';
 import append from '../../utils/suggester-workers/append-to-index';
 import searching from '../../utils/suggester-workers/searching';
+import findBestLabel from '../../utils/suggester-workers/find-best-label/find-best-label';
 
 const stories = storiesOf('Suggester/workers', module);
 
@@ -78,7 +79,7 @@ const infoNaf = {
 	],
 	queryParser: {
 		type: 'tokenized',
-		params: { language: 'French', pattern: '[\\w.]+' },
+		params: { language: 'French', pattern: '[\\w.]+', stemmer: false },
 	},
 	version: '1',
 };
@@ -119,13 +120,18 @@ function Search({ storeInfo, version = '1', max = 30, defaultValue = '' }) {
 	const onClick = useCallback(
 		function () {
 			async function doIt() {
-				const results = await searching(value, {
+				const { results, tokensSearch } = await searching(value, {
 					name,
 					version,
 					max,
 					order,
 				});
 				console.log(results);
+				results.forEach(function (option) {
+					const { tokensMap, id } = option;
+					const bestLabel = findBestLabel(tokensSearch, tokensMap);
+					console.log({ id, bestLabel });
+				});
 			}
 			if (value.length) {
 				doIt();
