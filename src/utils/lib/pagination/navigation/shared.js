@@ -87,7 +87,6 @@ export const getPage = ({
 							page,
 							it,
 							currentIteration,
-							loopComponentIndex: componentIndex,
 							currentComponentIndex,
 							loopComponent,
 						})
@@ -113,7 +112,6 @@ export const getPage = ({
 			const block = filteredComponents.filter(
 				(c) => c.page === page && c.componentType === 'Loop'
 			);
-
 			if (block.length > 0) {
 				const loopIdOfInterest =
 					flow === FLOW_NEXT ? block[0].id : block[block.length - 1].id;
@@ -169,10 +167,14 @@ const hasToBeExcluded = ({
 	page,
 	it,
 	currentIteration,
-	loopComponentIndex,
 	currentComponentIndex,
 	loopComponent,
 }) => {
+	const { page: loopPage, depth } = loopComponent;
+	const { currentComponentIndex: loopComponentIndex } = splitPage(
+		loopPage,
+		depth
+	);
 	if (flow === FLOW_NEXT)
 		return (
 			(currentRootPage === page &&
