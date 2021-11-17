@@ -5,18 +5,34 @@ import './controls.scss';
 
 const Controls = ({ Component, props }) => {
 	// handle responses & cells
-	const { response, preferences, missingResponse } = props;
-	const [applyControls, setApplyControls] = useState(
-		() => U.getResponseByPreference(preferences)(response) !== null
+	const {
+		response,
+		responses,
+		cells,
+		components,
+		preferences,
+		missingResponse,
+		savingType,
+	} = props;
+	// savingType or preferences[preferences.length-1]?
+	const [applyControls, setApplyControls] = useState(() =>
+		U.hasToCleanMissing(savingType)({ response, responses, cells, components })
 	);
 
 	useEffect(() => {
 		if (!applyControls) {
-			if (U.getResponseByPreference(preferences)(response) !== null) {
+			if (
+				U.hasToCleanMissing(savingType)({
+					response,
+					responses,
+					cells,
+					components,
+				})
+			) {
 				setApplyControls(true);
 			}
 		}
-	}, [response, applyControls, preferences]);
+	}, [response, responses, cells, components, applyControls, savingType]);
 
 	const hasMissingResponse =
 		U.getResponseByPreference(preferences)(missingResponse) !== null;

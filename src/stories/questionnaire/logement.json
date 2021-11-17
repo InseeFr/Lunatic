@@ -998,7 +998,7 @@
 						{
 							"id": "kmort6x9-CI-0",
 							"criticality": "INFO",
-							"control": "not((NATIO1N1 = \"1\" and NATIO1N2 = \"1\") or (NATIO1N1 = \"1\" and NATIO1N4 = \"1\") or (NATIO1N2 = \"1\" and NATIO1N4 = \"1\") or (NATIO1N3 = \"1\" and NATIO1N4 = \"1\"))",
+							"control": "not((nvl(NATIO1N1, false) = true and nvl(NATIO1N2, false) = true) or (nvl(NATIO1N1, false) = true and nvl(NATIO1N4, false) = true) or (nvl(NATIO1N2, false) = true and nvl(NATIO1N4, false) = true) or (nvl(NATIO1N3, false) = true and nvl(NATIO1N4, false) = true))",
 							"errorMessage": "Ces réponses sont incompatibles.",
 							"bindingDependencies": [
 								"NATIO1N1",
