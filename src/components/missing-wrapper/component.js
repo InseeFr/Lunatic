@@ -57,17 +57,19 @@ const Missing = ({ Component, props }) => {
 
 	const onClick = (value) => () => {
 		const isSameValue = buttonState === value;
-		const newValue = isSameValue ? null : value;
-		const toClean = getVarsToClean();
-		if (Object.keys(toClean)) {
-			handleChange(toClean);
-			if (U.isFunction(missingStrategy) && !isSameValue)
-				missingStrategy({ ...bindings, ...toClean });
-		} else {
-			if (U.isFunction(missingStrategy) && !isSameValue)
-				missingStrategy(bindings);
+		if (!isSameValue) {
+			const newValue = isSameValue ? null : value;
+			const toClean = getVarsToClean();
+			if (Object.keys(toClean)) {
+				handleChange(toClean);
+				if (U.isFunction(missingStrategy) && !isSameValue)
+					missingStrategy({ ...bindings, ...toClean });
+			} else {
+				if (U.isFunction(missingStrategy) && !isSameValue)
+					missingStrategy(bindings);
+			}
+			handleChange({ [U.getResponseName(missingResponse)]: newValue });
 		}
-		handleChange({ [U.getResponseName(missingResponse)]: newValue });
 	};
 
 	return (
