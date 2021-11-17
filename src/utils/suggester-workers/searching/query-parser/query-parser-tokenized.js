@@ -3,9 +3,9 @@ import {
 	filterStemmer,
 	filterLength,
 	filterDouble,
+	getRegExpFromPattern,
 } from '../../commons-tokenizer';
 import { composeFilters } from '../../commons-tokenizer/filters';
-import { getRegExpFromPattern } from '../../commons-tokenizer';
 
 const filterTokens = composeFilters(filterDouble, filterStemmer, filterLength);
 

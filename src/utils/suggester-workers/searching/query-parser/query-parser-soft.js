@@ -1,7 +1,7 @@
 import { prepareStringIndexation } from '../../commons-tokenizer';
 
-function parser(string) {
+function queryParserSoft(string) {
 	return [prepareStringIndexation(string, '-')];
 }
 
-export default parser;
+export default queryParserSoft;

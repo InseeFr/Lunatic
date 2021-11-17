@@ -1,5 +1,5 @@
-export function composeFilters(...args) {
-	return args.reduce(
+export function composeFilters(...filters) {
+	return filters.reduce(
 		function (next, current) {
 			return (tokens, args) => next(current(tokens, args), args);
 		},
