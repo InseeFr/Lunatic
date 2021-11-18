@@ -1,19 +1,18 @@
 // Enable cross domain workers
 
 export const createWorker = (workerUrl) => {
-	const scriptOrigin = new URL(document.currentScript.src).origin;
 	var worker = null;
 	try {
 		var blob;
 		try {
-			blob = new Blob([`importScripts('${scriptOrigin}${workerUrl}');`], {
+			blob = new Blob([`importScripts('${workerUrl}');`], {
 				type: 'application/javascript',
 			});
 		} catch (e) {
 			var blobBuilder = new (window.BlobBuilder ||
 				window.WebKitBlobBuilder ||
 				window.MozBlobBuilder)();
-			blobBuilder.append(`importScripts('${scriptOrigin}${workerUrl}');`);
+			blobBuilder.append(`importScripts('${workerUrl}');`);
 			blob = blobBuilder.getBlob('application/javascript');
 		}
 		var url = window.URL || window.webkitURL;
