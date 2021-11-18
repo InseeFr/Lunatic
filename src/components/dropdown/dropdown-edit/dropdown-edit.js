@@ -67,6 +67,12 @@ function Dropdown({
 
 	const selectedOption = options.find((o) => o.label === value);
 
+	useEffect(() => {
+		if (visible && !activeIndex) {
+			dispatch(actions.initActiveIndex());
+		}
+	}, [activeIndex, visible]);
+
 	useEffect(
 		function () {
 			const { current } = inputEl;
