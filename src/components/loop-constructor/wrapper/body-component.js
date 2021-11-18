@@ -64,6 +64,7 @@ const BodyComponent = ({
 												bindings={localBindings}
 												zIndex={uiComponents.length - i || 0}
 												logFunction={logFunction}
+												focused={i === 0 && j === 0}
 											/>
 										</td>
 									);
@@ -113,6 +114,7 @@ const BodyComponent = ({
 									features={features}
 									bindings={localBindings}
 									logFunction={logFunction}
+									focused={i === 0}
 								/>
 							</div>
 						);
