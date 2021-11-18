@@ -1,3 +1,5 @@
+import { createWorker } from '../create-worker';
+
 const workerPath =
 	process.env.LUNATIC_LOADER_WORKER_PATH ||
 	process.env.REACT_APP_LUNATIC_LOADER_WORKER_PATH ||
@@ -8,7 +10,7 @@ const workerPath =
  */
 function task(info, version, log = () => null) {
 	const { name, fields, stopWords } = info;
-	const worker = new Worker(workerPath);
+	const worker = createWorker(workerPath);
 	let start = false;
 	let stop = false;
 
