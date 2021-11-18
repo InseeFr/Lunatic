@@ -2,11 +2,15 @@ import React from 'react';
 import Button from '../button';
 import './modal.scss';
 
-const Modal = ({ cancelModal, validateModal }) => (
+const Modal = ({ controls, cancelModal, validateModal }) => (
 	<div className="lunatic-modal">
 		<div className="lunatic-modal-content">
 			<div className="lunatic-modal-text">
-				<p>Controls</p>
+				<ul>
+					{controls.map(({ id, errorMessage }) => (
+						<li key={id}>{errorMessage}</li>
+					))}
+				</ul>
 			</div>
 			<div className="lunatic-modal-buttons">
 				<div className="lunatic-modal-button">
