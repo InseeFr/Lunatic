@@ -90,8 +90,13 @@ const getControlsFromComponents = ({
 						value,
 						preferences,
 					});
+
 					if (!typeControls) return [...acc, ...interpretedControls];
-					return [...acc, typeControls, ...interpretedControls];
+					return [
+						...acc,
+						{ ...typeControls, criticality: 'LOCK' },
+						...interpretedControls,
+					];
 				}
 			}
 			if (['InputNumber', 'Datepicker'].includes(componentType)) {
@@ -105,7 +110,7 @@ const getControlsFromComponents = ({
 					preferences,
 				});
 				if (!typeControls) return [...acc];
-				return [...acc, typeControls];
+				return [...acc, { ...typeControls, criticality: 'LOCK' }];
 			}
 		}
 		return acc;
