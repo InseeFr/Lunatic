@@ -1,14 +1,22 @@
 import { buildLoopBindings } from '../loops';
 import { interpret } from '../../to-expose/interpret';
 import { splitPage } from '..';
+import { getTypeControls } from '../../../components/component-wrapper/controls/validators';
 
-export const getControls = ({ page, components, bindings, features }) =>
+export const getControls = ({
+	page,
+	components,
+	bindings,
+	features,
+	preferences,
+}) =>
 	getControlsFromComponents({
 		page,
 		components,
 		depth: 1,
 		bindings,
 		features,
+		preferences,
 	});
 
 const getControlsFromComponents = ({
@@ -17,6 +25,7 @@ const getControlsFromComponents = ({
 	components,
 	bindings,
 	features,
+	preferences,
 }) => {
 	const { currentIteration, currentPageWithoutAnyIteration } = splitPage(
 		page,
@@ -46,28 +55,58 @@ const getControlsFromComponents = ({
 					bindings: loopBindings,
 					features,
 					depth: depth + 1,
+					preferences,
 				}),
 			];
 		}
-		if (controls && currentPageWithoutAnyIteration === componentPage) {
-			const interpretedControls = controls.reduce(
-				(
-					iC,
-					{ id, control, errorMessage, criticality, bindingDependencies }
-				) => {
-					const reducedBindings = getReducedBindings(
-						bindingDependencies,
-						bindings
-					);
-					const interpretedControl =
-						interpret(features)(reducedBindings)(control);
-					if (!interpretedControl)
-						return [...iC, { id, errorMessage, criticality }];
-					return iC;
-				},
-				[]
-			);
-			return [...acc, ...interpretedControls];
+		if (currentPageWithoutAnyIteration === componentPage) {
+			if (controls) {
+				const interpretedControls = controls.reduce(
+					(
+						iC,
+						{ id, control, errorMessage, criticality, bindingDependencies }
+					) => {
+						const reducedBindings = getReducedBindings(
+							bindingDependencies,
+							bindings
+						);
+						const interpretedControl =
+							interpret(features)(reducedBindings)(control);
+						if (!interpretedControl)
+							return [...iC, { id, errorMessage, criticality }];
+						return iC;
+					},
+					[]
+				);
+				if (!['InputNumber', 'Datepicker'].includes(componentType))
+					return [...acc, ...interpretedControls];
+				else {
+					const {
+						response: { name },
+					} = component;
+					const value = bindings[name];
+					const typeControls = getTypeControls({
+						...component,
+						value,
+						preferences,
+					});
+					if (!typeControls) return [...acc, ...interpretedControls];
+					return [...acc, typeControls, ...interpretedControls];
+				}
+			}
+			if (['InputNumber', 'Datepicker'].includes(componentType)) {
+				const {
+					response: { name },
+				} = component;
+				const value = bindings[name];
+				const typeControls = getTypeControls({
+					...component,
+					value,
+					preferences,
+				});
+				if (!typeControls) return [...acc];
+				return [...acc, typeControls];
+			}
 		}
 		return acc;
 	}, []);

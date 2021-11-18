@@ -790,7 +790,7 @@
 					"mandatory": false,
 					"page": "11.2",
 					"min": "1900-01-01",
-					"max": "format-date(current-date(),'[Y0001]-[M01]-[D01]')",
+					"max": "2099-12-31",
 					"label": "\"➡ \" || \"Quelle est \" || if (PRENOM=PRENOMREF) then \"votre date de naissance ?\" else \"la date de naissance de \" || PRENOM ||\" ?\"",
 					"conditionFilter": {
 						"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR))",
@@ -800,7 +800,7 @@
 						{
 							"id": "kmoouamz-CI-0",
 							"criticality": "WARN",
-							"control": "not(isnull(DATENAIS))",
+							"control": "not(nvl(DATENAIS, \"\") = \"\")",
 							"errorMessage": "Votre réponse est importante pour le bon déroulement du questionnaire. Merci de répondre à cette question.",
 							"bindingDependencies": ["DATENAIS"]
 						}

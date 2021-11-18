@@ -100,6 +100,7 @@ const useLunatic = (
 				features: featuresWithoutMD,
 				components,
 				bindings,
+				preferences,
 			});
 			if (controls.length > 0) setModalContent({ page: nextPage, controls });
 			else setPage(nextPage);
@@ -124,6 +125,7 @@ const useLunatic = (
 				features: featuresWithoutMD,
 				components,
 				bindings,
+				preferences,
 			});
 			if (controls.length > 0)
 				setModalContent({ page: previousPage, controls });
