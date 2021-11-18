@@ -552,7 +552,7 @@
 				{
 					"id": "kbc1b4k2-CI-0",
 					"criticality": "WARN",
-					"control": "not(isnull(NBHAB))",
+					"control": "not(nvl(NBHAB, \"\") = \"\")",
 					"errorMessage": "Votre réponse est importante pour le bon déroulement du questionnaire. Merci de répondre à cette question.",
 					"bindingDependencies": ["NBHAB"]
 				}

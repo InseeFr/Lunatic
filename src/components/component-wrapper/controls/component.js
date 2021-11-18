@@ -40,7 +40,7 @@ const Controls = ({ Component, props }) => {
 	const { controls, features, bindings } = props;
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
 	const filteredControls =
-		!applyControls && !hasMissingResponse
+		(!applyControls && !hasMissingResponse) || !controls
 			? []
 			: controls.filter((control) => {
 					const { bindingDependencies, control: formula } = control;

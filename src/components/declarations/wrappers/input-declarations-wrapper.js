@@ -36,6 +36,7 @@ const InputDeclarationsWrapper = ({
 	isInputNumber,
 	numberAsTextfield,
 	logFunction,
+	componentType,
 }) => {
 	const inputRef = useRef();
 	const createEventFocus = (focusIn = true) =>
@@ -51,7 +52,9 @@ const InputDeclarationsWrapper = ({
 	);
 
 	const [messagesError, setMessagesError] = useState(
-		validators.map((v) => v(value)).filter((m) => m !== undefined)
+		validators
+			.map((v) => v({ min, max, value, preferences, componentType, id }))
+			.filter((m) => m)
 	);
 
 	useEffect(() => {
@@ -68,17 +71,30 @@ const InputDeclarationsWrapper = ({
 
 	const validate = (v) => {
 		setMessagesError(
-			validators.map((f) => f(v)).filter((m) => m !== undefined)
+			validators
+				.map((v) => v({ min, max, value: v, preferences, componentType, id }))
+				.filter((m) => m)
 		);
 	};
 
 	useEffect(() => {
-		if (isInputNumber || roleType === 'datepicker') {
+		if (['InputNumber', 'Datepicker'].includes(componentType)) {
 			setMessagesError(
-				validators.map((v) => v(value)).filter((m) => m !== undefined)
+				validators
+					.map((v) => v({ min, max, value, preferences, componentType, id }))
+					.filter((m) => m)
 			);
 		}
-	}, [value, min, max, validators, isInputNumber, roleType]);
+	}, [
+		value,
+		min,
+		max,
+		validators,
+		isInputNumber,
+		id,
+		preferences,
+		componentType,
+	]);
 
 	const handleChangeOnBlur = () => {
 		const initValue = U.getResponseByPreference(preferences)(response);
@@ -208,11 +224,11 @@ const InputDeclarationsWrapper = ({
 						</div>
 					)}
 				</div>
-				{(isInputNumber || roleType === 'datepicker') && (
-					<div className="lunatic-input-number-errors">
-						{messagesError.map((m, i) => (
-							<div key={i} className="error">
-								{m}
+				{messagesError.length > 0 && (
+					<div className="lunatic-controls">
+						{messagesError.map(({ id, errorMessage }) => (
+							<div key={`control-${id}`} className="lunatic-control">
+								{errorMessage}
 							</div>
 						))}
 					</div>
