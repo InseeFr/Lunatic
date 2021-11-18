@@ -42,8 +42,9 @@ function Suggester({
 	const onSelect = useCallback(
 		function (suggestion) {
 			const ids = getSuggestionId(suggestion);
+			// Delete: null --> empty to handle controls
 			handleChange({
-				[U.getResponseName(response)]: ids,
+				[U.getResponseName(response)]: ids || '',
 			});
 			setValue(ids);
 		},

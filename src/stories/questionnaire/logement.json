@@ -214,7 +214,7 @@
 				{
 					"id": "kbal8crw-CI-0",
 					"criticality": "WARN",
-					"control": "not(isnull(CODEPOST1_COLL))",
+					"control": "not(nvl(CODEPOST1_COLL, \"\") = \"\")",
 					"errorMessage": "Vous n’avez pas renseigné votre code postal. Merci de renseigner votre adresse complète.",
 					"bindingDependencies": ["CODEPOST1_COLL"]
 				}
@@ -245,7 +245,7 @@
 				{
 					"id": "kbal9dwk-CI-0",
 					"criticality": "WARN",
-					"control": "not(isnull(LIBCOM_COLL))",
+					"control": "not(nvl(LIBCOM_COLL, \"\") = \"\")",
 					"errorMessage": "Vous n’avez pas renseigné votre commune. Merci de renseigner votre adresse complète. ",
 					"bindingDependencies": ["LIBCOM_COLL"]
 				}
