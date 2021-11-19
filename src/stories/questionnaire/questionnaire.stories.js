@@ -103,6 +103,7 @@ paginated.addWithJSX('Logement', () => (
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
 		pagination
+		modalForControls
 	/>
 ));
 

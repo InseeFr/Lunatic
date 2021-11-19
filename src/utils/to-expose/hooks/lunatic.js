@@ -16,6 +16,7 @@ const useLunatic = (
 		features = ['VTL'],
 		management = false,
 		pagination = false,
+		modalForControls = false,
 		initialPage = '1',
 		logFunction = null,
 		autoSuggesterLoading = false,
@@ -33,7 +34,7 @@ const useLunatic = (
 
 	const [todo, setTodo] = useState({});
 
-	const [modalContent, setModalContent] = useState(false);
+	const [modalContent, setModalContent] = useState(null);
 
 	const components = useFilterComponents({
 		questionnaire,
@@ -95,15 +96,17 @@ const useLunatic = (
 				flow: FLOW_NEXT,
 				management,
 			});
-			const controls = getControls({
-				page,
-				features: featuresWithoutMD,
-				components,
-				bindings,
-				preferences,
-			});
-			if (controls.length > 0) setModalContent({ page: nextPage, controls });
-			else setPage(nextPage);
+			if (modalForControls) {
+				const controls = getControls({
+					page,
+					features: featuresWithoutMD,
+					components,
+					bindings,
+					preferences,
+				});
+				if (controls.length > 0) setModalContent({ page: nextPage, controls });
+				else setPage(nextPage);
+			} else setPage(nextPage);
 		}
 	};
 
@@ -120,16 +123,18 @@ const useLunatic = (
 				flow: FLOW_PREVIOUS,
 				management,
 			});
-			const controls = getControls({
-				page,
-				features: featuresWithoutMD,
-				components,
-				bindings,
-				preferences,
-			});
-			if (controls.length > 0)
-				setModalContent({ page: previousPage, controls });
-			else setPage(previousPage);
+			if (modalForControls) {
+				const controls = getControls({
+					page,
+					features: featuresWithoutMD,
+					components,
+					bindings,
+					preferences,
+				});
+				if (controls.length > 0)
+					setModalContent({ page: previousPage, controls });
+				else setPage(previousPage);
+			}
 		}
 	};
 
