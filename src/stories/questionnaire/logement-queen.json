@@ -3,7 +3,7 @@
     "modele" : "m1",
     "enoCoreVersion" : "2.3.1-dev-emb-hacklog",
     "lunaticModelVersion" : "2.2.6-develop",
-    "generatingDate" : "18-11-2021 21:46:28",
+    "generatingDate" : "19-11-2021 08:57:52",
     "missing" : true,
     "pagination" : "question",
     "maxPage" : "214",
@@ -14,21 +14,13 @@
         "componentType" : "Sequence",
         "page" : "1",
         "label" : "\"I - \" || \"Adresse\"",
-        "declarations" : 
-        [ 
-          { "id" : "kb9hi4j0-krnoclfe",
-            "declarationType" : "HELP",
-            "position" : "AFTER_QUESTION_TEXT",
-            "label" : "\"Nous allons vous interroger sur le logement situé à l’adresse suivante : \" || ADRESSE" } ],
         "conditionFilter" : 
         { "value" : "true" },
         "hierarchy" : 
         { "sequence" : 
           { "id" : "kb9hi4j0",
             "page" : "1",
-            "label" : "\"I - \" || \"Adresse\"" } },
-        "bindingDependencies" : 
-        [ "ADRESSE" ] },
+            "label" : "\"I - \" || \"Adresse\"" } } },
       
       { "id" : "kb9hlpdc",
         "componentType" : "Radio",
@@ -766,8 +758,8 @@
             "componentType" : "Datepicker",
             "mandatory" : false,
             "page" : "19.2",
-            "min" : "1900-01-01",
-            "max" : "format-date(current-date(),'[Y0001]-[M01]-[D01]')",
+            "min" : "1850-01-01",
+            "max" : "2100-01-01",
             "label" : "\"➡ \" || \"Quelle est \" || if (PRENOM=PRENOMREF) then \"votre date de naissance ?\" else \"la date de naissance de \" || PRENOM ||\" ?\"",
             "conditionFilter" : 
             { "value" : "(CADR = \"1\" or CADR = \"2\" or isnull(CADR))",
@@ -2304,7 +2296,7 @@
             "label" : "Appartement ​" },
           
           { "value" : "3",
-            "label" : "[Logement-foyer](. \"Par exemple : résidence services ou résidence autonomie\") ​" },
+            "label" : "Logement-foyer ​" },
           
           { "value" : "4",
             "label" : "Chambre d’hôtel ​" },
@@ -2378,10 +2370,10 @@
         "options" : 
         [ 
           { "value" : "1",
-            "label" : "[Résidence \"autonomie\"](. \"\\\"Établissement médico-social géré par un centre communal d\\\"action sociale (CCAS) ou par une association par exemple\\\"\")" },
+            "label" : "Résidence \"autonomie\" ou par une association par exemple\\\"\")" },
           
           { "value" : "2",
-            "label" : "[Résidence \"services\" ](. \"Autres résidences comportant des logements individuels et privatifs et des espaces communs dédiés à la vie collective\")" } ],
+            "label" : "Résidence \"services\"" } ],
         "response" : 
         { "name" : "RESAUTO" } },
       
@@ -2778,19 +2770,19 @@
         "options" : 
         [ 
           { "value" : "1",
-            "label" : "[Propriétaire accédant (remboursement d’emprunt en cours)](. \"\\\"Ménages propriétaires et copropriétaires ayant encore des charges de remboursement d’emprunt pour l’achat de leur logement. Y compris en SCI - Société Civile Immobilière. Y compris en indivision.\\\"\")" },
+            "label" : "Propriétaire accédant (remboursement d’emprunt en cours)" },
           
           { "value" : "2",
-            "label" : "[Propriétaire non accédant (ne remboursant plus d’emprunt)](. \"\\\"Ménages propriétaires et copropriétaires, qui ne remboursent plus d’emprunt lié à l’achat de leur logement. Y compris en SCI - Société Civile Immobilière. Y compris en indivision.\\\"\")" },
+            "label" : "Propriétaire non accédant (ne remboursant plus d’emprunt)" },
           
           { "value" : "3",
-            "label" : "[Usufruitier](. \"\\\"Qui a le droit d’usufruit, sans la nue-propriété. Cela peut être le cas si le logement a été vendu en viager. La propriété juridique d’un logement comprend deux parties : le droit d’usufruit qui permet d’utiliser le logement et d’en percevoir les fruits (loyers), et la nue-propriété qui autorise le droit de vendre ou de donner le logement.\\\"\")" },
+            "label" : "Usufruitier, et la nue-propriété qui autorise le droit de vendre ou de donner le logement.\\\"\")" },
           
           { "value" : "4",
-            "label" : "[Locataire ou sous-locataire](. \"\\\"Devant payer un loyer, même si ce loyer est payé par une personne extérieure au ménage.\\\"\")" },
+            "label" : "Locataire ou sous-locataire" },
           
           { "value" : "5",
-            "label" : "[Logé gratuitement, avec un paiement éventuel de charges](. \"\\\"N’ayant pas à acquitter de loyer. Cela peut-être le cas si le logement a été vendu en viager. Un ménage logé gratuitement n’est pas nécessairement un ménage n’ayant aucune dépense de logement : il peut payer des charges.\\\"\")" } ],
+            "label" : "Logé gratuitement, avec un paiement éventuel de charges" } ],
         "response" : 
         { "name" : "STOC1" } },
       
@@ -2842,7 +2834,7 @@
         "componentType" : "Radio",
         "mandatory" : false,
         "page" : "37",
-        "label" : "\"➡ \" || \"Votre ménage occupe-t-il ce logement en pleine propriété ou en propriété partielle ?&#xd;​\"",
+        "label" : "➡ Votre ménage occupe-t-il ce logement en pleine propriété ou en propriété partielle ?​",
         "conditionFilter" : 
         { "value" : "(CADR = \"1\" or CADR = \"2\" or isnull(CADR)) and ((not(isnull(STOC)) and (STOC=\"1\" or STOC=\"2\")))",
           "bindingDependencies" : 
@@ -6583,7 +6575,7 @@
         "componentType" : "Radio",
         "mandatory" : false,
         "page" : "56",
-        "label" : "\"➡ \" || \"Y a-t-il, dans le logement, des [pièces réservées exclusivement à une activité professionnelle](. 'Ne rentrent pas dans cette catégorie les pièces à usage mixte, utilisées également par les membres de la famille.'), comme un cabinet de dentiste ou d’avocat par exemple ?\"",
+        "label" : "➡ Y a-t-il, dans le logement, des pièces réservées exclusivement à une activité professionnelle, comme un cabinet de dentiste ou d’avocat par exemple ?",
         "declarations" : 
         [ 
           { "id" : "kkpnqrqh-SI",
@@ -6757,7 +6749,7 @@
         "min" : 1,
         "max" : 9,
         "decimals" : 0,
-        "label" : "\"➡ \" || \"Combien avez-vous de [pièces annexes](. \"\\\"Pièces rattachées au logement avec une entrée indépendante telles que, des chambres de bonne ou d’anciens garages réaménagés en studios par exemple\\\"\") à usage d’habitation ?\"",
+        "label" : "➡ Combien avez-vous de pièces annexes à usage d’habitation ?",
         "conditionFilter" : 
         { "value" : "(CADR = \"1\" or CADR = \"2\" or isnull(CADR)) and (HUA = \"1\" and not(isnull(HUA)))",
           "bindingDependencies" : 
@@ -6821,7 +6813,7 @@
       { "id" : "kmcdiwdv",
         "componentType" : "CheckboxGroup",
         "page" : "62",
-        "label" : "\"➡ \" || \"Quel usage faites vous des [pièces annexes](. 'Pièces rattachées au logement avec une entrée indépendante telles que, des chambres de bonnes ou d’anciens garages réaménagés en studios, par exemples') ?\"",
+        "label" : "➡ Quel usage faites vous des pièces annexes ?",
         "declarations" : 
         [ 
           { "id" : "kmcdiwdv-kmcdfb60",
@@ -7262,7 +7254,7 @@
         "componentType" : "Radio",
         "mandatory" : false,
         "page" : "71",
-        "label" : "\"➡ \" || \"Quelle est la [hauteur sous plafond](. 'Lorsque la pièce principale est située sous des combles, la hauteur sous plafond varie. Choisir la réponse correspondant à la partie la plus haute de la pièce.') de votre pièce principale ?\"",
+        "label" : "➡ Quelle est la hauteur sous plafond de votre pièce principale ?",
         "conditionFilter" : 
         { "value" : "(CADR = \"1\" or CADR = \"2\" or isnull(CADR))",
           "bindingDependencies" : 
@@ -7319,6 +7311,11 @@
         "label" : "\"➡ \" || \"Avez-vous une véranda ?\"",
         "declarations" : 
         [ 
+          { "id" : "kq7nq067-SI",
+            "declarationType" : "STATEMENT",
+            "position" : "BEFORE_QUESTION_TEXT",
+            "label" : "Nous allons maintenant passer en revue les dépendances de votre logement." },
+          
           { "id" : "jrupq1i5-jrupk9tg",
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
@@ -7531,7 +7528,7 @@
           { "id" : "jruq8x6e-js06xqg5",
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
-            "label" : "Inclure la surface de la maison sur le terrain&#xd;​" },
+            "label" : "Inclure la surface de la maison sur le terrain​" },
           
           { "id" : "jruq8x6e-kmdhsqjj",
             "declarationType" : "INSTRUCTION",
@@ -9807,7 +9804,7 @@
         "componentType" : "Radio",
         "mandatory" : false,
         "page" : "133",
-        "label" : "\"➡ \" || \"Avez-vous fait une demande de logement dans le cadre de la loi Dalo ([Droit au logement opposable](. 'La loi sur le droit au logement opposable (Dalo) du 5 mars 2007 a instauré un recours pour les personnes mal-logées. La loi désigne l’État comme le garant du droit au logement. La mise en œuvre de cette garantie s’appuie sur un recours amiable ou un recours contentieux.')) ?\"",
+        "label" : "➡ Avez-vous fait une demande de logement dans le cadre de la loi Dalo (Droit au logement opposable) ?",
         "conditionFilter" : 
         { "value" : "(CADR = \"1\" or CADR = \"2\" or isnull(CADR)) and (ODL=\"1\" or ODF=\"1\")",
           "bindingDependencies" : 
@@ -10604,10 +10601,10 @@
                 "position" : "AFTER_QUESTION_TEXT",
                 "label" : "Plusieurs réponses possibles" },
               
-              { "id" : "joinz4wo-ksj79ywf",
+              { "id" : "joinz4wo-ksj7s0h1",
                 "declarationType" : "INSTRUCTION",
                 "position" : "AFTER_QUESTION_TEXT",
-                "label" : "if (PRENOM=PRENOMREF) then \"Cochez les situations que vous avez connues. \" else \"Cochez les situations que \" || PRENOM || \" a connues. \"" },
+                "label" : "if (PRENOM=PRENOMREF) then \"Indiquez si oui ou non vous avez connu les situations suivantes : \" else \"Indiquez si oui ou non \" || PRENOM || \" a connu les situations suivantes : \"" },
               
               { "id" : "joinz4wo-kw0xfvfu",
                 "declarationType" : "HELP",
@@ -10684,7 +10681,7 @@
                 { "name" : "SDL13" } },
               
               { "id" : "joinz4wo-QOP-kw0uj8id",
-                "label" : "Séjour en [centre d’hébergement](. \"\\\"centre d’hébergement d’urgence, CHRS, centre maternel, centre d’hébergement pour demandeurs d’asile ou réfugiés... Foyers ou hébergements de la DDASS, DDCS, ASE, PJJ...\\\"\")",
+                "label" : "Séjour en centre d’hébergement",
                 "response" : 
                 { "name" : "SDL14" } },
               
@@ -10964,7 +10961,7 @@
                 "label" : "Logement payé par une association ou un organisme d’aide" },
               
               { "value" : "4",
-                "label" : "Séjour en [centre d’hébergement](https:\/\/qfrmspogfolht02.ad.insee.intra\/rmspogfo\/ \"\\\\\"centre d’hébergement d’urgence, CHRS, centre maternel, centre d’hébergement pour demandeurs d’asile ou réfugiés... Foyers ou hébergements de la DDASS, DDCS, ASE, PJJ...\\\\\"\")" },
+                "label" : "Séjour en centre d’hébergement" },
               
               { "value" : "5",
                 "label" : "Séjour dans un logement sans autorisation du propriétaire (squat)" },
@@ -11507,7 +11504,7 @@
                 "label" : "Logement payé par une association ou un organisme d’aide" },
               
               { "value" : "4",
-                "label" : "Séjour en [centre d’hébergement](https:\/\/qfrmspogfolht02.ad.insee.intra\/rmspogfo\/ \"\\\\\"centre d’hébergement d’urgence, CHRS, centre maternel, centre d’hébergement pour demandeurs d’asile ou réfugiés... Foyers ou hébergements de la DDASS, DDCS, ASE, PJJ...\\\\\"\")" },
+                "label" : "Séjour en centre d’hébergement" },
               
               { "value" : "5",
                 "label" : "Séjour dans un logement sans autorisation du propriétaire (squat)" },
@@ -12739,7 +12736,7 @@
         "options" : 
         [ 
           { "value" : "1",
-            "label" : "[Occupant en titre](. \"Locataire, propriétaire ou usufruitier\") de votre logement" },
+            "label" : "Occupant en titre de votre logement" },
           
           { "value" : "2",
             "label" : "Vous viviez chez votre conjoint" },
@@ -12748,7 +12745,7 @@
             "label" : "Vous viviez chez vos parents, ou chez des particuliers, sans être occupant en titre du logement" },
           
           { "value" : "4",
-            "label" : "Vous logiez dans une [structure collective](. \"\\\"(caserne, cité universitaire, foyer d’étudiants ou de jeunes travailleurs, centre d’hébergement, établissement de soins ou de cure...)\\\"\") (caserne, cité universitaire,…) ou une habitation mobile" } ],
+            "label" : "Vous logiez dans une structure collective\\\"\") (caserne, cité universitaire,…) ou une habitation mobile" } ],
         "response" : 
         { "name" : "VLA1" } },
       
@@ -13122,7 +13119,7 @@
           { "id" : "jops4c0x-jops3ast",
             "declarationType" : "INSTRUCTION",
             "position" : "AFTER_QUESTION_TEXT",
-            "label" : "Compter la cuisine si elle avait plus de 12 m2 et les pièces annexes utilisées pour usage personnel.&#xd;​" },
+            "label" : "Compter la cuisine si elle avait plus de 12 m2 et les pièces annexes utilisées pour usage personnel.​" },
           
           { "id" : "jops4c0x-kpbnwlcz",
             "declarationType" : "INSTRUCTION",
@@ -13413,7 +13410,7 @@
         "options" : 
         [ 
           { "value" : "1",
-            "label" : "[Occupant en titre](. \"locataire, propriétaire, usufruitier\") de votre logement" },
+            "label" : "Occupant en titre de votre logement" },
           
           { "value" : "2",
             "label" : "Vous viviez chez votre conjoint" },
@@ -15150,12 +15147,7 @@
           { "id" : "kp6svrg1-kpo803df",
             "declarationType" : "HELP",
             "position" : "AFTER_QUESTION_TEXT",
-            "label" : "libFINS12" },
-          
-          { "id" : "kp6svrg1-kpo7wfgt",
-            "declarationType" : "HELP",
-            "position" : "AFTER_QUESTION_TEXT",
-            "label" : "\"Merci de passer à la page suivante puis de cliquer sur le bouton - Envoyer - \" || libENVS1" } ],
+            "label" : "libFINS12" } ],
         "conditionFilter" : 
         { "value" : "true" },
         "hierarchy" : 
@@ -15165,8 +15157,7 @@
             "label" : "\"XI - \" || \"Fin du questionnaire\"" } },
         "bindingDependencies" : 
         [ "libFINS1",
-          "libFINS12",
-          "libENVS1" ] } ],
+          "libFINS12" ] } ],
     "suggesters" : 
     [ 
       { "name" : "L_DEPNAIS",
