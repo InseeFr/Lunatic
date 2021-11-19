@@ -37,6 +37,7 @@ const getControlsFromComponents = ({
 			componentType,
 			components: loopComponents,
 			page: componentPage,
+			paginatedLoop,
 		} = component;
 		if (componentType === 'Loop') {
 			const { bindingDependencies: bindingDependenciesLoop } = component;
@@ -44,20 +45,41 @@ const getControlsFromComponents = ({
 				bindingDependenciesLoop,
 				bindings
 			);
-			const loopBindings = buildLoopBindings(currentIteration - 1)(
-				Object.entries(rootLoopBindings)
-			);
-			return [
-				...acc,
-				...getControlsFromComponents({
-					page,
-					components: loopComponents,
-					bindings: loopBindings,
-					features,
-					depth: depth + 1,
-					preferences,
-				}),
-			];
+			let loopBindings = {};
+			if (paginatedLoop) {
+				loopBindings = buildLoopBindings(currentIteration - 1)(
+					Object.entries(rootLoopBindings)
+				);
+				return [
+					...acc,
+					...getControlsFromComponents({
+						page,
+						components: loopComponents,
+						bindings: loopBindings,
+						features,
+						depth: depth + 1,
+						preferences,
+					}),
+				];
+			} else {
+				const { loopDependencies } = component;
+				const iterations = parseInt(bindings[loopDependencies[0]], 10);
+				const ctrls = [...Array(iterations).keys()].reduce((accIt, i) => {
+					loopBindings = buildLoopBindings(i)(Object.entries(rootLoopBindings));
+					return [
+						...accIt,
+						...getControlsFromComponents({
+							page,
+							components: loopComponents,
+							bindings: loopBindings,
+							features,
+							depth: depth,
+							preferences,
+						}),
+					];
+				}, []);
+				return [...acc, ...ctrls];
+			}
 		}
 		if (currentPageWithoutAnyIteration === componentPage) {
 			if (controls) {
