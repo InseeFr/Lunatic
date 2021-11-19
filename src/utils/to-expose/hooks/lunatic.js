@@ -134,7 +134,7 @@ const useLunatic = (
 				if (controls.length > 0)
 					setModalContent({ page: previousPage, controls });
 				else setPage(previousPage);
-			}
+			} else setPage(previousPage);
 		}
 	};
 
