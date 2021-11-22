@@ -6,6 +6,7 @@ export { default as Declarations } from './declarations';
 export { default as Dropdown } from './dropdown';
 export * from './input';
 export { default as FilterDescription } from './filter-description';
+export { default as Modal } from './modal';
 export { default as ProgressBar } from './progress-bar';
 export { default as Radio } from './radio';
 export { default as Loop } from './loop';

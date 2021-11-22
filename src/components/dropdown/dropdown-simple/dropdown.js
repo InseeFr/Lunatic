@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from 'react';
+import React, { useReducer, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import * as actions from '../commons/actions';
@@ -37,6 +37,13 @@ const Dropdown = ({
 	const { focused, visible, activeIndex, id } = state;
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
 	const selectedOption = options.find((o) => o.value === value);
+
+	useEffect(() => {
+		if (visible && !activeIndex) {
+			dispatch(actions.initActiveIndex());
+		}
+	}, [activeIndex, visible]);
+
 	return (
 		<DropdownContainer
 			className={className || 'lunatic-dropdown'}

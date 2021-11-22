@@ -10,6 +10,6 @@ const LoopWrapper = (props) => {
 	return <BlockForLoop {...props} />;
 };
 
-// TODO: need missingWrapper?
+// TODO: need componentWrapper?
 
 export default LoopWrapper;
