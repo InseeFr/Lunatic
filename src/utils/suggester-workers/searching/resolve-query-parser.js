@@ -1,6 +1,6 @@
-import { queryParserTokenized, queryParserSoft } from '../query-parser';
+import { queryParserTokenized, queryParserSoft } from './query-parser';
 
-async function resolve(name, queryParser) {
+async function resolve(queryParser) {
 	try {
 		const { type } = queryParser;
 		switch (type) {

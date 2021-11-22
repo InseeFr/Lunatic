@@ -141,6 +141,9 @@ const reducer = (state, action) => {
 			const { callback } = payload;
 			return reduceEnterPressed(state, callback);
 		}
+		case actions.INIT_ACTIVE_INDEX: {
+			return { ...state, activeIndex: 0 };
+		}
 		default:
 			return state;
 	}

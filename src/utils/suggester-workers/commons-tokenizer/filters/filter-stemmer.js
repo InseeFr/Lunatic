@@ -1,6 +1,6 @@
-import getStemmer from './get-stemmer';
+import getStemmer from '../get-stemmer';
 
-function filterStemmer(tokens, { language, stemmer = true }) {
+function filterStemmer(tokens, { language = 'French', stemmer = true }) {
 	if (stemmer) {
 		const stemming = getStemmer(language);
 		return tokens.map(function (token) {

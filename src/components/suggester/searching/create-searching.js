@@ -1,3 +1,5 @@
+import { createWorker } from '../../../utils/suggester-workers/create-worker';
+
 const WORKER_PATH =
 	process.env.LUNATIC_SEARCH_WORKER_PATH ||
 	process.env.REACT_APP_LUNATIC_SEARCH_WORKER_PATH;
@@ -19,7 +21,7 @@ const searching = (worker) => (search, name, version) => {
 				if (worker) {
 					worker.terminate();
 				}
-				worker = new Worker(WORKER_PATH);
+				worker = createWorker(WORKER_PATH);
 				worker.postMessage({ search, name, version });
 				worker.addEventListener('message', function (e) {
 					const { data } = e;

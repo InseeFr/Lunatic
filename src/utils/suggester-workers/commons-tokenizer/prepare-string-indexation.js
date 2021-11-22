@@ -1,9 +1,13 @@
 import removeAccents from 'remove-accents';
 
 function prepare(token = '', replacement = '') {
-	return typeof token === 'string'
-		? removeAccents(token.toLowerCase()).replace(/[- ']/g, replacement)
-		: token;
+	if (typeof token === 'string') {
+		return removeAccents(token.trim().toLowerCase()).replace(
+			/[- ']/g,
+			replacement
+		);
+	}
+	return token;
 }
 
 export default prepare;
