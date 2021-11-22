@@ -62,19 +62,19 @@ const Missing = ({ Component, props }) => {
 		if (!isSameValue) {
 			const toClean = getVarsToClean();
 			if (Object.keys(toClean)) {
-				const { fullBindings, missingLoopIteration, currentPage } = props;
+				const { missingLoopIteration, currentPage } = props;
 				const currentIterationIndex = getCurrentIterationIndex({
 					currentPage,
 					missingLoopIteration,
 				});
-				const toHandle = getVarsToHandle({
-					toClean,
-					fullBindings,
-					currentIterationIndex,
-				});
-				handleChange(toHandle);
+				handleChange(toClean);
 				if (U.isFunction(missingStrategy)) {
 					const { fullBindings } = props;
+					const toHandle = getVarsToHandle({
+						toClean,
+						fullBindings,
+						currentIterationIndex,
+					});
 					const missingBindings = getMissingBindings({
 						currentIterationIndex,
 						bindings,
@@ -86,7 +86,6 @@ const Missing = ({ Component, props }) => {
 			} else {
 				if (U.isFunction(missingStrategy)) missingStrategy(bindings);
 			}
-			// TODO: handle missing as vectorial variables
 			handleChange({ [U.getResponseName(missingResponse)]: value });
 		}
 	};
@@ -175,7 +174,7 @@ const getMissingBindings = ({
 	currentIterationIndex,
 	toHandle,
 }) => {
-	if (currentIterationIndex || currentIterationIndex !== 0)
-		return { ...bindings, ...toHandle };
-	return { ...fullBindings, ...toHandle };
+	if (currentIterationIndex || currentIterationIndex === 0)
+		return { ...fullBindings, ...toHandle };
+	return { ...bindings, ...toHandle };
 };
