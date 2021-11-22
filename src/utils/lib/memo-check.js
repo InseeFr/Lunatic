@@ -20,5 +20,5 @@ export const areEqual = (prevProps, props) => {
 			.map((d) => isEqual(oldB[d], newB[d]))
 			.includes(false);
 	}
-	return false;
+	return true;
 };
