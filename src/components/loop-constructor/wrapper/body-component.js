@@ -62,6 +62,8 @@ const BodyComponent = ({
 												management={management}
 												features={features}
 												bindings={localBindings}
+												fullBindings={bindings}
+												missingLoopIteration={i}
 												zIndex={uiComponents.length - i || 0}
 												logFunction={logFunction}
 												focused={i === 0 && j === 0}
@@ -113,6 +115,8 @@ const BodyComponent = ({
 									management={management}
 									features={features}
 									bindings={localBindings}
+									fullBindings={bindings}
+									missingLoopIteration={i}
 									logFunction={logFunction}
 									focused={i === 0}
 								/>

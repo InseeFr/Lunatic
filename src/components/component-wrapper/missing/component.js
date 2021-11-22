@@ -20,6 +20,8 @@ const Missing = ({ Component, props }) => {
 		savingType,
 		bindings,
 		shortcut,
+		componentType,
+		missingLoopIteration,
 	} = props;
 
 	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
@@ -58,19 +60,43 @@ const Missing = ({ Component, props }) => {
 	const onClick = (value) => () => {
 		const isSameValue = buttonState === value;
 		if (!isSameValue) {
-			const newValue = isSameValue ? null : value;
 			const toClean = getVarsToClean();
 			if (Object.keys(toClean)) {
-				handleChange(toClean);
-				if (U.isFunction(missingStrategy) && !isSameValue)
-					missingStrategy({ ...bindings, ...toClean });
+				const { fullBindings, missingLoopIteration, currentPage } = props;
+				const currentIterationIndex = getCurrentIterationIndex({
+					currentPage,
+					missingLoopIteration,
+				});
+				const toHandle = getVarsToHandle({
+					toClean,
+					fullBindings,
+					currentIterationIndex,
+				});
+				handleChange(toHandle);
+				if (U.isFunction(missingStrategy)) {
+					const { fullBindings } = props;
+					const missingBindings = getMissingBindings({
+						currentIterationIndex,
+						bindings,
+						fullBindings,
+						toHandle,
+					});
+					missingStrategy(missingBindings);
+				}
 			} else {
-				if (U.isFunction(missingStrategy) && !isSameValue)
-					missingStrategy(bindings);
+				if (U.isFunction(missingStrategy)) missingStrategy(bindings);
 			}
-			handleChange({ [U.getResponseName(missingResponse)]: newValue });
+			// TODO: handle missing as vectorial variables
+			handleChange({ [U.getResponseName(missingResponse)]: value });
 		}
 	};
+
+	if (
+		componentType === 'Loop' ||
+		missingLoopIteration ||
+		missingLoopIteration === 0
+	)
+		return <Component {...props} />;
 
 	return (
 		<div className="missing-wrapper">
@@ -120,3 +146,36 @@ const Missing = ({ Component, props }) => {
 };
 
 export default Missing;
+
+// TODO: make it recursive for Loop into Loop
+const getCurrentIterationIndex = ({ currentPage, missingLoopIteration }) => {
+	const { currentIteration } = U.splitPage(currentPage, 1);
+	if (currentIteration) return currentIteration - 1;
+	if (missingLoopIteration || missingLoopIteration === 0)
+		return missingLoopIteration;
+	return null;
+};
+
+// TODO: make it recursive for Loop into Loop
+const getVarsToHandle = ({ toClean, fullBindings, currentIterationIndex }) => {
+	if (currentIterationIndex || currentIterationIndex === 0) {
+		return Object.entries(toClean).reduce((acc, [name, value]) => {
+			const newValue = fullBindings[name].map((v, i) =>
+				i === currentIterationIndex ? value : v
+			);
+			return { ...acc, [name]: newValue };
+		}, {});
+	}
+	return toClean;
+};
+
+const getMissingBindings = ({
+	bindings,
+	fullBindings,
+	currentIterationIndex,
+	toHandle,
+}) => {
+	if (currentIterationIndex || currentIterationIndex !== 0)
+		return { ...bindings, ...toHandle };
+	return { ...fullBindings, ...toHandle };
+};
