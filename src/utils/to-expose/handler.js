@@ -59,6 +59,26 @@ export const updateQuestionnaire =
 		};
 	};
 
+export const updateExternals =
+	(questionnaire) => (logFunction) => (updatedValues) => {
+		const { variables, ...other } = questionnaire;
+		const { EXTERNAL } = variables;
+		const newVariables = {
+			...variables,
+			EXTERNAL: { ...EXTERNAL, ...updatedValues },
+		};
+
+		const newVariablesWithCalculated = addCalculatedVars(
+			newVariables,
+			updatedValues
+		)(logFunction);
+
+		return {
+			...other,
+			variables: newVariablesWithCalculated,
+		};
+	};
+
 export const buildNewValue =
 	(preferences) => (valueType) => (oldValues) => (value) => {
 		if (preferences.length === 1) return value;
