@@ -55,6 +55,7 @@
 			"max": 4,
 			"decimals": 0,
 			"label": "Number of inhabitants",
+			"conditionFilter": { "value": "true" },
 			"response": {
 				"name": "NUM"
 			},

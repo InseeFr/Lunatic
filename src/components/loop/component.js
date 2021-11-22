@@ -146,6 +146,7 @@ const Loop = ({
 							setTodos((t) => [...t, { up, rowNumber }]);
 						}}
 						bindings={loopBindings}
+						fullBindings={bindings}
 						bindingDependencies={bindingDependencies}
 						componentType={componentType}
 						pagination={pagination}

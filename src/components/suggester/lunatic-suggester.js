@@ -1,5 +1,6 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+import componentWrapper from '../component-wrapper';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
@@ -41,8 +42,9 @@ function Suggester({
 	const onSelect = useCallback(
 		function (suggestion) {
 			const ids = getSuggestionId(suggestion);
+			// Delete: null --> empty to handle controls
 			handleChange({
-				[U.getResponseName(response)]: ids,
+				[U.getResponseName(response)]: ids || '',
 			});
 			setValue(ids);
 		},
@@ -134,4 +136,4 @@ Suggester.propTypes = {
 	getStoreInfo: PropTypes.func,
 };
 
-export default React.memo(Suggester, U.areEqual);
+export default componentWrapper(React.memo(Suggester, U.areEqual));

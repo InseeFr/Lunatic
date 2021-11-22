@@ -1,7 +1,7 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.2.3-experimental",
-	"workersVersion": "0.2.2-experimental",
+	"version": "0.3.0-experimental",
+	"workersVersion": "0.2.1-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -33,7 +33,7 @@
 		"test": "cross-env NODE_PATH=src/ jest",
 		"test-watch": "cross-env NODE_PATH=src/ jest --watchAll",
 		"test-coverage": "cross-env NODE_PATH=src/ jest --coverage",
-		"start-storybook": "cross-env NODE_PATH=src/ start-storybook -s ./public -p 9999",
+		"storybook": "cross-env NODE_PATH=src/ start-storybook -s ./public -p 9999",
 		"build-storybook": "cross-env NODE_PATH=src/ build-storybook -o built-storybook/storybook",
 		"build": "rollup -c rollup.config.js",
 		"prepublish": "npm test && npm run build",
@@ -51,6 +51,7 @@
 	],
 	"dependencies": {
 		"@inseefr/trevas": "^0.1.10",
+		"date-fns": "^2.25.0",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.debounce": "^4.0.8",
 		"lodash.isequal": "^4.5.0",

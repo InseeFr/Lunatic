@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { mergeQuestionnaireAndData } from '../init-questionnaire';
 import { getBindings } from '../state';
 import { updateQuestionnaire } from '../handler';
-import { getPage, FLOW_NEXT, FLOW_PREVIOUS } from '../../lib';
+import { getPage, FLOW_NEXT, FLOW_PREVIOUS, getControls } from '../../lib';
 import { COLLECTED } from '../../../constants';
 import { useFilterComponents } from './filter-components';
 import { loadSuggesters } from '../../store-tools/auto-load';
@@ -16,6 +16,7 @@ const useLunatic = (
 		features = ['VTL'],
 		management = false,
 		pagination = false,
+		modalForControls = false,
 		initialPage = '1',
 		logFunction = null,
 		autoSuggesterLoading = false,
@@ -32,6 +33,8 @@ const useLunatic = (
 	const [page, setPage] = useState(initialPage);
 
 	const [todo, setTodo] = useState({});
+
+	const [modalContent, setModalContent] = useState(null);
 
 	const components = useFilterComponents({
 		questionnaire,
@@ -54,6 +57,7 @@ const useLunatic = (
 			) {
 				const s = suggestersToLoad.reduce(function (current, storeInfo) {
 					const { name } = storeInfo;
+					if (!suggesters[name]) return current;
 					return {
 						...current,
 						[name]: {
@@ -92,7 +96,17 @@ const useLunatic = (
 				flow: FLOW_NEXT,
 				management,
 			});
-			setPage(nextPage);
+			if (modalForControls) {
+				const controls = getControls({
+					page,
+					features: featuresWithoutMD,
+					components,
+					bindings,
+					preferences,
+				});
+				if (controls.length > 0) setModalContent({ page: nextPage, controls });
+				else setPage(nextPage);
+			} else setPage(nextPage);
 		}
 	};
 
@@ -109,7 +123,18 @@ const useLunatic = (
 				flow: FLOW_PREVIOUS,
 				management,
 			});
-			setPage(previousPage);
+			if (modalForControls) {
+				const controls = getControls({
+					page,
+					features: featuresWithoutMD,
+					components,
+					bindings,
+					preferences,
+				});
+				if (controls.length > 0)
+					setModalContent({ page: previousPage, controls });
+				else setPage(previousPage);
+			} else setPage(previousPage);
 		}
 	};
 
@@ -168,10 +193,32 @@ const useLunatic = (
 		management,
 	]);
 
+	const cancelModal = () => {
+		setModalContent(null);
+	};
+
+	const validateModal = () => {
+		setPage(modalContent.page);
+		setModalContent(null);
+	};
+
+	const componentsToDiplay =
+		pagination && modalContent
+			? [
+					{
+						componentType: 'Modal',
+						controls: modalContent.controls,
+						validateModal,
+						cancelModal,
+					},
+					...components,
+			  ]
+			: components;
+
 	return {
 		questionnaire,
 		handleChange,
-		components,
+		components: componentsToDiplay,
 		bindings,
 		pagination: {
 			page,
