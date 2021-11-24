@@ -1,7 +1,7 @@
 import React from 'react';
 import LunaticIcon from './lunatic-icon';
 
-function HelpIcon({ className, width = 32, height = 32 }) {
+function Help({ className, width = 32, height = 32 }) {
 	return (
 		<LunaticIcon className={className}>
 			<svg
@@ -21,4 +21,4 @@ function HelpIcon({ className, width = 32, height = 32 }) {
 	);
 }
 
-export default HelpIcon;
+export default Help;
