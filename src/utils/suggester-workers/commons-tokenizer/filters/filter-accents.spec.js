@@ -1,4 +1,4 @@
-import filterATL from './filter-accents-to-lower';
+import filterATL from './filter-accents';
 
 describe('filter-length', function () {
 	it('maj accent', function () {

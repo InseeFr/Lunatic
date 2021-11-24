@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { mergeQuestionnaireAndData } from '../init-questionnaire';
 import { getBindings } from '../state';
-import { updateQuestionnaire } from '../handler';
+import { updateQuestionnaire, updateExternals } from '../handler';
 import { getPage, FLOW_NEXT, FLOW_PREVIOUS, getControls } from '../../lib';
 import { COLLECTED } from '../../../constants';
 import { useFilterComponents } from './filter-components';
@@ -33,6 +33,7 @@ const useLunatic = (
 	const [page, setPage] = useState(initialPage);
 
 	const [todo, setTodo] = useState({});
+	const [todoExternals, setTodoExternals] = useState({});
 
 	const [modalContent, setModalContent] = useState(null);
 
@@ -43,7 +44,7 @@ const useLunatic = (
 		features: featuresWithoutMD,
 		page,
 		pagination,
-		todo,
+		todo: { ...todo, ...todoExternals },
 	});
 
 	const { suggesters: suggestersToLoad } = source;
@@ -168,6 +169,10 @@ const useLunatic = (
 		setTodo((t) => ({ ...t, ...updatedValue }));
 	}, []);
 
+	const handleExternals = useCallback((externals) => {
+		setTodoExternals((t) => ({ ...t, ...externals }));
+	}, []);
+
 	// Assume we only want to handle source update
 	useEffect(() => {
 		setQuestionnaire(mergeQuestionnaireAndData(source)(data));
@@ -192,6 +197,14 @@ const useLunatic = (
 		features,
 		management,
 	]);
+
+	useEffect(() => {
+		if (Object.keys(todoExternals).length !== 0) {
+			const newQ = updateExternals(questionnaire)(logFunction)(todoExternals);
+			setQuestionnaire(newQ);
+			setTodoExternals({});
+		}
+	}, [todoExternals, logFunction, questionnaire]);
 
 	const cancelModal = () => {
 		setModalContent(null);
@@ -218,6 +231,7 @@ const useLunatic = (
 	return {
 		questionnaire,
 		handleChange,
+		handleExternals,
 		components: componentsToDiplay,
 		bindings,
 		pagination: {

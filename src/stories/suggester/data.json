@@ -46,7 +46,10 @@
 					"name": "libelle2",
 					"rules": ["[\\w]+"],
 					"language": "French",
-					"synonyms": { "st": ["saint"] },
+					"synonyms": [
+						{ "source": "saint", "target": ["st"] },
+						{ "source": "oph", "target": ["renaud", "nicolas"] }
+					],
 					"stemmer": false
 				},
 				{ "name": "code" }

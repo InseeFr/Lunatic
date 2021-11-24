@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as lunatic from 'components';
 import './custom-lunatic.scss';
 
@@ -22,6 +22,7 @@ const OrchestratorForStories = ({
 	activeGoNextForMissing = false,
 	suggesterFetcher,
 	autoSuggesterLoading,
+	addExternal,
 	...rest
 }) => {
 	const preferences = management
@@ -30,6 +31,7 @@ const OrchestratorForStories = ({
 	const savingType = management ? 'EDITED' : 'COLLECTED';
 	const {
 		handleChange,
+		handleExternals,
 		components,
 		bindings,
 		pagination: {
@@ -54,6 +56,11 @@ const OrchestratorForStories = ({
 		suggesterFetcher,
 		autoSuggesterLoading,
 	});
+
+	useEffect(() => {
+		handleExternals(addExternal);
+	}, [addExternal, handleExternals]);
+
 	const Button = lunatic.Button;
 
 	const missingStrategy = (b) => goNext(null, b);
