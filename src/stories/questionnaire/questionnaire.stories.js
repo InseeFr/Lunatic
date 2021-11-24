@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import Orchestrator from '../utils/orchestrator';
 import { titleDecorator } from 'utils/lib';
@@ -10,6 +10,8 @@ import logementSequence from './logement-sequence';
 import dataLogement from './data-logement';
 import simpsons from './simpsons';
 import arithmetic from './arithmetic';
+import updateExternalQuestionnaire from './update-external/questionnaire';
+import updateExternalData from './update-external/data';
 import { positioningOptions, featuresOptions } from '../utils/options';
 import { boolean, select } from '@storybook/addon-knobs/react';
 
@@ -170,3 +172,34 @@ paginated.addWithJSX('Simpsons', () => (
 		pagination
 	/>
 ));
+
+const other = storiesOf('Questionnaire/Other', module).addDecorator(
+	(Component) => {
+		const WrappedComponent = titleDecorator(Component);
+		return <WrappedComponent title="<Questionnaire />" />;
+	}
+);
+
+other.addWithJSX('Update external', () => {
+	const [addExternal, setAddExternal] = useState(null);
+	return (
+		<>
+			<button
+				onClick={() => setAddExternal({ PROMO: true })}
+			>{`Fire PROMO --> True`}</button>
+			<button
+				onClick={() => setAddExternal({ PROMO: false })}
+			>{`Fire PROMO --> False`}</button>
+			<Orchestrator
+				id="props"
+				source={updateExternalQuestionnaire}
+				data={updateExternalData}
+				features={select('Features', featuresOptions, ['VTL', 'MD'])}
+				positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+				disabled={boolean('Disabled', false)}
+				focused={boolean('Focused', false)}
+				addExternal={addExternal}
+			/>
+		</>
+	);
+});

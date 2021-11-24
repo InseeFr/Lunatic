@@ -47,7 +47,9 @@ function SuggesterWrapper({
 					}
 				} catch (e) {
 					console.error(e);
-					dispatch(actions.onError('Une erreur est survenue.'));
+					dispatch(
+						actions.onError('Une erreur est survenue durant une recherche.')
+					);
 				}
 			}
 			doIt();
@@ -95,7 +97,6 @@ SuggesterWrapper.propTypes = {
 	optionRenderer: PropTypes.func,
 	labelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
-	storeInfo: PropTypes.object,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
