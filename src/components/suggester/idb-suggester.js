@@ -41,7 +41,6 @@ function IDBSuggester({
 				labelRenderer={labelRenderer}
 				onSelect={onSelect}
 				searching={searching}
-				storeName={storeName}
 				disabled={disabled}
 				value={value}
 			/>
