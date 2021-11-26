@@ -2,7 +2,13 @@ import { useState, useEffect, useCallback } from 'react';
 import { mergeQuestionnaireAndData } from '../init-questionnaire';
 import { getBindings } from '../state';
 import { updateQuestionnaire, updateExternals } from '../handler';
-import { getPage, FLOW_NEXT, FLOW_PREVIOUS, getControls } from '../../lib';
+import {
+	getPage,
+	FLOW_NEXT,
+	FLOW_PREVIOUS,
+	getControls,
+	isDev,
+} from '../../lib';
 import { COLLECTED } from '../../../constants';
 import { useFilterComponents } from './filter-components';
 import { loadSuggesters } from '../../store-tools/auto-load';
@@ -24,12 +30,17 @@ const useLunatic = (
 		suggesters,
 	}
 ) => {
+	if (isDev) {
+		console.log('useLunatic');
+		var start = new Date().getTime();
+	}
 	const [initPage, setInitPage] = useState(false);
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
 	const [questionnaire, setQuestionnaire] = useState(() =>
 		mergeQuestionnaireAndData(source)(data || {})
 	);
-	const bindings = getBindings(questionnaire);
+	const [bindings, setBindings] = useState(() => getBindings(questionnaire));
+
 	const [page, setPage] = useState(initialPage);
 
 	const [todo, setTodo] = useState({});
@@ -185,6 +196,7 @@ const useLunatic = (
 				preferences,
 				logFunction
 			)(todo);
+			setBindings(getBindings(newQ));
 			setQuestionnaire(newQ);
 			setTodo({});
 		}
@@ -227,6 +239,8 @@ const useLunatic = (
 					...components,
 			  ]
 			: components;
+
+	if (isDev) console.log(`End useLunatic: ${new Date().getTime() - start} ms`);
 
 	return {
 		questionnaire,
