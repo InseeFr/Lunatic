@@ -15,7 +15,9 @@ export const updateQuestionnaire =
 			!updatedValues
 		)
 			return questionnaire;
+
 		const { variables, components, ...other } = questionnaire;
+
 		if (!components || components.length === 0) return questionnaire;
 		const varsAndRefs = Object.entries(updatedValues).reduce(
 			(acc, [key, value]) => {
