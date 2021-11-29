@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
-import { mergeQuestionnaireAndData } from '../init-questionnaire';
-import { getBindings } from '../state';
+import { mergeQuestionnaireAndData } from '../../init-questionnaire';
+import { getBindings } from '../../state';
 
 function useQuestionnaire(source, data) {
 	const [questionnaire] = useState(() =>
@@ -18,7 +18,7 @@ function useQuestionnaire(source, data) {
 		[questionnaire]
 	);
 
-	function handleChange() {}
+	const handleChange = useCallback(function () {}, []);
 
 	return { questionnaire, handleChange, bindings };
 }

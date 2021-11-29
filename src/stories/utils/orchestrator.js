@@ -23,6 +23,18 @@ function getStoreInfoRequired() {
 // 	return [questionnaire, handleChange];
 // }
 
+function Pager({ goNext, isLast, name }) {
+	const Button = lunatic.Button;
+	return (
+		<>
+			<div className="pagination">
+				<Button onClick={goNext} disabled={isLast} value="Next" />
+			</div>
+			<div>PAGE: {name}</div>
+		</>
+	);
+}
+
 const OrchestratorForStories = ({
 	source,
 	suggesters,
@@ -51,14 +63,18 @@ const OrchestratorForStories = ({
 		source,
 		data
 	);
-	const { getComponents, page } = lunatic.usePagination(questionnaire);
-	const components = getComponents();
+	const { getComponents, goNext, goPrevious, isLast, name } =
+		lunatic.usePagination({
+			questionnaire,
+			bindings,
+		});
 
+	const components = getComponents();
 	return (
 		<div className="container">
 			<div className="components">
 				{components.map(function (component) {
-					const { id, componentType, name } = component;
+					const { id, componentType } = component;
 					const Component = lunatic[componentType];
 
 					return (
@@ -72,16 +88,20 @@ const OrchestratorForStories = ({
 								management={management}
 								features={features}
 								bindings={bindings}
-								currentPage={page}
 								pagination={pagination}
 								missing={missing}
 								shortcut={shortcut}
-								missingStrategy={activeGoNextForMissing && missingStrategy}
 							/>
 						</div>
 					);
 				})}
 			</div>
+			<Pager
+				goNext={goNext}
+				goPrevious={goPrevious}
+				isLast={isLast}
+				name={name}
+			/>
 		</div>
 	);
 
