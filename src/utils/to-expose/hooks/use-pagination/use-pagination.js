@@ -3,19 +3,7 @@ import checkLoops from './check-loops';
 import createPages from './create-page';
 import reducer from './reducer';
 import * as actions from './actions';
-
-const INITIAL = {
-	page: '1',
-	subPage: undefined,
-	nbSubPages: undefined,
-	iteration: undefined,
-	nbIterations: undefined,
-	name: '1',
-	maxPage: '1',
-	inLoop: false,
-	pages: {},
-	bindings: {},
-};
+import INITIAL_STATE from './initial-state';
 
 function getPageTag(page, subPage, iteration) {
 	if (subPage !== undefined && iteration !== undefined) {
@@ -32,14 +20,18 @@ function getPageTag(page, subPage, iteration) {
  */
 function usePagination({ questionnaire, initialPage = '1', bindings } = {}) {
 	const { maxPage } = questionnaire;
-	const [state, dispatch] = useReducer(reducer, INITIAL, function (state) {
-		const { maxPage, components } = questionnaire;
-		if (Array.isArray(components) && components.length && maxPage) {
-			const pages = checkLoops(createPages(components));
-			return { ...state, pages, maxPage, bindings };
+	const [state, dispatch] = useReducer(
+		reducer,
+		INITIAL_STATE,
+		function (state) {
+			const { maxPage, components } = questionnaire;
+			if (Array.isArray(components) && components.length && maxPage) {
+				const pages = checkLoops(createPages(components));
+				return { ...state, pages, maxPage, bindings };
+			}
+			return state;
 		}
-		return state;
-	});
+	);
 	const { page, subPage, iteration, inLoop, pages } = state;
 	const isFirst = page === '1';
 	const isLast = page === maxPage;
