@@ -23,14 +23,14 @@ function getStoreInfoRequired() {
 // 	return [questionnaire, handleChange];
 // }
 
-function Pager({ goNext, isLast, name }) {
+function Pager({ goNext, isLast, pageTag }) {
 	const Button = lunatic.Button;
 	return (
 		<>
 			<div className="pagination">
 				<Button onClick={goNext} disabled={isLast} value="Next" />
 			</div>
-			<div>PAGE: {name}</div>
+			<div>PAGE: {pageTag}</div>
 		</>
 	);
 }
@@ -63,7 +63,7 @@ const OrchestratorForStories = ({
 		source,
 		data
 	);
-	const { getComponents, goNext, goPrevious, isLast, name } =
+	const { getComponents, goNext, goPrevious, isLast, pageTag } =
 		lunatic.usePagination({
 			questionnaire,
 			bindings,
@@ -100,7 +100,7 @@ const OrchestratorForStories = ({
 				goNext={goNext}
 				goPrevious={goPrevious}
 				isLast={isLast}
-				name={name}
+				pageTag={pageTag}
 			/>
 		</div>
 	);

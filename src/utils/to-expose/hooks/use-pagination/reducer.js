@@ -11,55 +11,59 @@ function getNextPage(state) {
 }
 
 function reduceGoNext(state) {
-	const { pages, inLoop, step, nbStep, unity, nbUnity, page } = state;
-	console.log({ inLoop, page });
+	const { pages, inLoop, iteration, nbIterations, subPage, nbSubPages, page } =
+		state;
 	if (inLoop) {
-		if (step < nbStep) {
+		if (subPage < nbSubPages - 1) {
 			return {
 				...state,
-				step: step + 1,
+				subPage: subPage + 1,
 			};
 		} else {
-			if (unity < nbUnity) {
+			if (iteration < nbIterations - 1) {
 				return {
 					...state,
-					step: 0,
-					unity: unity + 1,
+					subPage: 0,
+					iteration: iteration + 1,
 				};
 			} else {
 				const next = getNextPage(state);
 				return {
 					...state,
 					page: next,
-					step: undefined,
-					nbStep: undefined,
+					iteration: undefined,
+					nbIterations: undefined,
+					subPage: undefined,
+					nbSubPages: undefined,
 					inLoop: false,
 				};
 			}
 		}
 	} else {
-		const next = getNextPage(state);
-		const nextPage = pages[next];
-		const { isLoop, subPages } = nextPage;
+		const current = pages[page];
+		const { isLoop, subPages } = current;
 		if (isLoop) {
 			return {
 				...state,
-				page: next,
-				step: 0,
-				nbStep: subPages.length,
-				unity: 0,
-				nbUnity: 4, // TODO
+				page,
+				subPage: 0,
+				nbSubPages: subPages.length,
+				iteration: 0,
+				nbIterations: 2, // TODO interpreter iterations
 				inLoop: true,
 			};
+		} else {
+			const next = getNextPage(state);
+			return {
+				...state,
+				page: next,
+				subPage: undefined,
+				nbSubPages: undefined,
+				iteration: undefined,
+				nbIterations: undefined,
+				inLoop: false,
+			};
 		}
-		return {
-			...state,
-			page: next,
-			step: undefined,
-			nbStep: undefined,
-			unity: undefined,
-			nbUnity: undefined,
-		};
 	}
 }
 

@@ -6,11 +6,24 @@ import * as actions from './actions';
 
 const INITIAL = {
 	page: '1',
+	subPage: undefined,
+	nbSubPages: undefined,
+	iteration: undefined,
+	nbIterations: undefined,
 	name: '1',
 	maxPage: '1',
 	inLoop: false,
 	pages: {},
+	bindings: {},
 };
+
+function getPageTag(page, subPage, iteration) {
+	if (subPage !== undefined && iteration !== undefined) {
+		return `${page}.${subPage + 1}#${iteration + 1}`;
+	}
+
+	return `${page}`;
+}
 
 /**
  *
@@ -23,13 +36,14 @@ function usePagination({ questionnaire, initialPage = '1', bindings } = {}) {
 		const { maxPage, components } = questionnaire;
 		if (Array.isArray(components) && components.length && maxPage) {
 			const pages = checkLoops(createPages(components));
-			return { ...state, pages, maxPage };
+			return { ...state, pages, maxPage, bindings };
 		}
 		return state;
 	});
-	const { page, pages, step, inLoop, name } = state;
+	const { page, subPage, iteration, inLoop, pages } = state;
 	const isFirst = page === '1';
 	const isLast = page === maxPage;
+	const pageTag = getPageTag(page, subPage, iteration);
 
 	const getComponents = useCallback(
 		function () {
@@ -37,10 +51,10 @@ function usePagination({ questionnaire, initialPage = '1', bindings } = {}) {
 				const current = pages[page];
 				if (inLoop) {
 					const { subPages } = current;
-					const stepName = subPages[step];
+					const stepName = subPages[subPage];
 					if (stepName in pages) {
-						const currentSub = pages[stepName];
-						const { components } = currentSub;
+						const currentSubPage = pages[stepName];
+						const { components } = currentSubPage;
 						return components;
 					}
 				} else {
@@ -51,7 +65,7 @@ function usePagination({ questionnaire, initialPage = '1', bindings } = {}) {
 
 			return [];
 		},
-		[page, pages, inLoop, step]
+		[page, pages, inLoop, subPage]
 	);
 
 	const goNext = useCallback(function () {
@@ -60,7 +74,7 @@ function usePagination({ questionnaire, initialPage = '1', bindings } = {}) {
 
 	const goPrevious = useCallback(function () {}, []);
 
-	return { getComponents, page, goNext, goPrevious, isFirst, isLast, name };
+	return { getComponents, page, goNext, goPrevious, isFirst, isLast, pageTag };
 }
 
 export default usePagination;
