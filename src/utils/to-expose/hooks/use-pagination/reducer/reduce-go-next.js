@@ -25,8 +25,7 @@ function reduceNextIteration(state) {
 	};
 }
 
-function reduceNextPage(state) {
-	const next = getNextPage(state);
+function reduceNextPage(state, next) {
 	return {
 		...state,
 		page: next,
@@ -38,13 +37,13 @@ function reduceNextPage(state) {
 	};
 }
 
-function reduceStartLoop(state) {
-	const { page, pages } = state;
-	const { subPages } = pages[page];
+function reduceStartLoop(state, next) {
+	const { pages } = state;
+	const { subPages } = pages[next];
 	if (Array.isArray(subPages)) {
 		return {
 			...state,
-			page,
+			page: next,
 			subPage: 0,
 			nbSubPages: subPages.length,
 			iteration: 0,
@@ -58,8 +57,6 @@ function reduceStartLoop(state) {
 function reduceGoNext(state) {
 	const { pages, inLoop, iteration, nbIterations, subPage, nbSubPages, page } =
 		state;
-	const current = pages[page];
-	const { isLoop } = current;
 
 	if (inLoop && subPage < nbSubPages - 1) {
 		return reduceNextSubPage(state);
@@ -67,10 +64,17 @@ function reduceGoNext(state) {
 	if (inLoop && subPage === nbSubPages - 1 && iteration < nbIterations - 1) {
 		return reduceNextIteration(state);
 	}
-	if (!inLoop && isLoop) {
-		return reduceStartLoop(state);
+
+	const next = getNextPage(state);
+	const { isLoop } = pages[next];
+	if (next === page) {
+		// TODO on devrait jamais en arriver là !
 	}
-	return reduceNextPage(state);
+
+	if (isLoop) {
+		return reduceStartLoop(state, next);
+	}
+	return reduceNextPage(state, next);
 }
 
 export default reduceGoNext;

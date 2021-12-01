@@ -1,27 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import * as lunatic from 'components';
 import './custom-lunatic.scss';
 
 function getStoreInfoRequired() {
 	return {};
 }
-
-// function useQuestionnaire(source, data) {
-// 	const [questionnaire, setQuestionnaire] = useState({});
-
-// 	useEffect(
-// 		function () {
-// 			setQuestionnaire({ ...source, ...data });
-// 		},
-// 		[source, data]
-// 	);
-
-// 	function handleChange(update) {
-// 		console.log({ update });
-// 	}
-
-// 	return [questionnaire, handleChange];
-// }
 
 function Pager({ goNext, isLast, pageTag }) {
 	const Button = lunatic.Button;
@@ -35,10 +18,50 @@ function Pager({ goNext, isLast, pageTag }) {
 	);
 }
 
+function LunaticComponent({
+	source,
+	suggesters,
+	data = DEFAULT_DATA,
+	savingType,
+	management,
+	features,
+	bindings,
+	pagination,
+	modalForControls = false,
+	preferences = { preferences },
+	missing = false,
+	shortcut = false,
+	handleChange,
+	component,
+	...rest
+}) {
+	const { id, componentType } = component;
+	const Component = lunatic[componentType];
+
+	return (
+		<div className="lunatic lunatic-component" key={`component-${id}`}>
+			<Component
+				{...rest}
+				{...component}
+				handleChange={handleChange}
+				preferences={preferences}
+				savingType={savingType}
+				management={management}
+				features={features}
+				bindings={bindings}
+				pagination={pagination}
+				missing={missing}
+				shortcut={shortcut}
+			/>
+		</div>
+	);
+}
+
+const DEFAULT_DATA = {};
 const OrchestratorForStories = ({
 	source,
 	suggesters,
-	data = {},
+	data = DEFAULT_DATA,
 	management = false,
 	pagination = false,
 	modalForControls = false,
@@ -58,41 +81,47 @@ const OrchestratorForStories = ({
 		? ['COLLECTED', 'FORCED', 'EDITED']
 		: ['COLLECTED'];
 	const savingType = management ? 'EDITED' : 'COLLECTED';
-	/* */
+
+	/* start use lunatic */
 	const { questionnaire, handleChange, bindings } = lunatic.useQuestionnaire(
 		source,
 		data
 	);
-	const { getComponents, goNext, goPrevious, isLast, pageTag } =
-		lunatic.usePagination({
-			questionnaire,
-			bindings,
-		});
 
+	const { getComponents, goNext, goPrevious, pager } = lunatic.usePagination({
+		questionnaire,
+		bindings,
+	});
+	const { isFirst, isLast, pageTag } = pager;
 	const components = getComponents();
+
+	const handleChangeEx = useCallback(
+		(...args) => handleChange(...args, { pager }),
+		[pager]
+	);
+	/* end use lunatic */
+
 	return (
 		<div className="container">
 			<div className="components">
 				{components.map(function (component) {
-					const { id, componentType } = component;
-					const Component = lunatic[componentType];
+					const { id } = component;
 
 					return (
-						<div className="lunatic lunatic-component" key={`component-${id}`}>
-							<Component
-								{...rest}
-								{...component}
-								handleChange={handleChange}
-								preferences={preferences}
-								savingType={savingType}
-								management={management}
-								features={features}
-								bindings={bindings}
-								pagination={pagination}
-								missing={missing}
-								shortcut={shortcut}
-							/>
-						</div>
+						<LunaticComponent
+							key={`component-${id}`}
+							{...rest}
+							component={component}
+							handleChange={handleChangeEx}
+							preferences={preferences}
+							savingType={savingType}
+							management={management}
+							features={features}
+							bindings={bindings}
+							pagination={pagination}
+							missing={missing}
+							shortcut={shortcut}
+						/>
 					);
 				})}
 			</div>
@@ -190,4 +219,4 @@ const OrchestratorForStories = ({
 	// );
 };
 
-export default OrchestratorForStories;
+export default memo(OrchestratorForStories);
