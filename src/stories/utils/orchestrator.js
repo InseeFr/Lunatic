@@ -83,14 +83,15 @@ const OrchestratorForStories = ({
 	const savingType = management ? 'EDITED' : 'COLLECTED';
 
 	/* start use lunatic */
-	const { questionnaire, handleChange, bindings } = lunatic.useQuestionnaire(
+	const { questionnaire, handleChange, bindings } = lunatic.useQuestionnaire({
 		source,
-		data
-	);
+		data,
+	});
 
 	const { getComponents, goNext, goPrevious, pager } = lunatic.usePagination({
 		questionnaire,
 		bindings,
+		features,
 	});
 	const { isFirst, isLast, pageTag } = pager;
 	const components = getComponents();

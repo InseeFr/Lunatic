@@ -3,7 +3,7 @@ import createPages from '../create-page';
 
 function reduceOnInit(state, action) {
 	const { payload } = action;
-	const { questionnaire, bindings, initialPage } = payload;
+	const { questionnaire, bindings, initialPage, features } = payload;
 
 	if (questionnaire && bindings) {
 		const { maxPage, components } = questionnaire;
@@ -14,6 +14,7 @@ function reduceOnInit(state, action) {
 				page: initialPage,
 				maxPage,
 				bindings,
+				features,
 			};
 		}
 	}

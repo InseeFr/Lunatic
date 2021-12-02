@@ -8,7 +8,7 @@ function isOnSubPage(pager) {
 	return subPage !== undefined;
 }
 
-function useQuestionnaire(source, data) {
+function useQuestionnaire({ source, data }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { questionnaire, bindings } = state;
 

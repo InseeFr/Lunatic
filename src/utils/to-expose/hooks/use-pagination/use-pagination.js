@@ -45,13 +45,20 @@ function getComponentsFromState(state) {
  * @param {*} questionnaire
  * @returns
  */
-function usePagination({ questionnaire, initialPage = '1', bindings } = {}) {
+function usePagination({
+	questionnaire,
+	initialPage = '1',
+	bindings,
+	features,
+} = {}) {
 	const { maxPage } = questionnaire;
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
 	useEffect(
 		function () {
-			dispatch(actions.onInit({ questionnaire, bindings, initialPage }));
+			dispatch(
+				actions.onInit({ questionnaire, bindings, initialPage, features })
+			);
 		},
 		[questionnaire, bindings, initialPage]
 	);
