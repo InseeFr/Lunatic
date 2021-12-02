@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from 'react';
+import React, { memo } from 'react';
 import * as lunatic from 'components';
 import './custom-lunatic.scss';
 
@@ -15,45 +15,6 @@ function Pager({ goNext, isLast, pageTag }) {
 			</div>
 			<div>PAGE: {pageTag}</div>
 		</>
-	);
-}
-
-function LunaticComponent({
-	source,
-	suggesters,
-	data = DEFAULT_DATA,
-	savingType,
-	management,
-	features,
-	bindings,
-	pagination,
-	modalForControls = false,
-	preferences = { preferences },
-	missing = false,
-	shortcut = false,
-	handleChange,
-	component,
-	...rest
-}) {
-	const { id, componentType } = component;
-	const Component = lunatic[componentType];
-
-	return (
-		<div className="lunatic lunatic-component" key={`component-${id}`}>
-			<Component
-				{...rest}
-				{...component}
-				handleChange={handleChange}
-				preferences={preferences}
-				savingType={savingType}
-				management={management}
-				features={features}
-				bindings={bindings}
-				pagination={pagination}
-				missing={missing}
-				shortcut={shortcut}
-			/>
-		</div>
 	);
 }
 
@@ -82,54 +43,54 @@ const OrchestratorForStories = ({
 		: ['COLLECTED'];
 	const savingType = management ? 'EDITED' : 'COLLECTED';
 
-	/* start use lunatic */
-	const { questionnaire, handleChange, bindings } = lunatic.useQuestionnaire({
+	const {
+		getComponents,
+		goNextPage,
+		goPreviousPage,
+		handleChange,
+		bindings,
+		pager,
+		pageTag,
+	} = lunatic.useLunatic({
 		source,
 		data,
+		initialPage,
 	});
+	const { isFirstPage, isLastPage } = pager;
 
-	const { getComponents, goNext, goPrevious, pager } = lunatic.usePagination({
-		questionnaire,
-		bindings,
-		features,
-	});
-	const { isFirst, isLast, pageTag } = pager;
 	const components = getComponents();
-
-	const handleChangeEx = useCallback(
-		(...args) => handleChange(...args, { pager }),
-		[pager]
-	);
-	/* end use lunatic */
 
 	return (
 		<div className="container">
 			<div className="components">
 				{components.map(function (component) {
-					const { id } = component;
+					const { id, componentType } = component;
+					const Component = lunatic[componentType];
 
 					return (
-						<LunaticComponent
-							key={`component-${id}`}
-							{...rest}
-							component={component}
-							handleChange={handleChangeEx}
-							preferences={preferences}
-							savingType={savingType}
-							management={management}
-							features={features}
-							bindings={bindings}
-							pagination={pagination}
-							missing={missing}
-							shortcut={shortcut}
-						/>
+						<div className="lunatic lunatic-component" key={`component-${id}`}>
+							<Component
+								{...rest}
+								{...component}
+								handleChange={handleChange}
+								preferences={preferences}
+								savingType={savingType}
+								management={management}
+								features={features}
+								bindings={bindings}
+								pagination={pagination}
+								missing={missing}
+								shortcut={shortcut}
+							/>
+						</div>
 					);
 				})}
 			</div>
 			<Pager
-				goNext={goNext}
-				goPrevious={goPrevious}
-				isLast={isLast}
+				goNext={goNextPage}
+				goPrevious={goPreviousPage}
+				isLast={isLastPage}
+				isFirst={isFirstPage}
 				pageTag={pageTag}
 			/>
 		</div>
