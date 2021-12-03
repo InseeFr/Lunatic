@@ -6,17 +6,41 @@ function getStoreInfoRequired() {
 	return {};
 }
 
-function Pager({ goNext, isLast, pageTag }) {
+function Pager({ goNext, goPrevious, isLast, isFirst, pageTag }) {
 	const Button = lunatic.Button;
 	return (
 		<>
 			<div className="pagination">
+				<Button onClick={goPrevious} disabled={isFirst} value="Previous" />
 				<Button onClick={goNext} disabled={isLast} value="Next" />
 			</div>
+
 			<div>PAGE: {pageTag}</div>
 		</>
 	);
 }
+
+// function LunaticComponent(){
+// 	  const { id, componentType } = component;
+// 	const Component = lunatic[componentType];
+// 	return (
+// 		<div className="lunatic lunatic-component" key={`component-${id}`}>
+// 			<Component
+// 				{...rest}
+// 				{...component}
+// 				handleChange={(...args) => handleChange(...args, component)}
+// 				preferences={preferences}
+// 				savingType={savingType}
+// 				management={management}
+// 				features={features}
+// 				bindings={bindings}
+// 				pagination={pagination}
+// 				missing={missing}
+// 				shortcut={shortcut}
+// 			/>
+// 		</div>
+// 	);
+// }
 
 const DEFAULT_DATA = {};
 const OrchestratorForStories = ({
@@ -49,30 +73,28 @@ const OrchestratorForStories = ({
 		goPreviousPage,
 		handleChange,
 		bindings,
-		pager,
 		pageTag,
+		isFirstPage,
+		isLastPage,
 	} = lunatic.useLunatic({
 		source,
 		data,
 		initialPage,
 	});
-	const { isFirstPage, isLastPage } = pager;
 
 	const components = getComponents();
-
 	return (
 		<div className="container">
 			<div className="components">
 				{components.map(function (component) {
 					const { id, componentType } = component;
 					const Component = lunatic[componentType];
-
 					return (
 						<div className="lunatic lunatic-component" key={`component-${id}`}>
 							<Component
 								{...rest}
 								{...component}
-								handleChange={handleChange}
+								handleChange={(...args) => handleChange(...args, component)}
 								preferences={preferences}
 								savingType={savingType}
 								management={management}

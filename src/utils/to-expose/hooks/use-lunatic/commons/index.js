@@ -4,4 +4,4 @@ export { default as isPaginatedLoop } from './is-paginated-loop';
 export { default as getComponentsFromState } from './get-components-from-state';
 export { default as getPageTag } from './get-page-tag';
 export { default as isOnSubPage } from './is-on-sub-page';
-export { default as getIsFirstLastPage } from './get-is-First-last-page';
+export { default as isFirstLastPage } from './is-First-last-page';

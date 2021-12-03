@@ -1,5 +1,12 @@
 import { isOnSubPage } from '../commons';
 
+// side effect!
+function fillResponse(response, value) {
+	const { values } = response;
+	values.PREVIOUS = response.COLLECTED;
+	values.COLLECTED = value;
+}
+
 /**
  *
  * @param {*} state
@@ -8,10 +15,10 @@ import { isOnSubPage } from '../commons';
  */
 function reduceHandleChange(state, action) {
 	const { payload } = action;
-	const { todo } = payload;
-
+	const { todo, component } = payload;
+	const { response } = component;
 	const { pager, bindings } = state;
-	const { nbIterations } = pager;
+	const { nbIterations, iteration } = pager;
 
 	// With side effect!
 	if (isOnSubPage(pager)) {
@@ -28,6 +35,9 @@ function reduceHandleChange(state, action) {
 		Object.entries(todo).forEach(function ([name, value]) {
 			if (name in bindings) {
 				bindings[name] = value;
+				if (name === response.name) {
+					fillResponse(response, value);
+				}
 			}
 		});
 	}

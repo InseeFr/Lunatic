@@ -1,4 +1,4 @@
-import { createMapPages, checkLoops, getIsFirstLastPage } from '../commons';
+import { createMapPages, checkLoops, isFirstLastPage } from '../commons';
 import { mergeQuestionnaireAndData } from '../../../init-questionnaire';
 import { getBindings } from '../../../state';
 
@@ -22,7 +22,7 @@ function reduceOnInit(state, action) {
 			iteration: undefined,
 			nbIterations: undefined,
 		};
-		const { isFirstPage, isLastPage } = getIsFirstLastPage(pager);
+		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 		return {
 			...state,
 			questionnaire,

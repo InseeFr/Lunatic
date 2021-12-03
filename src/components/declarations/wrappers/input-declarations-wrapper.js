@@ -47,6 +47,7 @@ const InputDeclarationsWrapper = ({
 			U.getResponseName(response),
 			value
 		);
+
 	const [value, setValue] = useState(() =>
 		U.getResponseByPreference(preferences)(response)
 	);

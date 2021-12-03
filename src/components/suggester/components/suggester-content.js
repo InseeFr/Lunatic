@@ -2,14 +2,7 @@ import React, { useRef, useCallback } from 'react';
 import classnames from 'classnames';
 import useDocumentAddEventListener from '../../../utils/to-expose/hooks/use-document-add-event-listener';
 
-function SuggesterContent({
-	children,
-	id,
-	focused,
-	onFocus,
-	onBlur,
-	onKeyDown,
-}) {
+function SuggesterContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 	const ref = useRef();
 	const onClick = useCallback(
 		function (e) {

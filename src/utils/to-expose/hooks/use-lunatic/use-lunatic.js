@@ -2,11 +2,7 @@ import { useReducer, useEffect, useCallback } from 'react';
 import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
 import reducer from './reducer';
-import {
-	getComponentsFromState,
-	getPageTag,
-	getIsFirstLastPage,
-} from './commons';
+import { getComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 
 function useLunatic({ source, data, initialPage }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -16,7 +12,7 @@ function useLunatic({ source, data, initialPage }) {
 		function () {
 			dispatch(actions.onInit({ source, data, initialPage }));
 		},
-		[source, data]
+		[source, data, initialPage]
 	);
 
 	const goNextPage = useCallback(
@@ -26,7 +22,12 @@ function useLunatic({ source, data, initialPage }) {
 		[dispatch]
 	);
 
-	const goPreviousPage = useCallback(function () {}, []);
+	const goPreviousPage = useCallback(
+		function () {
+			dispatch(actions.goPreviousPage());
+		},
+		[dispatch]
+	);
 
 	const getComponents = useCallback(
 		function () {
@@ -35,14 +36,14 @@ function useLunatic({ source, data, initialPage }) {
 		[state]
 	);
 	const handleChange = useCallback(
-		function (todo) {
-			dispatch(actions.handleChange(todo));
+		function (todo, component) {
+			dispatch(actions.handleChange(todo, component));
 		},
 		[dispatch]
 	);
 
 	const pageTag = getPageTag(pager);
-	const { isFirstPage, isLastPage } = getIsFirstLastPage(pager);
+	const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
 	return {
 		getComponents,
