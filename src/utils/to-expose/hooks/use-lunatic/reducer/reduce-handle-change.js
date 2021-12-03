@@ -29,6 +29,7 @@ function reduceHandleChange(state, action) {
 					bindings[name] = new Array(nbIterations);
 				}
 				bindings[name][iteration] = value;
+				// TODO fill response
 			}
 		});
 	} else {
