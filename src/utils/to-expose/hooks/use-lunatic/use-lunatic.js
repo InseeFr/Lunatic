@@ -4,15 +4,15 @@ import * as actions from './actions';
 import reducer from './reducer';
 import { getComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 
-function useLunatic({ source, data, initialPage }) {
+function useLunatic({ source, data, initialPage, features }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { bindings, pager } = state;
 
 	useEffect(
 		function () {
-			dispatch(actions.onInit({ source, data, initialPage }));
+			dispatch(actions.onInit({ source, data, initialPage, features }));
 		},
-		[source, data, initialPage]
+		[source, data, initialPage, features]
 	);
 
 	const goNextPage = useCallback(

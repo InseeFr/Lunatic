@@ -5,6 +5,7 @@ const INITIAL_STATE = {
 	isInLoop: false,
 	isFirstPage: false,
 	isLastPage: false,
+	features: ['VTL'],
 	pager: {
 		page: undefined,
 		maxPage: undefined,

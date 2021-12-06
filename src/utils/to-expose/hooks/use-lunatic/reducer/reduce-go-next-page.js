@@ -1,3 +1,8 @@
+// import { interpret } from '../../../interpret';
+import { interpret } from '@inseefr/trevas';
+
+function logging() {}
+
 function getNextPage(state) {
 	const { pager } = state;
 	const { page, maxPage } = pager;
@@ -27,7 +32,7 @@ function reduceNextIteration(state) {
 	};
 }
 
-function reduceNextPage(state, next) {
+function reduceNextPage(state, { next, iterations }) {
 	const { pager } = state;
 	return {
 		...state,
@@ -42,10 +47,13 @@ function reduceNextPage(state, next) {
 		},
 	};
 }
-
-function reduceStartLoop(state, next) {
-	const { pages, pager } = state;
+// interpret(features, logFunction)(bindings)(label)
+function reduceStartLoop(state, { next, iterations }) {
+	const { pages, pager, features, bindings } = state;
 	const { subPages } = pages[next];
+	// const nbIterations = interpret(features, logging)(bindings)(iterations);
+	const nbIterations = 2; //interpret(iterations, bindings);
+
 	if (Array.isArray(subPages)) {
 		return {
 			...state,
@@ -56,7 +64,7 @@ function reduceStartLoop(state, next) {
 				subPage: 0,
 				nbSubPages: subPages.length,
 				iteration: 0,
-				nbIterations: 2, // TODO interpreter iterations
+				nbIterations,
 			},
 		};
 	}
@@ -81,9 +89,9 @@ function reduceGoNext(state) {
 	}
 
 	if (isLoop) {
-		return reduceStartLoop(state, next);
+		return reduceStartLoop(state, { next, iterations });
 	}
-	return reduceNextPage(state, next);
+	return reduceNextPage(state, { next, iterations });
 }
 
 export default reduceGoNext;

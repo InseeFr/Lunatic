@@ -80,6 +80,7 @@ const OrchestratorForStories = ({
 		source,
 		data,
 		initialPage,
+		features,
 	});
 
 	const components = getComponents();
@@ -94,7 +95,7 @@ const OrchestratorForStories = ({
 							<Component
 								{...rest}
 								{...component}
-								handleChange={(...args) => handleChange(...args, component)}
+								handleChange={handleChange}
 								preferences={preferences}
 								savingType={savingType}
 								management={management}

@@ -2,12 +2,35 @@ import { createMapPages, checkLoops, isFirstLastPage } from '../commons';
 import { mergeQuestionnaireAndData } from '../../../init-questionnaire';
 import { getBindings } from '../../../state';
 
+function buildResponse(questionnaire, bindings) {
+	const { components } = questionnaire;
+
+	return components.reduce(function (map, component) {
+		const { response } = component;
+		if (response) {
+			const { name } = response;
+			return { ...map, [name]: bindings[name] };
+		}
+
+		return map;
+	}, {});
+}
+
+function buildDico(questionnaire) {
+	const { variables } = questionnaire;
+	const { EXTERNALS, COLLECTED, CALCULATED } = variables;
+
+	return {};
+}
+
 function reduceOnInit(state, action) {
 	const { payload } = action;
-	const { source, data, initialPage } = payload;
+	const { source, data, initialPage, features } = payload;
 	if (source && data) {
 		const questionnaire = mergeQuestionnaireAndData(source)(data);
 		const bindings = getBindings(questionnaire);
+		const responses = buildResponse(questionnaire, bindings);
+		console.log(responses);
 		const { maxPage, components } = questionnaire;
 		let pages = {};
 		if (Array.isArray(components) && components.length && maxPage) {
@@ -31,6 +54,7 @@ function reduceOnInit(state, action) {
 			isFirstPage,
 			isLastPage,
 			pager,
+			features,
 		};
 	}
 
