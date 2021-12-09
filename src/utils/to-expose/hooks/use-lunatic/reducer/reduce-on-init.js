@@ -1,39 +1,59 @@
 import { createMapPages, checkLoops, isFirstLastPage } from '../commons';
-import { mergeQuestionnaireAndData } from '../../../init-questionnaire';
-import { getBindings } from '../../../state';
 
-function buildResponse(questionnaire, bindings) {
-	const { components } = questionnaire;
+/* à bouger d'ici */
+function isUnpaginated(questionnaire) {
+	const { maxPage } = questionnaire;
+	return maxPage === undefined;
+}
 
-	return components.reduce(function (map, component) {
-		const { response } = component;
-		if (response) {
-			const { name } = response;
-			return { ...map, [name]: bindings[name] };
-		}
+function getInitalValueFromCollected(variable) {
+	const { values, value } = variable;
+	if (value) {
+		return value;
+	}
+	if (values) {
+		const { COLLECTED, FORCED } = values;
+		return FORCED || COLLECTED;
+	}
+	return undefined;
+}
 
-		return map;
+function getInitialValue(variable) {
+	const { variableType } = variable;
+	switch (variableType) {
+		case 'COLLECTED':
+			return getInitalValueFromCollected(variable);
+		case 'EXTERNAL':
+		case 'CALCULATED':
+		default:
+			return undefined;
+	}
+}
+
+function createVariables(source) {
+	const { variables } = source;
+	return variables.reduce(function (map, original) {
+		const { name } = original;
+
+		return { ...map, [name]: { original, value: getInitialValue(original) } };
 	}, {});
 }
-
-function buildDico(questionnaire) {
-	const { variables } = questionnaire;
-	const { EXTERNALS, COLLECTED, CALCULATED } = variables;
-
-	return {};
-}
+/* */
 
 function reduceOnInit(state, action) {
 	const { payload } = action;
 	const { source, data, initialPage, features } = payload;
 	if (source && data) {
-		const questionnaire = mergeQuestionnaireAndData(source)(data);
-		const bindings = getBindings(questionnaire);
-		const responses = buildResponse(questionnaire, bindings);
-		console.log(responses);
+		const questionnaire = { ...source }; //mergeQuestionnaireAndData(source)(data);
+
+		const variables = createVariables(source);
+		const bindings = {}; // TODO
 		const { maxPage, components } = questionnaire;
 		let pages = {};
-		if (Array.isArray(components) && components.length && maxPage) {
+
+		if (isUnpaginated(questionnaire)) {
+			pages = { 1: { components } }; // no page -> one page ;)
+		} else if (Array.isArray(components) && components.length && maxPage) {
 			pages = checkLoops(createMapPages(components));
 		}
 
@@ -49,6 +69,7 @@ function reduceOnInit(state, action) {
 		return {
 			...state,
 			questionnaire,
+			variables,
 			bindings,
 			pages,
 			isFirstPage,

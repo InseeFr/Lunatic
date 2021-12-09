@@ -1,11 +1,6 @@
 import { isOnSubPage } from '../commons';
 
 // side effect!
-function fillResponse(response, value) {
-	const { values } = response;
-	values.PREVIOUS = response.COLLECTED;
-	values.COLLECTED = value;
-}
 
 /**
  *
@@ -15,36 +10,19 @@ function fillResponse(response, value) {
  */
 function reduceHandleChange(state, action) {
 	const { payload } = action;
-	const { todo } = payload;
-	const { pager, bindings } = state;
+	const { response, value } = payload;
+	const { pager, variables } = state;
 	const { nbIterations, iteration } = pager;
 
-	// With side effect!
 	if (isOnSubPage(pager)) {
-		Object.entries(todo).forEach(function ([name, value]) {
-			if (name in bindings) {
-				// const target = bindings[name];
-				// if (!Array.isArray(target) || target.length !== nbIterations) {
-				// 	bindings[name] = new Array(nbIterations);
-				// }
-				// bindings[name][iteration] = value;
-				// const { values } = response;
-				// values.PREVIOUS = response.COLLECTED;
-				// values.COLLECTED = [...bindings[name][iteration]];
-			}
-		});
 	} else {
-		Object.entries(todo).forEach(function ([name, value]) {
-			if (name in bindings) {
-				// bindings[name] = value;
-				// if (name === response.name) {
-				// 	fillResponse(response, value);
-				// }
-			}
-		});
+		const { name } = response;
+		if (name in variables) {
+			variables[name].value = value;
+		}
 	}
 
-	return state;
+	return { ...state };
 }
 
 export default reduceHandleChange;

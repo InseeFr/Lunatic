@@ -11,7 +11,7 @@ export const onInit = ({ data, source, initialPage, features }) => ({
 });
 
 export const HANDLE_CHANGE = 'use-lunatic/handle-change';
-export const handleChange = (todo, component) => ({
+export const handleChange = (response, value) => ({
 	type: HANDLE_CHANGE,
-	payload: { todo, component },
+	payload: { response, value },
 });

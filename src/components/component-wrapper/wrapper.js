@@ -2,6 +2,10 @@ import React from 'react';
 import Missing from './missing';
 import Controls from './controls';
 
+const hasControls = (controls, componentType) =>
+	(Array.isArray(controls) && controls.length > 0) ||
+	['InputNumber', 'Datepicker'].includes(componentType);
+
 const componentWrapper = (Component) => (props) => {
 	const { missing, controls, componentType } = props;
 	const hasC = hasControls(controls, componentType);
@@ -15,9 +19,5 @@ const componentWrapper = (Component) => (props) => {
 	}
 	return <Component {...props} />;
 };
-
-const hasControls = (controls, componentType) =>
-	(Array.isArray(controls) && controls.length > 0) ||
-	['InputNumber', 'Datepicker'].includes(componentType);
 
 export default componentWrapper;

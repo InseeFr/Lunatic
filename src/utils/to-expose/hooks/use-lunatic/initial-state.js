@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
 	questionnaire: {},
 	binding: {},
+	variables: {},
 	pages: {},
 	isInLoop: false,
 	isFirstPage: false,

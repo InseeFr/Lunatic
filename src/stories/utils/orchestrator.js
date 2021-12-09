@@ -43,6 +43,8 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag }) {
 // }
 
 const DEFAULT_DATA = {};
+const DEFAULT_FEATURES = ['VTL'];
+
 const OrchestratorForStories = ({
 	source,
 	suggesters,
@@ -50,7 +52,7 @@ const OrchestratorForStories = ({
 	management = false,
 	pagination = false,
 	modalForControls = false,
-	features = ['VTL'],
+	features = DEFAULT_FEATURES,
 	bindings: initialBindings,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
@@ -84,6 +86,7 @@ const OrchestratorForStories = ({
 	});
 
 	const components = getComponents();
+
 	return (
 		<div className="container">
 			<div className="components">

@@ -20,14 +20,12 @@ const Content = ({ type, checked }) => {
 };
 
 const Icon = ({ type, checked, disabled, children }) => (
-	<>
-		<span className={`list-icon-wrapper`}>
-			<span className={`list-icon ${disabled ? 'list-icon-disabled' : ''}`}>
-				<Content type={type} checked={checked} />
-			</span>
-			{children}
+	<span className={`list-icon-wrapper`}>
+		<span className={`list-icon ${disabled ? 'list-icon-disabled' : ''}`}>
+			<Content type={type} checked={checked} />
 		</span>
-	</>
+		{children}
+	</span>
 );
 
 export default Icon;
