@@ -1,10 +1,6 @@
 import { createMapPages, checkLoops, isFirstLastPage } from '../commons';
 
 /* à bouger d'ici */
-function isUnpaginated(questionnaire) {
-	const { maxPage } = questionnaire;
-	return maxPage === undefined;
-}
 
 function getInitalValueFromCollected(variable) {
 	const { values, value } = variable;
@@ -44,18 +40,11 @@ function reduceOnInit(state, action) {
 	const { payload } = action;
 	const { source, data, initialPage, features } = payload;
 	if (source && data) {
-		const questionnaire = { ...source }; //mergeQuestionnaireAndData(source)(data);
-
+		const questionnaire = source; //mergeQuestionnaireAndData(source)(data);
 		const variables = createVariables(source);
 		const bindings = {}; // TODO
-		const { maxPage, components } = questionnaire;
-		let pages = {};
-
-		if (isUnpaginated(questionnaire)) {
-			pages = { 1: { components } }; // no page -> one page ;)
-		} else if (Array.isArray(components) && components.length && maxPage) {
-			pages = checkLoops(createMapPages(components));
-		}
+		const pages = checkLoops(createMapPages(questionnaire));
+		const { maxPage } = questionnaire;
 
 		const pager = {
 			page: initialPage,

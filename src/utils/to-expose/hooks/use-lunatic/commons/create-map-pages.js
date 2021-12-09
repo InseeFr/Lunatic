@@ -1,5 +1,10 @@
 import isPaginatedLoop from './is-paginated-loop';
 
+function isUnpaginated(questionnaire) {
+	const { maxPage } = questionnaire;
+	return maxPage === undefined;
+}
+
 /**
  *
  * @param {*} component: object
@@ -37,7 +42,11 @@ function mergeNestedComponents(components, map) {
  * @param {*} components
  * @returns
  */
-function createPages(components) {
+function createPages(questionnaire) {
+	const { components } = questionnaire;
+	if (isUnpaginated(questionnaire)) {
+		return { 1: { components } }; // no page -> one page ;)
+	}
 	return components.reduce(
 		function (current, component) {
 			const { components, page } = component;
