@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import RadioGroup from './radio-group';
 import FieldContainer from './field-container';
-import Legend from './legend';
+import Fieldset from './fieldset';
 import './radio.scss';
 
 // import componentWrapper from '../component-wrapper';
@@ -24,8 +24,9 @@ function Radio(props) {
 
 	return (
 		<FieldContainer>
-			<Legend>{label}</Legend>
-			<RadioGroup id={id} options={options} value={value} onClick={onClick} />
+			<Fieldset legend={label}>
+				<RadioGroup id={id} options={options} value={value} onClick={onClick} />
+			</Fieldset>
 		</FieldContainer>
 	);
 }

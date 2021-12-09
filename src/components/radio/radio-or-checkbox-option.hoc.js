@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useEffect } from 'react';
+import React, { useCallback, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import RadioChecked from '../../utils/icons/radio-checked.icon';
 import RadioUnchecked from '../../utils/icons/radio-unchecked.icon';
@@ -20,7 +20,6 @@ function radioOrCheckBoxHOC(type) {
 			onKeyDown,
 		}) {
 			const spanEl = useRef();
-			const [idOption] = useState(() => `${type}-${id}-${value}`);
 			const Icon = getIcon(checked, type);
 
 			const onClickOption = useCallback(
@@ -58,18 +57,24 @@ function radioOrCheckBoxHOC(type) {
 					})}
 				>
 					<span
-						id={idOption}
+						id={`${type}-${id}-${value}`}
 						role={type}
 						className={`lunatic-input-${type} `}
 						aria-checked={checked}
 						tabIndex={checked ? '0' : '-1'}
 						onClick={onClickOption}
 						onKeyDown={onKeyDown_}
+						aria-labelledby={`${type}-label-${id}-${value}`}
 						ref={spanEl}
 					>
 						<Icon />
 					</span>
-					<label for={idOption}>{label}</label>
+					<label
+						id={`${type}-label-${id}-${value}`}
+						for={`${type}-${id}-${value}`}
+					>
+						{label}
+					</label>
 				</div>
 			);
 		};

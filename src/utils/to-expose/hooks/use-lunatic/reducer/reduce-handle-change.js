@@ -1,7 +1,5 @@
 import { isOnSubPage } from '../commons';
 
-// side effect!
-
 /**
  *
  * @param {*} state
@@ -15,14 +13,18 @@ function reduceHandleChange(state, action) {
 	const { nbIterations, iteration } = pager;
 
 	if (isOnSubPage(pager)) {
+		// TODO: handle sub-page
 	} else {
 		const { name } = response;
 		if (name in variables) {
-			variables[name].value = value;
+			return {
+				...state,
+				variables: { ...variables, [name]: { ...variables[name], value } },
+			};
 		}
 	}
 
-	return { ...state };
+	return state;
 }
 
 export default reduceHandleChange;
