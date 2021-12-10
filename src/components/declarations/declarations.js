@@ -1,7 +1,7 @@
 import React from 'react';
 import './declarations.scss';
+import Declaration from './declaration';
 // import PropTypes from 'prop-types';
-
 // interpret(features, logFunction)(bindings)(label)
 
 export const DECLARATION_POSITIONS = {
@@ -23,12 +23,9 @@ function Declarations({
 	return (
 		<div id={`declarations-${id}-${type}`} className="declarations-lunatic">
 			{filtered.map(({ id: idD, label, declarationType }) => (
-				<div
-					key={`${idD}`}
-					className={`declaration-lunatic declaration-${declarationType.toLowerCase()}`}
-				>
+				<Declaration key={`${idD}`} type={declarationType.toLowerCase()}>
 					{label}
-				</div>
+				</Declaration>
 			))}
 		</div>
 	);

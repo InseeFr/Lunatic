@@ -1,6 +1,10 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
 
+function checkValue(value) {
+	return value || '';
+}
+
 function Input({
 	value,
 	onChange,
@@ -25,7 +29,7 @@ function Input({
 			type="text"
 			disabled={disabled}
 			className={classnames('input-lunatic')}
-			value={value || ''}
+			value={checkValue(value)}
 			onChange={handleChange}
 			aria-required={required}
 			required={required}
