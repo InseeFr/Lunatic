@@ -1,7 +1,7 @@
 import React from 'react';
 
 function InputNumber() {
-	return null;
+	return <div>input number</div>;
 }
 
 export default InputNumber;
