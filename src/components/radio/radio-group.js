@@ -9,26 +9,25 @@ function RadioGroup({ options, value, id, onClick }) {
 	return options.map(function (option, index) {
 		const { value: valueOption, label } = option;
 
-		const radioId = `lunatic-radio-${id}`;
-		const labelId = `lunatic-radio-label-${id}`;
+		const radioId = `lunatic-radio-${id}-${valueOption}`;
+		const labelId = `lunatic-radio-label-${id}-${valueOption}`;
 
 		return (
-			<>
+			<div key={radioId} className="">
 				<Label id={labelId} htmlFor={radioId}>
 					{label}
 				</Label>
 				<RadioOption
-					id={id}
+					id={radioId}
 					labelledBy={labelId}
 					index={index}
 					label={label}
 					checked={value === valueOption}
-					key={valueOption}
 					onClick={onClick}
 					value={valueOption}
 					onKeyDown={onKeyDown}
 				/>
-			</>
+			</div>
 		);
 	});
 }
