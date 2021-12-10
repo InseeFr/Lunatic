@@ -17,6 +17,7 @@ function radioOrCheckBoxHOC(type) {
 			id,
 			index,
 			onKeyDown,
+			labelledBy,
 		}) {
 			const spanEl = useRef();
 			const Icon = getIcon(checked, type);
@@ -50,7 +51,7 @@ function radioOrCheckBoxHOC(type) {
 
 			return (
 				<div
-					className={classnames(`lunatic-${type}-option`, {
+					className={classnames(`${type}-modality`, `${type}-modality-block`, {
 						checked,
 						disabled,
 					})}
@@ -63,7 +64,7 @@ function radioOrCheckBoxHOC(type) {
 						tabIndex={checked ? '0' : '-1'}
 						onClick={onClickOption}
 						onKeyDown={handleKeyDown}
-						aria-labelledby={`${type}-label-${id}-${value}`}
+						aria-labelledby={labelledBy}
 						ref={spanEl}
 					>
 						<Icon />

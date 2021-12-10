@@ -2,17 +2,16 @@ import React, { useCallback } from 'react';
 import RadioGroup from './radio-group';
 import Fieldset from './fieldset';
 import { FieldContainer } from '../commons';
-import Declarations from '../declarations';
+import {
+	DeclarationsBeforeText,
+	DeclarationsAfterText,
+	DeclarationsDetachable,
+} from '../declarations';
 import './radio.scss';
 
-// import componentWrapper from '../component-wrapper';
-// import { ListDeclarationsWrapper } from '../declarations/wrappers';
-// import { areEqual } from '../../utils/lib';
-// const Radio = (props) => <ListDeclarationsWrapper type="radio" {...props} />;
-// export default componentWrapper(React.memo(Radio, areEqual));
-
 function Radio(props) {
-	const { label, id, options, value, handleChange, response } = props;
+	const { label, id, options, value, handleChange, response, declarations } =
+		props;
 
 	const onClick = useCallback(
 		function (valueOption) {
@@ -25,10 +24,10 @@ function Radio(props) {
 
 	return (
 		<>
-			<Declarations />
+			<DeclarationsBeforeText declarations={declarations} />
 			<FieldContainer id={id} value={value}>
 				<Fieldset legend={label}>
-					<Declarations />
+					<DeclarationsAfterText declarations={declarations} />
 					<RadioGroup
 						id={id}
 						options={options}
@@ -37,7 +36,7 @@ function Radio(props) {
 					/>
 				</Fieldset>
 			</FieldContainer>
-			<Declarations />
+			<DeclarationsDetachable declarations={declarations} />
 		</>
 	);
 }

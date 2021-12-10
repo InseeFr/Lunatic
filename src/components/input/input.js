@@ -3,7 +3,6 @@ import classnames from 'classnames';
 
 function Input({
 	value,
-	label,
 	onChange,
 	disabled,
 	required,
@@ -21,12 +20,12 @@ function Input({
 	return (
 		<input
 			id={id}
-			labelledBy={labelledBy}
+			aria-labelledby={labelledBy}
 			autoComplete="off"
 			type="text"
 			disabled={disabled}
 			className={classnames('input-lunatic')}
-			value={value}
+			value={value || ''}
 			onChange={handleChange}
 			aria-required={required}
 			required={required}

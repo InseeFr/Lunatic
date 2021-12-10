@@ -1,16 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import './declarations.scss';
+// import PropTypes from 'prop-types';
 
 // interpret(features, logFunction)(bindings)(label)
 
-const Declarations = ({
+export const DECLARATION_POSITIONS = {
+	after: 'AFTER_QUESTION_TEXT',
+	before: 'BEFORE_QUESTION_TEXT',
+	detachable: 'DETACHABLE',
+};
+
+function Declarations({
 	id,
 	type,
 	declarations,
 	features,
 	bindings,
 	logFunction,
-}) => {
+}) {
 	const filtered = declarations.filter(({ position }) => position === type);
 	if (filtered.length === 0) return null;
 	return (
@@ -25,7 +32,7 @@ const Declarations = ({
 			))}
 		</div>
 	);
-};
+}
 
 Declarations.defaultProps = {
 	type: 'AFTER_QUESTION_TEXT',

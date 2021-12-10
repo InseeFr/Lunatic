@@ -1,21 +1,16 @@
 import React, { useCallback } from 'react';
 import { FieldContainer, Label } from '../commons';
 import Input from './input';
-import Declarations from '../declarations';
+import {
+	DeclarationsBeforeText,
+	DeclarationsAfterText,
+	DeclarationsDetachable,
+} from '../declarations';
 import './input.scss';
 
-// import { InputDeclarationsWrapper } from '../declarations/wrappers';
-// import { areEqual } from '../../utils/lib';
-// import componentWrapper from '../component-wrapper';
-
-// const Input = (props) => (
-// 	<InputDeclarationsWrapper type="text" roleType="input" {...props} />
-// );
-
-// export default componentWrapper(React.memo(Input, areEqual));
-
 function LunaticInput(props) {
-	const { label, id, value, handleChange, response, disabled } = props;
+	const { label, id, value, handleChange, response, disabled, declarations } =
+		props;
 
 	const onChange = useCallback(
 		function (inputValue) {
@@ -31,11 +26,11 @@ function LunaticInput(props) {
 
 	return (
 		<>
-			<Declarations />
+			<DeclarationsBeforeText declarations={declarations} />
 			<Label id={labelId} htmlFor={inputId} className={'todo'}>
 				{label}
 			</Label>
-			<Declarations />
+			<DeclarationsAfterText declarations={declarations} />
 			<FieldContainer value={value} id={id}>
 				<Input
 					id={inputId}
@@ -45,7 +40,7 @@ function LunaticInput(props) {
 					disabled={disabled}
 				/>
 			</FieldContainer>
-			<Declarations />
+			<DeclarationsDetachable declarations={declarations} />
 		</>
 	);
 }
