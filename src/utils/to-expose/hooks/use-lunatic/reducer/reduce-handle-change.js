@@ -19,7 +19,7 @@ function reduceHandleChange(state, action) {
 		if (name in variables) {
 			return {
 				...state,
-				variables: { ...variables, [name]: { ...variables[name], value } },
+				variables: { ...variables, [name]: { ...variables[name], value } }, // on pourrait ici se contenter d'un effet de bord
 			};
 		}
 	}

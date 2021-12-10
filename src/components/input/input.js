@@ -1,11 +1,44 @@
-import React from 'react';
-import { InputDeclarationsWrapper } from '../declarations/wrappers';
-import { areEqual } from '../../utils/lib';
-import componentWrapper from '../component-wrapper';
-import './input.scss';
+import React, { useCallback } from 'react';
+import classnames from 'classnames';
 
-const Input = (props) => (
-	<InputDeclarationsWrapper type="text" roleType="input" {...props} />
-);
+function Input({
+	value,
+	label,
+	onChange,
+	disabled,
+	required,
+	maxLength,
+	id,
+	labelledBy,
+}) {
+	const handleChange = useCallback(
+		function (e) {
+			const value = e.target.value;
+			onChange(value);
+		},
+		[onChange]
+	);
+	return (
+		<input
+			id={id}
+			labelledBy={labelledBy}
+			autoComplete="off"
+			type="text"
+			disabled={disabled}
+			className={classnames('input-lunatic')}
+			value={value}
+			onChange={handleChange}
+			aria-required={required}
+			required={required}
+			maxLength={maxLength}
+		/>
+	);
+}
 
-export default componentWrapper(React.memo(Input, areEqual));
+Input.defaultProps = {
+	disabled: false,
+	required: true,
+	maxLength: Number.MAX_SAFE_INTEGER,
+};
+
+export default Input;

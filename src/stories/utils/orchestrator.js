@@ -6,18 +6,20 @@ function getStoreInfoRequired() {
 	return {};
 }
 
-function Pager({ goNext, goPrevious, isLast, isFirst, pageTag }) {
-	const Button = lunatic.Button;
-	return (
-		<>
-			<div className="pagination">
-				<Button onClick={goPrevious} disabled={isFirst} value="Previous" />
-				<Button onClick={goNext} disabled={isLast} value="Next" />
-			</div>
-
-			<div>PAGE: {pageTag}</div>
-		</>
-	);
+function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
+	if (maxPage && maxPage > 1) {
+		const Button = lunatic.Button;
+		return (
+			<>
+				<div className="pagination">
+					<Button onClick={goPrevious} disabled={isFirst} value="Previous" />
+					<Button onClick={goNext} disabled={isLast} value="Next" />
+				</div>
+				<div>PAGE: {pageTag}</div>
+			</>
+		);
+	}
+	return null;
 }
 
 // function LunaticComponent(){
@@ -68,7 +70,7 @@ const OrchestratorForStories = ({
 		? ['COLLECTED', 'FORCED', 'EDITED']
 		: ['COLLECTED'];
 	const savingType = management ? 'EDITED' : 'COLLECTED';
-
+	const { maxPage } = source;
 	const {
 		getComponents,
 		goNextPage,
@@ -118,6 +120,7 @@ const OrchestratorForStories = ({
 				isLast={isLastPage}
 				isFirst={isFirstPage}
 				pageTag={pageTag}
+				maxPage={maxPage}
 			/>
 		</div>
 	);

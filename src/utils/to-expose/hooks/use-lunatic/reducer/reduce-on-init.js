@@ -30,7 +30,6 @@ function createVariables(source) {
 	const { variables } = source;
 	return variables.reduce(function (map, original) {
 		const { name } = original;
-
 		return { ...map, [name]: { original, value: getInitialValue(original) } };
 	}, {});
 }

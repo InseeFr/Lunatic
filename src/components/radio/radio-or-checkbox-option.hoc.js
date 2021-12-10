@@ -10,7 +10,6 @@ function getIcon(checked, type) {
 function radioOrCheckBoxHOC(type) {
 	if (type === 'radio' || type === 'checkbox') {
 		return function RadioOrCheckboxOption({
-			label,
 			checked,
 			disabled,
 			onClick,
@@ -29,7 +28,7 @@ function radioOrCheckBoxHOC(type) {
 				[value, onClick]
 			);
 
-			const onKeyDown_ = useCallback(
+			const handleKeyDown = useCallback(
 				function (e) {
 					const { key } = e;
 					const { current } = spanEl;
@@ -57,24 +56,18 @@ function radioOrCheckBoxHOC(type) {
 					})}
 				>
 					<span
-						id={`${type}-${id}-${value}`}
+						id={id}
 						role={type}
 						className={`lunatic-input-${type} `}
 						aria-checked={checked}
 						tabIndex={checked ? '0' : '-1'}
 						onClick={onClickOption}
-						onKeyDown={onKeyDown_}
+						onKeyDown={handleKeyDown}
 						aria-labelledby={`${type}-label-${id}-${value}`}
 						ref={spanEl}
 					>
 						<Icon />
 					</span>
-					<label
-						id={`${type}-label-${id}-${value}`}
-						for={`${type}-${id}-${value}`}
-					>
-						{label}
-					</label>
 				</div>
 			);
 		};
