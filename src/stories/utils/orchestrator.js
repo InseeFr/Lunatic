@@ -52,7 +52,6 @@ const OrchestratorForStories = ({
 	suggesters,
 	data = DEFAULT_DATA,
 	management = false,
-	pagination = false,
 	modalForControls = false,
 	features = DEFAULT_FEATURES,
 	bindings: initialBindings,
@@ -106,7 +105,6 @@ const OrchestratorForStories = ({
 								management={management}
 								features={features}
 								bindings={bindings}
-								pagination={pagination}
 								missing={missing}
 								shortcut={shortcut}
 							/>

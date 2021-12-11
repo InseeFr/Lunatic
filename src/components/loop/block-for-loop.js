@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
@@ -7,7 +7,18 @@ import {
 import LoopOrchestrator from './loop-ochestrator';
 import { Label } from '../commons';
 
-function BlockForLoop({ declarations, label, lines, id, components }) {
+function BlockForLoop({
+	declarations,
+	label,
+	lines,
+	id,
+	components,
+	handleChange,
+	valueMap,
+}) {
+	const handleChangeLoop = useCallback(function () {}, []);
+	const [nbRows, setNbRows] = useState(1);
+
 	if (lines) {
 		return (
 			<>
@@ -16,7 +27,12 @@ function BlockForLoop({ declarations, label, lines, id, components }) {
 					{label}
 				</Label>
 				<DeclarationsAfterText declarations={declarations} />
-				<LoopOrchestrator components={components} />
+				<LoopOrchestrator
+					components={components}
+					handleChange={handleChangeLoop}
+					nbRows={nbRows}
+					valueMap={valueMap}
+				/>
 				<DeclarationsDetachable declarations={declarations} />
 			</>
 		);

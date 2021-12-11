@@ -1,14 +1,8 @@
-function fillComponentValue(component, variables) {
-	const { response } = component; // supposition : le composant est lié à une variable par  response
-	if (response) {
-		const { name } = response;
-		if (name in variables) {
-			const { value } = variables[name];
-			return { ...component, value };
-		}
-	}
+import getComponentValue from './get-component-value';
 
-	return component;
+function fillComponentValue(component, variables) {
+	const value = getComponentValue(component, variables);
+	return { ...component, value };
 }
 
 function fillComponentsValue(components, variables) {
