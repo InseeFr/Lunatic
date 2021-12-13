@@ -11,8 +11,9 @@ function Loop(props) {
 		handleChange,
 		value,
 		management,
+		executeExpression,
 	} = props;
-
+	// console.log(executeExpression);
 	return (
 		<BlockforLoop
 			declarations={declarations}

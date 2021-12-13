@@ -7,7 +7,7 @@ import {
 
 /* à bouger d'ici */
 
-function getInitalValueFromCollected(variable, data) {
+function getInitalValueFromCollected(variable, data = {}) {
 	const { values, name } = variable;
 	let fromData;
 	if (name in data) {
@@ -32,7 +32,7 @@ function getInitialValueFromExternal(variable, data) {
 	return undefined;
 }
 
-function getInitialValue(variable, data) {
+function getInitialValue(variable, data = {}) {
 	const { COLLECTED } = data;
 	const { variableType } = variable;
 	switch (variableType) {
@@ -48,20 +48,13 @@ function getInitialValue(variable, data) {
 
 function createVariablesAndBindings(source, data) {
 	const { variables } = source;
-	return variables.reduce(
-		function ([mapVariables, mapBindings], variable) {
-			const { name } = variable;
-			const value = getInitialValue(variable, data);
-			return [
-				{
-					...mapVariables,
-					[name]: { variable, value },
-				},
-				{ ...mapBindings, [name]: value },
-			];
-		},
-		[{}, {}]
-	);
+
+	return variables.reduce(function (map, variable) {
+		const { name } = variable;
+		const value = getInitialValue(variable, data);
+
+		return { ...map, [name]: { variable, value } };
+	}, {});
 }
 /* */
 
@@ -70,9 +63,10 @@ function reduceOnInit(state, action) {
 	const { source, data, initialPage, features } = payload;
 	if (source && data) {
 		const questionnaire = source;
-		const [variables, vtlBindings] = createVariablesAndBindings(source, data);
+		const variables = createVariablesAndBindings(source, data);
+
 		const [executeExpression, updateBindings] =
-			createExecuteExpression(vtlBindings);
+			createExecuteExpression(variables);
 		const pages = checkLoops(createMapPages(questionnaire));
 		const { maxPage } = questionnaire;
 

@@ -1,17 +1,21 @@
 import executeExpression from './execute-expression';
+import { interpret } from '@inseefr/trevas';
 
-/**
- * Map contenant les expression déjà exécutées.
- */
-const MAP_UNEXECUTABLE = new Map();
+//const res = interpret(expression, bindings);
 
-function createExecuteExpression(vtlBindings) {
-	const bindings = { ...vtlBindings };
+function createBindings(variables) {
+	return Object.entries(variables).reduce(function (map, [name, { value }]) {
+		return { ...map, [name]: value };
+	}, {});
+}
 
+function createExecuteExpression(variables) {
+	const bindings = createBindings(variables);
+	const vtlBindings = { ...bindings };
 	function updateBindings(name, value) {
 		if (name in vtlBindings) {
-			vtlBindings[name] = value;
 			bindings[name] = value;
+			vtlBindings[name] = value;
 		}
 	}
 
@@ -23,7 +27,7 @@ function createExecuteExpression(vtlBindings) {
 	) {
 		// options peut contenir les index de certaines variables tableaux
 		// TODO implémenter rebinds
-		const result = executeExpression(bindings, expression, feature);
+		const result = executeExpression(vtlBindings, expression, feature);
 
 		return result;
 	}

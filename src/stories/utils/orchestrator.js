@@ -75,10 +75,10 @@ const OrchestratorForStories = ({
 		goNextPage,
 		goPreviousPage,
 		handleChange,
-		bindings,
 		pageTag,
 		isFirstPage,
 		isLastPage,
+		executeExpression,
 	} = lunatic.useLunatic({
 		source,
 		data,
@@ -103,10 +103,9 @@ const OrchestratorForStories = ({
 								preferences={preferences}
 								savingType={savingType}
 								management={management}
-								features={features}
-								bindings={bindings}
 								missing={missing}
 								shortcut={shortcut}
+								executeExpression={executeExpression}
 							/>
 						</div>
 					);

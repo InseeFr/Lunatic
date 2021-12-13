@@ -14,6 +14,7 @@ function RowComponent({
 }) {
 	const { componentType } = component;
 	const Component = lunatic[componentType];
+
 	return (
 		<Component
 			{...component}
@@ -53,7 +54,7 @@ function Row({
 		let value = undefined;
 		if (response) {
 			const { name } = response;
-			value = valueMap[name];
+			value = valueMap[name][rowIndex] || '';
 		}
 
 		if (componentType in lunatic) {
