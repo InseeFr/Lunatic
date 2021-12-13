@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../declarations';
-import LoopOrchestrator from './loop-ochestrator';
+import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
 import { Label } from '../commons';
 
 function BlockForLoop({
@@ -15,9 +15,19 @@ function BlockForLoop({
 	components,
 	handleChange,
 	valueMap,
+	features,
+	missing,
+	shortcut,
+	management,
 }) {
-	const handleChangeLoop = useCallback(function () {}, []);
 	const [nbRows, setNbRows] = useState(1);
+
+	const handleChangeLoop = useCallback(
+		function (response, value, args) {
+			handleChange(response, value, { ...args, loop: true, length: nbRows });
+		},
+		[handleChange, nbRows]
+	);
 
 	if (lines) {
 		return (
@@ -27,11 +37,14 @@ function BlockForLoop({
 					{label}
 				</Label>
 				<DeclarationsAfterText declarations={declarations} />
-				<LoopOrchestrator
+				<BlockForLoopOrchestrator
 					components={components}
 					handleChange={handleChangeLoop}
 					nbRows={nbRows}
 					valueMap={valueMap}
+					management={management}
+					missing={missing}
+					shortcut={shortcut}
 				/>
 				<DeclarationsDetachable declarations={declarations} />
 			</>
@@ -41,3 +54,12 @@ function BlockForLoop({
 }
 
 export default BlockForLoop;
+
+// handleChange={handleChange}
+// preferences={preferences}
+// savingType={savingType}
+// management={management}
+// features={features}
+// bindings={bindings}
+// missing={missing}
+// shortcut={shortcut}

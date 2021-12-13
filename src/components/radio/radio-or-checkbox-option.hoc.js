@@ -21,6 +21,7 @@ function radioOrCheckBoxHOC(type) {
 		}) {
 			const spanEl = useRef();
 			const Icon = getIcon(checked, type);
+			const tabIndex = checked ? '0' : '-1';
 
 			const onClickOption = useCallback(
 				function () {
@@ -59,9 +60,9 @@ function radioOrCheckBoxHOC(type) {
 					<span
 						id={id}
 						role={type}
-						className={`lunatic-input-${type} `}
+						className={`lunatic-input-${type}`}
 						aria-checked={checked}
-						tabIndex={checked ? '0' : '-1'}
+						tabIndex={tabIndex}
 						onClick={onClickOption}
 						onKeyDown={handleKeyDown}
 						aria-labelledby={labelledBy}

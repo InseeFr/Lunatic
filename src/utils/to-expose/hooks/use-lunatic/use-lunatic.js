@@ -36,8 +36,8 @@ function useLunatic({ source, data, initialPage, features }) {
 		[state]
 	);
 	const handleChange = useCallback(
-		function (response, value) {
-			dispatch(actions.handleChange(response, value));
+		function (response, value, args) {
+			dispatch(actions.handleChange(response, value, args));
 		},
 		[dispatch]
 	);
