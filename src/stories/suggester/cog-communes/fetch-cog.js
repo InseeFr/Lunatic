@@ -5,7 +5,11 @@ async function fetchCOG(path = '') {
 			: `/Lunatic/storybook/communes-2019.json`;
 	const response = await fetch(sbPath);
 	const cog = await response.json();
-	return cog;
+
+	return cog.map(({ label, ...rest }) => ({
+		label,
+		...rest,
+	}));
 }
 
 export default fetchCOG;

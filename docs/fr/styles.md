@@ -4,6 +4,10 @@ Les composants de la librairie sont exposés avec un style par défaut.
 
 La variabilisation du thème de base et la surcharge des classes css permettent de personnaliser les composants.
 
+## Activer le style par défaut
+
+Afin de bénéficier du style par défaut, les composants Lunatic doivent avoir une classe parente : `lunatic-component`
+
 ## Custom properties
 
 Liste des `custom properties` personnalisables (avec leur valeur par défaut) :

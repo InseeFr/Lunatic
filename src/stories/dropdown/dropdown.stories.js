@@ -32,7 +32,7 @@ stories.addWithJSX('Props', () => (
 	<Orchestrator
 		id="props"
 		source={dataProps}
-		placeholder={text('Placeholder', 'Placeholder')}
+		placeholderList={text('Placeholder', 'Placeholder')}
 		missing={boolean('Missing', false)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { NAME: 'Simpsons', TEXAS: 'Texas' })}
@@ -74,7 +74,7 @@ stories.addWithJSX('Naf', () => (
 	<Orchestrator
 		id="props"
 		source={dataNAF}
-		placeholder={text('Placeholder', 'Placeholder')}
+		placeholderList={text('Placeholder', 'Placeholder')}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { NAME: 'Simpsons', TEXAS: 'Texas' })}
 		disabled={boolean('Disabled', false)}

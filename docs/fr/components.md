@@ -14,6 +14,14 @@ L'utilisation du composant `Suggester`, composant de recherche sur liste longue,
   - les déposer dans le projet client (idéalement, dans une application CRA, dans le dossier `public`)
   - surcharge des variables d'environnement localisant les workers ([exemple](https://github.com/InseeFr/Lunatic/blob/master/example/orchestrator/.env))
 
+- Compatibilité des versions Lunatic / Lunatic workers :
+
+|        Lunatic        |  Lunatic workers   |
+| :-------------------: | :----------------: |
+| >= 0.2.1-experimental | 0.2.2-experimental |
+|  0.2.0-experimental   | 0.1.2-experimental |
+| < 0.2.0-experimental  |       0.1.0        |
+
 - Activation au niveau de `useLunatic` en valorisant les options suivantes :
 
 |       variable       |                           valeur                            | description                                                   |

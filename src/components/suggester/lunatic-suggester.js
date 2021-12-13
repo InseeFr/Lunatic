@@ -1,11 +1,19 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+import componentWrapper from '../component-wrapper';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
 import * as C from '../../constants';
 import IDBSuggester from './idb-suggester';
 import LabelWrapper from '../../utils/components/label-wrapper';
 import FieldWrapper from '../../utils/components/field-wrapper';
+
+function getSuggestionId(suggestion) {
+	if (suggestion) {
+		return suggestion.id;
+	}
+	return null;
+}
 
 function Suggester({
 	id,
@@ -25,40 +33,23 @@ function Suggester({
 	storeName,
 	optionRenderer,
 	labelRenderer,
-	max,
 	idbVersion,
 }) {
 	const [value, setValue] = useState(() =>
 		U.getResponseByPreference(preferences)(response)
 	);
-
 	const labelId = `suggester-label-${id}`;
-
 	const onSelect = useCallback(
 		function (suggestion) {
-			if (suggestion === null) {
-				setValue(null);
-				handleChange({
-					[U.getResponseName(response)]: null,
-				});
-			} else {
-				const { id } = suggestion;
-				setValue(id);
-				handleChange({
-					[U.getResponseName(response)]: id,
-				});
-			}
+			const ids = getSuggestionId(suggestion);
+			// Delete: null --> empty to handle controls
+			handleChange({
+				[U.getResponseName(response)]: ids || '',
+			});
+			setValue(ids);
 		},
 		[handleChange, response]
 	);
-
-	// Assume we only want to handle enable external updates
-	// Don't need to check all value changes
-	useEffect(() => {
-		if (U.getResponseByPreference(preferences)(response) !== value)
-			setValue(U.getResponseByPreference(preferences)(response));
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [response, preferences]);
 
 	return (
 		<>
@@ -90,7 +81,6 @@ function Suggester({
 						storeName={storeName}
 						optionRenderer={optionRenderer}
 						labelRenderer={labelRenderer}
-						max={max}
 						labelledBy={labelId}
 						idbVersion={idbVersion}
 						onSelect={onSelect}
@@ -98,6 +88,7 @@ function Suggester({
 						disabled={disabled}
 						response={response}
 						id={id}
+						value={value}
 					/>
 				</FieldWrapper>
 			</LabelWrapper>
@@ -145,4 +136,4 @@ Suggester.propTypes = {
 	getStoreInfo: PropTypes.func,
 };
 
-export default React.memo(Suggester, U.areEqual);
+export default componentWrapper(React.memo(Suggester, U.areEqual));

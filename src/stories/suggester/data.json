@@ -1,6 +1,6 @@
 {
-	"suggesters": {
-		"naf-rev2": {
+	"suggesters": [
+		{
 			"name": "naf-rev2",
 			"url": "https://inseefr.github.io/Lunatic/storybook/naf-rev2.json",
 			"fields": [
@@ -8,17 +8,18 @@
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
+					"synonyms": { "saint": ["st"] },
 					"min": 2
 				},
 				{ "name": "id" }
 			],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+" }
+				"params": { "language": "French", "pattern": "[\\w.]+", "min": 1 }
 			},
 			"version": "1"
 		},
-		"cog-communes": {
+		{
 			"name": "cog-communes",
 			"url": "https://inseefr.github.io/Lunatic/storybook/communes-2019.json",
 			"fields": [
@@ -26,10 +27,42 @@
 				{ "name": "nccenr", "rules": "soft" },
 				{ "name": "id", "rules": "soft" }
 			],
+			"order": { "type": "ascending", "field": "label" },
 			"queryParser": { "type": "soft" },
 			"version": "1"
+		},
+		{
+			"name": "bailleurs-sociaux",
+			"url": "https://inseefr.github.io/Lunatic/storybook/bailleurs-sociaux.json",
+			"fields": [
+				{
+					"name": "libelle1",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"synonyms": { "st": ["saint"] },
+					"stemmer": false
+				},
+				{
+					"name": "libelle2",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"synonyms": [
+						{ "source": "saint", "target": ["st"] },
+						{ "source": "oph", "target": ["renaud", "nicolas"] }
+					],
+					"stemmer": false
+				},
+				{ "name": "code" }
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w]+", "min": "1" }
+			},
+			"stopWords": ["de", "la", "les", "du", "et", "au", "aux", "en"],
+			"max": 12,
+			"version": "1"
 		}
-	},
+	],
 	"components": [
 		{
 			"id": "sugg",
@@ -51,6 +84,17 @@
 			"storeName": "cog-communes",
 			"response": {
 				"name": "COMMUNES"
+			}
+		},
+		{
+			"id": "bailleurs-sociaux",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "Bailleurs sociaux",
+			"path": "data/bailleurs",
+			"storeName": "bailleurs-sociaux",
+			"response": {
+				"name": "BAILLEURS"
 			}
 		}
 	],
@@ -77,6 +121,18 @@
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "BAILLEURS",
+			"componentRef": "bailleurs-sociaux",
+			"values": {
+				"PREVIOUS": "123",
+				"COLLECTED": "123",
+				"FORCED": "123",
+				"EDITED": "123",
+				"INPUTED": "123"
 			}
 		}
 	]

@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from 'react';
+import React, { useReducer, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import * as actions from '../commons/actions';
@@ -17,7 +17,7 @@ const Dropdown = ({
 	options,
 	response,
 	onSelect,
-	placeholder,
+	placeholderList,
 	disabled,
 	focused: initFocused,
 	mandatory,
@@ -25,6 +25,7 @@ const Dropdown = ({
 	management,
 	className,
 	zIndex,
+	DeclarationAfterLabel,
 }) => {
 	const containerEl = useRef();
 	const [state, dispatch] = useReducer(reducer, {
@@ -36,6 +37,13 @@ const Dropdown = ({
 	const { focused, visible, activeIndex, id } = state;
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
 	const selectedOption = options.find((o) => o.value === value);
+
+	useEffect(() => {
+		if (visible && !activeIndex) {
+			dispatch(actions.initActiveIndex());
+		}
+	}, [activeIndex, visible]);
+
 	return (
 		<DropdownContainer
 			className={className || 'lunatic-dropdown'}
@@ -52,11 +60,12 @@ const Dropdown = ({
 			value={value}
 			zIndex={zIndex}
 		>
+			<DeclarationAfterLabel />
 			<span className={classnames('lunatic-dropdown-input', { focused })}>
 				<input
 					type="button"
 					disabled={disabled}
-					value={selectedOption ? selectedOption.label : placeholder || ''}
+					value={selectedOption ? selectedOption.label : placeholderList || ''}
 				/>
 			</span>
 			{getIcon(state, dispatch)(visible, containerEl)}
@@ -91,7 +100,7 @@ Dropdown.propTypes = {
 	id: PropTypes.string,
 	options: PropTypes.array.isRequired,
 	onSelect: PropTypes.func,
-	placeholder: PropTypes.string,
+	placeholderList: PropTypes.string,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
@@ -105,7 +114,7 @@ Dropdown.defaultProps = {
 	options: [],
 	zIndex: 0,
 	onSelect: () => null,
-	placeholder: 'Search...',
+	placeholderList: 'Search...',
 	widthAuto: false,
 };
 

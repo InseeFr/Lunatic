@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import PropTypes from 'prop-types';
-import missingWrapper from '../missing-wrapper';
+import componentWrapper from '../component-wrapper';
 import debounce from 'lodash.debounce';
 import Declarations from '../declarations';
 import Icon from '../icon';
@@ -228,4 +228,4 @@ CheckboxGroup.propTypes = {
 	style: PropTypes.object,
 };
 
-export default React.memo(missingWrapper(CheckboxGroup), U.areEqual);
+export default componentWrapper(React.memo(CheckboxGroup, U.areEqual));

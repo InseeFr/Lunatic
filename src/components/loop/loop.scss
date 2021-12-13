@@ -1,11 +1,13 @@
-.lunatic-loop {
-	.loop-label {
-		text-align: center;
-		font-weight: bold;
-		font-size: 2em;
-	}
-	.loop-component {
-		margin-top: 0.4em;
-		margin-bottom: 0.4em;
+.lunatic-component {
+	.lunatic-loop {
+		.loop-label {
+			text-align: center;
+			font-weight: bold;
+			font-size: 2em;
+		}
+		.loop-component {
+			margin-top: 0.4em;
+			margin-bottom: 0.4em;
+		}
 	}
 }

@@ -1,7 +1,7 @@
 export const ON_INIT = 'lunatic-suggester/on-init';
-export const onInit = ({ id, disabled }) => ({
+export const onInit = ({ id, disabled, value }) => ({
 	type: ON_INIT,
-	payload: { id, disabled },
+	payload: { id, disabled, value },
 });
 
 export const ON_CHANGE_SEARCH = 'lunatic-suggester/on-change-search';
@@ -33,3 +33,6 @@ export const onKeyDown = (key) => ({ type: ON_KEY_DOWN, payload: { key } });
 
 export const ON_ERROR = 'lunatic-suggester/on-error';
 export const onError = (message) => ({ type: ON_ERROR, payload: { message } });
+
+export const ON_DELETE_SEARCH = 'lunatic-suggester/on-delete-search';
+export const onDeleteSearch = () => ({ type: ON_DELETE_SEARCH });

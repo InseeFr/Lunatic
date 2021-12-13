@@ -1,0 +1,22 @@
+.option-bailleur {
+	white-space: nowrap;
+	overflow: hidden;
+	background-image: url('./preloader.svg');
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	background-color: gray; 
+	color: snow;
+
+	&.computed {
+		background-color: transparent; 
+		background-image:none;
+		color: black;
+
+	}
+
+	&.selected {
+		.bailleur-label {
+			color: goldenrod;
+		}
+	}
+}

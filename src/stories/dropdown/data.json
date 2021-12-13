@@ -8,6 +8,26 @@
 			"response": {
 				"name": "STATE"
 			},
+			"declarations": [
+				{
+					"id": "d1",
+					"declarationType": "COMMENT",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": "Test declaration before"
+				},
+				{
+					"id": "d2",
+					"declarationType": "COMMENT",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": "Test declaration after"
+				},
+				{
+					"id": "d3",
+					"declarationType": "COMMENT",
+					"position": "DETACHABLE",
+					"label": "Test detachable declaration"
+				}
+			],
 			"options": [
 				{ "value": "1", "label": "Washington" },
 				{ "value": "2", "label": "Kentucky" },

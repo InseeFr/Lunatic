@@ -11,7 +11,9 @@
 			"dateFormat": "jj/mm/aaaa",
 			"missingResponse": {
 				"name": "DATEFIRST_MISSING"
-			}
+			},
+			"min": "1900-01-01",
+			"max": "2099-12-31"
 		}
 	],
 	"variables": [

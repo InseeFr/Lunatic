@@ -16,8 +16,6 @@ const Loop = ({
 	pagination,
 	paginatedLoop,
 	currentPage,
-	setPage,
-	flow,
 	depth: loopDepth,
 	...orchetratorProps
 }) => {
@@ -37,6 +35,7 @@ const Loop = ({
 	useEffect(() => {
 		const toUpdate = involvedVariables.reduce((acc, { name: iv, depth }) => {
 			if (bindings[iv]) {
+				if (iterationNb === bindings[iv].length) return acc;
 				if (iterationNb <= bindings[iv].length)
 					return {
 						...acc,
@@ -78,85 +77,12 @@ const Loop = ({
 		}
 	}, [bindings, todos, handleChange]);
 
-	/**
-	 * Handle init page
-	 */
-
-	if (
-		pagination &&
-		paginatedLoop &&
-		loopDepth > currentPage.split('.').length - 1
-	) {
-		if (flow === U.FLOW_NEXT) {
-			setPage(`${currentPage}.1#1`);
-		} else if (flow === U.FLOW_PREVIOUS) {
-			setPage(`${currentPage}.${maxPage}#${iterationNb}`);
-		}
-		return null;
-	}
-
 	const flattenComponents = U.buildLoopComponents(iterationNb)(components);
 
-	const {
-		currentRootPage,
-		currentComponentIndex,
-		currentIteration,
-		currentPageWithoutAnyIteration,
-	} = U.splitPage(currentPage, loopDepth);
-
-	if (
-		pagination &&
-		paginatedLoop &&
-		loopDepth === currentPage.split('.').length - 1
-	) {
-		// Previous at first component
-		if (currentComponentIndex < 1) {
-			setPage(`${currentRootPage}.${maxPage}#${currentIteration - 1}`);
-			return null;
-		}
-
-		// Next at last component
-		if (currentComponentIndex > maxPage) {
-			setPage(`${currentRootPage}.1#${currentIteration + 1}`);
-			return null;
-		}
-
-		// Previous at first iteration
-		if (currentIteration < 1) {
-			const splitRoot = currentRootPage.split('.');
-			if (splitRoot.length === 1) setPage(`${parseInt(splitRoot[0], 10) - 1}`);
-			else {
-				const subPagesToUpdate = splitRoot.slice().pop().split('#');
-				const newSubPage = `${parseInt(subPagesToUpdate[0], 10) - 1}#${
-					subPagesToUpdate[1]
-				}`;
-				const newPage = [
-					...splitRoot.slice(0, splitRoot.length - 1),
-					newSubPage,
-				].join('.');
-				setPage(`${newPage}`);
-			}
-			return null;
-		}
-
-		// Next at last iteration
-		if (currentIteration > iterationNb) {
-			const splitRoot = currentRootPage.split('#');
-			const newRootPage =
-				splitRoot.length === 1
-					? parseInt(splitRoot[0], 10) + 1
-					: splitRoot.slice(0, -1).join('#');
-			if (splitRoot.length === 1) setPage(`${newRootPage}`);
-			else {
-				const {
-					currentRootPage: newCurrentRootPage,
-					currentIteration: newCurrentIteration,
-				} = U.splitPage(currentRootPage, loopDepth);
-				setPage(`${newCurrentRootPage}.1#${newCurrentIteration + 1}`);
-			}
-			return null;
-		}
-	}
+	const { currentIteration, currentPageWithoutAnyIteration } = U.splitPage(
+		currentPage,
+		loopDepth
+	);
 
 	const localCache = {};
 
@@ -220,12 +146,11 @@ const Loop = ({
 							setTodos((t) => [...t, { up, rowNumber }]);
 						}}
 						bindings={loopBindings}
+						fullBindings={bindings}
 						bindingDependencies={bindingDependencies}
 						componentType={componentType}
 						pagination={pagination}
 						currentPage={currentPage}
-						setPage={setPage}
-						flow={flow}
 						conditionFilter={conditionFilter}
 						missingResponse={loopMissingResponse}
 					/>
@@ -234,19 +159,6 @@ const Loop = ({
 		},
 		[]
 	);
-
-	if (pagination && paginatedLoop && loopComponents.length === 0) {
-		if (flow === U.FLOW_NEXT) {
-			setPage(
-				`${currentRootPage}.${currentComponentIndex + 1}#${currentIteration}`
-			);
-		} else if (flow === U.FLOW_PREVIOUS) {
-			setPage(
-				`${currentRootPage}.${currentComponentIndex - 1}#${currentIteration}`
-			);
-		}
-		return null;
-	}
 
 	return (
 		<div id={`loop-${id}`} className="lunatic-loop">

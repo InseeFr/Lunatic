@@ -3,7 +3,7 @@ import { SuggesterContext, actions } from '../../state-management';
 import classnames from 'classnames';
 import Label from './label';
 
-function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
+function Selection({ labelRenderer, placeholderList, labelledBy }, inputEl) {
 	const [state, dispatch] = useContext(SuggesterContext);
 	const { search, expended, id, disabled, focused } = state;
 
@@ -39,10 +39,10 @@ function Selection({ labelRenderer, placeholder, labelledBy }, inputEl) {
 				autoCapitalize="off"
 				autoCorrect="off"
 				spellCheck="false"
-				placeholder={placeholder}
+				placeholderlist={placeholderList}
 				disabled={disabled}
 			/>
-			<Label labelRenderer={labelRenderer} placeholder={placeholder} />
+			<Label labelRenderer={labelRenderer} placeholderList={placeholderList} />
 		</div>
 	);
 }

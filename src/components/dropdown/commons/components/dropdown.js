@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Label from './label';
@@ -120,13 +120,13 @@ function Dropdown({
 		[dispatch]
 	);
 
-	const onMouseDownCallback = useCallback(
-		createOnMouseDownCallback(state, dispatch),
+	const onMouseDownCallback = useMemo(
+		() => createOnMouseDownCallback(state, dispatch),
 		[state, dispatch]
 	);
 
-	const onKeyDownCallback = useCallback(
-		onKeyDownCallbackProxy(state, dispatch, onSelect),
+	const onKeyDownCallback = useMemo(
+		() => onKeyDownCallbackProxy(state, dispatch, onSelect),
 		[state, dispatch, onSelect]
 	);
 

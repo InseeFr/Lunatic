@@ -10,7 +10,7 @@
 |   response \*    | object |      {}       |          | Response concerned by the component                  |
 |    options \*    | array  |       -       |    ✓     | Options of the dropdown                              |
 |   handleChange   |  func  |       -       |    ✓     | Handler of the dropdown                              |
-|   placeholder    | string |      ""       |          | Placeholder of the dropdown                          |
+| placeholderList  | string |      ""       |          | Placeholder of the dropdown                          |
 |     disabled     |  bool  |     false     |          | Is the dropdown disabled                             |
 |     writable     |  bool  |     false     |          | Is the dropdown writable                             |
 |    mandatory     |  bool  |     false     |          | Is the dropdown mandatory                            |

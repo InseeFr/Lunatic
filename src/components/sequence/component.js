@@ -24,6 +24,7 @@ const Sequence = ({
 			aria-label={`sequence-${id}`}
 			className="sequence-lunatic"
 			style={U.buildStyleObject(style)}
+			id={`sequence-${id}`}
 		>
 			{interpret(features, logFunction)(bindings)(label)}
 		</div>

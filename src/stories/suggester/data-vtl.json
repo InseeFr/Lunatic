@@ -1,6 +1,6 @@
 {
-	"suggesters": {
-		"naf-rev2": {
+	"suggesters": [
+		{
 			"name": "naf-rev2",
 			"fields": [
 				{
@@ -13,11 +13,11 @@
 			],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+" }
+			 	"params": { "language": "French", "pattern": "[\\w.]+" }
 			},
 			"version": "1"
 		},
-		"cog-communes": {
+		{
 			"name": "cog-communes",
 			"fields": [
 				{ "name": "label", "rules": "soft" },
@@ -28,7 +28,7 @@
 			"version": "1",
 			"display": "label"
 		}
-	},
+	],
 	"components": [
 		{
 			"id": "sugg",

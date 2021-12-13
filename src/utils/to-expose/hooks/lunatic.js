@@ -1,8 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import { mergeQuestionnaireAndData } from '../init-questionnaire';
 import { getBindings } from '../state';
-import { updateQuestionnaire } from '../handler';
-import { getPage, FLOW_NEXT, FLOW_PREVIOUS } from '../../lib';
+import { updateQuestionnaire, updateExternals } from '../handler';
+import {
+	getPage,
+	FLOW_NEXT,
+	FLOW_PREVIOUS,
+	getControls,
+	isDev,
+} from '../../lib';
 import { COLLECTED } from '../../../constants';
 import { useFilterComponents } from './filter-components';
 import { loadSuggesters } from '../../store-tools/auto-load';
@@ -16,6 +22,7 @@ const useLunatic = (
 		features = ['VTL'],
 		management = false,
 		pagination = false,
+		modalForControls = false,
 		initialPage = '1',
 		logFunction = null,
 		autoSuggesterLoading = false,
@@ -23,15 +30,23 @@ const useLunatic = (
 		suggesters,
 	}
 ) => {
+	if (isDev) {
+		console.log('useLunatic');
+		var start = new Date().getTime();
+	}
 	const [initPage, setInitPage] = useState(false);
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
 	const [questionnaire, setQuestionnaire] = useState(() =>
 		mergeQuestionnaireAndData(source)(data || {})
 	);
-	const bindings = getBindings(questionnaire);
+	const [bindings, setBindings] = useState(() => getBindings(questionnaire));
+
 	const [page, setPage] = useState(initialPage);
 
 	const [todo, setTodo] = useState({});
+	const [todoExternals, setTodoExternals] = useState({});
+
+	const [modalContent, setModalContent] = useState(null);
 
 	const components = useFilterComponents({
 		questionnaire,
@@ -40,10 +55,10 @@ const useLunatic = (
 		features: featuresWithoutMD,
 		page,
 		pagination,
-		todo,
+		todo: { ...todo, ...todoExternals },
 	});
 
-	const { suggesters: suggesterStrategy } = source;
+	const { suggesters: suggestersToLoad } = source;
 
 	useEffect(() => {
 		const init = async () => {
@@ -52,24 +67,23 @@ const useLunatic = (
 				typeof suggesters === 'object' &&
 				Object.values(suggesters).length > 0
 			) {
-				// Merge suggester urls & suggester fields contained into lunatic json
-				const s = Object.entries(suggesterStrategy).reduce((acc, [name, d]) => {
-					if (suggesters[name]?.url)
-						return {
-							...acc,
-							[name]: {
-								...d,
-								url: suggesters[name].url,
-								stopWords: suggesters[name].stopWords,
-							},
-						};
-					return acc;
+				const s = suggestersToLoad.reduce(function (current, storeInfo) {
+					const { name } = storeInfo;
+					if (!suggesters[name]) return current;
+					return {
+						...current,
+						[name]: {
+							...storeInfo,
+							url: suggesters[name].url,
+							stopWords: suggesters[name].stopWords,
+						},
+					};
 				}, {});
 				loadSuggesters(suggesterFetcher)(s);
 			}
 		};
 		init();
-	}, [autoSuggesterLoading, suggesterFetcher, suggesters, suggesterStrategy]);
+	}, [autoSuggesterLoading, suggesterFetcher, suggesters, suggestersToLoad]);
 
 	const [flow, setFlow] = useState(FLOW_NEXT);
 
@@ -90,11 +104,21 @@ const useLunatic = (
 				components: questionnaire.components,
 				bindings: customBindings || bindings,
 				currentPage: page,
-				features: featuresWithoutMD,
+				featuresWithoutMD,
 				flow: FLOW_NEXT,
 				management,
 			});
-			setPage(nextPage);
+			if (modalForControls) {
+				const controls = getControls({
+					page,
+					features: featuresWithoutMD,
+					components,
+					bindings,
+					preferences,
+				});
+				if (controls.length > 0) setModalContent({ page: nextPage, controls });
+				else setPage(nextPage);
+			} else setPage(nextPage);
 		}
 	};
 
@@ -107,11 +131,22 @@ const useLunatic = (
 				components: questionnaire.components,
 				bindings,
 				currentPage: page,
-				features: featuresWithoutMD,
+				featuresWithoutMD,
 				flow: FLOW_PREVIOUS,
 				management,
 			});
-			setPage(previousPage);
+			if (modalForControls) {
+				const controls = getControls({
+					page,
+					features: featuresWithoutMD,
+					components,
+					bindings,
+					preferences,
+				});
+				if (controls.length > 0)
+					setModalContent({ page: previousPage, controls });
+				else setPage(previousPage);
+			} else setPage(previousPage);
 		}
 	};
 
@@ -145,6 +180,10 @@ const useLunatic = (
 		setTodo((t) => ({ ...t, ...updatedValue }));
 	}, []);
 
+	const handleExternals = useCallback((externals) => {
+		setTodoExternals((t) => ({ ...t, ...externals }));
+	}, []);
+
 	// Assume we only want to handle source update
 	useEffect(() => {
 		setQuestionnaire(mergeQuestionnaireAndData(source)(data));
@@ -157,6 +196,7 @@ const useLunatic = (
 				preferences,
 				logFunction
 			)(todo);
+			setBindings(getBindings(newQ));
 			setQuestionnaire(newQ);
 			setTodo({});
 		}
@@ -170,20 +210,52 @@ const useLunatic = (
 		management,
 	]);
 
+	useEffect(() => {
+		if (Object.keys(todoExternals).length !== 0) {
+			const newQ = updateExternals(questionnaire)(logFunction)(todoExternals);
+			setQuestionnaire(newQ);
+			setTodoExternals({});
+		}
+	}, [todoExternals, logFunction, questionnaire]);
+
+	const cancelModal = () => {
+		setModalContent(null);
+	};
+
+	const validateModal = () => {
+		setPage(modalContent.page);
+		setModalContent(null);
+	};
+
+	const componentsToDiplay =
+		pagination && modalContent
+			? [
+					{
+						componentType: 'Modal',
+						controls: modalContent.controls,
+						validateModal,
+						cancelModal,
+					},
+					...components,
+			  ]
+			: components;
+
+	if (isDev) console.log(`End useLunatic: ${new Date().getTime() - start} ms`);
+
 	return {
 		questionnaire,
 		handleChange,
-		components,
+		handleExternals,
+		components: componentsToDiplay,
 		bindings,
 		pagination: {
 			page,
-			setPage,
 			maxPage,
 			goNext,
 			goPrevious,
 			isFirstPage,
 			isLastPage,
-			flow,
+			setPage,
 		},
 	};
 };

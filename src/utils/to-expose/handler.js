@@ -1,12 +1,8 @@
 import * as C from '../../constants';
 import { buildFilledComponent } from './init-questionnaire';
 import { supportedPreferences } from '../../constants/supported-preferences';
-import { getCalculatedVariables } from './init-questionnaire';
-import { isDev, isFunction } from '../lib';
-import {
-	CALCULATED_VAR_CATEGORY,
-	EVENT_VALUE_CHANGE,
-} from '../../constants/event-types';
+import { getCalculatedVariables } from './calculated-variables';
+import { isDev } from '../lib';
 
 export const updateQuestionnaire =
 	(valueType) =>
@@ -63,6 +59,26 @@ export const updateQuestionnaire =
 		};
 	};
 
+export const updateExternals =
+	(questionnaire) => (logFunction) => (updatedValues) => {
+		const { variables, ...other } = questionnaire;
+		const { EXTERNAL } = variables;
+		const newVariables = {
+			...variables,
+			EXTERNAL: { ...EXTERNAL, ...updatedValues },
+		};
+
+		const newVariablesWithCalculated = addCalculatedVars(
+			newVariables,
+			updatedValues
+		)(logFunction);
+
+		return {
+			...other,
+			variables: newVariablesWithCalculated,
+		};
+	};
+
 export const buildNewValue =
 	(preferences) => (valueType) => (oldValues) => (value) => {
 		if (preferences.length === 1) return value;
@@ -97,41 +113,20 @@ const addCalculatedVars = (variables, updatedValues) => (logFunction) => {
 		var start = new Date().getTime();
 	}
 
-	const { COLLECTED, EXTERNAL, CALCULATED } = variables;
+	const { COLLECTED, EXTERNAL, CALCULATED: calculatedVariables } = variables;
 
 	const updatedVars = Object.keys(updatedValues);
 
 	const bindings = getCollectedAndExternal(variables);
 
-	const calculated = Object.entries(CALCULATED).reduce((acc, [key, v]) => {
-		const { bindingDependencies, value } = v;
-		if (
-			Array.isArray(bindingDependencies) &&
-			!updatedVars.some((ai) => bindingDependencies.includes(ai))
-		) {
-			return { ...acc, [key]: v };
-		}
-		const calculatedVariables = getCalculatedVariables({ name: key, ...v })(
-			bindings
-		);
-		if (
-			isFunction(logFunction) &&
-			// Filter only filterResult vars : key.startsWith('FILTER_RESULT_') &&
-			JSON.stringify(value) !== JSON.stringify(calculatedVariables[key].value)
-		) {
-			logFunction({
-				idParadataObject: `${key}`,
-				typeParadataObject: CALCULATED_VAR_CATEGORY,
-				type: EVENT_VALUE_CHANGE,
-				oldValue: value,
-				newValue: calculatedVariables[key]?.value,
-			});
-		}
-		return { ...acc, ...calculatedVariables };
-	}, {});
+	const CALCULATED = getCalculatedVariables(calculatedVariables)({
+		bindings,
+		updatedVars,
+		logFunction,
+	});
 
 	if (isDev)
 		console.log(`End var calculation: ${new Date().getTime() - start} ms`);
 
-	return { EXTERNAL, COLLECTED, CALCULATED: calculated };
+	return { EXTERNAL, COLLECTED, CALCULATED };
 };

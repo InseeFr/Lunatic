@@ -42,7 +42,7 @@ function Dropdown({
 	onSelect,
 	response,
 	className,
-	placeholder,
+	placeholderList,
 	label,
 	labelPosition,
 	mandatory,
@@ -51,6 +51,7 @@ function Dropdown({
 	management,
 	disabled,
 	focused: initFocused,
+	DeclarationAfterLabel,
 }) {
 	const [state, dispatch] = useReducer(reducer, {
 		...initial,
@@ -58,20 +59,19 @@ function Dropdown({
 		disabled,
 		focused: initFocused,
 	});
-	const {
-		prefix,
-		visible,
-		activeIndex,
-		visibleOptions,
-		value,
-		focused,
-		id,
-	} = state;
+	const { prefix, visible, activeIndex, visibleOptions, value, focused, id } =
+		state;
 	const inputEl = useRef();
 	const containerEl = useRef();
 	const onSelect_ = createOnSelect(state, dispatch, onSelect);
 
 	const selectedOption = options.find((o) => o.label === value);
+
+	useEffect(() => {
+		if (visible && !activeIndex) {
+			dispatch(actions.initActiveIndex());
+		}
+	}, [activeIndex, visible]);
 
 	useEffect(
 		function () {
@@ -99,6 +99,7 @@ function Dropdown({
 			zIndex={zIndex}
 			management={management}
 		>
+			<DeclarationAfterLabel />
 			<span
 				className={classnames('lunatic-dropdown-input', { focused, disabled })}
 			>
@@ -107,7 +108,7 @@ function Dropdown({
 					ref={inputEl}
 					value={value || ''}
 					disabled={disabled}
-					placeholder={placeholder}
+					placeholderList={placeholderList}
 					autoComplete="list"
 					autoCorrect="off"
 					autoCapitalize="off"
@@ -169,7 +170,7 @@ Dropdown.propTypes = {
 	id: PropTypes.string,
 	options: PropTypes.array.isRequired,
 	onSelect: PropTypes.func,
-	placeholder: PropTypes.string,
+	placeholderList: PropTypes.string,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
@@ -181,7 +182,7 @@ Dropdown.defaultProps = {
 	options: [],
 	zIndex: 0,
 	onSelect: () => null,
-	placeholder: 'Search...',
+	placeholderList: 'Search...',
 	disabled: false,
 	focused: false,
 	widthAuto: false,

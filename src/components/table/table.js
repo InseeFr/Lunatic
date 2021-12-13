@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import missingWrapper from '../missing-wrapper';
+import componentWrapper from '../component-wrapper';
 import * as lunatic from '../components';
 import Declarations from '../declarations';
 import * as U from '../../utils/lib';
@@ -168,4 +168,4 @@ Table.propTypes = {
 	style: PropTypes.object,
 };
 
-export default React.memo(missingWrapper(Table), U.areEqual);
+export default componentWrapper(React.memo(Table, U.areEqual));

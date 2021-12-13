@@ -1,6 +1,7 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.1.8-experimental",
+	"version": "0.3.1-experimental",
+	"workersVersion": "0.2.1-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -8,6 +9,14 @@
 	},
 	"author": "INSEE (http://www.insee.fr)",
 	"contributor": [
+		{
+			"name": "Laurent Caouissin",
+			"email": "laurent.caouissin@agriculture.gouv.fr"
+		},
+		{
+			"name": "Renaud Genevois",
+			"email": "renaud.genevois@insee.fr"
+		},
 		{
 			"name": "Nicolas Laval",
 			"email": "nicolas.laval@insee.fr"
@@ -24,11 +33,15 @@
 		"test": "cross-env NODE_PATH=src/ jest",
 		"test-watch": "cross-env NODE_PATH=src/ jest --watchAll",
 		"test-coverage": "cross-env NODE_PATH=src/ jest --coverage",
-		"start-storybook": "cross-env NODE_PATH=src/ start-storybook -s ./public -p 9999",
+		"storybook": "cross-env NODE_PATH=src/ start-storybook -s ./public -p 9999",
 		"build-storybook": "cross-env NODE_PATH=src/ build-storybook -o built-storybook/storybook",
 		"build": "rollup -c rollup.config.js",
 		"prepublish": "npm test && npm run build",
-		"analyze": "yarn build && source-map-explorer lib/index.js --html bundle-report/lunatic.html"
+		"analyze": "yarn build && source-map-explorer lib/index.js --html bundle-report/lunatic.html",
+		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
+		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
+		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
+		"build-workers": "yarn build-append-worker && yarn build-searching-worker && yarn build-label-worker"
 	},
 	"keywords": [
 		"react",
@@ -37,7 +50,8 @@
 		"library"
 	],
 	"dependencies": {
-		"@inseefr/trevas": "^0.1.9",
+		"@inseefr/trevas": "^0.1.10",
+		"date-fns": "^2.25.0",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.debounce": "^4.0.8",
 		"lodash.isequal": "^4.5.0",
@@ -68,8 +82,10 @@
 		"babel-eslint": "^10.0.3",
 		"babel-loader": "^8.0.6",
 		"classnames": "^2.2.5",
+		"core-js": "^3.17.3",
 		"cross-env": "^7.0.2",
 		"css-loader": "^5.0.0",
+		"damerau-levenshtein": "^1.0.7",
 		"enzyme": "^3.7.0",
 		"eslint": "7.30.0",
 		"eslint-config-prettier": "^7.2.0",
@@ -91,6 +107,8 @@
 		"prettier": "^2.0.5",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
+		"regenerator-runtime": "^0.13.7",
+		"remove-accents": "^0.4.2",
 		"rollup": "^2.52.8",
 		"rollup-plugin-babel": "^4.3.3",
 		"rollup-plugin-babel-minify": "^10.0.0",
@@ -105,11 +123,15 @@
 		"rollup-watch": "^4.3.1",
 		"rxjs-marbles": "^6.0.1",
 		"sass-loader": "^10.0.3",
+		"snowball": "^0.3.1",
 		"source-map-explorer": "^2.4.2",
 		"storybook-addon-jsx": "^7.2.3",
 		"storybook-readme": "^5.0.8",
+		"string-tokenizer": "^0.0.8",
 		"style-loader": "^2.0.0",
-		"url-loader": "^4.1.0"
+		"url-loader": "^4.1.0",
+		"webpack": "^5.53.0",
+		"webpack-cli": "^4.8.0"
 	},
 	"jest": {
 		"collectCoverageFrom": [

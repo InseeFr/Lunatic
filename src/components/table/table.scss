@@ -1,24 +1,26 @@
-.table-lunatic {
-	table-layout: fixed;
-	border-collapse: collapse;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	& td,
-	th {
-		border: 0.15em solid var(--color-primary-dark);
-		padding: 0.2em;
-	}
-	& td {
-		.field,
-		.field-with-tooltip {
-			display: flex;
-			justify-content: center;
-			align-items: center;
+.lunatic-component {
+	.table-lunatic {
+		table-layout: fixed;
+		border-collapse: collapse;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+		& td,
+		th {
+			border: 0.15em solid var(--color-primary-dark);
+			padding: 0.2em;
+		}
+		& td {
+			.field,
+			.field-with-tooltip {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
 		}
 	}
-}
 
-.table-lunatic .tooltip-lunatic img {
-	height: 20px;
-	width: 20px;
+	.table-lunatic .tooltip-lunatic img {
+		height: 20px;
+		width: 20px;
+	}
 }

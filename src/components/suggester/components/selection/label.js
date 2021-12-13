@@ -5,7 +5,7 @@ import DefaultLabelRenderer from './default-label-renderer';
 
 function Label({
 	labelRenderer: Renderer = DefaultLabelRenderer,
-	placeholder,
+	placeholderList,
 }) {
 	const [state] = useContext(SuggesterContext);
 	const { displayLabel, expended, selectedIndex, options, search, disabled } =
@@ -23,7 +23,11 @@ function Label({
 			})}
 			tabIndex="-1"
 		>
-			<Renderer option={option} placeholder={placeholder} search={search} />
+			<Renderer
+				option={option}
+				placeholderList={placeholderList}
+				search={search}
+			/>
 		</div>
 	);
 }

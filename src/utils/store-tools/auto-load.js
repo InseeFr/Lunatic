@@ -2,6 +2,7 @@ import openStorage from './open-or-create-store';
 import updateStoreInfo from './create/update-store-info';
 import cleanStorage from './clear-store-data';
 import cleanInfoStorage from './clear-store-info';
+import { createWorker } from '../suggester-workers/create-worker';
 
 const workerPath =
 	process.env.LUNATIC_LOADER_WORKER_PATH ||
@@ -23,8 +24,9 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
 		const f = suggesterFetcher || fetch;
 		f(url).then(async (res) => {
 			const data = await res.json();
-			const [launch] = task({ name, fields, stopWords }, version);
+			const [launch, terminate] = task({ name, fields, stopWords }, version);
 			await launch(data);
+			terminate();
 		});
 	});
 };
@@ -33,7 +35,7 @@ export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
  * Only with Worker
  */
 function task({ name, fields, stopWords }, version, log = () => null) {
-	const worker = new Worker(workerPath);
+	const worker = createWorker(workerPath);
 	let start = false;
 	let stop = false;
 

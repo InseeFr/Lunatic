@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import missingWrapper from 'components/missing-wrapper';
 import { Radio } from 'components';
 
 const handleChange = jest.fn();
