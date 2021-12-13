@@ -49,9 +49,12 @@ function Row({
 
 	return components.reduce(function (row, component) {
 		const { response, id, componentType } = component;
-		const { name } = response;
-		const value = valueMap[name];
 		const idComponent = `${id}-${rowIndex + 1} `;
+		let value = undefined;
+		if (response) {
+			const { name } = response;
+			value = valueMap[name];
+		}
 
 		if (componentType in lunatic) {
 			return [

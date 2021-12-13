@@ -1,37 +1,67 @@
-import { createMapPages, checkLoops, isFirstLastPage } from '../commons';
+import {
+	createMapPages,
+	checkLoops,
+	isFirstLastPage,
+	createExecuteExpression,
+} from '../commons';
 
 /* à bouger d'ici */
 
-function getInitalValueFromCollected(variable) {
-	const { values, value } = variable;
-	if (value) {
-		return value;
+function getInitalValueFromCollected(variable, data) {
+	const { values, name } = variable;
+	let fromData;
+	if (name in data) {
+		const { COLLECTED, FORCED } = data[name];
+		fromData = COLLECTED || FORCED;
 	}
+
 	if (values) {
 		const { COLLECTED, FORCED } = values;
-		return FORCED || COLLECTED;
+		return fromData || FORCED || COLLECTED;
 	}
 	return undefined;
 }
 
-function getInitialValue(variable) {
+function getInitialValueFromExternal(variable, data) {
+	const { name } = variable;
+
+	if (name in data) {
+		const { EXTERNAL } = data[name];
+		return EXTERNAL;
+	}
+	return undefined;
+}
+
+function getInitialValue(variable, data) {
+	const { COLLECTED } = data;
 	const { variableType } = variable;
 	switch (variableType) {
 		case 'COLLECTED':
-			return getInitalValueFromCollected(variable);
+			return getInitalValueFromCollected(variable, COLLECTED);
 		case 'EXTERNAL':
+			return getInitialValueFromExternal(variable, data);
 		case 'CALCULATED':
 		default:
 			return undefined;
 	}
 }
 
-function createVariables(source) {
+function createVariablesAndBindings(source, data) {
 	const { variables } = source;
-	return variables.reduce(function (map, original) {
-		const { name } = original;
-		return { ...map, [name]: { original, value: getInitialValue(original) } };
-	}, {});
+	return variables.reduce(
+		function ([mapVariables, mapBindings], variable) {
+			const { name } = variable;
+			const value = getInitialValue(variable, data);
+			return [
+				{
+					...mapVariables,
+					[name]: { variable, value },
+				},
+				{ ...mapBindings, [name]: value },
+			];
+		},
+		[{}, {}]
+	);
 }
 /* */
 
@@ -39,9 +69,10 @@ function reduceOnInit(state, action) {
 	const { payload } = action;
 	const { source, data, initialPage, features } = payload;
 	if (source && data) {
-		const questionnaire = source; //mergeQuestionnaireAndData(source)(data);
-		const variables = createVariables(source);
-		const bindings = {}; // TODO
+		const questionnaire = source;
+		const [variables, vtlBindings] = createVariablesAndBindings(source, data);
+		const [executeExpression, updateBindings] =
+			createExecuteExpression(vtlBindings);
 		const pages = checkLoops(createMapPages(questionnaire));
 		const { maxPage } = questionnaire;
 
@@ -58,12 +89,13 @@ function reduceOnInit(state, action) {
 			...state,
 			questionnaire,
 			variables,
-			bindings,
 			pages,
 			isFirstPage,
 			isLastPage,
 			pager,
 			features,
+			executeExpression,
+			updateBindings,
 		};
 	}
 

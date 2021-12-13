@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useCallback } from 'react';
+import { useReducer, useEffect, useCallback, useMemo } from 'react';
 import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
 import reducer from './reducer';
@@ -6,7 +6,7 @@ import { getComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 
 function useLunatic({ source, data, initialPage, features }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { bindings, pager } = state;
+	const { pager } = state;
 
 	useEffect(
 		function () {
@@ -50,7 +50,6 @@ function useLunatic({ source, data, initialPage, features }) {
 		handleChange,
 		goNextPage,
 		goPreviousPage,
-		bindings,
 		pageTag,
 		isFirstPage,
 		isLastPage,
