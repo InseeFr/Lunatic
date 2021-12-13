@@ -50,7 +50,7 @@ function CheckStore({ storeName, version, setStore, children }) {
 	if (ready === 0) {
 		return (
 			<div className="lunatic-suggester-in-progress">
-				Le store {storeName} est en cour de chargement.
+				Le store {storeName} est en cours de chargement.
 			</div>
 		);
 	}
