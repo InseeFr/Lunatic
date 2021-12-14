@@ -32,7 +32,7 @@ function SuggesterWrapper({
 	value,
 }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { search, selectedIndex, options } = state;
+	const { search, selectedIndex, options, expended } = state;
 
 	useEffect(
 		function () {
@@ -57,11 +57,11 @@ function SuggesterWrapper({
 
 	useEffect(
 		function () {
-			if (selectedIndex !== undefined) {
+			if (selectedIndex !== undefined && !expended) {
 				onSelect(options[selectedIndex], selectedIndex);
 			}
 		},
-		[selectedIndex, onSelect, options]
+		[selectedIndex, onSelect, options, expended]
 	);
 
 	useEffect(
