@@ -9,8 +9,16 @@ import {
 import './input.scss';
 
 function LunaticInput(props) {
-	const { label, id, value, handleChange, response, disabled, declarations } =
-		props;
+	const {
+		label,
+		id,
+		value,
+		handleChange,
+		response,
+		disabled,
+		declarations,
+		executeExpression,
+	} = props;
 
 	const onChange = useCallback(
 		function (inputValue) {
@@ -26,11 +34,17 @@ function LunaticInput(props) {
 
 	return (
 		<>
-			<DeclarationsBeforeText declarations={declarations} />
+			<DeclarationsBeforeText
+				declarations={declarations}
+				executeExpression={executeExpression}
+			/>
 			<Label id={labelId} htmlFor={inputId} className={'todo'}>
 				{label}
 			</Label>
-			<DeclarationsAfterText declarations={declarations} />
+			<DeclarationsAfterText
+				declarations={declarations}
+				executeExpression={executeExpression}
+			/>
 			<FieldContainer value={value} id={id}>
 				<Input
 					id={inputId}
@@ -40,7 +54,10 @@ function LunaticInput(props) {
 					disabled={disabled}
 				/>
 			</FieldContainer>
-			<DeclarationsDetachable declarations={declarations} />
+			<DeclarationsDetachable
+				declarations={declarations}
+				executeExpression={executeExpression}
+			/>
 		</>
 	);
 }

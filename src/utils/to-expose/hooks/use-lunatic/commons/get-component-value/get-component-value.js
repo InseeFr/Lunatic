@@ -24,10 +24,12 @@ function isInSubPage(state) {
 
 function getCollectedValue(component, variables) {
 	const { response } = component;
-	const { name } = response;
-	if (name in variables) {
-		const { value } = variables[name];
-		return value;
+	if (response) {
+		const { name } = response;
+		if (name in variables) {
+			const { value } = variables[name];
+			return value;
+		}
 	}
 
 	return undefined;
@@ -36,6 +38,7 @@ function getCollectedValue(component, variables) {
 function getLoopValues(component, variables) {
 	const { components } = component;
 	return components.reduce(function (map, component) {
+		// TODO responses cells
 		const { response } = component;
 		if (response) {
 			const { name } = response;

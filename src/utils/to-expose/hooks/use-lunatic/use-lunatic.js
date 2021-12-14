@@ -6,7 +6,7 @@ import { getComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 
 function useLunatic({ source, data, initialPage, features }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager } = state;
+	const { pager, executeExpression } = state;
 
 	useEffect(
 		function () {
@@ -50,6 +50,7 @@ function useLunatic({ source, data, initialPage, features }) {
 		handleChange,
 		goNextPage,
 		goPreviousPage,
+		executeExpression,
 		pageTag,
 		isFirstPage,
 		isLastPage,

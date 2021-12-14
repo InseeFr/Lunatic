@@ -1,5 +1,5 @@
 import React from 'react';
-import BlockforLoop from './block-for-loop';
+import BlockForLoop from './block-for-loop';
 
 function Loop(props) {
 	const {
@@ -15,7 +15,7 @@ function Loop(props) {
 	} = props;
 	// console.log(executeExpression);
 	return (
-		<BlockforLoop
+		<BlockForLoop
 			declarations={declarations}
 			label={label}
 			lines={lines}

@@ -21,7 +21,6 @@ function LoopOrchestrator({
 				valueMap={valueMap}
 				handleChange={handleChange}
 				features={features}
-				missingmissing
 				shortcut={shortcut}
 				preferences={preferences}
 				management={management}

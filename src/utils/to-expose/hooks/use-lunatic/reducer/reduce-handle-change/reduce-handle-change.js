@@ -38,6 +38,17 @@ function updateVariables(state, action) {
 	}
 }
 
+function updateBindings(state, action) {
+	const { payload } = action;
+	const { response, value } = payload;
+	const { name } = response;
+	const { updateBindings } = state;
+
+	updateBindings(name, value);
+
+	return state;
+}
+
 /**
  *
  * @param {*} state
@@ -45,7 +56,7 @@ function updateVariables(state, action) {
  * @returns
  */
 function reduceHandleChange(state, action) {
-	return updateVariables(state, action);
+	return updateBindings(updateVariables(state, action), action);
 }
 
 export default reduceHandleChange;

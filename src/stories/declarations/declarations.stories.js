@@ -7,6 +7,7 @@ import { titleDecorator } from 'utils/lib';
 import * as C from '../../constants';
 import { featuresOptions } from '../utils/options';
 import { object, select } from '@storybook/addon-knobs/react';
+import { createExecuteExpression } from '../../utils/to-expose/hooks/use-lunatic/commons';
 
 const stories = storiesOf('Declarations', module)
 	.addDecorator(withReadme(readme))
@@ -15,15 +16,24 @@ const stories = storiesOf('Declarations', module)
 		return <WrappedComponent title="<Declarations />" />;
 	});
 
-stories.addWithJSX('Default', () => (
-	<div className="lunatic-component">
-		<Declarations
-			id="default"
-			type={C.BEFORE_QUESTION_TEXT}
-			declarations={declarations}
-		/>
-	</div>
-));
+function execute(exp) {
+	return exp;
+}
+
+stories.addWithJSX('Default', function () {
+	return (
+		<div className="lunatic-component">
+			<Declarations
+				id="default"
+				type={C.BEFORE_QUESTION_TEXT}
+				declarations={declarations}
+				executeExpression={execute}
+			/>
+		</div>
+	);
+});
+
+const [executeVtl] = createExecuteExpression({}, ['VTL']);
 
 stories.addWithJSX('Props', () => (
 	<div className="lunatic-component">
@@ -31,8 +41,7 @@ stories.addWithJSX('Props', () => (
 			id="default"
 			type={C.BEFORE_QUESTION_TEXT}
 			declarations={declarationsVtl}
-			features={select('Features', featuresOptions, ['VTL', 'MD'])}
-			bindings={object('Bindings', { test: 'test' })}
+			executeExpression={executeVtl}
 		/>
 	</div>
 ));

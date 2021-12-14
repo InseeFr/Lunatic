@@ -8,7 +8,7 @@ function reduceVariablesArray(variables, { name, value, index, length }) {
 		if (!Array.isArray(previousValue)) {
 			// create the array
 			valueNext = new Array(length).fill(null);
-		} else if (previousValue.lenght !== length) {
+		} else if (previousValue.length !== length) {
 			// renew array end keep previous values
 			valueNext = new Array(length)
 				.fill(null)

@@ -1,7 +1,4 @@
 import executeExpression from './execute-expression';
-import { interpret } from '@inseefr/trevas';
-
-//const res = interpret(expression, bindings);
 
 function createBindings(variables) {
 	return Object.entries(variables).reduce(function (map, [name, { value }]) {
@@ -9,25 +6,35 @@ function createBindings(variables) {
 	}, {});
 }
 
-function createExecuteExpression(variables) {
+function createExecuteExpression(variables, bindingDependencies, features) {
 	const bindings = createBindings(variables);
 	const vtlBindings = { ...bindings };
+	const toRefreshVariables = new Map();
+	/**
+	 *
+	 * @param {*} name
+	 * @param {*} value
+	 */
 	function updateBindings(name, value) {
 		if (name in vtlBindings) {
 			bindings[name] = value;
 			vtlBindings[name] = value;
 		}
+		if (name in bindingDependencies) {
+			console.log(bindingDependencies[name]);
+			// TODO
+		}
 	}
 
-	// je met async : tout cela pourrait bouget dans un WW
-	async function execute(
-		expression,
-		feature /* VTL, MD */,
-		{ rebinds, vectorials }
-	) {
-		// options peut contenir les index de certaines variables tableaux
-		// TODO implémenter rebinds
-		const result = executeExpression(vtlBindings, expression, feature);
+	/**
+	 *
+	 * @param {*} expression
+	 * @param {*} feature
+	 * @param {*} param2
+	 * @returns
+	 */
+	function execute(expression, { varaiblesRebinded, vectorials } = {}) {
+		const result = executeExpression(vtlBindings, expression, features);
 
 		return result;
 	}
