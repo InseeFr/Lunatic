@@ -1,7 +1,7 @@
 import React from 'react';
 
-function InputNumber() {
-	return <div>input number</div>;
+function InputNumber({ value }) {
+	return <div>input number : {value}</div>;
 }
 
 export default InputNumber;

@@ -39,7 +39,7 @@ function getInitialValue(variable, data = {}) {
 			return getInitialValueFromExternal(variable, EXTERNAL);
 		case 'CALCULATED':
 		default:
-			return undefined;
+			return null;
 	}
 }
 
@@ -65,8 +65,6 @@ function appendToObjectMap(map, key, object) {
  */
 function createVariables(source, data) {
 	const { variables } = source;
-
-	//
 	const [mapVariablesTypes, mapVariables] = variables.reduce(
 		function ([mapType, mapVar], variable) {
 			const { variableType: type, name } = variable;
@@ -84,20 +82,6 @@ function createVariables(source, data) {
 	);
 	//
 	const { CALCULATED = [] } = mapVariablesTypes;
-	// const mapBindingDependencies = CALCULATED.reduce(function (map, variable) {
-	// 	const { bindingDependencies = [] } = variable;
-
-	// 	return bindingDependencies.reduce(
-	// 		function (sub, name) {
-	// 			if (name in sub) {
-	// 				return { ...sub, [name]: [...sub[name], variable] };
-	// 			}
-	// 			return { ...sub, [name]: [variable] };
-	// 		},
-	// 		{ ...map }
-	// 	);
-	// }, {});
-
 	CALCULATED.forEach(function (calculated) {
 		const { bindingDependencies = [] } = calculated;
 		bindingDependencies.forEach(function (name) {

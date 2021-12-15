@@ -31,7 +31,8 @@ function useLunatic({ source, data, initialPage, features }) {
 
 	const getComponents = useCallback(
 		function () {
-			return getComponentsFromState(state);
+			const components = getComponentsFromState(state);
+			return components;
 		},
 		[state]
 	);

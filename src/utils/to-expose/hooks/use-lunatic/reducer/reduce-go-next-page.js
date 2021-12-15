@@ -1,7 +1,4 @@
-// import { interpret } from '../../../interpret';
-import { interpret } from '@inseefr/trevas';
-
-function logging() {}
+import { getComponentsFromState } from '../commons';
 
 function getNextPage(state) {
 	const { pager } = state;
@@ -47,12 +44,11 @@ function reduceNextPage(state, { next, iterations }) {
 		},
 	};
 }
-// interpret(features, logFunction)(bindings)(label)
+
 function reduceStartLoop(state, { next, iterations }) {
-	const { pages, pager, features, bindings } = state;
+	const { pages, pager, executeExpression } = state;
 	const { subPages } = pages[next];
-	// const nbIterations = interpret(features, logging)(bindings)(iterations);
-	const nbIterations = 2; //interpret(iterations, bindings);
+	const nbIterations = executeExpression(iterations);
 
 	if (Array.isArray(subPages)) {
 		return {
@@ -94,4 +90,11 @@ function reduceGoNext(state) {
 	return reduceNextPage(state, { next, iterations });
 }
 
-export default reduceGoNext;
+function validateChange(state) {
+	const next = reduceGoNext(state);
+	const components = getComponentsFromState(next);
+	// console.log(components);
+	return next;
+}
+
+export default validateChange;
