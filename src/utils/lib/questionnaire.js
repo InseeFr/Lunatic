@@ -68,14 +68,13 @@ export const getSplitQuestionnaireSource = (source) => {
 		}
 		return null;
 	});
+	if (currentComponents.length > 0) split.push(currentComponents);
 	return split.reduce((prev, currentSource) => {
 		const firstPage = currentSource[0].page;
 		const maxPage = currentSource[currentSource.length - 1].page;
 		const nestedVars = getNestedVars(currentSource)(variables);
 		const newVariables = getUsefullVariablesFromSource(variables)(nestedVars);
 
-		console.log('old', variables.length);
-		console.log('new', newVariables.length);
 		return [
 			...prev,
 			{
@@ -87,4 +86,22 @@ export const getSplitQuestionnaireSource = (source) => {
 			},
 		];
 	}, []);
+};
+
+export const getRootPageInSources = (sources) => {
+	return sources.map((source) => {
+		const { components } = source;
+		return components.reduce((acc, { page }) => {
+			if (page) return [...acc, page];
+			return acc;
+		}, []);
+	});
+};
+
+export const mergeStateData = (oldData, newData) => {
+	return {
+		COLLECTED: { ...oldData.COLLECTED, ...newData.COLLECTED },
+		CALCULATED: { ...oldData.CALCULATED, ...newData.CALCULATED },
+		EXTERNAL: { ...oldData.EXTERNAL, ...newData.EXTERNAL },
+	};
 };
