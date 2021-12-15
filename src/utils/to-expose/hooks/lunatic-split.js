@@ -1,0 +1,344 @@
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { mergeQuestionnaireAndData } from '../init-questionnaire';
+import { getBindings } from '../state';
+import { updateQuestionnaire, updateExternals } from '../handler';
+import {
+	getPage,
+	FLOW_NEXT,
+	FLOW_PREVIOUS,
+	getControls,
+	isDev,
+	getSplitQuestionnaireSource,
+} from '../../lib';
+import { COLLECTED } from '../../../constants';
+import { useFilterComponents } from './filter-components';
+import { loadSuggesters } from '../../store-tools/auto-load';
+import { getState } from '..';
+
+const useLunaticSplit = (
+	source,
+	data,
+	{
+		savingType = COLLECTED,
+		preferences = [COLLECTED],
+		features = ['VTL'],
+		management = false,
+		pagination = false,
+		modalForControls = false,
+		initialPage = '1',
+		logFunction = null,
+		autoSuggesterLoading = false,
+		suggesterFetcher,
+		suggesters,
+	}
+) => {
+	if (!isDev) {
+		console.log('useLunaticSplit');
+		var start = new Date().getTime();
+	}
+	const sources = useMemo(() => getSplitQuestionnaireSource(source), [source]);
+
+	const [sourceIndice, setSourceIndice] = useState(0);
+	const [lunaticData, setLunaticData] = useState(data || {});
+
+	const [initPage, setInitPage] = useState(false);
+	const featuresWithoutMD = features.filter((f) => f !== 'MD');
+
+	const [questionnaire, setQuestionnaire] = useState(() =>
+		mergeQuestionnaireAndData(sources[sourceIndice])(lunaticData)
+	);
+
+	const [bindings, setBindings] = useState(() => getBindings(questionnaire));
+
+	// updating sub questionnaire
+	useEffect(() => {
+		setInitPage(false);
+		setPage(null);
+		const newQ = mergeQuestionnaireAndData(sources[sourceIndice])(lunaticData);
+		setQuestionnaire(newQ);
+		setBindings(getBindings(newQ));
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [sources, sourceIndice]);
+
+	const [page, setPage] = useState(questionnaire.firstPage);
+
+	const [todo, setTodo] = useState({});
+	const [todoExternals, setTodoExternals] = useState({});
+	const [modalContent, setModalContent] = useState(null);
+
+	const components = useFilterComponents({
+		questionnaire,
+		management,
+		bindings,
+		features: featuresWithoutMD,
+		page,
+		pagination,
+		todo: { ...todo, ...todoExternals },
+	});
+
+	const { suggesters: suggestersToLoad } = source;
+
+	useEffect(() => {
+		const init = async () => {
+			if (
+				autoSuggesterLoading &&
+				typeof suggesters === 'object' &&
+				Object.values(suggesters).length > 0
+			) {
+				const s = suggestersToLoad.reduce(function (current, storeInfo) {
+					const { name } = storeInfo;
+					if (!suggesters[name]) return current;
+					return {
+						...current,
+						[name]: {
+							...storeInfo,
+							url: suggesters[name].url,
+							stopWords: suggesters[name].stopWords,
+						},
+					};
+				}, {});
+				loadSuggesters(suggesterFetcher)(s);
+			}
+		};
+		init();
+	}, [autoSuggesterLoading, suggesterFetcher, suggesters, suggestersToLoad]);
+
+	const [flow, setFlow] = useState(FLOW_NEXT);
+
+	// TODO: dynamic because of filters (kind of last accessible page)
+	const { firstPage, maxPage } = questionnaire;
+
+	const isFirstPage = page === firstPage;
+	const isLastPage = page === maxPage;
+	const isFirstSource = sourceIndice === 0;
+	const isLastSource = sourceIndice === sources.length - 1;
+
+	const goSplitNext = () => {
+		if (!isLastSource) {
+			console.log('changing source next');
+			const { COLLECTED, CALCULATED, EXTERNAL } = getState(questionnaire);
+
+			setLunaticData({
+				COLLECTED: { ...lunaticData.COLLECTED, ...COLLECTED },
+				CALCULATED: { ...lunaticData.CALCULATED, ...CALCULATED },
+				EXTERNAL: { ...lunaticData.EXTERNAL, ...EXTERNAL },
+			});
+			setSourceIndice(sourceIndice + 1);
+		}
+	};
+
+	// First param is the onClick event, useless for us but we have to keep it safe into
+	// function signature to avoid confusing with customBindings
+	const goNext = (_, customBindings) => {
+		if (!(isLastPage && isLastSource)) {
+			if (flow !== FLOW_NEXT) {
+				setFlow(FLOW_NEXT);
+			}
+			const nextPage = getPage({
+				components: questionnaire.components,
+				bindings: customBindings || bindings,
+				currentPage: page,
+				featuresWithoutMD,
+				flow: FLOW_NEXT,
+				management,
+			});
+
+			if (nextPage) {
+				if (modalForControls) {
+					const controls = getControls({
+						page,
+						features: featuresWithoutMD,
+						components,
+						bindings,
+						preferences,
+					});
+					if (controls.length > 0)
+						setModalContent({ page: nextPage, controls });
+					else setPage(nextPage);
+				} else setPage(nextPage);
+			} else goSplitNext();
+		}
+	};
+
+	const goSplitPrevious = () => {
+		if (!isFirstSource) {
+			console.log('changing source previous !');
+			const { COLLECTED, CALCULATED, EXTERNAL } = getState(questionnaire);
+
+			setLunaticData({
+				COLLECTED: { ...lunaticData.COLLECTED, ...COLLECTED },
+				CALCULATED: { ...lunaticData.CALCULATED, ...CALCULATED },
+				EXTERNAL: { ...lunaticData.EXTERNAL, ...EXTERNAL },
+			});
+			setSourceIndice(sourceIndice - 1);
+		}
+	};
+
+	const goPrevious = () => {
+		if (!(isFirstPage && isFirstSource)) {
+			if (flow !== FLOW_PREVIOUS) {
+				setFlow(FLOW_PREVIOUS);
+			}
+			const previousPage = getPage({
+				components: questionnaire.components,
+				bindings,
+				currentPage: page,
+				featuresWithoutMD,
+				flow: FLOW_PREVIOUS,
+				management,
+			});
+			if (previousPage) {
+				if (modalForControls) {
+					const controls = getControls({
+						page,
+						features: featuresWithoutMD,
+						components,
+						bindings,
+						preferences,
+					});
+					if (controls.length > 0)
+						setModalContent({ page: previousPage, controls });
+					else setPage(previousPage);
+				} else setPage(previousPage);
+			} else goSplitPrevious();
+		}
+	};
+
+	useEffect(() => {
+		if (!initPage) {
+			const getNewInitPage = (indice = sourceIndice) => {
+				if (!flow || flow === FLOW_NEXT) {
+					const tempPage =
+						indice - 1 > 0
+							? sources[indice - 1].firstPage
+							: sources[0].firstPage;
+					return getPage({
+						components: questionnaire.components,
+						bindings: bindings,
+						currentPage: tempPage,
+						featuresWithoutMD,
+						flow: flow || FLOW_NEXT,
+						management,
+					});
+				}
+				const tempPage =
+					indice + 1 < sources.length - 1
+						? sources[indice + 1].maxPage
+						: sources[sources.length - 1].maxPage;
+				return getPage({
+					components: questionnaire.components,
+					bindings: bindings,
+					currentPage: tempPage,
+					featuresWithoutMD,
+					flow: flow,
+					management,
+				});
+			};
+			const newPage = getNewInitPage();
+			if (!newPage) {
+				if (!flow || flow === FLOW_NEXT) setSourceIndice(sourceIndice + 1);
+				else setSourceIndice(sourceIndice - 1);
+				setInitPage(true);
+			} else {
+				if (isFirstSource && (!flow || flow === FLOW_NEXT))
+					setPage(sources[0].firstPage);
+				else setPage(newPage);
+				setInitPage(true);
+			}
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [
+		initPage,
+		isFirstSource,
+		components,
+		questionnaire.components,
+		bindings,
+		page,
+		featuresWithoutMD,
+		management,
+		sourceIndice,
+		sources,
+		flow,
+	]);
+
+	const handleChange = useCallback((updatedValue) => {
+		setTodo((t) => ({ ...t, ...updatedValue }));
+	}, []);
+
+	const handleExternals = useCallback((externals) => {
+		setTodoExternals((t) => ({ ...t, ...externals }));
+	}, []);
+
+	useEffect(() => {
+		if (Object.keys(todo).length !== 0) {
+			const newQ = updateQuestionnaire(savingType)(questionnaire)(
+				preferences,
+				logFunction
+			)(todo);
+			setBindings(getBindings(newQ));
+			setQuestionnaire(newQ);
+			setTodo({});
+		}
+	}, [
+		todo,
+		preferences,
+		logFunction,
+		questionnaire,
+		savingType,
+		features,
+		management,
+	]);
+
+	useEffect(() => {
+		if (Object.keys(todoExternals).length !== 0) {
+			const newQ = updateExternals(questionnaire)(logFunction)(todoExternals);
+			setQuestionnaire(newQ);
+			setTodoExternals({});
+		}
+	}, [todoExternals, logFunction, questionnaire]);
+
+	const cancelModal = () => {
+		setModalContent(null);
+	};
+
+	const validateModal = () => {
+		setPage(modalContent.page);
+		setModalContent(null);
+	};
+
+	const componentsToDiplay =
+		pagination && modalContent
+			? [
+					{
+						componentType: 'Modal',
+						controls: modalContent.controls,
+						validateModal,
+						cancelModal,
+					},
+					...components,
+			  ]
+			: components;
+
+	if (!isDev)
+		console.log(`End useLunaticSplit: ${new Date().getTime() - start} ms`);
+
+	return {
+		questionnaire,
+		handleChange,
+		handleExternals,
+		components: componentsToDiplay,
+		bindings,
+		pagination: {
+			page: page ? page : 'loading',
+			maxPage: sources[sources.length - 1].maxPage,
+			goNext,
+			goPrevious,
+			isFirstPage: isFirstPage && isFirstSource,
+			isLastPage: isLastPage && isLastSource,
+			setPage,
+		},
+	};
+};
+
+export default useLunaticSplit;
