@@ -21,7 +21,7 @@ const Missing = ({ Component, props }) => {
 		bindings,
 		shortcut,
 		componentType,
-		missingLoopIteration,
+		paginatedLoop,
 	} = props;
 
 	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
@@ -62,10 +62,9 @@ const Missing = ({ Component, props }) => {
 		if (!isSameValue) {
 			const toClean = getVarsToClean();
 			if (Object.keys(toClean)) {
-				const { missingLoopIteration, currentPage } = props;
+				const { currentPage } = props;
 				const currentIterationIndex = getCurrentIterationIndex({
 					currentPage,
-					missingLoopIteration,
 				});
 				handleChange(toClean);
 				if (U.isFunction(missingStrategy)) {
@@ -90,11 +89,7 @@ const Missing = ({ Component, props }) => {
 		}
 	};
 
-	if (
-		componentType === 'Loop' ||
-		missingLoopIteration ||
-		missingLoopIteration === 0
-	)
+	if ((componentType === 'Loop' && paginatedLoop) || !missingResponse)
 		return <Component {...props} />;
 
 	return (
@@ -147,11 +142,9 @@ const Missing = ({ Component, props }) => {
 export default Missing;
 
 // TODO: make it recursive for Loop into Loop
-const getCurrentIterationIndex = ({ currentPage, missingLoopIteration }) => {
+const getCurrentIterationIndex = ({ currentPage }) => {
 	const { currentIteration } = U.splitPage(currentPage, 1);
 	if (currentIteration) return currentIteration - 1;
-	if (missingLoopIteration || missingLoopIteration === 0)
-		return missingLoopIteration;
 	return null;
 };
 

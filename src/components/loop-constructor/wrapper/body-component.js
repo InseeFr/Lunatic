@@ -100,11 +100,14 @@ const BodyComponent = ({
 						const Component = lunatic[componentType];
 						const localBindings =
 							U.buildBindingsForDeeperComponents(i)(bindings);
+						// ensure to have only N-1 missingResponse
+						const { missingResponse } = componentProps;
 						return (
 							<div className="block-component" key={`${id}-row-${i}`}>
 								<Component
 									{...otherProps}
 									{...componentProps}
+									missingResponse={missingResponse}
 									id={`${id}-row-${i}`}
 									label={label}
 									handleChange={(up) => {
