@@ -151,20 +151,20 @@ const useLunaticSplit = (
 				management,
 			});
 
-			if (nextPage) {
-				if (modalForControls) {
-					const controls = getControls({
-						page,
-						features: featuresWithoutMD,
-						components,
-						bindings,
-						preferences,
-					});
-					if (controls.length > 0)
-						setModalContent({ page: nextPage, controls });
-					else setPage(nextPage);
-				} else setPage(nextPage);
-			} else goSplitNext();
+			const nextFunction = nextPage ? () => setPage(nextPage) : goSplitNext;
+
+			if (modalForControls) {
+				const controls = getControls({
+					page,
+					features: featuresWithoutMD,
+					components,
+					bindings,
+					preferences,
+				});
+				if (controls.length > 0)
+					setModalContent({ confirm: nextFunction, controls });
+				else nextFunction();
+			} else nextFunction();
 		}
 	};
 
@@ -189,20 +189,26 @@ const useLunaticSplit = (
 				flow: FLOW_PREVIOUS,
 				management,
 			});
-			if (previousPage) {
-				if (modalForControls) {
-					const controls = getControls({
-						page,
-						features: featuresWithoutMD,
-						components,
-						bindings,
-						preferences,
+
+			const previousFunction = previousPage
+				? () => setPage(previousPage)
+				: goSplitPrevious;
+
+			if (modalForControls) {
+				const controls = getControls({
+					page,
+					features: featuresWithoutMD,
+					components,
+					bindings,
+					preferences,
+				});
+				if (controls.length > 0)
+					setModalContent({
+						confirm: previousFunction,
+						controls,
 					});
-					if (controls.length > 0)
-						setModalContent({ page: previousPage, controls });
-					else setPage(previousPage);
-				} else setPage(previousPage);
-			} else goSplitPrevious();
+				else previousFunction();
+			} else previousFunction();
 		}
 	};
 
@@ -314,7 +320,8 @@ const useLunaticSplit = (
 	};
 
 	const validateModal = () => {
-		setPage(modalContent.page);
+		const { confirm } = modalContent;
+		if (confirm) confirm();
 		setModalContent(null);
 	};
 
