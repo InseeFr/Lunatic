@@ -4,7 +4,7 @@ import { isDev, buildVectorialBindings } from '../../lib';
 let cache = {};
 
 const customFilterPagination = ({ page }, pagination, currentPage) => {
-	return pagination ? currentPage.split('.')[0] === page : true;
+	return pagination ? currentPage?.split('.')[0] === page : true;
 };
 
 const filterComponents = ({ components, updatedVars, features, bindings }) => {
