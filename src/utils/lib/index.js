@@ -18,4 +18,4 @@ export * from './table';
 export * from './tooltip';
 export { isFunction } from './function';
 export { createObjectEvent } from './event';
-export * from './questionnaire';
+export * from './splitting';
