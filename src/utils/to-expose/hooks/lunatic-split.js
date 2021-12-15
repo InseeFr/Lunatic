@@ -60,7 +60,6 @@ const useLunaticSplit = (
 	// updating current source
 	useEffect(() => {
 		setInitPage(false);
-		setPage(null);
 		const newQ = mergeQuestionnaireAndData(sources[sourceIndice])(lunaticData);
 		setQuestionnaire(newQ);
 		const bind = getBindings(newQ);
@@ -359,7 +358,7 @@ const useLunaticSplit = (
 		allBindings,
 		getStateToSave,
 		pagination: {
-			page: page ? page : 'loading',
+			page: page,
 			maxPage: sources[sources.length - 1].maxPage,
 			goNext,
 			goPrevious,
