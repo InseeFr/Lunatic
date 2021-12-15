@@ -11,6 +11,7 @@ function LoopOrchestrator({
 	shortcut,
 	management,
 	preferences,
+	executeExpression,
 }) {
 	return new Array(nbRows).fill(0).map(function (_, index) {
 		return (
@@ -25,6 +26,7 @@ function LoopOrchestrator({
 				preferences={preferences}
 				management={management}
 				missing={missing}
+				executeExpression={executeExpression}
 			/>
 		);
 	});

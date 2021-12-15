@@ -30,7 +30,15 @@ function createBindings(variables) {
 
 function createExecuteExpression(variables, features) {
 	const [bindings, vtlBindings] = createBindings(variables);
+
 	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.
+	// à l'init, on y colle toutes les variables de calcul
+	Object.values(variables).forEach(function ({ variable }) {
+		const { variableType, name } = variable;
+		if (variableType === 'CALCULATED') {
+			toRefreshVariables.set(name, variable);
+		}
+	});
 	/**
 	 *
 	 * @param {*} name
@@ -61,7 +69,8 @@ function createExecuteExpression(variables, features) {
 	function refreshCalculated(dependencies) {
 		dependencies.forEach(function (name) {
 			if (name in variables) {
-				const variable = variables[name];
+				const { variable } = variables[name];
+
 				const { variableType, expression } = variable;
 				if (variableType === 'CALCULATED' && toRefreshVariables.has(name)) {
 					const value = executeExpression(vtlBindings, expression, ['VTL']);
@@ -83,10 +92,8 @@ function createExecuteExpression(variables, features) {
 		if (Array.isArray(bindingDependencies)) {
 			refreshCalculated(bindingDependencies);
 		}
-
 		return executeExpression(vtlBindings, expression, features);
 	}
-
 	return [execute, updateBindings];
 }
 

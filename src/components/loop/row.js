@@ -11,6 +11,7 @@ function RowComponent({
 	management,
 	preferences,
 	value,
+	executeExpression,
 }) {
 	const { componentType } = component;
 	const Component = lunatic[componentType];
@@ -26,6 +27,7 @@ function RowComponent({
 			missing={missing}
 			shortcut={shortcut}
 			value={value}
+			executeExpression={executeExpression}
 		/>
 	);
 }
@@ -40,6 +42,7 @@ function Row({
 	management,
 	preferences,
 	rowIndex,
+	executeExpression,
 }) {
 	const handleChangeRow = useCallback(
 		function (response, value) {
@@ -71,6 +74,7 @@ function Row({
 					value={value}
 					id={idComponent}
 					preferences={preferences}
+					executeExpression={executeExpression}
 				/>,
 			];
 		}

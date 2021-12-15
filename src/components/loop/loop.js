@@ -12,6 +12,7 @@ function Loop(props) {
 		value,
 		management,
 		executeExpression,
+		loopDependencies,
 	} = props;
 	return (
 		<BlockForLoop
@@ -24,6 +25,7 @@ function Loop(props) {
 			valueMap={value}
 			management={management}
 			executeExpression={executeExpression}
+			loopDependencies={loopDependencies}
 		/>
 	);
 }

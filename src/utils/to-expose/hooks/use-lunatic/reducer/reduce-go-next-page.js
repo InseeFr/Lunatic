@@ -1,4 +1,4 @@
-import { getComponentsFromState, executeConditionFilter } from '../commons';
+import { isOnEmptyPage } from './commons';
 
 function getNextPage(state) {
 	const { pager } = state;
@@ -68,29 +68,14 @@ function reduceStartLoop(state, { next, iterations }) {
 }
 
 function validateChange(state) {
-	const { executeExpression } = state;
-
-	const components = getComponentsFromState(state);
-
-	const rest = components.reduce(function (rest, component) {
-		const { conditionFilter } = component;
-		if (conditionFilter) {
-			const result = executeConditionFilter(conditionFilter, executeExpression);
-			if (result === true) {
-				return [...rest, component];
-			}
-		}
-		return rest;
-	}, []);
-
-	if (!rest.length) {
-		return reduceGoNext(state);
+	if (isOnEmptyPage(state)) {
+		return reduceGoNextPage(state);
 	}
 
 	return state;
 }
 
-function reduceGoNext(state) {
+function reduceGoNextPage(state) {
 	const { pages, isInLoop, pager } = state;
 	const { iteration, nbIterations, subPage, nbSubPages, page } = pager;
 
@@ -113,4 +98,4 @@ function reduceGoNext(state) {
 	return validateChange(reduceNextPage(state, { next, iterations }));
 }
 
-export default reduceGoNext;
+export default reduceGoNextPage;

@@ -138,8 +138,8 @@ import FieldWrapper from '../../utils/components/field-wrapper';
 
 // export default componentWrapper(React.memo(Suggester, U.areEqual));
 
-function Suggester() {
-	return null;
+function Suggester({ storeName }) {
+	return <div>Suggester {storeName}</div>;
 }
 
 export default Suggester;

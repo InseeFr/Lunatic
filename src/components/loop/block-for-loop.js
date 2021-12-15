@@ -1,11 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../declarations';
 import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
-import { Label } from '../commons';
 
 function BlockForLoop({
 	declarations,
@@ -18,8 +17,38 @@ function BlockForLoop({
 	shortcut,
 	management,
 	executeExpression,
+	loopDependencies,
 }) {
 	const [nbRows, setNbRows] = useState(1);
+
+	useEffect(
+		function () {
+			if (lines) {
+				const { min, max } = lines;
+
+				if (min !== undefined && max !== undefined) {
+					const minValue = executeExpression(min, {
+						bindingDependencies: loopDependencies,
+					});
+					const maxValue = executeExpression(max, {
+						bindingDependencies: loopDependencies,
+					});
+					if (minValue) {
+						setNbRows(minValue);
+					}
+				}
+			}
+		},
+		[lines]
+	);
+	// bindingDependencies
+
+	const executeExpression_ = useCallback(
+		function (expression) {
+			return executeExpression(expression);
+		},
+		[executeExpression]
+	);
 
 	const handleChangeLoop = useCallback(
 		function (response, value, args) {
@@ -35,9 +64,6 @@ function BlockForLoop({
 					declarations={declarations}
 					executeExpression={executeExpression}
 				/>
-				<Label id={'id'} htmlFor={'todo'} className={'todo'}>
-					{label}
-				</Label>
 				<DeclarationsAfterText
 					declarations={declarations}
 					executeExpression={executeExpression}
@@ -50,6 +76,7 @@ function BlockForLoop({
 					management={management}
 					missing={missing}
 					shortcut={shortcut}
+					executeExpression={executeExpression}
 				/>
 				<DeclarationsDetachable
 					declarations={declarations}

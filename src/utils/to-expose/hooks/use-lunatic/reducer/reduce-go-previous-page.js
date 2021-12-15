@@ -1,3 +1,5 @@
+import { isOnEmptyPage } from './commons';
+
 function getPreviousPage(pager) {
 	const { page } = pager;
 	const p = Number.parseInt(page);
@@ -67,27 +69,35 @@ function goPreviousPage(state, previous) {
 	return state;
 }
 
+function validateChange(state) {
+	if (isOnEmptyPage(state)) {
+		return reduceGoPreviousPage(state);
+	}
+
+	return state;
+}
+
 function reduceGoPreviousPage(state) {
 	const { pages, pager, isInLoop } = state;
 	const { iteration, subPage, nbSubPages } = pager;
 
 	// dans une boucle et l'itération courante n'est pas finie
 	if (isInLoop && subPage > 0) {
-		return goPreviousSubPage(state);
+		return validateChange(goPreviousSubPage(state));
 	}
 	// dans une boucle, l'itération courante est finie mais il reste encore au moins une autre
 	if (isInLoop && subPage === nbSubPages - 1 && iteration > 0) {
-		return goPreviousIteration(state);
+		return validateChange(goPreviousIteration(state));
 	}
 
 	const previous = getPreviousPage(pager);
 	const { isLoop, iterations } = pages[previous];
 	// on rentre dans une boucle
 	if (isLoop) {
-		return goStartLoop(state, previous);
+		return validateChange(goStartLoop(state, previous));
 	}
 	// on change de page
-	return goPreviousPage(state, previous);
+	return validateChange(goPreviousPage(state, previous));
 }
 
 export default reduceGoPreviousPage;
