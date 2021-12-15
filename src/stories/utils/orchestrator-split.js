@@ -15,7 +15,7 @@ const OrchestratorForStories = ({
 	modalForControls = false,
 	features = ['VTL'],
 	bindings: initialBindings,
-	initialPage = '1',
+	initialPage = '17',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	shortcut = false,
@@ -44,7 +44,7 @@ const OrchestratorForStories = ({
 			isLastPage,
 			flow,
 		},
-	} = lunatic.useLunatic(source, data, {
+	} = lunatic.useLunaticSplit(source, data, {
 		suggesters,
 		savingType,
 		preferences,
