@@ -46,10 +46,30 @@ function createExecuteExpression(variables, features) {
 		const { dependencies } = variables[name];
 		if (dependencies) {
 			dependencies.forEach(function (variable) {
-				const { name } = variable;
-				toRefreshVariables.set(name, variable);
+				const { name, variableType } = variable;
+				if (variableType === 'CALCULATED') {
+					toRefreshVariables.set(name, variable);
+				}
 			});
 		}
+	}
+
+	/**
+	 *
+	 * @param {*} dependencies
+	 */
+	function refreshCalculated(dependencies) {
+		dependencies.forEach(function (name) {
+			if (name in variables) {
+				const variable = variables[name];
+				const { variableType, expression } = variable;
+				if (variableType === 'CALCULATED' && toRefreshVariables.has(name)) {
+					const value = executeExpression(vtlBindings, expression, ['VTL']);
+					updateBindings(name, value);
+					toRefreshVariables.delete(name);
+				}
+			}
+		});
 	}
 
 	/**
@@ -59,10 +79,12 @@ function createExecuteExpression(variables, features) {
 	 * @param {*} param2
 	 * @returns
 	 */
-	function execute(expression, { dependencies } = {}) {
-		const result = executeExpression(vtlBindings, expression, features);
+	function execute(expression, { bindingDependencies } = {}) {
+		if (Array.isArray(bindingDependencies)) {
+			refreshCalculated(bindingDependencies);
+		}
 
-		return result;
+		return executeExpression(vtlBindings, expression, features);
 	}
 
 	return [execute, updateBindings];

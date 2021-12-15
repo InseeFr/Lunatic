@@ -22,7 +22,7 @@ function executeVtl(expression, vtlBindings) {
 
 	return result;
 }
-//[name]: { dataStructure: { [name]: {} }, dataPoints: { [name]: value } },
+
 function executeExpression(vtlBindings, expression, features /* VTL, MD */) {
 	if (expression) {
 		try {
@@ -44,22 +44,3 @@ function executeExpression(vtlBindings, expression, features /* VTL, MD */) {
 }
 
 export default executeExpression;
-
-// if (!expression) return '';
-// if (!Array.isArray(features)) return expression;
-// if (features.includes('VTL')) {
-// 	const vtl = interpretVTL(bindings)(expression);
-// 	if (features.includes('MD')) {
-// 		return interpretMD(vtl)(logFunction);
-// 	}
-// 	return vtl;
-// }
-// return expression;
-
-// const extractDSValue = (v) => {
-// 	if (v !== null && typeof v === 'object') {
-// 		const { dataPoints } = v;
-// 		return Object.values(dataPoints)[0];
-// 	}
-// 	return v;
-// };

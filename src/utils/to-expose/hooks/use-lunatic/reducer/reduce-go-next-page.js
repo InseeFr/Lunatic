@@ -1,4 +1,4 @@
-import { getComponentsFromState } from '../commons';
+import { getComponentsFromState, executeConditionFilter } from '../commons';
 
 function getNextPage(state) {
 	const { pager } = state;
@@ -67,15 +67,38 @@ function reduceStartLoop(state, { next, iterations }) {
 	return state;
 }
 
+function validateChange(state) {
+	const { executeExpression } = state;
+
+	const components = getComponentsFromState(state);
+
+	const rest = components.reduce(function (rest, component) {
+		const { conditionFilter } = component;
+		if (conditionFilter) {
+			const result = executeConditionFilter(conditionFilter, executeExpression);
+			if (result === true) {
+				return [...rest, component];
+			}
+		}
+		return rest;
+	}, []);
+
+	if (!rest.length) {
+		return reduceGoNext(state);
+	}
+
+	return state;
+}
+
 function reduceGoNext(state) {
 	const { pages, isInLoop, pager } = state;
 	const { iteration, nbIterations, subPage, nbSubPages, page } = pager;
 
 	if (isInLoop && subPage < nbSubPages - 1) {
-		return reduceNextSubPage(state);
+		return validateChange(reduceNextSubPage(state));
 	}
 	if (isInLoop && subPage === nbSubPages - 1 && iteration < nbIterations - 1) {
-		return reduceNextIteration(state);
+		return validateChange(reduceNextIteration(state));
 	}
 
 	const next = getNextPage(state);
@@ -85,16 +108,9 @@ function reduceGoNext(state) {
 	}
 
 	if (isLoop) {
-		return reduceStartLoop(state, { next, iterations });
+		return validateChange(reduceStartLoop(state, { next, iterations }));
 	}
-	return reduceNextPage(state, { next, iterations });
+	return validateChange(reduceNextPage(state, { next, iterations }));
 }
 
-function validateChange(state) {
-	const next = reduceGoNext(state);
-	const components = getComponentsFromState(next);
-	// console.log(components);
-	return next;
-}
-
-export default validateChange;
+export default reduceGoNext;
