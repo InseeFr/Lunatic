@@ -6,18 +6,14 @@ import { areEqual } from '../../utils/lib';
 import { getTypeControls } from '../component-wrapper/controls/validators';
 import './datepicker.scss';
 
-const Datepicker = (props) => {
-	const { max } = props;
-	return (
-		<InputDeclarationsWrapper
-			type="date"
-			roleType="datepicker"
-			{...props}
-			validators={[getTypeControls]}
-			max={max || '1979-12-31'}
-		/>
-	);
-};
+const Datepicker = (props) => (
+	<InputDeclarationsWrapper
+		type="date"
+		roleType="datepicker"
+		{...props}
+		validators={[getTypeControls]}
+	/>
+);
 
 Datepicker.defaultProps = {
 	validators: [],

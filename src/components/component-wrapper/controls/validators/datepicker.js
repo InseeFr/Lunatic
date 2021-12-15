@@ -13,21 +13,32 @@ const getMessage = (min, max, value) => {
 	if (!value) {
 		return undefined;
 	}
-	const dateFormat = 'dd/MM/yyyy';
+	const dateFormat = 'dd-MM-yyyy';
 	const date = new Date(value);
-	if (isNaN(Date.parse(min))) return undefined;
-	if (isNaN(Date.parse(max))) return undefined;
-	const minDate = new Date(min);
-	const maxDate = new Date(max);
-	const minDateAsString = minDate ? format(minDate, dateFormat) : '';
-	const maxDateAsString = maxDate ? format(maxDate, dateFormat) : '';
-	if (!min && isDef(max) && compareAsc(date, maxDate) > 0)
-		return `La date doit être inférieure au ${maxDateAsString}`;
-	else if (isDef(min) && !max && compareAsc(date, minDate) > 0)
-		return `La date doit être supérieure au ${minDateAsString}`;
-	else if (isDef(min) && isDef(max) && (date < minDate || date > maxDate))
-		return `La date doit être comprise entre le ${minDateAsString} et le ${maxDateAsString}`;
+	if (isDef(min) && isDef(max)) {
+		const minDate = new Date(min);
+		const maxDate = new Date(max);
+		if (date < minDate || date > maxDate) {
+			const minDateAsString = minDate ? format(minDate, dateFormat) : '';
+			const maxDateAsString = maxDate ? format(maxDate, dateFormat) : '';
+			return `La date doit être comprise entre le ${minDateAsString} et le ${maxDateAsString}`;
+		}
+	}
+	if (isDef(min)) {
+		const minDate = new Date(min);
+		if (compareAsc(date, minDate) < 0) {
+			const minDateAsString = minDate ? format(minDate, dateFormat) : '';
+			return `La date doit être supérieure au ${minDateAsString}`;
+		}
+	}
+	if (isDef(max)) {
+		const maxDate = new Date(max);
+		if (compareAsc(date, maxDate) > 0) {
+			const maxDateAsString = maxDate ? format(maxDate, dateFormat) : '';
+			return `La date doit être inférieure au ${maxDateAsString}`;
+		}
+	}
 	return undefined;
 };
 
-const isDef = (d) => d;
+const isDef = (d) => !isNaN(Date.parse(d));
