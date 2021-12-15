@@ -1,6 +1,5 @@
 const INITIAL_STATE = {
 	variables: {}, // map des variables du questionnaires
-	bindingDependencies: {}, // map des variables vers les variables à recalculer
 	pages: {},
 	isInLoop: false,
 	isFirstPage: false,

@@ -17,6 +17,7 @@ function BlockForLoop({
 	missing,
 	shortcut,
 	management,
+	executeExpression,
 }) {
 	const [nbRows, setNbRows] = useState(1);
 
@@ -30,11 +31,17 @@ function BlockForLoop({
 	if (lines) {
 		return (
 			<>
-				<DeclarationsBeforeText declarations={declarations} />
+				<DeclarationsBeforeText
+					declarations={declarations}
+					executeExpression={executeExpression}
+				/>
 				<Label id={'id'} htmlFor={'todo'} className={'todo'}>
 					{label}
 				</Label>
-				<DeclarationsAfterText declarations={declarations} />
+				<DeclarationsAfterText
+					declarations={declarations}
+					executeExpression={executeExpression}
+				/>
 				<BlockForLoopOrchestrator
 					components={components}
 					handleChange={handleChangeLoop}
@@ -44,7 +51,10 @@ function BlockForLoop({
 					missing={missing}
 					shortcut={shortcut}
 				/>
-				<DeclarationsDetachable declarations={declarations} />
+				<DeclarationsDetachable
+					declarations={declarations}
+					executeExpression={executeExpression}
+				/>
 			</>
 		);
 	}

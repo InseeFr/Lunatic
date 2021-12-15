@@ -6,7 +6,7 @@ function createBindings(variables) {
 	}, {});
 }
 
-function createExecuteExpression(variables, bindingDependencies, features) {
+function createExecuteExpression(variables, features) {
 	const bindings = createBindings(variables);
 	const vtlBindings = { ...bindings };
 	const toRefreshVariables = new Map();
@@ -20,10 +20,9 @@ function createExecuteExpression(variables, bindingDependencies, features) {
 			bindings[name] = value;
 			vtlBindings[name] = value;
 		}
-		if (name in bindingDependencies) {
-			console.log(bindingDependencies[name]);
-			// TODO
-		}
+
+		const { dependencies } = variables[name];
+		console.log({ dependencies });
 	}
 
 	/**

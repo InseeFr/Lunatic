@@ -43,51 +43,77 @@ function getInitialValue(variable, data = {}) {
 	}
 }
 
+function appendToArrayMap(map, key, entry) {
+	if (key in map) {
+		return { ...map, [key]: [...map[key], entry] };
+	}
+	return { ...map, [key]: [entry] };
+}
+
+function appendToObjectMap(map, key, object) {
+	if (key in map) {
+		return { ...map, [key]: { ...map[key], ...object } };
+	}
+	return { ...map, [key]: object };
+}
+
+/**
+ *
+ * @param {*} source
+ * @param {*} data
+ * @returns
+ */
 function createVariables(source, data) {
 	const { variables } = source;
-	//
-	const mapVariablesTypes = variables.reduce(function (map, variable) {
-		const { variableType } = variable;
-		if (variableType in map) {
-			return { ...map, [variableType]: [...map[variableType], variable] };
-		}
-		return { ...map, [variableType]: [variable] };
-	}, {});
 
 	//
-	const mapVariables = Object.entries(mapVariablesTypes).reduce(function (
-		map,
-		[type, variables]
-	) {
-		return variables.reduce(
-			function (sub, variable) {
-				const { name } = variable;
-				return {
-					...sub,
-					[name]: { variable, type, value: getInitialValue(variable, data) },
-				};
-			},
-			{ ...map }
-		);
-	},
-	{});
+	const [mapVariablesTypes, mapVariables] = variables.reduce(
+		function ([mapType, mapVar], variable) {
+			const { variableType: type, name } = variable;
+
+			return [
+				appendToArrayMap(mapType, type, variable),
+				appendToObjectMap(mapVar, name, {
+					variable,
+					type,
+					value: getInitialValue(variable, data),
+				}),
+			];
+		},
+		[{}, {}]
+	);
 	//
 	const { CALCULATED = [] } = mapVariablesTypes;
-	const mapBindingDependencies = CALCULATED.reduce(function (map, variable) {
-		const { bindingDependencies = [] } = variable;
+	// const mapBindingDependencies = CALCULATED.reduce(function (map, variable) {
+	// 	const { bindingDependencies = [] } = variable;
 
-		return bindingDependencies.reduce(
-			function (sub, name) {
-				if (name in sub) {
-					return { ...sub, [name]: [...sub[name], variable] };
+	// 	return bindingDependencies.reduce(
+	// 		function (sub, name) {
+	// 			if (name in sub) {
+	// 				return { ...sub, [name]: [...sub[name], variable] };
+	// 			}
+	// 			return { ...sub, [name]: [variable] };
+	// 		},
+	// 		{ ...map }
+	// 	);
+	// }, {});
+
+	CALCULATED.forEach(function (calculated) {
+		const { bindingDependencies = [] } = calculated;
+		bindingDependencies.forEach(function (name) {
+			if (name in mapVariables) {
+				const variable = mapVariables[name];
+				const { dependencies } = variable;
+				if (dependencies) {
+					dependencies.push(calculated);
+				} else {
+					variable.dependencies = [calculated];
 				}
-				return { ...sub, [name]: [variable] };
-			},
-			{ ...map }
-		);
-	}, {});
+			}
+		});
+	});
 
-	return [mapVariables, mapBindingDependencies];
+	return mapVariables;
 }
 /* */
 
@@ -95,10 +121,9 @@ function reduceOnInit(state, action) {
 	const { payload } = action;
 	const { source, data, initialPage, features } = payload;
 	if (source && data) {
-		const [variables, bindingDependencies] = createVariables(source, data);
+		const variables = createVariables(source, data);
 		const [executeExpression, updateBindings] = createExecuteExpression(
 			variables,
-			bindingDependencies,
 			features
 		);
 		const pages = checkLoops(createMapPages(source));
@@ -115,7 +140,6 @@ function reduceOnInit(state, action) {
 		return {
 			...state,
 			variables,
-			bindingDependencies,
 			pages,
 			isFirstPage,
 			isLastPage,
