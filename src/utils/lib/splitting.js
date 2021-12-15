@@ -1,4 +1,5 @@
 const getBindingsDependenciesCalculated = (variables) => {
+	if (!variables) return {};
 	return variables.reduce(
 		(acc, { variableType, name, bindingDependencies, shapeFrom }) => {
 			if (variableType === 'CALCULATED')
@@ -13,6 +14,7 @@ const getBindingsDependenciesCalculated = (variables) => {
 };
 
 const getAllDeps = (deps) => (variablesCalcDeps) => {
+	if (!deps || !variablesCalcDeps) return [];
 	return deps.reduce((acc, dep) => {
 		const depsOfDep = variablesCalcDeps[dep];
 		if (Array.isArray(depsOfDep)) {
@@ -44,6 +46,7 @@ const getNestedVars =
 	};
 
 const getUsefullVariablesFromSource = (variables) => (nestedVars) => {
+	if (!variables) return true;
 	return variables.filter(({ variableType, name }) => {
 		if (variableType === 'CALCULATED' && !nestedVars.includes(name))
 			return false;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import Orchestrator from '../utils/orchestrator';
+import OrchestratorSplit from '../utils/orchestrator-split';
 import { titleDecorator } from 'utils/lib';
 import calcVar from './calc-var';
 import logement from './logement';
@@ -23,7 +23,7 @@ const def = storiesOf('Questionnaire/Default', module).addDecorator(
 );
 
 def.addWithJSX('Calculated Variables', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={calcVar}
 		missing={boolean('Missing', false)}
@@ -36,7 +36,7 @@ def.addWithJSX('Calculated Variables', () => (
 ));
 
 def.addWithJSX('Logement', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={logement}
 		missing={boolean('Missing', false)}
@@ -49,7 +49,7 @@ def.addWithJSX('Logement', () => (
 ));
 
 def.addWithJSX('Arithmetic', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={arithmetic}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
@@ -59,7 +59,7 @@ def.addWithJSX('Arithmetic', () => (
 ));
 
 def.addWithJSX('Simpsons', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={simpsons}
 		missing={boolean('Missing', false)}
@@ -79,7 +79,7 @@ const paginated = storiesOf('Questionnaire/Paginated', module).addDecorator(
 );
 
 paginated.addWithJSX('Calculated Variables', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={calcVar}
 		missing={boolean('Missing', false)}
@@ -93,7 +93,7 @@ paginated.addWithJSX('Calculated Variables', () => (
 ));
 
 paginated.addWithJSX('Logement', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={logement}
 		data={dataLogement}
@@ -110,7 +110,7 @@ paginated.addWithJSX('Logement', () => (
 ));
 
 paginated.addWithJSX('Logement - Queen', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={logementQueen}
 		data={dataLogement}
@@ -126,7 +126,7 @@ paginated.addWithJSX('Logement - Queen', () => (
 ));
 
 paginated.addWithJSX('Logement - Sequence', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={logementSequence}
 		data={dataLogement}
@@ -142,7 +142,7 @@ paginated.addWithJSX('Logement - Sequence', () => (
 ));
 
 paginated.addWithJSX('Logement - S2', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={logementS2}
 		missing={boolean('Missing', false)}
@@ -157,7 +157,7 @@ paginated.addWithJSX('Logement - S2', () => (
 ));
 
 paginated.addWithJSX('Simpsons', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={simpsons}
 		missing={boolean('Missing', false)}
@@ -190,7 +190,7 @@ other.addWithJSX('Update external', () => {
 			<button
 				onClick={() => setAddExternal({ PROMO: false })}
 			>{`Fire PROMO --> False`}</button>
-			<Orchestrator
+			<OrchestratorSplit
 				id="props"
 				source={updateExternalQuestionnaire}
 				data={updateExternalData}
