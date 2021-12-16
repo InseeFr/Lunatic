@@ -173,8 +173,9 @@ const InputDeclarationsWrapper = ({
 							onChange={(e) => {
 								const v = e.target.value;
 								if (
-									([null, ''].includes(v) && value.length > 0) ||
-									([null, ''].includes(value) && v.length > 0)
+									(([null, ''].includes(v) && value.length > 0) ||
+										([null, ''].includes(value) && v.length > 0)) &&
+									componentType !== 'Datepicker'
 								) {
 									setValue(v);
 									handleChange({
