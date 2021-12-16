@@ -35,9 +35,11 @@ const getExternalFromVariables = (variables) =>
 	(variables && variables[C.EXTERNAL]) || {};
 
 export const getCollectedStateByValueType =
-	(questionnaire) => (valueType, displayNull) =>
+	(questionnaire, collectedState) => (valueType, displayNull) =>
 		['PREVIOUS', 'COLLECTED', 'FORCED', 'EDITED', 'INPUTED'].includes(valueType)
-			? Object.entries(getCollectedState(questionnaire)).reduce((_, v) => {
+			? Object.entries(
+					collectedState || getCollectedState(questionnaire)
+			  ).reduce((_, v) => {
 					if (displayNull || v[1][valueType] !== null)
 						return {
 							..._,

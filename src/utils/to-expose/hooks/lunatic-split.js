@@ -15,7 +15,7 @@ import {
 import { COLLECTED } from '../../../constants';
 import { useFilterComponents } from './filter-components';
 import { loadSuggesters } from '../../store-tools/auto-load';
-import { getState } from '..';
+import { getCollectedStateByValueType, getState } from '..';
 
 const useLunaticSplit = (
 	source,
@@ -70,10 +70,26 @@ const useLunaticSplit = (
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [sources, sourceIndice]);
 
-	const getStateToSave = () => {
-		const getLastState = getState(questionnaire);
-		return mergeStateData(lunaticData, getLastState);
+	const getBindingsSplit = (quest) => {
+		const bind = getBindings(quest);
+		return { ...allBindings, ...bind };
 	};
+
+	function getStateSplit(quest) {
+		const lastState = getState(quest);
+		return mergeStateData(lunaticData, lastState);
+	}
+	const getCollectedStateSplit = (quest) => {
+		const lastState = getStateSplit(quest);
+		return lastState[COLLECTED];
+	};
+	const getCollectedStateByValueTypeSplit =
+		(quest) => (valueType, displayNull) => {
+			return getCollectedStateByValueType(null, getCollectedStateSplit(quest))(
+				valueType,
+				displayNull
+			);
+		};
 
 	const [page, setPage] = useState(questionnaire.firstPage);
 
@@ -370,7 +386,12 @@ const useLunaticSplit = (
 		components: componentsToDiplay,
 		bindings,
 		allBindings,
-		getStateToSave,
+		state: {
+			getState: getStateSplit,
+			getCollectedState: getCollectedStateSplit,
+			getCollectedStateByValueType: getCollectedStateByValueTypeSplit,
+			getBindings: getBindingsSplit,
+		},
 		pagination: {
 			page: page,
 			maxPage: sources[sources.length - 1].maxPage,
