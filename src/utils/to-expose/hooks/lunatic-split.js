@@ -39,13 +39,18 @@ const useLunaticSplit = (
 		var start = new Date().getTime();
 	}
 	const sources = useMemo(() => getSplitQuestionnaireSource(source), [source]);
+	const allData = useMemo(
+		() => getState(mergeQuestionnaireAndData(source)(data || {})),
+		[source, data]
+	);
+
 	const rootPagesOfSource = useMemo(
 		() => getRootPageInSources(sources),
 		[sources]
 	);
 
 	const [sourceIndice, setSourceIndice] = useState(0);
-	const [lunaticData, setLunaticData] = useState(data || {});
+	const [lunaticData, setLunaticData] = useState(allData);
 
 	const [initPage, setInitPage] = useState(false);
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
