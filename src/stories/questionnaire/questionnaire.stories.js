@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
+import Orchestrator from '../utils/orchestrator';
 import OrchestratorSplit from '../utils/orchestrator-split';
 import { titleDecorator } from 'utils/lib';
 import calcVar from './calc-var';
@@ -10,6 +11,7 @@ import logementSequence from './logement-sequence';
 import dataLogement from './data-logement';
 import simpsons from './simpsons';
 import arithmetic from './arithmetic';
+import arithmeticManagement from './arithmetic-management';
 import updateExternalQuestionnaire from './update-external/questionnaire';
 import updateExternalData from './update-external/data';
 import { positioningOptions, featuresOptions } from '../utils/options';
@@ -23,7 +25,7 @@ const def = storiesOf('Questionnaire/Default', module).addDecorator(
 );
 
 def.addWithJSX('Calculated Variables', () => (
-	<OrchestratorSplit
+	<Orchestrator
 		id="props"
 		source={calcVar}
 		missing={boolean('Missing', false)}
@@ -35,21 +37,8 @@ def.addWithJSX('Calculated Variables', () => (
 	/>
 ));
 
-def.addWithJSX('Logement', () => (
-	<OrchestratorSplit
-		id="props"
-		source={logement}
-		missing={boolean('Missing', false)}
-		features={select('Features', featuresOptions, ['VTL', 'MD'])}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		disabled={boolean('Disabled', false)}
-		focused={boolean('Focused', false)}
-		management={boolean('Management', false)}
-	/>
-));
-
 def.addWithJSX('Arithmetic', () => (
-	<OrchestratorSplit
+	<Orchestrator
 		id="props"
 		source={arithmetic}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
@@ -58,8 +47,19 @@ def.addWithJSX('Arithmetic', () => (
 	/>
 ));
 
+def.addWithJSX('Arithmetic - Management', () => (
+	<Orchestrator
+		id="props"
+		source={arithmeticManagement}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		disabled={boolean('Disabled', false)}
+		management={boolean('Management', true)}
+	/>
+));
+
 def.addWithJSX('Simpsons', () => (
-	<OrchestratorSplit
+	<Orchestrator
 		id="props"
 		source={simpsons}
 		missing={boolean('Missing', false)}
@@ -190,7 +190,7 @@ other.addWithJSX('Update external', () => {
 			<button
 				onClick={() => setAddExternal({ PROMO: false })}
 			>{`Fire PROMO --> False`}</button>
-			<OrchestratorSplit
+			<Orchestrator
 				id="props"
 				source={updateExternalQuestionnaire}
 				data={updateExternalData}

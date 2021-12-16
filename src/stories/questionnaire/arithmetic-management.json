@@ -1,0 +1,47 @@
+{
+	"components": [
+		{
+			"id": "A",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"min": 0,
+			"max": 120,
+			"decimals": 0,
+			"label": "\"How old are you?\"",
+			"conditionFilter": {
+				"value": "true"
+			},
+			"bindingDependencies": ["AGE"],
+			"response": { "name": "AGE" }
+		},
+		{
+			"id": "AA",
+			"componentType": "Subsequence",
+			"label": "\"Multiply age by 10: \" || AGE_10",
+			"conditionFilter": {
+				"value": "true"
+			},
+			"bindingDependencies": ["AGE_10"]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"componentRef": "A",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "5",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "AGE_10",
+			"expression": "cast(cast(AGE, integer) * 10, string)",
+			"bindingDependencies": ["AGE"]
+		}
+	]
+}
