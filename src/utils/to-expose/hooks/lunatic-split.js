@@ -15,7 +15,7 @@ import {
 import { COLLECTED } from '../../../constants';
 import { useFilterComponents } from './filter-components';
 import { loadSuggesters } from '../../store-tools/auto-load';
-import { getState } from '..';
+import { getCollectedStateByValueType, getState } from '..';
 
 const useLunaticSplit = (
 	source,
@@ -27,6 +27,7 @@ const useLunaticSplit = (
 		management = false,
 		pagination = false,
 		modalForControls = false,
+		initialPage = null,
 		logFunction = null,
 		autoSuggesterLoading = false,
 		suggesterFetcher,
@@ -69,10 +70,26 @@ const useLunaticSplit = (
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [sources, sourceIndice]);
 
-	const getStateToSave = () => {
-		const getLastState = getState(questionnaire);
-		return mergeStateData(lunaticData, getLastState);
+	const getBindingsSplit = (quest) => {
+		const bind = getBindings(quest);
+		return { ...allBindings, ...bind };
 	};
+
+	function getStateSplit(quest) {
+		const lastState = getState(quest);
+		return mergeStateData(lunaticData, lastState);
+	}
+	const getCollectedStateSplit = (quest) => {
+		const lastState = getStateSplit(quest);
+		return lastState[COLLECTED];
+	};
+	const getCollectedStateByValueTypeSplit =
+		(quest) => (valueType, displayNull) => {
+			return getCollectedStateByValueType(null, getCollectedStateSplit(quest))(
+				valueType,
+				displayNull
+			);
+		};
 
 	const [page, setPage] = useState(questionnaire.firstPage);
 
@@ -117,7 +134,7 @@ const useLunaticSplit = (
 		init();
 	}, [autoSuggesterLoading, suggesterFetcher, suggesters, suggestersToLoad]);
 
-	const [flow, setFlow] = useState(FLOW_NEXT);
+	const [flow, setFlow] = useState(null);
 
 	// TODO: dynamic because of filters (kind of last accessible page)
 	const { firstPage, maxPage } = questionnaire;
@@ -212,6 +229,24 @@ const useLunaticSplit = (
 		}
 	};
 
+	const exportedSetPage = useCallback(
+		(newPage) => {
+			const p = newPage?.split('.')[0];
+			const index = rootPagesOfSource.findIndex((pages) => pages.includes(p));
+			if (index === sourceIndice) {
+				setPage(newPage);
+				setWantedPage(null);
+			} else {
+				// change source
+				setWantedPage(newPage);
+				const stateData = getState(questionnaire);
+				setLunaticData(mergeStateData(lunaticData, stateData));
+				setSourceIndice(index);
+			}
+		},
+		[lunaticData, questionnaire, rootPagesOfSource, sourceIndice]
+	);
+
 	useEffect(() => {
 		if (!initPage) {
 			if (wantedPage) {
@@ -219,45 +254,46 @@ const useLunaticSplit = (
 				setWantedPage(null);
 				setInitPage(true);
 			} else {
-				const getNewInitPage = (indice = sourceIndice) => {
-					if (!flow || flow === FLOW_NEXT) {
+				const getNewInitPage = () => {
+					if (flow === FLOW_NEXT) {
 						const tempPage =
-							indice - 1 > 0
-								? sources[indice - 1].firstPage
-								: sources[0].firstPage;
+							sourceIndice - 1 > 0
+								? sources[sourceIndice - 1].maxPage
+								: sources[0].maxPage;
 						return getPage({
 							components: questionnaire.components,
 							bindings: bindings,
 							currentPage: tempPage,
 							featuresWithoutMD,
-							flow: flow || FLOW_NEXT,
+							flow: FLOW_NEXT,
+							management,
+						});
+					} else if (flow === FLOW_PREVIOUS) {
+						const tempPage =
+							sourceIndice + 1 < sources.length - 1
+								? sources[sourceIndice + 1].firstPage
+								: sources[sources.length - 1].firstPage;
+						return getPage({
+							components: questionnaire.components,
+							bindings: bindings,
+							currentPage: tempPage,
+							featuresWithoutMD,
+							flow: flow,
 							management,
 						});
 					}
-					const tempPage =
-						indice + 1 < sources.length - 1
-							? sources[indice + 1].maxPage
-							: sources[sources.length - 1].maxPage;
-					return getPage({
-						components: questionnaire.components,
-						bindings: bindings,
-						currentPage: tempPage,
-						featuresWithoutMD,
-						flow: flow,
-						management,
-					});
+					return null;
 				};
-				const newPage = getNewInitPage();
-				if (!newPage) {
-					if (!flow || flow === FLOW_NEXT) setSourceIndice(sourceIndice + 1);
-					else setSourceIndice(sourceIndice - 1);
-					setInitPage(true);
-				} else {
-					if (isFirstSource && (!flow || flow === FLOW_NEXT))
-						setPage(sources[0].firstPage);
-					else setPage(newPage);
-					setInitPage(true);
+
+				if (!flow) exportedSetPage(initialPage || sources[0].firstPage);
+				else {
+					const newPage = getNewInitPage();
+					if (!newPage) {
+						if (flow === FLOW_NEXT) setSourceIndice(sourceIndice + 1);
+						else setSourceIndice(sourceIndice - 1);
+					} else setPage(newPage);
 				}
+				setInitPage(true);
 			}
 		}
 	}, [
@@ -273,6 +309,8 @@ const useLunaticSplit = (
 		sources,
 		flow,
 		wantedPage,
+		exportedSetPage,
+		initialPage,
 	]);
 
 	const handleChange = useCallback((updatedValue) => {
@@ -341,21 +379,6 @@ const useLunaticSplit = (
 	if (isDev)
 		console.log(`End useLunaticSplit: ${new Date().getTime() - start} ms`);
 
-	const exportedSetPage = (newPage) => {
-		const p = newPage?.split('.')[0];
-		const index = rootPagesOfSource.findIndex((pages) => pages.includes(p));
-		if (index === sourceIndice) {
-			setPage(newPage);
-			setWantedPage(null);
-		} else {
-			// change source
-			setWantedPage(newPage);
-			const stateData = getState(questionnaire);
-			setLunaticData(mergeStateData(lunaticData, stateData));
-			setSourceIndice(index);
-		}
-	};
-
 	return {
 		questionnaire,
 		handleChange,
@@ -363,7 +386,12 @@ const useLunaticSplit = (
 		components: componentsToDiplay,
 		bindings,
 		allBindings,
-		getStateToSave,
+		state: {
+			getState: getStateSplit,
+			getCollectedState: getCollectedStateSplit,
+			getCollectedStateByValueType: getCollectedStateByValueTypeSplit,
+			getBindings: getBindingsSplit,
+		},
 		pagination: {
 			page: page,
 			maxPage: sources[sources.length - 1].maxPage,

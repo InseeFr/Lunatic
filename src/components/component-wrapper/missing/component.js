@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import Button from '../../button';
 import * as U from '../../../utils/lib';
@@ -24,7 +24,30 @@ const Missing = ({ Component, props }) => {
 		paginatedLoop,
 	} = props;
 
+	const missingResponseName = U.getResponseName(missingResponse);
 	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
+	const [oldMissingValue] = useState(() => buttonState);
+
+	const [bindingsForMissingStrategy, setBindingsForMissingStrategy] =
+		useState(null);
+
+	/**
+	 * Sources split: use MissingStragy only if missingResponse has been updated
+	 * Ensures that missingResponse is persisted when the source has to be changed
+	 */
+	useEffect(() => {
+		const isSameValue = buttonState === oldMissingValue;
+		if (bindingsForMissingStrategy && !isSameValue) {
+			if (U.isFunction(missingStrategy))
+				missingStrategy(bindingsForMissingStrategy);
+			setBindingsForMissingStrategy(null);
+		}
+	}, [
+		bindingsForMissingStrategy,
+		missingStrategy,
+		buttonState,
+		oldMissingValue,
+	]);
 
 	useEffect(() => {
 		if (
@@ -36,7 +59,7 @@ const Missing = ({ Component, props }) => {
 				components,
 			})
 		) {
-			handleChange({ [U.getResponseName(missingResponse)]: null });
+			handleChange({ [missingResponseName]: null });
 		}
 	}, [
 		buttonState,
@@ -46,7 +69,7 @@ const Missing = ({ Component, props }) => {
 		responses,
 		cells,
 		components,
-		missingResponse,
+		missingResponseName,
 	]);
 
 	const getVarsToClean = () =>
@@ -80,12 +103,13 @@ const Missing = ({ Component, props }) => {
 						fullBindings,
 						toHandle,
 					});
-					missingStrategy(missingBindings);
+					setBindingsForMissingStrategy(missingBindings);
 				}
 			} else {
-				if (U.isFunction(missingStrategy)) missingStrategy(bindings);
+				if (U.isFunction(missingStrategy))
+					setBindingsForMissingStrategy(bindings);
 			}
-			handleChange({ [U.getResponseName(missingResponse)]: value });
+			handleChange({ [missingResponseName]: value });
 		}
 	};
 
@@ -106,6 +130,7 @@ const Missing = ({ Component, props }) => {
 					<Button
 						label="dont-know-button"
 						value={dontKnowButton}
+						disabled={!missingResponseName || missingResponseName?.length === 0}
 						onClick={onClick(U.DK)}
 					/>
 				</span>
@@ -117,11 +142,13 @@ const Missing = ({ Component, props }) => {
 					<Button
 						label="refused-button"
 						value={refusedButton}
+						disabled={!missingResponseName || missingResponseName?.length === 0}
 						onClick={onClick(U.RF)}
 					/>
 				</span>
 			</div>
 			{shortcut &&
+				missingResponseName?.length > 0 &&
 				missingShortcut &&
 				missingShortcut.dontKnow &&
 				missingShortcut.refused && (
