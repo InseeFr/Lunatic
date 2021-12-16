@@ -39,16 +39,9 @@ function BlockForLoop({
 				}
 			}
 		},
-		[lines]
+		[lines, executeExpression, loopDependencies]
 	);
 	// bindingDependencies
-
-	const executeExpression_ = useCallback(
-		function (expression) {
-			return executeExpression(expression);
-		},
-		[executeExpression]
-	);
 
 	const handleChangeLoop = useCallback(
 		function (response, value, args) {

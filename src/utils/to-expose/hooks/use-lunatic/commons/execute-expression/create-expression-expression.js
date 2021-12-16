@@ -1,6 +1,6 @@
 import executeExpression from './execute-expression';
 
-function getVtlCompatibleValue(name, value) {
+function getVtlCompatibleValue(value) {
 	if (value === undefined) {
 		return null;
 	}
@@ -21,7 +21,7 @@ function createBindings(variables) {
 		function ([bindings, vtlBindings], [name, { value }]) {
 			return [
 				{ ...bindings, [name]: value },
-				{ ...vtlBindings, [name]: getVtlCompatibleValue(name, value) },
+				{ ...vtlBindings, [name]: getVtlCompatibleValue(value) },
 			];
 		},
 		[{}, {}]
@@ -66,7 +66,7 @@ function createExecuteExpression(variables, features) {
 	 *
 	 * @param {*} dependencies
 	 */
-	function refreshCalculated(dependencies) {
+	function refreshCalculated(dependencies = []) {
 		dependencies.forEach(function (name) {
 			if (name in variables) {
 				const { variable } = variables[name];
@@ -81,6 +81,26 @@ function createExecuteExpression(variables, features) {
 		});
 	}
 
+	function renewArray(dependencies = []) {
+		dependencies.forEach(function (name) {
+			if (name in variables) {
+				const value = bindings[name];
+				vtlBindings[name] = getVtlCompatibleValue(value);
+			}
+		});
+	}
+
+	function refreshArrayVariablesForLoop(dependencies, iteration) {
+		dependencies.forEach(function (name) {
+			if (name in variables) {
+				const value = bindings[name];
+				if (Array.isArray(value)) {
+					vtlBindings[name] = value[iteration];
+				}
+			}
+		});
+	}
+
 	/**
 	 *
 	 * @param {*} expression
@@ -88,11 +108,18 @@ function createExecuteExpression(variables, features) {
 	 * @param {*} param2
 	 * @returns
 	 */
-	function execute(expression, { bindingDependencies } = {}) {
-		if (Array.isArray(bindingDependencies)) {
+	function execute(expression, args = {}) {
+		const { bindingDependencies, iteration } = args;
+
+		refreshCalculated(bindingDependencies);
+		if (Array.isArray(bindingDependencies) && iteration !== undefined) {
+			refreshArrayVariablesForLoop(bindingDependencies, iteration); // WTF
 			refreshCalculated(bindingDependencies);
 		}
-		return executeExpression(vtlBindings, expression, features);
+
+		const result = executeExpression(vtlBindings, expression, features);
+		renewArray(bindingDependencies); // WTF
+		return result;
 	}
 	return [execute, updateBindings];
 }

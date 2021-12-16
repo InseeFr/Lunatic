@@ -39,7 +39,7 @@ function LunaticInput(props) {
 				executeExpression={executeExpression}
 			/>
 			<Label id={labelId} htmlFor={inputId} className={'todo'}>
-				{label}
+				{executeExpression(label)}
 			</Label>
 			<DeclarationsAfterText
 				declarations={declarations}
