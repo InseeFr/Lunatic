@@ -30,7 +30,7 @@ function getInitialValueFromExternal(variable, data = {}) {
 }
 
 function getInitialValue(variable, data = {}) {
-	const { COLLECTED, EXTERNAL } = data;
+	const { COLLECTED, EXTERNAL, CALCULATED } = data;
 	const { variableType } = variable;
 	switch (variableType) {
 		case 'COLLECTED':
@@ -38,6 +38,7 @@ function getInitialValue(variable, data = {}) {
 		case 'EXTERNAL':
 			return getInitialValueFromExternal(variable, EXTERNAL);
 		case 'CALCULATED':
+			return getInitialValueFromExternal(variable, CALCULATED);
 		default:
 			return null;
 	}

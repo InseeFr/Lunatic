@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import RadioGroup from './radio-group';
 import Fieldset from './fieldset';
 import { FieldContainer } from '../commons';
@@ -10,8 +10,25 @@ import {
 import './radio.scss';
 
 function Radio(props) {
-	const { label, id, options, value, handleChange, response, declarations } =
-		props;
+	const {
+		label,
+		id,
+		options,
+		value,
+		handleChange,
+		response,
+		declarations,
+		executeExpression,
+		bindingDependencies,
+	} = props;
+
+	const [vtlLabel, setVtlLabel] = useState(label);
+	useEffect(
+		function () {
+			setVtlLabel(executeExpression(label, { bindingDependencies }));
+		},
+		[bindingDependencies, executeExpression, label]
+	);
 
 	const onClick = useCallback(
 		function (valueOption) {
@@ -26,7 +43,7 @@ function Radio(props) {
 		<>
 			<DeclarationsBeforeText declarations={declarations} />
 			<FieldContainer id={id} value={value}>
-				<Fieldset legend={label}>
+				<Fieldset legend={vtlLabel}>
 					<DeclarationsAfterText declarations={declarations} />
 					<RadioGroup
 						id={id}

@@ -48,7 +48,7 @@ function createExecuteExpression(variables, features) {
 		// update des bindings
 		if (name in vtlBindings) {
 			bindings[name] = value;
-			vtlBindings[name] = getVtlCompatibleValue(name, value);
+			vtlBindings[name] = getVtlCompatibleValue(value);
 		}
 		// enrichissement des variables à rafraîchir
 		const { dependencies } = variables[name];
@@ -71,8 +71,11 @@ function createExecuteExpression(variables, features) {
 			if (name in variables) {
 				const { variable } = variables[name];
 
-				const { variableType, expression } = variable;
+				const { variableType, expression, bindingDependencies } = variable;
 				if (variableType === 'CALCULATED' && toRefreshVariables.has(name)) {
+					if (bindingDependencies) {
+						refreshCalculated(bindingDependencies);
+					}
 					const value = executeExpression(vtlBindings, expression, ['VTL']);
 					updateBindings(name, value);
 					toRefreshVariables.delete(name);

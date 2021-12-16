@@ -1,20 +1,19 @@
 import React, { useCallback } from 'react';
-import Input from './input';
 import { InputContainer } from '../commons';
-import './input.scss';
+import Datepicker from './datepicker';
+import './datepicker.scss';
 
-function LunaticInput(props) {
-	const {
-		label,
-		id,
-		value,
-		handleChange,
-		response,
-		disabled,
-		declarations,
-		executeExpression,
-	} = props;
-
+function LunaticDatepicker({
+	declarations,
+	executeExpression,
+	label,
+	id,
+	response,
+	value,
+	handleChange,
+	disabled,
+	readOnly,
+}) {
 	const onChange = useCallback(
 		function (inputValue) {
 			if (value !== inputValue) {
@@ -24,8 +23,8 @@ function LunaticInput(props) {
 		[handleChange, response, value]
 	);
 
-	const inputId = `lunatic-input-${id}`;
-	const labelId = `lunatic-input-label-${id}`;
+	const inputId = `lunatic-datepicker-${id}`;
+	const labelId = `lunatic-datepicker-label-${id}`;
 
 	return (
 		<InputContainer
@@ -38,15 +37,16 @@ function LunaticInput(props) {
 			labelId={labelId}
 			labelClassName="todo"
 		>
-			<Input
+			<Datepicker
 				id={inputId}
 				labelledBy={labelId}
 				value={value}
 				onChange={onChange}
 				disabled={disabled}
+				readOnly={readOnly}
 			/>
 		</InputContainer>
 	);
 }
 
-export default React.memo(LunaticInput);
+export default LunaticDatepicker;
