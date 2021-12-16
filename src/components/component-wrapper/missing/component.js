@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import Button from '../../button';
 import * as U from '../../../utils/lib';
@@ -25,6 +25,28 @@ const Missing = ({ Component, props }) => {
 	} = props;
 
 	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
+	const [oldMissingValue] = useState(() => buttonState);
+
+	const [bindingsForMissingStrategy, setBindingsForMissingStrategy] =
+		useState(null);
+
+	/**
+	 * Sources split: use MissingStragy only if missingResponse has been updated
+	 * Ensures that missingResponse is persisted when the source has to be changed
+	 */
+	useEffect(() => {
+		const isSameValue = buttonState === oldMissingValue;
+		if (bindingsForMissingStrategy && !isSameValue) {
+			if (U.isFunction(missingStrategy))
+				missingStrategy(bindingsForMissingStrategy);
+			setBindingsForMissingStrategy(null);
+		}
+	}, [
+		bindingsForMissingStrategy,
+		missingStrategy,
+		buttonState,
+		oldMissingValue,
+	]);
 
 	useEffect(() => {
 		if (
@@ -81,10 +103,11 @@ const Missing = ({ Component, props }) => {
 						fullBindings,
 						toHandle,
 					});
-					missingStrategy(missingBindings);
+					setBindingsForMissingStrategy(missingBindings);
 				}
 			} else {
-				if (U.isFunction(missingStrategy)) missingStrategy(bindings);
+				if (U.isFunction(missingStrategy))
+					setBindingsForMissingStrategy(bindings);
 			}
 			handleChange({ [U.getResponseName(missingResponse)]: value });
 		}
