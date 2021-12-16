@@ -1,1 +1,1 @@
-export { default } from './input-number';
+export { default } from './lunatic-input-number';
