@@ -60,15 +60,20 @@ export const getSplitQuestionnaireSource = (source) => {
 	const { components, variables, ...rest } = source;
 	var split = [];
 	var currentComponents = [];
+	var previousPage = null;
 	components.map((c, i) => {
-		const { componentType } = c;
+		const { componentType, page } = c;
 		// splitting by Sequence or Loop
-		if (componentType === 'Sequence' || componentType === 'Loop') {
+		if (
+			(componentType === 'Sequence' || componentType === 'Loop') &&
+			previousPage !== page
+		) {
 			if (currentComponents.length > 0) split.push(currentComponents);
 			currentComponents = [c];
 		} else {
 			currentComponents.push(c);
 		}
+		previousPage = page;
 		return null;
 	});
 	if (currentComponents.length > 0) split.push(currentComponents);
