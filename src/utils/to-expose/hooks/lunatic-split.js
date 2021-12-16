@@ -257,7 +257,6 @@ const useLunaticSplit = (
 			if (wantedPage) {
 				setPage(wantedPage);
 				setWantedPage(null);
-				setInitPage(true);
 			} else {
 				const getNewInitPage = () => {
 					if (flow === FLOW_NEXT) {
@@ -298,8 +297,8 @@ const useLunaticSplit = (
 						else setSourceIndice(sourceIndice - 1);
 					} else setPage(newPage);
 				}
-				setInitPage(true);
 			}
+			setInitPage(true);
 		}
 	}, [
 		initPage,
