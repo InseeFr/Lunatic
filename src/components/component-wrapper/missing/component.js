@@ -24,6 +24,7 @@ const Missing = ({ Component, props }) => {
 		missingLoopIteration,
 	} = props;
 
+	const missingResponseName = U.getResponseName(missingResponse);
 	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
 	const [oldMissingValue] = useState(() => buttonState);
 
@@ -58,7 +59,7 @@ const Missing = ({ Component, props }) => {
 				components,
 			})
 		) {
-			handleChange({ [U.getResponseName(missingResponse)]: null });
+			handleChange({ [missingResponseName]: null });
 		}
 	}, [
 		buttonState,
@@ -68,7 +69,7 @@ const Missing = ({ Component, props }) => {
 		responses,
 		cells,
 		components,
-		missingResponse,
+		missingResponseName,
 	]);
 
 	const getVarsToClean = () =>
@@ -109,7 +110,7 @@ const Missing = ({ Component, props }) => {
 				if (U.isFunction(missingStrategy))
 					setBindingsForMissingStrategy(bindings);
 			}
-			handleChange({ [U.getResponseName(missingResponse)]: value });
+			handleChange({ [missingResponseName]: value });
 		}
 	};
 
@@ -134,6 +135,7 @@ const Missing = ({ Component, props }) => {
 					<Button
 						label="dont-know-button"
 						value={dontKnowButton}
+						disabled={!missingResponseName || missingResponseName?.length === 0}
 						onClick={onClick(U.DK)}
 					/>
 				</span>
@@ -145,11 +147,13 @@ const Missing = ({ Component, props }) => {
 					<Button
 						label="refused-button"
 						value={refusedButton}
+						disabled={!missingResponseName || missingResponseName?.length === 0}
 						onClick={onClick(U.RF)}
 					/>
 				</span>
 			</div>
 			{shortcut &&
+				missingResponseName?.length > 0 &&
 				missingShortcut &&
 				missingShortcut.dontKnow &&
 				missingShortcut.refused && (
