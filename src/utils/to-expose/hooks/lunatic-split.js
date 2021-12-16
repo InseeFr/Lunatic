@@ -242,21 +242,21 @@ const useLunaticSplit = (
 					if (flow === FLOW_NEXT) {
 						const tempPage =
 							sourceIndice - 1 > 0
-								? sources[sourceIndice - 1].firstPage
-								: sources[0].firstPage;
+								? sources[sourceIndice - 1].maxPage
+								: sources[0].maxPage;
 						return getPage({
 							components: questionnaire.components,
 							bindings: bindings,
 							currentPage: tempPage,
 							featuresWithoutMD,
-							flow: flow || FLOW_NEXT,
+							flow: FLOW_NEXT,
 							management,
 						});
 					} else if (flow === FLOW_PREVIOUS) {
 						const tempPage =
 							sourceIndice + 1 < sources.length - 1
-								? sources[sourceIndice + 1].maxPage
-								: sources[sources.length - 1].maxPage;
+								? sources[sourceIndice + 1].firstPage
+								: sources[sources.length - 1].firstPage;
 						return getPage({
 							components: questionnaire.components,
 							bindings: bindings,
@@ -268,16 +268,16 @@ const useLunaticSplit = (
 					}
 					return null;
 				};
-				const newPage = getNewInitPage();
-				if (!newPage) {
-					if (!flow) exportedSetPage(initialPage || sources[0].firstPage);
-					else if (flow === FLOW_NEXT) setSourceIndice(sourceIndice + 1);
-					else setSourceIndice(sourceIndice - 1);
-					setInitPage(true);
-				} else {
-					setPage(newPage);
-					setInitPage(true);
+
+				if (!flow) exportedSetPage(initialPage || sources[0].firstPage);
+				else {
+					const newPage = getNewInitPage();
+					if (!newPage) {
+						if (flow === FLOW_NEXT) setSourceIndice(sourceIndice + 1);
+						else setSourceIndice(sourceIndice - 1);
+					} else setPage(newPage);
 				}
+				setInitPage(true);
 			}
 		}
 	}, [
