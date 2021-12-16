@@ -44,7 +44,7 @@ const OrchestratorForStories = ({
 			isLastPage,
 			flow,
 		},
-	} = lunatic.useLunatic(source, data, {
+	} = lunatic.useLunaticSplit(source, data, {
 		suggesters,
 		savingType,
 		preferences,

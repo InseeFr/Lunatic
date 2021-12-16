@@ -50,7 +50,7 @@ function OptionContainer({ children, index, selected }) {
 			className={classnames('lunatic-suggester-option', { selected })}
 			role="option"
 			aria-selected={selected}
-			onClick={onClick}
+			onMouseDown={onClick}
 			ref={ref}
 		>
 			{children}

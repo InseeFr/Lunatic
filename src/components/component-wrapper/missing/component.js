@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import Button from '../../button';
 import * as U from '../../../utils/lib';
@@ -21,10 +21,33 @@ const Missing = ({ Component, props }) => {
 		bindings,
 		shortcut,
 		componentType,
-		missingLoopIteration,
+		paginatedLoop,
 	} = props;
 
+	const missingResponseName = U.getResponseName(missingResponse);
 	const buttonState = U.getResponseByPreference(preferences)(missingResponse);
+	const [oldMissingValue] = useState(() => buttonState);
+
+	const [bindingsForMissingStrategy, setBindingsForMissingStrategy] =
+		useState(null);
+
+	/**
+	 * Sources split: use MissingStragy only if missingResponse has been updated
+	 * Ensures that missingResponse is persisted when the source has to be changed
+	 */
+	useEffect(() => {
+		const isSameValue = buttonState === oldMissingValue;
+		if (bindingsForMissingStrategy && !isSameValue) {
+			if (U.isFunction(missingStrategy))
+				missingStrategy(bindingsForMissingStrategy);
+			setBindingsForMissingStrategy(null);
+		}
+	}, [
+		bindingsForMissingStrategy,
+		missingStrategy,
+		buttonState,
+		oldMissingValue,
+	]);
 
 	useEffect(() => {
 		if (
@@ -36,7 +59,7 @@ const Missing = ({ Component, props }) => {
 				components,
 			})
 		) {
-			handleChange({ [U.getResponseName(missingResponse)]: null });
+			handleChange({ [missingResponseName]: null });
 		}
 	}, [
 		buttonState,
@@ -46,7 +69,7 @@ const Missing = ({ Component, props }) => {
 		responses,
 		cells,
 		components,
-		missingResponse,
+		missingResponseName,
 	]);
 
 	const getVarsToClean = () =>
@@ -62,10 +85,9 @@ const Missing = ({ Component, props }) => {
 		if (!isSameValue) {
 			const toClean = getVarsToClean();
 			if (Object.keys(toClean)) {
-				const { missingLoopIteration, currentPage } = props;
+				const { currentPage } = props;
 				const currentIterationIndex = getCurrentIterationIndex({
 					currentPage,
-					missingLoopIteration,
 				});
 				handleChange(toClean);
 				if (U.isFunction(missingStrategy)) {
@@ -81,20 +103,17 @@ const Missing = ({ Component, props }) => {
 						fullBindings,
 						toHandle,
 					});
-					missingStrategy(missingBindings);
+					setBindingsForMissingStrategy(missingBindings);
 				}
 			} else {
-				if (U.isFunction(missingStrategy)) missingStrategy(bindings);
+				if (U.isFunction(missingStrategy))
+					setBindingsForMissingStrategy(bindings);
 			}
-			handleChange({ [U.getResponseName(missingResponse)]: value });
+			handleChange({ [missingResponseName]: value });
 		}
 	};
 
-	if (
-		componentType === 'Loop' ||
-		missingLoopIteration ||
-		missingLoopIteration === 0
-	)
+	if ((componentType === 'Loop' && paginatedLoop) || !missingResponse)
 		return <Component {...props} />;
 
 	return (
@@ -111,6 +130,7 @@ const Missing = ({ Component, props }) => {
 					<Button
 						label="dont-know-button"
 						value={dontKnowButton}
+						disabled={!missingResponseName || missingResponseName?.length === 0}
 						onClick={onClick(U.DK)}
 					/>
 				</span>
@@ -122,11 +142,13 @@ const Missing = ({ Component, props }) => {
 					<Button
 						label="refused-button"
 						value={refusedButton}
+						disabled={!missingResponseName || missingResponseName?.length === 0}
 						onClick={onClick(U.RF)}
 					/>
 				</span>
 			</div>
 			{shortcut &&
+				missingResponseName?.length > 0 &&
 				missingShortcut &&
 				missingShortcut.dontKnow &&
 				missingShortcut.refused && (
@@ -147,11 +169,9 @@ const Missing = ({ Component, props }) => {
 export default Missing;
 
 // TODO: make it recursive for Loop into Loop
-const getCurrentIterationIndex = ({ currentPage, missingLoopIteration }) => {
+const getCurrentIterationIndex = ({ currentPage }) => {
 	const { currentIteration } = U.splitPage(currentPage, 1);
 	if (currentIteration) return currentIteration - 1;
-	if (missingLoopIteration || missingLoopIteration === 0)
-		return missingLoopIteration;
 	return null;
 };
 

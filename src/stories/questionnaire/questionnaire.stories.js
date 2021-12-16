@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import Orchestrator from '../utils/orchestrator';
+import OrchestratorSplit from '../utils/orchestrator-split';
 import { titleDecorator } from 'utils/lib';
 import calcVar from './calc-var';
 import logement from './logement';
@@ -10,6 +11,9 @@ import logementSequence from './logement-sequence';
 import dataLogement from './data-logement';
 import simpsons from './simpsons';
 import arithmetic from './arithmetic';
+import arithmeticManagement from './arithmetic-management';
+import updateExternalQuestionnaire from './update-external/questionnaire';
+import updateExternalData from './update-external/data';
 import { positioningOptions, featuresOptions } from '../utils/options';
 import { boolean, select } from '@storybook/addon-knobs/react';
 
@@ -33,19 +37,6 @@ def.addWithJSX('Calculated Variables', () => (
 	/>
 ));
 
-def.addWithJSX('Logement', () => (
-	<Orchestrator
-		id="props"
-		source={logement}
-		missing={boolean('Missing', false)}
-		features={select('Features', featuresOptions, ['VTL', 'MD'])}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		disabled={boolean('Disabled', false)}
-		focused={boolean('Focused', false)}
-		management={boolean('Management', false)}
-	/>
-));
-
 def.addWithJSX('Arithmetic', () => (
 	<Orchestrator
 		id="props"
@@ -53,6 +44,17 @@ def.addWithJSX('Arithmetic', () => (
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
+	/>
+));
+
+def.addWithJSX('Arithmetic - Management', () => (
+	<Orchestrator
+		id="props"
+		source={arithmeticManagement}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		disabled={boolean('Disabled', false)}
+		management={boolean('Management', true)}
 	/>
 ));
 
@@ -77,7 +79,7 @@ const paginated = storiesOf('Questionnaire/Paginated', module).addDecorator(
 );
 
 paginated.addWithJSX('Calculated Variables', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={calcVar}
 		missing={boolean('Missing', false)}
@@ -91,7 +93,7 @@ paginated.addWithJSX('Calculated Variables', () => (
 ));
 
 paginated.addWithJSX('Logement', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={logement}
 		data={dataLogement}
@@ -108,11 +110,11 @@ paginated.addWithJSX('Logement', () => (
 ));
 
 paginated.addWithJSX('Logement - Queen', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={logementQueen}
 		data={dataLogement}
-		missing={boolean('Missing', false)}
+		missing={boolean('Missing', true)}
 		activeGoNextForMissing={boolean('Active go next for missing', false)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
@@ -124,7 +126,7 @@ paginated.addWithJSX('Logement - Queen', () => (
 ));
 
 paginated.addWithJSX('Logement - Sequence', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={logementSequence}
 		data={dataLogement}
@@ -140,7 +142,7 @@ paginated.addWithJSX('Logement - Sequence', () => (
 ));
 
 paginated.addWithJSX('Logement - S2', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={logementS2}
 		missing={boolean('Missing', false)}
@@ -155,7 +157,7 @@ paginated.addWithJSX('Logement - S2', () => (
 ));
 
 paginated.addWithJSX('Simpsons', () => (
-	<Orchestrator
+	<OrchestratorSplit
 		id="props"
 		source={simpsons}
 		missing={boolean('Missing', false)}
@@ -170,3 +172,34 @@ paginated.addWithJSX('Simpsons', () => (
 		pagination
 	/>
 ));
+
+const other = storiesOf('Questionnaire/Other', module).addDecorator(
+	(Component) => {
+		const WrappedComponent = titleDecorator(Component);
+		return <WrappedComponent title="<Questionnaire />" />;
+	}
+);
+
+other.addWithJSX('Update external', () => {
+	const [addExternal, setAddExternal] = useState(null);
+	return (
+		<>
+			<button
+				onClick={() => setAddExternal({ PROMO: true })}
+			>{`Fire PROMO --> True`}</button>
+			<button
+				onClick={() => setAddExternal({ PROMO: false })}
+			>{`Fire PROMO --> False`}</button>
+			<Orchestrator
+				id="props"
+				source={updateExternalQuestionnaire}
+				data={updateExternalData}
+				features={select('Features', featuresOptions, ['VTL', 'MD'])}
+				positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+				disabled={boolean('Disabled', false)}
+				focused={boolean('Focused', false)}
+				addExternal={addExternal}
+			/>
+		</>
+	);
+});

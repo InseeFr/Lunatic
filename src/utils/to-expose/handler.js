@@ -43,10 +43,10 @@ export const updateQuestionnaire =
 			{ newVariables: variables, refs: [] }
 		);
 		const { newVariables, refs: r } = varsAndRefs;
-		const newVariablesWithCalculated =
-			valueType === C.COLLECTED
-				? addCalculatedVars(newVariables, updatedValues)(logFunction)
-				: newVariables;
+		const newVariablesWithCalculated = addCalculatedVars(
+			newVariables,
+			updatedValues
+		)(logFunction, preferences);
 		const collectedVars = newVariables[C.COLLECTED];
 		const newComponents = components.map((c) => {
 			if (r.includes(c.id)) return buildFilledComponent(collectedVars)(c);
@@ -56,6 +56,26 @@ export const updateQuestionnaire =
 			...other,
 			variables: newVariablesWithCalculated,
 			components: newComponents,
+		};
+	};
+
+export const updateExternals =
+	(questionnaire) => (logFunction) => (updatedValues) => {
+		const { variables, ...other } = questionnaire;
+		const { EXTERNAL } = variables;
+		const newVariables = {
+			...variables,
+			EXTERNAL: { ...EXTERNAL, ...updatedValues },
+		};
+
+		const newVariablesWithCalculated = addCalculatedVars(
+			newVariables,
+			updatedValues
+		)(logFunction);
+
+		return {
+			...other,
+			variables: newVariablesWithCalculated,
 		};
 	};
 
@@ -72,41 +92,60 @@ export const buildNewValue =
 		return lastValue === value ? null : value;
 	};
 
-const getCollectedAndExternal = (variables) => {
+// Separate methods to avoid perf issue on collect simplest use case
+const getCollectedAndExternal = (preferences) => (variables) => {
 	const { COLLECTED } = variables;
-	const collected = Object.entries(COLLECTED).reduce(
+	if (preferences.length === 1 && preferences[0] === 'COLLECTED')
+		return getCollectedAndExternalSimple(COLLECTED);
+	return getCollectedAndExternalByPreferences(preferences)(COLLECTED);
+};
+
+const getCollectedAndExternalSimple = (variables) => {
+	const collected = Object.entries(variables).reduce(
 		(acc, [k, { values }]) => ({ ...acc, [k]: values.COLLECTED }),
 		{}
 	);
 	return { ...collected, ...variables.EXTERNAL };
 };
 
-const addCalculatedVars = (variables, updatedValues) => (logFunction) => {
-	if (
-		!variables[C.CALCULATED] ||
-		Object.keys(variables[C.CALCULATED]).length === 0
-	)
-		return variables;
-
-	if (isDev) {
-		console.log('Start var calculation');
-		var start = new Date().getTime();
-	}
-
-	const { COLLECTED, EXTERNAL, CALCULATED: calculatedVariables } = variables;
-
-	const updatedVars = Object.keys(updatedValues);
-
-	const bindings = getCollectedAndExternal(variables);
-
-	const CALCULATED = getCalculatedVariables(calculatedVariables)({
-		bindings,
-		updatedVars,
-		logFunction,
-	});
-
-	if (isDev)
-		console.log(`End var calculation: ${new Date().getTime() - start} ms`);
-
-	return { EXTERNAL, COLLECTED, CALCULATED };
+const getCollectedAndExternalByPreferences = (preferences) => (variables) => {
+	const collected = Object.entries(variables).reduce((acc, [k, { values }]) => {
+		const v = preferences.reduce((acc, p) => {
+			const value = values[p];
+			return [null, ''].includes(value) ? acc : value;
+		}, null);
+		return { ...acc, [k]: v };
+	}, {});
+	return { ...collected, ...variables.EXTERNAL };
 };
+
+const addCalculatedVars =
+	(variables, updatedValues) => (logFunction, preferences) => {
+		if (
+			!variables[C.CALCULATED] ||
+			Object.keys(variables[C.CALCULATED]).length === 0
+		)
+			return variables;
+
+		if (isDev) {
+			console.log('Start var calculation');
+			var start = new Date().getTime();
+		}
+
+		const { COLLECTED, EXTERNAL, CALCULATED: calculatedVariables } = variables;
+
+		const updatedVars = Object.keys(updatedValues);
+
+		const bindings = getCollectedAndExternal(preferences)(variables);
+
+		const CALCULATED = getCalculatedVariables(calculatedVariables)({
+			bindings,
+			updatedVars,
+			logFunction,
+		});
+
+		if (isDev)
+			console.log(`End var calculation: ${new Date().getTime() - start} ms`);
+
+		return { EXTERNAL, COLLECTED, CALCULATED };
+	};

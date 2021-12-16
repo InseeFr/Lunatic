@@ -221,28 +221,28 @@ const getIterations = ({ component, bindings, featuresWithoutMD }) => {
 export const splitPage = (currentPage = '1', depth) => {
 	const currentPageWithDepth = depth
 		? currentPage
-				.split('.')
+				?.split('.')
 				.slice(0, depth + 1) // scoped
 				.join('.')
 		: currentPage;
 
 	const currentPageWithoutIteration = currentPageWithDepth
-		.split('#')
+		?.split('#')
 		.slice(0, -1)
 		.join('#');
 
 	const currentPageWithoutAnyIteration = currentPageWithDepth
-		.split('.')
+		?.split('.')
 		.map((e) => e.split('#')[0])
 		.join('.');
 
 	const currentRootPage = currentPageWithoutIteration
-		.split('.')
+		?.split('.')
 		.slice(0, -1)
 		.join('.');
 
 	const [currentComponentIndex, currentIteration] = currentPageWithDepth
-		.split('.')
+		?.split('.')
 		.pop()
 		.split('#')
 		.map((c) => parseInt(c, 10));

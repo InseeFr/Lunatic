@@ -98,7 +98,7 @@
 		"CALCULATED": {
 			"Test": {
 				"expression": "inputOk || \" ok\"",
-				"value": "My input ok",
+				"value": "My new input ok",
 				"bindingDependencies": ["inputOk"]
 			}
 		},

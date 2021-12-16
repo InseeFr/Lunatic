@@ -24,6 +24,7 @@ const Table = ({
 	management,
 	numberAsTextfield,
 	logFunction,
+	...rest
 }) => {
 	const minLines = initLines
 		? Math.max(initLines.min, U.getRosterInitLines(cells))
@@ -79,6 +80,7 @@ const Table = ({
 												style={{ width }}
 											>
 												<Component
+													{...rest}
 													label={label || ' '}
 													handleChange={handleChange}
 													preferences={preferences}
@@ -88,7 +90,7 @@ const Table = ({
 													bindings={bindings}
 													{...componentProps}
 													zIndex={cells.length - i || 0}
-													numberAsTextfield
+													numberAsTextfield={numberAsTextfield}
 													logFunction={logFunction}
 													shortcut={false}
 												/>
