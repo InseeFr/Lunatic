@@ -155,13 +155,13 @@ const useLunaticSplit = (
 	const isFirstSource = sourceIndex === 0;
 	const isLastSource = sourceIndex === sources.length - 1;
 
-	const goSplitNext = useCallback(() => {
+	const goSplitNext = () => {
 		if (!isLastSource) {
 			const stateData = getState(questionnaire);
 			setLunaticData(mergeStateData(lunaticData, stateData));
 			setSourceIndex(sourceIndex + 1);
 		}
-	}, [isLastSource, lunaticData, questionnaire, sourceIndex]);
+	};
 
 	// First param is the onClick event, useless for us but we have to keep it safe into
 	// function signature to avoid confusing with customBindings
@@ -196,13 +196,13 @@ const useLunaticSplit = (
 		}
 	};
 
-	const goSplitPrevious = useCallback(() => {
+	const goSplitPrevious = () => {
 		if (!isFirstSource) {
 			const stateData = getState(questionnaire);
 			setLunaticData(mergeStateData(lunaticData, stateData));
 			setSourceIndex(sourceIndex - 1);
 		}
-	}, [isFirstSource, lunaticData, questionnaire, sourceIndex]);
+	};
 
 	const goPrevious = () => {
 		if (!(isFirstPage && isFirstSource)) {
@@ -299,8 +299,8 @@ const useLunaticSplit = (
 				else {
 					const newPage = getNewInitPage();
 					if (!newPage) {
-						if (flow === FLOW_NEXT) goSplitNext();
-						else goSplitPrevious();
+						if (flow === FLOW_NEXT) setSourceIndex(sourceIndex + 1);
+						else setSourceIndex(sourceIndex - 1);
 					} else setPage(newPage);
 				}
 			}
@@ -321,8 +321,6 @@ const useLunaticSplit = (
 		wantedPage,
 		exportedSetPage,
 		initialPage,
-		goSplitNext,
-		goSplitPrevious,
 	]);
 
 	const handleChange = useCallback((updatedValue) => {
