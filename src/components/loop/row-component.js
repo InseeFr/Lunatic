@@ -24,6 +24,7 @@ function RowComponent({
 		},
 		[executeExpression, iteration, component]
 	);
+
 	if (componentType in lunatic) {
 		return (
 			<Component

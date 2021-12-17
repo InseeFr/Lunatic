@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import RadioGroup from './radio-group';
 import Fieldset from './fieldset';
 import { FieldContainer } from '../commons';
@@ -20,16 +20,10 @@ function Radio(props) {
 		declarations,
 		executeExpression,
 		bindingDependencies,
+		iteration,
 	} = props;
 
-	const [vtlLabel, setVtlLabel] = useState(label);
-	useEffect(
-		function () {
-			setVtlLabel(executeExpression(label, { bindingDependencies }));
-		},
-		[bindingDependencies, executeExpression, label]
-	);
-
+	const vtl = { executeExpression, iteration, bindingDependencies };
 	const onClick = useCallback(
 		function (valueOption) {
 			if (value !== valueOption) {
@@ -41,19 +35,20 @@ function Radio(props) {
 
 	return (
 		<>
-			<DeclarationsBeforeText declarations={declarations} />
+			<DeclarationsBeforeText declarations={declarations} {...vtl} />
 			<FieldContainer id={id} value={value}>
-				<Fieldset legend={vtlLabel}>
-					<DeclarationsAfterText declarations={declarations} />
+				<Fieldset legend={label} {...vtl}>
+					<DeclarationsAfterText declarations={declarations} {...vtl} />
 					<RadioGroup
 						id={id}
 						options={options}
 						value={value}
 						onClick={onClick}
+						{...vtl}
 					/>
 				</Fieldset>
 			</FieldContainer>
-			<DeclarationsDetachable declarations={declarations} />
+			<DeclarationsDetachable declarations={declarations} {...vtl} />
 		</>
 	);
 }

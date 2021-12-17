@@ -27,8 +27,6 @@ function LunaticInputNumber({
 	const inputId = `lunatic-input-${id}`;
 	const labelId = `lunatic-input-label-${id}`;
 
-	console.log({ min, max, step });
-
 	return (
 		<InputContainer
 			declarations={declarations}

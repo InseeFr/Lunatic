@@ -8,7 +8,6 @@ import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
 
 function BlockForLoop({
 	declarations,
-	label,
 	lines,
 	components,
 	handleChange,
@@ -41,7 +40,6 @@ function BlockForLoop({
 		},
 		[lines, executeExpression, loopDependencies]
 	);
-	// bindingDependencies
 
 	const handleChangeLoop = useCallback(
 		function (response, value, args) {

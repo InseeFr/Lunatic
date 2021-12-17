@@ -87,7 +87,7 @@ function reduceGoNextPage(state) {
 	}
 
 	const next = getNextPage(state);
-	const { isLoop, iterations } = pages[next];
+	const { isLoop, iterations } = pages[next]; // loopDependencies
 	if (next === page) {
 		// TODO on devrait jamais en arriver là !
 	}

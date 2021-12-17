@@ -17,7 +17,11 @@ function executeVtl(expression, vtlBindings) {
 	const result = interpret(expression, vtlBindings);
 	if (isDataSet(result)) {
 		return extractDataSetResult(result);
+	} else if (typeof result === 'object') {
+		console.warn(expression, result);
+		return expression;
 	}
+
 	return result;
 }
 

@@ -66,19 +66,19 @@ function createExecuteExpression(variables, features) {
 	 *
 	 * @param {*} dependencies
 	 */
-	function refreshCalculated(dependencies = []) {
+	function refreshCalculated(dependencies, iteration) {
 		dependencies.forEach(function (name) {
 			if (name in variables) {
 				const { variable } = variables[name];
-
 				const { variableType, expression, bindingDependencies } = variable;
+
 				if (variableType === 'CALCULATED' && toRefreshVariables.has(name)) {
-					if (bindingDependencies) {
-						refreshCalculated(bindingDependencies);
-					}
-					const value = executeExpression(vtlBindings, expression, ['VTL']);
-					updateBindings(name, value);
 					toRefreshVariables.delete(name);
+					if (bindingDependencies) {
+						refreshCalculated(bindingDependencies, iteration);
+					}
+					const value = executeExpression(vtlBindings, expression, features); //execute(expression, { bindingDependencies, iteration });
+					updateBindings(name, value);
 				}
 			}
 		});
@@ -97,11 +97,16 @@ function createExecuteExpression(variables, features) {
 		dependencies.forEach(function (name) {
 			if (name in variables) {
 				const value = bindings[name];
+
 				if (Array.isArray(value)) {
 					vtlBindings[name] = value[iteration];
 				}
 			}
 		});
+	}
+
+	function refreshCalculatedInLoop(bindingDependencies, iteration) {
+		// console.log({ bindingDependencies, iteration });
 	}
 
 	/**
@@ -113,15 +118,15 @@ function createExecuteExpression(variables, features) {
 	 */
 	function execute(expression, args = {}) {
 		const { bindingDependencies, iteration } = args;
-
-		refreshCalculated(bindingDependencies);
 		if (Array.isArray(bindingDependencies) && iteration !== undefined) {
-			refreshArrayVariablesForLoop(bindingDependencies, iteration); // WTF
+			refreshCalculatedInLoop(bindingDependencies, iteration);
+			refreshArrayVariablesForLoop(bindingDependencies, iteration);
+		} else if (bindingDependencies) {
 			refreshCalculated(bindingDependencies);
 		}
 
 		const result = executeExpression(vtlBindings, expression, features);
-		renewArray(bindingDependencies); // WTF
+		renewArray(bindingDependencies);
 		return result;
 	}
 	return [execute, updateBindings];

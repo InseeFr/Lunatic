@@ -1,9 +1,20 @@
 import React from 'react';
 
-function Fieldset({ children, legend }) {
+function Fieldset({
+	children,
+	legend,
+	executeExpression,
+	bindingDependencies,
+	iteration,
+}) {
+	const legendCompute = executeExpression(legend, {
+		bindingDependencies,
+		iteration,
+	});
+
 	return (
 		<fieldset>
-			<legend>{legend}</legend>
+			<legend>{legendCompute}</legend>
 			{children}
 		</fieldset>
 	);

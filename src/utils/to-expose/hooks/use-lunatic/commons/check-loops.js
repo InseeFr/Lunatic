@@ -14,18 +14,24 @@ function extractSubPages(component, previous = []) {
 
 function extractLoop(components) {
 	return components.reduce(
-		function ({ isLoop, subPages, iterations }, component) {
+		function ({ isLoop, subPages, iterations, loopDependencies }, component) {
 			const currentIsLoop = isPaginatedLoop(component);
 			if (currentIsLoop) {
 				return {
 					isLoop: true,
 					subPages: extractSubPages(component, subPages),
-					iterations: iterations || component?.iterations,
+					iterations: iterations || component.iterations,
+					loopDependencies: loopDependencies || component.loopDependencies,
 				};
 			}
 			return { isLoop, subPages, iterations };
 		},
-		{ isLoop: false, subPages: undefined, iterations: undefined }
+		{
+			isLoop: false,
+			subPages: undefined,
+			iterations: undefined,
+			loopDependencies: undefined,
+		}
 	);
 }
 
@@ -34,9 +40,19 @@ function checkLoops(pages) {
 		const [number, content] = current;
 		if (number !== 'unpaged') {
 			const { components } = content;
-			const { isLoop, subPages, iterations } = extractLoop(components);
+			const { isLoop, subPages, iterations, loopDependencies } =
+				extractLoop(components);
 
-			return { ...map, [number]: { ...content, isLoop, subPages, iterations } };
+			return {
+				...map,
+				[number]: {
+					...content,
+					isLoop,
+					subPages,
+					iterations,
+					loopDependencies,
+				},
+			};
 		}
 		return map;
 	}, {});

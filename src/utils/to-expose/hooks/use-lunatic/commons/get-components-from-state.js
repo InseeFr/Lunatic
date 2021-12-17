@@ -5,9 +5,16 @@ function fillComponentValue(component, state) {
 	return { ...component, value };
 }
 
-function fillComponentsValue(components, state) {
+function fillPagination(component, state) {
+	const { pager } = state;
+	const { iteration } = pager;
+
+	return { ...component, iteration };
+}
+
+function fillComponents(components, state) {
 	return components.map(function (component) {
-		return fillComponentValue(component, state);
+		return fillPagination(fillComponentValue(component, state), state);
 	});
 }
 
@@ -24,11 +31,11 @@ function getComponentsFromState(state) {
 				const currentSubPage = pages[stepName];
 				const { components } = currentSubPage;
 
-				return fillComponentsValue(components, state);
+				return fillComponents(components, state);
 			}
 		} else {
 			const { components } = current;
-			return fillComponentsValue(components, state);
+			return fillComponents(components, state);
 		}
 	}
 
