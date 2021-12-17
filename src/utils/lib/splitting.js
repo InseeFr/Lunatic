@@ -1,16 +1,12 @@
 const getBindingsDependenciesCalculated = (variables) => {
 	if (!variables) return {};
-	return variables.reduce(
-		(acc, { variableType, name, bindingDependencies, shapeFrom }) => {
-			if (variableType === 'CALCULATED')
-				if (shapeFrom && bindingDependencies)
-					return { ...acc, [name]: [...bindingDependencies, shapeFrom] };
-			if (bindingDependencies) return { ...acc, [name]: bindingDependencies };
-			if (shapeFrom) return { ...acc, [name]: [shapeFrom] };
-			return acc;
-		},
-		{}
-	);
+	return variables.reduce((acc, { name, bindingDependencies, shapeFrom }) => {
+		if (shapeFrom && bindingDependencies)
+			return { ...acc, [name]: [...bindingDependencies, shapeFrom] };
+		if (bindingDependencies) return { ...acc, [name]: bindingDependencies };
+		if (shapeFrom) return { ...acc, [name]: [shapeFrom] };
+		return acc;
+	}, {});
 };
 
 const getAllDeps = (deps) => (variablesCalcDeps) => {
@@ -24,6 +20,26 @@ const getAllDeps = (deps) => (variablesCalcDeps) => {
 	}, []);
 };
 
+const getNestedVarsInComponent = (component) => {
+	const { componentType, bindingDependencies, conditionFilter } = component;
+	var bindings = [];
+	if (Array.isArray(bindingDependencies))
+		bindings = [...bindings, ...bindingDependencies];
+	if (Array.isArray(conditionFilter?.bindingDependencies))
+		bindings = [...bindings, ...conditionFilter.bindingDependencies];
+	if (componentType === 'Loop') {
+		const { components } = component;
+		if (Array.isArray(components)) {
+			bindings = components.reduce(
+				(acc, c) => [...acc, getNestedVarsInComponent(c)],
+				[...bindings]
+			);
+		}
+	}
+
+	return bindings;
+};
+
 const getNestedVars =
 	(components = []) =>
 	(variables) => {
@@ -31,13 +47,8 @@ const getNestedVars =
 			getBindingsDependenciesCalculated(variables);
 		const depsVarsTemp = components
 			.reduce((acc, comp) => {
-				const { bindingDependencies, conditionFilter } = comp;
-				var superBind = [];
-				if (Array.isArray(bindingDependencies))
-					superBind = [...superBind, ...bindingDependencies];
-				if (Array.isArray(conditionFilter?.bindingDependencies))
-					superBind = [...superBind, ...conditionFilter.bindingDependencies];
-				return [...acc, ...superBind];
+				const bindingsComp = getNestedVarsInComponent(comp);
+				return [...acc, ...bindingsComp];
 			}, [])
 			.filter((v, i, a) => a.indexOf(v) === i);
 		return getAllDeps(depsVarsTemp)(variableCalculatedDependencies).filter(
