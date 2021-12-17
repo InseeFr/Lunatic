@@ -391,7 +391,6 @@ const useLunaticSplit = (
 
 	return {
 		questionnaire,
-		ready: initPage,
 		handleChange,
 		handleExternals,
 		components: componentsToDiplay,
