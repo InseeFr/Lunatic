@@ -31,7 +31,7 @@ const getNestedVarsInComponent = (component) => {
 		const { components } = component;
 		if (Array.isArray(components)) {
 			bindings = components.reduce(
-				(acc, c) => [...acc, getNestedVarsInComponent(c)],
+				(acc, c) => [...acc, ...getNestedVarsInComponent(c)],
 				[...bindings]
 			);
 		}
