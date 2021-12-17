@@ -38,10 +38,17 @@ const useLunaticSplit = (
 		console.log('useLunaticSplit');
 		var start = new Date().getTime();
 	}
+	const fullQuestionnaire = useMemo(
+		() => mergeQuestionnaireAndData(source)(data || {}),
+		[source, data]
+	);
 	const sources = useMemo(() => getSplitQuestionnaireSource(source), [source]);
 	const allData = useMemo(
-		() => getState(mergeQuestionnaireAndData(source)(data || {})),
-		[source, data]
+		() => getState(fullQuestionnaire),
+		[fullQuestionnaire]
+	);
+	const [allBindings, setAllBindings] = useState(() =>
+		getBindings(fullQuestionnaire)
 	);
 
 	const rootPagesOfSource = useMemo(
@@ -59,7 +66,6 @@ const useLunaticSplit = (
 		mergeQuestionnaireAndData(sources[sourceIndex])(lunaticData)
 	);
 	const [bindings, setBindings] = useState(() => getBindings(questionnaire));
-	const [allBindings, setAllBindings] = useState(bindings);
 
 	const [wantedPage, setWantedPage] = useState(null);
 
@@ -149,13 +155,13 @@ const useLunaticSplit = (
 	const isFirstSource = sourceIndex === 0;
 	const isLastSource = sourceIndex === sources.length - 1;
 
-	const goSplitNext = () => {
+	const goSplitNext = useCallback(() => {
 		if (!isLastSource) {
 			const stateData = getState(questionnaire);
 			setLunaticData(mergeStateData(lunaticData, stateData));
 			setSourceIndex(sourceIndex + 1);
 		}
-	};
+	}, [isLastSource, lunaticData, questionnaire, sourceIndex]);
 
 	// First param is the onClick event, useless for us but we have to keep it safe into
 	// function signature to avoid confusing with customBindings
@@ -190,13 +196,13 @@ const useLunaticSplit = (
 		}
 	};
 
-	const goSplitPrevious = () => {
+	const goSplitPrevious = useCallback(() => {
 		if (!isFirstSource) {
 			const stateData = getState(questionnaire);
 			setLunaticData(mergeStateData(lunaticData, stateData));
 			setSourceIndex(sourceIndex - 1);
 		}
-	};
+	}, [isFirstSource, lunaticData, questionnaire, sourceIndex]);
 
 	const goPrevious = () => {
 		if (!(isFirstPage && isFirstSource)) {
@@ -293,8 +299,8 @@ const useLunaticSplit = (
 				else {
 					const newPage = getNewInitPage();
 					if (!newPage) {
-						if (flow === FLOW_NEXT) setSourceIndex(sourceIndex + 1);
-						else setSourceIndex(sourceIndex - 1);
+						if (flow === FLOW_NEXT) goSplitNext();
+						else goSplitPrevious();
 					} else setPage(newPage);
 				}
 			}
@@ -315,6 +321,8 @@ const useLunaticSplit = (
 		wantedPage,
 		exportedSetPage,
 		initialPage,
+		goSplitNext,
+		goSplitPrevious,
 	]);
 
 	const handleChange = useCallback((updatedValue) => {
@@ -385,6 +393,7 @@ const useLunaticSplit = (
 
 	return {
 		questionnaire,
+		ready: initPage,
 		handleChange,
 		handleExternals,
 		components: componentsToDiplay,
