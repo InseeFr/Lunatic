@@ -13,6 +13,7 @@ function LunaticDatepicker({
 	handleChange,
 	disabled,
 	readOnly,
+	iteration,
 }) {
 	const onChange = useCallback(
 		function (inputValue) {
@@ -36,6 +37,7 @@ function LunaticDatepicker({
 			inputId={inputId}
 			labelId={labelId}
 			labelClassName="todo"
+			iteration={iteration}
 		>
 			<Datepicker
 				id={inputId}

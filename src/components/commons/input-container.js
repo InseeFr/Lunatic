@@ -16,14 +16,15 @@ function InputContainer({
 	labelId,
 	children,
 	labelClassName,
+	iteration,
 }) {
 	const [labelCompute, setLabelCompute] = useState(label);
 
 	useEffect(
 		function () {
-			setLabelCompute(executeExpression(label));
+			setLabelCompute(executeExpression(label, { iteration }));
 		},
-		[label, executeExpression]
+		[label, executeExpression, iteration]
 	);
 
 	return (

@@ -17,8 +17,12 @@ function BlockForLoop({
 	management,
 	executeExpression,
 	loopDependencies,
+	bindingDependencies,
 }) {
 	const [nbRows, setNbRows] = useState(1);
+	const [min, setMin] = useState(undefined);
+	const [max, setMax] = useState(undefined);
+	// useEffect(function(){},[loopDependencies])
 
 	useEffect(
 		function () {
@@ -32,13 +36,21 @@ function BlockForLoop({
 					const maxValue = executeExpression(max, {
 						bindingDependencies: loopDependencies,
 					});
-					if (minValue) {
-						setNbRows(minValue);
-					}
+					setMin(minValue);
+					setMax(maxValue);
 				}
 			}
 		},
 		[lines, executeExpression, loopDependencies]
+	);
+
+	useEffect(
+		function () {
+			if (min && max) {
+				setNbRows(min);
+			}
+		},
+		[min, max]
 	);
 
 	const handleChangeLoop = useCallback(

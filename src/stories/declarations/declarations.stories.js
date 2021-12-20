@@ -33,7 +33,7 @@ stories.addWithJSX('Default', function () {
 	);
 });
 
-const [executeVtl] = createExecuteExpression({}, ['VTL']);
+const [executeExpression] = createExecuteExpression({}, ['VTL']);
 
 stories.addWithJSX('Props', () => (
 	<div className="lunatic-component">
@@ -41,7 +41,7 @@ stories.addWithJSX('Props', () => (
 			id="default"
 			type={C.BEFORE_QUESTION_TEXT}
 			declarations={declarationsVtl}
-			executeExpression={executeVtl}
+			executeExpression={executeExpression}
 		/>
 	</div>
 ));

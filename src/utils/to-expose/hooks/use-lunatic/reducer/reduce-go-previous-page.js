@@ -9,11 +9,13 @@ function getPreviousPage(pager) {
 	return page;
 }
 
-function goStartLoop(state, previous) {
-	const { pages, pager } = state;
+function goStartLoop(state, { previous, iterations, loopDependencies }) {
+	const { pages, pager, executeExpression } = state;
 	const { subPages } = pages[previous];
 	if (Array.isArray(subPages)) {
-		const nbIterations = 2; // TODO interpreter iterations
+		const nbIterations = executeExpression(iterations, {
+			bindingDependencies: loopDependencies,
+		});
 		return {
 			...state,
 			isInLoop: true,
@@ -48,7 +50,7 @@ function goPreviousIteration(state) {
 	};
 }
 
-function goPreviousPage(state, previous) {
+function goPreviousPage(state, { previous }) {
 	const { pager } = state;
 	const { page } = pager;
 	if (previous !== page) {
@@ -91,13 +93,15 @@ function reduceGoPreviousPage(state) {
 	}
 
 	const previous = getPreviousPage(pager);
-	const { isLoop, iterations } = pages[previous];
+	const { isLoop, iterations, loopDependencies } = pages[previous];
 	// on rentre dans une boucle
 	if (isLoop) {
-		return validateChange(goStartLoop(state, previous));
+		return validateChange(
+			goStartLoop(state, { previous, loopDependencies, iterations })
+		);
 	}
 	// on change de page
-	return validateChange(goPreviousPage(state, previous));
+	return validateChange(goPreviousPage(state, { previous }));
 }
 
 export default reduceGoPreviousPage;

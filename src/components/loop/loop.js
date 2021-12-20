@@ -13,7 +13,9 @@ function Loop(props) {
 		management,
 		executeExpression,
 		loopDependencies,
+		bindingDependencies,
 	} = props;
+
 	return (
 		<BlockForLoop
 			declarations={declarations}
@@ -26,6 +28,7 @@ function Loop(props) {
 			management={management}
 			executeExpression={executeExpression}
 			loopDependencies={loopDependencies}
+			bindingDependencies={bindingDependencies}
 		/>
 	);
 }

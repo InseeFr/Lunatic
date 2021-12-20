@@ -1,4 +1,5 @@
 import executeExpression from './execute-expression';
+import createExpressionsMap from './create-expressions-map';
 
 function getVtlCompatibleValue(value) {
 	if (value === undefined) {
@@ -28,9 +29,32 @@ function createBindings(variables) {
 	);
 }
 
-function createExecuteExpression(variables, features) {
-	const [bindings, vtlBindings] = createBindings(variables);
+function createUpdateExpressions(expressionsMap) {
+	const already = [];
+	return function appendExpression(components, { page, subPage }) {
+		const expressions = createExpressionsMap(components);
+		const tag = subPage !== undefined ? `${page}-${subPage}` : page;
+		if (already.indexOf(tag) === -1) {
+			already.push(tag);
+			Object.entries(expressions).forEach(function ([expression, data]) {
+				if (!expressionsMap.has(expression)) {
+					expressionsMap.set(expression, data);
+				}
+			});
+		}
+	};
+}
 
+/**
+ *
+ * @param {*} variables
+ * @param {*} features
+ * @returns
+ */
+function createExecuteExpression(variables, features) {
+	// on aimerait map d'expression, avec les bindings
+	const [bindings, vtlBindings] = createBindings(variables);
+	const expressionsMap = new Map();
 	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.
 	// à l'init, on y colle toutes les variables de calcul
 	Object.values(variables).forEach(function ({ variable }) {
@@ -109,14 +133,9 @@ function createExecuteExpression(variables, features) {
 		// console.log({ bindingDependencies, iteration });
 	}
 
-	/**
-	 *
-	 * @param {*} expression
-	 * @param {*} feature
-	 * @param {*} param2
-	 * @returns
-	 */
-	function execute(expression, args = {}) {
+	const appendExpressions = createUpdateExpressions(expressionsMap);
+
+	function directExecute(expression, args) {
 		const { bindingDependencies, iteration } = args;
 		if (Array.isArray(bindingDependencies) && iteration !== undefined) {
 			refreshCalculatedInLoop(bindingDependencies, iteration);
@@ -127,9 +146,36 @@ function createExecuteExpression(variables, features) {
 
 		const result = executeExpression(vtlBindings, expression, features);
 		renewArray(bindingDependencies);
+
 		return result;
 	}
-	return [execute, updateBindings];
+
+	/**
+	 *
+	 * @param {*} expression
+	 * @param {*} feature
+	 * @param {*} param2
+	 * @returns
+	 */
+	function execute(expression, args = {}) {
+		if (!expressionsMap.has(expression)) {
+			console.warn('expression inconnue', expression, args);
+			return directExecute(expression, args);
+		}
+		const data = expressionsMap.get(expression);
+		const { result, bindingDependencies } = data;
+		if (result) {
+			return result;
+		}
+		const result_ = directExecute(expression, { ...args, bindingDependencies });
+		if (!bindingDependencies) {
+			expressionsMap.set(expression, { ...data, result: result_ });
+		}
+
+		return result_;
+	}
+
+	return [execute, updateBindings, appendExpressions];
 }
 
 export default createExecuteExpression;

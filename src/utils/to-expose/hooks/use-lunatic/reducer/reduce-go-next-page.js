@@ -45,10 +45,12 @@ function reduceNextPage(state, { next, iterations }) {
 	};
 }
 
-function reduceStartLoop(state, { next, iterations }) {
+function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	const { pages, pager, executeExpression } = state;
 	const { subPages } = pages[next];
-	const nbIterations = executeExpression(iterations);
+	const nbIterations = executeExpression(iterations, {
+		bindingDependencies: loopDependencies,
+	});
 
 	if (Array.isArray(subPages)) {
 		return {
@@ -87,15 +89,17 @@ function reduceGoNextPage(state) {
 	}
 
 	const next = getNextPage(state);
-	const { isLoop, iterations } = pages[next]; // loopDependencies
+	const { isLoop, iterations, loopDependencies } = pages[next];
 	if (next === page) {
 		// TODO on devrait jamais en arriver là !
 	}
 
 	if (isLoop) {
-		return validateChange(reduceStartLoop(state, { next, iterations }));
+		return validateChange(
+			reduceStartLoop(state, { next, iterations, loopDependencies })
+		);
 	}
-	return validateChange(reduceNextPage(state, { next, iterations }));
+	return validateChange(reduceNextPage(state, { next }));
 }
 
 export default reduceGoNextPage;

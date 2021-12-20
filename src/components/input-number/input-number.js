@@ -25,7 +25,7 @@ function InputNumber({
 			type="number"
 			onChange={handleChange}
 			value={value}
-			labelledBy={labelId}
+			labelledby={labelId}
 			readOnly={readOnly}
 			disabled={disabled}
 			min={min}

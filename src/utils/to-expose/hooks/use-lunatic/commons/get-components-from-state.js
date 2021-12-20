@@ -19,7 +19,7 @@ function fillComponents(components, state) {
 }
 
 function getComponentsFromState(state) {
-	const { pager, pages, isInLoop } = state;
+	const { pager, pages, isInLoop, appendExpressions } = state;
 	const { page, subPage } = pager;
 
 	if (page && pages && page in pages) {
@@ -30,11 +30,12 @@ function getComponentsFromState(state) {
 			if (stepName in pages) {
 				const currentSubPage = pages[stepName];
 				const { components } = currentSubPage;
-
+				appendExpressions(components, pager);
 				return fillComponents(components, state);
 			}
 		} else {
 			const { components } = current;
+			appendExpressions(components, pager);
 			return fillComponents(components, state);
 		}
 	}

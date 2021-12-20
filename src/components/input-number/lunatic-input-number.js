@@ -15,6 +15,7 @@ function LunaticInputNumber({
 	min,
 	max,
 	step,
+	iteration,
 }) {
 	const onChange = useCallback(
 		function (inputValue) {
@@ -37,6 +38,7 @@ function LunaticInputNumber({
 			inputId={inputId}
 			labelId={labelId}
 			labelClassName="todo"
+			iteration={iteration}
 		>
 			<InputNumber
 				labelledBy={labelId}
