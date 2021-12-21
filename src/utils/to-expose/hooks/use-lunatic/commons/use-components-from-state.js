@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import getComponentsFromState from './get-components-from-state';
 import fillComponents from './fill-components';
 
 function useComponentsFromState(state) {
@@ -9,21 +10,7 @@ function useComponentsFromState(state) {
 
 	useEffect(
 		function () {
-			if (page && pages && page in pages) {
-				const current = pages[page];
-				if (isInLoop) {
-					const { subPages } = current;
-					const stepName = subPages[subPage];
-					if (stepName in pages) {
-						const currentSubPage = pages[stepName];
-						const { components } = currentSubPage;
-						setComponents(components);
-					}
-				} else {
-					const { components } = current;
-					setComponents(components);
-				}
-			}
+			setComponents(getComponentsFromState(state));
 		},
 		[page, pages, subPage, isInLoop]
 	);
