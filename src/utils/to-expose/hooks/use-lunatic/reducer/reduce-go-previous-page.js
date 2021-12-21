@@ -42,8 +42,10 @@ function goPreviousSubPage(state) {
 }
 
 function goPreviousIteration(state) {
-	const { pager } = state;
-	const { iteration, subPages } = pager;
+	const { pager, pages } = state;
+	const { iteration, page } = pager;
+	const { subPages } = pages[page];
+
 	return {
 		...state,
 		pager: { ...pager, subPage: subPages.length - 1, iteration: iteration - 1 },
@@ -88,7 +90,7 @@ function reduceGoPreviousPage(state) {
 		return validateChange(goPreviousSubPage(state));
 	}
 	// dans une boucle, l'itération courante est finie mais il reste encore au moins une autre
-	if (isInLoop && subPage === nbSubPages - 1 && iteration > 0) {
+	if (isInLoop && subPage === 0 && iteration > 0) {
 		return validateChange(goPreviousIteration(state));
 	}
 

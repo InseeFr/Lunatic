@@ -50,6 +50,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	const { subPages } = pages[next];
 	const nbIterations = executeExpression(iterations, {
 		bindingDependencies: loopDependencies,
+		iteration: undefined,
 	});
 
 	if (Array.isArray(subPages)) {
