@@ -107,8 +107,10 @@ function reduceOnInit(state, action) {
 	const { source, data, initialPage, features } = payload;
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
-		const [executeExpression, updateBindings, appendExpressions] =
-			createExecuteExpression(variables, features);
+		const [executeExpression, updateBindings] = createExecuteExpression(
+			variables,
+			features
+		);
 		const pages = checkLoops(createMapPages(source));
 		const { maxPage } = source;
 		const pager = {
@@ -129,7 +131,6 @@ function reduceOnInit(state, action) {
 			pager,
 			executeExpression,
 			updateBindings,
-			appendExpressions,
 		};
 	}
 

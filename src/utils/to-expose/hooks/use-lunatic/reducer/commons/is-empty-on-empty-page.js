@@ -12,7 +12,7 @@ function isOnEmptyPage(state) {
 				executeExpression,
 				iteration
 			);
-			if (result === true) {
+			if (result !== false) {
 				return [...rest, component];
 			}
 		}

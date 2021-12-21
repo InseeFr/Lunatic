@@ -1,5 +1,4 @@
 import executeExpression from './execute-expression';
-import createExpressionsMap from './create-expressions-map';
 
 function getVtlCompatibleValue(value) {
 	if (value === undefined) {
@@ -27,22 +26,6 @@ function createBindings(variables) {
 		},
 		[{}, {}]
 	);
-}
-
-function createUpdateExpressions(expressionsMap) {
-	const already = [];
-	return function appendExpression(components, { page, subPage }) {
-		const expressions = createExpressionsMap(components);
-		const tag = subPage !== undefined ? `${page}-${subPage}` : page;
-		if (already.indexOf(tag) === -1) {
-			already.push(tag);
-			Object.entries(expressions).forEach(function ([expression, data]) {
-				if (!expressionsMap.has(expression)) {
-					expressionsMap.set(expression, data);
-				}
-			});
-		}
-	};
 }
 
 /**
@@ -133,8 +116,6 @@ function createExecuteExpression(variables, features) {
 		// console.log({ bindingDependencies, iteration });
 	}
 
-	const appendExpressions = createUpdateExpressions(expressionsMap);
-
 	function directExecute(expression, args) {
 		const { bindingDependencies, iteration } = args;
 		if (Array.isArray(bindingDependencies) && iteration !== undefined) {
@@ -158,24 +139,20 @@ function createExecuteExpression(variables, features) {
 	 * @returns
 	 */
 	function execute(expression, args = {}) {
-		if (!expressionsMap.has(expression)) {
-			console.warn('expression inconnue', expression, args);
-			return directExecute(expression, args);
+		const { bindingDependencies } = args;
+
+		if (expressionsMap.has(expression)) {
+			return expressionsMap.get(expression);
 		}
-		const data = expressionsMap.get(expression);
-		const { result, bindingDependencies } = data;
-		if (result) {
-			return result;
-		}
-		const result_ = directExecute(expression, { ...args, bindingDependencies });
+		const value = directExecute(expression, args);
 		if (!bindingDependencies) {
-			expressionsMap.set(expression, { ...data, result: result_ });
+			expressionsMap.set(expression, value);
 		}
 
-		return result_;
+		return value;
 	}
 
-	return [execute, updateBindings, appendExpressions];
+	return [execute, updateBindings];
 }
 
 export default createExecuteExpression;

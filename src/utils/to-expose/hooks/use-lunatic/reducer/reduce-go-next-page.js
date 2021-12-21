@@ -8,7 +8,7 @@ function getNextPage(state) {
 	if (p < mp) {
 		return `${p + 1}`;
 	}
-	return maxPage;
+	return `${maxPage}`;
 }
 
 function reduceNextSubPage(state) {

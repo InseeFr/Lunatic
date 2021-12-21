@@ -16,7 +16,6 @@ function RadioGroup({
 
 	return options.map(function (option, index) {
 		const { value: valueOption, label } = option;
-
 		const radioId = `lunatic-radio-${id}-${valueOption}`;
 		const labelId = `lunatic-radio-label-${id}-${valueOption}`;
 		const labelCompute = executeExpression(label, {

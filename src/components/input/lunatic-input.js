@@ -13,6 +13,8 @@ function LunaticInput(props) {
 		disabled,
 		declarations,
 		executeExpression,
+		iteration,
+		bindingDependencies,
 	} = props;
 
 	const onChange = useCallback(
@@ -37,6 +39,8 @@ function LunaticInput(props) {
 			inputId={inputId}
 			labelId={labelId}
 			labelClassName="todo"
+			iteration={iteration}
+			bindingDependencies={bindingDependencies}
 		>
 			<Input
 				id={inputId}
