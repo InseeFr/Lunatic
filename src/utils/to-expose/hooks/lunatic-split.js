@@ -17,9 +17,11 @@ import { useFilterComponents } from './filter-components';
 import { loadSuggesters } from '../../store-tools/auto-load';
 import { getCollectedStateByValueType, getState } from '..';
 
+const defaultData = {};
+
 const useLunaticSplit = (
 	source,
-	data,
+	data = defaultData,
 	{
 		savingType = COLLECTED,
 		preferences = [COLLECTED],
@@ -38,9 +40,8 @@ const useLunaticSplit = (
 		console.log('useLunaticSplit');
 		var start = new Date().getTime();
 	}
-	const fullQuestionnaire = useMemo(
-		() => mergeQuestionnaireAndData(source)(data || {}),
-		[source, data]
+	const [fullQuestionnaire] = useState(() =>
+		mergeQuestionnaireAndData(source)(data)
 	);
 	const sources = useMemo(() => getSplitQuestionnaireSource(source), [source]);
 	const allData = useMemo(
