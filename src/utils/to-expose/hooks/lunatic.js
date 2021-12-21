@@ -13,13 +13,17 @@ import { COLLECTED } from '../../../constants';
 import { useFilterComponents } from './filter-components';
 import { loadSuggesters } from '../../store-tools/auto-load';
 
+const defaultData = {};
+const defaultPreferences = [COLLECTED];
+const defaultFeatures = ['VTL'];
+
 const useLunatic = (
 	source,
-	data,
+	data = defaultData,
 	{
 		savingType = COLLECTED,
-		preferences = [COLLECTED],
-		features = ['VTL'],
+		preferences = defaultPreferences,
+		features = defaultFeatures,
 		management = false,
 		pagination = false,
 		modalForControls = false,

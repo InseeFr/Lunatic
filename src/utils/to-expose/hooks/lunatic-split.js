@@ -18,14 +18,16 @@ import { loadSuggesters } from '../../store-tools/auto-load';
 import { getCollectedStateByValueType, getState } from '..';
 
 const defaultData = {};
+const defaultPreferences = [COLLECTED];
+const defaultFeatures = ['VTL'];
 
 const useLunaticSplit = (
 	source,
 	data = defaultData,
 	{
 		savingType = COLLECTED,
-		preferences = [COLLECTED],
-		features = ['VTL'],
+		preferences = defaultPreferences,
+		features = defaultFeatures,
 		management = false,
 		pagination = false,
 		modalForControls = false,
@@ -40,8 +42,9 @@ const useLunaticSplit = (
 		console.log('useLunaticSplit');
 		var start = new Date().getTime();
 	}
-	const [fullQuestionnaire] = useState(() =>
-		mergeQuestionnaireAndData(source)(data)
+	const fullQuestionnaire = useMemo(
+		() => mergeQuestionnaireAndData(source)(data),
+		[source, data]
 	);
 	const sources = useMemo(() => getSplitQuestionnaireSource(source), [source]);
 	const allData = useMemo(

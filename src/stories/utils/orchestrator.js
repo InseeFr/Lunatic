@@ -9,11 +9,11 @@ function getStoreInfoRequired() {
 const OrchestratorForStories = ({
 	source,
 	suggesters,
-	data = {},
+	data,
 	management = false,
 	pagination = false,
 	modalForControls = false,
-	features = ['VTL'],
+	features,
 	bindings: initialBindings,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
