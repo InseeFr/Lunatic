@@ -1,12 +1,13 @@
-import { useReducer, useEffect, useCallback, useMemo } from 'react';
+import { useReducer, useEffect, useCallback } from 'react';
 import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
 import reducer from './reducer';
-import { getComponentsFromState, getPageTag, isFirstLastPage } from './commons';
+import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 
 function useLunatic({ source, data, initialPage, features }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { pager, executeExpression } = state;
+	const components = useComponentsFromState(state);
 
 	useEffect(
 		function () {
@@ -31,10 +32,9 @@ function useLunatic({ source, data, initialPage, features }) {
 
 	const getComponents = useCallback(
 		function () {
-			const components = getComponentsFromState(state);
 			return components;
 		},
-		[state]
+		[components]
 	);
 	const handleChange = useCallback(
 		function (response, value, args) {
