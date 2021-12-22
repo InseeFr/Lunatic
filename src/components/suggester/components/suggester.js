@@ -25,7 +25,7 @@ function Suggester({
 	labelRenderer,
 	onSelect,
 	value,
-	focused: focusedInit,
+	focused: initFocused,
 	response,
 	logFunction,
 }) {
@@ -59,10 +59,10 @@ function Suggester({
 	// Handle focused props of Component
 	useEffect(() => {
 		if (!init && id) {
-			if (focusedInit && !focused) onFocus();
+			if (initFocused && !focused) onFocus();
 			setInit(true);
 		}
-	}, [focused, init, focusedInit, onFocus, id]);
+	}, [focused, init, initFocused, onFocus, id]);
 
 	// log info when focus change
 	useEffect(() => {
