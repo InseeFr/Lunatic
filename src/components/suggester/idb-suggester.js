@@ -16,6 +16,8 @@ function IDBSuggester({
 	disabled,
 	value,
 	focused,
+	response,
+	logFunction,
 }) {
 	const [store, setStore] = useState(undefined);
 	const searching = useMemo(
@@ -46,6 +48,8 @@ function IDBSuggester({
 				disabled={disabled}
 				value={value}
 				focused={focused}
+				response={response}
+				logFunction={logFunction}
 			/>
 		</CheckStore>
 	);

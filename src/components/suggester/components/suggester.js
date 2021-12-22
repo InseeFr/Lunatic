@@ -13,6 +13,8 @@ import Selection from './selection';
 import Panel from './panel';
 import createOnKeyDownCallback from './create-on-keydown-callback';
 import Delete from './selection/delete';
+import * as C from '../../../constants';
+import * as U from '../../../utils/lib';
 import './suggester.scss';
 
 function Suggester({
@@ -24,12 +26,24 @@ function Suggester({
 	onSelect,
 	value,
 	focused: focusedInit,
+	response,
+	logFunction,
 }) {
 	const inputEl = useRef();
 	const [state, dispatch] = useContext(SuggesterContext);
 	const { focused, id, messageError, search, disabled } = state;
 
 	const [init, setInit] = useState(false);
+
+	const createEventFocus = (focusIn = true) =>
+		U.createObjectEvent(
+			`suggester-${id}`,
+			C.INPUT_CATEGORY,
+			focusIn ? C.EVENT_FOCUS_IN : C.EVENT_FOCUS_OUT,
+			U.getResponseName(response),
+			value
+		);
+
 	const onFocus = useCallback(
 		function () {
 			if (!focused && !disabled) {
@@ -49,6 +63,19 @@ function Suggester({
 			setInit(true);
 		}
 	}, [focused, init, focusedInit, onFocus, id]);
+
+	// log info when focus change
+	useEffect(() => {
+		if (init) {
+			if (id && focused && U.isFunction(logFunction))
+				logFunction(createEventFocus());
+			if (id && !focused && U.isFunction(logFunction))
+				logFunction(createEventFocus(false));
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [focused, id, init]);
+
 	const onDelete = useCallback(
 		function () {
 			dispatch(actions.onDeleteSearch());
