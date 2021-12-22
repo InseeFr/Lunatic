@@ -16,40 +16,18 @@ function InputContainer({
 	labelId,
 	children,
 	labelClassName,
-	iteration,
-	bindingDependencies,
 }) {
-	const [labelCompute, setLabelCompute] = useState(label);
-
-	useEffect(
-		function () {
-			setLabelCompute(
-				executeExpression(label, { iteration, bindingDependencies })
-			);
-		},
-		[label, executeExpression, iteration, bindingDependencies]
-	);
-
 	return (
 		<>
-			<DeclarationsBeforeText
-				declarations={declarations}
-				executeExpression={executeExpression}
-			/>
+			<DeclarationsBeforeText declarations={declarations} />
 			<Label id={labelId} htmlFor={inputId} className={labelClassName}>
-				{labelCompute}
+				{label}
 			</Label>
-			<DeclarationsAfterText
-				declarations={declarations}
-				executeExpression={executeExpression}
-			/>
+			<DeclarationsAfterText declarations={declarations} />
 			<FieldContainer value={value} id={id}>
 				{children}
 			</FieldContainer>
-			<DeclarationsDetachable
-				declarations={declarations}
-				executeExpression={executeExpression}
-			/>
+			<DeclarationsDetachable declarations={declarations} />
 		</>
 	);
 }

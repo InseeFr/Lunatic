@@ -35,7 +35,6 @@ function Input({
 			aria-required={required}
 			required={required}
 			maxLength={maxLength}
-			iteration={iteration}
 		/>
 	);
 }

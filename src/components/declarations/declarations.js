@@ -10,13 +10,7 @@ export const DECLARATION_POSITIONS = {
 	detachable: 'DETACHABLE',
 };
 
-function Declarations({
-	id,
-	type,
-	declarations,
-	executeExpression,
-	logFunction,
-}) {
+function Declarations({ id, type, declarations, logFunction }) {
 	const filtered = declarations.filter(({ position }) => position === type);
 	if (filtered.length === 0) return null;
 
@@ -24,7 +18,7 @@ function Declarations({
 		<div id={`declarations-${id}-${type}`} className="declarations-lunatic">
 			{filtered.map(({ id: idD, label, declarationType }) => (
 				<Declaration key={`${idD}`} type={declarationType.toLowerCase()}>
-					{executeExpression(label)}
+					{label}
 				</Declaration>
 			))}
 		</div>

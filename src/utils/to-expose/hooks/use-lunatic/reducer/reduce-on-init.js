@@ -102,6 +102,29 @@ function createVariables(source, data) {
 }
 /* */
 
+function checkInLoop(state) {
+	const { pager, pages, executeExpression } = state;
+	const { page } = pager;
+	const { isLoop, subPages, iterations, loopDependencies } = pages[page];
+
+	if (isLoop) {
+		return {
+			...state,
+			pager: {
+				...pager,
+				subPage: 0,
+				nbSubPages: subPages.length,
+				iteration: 0,
+				nbIterations: executeExpression(iterations, {
+					iteration: 0,
+					bindingDependencies: loopDependencies,
+				}),
+			},
+		};
+	}
+	return state;
+}
+
 function reduceOnInit(state, action) {
 	const { payload } = action;
 	const { source, data, initialPage, features } = payload;
@@ -122,7 +145,8 @@ function reduceOnInit(state, action) {
 			nbIterations: undefined,
 		};
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
-		return {
+
+		return checkInLoop({
 			...state,
 			variables,
 			pages,
@@ -131,7 +155,7 @@ function reduceOnInit(state, action) {
 			pager,
 			executeExpression,
 			updateBindings,
-		};
+		});
 	}
 
 	return state;

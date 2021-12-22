@@ -17,12 +17,14 @@ function fillComponents(components, state) {
 	return components.map(function (component) {
 		const { pager, executeExpression } = state;
 		const { iteration } = pager;
-		const wtf = fillComponentExpressions(component, {
-			executeExpression,
-			iteration,
-		});
-		console.log({ wtf });
-		return fillPagination(fillComponentValue(component, state), state);
+
+		return fillComponentExpressions(
+			fillPagination(fillComponentValue(component, state), state),
+			{
+				executeExpression,
+				iteration,
+			}
+		);
 	});
 }
 
