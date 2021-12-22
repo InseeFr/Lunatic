@@ -27,7 +27,7 @@ function InputContainer({
 				executeExpression(label, { iteration, bindingDependencies })
 			);
 		},
-		[label, executeExpression, iteration]
+		[label, executeExpression, iteration, bindingDependencies]
 	);
 
 	return (
