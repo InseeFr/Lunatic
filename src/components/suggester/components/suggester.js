@@ -66,13 +66,10 @@ function Suggester({
 
 	// log info when focus change
 	useEffect(() => {
-		if (init) {
-			if (id && focused && U.isFunction(logFunction))
-				logFunction(createEventFocus());
-			if (id && !focused && U.isFunction(logFunction))
-				logFunction(createEventFocus(false));
-		}
-
+		if (init && id && focused && U.isFunction(logFunction))
+			logFunction(createEventFocus());
+		if (init && id && !focused && U.isFunction(logFunction))
+			logFunction(createEventFocus(false));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [focused, id, init]);
 
