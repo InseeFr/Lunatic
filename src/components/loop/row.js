@@ -42,8 +42,8 @@ function Row({
 				value={value}
 				id={idComponent}
 				preferences={preferences}
-				executeExpression={executeExpression}
 				iteration={rowIndex}
+				executeExpression={executeExpression}
 			/>,
 		];
 	}, []);

@@ -16,13 +16,10 @@ function BlockForLoop({
 	shortcut,
 	management,
 	executeExpression,
-	loopDependencies,
-	bindingDependencies,
 }) {
 	const [nbRows, setNbRows] = useState(1);
 	const [min, setMin] = useState(undefined);
 	const [max, setMax] = useState(undefined);
-	// useEffect(function(){},[loopDependencies])
 
 	useEffect(
 		function () {
@@ -30,18 +27,12 @@ function BlockForLoop({
 				const { min, max } = lines;
 
 				if (min !== undefined && max !== undefined) {
-					const minValue = executeExpression(min, {
-						bindingDependencies: loopDependencies,
-					});
-					const maxValue = executeExpression(max, {
-						bindingDependencies: loopDependencies,
-					});
-					setMin(minValue);
-					setMax(maxValue);
+					setMin(min);
+					setMax(max);
 				}
 			}
 		},
-		[lines, executeExpression, loopDependencies]
+		[lines]
 	);
 
 	useEffect(
@@ -63,14 +54,8 @@ function BlockForLoop({
 	if (lines) {
 		return (
 			<>
-				<DeclarationsBeforeText
-					declarations={declarations}
-					executeExpression={executeExpression}
-				/>
-				<DeclarationsAfterText
-					declarations={declarations}
-					executeExpression={executeExpression}
-				/>
+				<DeclarationsBeforeText declarations={declarations} />
+				<DeclarationsAfterText declarations={declarations} />
 				<BlockForLoopOrchestrator
 					components={components}
 					handleChange={handleChangeLoop}
@@ -81,10 +66,7 @@ function BlockForLoop({
 					shortcut={shortcut}
 					executeExpression={executeExpression}
 				/>
-				<DeclarationsDetachable
-					declarations={declarations}
-					executeExpression={executeExpression}
-				/>
+				<DeclarationsDetachable declarations={declarations} />
 			</>
 		);
 	}

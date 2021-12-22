@@ -1,5 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as lunatic from 'components';
+import { fillComponentExpressions } from '../../utils/to-expose/hooks/use-lunatic/commons';
 
 function RowComponent({
 	id,
@@ -11,24 +12,25 @@ function RowComponent({
 	management,
 	preferences,
 	value,
-	executeExpression,
 	iteration,
+	executeExpression,
 }) {
 	const { componentType } = component;
+	const [componentFilled, setComponentFilled] = useState(component);
 	const Component = lunatic[componentType];
-
-	const executeExpressionWithIteration = useCallback(
-		function (expression) {
-			const { bindingDependencies } = component;
-			return executeExpression(expression, { iteration, bindingDependencies });
+	useEffect(
+		function () {
+			setComponentFilled(
+				fillComponentExpressions(component, { executeExpression, iteration })
+			);
 		},
-		[executeExpression, iteration, component]
+		[component, executeExpression, iteration]
 	);
 
 	if (componentType in lunatic) {
 		return (
 			<Component
-				{...component}
+				{...componentFilled}
 				id={id}
 				handleChange={handleChange}
 				preferences={preferences}
@@ -37,7 +39,6 @@ function RowComponent({
 				missing={missing}
 				shortcut={shortcut}
 				value={value}
-				executeExpression={executeExpressionWithIteration}
 			/>
 		);
 	}

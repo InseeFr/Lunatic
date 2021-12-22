@@ -105,22 +105,24 @@ function createVariables(source, data) {
 function checkInLoop(state) {
 	const { pager, pages, executeExpression } = state;
 	const { page } = pager;
-	const { isLoop, subPages, iterations, loopDependencies } = pages[page];
+	if (page in pages) {
+		const { isLoop, subPages, iterations, loopDependencies } = pages[page];
 
-	if (isLoop) {
-		return {
-			...state,
-			pager: {
-				...pager,
-				subPage: 0,
-				nbSubPages: subPages.length,
-				iteration: 0,
-				nbIterations: executeExpression(iterations, {
+		if (isLoop) {
+			return {
+				...state,
+				pager: {
+					...pager,
+					subPage: 0,
+					nbSubPages: subPages.length,
 					iteration: 0,
-					bindingDependencies: loopDependencies,
-				}),
-			},
-		};
+					nbIterations: executeExpression(iterations, {
+						iteration: 0,
+						bindingDependencies: loopDependencies,
+					}),
+				},
+			};
+		}
 	}
 	return state;
 }

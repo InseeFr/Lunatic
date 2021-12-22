@@ -54,29 +54,20 @@ import './sequence.scss';
 
 // export default React.memo(Sequence, U.areEqual);
 
-function Sequence({ declarations, label, executeExpression, id, style }) {
+function Sequence({ declarations, label, id, style }) {
 	return (
 		<>
-			<DeclarationsBeforeText
-				declarations={declarations}
-				executeExpression={executeExpression}
-			/>
+			<DeclarationsBeforeText declarations={declarations} />
 			<div
 				aria-label={`sequence-${id}`}
 				className="sequence-lunatic"
 				// style={{}}
 				id={`sequence-${id}`}
 			>
-				{executeExpression(label)}
+				{label}
 			</div>
-			<DeclarationsAfterText
-				declarations={declarations}
-				executeExpression={executeExpression}
-			/>
-			<DeclarationsDetachable
-				declarations={declarations}
-				executeExpression={executeExpression}
-			/>
+			<DeclarationsAfterText declarations={declarations} />
+			<DeclarationsDetachable declarations={declarations} />
 		</>
 	);
 }

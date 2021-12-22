@@ -7,6 +7,8 @@ const VTL_ATTRIBUTES = [
 	'controls.control',
 	'controls.errorMessage',
 	'options.label',
+	'lines.min',
+	'lines.max',
 ];
 
 function getBindingDependencies(object) {
@@ -66,8 +68,8 @@ function fillAttributes(component, { executeExpression, iteration }) {
 	);
 }
 
-function fillComponentValue(component, { executeExpression, iteration }) {
+function fillComponentExpressions(component, { executeExpression, iteration }) {
 	return fillAttributes(component, { executeExpression, iteration });
 }
 
-export default fillComponentValue;
+export default fillComponentExpressions;

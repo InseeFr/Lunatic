@@ -8,7 +8,6 @@ import {
 
 function InputContainer({
 	declarations,
-	executeExpression,
 	label,
 	id,
 	value,

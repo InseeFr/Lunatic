@@ -52,29 +52,20 @@ import {
 // };
 
 // export default React.memo(Subsequence, U.areEqual);
-function Subsequence({ executeExpression, id, declarations, label }) {
+function Subsequence({ id, declarations, label }) {
 	return (
 		<>
-			<DeclarationsBeforeText
-				declarations={declarations}
-				executeExpression={executeExpression}
-			/>
+			<DeclarationsBeforeText declarations={declarations} />
 			<div
 				aria-label={`sequence-${id}`}
 				className="sequence-lunatic"
 				// style={{}}
 				id={`sequence-${id}`}
 			>
-				{executeExpression(label)}
+				{label}
 			</div>
-			<DeclarationsAfterText
-				declarations={declarations}
-				executeExpression={executeExpression}
-			/>
-			<DeclarationsDetachable
-				declarations={declarations}
-				executeExpression={executeExpression}
-			/>
+			<DeclarationsAfterText declarations={declarations} />
+			<DeclarationsDetachable declarations={declarations} />
 		</>
 	);
 }
