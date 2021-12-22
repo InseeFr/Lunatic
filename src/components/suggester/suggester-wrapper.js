@@ -30,6 +30,7 @@ function SuggesterWrapper({
 	labelRenderer,
 	disabled,
 	value,
+	focused,
 }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { search, selectedIndex, options, expended } = state;
@@ -82,6 +83,7 @@ function SuggesterWrapper({
 				labelRenderer={labelRenderer}
 				onSelect={onSelect}
 				value={value}
+				focused={focused}
 			/>
 		</SuggesterContext.Provider>
 	);

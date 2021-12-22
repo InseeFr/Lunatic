@@ -14,11 +14,11 @@ function SuggesterContent({
 	const onClick = useCallback(
 		function (e) {
 			const { current } = ref;
-			if (!current.contains(e.target)) {
+			if (!current.contains(e.target) && focused) {
 				onBlur();
 			}
 		},
-		[ref, onBlur]
+		[ref, focused, onBlur]
 	);
 
 	useDocumentAddEventListener('mousedown', onClick);

@@ -1,4 +1,11 @@
-import React, { useCallback, useContext, useRef, useMemo } from 'react';
+import React, {
+	useCallback,
+	useContext,
+	useRef,
+	useMemo,
+	useEffect,
+	useState,
+} from 'react';
 import classnames from 'classnames';
 import { actions, SuggesterContext } from '../state-management';
 import SuggesterContent from './suggester-content';
@@ -16,23 +23,32 @@ function Suggester({
 	labelRenderer,
 	onSelect,
 	value,
+	focused: focusedInit,
 }) {
 	const inputEl = useRef();
 	const [state, dispatch] = useContext(SuggesterContext);
 	const { focused, id, messageError, search, disabled } = state;
 
+	const [init, setInit] = useState(false);
 	const onFocus = useCallback(
 		function () {
-			if (!disabled) {
+			if (!focused && !disabled) {
 				if (inputEl.current !== document.activeElement) {
 				}
 				inputEl.current.focus();
 				dispatch(actions.onFocus());
 			}
 		},
-		[dispatch, disabled]
+		[disabled, dispatch, focused]
 	);
 
+	// Handle focused props of Component
+	useEffect(() => {
+		if (!init && id) {
+			if (focusedInit && !focused) onFocus();
+			setInit(true);
+		}
+	}, [focused, init, focusedInit, onFocus, id]);
 	const onDelete = useCallback(
 		function () {
 			dispatch(actions.onDeleteSearch());
