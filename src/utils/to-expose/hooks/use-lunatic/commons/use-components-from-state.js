@@ -4,15 +4,14 @@ import fillComponents from './fill-components';
 
 function useComponentsFromState(state) {
 	const { pager, pages, isInLoop } = state;
-	const { page, subPage } = pager;
 	const [components, setComponents] = useState([]);
 	const [componentsFilled, setComponentsFilled] = useState([]);
 
 	useEffect(
 		function () {
-			setComponents(getComponentsFromState(state));
+			setComponents(getComponentsFromState({ pager, pages, isInLoop }));
 		},
-		[page, pages, subPage, isInLoop]
+		[pager, pages, isInLoop]
 	);
 
 	useEffect(

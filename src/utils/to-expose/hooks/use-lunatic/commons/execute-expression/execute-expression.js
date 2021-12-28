@@ -18,7 +18,6 @@ function executeVtl(expression, vtlBindings) {
 	if (isDataSet(result)) {
 		return extractDataSetResult(result);
 	} else if (typeof result === 'object') {
-		console.warn(expression, result);
 		return expression;
 	}
 

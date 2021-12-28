@@ -11,57 +11,135 @@ const VTL_ATTRIBUTES = [
 	'lines.max',
 ];
 
-function getBindingDependencies(object) {
-	const { bindingDependencies = [], loopDependencies = [] } = object;
-	const full = [...bindingDependencies, ...loopDependencies];
-	if (full.length) {
-		return full;
-	}
-	return undefined;
-}
+/**
+ * Le résultat des expression dépendent de la valeur des variables associées.
+ * Les couples cle/valeur sont fournies dans un objet.
+ * json lunatic précise pour chaque expression la liste des variables utilisées, dans un attribut "bindingDependencies".
+ * Malheureusement, la position de cette liste n'est pas sytèmatiquement contigue à l'expression, quel dommage !
+ * Elles sont alors à la racine du composant (pour plusieurs expressions souvent).
+ * Une autre possiblité, plus simple serait de merger les sous bindings et les root bindings avant d'executer une expression.
+ */
+const BINDINGSDEPENDENCIES_IS_CONTIGUOUS = {
+	label: true,
+	'hierarchy.label': true,
+	'hierarchy.subSequence.label': true,
+	'hierarchy.sequence.label': true,
+	'declarations.label': true,
+	'controls.control': false,
+	'controls.errorMessage': false,
+	'options.label': true,
+	'lines.min': true,
+	'lines.max': true,
+};
 
-function createCrawl({ executeExpression, iteration }) {
-	return function crawl(path, object) {
+function createCrawl(component, { executeExpression, iteration }) {
+	const { bindingDependencies: rootBindings } = component;
+
+	/**
+	 *
+	 * @param {*} object
+	 * @param {*} fullStringPath
+	 * @param {*} rootBindings
+	 * @returns
+	 */
+	function getBindingDependencies(object, fullStringPath) {
+		const { bindingDependencies = [], loopDependencies = [] } = object;
+		if (
+			fullStringPath in BINDINGSDEPENDENCIES_IS_CONTIGUOUS &&
+			BINDINGSDEPENDENCIES_IS_CONTIGUOUS[fullStringPath]
+		) {
+			return [...bindingDependencies, ...loopDependencies];
+		}
+		const full = [...rootBindings, ...loopDependencies];
+		if (full.length) {
+			return full;
+		}
+		return undefined;
+	}
+
+	/**
+	 *
+	 * @param {*} object
+	 * @param {*} path
+	 * @returns
+	 */
+	function executeAndFillObject(object, path, fullStringPath) {
+		const candidate = object[path];
+		if (typeof candidate === 'string') {
+			return {
+				...object,
+				[path]: executeExpression(candidate, {
+					iteration,
+					bindingDependencies: getBindingDependencies(object, fullStringPath),
+				}),
+			};
+		}
+		return object;
+	}
+
+	/**
+	 *
+	 * @param {*} object
+	 * @param {*} array
+	 * @param {*} path
+	 * @returns
+	 */
+	function crawlArray(object, path, fullStringPath) {
+		const [step, ...rest] = path;
+		return object[step].reduce(
+			function (stack, entry) {
+				return {
+					...stack,
+					[step]: [...stack[step], crawl(rest, entry, fullStringPath)],
+				};
+			},
+			{ ...object, [step]: [] }
+		);
+	}
+
+	/**
+	 *
+	 * @param {*} object
+	 * @param {*} path
+	 * @returns
+	 */
+	function crawlObject(object, path, fullStringPath) {
+		const [step, ...rest] = path;
+		return { ...object, [step]: crawl(rest, object[step], fullStringPath) };
+	}
+
+	/**
+	 *
+	 * @param {*} path
+	 * @param {*} object
+	 * @returns
+	 */
+	function crawl(path, object, fullStringPath) {
 		const [step, ...rest] = path;
 
 		if (step in object && rest.length === 0) {
-			const candidate = object[step];
-			if (typeof candidate === 'string') {
-				return {
-					...object,
-					[step]: executeExpression(candidate, {
-						iteration,
-						bindingDependencies: getBindingDependencies(object),
-					}),
-				};
-			}
+			return executeAndFillObject(object, step, fullStringPath);
 		} else if (step in object) {
-			const next = object[step];
-			if (Array.isArray(next)) {
-				return next.reduce(
-					function (stack, entry) {
-						return {
-							...stack,
-							[step]: [...stack[step], crawl(rest, entry)],
-						};
-					},
-					{ ...object, [step]: [] }
-				);
+			if (Array.isArray(object[step])) {
+				return crawlArray(object, path, fullStringPath);
 			}
-			return { ...object, [step]: crawl(rest, next) };
+			return crawlObject(object, path, fullStringPath);
 		}
 
 		return object;
-	};
+	}
+
+	return crawl;
 }
+
 function fillAttributes(component, { executeExpression, iteration }) {
-	const crawl = createCrawl({ executeExpression, iteration });
+	const crawl = createCrawl(component, { executeExpression, iteration });
 	return VTL_ATTRIBUTES.reduce(
-		function (step, attribute) {
-			const path = attribute.split('.');
+		function (step, fullStringPath) {
+			const path = fullStringPath.split('.');
 			return {
 				...step,
-				...crawl(path, step),
+				...crawl(path, step, fullStringPath),
 			};
 		},
 		{ ...component }

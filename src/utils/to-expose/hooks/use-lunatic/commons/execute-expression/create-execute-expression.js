@@ -139,7 +139,6 @@ function createExecuteExpression(variables, features) {
 	 * @returns
 	 */
 	function execute(expression, args = {}) {
-		console.log(expression, args);
 		const { bindingDependencies } = args;
 
 		if (expressionsMap.has(expression)) {
