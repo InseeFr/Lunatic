@@ -22,8 +22,8 @@ const VTL_ATTRIBUTES = [
 const BINDINGSDEPENDENCIES_IS_CONTIGUOUS = {
 	label: true,
 	'hierarchy.label': true,
-	'hierarchy.subSequence.label': true,
-	'hierarchy.sequence.label': true,
+	'hierarchy.subSequence.label': false,
+	'hierarchy.sequence.label': false,
 	'declarations.label': true,
 	'controls.control': false,
 	'controls.errorMessage': false,
@@ -33,7 +33,7 @@ const BINDINGSDEPENDENCIES_IS_CONTIGUOUS = {
 };
 
 function createCrawl(component, { executeExpression, iteration }) {
-	const { bindingDependencies: rootBindings } = component;
+	const { bindingDependencies: rootBindings = [] } = component;
 
 	/**
 	 *

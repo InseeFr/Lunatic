@@ -47,7 +47,7 @@ function createPages(questionnaire) {
 	if (isUnpaginated(questionnaire)) {
 		return { 1: { components } }; // no page -> one page ;)
 	}
-	return components.reduce(
+	const map = components.reduce(
 		function (current, component) {
 			const { components, page } = component;
 			if (isPaginatedLoop(component)) {
@@ -62,6 +62,8 @@ function createPages(questionnaire) {
 		},
 		{ unpaged: [] }
 	);
+
+	return map;
 }
 
 export default createPages;

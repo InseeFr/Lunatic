@@ -17,7 +17,7 @@ function BlockForLoop({
 	management,
 	executeExpression,
 }) {
-	const [nbRows, setNbRows] = useState(1);
+	const [nbRows, setNbRows] = useState(-1);
 	const [min, setMin] = useState(undefined);
 	const [max, setMax] = useState(undefined);
 
@@ -51,7 +51,7 @@ function BlockForLoop({
 		[handleChange, nbRows]
 	);
 
-	if (lines) {
+	if (lines && nbRows > 0) {
 		return (
 			<>
 				<DeclarationsBeforeText declarations={declarations} />

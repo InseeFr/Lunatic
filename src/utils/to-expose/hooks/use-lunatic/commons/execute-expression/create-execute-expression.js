@@ -104,28 +104,54 @@ function createExecuteExpression(variables, features) {
 		dependencies.forEach(function (name) {
 			if (name in variables) {
 				const value = bindings[name];
-
 				if (Array.isArray(value)) {
-					vtlBindings[name] = value[iteration];
+					const { length } = value;
+					if (iteration < length) {
+						vtlBindings[name] = value[iteration];
+					} else {
+						vtlBindings[name] = '';
+					}
 				}
 			}
 		});
 	}
 
 	function refreshCalculatedInLoop(bindingDependencies, iteration) {
-		// console.log({ bindingDependencies, iteration });
+		bindingDependencies.forEach(function (name) {
+			const { variable } = variables[name];
+			const { variableType } = variable;
+			if (variableType === 'CALCULATED' && toRefreshVariables.has(name)) {
+				const { bindingDependencies: dependencies, expression } = variable;
+				refreshArrayVariablesForLoop(dependencies, iteration);
+				const value = executeExpression(vtlBindings, expression, features);
+				updateBindings(name, value);
+			}
+		});
 	}
 
 	function directExecute(expression, args) {
 		const { bindingDependencies, iteration } = args;
-		if (Array.isArray(bindingDependencies) && iteration !== undefined) {
+
+		function logging(_, e) {
+			if (process.env.NODE_ENV === 'development') {
+				console.warn(`VTL error :  ${expression}`, args);
+				console.warn(e);
+			}
+		}
+
+		if (iteration !== undefined) {
 			refreshCalculatedInLoop(bindingDependencies, iteration);
 			refreshArrayVariablesForLoop(bindingDependencies, iteration);
 		} else if (bindingDependencies) {
 			refreshCalculated(bindingDependencies);
 		}
 
-		const result = executeExpression(vtlBindings, expression, features);
+		const result = executeExpression(
+			vtlBindings,
+			expression,
+			features,
+			logging
+		);
 		renewArray(bindingDependencies);
 
 		return result;

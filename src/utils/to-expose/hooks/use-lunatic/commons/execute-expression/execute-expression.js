@@ -24,7 +24,19 @@ function executeVtl(expression, vtlBindings) {
 	return result;
 }
 
-function executeExpression(vtlBindings, expression, features /* VTL, MD */) {
+function logging(expression, e) {
+	if (process.env.NODE_ENV === 'development') {
+		console.warn(`VTL error :  ${expression}`);
+		console.warn(e);
+	}
+}
+
+function executeExpression(
+	vtlBindings,
+	expression,
+	features /* VTL, MD */,
+	log = logging
+) {
 	if (expression) {
 		try {
 			if (features.includes('VTL')) {
@@ -32,11 +44,8 @@ function executeExpression(vtlBindings, expression, features /* VTL, MD */) {
 			}
 			return expression;
 		} catch (e) {
-			// expression en erreur ou simple chaîne dee caractère
-			if (process.env.NODE_ENV === 'development') {
-				console.warn(`VTL error :  ${expression}`);
-				console.warn(e);
-			}
+			// expression en erreur ou simple chaîne de caractère
+			log(expression, e);
 			return expression;
 		}
 		// TODO MD only for labels, not for filtering

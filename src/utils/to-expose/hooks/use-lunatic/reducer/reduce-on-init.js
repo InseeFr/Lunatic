@@ -3,6 +3,7 @@ import {
 	checkLoops,
 	isFirstLastPage,
 	createExecuteExpression,
+	createArrayVariablesDependencies,
 } from '../commons';
 
 /* à bouger d'ici */
@@ -132,6 +133,7 @@ function reduceOnInit(state, action) {
 	const { source, data, initialPage, features } = payload;
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
+
 		const [executeExpression, updateBindings] = createExecuteExpression(
 			variables,
 			features

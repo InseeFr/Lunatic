@@ -15,6 +15,7 @@ function isLoopComponent(component) {
 	}
 	return false;
 }
+
 function isInSubPage(state) {
 	const { pager } = state;
 	const { subPage } = pager;
@@ -37,6 +38,7 @@ function getCollectedValue(component, variables) {
 
 function getLoopValues(component, variables) {
 	const { components } = component;
+
 	return components.reduce(function (map, component) {
 		// TODO responses cells
 		const { response } = component;
