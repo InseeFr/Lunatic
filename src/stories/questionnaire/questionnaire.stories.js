@@ -35,18 +35,20 @@ def.addWithJSX('Calculated Variables', () => (
 	/>
 ));
 
-def.addWithJSX('Logement', () => (
-	<Orchestrator
-		id="props"
-		source={logement}
-		missing={boolean('Missing', false)}
-		features={select('Features', featuresOptions, ['VTL', 'MD'])}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		disabled={boolean('Disabled', false)}
-		focused={boolean('Focused', false)}
-		management={boolean('Management', false)}
-	/>
-));
+def.addWithJSX('Logement', function () {
+	return (
+		<Orchestrator
+			id="props"
+			source={logement}
+			missing={boolean('Missing', false)}
+			features={select('Features', featuresOptions, ['VTL', 'MD'])}
+			positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+			disabled={boolean('Disabled', false)}
+			focused={boolean('Focused', false)}
+			management={boolean('Management', false)}
+		/>
+	);
+});
 
 def.addWithJSX('Arithmetic', () => (
 	<Orchestrator
@@ -92,38 +94,42 @@ paginated.addWithJSX('Calculated Variables', () => (
 	/>
 ));
 
-paginated.addWithJSX('Logement', () => (
-	<Orchestrator
-		id="props"
-		source={logement}
-		data={dataLogement}
-		missing={boolean('Missing', false)}
-		activeGoNextForMissing={boolean('Active go next for missing', false)}
-		features={select('Features', featuresOptions, ['VTL', 'MD'])}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		disabled={boolean('Disabled', false)}
-		focused={boolean('Focused', false)}
-		management={boolean('Management', false)}
-		pagination
-		modalForControls
-	/>
-));
+paginated.addWithJSX('Logement', function () {
+	return (
+		<Orchestrator
+			id="props"
+			source={logement}
+			data={dataLogement}
+			missing={boolean('Missing', false)}
+			activeGoNextForMissing={boolean('Active go next for missing', false)}
+			features={select('Features', featuresOptions, ['VTL', 'MD'])}
+			positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+			disabled={boolean('Disabled', false)}
+			focused={boolean('Focused', false)}
+			management={boolean('Management', false)}
+			pagination
+			modalForControls
+		/>
+	);
+});
 
-paginated.addWithJSX('Logement - Queen', () => (
-	<Orchestrator
-		id="props"
-		source={logementQueen}
-		data={dataLogement}
-		missing={boolean('Missing', false)}
-		activeGoNextForMissing={boolean('Active go next for missing', false)}
-		features={select('Features', featuresOptions, ['VTL', 'MD'])}
-		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
-		disabled={boolean('Disabled', false)}
-		focused={boolean('Focused', false)}
-		management={boolean('Management', false)}
-		pagination
-	/>
-));
+paginated.addWithJSX('Logement - Queen', function () {
+	return (
+		<Orchestrator
+			id="props"
+			source={logementQueen}
+			data={dataLogement}
+			missing={boolean('Missing', false)}
+			activeGoNextForMissing={boolean('Active go next for missing', false)}
+			features={select('Features', featuresOptions, ['VTL', 'MD'])}
+			positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+			disabled={boolean('Disabled', false)}
+			focused={boolean('Focused', false)}
+			management={boolean('Management', false)}
+			pagination
+		/>
+	);
+});
 
 paginated.addWithJSX('Logement - Sequence', () => (
 	<Orchestrator

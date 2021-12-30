@@ -8,30 +8,14 @@
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
+					"synonyms": { "saint": ["st"] },
 					"min": 2
 				},
 				{ "name": "id" }
 			],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+" }
-			},
-			"version": "1"
-		},
-		{
-			"name": "naf-rev2-stop",
-			"fields": [
-				{
-					"name": "label",
-					"rules": ["[\\w]+"],
-					"language": "French",
-					"min": 2
-				},
-				{ "name": "id" }
-			],
-			"queryParser": {
-				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+" }
+				"params": { "language": "French", "pattern": "[\\w.]+", "min": 1 }
 			},
 			"version": "1"
 		},
@@ -42,7 +26,38 @@
 				{ "name": "nccenr", "rules": "soft" },
 				{ "name": "id", "rules": "soft" }
 			],
+			"order": { "type": "ascending", "field": "label" },
 			"queryParser": { "type": "soft" },
+			"version": "1"
+		},
+		{
+			"name": "bailleurs-sociaux",
+			"fields": [
+				{
+					"name": "libelle1",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"synonyms": { "st": ["saint"] },
+					"stemmer": false
+				},
+				{
+					"name": "libelle2",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"synonyms": [
+						{ "source": "saint", "target": ["st"] },
+						{ "source": "oph", "target": ["renaud", "nicolas"] }
+					],
+					"stemmer": false
+				},
+				{ "name": "code" }
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w]+", "min": "1" }
+			},
+			"stopWords": ["de", "la", "les", "du", "et", "au", "aux", "en"],
+			"max": 12,
 			"version": "1"
 		}
 	],
@@ -175,7 +190,7 @@
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
-				"FORCED": null,
+				"FORCED": 3,
 				"EDITED": null,
 				"INPUTED": null
 			}

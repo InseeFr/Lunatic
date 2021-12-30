@@ -6,6 +6,7 @@ function Loop(props) {
 		declarations,
 		label,
 		lines,
+		iterations,
 		id,
 		components,
 		handleChange,
@@ -21,6 +22,7 @@ function Loop(props) {
 			declarations={declarations}
 			label={label}
 			lines={lines}
+			iterations={iterations}
 			id={id}
 			components={components}
 			handleChange={handleChange}

@@ -9,6 +9,7 @@ const VTL_ATTRIBUTES = [
 	'options.label',
 	'lines.min',
 	'lines.max',
+	'iterations',
 ];
 
 /**
@@ -30,6 +31,7 @@ const BINDINGSDEPENDENCIES_IS_CONTIGUOUS = {
 	'options.label': true,
 	'lines.min': true,
 	'lines.max': true,
+	iterations: true,
 };
 
 function createCrawl(component, { executeExpression, iteration }) {

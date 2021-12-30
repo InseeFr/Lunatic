@@ -47,15 +47,14 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL'];
 
-const OrchestratorForStories = ({
+function OrchestratorForStories({
 	source,
-	suggesters,
 	data = DEFAULT_DATA,
 	management = false,
 	modalForControls = false,
 	features = DEFAULT_FEATURES,
 	bindings: initialBindings,
-	initialPage = '16',
+	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	shortcut = false,
@@ -64,7 +63,7 @@ const OrchestratorForStories = ({
 	autoSuggesterLoading,
 	addExternal,
 	...rest
-}) => {
+}) {
 	const preferences = management
 		? ['COLLECTED', 'FORCED', 'EDITED']
 		: ['COLLECTED'];
@@ -205,6 +204,6 @@ const OrchestratorForStories = ({
 	// 		)}
 	// 	</div>
 	// );
-};
+}
 
 export default memo(OrchestratorForStories);

@@ -26,7 +26,7 @@ function Row({
 		let value = undefined;
 		if (response) {
 			const { name } = response;
-			value = valueMap[name][rowIndex] || '';
+			if (name in valueMap) value = valueMap[name][rowIndex] || '';
 		}
 
 		return [

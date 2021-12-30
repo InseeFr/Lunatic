@@ -38,11 +38,18 @@ function updateVariables(state, action) {
 	}
 }
 
+/**
+ * met à jour bindings pour l'exe du VTL (en appelant la fonction fournit par createExecuteExpression)
+ * @param {*} state
+ * @param {*} action
+ * @returns
+ */
 function updateBindings(state, action) {
 	const { payload } = action;
-	const { response, value } = payload;
+	const { response } = payload;
 	const { name } = response;
-	const { updateBindings } = state;
+	const { updateBindings, variables } = state;
+	const { value } = variables[name];
 
 	updateBindings(name, value);
 

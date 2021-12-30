@@ -2,12 +2,26 @@ import { useReducer, useEffect, useCallback } from 'react';
 import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
 import reducer from './reducer';
+import { loadSuggester } from './commons';
 import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 
 function useLunatic({ source, data, initialPage, features }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { pager, executeExpression } = state;
 	const components = useComponentsFromState(state);
+	const { suggesters } = source;
+
+	useEffect(
+		function () {
+			async function doIt() {
+				if (suggesters) {
+					await loadSuggester(suggesters);
+				}
+			}
+			doIt();
+		},
+		[suggesters]
+	);
 
 	useEffect(
 		function () {

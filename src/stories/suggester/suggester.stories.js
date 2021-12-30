@@ -105,29 +105,38 @@ const storiesAuto = storiesOf('Suggester/Auto loading', module)
 		return <WrappedComponent title="<Suggester />" />;
 	});
 
-const suggesterFetcher = (url) =>
-	fetch(url, {
-		headers: { Accept: 'application/json' },
+function appendSuggesterInfo() {
+	const { suggesters } = dataAuto;
+	const next = suggesters.map(function (suggester) {
+		const { name } = suggester;
+		if (name === 'naf-rev2') {
+			return {
+				...suggester,
+				autoLoad: true,
+				fetch: NAF.fetch,
+				idbVersion: '1',
+			};
+		} else if (name === 'cog-communes') {
+			return {
+				...suggester,
+				autoLoad: true,
+				fetch: COG.fetch,
+				idbVersion: '1',
+			};
+		} else if (name === 'bailleurs-sociaux') {
+			return {
+				...suggester,
+				autoLoad: true,
+				fetch: BAILLEURS.fetch,
+				idbVersion: '1',
+			};
+		}
+
+		return suggester;
 	});
+	return { ...dataAuto, suggesters: next };
+}
 
 storiesAuto.addWithJSX('Default', () => (
-	<Orchestrator
-		id="default"
-		source={dataAuto}
-		suggesters={{
-			'naf-rev2': {
-				url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
-			},
-			'naf-rev2-stop': {
-				url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
-				stopWords: [],
-			},
-			'cog-communes': {
-				url: 'https://inseefr.github.io/Lunatic/storybook/communes-2019.json',
-			},
-		}}
-		suggesterFetcher={suggesterFetcher}
-		autoSuggesterLoading
-		pagination
-	/>
+	<Orchestrator id="default" source={appendSuggesterInfo()} />
 ));

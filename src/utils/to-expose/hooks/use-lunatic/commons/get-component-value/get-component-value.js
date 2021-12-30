@@ -4,7 +4,10 @@ function isCollectedComponent(component) {
 }
 
 function isLoopComponent(component) {
-	const { componentType, lines } = component;
+	const { componentType, lines, iterations } = component;
+	if (componentType === 'Loop' && iterations !== undefined) {
+		return true;
+	}
 	if (
 		componentType === 'Loop' &&
 		typeof lines === 'object' &&
@@ -38,7 +41,6 @@ function getCollectedValue(component, variables) {
 
 function getLoopValues(component, variables) {
 	const { components } = component;
-
 	return components.reduce(function (map, component) {
 		// TODO responses cells
 		const { response } = component;

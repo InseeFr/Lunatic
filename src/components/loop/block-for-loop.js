@@ -16,11 +16,11 @@ function BlockForLoop({
 	shortcut,
 	management,
 	executeExpression,
+	iterations,
 }) {
 	const [nbRows, setNbRows] = useState(-1);
 	const [min, setMin] = useState(undefined);
 	const [max, setMax] = useState(undefined);
-
 	useEffect(
 		function () {
 			if (lines) {
@@ -37,11 +37,13 @@ function BlockForLoop({
 
 	useEffect(
 		function () {
-			if (min && max) {
+			if (Number.parseInt(iterations)) {
+				setNbRows(iterations);
+			} else if (min && max) {
 				setNbRows(min);
 			}
 		},
-		[min, max]
+		[min, max, iterations]
 	);
 
 	const handleChangeLoop = useCallback(
@@ -51,7 +53,7 @@ function BlockForLoop({
 		[handleChange, nbRows]
 	);
 
-	if (lines && nbRows > 0) {
+	if (nbRows > 0) {
 		return (
 			<>
 				<DeclarationsBeforeText declarations={declarations} />
