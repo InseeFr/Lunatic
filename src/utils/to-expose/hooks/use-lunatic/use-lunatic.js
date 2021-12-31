@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useCallback } from 'react';
+import { useReducer, useEffect, useCallback, useState } from 'react';
 import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
 import reducer from './reducer';
@@ -15,7 +15,7 @@ function useLunatic({ source, data, initialPage, features }) {
 		function () {
 			async function doIt() {
 				if (suggesters) {
-					await loadSuggester(suggesters);
+					const status = await loadSuggester(suggesters);
 				}
 			}
 			doIt();

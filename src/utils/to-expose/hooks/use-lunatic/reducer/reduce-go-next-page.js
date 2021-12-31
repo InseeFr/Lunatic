@@ -48,7 +48,7 @@ function reduceNextPage(state, { next, iterations }) {
 function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	const { pages, pager, executeExpression } = state;
 	const { subPages } = pages[next];
-	console.log(iterations);
+
 	const nbIterations = executeExpression(iterations, {
 		bindingDependencies: loopDependencies,
 		iteration: undefined,

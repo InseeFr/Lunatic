@@ -1,6 +1,6 @@
 import CONSTANTES from '../constantes';
 
-function update(db, storeInfo) {
+function updateStoreInfo(db, storeInfo) {
 	return new Promise(function (resolve, reject) {
 		try {
 			const transaction = db.transaction(
@@ -23,4 +23,4 @@ function update(db, storeInfo) {
 	});
 }
 
-export default update;
+export default updateStoreInfo;
