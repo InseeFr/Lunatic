@@ -15,3 +15,9 @@ export const handleChange = (response, value, args) => ({
 	type: HANDLE_CHANGE,
 	payload: { response, value, args },
 });
+
+export const ON_SET_WAITING = 'use-lunatic/on-set-waiting';
+export const onSetWaiting = (status) => ({
+	type: ON_SET_WAITING,
+	payload: { status },
+});

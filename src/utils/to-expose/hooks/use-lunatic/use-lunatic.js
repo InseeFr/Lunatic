@@ -7,7 +7,7 @@ import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 
 function useLunatic({ source, data, initialPage, features }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, executeExpression } = state;
+	const { pager, executeExpression, waiting } = state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
 
@@ -15,7 +15,10 @@ function useLunatic({ source, data, initialPage, features }) {
 		function () {
 			async function doIt() {
 				if (suggesters) {
+					dispatch(actions.onSetWaiting(true));
 					const status = await loadSuggester(suggesters);
+					console.log({ status });
+					dispatch(actions.onSetWaiting(false));
 				}
 			}
 			doIt();
@@ -70,6 +73,7 @@ function useLunatic({ source, data, initialPage, features }) {
 		isFirstPage,
 		isLastPage,
 		pager,
+		waiting,
 	};
 }
 

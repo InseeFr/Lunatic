@@ -13,7 +13,6 @@ function Input({
 	maxLength,
 	id,
 	labelledBy,
-	iteration,
 }) {
 	const handleChange = useCallback(
 		function (e) {

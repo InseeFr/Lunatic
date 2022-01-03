@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import * as lunatic from 'components';
 import './custom-lunatic.scss';
+import Waiting from './waiting';
 
 function getStoreInfoRequired() {
 	return {};
@@ -78,6 +79,7 @@ function OrchestratorForStories({
 		isFirstPage,
 		isLastPage,
 		executeExpression,
+		waiting,
 	} = lunatic.useLunatic({
 		source,
 		data,
@@ -121,6 +123,11 @@ function OrchestratorForStories({
 				pageTag={pageTag}
 				maxPage={maxPage}
 			/>
+			<Waiting status={waiting}>
+				<div className="waiting-orchestrator">
+					Initialisation des données de suggestion...
+				</div>
+			</Waiting>
 		</div>
 	);
 

@@ -37,15 +37,16 @@ async function loadOne(suggester, logging) {
 
 async function loadSuggesters(suggesters = []) {
 	try {
-		suggesters.forEach(function (suggester) {
-			const { autoLoad, name } = suggester;
+		for (let i = 0; i < suggesters.length; i++) {
+			const suggester = suggesters[i];
+			const { autoLoad } = suggester;
 			function logging(message) {
-				// console.log(name, message);
+				//console.log(name, message);
 			}
 			if (autoLoad) {
-				loadOne(suggester, logging);
+				await loadOne(suggester, logging);
 			}
-		});
+		}
 		return true;
 	} catch (e) {
 		console.warn(
