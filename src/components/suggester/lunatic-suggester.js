@@ -1,12 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import componentWrapper from '../component-wrapper';
-import Declarations from '../declarations';
-import * as U from '../../utils/lib';
-import * as C from '../../constants';
 import IDBSuggester from './idb-suggester';
-import LabelWrapper from '../../utils/components/label-wrapper';
-import FieldWrapper from '../../utils/components/field-wrapper';
+import { FieldContainer, Label } from '../commons';
+import {
+	DeclarationsBeforeText,
+	DeclarationsAfterText,
+	DeclarationsDetachable,
+} from '../declarations';
 
 // function getSuggestionId(suggestion) {
 // 	if (suggestion) {
@@ -138,8 +138,58 @@ import FieldWrapper from '../../utils/components/field-wrapper';
 
 // export default componentWrapper(React.memo(Suggester, U.areEqual));
 
-function Suggester({ storeName }) {
-	return <div>Suggester {storeName}</div>;
+function LunaticSuggester(props) {
+	const {
+		storeName,
+		optionRenderer,
+		labelRenderer,
+		idbVersion,
+		id,
+		focused,
+		value,
+		disabled,
+		label,
+		declarations,
+		handleChange,
+		response,
+	} = props;
+
+	const inputId = `lunatic-suggester-${id}`;
+	const labelId = `lunatic-suggester-label-${id}`;
+
+	const onSelect = useCallback(
+		function (inputValue) {
+			if (value !== inputValue) {
+				handleChange(response, inputValue.id);
+			}
+		},
+		[handleChange, response, value]
+	);
+
+	return (
+		<>
+			<DeclarationsBeforeText declarations={declarations} />
+			<Label id={labelId} htmlFor={inputId} className={''}>
+				{label}
+			</Label>
+			<DeclarationsAfterText declarations={declarations} />
+			<FieldContainer value={value} id={id}>
+				<IDBSuggester
+					storeName={storeName}
+					optionRenderer={optionRenderer}
+					labelRenderer={labelRenderer}
+					labelledBy={labelId}
+					idbVersion={idbVersion}
+					onSelect={onSelect}
+					focused={focused}
+					disabled={disabled}
+					id={inputId}
+					value={value}
+				/>
+			</FieldContainer>
+			<DeclarationsDetachable declarations={declarations} />
+		</>
+	);
 }
 
-export default Suggester;
+export default LunaticSuggester;

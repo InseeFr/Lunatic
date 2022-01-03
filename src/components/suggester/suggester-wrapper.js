@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import {
 	reducer,
@@ -9,6 +9,7 @@ import {
 import { Suggester } from './components';
 import DefaultLabelRenderer from './components/selection/default-label-renderer';
 import { DefaultOptionRenderer } from './components';
+import { usePrevious } from '../commons';
 import './default-style.scss';
 
 function getSearch(search, value) {
@@ -33,6 +34,7 @@ function SuggesterWrapper({
 }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { search, selectedIndex, options } = state;
+	const prevSelectedIndex = usePrevious(selectedIndex);
 
 	useEffect(
 		function () {
@@ -59,11 +61,11 @@ function SuggesterWrapper({
 
 	useEffect(
 		function () {
-			if (selectedIndex !== undefined) {
+			if (selectedIndex !== prevSelectedIndex) {
 				onSelect(options[selectedIndex], selectedIndex);
 			}
 		},
-		[selectedIndex, onSelect, options]
+		[selectedIndex, onSelect, options, prevSelectedIndex]
 	);
 
 	useEffect(

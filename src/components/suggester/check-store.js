@@ -44,7 +44,7 @@ function CheckStore({ storeName, version, setStore, children }) {
 				go();
 			}
 		},
-		[refresh]
+		[refresh, checkStore]
 	);
 
 	if (ready === 0) {

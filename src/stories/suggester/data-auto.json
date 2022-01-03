@@ -141,22 +141,6 @@
 					"page": "3.2"
 				},
 				{
-					"id": "sugg2",
-					"componentType": "Suggester",
-					"mandatory": false,
-					"label": "PRENOM || \" what's your favorite NAF code? (without stop words)\"",
-					"storeName": "naf-rev2-stop",
-					"bindingDependencies": ["PRENOM", "NAF_STOP"],
-					"conditionFilter": {
-						"value": "not(isnull(PRENOM))",
-						"bindingDependencies": ["PRENOM"]
-					},
-					"response": {
-						"name": "NAF_STOP"
-					},
-					"page": "3.2"
-				},
-				{
 					"id": "sugg-communes",
 					"componentType": "Suggester",
 					"mandatory": false,

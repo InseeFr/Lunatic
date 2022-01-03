@@ -15,6 +15,7 @@ function LunaticInput(props) {
 		executeExpression,
 		iteration,
 		bindingDependencies,
+		className,
 	} = props;
 
 	const onChange = useCallback(
@@ -38,7 +39,7 @@ function LunaticInput(props) {
 			value={value}
 			inputId={inputId}
 			labelId={labelId}
-			labelClassName="todo"
+			labelClassName={className}
 			iteration={iteration}
 			bindingDependencies={bindingDependencies}
 		>
@@ -52,5 +53,9 @@ function LunaticInput(props) {
 		</InputContainer>
 	);
 }
+
+LunaticInput.defaultProps = {
+	className: 'todo',
+};
 
 export default React.memo(LunaticInput);

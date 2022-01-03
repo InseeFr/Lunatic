@@ -91,11 +91,14 @@ function OrchestratorForStories({
 		<div className="container">
 			<div className="components">
 				{components.map(function (component) {
-					const { id, componentType } = component;
+					const { id, componentType, response, ...other } = component;
 					const Component = lunatic[componentType];
 					return (
 						<div className="lunatic lunatic-component" key={`component-${id}`}>
 							<Component
+								id={id}
+								response={response}
+								{...other}
 								{...rest}
 								{...component}
 								handleChange={handleChange}
