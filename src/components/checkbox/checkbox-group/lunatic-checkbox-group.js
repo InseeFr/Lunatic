@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { FieldContainer, Fieldset } from '../../commons';
 import {
 	DeclarationsBeforeText,
@@ -8,15 +8,6 @@ import {
 
 function LunaticCheckboxGroup(props) {
 	const { id, declarations, value, label, handleChange, response } = props;
-
-	const onClick = useCallback(
-		function (valueOption) {
-			if (value !== valueOption) {
-				handleChange(response, valueOption);
-			}
-		},
-		[handleChange, response, value]
-	);
 
 	return (
 		<>

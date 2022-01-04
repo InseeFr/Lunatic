@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Input from './input';
 import { InputContainer } from '../commons';
 import './input.scss';
+import { useOnHandleChange } from '../commons';
 
 function LunaticInput(props) {
 	const {
@@ -14,18 +15,10 @@ function LunaticInput(props) {
 		declarations,
 		executeExpression,
 		iteration,
-		bindingDependencies,
 		className,
 	} = props;
 
-	const onChange = useCallback(
-		function (inputValue) {
-			if (value !== inputValue) {
-				handleChange(response, inputValue);
-			}
-		},
-		[handleChange, response, value]
-	);
+	const onChange = useOnHandleChange({ handleChange, response, value });
 
 	const inputId = `lunatic-input-${id}`;
 	const labelId = `lunatic-input-label-${id}`;
@@ -41,7 +34,6 @@ function LunaticInput(props) {
 			labelId={labelId}
 			labelClassName={className}
 			iteration={iteration}
-			bindingDependencies={bindingDependencies}
 		>
 			<Input
 				id={inputId}

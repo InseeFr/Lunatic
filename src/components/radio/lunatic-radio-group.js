@@ -1,25 +1,12 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import RadioGroup from './radio-group';
-import { FieldContainer, Fieldset } from '../commons';
+import { FieldContainer, Fieldset, useOnHandleChange } from '../commons';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../declarations';
 import './radio.scss';
-
-function useOnHandleChange({ handleChange, response, value }) {
-	const onClick = useCallback(
-		function (valueOption) {
-			if (value !== valueOption) {
-				handleChange(response, valueOption);
-			}
-		},
-		[handleChange, response, value]
-	);
-
-	return onClick;
-}
 
 function LunaticRadioGroup(props) {
 	const { label, id, options, value, handleChange, response, declarations } =

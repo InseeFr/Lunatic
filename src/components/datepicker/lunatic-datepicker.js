@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { InputContainer } from '../commons';
 import Datepicker from './datepicker';
+import { useOnHandleChange } from '../commons';
 import './datepicker.scss';
 
 function LunaticDatepicker({
@@ -16,14 +17,7 @@ function LunaticDatepicker({
 	iteration,
 	bindingDependencies,
 }) {
-	const onChange = useCallback(
-		function (inputValue) {
-			if (value !== inputValue) {
-				handleChange(response, inputValue);
-			}
-		},
-		[handleChange, response, value]
-	);
+	const onChange = useOnHandleChange({ handleChange, response, value });
 
 	const inputId = `lunatic-datepicker-${id}`;
 	const labelId = `lunatic-datepicker-label-${id}`;
