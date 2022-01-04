@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import RadioGroup from './radio-group';
-import Fieldset from './fieldset';
-import { FieldContainer } from '../commons';
+import { FieldContainer, Fieldset } from '../commons';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
@@ -9,10 +8,7 @@ import {
 } from '../declarations';
 import './radio.scss';
 
-function Radio(props) {
-	const { label, id, options, value, handleChange, response, declarations } =
-		props;
-
+function useOnHandleChange({ handleChange, response, value }) {
 	const onClick = useCallback(
 		function (valueOption) {
 			if (value !== valueOption) {
@@ -21,6 +17,15 @@ function Radio(props) {
 		},
 		[handleChange, response, value]
 	);
+
+	return onClick;
+}
+
+function LunaticRadioGroup(props) {
+	const { label, id, options, value, handleChange, response, declarations } =
+		props;
+
+	const onClick = useOnHandleChange({ handleChange, response, value });
 
 	return (
 		<>
@@ -41,4 +46,4 @@ function Radio(props) {
 	);
 }
 
-export default React.memo(Radio);
+export default React.memo(LunaticRadioGroup);

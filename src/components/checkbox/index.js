@@ -1,3 +1,3 @@
-export { default as CheckboxGroup } from './group';
-export { default as CheckboxBoolean } from './boolean';
-export { default as CheckboxOne } from './one';
+export { default as CheckboxGroup } from './checkbox-group';
+export { default as CheckboxBoolean } from './checkbox-boolean';
+export { default as CheckboxOne } from './checkbox-one';

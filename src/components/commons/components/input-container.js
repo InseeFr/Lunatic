@@ -1,10 +1,11 @@
 import React from 'react';
-import { FieldContainer, Label } from '../commons';
+import FieldContainer from './field-container';
+import Label from './label';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
-} from '../declarations';
+} from '../../declarations';
 
 function InputContainer({
 	declarations,

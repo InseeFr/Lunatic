@@ -8,6 +8,8 @@ import NetworkIcon from '../../utils/icons/network.icon';
 import OnDragIcon from '../../utils/icons/on-drag.icon';
 import RadioChecked from '../../utils/icons/radio-checked.icon';
 import RadioUnchecked from '../../utils/icons/radio-unchecked.icon';
+import CheckboxChecked from '../../utils/icons/checkbox-checked.icon';
+import CheckboxUnchecked from '../../utils/icons/checkbox-unchecked.icon';
 
 storiesOf('Icons', module)
 	.add('cross', () => <CrossIcon />)
@@ -17,4 +19,6 @@ storiesOf('Icons', module)
 	.add('network', () => <NetworkIcon />)
 	.add('on-drag', () => <OnDragIcon />)
 	.add('radio-unchecked', () => <RadioChecked />)
-	.add('radio-checked', () => <RadioUnchecked />);
+	.add('radio-checked', () => <RadioUnchecked />)
+	.add('checkbox-checked', () => <CheckboxChecked />)
+	.add('checkbox-unchecked', () => <CheckboxUnchecked />);
