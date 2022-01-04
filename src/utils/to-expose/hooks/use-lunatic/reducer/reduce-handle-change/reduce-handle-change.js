@@ -15,6 +15,8 @@ function updateVariables(state, action) {
 	const { pager, variables } = state;
 	const { nbIterations, iteration } = pager;
 
+	console.log({ name, value });
+
 	if (loop) {
 		const variablesNext = reduceVariablesArray(variables, {
 			name,

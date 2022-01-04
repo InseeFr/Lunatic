@@ -1,7 +1,6 @@
 import React from 'react';
-import useOptionsKeydown from './use-options-keydown';
 import RadioOption from './radio-option';
-import { Label } from '../commons';
+import { Label, useOptionsKeydown } from '../commons';
 
 function RadioGroup({ options, value, id, onClick }) {
 	const onKeyDown = useOptionsKeydown(options, onClick);

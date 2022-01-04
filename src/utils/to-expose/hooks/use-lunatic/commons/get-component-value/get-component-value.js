@@ -3,6 +3,11 @@ function isCollectedComponent(component) {
 	return response !== undefined;
 }
 
+function isCheckboxGroup(component) {
+	const { componentType } = component;
+	return componentType === 'CheckboxGroup';
+}
+
 function isLoopComponent(component) {
 	const { componentType, lines, iterations } = component;
 	if (componentType === 'Loop' && iterations !== undefined) {
@@ -26,8 +31,7 @@ function isInSubPage(state) {
 	return subPage !== undefined;
 }
 
-function getCollectedValue(component, variables) {
-	const { response } = component;
+function getCollectedValue(response, variables) {
 	if (response) {
 		const { name } = response;
 		if (name in variables) {
@@ -47,15 +51,31 @@ function getLoopValues(component, variables) {
 		if (response) {
 			const { name } = response;
 			if (name) {
-				return { ...map, [name]: getCollectedValue(component, variables) };
+				return { ...map, [name]: getCollectedValue(response, variables) };
 			}
 		}
 		return map;
 	}, {});
 }
 
+function getCheckboxGroupValue(component, variables) {
+	const { responses } = component;
+	if (typeof responses === 'object') {
+		return responses.reduce(function (map, entry) {
+			const { response } = entry;
+			if (entry) {
+				const { name } = response;
+				return { ...map, [name]: getCollectedValue(response, variables) };
+			}
+			return map;
+		}, {});
+	}
+	return {};
+}
+
 function getSubPageValue(state, component, variables) {
-	const value = getCollectedValue(component, variables);
+	const { response } = component;
+	const value = getCollectedValue(response, variables);
 
 	if (value && Array.isArray(value)) {
 		const { pager } = state;
@@ -68,6 +88,9 @@ function getSubPageValue(state, component, variables) {
 function getComponentValue(component, state) {
 	const { variables } = state;
 	// l'ordre est important : à écrire mieux.
+	if (isCheckboxGroup(component)) {
+		return getCheckboxGroupValue(component, variables);
+	}
 	if (isLoopComponent(component)) {
 		return getLoopValues(component, variables);
 	}
@@ -75,7 +98,8 @@ function getComponentValue(component, state) {
 		return getSubPageValue(state, component, variables);
 	}
 	if (isCollectedComponent(component)) {
-		return getCollectedValue(component, variables);
+		const { response } = component;
+		return getCollectedValue(response, variables);
 	}
 
 	return undefined;
