@@ -25,12 +25,12 @@ const BINDINGSDEPENDENCIES_IS_CONTIGUOUS = {
 	'hierarchy.label': true,
 	'hierarchy.subSequence.label': false,
 	'hierarchy.sequence.label': false,
-	'declarations.label': true,
+	'declarations.label': false,
 	'controls.control': false,
 	'controls.errorMessage': false,
 	'options.label': true,
-	'lines.min': true,
-	'lines.max': true,
+	'lines.min': false,
+	'lines.max': false,
 	iterations: true,
 };
 

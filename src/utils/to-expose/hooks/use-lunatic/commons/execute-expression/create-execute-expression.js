@@ -73,23 +73,23 @@ function createExecuteExpression(variables, features) {
 	 *
 	 * @param {*} dependencies
 	 */
-	function refreshCalculated(dependencies, iteration) {
-		dependencies.forEach(function (name) {
-			if (name in variables) {
-				const { variable } = variables[name];
-				const { variableType, expression, bindingDependencies } = variable;
+	// function refreshCalculated(dependencies, iteration) {
+	// 	dependencies.forEach(function (name) {
+	// 		if (name in variables) {
+	// 			const { variable } = variables[name];
+	// 			const { variableType, expression, bindingDependencies } = variable;
 
-				if (variableType === 'CALCULATED' && toRefreshVariables.has(name)) {
-					toRefreshVariables.delete(name);
-					if (bindingDependencies) {
-						refreshCalculated(bindingDependencies, iteration);
-					}
-					const value = executeExpression(vtlBindings, expression, features); //execute(expression, { bindingDependencies, iteration });
-					updateBindings(name, value);
-				}
-			}
-		});
-	}
+	// 			if (variableType === 'CALCULATED' && toRefreshVariables.has(name)) {
+	// 				toRefreshVariables.delete(name);
+	// 				if (bindingDependencies) {
+	// 					refreshCalculated(bindingDependencies, iteration);
+	// 				}
+	// 				const value = executeExpression(vtlBindings, expression, features); //execute(expression, { bindingDependencies, iteration });
+	// 				updateBindings(name, value);
+	// 			}
+	// 		}
+	// 	});
+	// }
 
 	function renewArray(dependencies = []) {
 		dependencies.forEach(function (name) {
@@ -124,10 +124,68 @@ function createExecuteExpression(variables, features) {
 				const { bindingDependencies: dependencies, expression } = variable;
 				refreshArrayVariablesForLoop(dependencies, iteration);
 				const value = executeExpression(vtlBindings, expression, features);
+				toRefreshVariables.set(name, variable);
 				updateBindings(name, value);
 			}
 		});
 	}
+
+	/**/
+
+	function collecteVariables(dependencies, variables) {
+		if (Array.isArray(dependencies)) {
+			return dependencies.reduce(function (map, name) {
+				const data = variables[name];
+				const { variable, type } = data;
+				if (!(name in map)) {
+					if (type === 'CALCULATED') {
+						const { bindingDependencies: subDependencies } = variable;
+						return {
+							...map,
+							[name]: { ...variable },
+							...collecteVariables(subDependencies, variables),
+						};
+					}
+
+					return { ...map, [name]: { ...variable } };
+				}
+				return map;
+			}, {});
+		}
+		return {};
+	}
+
+	function resolveUseContext(name, { bindings, iteration }) {
+		const value = bindings[name];
+		if (iteration !== undefined && Array.isArray(value)) {
+			return value[iteration];
+		}
+		return getVtlCompatibleValue(value);
+	}
+
+	function refreshCalculated(map, { variables, bindings, features }) {
+		// return Object.entries(map).reduce(function (sub, [name, _]) {
+		// 	const { variable, type } = variables[name];
+		// 	if (type === 'CALCULTED') {
+		// 		const { expression } = variable;
+		// 		const value = executeExpression(bindings, expression, features);
+		// 		return { ...sub, [name]: value };
+		// 	}
+		// 	return sub;
+		// }, map);
+		return map;
+	}
+
+	function fillVariablesValues(map, { bindings, iteration }) {
+		return Object.entries(map).reduce(function (sub, [name, _]) {
+			return {
+				...sub,
+				[name]: resolveUseContext(name, { bindings, iteration }),
+			};
+		}, {});
+	}
+
+	/*	*/
 
 	function directExecute(expression, args) {
 		const { bindingDependencies, iteration } = args;
@@ -139,20 +197,26 @@ function createExecuteExpression(variables, features) {
 			}
 		}
 
-		if (iteration !== undefined) {
-			refreshCalculatedInLoop(bindingDependencies, iteration);
-			refreshArrayVariablesForLoop(bindingDependencies, iteration);
-		} else if (bindingDependencies) {
-			refreshCalculated(bindingDependencies);
-		}
-
-		const result = executeExpression(
-			vtlBindings,
-			expression,
-			features,
-			logging
+		const map = refreshCalculated(
+			fillVariablesValues(collecteVariables(bindingDependencies, variables), {
+				bindings,
+				iteration,
+				variables,
+			}),
+			{ variables, bindings, features }
 		);
-		renewArray(bindingDependencies);
+
+		// console.log({ expression, map, vtlBindings, iteration });
+
+		// if (iteration !== undefined) {
+		// 	refreshCalculatedInLoop(bindingDependencies, iteration);
+		// 	refreshArrayVariablesForLoop(bindingDependencies, iteration);
+		// } else if (bindingDependencies) {
+		// 	refreshCalculated(bindingDependencies);
+		// }
+
+		const result = executeExpression(map, expression, features, logging);
+		// renewArray(bindingDependencies);
 
 		return result;
 	}
@@ -166,7 +230,7 @@ function createExecuteExpression(variables, features) {
 	 */
 	function execute(expression, args = {}) {
 		const { bindingDependencies } = args;
-
+		// console.log({ expression, ...args });
 		if (expressionsMap.has(expression)) {
 			return expressionsMap.get(expression);
 		}
