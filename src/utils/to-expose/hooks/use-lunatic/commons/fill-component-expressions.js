@@ -67,6 +67,7 @@ function createCrawl(component, { executeExpression, iteration }) {
 	 */
 	function executeAndFillObject(object, path, fullStringPath) {
 		const candidate = object[path];
+
 		if (typeof candidate === 'string') {
 			return {
 				...object,

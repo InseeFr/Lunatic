@@ -13,7 +13,7 @@ function LoopOrchestrator({
 	preferences,
 	executeExpression,
 }) {
-	return new Array(nbRows).fill(0).map(function (_, index) {
+	return new Array(nbRows).fill(null).map(function (_, index) {
 		return (
 			<Row
 				key={index}

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import CheckboxOption from './checkbox-option';
-import { Label, useOnHandleChange } from '../../commons';
+import { Label } from '../../commons';
 
 function onClick() {}
 
@@ -36,6 +36,10 @@ function CheckBoxOptionWrapper({
 	);
 }
 
+function CheckboxGroupContainer({ children }) {
+	return <div className="lunatic-checkbox-group-option">{children}</div>;
+}
+
 function CheckboxGroup({ options, value, id, handleChange }) {
 	return options.map(function (option, index) {
 		const { label, response } = option;
@@ -47,7 +51,7 @@ function CheckboxGroup({ options, value, id, handleChange }) {
 			const labelId = `lunatic-checkbox-label-${id}-${name}`;
 
 			return (
-				<div key={checkboxId} className="">
+				<CheckboxGroupContainer key={checkboxId}>
 					<Label id={labelId} htmlFor={checkboxId}>
 						{label}
 					</Label>
@@ -61,7 +65,7 @@ function CheckboxGroup({ options, value, id, handleChange }) {
 						response={response}
 						handleChange={handleChange}
 					/>
-				</div>
+				</CheckboxGroupContainer>
 			);
 		}
 		return null;

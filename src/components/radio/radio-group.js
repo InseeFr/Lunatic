@@ -11,7 +11,7 @@ function RadioGroup({ options, value, id, onClick }) {
 		const labelId = `lunatic-radio-label-${id}-${valueOption}`;
 
 		return (
-			<div key={radioId} className="">
+			<div key={radioId} className="lunatic-radio-group-option">
 				<Label id={labelId} htmlFor={radioId}>
 					{label}
 				</Label>
