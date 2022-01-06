@@ -25,7 +25,6 @@ function BlockForLoop({
 		function () {
 			if (lines) {
 				const { min, max } = lines;
-
 				if (min !== undefined && max !== undefined) {
 					setMin(min);
 					setMax(max);

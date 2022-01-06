@@ -97,18 +97,19 @@ function createExecuteExpression(variables, features) {
 	}
 
 	function refreshCalculated(map, { variables, bindings, features }) {
-		return Object.entries(map).reduce(function (sub, [name, _]) {
+		return Object.entries(map).reduce(function (sub, [name, current]) {
 			const { variable, type } = variables[name];
 
 			if (type === 'CALCULATED' && toRefreshVariables.has(name)) {
 				const { expression } = variable;
-				console.log('update', name);
 				const value = executeExpression(map, expression, features);
+				bindings[name] = value;
 				toRefreshVariables.delete(name);
+
 				return { ...sub, [name]: value };
 			}
-			return sub;
-		}, map);
+			return { ...sub, [name]: current };
+		}, {});
 	}
 
 	function fillVariablesValues(map, { bindings, iteration }) {
@@ -140,7 +141,6 @@ function createExecuteExpression(variables, features) {
 			}),
 			{ variables, bindings, features }
 		);
-
 		const result = executeExpression(map, expression, features, logging);
 
 		return result;
@@ -155,7 +155,6 @@ function createExecuteExpression(variables, features) {
 	 */
 	function execute(expression, args = {}) {
 		const { bindingDependencies } = args;
-		// console.log({ expression, ...args });
 		if (expressionsMap.has(expression)) {
 			return expressionsMap.get(expression);
 		}
