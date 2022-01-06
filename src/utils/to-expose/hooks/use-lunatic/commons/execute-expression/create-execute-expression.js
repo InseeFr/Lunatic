@@ -17,15 +17,13 @@ function getVtlCompatibleValue(value) {
 }
 
 function createBindings(variables) {
-	return Object.entries(variables).reduce(
-		function ([bindings, vtlBindings], [name, { value }]) {
-			return [
-				{ ...bindings, [name]: value },
-				{ ...vtlBindings, [name]: getVtlCompatibleValue(value) },
-			];
-		},
-		[{}, {}]
-	);
+	return Object.entries(variables).reduce(function (
+		bindings,
+		[name, { value }]
+	) {
+		return { ...bindings, [name]: value };
+	},
+	{});
 }
 
 /**
@@ -36,7 +34,7 @@ function createBindings(variables) {
  */
 function createExecuteExpression(variables, features) {
 	// on aimerait map d'expression, avec les bindings
-	const [bindings, vtlBindings] = createBindings(variables);
+	const bindings = createBindings(variables);
 	const expressionsMap = new Map();
 	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.
 	// à l'init, on y colle toutes les variables de calcul
@@ -53,80 +51,15 @@ function createExecuteExpression(variables, features) {
 	 */
 	function updateBindings(name, value) {
 		// update des bindings
-		if (name in vtlBindings) {
+		if (name in bindings) {
 			bindings[name] = value;
-			vtlBindings[name] = getVtlCompatibleValue(value);
 		}
 		// enrichissement des variables à rafraîchir
-		const { dependencies } = variables[name];
-		if (dependencies) {
-			dependencies.forEach(function (variable) {
-				const { name, variableType } = variable;
-				if (variableType === 'CALCULATED') {
-					toRefreshVariables.set(name, variable);
-				}
-			});
-		}
-	}
+		const { CalculatedLinked = [] } = variables[name];
 
-	/**
-	 *
-	 * @param {*} dependencies
-	 */
-	// function refreshCalculated(dependencies, iteration) {
-	// 	dependencies.forEach(function (name) {
-	// 		if (name in variables) {
-	// 			const { variable } = variables[name];
-	// 			const { variableType, expression, bindingDependencies } = variable;
-
-	// 			if (variableType === 'CALCULATED' && toRefreshVariables.has(name)) {
-	// 				toRefreshVariables.delete(name);
-	// 				if (bindingDependencies) {
-	// 					refreshCalculated(bindingDependencies, iteration);
-	// 				}
-	// 				const value = executeExpression(vtlBindings, expression, features); //execute(expression, { bindingDependencies, iteration });
-	// 				updateBindings(name, value);
-	// 			}
-	// 		}
-	// 	});
-	// }
-
-	function renewArray(dependencies = []) {
-		dependencies.forEach(function (name) {
-			if (name in variables) {
-				const value = bindings[name];
-				vtlBindings[name] = getVtlCompatibleValue(value);
-			}
-		});
-	}
-
-	function refreshArrayVariablesForLoop(dependencies, iteration) {
-		dependencies.forEach(function (name) {
-			if (name in variables) {
-				const value = bindings[name];
-				if (Array.isArray(value)) {
-					const { length } = value;
-					if (iteration < length) {
-						vtlBindings[name] = value[iteration];
-					} else {
-						vtlBindings[name] = '';
-					}
-				}
-			}
-		});
-	}
-
-	function refreshCalculatedInLoop(bindingDependencies, iteration) {
-		bindingDependencies.forEach(function (name) {
-			const { variable } = variables[name];
-			const { variableType } = variable;
-			if (variableType === 'CALCULATED' && toRefreshVariables.has(name)) {
-				const { bindingDependencies: dependencies, expression } = variable;
-				refreshArrayVariablesForLoop(dependencies, iteration);
-				const value = executeExpression(vtlBindings, expression, features);
-				toRefreshVariables.set(name, variable);
-				updateBindings(name, value);
-			}
+		CalculatedLinked.forEach(function (variable) {
+			const { name } = variable;
+			toRefreshVariables.set(name, variable);
 		});
 	}
 
@@ -164,16 +97,18 @@ function createExecuteExpression(variables, features) {
 	}
 
 	function refreshCalculated(map, { variables, bindings, features }) {
-		// return Object.entries(map).reduce(function (sub, [name, _]) {
-		// 	const { variable, type } = variables[name];
-		// 	if (type === 'CALCULTED') {
-		// 		const { expression } = variable;
-		// 		const value = executeExpression(bindings, expression, features);
-		// 		return { ...sub, [name]: value };
-		// 	}
-		// 	return sub;
-		// }, map);
-		return map;
+		return Object.entries(map).reduce(function (sub, [name, _]) {
+			const { variable, type } = variables[name];
+
+			if (type === 'CALCULATED' && toRefreshVariables.has(name)) {
+				const { expression } = variable;
+				console.log('update', name);
+				const value = executeExpression(map, expression, features);
+				toRefreshVariables.delete(name);
+				return { ...sub, [name]: value };
+			}
+			return sub;
+		}, map);
 	}
 
 	function fillVariablesValues(map, { bindings, iteration }) {
@@ -206,17 +141,7 @@ function createExecuteExpression(variables, features) {
 			{ variables, bindings, features }
 		);
 
-		// console.log({ expression, map, vtlBindings, iteration });
-
-		// if (iteration !== undefined) {
-		// 	refreshCalculatedInLoop(bindingDependencies, iteration);
-		// 	refreshArrayVariablesForLoop(bindingDependencies, iteration);
-		// } else if (bindingDependencies) {
-		// 	refreshCalculated(bindingDependencies);
-		// }
-
 		const result = executeExpression(map, expression, features, logging);
-		// renewArray(bindingDependencies);
 
 		return result;
 	}

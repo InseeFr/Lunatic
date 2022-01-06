@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
 	buildStyleObject,
@@ -17,19 +17,24 @@ const Button = ({
 	logFunction,
 	id,
 }) => {
-	const handleClick = (e) => {
-		onClick(e);
-		if (isFunction(logFunction))
-			logFunction(
-				createObjectEvent(
-					`button-lunatic-${id}`,
-					BUTTON_CATEGORY,
-					EVENT_CLICK,
-					null,
-					label
-				)
-			);
-	};
+	const handleClick = useCallback(
+		function (e) {
+			e.stopPropagation();
+			e.preventDefault();
+			onClick(e);
+			if (isFunction(logFunction))
+				logFunction(
+					createObjectEvent(
+						`button-lunatic-${id}`,
+						BUTTON_CATEGORY,
+						EVENT_CLICK,
+						null,
+						label
+					)
+				);
+		},
+		[onClick, id, label, logFunction]
+	);
 	return (
 		<button
 			type="button"

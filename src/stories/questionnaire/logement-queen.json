@@ -634,14 +634,7 @@
 					"label": "\"III - \" || \"Présentation des habitants du logement\""
 				}
 			},
-			"bindingDependencies": [
-				"NHAB",
-				"LOOP_kmnolkxb_MISSING",
-				"PRENOMREF",
-				"G_PRENOM",
-				"NBHAB",
-				"PRENOM"
-			],
+			"bindingDependencies": ["CADR", "NHAB"],
 			"loopDependencies": ["NHAB"],
 			"lines": { "min": "cast(NHAB,integer)", "max": "cast(NHAB,integer)" },
 			"components": [

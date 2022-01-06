@@ -3,22 +3,15 @@ import getComponentsFromState from './get-components-from-state';
 import fillComponents from './fill-components';
 
 function useComponentsFromState(state) {
-	const { pager, pages, isInLoop } = state;
-	const [components, setComponents] = useState([]);
 	const [componentsFilled, setComponentsFilled] = useState([]);
 
 	useEffect(
 		function () {
-			setComponents(getComponentsFromState({ pager, pages, isInLoop }));
-		},
-		[pager, pages, isInLoop]
-	);
-
-	useEffect(
-		function () {
+			const { pager, pages, isInLoop } = state;
+			const components = getComponentsFromState({ pager, pages, isInLoop });
 			setComponentsFilled(fillComponents(components, state));
 		},
-		[components, state]
+		[state]
 	);
 
 	return componentsFilled;

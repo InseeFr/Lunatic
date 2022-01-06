@@ -55,6 +55,7 @@ function goPreviousIteration(state) {
 function goPreviousPage(state, { previous }) {
 	const { pager } = state;
 	const { page } = pager;
+
 	if (previous !== page) {
 		return {
 			...state,

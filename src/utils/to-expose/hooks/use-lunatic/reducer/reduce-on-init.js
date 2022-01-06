@@ -88,11 +88,11 @@ function createVariables(source, data) {
 		bindingDependencies.forEach(function (name) {
 			if (name in mapVariables) {
 				const variable = mapVariables[name];
-				const { dependencies } = variable;
-				if (dependencies) {
-					dependencies.push(calculated);
+				const { CalculatedLinked } = variable;
+				if (CalculatedLinked) {
+					CalculatedLinked.push(calculated);
 				} else {
-					variable.dependencies = [calculated];
+					variable.CalculatedLinked = [calculated];
 				}
 			}
 		});
@@ -132,6 +132,7 @@ function reduceOnInit(state, action) {
 	const { source, data, initialPage, features } = payload;
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
+		console.log({ variables });
 		const [executeExpression, updateBindings] = createExecuteExpression(
 			variables,
 			features
