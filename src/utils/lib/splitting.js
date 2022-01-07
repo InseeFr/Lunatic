@@ -20,15 +20,32 @@ const getAllDeps = (deps) => (variablesCalcDeps) => {
 	}, []);
 };
 
+const getNestedVarsInFilterOrControl = (element) => {
+	if (element && Array.isArray(element?.bindingDependencies))
+		return element?.bindingDependencies;
+	return [];
+};
+
 const getNestedVarsInComponent = (component) => {
-	const { componentType, bindingDependencies, conditionFilter } = component;
-	var bindings = [];
-	if (Array.isArray(bindingDependencies))
-		bindings = [...bindings, ...bindingDependencies];
-	if (Array.isArray(conditionFilter?.bindingDependencies))
-		bindings = [...bindings, ...conditionFilter.bindingDependencies];
+	const {
+		componentType,
+		bindingDependencies = [],
+		conditionFilter,
+		controls = [],
+	} = component;
+	var bindings = [
+		...bindingDependencies, // bindingDependencies of Component
+		...getNestedVarsInFilterOrControl(conditionFilter), // bindingDependencies of its conditionFilter
+		...controls.reduce(
+			(acc, c) => [...acc, ...getNestedVarsInFilterOrControl(c)],
+			[]
+		), // bindingDependencies of its controls
+	];
+
 	if (componentType === 'Loop') {
-		const { components } = component;
+		const { components, loopDependencies } = component;
+		if (Array.isArray(loopDependencies))
+			bindings = [...bindings, ...loopDependencies];
 		if (Array.isArray(components)) {
 			bindings = components.reduce(
 				(acc, c) => [...acc, ...getNestedVarsInComponent(c)],
@@ -46,9 +63,8 @@ const getNestedVars =
 		const variableCalculatedDependencies =
 			getBindingsDependenciesCalculated(variables);
 		const depsVarsTemp = components
-			.reduce((acc, comp) => {
-				const bindingsComp = getNestedVarsInComponent(comp);
-				return [...acc, ...bindingsComp];
+			.reduce((acc, c) => {
+				return [...acc, ...getNestedVarsInComponent(c)];
 			}, [])
 			.filter((v, i, a) => a.indexOf(v) === i);
 		return getAllDeps(depsVarsTemp)(variableCalculatedDependencies).filter(
@@ -57,7 +73,6 @@ const getNestedVars =
 	};
 
 const getUsefullVariablesFromSource = (variables) => (nestedVars) => {
-	if (!variables) return true;
 	return variables.filter(({ variableType, name }) => {
 		if (variableType === 'CALCULATED' && !nestedVars.includes(name))
 			return false;
@@ -72,7 +87,7 @@ export const getSplitQuestionnaireSource = (source) => {
 	var split = [];
 	var currentComponents = [];
 	var previousPage = null;
-	components.map((c, i) => {
+	components.map((c) => {
 		const { componentType, page } = c;
 		// splitting by Sequence or Loop
 		if (
@@ -88,6 +103,7 @@ export const getSplitQuestionnaireSource = (source) => {
 		return null;
 	});
 	if (currentComponents.length > 0) split.push(currentComponents);
+
 	return split.reduce((prev, currentSource) => {
 		const firstPage = currentSource[0].page;
 		const maxPage = currentSource[currentSource.length - 1].page;
