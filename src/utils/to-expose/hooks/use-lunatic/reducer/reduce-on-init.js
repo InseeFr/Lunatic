@@ -132,7 +132,6 @@ function reduceOnInit(state, action) {
 	const { source, data, initialPage, features } = payload;
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
-		console.log({ variables });
 		const [executeExpression, updateBindings] = createExecuteExpression(
 			variables,
 			features

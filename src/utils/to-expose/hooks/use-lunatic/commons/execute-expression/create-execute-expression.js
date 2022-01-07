@@ -68,19 +68,23 @@ function createExecuteExpression(variables, features) {
 	function collecteVariables(dependencies, variables) {
 		if (Array.isArray(dependencies)) {
 			return dependencies.reduce(function (map, name) {
-				const data = variables[name];
-				const { variable, type } = data;
-				if (!(name in map)) {
-					if (type === 'CALCULATED') {
-						const { bindingDependencies: subDependencies } = variable;
-						return {
-							...map,
-							[name]: { ...variable },
-							...collecteVariables(subDependencies, variables),
-						};
-					}
+				if (name in variables) {
+					const data = variables[name];
+					const { variable, type } = data;
+					if (!(name in map)) {
+						if (type === 'CALCULATED') {
+							const { bindingDependencies: subDependencies } = variable;
+							return {
+								...map,
+								[name]: { ...variable },
+								...collecteVariables(subDependencies, variables),
+							};
+						}
 
-					return { ...map, [name]: { ...variable } };
+						return { ...map, [name]: { ...variable } };
+					}
+				} else {
+					throw new Error(`Unknow variable ${name}`);
 				}
 				return map;
 			}, {});
@@ -91,7 +95,7 @@ function createExecuteExpression(variables, features) {
 	function resolveUseContext(name, { bindings, iteration }) {
 		const value = bindings[name];
 		if (iteration !== undefined && Array.isArray(value)) {
-			return value[iteration];
+			return value[iteration] || null;
 		}
 		return getVtlCompatibleValue(value);
 	}
@@ -126,9 +130,9 @@ function createExecuteExpression(variables, features) {
 	function directExecute(expression, args) {
 		const { bindingDependencies, iteration } = args;
 
-		function logging(_, e) {
+		function logging(_, bindings, e) {
 			if (process.env.NODE_ENV === 'development') {
-				console.warn(`VTL error :  ${expression}`, args);
+				console.warn(`VTL error :  ${expression}`, { ...args }, { bindings });
 				console.warn(e);
 			}
 		}

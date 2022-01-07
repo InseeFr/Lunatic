@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import ReactTooltip from 'react-tooltip';
-import * as U from '../../utils/lib';
-import * as img from './img';
-import './tooltip.scss';
+// import PropTypes from 'prop-types';
+// import ReactTooltip from 'react-tooltip';
+// import * as U from '../../utils/lib';
+// import * as img from './img';
+// import './tooltip.scss';
 
 // const TooltipResponse = ({ id, response }) => {
 // 	const [tooltipElements, setTooltipElements] = useState(() =>
@@ -52,7 +52,7 @@ import './tooltip.scss';
 // export default TooltipResponse;
 
 function Tooltip() {
-	return null;
+	return <></>;
 }
 
 export default Tooltip;

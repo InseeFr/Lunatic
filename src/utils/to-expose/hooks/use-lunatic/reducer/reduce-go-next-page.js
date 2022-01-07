@@ -1,4 +1,4 @@
-import { isOnEmptyPage } from './commons';
+import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
 
 function getNextPage(state) {
 	const { pager } = state;
@@ -49,6 +49,20 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	const { pages, pager, executeExpression } = state;
 	const { subPages } = pages[next];
 
+	if (!validateLoopConditionFilter(state, { next })) {
+		return {
+			...state,
+			pager: {
+				...pager,
+				page: next,
+				subPage: undefined,
+				nbSubPages: undefined,
+				iteration: undefined,
+				nbIterations: undefined,
+			},
+		};
+	}
+	/* */
 	const nbIterations = executeExpression(iterations, {
 		bindingDependencies: loopDependencies,
 		iteration: undefined,

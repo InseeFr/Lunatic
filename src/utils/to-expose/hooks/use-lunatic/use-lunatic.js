@@ -17,7 +17,6 @@ function useLunatic({ source, data, initialPage, features }) {
 				if (suggesters) {
 					dispatch(actions.onSetWaiting(true));
 					const status = await loadSuggester(suggesters);
-					console.log({ status });
 					dispatch(actions.onSetWaiting(false));
 				}
 			}

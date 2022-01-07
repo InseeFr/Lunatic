@@ -3725,21 +3725,8 @@
 					"CADR",
 					"STOC1",
 					"filtre_autrepers",
-					"INDconj",
-					"nbpersmaj",
-					"LIEN",
-					"DATENAIS",
-					"TRAGE",
 					"filtre_HebEnfant",
-					"nb_HebEnfant",
-					"STOCB1",
-					"LOGENQ",
-					"LOGAUT",
-					"DURLOG",
-					"STOCA12",
-					"STOCA3",
-					"STOCA4",
-					"STOC2"
+					"nb_HebEnfant"
 				]
 			},
 			"hierarchy": {
@@ -3791,26 +3778,14 @@
 							"CADR",
 							"STOC1",
 							"filtre_autrepers",
-							"INDconj",
-							"nbpersmaj",
 							"LIEN",
-							"DATENAIS",
-							"TRAGE",
 							"filtre_HebEnfant",
-							"nb_HebEnfant",
-							"STOCB1",
 							"LOGENQ",
 							"LOGAUT",
 							"DURLOG",
-							"STOCA12",
-							"STOCA3",
-							"STOCA4",
-							"STOC2",
 							"STOCA",
-							"STOCC",
 							"persplus25TR",
-							"persplus25AGE",
-							"AGE"
+							"persplus25AGE"
 						]
 					},
 					"hierarchy": {
@@ -3848,26 +3823,14 @@
 							"CADR",
 							"STOC1",
 							"filtre_autrepers",
-							"INDconj",
-							"nbpersmaj",
 							"LIEN",
-							"DATENAIS",
-							"TRAGE",
 							"filtre_HebEnfant",
-							"nb_HebEnfant",
-							"STOCB1",
 							"LOGENQ",
 							"LOGAUT",
 							"DURLOG",
-							"STOCA12",
-							"STOCA3",
-							"STOCA4",
-							"STOC2",
 							"STOCA",
-							"STOCC",
 							"persplus25TR",
-							"persplus25AGE",
-							"AGE"
+							"persplus25AGE"
 						]
 					},
 					"hierarchy": {
@@ -3918,26 +3881,14 @@
 							"CADR",
 							"STOC1",
 							"filtre_autrepers",
-							"INDconj",
-							"nbpersmaj",
 							"LIEN",
-							"DATENAIS",
-							"TRAGE",
 							"filtre_HebEnfant",
-							"nb_HebEnfant",
-							"STOCB1",
 							"LOGENQ",
 							"LOGAUT",
 							"DURLOG",
-							"STOCA12",
-							"STOCA3",
-							"STOCA4",
-							"STOC2",
 							"STOCA",
-							"STOCC",
 							"persplus25TR",
 							"persplus25AGE",
-							"AGE",
 							"EPAS1"
 						]
 					},
@@ -15344,6 +15295,16 @@
 		}
 	],
 	"variables": [
+		{
+			"variableType": "EXTERNAL",
+			"name": "filtre_HEB",
+			"value": [
+				"if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0",
+				"if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0",
+				"if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0",
+				"if (PRENOM<>PRENOMREF and persmaj=1 and STOCA=\"2\" and (STOCB1<>\"1\" or isnull(STOCB1)) and (isnull(LIEN) or (LIEN<>\"1\" and LIEN<>\"2\" and LIEN<>\"3\" and LIEN<>\"4\" and LIEN<>\"5\")) and (isnull(SITUA) or SITUA<>\"5\") and (isnull(LOGENQ) or LOGENQ<>\"5\") and (isnull(LOGAUT) or LOGAUT<>\"1\") and (isnull(DURLOG) or DURLOG<>\"3\")) then 1 else 0"
+			]
+		},
 		{ "variableType": "EXTERNAL", "name": "NUMTH", "value": null },
 
 		{ "variableType": "EXTERNAL", "name": "ADR", "value": null },
@@ -22626,12 +22587,7 @@
 			"variableType": "CALCULATED",
 			"name": "persmaj",
 			"expression": "if ((not(isnull(persplus18AGE)) and persplus18AGE=\"1\") or (not(isnull(persplus18TR)) and persplus18TR=\"1\")) then 1 else 0",
-			"bindingDependencies": [
-				"persplus18AGE",
-				"persplus18TR",
-				"DATENAIS",
-				"TRAGE"
-			],
+			"bindingDependencies": ["persplus18AGE", "persplus18TR"],
 			"shapeFrom": "G_PRENOM"
 		},
 

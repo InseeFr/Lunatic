@@ -1,4 +1,5 @@
 import { isOnEmptyPage } from './commons';
+import { validateLoopConditionFilter } from './commons';
 
 function getPreviousPage(pager) {
 	const { page } = pager;
@@ -12,6 +13,21 @@ function getPreviousPage(pager) {
 function goStartLoop(state, { previous, iterations, loopDependencies }) {
 	const { pages, pager, executeExpression } = state;
 	const { subPages } = pages[previous];
+
+	if (validateLoopConditionFilter(state, { next: previous })) {
+		return {
+			...state,
+			pager: {
+				...pager,
+				page: previous,
+				subPage: undefined,
+				nbSubPages: undefined,
+				iteration: undefined,
+				nbIterations: undefined,
+			},
+		};
+	}
+
 	if (Array.isArray(subPages)) {
 		const nbIterations = executeExpression(iterations, {
 			bindingDependencies: loopDependencies,
@@ -35,6 +51,7 @@ function goStartLoop(state, { previous, iterations, loopDependencies }) {
 function goPreviousSubPage(state) {
 	const { pager } = state;
 	const { subPage } = pager;
+
 	return {
 		...state,
 		pager: { ...pager, subPage: subPage - 1 },
@@ -84,7 +101,7 @@ function validateChange(state) {
 
 function reduceGoPreviousPage(state) {
 	const { pages, pager, isInLoop } = state;
-	const { iteration, subPage, nbSubPages } = pager;
+	const { iteration, subPage } = pager;
 
 	// dans une boucle et l'itération courante n'est pas finie
 	if (isInLoop && subPage > 0) {
