@@ -100,13 +100,27 @@ function createExecuteExpression(variables, features) {
 		return getVtlCompatibleValue(value);
 	}
 
-	function refreshCalculated(map, { variables, bindings, features }) {
+	function refreshCalculated(map, { bindings, features, rootExpression }) {
 		return Object.entries(map).reduce(function (sub, [name, current]) {
 			const { variable, type } = variables[name];
 
 			if (type === 'CALCULATED' && toRefreshVariables.has(name)) {
 				const { expression } = variable;
-				const value = executeExpression(map, expression, features);
+				const value = executeExpression(
+					map,
+					expression,
+					features,
+					function (expression, bindings, e) {
+						if (process.env.NODE_ENV === 'development') {
+							console.warn(
+								`VTL error when refresh calculated variable ${name} :  ${expression}`,
+								{ bindings }
+							);
+							console.warn(`root expression : ${rootExpression}`);
+							console.warn(e);
+						}
+					}
+				);
 				bindings[name] = value;
 				toRefreshVariables.delete(name);
 
@@ -128,9 +142,9 @@ function createExecuteExpression(variables, features) {
 	/*	*/
 
 	function directExecute(expression, args) {
-		const { bindingDependencies, iteration } = args;
+		const { bindingDependencies, iteration, logging } = args;
 
-		function logging(_, bindings, e) {
+		function loggingDefault(_, bindings, e) {
 			if (process.env.NODE_ENV === 'development') {
 				console.warn(`VTL error :  ${expression}`, { ...args }, { bindings });
 				console.warn(e);
@@ -143,9 +157,14 @@ function createExecuteExpression(variables, features) {
 				iteration,
 				variables,
 			}),
-			{ variables, bindings, features }
+			{ bindings, features, rootExpression: expression }
 		);
-		const result = executeExpression(map, expression, features, logging);
+		const result = executeExpression(
+			map,
+			expression,
+			features,
+			logging || loggingDefault
+		);
 
 		return result;
 	}

@@ -24,7 +24,7 @@ function executeVtl(expression, vtlBindings) {
 	return result;
 }
 
-function logging(expression, bindings, e) {
+function loggingDefault(expression, bindings, e) {
 	if (process.env.NODE_ENV === 'development') {
 		console.warn(`VTL error :  ${expression}`, bindings);
 		console.warn(e);
@@ -35,7 +35,7 @@ function executeExpression(
 	vtlBindings,
 	expression,
 	features /* VTL, MD */,
-	log = logging
+	logging = loggingDefault
 ) {
 	if (expression) {
 		try {
@@ -45,7 +45,7 @@ function executeExpression(
 			return expression;
 		} catch (e) {
 			// expression en erreur ou simple chaîne de caractère
-			log(expression, vtlBindings, e);
+			logging(expression, vtlBindings, e);
 			return expression;
 		}
 		// TODO MD only for labels, not for filtering

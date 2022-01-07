@@ -1979,13 +1979,7 @@
 			"paginatedLoop": true,
 			"conditionFilter": {
 				"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR)) and (not(isnull(nbpersmaj)) and cast(nbpersmaj,integer)>0)",
-				"bindingDependencies": [
-					"CADR",
-					"nbpersmaj",
-					"persmaj",
-					"DATENAIS",
-					"TRAGE"
-				]
+				"bindingDependencies": ["CADR", "nbpersmaj"]
 			},
 			"hierarchy": {
 				"sequence": {
@@ -1994,27 +1988,7 @@
 					"label": "\"III - \" || \"Présentation des habitants du logement\""
 				}
 			},
-			"bindingDependencies": [
-				"PRENOM",
-				"PRENOMREF",
-				"SITUA_MISSING",
-				"LIB_FEM",
-				"SEXE",
-				"SITUA",
-				"LIB_SUJET",
-				"TRAVAIL_MISSING",
-				"GRDIPA_MISSING",
-				"GRDIPB_MISSING",
-				"GRDIPC_MISSING",
-				"TELET_MISSING",
-				"TELETNJ_MISSING",
-				"TRAVAIL",
-				"GRDIPA",
-				"GRDIPB",
-				"GRDIPC",
-				"TELET",
-				"TELETNJ"
-			],
+			"bindingDependencies": ["G_PRENOM"],
 			"loopDependencies": ["G_PRENOM"],
 			"components": [
 				{
