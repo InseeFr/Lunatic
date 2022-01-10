@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Label from './label';
 import * as U from '../../../../utils/lib';
+import * as C from '../../../../constants';
 import * as CLEAN from '../cleaner-callbacks';
 import * as actions from '../actions';
 import DropdownField from './dropdown-field';
@@ -65,8 +66,18 @@ function Dropdown({
 	state,
 	dispatch,
 	refs,
+	logFunction,
 }) {
 	const { visible, focused, id, disabled } = state;
+
+	const createEventFocus = (focusIn = true) =>
+		U.createObjectEvent(
+			id,
+			C.INPUT_CATEGORY,
+			focusIn ? C.EVENT_FOCUS_IN : C.EVENT_FOCUS_OUT,
+			U.getResponseName(response),
+			valueFromProps
+		);
 
 	CLEAN.add(id, function () {
 		dispatch(actions.hidePanel());
@@ -129,6 +140,16 @@ function Dropdown({
 		() => onKeyDownCallbackProxy(state, dispatch, onSelect),
 		[state, dispatch, onSelect]
 	);
+
+	// log info when focus change
+	useEffect(() => {
+		if (id && focused && U.isFunction(logFunction))
+			logFunction(createEventFocus());
+		if (id && !focused && U.isFunction(logFunction))
+			logFunction(createEventFocus(false));
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [focused, id]);
 
 	return (
 		<DropdownContainer

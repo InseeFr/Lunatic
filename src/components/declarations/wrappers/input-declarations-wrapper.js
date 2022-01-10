@@ -172,6 +172,7 @@ const InputDeclarationsWrapper = ({
 							aria-required={mandatory}
 							onChange={(e) => {
 								const v = e.target.value;
+								const valueToFire = v === '' ? null : v;
 								if (
 									(([null, ''].includes(v) && value.length > 0) ||
 										([null, ''].includes(value) && v.length > 0)) &&
@@ -179,7 +180,7 @@ const InputDeclarationsWrapper = ({
 								) {
 									setValue(v);
 									handleChange({
-										[U.getResponseName(response)]: v,
+										[U.getResponseName(response)]: valueToFire,
 									});
 								} else if (
 									// Chrome
@@ -187,11 +188,11 @@ const InputDeclarationsWrapper = ({
 										'Event' &&
 										roleType !== 'datepicker') ||
 									// FF hack: impossible to handle arrow events
-									(Math.abs(v - value) === 1 && isInputNumber)
+									(Math.abs(v - value) !== 0 && isInputNumber)
 								) {
-									setValue(v);
+									setValue(valueToFire);
 									handleChange({
-										[U.getResponseName(response)]: v,
+										[U.getResponseName(response)]: valueToFire,
 									});
 								} else {
 									if (isInputNumber) {
@@ -205,8 +206,8 @@ const InputDeclarationsWrapper = ({
 											return null;
 										} else validate(v);
 									}
-									if (management) setValue(v);
-									else setValue(v === '' ? null : v);
+									if (management) setValue(valueToFire);
+									else setValue(valueToFire);
 								}
 							}}
 							onBlur={handleChangeOnBlur}

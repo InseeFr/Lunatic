@@ -79,7 +79,7 @@ const paginated = storiesOf('Questionnaire/Paginated', module).addDecorator(
 );
 
 paginated.addWithJSX('Calculated Variables', () => (
-	<OrchestratorSplit
+	<Orchestrator
 		id="props"
 		source={calcVar}
 		missing={boolean('Missing', false)}
@@ -157,7 +157,7 @@ paginated.addWithJSX('Logement - S2', () => (
 ));
 
 paginated.addWithJSX('Simpsons', () => (
-	<OrchestratorSplit
+	<Orchestrator
 		id="props"
 		source={simpsons}
 		missing={boolean('Missing', false)}

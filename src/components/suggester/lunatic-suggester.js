@@ -89,6 +89,7 @@ function Suggester({
 						response={response}
 						id={id}
 						value={value}
+						logFunction={logFunction}
 					/>
 				</FieldWrapper>
 			</LabelWrapper>

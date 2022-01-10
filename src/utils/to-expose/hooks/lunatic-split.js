@@ -17,13 +17,17 @@ import { useFilterComponents } from './filter-components';
 import { loadSuggesters } from '../../store-tools/auto-load';
 import { getCollectedStateByValueType, getState } from '..';
 
+const defaultData = {};
+const defaultPreferences = [COLLECTED];
+const defaultFeatures = ['VTL'];
+
 const useLunaticSplit = (
 	source,
-	data,
+	data = defaultData,
 	{
 		savingType = COLLECTED,
-		preferences = [COLLECTED],
-		features = ['VTL'],
+		preferences = defaultPreferences,
+		features = defaultFeatures,
 		management = false,
 		pagination = false,
 		modalForControls = false,
@@ -38,37 +42,48 @@ const useLunaticSplit = (
 		console.log('useLunaticSplit');
 		var start = new Date().getTime();
 	}
+	const fullQuestionnaire = useMemo(
+		() => mergeQuestionnaireAndData(source)(data),
+		[source, data]
+	);
 	const sources = useMemo(() => getSplitQuestionnaireSource(source), [source]);
+	const allData = useMemo(
+		() => getState(fullQuestionnaire),
+		[fullQuestionnaire]
+	);
+	const [allBindings, setAllBindings] = useState(() =>
+		getBindings(fullQuestionnaire)
+	);
+
 	const rootPagesOfSource = useMemo(
 		() => getRootPageInSources(sources),
 		[sources]
 	);
 
-	const [sourceIndice, setSourceIndice] = useState(0);
-	const [lunaticData, setLunaticData] = useState(data || {});
+	const [sourceIndex, setSourceIndex] = useState(0);
+	const [lunaticData, setLunaticData] = useState(allData);
 
 	const [initPage, setInitPage] = useState(false);
 	const featuresWithoutMD = features.filter((f) => f !== 'MD');
 
 	const [questionnaire, setQuestionnaire] = useState(() =>
-		mergeQuestionnaireAndData(sources[sourceIndice])(lunaticData)
+		mergeQuestionnaireAndData(sources[sourceIndex])(lunaticData)
 	);
 	const [bindings, setBindings] = useState(() => getBindings(questionnaire));
-	const [allBindings, setAllBindings] = useState(bindings);
 
 	const [wantedPage, setWantedPage] = useState(null);
 
 	// updating current source
 	useEffect(() => {
 		setInitPage(false);
-		const newQ = mergeQuestionnaireAndData(sources[sourceIndice])(lunaticData);
+		const newQ = mergeQuestionnaireAndData(sources[sourceIndex])(lunaticData);
 		setQuestionnaire(newQ);
 		const bind = getBindings(newQ);
 		setBindings(bind);
 		setAllBindings({ ...allBindings, ...bind });
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [sources, sourceIndice]);
+	}, [sources, sourceIndex]);
 
 	const getBindingsSplit = (quest) => {
 		const bind = getBindings(quest);
@@ -141,14 +156,14 @@ const useLunaticSplit = (
 
 	const isFirstPage = page === firstPage;
 	const isLastPage = page === maxPage;
-	const isFirstSource = sourceIndice === 0;
-	const isLastSource = sourceIndice === sources.length - 1;
+	const isFirstSource = sourceIndex === 0;
+	const isLastSource = sourceIndex === sources.length - 1;
 
 	const goSplitNext = () => {
 		if (!isLastSource) {
 			const stateData = getState(questionnaire);
 			setLunaticData(mergeStateData(lunaticData, stateData));
-			setSourceIndice(sourceIndice + 1);
+			setSourceIndex(sourceIndex + 1);
 		}
 	};
 
@@ -189,7 +204,7 @@ const useLunaticSplit = (
 		if (!isFirstSource) {
 			const stateData = getState(questionnaire);
 			setLunaticData(mergeStateData(lunaticData, stateData));
-			setSourceIndice(sourceIndice - 1);
+			setSourceIndex(sourceIndex - 1);
 		}
 	};
 
@@ -233,7 +248,7 @@ const useLunaticSplit = (
 		(newPage) => {
 			const p = newPage?.split('.')[0];
 			const index = rootPagesOfSource.findIndex((pages) => pages.includes(p));
-			if (index === sourceIndice) {
+			if (index === sourceIndex) {
 				setPage(newPage);
 				setWantedPage(null);
 			} else {
@@ -241,10 +256,10 @@ const useLunaticSplit = (
 				setWantedPage(newPage);
 				const stateData = getState(questionnaire);
 				setLunaticData(mergeStateData(lunaticData, stateData));
-				setSourceIndice(index);
+				setSourceIndex(index);
 			}
 		},
-		[lunaticData, questionnaire, rootPagesOfSource, sourceIndice]
+		[lunaticData, questionnaire, rootPagesOfSource, sourceIndex]
 	);
 
 	useEffect(() => {
@@ -252,13 +267,12 @@ const useLunaticSplit = (
 			if (wantedPage) {
 				setPage(wantedPage);
 				setWantedPage(null);
-				setInitPage(true);
 			} else {
 				const getNewInitPage = () => {
 					if (flow === FLOW_NEXT) {
 						const tempPage =
-							sourceIndice - 1 > 0
-								? sources[sourceIndice - 1].maxPage
+							sourceIndex - 1 > 0
+								? sources[sourceIndex - 1].maxPage
 								: sources[0].maxPage;
 						return getPage({
 							components: questionnaire.components,
@@ -270,8 +284,8 @@ const useLunaticSplit = (
 						});
 					} else if (flow === FLOW_PREVIOUS) {
 						const tempPage =
-							sourceIndice + 1 < sources.length - 1
-								? sources[sourceIndice + 1].firstPage
+							sourceIndex + 1 < sources.length - 1
+								? sources[sourceIndex + 1].firstPage
 								: sources[sources.length - 1].firstPage;
 						return getPage({
 							components: questionnaire.components,
@@ -289,12 +303,12 @@ const useLunaticSplit = (
 				else {
 					const newPage = getNewInitPage();
 					if (!newPage) {
-						if (flow === FLOW_NEXT) setSourceIndice(sourceIndice + 1);
-						else setSourceIndice(sourceIndice - 1);
+						if (flow === FLOW_NEXT) setSourceIndex(sourceIndex + 1);
+						else setSourceIndex(sourceIndex - 1);
 					} else setPage(newPage);
 				}
-				setInitPage(true);
 			}
+			setInitPage(true);
 		}
 	}, [
 		initPage,
@@ -305,7 +319,7 @@ const useLunaticSplit = (
 		page,
 		featuresWithoutMD,
 		management,
-		sourceIndice,
+		sourceIndex,
 		sources,
 		flow,
 		wantedPage,

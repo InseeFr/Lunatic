@@ -37,6 +37,7 @@ const createOnSelect = (_, dispatch, onSelect) => (option) => {
  * @param {props}
  */
 function Dropdown({
+	id: initId,
 	widthAuto,
 	options = [],
 	onSelect,
@@ -52,10 +53,11 @@ function Dropdown({
 	disabled,
 	focused: initFocused,
 	DeclarationAfterLabel,
+	logFunction,
 }) {
 	const [state, dispatch] = useReducer(reducer, {
 		...initial,
-		id: `dropdown-${new Date().getMilliseconds()}`,
+		id: `dropdown-${initId || new Date().getMilliseconds()}`,
 		disabled,
 		focused: initFocused,
 	});
@@ -98,6 +100,7 @@ function Dropdown({
 			value={valueFromProps}
 			zIndex={zIndex}
 			management={management}
+			logFunction={logFunction}
 		>
 			<DeclarationAfterLabel />
 			<span

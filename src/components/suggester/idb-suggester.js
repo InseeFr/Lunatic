@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import SuggesterWrapper from './suggester-wrapper';
 import createSearching from './searching';
@@ -15,6 +15,9 @@ function IDBSuggester({
 	onSelect,
 	disabled,
 	value,
+	focused,
+	response,
+	logFunction,
 }) {
 	const [store, setStore] = useState(undefined);
 	const searching = useMemo(
@@ -44,6 +47,9 @@ function IDBSuggester({
 				storeName={storeName}
 				disabled={disabled}
 				value={value}
+				focused={focused}
+				response={response}
+				logFunction={logFunction}
 			/>
 		</CheckStore>
 	);

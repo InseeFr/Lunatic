@@ -6,14 +6,16 @@ function getStoreInfoRequired() {
 	return {};
 }
 
+const defaultFeatures = ['VTL'];
+
 const OrchestratorForStories = ({
 	source,
 	suggesters,
-	data = {},
+	data,
 	management = false,
 	pagination = false,
 	modalForControls = false,
-	features = ['VTL'],
+	features = defaultFeatures,
 	bindings: initialBindings,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
