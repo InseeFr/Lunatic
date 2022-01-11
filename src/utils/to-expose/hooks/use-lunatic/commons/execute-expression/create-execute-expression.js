@@ -1,4 +1,5 @@
 import executeExpression from './execute-expression';
+import getExpressionVariables from './get-expressions-variables';
 
 function getVtlCompatibleValue(value) {
 	if (value === undefined) {
@@ -29,14 +30,14 @@ function createBindings(variables) {
 /**
  *
  * @param {*} variables
- * @param {*} features
  * @returns
  */
 function createExecuteExpression(variables, features) {
 	// on aimerait map d'expression, avec les bindings
 	const bindings = createBindings(variables);
-	const expressionsMap = new Map();
+	const tokensMap = new Map();
 	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.
+	const collectedUpdated = new Map();
 	// à l'init, on y colle toutes les variables de calcul
 	Object.values(variables).forEach(function ({ variable }) {
 		const { variableType, name } = variable;
@@ -53,6 +54,7 @@ function createExecuteExpression(variables, features) {
 		// update des bindings
 		if (name in bindings) {
 			bindings[name] = value;
+			collectedUpdated.set(name, []);
 		}
 		// enrichissement des variables à rafraîchir
 		const { CalculatedLinked = [] } = variables[name];
@@ -63,9 +65,17 @@ function createExecuteExpression(variables, features) {
 		});
 	}
 
-	/**/
+	function getVariablesAndCach(expression) {
+		if (tokensMap.has(expression)) {
+			return tokensMap.get(expression);
+		}
+		const tokens = getExpressionVariables(expression, variables);
+		tokensMap.set(expression, tokens);
+		return tokens;
+	}
 
-	function collecteVariables(dependencies, variables) {
+	/**/
+	function collecteVariables(dependencies) {
 		if (Array.isArray(dependencies)) {
 			return dependencies.reduce(function (map, name) {
 				if (name in variables) {
@@ -73,11 +83,13 @@ function createExecuteExpression(variables, features) {
 					const { variable, type } = data;
 					if (!(name in map)) {
 						if (type === 'CALCULATED') {
-							const { bindingDependencies: subDependencies } = variable;
+							const { expression } = variable;
+							const subDependencies = getVariablesAndCach(expression);
+
 							return {
 								...map,
 								[name]: { ...variable },
-								...collecteVariables(subDependencies, variables),
+								...collecteVariables(subDependencies),
 							};
 						}
 
@@ -92,7 +104,7 @@ function createExecuteExpression(variables, features) {
 		return {};
 	}
 
-	function resolveUseContext(name, { bindings, iteration }) {
+	function resolveUseContext(name, { iteration }) {
 		const value = bindings[name];
 		if (iteration !== undefined && Array.isArray(value)) {
 			return value[iteration] || null;
@@ -100,27 +112,28 @@ function createExecuteExpression(variables, features) {
 		return getVtlCompatibleValue(value);
 	}
 
-	function refreshCalculated(map, { bindings, features, rootExpression }) {
+	function refreshCalculated(map, { rootExpression, iteration }) {
 		return Object.entries(map).reduce(function (sub, [name, current]) {
 			const { variable, type } = variables[name];
 
 			if (type === 'CALCULATED' && toRefreshVariables.has(name)) {
-				const { expression } = variable;
-				const value = executeExpression(
-					map,
-					expression,
-					features,
-					function (expression, bindings, e) {
-						if (process.env.NODE_ENV === 'development') {
-							console.warn(
-								`VTL error when refresh calculated variable ${name} :  ${expression}`,
-								{ bindings }
-							);
-							console.warn(`root expression : ${rootExpression}`);
-							console.warn(e);
-						}
+				const { expression, shapeFrom } = variable;
+
+				function logging(expression, bindings, e) {
+					if (process.env.NODE_ENV === 'development') {
+						console.warn(
+							`VTL error when refreshing calculated variable ${name} :  ${expression}`,
+							{ bindings }
+						);
+						console.warn(`root expression : ${rootExpression}`);
+						console.warn(e);
 					}
-				);
+				}
+
+				const value = directExecute(expression, {
+					logging,
+					iteration: shapeFrom ? iteration : undefined,
+				});
 				bindings[name] = value;
 				toRefreshVariables.delete(name);
 
@@ -130,11 +143,11 @@ function createExecuteExpression(variables, features) {
 		}, {});
 	}
 
-	function fillVariablesValues(map, { bindings, iteration }) {
+	function fillVariablesValues(map, { iteration }) {
 		return Object.entries(map).reduce(function (sub, [name, _]) {
 			return {
 				...sub,
-				[name]: resolveUseContext(name, { bindings, iteration }),
+				[name]: resolveUseContext(name, { iteration }),
 			};
 		}, {});
 	}
@@ -142,7 +155,8 @@ function createExecuteExpression(variables, features) {
 	/*	*/
 
 	function directExecute(expression, args) {
-		const { bindingDependencies, iteration, logging } = args;
+		const { iteration, logging } = args;
+		const bindingDependencies = getVariablesAndCach(expression);
 
 		function loggingDefault(_, bindings, e) {
 			if (process.env.NODE_ENV === 'development') {
@@ -152,12 +166,10 @@ function createExecuteExpression(variables, features) {
 		}
 
 		const map = refreshCalculated(
-			fillVariablesValues(collecteVariables(bindingDependencies, variables), {
-				bindings,
+			fillVariablesValues(collecteVariables(bindingDependencies), {
 				iteration,
-				variables,
 			}),
-			{ bindings, features, rootExpression: expression }
+			{ rootExpression: expression, iteration }
 		);
 		const result = executeExpression(
 			map,
@@ -170,21 +182,13 @@ function createExecuteExpression(variables, features) {
 	}
 
 	/**
-	 *
+	 * args = { iteration, logging }
 	 * @param {*} expression
-	 * @param {*} feature
-	 * @param {*} param2
+	 * @param {*} agrs
 	 * @returns
 	 */
 	function execute(expression, args = {}) {
-		const { bindingDependencies } = args;
-		if (expressionsMap.has(expression)) {
-			return expressionsMap.get(expression);
-		}
 		const value = directExecute(expression, args);
-		if (!bindingDependencies) {
-			expressionsMap.set(expression, value);
-		}
 
 		return value;
 	}

@@ -9,56 +9,9 @@ const VTL_ATTRIBUTES = [
 	'options.label',
 	'lines.min',
 	'lines.max',
-	'iterations',
 ];
 
-/**
- * Le résultat des expression dépendent de la valeur des variables associées.
- * Les couples cle/valeur sont fournies dans un objet.
- * json lunatic précise pour chaque expression la liste des variables utilisées, dans un attribut "bindingDependencies".
- * Malheureusement, la position de cette liste n'est pas sytèmatiquement contigue à l'expression, quel dommage !
- * Elles sont alors à la racine du composant (pour plusieurs expressions souvent).
- * Une autre possiblité, plus simple serait de merger les sous bindings et les root bindings avant d'executer une expression.
- */
-const BINDINGSDEPENDENCIES_IS_CONTIGUOUS = {
-	label: true,
-	'hierarchy.label': true,
-	'hierarchy.subSequence.label': false,
-	'hierarchy.sequence.label': false,
-	'declarations.label': false,
-	'controls.control': false,
-	'controls.errorMessage': false,
-	'options.label': true,
-	'lines.min': false,
-	'lines.max': false,
-	iterations: true,
-};
-
 function createCrawl(component, { executeExpression, iteration }) {
-	const { bindingDependencies: rootBindings = [] } = component;
-
-	/**
-	 *
-	 * @param {*} object
-	 * @param {*} fullStringPath
-	 * @param {*} rootBindings
-	 * @returns
-	 */
-	function getBindingDependencies(object, fullStringPath) {
-		const { bindingDependencies = [], loopDependencies = [] } = object;
-		if (
-			fullStringPath in BINDINGSDEPENDENCIES_IS_CONTIGUOUS &&
-			BINDINGSDEPENDENCIES_IS_CONTIGUOUS[fullStringPath]
-		) {
-			return [...bindingDependencies, ...loopDependencies];
-		}
-		const full = [...rootBindings, ...loopDependencies];
-		if (full.length) {
-			return full;
-		}
-		return undefined;
-	}
-
 	/**
 	 *
 	 * @param {*} object
@@ -73,7 +26,6 @@ function createCrawl(component, { executeExpression, iteration }) {
 				...object,
 				[path]: executeExpression(candidate, {
 					iteration,
-					bindingDependencies: getBindingDependencies(object, fullStringPath),
 				}),
 			};
 		}

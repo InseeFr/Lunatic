@@ -100,7 +100,7 @@
 				}
 			],
 			"conditionFilter": {
-				"value": "(CADR = \"2\")",
+				"value": "CADR = \"2\"",
 				"bindingDependencies": ["CADR"]
 			},
 			"hierarchy": {

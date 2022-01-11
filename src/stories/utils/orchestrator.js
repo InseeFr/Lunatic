@@ -23,28 +23,6 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 	return null;
 }
 
-// function LunaticComponent(){
-// 	  const { id, componentType } = component;
-// 	const Component = lunatic[componentType];
-// 	return (
-// 		<div className="lunatic lunatic-component" key={`component-${id}`}>
-// 			<Component
-// 				{...rest}
-// 				{...component}
-// 				handleChange={(...args) => handleChange(...args, component)}
-// 				preferences={preferences}
-// 				savingType={savingType}
-// 				management={management}
-// 				features={features}
-// 				bindings={bindings}
-// 				pagination={pagination}
-// 				missing={missing}
-// 				shortcut={shortcut}
-// 			/>
-// 		</div>
-// 	);
-// }
-
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL'];
 

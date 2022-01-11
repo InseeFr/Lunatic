@@ -40,7 +40,10 @@ function executeExpression(
 	if (expression) {
 		try {
 			if (features.includes('VTL')) {
-				return executeVtl(expression, vtlBindings);
+				const result = executeVtl(expression, vtlBindings);
+
+				// console.log({ expression, result, vtlBindings });
+				return result;
 			}
 			return expression;
 		} catch (e) {
