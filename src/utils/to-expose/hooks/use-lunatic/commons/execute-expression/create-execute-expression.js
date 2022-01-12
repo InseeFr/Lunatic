@@ -1,5 +1,7 @@
 import executeExpression from './execute-expression';
 import getExpressionVariables from './get-expressions-variables';
+import createMemoizer from './create-memoizer';
+import createRefreshCalculated from './create-refresh-calculated';
 
 function getVtlCompatibleValue(value) {
 	if (value === undefined) {
@@ -36,15 +38,14 @@ function createExecuteExpression(variables, features) {
 	// on aimerait map d'expression, avec les bindings
 	const bindings = createBindings(variables);
 	const tokensMap = new Map();
-	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.
 	const collectedUpdated = new Map();
-	// à l'init, on y colle toutes les variables de calcul
-	Object.values(variables).forEach(function ({ variable }) {
-		const { variableType, name } = variable;
-		if (variableType === 'CALCULATED') {
-			toRefreshVariables.set(name, variable);
-		}
+	const [memoize, getMemoizedValue] = createMemoizer();
+	const [refreshCalculated, setToRefreshCalculated] = createRefreshCalculated({
+		variables,
+		execute,
+		bindings,
 	});
+
 	/**
 	 *
 	 * @param {*} name
@@ -61,7 +62,7 @@ function createExecuteExpression(variables, features) {
 
 		CalculatedLinked.forEach(function (variable) {
 			const { name } = variable;
-			toRefreshVariables.set(name, variable);
+			setToRefreshCalculated(name, variable);
 		});
 	}
 
@@ -112,37 +113,6 @@ function createExecuteExpression(variables, features) {
 		return getVtlCompatibleValue(value);
 	}
 
-	function refreshCalculated(map, { rootExpression, iteration }) {
-		return Object.entries(map).reduce(function (sub, [name, current]) {
-			const { variable, type } = variables[name];
-
-			if (type === 'CALCULATED' && toRefreshVariables.has(name)) {
-				const { expression, shapeFrom } = variable;
-
-				function logging(expression, bindings, e) {
-					if (process.env.NODE_ENV === 'development') {
-						console.warn(
-							`VTL error when refreshing calculated variable ${name} :  ${expression}`,
-							{ bindings }
-						);
-						console.warn(`root expression : ${rootExpression}`);
-						console.warn(e);
-					}
-				}
-
-				const value = directExecute(expression, {
-					logging,
-					iteration: shapeFrom ? iteration : undefined,
-				});
-				bindings[name] = value;
-				toRefreshVariables.delete(name);
-
-				return { ...sub, [name]: value };
-			}
-			return { ...sub, [name]: current };
-		}, {});
-	}
-
 	function fillVariablesValues(map, { iteration }) {
 		return Object.entries(map).reduce(function (sub, [name, _]) {
 			return {
@@ -154,7 +124,7 @@ function createExecuteExpression(variables, features) {
 
 	/*	*/
 
-	function directExecute(expression, args) {
+	function execute(expression, args) {
 		const { iteration, logging } = args;
 		const bindingDependencies = getVariablesAndCach(expression);
 
@@ -165,32 +135,26 @@ function createExecuteExpression(variables, features) {
 			}
 		}
 
-		const map = refreshCalculated(
+		const vtlBindings = refreshCalculated(
 			fillVariablesValues(collecteVariables(bindingDependencies), {
 				iteration,
 			}),
 			{ rootExpression: expression, iteration }
 		);
-		const result = executeExpression(
-			map,
-			expression,
-			features,
-			logging || loggingDefault
-		);
 
-		return result;
-	}
+		const memoized = getMemoizedValue(expression, vtlBindings);
+		if (!memoized) {
+			const result = executeExpression(
+				vtlBindings,
+				expression,
+				features,
+				logging || loggingDefault
+			);
+			memoize(expression, vtlBindings, result);
 
-	/**
-	 * args = { iteration, logging }
-	 * @param {*} expression
-	 * @param {*} agrs
-	 * @returns
-	 */
-	function execute(expression, args = {}) {
-		const value = directExecute(expression, args);
-
-		return value;
+			return result;
+		}
+		return memoized;
 	}
 
 	return [execute, updateBindings];

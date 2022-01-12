@@ -33,7 +33,7 @@ function OrchestratorForStories({
 	modalForControls = false,
 	features = DEFAULT_FEATURES,
 	bindings: initialBindings,
-	initialPage = '1',
+	initialPage = '16',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	shortcut = false,

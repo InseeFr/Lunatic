@@ -9,6 +9,7 @@ const VTL_ATTRIBUTES = [
 	'options.label',
 	'lines.min',
 	'lines.max',
+	'iterations',
 ];
 
 function createCrawl(component, { executeExpression, iteration }) {
