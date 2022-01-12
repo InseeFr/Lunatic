@@ -18,16 +18,19 @@ function RowComponent({
 	const { componentType } = component;
 	const [componentFilled, setComponentFilled] = useState(component);
 	const Component = lunatic[componentType];
+	const [filled, setFilled] = useState(false);
+
 	useEffect(
 		function () {
 			setComponentFilled(
 				fillComponentExpressions(component, { executeExpression, iteration })
 			);
+			setFilled(true);
 		},
 		[component, executeExpression, iteration]
 	);
 
-	if (componentType in lunatic) {
+	if (componentType in lunatic && filled) {
 		return (
 			<Component
 				{...componentFilled}
