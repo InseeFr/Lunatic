@@ -6,11 +6,12 @@ import { areEqual } from '../../utils/lib';
 import { getTypeControls } from '../component-wrapper/controls/validators';
 import './input.scss';
 
-const InputNumber = ({ numberAsTextfield, ...props }) => (
+const InputNumber = ({ numberAsTextfield, decimals, ...props }) => (
 	<InputDeclarationsWrapper
 		type={numberAsTextfield ? 'text' : 'number'}
 		roleType="input"
 		{...props}
+		decimals={decimals || 0}
 		isInputNumber
 		numberAsTextfield
 		validators={[getTypeControls]}

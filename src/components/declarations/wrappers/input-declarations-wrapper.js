@@ -173,12 +173,22 @@ const InputDeclarationsWrapper = ({
 							onChange={(e) => {
 								const v = e.target.value;
 								const valueToFire = v === '' ? null : v;
+								const valueToFireForArrows =
+									Number.parseFloat(v).toFixed(decimals);
 								if (
+									decimals &&
+									v !== '' &&
+									!new RegExp(`^[0-9]+(.[0-9]{1,${decimals}})?$`).test(
+										valueToFireForArrows
+									)
+								) {
+									e.preventDefault();
+								} else if (
 									(([null, ''].includes(v) && value.length > 0) ||
 										([null, ''].includes(value) && v.length > 0)) &&
 									componentType !== 'Datepicker'
 								) {
-									setValue(v);
+									setValue(valueToFire);
 									handleChange({
 										[U.getResponseName(response)]: valueToFire,
 									});
@@ -188,11 +198,16 @@ const InputDeclarationsWrapper = ({
 										'Event' &&
 										roleType !== 'datepicker') ||
 									// FF hack: impossible to handle arrow events
-									(Math.abs(v - value) !== 0 && isInputNumber)
+									(Math.abs(v - value).toFixed(decimals) !==
+										Number.parseFloat(`${Math.pow(10, -decimals)}`).toFixed(
+											decimals
+										) &&
+										!Number.parseInt(v, 10) &&
+										isInputNumber)
 								) {
-									setValue(valueToFire);
+									setValue(valueToFireForArrows);
 									handleChange({
-										[U.getResponseName(response)]: valueToFire,
+										[U.getResponseName(response)]: valueToFireForArrows,
 									});
 								} else {
 									if (isInputNumber) {
@@ -212,6 +227,11 @@ const InputDeclarationsWrapper = ({
 							}}
 							onBlur={handleChangeOnBlur}
 							onFocus={handleFocusIn}
+							onKeyPress={(event) => {
+								if (decimals === 0 && !/[0-9]/.test(event.key)) {
+									event.preventDefault();
+								}
+							}}
 						/>
 						{isInputNumber && unit && unitPosition === 'AFTER' && (
 							<span className="unit">{unit}</span>

@@ -1361,10 +1361,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/lunatic@^0.3.3-experimental":
-  version "0.3.3-experimental"
-  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.3.3-experimental.tgz#3a36341ba8b37872b1b2f80bd7d66c38957ef148"
-  integrity sha512-3UubHZcvY0vcrbX85a8aXno869eK25UxNYmV2+WKb0/alJyZ2i9TLooh9LWvWj0sIVgJw+eqrBIMZYO+Ch5QQw==
+"@inseefr/lunatic@^0.3.5-experimental":
+  version "0.3.5-experimental"
+  resolved "https://registry.yarnpkg.com/@inseefr/lunatic/-/lunatic-0.3.5-experimental.tgz#33471cc125605c9d8b89c72b1cc32d70793b52cf"
+  integrity sha512-TXxgKmDQOxFZShIGwoKLNgBvtBfwQy+iys5TtNBGTIDaOxBwbLepv/LkXltX2E/MpqKiTdTn8H42af4tqPL8lQ==
   dependencies:
     "@inseefr/trevas" "^0.1.12"
     date-fns "^2.25.0"
