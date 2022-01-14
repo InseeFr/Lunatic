@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import RowComponent from './row-component';
+import { RowComponent } from '../commons';
 
 function Row({
 	components,

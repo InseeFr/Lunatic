@@ -157,19 +157,6 @@ function getComponentValue(component, state) {
 		return map[name];
 	}
 	return map;
-	/* */
-	// l'ordre est important : à écrire mieux.
-	// if (isLoopComponent(component)) {
-	// 	return getLoopValues(component, variables);
-	// }
-	// if (isInSubPage(state)) {
-	// 	return getSubPageValue(state, component, variables);
-	// }
-	// if (isCheckboxGroup(component)) {
-	// 	return getCheckboxGroupValue(component, variables);
-	// }
-
-	// return getCollectedValue(component, variables);
 }
 
 export default getComponentValue;

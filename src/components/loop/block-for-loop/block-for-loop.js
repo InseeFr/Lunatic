@@ -3,7 +3,7 @@ import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
-} from '../declarations';
+} from '../../declarations';
 import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
 
 function BlockForLoop({
@@ -14,6 +14,8 @@ function BlockForLoop({
 	valueMap,
 	missing,
 	shortcut,
+	features,
+	preferences,
 	management,
 	executeExpression,
 	iterations,
@@ -21,6 +23,7 @@ function BlockForLoop({
 	const [nbRows, setNbRows] = useState(-1);
 	const [min, setMin] = useState(undefined);
 	const [max, setMax] = useState(undefined);
+
 	useEffect(
 		function () {
 			if (lines) {
@@ -65,6 +68,8 @@ function BlockForLoop({
 					management={management}
 					missing={missing}
 					shortcut={shortcut}
+					features={features}
+					preferences={preferences}
 					executeExpression={executeExpression}
 				/>
 				<DeclarationsDetachable declarations={declarations} />

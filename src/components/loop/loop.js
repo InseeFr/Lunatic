@@ -1,5 +1,11 @@
 import React from 'react';
 import BlockForLoop from './block-for-loop';
+import RosterForLoop from './roster-for-loop';
+
+const LoopTypes = {
+	rosterForLoop: 'RosterForLoop',
+	blockForLoop: 'Loop',
+};
 
 function Loop(props) {
 	const {
@@ -11,28 +17,61 @@ function Loop(props) {
 		components,
 		handleChange,
 		value,
-		management,
 		executeExpression,
 		loopDependencies,
-		bindingDependencies,
+		componentType,
+		headers,
+		shortcut,
+		management,
+		missing,
+		features,
+		preferences,
 	} = props;
-
-	return (
-		<BlockForLoop
-			declarations={declarations}
-			label={label}
-			lines={lines}
-			iterations={iterations}
-			id={id}
-			components={components}
-			handleChange={handleChange}
-			valueMap={value}
-			management={management}
-			executeExpression={executeExpression}
-			loopDependencies={loopDependencies}
-			bindingDependencies={bindingDependencies}
-		/>
-	);
+	switch (componentType) {
+		case LoopTypes.blockForLoop:
+			return (
+				<BlockForLoop
+					declarations={declarations}
+					label={label}
+					lines={lines}
+					iterations={iterations}
+					id={id}
+					components={components}
+					handleChange={handleChange}
+					valueMap={value}
+					management={management}
+					executeExpression={executeExpression}
+					loopDependencies={loopDependencies}
+					missing={missing}
+					shortcut={shortcut}
+					features={features}
+					preferences={preferences}
+				/>
+			);
+		case LoopTypes.rosterForLoop:
+			return (
+				<RosterForLoop
+					declarations={declarations}
+					label={label}
+					lines={lines}
+					iterations={iterations}
+					id={id}
+					components={components}
+					handleChange={handleChange}
+					valueMap={value}
+					management={management}
+					executeExpression={executeExpression}
+					loopDependencies={loopDependencies}
+					missing={missing}
+					shortcut={shortcut}
+					features={features}
+					preferences={preferences}
+					headers={headers}
+				/>
+			);
+		default:
+			return null;
+	}
 }
 
 export default Loop;

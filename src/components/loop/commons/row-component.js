@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as lunatic from 'components';
-import { fillComponentExpressions } from '../../utils/to-expose/hooks/use-lunatic/commons';
+import { fillComponentExpressions } from '../../../utils/to-expose/hooks/use-lunatic/commons';
 
 function RowComponent({
 	id,
@@ -42,6 +42,7 @@ function RowComponent({
 				missing={missing}
 				shortcut={shortcut}
 				value={value}
+				executeExpression={executeExpression}
 			/>
 		);
 	}

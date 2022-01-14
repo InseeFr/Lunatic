@@ -12,14 +12,14 @@ const VTL_ATTRIBUTES = [
 	'iterations',
 ];
 
-function createCrawl(component, { executeExpression, iteration }) {
+function createCrawl({ executeExpression, iteration }) {
 	/**
 	 *
 	 * @param {*} object
 	 * @param {*} path
 	 * @returns
 	 */
-	function executeAndFillObject(object, path, fullStringPath) {
+	function executeAndFillObject(object, path) {
 		const candidate = object[path];
 
 		if (typeof candidate === 'string') {
@@ -40,13 +40,13 @@ function createCrawl(component, { executeExpression, iteration }) {
 	 * @param {*} path
 	 * @returns
 	 */
-	function crawlArray(object, path, fullStringPath) {
+	function crawlArray(object, path) {
 		const [step, ...rest] = path;
 		return object[step].reduce(
 			function (stack, entry) {
 				return {
 					...stack,
-					[step]: [...stack[step], crawl(rest, entry, fullStringPath)],
+					[step]: [...stack[step], crawl(rest, entry)],
 				};
 			},
 			{ ...object, [step]: [] }
@@ -59,9 +59,9 @@ function createCrawl(component, { executeExpression, iteration }) {
 	 * @param {*} path
 	 * @returns
 	 */
-	function crawlObject(object, path, fullStringPath) {
+	function crawlObject(object, path) {
 		const [step, ...rest] = path;
-		return { ...object, [step]: crawl(rest, object[step], fullStringPath) };
+		return { ...object, [step]: crawl(rest, object[step]) };
 	}
 
 	/**
@@ -70,16 +70,16 @@ function createCrawl(component, { executeExpression, iteration }) {
 	 * @param {*} object
 	 * @returns
 	 */
-	function crawl(path, object, fullStringPath) {
+	function crawl(path, object) {
 		const [step, ...rest] = path;
 
 		if (step in object && rest.length === 0) {
-			return executeAndFillObject(object, step, fullStringPath);
+			return executeAndFillObject(object, step);
 		} else if (step in object) {
 			if (Array.isArray(object[step])) {
-				return crawlArray(object, path, fullStringPath);
+				return crawlArray(object, path);
 			}
-			return crawlObject(object, path, fullStringPath);
+			return crawlObject(object, path);
 		}
 
 		return object;
@@ -89,7 +89,7 @@ function createCrawl(component, { executeExpression, iteration }) {
 }
 
 function fillAttributes(component, { executeExpression, iteration }) {
-	const crawl = createCrawl(component, { executeExpression, iteration });
+	const crawl = createCrawl({ executeExpression, iteration });
 	return VTL_ATTRIBUTES.reduce(
 		function (step, fullStringPath) {
 			const path = fullStringPath.split('.');
