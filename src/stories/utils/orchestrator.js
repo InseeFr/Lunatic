@@ -13,8 +13,12 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 		return (
 			<>
 				<div className="pagination">
-					<Button onClick={goPrevious} disabled={isFirst} value="Previous" />
-					<Button onClick={goNext} disabled={isLast} value="Next" />
+					<Button onClick={goPrevious} disabled={isFirst}>
+						Previous
+					</Button>
+					<Button onClick={goNext} disabled={isLast}>
+						Next
+					</Button>
 				</div>
 				<div>PAGE: {pageTag}</div>
 			</>

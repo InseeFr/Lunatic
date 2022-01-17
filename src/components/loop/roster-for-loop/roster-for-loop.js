@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../../declarations';
 import RosterTable from './roster-table';
+import AddRowButton from './add-row-button';
 import * as lunatic from 'components';
+
+const DEFAULT_MAX_ROWS = 12;
 
 function getTableLength(value) {
 	return Object.entries(value).reduce(function (length, variable) {
@@ -31,11 +34,9 @@ function RosterforLoop({
 	id,
 	management,
 }) {
-	const min = lines?.min || 1;
+	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [init, setInit] = useState(false);
 	const [nbRows, setNbRows] = useState(-1);
-
-	useEffect(function () {}, [components]);
 
 	useEffect(
 		function () {
@@ -46,6 +47,18 @@ function RosterforLoop({
 		},
 		[init, valueMap]
 	);
+
+	const disabled = nbRows === max;
+
+	const addRow = useCallback(
+		function () {
+			if (nbRows < max) {
+				setNbRows(nbRows + 1);
+			}
+		},
+		[max, nbRows]
+	);
+
 	if (nbRows > 0) {
 		return (
 			<>
@@ -65,6 +78,9 @@ function RosterforLoop({
 					shortcut={shortcut}
 				/>
 				<DeclarationsDetachable declarations={declarations} />
+				<AddRowButton onClick={addRow} disabled={disabled}>
+					Add Row!
+				</AddRowButton>
 			</>
 		);
 	}

@@ -27,6 +27,7 @@ function Loop(props) {
 		features,
 		preferences,
 	} = props;
+
 	switch (componentType) {
 		case LoopTypes.blockForLoop:
 			return (
