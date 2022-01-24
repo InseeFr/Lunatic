@@ -91,21 +91,31 @@
 			"depth": 1,
 			"paginatedLoop": false,
 			"conditionFilter": {
-				"value": "NB_POTENTIAL_KISH > 1",
-				"bindingDependencies": ["NB_POTENTIAL_KISH"]
+				"value": "true"
 			},
 			"bindingDependencies": ["NB", "FIRST_NAME", "IS_KISH"],
 			"loopDependencies": ["NB"],
 			"lines": { "min": "cast(NB,integer)", "max": "cast(NB,integer)" },
 			"components": [
 				{
+					"id": "kish_seq",
+					"componentType": "Sequence",
+					"page": "4",
+					"label": "\"Kish person is: \" || FIRST_NAME",
+					"conditionFilter": {
+						"value": "NB_POTENTIAL_KISH = 1 and KISH_INDICATOR = 1",
+						"bindingDependencies": ["KISH_INDICATOR", "NB_POTENTIAL_KISH"]
+					},
+					"bindingDependencies": ["FIRST_NAME"]
+				},
+				{
 					"id": "sub_is_kish",
 					"componentType": "Radio",
 					"page": "4",
 					"label": "\"Is \" || FIRST_NAME || \" is the individual Kish?\"",
 					"conditionFilter": {
-						"value": "KISH_INDICATOR = 1",
-						"bindingDependencies": ["KISH_INDICATOR"]
+						"value": "NB_POTENTIAL_KISH > 1 and KISH_INDICATOR = 1",
+						"bindingDependencies": ["KISH_INDICATOR", "NB_POTENTIAL_KISH"]
 					},
 					"options": [
 						{ "value": "1", "label": "Yes" },
@@ -136,12 +146,11 @@
 					"page": "5.1",
 					"label": "FIRST_NAME || \", quel est votre âge ?\"",
 					"conditionFilter": {
-						"value": "IS_KISH = \"1\" or (NB_POTENTIAL_KISH = 1 and KISH_SCORE = KISH_MIN)",
+						"value": "IS_KISH = \"1\" or (NB_POTENTIAL_KISH = 1 and KISH_INDICATOR = 1)",
 						"bindingDependencies": [
 							"IS_KISH",
 							"NB_POTENTIAL_KISH",
-							"KISH_SCORE",
-							"KISH_MIN"
+							"KISH_INDICATOR"
 						]
 					},
 					"bindingDependencies": ["FIRST_NAME", "AGE_KISH"],
