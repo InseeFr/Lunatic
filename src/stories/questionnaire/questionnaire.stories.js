@@ -11,6 +11,7 @@ import logementSequence from './logement-sequence';
 import dataLogement from './data-logement';
 import simpsons from './simpsons';
 import arithmetic from './arithmetic';
+import kish from './kish';
 import arithmeticManagement from './arithmetic-management';
 import updateExternalQuestionnaire from './update-external/questionnaire';
 import updateExternalData from './update-external/data';
@@ -88,6 +89,17 @@ paginated.addWithJSX('Calculated Variables', () => (
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
+		pagination
+	/>
+));
+
+paginated.addWithJSX('Kish', () => (
+	<Orchestrator
+		id="props"
+		source={kish}
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		disabled={boolean('Disabled', false)}
 		pagination
 	/>
 ));

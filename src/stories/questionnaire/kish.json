@@ -1,0 +1,266 @@
+{
+	"maxPage": "6",
+	"components": [
+		{
+			"id": "nb",
+			"componentType": "InputNumber",
+			"page": "1",
+			"min": 1,
+			"max": 15,
+			"decimals": 0,
+			"label": "In total, counting you, how many people live in this dwelling?",
+			"conditionFilter": {
+				"value": "true",
+				"bindingDependencies": []
+			},
+			"bindingDependencies": ["NB"],
+			"response": { "name": "NB" }
+		},
+		{
+			"id": "prenom_loop",
+			"componentType": "Loop",
+			"page": "2",
+			"depth": 1,
+			"paginatedLoop": false,
+			"conditionFilter": { "value": "true" },
+			"bindingDependencies": ["NB", "FIRST_NAME"],
+			"loopDependencies": ["NB"],
+			"lines": { "min": "cast(NB,integer)", "max": "cast(NB,integer)" },
+			"components": [
+				{
+					"id": "sub_first_name",
+					"componentType": "Subsequence",
+					"page": "2",
+					"label": "First name",
+					"conditionFilter": {
+						"value": "true"
+					},
+					"bindingDependencies": ["FIRST_NAME", "NB"]
+				},
+				{
+					"id": "prenom_input",
+					"componentType": "Input",
+					"mandatory": false,
+					"page": "10",
+					"maxLength": 20,
+					"conditionFilter": { "value": "true" },
+					"bindingDependencies": ["NB", "FIRST_NAME"],
+					"response": { "name": "FIRST_NAME" }
+				}
+			]
+		},
+		{
+			"id": "date_loop",
+			"componentType": "Loop",
+			"page": "3",
+			"maxPage": "2",
+			"iterations": "count(FIRST_NAME)",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": { "value": "true" },
+			"bindingDependencies": ["FIRST_NAME", "BIRTH_DATE"],
+			"loopDependencies": ["FIRST_NAME"],
+			"components": [
+				{
+					"id": "sub_date",
+					"componentType": "Subsequence",
+					"page": "3.1",
+					"label": "\"Etat civil de \" || FIRST_NAME",
+					"conditionFilter": { "value": "true" },
+					"bindingDependencies": ["FIRST_NAME"]
+				},
+				{
+					"id": "date",
+					"componentType": "Datepicker",
+					"mandatory": false,
+					"page": "3.2",
+					"min": "1850-01-01",
+					"max": "2100-01-01",
+					"label": "\"Quelle est la date de naissance de \" || FIRST_NAME ||\" ?\"",
+					"conditionFilter": { "value": "true" },
+					"bindingDependencies": ["FIRST_NAME", "BIRTH_DATE"],
+					"dateFormat": "YYYY-MM-DD",
+					"response": { "name": "BIRTH_DATE" }
+				}
+			]
+		},
+		{
+			"id": "kish_choice",
+			"componentType": "Loop",
+			"page": "4",
+			"depth": 1,
+			"paginatedLoop": false,
+			"conditionFilter": {
+				"value": "NB_POTENTIAL_KISH > 1",
+				"bindingDependencies": ["NB_POTENTIAL_KISH"]
+			},
+			"bindingDependencies": ["NB", "FIRST_NAME", "IS_KISH"],
+			"loopDependencies": ["NB"],
+			"lines": { "min": "cast(NB,integer)", "max": "cast(NB,integer)" },
+			"components": [
+				{
+					"id": "sub_is_kish",
+					"componentType": "Radio",
+					"page": "4",
+					"label": "\"Is \" || FIRST_NAME || \" is the individual Kish?\"",
+					"conditionFilter": {
+						"value": "KISH_INDICATOR = 1",
+						"bindingDependencies": ["KISH_INDICATOR"]
+					},
+					"options": [
+						{ "value": "1", "label": "Yes" },
+						{ "value": "0", "label": "No" }
+					],
+					"bindingDependencies": ["FIRST_NAME", "KISH_INDICATOR"],
+					"dateFormat": "YYYY-MM-DD",
+					"response": { "name": "IS_KISH" }
+				}
+			]
+		},
+		{
+			"id": "kish_loop",
+			"componentType": "Loop",
+			"page": "5",
+			"maxPage": "1",
+			"iterations": "count(FIRST_NAME)",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": { "value": "true" },
+			"bindingDependencies": ["FIRST_NAME", "AGE_KISH"],
+			"loopDependencies": ["FIRST_NAME"],
+			"components": [
+				{
+					"id": "age_kish",
+					"componentType": "InputNumber",
+					"mandatory": false,
+					"page": "5.1",
+					"label": "FIRST_NAME || \", quel est votre âge ?\"",
+					"conditionFilter": {
+						"value": "IS_KISH = \"1\" or (NB_POTENTIAL_KISH = 1 and KISH_SCORE = KISH_MIN)",
+						"bindingDependencies": [
+							"IS_KISH",
+							"NB_POTENTIAL_KISH",
+							"KISH_SCORE",
+							"KISH_MIN"
+						]
+					},
+					"bindingDependencies": ["FIRST_NAME", "AGE_KISH"],
+					"response": { "name": "AGE_KISH" }
+				}
+			]
+		},
+		{
+			"id": "end",
+			"componentType": "Sequence",
+			"label": "End",
+			"page": "6",
+			"conditionFilter": { "value": "true" }
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NB",
+			"componentRef": "nb",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "FIRST_NAME",
+			"componentRef": "prenom_loop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "BIRTH_DATE",
+			"componentRef": "date_loop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "IS_KISH",
+			"componentRef": "kish_choice",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE_KISH",
+			"componentRef": "kish_loop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "BIRTH_MONTH_INT",
+			"expression": "cast(cast(cast(BIRTH_DATE, date, \"YYYY-MM-DD\"), string, \"MM\"), integer)",
+			"bindingDependencies": ["BIRTH_DATE"],
+			"shapeFrom": "FIRST_NAME"
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "BIRTH_DAY_STRING",
+			"expression": "cast(cast(BIRTH_DATE, date, \"YYYY-MM-DD\"), string, \"DD\")",
+			"bindingDependencies": ["BIRTH_DATE"],
+			"shapeFrom": "FIRST_NAME"
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "KISH_SCORE",
+			"expression": "cast(if BIRTH_MONTH_INT < 6 then BIRTH_MONTH_INT + 12 else BIRTH_MONTH_INT, string) || \".\" || BIRTH_DAY_STRING, number)",
+			"bindingDependencies": [
+				"BIRTH_DATE",
+				"BIRTH_MONTH_INT",
+				"BIRTH_DAY_STRING"
+			],
+			"shapeFrom": "FIRST_NAME"
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "KISH_MIN",
+			"expression": "min(KISH_SCORE)",
+			"bindingDependencies": ["BIRTH_DATE", "KISH_SCORE"]
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "NB_POTENTIAL_KISH",
+			"expression": "sum(KISH_INDICATOR)",
+			"bindingDependencies": ["BIRTH_DATE", "KISH_INDICATOR"]
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "KISH_INDICATOR",
+			"expression": "if KISH_SCORE = KISH_MIN then 1 else 0",
+			"bindingDependencies": ["BIRTH_DATE", "KISH_SCORE", "KISH_MIN"],
+			"shapeFrom": "FIRST_NAME"
+		}
+	]
+}

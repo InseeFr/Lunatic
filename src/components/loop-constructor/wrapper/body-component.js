@@ -23,6 +23,7 @@ const BodyComponent = ({
 		components,
 		headers,
 	});
+	const featuresWithoutMD = features.filter((f) => f !== 'MD');
 	if (componentType === 'RosterForLoop')
 		return (
 			<table id={`table-${mainId}`} className="table-lunatic">
@@ -38,10 +39,16 @@ const BodyComponent = ({
 									componentType,
 									id,
 									rowNumber,
+									conditionFilter,
 									...componentProps
 								} = component;
 								const localBindings =
 									U.buildBindingsForDeeperComponents(rowNumber)(bindings);
+								if (conditionFilter) {
+									const { value = '' } = conditionFilter;
+									if (!interpret(featuresWithoutMD)(localBindings)(value))
+										return null;
+								}
 								if (componentType) {
 									const Component = lunatic[componentType];
 									return (
@@ -101,7 +108,12 @@ const BodyComponent = ({
 						const localBindings =
 							U.buildBindingsForDeeperComponents(i)(bindings);
 						// ensure to have only N-1 missingResponse
-						const { missingResponse } = componentProps;
+						const { missingResponse, conditionFilter } = componentProps;
+						if (conditionFilter) {
+							const { value = '' } = conditionFilter;
+							if (!interpret(featuresWithoutMD)(localBindings)(value))
+								return null;
+						}
 						return (
 							<div className="block-component" key={`${id}-row-${i}`}>
 								<Component
