@@ -1,0 +1,461 @@
+{
+	"pages": {
+		"1": {
+			"components": [
+				{
+					"id": "P1-Q1",
+					"type": "CheckboxOne",
+					"label": "Résidez-vous à cette adresse ?",
+					"response": {
+						"name": "ISRESID"
+					},
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "Oui",
+								"type": "STRING"
+							}
+						},
+						{
+							"value": "0",
+							"label": {
+								"value": "Non",
+								"type": "STRING"
+							}
+						}
+					]
+				}
+			],
+			"goNext": {
+				"value": "if ISRESID = \"1\" then \"12\" else \"2\"",
+				"type": "VTL",
+				"scope": "GLOBAL"
+			}
+		},
+		"2": {
+			"components": [
+				{
+					"type": "InputNumber",
+					"label": {
+						"value": "Combien de personne vivent dans le logement ?",
+						"type": "STRING"
+					},
+					"response": {
+						"name": "NBHAB"
+					}
+				}
+			],
+			"goNext": {
+				"value": "if isnull(NBHAB) or NBHAB = \"0\" then \"12\" else \"3\"",
+				"type": "VTL",
+				"scope": "GLOBAL"
+			}
+		},
+		"3": {
+			"components": [
+				{
+					"type": "Sequence",
+					"label": "Présentation des habitants du logement."
+				}
+			]
+		},
+		"4": {
+			"components": [
+				{
+					"type": "BlockForLoop",
+					"iterations": {
+						"value": "NBHAB",
+						"type": "VTL"
+					},
+					"components": [
+						{
+							"type": "InputText",
+							"label": {
+								"value": "Prenom",
+								"type": "String"
+							},
+							"response": { "name": "PRENOM" }
+						}
+					]
+				}
+			]
+		},
+		"5": {
+			"components": [
+				{
+					"type": "Sequence",
+					"label": "Sur les pages suivantes, les questions sont adressés à chaque habitant du logement."
+				}
+			],
+			"iterations": {
+				"value": "NBHAB",
+				"type": "VTL",
+				"scope": "GLOBAL"
+			},
+			"pages": {
+				"1": {
+					"components": [
+						{
+							"type": "RadioGroup",
+							"label": {
+								"value": "Sexe",
+								"type": "VTL",
+								"scope": "GLOBAL"
+							},
+							"options": [
+								{
+									"value": "1",
+									"label": {
+										"value": "Homme",
+										"type": "STRING"
+									}
+								},
+								{
+									"value": "2",
+									"label": {
+										"value": "Femme",
+										"type": "STRING"
+									}
+								}
+							],
+							"response": {
+								"name": "SEXE"
+							}
+						},
+						{
+							"type": "RadioGroup",
+							"label": {
+								"value": "Possédez-vous un ou des moyens de locomotion ?",
+								"type": "STRING"
+							},
+							"options": [
+								{
+									"value": "1",
+									"label": {
+										"value": "Oui",
+										"type": "STRING"
+									}
+								},
+								{
+									"value": "0",
+									"label": {
+										"value": "Non",
+										"type": "STRING"
+									}
+								}
+							],
+							"response": {
+								"name": "ISLOCO"
+							},
+							"goNext": {
+								"value": "if isnull(ISLOCO) or ISLOCO = \"0\" then \"comment dit-on de sauter la suivante, et donc de passer à l'iteration suivante si elle existe, ou à la page de niveau N-1 sinon\" else \"2 (la sous page suivante convient ou il faut 6.2 ?)\"",
+								"type": "VTL",
+								"scope": "GLOBAL"
+							}
+						}
+					]
+				},
+				"2": {
+					"components": [
+						{
+							"type": "InputNumber",
+							"label": {
+								"value": "\"Combien de moyen de locomotion dispose \" || PRENOM",
+								"type": "VTL",
+								"scope": "LOCAL"
+							}
+						}
+					],
+					"response": {
+						"name": "NBLOCO"
+					}
+				}
+			}
+		},
+		"6": {
+			"components": [
+				{
+					"type": "Sequence",
+					"label": {
+						"value": "Les questions suivantes portent sur chaque moyen de locomotion de chacun des habitants du logement.",
+						"type": "STRING"
+					}
+				}
+			],
+			"iterations": {
+				"value": "NBHAB",
+				"type": "VTL",
+				"scope": "GLOBAL"
+			},
+			"pages": {
+				"1": {
+					"2": {
+						"components": [],
+						"pages": {}
+					},
+					"components": [
+						{
+							"type": "Sequence",
+							"label": {
+								"value": "\"Caractéristiques des véhicules de \" || PRENOM",
+								"type": "VTL"
+							}
+						}
+					],
+					"iterations": {
+						"value": "NBLOCO",
+						"type": "VTL",
+						"scope": "LOCAL"
+					},
+					"pages": {
+						"1": {
+							"components": [
+								{
+									"type": "RadioGroup",
+									"label": {
+										"value": "\"Quel est type du véhicule n°\" || ITERATION || \" ?\"",
+										"type": "VTL",
+										"scope": "LOCAL"
+									},
+									"options": [
+										{
+											"value": "1",
+											"label": {
+												"value": "Voiture",
+												"type": "STRING"
+											}
+										},
+										{
+											"value": "2",
+											"label": {
+												"value": "moto",
+												"type": "STRING"
+											}
+										},
+										{
+											"value": "3",
+											"label": {
+												"value": "scooteur ou mobilette",
+												"type": "STRING"
+											}
+										},
+										{
+											"value": "4",
+											"label": {
+												"value": "vélo",
+												"type": "STRING"
+											}
+										},
+										{
+											"value": "5",
+											"label": {
+												"value": "trotinette",
+												"type": "STRING"
+											}
+										},
+										{
+											"value": "6",
+											"label": {
+												"value": "autre",
+												"type": "STRING"
+											}
+										}
+									],
+									"response": {
+										"name": "TYPELOCO"
+									}
+								}
+							],
+							"goNext": {
+								"value": "if (TYPELOCO = \"1\" || TYPELOCO = \"2\" || TYPELOCO = \"3\") then \"6.1.2\" else if (TYPELOCO = \"4\" || TYPELOCO = \"5\") else if(TYPELOCO = \"6\") then \"6.1.4\" then \"6.1.3\" else \"6.1.1\"",
+								"type": "VTL",
+								"scope": "LOCAL"
+							}
+						},
+						"2": {
+							"components": [
+								{
+									"type": "RadioGroup",
+									"label": {
+										"value": "\"Quelle est la motorisation du véhicule n°\" || ITERATION || \" ?\"",
+										"type": "VTL",
+										"scope": "LOCAL"
+									},
+									"options": [
+										{
+											"value": "1",
+											"label": {
+												"value": "Thermique",
+												"type": "STRING"
+											}
+										},
+										{
+											"value": "2",
+											"label": {
+												"value": "electrique",
+												"type": "STRING"
+											}
+										}
+									],
+									"response": {
+										"name": "TYPEMOTO"
+									}
+								}
+							]
+						},
+						"3": {
+							"components": [
+								{
+									"type": "RadioGroup",
+									"label": {
+										"value": "\"Quelle est la motorisation du véhicule n°\" || ITERATION || \" ?\"",
+										"type": "VTL",
+										"scope": "LOCAL"
+									},
+									"options": [
+										{
+											"value": "1",
+											"label": {
+												"value": "Mécanique",
+												"type": "STRING"
+											}
+										},
+										{
+											"value": "2",
+											"label": {
+												"value": "Electrique",
+												"type": "STRING"
+											}
+										}
+									],
+									"response": {
+										"name": "TYPEMOTO"
+									}
+								}
+							]
+						},
+						"4": {
+							"components": [
+								{
+									"type": "InputText",
+									"label": {
+										"value": "Quelle est le type de motorisation de ce véhicule ?",
+										"type": "STRING"
+									},
+									"response": {
+										"name": "TYPEMOTO"
+									}
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"12": {
+			"components": [
+				{
+					"type": "Sequence",
+					"label": {
+						"value": "Bonne fin de journée",
+						"type": "STRING"
+					}
+				}
+			],
+			"goPrevious": {
+				"value": "if (isnull(ISRESID) || ISRESID = false) then \"1\" else  \"11\"",
+				"type": "VTL"
+			}
+		}
+	},
+	"variables": {
+		"ISRESID": {
+			"type": "COLLECTED",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		"NBHAB": {
+			"type": "COLLECTED",
+			"typeVariable": "INTEGER",
+			"values": {
+				"PREVIOUS": 1,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		"PRENOM": {
+			"type": "COLLECTED",
+			"typeVariable": "ARRAY<STRING>",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		"SEXE": {
+			"type": "COLLECTED",
+			"typeVariable": "ARRAY<STRING>",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		"ISLOCO": {
+			"type": "COLLECTED",
+			"typeVariable": "ARRAY<BOOLEAN>",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		"NBLOCO": {
+			"type": "COLLECTED",
+			"typeVariable": "ARRAY<INTEGER>",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		"TYPELOCO": {
+			"type": "COLLECTED",
+			"typeVariable": "ARRAY<ARRAY<STRING>>",
+			"values": {
+				"PREVIOUS": [[null]],
+				"COLLECTED": [[null]],
+				"FORCED": [[null]],
+				"EDITED": [[null]],
+				"INPUTED": [[null]]
+			}
+		},
+		"TYPEMOTO": {
+			"type": "COLLECTED",
+			"typeVariable": "ARRAY<ARRAY<STRING>>",
+			"values": {
+				"PREVIOUS": [[null]],
+				"COLLECTED": [[null]],
+				"FORCED": [[null]],
+				"EDITED": [[null]],
+				"INPUTED": [[null]]
+			}
+		}
+	}
+}
