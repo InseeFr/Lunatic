@@ -406,6 +406,12 @@
 				"INPUTED": [null]
 			}
 		},
+		"PRENOM_TEXT": {
+			"type": "CALCULATED",
+			"expression": "\"Votre prénom est :\" || PRENOM",
+			"bindingDependencies": ["PRENOM"],
+			"shapeFrom": "PRENOM"
+		},
 		"SEXE": {
 			"type": "COLLECTED",
 			"typeVariable": "ARRAY<STRING>",
@@ -415,8 +421,7 @@
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
-			},
-			"shapeFrom": "PRENOM"
+			}
 		},
 		"ISLOCO": {
 			"type": "COLLECTED",
@@ -427,8 +432,7 @@
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
-			},
-			"shapeFrom": "PRENOM"
+			}
 		},
 		"NBLOCO": {
 			"type": "COLLECTED",
@@ -439,8 +443,7 @@
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
-			},
-			"shapeFrom": "PRENOM"
+			}
 		},
 		"TYPELOCO": {
 			"type": "COLLECTED",
@@ -451,8 +454,7 @@
 				"FORCED": [[null]],
 				"EDITED": [[null]],
 				"INPUTED": [[null]]
-			},
-			"shapeFrom": "BUG"
+			}
 		},
 		"TYPEMOTO": {
 			"type": "COLLECTED",
@@ -463,8 +465,13 @@
 				"FORCED": [[null]],
 				"EDITED": [[null]],
 				"INPUTED": [[null]]
-			},
-			"shapeFrom": "BUG"
+			}
+		},
+		"TYPEMOTO_TEXT": {
+			"type": "CALCULATED",
+			"expression": "PRENOM || \", vous avez un véhicule \" || TYPEMOTO",
+			"bindingDependencies": ["PRENOM", "TYPEMOTO"],
+			"shapeFrom": "TYPEMOTO"
 		}
 	}
 }
