@@ -97,105 +97,25 @@ function OrchestratorForStories({
 					);
 				})}
 			</div>
-			<Pager
-				goNext={goNextPage}
-				goPrevious={goPreviousPage}
-				isLast={isLastPage}
-				isFirst={isFirstPage}
-				pageTag={pageTag}
-				maxPage={maxPage}
-			/>
-			<Waiting status={waiting}>
-				<div className="waiting-orchestrator">
-					Initialisation des données de suggestion...
-				</div>
-			</Waiting>
+			{
+				<Pager
+					goNext={goNextPage}
+					goPrevious={goPreviousPage}
+					isLast={isLastPage}
+					isFirst={isFirstPage}
+					pageTag={pageTag}
+					maxPage={maxPage}
+				/>
+			}
+			{
+				<Waiting status={waiting}>
+					<div className="waiting-orchestrator">
+						Initialisation des données de suggestion...
+					</div>
+				</Waiting>
+			}
 		</div>
 	);
-
-	// /* */
-	// const {
-	// 	handleExternals,
-	// 	components,
-	// 	bindings,
-	// 	pagination: {
-	// 		goNext,
-	// 		goPrevious,
-	// 		page,
-	// 		setPage,
-	// 		maxPage,
-	// 		isFirstPage,
-	// 		isLastPage,
-	// 		flow,
-	// 	},
-	// } = lunatic.useLunatic(source, data, {
-	// 	suggesters,
-	// 	savingType,
-	// 	preferences,
-	// 	features,
-	// 	management,
-	// 	pagination,
-	// 	modalForControls,
-	// 	initialPage,
-	// 	suggesterFetcher,
-	// 	autoSuggesterLoading,
-	// });
-
-	// useEffect(() => {
-	// 	handleExternals(addExternal);
-	// }, [addExternal, handleExternals]);
-
-	// const Button = lunatic.Button;
-
-	// const missingStrategy = (b) => goNext(null, b);
-
-	// return (
-	// 	<div className="container">
-	// 		<div className="components">
-	// 			{components.map((q) => {
-	// 				const { id, componentType } = q;
-	// 				const Component = lunatic[componentType];
-	// 				const { storeName } = q;
-
-	// 				return (
-	// 					<div className="lunatic lunatic-component" key={`component-${id}`}>
-	// 						<Component
-	// 							{...rest}
-	// 							{...q}
-	// 							{...getStoreInfo(storeName)}
-	// 							handleChange={handleChange}
-	// 							preferences={preferences}
-	// 							savingType={savingType}
-	// 							management={management}
-	// 							features={features}
-	// 							bindings={{ ...bindings, ...initialBindings }}
-	// 							currentPage={page}
-	// 							setPage={setPage}
-	// 							flow={flow}
-	// 							pagination={pagination}
-	// 							missing={missing}
-	// 							shortcut={shortcut}
-	// 							missingStrategy={activeGoNextForMissing && missingStrategy}
-	// 						/>
-	// 					</div>
-	// 				);
-	// 			})}
-	// 		</div>
-	// 		{pagination && (
-	// 			<>
-	// 				<div className="pagination">
-	// 					<Button
-	// 						onClick={goPrevious}
-	// 						disabled={isFirstPage}
-	// 						value="Previous"
-	// 					/>
-	// 					<Button onClick={goNext} disabled={isLastPage} value="Next" />
-	// 				</div>
-	// 				<div>{`Page : ${page}/${maxPage}`}</div>
-	// 			</>
-	// 		)}
-	// 	</div>
-	// );
 }
 
 export default memo(OrchestratorForStories);
