@@ -393,7 +393,8 @@
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
-			}
+			},
+			"affect": ["PRENOM", "TYPEMOTO"]
 		},
 		"PRENOM": {
 			"type": "COLLECTED",
@@ -404,7 +405,8 @@
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
-			}
+			},
+			"nestedSize": ["NBHAB"]
 		},
 		"PRENOM_TEXT": {
 			"type": "CALCULATED",
@@ -443,7 +445,8 @@
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
-			}
+			},
+			"affect": ["TYPEMOTO"]
 		},
 		"TYPELOCO": {
 			"type": "COLLECTED",
@@ -454,7 +457,8 @@
 				"FORCED": [[null]],
 				"EDITED": [[null]],
 				"INPUTED": [[null]]
-			}
+			},
+			"nestedSize": ["NBHAB", "NBLOCO"]
 		},
 		"TYPEMOTO": {
 			"type": "COLLECTED",
