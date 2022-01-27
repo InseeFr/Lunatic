@@ -5,7 +5,10 @@
 				{
 					"id": "P1-Q1",
 					"type": "CheckboxOne",
-					"label": "Résidez-vous à cette adresse ?",
+					"label": {
+						"value": "Résidez-vous à cette adresse ?",
+						"type": "STRING"
+					},
 					"response": {
 						"name": "ISRESID"
 					},
@@ -26,12 +29,7 @@
 						}
 					]
 				}
-			],
-			"goNext": {
-				"value": "if ISRESID = \"1\" then \"12\" else \"2\"",
-				"type": "VTL",
-				"scope": "GLOBAL"
-			}
+			]
 		},
 		"2": {
 			"components": [
@@ -46,19 +44,25 @@
 					}
 				}
 			],
-			"goNext": {
-				"value": "if isnull(NBHAB) or NBHAB = \"0\" then \"12\" else \"3\"",
-				"type": "VTL",
-				"scope": "GLOBAL"
+			"conditionFilter": {
+				"value": "ISRESID = \"1\"",
+				"type": "VTL"
 			}
 		},
 		"3": {
 			"components": [
 				{
 					"type": "Sequence",
-					"label": "Présentation des habitants du logement."
+					"label": {
+						"value": "Présentation des habitants du logement.",
+						"type": "STRING"
+					}
 				}
-			]
+			],
+			"conditionFilter": {
+				"value": "ISRESID = \"1\" and NBHAB > 0",
+				"type": "VTL"
+			}
 		},
 		"4": {
 			"components": [
@@ -73,25 +77,31 @@
 							"type": "InputText",
 							"label": {
 								"value": "Prenom",
-								"type": "String"
+								"type": "STRING"
 							},
 							"response": { "name": "PRENOM" }
 						}
 					]
 				}
-			]
+			],
+			"conditionFilter": {
+				"value": "ISRESID = \"1\" and NBHAB > 0",
+				"type": "VTL"
+			}
 		},
 		"5": {
 			"components": [
 				{
 					"type": "Sequence",
-					"label": "Sur les pages suivantes, les questions sont adressés à chaque habitant du logement."
+					"label": {
+						"value": "Sur les pages suivantes, les questions sont adressés à chaque habitant du logement.",
+						"type": "VTL|MD"
+					}
 				}
 			],
 			"iterations": {
 				"value": "NBHAB",
-				"type": "VTL",
-				"scope": "GLOBAL"
+				"type": "VTL"
 			},
 			"pages": {
 				"1": {
@@ -100,8 +110,7 @@
 							"type": "RadioGroup",
 							"label": {
 								"value": "Sexe",
-								"type": "VTL",
-								"scope": "GLOBAL"
+								"type": "STRING"
 							},
 							"options": [
 								{
@@ -126,8 +135,8 @@
 						{
 							"type": "RadioGroup",
 							"label": {
-								"value": "Possédez-vous un ou des moyens de locomotion ?",
-								"type": "STRING"
+								"value": "Possédez-vous **un ou des** moyens de locomotion ?",
+								"type": "VTL|MD"
 							},
 							"options": [
 								{
@@ -147,11 +156,6 @@
 							],
 							"response": {
 								"name": "ISLOCO"
-							},
-							"goNext": {
-								"value": "if isnull(ISLOCO) or ISLOCO = \"0\" then \"comment dit-on de sauter la suivante, et donc de passer à l'iteration suivante si elle existe, ou à la page de niveau N-1 sinon\" else \"2 (la sous page suivante convient ou il faut 6.2 ?)\"",
-								"type": "VTL",
-								"scope": "GLOBAL"
 							}
 						}
 					]
@@ -162,13 +166,15 @@
 							"type": "InputNumber",
 							"label": {
 								"value": "\"Combien de moyen de locomotion dispose \" || PRENOM",
-								"type": "VTL",
-								"scope": "LOCAL"
+								"type": "VTL"
 							}
 						}
 					],
 					"response": {
 						"name": "NBLOCO"
+					},
+					"conditionFilter": {
+						"value": "ISLOCO = \"1\""
 					}
 				}
 			}
@@ -185,15 +191,10 @@
 			],
 			"iterations": {
 				"value": "NBHAB",
-				"type": "VTL",
-				"scope": "GLOBAL"
+				"type": "VTL"
 			},
 			"pages": {
 				"1": {
-					"2": {
-						"components": [],
-						"pages": {}
-					},
 					"components": [
 						{
 							"type": "Sequence",
@@ -203,10 +204,13 @@
 							}
 						}
 					],
+					"conditionFilter": {
+						"value": "NBLOCO > 0",
+						"type": "VTL"
+					},
 					"iterations": {
 						"value": "NBLOCO",
-						"type": "VTL",
-						"scope": "LOCAL"
+						"type": "VTL"
 					},
 					"pages": {
 						"1": {
@@ -215,8 +219,7 @@
 									"type": "RadioGroup",
 									"label": {
 										"value": "\"Quel est type du véhicule n°\" || ITERATION || \" ?\"",
-										"type": "VTL",
-										"scope": "LOCAL"
+										"type": "VTL"
 									},
 									"options": [
 										{
@@ -266,12 +269,7 @@
 										"name": "TYPELOCO"
 									}
 								}
-							],
-							"goNext": {
-								"value": "if (TYPELOCO = \"1\" || TYPELOCO = \"2\" || TYPELOCO = \"3\") then \"6.1.2\" else if (TYPELOCO = \"4\" || TYPELOCO = \"5\") else if(TYPELOCO = \"6\") then \"6.1.4\" then \"6.1.3\" else \"6.1.1\"",
-								"type": "VTL",
-								"scope": "LOCAL"
-							}
+							]
 						},
 						"2": {
 							"components": [
@@ -279,8 +277,11 @@
 									"type": "RadioGroup",
 									"label": {
 										"value": "\"Quelle est la motorisation du véhicule n°\" || ITERATION || \" ?\"",
-										"type": "VTL",
-										"scope": "LOCAL"
+										"type": "VTL"
+									},
+									"conditionFilter": {
+										"value": "TYPELOCO = \"1\" || TYPELOCO = \"2\" || TYPELOCO = \"3\"",
+										"type": "VTL"
 									},
 									"options": [
 										{
@@ -310,8 +311,11 @@
 									"type": "RadioGroup",
 									"label": {
 										"value": "\"Quelle est la motorisation du véhicule n°\" || ITERATION || \" ?\"",
-										"type": "VTL",
-										"scope": "LOCAL"
+										"type": "VTL"
+									},
+									"conditionFilter": {
+										"value": "TYPELOCO = \"4\" || TYPELOCO = \"5\"",
+										"type": "VTL"
 									},
 									"options": [
 										{
@@ -343,6 +347,10 @@
 										"value": "Quelle est le type de motorisation de ce véhicule ?",
 										"type": "STRING"
 									},
+									"conditionFilter": {
+										"value": "TYPELOCO = \"6\"",
+										"type": "VTL"
+									},
 									"response": {
 										"name": "TYPEMOTO"
 									}
@@ -353,7 +361,7 @@
 				}
 			}
 		},
-		"12": {
+		"7": {
 			"components": [
 				{
 					"type": "Sequence",
@@ -362,11 +370,7 @@
 						"type": "STRING"
 					}
 				}
-			],
-			"goPrevious": {
-				"value": "if (isnull(ISRESID) || ISRESID = false) then \"1\" else  \"11\"",
-				"type": "VTL"
-			}
+			]
 		}
 	},
 	"variables": {
@@ -384,7 +388,7 @@
 			"type": "COLLECTED",
 			"typeVariable": "INTEGER",
 			"values": {
-				"PREVIOUS": 1,
+				"PREVIOUS": null,
 				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
@@ -411,7 +415,8 @@
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
-			}
+			},
+			"shapeFrom": "PRENOM"
 		},
 		"ISLOCO": {
 			"type": "COLLECTED",
@@ -422,7 +427,8 @@
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
-			}
+			},
+			"shapeFrom": "PRENOM"
 		},
 		"NBLOCO": {
 			"type": "COLLECTED",
@@ -433,7 +439,8 @@
 				"FORCED": [null],
 				"EDITED": [null],
 				"INPUTED": [null]
-			}
+			},
+			"shapeFrom": "PRENOM"
 		},
 		"TYPELOCO": {
 			"type": "COLLECTED",
@@ -444,7 +451,8 @@
 				"FORCED": [[null]],
 				"EDITED": [[null]],
 				"INPUTED": [[null]]
-			}
+			},
+			"shapeFrom": "BUG"
 		},
 		"TYPEMOTO": {
 			"type": "COLLECTED",
@@ -455,7 +463,8 @@
 				"FORCED": [[null]],
 				"EDITED": [[null]],
 				"INPUTED": [[null]]
-			}
+			},
+			"shapeFrom": "BUG"
 		}
 	}
 }
