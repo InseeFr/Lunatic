@@ -1,10 +1,12 @@
 import { useCallback, useReducer, useEffect } from 'react';
 import { reducer, initialState, actions } from './state-management';
+import { getPageTag } from './commons';
 
-function useLunatic({ source }) {
+function useLunatic({ source, initialPage }) {
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const { pages } = state;
-
+	const { pages, pager } = state;
+	const pageTag = getPageTag(pager);
+	console.log({ pages });
 	useEffect(
 		function () {
 			if (source) {
@@ -39,7 +41,7 @@ function useLunatic({ source }) {
 		[dispatch]
 	);
 
-	return { getComponents, getNext, getPrevious, handleChange };
+	return { getComponents, getNext, getPrevious, handleChange, pageTag };
 }
 
 export default useLunatic;

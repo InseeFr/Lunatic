@@ -1,12 +1,4 @@
-function pageTag(levels) {
-	const [first, ...rest] = levels;
-	if (rest.length > 0) {
-		return rest.reduce(function (tag, level) {
-			return `${tag}.${level}`;
-		}, `${first}`);
-	}
-	return `${first}`;
-}
+import { getPageTag } from '../commons';
 
 function getSubPages(content) {
 	const { pages } = content;
@@ -24,14 +16,14 @@ function parsePages(source, previousLevels = []) {
 		return Object.entries(pages).reduce(function (map, [page, content]) {
 			const { components, iterations } = content;
 			const levels = [...previousLevels, Number.parseInt(page)];
-			const tag = pageTag(levels);
+
+			const tag = getPageTag({ pages: levels });
 			return {
 				...map,
 				[tag]: {
 					components,
 					levels,
 					iterations,
-					subPages: getSubPages(content),
 				},
 				...parsePages(content, levels),
 			};
