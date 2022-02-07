@@ -1,0 +1,481 @@
+{
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "COMMENT_QE",
+			"componentRef": "COMMENT-QUESTION"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "NB",
+			"componentRef": "kwupqy19"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [null],
+				"EDITED": [null],
+				"INPUTED": [null],
+				"FORCED": [null],
+				"PREVIOUS": [null]
+			},
+			"name": "PRENOM",
+			"componentRef": "kx06be0c"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [null],
+				"EDITED": [null],
+				"INPUTED": [null],
+				"FORCED": [null],
+				"PREVIOUS": [null]
+			},
+			"name": "AGE",
+			"componentRef": "kx06be0c"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "Q1",
+			"componentRef": "kx05sq4y"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "Q2",
+			"componentRef": "kx06v7yq"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "true",
+			"name": "FILTER_RESULT_NB",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "true",
+			"name": "FILTER_RESULT_PRENOM",
+			"inFilter": "false",
+			"shapeFrom": "PRENOM"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "true",
+			"name": "FILTER_RESULT_AGE",
+			"inFilter": "false",
+			"shapeFrom": "PRENOM"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["AGE"],
+			"expression": "if (cast(nvl(AGE,\"15\"),integer) < 14) then 0 else 1",
+			"name": "A1",
+			"inFilter": "false",
+			"shapeFrom": "PRENOM"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["AGE"],
+			"expression": "if (cast(nvl(AGE,\"0\"),integer) < 18) then \"0\" else \"1\"",
+			"name": "A2",
+			"inFilter": "false",
+			"shapeFrom": "PRENOM"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "true",
+			"name": "FILTER_RESULT_Q1",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": "true",
+			"name": "FILTER_RESULT_Q2",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["A1", "AGE"],
+			"expression": "sum(A1)",
+			"name": "B1",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["A2", "AGE"],
+			"expression": "sum(cast(A2,integer))",
+			"name": "B2",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["B1", "AGE"],
+			"expression": "\"Nb de majeurs\" || cast(B1,string)",
+			"name": "DEC1",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["B2", "AGE"],
+			"expression": "\"Nb de majeurs\" || cast(B2,string)",
+			"name": "DEC2",
+			"inFilter": "false"
+		}
+	],
+	"components": [
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "kwupyhsh",
+					"page": "1",
+					"label": "\"I - \" || \"S1\""
+				}
+			},
+			"conditionFilter": {
+				"value": "true"
+			},
+			"id": "kwupyhsh",
+			"page": "1",
+			"label": "\"I - \" || \"S1\""
+		},
+		{
+			"componentType": "InputNumber",
+			"max": 100,
+			"hierarchy": {
+				"sequence": {
+					"id": "kwupyhsh",
+					"page": "1",
+					"label": "\"I - \" || \"S1\""
+				}
+			},
+			"conditionFilter": {
+				"value": "true"
+			},
+			"label": "\"➡ 1. \" || \"NB \"",
+			"mandatory": false,
+			"declarations": [
+				{
+					"declarationType": "HELP",
+					"id": "kwupqy19-kx09g78a",
+					"label": "\"affiche\" || cast(nvl(NB,\"\"),string)",
+					"position": "AFTER_QUESTION_TEXT"
+				}
+			],
+			"bindingDependencies": ["NB"],
+			"min": 0,
+			"response": {
+				"name": "NB"
+			},
+			"decimals": 0,
+			"id": "kwupqy19",
+			"page": "2"
+		},
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "kx06a9lq",
+					"page": "3",
+					"label": "\"II - \" || \"S2\""
+				}
+			},
+			"conditionFilter": {
+				"value": "true"
+			},
+			"id": "kx06a9lq",
+			"page": "3",
+			"label": "\"II - \" || \"S2\""
+		},
+		{
+			"paginatedLoop": false,
+			"componentType": "Loop",
+			"components": [
+				{
+					"componentType": "Subsequence",
+					"goToPage": "4",
+					"hierarchy": {
+						"sequence": {
+							"id": "kx06a9lq",
+							"page": "3",
+							"label": "\"II - \" || \"S2\""
+						},
+						"subSequence": {
+							"id": "kx061cac",
+							"page": "4",
+							"label": "SS1"
+						}
+					},
+					"conditionFilter": {
+						"value": "true"
+					},
+					"id": "kx061cac",
+					"page": "4",
+					"label": "SS1"
+				},
+				{
+					"componentType": "Input",
+					"bindingDependencies": ["PRENOM"],
+					"response": {
+						"name": "PRENOM"
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kx06a9lq",
+							"page": "3",
+							"label": "\"II - \" || \"S2\""
+						},
+						"subSequence": {
+							"id": "kx061cac",
+							"page": "4",
+							"label": "SS1"
+						}
+					},
+					"conditionFilter": {
+						"value": "true"
+					},
+					"id": "kwupruv2",
+					"page": "4",
+					"label": "\"➡ 2. \" || \"PRENOM \"",
+					"mandatory": false,
+					"maxLength": 249
+				},
+				{
+					"componentType": "InputNumber",
+					"max": 99,
+					"hierarchy": {
+						"sequence": {
+							"id": "kx06a9lq",
+							"page": "3",
+							"label": "\"II - \" || \"S2\""
+						},
+						"subSequence": {
+							"id": "kx061cac",
+							"page": "4",
+							"label": "SS1"
+						}
+					},
+					"conditionFilter": {
+						"value": "true"
+					},
+					"label": "\"➡ 3. \" || \"AGE \"",
+					"mandatory": false,
+					"declarations": [
+						{
+							"declarationType": "HELP",
+							"id": "kx05rmm0-kx07vkyq",
+							"label": "\"affiche\" || cast(A1,string)",
+							"position": "AFTER_QUESTION_TEXT"
+						},
+						{
+							"declarationType": "HELP",
+							"id": "kx05rmm0-kx07pza5",
+							"label": "\"affiche\" || cast(A2,string)",
+							"position": "AFTER_QUESTION_TEXT"
+						}
+					],
+					"bindingDependencies": ["A1", "A2", "AGE"],
+					"min": 0,
+					"response": {
+						"name": "AGE"
+					},
+					"decimals": 0,
+					"id": "kx05rmm0",
+					"page": "4"
+				}
+			],
+			"bindingDependencies": ["A1", "A2", "PRENOM", "AGE"],
+			"depth": 1,
+			"hierarchy": {
+				"sequence": {
+					"id": "kx06a9lq",
+					"page": "3",
+					"label": "\"II - \" || \"S2\""
+				}
+			},
+			"conditionFilter": {
+				"value": "true"
+			},
+			"id": "kx06be0c",
+			"page": "4",
+			"lines": {
+				"min": "2",
+				"max": "2"
+			}
+		},
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "kx06mitx",
+					"page": "5",
+					"label": "\"III - \" || \"CONTROLE\""
+				}
+			},
+			"conditionFilter": {
+				"value": "true"
+			},
+			"id": "kx06mitx",
+			"page": "5",
+			"label": "\"III - \" || \"CONTROLE\""
+		},
+		{
+			"componentType": "Input",
+			"bindingDependencies": ["DEC1", "DEC2", "Q1"],
+			"response": {
+				"name": "Q1"
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "kx06mitx",
+					"page": "5",
+					"label": "\"III - \" || \"CONTROLE\""
+				}
+			},
+			"conditionFilter": {
+				"value": "true"
+			},
+			"id": "kx05sq4y",
+			"page": "6",
+			"label": "\"➡ 4. \" || \"Q1 \"",
+			"mandatory": false,
+			"maxLength": 249,
+			"declarations": [
+				{
+					"declarationType": "HELP",
+					"id": "kx05sq4y-kx06gnt7",
+					"label": "DECLA",
+					"position": "AFTER_QUESTION_TEXT"
+				},
+				{
+					"declarationType": "HELP",
+					"id": "kx05sq4y-kx07lqnt",
+					"label": "DEC1",
+					"position": "AFTER_QUESTION_TEXT"
+				},
+				{
+					"declarationType": "HELP",
+					"id": "kx05sq4y-kx07mx14",
+					"label": "DEC2",
+					"position": "AFTER_QUESTION_TEXT"
+				}
+			]
+		},
+		{
+			"componentType": "Input",
+			"bindingDependencies": ["B1", "B2", "Q2"],
+			"response": {
+				"name": "Q2"
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "kx06mitx",
+					"page": "5",
+					"label": "\"III - \" || \"CONTROLE\""
+				}
+			},
+			"conditionFilter": {
+				"value": "true"
+			},
+			"id": "kx06v7yq",
+			"page": "7",
+			"label": "\"➡ 5. \" || \"Q2 \"",
+			"mandatory": false,
+			"maxLength": 249,
+			"declarations": [
+				{
+					"declarationType": "HELP",
+					"id": "kx06v7yq-kx072jlc",
+					"label": "\"Nb de majeurs\" || cast(B1,string)",
+					"position": "AFTER_QUESTION_TEXT"
+				},
+				{
+					"declarationType": "HELP",
+					"id": "kx06v7yq-kx070ql4",
+					"label": "DECLA",
+					"position": "AFTER_QUESTION_TEXT"
+				},
+				{
+					"declarationType": "HELP",
+					"id": "kx06v7yq-kx06xp0o",
+					"label": "\"Nb de majeurs\" || cast(B2,string)",
+					"position": "AFTER_QUESTION_TEXT"
+				}
+			]
+		},
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "COMMENT-SEQ",
+					"page": "8",
+					"label": "\"Commentaire\""
+				}
+			},
+			"conditionFilter": {
+				"value": "true"
+			},
+			"id": "COMMENT-SEQ",
+			"page": "8",
+			"label": "\"Commentaire\""
+		},
+		{
+			"componentType": "Textarea",
+			"bindingDependencies": ["COMMENT_QE"],
+			"response": {
+				"name": "COMMENT_QE"
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "COMMENT-SEQ",
+					"page": "8",
+					"label": "\"Commentaire\""
+				}
+			},
+			"conditionFilter": {
+				"value": "true"
+			},
+			"id": "COMMENT-QUESTION",
+			"page": "9",
+			"label": "\"Avez-vous des remarques concernant l'enquête ou des commentaires ?\"",
+			"mandatory": false,
+			"maxLength": 2000
+		}
+	],
+	"pagination": "question",
+	"lunaticModelVersion": "2.2.8",
+	"modele": "TESTANNE",
+	"enoCoreVersion": "2.3.2",
+	"generatingDate": "10-12-2021 12:37:32",
+	"missing": false,
+	"id": "kwupldxm",
+	"label": "test Anne",
+	"maxPage": "9"
+}
