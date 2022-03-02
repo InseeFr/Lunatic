@@ -1,15 +1,23 @@
 function collapsePart(parts = []) {
-	return parts.join('.');
+	const steps = parts.join('.');
+	if (steps.length > 0) {
+		return steps;
+	}
+	return undefined;
 }
 
-function getPageTag(pager) {
-	const { pages, iterations = [] } = pager;
-	const pagesTag = collapsePart(pages);
-	if (iterations.length) {
-		return `${pagesTag}#${collapsePart(iterations)}`;
-	}
+function getPageTag(levels) {
+	const pagesTag = collapsePart(levels);
 
 	return pagesTag;
+}
+
+export function mergePageTagIterations(pageTag, iterations = []) {
+	if (iterations.length) {
+		return `${pageTag}#${collapsePart(iterations)}`;
+	}
+
+	return pageTag;
 }
 
 export default getPageTag;

@@ -7,24 +7,24 @@ function getStoreInfoRequired() {
 	return {};
 }
 
-function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
-	if (maxPage && maxPage > 1) {
-		const Button = lunatic.Button;
-		return (
-			<>
-				<div className="pagination">
-					<Button onClick={goPrevious} disabled={isFirst}>
-						Previous
-					</Button>
-					<Button onClick={goNext} disabled={isLast}>
-						Next
-					</Button>
-				</div>
-				<div>PAGE: {pageTag}</div>
-			</>
-		);
+function Pager({ goNext, goPrevious, isLast, isFirst, pageTag }) {
+	if (isFirst && isLast) {
+		return null;
 	}
-	return null;
+	const Button = lunatic.Button;
+	return (
+		<>
+			<div className="pagination">
+				<Button onClick={goPrevious} disabled={isFirst}>
+					Previous
+				</Button>
+				<Button onClick={goNext} disabled={isLast}>
+					Next
+				</Button>
+			</div>
+			<div>PAGE: {pageTag}</div>
+		</>
+	);
 }
 
 const DEFAULT_DATA = {};
@@ -37,7 +37,7 @@ function OrchestratorForStories({
 	modalForControls = false,
 	features = DEFAULT_FEATURES,
 	bindings: initialBindings,
-	initialPage = '1', // ou 1.1 ...
+	initialPage = '6', // ou 1.1 ...
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	shortcut = false,
@@ -54,17 +54,16 @@ function OrchestratorForStories({
 	const { maxPage } = source;
 	const {
 		getComponents,
-		goNextPage,
-		goPreviousPage,
+		goNext,
+		goPrevious,
 		handleChange,
 		pageTag,
-		isFirstPage,
-		isLastPage,
+		isFirst,
+		isLast,
 		executeExpression,
 		waiting,
 	} = lunatic.useLunatic({
 		source,
-		data,
 		initialPage,
 		features,
 	});
@@ -99,10 +98,10 @@ function OrchestratorForStories({
 			</div>
 			{
 				<Pager
-					goNext={goNextPage}
-					goPrevious={goPreviousPage}
-					isLast={isLastPage}
-					isFirst={isFirstPage}
+					goNext={goNext}
+					goPrevious={goPrevious}
+					isLast={isLast}
+					isFirst={isFirst}
 					pageTag={pageTag}
 					maxPage={maxPage}
 				/>

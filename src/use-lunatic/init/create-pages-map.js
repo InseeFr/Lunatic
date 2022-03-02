@@ -1,10 +1,10 @@
 import { getPageTag } from '../commons';
 
-function getSubPages(content) {
+function getSubPages(tag, content) {
 	const { pages } = content;
 	if (pages) {
 		return Object.keys(pages).reduce(function (a, page) {
-			return [...a, Number.parseInt(page)];
+			return [...a, `${tag}.${page}`];
 		}, []);
 	}
 	return undefined;
@@ -14,16 +14,16 @@ function parsePages(source, previousLevels = []) {
 	const { pages } = source;
 	if (typeof pages === 'object') {
 		return Object.entries(pages).reduce(function (map, [page, content]) {
-			const { components, iterations } = content;
 			const levels = [...previousLevels, Number.parseInt(page)];
+			const tag = getPageTag(levels);
 
-			const tag = getPageTag({ pages: levels });
 			return {
 				...map,
 				[tag]: {
-					components,
+					...content,
 					levels,
-					iterations,
+					subPages: getSubPages(tag, content),
+					parent: getPageTag(previousLevels),
 				},
 				...parsePages(content, levels),
 			};

@@ -54,17 +54,16 @@ function createExecuteExpression(source, features) {
 	 */
 	function updateBindings(name, value) {
 		// update des bindings
-		if (name in bindings) {
-			bindings[name] = value;
-			collectedUpdated.set(name, []);
-		}
-		// enrichissement des variables à rafraîchir
-		const { CalculatedLinked = [] } = variables[name];
-
-		CalculatedLinked.forEach(function (variable) {
-			const { name } = variable;
-			setToRefreshCalculated(name, variable);
-		});
+		// if (name in bindings) {
+		// 	bindings[name] = value;
+		// 	collectedUpdated.set(name, []);
+		// }
+		// // enrichissement des variables à rafraîchir
+		// const { CalculatedLinked = [] } = variables[name];
+		// CalculatedLinked.forEach(function (variable) {
+		// 	const { name } = variable;
+		// 	setToRefreshCalculated(name, variable);
+		// });
 	}
 
 	function getVariablesAndCach(expression) {
@@ -78,55 +77,55 @@ function createExecuteExpression(source, features) {
 
 	/**/
 	function collecteVariables(dependencies) {
-		if (Array.isArray(dependencies)) {
-			return dependencies.reduce(function (map, name) {
-				if (name in variables) {
-					const data = variables[name];
-					const { variable, type } = data;
-					if (!(name in map)) {
-						if (type === 'CALCULATED') {
-							const { expression } = variable;
-							const subDependencies = getVariablesAndCach(expression);
-
-							return {
-								...map,
-								[name]: { ...variable },
-								...collecteVariables(subDependencies),
-							};
-						}
-
-						return { ...map, [name]: { ...variable } };
-					}
-				} else {
-					throw new Error(`Unknow variable ${name}`);
-				}
-				return map;
-			}, {});
-		}
-		return {};
+		// if (Array.isArray(dependencies)) {
+		// 	return dependencies.reduce(function (map, name) {
+		// 		if (name in variables) {
+		// 			const data = variables[name];
+		// 			const { variable, type } = data;
+		// 			if (!(name in map)) {
+		// 				if (type === 'CALCULATED') {
+		// 					const { expression } = variable;
+		// 					const subDependencies = getVariablesAndCach(expression);
+		// 					return {
+		// 						...map,
+		// 						[name]: { ...variable },
+		// 						...collecteVariables(subDependencies),
+		// 					};
+		// 				}
+		// 				return { ...map, [name]: { ...variable } };
+		// 			}
+		// 		} else {
+		// 			throw new Error(`Unknow variable ${name}`);
+		// 		}
+		// 		return map;
+		// 	}, {});
+		// }
+		// return {};
 	}
 
 	function resolveUseContext(name, { iteration }) {
-		const value = bindings[name];
-		if (iteration !== undefined && Array.isArray(value)) {
-			return value[iteration] || null;
-		}
-		return getVtlCompatibleValue(value);
+		// const value = bindings[name];
+		// if (iteration !== undefined && Array.isArray(value)) {
+		// 	return value[iteration] || null;
+		// }
+		// return getVtlCompatibleValue(value);
 	}
 
 	function fillVariablesValues(map, { iteration }) {
-		return Object.entries(map).reduce(function (sub, [name, _]) {
-			return {
-				...sub,
-				[name]: resolveUseContext(name, { iteration }),
-			};
-		}, {});
+		// return Object.entries(map).reduce(function (sub, [name, _]) {
+		// 	return {
+		// 		...sub,
+		// 		[name]: resolveUseContext(name, { iteration }),
+		// 	};
+		// }, {});
+
+		return map;
 	}
 
 	/*	*/
 
-	function execute(expression, args) {
-		const { iteration, logging } = args;
+	function executeVTL(expression, args) {
+		const { iterations, logging } = args;
 		const bindingDependencies = getVariablesAndCach(expression);
 
 		function loggingDefault(_, bindings, e) {
@@ -138,9 +137,9 @@ function createExecuteExpression(source, features) {
 
 		const vtlBindings = refreshCalculated(
 			fillVariablesValues(collecteVariables(bindingDependencies), {
-				iteration,
+				iterations,
 			}),
-			{ rootExpression: expression, iteration }
+			{ rootExpression: expression, iterations }
 		);
 
 		const memoized = getMemoizedValue(expression, vtlBindings);
@@ -156,6 +155,22 @@ function createExecuteExpression(source, features) {
 			return result;
 		}
 		return memoized;
+	}
+
+	function execute(expression, args) {
+		if (typeof expression === 'string') {
+			return expression;
+		}
+		if (typeof expression === 'object') {
+			const { value, type } = expression;
+			switch (type) {
+				case 'VTL':
+					return executeVTL(value, args);
+
+				default:
+					throw new Error(`Unknow type ${type}`);
+			}
+		}
 	}
 
 	return [execute, updateBindings];

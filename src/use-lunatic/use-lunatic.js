@@ -1,33 +1,33 @@
 import { useCallback, useReducer, useEffect } from 'react';
 import { reducer, initialState, actions } from './state-management';
-import { getPageTag } from './commons';
+import { mergePageTagIterations } from './commons';
 
 function useLunatic({ source, initialPage }) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const { pages, pager } = state;
-	const pageTag = getPageTag(pager);
-	console.log({ pages });
+	const { pageTag, iterations, isFirst, isLast } = pager;
+	console.log({ pager });
 	useEffect(
 		function () {
 			if (source) {
-				dispatch(actions.onInit({ source }));
+				dispatch(actions.onInit({ source, initialPage }));
 			}
 		},
-		[source]
+		[source, initialPage]
 	);
 
 	const getComponents = useCallback(function () {
 		return [];
 	}, []);
 
-	const getNext = useCallback(
+	const goNext = useCallback(
 		function () {
 			dispatch(actions.goNext());
 		},
 		[dispatch]
 	);
 
-	const getPrevious = useCallback(
+	const goPrevious = useCallback(
 		function () {
 			dispatch(actions.goPrevious());
 		},
@@ -40,8 +40,15 @@ function useLunatic({ source, initialPage }) {
 		},
 		[dispatch]
 	);
-
-	return { getComponents, getNext, getPrevious, handleChange, pageTag };
+	return {
+		getComponents,
+		goNext,
+		goPrevious,
+		handleChange,
+		pageTag: mergePageTagIterations(pageTag, iterations),
+		isFirst,
+		isLast,
+	};
 }
 
 export default useLunatic;
