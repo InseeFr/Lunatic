@@ -218,7 +218,7 @@ stories.addWithJSX('Default', () => {
 						value="load bailleurs sociaux 2021"
 						onClick={loadBailleurs2021}
 					/>
-					<Search storeInfo={bailleursSociaux} defaultValue="" />
+					<Search storeInfo={infoBailleurs2021} defaultValue="" />
 				</li>
 			</ul>
 		</>
