@@ -13,6 +13,7 @@ import { SuggesterLoaderWidget } from 'components';
 import * as NAF from './naf-rev2';
 import * as COG from './cog-communes';
 import * as BAILLEURS from './bailleurs-sociaux';
+import * as BAILLEURS2021 from './bailleurs-sociaux-2021';
 
 /**
  *
@@ -24,6 +25,8 @@ function getSuggesterInfo(name) {
 		return { optionRenderer: COG.OptionRenderer, idbVersion: '1' };
 	} else if (name === 'bailleurs-sociaux') {
 		return { optionRenderer: BAILLEURS.OptionRenderer, idbVersion: '1' };
+	} else if (name === 'bailleurs-sociaux-2021') {
+		return { idbVersion: '1' };
 	}
 	console.warn(`Unknown store : ${name}`);
 	return {};
@@ -39,6 +42,8 @@ function getWidgetLoaderInfo(name) {
 		return { fetch: COG.fetch, idbVersion: '1' };
 	} else if (name === 'bailleurs-sociaux') {
 		return { fetch: BAILLEURS.fetch, idbVersion: '1' };
+	} else if (name === 'bailleurs-sociaux-2021') {
+		return { fetch: BAILLEURS2021.fetch, idbVersion: '1' };
 	}
 	console.warn(`Unknown store : ${name}`);
 	return {};
@@ -105,38 +110,29 @@ const storiesAuto = storiesOf('Suggester/Auto loading', module)
 		return <WrappedComponent title="<Suggester />" />;
 	});
 
-function appendSuggesterInfo() {
-	const { suggesters } = dataAuto;
-	const next = suggesters.map(function (suggester) {
-		const { name } = suggester;
-		if (name === 'naf-rev2') {
-			return {
-				...suggester,
-				autoLoad: true,
-				fetch: NAF.fetch,
-				idbVersion: '1',
-			};
-		} else if (name === 'cog-communes') {
-			return {
-				...suggester,
-				autoLoad: true,
-				fetch: COG.fetch,
-				idbVersion: '1',
-			};
-		} else if (name === 'bailleurs-sociaux') {
-			return {
-				...suggester,
-				autoLoad: true,
-				fetch: BAILLEURS.fetch,
-				idbVersion: '1',
-			};
-		}
-
-		return suggester;
+const suggesterFetcher = (url) =>
+	fetch(url, {
+		headers: { Accept: 'application/json' },
 	});
-	return { ...dataAuto, suggesters: next };
-}
 
 storiesAuto.addWithJSX('Default', () => (
-	<Orchestrator id="default" source={appendSuggesterInfo()} />
+	<Orchestrator
+		id="default"
+		source={dataAuto}
+		suggesters={{
+			'naf-rev2': {
+				url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
+			},
+			'naf-rev2-stop': {
+				url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
+				stopWords: [],
+			},
+			'cog-communes': {
+				url: 'https://inseefr.github.io/Lunatic/storybook/communes-2019.json',
+			},
+		}}
+		suggesterFetcher={suggesterFetcher}
+		autoSuggesterLoading
+		pagination
+	/>
 ));

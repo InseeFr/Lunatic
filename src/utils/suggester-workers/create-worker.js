@@ -12,6 +12,7 @@ const testSameOrigin = (url) => {
 };
 
 const createWorkerFallback = (workerUrl) => {
+	console.log('Create worker for MFE');
 	var worker = null;
 	try {
 		var blob;
@@ -39,6 +40,7 @@ export const createWorker = (workerUrl) => {
 	var worker = null;
 	try {
 		if (testSameOrigin(workerUrl)) {
+			console.log('Trying create classic worker');
 			worker = new Worker(workerUrl);
 			worker.onerror = (event) => {
 				event.preventDefault();
