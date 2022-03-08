@@ -6,7 +6,6 @@ import { useOnHandleChange } from '../commons';
 function LunaticInputNumber({
 	value,
 	declarations,
-	executeExpression,
 	label,
 	response,
 	id,
@@ -17,7 +16,6 @@ function LunaticInputNumber({
 	max,
 	step,
 	iteration,
-	bindingDependencies,
 }) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
@@ -27,7 +25,6 @@ function LunaticInputNumber({
 	return (
 		<InputContainer
 			declarations={declarations}
-			executeExpression={executeExpression}
 			label={label}
 			id={id}
 			value={value}
@@ -35,7 +32,6 @@ function LunaticInputNumber({
 			labelId={labelId}
 			labelClassName="todo"
 			iteration={iteration}
-			bindingDependencies={bindingDependencies}
 		>
 			<InputNumber
 				labelledBy={labelId}

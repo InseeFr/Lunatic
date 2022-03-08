@@ -119,6 +119,7 @@ function collecteComponentResponse({ component, variables, map = {} }) {
 function checkArrayForSubPage(map, state) {
 	const { pager } = state;
 	const { iteration } = pager;
+
 	return Object.entries(map).reduce(function (sub, [name, value]) {
 		if (value && Array.isArray(value)) {
 			return { ...sub, [name]: value[iteration] };
@@ -144,12 +145,10 @@ function isSimpleComponent(component) {
 function getComponentValue(component, state) {
 	const { variables } = state;
 	/* */
-
 	const map = checkUseContext(
 		collecteComponentResponse({ component, variables }),
 		state
 	);
-
 	if (isSimpleComponent(component)) {
 		const { response } = component;
 		const { name } = response;

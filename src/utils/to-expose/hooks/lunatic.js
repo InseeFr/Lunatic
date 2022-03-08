@@ -17,7 +17,7 @@ const useLunatic = (
 		management = false,
 		pagination = false,
 		modalForControls = false,
-		initialPage = '1',
+		initialPage = '16',
 		logFunction = null,
 		autoSuggesterLoading = false,
 		suggesterFetcher,

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import CheckboxOption from './checkbox-option';
+import { CheckboxOption } from '../commons';
 import { Label } from '../../commons';
 
 function onClick() {}

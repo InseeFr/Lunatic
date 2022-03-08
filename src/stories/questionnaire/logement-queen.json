@@ -486,8 +486,7 @@
 				}
 			],
 			"conditionFilter": {
-				"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR))",
-				"bindingDependencies": ["CADR"]
+				"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR))"
 			},
 			"hierarchy": {
 				"sequence": {
@@ -559,8 +558,7 @@
 				}
 			],
 			"conditionFilter": {
-				"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR))",
-				"bindingDependencies": ["CADR"]
+				"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR))"
 			},
 			"hierarchy": {
 				"sequence": {
@@ -568,8 +566,7 @@
 					"page": "17",
 					"label": "\"III - \" || \"Présentation des habitants du logement\""
 				}
-			},
-			"bindingDependencies": ["libINTROPRENOM", "libINTROPRENOM2"]
+			}
 		},
 
 		{
@@ -579,8 +576,7 @@
 			"depth": 1,
 			"paginatedLoop": false,
 			"conditionFilter": {
-				"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR))",
-				"bindingDependencies": ["CADR"]
+				"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR))"
 			},
 			"hierarchy": {
 				"sequence": {
@@ -589,14 +585,6 @@
 					"label": "\"III - \" || \"Présentation des habitants du logement\""
 				}
 			},
-			"bindingDependencies": [
-				"NHAB",
-				"LOOP_kmnolkxb_MISSING",
-				"PRENOMREF",
-				"G_PRENOM",
-				"NBHAB",
-				"G_PRENOM_MISSING"
-			],
 			"loopDependencies": ["NHAB"],
 			"lines": { "min": "cast(NHAB,integer)", "max": "cast(NHAB,integer)" },
 			"missingResponse": { "name": "G_PRENOM_MISSING" },
@@ -649,13 +637,6 @@
 							"label": "if (isnull(PRENOMREF) or G_PRENOM=PRENOMREF) then \"Prénoms des habitants du logement\" else \"\""
 						}
 					},
-					"bindingDependencies": [
-						"NBHAB",
-						"G_PRENOM",
-						"PRENOMREF",
-						"G_PRENOM_MISSING",
-						"NHAB"
-					],
 					"response": { "name": "G_PRENOM" }
 				}
 			]
@@ -666,7 +647,7 @@
 			"componentType": "Loop",
 			"page": "19",
 			"maxPage": "8",
-			"iterations": "count(G_PRENOM)",
+			"iterations": "NHAB",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {
@@ -680,30 +661,6 @@
 					"label": "\"III - \" || \"Présentation des habitants du logement\""
 				}
 			},
-			"bindingDependencies": [
-				"PRENOM",
-				"PRENOMREF",
-				"SEXE_MISSING",
-				"DATENAIS_MISSING",
-				"TRAGE_MISSING",
-				"LIB_FEM",
-				"LNAIS_MISSING",
-				"DEPNAIS_MISSING",
-				"PAYSNAIS_MISSING",
-				"NATIO1N_MISSING",
-				"NATIO2N_MISSING",
-				"SEXE",
-				"DATENAIS",
-				"TRAGE",
-				"LNAIS",
-				"DEPNAIS",
-				"PAYSNAIS",
-				"NATIO1N1",
-				"NATIO1N2",
-				"NATIO1N3",
-				"NATIO1N4",
-				"NATIO2N"
-			],
 			"loopDependencies": ["G_PRENOM"],
 			"components": [
 				{
@@ -726,8 +683,7 @@
 							"page": "19.1",
 							"label": "if (PRENOM=PRENOMREF) then \"Votre état civil\" else \"État civil de \" || PRENOM"
 						}
-					},
-					"bindingDependencies": ["PRENOM", "PRENOMREF", "G_PRENOM"]
+					}
 				},
 
 				{
@@ -1081,7 +1037,7 @@
 			"componentType": "Loop",
 			"page": "20",
 			"maxPage": "3",
-			"iterations": "count(G_PRENOM)",
+			"iterations": "NHAB",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {
@@ -1357,7 +1313,7 @@
 			"componentType": "Loop",
 			"page": "21",
 			"maxPage": "8",
-			"iterations": "count(G_PRENOM)",
+			"iterations": "NHAB",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {
@@ -1901,7 +1857,7 @@
 			"componentType": "Loop",
 			"page": "22",
 			"maxPage": "7",
-			"iterations": "count(G_PRENOM)",
+			"iterations": "NHAB",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {
@@ -3037,7 +2993,7 @@
 			"componentType": "Loop",
 			"page": "38",
 			"maxPage": "5",
-			"iterations": "count(G_PRENOM)",
+			"iterations": "NHAB",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {
@@ -3571,7 +3527,7 @@
 			"componentType": "Loop",
 			"page": "39",
 			"maxPage": "10",
-			"iterations": "count(G_PRENOM)",
+			"iterations": "NHAB",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {
@@ -4426,33 +4382,11 @@
 			"componentType": "Loop",
 			"page": "40",
 			"maxPage": "6",
-			"iterations": "count(G_PRENOM)",
+			"iterations": "NHAB",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {
-				"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR)) and (not(isnull(STOC1)) and (STOC1=\"1\" or STOC1=\"2\" or STOC1=\"3\" or STOC1=\"4\") and filtre_autrepers=\"1\" and filtre_HEB=\"1\")",
-				"bindingDependencies": [
-					"CADR",
-					"STOC1",
-					"filtre_autrepers",
-					"INDconj",
-					"nbpersmaj",
-					"LIEN",
-					"DATENAIS",
-					"TRAGE",
-					"filtre_HEB",
-					"nb_HEB",
-					"STOCB1",
-					"SITUA",
-					"LOGENQ",
-					"LOGAUT",
-					"DURLOG",
-					"G_PRENOM",
-					"STOCA12",
-					"STOCA3",
-					"STOCA4",
-					"STOC2"
-				]
+				"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR)) and (not(isnull(STOC1)) and (STOC1=\"1\" or STOC1=\"2\" or STOC1=\"3\" or STOC1=\"4\") and filtre_autrepers=\"1\" and filtre_HEB=\"1\")"
 			},
 			"hierarchy": {
 				"sequence": {
@@ -4461,27 +4395,6 @@
 					"label": "\"IV - \" || \"Statut d’occupation et date d’installation\""
 				}
 			},
-			"bindingDependencies": [
-				"PRENOM",
-				"LIB_SUJET",
-				"EAMIA_MISSING",
-				"EAMID1_MISSING",
-				"ECOVID2_MISSING",
-				"EAMIH_MISSING",
-				"EAMIK_MISSING",
-				"EAMIL_MISSING",
-				"EAMIA",
-				"EAMID11",
-				"EAMID12",
-				"EAMID13",
-				"EAMID14",
-				"EAMID15",
-				"EAMID16",
-				"ECOVID2",
-				"EAMIH",
-				"EAMIK",
-				"EAMIL"
-			],
 			"loopDependencies": ["G_PRENOM"],
 			"components": [
 				{
@@ -4490,37 +4403,7 @@
 					"goToPage": "40.1",
 					"label": "Hébergement",
 					"conditionFilter": {
-						"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR)) and (not(isnull(STOC1)) and (STOC1=\"1\" or STOC1=\"2\" or STOC1=\"3\" or STOC1=\"4\") and filtre_autrepers=\"1\" and filtre_HEB=\"1\") and (not((PRENOM=PRENOMREF) or (isnull(STOCA) or STOCA=\"1\") or (STOCB1=\"1\" and not(isnull(STOCB1)) ) or ((LIEN=\"1\" or LIEN=\"2\" or LIEN=\"3\" or LIEN=\"4\" or LIEN=\"5\") and not(isnull(LIEN)) ) or (SITUA=\"5\" and not(isnull(SITUA)) ) or (LOGENQ=\"5\" and not(isnull(LOGENQ)) ) or (LOGAUT=\"1\" and not(isnull(LOGAUT)) ) or (DURLOG=\"3\" and not(isnull(DURLOG)) ) or (persplus18TR=\"0\" and persplus18AGE=\"0\")))",
-						"bindingDependencies": [
-							"CADR",
-							"STOC1",
-							"filtre_autrepers",
-							"INDconj",
-							"nbpersmaj",
-							"LIEN",
-							"DATENAIS",
-							"TRAGE",
-							"filtre_HEB",
-							"nb_HEB",
-							"STOCB1",
-							"SITUA",
-							"LOGENQ",
-							"LOGAUT",
-							"DURLOG",
-							"G_PRENOM",
-							"STOCA12",
-							"STOCA3",
-							"STOCA4",
-							"STOC2",
-							"PRENOM",
-							"PRENOMVIDE",
-							"PRENOMREF",
-							"STOCA",
-							"STOCC",
-							"persplus18TR",
-							"persplus18AGE",
-							"AGE"
-						]
+						"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR)) and (not(isnull(STOC1)) and (STOC1=\"1\" or STOC1=\"2\" or STOC1=\"3\" or STOC1=\"4\") and filtre_autrepers=\"1\" and filtre_HEB=\"1\") and (not((PRENOM=PRENOMREF) or (isnull(STOCA) or STOCA=\"1\") or (STOCB1=\"1\" and not(isnull(STOCB1)) ) or ((LIEN=\"1\" or LIEN=\"2\" or LIEN=\"3\" or LIEN=\"4\" or LIEN=\"5\") and not(isnull(LIEN)) ) or (SITUA=\"5\" and not(isnull(SITUA)) ) or (LOGENQ=\"5\" and not(isnull(LOGENQ)) ) or (LOGAUT=\"1\" and not(isnull(LOGAUT)) ) or (DURLOG=\"3\" and not(isnull(DURLOG)) ) or (persplus18TR=\"0\" and persplus18AGE=\"0\")))"
 					},
 					"hierarchy": {
 						"sequence": {
@@ -4533,10 +4416,8 @@
 							"page": "40.1",
 							"label": "Hébergement"
 						}
-					},
-					"bindingDependencies": ["G_PRENOM"]
+					}
 				},
-
 				{
 					"id": "joisq6l3",
 					"componentType": "Radio",
@@ -4544,37 +4425,7 @@
 					"page": "40.1",
 					"label": "\"Depuis quand \" || PRENOM || \" vit-\" || LIB_SUJET ||\" chez vous ?\"",
 					"conditionFilter": {
-						"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR)) and (not(isnull(STOC1)) and (STOC1=\"1\" or STOC1=\"2\" or STOC1=\"3\" or STOC1=\"4\") and filtre_autrepers=\"1\" and filtre_HEB=\"1\") and (not((PRENOM=PRENOMREF) or (isnull(STOCA) or STOCA=\"1\") or (STOCB1=\"1\" and not(isnull(STOCB1)) ) or ((LIEN=\"1\" or LIEN=\"2\" or LIEN=\"3\" or LIEN=\"4\" or LIEN=\"5\") and not(isnull(LIEN)) ) or (SITUA=\"5\" and not(isnull(SITUA)) ) or (LOGENQ=\"5\" and not(isnull(LOGENQ)) ) or (LOGAUT=\"1\" and not(isnull(LOGAUT)) ) or (DURLOG=\"3\" and not(isnull(DURLOG)) ) or (persplus18TR=\"0\" and persplus18AGE=\"0\")))",
-						"bindingDependencies": [
-							"CADR",
-							"STOC1",
-							"filtre_autrepers",
-							"INDconj",
-							"nbpersmaj",
-							"LIEN",
-							"DATENAIS",
-							"TRAGE",
-							"filtre_HEB",
-							"nb_HEB",
-							"STOCB1",
-							"SITUA",
-							"LOGENQ",
-							"LOGAUT",
-							"DURLOG",
-							"G_PRENOM",
-							"STOCA12",
-							"STOCA3",
-							"STOCA4",
-							"STOC2",
-							"PRENOM",
-							"PRENOMVIDE",
-							"PRENOMREF",
-							"STOCA",
-							"STOCC",
-							"persplus18TR",
-							"persplus18AGE",
-							"AGE"
-						]
+						"value": "(CADR = \"1\" or CADR = \"2\" or isnull(CADR)) and (not(isnull(STOC1)) and (STOC1=\"1\" or STOC1=\"2\" or STOC1=\"3\" or STOC1=\"4\") and filtre_autrepers=\"1\" and filtre_HEB=\"1\") and (not((PRENOM=PRENOMREF) or (isnull(STOCA) or STOCA=\"1\") or (STOCB1=\"1\" and not(isnull(STOCB1)) ) or ((LIEN=\"1\" or LIEN=\"2\" or LIEN=\"3\" or LIEN=\"4\" or LIEN=\"5\") and not(isnull(LIEN)) ) or (SITUA=\"5\" and not(isnull(SITUA)) ) or (LOGENQ=\"5\" and not(isnull(LOGENQ)) ) or (LOGAUT=\"1\" and not(isnull(LOGAUT)) ) or (DURLOG=\"3\" and not(isnull(DURLOG)) ) or (persplus18TR=\"0\" and persplus18AGE=\"0\")))"
 					},
 					"hierarchy": {
 						"sequence": {
@@ -4589,13 +4440,6 @@
 						}
 					},
 					"missingResponse": { "name": "EAMIA_MISSING" },
-					"bindingDependencies": [
-						"PRENOM",
-						"LIB_SUJET",
-						"EAMIA_MISSING",
-						"EAMIA",
-						"G_PRENOM"
-					],
 					"options": [
 						{ "value": "1", "label": "Depuis moins de 6 mois" },
 
@@ -10297,7 +10141,7 @@
 			"componentType": "Loop",
 			"page": "150",
 			"maxPage": "11",
-			"iterations": "count(G_PRENOM)",
+			"iterations": "NHAB",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {
@@ -13872,7 +13716,7 @@
 			"componentType": "Loop",
 			"page": "193",
 			"maxPage": "4",
-			"iterations": "count(G_PRENOM)",
+			"iterations": "NHAB",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {

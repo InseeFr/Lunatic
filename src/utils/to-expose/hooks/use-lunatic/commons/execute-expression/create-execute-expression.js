@@ -108,7 +108,10 @@ function createExecuteExpression(variables, features) {
 	function resolveUseContext(name, { iteration }) {
 		const value = bindings[name];
 		if (iteration !== undefined && Array.isArray(value)) {
-			return value[iteration] || null;
+			if (iteration < value.length) {
+				return value[iteration];
+			}
+			return null;
 		}
 		return getVtlCompatibleValue(value);
 	}
