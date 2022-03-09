@@ -1,11 +1,5 @@
 import React from 'react';
-import FieldContainer from './field-container';
-import Label from './label';
-import {
-	DeclarationsBeforeText,
-	DeclarationsAfterText,
-	DeclarationsDetachable,
-} from '../../declarations';
+import LunaticField from './lunatic-field';
 
 function InputContainer({
 	declarations,
@@ -18,17 +12,18 @@ function InputContainer({
 	labelClassName,
 }) {
 	return (
-		<>
-			<DeclarationsBeforeText declarations={declarations} />
-			<Label id={labelId} htmlFor={inputId} className={labelClassName}>
-				{label}
-			</Label>
-			<DeclarationsAfterText declarations={declarations} />
-			<FieldContainer value={value} id={id}>
-				{children}
-			</FieldContainer>
-			<DeclarationsDetachable declarations={declarations} />
-		</>
+		<LunaticField
+			label={label}
+			labelClassName={labelClassName}
+			contentId={inputId}
+			labelId={labelId}
+			declarations={declarations}
+			id={id}
+			value={value}
+			className={labelClassName}
+		>
+			{children}
+		</LunaticField>
 	);
 }
 

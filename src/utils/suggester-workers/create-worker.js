@@ -40,7 +40,6 @@ export const createWorker = (workerUrl) => {
 	var worker = null;
 	try {
 		if (testSameOrigin(workerUrl)) {
-			console.log('Trying create classic worker');
 			worker = new Worker(workerUrl);
 			worker.onerror = (event) => {
 				event.preventDefault();

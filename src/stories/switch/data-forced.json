@@ -1,0 +1,48 @@
+{
+	"components": [
+		{
+			"id": "1",
+			"componentType": "CheckboxBoolean",
+			"mandatory": false,
+			"label": "➡ 1. Are you ready?",
+			"response": {
+				"name": "READY"
+			}
+		},
+		{
+			"id": "2",
+			"componentType": "CheckboxBoolean",
+			"mandatory": false,
+			"label": "➡ 2. Are you always ready?",
+			"response": {
+				"name": "READY2"
+			}
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "READY",
+			"componentRef": "1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": true,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "READY2",
+			"componentRef": "2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": true,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

@@ -2,6 +2,7 @@ export { default as Breadcrumb } from './breadcrumb';
 export { default as Button } from './button';
 export * from './checkbox';
 export { default as Datepicker } from './datepicker';
+export { default as Switch } from './switch';
 export { default as Declarations } from './declarations';
 export { default as Dropdown } from './dropdown';
 export { default as Input } from './input';

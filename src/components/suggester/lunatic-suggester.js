@@ -1,13 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IDBSuggester from './idb-suggester';
-import { FieldContainer, Label, useOnHandleChange } from '../commons';
+import { useOnHandleChange, LunaticField } from '../commons';
 import * as U from '../../utils/lib';
-import {
-	DeclarationsBeforeText,
-	DeclarationsAfterText,
-	DeclarationsDetachable,
-} from '../declarations';
 
 function LunaticSuggester(props) {
 	const {
@@ -25,34 +20,34 @@ function LunaticSuggester(props) {
 		response,
 	} = props;
 
-	const inputId = `lunatic-suggester-${id}`;
+	const contentId = `lunatic-suggester-${id}`;
 	const labelId = `lunatic-suggester-label-${id}`;
 
 	const onSelect = useOnHandleChange({ handleChange, response, value });
 
 	return (
-		<>
-			<DeclarationsBeforeText declarations={declarations} />
-			<Label id={labelId} htmlFor={inputId} className={''}>
-				{label}
-			</Label>
-			<DeclarationsAfterText declarations={declarations} />
-			<FieldContainer value={value} id={id}>
-				<IDBSuggester
-					storeName={storeName}
-					optionRenderer={optionRenderer}
-					labelRenderer={labelRenderer}
-					labelledBy={labelId}
-					idbVersion={idbVersion}
-					onSelect={onSelect}
-					focused={focused}
-					disabled={disabled}
-					id={inputId}
-					value={value}
-				/>
-			</FieldContainer>
-			<DeclarationsDetachable declarations={declarations} />
-		</>
+		<LunaticField
+			label={label}
+			contentId={contentId}
+			labelId={labelId}
+			declarations={declarations}
+			id={id}
+			value={value}
+			className="lunatic-suggester-label"
+		>
+			<IDBSuggester
+				storeName={storeName}
+				optionRenderer={optionRenderer}
+				labelRenderer={labelRenderer}
+				labelledBy={labelId}
+				idbVersion={idbVersion}
+				onSelect={onSelect}
+				focused={focused}
+				disabled={disabled}
+				id={contentId}
+				value={value}
+			/>
+		</LunaticField>
 	);
 }
 

@@ -62,8 +62,12 @@ function SuggesterWrapper({
 	useEffect(
 		function () {
 			if (selectedIndex !== prevSelectedIndex) {
-				const { id } = options[selectedIndex];
-				onSelect(id);
+				if (selectedIndex in options) {
+					const { id } = options[selectedIndex];
+					onSelect(id);
+				} else {
+					onSelect(null);
+				}
 			}
 		},
 		[selectedIndex, onSelect, options, prevSelectedIndex]
