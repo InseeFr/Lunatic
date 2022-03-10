@@ -1,5 +1,5 @@
-import { actions } from '../state-management';
-import { BINDED_KEYS } from '../commons-tools';
+import { actions } from './state-management';
+import { BINDED_KEYS } from './commons-tools';
 
 function create(dispatch) {
 	return function (e) {

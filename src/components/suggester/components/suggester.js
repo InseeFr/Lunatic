@@ -1,11 +1,10 @@
 import React, { useCallback, useContext, useRef, useMemo } from 'react';
 import classnames from 'classnames';
-import { actions, SuggesterContext } from '../state-management';
 import SuggesterContent from './suggester-content';
 import Selection from './selection';
 import Panel from './panel';
-import createOnKeyDownCallback from './create-on-keydown-callback';
 import Delete from './selection/delete';
+import { createCustomizableLunaticField } from '../../commons';
 import './suggester.scss';
 
 function Suggester({
@@ -15,43 +14,44 @@ function Suggester({
 	optionRenderer,
 	labelRenderer,
 	onSelect,
+	onBlur,
+	onDelete,
+	onKeyDown,
+	onChange,
+	onClickOption,
 	value,
+	onFocus,
+	disabled,
+	id,
+	messageError,
+	search,
+	focused,
+	options,
+	expended,
+	selectedIndex,
+	displayLabel,
 }) {
 	const inputEl = useRef();
-	const [state, dispatch] = useContext(SuggesterContext);
-	const { focused, id, messageError, search, disabled } = state;
 
-	const onFocus = useCallback(
+	const onFocusEx = useCallback(
 		function () {
 			if (!disabled) {
 				if (inputEl.current !== document.activeElement) {
 				}
 				inputEl.current.focus();
-				dispatch(actions.onFocus());
+				onFocus();
 			}
 		},
-		[dispatch, disabled]
+		[disabled]
 	);
 
-	const onDelete = useCallback(
-		function () {
-			dispatch(actions.onDeleteSearch());
-			onSelect(undefined);
-		},
-		[dispatch, onSelect]
-	);
-
-	const onBlur = useCallback(
+	const onBlurEx = useCallback(
 		function () {
 			if (focused) {
-				dispatch(actions.onBlur());
+				onBlur();
 			}
 		},
-		[dispatch, focused]
-	);
-	const onKeyDown = useMemo(
-		() => createOnKeyDownCallback(dispatch),
-		[dispatch]
+		[focused]
 	);
 
 	if (messageError) {
@@ -64,8 +64,8 @@ function Suggester({
 			<SuggesterContent
 				id={id}
 				focused={focused}
-				onFocus={onFocus}
-				onBlur={onBlur}
+				onFocus={onFocusEx}
+				onBlur={onBlurEx}
 				onKeyDown={onKeyDown}
 			>
 				<Selection
@@ -73,8 +73,27 @@ function Suggester({
 					placeholderList={placeholderList}
 					labelledBy={labelledBy}
 					ref={inputEl}
+					search={search}
+					expended={expended}
+					id={id}
+					disabled={disabled}
+					focused={focused}
+					displayLabel={displayLabel}
+					selectedIndex={selectedIndex}
+					options={options}
+					onChange={onChange}
 				/>
-				<Panel optionRenderer={optionRenderer} value={value} />
+				<Panel
+					optionRenderer={optionRenderer}
+					value={value}
+					options={options}
+					focused={focused}
+					selectedIndex={selectedIndex}
+					expended={expended}
+					id={id}
+					search={search}
+					onClickOption={onClickOption}
+				/>
 			</SuggesterContent>
 			<Delete
 				className={classnames({ focused })}
@@ -85,4 +104,4 @@ function Suggester({
 	);
 }
 
-export default Suggester;
+export default createCustomizableLunaticField(React.memo(Suggester));

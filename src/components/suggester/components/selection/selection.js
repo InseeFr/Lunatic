@@ -1,15 +1,30 @@
-import React, { useContext } from 'react';
-import { SuggesterContext, actions } from '../../state-management';
+import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import Label from './label';
 
-function Selection({ labelRenderer, placeholderList, labelledBy }, inputEl) {
-	const [state, dispatch] = useContext(SuggesterContext);
-	const { search, expended, id, disabled, focused } = state;
-
-	function onChange(e) {
-		dispatch(actions.onChangeSearch(e.target.value));
-	}
+function Selection(
+	{
+		labelRenderer,
+		placeholderList,
+		labelledBy,
+		search,
+		expended,
+		id,
+		disabled,
+		focused,
+		onChange,
+		displayLabel,
+		selectedIndex,
+		options,
+	},
+	inputEl
+) {
+	const onChangeEx = useCallback(
+		function (e) {
+			onChange(e.target.value);
+		},
+		[onChange]
+	);
 
 	return (
 		<div
@@ -32,7 +47,7 @@ function Selection({ labelRenderer, placeholderList, labelledBy }, inputEl) {
 				tabIndex="0"
 				className="lunatic-suggester-input"
 				type="text"
-				onChange={onChange}
+				onChange={onChangeEx}
 				value={search}
 				aria-label="lunatic-suggester"
 				title="suggester"
@@ -43,7 +58,16 @@ function Selection({ labelRenderer, placeholderList, labelledBy }, inputEl) {
 				placeholderlist={placeholderList}
 				disabled={disabled}
 			/>
-			<Label labelRenderer={labelRenderer} placeholderList={placeholderList} />
+			<Label
+				labelRenderer={labelRenderer}
+				placeholderList={placeholderList}
+				displayLabel={displayLabel}
+				expended={expended}
+				selectedIndex={selectedIndex}
+				options={options}
+				search={search}
+				disabled={disabled}
+			/>
 		</div>
 	);
 }

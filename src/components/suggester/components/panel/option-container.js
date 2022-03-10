@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import classnames from 'classnames';
-import { actions, SuggesterContext, useDispatch } from '../../state-management';
 
 function getMin(rect) {
 	const { top } = rect;
@@ -21,15 +20,17 @@ function isVisible(optionRect, parentRect) {
 	return false;
 }
 
-function OptionContainer({ children, index, selected }) {
+function OptionContainer({ children, index, selected, onClickOption }) {
 	const ref = useRef();
-	const dispatch = useDispatch(SuggesterContext);
 
-	function onClick(e) {
-		e.stopPropagation();
-		e.preventDefault();
-		dispatch(actions.onClickOption(index));
-	}
+	const onClickOptionEx = useCallback(
+		function (e) {
+			e.stopPropagation();
+			e.preventDefault();
+			onClickOption(index);
+		},
+		[onClickOption, index]
+	);
 
 	useEffect(
 		function () {
@@ -50,7 +51,7 @@ function OptionContainer({ children, index, selected }) {
 			className={classnames('lunatic-suggester-option', { selected })}
 			role="option"
 			aria-selected={selected}
-			onClick={onClick}
+			onClick={onClickOptionEx}
 			ref={ref}
 		>
 			{children}

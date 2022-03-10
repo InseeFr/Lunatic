@@ -14,7 +14,7 @@ import * as NAF from './naf-rev2';
 import * as COG from './cog-communes';
 import * as BAILLEURS from './bailleurs-sociaux';
 import * as BAILLEURS2021 from './bailleurs-sociaux-2021';
-
+import SuggesterMaterialUI from './suggester-material-ui';
 /**
  *
  */
@@ -136,3 +136,24 @@ storiesAuto.addWithJSX('Default', () => (
 		pagination
 	/>
 ));
+
+stories.addWithJSX('Custom suggester', function () {
+	const { components } = data;
+	const customized = components.map(function (component) {
+		const { componentType } = component;
+		if (componentType === 'Suggester') {
+			return { ...component, custom: SuggesterMaterialUI };
+		}
+		return component;
+	});
+
+	return (
+		<Orchestrator
+			id="default"
+			source={{ ...data, components: customized }}
+			suggesterFetcher={suggesterFetcher}
+			autoSuggesterLoading
+			pagination
+		/>
+	);
+});

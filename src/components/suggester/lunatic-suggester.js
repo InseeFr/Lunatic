@@ -18,6 +18,7 @@ function LunaticSuggester(props) {
 		declarations,
 		handleChange,
 		response,
+		custom,
 	} = props;
 
 	const contentId = `lunatic-suggester-${id}`;
@@ -46,6 +47,7 @@ function LunaticSuggester(props) {
 				disabled={disabled}
 				id={contentId}
 				value={value}
+				custom={custom}
 			/>
 		</LunaticField>
 	);

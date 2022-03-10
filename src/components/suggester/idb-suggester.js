@@ -15,6 +15,7 @@ function IDBSuggester({
 	onSelect,
 	disabled,
 	value,
+	custom,
 }) {
 	const [store, setStore] = useState(undefined);
 	const searching = useMemo(
@@ -43,6 +44,7 @@ function IDBSuggester({
 				searching={searching}
 				disabled={disabled}
 				value={value}
+				custom={custom}
 			/>
 		</CheckStore>
 	);

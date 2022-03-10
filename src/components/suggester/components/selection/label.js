@@ -1,17 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classnames from 'classnames';
-import { SuggesterContext } from '../../state-management';
 import DefaultLabelRenderer from './default-label-renderer';
 
 function Label({
 	labelRenderer: Renderer = DefaultLabelRenderer,
 	placeholderList,
+	displayLabel,
+	expended,
+	selectedIndex,
+	options,
+	search,
+	disabled,
 }) {
-	const [state] = useContext(SuggesterContext);
-	const { displayLabel, expended, selectedIndex, options, search, disabled } =
-		state;
 	const displayed = displayLabel || !expended;
-
 	const option =
 		selectedIndex !== undefined ? options[selectedIndex] : undefined;
 

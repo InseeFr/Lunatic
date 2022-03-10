@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useRef } from 'react';
+import React, { useReducer, useEffect, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
 	reducer,
@@ -8,6 +8,7 @@ import {
 } from './state-management';
 import { Suggester } from './components';
 import DefaultLabelRenderer from './components/selection/default-label-renderer';
+import createOnKeyDownCallback from './create-on-keydown-callback';
 import { DefaultOptionRenderer } from './components';
 import { usePrevious } from '../commons';
 import './default-style.scss';
@@ -20,7 +21,6 @@ function getSearch(search, value) {
 }
 
 function SuggesterWrapper({
-	id,
 	className,
 	version,
 	labelledBy,
@@ -29,11 +29,20 @@ function SuggesterWrapper({
 	onSelect,
 	searching,
 	labelRenderer,
-	disabled,
 	value,
+	custom,
+	disabled,
 }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { search, selectedIndex, options } = state;
+	const {
+		search,
+		selectedIndex,
+		options,
+		focused,
+		id,
+
+		messageError,
+	} = state;
 	const prevSelectedIndex = usePrevious(selectedIndex);
 
 	useEffect(
@@ -80,6 +89,47 @@ function SuggesterWrapper({
 		[id, disabled, value]
 	);
 
+	const onFocus = useCallback(
+		function () {
+			dispatch(actions.onFocus());
+		},
+		[dispatch, disabled]
+	);
+
+	const onDelete = useCallback(
+		function () {
+			dispatch(actions.onDeleteSearch());
+			onSelect(undefined);
+		},
+		[dispatch, onSelect]
+	);
+
+	const onBlur = useCallback(
+		function () {
+			dispatch(actions.onBlur());
+		},
+		[dispatch]
+	);
+
+	const onKeyDown = useMemo(
+		() => createOnKeyDownCallback(dispatch),
+		[dispatch]
+	);
+
+	const onChange = useCallback(
+		function (value) {
+			dispatch(actions.onChangeSearch(value));
+		},
+		[dispatch]
+	);
+
+	const onClickOption = useCallback(
+		function (index) {
+			dispatch(actions.onClickOption(index));
+		},
+		[dispatch]
+	);
+
 	return (
 		<SuggesterContext.Provider value={[state, dispatch]}>
 			<Suggester
@@ -91,6 +141,14 @@ function SuggesterWrapper({
 				labelRenderer={labelRenderer}
 				onSelect={onSelect}
 				value={value}
+				custom={custom}
+				onFocus={onFocus}
+				onDelete={onDelete}
+				onBlur={onBlur}
+				onKeyDown={onKeyDown}
+				onChange={onChange}
+				onClickOption={onClickOption}
+				{...state}
 			/>
 		</SuggesterContext.Provider>
 	);

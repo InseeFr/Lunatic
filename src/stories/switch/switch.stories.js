@@ -56,7 +56,6 @@ stories.addWithJSX('External update', () => {
 
 stories.addWithJSX('Custom Switch', function () {
 	const { components } = data;
-	console.log(components);
 	const customized = components.map(function (component) {
 		const { componentType } = component;
 		if (componentType === 'Switch') {
