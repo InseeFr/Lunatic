@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { LunaticField, useOnHandleChange } from '../commons';
 import Switch from './switch';
 
@@ -12,6 +11,7 @@ function LunaticSwitch({
 	response,
 	value,
 	statusLabel,
+	custom,
 }) {
 	const inputId = `lunatic-switch-${id}`;
 	const labelId = `lunatic-switch-label-${id}`;
@@ -34,6 +34,7 @@ function LunaticSwitch({
 				handleChange={onClick}
 				statusLabel={statusLabel}
 				labelId={labelId}
+				custom={custom}
 			/>
 		</LunaticField>
 	);

@@ -1,5 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import classnames from 'classnames';
+import { createCustomizableLunaticField } from '../commons';
 import './switch.scss';
 
 function Switch({ checked, disabled, handleChange, statusLabel, labelId }) {
@@ -49,4 +50,4 @@ function Switch({ checked, disabled, handleChange, statusLabel, labelId }) {
 	);
 }
 
-export default Switch;
+export default createCustomizableLunaticField(Switch);

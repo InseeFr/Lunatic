@@ -8,6 +8,7 @@ import data from './data';
 import dataForced from './data-forced';
 import { boolean, select, object } from '@storybook/addon-knobs/react';
 import { positioningOptions, featuresOptions } from '../utils/options';
+import SwitchMaterialUI from './SwitchMaterialUI';
 
 const stories = storiesOf('switch', module)
 	.addDecorator(withReadme(readme))
@@ -51,4 +52,28 @@ stories.addWithJSX('External update', () => {
 		);
 	};
 	return <Fake />;
+});
+
+stories.addWithJSX('Custom Switch', function () {
+	const { components } = data;
+	console.log(components);
+	const customized = components.map(function (component) {
+		const { componentType } = component;
+		if (componentType === 'Switch') {
+			return { ...component, custom: SwitchMaterialUI };
+		}
+		return component;
+	});
+	return (
+		<Orchestrator
+			source={{ ...data, components: customized }}
+			positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+			features={select('Features', featuresOptions, ['VTL', 'MD'])}
+			missing={boolean('Missing', false)}
+			bindings={object('Bindings', { test: 'test' })}
+			disabled={boolean('Disabled', false)}
+			focused={boolean('Focused', false)}
+			management={boolean('Management', false)}
+		/>
+	);
 });
