@@ -41,7 +41,8 @@ function LunaticSwitch({
 
 LunaticSwitch.propTypes = {
 	value: PropTypes.oneOf([null, true, false]),
-	statusLabel: { true: 'True', false: 'False' },
 };
+
+LunaticSwitch.defaultProps = { statusLabel: { true: 'True', false: 'False' } };
 
 export default LunaticSwitch;

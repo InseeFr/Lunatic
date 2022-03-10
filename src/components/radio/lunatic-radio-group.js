@@ -9,8 +9,16 @@ import {
 import './radio.scss';
 
 function LunaticRadioGroup(props) {
-	const { label, id, options, value, handleChange, response, declarations } =
-		props;
+	const {
+		label,
+		id,
+		options,
+		value,
+		handleChange,
+		response,
+		declarations,
+		checkboxStyle,
+	} = props;
 
 	const onClick = useOnHandleChange({ handleChange, response, value });
 
@@ -25,6 +33,7 @@ function LunaticRadioGroup(props) {
 						options={options}
 						value={value}
 						onClick={onClick}
+						checkboxStyle={checkboxStyle}
 					/>
 				</Fieldset>
 			</FieldContainer>

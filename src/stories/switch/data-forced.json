@@ -2,7 +2,7 @@
 	"components": [
 		{
 			"id": "1",
-			"componentType": "CheckboxBoolean",
+			"componentType": "Switch",
 			"mandatory": false,
 			"label": "➡ 1. Are you ready?",
 			"response": {
@@ -11,7 +11,7 @@
 		},
 		{
 			"id": "2",
-			"componentType": "CheckboxBoolean",
+			"componentType": "Switch",
 			"mandatory": false,
 			"label": "➡ 2. Are you always ready?",
 			"response": {

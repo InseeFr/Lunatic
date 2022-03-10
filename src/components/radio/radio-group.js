@@ -2,7 +2,7 @@ import React from 'react';
 import RadioOption from './radio-option';
 import { Label, useOptionsKeydown } from '../commons';
 
-function RadioGroup({ options, value, id, onClick }) {
+function RadioGroup({ options, value, id, onClick, checkboxStyle = false }) {
 	const onKeyDown = useOptionsKeydown(options, onClick);
 
 	return options.map(function (option, index) {
@@ -23,6 +23,7 @@ function RadioGroup({ options, value, id, onClick }) {
 					onClick={onClick}
 					value={valueOption}
 					onKeyDown={onKeyDown}
+					checkboxStyle={checkboxStyle}
 				/>
 			</div>
 		);

@@ -15,7 +15,7 @@
 		},
 		{
 			"id": "2",
-			"componentType": "CheckboxBoolean",
+			"componentType": "Switch",
 			"mandatory": false,
 			"label": "➡ 2. Are you always ready?",
 			"response": {
@@ -23,7 +23,8 @@
 			},
 			"missingResponse": {
 				"name": "READY2_MISSING"
-			}
+			},
+			"statusLabel": { "true": "Always", "false": "Never" }
 		}
 	],
 	"variables": [
