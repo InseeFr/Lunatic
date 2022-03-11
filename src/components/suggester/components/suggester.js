@@ -42,7 +42,7 @@ function Suggester({
 				onFocus();
 			}
 		},
-		[disabled]
+		[disabled, onFocus]
 	);
 
 	const onBlurEx = useCallback(
@@ -51,7 +51,7 @@ function Suggester({
 				onBlur();
 			}
 		},
-		[focused]
+		[focused, onBlur]
 	);
 
 	if (messageError) {
