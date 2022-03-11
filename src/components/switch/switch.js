@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { createCustomizableLunaticField } from '../commons';
 import './switch.scss';
@@ -8,7 +9,7 @@ function Switch({ checked, disabled, handleChange, statusLabel, labelId }) {
 		function () {
 			handleChange(!checked);
 		},
-		[checked]
+		[checked, handleChange]
 	);
 
 	const handleKeyDown = useCallback(
@@ -49,5 +50,23 @@ function Switch({ checked, disabled, handleChange, statusLabel, labelId }) {
 		</div>
 	);
 }
+Switch.propTypes = {
+	checked: PropTypes.bool.isRequired,
+	disabled: PropTypes.bool,
+	handleChange: PropTypes.func.isRequired,
+	statusLabel: PropTypes.shape({
+		true: PropTypes.string,
+		false: PropTypes.string,
+	}),
+	labelId: PropTypes.string.isRequired,
+};
+
+Switch.defaultProps = {
+	disabled: false,
+	statusLabel: {
+		true: 'True',
+		false: 'False',
+	},
+};
 
 export default createCustomizableLunaticField(Switch);

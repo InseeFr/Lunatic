@@ -44,29 +44,32 @@ function CheckboxGroup({ options, value, id, handleChange }) {
 	return options.map(function (option, index) {
 		const { label, response } = option;
 
-		if (response) {
+		if (response && value) {
 			const { name } = response;
-			const optionValue = value[name];
-			const checkboxId = `lunatic-checkbox-${id}-${name}`;
-			const labelId = `lunatic-checkbox-label-${id}-${name}`;
 
-			return (
-				<CheckboxGroupContainer key={checkboxId}>
-					<Label id={labelId} htmlFor={checkboxId}>
-						{label}
-					</Label>
-					<CheckBoxOptionWrapper
-						checkboxId={checkboxId}
-						index={index}
-						labelId={labelId}
-						checked={optionValue}
-						value={optionValue}
-						onKeyDown={onClick}
-						response={response}
-						handleChange={handleChange}
-					/>
-				</CheckboxGroupContainer>
-			);
+			if (name in value) {
+				const optionValue = value[name];
+				const checkboxId = `lunatic-checkbox-${id}-${name}`;
+				const labelId = `lunatic-checkbox-label-${id}-${name}`;
+
+				return (
+					<CheckboxGroupContainer key={checkboxId}>
+						<Label id={labelId} htmlFor={checkboxId}>
+							{label}
+						</Label>
+						<CheckBoxOptionWrapper
+							checkboxId={checkboxId}
+							index={index}
+							labelId={labelId}
+							checked={optionValue}
+							value={optionValue}
+							onKeyDown={onClick}
+							response={response}
+							handleChange={handleChange}
+						/>
+					</CheckboxGroupContainer>
+				);
+			}
 		}
 		return null;
 	});

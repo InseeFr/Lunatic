@@ -1,8 +1,6 @@
 import React from 'react';
 import './declarations.scss';
 import Declaration from './declaration';
-// import PropTypes from 'prop-types';
-// interpret(features, logFunction)(bindings)(label)
 
 export const DECLARATION_POSITIONS = {
 	after: 'AFTER_QUESTION_TEXT',
@@ -32,12 +30,6 @@ Declarations.defaultProps = {
 	bindings: {},
 };
 
-Declarations.propTypes = {
-	// id: PropTypes.string.isRequired,
-	// type: PropTypes.string,
-	// declarations: U.declarationsPropTypes,
-	// features: PropTypes.arrayOf(PropTypes.string),
-	// bindings: PropTypes.object,
-};
+Declarations.propTypes = {};
 
 export default Declarations;
