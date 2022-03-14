@@ -9,3 +9,4 @@ export { default as createExecuteExpression } from './execute-expression';
 export { default as executeConditionFilter } from './execute-condition-filter';
 export { default as fillComponentExpressions } from './fill-component-expressions';
 export { default as loadSuggester } from './load-suggesters';
+export { default as getCompatibleVTLExpression } from './get-compatible-vtl-expression';

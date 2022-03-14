@@ -3,6 +3,16 @@ import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
 
+function validateExpression(expObject) {
+	if (typeof expObject === 'object') {
+		const { type } = expObject;
+		if (type === 'VTL|MD') {
+			return expObject;
+		}
+	}
+	throw new Error(`Non-VTL compatible expression : ${expObject}`);
+}
+
 function getVtlCompatibleValue(value) {
 	if (value === undefined) {
 		return null;
@@ -97,7 +107,7 @@ function createExecuteExpression(variables, features) {
 						return { ...map, [name]: { ...variable } };
 					}
 				} else {
-					throw new Error(`Unknow variable ${name}`);
+					throw new Error(`Unknown variable ${name}`);
 				}
 				return map;
 			}, {});
@@ -125,9 +135,14 @@ function createExecuteExpression(variables, features) {
 		}, {});
 	}
 
-	/*	*/
-
-	function execute(expression, args) {
+	/**
+	 *
+	 * @param {*} vtlObject
+	 * @param {*} args
+	 * @returns
+	 */
+	function execute(expObject, args) {
+		const { value: expression } = validateExpression(expObject);
 		const { iteration, logging } = args;
 		const bindingDependencies = getVariablesAndCach(expression);
 
@@ -146,6 +161,7 @@ function createExecuteExpression(variables, features) {
 		);
 
 		const memoized = getMemoizedValue(expression, vtlBindings);
+
 		if (!memoized) {
 			const result = executeExpression(
 				vtlBindings,

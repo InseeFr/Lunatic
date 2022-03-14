@@ -1,5 +1,6 @@
 import { isOnEmptyPage } from './commons';
 import { validateLoopConditionFilter } from './commons';
+import { getCompatibleVTLExpression } from '../commons';
 
 function getPreviousPage(pager) {
 	const { page } = pager;
@@ -29,9 +30,12 @@ function goStartLoop(state, { previous, iterations, loopDependencies }) {
 	}
 
 	if (Array.isArray(subPages)) {
-		const nbIterations = executeExpression(iterations, {
-			bindingDependencies: loopDependencies,
-		});
+		const nbIterations = executeExpression(
+			getCompatibleVTLExpression(iterations),
+			{
+				bindingDependencies: loopDependencies,
+			}
+		);
 		return {
 			...state,
 			isInLoop: true,

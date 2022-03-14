@@ -1,3 +1,5 @@
+import getCompatibleVTLExpression from './get-compatible-vtl-expression';
+
 function executeConditionFilter(filter, execute, iteration) {
 	if (filter && typeof execute === 'function') {
 		const { value } = filter;
@@ -6,7 +8,7 @@ function executeConditionFilter(filter, execute, iteration) {
 			console.warn(args);
 			console.warn('executeConditionFilter:', filter);
 		}
-		return execute(value, { iteration, logging });
+		return execute(getCompatibleVTLExpression(value), { iteration, logging });
 	}
 	return undefined;
 }

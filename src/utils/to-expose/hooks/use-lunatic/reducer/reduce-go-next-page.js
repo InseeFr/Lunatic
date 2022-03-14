@@ -1,4 +1,5 @@
 import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
+import { getCompatibleVTLExpression } from '../commons';
 
 function getNextPage(state) {
 	const { pager } = state;
@@ -62,11 +63,18 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 			},
 		};
 	}
-	/* */
-	const nbIterations = executeExpression(iterations, {
-		bindingDependencies: loopDependencies,
-		iteration: undefined,
-	});
+	/* 
+	
+	
+	
+	*/
+	const nbIterations = executeExpression(
+		getCompatibleVTLExpression(iterations),
+		{
+			bindingDependencies: loopDependencies,
+			iteration: undefined,
+		}
+	);
 
 	if (Array.isArray(subPages)) {
 		return {
