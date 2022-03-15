@@ -51,6 +51,7 @@
 	],
 	"dependencies": {
 		"@inseefr/trevas": "^0.1.12",
+		"array-flat-polyfill": "^1.0.1",
 		"date-fns": "^2.25.0",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.debounce": "^4.0.8",
