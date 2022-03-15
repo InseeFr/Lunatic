@@ -85,7 +85,6 @@
 		"@storybook/react": "^5.2.8",
 		"@testing-library/react-hooks": "^7.0.0",
 		"@timdp/rollup-plugin-image": "^1.0.3",
-		"@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
 		"babel-eslint": "^10.0.3",
 		"babel-loader": "^8.0.6",
 		"classnames": "^2.2.5",
@@ -93,7 +92,6 @@
 		"cross-env": "^7.0.2",
 		"css-loader": "^5.0.0",
 		"damerau-levenshtein": "^1.0.7",
-		"enzyme": "^3.7.0",
 		"eslint": "7.30.0",
 		"eslint-config-prettier": "^7.2.0",
 		"eslint-config-react-app": "^6.0.0",
@@ -154,9 +152,6 @@
 			"^.+\\.js$": "babel-jest",
 			".+\\.(png|jpg)$": "jest-transform-stub"
 		},
-		"setupFilesAfterEnv": [
-			"<rootDir>/src/tests/setup/setupTests.js"
-		],
 		"coverageProvider": "v8",
 		"testResultsProcessor": "jest-sonar-reporter",
 		"coveragePathIgnorePatterns": [
