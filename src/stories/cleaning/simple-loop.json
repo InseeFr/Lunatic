@@ -1,978 +1,940 @@
-{
-	"id": "kzwrnj4u",
-	"modele": "QBOUCLSOUS",
-	"enoCoreVersion": "2.3.7",
-	"lunaticModelVersion": "2.2.11",
-	"generatingDate": "11-03-2022 16:19:47",
-	"missing": false,
-	"pagination": "question",
-	"maxPage": "11",
-	"label": {
-		"value": "QREC BOUCLE Sous-séquence - occ filtrée - boucle sur tableau - VTL - controles ko, reste ok",
-		"type": "VTL|MD"
-	},
-	"components": [
-		{
-			"id": "kewhlkb9",
-			"componentType": "Sequence",
-			"page": "1",
-			"label": {
-				"value": "\"I - \" || \"Premiere séquence - indépendante - on liste les individus\"",
-				"type": "VTL|MD"
-			},
-			"declarations": [
-				{
-					"id": "kewhlkb9-kewh49to",
-					"declarationType": "INSTRUCTION",
-					"position": "AFTER_QUESTION_TEXT",
-					"label": { "value": "Module hors boucles", "type": "VTL|MD" }
-				}
-			],
-			"conditionFilter": { "value": "true" },
-			"hierarchy": {
-				"sequence": {
-					"id": "kewhlkb9",
-					"page": "1",
-					"label": {
-						"value": "\"I - \" || \"Premiere séquence - indépendante - on liste les individus\"",
-						"type": "VTL|MD"
-					}
-				}
-			}
-		},
 
-		{
-			"id": "kewhggmx",
-			"componentType": "RosterForLoop",
-			"mandatory": false,
-			"page": "2",
-			"positioning": "HORIZONTAL",
-			"label": {
-				"value": "\"➡ 1. \" || \"Faites la liste des individus et mettre au moins un homme de plus de 75 ans pour avoir un filtre en dernière séquence\"",
-				"type": "VTL|MD"
-			},
-			"conditionFilter": { "value": "true" },
-			"hierarchy": {
-				"sequence": {
-					"id": "kewhlkb9",
-					"page": "1",
-					"label": {
-						"value": "\"I - \" || \"Premiere séquence - indépendante - on liste les individus\"",
-						"type": "VTL|MD"
-					}
-				}
-			},
-			"bindingDependencies": ["EXISTINDIV1", "EXISTINDIV2", "EXISTINDIV3"],
-			"lines": { "min": 1, "max": 10 },
-			"headers": [
-				{
-					"headerCell": true,
-					"label": {
-						"value": "Prenom de moins de 40 caractères",
-						"type": "VTL|MD"
-					}
-				},
-
-				{ "headerCell": true, "label": { "value": "Age", "type": "VTL|MD" } },
-
-				{ "headerCell": true, "label": { "value": "Sexe", "type": "VTL|MD" } }
-			],
-			"components": [
-				{
-					"componentType": "Input",
-					"maxLength": 40,
-					"id": "kewhggmx-QOP-khkgvp14",
-					"response": { "name": "EXISTINDIV1" },
-					"bindingDependencies": ["EXISTINDIV1"]
-				},
-
-				{
-					"componentType": "InputNumber",
-					"min": 5,
-					"max": 90,
-					"decimals": 0,
-					"id": "kewhggmx-QOP-khkgqcc4",
-					"response": { "name": "EXISTINDIV2" },
-					"bindingDependencies": ["EXISTINDIV2"]
-				},
-
-				{
-					"componentType": "CheckboxOne",
-					"id": "kewhggmx-QOP-khkgwi0p",
-					"options": [
-						{ "value": "1", "label": { "value": "homme", "type": "VTL|MD" } },
-
-						{ "value": "2", "label": { "value": "femme", "type": "VTL|MD" } }
-					],
-					"response": { "name": "EXISTINDIV3" },
-					"bindingDependencies": ["EXISTINDIV3"]
-				}
-			]
-		},
-
-		{
-			"id": "key1u56w",
-			"componentType": "Sequence",
-			"page": "6",
-			"label": {
-				"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-				"type": "VTL|MD"
-			},
-			"conditionFilter": { "value": "true" },
-			"hierarchy": {
-				"sequence": {
-					"id": "key1u56w",
-					"page": "6",
-					"label": {
-						"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-						"type": "VTL|MD"
-					}
-				}
-			}
-		},
-
-		{
-			"id": "kfmn7uc5",
-			"componentType": "Loop",
-			"page": "7",
-			"maxPage": "9",
-			"iterations": "count(EXISTINDIV1)",
-			"depth": 1,
-			"paginatedLoop": true,
-			"conditionFilter": { "value": "true" },
-			"hierarchy": {
-				"sequence": {
-					"id": "key1u56w",
-					"page": "6",
-					"label": {
-						"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-						"type": "VTL|MD"
-					}
-				}
-			},
-			"bindingDependencies": [
-				"EXISTINDIV1",
-				"EXISTINDIV2",
-				"Q3INTRA",
-				"Q5INTRA",
-				"Q6INTRA",
-				"Q4INTRA",
-				"Q1INTRA",
-				"Q2INTRA",
-				"Q7INTRA1",
-				"Q7INTRA2",
-				"Q7INTRA3",
-				"Q8INTRA"
-			],
-			"loopDependencies": ["EXISTINDIV1", "EXISTINDIV2", "EXISTINDIV3"],
-			"components": [
-				{
-					"id": "kewnbex8",
-					"componentType": "Subsequence",
-					"page": "7.1",
-					"goToPage": "7.1",
-					"label": {
-						"value": "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
-						"type": "VTL|MD"
-					},
-					"declarations": [
-						{
-							"id": "kewnbex8-kzwrbtpy",
-							"declarationType": "HELP",
-							"position": "AFTER_QUESTION_TEXT",
-							"label": {
-								"value": "declaration pour forcer affichage sous sequence",
-								"type": "VTL|MD"
-							}
-						}
-					],
-					"conditionFilter": {
-						"value": "(not(cast(EXISTINDIV2,integer) < 18))",
-						"bindingDependencies": ["EXISTINDIV2"]
-					},
-					"hierarchy": {
-						"sequence": {
-							"id": "key1u56w",
-							"page": "6",
-							"label": {
-								"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-								"type": "VTL|MD"
-							}
-						},
-						"subSequence": {
-							"id": "kewnbex8",
-							"page": "7.1",
-							"label": {
-								"value": "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
-								"type": "VTL|MD"
-							}
-						}
-					},
-					"bindingDependencies": ["EXISTINDIV1", "EXISTINDIV2", "EXISTINDIV3"]
-				},
-
-				{
-					"id": "kewi0001",
-					"componentType": "InputNumber",
-					"mandatory": true,
-					"page": "7.2",
-					"min": 0,
-					"max": 10,
-					"decimals": 0,
-					"label": {
-						"value": "\"➡ 2. \" || \"Q1Intra - saisie d’une donnée entre 0 et 10\"",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "(not(cast(EXISTINDIV2,integer) < 18))",
-						"bindingDependencies": ["EXISTINDIV2"]
-					},
-					"hierarchy": {
-						"sequence": {
-							"id": "key1u56w",
-							"page": "6",
-							"label": {
-								"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-								"type": "VTL|MD"
-							}
-						},
-						"subSequence": {
-							"id": "kewnbex8",
-							"page": "7.1",
-							"label": {
-								"value": "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
-								"type": "VTL|MD"
-							}
-						}
-					},
-					"bindingDependencies": [
-						"Q1INTRA",
-						"EXISTINDIV1",
-						"EXISTINDIV2",
-						"EXISTINDIV3"
-					],
-					"response": { "name": "Q1INTRA" }
-				},
-
-				{
-					"id": "kewj66rp",
-					"componentType": "Input",
-					"mandatory": true,
-					"page": "7.3",
-					"maxLength": 10,
-					"label": {
-						"value": "\"➡ 3. \" || \"Q2Intra - texte libre moins de 10\"",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "(not(cast(EXISTINDIV2,integer) < 18))",
-						"bindingDependencies": ["EXISTINDIV2"]
-					},
-					"hierarchy": {
-						"sequence": {
-							"id": "key1u56w",
-							"page": "6",
-							"label": {
-								"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-								"type": "VTL|MD"
-							}
-						},
-						"subSequence": {
-							"id": "kewnbex8",
-							"page": "7.1",
-							"label": {
-								"value": "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
-								"type": "VTL|MD"
-							}
-						}
-					},
-					"bindingDependencies": [
-						"Q2INTRA",
-						"EXISTINDIV1",
-						"EXISTINDIV2",
-						"EXISTINDIV3"
-					],
-					"response": { "name": "Q2INTRA" }
-				},
-
-				{
-					"id": "kewhtaud",
-					"componentType": "Input",
-					"mandatory": true,
-					"page": "7.4",
-					"maxLength": 1,
-					"label": {
-						"value": "\"➡ 4. \" || \"Q3Intra - test sur la valeur saisie (=\"A\")\"",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "(not(cast(EXISTINDIV2,integer) < 18))",
-						"bindingDependencies": ["EXISTINDIV2"]
-					},
-					"controls": [
-						{
-							"id": "kewhtaud-CI-0",
-							"criticality": "WARN",
-							"control": "not(Q3INTRA != \"A\")",
-							"errorMessage": "Question Q3 - Valeur différente de A",
-							"bindingDependencies": ["Q3INTRA"]
-						}
-					],
-					"hierarchy": {
-						"sequence": {
-							"id": "key1u56w",
-							"page": "6",
-							"label": {
-								"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-								"type": "VTL|MD"
-							}
-						},
-						"subSequence": {
-							"id": "kewnbex8",
-							"page": "7.1",
-							"label": {
-								"value": "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
-								"type": "VTL|MD"
-							}
-						}
-					},
-					"bindingDependencies": [
-						"Q3INTRA",
-						"EXISTINDIV1",
-						"EXISTINDIV2",
-						"EXISTINDIV3"
-					],
-					"response": { "name": "Q3INTRA" }
-				},
-
-				{
-					"id": "kewhvqll",
-					"componentType": "CheckboxOne",
-					"mandatory": false,
-					"page": "7.5",
-					"label": {
-						"value": "\"➡ 5. \" || \"Q4Intra - QCU - rappelons le nom de \" || EXISTINDIV1",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "(not(cast(EXISTINDIV2,integer) < 18))",
-						"bindingDependencies": ["EXISTINDIV2"]
-					},
-					"hierarchy": {
-						"sequence": {
-							"id": "key1u56w",
-							"page": "6",
-							"label": {
-								"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-								"type": "VTL|MD"
-							}
-						},
-						"subSequence": {
-							"id": "kewnbex8",
-							"page": "7.1",
-							"label": {
-								"value": "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
-								"type": "VTL|MD"
-							}
-						}
-					},
-					"bindingDependencies": [
-						"EXISTINDIV1",
-						"Q4INTRA",
-						"EXISTINDIV2",
-						"EXISTINDIV3"
-					],
-					"options": [
-						{ "value": "1", "label": { "value": "Oui", "type": "VTL|MD" } },
-
-						{ "value": "2", "label": { "value": "Non", "type": "VTL|MD" } }
-					],
-					"response": { "name": "Q4INTRA" }
-				},
-
-				{
-					"id": "kewi6sgq",
-					"componentType": "InputNumber",
-					"mandatory": false,
-					"page": "7.6",
-					"min": 0,
-					"max": 20,
-					"decimals": 0,
-					"label": {
-						"value": "\"➡ 6. \" || \"Q5Intra - question avec controle numérique (donnée entre 0 et 20, controle si différent de 5)\"",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "(not(cast(EXISTINDIV2,integer) < 18))",
-						"bindingDependencies": ["EXISTINDIV2"]
-					},
-					"controls": [
-						{
-							"id": "kewi6sgq-CI-0",
-							"criticality": "WARN",
-							"control": "not(cast(Q5INTRA,integer) = 5)",
-							"errorMessage": "valeur différente de 5",
-							"bindingDependencies": ["Q5INTRA"]
-						}
-					],
-					"hierarchy": {
-						"sequence": {
-							"id": "key1u56w",
-							"page": "6",
-							"label": {
-								"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-								"type": "VTL|MD"
-							}
-						},
-						"subSequence": {
-							"id": "kewnbex8",
-							"page": "7.1",
-							"label": {
-								"value": "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
-								"type": "VTL|MD"
-							}
-						}
-					},
-					"bindingDependencies": [
-						"Q5INTRA",
-						"EXISTINDIV1",
-						"EXISTINDIV2",
-						"EXISTINDIV3"
-					],
-					"unit": "€",
-					"response": { "name": "Q5INTRA" }
-				},
-
-				{
-					"id": "kewy93hc",
-					"componentType": "InputNumber",
-					"mandatory": false,
-					"page": "7.7",
-					"min": 0,
-					"max": 20,
-					"decimals": 0,
-					"label": {
-						"value": "\"➡ 7. \" || \"Q6Intra - question avec controle numérique à vide (donnée entre 0 et 20, controle si vaut vide)\"",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "(not(cast(EXISTINDIV2,integer) < 18))",
-						"bindingDependencies": ["EXISTINDIV2"]
-					},
-					"controls": [
-						{
-							"id": "kewy93hc-CI-0",
-							"criticality": "WARN",
-							"control": "not(isnull(Q6INTRA))",
-							"errorMessage": "Vous devez renseigner le numérique Q6INTRA",
-							"bindingDependencies": ["Q6INTRA"]
-						}
-					],
-					"hierarchy": {
-						"sequence": {
-							"id": "key1u56w",
-							"page": "6",
-							"label": {
-								"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-								"type": "VTL|MD"
-							}
-						},
-						"subSequence": {
-							"id": "kewnbex8",
-							"page": "7.1",
-							"label": {
-								"value": "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
-								"type": "VTL|MD"
-							}
-						}
-					},
-					"bindingDependencies": [
-						"Q6INTRA",
-						"EXISTINDIV1",
-						"EXISTINDIV2",
-						"EXISTINDIV3"
-					],
-					"unit": "€",
-					"response": { "name": "Q6INTRA" }
-				},
-
-				{
-					"id": "kewi7qdp",
-					"componentType": "CheckboxGroup",
-					"page": "7.8",
-					"label": {
-						"value": "\"➡ 8. \" || \"Q7Intra - question QCM et comparaison avec réponse QCU Q4Intra (si oui et libelle 1 : controle)\"",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "(not(cast(EXISTINDIV2,integer) < 18))",
-						"bindingDependencies": ["EXISTINDIV2"]
-					},
-					"controls": [
-						{
-							"id": "kewi7qdp-CI-0",
-							"criticality": "WARN",
-							"control": "not(nvl(Q4INTRA,\"0\") = \"1\" and nvl($Q4INTRA1$,false) = true)",
-							"errorMessage": "Si QCU Q4 a dit oui et libellé 1 : c’est anormal",
-							"bindingDependencies": ["Q4INTRA"]
-						}
-					],
-					"hierarchy": {
-						"sequence": {
-							"id": "key1u56w",
-							"page": "6",
-							"label": {
-								"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-								"type": "VTL|MD"
-							}
-						},
-						"subSequence": {
-							"id": "kewnbex8",
-							"page": "7.1",
-							"label": {
-								"value": "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
-								"type": "VTL|MD"
-							}
-						}
-					},
-					"bindingDependencies": [
-						"Q7INTRA1",
-						"Q7INTRA2",
-						"Q7INTRA3",
-						"EXISTINDIV1",
-						"EXISTINDIV2",
-						"EXISTINDIV3"
-					],
-					"responses": [
-						{
-							"id": "kewi7qdp-QOP-khkh0pap",
-							"label": { "value": "libelle 1", "type": "VTL|MD" },
-							"response": { "name": "Q7INTRA1" }
-						},
-
-						{
-							"id": "kewi7qdp-QOP-khkgup98",
-							"label": { "value": "libelle 2", "type": "VTL|MD" },
-							"response": { "name": "Q7INTRA2" }
-						},
-
-						{
-							"id": "kewi7qdp-QOP-khkgp789",
-							"label": { "value": "libelle 3", "type": "VTL|MD" },
-							"response": { "name": "Q7INTRA3" }
-						}
-					]
-				},
-
-				{
-					"id": "kewinlqn",
-					"componentType": "Datepicker",
-					"mandatory": false,
-					"page": "7.9",
-					"min": "2010-01-01",
-					"max": "2030-12-31",
-					"label": {
-						"value": "\"➡ 9. \" || \"Q8Intra - dernière question date et rappel pour mémoire de la réponse Q1 : \" || Q1INTRA",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "(not(cast(EXISTINDIV2,integer) < 18))",
-						"bindingDependencies": ["EXISTINDIV2"]
-					},
-					"hierarchy": {
-						"sequence": {
-							"id": "key1u56w",
-							"page": "6",
-							"label": {
-								"value": "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
-								"type": "VTL|MD"
-							}
-						},
-						"subSequence": {
-							"id": "kewnbex8",
-							"page": "7.1",
-							"label": {
-								"value": "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
-								"type": "VTL|MD"
-							}
-						}
-					},
-					"bindingDependencies": [
-						"Q1INTRA",
-						"Q8INTRA",
-						"EXISTINDIV1",
-						"EXISTINDIV2",
-						"EXISTINDIV3"
-					],
-					"dateFormat": "YYYY-MM-DD",
-					"response": { "name": "Q8INTRA" }
-				}
-			]
-		},
-
-		{
-			"id": "kfco2gq5",
-			"componentType": "Sequence",
-			"page": "8",
-			"label": {
-				"value": "\"III - \" || \"SEQUENCE INTERMEDIAIRE\"",
-				"type": "VTL|MD"
-			},
-			"conditionFilter": { "value": "true" },
-			"hierarchy": {
-				"sequence": {
-					"id": "kfco2gq5",
-					"page": "8",
-					"label": {
-						"value": "\"III - \" || \"SEQUENCE INTERMEDIAIRE\"",
-						"type": "VTL|MD"
-					}
-				}
-			}
-		},
-
-		{
-			"id": "kfcnp9re",
-			"componentType": "Textarea",
-			"mandatory": false,
-			"page": "9",
-			"maxLength": 255,
-			"label": {
-				"value": "\"➡ 10. \" || \"Etes vous content du questionnaire\"",
-				"type": "VTL|MD"
-			},
-			"conditionFilter": { "value": "true" },
-			"hierarchy": {
-				"sequence": {
-					"id": "kfco2gq5",
-					"page": "8",
-					"label": {
-						"value": "\"III - \" || \"SEQUENCE INTERMEDIAIRE\"",
-						"type": "VTL|MD"
-					}
-				}
-			},
-			"bindingDependencies": ["ETESVOUSCO"],
-			"response": { "name": "ETESVOUSCO" }
-		},
-
-		{
-			"id": "COMMENT-SEQ",
-			"componentType": "Sequence",
-			"page": "10",
-			"label": {},
-			"conditionFilter": { "value": "true" },
-			"hierarchy": {
-				"sequence": { "id": "COMMENT-SEQ", "page": "10", "label": {} }
-			}
-		},
-
-		{
-			"id": "COMMENT-QUESTION",
-			"componentType": "Textarea",
-			"mandatory": false,
-			"page": "11",
-			"maxLength": 2000,
-			"label": {},
-			"conditionFilter": { "value": "true" },
-			"hierarchy": {
-				"sequence": { "id": "COMMENT-SEQ", "page": "10", "label": {} }
-			},
-			"bindingDependencies": ["COMMENT_QE"],
-			"response": { "name": "COMMENT_QE" }
-		}
-	],
-	"variables": [
-		{
-			"variableType": "COLLECTED",
-			"name": "COMMENT_QE",
-			"componentRef": "COMMENT-QUESTION",
-			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTED": null
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "EXISTINDIV1",
-			"componentRef": "kewhggmx",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "EXISTINDIV2",
-			"componentRef": "kewhggmx",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "EXISTINDIV3",
-			"componentRef": "kewhggmx",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "Q1INTRA",
-			"componentRef": "kfmn7uc5",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "Q2INTRA",
-			"componentRef": "kfmn7uc5",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "Q3INTRA",
-			"componentRef": "kfmn7uc5",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "Q4INTRA",
-			"componentRef": "kfmn7uc5",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "Q5INTRA",
-			"componentRef": "kfmn7uc5",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "Q6INTRA",
-			"componentRef": "kfmn7uc5",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "Q7INTRA1",
-			"componentRef": "kfmn7uc5",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "Q7INTRA2",
-			"componentRef": "kfmn7uc5",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "Q7INTRA3",
-			"componentRef": "kfmn7uc5",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "Q8INTRA",
-			"componentRef": "kfmn7uc5",
-			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
-		},
-
-		{
-			"variableType": "COLLECTED",
-			"name": "ETESVOUSCO",
-			"componentRef": "kfcnp9re",
-			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTED": null
-			}
-		},
-
-		{
-			"variableType": "CALCULATED",
-			"name": "FILTER_RESULT_EXISTINDIV",
-			"expression": "true",
-			"inFilter": "false"
-		},
-
-		{
-			"variableType": "CALCULATED",
-			"name": "FILTER_RESULT_Q1INTRA",
-			"expression": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"bindingDependencies": ["EXISTINDIV2"],
-			"shapeFrom": "Q1INTRA",
-			"inFilter": "false"
-		},
-
-		{
-			"variableType": "CALCULATED",
-			"name": "FILTER_RESULT_Q2INTRA",
-			"expression": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"bindingDependencies": ["EXISTINDIV2"],
-			"shapeFrom": "Q1INTRA",
-			"inFilter": "false"
-		},
-
-		{
-			"variableType": "CALCULATED",
-			"name": "FILTER_RESULT_Q3INTRA",
-			"expression": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"bindingDependencies": ["EXISTINDIV2"],
-			"shapeFrom": "Q1INTRA",
-			"inFilter": "false"
-		},
-
-		{
-			"variableType": "CALCULATED",
-			"name": "FILTER_RESULT_Q4INTRA",
-			"expression": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"bindingDependencies": ["EXISTINDIV2"],
-			"shapeFrom": "Q1INTRA",
-			"inFilter": "false"
-		},
-
-		{
-			"variableType": "CALCULATED",
-			"name": "FILTER_RESULT_Q5INTRA",
-			"expression": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"bindingDependencies": ["EXISTINDIV2"],
-			"shapeFrom": "Q1INTRA",
-			"inFilter": "false"
-		},
-
-		{
-			"variableType": "CALCULATED",
-			"name": "FILTER_RESULT_Q6INTRA",
-			"expression": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"bindingDependencies": ["EXISTINDIV2"],
-			"shapeFrom": "Q1INTRA",
-			"inFilter": "false"
-		},
-
-		{
-			"variableType": "CALCULATED",
-			"name": "FILTER_RESULT_Q7INTRA",
-			"expression": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"bindingDependencies": ["EXISTINDIV2"],
-			"shapeFrom": "Q1INTRA",
-			"inFilter": "false"
-		},
-
-		{
-			"variableType": "CALCULATED",
-			"name": "FILTER_RESULT_Q8INTRA",
-			"expression": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"bindingDependencies": ["EXISTINDIV2"],
-			"shapeFrom": "Q1INTRA",
-			"inFilter": "false"
-		},
-
-		{
-			"variableType": "CALCULATED",
-			"name": "FILTER_RESULT_ETESVOUSCO",
-			"expression": "true",
-			"inFilter": "false"
-		}
-	],
-	"cleaning": {
-		"EXISTINDIV2": {
-			"Q1INTRA": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"Q2INTRA": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"Q3INTRA": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"Q4INTRA": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"Q5INTRA": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"Q6INTRA": "(not(cast(EXISTINDIV2,integer) < 18))",
-			"Q8INTRA": "(not(cast(EXISTINDIV2,integer) < 18))"
-		}
-	}
-}
+ { "id" : "kzwrnj4u",
+  "modele" : "QBOUCLSOUS",
+  "enoCoreVersion" : "2.3.7",
+  "lunaticModelVersion" : "2.2.11",
+  "generatingDate" : "15-03-2022 15:58:16",
+  "missing" : false,
+  "pagination" : "question",
+  "maxPage" : "11",
+  "label" : 
+  { "value" : "QREC BOUCLE Sous-séquence - occ filtrée - boucle sur tableau - VTL - controles ko, reste ok",
+   "type" : "VTL|MD" },
+  "components" : 
+  [ 
+   { "id" : "kewhlkb9",
+    "componentType" : "Sequence",
+    "page" : "1",
+    "label" : 
+    { "value" : "\"I - \" || \"Premiere séquence - indépendante - on liste les individus\"",
+     "type" : "VTL|MD" },
+    "declarations" : 
+    [ 
+     { "id" : "kewhlkb9-kewh49to",
+      "declarationType" : "INSTRUCTION",
+      "position" : "AFTER_QUESTION_TEXT",
+      "label" : 
+      { "value" : "Module hors boucles",
+       "type" : "VTL|MD" } } ],
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL|MD" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kewhlkb9",
+      "page" : "1",
+      "label" : 
+      { "value" : "\"I - \" || \"Premiere séquence - indépendante - on liste les individus\"",
+       "type" : "VTL|MD" } } } },
+   
+   { "id" : "kewhggmx",
+    "componentType" : "RosterForLoop",
+    "mandatory" : false,
+    "page" : "2",
+    "positioning" : "HORIZONTAL",
+    "label" : 
+    { "value" : "\"➡ 1. \" || \"Faites la liste des individus et mettre au moins un homme de plus de 75 ans pour avoir un filtre en dernière séquence\"",
+     "type" : "VTL|MD" },
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL|MD" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kewhlkb9",
+      "page" : "1",
+      "label" : 
+      { "value" : "\"I - \" || \"Premiere séquence - indépendante - on liste les individus\"",
+       "type" : "VTL|MD" } } },
+    "bindingDependencies" : 
+    [ "EXISTINDIV1",
+     "EXISTINDIV2",
+     "EXISTINDIV3" ],
+    "lines" : 
+    { "min" : 
+     { "value" : "1",
+      "type" : "VTL|MD" },
+     "max" : 
+     { "value" : "10",
+      "type" : "VTL|MD" } },
+    "headers" : 
+    [ 
+     { "headerCell" : true,
+      "label" : 
+      { "value" : "Prenom de moins de 40 caractères",
+       "type" : "VTL|MD" } },
+     
+     { "headerCell" : true,
+      "label" : 
+      { "value" : "Age",
+       "type" : "VTL|MD" } },
+     
+     { "headerCell" : true,
+      "label" : 
+      { "value" : "Sexe",
+       "type" : "VTL|MD" } } ],
+    "components" : 
+    [ 
+     { "componentType" : "Input",
+      "maxLength" : 40,
+      "id" : "kewhggmx-QOP-khkgvp14",
+      "response" : 
+      { "name" : "EXISTINDIV1" },
+      "bindingDependencies" : 
+      [ "EXISTINDIV1" ] },
+     
+     { "componentType" : "InputNumber",
+      "min" : 5,
+      "max" : 90,
+      "decimals" : 0,
+      "id" : "kewhggmx-QOP-khkgqcc4",
+      "response" : 
+      { "name" : "EXISTINDIV2" },
+      "bindingDependencies" : 
+      [ "EXISTINDIV2" ] },
+     
+     { "componentType" : "CheckboxOne",
+      "id" : "kewhggmx-QOP-khkgwi0p",
+      "options" : 
+      [ 
+       { "value" : "1",
+        "label" : 
+        { "value" : "homme",
+         "type" : "VTL|MD" } },
+       
+       { "value" : "2",
+        "label" : 
+        { "value" : "femme",
+         "type" : "VTL|MD" } } ],
+      "response" : 
+      { "name" : "EXISTINDIV3" },
+      "bindingDependencies" : 
+      [ "EXISTINDIV3" ] } ] },
+   
+   { "id" : "key1u56w",
+    "componentType" : "Sequence",
+    "page" : "6",
+    "label" : 
+    { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+     "type" : "VTL|MD" },
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL|MD" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "key1u56w",
+      "page" : "6",
+      "label" : 
+      { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+       "type" : "VTL|MD" } } } },
+   
+   { "id" : "kfmn7uc5",
+    "componentType" : "Loop",
+    "page" : "7",
+    "maxPage" : "9",
+    "depth" : 1,
+    "paginatedLoop" : true,
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL|MD" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "key1u56w",
+      "page" : "6",
+      "label" : 
+      { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+       "type" : "VTL|MD" } } },
+    "bindingDependencies" : 
+    [ "EXISTINDIV1",
+     "EXISTINDIV2",
+     "Q3INTRA",
+     "Q5INTRA",
+     "Q6INTRA",
+     "Q4INTRA",
+     "Q1INTRA",
+     "Q2INTRA",
+     "Q7INTRA1",
+     "Q7INTRA2",
+     "Q7INTRA3",
+     "Q8INTRA" ],
+    "loopDependencies" : 
+    [ "EXISTINDIV1",
+     "EXISTINDIV2",
+     "EXISTINDIV3" ],
+    "components" : 
+    [ 
+     { "id" : "kewnbex8",
+      "componentType" : "Subsequence",
+      "page" : "7.1",
+      "goToPage" : "7.1",
+      "label" : 
+      { "value" : "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
+       "type" : "VTL|MD" },
+      "declarations" : 
+      [ 
+       { "id" : "kewnbex8-kzwrbtpy",
+        "declarationType" : "HELP",
+        "position" : "AFTER_QUESTION_TEXT",
+        "label" : 
+        { "value" : "declaration pour forcer affichage sous sequence",
+         "type" : "VTL|MD" } } ],
+      "conditionFilter" : 
+      { "value" : "(not(cast(EXISTINDIV2,integer) < 18))",
+       "type" : "VTL|MD",
+       "bindingDependencies" : 
+       [ "EXISTINDIV2" ] },
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "key1u56w",
+        "page" : "6",
+        "label" : 
+        { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kewnbex8",
+        "page" : "7.1",
+        "label" : 
+        { "value" : "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "EXISTINDIV1",
+       "EXISTINDIV2",
+       "EXISTINDIV3" ] },
+     
+     { "id" : "kewi0001",
+      "componentType" : "InputNumber",
+      "mandatory" : true,
+      "page" : "7.2",
+      "min" : 0,
+      "max" : 10,
+      "decimals" : 0,
+      "label" : 
+      { "value" : "\"➡ 2. \" || \"Q1Intra - saisie d’une donnée entre 0 et 10\"",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "(not(cast(EXISTINDIV2,integer) < 18))",
+       "type" : "VTL|MD",
+       "bindingDependencies" : 
+       [ "EXISTINDIV2" ] },
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "key1u56w",
+        "page" : "6",
+        "label" : 
+        { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kewnbex8",
+        "page" : "7.1",
+        "label" : 
+        { "value" : "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "Q1INTRA",
+       "EXISTINDIV1",
+       "EXISTINDIV2",
+       "EXISTINDIV3" ],
+      "response" : 
+      { "name" : "Q1INTRA" } },
+     
+     { "id" : "kewj66rp",
+      "componentType" : "Input",
+      "mandatory" : true,
+      "page" : "7.3",
+      "maxLength" : 10,
+      "label" : 
+      { "value" : "\"➡ 3. \" || \"Q2Intra - texte libre moins de 10\"",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "(not(cast(EXISTINDIV2,integer) < 18))",
+       "type" : "VTL|MD",
+       "bindingDependencies" : 
+       [ "EXISTINDIV2" ] },
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "key1u56w",
+        "page" : "6",
+        "label" : 
+        { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kewnbex8",
+        "page" : "7.1",
+        "label" : 
+        { "value" : "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "Q2INTRA",
+       "EXISTINDIV1",
+       "EXISTINDIV2",
+       "EXISTINDIV3" ],
+      "response" : 
+      { "name" : "Q2INTRA" } },
+     
+     { "id" : "kewhtaud",
+      "componentType" : "Input",
+      "mandatory" : true,
+      "page" : "7.4",
+      "maxLength" : 1,
+      "label" : 
+      { "value" : "\"➡ 4. \" || \"Q3Intra - test sur la valeur saisie (=\"A\")\"",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "(not(cast(EXISTINDIV2,integer) < 18))",
+       "type" : "VTL|MD",
+       "bindingDependencies" : 
+       [ "EXISTINDIV2" ] },
+      "controls" : 
+      [ 
+       { "id" : "kewhtaud-CI-0",
+        "criticality" : "WARN",
+        "control" : 
+        { "value" : "not(Q3INTRA  <>  \"A\")" },
+        "errorMessage" : 
+        { "value" : "Question Q3 - Valeur différente de A" },
+        "bindingDependencies" : 
+        [ "Q3INTRA" ] } ],
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "key1u56w",
+        "page" : "6",
+        "label" : 
+        { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kewnbex8",
+        "page" : "7.1",
+        "label" : 
+        { "value" : "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "Q3INTRA",
+       "EXISTINDIV1",
+       "EXISTINDIV2",
+       "EXISTINDIV3" ],
+      "response" : 
+      { "name" : "Q3INTRA" } },
+     
+     { "id" : "kewhvqll",
+      "componentType" : "CheckboxOne",
+      "mandatory" : false,
+      "page" : "7.5",
+      "label" : 
+      { "value" : "\"➡ 5. \" || \"Q4Intra - QCU - rappelons le nom de \" || EXISTINDIV1",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "(not(cast(EXISTINDIV2,integer) < 18))",
+       "type" : "VTL|MD",
+       "bindingDependencies" : 
+       [ "EXISTINDIV2" ] },
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "key1u56w",
+        "page" : "6",
+        "label" : 
+        { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kewnbex8",
+        "page" : "7.1",
+        "label" : 
+        { "value" : "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "EXISTINDIV1",
+       "Q4INTRA",
+       "EXISTINDIV2",
+       "EXISTINDIV3" ],
+      "options" : 
+      [ 
+       { "value" : "1",
+        "label" : 
+        { "value" : "Oui",
+         "type" : "VTL|MD" } },
+       
+       { "value" : "2",
+        "label" : 
+        { "value" : "Non",
+         "type" : "VTL|MD" } } ],
+      "response" : 
+      { "name" : "Q4INTRA" } },
+     
+     { "id" : "kewi6sgq",
+      "componentType" : "InputNumber",
+      "mandatory" : false,
+      "page" : "7.6",
+      "min" : 0,
+      "max" : 20,
+      "decimals" : 0,
+      "label" : 
+      { "value" : "\"➡ 6. \" || \"Q5Intra - question avec controle numérique (donnée entre 0 et 20, controle si différent de 5)\"",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "(not(cast(EXISTINDIV2,integer) < 18))",
+       "type" : "VTL|MD",
+       "bindingDependencies" : 
+       [ "EXISTINDIV2" ] },
+      "controls" : 
+      [ 
+       { "id" : "kewi6sgq-CI-0",
+        "criticality" : "WARN",
+        "control" : 
+        { "value" : "not(cast(Q5INTRA,integer) = 5)" },
+        "errorMessage" : 
+        { "value" : "valeur différente de 5" },
+        "bindingDependencies" : 
+        [ "Q5INTRA" ] } ],
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "key1u56w",
+        "page" : "6",
+        "label" : 
+        { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kewnbex8",
+        "page" : "7.1",
+        "label" : 
+        { "value" : "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "Q5INTRA",
+       "EXISTINDIV1",
+       "EXISTINDIV2",
+       "EXISTINDIV3" ],
+      "unit" : "€",
+      "response" : 
+      { "name" : "Q5INTRA" } },
+     
+     { "id" : "kewy93hc",
+      "componentType" : "InputNumber",
+      "mandatory" : false,
+      "page" : "7.7",
+      "min" : 0,
+      "max" : 20,
+      "decimals" : 0,
+      "label" : 
+      { "value" : "\"➡ 7. \" || \"Q6Intra - question avec controle numérique à vide (donnée entre 0 et 20, controle si vaut vide)\"",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "(not(cast(EXISTINDIV2,integer) < 18))",
+       "type" : "VTL|MD",
+       "bindingDependencies" : 
+       [ "EXISTINDIV2" ] },
+      "controls" : 
+      [ 
+       { "id" : "kewy93hc-CI-0",
+        "criticality" : "WARN",
+        "control" : 
+        { "value" : "not(isnull(Q6INTRA))" },
+        "errorMessage" : 
+        { "value" : "Vous devez renseigner le numérique Q6INTRA" },
+        "bindingDependencies" : 
+        [ "Q6INTRA" ] } ],
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "key1u56w",
+        "page" : "6",
+        "label" : 
+        { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kewnbex8",
+        "page" : "7.1",
+        "label" : 
+        { "value" : "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "Q6INTRA",
+       "EXISTINDIV1",
+       "EXISTINDIV2",
+       "EXISTINDIV3" ],
+      "unit" : "€",
+      "response" : 
+      { "name" : "Q6INTRA" } },
+     
+     { "id" : "kewi7qdp",
+      "componentType" : "CheckboxGroup",
+      "page" : "7.8",
+      "label" : 
+      { "value" : "\"➡ 8. \" || \"Q7Intra - question QCM et comparaison avec réponse QCU Q4Intra (si oui et libelle 1 : controle)\"",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "(not(cast(EXISTINDIV2,integer) < 18))",
+       "type" : "VTL|MD",
+       "bindingDependencies" : 
+       [ "EXISTINDIV2" ] },
+      "controls" : 
+      [ 
+       { "id" : "kewi7qdp-CI-0",
+        "criticality" : "WARN",
+        "control" : 
+        { "value" : "not(nvl(Q4INTRA,\"0\") = \"1\" and nvl($Q4INTRA1$,false) = true)" },
+        "errorMessage" : 
+        { "value" : "Si QCU Q4 a dit oui et libellé 1 : c’est anormal" },
+        "bindingDependencies" : 
+        [ "Q4INTRA" ] } ],
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "key1u56w",
+        "page" : "6",
+        "label" : 
+        { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kewnbex8",
+        "page" : "7.1",
+        "label" : 
+        { "value" : "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "Q7INTRA1",
+       "Q7INTRA2",
+       "Q7INTRA3",
+       "EXISTINDIV1",
+       "EXISTINDIV2",
+       "EXISTINDIV3" ],
+      "responses" : 
+      [ 
+       { "id" : "kewi7qdp-QOP-khkh0pap",
+        "label" : 
+        { "value" : "libelle 1",
+         "type" : "VTL|MD" },
+        "response" : 
+        { "name" : "Q7INTRA1" } },
+       
+       { "id" : "kewi7qdp-QOP-khkgup98",
+        "label" : 
+        { "value" : "libelle 2",
+         "type" : "VTL|MD" },
+        "response" : 
+        { "name" : "Q7INTRA2" } },
+       
+       { "id" : "kewi7qdp-QOP-khkgp789",
+        "label" : 
+        { "value" : "libelle 3",
+         "type" : "VTL|MD" },
+        "response" : 
+        { "name" : "Q7INTRA3" } } ] },
+     
+     { "id" : "kewinlqn",
+      "componentType" : "Datepicker",
+      "mandatory" : false,
+      "page" : "7.9",
+      "min" : "2010-01-01",
+      "max" : "2030-12-31",
+      "label" : 
+      { "value" : "\"➡ 9. \" || \"Q8Intra - dernière question date et rappel pour mémoire de la réponse Q1 : \" || Q1INTRA",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "(not(cast(EXISTINDIV2,integer) < 18))",
+       "type" : "VTL|MD",
+       "bindingDependencies" : 
+       [ "EXISTINDIV2" ] },
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "key1u56w",
+        "page" : "6",
+        "label" : 
+        { "value" : "\"II - \" || \"Boucle sur les individus majeurs, sous-séquence\"",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kewnbex8",
+        "page" : "7.1",
+        "label" : 
+        { "value" : "\"Sous-sequence boucle totale - individu : \" || EXISTINDIV1 || \"agé de \" || EXISTINDIV2 || \" ans\"",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "Q1INTRA",
+       "Q8INTRA",
+       "EXISTINDIV1",
+       "EXISTINDIV2",
+       "EXISTINDIV3" ],
+      "dateFormat" : "YYYY-MM-DD",
+      "response" : 
+      { "name" : "Q8INTRA" } } ],
+    "iterations" : 
+    { "value" : "count(EXISTINDIV1)",
+     "type" : "VTL|MD" } },
+   
+   { "id" : "kfco2gq5",
+    "componentType" : "Sequence",
+    "page" : "8",
+    "label" : 
+    { "value" : "\"III - \" || \"SEQUENCE INTERMEDIAIRE\"",
+     "type" : "VTL|MD" },
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL|MD" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kfco2gq5",
+      "page" : "8",
+      "label" : 
+      { "value" : "\"III - \" || \"SEQUENCE INTERMEDIAIRE\"",
+       "type" : "VTL|MD" } } } },
+   
+   { "id" : "kfcnp9re",
+    "componentType" : "Textarea",
+    "mandatory" : false,
+    "page" : "9",
+    "maxLength" : 255,
+    "label" : 
+    { "value" : "\"➡ 10. \" || \"Etes vous content du questionnaire\"",
+     "type" : "VTL|MD" },
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL|MD" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kfco2gq5",
+      "page" : "8",
+      "label" : 
+      { "value" : "\"III - \" || \"SEQUENCE INTERMEDIAIRE\"",
+       "type" : "VTL|MD" } } },
+    "bindingDependencies" : 
+    [ "ETESVOUSCO" ],
+    "response" : 
+    { "name" : "ETESVOUSCO" } },
+   
+   { "id" : "COMMENT-SEQ",
+    "componentType" : "Sequence",
+    "page" : "10",
+    "label" : 
+    {  },
+    "conditionFilter" : 
+    { "value" : "true" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "COMMENT-SEQ",
+      "page" : "10",
+      "label" : 
+      {  } } } },
+   
+   { "id" : "COMMENT-QUESTION",
+    "componentType" : "Textarea",
+    "mandatory" : false,
+    "page" : "11",
+    "maxLength" : 2000,
+    "label" : 
+    {  },
+    "conditionFilter" : 
+    { "value" : "true" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "COMMENT-SEQ",
+      "page" : "10",
+      "label" : 
+      {  } } },
+    "bindingDependencies" : 
+    [ "COMMENT_QE" ],
+    "response" : 
+    { "name" : "COMMENT_QE" } } ],
+  "variables" : 
+  [ 
+   { "variableType" : "COLLECTED",
+    "name" : "COMMENT_QE",
+    "componentRef" : "COMMENT-QUESTION",
+    "values" : 
+    { "PREVIOUS" : null,
+     "COLLECTED" : null,
+     "FORCED" : null,
+     "EDITED" : null,
+     "INPUTED" : null } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "EXISTINDIV1",
+    "componentRef" : "kewhggmx",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "EXISTINDIV2",
+    "componentRef" : "kewhggmx",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "EXISTINDIV3",
+    "componentRef" : "kewhggmx",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "Q1INTRA",
+    "componentRef" : "kfmn7uc5",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "Q2INTRA",
+    "componentRef" : "kfmn7uc5",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "Q3INTRA",
+    "componentRef" : "kfmn7uc5",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "Q4INTRA",
+    "componentRef" : "kfmn7uc5",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "Q5INTRA",
+    "componentRef" : "kfmn7uc5",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "Q6INTRA",
+    "componentRef" : "kfmn7uc5",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "Q7INTRA1",
+    "componentRef" : "kfmn7uc5",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "Q7INTRA2",
+    "componentRef" : "kfmn7uc5",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "Q7INTRA3",
+    "componentRef" : "kfmn7uc5",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "Q8INTRA",
+    "componentRef" : "kfmn7uc5",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "ETESVOUSCO",
+    "componentRef" : "kfcnp9re",
+    "values" : 
+    { "PREVIOUS" : null,
+     "COLLECTED" : null,
+     "FORCED" : null,
+     "EDITED" : null,
+     "INPUTED" : null } },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_EXISTINDIV",
+    "expression" : "true",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_Q1INTRA",
+    "expression" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "bindingDependencies" : 
+    [ "EXISTINDIV2" ],
+    "shapeFrom" : "Q1INTRA",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_Q2INTRA",
+    "expression" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "bindingDependencies" : 
+    [ "EXISTINDIV2" ],
+    "shapeFrom" : "Q1INTRA",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_Q3INTRA",
+    "expression" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "bindingDependencies" : 
+    [ "EXISTINDIV2" ],
+    "shapeFrom" : "Q1INTRA",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_Q4INTRA",
+    "expression" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "bindingDependencies" : 
+    [ "EXISTINDIV2" ],
+    "shapeFrom" : "Q1INTRA",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_Q5INTRA",
+    "expression" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "bindingDependencies" : 
+    [ "EXISTINDIV2" ],
+    "shapeFrom" : "Q1INTRA",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_Q6INTRA",
+    "expression" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "bindingDependencies" : 
+    [ "EXISTINDIV2" ],
+    "shapeFrom" : "Q1INTRA",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_Q7INTRA",
+    "expression" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "bindingDependencies" : 
+    [ "EXISTINDIV2" ],
+    "shapeFrom" : "Q1INTRA",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_Q8INTRA",
+    "expression" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "bindingDependencies" : 
+    [ "EXISTINDIV2" ],
+    "shapeFrom" : "Q1INTRA",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_ETESVOUSCO",
+    "expression" : "true",
+    "inFilter" : "false" } ],
+  "cleaning" : 
+  { "EXISTINDIV2" : 
+   { "Q1INTRA" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "Q2INTRA" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "Q3INTRA" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "Q4INTRA" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "Q5INTRA" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "Q6INTRA" : "(not(cast(EXISTINDIV2,integer) < 18))",
+    "Q8INTRA" : "(not(cast(EXISTINDIV2,integer) < 18))" } } }
