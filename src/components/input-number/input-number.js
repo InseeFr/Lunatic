@@ -12,10 +12,11 @@ function InputNumber({
 	max,
 	step,
 }) {
+	const valueEffective = value ?? 0;
 	const handleChange = useCallback(
 		function (e) {
-			const value = e.target.value;
-			onChange(value);
+			const val = e.target.value;
+			onChange(val);
 		},
 		[onChange]
 	);
@@ -24,7 +25,7 @@ function InputNumber({
 			className={classnames('input-lunatic', { disabled, readOnly })}
 			type="number"
 			onChange={handleChange}
-			value={value}
+			value={valueEffective}
 			labelledby={labelId}
 			readOnly={readOnly}
 			disabled={disabled}

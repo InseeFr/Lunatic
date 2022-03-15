@@ -24,7 +24,7 @@ function Button({ children, onClick, disabled, label }) {
 }
 
 Button.propTypes = {
-	value: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	disabled: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
 };
