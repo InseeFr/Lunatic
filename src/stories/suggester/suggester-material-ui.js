@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState, useRef } from 'react';
 import classnames from 'classnames';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import MenuList from '@mui/material/MenuList';
@@ -10,32 +11,50 @@ import Typography from '@mui/material/Typography';
 import useDocumentAddEventListener from '../../utils/to-expose/hooks/use-document-add-event-listener';
 import './lunatic-suggester-mui.scss';
 
-function SuggesterContainer({ children, onBlur, onFocus, onKeyDown }) {
-	const ref = useRef();
-
-	const onClick = useCallback(
+function SuggesterContainer({
+	children,
+	onBlur,
+	onFocus,
+	onKeyDown,
+	labelledBy,
+}) {
+	const handleClickAway = useCallback(
 		function (e) {
-			const { current } = ref;
-			if (!current.contains(e.target)) {
-				onBlur();
-			}
+			onBlur();
 		},
-		[ref, onBlur]
+		[onBlur]
 	);
-
-	useDocumentAddEventListener('mousedown', onClick);
 
 	return (
-		<div
-			className="lunatic-suggester-mui"
-			ref={ref}
-			onFocus={onFocus}
-			onBlur={onBlur}
-			onKeyDown={onKeyDown}
-		>
-			<div className="lunatic-suggester-mui-content">{children}</div>
-		</div>
+		<ClickAwayListener onClickAway={handleClickAway}>
+			<>{children}</>
+		</ClickAwayListener>
 	);
+	// const ref = useRef();
+
+	// const onClick = useCallback(
+	// 	function (e) {
+	// 		const { current } = ref;
+	// 		if (!current.contains(e.target)) {
+	// 			onBlur();
+	// 		}
+	// 	},
+	// 	[ref, onBlur]
+	// );
+
+	// useDocumentAddEventListener('mousedown', onClick);
+
+	// return (
+	// 	<div
+	// 		className="lunatic-suggester-mui"
+	// 		ref={ref}
+	// 		onFocus={onFocus}
+	// 		onBlur={onBlur}
+	// 		onKeyDown={onKeyDown}
+	// 	>
+	// 		<div className="lunatic-suggester-mui-content">{children}</div>
+	// 	</div>
+	// );
 }
 
 function Selection({ search, onChange }) {
@@ -62,6 +81,7 @@ function OptionMUI({ label, id, selected }) {
 }
 
 function Panel({ options, expended, selectedIndex }) {
+	console.log({ options, expended });
 	if (Array.isArray(options) && options.length && expended) {
 		const items = options.map(function (option, index) {
 			const { label, id } = option;
@@ -109,7 +129,12 @@ function SuggesterMaterialUI({
 	);
 
 	return (
-		<SuggesterContainer onBlur={onBlur} onFocus={onFocus} onKeyDown={onKeyDown}>
+		<SuggesterContainer
+			onBlur={onBlur}
+			onFocus={onFocus}
+			onKeyDown={onKeyDown}
+			labelledBy={labelledBy}
+		>
 			<Selection search={search} onChange={onChangeEx} />
 			<Panel
 				options={options}

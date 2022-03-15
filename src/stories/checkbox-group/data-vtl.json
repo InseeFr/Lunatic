@@ -29,7 +29,7 @@
 				},
 				{
 					"id": "j334akov-QOP-jbgdfssy",
-					"label": "NAME || \" the Helper Monkey\"",
+					"label": { "value": "NAME || \" the Helper Monkey\"", "type": "VTL|MD" },
 					"response": {
 						"name": "PET4"
 					}

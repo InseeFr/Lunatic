@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import './button.scss';
 
-function Button({ children, onClick, disabled }) {
+function Button({ children, onClick, disabled, label }) {
 	const handleClick = useCallback(
 		function (e) {
 			e.stopPropagation();
@@ -17,7 +17,7 @@ function Button({ children, onClick, disabled }) {
 			disabled={disabled}
 			type="button"
 			className="button-lunatic"
-			value={children}
+			value={label || children}
 			onClick={handleClick}
 		/>
 	);
