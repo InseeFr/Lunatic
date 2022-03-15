@@ -1,6 +1,11 @@
 import getComponentValue from './get-component-value';
 import fillComponentExpressions from './fill-component-expressions';
 
+function fillComponentComportements(component, state) {
+	const { handleChange, executeExpression } = state;
+	return { ...component, handleChange, executeExpression };
+}
+
 function fillComponentValue(component, state) {
 	const value = getComponentValue(component, state);
 	return { ...component, value };
@@ -18,12 +23,15 @@ function fillComponents(components, state) {
 		const { pager, executeExpression } = state;
 		const { iteration } = pager;
 
-		return fillComponentExpressions(
-			fillPagination(fillComponentValue(component, state), state),
-			{
-				executeExpression,
-				iteration,
-			}
+		return fillComponentComportements(
+			fillComponentExpressions(
+				fillPagination(fillComponentValue(component, state), state),
+				{
+					executeExpression,
+					iteration,
+				}
+			),
+			state
 		);
 	});
 }

@@ -5,9 +5,15 @@ export const GO_PREVIOUS_PAGE = 'use-lunatic/go-previous';
 export const goPreviousPage = () => ({ type: GO_PREVIOUS_PAGE });
 
 export const ON_INIT = 'use-lunatic/on-init';
-export const onInit = ({ data, source, initialPage, features }) => ({
+export const onInit = ({
+	data,
+	source,
+	initialPage,
+	features,
+	handleChange,
+}) => ({
 	type: ON_INIT,
-	payload: { data, source, initialPage, features },
+	payload: { data, source, initialPage, features, handleChange },
 });
 
 export const HANDLE_CHANGE = 'use-lunatic/handle-change';

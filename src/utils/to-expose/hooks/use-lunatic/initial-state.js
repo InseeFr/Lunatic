@@ -17,6 +17,7 @@ const INITIAL_STATE = {
 	/* fonctionnalités vtl & md */
 	updateBindings: () => {},
 	executeExpression: () => {},
+	handleChange: () => {},
 };
 
 export default INITIAL_STATE;

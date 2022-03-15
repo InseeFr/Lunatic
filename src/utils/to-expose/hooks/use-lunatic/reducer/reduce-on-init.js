@@ -129,7 +129,7 @@ function checkInLoop(state) {
 
 function reduceOnInit(state, action) {
 	const { payload } = action;
-	const { source, data, initialPage, features } = payload;
+	const { source, data, initialPage, features, handleChange } = payload;
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
 		const [executeExpression, updateBindings] = createExecuteExpression(
@@ -157,6 +157,7 @@ function reduceOnInit(state, action) {
 			pager,
 			executeExpression,
 			updateBindings,
+			handleChange,
 		});
 	}
 

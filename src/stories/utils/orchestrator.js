@@ -37,7 +37,7 @@ function OrchestratorForStories({
 	modalForControls = false,
 	features = DEFAULT_FEATURES,
 	bindings: initialBindings,
-	initialPage = '18',
+	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	shortcut = false,
@@ -56,11 +56,9 @@ function OrchestratorForStories({
 		getComponents,
 		goNextPage,
 		goPreviousPage,
-		handleChange,
 		pageTag,
 		isFirstPage,
 		isLastPage,
-		executeExpression,
 		waiting,
 	} = lunatic.useLunatic({
 		source,
@@ -85,13 +83,11 @@ function OrchestratorForStories({
 								{...other}
 								{...rest}
 								{...component}
-								handleChange={handleChange}
 								preferences={preferences}
 								savingType={savingType}
 								management={management}
 								missing={missing}
 								shortcut={shortcut}
-								executeExpression={executeExpression}
 							/>
 						</div>
 					);
