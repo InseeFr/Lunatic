@@ -1,3 +1,15 @@
+export const buildLocalResponse = () => {
+	throw new Error('redefine buildLocalResponse if needed');
+};
+
+export const buildMultiTooltipResponse = () => {
+	throw new Error('redefine buildMultiTooltipResponse if needed');
+};
+
+export const buildBooleanTooltipResponse = () => {
+	throw new Error('redefine buildBooleanTooltipResponse if needed');
+};
+
 // import { buildNewValue } from '../../to-expose/handler';
 // import * as C from '../../../constants/value-types';
 

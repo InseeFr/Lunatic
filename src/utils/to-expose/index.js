@@ -10,3 +10,7 @@
 // export { interpret } from './interpret';
 // export * from './hooks';
 export { default as useLunatic } from './hooks';
+
+export const interpret = () => {
+	throw new Error('redefine interpret if needed');
+};
