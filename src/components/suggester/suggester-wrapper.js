@@ -34,15 +34,7 @@ function SuggesterWrapper({
 	disabled,
 }) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const {
-		search,
-		selectedIndex,
-		options,
-		focused,
-		id,
-
-		messageError,
-	} = state;
+	const { search, selectedIndex, options, focused, id, messageError } = state;
 	const prevSelectedIndex = usePrevious(selectedIndex);
 
 	useEffect(
@@ -93,7 +85,7 @@ function SuggesterWrapper({
 		function () {
 			dispatch(actions.onFocus());
 		},
-		[dispatch, disabled]
+		[dispatch]
 	);
 
 	const onDelete = useCallback(
@@ -142,6 +134,8 @@ function SuggesterWrapper({
 				onSelect={onSelect}
 				value={value}
 				custom={custom}
+				focused={focused}
+				messageError={messageError}
 				onFocus={onFocus}
 				onDelete={onDelete}
 				onBlur={onBlur}

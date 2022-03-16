@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useMemo } from 'react';
+import React, { useCallback, useRef } from 'react';
 import classnames from 'classnames';
 import SuggesterContent from './suggester-content';
 import Selection from './selection';
@@ -59,6 +59,7 @@ function Suggester({
 			<div className="lunatic-suggester-message-error">{messageError}</div>
 		);
 	}
+
 	return (
 		<div className={classnames('lunatic-suggester-container', className)}>
 			<SuggesterContent
