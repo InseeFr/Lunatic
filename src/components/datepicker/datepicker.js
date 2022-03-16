@@ -10,6 +10,8 @@ function Datepicker({ disabled, readOnly, value, onChange, labelId }) {
 		},
 		[onChange]
 	);
+	console.log({ value });
+
 	return (
 		<input
 			className={classnames('datepicker-lunatic', { disabled, readOnly })}
