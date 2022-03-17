@@ -6,6 +6,7 @@ import readme from './README.md';
 import { titleDecorator } from '../utils';
 import data from './data';
 import dataForced from './data-forced';
+import TextareaMui from './textarea-mui';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import {
 	text,
@@ -32,13 +33,9 @@ stories.addWithJSX('Props', () => (
 		source={data}
 		label={text('Label', '"Hello " || NAME')}
 		missing={boolean('Missing', false)}
-		placeholder={text('Placeholder', 'Placeholder')}
-		rows={number('Rows', 5)}
-		maxLength={number('Max length', 500)}
 		readOnly={boolean('Read only', false)}
 		mandatory={boolean('Mandatory', false)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
-		bindings={object('Bindings', { NAME: 'Mauro' })}
 		management={boolean('Management', false)}
 		focused={boolean('Focused', false)}
 		labelPosition={select('Label position', labelPositionOptions, 'DEFAULT')}
@@ -65,4 +62,22 @@ stories.addWithJSX('External update', () => {
 		);
 	};
 	return <Fake />;
+});
+
+stories.addWithJSX('Custom Textarea with MUI', function () {
+	const custom = { Textarea: TextareaMui };
+
+	return (
+		<Orchestrator
+			id="props"
+			source={data}
+			label={text('Label', '"Hello " || NAME')}
+			missing={boolean('Missing', false)}
+			placeholder={text('Placeholder', 'Placeholder')}
+			mandatory={boolean('Mandatory', false)}
+			features={select('Features', featuresOptions, ['VTL', 'MD'])}
+			management={boolean('Management', false)}
+			custom={custom}
+		/>
+	);
 });

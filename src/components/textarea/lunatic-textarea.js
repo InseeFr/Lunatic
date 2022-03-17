@@ -11,11 +11,16 @@ function LunaticTextarea({
 	response,
 	value,
 	custom,
+	rows,
+	maxLength,
+	cols,
+	placeholder,
 }) {
 	const inputId = `lunatic-textarea-${id}`;
 	const labelId = `lunatic-textarea-label-${id}`;
 
-	const onClick = useOnHandleChange({ handleChange, response, value });
+	const onChange = useOnHandleChange({ handleChange, response, value });
+
 	return (
 		<LunaticField
 			label={label}
@@ -26,9 +31,31 @@ function LunaticTextarea({
 			value={value}
 			className="lunatic-switch"
 		>
-			<Textarea onClick={onClick} custom={custom} />
+			<Textarea
+				onChange={onChange}
+				custom={custom}
+				rows={rows}
+				maxLength={maxLength}
+				cols={cols}
+				placeholder={placeholder}
+				value={value}
+			/>
 		</LunaticField>
 	);
 }
+
+Textarea.defaultProps = {
+	rows: 1,
+	maxLength: 100,
+	cols: 32,
+	placeholder: 'Please enter your text here',
+};
+
+Textarea.propTypes = {
+	rows: PropTypes.number,
+	maxLength: PropTypes.number,
+	cols: PropTypes.number,
+	placeholder: PropTypes.string,
+};
 
 export default LunaticTextarea;
