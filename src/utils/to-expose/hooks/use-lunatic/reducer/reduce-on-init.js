@@ -65,7 +65,7 @@ function appendToObjectMap(map, key, object) {
  * @returns
  */
 function createVariables(source, data) {
-	const { variables } = source;
+	const { variables = [] } = source;
 	const [mapVariablesTypes, mapVariables] = variables.reduce(
 		function ([mapType, mapVar], variable) {
 			const { variableType: type, name } = variable;

@@ -1,85 +1,9 @@
-// function isCheckboxGroup(component) {
-// 	const { componentType } = component;
-// 	return componentType === 'CheckboxGroup';
-// }
-
-// function isLoopComponent(component) {
-// 	const { componentType, lines, iterations } = component;
-// 	if (componentType === 'Loop' && iterations !== undefined) {
-// 		return true;
-// 	}
-// 	if (
-// 		componentType === 'Loop' &&
-// 		typeof lines === 'object' &&
-// 		lines.max !== undefined &&
-// 		lines.min !== undefined
-// 	) {
-// 		return true;
-// 	}
-// 	return false;
-// }
-
 function isInSubPage(state) {
 	const { pager } = state;
 	const { subPage } = pager;
 
 	return subPage !== undefined;
 }
-
-// function getLoopValues(component, variables) {
-// 	const { components } = component;
-// 	return components.reduce(function (map, component) {
-// 		// TODO responses cells
-// 		const { response } = component;
-// 		if (response) {
-// 			const { name } = response;
-// 			if (name) {
-// 				return { ...map, [name]: getCollectedValue(component, variables) };
-// 			}
-// 		}
-// 		return map;
-// 	}, {});
-// }
-
-// function getCheckboxGroupValue(component, variables) {
-// 	const { responses } = component;
-// 	if (typeof responses === 'object') {
-// 		return responses.reduce(function (map, entry) {
-// 			const { response } = entry;
-// 			if (entry) {
-// 				const { name } = response;
-// 				return { ...map, [name]: getCollectedValue({ response }, variables) };
-// 			}
-// 			return map;
-// 		}, {});
-// 	}
-// 	return {};
-// }
-
-// function getCollectedValue(component, variables) {
-// 	const { response } = component;
-
-// 	if (response) {
-// 		const { name } = response;
-// 		if (name in variables) {
-// 			const { value } = variables[name];
-// 			return value;
-// 		}
-// 	}
-
-// 	return undefined;
-// }
-
-// function getSubPageValue(state, component, variables) {
-// 	const value = getCollectedValue(component, variables);
-
-// 	if (value && Array.isArray(value)) {
-// 		const { pager } = state;
-// 		const { iteration } = pager;
-// 		return value[iteration];
-// 	}
-// 	return undefined;
-// }
 
 /* */
 function mergeResponse({ map, response, variables }) {
@@ -100,8 +24,41 @@ function collecteArrayResponses({ components, variables, map = {} }) {
 	}, map);
 }
 
+function collectCell({ cell, variables, map }) {
+	const [component, ...rest] = cell;
+	const { componentType } = component;
+	let next = map;
+	if (componentType) {
+		next = {
+			...map,
+			...collecteComponentResponse({ component, variables, map }),
+		};
+	}
+
+	if (rest.length) {
+		return collectCell({ cell: rest, variables, map: next });
+	}
+	return next;
+}
+
+function collectTableResponse({ map, cells, variables }) {
+	if (Array.isArray(cells)) {
+		return cells.reduce(function (sub, cell) {
+			if (Array.isArray(cell)) {
+				return collectCell({ cell, variables, map: sub });
+			}
+			return sub;
+		}, map);
+	}
+	return map;
+}
+
 function collecteComponentResponse({ component, variables, map = {} }) {
-	const { components, response, responses } = component;
+	const { components, response, responses, cells } = component;
+
+	if (cells) {
+		return collectTableResponse({ map, cells, variables });
+	}
 	if (response) {
 		return mergeResponse({ map, response, variables });
 	}

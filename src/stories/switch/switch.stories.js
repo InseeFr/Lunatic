@@ -56,7 +56,6 @@ stories.addWithJSX('External update', () => {
 
 stories.addWithJSX('Custom Switch', function () {
 	const custom = { Switch: SwitchMaterialUI };
-
 	return (
 		<Orchestrator
 			source={data}

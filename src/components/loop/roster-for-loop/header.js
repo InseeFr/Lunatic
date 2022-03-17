@@ -1,12 +1,10 @@
 import React from 'react';
-import THead from './html-table/thead';
-import Tr from './html-table/tr';
-import Th from './html-table/th';
+import { Tr, Th, Thead } from '../../commons/components/html-table';
 
 function Header({ header, id }) {
 	if (Array.isArray(header)) {
 		return (
-			<THead id={id}>
+			<Thead id={id}>
 				<Tr id={`${id}`}>
 					{header.map(function ({ label }, index) {
 						return (
@@ -16,7 +14,7 @@ function Header({ header, id }) {
 						);
 					})}
 				</Tr>
-			</THead>
+			</Thead>
 		);
 	}
 	return null;

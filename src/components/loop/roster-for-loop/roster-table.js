@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from './html-table/table';
+import { Table } from '../../commons/components/html-table';
 import Header from './header';
 import Body from './body';
 import './roster.scss';

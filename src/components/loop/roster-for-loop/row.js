@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
-import Tr from './html-table/tr';
-import Td from './html-table/td';
+import { Tr, Td } from '../../commons/components/html-table';
 import { RowComponent } from '../commons';
 
 function Row({
