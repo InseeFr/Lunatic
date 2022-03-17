@@ -59,7 +59,7 @@ stories.addWithJSX('Custom Switch', function () {
 	const customized = components.map(function (component) {
 		const { componentType } = component;
 		if (componentType === 'Switch') {
-			return { ...component, custom: SwitchMaterialUI };
+			return { ...component, custom: { Switch: SwitchMaterialUI } };
 		}
 		return component;
 	});

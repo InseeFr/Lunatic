@@ -105,4 +105,4 @@ function Suggester({
 	);
 }
 
-export default createCustomizableLunaticField(React.memo(Suggester));
+export default createCustomizableLunaticField(Suggester);
