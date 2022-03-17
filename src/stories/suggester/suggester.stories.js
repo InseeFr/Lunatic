@@ -138,22 +138,16 @@ storiesAuto.addWithJSX('Default', () => (
 ));
 
 stories.addWithJSX('Custom suggester', function () {
-	const { components } = data;
-	const customized = components.map(function (component) {
-		const { componentType } = component;
-		if (componentType === 'Suggester') {
-			return { ...component, custom: SuggesterMaterialUI };
-		}
-		return component;
-	});
+	const custom = { Suggester: SuggesterMaterialUI };
 
 	return (
 		<Orchestrator
 			id="default"
-			source={{ ...data, components: customized }}
+			source={data}
 			suggesterFetcher={suggesterFetcher}
 			autoSuggesterLoading
 			pagination
+			custom={custom}
 		/>
 	);
 });

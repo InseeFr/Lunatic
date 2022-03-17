@@ -55,17 +55,11 @@ stories.addWithJSX('External update', () => {
 });
 
 stories.addWithJSX('Custom Switch', function () {
-	const { components } = data;
-	const customized = components.map(function (component) {
-		const { componentType } = component;
-		if (componentType === 'Switch') {
-			return { ...component, custom: { Switch: SwitchMaterialUI } };
-		}
-		return component;
-	});
+	const custom = { Switch: SwitchMaterialUI };
+
 	return (
 		<Orchestrator
-			source={{ ...data, components: customized }}
+			source={data}
 			positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 			features={select('Features', featuresOptions, ['VTL', 'MD'])}
 			missing={boolean('Missing', false)}
@@ -73,6 +67,7 @@ stories.addWithJSX('Custom Switch', function () {
 			disabled={boolean('Disabled', false)}
 			focused={boolean('Focused', false)}
 			management={boolean('Management', false)}
+			custom={custom}
 		/>
 	);
 });

@@ -169,7 +169,7 @@ function Search({ storeInfo, version = '1', max = 30, defaultValue = '' }) {
 				doIt();
 			}
 		},
-		[value, name, version, max]
+		[value, name, version, max, order]
 	);
 	return (
 		<>
