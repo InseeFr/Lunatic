@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as lunatic from 'components';
-import { fillComponentExpressions } from '../../../utils/use-lunatic/commons';
+import { fillComponentExpressions } from '../../../use-lunatic/commons';
 
 function RowComponent({
 	id,

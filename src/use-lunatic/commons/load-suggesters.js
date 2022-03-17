@@ -3,8 +3,8 @@ import {
 	clearStoreInfo,
 	clearStoreData,
 	updateStoreInfo,
-} from '../../store-tools';
-import { createAppendTask } from '../../suggester-workers/append-to-index';
+} from '../../utils/store-tools';
+import { createAppendTask } from '../../utils/suggester-workers/append-to-index';
 
 async function prepareStore(storeInfo, idbVersion) {
 	const { name } = storeInfo;
