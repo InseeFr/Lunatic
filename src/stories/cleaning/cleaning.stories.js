@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Orchestrator from '../utils/orchestrator';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 import simpsons from './simpsons';
 import simpleLoop from './simple-loop';
 import { positioningOptions, featuresOptions } from '../utils/options';

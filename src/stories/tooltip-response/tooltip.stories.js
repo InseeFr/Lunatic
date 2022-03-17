@@ -4,7 +4,7 @@ import { withReadme } from 'storybook-readme';
 import { TooltipResponse } from 'components';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 import mdLink from './md-link';
 import mdTooltip from './md-tooltip.json';
 import { positioningOptions, featuresOptions } from '../utils/options';

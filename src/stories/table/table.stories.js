@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 import dataDefault from './data-default';
 import dataOneAxisOneMeasure from './data-one-axis-one-measure';
 import dataOneAxisTwoMeasures from './data-one-axis-two-measures';

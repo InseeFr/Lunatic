@@ -7,3 +7,4 @@ export { default as usePrevious } from './use-previous';
 export { default as useOnHandleChange } from './use-on-handle-change';
 export { default as useOptionsKeydown } from './use-options-keydown';
 export { default as createCustomizableLunaticField } from './create-customizable-field';
+export { default as buildStyleObject } from './build-style-object';

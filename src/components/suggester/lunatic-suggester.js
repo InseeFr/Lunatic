@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import IDBSuggester from './idb-suggester';
 import { useOnHandleChange, LunaticField } from '../commons';
-import * as U from '../../utils/lib';
+import * as commonPropTypes from '../commons/prop-types';
 
 function LunaticSuggester(props) {
 	const {
@@ -71,12 +71,12 @@ LunaticSuggester.defaultProps = {
 LunaticSuggester.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
-	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
-	response: U.responsePropTypes,
+	preferences: PropTypes.arrayOf(commonPropTypes.valueTypePropTypes),
+	response: commonPropTypes.responsePropTypes,
 	handleChange: PropTypes.func.isRequired,
 	disabled: PropTypes.bool,
 	focused: PropTypes.bool,
-	declarations: U.declarationsPropTypes,
+	declarations: commonPropTypes.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
 	management: PropTypes.bool,

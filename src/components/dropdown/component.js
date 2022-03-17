@@ -1,12 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import componentWrapper from '../component-wrapper';
-import DropdownSimple from './dropdown-simple';
-import DropdownEdit from './dropdown-edit';
-import Declarations from '../declarations';
-import * as U from '../../utils/lib';
-import * as C from '../../constants';
-import { interpret } from '../../utils/to-expose';
 import './dropdown.scss';
 
 // function compileFeatures(features = []) {

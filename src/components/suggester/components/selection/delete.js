@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import classnames from 'classnames';
-import { Fab } from '../../../../utils/components/fab';
+import { Fab } from '../../../commons/components/fab';
 import CrossIcon from '../../../../utils/icons/cross.icon';
 
 function isDisabled(search) {

@@ -1,11 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import componentWrapper from '../component-wrapper';
-import * as lunatic from '../components';
-import Declarations from '../declarations';
-import * as U from '../../utils/lib';
-import * as C from '../../constants';
-import { interpret } from '../../utils/to-expose';
+import React from 'react';
+
 import './table.scss';
 
 // const Table = ({
@@ -171,7 +165,7 @@ import './table.scss';
 // export default componentWrapper(React.memo(Table, U.areEqual));
 
 function Table() {
-	return null;
+	return <>Table</>;
 }
 
 export default Table;

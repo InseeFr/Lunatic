@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import Orchestrator from '../utils/orchestrator';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 import calcVar from './calc-var';
 import logement from './logement';
 import logementQueen from './logement-queen';

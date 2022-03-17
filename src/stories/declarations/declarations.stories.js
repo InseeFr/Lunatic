@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Declarations } from 'components';
 import readme from './README.md';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 import * as C from '../../constants';
 import { createExecuteExpression } from '../../utils/to-expose/hooks/use-lunatic/commons';
 

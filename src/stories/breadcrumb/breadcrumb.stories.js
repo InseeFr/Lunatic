@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { Breadcrumb } from 'components';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 
 const elements = ['Sequence', 'Sub-sequence', 'Question'];
 
