@@ -9,4 +9,4 @@
 // } from './state';
 // export { interpret } from './interpret';
 // export * from './hooks';
-export { default as useLunatic } from './hooks';
+export { default as useLunatic } from '../use-lunatic';

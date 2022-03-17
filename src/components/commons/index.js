@@ -8,4 +8,5 @@ export { default as useOnHandleChange } from './use-on-handle-change';
 export { default as useOptionsKeydown } from './use-options-keydown';
 export { default as createCustomizableLunaticField } from './create-customizable-field';
 export { default as buildStyleObject } from './build-style-object';
+export { default as useDocumentAddEventListener } from './use-document-add-event-listener';
 export * as HtmlTable from './components/html-table';

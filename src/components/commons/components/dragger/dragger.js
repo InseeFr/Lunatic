@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import useDocumentAddEventListener from '../../../../utils/to-expose/hooks/use-document-add-event-listener';
+import { useDocumentAddEventListener } from '../../../commons';
 import './dragger.scss';
 
 function Dragger({ el, children, onDrag }) {

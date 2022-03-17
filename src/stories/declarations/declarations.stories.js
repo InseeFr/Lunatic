@@ -5,7 +5,7 @@ import { Declarations } from 'components';
 import readme from './README.md';
 import { titleDecorator } from '../utils';
 import * as C from '../../constants';
-import { createExecuteExpression } from '../../utils/to-expose/hooks/use-lunatic/commons';
+import { createExecuteExpression } from '../../utils/use-lunatic/commons';
 
 const stories = storiesOf('Declarations', module)
 	.addDecorator(withReadme(readme))
