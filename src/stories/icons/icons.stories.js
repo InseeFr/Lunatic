@@ -1,24 +1,15 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import CrossIcon from '../../utils/icons/cross.icon';
-import ClosedIcon from '../../utils/icons/closed.icon';
-import OpenedIcon from '../../utils/icons/opened.icon';
-import LoadIcon from '../../utils/icons/load.icon';
-import NetworkIcon from '../../utils/icons/network.icon';
-import OnDragIcon from '../../utils/icons/on-drag.icon';
-import RadioChecked from '../../utils/icons/radio-checked.icon';
-import RadioUnchecked from '../../utils/icons/radio-unchecked.icon';
-import CheckboxChecked from '../../utils/icons/checkbox-checked.icon';
-import CheckboxUnchecked from '../../utils/icons/checkbox-unchecked.icon';
+import { ICONS } from 'components';
 
 storiesOf('Icons', module)
-	.add('cross', () => <CrossIcon />)
-	.add('opened', () => <OpenedIcon />)
-	.add('closed', () => <ClosedIcon />)
-	.add('load', () => <LoadIcon />)
-	.add('network', () => <NetworkIcon />)
-	.add('on-drag', () => <OnDragIcon />)
-	.add('radio-unchecked', () => <RadioChecked />)
-	.add('radio-checked', () => <RadioUnchecked />)
-	.add('checkbox-checked', () => <CheckboxChecked />)
-	.add('checkbox-unchecked', () => <CheckboxUnchecked />);
+	.add('cross', () => <ICONS.CrossIcon />)
+	.add('opened', () => <ICONS.OpenedIcon />)
+	.add('closed', () => <ICONS.ClosedIcon />)
+	.add('load', () => <ICONS.LoadIcon />)
+	.add('network', () => <ICONS.NetworkIcon />)
+	.add('on-drag', () => <ICONS.OnDragIcon />)
+	.add('radio-unchecked', () => <ICONS.RadioChecked />)
+	.add('radio-checked', () => <ICONS.RadioUnchecked />)
+	.add('checkbox-checked', () => <ICONS.CheckboxChecked />)
+	.add('checkbox-unchecked', () => <ICONS.CheckboxUnchecked />);
