@@ -1,4 +1,5 @@
 import React from 'react';
+import createCustomizableLunaticField from '../../create-customizable-field';
 
 function Table({ id, children }) {
 	return (
@@ -8,4 +9,4 @@ function Table({ id, children }) {
 	);
 }
 
-export default Table;
+export default createCustomizableLunaticField(Table);

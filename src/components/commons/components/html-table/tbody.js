@@ -1,6 +1,7 @@
 import React from 'react';
+import createCustomizableLunaticField from '../../create-customizable-field';
 
-function TBody({ id, children }) {
+function Tbody({ id, children }) {
 	return (
 		<tbody id={`lunatic-table-tbody-${id}`} className="lunatic-table-tbody">
 			{children}
@@ -8,4 +9,4 @@ function TBody({ id, children }) {
 	);
 }
 
-export default TBody;
+export default createCustomizableLunaticField(Tbody);

@@ -1,5 +1,14 @@
 import React from 'react';
-
+import {
+	Table as HtmlTable,
+	Tbody as HtmlTbody,
+	Thead as HtmlThead,
+	Tr as HtmlTr,
+	Td as HtmlTd,
+	Th as HtmlTh,
+} from '../commons/components/html-table';
+import Header from './header';
+import { createCustomizableLunaticField } from '../commons';
 import './table.scss';
 
 // const Table = ({
@@ -164,8 +173,8 @@ import './table.scss';
 
 // export default componentWrapper(React.memo(Table, U.areEqual));
 
-function Table() {
-	return <>Table</>;
+function Table({ cells, custom, children }) {
+	return <HtmlTable custom={custom}>{children}</HtmlTable>;
 }
 
 export default Table;

@@ -1,4 +1,5 @@
 import React from 'react';
+import createCustomizableLunaticField from '../../create-customizable-field';
 
 function Tr({ id, children }) {
 	return (
@@ -8,4 +9,4 @@ function Tr({ id, children }) {
 	);
 }
 
-export default Tr;
+export default createCustomizableLunaticField(Tr);

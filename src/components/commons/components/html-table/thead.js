@@ -1,6 +1,7 @@
 import React from 'react';
+import createCustomizableLunaticField from '../../create-customizable-field';
 
-function THead({ id, children }) {
+function Thead({ id, children }) {
 	return (
 		<thead id={`lunatic-table-thead-${id}`} className="lunatic-table-thead">
 			{children}
@@ -8,4 +9,4 @@ function THead({ id, children }) {
 	);
 }
 
-export default THead;
+export default createCustomizableLunaticField(Thead);
