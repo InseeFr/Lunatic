@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
-import { createCustomizableLunaticField } from '../commons';
+import TextField from '@mui/material/TextField';
 
 function checkValue(value) {
 	return value || '';
 }
 
-function Input({
+function InputMui({
 	value,
 	onChange,
 	disabled,
@@ -14,6 +14,7 @@ function Input({
 	maxLength,
 	id,
 	labelledBy,
+	readOnly,
 }) {
 	const handleChange = useCallback(
 		function (e) {
@@ -23,26 +24,27 @@ function Input({
 		[onChange]
 	);
 	return (
-		<input
-			id={`lunatic-input-${id}`}
+		<TextField
+			id={`lunatic-mui-${id}`}
 			aria-labelledby={labelledBy}
 			autoComplete="off"
 			type="text"
 			disabled={disabled}
-			className={classnames('lunatic-input')}
+			className={classnames('lunatic-mui-input')}
 			value={checkValue(value)}
 			onChange={handleChange}
 			aria-required={required}
 			required={required}
 			maxLength={maxLength}
+			readOnly={readOnly}
 		/>
 	);
 }
 
-Input.defaultProps = {
+InputMui.defaultProps = {
 	disabled: false,
 	required: true,
 	maxLength: Number.MAX_SAFE_INTEGER,
 };
 
-export default createCustomizableLunaticField(Input);
+export default InputMui;

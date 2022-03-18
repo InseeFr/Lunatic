@@ -3,6 +3,7 @@ import { Table } from '../../commons/components/html-table';
 import Header from './header';
 import Body from './body';
 import './roster.scss';
+import { NothingToDisplay } from '../../commons';
 
 function RosterTable({
 	components,
@@ -15,12 +16,14 @@ function RosterTable({
 	missing,
 	management,
 	handleChange,
+	custom,
 }) {
 	if (nbRows > 0) {
 		return (
-			<Table id={id}>
-				<Header header={header} id={id} />
+			<Table id={id} custom={custom}>
+				<Header header={header} id={id} custom={custom} />
 				<Body
+					id={id}
 					components={components}
 					handleChange={handleChange}
 					nbRows={nbRows}
@@ -29,11 +32,12 @@ function RosterTable({
 					missing={missing}
 					shortcut={shortcut}
 					executeExpression={executeExpression}
+					custom={custom}
 				/>
 			</Table>
 		);
 	}
-	return <div>Nothing to display!</div>;
+	return <NothingToDisplay />;
 }
 
 export default RosterTable;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-function createOchestrator(Row) {
-	return function LoopOrchestrator({
+function createRowOchestrator(Row) {
+	return function RowOrchestrator({
 		components,
 		nbRows,
 		valueMap,
@@ -12,6 +12,7 @@ function createOchestrator(Row) {
 		management,
 		preferences,
 		executeExpression,
+		custom,
 	}) {
 		return new Array(nbRows).fill(null).map(function (_, index) {
 			return (
@@ -27,10 +28,11 @@ function createOchestrator(Row) {
 					management={management}
 					missing={missing}
 					executeExpression={executeExpression}
+					custom={custom}
 				/>
 			);
 		});
 	};
 }
 
-export default createOchestrator;
+export default createRowOchestrator;

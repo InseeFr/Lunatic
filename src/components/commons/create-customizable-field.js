@@ -3,6 +3,7 @@ import React from 'react';
 function createCustomizableLunaticField(LunaticField) {
 	const Memoized = React.memo(LunaticField);
 	const { name } = LunaticField;
+
 	return function OverlayField(props) {
 		const { custom, ...rest } = props;
 		if (typeof custom === 'object' && name in custom) {

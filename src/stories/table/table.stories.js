@@ -12,7 +12,7 @@ import dataTwoAxisOneMeasure from './data-two-axis-one-measure';
 import dataRoster from './data-roster';
 import { positioningOptions, featuresOptions } from '../utils/options';
 import { boolean, select } from '@storybook/addon-knobs/react';
-import HtmlTableMUI from './html-table-mui';
+import * as CustomMui from '../custom-mui';
 
 const stories = storiesOf('Table', module)
 	.addDecorator(withReadme(readme))
@@ -81,7 +81,16 @@ stories.addWithJSX('Roster', () => (
 ));
 
 stories.addWithJSX('Custom Table MUI', function () {
-	const custom = { ...HtmlTableMUI };
+	const custom = {
+		InputNumber: CustomMui.InputNumberMui,
+		Table: CustomMui.TableMui,
+		Thead: CustomMui.TheadMui,
+		Tbody: CustomMui.TbodyMui,
+		Th: CustomMui.ThMui,
+		Td: CustomMui.TdMui,
+		Tr: CustomMui.TrMui,
+		Input: CustomMui.InputMui,
+	};
 	return (
 		<Orchestrator
 			source={dataDefault}

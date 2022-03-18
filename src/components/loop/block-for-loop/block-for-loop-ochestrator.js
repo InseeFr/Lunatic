@@ -1,6 +1,6 @@
-import { createLoopOrchestrator } from '../commons';
+import { createRowOchestrator } from '../../commons';
 import Row from './row';
 
-const BlockForLoopOrchestrator = createLoopOrchestrator(Row);
+const BlockForLoopOrchestrator = createRowOchestrator(Row);
 
 export default BlockForLoopOrchestrator;

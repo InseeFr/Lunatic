@@ -9,4 +9,7 @@ export { default as useOptionsKeydown } from './use-options-keydown';
 export { default as createCustomizableLunaticField } from './create-customizable-field';
 export { default as buildStyleObject } from './build-style-object';
 export { default as useDocumentAddEventListener } from './use-document-add-event-listener';
+export { default as NothingToDisplay } from './components/nothing-to-display';
+export { default as createRowOchestrator } from './create-row-orchestrator';
+export { default as OrchestratorComponent } from './components/orchestrator-component';
 export * as HtmlTable from './components/html-table';

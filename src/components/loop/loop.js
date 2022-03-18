@@ -26,6 +26,7 @@ function Loop(props) {
 		missing,
 		features,
 		preferences,
+		custom,
 	} = props;
 
 	switch (componentType) {
@@ -47,6 +48,7 @@ function Loop(props) {
 					shortcut={shortcut}
 					features={features}
 					preferences={preferences}
+					custom={custom}
 				/>
 			);
 		case LoopTypes.rosterForLoop:
@@ -68,6 +70,7 @@ function Loop(props) {
 					features={features}
 					preferences={preferences}
 					headers={headers}
+					custom={custom}
 				/>
 			);
 		default:

@@ -14,7 +14,7 @@ function Datepicker({ disabled, readOnly, value, onChange, labelId }) {
 
 	return (
 		<input
-			className={classnames('datepicker-lunatic', { disabled, readOnly })}
+			className={classnames('lunatic-datepicker', { disabled, readOnly })}
 			type="date"
 			labelledby={labelId}
 			readOnly={readOnly}

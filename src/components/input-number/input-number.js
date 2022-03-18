@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
+import { createCustomizableLunaticField } from '../commons';
 import './input-number.scss';
 
 function InputNumber({
@@ -36,4 +37,4 @@ function InputNumber({
 	);
 }
 
-export default InputNumber;
+export default createCustomizableLunaticField(InputNumber);

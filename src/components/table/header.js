@@ -7,10 +7,24 @@ import {
 	Td as HtmlTd,
 	Th as HtmlTh,
 } from '../commons/components/html-table';
-import { createCustomizableLunaticField } from '../commons';
+import Row from './row';
 
-function Header({ cells }) {
-	return <></>;
+function Header({ cells, custom, id }) {
+	if (Array.isArray(cells)) {
+		const columns = cells.map(function (cols) {
+			return <Row id={id} custom={custom} columns={columns} />;
+		}, []);
+
+		return (
+			<HtmlThead id={id} custom={custom}>
+				<HtmlTr id={id} custom={custom}>
+					{columns}
+				</HtmlTr>
+			</HtmlThead>
+		);
+	}
+
+	return null;
 }
 
-export default createCustomizableLunaticField(Header);
+export default Header;

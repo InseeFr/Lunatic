@@ -16,6 +16,7 @@ function LunaticInputNumber({
 	max,
 	step,
 	iteration,
+	custom,
 }) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
@@ -42,6 +43,7 @@ function LunaticInputNumber({
 				min={min}
 				max={max}
 				step={step}
+				custom={custom}
 			/>
 		</InputContainer>
 	);

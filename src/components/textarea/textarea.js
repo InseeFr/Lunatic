@@ -23,7 +23,7 @@ function Textarea({
 	return (
 		<textarea
 			id={id}
-			className={classnames('textarea-lunatic ', className)}
+			className={classnames('lunatic-textarea', className)}
 			rows={rows}
 			maxLength={maxLength}
 			cols={cols}

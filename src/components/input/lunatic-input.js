@@ -16,6 +16,7 @@ function LunaticInput(props) {
 		executeExpression,
 		iteration,
 		className,
+		custom,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -41,6 +42,7 @@ function LunaticInput(props) {
 				value={value}
 				onChange={onChange}
 				disabled={disabled}
+				custom={custom}
 			/>
 		</InputContainer>
 	);

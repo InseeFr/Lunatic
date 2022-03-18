@@ -33,6 +33,7 @@ function RosterforLoop({
 	shortcut,
 	id,
 	management,
+	custom,
 }) {
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [init, setInit] = useState(false);
@@ -62,9 +63,9 @@ function RosterforLoop({
 	if (nbRows > 0) {
 		return (
 			<>
-				<DeclarationsBeforeText declarations={declarations} />
-				<lunatic.Sequence label={label} />
-				<DeclarationsAfterText declarations={declarations} />
+				<DeclarationsBeforeText declarations={declarations} custom={custom} />
+				<lunatic.Sequence label={label} custom={custom} />
+				<DeclarationsAfterText declarations={declarations} custom={custom} />
 				<RosterTable
 					id={id}
 					components={components}
@@ -76,9 +77,10 @@ function RosterforLoop({
 					management={management}
 					missing={missing}
 					shortcut={shortcut}
+					custom={custom}
 				/>
-				<DeclarationsDetachable declarations={declarations} />
-				<AddRowButton onClick={addRow} disabled={disabled}>
+				<DeclarationsDetachable declarations={declarations} custom={custom} />
+				<AddRowButton onClick={addRow} disabled={disabled} custom={custom}>
 					Add Row!
 				</AddRowButton>
 			</>
