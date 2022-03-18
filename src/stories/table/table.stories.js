@@ -91,6 +91,7 @@ stories.addWithJSX('Custom Table MUI', function () {
 		Tr: CustomMui.TrMui,
 		Input: CustomMui.InputMui,
 	};
+
 	return (
 		<Orchestrator
 			source={dataDefault}

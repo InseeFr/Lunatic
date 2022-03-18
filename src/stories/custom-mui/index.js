@@ -6,3 +6,5 @@ export { default as ThMui } from './th-mui';
 export { default as TdMui } from './td-mui';
 export { default as InputMui } from './input-mui';
 export { default as TrMui } from './tr-mui';
+export { default as TextareaMui } from './textarea-mui';
+export { default as SuggesterMui } from './suggester-mui';

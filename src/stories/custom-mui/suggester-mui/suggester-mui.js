@@ -10,7 +10,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
-import './lunatic-suggester-mui.scss';
 
 function getSelection(options, selectedIndex) {
 	if (selectedIndex !== undefined) {
@@ -197,7 +196,7 @@ function Panel({
 	return null;
 }
 
-function SuggesterMaterialUI({
+function SuggesterMui({
 	className,
 	placeholderList,
 	labelledBy,
@@ -261,4 +260,4 @@ function SuggesterMaterialUI({
 	);
 }
 
-export default SuggesterMaterialUI;
+export default SuggesterMui;

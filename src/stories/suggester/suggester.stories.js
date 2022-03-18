@@ -14,7 +14,7 @@ import * as NAF from './naf-rev2';
 import * as COG from './cog-communes';
 import * as BAILLEURS from './bailleurs-sociaux';
 import * as BAILLEURS2021 from './bailleurs-sociaux-2021';
-import SuggesterMaterialUI from './suggester-material-ui';
+import { SuggesterMui } from '../custom-mui';
 /**
  *
  */
@@ -138,7 +138,7 @@ storiesAuto.addWithJSX('Default', () => (
 ));
 
 stories.addWithJSX('Custom suggester', function () {
-	const custom = { Suggester: SuggesterMaterialUI };
+	const custom = { Suggester: SuggesterMui };
 
 	return (
 		<Orchestrator

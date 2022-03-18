@@ -6,7 +6,6 @@ import readme from './README.md';
 import { titleDecorator } from '../utils';
 import data from './data';
 import dataForced from './data-forced';
-import TextareaMui from './textarea-mui';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import {
 	text,
@@ -15,6 +14,7 @@ import {
 	object,
 	select,
 } from '@storybook/addon-knobs/react';
+import { TextareaMui } from '../custom-mui';
 
 const stories = storiesOf('Textarea', module)
 	.addDecorator(withReadme(readme))
