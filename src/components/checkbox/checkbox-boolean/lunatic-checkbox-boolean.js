@@ -10,6 +10,7 @@ function LunaticCheckboxBoolean({
 	id,
 	disabled,
 	handleChange,
+	custom,
 }) {
 	const onClick = useOnHandleChange({ handleChange, response, value });
 
@@ -26,6 +27,7 @@ function LunaticCheckboxBoolean({
 			id={id}
 			value={value}
 			className="lunatic-checkbox-boolean"
+			custom={custom}
 		>
 			<CheckboxOption
 				disabled={disabled}
@@ -34,6 +36,7 @@ function LunaticCheckboxBoolean({
 				value={!booleanValue}
 				onClick={onClick}
 				labelledBy={labelId}
+				custom={custom}
 			/>
 		</LunaticField>
 	);

@@ -1,6 +1,7 @@
 import React from 'react';
 import './declarations.scss';
 import Declaration from './declaration';
+import { createCustomizableLunaticField } from '../commons';
 
 export const DECLARATION_POSITIONS = {
 	after: 'AFTER_QUESTION_TEXT',
@@ -32,4 +33,4 @@ Declarations.defaultProps = {
 
 Declarations.propTypes = {};
 
-export default Declarations;
+export default createCustomizableLunaticField(Declarations);

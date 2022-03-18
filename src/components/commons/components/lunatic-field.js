@@ -16,18 +16,24 @@ function LunaticFields({
 	value,
 	children,
 	className,
+	custom,
 }) {
 	return (
 		<>
-			<DeclarationsBeforeText declarations={declarations} />
-			<Label id={labelId} htmlFor={contentId} className={className}>
+			<DeclarationsBeforeText declarations={declarations} custom={custom} />
+			<Label
+				id={labelId}
+				htmlFor={contentId}
+				className={className}
+				custom={custom}
+			>
 				{label}
 			</Label>
-			<DeclarationsAfterText declarations={declarations} />
-			<FieldContainer value={value} id={id}>
+			<DeclarationsAfterText declarations={declarations} custom={custom} />
+			<FieldContainer value={value} id={id} custom={custom}>
 				{children}
 			</FieldContainer>
-			<DeclarationsDetachable declarations={declarations} />
+			<DeclarationsDetachable declarations={declarations} custom={custom} />
 		</>
 	);
 }
