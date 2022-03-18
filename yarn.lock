@@ -2564,7 +2564,7 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@inseefr/trevas@^0.1.12":
+"@inseefr/trevas@^0.1.14":
   version "0.1.14"
   resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.14.tgz#e05081f190467f035044f21da0fbcc3e655ca619"
   integrity sha512-B4sui0+LZk5GjhDXgvthmb2AQn5uHCs6B7SrIin6X7KjSX5sVaALnvP89ZmprI6EEvPBduEAO95k4mSC7Kgtkg==
