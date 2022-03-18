@@ -216,11 +216,14 @@ const useLunatic = (
 
 	useEffect(() => {
 		if (Object.keys(todoExternals).length !== 0) {
-			const newQ = updateExternals(questionnaire)(logFunction)(todoExternals);
+			const newQ = updateExternals(questionnaire)(logFunction, preferences)(
+				todoExternals
+			);
+			setBindings(getBindings(newQ));
 			setQuestionnaire(newQ);
 			setTodoExternals({});
 		}
-	}, [todoExternals, logFunction, questionnaire]);
+	}, [todoExternals, logFunction, questionnaire, preferences]);
 
 	const cancelModal = () => {
 		setModalContent(null);

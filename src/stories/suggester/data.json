@@ -61,7 +61,26 @@
 			"stopWords": ["de", "la", "les", "du", "et", "au", "aux", "en"],
 			"max": 12,
 			"version": "1"
-		}
+		},{
+			"name": "bailleurs-sociaux-2021",
+			"fields": [
+			  {
+				"name": "label",
+				"rules": ["[\\w]+"],
+				"stemmer": true,
+				"synonyms": [{ "source": "saint", "target": ["st"] }]
+			  },
+	  
+			  { "name": "id" }
+			],
+			"max": 12,
+			"stopWords": ["de", "la", "les", "du", "et", "au", "aux", "en"],
+			"queryParser": {
+			  "type": "tokenized",
+			  "params": { "language": "French", "min": 1, "pattern": "[\\w]+" }
+			},
+			"version": "1"
+		  }
 	],
 	"components": [
 		{
@@ -93,6 +112,17 @@
 			"label": "Bailleurs sociaux",
 			"path": "data/bailleurs",
 			"storeName": "bailleurs-sociaux",
+			"response": {
+				"name": "BAILLEURS"
+			}
+		},
+		{
+			"id": "bailleurs-sociaux-2021",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "Bailleurs sociaux 2021",
+			"path": "data/bailleurs-2021",
+			"storeName": "bailleurs-sociaux-2021",
 			"response": {
 				"name": "BAILLEURS"
 			}

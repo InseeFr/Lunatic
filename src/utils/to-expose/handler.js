@@ -60,7 +60,7 @@ export const updateQuestionnaire =
 	};
 
 export const updateExternals =
-	(questionnaire) => (logFunction) => (updatedValues) => {
+	(questionnaire) => (logFunction, preferences) => (updatedValues) => {
 		const { variables, ...other } = questionnaire;
 		const { EXTERNAL } = variables;
 		const newVariables = {
@@ -71,8 +71,7 @@ export const updateExternals =
 		const newVariablesWithCalculated = addCalculatedVars(
 			newVariables,
 			updatedValues
-		)(logFunction);
-
+		)(logFunction, preferences);
 		return {
 			...other,
 			variables: newVariablesWithCalculated,
@@ -94,30 +93,29 @@ export const buildNewValue =
 
 // Separate methods to avoid perf issue on collect simplest use case
 const getCollectedAndExternal = (preferences) => (variables) => {
-	const { COLLECTED } = variables;
+	const { COLLECTED, EXTERNAL } = variables;
 	if (preferences.length === 1 && preferences[0] === 'COLLECTED')
-		return getCollectedAndExternalSimple(COLLECTED);
-	return getCollectedAndExternalByPreferences(preferences)(COLLECTED);
+		return { ...getCollectedAndExternalSimple(COLLECTED), ...EXTERNAL };
+	return {
+		...getCollectedAndExternalByPreferences(preferences)(COLLECTED),
+		...EXTERNAL,
+	};
 };
 
-const getCollectedAndExternalSimple = (variables) => {
-	const collected = Object.entries(variables).reduce(
+const getCollectedAndExternalSimple = (variables) =>
+	Object.entries(variables).reduce(
 		(acc, [k, { values }]) => ({ ...acc, [k]: values.COLLECTED }),
 		{}
 	);
-	return { ...collected, ...variables.EXTERNAL };
-};
 
-const getCollectedAndExternalByPreferences = (preferences) => (variables) => {
-	const collected = Object.entries(variables).reduce((acc, [k, { values }]) => {
+const getCollectedAndExternalByPreferences = (preferences) => (variables) =>
+	Object.entries(variables).reduce((acc, [k, { values }]) => {
 		const v = preferences.reduce((acc, p) => {
 			const value = values[p];
 			return [null, ''].includes(value) ? acc : value;
 		}, null);
 		return { ...acc, [k]: v };
 	}, {});
-	return { ...collected, ...variables.EXTERNAL };
-};
 
 const addCalculatedVars =
 	(variables, updatedValues) => (logFunction, preferences) => {

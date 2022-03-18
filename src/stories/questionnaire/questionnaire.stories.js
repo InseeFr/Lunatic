@@ -10,6 +10,7 @@ import logementS2 from './logement-s2';
 import logementSequence from './logement-sequence';
 import dataLogement from './data-logement';
 import simpsons from './simpsons';
+import loopAndControls from './loop-and-controls.json';
 import arithmetic from './arithmetic';
 import kish from './kish';
 import arithmeticManagement from './arithmetic-management';
@@ -191,6 +192,24 @@ const other = storiesOf('Questionnaire/Other', module).addDecorator(
 		return <WrappedComponent title="<Questionnaire />" />;
 	}
 );
+
+other.addWithJSX('Controls', () => (
+	<Orchestrator
+		id="props"
+		modalForControls={true}
+		source={loopAndControls}
+		missing={boolean('Missing', false)}
+		activeGoNextForMissing={boolean('Active go next for missing', false)}
+		missingShortcut={{ dontKnow: 'f2', refused: 'f4' }}
+		shortcut
+		features={select('Features', featuresOptions, ['VTL', 'MD'])}
+		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+		disabled={boolean('Disabled', false)}
+		focused={boolean('Focused', false)}
+		management={boolean('Management', false)}
+		pagination
+	/>
+));
 
 other.addWithJSX('Update external', () => {
 	const [addExternal, setAddExternal] = useState(null);

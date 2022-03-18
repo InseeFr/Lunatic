@@ -5,4 +5,5 @@ export { default as filterStemmer } from './filters/filter-stemmer';
 export { default as filterLength } from './filters/filter-length';
 export { default as filterDouble } from './filters/filter-double';
 export { default as filterAccents } from './filters/filter-accents';
+export { default as filterToLower } from './filters/filter-to-lower';
 export { default as getRegExpFromPattern } from './get-regexp-from-pattern';

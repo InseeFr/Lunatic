@@ -62,8 +62,14 @@ const getControlsFromComponents = ({
 					}),
 				];
 			} else {
-				const { loopDependencies } = component;
-				const iterations = parseInt(bindings[loopDependencies[0]], 10);
+				const {
+					loopDependencies,
+					lines: { min },
+				} = component;
+				const iterationsStr = loopDependencies
+					? bindings[loopDependencies[0]]
+					: min;
+				const iterations = parseInt(iterationsStr, 10);
 				const ctrls = [...Array(iterations).keys()].reduce((accIt, i) => {
 					loopBindings = buildLoopBindings(i)(Object.entries(rootLoopBindings));
 					return [

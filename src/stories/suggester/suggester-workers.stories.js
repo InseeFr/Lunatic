@@ -15,6 +15,10 @@ function fetchNaf() {
 	return fetch('naf-rev2.json').then((r) => r.json());
 }
 
+function fetchBailleurs2021() {
+	return fetch('bailleurs-sociaux-2021.json').then((r) => r.json());
+}
+
 async function fetchBailleurs(path = '') {
 	const response = await fetch('/bailleurs-sociaux.json');
 	const naf = await response.json();
@@ -86,6 +90,27 @@ const infoNaf = {
 	version: '1',
 };
 
+const infoBailleurs2021 = {
+	name: 'bailleurs-sociaux-2021',
+	fields: [
+		{
+			name: 'label',
+			rules: ['[\\w]+'],
+			stemmer: false,
+			synonyms: [{ source: 'saint', target: ['st'] }],
+		},
+
+		{ name: 'id' },
+	],
+	max: 12,
+	stopWords: ['de', 'la', 'les', 'du', 'et', 'au', 'aux', 'en'],
+	queryParser: {
+		type: 'tokenized',
+		params: { language: 'French', min: 1, pattern: '[\\w]+' },
+	},
+	version: '1',
+};
+
 async function loadCog() {
 	const { name } = infoCog;
 	const communes = await fetchCog();
@@ -104,6 +129,16 @@ async function loadBailleurs() {
 	await clearDb(db, CONSTANTES.STORE_INFO_NAME);
 	await append(bailleursSociaux, '1', communes, console.log);
 	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, bailleursSociaux);
+}
+
+async function loadBailleurs2021() {
+	const { name } = infoBailleurs2021;
+	const bailleurs = await fetchBailleurs2021();
+	const db = await openOnCreateDb(name);
+	await clearDb(db, CONSTANTES.STORE_DATA_NAME);
+	await clearDb(db, CONSTANTES.STORE_INFO_NAME);
+	await append(infoBailleurs2021, '1', bailleurs, console.log);
+	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, infoBailleurs2021);
 }
 
 async function loadNaf() {
@@ -175,6 +210,15 @@ stories.addWithJSX('Default', () => {
 						onClick={loadBailleurs}
 					/>
 					<Search storeInfo={bailleursSociaux} defaultValue="123" />
+				</li>
+
+				<li>
+					<input
+						type="button"
+						value="load bailleurs sociaux 2021"
+						onClick={loadBailleurs2021}
+					/>
+					<Search storeInfo={infoBailleurs2021} defaultValue="" />
 				</li>
 			</ul>
 		</>
