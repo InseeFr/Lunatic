@@ -1,11 +1,17 @@
 import React from 'react';
+import classnames from 'classnames';
+import createCustomizableLunaticField from '../commons/create-customizable-field';
 
 function Declaration({ children, type }) {
 	return (
-		<div className={`declaration-lunatic declaration-${type.toLowerCase()}`}>
+		<div
+			className={classnames(
+				'declaration-lunatic',
+				`declaration-${type.toLowerCase()}`
+			)}
+		>
 			{children}
 		</div>
 	);
 }
-
-export default Declaration;
+export default createCustomizableLunaticField(Declaration);

@@ -1,7 +1,6 @@
 import React from 'react';
 import './declarations.scss';
 import Declaration from './declaration';
-import { createCustomizableLunaticField } from '../commons';
 
 export const DECLARATION_POSITIONS = {
 	after: 'AFTER_QUESTION_TEXT',
@@ -9,14 +8,18 @@ export const DECLARATION_POSITIONS = {
 	detachable: 'DETACHABLE',
 };
 
-function Declarations({ id, type, declarations, logFunction }) {
+function Declarations({ id, type, declarations, logFunction, custom }) {
 	const filtered = declarations.filter(({ position }) => position === type);
 	if (filtered.length === 0) return null;
 
 	return (
 		<div id={`declarations-${id}-${type}`} className="declarations-lunatic">
 			{filtered.map(({ id: idD, label, declarationType }) => (
-				<Declaration key={`${idD}`} type={declarationType.toLowerCase()}>
+				<Declaration
+					key={`${idD}`}
+					type={declarationType.toLowerCase()}
+					custom={custom}
+				>
 					{label}
 				</Declaration>
 			))}
@@ -33,4 +36,4 @@ Declarations.defaultProps = {
 
 Declarations.propTypes = {};
 
-export default createCustomizableLunaticField(Declarations);
+export default Declarations;
