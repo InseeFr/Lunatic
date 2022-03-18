@@ -8,6 +8,7 @@ import data from './data';
 import dataForced from './data-forced';
 import { boolean, select, object } from '@storybook/addon-knobs/react';
 import { positioningOptions, featuresOptions } from '../utils/options';
+import * as CustomMui from '../custom-mui';
 
 const stories = storiesOf('CheckboxBoolean', module)
 	.addDecorator(withReadme(readme))
@@ -51,4 +52,9 @@ stories.addWithJSX('External update', () => {
 		);
 	};
 	return <Fake />;
+});
+
+stories.addWithJSX('Custom with Mui', function () {
+	const custom = { CheckboxBoolean: CustomMui.CheckboxBooleanMui };
+	return <Orchestrator source={data} custom={custom} />;
 });

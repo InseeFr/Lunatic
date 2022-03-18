@@ -8,3 +8,4 @@ export { default as InputMui } from './input-mui';
 export { default as TrMui } from './tr-mui';
 export { default as TextareaMui } from './textarea-mui';
 export { default as SuggesterMui } from './suggester-mui';
+export { default as CheckboxBooleanMui } from './checkbox-boolean-mui';

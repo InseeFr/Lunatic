@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckboxOption } from '../commons';
 import { useOnHandleChange, LunaticField } from '../../commons';
+import CheckboxBoolean from './checkbox-boolean';
 
 function LunaticCheckboxBoolean({
 	value,
@@ -12,11 +13,11 @@ function LunaticCheckboxBoolean({
 	handleChange,
 	custom,
 }) {
+	const booleanValue = value === true ? value : false;
 	const onClick = useOnHandleChange({ handleChange, response, value });
 
 	const contentId = `lunatic-checkbox-boolean-${id}`;
 	const labelId = `lunatic-checkbox-boolean-label-${id}`;
-	const booleanValue = value === true ? value : false;
 
 	return (
 		<LunaticField
@@ -29,13 +30,12 @@ function LunaticCheckboxBoolean({
 			className="lunatic-checkbox-boolean"
 			custom={custom}
 		>
-			<CheckboxOption
-				disabled={disabled}
+			<CheckboxBoolean
 				checked={booleanValue}
 				id={id}
-				value={!booleanValue}
+				disabled={disabled}
 				onClick={onClick}
-				labelledBy={labelId}
+				labelId={labelId}
 				custom={custom}
 			/>
 		</LunaticField>
