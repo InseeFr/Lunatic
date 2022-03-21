@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { CheckboxOption } from '../commons';
 import { Label } from '../../commons';
+import { createCustomizableLunaticField } from '../../commons';
 
 function onClick() {}
 
@@ -14,7 +15,7 @@ function CheckBoxOptionWrapper({
 	handleChange,
 	response,
 }) {
-	const booleanValue = value || false;
+	const booleanValue = value && false;
 
 	const onClickOption = useCallback(
 		function (valueOption) {
@@ -75,4 +76,4 @@ function CheckboxGroup({ options, value, id, handleChange }) {
 	});
 }
 
-export default CheckboxGroup;
+export default createCustomizableLunaticField(CheckboxGroup);

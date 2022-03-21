@@ -6,6 +6,7 @@ function createCustomizableLunaticField(LunaticField) {
 
 	return function OverlayField(props) {
 		const { custom, ...rest } = props;
+
 		if (typeof custom === 'object' && name in custom) {
 			const CustomComponent = custom[name];
 			return <CustomComponent {...rest} />;

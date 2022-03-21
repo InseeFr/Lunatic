@@ -1,5 +1,4 @@
 import React from 'react';
-import { CheckboxOption } from '../commons';
 import { useOnHandleChange, LunaticField } from '../../commons';
 import CheckboxBoolean from './checkbox-boolean';
 
