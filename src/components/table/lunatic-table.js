@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { linesPropTypes } from '../commons/prop-types';
-import { LunaticField, useOnHandleChange } from '../commons';
-import TableOchestrator from './table-ochestrator';
+import { LunaticField } from '../commons';
+import Table from './table';
 
 function LunaticTable({
 	label,
 	declarations,
 	id,
 	handleChange,
-	response,
 	value,
 	custom,
 	cells,
-	lines,
+	executeExpression,
+	iteration,
 }) {
 	const inputId = `lunatic-switch-${id}`;
 	const labelId = `lunatic-switch-label-${id}`;
@@ -28,12 +28,14 @@ function LunaticTable({
 			value={value}
 			className="lunatic-switch"
 		>
-			<TableOchestrator
+			<Table
 				id={id}
 				custom={custom}
 				value={value}
 				handleChange={handleChange}
 				cells={cells}
+				executeExpression={executeExpression}
+				iteration={iteration}
 			/>
 		</LunaticField>
 	);

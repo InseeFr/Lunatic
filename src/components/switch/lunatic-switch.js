@@ -46,4 +46,4 @@ LunaticSwitch.propTypes = {
 
 LunaticSwitch.defaultProps = { statusLabel: { true: 'True', false: 'False' } };
 
-export default LunaticSwitch;
+export default React.memo(LunaticSwitch);

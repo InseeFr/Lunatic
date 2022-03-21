@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { OrchestratorComponent } from '../../commons';
+import { OrchestratedComponent } from '../../commons';
 
 function Row({
 	components,
@@ -33,7 +33,7 @@ function Row({
 
 		return [
 			...row,
-			<OrchestratorComponent
+			<OrchestratedComponent
 				component={component}
 				key={idComponent}
 				handleChange={handleChangeRow}

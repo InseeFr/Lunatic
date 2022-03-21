@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as lunatic from 'components';
 import { fillComponentExpressions } from '../../../use-lunatic/commons';
 
-function OrchestratorComponent({
+function OrchestratedComponent({
 	id,
 	component,
 	handleChange,
@@ -51,4 +51,4 @@ function OrchestratorComponent({
 	return null;
 }
 
-export default OrchestratorComponent;
+export default OrchestratedComponent;

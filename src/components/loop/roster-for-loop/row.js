@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { Tr, Td } from '../../commons/components/html-table';
 
-import { OrchestratorComponent } from '../../commons';
+import { OrchestratedComponent } from '../../commons';
 
 function Row({
 	id,
@@ -41,7 +41,7 @@ function Row({
 
 					return (
 						<Td id={idComponent} key={key} custom={custom}>
-							<OrchestratorComponent
+							<OrchestratedComponent
 								component={component}
 								handleChange={handleChangeRow}
 								features={features}

@@ -11,5 +11,5 @@ export { default as buildStyleObject } from './build-style-object';
 export { default as useDocumentAddEventListener } from './use-document-add-event-listener';
 export { default as NothingToDisplay } from './components/nothing-to-display';
 export { default as createRowOchestrator } from './create-row-orchestrator';
-export { default as OrchestratorComponent } from './components/orchestrator-component';
+export { default as OrchestratedComponent } from './components/orchestrated-component';
 export * as HtmlTable from './components/html-table';

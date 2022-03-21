@@ -2,6 +2,7 @@ import React from 'react';
 
 function createRowOchestrator(Row) {
 	return function RowOrchestrator({
+		id,
 		components,
 		nbRows,
 		valueMap,
@@ -12,12 +13,14 @@ function createRowOchestrator(Row) {
 		management,
 		preferences,
 		executeExpression,
+		iteration,
 		custom,
 	}) {
 		return new Array(nbRows).fill(null).map(function (_, index) {
 			return (
 				<Row
 					key={index}
+					id={id}
 					rowIndex={index}
 					components={components}
 					valueMap={valueMap}
@@ -28,6 +31,7 @@ function createRowOchestrator(Row) {
 					management={management}
 					missing={missing}
 					executeExpression={executeExpression}
+					iteration={iteration}
 					custom={custom}
 				/>
 			);

@@ -33,6 +33,7 @@ function RosterforLoop({
 	shortcut,
 	id,
 	management,
+	iteration,
 	custom,
 }) {
 	const max = lines?.max || DEFAULT_MAX_ROWS;
