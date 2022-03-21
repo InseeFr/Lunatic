@@ -6,7 +6,7 @@ function CheckboxBooleanMui({ checked, id, disabled, onClick, labelId }) {
 		function () {
 			onClick(!checked);
 		},
-		[checked]
+		[checked, onClick]
 	);
 
 	return (

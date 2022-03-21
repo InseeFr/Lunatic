@@ -26,7 +26,7 @@ function LunaticCheckboxGroup(props) {
 					/>
 				</Fieldset>
 			</FieldContainer>
-			<DeclarationsDetachable declarations={declarations} />
+			<DeclarationsDetachable declarations={declarations} custom={custom} />
 		</>
 	);
 }

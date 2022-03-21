@@ -8,7 +8,7 @@ import data from './data';
 import dataForced from './data-forced';
 import { boolean, select, object } from '@storybook/addon-knobs/react';
 import { positioningOptions, featuresOptions } from '../utils/options';
-import SwitchMaterialUI from './SwitchMaterialUI';
+import { SwitchMui } from '../custom-mui';
 
 const stories = storiesOf('switch', module)
 	.addDecorator(withReadme(readme))
@@ -55,7 +55,7 @@ stories.addWithJSX('External update', () => {
 });
 
 stories.addWithJSX('Custom Switch', function () {
-	const custom = { Switch: SwitchMaterialUI };
+	const custom = { Switch: SwitchMui };
 	return (
 		<Orchestrator
 			source={data}

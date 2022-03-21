@@ -9,6 +9,7 @@ import dataVTL from './data-vtl';
 import dataForced from './data-forced';
 import { positioningOptions, featuresOptions } from '../utils/options';
 import { text, boolean, object, select } from '@storybook/addon-knobs/react';
+import { RadioMui } from '../custom-mui';
 
 const stories = storiesOf('Radio', module)
 	.addDecorator(withReadme(readme))
@@ -61,4 +62,9 @@ stories.addWithJSX('External update', () => {
 		);
 	};
 	return <Fake />;
+});
+
+stories.addWithJSX('Default with custom Mui', function () {
+	const custom = { Radio: RadioMui };
+	return <Orchestrator id="default" source={data} custom={custom} />;
 });

@@ -7,7 +7,7 @@ function onClick() {}
 
 function CheckBoxOptionWrapper({
 	checkboxId,
-	index,
+
 	labelId,
 	checked,
 	value,
@@ -28,7 +28,6 @@ function CheckBoxOptionWrapper({
 		<CheckboxOption
 			id={checkboxId}
 			labelledBy={labelId}
-			index={index}
 			checked={checked}
 			onClick={onClickOption}
 			value={booleanValue}
@@ -60,7 +59,6 @@ function CheckboxGroup({ options, value, id, handleChange }) {
 						</Label>
 						<CheckBoxOptionWrapper
 							checkboxId={checkboxId}
-							index={index}
 							labelId={labelId}
 							checked={optionValue}
 							value={optionValue}

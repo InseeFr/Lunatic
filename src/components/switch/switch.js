@@ -4,12 +4,12 @@ import classnames from 'classnames';
 import { createCustomizableLunaticField } from '../commons';
 import './switch.scss';
 
-function Switch({ checked, disabled, handleChange, statusLabel, labelId }) {
-	const onClick = useCallback(
+function Switch({ checked, disabled, onClick, statusLabel, labelId }) {
+	const handleClick = useCallback(
 		function () {
-			handleChange(!checked);
+			onClick(!checked);
 		},
-		[checked, handleChange]
+		[checked, onClick]
 	);
 
 	const handleKeyDown = useCallback(
@@ -38,7 +38,7 @@ function Switch({ checked, disabled, handleChange, statusLabel, labelId }) {
 					disabled,
 					checked,
 				})}
-				onClick={onClick}
+				onClick={handleClick}
 				onKeyDown={handleKeyDown}
 				labelledBy={labelId}
 			>

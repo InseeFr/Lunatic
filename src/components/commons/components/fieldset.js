@@ -1,4 +1,5 @@
 import React from 'react';
+import createCustomizableLunaticField from '../../commons/create-customizable-field';
 
 function Fieldset({ children, legend }) {
 	return (
@@ -9,4 +10,4 @@ function Fieldset({ children, legend }) {
 	);
 }
 
-export default Fieldset;
+export default createCustomizableLunaticField(Fieldset);

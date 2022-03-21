@@ -1,5 +1,5 @@
 import React from 'react';
-import RadioGroup from './radio-group';
+import Radio from './radio-group';
 import { FieldContainer, Fieldset, useOnHandleChange } from '../commons';
 import {
 	DeclarationsBeforeText,
@@ -18,26 +18,28 @@ function LunaticRadioGroup(props) {
 		response,
 		declarations,
 		checkboxStyle,
+		custom,
 	} = props;
 
 	const onClick = useOnHandleChange({ handleChange, response, value });
 
 	return (
 		<>
-			<DeclarationsBeforeText declarations={declarations} />
-			<FieldContainer id={id} value={value}>
-				<Fieldset legend={label}>
-					<DeclarationsAfterText declarations={declarations} />
-					<RadioGroup
+			<DeclarationsBeforeText declarations={declarations} custom={custom} />
+			<FieldContainer id={id} value={value} custom={custom}>
+				<Fieldset legend={label} custom={custom}>
+					<DeclarationsAfterText declarations={declarations} custom={custom} />
+					<Radio
 						id={id}
 						options={options}
 						value={value}
 						onClick={onClick}
 						checkboxStyle={checkboxStyle}
+						custom={custom}
 					/>
 				</Fieldset>
 			</FieldContainer>
-			<DeclarationsDetachable declarations={declarations} />
+			<DeclarationsDetachable declarations={declarations} custom={custom} />
 		</>
 	);
 }

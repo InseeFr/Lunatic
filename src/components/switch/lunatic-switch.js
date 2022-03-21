@@ -31,7 +31,7 @@ function LunaticSwitch({
 		>
 			<Switch
 				checked={booleanValue}
-				handleChange={onClick}
+				onClick={onClick}
 				statusLabel={statusLabel}
 				labelId={labelId}
 				custom={custom}
