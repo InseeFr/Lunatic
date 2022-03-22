@@ -1,6 +1,6 @@
 import React from 'react';
 
-function createRowOchestrator(Row) {
+function createRowOrchestrator(Row) {
 	return function RowOrchestrator({
 		id,
 		components,
@@ -16,27 +16,31 @@ function createRowOchestrator(Row) {
 		iteration,
 		custom,
 	}) {
-		return new Array(nbRows).fill(null).map(function (_, index) {
-			return (
-				<Row
-					key={index}
-					id={id}
-					rowIndex={index}
-					components={components}
-					valueMap={valueMap}
-					handleChange={handleChange}
-					features={features}
-					shortcut={shortcut}
-					preferences={preferences}
-					management={management}
-					missing={missing}
-					executeExpression={executeExpression}
-					iteration={iteration}
-					custom={custom}
-				/>
-			);
-		});
+		if (nbRows > 0) {
+			return new Array(nbRows).fill(null).map(function (_, index) {
+				return (
+					<Row
+						key={index}
+						id={id}
+						rowIndex={index}
+						components={components}
+						valueMap={valueMap}
+						handleChange={handleChange}
+						executeExpression={executeExpression}
+						iteration={iteration}
+						custom={custom}
+						/** */
+						features={features}
+						shortcut={shortcut}
+						preferences={preferences}
+						management={management}
+						missing={missing}
+					/>
+				);
+			});
+		}
+		return null;
 	};
 }
 
-export default createRowOchestrator;
+export default createRowOrchestrator;

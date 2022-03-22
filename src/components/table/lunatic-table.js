@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { linesPropTypes } from '../commons/prop-types';
 import { LunaticField } from '../commons';
-import Table from './table';
+import Table from './components/table';
+import TableOrchestrator from './table-orchestrator';
 
 function LunaticTable({
 	label,
@@ -15,8 +16,19 @@ function LunaticTable({
 	executeExpression,
 	iteration,
 }) {
+	const [nbRows, setNbRows] = useState(undefined);
 	const inputId = `lunatic-switch-${id}`;
 	const labelId = `lunatic-switch-label-${id}`;
+
+	useEffect(
+		function () {
+			if (Array.isArray(cells)) {
+				const { length } = cells;
+				setNbRows(length);
+			}
+		},
+		[cells]
+	);
 
 	return (
 		<LunaticField
@@ -36,7 +48,19 @@ function LunaticTable({
 				cells={cells}
 				executeExpression={executeExpression}
 				iteration={iteration}
-			/>
+			>
+				<TableOrchestrator
+					custom={custom}
+					id={id}
+					cells={cells}
+					executeExpression={executeExpression}
+					handleChange={handleChange}
+					iteration={iteration}
+					components={cells}
+					nbRows={nbRows}
+					valueMap={value}
+				/>
+			</Table>
 		</LunaticField>
 	);
 }

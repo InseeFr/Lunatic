@@ -13,7 +13,7 @@
 			"id": "kb9hi4j0",
 			"componentType": "Sequence",
 			"page": "1",
-			"label": "\"I - \" || \"Adresse\"",
+			"label": { "value": "\"I - \" || \"Adresse\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true" },
 			"hierarchy": {
 				"sequence": {
