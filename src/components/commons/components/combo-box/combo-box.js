@@ -78,6 +78,7 @@ function ComboBox({
 				options,
 				expended,
 			});
+
 			setSelectedIndex(index);
 			setExpended(nExpended);
 			setFocused(focused);

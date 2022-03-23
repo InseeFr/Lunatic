@@ -34,7 +34,7 @@ function Dropdown({ label, declarations, id, handleChange, response, value }) {
 				onChange={onChange}
 				disabled={false}
 				options={OPTIONS}
-				editable={true}
+				editable={false}
 				onSelect={onSelect}
 			/>
 		</LunaticField>

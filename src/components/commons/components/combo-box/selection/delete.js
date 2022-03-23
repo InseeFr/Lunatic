@@ -25,7 +25,6 @@ function Delete({ className, search, onClick, editable }) {
 		return (
 			<Fab
 				className={classnames('mini', 'lunatic-combo-box-fab', className)}
-				tabIndex="0"
 				title="delete"
 				onClick={onClick}
 				disabled={isDisabled(search)}

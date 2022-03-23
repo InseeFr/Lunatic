@@ -24,7 +24,7 @@ function ComboBoxContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 			onFocus={onFocus}
 			onKeyDown={onKeyDown}
 			ref={ref}
-			tabIndex="0"
+			tabIndex="-1"
 		>
 			<div className={classnames('lunatic-combo-box-content', { focused })}>
 				{children}
