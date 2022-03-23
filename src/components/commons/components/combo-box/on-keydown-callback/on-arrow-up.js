@@ -4,14 +4,14 @@ function onArrowUp(e, { options, selectedIndex }) {
 	if (Array.isArray(options) && options.length > 0) {
 		if (selectedIndex !== undefined) {
 			return {
-				index: Math.max(selectedIndex - 1, 0),
+				selectedIndex: Math.max(selectedIndex - 1, 0),
 				expended: true,
 				focused: true,
 			};
 		}
-		return { index: 0, expended: true, focused: true };
+		return { selectedIndex: 0, expended: true, focused: true };
 	}
-	return { index: undefined, expended: false, focused: true };
+	return { selectedIndex: undefined, expended: false, focused: true };
 }
 
 export default onArrowUp;

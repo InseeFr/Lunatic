@@ -70,7 +70,7 @@ function ComboBox({
 	const onKeyDown = useCallback(
 		function (e) {
 			const {
-				index,
+				selectedIndex: nSelectedIndex,
 				expended: nExpended,
 				focused,
 			} = onKeyDownCallback(e, {
@@ -79,7 +79,7 @@ function ComboBox({
 				expended,
 			});
 
-			setSelectedIndex(index);
+			setSelectedIndex(nSelectedIndex);
 			setExpended(nExpended);
 			setFocused(focused);
 		},
@@ -90,6 +90,7 @@ function ComboBox({
 		function () {
 			setSearch(EMPTY_SEARCH);
 			onChange(EMPTY_SEARCH);
+			setSelectedIndex(undefined);
 		},
 		[onChange]
 	);

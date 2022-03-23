@@ -1,10 +1,8 @@
 import React, { useCallback } from 'react';
-import classnames from 'classnames';
 import Label from './label';
 import Input from './input';
 import SelectionContainer from './selection-container';
 
-// {getContent({ ...props, onChange: onChangeEx })}
 function getContent({
 	labelRenderer,
 	placeholder,
@@ -18,7 +16,6 @@ function getContent({
 	options,
 	editable,
 	labelledBy,
-	inputEl,
 }) {
 	const displayLabel = !editable || !expended;
 

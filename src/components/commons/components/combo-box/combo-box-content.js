@@ -33,6 +33,7 @@ function ComboBoxContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 			})}
 			onFocus={onFocus}
 			onKeyDown={handleKeyDown}
+			onClick={onFocus}
 			ref={ref}
 			tabIndex="0"
 		>
