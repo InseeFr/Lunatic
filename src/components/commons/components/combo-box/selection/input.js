@@ -6,7 +6,6 @@ function Input({
 	disabled,
 	onChange,
 	value,
-	display,
 	id,
 	labelledBy,
 	focused,
@@ -22,29 +21,26 @@ function Input({
 		},
 		[inputEl, focused]
 	);
-	if (display) {
-		return (
-			<input
-				ref={inputEl}
-				id={id}
-				className={classnames('lunatic-combo-box-input', className)}
-				type="text"
-				onChange={onChange}
-				value={value}
-				aria-label="lunatic-combo-box"
-				title="combo-box"
-				autoComplete="off"
-				autoCapitalize="off"
-				autoCorrect="off"
-				spellCheck="false"
-				placeholder={placeholder}
-				disabled={disabled}
-				aria-labelledby={labelledBy}
-				tabIndex="0"
-			/>
-		);
-	}
-	return null;
+
+	return (
+		<input
+			ref={inputEl}
+			id={id}
+			className={classnames('lunatic-combo-box-input', className)}
+			type="text"
+			onChange={onChange}
+			value={value}
+			aria-label="lunatic-combo-box"
+			title="combo-box"
+			autoComplete="off"
+			autoCapitalize="off"
+			autoCorrect="off"
+			spellCheck="false"
+			placeholder={placeholder}
+			disabled={disabled}
+			aria-labelledby={labelledBy}
+		/>
+	);
 }
 
 export default React.memo(Input);

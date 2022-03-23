@@ -18,6 +18,7 @@ function getContent({
 	options,
 	editable,
 	labelledBy,
+	inputEl,
 }) {
 	const displayLabel = !editable || !expended;
 
@@ -50,29 +51,14 @@ function getContent({
 }
 
 function Selection(props) {
-	const {
-		expended,
-		id,
-		onChange,
-		labelRenderer,
-		placeholder,
-		search,
-		htmlFor,
-		disabled,
-		focused,
-		selectedIndex,
-		options,
-		editable,
-		labelledBy,
-	} = props;
-
+	const { expended, id, onChange } = props;
 	const onChangeEx = useCallback(
 		function (e) {
 			onChange(e.target.value);
 		},
 		[onChange]
 	);
-	const displayLabel = !editable || !expended;
+
 	return (
 		<SelectionContainer
 			id={id}
@@ -80,31 +66,7 @@ function Selection(props) {
 			expanded={expended}
 			ariaOwns={`${id}-list`}
 		>
-			<Label
-				id={htmlFor}
-				labelRenderer={labelRenderer}
-				placeholder={placeholder}
-				expended={expended}
-				selectedIndex={selectedIndex}
-				options={options}
-				search={search}
-				disabled={disabled}
-				labelledBy={labelledBy}
-				display={displayLabel}
-				editable={editable}
-			/>
-			<Input
-				id={htmlFor}
-				className={classnames('lunatic-combo-box-input', {
-					hidden: displayLabel,
-				})}
-				onChange={onChangeEx}
-				value={search}
-				placeholder={placeholder}
-				disabled={disabled}
-				focused={focused}
-				display={editable}
-			/>
+			{getContent({ ...props, onChange: onChangeEx })}
 		</SelectionContainer>
 	);
 }

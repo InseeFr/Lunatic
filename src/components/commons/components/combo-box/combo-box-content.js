@@ -16,15 +16,25 @@ function ComboBoxContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 
 	useDocumentAddEventListener('mousedown', onClick);
 
+	const handleKeyDown = useCallback(
+		function (e) {
+			if (e.key === 'Tab') {
+				ref.current.focus();
+			}
+			onKeyDown(e);
+		},
+		[onKeyDown]
+	);
+
 	return (
 		<div
 			className={classnames('lunatic-combo-box', {
 				focused,
 			})}
 			onFocus={onFocus}
-			onKeyDown={onKeyDown}
+			onKeyDown={handleKeyDown}
 			ref={ref}
-			tabIndex="-1"
+			tabIndex="0"
 		>
 			<div className={classnames('lunatic-combo-box-content', { focused })}>
 				{children}
