@@ -8,7 +8,7 @@ const OPTIONS = [
 ];
 
 function Dropdown({ label, declarations, id, handleChange, response, value }) {
-	const inputId = `lunatic-dropdown-${id}`;
+	const htmlFor = `lunatic-dropdown-${id}`;
 	const labelId = `lunatic-dropdown-label-${id}`;
 
 	const onSelect = useOnHandleChange({ handleChange, response, value });
@@ -20,7 +20,7 @@ function Dropdown({ label, declarations, id, handleChange, response, value }) {
 	return (
 		<LunaticField
 			label={label}
-			contentId={inputId}
+			contentId={htmlFor}
 			labelId={labelId}
 			declarations={declarations}
 			id={id}
@@ -29,6 +29,8 @@ function Dropdown({ label, declarations, id, handleChange, response, value }) {
 		>
 			<ComboBox
 				id={id}
+				htmlFor={htmlFor}
+				labelledBy={labelId}
 				onChange={onChange}
 				disabled={false}
 				options={OPTIONS}

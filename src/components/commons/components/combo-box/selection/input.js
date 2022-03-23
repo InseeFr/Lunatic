@@ -7,7 +7,7 @@ function Input({
 	value,
 	focused,
 	id,
-	display,
+	labelledBy,
 }) {
 	const inputEl = useRef();
 
@@ -23,7 +23,7 @@ function Input({
 	return (
 		<input
 			ref={inputEl}
-			id={`lunatic-combo-box-input-${id}`}
+			id={id}
 			tabIndex="0"
 			className="lunatic-combo-box-input"
 			type="text"
@@ -37,6 +37,7 @@ function Input({
 			spellCheck="false"
 			placeholder={placeholder}
 			disabled={disabled}
+			aria-labelledby={labelledBy}
 		/>
 	);
 }

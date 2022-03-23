@@ -18,6 +18,7 @@ function ComboBox({
 	classStyle,
 	placeholder,
 	labelledBy,
+	htmlFor,
 	optionRenderer,
 	labelRenderer,
 
@@ -99,7 +100,7 @@ function ComboBox({
 	}
 
 	return (
-		<ComboBoxContainer classStyle={classStyle} className={className}>
+		<ComboBoxContainer id={id} classStyle={classStyle} className={className}>
 			<ComboBoxContent
 				id={id}
 				focused={focused}
@@ -111,6 +112,7 @@ function ComboBox({
 					labelRenderer={labelRenderer}
 					placeholder={placeholder}
 					labelledBy={labelledBy}
+					htmlFor={htmlFor}
 					search={search}
 					expended={expended}
 					id={id}
@@ -146,6 +148,8 @@ function ComboBox({
 ComboBox.propTypes = {
 	classStyle: PropTypes.string,
 	placeholder: PropTypes.string,
+	htmlFor: PropTypes.string.isRequired,
+	labelledBy: PropTypes.string.isRequired,
 	editable: PropTypes.bool,
 	onSelect: PropTypes.func,
 	onChange: PropTypes.func,

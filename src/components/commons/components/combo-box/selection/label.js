@@ -9,6 +9,7 @@ function Label({
 	options,
 	search,
 	disabled,
+	labelledBy,
 }) {
 	const option =
 		selectedIndex !== undefined ? options[selectedIndex] : undefined;
@@ -19,6 +20,7 @@ function Label({
 				disabled,
 			})}
 			tabIndex="-1"
+			aria-labelledby={labelledBy}
 		>
 			<Renderer option={option} placeholder={placeholder} search={search} />
 		</div>

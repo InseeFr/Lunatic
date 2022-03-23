@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 function SelectionContainer({
 	children,
-	labelledBy,
+
 	id,
 	expended,
 	focused,
@@ -20,7 +20,6 @@ function SelectionContainer({
 			role="combobox"
 			aria-controls={'todo'}
 			aria-haspopup="listbox"
-			aria-labelledby={labelledBy}
 			aria-expanded={expended}
 			aria-autocomplete="list"
 			aria-owns={comboBoxId}
