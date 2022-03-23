@@ -25,7 +25,7 @@ function onKeyDownCallback(e, args) {
 		case KEYBOARD_KEY_CODES.Escape:
 			return onEscape(e, args);
 		default:
-			return args;
+			return { ...args, focused: true };
 	}
 }
 

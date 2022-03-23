@@ -11,6 +11,8 @@ import DefaultOptionRenderer from './panel/default-option-renderer';
 import onKeyDownCallback from './on-keydown-callback';
 import './combo-box.scss';
 
+const EMPTY_SEARCH = '';
+
 function ComboBox({
 	className,
 	classStyle,
@@ -19,7 +21,6 @@ function ComboBox({
 	optionRenderer,
 	labelRenderer,
 
-	onDelete,
 	onChange, // change search
 	onSelect, // select option
 
@@ -27,7 +28,6 @@ function ComboBox({
 	disabled,
 
 	messageError,
-	search,
 
 	editable,
 	id,
@@ -36,6 +36,7 @@ function ComboBox({
 	const [focused, setFocused] = useState(false);
 	const [expended, setExpended] = useState(false);
 	const [selectedIndex, setSelectedIndex] = useState(undefined);
+	const [search, setSearch] = useState(EMPTY_SEARCH);
 
 	const onFocus = useCallback(function () {
 		setExpended(true);
@@ -57,6 +58,14 @@ function ComboBox({
 		[options]
 	);
 
+	const handleChange = useCallback(
+		function (s) {
+			setSearch(s);
+			onChange(s);
+		},
+		[onChange]
+	);
+
 	const onKeyDown = useCallback(
 		function (e) {
 			const {
@@ -73,6 +82,14 @@ function ComboBox({
 			setFocused(focused);
 		},
 		[selectedIndex, options, expended]
+	);
+
+	const onDelete = useCallback(
+		function () {
+			setSearch(EMPTY_SEARCH);
+			onChange(EMPTY_SEARCH);
+		},
+		[onChange]
 	);
 
 	if (messageError) {
@@ -102,7 +119,7 @@ function ComboBox({
 					editable={editable}
 					selectedIndex={selectedIndex}
 					options={options}
-					onChange={onChange}
+					onChange={handleChange}
 				/>
 				<Panel
 					optionRenderer={optionRenderer}
@@ -120,6 +137,7 @@ function ComboBox({
 				className={classnames({ focused })}
 				search={search}
 				onClick={onDelete}
+				editable={editable}
 			/>
 		</ComboBoxContainer>
 	);

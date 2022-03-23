@@ -28,10 +28,11 @@ function Dropdown({ label, declarations, id, handleChange, response, value }) {
 			className="lunatic-dropdown"
 		>
 			<ComboBox
+				id={id}
 				onChange={onChange}
 				disabled={false}
 				options={OPTIONS}
-				editable={false}
+				editable={true}
 				onSelect={onSelect}
 			/>
 		</LunaticField>

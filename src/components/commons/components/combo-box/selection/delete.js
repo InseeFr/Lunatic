@@ -19,20 +19,23 @@ function createOnKeyDown(onClick) {
 	return () => null;
 }
 
-function Delete({ className, search, onClick }) {
+function Delete({ className, search, onClick, editable }) {
 	const onKeyDown = useMemo(() => createOnKeyDown(onClick), [onClick]);
-	return (
-		<Fab
-			className={classnames('mini', 'lunatic-combo-box-fab', className)}
-			tabIndex="0"
-			title="delete"
-			onClick={onClick}
-			disabled={isDisabled(search)}
-			onKeyDown={onKeyDown}
-		>
-			<CrossIcon className="lunatic-combo-box-icon" />
-		</Fab>
-	);
+	if (editable) {
+		return (
+			<Fab
+				className={classnames('mini', 'lunatic-combo-box-fab', className)}
+				tabIndex="0"
+				title="delete"
+				onClick={onClick}
+				disabled={isDisabled(search)}
+				onKeyDown={onKeyDown}
+			>
+				<CrossIcon className="lunatic-combo-box-icon" />
+			</Fab>
+		);
+	}
+	return null;
 }
 
 export default Delete;
