@@ -1,2 +1,2 @@
-export { default } from './dropdown';
+export { default } from './combo-box';
 export { DefaultOptionRenderer } from './panel';

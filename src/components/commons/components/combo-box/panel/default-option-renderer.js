@@ -6,7 +6,7 @@ function DefaultOptionRenderer({ option, selected }) {
 
 	if (label && label.length) {
 		return (
-			<div className={classnames('lunatic-dropdown-option', { selected })}>
+			<div className={classnames('lunatic-combo-box-option', { selected })}>
 				<span className="id">{id}</span>
 				{label && (
 					<>
@@ -18,7 +18,7 @@ function DefaultOptionRenderer({ option, selected }) {
 		);
 	}
 	return (
-		<div className={classnames('lunatic-dropdown-option', { selected })}>
+		<div className={classnames('lunatic-combo-box-option', { selected })}>
 			<span className="id">{id}</span>
 		</div>
 	);

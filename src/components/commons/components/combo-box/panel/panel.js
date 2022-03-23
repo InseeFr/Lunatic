@@ -9,7 +9,7 @@ function getContent({
 	expended,
 	value,
 	search,
-	onClickOption,
+	onSelect,
 }) {
 	if (expended) {
 		return options.map(function (option, index) {
@@ -20,7 +20,7 @@ function getContent({
 					key={id}
 					index={index}
 					selected={id === value}
-					onClickOption={onClickOption}
+					onSelect={onSelect}
 				>
 					<OptionRender option={option} selected={selected} search={search} />
 				</OptionContainer>
@@ -39,7 +39,7 @@ function Panel({
 	expended,
 	id,
 	search,
-	onClickOption,
+	onSelect,
 }) {
 	const content = getContent({
 		options,
@@ -48,7 +48,7 @@ function Panel({
 		expended,
 		value,
 		search,
-		onClickOption,
+		onSelect,
 	});
 
 	return (

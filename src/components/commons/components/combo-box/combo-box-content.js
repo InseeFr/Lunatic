@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react';
 import classnames from 'classnames';
 import useDocumentAddEventListener from '../../use-document-add-event-listener';
 
-function DropdownContent({ children, focused, onFocus, onBlur, onKeyDown }) {
+function ComboBoxContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 	const ref = useRef();
 	const onClick = useCallback(
 		function (e) {
@@ -18,7 +18,7 @@ function DropdownContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 
 	return (
 		<div
-			className={classnames('lunatic-dropdown', {
+			className={classnames('lunatic-combo-box', {
 				focused,
 			})}
 			onFocus={onFocus}
@@ -26,11 +26,11 @@ function DropdownContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 			ref={ref}
 			tabIndex="0"
 		>
-			<div className={classnames('lunatic-dropdown-content', { focused })}>
+			<div className={classnames('lunatic-combo-box-content', { focused })}>
 				{children}
 			</div>
 		</div>
 	);
 }
 
-export default DropdownContent;
+export default ComboBoxContent;

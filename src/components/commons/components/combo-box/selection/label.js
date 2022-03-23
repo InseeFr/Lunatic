@@ -15,7 +15,7 @@ function Label({
 
 	return (
 		<div
-			className={classnames('lunatic-dropdown-selected', {
+			className={classnames('lunatic-combo-box-selected', {
 				disabled,
 			})}
 			tabIndex="-1"

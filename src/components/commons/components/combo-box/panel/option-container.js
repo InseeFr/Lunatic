@@ -20,16 +20,16 @@ function isVisible(optionRect, parentRect) {
 	return false;
 }
 
-function OptionContainer({ children, index, selected, onClickOption }) {
+function OptionContainer({ children, index, selected, onSelect }) {
 	const ref = useRef();
 
-	const onClickOptionEx = useCallback(
+	const onClick = useCallback(
 		function (e) {
 			e.stopPropagation();
 			e.preventDefault();
-			onClickOption(index);
+			onSelect(index);
 		},
-		[onClickOption, index]
+		[onSelect, index]
 	);
 
 	useEffect(
@@ -48,10 +48,10 @@ function OptionContainer({ children, index, selected, onClickOption }) {
 
 	return (
 		<li
-			className={classnames('lunatic-dropdown-option', { selected })}
+			className={classnames('lunatic-combo-box-option', { selected })}
 			role="option"
 			aria-selected={selected}
-			onClick={onClickOptionEx}
+			onClick={onClick}
 			ref={ref}
 		>
 			{children}

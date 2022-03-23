@@ -7,7 +7,7 @@ function PanelContainer({ children, focused, expended, id }) {
 			id={id}
 			tabIndex="-1"
 			aria-label="suggestions"
-			className={classnames('lunatic-dropdown-panel', {
+			className={classnames('lunatic-combo-box-panel', {
 				focused,
 				expended,
 			})}

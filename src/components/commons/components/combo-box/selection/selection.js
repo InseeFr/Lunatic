@@ -2,22 +2,22 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import Label from './label';
 
-function Selection({
-	labelRenderer,
-	placeholder,
-	labelledBy,
-	search,
-	expended,
-	id,
-	disabled,
-	focused,
-	onChange,
-	displayLabel,
-	selectedIndex,
-	options,
-	editable,
-}) {
+function Selection(props) {
 	const inputEl = useRef();
+	const {
+		labelRenderer,
+		placeholder,
+		labelledBy,
+		search,
+		expended,
+		id,
+		disabled,
+		focused,
+		onChange,
+		selectedIndex,
+		options,
+		editable,
+	} = props;
 
 	const onChangeEx = useCallback(
 		function (e) {
@@ -39,7 +39,7 @@ function Selection({
 	return (
 		<div
 			id={id}
-			className={classnames('lunatic-dropdown-selection', {
+			className={classnames('lunatic-combo-box-selection', {
 				focused,
 				disabled,
 			})}
@@ -55,7 +55,6 @@ function Selection({
 				<Label
 					labelRenderer={labelRenderer}
 					placeholder={placeholder}
-					displayLabel={displayLabel}
 					expended={expended}
 					selectedIndex={selectedIndex}
 					options={options}
@@ -67,7 +66,7 @@ function Selection({
 					ref={inputEl}
 					id={`${id}-input`}
 					tabIndex="0"
-					className="lunatic-dropdown-input"
+					className="lunatic-combo-box-input"
 					type="text"
 					onChange={onChangeEx}
 					value={search}

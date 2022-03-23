@@ -12,5 +12,5 @@ export { default as useDocumentAddEventListener } from './use-document-add-event
 export { default as NothingToDisplay } from './components/nothing-to-display';
 export { default as createRowOrchestrator } from './create-row-orchestrator';
 export { default as OrchestratedComponent } from './components/orchestrated-component';
-export { default as Dropdown } from './components/dropdown';
+export { default as ComboBox } from './components/combo-box';
 export * as HtmlTable from './components/html-table';

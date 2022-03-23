@@ -1,15 +1,17 @@
 import React, { useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import DropdownContent from './dropdown-content';
+import ComboBoxContent from './combo-box-content';
 import Selection from './selection';
 import Panel from './panel';
 import Delete from './selection/delete';
+import ComboBoxContainer from './combo-box-container';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import DefaultOptionRenderer from './panel/default-option-renderer';
-import './dropdown.scss';
+import onKeyDownCallback from './on-keydown-callback';
+import './combo-box.scss';
 
-function Dropdown({
+function ComboBox({
 	className,
 	classStyle,
 	placeholder,
@@ -18,13 +20,11 @@ function Dropdown({
 	labelRenderer,
 
 	onDelete,
-	onKeyDown,
-	onChange,
-	onClickOption,
+	onChange, // change search
+	onSelect, // select option
 
 	value,
 	disabled,
-	displayLabel,
 
 	messageError,
 	search,
@@ -47,28 +47,43 @@ function Dropdown({
 		setFocused(false);
 	}, []);
 
-	const handleClickOption = useCallback(
+	const handleSelect = useCallback(
 		function (index) {
 			setSelectedIndex(index);
 			setExpended(false);
-			onClickOption(options[index].id);
+			// TODO safety
+			onSelect(options[index].id);
 		},
 		[options]
 	);
 
+	const onKeyDown = useCallback(
+		function (e) {
+			const {
+				index,
+				expended: nExpended,
+				focused,
+			} = onKeyDownCallback(e, {
+				selectedIndex,
+				options,
+				expended,
+			});
+			setSelectedIndex(index);
+			setExpended(nExpended);
+			setFocused(focused);
+		},
+		[selectedIndex, options, expended]
+	);
+
 	if (messageError) {
-		return <div className="lunatic-dropdown-message-error">{messageError}</div>;
+		return (
+			<div className="lunatic-combo-box-message-error">{messageError}</div>
+		);
 	}
 
 	return (
-		<div
-			className={classnames(
-				'lunatic-dropdown-container',
-				className,
-				classStyle
-			)}
-		>
-			<DropdownContent
+		<ComboBoxContainer classStyle={classStyle} className={className}>
+			<ComboBoxContent
 				id={id}
 				focused={focused}
 				onFocus={onFocus}
@@ -85,7 +100,6 @@ function Dropdown({
 					disabled={disabled}
 					focused={focused}
 					editable={editable}
-					displayLabel={displayLabel}
 					selectedIndex={selectedIndex}
 					options={options}
 					onChange={onChange}
@@ -99,31 +113,33 @@ function Dropdown({
 					expended={expended}
 					id={id}
 					search={search}
-					onClickOption={handleClickOption}
+					onSelect={handleSelect}
 				/>
-			</DropdownContent>
+			</ComboBoxContent>
 			<Delete
 				className={classnames({ focused })}
 				search={search}
 				onClick={onDelete}
 			/>
-		</div>
+		</ComboBoxContainer>
 	);
 }
 
-Dropdown.propTypes = {
+ComboBox.propTypes = {
 	classStyle: PropTypes.string,
 	placeholder: PropTypes.string,
 	editable: PropTypes.bool,
-	onClickOption: PropTypes.func,
+	onSelect: PropTypes.func,
+	onChange: PropTypes.func,
 };
 
-Dropdown.defaultProps = {
+ComboBox.defaultProps = {
 	classStyle: 'default-style',
 	optionRenderer: DefaultOptionRenderer,
 	placeholder: 'Please, do something...',
 	editable: false,
-	onClickOption: () => null,
+	onSelect: () => null,
+	onChange: () => null,
 };
 
-export default createCustomizableLunaticField(Dropdown);
+export default createCustomizableLunaticField(ComboBox);

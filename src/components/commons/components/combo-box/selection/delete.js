@@ -23,14 +23,14 @@ function Delete({ className, search, onClick }) {
 	const onKeyDown = useMemo(() => createOnKeyDown(onClick), [onClick]);
 	return (
 		<Fab
-			className={classnames('mini', 'lunatic-dropdown-fab', className)}
+			className={classnames('mini', 'lunatic-combo-box-fab', className)}
 			tabIndex="0"
 			title="delete"
 			onClick={onClick}
 			disabled={isDisabled(search)}
 			onKeyDown={onKeyDown}
 		>
-			<CrossIcon className="lunatic-dropdown-icon" />
+			<CrossIcon className="lunatic-combo-box-icon" />
 		</Fab>
 	);
 }
