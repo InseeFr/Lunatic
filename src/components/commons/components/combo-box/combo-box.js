@@ -8,6 +8,7 @@ import Delete from './selection/delete';
 import ComboBoxContainer from './combo-box-container';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import DefaultOptionRenderer from './panel/default-option-renderer';
+import DefaultLabelRenderer from './selection/default-label-renderer';
 import onKeyDownCallback from './on-keydown-callback';
 import './combo-box.scss';
 
@@ -33,11 +34,12 @@ function ComboBox({
 	editable,
 	id,
 	options,
+	search: searchProps,
 }) {
 	const [focused, setFocused] = useState(false);
 	const [expended, setExpended] = useState(false);
 	const [selectedIndex, setSelectedIndex] = useState(undefined);
-	const [search, setSearch] = useState(EMPTY_SEARCH);
+	const [search, setSearch] = useState(searchProps);
 
 	const onFocus = useCallback(function () {
 		setExpended(true);
@@ -56,12 +58,14 @@ function ComboBox({
 			// TODO safety
 			onSelect(options[index].id);
 		},
-		[options]
+		[options, onSelect]
 	);
 
 	const handleChange = useCallback(
 		function (s) {
 			setSearch(s);
+			setSelectedIndex(undefined);
+
 			onChange(s);
 		},
 		[onChange]
@@ -89,8 +93,8 @@ function ComboBox({
 	const onDelete = useCallback(
 		function () {
 			setSearch(EMPTY_SEARCH);
-			onChange(EMPTY_SEARCH);
 			setSelectedIndex(undefined);
+			onChange(EMPTY_SEARCH);
 		},
 		[onChange]
 	);
@@ -152,6 +156,7 @@ ComboBox.propTypes = {
 	placeholder: PropTypes.string,
 	htmlFor: PropTypes.string.isRequired,
 	labelledBy: PropTypes.string.isRequired,
+	search: PropTypes.string,
 	editable: PropTypes.bool,
 	onSelect: PropTypes.func,
 	onChange: PropTypes.func,
@@ -160,8 +165,10 @@ ComboBox.propTypes = {
 ComboBox.defaultProps = {
 	classStyle: 'default-style',
 	optionRenderer: DefaultOptionRenderer,
+	labelRenderer: DefaultLabelRenderer,
 	placeholder: 'Please, do something...',
 	editable: false,
+	search: EMPTY_SEARCH,
 	onSelect: () => null,
 	onChange: () => null,
 };

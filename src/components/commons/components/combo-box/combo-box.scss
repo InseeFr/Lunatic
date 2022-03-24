@@ -26,6 +26,14 @@
 	width: 100%;
 
 	&.default-style {
+
+		--color-combo-box-selected: Cornsilk;
+		--color-primary-dark: DarkGreen;
+		--color-primary-main:FloralWhite;
+		--color-combo-box-background: snow;
+		--color-disabled:Gainsboro;
+		--color-primary-light:GreenYellow;
+
 		margin-bottom: 10px;
 		.lunatic-combo-box {
 			min-height: 30px;
@@ -36,7 +44,7 @@
 				.lunatic-combo-box-selection {
 					border-radius: 5px;
 					border: 2px solid var(--color-primary-dark);
-					background-color: snow;
+					background-color: var(--color-combo-box-background);
 					&:hover {
 						border-color: var(--color-primary-main);
 					}
@@ -55,7 +63,7 @@
 					.lunatic-combo-box-selected {
 						height: 34px;
 						line-height: 34px;
-						background-color: snow;
+						background-color: var(--color-combo-box-background);
 						border-radius: 5px;
 						padding-left: 4px;
 						@include selection();
@@ -83,7 +91,7 @@
 					@include defaultFont();
 					height: 0;
 					opacity: 0;
-					background-color: white;
+					background-color: var(--color-combo-box-background);
 					transition: opacity 267ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
 						transform 178ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 					&.expended {
@@ -109,7 +117,7 @@
 						}
 						&:hover {
 							background-color: var(--color-primary-main);
-							color: white;
+							color: var(--color-combo-box-background);
 						}
 					}
 				}

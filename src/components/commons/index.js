@@ -14,3 +14,5 @@ export { default as createRowOrchestrator } from './create-row-orchestrator';
 export { default as OrchestratedComponent } from './components/orchestrated-component';
 export { default as ComboBox } from './components/combo-box';
 export * as HtmlTable from './components/html-table';
+export { default as DefaultOptionRenderer } from './components/combo-box/panel/default-option-renderer';
+export { default as DefaultLabelRenderer } from './components/combo-box/selection/default-label-renderer';

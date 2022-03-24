@@ -4,7 +4,7 @@ import OptionContainer from './option-container';
 
 function getContent({
 	options,
-	OptionRender,
+	optionRenderer: OptionRender,
 	selectedIndex,
 	expended,
 	value,
@@ -31,7 +31,7 @@ function getContent({
 }
 
 function Panel({
-	optionRenderer: OptionRender,
+	optionRenderer,
 	value,
 	options,
 	focused,
@@ -43,7 +43,7 @@ function Panel({
 }) {
 	const content = getContent({
 		options,
-		OptionRender,
+		optionRenderer,
 		selectedIndex,
 		expended,
 		value,
