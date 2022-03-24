@@ -7,7 +7,6 @@ function getContent({
 	optionRenderer: OptionRender,
 	selectedIndex,
 	expended,
-	value,
 	search,
 	onSelect,
 }) {
@@ -19,7 +18,7 @@ function getContent({
 				<OptionContainer
 					key={id}
 					index={index}
-					selected={id === value}
+					selected={selected}
 					onSelect={onSelect}
 				>
 					<OptionRender option={option} selected={selected} search={search} />
@@ -32,7 +31,6 @@ function getContent({
 
 function Panel({
 	optionRenderer,
-	value,
 	options,
 	focused,
 	selectedIndex,
@@ -46,7 +44,6 @@ function Panel({
 		optionRenderer,
 		selectedIndex,
 		expended,
-		value,
 		search,
 		onSelect,
 	});

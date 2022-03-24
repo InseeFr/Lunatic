@@ -1,6 +1,7 @@
 import React, { useRef, useCallback } from 'react';
 import classnames from 'classnames';
 import useDocumentAddEventListener from '../../use-document-add-event-listener';
+import { KEYBOARD_KEY_CODES } from './state-management/reducer/reduce-on-keydown/keyboard-key-codes';
 
 function ComboBoxContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 	const ref = useRef();
@@ -18,10 +19,18 @@ function ComboBoxContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 
 	const handleKeyDown = useCallback(
 		function (e) {
-			if (e.key === 'Tab') {
-				ref.current.focus();
+			const { key } = e;
+			e.stopPropagation();
+			switch (key) {
+				case KEYBOARD_KEY_CODES.Escape:
+				case KEYBOARD_KEY_CODES.Enter:
+				case KEYBOARD_KEY_CODES.tab:
+					ref.current.focus();
+					break;
+				default:
+					e.preventDefault;
 			}
-			onKeyDown(e);
+			onKeyDown(key);
 		},
 		[onKeyDown]
 	);

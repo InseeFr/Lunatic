@@ -7,26 +7,28 @@ import onEnd from './on-end';
 import onEnter from './on-enter';
 import onEscape from './on-escape';
 
-function onKeyDownCallback(e, args) {
-	const { key } = e;
+function reduceOnKeyDown(state, action) {
+	const { payload } = action;
+	const { key, nbOptions } = payload;
+
 	switch (key) {
 		case KEYBOARD_KEY_CODES.Tab:
-			return onTab(e, args);
+			return onTab(state, nbOptions);
 		case KEYBOARD_KEY_CODES.ArrowDown:
-			return onArrowDown(e, args);
+			return onArrowDown(state, nbOptions);
 		case KEYBOARD_KEY_CODES.ArrowUp:
-			return onArrowUp(e, args);
+			return onArrowUp(state, nbOptions);
 		case KEYBOARD_KEY_CODES.Home:
-			return onHome(e, args);
+			return onHome(state, nbOptions);
 		case KEYBOARD_KEY_CODES.End:
-			return onEnd(e, args);
+			return onEnd(state, nbOptions);
 		case KEYBOARD_KEY_CODES.Enter:
-			return onEnter(e, args);
+			return onEnter(state, nbOptions);
 		case KEYBOARD_KEY_CODES.Escape:
-			return onEscape(e, args);
+			return onEscape(state, nbOptions);
 		default:
-			return { ...args, focused: true };
+			return state;
 	}
 }
 
-export default onKeyDownCallback;
+export default reduceOnKeyDown;

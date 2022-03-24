@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ComboBoxContent from './combo-box-content';
@@ -9,7 +9,7 @@ import ComboBoxContainer from './combo-box-container';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import DefaultOptionRenderer from './panel/default-option-renderer';
 import DefaultLabelRenderer from './selection/default-label-renderer';
-import onKeyDownCallback from './on-keydown-callback';
+import { INITIAL_STATE, reducer, actions } from './state-management';
 import './combo-box.scss';
 
 const EMPTY_SEARCH = '';
@@ -20,42 +20,35 @@ function ComboBox({
 	placeholder,
 	labelledBy,
 	htmlFor,
+	editable,
+	disabled,
+	id,
 	optionRenderer,
 	labelRenderer,
-
 	onChange, // change search
 	onSelect, // select option
-
 	value,
-	disabled,
-
-	messageError,
-
-	editable,
-	id,
 	options,
+	messageError,
 	search: searchProps,
 }) {
-	const [focused, setFocused] = useState(false);
-	const [expended, setExpended] = useState(false);
-	const [selectedIndex, setSelectedIndex] = useState(undefined);
-	const [search, setSearch] = useState(searchProps);
+	const [state, dispatch] = useReducer(reducer, {
+		...INITIAL_STATE,
+		search: searchProps,
+	});
+	const { focused, expended, search, selectedIndex } = state;
 
 	const onFocus = useCallback(function () {
-		setExpended(true);
-		setFocused(true);
+		dispatch(actions.onFocus());
 	}, []);
 
 	const onBlur = useCallback(function () {
-		setExpended(false);
-		setFocused(false);
+		dispatch(actions.onBlur());
 	}, []);
 
 	const handleSelect = useCallback(
 		function (index) {
-			setSelectedIndex(index);
-			setExpended(false);
-			// TODO safety
+			dispatch(actions.onSelect(index));
 			onSelect(options[index].id);
 		},
 		[options, onSelect]
@@ -63,37 +56,23 @@ function ComboBox({
 
 	const handleChange = useCallback(
 		function (s) {
-			setSearch(s);
-			setSelectedIndex(undefined);
-
+			dispatch(actions.onChange(s));
 			onChange(s);
 		},
 		[onChange]
 	);
 
 	const onKeyDown = useCallback(
-		function (e) {
-			const {
-				selectedIndex: nSelectedIndex,
-				expended: nExpended,
-				focused,
-			} = onKeyDownCallback(e, {
-				selectedIndex,
-				options,
-				expended,
-			});
-
-			setSelectedIndex(nSelectedIndex);
-			setExpended(nExpended);
-			setFocused(focused);
+		function (key) {
+			const { length } = options;
+			dispatch(actions.onKeydown(key, length));
 		},
-		[selectedIndex, options, expended]
+		[options]
 	);
 
 	const onDelete = useCallback(
 		function () {
-			setSearch(EMPTY_SEARCH);
-			setSelectedIndex(undefined);
+			dispatch(actions.onDelete());
 			onChange(EMPTY_SEARCH);
 		},
 		[onChange]
@@ -160,6 +139,7 @@ ComboBox.propTypes = {
 	editable: PropTypes.bool,
 	onSelect: PropTypes.func,
 	onChange: PropTypes.func,
+	options: PropTypes.array,
 };
 
 ComboBox.defaultProps = {
@@ -171,6 +151,7 @@ ComboBox.defaultProps = {
 	search: EMPTY_SEARCH,
 	onSelect: () => null,
 	onChange: () => null,
+	options: [],
 };
 
 export default createCustomizableLunaticField(ComboBox);

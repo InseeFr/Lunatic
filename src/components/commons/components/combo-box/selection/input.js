@@ -22,6 +22,13 @@ function Input({
 		[inputEl, focused]
 	);
 
+	function onKeydown(e) {
+		const { key } = e;
+		if (key === 'ArrowUp' || key === 'ArrowDown') {
+			e.preventDefault();
+		}
+	}
+
 	return (
 		<input
 			ref={inputEl}
@@ -39,6 +46,7 @@ function Input({
 			placeholder={placeholder}
 			disabled={disabled}
 			aria-labelledby={labelledBy}
+			onKeyDown={onKeydown}
 		/>
 	);
 }

@@ -38,6 +38,7 @@ function OptionContainer({ children, index, selected, onSelect }) {
 			if (current && selected) {
 				const oRect = current.getBoundingClientRect();
 				const pRect = current.parentNode.getBoundingClientRect();
+
 				if (!isVisible(oRect, pRect)) {
 					current.scrollIntoView();
 				}
