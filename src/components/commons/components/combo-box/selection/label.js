@@ -1,9 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
-import DefaultLabelRenderer from './default-label-renderer';
+import displayLabelOrInput from './displayLabelOrInput';
 
 function Label({
-	labelRenderer: Renderer = DefaultLabelRenderer,
+	labelRenderer: Renderer,
 	placeholder,
 	selectedIndex,
 	options,
@@ -26,4 +26,4 @@ function Label({
 	);
 }
 
-export default Label;
+export default displayLabelOrInput(Label);

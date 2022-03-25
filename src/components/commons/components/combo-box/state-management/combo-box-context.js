@@ -1,8 +1,8 @@
 import React from 'react';
 
 const ComboBoxContext = React.createContext({
-	dispatch: undefined,
-	state: undefined,
+	dispatch: (state) => state,
+	state: {},
 });
 
 export default ComboBoxContext;

@@ -7,8 +7,7 @@ import Panel from './panel';
 import Delete from './selection/delete';
 import ComboBoxContainer from './combo-box-container';
 import createCustomizableLunaticField from '../../create-customizable-field';
-import DefaultOptionRenderer from './panel/default-option-renderer';
-import DefaultLabelRenderer from './selection/default-label-renderer';
+
 import { INITIAL_STATE, reducer, actions } from './state-management';
 import './combo-box.scss';
 
@@ -25,8 +24,8 @@ function ComboBox({
 	id,
 	optionRenderer,
 	labelRenderer,
-	onChange, // change search
-	onSelect, // select option
+	onChange,
+	onSelect,
 	value,
 	options,
 	messageError,
@@ -36,7 +35,7 @@ function ComboBox({
 		...INITIAL_STATE,
 		search: searchProps,
 	});
-	const { focused, expended, search, selectedIndex } = state;
+	const { focused, expended, search, selectedIndex, displayLabel } = state;
 
 	const onFocus = useCallback(function () {
 		dispatch(actions.onFocus());
@@ -107,6 +106,7 @@ function ComboBox({
 					selectedIndex={selectedIndex}
 					options={options}
 					onChange={handleChange}
+					displayLabel={displayLabel}
 				/>
 				<Panel
 					optionRenderer={optionRenderer}
@@ -140,18 +140,29 @@ ComboBox.propTypes = {
 	onSelect: PropTypes.func,
 	onChange: PropTypes.func,
 	options: PropTypes.array,
+
+	className: PropTypes.string,
+	disabled: PropTypes.bool,
+	id: PropTypes.string.isRequired,
+	optionRenderer: PropTypes.elementType.isRequired,
+	labelRenderer: PropTypes.elementType.isRequired,
+	value: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+		PropTypes.array,
+		PropTypes.bool,
+	]),
 };
 
 ComboBox.defaultProps = {
 	classStyle: 'default-style',
-	optionRenderer: DefaultOptionRenderer,
-	labelRenderer: DefaultLabelRenderer,
 	placeholder: 'Please, do something...',
 	editable: false,
 	search: EMPTY_SEARCH,
 	onSelect: () => null,
 	onChange: () => null,
 	options: [],
+	value: null,
 };
 
 export default createCustomizableLunaticField(ComboBox);

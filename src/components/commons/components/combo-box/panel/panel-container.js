@@ -4,7 +4,7 @@ import classnames from 'classnames';
 function PanelContainer({ children, focused, expended, id }) {
 	return (
 		<ul
-			id={id}
+			id={`lunatic-combo-box-panel-${id}`}
 			aria-label="suggestions"
 			className={classnames('lunatic-combo-box-panel', {
 				focused,

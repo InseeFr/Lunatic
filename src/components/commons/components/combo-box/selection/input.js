@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import classnames from 'classnames';
+import displayLabelOrInput from './displayLabelOrInput';
 
 function Input({
 	placeholder,
@@ -51,4 +52,4 @@ function Input({
 	);
 }
 
-export default React.memo(Input);
+export default displayLabelOrInput(Input);

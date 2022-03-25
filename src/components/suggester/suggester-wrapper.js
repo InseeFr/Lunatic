@@ -94,8 +94,8 @@ SuggesterWrapper.propTypes = {
 	className: PropTypes.string,
 	placeholder: PropTypes.string,
 	labelledBy: PropTypes.string,
-	optionRenderer: PropTypes.func,
-	labelRenderer: PropTypes.func,
+	optionRenderer: PropTypes.elementType,
+	labelRenderer: PropTypes.elementType,
 	onSelect: PropTypes.func,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
