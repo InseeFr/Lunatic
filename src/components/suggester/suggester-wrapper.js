@@ -1,19 +1,11 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-	usePrevious,
 	ComboBox,
 	DefaultOptionRenderer,
 	DefaultLabelRenderer,
 } from '../commons';
 import './default-style.scss';
-
-function getSearch(search, value) {
-	if (search && search.length) {
-		return search;
-	}
-	return value;
-}
 
 function SuggesterWrapper({
 	className,

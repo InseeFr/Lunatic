@@ -1,13 +1,28 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import { LunaticField, useOnHandleChange, ComboBox } from '../commons';
+import {
+	LunaticField,
+	useOnHandleChange,
+	ComboBox,
+	DefaultOptionRenderer,
+	DefaultLabelRenderer,
+} from '../commons';
 
 const OPTIONS = [
 	{ label: 'toto', id: 'toto' },
 	{ label: 'lulu', id: 'lulu' },
 ];
 
-function Dropdown({ label, declarations, id, handleChange, response, value }) {
+function Dropdown({
+	label,
+	declarations,
+	id,
+	handleChange,
+	response,
+	value,
+	optionRenderer,
+	labelRenderer,
+}) {
 	const htmlFor = `lunatic-dropdown-${id}`;
 	const labelId = `lunatic-dropdown-label-${id}`;
 
@@ -36,13 +51,21 @@ function Dropdown({ label, declarations, id, handleChange, response, value }) {
 				options={OPTIONS}
 				editable={true}
 				onSelect={onSelect}
+				optionRenderer={optionRenderer}
+				labelRenderer={labelRenderer}
 			/>
 		</LunaticField>
 	);
 }
 
-Dropdown.propTypes = {};
+Dropdown.propTypes = {
+	optionRenderer: PropTypes.elementType,
+	labelRenderer: PropTypes.elementType,
+};
 
-Dropdown.defaultProps = {};
+Dropdown.defaultProps = {
+	optionRenderer: DefaultOptionRenderer,
+	labelRenderer: DefaultLabelRenderer,
+};
 
 export default React.memo(Dropdown);

@@ -1,9 +1,22 @@
 import React, { useRef, useCallback } from 'react';
 import classnames from 'classnames';
+import useDocumentAddEventListener from '../../use-document-add-event-listener';
 import { KEYBOARD_KEY_CODES } from './state-management/reducer/reduce-on-keydown/keyboard-key-codes';
 
 function ComboBoxContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 	const ref = useRef();
+
+	const onClick = useCallback(
+		function (e) {
+			const { current } = ref;
+			if (!current.contains(e.target)) {
+				onBlur();
+			}
+		},
+		[ref, onBlur]
+	);
+
+	useDocumentAddEventListener('mousedown', onClick);
 
 	const handleKeyDown = useCallback(
 		function (e) {
@@ -29,9 +42,8 @@ function ComboBoxContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 				focused,
 			})}
 			onFocus={onFocus}
-			onBlur={onBlur}
-			onKeyDown={handleKeyDown}
 			onClick={onFocus}
+			onKeyDown={handleKeyDown}
 			ref={ref}
 			tabIndex="0"
 		>
