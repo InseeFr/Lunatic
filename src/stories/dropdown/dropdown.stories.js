@@ -8,6 +8,7 @@ import data from './data';
 import dataProps from './data-props';
 import dataForced from './data-forced';
 import dataNAF from './data-naf';
+import dataVariables from './data-variables.json';
 import { labelPositionOptions, featuresOptions } from '../utils/options';
 import {
 	text,
@@ -35,7 +36,6 @@ stories.addWithJSX('Props', () => (
 		placeholderList={text('Placeholder', 'Placeholder')}
 		missing={boolean('Missing', false)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
-		bindings={object('Bindings', { NAME: 'Simpsons', TEXAS: 'Texas' })}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		writable={boolean('Writable', false)}
@@ -45,6 +45,7 @@ stories.addWithJSX('Props', () => (
 		management={boolean('Management', false)}
 		zIndex={number('zIndex', 0)}
 		freezeOptions={boolean('Freeze options', false)}
+		data={dataVariables}
 	/>
 ));
 
