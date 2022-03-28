@@ -49,7 +49,7 @@ function OptionContainer({ children, index, selected, onSelect }) {
 
 	return (
 		<li
-			className={classnames('lunatic-combo-box-option', { selected })}
+			className={classnames('lunatic-combo-box-option-container', { selected })}
 			role="option"
 			aria-selected={selected}
 			onClick={onClick}

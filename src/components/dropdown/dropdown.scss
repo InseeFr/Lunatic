@@ -1,0 +1,41 @@
+@mixin defaultFont {
+	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+@mixin disableSelect {
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer */
+	-khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+	-webkit-user-select: none; /* Chrome, Safari, and Opera */
+	-webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+
+.lunatic-component {
+	.lunatic-dropdown {
+		.lunatic-dropdown-option {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			margin-bottom: 0.1em;
+			line-height: 2rem;
+			display: block;
+
+			&.selected {
+				color: var(--color-primary-dark);
+				background-color: goldenrod;
+			}
+
+			&:hover {
+				background-color: var(--color-primary-main);
+				color: white;
+			}
+
+			.prefix {
+				color: red;
+			}
+
+			.normal {
+			}
+		}
+	}
+}

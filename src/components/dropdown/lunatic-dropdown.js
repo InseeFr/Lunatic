@@ -28,7 +28,6 @@ function LunaticDropdown({
 			declarations={declarations}
 			id={id}
 			value={value}
-			className="lunatic-dropdown"
 		>
 			<Dropdown
 				id={id}
@@ -39,6 +38,7 @@ function LunaticDropdown({
 				options={options}
 				editable={writable}
 				onSelect={onSelect}
+				className="lunatic-dropdown"
 			/>
 		</LunaticField>
 	);

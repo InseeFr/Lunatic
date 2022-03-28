@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { ComboBox } from '../../commons';
 import WritableOptionRenderer from './writable-option-renderer';
 import WritableLabelRenderer from './writable-label-renderer';
+import filterOptions from './filter-tools/filter-options';
 
 function DropdownWritable({
 	id,
@@ -10,27 +11,30 @@ function DropdownWritable({
 	disabled,
 	options,
 	onSelect,
+	className,
 }) {
-	// const onChange = useCallback(
-	// 	function (...args) {
-	// 		if (writable) {
-	// 			console.log('onChange', args);
-	// 		}
-	// 	},
-	// 	[writable]
-	// );
+	const [filtered, setFiltered] = useState(options);
+
+	const onChange = useCallback(
+		function (search) {
+			setFiltered(filterOptions(options, search));
+		},
+		[options]
+	);
 
 	return (
 		<ComboBox
 			id={id}
+			className={className}
 			htmlFor={htmlFor}
 			labelledBy={labelId}
 			disabled={disabled}
-			options={options}
-			editable={false}
+			options={filtered}
 			onSelect={onSelect}
+			onChange={onChange}
 			optionRenderer={WritableOptionRenderer}
 			labelRenderer={WritableLabelRenderer}
+			editable={true}
 		/>
 	);
 }

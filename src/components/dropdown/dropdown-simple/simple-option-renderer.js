@@ -6,11 +6,11 @@ function SimpleOptionRenderer({ option, selected }) {
 
 	if (label && label.length) {
 		return (
-			<div className={classnames('lunatic-combo-box-option', { selected })}>
+			<div className={classnames('lunatic-dropdown-option', { selected })}>
 				<span className="id">{value}</span>
 				{label && (
 					<>
-						<span> - </span>
+						<span>&nbsp;&#x2014;&nbsp;</span>
 						<span className="label">{label}</span>
 					</>
 				)}
@@ -18,7 +18,7 @@ function SimpleOptionRenderer({ option, selected }) {
 		);
 	}
 	return (
-		<div className={classnames('lunatic-combo-box-option', { selected })}>
+		<div className={classnames('lunatic-dropdown-option', { selected })}>
 			<span className="id">{value}</span>
 		</div>
 	);

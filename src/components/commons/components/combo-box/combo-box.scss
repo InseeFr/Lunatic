@@ -111,6 +111,7 @@
 						margin-bottom: 0.1em;
 						line-height: 2rem;
 						display: block;
+
 						&.selected {
 							color: var(--color-primary-dark);
 							background-color: var(--color-combo-box-selected);
@@ -200,7 +201,6 @@
 				margin: 0;
 				padding: 0;
 				border: none;
-				line-height: 1em;
 				list-style: none;
 			}
 

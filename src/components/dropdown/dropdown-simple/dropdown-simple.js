@@ -3,10 +3,19 @@ import { ComboBox } from '../../commons';
 import SimpleOptionRenderer from './simple-option-renderer';
 import SimpleLabelRenderer from './simple-label-renderer';
 
-function DropdownSimple({ id, htmlFor, labelId, disabled, options, onSelect }) {
+function DropdownSimple({
+	id,
+	htmlFor,
+	labelId,
+	disabled,
+	options,
+	onSelect,
+	className,
+}) {
 	return (
 		<ComboBox
 			id={id}
+			className={className}
 			htmlFor={htmlFor}
 			labelledBy={labelId}
 			disabled={disabled}
