@@ -12,11 +12,11 @@ function getContent({
 }) {
 	if (expended) {
 		return options.map(function (option, index) {
-			const { id } = option;
+			const { id, value } = option;
 			const selected = selectedIndex === index;
 			return (
 				<OptionContainer
-					key={id}
+					key={id ?? value}
 					index={index}
 					selected={selected}
 					onSelect={onSelect}

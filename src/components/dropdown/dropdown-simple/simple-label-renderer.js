@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 function getContent(option, search) {
 	if (option) {
-		const { id, value, label } = option;
-		return label ? `${id || value} - ${label}` : id || value;
+		const { value, label } = option;
+		return label ? `${value} - ${label}` : value;
 	}
 	if (search && search.trim().length) {
 		return search;
@@ -12,7 +12,7 @@ function getContent(option, search) {
 	return null;
 }
 
-function DefaultLabelRenderer({ option, placeholder, search }) {
+function SimpleLabelRenderer({ option, placeholder, search }) {
 	const content = getContent(option, search);
 	if (content) {
 		return <span className="selection">{content}</span>;
@@ -20,12 +20,12 @@ function DefaultLabelRenderer({ option, placeholder, search }) {
 	return <span className="placeholder">{placeholder}</span>;
 }
 
-DefaultLabelRenderer.propTypes = {
+SimpleLabelRenderer.propTypes = {
 	option: PropTypes.shape({
-		id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+		value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 	}),
 	placeholder: PropTypes.string,
 	search: PropTypes.string,
 };
 
-export default DefaultLabelRenderer;
+export default SimpleLabelRenderer;

@@ -1,13 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
 
-function DefaultOptionRenderer({ option, selected }) {
-	const { id, value, label } = option;
+function WritableOptionRenderer({ option, selected }) {
+	const { value, label } = option;
 
 	if (label && label.length) {
 		return (
 			<div className={classnames('lunatic-combo-box-option', { selected })}>
-				<span className="id">{id || value}</span>
+				<span className="id">{value}</span>
 				{label && (
 					<>
 						<span> - </span>
@@ -19,9 +19,9 @@ function DefaultOptionRenderer({ option, selected }) {
 	}
 	return (
 		<div className={classnames('lunatic-combo-box-option', { selected })}>
-			<span className="id">{id}</span>
+			<span className="id">{value}</span>
 		</div>
 	);
 }
 
-export default DefaultOptionRenderer;
+export default WritableOptionRenderer;
