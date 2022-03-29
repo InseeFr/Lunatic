@@ -1,3 +1,11 @@
+function safetyExpression(expression) {
+	if (typeof expression === 'string') {
+		return { value: expression, type: 'VTL|MD' };
+	}
+
+	return expression;
+}
+
 function createRefreshCalculated({ variables, execute, bindings }) {
 	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.
 
@@ -27,7 +35,7 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 					}
 				}
 
-				const value = execute(expression, {
+				const value = execute(safetyExpression(expression), {
 					logging,
 					iteration: shapeFrom ? iteration : undefined,
 				});

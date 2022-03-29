@@ -4,7 +4,7 @@ function getCompatibleVTLExpression(expression) {
 	}
 	if (typeof expression === 'object') {
 		const { type } = expression;
-		if (expression === 'VTL') {
+		if (type === 'VTL|MD') {
 			return expression;
 		}
 	}
