@@ -146,12 +146,15 @@ ComboBox.propTypes = {
 	id: PropTypes.string.isRequired,
 	optionRenderer: PropTypes.elementType.isRequired,
 	labelRenderer: PropTypes.elementType.isRequired,
-	value: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-		PropTypes.array,
-		PropTypes.bool,
-	]),
+	// value: PropTypes.oneOf([
+	// 	null,
+	// 	PropTypes.oneOfType([
+	// 		PropTypes.string,
+	// 		PropTypes.number,
+	// 		PropTypes.array,
+	// 		PropTypes.bool,
+	// 	]),
+	// ]).isRequired,
 };
 
 ComboBox.defaultProps = {
@@ -162,7 +165,6 @@ ComboBox.defaultProps = {
 	onSelect: () => null,
 	onChange: () => null,
 	options: [],
-	value: null,
 };
 
 export default createCustomizableLunaticField(ComboBox);

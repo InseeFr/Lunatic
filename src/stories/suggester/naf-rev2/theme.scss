@@ -2,6 +2,10 @@
 	white-space: nowrap;
 	overflow: hidden;
 
+	&:hover {
+		cursor: pointer;
+	}
+
 	&.selected {
 		background-color: darkred;
 		.libelle {

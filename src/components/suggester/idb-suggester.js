@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import SuggesterWrapper from './suggester-wrapper';
+import Suggester from './suggester';
 import createSearching from './searching';
 import CheckStore from './check-store';
 
@@ -18,6 +18,8 @@ function IDBSuggester({
 	custom,
 }) {
 	const [store, setStore] = useState(undefined);
+	const [options, setOptions] = useState([]);
+
 	const searching = useMemo(
 		function () {
 			if (store) {
@@ -28,13 +30,23 @@ function IDBSuggester({
 		[storeName, idbVersion, store]
 	);
 
+	const onChange = useCallback(
+		async function (search) {
+			if (search && typeof searching === 'function') {
+				const { results, search: old } = await searching(search);
+				setOptions(results);
+			}
+		},
+		[searching]
+	);
+
 	return (
 		<CheckStore
 			storeName={storeName}
 			idbVersion={idbVersion}
 			setStore={setStore}
 		>
-			<SuggesterWrapper
+			<Suggester
 				id={id}
 				className={className}
 				labelledBy={labelledBy}
@@ -45,6 +57,8 @@ function IDBSuggester({
 				disabled={disabled}
 				value={value}
 				custom={custom}
+				options={options}
+				onChange={onChange}
 			/>
 		</CheckStore>
 	);

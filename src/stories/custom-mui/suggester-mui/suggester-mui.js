@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 import InputBase from '@mui/material/InputBase';
@@ -11,40 +11,36 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 
-function getSelection(options, selectedIndex) {
-	if (selectedIndex !== undefined) {
-		return options[selectedIndex];
-	}
-	return undefined;
-}
+// function getSelection(options, selectedIndex) {
+// 	if (selectedIndex !== undefined) {
+// 		return options[selectedIndex];
+// 	}
+// 	return undefined;
+// }
 
 function SuggesterContainer({
 	children,
-	onBlur,
 	onKeyDown,
 	labelledBy,
-	focused,
 	id,
 	className,
+	onBlur,
+	expended,
 }) {
-	const handleClickAway = useCallback(
-		function () {
-			onBlur();
-		},
-		[onBlur]
-	);
-	const zIndex = focused ? 1 : 0;
+	// const handleClickAway = useCallback(function () {
+	// 	onBlur();
+	// }, []);
+	const zIndex = expended ? '1' : '0';
 	return (
 		<ClickAwayListener
 			mouseEvent="onMouseDown"
 			touchEvent="onTouchStart"
-			onClickAway={handleClickAway}
+			onClickAway={onBlur}
 		>
 			<Box
 				id={id}
 				aria-labelledby={labelledBy}
 				sx={{ position: 'relative', zIndex }}
-				onKeyDown={onKeyDown}
 				className={className}
 			>
 				{children}
@@ -77,7 +73,7 @@ function Delete({ onClick }) {
 function nothing() {}
 
 const SelectionInput = React.forwardRef(function SelectionInput(
-	{ value, placeholderList, onFocus, onChange = nothing, onDelete },
+	{ value, placeholder, onFocus, onChange = nothing, onDelete },
 	inputRef
 ) {
 	return (
@@ -94,7 +90,7 @@ const SelectionInput = React.forwardRef(function SelectionInput(
 				value={value}
 				onFocus={onFocus}
 				ref={inputRef}
-				placeholder={placeholderList}
+				placeholder={placeholder}
 				onChange={onChange}
 			/>
 			<Delete onClick={onDelete} />
@@ -103,33 +99,25 @@ const SelectionInput = React.forwardRef(function SelectionInput(
 });
 
 const Selection = React.forwardRef(function Selection(
-	{
-		search,
-		onChange,
-		onFocus,
-		displayLabel,
-		placeholderList,
-		selection,
-		onDelete,
-	},
+	{ value, onChange, placeholderList, selection, onDelete, expended, onFocus },
 	inputRef
 ) {
-	if (displayLabel) {
+	if (!expended) {
 		return (
 			<SelectionInput
-				value={getContent(selection, search)}
-				onFocus={onFocus}
+				value={getContent(selection, value)}
 				ref={inputRef}
 				placeholder={placeholderList}
 				onDelete={onDelete}
+				onFocus={onFocus}
 			/>
 		);
 	}
+
 	return (
 		<SelectionInput
-			value={search}
+			value={value}
 			onChange={onChange}
-			onFocus={onFocus}
 			ref={inputRef}
 			placeholder={placeholderList}
 			onDelete={onDelete}
@@ -137,17 +125,43 @@ const Selection = React.forwardRef(function Selection(
 	);
 });
 
-function OptionMUI({ label, id, selected, onClickOption, index, onBlur }) {
-	const onClick = useCallback(
+// const Selection = React.forwardRef(function Selection(
+// 	{ placeholder, onChange, onDelete, value, onFocus },
+// 	ref
+// ) {
+// 	return (
+// 		<Paper
+// 			component="form"
+// 			sx={{
+// 				p: '2px 4px',
+// 				display: 'flex',
+// 				alignItems: 'center',
+// 				width: 'fit-content',
+// 			}}
+// 		>
+// 			<SelectionInput
+// 				value={value}
+// 				placeholder={placeholder}
+// 				onChange={onChange}
+// 				ref={ref}
+// 				onFocus={onFocus}
+// 			/>
+// 			<Delete onClick={onDelete} />
+// 		</Paper>
+// 	);
+// });
+
+function OptionMUI({ label, id, selected, onClick, index }) {
+	const handleClick = useCallback(
 		function () {
-			onClickOption(index);
-			onBlur();
+			onClick(index);
 		},
-		[index, onClickOption, onBlur]
+		[index, onClick]
 	);
+
 	const backgroundColor = selected ? 'gold' : 'transparent';
 	return (
-		<MenuItem onClick={onClick} sx={{ backgroundColor }}>
+		<MenuItem onClick={handleClick} sx={{ backgroundColor }}>
 			<Stack direction="row" spacing={1} alignItems="center">
 				<Typography>{id}</Typography>
 				<Typography>{label}</Typography>
@@ -156,27 +170,19 @@ function OptionMUI({ label, id, selected, onClickOption, index, onBlur }) {
 	);
 }
 
-function Panel({
-	options,
-	expended,
-	selectedIndex,
-	anchorEl,
-	onClickOption,
-	onBlur,
-}) {
+function Panel({ options, expended, anchorEl, onClick, selectedIndex, index }) {
 	if (Array.isArray(options) && options.length && expended) {
 		const items = options.map(function (option, index) {
 			const { label, id } = option;
-			const selected = index === selectedIndex;
+
 			return (
 				<OptionMUI
 					key={id}
 					id={id}
 					label={label}
-					selected={selected}
+					selected={index === selectedIndex}
 					index={index}
-					onBlur={onBlur}
-					onClickOption={onClickOption}
+					onClick={onClick}
 				/>
 			);
 		});
@@ -198,63 +204,79 @@ function Panel({
 
 function SuggesterMui({
 	className,
-	placeholderList,
 	labelledBy,
-	// optionRenderer,
-	// labelRenderer,
-	// onSelect,
-	onBlur,
-	onDelete,
-	onKeyDown,
+	placeholder,
+	optionRenderer,
+	onSelect,
+	options,
 	onChange,
-	onClickOption,
-	onFocus,
+	labelRenderer,
+	value,
 	disabled,
 	id,
-	messageError,
-	// value,
-	search,
-	focused,
-	options,
-	expended,
-	selectedIndex,
-	displayLabel,
 }) {
 	const inputEl = useRef();
+
+	const [search, setSearch] = useState('');
+	const [expended, setExpended] = useState(false);
+	const [selectedIndex, setSelectedIndex] = useState(undefined);
+	const [selection, setSelection] = useState(undefined);
+
 	const onChangeEx = useCallback(
 		function (e) {
 			onChange(e.target.value);
+			setSearch(e.target.value);
+			console.log(e.target.value);
 		},
 		[onChange]
 	);
-	const selection = getSelection(options, selectedIndex);
+
+	const onDelete = useCallback(function () {
+		setSearch('');
+		setSelectedIndex(undefined);
+		setSelection(undefined);
+	}, []);
+
+	const onBlur = useCallback(function () {
+		setExpended(false);
+	}, []);
+
+	const onFocus = useCallback(function () {
+		setExpended(true);
+	}, []);
+
+	const onClick = useCallback(
+		function (index) {
+			setSelectedIndex(index);
+			setSelection(options[index]);
+		},
+		[options]
+	);
 
 	return (
 		<SuggesterContainer
 			id={id}
-			onBlur={onBlur}
-			onKeyDown={onKeyDown}
 			labelledBy={labelledBy}
-			focused={focused}
 			className={className}
+			onBlur={onBlur}
+			expended={expended}
 		>
 			<Selection
-				ref={inputEl}
-				search={search}
+				placeholder={placeholder}
 				onChange={onChangeEx}
-				onFocus={onFocus}
-				displayLabel={displayLabel}
-				selection={selection}
-				placeholderList={placeholderList}
 				onDelete={onDelete}
+				value={search}
+				onFocus={onFocus}
+				ref={inputEl}
+				expended={expended}
+				selection={selection}
 			/>
 			<Panel
 				options={options}
 				expended={expended}
-				selectedIndex={selectedIndex}
 				anchorEl={inputEl.current}
-				onClickOption={onClickOption}
-				onBlur={onBlur}
+				onClick={onClick}
+				selectedIndex={selectedIndex}
 			/>
 		</SuggesterContainer>
 	);

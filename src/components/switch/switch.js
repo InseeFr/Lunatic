@@ -50,6 +50,7 @@ function Switch({ checked, disabled, onClick, statusLabel, labelId }) {
 		</div>
 	);
 }
+
 Switch.propTypes = {
 	checked: PropTypes.bool.isRequired,
 	disabled: PropTypes.bool,
