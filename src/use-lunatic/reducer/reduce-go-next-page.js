@@ -1,5 +1,6 @@
 import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
 import { getCompatibleVTLExpression } from '../commons';
+import { createValidateReducer } from './validate-controls';
 
 function getNextPage(state) {
 	const { pager } = state;
@@ -126,4 +127,4 @@ function reduceGoNextPage(state) {
 	return validateChange(reduceNextPage(state, { next }));
 }
 
-export default reduceGoNextPage;
+export default createValidateReducer(reduceGoNextPage);

@@ -7,6 +7,12 @@ function getStoreInfoRequired() {
 	return {};
 }
 
+function BlockingModal({ errors }) {
+	if (errors) {
+	}
+	return <></>;
+}
+
 function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 	if (maxPage && maxPage > 1) {
 		const Button = lunatic.Button;
@@ -60,6 +66,7 @@ function OrchestratorForStories({
 		isFirstPage,
 		isLastPage,
 		waiting,
+		getErrors,
 	} = lunatic.useLunatic({
 		source,
 		data,
@@ -68,6 +75,7 @@ function OrchestratorForStories({
 	});
 
 	const components = getComponents();
+	const errors = getErrors();
 
 	return (
 		<div className="container">
@@ -105,6 +113,7 @@ function OrchestratorForStories({
 				pageTag={pageTag}
 				maxPage={maxPage}
 			/>
+			<BlockingModal errors={errors} />
 			<Waiting status={waiting}>
 				<div className="waiting-orchestrator">
 					Initialisation des données de suggestion...

@@ -14,6 +14,7 @@ const INITIAL_STATE = {
 		nbIterations: undefined,
 	},
 	waiting: false,
+	errors: undefined,
 	/* fonctionnalités vtl & md */
 	updateBindings: () => {},
 	executeExpression: () => {},

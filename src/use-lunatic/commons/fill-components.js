@@ -1,5 +1,6 @@
 import getComponentValue from './get-component-value';
 import fillComponentExpressions from './fill-component-expressions';
+import fillErrors from './fill-errors';
 
 function fillComponentComportements(component, state) {
 	const { handleChange, executeExpression } = state;
@@ -23,13 +24,16 @@ function fillComponents(components, state) {
 		const { pager, executeExpression } = state;
 		const { iteration } = pager;
 
-		return fillComponentComportements(
-			fillComponentExpressions(
-				fillPagination(fillComponentValue(component, state), state),
-				{
-					executeExpression,
-					iteration,
-				}
+		return fillErrors(
+			fillComponentComportements(
+				fillComponentExpressions(
+					fillPagination(fillComponentValue(component, state), state),
+					{
+						executeExpression,
+						iteration,
+					}
+				),
+				state
 			),
 			state
 		);
