@@ -67,9 +67,9 @@ function createValidateReducer(reducer) {
 		if (isBlockingErrors(errors)) {
 			return { ...state, errors };
 		}
-		if (isErrors(errors)) {
-			return reducer({ ...state, errors }, action);
-		}
+		// if (isErrors(errors)) {
+		return reducer({ ...state, errors }, action);
+		// }
 		// return reducer({ ...state, errors: undefined }, action);
 	};
 }
