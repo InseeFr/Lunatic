@@ -12,7 +12,8 @@ function LunaticTable({
 	handleChange,
 	value,
 	custom,
-	cells,
+	body,
+	header,
 	executeExpression,
 	iteration,
 }) {
@@ -22,12 +23,12 @@ function LunaticTable({
 
 	useEffect(
 		function () {
-			if (Array.isArray(cells)) {
-				const { length } = cells;
+			if (Array.isArray(body)) {
+				const { length } = body;
 				setNbRows(length);
 			}
 		},
-		[cells]
+		[body]
 	);
 
 	return (
@@ -38,25 +39,16 @@ function LunaticTable({
 			declarations={declarations}
 			id={id}
 			value={value}
-			className="lunatic-switch"
+			className="lunatic-label-table"
 		>
-			<Table
-				id={id}
-				custom={custom}
-				value={value}
-				handleChange={handleChange}
-				cells={cells}
-				executeExpression={executeExpression}
-				iteration={iteration}
-			>
+			<Table id={id} custom={custom} header={header}>
 				<TableOrchestrator
 					custom={custom}
 					id={id}
-					cells={cells}
+					body={body}
 					executeExpression={executeExpression}
 					handleChange={handleChange}
 					iteration={iteration}
-					components={cells}
 					nbRows={nbRows}
 					valueMap={value}
 				/>
@@ -67,16 +59,17 @@ function LunaticTable({
 
 LunaticTable.propTypes = {
 	id: PropTypes.string.isRequired,
-	lines: linesPropTypes,
 	custom: PropTypes.object,
 	value: PropTypes.object,
+	body: PropTypes.arrayOf(PropTypes.array).isRequired,
+	header: PropTypes.array,
 };
 
 LunaticTable.defaultProps = {
 	lines: undefined,
 	custom: undefined,
 	value: {},
-	cells: PropTypes.array,
+	header: [],
 };
 
 export default LunaticTable;

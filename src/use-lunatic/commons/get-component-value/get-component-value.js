@@ -41,9 +41,9 @@ function collectCell({ cell, variables, map }) {
 	return next;
 }
 
-function collectTableResponse({ map, cells, variables }) {
-	if (Array.isArray(cells)) {
-		return cells.reduce(function (sub, cell) {
+function collectTableResponse({ map, body, variables }) {
+	if (Array.isArray(body)) {
+		return body.reduce(function (sub, cell) {
 			if (Array.isArray(cell)) {
 				return collectCell({ cell, variables, map: sub });
 			}
@@ -54,10 +54,10 @@ function collectTableResponse({ map, cells, variables }) {
 }
 
 function collecteComponentResponse({ component, variables, map = {} }) {
-	const { components, response, responses, cells } = component;
+	const { components, response, responses, body } = component;
 
-	if (cells) {
-		return collectTableResponse({ map, cells, variables });
+	if (body) {
+		return collectTableResponse({ map, body, variables });
 	}
 	if (response) {
 		return mergeResponse({ map, response, variables });

@@ -2,7 +2,7 @@ import React from 'react';
 import Row from './components/row';
 
 function TableOrchestrator({
-	cells,
+	body,
 	custom,
 	id,
 	executeExpression,
@@ -15,8 +15,8 @@ function TableOrchestrator({
 	management,
 	missing,
 }) {
-	if (Array.isArray(cells)) {
-		return cells.map(function (components, index) {
+	if (Array.isArray(body)) {
+		return body.map(function (components, index) {
 			return (
 				<Row
 					key={index}

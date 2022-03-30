@@ -23,7 +23,7 @@ function InputNumber({
 	);
 	return (
 		<input
-			className={classnames('input-lunatic', { disabled, readOnly })}
+			className={classnames('lunatic-input', { disabled, readOnly })}
 			type="number"
 			onChange={handleChange}
 			value={valueEffective}
