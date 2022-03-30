@@ -7,11 +7,15 @@ import Panel from './panel';
 import Delete from './selection/delete';
 import ComboBoxContainer from './combo-box-container';
 import createCustomizableLunaticField from '../../create-customizable-field';
-
 import { INITIAL_STATE, reducer, actions } from './state-management';
 import './combo-box.scss';
 
 const EMPTY_SEARCH = '';
+
+function getDefaultOptionValue(option = {}) {
+	const { id, value } = option;
+	return id || value;
+}
 
 function ComboBox({
 	className,
@@ -30,6 +34,7 @@ function ComboBox({
 	options,
 	messageError,
 	search: searchProps,
+	getOptionValue,
 }) {
 	const [state, dispatch] = useReducer(reducer, {
 		...INITIAL_STATE,
@@ -47,8 +52,9 @@ function ComboBox({
 
 	const handleSelect = useCallback(
 		function (index) {
+			const option = options[index];
 			dispatch(actions.onSelect(index));
-			onSelect(options[index].id);
+			onSelect(getOptionValue(option));
 		},
 		[options, onSelect]
 	);
@@ -146,6 +152,7 @@ ComboBox.propTypes = {
 	id: PropTypes.string.isRequired,
 	optionRenderer: PropTypes.elementType.isRequired,
 	labelRenderer: PropTypes.elementType.isRequired,
+	getOptionValue: PropTypes.func,
 	// value: PropTypes.oneOf([
 	// 	null,
 	// 	PropTypes.oneOfType([
@@ -165,6 +172,7 @@ ComboBox.defaultProps = {
 	onSelect: () => null,
 	onChange: () => null,
 	options: [],
+	getOptionValue: getDefaultOptionValue,
 };
 
 export default createCustomizableLunaticField(ComboBox);
