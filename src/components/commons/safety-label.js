@@ -13,7 +13,7 @@ function safetyLabel(label, idComponent) {
 		}
 	}
 
-	return `Unvalid label for Component ${idComponent}`;
+	return ``;
 }
 
 export default safetyLabel;
