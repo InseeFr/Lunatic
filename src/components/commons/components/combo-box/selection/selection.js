@@ -3,12 +3,6 @@ import Label from './label';
 import Input from './input';
 import SelectionContainer from './selection-container';
 
-function getContent({}) {
-	const display = !editable || !expended;
-
-	return <></>;
-}
-
 function Selection({
 	labelRenderer,
 	placeholder,

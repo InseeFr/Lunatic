@@ -6,6 +6,7 @@ import {
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../../declarations';
+import safetyLabel from '../safety-label';
 
 function LunaticFields({
 	label,
@@ -27,7 +28,7 @@ function LunaticFields({
 				className={className}
 				custom={custom}
 			>
-				{label}
+				{safetyLabel(label, id)}
 			</Label>
 			<DeclarationsAfterText declarations={declarations} custom={custom} />
 			<FieldContainer value={value} id={id} custom={custom}>

@@ -13,7 +13,7 @@ function Declarations({ id, type, declarations, logFunction, custom }) {
 	if (filtered.length === 0) return null;
 
 	return (
-		<div id={`declarations-${id}-${type}`} className="declarations-lunatic">
+		<div id={`declarations-${id}-${type}`} className="lunatic-declarations">
 			{filtered.map(({ id: idD, label, declarationType }) => (
 				<Declaration
 					key={`${idD}`}

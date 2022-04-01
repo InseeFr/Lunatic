@@ -16,3 +16,4 @@ export { default as ComboBox } from './components/combo-box';
 export * as HtmlTable from './components/html-table';
 export { default as DefaultOptionRenderer } from './components/default-option-renderer';
 export { default as DefaultLabelRenderer } from './components/default-label-renderer';
+export { default as safetyLabel } from './safety-label';
