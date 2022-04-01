@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import './button.scss';
 
-function Button({ children, onClick, disabled, label }) {
+function Button({ children, onClick, disabled, label, className }) {
 	const handleClick = useCallback(
 		function (e) {
 			e.stopPropagation();
@@ -16,7 +17,7 @@ function Button({ children, onClick, disabled, label }) {
 		<input
 			disabled={disabled}
 			type="button"
-			className="button-lunatic"
+			className={classnames('button-lunatic', className, { disabled })}
 			value={label || children}
 			onClick={handleClick}
 		/>

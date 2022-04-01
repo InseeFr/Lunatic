@@ -1,10 +1,10 @@
 import { getComponentsFromState } from '../../commons';
 import getSafetyExpression from '../../commons/execute-expression/get-safety-expression';
 
-export const CRITICALITY = {
-	INFO: 'INFO',
-	WARN: 'WARN',
-};
+// export const CRITICALITY = {
+// 	INFO: 'INFO',
+// 	WARN: 'WARN',
+// };
 
 function resolveControl(state, control) {
 	const { executeExpression, pager = {} } = state;
@@ -40,37 +40,42 @@ function validateComponents(state, components) {
 		if (Array.isArray(controls)) {
 			const componentErrors = resolveComponentControls(state, controls);
 			if (componentErrors.length) {
-				return { ...errors, id: componentErrors };
+				return { ...errors, [id]: componentErrors };
 			}
 		}
 		return errors;
 	}, {});
 }
 
-function isBlockingErrors(errors) {
-	// TODO find criticality WARN
-	return false;
-}
-
-// function isErrors(errors) {
-// 	if (errors) {
-// 		return Object.keys(errors).length > 0;
-// 	}
+// function isBlockingErrors(errors) {
+// 	// TODO find criticality WARN
 // 	return false;
 // }
+
+function isErrors(errors) {
+	if (errors) {
+		return Object.keys(errors).length > 0;
+	}
+	return false;
+}
 
 function createValidateReducer(reducer) {
 	// Nothing to init
 	return function (state, action) {
 		const components = getComponentsFromState(state);
+		const { errors: prec } = state;
+
+		if (prec) {
+			// SKIP error
+			return reducer({ ...state, errors: undefined }, action);
+		}
+
 		const errors = validateComponents(state, components);
-		if (isBlockingErrors(errors)) {
+		if (isErrors(errors)) {
 			return { ...state, errors };
 		}
-		// if (isErrors(errors)) {
-		return reducer({ ...state, errors }, action);
-		// }
-		// return reducer({ ...state, errors: undefined }, action);
+
+		return reducer({ ...state, errors: undefined }, action);
 	};
 }
 

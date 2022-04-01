@@ -1,16 +1,11 @@
 import React, { memo } from 'react';
 import * as lunatic from 'components';
+import ModalErrors from './modal-errors';
 import './custom-lunatic.scss';
 import Waiting from './waiting';
 
 function getStoreInfoRequired() {
 	return {};
-}
-
-function BlockingModal({ errors }) {
-	if (errors) {
-	}
-	return <></>;
 }
 
 function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
@@ -113,7 +108,7 @@ function OrchestratorForStories({
 				pageTag={pageTag}
 				maxPage={maxPage}
 			/>
-			<BlockingModal errors={errors} />
+			<ModalErrors errors={errors} goNext={goNextPage} />
 			<Waiting status={waiting}>
 				<div className="waiting-orchestrator">
 					Initialisation des données de suggestion...
