@@ -108,7 +108,11 @@ function OrchestratorForStories({
 				pageTag={pageTag}
 				maxPage={maxPage}
 			/>
-			<ModalErrors errors={errors} goNext={goNextPage} />
+			<ModalErrors
+				title="Des points requièrent votre attention."
+				errors={errors}
+				goNext={goNextPage}
+			/>
 			<Waiting status={waiting}>
 				<div className="waiting-orchestrator">
 					Initialisation des données de suggestion...

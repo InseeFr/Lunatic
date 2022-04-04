@@ -1,5 +1,8 @@
 export const GO_NEXT_PAGE = 'use-lunatic/go-next';
-export const goNextPage = () => ({ type: GO_NEXT_PAGE });
+export const goNextPage = ({ block }) => ({
+	type: GO_NEXT_PAGE,
+	payload: { block },
+});
 
 export const GO_PREVIOUS_PAGE = 'use-lunatic/go-previous';
 export const goPreviousPage = () => ({ type: GO_PREVIOUS_PAGE });

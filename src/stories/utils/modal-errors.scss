@@ -42,4 +42,22 @@
 			margin: 0 12px 12px 0;
 		}
 	}
+
+	.errors {
+		ul,
+		li,
+		div,
+		span {
+			margin: 0;
+			padding: 0;
+			border: none;
+			list-style: none;
+		}
+
+		.warn {
+		}
+
+		.info {
+		}
+	}
 }

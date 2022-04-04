@@ -62,11 +62,16 @@ function isErrors(errors) {
 function createValidateReducer(reducer) {
 	// Nothing to init
 	return function (state, action) {
+		const { payload } = action;
+		const { block } = payload;
 		const components = getComponentsFromState(state);
 		const { errors: prec } = state;
 
+		if (block) {
+			return { ...state, errors: undefined };
+		}
+
 		if (prec) {
-			// SKIP error
 			return reducer({ ...state, errors: undefined }, action);
 		}
 

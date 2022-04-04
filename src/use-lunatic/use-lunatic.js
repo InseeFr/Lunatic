@@ -26,8 +26,8 @@ function useLunatic({ source, data, initialPage, features }) {
 	);
 
 	const goNextPage = useCallback(
-		function () {
-			dispatch(actions.goNextPage());
+		function (payload = {}) {
+			dispatch(actions.goNextPage(payload));
 		},
 		[dispatch]
 	);
