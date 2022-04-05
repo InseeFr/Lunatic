@@ -45,13 +45,10 @@ function OrchestratorForStories({
 	suggesterFetcher,
 	autoSuggesterLoading,
 	addExternal,
+	preferences,
 	custom,
 	...rest
 }) {
-	const preferences = management
-		? ['COLLECTED', 'FORCED', 'EDITED']
-		: ['COLLECTED'];
-	const savingType = management ? 'EDITED' : 'COLLECTED';
 	const { maxPage } = source;
 	const {
 		getComponents,
@@ -67,6 +64,7 @@ function OrchestratorForStories({
 		data,
 		initialPage,
 		features,
+		preferences,
 	});
 
 	const components = getComponents();
@@ -80,6 +78,7 @@ function OrchestratorForStories({
 						component;
 					const Component = lunatic[componentType];
 					const storeInfo = storeName ? getStoreInfo(storeName) : {};
+
 					return (
 						<div className="lunatic lunatic-component" key={`component-${id}`}>
 							<Component
@@ -89,9 +88,6 @@ function OrchestratorForStories({
 								{...rest}
 								{...component}
 								{...storeInfo}
-								preferences={preferences}
-								savingType={savingType}
-								management={management}
 								missing={missing}
 								shortcut={shortcut}
 								custom={custom}

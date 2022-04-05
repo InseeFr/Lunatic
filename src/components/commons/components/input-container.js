@@ -10,6 +10,7 @@ function InputContainer({
 	labelId,
 	children,
 	labelClassName,
+	preferences,
 }) {
 	return (
 		<LunaticField
@@ -21,6 +22,7 @@ function InputContainer({
 			id={id}
 			value={value}
 			className={labelClassName}
+			preferences={preferences}
 		>
 			{children}
 		</LunaticField>

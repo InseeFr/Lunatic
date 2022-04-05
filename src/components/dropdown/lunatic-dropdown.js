@@ -14,6 +14,7 @@ function LunaticDropdown({
 	options,
 	writable,
 	disabled,
+	preferences,
 }) {
 	const htmlFor = `lunatic-dropdown-${id}`;
 	const labelId = `lunatic-dropdown-label-${id}`;
@@ -28,6 +29,7 @@ function LunaticDropdown({
 			declarations={declarations}
 			id={id}
 			value={value}
+			preferences={preferences}
 		>
 			<Dropdown
 				id={id}

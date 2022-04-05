@@ -1,12 +1,21 @@
 // Import index once for bundle
 @import 'src/components/index.scss';
 
-.lunatic-component {
+.lunatic-component-container-test {
+	display: flex;
+
+	.lunatic-component-body {
+		width: 80%;
+	}
+
 	/* Tooltip container */
 	.tooltip-lunatic {
+		margin: auto;
+		width: 20%;
 		position: relative;
-		display: inline-block;
-		align-items: center;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	/* Tooltip text */

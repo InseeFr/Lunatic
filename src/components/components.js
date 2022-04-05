@@ -20,4 +20,3 @@ export { default as Subsequence } from './subsequence';
 export { default as Suggester } from './suggester';
 export { default as Textarea } from './textarea';
 export { default as SuggesterLoaderWidget } from './suggester-loader-widget';
-export { TooltipResponse } from './tooltip';

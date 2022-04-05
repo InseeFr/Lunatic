@@ -20075,7 +20075,7 @@
 		"id": "COMMENT-SEQ",
 		"componentType": "Sequence",
 		"page": "198",
-		"label": {},
+		"label": "{}",
 		"conditionFilter": { "value": "true" },
 		"hierarchy": {
 		  "sequence": { "id": "COMMENT-SEQ", "page": "198", "label": {} }

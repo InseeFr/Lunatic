@@ -15,6 +15,8 @@ import updateExternalData from './update-external/data';
 import { positioningOptions, featuresOptions } from '../utils/options';
 import { boolean, select } from '@storybook/addon-knobs/react';
 
+const PREFERENCES = ['COLLECTED', 'FORCED', 'EDITED'];
+
 const def = storiesOf('Questionnaire/Default', module).addDecorator(
 	(Component) => {
 		const WrappedComponent = titleDecorator(Component);
@@ -31,7 +33,7 @@ def.addWithJSX('Calculated Variables', () => (
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
-		management={boolean('Management', false)}
+		preferences={PREFERENCES}
 	/>
 ));
 
@@ -46,6 +48,7 @@ def.addWithJSX('Logement', function () {
 			disabled={boolean('Disabled', false)}
 			focused={boolean('Focused', false)}
 			management={boolean('Management', false)}
+			preferences={PREFERENCES}
 		/>
 	);
 });
@@ -57,6 +60,7 @@ def.addWithJSX('Arithmetic', () => (
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
 		disabled={boolean('Disabled', false)}
+		preferences={PREFERENCES}
 	/>
 ));
 
@@ -70,6 +74,7 @@ def.addWithJSX('Simpsons', () => (
 		disabled={boolean('Disabled', false)}
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
+		preferences={PREFERENCES}
 	/>
 ));
 
@@ -91,6 +96,7 @@ paginated.addWithJSX('Calculated Variables', () => (
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
 		pagination
+		preferences={PREFERENCES}
 	/>
 ));
 
@@ -109,6 +115,7 @@ paginated.addWithJSX('Logement', function () {
 			management={boolean('Management', false)}
 			pagination
 			modalForControls
+			preferences={PREFERENCES}
 		/>
 	);
 });
@@ -127,6 +134,7 @@ paginated.addWithJSX('Logement - Queen', function () {
 			focused={boolean('Focused', false)}
 			management={boolean('Management', false)}
 			pagination
+			preferences={PREFERENCES}
 		/>
 	);
 });
@@ -144,6 +152,7 @@ paginated.addWithJSX('Logement - Sequence', () => (
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
 		pagination
+		preferences={PREFERENCES}
 	/>
 ));
 
@@ -159,6 +168,7 @@ paginated.addWithJSX('Logement - S2', () => (
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
 		pagination
+		preferences={PREFERENCES}
 	/>
 ));
 
@@ -176,6 +186,7 @@ paginated.addWithJSX('Simpsons', () => (
 		focused={boolean('Focused', false)}
 		management={boolean('Management', false)}
 		pagination
+		preferences={PREFERENCES}
 	/>
 ));
 
@@ -205,6 +216,7 @@ other.addWithJSX('Update external', () => {
 				disabled={boolean('Disabled', false)}
 				focused={boolean('Focused', false)}
 				addExternal={addExternal}
+				preferences={PREFERENCES}
 			/>
 		</>
 	);

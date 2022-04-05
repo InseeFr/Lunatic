@@ -121,32 +121,12 @@
 		display: inline;
 	}
 
-	.tooltip {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.field-with-tooltip {
-		width: calc(100% - 25px);
-		position: relative;
-	}
 
 	.field {
 		width: 100%;
 		position: relative;
 	}
 
-	.field,
-	.field-with-tooltip {
-		display: flex;
-		.unit {
-			margin: auto 0;
-			color: var(--color-primary-dark);
-			font-weight: bold;
-		}
-	}
 
 	.link-md .field-md {
 		border-bottom: dashed 0.1em var(--color-primary-dark);
@@ -154,24 +134,6 @@
 			cursor: help;
 			color: var(--color-primary-contrast-text);
 			background-color: var(--color-primary-dark);
-		}
-	}
-
-	.link-md .tooltip-content {
-		min-width: 15em;
-		max-width: 25em;
-		background: var(--color-primary-dark);
-		color: var(--color-primary-contrast-text);
-		padding: 0.5em;
-		border-radius: 6px;
-		font-size: 1em;
-		&.place-bottom {
-			&::before {
-				border-bottom: 10px solid var(--color-primary-dark);
-			}
-			&::after {
-				content: none;
-			}
 		}
 	}
 }

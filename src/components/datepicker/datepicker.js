@@ -10,7 +10,6 @@ function Datepicker({ disabled, readOnly, value, onChange, labelId }) {
 		},
 		[onChange]
 	);
-	console.log({ value });
 
 	return (
 		<input

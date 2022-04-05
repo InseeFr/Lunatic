@@ -129,7 +129,8 @@ function checkInLoop(state) {
 
 function reduceOnInit(state, action) {
 	const { payload } = action;
-	const { source, data, initialPage, features, handleChange } = payload;
+	const { source, data, initialPage, features, handleChange, preferences } =
+		payload;
 
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
@@ -159,6 +160,7 @@ function reduceOnInit(state, action) {
 			executeExpression,
 			updateBindings,
 			handleChange,
+			preferences: preferences || ['COLLECTED'],
 		});
 	}
 

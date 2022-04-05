@@ -3,8 +3,8 @@ import fillComponentExpressions from './fill-component-expressions';
 import fillErrors from './fill-errors';
 
 function fillComponentComportements(component, state) {
-	const { handleChange, executeExpression } = state;
-	return { ...component, handleChange, executeExpression };
+	const { handleChange, executeExpression, preferences } = state;
+	return { ...component, handleChange, executeExpression, preferences };
 }
 
 function fillComponentValue(component, state) {

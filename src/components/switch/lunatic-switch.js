@@ -11,6 +11,7 @@ function LunaticSwitch({
 	response,
 	value,
 	statusLabel,
+	preferences,
 	custom,
 }) {
 	const inputId = `lunatic-switch-${id}`;
@@ -28,6 +29,7 @@ function LunaticSwitch({
 			id={id}
 			value={value}
 			className="lunatic-switch"
+			preferences={preferences}
 		>
 			<Switch
 				checked={booleanValue}
@@ -46,4 +48,4 @@ LunaticSwitch.propTypes = {
 
 LunaticSwitch.defaultProps = { statusLabel: { true: 'True', false: 'False' } };
 
-export default React.memo(LunaticSwitch);
+export default LunaticField;

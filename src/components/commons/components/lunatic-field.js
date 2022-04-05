@@ -18,6 +18,7 @@ function LunaticFields({
 	children,
 	className,
 	custom,
+	preferences,
 }) {
 	return (
 		<>

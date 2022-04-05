@@ -5,6 +5,8 @@ const INITIAL_STATE = {
 	isFirstPage: false,
 	isLastPage: false,
 	features: ['VTL'],
+	preferences: ['COLLECTED'],
+	savingType: 'COLLECTED',
 	pager: {
 		page: undefined,
 		maxPage: undefined,
