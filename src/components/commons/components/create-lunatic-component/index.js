@@ -1,4 +1,4 @@
-import createVariableResponse from './create-variable-response';
+import createVariableResponse from './create-lunatic-component';
 
 // TODO: cascade HOC habillage
 

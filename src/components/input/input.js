@@ -24,8 +24,8 @@ function Input({
 	);
 	return (
 		<input
-			id={`lunatic-input-${id}`}
-			aria-labelledby={labelledBy}
+			id={id}
+			labelledbby={labelledBy}
 			autoComplete="off"
 			type="text"
 			disabled={disabled}
