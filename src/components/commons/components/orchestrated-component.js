@@ -24,7 +24,10 @@ function OrchestratedComponent({
 	useEffect(
 		function () {
 			setComponentFilled(
-				fillComponentExpressions(component, { executeExpression, iteration })
+				fillComponentExpressions(component, {
+					executeExpression,
+					pager: { iteration },
+				})
 			);
 			setFilled(true);
 		},

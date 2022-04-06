@@ -15,6 +15,7 @@ function createLunaticComponent(
 	HtmlComponent,
 	{ labelId = 'lunatic-label', inputId = 'lunatic-input' } = {}
 ) {
+	const Memoized = React.memo(HtmlComponent);
 	return function LunaticHandlerComponent(props) {
 		const {
 			id,
@@ -45,7 +46,7 @@ function createLunaticComponent(
 				className={className}
 				value={value}
 			>
-				<HtmlComponent
+				<Memoized
 					{...props}
 					onChange={onChange}
 					id={inputId_}

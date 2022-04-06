@@ -21,17 +21,11 @@ function fillPagination(component, state) {
 
 function fillComponents(components, state) {
 	return components.map(function (component) {
-		const { pager, executeExpression } = state;
-		const { iteration } = pager;
-
 		return fillErrors(
 			fillComponentComportements(
 				fillComponentExpressions(
 					fillPagination(fillComponentValue(component, state), state),
-					{
-						executeExpression,
-						iteration,
-					}
+					state
 				),
 				state
 			),

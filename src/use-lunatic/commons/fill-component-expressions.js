@@ -107,7 +107,10 @@ function fillAttributes(component, { executeExpression, iteration }) {
 	);
 }
 
-function fillComponentExpressions(component, { executeExpression, iteration }) {
+function fillComponentExpressions(component, state) {
+	const { pager, executeExpression } = state;
+	const { iteration } = pager;
+
 	return fillAttributes(component, { executeExpression, iteration });
 }
 
