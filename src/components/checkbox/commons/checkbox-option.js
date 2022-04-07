@@ -3,10 +3,17 @@ import classnames from 'classnames';
 import { CheckboxChecked } from '../../icons';
 import { CheckboxUnchecked } from '../../icons';
 
-function CheckboxOption({ disabled, checked, id, value, onClick, labelledBy }) {
+function CheckboxOption({
+	disabled,
+	checked,
+	id,
+	value = false,
+	onClick,
+	labelledBy,
+}) {
 	const onClickOption = useCallback(
 		function () {
-			onClick(value);
+			onClick(!value);
 		},
 		[value, onClick]
 	);

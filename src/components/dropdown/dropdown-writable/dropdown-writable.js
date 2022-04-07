@@ -12,6 +12,7 @@ function DropdownWritable({
 	options,
 	onSelect,
 	className,
+	value,
 }) {
 	const [filtered, setFiltered] = useState(options);
 
@@ -35,6 +36,7 @@ function DropdownWritable({
 			optionRenderer={WritableOptionRenderer}
 			labelRenderer={WritableLabelRenderer}
 			editable={true}
+			value={value}
 		/>
 	);
 }

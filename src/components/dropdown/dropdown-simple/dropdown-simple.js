@@ -11,6 +11,7 @@ function DropdownSimple({
 	options,
 	onSelect,
 	className,
+	value,
 }) {
 	return (
 		<ComboBox
@@ -24,6 +25,7 @@ function DropdownSimple({
 			onSelect={onSelect}
 			optionRenderer={SimpleOptionRenderer}
 			labelRenderer={SimpleLabelRenderer}
+			value={value}
 		/>
 	);
 }

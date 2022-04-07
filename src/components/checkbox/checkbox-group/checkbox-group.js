@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { CheckboxOption } from '../commons';
 import { Label } from '../../commons';
+import { useOnHandleChange } from '../../commons';
 import { createCustomizableLunaticField } from '../../commons';
 
 function onClick() {}
@@ -15,14 +16,20 @@ function CheckBoxOptionWrapper({
 	handleChange,
 	response,
 }) {
-	const booleanValue = value && false;
+	const booleanValue = value || false;
 
-	const onClickOption = useCallback(
-		function (valueOption) {
-			handleChange(response, !valueOption);
-		},
-		[handleChange, response]
-	);
+	const onClickOption = useOnHandleChange({
+		handleChange,
+		response,
+		value: booleanValue,
+	});
+
+	// const onClickOption = useCallback(
+	// 	function (valueOption) {
+	// 		handleChange(response, !valueOption);
+	// 	},
+	// 	[handleChange, response]
+	// );
 
 	return (
 		<CheckboxOption

@@ -21,3 +21,9 @@ export const onFocus = () => ({ type: ON_FOCUS });
 
 export const ON_BLUR = 'combo-box/on-blur';
 export const onBlur = () => ({ type: ON_BLUR });
+
+export const ON_INIT = 'combo-box/on-init';
+export const onInit = ({ ...args }) => ({
+	type: ON_INIT,
+	payload: { ...args },
+});

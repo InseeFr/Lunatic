@@ -7,15 +7,17 @@ import LunaticComponent from '../lunatic-component';
 		Input
 		InputNumber
 		DatePicker
+		Switch
 
 
 */
 
 function createLunaticComponent(
 	HtmlComponent,
-	{ labelId = 'lunatic-label', inputId = 'lunatic-input' } = {}
+	{ labelId = 'lunatic-label', inputId = 'lunatic-input', ...initialProps } = {}
 ) {
 	const Memoized = React.memo(HtmlComponent);
+
 	return function LunaticHandlerComponent(props) {
 		const {
 			id,
@@ -48,6 +50,7 @@ function createLunaticComponent(
 			>
 				<Memoized
 					{...props}
+					{...initialProps}
 					onChange={onChange}
 					id={inputId_}
 					labelId={labelId_}

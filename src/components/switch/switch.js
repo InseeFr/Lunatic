@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { createCustomizableLunaticField } from '../commons';
 import './switch.scss';
 
-function Switch({ checked, disabled, onClick, statusLabel, labelId }) {
+function Switch({ checked, disabled, onClick, statusLabel, labelId, id }) {
 	const handleClick = useCallback(
 		function () {
 			onClick(!checked);
@@ -24,7 +24,7 @@ function Switch({ checked, disabled, onClick, statusLabel, labelId }) {
 	const { true: labelTrue, false: labelFalse } = statusLabel;
 
 	return (
-		<div className="lunatic-switch">
+		<div className="lunatic-switch" id={id}>
 			<div
 				className={classnames('lunatic-switch-label', { checked: !checked })}
 			>

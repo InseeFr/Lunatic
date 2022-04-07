@@ -1,5 +1,5 @@
 import React from 'react';
-import Radio from './radio-group';
+import RadioGroup from './radio-group';
 import { FieldContainer, Fieldset, useOnHandleChange } from '../commons';
 import {
 	DeclarationsBeforeText,
@@ -29,7 +29,7 @@ function LunaticRadioGroup(props) {
 			<FieldContainer id={id} value={value} custom={custom}>
 				<Fieldset legend={label} custom={custom}>
 					<DeclarationsAfterText declarations={declarations} custom={custom} />
-					<Radio
+					<RadioGroup
 						id={id}
 						options={options}
 						value={value}

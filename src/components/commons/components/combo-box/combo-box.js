@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from 'react';
+import React, { useCallback, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ComboBoxContent from './combo-box-content';
@@ -9,6 +9,8 @@ import ComboBoxContainer from './combo-box-container';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import { INITIAL_STATE, reducer, actions } from './state-management';
 import './combo-box.scss';
+
+import usePrevious from '../../use-previous';
 
 const EMPTY_SEARCH = '';
 
@@ -41,6 +43,15 @@ function ComboBox({
 		search: searchProps,
 	});
 	const { focused, expended, search, selectedIndex, displayLabel } = state;
+
+	useEffect(
+		function () {
+			dispatch(
+				actions.onInit({ options, value, selectedIndex, getOptionValue })
+			);
+		},
+		[value, selectedIndex, options]
+	);
 
 	const onFocus = useCallback(function () {
 		dispatch(actions.onFocus());

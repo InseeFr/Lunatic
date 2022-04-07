@@ -1,48 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LunaticField, useOnHandleChange } from '../commons';
-
+import { createLunaticComponent } from '../commons';
 import Dropdown from './dropdown';
 
 function LunaticDropdown({
-	label,
-	declarations,
 	id,
-	handleChange,
-	response,
-	value,
+	onChange,
 	options,
 	writable,
 	disabled,
-	preferences,
+	htmlFor,
+	labelId,
+	value,
 }) {
-	const htmlFor = `lunatic-dropdown-${id}`;
-	const labelId = `lunatic-dropdown-label-${id}`;
-
-	const onSelect = useOnHandleChange({ handleChange, response, value });
-
 	return (
-		<LunaticField
-			label={label}
-			contentId={htmlFor}
-			labelId={labelId}
-			declarations={declarations}
+		<Dropdown
 			id={id}
+			htmlFor={htmlFor}
+			labelId={labelId}
+			writable={writable}
+			disabled={disabled}
+			options={options}
+			editable={writable}
+			onSelect={onChange}
 			value={value}
-			preferences={preferences}
-		>
-			<Dropdown
-				id={id}
-				htmlFor={htmlFor}
-				labelId={labelId}
-				writable={writable}
-				disabled={disabled}
-				options={options}
-				editable={writable}
-				onSelect={onSelect}
-				className="lunatic-dropdown"
-			/>
-		</LunaticField>
+			className="lunatic-dropdown"
+		/>
 	);
 }
 
@@ -69,4 +52,4 @@ LunaticDropdown.defaultProps = {
 	value: null,
 };
 
-export default React.memo(LunaticDropdown);
+export default createLunaticComponent(LunaticDropdown);

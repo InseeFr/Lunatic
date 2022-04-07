@@ -1,4 +1,3 @@
-export { default as Breadcrumb } from './breadcrumb';
 export { default as Button } from './button';
 export * from './checkbox';
 export * as ICONS from './icons';
@@ -10,7 +9,6 @@ export { default as Input } from './input';
 export { default as InputNumber } from './input-number';
 export { default as FilterDescription } from './filter-description';
 export { default as Modal } from './modal';
-export { default as ProgressBar } from './progress-bar';
 export { default as Radio } from './radio';
 export { default as Loop } from './loop';
 export { default as RosterForLoop } from './loop';
