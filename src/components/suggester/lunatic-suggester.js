@@ -1,55 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IDBSuggester from './idb-suggester';
-import { useOnHandleChange, LunaticField } from '../commons';
+import { createLunaticComponent } from '../commons';
 import * as commonPropTypes from '../commons/prop-types';
 
 function LunaticSuggester(props) {
 	const {
+		id,
 		storeName,
 		optionRenderer,
 		labelRenderer,
 		idbVersion,
-		id,
 		focused,
 		value,
+		onChange,
 		disabled,
-		label,
-		declarations,
-		handleChange,
-		response,
+		labelId,
 		custom,
 	} = props;
 
-	const contentId = `lunatic-suggester-${id}`;
-	const labelId = `lunatic-suggester-label-${id}`;
-
-	const onSelect = useOnHandleChange({ handleChange, response, value });
-
 	return (
-		<LunaticField
-			label={label}
-			contentId={contentId}
-			labelId={labelId}
-			declarations={declarations}
+		<IDBSuggester
+			storeName={storeName}
+			optionRenderer={optionRenderer}
+			labelRenderer={labelRenderer}
+			labelledBy={labelId}
+			idbVersion={idbVersion}
+			onSelect={onChange}
+			focused={focused}
+			disabled={disabled}
 			id={id}
 			value={value}
-			className="lunatic-suggester-label"
-		>
-			<IDBSuggester
-				storeName={storeName}
-				optionRenderer={optionRenderer}
-				labelRenderer={labelRenderer}
-				labelledBy={labelId}
-				idbVersion={idbVersion}
-				onSelect={onSelect}
-				focused={focused}
-				disabled={disabled}
-				id={contentId}
-				value={value}
-				custom={custom}
-			/>
-		</LunaticField>
+			custom={custom}
+		/>
 	);
 }
 
@@ -86,4 +69,4 @@ LunaticSuggester.propTypes = {
 	getStoreInfo: PropTypes.func,
 };
 
-export default React.memo(LunaticSuggester);
+export default createLunaticComponent(LunaticSuggester);

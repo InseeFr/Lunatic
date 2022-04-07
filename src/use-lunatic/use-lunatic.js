@@ -5,7 +5,16 @@ import reducer from './reducer';
 import { loadSuggester } from './commons';
 import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 
-function useLunatic({ source, data, initialPage, features, preferences }) {
+function nothing() {}
+
+function useLunatic({
+	source,
+	data,
+	initialPage,
+	features,
+	preferences,
+	onChange = nothing,
+}) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { pager, waiting, errors } = state;
 	const components = useComponentsFromState(state);
@@ -48,6 +57,7 @@ function useLunatic({ source, data, initialPage, features, preferences }) {
 
 	const getComponents = useCallback(
 		function () {
+			// validate variables ?
 			return components;
 		},
 		[components]
@@ -55,8 +65,9 @@ function useLunatic({ source, data, initialPage, features, preferences }) {
 	const handleChange = useCallback(
 		function (response, value, args) {
 			dispatch(actions.handleChange(response, value, args));
+			onChange(response, value, args);
 		},
-		[dispatch]
+		[dispatch, onChange]
 	);
 
 	const pageTag = getPageTag(pager);

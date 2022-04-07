@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import * as lunatic from 'components';
 import ModalErrors from './modal-errors';
 import './custom-lunatic.scss';
@@ -31,6 +31,10 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL'];
 
+function onLogChange(response, value, args) {
+	console.log('onChange', { response, value, args });
+}
+
 function OrchestratorForStories({
 	source,
 	data = DEFAULT_DATA,
@@ -50,6 +54,7 @@ function OrchestratorForStories({
 	...rest
 }) {
 	const { maxPage } = source;
+
 	const {
 		getComponents,
 		goNextPage,
@@ -65,6 +70,7 @@ function OrchestratorForStories({
 		initialPage,
 		features,
 		preferences,
+		onChange: onLogChange,
 	});
 
 	const components = getComponents();

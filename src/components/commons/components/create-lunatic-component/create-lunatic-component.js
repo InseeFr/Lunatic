@@ -8,6 +8,7 @@ import LunaticComponent from '../lunatic-component';
 		InputNumber
 		DatePicker
 		Switch
+		Dropdown
 
 
 */
