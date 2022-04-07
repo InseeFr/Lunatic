@@ -7,6 +7,6 @@ export { default as getPageTag } from './get-page-tag';
 export { default as isFirstLastPage } from './is-First-last-page';
 export { default as createExecuteExpression } from './execute-expression';
 export { default as executeConditionFilter } from './execute-condition-filter';
-export { default as fillComponentExpressions } from './fill-component-expressions';
+export { default as fillComponentExpressions } from './fill-components/fill-component-expressions';
 export { default as loadSuggester } from './load-suggesters';
 export { default as getCompatibleVTLExpression } from './get-compatible-vtl-expression';
