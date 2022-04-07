@@ -13,6 +13,10 @@ function reduceOnInit(state, action) {
 		return { ...state, selectedIndex: next };
 	}
 
+	if (!value) {
+		return { ...state, selectedIndex: undefined };
+	}
+
 	return state;
 }
 

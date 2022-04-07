@@ -18,9 +18,14 @@ function DropdownWritable({
 
 	const onChange = useCallback(
 		function (search) {
-			setFiltered(filterOptions(options, search));
+			if (search) {
+				setFiltered(filterOptions(options, search));
+			} else {
+				setFiltered(options);
+			}
+			onSelect(null);
 		},
-		[options]
+		[options, onSelect]
 	);
 
 	return (
