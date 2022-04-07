@@ -18,7 +18,6 @@ function IDBSuggester({
 	custom,
 }) {
 	const [store, setStore] = useState(undefined);
-	const [options, setOptions] = useState([]);
 
 	const searching = useMemo(
 		function () {
@@ -28,16 +27,6 @@ function IDBSuggester({
 			return undefined;
 		},
 		[storeName, idbVersion, store]
-	);
-
-	const onChange = useCallback(
-		async function (search) {
-			if (search && typeof searching === 'function') {
-				const { results, search: old } = await searching(search);
-				setOptions(results);
-			}
-		},
-		[searching]
 	);
 
 	return (
@@ -57,8 +46,6 @@ function IDBSuggester({
 				disabled={disabled}
 				value={value}
 				custom={custom}
-				options={options}
-				onChange={onChange}
 			/>
 		</CheckStore>
 	);

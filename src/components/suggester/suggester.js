@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -30,11 +30,11 @@ function Suggester({
 	custom,
 	disabled,
 	id,
-	options,
-	onChange,
+	searching,
 }) {
 	const htmlFor = `lunatic-suggester-${id}`;
 	const [search, setSearch] = useState('');
+	const [options, setOptions] = useState([]);
 
 	const handleSelect = useCallback(
 		function (id) {
@@ -48,11 +48,18 @@ function Suggester({
 	);
 
 	const handleChange = useCallback(
-		function (search) {
-			onChange(search);
-			setSearch(search);
+		async function (search) {
+			if (search && typeof searching === 'function') {
+				const { results, search: old } = await searching(search);
+				setOptions(results);
+				setSearch(search);
+			} else {
+				setOptions([]);
+				onSelect(null);
+				setSearch('');
+			}
 		},
-		[onChange]
+		[searching, onSelect]
 	);
 
 	const defaultSearch = getSearch(search, value);
