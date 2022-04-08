@@ -8,7 +8,7 @@ export { default as Dropdown } from './dropdown';
 export { default as Input } from './input';
 export { default as InputNumber } from './input-number';
 export { default as FilterDescription } from './filter-description';
-export { default as Modal } from './modal';
+export { default as Modal } from './modal-controls';
 export { default as Radio } from './radio';
 export { default as Loop } from './loop';
 export { default as RosterForLoop } from './loop';

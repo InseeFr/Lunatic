@@ -9,6 +9,7 @@ import LunaticComponent from '../lunatic-component';
 		DatePicker
 		Switch
 		Dropdown
+		Suggester
 
 
 */

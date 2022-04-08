@@ -1,6 +1,5 @@
 import React, { memo, useCallback } from 'react';
 import * as lunatic from 'components';
-import ModalErrors from './modal-errors';
 import './custom-lunatic.scss';
 import Waiting from './waiting';
 
@@ -110,7 +109,7 @@ function OrchestratorForStories({
 				pageTag={pageTag}
 				maxPage={maxPage}
 			/>
-			<ModalErrors
+			<lunatic.Modal
 				title="Des points requièrent votre attention."
 				errors={errors}
 				goNext={goNextPage}
