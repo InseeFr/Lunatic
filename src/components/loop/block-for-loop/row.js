@@ -1,6 +1,10 @@
 import React, { useCallback } from 'react';
 import { OrchestratedComponent } from '../../commons';
 
+function RestValue() {
+	return <></>;
+}
+
 function Row({
 	components,
 	valueMap = {},
@@ -28,7 +32,10 @@ function Row({
 		let value = undefined;
 		if (response) {
 			const { name } = response;
-			if (name in valueMap) value = valueMap[name][rowIndex] || '';
+			const valueArray = valueMap[name];
+			if (Array.isArray(valueArray)) {
+				value = valueArray[rowIndex] || '';
+			}
 		}
 
 		return [
