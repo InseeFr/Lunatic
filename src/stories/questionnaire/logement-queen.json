@@ -1926,7 +1926,7 @@
 			"max": 15,
 			"decimals": 0,
 			"label": {
-				"value": "\"➡ 28. \" || \"Combien d’enfants accueillez-vous au titre du droit de visite et d’hébergement  ?\"",
+				"value": "\"➡ 28. \" || \"Combien d’enfants accueillez-vous au titre du droit de visite et d’hébergement  ?\"",
 				"type": "VTL|MD"
 			},
 			"declarations": [
@@ -4428,7 +4428,7 @@
 							"criticality": "WARN",
 							"control": { "value": "not(nvl(STOCA12, \"\") = \"\")" },
 							"errorMessage": {
-								"value": "Votre réponse est importante pour le bon déroulement de la suite du questionnaire. Merci de répondre à cette question. "
+								"value": "Votre réponse est importante pour le bon déroulement de la suite du questionnaire. Merci de répondre à cette question. "
 							},
 							"bindingDependencies": ["STOCA12"]
 						}
@@ -15559,7 +15559,7 @@
 						"value": "not(((nvl(VMODM7,false) = true and nvl(VMODM6,false) = true) or (nvl(VMODM7,false) = true and nvl(VMODM5,false) = true) or (nvl(VMODM7,false) = true and nvl(VMODM4,false) = true) or (nvl(VMODM7,false) = true and nvl(VMODM3,false) = true) or (nvl(VMODM7,false) = true and nvl(VMODM2,false) = true) or (nvl(VMODM7,false) = true and nvl(VMODM1,false) = true)))"
 					},
 					"errorMessage": {
-						"value": "La réponse « Aucune modification » n’en permet pas d’autre. Merci de corriger votre réponse."
+						"value": "La réponse « Aucune modification » n’en permet pas d’autre. Merci de corriger votre réponse."
 					},
 					"bindingDependencies": [
 						"VMODM7",
@@ -15693,7 +15693,7 @@
 						"value": "not(((nvl(VMODP14, false) = true and nvl(VMODP13, false) = true) or (nvl(VMODP14, false) = true and nvl(VMODP12, false) = true) or (nvl(VMODP14, false) = true and nvl(VMODP11, false) = true) ))"
 					},
 					"errorMessage": {
-						"value": "La réponse « Aucune modification » n’en permet pas d’autre. Merci de corriger votre réponse."
+						"value": "La réponse « Aucune modification » n’en permet pas d’autre. Merci de corriger votre réponse."
 					},
 					"bindingDependencies": ["VMODP14", "VMODP13", "VMODP12", "VMODP11"]
 				}
@@ -15781,7 +15781,7 @@
 						"value": "not(((nvl(VMODP23,false) = true and nvl(VMODP22,false) = true) or (nvl(VMODP23,false) = true and nvl(VMODP21,false) = true)))"
 					},
 					"errorMessage": {
-						"value": "La réponse « Aucune modification » n’en permet pas d’autre. Merci de corriger votre réponse."
+						"value": "La réponse « Aucune modification » n’en permet pas d’autre. Merci de corriger votre réponse."
 					},
 					"bindingDependencies": ["VMODP23", "VMODP22", "VMODP21"]
 				}

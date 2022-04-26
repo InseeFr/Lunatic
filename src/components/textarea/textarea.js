@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-// import componentWrapper from '../component-wrapper';
-// import { InputDeclarationsWrapper } from '../declarations/wrappers';
-// import { areEqual } from '../../utils/lib';
-// import './textarea.scss';
-
-// const Textarea = (props) => (
-// 	<InputDeclarationsWrapper type={null} roleType="textarea" {...props} />
-// );
-
-// export default componentWrapper(React.memo(Textarea, areEqual));
-
-function Textarea() {
-	return <div>Textarea</div>;
-}
-
-export default Textarea;
-=======
 import React, { useCallback } from 'react';
 import { createCustomizableLunaticField } from '../commons';
 import classnames from 'classnames';
@@ -54,4 +35,3 @@ function Textarea({
 }
 
 export default createCustomizableLunaticField(Textarea);
->>>>>>> optimisation
