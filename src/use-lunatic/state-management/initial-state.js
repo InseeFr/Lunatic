@@ -1,7 +1,13 @@
 const initialState = {
 	pages: undefined, // quick pages access
 	values: undefined, // collected values
-	pager: { pages: [], nbPages: [], iterations: [], nbIterations: [] },
+	pager: {
+		pageTag: undefined,
+		iterations: [],
+		nbIterations: [],
+		isFirst: true,
+		isLast: true,
+	},
 	executeExpression: () => null,
 };
 

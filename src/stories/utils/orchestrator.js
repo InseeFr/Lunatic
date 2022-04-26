@@ -7,24 +7,24 @@ function getStoreInfoRequired() {
 	return {};
 }
 
-function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
-	if (maxPage && maxPage > 1) {
-		const Button = lunatic.Button;
-		return (
-			<>
-				<div className="pagination">
-					<Button onClick={goPrevious} disabled={isFirst}>
-						Previous
-					</Button>
-					<Button onClick={goNext} disabled={isLast}>
-						Next
-					</Button>
-				</div>
-				<div>PAGE: {pageTag}</div>
-			</>
-		);
+function Pager({ goNext, goPrevious, isLast, isFirst, pageTag }) {
+	if (isFirst && isLast) {
+		return null;
 	}
-	return null;
+	const Button = lunatic.Button;
+	return (
+		<>
+			<div className="pagination">
+				<Button onClick={goPrevious} disabled={isFirst}>
+					Previous
+				</Button>
+				<Button onClick={goNext} disabled={isLast}>
+					Next
+				</Button>
+			</div>
+			<div>PAGE: {pageTag}</div>
+		</>
+	);
 }
 
 const DEFAULT_DATA = {};
@@ -42,10 +42,14 @@ function OrchestratorForStories({
 	features = DEFAULT_FEATURES,
 <<<<<<< HEAD
 	bindings: initialBindings,
+<<<<<<< HEAD
 	initialPage = '1', // ou 1.1 ...
 =======
 	initialPage = '1',
 >>>>>>> optimisation
+=======
+	initialPage = '6', // ou 1.1 ...
+>>>>>>> 49f5e5f6ee969ff0745f5447540dc837bc4b0447
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	shortcut = false,
@@ -61,16 +65,25 @@ function OrchestratorForStories({
 
 	const {
 		getComponents,
+<<<<<<< HEAD
 		goNextPage,
 		goPreviousPage,
 		pageTag,
 		isFirstPage,
 		isLastPage,
+=======
+		goNext,
+		goPrevious,
+		handleChange,
+		pageTag,
+		isFirst,
+		isLast,
+		executeExpression,
+>>>>>>> 49f5e5f6ee969ff0745f5447540dc837bc4b0447
 		waiting,
 		getErrors,
 	} = lunatic.useLunatic({
 		source,
-		data,
 		initialPage,
 		features,
 		preferences,
@@ -109,10 +122,10 @@ function OrchestratorForStories({
 <<<<<<< HEAD
 			{
 				<Pager
-					goNext={goNextPage}
-					goPrevious={goPreviousPage}
-					isLast={isLastPage}
-					isFirst={isFirstPage}
+					goNext={goNext}
+					goPrevious={goPrevious}
+					isLast={isLast}
+					isFirst={isFirst}
 					pageTag={pageTag}
 					maxPage={maxPage}
 				/>

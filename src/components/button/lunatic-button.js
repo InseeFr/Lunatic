@@ -25,7 +25,10 @@ function Button({ children, onClick, disabled, label, className }) {
 }
 
 Button.propTypes = {
+<<<<<<< HEAD
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+=======
+>>>>>>> 49f5e5f6ee969ff0745f5447540dc837bc4b0447
 	disabled: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
 };

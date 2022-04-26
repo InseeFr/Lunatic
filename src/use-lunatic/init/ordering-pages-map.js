@@ -26,13 +26,11 @@ function orderingPagesMap(map) {
 	const last = `${indexes[indexes.length - 1][0]}`;
 	return {
 		...indexes.reduce(function (nm, pages, index) {
-			const pageTag = getPageTag({ pages });
-			const previous =
-				index > 0 ? getPageTag({ pages: indexes[index - 1] }) : undefined;
+			const pageTag = getPageTag(pages);
+			const previous = index > 0 ? getPageTag(indexes[index - 1]) : undefined;
 			const next =
-				index < indexes.length - 1
-					? getPageTag({ pages: indexes[index + 1] })
-					: undefined;
+				index < indexes.length - 1 ? getPageTag(indexes[index + 1]) : undefined;
+
 			return { ...nm, [pageTag]: { ...map[pageTag], next, previous } };
 		}, {}),
 		first,
