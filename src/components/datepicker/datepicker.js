@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import './datepicker.scss';
 
-function Datepicker({ disabled, readOnly, value, onChange, labelId }) {
+function Datepicker({ disabled, readOnly, value, onChange, labelId, id }) {
 	const handleChange = useCallback(
 		function (e) {
 			const value = e.target.value;
@@ -10,9 +10,11 @@ function Datepicker({ disabled, readOnly, value, onChange, labelId }) {
 		},
 		[onChange]
 	);
+
 	return (
 		<input
-			className={classnames('datepicker-lunatic', { disabled, readOnly })}
+			id={id}
+			className={classnames('lunatic-datepicker', { disabled, readOnly })}
 			type="date"
 			labelledby={labelId}
 			readOnly={readOnly}

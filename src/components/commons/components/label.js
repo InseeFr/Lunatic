@@ -1,9 +1,10 @@
 import React from 'react';
+import createCustomizableLunaticField from '../create-customizable-field';
 
-function Label({ children, id, htmlFor, className }) {
+function Label({ children, id, htmlFor, className, style }) {
 	if (children) {
 		return (
-			<label htmlFor={htmlFor} id={id} className={className}>
+			<label htmlFor={htmlFor} id={id} className={className} style={style}>
 				{children}
 			</label>
 		);
@@ -11,4 +12,4 @@ function Label({ children, id, htmlFor, className }) {
 	return null;
 }
 
-export default Label;
+export default createCustomizableLunaticField(Label);

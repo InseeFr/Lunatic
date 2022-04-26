@@ -3,11 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 import * as R from './with-roster';
 import * as B from './with-loop';
 import { positioningOptions } from '../utils/options';
 import { select, boolean } from '@storybook/addon-knobs/react';
+import * as CustomMui from '../custom-mui';
 
 const storiesR = storiesOf('Loop/With roster', module)
 	.addDecorator(withReadme(readme))
@@ -86,3 +87,27 @@ storiesB.addWithJSX('Deeper Loop', () => (
 		features={['VTL']}
 	/>
 ));
+
+storiesR.addWithJSX('Default Loop with custom MUI', function () {
+	const custom = {
+		InputNumber: CustomMui.InputNumberMui,
+		Table: CustomMui.TableMui,
+		Thead: CustomMui.TheadMui,
+		Tbody: CustomMui.TbodyMui,
+		Th: CustomMui.ThMui,
+		Td: CustomMui.TdMui,
+		Tr: CustomMui.TrMui,
+		Input: CustomMui.InputMui,
+	};
+
+	return (
+		<Orchestrator
+			id="default-loop"
+			source={R.dataLoopWithRoster}
+			missing={boolean('Missing', false)}
+			positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+			features={['VTL']}
+			custom={custom}
+		/>
+	);
+});

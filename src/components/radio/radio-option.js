@@ -1,7 +1,22 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import classnames from 'classnames';
-import RadioChecked from '../../utils/icons/radio-checked.icon';
-import RadioUnchecked from '../../utils/icons/radio-unchecked.icon';
+import { RadioChecked } from '../icons';
+import { RadioUnchecked } from '../icons';
+import { CheckboxChecked } from '../icons';
+import { CheckboxUnchecked } from '../icons';
+
+function getIcon(checked, checkboxStyle) {
+	if (checked) {
+		if (checkboxStyle) {
+			return CheckboxChecked;
+		}
+		return RadioChecked;
+	}
+	if (checkboxStyle) {
+		return CheckboxUnchecked;
+	}
+	return RadioUnchecked;
+}
 
 function RadioOption({
 	checked,
@@ -12,9 +27,10 @@ function RadioOption({
 	onKeyDown,
 	index,
 	labelledBy,
+	checkboxStyle,
 }) {
 	const spanEl = useRef();
-	const Icon = checked ? RadioChecked : RadioUnchecked;
+	const Icon = getIcon(checked, checkboxStyle);
 	const tabIndex = checked ? '0' : '-1';
 
 	const onClickOption = useCallback(

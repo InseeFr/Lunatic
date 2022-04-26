@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import * as lunatic from 'components';
 import './custom-lunatic.scss';
 import Waiting from './waiting';
@@ -30,14 +30,22 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL'];
 
+function onLogChange(response, value, args) {
+	console.log('onChange', { response, value, args });
+}
+
 function OrchestratorForStories({
 	source,
 	data = DEFAULT_DATA,
 	management = false,
 	modalForControls = false,
 	features = DEFAULT_FEATURES,
+<<<<<<< HEAD
 	bindings: initialBindings,
 	initialPage = '1', // ou 1.1 ...
+=======
+	initialPage = '1',
+>>>>>>> optimisation
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	shortcut = false,
@@ -45,38 +53,42 @@ function OrchestratorForStories({
 	suggesterFetcher,
 	autoSuggesterLoading,
 	addExternal,
+	preferences,
+	custom,
 	...rest
 }) {
-	const preferences = management
-		? ['COLLECTED', 'FORCED', 'EDITED']
-		: ['COLLECTED'];
-	const savingType = management ? 'EDITED' : 'COLLECTED';
 	const { maxPage } = source;
+
 	const {
 		getComponents,
 		goNextPage,
 		goPreviousPage,
-		handleChange,
 		pageTag,
 		isFirstPage,
 		isLastPage,
-		executeExpression,
 		waiting,
+		getErrors,
 	} = lunatic.useLunatic({
 		source,
 		data,
 		initialPage,
 		features,
+		preferences,
+		onChange: onLogChange,
 	});
 
 	const components = getComponents();
+	const errors = getErrors();
 
 	return (
 		<div className="container">
 			<div className="components">
 				{components.map(function (component) {
-					const { id, componentType, response, ...other } = component;
+					const { id, componentType, response, storeName, ...other } =
+						component;
 					const Component = lunatic[componentType];
+					const storeInfo = storeName ? getStoreInfo(storeName) : {};
+
 					return (
 						<div className="lunatic lunatic-component" key={`component-${id}`}>
 							<Component
@@ -85,18 +97,16 @@ function OrchestratorForStories({
 								{...other}
 								{...rest}
 								{...component}
-								handleChange={handleChange}
-								preferences={preferences}
-								savingType={savingType}
-								management={management}
+								{...storeInfo}
 								missing={missing}
 								shortcut={shortcut}
-								executeExpression={executeExpression}
+								custom={custom}
 							/>
 						</div>
 					);
 				})}
 			</div>
+<<<<<<< HEAD
 			{
 				<Pager
 					goNext={goNextPage}
@@ -114,6 +124,26 @@ function OrchestratorForStories({
 					</div>
 				</Waiting>
 			}
+=======
+			<Pager
+				goNext={goNextPage}
+				goPrevious={goPreviousPage}
+				isLast={isLastPage}
+				isFirst={isFirstPage}
+				pageTag={pageTag}
+				maxPage={maxPage}
+			/>
+			<lunatic.Modal
+				title="Des points requièrent votre attention."
+				errors={errors}
+				goNext={goNextPage}
+			/>
+			<Waiting status={waiting}>
+				<div className="waiting-orchestrator">
+					Initialisation des données de suggestion...
+				</div>
+			</Waiting>
+>>>>>>> optimisation
 		</div>
 	);
 }

@@ -9,12 +9,10 @@
 			"missingResponse": {
 				"name": "TABLE_MISSING"
 			},
-			"cells": [
-				[
-					{ "headerCell": true, "label": "Id" },
-					{ "headerCell": true, "label": "Name" },
-					{ "headerCell": true, "label": "Age" }
-				],
+			"header": [	{ "headerCell": true, "label": "Id" },
+				{  "label": "Name" },
+				{ "label": "Age" }],
+			"body": [ 
 				[
 					{ "headerCell": true, "label": "1" },
 					{

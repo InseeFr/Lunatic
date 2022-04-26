@@ -1,7 +1,7 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.3.1-experimental",
-	"workersVersion": "0.2.2-experimental",
+	"version": "0.1.0-v2",
+	"workersVersion": "0.2.4-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -74,6 +74,10 @@
 		"@babel/plugin-transform-runtime": "^7.15.0",
 		"@babel/preset-env": "^7.9.5",
 		"@babel/preset-react": "^7.9.0",
+		"@emotion/react": "^11.8.1",
+		"@emotion/styled": "^11.8.1",
+		"@mui/icons-material": "^5.5.0",
+		"@mui/material": "^5.5.0",
 		"@storybook/addon-a11y": "^5.2.8",
 		"@storybook/addon-knobs": "^5.2.8",
 		"@storybook/addon-options": "^5.2.8",

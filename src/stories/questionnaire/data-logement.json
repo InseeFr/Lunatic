@@ -256,7 +256,7 @@
 			"FORCED": null,
 			"INPUTED": null,
 			"PREVIOUS": null,
-			"COLLECTED": "2"
+			"COLLECTED": null
 		},
 		"DALO": {
 			"EDITED": null,
@@ -2271,7 +2271,7 @@
 	"CALCULATED": {
 		"HC": 0,
 		"AGE": [51, 51, 18, 18],
-		"NHAB": 4,
+		"NHAB": 2,
 		"STOC": "1",
 		"STOCA": ["1", "1", "2", "2"],
 		"STOCC": ["1", "1", "1", "1"],

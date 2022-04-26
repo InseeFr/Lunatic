@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function collapsePart(parts = []) {
 	return parts.join('.');
 }
@@ -10,6 +11,15 @@ function getPageTag(pager) {
 	}
 
 	return pagesTag;
+=======
+function getPageTag(pager) {
+	const { page, subPage, iteration } = pager;
+	if (subPage !== undefined && iteration !== undefined) {
+		return `${page}.${subPage + 1}#${iteration + 1}`;
+	}
+
+	return `${page}`;
+>>>>>>> optimisation
 }
 
 export default getPageTag;

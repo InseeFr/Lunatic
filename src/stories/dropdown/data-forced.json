@@ -4,7 +4,10 @@
 			"id": "j4nw5cqz",
 			"componentType": "Dropdown",
 			"mandatory": false,
-			"label": "\"In which state do The \" || NAME || \" reside?\"",
+			"label": {
+				"value": "\"In which state do The \" || NAME || \" reside?\"",
+				"type": "VTL|MD"
+			},
 			"response": {
 				"name": "STATE"
 			},
@@ -31,7 +34,10 @@
 			"id": "j4nw5cqz-bis",
 			"componentType": "Dropdown",
 			"mandatory": false,
-			"label": "\"In which state do The \" || NAME || \" reside?\"",
+			"label": {
+				"value": "\"In which state do The \" || NAME || \" reside?\"",
+				"type": "VTL|MD"
+			},
 			"response": {
 				"name": "STATE2"
 			},

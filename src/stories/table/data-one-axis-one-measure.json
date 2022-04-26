@@ -7,7 +7,7 @@
 			"missingResponse": {
 				"name": "ICE_FLAVOUR_MISSING"
 			},
-			"cells": [
+			"body": [
 				[
 					{ "label": "Vanilla", "value": "1" },
 					{

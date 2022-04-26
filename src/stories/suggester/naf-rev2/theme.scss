@@ -2,6 +2,10 @@
 	white-space: nowrap;
 	overflow: hidden;
 
+	&:hover {
+		cursor: pointer;
+	}
+
 	&.selected {
 		background-color: darkred;
 		.libelle {
@@ -9,13 +13,12 @@
 		}
 	}
 
-	.id {
+	.code {
 		color: snow;
 		text-align: center;
-		padding: 2px 4px;
 		border-radius: 3px;
-		width: 50px;
-		display: inline-block;
+		float: right; 
+		padding: 2px 4px !important;
 
 		&.division {
 			background-color: olive;
@@ -24,13 +27,13 @@
 			background-color: firebrick;
 		}
 		&.groupe {
-			background-color: royalblue;
+			background-color: blue;
 		}
 		&.classe {
-			background-color: sandybrown;
+			background-color: orange;
 		}
 		&.sous-classe {
-			background-color: darkorchid;
+			background-color: darkmagenta;
 		}
 	}
 }

@@ -31,7 +31,10 @@
 			"components": [
 				{
 					"componentType": "Input",
-					"label": "\"Prénom\" || if (not(isnull(PRENOM = PRENOM_REF)) and PRENOM = PRENOM_REF) then \" (personne de référence par la suite)\"  else \"\"",
+					"label": {
+						"value": "\"Prénom\" || if (not(isnull(PRENOM = PRENOM_REF)) and PRENOM = PRENOM_REF) then \" (personne de référence par la suite)\"  else \"\"",
+						"type": "VTL|MD"
+					},
 					"conditionFilter": { "value": "true" },
 					"maxLength": 30,
 					"bindingDependencies": ["PRENOM", "PRENOM_REF"],

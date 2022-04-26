@@ -9,16 +9,16 @@
 			"missingResponse": {
 				"name": "TABLE_MISSING"
 			},
-			"cells": [
-				[
-					{ "headerCell": true, "label": "" },
-					{ "headerCell": true, "label": "Brazil" },
-					{ "headerCell": true, "label": "Canada" },
-					{ "headerCell": true, "label": "Japan" },
-					{ "headerCell": true, "label": "France" },
-					{ "headerCell": true, "label": "Other country" },
-					{ "headerCell": true, "label": "Other planet" }
-				],
+			"header": [
+				{ "label": "" },
+				{ "label": "Brazil" },
+				{ "label": "Canada" },
+				{ "label": "Japan" },
+				{ "label": "France" },
+				{ "label": "Other country" },
+				{ "label": "Other planet" }
+			],
+			"body": [
 				[
 					{ "label": "Car", "value": "1" },
 					{

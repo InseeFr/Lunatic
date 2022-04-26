@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import Tr from './html-table/tr';
-import Td from './html-table/td';
-import { RowComponent } from '../commons';
+import { Tr, Td } from '../../commons/components/html-table';
+
+import { OrchestratedComponent } from '../../commons';
 
 function Row({
 	id,
@@ -15,6 +15,7 @@ function Row({
 	management,
 	preferences,
 	executeExpression,
+	custom,
 }) {
 	const handleChangeRow = useCallback(
 		function (response, value) {
@@ -25,11 +26,12 @@ function Row({
 
 	if (Array.isArray(components)) {
 		return (
-			<Tr id={id}>
-				{components.map(function (component, index) {
+			<Tr id={id} custom={custom} row={rowIndex}>
+				{components.map(function (component) {
 					const { response, id } = component;
 					const idComponent = `${id}-${rowIndex + 1} `;
 					let value = undefined;
+					const key = `${id}-${rowIndex}`;
 					if (response) {
 						const { name } = response;
 						if (name in valueMap) {
@@ -38,10 +40,9 @@ function Row({
 					}
 
 					return (
-						<Td id={idComponent}>
-							<RowComponent
+						<Td id={idComponent} key={key} custom={custom}>
+							<OrchestratedComponent
 								component={component}
-								key={id}
 								handleChange={handleChangeRow}
 								features={features}
 								missing={missing}
@@ -52,6 +53,7 @@ function Row({
 								preferences={preferences}
 								iteration={rowIndex}
 								executeExpression={executeExpression}
+								custom={custom}
 							/>
 						</Td>
 					);

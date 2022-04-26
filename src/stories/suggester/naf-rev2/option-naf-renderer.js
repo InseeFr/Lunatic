@@ -3,11 +3,12 @@ import classnames from 'classnames';
 import './theme.scss';
 
 function OptionNafRenderer({ option, selected }) {
-	const { label, code, niveau } = option;
+	const { label, id, niveau } = option;
+
 	return (
 		<div className={classnames('naf-option', { selected })}>
-			<span className={classnames('code', niveau)} title={`${niveau} ${code}`}>
-				{code}
+			<span className={classnames('code', niveau)} title={`${niveau} ${id}`}>
+				{id}
 			</span>
 			<span className="label">{label}</span>
 		</div>

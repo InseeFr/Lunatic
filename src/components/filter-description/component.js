@@ -1,7 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { interpret } from '../../utils/to-expose';
-import { buildStyleObject } from '../../utils/lib';
 
 // const FilterDescription = ({
 // 	id,
@@ -42,7 +39,7 @@ import { buildStyleObject } from '../../utils/lib';
 // export default FilterDescription;
 
 function FilterDescription() {
-	return null;
+	return <>Filter</>;
 }
 
 export default FilterDescription;

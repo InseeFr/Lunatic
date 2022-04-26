@@ -12,6 +12,7 @@ const testSameOrigin = (url) => {
 };
 
 const createWorkerFallback = (workerUrl) => {
+	console.log('Create worker for MFE');
 	var worker = null;
 	try {
 		var blob;

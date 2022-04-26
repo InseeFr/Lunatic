@@ -1,22 +1,25 @@
 import React from 'react';
-import THead from './html-table/thead';
-import Tr from './html-table/tr';
-import Th from './html-table/th';
+import { Tr, Th, Thead } from '../../commons/components/html-table';
 
-function Header({ header, id }) {
+function Header({ header, id, custom }) {
 	if (Array.isArray(header)) {
 		return (
-			<THead id={id}>
-				<Tr id={`${id}`}>
+			<Thead id={id} custom={custom}>
+				<Tr id={id} custom={custom} row={0}>
 					{header.map(function ({ label }, index) {
 						return (
-							<Th id={id} index={index} key={`${label}-${index}`}>
+							<Th
+								id={id}
+								index={index}
+								key={`${label}-${index}`}
+								custom={custom}
+							>
 								{label}
 							</Th>
 						);
 					})}
 				</Tr>
-			</THead>
+			</Thead>
 		);
 	}
 	return null;

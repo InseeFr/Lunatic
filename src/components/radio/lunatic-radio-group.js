@@ -1,36 +1,25 @@
 import React from 'react';
 import RadioGroup from './radio-group';
-import { FieldContainer, Fieldset, useOnHandleChange } from '../commons';
-import {
-	DeclarationsBeforeText,
-	DeclarationsAfterText,
-	DeclarationsDetachable,
-} from '../declarations';
+
 import './radio.scss';
+import { createLunaticComponent } from '../commons';
 
 function LunaticRadioGroup(props) {
-	const { label, id, options, value, handleChange, response, declarations } =
-		props;
-
-	const onClick = useOnHandleChange({ handleChange, response, value });
+	const { id, options, value, onChange, checkboxStyle, custom } = props;
 
 	return (
-		<>
-			<DeclarationsBeforeText declarations={declarations} />
-			<FieldContainer id={id} value={value}>
-				<Fieldset legend={label}>
-					<DeclarationsAfterText declarations={declarations} />
-					<RadioGroup
-						id={id}
-						options={options}
-						value={value}
-						onClick={onClick}
-					/>
-				</Fieldset>
-			</FieldContainer>
-			<DeclarationsDetachable declarations={declarations} />
-		</>
+		<RadioGroup
+			id={id}
+			options={options}
+			value={value}
+			onClick={onChange}
+			checkboxStyle={checkboxStyle}
+			custom={custom}
+		/>
 	);
 }
 
-export default React.memo(LunaticRadioGroup);
+export default createLunaticComponent(LunaticRadioGroup, {
+	fieldset: true,
+	inputId: 'lunatic-radio-group',
+});

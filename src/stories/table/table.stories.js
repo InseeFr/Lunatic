@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 import dataDefault from './data-default';
 import dataOneAxisOneMeasure from './data-one-axis-one-measure';
 import dataOneAxisTwoMeasures from './data-one-axis-two-measures';
@@ -11,7 +11,8 @@ import dataOneHierarchicalAxis from './data-one-hierarchical-axis';
 import dataTwoAxisOneMeasure from './data-two-axis-one-measure';
 import dataRoster from './data-roster';
 import { positioningOptions, featuresOptions } from '../utils/options';
-import { text, boolean, select, object } from '@storybook/addon-knobs/react';
+import { boolean, select } from '@storybook/addon-knobs/react';
+import * as CustomMui from '../custom-mui';
 
 const stories = storiesOf('Table', module)
 	.addDecorator(withReadme(readme))
@@ -24,9 +25,7 @@ stories.addWithJSX('Default', () => (
 	<Orchestrator
 		id="default"
 		source={dataDefault}
-		label={text('Label', '"I\'m the label of the Table"')}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
-		bindings={object('Bindings', { test: 'test' })}
 	/>
 ));
 
@@ -80,3 +79,27 @@ stories.addWithJSX('Roster', () => (
 		hideBtn={boolean('Hide button', false)}
 	/>
 ));
+
+stories.addWithJSX('Custom Table MUI', function () {
+	const custom = {
+		InputNumber: CustomMui.InputNumberMui,
+		Table: CustomMui.TableMui,
+		Thead: CustomMui.TheadMui,
+		Tbody: CustomMui.TbodyMui,
+		Th: CustomMui.ThMui,
+		Td: CustomMui.TdMui,
+		Tr: CustomMui.TrMui,
+		Input: CustomMui.InputMui,
+	};
+
+	return (
+		<Orchestrator
+			source={dataDefault}
+			positioning={select('Items positioning', positioningOptions, 'DEFAULT')}
+			features={select('Features', featuresOptions, ['VTL', 'MD'])}
+			missing={boolean('Missing', false)}
+			management={boolean('Management', false)}
+			custom={custom}
+		/>
+	);
+});
