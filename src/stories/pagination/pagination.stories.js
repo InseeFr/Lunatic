@@ -5,7 +5,7 @@ import simpleLoop from './simple-loop';
 import deeperLoop from './deeper-loop.json';
 import simpsonsQuestion from './simpsons-question.json';
 import simpsonsSequence from './simpsons-sequence.json';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 import { boolean } from '@storybook/addon-knobs/react';
 
 const stories = storiesOf('Pagination', module).addDecorator((Component) => {

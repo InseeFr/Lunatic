@@ -9,11 +9,11 @@
 			"missingResponse": {
 				"name": "TABLE_MISSING"
 			},
-			"cells": [
-				[
-					{ "headerCell": true, "colspan": 2, "label": "" },
-					{ "headerCell": true, "label": "Percentage" }
-				],
+			"header": [
+				{ "headerCell": true, "colspan": 2, "label": "" },
+				{ "headerCell": true, "label": "Percentage" }
+			],
+			"body": [
 				[
 					{ "rowspan": 2, "label": "Frozen products", "value": "A" },
 					{ "label": "Ice creams", "value": "A1" },

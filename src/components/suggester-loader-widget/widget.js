@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import LoaderRow from './loader-row';
 import { Tools, ActionTool } from './tools';
-import { IsNetwork } from '../../utils/components/is-network';
+import { IsNetwork } from '../commons/components/is-network';
 import WidgetContainer from './widget-container';
-import Dragger from '../../utils/components/dragger';
-import OnDragIcon from '../../utils/icons/on-drag.icon';
+import Dragger from '../commons/components/dragger';
+import { OnDragIcon } from '../icons';
 import './widget.scss';
 
 function empty() {}

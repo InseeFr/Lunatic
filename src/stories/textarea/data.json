@@ -4,7 +4,7 @@
 			"id": "ta",
 			"componentType": "Textarea",
 			"mandatory": false,
-			"maxLength": "500",
+			"maxLength": 500,
 			"label": "➡ 1. Before starting, do you have any comments about the Simpsons family?",
 			"response": {
 				"name": "COMMENT"

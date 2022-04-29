@@ -1,8 +1,6 @@
 import React from 'react';
 import './declarations.scss';
 import Declaration from './declaration';
-// import PropTypes from 'prop-types';
-// interpret(features, logFunction)(bindings)(label)
 
 export const DECLARATION_POSITIONS = {
 	after: 'AFTER_QUESTION_TEXT',
@@ -10,14 +8,18 @@ export const DECLARATION_POSITIONS = {
 	detachable: 'DETACHABLE',
 };
 
-function Declarations({ id, type, declarations, logFunction }) {
+function Declarations({ id, type, declarations, logFunction, custom }) {
 	const filtered = declarations.filter(({ position }) => position === type);
 	if (filtered.length === 0) return null;
 
 	return (
-		<div id={`declarations-${id}-${type}`} className="declarations-lunatic">
+		<div id={`declarations-${id}-${type}`} className="lunatic-declarations">
 			{filtered.map(({ id: idD, label, declarationType }) => (
-				<Declaration key={`${idD}`} type={declarationType.toLowerCase()}>
+				<Declaration
+					key={`${idD}`}
+					type={declarationType.toLowerCase()}
+					custom={custom}
+				>
 					{label}
 				</Declaration>
 			))}
@@ -32,12 +34,6 @@ Declarations.defaultProps = {
 	bindings: {},
 };
 
-Declarations.propTypes = {
-	// id: PropTypes.string.isRequired,
-	// type: PropTypes.string,
-	// declarations: U.declarationsPropTypes,
-	// features: PropTypes.arrayOf(PropTypes.string),
-	// bindings: PropTypes.object,
-};
+Declarations.propTypes = {};
 
 export default Declarations;

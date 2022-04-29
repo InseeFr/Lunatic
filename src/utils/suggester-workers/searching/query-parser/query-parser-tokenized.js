@@ -4,10 +4,16 @@ import {
 	filterLength,
 	filterDouble,
 	getRegExpFromPattern,
+	filterToLower,
 } from '../../commons-tokenizer';
 import { composeFilters } from '../../commons-tokenizer/filters';
 
-const filterTokens = composeFilters(filterDouble, filterStemmer, filterLength);
+const filterTokens = composeFilters(
+	filterDouble,
+	filterStemmer,
+	filterToLower,
+	filterLength
+);
 
 function toArray(tokens) {
 	if (tokens) {

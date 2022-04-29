@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import * as lunatic from 'components';
 import './custom-lunatic.scss';
 import Waiting from './waiting';
@@ -30,13 +30,16 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL'];
 
+function onLogChange(response, value, args) {
+	console.log('onChange', { response, value, args });
+}
+
 function OrchestratorForStories({
 	source,
 	data = DEFAULT_DATA,
 	management = false,
 	modalForControls = false,
 	features = DEFAULT_FEATURES,
-	bindings: initialBindings,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
@@ -45,38 +48,42 @@ function OrchestratorForStories({
 	suggesterFetcher,
 	autoSuggesterLoading,
 	addExternal,
+	preferences,
+	custom,
 	...rest
 }) {
-	const preferences = management
-		? ['COLLECTED', 'FORCED', 'EDITED']
-		: ['COLLECTED'];
-	const savingType = management ? 'EDITED' : 'COLLECTED';
 	const { maxPage } = source;
+
 	const {
 		getComponents,
 		goNextPage,
 		goPreviousPage,
-		handleChange,
 		pageTag,
 		isFirstPage,
 		isLastPage,
-		executeExpression,
 		waiting,
+		getErrors,
 	} = lunatic.useLunatic({
 		source,
 		data,
 		initialPage,
 		features,
+		preferences,
+		onChange: onLogChange,
 	});
 
 	const components = getComponents();
+	const errors = getErrors();
 
 	return (
 		<div className="container">
 			<div className="components">
 				{components.map(function (component) {
-					const { id, componentType, response, ...other } = component;
+					const { id, componentType, response, storeName, ...other } =
+						component;
 					const Component = lunatic[componentType];
+					const storeInfo = storeName ? getStoreInfo(storeName) : {};
+
 					return (
 						<div className="lunatic lunatic-component" key={`component-${id}`}>
 							<Component
@@ -85,13 +92,10 @@ function OrchestratorForStories({
 								{...other}
 								{...rest}
 								{...component}
-								handleChange={handleChange}
-								preferences={preferences}
-								savingType={savingType}
-								management={management}
+								{...storeInfo}
 								missing={missing}
 								shortcut={shortcut}
-								executeExpression={executeExpression}
+								custom={custom}
 							/>
 						</div>
 					);
@@ -105,6 +109,11 @@ function OrchestratorForStories({
 				pageTag={pageTag}
 				maxPage={maxPage}
 			/>
+			<lunatic.Modal
+				title="Des points requièrent votre attention."
+				errors={errors}
+				goNext={goNextPage}
+			/>
 			<Waiting status={waiting}>
 				<div className="waiting-orchestrator">
 					Initialisation des données de suggestion...
@@ -112,90 +121,6 @@ function OrchestratorForStories({
 			</Waiting>
 		</div>
 	);
-
-	// /* */
-	// const {
-	// 	handleExternals,
-	// 	components,
-	// 	bindings,
-	// 	pagination: {
-	// 		goNext,
-	// 		goPrevious,
-	// 		page,
-	// 		setPage,
-	// 		maxPage,
-	// 		isFirstPage,
-	// 		isLastPage,
-	// 		flow,
-	// 	},
-	// } = lunatic.useLunatic(source, data, {
-	// 	suggesters,
-	// 	savingType,
-	// 	preferences,
-	// 	features,
-	// 	management,
-	// 	pagination,
-	// 	modalForControls,
-	// 	initialPage,
-	// 	suggesterFetcher,
-	// 	autoSuggesterLoading,
-	// });
-
-	// useEffect(() => {
-	// 	handleExternals(addExternal);
-	// }, [addExternal, handleExternals]);
-
-	// const Button = lunatic.Button;
-
-	// const missingStrategy = (b) => goNext(null, b);
-
-	// return (
-	// 	<div className="container">
-	// 		<div className="components">
-	// 			{components.map((q) => {
-	// 				const { id, componentType } = q;
-	// 				const Component = lunatic[componentType];
-	// 				const { storeName } = q;
-
-	// 				return (
-	// 					<div className="lunatic lunatic-component" key={`component-${id}`}>
-	// 						<Component
-	// 							{...rest}
-	// 							{...q}
-	// 							{...getStoreInfo(storeName)}
-	// 							handleChange={handleChange}
-	// 							preferences={preferences}
-	// 							savingType={savingType}
-	// 							management={management}
-	// 							features={features}
-	// 							bindings={{ ...bindings, ...initialBindings }}
-	// 							currentPage={page}
-	// 							setPage={setPage}
-	// 							flow={flow}
-	// 							pagination={pagination}
-	// 							missing={missing}
-	// 							shortcut={shortcut}
-	// 							missingStrategy={activeGoNextForMissing && missingStrategy}
-	// 						/>
-	// 					</div>
-	// 				);
-	// 			})}
-	// 		</div>
-	// 		{pagination && (
-	// 			<>
-	// 				<div className="pagination">
-	// 					<Button
-	// 						onClick={goPrevious}
-	// 						disabled={isFirstPage}
-	// 						value="Previous"
-	// 					/>
-	// 					<Button onClick={goNext} disabled={isLastPage} value="Next" />
-	// 				</div>
-	// 				<div>{`Page : ${page}/${maxPage}`}</div>
-	// 			</>
-	// 		)}
-	// 	</div>
-	// );
 }
 
 export default memo(OrchestratorForStories);

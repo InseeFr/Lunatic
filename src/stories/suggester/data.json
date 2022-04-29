@@ -61,6 +61,26 @@
 			"stopWords": ["de", "la", "les", "du", "et", "au", "aux", "en"],
 			"max": 12,
 			"version": "1"
+		},
+		{
+			"name": "bailleurs-sociaux-2021",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"stemmer": true,
+					"synonyms": [{ "source": "saint", "target": ["st"] }]
+				},
+
+				{ "name": "id" }
+			],
+			"max": 12,
+			"stopWords": ["de", "la", "les", "du", "et", "au", "aux", "en"],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "min": 1, "pattern": "[\\w]+" }
+			},
+			"version": "1"
 		}
 	],
 	"components": [
@@ -96,6 +116,17 @@
 			"response": {
 				"name": "BAILLEURS"
 			}
+		},
+		{
+			"id": "bailleurs-sociaux-2021",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "Bailleurs sociaux 2021",
+			"path": "data/bailleurs-2021",
+			"storeName": "bailleurs-sociaux-2021",
+			"response": {
+				"name": "BAILLEURS"
+			}
 		}
 	],
 	"variables": [
@@ -128,11 +159,11 @@
 			"name": "BAILLEURS",
 			"componentRef": "bailleurs-sociaux",
 			"values": {
-				"PREVIOUS": "123",
-				"COLLECTED": "123",
-				"FORCED": "123",
-				"EDITED": "123",
-				"INPUTED": "123"
+				"PREVIOUS": "123A",
+				"COLLECTED": "123A",
+				"FORCED": "123A",
+				"EDITED": "123A",
+				"INPUTED": "123A"
 			}
 		}
 	]

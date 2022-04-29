@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
+import { createCustomizableLunaticField } from '../commons';
 
 function checkValue(value) {
 	return value || '';
@@ -24,11 +25,11 @@ function Input({
 	return (
 		<input
 			id={id}
-			aria-labelledby={labelledBy}
+			labelledbby={labelledBy}
 			autoComplete="off"
 			type="text"
 			disabled={disabled}
-			className={classnames('input-lunatic')}
+			className={classnames('lunatic-input')}
 			value={checkValue(value)}
 			onChange={handleChange}
 			aria-required={required}
@@ -44,4 +45,4 @@ Input.defaultProps = {
 	maxLength: Number.MAX_SAFE_INTEGER,
 };
 
-export default Input;
+export default createCustomizableLunaticField(Input);

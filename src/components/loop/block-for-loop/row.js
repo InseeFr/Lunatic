@@ -1,5 +1,9 @@
 import React, { useCallback } from 'react';
-import { RowComponent } from '../commons';
+import { OrchestratedComponent } from '../../commons';
+
+function RestValue() {
+	return <></>;
+}
 
 function Row({
 	components,
@@ -12,6 +16,7 @@ function Row({
 	preferences,
 	rowIndex,
 	executeExpression,
+	custom,
 }) {
 	const handleChangeRow = useCallback(
 		function (response, value) {
@@ -23,17 +28,21 @@ function Row({
 	return components.reduce(function (row, component) {
 		const { response, id } = component;
 		const idComponent = `${id}-${rowIndex + 1} `;
+
 		let value = undefined;
 		if (response) {
 			const { name } = response;
-			if (name in valueMap) value = valueMap[name][rowIndex] || '';
+			const valueArray = valueMap[name];
+			if (Array.isArray(valueArray)) {
+				value = valueArray[rowIndex] || '';
+			}
 		}
 
 		return [
 			...row,
-			<RowComponent
+			<OrchestratedComponent
 				component={component}
-				key={id}
+				key={idComponent}
 				handleChange={handleChangeRow}
 				features={features}
 				missing={missing}
@@ -44,6 +53,7 @@ function Row({
 				preferences={preferences}
 				iteration={rowIndex}
 				executeExpression={executeExpression}
+				custom={custom}
 			/>,
 		];
 	}, []);
