@@ -1,7 +1,7 @@
 import React from 'react';
+import LunaticRadioGroup from '../../radio';
 
-function CheckboxOne() {
-	return <>CheckboxOne</>;
+function LunaticCheckboxOne(props) {
+	return <LunaticRadioGroup {...props} checkboxStyle={true} />;
 }
-
-export default CheckboxOne;
+export default LunaticCheckboxOne;

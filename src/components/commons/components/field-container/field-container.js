@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import './field-container.scss';
 
-function Tooltip({ management, id }) {
+function Tooltip({ management }) {
 	if (management) {
 		return <div className="tooltip"></div>;
 	}

@@ -1,58 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IDBSuggester from './idb-suggester';
-import { FieldContainer, Label, useOnHandleChange } from '../commons';
-import * as U from '../../utils/lib';
-import {
-	DeclarationsBeforeText,
-	DeclarationsAfterText,
-	DeclarationsDetachable,
-} from '../declarations';
+import { createLunaticComponent } from '../commons';
+import * as commonPropTypes from '../commons/prop-types';
 
 function LunaticSuggester(props) {
 	const {
+		id,
 		storeName,
 		optionRenderer,
 		labelRenderer,
 		idbVersion,
-		id,
 		focused,
 		value,
+		onChange,
 		disabled,
-		label,
-		declarations,
-		handleChange,
-		response,
+		labelId,
+		custom,
 	} = props;
 
-	const inputId = `lunatic-suggester-${id}`;
-	const labelId = `lunatic-suggester-label-${id}`;
-
-	const onSelect = useOnHandleChange({ handleChange, response, value });
-
 	return (
-		<>
-			<DeclarationsBeforeText declarations={declarations} />
-			<Label id={labelId} htmlFor={inputId} className={''}>
-				{label}
-			</Label>
-			<DeclarationsAfterText declarations={declarations} />
-			<FieldContainer value={value} id={id}>
-				<IDBSuggester
-					storeName={storeName}
-					optionRenderer={optionRenderer}
-					labelRenderer={labelRenderer}
-					labelledBy={labelId}
-					idbVersion={idbVersion}
-					onSelect={onSelect}
-					focused={focused}
-					disabled={disabled}
-					id={inputId}
-					value={value}
-				/>
-			</FieldContainer>
-			<DeclarationsDetachable declarations={declarations} />
-		</>
+		<IDBSuggester
+			storeName={storeName}
+			optionRenderer={optionRenderer}
+			labelRenderer={labelRenderer}
+			labelledBy={labelId}
+			idbVersion={idbVersion}
+			onSelect={onChange}
+			focused={focused}
+			disabled={disabled}
+			id={id}
+			value={value}
+			custom={custom}
+		/>
 	);
 }
 
@@ -74,12 +54,12 @@ LunaticSuggester.defaultProps = {
 LunaticSuggester.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
-	preferences: PropTypes.arrayOf(U.valueTypePropTypes),
-	response: U.responsePropTypes,
+	preferences: PropTypes.arrayOf(commonPropTypes.valueTypePropTypes),
+	response: commonPropTypes.responsePropTypes,
 	handleChange: PropTypes.func.isRequired,
 	disabled: PropTypes.bool,
 	focused: PropTypes.bool,
-	declarations: U.declarationsPropTypes,
+	declarations: commonPropTypes.declarationsPropTypes,
 	features: PropTypes.arrayOf(PropTypes.string),
 	bindings: PropTypes.object,
 	management: PropTypes.bool,
@@ -89,4 +69,4 @@ LunaticSuggester.propTypes = {
 	getStoreInfo: PropTypes.func,
 };
 
-export default React.memo(LunaticSuggester);
+export default createLunaticComponent(LunaticSuggester);

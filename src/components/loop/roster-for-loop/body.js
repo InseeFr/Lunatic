@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import TBody from './html-table/tbody';
+import { Tbody } from '../../commons/components/html-table';
 import RosterForLoopOrchestrator from './roster-for-loop-orchestrator';
 
 function Body({
@@ -13,6 +13,7 @@ function Body({
 	management,
 	features,
 	preferences,
+	custom,
 }) {
 	const handleChangeRow = useCallback(
 		function (response, value, args) {
@@ -23,7 +24,7 @@ function Body({
 
 	if (nbRows > 0) {
 		return (
-			<TBody id={id}>
+			<Tbody id={id} custom={custom}>
 				<RosterForLoopOrchestrator
 					components={components}
 					nbRows={nbRows}
@@ -34,8 +35,9 @@ function Body({
 					management={management}
 					features={features}
 					preferences={preferences}
+					custom={custom}
 				/>
-			</TBody>
+			</Tbody>
 		);
 	}
 	return null;

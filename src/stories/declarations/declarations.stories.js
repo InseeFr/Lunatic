@@ -3,11 +3,9 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Declarations } from 'components';
 import readme from './README.md';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 import * as C from '../../constants';
-import { featuresOptions } from '../utils/options';
-import { object, select } from '@storybook/addon-knobs/react';
-import { createExecuteExpression } from '../../utils/to-expose/hooks/use-lunatic/commons';
+import { createExecuteExpression } from '../../use-lunatic/commons';
 
 const stories = storiesOf('Declarations', module)
 	.addDecorator(withReadme(readme))

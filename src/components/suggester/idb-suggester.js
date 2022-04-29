@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import SuggesterWrapper from './suggester-wrapper';
+import Suggester from './suggester';
 import createSearching from './searching';
 import CheckStore from './check-store';
 
@@ -15,8 +15,10 @@ function IDBSuggester({
 	onSelect,
 	disabled,
 	value,
+	custom,
 }) {
 	const [store, setStore] = useState(undefined);
+
 	const searching = useMemo(
 		function () {
 			if (store) {
@@ -33,7 +35,7 @@ function IDBSuggester({
 			idbVersion={idbVersion}
 			setStore={setStore}
 		>
-			<SuggesterWrapper
+			<Suggester
 				id={id}
 				className={className}
 				labelledBy={labelledBy}
@@ -43,6 +45,7 @@ function IDBSuggester({
 				searching={searching}
 				disabled={disabled}
 				value={value}
+				custom={custom}
 			/>
 		</CheckStore>
 	);

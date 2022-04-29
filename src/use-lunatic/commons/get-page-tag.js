@@ -1,23 +1,10 @@
-function collapsePart(parts = []) {
-	const steps = parts.join('.');
-	if (steps.length > 0) {
-		return steps;
-	}
-	return undefined;
-}
-
-function getPageTag(levels) {
-	const pagesTag = collapsePart(levels);
-
-	return pagesTag;
-}
-
-export function mergePageTagIterations(pageTag, iterations = []) {
-	if (iterations.length) {
-		return `${pageTag}#${collapsePart(iterations)}`;
+function getPageTag(pager) {
+	const { page, subPage, iteration } = pager;
+	if (subPage !== undefined && iteration !== undefined) {
+		return `${page}.${subPage + 1}#${iteration + 1}`;
 	}
 
-	return pageTag;
+	return `${page}`;
 }
 
 export default getPageTag;

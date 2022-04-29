@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
+import { createCustomizableLunaticField } from '../commons';
 import './input-number.scss';
 
 function InputNumber({
@@ -12,19 +13,20 @@ function InputNumber({
 	max,
 	step,
 }) {
+	const valueEffective = value ?? 0;
 	const handleChange = useCallback(
 		function (e) {
-			const value = e.target.value;
-			onChange(value);
+			const val = e.target.value;
+			onChange(val);
 		},
 		[onChange]
 	);
 	return (
 		<input
-			className={classnames('input-lunatic', { disabled, readOnly })}
+			className={classnames('lunatic-input', { disabled, readOnly })}
 			type="number"
 			onChange={handleChange}
-			value={value}
+			value={valueEffective}
 			labelledby={labelId}
 			readOnly={readOnly}
 			disabled={disabled}
@@ -35,4 +37,4 @@ function InputNumber({
 	);
 }
 
-export default InputNumber;
+export default createCustomizableLunaticField(InputNumber);

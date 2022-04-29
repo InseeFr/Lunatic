@@ -19,6 +19,7 @@ function BlockForLoop({
 	management,
 	executeExpression,
 	iterations,
+	custom,
 }) {
 	const [nbRows, setNbRows] = useState(-1);
 	const [min, setMin] = useState(undefined);
@@ -58,8 +59,8 @@ function BlockForLoop({
 	if (nbRows > 0) {
 		return (
 			<>
-				<DeclarationsBeforeText declarations={declarations} />
-				<DeclarationsAfterText declarations={declarations} />
+				<DeclarationsBeforeText declarations={declarations} custom={custom} />
+				<DeclarationsAfterText declarations={declarations} custom={custom} />
 				<BlockForLoopOrchestrator
 					components={components}
 					handleChange={handleChangeLoop}
@@ -71,8 +72,9 @@ function BlockForLoop({
 					features={features}
 					preferences={preferences}
 					executeExpression={executeExpression}
+					custom={custom}
 				/>
-				<DeclarationsDetachable declarations={declarations} />
+				<DeclarationsDetachable declarations={declarations} custom={custom} />
 			</>
 		);
 	}

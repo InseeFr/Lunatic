@@ -1,0 +1,63 @@
+.lunatic-modal-controls {
+	position: fixed;
+
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(50, 50, 50, 0.5);
+
+	.modal {
+		background-color: snow;
+		height: 200px;
+		width: 60%;
+		margin: auto;
+		margin-top: 20%;
+		position: relative;
+		border-radius: 8px;
+
+		.title {
+			height: 32px;
+			background-color: darkslateblue;
+			color: gainsboro;
+			font-size: 18px;
+			font-weight: bolder;
+			line-height: 32px;
+			padding: 0 12px;
+
+			border-radius: 8px 8px 0 0;
+		}
+
+		.body {
+			padding: 0 12px 0 12px;
+			height: 60%;
+			background-color: aquamarine;
+		}
+
+		.modal-button {
+			display: block;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			margin: 0 12px 12px 0;
+		}
+	}
+
+	.errors {
+		ul,
+		li,
+		div,
+		span {
+			margin: 0;
+			padding: 0;
+			border: none;
+			list-style: none;
+		}
+
+		.warn {
+		}
+
+		.info {
+		}
+	}
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 import RadioOption from './radio-option';
 import { Label, useOptionsKeydown } from '../commons';
+import { createCustomizableLunaticField } from '../commons';
 
-function RadioGroup({ options, value, id, onClick }) {
+function Radio({ options, value, id, onClick, checkboxStyle = false }) {
 	const onKeyDown = useOptionsKeydown(options, onClick);
 
 	return options.map(function (option, index) {
@@ -23,10 +24,11 @@ function RadioGroup({ options, value, id, onClick }) {
 					onClick={onClick}
 					value={valueOption}
 					onKeyDown={onKeyDown}
+					checkboxStyle={checkboxStyle}
 				/>
 			</div>
 		);
 	});
 }
 
-export default RadioGroup;
+export default createCustomizableLunaticField(Radio);

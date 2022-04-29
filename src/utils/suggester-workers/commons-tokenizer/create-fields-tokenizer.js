@@ -7,10 +7,14 @@ function defaultTokenizeIt(string) {
 	return [prepareStringIndexation(string)];
 }
 
+function toArray(content) {
+	return Array.isArray(content) ? content : [content];
+}
+
 function tokensToArray(tokenized) {
 	return Object.entries(tokenized).reduce(function (a, [k, values]) {
 		if (k.startsWith('pattern')) {
-			return [...a, ...values];
+			return [...a, ...toArray(values)];
 		}
 		return a;
 	}, []);

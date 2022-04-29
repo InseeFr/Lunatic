@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Orchestrator from '../utils/orchestrator';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
-import { titleDecorator } from 'utils/lib';
+import { titleDecorator } from '../utils';
 import { featuresOptions } from '../utils/options';
 import { text, boolean, select, object } from '@storybook/addon-knobs/react';
 

@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import './button.scss';
 
-function Button({ children, onClick, disabled }) {
+function Button({ children, onClick, disabled, label, className }) {
 	const handleClick = useCallback(
 		function (e) {
 			e.stopPropagation();
@@ -16,14 +17,15 @@ function Button({ children, onClick, disabled }) {
 		<input
 			disabled={disabled}
 			type="button"
-			className="button-lunatic"
-			value={children}
+			className={classnames('button-lunatic', className, { disabled })}
+			value={label || children}
 			onClick={handleClick}
 		/>
 	);
 }
 
 Button.propTypes = {
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	disabled: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
 };
