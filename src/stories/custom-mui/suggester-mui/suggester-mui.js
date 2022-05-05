@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
-import ClearIcon from '@mui/icons-material/Clear';
+// import ClearIcon from '@mui/icons-material/Clear';
 import InputBase from '@mui/material/InputBase';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Stack from '@mui/material/Stack';
@@ -65,7 +65,7 @@ function Delete({ onClick }) {
 			aria-label="delete"
 			onClick={onClick}
 		>
-			<ClearIcon />
+			C
 		</IconButton>
 	);
 }
