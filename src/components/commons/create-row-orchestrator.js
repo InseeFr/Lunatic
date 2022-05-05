@@ -10,7 +10,6 @@ function createRowOrchestrator(Row) {
 		features,
 		missing,
 		shortcut,
-		management,
 		preferences,
 		executeExpression,
 		iteration,
@@ -33,7 +32,6 @@ function createRowOrchestrator(Row) {
 						features={features}
 						shortcut={shortcut}
 						preferences={preferences}
-						management={management}
 						missing={missing}
 					/>
 				);
