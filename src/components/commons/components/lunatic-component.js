@@ -7,6 +7,7 @@ import {
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../../declarations';
+import Missing from './missing';
 import safetyLabel from '../safety-label';
 
 function LunaticComponent(props) {
@@ -44,6 +45,7 @@ function LunaticComponent(props) {
 				{children}
 			</FieldContainer>
 			<DeclarationsDetachable declarations={declarations} custom={custom} />
+			<Missing {...props} />
 		</VariableStatus>
 	);
 }

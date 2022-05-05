@@ -33,17 +33,7 @@ function createLunaticComponent(
 	const Memoized = React.memo(HtmlComponent);
 
 	return function LunaticHandlerComponent(props) {
-		const {
-			id,
-			label,
-			custom,
-			preferences,
-			declarations,
-			className,
-			value,
-			handleChange,
-			response,
-		} = props;
+		const { id, value, handleChange, response } = props;
 
 		const inputId_ = `${inputId}-${id}`;
 		const labelId_ = `${labelId}-${id}`;
@@ -51,24 +41,16 @@ function createLunaticComponent(
 		const onChange = useOnHandleChange({ handleChange, response, value });
 
 		return (
-			<Component
-				id={id}
-				labelId={labelId_}
-				inputId={inputId_}
-				label={label}
-				custom={custom}
-				preferences={preferences}
-				declarations={declarations}
-				className={className}
-				value={value}
-			>
-				<Memoized
-					{...props}
-					onChange={onChange}
-					id={inputId_}
-					labelId={labelId_}
-				/>
-			</Component>
+			<>
+				<Component {...props} labelId={labelId_} inputId={inputId_}>
+					<Memoized
+						{...props}
+						onChange={onChange}
+						id={inputId_}
+						labelId={labelId_}
+					/>
+				</Component>
+			</>
 		);
 	};
 }
