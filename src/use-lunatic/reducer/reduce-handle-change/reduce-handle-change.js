@@ -1,5 +1,6 @@
 import reduceVariablesArray from './reduce-variables-array';
 import reduceVariablesSimple from './reduce-variables-simple';
+import { getCompatibleVTLExpression } from '../../commons';
 
 function isOnSubPage(pager) {
 	const { subPage } = pager;
@@ -56,6 +57,45 @@ function updateBindings(state, action) {
 	return state;
 }
 
+function cleaning(state, action) {
+	const { payload } = action;
+	const { response } = payload;
+	const { executeExpression, cleaning, updateBindings, variables, pager } =
+		state;
+	const { iteration } = pager;
+	if (response) {
+		const { name } = response;
+		if (name in cleaning) {
+			const expressions = cleaning[name];
+			const delta = Object.entries(expressions).reduce(function (
+				step,
+				[key, expression]
+			) {
+				const isCleaning = executeExpression(
+					getCompatibleVTLExpression(expression),
+					{ iteration }
+				);
+				if (!isCleaning && key in variables) {
+					const variable = variables[key];
+					updateBindings(key, null);
+					return { ...step, [key]: { ...variable, value: null } };
+				}
+				return step;
+			},
+			{});
+
+			return {
+				...state,
+				variables: {
+					...variables,
+					...delta,
+				},
+			};
+		}
+	}
+	return state;
+}
+
 /**
  *
  * @param {*} state
@@ -63,7 +103,10 @@ function updateBindings(state, action) {
  * @returns
  */
 function reduceHandleChange(state, action) {
-	return updateBindings(updateVariables(state, action), action);
+	return cleaning(
+		updateBindings(updateVariables(state, action), action),
+		action
+	);
 }
 
 export default reduceHandleChange;
