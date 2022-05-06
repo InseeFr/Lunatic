@@ -1,6 +1,5 @@
 import React from 'react';
 import CheckboxGroup from './checkbox-group';
-
 import { createLunaticComponent } from '../../commons';
 
 function LunaticCheckboxGroup({
