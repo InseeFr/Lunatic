@@ -13,7 +13,6 @@ const Missing = (props) => {
 		refusedButton = 'Refused',
 		missingResponse,
 		handleChange,
-		value,
 		preferences,
 		missingStrategy,
 		missingShortcut = DEFAULT_SHORTCUT,
@@ -27,32 +26,34 @@ const Missing = (props) => {
 		paginatedLoop,
 	} = props;
 
-	const buttonState = null;
-	const onChange = useOnHandleChange({
+	const { value } = missingResponse;
+	const onClick = useOnHandleChange({
 		handleChange,
 		response: missingResponse,
 		value,
 	});
-	const onClick = useCallback(() => {}, []);
+
+	const onClickDK = useCallback(() => onClick(DK), [onClick]);
+	const onClickRF = useCallback(() => onClick(RF), [onClick]);
 
 	if ((componentType === 'Loop' && paginatedLoop) || !missingResponse)
 		return null;
-	const { name } = missingResponse;
+
 	return (
 		<div className="missing-buttons">
 			<span
 				className={`missing-button${
-					buttonState === DK ? '-active' : ''
-				} missing-button-dk${buttonState === DK ? '-active' : ''}`}
+					value === DK ? '-active' : ''
+				} missing-button-dk${value === DK ? '-active' : ''}`}
 			>
-				<Button label={dontKnowButton} onClick={onClick(DK)} />
+				<Button label={dontKnowButton} onClick={onClickDK} />
 			</span>
 			<span
 				className={`missing-button${
-					buttonState === RF ? '-active' : ''
-				} missing-button-rf${buttonState === RF ? '-active' : ''}`}
+					value === RF ? '-active' : ''
+				} missing-button-rf${value === RF ? '-active' : ''}`}
 			>
-				<Button label={refusedButton} onClick={onClick(RF)} />
+				<Button label={refusedButton} onClick={onClickRF} />
 			</span>
 			{shortcut &&
 				missingShortcut &&

@@ -139,7 +139,7 @@ function reduceOnInit(state, action) {
 			features
 		);
 		const pages = checkLoops(createMapPages(source));
-		const { maxPage, cleaning = {} } = source;
+		const { maxPage, cleaning = {}, missingBlock = {} } = source;
 		const pager = {
 			page: initialPage,
 			maxPage: Number.parseInt(maxPage) || 1,
@@ -153,6 +153,7 @@ function reduceOnInit(state, action) {
 		return checkInLoop({
 			...state,
 			cleaning,
+			missingBlock,
 			variables,
 			pages,
 			isFirstPage,

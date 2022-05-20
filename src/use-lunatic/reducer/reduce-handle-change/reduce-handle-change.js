@@ -57,6 +57,26 @@ function updateBindings(state, action) {
 	return state;
 }
 
+function missing(state, action) {
+	const {
+		payload: {
+			response: { name },
+		},
+	} = action;
+	const { missingBlock } = state;
+	if (name in missingBlock) {
+		const { variables, updateBindings } = state;
+		const toClean = missingBlock[name];
+		const delta = toClean.reduce((acc, variableName) => {
+			const { value, ...rest } = variables[variableName];
+			updateBindings(variableName, null);
+			return { ...acc, [variableName]: { ...rest, value: null } };
+		}, {});
+		return { ...state, variables: { ...variables, ...delta } };
+	}
+	return state;
+}
+
 function cleaning(state, action) {
 	const { payload } = action;
 	const { response } = payload;
@@ -103,8 +123,8 @@ function cleaning(state, action) {
  * @returns
  */
 function reduceHandleChange(state, action) {
-	return cleaning(
-		updateBindings(updateVariables(state, action), action),
+	return missing(
+		cleaning(updateBindings(updateVariables(state, action), action), action),
 		action
 	);
 }

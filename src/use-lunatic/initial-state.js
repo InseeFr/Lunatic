@@ -8,6 +8,7 @@ const INITIAL_STATE = {
 	preferences: ['COLLECTED'],
 	savingType: 'COLLECTED',
 	cleaning: {},
+	missingBlock: {},
 	pager: {
 		page: undefined,
 		maxPage: undefined,
