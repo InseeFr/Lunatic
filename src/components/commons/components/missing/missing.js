@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import useOnHandleChange from '../../use-on-handle-change';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import Button from '../../../button';
 import { DK, RF } from 'utils/constants';
@@ -12,6 +13,7 @@ const Missing = (props) => {
 		refusedButton = 'Refused',
 		missingResponse,
 		handleChange,
+		value,
 		preferences,
 		missingStrategy,
 		missingShortcut = DEFAULT_SHORTCUT,
@@ -20,15 +22,18 @@ const Missing = (props) => {
 		cells,
 		components,
 		savingType,
-		bindings,
 		shortcut,
 		componentType,
 		paginatedLoop,
 	} = props;
 
 	const buttonState = null;
-	const missingResponseName = 'PRODUCER';
-	const onClick = console.log;
+	const onChange = useOnHandleChange({
+		handleChange,
+		response: missingResponse,
+		value,
+	});
+	const onClick = useCallback(() => {}, []);
 
 	if ((componentType === 'Loop' && paginatedLoop) || !missingResponse)
 		return null;
@@ -41,8 +46,7 @@ const Missing = (props) => {
 				} missing-button-dk${buttonState === DK ? '-active' : ''}`}
 			>
 				<Button
-					label="dont-know-button"
-					value={dontKnowButton}
+					label={dontKnowButton}
 					disabled={!missingResponseName || missingResponseName?.length === 0}
 					onClick={onClick(DK)}
 				/>
@@ -53,8 +57,7 @@ const Missing = (props) => {
 				} missing-button-rf${buttonState === RF ? '-active' : ''}`}
 			>
 				<Button
-					label="refused-button"
-					value={refusedButton}
+					label={refusedButton}
 					disabled={!missingResponseName || missingResponseName?.length === 0}
 					onClick={onClick(RF)}
 				/>
