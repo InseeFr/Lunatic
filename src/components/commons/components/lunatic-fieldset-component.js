@@ -2,6 +2,7 @@ import React from 'react';
 import FieldContainer from './field-container';
 import Fieldset from './fieldset';
 import VariableStatus from './variable-status';
+import Missing from './missing';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
@@ -9,8 +10,17 @@ import {
 } from '../../declarations';
 
 function LunaticFieldsetComponent(props) {
-	const { id, label, custom, preferences, declarations, value, children } =
-		props;
+	const {
+		id,
+		label,
+		custom,
+		preferences,
+		declarations,
+		value,
+		children,
+		missingResponse,
+		missing,
+	} = props;
 
 	return (
 		<VariableStatus>
@@ -27,6 +37,7 @@ function LunaticFieldsetComponent(props) {
 				</Fieldset>
 			</FieldContainer>
 			<DeclarationsDetachable declarations={declarations} custom={custom} />
+			{missing && missingResponse && <Missing {...props} />}
 		</VariableStatus>
 	);
 }

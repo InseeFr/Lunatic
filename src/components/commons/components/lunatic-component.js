@@ -22,6 +22,8 @@ function LunaticComponent(props) {
 		className,
 		value,
 		children,
+		missing,
+		missingResponse,
 	} = props;
 
 	return (
@@ -45,7 +47,7 @@ function LunaticComponent(props) {
 				{children}
 			</FieldContainer>
 			<DeclarationsDetachable declarations={declarations} custom={custom} />
-			<Missing {...props} />
+			{missing && missingResponse && <Missing {...props} />}
 		</VariableStatus>
 	);
 }
