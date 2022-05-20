@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { linesPropTypes } from '../commons/prop-types';
 import { LunaticField } from '../commons';
 import Table from './components/table';
+import { createLunaticComponent } from '../commons';
 import TableOrchestrator from './table-orchestrator';
 
 function LunaticTable({
-	label,
-	declarations,
+	htmlFor,
+	labelId,
 	id,
 	handleChange,
 	value,
@@ -18,8 +18,6 @@ function LunaticTable({
 	iteration,
 }) {
 	const [nbRows, setNbRows] = useState(undefined);
-	const inputId = `lunatic-switch-${id}`;
-	const labelId = `lunatic-switch-label-${id}`;
 
 	useEffect(
 		function () {
@@ -32,28 +30,18 @@ function LunaticTable({
 	);
 
 	return (
-		<LunaticField
-			label={label}
-			contentId={inputId}
-			labelId={labelId}
-			declarations={declarations}
-			id={id}
-			value={value}
-			className="lunatic-label-table"
-		>
-			<Table id={id} custom={custom} header={header}>
-				<TableOrchestrator
-					custom={custom}
-					id={id}
-					body={body}
-					executeExpression={executeExpression}
-					handleChange={handleChange}
-					iteration={iteration}
-					nbRows={nbRows}
-					valueMap={value}
-				/>
-			</Table>
-		</LunaticField>
+		<Table id={id} custom={custom} header={header}>
+			<TableOrchestrator
+				custom={custom}
+				id={id}
+				body={body}
+				executeExpression={executeExpression}
+				handleChange={handleChange}
+				iteration={iteration}
+				nbRows={nbRows}
+				valueMap={value}
+			/>
+		</Table>
 	);
 }
 
@@ -72,4 +60,4 @@ LunaticTable.defaultProps = {
 	header: [],
 };
 
-export default LunaticTable;
+export default createLunaticComponent(LunaticTable);
