@@ -37,7 +37,7 @@ const Missing = (props) => {
 
 	if ((componentType === 'Loop' && paginatedLoop) || !missingResponse)
 		return null;
-
+	const { name } = missingResponse;
 	return (
 		<div className="missing-buttons">
 			<span
@@ -45,25 +45,16 @@ const Missing = (props) => {
 					buttonState === DK ? '-active' : ''
 				} missing-button-dk${buttonState === DK ? '-active' : ''}`}
 			>
-				<Button
-					label={dontKnowButton}
-					disabled={!missingResponseName || missingResponseName?.length === 0}
-					onClick={onClick(DK)}
-				/>
+				<Button label={dontKnowButton} onClick={onClick(DK)} />
 			</span>
 			<span
 				className={`missing-button${
 					buttonState === RF ? '-active' : ''
 				} missing-button-rf${buttonState === RF ? '-active' : ''}`}
 			>
-				<Button
-					label={refusedButton}
-					disabled={!missingResponseName || missingResponseName?.length === 0}
-					onClick={onClick(RF)}
-				/>
+				<Button label={refusedButton} onClick={onClick(RF)} />
 			</span>
 			{shortcut &&
-				missingResponseName?.length > 0 &&
 				missingShortcut &&
 				missingShortcut.dontKnow &&
 				missingShortcut.refused && (

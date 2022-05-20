@@ -3,6 +3,7 @@ import fillErrors from './fill-errors';
 import fillFromState from './fill-from-state';
 import fillComponentValue from './fill-component-value';
 import fillPagination from './fill-pagination';
+import fillMissingResponse from './fill-missing-response';
 
 function compose(...fill) {
 	return fill.reduce(
@@ -18,7 +19,8 @@ const fillComponent = compose(
 	fillFromState,
 	fillComponentExpressions,
 	fillPagination,
-	fillComponentValue
+	fillComponentValue,
+	fillMissingResponse
 );
 
 function fillComponents(components, state) {
