@@ -7,7 +7,7 @@ jobs:
     name: Test & build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v1
         with:
           node-version: 15
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: test-build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Download coverage artifact
@@ -41,11 +41,11 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   build-assets:
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/v2-master'
     runs-on: ubuntu-latest
     needs: sonarcloud
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v1
         with:
           node-version: 15
@@ -84,6 +84,15 @@ jobs:
       - run: cp -a ./example/lunatic-editor/build/. ./deploy/editor
       # Add json to fetch for suggester stories
       - run: cp -a ./public/. ./deploy/storybook
+      # Deploy storybook v2
+      - uses: actions/checkout@v3
+        with:
+          ref: v2-master
+      - run: yarn
+      # Build Storybook v2
+      - run: yarn build-storybook
+      - run: mkdir -p deploy/storybook
+      - run: cp -R ./built-storybook/storybook/. ./deploy/storybook-v2
       - name: Upload deploy artifact
         uses: actions/upload-artifact@v2
         with:
@@ -91,46 +100,9 @@ jobs:
           path: deploy/
 
   deploy:
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/v2-master'
     runs-on: ubuntu-latest
     needs: build-assets
-    steps:
-      - name: Download deploy artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: deploy
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
-
-  build-assets-v2:
-    if: github.ref == 'refs/heads/v2-master'
-    runs-on: ubuntu-latest
-    needs: sonarcloud
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 15
-      - run: yarn
-      # Build Storybook
-      - run: yarn build-storybook
-      - run: mkdir -p deploy/storybook
-      - run: cp -R ./built-storybook/storybook/. ./deploy/storybook-v2
-      # Add json to fetch for suggester stories
-      - run: cp -a ./public/. ./deploy/storybook-v2
-      - name: Upload deploy artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: deploy
-          path: deploy/
-
-  deploy-v2:
-    if: github.ref == 'refs/heads/v2-master'
-    runs-on: ubuntu-latest
-    needs: build-assets-v2
     steps:
       - name: Download deploy artifact
         uses: actions/download-artifact@v2
