@@ -1,11 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { Declarations } from 'components';
+import Orchestrator from '../utils/orchestrator';
 import readme from './README.md';
 import { titleDecorator } from '../utils';
-import * as C from '../../constants';
-import { createExecuteExpression } from '../../use-lunatic/commons';
+import declarations from './declarations';
 
 const stories = storiesOf('Declarations', module)
 	.addDecorator(withReadme(readme))
@@ -14,110 +13,14 @@ const stories = storiesOf('Declarations', module)
 		return <WrappedComponent title="<Declarations />" />;
 	});
 
-function execute(exp) {
-	return exp;
-}
-
 stories.addWithJSX('Default', function () {
 	return (
 		<div className="lunatic-component">
-			<Declarations
+			<Orchestrator
 				id="default"
-				type={C.BEFORE_QUESTION_TEXT}
-				declarations={declarations}
-				executeExpression={execute}
+				source={declarations}
+				features={['VTL', 'MD']}
 			/>
 		</div>
 	);
 });
-
-const [executeExpression] = createExecuteExpression({}, ['VTL']);
-
-stories.addWithJSX('Props', () => (
-	<div className="lunatic-component">
-		<Declarations
-			id="default"
-			type={C.BEFORE_QUESTION_TEXT}
-			declarations={declarationsVtl}
-			executeExpression={executeExpression}
-		/>
-	</div>
-));
-
-const declarations = [
-	{
-		id: '1',
-		label: "I'm the label of the instruction declaration",
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.INSTRUCTION,
-	},
-	{
-		id: '2',
-		label: "I'm the label of the comment declaration",
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.COMMENT,
-	},
-	{
-		id: '3',
-		label: "I'm the label of the help declaration",
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.HELP,
-	},
-	{
-		id: '4',
-		label: "I'm the label of the warning declaration",
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.WARNING,
-	},
-	{
-		id: '5',
-		label: "I'm the label of the message filter declaration",
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.MESSAGE_FILTER,
-	},
-	{
-		id: '6',
-		label: "I'm the label of the statement declaration",
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.STATEMENT,
-	},
-];
-
-const declarationsVtl = [
-	{
-		id: '1',
-		label: '"I\'m the label of the instruction declaration"',
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.INSTRUCTION,
-	},
-	{
-		id: '2',
-		label: '"I\'m the label of the comment declaration"',
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.COMMENT,
-	},
-	{
-		id: '3',
-		label: '"I\'m the label of the help declaration"',
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.HELP,
-	},
-	{
-		id: '4',
-		label: '"I\'m the label of the warning declaration"',
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.WARNING,
-	},
-	{
-		id: '5',
-		label: '"I\'m the label of the message filter declaration"',
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.MESSAGE_FILTER,
-	},
-	{
-		id: '6',
-		label: '"I\'m the label of the statement declaration"',
-		position: C.BEFORE_QUESTION_TEXT,
-		declarationType: C.STATEMENT,
-	},
-];

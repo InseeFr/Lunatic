@@ -1,5 +1,3 @@
-import getSafetyExpression from './get-safety-expression';
-
 function createRefreshCalculated({ variables, execute, bindings }) {
 	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.
 
@@ -29,7 +27,7 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 					}
 				}
 
-				const value = execute(getSafetyExpression(expression), {
+				const value = execute(expression, {
 					logging,
 					iteration: shapeFrom ? iteration : undefined,
 				});

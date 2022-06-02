@@ -1,5 +1,4 @@
 import { getComponentsFromState } from '../../commons';
-import getSafetyExpression from '../../commons/execute-expression/get-safety-expression';
 
 // export const CRITICALITY = {
 // 	INFO: 'INFO',
@@ -12,7 +11,7 @@ function resolveControl(state, control) {
 	const { criticality, errorMessage, id } = control;
 	const { control: { value = 'true' } = {} } = control;
 	try {
-		const result = executeExpression(getSafetyExpression(value), { iteration });
+		const result = executeExpression(value, { iteration });
 		if (!result) {
 			return { criticality, errorMessage, id };
 		}
