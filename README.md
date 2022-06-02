@@ -14,6 +14,8 @@ The documentation can be found in the [docs](https://github.com/InseeFr/Lunatic/
 
 [Storybook](https://inseefr.github.io/Lunatic/storybook) is also available online.
 
+[Storybook of the future major release](https://inseefr.github.io/Lunatic/storybook-v2) under construction is also available online.
+
 ## Usage
 
 An [example](https://github.com/InseeFr/Lunatic/tree/master/example/orchestrator) of use of Lunatic is available. This simple orchestrator is deployed [online](https://inseefr.github.io/Lunatic/orchestrator).
