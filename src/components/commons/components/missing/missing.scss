@@ -1,0 +1,30 @@
+.lunatic-component {
+	.missing-buttons {
+		margin-top: 1em;
+		.button-lunatic {
+			width: 4em;
+			font-size: 1em;
+			font-weight: normal;
+		}
+		.missing-button {
+			.button-lunatic {
+				background-color: var(--color-very-very-light);
+				color: var(--color-primary-dark);
+				&:hover {
+					background-color: white;
+					color: var(--color-primary-main);
+				}
+			}
+		}
+		.missing-button-active {
+			.button-lunatic {
+				background-color: var(--color-primary-dark);
+				color: var(--color-very-very-light);
+				&:hover {
+					background-color: var(--color-primary-main);
+					color: white;
+				}
+			}
+		}
+	}
+}

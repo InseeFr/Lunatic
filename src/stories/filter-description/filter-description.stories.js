@@ -20,7 +20,11 @@ const data = {
 			id: 'j6p6my1d',
 			componentType: 'FilterDescription',
 			filterDescription: true,
-			label: 'If you are not ready, please go to the end of the questionnaire',
+			label: {
+				value:
+					'If you are not ready, please go to the end of the questionnaire',
+				type: 'VTL|MD',
+			},
 		},
 	],
 };
@@ -33,8 +37,11 @@ const dataProps = {
 			id: 'j6p6my1d',
 			componentType: 'FilterDescription',
 			filterDescription: true,
-			label:
-				'"If you are not ready, please go to the end of the questionnaire: " || TITLE',
+			label: {
+				value:
+					'"If you are not ready, please go to the end of the questionnaire: " || TITLE',
+				type: 'VTL|MD',
+			},
 		},
 	],
 };
@@ -42,10 +49,6 @@ const dataProps = {
 stories.addWithJSX('Props', () => (
 	<Orchestrator
 		source={dataProps}
-		label={text(
-			'Label',
-			'"If you are not ready, please go to the end of the questionnaire: " || TITLE'
-		)}
 		filterDescription={boolean('Filter description', true)}
 		features={select('Features', featuresOptions, ['VTL', 'MD'])}
 		bindings={object('Bindings', { TITLE: 'Title' })}

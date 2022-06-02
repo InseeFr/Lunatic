@@ -1,8 +1,7 @@
 import React from 'react';
 import RadioGroup from './radio-group';
-
-import './radio.scss';
 import { createLunaticComponent } from '../commons';
+import './radio.scss';
 
 function LunaticRadioGroup(props) {
 	const { id, options, value, onChange, checkboxStyle, custom } = props;

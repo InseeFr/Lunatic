@@ -27,10 +27,10 @@ function createMemoizer() {
 
 	function getMemoizedValue(expression, bindings) {
 		let map = expresionsMap.get(expression);
+
 		if (map) {
 			const refill = refillBindings(bindings);
 			const hash = objectHash(refill);
-
 			return map.get(hash);
 		}
 		return undefined;

@@ -7,6 +7,8 @@ const INITIAL_STATE = {
 	features: ['VTL'],
 	preferences: ['COLLECTED'],
 	savingType: 'COLLECTED',
+	cleaning: {},
+	missingBlock: {},
 	pager: {
 		page: undefined,
 		maxPage: undefined,
