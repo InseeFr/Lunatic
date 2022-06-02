@@ -2,22 +2,46 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Orchestrator from '../utils/orchestrator';
 import { titleDecorator } from '../utils';
-import cleaning from './cleaning';
+import simpsons from './simpsons';
+import logement from './logement';
 import { boolean } from '@storybook/addon-knobs/react';
 
-const stories = storiesOf('Behavior', module).addDecorator((Component) => {
-	const WrappedComponent = titleDecorator(Component);
-	return <WrappedComponent title="Cleaning behaviour" />;
-});
+const storiesSimpsons = storiesOf('Behavior/Simpsons', module).addDecorator(
+	(Component) => {
+		const WrappedComponent = titleDecorator(Component);
+		return <WrappedComponent title="Demonstrate behaviours" />;
+	}
+);
 
-stories.addWithJSX('Cleaning', () => (
-	<Orchestrator id="cleaning" source={cleaning} pagination />
+storiesSimpsons.addWithJSX('Cleaning', () => (
+	<Orchestrator id="cleaning" source={simpsons} pagination />
 ));
 
-stories.addWithJSX('Missing', () => (
+storiesSimpsons.addWithJSX('Missing', () => (
 	<Orchestrator
 		id="cleaning"
-		source={cleaning}
+		source={simpsons}
+		pagination
+		missing={boolean('Missing', true)}
+		activeGoNextForMissing={boolean('Active go next for missing', true)}
+	/>
+));
+
+const storiesLogement = storiesOf('Behavior/Logement', module).addDecorator(
+	(Component) => {
+		const WrappedComponent = titleDecorator(Component);
+		return <WrappedComponent title="Demonstrate behaviours" />;
+	}
+);
+
+storiesLogement.addWithJSX('Cleaning', () => (
+	<Orchestrator id="cleaning" source={logement} pagination />
+));
+
+storiesLogement.addWithJSX('Missing', () => (
+	<Orchestrator
+		id="cleaning"
+		source={logement}
 		pagination
 		missing={boolean('Missing', true)}
 		activeGoNextForMissing={boolean('Active go next for missing', true)}
