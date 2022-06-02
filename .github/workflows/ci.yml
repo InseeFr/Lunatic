@@ -104,15 +104,42 @@ jobs:
           name: deploy
           path: deploy/
 
+  build-assets-v2:
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/v2-master'
+    runs-on: ubuntu-latest
+    needs: sonarcloud
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: v2-master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - run: yarn
+      # Build Storybook v2
+      - run: yarn build-storybook
+      - run: mkdir -p deploy/storybook
+      - run: cp -R ./built-storybook/storybook/. ./deploy/storybook-v2
+      - name: Upload deploy artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: deploy-v2
+          path: deploy-v2/
+
   deploy:
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/v2-master'
     runs-on: ubuntu-latest
-    needs: build-assets
+    needs: [build-assets, build-assets-v2]
     steps:
       - name: Download deploy artifact
         uses: actions/download-artifact@v2
         with:
           name: deploy
+      - name: Download deploy-v2 artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: deploy-v2
+      - run: cp -R ./deploy-v2/. ./deploy
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
