@@ -4,6 +4,7 @@ import Orchestrator from '../utils/orchestrator';
 import { titleDecorator } from '../utils';
 import simpsons from './simpsons';
 import logement from './logement';
+import dataLogement from './data-logement';
 import { boolean } from '@storybook/addon-knobs/react';
 
 const storiesSimpsons = storiesOf('Behavior/Simpsons', module).addDecorator(
@@ -42,6 +43,7 @@ storiesLogement.addWithJSX('Missing', () => (
 	<Orchestrator
 		id="cleaning"
 		source={logement}
+		data={dataLogement}
 		pagination
 		missing={boolean('Missing', true)}
 		activeGoNextForMissing={boolean('Active go next for missing', true)}
