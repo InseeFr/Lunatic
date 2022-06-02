@@ -1,6 +1,7 @@
 import reduceVariablesArray from './reduce-variables-array';
 import reduceVariablesSimple from './reduce-variables-simple';
 import { getCompatibleVTLExpression } from '../../commons';
+import { COLLECTED } from 'utils/constants';
 
 function isOnSubPage(pager) {
 	const { subPage } = pager;
@@ -109,9 +110,11 @@ function cleaning(state, action) {
 					{ iteration }
 				);
 				if (!isCleaning && key in variables) {
-					const variable = variables[key];
-					updateBindings(key, null);
-					return { ...step, [key]: { ...variable, value: null } };
+					const variableRoot = variables[key];
+					const { variable } = variableRoot;
+					const initialValue = variable?.values[COLLECTED] || null;
+					updateBindings(key, initialValue);
+					return { ...step, [key]: { ...variableRoot, value: initialValue } };
 				}
 				return step;
 			},
