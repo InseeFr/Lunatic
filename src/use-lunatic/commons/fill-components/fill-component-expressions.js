@@ -22,20 +22,12 @@ function createCrawl({ executeExpression, iteration }) {
 	 */
 	function executeAndFillObject(object, path) {
 		const candidate = object[path];
-
-		if (typeof candidate === 'object') {
-			const { type } = candidate;
-			if (type === 'VTL|MD') {
-				return {
-					...object,
-					[path]: executeExpression(candidate, {
-						iteration,
-					}),
-				};
-			}
-		}
-
-		return object;
+		return {
+			...object,
+			[path]: executeExpression(candidate, {
+				iteration,
+			}),
+		};
 	}
 
 	/**

@@ -1,4 +1,5 @@
 import executeExpression from './execute-expression';
+import getSafetyExpression from './get-safety-expression';
 import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
@@ -142,7 +143,9 @@ function createExecuteExpression(variables, features) {
 	 * @returns
 	 */
 	function execute(expObject, args) {
-		const { value: expression } = validateExpression(expObject);
+		const { value: expression } = validateExpression(
+			getSafetyExpression(expObject)
+		);
 		const { iteration, logging } = args;
 		const bindingDependencies = getVariablesAndCach(expression);
 
