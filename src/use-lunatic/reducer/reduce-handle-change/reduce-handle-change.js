@@ -57,6 +57,18 @@ function updateBindings(state, action) {
 	return state;
 }
 
+function buildMissingValue(state, oldValue) {
+	const {
+		pager: { iteration },
+	} = state;
+	// Root question
+	if (iteration === undefined) return null;
+	// Loop question
+	const newValue = [...oldValue];
+	newValue[iteration] = null;
+	return newValue;
+}
+
 function missing(state, action) {
 	const {
 		payload: {
@@ -70,7 +82,8 @@ function missing(state, action) {
 		const delta = toClean.reduce((acc, variableName) => {
 			const { value, ...rest } = variables[variableName];
 			updateBindings(variableName, null);
-			return { ...acc, [variableName]: { ...rest, value: null } };
+			const newValue = buildMissingValue(state, value);
+			return { ...acc, [variableName]: { ...rest, value: newValue } };
 		}, {});
 		return { ...state, variables: { ...variables, ...delta } };
 	}
