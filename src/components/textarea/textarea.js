@@ -3,6 +3,10 @@ import { createCustomizableLunaticField } from '../commons';
 import classnames from 'classnames';
 import './textarea.scss';
 
+function checkValue(value) {
+	return value || '';
+}
+
 function Textarea({
 	id,
 	rows,
@@ -28,7 +32,7 @@ function Textarea({
 			maxLength={maxLength}
 			cols={cols}
 			onChange={handleChange}
-			value={value}
+			value={checkValue(value)}
 			placeholder={placeholder}
 		/>
 	);
