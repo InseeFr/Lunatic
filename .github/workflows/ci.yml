@@ -104,7 +104,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: deploy
-      - run: cp -R ./deploy/. ./
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
@@ -147,7 +146,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: deploy-v2
-      - run: cp -R ./deploy-v2/. ./
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
