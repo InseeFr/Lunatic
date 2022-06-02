@@ -60,6 +60,19 @@ function createExecuteExpression(variables, features) {
 	/**
 	 *
 	 * @param {*} name
+	 */
+	function pushToLazy(name) {
+		const { CalculatedLinked = [] } = variables[name];
+
+		CalculatedLinked.forEach(function (variable) {
+			const { name } = variable;
+			setToRefreshCalculated(name, variable);
+		});
+	}
+
+	/**
+	 *
+	 * @param {*} name
 	 * @param {*} value
 	 */
 	function updateBindings(name, value) {
@@ -68,13 +81,7 @@ function createExecuteExpression(variables, features) {
 			bindings[name] = value;
 			collectedUpdated.set(name, []);
 		}
-		// enrichissement des variables à rafraîchir
-		const { CalculatedLinked = [] } = variables[name];
-
-		CalculatedLinked.forEach(function (variable) {
-			const { name } = variable;
-			setToRefreshCalculated(name, variable);
-		});
+		pushToLazy(name);
 	}
 
 	function getVariablesAndCach(expression) {
@@ -119,6 +126,7 @@ function createExecuteExpression(variables, features) {
 	function resolveUseContext(name, { iteration }) {
 		const value = bindings[name];
 		if (iteration !== undefined && Array.isArray(value)) {
+			pushToLazy(name);
 			if (iteration < value.length) {
 				return value[iteration];
 			}

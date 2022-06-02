@@ -1,12 +1,18 @@
 function fillMissingResponse(component, state) {
 	const { missingResponse } = component;
-	const { variables } = state;
-
+	const {
+		variables,
+		pager: { iteration },
+	} = state;
 	if (missingResponse) {
 		const { name } = missingResponse;
 		if (name in variables) {
 			const { value } = variables[name];
-			return { ...component, missingResponse: { ...missingResponse, value } };
+			const missingValue = iteration === undefined ? value : value[iteration];
+			return {
+				...component,
+				missingResponse: { ...missingResponse, value: missingValue },
+			};
 		}
 	}
 

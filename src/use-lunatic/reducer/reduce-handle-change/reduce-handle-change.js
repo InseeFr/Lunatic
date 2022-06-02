@@ -1,6 +1,7 @@
 import reduceVariablesArray from './reduce-variables-array';
 import reduceVariablesSimple from './reduce-variables-simple';
 import { getCompatibleVTLExpression } from '../../commons';
+import { COLLECTED } from 'utils/constants';
 
 function isOnSubPage(pager) {
 	const { subPage } = pager;
@@ -57,6 +58,18 @@ function updateBindings(state, action) {
 	return state;
 }
 
+function buildMissingValue(state, oldValue) {
+	const {
+		pager: { iteration },
+	} = state;
+	// Root question
+	if (iteration === undefined) return null;
+	// Loop question
+	const newValue = [...oldValue];
+	newValue[iteration] = null;
+	return newValue;
+}
+
 function missing(state, action) {
 	const {
 		payload: {
@@ -70,7 +83,8 @@ function missing(state, action) {
 		const delta = toClean.reduce((acc, variableName) => {
 			const { value, ...rest } = variables[variableName];
 			updateBindings(variableName, null);
-			return { ...acc, [variableName]: { ...rest, value: null } };
+			const newValue = buildMissingValue(state, value);
+			return { ...acc, [variableName]: { ...rest, value: newValue } };
 		}, {});
 		return { ...state, variables: { ...variables, ...delta } };
 	}
@@ -96,9 +110,11 @@ function cleaning(state, action) {
 					{ iteration }
 				);
 				if (!isCleaning && key in variables) {
-					const variable = variables[key];
-					updateBindings(key, null);
-					return { ...step, [key]: { ...variable, value: null } };
+					const variableRoot = variables[key];
+					const { variable } = variableRoot;
+					const initialValue = variable?.values[COLLECTED] || null;
+					updateBindings(key, initialValue);
+					return { ...step, [key]: { ...variableRoot, value: initialValue } };
 				}
 				return step;
 			},
