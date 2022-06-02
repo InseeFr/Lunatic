@@ -7,7 +7,7 @@ jobs:
     name: Test & build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v1
         with:
           node-version: 15
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: test-build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Download coverage artifact
@@ -45,7 +45,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: sonarcloud
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: master
       - uses: actions/setup-node@v1
         with:
           node-version: 15
@@ -95,12 +97,59 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-assets
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: gh-pages
       - name: Download deploy artifact
         uses: actions/download-artifact@v2
         with:
           name: deploy
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Commit & Push changes
+        uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          author_name: 'Github action'
+          message: 'Update master assets'
+          branch: 'gh-pages'
+
+  build-assets-v2:
+    if: github.ref == 'refs/heads/v2-master'
+    runs-on: ubuntu-latest
+    needs: sonarcloud
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: v2-master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - run: yarn
+      # Build Storybook v2
+      - run: yarn build-storybook
+      - run: mkdir -p deploy-v2/storybook-v2
+      - run: cp -R ./built-storybook/storybook/. ./deploy-v2/storybook-v2
+      - name: Upload deploy artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: deploy-v2
+          path: deploy-v2/
+
+  deploy-v2:
+    if: github.ref == 'refs/heads/v2-master'
+    runs-on: ubuntu-latest
+    needs: build-assets-v2
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+      - name: Download deploy artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: deploy-v2
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          author_name: 'Github action'
+          message: 'Update v2-master assets'
+          branch: 'gh-pages'
