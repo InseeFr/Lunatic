@@ -118,8 +118,8 @@ jobs:
       - run: yarn
       # Build Storybook v2
       - run: yarn build-storybook
-      - run: mkdir -p deploy/storybook
-      - run: cp -R ./built-storybook/storybook/. ./deploy/storybook-v2
+      - run: mkdir -p deploy-v2/storybook-v2
+      - run: cp -R ./built-storybook/storybook/. ./deploy-v2/storybook-v2
       - name: Upload deploy artifact
         uses: actions/upload-artifact@v2
         with:
