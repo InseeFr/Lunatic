@@ -1,45 +1,14 @@
 import React from 'react';
 
-// const FilterDescription = ({
-// 	id,
-// 	label,
-// 	filterDescription,
-// 	features,
-// 	bindings,
-// 	style,
-// 	logFunction,
-// }) =>
-// 	filterDescription ? (
-// 		<div
-// 			id={`filter-description-${id}`}
-// 			aria-label={`filter-description`}
-// 			className="filter-description-lunatic"
-// 			style={buildStyleObject(style)}
-// 		>
-// 			{interpret(features, logFunction)(bindings)(label)}
-// 		</div>
-// 	) : null;
-
-// FilterDescription.defaultProps = {
-// 	filterDescription: false,
-// 	features: [],
-// 	bindings: {},
-// 	style: {},
-// };
-
-// FilterDescription.propTypes = {
-// 	id: PropTypes.string.isRequired,
-// 	label: PropTypes.string.isRequired,
-// 	filterDescription: PropTypes.bool,
-// 	features: PropTypes.arrayOf(PropTypes.string),
-// 	bindings: PropTypes.object,
-// 	style: PropTypes.object,
-// };
-
-// export default FilterDescription;
-
-function FilterDescription() {
-	return <>Filter</>;
-}
+const FilterDescription = ({ id, label, filterDescription }) =>
+	filterDescription ? (
+		<div
+			id={`filter-description-${id}`}
+			aria-label={`filter-description`}
+			className="filter-description-lunatic"
+		>
+			{label}
+		</div>
+	) : null;
 
 export default FilterDescription;

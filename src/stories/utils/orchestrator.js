@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo } from 'react';
 import * as lunatic from 'components';
 import './custom-lunatic.scss';
 import Waiting from './waiting';
@@ -50,6 +50,7 @@ function OrchestratorForStories({
 	addExternal,
 	preferences,
 	custom,
+	filterDescription = true,
 	...rest
 }) {
 	const { maxPage } = source;
@@ -96,6 +97,7 @@ function OrchestratorForStories({
 								missing={missing}
 								shortcut={shortcut}
 								custom={custom}
+								filterDescription={filterDescription}
 							/>
 						</div>
 					);
