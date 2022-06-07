@@ -9,6 +9,7 @@ const INITIAL_STATE = {
 	savingType: 'COLLECTED',
 	cleaning: {},
 	missingBlock: {},
+	resizing: {},
 	pager: {
 		page: undefined,
 		maxPage: undefined,

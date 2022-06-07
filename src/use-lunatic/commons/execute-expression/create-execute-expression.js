@@ -150,7 +150,7 @@ function createExecuteExpression(variables, features) {
 	 * @param {*} args
 	 * @returns
 	 */
-	function execute(expObject, args) {
+	function execute(expObject, args = {}) {
 		const { value: expression } = validateExpression(
 			getSafetyExpression(expObject)
 		);

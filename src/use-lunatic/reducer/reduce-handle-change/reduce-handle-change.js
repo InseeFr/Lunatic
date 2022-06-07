@@ -1,6 +1,7 @@
 import reduceVariablesArray from './reduce-variables-array';
 import reduceVariablesSimple from './reduce-variables-simple';
 import { getCompatibleVTLExpression } from '../../commons';
+import resizeArrayVariable from '../commons/resize-array-variable';
 import { COLLECTED } from 'utils/constants';
 
 function isOnSubPage(pager) {
@@ -68,6 +69,31 @@ function buildMissingValue(state, oldValue) {
 	const newValue = [...oldValue];
 	newValue[iteration] = null;
 	return newValue;
+}
+
+function resizing(state, action) {
+	const {
+		payload: {
+			response: { name },
+		},
+	} = action;
+	const { resizing, variables, updateBindings } = state;
+	if (name in resizing) {
+		const { size, variables: variableArray } = resizing[name];
+		const { executeExpression } = state;
+		const sizeValue = executeExpression(getCompatibleVTLExpression(size));
+		const newArray = variableArray.reduce((acc, v) => {
+			const { value } = variables[v];
+			const newValue = resizeArrayVariable(value, sizeValue);
+			updateBindings(v, newValue);
+			return {
+				...acc,
+				[v]: { ...variables[v], value: newValue },
+			};
+		}, {});
+		return { ...state, variables: { ...variables, ...newArray } };
+	}
+	return state;
 }
 
 function missing(state, action) {
@@ -139,8 +165,11 @@ function cleaning(state, action) {
  * @returns
  */
 function reduceHandleChange(state, action) {
-	return missing(
-		cleaning(updateBindings(updateVariables(state, action), action), action),
+	return resizing(
+		missing(
+			cleaning(updateBindings(updateVariables(state, action), action), action),
+			action
+		),
 		action
 	);
 }
