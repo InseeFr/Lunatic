@@ -6,11 +6,14 @@ function safetyLabel(label, idComponent) {
 	) {
 		return label;
 	}
-	if (typeof label === 'function') {
+	if (typeof label === 'object') {
 		const { value, type } = label;
 		if (typeof value === 'string' && type === 'VTL') {
 			return label;
 		}
+	}
+	if (typeof label === 'function') {
+		return label;
 	}
 
 	return ``;

@@ -7,7 +7,7 @@ import createRefreshCalculated from './create-refresh-calculated';
 function validateExpression(expObject) {
 	if (typeof expObject === 'object') {
 		const { type } = expObject;
-		if (type === 'VTL') {
+		if (type === 'VTL' || type === 'VTL|MD') {
 			return expObject;
 		}
 	}
@@ -151,7 +151,7 @@ function createExecuteExpression(variables, features) {
 	 * @returns
 	 */
 	function execute(expObject, args = {}) {
-		const { value: expression } = validateExpression(
+		const { value: expression, type } = validateExpression(
 			getSafetyExpression(expObject)
 		);
 		const { iteration, logging } = args;
@@ -176,6 +176,7 @@ function createExecuteExpression(variables, features) {
 			const result = executeExpression(
 				vtlBindings,
 				expression,
+				type,
 				features,
 				logging || loggingDefault
 			);

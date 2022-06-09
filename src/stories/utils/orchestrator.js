@@ -28,7 +28,7 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 }
 
 const DEFAULT_DATA = {};
-const DEFAULT_FEATURES = ['VTL'];
+const DEFAULT_FEATURES = ['VTL', 'MD'];
 
 function onLogChange(response, value, args) {
 	console.log('onChange', { response, value, args });
