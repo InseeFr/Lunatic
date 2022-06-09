@@ -7,7 +7,7 @@ import createRefreshCalculated from './create-refresh-calculated';
 function validateExpression(expObject) {
 	if (typeof expObject === 'object') {
 		const { type } = expObject;
-		if (type === 'VTL|MD') {
+		if (type === 'VTL') {
 			return expObject;
 		}
 	}

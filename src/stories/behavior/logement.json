@@ -3771,7 +3771,7 @@
 					"value": "1",
 					"label": {
 						"value": "[Résidence \"autonomie\"](. \"Établissement médico-social géré par un centre communal d’action sociale (CCAS) ou par une association par exemple\")",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				},
 

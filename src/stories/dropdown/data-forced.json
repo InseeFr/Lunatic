@@ -6,7 +6,7 @@
 			"mandatory": false,
 			"label": {
 				"value": "\"In which state do The \" || NAME || \" reside?\"",
-				"type": "VTL|MD"
+				"type": "VTL"
 			},
 			"response": {
 				"name": "STATE"
@@ -36,7 +36,7 @@
 			"mandatory": false,
 			"label": {
 				"value": "\"In which state do The \" || NAME || \" reside?\"",
-				"type": "VTL|MD"
+				"type": "VTL"
 			},
 			"response": {
 				"name": "STATE2"

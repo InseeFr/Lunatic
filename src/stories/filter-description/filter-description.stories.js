@@ -23,7 +23,7 @@ const data = {
 			label: {
 				value:
 					'If you are not ready, please go to the end of the questionnaire',
-				type: 'VTL|MD',
+				type: 'VTL',
 			},
 		},
 	],
@@ -40,7 +40,7 @@ const dataProps = {
 			label: {
 				value:
 					'"If you are not ready, please go to the end of the questionnaire: " || TITLE',
-				type: 'VTL|MD',
+				type: 'VTL',
 			},
 		},
 	],

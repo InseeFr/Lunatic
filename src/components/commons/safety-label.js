@@ -8,7 +8,7 @@ function safetyLabel(label, idComponent) {
 	}
 	if (typeof label === 'function') {
 		const { value, type } = label;
-		if (typeof value === 'string' && type === 'VTL|MD') {
+		if (typeof value === 'string' && type === 'VTL') {
 			return label;
 		}
 	}
