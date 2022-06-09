@@ -1,12 +1,14 @@
+import { COLLECTED, VTL } from 'utils/constants';
+
 const INITIAL_STATE = {
 	variables: {}, // map des variables du questionnaires
 	pages: {},
 	isInLoop: false,
 	isFirstPage: false,
 	isLastPage: false,
-	features: ['VTL'],
-	preferences: ['COLLECTED'],
-	savingType: 'COLLECTED',
+	features: [VTL],
+	preferences: [COLLECTED],
+	savingType: COLLECTED,
 	cleaning: {},
 	missingBlock: {},
 	resizing: {},

@@ -1,6 +1,7 @@
 import React from 'react';
 import { interpret } from '@inseefr/trevas';
 import MdLabel from 'components/commons/components/md-label';
+import { VTL, MD } from 'utils/constants';
 
 function isDataSet(result) {
 	return result && typeof result === 'object' && result.dataPoints;
@@ -56,9 +57,9 @@ function executeExpression(
 	features /* VTL, MD */,
 	logging = loggingDefault
 ) {
-	if (features.includes('VTL') && type.includes('VTL')) {
+	if (features.includes(VTL) && type.includes(VTL)) {
 		const vtl = executeVTL(expression, vtlBindings, logging);
-		if (features.includes('MD') && type.includes('MD'))
+		if (features.includes(MD) && type.includes(MD))
 			return <MdLabel expression={vtl} />;
 		return vtl;
 	}

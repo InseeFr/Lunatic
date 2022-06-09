@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import IDBSuggester from './idb-suggester';
 import { createLunaticComponent } from '../commons';
 import * as commonPropTypes from '../commons/prop-types';
+import { COLLECTED } from 'utils/constants';
 
 function LunaticSuggester(props) {
 	const {
@@ -38,7 +39,7 @@ function LunaticSuggester(props) {
 
 LunaticSuggester.defaultProps = {
 	label: '',
-	preferences: ['COLLECTED'],
+	preferences: [COLLECTED],
 	response: {},
 	disabled: false,
 	focused: false,

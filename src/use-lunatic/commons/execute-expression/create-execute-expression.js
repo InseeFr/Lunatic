@@ -3,11 +3,12 @@ import getSafetyExpression from './get-safety-expression';
 import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
+import { VTL, VTL_MD } from 'utils/constants';
 
 function validateExpression(expObject) {
 	if (typeof expObject === 'object') {
 		const { type } = expObject;
-		if (type === 'VTL' || type === 'VTL|MD') {
+		if (type === VTL || type === VTL_MD) {
 			return expObject;
 		}
 	}

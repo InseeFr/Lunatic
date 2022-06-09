@@ -4,6 +4,7 @@ import {
 	isFirstLastPage,
 	createExecuteExpression,
 } from '../commons';
+import { COLLECTED } from 'utils/constants';
 
 /* à bouger d'ici */
 
@@ -163,7 +164,7 @@ function reduceOnInit(state, action) {
 			executeExpression,
 			updateBindings,
 			handleChange,
-			preferences: preferences || ['COLLECTED'],
+			preferences: preferences || [COLLECTED],
 		});
 	}
 
