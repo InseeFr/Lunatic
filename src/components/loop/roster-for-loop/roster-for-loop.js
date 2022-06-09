@@ -6,6 +6,7 @@ import {
 } from '../../declarations';
 import RosterTable from './roster-table';
 import AddRowButton from './add-row-button';
+import D from 'i18n';
 
 const DEFAULT_MAX_ROWS = 12;
 
@@ -80,7 +81,7 @@ function RosterforLoop({
 				/>
 				<DeclarationsDetachable declarations={declarations} custom={custom} />
 				<AddRowButton onClick={addRow} disabled={disabled} custom={custom}>
-					{label || 'Add Row!'}
+					{label || D.DEFAULT_BUTTON_ADD}
 				</AddRowButton>
 			</>
 		);
