@@ -1,6 +1,5 @@
 export { default as Button } from './button';
 export * from './checkbox';
-export * as ICONS from './icons';
 export { default as Datepicker } from './datepicker';
 export { default as Switch } from './switch';
 export { default as Declarations } from './declarations';

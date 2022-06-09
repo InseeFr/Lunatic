@@ -6,7 +6,7 @@ import { Tools, ActionTool } from './tools';
 import { IsNetwork } from '../commons/components/is-network';
 import WidgetContainer from './widget-container';
 import Dragger from '../commons/components/dragger';
-import { OnDragIcon } from '../icons';
+import { OnDragIcon } from 'components/commons/icons';
 import './widget.scss';
 
 function empty() {}
