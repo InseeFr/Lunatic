@@ -3,24 +3,19 @@ import useOnHandleChange from '../../use-on-handle-change';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import Button from '../../../button';
 import { DK, RF } from 'utils/constants';
+import D from 'i18n';
 import './missing.scss';
 
 const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
 const Missing = (props) => {
 	const {
-		dontKnowButton = "Don't know",
-		refusedButton = 'Refused',
+		dontKnowButton = D.DK,
+		refusedButton = D.RF,
 		missingResponse,
 		handleChange,
-		preferences,
 		missingStrategy,
 		missingShortcut = DEFAULT_SHORTCUT,
-		response,
-		responses,
-		cells,
-		components,
-		savingType,
 		shortcut,
 		componentType,
 		paginatedLoop,
@@ -33,8 +28,18 @@ const Missing = (props) => {
 		value,
 	});
 
-	const onClickDK = useCallback(() => onClick(DK), [onClick]);
-	const onClickRF = useCallback(() => onClick(RF), [onClick]);
+	const handleMissingStrategy = useCallback(() => {
+		if (missingStrategy) missingStrategy();
+	}, [missingStrategy]);
+
+	const onClickDK = useCallback(() => {
+		onClick(DK);
+		handleMissingStrategy();
+	}, [onClick, handleMissingStrategy]);
+	const onClickRF = useCallback(() => {
+		onClick(RF);
+		handleMissingStrategy();
+	}, [onClick, handleMissingStrategy]);
 
 	if ((componentType === 'Loop' && paginatedLoop) || !missingResponse)
 		return null;

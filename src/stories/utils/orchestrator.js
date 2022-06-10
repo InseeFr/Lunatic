@@ -95,6 +95,7 @@ function OrchestratorForStories({
 								{...component}
 								{...storeInfo}
 								missing={missing}
+								missingStrategy={goNextPage}
 								shortcut={shortcut}
 								custom={custom}
 								filterDescription={filterDescription}

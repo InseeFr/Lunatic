@@ -15,19 +15,21 @@ function goStartLoop(state, { previous, iterations, loopDependencies }) {
 	const { pages, pager, executeExpression } = state;
 	const { subPages } = pages[previous];
 
-	if (validateLoopConditionFilter(state, { next: previous })) {
-		return {
-			...state,
-			pager: {
-				...pager,
-				page: previous,
-				subPage: undefined,
-				nbSubPages: undefined,
-				iteration: undefined,
-				nbIterations: undefined,
-			},
-		};
-	}
+	//TODO: check if loop components are all filtered
+
+	// if (validateLoopConditionFilter(state, { next: previous })) {
+	// 	return {
+	// 		...state,
+	// 		pager: {
+	// 			...pager,
+	// 			page: previous,
+	// 			subPage: undefined,
+	// 			nbSubPages: undefined,
+	// 			iteration: undefined,
+	// 			nbIterations: undefined,
+	// 		},
+	// 	};
+	// }
 
 	if (Array.isArray(subPages)) {
 		const nbIterations = executeExpression(

@@ -33556,7 +33556,7 @@
 	},
 	"resizing": {
 		"NBHAB": {
-			"size": "cast(if (nvl(NBHAB,\"\")=\"\") then 1 else cast(NBHAB,integer),integer)",
+			"size": "cast(NHAB,integer)",
 			"variables": [
 				"G_PRENOM",
 				"SEXE",
