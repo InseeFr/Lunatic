@@ -1,7 +1,8 @@
 import reduceVariablesArray from './reduce-variables-array';
 import reduceVariablesSimple from './reduce-variables-simple';
-import { getCompatibleVTLExpression } from '../../commons';
-import { COLLECTED } from 'utils/constants';
+import reduceCleaning from './reduce-cleaning';
+import reduceMissing from './reduce-missing';
+import reduceResizing from './reduce-resizing';
 
 function isOnSubPage(pager) {
 	const { subPage } = pager;
@@ -58,80 +59,6 @@ function updateBindings(state, action) {
 	return state;
 }
 
-function buildMissingValue(state, oldValue) {
-	const {
-		pager: { iteration },
-	} = state;
-	// Root question
-	if (iteration === undefined) return null;
-	// Loop question
-	const newValue = [...oldValue];
-	newValue[iteration] = null;
-	return newValue;
-}
-
-function missing(state, action) {
-	const {
-		payload: {
-			response: { name },
-		},
-	} = action;
-	const { missingBlock } = state;
-	if (name in missingBlock) {
-		const { variables, updateBindings } = state;
-		const toClean = missingBlock[name];
-		const delta = toClean.reduce((acc, variableName) => {
-			const { value, ...rest } = variables[variableName];
-			updateBindings(variableName, null);
-			const newValue = buildMissingValue(state, value);
-			return { ...acc, [variableName]: { ...rest, value: newValue } };
-		}, {});
-		return { ...state, variables: { ...variables, ...delta } };
-	}
-	return state;
-}
-
-function cleaning(state, action) {
-	const { payload } = action;
-	const { response } = payload;
-	const { executeExpression, cleaning, updateBindings, variables, pager } =
-		state;
-	const { iteration } = pager;
-	if (response) {
-		const { name } = response;
-		if (name in cleaning) {
-			const expressions = cleaning[name];
-			const delta = Object.entries(expressions).reduce(function (
-				step,
-				[key, expression]
-			) {
-				const isCleaning = executeExpression(
-					getCompatibleVTLExpression(expression),
-					{ iteration }
-				);
-				if (!isCleaning && key in variables) {
-					const variableRoot = variables[key];
-					const { variable } = variableRoot;
-					const initialValue = variable?.values[COLLECTED] || null;
-					updateBindings(key, initialValue);
-					return { ...step, [key]: { ...variableRoot, value: initialValue } };
-				}
-				return step;
-			},
-			{});
-
-			return {
-				...state,
-				variables: {
-					...variables,
-					...delta,
-				},
-			};
-		}
-	}
-	return state;
-}
-
 /**
  *
  * @param {*} state
@@ -139,8 +66,14 @@ function cleaning(state, action) {
  * @returns
  */
 function reduceHandleChange(state, action) {
-	return missing(
-		cleaning(updateBindings(updateVariables(state, action), action), action),
+	return reduceResizing(
+		reduceMissing(
+			reduceCleaning(
+				updateBindings(updateVariables(state, action), action),
+				action
+			),
+			action
+		),
 		action
 	);
 }

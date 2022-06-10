@@ -13,7 +13,7 @@ function InputNumber({
 	max,
 	step,
 }) {
-	const valueEffective = value ?? 0;
+	const valueEffective = value ?? '';
 	const handleChange = useCallback(
 		function (e) {
 			const val = e.target.value;

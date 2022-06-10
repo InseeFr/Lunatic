@@ -5,8 +5,7 @@ import {
 	getStoreCount,
 	clearStoreData,
 } from '../../utils/store-tools';
-import { CrossIcon } from '../icons';
-import { LoadIcon } from '../icons';
+import { CrossIcon, LoadIcon } from 'components/commons/icons';
 import Loader from './loader';
 
 function LoaderRow({

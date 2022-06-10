@@ -6,12 +6,12 @@ import {
 } from '../../declarations';
 import RosterTable from './roster-table';
 import AddRowButton from './add-row-button';
-import * as lunatic from 'components';
+import D from 'i18n';
 
 const DEFAULT_MAX_ROWS = 12;
 
 function getTableLength(value) {
-	return Object.entries(value).reduce(function (length, variable) {
+	return Object.values(value).reduce(function (length, variable) {
 		if (Array.isArray(variable)) {
 			return Math.max(length, variable.length);
 		}
@@ -65,7 +65,6 @@ function RosterforLoop({
 		return (
 			<>
 				<DeclarationsBeforeText declarations={declarations} custom={custom} />
-				<lunatic.Sequence label={label} custom={custom} />
 				<DeclarationsAfterText declarations={declarations} custom={custom} />
 				<RosterTable
 					id={id}
@@ -82,7 +81,7 @@ function RosterforLoop({
 				/>
 				<DeclarationsDetachable declarations={declarations} custom={custom} />
 				<AddRowButton onClick={addRow} disabled={disabled} custom={custom}>
-					Add Row!
+					{label || D.DEFAULT_BUTTON_ADD}
 				</AddRowButton>
 			</>
 		);

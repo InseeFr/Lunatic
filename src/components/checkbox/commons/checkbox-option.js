@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
-import { CheckboxChecked } from '../../icons';
-import { CheckboxUnchecked } from '../../icons';
+import { CheckboxChecked, CheckboxUnchecked } from 'components/commons/icons';
 
 function CheckboxOption({
 	disabled,

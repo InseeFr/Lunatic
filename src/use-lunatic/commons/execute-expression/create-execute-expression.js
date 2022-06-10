@@ -3,11 +3,12 @@ import getSafetyExpression from './get-safety-expression';
 import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
+import { VTL, VTL_MD } from 'utils/constants';
 
 function validateExpression(expObject) {
 	if (typeof expObject === 'object') {
 		const { type } = expObject;
-		if (type === 'VTL|MD') {
+		if (type === VTL || type === VTL_MD) {
 			return expObject;
 		}
 	}
@@ -150,8 +151,8 @@ function createExecuteExpression(variables, features) {
 	 * @param {*} args
 	 * @returns
 	 */
-	function execute(expObject, args) {
-		const { value: expression } = validateExpression(
+	function execute(expObject, args = {}) {
+		const { value: expression, type } = validateExpression(
 			getSafetyExpression(expObject)
 		);
 		const { iteration, logging } = args;
@@ -176,6 +177,7 @@ function createExecuteExpression(variables, features) {
 			const result = executeExpression(
 				vtlBindings,
 				expression,
+				type,
 				features,
 				logging || loggingDefault
 			);

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import * as lunatic from 'components';
+import * as lunatic from '../../components';
 import './custom-lunatic.scss';
 import Waiting from './waiting';
 
@@ -28,7 +28,7 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 }
 
 const DEFAULT_DATA = {};
-const DEFAULT_FEATURES = ['VTL'];
+const DEFAULT_FEATURES = ['VTL', 'MD'];
 
 function onLogChange(response, value, args) {
 	console.log('onChange', { response, value, args });

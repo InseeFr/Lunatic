@@ -5,7 +5,6 @@ import './radio.scss';
 
 function LunaticRadioGroup(props) {
 	const { id, options, value, onChange, checkboxStyle, custom } = props;
-
 	return (
 		<RadioGroup
 			id={id}

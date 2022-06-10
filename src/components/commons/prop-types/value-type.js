@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import * as C from 'utils/constants';
 
 export default PropTypes.oneOf([
-	'COLLECTED',
-	'PREVIOUS',
-	'FORCED',
-	'EDITED',
-	'INPUTED',
+	C.COLLECTED,
+	C.PREVIOUS,
+	C.FORCED,
+	C.EDITED,
+	C.INPUTED,
 ]);

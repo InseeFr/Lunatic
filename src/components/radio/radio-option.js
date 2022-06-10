@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import classnames from 'classnames';
-import { RadioChecked } from '../icons';
-import { RadioUnchecked } from '../icons';
-import { CheckboxChecked } from '../icons';
-import { CheckboxUnchecked } from '../icons';
+import {
+	RadioChecked,
+	RadioUnchecked,
+	CheckboxChecked,
+	CheckboxUnchecked,
+} from 'components/commons/icons';
 
 function getIcon(checked, checkboxStyle) {
 	if (checked) {
