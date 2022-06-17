@@ -3,17 +3,17 @@
 	"modele": "SIMPSONS",
 	"enoCoreVersion": "2.3.7",
 	"lunaticModelVersion": "2.2.13",
-	"generatingDate": "04-05-2022 18:14:42",
+	"generatingDate": "10-06-2022 15:41:12",
 	"missing": true,
 	"pagination": "question",
-	"maxPage": "37",
-	"label": { "value": "\"Questionnaire SIMPSONS 20201215\"", "type": "VTL" },
+	"maxPage": "39",
+	"label": { "value": "\"Questionnaire SIMPSONS 20201215\"", "type": "VTL|MD" },
 	"components": [
 		{
 			"id": "j6p0ti5h",
 			"componentType": "Sequence",
 			"page": "1",
-			"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" },
+			"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" },
 			"declarations": [
 				{
 					"id": "j6p0ti5h-d1",
@@ -21,7 +21,7 @@
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
 						"value": "\"We’re going to test your knowledge about the simpsons series. Welcome in the simpsons world !\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -30,7 +30,7 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				}
 			}
 		},
@@ -42,15 +42,15 @@
 			"page": "2",
 			"maxLength": 500,
 			"label": {
-				"value": "\"➡ 1. \" || \"Before starting, do you have any comments about the Simpsons family?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Before starting, do you have any comments about the Simpsons family?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "COMMENT_MISSING" },
@@ -64,8 +64,8 @@
 			"mandatory": false,
 			"page": "3",
 			"label": {
-				"value": "\"➡ 2. \" || \"If you agree to answer this questionnaire, please check the box\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"If you agree to answer this questionnaire, please check the box\"",
+				"type": "VTL|MD"
 			},
 			"declarations": [
 				{
@@ -74,7 +74,7 @@
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
 						"value": "\"If not, this is unfortunately the end of this questionnaire.\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -83,7 +83,7 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "READY_MISSING" },
@@ -95,17 +95,17 @@
 			"id": "j6p6my1d",
 			"componentType": "FilterDescription",
 			"page": "3",
-			"filterDescription": true,
+			"filterDescription": false,
 			"label": {
 				"value": "\"If you are not ready, please go to the end of the questionnaire\"",
-				"type": "VTL"
+				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"hierarchy": {
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				}
 			}
 		},
@@ -116,7 +116,7 @@
 			"goToPage": "4",
 			"label": {
 				"value": "\"General knowledge of the series\"",
-				"type": "VTL"
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -127,14 +127,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			}
@@ -147,8 +147,8 @@
 			"page": "4",
 			"maxLength": 30,
 			"label": {
-				"value": "\"➡ 3. \" || \"Who is the producer?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Who is the producer?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -159,14 +159,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -184,8 +184,8 @@
 			"max": 99,
 			"decimals": 0,
 			"label": {
-				"value": "\"➡ 4. \" || \"What is the current season number?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"What is the current season number?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -196,14 +196,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -220,8 +220,8 @@
 			"min": "1900-01-01",
 			"max": "format-date(current-date(),'[Y0001]-[M01]-[D01]')",
 			"label": {
-				"value": "\"➡ 5. \" || \"When was the first episode of Simpsons? (format YYYY-MM-DD)\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"When was the first episode of Simpsons? (format YYYY-MM-DD)\"",
+				"type": "VTL|MD"
 			},
 			"declarations": [
 				{
@@ -230,7 +230,7 @@
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
 						"value": "\"Please answer with YYYY-MM-DD format\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -243,14 +243,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -267,8 +267,8 @@
 			"page": "7",
 			"min": "1980-05",
 			"label": {
-				"value": "\"➡ 6. \" || \"When was the first episode of the Simpsons? (format YYYY-MM)\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"When was the first episode of the Simpsons? (format YYYY-MM)\"",
+				"type": "VTL|MD"
 			},
 			"declarations": [
 				{
@@ -277,7 +277,7 @@
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
 						"value": "\"Please answer with YYYY-MM format\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -290,14 +290,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -315,8 +315,8 @@
 			"min": "1900",
 			"max": "year-from-date(current-date())",
 			"label": {
-				"value": "\"➡ 7. \" || \"When was the first episode of the Simpsons? (format YYYY)\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"When was the first episode of the Simpsons? (format YYYY)\"",
+				"type": "VTL|MD"
 			},
 			"declarations": [
 				{
@@ -325,7 +325,7 @@
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
 						"value": "\"Please answer with YYYY format\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -338,14 +338,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -364,8 +364,8 @@
 			"max": 70,
 			"decimals": 2,
 			"label": {
-				"value": "\"➡ 8. \" || \"How long does an episode last?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"How long does an episode last?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -376,14 +376,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -402,8 +402,8 @@
 			"max": 366,
 			"decimals": 1,
 			"label": {
-				"value": "\"➡ 9. \" || \"How long does it take to write a new episode?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"How long does it take to write a new episode?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -414,14 +414,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -440,8 +440,8 @@
 			"max": 12,
 			"decimals": 0,
 			"label": {
-				"value": "\"➡ 10. \" || \"How long will it take you to watch all the existing episodes?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"How long will it take you to watch all the existing episodes?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -452,14 +452,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -478,8 +478,8 @@
 			"max": 100,
 			"decimals": 0,
 			"label": {
-				"value": "\"➡ 11. \" || \"For how long have you known the Simpsons family?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"For how long have you known the Simpsons family?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -490,14 +490,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -516,8 +516,8 @@
 			"max": 99,
 			"decimals": 1,
 			"label": {
-				"value": "\"➡ 15. \" || \"In your opinion, how much is the part of audience share in US for the 2016 season?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"In your opinion, how much is the part of audience share in US for the 2016 season?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -528,14 +528,14 @@
 				"sequence": {
 					"id": "j6p0ti5h",
 					"page": "1",
-					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL" }
+					"label": { "value": "\"I - \" || \"Introduction\"", "type": "VTL|MD" }
 				},
 				"subSequence": {
 					"id": "j6p0s7o5",
 					"page": "4",
 					"label": {
 						"value": "\"General knowledge of the series\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -549,7 +549,7 @@
 			"id": "j3341528",
 			"componentType": "Sequence",
 			"page": "14",
-			"label": { "value": "\"II - \" || \"Simpsons’ city\"", "type": "VTL" },
+			"label": { "value": "\"II - \" || \"Simpsons’ city\"", "type": "VTL|MD" },
 			"declarations": [
 				{
 					"id": "j3341528-d2",
@@ -557,7 +557,7 @@
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
 						"value": "\"This module asks about your general knowledge of the Simpsons city\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -572,7 +572,7 @@
 					"page": "14",
 					"label": {
 						"value": "\"II - \" || \"Simpsons’ city\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			}
@@ -584,15 +584,15 @@
 			"mandatory": true,
 			"page": "15",
 			"label": {
-				"value": "\"➡ 16. \" || \"In which city do the Simpsons reside?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"In which city do the Simpsons reside?\"",
+				"type": "VTL|MD"
 			},
 			"declarations": [
 				{
 					"id": "j3343clt-d3",
 					"declarationType": "INSTRUCTION",
 					"position": "AFTER_QUESTION_TEXT",
-					"label": { "value": "\"One possible answer\"", "type": "VTL" }
+					"label": { "value": "\"One possible answer\"", "type": "VTL|MD" }
 				}
 			],
 			"conditionFilter": {
@@ -606,7 +606,7 @@
 					"page": "14",
 					"label": {
 						"value": "\"II - \" || \"Simpsons’ city\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -615,17 +615,17 @@
 			"options": [
 				{
 					"value": "00001",
-					"label": { "value": "\"Springfield\"", "type": "VTL" }
+					"label": { "value": "\"Springfield\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "00002",
-					"label": { "value": "\"Shelbyville\"", "type": "VTL" }
+					"label": { "value": "\"Shelbyville\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "03",
-					"label": { "value": "\"Seinfeld\"", "type": "VTL" }
+					"label": { "value": "\"Seinfeld\"", "type": "VTL|MD" }
 				}
 			],
 			"response": { "name": "CITY" }
@@ -637,15 +637,15 @@
 			"mandatory": false,
 			"page": "16",
 			"label": {
-				"value": "\"➡ 17. \" || \"Who is the Simpsons city mayor?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Who is the Simpsons city mayor?\"",
+				"type": "VTL|MD"
 			},
 			"declarations": [
 				{
 					"id": "j6qdfhvw-d4",
 					"declarationType": "INSTRUCTION",
 					"position": "AFTER_QUESTION_TEXT",
-					"label": { "value": "\"Only one possible answer\"", "type": "VTL" }
+					"label": { "value": "\"Only one possible answer\"", "type": "VTL|MD" }
 				}
 			],
 			"conditionFilter": {
@@ -659,7 +659,7 @@
 					"page": "14",
 					"label": {
 						"value": "\"II - \" || \"Simpsons’ city\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -668,22 +668,22 @@
 			"options": [
 				{
 					"value": "1",
-					"label": { "value": "\"Constance Harm\"", "type": "VTL" }
+					"label": { "value": "\"Constance Harm\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "2",
-					"label": { "value": "\"Timothy Lovejoy\"", "type": "VTL" }
+					"label": { "value": "\"Timothy Lovejoy\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "3",
-					"label": { "value": "\"Joe Quimby\"", "type": "VTL" }
+					"label": { "value": "\"Joe Quimby\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "OT",
-					"label": { "value": "\"Other name\"", "type": "VTL" }
+					"label": { "value": "\"Other name\"", "type": "VTL|MD" }
 				}
 			],
 			"response": { "name": "MAYOR" }
@@ -695,8 +695,8 @@
 			"mandatory": false,
 			"page": "17",
 			"label": {
-				"value": "\"➡ 18. \" || \"In which state do The Simpsons reside?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"In which state do The Simpsons reside?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -709,7 +709,7 @@
 					"page": "14",
 					"label": {
 						"value": "\"II - \" || \"Simpsons’ city\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -718,54 +718,54 @@
 			"options": [
 				{
 					"value": "1",
-					"label": { "value": "\"Washington\"", "type": "VTL" }
+					"label": { "value": "\"Washington\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "2",
-					"label": { "value": "\"Kentucky\"", "type": "VTL" }
+					"label": { "value": "\"Kentucky\"", "type": "VTL|MD" }
 				},
 
-				{ "value": "3", "label": { "value": "\"Ohio\"", "type": "VTL" } },
+				{ "value": "3", "label": { "value": "\"Ohio\"", "type": "VTL|MD" } },
 
-				{ "value": "4", "label": { "value": "\"Maine\"", "type": "VTL" } },
+				{ "value": "4", "label": { "value": "\"Maine\"", "type": "VTL|MD" } },
 
 				{
 					"value": "5",
-					"label": { "value": "\"North Dakota\"", "type": "VTL" }
+					"label": { "value": "\"North Dakota\"", "type": "VTL|MD" }
 				},
 
-				{ "value": "6", "label": { "value": "\"Florida\"", "type": "VTL" } },
+				{ "value": "6", "label": { "value": "\"Florida\"", "type": "VTL|MD" } },
 
 				{
 					"value": "7",
-					"label": { "value": "\"North Takoma\"", "type": "VTL" }
+					"label": { "value": "\"North Takoma\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "8",
-					"label": { "value": "\"California\"", "type": "VTL" }
+					"label": { "value": "\"California\"", "type": "VTL|MD" }
 				},
 
-				{ "value": "9", "label": { "value": "\"Texas\"", "type": "VTL" } },
+				{ "value": "9", "label": { "value": "\"Texas\"", "type": "VTL|MD" } },
 
 				{
 					"value": "10",
-					"label": { "value": "\"Massachusetts\"", "type": "VTL" }
+					"label": { "value": "\"Massachusetts\"", "type": "VTL|MD" }
 				},
 
-				{ "value": "11", "label": { "value": "\"Nevada\"", "type": "VTL" } },
+				{ "value": "11", "label": { "value": "\"Nevada\"", "type": "VTL|MD" } },
 
 				{
 					"value": "12",
-					"label": { "value": "\"Illinois\"", "type": "VTL" }
+					"label": { "value": "\"Illinois\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "13",
 					"label": {
 						"value": "\"Not in any state, you fool!\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -776,7 +776,7 @@
 			"id": "j6qe0h9q",
 			"componentType": "Sequence",
 			"page": "18",
-			"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL" },
+			"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL|MD" },
 			"conditionFilter": {
 				"value": "(READY)",
 				"type": "VTL",
@@ -786,7 +786,7 @@
 				"sequence": {
 					"id": "j6qe0h9q",
 					"page": "18",
-					"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL" }
+					"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL|MD" }
 				}
 			}
 		},
@@ -796,15 +796,15 @@
 			"componentType": "CheckboxGroup",
 			"page": "19",
 			"label": {
-				"value": "\"➡ 19. \" || \"What are the pet names that the Simpsons family had?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"What are the pet names that the Simpsons family had?\"",
+				"type": "VTL|MD"
 			},
 			"declarations": [
 				{
 					"id": "j334akov-d5",
 					"declarationType": "INSTRUCTION",
 					"position": "AFTER_QUESTION_TEXT",
-					"label": { "value": "\"Several possible answers\"", "type": "VTL" }
+					"label": { "value": "\"Several possible answers\"", "type": "VTL|MD" }
 				}
 			],
 			"conditionFilter": {
@@ -816,7 +816,7 @@
 				"sequence": {
 					"id": "j6qe0h9q",
 					"page": "18",
-					"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL" }
+					"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "PET_MISSING" },
@@ -824,25 +824,25 @@
 			"responses": [
 				{
 					"id": "j334akov-QOP-khokqjtw",
-					"label": { "value": "\"Santa’s Little Helper\"", "type": "VTL" },
+					"label": { "value": "\"Santa’s Little Helper\"", "type": "VTL|MD" },
 					"response": { "name": "PET1" }
 				},
 
 				{
 					"id": "j334akov-QOP-khokur7a",
-					"label": { "value": "\"Snowball I\"", "type": "VTL" },
+					"label": { "value": "\"Snowball I\"", "type": "VTL|MD" },
 					"response": { "name": "PET2" }
 				},
 
 				{
 					"id": "j334akov-QOP-khol82ux",
-					"label": { "value": "\"Coltrane\"", "type": "VTL" },
+					"label": { "value": "\"Coltrane\"", "type": "VTL|MD" },
 					"response": { "name": "PET3" }
 				},
 
 				{
 					"id": "j334akov-QOP-khokqee5",
-					"label": { "value": "\"Other name\"", "type": "VTL" },
+					"label": { "value": "\"Other name\"", "type": "VTL|MD" },
 					"response": { "name": "PET4" }
 				}
 			]
@@ -855,8 +855,8 @@
 			"page": "20",
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "\"➡ 20. \" || \"Does Jay like the following ice cream flavours?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Does Jay like the following ice cream flavours?\"",
+				"type": "VTL|MD"
 			},
 			"declarations": [
 				{
@@ -865,7 +865,7 @@
 					"position": "BEFORE_QUESTION_TEXT",
 					"label": {
 						"value": "\"Now we are going to know if you think that Jay is a gluton.\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -878,7 +878,7 @@
 				"sequence": {
 					"id": "j6qe0h9q",
 					"page": "18",
-					"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL" }
+					"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "ICE_FLAVOUR_MISSING" },
@@ -893,7 +893,7 @@
 				[
 					{
 						"value": "1",
-						"label": { "value": "\"Vanilla\"", "type": "VTL" }
+						"label": { "value": "\"Vanilla\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -902,10 +902,10 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
-							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL" } }
+							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL|MD" } }
 						],
 						"response": { "name": "ICE_FLAVOUR1" },
 						"bindingDependencies": ["ICE_FLAVOUR1"]
@@ -915,7 +915,7 @@
 				[
 					{
 						"value": "2",
-						"label": { "value": "\"Strawberry\"", "type": "VTL" }
+						"label": { "value": "\"Strawberry\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -924,10 +924,10 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
-							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL" } }
+							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL|MD" } }
 						],
 						"response": { "name": "ICE_FLAVOUR2" },
 						"bindingDependencies": ["ICE_FLAVOUR2"]
@@ -935,7 +935,7 @@
 				],
 
 				[
-					{ "value": "3", "label": { "value": "\"Apple\"", "type": "VTL" } },
+					{ "value": "3", "label": { "value": "\"Apple\"", "type": "VTL|MD" } },
 
 					{
 						"componentType": "Radio",
@@ -943,10 +943,10 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
-							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL" } }
+							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL|MD" } }
 						],
 						"response": { "name": "ICE_FLAVOUR3" },
 						"bindingDependencies": ["ICE_FLAVOUR3"]
@@ -956,7 +956,7 @@
 				[
 					{
 						"value": "OT",
-						"label": { "value": "\"Other flavour\"", "type": "VTL" }
+						"label": { "value": "\"Other flavour\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -965,10 +965,10 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
-							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL" } }
+							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL|MD" } }
 						],
 						"response": { "name": "ICE_FLAVOUR4" },
 						"bindingDependencies": ["ICE_FLAVOUR4"]
@@ -984,8 +984,8 @@
 			"page": "21",
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "\"➡ 21. \" || \"Which character works in the nuclear power plant?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Which character works in the nuclear power plant?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -996,7 +996,7 @@
 				"sequence": {
 					"id": "j6qe0h9q",
 					"page": "18",
-					"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL" }
+					"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "NUCLEAR_CHARACTER_MISSING" },
@@ -1013,7 +1013,7 @@
 						"value": "1",
 						"label": {
 							"value": "\"Charles Montgomery Burns\"",
-							"type": "VTL"
+							"type": "VTL|MD"
 						}
 					},
 
@@ -1023,10 +1023,10 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
-							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL" } }
+							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL|MD" } }
 						],
 						"response": { "name": "NUCLEAR_CHARACTER1" },
 						"bindingDependencies": ["NUCLEAR_CHARACTER1"]
@@ -1036,7 +1036,7 @@
 				[
 					{
 						"value": "2",
-						"label": { "value": "\"Carl Carlson\"", "type": "VTL" }
+						"label": { "value": "\"Carl Carlson\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1045,10 +1045,10 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
-							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL" } }
+							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL|MD" } }
 						],
 						"response": { "name": "NUCLEAR_CHARACTER2" },
 						"bindingDependencies": ["NUCLEAR_CHARACTER2"]
@@ -1058,7 +1058,7 @@
 				[
 					{
 						"value": "3",
-						"label": { "value": "\"Otto Mann\"", "type": "VTL" }
+						"label": { "value": "\"Otto Mann\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1067,10 +1067,10 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
-							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL" } }
+							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL|MD" } }
 						],
 						"response": { "name": "NUCLEAR_CHARACTER3" },
 						"bindingDependencies": ["NUCLEAR_CHARACTER3"]
@@ -1080,7 +1080,7 @@
 				[
 					{
 						"value": "4",
-						"label": { "value": "\"Lenny Leonard\"", "type": "VTL" }
+						"label": { "value": "\"Lenny Leonard\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1089,10 +1089,10 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
-							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL" } }
+							{ "value": "0", "label": { "value": "\"No\"", "type": "VTL|MD" } }
 						],
 						"response": { "name": "NUCLEAR_CHARACTER4" },
 						"bindingDependencies": ["NUCLEAR_CHARACTER4"]
@@ -1108,8 +1108,8 @@
 			"page": "22",
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "\"➡ 22. \" || \"In which city each character was born?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"In which city each character was born?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -1120,7 +1120,7 @@
 				"sequence": {
 					"id": "j6qe0h9q",
 					"page": "18",
-					"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL" }
+					"label": { "value": "\"III - \" || \"Characters\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "BIRTH_CHARACTER_MISSING" },
@@ -1136,7 +1136,7 @@
 				[
 					{
 						"value": "1",
-						"label": { "value": "\"Selma Bouvier\"", "type": "VTL" }
+						"label": { "value": "\"Selma Bouvier\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1145,27 +1145,27 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Albuquerque\"", "type": "VTL" }
+								"label": { "value": "\"Albuquerque\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Springfield\"", "type": "VTL" }
+								"label": { "value": "\"Springfield\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Portland\"", "type": "VTL" }
+								"label": { "value": "\"Portland\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "4",
-								"label": { "value": "\"Shelbyville\"", "type": "VTL" }
+								"label": { "value": "\"Shelbyville\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "5",
-								"label": { "value": "\"Dagstuhl\"", "type": "VTL" }
+								"label": { "value": "\"Dagstuhl\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "BIRTH_CHARACTER1" },
@@ -1176,7 +1176,7 @@
 				[
 					{
 						"value": "2",
-						"label": { "value": "\"Kent Brockman\"", "type": "VTL" }
+						"label": { "value": "\"Kent Brockman\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1185,27 +1185,27 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Albuquerque\"", "type": "VTL" }
+								"label": { "value": "\"Albuquerque\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Springfield\"", "type": "VTL" }
+								"label": { "value": "\"Springfield\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Portland\"", "type": "VTL" }
+								"label": { "value": "\"Portland\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "4",
-								"label": { "value": "\"Shelbyville\"", "type": "VTL" }
+								"label": { "value": "\"Shelbyville\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "5",
-								"label": { "value": "\"Dagstuhl\"", "type": "VTL" }
+								"label": { "value": "\"Dagstuhl\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "BIRTH_CHARACTER2" },
@@ -1216,7 +1216,7 @@
 				[
 					{
 						"value": "3",
-						"label": { "value": "\"Milhouse Van Houten\"", "type": "VTL" }
+						"label": { "value": "\"Milhouse Van Houten\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1225,27 +1225,27 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Albuquerque\"", "type": "VTL" }
+								"label": { "value": "\"Albuquerque\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Springfield\"", "type": "VTL" }
+								"label": { "value": "\"Springfield\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Portland\"", "type": "VTL" }
+								"label": { "value": "\"Portland\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "4",
-								"label": { "value": "\"Shelbyville\"", "type": "VTL" }
+								"label": { "value": "\"Shelbyville\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "5",
-								"label": { "value": "\"Dagstuhl\"", "type": "VTL" }
+								"label": { "value": "\"Dagstuhl\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "BIRTH_CHARACTER3" },
@@ -1256,7 +1256,7 @@
 				[
 					{
 						"value": "4",
-						"label": { "value": "\"Nelson Muntz\"", "type": "VTL" }
+						"label": { "value": "\"Nelson Muntz\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1265,27 +1265,27 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Albuquerque\"", "type": "VTL" }
+								"label": { "value": "\"Albuquerque\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Springfield\"", "type": "VTL" }
+								"label": { "value": "\"Springfield\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Portland\"", "type": "VTL" }
+								"label": { "value": "\"Portland\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "4",
-								"label": { "value": "\"Shelbyville\"", "type": "VTL" }
+								"label": { "value": "\"Shelbyville\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "5",
-								"label": { "value": "\"Dagstuhl\"", "type": "VTL" }
+								"label": { "value": "\"Dagstuhl\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "BIRTH_CHARACTER4" },
@@ -1296,7 +1296,7 @@
 				[
 					{
 						"value": "5",
-						"label": { "value": "\"Crazy Cat Lady\"", "type": "VTL" }
+						"label": { "value": "\"Crazy Cat Lady\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1305,27 +1305,27 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Albuquerque\"", "type": "VTL" }
+								"label": { "value": "\"Albuquerque\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Springfield\"", "type": "VTL" }
+								"label": { "value": "\"Springfield\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Portland\"", "type": "VTL" }
+								"label": { "value": "\"Portland\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "4",
-								"label": { "value": "\"Shelbyville\"", "type": "VTL" }
+								"label": { "value": "\"Shelbyville\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "5",
-								"label": { "value": "\"Dagstuhl\"", "type": "VTL" }
+								"label": { "value": "\"Dagstuhl\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "BIRTH_CHARACTER5" },
@@ -1341,7 +1341,7 @@
 			"page": "23",
 			"label": {
 				"value": "\"IV - \" || \"General questions\"",
-				"type": "VTL"
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -1354,7 +1354,7 @@
 					"page": "23",
 					"label": {
 						"value": "\"IV - \" || \"General questions\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			}
@@ -1364,7 +1364,7 @@
 			"id": "j6qe237q",
 			"componentType": "Subsequence",
 			"goToPage": "24",
-			"label": { "value": "\"Kwik-E-Mart\"", "type": "VTL" },
+			"label": { "value": "\"Kwik-E-Mart\"", "type": "VTL|MD" },
 			"conditionFilter": {
 				"value": "(READY)",
 				"type": "VTL",
@@ -1376,13 +1376,13 @@
 					"page": "23",
 					"label": {
 						"value": "\"IV - \" || \"General questions\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				},
 				"subSequence": {
 					"id": "j6qe237q",
 					"page": "24",
-					"label": { "value": "\"Kwik-E-Mart\"", "type": "VTL" }
+					"label": { "value": "\"Kwik-E-Mart\"", "type": "VTL|MD" }
 				}
 			}
 		},
@@ -1394,8 +1394,8 @@
 			"page": "24",
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "\"➡ 23. \" || \"Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -1408,13 +1408,13 @@
 					"page": "23",
 					"label": {
 						"value": "\"IV - \" || \"General questions\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				},
 				"subSequence": {
 					"id": "j6qe237q",
 					"page": "24",
-					"label": { "value": "\"Kwik-E-Mart\"", "type": "VTL" }
+					"label": { "value": "\"Kwik-E-Mart\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "PERCENTAGE_EXPENSES_MISSING" },
@@ -1429,21 +1429,21 @@
 				"PERCENTAGE_EXPENSES71"
 			],
 			"header": [
-				{ "colspan": 2, "label": { "value": "", "type": "VTL" } },
+				{ "colspan": 2, "label": { "value": "", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Percentage\"", "type": "VTL" } }
+				{ "label": { "value": "\"Percentage\"", "type": "VTL|MD" } }
 			],
 			"body": [
 				[
 					{
 						"rowspan": 2,
 						"value": "A",
-						"label": { "value": "\"Frozen products\"", "type": "VTL" }
+						"label": { "value": "\"Frozen products\"", "type": "VTL|MD" }
 					},
 
 					{
 						"value": "A1",
-						"label": { "value": "\"Ice creams\"", "type": "VTL" }
+						"label": { "value": "\"Ice creams\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1461,7 +1461,7 @@
 				[
 					{
 						"value": "A2",
-						"label": { "value": "\"Jasper Beardly\"", "type": "VTL" }
+						"label": { "value": "\"Jasper Beardly\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1480,12 +1480,12 @@
 					{
 						"rowspan": 3,
 						"value": "B",
-						"label": { "value": "\"Meat\"", "type": "VTL" }
+						"label": { "value": "\"Meat\"", "type": "VTL|MD" }
 					},
 
 					{
 						"value": "B1",
-						"label": { "value": "\"Bacon\"", "type": "VTL" }
+						"label": { "value": "\"Bacon\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1503,7 +1503,7 @@
 				[
 					{
 						"value": "B2",
-						"label": { "value": "\"Pork chop\"", "type": "VTL" }
+						"label": { "value": "\"Pork chop\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1521,7 +1521,7 @@
 				[
 					{
 						"value": "B3",
-						"label": { "value": "\"Chicken\"", "type": "VTL" }
+						"label": { "value": "\"Chicken\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1539,12 +1539,12 @@
 				[
 					{
 						"value": "C",
-						"label": { "value": "\"Compote\"", "type": "VTL" }
+						"label": { "value": "\"Compote\"", "type": "VTL|MD" }
 					},
 
 					{
 						"value": "C1",
-						"label": { "value": "\"Powersauce\"", "type": "VTL" }
+						"label": { "value": "\"Powersauce\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1563,7 +1563,7 @@
 					{
 						"colspan": 2,
 						"value": "D",
-						"label": { "value": "\"Other\"", "type": "VTL" }
+						"label": { "value": "\"Other\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1582,7 +1582,7 @@
 					{
 						"colspan": 2,
 						"value": "E",
-						"label": { "value": "\"Total\"", "type": "VTL" }
+						"label": { "value": "\"Total\"", "type": "VTL|MD" }
 					},
 
 					{}
@@ -1597,8 +1597,8 @@
 			"page": "25",
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "\"➡ 24. \" || \"Please specify if Jay has bought each product in his last food shopping\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Please specify if Jay has bought each product in his last food shopping\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -1611,13 +1611,13 @@
 					"page": "23",
 					"label": {
 						"value": "\"IV - \" || \"General questions\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				},
 				"subSequence": {
 					"id": "j6qe237q",
 					"page": "24",
-					"label": { "value": "\"Kwik-E-Mart\"", "type": "VTL" }
+					"label": { "value": "\"Kwik-E-Mart\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "LAST_FOOD_SHOPPING_MISSING" },
@@ -1633,12 +1633,12 @@
 				"LAST_FOOD_SHOPPING81"
 			],
 			"header": [
-				{ "colspan": 2, "label": { "value": "", "type": "VTL" } },
+				{ "colspan": 2, "label": { "value": "", "type": "VTL|MD" } },
 
 				{
 					"label": {
 						"value": "\"In his last food shopping\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -1647,12 +1647,12 @@
 					{
 						"rowspan": 2,
 						"value": "A",
-						"label": { "value": "\"Frozen products\"", "type": "VTL" }
+						"label": { "value": "\"Frozen products\"", "type": "VTL|MD" }
 					},
 
 					{
 						"value": "A1",
-						"label": { "value": "\"Ice creams\"", "type": "VTL" }
+						"label": { "value": "\"Ice creams\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1661,17 +1661,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LAST_FOOD_SHOPPING11" },
@@ -1682,7 +1682,7 @@
 				[
 					{
 						"value": "A2",
-						"label": { "value": "\"Jasper Beardly\"", "type": "VTL" }
+						"label": { "value": "\"Jasper Beardly\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1691,17 +1691,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LAST_FOOD_SHOPPING21" },
@@ -1713,12 +1713,12 @@
 					{
 						"rowspan": 3,
 						"value": "B",
-						"label": { "value": "\"Meat\"", "type": "VTL" }
+						"label": { "value": "\"Meat\"", "type": "VTL|MD" }
 					},
 
 					{
 						"value": "B1",
-						"label": { "value": "\"Bacon\"", "type": "VTL" }
+						"label": { "value": "\"Bacon\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1727,17 +1727,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LAST_FOOD_SHOPPING31" },
@@ -1748,7 +1748,7 @@
 				[
 					{
 						"value": "B2",
-						"label": { "value": "\"Pork chop\"", "type": "VTL" }
+						"label": { "value": "\"Pork chop\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1757,17 +1757,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LAST_FOOD_SHOPPING41" },
@@ -1778,7 +1778,7 @@
 				[
 					{
 						"value": "B3",
-						"label": { "value": "\"Chicken\"", "type": "VTL" }
+						"label": { "value": "\"Chicken\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1787,17 +1787,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LAST_FOOD_SHOPPING51" },
@@ -1808,12 +1808,12 @@
 				[
 					{
 						"value": "C",
-						"label": { "value": "\"Compote\"", "type": "VTL" }
+						"label": { "value": "\"Compote\"", "type": "VTL|MD" }
 					},
 
 					{
 						"value": "C1",
-						"label": { "value": "\"Powersauce\"", "type": "VTL" }
+						"label": { "value": "\"Powersauce\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1822,17 +1822,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LAST_FOOD_SHOPPING61" },
@@ -1844,7 +1844,7 @@
 					{
 						"colspan": 2,
 						"value": "D",
-						"label": { "value": "\"Other\"", "type": "VTL" }
+						"label": { "value": "\"Other\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1853,17 +1853,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LAST_FOOD_SHOPPING71" },
@@ -1875,7 +1875,7 @@
 					{
 						"colspan": 2,
 						"value": "E",
-						"label": { "value": "\"Total\"", "type": "VTL" }
+						"label": { "value": "\"Total\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -1884,17 +1884,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LAST_FOOD_SHOPPING81" },
@@ -1908,7 +1908,7 @@
 			"id": "j6qejudb",
 			"componentType": "Subsequence",
 			"goToPage": "26",
-			"label": { "value": "\"Clowning\"", "type": "VTL" },
+			"label": { "value": "\"Clowning\"", "type": "VTL|MD" },
 			"conditionFilter": {
 				"value": "(READY)",
 				"type": "VTL",
@@ -1920,13 +1920,13 @@
 					"page": "23",
 					"label": {
 						"value": "\"IV - \" || \"General questions\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				},
 				"subSequence": {
 					"id": "j6qejudb",
 					"page": "26",
-					"label": { "value": "\"Clowning\"", "type": "VTL" }
+					"label": { "value": "\"Clowning\"", "type": "VTL|MD" }
 				}
 			}
 		},
@@ -1938,8 +1938,8 @@
 			"page": "26",
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "\"➡ 25. \" || \"Who did these clownings and tell us what you remember?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Who did these clownings and tell us what you remember?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -1952,13 +1952,13 @@
 					"page": "23",
 					"label": {
 						"value": "\"IV - \" || \"General questions\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				},
 				"subSequence": {
 					"id": "j6qejudb",
 					"page": "26",
-					"label": { "value": "\"Clowning\"", "type": "VTL" }
+					"label": { "value": "\"Clowning\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "CLOWNING_MISSING" },
@@ -1974,11 +1974,11 @@
 				"CLOWNING42"
 			],
 			"header": [
-				{ "label": { "value": "", "type": "VTL" } },
+				{ "label": { "value": "", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Clowning\"", "type": "VTL" } },
+				{ "label": { "value": "\"Clowning\"", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Remember?\"", "type": "VTL" } }
+				{ "label": { "value": "\"Remember?\"", "type": "VTL|MD" } }
 			],
 			"body": [
 				[
@@ -1986,7 +1986,7 @@
 						"value": "1",
 						"label": {
 							"value": "\"Break the windows of the whole city\"",
-							"type": "VTL"
+							"type": "VTL|MD"
 						}
 					},
 
@@ -1996,22 +1996,22 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Jay\"", "type": "VTL" }
+								"label": { "value": "\"Jay\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Bart\"", "type": "VTL" }
+								"label": { "value": "\"Bart\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Krusty the clown\"", "type": "VTL" }
+								"label": { "value": "\"Krusty the clown\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "O",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "CLOWNING11" },
@@ -2032,7 +2032,7 @@
 						"value": "2",
 						"label": {
 							"value": "\"Loose the violin of his daughter playing poker\"",
-							"type": "VTL"
+							"type": "VTL|MD"
 						}
 					},
 
@@ -2042,22 +2042,22 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Jay\"", "type": "VTL" }
+								"label": { "value": "\"Jay\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Bart\"", "type": "VTL" }
+								"label": { "value": "\"Bart\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Krusty the clown\"", "type": "VTL" }
+								"label": { "value": "\"Krusty the clown\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "O",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "CLOWNING21" },
@@ -2076,7 +2076,7 @@
 				[
 					{
 						"value": "3",
-						"label": { "value": "\"Kill Mr Burns\"", "type": "VTL" }
+						"label": { "value": "\"Kill Mr Burns\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -2085,22 +2085,22 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Jay\"", "type": "VTL" }
+								"label": { "value": "\"Jay\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Bart\"", "type": "VTL" }
+								"label": { "value": "\"Bart\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Krusty the clown\"", "type": "VTL" }
+								"label": { "value": "\"Krusty the clown\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "O",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "CLOWNING31" },
@@ -2121,7 +2121,7 @@
 						"value": "4",
 						"label": {
 							"value": "\"Leaving a mechanical object to control the nuclear power plant\"",
-							"type": "VTL"
+							"type": "VTL|MD"
 						}
 					},
 
@@ -2131,22 +2131,22 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Jay\"", "type": "VTL" }
+								"label": { "value": "\"Jay\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Bart\"", "type": "VTL" }
+								"label": { "value": "\"Bart\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Krusty the clown\"", "type": "VTL" }
+								"label": { "value": "\"Krusty the clown\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "O",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "CLOWNING41" },
@@ -2168,7 +2168,7 @@
 			"id": "j6qeh91y",
 			"componentType": "Subsequence",
 			"goToPage": "27",
-			"label": { "value": "\"Transport\"", "type": "VTL" },
+			"label": { "value": "\"Transport\"", "type": "VTL|MD" },
 			"conditionFilter": {
 				"value": "(READY)",
 				"type": "VTL",
@@ -2180,13 +2180,13 @@
 					"page": "23",
 					"label": {
 						"value": "\"IV - \" || \"General questions\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				},
 				"subSequence": {
 					"id": "j6qeh91y",
 					"page": "27",
-					"label": { "value": "\"Transport\"", "type": "VTL" }
+					"label": { "value": "\"Transport\"", "type": "VTL|MD" }
 				}
 			}
 		},
@@ -2198,8 +2198,8 @@
 			"page": "27",
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "\"➡ 26. \" || \"Which of the following means of transport were used by the hero and in which country?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Which of the following means of transport were used by the hero and in which country?\"",
+				"type": "VTL|MD"
 			},
 			"declarations": [
 				{
@@ -2208,7 +2208,7 @@
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
 						"value": "\"Several answers possible: check off all the relevant boxes\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -2223,13 +2223,13 @@
 					"page": "23",
 					"label": {
 						"value": "\"IV - \" || \"General questions\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				},
 				"subSequence": {
 					"id": "j6qeh91y",
 					"page": "27",
-					"label": { "value": "\"Transport\"", "type": "VTL" }
+					"label": { "value": "\"Transport\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "TRAVEL_MISSING" },
@@ -2261,23 +2261,23 @@
 				"TRAVEL46"
 			],
 			"header": [
-				{ "label": { "value": "", "type": "VTL" } },
+				{ "label": { "value": "", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Brazil\"", "type": "VTL" } },
+				{ "label": { "value": "\"Brazil\"", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Canada\"", "type": "VTL" } },
+				{ "label": { "value": "\"Canada\"", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Japan\"", "type": "VTL" } },
+				{ "label": { "value": "\"Japan\"", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"France\"", "type": "VTL" } },
+				{ "label": { "value": "\"France\"", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Other country\"", "type": "VTL" } },
+				{ "label": { "value": "\"Other country\"", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Other planet\"", "type": "VTL" } }
+				{ "label": { "value": "\"Other planet\"", "type": "VTL|MD" } }
 			],
 			"body": [
 				[
-					{ "value": "1", "label": { "value": "\"Car\"", "type": "VTL" } },
+					{ "value": "1", "label": { "value": "\"Car\"", "type": "VTL|MD" } },
 
 					{
 						"componentType": "CheckboxBoolean",
@@ -2323,7 +2323,7 @@
 				],
 
 				[
-					{ "value": "2", "label": { "value": "\"Bike\"", "type": "VTL" } },
+					{ "value": "2", "label": { "value": "\"Bike\"", "type": "VTL|MD" } },
 
 					{
 						"componentType": "CheckboxBoolean",
@@ -2371,7 +2371,7 @@
 				[
 					{
 						"value": "3",
-						"label": { "value": "\"Skateboard\"", "type": "VTL" }
+						"label": { "value": "\"Skateboard\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -2418,7 +2418,7 @@
 				],
 
 				[
-					{ "value": "4", "label": { "value": "\"Plane\"", "type": "VTL" } },
+					{ "value": "4", "label": { "value": "\"Plane\"", "type": "VTL|MD" } },
 
 					{
 						"componentType": "CheckboxBoolean",
@@ -2471,7 +2471,7 @@
 			"page": "28",
 			"label": {
 				"value": "\"V - \" || \"Favourite characters (dynamic table)\"",
-				"type": "VTL"
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -2484,7 +2484,7 @@
 					"page": "28",
 					"label": {
 						"value": "\"V - \" || \"Favourite characters (dynamic table)\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			}
@@ -2497,8 +2497,8 @@
 			"page": "29",
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "\"➡ 27. \" || \"Please, complete the following grid with your favourite characters\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Please, complete the following grid with your favourite characters\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -2511,7 +2511,7 @@
 					"page": "28",
 					"label": {
 						"value": "\"V - \" || \"Favourite characters (dynamic table)\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -2557,14 +2557,14 @@
 				"max": { "value": "10", "type": "VTL" }
 			},
 			"header": [
-				{ "label": { "value": "\"Name\"", "type": "VTL" } },
+				{ "label": { "value": "\"Name\"", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Age\"", "type": "VTL" } },
+				{ "label": { "value": "\"Age\"", "type": "VTL|MD" } },
 
 				{
 					"label": {
 						"value": "\"Member of the Simpsons family\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			],
@@ -2592,17 +2592,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FAVOURITE_CHAR3_1_3" },
@@ -2633,17 +2633,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FAVOURITE_CHAR3_2_3" },
@@ -2674,17 +2674,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FAVOURITE_CHAR3_3_3" },
@@ -2715,17 +2715,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FAVOURITE_CHAR3_4_3" },
@@ -2756,17 +2756,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FAVOURITE_CHAR3_5_3" },
@@ -2797,17 +2797,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FAVOURITE_CHAR3_6_3" },
@@ -2838,17 +2838,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FAVOURITE_CHAR3_7_3" },
@@ -2879,17 +2879,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FAVOURITE_CHAR3_8_3" },
@@ -2920,17 +2920,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FAVOURITE_CHAR3_9_3" },
@@ -2961,17 +2961,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Yes\"", "type": "VTL" }
+								"label": { "value": "\"Yes\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"No\"", "type": "VTL" }
+								"label": { "value": "\"No\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Other\"", "type": "VTL" }
+								"label": { "value": "\"Other\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FAVOURITE_CHAR3_10_3" },
@@ -2988,8 +2988,8 @@
 			"page": "30",
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "\"➡ 28. \" || \"How has your feeling about the following characters evolved over time?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"How has your feeling about the following characters evolved over time?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -3002,7 +3002,7 @@
 					"page": "28",
 					"label": {
 						"value": "\"V - \" || \"Favourite characters (dynamic table)\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -3016,7 +3016,7 @@
 			],
 			"body": [
 				[
-					{ "value": "1", "label": { "value": "\"Jay\"", "type": "VTL" } },
+					{ "value": "1", "label": { "value": "\"Jay\"", "type": "VTL|MD" } },
 
 					{
 						"componentType": "CheckboxOne",
@@ -3024,17 +3024,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Up\"", "type": "VTL" }
+								"label": { "value": "\"Up\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Down\"", "type": "VTL" }
+								"label": { "value": "\"Down\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Steady\"", "type": "VTL" }
+								"label": { "value": "\"Steady\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FEELCHAREV1" },
@@ -3043,7 +3043,7 @@
 				],
 
 				[
-					{ "value": "2", "label": { "value": "\"Bart\"", "type": "VTL" } },
+					{ "value": "2", "label": { "value": "\"Bart\"", "type": "VTL|MD" } },
 
 					{
 						"componentType": "CheckboxOne",
@@ -3051,17 +3051,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Up\"", "type": "VTL" }
+								"label": { "value": "\"Up\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Down\"", "type": "VTL" }
+								"label": { "value": "\"Down\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Steady\"", "type": "VTL" }
+								"label": { "value": "\"Steady\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FEELCHAREV2" },
@@ -3072,7 +3072,7 @@
 				[
 					{
 						"value": "3",
-						"label": { "value": "\"Krusty the clown\"", "type": "VTL" }
+						"label": { "value": "\"Krusty the clown\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -3081,17 +3081,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Up\"", "type": "VTL" }
+								"label": { "value": "\"Up\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Down\"", "type": "VTL" }
+								"label": { "value": "\"Down\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Steady\"", "type": "VTL" }
+								"label": { "value": "\"Steady\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FEELCHAREV3" },
@@ -3100,7 +3100,7 @@
 				],
 
 				[
-					{ "value": "O", "label": { "value": "\"Other\"", "type": "VTL" } },
+					{ "value": "O", "label": { "value": "\"Other\"", "type": "VTL|MD" } },
 
 					{
 						"componentType": "CheckboxOne",
@@ -3108,17 +3108,17 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Up\"", "type": "VTL" }
+								"label": { "value": "\"Up\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Down\"", "type": "VTL" }
+								"label": { "value": "\"Down\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "3",
-								"label": { "value": "\"Steady\"", "type": "VTL" }
+								"label": { "value": "\"Steady\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "FEELCHAREV4" },
@@ -3135,8 +3135,8 @@
 			"page": "31",
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "\"➡ 29. \" || \"Can you tell how long Bart Simpson has been on leave for each type and whether there has been another type?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Can you tell how long Bart Simpson has been on leave for each type and whether there has been another type?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -3149,7 +3149,7 @@
 					"page": "28",
 					"label": {
 						"value": "\"V - \" || \"Favourite characters (dynamic table)\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -3168,17 +3168,17 @@
 				"LEAVDURATION52"
 			],
 			"header": [
-				{ "label": { "value": "", "type": "VTL" } },
+				{ "label": { "value": "", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Days\"", "type": "VTL" } },
+				{ "label": { "value": "\"Days\"", "type": "VTL|MD" } },
 
-				{ "label": { "value": "\"Unit\"", "type": "VTL" } }
+				{ "label": { "value": "\"Unit\"", "type": "VTL|MD" } }
 			],
 			"body": [
 				[
 					{
 						"value": "1",
-						"label": { "value": "\"Leave with pay\"", "type": "VTL" }
+						"label": { "value": "\"Leave with pay\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -3197,12 +3197,12 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Working Days\"", "type": "VTL" }
+								"label": { "value": "\"Working Days\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Calendar days\"", "type": "VTL" }
+								"label": { "value": "\"Calendar days\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LEAVDURATION12" },
@@ -3213,7 +3213,7 @@
 				[
 					{
 						"value": "2",
-						"label": { "value": "\"Public holiday\"", "type": "VTL" }
+						"label": { "value": "\"Public holiday\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -3232,12 +3232,12 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Working Days\"", "type": "VTL" }
+								"label": { "value": "\"Working Days\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Calendar days\"", "type": "VTL" }
+								"label": { "value": "\"Calendar days\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LEAVDURATION22" },
@@ -3248,7 +3248,7 @@
 				[
 					{
 						"value": "3",
-						"label": { "value": "\"Sick leave\"", "type": "VTL" }
+						"label": { "value": "\"Sick leave\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -3267,12 +3267,12 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Working Days\"", "type": "VTL" }
+								"label": { "value": "\"Working Days\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Calendar days\"", "type": "VTL" }
+								"label": { "value": "\"Calendar days\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LEAVDURATION32" },
@@ -3285,7 +3285,7 @@
 						"value": "4",
 						"label": {
 							"value": "\"Maternity/paternity leave\"",
-							"type": "VTL"
+							"type": "VTL|MD"
 						}
 					},
 
@@ -3305,12 +3305,12 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Working Days\"", "type": "VTL" }
+								"label": { "value": "\"Working Days\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Calendar days\"", "type": "VTL" }
+								"label": { "value": "\"Calendar days\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LEAVDURATION42" },
@@ -3321,7 +3321,7 @@
 				[
 					{
 						"value": "5",
-						"label": { "value": "\"Other type\"", "type": "VTL" }
+						"label": { "value": "\"Other type\"", "type": "VTL|MD" }
 					},
 
 					{
@@ -3340,12 +3340,12 @@
 						"options": [
 							{
 								"value": "1",
-								"label": { "value": "\"Working Days\"", "type": "VTL" }
+								"label": { "value": "\"Working Days\"", "type": "VTL|MD" }
 							},
 
 							{
 								"value": "2",
-								"label": { "value": "\"Calendar days\"", "type": "VTL" }
+								"label": { "value": "\"Calendar days\"", "type": "VTL|MD" }
 							}
 						],
 						"response": { "name": "LEAVDURATION52" },
@@ -3361,7 +3361,7 @@
 			"page": "32",
 			"label": {
 				"value": "\"VI - \" || \"Favourite characters (Loop)\"",
-				"type": "VTL"
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -3374,7 +3374,7 @@
 					"page": "32",
 					"label": {
 						"value": "\"VI - \" || \"Favourite characters (Loop)\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			}
@@ -3389,8 +3389,8 @@
 			"max": 20,
 			"decimals": 0,
 			"label": {
-				"value": "\"➡ 30. \" || \"How many characters from the Simpsons family could you precisely describe?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"How many characters from the Simpsons family could you precisely describe?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": {
 				"value": "(READY)",
@@ -3403,7 +3403,7 @@
 					"page": "32",
 					"label": {
 						"value": "\"VI - \" || \"Favourite characters (Loop)\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -3418,7 +3418,7 @@
 			"page": "34",
 			"depth": 1,
 			"paginatedLoop": false,
-			"label": { "value": "\"Add a character\"", "type": "VTL" },
+			"label": { "value": "\"Add a character\"", "type": "VTL|MD" },
 			"conditionFilter": {
 				"value": "(READY)",
 				"type": "VTL",
@@ -3430,7 +3430,7 @@
 					"page": "32",
 					"label": {
 						"value": "\"VI - \" || \"Favourite characters (Loop)\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					}
 				}
 			},
@@ -3453,7 +3453,7 @@
 					"goToPage": "34",
 					"label": {
 						"value": "\"Description of each character\"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					},
 					"conditionFilter": {
 						"value": "(READY)",
@@ -3466,7 +3466,7 @@
 							"page": "32",
 							"label": {
 								"value": "\"VI - \" || \"Favourite characters (Loop)\"",
-								"type": "VTL"
+								"type": "VTL|MD"
 							}
 						},
 						"subSequence": {
@@ -3474,7 +3474,7 @@
 							"page": "34",
 							"label": {
 								"value": "\"Description of each character\"",
-								"type": "VTL"
+								"type": "VTL|MD"
 							}
 						}
 					},
@@ -3488,8 +3488,8 @@
 					"page": "34",
 					"maxLength": 30,
 					"label": {
-						"value": "\"➡ 31. \" || \"What is the first name of this character?\"",
-						"type": "VTL"
+						"value": "\"➡ \" || \"What is the first name of this character?\"",
+						"type": "VTL|MD"
 					},
 					"conditionFilter": {
 						"value": "(READY)",
@@ -3502,7 +3502,7 @@
 							"page": "32",
 							"label": {
 								"value": "\"VI - \" || \"Favourite characters (Loop)\"",
-								"type": "VTL"
+								"type": "VTL|MD"
 							}
 						},
 						"subSequence": {
@@ -3510,7 +3510,7 @@
 							"page": "34",
 							"label": {
 								"value": "\"Description of each character\"",
-								"type": "VTL"
+								"type": "VTL|MD"
 							}
 						}
 					},
@@ -3527,8 +3527,8 @@
 					"max": 120,
 					"decimals": 0,
 					"label": {
-						"value": "\"➡ 32. \" || \"How old is this character in the first episode of the Simpsons family?\"",
-						"type": "VTL"
+						"value": "\"➡ \" || \"How old is this character in the first episode of the Simpsons family?\"",
+						"type": "VTL|MD"
 					},
 					"conditionFilter": {
 						"value": "(READY)",
@@ -3541,7 +3541,7 @@
 							"page": "32",
 							"label": {
 								"value": "\"VI - \" || \"Favourite characters (Loop)\"",
-								"type": "VTL"
+								"type": "VTL|MD"
 							}
 						},
 						"subSequence": {
@@ -3549,7 +3549,7 @@
 							"page": "34",
 							"label": {
 								"value": "\"Description of each character\"",
-								"type": "VTL"
+								"type": "VTL|MD"
 							}
 						}
 					},
@@ -3586,7 +3586,7 @@
 					"page": "35.1",
 					"label": {
 						"value": "\"VII - \" || \"Other details about character named \" || NAME_CHAR || \" \"",
-						"type": "VTL"
+						"type": "VTL|MD"
 					},
 					"conditionFilter": {
 						"value": "(READY)",
@@ -3599,7 +3599,7 @@
 							"page": "35.1",
 							"label": {
 								"value": "\"VII - \" || \"Other details about character named \" || NAME_CHAR || \" \"",
-								"type": "VTL"
+								"type": "VTL|MD"
 							}
 						}
 					},
@@ -3612,8 +3612,8 @@
 					"mandatory": false,
 					"page": "35.2",
 					"label": {
-						"value": "\"➡ 33. \" || \"Is character named \" || NAME_CHAR || \" your favourite one ? \"",
-						"type": "VTL"
+						"value": "\"➡ \" || \"Is character named \" || NAME_CHAR || \" your favourite one ? \"",
+						"type": "VTL|MD"
 					},
 					"conditionFilter": {
 						"value": "(READY)",
@@ -3626,7 +3626,7 @@
 							"page": "35.1",
 							"label": {
 								"value": "\"VII - \" || \"Other details about character named \" || NAME_CHAR || \" \"",
-								"type": "VTL"
+								"type": "VTL|MD"
 							}
 						}
 					},
@@ -3638,9 +3638,9 @@
 						"AGE_CHAR"
 					],
 					"options": [
-						{ "value": "1", "label": { "value": "\"Yes\"", "type": "VTL" } },
+						{ "value": "1", "label": { "value": "\"Yes\"", "type": "VTL|MD" } },
 
-						{ "value": "0", "label": { "value": "\"No\"", "type": "VTL" } }
+						{ "value": "0", "label": { "value": "\"No\"", "type": "VTL|MD" } }
 					],
 					"response": { "name": "FAVCHAR" }
 				},
@@ -3652,8 +3652,8 @@
 					"page": "35.3",
 					"maxLength": 255,
 					"label": {
-						"value": "\"➡ 34. \" || \"What is your best memory about character named \" || NAME_CHAR || \" ? \"",
-						"type": "VTL"
+						"value": "\"➡ \" || \"What is your best memory about character named \" || NAME_CHAR || \" ? \"",
+						"type": "VTL|MD"
 					},
 					"conditionFilter": {
 						"value": "(READY)",
@@ -3666,7 +3666,7 @@
 							"page": "35.1",
 							"label": {
 								"value": "\"VII - \" || \"Other details about character named \" || NAME_CHAR || \" \"",
-								"type": "VTL"
+								"type": "VTL|MD"
 							}
 						}
 					},
@@ -3687,13 +3687,13 @@
 			"id": "j6z12s2d",
 			"componentType": "Sequence",
 			"page": "36",
-			"label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL" },
+			"label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"hierarchy": {
 				"sequence": {
 					"id": "j6z12s2d",
 					"page": "36",
-					"label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL" }
+					"label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL|MD" }
 				}
 			}
 		},
@@ -3705,20 +3705,46 @@
 			"page": "37",
 			"maxLength": 255,
 			"label": {
-				"value": "\"➡ 35. \" || \"Do you have any comment about the survey?\"",
-				"type": "VTL"
+				"value": "\"➡ \" || \"Do you have any comment about the survey?\"",
+				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"hierarchy": {
 				"sequence": {
 					"id": "j6z12s2d",
 					"page": "36",
-					"label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL" }
+					"label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL|MD" }
 				}
 			},
 			"missingResponse": { "name": "SURVEY_COMMENT_MISSING" },
 			"bindingDependencies": ["SURVEY_COMMENT_MISSING", "SURVEY_COMMENT"],
 			"response": { "name": "SURVEY_COMMENT" }
+		},
+
+		{
+			"id": "COMMENT-SEQ",
+			"componentType": "Sequence",
+			"page": "38",
+			"label": {},
+			"conditionFilter": { "value": "true" },
+			"hierarchy": {
+				"sequence": { "id": "COMMENT-SEQ", "page": "38", "label": {} }
+			}
+		},
+
+		{
+			"id": "COMMENT-QUESTION",
+			"componentType": "Textarea",
+			"mandatory": false,
+			"page": "39",
+			"maxLength": 2000,
+			"label": {},
+			"conditionFilter": { "value": "true" },
+			"hierarchy": {
+				"sequence": { "id": "COMMENT-SEQ", "page": "38", "label": {} }
+			},
+			"bindingDependencies": ["COMMENT_QE"],
+			"response": { "name": "COMMENT_QE" }
 		}
 	],
 	"variables": [
@@ -4103,6 +4129,19 @@
 			"variableType": "COLLECTED",
 			"name": "FAVOURITE_CHAR3_10_3",
 			"componentRef": "j6qg8rc6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "COMMENT_QE",
+			"componentRef": "COMMENT-QUESTION",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
