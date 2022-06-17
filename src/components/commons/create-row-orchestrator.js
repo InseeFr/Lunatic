@@ -13,10 +13,13 @@ function createRowOrchestrator(Row) {
 		preferences,
 		executeExpression,
 		iteration,
+		xAxis,
 		custom,
 	}) {
 		if (nbRows > 0) {
 			return new Array(nbRows).fill(null).map(function (_, index) {
+				const i = index % xAxis;
+				const j = Math.trunc(index / xAxis);
 				return (
 					<Row
 						key={index}
@@ -27,6 +30,7 @@ function createRowOrchestrator(Row) {
 						handleChange={handleChange}
 						executeExpression={executeExpression}
 						iteration={iteration}
+						linksIterations={[i, j]}
 						custom={custom}
 						/** */
 						features={features}

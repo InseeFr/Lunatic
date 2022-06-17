@@ -13,6 +13,7 @@ function OrchestratedComponent({
 	preferences,
 	value,
 	iteration,
+	linksIterations,
 	executeExpression,
 	custom,
 }) {
@@ -26,12 +27,12 @@ function OrchestratedComponent({
 			setComponentFilled(
 				fillComponentExpressions(component, {
 					executeExpression,
-					pager: { iteration },
+					pager: { iteration, linksIterations },
 				})
 			);
 			setFilled(true);
 		},
-		[component, executeExpression, iteration]
+		[component, executeExpression, iteration, linksIterations]
 	);
 
 	if (componentType in lunatic && filled) {

@@ -11,6 +11,8 @@ const VTL_ATTRIBUTES = [
 	'lines.min',
 	'lines.max',
 	'iterations',
+	'xAxis',
+	'yAxis',
 ];
 
 function createCrawl({ executeExpression, iteration }) {

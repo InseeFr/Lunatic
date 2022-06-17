@@ -13,8 +13,11 @@ function Row({
 	rowIndex,
 	executeExpression,
 	custom,
+	linksIterations,
 }) {
+	debugger;
 	const handleChangeRow = useCallback(
+		// TODO
 		function (response, value) {
 			handleChange(response, value, { index: rowIndex });
 		},
@@ -47,7 +50,7 @@ function Row({
 				value={value}
 				id={idComponent}
 				preferences={preferences}
-				iteration={rowIndex}
+				linksIterations={rowIndex}
 				executeExpression={executeExpression}
 				custom={custom}
 			/>,

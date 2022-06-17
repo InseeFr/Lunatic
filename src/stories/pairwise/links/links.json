@@ -34,14 +34,14 @@
 			"id": "pariwise-links",
 			"componentType": "PairwiseLinks",
 			"conditionFilter": { "value": "true" },
-			"X_axis": "PRENOM",
-			"Y_axis": "PRENOM",
+			"xAxis": { "value": "count(PRENOM)", "type": "VTL" },
+			"yAxis": { "value": "count(PRENOM)", "type": "VTL" },
 			"page": "2",
 			"components": [
 				{
 					"componentType": "Radio",
-					"conditionFilter": { "value": "X_axis = Y_axis" },
-					"label": "\"Quel est le lien entre \" || X_axis || \" et \" || Y_axis || \" ?\"",
+					"conditionFilter": { "value": "xAxis = yAxis" },
+					"label": "\"Quel est le lien entre \" || xAxis || \" et \" || yAxis || \" ?\"",
 					"response": {
 						"name": "LINKS"
 					},
@@ -106,7 +106,7 @@
 		},
 		{
 			"variableType": "CALCULATED",
-			"name": "X_axis",
+			"name": "xAxis",
 			"expression": "PRENOM",
 			"bindingDependencies": ["PRENOM"],
 			"shapeFrom": "PRENOM",
@@ -114,7 +114,7 @@
 		},
 		{
 			"variableType": "CALCULATED",
-			"name": "Y_axis",
+			"name": "yAxis",
 			"expression": "PRENOM",
 			"bindingDependencies": ["PRENOM"],
 			"shapeFrom": "PRENOM",
