@@ -17,4 +17,4 @@ function validateLoopConditionFilter(state, { next, iteration }) {
 	return true;
 }
 
-export default validateLoopConditionFilter;
+export { validateLoopConditionFilter };

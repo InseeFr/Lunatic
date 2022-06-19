@@ -1,3 +1,5 @@
+import { X_AXIS, Y_AXIS } from 'utils/constants';
+
 function createRefreshCalculated({ variables, execute, bindings }) {
 	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.
 
@@ -9,10 +11,18 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 		}
 	});
 
-	function refreshCalculated(map, { rootExpression, iteration }) {
+	function getIteration({ name, iteration, linksIterations }) {
+		if (name === X_AXIS) return linksIterations[0];
+		if (name === Y_AXIS) return linksIterations[1];
+		return iteration;
+	}
+
+	function refreshCalculated(
+		map,
+		{ rootExpression, iteration, linksIterations }
+	) {
 		return Object.entries(map).reduce(function (sub, [name, current]) {
 			const { variable, type } = variables[name];
-
 			if (type === 'CALCULATED' && toRefreshVariables.has(name)) {
 				const { expression, shapeFrom } = variable;
 
@@ -26,10 +36,11 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 						console.warn(e);
 					}
 				}
-
 				const value = execute(expression, {
 					logging,
-					iteration: shapeFrom ? iteration : undefined,
+					iteration: shapeFrom
+						? getIteration({ name, iteration, linksIterations })
+						: undefined,
 				});
 				bindings[name] = value;
 				toRefreshVariables.delete(name);

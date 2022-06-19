@@ -15,7 +15,7 @@ const VTL_ATTRIBUTES = [
 	'yAxis',
 ];
 
-function createCrawl({ executeExpression, iteration }) {
+function createCrawl({ executeExpression, iteration, linksIterations }) {
 	/**
 	 *
 	 * @param {*} object
@@ -28,6 +28,7 @@ function createCrawl({ executeExpression, iteration }) {
 			...object,
 			[path]: executeExpression(candidate, {
 				iteration,
+				linksIterations,
 			}),
 		};
 	}
@@ -87,8 +88,11 @@ function createCrawl({ executeExpression, iteration }) {
 	return crawl;
 }
 
-function fillAttributes(component, { executeExpression, iteration }) {
-	const crawl = createCrawl({ executeExpression, iteration });
+function fillAttributes(
+	component,
+	{ executeExpression, iteration, linksIterations }
+) {
+	const crawl = createCrawl({ executeExpression, iteration, linksIterations });
 	return VTL_ATTRIBUTES.reduce(
 		function (step, fullStringPath) {
 			const path = fullStringPath.split('.');
@@ -103,9 +107,13 @@ function fillAttributes(component, { executeExpression, iteration }) {
 
 function fillComponentExpressions(component, state) {
 	const { pager, executeExpression } = state;
-	const { iteration } = pager;
+	const { iteration, linksIterations } = pager;
 
-	return fillAttributes(component, { executeExpression, iteration });
+	return fillAttributes(component, {
+		executeExpression,
+		iteration,
+		linksIterations,
+	});
 }
 
 export default fillComponentExpressions;

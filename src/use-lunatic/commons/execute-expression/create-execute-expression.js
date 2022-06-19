@@ -3,7 +3,7 @@ import getSafetyExpression from './get-safety-expression';
 import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
-import { VTL, VTL_MD } from 'utils/constants';
+import { VTL, VTL_MD, X_AXIS, Y_AXIS } from 'utils/constants';
 
 function validateExpression(expObject) {
 	if (typeof expObject === 'object') {
@@ -124,8 +124,16 @@ function createExecuteExpression(variables, features) {
 		return {};
 	}
 
-	function resolveUseContext(name, { iteration }) {
+	function resolveUseContext(name, { iteration, linksIterations }) {
 		const value = bindings[name];
+		if ([X_AXIS, Y_AXIS].includes(name) && linksIterations !== undefined) {
+			pushToLazy(name);
+			const [x, y] = linksIterations;
+			if (Array.isArray(value) && x < value.length) {
+				return value[name === X_AXIS ? x : y];
+			}
+			return null;
+		}
 		if (iteration !== undefined && Array.isArray(value)) {
 			pushToLazy(name);
 			if (iteration < value.length) {
@@ -136,11 +144,11 @@ function createExecuteExpression(variables, features) {
 		return getVtlCompatibleValue(value);
 	}
 
-	function fillVariablesValues(map, { iteration }) {
+	function fillVariablesValues(map, { iteration, linksIterations }) {
 		return Object.entries(map).reduce(function (sub, [name, _]) {
 			return {
 				...sub,
-				[name]: resolveUseContext(name, { iteration }),
+				[name]: resolveUseContext(name, { iteration, linksIterations }),
 			};
 		}, {});
 	}
@@ -155,7 +163,7 @@ function createExecuteExpression(variables, features) {
 		const { value: expression, type } = validateExpression(
 			getSafetyExpression(expObject)
 		);
-		const { iteration, logging } = args;
+		const { iteration, linksIterations, logging } = args;
 		const bindingDependencies = getVariablesAndCach(expression);
 
 		function loggingDefault(_, bindings, e) {
@@ -164,14 +172,13 @@ function createExecuteExpression(variables, features) {
 				console.warn(e);
 			}
 		}
-
 		const vtlBindings = refreshCalculated(
 			fillVariablesValues(collecteVariables(bindingDependencies), {
 				iteration,
+				linksIterations,
 			}),
-			{ rootExpression: expression, iteration }
+			{ rootExpression: expression, iteration, linksIterations }
 		);
-
 		const memoized = getMemoizedValue(expression, vtlBindings);
 		if (memoized === undefined) {
 			const result = executeExpression(

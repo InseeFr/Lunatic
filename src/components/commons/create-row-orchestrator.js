@@ -18,8 +18,8 @@ function createRowOrchestrator(Row) {
 	}) {
 		if (nbRows > 0) {
 			return new Array(nbRows).fill(null).map(function (_, index) {
-				const i = index % xAxis;
-				const j = Math.trunc(index / xAxis);
+				const i = Math.trunc(index / xAxis);
+				const j = index % xAxis;
 				return (
 					<Row
 						key={index}

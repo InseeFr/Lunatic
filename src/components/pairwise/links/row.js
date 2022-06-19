@@ -10,30 +10,28 @@ function Row({
 	shortcut,
 	management,
 	preferences,
-	rowIndex,
 	executeExpression,
 	custom,
 	linksIterations,
 }) {
-	debugger;
 	const handleChangeRow = useCallback(
-		// TODO
 		function (response, value) {
-			handleChange(response, value, { index: rowIndex });
+			handleChange(response, value, { linksIterations });
 		},
-		[handleChange, rowIndex]
+		[handleChange, linksIterations]
 	);
 
 	return components.reduce(function (row, component) {
 		const { response, id } = component;
-		const idComponent = `${id}-${rowIndex + 1} `;
+		const [x, y] = linksIterations;
+		const idComponent = `${id}-${x + 1}-${y + 1} `;
 
 		let value = undefined;
 		if (response) {
 			const { name } = response;
 			const valueArray = valueMap[name];
-			if (Array.isArray(valueArray)) {
-				value = valueArray[rowIndex] || '';
+			if (Array.isArray(valueArray) && Array.isArray(valueArray[x])) {
+				value = valueArray[x][y] || '';
 			}
 		}
 
@@ -50,7 +48,7 @@ function Row({
 				value={value}
 				id={idComponent}
 				preferences={preferences}
-				linksIterations={rowIndex}
+				linksIterations={linksIterations}
 				executeExpression={executeExpression}
 				custom={custom}
 			/>,

@@ -10,7 +10,7 @@ const PairwiseLinks = ({
 	declarations,
 	components,
 	handleChange,
-	valueMap,
+	value,
 	missing,
 	shortcut,
 	features,
@@ -24,9 +24,9 @@ const PairwiseLinks = ({
 	const nbRows = xAxis * yAxis;
 	const handleChangeLinks = useCallback(
 		function (response, value, args) {
-			handleChange(response, value, { ...args, loop: true, length: nbRows });
+			handleChange(response, value, args);
 		},
-		[handleChange, nbRows]
+		[handleChange]
 	);
 
 	if (nbRows > 0)
@@ -38,7 +38,7 @@ const PairwiseLinks = ({
 					components={components}
 					handleChange={handleChangeLinks}
 					nbRows={nbRows}
-					valueMap={valueMap}
+					valueMap={value}
 					management={management}
 					missing={missing}
 					shortcut={shortcut}
