@@ -1,0 +1,47 @@
+{
+  "folders": [
+	{
+		"path": "..\\..\\..\\..\\..\\spark-hadoop"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\rdf\\SPARQL-React"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\VTL-Lab-UI"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\vtl-editor"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\test-vtl"
+	},
+	{
+		"path": "..\\..\\..\\.."
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\Wilco"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\oidc-js-examples"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\deploy\\vtl-deploy"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\Lunatic-mui"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\Trevas-JS"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\GF-Pilot-client"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\SEP-Pilot-client"
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\Statistics-Contextualized"
+	}
+],
+  "settings": {}
+}

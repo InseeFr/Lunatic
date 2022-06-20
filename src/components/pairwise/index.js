@@ -1,2 +1,2 @@
-export { default as PairwiseBlock } from './pairwise-block';
-export { default as PairwiseLinks } from './pairwise-links';
+export { default as PairwiseBlock } from './block';
+export { default as PairwiseLinks } from './links';

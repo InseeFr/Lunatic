@@ -3,6 +3,7 @@ import reduceVariablesSimple from './reduce-variables-simple';
 import reduceCleaning from './reduce-cleaning';
 import reduceMissing from './reduce-missing';
 import reduceResizing from './reduce-resizing';
+import reduceLinksVariable from './reduce-links-variable';
 
 function isOnSubPage(pager) {
 	const { subPage } = pager;
@@ -13,12 +14,19 @@ function updateVariables(state, action) {
 	const { payload } = action;
 	const { response, value, args = {} } = payload;
 	const { name } = response;
-	const { loop, index, length } = args;
+	const { loop, index, length, linksIterations } = args;
 
 	const { pager, variables } = state;
 	const { nbIterations, iteration } = pager;
 
-	if (loop) {
+	if (linksIterations !== undefined) {
+		const variablesNext = reduceLinksVariable(variables, {
+			name,
+			value,
+			linksIterations,
+		});
+		return { ...state, variables: variablesNext };
+	} else if (loop) {
 		const variablesNext = reduceVariablesArray(variables, {
 			name,
 			value,

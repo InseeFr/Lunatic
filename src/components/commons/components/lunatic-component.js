@@ -25,7 +25,6 @@ function LunaticComponent(props) {
 		missing,
 		missingResponse,
 	} = props;
-
 	return (
 		<VariableStatus>
 			<DeclarationsBeforeText declarations={declarations} custom={custom} />

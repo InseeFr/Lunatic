@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { isElement } from 'utils/is-element';
 import './button.scss';
 
 function Button({ children, onClick, disabled, label, className }) {
@@ -13,14 +14,28 @@ function Button({ children, onClick, disabled, label, className }) {
 		[onClick]
 	);
 
+	if (isElement(children))
+		return (
+			<button
+				disabled={disabled}
+				type="button"
+				className={classnames('button-lunatic', className, { disabled })}
+				onClick={handleClick}
+			>
+				{children}
+			</button>
+		);
+
 	return (
-		<input
-			disabled={disabled}
-			type="button"
-			className={classnames('button-lunatic', className, { disabled })}
-			value={label || children}
-			onClick={handleClick}
-		/>
+		<>
+			<input
+				disabled={disabled}
+				type="button"
+				className={classnames('button-lunatic', className, { disabled })}
+				value={label || children}
+				onClick={handleClick}
+			/>
+		</>
 	);
 }
 
