@@ -46,7 +46,7 @@
 			"components": [
 				{
 					"componentType": "Radio",
-					"conditionFilter": { "value": "xAxis = yAxis", "type": "VTL" },
+					"conditionFilter": { "value": "xAxis <> yAxis", "type": "VTL" },
 					"label": {
 						"value": "\"Quel est le lien entre \" || xAxis || \" et \" || yAxis || \" ?\"",
 						"type": "VTL|MD"
