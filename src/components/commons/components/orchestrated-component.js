@@ -34,8 +34,9 @@ function OrchestratedComponent({
 		},
 		[component, executeExpression, iteration, linksIterations]
 	);
+	const isFiltered = componentFilled?.conditionFilter;
 
-	if (componentType in lunatic && filled) {
+	if (componentType in lunatic && filled && isFiltered) {
 		return (
 			<Component
 				{...componentFilled}
