@@ -35,6 +35,12 @@ function createCrawl({ executeExpression, iteration, linksIterations }) {
 		};
 	}
 
+	function buildCrawlEntry(entry, path) {
+		return Array.isArray(entry)
+			? entry.map((e) => crawl(path, e))
+			: crawl(path, entry);
+	}
+
 	/**
 	 *
 	 * @param {*} object
@@ -46,9 +52,7 @@ function createCrawl({ executeExpression, iteration, linksIterations }) {
 		const [step, ...rest] = path;
 		return object[step].reduce(
 			function (stack, entry) {
-				const flattedEntry = Array.isArray(entry)
-					? entry.map((e) => crawl(rest, e))
-					: crawl(rest, entry);
+				const flattedEntry = buildCrawlEntry(entry, rest);
 				return {
 					...stack,
 					[step]: [...stack[step], flattedEntry],

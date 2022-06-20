@@ -1485,7 +1485,7 @@
 					"response": { "name": "NATIO2N" }
 				}
 			],
-			"iterations": { "value": "count(G_PRENOM)", "type": "VTL|MD" }
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
 		},
 
 		{
@@ -1834,7 +1834,7 @@
 					]
 				}
 			],
-			"iterations": { "value": "count(G_PRENOM)", "type": "VTL|MD" }
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
 		},
 
 		{
@@ -2749,7 +2749,7 @@
 					"response": { "name": "TYPLOGCO" }
 				}
 			],
-			"iterations": { "value": "count(G_PRENOM)", "type": "VTL|MD" }
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
 		},
 
 		{
@@ -3430,7 +3430,7 @@
 					"response": { "name": "TELETNJ" }
 				}
 			],
-			"iterations": { "value": "count(G_PRENOM)", "type": "VTL|MD" }
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
 		},
 
 		{
@@ -4663,7 +4663,7 @@
 					"response": { "name": "STOCB1" }
 				}
 			],
-			"iterations": { "value": "count(G_PRENOM)", "type": "VTL|MD" }
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
 		},
 
 		{
@@ -5672,7 +5672,7 @@
 					"response": { "name": "EPROJD" }
 				}
 			],
-			"iterations": { "value": "count(G_PRENOM)", "type": "VTL|MD" }
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
 		},
 
 		{
@@ -6300,7 +6300,7 @@
 					"response": { "name": "EAMIL" }
 				}
 			],
-			"iterations": { "value": "count(G_PRENOM)", "type": "VTL|MD" }
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
 		},
 
 		{
@@ -15257,7 +15257,7 @@
 					"response": { "name": "SDT2_SIT2" }
 				}
 			],
-			"iterations": { "value": "count(G_PRENOM)", "type": "VTL|MD" }
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
 		},
 
 		{
@@ -18592,7 +18592,7 @@
 					"response": { "name": "LIMT2" }
 				}
 			],
-			"iterations": { "value": "count(G_PRENOM)", "type": "VTL|MD" }
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
 		},
 
 		{
