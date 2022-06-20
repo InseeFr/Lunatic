@@ -26,4 +26,9 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
-Default.args = { id: 'simpsons-default', source: simpsons, pagination: true };
+Default.args = {
+	id: 'simpsons-default',
+	source: simpsons,
+	pagination: true,
+	data: { COLLECTED: { READY: { COLLECTED: true } } },
+};

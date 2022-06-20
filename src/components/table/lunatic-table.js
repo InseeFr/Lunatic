@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { LunaticField } from '../commons';
 import Table from './components/table';
 import { createLunaticComponent } from '../commons';
 import TableOrchestrator from './table-orchestrator';
 
 function LunaticTable({
-	htmlFor,
-	labelId,
 	id,
 	handleChange,
 	value,

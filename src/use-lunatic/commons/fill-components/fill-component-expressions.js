@@ -13,6 +13,8 @@ const VTL_ATTRIBUTES = [
 	'iterations',
 	'xAxis',
 	'yAxis',
+	'body.label',
+	'header.label',
 ];
 
 function createCrawl({ executeExpression, iteration, linksIterations }) {
@@ -44,9 +46,12 @@ function createCrawl({ executeExpression, iteration, linksIterations }) {
 		const [step, ...rest] = path;
 		return object[step].reduce(
 			function (stack, entry) {
+				const flattedEntry = Array.isArray(entry)
+					? entry.map((e) => crawl(rest, e))
+					: crawl(rest, entry);
 				return {
 					...stack,
-					[step]: [...stack[step], crawl(rest, entry)],
+					[step]: [...stack[step], flattedEntry],
 				};
 			},
 			{ ...object, [step]: [] }
