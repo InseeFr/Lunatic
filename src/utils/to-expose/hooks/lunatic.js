@@ -52,6 +52,8 @@ const useLunatic = (
 
 	const [modalContent, setModalContent] = useState(null);
 
+	const [cache, setCache] = useState({});
+
 	const components = useFilterComponents({
 		questionnaire,
 		management,
@@ -60,6 +62,8 @@ const useLunatic = (
 		page,
 		pagination,
 		todo: { ...todo, ...todoExternals },
+		cache,
+		setCache,
 	});
 
 	const { suggesters: suggestersToLoad } = source;
