@@ -18,25 +18,15 @@ function OrchestratedComponent({
 	custom,
 }) {
 	const { componentType } = component;
-	const [componentFilled, setComponentFilled] = useState(component);
+	const componentFilled = fillComponentExpressions(component, {
+		executeExpression,
+		pager: { iteration, linksIterations },
+	});
 	const Component = lunatic[componentType];
-	const [filled, setFilled] = useState(false);
 
-	useEffect(
-		function () {
-			setComponentFilled(
-				fillComponentExpressions(component, {
-					executeExpression,
-					pager: { iteration, linksIterations },
-				})
-			);
-			setFilled(true);
-		},
-		[component, executeExpression, iteration, linksIterations]
-	);
 	const isFiltered = componentFilled?.conditionFilter;
 
-	if (componentType in lunatic && filled && isFiltered) {
+	if (componentType in lunatic && isFiltered) {
 		return (
 			<Component
 				{...componentFilled}

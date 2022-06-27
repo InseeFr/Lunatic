@@ -164,6 +164,7 @@ function createExecuteExpression(variables, features) {
 			}),
 			{ rootExpression: expression, iteration, linksIterations }
 		);
+
 		const memoized = getMemoizedValue(expression, vtlBindings);
 		if (memoized === undefined) {
 			const result = executeExpression(
