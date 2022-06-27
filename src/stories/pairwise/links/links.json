@@ -25,7 +25,7 @@
 			"components": [
 				{
 					"componentType": "Input",
-					"label": { "value": "Prénom", "type": "VTL|MD" },
+					"label": { "value": "\"Prénom\"", "type": "VTL|MD" },
 					"conditionFilter": { "value": "true", "type": "VTL" },
 					"maxLength": 30,
 					"bindingDependencies": ["PRENOM"],
@@ -35,6 +35,23 @@
 					}
 				}
 			]
+		},
+		{
+			"id": "test",
+			"componentType": "Loop",
+			"paginatedLoop": false,
+			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"components": [
+				{
+					"id": "test-seq",
+					"componentType": "Sequence",
+					"label": { "value": "NEW_PRENOM", "type": "VTL|MD" },
+					"page": "1",
+					"conditionFilter": { "value": "true", "type": "VTL" }
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "1"
 		},
 		{
 			"id": "pariwise-links",
@@ -116,7 +133,7 @@
 		{
 			"variableType": "CALCULATED",
 			"name": "xAxis",
-			"expression": "PRENOM",
+			"expression": { "value": "PRENOM", "type": "VTL" },
 			"bindingDependencies": ["PRENOM"],
 			"shapeFrom": "PRENOM",
 			"inFilter": "false"
@@ -124,7 +141,15 @@
 		{
 			"variableType": "CALCULATED",
 			"name": "yAxis",
-			"expression": "PRENOM",
+			"expression": { "value": "PRENOM", "type": "VTL" },
+			"bindingDependencies": ["PRENOM"],
+			"shapeFrom": "PRENOM",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "NEW_PRENOM",
+			"expression": { "value": "\"Coucou \" || PRENOM", "type": "VTL" },
 			"bindingDependencies": ["PRENOM"],
 			"shapeFrom": "PRENOM",
 			"inFilter": "false"
