@@ -3,6 +3,7 @@ import getSafetyExpression from './get-safety-expression';
 import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
+import getVtlCompatibleValue from 'utils/vtl';
 import { VTL, VTL_MD, X_AXIS, Y_AXIS } from 'utils/constants';
 
 function validateExpression(expObject) {
@@ -13,22 +14,6 @@ function validateExpression(expObject) {
 		}
 	}
 	throw new Error(`Non-VTL compatible expression : ${expObject}`);
-}
-
-function getVtlCompatibleValue(value) {
-	if (value === undefined) {
-		return null;
-	}
-	if (Array.isArray(value)) {
-		return {
-			dataStructure: { result: {} },
-			dataPoints: {
-				result: value,
-			},
-		};
-	}
-
-	return value;
 }
 
 function createBindings(variables) {
