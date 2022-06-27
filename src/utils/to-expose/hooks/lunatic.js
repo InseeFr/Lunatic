@@ -52,19 +52,29 @@ const useLunatic = (
 
 	const [modalContent, setModalContent] = useState(null);
 
-	const [cache, setCache] = useState({});
+	const [components, setComponents] = useState([]);
 
-	const components = useFilterComponents({
-		questionnaire,
-		management,
-		bindings,
-		features: featuresWithoutMD,
-		page,
-		pagination,
-		todo: { ...todo, ...todoExternals },
-		cache,
-		setCache,
-	});
+	const [cache, setCache] = useState({});
+	const [memoryTodo, setMemoryTodo] = useState({});
+
+	useEffect(() => {
+		// eslint-disable-next-line react-hooks/rules-of-hooks
+		const { components: newComponents, todo: newTodo } = useFilterComponents({
+			questionnaire,
+			management,
+			bindings,
+			features: featuresWithoutMD,
+			page,
+			pagination,
+			todo: { ...todo, ...todoExternals },
+			cache,
+			setCache,
+			memoryTodo,
+		});
+		if (newComponents) setComponents(newComponents);
+		if (newTodo) setMemoryTodo(newTodo);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [questionnaire, bindings, todo, todoExternals]);
 
 	const { suggesters: suggestersToLoad } = source;
 

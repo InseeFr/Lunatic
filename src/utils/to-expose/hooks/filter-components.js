@@ -91,9 +91,6 @@ const buildComponents = ({
 	return pageComponentsFiltered;
 };
 
-let oldComponents = [];
-let memoryTodo = {};
-
 export const useFilterComponents = ({
 	questionnaire,
 	management,
@@ -104,10 +101,10 @@ export const useFilterComponents = ({
 	todo,
 	cache,
 	setCache,
+	memoryTodo,
 }) => {
 	if (Object.keys(todo).length > 0) {
-		memoryTodo = todo;
-		return oldComponents;
+		return { todo };
 	}
 	const components = buildComponents({
 		components: questionnaire.components,
@@ -120,6 +117,5 @@ export const useFilterComponents = ({
 		cache,
 		setCache,
 	});
-	oldComponents = components;
-	return components;
+	return { components };
 };
