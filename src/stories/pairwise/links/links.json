@@ -40,8 +40,8 @@
 			"id": "pariwise-links",
 			"componentType": "PairwiseLinks",
 			"conditionFilter": { "value": "true" },
-			"xAxis": { "value": "count(PRENOM)", "type": "VTL" },
-			"yAxis": { "value": "count(PRENOM)", "type": "VTL" },
+			"xAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"yAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
 			"page": "2",
 			"components": [
 				{

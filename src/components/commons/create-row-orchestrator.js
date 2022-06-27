@@ -13,13 +13,13 @@ function createRowOrchestrator(Row) {
 		preferences,
 		executeExpression,
 		iteration,
-		xAxis,
+		xAxisIterations,
 		custom,
 	}) {
 		if (nbRows > 0) {
 			return new Array(nbRows).fill(null).map(function (_, index) {
-				const i = Math.trunc(index / xAxis);
-				const j = index % xAxis;
+				const i = Math.trunc(index / xAxisIterations);
+				const j = index % xAxisIterations;
 				return (
 					<Row
 						key={index}
