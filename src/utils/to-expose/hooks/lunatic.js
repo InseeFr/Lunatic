@@ -57,20 +57,20 @@ const useLunatic = (
 	const [cache, setCache] = useState({});
 	const [memoryTodo, setMemoryTodo] = useState({});
 
+	const { components: newComponents, todo: newTodo } = useFilterComponents({
+		questionnaire,
+		management,
+		bindings,
+		features: featuresWithoutMD,
+		page,
+		pagination,
+		todo: { ...todo, ...todoExternals },
+		cache,
+		setCache,
+		memoryTodo,
+	});
+
 	useEffect(() => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks
-		const { components: newComponents, todo: newTodo } = useFilterComponents({
-			questionnaire,
-			management,
-			bindings,
-			features: featuresWithoutMD,
-			page,
-			pagination,
-			todo: { ...todo, ...todoExternals },
-			cache,
-			setCache,
-			memoryTodo,
-		});
 		if (newComponents) setComponents(newComponents);
 		if (newTodo) setMemoryTodo(newTodo);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
