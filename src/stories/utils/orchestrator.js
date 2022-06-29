@@ -47,7 +47,7 @@ function OrchestratorForStories({
 	activeGoNextForMissing = false,
 	suggesterFetcher,
 	autoSuggesterLoading,
-	addExternal,
+	// addExternal,
 	preferences,
 	custom,
 	filterDescription = true,
