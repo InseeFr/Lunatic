@@ -31,7 +31,7 @@ function onLogChange(response, value, args) {
 	console.log('onChange', { response, value, args });
 }
 
-function OrchestratorForStories(
+function OrchestratorForStories({
 	source,
 	data,
 	management = false,
@@ -44,12 +44,13 @@ function OrchestratorForStories(
 	activeGoNextForMissing = false,
 	suggesterFetcher,
 	autoSuggesterLoading,
+	suggesters,
 	addExternal,
 	preferences,
 	custom,
 	filterDescription = true,
 	...rest
-) {
+}) {
 	const { maxPage } = source;
 
 	const {
@@ -66,6 +67,10 @@ function OrchestratorForStories(
 		features,
 		preferences,
 		onChange: onLogChange,
+		activeGoNextForMissing,
+		suggesterFetcher,
+		autoSuggesterLoading,
+		management,
 	});
 
 	const components = getComponents();
