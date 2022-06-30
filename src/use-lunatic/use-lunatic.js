@@ -100,6 +100,14 @@ function useLunatic(
 		[dispatch, onChange]
 	);
 
+	const getState = () => {
+		const { variables } = state;
+		return Object.entries(variables).reduce(
+			(acc, [k, { value }]) => ({ ...acc, [k]: value }),
+			{}
+		);
+	};
+
 	const pageTag = getPageTag(pager);
 	const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
@@ -140,6 +148,7 @@ function useLunatic(
 		isLastPage,
 		pager,
 		waiting,
+		getState,
 	};
 }
 
