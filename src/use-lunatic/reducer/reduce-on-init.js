@@ -4,7 +4,6 @@ import {
 	isFirstLastPage,
 	createExecuteExpression,
 } from '../commons';
-import { COLLECTED } from 'utils/constants';
 
 /* à bouger d'ici */
 
@@ -130,8 +129,16 @@ function checkInLoop(state) {
 
 function reduceOnInit(state, action) {
 	const { payload } = action;
-	const { source, data, initialPage, features, handleChange, preferences } =
-		payload;
+	const {
+		source,
+		data,
+		initialPage,
+		features,
+		handleChange,
+		preferences,
+		savingType,
+		management,
+	} = payload;
 
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
@@ -164,7 +171,9 @@ function reduceOnInit(state, action) {
 			executeExpression,
 			updateBindings,
 			handleChange,
-			preferences: preferences || [COLLECTED],
+			preferences,
+			management,
+			savingType,
 		});
 	}
 
