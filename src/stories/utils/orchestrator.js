@@ -68,8 +68,9 @@ function OrchestratorForStories({
 		preferences,
 		onChange: onLogChange,
 		activeGoNextForMissing,
-		suggesterFetcher,
 		autoSuggesterLoading,
+		suggesters,
+		suggesterFetcher,
 		management,
 	});
 

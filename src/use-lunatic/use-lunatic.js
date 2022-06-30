@@ -4,7 +4,7 @@ import * as actions from './actions';
 import reducer from './reducer';
 import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 import { COLLECTED } from 'utils/constants';
-import { loadSuggesters } from '../../store-tools/auto-load';
+import { loadSuggesters } from '../utils/store-tools/auto-load';
 
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL', 'MD'];
@@ -22,7 +22,7 @@ function useLunatic(
 		management = false,
 		initialPage = '1',
 		autoSuggesterLoading = false,
-		suggestersConfiguration,
+		suggesters: suggestersConfiguration,
 		suggesterFetcher,
 	}
 ) {
