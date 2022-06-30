@@ -1,0 +1,28 @@
+{
+	"components": [
+		{
+			"componentType": "Input",
+			"label": { "value": "\"What's your name?\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"maxLength": 30,
+			"id": "name",
+			"response": {
+				"name": "NAME"
+			}
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NAME",
+			"componentRef": "name",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}
