@@ -4,23 +4,29 @@
 		{
 			"id": "seq",
 			"componentType": "Sequence",
-			"label": "\"Description des individus de votre logement\"",
-			"conditionFilter": { "value": "true" },
+			"label": {
+				"value": "\"Description des individus de votre logement\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
 			"page": "1"
 		},
 		{
 			"id": "loop-prenom",
 			"componentType": "RosterForLoop",
-			"label": "\"Ajouter un individu\"",
-			"conditionFilter": { "value": "true" },
+			"label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
 			"bindingDependencies": ["PRENOM"],
-			"lines": { "min": { "value": 1 }, "max": { "value": "10" } },
+			"lines": {
+				"min": { "value": 1, "type": "VTL" },
+				"max": { "value": "10", "type": "VTL" }
+			},
 			"page": "1",
 			"components": [
 				{
 					"componentType": "Input",
-					"label": "Prénom",
-					"conditionFilter": { "value": "true" },
+					"label": { "value": "\"Prénom\"", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
 					"maxLength": 30,
 					"bindingDependencies": ["PRENOM"],
 					"id": "prenom",
@@ -31,17 +37,37 @@
 			]
 		},
 		{
+			"id": "test",
+			"componentType": "Loop",
+			"paginatedLoop": false,
+			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"components": [
+				{
+					"id": "test-seq",
+					"componentType": "Sequence",
+					"label": { "value": "NEW_PRENOM", "type": "VTL|MD" },
+					"page": "1",
+					"conditionFilter": { "value": "true", "type": "VTL" }
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "1"
+		},
+		{
 			"id": "pariwise-links",
 			"componentType": "PairwiseLinks",
 			"conditionFilter": { "value": "true" },
-			"X_axis": "PRENOM",
-			"Y_axis": "PRENOM",
+			"xAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"yAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
 			"page": "2",
 			"components": [
 				{
 					"componentType": "Radio",
-					"conditionFilter": { "value": "X_axis = Y_axis" },
-					"label": "\"Quel est le lien entre \" || X_axis || \" et \" || Y_axis || \" ?\"",
+					"conditionFilter": { "value": "xAxis <> yAxis", "type": "VTL" },
+					"label": {
+						"value": "\"Quel est le lien entre \" || xAxis || \" et \" || yAxis || \" ?\"",
+						"type": "VTL|MD"
+					},
 					"response": {
 						"name": "LINKS"
 					},
@@ -106,19 +132,33 @@
 		},
 		{
 			"variableType": "CALCULATED",
-			"name": "X_axis",
-			"expression": "PRENOM",
+			"name": "xAxis",
+			"expression": { "value": "PRENOM", "type": "VTL" },
 			"bindingDependencies": ["PRENOM"],
 			"shapeFrom": "PRENOM",
 			"inFilter": "false"
 		},
 		{
 			"variableType": "CALCULATED",
-			"name": "Y_axis",
-			"expression": "PRENOM",
+			"name": "yAxis",
+			"expression": { "value": "PRENOM", "type": "VTL" },
+			"bindingDependencies": ["PRENOM"],
+			"shapeFrom": "PRENOM",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "NEW_PRENOM",
+			"expression": { "value": "\"Coucou \" || PRENOM", "type": "VTL" },
 			"bindingDependencies": ["PRENOM"],
 			"shapeFrom": "PRENOM",
 			"inFilter": "false"
 		}
-	]
+	],
+	"resizing": {
+		"PRENOM": {
+			"sizeForLinksVariables": ["count(PRENOM)", "count(PRENOM)"],
+			"linksVariables": ["LINKS"]
+		}
+	}
 }

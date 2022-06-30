@@ -1,3 +1,3 @@
 export * from './components';
 export { default as Table } from './table';
-export * from '../utils/to-expose';
+export { default as useLunatic } from '../use-lunatic';

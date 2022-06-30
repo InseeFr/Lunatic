@@ -1,3 +1,5 @@
+import reduceCleaning from './reduce-cleaning';
+
 function buildMissingValue(state, oldValue) {
 	const {
 		pager: { iteration },
@@ -26,7 +28,18 @@ function reduceMissing(state, action) {
 			const newValue = buildMissingValue(state, value);
 			return { ...acc, [variableName]: { ...rest, value: newValue } };
 		}, {});
-		return { ...state, variables: { ...variables, ...delta } };
+		const newStateAfterMissing = {
+			...state,
+			variables: { ...variables, ...delta },
+		};
+		// If missing clean variable which is also into cleaning case,
+		// we have to handle theses cleanings
+		// To check: do we have with this trick or triggering handle change action?
+		const newStateAfterCleaning = toClean.reduce(
+			(acc, v) => reduceCleaning(acc, { payload: { response: { name: v } } }),
+			newStateAfterMissing
+		);
+		return newStateAfterCleaning;
 	}
 	return state;
 }

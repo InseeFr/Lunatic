@@ -2,37 +2,67 @@ import { useReducer, useEffect, useCallback } from 'react';
 import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
 import reducer from './reducer';
-import { loadSuggester } from './commons';
 import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
+import { COLLECTED } from 'utils/constants';
+import { loadSuggesters } from '../utils/store-tools/auto-load';
 
+const DEFAULT_DATA = {};
+const DEFAULT_FEATURES = ['VTL', 'MD'];
+const DEFAULT_PREFERENCES = [COLLECTED];
 function nothing() {}
 
-function useLunatic({
+function useLunatic(
 	source,
-	data,
-	initialPage,
-	features,
-	preferences,
-	onChange = nothing,
-}) {
+	data = DEFAULT_DATA,
+	{
+		features = DEFAULT_FEATURES,
+		preferences = DEFAULT_PREFERENCES,
+		savingType = COLLECTED,
+		onChange = nothing,
+		management = false,
+		initialPage = '1',
+		autoSuggesterLoading = false,
+		suggesters: suggestersConfiguration,
+		suggesterFetcher,
+	}
+) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { pager, waiting, errors } = state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
 
-	useEffect(
-		function () {
-			async function doIt() {
-				if (suggesters) {
-					dispatch(actions.onSetWaiting(true));
-					const status = await loadSuggester(suggesters);
-					dispatch(actions.onSetWaiting(false));
-				}
+	useEffect(() => {
+		const init = async () => {
+			if (
+				autoSuggesterLoading &&
+				typeof suggestersConfiguration === 'object' &&
+				Object.values(suggestersConfiguration).length > 0
+			) {
+				const s = suggesters.reduce(function (current, storeInfo) {
+					const { name } = storeInfo;
+					if (!suggestersConfiguration[name]) return current;
+					return {
+						...current,
+						[name]: {
+							...storeInfo,
+							url: suggestersConfiguration[name].url,
+							stopWords: suggestersConfiguration[name].stopWords,
+						},
+					};
+				}, {});
+				dispatch(actions.onSetWaiting(true));
+				const status = await loadSuggesters(suggesterFetcher)(s);
+				dispatch(actions.onSetWaiting(false));
 			}
-			doIt();
-		},
-		[suggesters]
-	);
+		};
+
+		init();
+	}, [
+		autoSuggesterLoading,
+		suggesterFetcher,
+		suggestersConfiguration,
+		suggesters,
+	]);
 
 	const goNextPage = useCallback(
 		function (payload = {}) {
@@ -82,11 +112,22 @@ function useLunatic({
 					initialPage,
 					features,
 					preferences,
+					savingType,
+					management,
 					handleChange,
 				})
 			);
 		},
-		[source, data, initialPage, features, preferences, handleChange]
+		[
+			source,
+			data,
+			initialPage,
+			features,
+			preferences,
+			savingType,
+			management,
+			handleChange,
+		]
 	);
 
 	return {

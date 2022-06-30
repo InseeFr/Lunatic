@@ -1,11 +1,11 @@
 import React from 'react';
-import Orchestrator from '../../utils/orchestrator';
-import links from './links';
+import Orchestrator from '../utils/orchestrator';
+import source from './source';
 import data from './data';
-import defaultArgTypes from '../../utils/default-arg-types';
+import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Pairwise/Links',
+	title: 'Components/Input',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };
@@ -15,4 +15,4 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
-Default.args = { id: 'links', source: links, pagination: true, data };
+Default.args = { id: 'input', source, data };

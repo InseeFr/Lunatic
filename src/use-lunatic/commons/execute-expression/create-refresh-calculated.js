@@ -1,25 +1,68 @@
+import { CALCULATED, X_AXIS, Y_AXIS } from 'utils/constants';
+
 function createRefreshCalculated({ variables, execute, bindings }) {
 	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.
 
 	// à l'init, on y colle toutes les variables de calcul
 	Object.values(variables).forEach(function ({ variable }) {
 		const { variableType, name } = variable;
-		if (variableType === 'CALCULATED') {
+		if (variableType === CALCULATED) {
 			toRefreshVariables.set(name, variable);
 		}
 	});
 
-	function refreshCalculated(map, { rootExpression, iteration }) {
+	function getIteration({ name, iteration, linksIterations }) {
+		if (name === X_AXIS) return linksIterations[0];
+		if (name === Y_AXIS) return linksIterations[1];
+		return iteration;
+	}
+
+	function buildValue({
+		expression,
+		logging,
+		shapeFrom,
+		name,
+		iteration,
+		linksIterations,
+	}) {
+		const value = execute(expression, {
+			logging,
+			iteration: shapeFrom
+				? getIteration({ name, iteration, linksIterations })
+				: undefined,
+		});
+		if (shapeFrom && iteration !== undefined) {
+			if (bindings[name] === undefined) {
+				const shapeVariable = bindings[shapeFrom];
+				const initialValue = shapeVariable.map((_, i) =>
+					execute(expression, {
+						logging,
+						iteration: i,
+					})
+				);
+				bindings[name] = initialValue;
+				return initialValue[iteration];
+			}
+			bindings[name][iteration] = value;
+			return bindings[name][iteration];
+		}
+		bindings[name] = value;
+		return value;
+	}
+
+	function refreshCalculated(
+		map,
+		{ rootExpression, iteration, linksIterations }
+	) {
 		return Object.entries(map).reduce(function (sub, [name, current]) {
 			const { variable, type } = variables[name];
-
-			if (type === 'CALCULATED' && toRefreshVariables.has(name)) {
+			if (type === CALCULATED && toRefreshVariables.has(name)) {
 				const { expression, shapeFrom } = variable;
 
 				function logging(expression, bindings, e) {
 					if (process.env.NODE_ENV === 'development') {
 						console.warn(
-							`VTL error when refreshing calculated variable ${name} :  ${expression}`,
+							`VTL error when refreshing calculated variable ${name} :  ${expression.value}`,
 							{ bindings }
 						);
 						console.warn(`root expression : ${rootExpression}`);
@@ -27,13 +70,18 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 					}
 				}
 
-				const value = execute(expression, {
+				const value = buildValue({
+					expression,
 					logging,
-					iteration: shapeFrom ? iteration : undefined,
+					shapeFrom,
+					name,
+					iteration,
+					linksIterations,
+					bindings,
 				});
-				bindings[name] = value;
-				toRefreshVariables.delete(name);
 
+				if (type !== CALCULATED || iteration === undefined)
+					toRefreshVariables.delete(name);
 				return { ...sub, [name]: value };
 			}
 			return { ...sub, [name]: current };

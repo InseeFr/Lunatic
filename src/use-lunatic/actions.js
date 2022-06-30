@@ -13,10 +13,22 @@ export const onInit = ({
 	source,
 	initialPage,
 	features,
+	preferences,
+	savingType,
+	management,
 	handleChange,
 }) => ({
 	type: ON_INIT,
-	payload: { data, source, initialPage, features, handleChange },
+	payload: {
+		data,
+		source,
+		initialPage,
+		features,
+		preferences,
+		savingType,
+		management,
+		handleChange,
+	},
 });
 
 export const HANDLE_CHANGE = 'use-lunatic/handle-change';
