@@ -52,7 +52,12 @@ const useLunatic = (
 
 	const [modalContent, setModalContent] = useState(null);
 
-	const components = useFilterComponents({
+	const [components, setComponents] = useState([]);
+
+	const [cache, setCache] = useState({});
+	const [memoryTodo, setMemoryTodo] = useState({});
+
+	const { components: newComponents, todo: newTodo } = useFilterComponents({
 		questionnaire,
 		management,
 		bindings,
@@ -60,7 +65,16 @@ const useLunatic = (
 		page,
 		pagination,
 		todo: { ...todo, ...todoExternals },
+		cache,
+		setCache,
+		memoryTodo,
 	});
+
+	useEffect(() => {
+		if (newComponents) setComponents(newComponents);
+		if (newTodo) setMemoryTodo(newTodo);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [questionnaire, bindings, todo, todoExternals]);
 
 	const { suggesters: suggestersToLoad } = source;
 

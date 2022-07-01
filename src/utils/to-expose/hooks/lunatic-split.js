@@ -112,6 +112,8 @@ const useLunaticSplit = (
 	const [todoExternals, setTodoExternals] = useState({});
 	const [modalContent, setModalContent] = useState(null);
 
+	const [cache, setCache] = useState({});
+
 	const components = useFilterComponents({
 		questionnaire,
 		management,
@@ -120,6 +122,8 @@ const useLunaticSplit = (
 		page,
 		pagination,
 		todo: { ...todo, ...todoExternals },
+		cache,
+		setCache,
 	});
 
 	const { suggesters: suggestersToLoad } = source;

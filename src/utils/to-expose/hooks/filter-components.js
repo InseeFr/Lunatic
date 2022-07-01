@@ -1,13 +1,18 @@
 import { interpret } from '../interpret';
 import { isDev, buildVectorialBindings } from '../../lib';
 
-let cache = {};
-
 const customFilterPagination = ({ page }, pagination, currentPage) => {
 	return pagination ? currentPage?.split('.')[0] === page : true;
 };
 
-const filterComponents = ({ components, updatedVars, features, bindings }) => {
+const filterComponents = ({
+	components,
+	updatedVars,
+	features,
+	bindings,
+	cache,
+	setCache,
+}) => {
 	const localCache = {};
 	const filtered = components.filter(({ conditionFilter }) => {
 		if (!conditionFilter || !conditionFilter.value) return true;
@@ -24,7 +29,11 @@ const filterComponents = ({ components, updatedVars, features, bindings }) => {
 		localCache[value] = inter;
 		return inter;
 	});
-	cache = { ...cache, ...localCache };
+	if (
+		Object.keys(localCache).some((value) => cache[value] !== localCache[value])
+	) {
+		setCache((prevCache) => ({ ...prevCache, ...localCache }));
+	}
 	return filtered;
 };
 
@@ -36,6 +45,8 @@ const buildComponents = ({
 	page,
 	pagination,
 	todo,
+	cache,
+	setCache,
 }) => {
 	if (management && !pagination) return components;
 
@@ -57,6 +68,8 @@ const buildComponents = ({
 			updatedVars,
 			features,
 			bindings,
+			cache,
+			setCache,
 		});
 		if (isDev) console.log(`End filter: ${new Date().getTime() - start} ms`);
 		return filtered;
@@ -71,13 +84,12 @@ const buildComponents = ({
 		updatedVars,
 		features,
 		bindings,
+		cache,
+		setCache,
 	});
 	if (isDev) console.log(`End filter: ${new Date().getTime() - start}`);
 	return pageComponentsFiltered;
 };
-
-let oldComponents = [];
-let memoryTodo = {};
 
 export const useFilterComponents = ({
 	questionnaire,
@@ -87,10 +99,12 @@ export const useFilterComponents = ({
 	page,
 	pagination,
 	todo,
+	cache,
+	setCache,
+	memoryTodo,
 }) => {
 	if (Object.keys(todo).length > 0) {
-		memoryTodo = todo;
-		return oldComponents;
+		return { todo };
 	}
 	const components = buildComponents({
 		components: questionnaire.components,
@@ -100,7 +114,8 @@ export const useFilterComponents = ({
 		page,
 		pagination,
 		todo: memoryTodo,
+		cache,
+		setCache,
 	});
-	oldComponents = components;
-	return components;
+	return { components };
 };
