@@ -1,4 +1,4 @@
-import { isElement } from 'utils/is-element';
+import { isElement } from '../../utils/is-element';
 
 function safetyLabel(label) {
 	if (
