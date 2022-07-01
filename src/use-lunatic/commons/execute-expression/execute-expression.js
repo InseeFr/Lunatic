@@ -1,7 +1,7 @@
 import React from 'react';
 import { interpret } from '@inseefr/trevas';
-import MdLabel from 'components/commons/components/md-label';
-import { VTL, MD } from 'utils/constants';
+import MdLabel from '../../../components/commons/components/md-label';
+import { VTL, MD } from '../../../utils/constants';
 
 function isDataSet(result) {
 	return result && typeof result === 'object' && result.dataPoints;

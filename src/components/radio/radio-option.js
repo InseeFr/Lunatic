@@ -5,7 +5,7 @@ import {
 	RadioUnchecked,
 	CheckboxChecked,
 	CheckboxUnchecked,
-} from 'components/commons/icons';
+} from '../commons/icons';
 
 function getIcon(checked, checkboxStyle) {
 	if (checked) {

@@ -3,8 +3,8 @@ import getSafetyExpression from './get-safety-expression';
 import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
-import getVtlCompatibleValue from 'utils/vtl';
-import { VTL, VTL_MD, X_AXIS, Y_AXIS } from 'utils/constants';
+import getVtlCompatibleValue from '../../../utils/vtl';
+import { VTL, VTL_MD, X_AXIS, Y_AXIS } from '../../../utils/constants';
 
 function validateExpression(expObject) {
 	if (typeof expObject === 'object') {
@@ -13,6 +13,7 @@ function validateExpression(expObject) {
 			return expObject;
 		}
 	}
+	if (typeof expObject === 'string') return { value: expObject, type: VTL };
 	throw new Error(`Non-VTL compatible expression : ${expObject}`);
 }
 
