@@ -20,10 +20,10 @@ function LunaticFieldsetComponent(props) {
 		children,
 		missingResponse,
 		missing,
+		management,
 	} = props;
-
-	return (
-		<VariableStatus>
+	const content = (
+		<>
 			<DeclarationsBeforeText declarations={declarations} custom={custom} />
 			<FieldContainer
 				value={value}
@@ -38,8 +38,9 @@ function LunaticFieldsetComponent(props) {
 			</FieldContainer>
 			<DeclarationsDetachable declarations={declarations} custom={custom} />
 			{missing && missingResponse && <Missing {...props} />}
-		</VariableStatus>
+		</>
 	);
+	return management ? <VariableStatus>{content}</VariableStatus> : content;
 }
 
 export default LunaticFieldsetComponent;

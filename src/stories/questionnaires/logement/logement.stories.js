@@ -20,6 +20,11 @@ const stories = {
 			control: 'boolean',
 			defaultValue: true,
 		},
+		management: {
+			table: { disable: false },
+			control: 'boolean',
+			defaultValue: false,
+		},
 	},
 };
 
