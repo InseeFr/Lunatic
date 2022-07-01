@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactTooltip from 'react-tooltip';
 import * as img from './img';
 import './variable-status.scss';
 
-const VariableResponse = ({ id, response, children }) => {
+const VariableStatus = ({ id = '', children }) => {
 	const [tooltipElements, setTooltipElements] = useState(() => ({
 		imgName: 'editedImg',
-		content: [{ key: 'bla bla', value: 'toto' }],
+		content: [{ key: 'TODO', value: ' coming soon' }],
 	}));
 
 	// useEffect(() => {
@@ -43,12 +43,12 @@ const VariableResponse = ({ id, response, children }) => {
 	);
 };
 
-VariableResponse.defaultProps = {
+VariableStatus.defaultProps = {
 	response: {},
 };
 
-VariableResponse.propTypes = {
+VariableStatus.propTypes = {
 	id: PropTypes.string,
 };
 
-export default VariableResponse;
+export default VariableStatus;

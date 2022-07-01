@@ -27,19 +27,16 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 	return null;
 }
 
-const DEFAULT_DATA = {};
-const DEFAULT_FEATURES = ['VTL', 'MD'];
-
 function onLogChange(response, value, args) {
 	console.log('onChange', { response, value, args });
 }
 
 function OrchestratorForStories({
 	source,
-	data = DEFAULT_DATA,
+	data,
 	management = false,
 	modalForControls = false,
-	features = DEFAULT_FEATURES,
+	features,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
@@ -47,7 +44,8 @@ function OrchestratorForStories({
 	activeGoNextForMissing = false,
 	suggesterFetcher,
 	autoSuggesterLoading,
-	// addExternal,
+	suggesters,
+	addExternal,
 	preferences,
 	custom,
 	filterDescription = true,
@@ -64,13 +62,16 @@ function OrchestratorForStories({
 		isLastPage,
 		waiting,
 		getErrors,
-	} = lunatic.useLunatic({
-		source,
-		data,
+	} = lunatic.useLunatic(source, data, {
 		initialPage,
 		features,
 		preferences,
 		onChange: onLogChange,
+		activeGoNextForMissing,
+		autoSuggesterLoading,
+		suggesters,
+		suggesterFetcher,
+		management,
 	});
 
 	const components = getComponents();

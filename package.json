@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.2.0-v2",
+	"version": "0.3.1-v2",
 	"workersVersion": "0.2.4-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
@@ -68,6 +68,8 @@
 	"devDependencies": {
 		"@babel/core": "^7.9.0",
 		"@babel/plugin-proposal-class-properties": "^7.7.4",
+		"@babel/plugin-proposal-private-methods": "^7.18.6",
+		"@babel/plugin-proposal-private-property-in-object": "^7.18.6",
 		"@babel/plugin-syntax-dynamic-import": "^7.7.4",
 		"@babel/plugin-transform-modules-commonjs": "^7.9.0",
 		"@babel/plugin-transform-react-jsx": "^7.9.0",
