@@ -24,9 +24,10 @@ function LunaticComponent(props) {
 		children,
 		missing,
 		missingResponse,
+		management,
 	} = props;
-	return (
-		<VariableStatus>
+	const content = (
+		<>
 			<DeclarationsBeforeText declarations={declarations} custom={custom} />
 			<Label
 				id={labelId}
@@ -47,8 +48,9 @@ function LunaticComponent(props) {
 			</FieldContainer>
 			<DeclarationsDetachable declarations={declarations} custom={custom} />
 			{missing && missingResponse && <Missing {...props} />}
-		</VariableStatus>
+		</>
 	);
+	return management ? <VariableStatus>{content}</VariableStatus> : content;
 }
 
 export default LunaticComponent;
