@@ -10,8 +10,6 @@ import createCustomizableLunaticField from '../../create-customizable-field';
 import { INITIAL_STATE, reducer, actions } from './state-management';
 import './combo-box.scss';
 
-import usePrevious from '../../use-previous';
-
 const EMPTY_SEARCH = '';
 
 function getDefaultOptionValue(option = {}) {
@@ -50,7 +48,7 @@ function ComboBox({
 				actions.onInit({ options, value, selectedIndex, getOptionValue })
 			);
 		},
-		[value, selectedIndex, options]
+		[value, selectedIndex, options, getOptionValue]
 	);
 
 	const onFocus = useCallback(function () {
@@ -67,7 +65,7 @@ function ComboBox({
 			dispatch(actions.onSelect(index));
 			onSelect(getOptionValue(option));
 		},
-		[options, onSelect]
+		[options, onSelect, getOptionValue]
 	);
 
 	const handleChange = useCallback(

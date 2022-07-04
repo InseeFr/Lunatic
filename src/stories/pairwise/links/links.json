@@ -46,6 +46,7 @@
 			"components": [
 				{
 					"componentType": "Dropdown",
+					"id": "dropdown-1",
 					"conditionFilter": { "value": "xAxis <> yAxis", "type": "VTL" },
 					"label": {
 						"value": "\"Quel est le lien entre \" || xAxis || \" et \" || yAxis || \" ?\"",
