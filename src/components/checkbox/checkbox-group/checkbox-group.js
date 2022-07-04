@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { CheckboxOption } from '../commons';
 import { Label } from '../../commons';
 import { useOnHandleChange } from '../../commons';
