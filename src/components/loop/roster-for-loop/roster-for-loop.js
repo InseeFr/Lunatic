@@ -5,8 +5,9 @@ import {
 	DeclarationsDetachable,
 } from '../../declarations';
 import RosterTable from './roster-table';
-import AddRowButton from './add-row-button';
-import D from 'i18n';
+import HandleRowButton from './handle-row-button';
+import useOnHandleChange from '../../commons/use-on-handle-change';
+import D from '../../../i18n';
 
 const DEFAULT_MAX_ROWS = 12;
 
@@ -33,8 +34,8 @@ function RosterforLoop({
 	shortcut,
 	id,
 	management,
-	iteration,
 	custom,
+	...props
 }) {
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [init, setInit] = useState(false);
@@ -50,8 +51,6 @@ function RosterforLoop({
 		[init, valueMap]
 	);
 
-	const disabled = nbRows === max;
-
 	const addRow = useCallback(
 		function () {
 			if (nbRows < max) {
@@ -59,6 +58,23 @@ function RosterforLoop({
 			}
 		},
 		[max, nbRows]
+	);
+
+	const removeRow = useCallback(
+		function () {
+			if (nbRows > 1) {
+				const newNbRows = nbRows - 1;
+				setNbRows(newNbRows);
+				Object.entries(valueMap).forEach(([k, v]) => {
+					const newValue = v.reduce((acc, e, i) => {
+						if (i < newNbRows) return [...acc, e];
+						return acc;
+					}, []);
+					handleChange({ name: k }, newValue);
+				});
+			}
+		},
+		[nbRows, handleChange, valueMap]
 	);
 
 	if (nbRows > 0) {
@@ -80,9 +96,20 @@ function RosterforLoop({
 					custom={custom}
 				/>
 				<DeclarationsDetachable declarations={declarations} custom={custom} />
-				<AddRowButton onClick={addRow} disabled={disabled} custom={custom}>
+				<HandleRowButton
+					onClick={addRow}
+					disabled={nbRows === max}
+					custom={custom}
+				>
 					{label || D.DEFAULT_BUTTON_ADD}
-				</AddRowButton>
+				</HandleRowButton>
+				<HandleRowButton
+					onClick={removeRow}
+					disabled={nbRows === 1}
+					custom={custom}
+				>
+					{D.DEFAULT_BUTTON_REMOVE}
+				</HandleRowButton>
 			</>
 		);
 	}

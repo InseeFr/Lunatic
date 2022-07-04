@@ -37,23 +37,6 @@
 			]
 		},
 		{
-			"id": "test",
-			"componentType": "Loop",
-			"paginatedLoop": false,
-			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
-			"components": [
-				{
-					"id": "test-seq",
-					"componentType": "Sequence",
-					"label": { "value": "NEW_PRENOM", "type": "VTL|MD" },
-					"page": "1",
-					"conditionFilter": { "value": "true", "type": "VTL" }
-				}
-			],
-			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "1"
-		},
-		{
 			"id": "pariwise-links",
 			"componentType": "PairwiseLinks",
 			"conditionFilter": { "value": "true" },
@@ -62,7 +45,7 @@
 			"page": "2",
 			"components": [
 				{
-					"componentType": "Radio",
+					"componentType": "Dropdown",
 					"conditionFilter": { "value": "xAxis <> yAxis", "type": "VTL" },
 					"label": {
 						"value": "\"Quel est le lien entre \" || xAxis || \" et \" || yAxis || \" ?\"",
@@ -142,14 +125,6 @@
 			"variableType": "CALCULATED",
 			"name": "yAxis",
 			"expression": { "value": "PRENOM", "type": "VTL" },
-			"bindingDependencies": ["PRENOM"],
-			"shapeFrom": "PRENOM",
-			"inFilter": "false"
-		},
-		{
-			"variableType": "CALCULATED",
-			"name": "NEW_PRENOM",
-			"expression": { "value": "\"Coucou \" || PRENOM", "type": "VTL" },
 			"bindingDependencies": ["PRENOM"],
 			"shapeFrom": "PRENOM",
 			"inFilter": "false"

@@ -4,7 +4,7 @@ import Link from './link';
 
 const renderers = (otherProps) => {
 	return {
-		paragraph: (props) => <p style={{ margin: '0' }}>{props.children}</p>,
+		p: (props) => <p style={{ margin: '0' }}>{props.children}</p>,
 		a: (props) => Link({ ...otherProps, ...props }),
 	};
 };

@@ -60,6 +60,7 @@ function updateBindings(state, action) {
 	const { response } = payload;
 	const { name } = response;
 	const { updateBindings, variables } = state;
+
 	const { value } = variables[name];
 
 	updateBindings(name, value);
