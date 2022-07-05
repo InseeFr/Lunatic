@@ -3,7 +3,7 @@ import React from 'react';
 function displayLabelOrInput(Field) {
 	const Memoized = React.memo(Field);
 	const { name } = Field;
-	console.log({ name });
+
 	return function LabelOrInput(props) {
 		const { editable, expended } = props;
 

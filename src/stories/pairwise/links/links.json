@@ -17,6 +17,7 @@
 			"label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"bindingDependencies": ["PRENOM"],
+
 			"lines": {
 				"min": { "value": 1, "type": "VTL" },
 				"max": { "value": "10", "type": "VTL" }

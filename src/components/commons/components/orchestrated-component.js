@@ -26,7 +26,7 @@ function OrchestratedComponent({
 
 	const isFiltered = componentFilled?.conditionFilter;
 
-	if (componentType in lunatic && !isFiltered) {
+	if (componentType in lunatic && isFiltered) {
 		return (
 			<Component
 				{...componentFilled}
