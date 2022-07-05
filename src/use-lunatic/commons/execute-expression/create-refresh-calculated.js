@@ -1,4 +1,4 @@
-import { CALCULATED, X_AXIS, Y_AXIS } from 'utils/constants';
+import { CALCULATED, X_AXIS, Y_AXIS } from '../../../utils/constants';
 
 function createRefreshCalculated({ variables, execute, bindings }) {
 	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.

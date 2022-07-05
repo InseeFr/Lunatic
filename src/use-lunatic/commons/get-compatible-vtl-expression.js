@@ -1,4 +1,4 @@
-import { VTL } from 'utils/constants';
+import { VTL } from '../../utils/constants';
 
 function getCompatibleVTLExpression(expression) {
 	if (typeof expression === 'string') {

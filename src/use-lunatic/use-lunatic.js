@@ -3,7 +3,7 @@ import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
 import reducer from './reducer';
 import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
-import { COLLECTED } from 'utils/constants';
+import { COLLECTED } from '../utils/constants';
 import { loadSuggesters } from '../utils/store-tools/auto-load';
 
 const DEFAULT_DATA = {};

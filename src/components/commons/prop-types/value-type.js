@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import * as C from 'utils/constants';
+import * as C from '../../../utils/constants';
 
 export default PropTypes.oneOf([
 	C.COLLECTED,
