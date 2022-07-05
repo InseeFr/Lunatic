@@ -72,6 +72,7 @@ function OrchestratorForStories({
 		suggesters,
 		suggesterFetcher,
 		management,
+		modalForControls,
 	});
 
 	const components = getComponents();
