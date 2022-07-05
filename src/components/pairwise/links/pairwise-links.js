@@ -20,6 +20,7 @@ const PairwiseLinks = ({
 	xAxisIterations,
 	yAxisIterations,
 	custom,
+	id,
 }) => {
 	const nbRows = xAxisIterations * yAxisIterations;
 	const handleChangeLinks = useCallback(
@@ -35,6 +36,7 @@ const PairwiseLinks = ({
 				<DeclarationsBeforeText declarations={declarations} custom={custom} />
 				<DeclarationsAfterText declarations={declarations} custom={custom} />
 				<LinksOrchestrator
+					id={id}
 					components={components}
 					handleChange={handleChangeLinks}
 					nbRows={nbRows}

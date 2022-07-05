@@ -1,0 +1,16 @@
+{
+	"STATE": {
+		"PREVIOUS": null,
+		"COLLECTED": "2",
+		"FORCED": "3",
+		"EDITED": null,
+		"INPUTED": null
+	},
+	"STATE2": {
+		"PREVIOUS": null,
+		"COLLECTED": "3",
+		"FORCED": "2",
+		"EDITED": null,
+		"INPUTED": null
+	}
+}

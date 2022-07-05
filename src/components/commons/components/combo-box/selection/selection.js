@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import Label from './label';
+import LabelSelection from './label-selection';
 import Input from './input';
 import SelectionContainer from './selection-container';
 
@@ -32,7 +32,7 @@ function Selection({
 			expanded={expended}
 			ariaOwns={`${id}-list`}
 		>
-			<Label
+			<LabelSelection
 				id={htmlFor}
 				labelRenderer={labelRenderer}
 				placeholder={placeholder}

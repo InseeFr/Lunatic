@@ -1,0 +1,19 @@
+{
+	"components": [
+		{
+			"id": "j6p29i81",
+			"componentType": "Table",
+			"mandatory": false,
+			"header": [
+				{ "label": "" },
+				{ "label": "Header 1" },
+				{ "label": "Header 2" }
+			],
+			"body": [
+				[{ "label": "Line 1" }, { "label": "Cell 11" }, { "label": "Cell 12" }],
+				[{ "label": "Line 2" }, { "label": "Cell 21" }, { "label": "Cell 22" }],
+				[{ "label": "Line 3" }, { "label": "Cell 31" }, { "label": "Cell 32" }]
+			]
+		}
+	]
+}

@@ -17,6 +17,7 @@
 			"label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"bindingDependencies": ["PRENOM"],
+
 			"lines": {
 				"min": { "value": 1, "type": "VTL" },
 				"max": { "value": "10", "type": "VTL" }
@@ -46,6 +47,7 @@
 			"components": [
 				{
 					"componentType": "Dropdown",
+					"id": "dropdown-1",
 					"conditionFilter": { "value": "xAxis <> yAxis", "type": "VTL" },
 					"label": {
 						"value": "\"Quel est le lien entre \" || xAxis || \" et \" || yAxis || \" ?\"",

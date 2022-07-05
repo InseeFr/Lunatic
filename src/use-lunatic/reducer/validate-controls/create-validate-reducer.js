@@ -62,7 +62,10 @@ function createValidateReducer(reducer) {
 	// Nothing to init
 	return function (state, action) {
 		const { payload } = action;
+		const { modalForControls } = state;
 		const { block } = payload;
+		if (!modalForControls)
+			return reducer({ ...state, errors: undefined }, action);
 		const components = getComponentsFromState(state);
 		const { errors: prec } = state;
 

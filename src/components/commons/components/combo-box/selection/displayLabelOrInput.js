@@ -11,7 +11,7 @@ function displayLabelOrInput(Field) {
 
 		if (
 			(name === 'Input' && !displayLabel) ||
-			(name === 'Label' && displayLabel)
+			(name === 'LabelSelection' && displayLabel)
 		) {
 			return <Memoized {...props} />;
 		}

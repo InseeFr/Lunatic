@@ -12,7 +12,7 @@ function extractSubPages(component, previous = []) {
 	}, previous);
 }
 
-function extractLoop(components) {
+function extractLoop(components = []) {
 	return components.reduce(
 		function ({ isLoop, subPages, iterations, loopDependencies }, component) {
 			const currentIsLoop = isPaginatedLoop(component);

@@ -30,3 +30,5 @@ function SelectionContainer({
 }
 
 export default SelectionContainer;
+
+SelectionContainer.defaultProps = { id: 'idUndefined' };

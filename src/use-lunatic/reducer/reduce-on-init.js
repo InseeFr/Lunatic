@@ -107,7 +107,6 @@ function checkInLoop(state) {
 	const { page } = pager;
 	if (page in pages) {
 		const { isLoop, subPages, iterations, loopDependencies } = pages[page];
-
 		if (isLoop) {
 			return {
 				...state,
@@ -138,8 +137,8 @@ function reduceOnInit(state, action) {
 		preferences,
 		savingType,
 		management,
+		modalForControls,
 	} = payload;
-
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
 		const [executeExpression, updateBindings] = createExecuteExpression(
@@ -174,6 +173,7 @@ function reduceOnInit(state, action) {
 			preferences,
 			management,
 			savingType,
+			modalForControls,
 		});
 	}
 
