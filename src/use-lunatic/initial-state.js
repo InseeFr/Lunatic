@@ -26,6 +26,7 @@ const INITIAL_STATE = {
 	updateBindings: () => {},
 	executeExpression: () => {},
 	handleChange: () => {},
+	modalForControls: false,
 };
 
 export default INITIAL_STATE;
