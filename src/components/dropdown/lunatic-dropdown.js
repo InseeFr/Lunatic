@@ -16,7 +16,7 @@ function LunaticDropdown({
 	return (
 		<Dropdown
 			id={id}
-			htmlFor={htmlFor}
+			htmlFor={id}
 			labelId={labelId}
 			writable={writable}
 			disabled={disabled}
