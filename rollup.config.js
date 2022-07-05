@@ -30,13 +30,13 @@ const config = {
 			ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
 		}),
 		commonjs({
-			ignore: ['antlr4', 'antlr4/index'],
+			// ignore: ['antlr4', 'antlr4/index'],
 		}),
 		postcss(),
 		image(),
 		minify(),
 	],
-	external: ['react', ...Object.keys(dependencies)],
+	external: ['react', 'fs', ...Object.keys(dependencies)],
 };
 
 export default config;
