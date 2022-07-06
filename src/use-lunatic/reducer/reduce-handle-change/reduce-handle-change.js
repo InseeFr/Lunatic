@@ -11,6 +11,12 @@ function isOnSubPage(pager) {
 	return subPage !== undefined;
 }
 
+/**
+ * met à jour variables qui contient les valeur collectées
+ * @param {*} state
+ * @param {*} action
+ * @returns
+ */
 function updateVariables(state, action) {
 	const { payload } = action;
 	const { response, value, args = {} } = payload;
@@ -58,11 +64,9 @@ function updateVariables(state, action) {
  */
 function updateBindings(state, action) {
 	const { payload } = action;
-	const { response } = payload;
+	const { response, value } = payload;
 	const { name } = response;
-	const { updateBindings, variables } = state;
-
-	const { value } = variables[name];
+	const { updateBindings } = state;
 
 	updateBindings(name, value);
 
@@ -70,11 +74,11 @@ function updateBindings(state, action) {
 }
 
 const reducers = compose(
+	updateVariables,
+	updateBindings,
 	reduceResizing,
 	reduceMissing,
-	reduceCleaning,
-	updateBindings,
-	updateVariables
+	reduceCleaning
 );
 
 /**

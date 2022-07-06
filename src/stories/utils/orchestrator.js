@@ -37,7 +37,7 @@ function OrchestratorForStories({
 	management = false,
 	modalForControls = false,
 	features,
-	initialPage = '1',
+	initialPage = '16',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	shortcut = false,
