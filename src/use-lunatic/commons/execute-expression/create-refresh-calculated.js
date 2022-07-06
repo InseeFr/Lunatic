@@ -43,8 +43,14 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 				bindings[name] = initialValue;
 				return initialValue[iteration];
 			}
-			bindings[name][iteration] = value;
-			return bindings[name][iteration];
+			if (Array.isArray(bindings[name])) {
+				bindings[name][iteration] = value;
+				return bindings[name][iteration];
+			} else {
+				console.error(`Binding not array! ${bindings[name]} for ${name}`);
+				bindings[name] = null;
+				return null;
+			}
 		}
 		bindings[name] = value;
 		return value;
