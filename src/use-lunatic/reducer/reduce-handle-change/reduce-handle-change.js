@@ -4,6 +4,7 @@ import reduceCleaning from './reduce-cleaning';
 import reduceMissing from './reduce-missing';
 import reduceResizing from './reduce-resizing';
 import reduceLinksVariable from './reduce-links-variable';
+import compose from '../../commons/compose';
 
 function isOnSubPage(pager) {
 	const { subPage } = pager;
@@ -68,6 +69,14 @@ function updateBindings(state, action) {
 	return state;
 }
 
+const reducers = compose(
+	reduceResizing,
+	reduceMissing,
+	reduceCleaning,
+	updateBindings,
+	updateVariables
+);
+
 /**
  *
  * @param {*} state
@@ -75,16 +84,7 @@ function updateBindings(state, action) {
  * @returns
  */
 function reduceHandleChange(state, action) {
-	return reduceResizing(
-		reduceMissing(
-			reduceCleaning(
-				updateBindings(updateVariables(state, action), action),
-				action
-			),
-			action
-		),
-		action
-	);
+	return reducers(state, action);
 }
 
 export default reduceHandleChange;
