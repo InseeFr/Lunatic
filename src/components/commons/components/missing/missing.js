@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import useOnHandleChange from '../../use-on-handle-change';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import Button from '../../../button';
-import { DK, RF } from 'utils/constants';
-import D from 'i18n';
+import { DK, RF } from '../../../../utils/constants';
+import D from '../../../../i18n';
 import './missing.scss';
 
 const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };

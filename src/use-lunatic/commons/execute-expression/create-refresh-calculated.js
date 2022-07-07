@@ -1,4 +1,4 @@
-import { CALCULATED, X_AXIS, Y_AXIS } from 'utils/constants';
+import { CALCULATED, X_AXIS, Y_AXIS } from '../../../utils/constants';
 
 function createRefreshCalculated({ variables, execute, bindings }) {
 	const toRefreshVariables = new Map(); // variables calculées dépendantes d'une variable modifiée.
@@ -43,8 +43,14 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 				bindings[name] = initialValue;
 				return initialValue[iteration];
 			}
-			bindings[name][iteration] = value;
-			return bindings[name][iteration];
+			if (Array.isArray(bindings[name])) {
+				bindings[name][iteration] = value;
+				return bindings[name][iteration];
+			} else {
+				console.error(`Binding not array! ${bindings[name]} for ${name}`);
+				bindings[name] = null;
+				return null;
+			}
 		}
 		bindings[name] = value;
 		return value;

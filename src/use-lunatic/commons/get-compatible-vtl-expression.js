@@ -1,4 +1,4 @@
-import { VTL } from 'utils/constants';
+import { VTL } from '../../utils/constants';
 
 function getCompatibleVTLExpression(expression) {
 	if (typeof expression === 'string') {
@@ -10,7 +10,7 @@ function getCompatibleVTLExpression(expression) {
 			return expression;
 		}
 	}
-	throw new Error(`Non-VTL compatible expression : ${expression}`);
+	console.warn(`Non-VTL compatible expression : ${expression}`);
 }
 
 export default getCompatibleVTLExpression;

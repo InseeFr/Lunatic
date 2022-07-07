@@ -1,4 +1,4 @@
-import { COLLECTED, VTL } from 'utils/constants';
+import { COLLECTED, VTL } from '../utils/constants';
 
 const INITIAL_STATE = {
 	variables: {}, // map des variables du questionnaires
