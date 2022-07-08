@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.3.8-v2",
+	"version": "0.3.9-v2",
 	"workersVersion": "0.2.4-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
@@ -32,8 +32,7 @@
 		"test": "cross-env NODE_PATH=src/ jest",
 		"test-watch": "cross-env NODE_PATH=src/ jest --watchAll",
 		"test-coverage": "cross-env NODE_PATH=src/ jest --coverage",
-		"build": "rollup -c rollup.config.js",
-		"prepublish": "npm test && npm run build",
+		"prepublish": "npm test",
 		"analyze": "yarn build && source-map-explorer lib/index.js --html bundle-report/lunatic.html",
 		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
