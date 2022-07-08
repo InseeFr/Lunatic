@@ -56,10 +56,6 @@ jobs:
       - run: yarn build-storybook
       - run: mkdir -p deploy/storybook
       - run: cp -R ./storybook-static/storybook/. ./deploy/storybook
-      # Build bundle reports
-      - run: yarn analyze
-      - run: mkdir -p deploy/bundle-report
-      - run: cp -a ./bundle-report/. ./deploy/bundle-report
       - uses: actions/setup-node@v1
         with:
           # Because of gitbook support
