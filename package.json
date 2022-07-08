@@ -23,10 +23,9 @@
 		}
 	],
 	"license": "MIT",
-	"main": "lib/index.js",
+	"main": "src/index.js",
 	"module": "src/index.js",
 	"files": [
-		"lib",
 		"src"
 	],
 	"scripts": {
@@ -88,7 +87,6 @@
 		"@storybook/react": "^6.5.8",
 		"@storybook/testing-library": "^0.0.11",
 		"@testing-library/react-hooks": "^7.0.0",
-		"@timdp/rollup-plugin-image": "^1.0.3",
 		"babel-eslint": "^10.0.3",
 		"babel-loader": "^8.0.6",
 		"classnames": "^2.3.1",
@@ -117,18 +115,6 @@
 		"react-dom": "^17.0.2",
 		"regenerator-runtime": "^0.13.7",
 		"remove-accents": "^0.4.2",
-		"rollup": "^2.52.8",
-		"rollup-plugin-babel": "^4.3.3",
-		"rollup-plugin-babel-minify": "^10.0.0",
-		"rollup-plugin-commonjs": "^10.1.0",
-		"rollup-plugin-node-resolve": "^5.2.0",
-		"rollup-plugin-postcss": "^4.0.0",
-		"rollup-plugin-replace": "^2.2.0",
-		"rollup-plugin-serve": "^1.0.1",
-		"rollup-plugin-terser": "^7.0.1",
-		"rollup-plugin-uglify": "^6.0.3",
-		"rollup-plugin-url": "^3.0.1",
-		"rollup-watch": "^4.3.1",
 		"rxjs-marbles": "^6.0.1",
 		"sass-loader": "^10.0.3",
 		"snowball": "^0.3.1",
