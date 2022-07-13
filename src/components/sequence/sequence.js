@@ -9,12 +9,12 @@ import './sequence.scss';
 function Sequence({ declarations, label, id, style }) {
 	return (
 		<>
-			<DeclarationsBeforeText declarations={declarations} />
+			<DeclarationsBeforeText declarations={declarations} id={id} />
 			<div className="sequence-lunatic" id={`sequence-${id}`} style={style}>
 				{label}
 			</div>
-			<DeclarationsAfterText declarations={declarations} />
-			<DeclarationsDetachable declarations={declarations} />
+			<DeclarationsAfterText declarations={declarations} id={id} />
+			<DeclarationsDetachable declarations={declarations} id={id} />
 		</>
 	);
 }
