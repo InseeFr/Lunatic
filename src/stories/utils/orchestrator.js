@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import * as lunatic from '../../components';
+import * as lunatic from '../..';
 import './custom-lunatic.scss';
 import Waiting from './waiting';
 
