@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.3.8-v2",
+	"version": "0.3.18-v2",
 	"workersVersion": "0.2.4-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
@@ -26,16 +26,14 @@
 	"main": "lib/index.js",
 	"module": "src/index.js",
 	"files": [
-		"lib",
-		"src"
+		"lib"
 	],
 	"scripts": {
 		"test": "cross-env NODE_PATH=src/ jest",
 		"test-watch": "cross-env NODE_PATH=src/ jest --watchAll",
 		"test-coverage": "cross-env NODE_PATH=src/ jest --coverage",
-		"build": "rollup -c rollup.config.js",
+		"build": "babel src --out-dir lib --copy-files",
 		"prepublish": "npm test && npm run build",
-		"analyze": "yarn build && source-map-explorer lib/index.js --html bundle-report/lunatic.html",
 		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
 		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
@@ -50,9 +48,10 @@
 		"library"
 	],
 	"dependencies": {
-		"@inseefr/trevas": "^0.1.10",
-		"@inseefr/vtl-2.0-antlr-tools": "^0.1.0",
-		"antlr4": "^4.9.3",
+		"@inseefr/trevas": "^0.1.0-bundle",
+		"@inseefr/vtl-2.0-antlr-tools": "^0.1.0-bundle",
+		"antlr4": "4.8.0",
+		"classnames": "^2.3.1",
 		"date-fns": "^2.25.0",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.debounce": "^4.0.8",
@@ -63,10 +62,13 @@
 		"react-markdown": "^8.0.3",
 		"react-tooltip": "^4.2.15",
 		"remove-accents": "^0.4.2",
-		"sass": "^1.32.2"
+		"sass": "^1.32.2",
+		"snowball": "^0.3.1",
+		"string-tokenizer": "^0.0.8"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.9.0",
+		"@babel/cli": "^7.18.6",
+		"@babel/core": "^7.18.6",
 		"@babel/plugin-proposal-class-properties": "^7.7.4",
 		"@babel/plugin-proposal-private-methods": "^7.18.6",
 		"@babel/plugin-proposal-private-property-in-object": "^7.18.6",
@@ -88,10 +90,8 @@
 		"@storybook/react": "^6.5.8",
 		"@storybook/testing-library": "^0.0.11",
 		"@testing-library/react-hooks": "^7.0.0",
-		"@timdp/rollup-plugin-image": "^1.0.3",
 		"babel-eslint": "^10.0.3",
 		"babel-loader": "^8.0.6",
-		"classnames": "^2.3.1",
 		"core-js": "^3.17.3",
 		"cross-env": "^7.0.2",
 		"css-loader": "^5.0.0",
@@ -104,6 +104,7 @@
 		"eslint-plugin-jsx-a11y": "^6.1.1",
 		"eslint-plugin-react": "^7.17.0",
 		"eslint-plugin-react-hooks": "^4.0.8",
+		"file-loader": "^6.2.0",
 		"identity-obj-proxy": "^3.0.0",
 		"jest": "^27.0.6",
 		"jest-sonar-reporter": "^2.0.0",
@@ -117,27 +118,9 @@
 		"react-dom": "^17.0.2",
 		"regenerator-runtime": "^0.13.7",
 		"remove-accents": "^0.4.2",
-		"rollup": "^2.52.8",
-		"rollup-plugin-babel": "^4.3.3",
-		"rollup-plugin-babel-minify": "^10.0.0",
-		"rollup-plugin-commonjs": "^10.1.0",
-		"rollup-plugin-node-resolve": "^5.2.0",
-		"rollup-plugin-postcss": "^4.0.0",
-		"rollup-plugin-replace": "^2.2.0",
-		"rollup-plugin-serve": "^1.0.1",
-		"rollup-plugin-terser": "^7.0.1",
-		"rollup-plugin-uglify": "^6.0.3",
-		"rollup-plugin-url": "^3.0.1",
-		"rollup-watch": "^4.3.1",
 		"rxjs-marbles": "^6.0.1",
 		"sass-loader": "^10.0.3",
-		"snowball": "^0.3.1",
-		"source-map-explorer": "^2.4.2",
-		"string-tokenizer": "^0.0.8",
-		"style-loader": "^2.0.0",
-		"url-loader": "^4.1.0",
-		"webpack": "^5.53.0",
-		"webpack-cli": "^4.8.0"
+		"source-map-explorer": "^2.4.2"
 	},
 	"jest": {
 		"collectCoverageFrom": [
