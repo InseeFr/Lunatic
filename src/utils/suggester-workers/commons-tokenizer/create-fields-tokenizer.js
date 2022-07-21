@@ -2,6 +2,7 @@ import prepareStringIndexation from './prepare-string-indexation';
 import softTokenizer from './soft-tokenizer';
 import tokenizer from 'string-tokenizer';
 import getRegExpFromPattern from './get-regexp-from-pattern';
+import removeAccents from 'remove-accents';
 
 function defaultTokenizeIt(string) {
 	return [prepareStringIndexation(string)];
@@ -41,7 +42,10 @@ function createFieldsTokenizer(field, filtersStack) {
 		}, {});
 
 		return function (string) {
-			const what = tokenizer().input(string).tokens(tokenRules).resolve();
+			const what = tokenizer()
+				.input(removeAccents(string))
+				.tokens(tokenRules)
+				.resolve();
 			return filtersStack(tokensToArray(what), {
 				min,
 				language,

@@ -1,5 +1,5 @@
 export function composeFilters(...filters) {
-	return filters.reduce(
+	return filters.reverse().reduce(
 		function (next, current) {
 			return (tokens, args) => next(current(tokens, args), args);
 		},
