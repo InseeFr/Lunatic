@@ -15,6 +15,7 @@ const InputNumber = ({ numberAsTextfield, decimals, ...props }) => (
 		isInputNumber
 		numberAsTextfield
 		validators={[getTypeControls]}
+		inputMode={decimals ? 'decimals' : 'numeric'}
 	/>
 );
 
