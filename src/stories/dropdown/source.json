@@ -29,19 +29,31 @@
 				}
 			],
 			"options": [
-				{ "value": "1", "label": "Washington" },
-				{ "value": "2", "label": "Kentucky" },
-				{ "value": "3", "label": "Ohio" },
-				{ "value": "4", "label": "Maine" },
-				{ "value": "5", "label": "North Dakota" },
-				{ "value": "6", "label": "Florida" },
-				{ "value": "7", "label": "North Takoma" },
-				{ "value": "8", "label": "California" },
-				{ "value": "9", "label": "Texas" },
-				{ "value": "10", "label": "Massachusetts" },
-				{ "value": "11", "label": "Nevada" },
-				{ "value": "12", "label": "Illinois" },
-				{ "value": "13", "label": "Not in any state, you fool!" }
+				{ "value": "1", "label": { "value": "Washington", "type": "VTL|MD" } },
+				{ "value": "2", "label": { "value": "Kentucky", "type": "VTL|MD" } },
+				{ "value": "3", "label": { "value": "Ohio", "type": "VTL|MD" } },
+				{ "value": "4", "label": { "value": "Maine", "type": "VTL|MD" } },
+				{
+					"value": "5",
+					"label": { "value": "North Dakota", "type": "VTL|MD" }
+				},
+				{ "value": "6", "label": { "value": "Florida", "type": "VTL|MD" } },
+				{
+					"value": "7",
+					"label": { "value": "North Takoma", "type": "VTL|MD" }
+				},
+				{ "value": "8", "label": { "value": "California", "type": "VTL|MD" } },
+				{ "value": "9", "label": { "value": "Texas", "type": "VTL|MD" } },
+				{
+					"value": "10",
+					"label": { "value": "Massachusetts", "type": "VTL|MD" }
+				},
+				{ "value": "11", "label": { "value": "Nevada", "type": "VTL|MD" } },
+				{ "value": "12", "label": { "value": "Illinois", "type": "VTL|MD" } },
+				{
+					"value": "13",
+					"label": { "value": "Not in any state, you fool!", "type": "VTL|MD" }
+				}
 			]
 		},
 		{
@@ -53,19 +65,31 @@
 				"name": "STATE2"
 			},
 			"options": [
-				{ "value": "1", "label": "Washington" },
-				{ "value": "2", "label": "Kentucky" },
-				{ "value": "3", "label": "Ohio" },
-				{ "value": "4", "label": "Maine" },
-				{ "value": "5", "label": "North Dakota" },
-				{ "value": "6", "label": "Florida" },
-				{ "value": "7", "label": "North Takoma" },
-				{ "value": "8", "label": "California" },
-				{ "value": "9", "label": "Texas" },
-				{ "value": "10", "label": "Massachusetts" },
-				{ "value": "11", "label": "Nevada" },
-				{ "value": "12", "label": "Illinois" },
-				{ "value": "13", "label": "Not in any state, you fool!" }
+				{ "value": "1", "label": { "value": "Washington", "type": "VTL|MD" } },
+				{ "value": "2", "label": { "value": "Kentucky", "type": "VTL|MD" } },
+				{ "value": "3", "label": { "value": "Ohio", "type": "VTL|MD" } },
+				{ "value": "4", "label": { "value": "Maine", "type": "VTL|MD" } },
+				{
+					"value": "5",
+					"label": { "value": "North Dakota", "type": "VTL|MD" }
+				},
+				{ "value": "6", "label": { "value": "Florida", "type": "VTL|MD" } },
+				{
+					"value": "7",
+					"label": { "value": "North Takoma", "type": "VTL|MD" }
+				},
+				{ "value": "8", "label": { "value": "California", "type": "VTL|MD" } },
+				{ "value": "9", "label": { "value": "Texas", "type": "VTL|MD" } },
+				{
+					"value": "10",
+					"label": { "value": "Massachusetts", "type": "VTL|MD" }
+				},
+				{ "value": "11", "label": { "value": "Nevada", "type": "VTL|MD" } },
+				{ "value": "12", "label": { "value": "Illinois", "type": "VTL|MD" } },
+				{
+					"value": "13",
+					"label": { "value": "Not in any state, you fool!", "type": "VTL|MD" }
+				}
 			]
 		}
 	],
