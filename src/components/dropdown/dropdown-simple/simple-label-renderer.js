@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function getContent(option, search) {
 	if (option) {
 		const { value, label } = option;
-		return label ? `${value} - ${label}` : value;
+		return label || value;
 	}
 	if (search && search.trim().length) {
 		return search;
