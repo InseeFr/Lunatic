@@ -1,10 +1,10 @@
 import React from 'react';
-import Orchestrator from '../../utils/orchestrator';
+import Orchestrator from '../utils/orchestrator';
 import simpsons from './sources';
-import defaultArgTypes from '../../utils/default-arg-types';
+import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Questionnaires/test-checkboxone-radio',
+	title: 'Questionnaires - Tests/Checkboxone radio',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
