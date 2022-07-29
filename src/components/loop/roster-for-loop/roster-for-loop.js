@@ -80,8 +80,16 @@ function RosterforLoop({
 	if (nbRows > 0) {
 		return (
 			<>
-				<DeclarationsBeforeText declarations={declarations} custom={custom} />
-				<DeclarationsAfterText declarations={declarations} custom={custom} />
+				<DeclarationsBeforeText
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
+				<DeclarationsAfterText
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
 				<RosterTable
 					id={id}
 					components={components}
@@ -95,7 +103,11 @@ function RosterforLoop({
 					shortcut={shortcut}
 					custom={custom}
 				/>
-				<DeclarationsDetachable declarations={declarations} custom={custom} />
+				<DeclarationsDetachable
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
 				<HandleRowButton
 					onClick={addRow}
 					disabled={nbRows === max}
