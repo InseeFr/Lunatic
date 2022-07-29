@@ -6,7 +6,6 @@ import {
 } from '../../declarations';
 import RosterTable from './roster-table';
 import HandleRowButton from './handle-row-button';
-import useOnHandleChange from '../../commons/use-on-handle-change';
 import D from '../../../i18n';
 
 const DEFAULT_MAX_ROWS = 12;
@@ -22,7 +21,6 @@ function getTableLength(value) {
 
 function RosterforLoop({
 	valueMap,
-	loopDependencies,
 	lines,
 	handleChange,
 	declarations,
@@ -35,7 +33,6 @@ function RosterforLoop({
 	id,
 	management,
 	custom,
-	...props
 }) {
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [init, setInit] = useState(false);
