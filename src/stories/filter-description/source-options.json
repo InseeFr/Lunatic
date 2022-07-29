@@ -1,0 +1,81 @@
+{
+	"maxPage": "3",
+	"components": [
+		{
+			"componentType": "InputNumber",
+			"label": { "value": "\"How old are you?\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"max": "120",
+			"id": "q1",
+			"response": {
+				"name": "Q1"
+			},
+			"page": "1"
+		},
+		{
+			"componentType": "FilterDescription",
+			"label": {
+				"value": "\"If you are minor, you'll be redirected to page 3\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"id": "desc",
+			"page": "1"
+		},
+		{
+			"componentType": "Input",
+			"label": { "value": "\"Fake Q2\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "cast(Q1, number) < 18", "type": "VTL" },
+			"id": "q2",
+			"response": {
+				"name": "Q2"
+			},
+			"page": "2"
+		},
+		{
+			"componentType": "Input",
+			"label": { "value": "\"Fake Q3\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"id": "q3",
+			"response": {
+				"name": "Q3"
+			},
+			"page": "3"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "Q1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "Q2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "Q3",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}
