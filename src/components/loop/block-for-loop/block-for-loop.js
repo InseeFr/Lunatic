@@ -20,6 +20,7 @@ function BlockForLoop({
 	executeExpression,
 	iterations,
 	custom,
+	paginatedLoop,
 }) {
 	const [nbRows, setNbRows] = useState(-1);
 	const [min, setMin] = useState(undefined);
@@ -51,9 +52,14 @@ function BlockForLoop({
 
 	const handleChangeLoop = useCallback(
 		function (response, value, args) {
-			handleChange(response, value, { ...args, loop: true, length: nbRows });
+			if (!paginatedLoop) {
+				const v = valueMap[response.name];
+				v[args.index] = value;
+				handleChange(response, v, { loop: true, length: nbRows });
+			} else
+				handleChange(response, value, { ...args, loop: true, length: nbRows });
 		},
-		[handleChange, nbRows]
+		[handleChange, nbRows, paginatedLoop, valueMap]
 	);
 
 	if (nbRows > 0) {
