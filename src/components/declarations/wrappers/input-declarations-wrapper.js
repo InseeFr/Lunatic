@@ -37,6 +37,7 @@ const InputDeclarationsWrapper = ({
 	numberAsTextfield,
 	logFunction,
 	componentType,
+	inputMode,
 }) => {
 	const inputRef = useRef();
 	const createEventFocus = (focusIn = true) =>
@@ -170,6 +171,7 @@ const InputDeclarationsWrapper = ({
 							maxLength={maxLength || 524288}
 							required={mandatory}
 							aria-required={mandatory}
+							inputMode={numberAsTextfield ? inputMode : 'text'}
 							onChange={(e) => {
 								const v = e.target.value;
 								const valueToFire = v === '' ? null : v;
@@ -202,7 +204,7 @@ const InputDeclarationsWrapper = ({
 										Number.parseFloat(`${Math.pow(10, -decimals)}`).toFixed(
 											decimals
 										) &&
-										!Number.parseInt(v, 10) &&
+										isNaN(Number.parseInt(v, 10)) &&
 										isInputNumber)
 								) {
 									setValue(valueToFireForArrows);
@@ -285,6 +287,7 @@ InputDeclarationsWrapper.defaultProps = {
 	style: {},
 	validators: [],
 	isInputNumber: false,
+	inputMode: 'text',
 };
 
 InputDeclarationsWrapper.propTypes = {
@@ -319,6 +322,7 @@ InputDeclarationsWrapper.propTypes = {
 	]),
 	validators: PropTypes.arrayOf(PropTypes.func),
 	isInputNumber: PropTypes.bool,
+	inputMode: PropTypes.oneOf(['none', 'text', 'decimal', 'numeric']),
 };
 
 export default InputDeclarationsWrapper;
