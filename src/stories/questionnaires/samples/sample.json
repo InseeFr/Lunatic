@@ -1,0 +1,430 @@
+{
+	"id": "l3cxdar6",
+	"modele": "ORCHEST",
+	"enoCoreVersion": "2.3.7-dev-lunatic-v2",
+	"lunaticModelVersion": "2.2.13-dev-lunatic-v2",
+	"generatingDate": "13-07-2022 09:32:39",
+	"missing": false,
+	"pagination": "question",
+	"maxPage": "5",
+	"label": { "value": "Test Dylan", "type": "VTL|MD" },
+	"components": [
+		{
+			"id": "kfxmfvwj",
+			"componentType": "Sequence",
+			"page": "1",
+			"label": { "value": "SEQUENCE 1", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kfxmfvwj",
+					"page": "1",
+					"label": { "value": "SEQUENCE 1", "type": "VTL|MD" }
+				}
+			}
+		},
+
+		{
+			"id": "l0mly008",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "2",
+			"min": 1,
+			"max": 5,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ \" || \"Veuillez indiquer le nb de personnes, de 1 à 5\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kfxmfvwj",
+					"page": "1",
+					"label": { "value": "SEQUENCE 1", "type": "VTL|MD" }
+				}
+			},
+			"bindingDependencies": ["NBHAB"],
+			"response": { "name": "NBHAB" }
+		},
+
+		{
+			"id": "l3cxbf98",
+			"componentType": "Loop",
+			"page": "3",
+			"depth": 1,
+			"paginatedLoop": false,
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kfxmfvwj",
+					"page": "1",
+					"label": { "value": "SEQUENCE 1", "type": "VTL|MD" }
+				}
+			},
+			"bindingDependencies": ["NBHAB", "PRENOM"],
+			"loopDependencies": ["NBHAB"],
+			"lines": {
+				"min": { "value": "cast(NBHAB,integer)", "type": "VTL" },
+				"max": { "value": "cast(NBHAB,integer)", "type": "VTL" }
+			},
+			"components": [
+				{
+					"id": "l3cx4bsh",
+					"componentType": "Subsequence",
+					"page": "3",
+					"goToPage": "3",
+					"label": { "value": "Description chacun", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": { "value": "SEQUENCE 1", "type": "VTL|MD" }
+						},
+						"subSequence": {
+							"id": "l3cx4bsh",
+							"page": "3",
+							"label": { "value": "Description chacun", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["NBHAB"]
+				},
+
+				{
+					"id": "l3cwvz7c",
+					"componentType": "Input",
+					"mandatory": false,
+					"page": "3",
+					"maxLength": 249,
+					"label": { "value": "\"➡ \" || \"Prénom\"", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": { "value": "SEQUENCE 1", "type": "VTL|MD" }
+						},
+						"subSequence": {
+							"id": "l3cx4bsh",
+							"page": "3",
+							"label": { "value": "Description chacun", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["PRENOM", "NBHAB"],
+					"response": { "name": "PRENOM" }
+				}
+			]
+		},
+
+		{
+			"id": "l3cxj63j",
+			"componentType": "Loop",
+			"page": "4",
+			"maxPage": "3",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kfxmfvwj",
+					"page": "1",
+					"label": { "value": "SEQUENCE 1", "type": "VTL|MD" }
+				}
+			},
+			"bindingDependencies": [
+				"PRENOM",
+				"MAJMIN",
+				"ADR",
+				"AGE",
+				"VALAGE",
+				"VALADR"
+			],
+			"loopDependencies": ["PRENOM"],
+			"components": [
+				{
+					"id": "l3cwwfku",
+					"componentType": "Subsequence",
+					"goToPage": "4.1",
+					"label": {
+						"value": "Boucle de sous séquence sur le prénom",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": { "value": "SEQUENCE 1", "type": "VTL|MD" }
+						},
+						"subSequence": {
+							"id": "l3cwwfku",
+							"page": "4.1",
+							"label": {
+								"value": "Boucle de sous séquence sur le prénom",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": ["PRENOM"]
+				},
+
+				{
+					"id": "l3cxdsjt",
+					"componentType": "InputNumber",
+					"mandatory": false,
+					"page": "4.1",
+					"min": 0,
+					"max": 100,
+					"decimals": 0,
+					"label": {
+						"value": "\"➡ \" || \"Quel âge a \" || PRENOM || \"?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": { "value": "SEQUENCE 1", "type": "VTL|MD" }
+						},
+						"subSequence": {
+							"id": "l3cwwfku",
+							"page": "4.1",
+							"label": {
+								"value": "Boucle de sous séquence sur le prénom",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": ["PRENOM", "AGE"],
+					"response": { "name": "AGE" }
+				},
+
+				{
+					"id": "l3cx6ch9",
+					"componentType": "CheckboxOne",
+					"mandatory": false,
+					"page": "4.2",
+					"label": {
+						"value": "\"➡ \" || \"Validez son age avec var calculée : \" || MAJMIN",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l3cx6ch9-l3cxm4q7",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"Test MAJMIN :\" || MAJMIN",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": { "value": "SEQUENCE 1", "type": "VTL|MD" }
+						},
+						"subSequence": {
+							"id": "l3cwwfku",
+							"page": "4.1",
+							"label": {
+								"value": "Boucle de sous séquence sur le prénom",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": ["MAJMIN", "VALAGE", "PRENOM"],
+					"options": [
+						{ "value": "1", "label": { "value": "oui", "type": "VTL|MD" } },
+
+						{ "value": "2", "label": { "value": "non", "type": "VTL|MD" } }
+					],
+					"response": { "name": "VALAGE" }
+				},
+
+				{
+					"id": "l3cx9gfy",
+					"componentType": "CheckboxOne",
+					"mandatory": false,
+					"page": "4.3",
+					"label": {
+						"value": "\"➡ \" || \"Validez son adresse - prérempli avec variable externe : \" || ADR",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l3cx9gfy-l3cx9hyf",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": { "value": "\"TEst ADR :\" || ADR", "type": "VTL|MD" }
+						}
+					],
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": { "value": "SEQUENCE 1", "type": "VTL|MD" }
+						},
+						"subSequence": {
+							"id": "l3cwwfku",
+							"page": "4.1",
+							"label": {
+								"value": "Boucle de sous séquence sur le prénom",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": ["ADR", "VALADR", "PRENOM"],
+					"options": [
+						{ "value": "1", "label": { "value": "oui", "type": "VTL|MD" } },
+
+						{ "value": "2", "label": { "value": "non", "type": "VTL|MD" } }
+					],
+					"response": { "name": "VALADR" }
+				}
+			],
+			"iterations": { "value": "count(PRENOM)", "type": "VTL" }
+		},
+
+		{
+			"id": "l3cxii6f",
+			"componentType": "Sequence",
+			"page": "5",
+			"label": { "value": "SEQFIN", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "l3cxii6f",
+					"page": "5",
+					"label": { "value": "SEQFIN", "type": "VTL|MD" }
+				}
+			}
+		}
+	],
+	"variables": [
+		{ "variableType": "EXTERNAL", "name": "ADR", "value": null },
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NBHAB",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "VALAGE",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "VALADR",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_NBHAB",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_PRENOM",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "PRENOM",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "MAJMIN",
+			"expression": {
+				"value": "if isnull(AGE) then \"inconnu\" else (if cast(AGE,integer)<18 then \"mineur\" else \"majeur\")",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["AGE"],
+			"shapeFrom": "PRENOM",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_AGE",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "AGE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_VALAGE",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "AGE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_VALADR",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "AGE",
+			"inFilter": "false"
+		}
+	],
+	"cleaning": {},
+	"resizing": {
+		"NBHAB": {
+			"size": "cast(NBHAB,integer)",
+			"variables": ["PRENOM", "AGE", "VALAGE", "VALADR"]
+		}
+	}
+}
