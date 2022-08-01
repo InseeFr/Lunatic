@@ -21,7 +21,7 @@ function updateVariables(state, action) {
 	const { payload } = action;
 	const { response, value, args = {} } = payload;
 	const { name } = response;
-	const { loop, index, length, linksIterations } = args;
+	const { loop, index, length, linksIterations, paginatedLoop } = args;
 
 	const { pager, variables } = state;
 	const { nbIterations, iteration } = pager;
@@ -33,7 +33,7 @@ function updateVariables(state, action) {
 			linksIterations,
 		});
 		return { ...state, variables: variablesNext };
-	} else if (loop) {
+	} else if (loop && paginatedLoop) {
 		const variablesNext = reduceVariablesArray(variables, {
 			name,
 			value,
