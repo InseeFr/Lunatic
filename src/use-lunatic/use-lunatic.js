@@ -5,6 +5,8 @@ import reducer from './reducer';
 import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 import { COLLECTED } from '../utils/constants';
 import { loadSuggesters } from '../utils/store-tools/auto-load';
+import { CALCULATED } from '../constants';
+import { interpretAllCalculatedVariables } from './commons/calculated-variables';
 
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL', 'MD'];
@@ -25,6 +27,7 @@ function useLunatic(
 		suggesters: suggestersConfiguration,
 		suggesterFetcher,
 		modalForControls = false,
+		filterDescription = false,
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -101,12 +104,18 @@ function useLunatic(
 		[dispatch, onChange]
 	);
 
-	const getState = () => {
+	const getState = (withRefreshedCalculated) => {
 		const { variables } = state;
-		return Object.entries(variables).reduce(
-			(acc, [k, { value }]) => ({ ...acc, [k]: value }),
+		const builtVariables = Object.entries(variables).reduce(
+			(acc, [k, { value, type }]) => {
+				if (type !== CALCULATED || !withRefreshedCalculated)
+					return { ...acc, [k]: value };
+				return acc;
+			},
 			{}
 		);
+		if (!withRefreshedCalculated) return builtVariables;
+		return interpretAllCalculatedVariables({ variables, builtVariables });
 	};
 
 	const pageTag = getPageTag(pager);
