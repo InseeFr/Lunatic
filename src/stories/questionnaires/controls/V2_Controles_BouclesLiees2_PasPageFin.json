@@ -1,0 +1,775 @@
+
+ { "id" : "kyiqmt6h",
+  "modele" : "TESTANNE",
+  "enoCoreVersion" : "2.3.7-dev-lunatic-v2",
+  "lunaticModelVersion" : "2.2.13-dev-lunatic-v2",
+  "generatingDate" : "18-07-2022 16:30:25",
+  "missing" : false,
+  "pagination" : "question",
+  "maxPage" : "7",
+  "label" : 
+  { "value" : "Bug - Controle logent logaut - sur boucles liées : ko",
+   "type" : "VTL|MD" },
+  "components" : 
+  [ 
+   { "id" : "kwupyhsh",
+    "componentType" : "Sequence",
+    "page" : "1",
+    "label" : 
+    { "value" : "S1",
+     "type" : "VTL|MD" },
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kwupyhsh",
+      "page" : "1",
+      "label" : 
+      { "value" : "S1",
+       "type" : "VTL|MD" } } } },
+   
+   { "id" : "kyiqf4wp",
+    "componentType" : "CheckboxOne",
+    "mandatory" : false,
+    "page" : "2",
+    "label" : 
+    { "value" : "\"➡ 1. \" || \"LOGENQ \"",
+     "type" : "VTL|MD" },
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kwupyhsh",
+      "page" : "1",
+      "label" : 
+      { "value" : "S1",
+       "type" : "VTL|MD" } } },
+    "bindingDependencies" : 
+    [ "LOGENQ" ],
+    "options" : 
+    [ 
+     { "value" : "1",
+      "label" : 
+      { "value" : "OUI",
+       "type" : "VTL|MD" } },
+     
+     { "value" : "2",
+      "label" : 
+      { "value" : "NON",
+       "type" : "VTL|MD" } } ],
+    "response" : 
+    { "name" : "LOGENQ" } },
+   
+   { "id" : "kyiqiyjr",
+    "componentType" : "CheckboxOne",
+    "mandatory" : false,
+    "page" : "3",
+    "label" : 
+    { "value" : "\"➡ 2. \" || \"LOGAUT déclenche controle si LOGAUT et LOGENT = Oui \"",
+     "type" : "VTL|MD" },
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "controls" : 
+    [ 
+     { "id" : "kyiqiyjr-CI-0",
+      "criticality" : "WARN",
+      "control" : 
+      { "value" : "not((nvl(LOGENQ,\" \")=\"1\") and (nvl(LOGAUT,\" \")=\"1\"))",
+       "type" : "VTL" },
+      "errorMessage" : 
+      { "value" : "Vous avez indiqué avoir deux résidences principales, pouvez-vous corriger l’une de vos réponses ?",
+       "type" : "VTL|MD" },
+      "bindingDependencies" : 
+      [ "LOGENQ",
+       "LOGAUT" ] } ],
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kwupyhsh",
+      "page" : "1",
+      "label" : 
+      { "value" : "S1",
+       "type" : "VTL|MD" } } },
+    "bindingDependencies" : 
+    [ "LOGAUT" ],
+    "options" : 
+    [ 
+     { "value" : "1",
+      "label" : 
+      { "value" : "OUI",
+       "type" : "VTL|MD" } },
+     
+     { "value" : "2",
+      "label" : 
+      { "value" : "NON",
+       "type" : "VTL|MD" } } ],
+    "response" : 
+    { "name" : "LOGAUT" } },
+   
+   { "id" : "kyn3wfvd",
+    "componentType" : "InputNumber",
+    "mandatory" : false,
+    "page" : "4",
+    "min" : 1,
+    "max" : 10,
+    "decimals" : 0,
+    "label" : 
+    { "value" : "\"➡ 3. \" || \"nbhab, controle si > 5\"",
+     "type" : "VTL|MD" },
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "controls" : 
+    [ 
+     { "id" : "kyn3wfvd-CI-0",
+      "criticality" : "WARN",
+      "control" : 
+      { "value" : "not(cast(nvl(NBHAB,\"0\"),integer) > 5)",
+       "type" : "VTL" },
+      "errorMessage" : 
+      { "value" : "supérieur à 5",
+       "type" : "VTL|MD" },
+      "bindingDependencies" : 
+      [ "NBHAB" ] } ],
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kwupyhsh",
+      "page" : "1",
+      "label" : 
+      { "value" : "S1",
+       "type" : "VTL|MD" } } },
+    "bindingDependencies" : 
+    [ "NBHAB" ],
+    "response" : 
+    { "name" : "NBHAB" } },
+   
+   { "id" : "kyn3scy8",
+    "componentType" : "Loop",
+    "page" : "5",
+    "depth" : 1,
+    "paginatedLoop" : false,
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kwupyhsh",
+      "page" : "1",
+      "label" : 
+      { "value" : "S1",
+       "type" : "VTL|MD" } } },
+    "bindingDependencies" : 
+    [ "NBHAB",
+     "PRENOM" ],
+    "loopDependencies" : 
+    [ "NBHAB" ],
+    "lines" : 
+    { "min" : 
+     { "value" : "cast(nvl(NBHAB ,\"1\"),integer)",
+      "type" : "VTL" },
+     "max" : 
+     { "value" : "cast(nvl(NBHAB ,\"1\"),integer)",
+      "type" : "VTL" } },
+    "components" : 
+    [ 
+     { "id" : "kyn4090i",
+      "componentType" : "Subsequence",
+      "page" : "5",
+      "goToPage" : "5",
+      "label" : 
+      { "value" : "Prénom",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "true",
+       "type" : "VTL" },
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "kwupyhsh",
+        "page" : "1",
+        "label" : 
+        { "value" : "S1",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kyn4090i",
+        "page" : "5",
+        "label" : 
+        { "value" : "Prénom",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "NBHAB" ] },
+     
+     { "id" : "kyn41vx2",
+      "componentType" : "Input",
+      "mandatory" : false,
+      "page" : "5",
+      "maxLength" : 249,
+      "label" : 
+      { "value" : "\"➡ 4. \" || \"Prénom. Controle si prénom = A\"",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "true",
+       "type" : "VTL" },
+      "controls" : 
+      [ 
+       { "id" : "kyn41vx2-CI-0",
+        "criticality" : "WARN",
+        "control" : 
+        { "value" : "not(PRENOM= \"A\")",
+         "type" : "VTL" },
+        "errorMessage" : 
+        { "value" : "prénom = A",
+         "type" : "VTL|MD" },
+        "bindingDependencies" : 
+        [ "PRENOM" ] } ],
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "kwupyhsh",
+        "page" : "1",
+        "label" : 
+        { "value" : "S1",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kyn4090i",
+        "page" : "5",
+        "label" : 
+        { "value" : "Prénom",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "PRENOM",
+       "NBHAB" ],
+      "response" : 
+      { "name" : "PRENOM" } } ] },
+   
+   { "id" : "kyn3zwkg",
+    "componentType" : "Loop",
+    "page" : "6",
+    "maxPage" : "4",
+    "depth" : 1,
+    "paginatedLoop" : true,
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kwupyhsh",
+      "page" : "1",
+      "label" : 
+      { "value" : "S1",
+       "type" : "VTL|MD" } } },
+    "bindingDependencies" : 
+    [ "PRENOM",
+     "QCU1INDIV",
+     "QCU2INDIV",
+     "QCU3INDIV",
+     "MONTANTINDIV" ],
+    "loopDependencies" : 
+    [ "PRENOM" ],
+    "components" : 
+    [ 
+     { "id" : "kyn43dhb",
+      "componentType" : "Subsequence",
+      "goToPage" : "6.1",
+      "label" : 
+      { "value" : "Boucles",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "true",
+       "type" : "VTL" },
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "kwupyhsh",
+        "page" : "1",
+        "label" : 
+        { "value" : "S1",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kyn43dhb",
+        "page" : "6.1",
+        "label" : 
+        { "value" : "Boucles",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "PRENOM" ] },
+     
+     { "id" : "kyn48ve5",
+      "componentType" : "CheckboxOne",
+      "mandatory" : false,
+      "page" : "6.1",
+      "label" : 
+      { "value" : "\"➡ 5. \" || \"QCU1 de \" || PRENOM",
+       "type" : "VTL|MD" },
+      "declarations" : 
+      [ 
+       { "id" : "kyn48ve5-kyo4yga9",
+        "declarationType" : "HELP",
+        "position" : "AFTER_QUESTION_TEXT",
+        "label" : 
+        { "value" : "Controle si QCU1INDIV vide",
+         "type" : "VTL|MD" } } ],
+      "conditionFilter" : 
+      { "value" : "true",
+       "type" : "VTL" },
+      "controls" : 
+      [ 
+       { "id" : "kyn48ve5-CI-0",
+        "criticality" : "WARN",
+        "control" : 
+        { "value" : "not(isnull(QCU1INDIV))",
+         "type" : "VTL" },
+        "errorMessage" : 
+        { "value" : "Remplir QCU1INDIV",
+         "type" : "VTL|MD" },
+        "bindingDependencies" : 
+        [ "QCU1INDIV" ] } ],
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "kwupyhsh",
+        "page" : "1",
+        "label" : 
+        { "value" : "S1",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kyn43dhb",
+        "page" : "6.1",
+        "label" : 
+        { "value" : "Boucles",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "PRENOM",
+       "QCU1INDIV" ],
+      "options" : 
+      [ 
+       { "value" : "1",
+        "label" : 
+        { "value" : "OUI",
+         "type" : "VTL|MD" } },
+       
+       { "value" : "2",
+        "label" : 
+        { "value" : "NON",
+         "type" : "VTL|MD" } } ],
+      "response" : 
+      { "name" : "QCU1INDIV" } },
+     
+     { "id" : "kyn413gz",
+      "componentType" : "CheckboxOne",
+      "mandatory" : false,
+      "page" : "6.2",
+      "label" : 
+      { "value" : "\"➡ 6. \" || \"QCU2INDIV de \" || PRENOM",
+       "type" : "VTL|MD" },
+      "declarations" : 
+      [ 
+       { "id" : "kyn413gz-l5quo5zd",
+        "declarationType" : "HELP",
+        "position" : "AFTER_QUESTION_TEXT",
+        "label" : 
+        { "value" : "controle si QCU1INDIV = oui et QCU2INDIV=oui",
+         "type" : "VTL|MD" } } ],
+      "conditionFilter" : 
+      { "value" : "true",
+       "type" : "VTL" },
+      "controls" : 
+      [ 
+       { "id" : "kyn413gz-CI-0",
+        "criticality" : "WARN",
+        "control" : 
+        { "value" : "not((nvl(QCU1INDIV,\" \")=\"1\") and (nvl(QCU2INDIV,\" \")=\"1\"))",
+         "type" : "VTL" },
+        "errorMessage" : 
+        { "value" : "Incohérence QCU1 et QCU2",
+         "type" : "VTL|MD" },
+        "bindingDependencies" : 
+        [ "QCU1INDIV",
+         "QCU2INDIV" ] } ],
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "kwupyhsh",
+        "page" : "1",
+        "label" : 
+        { "value" : "S1",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kyn43dhb",
+        "page" : "6.1",
+        "label" : 
+        { "value" : "Boucles",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "PRENOM",
+       "QCU2INDIV" ],
+      "options" : 
+      [ 
+       { "value" : "1",
+        "label" : 
+        { "value" : "OUI",
+         "type" : "VTL|MD" } },
+       
+       { "value" : "2",
+        "label" : 
+        { "value" : "NON",
+         "type" : "VTL|MD" } } ],
+      "response" : 
+      { "name" : "QCU2INDIV" } },
+     
+     { "id" : "kyo3j0tl",
+      "componentType" : "CheckboxOne",
+      "mandatory" : false,
+      "page" : "6.3",
+      "label" : 
+      { "value" : "\"➡ 7. \" || \"QCU3 \"|| PRENOM",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "true",
+       "type" : "VTL" },
+      "controls" : 
+      [ 
+       { "id" : "kyo3j0tl-CI-0",
+        "criticality" : "WARN",
+        "control" : 
+        { "value" : "not((nvl(QCU1INDIV,\"\")=\"1\") and (nvl(QCU3INDIV,\"\")=\"1\"))",
+         "type" : "VTL" },
+        "errorMessage" : 
+        { "value" : "Incohérence QCU1 et QCU3",
+         "type" : "VTL|MD" },
+        "bindingDependencies" : 
+        [ "QCU1INDIV",
+         "QCU3INDIV" ] } ],
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "kwupyhsh",
+        "page" : "1",
+        "label" : 
+        { "value" : "S1",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kyn43dhb",
+        "page" : "6.1",
+        "label" : 
+        { "value" : "Boucles",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "PRENOM",
+       "QCU3INDIV" ],
+      "options" : 
+      [ 
+       { "value" : "1",
+        "label" : 
+        { "value" : "a",
+         "type" : "VTL|MD" } },
+       
+       { "value" : "2",
+        "label" : 
+        { "value" : "b",
+         "type" : "VTL|MD" } },
+       
+       { "value" : "3",
+        "label" : 
+        { "value" : "c",
+         "type" : "VTL|MD" } },
+       
+       { "value" : "4",
+        "label" : 
+        { "value" : "d",
+         "type" : "VTL|MD" } } ],
+      "response" : 
+      { "name" : "QCU3INDIV" } },
+     
+     { "id" : "kyo4bj5g",
+      "componentType" : "InputNumber",
+      "mandatory" : false,
+      "page" : "6.4",
+      "min" : 0,
+      "max" : 100,
+      "decimals" : 0,
+      "label" : 
+      { "value" : "\"➡ 8. \" || \"Montant entre 0 et 100, contrôle si inférieur à 10 et controle si Qcuindiv1 est vide et montant = 11\"",
+       "type" : "VTL|MD" },
+      "conditionFilter" : 
+      { "value" : "true",
+       "type" : "VTL" },
+      "controls" : 
+      [ 
+       { "id" : "kyo4bj5g-CI-0",
+        "criticality" : "WARN",
+        "control" : 
+        { "value" : "not(cast(MONTANTINDIV,integer) < 10)",
+         "type" : "VTL" },
+        "errorMessage" : 
+        { "value" : " inférieur à 10",
+         "type" : "VTL|MD" },
+        "bindingDependencies" : 
+        [ "MONTANTINDIV" ] },
+       
+       { "id" : "kyo4bj5g-CI-1",
+        "criticality" : "WARN",
+        "control" : 
+        { "value" : "not(cast(MONTANTINDIV,integer) = 11 and isnull(QCU1INDIV))",
+         "type" : "VTL" },
+        "errorMessage" : 
+        { "value" : "controle si Qcuindiv1 est vide et montant = 11",
+         "type" : "VTL|MD" },
+        "bindingDependencies" : 
+        [ "MONTANTINDIV",
+         "QCU1INDIV" ] } ],
+      "hierarchy" : 
+      { "sequence" : 
+       { "id" : "kwupyhsh",
+        "page" : "1",
+        "label" : 
+        { "value" : "S1",
+         "type" : "VTL|MD" } },
+       "subSequence" : 
+       { "id" : "kyn43dhb",
+        "page" : "6.1",
+        "label" : 
+        { "value" : "Boucles",
+         "type" : "VTL|MD" } } },
+      "bindingDependencies" : 
+      [ "MONTANTINDIV",
+       "PRENOM" ],
+      "response" : 
+      { "name" : "MONTANTINDIV" } } ],
+    "iterations" : 
+    { "value" : "count(PRENOM)",
+     "type" : "VTL|MD" } },
+   
+   { "id" : "kyo2vhbm",
+    "componentType" : "Subsequence",
+    "goToPage" : "7",
+    "label" : 
+    { "value" : "Autre",
+     "type" : "VTL|MD" },
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kwupyhsh",
+      "page" : "1",
+      "label" : 
+      { "value" : "S1",
+       "type" : "VTL|MD" } },
+     "subSequence" : 
+     { "id" : "kyo2vhbm",
+      "page" : "7",
+      "label" : 
+      { "value" : "Autre",
+       "type" : "VTL|MD" } } } },
+   
+   { "id" : "kyo2xe36",
+    "componentType" : "Input",
+    "mandatory" : false,
+    "page" : "7",
+    "maxLength" : 249,
+    "label" : 
+    { "value" : "\"➡ 9. \" || \"FIN \"",
+     "type" : "VTL|MD" },
+    "conditionFilter" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "hierarchy" : 
+    { "sequence" : 
+     { "id" : "kwupyhsh",
+      "page" : "1",
+      "label" : 
+      { "value" : "S1",
+       "type" : "VTL|MD" } },
+     "subSequence" : 
+     { "id" : "kyo2vhbm",
+      "page" : "7",
+      "label" : 
+      { "value" : "Autre",
+       "type" : "VTL|MD" } } },
+    "bindingDependencies" : 
+    [ "FIN" ],
+    "response" : 
+    { "name" : "FIN" } } ],
+  "variables" : 
+  [ 
+   { "variableType" : "COLLECTED",
+    "name" : "LOGENQ",
+    "values" : 
+    { "PREVIOUS" : null,
+     "COLLECTED" : null,
+     "FORCED" : null,
+     "EDITED" : null,
+     "INPUTED" : null } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "LOGAUT",
+    "values" : 
+    { "PREVIOUS" : null,
+     "COLLECTED" : null,
+     "FORCED" : null,
+     "EDITED" : null,
+     "INPUTED" : null } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "NBHAB",
+    "values" : 
+    { "PREVIOUS" : null,
+     "COLLECTED" : null,
+     "FORCED" : null,
+     "EDITED" : null,
+     "INPUTED" : null } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "PRENOM",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "QCU1INDIV",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "QCU2INDIV",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "QCU3INDIV",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "MONTANTINDIV",
+    "values" : 
+    { "PREVIOUS" : 
+     [ null ],
+     "COLLECTED" : 
+     [ null ],
+     "FORCED" : 
+     [ null ],
+     "EDITED" : 
+     [ null ],
+     "INPUTED" : 
+     [ null ] } },
+   
+   { "variableType" : "COLLECTED",
+    "name" : "FIN",
+    "values" : 
+    { "PREVIOUS" : null,
+     "COLLECTED" : null,
+     "FORCED" : null,
+     "EDITED" : null,
+     "INPUTED" : null } },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_LOGENQ",
+    "expression" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_LOGAUT",
+    "expression" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_NBHAB",
+    "expression" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_PRENOM",
+    "expression" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "shapeFrom" : "PRENOM",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_QCU1INDIV",
+    "expression" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "shapeFrom" : "QCU1INDIV",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_QCU2INDIV",
+    "expression" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "shapeFrom" : "QCU1INDIV",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_QCU3INDIV",
+    "expression" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "shapeFrom" : "QCU1INDIV",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_MONTANTINDIV",
+    "expression" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "shapeFrom" : "QCU1INDIV",
+    "inFilter" : "false" },
+   
+   { "variableType" : "CALCULATED",
+    "name" : "FILTER_RESULT_FIN",
+    "expression" : 
+    { "value" : "true",
+     "type" : "VTL" },
+    "inFilter" : "false" } ],
+  "cleaning" : 
+  {  },
+  "resizing" : 
+  { "NBHAB" : 
+   { "size" : "cast(nvl(NBHAB ,\"1\"),integer)",
+    "variables" : 
+    [ "PRENOM",
+     "QCU1INDIV",
+     "QCU2INDIV",
+     "QCU3INDIV",
+     "MONTANTINDIV" ] } } }

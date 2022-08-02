@@ -8,6 +8,7 @@ import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
 
 function BlockForLoop({
 	declarations,
+	id,
 	lines,
 	components,
 	handleChange,
@@ -20,6 +21,7 @@ function BlockForLoop({
 	executeExpression,
 	iterations,
 	custom,
+	paginatedLoop,
 }) {
 	const [nbRows, setNbRows] = useState(-1);
 	const [min, setMin] = useState(undefined);
@@ -51,16 +53,29 @@ function BlockForLoop({
 
 	const handleChangeLoop = useCallback(
 		function (response, value, args) {
-			handleChange(response, value, { ...args, loop: true, length: nbRows });
+			if (!paginatedLoop) {
+				const v = valueMap[response.name];
+				v[args.index] = value;
+				handleChange(response, v, { loop: true, length: nbRows });
+			} else
+				handleChange(response, value, { ...args, loop: true, length: nbRows });
 		},
-		[handleChange, nbRows]
+		[handleChange, nbRows, paginatedLoop, valueMap]
 	);
 
 	if (nbRows > 0) {
 		return (
 			<>
-				<DeclarationsBeforeText declarations={declarations} custom={custom} />
-				<DeclarationsAfterText declarations={declarations} custom={custom} />
+				<DeclarationsBeforeText
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
+				<DeclarationsAfterText
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
 				<BlockForLoopOrchestrator
 					components={components}
 					handleChange={handleChangeLoop}
@@ -74,7 +89,11 @@ function BlockForLoop({
 					executeExpression={executeExpression}
 					custom={custom}
 				/>
-				<DeclarationsDetachable declarations={declarations} custom={custom} />
+				<DeclarationsDetachable
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
 			</>
 		);
 	}

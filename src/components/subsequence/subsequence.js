@@ -8,16 +8,16 @@ import {
 function Subsequence({ id, declarations, label }) {
 	return (
 		<>
-			<DeclarationsBeforeText declarations={declarations} />
+			<DeclarationsBeforeText declarations={declarations} id={id} />
 			<div
-				aria-label={`sequence-${id}`}
-				className="sequence-lunatic"
-				id={`sequence-${id}`}
+				aria-label={`subsequence-${id}`}
+				className="subsequence-lunatic"
+				id={`subsequence-${id}`}
 			>
 				{label}
 			</div>
-			<DeclarationsAfterText declarations={declarations} />
-			<DeclarationsDetachable declarations={declarations} />
+			<DeclarationsAfterText declarations={declarations} id={id} />
+			<DeclarationsDetachable declarations={declarations} id={id} />
 		</>
 	);
 }

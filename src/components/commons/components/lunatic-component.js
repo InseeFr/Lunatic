@@ -28,7 +28,11 @@ function LunaticComponent(props) {
 	} = props;
 	const content = (
 		<>
-			<DeclarationsBeforeText declarations={declarations} custom={custom} />
+			<DeclarationsBeforeText
+				declarations={declarations}
+				id={id}
+				custom={custom}
+			/>
 			<Label
 				id={labelId}
 				htmlFor={inputId}
@@ -37,7 +41,11 @@ function LunaticComponent(props) {
 			>
 				{safetyLabel(label, id)}
 			</Label>
-			<DeclarationsAfterText declarations={declarations} custom={custom} />
+			<DeclarationsAfterText
+				declarations={declarations}
+				id={id}
+				custom={custom}
+			/>
 			<FieldContainer
 				value={value}
 				id={id}
@@ -46,7 +54,11 @@ function LunaticComponent(props) {
 			>
 				{children}
 			</FieldContainer>
-			<DeclarationsDetachable declarations={declarations} custom={custom} />
+			<DeclarationsDetachable
+				declarations={declarations}
+				id={id}
+				custom={custom}
+			/>
 			{missing && missingResponse && <Missing {...props} />}
 		</>
 	);

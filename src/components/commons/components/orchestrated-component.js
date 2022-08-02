@@ -18,15 +18,17 @@ function OrchestratedComponent({
 	custom,
 }) {
 	const { componentType } = component;
+
 	const componentFilled = fillComponentExpressions(component, {
 		executeExpression,
 		pager: { iteration, linksIterations },
 	});
 	const Component = lunatic[componentType];
 
-	const isFiltered = componentFilled?.conditionFilter;
+	const { conditionFilter } = componentFilled;
+	const hasToBeDisplay = conditionFilter !== undefined ? conditionFilter : true;
 
-	if (componentType in lunatic && isFiltered) {
+	if (componentType in lunatic && hasToBeDisplay) {
 		return (
 			<Component
 				{...componentFilled}

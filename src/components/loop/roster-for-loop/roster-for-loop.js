@@ -6,7 +6,6 @@ import {
 } from '../../declarations';
 import RosterTable from './roster-table';
 import HandleRowButton from './handle-row-button';
-import useOnHandleChange from '../../commons/use-on-handle-change';
 import D from '../../../i18n';
 
 const DEFAULT_MAX_ROWS = 12;
@@ -22,7 +21,6 @@ function getTableLength(value) {
 
 function RosterforLoop({
 	valueMap,
-	loopDependencies,
 	lines,
 	handleChange,
 	declarations,
@@ -35,7 +33,6 @@ function RosterforLoop({
 	id,
 	management,
 	custom,
-	...props
 }) {
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [init, setInit] = useState(false);
@@ -80,8 +77,16 @@ function RosterforLoop({
 	if (nbRows > 0) {
 		return (
 			<>
-				<DeclarationsBeforeText declarations={declarations} custom={custom} />
-				<DeclarationsAfterText declarations={declarations} custom={custom} />
+				<DeclarationsBeforeText
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
+				<DeclarationsAfterText
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
 				<RosterTable
 					id={id}
 					components={components}
@@ -95,7 +100,11 @@ function RosterforLoop({
 					shortcut={shortcut}
 					custom={custom}
 				/>
-				<DeclarationsDetachable declarations={declarations} custom={custom} />
+				<DeclarationsDetachable
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
 				<HandleRowButton
 					onClick={addRow}
 					disabled={nbRows === max}

@@ -3,7 +3,6 @@ import { composeFilters, createFilterStopWords } from './filters';
 import filterStemmer from './filters/filter-stemmer';
 import filterLength from './filters/filter-length';
 import filterSynonyms from './filters/filter-synonyms';
-import filterAccents from './filters/filter-accents';
 import filterToLower from './filters/filter-to-lower';
 import filterDouble from './filters/filter-double';
 
@@ -21,7 +20,6 @@ function createFilterTokens(fields, stopWords) {
 	const filterStopWords = createFilterStopWords(stopWords);
 	const getFilters = composeFilters(
 		filterDouble,
-		filterAccents,
 		filterStemmer,
 		filterSynonyms,
 		filterToLower,

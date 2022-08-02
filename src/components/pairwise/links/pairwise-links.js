@@ -33,8 +33,16 @@ const PairwiseLinks = ({
 	if (nbRows > 0)
 		return (
 			<>
-				<DeclarationsBeforeText declarations={declarations} custom={custom} />
-				<DeclarationsAfterText declarations={declarations} custom={custom} />
+				<DeclarationsBeforeText
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
+				<DeclarationsAfterText
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
 				<LinksOrchestrator
 					id={id}
 					components={components}
@@ -50,7 +58,11 @@ const PairwiseLinks = ({
 					custom={custom}
 					xAxisIterations={xAxisIterations}
 				/>
-				<DeclarationsDetachable declarations={declarations} custom={custom} />
+				<DeclarationsDetachable
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
 			</>
 		);
 

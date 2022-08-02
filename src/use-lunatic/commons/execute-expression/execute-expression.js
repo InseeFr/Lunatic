@@ -16,7 +16,7 @@ function extractDataSetResult(dataSet) {
 	return undefined;
 }
 
-function executeVtlExpression(expression, vtlBindings) {
+export function executeVtlExpression(expression, vtlBindings) {
 	const result = interpret(expression, vtlBindings);
 	if (isDataSet(result)) {
 		return extractDataSetResult(result);

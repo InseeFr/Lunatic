@@ -27,8 +27,8 @@ function Loop(props) {
 		features,
 		preferences,
 		custom,
+		paginatedLoop,
 	} = props;
-
 	switch (componentType) {
 		case LoopTypes.blockForLoop:
 			return (
@@ -49,6 +49,7 @@ function Loop(props) {
 					features={features}
 					preferences={preferences}
 					custom={custom}
+					paginatedLoop={paginatedLoop}
 				/>
 			);
 		case LoopTypes.rosterForLoop:

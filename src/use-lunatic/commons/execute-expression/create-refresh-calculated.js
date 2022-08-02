@@ -51,6 +51,17 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 				bindings[name] = null;
 				return null;
 			}
+		} else if (shapeFrom && iteration === undefined) {
+			// TODO: optimize
+			const baseVar = bindings[shapeFrom];
+			const v = baseVar.map((_, i) =>
+				execute(expression, {
+					logging,
+					iteration: i,
+				})
+			);
+			bindings[name] = v;
+			return v;
 		}
 		bindings[name] = value;
 		return value;
