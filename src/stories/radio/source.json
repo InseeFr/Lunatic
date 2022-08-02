@@ -1,0 +1,36 @@
+{
+	"components": [
+		{
+			"id": "radio",
+			"componentType": "Radio",
+			"mandatory": false,
+			"page": "3",
+			"label": {
+				"value": "Radio component",
+				"type": "VTL|MD"
+			},
+
+			"conditionFilter": { "value": "true", "type": "VTL" },
+
+			"options": [
+				{ "value": "1", "label": { "value": "oui", "type": "VTL|MD" } },
+
+				{ "value": "2", "label": { "value": "non", "type": "VTL|MD" } }
+			],
+			"response": { "name": "Q2" }
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "Q2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

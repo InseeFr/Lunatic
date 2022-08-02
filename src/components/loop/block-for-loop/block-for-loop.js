@@ -8,6 +8,7 @@ import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
 
 function BlockForLoop({
 	declarations,
+	id,
 	lines,
 	components,
 	handleChange,
@@ -65,8 +66,16 @@ function BlockForLoop({
 	if (nbRows > 0) {
 		return (
 			<>
-				<DeclarationsBeforeText declarations={declarations} custom={custom} />
-				<DeclarationsAfterText declarations={declarations} custom={custom} />
+				<DeclarationsBeforeText
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
+				<DeclarationsAfterText
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
 				<BlockForLoopOrchestrator
 					components={components}
 					handleChange={handleChangeLoop}
@@ -80,7 +89,11 @@ function BlockForLoop({
 					executeExpression={executeExpression}
 					custom={custom}
 				/>
-				<DeclarationsDetachable declarations={declarations} custom={custom} />
+				<DeclarationsDetachable
+					declarations={declarations}
+					id={id}
+					custom={custom}
+				/>
 			</>
 		);
 	}

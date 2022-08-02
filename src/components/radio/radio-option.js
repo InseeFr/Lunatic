@@ -37,9 +37,10 @@ function RadioOption({
 
 	const onClickOption = useCallback(
 		function () {
-			onClick(value);
+			// on checkboxStyle, clicking on checked value unchecks it, so it acts as if empty answer was clicked
+			checkboxStyle && checked ? onClick(null) : onClick(value);
 		},
-		[value, onClick]
+		[value, onClick, checked, checkboxStyle]
 	);
 
 	const handleKeyDown = useCallback(

@@ -1,0 +1,11 @@
+{
+	"components": [
+		{
+			"componentType": "FilterDescription",
+			"label": { "value": "I'm a filter description", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"id": "desc"
+		}
+	],
+	"variables": []
+}

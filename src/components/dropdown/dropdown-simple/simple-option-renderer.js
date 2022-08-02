@@ -19,7 +19,7 @@ function SimpleOptionRenderer({ option, selected }) {
 	}
 	return (
 		<div className={classnames('lunatic-dropdown-option', { selected })}>
-			<span className="id">{value}</span>
+			<span className="id">{label}</span>
 		</div>
 	);
 }
