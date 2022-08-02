@@ -8,7 +8,7 @@ import './input.scss';
 
 const InputNumber = ({ numberAsTextfield, decimals, ...props }) => (
 	<InputDeclarationsWrapper
-		type={numberAsTextfield ? 'text' : 'number'}
+		type={numberAsTextfield ? 'tel' : 'number'}
 		roleType="input"
 		{...props}
 		decimals={decimals || 0}
