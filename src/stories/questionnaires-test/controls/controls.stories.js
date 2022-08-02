@@ -7,7 +7,7 @@ import linkedLoop2 from './V2_Controles_BouclesLiees2_PasPageFin';
 import defaultArgTypes from '../../utils/default-arg-types';
 
 const stories = {
-	title: 'Questionnaires/Controls',
+	title: 'Questionnaires-Tests/Controls',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,

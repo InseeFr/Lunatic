@@ -1,0 +1,2892 @@
+{
+	"id": "l4cgtrsi",
+	"modele": "THL-RG",
+	"enoCoreVersion": "2.3.7-dev-lunatic-v2",
+	"lunaticModelVersion": "2.2.13-dev-lunatic-v2",
+	"generatingDate": "19-07-2022 10:45:19",
+	"missing": false,
+	"pagination": "question",
+	"maxPage": "5",
+	"label": { "value": "THL - TCM - Rallye game", "type": "VTL|MD" },
+	"components": [
+		{
+			"id": "kfxmfvwj",
+			"componentType": "Sequence",
+			"page": "1",
+			"label": {
+				"value": "Tableau des habitants du logement",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kfxmfvwj-l0v2ckjm",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": { "value": "THL", "type": "VTL|MD" }
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kfxmfvwj",
+					"page": "1",
+					"label": {
+						"value": "Tableau des habitants du logement",
+						"type": "VTL|MD"
+					}
+				}
+			}
+		},
+
+		{
+			"id": "l0v2t2lc",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "2",
+			"min": 1,
+			"max": 20,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 1. \" || \"En vous comptant, combien de personnes habitent dans le logement situé à l’adresse \" || ADR || \" ?\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kfxmfvwj",
+					"page": "1",
+					"label": {
+						"value": "Tableau des habitants du logement",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["ADR", "NHAB"],
+			"response": { "name": "NHAB" }
+		},
+
+		{
+			"id": "l0v3gfcr",
+			"componentType": "Loop",
+			"page": "3",
+			"depth": 1,
+			"paginatedLoop": false,
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kfxmfvwj",
+					"page": "1",
+					"label": {
+						"value": "Tableau des habitants du logement",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["NBHAB", "G_PRENOM"],
+			"loopDependencies": ["NBHAB"],
+			"lines": {
+				"min": { "value": "cast(NBHAB, integer)", "type": "VTL" },
+				"max": { "value": "cast(NBHAB, integer)", "type": "VTL" }
+			},
+			"components": [
+				{
+					"id": "l0mkvvru",
+					"componentType": "Subsequence",
+					"page": "3",
+					"goToPage": "3",
+					"label": { "value": "Prénoms des habitants", "type": "VTL|MD" },
+					"declarations": [
+						{
+							"id": "l0mkvvru-l2yohc5k",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\" Si plusieurs habitants ont le même prénom, ajouter une initiale pour pouvoir les distinguer dans la suite du questionnaire.\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0mkvvru",
+							"page": "3",
+							"label": { "value": "Prénoms des habitants", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["NBHAB"]
+				},
+
+				{
+					"id": "l0v3g11i",
+					"componentType": "Input",
+					"mandatory": false,
+					"page": "3",
+					"maxLength": 40,
+					"label": {
+						"value": "\"➡ 2. \" || \"Prénom (en commençant par le vôtre)\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"controls": [
+						{
+							"id": "l0v3g11i-CI-0",
+							"criticality": "WARN",
+							"control": {
+								"value": "not((nvl(G_PRENOM, \"\") = \"\") and (not(isnull(NBHAB)) and cast(NBHAB,integer)>1))",
+								"type": "VTL"
+							},
+							"errorMessage": {
+								"value": "\"Merci d’indiquer l’ensemble des prénoms (initiales ou autre) afin de pouvoir vous repérer dans la suite du questionnaire lorsque les questions porteront sur une personne en particulier.\"",
+								"type": "VTL|MD"
+							},
+							"bindingDependencies": ["G_PRENOM", "NBHAB"]
+						},
+
+						{
+							"id": "l0v3g11i-CI-1",
+							"criticality": "WARN",
+							"control": {
+								"value": "not((nvl(G_PRENOM, \"\") = \"\") and (isnull(NBHAB) or cast(NBHAB,integer)=1))",
+								"type": "VTL"
+							},
+							"errorMessage": {
+								"value": "\"Votre réponse est importante pour le bon déroulement du questionnaire. Merci d’indiquer votre prénom (ou vos initiales, ou autre) pour pouvoir poursuivre le questionnaire.\"",
+								"type": "VTL|MD"
+							},
+							"bindingDependencies": ["G_PRENOM", "NBHAB"]
+						}
+					],
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0mkvvru",
+							"page": "3",
+							"label": { "value": "Prénoms des habitants", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["G_PRENOM", "NBHAB"],
+					"response": { "name": "G_PRENOM" }
+				}
+			]
+		},
+
+		{
+			"id": "l0v43iz7",
+			"componentType": "Loop",
+			"page": "4",
+			"maxPage": "16",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kfxmfvwj",
+					"page": "1",
+					"label": {
+						"value": "Tableau des habitants du logement",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": [
+				"PRENOM",
+				"PRENOMREF",
+				"TRAGE",
+				"LIB_E",
+				"LIB_PR",
+				"DATEDEPART",
+				"DATENAIS",
+				"DATERETOUR",
+				"LIB_SON",
+				"ANNARIV",
+				"ANNAIS",
+				"SEXE",
+				"LNAIS",
+				"DEPNAIS",
+				"PAYSNAIS",
+				"NATION1",
+				"NATION2",
+				"NATION3",
+				"NATION4",
+				"NATIONETR",
+				"VECUE",
+				"AGRETOUR",
+				"AGARRIV"
+			],
+			"loopDependencies": ["G_PRENOM"],
+			"components": [
+				{
+					"id": "l0v3oeqn",
+					"componentType": "Subsequence",
+					"page": "4.1",
+					"goToPage": "4.1",
+					"label": {
+						"value": "Description des habitants du logement",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l0v3oeqn-l0v3ldcs",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "if (PRENOM = PRENOMREF) then PRENOM ||\", nous allons rapidement vous décrire.\" else \"Nous allons décrire rapidement \" || PRENOM || \".\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0v3oeqn",
+							"page": "4.1",
+							"label": {
+								"value": "Description des habitants du logement",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": ["PRENOM", "PRENOMREF", "G_PRENOM"]
+				},
+
+				{
+					"id": "l0v4b34m",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "4.2",
+					"label": {
+						"value": "\"➡ 3. \" || \"Quel est \" || if (PRENOM = PRENOMREF) then \"votre sexe ?\" else \"le sexe de \" || PRENOM || \" ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0v3oeqn",
+							"page": "4.1",
+							"label": {
+								"value": "Description des habitants du logement",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": ["PRENOM", "PRENOMREF", "SEXE", "G_PRENOM"],
+					"options": [
+						{ "value": "1", "label": { "value": "Homme", "type": "VTL|MD" } },
+
+						{ "value": "2", "label": { "value": "Femme", "type": "VTL|MD" } }
+					],
+					"response": { "name": "SEXE" }
+				},
+
+				{
+					"id": "l0v4oi1v",
+					"componentType": "Datepicker",
+					"mandatory": false,
+					"page": "4.3",
+					"min": "1900-01-01",
+					"max": "2022-03-17",
+					"label": {
+						"value": "\"➡ 4. \" || \"Quelle est \" || if (PRENOM = PRENOMREF) then \"votre date de naissance ?\" else \"la date de naissance de \" || PRENOM || \" ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0v3oeqn",
+							"page": "4.1",
+							"label": {
+								"value": "Description des habitants du logement",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"DATENAIS",
+						"G_PRENOM"
+					],
+					"dateFormat": "YYYY-MM-DD",
+					"response": { "name": "DATENAIS" }
+				},
+
+				{
+					"id": "l11z2too",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "4.4",
+					"label": {
+						"value": "\"➡ 5. \" || \"Vous n’avez pas indiqué de date de naissance, pouvez-vous indiquer \" || if (PRENOM = PRENOMREF) then \" votre âge ?\" else \"l’âge de \" || PRENOM || \" ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "(isnull(DATENAIS))",
+						"type": "VTL",
+						"bindingDependencies": ["DATENAIS"]
+					},
+					"controls": [
+						{
+							"id": "l11z2too-CI-0",
+							"criticality": "INFO",
+							"control": {
+								"value": "not(isnull(TRAGE) and (PRENOM = PRENOMREF))",
+								"type": "VTL"
+							},
+							"errorMessage": {
+								"value": "Votre réponse est importante pour le bon déroulement du questionnaire. La connaissance de votre âge permet de filtrer la suite du questionnaire et d’éviter de vous poser des questions qui ne vous concerneraient pas. Merci de renseigner votre âge.",
+								"type": "VTL|MD"
+							},
+							"bindingDependencies": ["TRAGE", "PRENOM", "PRENOMREF"]
+						},
+
+						{
+							"id": "l11z2too-CI-1",
+							"criticality": "INFO",
+							"control": {
+								"value": "not(isnull(TRAGE) and PRENOM <> PRENOMREF)",
+								"type": "VTL"
+							},
+							"errorMessage": {
+								"value": "Cette réponse est importante pour le bon déroulement du questionnaire. La connaissance de l’âge permet de filtrer la suite du questionnaire et d’éviter de poser des questions hors de propos. Merci de renseigner l’âge.",
+								"type": "VTL|MD"
+							},
+							"bindingDependencies": ["TRAGE", "PRENOM", "PRENOMREF"]
+						}
+					],
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0v3oeqn",
+							"page": "4.1",
+							"label": {
+								"value": "Description des habitants du logement",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": ["PRENOM", "PRENOMREF", "TRAGE", "G_PRENOM"],
+					"options": [
+						{
+							"value": "1",
+							"label": { "value": "Moins de 15 ans", "type": "VTL|MD" }
+						},
+
+						{
+							"value": "2",
+							"label": { "value": "De 15 à 18 ans", "type": "VTL|MD" }
+						},
+
+						{
+							"value": "3",
+							"label": { "value": "De 18 à 25 ans", "type": "VTL|MD" }
+						},
+
+						{
+							"value": "4",
+							"label": { "value": "De 25 à 40 ans", "type": "VTL|MD" }
+						},
+
+						{
+							"value": "5",
+							"label": { "value": "De 40 à 60 ans", "type": "VTL|MD" }
+						},
+
+						{
+							"value": "6",
+							"label": { "value": "Plus de 60 ans", "type": "VTL|MD" }
+						}
+					],
+					"response": { "name": "TRAGE" }
+				},
+
+				{
+					"id": "l11zznh4",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "4.5",
+					"label": {
+						"value": "\"➡ 6. \" || if (PRENOM = PRENOMREF) then \"Où êtes-vous né\"|| LIB_E || \" ?\" else \"Où est né\" || LIB_E || \" \" || PRENOM || \" ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l11zznh4-l120k8go",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"Prendre en compte les frontières actuelles.\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0v3oeqn",
+							"page": "4.1",
+							"label": {
+								"value": "Description des habitants du logement",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_E",
+						"LNAIS",
+						"G_PRENOM"
+					],
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "\"En France (Métropole, DOM et COM)\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "2",
+							"label": { "value": "\"A l’étranger\"", "type": "VTL|MD" }
+						}
+					],
+					"response": { "name": "LNAIS" }
+				},
+
+				{
+					"id": "l120kmks",
+					"componentType": "Dropdown",
+					"mandatory": false,
+					"page": "4.6",
+					"label": {
+						"value": "\"➡ 7. \" || \"Dans quel département \" || if (PRENOM = PRENOMREF) then \"êtes-vous né\" || LIB_E || \" ?\" else \"est né\" || LIB_E || \" \" || PRENOM || \" ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l120kmks-l120ef3t",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"Saisir le numéro ou les premières lettres du département puis sélectionner le département de naissance dans la liste proposée.\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": {
+						"value": "(LNAIS = \"1\")",
+						"type": "VTL",
+						"bindingDependencies": ["LNAIS"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0v3oeqn",
+							"page": "4.1",
+							"label": {
+								"value": "Description des habitants du logement",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_E",
+						"DEPNAIS",
+						"G_PRENOM"
+					],
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "\"Recherche sur liste des départements\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"response": { "name": "DEPNAIS" }
+				},
+
+				{
+					"id": "l120lqns",
+					"componentType": "Dropdown",
+					"mandatory": false,
+					"page": "4.7",
+					"label": {
+						"value": "\"➡ 8. \" || \"Dans quel pays \" || if(PRENOM = PRENOMREF) then \"êtes-vous né\" || LIB_E || \" ?\" else \"est né\"|| LIB_E || \" \" || PRENOM || \" ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l120lqns-l1210yn3",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"Saisir les premières lettres du pays puis sélectionner le pays de naissance\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": {
+						"value": "(LNAIS = \"2\")",
+						"type": "VTL",
+						"bindingDependencies": ["LNAIS"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0v3oeqn",
+							"page": "4.1",
+							"label": {
+								"value": "Description des habitants du logement",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_E",
+						"PAYSNAIS",
+						"G_PRENOM"
+					],
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "Recherche sur liste des pays",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"response": { "name": "PAYSNAIS" }
+				},
+
+				{
+					"id": "l120zrhs",
+					"componentType": "CheckboxGroup",
+					"page": "4.8",
+					"label": {
+						"value": "\"➡ 9. \" || \"Quelle est \" || if (PRENOM = PRENOMREF) then \"votre nationalité ?\" else \"la nationalité de \" || PRENOM || \" ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l120zrhs-l121egbq",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "Plusieurs réponses possibles",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0v3oeqn",
+							"page": "4.1",
+							"label": {
+								"value": "Description des habitants du logement",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"NATION1",
+						"NATION2",
+						"NATION3",
+						"NATION4",
+						"G_PRENOM"
+					],
+					"responses": [
+						{
+							"id": "l120zrhs-QOP-l12109x8",
+							"label": {
+								"value": "Française de naissance ou par intégration",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "NATION1" }
+						},
+
+						{
+							"id": "l120zrhs-QOP-l1216ug0",
+							"label": {
+								"value": "Française par déclaration, naturalisation, option à votre majorité",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "NATION2" }
+						},
+
+						{
+							"id": "l120zrhs-QOP-l121i9v7",
+							"label": { "value": "Etrangère", "type": "VTL|MD" },
+							"response": { "name": "NATION3" }
+						},
+
+						{
+							"id": "l120zrhs-QOP-l1217hj1",
+							"label": {
+								"value": "Apatride (pas de nationalité)",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "NATION4" }
+						}
+					]
+				},
+
+				{
+					"id": "l121ftlg",
+					"componentType": "Dropdown",
+					"mandatory": false,
+					"page": "4.9",
+					"label": {
+						"value": "\"➡ 10. \" || \"Quelle est \" || if (PRENOM = PRENOMREF) then \"votre nationalité étrangère ?\" else \"la nationalité étrangère de \" || PRENOM || \" ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l121ftlg-l121hdzg",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "Entrez les premières lettres de la nationalité, et sélectionnez dans la liste la nationalité étrangère correspondante.",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": {
+						"value": "(NATION3 = true)",
+						"type": "VTL",
+						"bindingDependencies": ["NATION3"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l0v3oeqn",
+							"page": "4.1",
+							"label": {
+								"value": "Description des habitants du logement",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"NATIONETR",
+						"G_PRENOM"
+					],
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "Recherche dans la liste des nationalités étrangères",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"response": { "name": "NATIONETR" }
+				},
+
+				{
+					"id": "l126uoh0",
+					"componentType": "Subsequence",
+					"page": "4.10",
+					"goToPage": "4.10",
+					"label": {
+						"value": "Vécu à l’étranger en dehors du temps de l’enquête",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l126uoh0-l1279j1h",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "Questions optionnelles sur le vécu à l’étranger en dehors du champ de l’enquête.",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l126uoh0",
+							"page": "4.10",
+							"label": {
+								"value": "Vécu à l’étranger en dehors du temps de l’enquête",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": ["G_PRENOM"]
+				},
+
+				{
+					"id": "l1265ml0",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "4.11",
+					"label": {
+						"value": "\"➡ 11. \" || (if (PRENOM = PRENOMREF) then \"Depuis votre naissance, avez-vous\" else \"Depuis sa naissance, \" || PRENOM || \" a-t-\" || LIB_PR ) || \" vécu au moins un an sans interruption à l’étranger ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "(LNAIS = \"1\")",
+						"type": "VTL",
+						"bindingDependencies": ["LNAIS"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l126uoh0",
+							"page": "4.10",
+							"label": {
+								"value": "Vécu à l’étranger en dehors du temps de l’enquête",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_PR",
+						"VECUE",
+						"G_PRENOM"
+					],
+					"options": [
+						{ "value": "1", "label": { "value": "Oui", "type": "VTL|MD" } },
+
+						{ "value": "2", "label": { "value": "Non", "type": "VTL|MD" } }
+					],
+					"response": { "name": "VECUE" }
+				},
+
+				{
+					"id": "l12b8hbj",
+					"componentType": "Datepicker",
+					"mandatory": false,
+					"page": "4.12",
+					"min": "1900-01",
+					"max": "2022-03",
+					"label": {
+						"value": "\"➡ 12. \" || \"Pouvez-vous indiquer la date de départ à l’étranger, au début de cette période à l’étranger ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l12b8hbj-l12b4ifa",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"Indiquez le mois et l’année du départ\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": {
+						"value": "(VECUE = \"1\")",
+						"type": "VTL",
+						"bindingDependencies": ["VECUE"]
+					},
+					"controls": [
+						{
+							"id": "l12b8hbj-CI-0",
+							"criticality": "WARN",
+							"control": {
+								"value": "not(cast(DATEDEPART,integer) < cast(DATENAIS, integer))",
+								"type": "VTL"
+							},
+							"errorMessage": {
+								"value": "La date de naissance est inférieure à la date de départ à l’étranger",
+								"type": "VTL|MD"
+							},
+							"bindingDependencies": ["DATEDEPART", "DATENAIS"]
+						}
+					],
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l126uoh0",
+							"page": "4.10",
+							"label": {
+								"value": "Vécu à l’étranger en dehors du temps de l’enquête",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": ["DATEDEPART", "G_PRENOM"],
+					"dateFormat": "YYYY-MM",
+					"response": { "name": "DATEDEPART" }
+				},
+
+				{
+					"id": "l126og4z",
+					"componentType": "Datepicker",
+					"mandatory": false,
+					"page": "4.13",
+					"min": "1900-01",
+					"max": "2022-03",
+					"label": {
+						"value": "\"➡ 13. \" || \"Pouvez-vous indiquer la date du retour en France, à l’issue de cette période à l’étranger ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l126og4z-l126o0z8",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"Indiquez le mois et l’année du retour\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": {
+						"value": "(VECUE = \"1\")",
+						"type": "VTL",
+						"bindingDependencies": ["VECUE"]
+					},
+					"controls": [
+						{
+							"id": "l126og4z-CI-0",
+							"criticality": "WARN",
+							"control": {
+								"value": "not(cast(DATERETOUR,integer) < cast(DATEDEPART, integer))",
+								"type": "VTL"
+							},
+							"errorMessage": {
+								"value": "\"La date de retour est antérieure à la date de départ\"",
+								"type": "VTL|MD"
+							},
+							"bindingDependencies": ["DATERETOUR", "DATEDEPART"]
+						}
+					],
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l126uoh0",
+							"page": "4.10",
+							"label": {
+								"value": "Vécu à l’étranger en dehors du temps de l’enquête",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": ["DATERETOUR", "G_PRENOM"],
+					"dateFormat": "YYYY-MM",
+					"response": { "name": "DATERETOUR" }
+				},
+
+				{
+					"id": "l1uxyne3",
+					"componentType": "InputNumber",
+					"mandatory": false,
+					"page": "4.14",
+					"min": 0,
+					"max": 120,
+					"decimals": 0,
+					"label": {
+						"value": "\"➡ 14. \" || \"Vous n’avez pas indiqué de date de retour, quel âge \" || (if (PRENOM = PRENOMREF) then \"aviez-vous à \" else PRENOM || \" avait-\" ||LIB_PR) || \" à \" ||LIB_SON || \" retour de cette période à l’étranger ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "(VECUE = \"1\") and (isnull(DATERETOUR))",
+						"type": "VTL",
+						"bindingDependencies": ["VECUE", "DATERETOUR"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l126uoh0",
+							"page": "4.10",
+							"label": {
+								"value": "Vécu à l’étranger en dehors du temps de l’enquête",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_PR",
+						"LIB_SON",
+						"AGRETOUR",
+						"G_PRENOM"
+					],
+					"response": { "name": "AGRETOUR" }
+				},
+
+				{
+					"id": "l127ghn9",
+					"componentType": "Datepicker",
+					"mandatory": false,
+					"page": "4.15",
+					"min": "1900",
+					"max": "2022",
+					"label": {
+						"value": "\"➡ 15. \" || \"En quelle année \" || (if (PRENOM = PRENOMREF) then \"vous êtes-vous installé\" || LIB_E else PRENOM || \" s’est-\" || LIB_PR || \" installé\" || LIB_E) || \" en France ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l127ghn9-l1271ndw",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "En cas de plusieurs installations en France, indiquer la plus récente",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": {
+						"value": "(LNAIS = \"2\")",
+						"type": "VTL",
+						"bindingDependencies": ["LNAIS"]
+					},
+					"controls": [
+						{
+							"id": "l127ghn9-CI-0",
+							"criticality": "WARN",
+							"control": {
+								"value": "not(substr(cast(ANNARIV,string,\"YYYY-MM-DD\"),1,4) < cast(ANNAIS, integer))",
+								"type": "VTL"
+							},
+							"errorMessage": {
+								"value": "L’année d’arrivée en France est antérieure à l’année de naissance",
+								"type": "VTL|MD"
+							},
+							"bindingDependencies": ["ANNARIV", "ANNAIS"]
+						}
+					],
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l126uoh0",
+							"page": "4.10",
+							"label": {
+								"value": "Vécu à l’étranger en dehors du temps de l’enquête",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_E",
+						"LIB_PR",
+						"ANNARIV",
+						"G_PRENOM"
+					],
+					"dateFormat": "YYYY",
+					"response": { "name": "ANNARIV" }
+				},
+
+				{
+					"id": "l1283pqp",
+					"componentType": "InputNumber",
+					"mandatory": false,
+					"page": "4.16",
+					"min": 0,
+					"max": 120,
+					"decimals": 0,
+					"label": {
+						"value": "\"➡ 16. \" || \"A quel âge \" || ( if (PRENOM = PRENOMREF) then \"vous êtes-vous installé\" || LIB_E else PRENOM || \" s’est-\" || LIB_PR || \" installé\" || LIB_E ) || \" en France ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "(LNAIS = \"2\") and (isnull(ANNARIV))",
+						"type": "VTL",
+						"bindingDependencies": ["LNAIS", "ANNARIV"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l126uoh0",
+							"page": "4.10",
+							"label": {
+								"value": "Vécu à l’étranger en dehors du temps de l’enquête",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_E",
+						"LIB_PR",
+						"AGARRIV",
+						"G_PRENOM"
+					],
+					"response": { "name": "AGARRIV" }
+				}
+			],
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
+		},
+
+		{
+			"id": "l13ntyek",
+			"componentType": "Loop",
+			"page": "5",
+			"maxPage": "11",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kfxmfvwj",
+					"page": "1",
+					"label": {
+						"value": "Tableau des habitants du logement",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": [
+				"PRENOM",
+				"PRENOMREF",
+				"ADR",
+				"LIB_PR",
+				"LIB_SES",
+				"LIB_SA",
+				"LIB_SON",
+				"MAJLOGENQ",
+				"UNLOG",
+				"DURLOG",
+				"MINLOGENQ1",
+				"MINLOGENQ2",
+				"MINLOGENQ3",
+				"MINLOGENQ4",
+				"MINLOGENQ5",
+				"MINLOGAUT",
+				"GARDE",
+				"DORM",
+				"MAJLOGAUT",
+				"LOGCO",
+				"TYPLOGCO"
+			],
+			"loopDependencies": ["G_PRENOM"],
+			"components": [
+				{
+					"id": "l13np0wv",
+					"componentType": "Subsequence",
+					"page": "5.1",
+					"goToPage": "5.1",
+					"label": { "value": "Lieux de vie", "type": "VTL|MD" },
+					"declarations": [
+						{
+							"id": "l13np0wv-l13nsvaw",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"Nous allons maintenant poser quelques questions concernant \" || (if (PRENOM = PRENOMREF) then \"vos autres logements, \" ||PRENOM else \"les autres logements de \" || PRENOM ) || \" (en dehors de celui situé à l’adresse) \" || ADR || \".\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["PRENOM", "PRENOMREF", "ADR", "G_PRENOM"]
+				},
+
+				{
+					"id": "l13nj6s2",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "5.2",
+					"label": {
+						"value": "\"➡ 17. \" || (if (PRENOM = PRENOMREF) then \"Vivez-vous\" else PRENOM || \" vit-\" || LIB_PR ) || \" aussi dans un autre logement ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l13nj6s2-l13ouetk",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "(if (PRENOM=PRENOMREF) then \"Si vous êtes \" else \"Si \" || PRENOM || \" est un enfant \") || \"en résidence alternée, répondre Oui.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"id": "l13nj6s2-l13o92e6",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "(if(PRENOM=PRENOMREF) then \"Vous vivez \" else PRENOM || \" vit \") || \"dans un autre logement (résidence secondaire, internat, foyer, caserne, maison de retraite ...) \" || (if(PRENOM=PRENOMREF) then \"si vous disposez d’un autre endroit où vous êtes chez vous : vous pouvez y aller sans prévenir, un lit vous est réservé, vous pouvez y recevoir du courrier ...\" else \"si \" ||LIB_PR || \" dispose d’un autre endroit où \" ||LIB_PR ||\" est chez \" ||LIB_PR || \" : \" ||LIB_PR || \" peut y aller sans prévenir, un lit lui est réservé, \" ||LIB_PR || \" peut y recevoir du courrier ...\")",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_PR",
+						"UNLOG",
+						"G_PRENOM"
+					],
+					"options": [
+						{ "value": "1", "label": { "value": "Oui", "type": "VTL|MD" } },
+
+						{ "value": "2", "label": { "value": "Non", "type": "VTL|MD" } }
+					],
+					"response": { "name": "UNLOG" }
+				},
+
+				{
+					"id": "l13nyqwe",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "5.3",
+					"label": {
+						"value": "\"➡ 18. \" || \"Combien de temps \" || if (PRENOM = PRENOMREF) then \"vivez vous dans le logement situé à l’adresse \" || ADR || \" ?\" else PRENOM || \" vit-\" || LIB_PR || \" dans le logement situé à l’adresse \" || ADR || \" ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "(UNLOG = \"1\")",
+						"type": "VTL",
+						"bindingDependencies": ["UNLOG"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"ADR",
+						"LIB_PR",
+						"DURLOG",
+						"G_PRENOM"
+					],
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "Plus de la moitié du temps",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "2",
+							"label": { "value": "La moitié du temps", "type": "VTL|MD" }
+						},
+
+						{
+							"value": "3",
+							"label": {
+								"value": "Moins de la moitié du temps",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"response": { "name": "DURLOG" }
+				},
+
+				{
+					"id": "l13ok7fx",
+					"componentType": "CheckboxGroup",
+					"page": "5.4",
+					"label": {
+						"value": "\"➡ 19. \" || \"Pour quelles raisons \" || (if (PRENOM = PRENOMREF) then \"vivez-vous\" else PRENOM || \" vit-\" || LIB_PR ) || \" dans le logement situé à l’adresse \" ||ADR ||\" sans \" ||LIB_SES || \" parents ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "(MINEUR = \"1\" and $NBPARL$ = \"0\")",
+						"type": "VTL",
+						"bindingDependencies": ["MINEUR", "TRAGE6", "DATENAIS", "TRAGE"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_PR",
+						"ADR",
+						"LIB_SES",
+						"LIB_SA",
+						"LIB_SON",
+						"MINLOGENQ1",
+						"MINLOGENQ2",
+						"MINLOGENQ3",
+						"MINLOGENQ4",
+						"MINLOGENQ5",
+						"G_PRENOM"
+					],
+					"responses": [
+						{
+							"id": "l13ok7fx-QOP-l13p1gvt",
+							"label": {
+								"value": "\"Pour suivre \" ||LIB_SA|| \" scolarité ou \" ||LIB_SES|| \" études.\"",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MINLOGENQ1" }
+						},
+
+						{
+							"id": "l13ok7fx-QOP-l13pbmo5",
+							"label": {
+								"value": "Pour des raisons de santé ou de handicap",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MINLOGENQ2" }
+						},
+
+						{
+							"id": "l13ok7fx-QOP-l13oz5s4",
+							"label": {
+								"value": "\"Pour \" ||LIB_SON|| \" travail ou une formation professionnelle\"",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MINLOGENQ3" }
+						},
+
+						{
+							"id": "l13ok7fx-QOP-l13pcs6r",
+							"label": {
+								"value": "Suite à une décision de l’aide sociale à l’enfance ou du juge des enfants",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MINLOGENQ4" }
+						},
+
+						{
+							"id": "l13ok7fx-QOP-l13p5fws",
+							"label": { "value": "Pour une autre raison", "type": "VTL|MD" },
+							"response": { "name": "MINLOGENQ5" }
+						}
+					]
+				},
+
+				{
+					"id": "l13on6tn",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "5.5",
+					"label": {
+						"value": "\"➡ 20. \" || if (PRENOM = PRENOMREF) then \"L’autre logement dans lequel vous vivez est-il ... ?\" else \"Pour \" || PRENOM || \", l’autre logement dans lequel \" || LIB_PR || \" vit, est-il ... ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l13on6tn-l13p60fc",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "if(PRENOM=PRENOMREF) then \"Si vous vivez dans plusieurs autres logements, décrivez l’autre logement dans lequel vous passez le plus de temps.\" else \"Si \" || PRENOM || \" vit dans plusieurs autres logements, décrire l’autre logement dans lequel \" ||LIB_PR || \" passe le plus de temps.\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": {
+						"value": "(MINEUR = \"1\" and UNLOG = \"1\")",
+						"type": "VTL",
+						"bindingDependencies": [
+							"MINEUR",
+							"TRAGE6",
+							"DATENAIS",
+							"TRAGE",
+							"UNLOG"
+						]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_PR",
+						"LIB_SON",
+						"LIB_SES",
+						"MINLOGAUT",
+						"G_PRENOM"
+					],
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "\"Le logement de \" ||LIB_SON|| \" ou de \" ||LIB_SES|| \" parent(s)\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "2",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez\" else \"qu’\" ||LIB_PR|| \" occupe\") || \" pour \" ||LIB_SES|| \" études.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "3",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez\" else \"qu’\" ||LIB_PR|| \" occupe\") || \" pour \" ||LIB_SON|| \" travail ou une formation professionnelle.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "4",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez\" else \"qu’\" ||LIB_PR|| \" occupe\") || \" pour des raissons de santé ou de handicap.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "5",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez\" else \"qu’\" ||LIB_PR|| \" occupe\") || \" suite à une décision de l’aide sociale à l’enfance ou du juge des enfants.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "6",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez\" else \"qu’\" ||LIB_PR|| \" occupe\") || \" pour une autre raison.\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"response": { "name": "MINLOGAUT" }
+				},
+
+				{
+					"id": "l13oux5e",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "5.6",
+					"label": {
+						"value": "\"➡ 21. \" || (if (PRENOM = PRENOMREF) then \"Etes-vous\" else PRENOM || \" est-\" ||LIB_PR ) || \" en résidence alternée entre ses deux parents ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "(DURLOG = \"2\" and $NBPARL$ = \"1\" and MINLOGAUT = \"1\")",
+						"type": "VTL",
+						"bindingDependencies": ["DURLOG", "MINLOGAUT"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_PR",
+						"GARDE",
+						"G_PRENOM"
+					],
+					"options": [
+						{ "value": "1", "label": { "value": "Oui", "type": "VTL|MD" } },
+
+						{ "value": "2", "label": { "value": "Non", "type": "VTL|MD" } }
+					],
+					"response": { "name": "GARDE" }
+				},
+
+				{
+					"id": "l13pabqu",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "5.7",
+					"label": {
+						"value": "\"➡ 22. \" || (if (PRENOM = PRENOMREF) then \"Où avez-vous\" else \"Où \" || PRENOM || \" a-t-\" || LIB_PR ) || \" dormi la nuit derière ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l13pabqu-l13pckb2",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"Si \" || PRENOM || \" a dormi chez un(e) ami(e), indiquez le logement où il devait normalement dormir.\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": {
+						"value": "(GARDE = \"1\")",
+						"type": "VTL",
+						"bindingDependencies": ["GARDE"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_PR",
+						"ADR",
+						"LIB_SON",
+						"DORM",
+						"G_PRENOM"
+					],
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "\"Dans le logement situé à l’adresse \" || ADR || \".\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "2",
+							"label": {
+								"value": "\"Dans le logement de \" ||LIB_SON|| \" autre parent.\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"response": { "name": "DORM" }
+				},
+
+				{
+					"id": "l13pbxr1",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "5.8",
+					"label": {
+						"value": "\"➡ 23. \" || (if (PRENOM = PRENOMREF) then \"Pour vous\" else \"Pour \" || PRENOM ) || \", le logement situé à l’adresse \" || ADR || \" est-il ... ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "(UNLOG = \"1\" and MINEUR = \"2\")",
+						"type": "VTL",
+						"bindingDependencies": [
+							"UNLOG",
+							"MINEUR",
+							"TRAGE6",
+							"DATENAIS",
+							"TRAGE"
+						]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"ADR",
+						"LIB_PR",
+						"LIB_SES",
+						"LIB_SON",
+						"MAJLOGENQ",
+						"G_PRENOM"
+					],
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "(if(PRENOM = PRENOMREF) then \"Votre \" else \"Sa \") || \"résidence principale\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "2",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez\" else \"qu’\" ||LIB_PR || \" occupe\") || \" pour \" ||LIB_SES || \" études.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "3",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez \" else \"qu’\" || LIB_PR || \"occupe \") || \"pour \" ||LIB_SON|| \" travail ou une formation professionnelle.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "4",
+							"label": {
+								"value": "\"Une résidence secondaire, un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez \" else \"qu’\" || LIB_PR || \"occupe \") || \"pour le week-end, les vacances ou pour \" ||LIB_SES|| \" loisirs.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "5",
+							"label": {
+								"value": "\"Le logement d’un ou de \" ||LIB_SES|| \" parent(s).\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "6",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez \" else \"qu’\" || LIB_PR || \" occupe \") || \"pour une autre raison.\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"response": { "name": "MAJLOGENQ" }
+				},
+
+				{
+					"id": "l13pyw1k",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "5.9",
+					"label": {
+						"value": "\"➡ 24. \" || if (PRENOM = PRENOMREF) then \"L’autre logement dans lequel vous vivez est-il ... ?\" else \"Pour \" || PRENOM || \", l’autre logement dans lequel \" || LIB_PR || \" vit, est-il ... ?\"",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "l13pyw1k-l13q4e9k",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"Si \" || PRENOM || \" vit dans plusieurs autres logements, décrivez l’autre logement dans lequel il passe le plus de temps.\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": {
+						"value": "(UNLOG = \"1\" and MINEUR = \"2\")",
+						"type": "VTL",
+						"bindingDependencies": [
+							"UNLOG",
+							"MINEUR",
+							"TRAGE6",
+							"DATENAIS",
+							"TRAGE"
+						]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": [
+						"PRENOM",
+						"PRENOMREF",
+						"LIB_PR",
+						"MAJLOGENQ",
+						"LIB_SES",
+						"LIB_SON",
+						"MAJLOGAUT",
+						"G_PRENOM"
+					],
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "if cast(MAJLOGENQ,integer) <> 1 then ( if (PRENOM = PRENOMREF) then \"Votre résidence principale.\" else \"Sa résidence principale.\") else \"\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "2",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez\" else \"qu’\" ||LIB_PR|| \" occupe\") || \" pour \" ||LIB_SES|| \" études.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "3",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez\" else \"qu’\" ||LIB_PR|| \" occupe\") || \" pour \" ||LIB_SON|| \" travail ou une formation professionnelle.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "4",
+							"label": {
+								"value": "\"Une résidence secondaire, un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez\" else \"qu’\" ||LIB_PR|| \" occupe\") || \" le week-end, les vacances ou pour \" ||LIB_SES|| \" loisirs.\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "5",
+							"label": {
+								"value": "\"Le logement d’un ou de \" ||LIB_SES|| \" parent(s)\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "6",
+							"label": {
+								"value": "\"Un logement \" || (if (PRENOM = PRENOMREF) then \"que vous occupez\" else \"qu’\" ||LIB_PR || \" occupe\") || \" pour \" ||LIB_SON|| \" pour une autre raison.\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"response": { "name": "MAJLOGAUT" }
+				},
+
+				{
+					"id": "l13q9a24",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "5.10",
+					"label": {
+						"value": "\"➡ 25. \" || \"L’autre logement \" || (if (PRENOM = PRENOMREF) then \"dans lequel vous vivez\" else \"où vit \" || PRENOM ) || \" est-il une chambre dans une structure collective (internat, résidence étudiante, foyer de l’enfance, foyer de jeunes travailleurs) ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "(MINLOGAUT =\"2\" or MINLOGAUT =\"3\" or MINLOGAUT =\"4\" or MINLOGAUT =\"5\" or MINLOGAUT =\"6\" or MAJLOGAUT=\"1\" or MAJLOGAUT=\"2\" or MAJLOGAUT=\"3\" or MAJLOGAUT=\"6\")",
+						"type": "VTL",
+						"bindingDependencies": ["MINLOGAUT", "MAJLOGAUT"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["PRENOM", "PRENOMREF", "LOGCO", "G_PRENOM"],
+					"options": [
+						{ "value": "1", "label": { "value": "Oui", "type": "VTL|MD" } },
+
+						{ "value": "2", "label": { "value": "Non", "type": "VTL|MD" } }
+					],
+					"response": { "name": "LOGCO" }
+				},
+
+				{
+					"id": "l13qc9n8",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "5.11",
+					"label": {
+						"value": "\"➡ 26. \" || \"De quelle structure s’agit-il ?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "(LOGCO = \"1\")",
+						"type": "VTL",
+						"bindingDependencies": ["LOGCO"]
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kfxmfvwj",
+							"page": "1",
+							"label": {
+								"value": "Tableau des habitants du logement",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "l13np0wv",
+							"page": "5.1",
+							"label": { "value": "Lieux de vie", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["TYPLOGCO", "G_PRENOM"],
+					"options": [
+						{
+							"value": "1",
+							"label": {
+								"value": "\"Un internat, une résidence étudiante ou un foyer d’étudiants\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "2",
+							"label": {
+								"value": "\"Un établissement pour personnes âgées (maison de retraite, Ehpad)\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "3",
+							"label": {
+								"value": "\"Un foyer ou une résidence sociale (CADA, structure gérée par Adoma...), foyer de réinsertion ou foyer de travailleurs\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "4",
+							"label": {
+								"value": "\"Une structure d’aide sociale à l’enfance ou de protection judiciaire\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "5",
+							"label": {
+								"value": "\"Une structure pour personne nécessitant des soins médicaux (hôpital, maison de repos, centre de rééducation)\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "6",
+							"label": {
+								"value": "\"Une caserne, un camp militaire\"",
+								"type": "VTL|MD"
+							}
+						},
+
+						{
+							"value": "7",
+							"label": {
+								"value": "\"Une autre structure (prison, communauté religieuse, hébergement d’urgence ...)\"",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"response": { "name": "TYPLOGCO" }
+				}
+			],
+			"iterations": { "value": "count(G_PRENOM)", "type": "VTL" }
+		}
+	],
+	"variables": [
+		{ "variableType": "EXTERNAL", "name": "ADR", "value": null },
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NHAB",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "G_PRENOM",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "SEXE",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "DATENAIS",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "TRAGE",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "LNAIS",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "DEPNAIS",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "PAYSNAIS",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NATION1",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NATION2",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NATION3",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NATION4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NATIONETR",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "VECUE",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "DATEDEPART",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "DATERETOUR",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "AGRETOUR",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "ANNARIV",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "AGARRIV",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "UNLOG",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "DURLOG",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MINLOGENQ1",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MINLOGENQ2",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MINLOGENQ3",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MINLOGENQ4",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MINLOGENQ5",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MINLOGAUT",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "GARDE",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "DORM",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MAJLOGENQ",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MAJLOGAUT",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "LOGCO",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "TYPLOGCO",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_NHAB",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_G_PRENOM",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "ANNAIS",
+			"expression": {
+				"value": "substr(cast(DATENAIS,string,\"YYYY-MM-DD\"),1,4)",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["DATENAIS"],
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "true"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "AGE",
+			"expression": {
+				"value": "cast((2022 - cast(ANNAIS,integer)), string)",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["ANNAIS", "DATENAIS"],
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "true"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "TRAGE6",
+			"expression": {
+				"value": "isnull(DATENAIS) then TRAGE else if not(isnull(DATENAIS)) and cast(AGE,integer) < 15 then \"1\" else if not(isnull(DATENAIS)) and cast(AGE,integer) > 14 and cast(AGE,integer) < 18 then \"2\" else if not(isnull(DATENAIS)) and cast(AGE,integer) > 17 and cast(AGE,integer) < 25 then \"3\" else if not(isnull(DATENAIS)) and cast(AGE,integer) > 24 and cast(AGE,integer) < 40 then \"4\" else if not(isnull(DATENAIS)) and cast(AGE,integer) > 39 and cast(AGE,integer) < 60 then \"5\" else if isnull(DATENAIS) and isnull(TRAGE) then null else \"6\"",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["DATENAIS", "TRAGE", "AGE"],
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "true"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "LIB_PR",
+			"expression": {
+				"value": "if isnull(SEXE) then \"il/elle\" else if SEXE = \"1\" then \"il\" else \"elle\"",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["SEXE"],
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "PRENOM",
+			"expression": { "value": "G_PRENOM", "type": "VTL" },
+			"bindingDependencies": ["G_PRENOM"],
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "LIB_SON",
+			"expression": {
+				"value": "if (PRENOM = PRENOMREF) then \"votre\" else \"son\"",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["PRENOM", "PRENOMREF", "G_PRENOM"],
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "LIB_SA",
+			"expression": {
+				"value": "if (PRENOM = PRENOMREF) then \"votre\" else \"sa\"",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["PRENOM", "PRENOMREF", "G_PRENOM"],
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "LIB_E",
+			"expression": {
+				"value": "if isnull(SEXE) then \"(e)\" else if SEXE = \"1\" then \"\" else \"e\"",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["SEXE"],
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "LIB_SES",
+			"expression": {
+				"value": "if (PRENOM = PRENOMREF) then \"vos\" else \"ses\"",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["PRENOM", "PRENOMREF", "G_PRENOM"],
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "MINEUR",
+			"expression": {
+				"value": "if (cast(TRAGE6 ,integer) <= 2) then \"1\" else \"2\"",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["TRAGE6", "DATENAIS", "TRAGE"],
+			"shapeFrom": "G_PRENOM",
+			"inFilter": "true"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_SEXE",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_DATENAIS",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_TRAGE",
+			"expression": { "value": "(isnull(DATENAIS))", "type": "VTL" },
+			"bindingDependencies": ["DATENAIS"],
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_LNAIS",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_DEPNAIS",
+			"expression": { "value": "(LNAIS = \"1\")", "type": "VTL" },
+			"bindingDependencies": ["LNAIS"],
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_PAYSNAIS",
+			"expression": { "value": "(LNAIS = \"2\")", "type": "VTL" },
+			"bindingDependencies": ["LNAIS"],
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_NATION",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_NATIONETR",
+			"expression": { "value": "(NATION3 = true)", "type": "VTL" },
+			"bindingDependencies": ["NATION3"],
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_VECUE",
+			"expression": { "value": "(LNAIS = \"1\")", "type": "VTL" },
+			"bindingDependencies": ["LNAIS"],
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_DATEDEPART",
+			"expression": { "value": "(VECUE = \"1\")", "type": "VTL" },
+			"bindingDependencies": ["VECUE"],
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_DATERETOUR",
+			"expression": { "value": "(VECUE = \"1\")", "type": "VTL" },
+			"bindingDependencies": ["VECUE"],
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_AGRETOUR",
+			"expression": {
+				"value": "(VECUE = \"1\") and (isnull(DATERETOUR))",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["VECUE", "DATERETOUR"],
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_ANNARIV",
+			"expression": { "value": "(LNAIS = \"2\")", "type": "VTL" },
+			"bindingDependencies": ["LNAIS"],
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_AGARRIV",
+			"expression": {
+				"value": "(LNAIS = \"2\") and (isnull(ANNARIV))",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["LNAIS", "ANNARIV"],
+			"shapeFrom": "SEXE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_UNLOG",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "UNLOG",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_DURLOG",
+			"expression": { "value": "(UNLOG = \"1\")", "type": "VTL" },
+			"bindingDependencies": ["UNLOG"],
+			"shapeFrom": "UNLOG",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_MINLOGENQ",
+			"expression": {
+				"value": "(MINEUR = \"1\" and $NBPARL$ = \"0\")",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["MINEUR"],
+			"shapeFrom": "UNLOG",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_MINLOGAUT",
+			"expression": {
+				"value": "(MINEUR = \"1\" and UNLOG = \"1\")",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["MINEUR", "UNLOG"],
+			"shapeFrom": "UNLOG",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_GARDE",
+			"expression": {
+				"value": "(DURLOG = \"2\" and $NBPARL$ = \"1\" and MINLOGAUT = \"1\")",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["DURLOG", "MINLOGAUT"],
+			"shapeFrom": "UNLOG",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_DORM",
+			"expression": { "value": "(GARDE = \"1\")", "type": "VTL" },
+			"bindingDependencies": ["GARDE"],
+			"shapeFrom": "UNLOG",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_MAJLOGENQ",
+			"expression": {
+				"value": "(UNLOG = \"1\" and MINEUR = \"2\")",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["UNLOG", "MINEUR"],
+			"shapeFrom": "UNLOG",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_MAJLOGAUT",
+			"expression": {
+				"value": "(UNLOG = \"1\" and MINEUR = \"2\")",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["UNLOG", "MINEUR"],
+			"shapeFrom": "UNLOG",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_LOGCO",
+			"expression": {
+				"value": "(MINLOGAUT =\"2\" or MINLOGAUT =\"3\" or MINLOGAUT =\"4\" or MINLOGAUT =\"5\" or MINLOGAUT =\"6\" or MAJLOGAUT=\"1\" or MAJLOGAUT=\"2\" or MAJLOGAUT=\"3\" or MAJLOGAUT=\"6\")",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["MINLOGAUT", "MAJLOGAUT"],
+			"shapeFrom": "UNLOG",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_TYPLOGCO",
+			"expression": { "value": "(LOGCO = \"1\")", "type": "VTL" },
+			"bindingDependencies": ["LOGCO"],
+			"shapeFrom": "UNLOG",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "PRENOMREF",
+			"expression": { "value": "first_value(G_PRENOM over())", "type": "VTL" },
+			"bindingDependencies": ["G_PRENOM"],
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "NBHAB",
+			"expression": {
+				"value": "if isnull(NHAB) then \"1\" else NHAB",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["NHAB"],
+			"inFilter": "true"
+		}
+	],
+	"cleaning": {
+		"DATENAIS": {
+			"TRAGE": "(isnull(DATENAIS))",
+			"MINLOGAUT": "(MINEUR = \"1\" and UNLOG = \"1\")",
+			"MAJLOGENQ": "(UNLOG = \"1\" and MINEUR = \"2\")",
+			"MAJLOGAUT": "(UNLOG = \"1\" and MINEUR = \"2\")"
+		},
+		"LNAIS": {
+			"DEPNAIS": "(LNAIS = \"1\")",
+			"PAYSNAIS": "(LNAIS = \"2\")",
+			"VECUE": "(LNAIS = \"1\")",
+			"ANNARIV": "(LNAIS = \"2\")",
+			"AGARRIV": "(LNAIS = \"2\") and (isnull(ANNARIV))"
+		},
+		"NATION3": { "NATIONETR": "(NATION3 = true)" },
+		"VECUE": {
+			"DATEDEPART": "(VECUE = \"1\")",
+			"DATERETOUR": "(VECUE = \"1\")",
+			"AGRETOUR": "(VECUE = \"1\") and (isnull(DATERETOUR))"
+		},
+		"DATERETOUR": { "AGRETOUR": "(VECUE = \"1\") and (isnull(DATERETOUR))" },
+		"ANNARIV": { "AGARRIV": "(LNAIS = \"2\") and (isnull(ANNARIV))" },
+		"UNLOG": {
+			"DURLOG": "(UNLOG = \"1\")",
+			"MINLOGAUT": "(MINEUR = \"1\" and UNLOG = \"1\")",
+			"MAJLOGENQ": "(UNLOG = \"1\" and MINEUR = \"2\")",
+			"MAJLOGAUT": "(UNLOG = \"1\" and MINEUR = \"2\")"
+		},
+		"MINEUR": {
+			"MINLOGAUT": "(MINEUR = \"1\" and UNLOG = \"1\")",
+			"MAJLOGENQ": "(UNLOG = \"1\" and MINEUR = \"2\")",
+			"MAJLOGAUT": "(UNLOG = \"1\" and MINEUR = \"2\")"
+		},
+		"TRAGE6": {
+			"MINLOGAUT": "(MINEUR = \"1\" and UNLOG = \"1\")",
+			"MAJLOGENQ": "(UNLOG = \"1\" and MINEUR = \"2\")",
+			"MAJLOGAUT": "(UNLOG = \"1\" and MINEUR = \"2\")"
+		},
+		"TRAGE": {
+			"MINLOGAUT": "(MINEUR = \"1\" and UNLOG = \"1\")",
+			"MAJLOGENQ": "(UNLOG = \"1\" and MINEUR = \"2\")",
+			"MAJLOGAUT": "(UNLOG = \"1\" and MINEUR = \"2\")"
+		},
+		"DURLOG": {
+			"GARDE": "(DURLOG = \"2\" and $NBPARL$ = \"1\" and MINLOGAUT = \"1\")"
+		},
+		"MINLOGAUT": {
+			"GARDE": "(DURLOG = \"2\" and $NBPARL$ = \"1\" and MINLOGAUT = \"1\")",
+			"LOGCO": "(MINLOGAUT =\"2\" or MINLOGAUT =\"3\" or MINLOGAUT =\"4\" or MINLOGAUT =\"5\" or MINLOGAUT =\"6\" or MAJLOGAUT=\"1\" or MAJLOGAUT=\"2\" or MAJLOGAUT=\"3\" or MAJLOGAUT=\"6\")"
+		},
+		"GARDE": { "DORM": "(GARDE = \"1\")" },
+		"MAJLOGAUT": {
+			"LOGCO": "(MINLOGAUT =\"2\" or MINLOGAUT =\"3\" or MINLOGAUT =\"4\" or MINLOGAUT =\"5\" or MINLOGAUT =\"6\" or MAJLOGAUT=\"1\" or MAJLOGAUT=\"2\" or MAJLOGAUT=\"3\" or MAJLOGAUT=\"6\")"
+		},
+		"LOGCO": { "TYPLOGCO": "(LOGCO = \"1\")" }
+	},
+	"resizing": {
+		"NHAB": {
+			"size": "cast(NBHAB, integer)",
+			"variables": [
+				"G_PRENOM",
+				"SEXE",
+				"DATENAIS",
+				"TRAGE",
+				"LNAIS",
+				"DEPNAIS",
+				"PAYSNAIS",
+				"NATION1",
+				"NATION2",
+				"NATION3",
+				"NATION4",
+				"NATIONETR",
+				"VECUE",
+				"DATEDEPART",
+				"DATERETOUR",
+				"AGRETOUR",
+				"ANNARIV",
+				"AGARRIV",
+				"UNLOG",
+				"DURLOG",
+				"MINLOGENQ1",
+				"MINLOGENQ2",
+				"MINLOGENQ3",
+				"MINLOGENQ4",
+				"MINLOGENQ5",
+				"MINLOGAUT",
+				"GARDE",
+				"DORM",
+				"MAJLOGENQ",
+				"MAJLOGAUT",
+				"LOGCO",
+				"TYPLOGCO"
+			]
+		}
+	}
+}

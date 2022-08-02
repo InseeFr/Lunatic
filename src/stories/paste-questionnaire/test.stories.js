@@ -1,10 +1,10 @@
 import React from 'react';
-import Orchestrator from '../../utils/orchestrator';
+import Orchestrator from '../utils/orchestrator';
 import simpsons from './source';
-import defaultArgTypes from '../../utils/default-arg-types';
+import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Questionnaires/Test',
+	title: 'Questionnaires-PasteYour/Paste',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
