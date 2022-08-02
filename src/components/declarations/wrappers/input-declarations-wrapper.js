@@ -174,9 +174,11 @@ const InputDeclarationsWrapper = ({
 							inputMode={numberAsTextfield ? inputMode : 'text'}
 							onChange={(e) => {
 								const v = e.target.value;
-								const valueToFire = v === '' ? null : v;
+								const vFormated =
+									isInputNumber && decimals ? v.replace(',', '.') : v;
+								const valueToFire = v === '' ? null : vFormated;
 								const valueToFireForArrows =
-									Number.parseFloat(v).toFixed(decimals);
+									Number.parseFloat(vFormated).toFixed(decimals);
 								if (
 									decimals &&
 									v !== '' &&
