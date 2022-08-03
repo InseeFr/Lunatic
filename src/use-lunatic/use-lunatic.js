@@ -27,7 +27,6 @@ function useLunatic(
 		suggesters: suggestersConfiguration,
 		suggesterFetcher,
 		modalForControls = false,
-		filterDescription = false,
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
