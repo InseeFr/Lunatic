@@ -6,7 +6,7 @@ function getNextPage(state) {
 	const { pager } = state;
 	const { page, maxPage } = pager;
 	const p = Number.parseInt(page);
-	const mp = maxPage;
+	const mp = Number.parseInt(maxPage);
 	if (p < mp) {
 		return `${p + 1}`;
 	}
@@ -122,6 +122,7 @@ function reduceGoNextPage(state) {
 	const { isLoop, iterations, loopDependencies } = pages[next];
 	if (next === page) {
 		// TODO on devrait jamais en arriver là !
+		console.log("next === page, we shoudn't be there");
 	}
 
 	if (isLoop) {
