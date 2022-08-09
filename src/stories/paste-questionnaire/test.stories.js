@@ -23,6 +23,10 @@ const stories = {
 			control: 'boolean',
 			defaultValue: false,
 		},
+		modalForControls: {
+			control: 'boolean',
+			defaultValue: true,
+		},
 		source: {
 			table: { disable: false },
 			control: { type: 'object' },

@@ -26,6 +26,10 @@ const stories = {
 			control: 'boolean',
 			defaultValue: false,
 		},
+		modalForControls: {
+			control: 'boolean',
+			defaultValue: true,
+		},
 	},
 };
 
@@ -38,7 +42,6 @@ Simple.args = {
 	id: 'controls-simple',
 	source: simple,
 	pagination: true,
-	modalForControls: true,
 };
 
 export const SimpleNum = Template.bind({});
