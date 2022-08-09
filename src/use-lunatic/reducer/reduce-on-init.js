@@ -155,6 +155,7 @@ function reduceOnInit(state, action) {
 			nbSubPages: undefined,
 			iteration: undefined,
 			nbIterations: undefined,
+			lastReachedPage: initialPage,
 		};
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
