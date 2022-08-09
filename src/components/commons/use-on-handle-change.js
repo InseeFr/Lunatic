@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 function useOnHandleChange({ handleChange, response, value }) {
-	const onHandlechange = useCallback(
+	return useCallback(
 		function (valueOption) {
 			if (value !== valueOption) {
 				handleChange(response, valueOption);
@@ -9,8 +9,6 @@ function useOnHandleChange({ handleChange, response, value }) {
 		},
 		[handleChange, response, value]
 	);
-
-	return onHandlechange;
 }
 
 export default useOnHandleChange;
