@@ -107,7 +107,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 }
 
 function lastReachedPage(pager, page) {
-	//TODO improve case with sub and iterations
+	//TODO improve case with sub and iterations and cleaning !!!!
 	return Number.parseInt(page) > Number.parseInt(pager.lastReachedPage)
 		? page
 		: pager.lastReachedPage;

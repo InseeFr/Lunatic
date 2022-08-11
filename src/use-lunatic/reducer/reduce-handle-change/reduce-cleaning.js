@@ -28,7 +28,7 @@ function reduceCleaning(state, action) {
 				return step;
 			},
 			{});
-
+			//TODO lastReachedPage cleaning
 			return {
 				...state,
 				variables: {
