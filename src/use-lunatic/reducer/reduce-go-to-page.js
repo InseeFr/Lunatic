@@ -29,17 +29,7 @@ function reduceGoToPage(state, action) {
 	// TODO: fix when redirect to loop component
 	// How to calculate nbSubPages & nbIterations?
 	// How to calculate lazy variables we need?
-	return validateChange({
-		...state,
-		pager: {
-			...pager,
-			subPage: 0,
-			nbSubPages: 1,
-			iteration: 0,
-			nbIterations: 0,
-			page: newPage,
-		},
-	});
+	return validateChange(state);
 }
 
 export default createValidateReducer(reduceGoToPage);
