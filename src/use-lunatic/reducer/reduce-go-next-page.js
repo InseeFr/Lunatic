@@ -6,7 +6,7 @@ function getNextPage(state) {
 	const { pager } = state;
 	const { page, maxPage } = pager;
 	const p = Number.parseInt(page);
-	const mp = maxPage;
+	const mp = Number.parseInt(maxPage);
 	if (p < mp) {
 		return `${p + 1}`;
 	}
@@ -28,12 +28,16 @@ function reduceNextIteration(state) {
 	const { iteration } = pager;
 	return {
 		...state,
-		pager: { ...pager, subPage: 0, iteration: iteration + 1 },
+		pager: {
+			...pager,
+			subPage: 0,
+			iteration: iteration + 1,
+		},
 		errors: undefined,
 	};
 }
 
-function reduceNextPage(state, { next, iterations }) {
+function reduceNextPage(state, { next }) {
 	const { pager } = state;
 	return {
 		...state,
@@ -45,6 +49,7 @@ function reduceNextPage(state, { next, iterations }) {
 			nbIterations: undefined,
 			subPage: undefined,
 			nbSubPages: undefined,
+			lastReachedPage: lastReachedPage(pager, next),
 		},
 		errors: undefined,
 	};
@@ -64,6 +69,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 				nbSubPages: undefined,
 				iteration: undefined,
 				nbIterations: undefined,
+				lastReachedPage: lastReachedPage(pager, next),
 			},
 			errors: undefined,
 		};
@@ -92,11 +98,19 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 				nbSubPages: subPages.length,
 				iteration: 0,
 				nbIterations,
+				lastReachedPage: lastReachedPage(pager, next),
 			},
 			errors: undefined,
 		};
 	}
 	return state;
+}
+
+function lastReachedPage(pager, page) {
+	//TODO improve case with sub and iterations and cleaning !!!!
+	return Number.parseInt(page) > Number.parseInt(pager.lastReachedPage)
+		? page
+		: pager.lastReachedPage;
 }
 
 function validateChange(state) {
@@ -122,6 +136,7 @@ function reduceGoNextPage(state) {
 	const { isLoop, iterations, loopDependencies } = pages[next];
 	if (next === page) {
 		// TODO on devrait jamais en arriver là !
+		console.log("next === page, we shoudn't be there");
 	}
 
 	if (isLoop) {

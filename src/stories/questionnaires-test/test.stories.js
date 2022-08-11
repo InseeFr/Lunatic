@@ -1,10 +1,14 @@
 import React from 'react';
 import Orchestrator from '../utils/orchestrator';
-import simpsons from './sources';
+import testDylan from './test-dylan';
+import minMaxLoops from './V2_MinMaxSum_Boucles';
+import simpleLoops from './V2_QuestSimple_Boucles';
+import rallyGames from './V2_TCMRallyeGames';
+import declarationsSimples from './V2_DeclarationsSimples';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Questionnaires - Tests/Checkboxone radio',
+	title: 'Questionnaires - Tests/Others',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
@@ -23,25 +27,48 @@ const stories = {
 			control: 'boolean',
 			defaultValue: false,
 		},
-		source: {
-			table: { disable: false },
-			control: { type: 'object' },
-			defaultValue: simpsons,
-		},
-		data: {
-			table: { disable: false },
-			control: { type: 'object' },
-			defaultValue: { COLLECTED: { READY: { COLLECTED: true } } },
-		},
 	},
 };
 
 export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
-export const Default = Template.bind({});
+export const TestDylan = Template.bind({});
 
-Default.args = {
-	id: 'simpsons-default',
+TestDylan.args = {
+	id: 'test-dylan',
 	pagination: true,
+	source: testDylan,
+};
+
+export const DeclarationsSimples = Template.bind({});
+
+DeclarationsSimples.args = {
+	id: 'declarations-simples',
+	pagination: true,
+	source: declarationsSimples,
+};
+
+export const MinMaxLoops = Template.bind({});
+
+MinMaxLoops.args = {
+	id: 'min-max-loops',
+	pagination: true,
+	source: minMaxLoops,
+};
+
+export const SimpleLoops = Template.bind({});
+
+SimpleLoops.args = {
+	id: 'simple-loops',
+	pagination: true,
+	source: simpleLoops,
+};
+
+export const RallyeGames = Template.bind({});
+
+RallyeGames.args = {
+	id: 'rally-games',
+	pagination: true,
+	source: rallyGames,
 };

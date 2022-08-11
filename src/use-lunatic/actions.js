@@ -1,11 +1,17 @@
+export const GO_PREVIOUS_PAGE = 'use-lunatic/go-previous';
+export const goPreviousPage = () => ({ type: GO_PREVIOUS_PAGE });
+
 export const GO_NEXT_PAGE = 'use-lunatic/go-next';
 export const goNextPage = ({ block }) => ({
 	type: GO_NEXT_PAGE,
 	payload: { block },
 });
 
-export const GO_PREVIOUS_PAGE = 'use-lunatic/go-previous';
-export const goPreviousPage = () => ({ type: GO_PREVIOUS_PAGE });
+export const GO_TO_PAGE = 'use-lunatic/go-to-page';
+export const goToPage = ({ page }) => ({
+	type: GO_TO_PAGE,
+	payload: { page },
+});
 
 export const ON_INIT = 'use-lunatic/on-init';
 export const onInit = ({

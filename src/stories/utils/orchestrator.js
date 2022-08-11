@@ -7,7 +7,16 @@ function getStoreInfoRequired() {
 	return {};
 }
 
-function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
+function Pager({
+	goPrevious,
+	goNext,
+	goToPage,
+	isLast,
+	isFirst,
+	pageTag,
+	maxPage,
+	getState,
+}) {
 	if (maxPage && maxPage > 1) {
 		const Button = lunatic.Button;
 		return (
@@ -18,6 +27,10 @@ function Pager({ goNext, goPrevious, isLast, isFirst, pageTag, maxPage }) {
 					</Button>
 					<Button onClick={goNext} disabled={isLast}>
 						Next
+					</Button>
+					<Button onClick={() => console.log(getState(true))}>Get State</Button>
+					<Button onClick={() => goToPage({ page: '18' })}>
+						Go to page 18
 					</Button>
 				</div>
 				<div>PAGE: {pageTag}</div>
@@ -55,13 +68,15 @@ function OrchestratorForStories({
 
 	const {
 		getComponents,
-		goNextPage,
 		goPreviousPage,
+		goNextPage,
+		goToPage,
 		pageTag,
 		isFirstPage,
 		isLastPage,
 		waiting,
 		getErrors,
+		getState,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
 		features,
@@ -107,12 +122,14 @@ function OrchestratorForStories({
 				})}
 			</div>
 			<Pager
-				goNext={goNextPage}
 				goPrevious={goPreviousPage}
+				goNext={goNextPage}
+				goToPage={goToPage}
 				isLast={isLastPage}
 				isFirst={isFirstPage}
 				pageTag={pageTag}
 				maxPage={maxPage}
+				getState={getState}
 			/>
 			<lunatic.Modal
 				title="Des points requièrent votre attention."

@@ -1,0 +1,509 @@
+{
+	"id": "kt32raif",
+	"modele": "TESTSURSUM",
+	"enoCoreVersion": "2.3.7-dev-lunatic-v2",
+	"lunaticModelVersion": "2.2.13-dev-lunatic-v2",
+	"generatingDate": "19-07-2022 10:46:24",
+	"missing": false,
+	"pagination": "question",
+	"maxPage": "9",
+	"label": {
+		"value": "QNONREG test sur sum, min dans une boucle, nb majeurs et filtre",
+		"type": "VTL|MD"
+	},
+	"components": [
+		{
+			"id": "ksyjs7vy",
+			"componentType": "Sequence",
+			"page": "1",
+			"label": { "value": "S0", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyjs7vy",
+					"page": "1",
+					"label": { "value": "S0", "type": "VTL|MD" }
+				}
+			}
+		},
+
+		{
+			"id": "kze792d8",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "2",
+			"min": 0,
+			"max": 10,
+			"decimals": 0,
+			"label": { "value": "\"➡ 1. \" || \"NB \"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyjs7vy",
+					"page": "1",
+					"label": { "value": "S0", "type": "VTL|MD" }
+				}
+			},
+			"bindingDependencies": ["NB"],
+			"response": { "name": "NB" }
+		},
+
+		{
+			"id": "ksykfdm9",
+			"componentType": "Loop",
+			"page": "3",
+			"depth": 1,
+			"paginatedLoop": false,
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyjs7vy",
+					"page": "1",
+					"label": { "value": "S0", "type": "VTL|MD" }
+				}
+			},
+			"bindingDependencies": ["NB", "PRENOM"],
+			"loopDependencies": ["NB"],
+			"lines": {
+				"min": { "value": "cast(NB,integer)", "type": "VTL" },
+				"max": { "value": "cast(NB,integer)", "type": "VTL" }
+			},
+			"components": [
+				{
+					"id": "ksynhpl3",
+					"componentType": "Subsequence",
+					"page": "3",
+					"goToPage": "3",
+					"label": { "value": "Habitants", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "ksyjs7vy",
+							"page": "1",
+							"label": { "value": "S0", "type": "VTL|MD" }
+						},
+						"subSequence": {
+							"id": "ksynhpl3",
+							"page": "3",
+							"label": { "value": "Habitants", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["NB"]
+				},
+
+				{
+					"id": "ksyjvi40",
+					"componentType": "Input",
+					"mandatory": false,
+					"page": "3",
+					"maxLength": 249,
+					"label": { "value": "\"➡ 2. \" || \"prénom\"", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "ksyjs7vy",
+							"page": "1",
+							"label": { "value": "S0", "type": "VTL|MD" }
+						},
+						"subSequence": {
+							"id": "ksynhpl3",
+							"page": "3",
+							"label": { "value": "Habitants", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["PRENOM", "NB"],
+					"response": { "name": "PRENOM" }
+				}
+			]
+		},
+
+		{
+			"id": "ksyniqzx",
+			"componentType": "Sequence",
+			"page": "4",
+			"label": { "value": "S1", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyniqzx",
+					"page": "4",
+					"label": { "value": "S1", "type": "VTL|MD" }
+				}
+			}
+		},
+
+		{
+			"id": "ksynkaoo",
+			"componentType": "Loop",
+			"page": "5",
+			"maxPage": "1",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyniqzx",
+					"page": "4",
+					"label": { "value": "S1", "type": "VTL|MD" }
+				}
+			},
+			"bindingDependencies": ["AGE_NUM", "PRENOM", "AGE"],
+			"loopDependencies": ["PRENOM"],
+			"components": [
+				{
+					"id": "ksyjxw3a",
+					"componentType": "Subsequence",
+					"goToPage": "5.1",
+					"label": { "value": "Les ages", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "ksyniqzx",
+							"page": "4",
+							"label": { "value": "S1", "type": "VTL|MD" }
+						},
+						"subSequence": {
+							"id": "ksyjxw3a",
+							"page": "5.1",
+							"label": { "value": "Les ages", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["PRENOM"]
+				},
+
+				{
+					"id": "ksyke448",
+					"componentType": "InputNumber",
+					"mandatory": false,
+					"page": "5.1",
+					"min": 0,
+					"max": 100,
+					"decimals": 0,
+					"label": {
+						"value": "\"➡ 1. \" || \"Q3 Age de l’individu : \" || PRENOM",
+						"type": "VTL|MD"
+					},
+					"declarations": [
+						{
+							"id": "ksyke448-ktwsl4qu",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"AGE_NUM vaut : \" || cast(AGE_NUM,string)",
+								"type": "VTL|MD"
+							}
+						}
+					],
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"hierarchy": {
+						"sequence": {
+							"id": "ksyniqzx",
+							"page": "4",
+							"label": { "value": "S1", "type": "VTL|MD" }
+						},
+						"subSequence": {
+							"id": "ksyjxw3a",
+							"page": "5.1",
+							"label": { "value": "Les ages", "type": "VTL|MD" }
+						}
+					},
+					"bindingDependencies": ["AGE_NUM", "PRENOM", "AGE"],
+					"response": { "name": "AGE" }
+				}
+			],
+			"iterations": { "value": "count(PRENOM)", "type": "VTL" }
+		},
+
+		{
+			"id": "ku2pnlmr",
+			"componentType": "Subsequence",
+			"page": "6",
+			"goToPage": "6",
+			"label": { "value": "\"Affichage de qq var\"", "type": "VTL|MD" },
+			"declarations": [
+				{
+					"id": "ku2pnlmr-kze7f245",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Affichage de la somme des ages : \" || cast(SUM_AGE,string)",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "ku2pnlmr-kzsevgcm",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Affichage du min des ages : \" || cast(MIN_AGE,string)",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyniqzx",
+					"page": "4",
+					"label": { "value": "S1", "type": "VTL|MD" }
+				},
+				"subSequence": {
+					"id": "ku2pnlmr",
+					"page": "6",
+					"label": { "value": "\"Affichage de qq var\"", "type": "VTL|MD" }
+				}
+			},
+			"bindingDependencies": ["SUM_AGE", "MIN_AGE"]
+		},
+
+		{
+			"id": "ku2pxugf",
+			"componentType": "Input",
+			"mandatory": false,
+			"page": "7",
+			"maxLength": 249,
+			"label": { "value": "\"➡ 2. \" || \"divers\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyniqzx",
+					"page": "4",
+					"label": { "value": "S1", "type": "VTL|MD" }
+				},
+				"subSequence": {
+					"id": "ku2pnlmr",
+					"page": "6",
+					"label": { "value": "\"Affichage de qq var\"", "type": "VTL|MD" }
+				}
+			},
+			"bindingDependencies": ["DIVERS"],
+			"response": { "name": "DIVERS" }
+		},
+
+		{
+			"id": "ku2pqil5",
+			"componentType": "Subsequence",
+			"page": "8",
+			"goToPage": "8",
+			"label": {
+				"value": "\"Affichage de la question suivante si au moins 1 majeur. Pour info : nb de majeurs calculé = \" || cast(NB_MAJEUR,string)",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "ku2pqil5-kze7d4ia",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Affichage de cette sous séquence systématique. Affichage question qui suit si au moins 1 majeur",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyniqzx",
+					"page": "4",
+					"label": { "value": "S1", "type": "VTL|MD" }
+				},
+				"subSequence": {
+					"id": "ku2pqil5",
+					"page": "8",
+					"label": {
+						"value": "\"Affichage de la question suivante si au moins 1 majeur. Pour info : nb de majeurs calculé = \" || cast(NB_MAJEUR,string)",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["NB_MAJEUR"]
+		},
+
+		{
+			"id": "ktwvc5zc",
+			"componentType": "Input",
+			"mandatory": false,
+			"page": "9",
+			"maxLength": 249,
+			"label": { "value": "\"➡ 3. \" || \"Texte\"", "type": "VTL|MD" },
+			"conditionFilter": {
+				"value": "(cast(NB_MAJEUR,integer) > 0)",
+				"type": "VTL",
+				"bindingDependencies": ["NB_MAJEUR", "IND_MAJEUR", "AGE"]
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyniqzx",
+					"page": "4",
+					"label": { "value": "S1", "type": "VTL|MD" }
+				},
+				"subSequence": {
+					"id": "ku2pqil5",
+					"page": "8",
+					"label": {
+						"value": "\"Affichage de la question suivante si au moins 1 majeur. Pour info : nb de majeurs calculé = \" || cast(NB_MAJEUR,string)",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["TEXTE"],
+			"response": { "name": "TEXTE" }
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NB",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "DIVERS",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "TEXTE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_NB",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_PRENOM",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "PRENOM",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "AGE_NUM",
+			"expression": {
+				"value": "cast(nvl(AGE, \"0\"), integer)",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["AGE"],
+			"shapeFrom": "PRENOM",
+			"inFilter": "true"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "IND_MAJEUR",
+			"expression": {
+				"value": "if cast(AGE_NUM, integer) > 17 then 1 else 0",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["AGE_NUM", "AGE"],
+			"shapeFrom": "PRENOM",
+			"inFilter": "true"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_AGE",
+			"expression": { "value": "true", "type": "VTL" },
+			"shapeFrom": "AGE",
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_DIVERS",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_TEXTE",
+			"expression": { "value": "(cast(NB_MAJEUR,integer) > 0)", "type": "VTL" },
+			"bindingDependencies": ["NB_MAJEUR"],
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "SUM_AGE",
+			"expression": { "value": "sum(AGE_NUM)", "type": "VTL" },
+			"bindingDependencies": ["AGE_NUM", "AGE"],
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "NB_MAJEUR",
+			"expression": { "value": "sum(IND_MAJEUR)", "type": "VTL" },
+			"bindingDependencies": ["IND_MAJEUR", "AGE"],
+			"inFilter": "true"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "MIN_AGE",
+			"expression": { "value": "min(AGE_NUM)", "type": "VTL" },
+			"bindingDependencies": ["AGE_NUM", "AGE"],
+			"inFilter": "false"
+		}
+	],
+	"cleaning": {
+		"NB_MAJEUR": { "TEXTE": "(cast(NB_MAJEUR,integer) > 0)" },
+		"IND_MAJEUR": { "TEXTE": "(cast(NB_MAJEUR,integer) > 0)" },
+		"AGE": { "TEXTE": "(cast(NB_MAJEUR,integer) > 0)" }
+	},
+	"resizing": {
+		"NB": { "size": "cast(NB,integer)", "variables": ["PRENOM", "AGE"] }
+	}
+}
