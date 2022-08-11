@@ -5,8 +5,7 @@ import reducer from './reducer';
 import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 import { COLLECTED } from '../utils/constants';
 import { loadSuggesters } from '../utils/store-tools/auto-load';
-import { CALCULATED } from '../constants';
-import { interpretAllCalculatedVariables } from './commons/calculated-variables';
+import { getQuestionnaireData } from './commons/get-data';
 
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL', 'MD'];
@@ -103,18 +102,9 @@ function useLunatic(
 		[dispatch, onChange]
 	);
 
-	const getState = (withRefreshedCalculated) => {
+	const getData = (withRefreshedCalculated) => {
 		const { variables } = state;
-		const builtVariables = Object.entries(variables).reduce(
-			(acc, [k, { value, type }]) => {
-				if (type !== CALCULATED || !withRefreshedCalculated)
-					return { ...acc, [k]: value };
-				return acc;
-			},
-			{}
-		);
-		if (!withRefreshedCalculated) return builtVariables;
-		return interpretAllCalculatedVariables({ variables, builtVariables });
+		return getQuestionnaireData({ variables, withRefreshedCalculated });
 	};
 
 	const pageTag = getPageTag(pager);
@@ -159,7 +149,7 @@ function useLunatic(
 		isLastPage,
 		pager,
 		waiting,
-		getState,
+		getData,
 	};
 }
 
