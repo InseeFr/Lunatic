@@ -18,7 +18,7 @@ function TextareaMui({
 		},
 		[onChange]
 	);
-	console.log({ maxLength, rows, cols });
+
 	return (
 		<OutlinedInput
 			id={`lunatic-mui-textarea-${id}`}

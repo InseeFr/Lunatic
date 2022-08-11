@@ -66,13 +66,6 @@ function useLunatic(
 		suggesters,
 	]);
 
-	const goNextPage = useCallback(
-		function (payload = {}) {
-			dispatch(actions.goNextPage(payload));
-		},
-		[dispatch]
-	);
-
 	const getErrors = useCallback(
 		function () {
 			return errors;
@@ -83,6 +76,20 @@ function useLunatic(
 	const goPreviousPage = useCallback(
 		function () {
 			dispatch(actions.goPreviousPage());
+		},
+		[dispatch]
+	);
+
+	const goNextPage = useCallback(
+		function (payload = {}) {
+			dispatch(actions.goNextPage(payload));
+		},
+		[dispatch]
+	);
+
+	const goToPage = useCallback(
+		function (payload = {}) {
+			dispatch(actions.goToPage(payload));
 		},
 		[dispatch]
 	);
@@ -141,8 +148,9 @@ function useLunatic(
 
 	return {
 		getComponents,
-		goNextPage,
 		goPreviousPage,
+		goNextPage,
+		goToPage,
 		getErrors,
 		pageTag,
 		isFirstPage,

@@ -8,8 +8,9 @@ function getStoreInfoRequired() {
 }
 
 function Pager({
-	goNext,
 	goPrevious,
+	goNext,
+	goToPage,
 	isLast,
 	isFirst,
 	pageTag,
@@ -28,6 +29,9 @@ function Pager({
 						Next
 					</Button>
 					<Button onClick={() => console.log(getState(true))}>Get State</Button>
+					<Button onClick={() => goToPage({ page: '18' })}>
+						Go to page 18
+					</Button>
 				</div>
 				<div>PAGE: {pageTag}</div>
 			</>
@@ -64,8 +68,9 @@ function OrchestratorForStories({
 
 	const {
 		getComponents,
-		goNextPage,
 		goPreviousPage,
+		goNextPage,
+		goToPage,
 		pageTag,
 		isFirstPage,
 		isLastPage,
@@ -117,8 +122,9 @@ function OrchestratorForStories({
 				})}
 			</div>
 			<Pager
-				goNext={goNextPage}
 				goPrevious={goPreviousPage}
+				goNext={goNextPage}
+				goToPage={goToPage}
 				isLast={isLastPage}
 				isFirst={isFirstPage}
 				pageTag={pageTag}
