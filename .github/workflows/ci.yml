@@ -78,13 +78,16 @@ jobs:
             false
           fi
           if [ github.ref = 'refs/heads/master' ]; then
-            yarn publish
+            echo "This version is published on latest branch"
+            yarn publish --access public
           fi
           if [ github.ref = 'refs/heads/v2-master' ]; then
-            yarn publish --tag v2
+            echo "This version is published on v2 branch"
+            yarn publish --tag v2 --access public
           fi
           if [ github.ref = 'refs/heads/prisme' ]; then
-            yarn publish --tag prisme
+            echo "This version is published on prisme branch"
+            yarn publish --tag prisme --access public
           fi
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
