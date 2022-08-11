@@ -67,9 +67,6 @@ jobs:
         with:
           node-version: '16'
           registry-url: https://registry.npmjs.org/
-      - run: npx -y -p denoify@0.6.5 denoify_enable_short_npm_import_path
-        env:
-          DRY_RUN: '0'
       - name: Publishing on NPM
         run: |
           if [ "$(npm show . version)" = "$VERSION" ]; then
