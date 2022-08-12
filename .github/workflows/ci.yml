@@ -59,33 +59,31 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - check_if_version_upgraded
+    if: needs.check_if_version_upgraded.outputs.is_upgraded_version == 'true'
     steps:
-      - uses: actions/checkout@v2.3.4
-        with:
-          ref: ${{ github.ref }}
-      - uses: actions/setup-node@v2.1.3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '16'
           registry-url: https://registry.npmjs.org/
+      - uses: bahmutov/npm-install@v1
+      - run: |
+          yarn build
       - name: Publishing on NPM
         run: |
-          if [ "$(npm show . version)" = "$VERSION" ]; then
-            echo "This version is already published"
-            exit 0
-          fi
           if [ "$NODE_AUTH_TOKEN" = "" ]; then
             echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
             false
           fi
-          if [ github.ref = 'refs/heads/master' ]; then
+          if [ github.ref == 'refs/heads/master' ]; then
             echo "This version is published on latest branch"
             yarn publish --access public
           fi
-          if [ github.ref = 'refs/heads/v2-master' ]; then
+          if [ github.ref = ='refs/heads/v2-master' ]; then
             echo "This version is published on v2 branch"
             yarn publish --tag v2 --access public
           fi
-          if [ github.ref = 'refs/heads/prisme' ]; then
+          if [ github.ref == 'refs/heads/prisme' ]; then
             echo "This version is published on prisme branch"
             yarn publish --tag prisme --access public
           fi
@@ -99,8 +97,6 @@ jobs:
     needs: test-build
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: master
       - uses: actions/setup-node@v1
         with:
           node-version: 15
