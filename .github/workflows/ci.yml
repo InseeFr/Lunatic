@@ -59,7 +59,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - check_if_version_upgraded
-    if: needs.check_if_version_upgraded.outputs.is_upgraded_version == 'true'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -71,22 +70,23 @@ jobs:
           yarn build
       - name: Publishing on NPM
         run: |
+          if [ "$(npm show . version)" = "$VERSION" ]; then
+            echo "This version is already published"
+            exit 0
+          fi
           if [ "$NODE_AUTH_TOKEN" = "" ]; then
             echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
             false
           fi
-          if [ github.ref == 'refs/heads/master' ]; then
-            echo "This version is published on latest branch"
-            yarn publish --access public
+          EXTRA_ARGS=""
+          if [ ${{github.ref}} = 'refs/heads/v2-master' ]; then
+            EXTRA_ARGS="--tag v2"
+            echo "v2-master"
           fi
-          if [ github.ref = ='refs/heads/v2-master' ]; then
-            echo "This version is published on v2 branch"
-            yarn publish --tag v2 --access public
+          if [ ${{github.ref}} = 'refs/heads/prisme' ]; then
+            EXTRA_ARGS="--tag prisme"
           fi
-          if [ github.ref == 'refs/heads/prisme' ]; then
-            echo "This version is published on prisme branch"
-            yarn publish --tag prisme --access public
-          fi
+          # yarn publish $EXTRA_ARGS --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           VERSION: ${{ needs.check_if_version_upgraded.outputs.to_version }}
