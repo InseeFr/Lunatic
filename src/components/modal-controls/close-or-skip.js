@@ -10,9 +10,14 @@ function CloseOrSkip({ errors, onClose, onSkip }) {
 
 	if (bloc) {
 		return (
-			<Button className="modal-button" onClick={onClose}>
-				Close
-			</Button>
+			<div className="modal-buttons">
+				<Button className="modal-button" onClick={onClose}>
+					Correct
+				</Button>
+				<Button className="modal-button" onClick={onSkip}>
+					Ignore
+				</Button>
+			</div>
 		);
 	}
 	return (
