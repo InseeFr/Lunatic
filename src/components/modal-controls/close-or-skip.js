@@ -2,11 +2,13 @@ import React from 'react';
 import Button from '../button';
 
 function CloseOrSkip({ errors, onClose, onSkip }) {
-	const bloc = Object.values(errors)
-		.flat()
-		.reduce(function (status, { criticality }) {
-			return status || criticality === 'WARN';
-		}, false);
+	const flattenErrors = Object.values(errors).flat();
+	const bloc = flattenErrors.reduce(function (status, { criticality }) {
+		return status || criticality === 'WARN';
+	}, false);
+	const onlyCorrect = flattenErrors
+		.map(({ blocking }) => blocking)
+		.includes(true);
 
 	if (bloc) {
 		return (
@@ -14,9 +16,11 @@ function CloseOrSkip({ errors, onClose, onSkip }) {
 				<Button className="modal-button" onClick={onClose}>
 					Correct
 				</Button>
-				<Button className="modal-button" onClick={onSkip}>
-					Ignore
-				</Button>
+				{!onlyCorrect && (
+					<Button className="modal-button" onClick={onSkip}>
+						Ignore
+					</Button>
+				)}
 			</div>
 		);
 	}

@@ -8,12 +8,12 @@ import { getComponentsFromState } from '../../commons';
 function resolveControl(state, control) {
 	const { executeExpression, pager = {} } = state;
 	const { iteration } = pager;
-	const { criticality, errorMessage, id } = control;
+	const { criticality, errorMessage, id, blocking } = control;
 	const { control: { value = 'true' } = {} } = control;
 	try {
 		const result = executeExpression(value, { iteration });
 		if (!result) {
-			return { criticality, errorMessage, id };
+			return { criticality, errorMessage, id, blocking };
 		}
 		return undefined;
 	} catch (e) {
