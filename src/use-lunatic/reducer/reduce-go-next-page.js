@@ -1,6 +1,6 @@
 import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
-import { getCompatibleVTLExpression } from '../commons';
-import { createValidateReducer } from './validate-controls';
+import { getCompatibleVTLExpression, getPageTag } from '../commons';
+import { createModalControlsReducer } from './validate-controls';
 
 function getNextPage(state) {
 	const { pager } = state;
@@ -19,7 +19,6 @@ function reduceNextSubPage(state) {
 	return {
 		...state,
 		pager: { ...pager, subPage: subPage + 1 },
-		errors: undefined,
 		modalErrors: undefined,
 	};
 }
@@ -34,7 +33,6 @@ function reduceNextIteration(state) {
 			subPage: 0,
 			iteration: iteration + 1,
 		},
-		errors: undefined,
 		modalErrors: undefined,
 	};
 }
@@ -53,7 +51,6 @@ function reduceNextPage(state, { next }) {
 			nbSubPages: undefined,
 			lastReachedPage: lastReachedPage(pager, next),
 		},
-		errors: undefined,
 		modalErrors: undefined,
 	};
 }
@@ -74,7 +71,6 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 				nbIterations: undefined,
 				lastReachedPage: lastReachedPage(pager, next),
 			},
-			errors: undefined,
 			modalErrors: undefined,
 		};
 	}
@@ -104,7 +100,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 				nbIterations,
 				lastReachedPage: lastReachedPage(pager, next),
 			},
-			errors: undefined,
+
 			modalErrors: undefined,
 		};
 	}
@@ -119,11 +115,14 @@ function lastReachedPage(pager, page) {
 }
 
 function validateChange(state) {
-	if (isOnEmptyPage(state)) {
-		return reduceGoNextPage(state);
+	const { pager, errors } = state;
+	const currentErrors =
+		errors !== undefined ? errors[getPageTag(pager)] : undefined;
+	const updatedState = { ...state, currentErrors };
+	if (isOnEmptyPage(updatedState)) {
+		return reduceGoNextPage(updatedState);
 	}
-
-	return state;
+	return updatedState;
 }
 
 function reduceGoNextPage(state) {
@@ -152,4 +151,4 @@ function reduceGoNextPage(state) {
 	return validateChange(reduceNextPage(state, { next }));
 }
 
-export default createValidateReducer(reduceGoNextPage);
+export default createModalControlsReducer(reduceGoNextPage);

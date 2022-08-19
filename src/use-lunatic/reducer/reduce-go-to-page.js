@@ -1,5 +1,5 @@
 import { isOnEmptyPage } from './commons';
-import { createValidateReducer } from './validate-controls';
+import { createModalControlsReducer } from './validate-controls';
 import reduceGoNextPage from './reduce-go-next-page';
 
 function validateChange(state) {
@@ -32,4 +32,4 @@ function reduceGoToPage(state, action) {
 	return validateChange(state);
 }
 
-export default createValidateReducer(reduceGoToPage);
+export default createModalControlsReducer(reduceGoToPage);

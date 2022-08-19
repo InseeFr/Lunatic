@@ -40,6 +40,17 @@ function Pager({
 	return null;
 }
 
+function Errors({ errors }) {
+	if (Array.isArray(errors)) {
+		const content = errors.map(({ id, errorMessage }) => {
+			const { value } = errorMessage;
+			return <li id={id}>{value}</li>;
+		});
+		return <ul>{content}</ul>;
+	}
+	return null;
+}
+
 function onLogChange(response, value, args) {
 	console.log('onChange', { response, value, args });
 }
@@ -77,6 +88,7 @@ function OrchestratorForStories({
 		waiting,
 		getErrors,
 		getModalErrors,
+		getCurrentErrors,
 		getData,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
@@ -94,6 +106,10 @@ function OrchestratorForStories({
 	const components = getComponents();
 	const errors = getErrors();
 	const modalErrors = getModalErrors();
+	const currentErrors = getCurrentErrors();
+	console.log('errors: ', errors);
+	console.log('modalErrors: ', modalErrors);
+	console.log('currentErrors: ', currentErrors);
 
 	return (
 		<div className="container">
@@ -124,6 +140,7 @@ function OrchestratorForStories({
 					);
 				})}
 			</div>
+			<Errors errors={currentErrors} />
 			<Pager
 				goPrevious={goPreviousPage}
 				goNext={goNextPage}

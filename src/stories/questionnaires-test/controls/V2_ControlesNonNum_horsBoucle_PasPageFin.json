@@ -56,20 +56,6 @@
 						"type": "VTL|MD"
 					},
 					"bindingDependencies": ["TESTSURBOO"]
-				},
-
-				{
-					"id": "kfxmjupm-CI-1",
-					"criticality": "WARN",
-					"control": {
-						"value": "not(nvl(TESTSURBOO,false) = true)",
-						"type": "VTL"
-					},
-					"errorMessage": {
-						"value": "On a coché le booleen et on met une phrase un peu longue car on veut tester ce qui s’affiche",
-						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["TESTSURBOO"]
 				}
 			],
 			"hierarchy": {
