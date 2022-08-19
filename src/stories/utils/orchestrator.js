@@ -76,6 +76,7 @@ function OrchestratorForStories({
 		isLastPage,
 		waiting,
 		getErrors,
+		getModalErrors,
 		getData,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
@@ -92,6 +93,7 @@ function OrchestratorForStories({
 
 	const components = getComponents();
 	const errors = getErrors();
+	const modalErrors = getModalErrors();
 
 	return (
 		<div className="container">
@@ -116,6 +118,7 @@ function OrchestratorForStories({
 								shortcut={shortcut}
 								custom={custom}
 								filterDescription={filterDescription}
+								errors={errors}
 							/>
 						</div>
 					);
@@ -133,7 +136,7 @@ function OrchestratorForStories({
 			/>
 			<lunatic.Modal
 				title="Des points requièrent votre attention."
-				errors={errors}
+				errors={modalErrors}
 				goNext={goNextPage}
 			/>
 			<Waiting status={waiting}>

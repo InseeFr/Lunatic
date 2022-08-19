@@ -20,6 +20,7 @@ function reduceNextSubPage(state) {
 		...state,
 		pager: { ...pager, subPage: subPage + 1 },
 		errors: undefined,
+		modalErrors: undefined,
 	};
 }
 
@@ -34,6 +35,7 @@ function reduceNextIteration(state) {
 			iteration: iteration + 1,
 		},
 		errors: undefined,
+		modalErrors: undefined,
 	};
 }
 
@@ -52,6 +54,7 @@ function reduceNextPage(state, { next }) {
 			lastReachedPage: lastReachedPage(pager, next),
 		},
 		errors: undefined,
+		modalErrors: undefined,
 	};
 }
 
@@ -72,6 +75,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 				lastReachedPage: lastReachedPage(pager, next),
 			},
 			errors: undefined,
+			modalErrors: undefined,
 		};
 	}
 	/* 
@@ -101,6 +105,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 				lastReachedPage: lastReachedPage(pager, next),
 			},
 			errors: undefined,
+			modalErrors: undefined,
 		};
 	}
 	return state;

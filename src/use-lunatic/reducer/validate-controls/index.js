@@ -1,1 +1,1 @@
-export { default as createValidateReducer } from './create-validate-reducer';
+export { default as createValidateReducer } from './create-modal-controls-reducer';

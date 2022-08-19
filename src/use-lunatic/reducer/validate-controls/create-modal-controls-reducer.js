@@ -58,32 +58,33 @@ function isErrors(errors) {
 	return false;
 }
 
-function createValidateReducer(reducer) {
+function createModalControlsReducer(reducer) {
 	// Nothing to init
 	return function (state, action) {
 		const { payload } = action;
 		const { modalForControls } = state;
 		const { block } = payload;
+		// debugger;
 		if (!modalForControls)
-			return reducer({ ...state, errors: undefined }, action);
+			return reducer({ ...state, modalErrors: undefined }, action);
 		const components = getComponentsFromState(state);
-		const { errors: prec } = state;
+		const { modalErrors: prec } = state;
 
 		if (block) {
-			return { ...state, errors: undefined };
+			return { ...state, modalErrors: undefined };
 		}
 
 		if (prec) {
-			return reducer({ ...state, errors: undefined }, action);
+			return reducer({ ...state, modalErrors: undefined }, action);
 		}
 
-		const errors = validateComponents(state, components);
-		if (isErrors(errors)) {
-			return { ...state, errors };
+		const modalErrors = validateComponents(state, components);
+		if (isErrors(modalErrors)) {
+			return { ...state, modalErrors };
 		}
 
-		return reducer({ ...state, errors: undefined }, action);
+		return reducer({ ...state, modalErrors: undefined }, action);
 	};
 }
 
-export default createValidateReducer;
+export default createModalControlsReducer;

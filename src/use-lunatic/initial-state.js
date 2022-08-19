@@ -22,6 +22,7 @@ const INITIAL_STATE = {
 	},
 	waiting: false,
 	errors: undefined,
+	modalErrors: undefined,
 	/* fonctionnalités vtl & md */
 	updateBindings: () => {},
 	executeExpression: () => {},

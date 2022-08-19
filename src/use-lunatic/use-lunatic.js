@@ -29,7 +29,7 @@ function useLunatic(
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, waiting, errors } = state;
+	const { pager, waiting, modalErrors, errors } = state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
 
@@ -71,6 +71,13 @@ function useLunatic(
 			return errors;
 		},
 		[errors]
+	);
+
+	const getModalErrors = useCallback(
+		function () {
+			return modalErrors;
+		},
+		[modalErrors]
 	);
 
 	const goPreviousPage = useCallback(
@@ -152,6 +159,7 @@ function useLunatic(
 		goNextPage,
 		goToPage,
 		getErrors,
+		getModalErrors,
 		pageTag,
 		isFirstPage,
 		isLastPage,
