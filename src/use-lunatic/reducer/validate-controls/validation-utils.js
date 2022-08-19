@@ -6,7 +6,16 @@ function resolveControl(state, control) {
 	try {
 		const result = executeExpression(value, { iteration });
 		if (!result) {
-			return { criticality, errorMessage, id, blocking };
+			const { value: labelValue } = errorMessage;
+			const label = executeExpression(labelValue, { iteration });
+			return {
+				criticality,
+				errorMessage: label || labelValue,
+				id,
+				blocking,
+				formula: value,
+				labelFormula: labelValue,
+			};
 		}
 		return undefined;
 	} catch (e) {

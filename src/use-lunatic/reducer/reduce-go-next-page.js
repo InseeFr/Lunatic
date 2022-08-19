@@ -115,10 +115,20 @@ function lastReachedPage(pager, page) {
 }
 
 function validateChange(state) {
-	const { pager, errors } = state;
+	const { pager, errors, executeExpression } = state;
+	const { iteration } = pager;
+
 	const currentErrors =
 		errors !== undefined ? errors[getPageTag(pager)] : undefined;
-	const updatedState = { ...state, currentErrors };
+	const test = (currentErrors || []).reduce((acc, error) => {
+		const { formula, labelFormula } = error;
+		const result = executeExpression(formula, { iteration });
+		if (result) return acc;
+		const errorMessage = executeExpression(labelFormula, { iteration });
+		return [...acc, { ...error, errorMessage }];
+	}, []);
+
+	const updatedState = { ...state, currentErrors: test };
 	if (isOnEmptyPage(updatedState)) {
 		return reduceGoNextPage(updatedState);
 	}

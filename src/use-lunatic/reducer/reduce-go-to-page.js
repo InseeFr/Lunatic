@@ -1,12 +1,16 @@
-import { isOnEmptyPage } from './commons';
+import { isOnEmptyPage, getPageTag } from './commons';
 import { createModalControlsReducer } from './validate-controls';
 import reduceGoNextPage from './reduce-go-next-page';
 
 function validateChange(state) {
-	if (isOnEmptyPage(state)) {
-		return reduceGoNextPage(state);
+	const { pager, errors } = state;
+	const currentErrors =
+		errors !== undefined ? errors[getPageTag(pager)] : undefined;
+	const updatedState = { ...state, currentErrors };
+	if (isOnEmptyPage(updatedState)) {
+		return reduceGoNextPage(updatedState);
 	}
-	return state;
+	return updatedState;
 }
 
 function reduceGoToPage(state, action) {

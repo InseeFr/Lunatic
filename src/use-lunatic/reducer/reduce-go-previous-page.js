@@ -1,5 +1,4 @@
 import { isOnEmptyPage } from './commons';
-// import { validateLoopConditionFilter } from './commons';
 import { getCompatibleVTLExpression, getPageTag } from '../commons';
 
 function getPreviousPage(pager) {

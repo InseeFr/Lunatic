@@ -21,7 +21,6 @@ function createControlsReducer(reducer) {
 	return function (state, action) {
 		const { activeControls } = state;
 		const updatedState = reducer(state, action);
-
 		if (!activeControls) return updatedState;
 
 		const components = getComponentsFromState(updatedState);

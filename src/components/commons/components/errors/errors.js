@@ -4,10 +4,9 @@ import './errors.scss';
 function Errors({ errors }) {
 	if (Array.isArray(errors)) {
 		const content = errors.map(({ id, errorMessage }) => {
-			const { value } = errorMessage;
 			return (
-				<div className="lunatic-error" id={id}>
-					{value}
+				<div key={`error-${id}`} className="lunatic-error">
+					{errorMessage}
 				</div>
 			);
 		});
