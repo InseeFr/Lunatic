@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Table from './components/table';
-import { createLunaticComponent } from '../commons';
+import { createLunaticComponent, Errors } from '../commons';
 import TableOrchestrator from './table-orchestrator';
 
 function LunaticTable({
@@ -13,6 +13,7 @@ function LunaticTable({
 	header,
 	executeExpression,
 	iteration,
+	errors,
 }) {
 	const [nbRows, setNbRows] = useState(undefined);
 
@@ -27,18 +28,21 @@ function LunaticTable({
 	);
 
 	return (
-		<Table id={id} custom={custom} header={header}>
-			<TableOrchestrator
-				custom={custom}
-				id={id}
-				body={body}
-				executeExpression={executeExpression}
-				handleChange={handleChange}
-				iteration={iteration}
-				nbRows={nbRows}
-				valueMap={value}
-			/>
-		</Table>
+		<>
+			<Table id={id} custom={custom} header={header}>
+				<TableOrchestrator
+					custom={custom}
+					id={id}
+					body={body}
+					executeExpression={executeExpression}
+					handleChange={handleChange}
+					iteration={iteration}
+					nbRows={nbRows}
+					valueMap={value}
+				/>
+			</Table>
+			<Errors errors={errors} />
+		</>
 	);
 }
 

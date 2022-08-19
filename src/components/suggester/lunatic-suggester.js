@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IDBSuggester from './idb-suggester';
-import { createLunaticComponent } from '../commons';
+import { createLunaticComponent, Errors } from '../commons';
 import * as commonPropTypes from '../commons/prop-types';
 import { COLLECTED } from '../../utils/constants';
 
@@ -18,22 +18,26 @@ function LunaticSuggester(props) {
 		disabled,
 		labelId,
 		custom,
+		errors,
 	} = props;
 
 	return (
-		<IDBSuggester
-			storeName={storeName}
-			optionRenderer={optionRenderer}
-			labelRenderer={labelRenderer}
-			labelledBy={labelId}
-			idbVersion={idbVersion}
-			onSelect={onChange}
-			focused={focused}
-			disabled={disabled}
-			id={id}
-			value={value}
-			custom={custom}
-		/>
+		<>
+			<IDBSuggester
+				storeName={storeName}
+				optionRenderer={optionRenderer}
+				labelRenderer={labelRenderer}
+				labelledBy={labelId}
+				idbVersion={idbVersion}
+				onSelect={onChange}
+				focused={focused}
+				disabled={disabled}
+				id={id}
+				value={value}
+				custom={custom}
+			/>
+			<Errors errors={errors} />
+		</>
 	);
 }
 
