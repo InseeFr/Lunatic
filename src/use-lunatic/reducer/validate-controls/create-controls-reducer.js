@@ -26,7 +26,10 @@ function createControlsReducer(reducer) {
 
 		const components = getComponentsFromState(updatedState);
 
-		const errors = validateComponents(updatedState, components);
+		const errors = {
+			...state.errors,
+			...validateComponents(updatedState, components),
+		};
 
 		const { pager } = state;
 

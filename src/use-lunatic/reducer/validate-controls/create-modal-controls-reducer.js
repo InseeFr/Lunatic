@@ -1,14 +1,15 @@
 import { resolveComponentControls } from './validation-utils';
-import { getComponentsFromState } from '../../commons';
+import { getComponentsFromState, getPageTag } from '../../commons';
 
 function validateComponentsForModal(state, components) {
+	const { pager } = state;
 	// TODO check components in components (Loop, etc...)
 	return components.reduce(function (errors, component) {
-		const { controls, id } = component;
+		const { controls } = component;
 		if (Array.isArray(controls)) {
 			const componentErrors = resolveComponentControls(state, controls);
 			if (componentErrors.length) {
-				return { ...errors, [id]: componentErrors };
+				return { ...errors, [getPageTag(pager)]: componentErrors };
 			}
 		}
 		return errors;
@@ -26,7 +27,7 @@ function createModalControlsReducer(reducer) {
 	// Nothing to init
 	return function (state, action) {
 		const { payload } = action;
-		const { activeControls } = state;
+		const { activeControls, errors } = state;
 		const { block } = payload;
 
 		if (!activeControls)
@@ -44,7 +45,7 @@ function createModalControlsReducer(reducer) {
 
 		const modalErrors = validateComponentsForModal(state, components);
 		if (isErrors(modalErrors)) {
-			return { ...state, modalErrors };
+			return { ...state, modalErrors, errors: { ...errors, ...modalErrors } };
 		}
 
 		return reducer({ ...state, modalErrors: undefined }, action);
