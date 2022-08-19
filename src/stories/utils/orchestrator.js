@@ -48,7 +48,7 @@ function OrchestratorForStories({
 	source,
 	data,
 	management = false,
-	modalForControls = false,
+	activeControls = false,
 	features,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
@@ -88,7 +88,7 @@ function OrchestratorForStories({
 		suggesters,
 		suggesterFetcher,
 		management,
-		modalForControls,
+		activeControls,
 	});
 
 	const components = getComponents();

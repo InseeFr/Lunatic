@@ -23,7 +23,7 @@ export const onInit = ({
 	savingType,
 	management,
 	handleChange,
-	modalForControls,
+	activeControls,
 }) => ({
 	type: ON_INIT,
 	payload: {
@@ -35,7 +35,7 @@ export const onInit = ({
 		savingType,
 		management,
 		handleChange,
-		modalForControls,
+		activeControls,
 	},
 });
 

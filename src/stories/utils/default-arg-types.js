@@ -4,7 +4,7 @@ const fields = [
 	'pagination',
 	'data',
 	'management',
-	'modalForControls',
+	'activeControls',
 	'features',
 	'initialPage',
 	'getStoreInfo',

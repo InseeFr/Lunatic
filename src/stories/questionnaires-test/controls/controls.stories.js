@@ -26,7 +26,7 @@ const stories = {
 			control: 'boolean',
 			defaultValue: false,
 		},
-		modalForControls: {
+		activeControls: {
 			control: 'boolean',
 			defaultValue: true,
 		},
@@ -50,7 +50,7 @@ SimpleNum.args = {
 	id: 'controls-simple-num',
 	source: simpleNum,
 	pagination: true,
-	modalForControls: true,
+	activeControls: true,
 };
 
 export const LinkedLoop = Template.bind({});
@@ -59,7 +59,7 @@ LinkedLoop.args = {
 	id: 'controls-linked-loop',
 	source: linkedLoop,
 	pagination: true,
-	modalForControls: true,
+	activeControls: true,
 };
 
 export const LinkedLoop2 = Template.bind({});
@@ -68,5 +68,5 @@ LinkedLoop2.args = {
 	id: 'controls-linked-loop2',
 	source: linkedLoop2,
 	pagination: true,
-	modalForControls: true,
+	activeControls: true,
 };

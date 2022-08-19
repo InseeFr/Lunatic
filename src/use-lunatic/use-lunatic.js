@@ -25,7 +25,7 @@ function useLunatic(
 		autoSuggesterLoading = false,
 		suggesters: suggestersConfiguration,
 		suggesterFetcher,
-		modalForControls = false,
+		activeControls = false,
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -136,7 +136,7 @@ function useLunatic(
 					savingType,
 					management,
 					handleChange,
-					modalForControls,
+					activeControls,
 				})
 			);
 		},
@@ -149,7 +149,7 @@ function useLunatic(
 			savingType,
 			management,
 			handleChange,
-			modalForControls,
+			activeControls,
 		]
 	);
 
