@@ -10,7 +10,7 @@ function resolveControl(state, control) {
 			const label = executeExpression(labelValue, { iteration });
 			return {
 				criticality,
-				errorMessage: label || labelValue,
+				errorMessage: label,
 				id,
 				blocking,
 				formula: value,

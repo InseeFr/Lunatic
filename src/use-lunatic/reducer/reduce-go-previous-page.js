@@ -16,20 +16,6 @@ function goStartLoop(state, { previous, iterations, loopDependencies }) {
 
 	//TODO: check if loop components are all filtered
 
-	// if (validateLoopConditionFilter(state, { next: previous })) {
-	// 	return {
-	// 		...state,
-	// 		pager: {
-	// 			...pager,
-	// 			page: previous,
-	// 			subPage: undefined,
-	// 			nbSubPages: undefined,
-	// 			iteration: undefined,
-	// 			nbIterations: undefined,
-	// 		},
-	// 	};
-	// }
-
 	if (Array.isArray(subPages)) {
 		const nbIterations = executeExpression(
 			getCompatibleVTLExpression(iterations),
@@ -85,8 +71,9 @@ function goPreviousPage(state, { previous }) {
 		subPage: undefined,
 		nbSubPages: undefined,
 	};
-	const currentErrors =
-		errors !== undefined ? errors[getPageTag(updatedPager)] : undefined;
+
+	const currentErrors = errors ? errors[getPageTag(updatedPager)] : undefined;
+
 	if (previous !== page) {
 		return {
 			...state,

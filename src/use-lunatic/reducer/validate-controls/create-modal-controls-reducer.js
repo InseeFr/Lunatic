@@ -36,7 +36,12 @@ function createModalControlsReducer(reducer) {
 		const { modalErrors: prec } = state;
 
 		if (block) {
-			return { ...state, modalErrors: undefined };
+			// Block the modal and stay in page so we add the error in the current page
+			return {
+				...state,
+				modalErrors: undefined,
+				currentErrors: prec[getPageTag(state.pager)],
+			};
 		}
 
 		if (prec) {
@@ -45,7 +50,11 @@ function createModalControlsReducer(reducer) {
 
 		const modalErrors = validateComponentsForModal(state, components);
 		if (isErrors(modalErrors)) {
-			return { ...state, modalErrors, errors: { ...errors, ...modalErrors } };
+			return {
+				...state,
+				modalErrors,
+				errors: { ...errors, ...modalErrors },
+			};
 		}
 
 		return reducer({ ...state, modalErrors: undefined }, action);
