@@ -5,6 +5,7 @@ import {
 	DeclarationsDetachable,
 } from '../../declarations';
 import RosterTable from './roster-table';
+import { Errors } from '../../commons';
 import HandleRowButton from './handle-row-button';
 import D from '../../../i18n';
 
@@ -33,6 +34,7 @@ function RosterforLoop({
 	id,
 	management,
 	custom,
+	errors,
 }) {
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [init, setInit] = useState(false);
@@ -119,6 +121,7 @@ function RosterforLoop({
 				>
 					{D.DEFAULT_BUTTON_REMOVE}
 				</HandleRowButton>
+				<Errors errors={errors} />
 			</>
 		);
 	}

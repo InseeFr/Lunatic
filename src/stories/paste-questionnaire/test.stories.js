@@ -23,7 +23,7 @@ const stories = {
 			control: 'boolean',
 			defaultValue: false,
 		},
-		modalForControls: {
+		activeControls: {
 			control: 'boolean',
 			defaultValue: true,
 		},

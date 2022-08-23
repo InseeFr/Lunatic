@@ -5,6 +5,7 @@ import {
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../../declarations';
+import { Errors } from '../../commons';
 
 const PairwiseLinks = ({
 	declarations,
@@ -21,6 +22,7 @@ const PairwiseLinks = ({
 	yAxisIterations,
 	custom,
 	id,
+	errors,
 }) => {
 	const nbRows = xAxisIterations * yAxisIterations;
 	const handleChangeLinks = useCallback(
@@ -63,6 +65,7 @@ const PairwiseLinks = ({
 					id={id}
 					custom={custom}
 				/>
+				<Errors errors={errors} />
 			</>
 		);
 

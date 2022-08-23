@@ -1,13 +1,18 @@
 import Input from './input';
-import { createLunaticComponent } from '../commons';
+import { createLunaticComponent, Errors } from '../commons';
 import './input.scss';
 
-const LunaticInput = createLunaticComponent(Input, {
-	inputId: 'lunatic-input',
-});
+const LunaticInput = ({ errors, ...props }) => (
+	<>
+		<Input {...props} />
+		<Errors errors={errors} />
+	</>
+);
 
 LunaticInput.defaultProps = {
 	className: 'todo',
 };
 
-export default LunaticInput;
+export default createLunaticComponent(LunaticInput, {
+	inputId: 'lunatic-input',
+});

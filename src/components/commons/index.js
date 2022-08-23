@@ -16,3 +16,4 @@ export { default as DefaultOptionRenderer } from './components/default-option-re
 export { default as DefaultLabelRenderer } from './components/default-label-renderer';
 export { default as safetyLabel } from './safety-label';
 export { default as createLunaticComponent } from './components/create-lunatic-component';
+export { default as Errors } from './components/errors';

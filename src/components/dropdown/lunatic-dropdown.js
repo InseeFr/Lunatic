@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createLunaticComponent } from '../commons';
+import { createLunaticComponent, Errors } from '../commons';
 import Dropdown from './dropdown';
 
 function LunaticDropdown({
@@ -12,20 +12,24 @@ function LunaticDropdown({
 	htmlFor,
 	labelId,
 	value,
+	errors,
 }) {
 	return (
-		<Dropdown
-			id={id}
-			htmlFor={id}
-			labelId={labelId}
-			writable={writable}
-			disabled={disabled}
-			options={options}
-			editable={writable}
-			onSelect={onChange}
-			value={value}
-			className="lunatic-dropdown"
-		/>
+		<>
+			<Dropdown
+				id={id}
+				htmlFor={id}
+				labelId={labelId}
+				writable={writable}
+				disabled={disabled}
+				options={options}
+				editable={writable}
+				onSelect={onChange}
+				value={value}
+				className="lunatic-dropdown"
+			/>
+			<Errors errors={errors} />
+		</>
 	);
 }
 

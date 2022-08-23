@@ -48,7 +48,7 @@ function OrchestratorForStories({
 	source,
 	data,
 	management = false,
-	modalForControls = false,
+	activeControls = false,
 	features,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
@@ -76,6 +76,8 @@ function OrchestratorForStories({
 		isLastPage,
 		waiting,
 		getErrors,
+		getModalErrors,
+		getCurrentErrors,
 		getData,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
@@ -87,11 +89,16 @@ function OrchestratorForStories({
 		suggesters,
 		suggesterFetcher,
 		management,
-		modalForControls,
+		activeControls,
 	});
 
 	const components = getComponents();
 	const errors = getErrors();
+	const modalErrors = getModalErrors();
+	const currentErrors = getCurrentErrors();
+	console.log('errors: ', errors);
+	console.log('modalErrors: ', modalErrors);
+	console.log('currentErrors: ', currentErrors);
 
 	return (
 		<div className="container">
@@ -116,6 +123,7 @@ function OrchestratorForStories({
 								shortcut={shortcut}
 								custom={custom}
 								filterDescription={filterDescription}
+								errors={currentErrors}
 							/>
 						</div>
 					);
@@ -133,7 +141,7 @@ function OrchestratorForStories({
 			/>
 			<lunatic.Modal
 				title="Des points requièrent votre attention."
-				errors={errors}
+				errors={modalErrors}
 				goNext={goNextPage}
 			/>
 			<Waiting status={waiting}>

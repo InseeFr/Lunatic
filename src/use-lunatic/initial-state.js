@@ -22,11 +22,13 @@ const INITIAL_STATE = {
 	},
 	waiting: false,
 	errors: undefined,
+	currentErrors: undefined,
+	modalErrors: undefined,
 	/* fonctionnalités vtl & md */
 	updateBindings: () => {},
 	executeExpression: () => {},
 	handleChange: () => {},
-	modalForControls: false,
+	activeControls: false,
 };
 
 export default INITIAL_STATE;

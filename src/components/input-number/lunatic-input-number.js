@@ -1,8 +1,13 @@
 import InputNumber from './input-number';
-import { createLunaticComponent } from '../commons';
+import { createLunaticComponent, Errors } from '../commons';
 
-const LunaticInputNumber = createLunaticComponent(InputNumber, {
+const LunaticInputNumber = ({ errors, ...props }) => (
+	<>
+		<InputNumber {...props} />
+		<Errors errors={errors} />
+	</>
+);
+
+export default createLunaticComponent(LunaticInputNumber, {
 	inputId: 'lunatic-input-number',
 });
-
-export default LunaticInputNumber;

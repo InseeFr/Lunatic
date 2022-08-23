@@ -5,6 +5,7 @@ import reduceMissing from './reduce-missing';
 import reduceResizing from './reduce-resizing';
 import reduceLinksVariable from './reduce-links-variable';
 import compose from '../../commons/compose';
+import { createControlsReducer } from '../validate-controls';
 
 function isOnSubPage(pager) {
 	const { subPage } = pager;
@@ -91,4 +92,4 @@ function reduceHandleChange(state, action) {
 	return reducers(state, action);
 }
 
-export default reduceHandleChange;
+export default createControlsReducer(reduceHandleChange);
