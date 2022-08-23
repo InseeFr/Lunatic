@@ -53,10 +53,10 @@
 					"id": "l14vfucm-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(Q1,\"0\"),integer)) > 3)",
+						"value": "not(cast(Q1,integer) > 3)",
 						"type": "VTL"
 					},
-					"errorMessage": { "value": "Supérieur à 3", "type": "VTL|MD" },
+					"errorMessage": { "value": "\"Supérieur à 3\"", "type": "VTL|MD" },
 					"bindingDependencies": ["Q1"]
 				}
 			],
@@ -225,7 +225,7 @@
 							"id": "l5ghsjv2-CI-0",
 							"criticality": "WARN",
 							"control": { "value": "not(isnull(Q5))", "type": "VTL" },
-							"errorMessage": { "value": "Q5 est vide ", "type": "VTL|MD" },
+							"errorMessage": { "value": "\"Q5 est vide\"", "type": "VTL|MD" },
 							"bindingDependencies": ["Q5"]
 						}
 					],

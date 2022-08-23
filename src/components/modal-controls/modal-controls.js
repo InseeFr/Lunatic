@@ -5,8 +5,7 @@ import CloseOrSkip from './close-or-skip';
 import './modal-controls.scss';
 
 function Error({ criticality, errorMessage }) {
-	const { value } = errorMessage;
-	return <li className={classnames(criticality)}>{value}</li>;
+	return <li className={classnames(criticality)}>{errorMessage}</li>;
 }
 
 function ComponentErrors({ errors }) {

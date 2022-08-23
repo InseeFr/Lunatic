@@ -25,11 +25,11 @@ function useLunatic(
 		autoSuggesterLoading = false,
 		suggesters: suggestersConfiguration,
 		suggesterFetcher,
-		modalForControls = false,
+		activeControls = false,
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, waiting, errors } = state;
+	const { pager, waiting, modalErrors, errors, currentErrors } = state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
 
@@ -71,6 +71,20 @@ function useLunatic(
 			return errors;
 		},
 		[errors]
+	);
+
+	const getModalErrors = useCallback(
+		function () {
+			return modalErrors;
+		},
+		[modalErrors]
+	);
+
+	const getCurrentErrors = useCallback(
+		function () {
+			return currentErrors;
+		},
+		[currentErrors]
 	);
 
 	const goPreviousPage = useCallback(
@@ -129,7 +143,7 @@ function useLunatic(
 					savingType,
 					management,
 					handleChange,
-					modalForControls,
+					activeControls,
 				})
 			);
 		},
@@ -142,7 +156,7 @@ function useLunatic(
 			savingType,
 			management,
 			handleChange,
-			modalForControls,
+			activeControls,
 		]
 	);
 
@@ -152,6 +166,8 @@ function useLunatic(
 		goNextPage,
 		goToPage,
 		getErrors,
+		getModalErrors,
+		getCurrentErrors,
 		pageTag,
 		isFirstPage,
 		isLastPage,

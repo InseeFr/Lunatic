@@ -31,6 +31,7 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 				? getIteration({ name, iteration, linksIterations })
 				: undefined,
 		});
+		if (linksIterations !== undefined) return value;
 		if (shapeFrom && iteration !== undefined) {
 			if (bindings[name] === undefined) {
 				const shapeVariable = bindings[shapeFrom];
@@ -96,7 +97,6 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 					linksIterations,
 					bindings,
 				});
-
 				if (type !== CALCULATED || iteration === undefined)
 					toRefreshVariables.delete(name);
 				return { ...sub, [name]: value };

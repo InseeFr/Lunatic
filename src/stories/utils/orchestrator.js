@@ -15,7 +15,7 @@ function Pager({
 	isFirst,
 	pageTag,
 	maxPage,
-	getState,
+	getData,
 }) {
 	if (maxPage && maxPage > 1) {
 		const Button = lunatic.Button;
@@ -28,7 +28,7 @@ function Pager({
 					<Button onClick={goNext} disabled={isLast}>
 						Next
 					</Button>
-					<Button onClick={() => console.log(getState(true))}>Get State</Button>
+					<Button onClick={() => console.log(getData(true))}>Get State</Button>
 					<Button onClick={() => goToPage({ page: '18' })}>
 						Go to page 18
 					</Button>
@@ -48,7 +48,7 @@ function OrchestratorForStories({
 	source,
 	data,
 	management = false,
-	modalForControls = false,
+	activeControls = false,
 	features,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
@@ -76,7 +76,9 @@ function OrchestratorForStories({
 		isLastPage,
 		waiting,
 		getErrors,
-		getState,
+		getModalErrors,
+		getCurrentErrors,
+		getData,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
 		features,
@@ -87,11 +89,16 @@ function OrchestratorForStories({
 		suggesters,
 		suggesterFetcher,
 		management,
-		modalForControls,
+		activeControls,
 	});
 
 	const components = getComponents();
 	const errors = getErrors();
+	const modalErrors = getModalErrors();
+	const currentErrors = getCurrentErrors();
+	console.log('errors: ', errors);
+	console.log('modalErrors: ', modalErrors);
+	console.log('currentErrors: ', currentErrors);
 
 	return (
 		<div className="container">
@@ -116,6 +123,7 @@ function OrchestratorForStories({
 								shortcut={shortcut}
 								custom={custom}
 								filterDescription={filterDescription}
+								errors={currentErrors}
 							/>
 						</div>
 					);
@@ -129,11 +137,11 @@ function OrchestratorForStories({
 				isFirst={isFirstPage}
 				pageTag={pageTag}
 				maxPage={maxPage}
-				getState={getState}
+				getData={getData}
 			/>
 			<lunatic.Modal
 				title="Des points requièrent votre attention."
-				errors={errors}
+				errors={modalErrors}
 				goNext={goNextPage}
 			/>
 			<Waiting status={waiting}>

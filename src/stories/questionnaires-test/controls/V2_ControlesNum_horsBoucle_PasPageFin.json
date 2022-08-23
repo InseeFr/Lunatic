@@ -1,1689 +1,1957 @@
+{
+	"id": "kzfezgxb",
+	"modele": "QTESTCONTR",
+	"enoCoreVersion": "2.3.7-dev-lunatic-v2",
+	"lunaticModelVersion": "2.2.13-dev-lunatic-v2",
+	"generatingDate": "19-07-2022 10:10:33",
+	"missing": false,
+	"pagination": "question",
+	"maxPage": "21",
+	"label": { "value": "QNONREG Controles Numériques VTL", "type": "VTL|MD" },
+	"components": [
+		{
+			"id": "kd09v80w",
+			"componentType": "Sequence",
+			"page": "1",
+			"label": { "value": "Tests sur variables numériques", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				}
+			}
+		},
 
- { "id" : "kzfezgxb",
-  "modele" : "QTESTCONTR",
-  "enoCoreVersion" : "2.3.7-dev-lunatic-v2",
-  "lunaticModelVersion" : "2.2.13-dev-lunatic-v2",
-  "generatingDate" : "19-07-2022 10:10:33",
-  "missing" : false,
-  "pagination" : "question",
-  "maxPage" : "21",
-  "label" : 
-  { "value" : "QNONREG Controles Numériques VTL",
-   "type" : "VTL|MD" },
-  "components" : 
-  [ 
-   { "id" : "kd09v80w",
-    "componentType" : "Sequence",
-    "page" : "1",
-    "label" : 
-    { "value" : "Tests sur variables numériques",
-     "type" : "VTL|MD" },
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } } } },
-   
-   { "id" : "kd0cbson",
-    "componentType" : "Subsequence",
-    "goToPage" : "2",
-    "label" : 
-    { "value" : "Tests simples sur des entiers",
-     "type" : "VTL|MD" },
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cbson",
-      "page" : "2",
-      "label" : 
-      { "value" : "Tests simples sur des entiers",
-       "type" : "VTL|MD" } } } },
-   
-   { "id" : "k0dzbfek",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "2",
-    "min" : 0,
-    "max" : 100,
-    "decimals" : 0,
-    "label" : 
-    { "value" : "\"➡ 1. \" || \"Test de supériorité stricte - Saisie d’un nombre compris entre 0 et 100 - Si valeur supérieure à 5 message d’info. si superieur à 6,5 autre message \"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "k0dzbfek-kzgzg0bk",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Tester 2 et 20 (pour vérifier ordre numérique et lexico)",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "k0dzbfek-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QNUM,\"0\"),integer) > 5)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "sup à 5",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QNUM" ] },
-     
-     { "id" : "k0dzbfek-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QNUM,\"0\"),integer) > 6.5)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "superieur à 6.5",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QNUM" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cbson",
-      "page" : "2",
-      "label" : 
-      { "value" : "Tests simples sur des entiers",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QNUM" ],
-    "response" : 
-    { "name" : "QNUM" } },
-   
-   { "id" : "kd0a6rn3",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "3",
-    "min" : 0,
-    "max" : 100,
-    "decimals" : 0,
-    "label" : 
-    { "value" : "\"➡ 2. \" || \"Test sur valeur numérique vide\"",
-     "type" : "VTL|MD" },
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0a6rn3-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(isnull(QNUM2))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "vous n’avez pas répondu à la question",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QNUM2" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cbson",
-      "page" : "2",
-      "label" : 
-      { "value" : "Tests simples sur des entiers",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QNUM2" ],
-    "response" : 
-    { "name" : "QNUM2" } },
-   
-   { "id" : "kd0a8h62",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "4",
-    "min" : 0,
-    "max" : 100,
-    "decimals" : 0,
-    "label" : 
-    { "value" : "\"➡ 3. \" || \"Test d’infériorité stricte - Saisie d’un nombre compris entre 0 et 100 - Message si valeur inférieure à 8 \"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0a8h62-kzgzr5b4",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Tester 2 et 20 (pour vérifier ordre numérique et lexico)",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0a8h62-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QNUM3,\"\"),integer) < 8)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "le nombre saisi est inférieur à 8",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QNUM3" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cbson",
-      "page" : "2",
-      "label" : 
-      { "value" : "Tests simples sur des entiers",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QNUM3" ],
-    "response" : 
-    { "name" : "QNUM3" } },
-   
-   { "id" : "kd0a4t4f",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "5",
-    "min" : 0,
-    "max" : 100,
-    "decimals" : 0,
-    "label" : 
-    { "value" : "\"➡ 4. \" || \"Test de supériorité non stricte - Saisie d’un nombre compris entre 0 et 100 - Test si valeur supérieure à 5 \"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0a4t4f-kzgzrq25",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Tester 2 et 20 (pour vérifier ordre numérique et lexico) Tester pour le cas d’égalité",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0a4t4f-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QNUM4,\"0\"),integer) >=5)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "la valeur saisie est supérieure ou égale à 5",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QNUM4" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cbson",
-      "page" : "2",
-      "label" : 
-      { "value" : "Tests simples sur des entiers",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QNUM4" ],
-    "response" : 
-    { "name" : "QNUM4" } },
-   
-   { "id" : "kd0ac92p",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "6",
-    "min" : 0,
-    "max" : 100,
-    "decimals" : 0,
-    "label" : 
-    { "value" : "\"➡ 5. \" || \"Test d’infériorité non stricte - Saisie d’un nombre compris entre 0 et 100 - Test si valeur inférieure à 8 \"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0ac92p-kzgzp1k0",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Tester 2 et 20 (pour vérifier ordre numérique et lexico) Tester 8 pour le cas égalité",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0ac92p-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QNUM5,\"\"),integer) <= 8)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "La valeur saisie est inférieure ou égale à 8",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QNUM5" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cbson",
-      "page" : "2",
-      "label" : 
-      { "value" : "Tests simples sur des entiers",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QNUM5" ],
-    "response" : 
-    { "name" : "QNUM5" } },
-   
-   { "id" : "k1cahy88",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "7",
-    "min" : 0,
-    "max" : 9,
-    "decimals" : 0,
-    "label" : 
-    { "value" : "\"➡ 6. \" || \"Test d’égalité - Message si = 4\"",
-     "type" : "VTL|MD" },
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "k1cahy88-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QNUM6,\"0\"),integer) = 4)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "la valeur est égale à 4",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QNUM6" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cbson",
-      "page" : "2",
-      "label" : 
-      { "value" : "Tests simples sur des entiers",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QNUM6" ],
-    "response" : 
-    { "name" : "QNUM6" } },
-   
-   { "id" : "kd0ch7pf",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "8",
-    "min" : 0,
-    "max" : 9,
-    "decimals" : 0,
-    "label" : 
-    { "value" : "\"➡ 7. \" || \"Test d’égalité à 0 - Message si = 0 \"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0ch7pf-kzgzyu8d",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Tester 0 Tester aussi en vidant la valeur",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0ch7pf-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(QNUM7,integer) = 0)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "La valeur est zéro",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QNUM7" ] },
-     
-     { "id" : "kd0ch7pf-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(isnull(QNUM7))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "valeur vide",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QNUM7" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cbson",
-      "page" : "2",
-      "label" : 
-      { "value" : "Tests simples sur des entiers",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QNUM7" ],
-    "response" : 
-    { "name" : "QNUM7" } },
-   
-   { "id" : "kd0aamy0",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "9",
-    "min" : -100,
-    "max" : 100,
-    "decimals" : 2,
-    "label" : 
-    { "value" : "\"➡ 8. \" || \"TestS d’un relatif par rapport à une constante neg\"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0aamy0-kzgzjdlf",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "test des positionnements par rapport à -4",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "kd0aamy0-l5qs4feh",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "En LunaticV1 impossible saisir un négatif",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0aamy0-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REL,\"0\"),number) > -4)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "c’est supérieur strict",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REL" ] },
-     
-     { "id" : "kd0aamy0-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REL,\"0\"),number) >= -4)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "c’est supérieur ou égal",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REL" ] },
-     
-     { "id" : "kd0aamy0-CI-2",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REL,\"0\"),number) < -4)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "c’est  inférieur strict",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REL" ] },
-     
-     { "id" : "kd0aamy0-CI-3",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REL,\"0\"),number) <= -4)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "c’est inférieur ou égal",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REL" ] },
-     
-     { "id" : "kd0aamy0-CI-4",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REL,\"0\"),number) = -4)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "c’est égal",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REL" ] },
-     
-     { "id" : "kd0aamy0-CI-5",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REL,\"0\"),number) <> -4)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "c’est différent",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REL" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cbson",
-      "page" : "2",
-      "label" : 
-      { "value" : "Tests simples sur des entiers",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "REL" ],
-    "response" : 
-    { "name" : "REL" } },
-   
-   { "id" : "kd0cdj48",
-    "componentType" : "Subsequence",
-    "goToPage" : "10",
-    "label" : 
-    { "value" : "Tests sur des relatifs et des réels",
-     "type" : "VTL|MD" },
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cdj48",
-      "page" : "10",
-      "label" : 
-      { "value" : "Tests sur des relatifs et des réels",
-       "type" : "VTL|MD" } } } },
-   
-   { "id" : "kd0aa5ah",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "10",
-    "min" : -100,
-    "max" : 100,
-    "decimals" : 2,
-    "label" : 
-    { "value" : "\"➡ 9. \" || \"Test d’un réel par rapport à une constante - test des positionnements par rapport à -4.51 (sup, inf, égal)\"",
-     "type" : "VTL|MD" },
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0aa5ah-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REEL,\"\"),number) > -4.51)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "la valeur est supérieure à -4.51",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REEL" ] },
-     
-     { "id" : "kd0aa5ah-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REEL,\"0\"),number) = -4.51)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "la valeur est égale à -4.51",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REEL" ] },
-     
-     { "id" : "kd0aa5ah-CI-2",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REEL,\"0\"),number) < -4.51)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "la valeur est inférieure à -4.51",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REEL" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cdj48",
-      "page" : "10",
-      "label" : 
-      { "value" : "Tests sur des relatifs et des réels",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "REEL" ],
-    "response" : 
-    { "name" : "REEL" } },
-   
-   { "id" : "l5qvuk9e",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "11",
-    "min" : -100,
-    "max" : 100,
-    "decimals" : 2,
-    "label" : 
-    { "value" : "\"➡ 10. \" || \"Test d’un réel par rapport à une constante - test des positionnements par rapport à 4.51 (sup, inf, égal)\"",
-     "type" : "VTL|MD" },
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "l5qvuk9e-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REEL2,\"\"),number) > 4.51)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "superieur à 4.51",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REEL2" ] },
-     
-     { "id" : "l5qvuk9e-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REEL2,\"\"),number) < 4.51)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "inferieur à 4.51",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REEL2" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cdj48",
-      "page" : "10",
-      "label" : 
-      { "value" : "Tests sur des relatifs et des réels",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "REEL2" ],
-    "response" : 
-    { "name" : "REEL2" } },
-   
-   { "id" : "l5qvtc2l",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "12",
-    "min" : -100,
-    "max" : 100,
-    "decimals" : 2,
-    "label" : 
-    { "value" : "\"➡ 11. \" || \"Test d’un réel par rapport à une constante - test des positionnements par rapport à 4 (sup, égal)\"",
-     "type" : "VTL|MD" },
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "l5qvtc2l-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REEL3,\"\"),number) > 4)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "superieur à 4",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REEL3" ] },
-     
-     { "id" : "l5qvtc2l-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(REEL3,\"\"),number) < 4)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "inferieur à 4",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "REEL3" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cdj48",
-      "page" : "10",
-      "label" : 
-      { "value" : "Tests sur des relatifs et des réels",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "REEL3" ],
-    "response" : 
-    { "name" : "REEL3" } },
-   
-   { "id" : "kd0c3h3b",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "13",
-    "min" : 0,
-    "max" : 1.0E9,
-    "decimals" : 2,
-    "label" : 
-    { "value" : "\"➡ 12. \" || \"Test d’un grand réel par rapport à une constante (max = 1000000000) - test des positionnements par rapport à 1000 - Personnalisation du message d’erreur avec la valeur (précision = 2, max = 1000000000)\"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0c3h3b-l5qsemyu",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Rappel : posait souci dans Orbeon",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0c3h3b-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(GRAND,\"0\"),number) > 1000)",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "la valeur saisie GRAND est supérieure à 1000 ",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "GRAND" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0cdj48",
-      "page" : "10",
-      "label" : 
-      { "value" : "Tests sur des relatifs et des réels",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "GRAND" ],
-    "response" : 
-    { "name" : "GRAND" } },
-   
-   { "id" : "kd0a5rkr",
-    "componentType" : "Subsequence",
-    "page" : "14",
-    "goToPage" : "14",
-    "label" : 
-    { "value" : "Tests sur variables collectées, ordre relatif et variables calculées",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0a5rkr-kzh01fub",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Les nombres sont QREL et QREL2 Leur somme vaut CALC_SOMME - Leur produit vaut CALC_PRODUIT - Leur différence vaut CALC_DIFFERENCE - Leur division vaut CALC_RATIO",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0a5rkr",
-      "page" : "14",
-      "label" : 
-      { "value" : "Tests sur variables collectées, ordre relatif et variables calculées",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QREL",
-     "QREL2",
-     "CALC_SOMME",
-     "CALC_PRODUIT",
-     "CALC_DIFFERENCE",
-     "CALC_RATIO" ] },
-   
-   { "id" : "kd0achk0",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "15",
-    "min" : -100,
-    "max" : 100,
-    "decimals" : 0,
-    "label" : 
-    { "value" : "\"➡ 13. \" || \"Test sur ordre de deux variables - partie 1 - les contrôles portent sur la question suivante&#xd;\"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0achk0-l5qs57q7",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Saisir un nombre entier relatif entre -100 et 100",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0a5rkr",
-      "page" : "14",
-      "label" : 
-      { "value" : "Tests sur variables collectées, ordre relatif et variables calculées",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QREL" ],
-    "response" : 
-    { "name" : "QREL" } },
-   
-   { "id" : "kd0bl558",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "16",
-    "min" : -100,
-    "max" : 100,
-    "decimals" : 2,
-    "label" : 
-    { "value" : "\"➡ 14. \" || \"Test sur ordre de deux variables - partie 2 \"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0bl558-kzgp1ckr",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "MEttre 2 chiffres après virgule",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "kd0bl558-kzgzuob9",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Saisir un deuxième nombre relatif entre -100 et 100",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "kd0bl558-kzgzzsbo",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Tester supérieur, inférieur, identique",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "kd0bl558-kzgzn873",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "Ne pas oublier de tester ordre numérique et ordre lexicographique",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0bl558-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(QREL,number) > cast(QREL2,number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "le premier nombre est supérieur",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QREL",
-       "QREL2" ] },
-     
-     { "id" : "kd0bl558-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(QREL,number) < cast(QREL2,number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "le premier nombre est inférieur",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QREL",
-       "QREL2" ] },
-     
-     { "id" : "kd0bl558-CI-2",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(QREL,number) = cast(QREL2,number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "les deux nombres sont égaux",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QREL",
-       "QREL2" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0a5rkr",
-      "page" : "14",
-      "label" : 
-      { "value" : "Tests sur variables collectées, ordre relatif et variables calculées",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QREL2" ],
-    "response" : 
-    { "name" : "QREL2" } },
-   
-   { "id" : "l5qt3xu9",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "17",
-    "min" : 0,
-    "max" : 100,
-    "decimals" : 0,
-    "label" : 
-    { "value" : "\"➡ 15. \" || \"Test entre un entier et un réel - saisir entre 0 et 100 - controle sur saisie > QREL2\"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "l5qt3xu9-l5qt5usw",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"rappel QREL2 : \" || cast(QREL2,string)",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "l5qt3xu9-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QNUMBIS,\"0\"),number) > cast(nvl(QREL2,\"0\"),number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "saisie > QREL2",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QNUMBIS",
-       "QREL2" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0a5rkr",
-      "page" : "14",
-      "label" : 
-      { "value" : "Tests sur variables collectées, ordre relatif et variables calculées",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QREL2",
-     "QNUMBIS" ],
-    "response" : 
-    { "name" : "QNUMBIS" } },
-   
-   { "id" : "kd0bu8xz",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "18",
-    "min" : -400,
-    "max" : 400,
-    "decimals" : 0,
-    "label" : 
-    { "value" : "\"➡ 16. \" || \"test avec une variable calculée : le ratio - Saisissez une valeur pour la comparer au produit des deux nombres précédents\"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0bu8xz-l5qsfsto",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"QREL \" || cast(QREL,string)",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "kd0bu8xz-l5qsl50s",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"QREL2 \" || cast(QREL2,string)",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "kd0bu8xz-l5qtjjss",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"ratio calculé : \" || cast(CALC_RATIO,string)",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0bu8xz-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(CALC_RATIO,number)<>cast(nvl(QRATIO,\"\"),number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "RAtio différent",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "CALC_RATIO",
-       "QRATIO" ] },
-     
-     { "id" : "kd0bu8xz-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(CALC_RATIO,number)=cast(nvl(QRATIO,\"\"),number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "RAtio identique",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "CALC_RATIO",
-       "QRATIO" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0a5rkr",
-      "page" : "14",
-      "label" : 
-      { "value" : "Tests sur variables collectées, ordre relatif et variables calculées",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QREL",
-     "QREL2",
-     "CALC_RATIO",
-     "QRATIO" ],
-    "response" : 
-    { "name" : "QRATIO" } },
-   
-   { "id" : "k0gj7g4v",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "19",
-    "min" : -200,
-    "max" : 200,
-    "decimals" : 1,
-    "label" : 
-    { "value" : "\"➡ 17. \" || \"test avec une variable calculée : la somme - Saisissez une valeur pour la comparer à la somme des deux nombres précédents \"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "k0gj7g4v-kzs9lmqk",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"somme calculée : \" ||cast(CALC_SOMME,string)",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "k0gj7g4v-l5qsqev9",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"QREL \" || cast(QREL,string)",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "k0gj7g4v-l5qsn0zd",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"QREL2 \" || cast(QREL2,string)",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "k0gj7g4v-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QSOMME,\"\"),number) = cast(CALC_SOMME,number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "Bravo vous savez faire une addition",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QSOMME",
-       "CALC_SOMME" ] },
-     
-     { "id" : "k0gj7g4v-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QSOMME,\"\"),number) < cast(CALC_SOMME,number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "la valeur saisie est inférieure à la somme",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QSOMME",
-       "CALC_SOMME" ] },
-     
-     { "id" : "k0gj7g4v-CI-2",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QSOMME,\"\"),number) > cast(CALC_SOMME,number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "La valeur saisie est supérieure à la somme",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QSOMME",
-       "CALC_SOMME" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0a5rkr",
-      "page" : "14",
-      "label" : 
-      { "value" : "Tests sur variables collectées, ordre relatif et variables calculées",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "CALC_SOMME",
-     "QREL",
-     "QREL2",
-     "QSOMME" ],
-    "response" : 
-    { "name" : "QSOMME" } },
-   
-   { "id" : "kd0bx24r",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "20",
-    "min" : -400,
-    "max" : 400,
-    "decimals" : 2,
-    "label" : 
-    { "value" : "\"➡ 18. \" || \"test avec une variable calculée : le produit - Saisissez une valeur pour la comparer au produit des deux nombres précédents\"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0bx24r-l5qsnxn1",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"QREL \" || cast(QREL,string)",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "kd0bx24r-l5qs6s2e",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"QREL2 \" || cast(QREL2,string)",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "kd0bx24r-l5qsojx6",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"produit calculé : \" ||cast(CALC_PRODUIT,string)",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0bx24r-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QPRODUIT,\"\"),number) >= cast(CALC_PRODUIT,number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "la valeur saisie est supérieure ou égale au produit",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QPRODUIT",
-       "CALC_PRODUIT" ] },
-     
-     { "id" : "kd0bx24r-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QPRODUIT,\"\"),number)<= cast(CALC_PRODUIT,number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "la valeur saisie est inférieure ou égale au produit",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QPRODUIT",
-       "CALC_PRODUIT" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0a5rkr",
-      "page" : "14",
-      "label" : 
-      { "value" : "Tests sur variables collectées, ordre relatif et variables calculées",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QREL",
-     "QREL2",
-     "CALC_PRODUIT",
-     "QPRODUIT" ],
-    "response" : 
-    { "name" : "QPRODUIT" } },
-   
-   { "id" : "kd0c2j4a",
-    "componentType" : "InputNumber",
-    "mandatory" : false,
-    "page" : "21",
-    "min" : -400,
-    "max" : 400,
-    "decimals" : 2,
-    "label" : 
-    { "value" : "\"➡ 19. \" || \"test avec une variable calculée : la différence - Saisissez une valeur pour la comparer au produit des deux nombres précédents\"",
-     "type" : "VTL|MD" },
-    "declarations" : 
-    [ 
-     { "id" : "kd0c2j4a-l5qsky9a",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"QREL \" || cast(QREL,string)",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "kd0c2j4a-l5qspruc",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"QREL2 \" || cast(QREL2,string)",
-       "type" : "VTL|MD" } },
-     
-     { "id" : "kd0c2j4a-l5qt39hp",
-      "declarationType" : "HELP",
-      "position" : "AFTER_QUESTION_TEXT",
-      "label" : 
-      { "value" : "\"diff calculée : \" || cast(CALC_DIFFERENCE,string)",
-       "type" : "VTL|MD" } } ],
-    "conditionFilter" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "controls" : 
-    [ 
-     { "id" : "kd0c2j4a-CI-0",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QDIFFERENCE,\"\"),number) = cast(CALC_DIFFERENCE,number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "Différence : idem",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QDIFFERENCE",
-       "CALC_DIFFERENCE" ] },
-     
-     { "id" : "kd0c2j4a-CI-1",
-      "criticality" : "WARN",
-      "control" : 
-      { "value" : "not(cast(nvl(QDIFFERENCE,\"\"),number) <> cast(CALC_DIFFERENCE,number))",
-       "type" : "VTL" },
-      "errorMessage" : 
-      { "value" : "Différence différente",
-       "type" : "VTL|MD" },
-      "bindingDependencies" : 
-      [ "QDIFFERENCE",
-       "CALC_DIFFERENCE" ] } ],
-    "hierarchy" : 
-    { "sequence" : 
-     { "id" : "kd09v80w",
-      "page" : "1",
-      "label" : 
-      { "value" : "Tests sur variables numériques",
-       "type" : "VTL|MD" } },
-     "subSequence" : 
-     { "id" : "kd0a5rkr",
-      "page" : "14",
-      "label" : 
-      { "value" : "Tests sur variables collectées, ordre relatif et variables calculées",
-       "type" : "VTL|MD" } } },
-    "bindingDependencies" : 
-    [ "QREL",
-     "QREL2",
-     "CALC_DIFFERENCE",
-     "QDIFFERENCE" ],
-    "response" : 
-    { "name" : "QDIFFERENCE" } } ],
-  "variables" : 
-  [ 
-   { "variableType" : "COLLECTED",
-    "name" : "QNUM",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QNUM2",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QNUM3",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QNUM4",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QNUM5",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QNUM6",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QNUM7",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "REL",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "REEL",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "REEL2",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "REEL3",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "GRAND",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QREL",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QREL2",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QNUMBIS",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QRATIO",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QSOMME",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QPRODUIT",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "COLLECTED",
-    "name" : "QDIFFERENCE",
-    "values" : 
-    { "PREVIOUS" : null,
-     "COLLECTED" : null,
-     "FORCED" : null,
-     "EDITED" : null,
-     "INPUTED" : null } },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QNUM",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QNUM2",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QNUM3",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QNUM4",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QNUM5",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QNUM6",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QNUM7",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_REL",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_REEL",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_REEL2",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_REEL3",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_GRAND",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QREL",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QREL2",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QNUMBIS",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QRATIO",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QSOMME",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QPRODUIT",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "FILTER_RESULT_QDIFFERENCE",
-    "expression" : 
-    { "value" : "true",
-     "type" : "VTL" },
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "CALC_SOMME",
-    "expression" : 
-    { "value" : "cast(nvl(QREL,\"0\"),number) + cast(nvl(QREL2,\"0\"),number)",
-     "type" : "VTL" },
-    "bindingDependencies" : 
-    [ "QREL",
-     "QREL2" ],
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "CALC_PRODUIT",
-    "expression" : 
-    { "value" : "cast(nvl(QREL,\"0\"),number) * cast(nvl(QREL2,\"0\"),number)",
-     "type" : "VTL" },
-    "bindingDependencies" : 
-    [ "QREL",
-     "QREL2" ],
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "CALC_DIFFERENCE",
-    "expression" : 
-    { "value" : "cast(nvl(QREL,\"0\"),number) - cast(nvl(QREL2,\"0\"),number)",
-     "type" : "VTL" },
-    "bindingDependencies" : 
-    [ "QREL",
-     "QREL2" ],
-    "inFilter" : "false" },
-   
-   { "variableType" : "CALCULATED",
-    "name" : "CALC_RATIO",
-    "expression" : 
-    { "value" : "cast(nvl(QREL,\"0\"),number) \/ cast(nvl(QREL2,\"0\"),number)",
-     "type" : "VTL" },
-    "bindingDependencies" : 
-    [ "QREL",
-     "QREL2" ],
-    "inFilter" : "false" } ],
-  "cleaning" : 
-  {  },
-  "resizing" : 
-  {  } }
+		{
+			"id": "kd0cbson",
+			"componentType": "Subsequence",
+			"goToPage": "2",
+			"label": { "value": "Tests simples sur des entiers", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cbson",
+					"page": "2",
+					"label": {
+						"value": "Tests simples sur des entiers",
+						"type": "VTL|MD"
+					}
+				}
+			}
+		},
+
+		{
+			"id": "k0dzbfek",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "2",
+			"min": 0,
+			"max": 100,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 1. \" || \"Test de supériorité stricte - Saisie d’un nombre compris entre 0 et 100 - Si valeur supérieure à 5 message d’info. si superieur à 6,5 autre message \"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "k0dzbfek-kzgzg0bk",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Tester 2 et 20 (pour vérifier ordre numérique et lexico)",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "k0dzbfek-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QNUM,\"0\"),integer) > 5)",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "sup à 5", "type": "VTL|MD" },
+					"bindingDependencies": ["QNUM"]
+				},
+
+				{
+					"id": "k0dzbfek-CI-1",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QNUM,\"0\"),integer) > 6.5)",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "superieur à 6.5", "type": "VTL|MD" },
+					"bindingDependencies": ["QNUM"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cbson",
+					"page": "2",
+					"label": {
+						"value": "Tests simples sur des entiers",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QNUM"],
+			"response": { "name": "QNUM" }
+		},
+
+		{
+			"id": "kd0a6rn3",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "3",
+			"min": 0,
+			"max": 100,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 2. \" || \"Test sur valeur numérique vide\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0a6rn3-CI-0",
+					"criticality": "WARN",
+					"control": { "value": "not(isnull(QNUM2))", "type": "VTL" },
+					"errorMessage": {
+						"value": "vous n’avez pas répondu à la question",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QNUM2"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cbson",
+					"page": "2",
+					"label": {
+						"value": "Tests simples sur des entiers",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QNUM2"],
+			"response": { "name": "QNUM2" }
+		},
+
+		{
+			"id": "kd0a8h62",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "4",
+			"min": 0,
+			"max": 100,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 3. \" || \"Test d’infériorité stricte - Saisie d’un nombre compris entre 0 et 100 - Message si valeur inférieure à 8 \"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0a8h62-kzgzr5b4",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Tester 2 et 20 (pour vérifier ordre numérique et lexico)",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0a8h62-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QNUM3,\"\"),integer) < 8)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "le nombre saisi est inférieur à 8",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QNUM3"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cbson",
+					"page": "2",
+					"label": {
+						"value": "Tests simples sur des entiers",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QNUM3"],
+			"response": { "name": "QNUM3" }
+		},
+
+		{
+			"id": "kd0a4t4f",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "5",
+			"min": 0,
+			"max": 100,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 4. \" || \"Test de supériorité non stricte - Saisie d’un nombre compris entre 0 et 100 - Test si valeur supérieure à 5 \"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0a4t4f-kzgzrq25",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Tester 2 et 20 (pour vérifier ordre numérique et lexico) Tester pour le cas d’égalité",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0a4t4f-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QNUM4,\"0\"),integer) >=5)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "la valeur saisie est supérieure ou égale à 5",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QNUM4"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cbson",
+					"page": "2",
+					"label": {
+						"value": "Tests simples sur des entiers",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QNUM4"],
+			"response": { "name": "QNUM4" }
+		},
+
+		{
+			"id": "kd0ac92p",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "6",
+			"min": 0,
+			"max": 100,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 5. \" || \"Test d’infériorité non stricte - Saisie d’un nombre compris entre 0 et 100 - Test si valeur inférieure à 8 \"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0ac92p-kzgzp1k0",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Tester 2 et 20 (pour vérifier ordre numérique et lexico) Tester 8 pour le cas égalité",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0ac92p-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QNUM5,\"\"),integer) <= 8)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "La valeur saisie est inférieure ou égale à 8",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QNUM5"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cbson",
+					"page": "2",
+					"label": {
+						"value": "Tests simples sur des entiers",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QNUM5"],
+			"response": { "name": "QNUM5" }
+		},
+
+		{
+			"id": "k1cahy88",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "7",
+			"min": 0,
+			"max": 9,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 6. \" || \"Test d’égalité - Message si = 4\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "k1cahy88-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QNUM6,\"0\"),integer) = 4)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "la valeur est égale à 4",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QNUM6"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cbson",
+					"page": "2",
+					"label": {
+						"value": "Tests simples sur des entiers",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QNUM6"],
+			"response": { "name": "QNUM6" }
+		},
+
+		{
+			"id": "kd0ch7pf",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "8",
+			"min": 0,
+			"max": 9,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 7. \" || \"Test d’égalité à 0 - Message si = 0 \"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0ch7pf-kzgzyu8d",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Tester 0 Tester aussi en vidant la valeur",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0ch7pf-CI-0",
+					"criticality": "WARN",
+					"control": { "value": "not(cast(QNUM7,integer) = 0)", "type": "VTL" },
+					"errorMessage": { "value": "La valeur est zéro", "type": "VTL|MD" },
+					"bindingDependencies": ["QNUM7"]
+				},
+
+				{
+					"id": "kd0ch7pf-CI-1",
+					"criticality": "WARN",
+					"control": { "value": "not(isnull(QNUM7))", "type": "VTL" },
+					"errorMessage": { "value": "valeur vide", "type": "VTL|MD" },
+					"bindingDependencies": ["QNUM7"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cbson",
+					"page": "2",
+					"label": {
+						"value": "Tests simples sur des entiers",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QNUM7"],
+			"response": { "name": "QNUM7" }
+		},
+
+		{
+			"id": "kd0aamy0",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "9",
+			"min": -100,
+			"max": 100,
+			"decimals": 2,
+			"label": {
+				"value": "\"➡ 8. \" || \"TestS d’un relatif par rapport à une constante neg\"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0aamy0-kzgzjdlf",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "test des positionnements par rapport à -4",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "kd0aamy0-l5qs4feh",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "En LunaticV1 impossible saisir un négatif",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0aamy0-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REL,\"0\"),number) > -4)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "c’est supérieur strict",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["REL"]
+				},
+
+				{
+					"id": "kd0aamy0-CI-1",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REL,\"0\"),number) >= -4)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "c’est supérieur ou égal",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["REL"]
+				},
+
+				{
+					"id": "kd0aamy0-CI-2",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REL,\"0\"),number) < -4)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "c’est  inférieur strict",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["REL"]
+				},
+
+				{
+					"id": "kd0aamy0-CI-3",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REL,\"0\"),number) <= -4)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "c’est inférieur ou égal",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["REL"]
+				},
+
+				{
+					"id": "kd0aamy0-CI-4",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REL,\"0\"),number) = -4)",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "c’est égal", "type": "VTL|MD" },
+					"bindingDependencies": ["REL"]
+				},
+
+				{
+					"id": "kd0aamy0-CI-5",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REL,\"0\"),number) <> -4)",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "c’est différent", "type": "VTL|MD" },
+					"bindingDependencies": ["REL"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cbson",
+					"page": "2",
+					"label": {
+						"value": "Tests simples sur des entiers",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["REL"],
+			"response": { "name": "REL" }
+		},
+
+		{
+			"id": "kd0cdj48",
+			"componentType": "Subsequence",
+			"goToPage": "10",
+			"label": {
+				"value": "Tests sur des relatifs et des réels",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cdj48",
+					"page": "10",
+					"label": {
+						"value": "Tests sur des relatifs et des réels",
+						"type": "VTL|MD"
+					}
+				}
+			}
+		},
+
+		{
+			"id": "kd0aa5ah",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "10",
+			"min": -100,
+			"max": 100,
+			"decimals": 2,
+			"label": {
+				"value": "\"➡ 9. \" || \"Test d’un réel par rapport à une constante - test des positionnements par rapport à -4.51 (sup, inf, égal)\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0aa5ah-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REEL,\"\"),number) > -4.51)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "la valeur est supérieure à -4.51",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["REEL"]
+				},
+
+				{
+					"id": "kd0aa5ah-CI-1",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REEL,\"0\"),number) = -4.51)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "la valeur est égale à -4.51",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["REEL"]
+				},
+
+				{
+					"id": "kd0aa5ah-CI-2",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REEL,\"0\"),number) < -4.51)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "la valeur est inférieure à -4.51",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["REEL"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cdj48",
+					"page": "10",
+					"label": {
+						"value": "Tests sur des relatifs et des réels",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["REEL"],
+			"response": { "name": "REEL" }
+		},
+
+		{
+			"id": "l5qvuk9e",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "11",
+			"min": -100,
+			"max": 100,
+			"decimals": 2,
+			"label": {
+				"value": "\"➡ 10. \" || \"Test d’un réel par rapport à une constante - test des positionnements par rapport à 4.51 (sup, inf, égal)\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "l5qvuk9e-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REEL2,\"\"),number) > 4.51)",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "superieur à 4.51", "type": "VTL|MD" },
+					"bindingDependencies": ["REEL2"]
+				},
+
+				{
+					"id": "l5qvuk9e-CI-1",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REEL2,\"\"),number) < 4.51)",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "inferieur à 4.51", "type": "VTL|MD" },
+					"bindingDependencies": ["REEL2"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cdj48",
+					"page": "10",
+					"label": {
+						"value": "Tests sur des relatifs et des réels",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["REEL2"],
+			"response": { "name": "REEL2" }
+		},
+
+		{
+			"id": "l5qvtc2l",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "12",
+			"min": -100,
+			"max": 100,
+			"decimals": 2,
+			"label": {
+				"value": "\"➡ 11. \" || \"Test d’un réel par rapport à une constante - test des positionnements par rapport à 4 (sup, égal)\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "l5qvtc2l-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REEL3,\"\"),number) > 4)",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "superieur à 4", "type": "VTL|MD" },
+					"bindingDependencies": ["REEL3"]
+				},
+
+				{
+					"id": "l5qvtc2l-CI-1",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(REEL3,\"\"),number) < 4)",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "inferieur à 4", "type": "VTL|MD" },
+					"bindingDependencies": ["REEL3"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cdj48",
+					"page": "10",
+					"label": {
+						"value": "Tests sur des relatifs et des réels",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["REEL3"],
+			"response": { "name": "REEL3" }
+		},
+
+		{
+			"id": "kd0c3h3b",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "13",
+			"min": 0,
+			"max": 1.0e9,
+			"decimals": 2,
+			"label": {
+				"value": "\"➡ 12. \" || \"Test d’un grand réel par rapport à une constante (max = 1000000000) - test des positionnements par rapport à 1000 - Personnalisation du message d’erreur avec la valeur (précision = 2, max = 1000000000)\"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0c3h3b-l5qsemyu",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Rappel : posait souci dans Orbeon",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0c3h3b-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(GRAND,\"0\"),number) > 1000)",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "la valeur saisie GRAND est supérieure à 1000 ",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["GRAND"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0cdj48",
+					"page": "10",
+					"label": {
+						"value": "Tests sur des relatifs et des réels",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["GRAND"],
+			"response": { "name": "GRAND" }
+		},
+
+		{
+			"id": "kd0a5rkr",
+			"componentType": "Subsequence",
+			"page": "14",
+			"goToPage": "14",
+			"label": {
+				"value": "Tests sur variables collectées, ordre relatif et variables calculées",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0a5rkr-kzh01fub",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Les nombres sont QREL et QREL2 Leur somme vaut CALC_SOMME - Leur produit vaut CALC_PRODUIT - Leur différence vaut CALC_DIFFERENCE - Leur division vaut CALC_RATIO",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0a5rkr",
+					"page": "14",
+					"label": {
+						"value": "Tests sur variables collectées, ordre relatif et variables calculées",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": [
+				"QREL",
+				"QREL2",
+				"CALC_SOMME",
+				"CALC_PRODUIT",
+				"CALC_DIFFERENCE",
+				"CALC_RATIO"
+			]
+		},
+
+		{
+			"id": "kd0achk0",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "15",
+			"min": -100,
+			"max": 100,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 13. \" || \"Test sur ordre de deux variables - partie 1 - les contrôles portent sur la question suivante&#xd;\"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0achk0-l5qs57q7",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Saisir un nombre entier relatif entre -100 et 100",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0a5rkr",
+					"page": "14",
+					"label": {
+						"value": "Tests sur variables collectées, ordre relatif et variables calculées",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QREL"],
+			"response": { "name": "QREL" }
+		},
+
+		{
+			"id": "kd0bl558",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "16",
+			"min": -100,
+			"max": 100,
+			"decimals": 2,
+			"label": {
+				"value": "\"➡ 14. \" || \"Test sur ordre de deux variables - partie 2 \"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0bl558-kzgp1ckr",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "MEttre 2 chiffres après virgule",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "kd0bl558-kzgzuob9",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Saisir un deuxième nombre relatif entre -100 et 100",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "kd0bl558-kzgzzsbo",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Tester supérieur, inférieur, identique",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "kd0bl558-kzgzn873",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "Ne pas oublier de tester ordre numérique et ordre lexicographique",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0bl558-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(QREL,number) > cast(QREL2,number))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "le premier nombre est supérieur",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QREL", "QREL2"]
+				},
+
+				{
+					"id": "kd0bl558-CI-1",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(QREL,number) < cast(QREL2,number))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "le premier nombre est inférieur",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QREL", "QREL2"]
+				},
+
+				{
+					"id": "kd0bl558-CI-2",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(QREL,number) = cast(QREL2,number))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "les deux nombres sont égaux",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QREL", "QREL2"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0a5rkr",
+					"page": "14",
+					"label": {
+						"value": "Tests sur variables collectées, ordre relatif et variables calculées",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QREL2"],
+			"response": { "name": "QREL2" }
+		},
+
+		{
+			"id": "l5qt3xu9",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "17",
+			"min": 0,
+			"max": 100,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 15. \" || \"Test entre un entier et un réel - saisir entre 0 et 100 - controle sur saisie > QREL2\"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "l5qt3xu9-l5qt5usw",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"rappel QREL2 : \" || cast(QREL2,string)",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "l5qt3xu9-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QNUMBIS,\"0\"),number) > cast(nvl(QREL2,\"0\"),number))",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "saisie > QREL2", "type": "VTL|MD" },
+					"bindingDependencies": ["QNUMBIS", "QREL2"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0a5rkr",
+					"page": "14",
+					"label": {
+						"value": "Tests sur variables collectées, ordre relatif et variables calculées",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QREL2", "QNUMBIS"],
+			"response": { "name": "QNUMBIS" }
+		},
+
+		{
+			"id": "kd0bu8xz",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "18",
+			"min": -400,
+			"max": 400,
+			"decimals": 0,
+			"label": {
+				"value": "\"➡ 16. \" || \"test avec une variable calculée : le ratio - Saisissez une valeur pour la comparer au produit des deux nombres précédents\"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0bu8xz-l5qsfsto",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"QREL \" || cast(QREL,string)",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "kd0bu8xz-l5qsl50s",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"QREL2 \" || cast(QREL2,string)",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "kd0bu8xz-l5qtjjss",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"ratio calculé : \" || cast(CALC_RATIO,string)",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0bu8xz-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(CALC_RATIO,number)<>cast(nvl(QRATIO,\"\"),number))",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "RAtio différent", "type": "VTL|MD" },
+					"bindingDependencies": ["CALC_RATIO", "QRATIO"]
+				},
+
+				{
+					"id": "kd0bu8xz-CI-1",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(CALC_RATIO,number)=cast(nvl(QRATIO,\"\"),number))",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "RAtio identique", "type": "VTL|MD" },
+					"bindingDependencies": ["CALC_RATIO", "QRATIO"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0a5rkr",
+					"page": "14",
+					"label": {
+						"value": "Tests sur variables collectées, ordre relatif et variables calculées",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QREL", "QREL2", "CALC_RATIO", "QRATIO"],
+			"response": { "name": "QRATIO" }
+		},
+
+		{
+			"id": "k0gj7g4v",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "19",
+			"min": -200,
+			"max": 200,
+			"decimals": 1,
+			"label": {
+				"value": "\"➡ 17. \" || \"test avec une variable calculée : la somme - Saisissez une valeur pour la comparer à la somme des deux nombres précédents \"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "k0gj7g4v-kzs9lmqk",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"somme calculée : \" ||cast(CALC_SOMME,string)",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "k0gj7g4v-l5qsqev9",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"QREL \" || cast(QREL,string)",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "k0gj7g4v-l5qsn0zd",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"QREL2 \" || cast(QREL2,string)",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "k0gj7g4v-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QSOMME,\"\"),number) = cast(CALC_SOMME,number))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "Bravo vous savez faire une addition",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QSOMME", "CALC_SOMME"]
+				},
+
+				{
+					"id": "k0gj7g4v-CI-1",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QSOMME,\"\"),number) < cast(CALC_SOMME,number))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "la valeur saisie est inférieure à la somme",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QSOMME", "CALC_SOMME"]
+				},
+
+				{
+					"id": "k0gj7g4v-CI-2",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QSOMME,\"\"),number) > cast(CALC_SOMME,number))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "La valeur saisie est supérieure à la somme",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QSOMME", "CALC_SOMME"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0a5rkr",
+					"page": "14",
+					"label": {
+						"value": "Tests sur variables collectées, ordre relatif et variables calculées",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["CALC_SOMME", "QREL", "QREL2", "QSOMME"],
+			"response": { "name": "QSOMME" }
+		},
+
+		{
+			"id": "kd0bx24r",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "20",
+			"min": -400,
+			"max": 400,
+			"decimals": 2,
+			"label": {
+				"value": "\"➡ 18. \" || \"test avec une variable calculée : le produit - Saisissez une valeur pour la comparer au produit des deux nombres précédents\"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0bx24r-l5qsnxn1",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"QREL \" || cast(QREL,string)",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "kd0bx24r-l5qs6s2e",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"QREL2 \" || cast(QREL2,string)",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "kd0bx24r-l5qsojx6",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"produit calculé : \" ||cast(CALC_PRODUIT,string)",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0bx24r-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QPRODUIT,\"\"),number) >= cast(CALC_PRODUIT,number))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "la valeur saisie est supérieure ou égale au produit",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QPRODUIT", "CALC_PRODUIT"]
+				},
+
+				{
+					"id": "kd0bx24r-CI-1",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QPRODUIT,\"\"),number)<= cast(CALC_PRODUIT,number))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "la valeur saisie est inférieure ou égale au produit",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QPRODUIT", "CALC_PRODUIT"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0a5rkr",
+					"page": "14",
+					"label": {
+						"value": "Tests sur variables collectées, ordre relatif et variables calculées",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": ["QREL", "QREL2", "CALC_PRODUIT", "QPRODUIT"],
+			"response": { "name": "QPRODUIT" }
+		},
+
+		{
+			"id": "kd0c2j4a",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "21",
+			"min": -400,
+			"max": 400,
+			"decimals": 2,
+			"label": {
+				"value": "\"➡ 19. \" || \"test avec une variable calculée : la différence - Saisissez une valeur pour la comparer au produit des deux nombres précédents\"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kd0c2j4a-l5qsky9a",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"QREL \" || cast(QREL,string)",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "kd0c2j4a-l5qspruc",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"QREL2 \" || cast(QREL2,string)",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "kd0c2j4a-l5qt39hp",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"diff calculée : \" || cast(CALC_DIFFERENCE,string)",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"controls": [
+				{
+					"id": "kd0c2j4a-CI-0",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QDIFFERENCE,\"\"),number) = cast(CALC_DIFFERENCE,number))",
+						"type": "VTL"
+					},
+					"errorMessage": { "value": "Différence : idem", "type": "VTL|MD" },
+					"bindingDependencies": ["QDIFFERENCE", "CALC_DIFFERENCE"]
+				},
+
+				{
+					"id": "kd0c2j4a-CI-1",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(cast(nvl(QDIFFERENCE,\"\"),number) <> cast(CALC_DIFFERENCE,number))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "Différence différente",
+						"type": "VTL|MD"
+					},
+					"bindingDependencies": ["QDIFFERENCE", "CALC_DIFFERENCE"]
+				}
+			],
+			"hierarchy": {
+				"sequence": {
+					"id": "kd09v80w",
+					"page": "1",
+					"label": {
+						"value": "Tests sur variables numériques",
+						"type": "VTL|MD"
+					}
+				},
+				"subSequence": {
+					"id": "kd0a5rkr",
+					"page": "14",
+					"label": {
+						"value": "Tests sur variables collectées, ordre relatif et variables calculées",
+						"type": "VTL|MD"
+					}
+				}
+			},
+			"bindingDependencies": [
+				"QREL",
+				"QREL2",
+				"CALC_DIFFERENCE",
+				"QDIFFERENCE"
+			],
+			"response": { "name": "QDIFFERENCE" }
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "QNUM",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QNUM2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QNUM3",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QNUM4",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QNUM5",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QNUM6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QNUM7",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "REL",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "REEL",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "REEL2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "REEL3",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "GRAND",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QREL",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QREL2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QNUMBIS",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QRATIO",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QSOMME",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QPRODUIT",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "QDIFFERENCE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QNUM",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QNUM2",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QNUM3",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QNUM4",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QNUM5",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QNUM6",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QNUM7",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_REL",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_REEL",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_REEL2",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_REEL3",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_GRAND",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QREL",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QREL2",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QNUMBIS",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QRATIO",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QSOMME",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QPRODUIT",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "FILTER_RESULT_QDIFFERENCE",
+			"expression": { "value": "true", "type": "VTL" },
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "CALC_SOMME",
+			"expression": {
+				"value": "cast(nvl(QREL,\"0\"),number) + cast(nvl(QREL2,\"0\"),number)",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["QREL", "QREL2"],
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "CALC_PRODUIT",
+			"expression": {
+				"value": "cast(nvl(QREL,\"0\"),number) * cast(nvl(QREL2,\"0\"),number)",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["QREL", "QREL2"],
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "CALC_DIFFERENCE",
+			"expression": {
+				"value": "cast(nvl(QREL,\"0\"),number) - cast(nvl(QREL2,\"0\"),number)",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["QREL", "QREL2"],
+			"inFilter": "false"
+		},
+
+		{
+			"variableType": "CALCULATED",
+			"name": "CALC_RATIO",
+			"expression": {
+				"value": "cast(nvl(QREL,\"0\"),number) / cast(nvl(QREL2,\"0\"),number)",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["QREL", "QREL2"],
+			"inFilter": "false"
+		}
+	],
+	"cleaning": {},
+	"resizing": {}
+}

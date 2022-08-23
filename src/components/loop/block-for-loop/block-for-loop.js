@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { Errors } from '../../commons';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
@@ -22,6 +23,7 @@ function BlockForLoop({
 	iterations,
 	custom,
 	paginatedLoop,
+	errors,
 }) {
 	const [nbRows, setNbRows] = useState(-1);
 	const [min, setMin] = useState(undefined);
@@ -94,6 +96,7 @@ function BlockForLoop({
 					id={id}
 					custom={custom}
 				/>
+				<Errors errors={errors} />
 			</>
 		);
 	}

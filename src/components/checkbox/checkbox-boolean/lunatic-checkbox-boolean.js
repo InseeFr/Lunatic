@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckboxBoolean from './checkbox-boolean';
-import { createLunaticComponent } from '../../commons';
+import { createLunaticComponent, Errors } from '../../commons';
 
 function LunaticCheckboxBoolean({
 	value,
@@ -9,16 +9,20 @@ function LunaticCheckboxBoolean({
 	disabled,
 	onChange,
 	custom,
+	errors,
 }) {
 	return (
-		<CheckboxBoolean
-			id={id}
-			options={options}
-			checked={value}
-			onClick={onChange}
-			disabled={disabled}
-			custom={custom}
-		/>
+		<>
+			<CheckboxBoolean
+				id={id}
+				options={options}
+				checked={value}
+				onClick={onChange}
+				disabled={disabled}
+				custom={custom}
+			/>
+			<Errors errors={errors} />
+		</>
 	);
 }
 

@@ -137,7 +137,7 @@ function reduceOnInit(state, action) {
 		preferences,
 		savingType,
 		management,
-		modalForControls,
+		activeControls,
 	} = payload;
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
@@ -175,7 +175,7 @@ function reduceOnInit(state, action) {
 			preferences,
 			management,
 			savingType,
-			modalForControls,
+			activeControls,
 		});
 	}
 

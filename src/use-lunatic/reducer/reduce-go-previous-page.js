@@ -1,6 +1,5 @@
 import { isOnEmptyPage } from './commons';
-// import { validateLoopConditionFilter } from './commons';
-import { getCompatibleVTLExpression } from '../commons';
+import { getCompatibleVTLExpression, getPageTag } from '../commons';
 
 function getPreviousPage(pager) {
 	const { page } = pager;
@@ -16,20 +15,6 @@ function goStartLoop(state, { previous, iterations, loopDependencies }) {
 	const { subPages } = pages[previous];
 
 	//TODO: check if loop components are all filtered
-
-	// if (validateLoopConditionFilter(state, { next: previous })) {
-	// 	return {
-	// 		...state,
-	// 		pager: {
-	// 			...pager,
-	// 			page: previous,
-	// 			subPage: undefined,
-	// 			nbSubPages: undefined,
-	// 			iteration: undefined,
-	// 			nbIterations: undefined,
-	// 		},
-	// 	};
-	// }
 
 	if (Array.isArray(subPages)) {
 		const nbIterations = executeExpression(
@@ -76,21 +61,25 @@ function goPreviousIteration(state) {
 }
 
 function goPreviousPage(state, { previous }) {
-	const { pager } = state;
+	const { pager, errors } = state;
 	const { page } = pager;
+	const updatedPager = {
+		...pager,
+		page: previous,
+		iteration: undefined,
+		nbIterations: undefined,
+		subPage: undefined,
+		nbSubPages: undefined,
+	};
+
+	const currentErrors = errors ? errors[getPageTag(updatedPager)] : undefined;
 
 	if (previous !== page) {
 		return {
 			...state,
 			isInLoop: false,
-			pager: {
-				...pager,
-				page: previous,
-				iteration: undefined,
-				nbIterations: undefined,
-				subPage: undefined,
-				nbSubPages: undefined,
-			},
+			pager: updatedPager,
+			currentErrors,
 		};
 	}
 
@@ -98,11 +87,14 @@ function goPreviousPage(state, { previous }) {
 }
 
 function validateChange(state) {
-	if (isOnEmptyPage(state)) {
-		return reduceGoPreviousPage(state);
+	const { pager, errors } = state;
+	const currentErrors =
+		errors !== undefined ? errors[getPageTag(pager)] : undefined;
+	const updatedState = { ...state, currentErrors };
+	if (isOnEmptyPage(updatedState)) {
+		return reduceGoPreviousPage(updatedState);
 	}
-
-	return state;
+	return updatedState;
 }
 
 function reduceGoPreviousPage(state) {

@@ -1,23 +1,26 @@
 import React from 'react';
 import CheckboxGroup from './checkbox-group';
-import { createLunaticComponent } from '../../commons';
+import { createLunaticComponent, Errors } from '../../commons';
 
 function LunaticCheckboxGroup({
 	id,
 	value,
-
 	responses,
 	custom,
 	handleChange,
+	errors,
 }) {
 	return (
-		<CheckboxGroup
-			id={id}
-			options={responses}
-			value={value}
-			handleChange={handleChange}
-			custom={custom}
-		/>
+		<>
+			<CheckboxGroup
+				id={id}
+				options={responses}
+				value={value}
+				handleChange={handleChange}
+				custom={custom}
+			/>
+			<Errors errors={errors} />
+		</>
 	);
 }
 

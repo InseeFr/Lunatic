@@ -1,6 +1,9 @@
 import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
-import { getCompatibleVTLExpression } from '../commons';
-import { createValidateReducer } from './validate-controls';
+import { getCompatibleVTLExpression, getNewReachedPage } from '../commons';
+import {
+	createControlsReducer,
+	createModalControlsReducer,
+} from './validate-controls';
 
 function getNextPage(state) {
 	const { pager } = state;
@@ -16,42 +19,50 @@ function getNextPage(state) {
 function reduceNextSubPage(state) {
 	const { pager } = state;
 	const { subPage } = pager;
+	const newPager = { ...pager, subPage: subPage + 1 };
 	return {
 		...state,
-		pager: { ...pager, subPage: subPage + 1 },
-		errors: undefined,
+		pager: { ...newPager, lastReachedPage: getNewReachedPage(newPager) },
+		modalErrors: undefined,
 	};
 }
 
 function reduceNextIteration(state) {
 	const { pager } = state;
 	const { iteration } = pager;
+	const newPager = {
+		...pager,
+		subPage: 0,
+		iteration: iteration + 1,
+	};
 	return {
 		...state,
 		pager: {
-			...pager,
-			subPage: 0,
-			iteration: iteration + 1,
+			...newPager,
+			lastReachedPage: getNewReachedPage(newPager),
 		},
-		errors: undefined,
+		modalErrors: undefined,
 	};
 }
 
 function reduceNextPage(state, { next }) {
 	const { pager } = state;
+	const newPager = {
+		...pager,
+		page: next,
+		iteration: undefined,
+		nbIterations: undefined,
+		subPage: undefined,
+		nbSubPages: undefined,
+	};
 	return {
 		...state,
 		isInLoop: false,
 		pager: {
-			...pager,
-			page: next,
-			iteration: undefined,
-			nbIterations: undefined,
-			subPage: undefined,
-			nbSubPages: undefined,
-			lastReachedPage: lastReachedPage(pager, next),
+			...newPager,
+			lastReachedPage: getNewReachedPage(newPager),
 		},
-		errors: undefined,
+		modalErrors: undefined,
 	};
 }
 
@@ -60,18 +71,21 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	const { subPages } = pages[next];
 
 	if (!validateLoopConditionFilter(state, { next })) {
+		const newPager = {
+			...pager,
+			page: next,
+			subPage: undefined,
+			nbSubPages: undefined,
+			iteration: undefined,
+			nbIterations: undefined,
+		};
 		return {
 			...state,
 			pager: {
-				...pager,
-				page: next,
-				subPage: undefined,
-				nbSubPages: undefined,
-				iteration: undefined,
-				nbIterations: undefined,
-				lastReachedPage: lastReachedPage(pager, next),
+				...newPager,
+				lastReachedPage: getNewReachedPage(newPager),
 			},
-			errors: undefined,
+			modalErrors: undefined,
 		};
 	}
 	/* 
@@ -88,36 +102,33 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	);
 
 	if (Array.isArray(subPages)) {
+		const newPager = {
+			...pager,
+			page: next,
+			subPage: 0,
+			nbSubPages: subPages.length,
+			iteration: 0,
+			nbIterations,
+		};
 		return {
 			...state,
 			isInLoop: true,
 			pager: {
-				...pager,
-				page: next,
-				subPage: 0,
-				nbSubPages: subPages.length,
-				iteration: 0,
-				nbIterations,
-				lastReachedPage: lastReachedPage(pager, next),
+				...newPager,
+				lastReachedPage: getNewReachedPage(newPager),
 			},
-			errors: undefined,
+
+			modalErrors: undefined,
 		};
 	}
 	return state;
 }
 
-function lastReachedPage(pager, page) {
-	//TODO improve case with sub and iterations and cleaning !!!!
-	return Number.parseInt(page) > Number.parseInt(pager.lastReachedPage)
-		? page
-		: pager.lastReachedPage;
-}
-
 function validateChange(state) {
 	if (isOnEmptyPage(state)) {
+		// Is it necessary to wrap by control reducer ?
 		return reduceGoNextPage(state);
 	}
-
 	return state;
 }
 
@@ -147,4 +158,6 @@ function reduceGoNextPage(state) {
 	return validateChange(reduceNextPage(state, { next }));
 }
 
-export default createValidateReducer(reduceGoNextPage);
+export default createModalControlsReducer(
+	createControlsReducer(reduceGoNextPage)
+);
