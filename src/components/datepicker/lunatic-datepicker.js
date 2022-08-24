@@ -1,3 +1,4 @@
+import React from 'react';
 import Datepicker from './datepicker';
 import { createLunaticComponent, Errors } from '../commons';
 import './datepicker.scss';

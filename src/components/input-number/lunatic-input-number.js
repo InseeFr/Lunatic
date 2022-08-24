@@ -1,3 +1,4 @@
+import React from 'react';
 import InputNumber from './input-number';
 import { createLunaticComponent, Errors } from '../commons';
 

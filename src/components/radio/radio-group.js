@@ -1,7 +1,10 @@
 import React from 'react';
 import RadioOption from './radio-option';
-import { Label, useOptionsKeydown } from '../commons';
-import { createCustomizableLunaticField } from '../commons';
+import {
+	Label,
+	useOptionsKeydown,
+	createCustomizableLunaticField,
+} from '../commons';
 
 function Radio({ options, value, id, onClick, checkboxStyle = false }) {
 	const onKeyDown = useOptionsKeydown(options, onClick);
