@@ -1,3 +1,4 @@
+import React from 'react';
 import Input from './input';
 import { createLunaticComponent, Errors } from '../commons';
 import './input.scss';

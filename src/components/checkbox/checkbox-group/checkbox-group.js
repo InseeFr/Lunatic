@@ -1,14 +1,15 @@
 import React from 'react';
+import {
+	createCustomizableLunaticField,
+	useOnHandleChange,
+	Label,
+} from '../../commons';
 import { CheckboxOption } from '../commons';
-import { Label } from '../../commons';
-import { useOnHandleChange } from '../../commons';
-import { createCustomizableLunaticField } from '../../commons';
 
 function onClick() {}
 
 function CheckBoxOptionWrapper({
 	checkboxId,
-
 	labelId,
 	checked,
 	value,
