@@ -177,13 +177,11 @@ const InputDeclarationsWrapper = ({
 								const vFormated =
 									isInputNumber && decimals ? v.replace(',', '.') : v;
 								const valueToFire = v === '' ? null : vFormated;
-								const valueToFireForArrows =
-									Number.parseFloat(vFormated).toFixed(decimals);
 								if (
 									decimals &&
 									v !== '' &&
-									!new RegExp(`^[0-9]+(.[0-9]{1,${decimals}})?$`).test(
-										valueToFireForArrows
+									!new RegExp(`^[0-9]+(\\.[0-9]{0,${decimals}})?$`).test(
+										valueToFire
 									)
 								) {
 									e.preventDefault();
@@ -209,9 +207,9 @@ const InputDeclarationsWrapper = ({
 										isNaN(Number.parseInt(v, 10)) &&
 										isInputNumber)
 								) {
-									setValue(valueToFireForArrows);
+									setValue(valueToFire);
 									handleChange({
-										[U.getResponseName(response)]: valueToFireForArrows,
+										[U.getResponseName(response)]: valueToFire,
 									});
 								} else {
 									if (isInputNumber) {
