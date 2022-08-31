@@ -97,7 +97,7 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 					linksIterations,
 					bindings,
 				});
-				if (type !== CALCULATED || iteration === undefined)
+				if (iteration !== undefined)
 					toRefreshVariables.delete(name);
 				return { ...sub, [name]: value };
 			}
