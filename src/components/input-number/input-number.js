@@ -16,7 +16,7 @@ function InputNumber({
 	const valueEffective = value ?? '';
 	const handleChange = useCallback(
 		function (e) {
-			const val = e.target.value;
+			const val = e.target.valueAsNumber;
 			onChange(val);
 		},
 		[onChange]
