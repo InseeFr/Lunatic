@@ -2,7 +2,16 @@ import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import './datepicker.scss';
 
-function Datepicker({ disabled, readOnly, value, onChange, labelId, id }) {
+function Datepicker({
+	disabled,
+	readOnly,
+	value,
+	onChange,
+	labelId,
+	id,
+	min,
+	max,
+}) {
 	const handleChange = useCallback(
 		function (e) {
 			const value = e.target.value;
@@ -21,6 +30,8 @@ function Datepicker({ disabled, readOnly, value, onChange, labelId, id }) {
 			disabled={disabled}
 			value={value}
 			onChange={handleChange}
+			min={min}
+			max={max}
 		/>
 	);
 }
