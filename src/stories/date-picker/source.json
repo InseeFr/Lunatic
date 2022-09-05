@@ -1,0 +1,140 @@
+{
+	"cleaning": {},
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "COMMENT_QE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "Q1"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": { "type": "VTL", "value": "true" },
+			"name": "FILTER_RESULT_Q1",
+			"inFilter": "false"
+		}
+	],
+	"components": [
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "l7ovaca8",
+					"page": "1",
+					"label": { "type": "VTL|MD", "value": "\"I - \" || \"S1\"" }
+				}
+			},
+			"conditionFilter": { "type": "VTL", "value": "true" },
+			"id": "l7ovaca8",
+			"page": "1",
+			"label": { "type": "VTL|MD", "value": "\"I - \" || \"S1\"" }
+		},
+		{
+			"componentType": "Datepicker",
+			"controls": [
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "Le format de la date YYYY-MM-DD n'est pas respecté."
+					},
+					"control": {
+						"type": "VTL",
+						"value": "not(cast(\\\"Q1\\\", date, \\\"YYYY-MM-DD\\\"))"
+					},
+					"id": "l7ovm2rv-format"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "La date saisie doit être comprise entre 1900-01-01 et 2100-01-01."
+					},
+					"control": {
+						"type": "VTL",
+						"value": "not(cast(\\\"Q1\\\", date, \\\"YYYY-MM-DD\\\")>cast(\\\"2100-01-01\\\", date, \\\"YYYY-MM-DD\\\") or cast(\\\"Q1\\\", date, \\\"YYYY-MM-DD\\\")<cast(\\\"1900-01-01\\\", date, \\\"YYYY-MM-DD\\\"))"
+					},
+					"id": "l7ovm2rv-formatborne"
+				}
+			],
+			"max": "2100-01-01",
+			"dateFormat": "YYYY-MM-DD",
+			"hierarchy": {
+				"sequence": {
+					"id": "l7ovaca8",
+					"page": "1",
+					"label": { "type": "VTL|MD", "value": "\"I - \" || \"S1\"" }
+				}
+			},
+			"conditionFilter": { "type": "VTL", "value": "true" },
+			"label": { "type": "VTL|MD", "value": "\"➡ 1. \" || \"Q1\"" },
+			"mandatory": false,
+			"bindingDependencies": ["Q1"],
+			"min": "1900-01-01",
+			"response": { "name": "Q1" },
+			"id": "l7ovm2rv",
+			"page": "2"
+		},
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "COMMENT-SEQ",
+					"page": "3",
+					"label": { "type": "VTL|MD", "value": "\"Commentaire\"" }
+				}
+			},
+			"conditionFilter": { "type": "VTL", "value": "true" },
+			"id": "COMMENT-SEQ",
+			"page": "3",
+			"label": { "type": "VTL|MD", "value": "\"Commentaire\"" }
+		},
+		{
+			"componentType": "Textarea",
+			"bindingDependencies": ["COMMENT_QE"],
+			"response": { "name": "COMMENT_QE" },
+			"hierarchy": {
+				"sequence": {
+					"id": "COMMENT-SEQ",
+					"page": "3",
+					"label": { "type": "VTL|MD", "value": "\"Commentaire\"" }
+				}
+			},
+			"conditionFilter": { "type": "VTL", "value": "true" },
+			"id": "COMMENT-QUESTION",
+			"page": "4",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"Avez-vous des remarques concernant l'enquête ou des commentaires ?\""
+			},
+			"mandatory": false,
+			"maxLength": 2000
+		}
+	],
+	"pagination": "question",
+	"resizing": {},
+	"label": { "type": "VTL|MD", "value": "DatePicker" },
+	"lunaticModelVersion": "2.2.13",
+	"modele": "DATEPICKER",
+	"enoCoreVersion": "2.3.10",
+	"generatingDate": "05-09-2022 14:37:43",
+	"missing": false,
+	"id": "l7ovbqou",
+	"maxPage": "4"
+}
