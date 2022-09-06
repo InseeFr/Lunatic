@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { createCustomizableLunaticField } from '../commons';
 
 function checkValue(value) {
-	return value || '';
+	return value ?? '';
 }
 
 function Input({
