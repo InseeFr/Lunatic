@@ -133,13 +133,14 @@ function validateChange(state) {
 }
 
 function reduceGoNextPage(state) {
-	const { pages, isInLoop, pager } = state;
+	const { pages, isInLoop, pager, setLoopBindings, variables } = state;
 	const { iteration, nbIterations, subPage, nbSubPages, page } = pager;
 
 	if (isInLoop && subPage < nbSubPages - 1) {
 		return validateChange(reduceNextSubPage(state));
 	}
 	if (isInLoop && subPage === nbSubPages - 1 && iteration < nbIterations - 1) {
+		setLoopBindings(variables, iteration + 1);
 		return validateChange(reduceNextIteration(state));
 	}
 

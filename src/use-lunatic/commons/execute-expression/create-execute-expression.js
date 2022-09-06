@@ -4,7 +4,13 @@ import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
 import getVtlCompatibleValue from '../../../utils/vtl';
-import { VTL, VTL_MD, X_AXIS, Y_AXIS } from '../../../utils/constants';
+import {
+	COLLECTED,
+	VTL,
+	VTL_MD,
+	X_AXIS,
+	Y_AXIS,
+} from '../../../utils/constants';
 
 function validateExpression(expObject) {
 	if (typeof expObject === 'object') {
@@ -69,6 +75,19 @@ function createExecuteExpression(variables, features) {
 			collectedUpdated.set(name, []);
 		}
 		pushToLazy(name);
+	}
+
+	/**
+	 *
+	 * @param {*} variables
+	 * @param {*} iteration
+	 */
+	function setLoopBindings(variables, iteration) {
+		Object.entries(bindings).forEach(([k, v]) => {
+			const { type, value } = variables[k];
+			if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value))
+				bindings[k] = value[iteration];
+		});
 	}
 
 	function getVariablesAndCach(expression) {
@@ -182,7 +201,7 @@ function createExecuteExpression(variables, features) {
 		return memoized;
 	}
 
-	return [execute, updateBindings];
+	return [execute, updateBindings, setLoopBindings];
 }
 
 export default createExecuteExpression;

@@ -96,9 +96,6 @@ function OrchestratorForStories({
 	const errors = getErrors();
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
-	console.log('errors: ', errors);
-	console.log('modalErrors: ', modalErrors);
-	console.log('currentErrors: ', currentErrors);
 
 	return (
 		<div className="container">
