@@ -8,6 +8,7 @@ import {
 import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
 import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
+import getInitLength from '../commons/get-init-length';
 
 function BlockForLoop({
 	declarations,
@@ -28,7 +29,7 @@ function BlockForLoop({
 	paginatedLoop,
 	errors,
 }) {
-	const [nbRows, setNbRows] = useState(-1);
+	const [nbRows, setNbRows] = useState(getInitLength(valueMap));
 	const [min, setMin] = useState(undefined);
 	const [max, setMax] = useState(undefined);
 

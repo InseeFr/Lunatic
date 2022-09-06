@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, {useState, useCallback } from 'react';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
@@ -8,18 +8,10 @@ import RosterTable from './roster-table';
 import { Errors } from '../../commons';
 import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
+import getInitLength from '../commons/get-init-length';
 
 const DEFAULT_MIN_ROWS = 0;
 const DEFAULT_MAX_ROWS = 12;
-
-function getTableLength(value) {
-	return Object.values(value).reduce(function (length, variable) {
-		if (Array.isArray(variable)) {
-			return Math.max(length, variable.length);
-		}
-		return length;
-	}, 1);
-}
 
 function RosterforLoop({
 	valueMap,
@@ -39,18 +31,7 @@ function RosterforLoop({
 }) {
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
-	const [init, setInit] = useState(false);
-	const [nbRows, setNbRows] = useState(-1);
-
-	useEffect(
-		function () {
-			if (!init && valueMap) {
-				setNbRows(getTableLength(valueMap));
-				setInit(true);
-			}
-		},
-		[init, valueMap]
-	);
+	const [nbRows, setNbRows] = useState(getInitLength(valueMap));
 
 	const addRow = useCallback(
 		function () {
