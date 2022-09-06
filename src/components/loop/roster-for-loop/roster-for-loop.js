@@ -10,7 +10,7 @@ import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
 import getInitLength from '../commons/get-init-length';
 
-const DEFAULT_MIN_ROWS = 0;
+const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
 
 function RosterforLoop({
@@ -31,7 +31,7 @@ function RosterforLoop({
 }) {
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
-	const [nbRows, setNbRows] = useState(getInitLength(valueMap));
+	const [nbRows, setNbRows] = useState(() => getInitLength(valueMap));
 
 	const addRow = useCallback(
 		function () {

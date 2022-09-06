@@ -19,7 +19,7 @@
 			"bindingDependencies": ["PRENOM"],
 			"lines": {
 				"min": { "value": 1, "type": "VTL" },
-				"max": { "value": "10", "type": "VTL" }
+				"max": { "value": 10, "type": "VTL" }
 			},
 			"page": "1",
 			"components": [
