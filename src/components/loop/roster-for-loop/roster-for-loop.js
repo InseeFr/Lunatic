@@ -6,9 +6,10 @@ import {
 } from '../../declarations';
 import RosterTable from './roster-table';
 import { Errors } from '../../commons';
-import HandleRowButton from './handle-row-button';
+import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
 
+const DEFAULT_MIN_ROWS = 0;
 const DEFAULT_MAX_ROWS = 12;
 
 function getTableLength(value) {
@@ -36,6 +37,7 @@ function RosterforLoop({
 	custom,
 	errors,
 }) {
+	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [init, setInit] = useState(false);
 	const [nbRows, setNbRows] = useState(-1);
@@ -57,6 +59,15 @@ function RosterforLoop({
 			}
 		},
 		[max, nbRows]
+	);
+
+	const handleChangeLoop = useCallback(
+		function (response, value, args) {
+			const v = valueMap[response.name];
+			v[args.index] = value;
+			handleChange(response, v, { loop: true, length: nbRows });
+		},
+		[handleChange, nbRows, valueMap]
 	);
 
 	const removeRow = useCallback(
@@ -95,7 +106,7 @@ function RosterforLoop({
 					nbRows={nbRows}
 					executeExpression={executeExpression}
 					header={headers}
-					handleChange={handleChange}
+					handleChange={handleChangeLoop}
 					valueMap={valueMap}
 					management={management}
 					missing={missing}
@@ -107,20 +118,24 @@ function RosterforLoop({
 					id={id}
 					custom={custom}
 				/>
-				<HandleRowButton
-					onClick={addRow}
-					disabled={nbRows === max}
-					custom={custom}
-				>
-					{label || D.DEFAULT_BUTTON_ADD}
-				</HandleRowButton>
-				<HandleRowButton
-					onClick={removeRow}
-					disabled={nbRows === 1}
-					custom={custom}
-				>
-					{D.DEFAULT_BUTTON_REMOVE}
-				</HandleRowButton>
+				{min && max && min !== max && (
+					<>
+						<HandleRowButton
+							onClick={addRow}
+							disabled={nbRows === max}
+							custom={custom}
+						>
+							{label || D.DEFAULT_BUTTON_ADD}
+						</HandleRowButton>
+						<HandleRowButton
+							onClick={removeRow}
+							disabled={nbRows === 1}
+							custom={custom}
+						>
+							{D.DEFAULT_BUTTON_REMOVE}
+						</HandleRowButton>
+					</>
+				)}
 				<Errors errors={errors} />
 			</>
 		);

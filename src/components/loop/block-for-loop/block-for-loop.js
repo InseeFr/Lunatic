@@ -6,10 +6,13 @@ import {
 	DeclarationsDetachable,
 } from '../../declarations';
 import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
+import HandleRowButton from '../commons/handle-row-button';
+import D from '../../../i18n';
 
 function BlockForLoop({
 	declarations,
 	id,
+	label,
 	lines,
 	components,
 	handleChange,
@@ -51,6 +54,32 @@ function BlockForLoop({
 			}
 		},
 		[min, max, iterations]
+	);
+
+	const addRow = useCallback(
+		function () {
+			if (nbRows < max) {
+				setNbRows(nbRows + 1);
+			}
+		},
+		[max, nbRows]
+	);
+
+	const removeRow = useCallback(
+		function () {
+			if (nbRows > 1) {
+				const newNbRows = nbRows - 1;
+				setNbRows(newNbRows);
+				Object.entries(valueMap).forEach(([k, v]) => {
+					const newValue = v.reduce((acc, e, i) => {
+						if (i < newNbRows) return [...acc, e];
+						return acc;
+					}, []);
+					handleChange({ name: k }, newValue);
+				});
+			}
+		},
+		[nbRows, handleChange, valueMap]
 	);
 
 	const handleChangeLoop = useCallback(
@@ -96,6 +125,24 @@ function BlockForLoop({
 					id={id}
 					custom={custom}
 				/>
+				{min && max && min !== max && (
+					<>
+						<HandleRowButton
+							onClick={addRow}
+							disabled={nbRows === max}
+							custom={custom}
+						>
+							{label || D.DEFAULT_BUTTON_ADD}
+						</HandleRowButton>
+						<HandleRowButton
+							onClick={removeRow}
+							disabled={nbRows === 1}
+							custom={custom}
+						>
+							{D.DEFAULT_BUTTON_REMOVE}
+						</HandleRowButton>
+					</>
+				)}
 				<Errors errors={errors} />
 			</>
 		);
