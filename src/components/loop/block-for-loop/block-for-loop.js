@@ -29,33 +29,12 @@ function BlockForLoop({
 	paginatedLoop,
 	errors,
 }) {
-	const [nbRows, setNbRows] = useState(getInitLength(valueMap));
-	const [min, setMin] = useState(undefined);
-	const [max, setMax] = useState(undefined);
-
-	useEffect(
-		function () {
-			if (lines) {
-				const { min, max } = lines;
-				if (min !== undefined && max !== undefined) {
-					setMin(min);
-					setMax(max);
-				}
-			}
-		},
-		[lines]
+	const [nbRows, setNbRows] = useState(() =>
+		Number.parseInt(iterations) ? iterations : getInitLength(valueMap)
 	);
 
-	useEffect(
-		function () {
-			if (Number.parseInt(iterations)) {
-				setNbRows(iterations);
-			} else if (min && max) {
-				setNbRows(min);
-			}
-		},
-		[min, max, iterations]
-	);
+	const min = lines?.min;
+	const max = lines?.max;
 
 	const addRow = useCallback(
 		function () {

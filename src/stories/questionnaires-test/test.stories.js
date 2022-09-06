@@ -4,6 +4,7 @@ import testDylan from './test-dylan';
 import minMaxLoops from './V2_MinMaxSum_Boucles';
 import simpleLoops from './V2_QuestSimple_Boucles';
 import rallyGames from './V2_TCMRallyeGames';
+import boucleNTabDynamique from './boucles-n';
 import declarationsSimples from './V2_DeclarationsSimples';
 import defaultArgTypes from '../utils/default-arg-types';
 
@@ -41,6 +42,13 @@ TestDylan.args = {
 	source: testDylan,
 };
 
+export const BoucleN = Template.bind({});
+
+BoucleN.args = {
+	id: 'boucle-dylan',
+	pagination: true,
+	source: boucleNTabDynamique,
+};
 export const DeclarationsSimples = Template.bind({});
 
 DeclarationsSimples.args = {
