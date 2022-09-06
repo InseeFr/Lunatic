@@ -53,7 +53,7 @@
 					"id": "l14vfucm-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(Q1,integer) > 3)",
+						"value": "not(Q1 > 3)",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "\"Supérieur à 3\"", "type": "VTL|MD" },
@@ -81,8 +81,8 @@
 			"bindingDependencies": ["Q1", "Q2"],
 			"loopDependencies": ["Q1"],
 			"lines": {
-				"min": { "value": "cast(nvl(Q1,\"0\"),integer)", "type": "VTL" },
-				"max": { "value": "cast(nvl(Q1,\"0\"),integer)", "type": "VTL" }
+				"min": { "value": "nvl(Q1,0)", "type": "VTL" },
+				"max": { "value": "nvl(Q1,0)", "type": "VTL" }
 			},
 			"components": [
 				{
@@ -191,7 +191,7 @@
 							"id": "l5ggzuuo-CI-0",
 							"criticality": "WARN",
 							"control": {
-								"value": "not(cast(nvl(Q3,\"0\"),integer) > cast(nvl(Q4,\"0\"),integer))",
+								"value": "not(nvl(Q3,0) > nvl(Q4,0))",
 								"type": "VTL"
 							},
 							"errorMessage": { "value": "\"Q3 > Q4\"", "type": "VTL|MD" },
@@ -361,7 +361,7 @@
 	"cleaning": {},
 	"resizing": {
 		"Q1": {
-			"size": "cast(nvl(Q1,\"0\"),integer)",
+			"size": "nvl(Q1,0)",
 			"variables": ["Q2", "Q3", "Q4", "Q5"]
 		}
 	}
