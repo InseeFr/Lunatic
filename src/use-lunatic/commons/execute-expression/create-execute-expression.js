@@ -85,8 +85,10 @@ function createExecuteExpression(variables, features) {
 	function setLoopBindings(variables, iteration) {
 		Object.entries(bindings).forEach(([k, v]) => {
 			const { type, value } = variables[k];
-			if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value))
+			if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value)) {
 				bindings[k] = value[iteration];
+				pushToLazy(k);
+			}
 		});
 	}
 
