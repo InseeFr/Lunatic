@@ -5,6 +5,7 @@ import {
 	Label,
 } from '../../commons';
 import { CheckboxOption } from '../commons';
+import './checkbox.scss';
 
 function onClick() {}
 
@@ -62,9 +63,6 @@ function CheckboxGroup({ options, value, id, handleChange }) {
 
 				return (
 					<CheckboxGroupContainer key={checkboxId}>
-						<Label id={labelId} htmlFor={checkboxId}>
-							{label}
-						</Label>
 						<CheckBoxOptionWrapper
 							checkboxId={checkboxId}
 							labelId={labelId}
@@ -74,6 +72,9 @@ function CheckboxGroup({ options, value, id, handleChange }) {
 							response={response}
 							handleChange={handleChange}
 						/>
+						<Label id={labelId} htmlFor={checkboxId}>
+							{label}
+						</Label>
 					</CheckboxGroupContainer>
 				);
 			}
