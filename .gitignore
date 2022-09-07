@@ -16,3 +16,8 @@ node_modules/
 /storybook-static/
 /bundle-report
 /workers-release
+
+# Optional REPL history
+.node_repl_history
+.vscode
+.DS_Store
