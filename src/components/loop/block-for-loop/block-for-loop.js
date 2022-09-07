@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Errors } from '../../commons';
 import {
 	DeclarationsBeforeText,
@@ -29,12 +29,17 @@ function BlockForLoop({
 	paginatedLoop,
 	errors,
 }) {
-	const [nbRows, setNbRows] = useState(() =>
-		Number.parseInt(iterations) ? iterations : getInitLength(valueMap)
-	);
-
 	const min = lines?.min;
 	const max = lines?.max;
+
+	const [nbRows, setNbRows] = useState(() => {
+		if (iterations) {
+			//This should be an Integer
+			return Number.parseInt(iterations);
+		}
+		const initLength = getInitLength(valueMap);
+		return Math.max(initLength, min);
+	});
 
 	const addRow = useCallback(
 		function () {
