@@ -26,9 +26,9 @@ export function isNewReachedPage(pager) {
 	return (
 		Number.parseInt(page) > Number.parseInt(reachedPager.page) ||
 		(Number.parseInt(page) === Number.parseInt(reachedPager.page) &&
-			Number.parseInt(subPage) > Number.parseInt(reachedPager.subPage)) ||
+			Number.parseInt(subPage) > Number.parseInt(reachedPager.subPage) &&
+			Number.parseInt(iteration) === Number.parseInt(reachedPager.iteration)) ||
 		(Number.parseInt(page) === Number.parseInt(reachedPager.page) &&
-			Number.parseInt(subPage) === Number.parseInt(reachedPager.subPage) &&
 			Number.parseInt(iteration) > Number.parseInt(reachedPager.iteration))
 	);
 }
