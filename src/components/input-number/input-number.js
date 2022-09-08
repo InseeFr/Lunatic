@@ -14,7 +14,7 @@ function InputNumber({
 	step,
 	unit,
 }) {
-	const valueEffective = value ?? '';
+	const valueEffective = value ?? NaN;
 	const handleChange = useCallback(
 		function (e) {
 			const val = e.target.valueAsNumber;
