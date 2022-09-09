@@ -16,9 +16,6 @@ function Radio({ options, value, id, onClick, checkboxStyle = false }) {
 
 		return (
 			<div key={radioId} className="lunatic-radio-group-option">
-				<Label id={labelId} htmlFor={radioId}>
-					{label}
-				</Label>
 				<RadioOption
 					id={radioId}
 					labelledBy={labelId}
@@ -29,6 +26,9 @@ function Radio({ options, value, id, onClick, checkboxStyle = false }) {
 					onKeyDown={onKeyDown}
 					checkboxStyle={checkboxStyle}
 				/>
+				<Label id={labelId} htmlFor={radioId}>
+					{label}
+				</Label>
 			</div>
 		);
 	});
