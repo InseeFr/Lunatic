@@ -136,11 +136,7 @@ function OrchestratorForStories({
 				maxPage={maxPage}
 				getData={getData}
 			/>
-			<lunatic.Modal
-				title="Des points requièrent votre attention."
-				errors={modalErrors}
-				goNext={goNextPage}
-			/>
+			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
 			<Waiting status={waiting}>
 				<div className="waiting-orchestrator">
 					Initialisation des données de suggestion...

@@ -19,27 +19,32 @@
 		.title {
 			height: 32px;
 			background-color: darkslateblue;
-			color: gainsboro;
+			color: black;
 			font-size: 18px;
 			font-weight: bolder;
 			line-height: 32px;
 			padding: 0 12px;
-
+			font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 			border-radius: 8px 8px 0 0;
 		}
 
 		.body {
-			padding: 0 12px 0 12px;
+			// padding: 0 12px 0 12px;
+			padding: 12px 0 0 12px;
 			height: 60%;
-			background-color: aquamarine;
+			color: black;
+			font-size: 16px;
+			font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 		}
 
 		.modal-buttons {
-			display: block;
 			position: absolute;
 			bottom: 0;
 			right: 0;
 			margin: 0 12px 12px 0;
+			:first-child {
+				margin-right: 10px;
+			}
 		}
 	}
 

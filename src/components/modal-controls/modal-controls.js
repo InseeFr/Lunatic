@@ -29,7 +29,6 @@ function ModalControls({ title, errors, goNext }) {
 
 		return (
 			<ModalContainer>
-				<div className="title">{title}</div>
 				<div className="body">{content}</div>
 				<CloseOrSkip onSkip={goNext} onClose={onClose} errors={errors} />
 			</ModalContainer>
