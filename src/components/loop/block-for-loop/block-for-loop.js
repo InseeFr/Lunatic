@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Errors } from '../../commons';
 import {
 	DeclarationsBeforeText,
@@ -6,10 +6,14 @@ import {
 	DeclarationsDetachable,
 } from '../../declarations';
 import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
+import HandleRowButton from '../commons/handle-row-button';
+import D from '../../../i18n';
+import getInitLength from '../commons/get-init-length';
 
 function BlockForLoop({
 	declarations,
 	id,
+	label,
 	lines,
 	components,
 	handleChange,
@@ -25,32 +29,42 @@ function BlockForLoop({
 	paginatedLoop,
 	errors,
 }) {
-	const [nbRows, setNbRows] = useState(-1);
-	const [min, setMin] = useState(undefined);
-	const [max, setMax] = useState(undefined);
+	const min = lines?.min;
+	const max = lines?.max;
 
-	useEffect(
+	const [nbRows, setNbRows] = useState(() => {
+		if (iterations) {
+			//This should be an Integer
+			return Number.parseInt(iterations);
+		}
+		const initLength = getInitLength(valueMap);
+		return Math.max(initLength, min);
+	});
+
+	const addRow = useCallback(
 		function () {
-			if (lines) {
-				const { min, max } = lines;
-				if (min !== undefined && max !== undefined) {
-					setMin(min);
-					setMax(max);
-				}
+			if (nbRows < max) {
+				setNbRows(nbRows + 1);
 			}
 		},
-		[lines]
+		[max, nbRows]
 	);
 
-	useEffect(
+	const removeRow = useCallback(
 		function () {
-			if (Number.parseInt(iterations)) {
-				setNbRows(iterations);
-			} else if (min && max) {
-				setNbRows(min);
+			if (nbRows > 1) {
+				const newNbRows = nbRows - 1;
+				setNbRows(newNbRows);
+				Object.entries(valueMap).forEach(([k, v]) => {
+					const newValue = v.reduce((acc, e, i) => {
+						if (i < newNbRows) return [...acc, e];
+						return acc;
+					}, []);
+					handleChange({ name: k }, newValue);
+				});
 			}
 		},
-		[min, max, iterations]
+		[nbRows, handleChange, valueMap]
 	);
 
 	const handleChangeLoop = useCallback(
@@ -96,6 +110,24 @@ function BlockForLoop({
 					id={id}
 					custom={custom}
 				/>
+				{min && max && min !== max && (
+					<>
+						<HandleRowButton
+							onClick={addRow}
+							disabled={nbRows === max}
+							custom={custom}
+						>
+							{label || D.DEFAULT_BUTTON_ADD}
+						</HandleRowButton>
+						<HandleRowButton
+							onClick={removeRow}
+							disabled={nbRows === 1}
+							custom={custom}
+						>
+							{D.DEFAULT_BUTTON_REMOVE}
+						</HandleRowButton>
+					</>
+				)}
 				<Errors errors={errors} />
 			</>
 		);

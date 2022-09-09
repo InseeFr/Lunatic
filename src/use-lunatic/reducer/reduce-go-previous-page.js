@@ -98,7 +98,7 @@ function validateChange(state) {
 }
 
 function reduceGoPreviousPage(state) {
-	const { pages, pager, isInLoop } = state;
+	const { pages, pager, isInLoop, setLoopBindings, variables } = state;
 	const { iteration, subPage } = pager;
 
 	// dans une boucle et l'itération courante n'est pas finie
@@ -107,6 +107,7 @@ function reduceGoPreviousPage(state) {
 	}
 	// dans une boucle, l'itération courante est finie mais il reste encore au moins une autre
 	if (isInLoop && subPage === 0 && iteration > 0) {
+		setLoopBindings(variables, iteration - 1);
 		return validateChange(goPreviousIteration(state));
 	}
 

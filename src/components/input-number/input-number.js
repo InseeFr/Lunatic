@@ -12,28 +12,32 @@ function InputNumber({
 	min,
 	max,
 	step,
+	unit,
 }) {
-	const valueEffective = value ?? '';
+	const valueEffective = value ?? NaN;
 	const handleChange = useCallback(
 		function (e) {
-			const val = e.target.value;
+			const val = e.target.valueAsNumber;
 			onChange(val);
 		},
 		[onChange]
 	);
 	return (
-		<input
-			className={classnames('lunatic-input', { disabled, readOnly })}
-			type="number"
-			onChange={handleChange}
-			value={valueEffective}
-			labelledby={labelId}
-			readOnly={readOnly}
-			disabled={disabled}
-			min={min}
-			max={max}
-			step={step}
-		/>
+		<div className="lunatic-input-number-container">
+			<input
+				className={classnames('lunatic-input-number', { disabled, readOnly })}
+				type="number"
+				onChange={handleChange}
+				value={valueEffective}
+				labelledby={labelId}
+				readOnly={readOnly}
+				disabled={disabled}
+				min={min}
+				max={max}
+				step={step}
+			/>
+			{unit && <span>{unit}</span>}
+		</div>
 	);
 }
 

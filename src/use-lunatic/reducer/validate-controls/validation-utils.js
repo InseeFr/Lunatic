@@ -1,7 +1,7 @@
 function resolveControl(state, control) {
 	const { executeExpression, pager = {} } = state;
 	const { iteration } = pager;
-	const { criticality, errorMessage, id, blocking } = control;
+	const { criticality, errorMessage, id, typeOfControl } = control;
 	const { control: { value = 'true' } = {} } = control;
 	try {
 		const result = executeExpression(value, { iteration });
@@ -12,7 +12,7 @@ function resolveControl(state, control) {
 				criticality,
 				errorMessage: label,
 				id,
-				blocking,
+				typeOfControl,
 				formula: value,
 				labelFormula: labelValue,
 			};

@@ -3,12 +3,13 @@ import Button from '../button';
 
 function CloseOrSkip({ errors, onClose, onSkip }) {
 	const flattenErrors = Object.values(errors).flat();
-	const bloc = flattenErrors.reduce(function (status, { criticality }) {
-		return status || criticality === 'WARN';
-	}, false);
-	const onlyCorrect = flattenErrors
-		.map(({ blocking }) => blocking)
-		.includes(true);
+	const bloc = flattenErrors.reduce(function (
+		status,
+		{ criticality, typeOfControl }
+	) {
+		return status || (typeOfControl === 'FORMAT' && criticality === 'ERROR');
+	},
+	false);
 
 	if (bloc) {
 		return (
@@ -16,18 +17,18 @@ function CloseOrSkip({ errors, onClose, onSkip }) {
 				<Button className="modal-button" onClick={onClose}>
 					Correct
 				</Button>
-				{!onlyCorrect && (
-					<Button className="modal-button" onClick={onSkip}>
-						Ignore
-					</Button>
-				)}
 			</div>
 		);
 	}
 	return (
-		<Button className="modal-button" onClick={onSkip}>
-			Next
-		</Button>
+		<div className="modal-buttons">
+			<Button className="modal-button" onClick={onClose}>
+				Correct
+			</Button>
+			<Button className="modal-button" onClick={onSkip}>
+				Ignore
+			</Button>
+		</div>
 	);
 }
 
