@@ -18,7 +18,7 @@ function InputNumber({
 	const handleChange = useCallback(
 		function (e) {
 			const val = e.target.valueAsNumber;
-			onChange(val);
+			onChange(isNaN(val) ? null : val);
 		},
 		[onChange]
 	);
