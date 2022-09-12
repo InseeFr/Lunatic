@@ -16,9 +16,9 @@ function InputNumber({
 	unit,
 }) {
 	const handleChange = useCallback(
-		function ({ value }) {
-			if (value === '') onChange(null);
-			else onChange(value);
+		function ({ floatValue }) {
+			if (!floatValue) onChange(null);
+			else onChange(floatValue);
 		},
 		[onChange]
 	);
