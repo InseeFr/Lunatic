@@ -1,13 +1,8 @@
 import React, { useCallback } from 'react';
+import { NumericFormat } from 'react-number-format';
 import classnames from 'classnames';
 import { createCustomizableLunaticField } from '../commons';
 import './input-number.scss';
-
-const regex = /[0-9]|e|E|,|\./;
-
-const handleKeyPress = function (e) {
-	if (!regex.test(e.key)) e.preventDefault();
-};
 
 function InputNumber({
 	value,
@@ -21,23 +16,22 @@ function InputNumber({
 	unit,
 }) {
 	const handleChange = useCallback(
-		function (e) {
-			if (e.target.value === '') onChange(null);
-			const val = e.target.valueAsNumber;
-			if (isNaN(val)) e.preventDefault();
-			else onChange(val);
+		function ({ value }) {
+			if (value === '') onChange(null);
+			else onChange(value);
 		},
 		[onChange]
 	);
 
 	return (
 		<div className="lunatic-input-number-container">
-			<input
+			<NumericFormat
 				className={classnames('lunatic-input-number', { disabled, readOnly })}
-				type="number"
-				onChange={handleChange}
-				onKeyPress={handleKeyPress}
-				value={value ?? ''}
+				type="input"
+				defaultValue={value ?? ''}
+				thousandsGroupStyle="thousands"
+				thousandSeparator=" "
+				onValueChange={handleChange}
 				labelledby={labelId}
 				readOnly={readOnly}
 				disabled={disabled}
