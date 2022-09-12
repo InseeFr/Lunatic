@@ -25,6 +25,6 @@ function LunaticCheckboxGroup({
 }
 
 export default createLunaticComponent(LunaticCheckboxGroup, {
-	fieldset: true,
+	fieldset: false,
 	inputId: 'lunatic-checkbox-group',
 });

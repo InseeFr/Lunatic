@@ -29,6 +29,6 @@ function LunaticCheckboxBoolean({
 LunaticCheckboxBoolean.defaultProps = { value: false };
 
 export default createLunaticComponent(LunaticCheckboxBoolean, {
-	fieldset: true,
+	fieldset: false,
 	inputId: 'lunatic-checkbox-boolean',
 });
