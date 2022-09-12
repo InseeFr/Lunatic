@@ -14,7 +14,6 @@ function InputNumber({
 	step,
 	unit,
 }) {
-	const valueEffective = value ?? NaN;
 	const handleChange = useCallback(
 		function (e) {
 			const val = e.target.valueAsNumber;
@@ -28,7 +27,7 @@ function InputNumber({
 				className={classnames('lunatic-input-number', { disabled, readOnly })}
 				type="number"
 				onChange={handleChange}
-				value={valueEffective}
+				value={value ?? ''}
 				labelledby={labelId}
 				readOnly={readOnly}
 				disabled={disabled}
