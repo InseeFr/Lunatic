@@ -56,7 +56,6 @@ function createExecuteExpression(variables, features) {
 	 */
 	function pushToLazy(name) {
 		const { CalculatedLinked = [] } = variables[name];
-
 		CalculatedLinked.forEach(function (variable) {
 			const { name } = variable;
 			setToRefreshCalculated(name, variable);
@@ -88,6 +87,19 @@ function createExecuteExpression(variables, features) {
 			if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value)) {
 				bindings[k] = value[iteration];
 				pushToLazy(k);
+			}
+		});
+	}
+
+	/**
+	 *
+	 * @param {*} variables
+	 */
+	function resetLoopBindings(variables) {
+		Object.entries(bindings).forEach(([k, v]) => {
+			const { type, value } = variables[k];
+			if (type === COLLECTED && Array.isArray(value) && !Array.isArray(v)) {
+				bindings[k] = value;
 			}
 		});
 	}
@@ -179,6 +191,7 @@ function createExecuteExpression(variables, features) {
 				console.warn(e);
 			}
 		}
+
 		const vtlBindings = refreshCalculated(
 			fillVariablesValues(collecteVariables(bindingDependencies), {
 				iteration,
@@ -203,7 +216,7 @@ function createExecuteExpression(variables, features) {
 		return memoized;
 	}
 
-	return [execute, updateBindings, setLoopBindings];
+	return [execute, updateBindings, setLoopBindings, resetLoopBindings];
 }
 
 export default createExecuteExpression;
