@@ -47,13 +47,13 @@
 						border-color: var(--color-primary-main);
 					}
 					.lunatic-combo-box-input {
-						height: 34;
+						height: 34px;
 						line-height: 34px;
 						font-size: 15px;
 						padding-left: 4px;
 						@include selection();
 
-						&::placeholder {
+						&::-moz-placeholder {
 							@include placeholder();
 						}
 					}
