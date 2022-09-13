@@ -1,9 +1,5 @@
 {
-	"cleaning": {
-		"NB_MAJEUR": { "TEXTE": "(NB_MAJEUR > 0)" },
-		"IND_MAJEUR": { "TEXTE": "(NB_MAJEUR > 0)" },
-		"AGE": { "TEXTE": "(NB_MAJEUR > 0)" }
-	},
+	"cleaning": {},
 	"variables": [
 		{
 			"variableType": "COLLECTED",
@@ -61,17 +57,6 @@
 			"name": "DIVERS"
 		},
 		{
-			"variableType": "COLLECTED",
-			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
-			},
-			"name": "TEXTE"
-		},
-		{
 			"variableType": "CALCULATED",
 			"expression": { "type": "VTL", "value": "true" },
 			"name": "FILTER_RESULT_NB",
@@ -87,18 +72,7 @@
 		{
 			"variableType": "CALCULATED",
 			"bindingDependencies": ["AGE"],
-			"expression": { "type": "VTL", "value": "cast(AGE,integer)" },
-			"name": "AGE_NUM",
-			"inFilter": "false",
-			"shapeFrom": "PRENOM"
-		},
-		{
-			"variableType": "CALCULATED",
-			"bindingDependencies": ["AGE"],
-			"expression": {
-				"type": "VTL",
-				"value": "if nvl(AGE,0)> 17 then 1 else 0"
-			},
+			"expression": { "type": "VTL", "value": "if AGE > 17 then 1 else 0" },
 			"name": "IND_MAJEUR",
 			"inFilter": "false",
 			"shapeFrom": "PRENOM"
@@ -118,38 +92,32 @@
 		},
 		{
 			"variableType": "CALCULATED",
-			"bindingDependencies": ["NB_MAJEUR"],
-			"expression": { "type": "VTL", "value": "(NB_MAJEUR > 0)" },
-			"name": "FILTER_RESULT_TEXTE",
-			"inFilter": "false"
-		},
-		{
-			"variableType": "CALCULATED",
-			"bindingDependencies": ["AGE_NUM", "AGE"],
-			"expression": { "type": "VTL", "value": "sum(AGE_NUM)" },
-			"name": "SUM_AGE_NUM",
-			"inFilter": "false"
-		},
-		{
-			"variableType": "CALCULATED",
 			"bindingDependencies": ["IND_MAJEUR", "AGE"],
 			"expression": { "type": "VTL", "value": "sum(IND_MAJEUR)" },
-			"name": "NB_MAJEUR",
-			"inFilter": "true"
+			"name": "SUM_MAJEUR",
+			"inFilter": "false"
 		},
 		{
 			"variableType": "CALCULATED",
-			"bindingDependencies": ["AGE_NUM", "AGE"],
-			"expression": { "type": "VTL", "value": "min(AGE_NUM)" },
+			"bindingDependencies": ["AGE"],
+			"expression": { "type": "VTL", "value": "min(AGE)" },
 			"name": "MIN_AGE",
 			"inFilter": "false"
 		},
 		{
 			"variableType": "CALCULATED",
 			"bindingDependencies": ["AGE"],
-			"expression": { "type": "VTL", "value": "sum(cast(AGE,integer))" },
+			"expression": { "type": "VTL", "value": "sum(AGE)" },
 			"name": "SUM_AGE",
 			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["AGE"],
+			"expression": { "type": "VTL", "value": "cast(AGE,number)" },
+			"name": "AGE_NUM",
+			"inFilter": "false",
+			"shapeFrom": "PRENOM"
 		}
 	],
 	"components": [
@@ -174,8 +142,9 @@
 					"criticality": "ERROR",
 					"errorMessage": {
 						"type": "VTL|MD",
-						"value": "La valeur doit être comprise entre 0 et 10."
+						"value": "\" La valeur doit être comprise entre 0 et 10.\""
 					},
+					"typeOfControl": "FORMAT",
 					"control": {
 						"type": "VTL",
 						"value": "not(not(isnull(NB)) and (0>NB or 10<NB)))"
@@ -186,8 +155,9 @@
 					"criticality": "ERROR",
 					"errorMessage": {
 						"type": "VTL|MD",
-						"value": "Le nombre doit comporter au maximum 0 chiffre(s) après la virgule."
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
 					},
+					"typeOfControl": "FORMAT",
 					"control": {
 						"type": "VTL",
 						"value": "not(not(isnull(NB)) and trunc(NB,0)<>NB)"
@@ -242,6 +212,30 @@
 				{
 					"componentType": "Input",
 					"bindingDependencies": ["PRENOM", "NB"],
+					"controls": [
+						{
+							"bindingDependencies": ["PRENOM"],
+							"criticality": "WARN",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\"Prenom est vide ?\""
+							},
+							"typeOfControl": "CONSISTENCY",
+							"control": { "type": "VTL", "value": "not(isnull(PRENOM))" },
+							"id": "ksyjvi40-CI-0"
+						},
+						{
+							"bindingDependencies": ["PRENOM"],
+							"criticality": "WARN",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\"Prénom vaut A\""
+							},
+							"typeOfControl": "CONSISTENCY",
+							"control": { "type": "VTL", "value": "not(PRENOM = \"A\")" },
+							"id": "ksyjvi40-CI-1"
+						}
+					],
 					"response": { "name": "PRENOM" },
 					"hierarchy": {
 						"sequence": {
@@ -260,7 +254,18 @@
 					"page": "3",
 					"label": { "type": "VTL|MD", "value": "\"➡ 2. \" || \"prénom\"" },
 					"mandatory": false,
-					"maxLength": 249
+					"maxLength": 249,
+					"declarations": [
+						{
+							"declarationType": "HELP",
+							"id": "ksyjvi40-l7uj49ok",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Tester Prénom vide et Prénom = A\""
+							},
+							"position": "AFTER_QUESTION_TEXT"
+						}
+					]
 				}
 			],
 			"bindingDependencies": ["NB", "PRENOM"],
@@ -326,8 +331,9 @@
 							"criticality": "ERROR",
 							"errorMessage": {
 								"type": "VTL|MD",
-								"value": "La valeur doit être comprise entre 0 et 100."
+								"value": "\" La valeur doit être comprise entre 0 et 100.\""
 							},
+							"typeOfControl": "FORMAT",
 							"control": {
 								"type": "VTL",
 								"value": "not(not(isnull(AGE)) and (0>AGE or 100<AGE)))"
@@ -338,13 +344,22 @@
 							"criticality": "ERROR",
 							"errorMessage": {
 								"type": "VTL|MD",
-								"value": "Le nombre doit comporter au maximum 0 chiffre(s) après la virgule."
+								"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
 							},
+							"typeOfControl": "FORMAT",
 							"control": {
 								"type": "VTL",
 								"value": "not(not(isnull(AGE)) and trunc(AGE,0)<>AGE)"
 							},
 							"id": "ksyke448-formatDec"
+						},
+						{
+							"bindingDependencies": ["AGE"],
+							"criticality": "WARN",
+							"errorMessage": { "type": "VTL|MD", "value": "\"Age est vide\"" },
+							"typeOfControl": "CONSISTENCY",
+							"control": { "type": "VTL", "value": "not(isnull(AGE))" },
+							"id": "ksyke448-CI-0"
 						}
 					],
 					"max": 100,
@@ -363,7 +378,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"label": {
 						"type": "VTL|MD",
-						"value": "\"➡ 3. \" || \"Q3 Age de l’individu : \" || PRENOM"
+						"value": "\"➡ 3. \" || \"Age de l’individu : \" || PRENOM"
 					},
 					"mandatory": false,
 					"declarations": [
@@ -372,7 +387,7 @@
 							"id": "ksyke448-ktwsl4qu",
 							"label": {
 								"type": "VTL|MD",
-								"value": "\"AGE_NUM vaut : \" || cast(AGE_NUM,string)"
+								"value": "\"AGE vaut : \" || cast(AGE,string)"
 							},
 							"position": "AFTER_QUESTION_TEXT"
 						},
@@ -387,15 +402,15 @@
 						},
 						{
 							"declarationType": "HELP",
-							"id": "ksyke448-l7pyavuk",
+							"id": "ksyke448-l7uk2nvc",
 							"label": {
 								"type": "VTL|MD",
-								"value": "\"AGE vaut : \" || cast(AGE,string)"
+								"value": "\"AGE NUM :\" || cast(AGE_NUM,string)"
 							},
 							"position": "AFTER_QUESTION_TEXT"
 						}
 					],
-					"bindingDependencies": ["AGE_NUM", "IND_MAJEUR", "AGE", "PRENOM"],
+					"bindingDependencies": ["AGE", "IND_MAJEUR", "AGE_NUM", "PRENOM"],
 					"min": 0,
 					"response": { "name": "AGE" },
 					"decimals": 0,
@@ -403,7 +418,7 @@
 					"page": "5.1"
 				}
 			],
-			"bindingDependencies": ["AGE_NUM", "IND_MAJEUR", "AGE", "PRENOM"],
+			"bindingDependencies": ["AGE", "IND_MAJEUR", "AGE_NUM", "PRENOM"],
 			"depth": 1,
 			"hierarchy": {
 				"sequence": {
@@ -420,7 +435,7 @@
 		},
 		{
 			"componentType": "Subsequence",
-			"bindingDependencies": ["SUM_AGE_NUM", "MIN_AGE", "SUM_AGE", "AGE"],
+			"bindingDependencies": ["SUM_AGE", "MIN_AGE", "SUM_MAJEUR"],
 			"goToPage": "6",
 			"hierarchy": {
 				"sequence": {
@@ -431,26 +446,20 @@
 				"subSequence": {
 					"id": "ku2pnlmr",
 					"page": "6",
-					"label": {
-						"type": "VTL|MD",
-						"value": "\"Affichage de qq var\" || cast(AGE,string)"
-					}
+					"label": { "type": "VTL|MD", "value": "\"Affichage de qq var\"" }
 				}
 			},
 			"conditionFilter": { "type": "VTL", "value": "true" },
 			"id": "ku2pnlmr",
 			"page": "6",
-			"label": {
-				"type": "VTL|MD",
-				"value": "\"Affichage de qq var\" || cast(AGE,string)"
-			},
+			"label": { "type": "VTL|MD", "value": "\"Affichage de qq var\"" },
 			"declarations": [
 				{
 					"declarationType": "HELP",
 					"id": "ku2pnlmr-kze7f245",
 					"label": {
 						"type": "VTL|MD",
-						"value": "\"Affichage de la somme des ages : \" || cast(SUM_AGE_NUM,string)"
+						"value": "\"Affichage de la somme des ages : \" || cast(SUM_AGE,string)"
 					},
 					"position": "AFTER_QUESTION_TEXT"
 				},
@@ -465,10 +474,10 @@
 				},
 				{
 					"declarationType": "HELP",
-					"id": "ku2pnlmr-l7g27qfm",
+					"id": "ku2pnlmr-l7t4dzz2",
 					"label": {
 						"type": "VTL|MD",
-						"value": "\"Affichage de la somme sans passer par intermédiaire : \" || cast(SUM_AGE,string)"
+						"value": "\"Affichage du nb de majeurs : \" || cast(SUM_MAJEUR,string)"
 					},
 					"position": "AFTER_QUESTION_TEXT"
 				}
@@ -487,10 +496,7 @@
 				"subSequence": {
 					"id": "ku2pnlmr",
 					"page": "6",
-					"label": {
-						"type": "VTL|MD",
-						"value": "\"Affichage de qq var\" || cast(AGE,string)"
-					}
+					"label": { "type": "VTL|MD", "value": "\"Affichage de qq var\"" }
 				}
 			},
 			"conditionFilter": { "type": "VTL", "value": "true" },
@@ -501,85 +507,17 @@
 			"maxLength": 249
 		},
 		{
-			"componentType": "Subsequence",
-			"bindingDependencies": ["NB_MAJEUR"],
-			"goToPage": "8",
-			"hierarchy": {
-				"sequence": {
-					"id": "ksyniqzx",
-					"page": "4",
-					"label": { "type": "VTL|MD", "value": "\"II - \" || \"S1\"" }
-				},
-				"subSequence": {
-					"id": "ku2pqil5",
-					"page": "8",
-					"label": {
-						"type": "VTL|MD",
-						"value": "\"Affichage de la question suivante si au moins 1 majeur. Pour info : nb de majeurs calculé = \" || cast(NB_MAJEUR,string)"
-					}
-				}
-			},
-			"conditionFilter": { "type": "VTL", "value": "true" },
-			"id": "ku2pqil5",
-			"page": "8",
-			"label": {
-				"type": "VTL|MD",
-				"value": "\"Affichage de la question suivante si au moins 1 majeur. Pour info : nb de majeurs calculé = \" || cast(NB_MAJEUR,string)"
-			},
-			"declarations": [
-				{
-					"declarationType": "HELP",
-					"id": "ku2pqil5-kze7d4ia",
-					"label": {
-						"type": "VTL|MD",
-						"value": "Affichage de cette sous séquence systématique. Affichage question qui suit si au moins 1 majeur"
-					},
-					"position": "AFTER_QUESTION_TEXT"
-				}
-			]
-		},
-		{
-			"componentType": "Input",
-			"bindingDependencies": ["TEXTE"],
-			"response": { "name": "TEXTE" },
-			"hierarchy": {
-				"sequence": {
-					"id": "ksyniqzx",
-					"page": "4",
-					"label": { "type": "VTL|MD", "value": "\"II - \" || \"S1\"" }
-				},
-				"subSequence": {
-					"id": "ku2pqil5",
-					"page": "8",
-					"label": {
-						"type": "VTL|MD",
-						"value": "\"Affichage de la question suivante si au moins 1 majeur. Pour info : nb de majeurs calculé = \" || cast(NB_MAJEUR,string)"
-					}
-				}
-			},
-			"conditionFilter": {
-				"bindingDependencies": ["NB_MAJEUR", "IND_MAJEUR", "AGE"],
-				"type": "VTL",
-				"value": "(NB_MAJEUR > 0)"
-			},
-			"id": "ktwvc5zc",
-			"page": "9",
-			"label": { "type": "VTL|MD", "value": "\"➡ 5. \" || \"Texte\"" },
-			"mandatory": false,
-			"maxLength": 249
-		},
-		{
 			"componentType": "Sequence",
 			"hierarchy": {
 				"sequence": {
 					"id": "COMMENT-SEQ",
-					"page": "10",
+					"page": "8",
 					"label": { "type": "VTL|MD", "value": "\"Commentaire\"" }
 				}
 			},
 			"conditionFilter": { "type": "VTL", "value": "true" },
 			"id": "COMMENT-SEQ",
-			"page": "10",
+			"page": "8",
 			"label": { "type": "VTL|MD", "value": "\"Commentaire\"" }
 		},
 		{
@@ -589,13 +527,13 @@
 			"hierarchy": {
 				"sequence": {
 					"id": "COMMENT-SEQ",
-					"page": "10",
+					"page": "8",
 					"label": { "type": "VTL|MD", "value": "\"Commentaire\"" }
 				}
 			},
 			"conditionFilter": { "type": "VTL", "value": "true" },
 			"id": "COMMENT-QUESTION",
-			"page": "11",
+			"page": "9",
 			"label": {
 				"type": "VTL|MD",
 				"value": "\"Avez-vous des remarques concernant l'enquête ou des commentaires ?\""
@@ -608,13 +546,13 @@
 	"resizing": { "NB": { "variables": ["PRENOM", "AGE"], "size": "NB" } },
 	"label": {
 		"type": "VTL|MD",
-		"value": "QNONREG test sur sum, min dans une boucle, nb majeurs et filtre"
+		"value": "BUG sur sum, min dans une boucle et sur controle prénom"
 	},
-	"lunaticModelVersion": "2.2.13",
+	"lunaticModelVersion": "2.2.14-rc",
 	"modele": "TESTSURSUM",
-	"enoCoreVersion": "2.3.10",
-	"generatingDate": "06-09-2022 08:41:23",
+	"enoCoreVersion": "2.3.10-controls-type",
+	"generatingDate": "09-09-2022 14:06:53",
 	"missing": false,
-	"id": "kt32raif",
-	"maxPage": "11"
+	"id": "l7t51pzu",
+	"maxPage": "9"
 }

@@ -27,6 +27,10 @@ const stories = {
 			control: 'boolean',
 			defaultValue: false,
 		},
+		activeControls: {
+			control: 'boolean',
+			defaultValue: true,
+		},
 	},
 };
 
