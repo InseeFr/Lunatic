@@ -9,6 +9,7 @@ function LunaticCheckboxGroup({
 	custom,
 	handleChange,
 	errors,
+	label,
 }) {
 	return (
 		<>
@@ -18,6 +19,7 @@ function LunaticCheckboxGroup({
 				value={value}
 				handleChange={handleChange}
 				custom={custom}
+				label={label}
 			/>
 			<Errors errors={errors} />
 		</>
@@ -25,6 +27,6 @@ function LunaticCheckboxGroup({
 }
 
 export default createLunaticComponent(LunaticCheckboxGroup, {
-	fieldset: false,
+	fieldset: true,
 	inputId: 'lunatic-checkbox-group',
 });

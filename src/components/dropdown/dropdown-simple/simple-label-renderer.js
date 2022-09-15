@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import safetyLabel from '../../commons/safety-label';
 
 function getContent(option, search) {
 	if (option) {
 		const { value, label } = option;
-		return safetyLabel(label || value);
+		return label || value;
 	}
 	if (search && search.trim().length) {
 		return search;
