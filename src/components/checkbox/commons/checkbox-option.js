@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
+import './checkbox-option.scss';
 
 function CheckboxOption({
 	disabled,
@@ -9,6 +10,7 @@ function CheckboxOption({
 	value = false,
 	onClick,
 	labelledBy,
+	label,
 }) {
 	const onClickOption = useCallback(
 		function () {
@@ -47,6 +49,9 @@ function CheckboxOption({
 				aria-labelledby={labelledBy}
 			>
 				<Icon />
+				<span id={labelledBy} htmlFor={id}>
+					{label}
+				</span>
 			</span>
 		</div>
 	);

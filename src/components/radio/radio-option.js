@@ -30,11 +30,11 @@ function RadioOption({
 	index,
 	labelledBy,
 	checkboxStyle,
+	label,
 }) {
 	const spanEl = useRef();
 	const Icon = getIcon(checked, checkboxStyle);
 	const tabIndex = checked ? '0' : '-1';
-
 	const onClickOption = useCallback(
 		function () {
 			// on checkboxStyle, clicking on checked value unchecks it, so it acts as if empty answer was clicked
@@ -82,6 +82,9 @@ function RadioOption({
 				ref={spanEl}
 			>
 				<Icon />
+				<span id={labelledBy} htmlFor={id}>
+					{label}
+				</span>
 			</span>
 		</div>
 	);

@@ -1,14 +1,9 @@
 import React from 'react';
 import RadioOption from './radio-option';
-import {
-	Label,
-	useOptionsKeydown,
-	createCustomizableLunaticField,
-} from '../commons';
+import { useOptionsKeydown, createCustomizableLunaticField } from '../commons';
 
 function Radio({ options, value, id, onClick, checkboxStyle = false }) {
 	const onKeyDown = useOptionsKeydown(options, onClick);
-
 	return options.map(function (option, index) {
 		const { value: valueOption, label } = option;
 		const radioId = `lunatic-radio-${id}-${valueOption}`;
@@ -25,10 +20,8 @@ function Radio({ options, value, id, onClick, checkboxStyle = false }) {
 					value={valueOption}
 					onKeyDown={onKeyDown}
 					checkboxStyle={checkboxStyle}
+					label={label}
 				/>
-				<Label id={labelId} htmlFor={radioId}>
-					{label}
-				</Label>
 			</div>
 		);
 	});
