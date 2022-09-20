@@ -1,5 +1,5 @@
 {
-	"maxPage": "3",
+	"maxPage": "2",
 	"components": [
 		{
 			"id": "seq",
@@ -57,28 +57,31 @@
 						"name": "LINKS"
 					},
 					"options": [
-						{ "value": "1", "label": "Conjoint" },
-						{ "value": "2", "label": "Mère, père" },
-						{ "value": "3", "label": "Fille, fils" },
+						{ "value": "1", "label": "\"Conjoint\"" },
+						{ "value": "2", "label": "\"Mère, père\"" },
+						{ "value": "3", "label": "\"Fille, fils\"" },
 						{
 							"value": "4",
-							"label": "Belle-mère, beau-père, conjoint du parent"
+							"label": "\"Belle-mère, beau-père, conjoint du parent\""
 						},
 						{
 							"value": "5",
-							"label": "Belle-mère, beau-père, parent du conjoint"
+							"label": "\"Belle-mère, beau-père, parent du conjoint\""
 						},
-						{ "value": "6", "label": "Enfant du conjoint" },
-						{ "value": "7", "label": "Conjoint d’un enfant" },
-						{ "value": "8", "label": "Sœur, frère (y compris demi et quasi)" },
-						{ "value": "9", "label": "Grand-parent" },
-						{ "value": "10", "label": "Petit-enfant" },
-						{ "value": "11", "label": "Tante, oncle" },
-						{ "value": "12", "label": "Cousin(e)" },
-						{ "value": "13", "label": "Nièce, neveu" },
-						{ "value": "14", "label": "Belle-sœur, beau-frère" },
-						{ "value": "15", "label": "Enfant placé" },
-						{ "value": "16", "label": "Autre" }
+						{ "value": "6", "label": "\"Enfant du conjoint\"" },
+						{ "value": "7", "label": "\"Conjoint d’un enfant\"" },
+						{
+							"value": "8",
+							"label": "\"Sœur, frère (y compris demi et quasi)\""
+						},
+						{ "value": "9", "label": "\"Grand-parent\"" },
+						{ "value": "10", "label": "\"Petit-enfant\"" },
+						{ "value": "11", "label": "\"Tante, oncle\"" },
+						{ "value": "12", "label": "\"Cousin(e)\"" },
+						{ "value": "13", "label": "\"Nièce, neveu\"" },
+						{ "value": "14", "label": "\"Belle-sœur, beau-frère\"" },
+						{ "value": "15", "label": "\"Enfant placé\"" },
+						{ "value": "16", "label": "\"Autre\"" }
 					]
 				}
 			]
