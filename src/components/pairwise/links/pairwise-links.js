@@ -6,6 +6,7 @@ import {
 	DeclarationsDetachable,
 } from '../../declarations';
 import { Errors } from '../../commons';
+import NothingToDisplay from '../../commons/components/nothing-to-display';
 
 const PairwiseLinks = ({
 	declarations,
@@ -25,6 +26,7 @@ const PairwiseLinks = ({
 	errors,
 }) => {
 	const nbRows = xAxisIterations * yAxisIterations;
+
 	const handleChangeLinks = useCallback(
 		function (response, value, args) {
 			handleChange(response, value, args);
@@ -32,7 +34,7 @@ const PairwiseLinks = ({
 		[handleChange]
 	);
 
-	if (nbRows > 0)
+	if (nbRows > 1)
 		return (
 			<>
 				<DeclarationsBeforeText
@@ -69,7 +71,7 @@ const PairwiseLinks = ({
 			</>
 		);
 
-	return null;
+	return <NothingToDisplay />;
 };
 
 export default PairwiseLinks;

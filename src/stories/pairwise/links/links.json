@@ -82,12 +82,6 @@
 					]
 				}
 			]
-		},
-		{
-			"id": "pariwise-block",
-			"componentType": "PairwiseBlock",
-			"conditionFilter": { "value": "true" },
-			"page": "3"
 		}
 	],
 	"variables": [
