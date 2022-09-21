@@ -1,6 +1,10 @@
 import React from 'react';
 import Datepicker from './datepicker';
-import { createLunaticComponent, Errors } from '../commons';
+import {
+	createCustomizableLunaticField,
+	createLunaticComponent,
+	Errors,
+} from '../commons';
 import './datepicker.scss';
 
 const LunaticDatepicker = ({ errors, ...props }) => (
@@ -10,6 +14,9 @@ const LunaticDatepicker = ({ errors, ...props }) => (
 	</>
 );
 
-export default createLunaticComponent(LunaticDatepicker, {
-	inputId: 'lunatic-datepicker',
-});
+export default createLunaticComponent(
+	createCustomizableLunaticField(LunaticDatepicker),
+	{
+		inputId: 'lunatic-datepicker',
+	}
+);

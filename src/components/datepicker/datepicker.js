@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import './datepicker.scss';
+import { createCustomizableLunaticField } from '../commons';
 
 function Datepicker({
 	disabled,
@@ -35,4 +36,4 @@ function Datepicker({
 		/>
 	);
 }
-export default Datepicker;
+export default createCustomizableLunaticField(Datepicker);

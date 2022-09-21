@@ -1,11 +1,11 @@
-import React, {useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../../declarations';
 import RosterTable from './roster-table';
-import { Errors } from '../../commons';
+import { createCustomizableLunaticField, Errors } from '../../commons';
 import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
 import getInitLength from '../commons/get-init-length';
@@ -124,4 +124,4 @@ function RosterforLoop({
 	return null;
 }
 
-export default RosterforLoop;
+export default createCustomizableLunaticField(RosterforLoop);

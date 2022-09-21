@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { isElement } from '../../utils/is-element';
 import './button.scss';
+import { createCustomizableLunaticField } from '../commons';
 
 function Button({ children, onClick, disabled, label, className }) {
 	const handleClick = useCallback(
@@ -45,4 +46,4 @@ Button.propTypes = {
 	onClick: PropTypes.func.isRequired,
 };
 
-export default Button;
+export default createCustomizableLunaticField(Button);

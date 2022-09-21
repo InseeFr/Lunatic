@@ -1,6 +1,10 @@
 import React from 'react';
 import InputNumber from './input-number';
-import { createLunaticComponent, Errors } from '../commons';
+import {
+	createCustomizableLunaticField,
+	createLunaticComponent,
+	Errors,
+} from '../commons';
 
 const LunaticInputNumber = ({ errors, ...props }) => (
 	<>
@@ -9,6 +13,9 @@ const LunaticInputNumber = ({ errors, ...props }) => (
 	</>
 );
 
-export default createLunaticComponent(LunaticInputNumber, {
-	inputId: 'lunatic-input-number',
-});
+export default createLunaticComponent(
+	createCustomizableLunaticField(LunaticInputNumber),
+	{
+		inputId: 'lunatic-input-number',
+	}
+);
