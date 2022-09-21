@@ -1,6 +1,10 @@
 import React from 'react';
 import CheckboxGroup from './checkbox-group';
-import { createLunaticComponent, Errors } from '../../commons';
+import {
+	createCustomizableLunaticField,
+	createLunaticComponent,
+	Errors,
+} from '../../commons';
 
 function LunaticCheckboxGroup({
 	id,
@@ -26,7 +30,10 @@ function LunaticCheckboxGroup({
 	);
 }
 
-export default createLunaticComponent(LunaticCheckboxGroup, {
-	fieldset: true,
-	inputId: 'lunatic-checkbox-group',
-});
+export default createLunaticComponent(
+	createCustomizableLunaticField(LunaticCheckboxGroup),
+	{
+		fieldset: true,
+		inputId: 'lunatic-checkbox-group',
+	}
+);
