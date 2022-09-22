@@ -133,7 +133,6 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 
 function validateChange(state) {
 	if (isOnEmptyPage(state)) {
-		// Is it necessary to wrap by control reducer ?
 		return reduceGoNextPage(state);
 	}
 	return state;
@@ -179,5 +178,6 @@ function reduceGoNextPage(state) {
 	return validateChange(reduceNextPage(state, { next }));
 }
 
-// export default createModalControlsReducer(createControlsReducer(reduceGoNextPage));
-export default createControlsReducer(reduceGoNextPage);
+export default createModalControlsReducer(
+	createControlsReducer(reduceGoNextPage)
+);

@@ -3,16 +3,31 @@ import { getComponentsFromState, getPageTag } from '../../commons';
 
 function validateComponentsForModal(state, components) {
 	const { pager } = state;
-	// TODO check components in components (Loop, etc...)
 	return components.reduce(function (errors, component) {
-		const { controls } = component;
+		const { controls, componentType, id } = component;
 		if (Array.isArray(controls)) {
 			const componentErrors = resolveComponentControls(state, controls);
-			if (componentErrors.length) {
-				return { ...errors, [getPageTag(pager)]: componentErrors };
-			}
+			const { shallowIteration } = pager;
+			const idC =
+				shallowIteration !== undefined ? `${id}-${shallowIteration}` : id;
+			return {
+				...errors,
+				[idC]: componentErrors,
+			};
 		}
-		return errors;
+		//Thanks to init which split basic Loops, we only go into unPaginatedLoops
+		if (['Loop', 'RosterForLoop'].includes(componentType)) {
+			// TODO handle the case where shallowInteration hasn't been initalized because not handleChange fired
+			const { components } = component;
+			const recurs = validateComponentsForModal(state, components);
+			return {
+				...((state.errors || {})[getPageTag(pager)] || {}),
+				...errors,
+				...recurs,
+			};
+		}
+		// If no error we remove the possible previous errors
+		return {};
 	}, {});
 }
 
@@ -40,7 +55,7 @@ function createModalControlsReducer(reducer) {
 			return {
 				...state,
 				modalErrors: undefined,
-				currentErrors: prec[getPageTag(state.pager)],
+				currentErrors: prec,
 			};
 		}
 
