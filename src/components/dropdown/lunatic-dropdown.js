@@ -32,7 +32,7 @@ function LunaticDropdown({
 				value={value}
 				className="lunatic-dropdown"
 			/>
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</>
 	);
 }

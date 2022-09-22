@@ -25,7 +25,7 @@ function LunaticCheckboxGroup({
 				custom={custom}
 				label={label}
 			/>
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</>
 	);
 }

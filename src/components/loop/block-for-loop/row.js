@@ -13,6 +13,7 @@ function Row({
 	rowIndex,
 	executeExpression,
 	custom,
+	errors,
 }) {
 	const handleChangeRow = useCallback(
 		function (response, value) {
@@ -50,6 +51,7 @@ function Row({
 				iteration={rowIndex}
 				executeExpression={executeExpression}
 				custom={custom}
+				errors={errors}
 			/>,
 		];
 	}, []);

@@ -4,35 +4,30 @@ import { getComponentsFromState, getPageTag } from '../../commons';
 function validateComponents(state, components) {
 	const { pager } = state;
 	return components.reduce(function (errors, component) {
-		const { controls, componentType } = component;
+		const { controls, componentType, id } = component;
 		if (Array.isArray(controls)) {
 			const componentErrors = resolveComponentControls(state, controls);
-			if (componentErrors.length) {
-				return { ...errors, [getPageTag(pager)]: componentErrors };
-			}
-		}
-		if (['Loop', 'RosterForLoop'].includes(componentType)) {
-			const { components } = component;
 			const { shallowIteration } = pager;
-			const recurs = validateComponents(state, components);
+			const idC =
+				shallowIteration !== undefined ? `${id}-${shallowIteration}` : id;
 			debugger;
-			console.log({
-				...errors,
-				[getPageTag(pager)]: [
-					...(errors[getPageTag(pager)] || []),
-					...recurs[getPageTag(pager)],
-				],
-			});
 			return {
 				...errors,
-				[getPageTag(pager)]: [
-					...(errors[getPageTag(pager)] || []),
-					...recurs[getPageTag(pager)],
-				],
+				[idC]: componentErrors,
+			};
+		}
+		//Thanks to init which split basic Loops, we only go into unPaginatedLoops
+		if (['Loop', 'RosterForLoop'].includes(componentType)) {
+			const { components } = component;
+			const recurs = validateComponents(state, components);
+			return {
+				...((state.errors || {})[getPageTag(pager)] || {}),
+				...errors,
+				...recurs,
 			};
 		}
 		// If no error we remove the possible previous errors
-		return { ...errors, [getPageTag(pager)]: [] };
+		return {};
 	}, {});
 }
 
@@ -49,21 +44,16 @@ function createControlsReducer(reducer) {
 			return { ...updatedState, currentErrors: undefined };
 		const components = getComponentsFromState(updatedState);
 		const { pager } = updatedState;
-		debugger;
-		const errors = {
-			...(state.errors || {}),
-			[getPageTag(pager)]: [
-				...((state.errors || {})[getPageTag(pager)] || []),
-				...((validateComponents(updatedState, components) || {})[
-					getPageTag(pager)
-				] || []),
-			],
+		const { errors = {} } = state;
+		const pageTag = getPageTag(pager);
+		const e = {
+			...errors,
+			[pageTag]: validateComponents(updatedState, components),
 		};
-
 		return {
 			...updatedState,
-			errors,
-			currentErrors: errors[getPageTag(pager)],
+			errors: e,
+			currentErrors: e[pageTag],
 		};
 	};
 }

@@ -5,7 +5,7 @@ import {
 	DeclarationsDetachable,
 } from '../../declarations';
 import RosterTable from './roster-table';
-import { createCustomizableLunaticField, Errors } from '../../commons';
+import { createCustomizableLunaticField } from '../../commons';
 import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
 import getInitLength from '../commons/get-init-length';
@@ -93,6 +93,7 @@ function RosterforLoop({
 					missing={missing}
 					shortcut={shortcut}
 					custom={custom}
+					errors={errors}
 				/>
 				<DeclarationsDetachable
 					declarations={declarations}
@@ -117,7 +118,6 @@ function RosterforLoop({
 						</HandleRowButton>
 					</>
 				)}
-				<Errors errors={errors} />
 			</>
 		);
 	}

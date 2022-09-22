@@ -19,7 +19,7 @@ function LunaticRadioGroup(props) {
 				checkboxStyle={checkboxStyle}
 				custom={custom}
 			/>
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</>
 	);
 }

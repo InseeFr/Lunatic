@@ -37,4 +37,5 @@ function reduceGoToPage(state, action) {
 	return validateChange(state);
 }
 
-export default createModalControlsReducer(reduceGoToPage);
+// export default createModalControlsReducer(reduceGoToPage);
+export default reduceGoToPage;

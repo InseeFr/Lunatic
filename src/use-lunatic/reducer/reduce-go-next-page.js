@@ -173,6 +173,5 @@ function reduceGoNextPage(state) {
 	return validateChange(reduceNextPage(state, { next }));
 }
 
-export default createModalControlsReducer(
-	createControlsReducer(reduceGoNextPage)
-);
+// export default createModalControlsReducer(createControlsReducer(reduceGoNextPage));
+export default createControlsReducer(reduceGoNextPage);

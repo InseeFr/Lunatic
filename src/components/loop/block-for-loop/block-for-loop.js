@@ -108,6 +108,7 @@ function BlockForLoop({
 					preferences={preferences}
 					executeExpression={executeExpression}
 					custom={custom}
+					errors={errors}
 				/>
 				<DeclarationsDetachable
 					declarations={declarations}
@@ -132,13 +133,13 @@ function BlockForLoop({
 						</HandleRowButton>
 					</>
 				)}
-				<Errors errors={errors} />
 			</>
 		);
 	}
 	return null;
 }
 
+<<<<<<< HEAD
 export default createCustomizableLunaticField(BlockForLoop);
 
 // handleChange={handleChange}
@@ -149,3 +150,6 @@ export default createCustomizableLunaticField(BlockForLoop);
 // bindings={bindings}
 // missing={missing}
 // shortcut={shortcut}
+=======
+export default BlockForLoop;
+>>>>>>> 858a604b (Continue controls refacto)

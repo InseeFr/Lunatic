@@ -7,12 +7,15 @@ import {
 } from '../commons';
 import './datepicker.scss';
 
-const LunaticDatepicker = ({ errors, ...props }) => (
-	<>
-		<Datepicker {...props} />
-		<Errors errors={errors} />
-	</>
-);
+const LunaticDatepicker = ({ errors, ...props }) => {
+	const { id } = props;
+	return (
+		<>
+			<Datepicker {...props} />
+			<Errors errors={errors} activeId={id} />
+		</>
+	);
+};
 
 export default createLunaticComponent(
 	createCustomizableLunaticField(LunaticDatepicker),
