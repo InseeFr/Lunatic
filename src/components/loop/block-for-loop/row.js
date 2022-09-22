@@ -23,7 +23,7 @@ function Row({
 
 	return components.reduce(function (row, component) {
 		const { response, id } = component;
-		const idComponent = `${id}-${rowIndex + 1} `;
+		const idComponent = `${id}-${rowIndex} `;
 
 		let value = undefined;
 		if (response) {

@@ -78,6 +78,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 			nbSubPages: undefined,
 			iteration: undefined,
 			nbIterations: undefined,
+			shallowIteration: undefined,
 		};
 		return {
 			...state,

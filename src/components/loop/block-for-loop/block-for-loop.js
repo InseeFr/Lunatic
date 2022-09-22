@@ -72,7 +72,11 @@ function BlockForLoop({
 			if (!paginatedLoop) {
 				const v = valueMap[response.name];
 				v[args.index] = value;
-				handleChange(response, v, { loop: true, length: nbRows });
+				handleChange(response, v, {
+					loop: true,
+					length: nbRows,
+					shallowIteration: args.index,
+				});
 			} else
 				handleChange(response, value, { ...args, loop: true, length: nbRows });
 		},

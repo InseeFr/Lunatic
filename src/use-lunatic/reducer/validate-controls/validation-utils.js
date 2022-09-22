@@ -1,13 +1,14 @@
 function resolveControl(state, control) {
 	const { executeExpression, pager = {} } = state;
-	const { iteration } = pager;
+	const { iteration, shallowIteration } = pager;
 	const { criticality, errorMessage, id, typeOfControl } = control;
 	const { control: { value = 'true' } = {} } = control;
 	try {
-		const result = executeExpression(value, { iteration });
+		const it = shallowIteration ?? iteration;
+		const result = executeExpression(value, { iteration: it });
 		if (!result) {
 			const { value: labelValue } = errorMessage;
-			const label = executeExpression(labelValue, { iteration });
+			const label = executeExpression(labelValue, { iteration: it });
 			return {
 				criticality,
 				errorMessage: label,
