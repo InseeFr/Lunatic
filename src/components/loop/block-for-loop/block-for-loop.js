@@ -139,7 +139,6 @@ function BlockForLoop({
 	return null;
 }
 
-<<<<<<< HEAD
 export default createCustomizableLunaticField(BlockForLoop);
 
 // handleChange={handleChange}
@@ -150,6 +149,3 @@ export default createCustomizableLunaticField(BlockForLoop);
 // bindings={bindings}
 // missing={missing}
 // shortcut={shortcut}
-=======
-export default BlockForLoop;
->>>>>>> 858a604b (Continue controls refacto)
