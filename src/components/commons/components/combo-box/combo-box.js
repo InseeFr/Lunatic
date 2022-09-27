@@ -42,10 +42,14 @@ function ComboBox({
 	});
 	const { focused, expended, search, selectedIndex, displayLabel } = state;
 
-	useEffect(function () {
-		dispatch(actions.onInit({ options, value, selectedIndex, getOptionValue }));
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	useEffect(
+		function () {
+			dispatch(
+				actions.onInit({ options, value, selectedIndex, getOptionValue })
+			);
+		},
+		[options, value, selectedIndex, getOptionValue]
+	);
 
 	const onFocus = useCallback(function () {
 		dispatch(actions.onFocus());
