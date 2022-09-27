@@ -13,6 +13,7 @@ function Row({
 	rowIndex,
 	executeExpression,
 	custom,
+	errors,
 }) {
 	const handleChangeRow = useCallback(
 		function (response, value) {
@@ -23,7 +24,7 @@ function Row({
 
 	return components.reduce(function (row, component) {
 		const { response, id } = component;
-		const idComponent = `${id}-${rowIndex + 1} `;
+		const idComponent = `${id}-${rowIndex} `;
 
 		let value = undefined;
 		if (response) {
@@ -50,6 +51,7 @@ function Row({
 				iteration={rowIndex}
 				executeExpression={executeExpression}
 				custom={custom}
+				errors={errors}
 			/>,
 		];
 	}, []);

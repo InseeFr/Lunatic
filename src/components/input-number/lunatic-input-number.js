@@ -6,12 +6,15 @@ import {
 	Errors,
 } from '../commons';
 
-const LunaticInputNumber = ({ errors, ...props }) => (
-	<>
-		<InputNumber {...props} />
-		<Errors errors={errors} />
-	</>
-);
+const LunaticInputNumber = ({ errors, ...props }) => {
+	const { id } = props;
+	return (
+		<>
+			<InputNumber {...props} />
+			<Errors errors={errors} activeId={id} />
+		</>
+	);
+};
 
 export default createLunaticComponent(
 	createCustomizableLunaticField(LunaticInputNumber),

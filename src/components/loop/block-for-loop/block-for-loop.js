@@ -72,7 +72,11 @@ function BlockForLoop({
 			if (!paginatedLoop) {
 				const v = valueMap[response.name];
 				v[args.index] = value;
-				handleChange(response, v, { loop: true, length: nbRows });
+				handleChange(response, v, {
+					loop: true,
+					length: nbRows,
+					shallowIteration: args.index,
+				});
 			} else
 				handleChange(response, value, { ...args, loop: true, length: nbRows });
 		},
@@ -104,6 +108,7 @@ function BlockForLoop({
 					preferences={preferences}
 					executeExpression={executeExpression}
 					custom={custom}
+					errors={errors}
 				/>
 				<DeclarationsDetachable
 					declarations={declarations}
@@ -128,7 +133,6 @@ function BlockForLoop({
 						</HandleRowButton>
 					</>
 				)}
-				<Errors errors={errors} />
 			</>
 		);
 	}

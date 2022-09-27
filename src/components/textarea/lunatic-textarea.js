@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { createLunaticComponent, Errors } from '../commons';
 import Textarea from './textarea';
 
-const LunaticTextarea = ({ errors, ...props }) => (
-	<>
-		<Textarea {...props} />
-		<Errors errors={errors} />
-	</>
-);
+const LunaticTextarea = ({ errors, ...props }) => {
+	const { id } = props;
+	return (
+		<>
+			<Textarea {...props} />
+			<Errors errors={errors} activeId={id} />
+		</>
+	);
+};
 
 LunaticTextarea.defaultProps = {
 	rows: 1,

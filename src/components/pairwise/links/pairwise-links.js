@@ -5,7 +5,6 @@ import {
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../../declarations';
-import { Errors } from '../../commons';
 
 const PairwiseLinks = ({
 	declarations,
@@ -65,7 +64,6 @@ const PairwiseLinks = ({
 					id={id}
 					custom={custom}
 				/>
-				<Errors errors={errors} />
 			</>
 		);
 

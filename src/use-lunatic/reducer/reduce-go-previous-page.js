@@ -70,6 +70,7 @@ function goPreviousPage(state, { previous }) {
 		nbIterations: undefined,
 		subPage: undefined,
 		nbSubPages: undefined,
+		shallowIteration: undefined,
 	};
 
 	const currentErrors = errors ? errors[getPageTag(updatedPager)] : undefined;
