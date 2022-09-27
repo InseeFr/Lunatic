@@ -1,25 +1,25 @@
-// @mixin preventSelect() {
-// 	-moz-user-select: -moz-none;
-// 	-khtml-user-select: none;
-// 	-webkit-user-select: none;
-// }
+@mixin preventSelect() {
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+}
 
-// @mixin placeholder {
-// 	color: gray;
-// 	@include defaultFont();
-// 	font-size: 15px;
-// 	line-height: 34px;
-// 	vertical-align: middle;
-// 	font-weight: normal;
-// }
+@mixin placeholder {
+	color: gray;
+	@include defaultFont();
+	font-size: 15px;
+	line-height: 34px;
+	vertical-align: middle;
+	font-weight: normal;
+}
 
-// @mixin defaultFont {
-// 	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-// }
+@mixin defaultFont {
+	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
 
-// @mixin selection() {
-// 	@include defaultFont();
-// }
+@mixin selection() {
+	@include defaultFont();
+}
 
 .lunatic-combo-box-container {
 	position: relative;
@@ -51,11 +51,11 @@
 						line-height: 34px;
 						font-size: 15px;
 						padding-left: 4px;
-						// @include selection();
+						@include selection();
 
-						// &::placeholder {
-						// 	@include placeholder();
-						// }
+						&::placeholder {
+							@include placeholder();
+						}
 					}
 
 					.lunatic-combo-box-selected {
@@ -64,14 +64,11 @@
 						background-color: var(--color-combo-box-background);
 						border-radius: 5px;
 						padding-left: 4px;
-						// @include selection();
+						@include selection();
 						outline: none;
 
 						display: block;
-						// @include placeholder();
-
-						.placeholder {
-						}
+						@include placeholder();
 
 						.selection {
 							display: inline-block;
@@ -86,7 +83,7 @@
 				}
 
 				.lunatic-combo-box-panel {
-					// @include defaultFont();
+					@include defaultFont();
 					height: 0;
 					opacity: 0;
 					background-color: var(--color-combo-box-background);
@@ -183,11 +180,6 @@
 					&.displayed {
 						display: block;
 					}
-
-					.placeholder {
-					}
-					.selection {
-					}
 				}
 			}
 
@@ -207,7 +199,7 @@
 				}
 				.lunatic-combo-box-option {
 					white-space: nowrap;
-					// @include preventSelect();
+					@include preventSelect();
 				}
 			}
 		}
