@@ -1,6 +1,6 @@
 import React from 'react';
 import LunaticRadioGroup from '../../radio';
-import { Errors } from '../../commons';
+import { createCustomizableLunaticField, Errors } from '../../commons';
 
 function LunaticCheckboxOne({ errors, ...props }) {
 	return (
@@ -10,4 +10,4 @@ function LunaticCheckboxOne({ errors, ...props }) {
 		</>
 	);
 }
-export default LunaticCheckboxOne;
+export default createCustomizableLunaticField(LunaticCheckboxOne);

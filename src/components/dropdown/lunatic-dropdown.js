@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createLunaticComponent, Errors } from '../commons';
+import {
+	createCustomizableLunaticField,
+	createLunaticComponent,
+	Errors,
+} from '../commons';
 import Dropdown from './dropdown';
 
 function LunaticDropdown({
@@ -56,4 +60,6 @@ LunaticDropdown.defaultProps = {
 	value: null,
 };
 
-export default createLunaticComponent(LunaticDropdown);
+export default createLunaticComponent(
+	createCustomizableLunaticField(LunaticDropdown)
+);
