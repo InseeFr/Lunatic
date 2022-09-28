@@ -7,13 +7,15 @@ function validateComponentsForModal(state, components) {
 		const { controls, componentType, id } = component;
 		if (Array.isArray(controls)) {
 			const componentErrors = resolveComponentControls(state, controls);
-			const { shallowIteration } = pager;
-			const idC =
-				shallowIteration !== undefined ? `${id}-${shallowIteration}` : id;
-			return {
-				...errors,
-				[idC]: componentErrors,
-			};
+			if (componentErrors.length) {
+				const { shallowIteration } = pager;
+				const idC =
+					shallowIteration !== undefined ? `${id}-${shallowIteration}` : id;
+				return {
+					...errors,
+					[idC]: componentErrors,
+				};
+			}
 		}
 		//Thanks to init which split basic Loops, we only go into unPaginatedLoops
 		if (['Loop', 'RosterForLoop'].includes(componentType)) {
