@@ -166,6 +166,8 @@ function reduceGoNextPage(state) {
 		resetLoopBindings(variables);
 	}
 	if (next === page) {
+		return state;
+		debugger;
 		// TODO on devrait jamais en arriver là !
 		console.log("next === page, we shoudn't be there");
 	}

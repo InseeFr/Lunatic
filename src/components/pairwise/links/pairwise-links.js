@@ -1,10 +1,11 @@
 import React, { useCallback } from 'react';
-import LinksOrchestrator from './links-orchestrator';
+import LinksOrchestrator from './orchestrator';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../../declarations';
+import NothingToDisplay from '../../commons/components/nothing-to-display';
 
 const PairwiseLinks = ({
 	declarations,
@@ -24,6 +25,7 @@ const PairwiseLinks = ({
 	errors,
 }) => {
 	const nbRows = xAxisIterations * yAxisIterations;
+
 	const handleChangeLinks = useCallback(
 		function (response, value, args) {
 			handleChange(response, value, args);
@@ -31,7 +33,7 @@ const PairwiseLinks = ({
 		[handleChange]
 	);
 
-	if (nbRows > 0)
+	if (nbRows > 1)
 		return (
 			<>
 				<DeclarationsBeforeText
@@ -66,8 +68,7 @@ const PairwiseLinks = ({
 				/>
 			</>
 		);
-
-	return null;
+	return <NothingToDisplay />;
 };
 
 export default PairwiseLinks;
