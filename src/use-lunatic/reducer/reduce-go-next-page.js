@@ -19,7 +19,11 @@ function getNextPage(state) {
 function reduceNextSubPage(state) {
 	const { pager } = state;
 	const { subPage } = pager;
-	const newPager = { ...pager, subPage: subPage + 1 };
+	const newPager = {
+		...pager,
+		subPage: subPage + 1,
+		shallowIteration: undefined,
+	};
 	return {
 		...state,
 		pager: { ...newPager, lastReachedPage: getNewReachedPage(newPager) },
@@ -54,6 +58,7 @@ function reduceNextPage(state, { next }) {
 		nbIterations: undefined,
 		subPage: undefined,
 		nbSubPages: undefined,
+		shallowIteration: undefined,
 	};
 	return {
 		...state,
@@ -78,6 +83,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 			nbSubPages: undefined,
 			iteration: undefined,
 			nbIterations: undefined,
+			shallowIteration: undefined,
 		};
 		return {
 			...state,
@@ -109,6 +115,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 			nbSubPages: subPages.length,
 			iteration: 0,
 			nbIterations,
+			shallowIteration: undefined,
 		};
 		return {
 			...state,
@@ -126,7 +133,6 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 
 function validateChange(state) {
 	if (isOnEmptyPage(state)) {
-		// Is it necessary to wrap by control reducer ?
 		return reduceGoNextPage(state);
 	}
 	return state;

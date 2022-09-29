@@ -70,9 +70,6 @@
 						display: block;
 						@include placeholder();
 
-						.placeholder {
-						}
-
 						.selection {
 							display: inline-block;
 							line-height: 34px;
@@ -100,8 +97,6 @@
 						height: max-content;
 						box-shadow: 0 2px 2px grey;
 						border-radius: 4px;
-					}
-					&:focus {
 					}
 					.lunatic-combo-box-option {
 						text-overflow: ellipsis;
@@ -182,11 +177,6 @@
 					display: none;
 					&.displayed {
 						display: block;
-					}
-
-					.placeholder {
-					}
-					.selection {
 					}
 				}
 			}

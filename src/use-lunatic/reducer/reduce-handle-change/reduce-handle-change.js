@@ -22,7 +22,14 @@ function updateVariables(state, action) {
 	const { payload } = action;
 	const { response, value, args = {} } = payload;
 	const { name } = response;
-	const { loop, index, length, linksIterations, paginatedLoop } = args;
+	const {
+		loop,
+		index,
+		length,
+		linksIterations,
+		paginatedLoop,
+		shallowIteration,
+	} = args;
 
 	const { pager, variables } = state;
 	const { nbIterations, iteration } = pager;
@@ -53,6 +60,12 @@ function updateVariables(state, action) {
 		return { ...state, variables: variablesNext };
 	} else {
 		const variablesNext = reduceVariablesSimple(variables, { name, value });
+		if (loop)
+			return {
+				...state,
+				variables: variablesNext,
+				pager: { ...pager, shallowIteration },
+			};
 		return { ...state, variables: variablesNext };
 	}
 }

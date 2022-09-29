@@ -37,6 +37,15 @@ const stories = {
 export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
+export const BoucleN = Template.bind({});
+
+BoucleN.args = {
+	id: 'boucle-dylan',
+	pagination: true,
+	activeControls: true,
+	source: boucleNTabDynamique,
+};
+
 export const Simple = Template.bind({});
 
 Simple.args = {
@@ -70,13 +79,4 @@ LinkedLoop2.args = {
 	source: linkedLoop2,
 	pagination: true,
 	activeControls: true,
-};
-
-export const BoucleN = Template.bind({});
-
-BoucleN.args = {
-	id: 'boucle-dylan',
-	pagination: true,
-	activeControls: true,
-	source: boucleNTabDynamique,
 };

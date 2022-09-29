@@ -5,7 +5,6 @@ import {
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../../declarations';
-import { Errors } from '../../commons';
 import NothingToDisplay from '../../commons/components/nothing-to-display';
 
 const PairwiseLinks = ({
@@ -67,10 +66,8 @@ const PairwiseLinks = ({
 					id={id}
 					custom={custom}
 				/>
-				<Errors errors={errors} />
 			</>
 		);
-
 	return <NothingToDisplay />;
 };
 

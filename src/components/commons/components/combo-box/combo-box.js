@@ -48,7 +48,7 @@ function ComboBox({
 				actions.onInit({ options, value, selectedIndex, getOptionValue })
 			);
 		},
-		[value, selectedIndex, options, getOptionValue]
+		[options, value, selectedIndex, getOptionValue]
 	);
 
 	const onFocus = useCallback(function () {

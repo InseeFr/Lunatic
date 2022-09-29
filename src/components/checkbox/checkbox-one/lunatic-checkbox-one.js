@@ -1,13 +1,14 @@
 import React from 'react';
 import LunaticRadioGroup from '../../radio';
-import { Errors } from '../../commons';
+import { createCustomizableLunaticField, Errors } from '../../commons';
 
 function LunaticCheckboxOne({ errors, ...props }) {
+	const { id } = props;
 	return (
 		<>
 			<LunaticRadioGroup {...props} checkboxStyle={true} />
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</>
 	);
 }
-export default LunaticCheckboxOne;
+export default createCustomizableLunaticField(LunaticCheckboxOne);
