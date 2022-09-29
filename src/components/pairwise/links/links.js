@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import LinksOrchestrator from './links-orchestrator';
+import LinksOrchestrator from './orchestrator';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,

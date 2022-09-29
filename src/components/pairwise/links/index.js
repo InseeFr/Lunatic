@@ -1,1 +1,1 @@
-export { default } from './pairwise-links';
+export { default } from './links';

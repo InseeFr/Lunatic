@@ -1,11 +1,11 @@
 import React from 'react';
-import Orchestrator from '../../utils/orchestrator';
+import Orchestrator from '../utils/orchestrator';
 import links from './links';
 import data from './data';
-import defaultArgTypes from '../../utils/default-arg-types';
+import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Pairwise/Links',
+	title: 'PairwiseLinks',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };
