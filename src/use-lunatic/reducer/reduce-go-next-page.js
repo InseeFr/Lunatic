@@ -170,6 +170,7 @@ function reduceGoNextPage(state) {
 		resetLoopBindings(variables);
 	}
 	if (next === page) {
+		// TODO: check why next === page, doesn't seems to be normal
 		return state;
 	}
 
