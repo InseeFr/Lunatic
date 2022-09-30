@@ -5,7 +5,7 @@ import data from './data';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'PairwiseLinks',
+	title: 'Components/PairwiseLinks',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };
