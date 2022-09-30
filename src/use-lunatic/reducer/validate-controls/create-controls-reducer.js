@@ -10,7 +10,6 @@ function validateComponents(state, components) {
 			const { shallowIteration } = pager;
 			const idC =
 				shallowIteration !== undefined ? `${id}-${shallowIteration}` : id;
-			debugger;
 			return {
 				...errors,
 				[idC]: componentErrors,

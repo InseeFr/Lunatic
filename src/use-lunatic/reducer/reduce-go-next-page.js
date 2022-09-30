@@ -161,15 +161,16 @@ function reduceGoNextPage(state) {
 	const next = getNextPage(state);
 	const { isLoop, iterations, loopDependencies } = pages[next];
 
-	if (isInLoop && !isLoop) {
-		//End of the loop, we reset bindings
+	const pageComponents = pages[page].components.map(
+		({ componentType }) => componentType
+	);
+
+	if ((isInLoop && !isLoop) || pageComponents.includes('PairwiseLinks')) {
+		//End of the loop or PairwiseLinks, we reset bindings
 		resetLoopBindings(variables);
 	}
 	if (next === page) {
 		return state;
-		debugger;
-		// TODO on devrait jamais en arriver là !
-		console.log("next === page, we shoudn't be there");
 	}
 
 	if (isLoop) {
