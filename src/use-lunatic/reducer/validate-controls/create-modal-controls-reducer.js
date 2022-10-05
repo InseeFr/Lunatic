@@ -1,5 +1,9 @@
 import { resolveComponentControls } from './validation-utils';
-import { getComponentsFromState, getPageTag } from '../../commons';
+import {
+	getComponentsFromState,
+	getPageTag,
+	getErrorsWithoutEmptyValue,
+} from '../../commons';
 
 function validateComponentsForModal(state, components) {
 	const { pager } = state;
@@ -11,10 +15,10 @@ function validateComponentsForModal(state, components) {
 				const { shallowIteration } = pager;
 				const idC =
 					shallowIteration !== undefined ? `${id}-${shallowIteration}` : id;
-				return {
+				return getErrorsWithoutEmptyValue({
 					...errors,
 					[idC]: componentErrors,
-				};
+				});
 			}
 		}
 		//Thanks to init which split basic Loops, we only go into unPaginatedLoops
@@ -22,11 +26,11 @@ function validateComponentsForModal(state, components) {
 			// TODO handle the case where shallowInteration hasn't been initalized because not handleChange fired
 			const { components } = component;
 			const recurs = validateComponentsForModal(state, components);
-			return {
+			return getErrorsWithoutEmptyValue({
 				...((state.errors || {})[getPageTag(pager)] || {}),
 				...errors,
 				...recurs,
-			};
+			});
 		}
 		// If no error we remove the possible previous errors
 		return {};
