@@ -21,9 +21,6 @@ function LabelSelection({
 			})}
 			aria-labelledby={labelledBy}
 		>
-			{console.log('options', options)}
-			{console.log('option', option)}
-
 			<Renderer option={option} placeholder={placeholder} search={search} />
 		</div>
 	);

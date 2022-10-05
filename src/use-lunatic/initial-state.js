@@ -18,6 +18,7 @@ const INITIAL_STATE = {
 		subPage: undefined,
 		nbSubPages: undefined,
 		iteration: undefined,
+		shallowIteration: undefined,
 		nbIterations: undefined,
 	},
 	waiting: false,

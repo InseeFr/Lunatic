@@ -36,7 +36,7 @@ function LunaticSuggester(props) {
 				value={value}
 				custom={custom}
 			/>
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</>
 	);
 }

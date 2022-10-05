@@ -19,7 +19,11 @@ function getNextPage(state) {
 function reduceNextSubPage(state) {
 	const { pager } = state;
 	const { subPage } = pager;
-	const newPager = { ...pager, subPage: subPage + 1 };
+	const newPager = {
+		...pager,
+		subPage: subPage + 1,
+		shallowIteration: undefined,
+	};
 	return {
 		...state,
 		pager: { ...newPager, lastReachedPage: getNewReachedPage(newPager) },
@@ -54,6 +58,7 @@ function reduceNextPage(state, { next }) {
 		nbIterations: undefined,
 		subPage: undefined,
 		nbSubPages: undefined,
+		shallowIteration: undefined,
 	};
 	return {
 		...state,
@@ -78,6 +83,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 			nbSubPages: undefined,
 			iteration: undefined,
 			nbIterations: undefined,
+			shallowIteration: undefined,
 		};
 		return {
 			...state,
@@ -109,6 +115,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 			nbSubPages: subPages.length,
 			iteration: 0,
 			nbIterations,
+			shallowIteration: undefined,
 		};
 		return {
 			...state,
@@ -126,7 +133,6 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 
 function validateChange(state) {
 	if (isOnEmptyPage(state)) {
-		// Is it necessary to wrap by control reducer ?
 		return reduceGoNextPage(state);
 	}
 	return state;
@@ -155,13 +161,17 @@ function reduceGoNextPage(state) {
 	const next = getNextPage(state);
 	const { isLoop, iterations, loopDependencies } = pages[next];
 
-	if (isInLoop && !isLoop) {
-		//End of the loop, we reset bindings
+	const pageComponents = pages[page].components.map(
+		({ componentType }) => componentType
+	);
+
+	if ((isInLoop && !isLoop) || pageComponents.includes('PairwiseLinks')) {
+		//End of the loop or PairwiseLinks, we reset bindings
 		resetLoopBindings(variables);
 	}
 	if (next === page) {
-		// TODO on devrait jamais en arriver là !
-		console.log("next === page, we shoudn't be there");
+		// TODO: check why next === page, doesn't seems to be normal
+		return state;
 	}
 
 	if (isLoop) {

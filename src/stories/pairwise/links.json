@@ -1,5 +1,5 @@
 {
-	"maxPage": "3",
+	"maxPage": "5",
 	"components": [
 		{
 			"id": "seq",
@@ -38,12 +38,32 @@
 			]
 		},
 		{
+			"id": "age-loop",
+			"componentType": "Loop",
+			"paginatedLoop": true,
+			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"page": "2",
+			"maxPage": "1",
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"loopDependencies": ["PRENOM"],
+			"components": [
+				{
+					"id": "age-quest",
+					"label": { "value": "\"Âge de \" || PRENOM", "type": "VTL|MD" },
+					"conditionFilter": { "type": "VTL", "value": "true" },
+					"componentType": "InputNumber",
+					"page": "2.1",
+					"response": { "name": "AGE" }
+				}
+			]
+		},
+		{
 			"id": "pariwise-links",
 			"componentType": "PairwiseLinks",
 			"conditionFilter": { "value": "true" },
 			"xAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
 			"yAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
-			"page": "2",
+			"page": "3",
 			"components": [
 				{
 					"componentType": "Dropdown",
@@ -57,44 +77,80 @@
 						"name": "LINKS"
 					},
 					"options": [
-						{ "value": "1", "label": "Conjoint" },
-						{ "value": "2", "label": "Mère, père" },
-						{ "value": "3", "label": "Fille, fils" },
+						{ "value": "1", "label": "\"Conjoint\"" },
+						{ "value": "2", "label": "\"Mère, père\"" },
+						{ "value": "3", "label": "\"Fille, fils\"" },
 						{
 							"value": "4",
-							"label": "Belle-mère, beau-père, conjoint du parent"
+							"label": "\"Belle-mère, beau-père, conjoint du parent\""
 						},
 						{
 							"value": "5",
-							"label": "Belle-mère, beau-père, parent du conjoint"
+							"label": "\"Belle-mère, beau-père, parent du conjoint\""
 						},
-						{ "value": "6", "label": "Enfant du conjoint" },
-						{ "value": "7", "label": "Conjoint d’un enfant" },
-						{ "value": "8", "label": "Sœur, frère (y compris demi et quasi)" },
-						{ "value": "9", "label": "Grand-parent" },
-						{ "value": "10", "label": "Petit-enfant" },
-						{ "value": "11", "label": "Tante, oncle" },
-						{ "value": "12", "label": "Cousin(e)" },
-						{ "value": "13", "label": "Nièce, neveu" },
-						{ "value": "14", "label": "Belle-sœur, beau-frère" },
-						{ "value": "15", "label": "Enfant placé" },
-						{ "value": "16", "label": "Autre" }
+						{ "value": "6", "label": "\"Enfant du conjoint\"" },
+						{ "value": "7", "label": "\"Conjoint d’un enfant\"" },
+						{
+							"value": "8",
+							"label": "\"Sœur, frère (y compris demi et quasi)\""
+						},
+						{ "value": "9", "label": "\"Grand-parent\"" },
+						{ "value": "10", "label": "\"Petit-enfant\"" },
+						{ "value": "11", "label": "\"Tante, oncle\"" },
+						{ "value": "12", "label": "\"Cousin(e)\"" },
+						{ "value": "13", "label": "\"Nièce, neveu\"" },
+						{ "value": "14", "label": "\"Belle-sœur, beau-frère\"" },
+						{ "value": "15", "label": "\"Enfant placé\"" },
+						{ "value": "16", "label": "\"Autre\"" }
 					]
 				}
 			]
 		},
 		{
 			"id": "pariwise-block",
-			"componentType": "PairwiseBlock",
-			"conditionFilter": { "value": "true" },
-			"page": "3"
-		}
+			"componentType": "Loop",
+			"paginatedLoop": true,
+			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"page": "4",
+			"maxPage": "1",
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"loopDependencies": ["PRENOM"],
+			"components": [
+				{
+					"componentType": "Textarea",
+					"page": "4.1",
+					"label": {
+						"value": "PRENOM || \", why do you live without your parents?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "\"3\" not_in LINKS and AGE < 18",
+						"type": "VTL"
+					},
+					"id": "why",
+					"response": {
+						"name": "WHY"
+					}
+				}
+			]
+		},
+		{ "componentType": "Sequence", "label": "\"END\"", "page": 5 }
 	],
 	"variables": [
 		{
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
-			"componentRef": "loop-prenom",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -106,13 +162,23 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "LINKS",
-			"componentRef": "loop-prenom",
 			"values": {
 				"PREVIOUS": [[null]],
 				"COLLECTED": [[null]],
 				"FORCED": [[null]],
 				"EDITED": [[null]],
 				"INPUTED": [[null]]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "WHY",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		},
 		{
