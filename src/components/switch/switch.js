@@ -70,4 +70,4 @@ Switch.defaultProps = {
 	},
 };
 
-export default createCustomizableLunaticField(Switch);
+export default createCustomizableLunaticField(Switch, 'Switch');

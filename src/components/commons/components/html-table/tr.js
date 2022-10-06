@@ -24,4 +24,4 @@ Tr.defaultProps = {
 	className: undefined,
 };
 
-export default createCustomizableLunaticField(Tr);
+export default createCustomizableLunaticField(Tr, 'Tr');

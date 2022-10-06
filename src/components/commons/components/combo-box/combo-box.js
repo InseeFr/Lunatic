@@ -184,4 +184,4 @@ ComboBox.defaultProps = {
 	getOptionValue: getDefaultOptionValue,
 };
 
-export default createCustomizableLunaticField(ComboBox);
+export default createCustomizableLunaticField(ComboBox, 'ComboBox');

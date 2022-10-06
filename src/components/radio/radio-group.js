@@ -34,4 +34,4 @@ function Radio({ options, value, id, onClick, checkboxStyle = false }) {
 	});
 }
 
-export default createCustomizableLunaticField(Radio);
+export default createCustomizableLunaticField(Radio, 'Radio');

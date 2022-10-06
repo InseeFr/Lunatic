@@ -50,7 +50,7 @@ function CheckboxGroupContainer({ children }) {
 }
 
 function CheckboxGroup({ options, value, id, handleChange }) {
-	return options.map(function (option, index) {
+	return options.map(function (option) {
 		const { label, response } = option;
 
 		if (response && value) {
@@ -83,4 +83,4 @@ function CheckboxGroup({ options, value, id, handleChange }) {
 	});
 }
 
-export default createCustomizableLunaticField(CheckboxGroup);
+export default createCustomizableLunaticField(CheckboxGroup, 'CheckboxGroup');

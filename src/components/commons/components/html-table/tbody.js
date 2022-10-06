@@ -23,4 +23,4 @@ Tbody.defaultProps = {
 	className: undefined,
 };
 
-export default createCustomizableLunaticField(Tbody);
+export default createCustomizableLunaticField(Tbody, 'Tbody');

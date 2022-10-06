@@ -38,4 +38,4 @@ function Textarea({
 	);
 }
 
-export default createCustomizableLunaticField(Textarea);
+export default createCustomizableLunaticField(Textarea, 'Textarea');

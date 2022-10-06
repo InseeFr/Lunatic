@@ -12,4 +12,4 @@ function Label({ children, id, htmlFor, className, style }) {
 	return null;
 }
 
-export default createCustomizableLunaticField(Label);
+export default createCustomizableLunaticField(Label, 'Label');
