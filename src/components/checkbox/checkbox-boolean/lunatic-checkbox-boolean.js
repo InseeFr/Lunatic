@@ -10,6 +10,7 @@ function LunaticCheckboxBoolean({
 	onChange,
 	custom,
 	errors,
+	label,
 }) {
 	return (
 		<>
@@ -20,8 +21,9 @@ function LunaticCheckboxBoolean({
 				onClick={onChange}
 				disabled={disabled}
 				custom={custom}
+				label={label}
 			/>
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</>
 	);
 }

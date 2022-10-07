@@ -16,6 +16,7 @@ function OrchestratedComponent({
 	linksIterations,
 	executeExpression,
 	custom,
+	errors,
 }) {
 	const { componentType } = component;
 
@@ -42,6 +43,7 @@ function OrchestratedComponent({
 				value={value}
 				executeExpression={executeExpression}
 				custom={custom}
+				errors={errors}
 			/>
 		);
 	}

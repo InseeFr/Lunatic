@@ -1,6 +1,10 @@
 import React from 'react';
 import RadioGroup from './radio-group';
-import { createLunaticComponent, Errors } from '../commons';
+import {
+	createCustomizableLunaticField,
+	createLunaticComponent,
+	Errors,
+} from '../commons';
 import './radio.scss';
 
 function LunaticRadioGroup(props) {
@@ -15,12 +19,16 @@ function LunaticRadioGroup(props) {
 				checkboxStyle={checkboxStyle}
 				custom={custom}
 			/>
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</>
 	);
 }
 
-export default createLunaticComponent(LunaticRadioGroup, {
-	fieldset: true,
-	inputId: 'lunatic-radio-group',
-});
+export default createLunaticComponent(
+	createCustomizableLunaticField(LunaticRadioGroup),
+	{
+		// set it to true if you want to display a fieldset + legend on a component
+		fieldset: true,
+		inputId: 'lunatic-radio-group',
+	}
+);

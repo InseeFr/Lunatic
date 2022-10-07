@@ -5,6 +5,7 @@ import simpleNum from './V2_ControlesNum_horsBoucle_PasPageFin';
 import linkedLoop from './V2_Controles_BouclesLiees_PasPageFin';
 import linkedLoop2 from './V2_Controles_BouclesLiees2_PasPageFin';
 import defaultArgTypes from '../../utils/default-arg-types';
+import boucleNTabDynamique from './boucles-n';
 
 const stories = {
 	title: 'Questionnaires-Tests/Controls',
@@ -36,6 +37,15 @@ const stories = {
 export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
+export const BoucleN = Template.bind({});
+
+BoucleN.args = {
+	id: 'boucle-dylan',
+	pagination: true,
+	activeControls: true,
+	source: boucleNTabDynamique,
+};
+
 export const Simple = Template.bind({});
 
 Simple.args = {

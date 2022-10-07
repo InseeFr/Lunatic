@@ -96,9 +96,6 @@ function OrchestratorForStories({
 	const errors = getErrors();
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
-	console.log('errors: ', errors);
-	console.log('modalErrors: ', modalErrors);
-	console.log('currentErrors: ', currentErrors);
 
 	return (
 		<div className="container">
@@ -139,11 +136,7 @@ function OrchestratorForStories({
 				maxPage={maxPage}
 				getData={getData}
 			/>
-			<lunatic.Modal
-				title="Des points requièrent votre attention."
-				errors={modalErrors}
-				goNext={goNextPage}
-			/>
+			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
 			<Waiting status={waiting}>
 				<div className="waiting-orchestrator">
 					Initialisation des données de suggestion...

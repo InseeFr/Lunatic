@@ -4,6 +4,7 @@ import {
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../declarations';
+import { createCustomizableLunaticField } from '../commons';
 
 function Subsequence({ id, declarations, label }) {
 	return (
@@ -22,4 +23,4 @@ function Subsequence({ id, declarations, label }) {
 	);
 }
 
-export default Subsequence;
+export default createCustomizableLunaticField(Subsequence);

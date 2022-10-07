@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckboxOption } from '../commons';
 import { createCustomizableLunaticField } from '../../commons';
 
-function CheckboxBoolean({ checked, id, disabled, onClick, labelId }) {
+function CheckboxBoolean({ checked, id, disabled, onClick, labelId, label }) {
 	return (
 		<CheckboxOption
 			disabled={disabled}
@@ -11,6 +11,7 @@ function CheckboxBoolean({ checked, id, disabled, onClick, labelId }) {
 			onClick={onClick}
 			labelledBy={labelId}
 			value={checked}
+			label={label}
 		/>
 	);
 }

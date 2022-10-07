@@ -4,7 +4,13 @@ import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
 import getVtlCompatibleValue from '../../../utils/vtl';
-import { VTL, VTL_MD, X_AXIS, Y_AXIS } from '../../../utils/constants';
+import {
+	COLLECTED,
+	VTL,
+	VTL_MD,
+	X_AXIS,
+	Y_AXIS,
+} from '../../../utils/constants';
 
 function validateExpression(expObject) {
 	if (typeof expObject === 'object') {
@@ -50,7 +56,6 @@ function createExecuteExpression(variables, features) {
 	 */
 	function pushToLazy(name) {
 		const { CalculatedLinked = [] } = variables[name];
-
 		CalculatedLinked.forEach(function (variable) {
 			const { name } = variable;
 			setToRefreshCalculated(name, variable);
@@ -69,6 +74,34 @@ function createExecuteExpression(variables, features) {
 			collectedUpdated.set(name, []);
 		}
 		pushToLazy(name);
+	}
+
+	/**
+	 *
+	 * @param {*} variables
+	 * @param {*} iteration
+	 */
+	function setLoopBindings(variables, iteration) {
+		Object.entries(bindings).forEach(([k, v]) => {
+			const { type, value } = variables[k];
+			if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value)) {
+				bindings[k] = value[iteration];
+				pushToLazy(k);
+			}
+		});
+	}
+
+	/**
+	 *
+	 * @param {*} variables
+	 */
+	function resetLoopBindings(variables) {
+		Object.entries(bindings).forEach(([k, v]) => {
+			const { type, value } = variables[k];
+			if (type === COLLECTED && Array.isArray(value) && !Array.isArray(v)) {
+				bindings[k] = value;
+			}
+		});
 	}
 
 	function getVariablesAndCach(expression) {
@@ -158,6 +191,7 @@ function createExecuteExpression(variables, features) {
 				console.warn(e);
 			}
 		}
+
 		const vtlBindings = refreshCalculated(
 			fillVariablesValues(collecteVariables(bindingDependencies), {
 				iteration,
@@ -182,7 +216,7 @@ function createExecuteExpression(variables, features) {
 		return memoized;
 	}
 
-	return [execute, updateBindings];
+	return [execute, updateBindings, setLoopBindings, resetLoopBindings];
 }
 
 export default createExecuteExpression;

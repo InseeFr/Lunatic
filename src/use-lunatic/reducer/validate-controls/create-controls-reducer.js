@@ -3,17 +3,30 @@ import { getComponentsFromState, getPageTag } from '../../commons';
 
 function validateComponents(state, components) {
 	const { pager } = state;
-	// TODO check components in components (Loop, etc...)
 	return components.reduce(function (errors, component) {
-		const { controls } = component;
+		const { controls, componentType, id } = component;
 		if (Array.isArray(controls)) {
 			const componentErrors = resolveComponentControls(state, controls);
-			if (componentErrors.length) {
-				return { ...errors, [getPageTag(pager)]: componentErrors };
-			}
+			const { shallowIteration } = pager;
+			const idC =
+				shallowIteration !== undefined ? `${id}-${shallowIteration}` : id;
+			return {
+				...errors,
+				[idC]: componentErrors,
+			};
+		}
+		//Thanks to init which split basic Loops, we only go into unPaginatedLoops
+		if (['Loop', 'RosterForLoop'].includes(componentType)) {
+			const { components } = component;
+			const recurs = validateComponents(state, components);
+			return {
+				...((state.errors || {})[getPageTag(pager)] || {}),
+				...errors,
+				...recurs,
+			};
 		}
 		// If no error we remove the possible previous errors
-		return { ...errors, [getPageTag(pager)]: [] };
+		return {};
 	}, {});
 }
 
@@ -29,16 +42,17 @@ function createControlsReducer(reducer) {
 			//if no active controls or is the first time we reach the page
 			return { ...updatedState, currentErrors: undefined };
 		const components = getComponentsFromState(updatedState);
-
-		const errors = {
-			...state.errors,
-			...validateComponents(updatedState, components),
-		};
 		const { pager } = updatedState;
+		const { errors = {} } = state;
+		const pageTag = getPageTag(pager);
+		const e = {
+			...errors,
+			[pageTag]: validateComponents(updatedState, components),
+		};
 		return {
 			...updatedState,
-			errors,
-			currentErrors: errors[getPageTag(pager)],
+			errors: e,
+			currentErrors: e[pageTag],
 		};
 	};
 }

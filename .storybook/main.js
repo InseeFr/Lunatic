@@ -1,4 +1,5 @@
 const path = require('path');
+const { config } = require('process');
 
 module.exports = {
 	stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -11,6 +12,10 @@ module.exports = {
 	core: {
 		builder: '@storybook/builder-webpack5',
 	},
+	env: (config) => ({
+		...config,
+		NODE_ENV: 'development',
+	}),
 	webpackFinal: async (config, { configType }) => {
 		// `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
 		// You can change the configuration based on that.

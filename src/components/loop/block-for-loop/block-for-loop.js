@@ -1,15 +1,19 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { Errors } from '../../commons';
+import React, { useState, useCallback } from 'react';
+import { createCustomizableLunaticField, Errors } from '../../commons';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../../declarations';
 import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
+import HandleRowButton from '../commons/handle-row-button';
+import D from '../../../i18n';
+import getInitLength from '../commons/get-init-length';
 
 function BlockForLoop({
 	declarations,
 	id,
+	label,
 	lines,
 	components,
 	handleChange,
@@ -25,32 +29,42 @@ function BlockForLoop({
 	paginatedLoop,
 	errors,
 }) {
-	const [nbRows, setNbRows] = useState(-1);
-	const [min, setMin] = useState(undefined);
-	const [max, setMax] = useState(undefined);
+	const min = lines?.min;
+	const max = lines?.max;
 
-	useEffect(
+	const [nbRows, setNbRows] = useState(() => {
+		if (iterations) {
+			//This should be an Integer
+			return Number.parseInt(iterations);
+		}
+		const initLength = getInitLength(valueMap);
+		return Math.max(initLength, min);
+	});
+
+	const addRow = useCallback(
 		function () {
-			if (lines) {
-				const { min, max } = lines;
-				if (min !== undefined && max !== undefined) {
-					setMin(min);
-					setMax(max);
-				}
+			if (nbRows < max) {
+				setNbRows(nbRows + 1);
 			}
 		},
-		[lines]
+		[max, nbRows]
 	);
 
-	useEffect(
+	const removeRow = useCallback(
 		function () {
-			if (Number.parseInt(iterations)) {
-				setNbRows(iterations);
-			} else if (min && max) {
-				setNbRows(min);
+			if (nbRows > 1) {
+				const newNbRows = nbRows - 1;
+				setNbRows(newNbRows);
+				Object.entries(valueMap).forEach(([k, v]) => {
+					const newValue = v.reduce((acc, e, i) => {
+						if (i < newNbRows) return [...acc, e];
+						return acc;
+					}, []);
+					handleChange({ name: k }, newValue);
+				});
 			}
 		},
-		[min, max, iterations]
+		[nbRows, handleChange, valueMap]
 	);
 
 	const handleChangeLoop = useCallback(
@@ -58,7 +72,11 @@ function BlockForLoop({
 			if (!paginatedLoop) {
 				const v = valueMap[response.name];
 				v[args.index] = value;
-				handleChange(response, v, { loop: true, length: nbRows });
+				handleChange(response, v, {
+					loop: true,
+					length: nbRows,
+					shallowIteration: args.index,
+				});
 			} else
 				handleChange(response, value, { ...args, loop: true, length: nbRows });
 		},
@@ -90,20 +108,38 @@ function BlockForLoop({
 					preferences={preferences}
 					executeExpression={executeExpression}
 					custom={custom}
+					errors={errors}
 				/>
 				<DeclarationsDetachable
 					declarations={declarations}
 					id={id}
 					custom={custom}
 				/>
-				<Errors errors={errors} />
+				{min && max && min !== max && (
+					<>
+						<HandleRowButton
+							onClick={addRow}
+							disabled={nbRows === max}
+							custom={custom}
+						>
+							{label || D.DEFAULT_BUTTON_ADD}
+						</HandleRowButton>
+						<HandleRowButton
+							onClick={removeRow}
+							disabled={nbRows === 1}
+							custom={custom}
+						>
+							{D.DEFAULT_BUTTON_REMOVE}
+						</HandleRowButton>
+					</>
+				)}
 			</>
 		);
 	}
 	return null;
 }
 
-export default BlockForLoop;
+export default createCustomizableLunaticField(BlockForLoop);
 
 // handleChange={handleChange}
 // preferences={preferences}

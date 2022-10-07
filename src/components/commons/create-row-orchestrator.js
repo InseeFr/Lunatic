@@ -15,6 +15,7 @@ function createRowOrchestrator(Row) {
 		iteration,
 		xAxisIterations,
 		custom,
+		errors,
 	}) {
 		if (nbRows > 0) {
 			return new Array(nbRows).fill(null).map(function (_, index) {
@@ -37,6 +38,7 @@ function createRowOrchestrator(Row) {
 						shortcut={shortcut}
 						preferences={preferences}
 						missing={missing}
+						errors={errors}
 					/>
 				);
 			});

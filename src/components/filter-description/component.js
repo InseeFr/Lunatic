@@ -1,4 +1,5 @@
 import React from 'react';
+import { createCustomizableLunaticField } from '../commons';
 
 const FilterDescription = ({ id, label }) => (
 	<div
@@ -10,4 +11,4 @@ const FilterDescription = ({ id, label }) => (
 	</div>
 );
 
-export default FilterDescription;
+export default createCustomizableLunaticField(FilterDescription);

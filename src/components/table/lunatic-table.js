@@ -39,9 +39,11 @@ function LunaticTable({
 					iteration={iteration}
 					nbRows={nbRows}
 					valueMap={value}
+					//TODO propagate
+					errors={errors}
 				/>
 			</Table>
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</>
 	);
 }

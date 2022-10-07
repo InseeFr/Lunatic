@@ -5,6 +5,8 @@ import {
 	DeclarationsDetachable,
 } from '../declarations';
 import './sequence.scss';
+import { createCustomizableLunaticField } from '../commons';
+
 
 function Sequence({ declarations, label, id, style }) {
 	return (
@@ -19,4 +21,4 @@ function Sequence({ declarations, label, id, style }) {
 	);
 }
 
-export default Sequence;
+export default createCustomizableLunaticField(Sequence);

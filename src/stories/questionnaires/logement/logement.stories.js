@@ -1,6 +1,7 @@
 import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
 import logement from './source';
+import logementSum from './source-sum';
 import logementSequence from './source-sequence';
 import data from './data';
 import defaultArgTypes from '../../utils/default-arg-types';
@@ -37,6 +38,14 @@ Default.args = {
 	id: 'logement-default',
 	source: logement,
 	data,
+	pagination: true,
+};
+
+export const DefaultSum = Template.bind({});
+
+DefaultSum.args = {
+	id: 'logement-sum',
+	source: logementSum,
 	pagination: true,
 };
 

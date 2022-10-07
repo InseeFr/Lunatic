@@ -87,7 +87,6 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 						console.warn(e);
 					}
 				}
-
 				const value = buildValue({
 					expression,
 					logging,
@@ -97,9 +96,7 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 					linksIterations,
 					bindings,
 				});
-				if (iteration !== undefined) {
-					toRefreshVariables.delete(name);
-				}
+				if (iteration !== undefined) toRefreshVariables.delete(name);
 				return { ...sub, [name]: value };
 			}
 			return { ...sub, [name]: current };

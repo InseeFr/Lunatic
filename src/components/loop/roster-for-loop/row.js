@@ -16,6 +16,7 @@ function Row({
 	preferences,
 	executeExpression,
 	custom,
+	errors,
 }) {
 	const handleChangeRow = useCallback(
 		function (response, value) {
@@ -29,7 +30,7 @@ function Row({
 			<Tr id={id} custom={custom} row={rowIndex}>
 				{components.map(function (component) {
 					const { response, id } = component;
-					const idComponent = `${id}-${rowIndex + 1} `;
+					const idComponent = `${id}-${rowIndex} `;
 					let value = undefined;
 					const key = `${id}-${rowIndex}`;
 					if (response) {
@@ -54,6 +55,7 @@ function Row({
 								iteration={rowIndex}
 								executeExpression={executeExpression}
 								custom={custom}
+								errors={errors}
 							/>
 						</Td>
 					);

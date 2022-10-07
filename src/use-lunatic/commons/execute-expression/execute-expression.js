@@ -1,6 +1,7 @@
 import React from 'react';
 import { interpret } from '@inseefr/trevas';
 import MdLabel from '../../../components/commons/components/md-label';
+import getVtlCompatibleValue from '../../../utils/vtl';
 import { VTL, MD } from '../../../utils/constants';
 
 function isDataSet(result) {
@@ -17,7 +18,11 @@ function extractDataSetResult(dataSet) {
 }
 
 export function executeVtlExpression(expression, vtlBindings) {
-	const result = interpret(expression, vtlBindings);
+	const legalVtlBindings = Object.entries(vtlBindings).reduce(
+		(acc, [k, v]) => ({ ...acc, [k]: getVtlCompatibleValue(v) }),
+		{}
+	);
+	const result = interpret(expression, legalVtlBindings);
 	if (isDataSet(result)) {
 		return extractDataSetResult(result);
 	}

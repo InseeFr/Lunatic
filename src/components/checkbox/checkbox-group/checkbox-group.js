@@ -2,7 +2,6 @@ import React from 'react';
 import {
 	createCustomizableLunaticField,
 	useOnHandleChange,
-	Label,
 } from '../../commons';
 import { CheckboxOption } from '../commons';
 import './checkbox.scss';
@@ -17,6 +16,7 @@ function CheckBoxOptionWrapper({
 	onKeyDown,
 	handleChange,
 	response,
+	label,
 }) {
 	const booleanValue = value || false;
 
@@ -41,6 +41,7 @@ function CheckBoxOptionWrapper({
 			onClick={onClickOption}
 			value={booleanValue}
 			onKeyDown={onKeyDown}
+			label={label}
 		/>
 	);
 }
@@ -71,10 +72,8 @@ function CheckboxGroup({ options, value, id, handleChange }) {
 							onKeyDown={onClick}
 							response={response}
 							handleChange={handleChange}
+							label={label}
 						/>
-						<Label id={labelId} htmlFor={checkboxId}>
-							{label}
-						</Label>
 					</CheckboxGroupContainer>
 				);
 			}

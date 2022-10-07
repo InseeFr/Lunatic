@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.4.11-v2",
+	"version": "2.0.1-v2",
 	"workersVersion": "0.2.4-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
@@ -48,7 +48,7 @@
 		"library"
 	],
 	"dependencies": {
-		"@inseefr/trevas": "^0.1.0-bundle",
+		"@inseefr/trevas": "^0.1.16",
 		"@inseefr/vtl-2.0-antlr-tools": "^0.1.0-bundle",
 		"antlr4": "4.8.0",
 		"classnames": "^2.3.1",
@@ -60,6 +60,7 @@
 		"prop-types": "^15.7.2",
 		"react-keyboard-event-handler": "^1.5.4",
 		"react-markdown": "^8.0.3",
+		"react-number-format": "^5.0.0-beta.4",
 		"react-tooltip": "^4.2.15",
 		"remove-accents": "^0.4.2",
 		"sass": "^1.32.2",
