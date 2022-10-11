@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { createCustomizableLunaticField, Errors } from '../../commons';
+import { createCustomizableLunaticField } from '../../commons';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
@@ -139,13 +139,4 @@ function BlockForLoop({
 	return null;
 }
 
-export default createCustomizableLunaticField(BlockForLoop);
-
-// handleChange={handleChange}
-// preferences={preferences}
-// savingType={savingType}
-// management={management}
-// features={features}
-// bindings={bindings}
-// missing={missing}
-// shortcut={shortcut}
+export default createCustomizableLunaticField(BlockForLoop, 'BlockForLoop');

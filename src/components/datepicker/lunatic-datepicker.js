@@ -18,7 +18,7 @@ const LunaticDatepicker = ({ errors, ...props }) => {
 };
 
 export default createLunaticComponent(
-	createCustomizableLunaticField(LunaticDatepicker),
+	createCustomizableLunaticField(LunaticDatepicker, 'LunaticDatepicker'),
 	{
 		inputId: 'lunatic-datepicker',
 	}
