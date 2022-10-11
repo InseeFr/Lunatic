@@ -25,7 +25,7 @@ function LunaticRadioGroup(props) {
 }
 
 export default createLunaticComponent(
-	createCustomizableLunaticField(LunaticRadioGroup),
+	createCustomizableLunaticField(LunaticRadioGroup, 'LunaticRadioGroup'),
 	{
 		// set it to true if you want to display a fieldset + legend on a component
 		fieldset: true,

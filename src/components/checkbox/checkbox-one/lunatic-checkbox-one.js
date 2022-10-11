@@ -11,4 +11,7 @@ function LunaticCheckboxOne({ errors, ...props }) {
 		</>
 	);
 }
-export default createCustomizableLunaticField(LunaticCheckboxOne);
+export default createCustomizableLunaticField(
+	LunaticCheckboxOne,
+	'LunaticCheckboxOne'
+);
