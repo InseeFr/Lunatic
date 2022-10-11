@@ -31,7 +31,7 @@ function LunaticCheckboxGroup({
 }
 
 export default createLunaticComponent(
-	createCustomizableLunaticField(LunaticCheckboxGroup),
+	createCustomizableLunaticField(LunaticCheckboxGroup, 'LunaticCheckboxGroup'),
 	{
 		fieldset: true,
 		inputId: 'lunatic-checkbox-group',

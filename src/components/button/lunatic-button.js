@@ -46,4 +46,4 @@ Button.propTypes = {
 	onClick: PropTypes.func.isRequired,
 };
 
-export default createCustomizableLunaticField(Button);
+export default createCustomizableLunaticField(Button, 'Button');

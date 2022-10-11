@@ -7,7 +7,6 @@ import {
 import './sequence.scss';
 import { createCustomizableLunaticField } from '../commons';
 
-
 function Sequence({ declarations, label, id, style }) {
 	return (
 		<>
@@ -21,4 +20,4 @@ function Sequence({ declarations, label, id, style }) {
 	);
 }
 
-export default createCustomizableLunaticField(Sequence);
+export default createCustomizableLunaticField(Sequence, 'Sequence');
