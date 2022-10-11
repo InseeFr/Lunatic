@@ -5,6 +5,7 @@ var version = PACKAGE.workersVersion;
 module.exports = {
 	mode: 'production',
 	entry: './src/utils/suggester-workers/searching/searching.worker.js',
+	target: 'webworker',
 	output: {
 		path: path.resolve(`./workers-release/${version}`),
 		filename: `lunatic-searching-worker-${version}.js`,

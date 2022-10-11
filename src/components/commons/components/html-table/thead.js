@@ -23,4 +23,4 @@ Thead.defaultProps = {
 	className: undefined,
 };
 
-export default createCustomizableLunaticField(Thead);
+export default createCustomizableLunaticField(Thead, 'Thead');

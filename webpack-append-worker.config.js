@@ -5,6 +5,7 @@ var version = PACKAGE.workersVersion;
 module.exports = {
 	mode: 'production',
 	entry: './src/utils/suggester-workers/append-to-index/append.worker.js',
+	target: 'webworker',
 	output: {
 		path: path.resolve(`./workers-release/${version}`),
 		filename: `lunatic-append-worker-${version}.js`,

@@ -61,5 +61,5 @@ LunaticDropdown.defaultProps = {
 };
 
 export default createLunaticComponent(
-	createCustomizableLunaticField(LunaticDropdown)
+	createCustomizableLunaticField(LunaticDropdown, 'LunaticDropdown')
 );

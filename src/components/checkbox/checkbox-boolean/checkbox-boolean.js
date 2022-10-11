@@ -16,4 +16,7 @@ function CheckboxBoolean({ checked, id, disabled, onClick, labelId, label }) {
 	);
 }
 
-export default createCustomizableLunaticField(CheckboxBoolean);
+export default createCustomizableLunaticField(
+	CheckboxBoolean,
+	'CheckboxBoolean'
+);

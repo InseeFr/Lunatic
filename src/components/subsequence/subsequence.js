@@ -23,4 +23,4 @@ function Subsequence({ id, declarations, label }) {
 	);
 }
 
-export default createCustomizableLunaticField(Subsequence);
+export default createCustomizableLunaticField(Subsequence, 'Subsequence');

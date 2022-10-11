@@ -37,4 +37,4 @@ Declarations.defaultProps = {
 
 Declarations.propTypes = {};
 
-export default createCustomizableLunaticField(Declarations);
+export default createCustomizableLunaticField(Declarations, 'Declarations');

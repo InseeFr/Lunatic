@@ -30,4 +30,4 @@ Td.defaultProps = {
 	colSpan: undefined,
 };
 
-export default createCustomizableLunaticField(Td);
+export default createCustomizableLunaticField(Td, 'Td');

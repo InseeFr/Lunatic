@@ -43,4 +43,4 @@ function Dropdown({
 	);
 }
 
-export default createCustomizableLunaticField(Dropdown);
+export default createCustomizableLunaticField(Dropdown, 'Dropdown');
