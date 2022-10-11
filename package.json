@@ -82,6 +82,7 @@
 		"@emotion/react": "^11.9.3",
 		"@emotion/styled": "^11.9.3",
 		"@mui/material": "^5.8.6",
+		"@storybook/addon-a11y": "^6.5.12",
 		"@storybook/addon-actions": "^6.5.8",
 		"@storybook/addon-essentials": "^6.5.8",
 		"@storybook/addon-interactions": "^6.5.8",
