@@ -36,4 +36,5 @@ function Datepicker({
 		/>
 	);
 }
+
 export default createCustomizableLunaticField(Datepicker, 'Datepicker');

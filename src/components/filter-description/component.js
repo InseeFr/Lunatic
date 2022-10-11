@@ -11,6 +11,7 @@ const FilterDescription = ({ id, label }) => (
 	</div>
 );
 
+
 export default createCustomizableLunaticField(
 	FilterDescription,
 	'FilterDescription'
