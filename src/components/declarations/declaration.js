@@ -14,4 +14,4 @@ function Declaration({ children, type }) {
 		</div>
 	);
 }
-export default createCustomizableLunaticField(Declaration);
+export default createCustomizableLunaticField(Declaration, 'Declaration');

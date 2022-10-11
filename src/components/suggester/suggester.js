@@ -114,4 +114,4 @@ Suggester.defaultProps = {
 	searching: undefined,
 };
 
-export default createCustomizableLunaticField(Suggester);
+export default createCustomizableLunaticField(Suggester, 'Suggester');
