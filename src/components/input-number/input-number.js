@@ -42,4 +42,4 @@ function InputNumber({
 	);
 }
 
-export default createCustomizableLunaticField(InputNumber);
+export default createCustomizableLunaticField(InputNumber, 'InputNumber');

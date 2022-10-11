@@ -45,4 +45,4 @@ Input.defaultProps = {
 	maxLength: Number.MAX_SAFE_INTEGER,
 };
 
-export default createCustomizableLunaticField(Input);
+export default createCustomizableLunaticField(Input, 'Input');

@@ -1,0 +1,67 @@
+{
+	"cleaning": {},
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [null],
+				"EDITED": [null],
+				"INPUTED": [null],
+				"FORCED": [null],
+				"PREVIOUS": [null]
+			},
+			"name": "Q11"
+		}
+	],
+	"components": [
+		{
+			"componentType": "Table",
+			"bindingDependencies": ["Q11"],
+			"positioning": "HORIZONTAL",
+			"hierarchy": {
+				"sequence": {
+					"id": "kanya0cm",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"Tableaux dynamiques\""
+					}
+				}
+			},
+			"header": [{ "label": { "type": "VTL|MD", "value": "\"Valeur\"" } }],
+			"conditionFilter": { "type": "VTL", "value": "true" },
+			"id": "kanz18h6",
+			"page": "1",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 1. \" || \"Tableau dynamique\""
+			},
+			"body": [
+				[
+					{
+						"componentType": "Input",
+						"bindingDependencies": ["Q11"],
+						"response": { "name": "Q11" },
+						"id": "kanz18h6-QOP-l7hovxs7",
+						"maxLength": 249
+					}
+				]
+			],
+			"lines": {
+				"min": { "type": "VTL", "value": "1" },
+				"max": { "type": "VTL", "value": "4" }
+			},
+			"mandatory": false
+		}
+	],
+	"pagination": "question",
+	"resizing": {},
+	"label": { "type": "VTL|MD", "value": "V2 Tab Dynamique" },
+	"lunaticModelVersion": "2.2.14-rc",
+	"modele": "QTEST_DECL",
+	"enoCoreVersion": "2.3.10-controls-type",
+	"generatingDate": "11-10-2022 08:24:50",
+	"missing": false,
+	"id": "l7hp65id",
+	"maxPage": "1"
+}

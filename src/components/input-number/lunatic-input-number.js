@@ -17,7 +17,7 @@ const LunaticInputNumber = ({ errors, ...props }) => {
 };
 
 export default createLunaticComponent(
-	createCustomizableLunaticField(LunaticInputNumber),
+	createCustomizableLunaticField(LunaticInputNumber, 'LunaticInputNumber'),
 	{
 		inputId: 'lunatic-input-number',
 	}

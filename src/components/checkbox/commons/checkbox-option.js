@@ -58,4 +58,4 @@ function CheckboxOption({
 	);
 }
 
-export default createCustomizableLunaticField(CheckboxOption);
+export default createCustomizableLunaticField(CheckboxOption, 'CheckboxOption');

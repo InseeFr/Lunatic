@@ -12,4 +12,4 @@ function Fieldset({ children, legend }) {
 	);
 }
 
-export default createCustomizableLunaticField(Fieldset);
+export default createCustomizableLunaticField(Fieldset, 'Fieldset');
