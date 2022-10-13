@@ -15,4 +15,11 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
-Default.args = { id: 'dropdown', source, data };
+Default.args = {
+	id: 'dropdown',
+	source,
+	data,
+	disabled: false,
+	editable: false,
+	writable: false,
+};
