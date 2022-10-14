@@ -55,11 +55,15 @@ function createExecuteExpression(variables, features) {
 	 * @param {*} name
 	 */
 	function pushToLazy(name) {
-		const { CalculatedLinked = [] } = variables[name];
-		CalculatedLinked.forEach(function (variable) {
-			const { name } = variable;
-			setToRefreshCalculated(name, variable);
-		});
+		if (name in variables) {
+			const { CalculatedLinked = [] } = variables[name];
+			CalculatedLinked.forEach(function (variable) {
+				const { name } = variable;
+				setToRefreshCalculated(name, variable);
+			});
+		} else {
+			console.warn(`${name} is not identified as varaible!`);
+		}
 	}
 
 	/**
@@ -199,7 +203,6 @@ function createExecuteExpression(variables, features) {
 			}),
 			{ rootExpression: expression, iteration, linksIterations }
 		);
-
 		const memoized = getMemoizedValue(expression, vtlBindings);
 		if (memoized === undefined) {
 			const result = executeExpression(

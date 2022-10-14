@@ -21,10 +21,13 @@ function getComponentsFromState(state) {
 }
 
 function filterComponentsInPage(components) {
-	// Don't display FilterDescription if filterDescription is false
-	return components.filter((c) =>
-		c.componentType === 'FilterDescription' ? c.filterDescription : true
-	);
+	if (Array.isArray(components)) {
+		return components.filter((c) =>
+			c.componentType === 'FilterDescription' ? c.filterDescription : true
+		);
+	}
+	console.warn('no components!');
+	return [];
 }
 
 export default getComponentsFromState;

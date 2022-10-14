@@ -9,7 +9,11 @@ function useComponentsFromState(state) {
 		function () {
 			const { pager, pages, isInLoop } = state;
 			const components = getComponentsFromState({ pager, pages, isInLoop });
-			setComponentsFilled(fillComponents(components, state));
+			const filled = fillComponents(components, state);
+			const filtered = filled.filter(({ conditionFilter }) => {
+				return conditionFilter !== undefined ? conditionFilter : true;
+			});
+			setComponentsFilled(filtered);
 		},
 		[state]
 	);
