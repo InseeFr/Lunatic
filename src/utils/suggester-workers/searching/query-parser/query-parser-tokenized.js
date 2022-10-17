@@ -1,4 +1,5 @@
 import tokenizer from 'string-tokenizer';
+import removeAccents from 'remove-accents';
 import {
 	filterStemmer,
 	filterLength,
@@ -25,7 +26,7 @@ function toArray(tokens) {
 function queryParserTokenized(query = '', { pattern, ...args } = {}) {
 	const patternForTokens = { tokens: getRegExpFromPattern(pattern) };
 	const { tokens } = tokenizer()
-		.input(query)
+		.input(removeAccents(query.trim()))
 		.tokens(patternForTokens)
 		.resolve();
 	return filterTokens(toArray(tokens), args);
