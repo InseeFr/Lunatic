@@ -5,8 +5,9 @@
 	width: 100%;
 	height: 100%;
 	background-color: rgba(50, 50, 50, 0.5);
+	z-index: 101;
 
-	.modal {
+	.modal-content {
 		background-color: snow;
 		height: 25%;
 		width: 50%;
