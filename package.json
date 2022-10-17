@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "2.0.2-v2",
+	"version": "2.0.3-v2",
 	"workersVersion": "0.2.4-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
@@ -38,7 +38,7 @@
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
 		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
 		"build-workers": "yarn build-append-worker && yarn build-searching-worker && yarn build-label-worker",
-		"storybook": "start-storybook -p 9999",
+		"storybook": "start-storybook -p 9999 -s ./public",
 		"build-storybook": "build-storybook"
 	},
 	"keywords": [
@@ -82,6 +82,7 @@
 		"@emotion/react": "^11.9.3",
 		"@emotion/styled": "^11.9.3",
 		"@mui/material": "^5.8.6",
+		"@storybook/addon-a11y": "^6.5.12",
 		"@storybook/addon-actions": "^6.5.8",
 		"@storybook/addon-essentials": "^6.5.8",
 		"@storybook/addon-interactions": "^6.5.8",

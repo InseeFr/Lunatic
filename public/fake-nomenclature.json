@@ -1,0 +1,10 @@
+[
+	{
+		"id": "1",
+		"tags": ["bonjour", "madame", "monsieur", "comment", "allez", "vous"]
+	},
+	{
+		"id": "2",
+		"tags": null
+	}
+]
