@@ -38,7 +38,7 @@
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
 		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
 		"build-workers": "yarn build-append-worker && yarn build-searching-worker && yarn build-label-worker",
-		"storybook": "start-storybook -p 9999",
+		"storybook": "start-storybook -p 9999 -s ./public",
 		"build-storybook": "build-storybook"
 	},
 	"keywords": [

@@ -35,7 +35,12 @@ function createFilterTokens(fields, stopWords) {
 		const { name } = field;
 		const tokenizeIt = FIELDS_TOKENIZER_MAP[name];
 		if (name in entity) {
-			return tokenizeIt(`${entity[name]}`);
+			const value = entity[name];
+			if (value === undefined || value === null) {
+				return [];
+			}
+
+			return tokenizeIt(`${value}`);
 		}
 		return [];
 	};
