@@ -1,34 +1,71 @@
 {
 	"components": [
 		{
-			"id": "checkboxboolean",
+			"id": "1",
 			"componentType": "CheckboxBoolean",
 			"mandatory": false,
-			"page": "1",
-			"label": "\"➡ 2. If you agree to answer this questionnaire, please check the corresponding box.\"",
-			"declarations": [
-				{
-					"id": "j6p0np9q-kir6xl1e",
-					"declarationType": "COMMENT",
-					"position": "AFTER_QUESTION_TEXT",
-					"label": "\"If not, this is unfortunately the end of this questionnaire.\""
-				}
-			],
-
-			"conditionFilter": { "value": "true", "type": "VTL" },
-
-			"options": [
-				{ "value": "1", "label": { "value": "oui", "type": "VTL|MD" } },
-
-				{ "value": "2", "label": { "value": "non", "type": "VTL|MD" } }
-			],
-			"response": { "name": "Q2" }
+			"label": "➡ 1. Are you ready?",
+			"response": {
+				"name": "READY"
+			},
+			"missingResponse": {
+				"name": "READY_MISSING"
+			}
+		},
+		{
+			"id": "2",
+			"componentType": "CheckboxBoolean",
+			"mandatory": false,
+			"label": "➡ 2. Are you always ready?",
+			"response": {
+				"name": "READY2"
+			},
+			"missingResponse": {
+				"name": "READY2_MISSING"
+			}
 		}
 	],
 	"variables": [
 		{
 			"variableType": "COLLECTED",
-			"name": "Q2",
+			"name": "READY",
+			"componentRef": "1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "READY_MISSING",
+			"componentRef": "1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "READY2",
+			"componentRef": "2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": true,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "READY2_MISSING",
+			"componentRef": "2",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
