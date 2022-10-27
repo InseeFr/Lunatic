@@ -5,13 +5,13 @@
 			"componentType": "CheckboxBoolean",
 			"mandatory": false,
 			"page": "1",
-			"label": "\"➡ 2. Si vous acceptez de répondre à ce questionnaire, veuillez cocher la case correspondante.\"",
+			"label": "\"➡ 2. If you agree to answer this questionnaire, please check the corresponding box.\"",
 			"declarations": [
 				{
 					"id": "j6p0np9q-kir6xl1e",
 					"declarationType": "COMMENT",
 					"position": "AFTER_QUESTION_TEXT",
-					"label": "\"Si ce n'est pas le cas, c'est malheureusement la fin de ce questionnaire.\""
+					"label": "\"If not, this is unfortunately the end of this questionnaire.\""
 				}
 			],
 
