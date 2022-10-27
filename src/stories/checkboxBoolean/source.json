@@ -5,10 +5,15 @@
 			"componentType": "CheckboxBoolean",
 			"mandatory": false,
 			"page": "1",
-			"label": {
-				"value": "checkboxBoolean component (checked: true, unchecked: false)",
-				"type": "VTL|MD"
-			},
+			"label": "\"➡ 2. Si vous acceptez de répondre à ce questionnaire, veuillez cocher la case correspondante.\"",
+			"declarations": [
+				{
+					"id": "j6p0np9q-kir6xl1e",
+					"declarationType": "COMMENT",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": "\"Si ce n'est pas le cas, c'est malheureusement la fin de ce questionnaire.\""
+				}
+			],
 
 			"conditionFilter": { "value": "true", "type": "VTL" },
 
