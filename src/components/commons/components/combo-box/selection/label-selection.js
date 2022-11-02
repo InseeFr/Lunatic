@@ -26,4 +26,4 @@ function LabelSelection({
 	);
 }
 
-export default displayLabelOrInput(LabelSelection);
+export default displayLabelOrInput(LabelSelection, 'LabelSelection');

@@ -52,4 +52,4 @@ function Input({
 	);
 }
 
-export default displayLabelOrInput(Input);
+export default displayLabelOrInput(Input, 'Input');
