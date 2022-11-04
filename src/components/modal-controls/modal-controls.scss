@@ -9,12 +9,14 @@
 
 	.modal-content {
 		background-color: snow;
-		height: 25%;
+		height: fit-content;
 		width: 50%;
 		margin: auto;
 		margin-top: 38vh;
-		position: relative;
+		display: flex;
+		flex-direction: column;
 		border-radius: 8px;
+		overflow-wrap: break-word;
 		.body {
 			color: black;
 			font-size: 16px;
@@ -22,9 +24,7 @@
 		}
 
 		.modal-buttons {
-			position: absolute;
-			bottom: 0;
-			right: 0;
+			align-self: end;
 			margin: 0 0.2em 0.2em 0;
 			:first-child {
 				margin-right: 0.5em;
@@ -42,6 +42,7 @@
 		}
 	}
 	ul {
-		padding: 0.5em;
+		margin: 1em;
+		padding: 0;
 	}
 }
