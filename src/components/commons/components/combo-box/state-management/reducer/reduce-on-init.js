@@ -1,9 +1,9 @@
 function reduceOnInit(state, action) {
 	const { payload } = action;
 	const { options, value, getOptionValue } = payload;
-	const { selectedIndex } = state;
+	// const { selectedIndex } = state;
 
-	if (Array.isArray(options) && selectedIndex === undefined) {
+	if (Array.isArray(options) && value !== undefined) {
 		const next = options.reduce(function (current, option, index) {
 			const optionValue = getOptionValue(option);
 			if (value === optionValue) {
