@@ -23,7 +23,7 @@ function reduceLinksVariable(
 	{ name, value, linksIterations, symLinks }
 ) {
 	if (symLinks) {
-		const symValue = symLinks[value];
+		const symValue = symLinks[name][value];
 		const [x, y] = linksIterations;
 		const symIteration = [y, x];
 
