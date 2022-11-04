@@ -34,7 +34,7 @@ function useLunatic(
 	const { suggesters } = source;
 
 	useEffect(() => {
-		const init = async () => {
+		(async () => {
 			if (
 				autoSuggesterLoading &&
 				typeof suggestersConfiguration === 'object' &&
@@ -53,12 +53,10 @@ function useLunatic(
 					};
 				}, {});
 				dispatch(actions.onSetWaiting(true));
-				const status = await loadSuggesters(suggesterFetcher)(s);
+				await loadSuggesters(suggesterFetcher)(s);
 				dispatch(actions.onSetWaiting(false));
 			}
-		};
-
-		init();
+		})();
 	}, [
 		autoSuggesterLoading,
 		suggesterFetcher,

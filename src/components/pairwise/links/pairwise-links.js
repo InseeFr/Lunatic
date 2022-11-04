@@ -19,12 +19,12 @@ const PairwiseLinks = ({
 	management,
 	executeExpression,
 	xAxisIterations,
-	yAxisIterations,
 	custom,
 	id,
+	symLinks,
 	errors,
 }) => {
-	const nbRows = xAxisIterations * yAxisIterations;
+	const nbRows = Math.pow(xAxisIterations, 2);
 
 	const handleChangeLinks = useCallback(
 		function (response, value, args) {
@@ -60,6 +60,7 @@ const PairwiseLinks = ({
 					executeExpression={executeExpression}
 					custom={custom}
 					xAxisIterations={xAxisIterations}
+					symLinks={symLinks}
 				/>
 				<DeclarationsDetachable
 					declarations={declarations}
