@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Row from './row';
 
 function LinksOrchestrator(props) {
@@ -14,10 +15,21 @@ function LinksOrchestrator(props) {
 		executeExpression,
 		iteration,
 		xAxisIterations,
+		yAxisIterations,
 		custom,
 		errors,
 		symLinks,
 	} = props;
+
+	const [lengths, setLenghts] = useState([xAxisIterations, yAxisIterations]);
+
+	useEffect(
+		function () {
+			setLenghts([xAxisIterations, yAxisIterations]);
+		},
+		[xAxisIterations, yAxisIterations]
+	);
+
 	if (nbRows > 0) {
 		return new Array(nbRows).fill(null).map(function (_, index) {
 			const i = Math.trunc(index / xAxisIterations);
@@ -34,6 +46,7 @@ function LinksOrchestrator(props) {
 					iteration={iteration}
 					linksIterations={[i, j]}
 					custom={custom}
+					lengths={lengths}
 					/** */
 					features={features}
 					shortcut={shortcut}

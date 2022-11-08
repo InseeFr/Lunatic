@@ -82,7 +82,8 @@
 					"14": "14",
 					"15": null,
 					"16": null
-				}
+				},
+				"OTHER": {}
 			},
 			"components": [
 				{
@@ -123,6 +124,22 @@
 						{ "value": "15", "label": "\"Enfant placé\"" },
 						{ "value": "16", "label": "\"Autre\"" }
 					]
+				},
+				{
+					"componentType": "Textarea",
+
+					"label": {
+						"value": "\"blabla?\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "LINKS = \"16\"",
+						"type": "VTL"
+					},
+					"id": "other",
+					"response": {
+						"name": "OTHER"
+					}
 				}
 			]
 		},
@@ -182,6 +199,17 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "LINKS",
+			"values": {
+				"PREVIOUS": [[null]],
+				"COLLECTED": [[null]],
+				"FORCED": [[null]],
+				"EDITED": [[null]],
+				"INPUTED": [[null]]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "OTHER",
 			"values": {
 				"PREVIOUS": [[null]],
 				"COLLECTED": [[null]],

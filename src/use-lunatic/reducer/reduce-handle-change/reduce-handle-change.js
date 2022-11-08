@@ -30,6 +30,7 @@ function updateVariables(state, action) {
 		symLinks,
 		paginatedLoop,
 		shallowIteration,
+		lengths,
 	} = args;
 
 	const { pager, variables } = state;
@@ -41,6 +42,7 @@ function updateVariables(state, action) {
 			value,
 			linksIterations,
 			symLinks,
+			lengths,
 		});
 		return { ...state, variables: variablesNext };
 	} else if (loop && paginatedLoop) {

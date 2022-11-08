@@ -14,13 +14,14 @@ function Row({
 	custom,
 	linksIterations,
 	symLinks,
+	lengths,
 }) {
 	const [x, y] = linksIterations;
 	const handleChangeRow = useCallback(
 		function (response, value) {
-			handleChange(response, value, { linksIterations, symLinks });
+			handleChange(response, value, { linksIterations, symLinks, lengths });
 		},
-		[handleChange, linksIterations, symLinks]
+		[handleChange, linksIterations, symLinks, lengths]
 	);
 
 	if (x !== y) {

@@ -12,6 +12,7 @@ const VTL_ATTRIBUTES = [
 	'lines.max',
 	'iterations',
 	'xAxisIterations',
+	'yAxisIterations',
 	'body.label',
 	'header.label',
 	'conditionFilter',
