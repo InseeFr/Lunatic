@@ -129,7 +129,7 @@
 					"componentType": "Textarea",
 
 					"label": {
-						"value": "\"blabla?\"",
+						"value": "\"Pouvez-vous décrire le lien entre \" || xAxis || \" et \" || yAxis || \" ?\"",
 						"type": "VTL|MD"
 					},
 					"conditionFilter": {
