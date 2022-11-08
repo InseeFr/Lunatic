@@ -26,6 +26,7 @@ const PairwiseLinks = ({
 	errors,
 }) => {
 	const nbRows = xAxisIterations * yAxisIterations;
+
 	const handleChangeLinks = useCallback(
 		function (response, value, args) {
 			handleChange(response, value, args);

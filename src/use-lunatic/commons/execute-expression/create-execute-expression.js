@@ -69,6 +69,7 @@ function createExecuteExpression(variables, features) {
 	 */
 	function updateBindings(name, value) {
 		// update des bindings
+		// console.log({ name, value });
 		if (name in bindings) {
 			bindings[name] = value;
 			collectedUpdated.set(name, []);
@@ -163,6 +164,7 @@ function createExecuteExpression(variables, features) {
 		}
 		if (linksIterations !== undefined) {
 			const [x, y] = linksIterations;
+			// console.log({ name, linksIterations, value });
 			if (Array.isArray(value) && x < value.length) {
 				const sub = value[x];
 				if (Array.isArray(sub) && y < sub.length) {
