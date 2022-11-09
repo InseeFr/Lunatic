@@ -4,6 +4,9 @@
 		"AGE": { "COLLECTED": [30, 29, 5] },
 		"LINKS": {
 			"COLLECTED": [[null]]
+		},
+		"OTHER": {
+			"COLLECTED": [[null]]
 		}
 	}
 }

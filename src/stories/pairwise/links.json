@@ -58,7 +58,7 @@
 			]
 		},
 		{
-			"id": "pariwise-links",
+			"id": "pairwise-links",
 			"componentType": "PairwiseLinks",
 			"conditionFilter": { "value": "true" },
 			"xAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
@@ -69,19 +69,20 @@
 					"1": "1",
 					"2": "3",
 					"3": "2",
-					"4": "5",
-					"5": "4",
-					"6": "7",
-					"7": "6",
-					"8": "8",
+					"4": "4",
+					"5": "6",
+					"6": "5",
+					"7": "8",
+					"8": "7",
 					"9": "9",
-					"10": "10",
-					"11": "13",
-					"12": "12",
-					"13": "11",
-					"14": "14",
+					"10": null,
+					"11": null,
+					"12": null,
+					"13": null,
+					"14": null,
 					"15": null,
-					"16": null
+					"16": null,
+					"17": null
 				}
 			},
 			"components": [
@@ -97,31 +98,40 @@
 						"name": "LINKS"
 					},
 					"options": [
-						{ "value": "1", "label": "\"Conjoint\"" },
+						{ "value": "1", "label": "\"Conjoint, Conjointe\"" },
 						{ "value": "2", "label": "\"Mère, père\"" },
 						{ "value": "3", "label": "\"Fille, fils\"" },
 						{
 							"value": "4",
-							"label": "\"Belle-mère, beau-père, conjoint du parent\""
+							"label": "\"Soeur, demi-soeur, quasi-soeur, Frére, demi-frére, qusi-frére\""
+						},
+						{ "value": "5", "label": "\"Grand-mère, Grand-père\"" },
+						{ "value": "6", "label": "\"Petite-fille, petit-fils\"" },
+						{ "value": "7", "label": "\"Tante, Oncle\"" },
+						{ "value": "8", "label": "\"Nièce, neveu\"" },
+						{ "value": "9", "label": "\"Cousine, cousin\"" },
+
+						{
+							"value": "10",
+							"label": "\"Belle-mère, beau-père (conjoint.e d'un des parents)\""
 						},
 						{
-							"value": "5",
-							"label": "\"Belle-mère, beau-père, parent du conjoint\""
+							"value": "11",
+							"label": "\"Belle-mère, beau-père (enfant du conjoint)\""
 						},
-						{ "value": "6", "label": "\"Enfant du conjoint\"" },
-						{ "value": "7", "label": "\"Conjoint d’un enfant\"" },
 						{
-							"value": "8",
-							"label": "\"Sœur, frère (y compris demi et quasi)\""
+							"value": "12",
+							"label": "\"Belle-fille, beau-fils (enfant du conjoint)\""
 						},
-						{ "value": "9", "label": "\"Grand-parent\"" },
-						{ "value": "10", "label": "\"Petit-enfant\"" },
-						{ "value": "11", "label": "\"Tante, oncle\"" },
-						{ "value": "12", "label": "\"Cousin(e)\"" },
-						{ "value": "13", "label": "\"Nièce, neveu\"" },
-						{ "value": "14", "label": "\"Belle-sœur, beau-frère\"" },
-						{ "value": "15", "label": "\"Enfant placé\"" },
-						{ "value": "16", "label": "\"Autre\"" }
+						{
+							"value": "13",
+							"label": "\"Belle-fille, beau-fils (conjoint.e d'un enfant')\""
+						},
+						{ "value": "14", "label": "\"Enfant placé en famille d'accueil\"" },
+						{ "value": "15", "label": "\"Colocataire, sous-locataire\"" },
+						{ "value": "16", "label": "\"Belle-soeur, beau-frère\"" },
+
+						{ "value": "17", "label": "\"Autre\"" }
 					]
 				},
 				{
@@ -132,7 +142,7 @@
 						"type": "VTL|MD"
 					},
 					"conditionFilter": {
-						"value": "LINKS = \"16\"",
+						"value": "LINKS = \"17\"",
 						"type": "VTL"
 					},
 					"id": "other",
