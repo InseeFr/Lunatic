@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { OrchestratedComponent } from '../../commons';
+import { OrchestratedComponent } from '../commons';
 
 function Row({
 	components,

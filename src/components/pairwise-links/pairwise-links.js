@@ -4,8 +4,8 @@ import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
-} from '../../declarations';
-import NothingToDisplay from '../../commons/components/nothing-to-display';
+} from '../declarations';
+import NothingToDisplay from '../commons/components/nothing-to-display';
 
 const PairwiseLinks = ({
 	declarations,
