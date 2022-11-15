@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as lunatic from '../../../components';
 import { fillComponentExpressions } from '../../../use-lunatic/commons';
 
@@ -25,7 +25,6 @@ function OrchestratedComponent({
 		pager: { iteration, linksIterations },
 	});
 	const Component = lunatic[componentType];
-
 	const { conditionFilter } = componentFilled;
 	const hasToBeDisplay = conditionFilter !== undefined ? conditionFilter : true;
 

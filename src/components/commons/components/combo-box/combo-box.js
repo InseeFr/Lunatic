@@ -44,11 +44,9 @@ function ComboBox({
 
 	useEffect(
 		function () {
-			dispatch(
-				actions.onInit({ options, value, selectedIndex, getOptionValue })
-			);
+			dispatch(actions.onInit({ options, value, getOptionValue }));
 		},
-		[options, value, selectedIndex, getOptionValue]
+		[options, value, getOptionValue]
 	);
 
 	const onFocus = useCallback(function () {

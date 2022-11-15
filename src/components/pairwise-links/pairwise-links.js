@@ -4,8 +4,8 @@ import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
 	DeclarationsDetachable,
-} from '../../declarations';
-import NothingToDisplay from '../../commons/components/nothing-to-display';
+} from '../declarations';
+import NothingToDisplay from '../commons/components/nothing-to-display';
 
 const PairwiseLinks = ({
 	declarations,
@@ -22,6 +22,7 @@ const PairwiseLinks = ({
 	yAxisIterations,
 	custom,
 	id,
+	symLinks,
 	errors,
 }) => {
 	const nbRows = xAxisIterations * yAxisIterations;
@@ -60,6 +61,8 @@ const PairwiseLinks = ({
 					executeExpression={executeExpression}
 					custom={custom}
 					xAxisIterations={xAxisIterations}
+					yAxisIterations={yAxisIterations}
+					symLinks={symLinks}
 				/>
 				<DeclarationsDetachable
 					declarations={declarations}
