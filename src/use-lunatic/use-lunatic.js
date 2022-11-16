@@ -121,6 +121,13 @@ function useLunatic(
 		[dispatch, onChange]
 	);
 
+	const initComponent = useCallback(
+		function (name, args) {
+			dispatch(actions.onInitComponent(name, args));
+		},
+		[dispatch]
+	);
+
 	const getData = (withRefreshedCalculated) => {
 		const { variables } = state;
 		return getQuestionnaireData({ variables, withRefreshedCalculated });
@@ -142,6 +149,7 @@ function useLunatic(
 					management,
 					handleChange,
 					activeControls,
+					initComponent,
 				})
 			);
 		},
@@ -154,6 +162,7 @@ function useLunatic(
 			savingType,
 			management,
 			handleChange,
+			initComponent,
 			activeControls,
 		]
 	);

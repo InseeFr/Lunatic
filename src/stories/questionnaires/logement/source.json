@@ -832,8 +832,8 @@
 			],
 			"loopDependencies": ["NHAB"],
 			"lines": {
-				"min": { "value": "cast(NHAB,integer)", "type": "VTL" },
-				"max": { "value": "cast(NHAB,integer)", "type": "VTL" }
+				"min": { "value": "NHAB", "type": "VTL" },
+				"max": { "value": "NHAB", "type": "VTL" }
 			},
 			"components": [
 				{

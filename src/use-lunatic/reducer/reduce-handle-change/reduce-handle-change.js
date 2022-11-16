@@ -35,7 +35,7 @@ function updateVariables(state, action) {
 
 	const { pager, variables } = state;
 	const { nbIterations, iteration } = pager;
-
+	console.log({ NBHAB: variables.NBHAB, NHAB: variables.NHAB });
 	if (linksIterations !== undefined) {
 		const variablesNext = reduceLinksVariable(variables, {
 			name,

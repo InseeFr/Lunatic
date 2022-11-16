@@ -23,6 +23,7 @@ export const onInit = ({
 	savingType,
 	management,
 	handleChange,
+	initComponent,
 	activeControls,
 }) => ({
 	type: ON_INIT,
@@ -35,6 +36,7 @@ export const onInit = ({
 		savingType,
 		management,
 		handleChange,
+		initComponent,
 		activeControls,
 	},
 });
@@ -49,4 +51,10 @@ export const ON_SET_WAITING = 'use-lunatic/on-set-waiting';
 export const onSetWaiting = (status) => ({
 	type: ON_SET_WAITING,
 	payload: { status },
+});
+
+export const ON_INIT_COMPONENT = 'use-lunatic/on-init-component';
+export const onInitComponent = (name, args = {}) => ({
+	type: ON_INIT_COMPONENT,
+	payload: { name, ...args },
 });

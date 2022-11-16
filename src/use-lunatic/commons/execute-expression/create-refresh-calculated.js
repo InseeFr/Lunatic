@@ -80,7 +80,7 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 				function logging(expression, bindings, e) {
 					if (process.env.NODE_ENV === 'development') {
 						console.warn(
-							`VTL error when refreshing calculated variable ${name} :  ${expression.value}`,
+							`VTL error when refreshing calculated variable ${name} :  ${expression}`,
 							{ bindings }
 						);
 						console.warn(`root expression : ${rootExpression}`);

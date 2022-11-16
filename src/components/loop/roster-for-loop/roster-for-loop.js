@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { COMPONENT_NAMES } from '../../components';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
@@ -28,10 +29,23 @@ function RosterforLoop({
 	management,
 	custom,
 	errors,
+	initComponent,
 }) {
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [nbRows, setNbRows] = useState(() => getInitLength(valueMap));
+
+	useEffect(
+		function () {
+			if (typeof initComponent === 'function') {
+				initComponent(COMPONENT_NAMES.RosterForLoop, {
+					nbRows,
+					values: valueMap,
+				});
+			}
+		},
+		[nbRows, initComponent, valueMap]
+	);
 
 	const addRow = useCallback(
 		function () {
@@ -46,7 +60,7 @@ function RosterforLoop({
 		function (response, value, args) {
 			const v = valueMap[response.name];
 			v[args.index] = value;
-			handleChange(response, v, { loop: true, length: nbRows }); // TODO: a retaper pour déplacer cette compléxité
+			handleChange(response, v, { loop: true, length: nbRows });
 		},
 		[handleChange, nbRows, valueMap]
 	);
@@ -57,10 +71,7 @@ function RosterforLoop({
 				const newNbRows = nbRows - 1;
 				setNbRows(newNbRows);
 				Object.entries(valueMap).forEach(([k, v]) => {
-					const newValue = v.reduce((acc, e, i) => {
-						if (i < newNbRows) return [...acc, e];
-						return acc;
-					}, []);
+					const newValue = v.slice(0, Math.max(newNbRows, 1));
 					handleChange({ name: k }, newValue);
 				});
 			}

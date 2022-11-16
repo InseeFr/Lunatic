@@ -7,7 +7,7 @@ import {
 } from '../../declarations';
 import NothingToDisplay from '../../commons/components/nothing-to-display';
 
-const PairwiseLinks = ({
+function PairwiseLinks({
 	declarations,
 	components,
 	handleChange,
@@ -24,7 +24,7 @@ const PairwiseLinks = ({
 	id,
 	symLinks,
 	errors,
-}) => {
+}) {
 	const nbRows = xAxisIterations * yAxisIterations;
 
 	const handleChangeLinks = useCallback(
@@ -72,6 +72,6 @@ const PairwiseLinks = ({
 			</>
 		);
 	return <NothingToDisplay />;
-};
+}
 
 export default PairwiseLinks;

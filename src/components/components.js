@@ -1,3 +1,7 @@
+export const COMPONENT_NAMES = {
+	RosterForLoop: 'lunatic/RosterForLoop',
+};
+
 export { default as Button } from './button';
 export * from './checkbox';
 export { default as Datepicker } from './datepicker';

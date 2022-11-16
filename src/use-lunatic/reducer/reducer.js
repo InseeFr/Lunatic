@@ -4,6 +4,7 @@ import reduceGoNextPage from './reduce-go-next-page';
 import reduceGoToPage from './reduce-go-to-page';
 import reduceHandleChange from './reduce-handle-change';
 import reduceOnSetWaiting from './reduce-on-set-waiting';
+import reduceOnInitComponent from './reduce-on-init-component';
 import * as actions from '../actions';
 
 function reducer(state, action) {
@@ -21,6 +22,8 @@ function reducer(state, action) {
 			return reduceHandleChange(state, action);
 		case actions.ON_SET_WAITING:
 			return reduceOnSetWaiting(state, action);
+		case actions.ON_INIT_COMPONENT:
+			return reduceOnInitComponent(state, action);
 		default:
 			return state;
 	}

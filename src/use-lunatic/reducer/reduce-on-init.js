@@ -138,6 +138,7 @@ function reduceOnInit(state, action) {
 		savingType,
 		management,
 		activeControls,
+		initComponent,
 	} = payload;
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
@@ -176,6 +177,7 @@ function reduceOnInit(state, action) {
 			setLoopBindings,
 			resetLoopBindings,
 			handleChange,
+			initComponent,
 			preferences,
 			management,
 			savingType,
