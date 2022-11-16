@@ -99,6 +99,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	
 	
 	*/
+
 	const nbIterations = executeExpression(
 		getCompatibleVTLExpression(iterations),
 		{

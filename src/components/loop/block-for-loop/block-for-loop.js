@@ -37,7 +37,7 @@ function BlockForLoop({
 			//This should be an Integer
 			return Number.parseInt(iterations);
 		}
-		const initLength = getInitLength(valueMap);
+		const initLength = getInitLength(valueMap, min, max);
 		return Math.max(initLength, min);
 	});
 

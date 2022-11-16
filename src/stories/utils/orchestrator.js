@@ -45,6 +45,8 @@ function onLogChange(response, value, args) {
 }
 
 function OrchestratorForStories({
+	display = true,
+	handleChange = onLogChange,
 	source,
 	data,
 	management = false,
@@ -65,7 +67,6 @@ function OrchestratorForStories({
 	...rest
 }) {
 	const { maxPage } = source;
-
 	const {
 		getComponents,
 		goPreviousPage,
@@ -83,7 +84,7 @@ function OrchestratorForStories({
 		initialPage,
 		features,
 		preferences,
-		onChange: onLogChange,
+		onChange: handleChange,
 		activeGoNextForMissing,
 		autoSuggesterLoading,
 		suggesters,
@@ -96,7 +97,9 @@ function OrchestratorForStories({
 	const errors = getErrors();
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
-
+	if (!display) {
+		return <div className="container"></div>;
+	}
 	return (
 		<div className="container">
 			<div className="components">
