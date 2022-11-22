@@ -24,6 +24,7 @@ export const onInit = ({
 	management,
 	handleChange,
 	activeControls,
+	custom,
 }) => ({
 	type: ON_INIT,
 	payload: {
@@ -36,6 +37,7 @@ export const onInit = ({
 		management,
 		handleChange,
 		activeControls,
+		custom,
 	},
 });
 

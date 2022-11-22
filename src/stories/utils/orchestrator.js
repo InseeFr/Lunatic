@@ -94,6 +94,7 @@ function OrchestratorForStories({
 		management,
 		activeControls,
 		summary,
+		custom,
 	});
 
 	const components = getComponents();
@@ -126,7 +127,6 @@ function OrchestratorForStories({
 								missing={missing}
 								missingStrategy={goNextPage}
 								shortcut={shortcut}
-								custom={custom}
 								filterDescription={filterDescription}
 								errors={currentErrors}
 							/>

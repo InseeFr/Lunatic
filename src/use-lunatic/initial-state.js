@@ -30,6 +30,7 @@ const INITIAL_STATE = {
 	executeExpression: () => {},
 	handleChange: () => {},
 	activeControls: false,
+	custom: {},
 };
 
 export default INITIAL_STATE;
