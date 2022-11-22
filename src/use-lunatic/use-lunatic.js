@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useCallback } from 'react';
+import { useReducer, useEffect, useCallback, useMemo } from 'react';
 import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
 import reducer from './reducer';
@@ -6,6 +6,7 @@ import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 import { COLLECTED } from '../utils/constants';
 import { loadSuggesters } from '../utils/store-tools/auto-load';
 import { getQuestionnaireData } from './commons/get-data';
+import { createSummury, SummuryNull } from '../components/summary';
 
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL', 'MD'];
@@ -26,10 +27,18 @@ function useLunatic(
 		suggesters: suggestersConfiguration,
 		suggesterFetcher,
 		activeControls = false,
+		summary = false,
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, waiting, modalErrors, errors, currentErrors } = state;
+	const {
+		pager,
+		waiting,
+		modalErrors,
+		errors,
+		currentErrors,
+		executeExpression,
+	} = state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
 
@@ -158,6 +167,16 @@ function useLunatic(
 		]
 	);
 
+	const Summary = useMemo(
+		function () {
+			if (summary) {
+				return createSummury(source, executeExpression, goToPage);
+			}
+			return SummuryNull;
+		},
+		[source, goToPage, executeExpression, summary]
+	);
+
 	return {
 		getComponents,
 		goPreviousPage,
@@ -172,6 +191,8 @@ function useLunatic(
 		pager,
 		waiting,
 		getData,
+		executeExpression,
+		Summary,
 	};
 }
 

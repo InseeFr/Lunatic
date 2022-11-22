@@ -48,6 +48,7 @@ function OrchestratorForStories({
 	display = true,
 	handleChange = onLogChange,
 	source,
+	summary = false,
 	data,
 	management = false,
 	activeControls = false,
@@ -80,6 +81,7 @@ function OrchestratorForStories({
 		getModalErrors,
 		getCurrentErrors,
 		getData,
+		Summary,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
 		features,
@@ -91,17 +93,20 @@ function OrchestratorForStories({
 		suggesterFetcher,
 		management,
 		activeControls,
+		summary,
 	});
 
 	const components = getComponents();
 	const errors = getErrors();
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
+
 	if (!display) {
 		return <div className="container"></div>;
 	}
 	return (
 		<div className="container">
+			{summary ? <Summary /> : null}
 			<div className="components">
 				{components.map(function (component) {
 					const { id, componentType, response, storeName, ...other } =
