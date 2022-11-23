@@ -42,7 +42,7 @@ function LunaticSuggester(props) {
 }
 
 LunaticSuggester.defaultProps = {
-	label: '',
+	labelId: '',
 	preferences: [COLLECTED],
 	response: {},
 	disabled: false,
@@ -58,7 +58,7 @@ LunaticSuggester.defaultProps = {
 
 LunaticSuggester.propTypes = {
 	id: PropTypes.string.isRequired,
-	label: PropTypes.string,
+	labelId: PropTypes.string,
 	preferences: PropTypes.arrayOf(commonPropTypes.valueTypePropTypes),
 	response: commonPropTypes.responsePropTypes,
 	handleChange: PropTypes.func.isRequired,
