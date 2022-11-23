@@ -8,7 +8,7 @@ export { default as InputNumber } from './input-number';
 export { default as FilterDescription } from './filter-description';
 export { default as Loop } from './loop';
 export { default as Modal } from './modal-controls';
-export * from './pairwise';
+export { default as PairwiseLinks } from './pairwise-links';
 export { default as Radio } from './radio';
 export { default as RosterForLoop } from './loop';
 export { default as Sequence } from './sequence';
