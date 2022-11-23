@@ -69,7 +69,6 @@ function createExecuteExpression(variables, features) {
 	 */
 	function updateBindings(name, value) {
 		// update des bindings
-		// console.log({ name, value });
 		if (name in bindings) {
 			bindings[name] = value;
 			collectedUpdated.set(name, []);
