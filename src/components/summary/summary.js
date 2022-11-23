@@ -2,7 +2,7 @@ function Summary({ sequences, goToPage }) {
 	const li = sequences.map(function (sequence) {
 		const { label, page } = sequence;
 		return (
-			<li>
+			<li className="">
 				<a
 					href="_"
 					onClick={(e) => {
@@ -15,7 +15,7 @@ function Summary({ sequences, goToPage }) {
 			</li>
 		);
 	});
-	return <ul>{li}</ul>;
+	return <ul className="lunatic-summary">{li}</ul>;
 }
 
 export default Summary;
