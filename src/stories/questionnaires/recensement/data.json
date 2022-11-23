@@ -1,0 +1,12 @@
+{
+	"COLLECTED": {
+		"PRENOM": { "COLLECTED": [null] },
+		"AGE": { "COLLECTED": [null] },
+		"LINKS": {
+			"COLLECTED": [[null]]
+		},
+		"OTHER": {
+			"COLLECTED": [[null]]
+		}
+	}
+}
