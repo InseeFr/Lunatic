@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as lunatic from '../../../components';
 import { fillComponentExpressions } from '../../../use-lunatic/commons';
 
