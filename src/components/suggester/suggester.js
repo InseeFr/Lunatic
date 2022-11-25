@@ -10,10 +10,8 @@ import {
 import './default-style.scss';
 
 function getSearch(search, value) {
-	if (!search.length) {
-		if (value) {
-			return value;
-		}
+	if (!search.length && value) {
+		return value;
 	}
 
 	return '';

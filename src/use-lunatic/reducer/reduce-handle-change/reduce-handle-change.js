@@ -27,8 +27,10 @@ function updateVariables(state, action) {
 		index,
 		length,
 		linksIterations,
+		symLinks,
 		paginatedLoop,
 		shallowIteration,
+		lengths,
 	} = args;
 
 	const { pager, variables } = state;
@@ -39,6 +41,8 @@ function updateVariables(state, action) {
 			name,
 			value,
 			linksIterations,
+			symLinks,
+			lengths,
 		});
 		return { ...state, variables: variablesNext };
 	} else if (loop && paginatedLoop) {
@@ -78,11 +82,14 @@ function updateVariables(state, action) {
  */
 function updateBindings(state, action) {
 	const { payload } = action;
-	const { response, value } = payload;
+	const { response } = payload;
 	const { name } = response;
-	const { updateBindings } = state;
+	const { updateBindings: ub } = state;
+	const { variables } = state;
+	const variable = variables[name];
+	const { value } = variable;
 
-	updateBindings(name, value);
+	ub(name, value);
 
 	return state;
 }

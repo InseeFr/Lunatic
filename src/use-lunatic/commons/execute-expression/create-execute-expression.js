@@ -149,6 +149,7 @@ function createExecuteExpression(variables, features) {
 
 	function resolveUseContext(name, { iteration, linksIterations }) {
 		const value = bindings[name];
+
 		if ([X_AXIS, Y_AXIS].includes(name) && linksIterations !== undefined) {
 			pushToLazy(name);
 			const [x, y] = linksIterations;
@@ -162,6 +163,18 @@ function createExecuteExpression(variables, features) {
 			if (iteration < value.length) {
 				return value[iteration];
 			}
+			return null;
+		}
+		if (linksIterations !== undefined) {
+			const [x, y] = linksIterations;
+			// console.log({ name, linksIterations, value });
+			if (Array.isArray(value) && x < value.length) {
+				const sub = value[x];
+				if (Array.isArray(sub) && y < sub.length) {
+					return sub[y];
+				}
+			}
+
 			return null;
 		}
 		return getVtlCompatibleValue(value);
