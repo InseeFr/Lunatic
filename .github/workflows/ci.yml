@@ -80,13 +80,13 @@ jobs:
             false
           fi
           if [ ${{github.ref}} = 'refs/heads/master' ]; then
-            yarn publish --access public
+            npm publish --access public
           fi
           if [ ${{github.ref}} = 'refs/heads/v2-master' ]; then
-            yarn publish --tag v2 --access public
+            npm publish --tag v2 --access public
           fi
           if [ ${{github.ref}} = 'refs/heads/prisme' ]; then
-            yarn publish --tag prisme --access public
+            npm publish --tag prisme --access public
           fi
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
