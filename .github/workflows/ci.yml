@@ -66,6 +66,7 @@ jobs:
         with:
           node-version: '16'
           registry-url: https://registry.npmjs.org/
+          scope: '@inseefr'
       - uses: bahmutov/npm-install@v1
       - run: |
           yarn build
