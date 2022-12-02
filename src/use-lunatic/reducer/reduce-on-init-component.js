@@ -5,7 +5,6 @@ function reduceOnInitComponent(state, action) {
 	const { name } = payload;
 	switch (name) {
 		case COMPONENT_NAMES.RosterForLoop:
-			console.log({ action });
 			return state;
 		default:
 			return state;
