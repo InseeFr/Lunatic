@@ -1,0 +1,18 @@
+{
+	"COLLECTED": {
+		"NB_HAB": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": 2
+		},
+		"PRENOMS": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["Fanny", "Ines"]
+		}
+	}
+}
