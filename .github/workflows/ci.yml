@@ -18,7 +18,7 @@ jobs:
       # Build lib
       - run: yarn build
       - name: Upload deploy artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: coverage
           path: coverage/
@@ -31,7 +31,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Download coverage artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: coverage
           path: coverage
@@ -134,7 +134,7 @@ jobs:
       # Add json to fetch for suggester stories
       - run: cp -a ./public/. ./deploy/storybook
       - name: Upload deploy artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: deploy
           path: deploy/
@@ -148,7 +148,7 @@ jobs:
         with:
           ref: gh-pages
       - name: Download deploy artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: deploy
       - name: Commit & Push changes
@@ -180,7 +180,7 @@ jobs:
       - run: cp -a ./public/. ./deploy-v2/storybook-v2
       #
       - name: Upload deploy artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: deploy-v2
           path: deploy-v2/
@@ -194,7 +194,7 @@ jobs:
         with:
           ref: gh-pages
       - name: Download deploy artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: deploy-v2
       - name: Commit & Push changes

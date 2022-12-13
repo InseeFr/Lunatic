@@ -31,7 +31,7 @@ const Link = (props) => {
 			</a>
 		);
 	return (
-		<span className="link-md" onPointerUp={listener(false)}>
+		<span className="link-md" onPointerUp={listener(/*false*/)}>
 			<span
 				data-for={`${title}-tooltip`}
 				data-tip={title}

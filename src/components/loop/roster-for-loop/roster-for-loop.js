@@ -46,7 +46,7 @@ function RosterforLoop({
 		function (response, value, args) {
 			const v = valueMap[response.name];
 			v[args.index] = value;
-			handleChange(response, v, { loop: true, length: nbRows });
+			handleChange(response, v, { loop: true, length: nbRows }); // TODO: a retaper pour déplacer cette compléxité
 		},
 		[handleChange, nbRows, valueMap]
 	);
