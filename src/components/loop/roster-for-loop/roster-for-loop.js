@@ -32,6 +32,7 @@ function RosterforLoop({
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [nbRows, setNbRows] = useState(() => getInitLength(valueMap));
+	const showButtons = min && max && min !== max;
 
 	const addRow = useCallback(
 		function () {
@@ -100,7 +101,7 @@ function RosterforLoop({
 					id={id}
 					custom={custom}
 				/>
-				{min && max && min !== max && (
+				{showButtons && (
 					<>
 						<HandleRowButton
 							onClick={addRow}
@@ -111,7 +112,7 @@ function RosterforLoop({
 						</HandleRowButton>
 						<HandleRowButton
 							onClick={removeRow}
-							disabled={nbRows === 1}
+							disabled={nbRows === min}
 							custom={custom}
 						>
 							{D.DEFAULT_BUTTON_REMOVE}
