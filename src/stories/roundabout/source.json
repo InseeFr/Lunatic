@@ -62,7 +62,7 @@
 			"id": "koka0f5v",
 			"componentType": "Loop",
 			"page": "4",
-			"maxPage": "1",
+			"maxPage": "3",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {
@@ -77,7 +77,27 @@
 					"componentType": "Subsequence",
 					"page": "4.1",
 					"label": {
-						"value": "\"Première page de question\"",
+						"value": "\"Première page de questions\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": { "value": "true", "type": "VTL" }
+				},
+				{
+					"id": "jsygk7m7",
+					"componentType": "Subsequence",
+					"page": "4.2",
+					"label": {
+						"value": "\"Deuxième page de questions\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": { "value": "true", "type": "VTL" }
+				},
+				{
+					"id": "jsygk7m7",
+					"componentType": "Subsequence",
+					"page": "4.3",
+					"label": {
+						"value": "\"Troisième page de questions\"",
 						"type": "VTL|MD"
 					},
 					"conditionFilter": { "value": "true", "type": "VTL" }
