@@ -20,6 +20,7 @@ const INITIAL_STATE = {
 		iteration: undefined,
 		shallowIteration: undefined,
 		nbIterations: undefined,
+		roundaboutPage: undefined,
 	},
 	waiting: false,
 	errors: undefined,

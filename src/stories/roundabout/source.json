@@ -86,6 +86,7 @@
 			"maxPage": "3",
 			"depth": 1,
 			"paginatedLoop": true,
+			"roundaboutPage": "4",
 			"conditionFilter": {
 				"value": "true",
 				"type": "VTL"

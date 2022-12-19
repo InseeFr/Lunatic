@@ -33,14 +33,30 @@ function reduceNextSubPage(state) {
 
 function reduceNextIteration(state) {
 	const { pager } = state;
-	const { iteration } = pager;
+	const { iteration, roundaboutPage } = pager;
+	let isInLoop = true;
 	const newPager = {
 		...pager,
 		subPage: 0,
 		iteration: iteration + 1,
 	};
+
+	// if (roundaboutPage !== undefined && iteration !== 1) {
+	// 	newPager.page = roundaboutPage;
+	// 	newPager.subPage = undefined;
+	// 	newPager.iteration = undefined;
+	// 	newPager.subPage = undefined;
+	// 	newPager.nbSubPages = undefined;
+	// 	newPager.nbIterations = undefined;
+	// 	newPager.roundaboutPage = undefined;
+	// 	newPager.shallowIteration = undefined;
+
+	// 	isInLoop = false;
+	// }
+
 	return {
 		...state,
+		isInLoop,
 		pager: {
 			...newPager,
 			lastReachedPage: getNewReachedPage(newPager),
@@ -73,7 +89,7 @@ function reduceNextPage(state, { next }) {
 
 function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	const { pages, pager, executeExpression } = state;
-	const { subPages } = pages[next];
+	const { subPages, roundaboutPage } = pages[next];
 
 	if (!validateLoopConditionFilter(state, { next })) {
 		const newPager = {
@@ -116,6 +132,7 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 			iteration: 0,
 			nbIterations,
 			shallowIteration: undefined,
+			roundaboutPage,
 		};
 		return {
 			...state,
