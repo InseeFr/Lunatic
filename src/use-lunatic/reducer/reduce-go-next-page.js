@@ -138,14 +138,18 @@ function validateChange(state) {
 	return state;
 }
 
+// function getComponentsType(components = []) {
+// 	return components.map(({ componentType }) => componentType);
+// }
+
 function reduceGoNextPage(state) {
 	const {
 		pages,
 		isInLoop,
 		pager,
-		variables,
-		setLoopBindings,
-		resetLoopBindings,
+		// variables,
+		// setLoopBindings,
+		// resetLoopBindings,
 	} = state;
 	const { iteration, nbIterations, subPage, nbSubPages, page } = pager;
 
@@ -154,21 +158,19 @@ function reduceGoNextPage(state) {
 	}
 	if (isInLoop && subPage === nbSubPages - 1 && iteration < nbIterations - 1) {
 		// New iteration, update loop bindings
-		setLoopBindings(variables, iteration + 1);
+		// setLoopBindings(variables, iteration + 1); don't do that !
 		return validateChange(reduceNextIteration(state));
 	}
 
 	const next = getNextPage(state);
 	const { isLoop, iterations, loopDependencies } = pages[next];
 
-	const pageComponents = pages[page].components.map(
-		({ componentType }) => componentType
-	);
+	// const pageComponents = getComponentsType(pages[page].components);
+	// if ((isInLoop && !isLoop) || pageComponents.includes('PairwiseLinks')) {
+	//End of the loop or PairwiseLinks, we reset bindings
+	// resetLoopBindings(variables);
+	// }
 
-	if ((isInLoop && !isLoop) || pageComponents.includes('PairwiseLinks')) {
-		//End of the loop or PairwiseLinks, we reset bindings
-		resetLoopBindings(variables);
-	}
 	if (next === page) {
 		// TODO: check why next === page, doesn't seems to be normal
 		return state;

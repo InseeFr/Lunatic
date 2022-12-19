@@ -145,8 +145,8 @@ function reduceOnInit(state, action) {
 		const [
 			executeExpression,
 			updateBindings,
-			setLoopBindings,
-			resetLoopBindings,
+			// setLoopBindings,
+			// resetLoopBindings,
 		] = createExecuteExpression(variables, features);
 		const pages = checkLoops(createMapPages(source));
 		const { maxPage, cleaning = {}, missingBlock = {}, resizing = {} } = source;
@@ -174,8 +174,8 @@ function reduceOnInit(state, action) {
 			pager,
 			executeExpression,
 			updateBindings,
-			setLoopBindings,
-			resetLoopBindings,
+			// setLoopBindings,
+			// resetLoopBindings,
 			handleChange,
 			preferences,
 			management,

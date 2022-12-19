@@ -81,28 +81,28 @@ function createExecuteExpression(variables, features) {
 	 * @param {*} variables
 	 * @param {*} iteration
 	 */
-	function setLoopBindings(variables, iteration) {
-		Object.entries(bindings).forEach(([k, v]) => {
-			const { type, value } = variables[k];
-			if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value)) {
-				bindings[k] = value[iteration];
-				pushToLazy(k);
-			}
-		});
-	}
+	// function setLoopBindings(variables, iteration) {
+	// 	Object.entries(bindings).forEach(([k, v]) => {
+	// 		const { type, value } = variables[k];
+	// 		if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value)) {
+	// 			bindings[k] = value[iteration];
+	// 			pushToLazy(k);
+	// 		}
+	// 	});
+	// }
 
 	/**
 	 *
 	 * @param {*} variables
 	 */
-	function resetLoopBindings(variables) {
-		Object.entries(bindings).forEach(([k, v]) => {
-			const { type, value } = variables[k];
-			if (type === COLLECTED && Array.isArray(value) && !Array.isArray(v)) {
-				bindings[k] = value;
-			}
-		});
-	}
+	// function resetLoopBindings(variables) {
+	// 	Object.entries(bindings).forEach(([k, v]) => {
+	// 		const { type, value } = variables[k];
+	// 		if (type === COLLECTED && Array.isArray(value) && !Array.isArray(v)) {
+	// 			bindings[k] = value;
+	// 		}
+	// 	});
+	// }
 
 	function getVariablesAndCach(expression) {
 		if (tokensMap.has(expression)) {
@@ -229,7 +229,7 @@ function createExecuteExpression(variables, features) {
 		return memoized;
 	}
 
-	return [execute, updateBindings, setLoopBindings, resetLoopBindings];
+	return [execute, updateBindings /*, setLoopBindings, resetLoopBindings*/];
 }
 
 export default createExecuteExpression;

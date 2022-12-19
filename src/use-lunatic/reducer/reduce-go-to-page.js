@@ -48,7 +48,7 @@ function reduceGoToPage(state, action) {
 			},
 		};
 	// TODO: fix when redirect to loop component
-	// How to calculate nbSubPages & nbIterations?
+	// How to calculate nbSubPages & nbIterations? everything is in the state
 	// How to calculate lazy variables we need?
 	// Handle setLoopBindings with the good iteration
 	return validateChange(state);
