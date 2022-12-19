@@ -105,7 +105,6 @@ function OrchestratorForStories({
 						component;
 					const Component = lunatic[componentType];
 					const storeInfo = storeName ? getStoreInfo(storeName) : {};
-
 					return (
 						<div className="lunatic lunatic-component" key={`component-${id}`}>
 							<Component

@@ -8,9 +8,9 @@ export const goNextPage = ({ block }) => ({
 });
 
 export const GO_TO_PAGE = 'use-lunatic/go-to-page';
-export const goToPage = ({ page }) => ({
+export const goToPage = ({ page, iteration, nbIterations, subPage }) => ({
 	type: GO_TO_PAGE,
-	payload: { page },
+	payload: { page, iteration, nbIterations, subPage },
 });
 
 export const ON_INIT = 'use-lunatic/on-init';
@@ -24,6 +24,7 @@ export const onInit = ({
 	management,
 	handleChange,
 	activeControls,
+	goToPage,
 }) => ({
 	type: ON_INIT,
 	payload: {
@@ -36,6 +37,7 @@ export const onInit = ({
 		management,
 		handleChange,
 		activeControls,
+		goToPage,
 	},
 });
 

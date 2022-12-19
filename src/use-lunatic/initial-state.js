@@ -25,10 +25,10 @@ const INITIAL_STATE = {
 	errors: undefined,
 	currentErrors: undefined,
 	modalErrors: undefined,
-	/* fonctionnalités vtl & md */
-	updateBindings: () => {},
-	executeExpression: () => {},
-	handleChange: () => {},
+	updateBindings: () => undefined,
+	executeExpression: () => undefined,
+	handleChange: () => undefined,
+	goToPage: () => undefined,
 	activeControls: false,
 };
 

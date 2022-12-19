@@ -1,5 +1,5 @@
 {
-	"maxPage": "5",
+	"maxPage": "6",
 	"components": [
 		{
 			"id": "seq",
@@ -43,7 +43,6 @@
 					"id": "kmno1n7m",
 					"componentType": "Input",
 					"mandatory": false,
-					"page": "18",
 					"maxLength": 20,
 					"label": {
 						"value": "\"Prénom\"))",
@@ -57,11 +56,33 @@
 				}
 			]
 		},
+		{
+			"id": "roundabout",
+			"componentType": "Roundabout",
+			"page": "4",
+			"conditionFilter": { "value": "true", "type": "VTL" },
 
+			"iterations": { "value": "NB_HAB", "type": "VTL" },
+			"pageLoop": "5",
+			"expressions": {
+				"complete": {
+					"value": "not(isnull(AGE)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
+					"type": "VTL"
+				},
+				"partial": {
+					"value": "not(isnull(AGE)) or not(isnull(SEXE)) or not(isnull(SOMETHING))",
+					"type": "VTL"
+				},
+				"label": {
+					"value": "\"Série de question pour \" || PRENOMS",
+					"type": "VTL"
+				}
+			}
+		},
 		{
 			"id": "koka0f5v",
 			"componentType": "Loop",
-			"page": "4",
+			"page": "5",
 			"maxPage": "3",
 			"depth": 1,
 			"paginatedLoop": true,
@@ -75,7 +96,7 @@
 				{
 					"id": "jsygk7m7",
 					"componentType": "Subsequence",
-					"page": "4.1",
+					"page": "5.1",
 					"label": {
 						"value": "\"Première page de questions\"",
 						"type": "VTL|MD"
@@ -83,9 +104,24 @@
 					"conditionFilter": { "value": "true", "type": "VTL" }
 				},
 				{
+					"id": "kmno1n7m",
+					"componentType": "InputNumber",
+					"maxLength": 3,
+					"page": "5.1",
+					"label": {
+						"value": "\"Age\"))",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"response": { "name": "AGE" }
+				},
+				{
 					"id": "jsygk7m7",
 					"componentType": "Subsequence",
-					"page": "4.2",
+					"page": "5.2",
 					"label": {
 						"value": "\"Deuxième page de questions\"",
 						"type": "VTL|MD"
@@ -93,14 +129,53 @@
 					"conditionFilter": { "value": "true", "type": "VTL" }
 				},
 				{
+					"id": "sexe",
+					"componentType": "Radio",
+					"page": "5.2",
+					"label": {
+						"value": "\"Sexe\"",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"options": [
+						{
+							"value": "1",
+							"label": { "value": "\"Homme\"", "type": "VTL|MD" }
+						},
+						{
+							"value": "2",
+							"label": { "value": "\"Femme\"", "type": "VTL|MD" }
+						}
+					],
+					"response": { "name": "SEXE" }
+				},
+				{
 					"id": "jsygk7m7",
 					"componentType": "Subsequence",
-					"page": "4.3",
+					"page": "5.3",
 					"label": {
 						"value": "\"Troisième page de questions\"",
 						"type": "VTL|MD"
 					},
 					"conditionFilter": { "value": "true", "type": "VTL" }
+				},
+				{
+					"id": "kmno1n7m",
+					"componentType": "Input",
+					"maxLength": 3,
+					"page": "5.3",
+					"label": {
+						"value": "\"Something\"))",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"response": { "name": "SOMETHING" }
 				}
 			]
 		},
@@ -112,7 +187,7 @@
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "5"
+			"page": "6"
 		}
 	],
 	"variables": [
@@ -125,6 +200,39 @@
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "SOMETHING",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "SEXE",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		},
 		{

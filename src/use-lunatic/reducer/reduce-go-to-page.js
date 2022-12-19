@@ -13,11 +13,28 @@ function validateChange(state) {
 	return updatedState;
 }
 
+function resolveSubPage(state, payload) {
+	const { pager, pages } = state;
+	const { page, iteration, nbIterations, subPage = 0 } = payload;
+
+	const { subPages } = pages[page] || { subPage: [] };
+	const nbSubPages = subPages.length;
+
+	return {
+		...state,
+		isInLoop: true,
+		pager: { ...pager, page, iteration, nbIterations, nbSubPages, subPage },
+	};
+}
+
 function reduceGoToPage(state, action) {
 	const { isInLoop, pager } = state;
-	const {
-		payload: { page: newPage },
-	} = action;
+	const { payload } = action;
+	const { page: newPage, iteration } = payload;
+
+	if (iteration !== undefined) {
+		return resolveSubPage(state, payload);
+	}
 	if (!isInLoop)
 		return {
 			...state,
