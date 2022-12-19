@@ -41,18 +41,18 @@ function reduceNextIteration(state) {
 		iteration: iteration + 1,
 	};
 
-	// if (roundaboutPage !== undefined && iteration !== 1) {
-	// 	newPager.page = roundaboutPage;
-	// 	newPager.subPage = undefined;
-	// 	newPager.iteration = undefined;
-	// 	newPager.subPage = undefined;
-	// 	newPager.nbSubPages = undefined;
-	// 	newPager.nbIterations = undefined;
-	// 	newPager.roundaboutPage = undefined;
-	// 	newPager.shallowIteration = undefined;
+	if (roundaboutPage !== undefined && iteration !== 1) {
+		newPager.page = roundaboutPage;
+		newPager.subPage = undefined;
+		newPager.iteration = undefined;
+		newPager.subPage = undefined;
+		newPager.nbSubPages = undefined;
+		newPager.nbIterations = undefined;
+		newPager.roundaboutPage = undefined;
+		newPager.shallowIteration = undefined;
 
-	// 	isInLoop = false;
-	// }
+		isInLoop = false;
+	}
 
 	return {
 		...state,
