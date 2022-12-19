@@ -16,7 +16,6 @@ function validateChange(state) {
 function resolveSubPage(state, payload) {
 	const { pager, pages } = state;
 	const { page, iteration, nbIterations, subPage = 0 } = payload;
-
 	const { subPages } = pages[page] || { subPage: [] };
 	const nbSubPages = subPages.length;
 

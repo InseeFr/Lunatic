@@ -4,13 +4,7 @@ import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
 import getVtlCompatibleValue from '../../../utils/vtl';
-import {
-	COLLECTED,
-	VTL,
-	VTL_MD,
-	X_AXIS,
-	Y_AXIS,
-} from '../../../utils/constants';
+import { VTL, VTL_MD, X_AXIS, Y_AXIS } from '../../../utils/constants';
 
 function validateExpression(expObject) {
 	if (typeof expObject === 'object') {
@@ -68,41 +62,13 @@ function createExecuteExpression(variables, features) {
 	 * @param {*} value
 	 */
 	function updateBindings(name, value) {
-		// update des bindings
+		// update des bindings : for side effects on bindings.
 		if (name in bindings) {
 			bindings[name] = value;
 			collectedUpdated.set(name, []);
 		}
 		pushToLazy(name);
 	}
-
-	/**
-	 *
-	 * @param {*} variables
-	 * @param {*} iteration
-	 */
-	// function setLoopBindings(variables, iteration) {
-	// 	Object.entries(bindings).forEach(([k, v]) => {
-	// 		const { type, value } = variables[k];
-	// 		if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value)) {
-	// 			bindings[k] = value[iteration];
-	// 			pushToLazy(k);
-	// 		}
-	// 	});
-	// }
-
-	/**
-	 *
-	 * @param {*} variables
-	 */
-	// function resetLoopBindings(variables) {
-	// 	Object.entries(bindings).forEach(([k, v]) => {
-	// 		const { type, value } = variables[k];
-	// 		if (type === COLLECTED && Array.isArray(value) && !Array.isArray(v)) {
-	// 			bindings[k] = value;
-	// 		}
-	// 	});
-	// }
 
 	function getVariablesAndCach(expression) {
 		if (tokensMap.has(expression)) {
@@ -143,6 +109,12 @@ function createExecuteExpression(variables, features) {
 		return {};
 	}
 
+	/**
+	 * Avant d'exécuter, on résoud la valeur de la variable, selon la portée d'exécution de l'expression
+	 * @param {*} name
+	 * @param {*} param1
+	 * @returns
+	 */
 	function resolveUseContext(name, { iteration, linksIterations }) {
 		const value = bindings[name];
 
@@ -163,7 +135,6 @@ function createExecuteExpression(variables, features) {
 		}
 		if (linksIterations !== undefined) {
 			const [x, y] = linksIterations;
-			// console.log({ name, linksIterations, value });
 			if (Array.isArray(value) && x < value.length) {
 				const sub = value[x];
 				if (Array.isArray(sub) && y < sub.length) {
@@ -229,7 +200,7 @@ function createExecuteExpression(variables, features) {
 		return memoized;
 	}
 
-	return [execute, updateBindings /*, setLoopBindings, resetLoopBindings*/];
+	return [execute, updateBindings];
 }
 
 export default createExecuteExpression;
