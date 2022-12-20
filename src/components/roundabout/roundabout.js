@@ -15,22 +15,31 @@ function RoundaboutIteration({
 	partial,
 	goToIteration,
 	locked,
+	custom,
 }) {
 	return (
-		<RoundaboutItContainer>
-			<RoundaboutItTitle label={label} />
+		<RoundaboutItContainer custom={custom}>
+			<RoundaboutItTitle label={label} custom={custom} />
 			<RoundaboutItButton
 				partial={partial}
 				complete={complete}
 				goToIteration={goToIteration}
 				iteration={index}
 				locked={locked}
+				custom={custom}
 			/>
 		</RoundaboutItContainer>
 	);
 }
 
-function Roundabout({ iterations, expressions, goToIteration, label, locked }) {
+function Roundabout({
+	iterations,
+	expressions,
+	goToIteration,
+	label,
+	locked,
+	custom,
+}) {
 	const { complete, partial, label: iterationLabels } = expressions;
 	if (
 		iterationLabels !== undefined &&
@@ -47,17 +56,18 @@ function Roundabout({ iterations, expressions, goToIteration, label, locked }) {
 					partial={partial[i]}
 					goToIteration={goToIteration}
 					locked={locked}
+					custom={custom}
 				/>
 			);
 		});
 		return (
-			<RoundaboutContainer>
-				<RoundaboutLabel value={label} />
+			<RoundaboutContainer custom={custom}>
+				<RoundaboutLabel value={label} custom={custom} />
 				{subElements}
 			</RoundaboutContainer>
 		);
 	}
-	return <RoundaboutPending />;
+	return <RoundaboutPending custom={custom} />;
 }
 
 Roundabout.propTypes = {

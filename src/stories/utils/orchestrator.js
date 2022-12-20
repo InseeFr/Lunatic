@@ -65,7 +65,6 @@ function OrchestratorForStories({
 	...rest
 }) {
 	const { maxPage } = source;
-
 	const {
 		getComponents,
 		goPreviousPage,
@@ -84,6 +83,7 @@ function OrchestratorForStories({
 		features,
 		preferences,
 		onChange: onLogChange,
+		custom,
 		activeGoNextForMissing,
 		autoSuggesterLoading,
 		suggesters,
@@ -117,7 +117,6 @@ function OrchestratorForStories({
 								missing={missing}
 								missingStrategy={goNextPage}
 								shortcut={shortcut}
-								custom={custom}
 								filterDescription={filterDescription}
 								errors={currentErrors}
 							/>

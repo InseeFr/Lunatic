@@ -26,6 +26,7 @@ function useLunatic(
 		suggesters: suggestersConfiguration,
 		suggesterFetcher,
 		activeControls = false,
+		custom = DEFAULT_DATA,
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -143,6 +144,7 @@ function useLunatic(
 					handleChange,
 					activeControls,
 					goToPage,
+					custom,
 				})
 			);
 		},
@@ -157,6 +159,7 @@ function useLunatic(
 			handleChange,
 			activeControls,
 			goToPage,
+			custom,
 		]
 	);
 

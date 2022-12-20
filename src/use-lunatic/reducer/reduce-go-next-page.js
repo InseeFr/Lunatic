@@ -51,7 +51,7 @@ function reduceNextIteration(state) {
 	const { pager } = state;
 	const { iteration, roundabout } = pager;
 
-	if (roundabout !== undefined) {
+	if (roundabout) {
 		return returnToRoundabout(state);
 	}
 
