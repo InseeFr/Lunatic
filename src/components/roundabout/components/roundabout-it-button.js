@@ -23,7 +23,13 @@ function getLabel(complete, partial) {
 	return 'Commencer';
 }
 
-function RoundaboutItButton({ complete, partial, iteration, goToIteration }) {
+function RoundaboutItButton({
+	complete,
+	partial,
+	iteration,
+	goToIteration,
+	locked,
+}) {
 	const status = getStatus(complete, partial);
 	const label = getLabel(complete, partial);
 
@@ -37,13 +43,17 @@ function RoundaboutItButton({ complete, partial, iteration, goToIteration }) {
 	return (
 		<Button
 			className={classnames('roundabout-it-button', status)}
-			disabled={status === 'complete'}
+			disabled={status === 'complete' && locked}
 			onClick={onClick}
 		>
 			{label}
 		</Button>
 	);
 }
+
+RoundaboutItButton.defaultProps = {
+	locked: true,
+};
 
 export default createCustomizableLunaticField(
 	RoundaboutItButton,

@@ -4,7 +4,14 @@ import Roundabout from './roundabout';
 /**
  *  Logique fonctionnelle et immuable du composant
  */
-function LunaticRoundabout({ iterations, expressions, goToPage, page, label }) {
+function LunaticRoundabout({
+	iterations,
+	expressions,
+	goToPage,
+	page,
+	label,
+	locked,
+}) {
 	const goToIteration = useCallback(
 		function (iteration) {
 			goToPage({
@@ -23,6 +30,7 @@ function LunaticRoundabout({ iterations, expressions, goToPage, page, label }) {
 			expressions={expressions}
 			iterations={iterations}
 			goToIteration={goToIteration}
+			locked={locked}
 		/>
 	);
 }

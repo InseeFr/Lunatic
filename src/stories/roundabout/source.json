@@ -63,6 +63,7 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
 			"label": { "value": "\"Un rond point\"", "type": "VTL" },
+			"locked": true,
 			"expressions": {
 				"complete": {
 					"value": "not(isnull(AGE)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
@@ -83,7 +84,7 @@
 					"componentType": "Subsequence",
 					"page": "4.1",
 					"label": {
-						"value": "\"Première page de questions\"",
+						"value": "\"Première page de questions pour \" || PRENOMS",
 						"type": "VTL|MD"
 					},
 					"conditionFilter": { "value": "true", "type": "VTL" }
@@ -108,7 +109,7 @@
 					"componentType": "Subsequence",
 					"page": "4.2",
 					"label": {
-						"value": "\"Deuxième page de questions\"",
+						"value": "\"Deuxième page de questions pour \"|| PRENOMS",
 						"type": "VTL|MD"
 					},
 					"conditionFilter": { "value": "true", "type": "VTL" }
@@ -142,7 +143,7 @@
 					"componentType": "Subsequence",
 					"page": "4.3",
 					"label": {
-						"value": "\"Troisième page de questions\"",
+						"value": "\"Troisième page de questions \" || PRENOMS",
 						"type": "VTL|MD"
 					},
 					"conditionFilter": { "value": "true", "type": "VTL" }
@@ -150,10 +151,10 @@
 				{
 					"id": "kmno1n7m",
 					"componentType": "Input",
-					"maxLength": 3,
+					"maxLength": 30,
 					"page": "4.3",
 					"label": {
-						"value": "\"Something\"))",
+						"value": "\"Dites quelque chose.\"))",
 						"type": "VTL|MD"
 					},
 					"conditionFilter": {
@@ -231,6 +232,13 @@
 				"EDITED": [null],
 				"INPUTED": [null]
 			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "PRENOMREF",
+			"expression": { "value": "first_value(PRENOMS over())", "type": "VTL" },
+			"bindingDependencies": ["PRENOMS"],
+			"inFilter": "true"
 		}
 	],
 	"resizing": {
