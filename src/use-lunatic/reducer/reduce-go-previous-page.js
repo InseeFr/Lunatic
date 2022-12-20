@@ -1,5 +1,6 @@
 import { isOnEmptyPage } from './commons';
 import { getCompatibleVTLExpression, getPageTag } from '../commons';
+import clearPager from '../commons/clear-pager';
 
 function getPreviousPage(pager) {
 	const { page } = pager;
@@ -51,8 +52,12 @@ function goPreviousSubPage(state) {
 
 function goPreviousIteration(state) {
 	const { pager, pages } = state;
-	const { iteration, page } = pager;
+	const { iteration, page, roundabout } = pager;
 	const { subPages } = pages[page];
+
+	if (roundabout) {
+		return returnToRoundabout(state);
+	}
 
 	return {
 		...state,
@@ -98,9 +103,21 @@ function validateChange(state) {
 	return updatedState;
 }
 
+function returnToRoundabout(state) {
+	const { pager } = state;
+	const { roundabout } = pager;
+	const { page } = roundabout;
+	return { ...state, isInLoop: false, pager: { ...clearPager(pager), page } };
+}
+
 function reduceGoPreviousPage(state) {
-	const { pages, pager, isInLoop /*, setLoopBindings, variables*/ } = state;
-	const { iteration, subPage } = pager;
+	const {
+		pages,
+		pager,
+		isInLoop,
+		/*, setLoopBindings, variables*/
+	} = state;
+	const { iteration, subPage, roundabout } = pager;
 
 	// dans une boucle et l'itération courante n'est pas finie
 	if (isInLoop && subPage > 0) {
@@ -108,8 +125,11 @@ function reduceGoPreviousPage(state) {
 	}
 	// dans une boucle, l'itération courante est finie mais il reste encore au moins une autre
 	if (isInLoop && subPage === 0 && iteration > 0) {
-		// setLoopBindings(variables, iteration - 1);
 		return validateChange(goPreviousIteration(state));
+	}
+	// retour au roundabout
+	if (roundabout) {
+		return returnToRoundabout(state);
 	}
 
 	const previous = getPreviousPage(pager);

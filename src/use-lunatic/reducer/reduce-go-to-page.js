@@ -15,14 +15,22 @@ function validateChange(state) {
 
 function resolveSubPage(state, payload) {
 	const { pager, pages } = state;
-	const { page, iteration, nbIterations, subPage = 0 } = payload;
-	const { subPages } = pages[page] || { subPage: [] };
+	const { page, iteration, nbIterations, subPage = 0, roundabout } = payload;
+	const { subPages } = pages[page] || { subPages: [] };
 	const nbSubPages = subPages.length;
 
 	return {
 		...state,
 		isInLoop: true,
-		pager: { ...pager, page, iteration, nbIterations, nbSubPages, subPage },
+		pager: {
+			...pager,
+			page,
+			iteration,
+			nbIterations,
+			nbSubPages,
+			subPage,
+			roundabout,
+		},
 	};
 }
 

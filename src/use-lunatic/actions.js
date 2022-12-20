@@ -8,9 +8,15 @@ export const goNextPage = ({ block }) => ({
 });
 
 export const GO_TO_PAGE = 'use-lunatic/go-to-page';
-export const goToPage = ({ page, iteration, nbIterations, subPage }) => ({
+export const goToPage = ({
+	page,
+	iteration,
+	nbIterations,
+	subPage,
+	roundabout,
+}) => ({
 	type: GO_TO_PAGE,
-	payload: { page, iteration, nbIterations, subPage },
+	payload: { page, iteration, nbIterations, subPage, roundabout },
 });
 
 export const ON_INIT = 'use-lunatic/on-init';

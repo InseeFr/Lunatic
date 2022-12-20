@@ -1,17 +1,22 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import Roundabout from './roundabout';
 
 /**
  *  Logique fonctionnelle et immuable du composant
  */
-function LunaticRoundabout({ iterations, expressions, goToPage, pageLoop }) {
+function LunaticRoundabout({ iterations, expressions, goToPage, page }) {
 	const { complete, partial, label } = expressions;
 
 	const goToIteration = useCallback(
 		function (iteration) {
-			goToPage({ page: pageLoop, iteration, nbIterations: iterations });
+			goToPage({
+				page,
+				iteration,
+				nbIterations: iterations,
+				roundabout: { page },
+			});
 		},
-		[goToPage, pageLoop, iterations]
+		[goToPage, page, iterations]
 	);
 
 	return (

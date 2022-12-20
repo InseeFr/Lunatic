@@ -1,4 +1,5 @@
 import isPaginatedLoop from './is-paginated-loop';
+import isRoundabout from './is-roundabout';
 
 function isUnpaginated(questionnaire) {
 	const { maxPage } = questionnaire;
@@ -12,6 +13,7 @@ function isUnpaginated(questionnaire) {
  * @param {*} map Map<page,{ components: Array<component>, isLoop: boolean, subPages: Array<page> }>
  * @returns
  */
+
 function mergeComponent(component, page, map) {
 	if (!page) {
 		return { ...map, unpaged: [...map.unpaged, component] };
@@ -50,7 +52,7 @@ function createPages(questionnaire) {
 	const map = components.reduce(
 		function (current, component) {
 			const { components, page } = component;
-			if (isPaginatedLoop(component)) {
+			if (isPaginatedLoop(component) || isRoundabout(component)) {
 				return mergeComponent(
 					component,
 					page,
@@ -60,7 +62,7 @@ function createPages(questionnaire) {
 
 			return mergeComponent(component, page, current);
 		},
-		{ unpaged: [] }
+		{ unpaged: [], roundabouts: {} }
 	);
 
 	return map;

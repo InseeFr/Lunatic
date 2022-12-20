@@ -4,6 +4,22 @@ import {
 	createControlsReducer,
 	createModalControlsReducer,
 } from './validate-controls';
+import clearPager from '../commons/clear-pager';
+
+function returnToRoundabout(state) {
+	const { pager } = state;
+	const { roundabout } = pager;
+	const { page } = roundabout;
+	return {
+		...state,
+		isInLoop: false,
+		pager: {
+			...clearPager(pager),
+			page,
+		},
+		modalErrors: undefined,
+	};
+}
 
 function getNextPage(state) {
 	const { pager } = state;
@@ -33,30 +49,20 @@ function reduceNextSubPage(state) {
 
 function reduceNextIteration(state) {
 	const { pager } = state;
-	const { iteration, roundaboutPage } = pager;
-	let isInLoop = true;
+	const { iteration, roundabout } = pager;
+
+	if (roundabout !== undefined) {
+		return returnToRoundabout(state);
+	}
+
 	const newPager = {
 		...pager,
 		subPage: 0,
 		iteration: iteration + 1,
 	};
 
-	if (roundaboutPage !== undefined && iteration !== 1) {
-		newPager.page = roundaboutPage;
-		newPager.subPage = undefined;
-		newPager.iteration = undefined;
-		newPager.subPage = undefined;
-		newPager.nbSubPages = undefined;
-		newPager.nbIterations = undefined;
-		newPager.roundaboutPage = undefined;
-		newPager.shallowIteration = undefined;
-
-		isInLoop = false;
-	}
-
 	return {
 		...state,
-		isInLoop,
 		pager: {
 			...newPager,
 			lastReachedPage: getNewReachedPage(newPager),
@@ -89,7 +95,7 @@ function reduceNextPage(state, { next }) {
 
 function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	const { pages, pager, executeExpression } = state;
-	const { subPages, roundaboutPage } = pages[next];
+	const { subPages } = pages[next];
 
 	if (!validateLoopConditionFilter(state, { next })) {
 		const newPager = {
@@ -110,17 +116,14 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 			modalErrors: undefined,
 		};
 	}
-	/* 
-	
-	
-	
-	*/
+
+	/*  */
 	const nbIterations = executeExpression(
-		getCompatibleVTLExpression(iterations),
-		{
-			bindingDependencies: loopDependencies,
-			iteration: undefined,
-		}
+		getCompatibleVTLExpression(iterations)
+		// {
+		// 	bindingDependencies: loopDependencies,
+		// 	iteration: undefined,
+		// }
 	);
 
 	if (Array.isArray(subPages)) {
@@ -132,7 +135,6 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 			iteration: 0,
 			nbIterations,
 			shallowIteration: undefined,
-			roundaboutPage,
 		};
 		return {
 			...state,
@@ -141,7 +143,6 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 				...newPager,
 				lastReachedPage: getNewReachedPage(newPager),
 			},
-
 			modalErrors: undefined,
 		};
 	}
@@ -157,15 +158,23 @@ function validateChange(state) {
 
 function reduceGoNextPage(state) {
 	const { pages, isInLoop, pager } = state;
-	const { iteration, nbIterations, subPage, nbSubPages, page } = pager;
+	const { iteration, nbIterations, subPage, nbSubPages, page, roundabout } =
+		pager;
 
+	/* next iteration of loop/roundabout */
 	if (isInLoop && subPage < nbSubPages - 1) {
 		return validateChange(reduceNextSubPage(state));
 	}
+	/* next subpage of loop/roundabout */
 	if (isInLoop && subPage === nbSubPages - 1 && iteration < nbIterations - 1) {
 		return validateChange(reduceNextIteration(state));
 	}
+	/* exit of a roundabout */
+	if (roundabout) {
+		return returnToRoundabout(state);
+	}
 
+	/* got to next page */
 	const next = getNextPage(state);
 	const { isLoop, iterations, loopDependencies } = pages[next];
 

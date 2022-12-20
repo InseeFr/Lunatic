@@ -1,5 +1,5 @@
 {
-	"maxPage": "6",
+	"maxPage": "5",
 	"components": [
 		{
 			"id": "seq",
@@ -61,9 +61,7 @@
 			"componentType": "Roundabout",
 			"page": "4",
 			"conditionFilter": { "value": "true", "type": "VTL" },
-
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
-			"pageLoop": "5",
 			"expressions": {
 				"complete": {
 					"value": "not(isnull(AGE)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
@@ -77,27 +75,12 @@
 					"value": "\"Série de question pour \" || PRENOMS",
 					"type": "VTL"
 				}
-			}
-		},
-		{
-			"id": "koka0f5v",
-			"componentType": "Loop",
-			"page": "5",
-			"maxPage": "3",
-			"depth": 1,
-			"paginatedLoop": true,
-			"roundaboutPage": "4",
-			"conditionFilter": {
-				"value": "true",
-				"type": "VTL"
 			},
-			"loopDependencies": ["NB_HAB"],
-			"iterations": { "value": "NB_HAB", "type": "VTL" },
 			"components": [
 				{
 					"id": "jsygk7m7",
 					"componentType": "Subsequence",
-					"page": "5.1",
+					"page": "4.1",
 					"label": {
 						"value": "\"Première page de questions\"",
 						"type": "VTL|MD"
@@ -108,7 +91,7 @@
 					"id": "kmno1n7m",
 					"componentType": "InputNumber",
 					"maxLength": 3,
-					"page": "5.1",
+					"page": "4.1",
 					"label": {
 						"value": "\"Age\"))",
 						"type": "VTL|MD"
@@ -122,7 +105,7 @@
 				{
 					"id": "jsygk7m7",
 					"componentType": "Subsequence",
-					"page": "5.2",
+					"page": "4.2",
 					"label": {
 						"value": "\"Deuxième page de questions\"",
 						"type": "VTL|MD"
@@ -132,7 +115,7 @@
 				{
 					"id": "sexe",
 					"componentType": "Radio",
-					"page": "5.2",
+					"page": "4.2",
 					"label": {
 						"value": "\"Sexe\"",
 						"type": "VTL"
@@ -156,7 +139,7 @@
 				{
 					"id": "jsygk7m7",
 					"componentType": "Subsequence",
-					"page": "5.3",
+					"page": "4.3",
 					"label": {
 						"value": "\"Troisième page de questions\"",
 						"type": "VTL|MD"
@@ -167,7 +150,7 @@
 					"id": "kmno1n7m",
 					"componentType": "Input",
 					"maxLength": 3,
-					"page": "5.3",
+					"page": "4.3",
 					"label": {
 						"value": "\"Something\"))",
 						"type": "VTL|MD"
@@ -180,6 +163,7 @@
 				}
 			]
 		},
+
 		{
 			"id": "seq",
 			"componentType": "Sequence",
@@ -188,7 +172,7 @@
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "6"
+			"page": "5"
 		}
 	],
 	"variables": [
