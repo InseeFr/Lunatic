@@ -4,9 +4,7 @@ import Roundabout from './roundabout';
 /**
  *  Logique fonctionnelle et immuable du composant
  */
-function LunaticRoundabout({ iterations, expressions, goToPage, page }) {
-	const { complete, partial, label } = expressions;
-
+function LunaticRoundabout({ iterations, expressions, goToPage, page, label }) {
 	const goToIteration = useCallback(
 		function (iteration) {
 			goToPage({
@@ -21,9 +19,8 @@ function LunaticRoundabout({ iterations, expressions, goToPage, page }) {
 
 	return (
 		<Roundabout
-			complete={complete}
-			partial={partial}
 			label={label}
+			expressions={expressions}
 			iterations={iterations}
 			goToIteration={goToIteration}
 		/>

@@ -62,6 +62,7 @@
 			"page": "4",
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
+			"label": { "value": "\"Un rond point\"", "type": "VTL" },
 			"expressions": {
 				"complete": {
 					"value": "not(isnull(AGE)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
@@ -235,7 +236,7 @@
 	"resizing": {
 		"NB_HAB": {
 			"size": "NB_HAB",
-			"variables": ["PRENOMS"]
+			"variables": ["PRENOMS", "AGE", "SEXE", "SOMETHING"]
 		}
 	}
 }

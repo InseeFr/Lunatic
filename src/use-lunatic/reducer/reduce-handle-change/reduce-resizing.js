@@ -11,13 +11,16 @@ function reduceResizingVariables({
 	if (size !== undefined) {
 		const sizeValue = executeExpression(getCompatibleVTLExpression(size));
 		return variableArray.reduce((acc, v) => {
-			const { value } = variables[v];
-			const newValue = resizeArrayVariable(value, sizeValue, null);
-			updateBindings(v, newValue);
-			return {
-				...acc,
-				[v]: { ...variables[v], value: newValue },
-			};
+			if (v in variables) {
+				const { value } = variables[v];
+				const newValue = resizeArrayVariable(value, sizeValue, null);
+				updateBindings(v, newValue);
+				return {
+					...acc,
+					[v]: { ...variables[v], value: newValue },
+				};
+			}
+			return acc;
 		}, {});
 	}
 	return {};

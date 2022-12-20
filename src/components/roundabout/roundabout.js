@@ -1,64 +1,13 @@
-import React, { useCallback } from 'react';
-import classnames from 'classnames';
-import Button from '../button';
+import React from 'react';
 import { createCustomizableLunaticField } from '../commons';
+import RoundaboutLabel from './components/roundabout-label';
+import RoundaboutPending from './components/roundabout-pending';
+import RoundaboutContainer from './components/roundabout-container';
+import RoundaboutItContainer from './components/roundabout-it-container';
+import RoundaboutItButton from './components/roundabout-it-button';
 
 function RoundaboutItTitle({ label }) {
 	return <div className="roundabout-it-title">{label}</div>;
-}
-
-function getStatus(complete, partial) {
-	if (complete) {
-		return 'complete';
-	}
-	if (partial) {
-		return 'partial';
-	}
-	return 'unstarted';
-}
-
-function getLabel(complete, partial) {
-	if (complete) {
-		return 'Complété';
-	}
-	if (partial) {
-		return 'Modifier';
-	}
-	return 'Commencer';
-}
-
-function RoundaboutItButton({ complete, partial, iteration, goToIteration }) {
-	const status = getStatus(complete, partial);
-	const label = getLabel(complete, partial);
-
-	const onClick = useCallback(
-		function () {
-			goToIteration(iteration);
-		},
-		[iteration, goToIteration]
-	);
-
-	return (
-		<Button
-			className={classnames('roundabout-it-button', status)}
-			disabled={status === 'complete'}
-			onClick={onClick}
-		>
-			{label}
-		</Button>
-	);
-}
-
-function RoundaboutItContainer({ children }) {
-	return <div className="roundabout-iteration-title">{children}</div>;
-}
-
-function RoundaboutContainer({ children }) {
-	return <div className="lunatic-roundabout">{children}</div>;
-}
-
-function RoundaboutPending() {
-	return <div className="roundabout-pending">Pending...</div>;
 }
 
 function Iteration({ label, index, complete, partial, goToIteration }) {
@@ -75,21 +24,31 @@ function Iteration({ label, index, complete, partial, goToIteration }) {
 	);
 }
 
-function Roundabout({ iterations, label, complete, partial, goToIteration }) {
-	if (label !== undefined && label !== undefined && partial !== undefined) {
+function Roundabout({ iterations, expressions, goToIteration, label }) {
+	const { complete, partial, label: iterationLabels } = expressions;
+	if (
+		iterationLabels !== undefined &&
+		iterationLabels !== undefined &&
+		partial !== undefined
+	) {
 		const subElements = new Array(iterations).fill(null).map(function (_, i) {
 			return (
 				<Iteration
 					key={i}
 					index={i}
-					label={label[i]}
+					label={iterationLabels[i]}
 					complete={complete[i]}
 					partial={partial[i]}
 					goToIteration={goToIteration}
 				/>
 			);
 		});
-		return <RoundaboutContainer>{subElements}</RoundaboutContainer>;
+		return (
+			<RoundaboutContainer>
+				<RoundaboutLabel value={label} />
+				{subElements}
+			</RoundaboutContainer>
+		);
 	}
 	return <RoundaboutPending />;
 }
