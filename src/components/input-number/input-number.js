@@ -1,46 +1,22 @@
-import React, { useCallback } from 'react';
-import classnames from 'classnames';
+import React from 'react';
 import { createCustomizableLunaticField } from '../commons';
+import InputNumberDefault from './input-number-default';
+import InputNumberThousand from './input-number-thousand';
 import './input-number.scss';
 
-function InputNumber({
-	id,
-	value,
-	onChange,
-	disabled,
-	readOnly,
-	labelId,
-	min,
-	max,
-	step,
-	unit,
-}) {
-	const handleChange = useCallback(
-		function (e) {
-			const val = e.target.valueAsNumber;
-			onChange(isNaN(val) ? null : val);
-		},
-		[onChange]
-	);
+/**
+ * We assume that we do not have the "arrow" buttons to increment a number when using the thousand separator (large number in principle).
+ */
+const InputNumber = (props) => {
+	const { thousandSeparator, unit } = props;
+
 	return (
 		<div className="lunatic-input-number-container">
-			<input
-				id={id}
-				className={classnames('lunatic-input-number', { disabled, readOnly })}
-				type="number"
-				onChange={handleChange}
-				value={value ?? ''}
-				labelledby={labelId}
-				readOnly={readOnly}
-				disabled={disabled}
-				min={min}
-				max={max}
-				step={step}
-				lang="en"
-			/>
+			{thousandSeparator && <InputNumberThousand {...props} />}
+			{!thousandSeparator && <InputNumberDefault {...props} />}
 			{unit && <span>{unit}</span>}
 		</div>
 	);
-}
+};
 
 export default createCustomizableLunaticField(InputNumber, 'InputNumber');
