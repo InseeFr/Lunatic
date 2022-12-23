@@ -3,7 +3,6 @@ import defaultArgTypes from '../utils/default-arg-types';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
 import sourceEuros from './source-euros';
-import sourcePattern from './source-pattern';
 import sourceThousand from './source-thansand';
 
 const stories = {
