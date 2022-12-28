@@ -43,7 +43,6 @@ function Roundabout({
 	const { complete, partial, label: iterationLabels } = expressions;
 	if (
 		iterationLabels !== undefined &&
-		iterationLabels !== undefined &&
 		partial !== undefined
 	) {
 		const subElements = new Array(iterations).fill(null).map(function (_, i) {
