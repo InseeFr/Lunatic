@@ -117,7 +117,7 @@ function reduceGoPreviousPage(state) {
 		isInLoop,
 		/*, setLoopBindings, variables*/
 	} = state;
-	const { iteration, subPage, roundabout } = pager;
+	const { iteration, subPage, roundabout, nbIterations } = pager;
 
 	// dans une boucle et l'itération courante n'est pas finie
 	if (isInLoop && subPage > 0) {
@@ -128,7 +128,7 @@ function reduceGoPreviousPage(state) {
 		return validateChange(goPreviousIteration(state));
 	}
 	// retour au roundabout
-	if (roundabout) {
+	if (roundabout && nbIterations > 1) {
 		return returnToRoundabout(state);
 	}
 

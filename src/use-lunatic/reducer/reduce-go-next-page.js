@@ -170,7 +170,7 @@ function reduceGoNextPage(state) {
 		return validateChange(reduceNextIteration(state));
 	}
 	/* exit of a roundabout */
-	if (roundabout) {
+	if (roundabout && nbIterations > 1) {
 		return returnToRoundabout(state);
 	}
 
