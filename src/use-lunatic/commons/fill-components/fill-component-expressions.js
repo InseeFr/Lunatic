@@ -15,6 +15,7 @@ const VTL_ATTRIBUTES = [
 	'yAxisIterations',
 	'body.label',
 	'header.label',
+	'headers.label',
 	'conditionFilter',
 ];
 
@@ -45,7 +46,6 @@ function createCrawl({ executeExpression, iteration, linksIterations }) {
 	/**
 	 *
 	 * @param {*} object
-	 * @param {*} array
 	 * @param {*} path
 	 * @returns
 	 */

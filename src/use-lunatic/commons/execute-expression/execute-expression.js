@@ -39,7 +39,9 @@ export function executeVtlExpression(expression, vtlBindings) {
 function executeVTL(expression, vtlBindings, logging) {
 	if (expression) {
 		try {
-			return executeVtlExpression(expression, vtlBindings);
+			const value = executeVtlExpression(expression, vtlBindings);
+			// console.log({ expression, value, vtlBindings });
+			return value;
 		} catch (e) {
 			logging(expression, vtlBindings, e);
 			return expression;
