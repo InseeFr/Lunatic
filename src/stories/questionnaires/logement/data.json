@@ -1,16 +1,11 @@
 {
 	"EXTERNAL": {
-		"ADR": "AVENUE CHARLES DE GAULLE",
-		"NUMTH": "29",
-		"CADRTH": null,
-		"CIV_D1": "MONSIEUR",
-		"CIV_D2": null,
-		"LIBCOM": "PARIS",
-		"PREN_D1": "JEAN-MARC",
-		"PREN_D2": null,
-		"CODEPOST1": "75017",
-		"NOMVOUS_D1": "MIERLOT",
-		"NOMVOUS_D2": null
+		"COM": "SAINT_MARTIN_DU_PALU",
+		"CODE_COM": "000",
+		"CODE_DEP": "973",
+		"ILOT": null,
+		"RANG_L": null,
+		"RANG_A": null
 	},
 	"COLLECTED": {
 		"DAG": {
