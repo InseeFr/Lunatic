@@ -39,7 +39,8 @@
 		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
 		"build-workers": "yarn build-append-worker && yarn build-searching-worker && yarn build-label-worker",
 		"storybook": "start-storybook -p 9999 -s ./public",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+		"prepare": "husky install"
 	},
 	"keywords": [
 		"react",
@@ -48,11 +49,14 @@
 		"library"
 	],
 	"dependencies": {
+		"@commitlint/cli": "^17.4.0",
+		"@commitlint/config-conventional": "^17.4.0",
 		"@inseefr/trevas": "^0.1.16",
 		"@inseefr/vtl-2.0-antlr-tools": "^0.1.0-bundle",
 		"antlr4": "4.8.0",
 		"classnames": "^2.3.1",
 		"date-fns": "^2.25.0",
+		"lint-staged": "^13.1.0",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.debounce": "^4.0.8",
 		"lodash.isequal": "^4.5.0",
@@ -107,6 +111,7 @@
 		"eslint-plugin-react": "^7.17.0",
 		"eslint-plugin-react-hooks": "^4.0.8",
 		"file-loader": "^6.2.0",
+		"husky": "^8.0.0",
 		"identity-obj-proxy": "^3.0.0",
 		"jest": "^27.0.6",
 		"jest-sonar-reporter": "^2.0.0",
@@ -159,5 +164,18 @@
 	},
 	"peerDependencies": {
 		"react": "^17.0.2"
+	},
+	"lint-staged": {
+		"*.{js,jsx}": [
+			"eslint --fix"
+		],
+		"*.{js,jsx,json,md}": [
+			"prettier --write"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged -v"
+		}
 	}
 }
