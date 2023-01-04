@@ -33,6 +33,7 @@
 		"test-watch": "cross-env NODE_PATH=src/ jest --watchAll",
 		"test-coverage": "cross-env NODE_PATH=src/ jest --coverage",
 		"build": "babel src --out-dir lib --copy-files",
+		"build-jsx": "webpack --config ./webpack-build-jsx.config.js",
 		"prepublish": "npm test && npm run build",
 		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
@@ -50,7 +51,7 @@
 	"dependencies": {
 		"@inseefr/trevas": "^0.1.16",
 		"@inseefr/vtl-2.0-antlr-tools": "^0.1.0-bundle",
-		"antlr4": "4.8.0",
+		"antlr4": "4.11.0",
 		"classnames": "^2.3.1",
 		"date-fns": "^2.25.0",
 		"lodash.camelcase": "^4.3.0",
@@ -113,11 +114,12 @@
 		"jest-transform-stub": "^2.0.0",
 		"jsdom": "^16.6.0",
 		"jsdom-global": "^3.0.2",
+		"node-sass": "^8.0.0",
 		"postcss": "^8.2.6",
 		"postcss-scss": "^3.0.4",
 		"prettier": "^2.0.5",
-		"react": "^17.0.2",
-		"react-dom": "^17.0.2",
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0",
 		"regenerator-runtime": "^0.13.7",
 		"remove-accents": "^0.4.2",
 		"rxjs-marbles": "^6.0.1",
@@ -158,6 +160,6 @@
 		"trailingComma": "es5"
 	},
 	"peerDependencies": {
-		"react": "^17.0.2"
+		"react": "^18.0.0"
 	}
 }

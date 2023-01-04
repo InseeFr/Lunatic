@@ -2,6 +2,15 @@ import React, { useCallback } from 'react';
 import Roundabout from './roundabout';
 import Redirect from './redirect';
 
+export function isComplete(expressions = {}) {
+	const { complete } = expressions;
+	if (Array.isArray(complete)) {
+		return complete.reduce((state, current) => state && current);
+	}
+
+	return false;
+}
+
 /**
  *  Logique fonctionnelle et immuable du composant
  */

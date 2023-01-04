@@ -16,7 +16,7 @@
 			"componentType": "InputNumber",
 			"mandatory": false,
 			"page": "2",
-			"min": 0,
+			"min": 1,
 			"max": 10,
 			"decimals": 0,
 			"label": {
@@ -62,8 +62,8 @@
 			"page": "4",
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
-			"label": { "value": "\"Un rond point\"", "type": "VTL" },
-			"locked": true,
+			"label": { "value": "\"Libellé du rondpoint\"", "type": "VTL" },
+			"locked": false,
 			"expressions": {
 				"complete": {
 					"value": "not(isnull(AGE)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
