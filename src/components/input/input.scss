@@ -3,30 +3,39 @@
 	.lunatic-datepicker,
 	.lunatic-textarea,
 	.lunatic-input-number {
-		font: inherit;
-		border: 0;
-		border-bottom: 0.125rem double rgba(0, 0, 0, 0.42);
-		margin: 0;
-		padding: 0.375rem 0 0.375rem 0.4375rem;
-		display: block;
-		min-width: 0;
-		box-sizing: content-box;
-		background: none;
-		&:focus {
-			outline: none;
-			border-bottom: 0.125rem solid var(--color-primary-main);
+		label {
+			font-size: 12x;
+			.label-description {
+				font-size: 12px;
+				font-weight: lighter;
+			}
 		}
-		&:hover {
-			border-bottom: 0.125rem solid black;
+		input {
+			font: inherit;
+			border: 0;
+			border-bottom: 0.125rem double rgba(0, 0, 0, 0.42);
+			margin: 0;
+			padding: 0.375rem 0 0.375rem 0.4375rem;
+			display: block;
+			min-width: 0;
+			box-sizing: content-box;
+			background: none;
+			&:focus {
+				outline: none;
+				border-bottom: 0.125rem solid var(--color-primary-main);
+			}
+			&:hover {
+				border-bottom: 0.125rem solid black;
+			}
+			&:read-only {
+				background-color: var(--color-disabled);
+			}
 		}
-		&:read-only {
-			background-color: var(--color-disabled);
-		}
-	}
 
-	.warning {
-		box-sizing: border-box;
-		border: solid 2px var(--color-error);
-		background-color: var(--color-error);
+		.warning {
+			box-sizing: border-box;
+			border: solid 2px var(--color-error);
+			background-color: var(--color-error);
+		}
 	}
 }

@@ -6,9 +6,30 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"maxLength": 30,
 			"id": "name",
+			"description": "For example 25 years.",
 			"response": {
 				"name": "NAME"
-			}
+			},
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Déclaration Before\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Déclaration After\"",
+						"type": "VTL|MD"
+					}
+				}
+			]
 		}
 	],
 	"variables": [
