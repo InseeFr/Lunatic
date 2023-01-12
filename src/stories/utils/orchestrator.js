@@ -101,8 +101,14 @@ function OrchestratorForStories({
 		<div className="container">
 			<div className="components">
 				{components.map(function (component) {
-					const { id, componentType, response, storeName, ...other } =
-						component;
+					const {
+						id,
+						componentType,
+						response,
+						storeName,
+						conditionFilter,
+						...other
+					} = component;
 					const Component = lunatic[componentType];
 					const storeInfo = storeName ? getStoreInfo(storeName) : {};
 					return (

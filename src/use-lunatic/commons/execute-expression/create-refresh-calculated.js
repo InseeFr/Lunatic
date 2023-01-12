@@ -31,6 +31,7 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 				? getIteration({ name, iteration, linksIterations })
 				: undefined,
 		});
+
 		if (linksIterations !== undefined) return value;
 		if (shapeFrom && iteration !== undefined) {
 			if (bindings[name] === undefined) {
@@ -74,6 +75,7 @@ function createRefreshCalculated({ variables, execute, bindings }) {
 	) {
 		return Object.entries(map).reduce(function (sub, [name, current]) {
 			const { variable, type } = variables[name];
+
 			if (type === CALCULATED && toRefreshVariables.has(name)) {
 				const { expression, shapeFrom } = variable;
 

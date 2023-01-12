@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../button';
+import D from '../../i18n';
 
 function CloseOrSkip({ errors, onClose, onSkip }) {
 	const flattenErrors = Object.values(errors).flat();
@@ -15,7 +16,7 @@ function CloseOrSkip({ errors, onClose, onSkip }) {
 		return (
 			<div className="modal-buttons">
 				<Button className="modal-button" onClick={onClose}>
-					Correct
+					{D.MODAL_CORRECT}
 				</Button>
 			</div>
 		);
@@ -23,10 +24,10 @@ function CloseOrSkip({ errors, onClose, onSkip }) {
 	return (
 		<div className="modal-buttons">
 			<Button className="modal-button" onClick={onClose}>
-				Correct
+				{D.MODAL_CORRECT}
 			</Button>
 			<Button className="modal-button" onClick={onSkip}>
-				Ignore
+				{D.MODAL_IGNORE}
 			</Button>
 		</div>
 	);

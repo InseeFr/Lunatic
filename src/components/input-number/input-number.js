@@ -47,6 +47,7 @@ function InputNumber({
 				min={min}
 				max={max}
 				step={step}
+				lang="en"
 			/>
 			{unit && <span>{unit}</span>}
 			<Errors errors={errors} activeId={id} />
