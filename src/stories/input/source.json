@@ -6,7 +6,10 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"maxLength": 30,
 			"id": "name",
-			"description": "For example 25 years.",
+			"description": {
+				"value": "\"For example, 25 years.\"",
+				"type": "VTL|MD"
+			},
 			"response": {
 				"name": "NAME"
 			},

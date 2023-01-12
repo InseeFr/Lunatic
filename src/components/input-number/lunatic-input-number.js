@@ -23,6 +23,7 @@ function LunaticInputNumber(props) {
 		max,
 		step,
 		unit,
+		description,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -48,6 +49,7 @@ function LunaticInputNumber(props) {
 				max={max}
 				step={step}
 				unit={unit}
+				description={description}
 			/>
 			<Errors errors={errors} activeId={id} />
 		</LunaticComponent>
