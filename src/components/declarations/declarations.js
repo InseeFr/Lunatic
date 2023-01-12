@@ -9,7 +9,7 @@ export const DECLARATION_POSITIONS = {
 	detachable: 'DETACHABLE',
 };
 
-function Declarations({ id, type, declarations, logFunction, custom }) {
+function Declarations({ id, type, declarations, custom }) {
 	const filtered = declarations.filter(({ position }) => position === type);
 	if (filtered.length === 0) return null;
 

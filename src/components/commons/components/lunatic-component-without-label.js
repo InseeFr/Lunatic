@@ -1,12 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FieldContainer from './field-container';
+import { DECLARATION_POSITIONS } from '../../declarations';
 import VariableStatus from './variable-status';
 import {
 	DeclarationsBeforeText,
-	DeclarationsAfterText,
 	DeclarationsDetachable,
 } from '../../declarations';
 import Missing from './missing';
+
+function getDescription({ declarations, description }) {
+	if (Array.isArray(declarations)) {
+		return declarations.reduce(function (what, declaration) {
+			const { position, label } = declaration;
+			if (position === DECLARATION_POSITIONS.after) {
+				return label;
+			}
+			return what;
+		}, description);
+	}
+
+	return description;
+}
 
 function LunaticComponent(props) {
 	const {
@@ -19,6 +34,7 @@ function LunaticComponent(props) {
 		missing,
 		missingResponse,
 		management,
+		description,
 	} = props;
 	const content = (
 		<>
@@ -33,13 +49,10 @@ function LunaticComponent(props) {
 				custom={custom}
 				preferences={preferences}
 			>
-				{children}
+				{React.cloneElement(children, {
+					description: getDescription({ declarations, description }),
+				})}
 			</FieldContainer>
-			<DeclarationsAfterText
-				declarations={declarations}
-				id={id}
-				custom={custom}
-			/>
 			<DeclarationsDetachable
 				declarations={declarations}
 				id={id}
@@ -50,5 +63,8 @@ function LunaticComponent(props) {
 	);
 	return management ? <VariableStatus>{content}</VariableStatus> : content;
 }
+LunaticComponent.propTypes = {
+	children: PropTypes.element,
+};
 
 export default LunaticComponent;

@@ -19,7 +19,9 @@ function LunaticInput(props) {
 		missing,
 		missingResponse,
 		management,
-		...rest
+		description,
+		required,
+		maxLength,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -34,6 +36,7 @@ function LunaticInput(props) {
 			missing={missing}
 			missingResponse={missingResponse}
 			management={management}
+			description={description}
 		>
 			<Input
 				id={id}
@@ -43,14 +46,11 @@ function LunaticInput(props) {
 				label={label}
 				disabled={disabled}
 				errors={errors}
-				{...rest}
+				required={required}
+				maxLength={maxLength}
 			/>
 		</LunaticComponent>
 	);
 }
-
-LunaticInput.defaultProps = {
-	className: 'todo',
-};
 
 export default LunaticInput;

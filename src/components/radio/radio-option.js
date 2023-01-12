@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import classnames from 'classnames';
+import Label from '../commons/components/label';
 import {
 	RadioChecked,
 	RadioUnchecked,
@@ -84,9 +85,9 @@ function RadioOption({
 					ref={spanEl}
 				>
 					<Icon />
-					<span id={labelledBy} htmlFor={id}>
+					<Label id={labelledBy} htmlFor={id}>
 						{label}
-					</span>
+					</Label>
 				</span>
 			</div>
 		</div>

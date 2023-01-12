@@ -63,7 +63,7 @@ Input.propTypes = {
 	required: PropTypes.bool,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	errors: PropTypes.array,
-	description: PropTypes.string,
+	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 Input.defaultValue = {

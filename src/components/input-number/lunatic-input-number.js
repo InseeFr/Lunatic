@@ -2,7 +2,6 @@ import React from 'react';
 import InputNumber from './input-number';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
-import { Errors } from '../commons';
 
 function LunaticInputNumber(props) {
 	const {
@@ -24,6 +23,8 @@ function LunaticInputNumber(props) {
 		step,
 		unit,
 		description,
+		required,
+		readOnly,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -38,20 +39,21 @@ function LunaticInputNumber(props) {
 			missing={missing}
 			missingResponse={missingResponse}
 			management={management}
+			description={description}
 		>
 			<InputNumber
 				onChange={onChange}
 				id={id}
 				value={value}
 				label={label}
-				disabled={disabled}
+				disabled={disabled || readOnly}
 				min={min}
 				max={max}
 				step={step}
 				unit={unit}
-				description={description}
+				required={required}
+				errors={errors}
 			/>
-			<Errors errors={errors} activeId={id} />
 		</LunaticComponent>
 	);
 }

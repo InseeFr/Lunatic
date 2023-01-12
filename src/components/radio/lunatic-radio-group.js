@@ -1,6 +1,6 @@
 import React from 'react';
 import RadioGroup from './radio-group';
-import LunaticfieldSetComponent from '../commons/components/lunatic-fieldset-component-without-fieldset';
+import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { createCustomizableLunaticField } from '../commons';
 import './radio.scss';
@@ -23,10 +23,9 @@ function LunaticRadioGroup(props) {
 		missing,
 		management,
 	} = props;
-	console.log({ description });
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
-		<LunaticfieldSetComponent
+		<LunaticComponent
 			id={id}
 			label={label}
 			custom={custom}
@@ -36,6 +35,7 @@ function LunaticRadioGroup(props) {
 			missingResponse={missingResponse}
 			missing={missing}
 			management={management}
+			description={description}
 		>
 			<RadioGroup
 				id={id}
@@ -46,9 +46,8 @@ function LunaticRadioGroup(props) {
 				errors={errors}
 				custom={custom}
 				label={label}
-				description={description}
 			/>
-		</LunaticfieldSetComponent>
+		</LunaticComponent>
 	);
 }
 

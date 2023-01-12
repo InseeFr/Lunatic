@@ -11,7 +11,6 @@ function InputNumber({
 	value,
 	onChange,
 	disabled,
-	readOnly,
 	min,
 	max,
 	step,
@@ -29,6 +28,7 @@ function InputNumber({
 		},
 		[onChange]
 	);
+
 	return (
 		<div className="lunatic-input-number">
 			<Label htmlFor={id} id={labelId} description={description}>
@@ -36,12 +36,11 @@ function InputNumber({
 			</Label>
 			<input
 				id={id}
-				className={classnames({ disabled, readOnly })}
+				className={classnames({ disabled })}
 				type="number"
 				onChange={handleChange}
 				value={value ?? ''}
 				labelledby={labelId}
-				readOnly={readOnly}
 				disabled={disabled}
 				required={required}
 				min={min}
