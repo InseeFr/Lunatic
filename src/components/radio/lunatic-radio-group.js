@@ -1,34 +1,58 @@
 import React from 'react';
 import RadioGroup from './radio-group';
-import {
-	createCustomizableLunaticField,
-	createLunaticComponent,
-	Errors,
-} from '../commons';
+import LunaticfieldSetComponent from '../commons/components/lunatic-fieldset-component-without-fieldset';
+import useOnHandleChange from '../commons/use-on-handle-change';
+import { createCustomizableLunaticField } from '../commons';
 import './radio.scss';
 
 function LunaticRadioGroup(props) {
-	const { id, options, value, onChange, checkboxStyle, custom, errors } = props;
+	const {
+		id,
+		options,
+		value,
+		checkboxStyle,
+		custom,
+		errors,
+		handleChange,
+		response,
+		label,
+		description,
+		preferences,
+		declarations,
+		missingResponse,
+		missing,
+		management,
+	} = props;
+	console.log({ description });
+	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
-		<>
+		<LunaticfieldSetComponent
+			id={id}
+			label={label}
+			custom={custom}
+			preferences={preferences}
+			declarations={declarations}
+			value={value}
+			missingResponse={missingResponse}
+			missing={missing}
+			management={management}
+		>
 			<RadioGroup
 				id={id}
 				options={options}
 				value={value}
-				onClick={onChange}
+				onSelect={onChange}
 				checkboxStyle={checkboxStyle}
+				errors={errors}
 				custom={custom}
+				label={label}
+				description={description}
 			/>
-			<Errors errors={errors} activeId={id} />
-		</>
+		</LunaticfieldSetComponent>
 	);
 }
 
-export default createLunaticComponent(
-	createCustomizableLunaticField(LunaticRadioGroup, 'LunaticRadioGroup'),
-	{
-		// set it to true if you want to display a fieldset + legend on a component
-		fieldset: true,
-		inputId: 'lunatic-radio-group',
-	}
+export default createCustomizableLunaticField(
+	LunaticRadioGroup,
+	'LunaticRadioGroup'
 );

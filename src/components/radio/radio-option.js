@@ -6,6 +6,7 @@ import {
 	CheckboxChecked,
 	CheckboxUnchecked,
 } from '../commons/icons';
+import createCustomizableLunaticField from '../commons/create-customizable-field';
 
 function getIcon(checked, checkboxStyle) {
 	if (checked) {
@@ -64,30 +65,32 @@ function RadioOption({
 	);
 
 	return (
-		<div
-			className={classnames('radio-modality', 'radio-modality-block', {
-				checked,
-				disabled,
-			})}
-		>
-			<span
-				id={id}
-				role="radio"
-				className="lunatic-input-radio"
-				aria-checked={checked}
-				tabIndex={tabIndex}
-				onClick={onClickOption}
-				onKeyDown={handleKeyDown}
-				aria-labelledby={labelledBy}
-				ref={spanEl}
+		<div className="lunatic-radio-group-option">
+			<div
+				className={classnames('radio-modality', 'radio-modality-block', {
+					checked,
+					disabled,
+				})}
 			>
-				<Icon />
-				<span id={labelledBy} htmlFor={id}>
-					{label}
+				<span
+					id={id}
+					role="radio"
+					className="lunatic-input-radio"
+					aria-checked={checked}
+					tabIndex={tabIndex}
+					onClick={onClickOption}
+					onKeyDown={handleKeyDown}
+					aria-labelledby={labelledBy}
+					ref={spanEl}
+				>
+					<Icon />
+					<span id={labelledBy} htmlFor={id}>
+						{label}
+					</span>
 				</span>
-			</span>
+			</div>
 		</div>
 	);
 }
 
-export default RadioOption;
+export default createCustomizableLunaticField(RadioOption, 'RadioOption');

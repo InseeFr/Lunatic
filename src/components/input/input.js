@@ -52,12 +52,12 @@ function Input({
 
 Input.propTypes = {
 	id: PropTypes.string.isRequired,
-	value: PropTypes.oneOf(
+	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
 		PropTypes.bool,
-		PropTypes.array
-	),
+		PropTypes.array,
+	]),
 	onChange: PropTypes.func.isRequired,
 	disabled: PropTypes.bool,
 	required: PropTypes.bool,

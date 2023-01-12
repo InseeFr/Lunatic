@@ -1,12 +1,6 @@
 import React from 'react';
 import createCustomizableLunaticField from '../create-customizable-field';
-
-function Description({ value }) {
-	if (typeof value === 'string' && value.length > 0) {
-		return <span className="label-description">{value}</span>;
-	}
-	return null;
-}
+import Description from './description';
 
 function Label({ children, id, htmlFor, className, style, description }) {
 	if (children) {
