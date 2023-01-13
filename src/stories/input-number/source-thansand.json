@@ -5,10 +5,7 @@
 			"componentType": "InputNumber",
 			"mandatory": false,
 			"page": "2",
-			"min": 0,
-			"max": 10,
-			"decimals": 0,
-			"label": { "value": "\"➡ 1. \" || \"NB \"", "type": "VTL|MD" },
+			"label": { "value": "\"➡ 1. \" || \"Big number \"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"hierarchy": {
 				"sequence": {
