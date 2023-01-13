@@ -28,12 +28,23 @@ function createBindings(variables) {
 }
 
 /**
+ * La boite noire VTL.
+ * Une fonction de plus haut niveau (higher order function) pour générer la fonction d'exécution
+ * du VTL et masquer au mieux la complexité du processus.
+ *  - elle maintient en propre une Map des valeurs des variables collectées et calculées
+ *  - elle extrait les tokens de chaque expression et les mémorise.
+ *  - elle collecte les valeurs des variables
+ *  - elle met à jour les variables calculées lorsqu'une variable collectées liées à changé
+ *  - elle calcule le résultat de l'expression à l'aide de la librairie trevas
+ *  - elle mémoïze le résultat
+ *
+ *  executeExpression : permet de compiler une expression VTL.
+ *  updateBinding : permet de notifier la boite noire VTL qu'une variable collectée vient de changer.
  *
  * @param {*} variables
- * @returns
+ * @returns [executeExpression, updateBindings]
  */
 function createExecuteExpression(variables, features) {
-	// on aimerait map d'expression, avec les bindings
 	const bindings = createBindings(variables);
 	const tokensMap = new Map();
 	const collectedUpdated = new Map();
@@ -45,7 +56,9 @@ function createExecuteExpression(variables, features) {
 	});
 
 	/**
-	 *
+	 * focntion interne.
+	 * appeler lorsque qu'une variable collecté à changer et donc
+	 * passer les variables calculées liées en lazy.
 	 * @param {*} name
 	 */
 	function pushToLazy(name) {
@@ -61,7 +74,8 @@ function createExecuteExpression(variables, features) {
 	}
 
 	/**
-	 *
+	 * fonction externe.
+	 * permet de notifier la boite noire de la mise à jour d'une variable collectée.
 	 * @param {*} name
 	 * @param {*} value
 	 */
@@ -74,6 +88,13 @@ function createExecuteExpression(variables, features) {
 		pushToLazy(name);
 	}
 
+	/**
+	 * fonction interne.
+	 * Collecte le nom des variables d'une expression grâce aux VTL Tools.
+	 * le résultat est mémoïsé.
+	 * @param {*} expression
+	 * @returns
+	 */
 	function getVariablesAndCach(expression) {
 		if (tokensMap.has(expression)) {
 			return tokensMap.get(expression);
@@ -83,7 +104,12 @@ function createExecuteExpression(variables, features) {
 		return tokens;
 	}
 
-	/**/
+	/**
+	 * fonction interne.
+	 * collecte les valeurs des variables utiles à une expression.
+	 * @param {*} dependencies tableau des noms de variables
+	 * @returns Map nom/valeur
+	 */
 	function collecteVariables(dependencies) {
 		if (Array.isArray(dependencies)) {
 			return dependencies.reduce(function (map, name) {
@@ -114,6 +140,7 @@ function createExecuteExpression(variables, features) {
 	}
 
 	/**
+	 * fonction interne.
 	 * Avant d'exécuter, on résoud la valeur de la variable, selon la portée d'exécution de l'expression
 	 * @param {*} name
 	 * @param {*} param1
@@ -161,10 +188,11 @@ function createExecuteExpression(variables, features) {
 	}
 
 	/**
-	 *
-	 * @param {*} vtlObject
-	 * @param {*} args
-	 * @returns
+	 * fonction externe.
+	 * permet d'exécuter du VTL dans le reste de l'application.
+	 * @param {*} vtlObject {value : string, type : "VTL" | "VTL|MD"}
+	 * @param {*} args {iteration : int, linkIteration: [int, int]}
+	 * @returns le résultat ou l'expression en cas de plantage
 	 */
 	function execute(expObject, args = {}) {
 		const { value: expression, type } = validateExpression(
