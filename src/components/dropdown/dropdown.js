@@ -14,6 +14,9 @@ function Dropdown({
 	writable,
 	className,
 	value,
+	description,
+	label,
+	errors,
 }) {
 	if (writable) {
 		return (
@@ -26,6 +29,9 @@ function Dropdown({
 				options={options}
 				onSelect={onSelect}
 				value={value}
+				label={label}
+				errors={errors}
+				description={description}
 			/>
 		);
 	}
@@ -39,6 +45,9 @@ function Dropdown({
 			options={options}
 			onSelect={onSelect}
 			value={value}
+			label={label}
+			errors={errors}
+			description={description}
 		/>
 	);
 }

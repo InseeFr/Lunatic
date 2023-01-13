@@ -1,25 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	createCustomizableLunaticField,
-	createLunaticComponent,
-	Errors,
-} from '../commons';
+import { createCustomizableLunaticField } from '../commons';
+import LunaticComponent from '../commons/components/lunatic-component-without-label';
+import useOnHandleChange from '../commons/use-on-handle-change';
 import Dropdown from './dropdown';
 
 function LunaticDropdown({
 	id,
-	onChange,
+	handleChange,
 	options,
 	writable,
 	disabled,
-	htmlFor,
 	labelId,
 	value,
+	response,
 	errors,
+	label,
+	custom,
+	preferences,
+	declarations,
+	missing,
+	missingResponse,
+	management,
+	description,
 }) {
+	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
-		<>
+		<LunaticComponent
+			id={id}
+			custom={custom}
+			preferences={preferences}
+			declarations={declarations}
+			value={value}
+			missing={missing}
+			missingResponse={missingResponse}
+			management={management}
+			description={description}
+		>
 			<Dropdown
 				id={id}
 				htmlFor={id}
@@ -31,9 +48,10 @@ function LunaticDropdown({
 				onSelect={onChange}
 				value={value}
 				className="lunatic-dropdown"
+				errors={errors}
+				label={label}
 			/>
-			<Errors errors={errors} activeId={id} />
-		</>
+		</LunaticComponent>
 	);
 }
 
@@ -42,7 +60,10 @@ LunaticDropdown.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
-			label: PropTypes.string.isRequired,
+			label: PropTypes.oneOfType([
+				PropTypes.string.isRequired,
+				PropTypes.elements,
+			]),
 			value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 				.isRequired,
 		})
@@ -60,6 +81,7 @@ LunaticDropdown.defaultProps = {
 	value: null,
 };
 
-export default createLunaticComponent(
-	createCustomizableLunaticField(LunaticDropdown, 'LunaticDropdown')
+export default createCustomizableLunaticField(
+	LunaticDropdown,
+	'LunaticDropdown'
 );

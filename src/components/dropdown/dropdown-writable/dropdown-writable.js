@@ -13,6 +13,9 @@ function DropdownWritable({
 	onSelect,
 	className,
 	value,
+	label,
+	errors,
+	description,
 }) {
 	const [filtered, setFiltered] = useState(options);
 
@@ -42,6 +45,9 @@ function DropdownWritable({
 			labelRenderer={WritableLabelRenderer}
 			editable={true}
 			value={value}
+			label={label}
+			errors={errors}
+			description={description}
 		/>
 	);
 }

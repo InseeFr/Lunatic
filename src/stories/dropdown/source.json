@@ -4,7 +4,7 @@
 			"id": "j4nw5cqz",
 			"componentType": "Dropdown",
 			"mandatory": false,
-			"label": "In which state do The Simpsons reside?",
+			"label": "\"In which state do The Simpsons reside?\"",
 			"response": {
 				"name": "STATE"
 			},
@@ -13,46 +13,64 @@
 					"id": "d1",
 					"declarationType": "COMMENT",
 					"position": "BEFORE_QUESTION_TEXT",
-					"label": { "value": "Test declaration before" }
+					"label": { "value": "\"Test declaration before\"", "type": "VTL|MD" }
 				},
 				{
 					"id": "d2",
 					"declarationType": "COMMENT",
 					"position": "AFTER_QUESTION_TEXT",
-					"label": "Test declaration after"
+					"label": { "value": "\"Test declaration after\"", "type": "VTL|MD" }
 				},
 				{
 					"id": "d3",
 					"declarationType": "COMMENT",
 					"position": "DETACHABLE",
-					"label": { "value": "Test detachable declaration" }
+					"label": {
+						"value": "\"Test detachable declaration\"",
+						"type": "VTL|MD"
+					}
 				}
 			],
 			"options": [
-				{ "value": "1", "label": { "value": "Washington", "type": "VTL|MD" } },
-				{ "value": "2", "label": { "value": "Kentucky", "type": "VTL|MD" } },
-				{ "value": "3", "label": { "value": "Ohio", "type": "VTL|MD" } },
-				{ "value": "4", "label": { "value": "Maine", "type": "VTL|MD" } },
+				{
+					"value": "1",
+					"label": { "value": "\"Washington\"", "type": "VTL|MD" }
+				},
+				{
+					"value": "2",
+					"label": { "value": "\"Kentucky\"", "type": "VTL|MD" }
+				},
+				{ "value": "3", "label": { "value": "\"Ohio\"", "type": "VTL|MD" } },
+				{ "value": "4", "label": { "value": "\"Maine\"", "type": "VTL|MD" } },
 				{
 					"value": "5",
-					"label": { "value": "North Dakota", "type": "VTL|MD" }
+					"label": { "value": "\"North Dakota\"", "type": "VTL|MD" }
 				},
-				{ "value": "6", "label": { "value": "Florida", "type": "VTL|MD" } },
+				{ "value": "6", "label": { "value": "\"Florida\"", "type": "VTL|MD" } },
 				{
 					"value": "7",
-					"label": { "value": "North Takoma", "type": "VTL|MD" }
+					"label": { "value": "\"North Takoma\"", "type": "VTL|MD" }
 				},
-				{ "value": "8", "label": { "value": "California", "type": "VTL|MD" } },
-				{ "value": "9", "label": { "value": "Texas", "type": "VTL|MD" } },
+				{
+					"value": "8",
+					"label": { "value": "\"California\"", "type": "VTL|MD" }
+				},
+				{ "value": "9", "label": { "value": "\"Texas\"", "type": "VTL|MD" } },
 				{
 					"value": "10",
-					"label": { "value": "Massachusetts", "type": "VTL|MD" }
+					"label": { "value": "\"Massachusetts\"", "type": "VTL|MD" }
 				},
-				{ "value": "11", "label": { "value": "Nevada", "type": "VTL|MD" } },
-				{ "value": "12", "label": { "value": "Illinois", "type": "VTL|MD" } },
+				{ "value": "11", "label": { "value": "\"Nevada\"", "type": "VTL|MD" } },
+				{
+					"value": "12",
+					"label": { "value": "\"Illinois\"", "type": "VTL|MD" }
+				},
 				{
 					"value": "13",
-					"label": { "value": "Not in any state, you fool!", "type": "VTL|MD" }
+					"label": {
+						"value": "\"Not in any state, you fool!\"",
+						"type": "VTL|MD"
+					}
 				}
 			]
 		},
@@ -60,35 +78,50 @@
 			"id": "j4nw5cqz-bis",
 			"componentType": "Dropdown",
 			"mandatory": false,
-			"label": { "value": "In which state do The Simpsons reside?" },
+			"label": { "value": "\"In which state do The Simpsons reside?\"" },
 			"response": {
 				"name": "STATE2"
 			},
 			"options": [
-				{ "value": "1", "label": { "value": "Washington", "type": "VTL|MD" } },
-				{ "value": "2", "label": { "value": "Kentucky", "type": "VTL|MD" } },
-				{ "value": "3", "label": { "value": "Ohio", "type": "VTL|MD" } },
-				{ "value": "4", "label": { "value": "Maine", "type": "VTL|MD" } },
+				{
+					"value": "1",
+					"label": { "value": "\"Washington\"", "type": "VTL|MD" }
+				},
+				{
+					"value": "2",
+					"label": { "value": "\"Kentucky\"", "type": "VTL|MD" }
+				},
+				{ "value": "3", "label": { "value": "\"Ohio\"", "type": "VTL|MD" } },
+				{ "value": "4", "label": { "value": "\"Maine\"", "type": "VTL|MD" } },
 				{
 					"value": "5",
-					"label": { "value": "North Dakota", "type": "VTL|MD" }
+					"label": { "value": "\"North Dakota\"", "type": "VTL|MD" }
 				},
-				{ "value": "6", "label": { "value": "Florida", "type": "VTL|MD" } },
+				{ "value": "6", "label": { "value": "\"Florida\"", "type": "VTL|MD" } },
 				{
 					"value": "7",
-					"label": { "value": "North Takoma", "type": "VTL|MD" }
+					"label": { "value": "\"North Takoma\"", "type": "VTL|MD" }
 				},
-				{ "value": "8", "label": { "value": "California", "type": "VTL|MD" } },
-				{ "value": "9", "label": { "value": "Texas", "type": "VTL|MD" } },
+				{
+					"value": "8",
+					"label": { "value": "\"California\"", "type": "VTL|MD" }
+				},
+				{ "value": "9", "label": { "value": "\"Texas\"", "type": "VTL|MD" } },
 				{
 					"value": "10",
-					"label": { "value": "Massachusetts", "type": "VTL|MD" }
+					"label": { "value": "\"Massachusetts\"", "type": "VTL|MD" }
 				},
-				{ "value": "11", "label": { "value": "Nevada", "type": "VTL|MD" } },
-				{ "value": "12", "label": { "value": "Illinois", "type": "VTL|MD" } },
+				{ "value": "11", "label": { "value": "\"Nevada\"", "type": "VTL|MD" } },
+				{
+					"value": "12",
+					"label": { "value": "\"Illinois\"", "type": "VTL|MD" }
+				},
 				{
 					"value": "13",
-					"label": { "value": "Not in any state, you fool!", "type": "VTL|MD" }
+					"label": {
+						"value": "\"Not in any state, you fool!\"",
+						"type": "VTL|MD"
+					}
 				}
 			]
 		}
