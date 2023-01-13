@@ -51,6 +51,7 @@ const LunaticDatepicker = (props) => {
 				label={label}
 				description={description}
 				errors={errors}
+				custom={custom}
 			/>
 		</LunaticComponent>
 	);

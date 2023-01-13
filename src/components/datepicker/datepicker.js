@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import './datepicker.scss';
 import { Errors, Label } from '../commons';
 import { createCustomizableLunaticField } from '../commons';
@@ -46,6 +47,21 @@ function Datepicker({
 	);
 }
 
+Datepicker.propTypes = {
+	readOnly: PropTypes.bool,
+	value: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+		PropTypes.bool,
+		PropTypes.array,
+	]),
+	onChange: PropTypes.func.isRequired,
+	disabled: PropTypes.bool,
+	required: PropTypes.bool,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	errors: PropTypes.array,
+	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+};
 Datepicker.defaultProps = { value: '' };
 
 export default createCustomizableLunaticField(Datepicker, 'Datepicker');

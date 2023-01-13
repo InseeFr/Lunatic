@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { createCustomizableLunaticField } from '../commons';
-import classnames from 'classnames';
+import { Errors, Label } from '../commons';
 import './textarea.scss';
 
 function checkValue(value) {
@@ -14,9 +14,12 @@ function Textarea({
 	cols,
 	onChange,
 	value,
-	className,
 	placeholder,
+	label,
+	description,
+	errors,
 }) {
+	const labelId = `label-${id}`;
 	const handleChange = useCallback(
 		function (e) {
 			onChange(e.target.value);
@@ -25,16 +28,21 @@ function Textarea({
 	);
 
 	return (
-		<textarea
-			id={id}
-			className={classnames('lunatic-textarea', className)}
-			rows={rows}
-			maxLength={maxLength}
-			cols={cols}
-			onChange={handleChange}
-			value={checkValue(value)}
-			placeholder={placeholder}
-		/>
+		<div className="lunatic-textarea">
+			<Label htmlFor={id} id={labelId} description={description}>
+				{label}
+			</Label>
+			<textarea
+				id={id}
+				rows={rows}
+				maxLength={maxLength}
+				cols={cols}
+				onChange={handleChange}
+				value={checkValue(value)}
+				placeholder={placeholder}
+			/>
+			<Errors errors={errors} activeId={id} />
+		</div>
 	);
 }
 

@@ -1,8 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Errors } from '../commons';
-import Label from '../commons/components/label';
+import { Errors, Label } from '../commons';
 import { createCustomizableLunaticField } from '../commons';
 
 function checkValue(value) {
