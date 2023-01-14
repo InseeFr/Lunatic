@@ -16,6 +16,9 @@ function IDBSuggester({
 	disabled,
 	value,
 	custom,
+	label,
+	description,
+	errors,
 }) {
 	const [store, setStore] = useState(undefined);
 
@@ -46,6 +49,9 @@ function IDBSuggester({
 				disabled={disabled}
 				value={value}
 				custom={custom}
+				label={label}
+				description={description}
+				errors={errors}
 			/>
 		</CheckStore>
 	);
@@ -53,6 +59,9 @@ function IDBSuggester({
 
 IDBSuggester.defaultProps = {
 	idbVersion: '1',
+	label: undefined,
+	description: undefined,
+	errors: undefined,
 };
 
 IDBSuggester.propTypes = {
@@ -64,6 +73,9 @@ IDBSuggester.propTypes = {
 	optionRenderer: PropTypes.func,
 	labelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	errors: PropTypes.array,
 };
 
 export default IDBSuggester;

@@ -6,8 +6,6 @@ import filterOptions from './filter-tools/filter-options';
 
 function DropdownWritable({
 	id,
-	htmlFor,
-	labelId,
 	disabled,
 	options,
 	onSelect,
@@ -35,8 +33,6 @@ function DropdownWritable({
 		<ComboBox
 			id={id}
 			className={className}
-			htmlFor={htmlFor}
-			labelledBy={labelId}
 			disabled={disabled}
 			options={filtered}
 			onSelect={onSelect}

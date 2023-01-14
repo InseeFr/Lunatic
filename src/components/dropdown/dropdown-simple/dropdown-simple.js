@@ -5,8 +5,6 @@ import SimpleLabelRenderer from './simple-label-renderer';
 
 function DropdownSimple({
 	id,
-	htmlFor,
-	labelId,
 	disabled,
 	options,
 	onSelect,
@@ -20,8 +18,6 @@ function DropdownSimple({
 		<ComboBox
 			id={id}
 			className={className}
-			htmlFor={htmlFor}
-			labelledBy={labelId}
 			disabled={disabled}
 			options={options}
 			editable={false}

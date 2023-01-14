@@ -19,7 +19,6 @@ function getSearch(search, value) {
 
 function Suggester({
 	className,
-	labelledBy,
 	placeholder,
 	onSelect,
 	labelRenderer,
@@ -29,6 +28,9 @@ function Suggester({
 	disabled,
 	id,
 	searching,
+	label,
+	description,
+	errors,
 }) {
 	const htmlFor = `lunatic-suggester-${id}`;
 	const [search, setSearch] = useState('');
@@ -67,7 +69,6 @@ function Suggester({
 			id={id}
 			htmlFor={htmlFor}
 			className={className}
-			labelledBy={labelledBy}
 			onChange={handleChange}
 			disabled={disabled}
 			options={options}
@@ -79,6 +80,9 @@ function Suggester({
 			optionRenderer={optionRenderer}
 			labelRenderer={labelRenderer}
 			placeholder={placeholder}
+			label={label}
+			description={description}
+			errors={errors}
 		/>
 	);
 }
@@ -98,6 +102,9 @@ Suggester.propTypes = {
 		PropTypes.object,
 	]),
 	searching: PropTypes.func,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	errors: PropTypes.array,
 };
 
 Suggester.defaultProps = {

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IDBSuggester from './idb-suggester';
-import { createLunaticComponent, Errors } from '../commons';
+import LunaticComponent from '../commons/components/lunatic-component-without-label';
+import useOnHandleChange from '../commons/use-on-handle-change';
 import * as commonPropTypes from '../commons/prop-types';
 import { COLLECTED } from '../../utils/constants';
 
@@ -14,20 +15,38 @@ function LunaticSuggester(props) {
 		idbVersion,
 		focused,
 		value,
-		onChange,
+		handleChange,
 		disabled,
-		labelId,
 		custom,
 		errors,
+		label,
+		description,
+		preferences,
+		declarations,
+		missing,
+		missingResponse,
+		management,
+		response,
 	} = props;
 
+	const onChange = useOnHandleChange({ handleChange, response, value });
+
 	return (
-		<>
+		<LunaticComponent
+			id={id}
+			custom={custom}
+			preferences={preferences}
+			declarations={declarations}
+			value={value}
+			missing={missing}
+			missingResponse={missingResponse}
+			management={management}
+			description={description}
+		>
 			<IDBSuggester
 				storeName={storeName}
 				optionRenderer={optionRenderer}
 				labelRenderer={labelRenderer}
-				labelledBy={labelId}
 				idbVersion={idbVersion}
 				onSelect={onChange}
 				focused={focused}
@@ -35,9 +54,10 @@ function LunaticSuggester(props) {
 				id={id}
 				value={value}
 				custom={custom}
+				errors={errors}
+				label={label}
 			/>
-			<Errors errors={errors} activeId={id} />
-		</>
+		</LunaticComponent>
 	);
 }
 
@@ -54,6 +74,9 @@ LunaticSuggester.defaultProps = {
 	labelPosition: 'DEFAULT',
 	style: {},
 	getStoreInfo: undefined,
+	label: undefined,
+	description: undefined,
+	errors: undefined,
 };
 
 LunaticSuggester.propTypes = {
@@ -74,4 +97,4 @@ LunaticSuggester.propTypes = {
 	getStoreInfo: PropTypes.func,
 };
 
-export default createLunaticComponent(LunaticSuggester);
+export default LunaticSuggester;

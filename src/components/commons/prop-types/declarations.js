@@ -17,6 +17,7 @@ export default PropTypes.arrayOf(
 			C.AFTER_QUESTION_TEXT,
 			C.DETACHABLE,
 		]),
-		label: PropTypes.string.isRequired,
+		label: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+			.isRequired,
 	})
 ).isRequired;

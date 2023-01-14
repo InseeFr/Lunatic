@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createCustomizableLunaticField } from '../commons';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import Dropdown from './dropdown';
@@ -11,7 +10,6 @@ function LunaticDropdown({
 	options,
 	writable,
 	disabled,
-	labelId,
 	value,
 	response,
 	errors,
@@ -39,8 +37,6 @@ function LunaticDropdown({
 		>
 			<Dropdown
 				id={id}
-				htmlFor={id}
-				labelId={labelId}
 				writable={writable}
 				disabled={disabled}
 				options={options}
@@ -81,7 +77,4 @@ LunaticDropdown.defaultProps = {
 	value: null,
 };
 
-export default createCustomizableLunaticField(
-	LunaticDropdown,
-	'LunaticDropdown'
-);
+export default LunaticDropdown;
