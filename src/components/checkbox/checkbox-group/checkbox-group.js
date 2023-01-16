@@ -1,37 +1,27 @@
-import React from 'react';
-import {
-	createCustomizableLunaticField,
-	useOnHandleChange,
-} from '../../commons';
+import React, { useCallback } from 'react';
+import { createCustomizableLunaticField } from '../../commons';
 import { CheckboxOption } from '../commons';
+import Fieldset from '../../commons/components/fieldset';
+import { Errors } from '../../commons';
 import './checkbox.scss';
-
-function onClick() {}
+import PropTypes from 'prop-types';
 
 function CheckBoxOptionWrapper({
 	checkboxId,
 	labelId,
 	checked,
-	value,
 	onKeyDown,
-	handleChange,
-	response,
+	onClick,
 	label,
 }) {
-	const booleanValue = value || false;
-
-	const onClickOption = useOnHandleChange({
-		handleChange,
-		response,
-		value: booleanValue,
-	});
-
-	// const onClickOption = useCallback(
-	// 	function (valueOption) {
-	// 		handleChange(response, !valueOption);
-	// 	},
-	// 	[handleChange, response]
-	// );
+	const onClickOption = useCallback(
+		function () {
+			if (typeof onClick === 'function') {
+				onClick(checked === undefined ? false : checked);
+			}
+		},
+		[onClick, checked]
+	);
 
 	return (
 		<CheckboxOption
@@ -39,7 +29,6 @@ function CheckBoxOptionWrapper({
 			labelledBy={labelId}
 			checked={checked}
 			onClick={onClickOption}
-			value={booleanValue}
 			onKeyDown={onKeyDown}
 			label={label}
 		/>
@@ -50,36 +39,55 @@ function CheckboxGroupContainer({ children }) {
 	return <div className="lunatic-checkbox-group-option">{children}</div>;
 }
 
-function CheckboxGroup({ options, value, id, handleChange }) {
+function CheckboxGroupContent({ options, id, onChange }) {
 	return options.map(function (option) {
-		const { label, response } = option;
+		const { label, checked, name, onClick } = option;
 
-		if (response && value) {
-			const { name } = response;
+		const checkboxId = `lunatic-checkbox-${id}-${name}`;
+		const labelId = `lunatic-checkbox-label-${id}-${name}`;
 
-			if (name in value) {
-				const optionValue = value[name];
-				const checkboxId = `lunatic-checkbox-${id}-${name}`;
-				const labelId = `lunatic-checkbox-label-${id}-${name}`;
-
-				return (
-					<CheckboxGroupContainer key={checkboxId}>
-						<CheckBoxOptionWrapper
-							checkboxId={checkboxId}
-							labelId={labelId}
-							checked={optionValue}
-							value={optionValue}
-							onKeyDown={onClick}
-							response={response}
-							handleChange={handleChange}
-							label={label}
-						/>
-					</CheckboxGroupContainer>
-				);
-			}
-		}
-		return null;
+		return (
+			<CheckboxGroupContainer key={checkboxId}>
+				<CheckBoxOptionWrapper
+					checkboxId={checkboxId}
+					labelId={labelId}
+					checked={checked}
+					onKeyDown={onChange}
+					onClick={onClick}
+					label={label}
+				/>
+			</CheckboxGroupContainer>
+		);
 	});
 }
+
+function CheckboxGroup({
+	options,
+	id,
+	onChange,
+	label,
+	custom,
+	description,
+	errors,
+}) {
+	return (
+		<Fieldset legend={label} custom={custom} description={description}>
+			<CheckboxGroupContent id={id} onChange={onChange} options={options} />
+			<Errors errors={errors} activeId={id} />
+		</Fieldset>
+	);
+}
+
+CheckboxGroup.propTypes = {
+	options: PropTypes.arrayOf(
+		PropTypes.shape({
+			label: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+				.isRequired,
+			onClick: PropTypes.func.isRequired,
+		})
+	),
+};
+
+CheckboxGroup.defaultProps = { options: [] };
 
 export default createCustomizableLunaticField(CheckboxGroup, 'CheckboxGroup');

@@ -1,0 +1,79 @@
+{
+	"components": [
+		{
+			"id": "checkboxgroup",
+			"componentType": "CheckboxGroup",
+			"mandatory": false,
+			"page": "1",
+			"label": {
+				"value": "\"checkboxgroup component\"",
+				"type": "VTL|MD"
+			},
+
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Décalration Before\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Description from DECLARATION.\"",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"responses": [
+				{
+					"id": "opt1",
+					"label": {
+						"value": "\"option 1\"",
+						"type": "VTL|MD"
+					},
+					"response": { "name": "OPT1" }
+				},
+
+				{
+					"id": "opt2",
+					"label": {
+						"value": "\"option 2\"",
+						"type": "VTL|MD"
+					},
+					"response": { "name": "OPT2" }
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "OPT1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "OPT2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

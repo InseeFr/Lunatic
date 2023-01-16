@@ -4,20 +4,12 @@ import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
 import './checkbox-option.scss';
 import { createCustomizableLunaticField } from '../../commons';
 
-function CheckboxOption({
-	disabled,
-	checked,
-	id,
-	value = false,
-	onClick,
-	labelledBy,
-	label,
-}) {
+function CheckboxOption({ disabled, checked, id, onClick, labelledBy, label }) {
 	const onClickOption = useCallback(
 		function () {
-			onClick(!value);
+			onClick(!checked);
 		},
-		[value, onClick]
+		[checked, onClick]
 	);
 
 	const handleKeyDown = useCallback(

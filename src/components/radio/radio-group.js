@@ -49,21 +49,19 @@ function RadioGroup({
 	const onKeyDown = useOptionsKeydown(options, onSelect);
 
 	return (
-		<>
-			<Fieldset legend={label} custom={custom} description={description}>
-				<RadioGroupContent
-					id={id}
-					onClick={onSelect}
-					value={value}
-					onKeyDown={onKeyDown}
-					checkboxStyle={checkboxStyle}
-					label={label}
-					options={options}
-					custom={custom}
-				/>
-			</Fieldset>
+		<Fieldset legend={label} custom={custom} description={description}>
+			<RadioGroupContent
+				id={id}
+				onClick={onSelect}
+				value={value}
+				onKeyDown={onKeyDown}
+				checkboxStyle={checkboxStyle}
+				label={label}
+				options={options}
+				custom={custom}
+			/>
 			<Errors errors={errors} activeId={id} />
-		</>
+		</Fieldset>
 	);
 }
 

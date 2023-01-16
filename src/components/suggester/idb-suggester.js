@@ -9,7 +9,6 @@ function IDBSuggester({
 	idbVersion,
 	id,
 	className,
-	labelledBy,
 	optionRenderer,
 	labelRenderer,
 	onSelect,
@@ -41,7 +40,6 @@ function IDBSuggester({
 			<Suggester
 				id={id}
 				className={className}
-				labelledBy={labelledBy}
 				optionRenderer={optionRenderer}
 				labelRenderer={labelRenderer}
 				onSelect={onSelect}
@@ -69,7 +67,6 @@ IDBSuggester.propTypes = {
 	idbVersion: PropTypes.string,
 	id: PropTypes.string,
 	className: PropTypes.string,
-	labelledBy: PropTypes.string,
 	optionRenderer: PropTypes.func,
 	labelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
