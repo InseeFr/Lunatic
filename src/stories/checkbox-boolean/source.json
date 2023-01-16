@@ -6,16 +6,29 @@
 			"mandatory": false,
 			"page": "1",
 			"label": {
-				"value": "checkboxBoolean component (checked: true, unchecked: false)",
+				"value": "\"checkboxBoolean component (checked: true, unchecked: false)\"",
 				"type": "VTL|MD"
 			},
-
+			"description": {
+				"value": "\"Additional description\"",
+				"type": "VTL|MD"
+			},
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Décalration BEFORE\"",
+						"type": "VTL|MD"
+					}
+				}
+			],
 			"conditionFilter": { "value": "true", "type": "VTL" },
-
 			"options": [
-				{ "value": "1", "label": { "value": "oui", "type": "VTL|MD" } },
+				{ "value": "1", "label": { "value": "\"oui\"", "type": "VTL|MD" } },
 
-				{ "value": "2", "label": { "value": "non", "type": "VTL|MD" } }
+				{ "value": "2", "label": { "value": "\"non\"", "type": "VTL|MD" } }
 			],
 			"response": { "name": "Q2" }
 		}

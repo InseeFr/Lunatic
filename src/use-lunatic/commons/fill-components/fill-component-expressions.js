@@ -18,6 +18,7 @@ const VTL_ATTRIBUTES = [
 	'header.label',
 	'headers.label',
 	'conditionFilter',
+	'responses.description',
 ];
 
 function createCrawl({ executeExpression, iteration, linksIterations }) {

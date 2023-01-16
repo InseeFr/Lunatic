@@ -58,7 +58,7 @@ LunaticDropdown.propTypes = {
 		PropTypes.shape({
 			label: PropTypes.oneOfType([
 				PropTypes.string.isRequired,
-				PropTypes.elements,
+				PropTypes.element,
 			]),
 			value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 				.isRequired,

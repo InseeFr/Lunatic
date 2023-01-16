@@ -4,9 +4,9 @@ import safetyLabel from '../safety-label';
 import Description from './description';
 import './fieldset.scss';
 
-function Fieldset({ children, legend, description }) {
+function Fieldset({ children, legend, description, className }) {
 	return (
-		<fieldset>
+		<fieldset className={className}>
 			<legend>
 				{safetyLabel(legend)}
 				<Description value={description} />

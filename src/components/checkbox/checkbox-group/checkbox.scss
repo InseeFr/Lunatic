@@ -1,4 +1,10 @@
 .lunatic-checkbox-group-option {
-	display: flex;
+	display: block;
 	font-size: 13px;
+
+	legend {
+		.label-description {
+			font-weight: lighter;
+		}
+	}
 }

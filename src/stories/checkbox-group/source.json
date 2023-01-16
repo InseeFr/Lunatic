@@ -9,7 +9,6 @@
 				"value": "\"checkboxgroup component\"",
 				"type": "VTL|MD"
 			},
-
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"declarations": [
 				{
@@ -34,6 +33,10 @@
 			"responses": [
 				{
 					"id": "opt1",
+					"description": {
+						"value": "\"Additional description for opt1.\"",
+						"type": "VTL|MD"
+					},
 					"label": {
 						"value": "\"option 1\"",
 						"type": "VTL|MD"
@@ -43,6 +46,10 @@
 
 				{
 					"id": "opt2",
+					"description": {
+						"value": "\"Additional description for opt2.\"",
+						"type": "VTL|MD"
+					},
 					"label": {
 						"value": "\"option 2\"",
 						"type": "VTL|MD"

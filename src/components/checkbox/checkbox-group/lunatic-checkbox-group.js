@@ -17,7 +17,7 @@ function LunaticCheckboxGroup({
 	missing,
 	management,
 }) {
-	const options = responses.map(function ({ label, response }) {
+	const options = responses.map(function ({ label, response, description }) {
 		const { name } = response;
 		const checked = name in value ? value[name] : false;
 
@@ -25,8 +25,9 @@ function LunaticCheckboxGroup({
 			label,
 			name,
 			checked,
+			description,
 			onClick: function (checked) {
-				handleChange(response, !checked);
+				handleChange(response, checked);
 			},
 		};
 	});
