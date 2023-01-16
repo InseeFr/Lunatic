@@ -1,19 +1,19 @@
-# Non réponse
+# Non-response
 
-Afin de pouvoir gérer la non réponse, Lunatic permet de répondre `Ne sais pas` ou `Refus` au sujet d'une question.
+To handle non-response, Lunatic allows you to answer `Don't know` or `Refused` about a question.
 
-## Fonctionnement
+## How to
 
-Les composants de Lunatic sont wrappés pour intercepter la props `missing`.
-Tout composant ayant la props `missing` à `true` sera donc succédé des bouttons permettant de traiter la non réponse (le questionnaire source doit alors être généré via Lunatic Model en contenant les attributs `missingResponse`)
+Lunatic composants are wrapped to catch the `missing` property.
+Any component whose `missing` property is set to `true` will be followed by non-response processing bouttons (the source questionnaire must have been generated via Lunatic-Model and must contain `missingResponse` property).
 
-De plus, lors de la déclaration de la non réponse pour une question, une stratégie personnelle de navigation peut être injectée via la props `missingStrategy`. Une fonction peut alors être passée en paramètre et sera executée lors des clics sur ces boutons.
+Moreover, when non-response is allowed for a question, a custom navigation strategy can be injected via the `missingStrategy` property. A function can be passed as property and will be executed when the non-response buttons are clicked.
 
-Les boutons de non réponse proposés nativement peuvent être remplacés par des composants React valides via les props `missing-button-dk` et `missing-button-rf`, auquel cas le button-lunatic ciblé encapsulera le composant passé en prop.
+Non-response buttons can be replaced by valid React components via the `missing-button-dk` and `missing-button-rf` properties, in wich case, the targeted non-response button will encapsulate the component passed in the properties.
 
 ## Styles
 
-Lunatic propose un style de base pour les bouttons de non réponse, surchargeable en alimentant les classes css suivantes :
+Lunatic offers basic style for non-response buttons, wich can be overriden by providing rules for following CSS classes :
 
 - missing-wrapper
 - missing-component

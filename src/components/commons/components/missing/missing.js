@@ -1,10 +1,13 @@
-import React, { useCallback } from 'react';
-import useOnHandleChange from '../../use-on-handle-change';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
-import Button from '../../../button';
-import { DK, RF } from '../../../../utils/constants';
-import D from '../../../../i18n';
 import './missing.scss';
+
+import { DK, RF } from '../../../../utils/constants';
+import React, { useCallback } from 'react';
+
+import Button from '../../../button';
+import D from '../../../../i18n';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
+import { isElement } from '../../../../utils/is-element';
+import useOnHandleChange from '../../use-on-handle-change';
 
 const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
@@ -41,6 +44,15 @@ const Missing = (props) => {
 		handleMissingStrategy();
 	}, [onClick, handleMissingStrategy]);
 
+	const keyHandling = useCallback(
+		(key, e) => {
+			e.preventDefault();
+			if (key === missingShortcut.dontKnow) onClick(DK)();
+			if (key === missingShortcut.refused) onClick(RF)();
+		},
+		[missingShortcut.dontKnow, missingShortcut.refused, onClick]
+	);
+
 	if ((componentType === 'Loop' && paginatedLoop) || !missingResponse)
 		return null;
 
@@ -51,14 +63,22 @@ const Missing = (props) => {
 					value === DK ? '-active' : ''
 				} missing-button-dk${value === DK ? '-active' : ''}`}
 			>
-				<Button label={dontKnowButton} onClick={onClickDK} />
+				{isElement(dontKnowButton) ? (
+					<Button onClick={onClickDK}>{dontKnowButton}</Button>
+				) : (
+					<Button label={dontKnowButton} onClick={onClickDK} />
+				)}
 			</span>
 			<span
 				className={`missing-button${
 					value === RF ? '-active' : ''
 				} missing-button-rf${value === RF ? '-active' : ''}`}
 			>
-				<Button label={refusedButton} onClick={onClickRF} />
+				{isElement(refusedButton) ? (
+					<Button onClick={onClickRF}>{refusedButton}</Button>
+				) : (
+					<Button label={refusedButton} onClick={onClickRF} />
+				)}
 			</span>
 			{shortcut &&
 				missingShortcut &&
@@ -66,11 +86,7 @@ const Missing = (props) => {
 				missingShortcut.refused && (
 					<KeyboardEventHandler
 						handleKeys={Object.values(missingShortcut)}
-						onKeyEvent={(key, e) => {
-							e.preventDefault();
-							if (key === missingShortcut.dontKnow) onClick(DK)();
-							if (key === missingShortcut.refused) onClick(RF)();
-						}}
+						onKeyEvent={keyHandling}
 						handleFocusableElements
 					/>
 				)}

@@ -1,6 +1,9 @@
-import React, { memo } from 'react';
-import * as lunatic from '../..';
 import './custom-lunatic.scss';
+
+import * as lunatic from '../..';
+
+import React, { memo } from 'react';
+
 import Waiting from './waiting';
 
 function getStoreInfoRequired() {
@@ -53,6 +56,9 @@ function OrchestratorForStories({
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
+	// two following props override non-response buttons cf. docs/{lg}/missing.md
+	dontKnowButton,
+	refusedButton,
 	shortcut = false,
 	activeGoNextForMissing = false,
 	suggesterFetcher,
@@ -122,6 +128,8 @@ function OrchestratorForStories({
 								{...component}
 								{...storeInfo}
 								missing={missing}
+								dontKnowButton={dontKnowButton}
+								refusedButton={refusedButton}
 								missingStrategy={goNextPage}
 								shortcut={shortcut}
 								custom={custom}
