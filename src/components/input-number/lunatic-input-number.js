@@ -53,6 +53,7 @@ function LunaticInputNumber(props) {
 				unit={unit}
 				required={required}
 				errors={errors}
+				custom={custom}
 			/>
 		</LunaticComponent>
 	);
