@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createCustomizableLunaticField } from '../../commons';
 import CheckboxGroupContent from './checkbox-group-content';
-import { Errors, Fieldset } from '../../commons';
+import {
+	createCustomizableLunaticField,
+	Errors,
+	Fieldset,
+} from '../../../commons';
 import './checkbox-group.scss';
 
 function CheckboxGroup({

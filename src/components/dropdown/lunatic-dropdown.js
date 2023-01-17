@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
-import Dropdown from './dropdown';
+import Dropdown from './html/dropdown';
 
 function LunaticDropdown({
 	id,

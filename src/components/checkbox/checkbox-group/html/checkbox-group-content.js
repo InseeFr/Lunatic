@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxOption } from '../commons';
+import { CheckboxOption } from '../../commons';
 
 function CheckboxGroupContainer({ children }) {
 	return <div className="lunatic-checkbox-group-option">{children}</div>;

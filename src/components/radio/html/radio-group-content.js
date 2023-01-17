@@ -1,6 +1,6 @@
 import React from 'react';
 import RadioOption from './radio-option';
-import { useOptionsKeydown } from '../commons';
+import { useOptionsKeydown } from '../../commons';
 
 function RadioGroupContent({
 	options,

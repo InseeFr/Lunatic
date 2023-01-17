@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
-import './checkbox-option.scss';
 import { createCustomizableLunaticField, Label } from '../../commons';
+import './checkbox-option.scss';
 
 function CheckboxOption({
 	disabled,

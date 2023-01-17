@@ -1,8 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import './datepicker.scss';
-import { Errors, Label } from '../commons';
-import { createCustomizableLunaticField } from '../commons';
+import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import DatepickerInput from './datepicker-input';
 import DatepickerContainer from './datepicker-container';
 import './datepicker.scss';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RadioGroup from '../../radio/radio-group';
-import { createCustomizableLunaticField } from '../../commons';
+import RadioGroup from '../../../radio/html/radio-group';
+import { createCustomizableLunaticField } from '../../../commons';
 import './checkbox-one.scss';
 
 function CheckboxOne({

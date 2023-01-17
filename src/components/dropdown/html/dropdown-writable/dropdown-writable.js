@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { ComboBox } from '../../commons';
+import { ComboBox } from '../../../commons';
 import WritableOptionRenderer from './writable-option-renderer';
 import WritableLabelRenderer from './writable-label-renderer';
 import filterOptions from './filter-tools/filter-options';

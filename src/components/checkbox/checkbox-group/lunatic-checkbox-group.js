@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckboxGroup from './checkbox-group';
+import CheckboxGroup from './html/checkbox-group';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 
 function LunaticCheckboxGroup({

@@ -1,27 +1,53 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Switch from './switch';
+import Switch from './html/switch';
+import LunaticComponent from '../commons/components/lunatic-component-without-label';
+import useOnHandleChange from '../commons/use-on-handle-change';
 
-import { createLunaticComponent } from '../commons';
-
-function LunaticSwitch({ id, value, statusLabel, onChange, custom, labelId }) {
+function LunaticSwitch({
+	id,
+	value,
+	statusLabel,
+	custom,
+	labelId,
+	handleChange,
+	response,
+	preferences,
+	declarations,
+	missing,
+	missingResponse,
+	management,
+	description,
+	label,
+	errors,
+}) {
 	const booleanValue = value || false;
-	const onClick = useCallback(
-		function (status) {
-			onChange(status);
-		},
-		[onChange]
-	);
+
+	const onClick = useOnHandleChange({ handleChange, response, value });
 
 	return (
-		<Switch
+		<LunaticComponent
 			id={id}
-			checked={booleanValue}
-			onClick={onClick}
-			statusLabel={statusLabel}
-			labelId={labelId}
 			custom={custom}
-		/>
+			preferences={preferences}
+			declarations={declarations}
+			value={value}
+			missing={missing}
+			missingResponse={missingResponse}
+			management={management}
+			description={description}
+		>
+			<Switch
+				id={id}
+				checked={booleanValue}
+				onClick={onClick}
+				statusLabel={statusLabel}
+				labelId={labelId}
+				label={label}
+				errors={errors}
+				custom={custom}
+			/>
+		</LunaticComponent>
 	);
 }
 
@@ -31,6 +57,4 @@ LunaticSwitch.propTypes = {
 
 LunaticSwitch.defaultProps = { statusLabel: { true: 'True', false: 'False' } };
 
-export default createLunaticComponent(LunaticSwitch, {
-	inputId: 'lunatic-switch',
-});
+export default LunaticSwitch;

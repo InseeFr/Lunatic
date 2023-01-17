@@ -1,5 +1,5 @@
 import React from 'react';
-import Datepicker from './datepicker';
+import Datepicker from './html/datepicker';
 import { createCustomizableLunaticField } from '../commons';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';

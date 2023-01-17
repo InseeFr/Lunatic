@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Fieldset from '../commons/components/fieldset';
-import { Errors } from '../commons';
 import RadioGroupContent from './radio-group-content';
-import { useOptionsKeydown, createCustomizableLunaticField } from '../commons';
+import {
+	useOptionsKeydown,
+	createCustomizableLunaticField,
+	Errors,
+	Fieldset,
+} from '../../commons';
 import './radio-group.scss';
 
 function RadioGroup({

@@ -1,7 +1,7 @@
 import React from 'react';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../../commons/use-on-handle-change';
-import CheckboxOne from './checkbox-one';
+import CheckboxOne from './html/checkbox-one';
 
 function LunaticCheckboxOne({
 	id,

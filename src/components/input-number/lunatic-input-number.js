@@ -1,5 +1,5 @@
 import React from 'react';
-import InputNumber from './input-number';
+import InputNumber from './html/input-number';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 

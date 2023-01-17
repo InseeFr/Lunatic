@@ -1,12 +1,11 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-
 import {
 	ComboBox,
 	DefaultOptionRenderer,
 	DefaultLabelRenderer,
 	createCustomizableLunaticField,
-} from '../commons';
+} from '../../commons';
 import './default-style.scss';
 
 function getSearch(search, value) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckboxBoolean from './checkbox-boolean';
+import CheckboxBoolean from './html/checkbox-boolean';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../../commons/use-on-handle-change';
 
