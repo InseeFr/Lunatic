@@ -1,8 +1,7 @@
 import React from 'react';
-import Input from './input';
+import Input from './html/input';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
-import './input.scss';
 
 function LunaticInput(props) {
 	const {

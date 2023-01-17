@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import Suggester from './suggester';
+import Suggester from './html/suggester';
 import createSearching from './searching';
 import CheckStore from './check-store';
 

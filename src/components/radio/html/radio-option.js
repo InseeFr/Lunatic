@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import classnames from 'classnames';
-import Label from '../commons/components/label';
+import { Label, createCustomizableLunaticField } from '../../commons';
 import {
 	RadioChecked,
 	RadioUnchecked,
 	CheckboxChecked,
 	CheckboxUnchecked,
-} from '../commons/icons';
-import createCustomizableLunaticField from '../commons/create-customizable-field';
+} from '../../commons/icons';
 
 function getIcon(checked, checkboxStyle) {
 	if (checked) {
@@ -33,6 +32,7 @@ function RadioOption({
 	labelledBy,
 	checkboxStyle,
 	label,
+	description,
 }) {
 	const spanEl = useRef();
 	const Icon = getIcon(checked, checkboxStyle);
@@ -85,7 +85,7 @@ function RadioOption({
 					ref={spanEl}
 				>
 					<Icon />
-					<Label id={labelledBy} htmlFor={id}>
+					<Label id={labelledBy} htmlFor={id} description={description}>
 						{label}
 					</Label>
 				</span>

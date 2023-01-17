@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckboxBoolean from './checkbox-boolean';
+import CheckboxBoolean from './html/checkbox-boolean';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../../commons/use-on-handle-change';
 
@@ -9,19 +9,18 @@ function LunaticCheckboxBoolean({
 	options,
 	disabled,
 	handleChange,
+	response,
 	custom,
 	errors,
 	label,
-	response,
-	description,
 	preferences,
 	declarations,
 	missing,
 	missingResponse,
 	management,
+	description,
 }) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
-
 	return (
 		<LunaticComponent
 			id={id}

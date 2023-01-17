@@ -10,7 +10,7 @@
 				"type": "VTL|MD"
 			},
 			"description": {
-				"value": "\"Additional description\"",
+				"value": "\"Description for label\"",
 				"type": "VTL|MD"
 			},
 			"declarations": [
@@ -19,7 +19,16 @@
 					"declarationType": "INSTRUCTION",
 					"position": "BEFORE_QUESTION_TEXT",
 					"label": {
-						"value": "\"Décalration BEFORE\"",
+						"value": "\"Décalration Before\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Description from DECLARATION.\"",
 						"type": "VTL|MD"
 					}
 				}

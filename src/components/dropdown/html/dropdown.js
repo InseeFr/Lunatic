@@ -1,5 +1,5 @@
 import React from 'react';
-import { createCustomizableLunaticField } from '../commons';
+import { createCustomizableLunaticField } from '../../commons';
 import DropdownSimple from './dropdown-simple';
 import DropdownWritable from './dropdown-writable';
 import './dropdown.scss';

@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createCustomizableLunaticField, Errors } from '../../commons';
-import Fieldset from '../../commons/components/fieldset';
 import CheckboxGroupContent from './checkbox-group-content';
-import './checkbox.scss';
+import {
+	createCustomizableLunaticField,
+	Errors,
+	Fieldset,
+} from '../../../commons';
+import './checkbox-group.scss';
 
 function CheckboxGroup({
 	options,
@@ -16,7 +19,7 @@ function CheckboxGroup({
 }) {
 	return (
 		<Fieldset
-			className="lunatic-checkbox-group-option"
+			className="lunatic-checkbox-group"
 			legend={label}
 			custom={custom}
 			description={description}
@@ -28,27 +31,27 @@ function CheckboxGroup({
 }
 
 CheckboxGroup.propTypes = {
-	id: PropTypes.string.isRequired,
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	errors: PropTypes.array,
-	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
-			label: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-				.isRequired,
-			onClick: PropTypes.func.isRequired,
-			name: PropTypes.string.isRequired,
+			label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 			description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-			checked: PropTypes.bool,
+			value: PropTypes.oneOfType([
+				PropTypes.string,
+				PropTypes.number,
+				PropTypes.bool,
+			]),
 		})
 	),
+	id: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	errors: PropTypes.array,
 };
 
 CheckboxGroup.defaultProps = {
 	options: [],
-	label: undefined,
 	errors: undefined,
-	description: undefined,
+	label: undefined,
 };
 
 export default createCustomizableLunaticField(CheckboxGroup, 'CheckboxGroup');

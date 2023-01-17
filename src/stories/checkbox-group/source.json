@@ -34,7 +34,7 @@
 				{
 					"id": "opt1",
 					"description": {
-						"value": "\"Additional description for opt1.\"",
+						"value": "\"Déclaration option 1\"",
 						"type": "VTL|MD"
 					},
 					"label": {
@@ -47,7 +47,7 @@
 				{
 					"id": "opt2",
 					"description": {
-						"value": "\"Additional description for opt2.\"",
+						"value": "\"Déclaration option 2\"",
 						"type": "VTL|MD"
 					},
 					"label": {

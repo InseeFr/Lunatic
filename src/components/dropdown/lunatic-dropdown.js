@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
-import Dropdown from './dropdown';
+import Dropdown from './html/dropdown';
 
 function LunaticDropdown({
 	id,
@@ -23,6 +23,7 @@ function LunaticDropdown({
 	description,
 }) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
+
 	return (
 		<LunaticComponent
 			id={id}
@@ -68,6 +69,7 @@ LunaticDropdown.propTypes = {
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
+		PropTypes.bool,
 		PropTypes.array,
 	]),
 };

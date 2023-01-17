@@ -51,12 +51,7 @@ function CheckboxOption({
 				aria-labelledby={labelId}
 			>
 				<Icon />
-				<Label
-					id={labelId}
-					htmlFor={id}
-					description={description}
-					className="label-checkbox"
-				>
+				<Label id={labelId} htmlFor={id} description={description}>
 					{label}
 				</Label>
 			</span>

@@ -23,7 +23,6 @@ const PairwiseLinks = ({
 	custom,
 	id,
 	symLinks,
-	errors,
 }) => {
 	const nbRows = xAxisIterations * yAxisIterations;
 

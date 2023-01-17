@@ -1,18 +1,51 @@
 import React from 'react';
-import LunaticRadioGroup from '../../radio';
-import { createCustomizableLunaticField, Errors } from '../../commons';
+import LunaticComponent from '../../commons/components/lunatic-component-without-label';
+import useOnHandleChange from '../../commons/use-on-handle-change';
+import CheckboxOne from './html/checkbox-one';
 
-function LunaticCheckboxOne({ errors, ...props }) {
-	const { id } = props;
+function LunaticCheckboxOne({
+	id,
+	options,
+	value,
+	custom,
+	errors,
+	handleChange,
+	response,
+	label,
+	description,
+	preferences,
+	declarations,
+	missingResponse,
+	missing,
+	management,
+}) {
+	const onSelect = useOnHandleChange({ handleChange, response, value });
 	return (
-		<>
-			<LunaticRadioGroup {...props} checkboxStyle={true} />
-			<Errors errors={errors} activeId={id} />
-		</>
+		<LunaticComponent
+			id={id}
+			label={label}
+			custom={custom}
+			preferences={preferences}
+			declarations={declarations}
+			value={value}
+			missingResponse={missingResponse}
+			missing={missing}
+			management={management}
+			description={description}
+		>
+			<CheckboxOne
+				id={id}
+				className="lunatic-checkbox-one"
+				options={options}
+				value={value}
+				custom={custom}
+				errors={errors}
+				onSelect={onSelect}
+				response={response}
+				label={label}
+			/>
+		</LunaticComponent>
 	);
 }
 
-export default createCustomizableLunaticField(
-	LunaticCheckboxOne,
-	'LunaticCheckboxOne'
-);
+export default LunaticCheckboxOne;
