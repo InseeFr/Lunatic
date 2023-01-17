@@ -1,5 +1,6 @@
 import React from 'react';
-import LunaticRadioGroup from '../../radio';
+import LunaticComponent from '../../commons/components/lunatic-component-without-label';
+import useOnHandleChange from '../../commons/use-on-handle-change';
 import CheckboxOne from './checkbox-one';
 
 function LunaticCheckboxOne({
@@ -18,25 +19,32 @@ function LunaticCheckboxOne({
 	missing,
 	management,
 }) {
+	const onSelect = useOnHandleChange({ handleChange, response, value });
 	return (
-		<CheckboxOne
+		<LunaticComponent
 			id={id}
-			className="lunatic-checkbox-one"
-			options={options}
-			value={value}
-			custom={custom}
-			errors={errors}
-			handleChange={handleChange}
-			response={response}
 			label={label}
-			description={description}
+			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
+			value={value}
 			missingResponse={missingResponse}
 			missing={missing}
 			management={management}
-			checkboxStyle={true}
-		/>
+			description={description}
+		>
+			<CheckboxOne
+				id={id}
+				className="lunatic-checkbox-one"
+				options={options}
+				value={value}
+				custom={custom}
+				errors={errors}
+				onSelect={onSelect}
+				response={response}
+				label={label}
+			/>
+		</LunaticComponent>
 	);
 }
 

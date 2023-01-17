@@ -30,13 +30,25 @@ function CheckboxGroup({
 CheckboxGroup.propTypes = {
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
-			label: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-				.isRequired,
-			onClick: PropTypes.func.isRequired,
+			label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+			description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+			value: PropTypes.oneOfType([
+				PropTypes.string,
+				PropTypes.number,
+				PropTypes.bool,
+			]),
 		})
 	),
+	id: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	errors: PropTypes.array,
 };
 
-CheckboxGroup.defaultProps = { options: [] };
+CheckboxGroup.defaultProps = {
+	options: [],
+	errors: undefined,
+	label: undefined,
+};
 
 export default createCustomizableLunaticField(CheckboxGroup, 'CheckboxGroup');
