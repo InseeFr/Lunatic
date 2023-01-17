@@ -2,9 +2,17 @@ import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
 import './checkbox-option.scss';
-import { createCustomizableLunaticField } from '../../commons';
+import { createCustomizableLunaticField, Label } from '../../commons';
 
-function CheckboxOption({ disabled, checked, id, onClick, labelledBy, label }) {
+function CheckboxOption({
+	disabled,
+	checked,
+	id,
+	onClick,
+	labelledBy,
+	label,
+	description,
+}) {
 	const onClickOption = useCallback(
 		function () {
 			onClick(!checked);
@@ -42,9 +50,9 @@ function CheckboxOption({ disabled, checked, id, onClick, labelledBy, label }) {
 				aria-labelledby={labelledBy}
 			>
 				<Icon />
-				<span id={labelledBy} htmlFor={id}>
+				<Label id={labelledBy} htmlFor={id} description={description}>
 					{label}
-				</span>
+				</Label>
 			</span>
 		</div>
 	);

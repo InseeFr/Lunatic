@@ -2,6 +2,7 @@ const VTL_ATTRIBUTES = [
 	'label',
 	'description',
 	'responses.label',
+	'responses.description',
 	'hierarchy.label',
 	'hierarchy.subSequence.label',
 	'hierarchy.sequence.label',
