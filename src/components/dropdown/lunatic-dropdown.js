@@ -23,6 +23,7 @@ function LunaticDropdown({
 	description,
 }) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
+
 	return (
 		<LunaticComponent
 			id={id}

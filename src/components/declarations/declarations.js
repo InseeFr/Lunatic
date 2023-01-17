@@ -1,7 +1,7 @@
 import React from 'react';
-import './declarations.scss';
 import Declaration from './declaration';
 import { createCustomizableLunaticField } from '../commons';
+import './declarations.scss';
 
 export const DECLARATION_POSITIONS = {
 	after: 'AFTER_QUESTION_TEXT',

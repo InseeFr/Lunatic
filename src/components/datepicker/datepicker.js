@@ -5,6 +5,7 @@ import { Errors, Label } from '../commons';
 import { createCustomizableLunaticField } from '../commons';
 import DatepickerInput from './datepicker-input';
 import DatepickerContainer from './datepicker-container';
+import './datepicker.scss';
 
 function Datepicker({
 	disabled,
