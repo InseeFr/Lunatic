@@ -20,7 +20,6 @@ const VTL_ATTRIBUTES = [
 	'xAxisIterations',
 	'yAxisIterations',
 	'conditionFilter',
-	'responses.description',
 ];
 
 function createCrawl({ executeExpression, iteration, linksIterations }) {

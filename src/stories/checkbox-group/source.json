@@ -34,7 +34,7 @@
 				{
 					"id": "opt1",
 					"description": {
-						"value": "\"Déclaration option 1\"",
+						"value": "\"Déscription option 1\"",
 						"type": "VTL|MD"
 					},
 					"label": {
