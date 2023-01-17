@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createCustomizableLunaticField } from '../../commons';
 import CheckboxGroupContent from './checkbox-group-content';
 import { Errors, Fieldset } from '../../commons';
-import './checkbox.scss';
+import './checkbox-group.scss';
 
 function CheckboxGroup({
 	options,
@@ -16,7 +16,7 @@ function CheckboxGroup({
 }) {
 	return (
 		<Fieldset
-			className="checkbox-group-list"
+			className="lunatic-checkbox-group"
 			legend={label}
 			custom={custom}
 			description={description}

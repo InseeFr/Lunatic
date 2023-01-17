@@ -14,11 +14,23 @@
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
-
 			"options": [
-				{ "value": "1", "label": { "value": "\"oui\"", "type": "VTL|MD" } },
-
-				{ "value": "2", "label": { "value": "\"non\"", "type": "VTL|MD" } }
+				{
+					"value": "1",
+					"description": {
+						"value": "\"Déclaration oui\"",
+						"type": "VTL|MD"
+					},
+					"label": { "value": "\"oui\"", "type": "VTL|MD" }
+				},
+				{
+					"value": "2",
+					"description": {
+						"value": "\"Déclaration non\"",
+						"type": "VTL|MD"
+					},
+					"label": { "value": "\"non\"", "type": "VTL|MD" }
+				}
 			],
 			"response": { "name": "Q2" }
 		}

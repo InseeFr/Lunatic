@@ -1,8 +1,9 @@
 import React from 'react';
 import LunaticRadioGroup from '../../radio';
-import CheckboxOne from './checkbox-one';
+import { createCustomizableLunaticField } from '../../commons';
+import './checkbox-one.scss';
 
-function LunaticCheckboxOne({
+function CheckboxOne({
 	id,
 	options,
 	value,
@@ -19,7 +20,7 @@ function LunaticCheckboxOne({
 	management,
 }) {
 	return (
-		<CheckboxOne
+		<LunaticRadioGroup
 			id={id}
 			className="lunatic-checkbox-one"
 			options={options}
@@ -39,5 +40,4 @@ function LunaticCheckboxOne({
 		/>
 	);
 }
-
-export default LunaticCheckboxOne;
+export default createCustomizableLunaticField(CheckboxOne, 'CheckboxOne');

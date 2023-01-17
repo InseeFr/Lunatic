@@ -6,16 +6,19 @@
 			"mandatory": false,
 			"page": "3",
 			"label": {
-				"value": "checkboxone component",
+				"value": "\"checkboxone ONE component\"",
 				"type": "VTL|MD"
 			},
-
+			"description": {
+				"value": "\"true or false\"",
+				"type": "VTL|MD"
+			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
 
 			"options": [
-				{ "value": "1", "label": { "value": "oui", "type": "VTL|MD" } },
+				{ "value": "1", "label": { "value": "\"oui\"", "type": "VTL|MD" } },
 
-				{ "value": "2", "label": { "value": "non", "type": "VTL|MD" } }
+				{ "value": "2", "label": { "value": "\"non\"", "type": "VTL|MD" } }
 			],
 			"response": { "name": "Q2" }
 		}

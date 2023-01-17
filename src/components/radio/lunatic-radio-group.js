@@ -3,7 +3,6 @@ import RadioGroup from './radio-group';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { createCustomizableLunaticField } from '../commons';
-import './radio.scss';
 
 function LunaticRadioGroup(props) {
 	const {
@@ -22,6 +21,7 @@ function LunaticRadioGroup(props) {
 		missingResponse,
 		missing,
 		management,
+		className,
 	} = props;
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
@@ -46,10 +46,13 @@ function LunaticRadioGroup(props) {
 				errors={errors}
 				custom={custom}
 				label={label}
+				className={className}
 			/>
 		</LunaticComponent>
 	);
 }
+
+LunaticRadioGroup.defaultProps = { className: 'lunatic-radio-group' };
 
 export default createCustomizableLunaticField(
 	LunaticRadioGroup,

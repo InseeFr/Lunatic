@@ -33,6 +33,7 @@ function RadioOption({
 	labelledBy,
 	checkboxStyle,
 	label,
+	description,
 }) {
 	const spanEl = useRef();
 	const Icon = getIcon(checked, checkboxStyle);
@@ -85,7 +86,7 @@ function RadioOption({
 					ref={spanEl}
 				>
 					<Icon />
-					<Label id={labelledBy} htmlFor={id}>
+					<Label id={labelledBy} htmlFor={id} description={description}>
 						{label}
 					</Label>
 				</span>
