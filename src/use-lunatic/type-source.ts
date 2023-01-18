@@ -1,0 +1,281 @@
+export type LabelType = { value: string; type: string };
+
+export type ComponentTypeEnum =
+	| 'Sequence'
+	| 'Subsequence'
+	| 'RosterForLoop'
+	| 'Loop'
+	| 'Table'
+	| 'Input'
+	| 'InputNumber'
+	| 'Datepicker'
+	| 'CheckboxGroup'
+	| 'CheckboxOne'
+	| 'CheckboxBoolean'
+	| 'Radio'
+	| 'Dropdown'
+	| 'Textarea'
+	| 'FilterDescription'
+	| 'Suggester';
+
+export type ValuesType<T = unknown> = {
+	PREVIOUS: T | null;
+	COLLECTED: T | null;
+	FORCED: T | null;
+	EDITED: T | null;
+	INPUTED: T | null;
+};
+
+export type ValuesTypeArray<T = unknown> = {
+	PREVIOUS: T[] | [null];
+	COLLECTED: T[] | [null];
+	FORCED: T[] | [null];
+	EDITED: T[] | [null];
+	INPUTED: T[] | [null];
+};
+
+export type DeclarationType = {
+	id: string;
+	declarationType:
+		| 'INSTRUCTION'
+		| 'COMMENT'
+		| 'HELP'
+		| 'CODECARD'
+		| 'WARNING'
+		| 'STATEMENT';
+	position:
+		| 'AFTER_QUESTION_TEXT'
+		| 'AFTER_RESPONSE'
+		| 'BEFORE_QUESTION_TEXT'
+		| 'DETACHABLE';
+	label: LabelType;
+};
+
+export type ConditionFilterType = LabelType;
+
+export type ControlType = {
+	id: string;
+	criticality: 'INFO' | 'WARN' | 'ERROR';
+	control: LabelType;
+	errorMessage: LabelType;
+	bindingDependencies: string[];
+};
+
+export type ResponseType = { name: string };
+
+export type SequenceDescription = {
+	label: LabelType;
+	id: string;
+	page: string;
+};
+
+export type Hierarchy = {
+	sequence: SequenceDescription;
+	subSequence: SequenceDescription;
+};
+
+export type ComponentType = {
+	label: LabelType;
+	declarations: DeclarationType[];
+	conditionFilter: ConditionFilterType;
+	controls?: ControlType[];
+	id: string;
+	storeName: string;
+	bindingDependencies: string[];
+	hierarchy: Hierarchy;
+	missingResponse: ResponseType;
+	mandatory?: boolean;
+	page: string;
+} & (
+	| ComponentSequenceType
+	| ComponentSubSequenceType
+	| ComponentRosterForLoopType
+	| ComponentLoopType
+	| ComponentTableType
+	| ComponentNumberType
+	| ComponentDatePickerType
+	| ComponentCheckboxGroupType
+	| ComponentCheckboxBooleanType
+	| ComponentRadioType
+	| ComponentFilterDescriptionType
+	| ComponentSuggesterType
+	| ComponentDropdownType
+	| { componentType: 'Input' | 'CheckboxOne' | 'Textarea' }
+);
+
+export type ComponentSequenceType = {
+	componentType: 'Sequence';
+};
+
+export type ComponentSubSequenceType = {
+	componentType: 'Subsequence';
+	gotoPage: string;
+};
+
+export type ComponentRosterForLoopType = {
+	componentType: 'RosterForLoop';
+	lines: { min: LabelType; max: LabelType };
+	header: {
+		value: string;
+		label: LabelType | string;
+		options: { value: string; label: LabelType }[];
+		colspan?: number;
+		rowspan?: number;
+	}[];
+	body: {
+		label?: LabelType;
+		value?: string;
+		format?: string;
+		dateFormat?: string;
+		unit?: string;
+		options: { value: string; label: LabelType }[];
+		response: ResponseType;
+		bindingDependencies: string[];
+		componentType?: ComponentTypeEnum;
+		maxLength?: number;
+		min?: number;
+		max?: number;
+		decimals?: number;
+		colspan?: number;
+		rowspan?: number;
+		id?: string;
+	}[];
+	positioning: 'HORIZONTAL';
+};
+
+export type ComponentLoopType = {
+	componentType: 'Loop';
+	loopDependencies: string[];
+	lines: { min: LabelType; max: LabelType };
+	components: ComponentType[];
+	iterations: LabelType;
+	maxPage: string;
+	depth: number;
+	paginatedLoop: boolean;
+};
+
+export type ComponentTableType = {
+	componentType: 'Table';
+	lines: ComponentRosterForLoopType['lines'];
+	header: ComponentRosterForLoopType['header'];
+	body: ComponentRosterForLoopType['body'];
+	positioning: ComponentRosterForLoopType['positioning'];
+};
+
+export type ComponentNumberType = {
+	componentType: 'InputNumber';
+	unit: string;
+	response: ResponseType;
+	min?: number;
+	max?: number;
+	decimals?: number;
+};
+
+export type ComponentDatePickerType = {
+	componentType: 'Datepicker';
+	dateFormat: string;
+	response: ResponseType;
+	min?: string;
+	max?: string;
+};
+
+export type ComponentCheckboxGroupType = {
+	componentType: 'CheckboxGroup';
+	responses: {
+		label: LabelType;
+		response: ResponseType;
+		id: string;
+	}[];
+};
+
+export type ComponentCheckboxBooleanType = {
+	componentType: 'CheckboxBoolean';
+	response: ResponseType;
+};
+
+export type ComponentRadioType = {
+	componentType: 'Radio';
+	options: { value: string; label: LabelType }[];
+	response: ResponseType;
+};
+
+export type ComponentDropdownType = {
+	componentType: 'Dropdown';
+	options: { value: string; label: LabelType }[];
+	response: ResponseType;
+};
+
+export type ComponentSuggesterType = {};
+
+export type ComponentFilterDescriptionType = {
+	componentType: 'FilterDescription';
+	filterDescription: boolean;
+};
+
+export type SuggesterType = {
+	name: string;
+	fields: {
+		name: string;
+		min?: number;
+		rules?: string[];
+		language?: string;
+		stemmer?: boolean;
+		synonyms: { source: string; target: string[] }[];
+	}[];
+	max: number;
+	stopWords?: string;
+	order?: { field: string; type: string };
+	queryParser: {
+		type: string;
+		params: { language: string; pattern: string; min?: number };
+	};
+	url?: string;
+	version: string;
+};
+
+export type LunaticSource = {
+	id: string;
+	modele?: string;
+	enoCoreVersion?: string;
+	lunaticModelVersion?: string;
+	generatingDate?: string;
+	missing?: boolean;
+	pagination?: boolean;
+	maxPage?: string;
+	label: LabelType;
+	components: ComponentType[];
+	variables: (
+		| {
+				variableType: 'EXTERNAL';
+				name: string;
+				value: unknown;
+		  }
+		| {
+				variableType: 'COLLECTED';
+				name: string;
+				values: ValuesType | ValuesTypeArray;
+		  }
+		| {
+				variableType: 'CALCULATED';
+				name: string;
+				expression: LabelType;
+				bindingDependencies: string[];
+				inFilter: string;
+		  }
+	)[];
+	suggesters: SuggesterType[];
+	cleaning: {
+		[variableName: string]: {
+			[variableName: string]: string;
+		};
+	};
+	missingBlock: {
+		[variableName: string]: string[];
+	};
+	resizing: {
+		[variableName: string]: {
+			size: string; // VTL Expression
+			variables: string[];
+		};
+	};
+};
