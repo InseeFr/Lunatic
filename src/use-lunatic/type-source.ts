@@ -232,6 +232,26 @@ export type SuggesterType = {
 	version: string;
 };
 
+export type Variable =
+	| {
+			variableType: 'EXTERNAL';
+			name: string;
+			value: unknown;
+	  }
+	| {
+			variableType: 'COLLECTED';
+			name: string;
+			values: ValuesType | ValuesTypeArray;
+	  }
+	| {
+			variableType: 'CALCULATED';
+			name: string;
+			expression: LabelType;
+			bindingDependencies: string[];
+			inFilter: string;
+			shapeFrom: string;
+	  };
+
 export type LunaticSource = {
 	id: string;
 	modele?: string;
@@ -243,25 +263,7 @@ export type LunaticSource = {
 	maxPage?: string;
 	label: LabelType;
 	components: ComponentType[];
-	variables: (
-		| {
-				variableType: 'EXTERNAL';
-				name: string;
-				value: unknown;
-		  }
-		| {
-				variableType: 'COLLECTED';
-				name: string;
-				values: ValuesType | ValuesTypeArray;
-		  }
-		| {
-				variableType: 'CALCULATED';
-				name: string;
-				expression: LabelType;
-				bindingDependencies: string[];
-				inFilter: string;
-		  }
-	)[];
+	variables: Variable[];
 	suggesters: SuggesterType[];
 	cleaning: {
 		[variableName: string]: {

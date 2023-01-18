@@ -83,11 +83,6 @@ function executeExpression(
 	features: string[],
 	logging = loggingDefault
 ): ReactNode {
-	console.log('VTL', {
-		expression,
-		features,
-		v: executeVTL(expression, vtlBindings, logging),
-	});
 	if (features.includes(VTL) && type.includes(VTL)) {
 		const vtl = executeVTL(expression, vtlBindings, logging) as ReactNode;
 		if (features.includes(MD) && type.includes(MD) && typeof vtl === 'string')

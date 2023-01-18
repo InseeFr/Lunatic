@@ -11,19 +11,36 @@ import {
 	X_AXIS,
 	Y_AXIS,
 } from '../../../utils/constants';
+import { Expression, LunaticState, LunaticVariable } from '../../type';
+import { CALCULATED } from '../../../constants';
 
-function validateExpression(expObject) {
-	if (typeof expObject === 'object') {
+export type ExpressionLogger = (
+	expression: string | Expression,
+	bindings: { [variableName: string]: unknown },
+	e: unknown
+) => void;
+type Bindings = { [variableName: string]: unknown };
+
+/**
+ * Check the shape of the expression and convert it into an expression
+ */
+function validateExpression(expObject: unknown): Expression {
+	if (typeof expObject === 'object' && expObject && 'type' in expObject) {
 		const { type } = expObject;
 		if (type === VTL || type === VTL_MD) {
-			return expObject;
+			return expObject as Expression;
 		}
 	}
 	if (typeof expObject === 'string') return { value: expObject, type: VTL };
+
 	console.warn(`Non-VTL compatible expression : ${expObject}`);
+	return { value: '', type: VTL };
 }
 
-function createBindings(variables) {
+/**
+ * Extract values for every variables
+ */
+function createBindings(variables: LunaticState['variables']): Bindings {
 	return Object.entries(variables).reduce(function (
 		bindings,
 		[name, { value }]
@@ -34,14 +51,15 @@ function createBindings(variables) {
 }
 
 /**
- *
- * @param {*} variables
- * @returns
+ * Generates methods to interact with variables
  */
-function createExecuteExpression(variables, features) {
+function createExecuteExpression(
+	variables: LunaticState['variables'],
+	features: string[]
+) {
 	// on aimerait map d'expression, avec les bindings
 	const bindings = createBindings(variables);
-	const tokensMap = new Map();
+	const tokensMap = new Map<Expression | string, string[]>();
 	const collectedUpdated = new Map();
 	const [memoize, getMemoizedValue] = createMemoizer();
 	const [refreshCalculated, setToRefreshCalculated] = createRefreshCalculated({
@@ -51,10 +69,9 @@ function createExecuteExpression(variables, features) {
 	});
 
 	/**
-	 *
-	 * @param {*} name
+	 * Mark all linked variables to be refreshed
 	 */
-	function pushToLazy(name) {
+	function pushToLazy(name: string) {
 		if (name in variables) {
 			const { CalculatedLinked = [] } = variables[name];
 			CalculatedLinked.forEach(function (variable) {
@@ -67,12 +84,9 @@ function createExecuteExpression(variables, features) {
 	}
 
 	/**
-	 *
-	 * @param {*} name
-	 * @param {*} value
+	 * Update the value of a variable
 	 */
-	function updateBindings(name, value) {
-		// update des bindings
+	function updateBindings(name: string, value: unknown) {
 		if (name in bindings) {
 			bindings[name] = value;
 			collectedUpdated.set(name, []);
@@ -81,11 +95,12 @@ function createExecuteExpression(variables, features) {
 	}
 
 	/**
-	 *
-	 * @param {*} variables
-	 * @param {*} iteration
+	 * Update the binding for a loop
 	 */
-	function setLoopBindings(variables, iteration) {
+	function setLoopBindings(
+		variables: LunaticState['variables'],
+		iteration: number
+	) {
 		Object.entries(bindings).forEach(([k, v]) => {
 			const { type, value } = variables[k];
 			if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value)) {
@@ -96,10 +111,9 @@ function createExecuteExpression(variables, features) {
 	}
 
 	/**
-	 *
-	 * @param {*} variables
+	 * Reset the values in a loop
 	 */
-	function resetLoopBindings(variables) {
+	function resetLoopBindings(variables: LunaticState['variables']) {
 		Object.entries(bindings).forEach(([k, v]) => {
 			const { type, value } = variables[k];
 			if (type === COLLECTED && Array.isArray(value) && !Array.isArray(v)) {
@@ -108,7 +122,10 @@ function createExecuteExpression(variables, features) {
 		});
 	}
 
-	function getVariablesAndCach(expression) {
+	/**
+	 * Extract variables from an expression
+	 */
+	function getVariablesAndCach(expression: string | Expression) {
 		if (tokensMap.has(expression)) {
 			return tokensMap.get(expression);
 		}
@@ -117,15 +134,19 @@ function createExecuteExpression(variables, features) {
 		return tokens;
 	}
 
-	/**/
-	function collecteVariables(dependencies) {
+	/**
+	 * Retrieve variable affected by the dependencies
+	 */
+	function collecteVariables(dependencies: string[] | unknown): {
+		[name: string]: LunaticState['variables'];
+	} {
 		if (Array.isArray(dependencies)) {
 			return dependencies.reduce(function (map, name) {
 				if (name in variables) {
 					const data = variables[name];
 					const { variable, type } = data;
 					if (!(name in map)) {
-						if (type === 'CALCULATED') {
+						if (variable.variableType === 'CALCULATED') {
 							const { expression } = variable;
 							const subDependencies = getVariablesAndCach(expression);
 
@@ -147,7 +168,13 @@ function createExecuteExpression(variables, features) {
 		return {};
 	}
 
-	function resolveUseContext(name, { iteration, linksIterations }) {
+	function resolveUseContext(
+		name: string,
+		{
+			iteration,
+			linksIterations,
+		}: { iteration?: number; linksIterations?: number[] }
+	) {
 		const value = bindings[name];
 
 		if ([X_AXIS, Y_AXIS].includes(name) && linksIterations !== undefined) {
@@ -167,7 +194,6 @@ function createExecuteExpression(variables, features) {
 		}
 		if (linksIterations !== undefined) {
 			const [x, y] = linksIterations;
-			// console.log({ name, linksIterations, value });
 			if (Array.isArray(value) && x < value.length) {
 				const sub = value[x];
 				if (Array.isArray(sub) && y < sub.length) {
@@ -180,7 +206,13 @@ function createExecuteExpression(variables, features) {
 		return getVtlCompatibleValue(value);
 	}
 
-	function fillVariablesValues(map, { iteration, linksIterations }) {
+	function fillVariablesValues(
+		map: { [variableName: string]: unknown },
+		{
+			iteration,
+			linksIterations,
+		}: { iteration?: number; linksIterations?: number[] }
+	) {
 		return Object.entries(map).reduce(function (sub, [name, _]) {
 			return {
 				...sub,
@@ -189,27 +221,27 @@ function createExecuteExpression(variables, features) {
 		}, {});
 	}
 
-	/**
-	 *
-	 * @param {*} vtlObject
-	 * @param {*} args
-	 * @returns
-	 */
-	function execute(expObject, args = {}) {
+	function execute(
+		expObject: unknown,
+		args: {
+			iteration?: number;
+			linksIterations?: number[];
+			logging?: ExpressionLogger;
+		} = {}
+	) {
 		const { value: expression, type } = validateExpression(
 			getSafetyExpression(expObject)
 		);
 		const { iteration, linksIterations, logging } = args;
 		const bindingDependencies = getVariablesAndCach(expression);
 
-		function loggingDefault(_, bindings, e) {
+		function loggingDefault(_: unknown, bindings: Bindings, e: unknown) {
 			if (process.env.NODE_ENV === 'development') {
 				console.warn(`VTL error :  ${expression}`, { ...args }, { bindings });
 				console.warn(e);
 			}
 		}
 
-		console.log(bindingDependencies);
 		const vtlBindings = refreshCalculated(
 			fillVariablesValues(collecteVariables(bindingDependencies), {
 				iteration,

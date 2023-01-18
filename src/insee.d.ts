@@ -14,10 +14,10 @@ declare module '@inseefr/vtl-2.0-antlr-tools' {
 }
 
 declare module 'antlr4' {
-	type Stream = {};
-	export default class antlr4 {
-		constructor();
-
-		InputStream(v: string): InputStream;
+	class InputStream {
+		constructor(expression: string);
 	}
+	export default {
+		InputStream: InputStream,
+	};
 }

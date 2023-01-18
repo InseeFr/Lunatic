@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ComponentType } from './type-source';
+import { ComponentType, Variable } from './type-source';
 
 export type LunaticComponent = ComponentType;
 
@@ -29,36 +29,15 @@ export type LunaticError = {
 	typeOfControl: 'CONSISTENCY';
 };
 
-export type VariableDefinition<T = unknown> =
-	| {
-			name: string;
-			variableType: 'COLLECTED' | 'EXTERNAL';
-			values: {
-				COLLECTED: T;
-				EDITED: T;
-				FORCED: T;
-				INPUTED: T;
-				PREVIOUS: T;
-			};
-	  }
-	| {
-			name: string;
-			variableType: 'CALCULATED';
-			// TODO : Explain this
-			inFilter: string;
-			// Expression used to calculate this variable
-			expression: Expression;
-			// List of variable name affecting this variable
-			bindingDependencies?: string[];
-	  };
+export type LunaticVariable = Variable;
 
 export type LunaticState = {
 	variables: {
 		[variableName: string]: {
 			type: VariableType;
 			value: unknown;
-			variable: VariableDefinition<unknown>[];
-			CalculatedLinked?: VariableDefinition<unknown>[];
+			variable: LunaticVariable;
+			CalculatedLinked?: LunaticVariable[];
 		};
 	};
 	pages: {

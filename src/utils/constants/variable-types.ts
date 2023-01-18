@@ -1,1 +1,1 @@
-export const CALCULATED = 'CALCULATED';
+export const CALCULATED = 'CALCULATED' as const;

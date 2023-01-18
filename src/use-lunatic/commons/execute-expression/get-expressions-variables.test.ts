@@ -1,10 +1,13 @@
 import { describe, expect, test } from 'vitest';
 import getExpressionVariables from './get-expressions-variables';
-import { LunaticState } from '../../type';
 
 describe('getExpressionVariables', () => {
-	const cases = [['(READY)', ['READY']]] as const;
-	const declaredVariables: LunaticState['variables'] = {
+	const cases = [
+		['(READY)', ['READY']],
+		[{ value: '(READY)' }, ['READY']],
+		[{}, []],
+	] as const;
+	const declaredVariables = {
 		READY: {
 			type: 'COLLECTED',
 			value: true,
@@ -12,7 +15,7 @@ describe('getExpressionVariables', () => {
 	};
 	for (const [expression, variables] of cases) {
 		test(`it should convert find variables in \`${expression}\``, () => {
-			expect(getExpressionVariables(expression, declaredVariables)).toBe(
+			expect(getExpressionVariables(expression, declaredVariables)).toEqual(
 				variables
 			);
 		});
