@@ -13,6 +13,13 @@
 			"INPUTED": [null],
 			"PREVIOUS": [null],
 			"COLLECTED": ["Fanny", "Ines"]
+		},
+		"AGE": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [15, 15]
 		}
 	}
 }

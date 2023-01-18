@@ -85,8 +85,8 @@
 					"declarationType": "STATEMENT",
 					"position": "BEFORE_QUESTION_TEXT",
 					"label": {
-						"value": "Votre adresse électronique servira à vous envoyer un accusé de réception de votre questionnaire et éventuellement à vous renvoyer un mot de passe en cas de perte. Elle ne sera utilisée qu’à cette seule fin et ne sera ni conservée, ni transmise à un tiers.",
-						"type": "VTL|MD"
+						"value": "\"Votre adresse électronique servira à vous envoyer un accusé de réception de votre questionnaire et éventuellement à vous renvoyer un mot de passe en cas de perte. Elle ne sera utilisée qu’à cette seule fin et ne sera ni conservée, ni transmise à un tiers.\"",
+						"type": "VTL"
 					}
 				}
 			],
@@ -1963,13 +1963,6 @@
 							}
 						}
 					},
-					"bindingDependencies": [
-						"PRENOM",
-						"NOM",
-						"VITICI",
-						"SEXE",
-						"DATENAIS"
-					],
 					"options": [
 						{ "value": "1", "label": { "value": "\"Oui\"", "type": "VTL|MD" } },
 
@@ -2422,7 +2415,7 @@
 
 		{
 			"id": "l4siklno",
-			"componentType": "Loop",
+			"componentType": "Roundabout",
 			"page": "20",
 			"maxPage": "49",
 			"depth": 1,
@@ -12709,7 +12702,27 @@
 					"response": { "name": "VALIDATION" }
 				}
 			],
-			"iterations": { "value": "count(NOM)", "type": "VTL" }
+			"iterations": { "value": "count(NOM)", "type": "VTL" },
+			"locked": false,
+			"expressions": {
+				"unnecessary": {
+					"value": "(AGE < 13) or (VITICI = 2)",
+					"type": "VTL"
+				},
+				"complete": {
+					"value": "not(isnull(BI_LIEUNAIS)) and not(isnull(INAT))",
+					"type": "VTL"
+				},
+				"partial": {
+					"value": "not(isnull(BI_LIEUNAIS)) or not(isnull(INAT))",
+					"type": "VTL"
+				},
+				"label": {
+					"value": "\"Série de question pour \" || PRENOM || \": VITICI = \" || VITICI",
+					"type": "VTL"
+				}
+			},
+			"label": { "value": "\"Libellé du rondpoint\"", "type": "VTL" }
 		},
 
 		{

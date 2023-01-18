@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { createCustomizableLunaticField } from '../commons';
 import RoundaboutLabel from './components/roundabout-label';
@@ -13,6 +13,7 @@ function RoundaboutIteration({
 	index,
 	complete,
 	partial,
+	unnecessary,
 	goToIteration,
 	locked,
 	custom,
@@ -23,6 +24,7 @@ function RoundaboutIteration({
 			<RoundaboutItButton
 				partial={partial}
 				complete={complete}
+				unnecessary={unnecessary}
 				goToIteration={goToIteration}
 				iteration={index}
 				locked={locked}
@@ -40,11 +42,14 @@ function Roundabout({
 	locked,
 	custom,
 }) {
-	const { complete, partial, label: iterationLabels } = expressions;
-	if (
-		iterationLabels !== undefined &&
-		partial !== undefined
-	) {
+	const {
+		complete = new Array(iterations),
+		partial = new Array(iterations),
+		label: iterationLabels = new Array(iterations),
+		unnecessary = new Array(iterations),
+	} = expressions;
+
+	if (iterationLabels !== undefined && partial !== undefined) {
 		const subElements = new Array(iterations).fill(null).map(function (_, i) {
 			return (
 				<RoundaboutIteration
@@ -53,6 +58,7 @@ function Roundabout({
 					label={iterationLabels[i]}
 					complete={complete[i]}
 					partial={partial[i]}
+					unnecessary={unnecessary[i]}
 					goToIteration={goToIteration}
 					locked={locked}
 					custom={custom}
