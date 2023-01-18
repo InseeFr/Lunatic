@@ -12,7 +12,7 @@
 			"page": "1"
 		},
 		{
-			"id": "kze792d8",
+			"id": "how",
 			"componentType": "InputNumber",
 			"mandatory": false,
 			"page": "2",
@@ -27,7 +27,7 @@
 			"response": { "name": "NB_HAB" }
 		},
 		{
-			"id": "kmnolkxb",
+			"id": "loop",
 			"componentType": "Loop",
 			"page": "3",
 			"depth": 1,
@@ -40,7 +40,7 @@
 			},
 			"components": [
 				{
-					"id": "kmno1n7m",
+					"id": "prenom",
 					"componentType": "Input",
 					"mandatory": false,
 					"maxLength": 20,
@@ -53,6 +53,20 @@
 						"type": "VTL"
 					},
 					"response": { "name": "PRENOMS" }
+				},
+				{
+					"id": "age",
+					"componentType": "InputNumber",
+					"maxLength": 3,
+					"label": {
+						"value": "\"Age\"))",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"response": { "name": "AGE" }
 				}
 			]
 		},
@@ -63,14 +77,18 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
 			"label": { "value": "\"Libellé du rondpoint\"", "type": "VTL" },
-			"locked": false,
+			"locked": true,
 			"expressions": {
+				"unnecessary": {
+					"value": "AGE < 13",
+					"type": "VTL"
+				},
 				"complete": {
-					"value": "not(isnull(AGE)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
+					"value": "not(isnull(KNOWREC)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
 					"type": "VTL"
 				},
 				"partial": {
-					"value": "not(isnull(AGE)) or not(isnull(SEXE)) or not(isnull(SOMETHING))",
+					"value": "not(isnull(KNOWREC)) or not(isnull(SEXE)) or not(isnull(SOMETHING))",
 					"type": "VTL"
 				},
 				"label": {
@@ -80,29 +98,23 @@
 			},
 			"components": [
 				{
-					"id": "jsygk7m7",
-					"componentType": "Subsequence",
+					"id": "radio",
+					"componentType": "Radio",
+					"mandatory": false,
 					"page": "4.1",
 					"label": {
-						"value": "\"Première page de questions pour \" || PRENOMS",
+						"value": "\"Connaissez-vous le recensement de la population ?\"",
 						"type": "VTL|MD"
 					},
-					"conditionFilter": { "value": "true", "type": "VTL" }
-				},
-				{
-					"id": "kmno1n7m",
-					"componentType": "InputNumber",
-					"maxLength": 3,
-					"page": "4.1",
-					"label": {
-						"value": "\"Age\"))",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "true",
-						"type": "VTL"
-					},
-					"response": { "name": "AGE" }
+
+					"conditionFilter": { "value": "true", "type": "VTL" },
+
+					"options": [
+						{ "value": "1", "label": { "value": "\"oui\"", "type": "VTL|MD" } },
+
+						{ "value": "2", "label": { "value": "\"non\"", "type": "VTL|MD" } }
+					],
+					"response": { "name": "KNOWREC" }
 				},
 				{
 					"id": "jsygk7m7",
@@ -234,6 +246,17 @@
 			}
 		},
 		{
+			"variableType": "COLLECTED",
+			"name": "KNOWREC",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
 			"variableType": "CALCULATED",
 			"name": "PRENOMREF",
 			"expression": { "value": "first_value(PRENOMS over())", "type": "VTL" },
@@ -244,7 +267,7 @@
 	"resizing": {
 		"NB_HAB": {
 			"size": "NB_HAB",
-			"variables": ["PRENOMS", "AGE", "SEXE", "SOMETHING"]
+			"variables": ["PRENOMS", "AGE", "SEXE", "SOMETHING", "DATNAIS"]
 		}
 	}
 }
