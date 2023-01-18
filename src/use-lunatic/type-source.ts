@@ -56,6 +56,7 @@ export type ConditionFilterType = LabelType;
 export type ControlType = {
 	id: string;
 	criticality: 'INFO' | 'WARN' | 'ERROR';
+	typeOfControl: 'FORMAT' | 'CONSISTENCY';
 	control: LabelType;
 	errorMessage: LabelType;
 	bindingDependencies: string[];

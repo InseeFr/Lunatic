@@ -4,7 +4,9 @@ import { LunaticComponent } from '../type';
 /**
  * Extract the list of components to display for the current page
  */
-function getComponentsFromState(state: LunaticState): LunaticComponent[] {
+function getComponentsFromState(
+	state: Pick<LunaticState, 'pager' | 'pages' | 'isInLoop'>
+): LunaticComponent[] {
 	const { pager, pages, isInLoop } = state;
 	const { page, subPage } = pager;
 	if (page && pages && page in pages) {

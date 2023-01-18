@@ -1,4 +1,7 @@
-function isInSubPage(state) {
+import { LunaticComponent, LunaticState } from '../../type';
+import { ResponseType } from '../../type-source';
+
+function isInSubPage(state: Pick<LunaticState, 'pager'>) {
 	const { pager } = state;
 	const { subPage } = pager;
 
@@ -92,14 +95,18 @@ function checkUseContext(map, state) {
 	return map;
 }
 
-function isSimpleComponent(component) {
-	const { response } = component;
-	return typeof response === 'object';
+/**
+ * The component provide a direct response (not a loop, roster...)
+ */
+function isSimpleComponent(
+	component: LunaticComponent
+): component is LunaticComponent & { response: ResponseType } {
+	return 'response' in component && typeof component.response === 'object';
 }
 
 /* */
 
-function getComponentValue(component, state) {
+function getComponentValue(component, state: LunaticState) {
 	const { variables } = state;
 	/* */
 	const map = checkUseContext(

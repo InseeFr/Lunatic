@@ -1,6 +1,16 @@
 import isPaginatedLoop from './is-paginated-loop';
+import { Expression, LunaticComponent, LunaticState } from '../type';
 
-function extractSubPages(component, previous = []) {
+/**
+ * Extract the list of subpages linked to a component
+ */
+function extractSubPages(
+	component: LunaticComponent,
+	previous: string[] = []
+): string[] {
+	if (!('components' in component)) {
+		return [];
+	}
 	const { components } = component;
 	return components.reduce(function (pages, component) {
 		const { page } = component;
@@ -12,7 +22,7 @@ function extractSubPages(component, previous = []) {
 	}, previous);
 }
 
-function extractLoop(components = []) {
+function extractLoop(components: LunaticComponent[] = []) {
 	return components.reduce(
 		function ({ isLoop, subPages, iterations, loopDependencies }, component) {
 			const currentIsLoop = isPaginatedLoop(component);
@@ -31,11 +41,16 @@ function extractLoop(components = []) {
 			subPages: undefined,
 			iterations: undefined,
 			loopDependencies: undefined,
+		} as {
+			isLoop: boolean;
+			iterations?: Expression;
+			loopDependencies?: string[];
+			subPages?: string[];
 		}
 	);
 }
 
-function checkLoops(pages) {
+function checkLoops(pages: LunaticState['pages']) {
 	return Object.entries(pages).reduce(function (map, current) {
 		const [number, content] = current;
 		if (number !== 'unpaged') {

@@ -121,20 +121,18 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 			) {
 				const { expression, shapeFrom } = calculatedVariable.variable;
 
-				function logging(
-					expression: Expression,
-					bindings: unknown,
-					e: unknown
-				) {
+				const logging: ExpressionLogger = (expression, bindings, e) => {
 					if (process.env.NODE_ENV === 'development') {
 						console.warn(
-							`VTL error when refreshing calculated variable ${name} :  ${expression.value}`,
+							`VTL error when refreshing calculated variable ${name} :  ${
+								typeof expression === 'string' ? expression : expression.value
+							}`,
 							{ bindings }
 						);
 						console.warn(`root expression : ${rootExpression}`);
 						console.warn(e);
 					}
-				}
+				};
 				const value = buildValue({
 					expression,
 					logging,

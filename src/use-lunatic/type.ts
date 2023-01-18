@@ -1,5 +1,11 @@
 import { ReactNode } from 'react';
-import { ComponentType, Variable } from './type-source';
+import {
+	ComponentType,
+	ControlType,
+	LabelType,
+	ResponseType,
+	Variable,
+} from './type-source';
 
 export type LunaticComponent = ComponentType;
 
@@ -11,6 +17,19 @@ export type LunaticData = {
 	};
 };
 
+export type LunaticValues = {
+	[variableName: string]: unknown;
+};
+
+export type LunaticError = Pick<
+	ControlType,
+	'id' | 'criticality' | 'typeOfControl'
+> & {
+	formula: string;
+	labelFormula: string;
+	errorMessage: ReactNode;
+};
+
 export type VariableType = 'COLLECTED' | 'EXTERNAL' | 'CALCULATED';
 export type ExpressionType = 'VTL' | 'VTL|MD';
 export type Expression = {
@@ -19,15 +38,6 @@ export type Expression = {
 	bindingDependencies?: string[];
 };
 export type TODO = unknown; // Temporary type to mark types as unresolved
-
-export type LunaticError = {
-	criticality: 'WARN';
-	errorMessage: ReactNode;
-	formula: string; // VTL Expression
-	id: string;
-	labelFormula: string; // VTL Expression
-	typeOfControl: 'CONSISTENCY';
-};
 
 export type LunaticVariable = Variable;
 
@@ -84,7 +94,7 @@ export type LunaticState = {
 	// TODO : Explain this
 	waiting: boolean;
 	// TODO : Explain this
-	errors?: { [id: string]: LunaticError[] }[];
+	errors?: { [id: string]: LunaticError[] };
 	// TODO : Explain this
 	currentErrors?: { [id: string]: LunaticError[] };
 	// TODO : Explain this
