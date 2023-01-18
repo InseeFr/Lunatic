@@ -2,11 +2,12 @@
  * certaines variables du questionnaire sont de type tableau.
  * Il faut alors vérifier qu'elles le sont véritablement.
  * Il faut aussi vérifier quelles sont de la taille adéquate.
- * @param {*} array
- * @param {*} length
- * @returns le tableau à la taille correcte.
  */
-function resizeArrayVariable(array, length, defaultValue) {
+function resizeArrayVariable(
+	array: unknown,
+	length: number,
+	defaultValue: unknown
+): unknown[] {
 	if (!Array.isArray(array)) {
 		// create the array
 		return new Array(length).fill(defaultValue);
@@ -21,7 +22,6 @@ function resizeArrayVariable(array, length, defaultValue) {
 				return [...step, current];
 			}, []);
 	}
-	// do nothing
 	return array;
 }
 

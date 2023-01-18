@@ -209,6 +209,7 @@ function createExecuteExpression(variables, features) {
 			}
 		}
 
+		console.log(bindingDependencies);
 		const vtlBindings = refreshCalculated(
 			fillVariablesValues(collecteVariables(bindingDependencies), {
 				iteration,

@@ -1,4 +1,4 @@
-export type LabelType = { value: string; type: string };
+export type LabelType = { value: string; type: 'VTL' | 'VTL|MD' };
 
 export type ComponentTypeEnum =
 	| 'Sequence'
@@ -74,7 +74,7 @@ export type Hierarchy = {
 	subSequence: SequenceDescription;
 };
 
-export type ComponentType = {
+export type ComponentTypeBase = {
 	label: LabelType;
 	declarations: DeclarationType[];
 	conditionFilter: ConditionFilterType;
@@ -86,22 +86,23 @@ export type ComponentType = {
 	missingResponse: ResponseType;
 	mandatory?: boolean;
 	page: string;
-} & (
-	| ComponentSequenceType
-	| ComponentSubSequenceType
-	| ComponentRosterForLoopType
-	| ComponentLoopType
-	| ComponentTableType
-	| ComponentNumberType
-	| ComponentDatePickerType
-	| ComponentCheckboxGroupType
-	| ComponentCheckboxBooleanType
-	| ComponentRadioType
-	| ComponentFilterDescriptionType
-	| ComponentSuggesterType
-	| ComponentDropdownType
-	| { componentType: 'Input' | 'CheckboxOne' | 'Textarea' }
-);
+};
+export type ComponentType =
+	| (ComponentTypeBase & ComponentSequenceType)
+	| (ComponentTypeBase & ComponentSubSequenceType)
+	| (ComponentTypeBase & ComponentRosterForLoopType)
+	| (ComponentTypeBase & ComponentLoopType)
+	| (ComponentTypeBase & ComponentTableType)
+	| (ComponentTypeBase & ComponentNumberType)
+	| (ComponentTypeBase & ComponentDatePickerType)
+	| (ComponentTypeBase & ComponentCheckboxGroupType)
+	| (ComponentTypeBase & ComponentCheckboxBooleanType)
+	| (ComponentTypeBase & ComponentRadioType)
+	| (ComponentTypeBase & ComponentFilterDescriptionType)
+	| (ComponentTypeBase & ComponentDropdownType)
+	| (ComponentTypeBase & {
+			componentType: 'Input' | 'CheckboxOne' | 'Textarea';
+	  });
 
 export type ComponentSequenceType = {
 	componentType: 'Sequence';
@@ -204,8 +205,6 @@ export type ComponentDropdownType = {
 	options: { value: string; label: LabelType }[];
 	response: ResponseType;
 };
-
-export type ComponentSuggesterType = {};
 
 export type ComponentFilterDescriptionType = {
 	componentType: 'FilterDescription';

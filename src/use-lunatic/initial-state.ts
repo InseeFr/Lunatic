@@ -1,6 +1,7 @@
 import { COLLECTED, VTL } from '../utils/constants';
+import type { LunaticState } from './type';
 
-const INITIAL_STATE = {
+const INITIAL_STATE: LunaticState = {
 	variables: {}, // map des variables du questionnaires
 	pages: {},
 	isInLoop: false,
@@ -13,8 +14,8 @@ const INITIAL_STATE = {
 	missingBlock: {},
 	resizing: {},
 	pager: {
-		page: undefined,
-		maxPage: undefined,
+		page: '1',
+		maxPage: '1',
 		subPage: undefined,
 		nbSubPages: undefined,
 		iteration: undefined,
@@ -29,6 +30,8 @@ const INITIAL_STATE = {
 	updateBindings: () => {},
 	executeExpression: () => {},
 	handleChange: () => {},
+	resetLoopBindings: () => {},
+	setLoopBindings: () => {},
 	activeControls: false,
 };
 

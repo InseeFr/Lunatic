@@ -1,6 +1,7 @@
 import { getComponentsFromState, executeConditionFilter } from '../../commons';
+import { LunaticComponent, LunaticState } from '../../type';
 
-function isOnEmptyPage(state) {
+function isOnEmptyPage(state: LunaticState): boolean {
 	const { executeExpression, pager } = state;
 	const { iteration } = pager;
 	const components = getComponentsFromState(state);
@@ -17,13 +18,9 @@ function isOnEmptyPage(state) {
 			}
 		}
 		return rest;
-	}, []);
+	}, [] as LunaticComponent[]);
 
-	if (!rest.length) {
-		return true;
-	}
-
-	return false;
+	return !rest.length;
 }
 
 export default isOnEmptyPage;

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import ReactTooltip from 'react-tooltip';
 
-const Link = (props) => {
+type Props = PropsWithChildren<{ href: string; title: string }>;
+
+const Link = (props: Props) => {
 	const {
 		href,
 		children,

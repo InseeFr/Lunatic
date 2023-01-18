@@ -7,6 +7,11 @@ export const interpretAllCalculatedVariables = ({
 	partialVariables,
 	builtVariables,
 }) => {
+	console.log('interpretAllCalculatedVariables', {
+		variables,
+		partialVariables,
+		builtVariables,
+	});
 	return Object.entries(partialVariables || variables).reduce((acc, [k, v]) => {
 		if (k in acc) return acc;
 		const { type } = v;

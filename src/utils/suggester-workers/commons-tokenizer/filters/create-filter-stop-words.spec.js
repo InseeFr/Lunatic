@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import createFilterSW from './create-filter-stop-words';
 
 describe('create-filter-stop-words', function () {

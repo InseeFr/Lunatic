@@ -1,6 +1,9 @@
 import { ReactNode } from 'react';
+import { ComponentType } from './type-source';
 
-export type LunaticModel = {};
+export type LunaticComponent = ComponentType;
+
+export type VTLBindings = { [variableName: string]: unknown };
 
 export type LunaticData = {
 	[key in 'CALCULATED' | 'COLLECTED' | 'EXTENAL']: {
@@ -13,43 +16,9 @@ export type ExpressionType = 'VTL' | 'VTL|MD';
 export type Expression = {
 	value: string;
 	type: ExpressionType;
-	bindingDependencies: string[];
+	bindingDependencies?: string[];
 };
 export type TODO = unknown; // Temporary type to mark types as unresolved
-
-export type ComponentDefinition = {
-	bindingDependencies: string[];
-	// Name of the component to use ex: "Loop"
-	componentType: string;
-	components: ComponentDefinition[];
-	// Expression conditionnant l'affichage de ce composant
-	conditionFilter: Expression;
-	depth: number;
-	hierarchy: {
-		// Sequence linked to this component
-		sequence: {
-			id: string;
-			label: Expression;
-			// Page number ex: "17"
-			page: string;
-		};
-	};
-	id: string;
-	// Number of iterations
-	iterations?: Expression;
-	loopDependencies?: string[];
-	// List of child pages (ex: ['20.1', '20.2']
-	subPages?: string[];
-	/* These properties are linked with InputNumber type */
-	mandatory?: boolean;
-	decimals?: number;
-	max?: number;
-	min?: number;
-	page?: string;
-	response?: { name: string };
-	unit?: string;
-	/* /InputNumber */
-};
 
 export type LunaticError = {
 	criticality: 'WARN';
@@ -93,8 +62,8 @@ export type LunaticState = {
 		};
 	};
 	pages: {
-		[key: number]: {
-			components: ComponentDefinition[];
+		[key: number | string]: {
+			components: ComponentType[];
 			isLoop: boolean;
 			iterations: ExpressionType;
 			// Variables affecting this loop
@@ -146,7 +115,7 @@ export type LunaticState = {
 	// TODO : Explain this
 	resetLoopBindings: (variables: TODO) => void;
 	// TODO : Explain this
-	executeExpression: (expression: TODO, args: TODO) => unknown;
+	executeExpression: <T = unknown>(expression: TODO, args: TODO) => T;
 	// TODO : Explain this
 	updateBindings: (name: TODO, value: TODO) => unknown;
 	// TODO : Explain this

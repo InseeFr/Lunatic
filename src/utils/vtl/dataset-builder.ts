@@ -1,4 +1,7 @@
-function getVtlCompatibleValue(value) {
+/**
+ * Convert the value into something compatible with VTL
+ */
+function getVtlCompatibleValue(value: unknown) {
 	if (value === undefined) {
 		return null;
 	}

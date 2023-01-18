@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import getComponentsFromState from './get-components-from-state';
 import fillComponents from './fill-components';
 

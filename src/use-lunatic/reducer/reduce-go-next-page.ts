@@ -4,8 +4,9 @@ import {
 	createControlsReducer,
 	createModalControlsReducer,
 } from './validate-controls';
+import { ExpressionType, LunaticState } from '../type';
 
-function getNextPage(state) {
+function getNextPage(state: LunaticState) {
 	const { pager } = state;
 	const { page, maxPage } = pager;
 	const p = Number.parseInt(page);
@@ -16,12 +17,12 @@ function getNextPage(state) {
 	return `${maxPage}`;
 }
 
-function reduceNextSubPage(state) {
+function reduceNextSubPage(state: LunaticState) {
 	const { pager } = state;
 	const { subPage } = pager;
 	const newPager = {
 		...pager,
-		subPage: subPage + 1,
+		subPage: (subPage ?? 0) + 1,
 		shallowIteration: undefined,
 	};
 	return {
@@ -31,13 +32,13 @@ function reduceNextSubPage(state) {
 	};
 }
 
-function reduceNextIteration(state) {
+function reduceNextIteration(state: LunaticState) {
 	const { pager } = state;
 	const { iteration } = pager;
 	const newPager = {
 		...pager,
 		subPage: 0,
-		iteration: iteration + 1,
+		iteration: (iteration ?? 0) + 1,
 	};
 	return {
 		...state,
@@ -49,7 +50,7 @@ function reduceNextIteration(state) {
 	};
 }
 
-function reduceNextPage(state, { next }) {
+function reduceNextPage(state: LunaticState, { next }: { next: string }) {
 	const { pager } = state;
 	const newPager = {
 		...pager,
@@ -71,7 +72,14 @@ function reduceNextPage(state, { next }) {
 	};
 }
 
-function reduceStartLoop(state, { next, iterations, loopDependencies }) {
+function reduceStartLoop(
+	state: LunaticState,
+	{
+		next,
+		iterations,
+		loopDependencies,
+	}: { next: string; iterations: ExpressionType; loopDependencies: string[] }
+): LunaticState {
 	const { pages, pager, executeExpression } = state;
 	const { subPages } = pages[next];
 
@@ -94,12 +102,12 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 			modalErrors: undefined,
 		};
 	}
-	/* 
-	
-	
-	
+	/*
+
+
+
 	*/
-	const nbIterations = executeExpression(
+	const nbIterations = executeExpression<number>(
 		getCompatibleVTLExpression(iterations),
 		{
 			bindingDependencies: loopDependencies,
@@ -131,14 +139,14 @@ function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	return state;
 }
 
-function validateChange(state) {
+function validateChange(state: LunaticState): LunaticState {
 	if (isOnEmptyPage(state)) {
 		return reduceGoNextPage(state);
 	}
 	return state;
 }
 
-function reduceGoNextPage(state) {
+function reduceGoNextPage(state: LunaticState): LunaticState {
 	const {
 		pages,
 		isInLoop,
@@ -147,9 +155,14 @@ function reduceGoNextPage(state) {
 		setLoopBindings,
 		resetLoopBindings,
 	} = state;
-	const { iteration, nbIterations, subPage, nbSubPages, page } = pager;
+	const { iteration, nbIterations, subPage, nbSubPages, page } = {
+		nbSubPages: 0,
+		iteration: 0,
+		nbIterations: 0,
+		...pager,
+	};
 
-	if (isInLoop && subPage < nbSubPages - 1) {
+	if (subPage && nbSubPages && isInLoop && subPage < nbSubPages - 1) {
 		return validateChange(reduceNextSubPage(state));
 	}
 	if (isInLoop && subPage === nbSubPages - 1 && iteration < nbIterations - 1) {

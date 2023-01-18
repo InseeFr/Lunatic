@@ -1,6 +1,12 @@
 import { VTL } from '../../utils/constants';
+import { Expression } from '../type';
 
-function getCompatibleVTLExpression(expression) {
+/**
+ * Ensure that an expression is compatible with VTL (convert if necessary)
+ */
+function getCompatibleVTLExpression(
+	expression: Expression | string
+): Expression | undefined {
 	if (typeof expression === 'string') {
 		return { value: expression, type: VTL };
 	}

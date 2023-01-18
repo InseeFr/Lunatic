@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import tokenize from './tokenize';
 
 describe('tokenize', function () {
