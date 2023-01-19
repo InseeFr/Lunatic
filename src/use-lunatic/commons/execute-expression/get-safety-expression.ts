@@ -1,10 +1,10 @@
 import { VTL } from '../../../utils/constants';
-import { Expression } from '../../type';
+import { LunaticExpression } from '../../type';
 
 /**
  * Convert an unknown variable into a valid VTL expression object
  */
-function getSafetyExpression(expression: unknown): Expression {
+function getSafetyExpression(expression: unknown): LunaticExpression {
 	if (typeof expression === 'string') {
 		return { value: expression, type: VTL };
 	}
@@ -15,11 +15,11 @@ function getSafetyExpression(expression: unknown): Expression {
 		'value' in expression &&
 		!('type' in expression)
 	) {
-		return { ...(expression as Expression), type: VTL };
+		return { ...(expression as LunaticExpression), type: VTL };
 	}
 
 	// TODO: ensure we really have an expression here or throw an error
-	return expression as Expression;
+	return expression as LunaticExpression;
 }
 
 export default getSafetyExpression;

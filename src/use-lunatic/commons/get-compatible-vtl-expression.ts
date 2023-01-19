@@ -1,12 +1,12 @@
 import { VTL } from '../../utils/constants';
-import { Expression } from '../type';
+import { LunaticExpression } from '../type';
 
 /**
  * Ensure that an expression is compatible with VTL (convert if necessary)
  */
 function getCompatibleVTLExpression(
-	expression: Expression | string
-): Expression | undefined {
+	expression: LunaticExpression | string
+): LunaticExpression | undefined {
 	if (typeof expression === 'string') {
 		return { value: expression, type: VTL };
 	}

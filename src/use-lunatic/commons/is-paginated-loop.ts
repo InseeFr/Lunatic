@@ -1,8 +1,8 @@
-import { LunaticComponent } from '../type';
+import { LunaticComponentDefinition } from '../type';
 
 function isPaginatedLoop(
-	component: LunaticComponent
-): component is LunaticComponent & {
+	component: LunaticComponentDefinition
+): component is LunaticComponentDefinition & {
 	componentType: 'Loop';
 	paginatedLoop: true;
 } {

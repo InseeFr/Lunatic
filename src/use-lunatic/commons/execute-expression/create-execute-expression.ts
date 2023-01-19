@@ -11,11 +11,11 @@ import {
 	X_AXIS,
 	Y_AXIS,
 } from '../../../utils/constants';
-import { Expression, LunaticState, LunaticVariable } from '../../type';
+import { LunaticExpression, LunaticState, LunaticVariable } from '../../type';
 import { CALCULATED } from '../../../constants';
 
 export type ExpressionLogger = (
-	expression: string | Expression,
+	expression: string | LunaticExpression,
 	bindings: { [variableName: string]: unknown },
 	e: unknown
 ) => void;
@@ -24,11 +24,11 @@ type Bindings = { [variableName: string]: unknown };
 /**
  * Check the shape of the expression and convert it into an expression
  */
-function validateExpression(expObject: unknown): Expression {
+function validateExpression(expObject: unknown): LunaticExpression {
 	if (typeof expObject === 'object' && expObject && 'type' in expObject) {
 		const { type } = expObject;
 		if (type === VTL || type === VTL_MD) {
-			return expObject as Expression;
+			return expObject as LunaticExpression;
 		}
 	}
 	if (typeof expObject === 'string') return { value: expObject, type: VTL };
@@ -59,7 +59,7 @@ function createExecuteExpression(
 ) {
 	// on aimerait map d'expression, avec les bindings
 	const bindings = createBindings(variables);
-	const tokensMap = new Map<Expression | string, string[]>();
+	const tokensMap = new Map<LunaticExpression | string, string[]>();
 	const collectedUpdated = new Map();
 	const [memoize, getMemoizedValue] = createMemoizer();
 	const [refreshCalculated, setToRefreshCalculated] = createRefreshCalculated({
@@ -125,7 +125,7 @@ function createExecuteExpression(
 	/**
 	 * Extract variables from an expression
 	 */
-	function getVariablesAndCach(expression: string | Expression) {
+	function getVariablesAndCach(expression: string | LunaticExpression) {
 		if (tokensMap.has(expression)) {
 			return tokensMap.get(expression);
 		}

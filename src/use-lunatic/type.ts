@@ -1,13 +1,7 @@
 import { ReactNode } from 'react';
-import {
-	ComponentType,
-	ControlType,
-	LabelType,
-	ResponseType,
-	Variable,
-} from './type-source';
+import { ComponentType, ControlType, Variable } from './type-source';
 
-export type LunaticComponent = ComponentType;
+export type LunaticComponentDefinition = ComponentType;
 
 export type VTLBindings = { [variableName: string]: unknown };
 
@@ -32,7 +26,7 @@ export type LunaticError = Pick<
 
 export type VariableType = 'COLLECTED' | 'EXTERNAL' | 'CALCULATED';
 export type ExpressionType = 'VTL' | 'VTL|MD';
-export type Expression = {
+export type LunaticExpression = {
 	value: string;
 	type: ExpressionType;
 	bindingDependencies?: string[];
@@ -90,6 +84,7 @@ export type LunaticState = {
 		iteration?: number;
 		nbIterations?: number;
 		shallowIteration?: TODO;
+		linksIterations?: number[];
 	};
 	// TODO : Explain this
 	waiting: boolean;
@@ -104,11 +99,13 @@ export type LunaticState = {
 	// TODO : Explain this
 	resetLoopBindings: (variables: TODO) => void;
 	// TODO : Explain this
-	executeExpression: <T = unknown>(expression: TODO, args: TODO) => T;
+	executeExpression: <T = unknown>(expression: unknown, args: TODO) => T;
 	// TODO : Explain this
 	updateBindings: (name: TODO, value: TODO) => unknown;
 	// TODO : Explain this
 	setLoopBindings: (variables: TODO, iteration: TODO) => unknown;
 	// TODO : Explain this
 	activeControls: boolean;
+	// TODO : Explain this
+	management?: boolean;
 };

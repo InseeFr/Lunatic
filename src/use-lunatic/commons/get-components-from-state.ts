@@ -1,12 +1,12 @@
 import type { LunaticState } from '../type';
-import { LunaticComponent } from '../type';
+import { LunaticComponentDefinition } from '../type';
 
 /**
  * Extract the list of components to display for the current page
  */
 function getComponentsFromState(
 	state: Pick<LunaticState, 'pager' | 'pages' | 'isInLoop'>
-): LunaticComponent[] {
+): LunaticComponentDefinition[] {
 	const { pager, pages, isInLoop } = state;
 	const { page, subPage } = pager;
 	if (page && pages && page in pages) {
@@ -31,7 +31,7 @@ function getComponentsFromState(
 /**
  * Filter components to show from the list
  */
-function filterComponentsInPage(components: LunaticComponent[]): LunaticComponent[] {
+function filterComponentsInPage(components: LunaticComponentDefinition[]) {
 	if (!Array.isArray(components)) {
 		console.warn('no components!');
 		return []

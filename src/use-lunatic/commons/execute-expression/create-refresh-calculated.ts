@@ -1,5 +1,5 @@
 import { CALCULATED, X_AXIS, Y_AXIS } from '../../../utils/constants';
-import { Expression, LunaticState, LunaticVariable } from '../../type';
+import { LunaticExpression, LunaticState, LunaticVariable } from '../../type';
 import { ExpressionLogger } from './create-execute-expression';
 
 type Args = {
@@ -44,7 +44,7 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 	}
 
 	function buildValue(args: {
-		expression: Expression;
+		expression: LunaticExpression;
 		name: string;
 		iteration?: number;
 		linksIterations?: number[];

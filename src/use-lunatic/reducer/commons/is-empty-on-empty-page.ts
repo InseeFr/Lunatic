@@ -1,5 +1,5 @@
 import { getComponentsFromState, executeConditionFilter } from '../../commons';
-import { LunaticComponent, LunaticState } from '../../type';
+import { LunaticComponentDefinition, LunaticState } from '../../type';
 
 function isOnEmptyPage(state: LunaticState): boolean {
 	const { executeExpression, pager } = state;
@@ -18,7 +18,7 @@ function isOnEmptyPage(state: LunaticState): boolean {
 			}
 		}
 		return rest;
-	}, [] as LunaticComponent[]);
+	}, [] as LunaticComponentDefinition[]);
 
 	return !rest.length;
 }
