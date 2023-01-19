@@ -47,12 +47,12 @@ export type LunaticState = {
 	pages: {
 		[key: number | string]: {
 			components: ComponentType[];
-			isLoop: boolean;
-			iterations: ExpressionType;
+			isLoop?: boolean;
+			iterations?: ExpressionType;
 			// Variables affecting this loop
-			loopDependencies: string[];
+			loopDependencies?: string[];
 			// List of child pages (ex: ['20.1', '20.2']
-			subPages: string[];
+			subPages?: string[];
 		};
 	};
 	isInLoop: boolean;

@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
-function getIDB() {
-	const what = self || window;
+function getIDB(): IDBFactory {
+	const what: any = self || window;
 	return (
 		what.indexedDB ||
 		what.mozIndexedDB ||

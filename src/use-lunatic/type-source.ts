@@ -1,3 +1,9 @@
+/**
+ * Types used for source data (lunatic models and data.json)
+ *
+ * These types should not be used outside of use-lunatic
+ */
+
 export type LabelType = { value: string; type: 'VTL' | 'VTL|MD' };
 
 export type ComponentTypeEnum =
