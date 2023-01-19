@@ -1,8 +1,8 @@
 declare module '@inseefr/trevas' {
-	export function interpret(
+	export type interpret = (
 		expression: string,
 		bindings: { [variableName: string]: unknown }
-	): unknown {}
+	) => unknown;
 }
 
 declare module '@inseefr/vtl-2.0-antlr-tools' {
