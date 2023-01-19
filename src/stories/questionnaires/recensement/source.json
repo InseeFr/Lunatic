@@ -2422,7 +2422,7 @@
 
 		{
 			"id": "l4siklno",
-			"componentType": "Loop",
+			"componentType": "Roundabout",
 			"page": "20",
 			"maxPage": "49",
 			"depth": 1,
@@ -12709,7 +12709,27 @@
 					"response": { "name": "VALIDATION" }
 				}
 			],
-			"iterations": { "value": "count(NOM)", "type": "VTL" }
+			"iterations": { "value": "count(NOM)", "type": "VTL" }, 
+			"locked": false,
+			"expressions": {				
+				"unnecessary": {
+					"value": "(AGE < 13) or ((VITICI = \"2\") or (LIEUXHABETUDES = \"1\") or (LIEUXHABPROF = \"2\") or (LIEUXHABSEP = \"3\") or (LIEUXHABSEP2 = \"2\") or (LIEUXHABAUTRE = \"1\") or (LIEUXHABAUTRE = \"3\"))",
+					"type": "VTL"
+				},
+				"complete": {
+					"value": "not(isnull(BI_LIEUNAIS)) and not(isnull(INAT))",
+					"type": "VTL"
+				},
+				"partial": {
+					"value": "not(isnull(BI_LIEUNAIS)) or not(isnull(INAT))",
+					"type": "VTL"
+				},
+				"label": {
+					"value": "\"Série de question pour \" || PRENOM || \": VITICI = \" || VITICI",
+					"type": "VTL"
+				}
+			},
+			"label": { "value": "\"Libellé du rondpoint\"", "type": "VTL" }
 		},
 
 		{
