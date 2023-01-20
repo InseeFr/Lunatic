@@ -1,10 +1,16 @@
-import React, { ComponentProps, PropsWithChildren, ReactNode } from 'react';
+import React, {
+	ComponentProps,
+	ComponentPropsWithoutRef,
+	FunctionComponent,
+	PropsWithChildren,
+	ReactNode,
+} from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from './link';
 
 const renderers = (otherProps: {
 	logFunction: typeof DEFAULT_LOG_FUNCTION;
-}) => {
+}): Record<string, FunctionComponent<any>> => {
 	return {
 		p: (props: PropsWithChildren) => (
 			<p style={{ margin: '0' }}>{props.children}</p>

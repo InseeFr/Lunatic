@@ -1,5 +1,5 @@
 declare module '@inseefr/trevas' {
-	export type interpret = (
+	export const interpret: (
 		expression: string,
 		bindings: { [variableName: string]: unknown }
 	) => unknown;

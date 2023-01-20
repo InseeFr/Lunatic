@@ -48,6 +48,13 @@ export type ActionInit = {
 	};
 };
 
+export type ActionOnSetWaiting = {
+	type: ActionKind.ON_SET_WAITING;
+	payload: {
+		status: boolean;
+	};
+};
+
 export type Action =
 	| {
 			type: ActionKind.GO_NEXT_PAGE;
@@ -60,12 +67,7 @@ export type Action =
 	| ActionGoToPage
 	| ActionInit
 	| ActionHandleChange
-	| {
-			type: ActionKind.ON_SET_WAITING;
-			payload: {
-				status: unknown;
-			};
-	  };
+	| ActionOnSetWaiting;
 
 export type PayloadForAction<T extends Action['type']> = (Action & {
 	type: T;
@@ -99,7 +101,7 @@ export const handleChange = (
 		payload: { response, value, args },
 	} as const);
 
-export const onSetWaiting = (status: unknown): Action =>
+export const onSetWaiting = (status: boolean): Action =>
 	({
 		type: ActionKind.ON_SET_WAITING,
 		payload: { status },

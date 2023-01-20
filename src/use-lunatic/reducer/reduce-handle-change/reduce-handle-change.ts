@@ -8,6 +8,7 @@ import compose from '../../commons/compose';
 import { createControlsReducer } from '../validate-controls';
 import { ActionHandleChange } from '../../actions';
 import { LunaticState } from '../../type';
+import { toNumber } from '../../../utils/to-number';
 
 function isOnSubPage(
 	pager: LunaticState['pager']
@@ -74,7 +75,10 @@ function updateVariables(
 			return {
 				...state,
 				variables: variablesNext,
-				pager: { ...pager, shallowIteration },
+				pager: {
+					...pager,
+					shallowIteration: toNumber(shallowIteration) ?? undefined,
+				},
 			};
 		return { ...state, variables: variablesNext };
 	}

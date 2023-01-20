@@ -7,7 +7,9 @@ import {
 } from './type-source';
 import { ExpressionLogger } from './commons/execute-expression/create-execute-expression';
 
-export type LunaticComponentDefinition = ComponentType;
+export type LunaticComponentDefinition<
+	T extends ComponentType['componentType'] = ComponentType['componentType']
+> = ComponentType & { componentType: T };
 export type LunaticControl = ControlType;
 
 export type VTLBindings = { [variableName: string]: unknown };
@@ -64,15 +66,23 @@ export type LunaticState = {
 		[variableName: string]: LunaticStateVariable;
 	};
 	pages: {
-		[key: number | string]: {
-			components: ComponentType[];
-			isLoop?: boolean;
-			iterations?: ExpressionType;
-			// Variables affecting this loop
-			loopDependencies?: string[];
-			// List of child pages (ex: ['20.1', '20.2']
-			subPages?: string[];
-		};
+		[key: number | string]:
+			| {
+					components: ComponentType[];
+					isLoop: false;
+					iterations?: undefined;
+					loopDependencies?: undefined;
+					subPages?: undefined;
+			  }
+			| {
+					components: ComponentType[];
+					isLoop: true;
+					iterations: ExpressionType;
+					// Variables affecting this loop
+					loopDependencies: string[];
+					// List of child pages (ex: ['20.1', '20.2']
+					subPages: string[];
+			  };
 	};
 	isInLoop: boolean;
 	isFirstPage: boolean;
@@ -104,7 +114,7 @@ export type LunaticState = {
 		// Iteration index (starting at 0)
 		iteration?: number;
 		nbIterations?: number;
-		shallowIteration?: TODO;
+		shallowIteration?: number;
 		linksIterations?: number[];
 	};
 	// TODO : Explain this
@@ -124,9 +134,9 @@ export type LunaticState = {
 	// TODO : Explain this
 	resetLoopBindings: (variables: Record<string, LunaticStateVariable>) => void;
 	// Run and expression using the value from the state
-	executeExpression: <T = unknown>(
+	executeExpression: <T extends unknown = unknown>(
 		expression: unknown,
-		args: {
+		args?: {
 			iteration?: number;
 			linksIterations?: number[];
 			logging?: ExpressionLogger;

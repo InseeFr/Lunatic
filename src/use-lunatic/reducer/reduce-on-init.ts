@@ -4,7 +4,12 @@ import {
 	createMapPages,
 	isFirstLastPage,
 } from '../commons';
-import { LunaticData, LunaticState, LunaticVariable } from '../type';
+import {
+	LunaticData,
+	LunaticState,
+	LunaticStateVariable,
+	LunaticVariable,
+} from '../type';
 import { ActionInit } from '../actions';
 import { LunaticSource } from '../type-source';
 
@@ -78,9 +83,15 @@ function appendToArrayMap(
 
 function appendToObjectMap(
 	map: LunaticState['variables'],
-	key: string,
-	object: LunaticState['variables'][string]
-) {
+	variable: LunaticVariable,
+	value: unknown
+): LunaticState['variables'] {
+	const key = variable.name;
+	const object = {
+		variable,
+		value,
+		type: variable.variableType,
+	} as LunaticStateVariable;
 	if (key in map) {
 		return { ...map, [key]: { ...map[key], ...object } };
 	}
@@ -94,15 +105,11 @@ function createVariables(source: LunaticSource, data: LunaticData) {
 	const { variables = [] } = source;
 	const [mapVariablesTypes, mapVariables] = variables.reduce(
 		function ([mapType, mapVar], variable) {
-			const { variableType: type, name } = variable;
+			const { variableType: type } = variable;
 
 			return [
 				appendToArrayMap(mapType, type, variable),
-				appendToObjectMap(mapVar, name, {
-					variable,
-					type,
-					value: getInitialValue(variable, data),
-				}),
+				appendToObjectMap(mapVar, variable, getInitialValue(variable, data)),
 			];
 		},
 		[{ EXTERNAL: [], COLLECTED: [], CALCULATED: [] }, {}] as [

@@ -11,7 +11,7 @@ function getComponentsFromState(
 	const { page, subPage } = pager;
 	if (page && pages && page in pages) {
 		const current = pages[page];
-		if (isInLoop) {
+		if (isInLoop && current.subPages) {
 			const { subPages } = current;
 			const stepName = subPages[subPage ?? '0'];
 			if (stepName in pages) {

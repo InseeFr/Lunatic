@@ -4,6 +4,7 @@ import * as actions from './actions';
 import reducer from './reducer';
 import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 import { COLLECTED } from '../utils/constants';
+// @ts-ignore
 import { loadSuggesters } from '../utils/store-tools/auto-load';
 import { getQuestionnaireData } from './commons/get-data';
 import { LunaticData, LunaticState } from './type';
@@ -45,6 +46,7 @@ function useLunatic(
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+	console.log(state);
 	const { pager, waiting, modalErrors, errors, currentErrors } = state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;

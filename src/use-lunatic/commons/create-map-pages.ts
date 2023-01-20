@@ -26,7 +26,10 @@ function mergeComponent(
 			[page]: { ...current, components: [...components, component] },
 		};
 	}
-	return { ...map, [page]: { components: [component] } };
+	return {
+		...map,
+		[page]: { components: [component] },
+	} as LunaticState['pages'];
 }
 
 /**
@@ -53,7 +56,7 @@ function createPages(questionnaire: LunaticSource): LunaticState['pages'] {
 	const { components } = questionnaire;
 	// If we have no page, create one with all the components
 	if (isUnpaginated(questionnaire)) {
-		return { '1': { components } };
+		return { '1': { components: components, isLoop: false } };
 	}
 	return components.reduce(function (current, component) {
 		if (isPaginatedLoop(component)) {

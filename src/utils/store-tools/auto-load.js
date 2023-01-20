@@ -9,45 +9,32 @@ const workerPath =
 	process.env.REACT_APP_LUNATIC_LOADER_WORKER_PATH ||
 	'workers/lunatic-loader-worker-0.1.0.js';
 
-type SuggesterOptions = {
-	version?: string;
-	fields?: string[];
-	stopWords: string[];
-	url: string;
+export const loadSuggesters = (suggesterFetcher) => async (suggesters) => {
+	Object.entries(suggesters).forEach(async ([name, attrs]) => {
+		const { version } = attrs;
+		const db = await openStorage(name, version);
+		if (db) {
+			await cleanStorage(db);
+			await cleanInfoStorage(db);
+			await updateStoreInfo(db, attrs);
+		}
+	});
+	Object.entries(suggesters).forEach(([name, attrs]) => {
+		const { url, version, fields, stopWords } = attrs;
+		const f = suggesterFetcher || fetch;
+		f(url).then(async (res) => {
+			const data = await res.json();
+			const [launch, terminate] = task({ name, fields, stopWords }, version);
+			await launch(data);
+			terminate();
+		});
+	});
 };
-
-export const loadSuggesters =
-	(suggesterFetcher?: typeof fetch) =>
-	async (suggesters: Record<string, SuggesterOptions>) => {
-		Object.entries(suggesters).forEach(async ([name, attrs]) => {
-			const { version } = attrs;
-			const db = await openStorage(name, version);
-			if (db) {
-				await cleanStorage(db);
-				await cleanInfoStorage(db);
-				await updateStoreInfo(db, attrs);
-			}
-		});
-		Object.entries(suggesters).forEach(([name, attrs]) => {
-			const { url, version, fields, stopWords } = attrs;
-			const f = suggesterFetcher || fetch;
-			f(url).then(async (res) => {
-				const data = await res.json();
-				const [launch, terminate] = task({ name, fields, stopWords }, version);
-				await launch(data);
-				terminate();
-			});
-		});
-	};
 
 /**
  * Only with Worker
  */
-function task(
-	{ name, fields, stopWords }: any,
-	version: string,
-	log = () => null
-) {
+function task({ name, fields, stopWords }, version, log = () => null) {
 	const worker = createWorker(workerPath);
 	let start = false;
 	let stop = false;

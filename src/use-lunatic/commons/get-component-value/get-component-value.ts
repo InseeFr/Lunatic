@@ -1,6 +1,8 @@
 import { LunaticComponentDefinition, LunaticState } from '../../type';
 import { ResponseType } from '../../type-source';
 
+type AccumulatorMap = Record<string, unknown>;
+
 function isInSubPage(state: Pick<LunaticState, 'pager'>) {
 	const { pager } = state;
 	const { subPage } = pager;
@@ -8,8 +10,18 @@ function isInSubPage(state: Pick<LunaticState, 'pager'>) {
 	return subPage !== undefined;
 }
 
-/* */
-function mergeResponse({ map, response, variables }) {
+/**
+ * Add the value from variable indexed by response name
+ */
+function mergeResponse({
+	map,
+	response,
+	variables,
+}: {
+	map: AccumulatorMap;
+	response: { name: string };
+	variables: LunaticState['variables'];
+}) {
 	const { name } = response;
 	if (name in variables) {
 		return { ...map, [name]: variables[name].value };
@@ -17,7 +29,15 @@ function mergeResponse({ map, response, variables }) {
 	return map;
 }
 
-function collecteArrayResponses({ components, variables, map = {} }) {
+function collecteArrayResponses({
+	components,
+	variables,
+	map = {},
+}: {
+	components: LunaticComponentDefinition[];
+	variables: LunaticState['variables'];
+	map: AccumulatorMap;
+}): AccumulatorMap {
 	return components.reduce(function (sub, component) {
 		return collecteComponentResponse({
 			component,
@@ -27,7 +47,15 @@ function collecteArrayResponses({ components, variables, map = {} }) {
 	}, map);
 }
 
-function collectCell({ cell, variables, map }) {
+function collectCell({
+	cell,
+	variables,
+	map,
+}: {
+	cell: LunaticComponentDefinition[];
+	variables: LunaticState['variables'];
+	map: AccumulatorMap;
+}): AccumulatorMap {
 	const [component, ...rest] = cell;
 	const { componentType } = component;
 	let next = map;
@@ -44,7 +72,15 @@ function collectCell({ cell, variables, map }) {
 	return next;
 }
 
-function collectTableResponse({ map, body, variables }) {
+function collectTableResponse({
+	map,
+	body,
+	variables,
+}: {
+	map: AccumulatorMap;
+	body: LunaticComponentDefinition<'RosterForLoop'>['body'];
+	variables: LunaticState['variables'];
+}) {
 	if (Array.isArray(body)) {
 		return body.reduce(function (sub, cell) {
 			if (Array.isArray(cell)) {
@@ -56,39 +92,54 @@ function collectTableResponse({ map, body, variables }) {
 	return map;
 }
 
-function collecteComponentResponse({ component, variables, map = {} }) {
-	const { components, response, responses, body } = component;
-
-	if (body) {
-		return collectTableResponse({ map, body, variables });
+function collecteComponentResponse({
+	component,
+	variables,
+	map = {},
+}: {
+	component: LunaticComponentDefinition;
+	variables: LunaticState['variables'];
+	map?: AccumulatorMap;
+}) {
+	if ('body' in component && component.body) {
+		return collectTableResponse({ map, body: component.body, variables });
 	}
-	if (response) {
-		return mergeResponse({ map, response, variables });
+	if ('response' in component) {
+		return mergeResponse({ map, response: component.response, variables });
 	}
-	if (components) {
-		return collecteArrayResponses({ components, variables, map });
+	if ('components' in component) {
+		return collecteArrayResponses({
+			components: component.components,
+			variables,
+			map,
+		});
 	}
-	if (responses) {
-		return collecteArrayResponses({ components: responses, variables, map });
+	if ('responses' in component) {
+		// TODO : Understand this cause types doesn't match
+		return collecteArrayResponses({
+			components: component.responses as LunaticComponentDefinition[],
+			variables,
+			map,
+		});
 	}
 	return map;
 }
 
 /* */
 
-function checkArrayForSubPage(map, state) {
+function checkArrayForSubPage(map: AccumulatorMap, state: LunaticState) {
 	const { pager } = state;
 	const { iteration } = pager;
 
 	return Object.entries(map).reduce(function (sub, [name, value]) {
-		if (value && Array.isArray(value)) {
+		if (value && Array.isArray(value) && iteration) {
 			return { ...sub, [name]: value[iteration] };
 		}
 		return { ...sub, [name]: value };
 	}, {});
 }
 
-function checkUseContext(map, state) {
+function checkUseContext(map: AccumulatorMap, state: LunaticState) {
 	if (isInSubPage(state)) {
 		return checkArrayForSubPage(map, state);
 	}
@@ -104,11 +155,14 @@ function isSimpleComponent(
 	return 'response' in component && typeof component.response === 'object';
 }
 
-/* */
-
-function getComponentValue(component, state: LunaticState) {
+/**
+ * Get the value from the component
+ */
+function getComponentValue(
+	component: LunaticComponentDefinition,
+	state: LunaticState
+): unknown {
 	const { variables } = state;
-	/* */
 	const map = checkUseContext(
 		collecteComponentResponse({ component, variables }),
 		state

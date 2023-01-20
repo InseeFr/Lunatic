@@ -1,1 +1,1 @@
-export { default } from './md-label.tsx';
+export { default } from './md-label';

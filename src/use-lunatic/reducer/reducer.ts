@@ -8,12 +8,11 @@ import { LunaticState } from '../type';
 import { Action, ActionKind } from '../actions';
 
 function reducer(state: LunaticState, action: Action): LunaticState {
-	const { type } = action;
-	switch (type) {
+	switch (action.type) {
 		case ActionKind.ON_INIT:
 			return reduceOnInit(state, action);
 		case ActionKind.GO_PREVIOUS_PAGE:
-			return reduceGoPreviousPage(state, action);
+			return reduceGoPreviousPage(state);
 		case ActionKind.GO_NEXT_PAGE:
 			return reduceGoNextPage(state, action);
 		case ActionKind.GO_TO_PAGE:

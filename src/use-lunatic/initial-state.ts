@@ -28,7 +28,7 @@ const INITIAL_STATE: LunaticState = {
 	modalErrors: undefined,
 	/* fonctionnalités vtl & md */
 	updateBindings: () => {},
-	executeExpression: () => {},
+	executeExpression: (() => {}) as LunaticState['executeExpression'],
 	handleChange: () => {},
 	resetLoopBindings: () => {},
 	setLoopBindings: () => {},

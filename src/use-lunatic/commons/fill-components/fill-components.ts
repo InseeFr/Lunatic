@@ -65,7 +65,7 @@ const fillComponent = compose(
 function fillComponents(
 	components: LunaticComponentDefinition[],
 	state: LunaticState
-) {
+): LunaticComponentProps[] {
 	return components.map(function (component) {
 		return fillComponent(component, state);
 	});
