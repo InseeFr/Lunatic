@@ -12,11 +12,7 @@ import { LunaticSource } from './type-source';
 const DEFAULT_DATA = {} as LunaticData;
 const DEFAULT_FEATURES = ['VTL', 'MD'];
 const DEFAULT_PREFERENCES = [COLLECTED];
-const nothing: (
-	response: { name: string },
-	value: unknown,
-	args: unknown
-) => void = () => {};
+const nothing: LunaticState['handleChange'] = () => {};
 
 function useLunatic(
 	source: LunaticSource,
@@ -32,10 +28,23 @@ function useLunatic(
 		suggesters: suggestersConfiguration,
 		suggesterFetcher,
 		activeControls = false,
+	}: {
+		features: string[];
+		preferences: string[];
+		savingType: string;
+		onChange: typeof nothing;
+		management: boolean;
+		initialPage: string;
+		autoSuggesterLoading: boolean;
+		suggesters?: Record<
+			string,
+			{ version?: string; fields?: string[]; stopWords: string[]; url: string }
+		>;
+		suggesterFetcher?: typeof fetch;
+		activeControls: boolean;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	console.log('useLunatic', state);
 	const { pager, waiting, modalErrors, errors, currentErrors } = state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
@@ -58,7 +67,7 @@ function useLunatic(
 							stopWords: suggestersConfiguration[name].stopWords,
 						},
 					};
-				}, {});
+				}, {} as Record<string, { url: string; stopWords: string[] }>);
 				dispatch(actions.onSetWaiting(true));
 				await loadSuggesters(suggesterFetcher)(s);
 				dispatch(actions.onSetWaiting(false));
@@ -120,15 +129,15 @@ function useLunatic(
 		},
 		[components]
 	);
-	const handleChange = useCallback(
-		function (response: { name: string }, value: unknown, args: unknown) {
+	const handleChange = useCallback<LunaticState['handleChange']>(
+		(response, value, args) => {
 			dispatch(actions.handleChange(response, value, args));
 			onChange(response, value, args);
 		},
 		[dispatch, onChange]
 	);
 
-	const getData = (withRefreshedCalculated) => {
+	const getData = (withRefreshedCalculated: boolean) => {
 		const { variables } = state;
 		return getQuestionnaireData({ variables, withRefreshedCalculated });
 	};

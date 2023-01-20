@@ -1,21 +1,20 @@
-import { executeVtlExpression } from '../commons/execute-expression/execute-expression';
+import { executeVtlExpression } from './execute-expression/execute-expression';
 import getVtlCompatibleValue from '../../utils/vtl';
 import { CALCULATED } from '../../constants';
+import { LunaticState, LunaticValues } from '../type';
 
 export const interpretAllCalculatedVariables = ({
 	variables,
 	partialVariables,
 	builtVariables,
+}: {
+	variables: LunaticState['variables'];
+	builtVariables: LunaticValues;
+	partialVariables?: LunaticState['variables'];
 }) => {
-	console.log('interpretAllCalculatedVariables', {
-		variables,
-		partialVariables,
-		builtVariables,
-	});
 	return Object.entries(partialVariables || variables).reduce((acc, [k, v]) => {
 		if (k in acc) return acc;
-		const { type } = v;
-		if (type === CALCULATED) {
+		if (v.type === CALCULATED) {
 			const {
 				variable: {
 					expression: { value: expression },
@@ -28,8 +27,9 @@ export const interpretAllCalculatedVariables = ({
 				bindingDependencies,
 				variables,
 			});
-			if (shapeFrom) {
-				const result = acc[shapeFrom].map((_, index) => {
+			const shapeTarget = acc[shapeFrom];
+			if (shapeFrom && Array.isArray(shapeTarget)) {
+				const result = shapeTarget.map((_, index) => {
 					const scopedBindings = buildScopedBindings({ bindings, index });
 					return executeVtlExpression(expression, scopedBindings);
 				});
@@ -46,7 +46,18 @@ export const interpretAllCalculatedVariables = ({
 	}, builtVariables);
 };
 
-const buildBindings = ({ builtVariables, bindingDependencies, variables }) =>
+/**
+ * Build a map of values for each variables
+ */
+const buildBindings = ({
+	builtVariables,
+	bindingDependencies,
+	variables,
+}: {
+	variables: LunaticState['variables'];
+	builtVariables: LunaticValues;
+	bindingDependencies: string[];
+}): LunaticValues =>
 	bindingDependencies.reduce((acc, b) => {
 		if (builtVariables[b] === undefined) {
 			const unresolvedVariable = { [b]: variables[b] };
@@ -60,14 +71,20 @@ const buildBindings = ({ builtVariables, bindingDependencies, variables }) =>
 		return { ...acc, [b]: builtVariables[b] };
 	}, {});
 
-const buildScopedBindings = ({ bindings, index }) =>
+const buildScopedBindings = ({
+	bindings,
+	index,
+}: {
+	bindings: LunaticValues;
+	index: number;
+}) =>
 	Object.entries(bindings).reduce((acc, [k, v]) => {
 		if (Array.isArray(v))
 			return { ...acc, [k]: v[index] !== undefined ? v[index] : null };
 		return { ...acc, [k]: v };
 	}, {});
 
-const buildVectorialBindings = ({ bindings }) =>
+const buildVectorialBindings = ({ bindings }: { bindings: LunaticValues }) =>
 	Object.entries(bindings).reduce((acc, [k, v]) => {
 		if (Array.isArray(v)) return { ...acc, [k]: getVtlCompatibleValue(v) };
 		return { ...acc, [k]: v };

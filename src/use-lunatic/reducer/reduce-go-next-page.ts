@@ -78,7 +78,7 @@ function reduceStartLoop(
 		next,
 		iterations,
 		loopDependencies,
-	}: { next: string; iterations: ExpressionType; loopDependencies: string[] }
+	}: { next: string; iterations: ExpressionType; loopDependencies?: string[] }
 ): LunaticState {
 	const { pages, pager, executeExpression } = state;
 	const { subPages } = pages[next];
@@ -187,7 +187,7 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 		return state;
 	}
 
-	if (isLoop) {
+	if (isLoop && iterations) {
 		return validateChange(
 			reduceStartLoop(state, { next, iterations, loopDependencies })
 		);

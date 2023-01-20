@@ -1,6 +1,10 @@
 import { resolveComponentControls } from './validation-utils';
 import { getComponentsFromState, getPageTag } from '../../commons';
-import { LunaticComponentDefinition, LunaticState } from '../../type';
+import {
+	LunaticComponentDefinition,
+	LunaticError,
+	LunaticState,
+} from '../../type';
 import { Action } from '../../actions';
 import { isLoopComponent } from '../commons';
 
@@ -10,7 +14,7 @@ import { isLoopComponent } from '../commons';
 function validateComponents(
 	state: LunaticState,
 	components: LunaticComponentDefinition[]
-): LunaticState['errors'] {
+): Record<string, LunaticError[]> {
 	const { pager } = state;
 	return components.reduce(function (errors, component) {
 		const { controls, componentType, id } = component;
@@ -42,11 +46,11 @@ function validateComponents(
 /**
  * Wrap the reducer to add controls (errors / currentErrors)
  */
-function createControlsReducer(
-	reducer: (state: LunaticState, action: Action) => LunaticState
+function createControlsReducer<T extends Action>(
+	reducer: (state: LunaticState, action: T) => LunaticState
 ) {
 	// Nothing to init
-	return function (state: LunaticState, action: Action): LunaticState {
+	return function (state: LunaticState, action: T): LunaticState {
 		const { activeControls } = state;
 		const updatedState = reducer(state, action);
 		if (
@@ -57,12 +61,12 @@ function createControlsReducer(
 			return { ...updatedState, currentErrors: undefined };
 		const components = getComponentsFromState(updatedState);
 		const { pager } = updatedState;
-		const { errors = {} } = state;
+		const { errors } = state;
 		const pageTag = getPageTag(pager);
 		const e = {
 			...errors,
 			[pageTag]: validateComponents(updatedState, components),
-		} as LunaticState['errors'];
+		} satisfies LunaticState['errors'];
 		return {
 			...updatedState,
 			errors: e,

@@ -3,7 +3,7 @@ import { LunaticState } from '../../type';
 
 function validateLoopConditionFilter(
 	state: LunaticState,
-	{ next, iteration }: { next: string; iteration: number }
+	{ next, iteration }: { next: string; iteration?: number }
 ): boolean {
 	const { pages, executeExpression } = state;
 	const { components } = pages[next];

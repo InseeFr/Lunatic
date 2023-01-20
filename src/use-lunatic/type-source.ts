@@ -21,6 +21,7 @@ export type ComponentTypeEnum =
 	| 'Dropdown'
 	| 'Textarea'
 	| 'FilterDescription'
+	| 'PairwiseLinks'
 	| 'Suggester';
 
 export type ValuesType<T = unknown> = {
@@ -106,6 +107,7 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentRadioType)
 	| (ComponentTypeBase & ComponentFilterDescriptionType)
 	| (ComponentTypeBase & ComponentDropdownType)
+	| (ComponentTypeBase & ComponentPairWiseLinksType)
 	| (ComponentTypeBase & {
 			componentType: 'Input' | 'CheckboxOne' | 'Textarea';
 	  });
@@ -276,7 +278,7 @@ export type LunaticSource = {
 	generatingDate?: string;
 	missing?: boolean;
 	pagination?: boolean;
-	maxPage?: string;
+	maxPage: string;
 	label: LabelType;
 	components: ComponentType[];
 	variables: Variable[];

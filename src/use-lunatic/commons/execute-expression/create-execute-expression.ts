@@ -221,14 +221,10 @@ function createExecuteExpression(
 		}, {});
 	}
 
-	function execute(
+	function execute<T = unknown>(
 		expObject: unknown,
-		args: {
-			iteration?: number;
-			linksIterations?: number[];
-			logging?: ExpressionLogger;
-		} = {}
-	) {
+		args: Parameters<LunaticState['executeExpression']>[1] = {}
+	): T {
 		const { value: expression, type } = validateExpression(
 			getSafetyExpression(expObject)
 		);
@@ -260,12 +256,12 @@ function createExecuteExpression(
 			);
 			memoize(expression, vtlBindings, result);
 
-			return result;
+			return result as T; // We need to force this type to match with the signature
 		}
 		return memoized;
 	}
 
-	return [execute, updateBindings, setLoopBindings, resetLoopBindings];
+	return [execute, updateBindings, setLoopBindings, resetLoopBindings] as const;
 }
 
 export default createExecuteExpression;

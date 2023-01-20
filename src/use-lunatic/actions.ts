@@ -30,33 +30,35 @@ export type ActionHandleChange = {
 
 export type ActionGoToPage = {
 	type: ActionKind.GO_TO_PAGE;
-	payload: { page: unknown };
+	payload: { page: string };
+};
+
+export type ActionInit = {
+	type: ActionKind.ON_INIT;
+	payload: {
+		data: LunaticData;
+		source: LunaticSource;
+		initialPage: string;
+		features: LunaticState['features'];
+		preferences: LunaticState['preferences'];
+		savingType: LunaticState['savingType'];
+		management: boolean;
+		handleChange: LunaticState['handleChange'];
+		activeControls: boolean;
+	};
 };
 
 export type Action =
 	| {
 			type: ActionKind.GO_NEXT_PAGE;
-			payload: { block: unknown };
+			payload: { block?: unknown };
 	  }
 	| {
 			type: ActionKind.GO_PREVIOUS_PAGE;
 			payload: {};
 	  }
 	| ActionGoToPage
-	| {
-			type: ActionKind.ON_INIT;
-			payload: {
-				data: LunaticData;
-				source: LunaticSource;
-				initialPage: string;
-				features: LunaticState['features'];
-				preferences: LunaticState['preferences'];
-				savingType: LunaticState['savingType'];
-				management: boolean;
-				handleChange: LunaticState['handleChange'];
-				activeControls: boolean;
-			};
-	  }
+	| ActionInit
 	| ActionHandleChange
 	| {
 			type: ActionKind.ON_SET_WAITING;

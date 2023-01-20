@@ -1,27 +1,40 @@
 import {
-	createMapPages,
 	checkLoops,
-	isFirstLastPage,
 	createExecuteExpression,
+	createMapPages,
+	isFirstLastPage,
 } from '../commons';
+import { LunaticData, LunaticState, LunaticVariable } from '../type';
+import { ActionInit } from '../actions';
+import { LunaticSource } from '../type-source';
 
-/* à bouger d'ici */
-
-function getInitalValueFromCollected(variable, data = {}) {
-	const { values, name } = variable;
+/**
+ * Extract value from colllected data
+ */
+function getInitalValueFromCollected(
+	variable: LunaticVariable,
+	data = {} as LunaticData['COLLECTED']
+): unknown {
+	const { name } = variable;
 	let fromData;
 	if (name in data) {
 		const { COLLECTED, FORCED } = data[name];
 		fromData = COLLECTED || FORCED;
 	}
-	if (values) {
-		const { COLLECTED, FORCED } = values;
+	if ('values' in variable && variable.values) {
+		const { COLLECTED, FORCED } = variable.values;
 		return fromData || FORCED || COLLECTED;
 	}
 	return undefined;
 }
 
-function getInitialValueFromExternal(variable, data = {}) {
+/**
+ * Extract value from an external data
+ */
+function getInitialValueFromExternal(
+	variable: LunaticVariable,
+	data = {} as LunaticData['EXTERNAL']
+) {
 	const { name } = variable;
 	if (name in data) {
 		return data[name];
@@ -29,10 +42,12 @@ function getInitialValueFromExternal(variable, data = {}) {
 	return undefined;
 }
 
-function getInitialValue(variable, data = {}) {
+/**
+ * Extract value from data for the variable
+ */
+function getInitialValue(variable: LunaticVariable, data = {} as LunaticData) {
 	const { COLLECTED, EXTERNAL, CALCULATED } = data;
-	const { variableType } = variable;
-	switch (variableType) {
+	switch (variable.variableType) {
 		case 'COLLECTED':
 			return getInitalValueFromCollected(variable, COLLECTED);
 		case 'EXTERNAL':
@@ -44,14 +59,28 @@ function getInitialValue(variable, data = {}) {
 	}
 }
 
-function appendToArrayMap(map, key, entry) {
+export type VariablesByType = {
+	EXTERNAL: (LunaticVariable & { variableType: 'EXTERNAL' })[];
+	COLLECTED: (LunaticVariable & { variableType: 'COLLECTED' })[];
+	CALCULATED: (LunaticVariable & { variableType: 'CALCULATED' })[];
+};
+
+function appendToArrayMap(
+	map: VariablesByType,
+	key: LunaticVariable['variableType'],
+	entry: LunaticVariable
+) {
 	if (key in map) {
 		return { ...map, [key]: [...map[key], entry] };
 	}
 	return { ...map, [key]: [entry] };
 }
 
-function appendToObjectMap(map, key, object) {
+function appendToObjectMap(
+	map: LunaticState['variables'],
+	key: string,
+	object: LunaticState['variables'][string]
+) {
 	if (key in map) {
 		return { ...map, [key]: { ...map[key], ...object } };
 	}
@@ -59,12 +88,9 @@ function appendToObjectMap(map, key, object) {
 }
 
 /**
- *
- * @param {*} source
- * @param {*} data
- * @returns
+ * Creates the variables object to set in the state
  */
-function createVariables(source, data) {
+function createVariables(source: LunaticSource, data: LunaticData) {
 	const { variables = [] } = source;
 	const [mapVariablesTypes, mapVariables] = variables.reduce(
 		function ([mapType, mapVar], variable) {
@@ -79,9 +105,11 @@ function createVariables(source, data) {
 				}),
 			];
 		},
-		[{}, {}]
+		[{ EXTERNAL: [], COLLECTED: [], CALCULATED: [] }, {}] as [
+			VariablesByType,
+			LunaticState['variables']
+		]
 	);
-	//
 	const { CALCULATED = [] } = mapVariablesTypes;
 	CALCULATED.forEach(function (calculated) {
 		const { bindingDependencies = [] } = calculated;
@@ -100,9 +128,11 @@ function createVariables(source, data) {
 
 	return mapVariables;
 }
-/* */
 
-function checkInLoop(state) {
+/**
+ * Check if there is a loop and populate the pager accordingly
+ */
+function checkInLoop(state: LunaticState): LunaticState {
 	const { pager, pages, executeExpression } = state;
 	const { page } = pager;
 	if (page in pages) {
@@ -113,7 +143,7 @@ function checkInLoop(state) {
 				pager: {
 					...pager,
 					subPage: 0,
-					nbSubPages: subPages.length,
+					nbSubPages: (subPages ?? []).length,
 					iteration: 0,
 					nbIterations: executeExpression(iterations, {
 						iteration: 0,
@@ -126,7 +156,7 @@ function checkInLoop(state) {
 	return state;
 }
 
-function reduceOnInit(state, action) {
+function reduceOnInit(state: LunaticState, action: ActionInit) {
 	const { payload } = action;
 	const {
 		source,
@@ -149,7 +179,6 @@ function reduceOnInit(state, action) {
 		] = createExecuteExpression(variables, features);
 		const pages = checkLoops(createMapPages(source));
 		const { maxPage, cleaning = {}, missingBlock = {}, resizing = {} } = source;
-
 		const pager = {
 			page: initialPage,
 			maxPage: maxPage,
@@ -158,7 +187,7 @@ function reduceOnInit(state, action) {
 			iteration: undefined,
 			nbIterations: undefined,
 			lastReachedPage: initialPage,
-		};
+		} satisfies LunaticState['pager'];
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
 		return checkInLoop({

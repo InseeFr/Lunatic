@@ -1,9 +1,19 @@
 import { COLLECTED, CALCULATED, EXTERNAL } from '../../constants';
 import { interpretAllCalculatedVariables } from './calculated-variables';
+import { LunaticState, LunaticValues } from '../type';
+import { VariablesByType } from '../reducer/reduce-on-init';
 
+/**
+ * Extract the value from a questionnaire
+ *
+ * used by the "getData" method from the state at the end of a form
+ */
 export const getQuestionnaireData = ({
 	variables,
 	withRefreshedCalculated,
+}: {
+	variables: LunaticState['variables'];
+	withRefreshedCalculated: boolean;
 }) => {
 	const builtVariables = Object.entries(variables).reduce(
 		(acc, [k, { value, type }]) => {
@@ -29,7 +39,7 @@ export const getQuestionnaireData = ({
 				return { ...acc, [type]: { ...acc[type], [k]: value } };
 			return acc;
 		},
-		{ EXTERNAL: {}, CALCULATED: {}, COLLECTED: {} }
+		{ EXTERNAL: {}, CALCULATED: {}, COLLECTED: {} } as VariablesByType
 	);
 	if (!withRefreshedCalculated) return builtVariables;
 	const flattenBuiltVariables = Object.entries(builtVariables).reduce(
@@ -43,7 +53,7 @@ export const getQuestionnaireData = ({
 			}
 			return { ...acc, ...v };
 		},
-		{}
+		{} as LunaticValues
 	);
 	const flattenCalculatedVariables = interpretAllCalculatedVariables({
 		variables,

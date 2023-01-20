@@ -6,7 +6,7 @@ import reduceResizing from './reduce-resizing';
 import reduceLinksVariable from './reduce-links-variable';
 import compose from '../../commons/compose';
 import { createControlsReducer } from '../validate-controls';
-import { Action, ActionHandleChange, ActionKind } from '../../actions';
+import { ActionHandleChange } from '../../actions';
 import { LunaticState } from '../../type';
 
 function isOnSubPage(
@@ -45,7 +45,7 @@ function updateVariables(
 	if (linksIterations !== undefined) {
 		const variablesNext = reduceLinksVariable(variables, {
 			name,
-			value,
+			value: typeof value === 'string' ? value : '',
 			linksIterations,
 			symLinks,
 			lengths,

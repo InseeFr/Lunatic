@@ -1,16 +1,21 @@
 import { resolveComponentControls } from './validation-utils';
 import {
 	getComponentsFromState,
-	getPageTag,
 	getErrorsWithoutEmptyValue,
+	getPageTag,
 } from '../../commons';
-import { LunaticComponentDefinition, LunaticState } from '../../type';
+import {
+	LunaticComponentDefinition,
+	LunaticError,
+	LunaticState,
+} from '../../type';
 import { isLoopComponent } from '../commons';
+import { Action } from '../../actions';
 
 function validateComponentsForModal(
 	state: LunaticState,
 	components: LunaticComponentDefinition[]
-): LunaticState['errors'] {
+): Record<string, LunaticError[]> {
 	const { pager } = state;
 	return components.reduce(function (errors, component) {
 		const { controls, componentType, id } = component;
@@ -39,29 +44,30 @@ function validateComponentsForModal(
 		}
 		// If no error we remove the possible previous errors
 		return {};
-	}, {} as LunaticState['errors']);
+	}, {} as Record<string, LunaticError[]>);
 }
 
-export function isErrors(errors) {
-	if (errors) {
+export function isErrors(errors: Record<string, LunaticError[]>): boolean {
+	if (typeof errors === 'object' && errors !== null) {
 		return Object.keys(errors).length > 0;
 	}
 	return false;
 }
 
-function createModalControlsReducer(reducer) {
+function createModalControlsReducer<T extends Action>(
+	reducer: (state: LunaticState, action: T) => LunaticState
+) {
 	// Nothing to init
-	return function (state, action) {
+	return function (state: LunaticState, action: T): LunaticState {
 		const { payload } = action;
 		const { activeControls, errors } = state;
-		const { block } = payload;
 
 		if (!activeControls)
 			return reducer({ ...state, modalErrors: undefined }, action);
 		const components = getComponentsFromState(state);
 		const { modalErrors: prec } = state;
 
-		if (block) {
+		if ('block' in payload && payload.block) {
 			// Block the modal and stay in page so we add the error in the current page
 			return {
 				...state,
@@ -76,10 +82,14 @@ function createModalControlsReducer(reducer) {
 
 		const modalErrors = validateComponentsForModal(state, components);
 		if (isErrors(modalErrors)) {
+			const page = getPageTag(state.pager);
 			return {
 				...state,
 				modalErrors,
-				errors: { ...errors, ...modalErrors },
+				errors: {
+					...errors,
+					[page]: { ...(errors ?? {})[page], ...modalErrors },
+				},
 			};
 		}
 

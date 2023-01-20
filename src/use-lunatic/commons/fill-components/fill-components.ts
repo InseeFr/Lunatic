@@ -19,14 +19,15 @@ import fillComponentExpressions, {
 	DeepTranslateExpression,
 } from './fill-component-expressions';
 
-type LunaticComponentProps =
-	DeepTranslateExpression<LunaticComponentDefinition> &
-		FilledManagementProps &
-		FilledValueProps &
-		FilledMissingResponseProps &
-		FilledErrorsProps &
-		FilledHandlersProps &
-		FilledPaginationProps;
+export type LunaticComponentProps<
+	T = LunaticComponentDefinition['componentType']
+> = DeepTranslateExpression<LunaticComponentDefinition & { componentType: T }> &
+	FilledManagementProps &
+	FilledValueProps &
+	FilledMissingResponseProps &
+	FilledErrorsProps &
+	FilledHandlersProps &
+	FilledPaginationProps;
 
 /**
  * Compose multiple methods together to create a new method

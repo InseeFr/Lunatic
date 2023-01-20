@@ -4,7 +4,7 @@ import { LunaticError, LunaticState } from '../type';
  * Keep errors with at least one error inside
  */
 function getErrorsWithoutEmptyValue(
-	errors?: LunaticState['errors']
+	errors?: Record<string, LunaticError[]>
 ): Record<string, LunaticError[]> {
 	return errors
 		? Object.fromEntries(
