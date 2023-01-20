@@ -1,6 +1,21 @@
 import { getCompatibleVTLExpression } from '../../commons';
+import { LunaticState, LunaticVariable } from '../../type';
+import { ActionHandleChange } from '../../actions';
 
-function reduceCleaning(state, action) {
+function collectedValue(variable?: LunaticVariable): unknown {
+	if (variable && 'values' in variable) {
+		return variable.values.COLLECTED ?? null;
+	}
+	return null;
+}
+
+/**
+ * Nettoie les réponses qui doivent être reset suite à une réponse
+ */
+function reduceCleaning(
+	state: LunaticState,
+	action: ActionHandleChange
+): LunaticState {
 	const { payload } = action;
 	const { response } = payload;
 	const { executeExpression, cleaning, updateBindings, variables, pager } =
@@ -21,7 +36,7 @@ function reduceCleaning(state, action) {
 				if (!isCleaning && key in variables) {
 					const variableRoot = variables[key];
 					const { variable } = variableRoot;
-					const initialValue = variable?.values?.COLLECTED || null;
+					const initialValue = collectedValue(variable);
 					updateBindings(key, initialValue);
 					return { ...step, [key]: { ...variableRoot, value: initialValue } };
 				}

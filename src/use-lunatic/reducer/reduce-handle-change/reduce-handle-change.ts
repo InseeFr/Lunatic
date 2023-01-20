@@ -6,19 +6,26 @@ import reduceResizing from './reduce-resizing';
 import reduceLinksVariable from './reduce-links-variable';
 import compose from '../../commons/compose';
 import { createControlsReducer } from '../validate-controls';
+import { Action, ActionHandleChange, ActionKind } from '../../actions';
+import { LunaticState } from '../../type';
 
-function isOnSubPage(pager) {
+function isOnSubPage(
+	pager: LunaticState['pager']
+): pager is LunaticState['pager'] & {
+	nbIterations: number;
+	iteration: number;
+} {
 	const { subPage } = pager;
 	return subPage !== undefined;
 }
 
 /**
- * met à jour variables qui contient les valeur collectées
- * @param {*} state
- * @param {*} action
- * @returns
+ * Met à jour les variables collectés
  */
-function updateVariables(state, action) {
+function updateVariables(
+	state: LunaticState,
+	action: ActionHandleChange
+): LunaticState {
 	const { payload } = action;
 	const { response, value, args = {} } = payload;
 	const { name } = response;
@@ -34,7 +41,6 @@ function updateVariables(state, action) {
 	} = args;
 
 	const { pager, variables } = state;
-	const { nbIterations, iteration } = pager;
 
 	if (linksIterations !== undefined) {
 		const variablesNext = reduceLinksVariable(variables, {
@@ -45,7 +51,7 @@ function updateVariables(state, action) {
 			lengths,
 		});
 		return { ...state, variables: variablesNext };
-	} else if (loop && paginatedLoop) {
+	} else if (loop && paginatedLoop && index && length) {
 		const variablesNext = reduceVariablesArray(variables, {
 			name,
 			value,
@@ -57,8 +63,8 @@ function updateVariables(state, action) {
 		const variablesNext = reduceVariablesArray(variables, {
 			name,
 			value,
-			index: iteration,
-			length: nbIterations,
+			index: pager.iteration,
+			length: pager.nbIterations,
 		});
 
 		return { ...state, variables: variablesNext };
@@ -75,12 +81,9 @@ function updateVariables(state, action) {
 }
 
 /**
- * met à jour bindings pour l'exe du VTL (en appelant la fonction fournit par createExecuteExpression)
- * @param {*} state
- * @param {*} action
- * @returns
+ * Met à jour les bindings (maps des valeurs)
  */
-function updateBindings(state, action) {
+function updateBindings(state: LunaticState, action: ActionHandleChange) {
 	const { payload } = action;
 	const { response } = payload;
 	const { name } = response;
@@ -94,7 +97,7 @@ function updateBindings(state, action) {
 	return state;
 }
 
-const reducers = compose(
+const reducers = compose<LunaticState, [ActionHandleChange]>(
 	updateVariables,
 	updateBindings,
 	reduceResizing,
@@ -102,13 +105,7 @@ const reducers = compose(
 	reduceCleaning
 );
 
-/**
- *
- * @param {*} state
- * @param {*} action
- * @returns
- */
-function reduceHandleChange(state, action) {
+function reduceHandleChange(state: LunaticState, action: ActionHandleChange) {
 	return reducers(state, action);
 }
 

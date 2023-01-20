@@ -1,7 +1,16 @@
 import { resolveComponentControls } from './validation-utils';
 import { getComponentsFromState, getPageTag } from '../../commons';
+import { LunaticComponentDefinition, LunaticState } from '../../type';
+import { Action } from '../../actions';
+import { isLoopComponent } from '../commons';
 
-function validateComponents(state, components) {
+/**
+ * Check if the component has errors
+ */
+function validateComponents(
+	state: LunaticState,
+	components: LunaticComponentDefinition[]
+): LunaticState['errors'] {
 	const { pager } = state;
 	return components.reduce(function (errors, component) {
 		const { controls, componentType, id } = component;
@@ -16,7 +25,7 @@ function validateComponents(state, components) {
 			};
 		}
 		//Thanks to init which split basic Loops, we only go into unPaginatedLoops
-		if (['Loop', 'RosterForLoop'].includes(componentType)) {
+		if (isLoopComponent(component)) {
 			const { components } = component;
 			const recurs = validateComponents(state, components);
 			return {
@@ -30,9 +39,14 @@ function validateComponents(state, components) {
 	}, {});
 }
 
-function createControlsReducer(reducer) {
+/**
+ * Wrap the reducer to add controls (errors / currentErrors)
+ */
+function createControlsReducer(
+	reducer: (state: LunaticState, action: Action) => LunaticState
+) {
 	// Nothing to init
-	return function (state, action) {
+	return function (state: LunaticState, action: Action): LunaticState {
 		const { activeControls } = state;
 		const updatedState = reducer(state, action);
 		if (
@@ -48,11 +62,11 @@ function createControlsReducer(reducer) {
 		const e = {
 			...errors,
 			[pageTag]: validateComponents(updatedState, components),
-		};
+		} as LunaticState['errors'];
 		return {
 			...updatedState,
 			errors: e,
-			currentErrors: e[pageTag],
+			currentErrors: e?.[pageTag],
 		};
 	};
 }

@@ -1,13 +1,11 @@
 /**
- * certaines variables du questionnaire sont de type tableau.
- * Il faut alors vérifier qu'elles le sont véritablement.
- * Il faut aussi vérifier quelles sont de la taille adéquate.
+ * Cast the variable into an array and adjust the length if necessary
  */
-function resizeArrayVariable(
+function resizeArrayVariable<T extends unknown = unknown>(
 	array: unknown,
 	length: number,
-	defaultValue: unknown
-): unknown[] {
+	defaultValue?: T
+): T[] {
 	if (!Array.isArray(array)) {
 		// create the array
 		return new Array(length).fill(defaultValue);

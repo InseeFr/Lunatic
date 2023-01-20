@@ -1,8 +1,11 @@
-import { isOnEmptyPage, getPageTag } from './commons';
+import { isOnEmptyPage } from './commons';
+import { getPageTag } from '../commons';
 import { createModalControlsReducer } from './validate-controls';
 import reduceGoNextPage from './reduce-go-next-page';
+import { LunaticState } from '../type';
+import { ActionGoToPage } from '../actions';
 
-function validateChange(state) {
+function validateChange(state: LunaticState) {
 	const { pager, errors } = state;
 	const currentErrors =
 		errors !== undefined ? errors[getPageTag(pager)] : undefined;
@@ -13,7 +16,7 @@ function validateChange(state) {
 	return updatedState;
 }
 
-function reduceGoToPage(state, action) {
+function reduceGoToPage(state: LunaticState, action: ActionGoToPage) {
 	const { isInLoop, pager } = state;
 	const {
 		payload: { page: newPage },

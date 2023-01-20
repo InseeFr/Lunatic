@@ -6,15 +6,21 @@ import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 import { COLLECTED } from '../utils/constants';
 import { loadSuggesters } from '../utils/store-tools/auto-load';
 import { getQuestionnaireData } from './commons/get-data';
+import { LunaticData, LunaticState } from './type';
+import { LunaticSource } from './type-source';
 
-const DEFAULT_DATA = {};
+const DEFAULT_DATA = {} as LunaticData;
 const DEFAULT_FEATURES = ['VTL', 'MD'];
 const DEFAULT_PREFERENCES = [COLLECTED];
-function nothing() {}
+const nothing: (
+	response: { name: string },
+	value: unknown,
+	args: unknown
+) => void = () => {};
 
 function useLunatic(
-	source,
-	data = DEFAULT_DATA,
+	source: LunaticSource,
+	data: LunaticData = DEFAULT_DATA,
 	{
 		features = DEFAULT_FEATURES,
 		preferences = DEFAULT_PREFERENCES,
@@ -29,7 +35,7 @@ function useLunatic(
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	console.log(state);
+	console.log('useLunatic', state);
 	const { pager, waiting, modalErrors, errors, currentErrors } = state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
@@ -115,7 +121,7 @@ function useLunatic(
 		[components]
 	);
 	const handleChange = useCallback(
-		function (response, value, args) {
+		function (response: { name: string }, value: unknown, args: unknown) {
 			dispatch(actions.handleChange(response, value, args));
 			onChange(response, value, args);
 		},

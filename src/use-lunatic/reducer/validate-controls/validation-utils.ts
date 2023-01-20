@@ -1,6 +1,11 @@
-function resolveControl(state, control) {
-	const { executeExpression, pager = {} } = state;
-	const { iteration, shallowIteration } = pager;
+import { LunaticError, LunaticState, LunaticControl } from '../../type';
+
+function resolveControl(
+	state: LunaticState,
+	control: LunaticControl
+): LunaticError | undefined {
+	const { executeExpression } = state;
+	const { iteration, shallowIteration } = state.pager ?? {};
 	const { criticality, errorMessage, id, typeOfControl } = control;
 	const { control: { value = 'true' } = {} } = control;
 	try {
@@ -8,7 +13,7 @@ function resolveControl(state, control) {
 		const result = executeExpression(value, { iteration: it });
 		if (!result) {
 			const { value: labelValue } = errorMessage;
-			const label = executeExpression(labelValue, { iteration: it });
+			const label = executeExpression<string>(labelValue, { iteration: it });
 			return {
 				criticality,
 				errorMessage: label,
@@ -25,12 +30,18 @@ function resolveControl(state, control) {
 	}
 }
 
-export function resolveComponentControls(state, controls) {
+/**
+ * Convert controls into errors
+ */
+export function resolveComponentControls(
+	state: LunaticState,
+	controls: LunaticControl[]
+): LunaticError[] {
 	return controls.reduce(function (errors, control) {
 		const error = resolveControl(state, control);
 		if (error) {
 			return [...errors, error];
 		}
 		return errors;
-	}, []);
+	}, [] as LunaticError[]);
 }

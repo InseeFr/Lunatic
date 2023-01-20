@@ -4,11 +4,10 @@ import reduceGoNextPage from './reduce-go-next-page';
 import reduceGoToPage from './reduce-go-to-page';
 import reduceHandleChange from './reduce-handle-change';
 import reduceOnSetWaiting from './reduce-on-set-waiting';
-import * as actions from '../actions';
 import { LunaticState } from '../type';
 import { Action, ActionKind } from '../actions';
 
-function reducer(state: LunaticState, action: Action) {
+function reducer(state: LunaticState, action: Action): LunaticState {
 	const { type } = action;
 	switch (type) {
 		case ActionKind.ON_INIT:

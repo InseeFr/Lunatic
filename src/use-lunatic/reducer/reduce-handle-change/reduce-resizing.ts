@@ -1,5 +1,7 @@
 import { getCompatibleVTLExpression } from '../../commons';
 import { resizeArrayVariable } from '../commons';
+import { LunaticState } from '../../type';
+import { ActionHandleChange } from '../../actions';
 
 function reduceResizingVariables({
 	size,
@@ -7,20 +9,26 @@ function reduceResizingVariables({
 	variables,
 	executeExpression,
 	updateBindings,
+}: {
+	size?: string;
+	variableArray: string[];
+	variables: LunaticState['variables'];
+	executeExpression: LunaticState['executeExpression'];
+	updateBindings: LunaticState['updateBindings'];
 }) {
-	if (size !== undefined) {
-		const sizeValue = executeExpression(getCompatibleVTLExpression(size));
-		return variableArray.reduce((acc, v) => {
-			const { value } = variables[v];
-			const newValue = resizeArrayVariable(value, sizeValue, null);
-			updateBindings(v, newValue);
-			return {
-				...acc,
-				[v]: { ...variables[v], value: newValue },
-			};
-		}, {});
+	if (size === undefined) {
+		return {};
 	}
-	return {};
+	const sizeValue = executeExpression<number>(getCompatibleVTLExpression(size));
+	return variableArray.reduce((acc, v) => {
+		const { value } = variables[v];
+		const newValue = resizeArrayVariable(value, sizeValue, null);
+		updateBindings(v, newValue);
+		return {
+			...acc,
+			[v]: { ...variables[v], value: newValue },
+		};
+	}, {});
 }
 
 function reduceResizingLinksVariables({
@@ -29,13 +37,23 @@ function reduceResizingLinksVariables({
 	variables,
 	executeExpression,
 	updateBindings,
+}: {
+	sizeForLinksVariables: unknown;
+	linksVariables?: string[];
+	variables: LunaticState['variables'];
+	executeExpression: LunaticState['executeExpression'];
+	updateBindings: LunaticState['updateBindings'];
 }) {
-	if (Array.isArray(sizeForLinksVariables)) {
+	if (Array.isArray(sizeForLinksVariables) && linksVariables) {
 		const [xSize, ySize] = sizeForLinksVariables.map((s) => {
-			return executeExpression(getCompatibleVTLExpression(s));
+			return executeExpression<number>(getCompatibleVTLExpression(s));
 		});
 		return linksVariables.reduce((acc, v) => {
 			const { value } = variables[v];
+			// The value is not an array, skip it
+			if (!Array.isArray(value)) {
+				return acc;
+			}
 			const newValue = resizeArrayVariable(
 				value.map((i) => resizeArrayVariable(i, ySize, null)),
 				xSize,
@@ -51,7 +69,7 @@ function reduceResizingLinksVariables({
 	return {};
 }
 
-function reduceResizing(state, action) {
+function reduceResizing(state: LunaticState, action: ActionHandleChange) {
 	const {
 		payload: {
 			response: { name },

@@ -3,7 +3,6 @@
  *
  * These types should not be used outside of use-lunatic
  */
-
 export type LabelType = { value: string; type: 'VTL' | 'VTL|MD' };
 
 export type ComponentTypeEnum =
@@ -122,6 +121,7 @@ export type ComponentSubSequenceType = {
 
 export type ComponentRosterForLoopType = {
 	componentType: 'RosterForLoop';
+	components: ComponentType[];
 	lines: { min: LabelType; max: LabelType };
 	header: {
 		value: string;
@@ -216,6 +216,15 @@ export type ComponentDropdownType = {
 export type ComponentFilterDescriptionType = {
 	componentType: 'FilterDescription';
 	filterDescription: boolean;
+};
+
+export type ComponentPairWiseLinksType = {
+	componentType: 'PairwiseLinks';
+	xAxisIterations: LabelType;
+	yAxisIterations: LabelType;
+	symLinks: {
+		[variableName: string]: Record<string, string>;
+	};
 };
 
 export type SuggesterType = {

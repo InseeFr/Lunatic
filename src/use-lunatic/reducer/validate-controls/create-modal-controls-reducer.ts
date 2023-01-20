@@ -4,8 +4,13 @@ import {
 	getPageTag,
 	getErrorsWithoutEmptyValue,
 } from '../../commons';
+import { LunaticComponentDefinition, LunaticState } from '../../type';
+import { isLoopComponent } from '../commons';
 
-function validateComponentsForModal(state, components) {
+function validateComponentsForModal(
+	state: LunaticState,
+	components: LunaticComponentDefinition[]
+): LunaticState['errors'] {
 	const { pager } = state;
 	return components.reduce(function (errors, component) {
 		const { controls, componentType, id } = component;
@@ -22,7 +27,7 @@ function validateComponentsForModal(state, components) {
 			}
 		}
 		//Thanks to init which split basic Loops, we only go into unPaginatedLoops
-		if (['Loop', 'RosterForLoop'].includes(componentType)) {
+		if (isLoopComponent(component)) {
 			// TODO handle the case where shallowInteration hasn't been initalized because not handleChange fired
 			const { components } = component;
 			const recurs = validateComponentsForModal(state, components);
@@ -34,7 +39,7 @@ function validateComponentsForModal(state, components) {
 		}
 		// If no error we remove the possible previous errors
 		return {};
-	}, {});
+	}, {} as LunaticState['errors']);
 }
 
 export function isErrors(errors) {

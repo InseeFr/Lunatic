@@ -10,6 +10,29 @@ export enum ActionKind {
 	ON_SET_WAITING = 'use-lunatic/on-set-waiting',
 }
 
+export type ActionHandleChange = {
+	type: ActionKind.HANDLE_CHANGE;
+	payload: {
+		response: { name: string };
+		value: unknown;
+		args: {
+			loop?: boolean;
+			length?: number;
+			index?: number;
+			linksIterations?: number[];
+			symLinks?: { [variableName: string]: Record<string, string> };
+			paginatedLoop?: unknown;
+			shallowIteration?: unknown;
+			lengths?: number[];
+		};
+	};
+};
+
+export type ActionGoToPage = {
+	type: ActionKind.GO_TO_PAGE;
+	payload: { page: unknown };
+};
+
 export type Action =
 	| {
 			type: ActionKind.GO_NEXT_PAGE;
@@ -17,12 +40,9 @@ export type Action =
 	  }
 	| {
 			type: ActionKind.GO_PREVIOUS_PAGE;
-			payload: undefined;
+			payload: {};
 	  }
-	| {
-			type: ActionKind.GO_TO_PAGE;
-			payload: { page: unknown };
-	  }
+	| ActionGoToPage
 	| {
 			type: ActionKind.ON_INIT;
 			payload: {
@@ -37,10 +57,7 @@ export type Action =
 				activeControls: boolean;
 			};
 	  }
-	| {
-			type: ActionKind.HANDLE_CHANGE;
-			payload: { response: unknown; value: unknown; args: unknown };
-	  }
+	| ActionHandleChange
 	| {
 			type: ActionKind.ON_SET_WAITING;
 			payload: {
@@ -55,28 +72,33 @@ export type PayloadForAction<T extends Action['type']> = (Action & {
 const actionCreator =
 	<T extends ActionKind>(type: T) =>
 	(payload: (Action & { type: T })['payload']) => {
-		console.log({ payload, type });
 		return {
 			type,
 			payload,
-		};
+		} as Action & { type: T };
 	};
 
-export const goPreviousPage = () => ({ type: ActionKind.GO_PREVIOUS_PAGE });
+export const goPreviousPage = () =>
+	({
+		type: ActionKind.GO_PREVIOUS_PAGE,
+		payload: {},
+	} as const);
 
 export const goNextPage = actionCreator(ActionKind.GO_NEXT_PAGE);
 export const goToPage = actionCreator(ActionKind.GO_TO_PAGE);
 export const onInit = actionCreator(ActionKind.ON_INIT);
 export const handleChange = (
-	response: unknown,
-	value: unknown,
-	args: unknown
-): Action => ({
-	type: ActionKind.HANDLE_CHANGE,
-	payload: { response, value, args },
-});
+	response: ActionHandleChange['payload']['response'],
+	value: ActionHandleChange['payload']['value'],
+	args: ActionHandleChange['payload']['args']
+): Action =>
+	({
+		type: ActionKind.HANDLE_CHANGE,
+		payload: { response, value, args },
+	} as const);
 
-export const onSetWaiting = (status: unknown): Action => ({
-	type: ActionKind.ON_SET_WAITING,
-	payload: { status },
-});
+export const onSetWaiting = (status: unknown): Action =>
+	({
+		type: ActionKind.ON_SET_WAITING,
+		payload: { status },
+	} as const);

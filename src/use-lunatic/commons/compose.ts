@@ -1,12 +1,12 @@
-const compose = <T extends any[], R>(
-	fn1: (...args: T) => R,
-	...fns: Array<(a: R) => R>
+const compose = <V extends unknown, Rest extends unknown[]>(
+	...functions: Array<(acc: V, ...rest: Rest) => V>
 ) => {
-	const piped = fns.reduce(
-		(prevFn, nextFn) => (value: R) => nextFn(prevFn(value)),
-		(value) => value
+	return functions.reverse().reduce(
+		function (next, current) {
+			return (first, ...rest) => next(current(first, ...rest), ...rest);
+		},
+		(value: V, ...rest: Rest) => value
 	);
-	return (...args: T) => piped(fn1(...args));
 };
 
 export default compose;

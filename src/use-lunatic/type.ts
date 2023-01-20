@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { ComponentType, ControlType, Variable } from './type-source';
 
 export type LunaticComponentDefinition = ComponentType;
+export type LunaticControl = ControlType;
 
 export type VTLBindings = { [variableName: string]: unknown };
 
@@ -72,6 +73,8 @@ export type LunaticState = {
 			size: string;
 			// List of variables that will need resizing
 			variables: string[];
+			sizeForLinksVariables?: unknown;
+			linksVariables?: string[];
 		};
 	};
 	pager: {
@@ -88,20 +91,27 @@ export type LunaticState = {
 	};
 	// TODO : Explain this
 	waiting: boolean;
-	// TODO : Explain this
+	// Errors for the form
 	errors?: { [id: string]: LunaticError[] };
-	// TODO : Explain this
-	currentErrors?: { [id: string]: LunaticError[] };
+	// Contains the errors for the current page / iteration
+	currentErrors?: LunaticError[];
 	// TODO : Explain this
 	modalErrors?: LunaticError[];
-	// TODO : Explain this
-	handleChange: (response: TODO, value: TODO, args: TODO) => void;
+	// Handler to call when updating a value
+	handleChange: (
+		response: ResponseType,
+		value: unknown,
+		args: Record<string, unknown>
+	) => void;
 	// TODO : Explain this
 	resetLoopBindings: (variables: TODO) => void;
-	// TODO : Explain this
-	executeExpression: <T = unknown>(expression: unknown, args: TODO) => T;
-	// TODO : Explain this
-	updateBindings: (name: TODO, value: TODO) => unknown;
+	// Run and expression using the value from the state
+	executeExpression: <T = unknown>(
+		expression: unknown,
+		args?: Record<string, unknown>
+	) => T;
+	// Update the value collected for the variable
+	updateBindings: (variableName: string, value: unknown) => unknown;
 	// TODO : Explain this
 	setLoopBindings: (variables: TODO, iteration: TODO) => unknown;
 	// TODO : Explain this
