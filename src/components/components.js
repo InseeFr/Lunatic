@@ -16,4 +16,5 @@ export { default as Subsequence } from './subsequence';
 export { default as Suggester } from './suggester';
 export { default as Switch } from './switch';
 export { default as Textarea } from './textarea';
+export { default as Breadcrumb } from './breadcrumb';
 export { default as SuggesterLoaderWidget } from './suggester-loader-widget';
