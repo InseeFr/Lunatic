@@ -1,14 +1,14 @@
-import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
-import { getCompatibleVTLExpression, getNewReachedPage } from '../commons';
 import {
 	createControlsReducer,
 	createModalControlsReducer,
 } from './validate-controls';
-import clearPager from '../commons/check-pager';
-import { ExpressionType, LunaticState } from '../type';
-import { reduceToRoundabout } from './reduce-roundabout';
+import { getCompatibleVTLExpression, getNewReachedPage } from '../commons';
+import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
 
-function getNextPage(state: LunaticState) {
+import { overviewOnChange } from './overview/overview-on-change';
+import compose from '../commons/compose';
+
+function getNextPage(state) {
 	const { pager } = state;
 	const { page, maxPage } = pager;
 	const p = Number.parseInt(page);
@@ -19,12 +19,12 @@ function getNextPage(state: LunaticState) {
 	return `${maxPage}`;
 }
 
-function reduceNextSubPage(state: LunaticState) {
+function reduceNextSubPage(state) {
 	const { pager } = state;
 	const { subPage } = pager;
 	const newPager = {
 		...pager,
-		subPage: (subPage ?? 0) + 1,
+		subPage: subPage + 1,
 		shallowIteration: undefined,
 	};
 	return {
@@ -34,20 +34,14 @@ function reduceNextSubPage(state: LunaticState) {
 	};
 }
 
-function reduceNextIteration(state: LunaticState) {
+function reduceNextIteration(state) {
 	const { pager } = state;
-	const { iteration, roundabout } = pager;
-
-	if (roundabout) {
-		return reduceToRoundabout(state);
-	}
-
+	const { iteration } = pager;
 	const newPager = {
 		...pager,
 		subPage: 0,
-		iteration: (iteration ?? 0) + 1,
+		iteration: iteration + 1,
 	};
-
 	return {
 		...state,
 		pager: {
@@ -58,7 +52,7 @@ function reduceNextIteration(state: LunaticState) {
 	};
 }
 
-function reduceNextPage(state: LunaticState, { next }: { next: string }) {
+function reduceNextPage(state, { next }) {
 	const { pager } = state;
 	const newPager = {
 		...pager,
@@ -80,14 +74,7 @@ function reduceNextPage(state: LunaticState, { next }: { next: string }) {
 	};
 }
 
-function reduceStartLoop(
-	state: LunaticState,
-	{
-		next,
-		iterations,
-		loopDependencies,
-	}: { next: string; iterations: ExpressionType; loopDependencies?: string[] }
-): LunaticState {
+function reduceStartLoop(state, { next, iterations, loopDependencies }) {
 	const { pages, pager, executeExpression } = state;
 	const { subPages } = pages[next];
 
@@ -110,9 +97,17 @@ function reduceStartLoop(
 			modalErrors: undefined,
 		};
 	}
-
-	const nbIterations = executeExpression<number>(
-		getCompatibleVTLExpression(iterations)
+	/* 
+	
+	
+	
+	*/
+	const nbIterations = executeExpression(
+		getCompatibleVTLExpression(iterations),
+		{
+			bindingDependencies: loopDependencies,
+			iteration: undefined,
+		}
 	);
 
 	if (Array.isArray(subPages)) {
@@ -132,57 +127,66 @@ function reduceStartLoop(
 				...newPager,
 				lastReachedPage: getNewReachedPage(newPager),
 			},
+
 			modalErrors: undefined,
 		};
 	}
 	return state;
 }
 
-function validateChange(state: LunaticState): LunaticState {
+function validateChange(state) {
 	if (isOnEmptyPage(state)) {
 		return reduceGoNextPage(state);
 	}
 	return state;
 }
 
-function reduceGoNextPage(state: LunaticState): LunaticState {
-	const { pages, isInLoop, pager, variables } = state;
-	const { iteration, nbIterations, subPage, nbSubPages, page, roundabout } = {
-		nbSubPages: 0,
-		iteration: 0,
-		nbIterations: 0,
-		...pager,
-	};
+function reduceGoNextPage(state) {
+	const {
+		pages,
+		isInLoop,
+		pager,
+		variables,
+		setLoopBindings,
+		resetLoopBindings,
+	} = state;
+	const { iteration, nbIterations, subPage, nbSubPages, page } = pager;
 
-	/* next iteration of loop/roundabout */
-	if (isInLoop && subPage !== undefined && subPage < nbSubPages - 1) {
+	if (isInLoop && subPage < nbSubPages - 1) {
 		return validateChange(reduceNextSubPage(state));
 	}
-	/* next subpage of loop/roundabout */
 	if (isInLoop && subPage === nbSubPages - 1 && iteration < nbIterations - 1) {
+		// New iteration, update loop bindings
+		setLoopBindings(variables, iteration + 1);
 		return validateChange(reduceNextIteration(state));
-	}
-	/* exit of a roundabout */
-	if (roundabout && nbIterations > 1) {
-		return reduceToRoundabout(state);
 	}
 
 	const next = getNextPage(state);
 	const { isLoop, iterations, loopDependencies } = pages[next];
 
+	const pageComponents = pages[page].components.map(
+		({ componentType }) => componentType
+	);
+
+	if ((isInLoop && !isLoop) || pageComponents.includes('PairwiseLinks')) {
+		//End of the loop or PairwiseLinks, we reset bindings
+		resetLoopBindings(variables);
+	}
 	if (next === page) {
 		// TODO: check why next === page, doesn't seems to be normal
 		return state;
 	}
 
-	if (isLoop && iterations !== undefined) {
+	if (isLoop) {
 		return validateChange(
 			reduceStartLoop(state, { next, iterations, loopDependencies })
 		);
 	}
 	return validateChange(reduceNextPage(state, { next }));
 }
-
-export default createModalControlsReducer(
-	createControlsReducer(reduceGoNextPage)
+const goNextReducer = compose(
+	createModalControlsReducer(createControlsReducer(reduceGoNextPage)),
+	overviewOnChange
 );
+
+export default goNextReducer;

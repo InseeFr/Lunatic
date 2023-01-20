@@ -1,10 +1,10 @@
-import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
-import logement from './source';
-import logementSum from './source-sum';
-import logementSequence from './source-sequence';
+import React from 'react';
 import data from './data';
 import defaultArgTypes from '../../utils/default-arg-types';
+import logement from './source';
+import logementSequence from './source-sequence';
+import logementSum from './source-sum';
 
 const stories = {
 	title: 'Questionnaires/Logement',
@@ -22,6 +22,11 @@ const stories = {
 			defaultValue: true,
 		},
 		management: {
+			table: { disable: false },
+			control: 'boolean',
+			defaultValue: false,
+		},
+		showOverview: {
 			table: { disable: false },
 			control: 'boolean',
 			defaultValue: false,
