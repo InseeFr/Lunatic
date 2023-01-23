@@ -2,11 +2,7 @@ import { describe, expect, test } from 'vitest';
 import getExpressionVariables from './get-expressions-variables';
 
 describe('getExpressionVariables', () => {
-	const cases = [
-		['(READY)', ['READY']],
-		[{ value: '(READY)' }, ['READY']],
-		[{}, []],
-	] as const;
+	const cases = [['(READY)', ['READY']]] as const;
 	const declaredVariables = {
 		READY: {
 			type: 'COLLECTED',

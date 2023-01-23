@@ -11,7 +11,7 @@ import {
 	X_AXIS,
 	Y_AXIS,
 } from '../../../utils/constants';
-import { LunaticExpression, LunaticState, LunaticVariable } from '../../type';
+import { LunaticExpression, LunaticState } from '../../type';
 import { CALCULATED } from '../../../constants';
 
 export type ExpressionLogger = (
@@ -126,6 +126,10 @@ function createExecuteExpression(
 	 * Extract variables from an expression
 	 */
 	function getVariablesAndCach(expression: string | LunaticExpression) {
+		// If we have an expression we can't have tokens
+		if (typeof expression !== 'string') {
+			return [];
+		}
 		if (tokensMap.has(expression)) {
 			return tokensMap.get(expression);
 		}
