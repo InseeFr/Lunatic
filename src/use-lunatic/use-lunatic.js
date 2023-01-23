@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useCallback } from 'react';
+import { useReducer, useEffect, useCallback, useMemo } from 'react';
 import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
 import reducer from './reducer';
@@ -6,11 +6,22 @@ import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 import { COLLECTED } from '../utils/constants';
 import { loadSuggesters } from '../utils/store-tools/auto-load';
 import { getQuestionnaireData } from './commons/get-data';
+import LunaticContext from './reducer/lunatic-context';
 
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL', 'MD'];
 const DEFAULT_PREFERENCES = [COLLECTED];
 function nothing() {}
+
+function createProvider(custom) {
+	return function Provider({ children }) {
+		return (
+			<LunaticContext.Provider value={{ custom }}>
+				{children}
+			</LunaticContext.Provider>
+		);
+	};
+}
 
 function useLunatic(
 	source,
@@ -33,6 +44,8 @@ function useLunatic(
 	const { pager, waiting, modalErrors, errors, currentErrors } = state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
+
+	const Provider = useMemo(() => createProvider(custom), [custom]);
 
 	useEffect(() => {
 		(async () => {
@@ -177,6 +190,7 @@ function useLunatic(
 		pager,
 		waiting,
 		getData,
+		Provider,
 	};
 }
 

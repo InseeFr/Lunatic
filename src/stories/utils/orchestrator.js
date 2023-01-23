@@ -91,6 +91,7 @@ function OrchestratorForStories({
 		getModalErrors,
 		getCurrentErrors,
 		getData,
+		Provider,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
 		features,
@@ -111,55 +112,60 @@ function OrchestratorForStories({
 	const currentErrors = getCurrentErrors();
 
 	return (
-		<div className="container">
-			<div className="components">
-				{components.map(function (component) {
-					const {
-						id,
-						componentType,
-						response,
-						storeName,
-						conditionFilter,
-						...other
-					} = component;
-					const Component = lunatic[componentType];
-					const storeInfo = storeName ? getStoreInfo(storeName) : {};
-					return (
-						<div className="lunatic lunatic-component" key={`component-${id}`}>
-							<Component
-								id={id}
-								response={response}
-								{...other}
-								{...rest}
-								{...component}
-								{...storeInfo}
-								missing={missing}
-								missingStrategy={goNextPage}
-								shortcut={shortcut}
-								filterDescription={filterDescription}
-								errors={currentErrors}
-							/>
-						</div>
-					);
-				})}
-			</div>
-			<Pager
-				goPrevious={goPreviousPage}
-				goNext={goNextPage}
-				goToPage={goToPage}
-				isLast={isLastPage}
-				isFirst={isFirstPage}
-				pageTag={pageTag}
-				maxPage={maxPage}
-				getData={getData}
-			/>
-			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
-			<Waiting status={waiting}>
-				<div className="waiting-orchestrator">
-					Initialisation des données de suggestion...
+		<Provider>
+			<div className="container">
+				<div className="components">
+					{components.map(function (component) {
+						const {
+							id,
+							componentType,
+							response,
+							storeName,
+							conditionFilter,
+							...other
+						} = component;
+						const Component = lunatic[componentType];
+						const storeInfo = storeName ? getStoreInfo(storeName) : {};
+						return (
+							<div
+								className="lunatic lunatic-component"
+								key={`component-${id}`}
+							>
+								<Component
+									id={id}
+									response={response}
+									{...other}
+									{...rest}
+									{...component}
+									{...storeInfo}
+									missing={missing}
+									missingStrategy={goNextPage}
+									shortcut={shortcut}
+									filterDescription={filterDescription}
+									errors={currentErrors}
+								/>
+							</div>
+						);
+					})}
 				</div>
-			</Waiting>
-		</div>
+				<Pager
+					goPrevious={goPreviousPage}
+					goNext={goNextPage}
+					goToPage={goToPage}
+					isLast={isLastPage}
+					isFirst={isFirstPage}
+					pageTag={pageTag}
+					maxPage={maxPage}
+					getData={getData}
+				/>
+				<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
+				<Waiting status={waiting}>
+					<div className="waiting-orchestrator">
+						Initialisation des données de suggestion...
+					</div>
+				</Waiting>
+			</div>
+		</Provider>
 	);
 }
 

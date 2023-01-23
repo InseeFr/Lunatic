@@ -13,7 +13,10 @@
 					"id": "d1",
 					"declarationType": "COMMENT",
 					"position": "BEFORE_QUESTION_TEXT",
-					"label": { "value": "\"Test declaration before\"", "type": "VTL|MD" }
+					"label": {
+						"value": "\"## Test declaration before \n ### other title\n lkfsdjkfdsjklhldkfsghldf\"",
+						"type": "VTL|MD"
+					}
 				},
 				{
 					"id": "d2",
