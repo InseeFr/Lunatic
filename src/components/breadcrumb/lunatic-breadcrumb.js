@@ -1,16 +1,10 @@
-import React from 'react';
 import './breadcrumb.scss';
+
+import React from 'react';
 
 const Breadcrumb = () => {
 	const elements = ['Toto', 'Tutu', 'Tata'];
 	// format attendu
-
-	// breadcrumbitem = {
-	// 	label: string,
-	// 	disabled: boolean,
-	// 	page : 19.2
-	// 	children: []
-	// 	}
 
 	return (
 		<nav aria-label="Breadcrumb">

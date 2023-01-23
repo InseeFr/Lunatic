@@ -12,6 +12,7 @@ const INITIAL_STATE = {
 	cleaning: {},
 	missingBlock: {},
 	resizing: {},
+	breadcrumb: [],
 	pager: {
 		page: undefined,
 		maxPage: undefined,
