@@ -5,13 +5,12 @@ import {
 	Th as HtmlTh,
 } from '../../commons/components/html-table';
 
-function Header({ custom, id, header }) {
+function Header({ id, header }) {
 	if (Array.isArray(header)) {
 		const content = header.map(function ({ label, rowspan, colspan }, index) {
 			return (
 				<HtmlTh
 					id={id}
-					custom={custom}
 					row={0}
 					index={index}
 					rowSpan={rowspan}
@@ -23,8 +22,8 @@ function Header({ custom, id, header }) {
 			);
 		});
 		return (
-			<HtmlThead id={id} custom={custom}>
-				<HtmlTr id={id} custom={custom} row={0}>
+			<HtmlThead id={id}>
+				<HtmlTr id={id} row={0}>
 					{content}
 				</HtmlTr>
 			</HtmlThead>

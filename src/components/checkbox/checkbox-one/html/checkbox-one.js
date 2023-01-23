@@ -12,7 +12,6 @@ function CheckboxOne({
 	description,
 	onSelect,
 	errors,
-	custom,
 }) {
 	return (
 		<RadioGroup
@@ -20,7 +19,6 @@ function CheckboxOne({
 			className="lunatic-checkbox-one"
 			options={options}
 			value={value}
-			custom={custom}
 			errors={errors}
 			label={label}
 			description={description}

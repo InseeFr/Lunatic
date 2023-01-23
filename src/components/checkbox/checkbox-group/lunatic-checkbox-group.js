@@ -6,7 +6,6 @@ function LunaticCheckboxGroup({
 	id,
 	value,
 	responses,
-	custom,
 	handleChange,
 	errors,
 	label,
@@ -36,7 +35,6 @@ function LunaticCheckboxGroup({
 		<LunaticComponent
 			id={id}
 			label={label}
-			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
 			value={value}
@@ -49,7 +47,6 @@ function LunaticCheckboxGroup({
 				id={id}
 				options={options}
 				value={value}
-				custom={custom}
 				label={label}
 				errors={errors}
 			/>

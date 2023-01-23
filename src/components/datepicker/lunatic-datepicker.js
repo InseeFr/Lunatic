@@ -17,7 +17,6 @@ const LunaticDatepicker = (props) => {
 		max,
 		label,
 		description,
-		custom,
 		preferences,
 		declarations,
 		missing,
@@ -30,7 +29,6 @@ const LunaticDatepicker = (props) => {
 	return (
 		<LunaticComponent
 			id={id}
-			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
 			value={value}
@@ -50,7 +48,6 @@ const LunaticDatepicker = (props) => {
 				label={label}
 				description={description}
 				errors={errors}
-				custom={custom}
 			/>
 		</LunaticComponent>
 	);

@@ -4,10 +4,6 @@ import source from './source';
 import data from './data';
 import defaultArgTypes from '../utils/default-arg-types';
 
-function MonInput(props) {
-	return <div>mon input</div>;
-}
-
 const stories = {
 	title: 'Components/Input',
 	component: Orchestrator,
@@ -16,9 +12,7 @@ const stories = {
 
 export default stories;
 
-const Template = (args) => (
-	<Orchestrator {...args} custom={{ Input: MonInput }} />
-);
+const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
 Default.args = { id: 'input', source, data };

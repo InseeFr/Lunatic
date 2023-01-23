@@ -8,12 +8,11 @@ import {
 } from '../../../commons';
 import './checkbox-group.scss';
 
-function CheckboxGroup({ options, id, label, custom, description, errors }) {
+function CheckboxGroup({ options, id, label, description, errors }) {
 	return (
 		<Fieldset
 			className="lunatic-checkbox-group"
 			legend={label}
-			custom={custom}
 			description={description}
 		>
 			<CheckboxGroupContent id={id} options={options} />

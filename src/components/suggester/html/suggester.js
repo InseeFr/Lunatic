@@ -23,7 +23,6 @@ function Suggester({
 	labelRenderer,
 	optionRenderer,
 	value,
-	custom,
 	disabled,
 	id,
 	searching,
@@ -75,7 +74,6 @@ function Suggester({
 			onSelect={handleSelect}
 			value={value}
 			search={defaultSearch}
-			custom={custom}
 			optionRenderer={optionRenderer}
 			labelRenderer={labelRenderer}
 			placeholder={placeholder}

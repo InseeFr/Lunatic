@@ -17,7 +17,6 @@ function LunaticSuggester(props) {
 		value,
 		handleChange,
 		disabled,
-		custom,
 		errors,
 		label,
 		description,
@@ -34,7 +33,6 @@ function LunaticSuggester(props) {
 	return (
 		<LunaticComponent
 			id={id}
-			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
 			value={value}
@@ -53,7 +51,6 @@ function LunaticSuggester(props) {
 				disabled={disabled}
 				id={id}
 				value={value}
-				custom={custom}
 				errors={errors}
 				label={label}
 			/>

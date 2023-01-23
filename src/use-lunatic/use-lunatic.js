@@ -157,7 +157,6 @@ function useLunatic(
 					handleChange,
 					activeControls,
 					goToPage,
-					custom,
 				})
 			);
 		},
@@ -172,7 +171,6 @@ function useLunatic(
 			handleChange,
 			activeControls,
 			goToPage,
-			custom,
 		]
 	);
 

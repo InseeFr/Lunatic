@@ -7,13 +7,11 @@ import Header from './header';
 
 import './table.scss';
 
-function Table({ custom, id, header, children }) {
+function Table({ id, header, children }) {
 	return (
-		<HtmlTable id={id} custom={custom} className="lunatic-table">
-			<Header id={id} header={header} custom={custom} />
-			<HtmlTbody id={id} custom={custom}>
-				{children}
-			</HtmlTbody>
+		<HtmlTable id={id} className="lunatic-table">
+			<Header id={id} header={header} />
+			<HtmlTbody id={id}>{children}</HtmlTbody>
 		</HtmlTable>
 	);
 }

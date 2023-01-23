@@ -10,7 +10,6 @@ function LunaticRadioGroup(props) {
 		options,
 		value,
 		checkboxStyle,
-		custom,
 		errors,
 		handleChange,
 		response,
@@ -28,7 +27,6 @@ function LunaticRadioGroup(props) {
 		<LunaticComponent
 			id={id}
 			label={label}
-			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
 			value={value}
@@ -44,7 +42,6 @@ function LunaticRadioGroup(props) {
 				onSelect={onChange}
 				checkboxStyle={checkboxStyle}
 				errors={errors}
-				custom={custom}
 				label={label}
 				className={className}
 			/>

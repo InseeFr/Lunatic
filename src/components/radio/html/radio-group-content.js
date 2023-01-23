@@ -8,7 +8,6 @@ function RadioGroupContent({
 	id,
 	onClick,
 	checkboxStyle = false,
-	custom,
 }) {
 	const onKeyDown = useOptionsKeydown(options, onClick);
 	return options.map(function (option, index) {
@@ -27,7 +26,6 @@ function RadioGroupContent({
 				checkboxStyle={checkboxStyle}
 				label={label}
 				description={description}
-				custom={custom}
 			/>
 		);
 	});

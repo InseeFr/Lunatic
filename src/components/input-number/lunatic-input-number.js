@@ -10,7 +10,6 @@ function LunaticInputNumber(props) {
 		handleChange,
 		response,
 		errors,
-		custom,
 		declarations,
 		preferences,
 		label,
@@ -32,7 +31,6 @@ function LunaticInputNumber(props) {
 	return (
 		<LunaticComponent
 			id={id}
-			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
 			value={value}
@@ -53,7 +51,6 @@ function LunaticInputNumber(props) {
 				unit={unit}
 				required={required}
 				errors={errors}
-				custom={custom}
 			/>
 		</LunaticComponent>
 	);

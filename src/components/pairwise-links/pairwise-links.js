@@ -20,7 +20,6 @@ const PairwiseLinks = ({
 	executeExpression,
 	xAxisIterations,
 	yAxisIterations,
-	custom,
 	id,
 	symLinks,
 }) => {
@@ -36,16 +35,8 @@ const PairwiseLinks = ({
 	if (nbRows > 1)
 		return (
 			<>
-				<DeclarationsBeforeText
-					declarations={declarations}
-					id={id}
-					custom={custom}
-				/>
-				<DeclarationsAfterText
-					declarations={declarations}
-					id={id}
-					custom={custom}
-				/>
+				<DeclarationsBeforeText declarations={declarations} id={id} />
+				<DeclarationsAfterText declarations={declarations} id={id} />
 				<LinksOrchestrator
 					id={id}
 					components={components}
@@ -58,16 +49,11 @@ const PairwiseLinks = ({
 					features={features}
 					preferences={preferences}
 					executeExpression={executeExpression}
-					custom={custom}
 					xAxisIterations={xAxisIterations}
 					yAxisIterations={yAxisIterations}
 					symLinks={symLinks}
 				/>
-				<DeclarationsDetachable
-					declarations={declarations}
-					id={id}
-					custom={custom}
-				/>
+				<DeclarationsDetachable declarations={declarations} id={id} />
 			</>
 		);
 	return <NothingToDisplay />;

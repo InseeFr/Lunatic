@@ -14,7 +14,6 @@ function IDBSuggester({
 	onSelect,
 	disabled,
 	value,
-	custom,
 	label,
 	description,
 	errors,
@@ -46,7 +45,6 @@ function IDBSuggester({
 				searching={searching}
 				disabled={disabled}
 				value={value}
-				custom={custom}
 				label={label}
 				description={description}
 				errors={errors}

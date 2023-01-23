@@ -40,7 +40,6 @@ function collecteValue(component, value) {
 function Cell({
 	content,
 	id,
-	custom,
 	executeExpression,
 	iteration,
 	value,
@@ -65,7 +64,6 @@ function Cell({
 					component={content}
 					handleChange={handleChange}
 					value={valueField}
-					custom={custom}
 					executeExpression={executeExpression}
 					iteration={iteration}
 				/>

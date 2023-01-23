@@ -22,7 +22,6 @@ const INITIAL_STATE = {
 		nbIterations: undefined,
 		roundabout: undefined,
 	},
-	custom: undefined,
 	waiting: false,
 	errors: undefined,
 	currentErrors: undefined,

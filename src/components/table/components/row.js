@@ -4,7 +4,6 @@ import Cell from './cell';
 
 function Row({
 	id,
-	custom,
 	components,
 	executeExpression,
 	valueMap,
@@ -17,7 +16,6 @@ function Row({
 			<Cell
 				id={id}
 				content={content}
-				custom={custom}
 				value={valueMap}
 				executeExpression={executeExpression}
 				handleChange={handleChange}
@@ -29,7 +27,7 @@ function Row({
 		);
 	});
 	return (
-		<HtmlTr id={id} custom={custom} row={rowIndex}>
+		<HtmlTr id={id} row={rowIndex}>
 			{content}
 		</HtmlTr>
 	);

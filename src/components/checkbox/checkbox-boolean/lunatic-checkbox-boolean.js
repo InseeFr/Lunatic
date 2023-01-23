@@ -10,7 +10,6 @@ function LunaticCheckboxBoolean({
 	disabled,
 	handleChange,
 	response,
-	custom,
 	errors,
 	label,
 	preferences,
@@ -24,7 +23,6 @@ function LunaticCheckboxBoolean({
 	return (
 		<LunaticComponent
 			id={id}
-			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
 			value={value}
@@ -39,7 +37,6 @@ function LunaticCheckboxBoolean({
 				checked={value}
 				onClick={onChange}
 				disabled={disabled}
-				custom={custom}
 				label={label}
 				errors={errors}
 			/>

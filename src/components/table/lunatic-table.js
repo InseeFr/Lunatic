@@ -8,7 +8,6 @@ function LunaticTable({
 	id,
 	handleChange,
 	value,
-	custom,
 	body,
 	header,
 	executeExpression,
@@ -29,9 +28,8 @@ function LunaticTable({
 
 	return (
 		<>
-			<Table id={id} custom={custom} header={header}>
+			<Table id={id} header={header}>
 				<TableOrchestrator
-					custom={custom}
 					id={id}
 					body={body}
 					executeExpression={executeExpression}
@@ -50,7 +48,6 @@ function LunaticTable({
 
 LunaticTable.propTypes = {
 	id: PropTypes.string.isRequired,
-	custom: PropTypes.object,
 	value: PropTypes.object,
 	body: PropTypes.arrayOf(PropTypes.array).isRequired,
 	header: PropTypes.array,
@@ -58,7 +55,6 @@ LunaticTable.propTypes = {
 
 LunaticTable.defaultProps = {
 	lines: undefined,
-	custom: undefined,
 	value: {},
 	header: [],
 };

@@ -7,7 +7,6 @@ function LunaticCheckboxOne({
 	id,
 	options,
 	value,
-	custom,
 	errors,
 	handleChange,
 	response,
@@ -24,7 +23,6 @@ function LunaticCheckboxOne({
 		<LunaticComponent
 			id={id}
 			label={label}
-			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
 			value={value}
@@ -38,7 +36,6 @@ function LunaticCheckboxOne({
 				className="lunatic-checkbox-one"
 				options={options}
 				value={value}
-				custom={custom}
 				errors={errors}
 				onSelect={onSelect}
 				response={response}

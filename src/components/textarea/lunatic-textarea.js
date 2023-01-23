@@ -17,7 +17,6 @@ const LunaticTextarea = (props) => {
 		label,
 		description,
 		errors,
-		custom,
 		preferences,
 		declarations,
 		missing,
@@ -30,7 +29,6 @@ const LunaticTextarea = (props) => {
 	return (
 		<LunaticComponent
 			id={id}
-			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
 			value={value}
@@ -49,7 +47,6 @@ const LunaticTextarea = (props) => {
 				placeholder={placeHolder}
 				label={label}
 				errors={errors}
-				custom={custom}
 			/>
 		</LunaticComponent>
 	);

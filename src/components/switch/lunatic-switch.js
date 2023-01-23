@@ -8,7 +8,6 @@ function LunaticSwitch({
 	id,
 	value,
 	statusLabel,
-	custom,
 	labelId,
 	handleChange,
 	response,
@@ -28,7 +27,6 @@ function LunaticSwitch({
 	return (
 		<LunaticComponent
 			id={id}
-			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
 			value={value}
@@ -45,7 +43,6 @@ function LunaticSwitch({
 				labelId={labelId}
 				label={label}
 				errors={errors}
-				custom={custom}
 			/>
 		</LunaticComponent>
 	);

@@ -14,7 +14,6 @@ function LunaticDropdown({
 	response,
 	errors,
 	label,
-	custom,
 	preferences,
 	declarations,
 	missing,
@@ -27,7 +26,6 @@ function LunaticDropdown({
 	return (
 		<LunaticComponent
 			id={id}
-			custom={custom}
 			preferences={preferences}
 			declarations={declarations}
 			value={value}

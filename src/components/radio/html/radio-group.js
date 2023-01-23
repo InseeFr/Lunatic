@@ -19,17 +19,11 @@ function RadioGroup({
 	checkboxStyle = false,
 	errors,
 	className,
-	custom,
 }) {
 	const onKeyDown = useOptionsKeydown(options, onSelect);
 
 	return (
-		<Fieldset
-			className={className}
-			legend={label}
-			custom={custom}
-			description={description}
-		>
+		<Fieldset className={className} legend={label} description={description}>
 			<RadioGroupContent
 				id={id}
 				onClick={onSelect}
@@ -38,7 +32,6 @@ function RadioGroup({
 				checkboxStyle={checkboxStyle}
 				label={label}
 				options={options}
-				custom={custom}
 			/>
 			<Errors errors={errors} activeId={id} />
 		</Fieldset>

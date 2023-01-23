@@ -21,7 +21,6 @@ function LunaticRoundabout({
 	page,
 	label,
 	locked,
-	custom,
 }) {
 	const goToIteration = useCallback(
 		function (iteration) {
@@ -46,7 +45,6 @@ function LunaticRoundabout({
 			iterations={iterations}
 			goToIteration={goToIteration}
 			locked={locked}
-			custom={custom}
 		/>
 	);
 }

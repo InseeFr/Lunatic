@@ -14,7 +14,6 @@ function createRowOrchestrator(Row) {
 		executeExpression,
 		iteration,
 		xAxisIterations,
-		custom,
 		errors,
 	}) {
 		if (nbRows > 0) {
@@ -32,7 +31,6 @@ function createRowOrchestrator(Row) {
 						executeExpression={executeExpression}
 						iteration={iteration}
 						linksIterations={[i, j]}
-						custom={custom}
 						/** */
 						features={features}
 						shortcut={shortcut}

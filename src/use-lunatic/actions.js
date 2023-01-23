@@ -31,7 +31,6 @@ export const onInit = ({
 	handleChange,
 	activeControls,
 	goToPage,
-	custom,
 }) => ({
 	type: ON_INIT,
 	payload: {
@@ -45,7 +44,6 @@ export const onInit = ({
 		handleChange,
 		activeControls,
 		goToPage,
-		custom,
 	},
 });
 

@@ -3,7 +3,6 @@ import Row from './components/row';
 
 function TableOrchestrator({
 	body,
-	custom,
 	id,
 	executeExpression,
 	valueMap,
@@ -27,7 +26,6 @@ function TableOrchestrator({
 					handleChange={handleChange}
 					iteration={iteration}
 					executeExpression={executeExpression}
-					custom={custom}
 					/** */
 					features={features}
 					shortcut={shortcut}

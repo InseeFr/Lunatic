@@ -13,7 +13,6 @@ function LunaticFieldsetComponent(props) {
 	const {
 		id,
 		label,
-		custom,
 		preferences,
 		declarations,
 		value,
@@ -24,31 +23,14 @@ function LunaticFieldsetComponent(props) {
 	} = props;
 	const content = (
 		<>
-			<DeclarationsBeforeText
-				declarations={declarations}
-				id={id}
-				custom={custom}
-			/>
-			<FieldContainer
-				value={value}
-				id={id}
-				custom={custom}
-				preferences={preferences}
-			>
-				<Fieldset legend={label} custom={custom}>
-					<DeclarationsAfterText
-						declarations={declarations}
-						id={id}
-						custom={custom}
-					/>
+			<DeclarationsBeforeText declarations={declarations} id={id} />
+			<FieldContainer value={value} id={id} preferences={preferences}>
+				<Fieldset legend={label}>
+					<DeclarationsAfterText declarations={declarations} id={id} />
 					{children}
 				</Fieldset>
 			</FieldContainer>
-			<DeclarationsDetachable
-				declarations={declarations}
-				id={id}
-				custom={custom}
-			/>
+			<DeclarationsDetachable declarations={declarations} id={id} />
 			{missing && missingResponse && <Missing {...props} />}
 		</>
 	);
