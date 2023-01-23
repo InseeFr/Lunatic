@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { isValidElement } from 'react';
 import PropTypes from 'prop-types';
 
 function getContent(option, search) {
 	if (option) {
 		const { value, label } = option;
+		if (isValidElement(label)) {
+			return label;
+		}
 		return label ? `${value} - ${label}` : value;
 	}
 	if (search && search.trim().length) {

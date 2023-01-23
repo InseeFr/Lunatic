@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import * as lunatic from '../..';
 import './custom-lunatic.scss';
 import Waiting from './waiting';
@@ -17,8 +17,15 @@ function Pager({
 	maxPage,
 	getData,
 }) {
+	const [toPage, setToPage] = useState(1);
+
 	if (maxPage && maxPage > 1) {
 		const Button = lunatic.Button;
+
+		function handleChange(_, value) {
+			setToPage(value);
+		}
+
 		return (
 			<>
 				<div className="pagination">
@@ -29,9 +36,15 @@ function Pager({
 						Next
 					</Button>
 					<Button onClick={() => console.log(getData(true))}>Get State</Button>
-					<Button onClick={() => goToPage({ page: '18' })}>
-						Go to page 18
+					<Button onClick={() => goToPage({ page: `${toPage}` })}>
+						{`Go to page ${toPage}`}
 					</Button>
+					<lunatic.InputNumber
+						id="page-to-jump"
+						value={toPage}
+						handleChange={handleChange}
+						min="1"
+					/>
 				</div>
 				<div>PAGE: {pageTag}</div>
 			</>

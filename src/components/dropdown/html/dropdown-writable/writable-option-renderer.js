@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
+import getLabel from './filter-tools/get-label';
 import lettersMatching from './filter-tools/letters-matching';
 import preparePrefix from './filter-tools/prepare-prefix';
 
 function hightlightSearch(label, prefix) {
-	const initLetters = lettersMatching(label, prefix);
-	return label
+	const labelText = getLabel(label);
+	const initLetters = lettersMatching(labelText, prefix);
+	return labelText
 		.split('')
 		.reduce(
 			({ letters, stack }, c) => {
@@ -49,7 +51,6 @@ function hightlightSearch(label, prefix) {
 
 function WritableOptionRenderer({ option, selected, search }) {
 	const [parts, setParts] = useState([]);
-
 	const { value, label } = option;
 
 	useEffect(

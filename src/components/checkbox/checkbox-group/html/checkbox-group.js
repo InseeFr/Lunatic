@@ -8,15 +8,7 @@ import {
 } from '../../../commons';
 import './checkbox-group.scss';
 
-function CheckboxGroup({
-	options,
-	id,
-	onChange,
-	label,
-	custom,
-	description,
-	errors,
-}) {
+function CheckboxGroup({ options, id, label, custom, description, errors }) {
 	return (
 		<Fieldset
 			className="lunatic-checkbox-group"
@@ -24,7 +16,7 @@ function CheckboxGroup({
 			custom={custom}
 			description={description}
 		>
-			<CheckboxGroupContent id={id} onChange={onChange} options={options} />
+			<CheckboxGroupContent id={id} options={options} />
 			<Errors errors={errors} activeId={id} />
 		</Fieldset>
 	);
@@ -43,7 +35,6 @@ CheckboxGroup.propTypes = {
 		})
 	),
 	id: PropTypes.string.isRequired,
-	onChange: PropTypes.func.isRequired,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	errors: PropTypes.array,
 };

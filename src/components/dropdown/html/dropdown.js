@@ -6,11 +6,9 @@ import './dropdown.scss';
 
 function Dropdown({
 	id,
-	labelId,
 	disabled,
 	options,
 	onSelect,
-	htmlFor,
 	writable,
 	className,
 	value,
@@ -23,8 +21,6 @@ function Dropdown({
 			<DropdownWritable
 				id={id}
 				className={className}
-				htmlFor={id}
-				labelId={labelId}
 				disabled={disabled}
 				options={options}
 				onSelect={onSelect}
@@ -39,8 +35,6 @@ function Dropdown({
 		<DropdownSimple
 			id={id}
 			className={className}
-			htmlFor={htmlFor}
-			labelId={labelId}
 			disabled={disabled}
 			options={options}
 			onSelect={onSelect}

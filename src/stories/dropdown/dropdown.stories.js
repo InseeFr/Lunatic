@@ -21,5 +21,5 @@ Default.args = {
 	data,
 	disabled: false,
 	editable: false,
-	writable: false,
+	writable: true,
 };

@@ -41,7 +41,6 @@ function LunaticDropdown({
 				writable={writable}
 				disabled={disabled}
 				options={options}
-				editable={writable}
 				onSelect={onChange}
 				value={value}
 				className="lunatic-dropdown"
@@ -66,6 +65,7 @@ LunaticDropdown.propTypes = {
 		})
 	).isRequired,
 	disabled: PropTypes.bool,
+	writable: PropTypes.bool,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
@@ -77,6 +77,7 @@ LunaticDropdown.propTypes = {
 LunaticDropdown.defaultProps = {
 	disabled: false,
 	value: null,
+	writable: false,
 };
 
 export default LunaticDropdown;

@@ -115,11 +115,10 @@ function ComboBox({
 				<Selection
 					labelRenderer={labelRenderer}
 					placeholder={placeholder}
-					labelledBy={labelId}
-					htmlFor={labelId}
 					search={search}
 					expended={expended}
 					id={id}
+					labelId={labelId}
 					disabled={disabled}
 					focused={focused}
 					editable={editable}
