@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useCallback, useMemo } from 'react';
+import React, { useReducer, useEffect, useCallback, useMemo } from 'react';
 import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
 import reducer from './reducer';
