@@ -128,27 +128,6 @@
 		"webpack": "^5.75.0",
 		"webpack-cli": "^5.0.0"
 	},
-	"jest": {
-		"collectCoverageFrom": [
-			"src/**/*.{js,jsx}",
-			"!src/**/index.js",
-			"!src/**/*.stories.js"
-		],
-		"testURL": "http://localhost",
-		"moduleNameMapper": {
-			"^.+\\.(css|less|scss)$": "identity-obj-proxy"
-		},
-		"transform": {
-			"^.+\\.js$": "babel-jest",
-			".+\\.(png|jpg)$": "jest-transform-stub"
-		},
-		"coverageProvider": "v8",
-		"testResultsProcessor": "jest-sonar-reporter",
-		"coveragePathIgnorePatterns": [
-			"/node_modules/"
-		],
-		"testEnvironment": "jsdom"
-	},
 	"publishConfig": {
 		"access": "public"
 	},
