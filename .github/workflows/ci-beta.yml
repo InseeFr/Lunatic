@@ -47,7 +47,7 @@ jobs:
     needs: test-build
     outputs:
       from_version: ${{ steps.step1.outputs.from_version }}
-      to_version: ${{ steps.step1.outputs.to_version }}
+      to_version: ${{ steps.step1.outputs.to_version }}-beta
       is_upgraded_version: ${{steps.step1.outputs.is_upgraded_version }}
     steps:
       - uses: garronej/github_actions_toolkit@v2.2
@@ -81,4 +81,4 @@ jobs:
           yarn publish --tag beta --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          VERSION: ${{ needs.check_if_version_upgraded.outputs.to_version }}
+          VERSION: ${{ needs.check_if_version_upgraded.outputs.to_version }}-beta
