@@ -166,7 +166,7 @@ ComboBox.propTypes = {
 	labelRenderer: PropTypes.elementType.isRequired,
 	getOptionValue: PropTypes.func,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	errors: PropTypes.array,
+	errors: PropTypes.object,
 };
 
 ComboBox.defaultProps = {

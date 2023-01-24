@@ -43,7 +43,7 @@ CheckboxOne.propTypes = {
 	id: PropTypes.string.isRequired,
 	onSelect: PropTypes.func.isRequired,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	errors: PropTypes.array,
+	errors: PropTypes.object,
 };
 
 CheckboxOne.defaultProps = {

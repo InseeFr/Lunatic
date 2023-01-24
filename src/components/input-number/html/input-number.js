@@ -26,7 +26,6 @@ function InputNumber({
 		},
 		[onChange]
 	);
-
 	return (
 		<div className="lunatic-input-number">
 			<Label htmlFor={id} id={labelId} description={description}>
@@ -68,7 +67,7 @@ InputNumber.propTypes = {
 	step: PropTypes.number,
 	unit: PropTypes.string,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	errors: PropTypes.array,
+	errors: PropTypes.object,
 	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 

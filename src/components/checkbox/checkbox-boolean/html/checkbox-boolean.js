@@ -36,7 +36,7 @@ CheckboxBoolean.prototype = {
 	onChange: PropTypes.func.isRequired,
 	disabled: PropTypes.bool,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	errors: PropTypes.array,
+	errors: PropTypes.object,
 	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 

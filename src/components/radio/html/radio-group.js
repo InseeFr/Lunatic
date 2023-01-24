@@ -60,7 +60,7 @@ RadioGroup.propTypes = {
 		PropTypes.array,
 	]),
 	className: PropTypes.string,
-	errors: PropTypes.array,
+	errors: PropTypes.object,
 };
 
 RadioGroup.defaultProps = {

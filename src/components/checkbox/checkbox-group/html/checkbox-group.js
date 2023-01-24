@@ -35,7 +35,7 @@ CheckboxGroup.propTypes = {
 	),
 	id: PropTypes.string.isRequired,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	errors: PropTypes.array,
+	errors: PropTypes.object,
 };
 
 CheckboxGroup.defaultProps = {

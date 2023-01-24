@@ -70,7 +70,7 @@ IDBSuggester.propTypes = {
 	onSelect: PropTypes.func,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	errors: PropTypes.array,
+	errors: PropTypes.object,
 };
 
 export default IDBSuggester;

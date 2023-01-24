@@ -101,7 +101,7 @@ Suggester.propTypes = {
 	searching: PropTypes.func,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	errors: PropTypes.array,
+	errors: PropTypes.object,
 };
 
 Suggester.defaultProps = {

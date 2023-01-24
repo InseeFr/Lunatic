@@ -7,20 +7,26 @@
 	"missing": false,
 	"pagination": "question",
 	"maxPage": "21",
-	"label": { "value": "QNONREG Controles Numériques VTL", "type": "VTL|MD" },
+	"label": {
+		"value": "\"QNONREG Controles Numériques VTL\"",
+		"type": "VTL|MD"
+	},
 	"components": [
 		{
 			"id": "kd09v80w",
 			"componentType": "Sequence",
 			"page": "1",
-			"label": { "value": "Tests sur variables numériques", "type": "VTL|MD" },
+			"label": {
+				"value": "\"Tests sur variables numériques\"",
+				"type": "VTL|MD"
+			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"hierarchy": {
 				"sequence": {
 					"id": "kd09v80w",
 					"page": "1",
 					"label": {
-						"value": "Tests sur variables numériques",
+						"value": "\"Tests sur variables numériques\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -31,14 +37,17 @@
 			"id": "kd0cbson",
 			"componentType": "Subsequence",
 			"goToPage": "2",
-			"label": { "value": "Tests simples sur des entiers", "type": "VTL|MD" },
+			"label": {
+				"value": "\"Tests simples sur des entiers\"",
+				"type": "VTL|MD"
+			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"hierarchy": {
 				"sequence": {
 					"id": "kd09v80w",
 					"page": "1",
 					"label": {
-						"value": "Tests sur variables numériques",
+						"value": "\"Tests sur variables numériques\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -46,7 +55,7 @@
 					"id": "kd0cbson",
 					"page": "2",
 					"label": {
-						"value": "Tests simples sur des entiers",
+						"value": "\"Tests simples sur des entiers\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -71,7 +80,7 @@
 					"declarationType": "HELP",
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
-						"value": "Tester 2 et 20 (pour vérifier ordre numérique et lexico)",
+						"value": "\"Tester 2 et 20 (pour vérifier ordre numérique et lexico)\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -85,7 +94,7 @@
 						"value": "not(cast(nvl(QNUM,\"0\"),integer) > 5)",
 						"type": "VTL"
 					},
-					"errorMessage": { "value": "sup à 5", "type": "VTL|MD" },
+					"errorMessage": { "value": "\"sup à 5\"", "type": "VTL|MD" },
 					"bindingDependencies": ["QNUM"]
 				},
 
@@ -96,7 +105,7 @@
 						"value": "not(cast(nvl(QNUM,\"0\"),integer) > 6.5)",
 						"type": "VTL"
 					},
-					"errorMessage": { "value": "superieur à 6.5", "type": "VTL|MD" },
+					"errorMessage": { "value": "\"superieur à 6.5\"", "type": "VTL|MD" },
 					"bindingDependencies": ["QNUM"]
 				}
 			],
@@ -105,7 +114,7 @@
 					"id": "kd09v80w",
 					"page": "1",
 					"label": {
-						"value": "Tests sur variables numériques",
+						"value": "\"Tests sur variables numériques\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -113,7 +122,7 @@
 					"id": "kd0cbson",
 					"page": "2",
 					"label": {
-						"value": "Tests simples sur des entiers",
+						"value": "\"Tests simples sur des entiers\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -141,7 +150,7 @@
 					"criticality": "WARN",
 					"control": { "value": "not(isnull(QNUM2))", "type": "VTL" },
 					"errorMessage": {
-						"value": "vous n’avez pas répondu à la question",
+						"value": "\"vous n’avez pas répondu à la question\"",
 						"type": "VTL|MD"
 					},
 					"bindingDependencies": ["QNUM2"]
@@ -152,7 +161,7 @@
 					"id": "kd09v80w",
 					"page": "1",
 					"label": {
-						"value": "Tests sur variables numériques",
+						"value": "\"Tests sur variables numériques\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -160,7 +169,7 @@
 					"id": "kd0cbson",
 					"page": "2",
 					"label": {
-						"value": "Tests simples sur des entiers",
+						"value": "\"Tests simples sur des entiers\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -187,7 +196,7 @@
 					"declarationType": "HELP",
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
-						"value": "Tester 2 et 20 (pour vérifier ordre numérique et lexico)",
+						"value": "\"Tester 2 et 20 (pour vérifier ordre numérique et lexico)\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -202,7 +211,7 @@
 						"type": "VTL"
 					},
 					"errorMessage": {
-						"value": "le nombre saisi est inférieur à 8",
+						"value": "\"le nombre saisi est inférieur à 8\"",
 						"type": "VTL|MD"
 					},
 					"bindingDependencies": ["QNUM3"]
@@ -213,7 +222,7 @@
 					"id": "kd09v80w",
 					"page": "1",
 					"label": {
-						"value": "Tests sur variables numériques",
+						"value": "\"Tests sur variables numériques\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -221,7 +230,7 @@
 					"id": "kd0cbson",
 					"page": "2",
 					"label": {
-						"value": "Tests simples sur des entiers",
+						"value": "\"Tests simples sur des entiers\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -248,7 +257,7 @@
 					"declarationType": "HELP",
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
-						"value": "Tester 2 et 20 (pour vérifier ordre numérique et lexico) Tester pour le cas d’égalité",
+						"value": "\"Tester 2 et 20 (pour vérifier ordre numérique et lexico) Tester pour le cas d’égalité\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -263,7 +272,7 @@
 						"type": "VTL"
 					},
 					"errorMessage": {
-						"value": "la valeur saisie est supérieure ou égale à 5",
+						"value": "\"la valeur saisie est supérieure ou égale à 5\"",
 						"type": "VTL|MD"
 					},
 					"bindingDependencies": ["QNUM4"]
@@ -274,7 +283,7 @@
 					"id": "kd09v80w",
 					"page": "1",
 					"label": {
-						"value": "Tests sur variables numériques",
+						"value": "\"Tests sur variables numériques\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -282,7 +291,7 @@
 					"id": "kd0cbson",
 					"page": "2",
 					"label": {
-						"value": "Tests simples sur des entiers",
+						"value": "\"Tests simples sur des entiers\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -309,7 +318,7 @@
 					"declarationType": "HELP",
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
-						"value": "Tester 2 et 20 (pour vérifier ordre numérique et lexico) Tester 8 pour le cas égalité",
+						"value": "\"Tester 2 et 20 (pour vérifier ordre numérique et lexico) Tester 8 pour le cas égalité\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -324,7 +333,7 @@
 						"type": "VTL"
 					},
 					"errorMessage": {
-						"value": "La valeur saisie est inférieure ou égale à 8",
+						"value": "\"La valeur saisie est inférieure ou égale à 8\"",
 						"type": "VTL|MD"
 					},
 					"bindingDependencies": ["QNUM5"]
@@ -335,7 +344,7 @@
 					"id": "kd09v80w",
 					"page": "1",
 					"label": {
-						"value": "Tests sur variables numériques",
+						"value": "\"Tests sur variables numériques\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -343,7 +352,7 @@
 					"id": "kd0cbson",
 					"page": "2",
 					"label": {
-						"value": "Tests simples sur des entiers",
+						"value": "\"Tests simples sur des entiers\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -374,7 +383,7 @@
 						"type": "VTL"
 					},
 					"errorMessage": {
-						"value": "la valeur est égale à 4",
+						"value": "\"la valeur est égale à 4\"",
 						"type": "VTL|MD"
 					},
 					"bindingDependencies": ["QNUM6"]
@@ -385,7 +394,7 @@
 					"id": "kd09v80w",
 					"page": "1",
 					"label": {
-						"value": "Tests sur variables numériques",
+						"value": "\"Tests sur variables numériques\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -393,7 +402,7 @@
 					"id": "kd0cbson",
 					"page": "2",
 					"label": {
-						"value": "Tests simples sur des entiers",
+						"value": "\"Tests simples sur des entiers\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -420,7 +429,7 @@
 					"declarationType": "HELP",
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
-						"value": "Tester 0 Tester aussi en vidant la valeur",
+						"value": "\"Tester 0 Tester aussi en vidant la valeur\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -431,7 +440,7 @@
 					"id": "kd0ch7pf-CI-0",
 					"criticality": "WARN",
 					"control": { "value": "not(cast(QNUM7,integer) = 0)", "type": "VTL" },
-					"errorMessage": { "value": "La valeur est zéro", "type": "VTL|MD" },
+					"errorMessage": { "value": "\"La valeur est 0\"", "type": "VTL|MD" },
 					"bindingDependencies": ["QNUM7"]
 				},
 
@@ -439,7 +448,7 @@
 					"id": "kd0ch7pf-CI-1",
 					"criticality": "WARN",
 					"control": { "value": "not(isnull(QNUM7))", "type": "VTL" },
-					"errorMessage": { "value": "valeur vide", "type": "VTL|MD" },
+					"errorMessage": { "value": "\"valeur vide\"", "type": "VTL|MD" },
 					"bindingDependencies": ["QNUM7"]
 				}
 			],
@@ -448,7 +457,7 @@
 					"id": "kd09v80w",
 					"page": "1",
 					"label": {
-						"value": "Tests sur variables numériques",
+						"value": "\"Tests sur variables numériques\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -483,7 +492,7 @@
 					"declarationType": "HELP",
 					"position": "AFTER_QUESTION_TEXT",
 					"label": {
-						"value": "test des positionnements par rapport à -4",
+						"value": "\"test des positionnements par rapport à -4\"",
 						"type": "VTL|MD"
 					}
 				},

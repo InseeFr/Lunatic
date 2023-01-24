@@ -43,7 +43,7 @@ function Pager({
 						id="page-to-jump"
 						value={toPage}
 						handleChange={handleChange}
-						min="1"
+						min={1}
 					/>
 				</div>
 				<div>PAGE: {pageTag}</div>

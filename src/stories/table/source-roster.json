@@ -6,12 +6,17 @@
 			"mandatory": false,
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "➡ 1. Please, complete the following grid with your favourite characters"
+				"value": "\"➡ 1. Please, complete the following grid with your favourite characters\"",
+				"type": "VTL|MD"
 			},
 			"missingResponse": {
 				"name": "TABLE_MISSING"
 			},
-			"header": [{ "label": "Id" }, { "label": "Name" }, { "label": "Age" }],
+			"header": [
+				{ "label": { "value": "\"Id\"", "type": "VTL|MD" } },
+				{ "label": { "value": "\"Name\"", "type": "VTL|MD" } },
+				{ "label": { "value": "\"Age\"", "type": "VTL|MD" } }
+			],
 			"body": [
 				[
 					{ "label": "1" },
@@ -37,7 +42,7 @@
 					}
 				],
 				[
-					{ "label": "2" },
+					{ "label": "\"2\"", "type": "VTL|MD" },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -106,7 +111,7 @@
 					}
 				],
 				[
-					{ "label": "5" },
+					{ "label": "\"5\"", "type": "VTL|MD" },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -129,7 +134,7 @@
 					}
 				],
 				[
-					{ "label": "6" },
+					{ "label": "\"6\"", "type": "VTL|MD" },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -152,7 +157,7 @@
 					}
 				],
 				[
-					{ "label": "7" },
+					{ "label": "\"7\"", "type": "VTL|MD" },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -175,7 +180,7 @@
 					}
 				],
 				[
-					{ "label": "8" },
+					{ "label": "\"8\"", "type": "VTL|MD" },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -198,7 +203,7 @@
 					}
 				],
 				[
-					{ "label": "9" },
+					{ "label": "\"9\"", "type": "VTL|MD" },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -221,7 +226,7 @@
 					}
 				],
 				[
-					{ "label": "10" },
+					{ "label": "\"10\"", "type": "VTL|MD" },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -244,7 +249,10 @@
 					}
 				]
 			],
-			"lines": { "min": "\"1\"", "max": "\"10\"" }
+			"lines": {
+				"min": { "value": "\"1\"", "type": "VTL|MD" },
+				"max": { "value": "\"10\"", "type": "VTL|MD" }
+			}
 		}
 	],
 	"variables": [
