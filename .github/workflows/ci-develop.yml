@@ -1,4 +1,4 @@
-name: Lunatic CI
+name: Lunatic CI-develop
 
 on:
   push:
