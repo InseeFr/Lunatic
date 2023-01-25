@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import LunaticContext from '../../use-lunatic/reducer/lunatic-context';
+import LunaticContext from '../../use-lunatic/lunatic-context';
 
 function createCustomizableLunaticField(LunaticField, name) {
 	const Memoized = React.memo(LunaticField);
