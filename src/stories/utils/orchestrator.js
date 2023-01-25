@@ -1,10 +1,43 @@
 import React, { memo, useState } from 'react';
+
 import * as lunatic from '../..';
 import './custom-lunatic.scss';
 import Waiting from './waiting';
 
+import './orchestrator.scss';
+
 function getStoreInfoRequired() {
 	return {};
+}
+
+function DevOptions({ goToPage, getData }) {
+	const [toPage, setToPage] = useState(1);
+
+	function handleChange(_, value) {
+		setToPage(value);
+	}
+
+	return (
+		<div className="dev-options">
+			<div className="title">Options développeur</div>
+			<div className="contenur">
+				<lunatic.Button onClick={() => console.log(getData(true))}>
+					Get State
+				</lunatic.Button>
+				<lunatic.Button onClick={() => goToPage({ page: `${toPage}` })}>
+					{`Go to page ${toPage}`}
+				</lunatic.Button>
+				<lunatic.InputNumber
+					id="page-to-jump"
+					value={toPage}
+					handleChange={handleChange}
+					min={1}
+					label={'Page'}
+					description={'the page wher you want to jump'}
+				/>
+			</div>
+		</div>
+	);
 }
 
 function Pager({
@@ -17,14 +50,8 @@ function Pager({
 	maxPage,
 	getData,
 }) {
-	const [toPage, setToPage] = useState(1);
-
 	if (maxPage && maxPage > 1) {
 		const Button = lunatic.Button;
-
-		function handleChange(_, value) {
-			setToPage(value);
-		}
 
 		return (
 			<>
@@ -35,18 +62,9 @@ function Pager({
 					<Button onClick={goNext} disabled={isLast}>
 						Next
 					</Button>
-					<Button onClick={() => console.log(getData(true))}>Get State</Button>
-					<Button onClick={() => goToPage({ page: `${toPage}` })}>
-						{`Go to page ${toPage}`}
-					</Button>
-					<lunatic.InputNumber
-						id="page-to-jump"
-						value={toPage}
-						handleChange={handleChange}
-						min={1}
-					/>
 				</div>
 				<div>PAGE: {pageTag}</div>
+				<DevOptions goToPage={goToPage} getData={getData} />
 			</>
 		);
 	}
