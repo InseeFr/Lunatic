@@ -111,12 +111,7 @@ function returnToRoundabout(state) {
 }
 
 function reduceGoPreviousPage(state) {
-	const {
-		pages,
-		pager,
-		isInLoop,
-		/*, setLoopBindings, variables*/
-	} = state;
+	const { pages, pager, isInLoop } = state;
 	const { iteration, subPage, roundabout, nbIterations } = pager;
 
 	// dans une boucle et l'itération courante n'est pas finie
