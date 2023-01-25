@@ -6,7 +6,7 @@ import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 import { COLLECTED } from '../utils/constants';
 import { loadSuggesters } from '../utils/store-tools/auto-load';
 import { getQuestionnaireData } from './commons/get-data';
-import LunaticContext from './reducer/lunatic-context';
+import LunaticContext from './lunatic-context';
 
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL', 'MD'];
