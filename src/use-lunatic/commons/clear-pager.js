@@ -3,7 +3,7 @@ function clearPager(pager) {
 	return {
 		maxPage,
 		lastReachedPage,
-		page: undefined,
+		page: '1',
 		subPage: undefined,
 		nbSubPages: undefined,
 		iteration: undefined,
