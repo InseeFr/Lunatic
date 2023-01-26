@@ -34,6 +34,7 @@ function LunaticSwitch({
 			missingResponse={missingResponse}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<Switch
 				id={id}

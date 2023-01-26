@@ -34,6 +34,7 @@ function LunaticRadioGroup(props) {
 			missing={missing}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<RadioGroup
 				id={id}

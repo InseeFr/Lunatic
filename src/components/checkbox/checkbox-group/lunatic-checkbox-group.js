@@ -42,6 +42,7 @@ function LunaticCheckboxGroup({
 			missing={missing}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<CheckboxGroup
 				id={id}

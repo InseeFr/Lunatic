@@ -36,6 +36,7 @@ const LunaticTextarea = (props) => {
 			missingResponse={missingResponse}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<Textarea
 				id={id}

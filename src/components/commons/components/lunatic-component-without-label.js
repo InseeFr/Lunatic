@@ -34,6 +34,7 @@ function LunaticComponent(props) {
 		missingResponse,
 		management,
 		description,
+		handleChange,
 	} = props;
 	const content = (
 		<>
@@ -44,7 +45,9 @@ function LunaticComponent(props) {
 				})}
 			</FieldContainer>
 			<DeclarationsDetachable declarations={declarations} id={id} />
-			{missing && missingResponse && <Missing {...props} />}
+			{missing && missingResponse && (
+				<Missing {...props} handleChange={handleChange} />
+			)}
 		</>
 	);
 	return management ? <VariableStatus>{content}</VariableStatus> : content;

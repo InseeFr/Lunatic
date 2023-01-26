@@ -36,6 +36,7 @@ const LunaticDatepicker = (props) => {
 			missingResponse={missingResponse}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<Datepicker
 				disabled={disabled}

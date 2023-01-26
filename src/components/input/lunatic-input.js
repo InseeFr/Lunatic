@@ -34,6 +34,7 @@ function LunaticInput(props) {
 			missingResponse={missingResponse}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<Input
 				id={id}

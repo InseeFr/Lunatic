@@ -30,6 +30,7 @@ function LunaticCheckboxOne({
 			missing={missing}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<CheckboxOne
 				id={id}

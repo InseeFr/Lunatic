@@ -33,6 +33,7 @@ function LunaticDropdown({
 			missingResponse={missingResponse}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<Dropdown
 				id={id}

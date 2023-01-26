@@ -38,6 +38,7 @@ function LunaticInputNumber(props) {
 			missingResponse={missingResponse}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<InputNumber
 				onChange={onChange}

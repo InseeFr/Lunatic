@@ -40,6 +40,7 @@ function LunaticSuggester(props) {
 			missingResponse={missingResponse}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<IDBSuggester
 				storeName={storeName}

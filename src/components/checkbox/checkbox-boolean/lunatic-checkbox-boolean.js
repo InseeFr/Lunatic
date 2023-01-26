@@ -30,6 +30,7 @@ function LunaticCheckboxBoolean({
 			missingResponse={missingResponse}
 			management={management}
 			description={description}
+			handleChange={handleChange}
 		>
 			<CheckboxBoolean
 				id={id}
