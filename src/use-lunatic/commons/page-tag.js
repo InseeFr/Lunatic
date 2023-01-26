@@ -36,3 +36,6 @@ export function isNewReachedPage(pager) {
 export function getNewReachedPage(pager) {
 	return isNewReachedPage(pager) ? getPageTag(pager) : pager.lastReachedPage;
 }
+
+export const isPageReached = (page, lastReachedPage) =>
+	parseInt(page, 10) <= parseInt(lastReachedPage, 10);

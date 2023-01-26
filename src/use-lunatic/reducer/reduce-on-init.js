@@ -7,6 +7,7 @@ import {
 
 import compose from '../commons/compose';
 import { createControlsReducer } from './validate-controls';
+import { reduceBreadcrumbOnInit } from './breadcrumb/breadcrumb-on-init';
 
 /* à bouger d'ici */
 
@@ -127,86 +128,6 @@ function checkInLoop(state) {
 		}
 	}
 	return state;
-}
-
-function getBreadcrumb(pages, executeExpression) {
-	console.log({ pages });
-
-	//prevent misordered pages by extracting forbidden pages
-	const loopPages = Object.values(pages).reduce((acc, curr) => {
-		if (curr.subPages !== undefined) return [...acc, ...curr.subPages];
-		return acc;
-	}, []);
-
-	const hierarchies = Object.entries(pages)
-		.filter(
-			([k, v]) =>
-				//exclude in loop components
-				!loopPages.includes(k) &&
-				// je suis une séquence => faire une fonction externe
-				(v.components[0].hierarchy.sequence.page === k ||
-					// et je suis le premier composant d'une qu'une sous séquence (qui sont dégagées dans le reduce-on-init du pager)
-					(v.components[0].hierarchy.subSequence !== undefined &&
-						v.components[0].hierarchy.subSequence.page === k))
-		)
-		.map(([, v]) => v.components[0].hierarchy);
-
-	console.log(hierarchies);
-
-	const breadcrumbEntries = hierarchies.reduce(
-		({ sequences, subSequences }, curr) => {
-			return {
-				sequences: [
-					...sequences,
-					curr.subSequence === undefined
-						? { type: 'sequence', ...curr.sequence }
-						: undefined,
-				],
-				subSequences: [
-					...subSequences,
-					curr?.subSequence
-						? {
-								type: 'subSequence',
-								...curr.subSequence,
-								parent: curr.sequence.page,
-						  }
-						: undefined,
-				],
-			};
-		},
-		{
-			sequences: [],
-			subSequences: [],
-		}
-	);
-
-	const { sequences, subSequences } = breadcrumbEntries;
-	const uniqSequences = [...new Set(sequences)];
-	const uniqSubSequences = [...new Set(subSequences)];
-
-	console.log(uniqSequences);
-	console.log(uniqSubSequences);
-
-	// pages.filter( curr.components[0].componentType in [sequence, subSequence]
-	// entries( [key, seqOrSubSeq] => { label : evaluateVTL(seqOrSubSeq,???) ,disabled : checkDisabled(seqOrSubSeq,???),page:key, parent:evaluateParent(seqOrSubSeq) })
-	// curr=>{ evaluateFilter(curr.components[0].filterCondition , ???)
-	//
-	// pour chaque page
-
-	// récupérer le components[0]
-	// regarder le type et chercher Sequence ou subSequence
-	// vérifier si la page courante est inférieure à la lastReachedPage, sinon valoriser disabled à false
-
-	//
-}
-
-function reduceBreadcrumbOnInit(state, action) {
-	console.log(state);
-	const { pages, executeExpression, components } = state;
-	console.log(components);
-	const breadcrumb = getBreadcrumb(pages, executeExpression);
-	// const initBreadcrumb = generateBreadcrumb(source, data, initialPage);
-	return { ...state, breadcrumb };
 }
 
 function reduceVariableAndPagerOnInit(state, action) {

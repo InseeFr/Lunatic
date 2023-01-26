@@ -1,9 +1,12 @@
-import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
-import { getCompatibleVTLExpression, getNewReachedPage } from '../commons';
 import {
 	createControlsReducer,
 	createModalControlsReducer,
 } from './validate-controls';
+import { getCompatibleVTLExpression, getNewReachedPage } from '../commons';
+import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
+
+import { breadcrumbOnChange } from './breadcrumb/breadcrumb-on-change';
+import compose from '../commons/compose';
 
 function getNextPage(state) {
 	const { pager } = state;
@@ -181,7 +184,9 @@ function reduceGoNextPage(state) {
 	}
 	return validateChange(reduceNextPage(state, { next }));
 }
-
-export default createModalControlsReducer(
-	createControlsReducer(reduceGoNextPage)
+const goNextReducer = compose(
+	createModalControlsReducer(createControlsReducer(reduceGoNextPage)),
+	breadcrumbOnChange
 );
+
+export default goNextReducer;
