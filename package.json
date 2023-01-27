@@ -134,7 +134,8 @@
 		],
 		"testURL": "http://localhost",
 		"moduleNameMapper": {
-			"^.+\\.(css|less|scss)$": "identity-obj-proxy"
+			"^.+\\.(css|less|scss)$": "identity-obj-proxy",
+			"react-markdown": "<rootDir>/node_modules/react-markdown/react-markdown.min.js"
 		},
 		"transform": {
 			"^.+\\.js$": "babel-jest",

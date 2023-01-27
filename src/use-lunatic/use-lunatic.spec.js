@@ -1,5 +1,6 @@
 import source from '../stories/questionnaires/logement/source.json';
 import useLunatic from './use-lunatic';
+import { renderHook, act } from '@testing-library/react-hooks';
 
 const lunaticConfiguration = {
 	management: false,
@@ -18,13 +19,11 @@ const lunaticConfiguration = {
 describe('breadcrumb', function () {
 	it('only first sequence visible', function () {
 		const data = [];
-		const { breadcrumb } = useLunatic(source, data, {
-			...lunaticConfiguration,
-		});
-		expect(Array.isArray(breadcrumb)).toBe(true);
-	});
-
-	it('subSequence visible', function () {
-		expect(0).toBe(0);
+		const { result } = renderHook(() =>
+			useLunatic(source, data, {
+				...lunaticConfiguration,
+			})
+		);
+		expect(result.current.breadcrumb).toHaveLength(11);
 	});
 });
