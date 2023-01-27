@@ -1,11 +1,14 @@
-import { useReducer, useEffect, useCallback } from 'react';
-import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
-import reducer from './reducer';
-import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
+
+import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
+
 import { COLLECTED } from '../utils/constants';
-import { loadSuggesters } from '../utils/store-tools/auto-load';
+import INITIAL_STATE from './initial-state';
+import { buildBreadcrumb } from './commons/getBreadcrumb';
 import { getQuestionnaireData } from './commons/get-data';
+import { loadSuggesters } from '../utils/store-tools/auto-load';
+import reducer from './reducer';
 
 const DEFAULT_DATA = {};
 const DEFAULT_FEATURES = ['VTL', 'MD'];
@@ -29,7 +32,8 @@ function useLunatic(
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, waiting, modalErrors, errors, currentErrors } = state;
+	const { pager, waiting, modalErrors, errors, currentErrors, breadcrumb } =
+		state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
 
@@ -126,6 +130,11 @@ function useLunatic(
 		return getQuestionnaireData({ variables, withRefreshedCalculated });
 	};
 
+	const buildedBreadcrumb = useMemo(
+		() => buildBreadcrumb(breadcrumb),
+		[breadcrumb]
+	);
+
 	const pageTag = getPageTag(pager);
 	const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
@@ -166,6 +175,7 @@ function useLunatic(
 		getErrors,
 		getModalErrors,
 		getCurrentErrors,
+		breadcrumb: buildedBreadcrumb,
 		pageTag,
 		isFirstPage,
 		isLastPage,

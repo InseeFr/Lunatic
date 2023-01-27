@@ -18,7 +18,6 @@ export const breadcrumbOnChange = (state) => {
 			}
 			return breadcrumbEntry;
 		}
-		console.log(breadcrumbEntry.page, lastReachedPage);
 		return {
 			...breadcrumbEntry,
 			reached: isPageReached(breadcrumbEntry.page, lastReachedPage),
@@ -29,6 +28,5 @@ export const breadcrumbOnChange = (state) => {
 			evaluatedLabel: executeExpression(breadcrumbEntry.label),
 		};
 	});
-	console.log({ updatedBreadcrumb });
 	return { ...state, breadcrumb: updatedBreadcrumb };
 };
