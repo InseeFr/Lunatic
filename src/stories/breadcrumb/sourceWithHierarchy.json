@@ -3725,10 +3725,10 @@
 			"id": "COMMENT-SEQ",
 			"componentType": "Sequence",
 			"page": "38",
-			"label": {},
+			"label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true" },
 			"hierarchy": {
-				"sequence": { "id": "COMMENT-SEQ", "page": "38", "label": {} }
+				"sequence": { "id": "COMMENT-SEQ", "page": "38", "label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL|MD" }}
 			}
 		},
 
@@ -3738,10 +3738,10 @@
 			"mandatory": false,
 			"page": "39",
 			"maxLength": 2000,
-			"label": {},
+			"label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true" },
 			"hierarchy": {
-				"sequence": { "id": "COMMENT-SEQ", "page": "38", "label": {} }
+				"sequence": { "id": "COMMENT-SEQ", "page": "38", "label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL|MD" } }
 			},
 			"bindingDependencies": ["COMMENT_QE"],
 			"response": { "name": "COMMENT_QE" }

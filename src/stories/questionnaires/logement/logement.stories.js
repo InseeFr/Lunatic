@@ -29,7 +29,7 @@ const stories = {
 		showBreadcrumb: {
 			table: { disable: false },
 			control: 'boolean',
-			defaultValue: true,
+			defaultValue: false,
 		},
 	},
 };

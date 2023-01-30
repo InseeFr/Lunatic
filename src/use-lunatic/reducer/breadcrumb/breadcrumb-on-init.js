@@ -1,5 +1,9 @@
 import { isPageReached } from '../../commons/page-tag';
 
+const isSequence = (sourceComponent) =>
+	sourceComponent.components.length > 0 &&
+	'hierarchy' in sourceComponent.components[0];
+
 function getBreadcrumb(state) {
 	const { pages, executeExpression, pager } = state;
 
@@ -15,6 +19,7 @@ function getBreadcrumb(state) {
 				//exclude in loop components
 				!loopPages.includes(k) &&
 				// check isSequence (v.components.length>0 && 'hierarchy' in v.components[0])
+				isSequence(v) &&
 				// je suis une séquence => faire une fonction externe
 				(v.components[0].hierarchy.sequence.page === k ||
 					// et je suis le premier composant d'une sous séquence (qui sont dégagées dans le reduce-on-init du pager)
