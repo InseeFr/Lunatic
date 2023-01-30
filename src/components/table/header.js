@@ -3,7 +3,7 @@ import {
 	Thead as HtmlThead,
 	Tr as HtmlTr,
 	Th as HtmlTh,
-} from '../../commons/components/html-table';
+} from '../commons/components/html-table';
 
 function Header({ id, header }) {
 	if (Array.isArray(header)) {

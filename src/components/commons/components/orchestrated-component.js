@@ -23,6 +23,7 @@ function OrchestratedComponent({
 		executeExpression,
 		pager: { iteration, linksIterations },
 	});
+
 	const Component = lunatic[componentType];
 	const { conditionFilter } = componentFilled;
 	const hasToBeDisplay = conditionFilter !== undefined ? conditionFilter : true;

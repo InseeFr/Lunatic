@@ -1,9 +1,6 @@
 const VTL_ATTRIBUTES = [
 	'label',
 	'options.label',
-	'body.label',
-	'header.label',
-	'headers.label',
 	'responses.label',
 	'hierarchy.label',
 	'hierarchy.sequence.label',
@@ -20,6 +17,8 @@ const VTL_ATTRIBUTES = [
 	'xAxisIterations',
 	'yAxisIterations',
 	'conditionFilter',
+	'headers.label',
+	'header.label',
 ];
 
 function createCrawl({ executeExpression, iteration, linksIterations }) {

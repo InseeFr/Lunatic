@@ -19,12 +19,13 @@
 			],
 			"body": [
 				[
-					{ "label": "1" },
+					{ "label": { "value": "\"1\"", "type": "VTL|MD" } },
 					{
-						"componentType": "Textarea",
+						"componentType": "Input",
 						"maxLength": 255,
 						"id": "j6qg8rc6-QOP-jbgdl5jb",
 						"conditionFilter": { "value": "true", "type": "VTL" },
+						"label": { "value": "\"Darlalidada\"", "type": "VTL|MD" },
 						"response": {
 							"name": "FAVOURITE_CHARACTERS11"
 						}
@@ -42,7 +43,7 @@
 					}
 				],
 				[
-					{ "label": "\"2\"", "type": "VTL|MD" },
+					{ "label": { "value": "\"2\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -65,7 +66,7 @@
 					}
 				],
 				[
-					{ "label": "3" },
+					{ "label": { "value": "\"3\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -88,7 +89,7 @@
 					}
 				],
 				[
-					{ "label": "4" },
+					{ "label": { "value": "\"4\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -111,7 +112,7 @@
 					}
 				],
 				[
-					{ "label": "\"5\"", "type": "VTL|MD" },
+					{ "label": { "value": "\"5\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -134,7 +135,7 @@
 					}
 				],
 				[
-					{ "label": "\"6\"", "type": "VTL|MD" },
+					{ "label": { "value": "\"6\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -157,7 +158,7 @@
 					}
 				],
 				[
-					{ "label": "\"7\"", "type": "VTL|MD" },
+					{ "label": { "value": "\"7\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -203,7 +204,7 @@
 					}
 				],
 				[
-					{ "label": "\"9\"", "type": "VTL|MD" },
+					{ "label": { "value": "\"9\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -226,7 +227,7 @@
 					}
 				],
 				[
-					{ "label": "\"10\"", "type": "VTL|MD" },
+					{ "label": { "value": "\"10\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,

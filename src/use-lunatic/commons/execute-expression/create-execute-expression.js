@@ -14,7 +14,9 @@ function validateExpression(expObject) {
 		}
 	}
 	if (typeof expObject === 'string') return { value: expObject, type: VTL };
-	console.warn(`Non-VTL compatible expression : ${expObject}`);
+	console.warn(`Non-VTL compatible expression`);
+	console.warn(expObject);
+	throw new Error(`Uncompatible VTL typeof element : ${typeof expObject}`);
 }
 
 function createBindings(variables) {

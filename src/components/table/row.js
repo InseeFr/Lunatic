@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tr as HtmlTr } from '../../commons/components/html-table';
+import { Tr as HtmlTr } from '../commons/components/html-table';
 import Cell from './cell';
 
 function Row({
@@ -10,8 +10,10 @@ function Row({
 	rowIndex,
 	iteration,
 	handleChange,
+	errors,
+	paths,
 }) {
-	const content = components.map(function (content, index) {
+	const row = components.map(function (content, index) {
 		return (
 			<Cell
 				id={id}
@@ -23,12 +25,14 @@ function Row({
 				row={rowIndex}
 				index={index}
 				key={index}
+				errors={errors}
+				paths={paths}
 			/>
 		);
 	});
 	return (
 		<HtmlTr id={id} row={rowIndex}>
-			{content}
+			{row}
 		</HtmlTr>
 	);
 }

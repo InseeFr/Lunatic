@@ -1,6 +1,6 @@
 import React from 'react';
 import { OrchestratedComponent } from '../commons';
-import { Td as HtmlTd } from '../commons/components/html-table';
+import { Td } from '../commons/components/html-table';
 
 function collecteResponseValue(response, value) {
 	if (typeof response === 'object') {
@@ -41,40 +41,38 @@ function Cell({
 	content,
 	id,
 	executeExpression,
+	paths,
 	iteration,
 	value,
 	row,
 	index,
 	handleChange,
+	errors,
 }) {
 	const { label, componentType, rowspan, colspan } = content;
 
 	if (componentType) {
 		const valueField = collecteValue(content, value);
 		return (
-			<HtmlTd
-				id={id}
-				row={row}
-				index={index}
-				rowSpan={rowspan}
-				colSpan={colspan}
-			>
+			<Td id={id} row={row} index={index} rowSpan={rowspan} colSpan={colspan}>
 				<OrchestratedComponent
 					id={id}
 					component={content}
 					handleChange={handleChange}
 					value={valueField}
 					executeExpression={executeExpression}
+					paths={paths}
 					iteration={iteration}
+					errors={errors}
 				/>
-			</HtmlTd>
+			</Td>
 		);
 	}
 
 	return (
-		<HtmlTd id={id} row={row} index={index} rowSpan={rowspan} colSpan={colspan}>
-			{label || ''}
-		</HtmlTd>
+		<Td id={id} row={row} index={index} rowSpan={rowspan} colSpan={colspan}>
+			{executeExpression(label, { iteration }) || ''}
+		</Td>
 	);
 }
 

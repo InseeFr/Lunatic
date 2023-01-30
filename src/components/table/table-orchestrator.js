@@ -1,5 +1,5 @@
 import React from 'react';
-import Row from './components/row';
+import Row from './row';
 
 function TableOrchestrator({
 	body,
@@ -13,6 +13,8 @@ function TableOrchestrator({
 	preferences,
 	management,
 	missing,
+	errors,
+	paths,
 }) {
 	if (Array.isArray(body)) {
 		return body.map(function (components, index) {
@@ -26,12 +28,15 @@ function TableOrchestrator({
 					handleChange={handleChange}
 					iteration={iteration}
 					executeExpression={executeExpression}
-					/** */
+					paths={paths}
+					/* */
 					features={features}
 					shortcut={shortcut}
 					preferences={preferences}
 					management={management}
+					/* */
 					missing={missing}
+					errors={errors}
 				/>
 			);
 		});
