@@ -1,7 +1,7 @@
 import source from '../stories/questionnaires/logement/source.json';
 import useLunatic from './use-lunatic';
 import { renderHook, act } from '@testing-library/react-hooks';
-import sourceWithoutHierarchy from '../stories/breadcrumb/source.json';
+import sourceWithoutHierarchy from '../stories/overview/source.json';
 
 const lunaticConfiguration = {
 	management: false,
@@ -11,7 +11,7 @@ const lunaticConfiguration = {
 	missing: false,
 	shortcut: false,
 	activeGoNextForMissing: false,
-	showBreadcrumb: false,
+	showOverview: false,
 	filterDescription: true,
 };
 
@@ -19,7 +19,7 @@ const advancedQestionnaireData = {
 	COLLECTED: { CADR: { COLLECTED: '1' } },
 };
 
-describe('breadcrumb', function () {
+describe('overview', function () {
 	it('only first sequence visible', function () {
 		const data = [];
 		const { result } = renderHook(() =>
@@ -27,25 +27,25 @@ describe('breadcrumb', function () {
 				...lunaticConfiguration,
 			})
 		);
-		const breadcrumb = result.current.breadcrumb;
-		expect(breadcrumb).toHaveLength(11);
-		expect(breadcrumb[0].reached).toEqual(true);
-		expect(breadcrumb[0].visible).toEqual(true);
-		expect(breadcrumb[1].reached).toEqual(false);
-		expect(breadcrumb[1].visible).toEqual(true);
+		const overview = result.current.overview;
+		expect(overview).toHaveLength(11);
+		expect(overview[0].reached).toEqual(true);
+		expect(overview[0].visible).toEqual(true);
+		expect(overview[1].reached).toEqual(false);
+		expect(overview[1].visible).toEqual(true);
 	});
-	it('Empty breadcrumb when no hierarchy', function () {
+	it('Empty overview when no hierarchy', function () {
 		const data = [];
 		const { result } = renderHook(() =>
 			useLunatic(sourceWithoutHierarchy, data, {
 				...lunaticConfiguration,
 			})
 		);
-		expect(result.current.breadcrumb).toHaveLength(0);
+		expect(result.current.overview).toHaveLength(0);
 	});
 });
 
-describe('breadcrumb with initial data', function () {
+describe('overview with initial data', function () {
 	it('Second Sequence visible', function () {
 		const { result } = renderHook(() =>
 			useLunatic(source, advancedQestionnaireData, {
@@ -54,11 +54,11 @@ describe('breadcrumb with initial data', function () {
 				initialPage: 16,
 			})
 		);
-		const breadcrumb = result.current.breadcrumb;
-		expect(breadcrumb).toHaveLength(11);
-		expect(breadcrumb[0].reached).toEqual(true);
-		expect(breadcrumb[0].visible).toEqual(true);
-		expect(breadcrumb[1].reached).toEqual(true);
-		expect(breadcrumb[1].visible).toEqual(true);
+		const overview = result.current.overview;
+		expect(overview).toHaveLength(11);
+		expect(overview[0].reached).toEqual(true);
+		expect(overview[0].visible).toEqual(true);
+		expect(overview[1].reached).toEqual(true);
+		expect(overview[1].visible).toEqual(true);
 	});
 });

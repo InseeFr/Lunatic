@@ -1,5 +1,5 @@
-export const buildBreadcrumb = (stateBreadcrumb) => {
-	const wipBreadcrumb = stateBreadcrumb
+export const overviewWithChildren = (stateOverview) => {
+	const wipOverview = stateOverview
 		.filter((entry) => entry.type === 'sequence')
 		.map((entry) => ({
 			lunaticId: entry.id,
@@ -11,7 +11,7 @@ export const buildBreadcrumb = (stateBreadcrumb) => {
 			children: [],
 		}));
 
-	stateBreadcrumb
+	stateOverview
 		.filter((entry) => entry.type === 'subSequence')
 		.forEach((subSeq) => {
 			const subEntry = {
@@ -23,12 +23,12 @@ export const buildBreadcrumb = (stateBreadcrumb) => {
 				reached: subSeq.reached,
 				children: [],
 			};
-			wipBreadcrumb.map((seq) => {
+			wipOverview.map((seq) => {
 				if (seq.page === subSeq.parent) {
 					return { ...seq, children: seq.children.push(subEntry) };
 				}
 				return seq;
 			});
 		});
-	return wipBreadcrumb;
+	return wipOverview;
 };

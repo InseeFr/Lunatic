@@ -4,7 +4,7 @@ import * as lunatic from '../..';
 
 import React, { memo } from 'react';
 
-import { Breadcrumb } from './breadcrumb';
+import { Overview } from './overview';
 import Waiting from './waiting';
 
 function getStoreInfoRequired() {
@@ -65,7 +65,7 @@ function OrchestratorForStories({
 	addExternal,
 	preferences,
 	custom,
-	showBreadcrumb = false,
+	showOverview = false,
 	filterDescription = true,
 	...rest
 }) {
@@ -80,7 +80,7 @@ function OrchestratorForStories({
 		isFirstPage,
 		isLastPage,
 		waiting,
-		breadcrumb,
+		overview,
 		getErrors,
 		getModalErrors,
 		getCurrentErrors,
@@ -148,9 +148,7 @@ function OrchestratorForStories({
 				maxPage={maxPage}
 				getData={getData}
 			/>
-			{showBreadcrumb && (
-				<Breadcrumb breadcrumb={breadcrumb} goToPage={goToPage} />
-			)}
+			{showOverview && <Overview overview={overview} goToPage={goToPage} />}
 			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
 			<Waiting status={waiting}>
 				<div className="waiting-orchestrator">

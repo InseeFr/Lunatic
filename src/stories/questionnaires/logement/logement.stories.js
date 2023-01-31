@@ -26,7 +26,7 @@ const stories = {
 			control: 'boolean',
 			defaultValue: false,
 		},
-		showBreadcrumb: {
+		showOverview: {
 			table: { disable: false },
 			control: 'boolean',
 			defaultValue: false,

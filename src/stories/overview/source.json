@@ -1,7 +1,7 @@
 {
 	"components": [
 		{
-			"componentType": "Breadcrumb",
+			"componentType": "Overview",
 			"label": { "value": "\"What's your name?\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"maxLength": 30,
