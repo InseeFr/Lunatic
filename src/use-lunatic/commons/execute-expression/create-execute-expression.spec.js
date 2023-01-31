@@ -111,6 +111,7 @@ describe.only('createExecuteExpression', function () {
 	it('should handle 1D vectors', () => {
 		update('PRENOMS', ['Jane', 'John', 'James']);
 		expect(execute('PRENOMS', { iteration: 1 })).toBe('John');
+		expect(execute('PRENOMS', { iteration: 0 })).toBe('Jane');
 		expect(execute('PRENOMS_SIZE', { iteration: 1 })).toBe(3);
 		expect(execute('PRENOMS_WITH_DEFAULTS', { iteration: 1 })).toBe('John');
 		update('PRENOMS', [null, null]);
