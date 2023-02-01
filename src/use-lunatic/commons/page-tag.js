@@ -7,10 +7,13 @@ export function getPageTag(pager) {
 	return `${page}`;
 }
 
-function getPagerFromPageTag(pageTag) {
+export function getPagerFromPageTag(pageTag) {
 	const pattern =
 		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?/g;
 	const match = [...pageTag.matchAll(pattern)];
+	if(match.length === 0){
+		return null;
+	}
 	const [
 		{
 			groups: { page, subPagePlusUn, iterationPlusUn },
