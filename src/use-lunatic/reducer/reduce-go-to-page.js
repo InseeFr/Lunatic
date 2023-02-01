@@ -1,4 +1,5 @@
-import { isOnEmptyPage, getPageTag } from './commons';
+import { isOnEmptyPage } from './commons';
+import { getPageTag } from '../commons';
 import { createModalControlsReducer } from './validate-controls';
 import reduceGoNextPage from './reduce-go-next-page';
 
