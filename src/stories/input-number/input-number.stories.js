@@ -30,5 +30,5 @@ ThousandSeparator.args = {
 	min: 0,
 	max: 1000000,
 	decimals: 0,
-	thousandSeparator: ' ',
+	thousandSeparator: true,
 };
