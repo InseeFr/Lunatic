@@ -29,6 +29,8 @@ function useLunatic(
 		suggesters: suggestersConfiguration,
 		suggesterFetcher,
 		activeControls = false,
+		// Calculate an overview of every sequence (will be exposed as "overview")
+		withOverview = false,
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -151,6 +153,7 @@ function useLunatic(
 					management,
 					handleChange,
 					activeControls,
+					withOverview,
 				})
 			);
 		},
@@ -163,6 +166,7 @@ function useLunatic(
 			savingType,
 			management,
 			handleChange,
+			withOverview,
 			activeControls,
 		]
 	);
