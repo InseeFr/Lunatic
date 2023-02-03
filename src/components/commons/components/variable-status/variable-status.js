@@ -1,8 +1,11 @@
+import './variable-status.scss';
+
+import * as img from './img';
+
 import React, { useState } from 'react';
+
 import PropTypes from 'prop-types';
 import ReactTooltip from 'react-tooltip';
-import * as img from './img';
-import './variable-status.scss';
 
 const VariableStatus = ({ id = '', children }) => {
 	const [tooltipElements, setTooltipElements] = useState(() => ({
@@ -11,7 +14,7 @@ const VariableStatus = ({ id = '', children }) => {
 	}));
 
 	// useEffect(() => {
-	// 	setTooltipElements({ imgName: 'edited', content: 'toto' });
+	// 	setTooltipElements({ imgName: 'edited', content: 'titi' });
 	// }, [response]);
 
 	const { content, imgName } = tooltipElements;
