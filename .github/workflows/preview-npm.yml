@@ -19,7 +19,7 @@ jobs:
         id: branch-name
         uses: tj-actions/branch-names@v6
       - name: Generate release name with branch and date e.g preview-branche-2022-05-15T23:33:38Z
-        run: echo "releasename=$(preview-${{ steps.branch-name.outputs.current_branch }}-${{ github.event.repository.updated_at}})" >> $GITHUB_OUTPUT
+        run: echo "releasename=preview-${{ steps.branch-name.outputs.current_branch }}-${{ github.event.repository.updated_at}}" >> $GITHUB_OUTPUT
       - run: echo "Current branch ${{steps.branch-name.outputs.releasename}}"
       - name: Publishing on NPM
         run: |
