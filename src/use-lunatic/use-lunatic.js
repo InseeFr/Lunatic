@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useReducer } from 'react';
 
 import { COLLECTED } from '../utils/constants';
 import INITIAL_STATE from './initial-state';
-import { buildBreadcrumb } from './commons/getBreadcrumb';
+import { overviewWithChildren } from './commons/getOverview';
 import { getQuestionnaireData } from './commons/get-data';
 import { loadSuggesters } from '../utils/store-tools/auto-load';
 import reducer from './reducer';
@@ -32,7 +32,7 @@ function useLunatic(
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, waiting, modalErrors, errors, currentErrors, breadcrumb } =
+	const { pager, waiting, modalErrors, errors, currentErrors, overview } =
 		state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
@@ -130,9 +130,9 @@ function useLunatic(
 		return getQuestionnaireData({ variables, withRefreshedCalculated });
 	};
 
-	const buildedBreadcrumb = useMemo(
-		() => buildBreadcrumb(breadcrumb),
-		[breadcrumb]
+	const buildedOverview = useMemo(
+		() => overviewWithChildren(overview),
+		[overview]
 	);
 
 	const pageTag = getPageTag(pager);
@@ -175,7 +175,7 @@ function useLunatic(
 		getErrors,
 		getModalErrors,
 		getCurrentErrors,
-		breadcrumb: buildedBreadcrumb,
+		overview: buildedOverview,
 		pageTag,
 		isFirstPage,
 		isLastPage,

@@ -5,7 +5,7 @@ import defaultArgTypes from '../utils/default-arg-types';
 import source from './sourceWithHierarchy';
 
 const stories = {
-	title: 'Components/Breadcrumb',
+	title: 'Components/Overview',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };
@@ -15,4 +15,4 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
-Default.args = { id: 'breadcrumb', source, showBreadcrumb: true, data };
+Default.args = { id: 'overview', source, showOverview: true, data };

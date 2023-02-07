@@ -7,7 +7,7 @@ import {
 
 import compose from '../commons/compose';
 import { createControlsReducer } from './validate-controls';
-import { reduceBreadcrumbOnInit } from './breadcrumb/breadcrumb-on-init';
+import { reduceOverviewOnInit } from './overview/overview-on-init';
 
 /* à bouger d'ici */
 
@@ -190,7 +190,7 @@ function reduceVariableAndPagerOnInit(state, action) {
 	return state;
 }
 
-const reducers = compose(reduceVariableAndPagerOnInit, reduceBreadcrumbOnInit);
+const reducers = compose(reduceVariableAndPagerOnInit, reduceOverviewOnInit);
 
 /**
  *
@@ -198,8 +198,5 @@ const reducers = compose(reduceVariableAndPagerOnInit, reduceBreadcrumbOnInit);
  * @param {*} action
  * @returns
  */
-function reduceOnInit(state, action) {
-	return reducers(state, action);
-}
 
-export default createControlsReducer(reduceOnInit);
+export default createControlsReducer(reducers);

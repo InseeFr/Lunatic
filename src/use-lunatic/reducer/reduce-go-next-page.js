@@ -5,7 +5,7 @@ import {
 import { getCompatibleVTLExpression, getNewReachedPage } from '../commons';
 import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
 
-import { breadcrumbOnChange } from './breadcrumb/breadcrumb-on-change';
+import { overviewOnChange } from './overview/overview-on-change';
 import compose from '../commons/compose';
 
 function getNextPage(state) {
@@ -186,7 +186,7 @@ function reduceGoNextPage(state) {
 }
 const goNextReducer = compose(
 	createModalControlsReducer(createControlsReducer(reduceGoNextPage)),
-	breadcrumbOnChange
+	overviewOnChange
 );
 
 export default goNextReducer;

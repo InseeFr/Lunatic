@@ -1,10 +1,21 @@
 import { isPageReached } from '../../commons/page-tag';
 
-function getBreadcrumb(state) {
+const isSequence = (sourceComponent) =>
+	sourceComponent.components.length > 0 &&
+	'hierarchy' in sourceComponent.components[0];
+
+const isSequenceSamePage = (sourceComponent, page) =>
+	sourceComponent.components[0].hierarchy.sequence.page === page;
+
+const isSubsequenceSamePage = (sourceComponent, page) =>
+	sourceComponent.components[0].hierarchy.subSequence !== undefined &&
+	sourceComponent.components[0].hierarchy.subSequence.page === page;
+
+function getOverview(state) {
 	const { pages, executeExpression, pager } = state;
 
 	//prevent misordered pages by extracting forbidden pages
-	const loopPages = Object.values(pages).reduce((acc, curr) => {
+	const subPages = Object.values(pages).reduce((acc, curr) => {
 		if (curr.subPages !== undefined) return [...acc, ...curr.subPages];
 		return acc;
 	}, []);
@@ -12,23 +23,17 @@ function getBreadcrumb(state) {
 	const filteredComponents = Object.entries(pages)
 		.filter(
 			([k, v]) =>
-				//exclude in loop components
-				!loopPages.includes(k) &&
-				// check isSequence (v.components.length>0 && 'hierarchy' in v.components[0])
-				// je suis une séquence => faire une fonction externe
-				(v.components[0].hierarchy.sequence.page === k ||
-					// et je suis le premier composant d'une sous séquence (qui sont dégagées dans le reduce-on-init du pager)
-					(v.components[0].hierarchy.subSequence !== undefined &&
-						v.components[0].hierarchy.subSequence.page === k))
+				!subPages.includes(k) &&
+				isSequence(v) &&
+				(isSequenceSamePage(v, k) || isSubsequenceSamePage(v, k))
 		)
 		.map(([, v]) => v.components[0]);
-	// conditionFilter && hierarchy
 
-	const breadcrumbEntries = { sequences: [], subSequences: [] };
+	const overviewEntries = { sequences: [], subSequences: [] };
 	for (const component of filteredComponents) {
 		const { hierarchy, conditionFilter } = component;
 		if ('subSequence' in hierarchy) {
-			breadcrumbEntries.subSequences.push({
+			overviewEntries.subSequences.push({
 				...hierarchy.subSequence,
 				type: 'subSequence',
 				parent: hierarchy.sequence.page,
@@ -39,10 +44,9 @@ function getBreadcrumb(state) {
 					pager.lastReachedPage
 				),
 				evaluatedLabel: executeExpression(hierarchy.subSequence.label),
-				// bindings pour limiter les recalculs inutiles ?
 			});
 		} else {
-			breadcrumbEntries.sequences.push({
+			overviewEntries.sequences.push({
 				...hierarchy.sequence,
 				type: 'sequence',
 				conditionFilter,
@@ -53,11 +57,11 @@ function getBreadcrumb(state) {
 		}
 	}
 
-	const { sequences, subSequences } = breadcrumbEntries;
+	const { sequences, subSequences } = overviewEntries;
 	return [...sequences, ...subSequences];
 }
 
-export function reduceBreadcrumbOnInit(state) {
-	const breadcrumb = getBreadcrumb(state);
-	return { ...state, breadcrumb };
+export function reduceOverviewOnInit(state) {
+	const overview = getOverview(state);
+	return { ...state, overview };
 }
