@@ -119,7 +119,7 @@ L'ensemble des composants offerts par Lunatic sont disponibles dans le dossier [
 
 ## Personnalisation
 
-Par défaut les composants offerts par Lunatic sont plutôt simples avec une faible opinion en terme d'apparence. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer au composant.
+Par défaut les composants offerts par Lunatic sont plutôt simples avec un style minimal. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer au composant.
 
 ```jsx
 const custom = {
@@ -169,7 +169,7 @@ L'ensemble des [reducers correspondants à ces actions sont disponibles ici](htt
 
 ### Exécution du VTL
 
-L'autre point important de lunatic est l'exécution des expressions VTL qui permettent de rendre certaines propriétés dynamiques (libellés, erreurs...). Ce remplissage se fait [lorsque l'état change](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/use-lunatic/commons/use-components-from-state.js) lorsque l'état change.
+L'autre point important de lunatic est l'exécution des expressions VTL qui permettent de rendre certaines propriétés dynamiques (libellés, erreurs...). Ce remplissage se fait [lorsque l'état change](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/use-lunatic/commons/use-components-from-state.js).
 
 Afin de faciliter l'exécution des expressions une méthode `executeExpression()` est exposée dans l'état de Lunatic. Cette méthode est accompagnée d'une méthode `updateBindings()` qui permet la mise à jour des valeurs internes. Ce système d'exécution d'expression utilise un système de mémorisation pour ne pas re-exécuter une même expression plusieurs fois. Lorsque l'action `use-lunatic/handle-change` est exécuté, les valeurs ("bindings") sont mis à jour pour mémoriser les valeurs associées aux différentes variables VTL. De la même manière les valeurs des variables calculées dont dépend la variable modifié sont oubliées afin de rafraichir la valeur lors de la prochaine exécution.
 

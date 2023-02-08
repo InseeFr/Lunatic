@@ -36,7 +36,7 @@ Liste des `variables CSS` personnalisables (avec leur valeur par défaut) :
 
 ## Structure HTML
 
-Par défaut les composants offerts par Lunatic sont plutôt simples avec une faible opinion en terme d'apparence. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer au composant.
+Par défaut les composants offerts par Lunatic sont plutôt simples avec un style minimal. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer au composant.
 
 ```jsx
 const custom = {
