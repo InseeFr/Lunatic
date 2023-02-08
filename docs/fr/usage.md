@@ -92,38 +92,6 @@ function App ({source, data}) {
 
 L'ensemble des composants offerts par Lunatic sont disponibles dans le dossier [src/components](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/components/components.js)
 
-## Personnalisation
-
-Par défaut les composants offerts par Lunatic sont plutôt simples avec une faible opinion en terme d'apparence. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer au composant.
-
-```jsx
-const custom = {
-  Input: MyCustomInput,
-  InputNumber: MyCustomInputNumber
-}
-
-function App ({source, data}) {
-  
-  // ...
-
-  return (
-    <div className="container">
-      {components.map(function (component) {
-        const Component = lunatic[component.componentType];
-        return (
-          <Component
-            key={component.id}
-            {...component}
-            custom={custom}
-            errors={currentErrors}
-          />
-        );
-      })}
-    </div>
-  );
-}
-```
-
 ## Interprétation des labels et déclarations
 
 Les labels et déclarations d'un questionnaire peuvent être au format :
