@@ -2,98 +2,126 @@
 
 ## Prérequis
 
-Pour utiliser la librairie `Lunatic`, la Web application cliente doit supporter React 16.8 +
+Pour utiliser la librairie `Lunatic`, la Web application cliente doit supporter React 18+
 
-## Installation de la librairie
+Pour commencer il faut installer lunatic
 
-`Lunatic` est publiée sur [NPM](https://www.npmjs.com/package/@inseefr/lunatic).
-
-```
-# Ajout de la dépendance
-yarn add @inseefr/lunatic
+```bash
+yarn add @inseefr/lunatic@2.0.7-v2
 ```
 
-## Orchestration des composants
+## Le hook useLunatic
 
-Un exemple complet d'orchestration des [composants](./components.md) est proposé dans un [projet exemple](https://github.com/InseeFr/Lunatic/tree/master/example). L'orchestrateur mobilise également des [utilitaires](./utils/index.md) de la librairie pour gérer les données de personnalisation et celles saisies :
+Ensuite, à l'endroit où vous souhaiter afficher le formulaire il faudra utiliser le hook `useLunatic`.
 
-```javascript
-import React from 'react';
+```js
+import {useLunatic} from '@inseefr/lunatic'
+
+const obj = useLunatic(source, data, options)
+```
+
+Ce hook prend 3 paramètres :
+
+- La **source**, qui est une représentation JSON du [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model).
+- Les **données**, qui contient les données initiales du questionnaires (peut être un objet vide)
+- Un objet d'option pour paramétrer le fonctionnement
+    - **features** (défaut `['VTL', 'MD']`), permet de définir les fonctionnalité supportées
+    - **preferences** (défaut `['COLLECTED']`)
+    - **onChange** (défaut `() => {}`), permet d'ajouter une logique à appliquer lorsqu'une réponse est modifiée (doit être mémoïsé car est utilisé comme dépendance d'un useCallback en interne)
+    - **management** (défaut `false`)
+    - **initialPage** (défaut `'1'`), permet de définir la page de départ
+    - **autoSuggesterLoading** (défaut `false`)
+    - **suggesters**
+    - **suggesterFetcher** (défaut `fetch`), méthode utilisée pour récupérer les données du suggester
+    - **activeControls** (défaut `false`), active les contrôles de données
+
+Et retourne un objet permettant de piloter le questionnaire :
+
+- `getComponents()`, renvoie les composants à afficher pour la page courante
+- `goPreviousPage()`, permet d'aller à la page précédente
+- `goNextPage()`, permet d'aller à la page suivante
+- `goToPage(page: string)`, permet d'aller à une page arbitraire
+- `getErrors()`, renvoie les erreurs
+- `getModalErrors()`, renvoie les erreurs dans les modales
+- `getCurrentErrors()`, renvoie les erreurs de la page courante
+- `pageTag`, une chaine de caractère contenant le numéro de page (ex: 8.1)
+- `isFirstPage`
+- `isLastPage`
+- `pager`, un objet contenant les informations liées à la page
+- `waiting`, indique une attente d'information de la part d'un suggester
+- `getData()`, renvoie les données collectées dans le questionnaire
+
+Pour plus d'informations sur les types de ce retour vous pouvez vous référer aux types disponibles dans le [code source](https://github.com/InseeFr/Lunatic/blob/v2-typescript/src/use-lunatic/type.ts#L64-L200). Vous pouvez aussi trouver un exemple d'utilisation du hook dans la partie [Storybook](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/stories/utils/orchestrator.js#L69-L93).
+
+## Les composants
+
+Pour afficher le questionnaire on commencera par récupérer la liste des composants à afficher à l'aide de la méthode `getComponents()` renvoyée par le hook.
+
+Lunatic offre une librairie de composant préconçu pour répondre aux différents types de champs disponible dans les questionnaires.
+
+```jsx
 import * as lunatic from '@inseefr/lunatic';
 
-const Orchestrator = ({
-	savingType,
-	preferences,
-	source,
-	features,
-	data,
-	management,
-}) => {
-	const {
-		questionnaire,
-		components,
-		handleChange,
-		bindings,
-	} = lunatic.useLunatic(source, data, {
-		savingType,
-		preferences,
-		features,
-		management,
-	});
+function App ({source, data}) {
+  const {
+    getComponents,
+    getCurrentErrors,
+    getModalErrors
+  } = lunatic.useLunatic(source, data, {})
+  const components = getComponents();
+  const currentErrors = getCurrentErrors();
+  const modalErrors = getModalErrors();
 
-	console.log(lunatic.getCollectedState(questionnaire));
-
-	return (
-		<div className="container">
-			<div className="components">
-				{components.map((q) => {
-					const { id, componentType } = q;
-					const Component = lunatic[componentType];
-					return (
-						<div className="lunatic lunatic-component" key={`component-${id}`}>
-							<Component
-								{...q}
-								handleChange={handleChange}
-								labelPosition="TOP"
-								preferences={preferences}
-								management={management}
-								features={features}
-								bindings={bindings}
-								writable
-								zIndex={1}
-							/>
-						</div>
-					);
-				})}
-			</div>
-		</div>
-	);
-};
-
-export default Orchestrator;
+  return (
+    <div className="container">
+      {components.map(function (component) {
+        const Component = lunatic[component.componentType];
+        return (
+          <Component
+            key={component.id}
+            {...component}
+            errors={currentErrors}
+          />
+        );
+      })}
+      <lunatic.Modal errors={modalErrors} goNext={goNextPage}/>
+    </div>
+  );
+}
 ```
 
-### Collecte
+L'ensemble des composants offerts par Lunatic sont disponibles dans le dossier [src/components](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/components/components.js)
 
-```javascript
-const Collect = () => (
-	<Orchestrator source={simpsons} data={{}} features={['VTL']} />
-);
-```
+## Personnalisation
 
-### Gestion de la collecte
+Par défaut les composants offerts par Lunatic sont plutôt simples avec une faible opinion en terme d'apparence. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer au composant.
 
-```javascript
-const Management = () => (
-	<Orchestrator
-		source={simpsons}
-		data={data}
-		savingType={'EDITED'}
-		preferences={['COLLECTED', 'FORCED', 'EDITED']}
-		features={['VTL']}
-		management
-	/>
-);
+```jsx
+const custom = {
+  Input: MyCustomInput,
+  InputNumber: MyCustomInputNumber
+}
+
+function App ({source, data}) {
+  
+  // ...
+
+  return (
+    <div className="container">
+      {components.map(function (component) {
+        const Component = lunatic[component.componentType];
+        return (
+          <Component
+            key={component.id}
+            {...component}
+            custom={custom}
+            errors={currentErrors}
+          />
+        );
+      })}
+    </div>
+  );
+}
 ```
 
 ## Interprétation des labels et déclarations
@@ -108,10 +136,3 @@ Dans le cas où ils seraient spécifiés en VTL, les props suivantes sont à val
 
 - features={['VTL']}
 - bindings={lunatic.getBindings(questionnaire)}
-
-## Types
-
-En entrée, lors de l'initialisation de l'orchestrateur (via le paramètre `data`), comme en sortie, les données doivent être typées comme suit, en fonction des composants :
-
-- `boolean` : `CheckboxBoolean`
-- `string` : Autres composants

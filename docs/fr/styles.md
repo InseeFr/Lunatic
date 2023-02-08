@@ -1,16 +1,12 @@
 # Styles
 
-Les composants de la librairie sont exposés avec un style par défaut.
-
-La variabilisation du thème de base et la surcharge des classes css permettent de personnaliser les composants.
-
-## Activer le style par défaut
+Les composants de la librairie sont exposés avec un style par défaut. La variabilisation du thème de base et la surcharge des classes css permettent de personnaliser les composants.
 
 Afin de bénéficier du style par défaut, les composants Lunatic doivent avoir une classe parente : `lunatic-component`
 
-## Custom properties
+## Variables CSS
 
-Liste des `custom properties` personnalisables (avec leur valeur par défaut) :
+Liste des `variables CSS` personnalisables (avec leur valeur par défaut) :
 
 ```css
 * {
@@ -38,8 +34,35 @@ Liste des `custom properties` personnalisables (avec leur valeur par défaut) :
 }
 ```
 
-## Classes CSS
+## Structure HTML
 
-Les éléments html générés par les composants de la librairie possèdent des classes css surchargeables.
+Par défaut les composants offerts par Lunatic sont plutôt simples avec une faible opinion en terme d'apparence. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer au composant.
 
-La liste de ces classes est accessible dans l'onglet `Readme` de chacun des composants exposés dans [Storybook](https://inseefr.github.io/Lunatic/storybook/?path=/story/input--default).
+```jsx
+const custom = {
+  Input: MyCustomInput,
+  InputNumber: MyCustomInputNumber
+}
+
+function App ({source, data}) {
+  
+  // ...
+
+  return (
+    <div className="container">
+      {components.map(function (component) {
+        const Component = lunatic[component.componentType];
+        return (
+          <Component
+            key={component.id}
+            {...component}
+            custom={custom}
+            errors={currentErrors}
+          />
+        );
+      })}
+    </div>
+  );
+}
+```
+
