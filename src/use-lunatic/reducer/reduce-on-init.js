@@ -4,6 +4,7 @@ import {
 	isFirstLastPage,
 	createExecuteExpression,
 } from '../commons';
+import { getPagerFromPageTag } from '../commons/page-tag';
 
 /* à bouger d'ici */
 
@@ -102,7 +103,7 @@ function createVariables(source, data) {
 }
 /* */
 
-function checkInLoop(state) {
+function checkInLoop(state, initialPager) {
 	const { pager, pages, executeExpression } = state;
 	const { page } = pager;
 	if (page in pages) {
@@ -110,13 +111,14 @@ function checkInLoop(state) {
 		if (isLoop) {
 			return {
 				...state,
+				isInLoop: true,
 				pager: {
 					...pager,
-					subPage: 0,
+					subPage: initialPager.subPage || 0,
 					nbSubPages: subPages.length,
-					iteration: 0,
+					iteration: initialPager.iteration || 0,
 					nbIterations: executeExpression(iterations, {
-						iteration: 0,
+						iteration: undefined,
 						bindingDependencies: loopDependencies,
 					}),
 				},
@@ -148,8 +150,12 @@ function reduceOnInit(state, action) {
 		);
 		const pages = checkLoops(createMapPages(source));
 		const { maxPage, cleaning = {}, missingBlock = {}, resizing = {} } = source;
+		let initialPager = getPagerFromPageTag(initialPage);
+		if (!initialPager) {
+			initialPager = { page: 1 };
+		}
 		const pager = {
-			page: initialPage,
+			page: initialPager.page,
 			maxPage: maxPage,
 			subPage: undefined,
 			nbSubPages: undefined,
@@ -159,25 +165,28 @@ function reduceOnInit(state, action) {
 		};
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
-		return checkInLoop({
-			...state,
-			cleaning,
-			missingBlock,
-			resizing,
-			variables,
-			pages,
-			isFirstPage,
-			isLastPage,
-			pager,
-			executeExpression,
-			updateBindings,
-			handleChange,
-			preferences,
-			management,
-			savingType,
-			activeControls,
-			goToPage,
-		});
+		return checkInLoop(
+			{
+				...state,
+				cleaning,
+				missingBlock,
+				resizing,
+				variables,
+				pages,
+				isFirstPage,
+				isLastPage,
+				pager,
+				executeExpression,
+				updateBindings,
+				handleChange,
+				preferences,
+				management,
+				savingType,
+				activeControls,
+				goToPage,
+			},
+			initialPager
+		);
 	}
 
 	return state;
