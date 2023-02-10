@@ -31,7 +31,10 @@ jobs:
         run: echo "CUSTOMVERSION=${{ steps.version.outputs.value }}-${{ steps.branch-name.outputs.current_branch }}-${{ steps.time.outputs.time }}" >> $GITHUB_ENV
       - run: yarn
       - name: Add branch and timestamp to version
-        run: yarn version --new-version $CUSTOMVERSION
+        run: |
+          git config --global user.email "no-reply@insee.fr"
+          git config --global user.name "Insee"
+          yarn version --new-version $CUSTOMVERSION
       - run: yarn build
       - name: Publishing on NPM
         run: |
@@ -39,8 +42,6 @@ jobs:
             echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
             exit 1
           fi
-          git config --global user.email "no-reply@insee.fr"
-          git config --global user.name "Insee"
           yarn publish --tag beta --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
