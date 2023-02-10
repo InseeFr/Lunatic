@@ -14,24 +14,29 @@ jobs:
           node-version: '16'
           registry-url: https://registry.npmjs.org/
       - uses: bahmutov/npm-install@v1
-      - run: yarn build
       - name: Get branch name
         id: branch-name
         uses: tj-actions/branch-names@v6
-      - name: Generate release name with branch and date e.g preview-branche-2022-05-15T23:33:38Z
-        id: generate
-        run: |
-           echo "releasename=preview-${{ steps.branch-name.outputs.current_branch }}-${{ github.event.repository.updated_at}}" >> $GITHUB_OUTPUT
-           echo "releasename=preview-${{ steps.branch-name.outputs.current_branch }}-${{ github.event.repository.updated_at}}" >> $GITHUB_ENV
+      - name: Extract version from package.json
+        uses: sergeysova/jq-action@v2
+        id: version
+        with:
+          cmd: 'jq .version package.json -r'
+      - name: Generate release name with initial version and branch and date e.g preview-branche-2022-05-15T23:33:38Z
+        run: echo "CUSTOMVERSION=preview-${{ steps.version.outputs.value }}-${{ steps.branch-name.outputs.current_branch }}-${{ github.event.repository.updated_at}}" >> $GITHUB_ENV
       - run: | 
           echo "Current branch ${{steps.generate.outputs.releasename}}"
           echo "${{ env.releasename }}"
+      - run: yarn
+      - name: Add branch and timestamp to version
+        run: yarn version --new-version $CUSTOMVERSION
+      - run: yarn build
       - name: Publishing on NPM
         run: |
           if [ "$NODE_AUTH_TOKEN" = "" ]; then
             echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
             exit 1
           fi
-          yarn publish --tag myuglytag --access public
+          yarn publish --tag beta --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
