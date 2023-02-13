@@ -125,14 +125,12 @@ function collecteComponentResponse({
 	return map;
 }
 
-/* */
-
 function checkArrayForSubPage(map: AccumulatorMap, state: LunaticState) {
 	const { pager } = state;
 	const { iteration } = pager;
 
 	return Object.entries(map).reduce(function (sub, [name, value]) {
-		if (value && Array.isArray(value) && iteration) {
+		if (value && Array.isArray(value) && iteration !== undefined) {
 			return { ...sub, [name]: value[iteration] };
 		}
 		return { ...sub, [name]: value };
