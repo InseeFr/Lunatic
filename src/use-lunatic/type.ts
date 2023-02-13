@@ -116,7 +116,7 @@ export type LunaticState = {
 		nbIterations?: number;
 		shallowIteration?: number;
 		linksIterations?: number[];
-		roundabout?: LunaticComponentDefinition<'Roundabout'>;
+		roundabout?: { page: string };
 	};
 	// TODO : Explain this
 	waiting: boolean;

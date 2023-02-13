@@ -4,6 +4,7 @@ import {
 	createControlsReducer,
 	createModalControlsReducer,
 } from './validate-controls';
+import clearPager from '../commons/check-pager';
 import { ExpressionType, LunaticState } from '../type';
 import { reduceToRoundabout } from './reduce-roundabout';
 
@@ -46,6 +47,7 @@ function reduceNextIteration(state: LunaticState) {
 		subPage: 0,
 		iteration: (iteration ?? 0) + 1,
 	};
+
 	return {
 		...state,
 		pager: {
@@ -108,11 +110,7 @@ function reduceStartLoop(
 			modalErrors: undefined,
 		};
 	}
-	/*
 
-
-
-	*/
 	const nbIterations = executeExpression<number>(
 		getCompatibleVTLExpression(iterations)
 	);
@@ -134,7 +132,6 @@ function reduceStartLoop(
 				...newPager,
 				lastReachedPage: getNewReachedPage(newPager),
 			},
-
 			modalErrors: undefined,
 		};
 	}
@@ -157,13 +154,15 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 		...pager,
 	};
 
-	if (subPage && nbSubPages && isInLoop && subPage < nbSubPages - 1) {
+	/* next iteration of loop/roundabout */
+	if (isInLoop && subPage !== undefined && subPage < nbSubPages - 1) {
 		return validateChange(reduceNextSubPage(state));
 	}
+	/* next subpage of loop/roundabout */
 	if (isInLoop && subPage === nbSubPages - 1 && iteration < nbIterations - 1) {
 		return validateChange(reduceNextIteration(state));
 	}
-
+	/* exit of a roundabout */
 	if (roundabout && nbIterations > 1) {
 		return reduceToRoundabout(state);
 	}
@@ -176,7 +175,7 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 		return state;
 	}
 
-	if (isLoop && iterations) {
+	if (isLoop && iterations !== undefined) {
 		return validateChange(
 			reduceStartLoop(state, { next, iterations, loopDependencies })
 		);
