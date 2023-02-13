@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import filterDouble from './filter-double';
 
 describe('filter-double', function () {
