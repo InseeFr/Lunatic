@@ -175,6 +175,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		savingType,
 		management,
 		activeControls,
+		goToPage,
 	} = payload;
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
@@ -212,6 +213,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 			management,
 			savingType,
 			activeControls,
+			goToPage,
 		});
 	}
 

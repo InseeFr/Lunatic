@@ -153,6 +153,6 @@ export type LunaticState = {
 		iteration?: number;
 		nbIterations?: number;
 		subPage?: number;
-		roundabout?: LunaticComponentDefinition<'Roundabout'>;
+		roundabout?: { page: string };
 	}) => void;
 };
