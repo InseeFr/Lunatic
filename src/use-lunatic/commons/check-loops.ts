@@ -35,16 +35,16 @@ function extractLoop(components: LunaticComponentDefinition[] = []) {
 		) {
 			const currentIsLoop = isPaginatedLoop(component);
 			const currentIsRoundabout = isRoundabout(component);
-			if (currentIsLoop) {
+			if (currentIsLoop || currentIsRoundabout) {
 				return {
-					isLoop: true,
+					isLoop: isLoop || currentIsLoop,
+					roundabout: roundabout || currentIsRoundabout,
 					subPages: extractSubPages(component, subPages),
 					iterations: iterations || component.iterations,
-					loopDependencies: loopDependencies || component.loopDependencies,
-					roundabout: roundabout || currentIsRoundabout,
+					loopDependencies: loopDependencies || undefined,
 				};
 			}
-			return { isLoop, subPages, iterations };
+			return { isLoop, subPages, iterations, roundabout };
 		},
 		{
 			isLoop: false,
