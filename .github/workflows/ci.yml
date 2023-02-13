@@ -14,7 +14,7 @@ jobs:
       - uses: bahmutov/npm-install@v1
       - run: yarn
       # Check TypeScript
-      - run: yarn check
+      - run: yarn run check
       # Run tests & build sonar reports
       - run: yarn test-coverage
       # Build lib
