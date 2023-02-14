@@ -1,0 +1,9 @@
+.checkbox-modality .lunatic-input-checkbox {
+  display: flex;
+}
+.checkbox-modality .lunatic-input-checkbox .label-description {
+  font-weight: lighter;
+}
+.checkbox-modality .lunatic-input-checkbox .lunatic-label {
+  font-weight: normal;
+}

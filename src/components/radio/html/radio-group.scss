@@ -7,10 +7,12 @@
 	.lunatic-input-radio {
 		display: flex;
 
-		label {
-			.label-description {
-				font-weight: lighter;
-			}
+		.label-description {
+			font-weight: lighter;
+		}
+
+		.lunatic-label {
+			font-weight: normal;
 		}
 	}
 }
