@@ -59,7 +59,11 @@ Datepicker.propTypes = {
 	required: PropTypes.bool,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	errors: PropTypes.object,
-	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	description: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element,
+		PropTypes.array,
+	]),
 };
 Datepicker.defaultProps = { value: '' };
 

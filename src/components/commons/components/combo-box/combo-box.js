@@ -153,7 +153,11 @@ function ComboBox({
 ComboBox.propTypes = {
 	classStyle: PropTypes.string,
 	placeholder: PropTypes.string,
-	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	description: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element,
+		PropTypes.array,
+	]),
 	search: PropTypes.string,
 	editable: PropTypes.bool,
 	onSelect: PropTypes.func,

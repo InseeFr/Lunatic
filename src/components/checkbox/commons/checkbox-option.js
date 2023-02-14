@@ -65,7 +65,11 @@ CheckboxOption.prototype = {
 	checked: PropTypes.bool,
 	disabled: PropTypes.bool,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	description: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element,
+		PropTypes.array,
+	]),
 };
 
 CheckboxOption.defaultProps = {

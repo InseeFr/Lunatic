@@ -12,15 +12,15 @@ import Missing from './missing';
 function getDescription({ declarations, description }) {
 	if (Array.isArray(declarations)) {
 		return declarations.reduce(function (what, declaration) {
-			const { position, label } = declaration;
+			const { position, label, declarationType } = declaration;
 			if (position === DECLARATION_POSITIONS.after) {
-				return label;
+				return [...what, { label, declarationType }];
 			}
 			return what;
-		}, description);
+		}, []); // Array<string | JSX.element>
 	}
 
-	return description;
+	return description; // string | JSX.element
 }
 
 function LunaticComponent(props) {

@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
+import { DescritionPropsType } from '../../commons/components/description';
 import './input.scss';
 
 function checkValue(value) {
@@ -62,7 +63,7 @@ Input.propTypes = {
 	required: PropTypes.bool,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	errors: PropTypes.object,
-	description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	description: DescritionPropsType,
 };
 
 Input.defaultValue = {

@@ -25,7 +25,11 @@ CheckboxGroup.propTypes = {
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
 			label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-			description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+			description: PropTypes.oneOfType([
+				PropTypes.string,
+				PropTypes.element,
+				PropTypes.array,
+			]),
 			value: PropTypes.oneOfType([
 				PropTypes.string,
 				PropTypes.number,
