@@ -12,23 +12,42 @@ export function getPageTag(pager: LunaticState['pager']): string {
 	return `${page}`;
 }
 
-function getPagerFromPageTag(pageTag: string) {
+export function getPagerFromPageTag(pageTag: string) {
 	const pattern =
 		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?/g;
-	const match = [...(pageTag?.matchAll(pattern) as any)] as [
-		{ groups: { page: number; subPagePlusUn: number; iterationPlusUn: number } }
-	];
+	const match = [...(pageTag?.matchAll(pattern) as any)] as
+		| [
+				{
+					groups: {
+						page: string;
+						subPagePlusUn: string;
+						iterationPlusUn: string;
+					};
+				}
+		  ]
+		| [];
+	if (match.length === 0) {
+		return null;
+	}
 	const [
 		{
 			groups: { page, subPagePlusUn, iterationPlusUn },
 		},
 	] = match;
-	return { page, subPage: subPagePlusUn - 1, iteration: iterationPlusUn - 1 };
+	return {
+		page,
+		subPage: parseInt(subPagePlusUn, 10) - 1,
+		iteration: parseInt(iterationPlusUn, 10) - 1,
+	};
 }
 
-export function isNewReachedPage(pager: LunaticState['pager']) {
+export function isNewReachedPage(pager: LunaticState['pager']): boolean {
 	const { lastReachedPage, page, subPage, iteration } = pager;
 	const reachedPager = getPagerFromPageTag(lastReachedPage ?? '0');
+
+	if (!reachedPager) {
+		return false;
+	}
 
 	return (
 		Number.parseInt(page) > Number.parseInt(reachedPager.page.toString()) ||

@@ -12,6 +12,7 @@ import {
 } from '../type';
 import { ActionInit } from '../actions';
 import { LunaticSource } from '../type-source';
+import { getPagerFromPageTag } from '../commons/page-tag';
 
 /**
  * Extract value from colllected data
@@ -139,7 +140,10 @@ function createVariables(source: LunaticSource, data: LunaticData) {
 /**
  * Check if there is a loop and populate the pager accordingly
  */
-function checkInLoop(state: LunaticState): LunaticState {
+function checkInLoop(
+	state: LunaticState,
+	initialPager: { page: string; subPage: number; iteration: number } | null
+): LunaticState {
 	const { pager, pages, executeExpression } = state;
 	const { page } = pager;
 	if (page in pages) {
@@ -149,11 +153,11 @@ function checkInLoop(state: LunaticState): LunaticState {
 				...state,
 				pager: {
 					...pager,
-					subPage: 0,
+					subPage: initialPager?.subPage ?? 0,
 					nbSubPages: (subPages ?? []).length,
-					iteration: 0,
+					iteration: initialPager?.iteration ?? 0,
 					nbIterations: executeExpression(iterations, {
-						iteration: 0,
+						iteration: undefined,
 						bindingDependencies: loopDependencies,
 					}),
 				},
@@ -185,8 +189,9 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		);
 		const pages = checkLoops(createMapPages(source));
 		const { maxPage, cleaning = {}, missingBlock = {}, resizing = {} } = source;
+		let initialPager = getPagerFromPageTag(initialPage);
 		const pager = {
-			page: initialPage,
+			page: initialPager?.page ?? '1',
 			maxPage: maxPage,
 			subPage: undefined,
 			nbSubPages: undefined,
@@ -196,25 +201,28 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		} satisfies LunaticState['pager'];
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
-		return checkInLoop({
-			...state,
-			cleaning,
-			missingBlock,
-			resizing,
-			variables,
-			pages,
-			isFirstPage,
-			isLastPage,
-			pager,
-			executeExpression,
-			updateBindings,
-			handleChange,
-			preferences,
-			management,
-			savingType,
-			activeControls,
-			goToPage,
-		});
+		return checkInLoop(
+			{
+				...state,
+				cleaning,
+				missingBlock,
+				resizing,
+				variables,
+				pages,
+				isFirstPage,
+				isLastPage,
+				pager,
+				executeExpression,
+				updateBindings,
+				handleChange,
+				preferences,
+				management,
+				savingType,
+				activeControls,
+				goToPage,
+			},
+			initialPager
+		);
 	}
 
 	return state;
