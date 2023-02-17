@@ -52,13 +52,20 @@ function createCrawl({
 	 */
 	function executeAndFillObject(object: Record<string, unknown>, path: string) {
 		const candidate = object[path];
-		return {
-			...object,
-			[path]: executeExpression(candidate, {
-				iteration,
-				linksIterations,
-			}),
-		};
+		try {
+			return {
+				...object,
+				[path]: executeExpression(candidate, {
+					iteration,
+					linksIterations,
+				}),
+			};
+		} catch (e) {
+			return {
+				...object,
+				[path]: e instanceof Error ? e.toString() : e,
+			};
+		}
 	}
 
 	function buildCrawlEntry(entry: unknown, path: string[]) {
