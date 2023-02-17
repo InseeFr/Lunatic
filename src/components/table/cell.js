@@ -69,9 +69,17 @@ function Cell({
 		);
 	}
 
+	const getLabel = () => {
+		try {
+			return executeExpression(label, { iteration });
+		} catch (e) {
+			return e.toString();
+		}
+	};
+
 	return (
 		<Td id={id} row={row} index={index} rowSpan={rowspan} colSpan={colspan}>
-			{executeExpression(label, { iteration }) || ''}
+			{getLabel()}
 		</Td>
 	);
 }
