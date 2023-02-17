@@ -1,0 +1,23 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - v2-master
+    pull_request_target:
+      - v2-label-position
+      - v2-master
+
+jobs:
+  test:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: bahmutov/npm-install@v1
+      - run: yarn
+      - run: yarn run test
+

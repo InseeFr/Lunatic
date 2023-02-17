@@ -35,5 +35,4 @@ Default.args = {
 	id: 'simpsons-default',
 	source: simpsons,
 	pagination: true,
-	data: { COLLECTED: { READY: { COLLECTED: true } } },
 };

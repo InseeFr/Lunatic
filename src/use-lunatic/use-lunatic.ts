@@ -18,7 +18,8 @@ import { LunaticData, LunaticState } from './type';
 import { LunaticSource } from './type-source';
 import { createLunaticProvider } from './lunatic-context';
 
-const DEFAULT_DATA = {} as LunaticData;
+const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
+const DEFAULT_DATA = empty as LunaticData;
 const DEFAULT_FEATURES = ['VTL', 'MD'];
 const DEFAULT_PREFERENCES = [COLLECTED];
 const nothing: LunaticState['handleChange'] = () => {};
@@ -37,22 +38,22 @@ function useLunatic(
 		suggesters: suggestersConfiguration,
 		suggesterFetcher,
 		activeControls = false,
-		custom,
+		custom = empty,
 	}: {
-		features: string[];
-		preferences: string[];
-		savingType: string;
-		onChange: typeof nothing;
-		management: boolean;
-		initialPage: string;
-		autoSuggesterLoading: boolean;
+		features?: string[];
+		preferences?: string[];
+		savingType?: string;
+		onChange?: typeof nothing;
+		management?: boolean;
+		initialPage?: string;
+		autoSuggesterLoading?: boolean;
 		suggesters?: Record<
 			string,
 			{ version?: string; fields?: string[]; stopWords: string[]; url: string }
 		>;
 		suggesterFetcher?: typeof fetch;
-		activeControls: boolean;
-		custom: Record<string, FunctionComponent<unknown>>;
+		activeControls?: boolean;
+		custom?: Record<string, FunctionComponent<unknown>>;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
