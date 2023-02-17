@@ -108,6 +108,7 @@ function OrchestratorForStories({
 		getErrors,
 		getModalErrors,
 		getCurrentErrors,
+		pager,
 		getData,
 		Provider,
 	} = lunatic.useLunatic(source, data, {
@@ -129,6 +130,8 @@ function OrchestratorForStories({
 	const errors = getErrors();
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
+
+	console.log({ pager, components });
 
 	return (
 		<Provider>
