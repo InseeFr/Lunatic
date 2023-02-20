@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Build
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,4 +20,18 @@ jobs:
       - uses: bahmutov/npm-install@v1
       - run: yarn
       - run: yarn run test
-
+  e2e:
+    name: End to end
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Install Playwright Browsers
+        run: yarn playwright install --with-deps
+      - name: Run Playwright tests
+        run: yarn playwright test
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

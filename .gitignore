@@ -22,3 +22,6 @@ node_modules/
 .node_repl_history
 .vscode
 .DS_Store
+/test-results/
+/playwright-report/
+/playwright/.cache/
