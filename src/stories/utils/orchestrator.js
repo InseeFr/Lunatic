@@ -131,8 +131,6 @@ function OrchestratorForStories({
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
 
-	console.log({ pager, components });
-
 	return (
 		<Provider>
 			<div className="container">
