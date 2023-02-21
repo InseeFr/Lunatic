@@ -1,10 +1,8 @@
 import { describe, expect, test } from 'vitest';
 import { VTL } from '../../../utils/constants';
 import fillComponentExpressions from './fill-component-expressions';
-import { LunaticExpression } from '../../type';
-import { an } from 'vitest/dist/types-d97c72c7';
 
-describe.only('fillComponentExpressions', () => {
+describe('fillComponentExpressions', () => {
 	const exp = (s: string) => ({ value: s, type: 'VTL' });
 	const component = {
 		label: exp('label'),

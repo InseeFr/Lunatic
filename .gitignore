@@ -16,6 +16,7 @@ node_modules/
 /test-report.xml
 /storybook-static/
 /bundle-report
+playwright-report
 /workers-release
 
 # Optional REPL history
