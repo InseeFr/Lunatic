@@ -7,6 +7,7 @@ import {
 	CheckboxChecked,
 	CheckboxUnchecked,
 } from '../../commons/icons';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 function getIcon(checked, checkboxStyle) {
 	if (checked) {
@@ -33,6 +34,8 @@ function RadioOption({
 	checkboxStyle,
 	label,
 	description,
+	shortcut,
+	codeModality,
 }) {
 	const spanEl = useRef();
 	const Icon = getIcon(checked, checkboxStyle);
@@ -66,31 +69,49 @@ function RadioOption({
 	);
 
 	return (
-		<div className="lunatic-radio-group-option">
-			<div
-				className={classnames('radio-modality', 'radio-modality-block', {
-					checked,
-					disabled,
-				})}
-			>
-				<span
-					id={id}
-					role="radio"
-					className="lunatic-input-radio"
-					aria-checked={checked}
-					tabIndex={tabIndex}
-					onClick={onClickOption}
-					onKeyDown={handleKeyDown}
-					aria-labelledby={labelledBy}
-					ref={spanEl}
+		<>
+			<div className="lunatic-radio-group-option">
+				<div
+					className={classnames('radio-modality', 'radio-modality-block', {
+						checked,
+						disabled,
+					})}
 				>
-					<Icon />
-					<Label id={labelledBy} htmlFor={id} description={description}>
-						{label}
-					</Label>
-				</span>
+					<span
+						id={id}
+						role="radio"
+						className="lunatic-input-radio"
+						aria-checked={checked}
+						tabIndex={tabIndex}
+						onClick={onClickOption}
+						onKeyDown={handleKeyDown}
+						aria-labelledby={labelledBy}
+						ref={spanEl}
+					>
+						<Icon />
+						<Label id={labelledBy} htmlFor={id} description={description}>
+							{codeModality && (
+								<span className="code-modality">
+									{codeModality.toUpperCase()}
+								</span>
+							)}
+							{label}
+						</Label>
+					</span>
+				</div>
 			</div>
-		</div>
+
+			{shortcut && (
+				<KeyboardEventHandler
+					handleKeys={[codeModality]}
+					onKeyEvent={(key, e) => {
+						e.preventDefault();
+						onClickOption();
+					}}
+					handleFocusableElements
+				/>
+			)}
+		</>
 	);
 }
 

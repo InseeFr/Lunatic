@@ -42,6 +42,7 @@ export type ActionInit = {
 		features: LunaticState['features'];
 		preferences: LunaticState['preferences'];
 		savingType: LunaticState['savingType'];
+		shortcut: boolean;
 		management: boolean;
 		handleChange: LunaticState['handleChange'];
 		activeControls: boolean;

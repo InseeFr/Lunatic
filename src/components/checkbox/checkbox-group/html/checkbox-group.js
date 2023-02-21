@@ -8,14 +8,14 @@ import {
 } from '../../../commons';
 import './checkbox-group.scss';
 
-function CheckboxGroup({ options, id, label, description, errors }) {
+function CheckboxGroup({ options, id, label, description, errors, shortcut }) {
 	return (
 		<Fieldset
 			className="lunatic-checkbox-group"
 			legend={label}
 			description={description}
 		>
-			<CheckboxGroupContent id={id} options={options} />
+			<CheckboxGroupContent id={id} options={options} shortcut={shortcut} />
 			<Errors errors={errors} activeId={id} />
 		</Fieldset>
 	);
@@ -40,6 +40,7 @@ CheckboxGroup.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	errors: PropTypes.object,
+	shortcut: PropTypes.bool,
 };
 
 CheckboxGroup.defaultProps = {

@@ -19,6 +19,7 @@ function RadioGroup({
 	checkboxStyle = false,
 	errors,
 	className,
+	shortcut,
 }) {
 	const onKeyDown = useOptionsKeydown(options, onSelect);
 
@@ -32,6 +33,7 @@ function RadioGroup({
 				checkboxStyle={checkboxStyle}
 				label={label}
 				options={options}
+				shortcut={shortcut}
 			/>
 			<Errors errors={errors} activeId={id} />
 		</Fieldset>
@@ -65,6 +67,7 @@ RadioGroup.propTypes = {
 	]),
 	className: PropTypes.string,
 	errors: PropTypes.object,
+	shortcut: PropTypes.bool,
 };
 
 RadioGroup.defaultProps = {

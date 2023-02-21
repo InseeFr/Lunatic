@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
 import { createCustomizableLunaticField, Label } from '../../commons';
 import './checkbox-option.scss';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 function CheckboxOption({
 	disabled,
@@ -12,6 +13,8 @@ function CheckboxOption({
 	onClick,
 	label,
 	description,
+	codeModality,
+	shortcut,
 }) {
 	const onClickOption = useCallback(
 		function () {
@@ -34,28 +37,45 @@ function CheckboxOption({
 	const labelId = `label-${id}`;
 
 	return (
-		<div
-			className={classnames('checkbox-modality', 'checkbox-modality-block', {
-				checked,
-				disabled,
-			})}
-		>
-			<span
-				id={id}
-				role="checkbox"
-				className={`lunatic-input-checkbox`}
-				aria-checked={checked}
-				tabIndex="0"
-				onClick={onClickOption}
-				onKeyDown={handleKeyDown}
-				aria-labelledby={labelId}
+		<>
+			<div
+				className={classnames('checkbox-modality', 'checkbox-modality-block', {
+					checked,
+					disabled,
+				})}
 			>
-				<Icon />
-				<Label id={labelId} htmlFor={id} description={description}>
-					{label}
-				</Label>
-			</span>
-		</div>
+				<span
+					id={id}
+					role="checkbox"
+					className={`lunatic-input-checkbox`}
+					aria-checked={checked}
+					tabIndex="0"
+					onClick={onClickOption}
+					onKeyDown={handleKeyDown}
+					aria-labelledby={labelId}
+				>
+					<Icon />
+					<Label id={labelId} htmlFor={id} description={description}>
+						{codeModality && (
+							<span className="code-modality">
+								{codeModality.toUpperCase()}
+							</span>
+						)}
+						{label}
+					</Label>
+				</span>
+			</div>
+			{shortcut && (
+				<KeyboardEventHandler
+					handleKeys={[codeModality]}
+					onKeyEvent={(key, e) => {
+						e.preventDefault();
+						onClickOption();
+					}}
+					handleFocusableElements
+				/>
+			)}
+		</>
 	);
 }
 

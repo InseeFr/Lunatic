@@ -7,6 +7,13 @@
 
 		.lunatic-label {
 			font-weight: normal;
+			display: flex;
+			gap: 0.5em;
+			align-items: center;
 		}
 	}
+}
+.lunatic-checkbox-label {
+	gap: 0.5em;
+	align-items: center;
 }

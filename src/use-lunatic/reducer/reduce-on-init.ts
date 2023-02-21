@@ -178,6 +178,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		preferences,
 		savingType,
 		management,
+		shortcut,
 		activeControls,
 		goToPage,
 	} = payload;
@@ -220,6 +221,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 				savingType,
 				activeControls,
 				goToPage,
+				shortcut,
 			},
 			initialPager
 		);

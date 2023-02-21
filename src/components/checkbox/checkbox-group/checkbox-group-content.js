@@ -1,35 +1,6 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { CheckboxOption } from '../commons';
 import './checkbox.scss';
-
-function CheckBoxOptionWrapper({
-	checkboxId,
-	labelId,
-	checked,
-	onKeyDown,
-	onClick,
-	label,
-}) {
-	const onClickOption = useCallback(
-		function () {
-			if (typeof onClick === 'function') {
-				onClick(checked === undefined ? false : checked);
-			}
-		},
-		[onClick, checked]
-	);
-
-	return (
-		<CheckboxOption
-			id={checkboxId}
-			labelledBy={labelId}
-			checked={checked}
-			onClick={onClickOption}
-			onKeyDown={onKeyDown}
-			label={label}
-		/>
-	);
-}
 
 function CheckboxGroupContainer({ children }) {
 	return <div className="lunatic-checkbox-group-option">{children}</div>;

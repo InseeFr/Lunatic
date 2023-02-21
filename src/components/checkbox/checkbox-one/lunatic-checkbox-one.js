@@ -17,6 +17,7 @@ function LunaticCheckboxOne({
 	missingResponse,
 	missing,
 	management,
+	shortcut,
 }) {
 	const onSelect = useOnHandleChange({ handleChange, response, value });
 	return (
@@ -41,6 +42,7 @@ function LunaticCheckboxOne({
 				onSelect={onSelect}
 				response={response}
 				label={label}
+				shortcut={shortcut}
 			/>
 		</LunaticComponent>
 	);

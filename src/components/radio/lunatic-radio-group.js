@@ -19,6 +19,7 @@ function LunaticRadioGroup(props) {
 		declarations,
 		missingResponse,
 		missing,
+		shortcut,
 		management,
 		className,
 	} = props;
@@ -45,6 +46,7 @@ function LunaticRadioGroup(props) {
 				errors={errors}
 				label={label}
 				className={className}
+				shortcut={shortcut}
 			/>
 		</LunaticComponent>
 	);

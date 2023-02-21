@@ -146,6 +146,8 @@ export type LunaticState = {
 	updateBindings: (variableName: string, value: unknown) => unknown;
 	// Enable controls for data (form validation)
 	activeControls: boolean;
+	// enable shortcut on radio/checkbox/missing buttons
+	shortcut?: boolean;
 	// TODO : Explain this
 	management?: boolean;
 	goToPage: (page: {

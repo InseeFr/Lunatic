@@ -79,12 +79,12 @@ function OrchestratorForStories({
 	source,
 	data,
 	management = false,
+	shortcut = false,
 	activeControls = false,
 	features,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
-	shortcut = false,
 	activeGoNextForMissing = false,
 	suggesterFetcher,
 	autoSuggesterLoading,
@@ -121,6 +121,7 @@ function OrchestratorForStories({
 		suggesters,
 		suggesterFetcher,
 		management,
+		shortcut,
 		activeControls,
 	});
 
@@ -159,7 +160,6 @@ function OrchestratorForStories({
 									{...storeInfo}
 									missing={missing}
 									missingStrategy={goNextPage}
-									shortcut={shortcut}
 									filterDescription={filterDescription}
 									errors={currentErrors}
 								/>

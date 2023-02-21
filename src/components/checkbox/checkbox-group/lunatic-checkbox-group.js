@@ -6,6 +6,7 @@ function LunaticCheckboxGroup({
 	id,
 	value,
 	responses,
+	shortcut,
 	handleChange,
 	errors,
 	label,
@@ -50,6 +51,7 @@ function LunaticCheckboxGroup({
 				value={value}
 				label={label}
 				errors={errors}
+				shortcut={shortcut}
 			/>
 		</LunaticComponent>
 	);

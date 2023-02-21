@@ -12,6 +12,7 @@ function CheckboxOne({
 	description,
 	onSelect,
 	errors,
+	shortcut,
 }) {
 	return (
 		<RadioGroup
@@ -24,6 +25,7 @@ function CheckboxOne({
 			description={description}
 			onSelect={onSelect}
 			checkboxStyle={true}
+			shortcut={shortcut}
 		/>
 	);
 }
@@ -44,6 +46,7 @@ CheckboxOne.propTypes = {
 	onSelect: PropTypes.func.isRequired,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	errors: PropTypes.object,
+	shortcut: PropTypes.bool,
 };
 
 CheckboxOne.defaultProps = {

@@ -4,7 +4,7 @@ import source from './source';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Components/CheckboxOne',
+	title: 'Components/CheckboxGroup',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
@@ -21,4 +21,8 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
-Default.args = { id: 'checkboxOne', source, shortcut: false };
+Default.args = {
+	id: 'checkboxGroup',
+	source,
+	shortcut: true,
+};
