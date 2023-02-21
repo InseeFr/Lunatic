@@ -33,7 +33,7 @@
 		"test-watch": "vitest",
 		"check": "tsc",
 		"test-coverage": "vitest run --coverage",
-		"build": "babel src --out-dir lib --extensions \".ts,.js\" --copy-files",
+		"build": "babel src --out-dir lib --extensions \".ts,.js,.tsx,.jsx\" --copy-files",
 		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
 		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
