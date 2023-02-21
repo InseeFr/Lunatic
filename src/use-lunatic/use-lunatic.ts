@@ -45,6 +45,7 @@ function useLunatic(
 		savingType: string;
 		onChange: typeof nothing;
 		management: boolean;
+		shortcut: boolean;
 		initialPage: string;
 		autoSuggesterLoading: boolean;
 		suggesters?: Record<
