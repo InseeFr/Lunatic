@@ -69,7 +69,7 @@ function BlockForLoop({
 	const handleChangeLoop = useCallback(
 		function (response, value, args) {
 			if (!paginatedLoop) {
-				const v = valueMap[response.name];
+				const v = valueMap[response.name] ?? [];
 				v[args.index] = value;
 				handleChange(response, v, {
 					loop: true,

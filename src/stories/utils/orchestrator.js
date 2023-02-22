@@ -133,7 +133,7 @@ function OrchestratorForStories({
 
 	return (
 		<Provider>
-			<div className="container">
+			<div className="container story-with-sidebar">
 				<div className="components">
 					{components.map(function (component) {
 						const {
@@ -168,22 +168,24 @@ function OrchestratorForStories({
 						);
 					})}
 				</div>
-				<Pager
-					goPrevious={goPreviousPage}
-					goNext={goNextPage}
-					goToPage={goToPage}
-					isLast={isLastPage}
-					isFirst={isFirstPage}
-					pageTag={pageTag}
-					maxPage={maxPage}
-					getData={getData}
-				/>
-				<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
-				<Waiting status={waiting}>
-					<div className="waiting-orchestrator">
-						Initialisation des données de suggestion...
-					</div>
-				</Waiting>
+				<aside>
+					<Pager
+						goPrevious={goPreviousPage}
+						goNext={goNextPage}
+						goToPage={goToPage}
+						isLast={isLastPage}
+						isFirst={isFirstPage}
+						pageTag={pageTag}
+						maxPage={maxPage}
+						getData={getData}
+					/>
+					<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
+					<Waiting status={waiting}>
+						<div className="waiting-orchestrator">
+							Initialisation des données de suggestion...
+						</div>
+					</Waiting>
+				</aside>
 			</div>
 		</Provider>
 	);

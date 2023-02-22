@@ -1,0 +1,217 @@
+{
+	"maxPage": "3",
+	"components": [
+		{
+			"id": "seq",
+			"componentType": "Sequence",
+			"label": {
+				"value": "\"Description des individus de votre logement\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "1"
+		},
+		{
+			"id": "loop-prenom",
+			"componentType": "Loop",
+			"label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"bindingDependencies": ["PRENOM"],
+			"lines": {
+				"min": { "value": 1, "type": "VTL" },
+				"max": { "value": 10, "type": "VTL" }
+			},
+			"page": "1",
+			"components": [
+				{
+					"componentType": "Input",
+					"label": { "value": "\"Prénom\"", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"maxLength": 30,
+					"bindingDependencies": ["PRENOM"],
+					"id": "prenom",
+					"response": {
+						"name": "PRENOM"
+					}
+				}
+			]
+		},
+		{
+			"id": "loop",
+			"componentType": "Loop",
+
+			"loopDependencies": ["PRENOM"],
+			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"page": "2",
+			"maxPage": "1",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"components": [
+				{
+					"id": "age",
+					"label": {
+						"value": "PRENOM || \", quel est vôtre âge ?\"",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"page": "2.1",
+					"componentType": "InputNumber",
+					"min": 0,
+					"max": 120,
+					"decimals": 0,
+					"response": { "name": "AGE" }
+				},
+				{
+					"id": "loop-prenom-children",
+					"componentType": "Loop",
+					"paginatedLoop": true,
+					"label": { "value": "PRENOM || \", ajouter un enfant ?\"", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"bindingDependencies": ["PRENOM_CHILDREN"],
+					"lines": {
+						"min": { "value": 1, "type": "VTL" },
+						"max": { "value": 10, "type": "VTL" }
+					},
+					"page": "2.2",
+					"components": [
+						{
+							"componentType": "Input",
+							"label": { "value": "\"Prénom\"", "type": "VTL|MD" },
+							"conditionFilter": { "value": "true", "type": "VTL" },
+							"maxLength": 30,
+							"bindingDependencies": ["PRENOM_CHILDREN"],
+							"id": "prenom-children",
+							"response": {
+								"name": "PRENOM_CHILDREN"
+							}
+						}
+					]
+				},
+				{
+					"id": "children-loop-infos",
+					"componentType": "Loop",
+					"page": "2.3",
+					"maxPage": "3",
+					"depth": 1,
+					"paginatedLoop": true,
+					"bindingDependencies": [
+						"PRENOM_CHILDREN"
+					],
+					"loopDependencies": ["PRENOM_CHILDREN"],
+					"iterations": { "value": "count(PRENOM_CHILDREN)", "type": "VTL" },
+					"components": [
+						{
+							"id": "children-loop-infos-sequence",
+							"componentType": "Sequence",
+							"page": "2.3.1",
+							"label": {
+								"value": "\"Information sur l'enfant\" || PRENOM_CHILDREN",
+								"type": "VTL|MD"
+							},
+							"hierarchy": {
+								"sequence": {
+									"id": "children-loop-infos",
+									"page": "2.3",
+									"label": {
+										"value": "\"Information sur l'enfant\" || \" de \" || PRENOM",
+										"type": "VTL|MD"
+									}
+								}
+							},
+							"bindingDependencies": ["PRENOM_CHILDREN", "PRENOM"]
+						},
+						{
+							"id": "children-loop-infos-age",
+							"componentType": "Textarea",
+							"page": "2.3.2",
+							"label": {
+								"value": "\"Age de l'enfant\" || PRENOM_CHILDREN || \" de \" || PRENOM",
+								"type": "VTL|MD"
+							},
+							"hierarchy": {
+								"sequence": {
+									"id": "children-loop-infos",
+									"page": "2.3",
+									"label": {
+										"value": "\"Information sur l'enfant\" || PRENOM_CHILDREN",
+										"type": "VTL|MD"
+									}
+								}
+							},
+							"bindingDependencies": ["PRENOM_CHILDREN", "PRENOM"]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "seq-end",
+			"componentType": "Sequence",
+			"label": {
+				"value": "\"End\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "3"
+		}
+	],
+	"resizing": {
+		"PRENOM": {
+			"size": "count(PRENOM)",
+			"variables": ["AGE"]
+		}
+	},
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM_CHILDREN",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE_CHILDREN",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		}
+	]
+}
