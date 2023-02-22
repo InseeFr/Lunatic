@@ -194,12 +194,10 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		const initialPager = getPagerFromPageTag(initialPage);
 
 		const pager = {
-			page: initialPager?.page ?? '1',
-			maxPage: maxPage,
-			subPage: undefined,
-			nbSubPages: undefined,
-			iteration: undefined,
-			nbIterations: undefined,
+			page: [1],
+			maxPage: [parseInt(maxPage, 10)],
+			iteration: [],
+			maxIteration: [],
 			lastReachedPage: initialPage,
 		} satisfies LunaticState['pager'];
 

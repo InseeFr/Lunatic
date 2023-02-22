@@ -8,7 +8,7 @@ type Args = {
 	execute: (
 		expObject: unknown,
 		args: {
-			iteration?: number;
+			iteration?: number[];
 			linksIterations?: number[];
 			logging?: ExpressionLogger;
 		}
@@ -56,7 +56,7 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 		const value = execute(expression, {
 			logging,
 			iteration: shapeFrom
-				? getIteration({ name, iteration, linksIterations })
+				? [getIteration({ name, iteration, linksIterations })!]
 				: undefined,
 		});
 		if (linksIterations !== undefined) return value;
@@ -67,7 +67,7 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 					const initialValue = shapeVariable.map((_, i) =>
 						execute(expression, {
 							logging,
-							iteration: i,
+							iteration: [i],
 						})
 					);
 					bindings[name] = initialValue;
@@ -90,7 +90,7 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 				const v = baseVar.map((_, i) =>
 					execute(expression, {
 						logging,
-						iteration: i,
+						iteration: [i],
 					})
 				);
 				bindings[name] = v;

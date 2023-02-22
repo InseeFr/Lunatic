@@ -49,6 +49,7 @@ function Pager({
 	pageTag,
 	maxPage,
 	getData,
+	pager,
 }) {
 	if (maxPage && maxPage > 1) {
 		const Button = lunatic.Button;
@@ -63,7 +64,17 @@ function Pager({
 						Next
 					</Button>
 				</div>
-				<div>PAGE: {pageTag}</div>
+				<ul style={{ margin: 0, padding: 0, paddingLeft: 20, lineHeight: 1.6 }}>
+					<li>
+						<strong>PageTag:</strong> {pageTag}
+					</li>
+					<li>
+						<strong>Page:</strong> {JSON.stringify(pager.page)}
+					</li>
+					<li>
+						<strong>Iteration:</strong> {JSON.stringify(pager.iteration)}
+					</li>
+				</ul>
 				<DevOptions goToPage={goToPage} getData={getData} />
 			</>
 		);
@@ -102,6 +113,7 @@ function OrchestratorForStories({
 		goNextPage,
 		goToPage,
 		pageTag,
+		pager,
 		isFirstPage,
 		isLastPage,
 		waiting,
@@ -147,6 +159,9 @@ function OrchestratorForStories({
 						const Component = lunatic[componentType];
 
 						const storeInfo = storeName ? getStoreInfo(storeName) : {};
+
+						console.log('props', other);
+
 						return (
 							<div
 								className="lunatic lunatic-component"
@@ -178,6 +193,7 @@ function OrchestratorForStories({
 						pageTag={pageTag}
 						maxPage={maxPage}
 						getData={getData}
+						pager={pager}
 					/>
 					<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
 					<Waiting status={waiting}>

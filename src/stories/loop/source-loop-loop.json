@@ -112,7 +112,7 @@
 							"componentType": "Sequence",
 							"page": "2.3.1",
 							"label": {
-								"value": "\"Information sur l'enfant\" || PRENOM_CHILDREN",
+								"value": "\"Information sur l'enfant \" || PRENOM_CHILDREN",
 								"type": "VTL|MD"
 							},
 							"hierarchy": {
@@ -120,7 +120,7 @@
 									"id": "children-loop-infos",
 									"page": "2.3",
 									"label": {
-										"value": "\"Information sur l'enfant\" || \" de \" || PRENOM",
+										"value": "\"Information sur l'enfant \" || PRENOM_CHILDREN || \" de \" || PRENOM",
 										"type": "VTL|MD"
 									}
 								}
@@ -132,8 +132,11 @@
 							"componentType": "Textarea",
 							"page": "2.3.2",
 							"label": {
-								"value": "\"Age de l'enfant\" || PRENOM_CHILDREN || \" de \" || PRENOM",
+								"value": "\"Age de l'enfant \" || PRENOM_CHILDREN || \" de \" || PRENOM",
 								"type": "VTL|MD"
+							},
+							"response": {
+								"name": "AGE_CHILDREN"
 							},
 							"hierarchy": {
 								"sequence": {

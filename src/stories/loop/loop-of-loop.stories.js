@@ -31,6 +31,12 @@ Default.args = {
 					['Jane Junior 1', 'Jane Junior 2'],
 				],
 			},
+			AGE_CHILDREN: {
+				COLLECTED: [
+					[13, 10],
+					[9, 8],
+				],
+			},
 		},
 	},
 };

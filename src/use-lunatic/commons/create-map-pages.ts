@@ -11,24 +11,27 @@ function isUnpaginated(questionnaire: { maxPage?: unknown }): boolean {
 /**
  * Append component to the right page in the accumulator
  */
-function mergeComponent(
-	component: LunaticComponentDefinition,
-	page: string,
-	map: LunaticState['pages']
-) {
+function componentToPage(
+	pages: LunaticState['pages'],
+	component: LunaticComponentDefinition
+): LunaticState['pages'] {
+	if (isPaginatedLoop(component) || isRoundabout(component)) {
+		pages = mergeNestedComponents(pages, component.components);
+	}
+	let { page } = component;
 	if (!page) {
 		page = 'unpaged';
 	}
-	if (page in map) {
-		const current = map[page];
+	if (page in pages) {
+		const current = pages[page];
 		const { components } = current;
 		return {
-			...map,
+			...pages,
 			[page]: { ...current, components: [...components, component] },
 		};
 	}
 	return {
-		...map,
+		...pages,
 		[page]: { components: [component] },
 	} as LunaticState['pages'];
 }
@@ -37,17 +40,16 @@ function mergeComponent(
  * Merge child components in the map
  */
 function mergeNestedComponents(
-	components: LunaticComponentDefinition[],
-	map: LunaticState['pages']
+	pages: LunaticState['pages'],
+	components: LunaticComponentDefinition[]
 ): LunaticState['pages'] {
-	return components.reduce(function (current, component) {
-		const { page } = component;
-		if (page) {
-			return mergeComponent(component, page, current);
+	return components.reduce(function (acc, component) {
+		if (component.page) {
+			return componentToPage(acc, component);
 		}
 
-		return current;
-	}, map);
+		return pages;
+	}, pages);
 }
 
 /**
@@ -59,17 +61,7 @@ function createPages(questionnaire: LunaticSource): LunaticState['pages'] {
 	if (isUnpaginated(questionnaire)) {
 		return { '1': { components: components, isLoop: false } };
 	}
-	return components.reduce(function (current, component) {
-		if (isPaginatedLoop(component) || isRoundabout(component)) {
-			return mergeComponent(
-				component,
-				component.page,
-				mergeNestedComponents(component.components, current)
-			);
-		}
-
-		return mergeComponent(component, component.page, current);
-	}, {} as LunaticState['pages']);
+	return components.reduce(componentToPage, {} as LunaticState['pages']);
 }
 
 export default createPages;

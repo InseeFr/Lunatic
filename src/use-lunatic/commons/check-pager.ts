@@ -10,12 +10,10 @@ export default function clearPager(
 	return {
 		maxPage,
 		lastReachedPage,
-		page: '1',
-		subPage: undefined,
-		nbSubPages: undefined,
-		iteration: undefined,
+		page: [1],
+		iteration: [],
 		shallowIteration: undefined,
-		nbIterations: undefined,
+		maxIteration: [],
 		roundabout: undefined,
 	};
 }

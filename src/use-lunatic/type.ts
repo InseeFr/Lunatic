@@ -107,13 +107,10 @@ export type LunaticState = {
 	};
 	pager: {
 		lastReachedPage?: string;
-		maxPage: string;
-		nbSubPages?: number;
-		page: string;
-		subPage?: number;
-		// Iteration index (starting at 0)
-		iteration?: number;
-		nbIterations?: number;
+		page: number[];
+		maxPage: number[];
+		iteration: number[];
+		maxIteration: number[];
 		shallowIteration?: number;
 		linksIterations?: number[];
 		roundabout?: { page: string };
@@ -136,7 +133,7 @@ export type LunaticState = {
 	executeExpression: <T extends unknown = unknown>(
 		expression: unknown,
 		args?: {
-			iteration?: number;
+			iteration?: number[];
 			linksIterations?: number[];
 			logging?: ExpressionLogger;
 			bindingDependencies?: string[];

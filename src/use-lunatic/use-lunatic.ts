@@ -64,6 +64,8 @@ function useLunatic(
 	const { suggesters } = source;
 	const Provider = useMemo(() => createLunaticProvider(custom), [custom]);
 
+	console.log('lunatic useLunatic', state.pager, state.pages);
+
 	useEffect(() => {
 		(async () => {
 			if (

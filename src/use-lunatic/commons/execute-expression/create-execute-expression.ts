@@ -13,6 +13,7 @@ import {
 } from '../../../utils/constants';
 import { LunaticExpression, LunaticState } from '../../type';
 import { CALCULATED } from '../../../constants';
+import { extractValue } from '../../../utils/array';
 
 export type ExpressionLogger = (
 	expression: string | LunaticExpression,
@@ -178,7 +179,7 @@ function createExecuteExpression(
 		{
 			iteration,
 			linksIterations,
-		}: { iteration?: number; linksIterations?: number[] }
+		}: { iteration?: number[]; linksIterations?: number[] }
 	) {
 		const value = bindings[name];
 
@@ -192,10 +193,7 @@ function createExecuteExpression(
 		}
 		if (iteration !== undefined && Array.isArray(value)) {
 			pushToLazy(name);
-			if (iteration < value.length) {
-				return value[iteration];
-			}
-			return null;
+			return extractValue(value, iteration);
 		}
 		if (linksIterations !== undefined) {
 			const [x, y] = linksIterations;
@@ -216,7 +214,7 @@ function createExecuteExpression(
 		{
 			iteration,
 			linksIterations,
-		}: { iteration?: number; linksIterations?: number[] }
+		}: { iteration?: number[]; linksIterations?: number[] }
 	) {
 		return Object.entries(map).reduce(function (sub, [name, _]) {
 			return {

@@ -1,5 +1,6 @@
 import { LunaticComponentDefinition, LunaticState } from '../../type';
 import { ResponseType } from '../../type-source';
+import { extractValue } from '../../../utils/array';
 
 type AccumulatorMap = Record<string, unknown>;
 
@@ -131,14 +132,14 @@ function checkArrayForSubPage(map: AccumulatorMap, state: LunaticState) {
 
 	return Object.entries(map).reduce(function (sub, [name, value]) {
 		if (value && Array.isArray(value) && iteration !== undefined) {
-			return { ...sub, [name]: value[iteration] };
+			return { ...sub, [name]: extractValue(value, iteration) };
 		}
 		return { ...sub, [name]: value };
 	}, {});
 }
 
 function checkUseContext(map: AccumulatorMap, state: LunaticState) {
-	if (isInSubPage(state)) {
+	if (state.pager.iteration.length > 0) {
 		return checkArrayForSubPage(map, state);
 	}
 	return map;

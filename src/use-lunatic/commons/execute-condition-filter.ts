@@ -5,7 +5,7 @@ import { ExpressionLogger } from './execute-expression/create-execute-expression
 function executeConditionFilter(
 	filter: LunaticExpression,
 	execute: LunaticState['executeExpression'],
-	iteration?: number
+	iteration?: number[]
 ) {
 	if (filter && typeof execute === 'function') {
 		const { value } = filter;

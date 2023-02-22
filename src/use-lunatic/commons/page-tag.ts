@@ -4,12 +4,12 @@ import { LunaticState } from '../type';
  * Generate page name from the pager
  */
 export function getPageTag(pager: LunaticState['pager']): string {
-	const { page, subPage, iteration } = pager;
-	if (subPage !== undefined && iteration !== undefined) {
-		return `${page}.${subPage + 1}#${iteration + 1}`;
+	const { page, iteration } = pager;
+	if (iteration.length > 0) {
+		return `${page.join('.')}#${iteration.map((v) => v + 1).join('.')}`;
 	}
 
-	return `${page}`;
+	return page.join('.');
 }
 
 export function getPagerFromPageTag(pageTag: string) {
