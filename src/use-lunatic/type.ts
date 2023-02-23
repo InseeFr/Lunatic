@@ -107,9 +107,13 @@ export type LunaticState = {
 	};
 	pager: {
 		lastReachedPage?: string;
+		// Page numbers (starting with 1), page 3.1 will be [3, 1]
 		page: number[];
+		// Max page number / subPage for each level
 		maxPage: number[];
+		// Index of the current iteration (starting with 0)
 		iteration: number[];
+		// Max iteration index for each iteration level
 		maxIteration: number[];
 		shallowIteration?: number;
 		linksIterations?: number[];

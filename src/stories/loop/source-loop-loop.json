@@ -71,7 +71,6 @@
 				{
 					"id": "loop-prenom-children",
 					"componentType": "Loop",
-					"paginatedLoop": true,
 					"label": { "value": "PRENOM || \", ajouter un enfant ?\"", "type": "VTL|MD" },
 					"conditionFilter": { "value": "true", "type": "VTL" },
 					"bindingDependencies": ["PRENOM_CHILDREN"],

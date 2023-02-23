@@ -1,5 +1,4 @@
 import { describe, expect, test } from 'vitest';
-import { VTL } from '../../../utils/constants';
 import fillComponentExpressions from './fill-component-expressions';
 
 describe('fillComponentExpressions', () => {
@@ -13,9 +12,10 @@ describe('fillComponentExpressions', () => {
 		const translated = fillComponentExpressions(component as any, {
 			executeExpression: (expression: any) => expression.value,
 			pager: {
-				maxPage: '10',
-				page: '10',
-				iteration: 1,
+				maxPage: [10],
+				page: [10],
+				iteration: [1],
+				maxIteration: [1],
 				linksIterations: [1, 2],
 			},
 		});
