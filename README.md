@@ -23,3 +23,20 @@ An [example](https://github.com/InseeFr/Lunatic/tree/master/example/orchestrator
 ## Editor
 
 A Lunatic Model / Lunatic [Editor](https://github.com/InseeFr/Lunatic/tree/master/example/lunatic-editor) is avaible [online](https://inseefr.github.io/Lunatic/editor).
+
+## How to contribute ?
+
+### For developers that's not in InseeFr/Lunatic team
+
+- Fork Lunatic project
+### For all developers
+
+- Create branch with name like `${prefix}/${name}`, where prefix is one of 
+    - `test` : developments that add tests
+    - `doc` : developments that add documentation
+    - `fix` : developments that fix a issue/bug
+    - `feat` : developments that add new feature
+
+- This branch has to start from `main` branch
+
+- Open a Pull Request `${prefix}/${name}` -> `main`
