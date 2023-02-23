@@ -11,7 +11,6 @@ function Row({
 	management,
 	preferences,
 	executeExpression,
-	custom,
 	linksIterations,
 	symLinks,
 	lengths,
@@ -27,7 +26,6 @@ function Row({
 	if (x !== y) {
 		return components.reduce(function (row, component) {
 			const { response, id } = component;
-
 			const idComponent = `${id}-${x + 1}-${y + 1} `;
 
 			let value = undefined;
@@ -55,7 +53,6 @@ function Row({
 					preferences={preferences}
 					linksIterations={linksIterations}
 					executeExpression={executeExpression}
-					custom={custom}
 				/>,
 			];
 		}, []);

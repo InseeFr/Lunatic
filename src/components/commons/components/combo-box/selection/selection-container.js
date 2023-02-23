@@ -3,13 +3,13 @@ import classnames from 'classnames';
 
 function SelectionContainer({
 	children,
-
 	id,
 	expended,
 	focused,
 	disabled,
+	labelId,
 }) {
-	const comboBoxId = `lunatic-combo-box-selection-${id}`;
+	const comboBoxId = `${id}`;
 	return (
 		<div
 			id={comboBoxId}
@@ -23,6 +23,7 @@ function SelectionContainer({
 			aria-expanded={expended}
 			aria-autocomplete="list"
 			aria-owns={comboBoxId}
+			aria-labelledby={labelId}
 		>
 			{children}
 		</div>

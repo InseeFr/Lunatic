@@ -65,7 +65,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["NOMOCCPRINC"],
 			"response": { "name": "NOMOCCPRINC" }
 		},
 
@@ -85,7 +84,7 @@
 					"declarationType": "STATEMENT",
 					"position": "BEFORE_QUESTION_TEXT",
 					"label": {
-						"value": "Votre adresse électronique servira à vous envoyer un accusé de réception de votre questionnaire et éventuellement à vous renvoyer un mot de passe en cas de perte. Elle ne sera utilisée qu’à cette seule fin et ne sera ni conservée, ni transmise à un tiers.",
+						"value": "\"Votre adresse électronique servira à vous envoyer un accusé de réception de votre questionnaire et éventuellement à vous renvoyer un mot de passe en cas de perte. Elle ne sera utilisée qu’à cette seule fin et ne sera ni conservée, ni transmise à un tiers.\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -101,7 +100,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["MAIL"],
 			"response": { "name": "MAIL" }
 		},
 
@@ -171,7 +169,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["ADRESSE_BIS"],
 			"response": { "name": "ADRESSE_BIS" }
 		},
 
@@ -201,7 +198,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["ADRESSE_RUE"],
 			"response": { "name": "ADRESSE_RUE" }
 		},
 
@@ -234,7 +230,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["ADRESSE_VOIE"],
 			"response": { "name": "ADRESSE_VOIE" }
 		},
 
@@ -267,7 +262,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["ADRESSE_RESIDENCE"],
 			"response": { "name": "ADRESSE_RESIDENCE" }
 		},
 
@@ -297,7 +291,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["ADRESSE_BATIMENT"],
 			"response": { "name": "ADRESSE_BATIMENT" }
 		},
 
@@ -327,7 +320,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["ADRESSE_ESCALIER"],
 			"response": { "name": "ADRESSE_ESCALIER" }
 		},
 
@@ -357,7 +349,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["ADRESSE_ETAGE"],
 			"response": { "name": "ADRESSE_ETAGE" }
 		},
 
@@ -390,7 +381,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["ADRESSE_PORTE"],
 			"response": { "name": "ADRESSE_PORTE" }
 		},
 
@@ -420,7 +410,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["ADRESSE_CODEPOSTAL"],
 			"response": { "name": "ADRESSE_CODEPOSTAL" }
 		},
 
@@ -453,7 +442,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["ADRESSE_COMMUNE"],
 			"response": { "name": "ADRESSE_COMMUNE" }
 		},
 
@@ -497,8 +485,7 @@
 					"errorMessage": {
 						"value": "\"Merci de renseigner le type de logement\"",
 						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["TYPL_X"]
+					}
 				}
 			],
 			"hierarchy": {
@@ -513,29 +500,32 @@
 			},
 			"bindingDependencies": ["TYPL_X"],
 			"options": [
-				{ "value": "1", "label": { "value": "Maison", "type": "VTL|MD" } },
+				{ "value": "1", "label": { "value": "\"Maison\"", "type": "VTL|MD" } },
 
-				{ "value": "2", "label": { "value": "Appartement", "type": "VTL|MD" } },
+				{
+					"value": "2",
+					"label": { "value": "\"Appartement\"", "type": "VTL|MD" }
+				},
 
 				{
 					"value": "3",
-					"label": { "value": "Logement-foyer", "type": "VTL|MD" }
+					"label": { "value": "\"Logement-foyer\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "4",
-					"label": { "value": "Chambre d’hôtel", "type": "VTL|MD" }
+					"label": { "value": "\"Chambre d’hôtel\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "5",
-					"label": { "value": "Habitation de fortune", "type": "VTL|MD" }
+					"label": { "value": "\"Habitation de fortune\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "6",
 					"label": {
-						"value": "Pièce indépendante (ayant sa propre entrée)",
+						"value": "\"Pièce indépendante (ayant sa propre entrée)\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -615,8 +605,7 @@
 					"errorMessage": {
 						"value": "\"Merci d’indiquer l’année d’achèvement de la construction. \"",
 						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["AACHL_X"]
+					}
 				}
 			],
 			"hierarchy": {
@@ -629,28 +618,30 @@
 					}
 				}
 			},
-			"bindingDependencies": ["AACHL_X"],
 			"options": [
-				{ "value": "1", "label": { "value": "Avant 1919", "type": "VTL|MD" } },
+				{
+					"value": "1",
+					"label": { "value": "\"Avant 1919\"", "type": "VTL|MD" }
+				},
 
 				{
 					"value": "2",
-					"label": { "value": "De 1919 à 1945", "type": "VTL|MD" }
+					"label": { "value": "\"De 1919 à 1945\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "3",
-					"label": { "value": "De 1946 à 1970", "type": "VTL|MD" }
+					"label": { "value": "\"De 1946 à 1970\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "4",
-					"label": { "value": "De 1971 à 1990", "type": "VTL|MD" }
+					"label": { "value": "\"De 1971 à 1990\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "5",
-					"label": { "value": "De 1991 à 2005", "type": "VTL|MD" }
+					"label": { "value": "\"De 1991 à 2005\"", "type": "VTL|MD" }
 				},
 
 				{
@@ -717,7 +708,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["DANSCECASP"],
 			"response": { "name": "DANSCECASP" }
 		},
 
@@ -779,7 +769,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["AEMM_X"],
 			"response": { "name": "AEMM_X" }
 		},
 
@@ -864,8 +853,7 @@
 					"errorMessage": {
 						"value": "\"Merci de saisir un nombre de pièces valide.\"",
 						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["NBPI_X"]
+					}
 				}
 			],
 			"hierarchy": {
@@ -878,7 +866,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["NBPI_X"],
 			"response": { "name": "NBPI_X" }
 		},
 
@@ -922,8 +909,7 @@
 					"errorMessage": {
 						"value": "\"Merci d’indiquer la surface de ce logement.\"",
 						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["SURF_X"]
+					}
 				}
 			],
 			"hierarchy": {
@@ -936,41 +922,40 @@
 					}
 				}
 			},
-			"bindingDependencies": ["SURF_X"],
 			"options": [
 				{
 					"value": "1",
-					"label": { "value": "Moins de 30 m²", "type": "VTL|MD" }
+					"label": { "value": "\"Moins de 30 m²\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "2",
-					"label": { "value": "De 30 à moins de 40 m²", "type": "VTL|MD" }
+					"label": { "value": "\"De 30 à moins de 40 m²\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "3",
-					"label": { "value": "De 40 à moins de 60 m²", "type": "VTL|MD" }
+					"label": { "value": "\"De 40 à moins de 60 m²\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "4",
-					"label": { "value": "De 60 à moins de 80 m²", "type": "VTL|MD" }
+					"label": { "value": "\"De 60 à moins de 80 m²\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "5",
-					"label": { "value": "De 80 à moins de 100 m²", "type": "VTL|MD" }
+					"label": { "value": "\"De 80 à moins de 100 m²\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "6",
-					"label": { "value": "De 100 à moins de 120 m²", "type": "VTL|MD" }
+					"label": { "value": "\"De 100 à moins de 120 m²\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "7",
-					"label": { "value": "\"120 m² ou plus\" || \"\"", "type": "VTL|MD" }
+					"label": { "value": "\"120 m² ou plus\"", "type": "VTL|MD" }
 				}
 			],
 			"response": { "name": "SURF_X" }
@@ -992,8 +977,7 @@
 					"errorMessage": {
 						"value": "\"Merci de renseigner le statut d’occupation du logement.\"",
 						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["STOC_X"]
+					}
 				}
 			],
 			"hierarchy": {
@@ -1006,12 +990,11 @@
 					}
 				}
 			},
-			"bindingDependencies": ["STOC_X"],
 			"options": [
 				{
 					"value": "1",
 					"label": {
-						"value": "propriétaire de ce logement (y compris en accession, en indivision ou jouissance du logement par usufruit) ?",
+						"value": "\"propriétaire de ce logement (y compris en accession, en indivision ou jouissance du logement par usufruit) ?\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -1019,7 +1002,7 @@
 				{
 					"value": "2",
 					"label": {
-						"value": "locataire ou sous-locataire du logement, loué vide ?",
+						"value": "\"locataire ou sous-locataire du logement, loué vide ?\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -1027,7 +1010,7 @@
 				{
 					"value": "3",
 					"label": {
-						"value": "locataire ou sous-locataire du logement ou de la chambre, loué(e) meublé(e) ?",
+						"value": "\"locataire ou sous-locataire du logement ou de la chambre, loué(e) meublé(e) ?\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -1035,7 +1018,7 @@
 				{
 					"value": "4",
 					"label": {
-						"value": "logé(e) gratuitement, par exemple par des parents, des amis ou votre employeur (y compris les personnes occupant un logement qu’elles ont vendu en viager) ?",
+						"value": "\"logé(e) gratuitement, par exemple par des parents, des amis ou votre employeur (y compris les personnes occupant un logement qu’elles ont vendu en viager) ?\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -1062,8 +1045,7 @@
 					"errorMessage": {
 						"value": "\"Merci d’indiquer si ce logement appartient à un organisme d’HLM.\"",
 						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["HLM_X"]
+					}
 				}
 			],
 			"hierarchy": {
@@ -1076,10 +1058,8 @@
 					}
 				}
 			},
-			"bindingDependencies": ["HLM_X"],
 			"options": [
 				{ "value": "1", "label": { "value": "\"Oui\"", "type": "VTL|MD" } },
-
 				{ "value": "2", "label": { "value": "\"Non\"", "type": "VTL|MD" } }
 			],
 			"response": { "name": "HLM_X" }
@@ -1104,8 +1084,7 @@
 					"errorMessage": {
 						"value": "\"Merci d’indiquer les installations sanitaires de ce logement.\"",
 						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["SANI_X"]
+					}
 				}
 			],
 			"hierarchy": {
@@ -1118,17 +1097,16 @@
 					}
 				}
 			},
-			"bindingDependencies": ["SANI_X"],
 			"options": [
 				{
 					"value": "1",
-					"label": { "value": "Ni baignoire, ni douche", "type": "VTL|MD" }
+					"label": { "value": "\"Ni baignoire, ni douche\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "2",
 					"label": {
-						"value": "Baignoire ou douche dans une pièce non réservée à la toilette",
+						"value": "\"Baignoire ou douche dans une pièce non réservée à la toilette\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -1136,7 +1114,7 @@
 				{
 					"value": "3",
 					"label": {
-						"value": "Salle(s) de bains (avec douche ou baignoire)",
+						"value": "\"Salle(s) de bains (avec douche ou baignoire)\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -1163,8 +1141,7 @@
 					"errorMessage": {
 						"value": "\"Merci de renseigner le principal moyen de chauffage de ce logement.\"",
 						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["CHFL_X"]
+					}
 				}
 			],
 			"hierarchy": {
@@ -1177,12 +1154,11 @@
 					}
 				}
 			},
-			"bindingDependencies": ["CHFL_X"],
 			"options": [
 				{
 					"value": "1",
 					"label": {
-						"value": "Chauffage collectif (chaudière commune à plusieurs logements de l’immeuble ou réseau de chauffage urbain)",
+						"value": "\"Chauffage collectif (chaudière commune à plusieurs logements de l’immeuble ou réseau de chauffage urbain)\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -1190,7 +1166,7 @@
 				{
 					"value": "2",
 					"label": {
-						"value": "Chaudière individuelle (propre au logement)",
+						"value": "\"Chaudière individuelle (propre au logement)\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -1198,7 +1174,7 @@
 				{
 					"value": "3",
 					"label": {
-						"value": "Chauffage individuel « tout électrique »",
+						"value": "\"Chauffage individuel « tout électrique »\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -1206,7 +1182,7 @@
 				{
 					"value": "4",
 					"label": {
-						"value": "Poêle, cheminée, cuisinière, etc.",
+						"value": "\"Poêle, cheminée, cuisinière, etc.\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -1233,8 +1209,7 @@
 					"errorMessage": {
 						"value": "\"Merci de renseigner le combustible principal de chauffage.\"",
 						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["CMBL_X"]
+					}
 				}
 			],
 			"hierarchy": {
@@ -1247,29 +1222,33 @@
 					}
 				}
 			},
-			"bindingDependencies": ["CMBL_X"],
 			"options": [
 				{
 					"value": "1",
-					"label": { "value": "Chauffage urbain", "type": "VTL|MD" }
+					"label": { "value": "\"Chauffage urbain\"", "type": "VTL|MD" }
 				},
 
 				{
 					"value": "2",
-					"label": { "value": "Gaz de ville ou de réseau", "type": "VTL|MD" }
+					"label": {
+						"value": "\"Gaz de ville ou de réseau\"",
+						"type": "VTL|MD"
+					}
 				},
 
 				{
 					"value": "3",
-					"label": { "value": "Fioul (mazout)", "type": "VTL|MD" }
+					"label": { "value": "\"Fioul (mazout)\"", "type": "VTL|MD" }
 				},
 
-				{ "value": "4", "label": { "value": "Électricité", "type": "VTL|MD" } },
-
+				{
+					"value": "4",
+					"label": { "value": "\"Électricité\"", "type": "VTL|MD" }
+				},
 				{
 					"value": "5",
 					"label": {
-						"value": "Gaz en bouteille ou en citerne",
+						"value": "\"Gaz en bouteille ou en citerne\"",
 						"type": "VTL|MD"
 					}
 				},
@@ -1277,7 +1256,7 @@
 				{
 					"value": "6",
 					"label": {
-						"value": "Autre (bois, solaire, géothermie, etc.)",
+						"value": "\"Autre (bois, solaire, géothermie, etc.)\"",
 						"type": "VTL|MD"
 					}
 				}
@@ -1331,7 +1310,7 @@
 			},
 			"bindingDependencies": ["VOIT_X"],
 			"options": [
-				{ "value": "1", "label": { "value": "Aucune", "type": "VTL|MD" } },
+				{ "value": "1", "label": { "value": "\"Aucune\"", "type": "VTL|MD" } },
 
 				{
 					"value": "2",
@@ -1381,8 +1360,7 @@
 					"errorMessage": {
 						"value": "\"Merci de renseigner la présence d’un emplacement de stationnement.\"",
 						"type": "VTL|MD"
-					},
-					"bindingDependencies": ["GARL_X"]
+					}
 				}
 			],
 			"hierarchy": {
@@ -1395,7 +1373,6 @@
 					}
 				}
 			},
-			"bindingDependencies": ["GARL_X"],
 			"options": [
 				{ "value": "1", "label": { "value": "\"Oui\"", "type": "VTL|MD" } },
 
@@ -1546,12 +1523,11 @@
 					"id": "klqquk6j",
 					"page": "13",
 					"label": {
-						"value": "\"III - \" || \"Liste des personnes vivant habituellement dans le logement\"",
+						"value": "\"III - Liste des personnes vivant habituellement dans le logement\"",
 						"type": "VTL|MD"
 					}
 				}
 			},
-			"bindingDependencies": ["NOM", "PRENOM", "SEXE", "DATENAIS"],
 			"lines": {
 				"min": { "value": "1", "type": "VTL" },
 				"max": { "value": "20", "type": "VTL" }
@@ -1572,7 +1548,7 @@
 							"id": "klqquk6j",
 							"page": "13",
 							"label": {
-								"value": "\"III - \" || \"Liste des personnes vivant habituellement dans le logement\"",
+								"value": "\"III - Liste des personnes vivant habituellement dans le logement\"",
 								"type": "VTL|MD"
 							}
 						},
@@ -1613,7 +1589,6 @@
 							}
 						}
 					},
-					"bindingDependencies": ["NOM"],
 					"response": { "name": "NOM" }
 				},
 
@@ -1963,13 +1938,6 @@
 							}
 						}
 					},
-					"bindingDependencies": [
-						"PRENOM",
-						"NOM",
-						"VITICI",
-						"SEXE",
-						"DATENAIS"
-					],
 					"options": [
 						{ "value": "1", "label": { "value": "\"Oui\"", "type": "VTL|MD" } },
 

@@ -1,4 +1,4 @@
-name: Lunatic CI
+name: Lunatic CI (prisme, master)
 
 on: [push]
 
@@ -13,6 +13,8 @@ jobs:
           node-version: 16
       - uses: bahmutov/npm-install@v1
       - run: yarn
+      # Check TypeScript
+      - run: yarn run check
       # Run tests & build sonar reports
       - run: yarn test-coverage
       # Build lib

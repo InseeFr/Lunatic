@@ -9,7 +9,6 @@ function LabelSelection({
 	options,
 	search,
 	disabled,
-	labelledBy,
 }) {
 	const option =
 		selectedIndex !== undefined ? options[selectedIndex] : undefined;
@@ -19,7 +18,6 @@ function LabelSelection({
 			className={classnames('lunatic-combo-box-selected', {
 				disabled,
 			})}
-			aria-labelledby={labelledBy}
 		>
 			<Renderer option={option} placeholder={placeholder} search={search} />
 		</div>

@@ -16,12 +16,11 @@ function RosterTable({
 	missing,
 	management,
 	handleChange,
-	custom,
 }) {
 	if (nbRows > 0) {
 		return (
-			<Table id={id} custom={custom}>
-				<Header header={header} id={id} custom={custom} />
+			<Table id={id}>
+				<Header header={header} id={id} />
 				<Body
 					id={id}
 					components={components}
@@ -32,7 +31,6 @@ function RosterTable({
 					missing={missing}
 					shortcut={shortcut}
 					executeExpression={executeExpression}
-					custom={custom}
 				/>
 			</Table>
 		);

@@ -26,12 +26,12 @@ function RosterforLoop({
 	shortcut,
 	id,
 	management,
-	custom,
 	errors,
 }) {
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [nbRows, setNbRows] = useState(() => getInitLength(valueMap));
+	const showButtons = min && max && min !== max;
 
 	const addRow = useCallback(
 		function () {
@@ -71,16 +71,8 @@ function RosterforLoop({
 	if (nbRows > 0) {
 		return (
 			<>
-				<DeclarationsBeforeText
-					declarations={declarations}
-					id={id}
-					custom={custom}
-				/>
-				<DeclarationsAfterText
-					declarations={declarations}
-					id={id}
-					custom={custom}
-				/>
+				<DeclarationsBeforeText declarations={declarations} id={id} />
+				<DeclarationsAfterText declarations={declarations} id={id} />
 				<RosterTable
 					id={id}
 					components={components}
@@ -92,28 +84,15 @@ function RosterforLoop({
 					management={management}
 					missing={missing}
 					shortcut={shortcut}
-					custom={custom}
 					errors={errors}
 				/>
-				<DeclarationsDetachable
-					declarations={declarations}
-					id={id}
-					custom={custom}
-				/>
-				{min && max && min !== max && (
+				<DeclarationsDetachable declarations={declarations} id={id} />
+				{showButtons && (
 					<>
-						<HandleRowButton
-							onClick={addRow}
-							disabled={nbRows === max}
-							custom={custom}
-						>
+						<HandleRowButton onClick={addRow} disabled={nbRows === max}>
 							{label || D.DEFAULT_BUTTON_ADD}
 						</HandleRowButton>
-						<HandleRowButton
-							onClick={removeRow}
-							disabled={nbRows === 1}
-							custom={custom}
-						>
+						<HandleRowButton onClick={removeRow} disabled={nbRows === min}>
 							{D.DEFAULT_BUTTON_REMOVE}
 						</HandleRowButton>
 					</>

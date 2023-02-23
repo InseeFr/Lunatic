@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Row from './row';
 
 function LinksOrchestrator(props) {
@@ -16,7 +16,6 @@ function LinksOrchestrator(props) {
 		iteration,
 		xAxisIterations,
 		yAxisIterations,
-		custom,
 		errors,
 		symLinks,
 	} = props;
@@ -45,7 +44,6 @@ function LinksOrchestrator(props) {
 					executeExpression={executeExpression}
 					iteration={iteration}
 					linksIterations={[i, j]}
-					custom={custom}
 					lengths={lengths}
 					/** */
 					features={features}

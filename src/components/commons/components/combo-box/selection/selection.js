@@ -8,14 +8,13 @@ function Selection({
 	placeholder,
 	search,
 	expended,
-	htmlFor,
 	disabled,
 	focused,
 	onChange,
 	selectedIndex,
 	options,
 	editable,
-	labelledBy,
+	labelId,
 	id,
 }) {
 	const onChangeEx = useCallback(
@@ -28,12 +27,11 @@ function Selection({
 	return (
 		<SelectionContainer
 			id={id}
-			aria-controls={'todo'}
+			labelId={labelId}
 			expanded={expended}
 			ariaOwns={`${id}-list`}
 		>
 			<LabelSelection
-				id={htmlFor}
 				labelRenderer={labelRenderer}
 				placeholder={placeholder}
 				editable={editable}
@@ -41,12 +39,10 @@ function Selection({
 				options={options}
 				search={search}
 				disabled={disabled}
-				labelledBy={labelledBy}
 				expended={expended}
 			/>
-
 			<Input
-				id={htmlFor}
+				id={`combobox-input-${id}`}
 				className="lunatic-combo-box-input"
 				onChange={onChangeEx}
 				value={search}

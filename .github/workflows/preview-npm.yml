@@ -1,0 +1,47 @@
+name: Preview Lunatic CI (publish every branch)
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  publish_on_npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          registry-url: https://registry.npmjs.org/
+      - uses: bahmutov/npm-install@v1
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v6
+      - name: Extract version from package.json
+        uses: sergeysova/jq-action@v2
+        id: version
+        with:
+          cmd: 'jq .version package.json -r'
+      - name: Get Timestamp
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          format: 'YYYY-MM-DD-HH-mm-ss'
+      - name: Generate release name with initial version and branch and date e.g preview-branche-2022-05-15T23:33:38Z
+        run: echo "CUSTOMVERSION=${{ steps.version.outputs.value }}-${{ steps.branch-name.outputs.current_branch }}-${{ steps.time.outputs.time }}" >> $GITHUB_ENV
+      - run: yarn
+      - name: Add branch and timestamp to version
+        run: |
+          git config --global user.email "no-reply@insee.fr"
+          git config --global user.name "Insee"
+          yarn version --new-version $CUSTOMVERSION
+      - run: yarn build
+      - name: Publishing on NPM
+        run: |
+          if [ "$NODE_AUTH_TOKEN" = "" ]; then
+            echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
+            exit 1
+          fi
+          yarn publish --tag beta --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
