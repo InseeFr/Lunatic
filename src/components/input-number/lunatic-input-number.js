@@ -1,6 +1,6 @@
-import React from 'react';
 import InputNumber from './html/input-number';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
+import React from 'react';
 import useOnHandleChange from '../commons/use-on-handle-change';
 
 function LunaticInputNumber(props) {
@@ -24,6 +24,7 @@ function LunaticInputNumber(props) {
 		description,
 		required,
 		readOnly,
+		autofocus,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -52,6 +53,7 @@ function LunaticInputNumber(props) {
 				unit={unit}
 				required={required}
 				errors={errors}
+				autofocus={autofocus}
 			/>
 		</LunaticComponent>
 	);

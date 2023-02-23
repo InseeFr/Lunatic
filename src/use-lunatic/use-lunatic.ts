@@ -1,22 +1,23 @@
-import {
-	useReducer,
-	useEffect,
-	useCallback,
-	FunctionComponent,
-	PropsWithChildren,
-	useMemo,
-} from 'react';
-import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
-import reducer from './reducer';
-import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
-import { COLLECTED } from '../utils/constants';
-// @ts-ignore
-import { loadSuggesters } from '../utils/store-tools/auto-load';
-import { getQuestionnaireData } from './commons/get-data';
+
+import {
+	FunctionComponent,
+	useCallback,
+	useEffect,
+	useMemo,
+	useReducer,
+} from 'react';
 import { LunaticData, LunaticState } from './type';
+import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
+
+import { COLLECTED } from '../utils/constants';
+import INITIAL_STATE from './initial-state';
 import { LunaticSource } from './type-source';
 import { createLunaticProvider } from './lunatic-context';
+import { getQuestionnaireData } from './commons/get-data';
+// @ts-ignore
+import { loadSuggesters } from '../utils/store-tools/auto-load';
+import reducer from './reducer';
 
 const DEFAULT_DATA = {} as LunaticData;
 const DEFAULT_FEATURES = ['VTL', 'MD'];
@@ -39,6 +40,7 @@ function useLunatic(
 		suggesterFetcher,
 		activeControls = false,
 		custom,
+		autofocus = false,
 	}: {
 		features: string[];
 		preferences: string[];
@@ -55,6 +57,7 @@ function useLunatic(
 		suggesterFetcher?: typeof fetch;
 		activeControls: boolean;
 		custom: Record<string, FunctionComponent<unknown>>;
+		autofocus: boolean;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -171,6 +174,7 @@ function useLunatic(
 					savingType,
 					management,
 					shortcut,
+					autofocus,
 					handleChange,
 					activeControls,
 					goToPage,
@@ -185,6 +189,7 @@ function useLunatic(
 			preferences,
 			savingType,
 			management,
+			autofocus,
 			shortcut,
 			handleChange,
 			activeControls,

@@ -1,6 +1,6 @@
-import React from 'react';
 import CheckboxBoolean from './html/checkbox-boolean';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
+import React from 'react';
 import useOnHandleChange from '../../commons/use-on-handle-change';
 
 function LunaticCheckboxBoolean({
@@ -18,6 +18,7 @@ function LunaticCheckboxBoolean({
 	missingResponse,
 	management,
 	description,
+	autofocus,
 }) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
@@ -40,6 +41,7 @@ function LunaticCheckboxBoolean({
 				disabled={disabled}
 				label={label}
 				errors={errors}
+				autofocus={autofocus}
 			/>
 		</LunaticComponent>
 	);

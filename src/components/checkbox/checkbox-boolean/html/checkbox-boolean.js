@@ -1,7 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Errors, createCustomizableLunaticField } from '../../../commons';
+
 import { CheckboxOption } from '../../commons';
-import { createCustomizableLunaticField, Errors } from '../../../commons';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 function CheckboxBoolean({
 	checked,
@@ -12,6 +13,7 @@ function CheckboxBoolean({
 	label,
 	description,
 	errors,
+	autofocus,
 }) {
 	return (
 		<div className="lunatic-checkbox-boolean">
@@ -24,6 +26,7 @@ function CheckboxBoolean({
 				value={checked}
 				label={label}
 				description={description}
+				autofocus={autofocus}
 			/>
 			<Errors errors={errors} activeId={id} />
 		</div>
@@ -33,6 +36,7 @@ function CheckboxBoolean({
 CheckboxBoolean.prototype = {
 	id: PropTypes.string.isRequired,
 	checked: PropTypes.bool,
+	autofocus: PropTypes.bool,
 	onChange: PropTypes.func.isRequired,
 	disabled: PropTypes.bool,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
@@ -49,6 +53,7 @@ CheckboxBoolean.defaultProps = {
 	disabled: false,
 	errors: undefined,
 	description: undefined,
+	autofocus: false,
 };
 
 export default createCustomizableLunaticField(

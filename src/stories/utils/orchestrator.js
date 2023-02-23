@@ -1,10 +1,11 @@
-import React, { memo, useState } from 'react';
+import './custom-lunatic.scss';
+import './orchestrator.scss';
 
 import * as lunatic from '../..';
-import './custom-lunatic.scss';
-import Waiting from './waiting';
 
-import './orchestrator.scss';
+import React, { memo, useState } from 'react';
+
+import Waiting from './waiting';
 
 function getStoreInfoRequired() {
 	return {};
@@ -81,6 +82,7 @@ function OrchestratorForStories({
 	management = false,
 	shortcut = false,
 	activeControls = false,
+	autofocus = false,
 	features,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
@@ -123,13 +125,13 @@ function OrchestratorForStories({
 		management,
 		shortcut,
 		activeControls,
+		autofocus,
 	});
 
 	const components = getComponents();
 	const errors = getErrors();
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
-
 	return (
 		<Provider>
 			<div className="container">

@@ -1,8 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import D from '../../i18n';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
-import useOnHandleChange from '../commons/use-on-handle-change';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Textarea from './html/textarea';
+import useOnHandleChange from '../commons/use-on-handle-change';
 
 const LunaticTextarea = (props) => {
 	const {
@@ -22,6 +23,7 @@ const LunaticTextarea = (props) => {
 		missing,
 		missingResponse,
 		management,
+		autofocus,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -48,6 +50,7 @@ const LunaticTextarea = (props) => {
 				placeholder={placeHolder}
 				label={label}
 				errors={errors}
+				autofocus={autofocus}
 			/>
 		</LunaticComponent>
 	);
@@ -57,7 +60,7 @@ LunaticTextarea.defaultProps = {
 	rows: 1,
 	maxLength: 100,
 	cols: 32,
-	placeholder: 'Please enter your text here',
+	placeholder: D.TEXTAREA_PLACEHOLDER,
 };
 
 LunaticTextarea.propTypes = {

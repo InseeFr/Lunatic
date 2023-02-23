@@ -1,21 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import CheckboxGroupContent from './checkbox-group-content';
-import {
-	createCustomizableLunaticField,
-	Errors,
-	Fieldset,
-} from '../../../commons';
 import './checkbox-group.scss';
 
-function CheckboxGroup({ options, id, label, description, errors, shortcut }) {
+import {
+	Errors,
+	Fieldset,
+	createCustomizableLunaticField,
+} from '../../../commons';
+
+import CheckboxGroupContent from './checkbox-group-content';
+import PropTypes from 'prop-types';
+import React from 'react';
+
+function CheckboxGroup({
+	options,
+	id,
+	label,
+	description,
+	errors,
+	shortcut,
+	autofocus,
+}) {
 	return (
 		<Fieldset
 			className="lunatic-checkbox-group"
 			legend={label}
 			description={description}
 		>
-			<CheckboxGroupContent id={id} options={options} shortcut={shortcut} />
+			<CheckboxGroupContent
+				id={id}
+				options={options}
+				shortcut={shortcut}
+				autofocus={autofocus}
+			/>
 			<Errors errors={errors} activeId={id} />
 		</Fieldset>
 	);
@@ -41,12 +56,14 @@ CheckboxGroup.propTypes = {
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	errors: PropTypes.object,
 	shortcut: PropTypes.bool,
+	autofocus: PropTypes.bool,
 };
 
 CheckboxGroup.defaultProps = {
 	options: [],
 	errors: undefined,
 	label: undefined,
+	autofocus: false,
 };
 
 export default createCustomizableLunaticField(CheckboxGroup, 'CheckboxGroup');

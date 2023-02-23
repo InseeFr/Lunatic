@@ -1,11 +1,12 @@
-import { ReactNode } from 'react';
 import {
 	ComponentType,
 	ControlType,
 	LunaticSource,
 	Variable,
 } from './type-source';
+
 import { ExpressionLogger } from './commons/execute-expression/create-execute-expression';
+import { ReactNode } from 'react';
 
 export type LunaticComponentDefinition<
 	T extends ComponentType['componentType'] = ComponentType['componentType']
@@ -148,6 +149,8 @@ export type LunaticState = {
 	activeControls: boolean;
 	// enable shortcut on radio/checkbox/missing buttons
 	shortcut?: boolean;
+	// enable autofocus on most single components
+	autofocus: boolean;
 	// TODO : Explain this
 	management?: boolean;
 	goToPage: (page: {

@@ -1,7 +1,7 @@
-import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
-import simpsons from './source';
+import React from 'react';
 import defaultArgTypes from '../../utils/default-arg-types';
+import simpsons from './source';
 
 const stories = {
 	title: 'Questionnaires/Simpsons',
@@ -23,6 +23,11 @@ const stories = {
 			control: 'boolean',
 			defaultValue: false,
 		},
+		autofocus: {
+			table: { disable: false },
+			control: 'boolean',
+			defaultValue: true,
+		},
 	},
 };
 
@@ -35,5 +40,6 @@ Default.args = {
 	id: 'simpsons-default',
 	source: simpsons,
 	pagination: true,
+	autofocus: true,
 	data: { COLLECTED: { READY: { COLLECTED: true } } },
 };

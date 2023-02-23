@@ -1,8 +1,8 @@
-import React from 'react';
-import RadioGroup from './html/radio-group';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
-import useOnHandleChange from '../commons/use-on-handle-change';
+import RadioGroup from './html/radio-group';
+import React from 'react';
 import { createCustomizableLunaticField } from '../commons';
+import useOnHandleChange from '../commons/use-on-handle-change';
 
 function LunaticRadioGroup(props) {
 	const {
@@ -22,6 +22,7 @@ function LunaticRadioGroup(props) {
 		shortcut,
 		management,
 		className,
+		autofocus,
 	} = props;
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
@@ -47,6 +48,7 @@ function LunaticRadioGroup(props) {
 				label={label}
 				className={className}
 				shortcut={shortcut}
+				autofocus={autofocus}
 			/>
 		</LunaticComponent>
 	);

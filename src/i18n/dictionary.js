@@ -5,6 +5,10 @@ const dictionary = {
 	MODAL_CORRECT: { fr: 'Corriger ma réponse', en: 'Correct' },
 	DK: { fr: 'Ne sais pas', en: "Don't know" },
 	RF: { fr: 'Refus', en: 'Refused' },
+	TEXTAREA_PLACEHOLDER: {
+		fr: 'Saisissez votre texte ici',
+		en: 'Please enter your text here',
+	},
 };
 
 export default dictionary;

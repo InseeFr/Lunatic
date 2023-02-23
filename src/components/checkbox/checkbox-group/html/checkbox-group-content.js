@@ -1,12 +1,12 @@
-import React from 'react';
 import { CheckboxOption } from '../../commons';
+import React from 'react';
 import { getShortcutKey } from '../../commons/getShortcutKey';
 
 function CheckboxGroupContainer({ children }) {
 	return <div className="lunatic-checkbox-group-option">{children}</div>;
 }
 
-function CheckboxGroupContent({ options, id, shortcut }) {
+function CheckboxGroupContent({ options, id, shortcut, autofocus }) {
 	const maxIndex = options.length;
 	return options.map(function (option, index) {
 		const { label, checked, name, onClick, description } = option;
@@ -28,6 +28,7 @@ function CheckboxGroupContent({ options, id, shortcut }) {
 						description={description}
 						shortcut={shortcut}
 						codeModality={shortcut && codeModality}
+						autofocus={autofocus}
 					/>
 				</CheckboxGroupContainer>
 			</>

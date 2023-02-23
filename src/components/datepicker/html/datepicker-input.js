@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+
 import classnames from 'classnames';
 
 function DatepickerInput({
@@ -10,10 +11,16 @@ function DatepickerInput({
 	onChange,
 	min,
 	max,
+	autofocus,
 }) {
+	const autoFocusFn = useCallback(
+		(element) => (element && autofocus ? element.focus() : null),
+		[autofocus]
+	);
 	return (
 		<input
 			id={id}
+			ref={autoFocusFn}
 			className={classnames('lunatic-datepicker', { disabled, readOnly })}
 			type="date"
 			labelledby={labelId}

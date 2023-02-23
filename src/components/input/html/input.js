@@ -1,9 +1,11 @@
+import './input.scss';
+
+import { Errors, Label, createCustomizableLunaticField } from '../../commons';
 import React, { useCallback } from 'react';
+
+import { DescritionPropsType } from '../../commons/components/description';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { createCustomizableLunaticField, Errors, Label } from '../../commons';
-import { DescritionPropsType } from '../../commons/components/description';
-import './input.scss';
 
 function checkValue(value) {
 	return value ?? '';
@@ -19,6 +21,7 @@ function Input({
 	description,
 	id,
 	errors,
+	autofocus,
 }) {
 	const labelId = `label-${id}`;
 	const handleChange = useCallback(
@@ -28,12 +31,17 @@ function Input({
 		},
 		[onChange]
 	);
+	const autoFocusFn = useCallback(
+		(element) => (element && autofocus ? element.focus() : null),
+		[autofocus]
+	);
 	return (
 		<div className={classnames('lunatic-input')}>
 			<Label htmlFor={id} id={labelId} description={description}>
 				{label}
 			</Label>
 			<input
+				ref={autoFocusFn}
 				id={id}
 				labelledbby={labelId}
 				autoComplete="off"
@@ -61,6 +69,7 @@ Input.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	disabled: PropTypes.bool,
 	required: PropTypes.bool,
+	autofocus: PropTypes.bool,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	errors: PropTypes.object,
 	description: DescritionPropsType,
@@ -73,6 +82,7 @@ Input.defaultValue = {
 	description: undefined,
 	required: true,
 	maxLength: Number.MAX_SAFE_INTEGER,
+	autofocus: false,
 };
 
 export default createCustomizableLunaticField(Input, 'Input');

@@ -1,4 +1,5 @@
 import { LunaticData, LunaticState } from './type';
+
 import { LunaticSource } from './type-source';
 
 export enum ActionKind {
@@ -43,6 +44,7 @@ export type ActionInit = {
 		preferences: LunaticState['preferences'];
 		savingType: LunaticState['savingType'];
 		shortcut: boolean;
+		autofocus: boolean;
 		management: boolean;
 		handleChange: LunaticState['handleChange'];
 		activeControls: boolean;

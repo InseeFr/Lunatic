@@ -1,7 +1,7 @@
-import React from 'react';
 import Datepicker from './html/datepicker';
-import { createCustomizableLunaticField } from '../commons';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
+import React from 'react';
+import { createCustomizableLunaticField } from '../commons';
 import useOnHandleChange from '../commons/use-on-handle-change';
 
 const LunaticDatepicker = (props) => {
@@ -22,6 +22,7 @@ const LunaticDatepicker = (props) => {
 		missing,
 		missingResponse,
 		management,
+		autofocus,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -49,6 +50,7 @@ const LunaticDatepicker = (props) => {
 				label={label}
 				description={description}
 				errors={errors}
+				autofocus={autofocus}
 			/>
 		</LunaticComponent>
 	);

@@ -179,6 +179,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		savingType,
 		management,
 		shortcut,
+		autofocus,
 		activeControls,
 		goToPage,
 	} = payload;
@@ -218,6 +219,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 				handleChange,
 				preferences,
 				management,
+				autofocus,
 				savingType,
 				activeControls,
 				goToPage,

@@ -1,9 +1,11 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { createCustomizableLunaticField, Errors, Label } from '../../commons';
-import DatepickerInput from './datepicker-input';
-import DatepickerContainer from './datepicker-container';
 import './datepicker.scss';
+
+import { Errors, Label, createCustomizableLunaticField } from '../../commons';
+import React, { useCallback } from 'react';
+
+import DatepickerContainer from './datepicker-container';
+import DatepickerInput from './datepicker-input';
+import PropTypes from 'prop-types';
 
 function Datepicker({
 	disabled,
@@ -16,6 +18,7 @@ function Datepicker({
 	label,
 	errors,
 	description,
+	autofocus,
 }) {
 	const labelId = `lunatic-datepicker-${id}`;
 	const handleChange = useCallback(
@@ -40,6 +43,7 @@ function Datepicker({
 				onChange={handleChange}
 				min={min}
 				max={max}
+				autofocus={autofocus}
 			/>
 			<Errors errors={errors} activeId={id} />
 		</DatepickerContainer>
@@ -64,7 +68,8 @@ Datepicker.propTypes = {
 		PropTypes.element,
 		PropTypes.array,
 	]),
+	autofocus: PropTypes.bool,
 };
-Datepicker.defaultProps = { value: '' };
+Datepicker.defaultProps = { value: '', autofocus: false };
 
 export default createCustomizableLunaticField(Datepicker, 'Datepicker');

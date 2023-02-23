@@ -1,7 +1,7 @@
-import React from 'react';
 import RadioOption from './radio-option';
-import { useOptionsKeydown } from '../../commons';
+import React from 'react';
 import { getShortcutKey } from '../../checkbox/commons/getShortcutKey';
+import { useOptionsKeydown } from '../../commons';
 
 function RadioGroupContent({
 	options,
@@ -10,6 +10,7 @@ function RadioGroupContent({
 	onClick,
 	checkboxStyle = false,
 	shortcut,
+	autofocus,
 }) {
 	const onKeyDown = useOptionsKeydown(options, onClick);
 	const maxIndex = options.length;
@@ -31,6 +32,7 @@ function RadioGroupContent({
 				description={description}
 				codeModality={shortcut && codeModality}
 				shortcut={shortcut}
+				autofocus={autofocus}
 			/>
 		);
 	});

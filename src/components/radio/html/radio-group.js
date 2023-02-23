@@ -1,13 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import RadioGroupContent from './radio-group-content';
+import './radio-group.scss';
+
 import {
-	useOptionsKeydown,
-	createCustomizableLunaticField,
 	Errors,
 	Fieldset,
+	createCustomizableLunaticField,
+	useOptionsKeydown,
 } from '../../commons';
-import './radio-group.scss';
+
+import PropTypes from 'prop-types';
+import RadioGroupContent from './radio-group-content';
+import React from 'react';
 
 function RadioGroup({
 	options,
@@ -20,6 +22,7 @@ function RadioGroup({
 	errors,
 	className,
 	shortcut,
+	autofocus,
 }) {
 	const onKeyDown = useOptionsKeydown(options, onSelect);
 
@@ -34,6 +37,7 @@ function RadioGroup({
 				label={label}
 				options={options}
 				shortcut={shortcut}
+				autofocus={autofocus}
 			/>
 			<Errors errors={errors} activeId={id} />
 		</Fieldset>
@@ -68,6 +72,7 @@ RadioGroup.propTypes = {
 	className: PropTypes.string,
 	errors: PropTypes.object,
 	shortcut: PropTypes.bool,
+	autofocus: PropTypes.bool,
 };
 
 RadioGroup.defaultProps = {
@@ -75,6 +80,7 @@ RadioGroup.defaultProps = {
 	value: undefined,
 	label: undefined,
 	className: undefined,
+	autofocus: false,
 };
 
 export default createCustomizableLunaticField(RadioGroup, 'Radio');

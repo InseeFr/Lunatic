@@ -1,8 +1,10 @@
+import './input-number.scss';
+
+import { Errors, Label, createCustomizableLunaticField } from '../../commons';
 import React, { useCallback } from 'react';
+
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { createCustomizableLunaticField, Label, Errors } from '../../commons';
-import './input-number.scss';
 
 function InputNumber({
 	id,
@@ -17,6 +19,7 @@ function InputNumber({
 	errors,
 	required,
 	description,
+	autofocus,
 }) {
 	const labelId = `label-${id}`;
 	const handleChange = useCallback(
@@ -26,6 +29,10 @@ function InputNumber({
 		},
 		[onChange]
 	);
+	const autoFocusFn = useCallback(
+		(element) => (element && autofocus ? element.focus() : null),
+		[autofocus]
+	);
 	return (
 		<div className="lunatic-input-number">
 			<Label htmlFor={id} id={labelId} description={description}>
@@ -33,6 +40,7 @@ function InputNumber({
 			</Label>
 			<input
 				id={id}
+				ref={autoFocusFn}
 				className={classnames({ disabled })}
 				type="number"
 				onChange={handleChange}
@@ -62,6 +70,7 @@ InputNumber.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	required: PropTypes.bool,
 	disabled: PropTypes.bool,
+	autofocus: PropTypes.bool,
 	min: PropTypes.number,
 	max: PropTypes.number,
 	step: PropTypes.number,
@@ -85,6 +94,7 @@ InputNumber.defaultValue = {
 	label: undefined,
 	errors: undefined,
 	description: undefined,
+	autofocus: false,
 };
 
 export default createCustomizableLunaticField(InputNumber, 'InputNumber');

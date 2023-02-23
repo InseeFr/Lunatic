@@ -1,8 +1,8 @@
-import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
-import source from './source';
+import React from 'react';
 import data from './data';
 import defaultArgTypes from '../../utils/default-arg-types';
+import source from './source';
 
 const stories = {
 	title: 'Questionnaires/Recensement',
@@ -20,6 +20,11 @@ const stories = {
 			defaultValue: true,
 		},
 		management: {
+			table: { disable: false },
+			control: 'boolean',
+			defaultValue: false,
+		},
+		autofocus: {
 			table: { disable: false },
 			control: 'boolean',
 			defaultValue: false,

@@ -6,13 +6,21 @@ export type FilledProps = {
 	preferences: LunaticState['preferences'];
 	goToPage: LunaticState['goToPage'];
 	shortcut: LunaticState['shortcut'];
+	autofocus: LunaticState['autofocus'];
 };
 
 function fillFromState(
 	component: LunaticComponentDefinition,
 	state: LunaticState
 ) {
-	const { handleChange, executeExpression, preferences, goToPage, shortcut } = state;
+	const {
+		handleChange,
+		executeExpression,
+		preferences,
+		goToPage,
+		shortcut,
+		autofocus,
+	} = state;
 	return {
 		...component,
 		handleChange,
@@ -20,6 +28,7 @@ function fillFromState(
 		preferences,
 		goToPage,
 		shortcut,
+		autofocus,
 	};
 }
 

@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useCallback } from 'react';
-import classnames from 'classnames';
-import { Label, createCustomizableLunaticField } from '../../commons';
 import {
-	RadioChecked,
-	RadioUnchecked,
 	CheckboxChecked,
 	CheckboxUnchecked,
+	RadioChecked,
+	RadioUnchecked,
 } from '../../commons/icons';
+import { Label, createCustomizableLunaticField } from '../../commons';
+import React, { useCallback, useEffect, useRef } from 'react';
+
 import KeyboardEventHandler from 'react-keyboard-event-handler';
+import classnames from 'classnames';
 
 function getIcon(checked, checkboxStyle) {
 	if (checked) {
@@ -36,8 +37,13 @@ function RadioOption({
 	description,
 	shortcut,
 	codeModality,
+	autofocus,
 }) {
-	const spanEl = useRef();
+	const autoFocusFn = useCallback(
+		(element) => (element && autofocus ? element.focus() : null),
+		[autofocus]
+	);
+	const spanEl = useRef(autoFocusFn);
 	const Icon = getIcon(checked, checkboxStyle);
 	const tabIndex = checked ? '0' : '-1';
 	const onClickOption = useCallback(

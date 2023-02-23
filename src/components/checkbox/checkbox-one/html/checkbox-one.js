@@ -1,8 +1,9 @@
-import React from 'react';
+import './checkbox-one.scss';
+
 import PropTypes from 'prop-types';
 import RadioGroup from '../../../radio/html/radio-group';
+import React from 'react';
 import { createCustomizableLunaticField } from '../../../commons';
-import './checkbox-one.scss';
 
 function CheckboxOne({
 	options,
@@ -13,6 +14,7 @@ function CheckboxOne({
 	onSelect,
 	errors,
 	shortcut,
+	autofocus,
 }) {
 	return (
 		<RadioGroup
@@ -26,6 +28,7 @@ function CheckboxOne({
 			onSelect={onSelect}
 			checkboxStyle={true}
 			shortcut={shortcut}
+			autofocus={autofocus}
 		/>
 	);
 }
@@ -47,12 +50,14 @@ CheckboxOne.propTypes = {
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	errors: PropTypes.object,
 	shortcut: PropTypes.bool,
+	autofocus: PropTypes.bool,
 };
 
 CheckboxOne.defaultProps = {
 	options: [],
 	errors: undefined,
 	label: undefined,
+	autofocus: false,
 };
 
 export default createCustomizableLunaticField(CheckboxOne, 'CheckboxOne');

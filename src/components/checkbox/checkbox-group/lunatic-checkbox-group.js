@@ -1,6 +1,6 @@
-import React from 'react';
 import CheckboxGroup from './html/checkbox-group';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
+import React from 'react';
 
 function LunaticCheckboxGroup({
 	id,
@@ -15,6 +15,7 @@ function LunaticCheckboxGroup({
 	declarations,
 	missingResponse,
 	missing,
+	autofocus,
 	management,
 }) {
 	const options = responses.map(function ({ label, response, description }) {
@@ -52,6 +53,7 @@ function LunaticCheckboxGroup({
 				label={label}
 				errors={errors}
 				shortcut={shortcut}
+				autofocus={autofocus}
 			/>
 		</LunaticComponent>
 	);
