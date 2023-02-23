@@ -1,6 +1,6 @@
-import { resizeArrayVariable } from '../commons';
 import { LunaticState } from '../../type';
 import { ActionHandleChange } from '../../actions';
+import { resizeArray } from '../../../utils/array';
 
 type Payload = ActionHandleChange['payload']['args'] & {
 	name: string;
@@ -17,8 +17,8 @@ function reduceOne(
 		const [x, y] = linksIterations;
 		const [lx, ly] = lengths;
 		if (Array.isArray(v)) {
-			const next = resizeArrayVariable([...v], lx, [] as unknown[]);
-			next[x] = resizeArrayVariable([...next[x]], ly, null);
+			const next = resizeArray([...v], lx, [] as unknown[]);
+			next[x] = resizeArray([...next[x]], ly, null);
 			next[x][y] = value;
 			return {
 				...variables,

@@ -1,7 +1,12 @@
-import { resizeArrayVariable } from '../commons';
 import { LunaticState } from '../../type';
+import { resizeArray } from '../../../utils/array';
 
-type Args = { name: string; value: unknown; index: number; length: number };
+type Args = {
+	name: string;
+	value: unknown;
+	iteration: number[];
+	maxIteration: number[];
+};
 
 /**
  * Inject the value at a specific index (and resize the value if necessary)
@@ -9,24 +14,45 @@ type Args = { name: string; value: unknown; index: number; length: number };
 function reduceVariablesArray(
 	variables: LunaticState['variables'],
 	args: Args
-) {
-	const { name, value, index, length } = args;
-	if (name in variables) {
-		const variable = variables[name];
-		const { value: previousValue } = variable;
-
-		// Ensure the value is an array of corresponding size
-		let valueNext = [...resizeArrayVariable(previousValue, length)];
-
-		// Inject the new value at the corresponding index
-		valueNext[index] = value;
-		return {
-			...variables,
-			[name]: { ...variable, value: valueNext },
-		};
+): LunaticState['variables'] {
+	const { name, value, iteration, maxIteration } = args;
+	const variable = variables[name];
+	if (!variable) {
+		return variables;
 	}
 
-	return variables;
+	let newValue = injectValue(
+		structuredClone(variable.value),
+		value,
+		iteration,
+		maxIteration
+	);
+
+	return {
+		...variables,
+		[name]: { ...variables[name], value: newValue },
+	};
+}
+
+function injectValue(
+	array: unknown,
+	value: unknown,
+	iteration: number[],
+	sizes: number[]
+) {
+	if (iteration.length === 0) {
+		return value;
+	}
+	const [index, ...nextIteration] = iteration;
+	const [size, ...nextSizes] = sizes;
+	const newArray = resizeArray(array, size);
+	newArray[index] = injectValue(
+		newArray[index],
+		value,
+		nextIteration,
+		nextSizes
+	);
+	return newArray;
 }
 
 export default reduceVariablesArray;

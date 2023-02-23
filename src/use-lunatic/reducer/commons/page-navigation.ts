@@ -35,3 +35,39 @@ export function getNextPager(
 		iteration,
 	};
 }
+
+export function getPrevPager(
+	pager: LunaticState['pager']
+): LunaticState['pager'] {
+	const pageDepth = pager.page.length - 1;
+	const page = [...pager.page];
+	const iteration = [...pager.iteration];
+	page[pageDepth]--;
+
+	// We reached the start of the questionnaire
+	if (page.length === 1 && page[pageDepth] < 1) {
+		return pager;
+	}
+
+	// We reached the start of the sequence, move up
+	if (page[pageDepth] < 1) {
+		page[pageDepth] = pager.maxPage[pageDepth];
+		iteration[pageDepth - 1]--;
+	}
+
+	// We reached the start of an iteration, move up
+	if (iteration[pageDepth - 1] < 0) {
+		page.pop();
+		iteration.pop();
+		return getPrevPager({
+			...pager,
+			page,
+			iteration,
+		});
+	}
+	return {
+		...pager,
+		page,
+		iteration,
+	};
+}

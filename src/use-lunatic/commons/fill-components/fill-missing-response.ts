@@ -1,4 +1,5 @@
 import { LunaticComponentDefinition, LunaticState } from '../../type';
+import { extractValue } from '../../../utils/array';
 
 export type FilledProps = {
 	missingResponse?: LunaticComponentDefinition['missingResponse'] & {
@@ -23,7 +24,7 @@ function fillMissingResponse<T extends LunaticComponentDefinition>(
 		if (name in variables) {
 			const { value } = variables[name];
 			const missingValue =
-				iteration === undefined ? value : (value as unknown[])[iteration];
+				iteration === undefined ? value : extractValue(value, iteration);
 			return {
 				...component,
 				missingResponse: { ...missingResponse, value: missingValue },

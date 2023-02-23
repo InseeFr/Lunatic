@@ -10,16 +10,6 @@ import { ActionHandleChange } from '../../actions';
 import { LunaticState } from '../../type';
 import { toNumber } from '../../../utils/to-number';
 
-function isOnSubPage(
-	pager: LunaticState['pager']
-): pager is LunaticState['pager'] & {
-	nbIterations: number;
-	iteration: number;
-} {
-	const { subPage } = pager;
-	return subPage !== undefined;
-}
-
 /**
  * Met à jour les variables collectés
  */
@@ -52,20 +42,12 @@ function updateVariables(
 			lengths,
 		});
 		return { ...state, variables: variablesNext };
-	} else if (loop && paginatedLoop && index && length) {
+	} else if (pager.iteration.length > 0) {
 		const variablesNext = reduceVariablesArray(variables, {
 			name,
 			value,
-			index,
-			length,
-		});
-		return { ...state, variables: variablesNext };
-	} else if (isOnSubPage(pager)) {
-		const variablesNext = reduceVariablesArray(variables, {
-			name,
-			value,
-			index: pager.iteration,
-			length: pager.nbIterations,
+			iteration: pager.iteration,
+			maxIteration: pager.maxIteration,
 		});
 
 		return { ...state, variables: variablesNext };

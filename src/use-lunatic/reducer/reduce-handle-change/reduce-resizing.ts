@@ -1,13 +1,13 @@
 import { getCompatibleVTLExpression } from '../../commons';
-import { resizeArrayVariable } from '../commons';
 import { LunaticState } from '../../type';
 import { ActionHandleChange } from '../../actions';
+import { resizeArray } from '../../../utils/array';
 
 function refillValue(size: number, precSize: number, value: unknown) {
 	if (precSize > size) {
 		return new Array(size).fill(null);
 	}
-	return resizeArrayVariable(value, size, null);
+	return resizeArray(value, size, null);
 }
 
 function reduceResizingVariables({
@@ -65,8 +65,8 @@ function reduceResizingLinksVariables({
 			if (!Array.isArray(value)) {
 				return acc;
 			}
-			const newValue = resizeArrayVariable(
-				value.map((i) => resizeArrayVariable(i, ySize, null)),
+			const newValue = resizeArray(
+				value.map((i) => resizeArray(i, ySize, null)),
 				xSize,
 				new Array(ySize).fill(null)
 			);
