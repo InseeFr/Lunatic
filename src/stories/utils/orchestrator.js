@@ -69,10 +69,12 @@ function Pager({
 						<strong>PageTag:</strong> {pageTag}
 					</li>
 					<li>
-						<strong>Page:</strong> {JSON.stringify(pager.page)}
+						<strong>Page:</strong> {JSON.stringify(pager.page)} /{' '}
+						{JSON.stringify(pager.maxPage)}
 					</li>
 					<li>
-						<strong>Iteration:</strong> {JSON.stringify(pager.iteration)}
+						<strong>Iteration:</strong> {JSON.stringify(pager.iteration)} /{' '}
+						{JSON.stringify(pager.maxIteration)}
 					</li>
 				</ul>
 				<DevOptions goToPage={goToPage} getData={getData} />

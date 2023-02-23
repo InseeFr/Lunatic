@@ -15,4 +15,7 @@ describe('resizeArray', () => {
 	it('should handle non array value', () => {
 		return expect(resizeArray(3, 4, 0)).toEqual([0, 0, 0, 0]);
 	});
+	it('should handle resizing smaller array', () => {
+		return expect(resizeArray([1, 2, 3, 4], 2, 0)).toEqual([1, 2]);
+	});
 });

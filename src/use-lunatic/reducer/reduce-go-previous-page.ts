@@ -1,6 +1,7 @@
 import { LunaticState } from '../type';
 import { getPrevPager } from './commons/page-navigation';
 import { isPageEmpty, pageStringToNumbers } from '../commons/page';
+import { resizeArray } from '../../utils/array';
 
 function reduceGoPreviousPage(state: LunaticState): LunaticState {
 	const { pages, pager, executeExpression } = state;
@@ -17,13 +18,19 @@ function reduceGoPreviousPage(state: LunaticState): LunaticState {
 		prevPager.page = pageStringToNumbers(
 			prevPage.subPages[prevPage.subPages.length - 1]
 		);
-		prevPager.maxPage = [...prevPager.maxPage, prevPage.subPages.length];
-		const maxIteration =
+		prevPager.maxPage = [
+			...resizeArray(prevPager.maxPage, prevPager.page.length - 1),
+			prevPage.subPages.length,
+		];
+		const iterations =
 			executeExpression<number>(prevPage.iterations, {
-				iteration: pager.iteration,
+				iteration: prevPager.iteration,
 			}) - 1;
-		prevPager.iteration = [...prevPager.iteration, maxIteration];
-		prevPager.maxIteration = [...prevPager.maxIteration, maxIteration];
+		prevPager.maxIteration = [
+			...resizeArray(prevPager.maxIteration, prevPager.iteration.length),
+			iterations,
+		];
+		prevPager.iteration = [...prevPager.iteration, iterations];
 		prevPage = pages[prevPager.page.join('.')];
 	}
 

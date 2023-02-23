@@ -15,7 +15,7 @@ export function extractValue(v: unknown, path: number[]) {
  * Resize an array and fill with defaultValue
  */
 export function resizeArray<T extends unknown = unknown>(
-	array: unknown,
+	array: T[],
 	length: number,
 	defaultValue?: T
 ): T[] {

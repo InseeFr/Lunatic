@@ -6,6 +6,7 @@ import {
 import { LunaticState } from '../type';
 import { isPageEmpty, pageStringToNumbers } from '../commons/page';
 import { getNextPager } from './commons/page-navigation';
+import { resizeArray } from '../../utils/array';
 
 function reduceGoNextPage(state: LunaticState): LunaticState {
 	const { pages, pager, executeExpression } = state;
@@ -17,17 +18,22 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 		throw new Error(`Cannot reach next page ${pageId}`);
 	}
 
+	debugger;
+
 	// We reached a loop, go inside
 	while (nextPage.isLoop && nextPage.subPages && nextPage.subPages.length > 0) {
 		nextPager.page = pageStringToNumbers(nextPage.subPages[0]);
-		nextPager.maxPage = [...nextPager.maxPage, nextPage.subPages.length];
-		nextPager.iteration = [...nextPager.iteration, 0];
+		nextPager.maxPage = [
+			...resizeArray(nextPager.maxPage, nextPager.page.length - 1),
+			nextPage.subPages.length,
+		];
 		nextPager.maxIteration = [
-			...nextPager.maxIteration,
+			...resizeArray(nextPager.maxIteration, nextPager.iteration.length),
 			executeExpression<number>(nextPage.iterations, {
-				iteration: pager.iteration,
+				iteration: nextPager.iteration,
 			}) - 1,
 		];
+		nextPager.iteration = [...nextPager.iteration, 0];
 		nextPage = pages[nextPager.page.join('.')];
 	}
 
