@@ -179,20 +179,9 @@ Afin de faciliter l'exécution des expressions une méthode `executeExpression()
 - Les commentaires dans le code sont en anglais
 - Les fichiers contenant du JSX doivent utiliser l'extension .jsx (ou .tsx)
 - Les commits suivent la spécification [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
-
-## How to contribute ?
-
-### For developers that's not in InseeFr/Lunatic team
-
-- Fork Lunatic project
-### For all developers
-
-- Create branch with name like `${prefix}/${name}`, where prefix is one of 
-    - `test` : developments that add tests
-    - `doc` : developments that add documentation
-    - `fix` : developments that fix a issue/bug
-    - `feat` : developments that add new feature
-
-- This branch has to start from `main` branch
-
-- Open a Pull Request `${prefix}/${name}` -> `main`
+- Les branches doivent être préfixées (on suivra les mêmes préfixes que pour le conventional commits)
+  - test/XXX: pour de l'ajout de tests
+  - feat/XXX: pour de l'ajout de fonctionnalités
+  - fix/XXX: pour de la correction de bug
+  - doc/XXX: pour de l'ajout de documentation
+  - ref/XXX: pour du refactoring qui ne change pas de fonctionnalités
