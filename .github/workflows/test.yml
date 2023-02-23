@@ -3,10 +3,9 @@ name: Tests
 on:
   push:
     branches:
-      - v2-master
+      - main
     pull_request_target:
-      - v2-label-position
-      - v2-master
+      - main
 
 jobs:
   test:
@@ -19,16 +18,14 @@ jobs:
           node-version: 16
       - uses: bahmutov/npm-install@v1
       - run: yarn
-      - run: yarn run test
-  e2e:
-    name: End to end
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
+      - name: Check Typing
+        run: yarn run check
+      - name: Unit Tests
+        run: yarn run test
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
-      - name: Run Playwright tests
-        run: yarn playwright test
+      - name: E2E Tests
+        run: yarn run test:e2e
       - uses: actions/upload-artifact@v3
         if: always()
         with:
