@@ -1,7 +1,7 @@
-import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
-import simpsons from './source';
+import React from 'react';
 import defaultArgTypes from '../../utils/default-arg-types';
+import simpsons from './source';
 
 const stories = {
 	title: 'Questionnaires/Simpsons',
@@ -13,12 +13,12 @@ const stories = {
 			control: 'boolean',
 			defaultValue: true,
 		},
-		activeGoNextForMissing: {
+		management: {
 			table: { disable: false },
 			control: 'boolean',
-			defaultValue: true,
+			defaultValue: false,
 		},
-		management: {
+		shortcut: {
 			table: { disable: false },
 			control: 'boolean',
 			defaultValue: false,
@@ -32,8 +32,20 @@ const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-	id: 'simpsons-default',
+	id: 'Default',
 	source: simpsons,
 	pagination: true,
+	data: { COLLECTED: { READY: { COLLECTED: true } } },
+};
+
+export const With_Missing = Template.bind({});
+
+With_Missing.args = {
+	id: 'With-missing',
+	source: simpsons,
+	pagination: true,
+	missingStrategy: () => {
+		console.log('your strategy has been applied');
+	},
 	data: { COLLECTED: { READY: { COLLECTED: true } } },
 };

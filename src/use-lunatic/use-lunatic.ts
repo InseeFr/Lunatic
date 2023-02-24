@@ -1,22 +1,23 @@
-import {
-	useReducer,
-	useEffect,
-	useCallback,
-	FunctionComponent,
-	PropsWithChildren,
-	useMemo,
-} from 'react';
-import INITIAL_STATE from './initial-state';
 import * as actions from './actions';
-import reducer from './reducer';
-import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
-import { COLLECTED } from '../utils/constants';
-// @ts-ignore
-import { loadSuggesters } from '../utils/store-tools/auto-load';
-import { getQuestionnaireData } from './commons/get-data';
+
+import {
+	FunctionComponent,
+	useCallback,
+	useEffect,
+	useMemo,
+	useReducer,
+} from 'react';
 import { LunaticData, LunaticState } from './type';
+import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
+
+import { COLLECTED } from '../utils/constants';
+import INITIAL_STATE from './initial-state';
 import { LunaticSource } from './type-source';
 import { createLunaticProvider } from './lunatic-context';
+import { getQuestionnaireData } from './commons/get-data';
+// @ts-ignore
+import { loadSuggesters } from '../utils/store-tools/auto-load';
+import reducer from './reducer';
 
 const DEFAULT_DATA = {} as LunaticData;
 const DEFAULT_FEATURES = ['VTL', 'MD'];
@@ -39,6 +40,8 @@ function useLunatic(
 		suggesterFetcher,
 		activeControls = false,
 		custom,
+		missing,
+		missingStrategy,
 	}: {
 		features: string[];
 		preferences: string[];
@@ -55,13 +58,27 @@ function useLunatic(
 		suggesterFetcher?: typeof fetch;
 		activeControls: boolean;
 		custom: Record<string, FunctionComponent<unknown>>;
+		missing: boolean;
+		missingStrategy: () => void;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { pager, waiting, modalErrors, errors, currentErrors } = state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
-	const Provider = useMemo(() => createLunaticProvider(custom), [custom]);
+
+	// Required context provider: cleaner than prop drilling through every component
+	const Provider = useMemo(
+		() =>
+			createLunaticProvider({
+				custom,
+				management,
+				missing,
+				missingStrategy,
+				shortcut,
+			}),
+		[custom, management, missing, missingStrategy, shortcut]
+	);
 
 	useEffect(() => {
 		(async () => {
