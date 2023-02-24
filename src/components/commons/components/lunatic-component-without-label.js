@@ -1,13 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import FieldContainer from './field-container';
-import { DECLARATION_POSITIONS } from '../../declarations';
-import VariableStatus from './variable-status';
 import {
 	DeclarationsBeforeText,
 	DeclarationsDetachable,
 } from '../../declarations';
+
+import { DECLARATION_POSITIONS } from '../../declarations';
+import FieldContainer from './field-container';
 import Missing from './missing';
+import PropTypes from 'prop-types';
+import React from 'react';
+import VariableStatus from './variable-status';
 
 function getDescription({ declarations, description }) {
 	if (Array.isArray(declarations)) {
@@ -30,8 +31,6 @@ function LunaticComponent(props) {
 		declarations,
 		value,
 		children,
-		missing,
-		missingResponse,
 		management,
 		description,
 		handleChange,
@@ -45,9 +44,7 @@ function LunaticComponent(props) {
 				})}
 			</FieldContainer>
 			<DeclarationsDetachable declarations={declarations} id={id} />
-			{missing && missingResponse && (
-				<Missing {...props} handleChange={handleChange} />
-			)}
+			<Missing {...props} handleChange={handleChange} />
 		</>
 	);
 	return management ? <VariableStatus>{content}</VariableStatus> : content;

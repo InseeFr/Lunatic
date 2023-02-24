@@ -1,23 +1,24 @@
-import {
-	useReducer,
-	useEffect,
-	useCallback,
-	FunctionComponent,
-	PropsWithChildren,
-	useMemo,
-} from 'react';
-import INITIAL_STATE from './initial-state';
-import { overviewWithChildren } from './commons/getOverview';
 import * as actions from './actions';
-import reducer from './reducer';
-import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
-import { COLLECTED } from '../utils/constants';
-// @ts-ignore
-import { loadSuggesters } from '../utils/store-tools/auto-load';
-import { getQuestionnaireData } from './commons/get-data';
+
+import {
+	FunctionComponent,
+	useCallback,
+	useEffect,
+	useMemo,
+	useReducer,
+} from 'react';
 import { LunaticData, LunaticState } from './type';
+import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
+
+import { COLLECTED } from '../utils/constants';
+import INITIAL_STATE from './initial-state';
 import { LunaticSource } from './type-source';
 import { createLunaticProvider } from './lunatic-context';
+import { getQuestionnaireData } from './commons/get-data';
+// @ts-ignore
+import { loadSuggesters } from '../utils/store-tools/auto-load';
+import { overviewWithChildren } from './commons/getOverview';
+import reducer from './reducer';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const DEFAULT_DATA = empty as LunaticData;
@@ -43,6 +44,8 @@ function useLunatic(
 		custom = empty,
 		// Calculate an overview of every sequence (will be exposed as "overview")
 		withOverview = false,
+		missing = false,
+		missingStrategy,
 	}: {
 		features?: string[];
 		preferences?: string[];
@@ -60,6 +63,8 @@ function useLunatic(
 		activeControls?: boolean;
 		custom?: Record<string, FunctionComponent<unknown>>;
 		withOverview?: boolean;
+		missing: boolean;
+		missingStrategy: () => void;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -67,7 +72,19 @@ function useLunatic(
 		state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
-	const Provider = useMemo(() => createLunaticProvider(custom), [custom]);
+
+	// Required context provider: cleaner than prop drilling through every component
+	const Provider = useMemo(
+		() =>
+			createLunaticProvider({
+				custom,
+				management,
+				missing,
+				missingStrategy,
+				shortcut,
+			}),
+		[custom, management, missing, missingStrategy, shortcut]
+	);
 
 	useEffect(() => {
 		(async () => {

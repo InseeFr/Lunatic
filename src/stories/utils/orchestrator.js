@@ -1,11 +1,12 @@
-import React, { memo, useState } from 'react';
+import './custom-lunatic.scss';
+import './orchestrator.scss';
 
 import * as lunatic from '../..';
-import './custom-lunatic.scss';
-import Waiting from './waiting';
-import { Overview } from './overview';
 
-import './orchestrator.scss';
+import React, { memo, useState } from 'react';
+
+import { Overview } from './overview';
+import Waiting from './waiting';
 
 function getStoreInfoRequired() {
 	return {};
@@ -86,7 +87,7 @@ function OrchestratorForStories({
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
-	activeGoNextForMissing = false,
+	missingStrategy = () => console.log('no missing strategy'),
 	suggesterFetcher,
 	autoSuggesterLoading,
 	suggesters,
@@ -120,11 +121,12 @@ function OrchestratorForStories({
 		preferences,
 		onChange: onLogChange,
 		custom,
-		activeGoNextForMissing,
 		autoSuggesterLoading,
 		suggesters,
 		suggesterFetcher,
 		management,
+		missing,
+		missingStrategy,
 		shortcut,
 		activeControls,
 		withOverview: showOverview,
@@ -162,8 +164,6 @@ function OrchestratorForStories({
 									{...rest}
 									{...component}
 									{...storeInfo}
-									missing={missing}
-									missingStrategy={goNextPage}
 									filterDescription={filterDescription}
 									errors={currentErrors}
 								/>
