@@ -1,4 +1,5 @@
 import { COLLECTED, VTL } from '../utils/constants';
+
 import type { LunaticState } from './type';
 
 const INITIAL_STATE: LunaticState = {
@@ -32,6 +33,7 @@ const INITIAL_STATE: LunaticState = {
 	handleChange: () => {},
 	goToPage: () => undefined,
 	activeControls: false,
+	autofocus: false
 };
 
 export default INITIAL_STATE;
