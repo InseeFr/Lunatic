@@ -97,34 +97,6 @@ function createExecuteExpression(
 	}
 
 	/**
-	 * Update the binding for a loop
-	 */
-	function setLoopBindings(
-		variables: LunaticState['variables'],
-		iteration: number
-	) {
-		Object.entries(bindings).forEach(([k, v]) => {
-			const { type, value } = variables[k];
-			if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value)) {
-				bindings[k] = value[iteration];
-				pushToLazy(k);
-			}
-		});
-	}
-
-	/**
-	 * Reset the values in a loop
-	 */
-	function resetLoopBindings(variables: LunaticState['variables']) {
-		Object.entries(bindings).forEach(([k, v]) => {
-			const { type, value } = variables[k];
-			if (type === COLLECTED && Array.isArray(value) && !Array.isArray(v)) {
-				bindings[k] = value;
-			}
-		});
-	}
-
-	/**
 	 * Extract variables from an expression
 	 */
 	function getVariablesAndCatch(expression: string | LunaticExpression) {

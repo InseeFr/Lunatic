@@ -4,13 +4,6 @@ import { extractValue } from '../../../utils/array';
 
 type AccumulatorMap = Record<string, unknown>;
 
-function isInSubPage(state: Pick<LunaticState, 'pager'>) {
-	const { pager } = state;
-	const { subPage } = pager;
-
-	return subPage !== undefined;
-}
-
 /**
  * Add the value from variable indexed by response name
  */

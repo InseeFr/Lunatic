@@ -19,7 +19,7 @@ function reduceGoPreviousPage(state: LunaticState): LunaticState {
 			prevPage.subPages[prevPage.subPages.length - 1]
 		);
 		prevPager.maxPage = [
-			...resizeArray(prevPager.maxPage, prevPager.page.length - 1),
+			...resizeArray(prevPager.maxPage, prevPager.page.length - 1, 1),
 			prevPage.subPages.length,
 		];
 		const iterations =
@@ -27,7 +27,7 @@ function reduceGoPreviousPage(state: LunaticState): LunaticState {
 				iteration: prevPager.iteration,
 			}) - 1;
 		prevPager.maxIteration = [
-			...resizeArray(prevPager.maxIteration, prevPager.iteration.length),
+			...resizeArray(prevPager.maxIteration, prevPager.iteration.length, 0),
 			iterations,
 		];
 		prevPager.iteration = [...prevPager.iteration, iterations];

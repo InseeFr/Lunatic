@@ -9,7 +9,7 @@ function resolveControl(
 	const { criticality, errorMessage, id, typeOfControl } = control;
 	const { control: { value = 'true' } = {} } = control;
 	try {
-		const it = shallowIteration ?? iteration;
+		const it = shallowIteration ? [shallowIteration] : iteration;
 		const result = executeExpression(value, { iteration: it });
 		if (!result) {
 			const { value: labelValue } = errorMessage;

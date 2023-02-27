@@ -137,37 +137,6 @@ function createVariables(source: LunaticSource, data: LunaticData) {
 	return mapVariables;
 }
 
-/**
- * Check if there is a loop and populate the pager accordingly
- */
-function checkInLoop(
-	state: LunaticState,
-	initialPager: { page: string; subPage: number; iteration: number } | null
-): LunaticState {
-	const { pager, pages, executeExpression } = state;
-	const { page } = pager;
-	if (page in pages) {
-		const { isLoop, subPages, iterations, loopDependencies } = pages[page];
-		if (isLoop) {
-			return {
-				...state,
-				isInLoop: true,
-				pager: {
-					...pager,
-					subPage: initialPager?.subPage ?? 0,
-					nbSubPages: (subPages ?? []).length,
-					iteration: initialPager?.iteration ?? 0,
-					nbIterations: executeExpression(iterations, {
-						iteration: undefined,
-						bindingDependencies: loopDependencies,
-					}),
-				},
-			};
-		}
-	}
-	return state;
-}
-
 function reduceOnInit(state: LunaticState, action: ActionInit) {
 	const { payload } = action;
 	const {
@@ -179,7 +148,6 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		preferences,
 		savingType,
 		management,
-		shortcut,
 		activeControls,
 		goToPage,
 	} = payload;
@@ -191,8 +159,6 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		);
 		const pages = checkLoops(createMapPages(source));
 		const { maxPage, cleaning = {}, missingBlock = {}, resizing = {} } = source;
-		const initialPager = getPagerFromPageTag(initialPage);
-
 		const pager = {
 			page: [1],
 			maxPage: [parseInt(maxPage, 10)],
@@ -200,32 +166,28 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 			maxIteration: [],
 			lastReachedPage: initialPage,
 		} satisfies LunaticState['pager'];
-
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
-		return checkInLoop(
-			{
-				...state,
-				cleaning,
-				missingBlock,
-				resizing,
-				variables,
-				pages,
-				isFirstPage,
-				isLastPage,
-				pager,
-				executeExpression,
-				updateBindings,
-				handleChange,
-				preferences,
-				management,
-				savingType,
-				activeControls,
-				goToPage,
-				shortcut,
-			},
-			initialPager
-		);
+		// TODO : Handle initial page
+		return {
+			...state,
+			cleaning,
+			missingBlock,
+			resizing,
+			variables,
+			pages,
+			isFirstPage,
+			isLastPage,
+			pager,
+			executeExpression,
+			updateBindings,
+			handleChange,
+			preferences,
+			management,
+			savingType,
+			activeControls,
+			goToPage,
+		};
 	}
 
 	return state;

@@ -1,30 +1,23 @@
 import reduceCleaning from './reduce-cleaning';
 import { LunaticState } from '../../type';
 import { ActionHandleChange, ActionKind } from '../../actions';
+import { deepSet } from '../../../utils/array';
 
 /**
- * Find the new value for a variable from the state
- *
- * If we are in a loop we only want to null the value corresponding to the iteration
+ * Build the missing value from the state
  */
 function buildMissingValue(state: LunaticState, oldValue: unknown) {
-	const {
-		pager: { iteration },
-	} = state;
-	// The question is a root question
-	if (iteration === undefined) {
+	const pager = state.pager;
+	if (pager.iteration === undefined) {
 		return null;
 	}
 
-	// We are in an iteration
-	// If the value is not an array, do nothing
+	// The value is not an array we can't proceed further
 	if (!Array.isArray(oldValue)) {
 		return oldValue;
 	}
-	// Otherwise, null the value for the iteration
-	const newValue = [...oldValue];
-	newValue[iteration] = null;
-	return newValue;
+
+	return deepSet(oldValue, null, pager.iteration, pager.maxIteration);
 }
 
 /**

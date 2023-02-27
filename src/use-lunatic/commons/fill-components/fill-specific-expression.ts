@@ -15,7 +15,7 @@ function resolveRoundabout(
 			[name, expression]
 		) {
 			const values = new Array(iterations).fill(null).map((_, iteration) => {
-				return executeExpression(expression, { iteration });
+				return executeExpression(expression, { iteration: [iteration] });
 			});
 			return { ...result, [name]: values };
 		},

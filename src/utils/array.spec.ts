@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { resizeArray } from './array';
+import { deepSet, resizeArray } from './array';
 
 describe('resizeArray', () => {
 	it('should not touch array with the correct size', () => {
@@ -17,5 +17,17 @@ describe('resizeArray', () => {
 	});
 	it('should handle resizing smaller array', () => {
 		return expect(resizeArray([1, 2, 3, 4], 2, 0)).toEqual([1, 2]);
+	});
+});
+
+describe('deepSet', () => {
+	it('should append a new item', () => {
+		return expect(deepSet([1, 2], 3, [2], [2])).toEqual([1, 2, 3]);
+	});
+	it('should append nested item item', () => {
+		return expect(deepSet([1, 2], 3, [1, 2], [2, 2])).toEqual([
+			1,
+			[undefined, undefined, 3],
+		]);
 	});
 });

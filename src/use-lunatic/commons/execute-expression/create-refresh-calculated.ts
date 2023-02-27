@@ -21,7 +21,7 @@ type Args = {
 function createRefreshCalculated({ variables, execute, bindings }: Args) {
 	const toRefreshVariables = new Map<string, LunaticVariable>(); // variables calculées dépendantes d'une variable modifiée.
 
-	// à l'init, on y colle toutes les variables de calcul
+	// Find all calculated variable
 	Object.values(variables).forEach(function ({ variable }) {
 		const { variableType, name } = variable;
 		if (variableType === CALCULATED) {
@@ -35,7 +35,7 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 		linksIterations,
 	}: {
 		name: string;
-		iteration?: number;
+		iteration?: number[];
 		linksIterations?: number[];
 	}) {
 		if (name === X_AXIS && linksIterations) return linksIterations[0];
@@ -46,7 +46,7 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 	function buildValue(args: {
 		expression: LunaticExpression;
 		name: string;
-		iteration?: number;
+		iteration?: number[];
 		linksIterations?: number[];
 		logging?: ExpressionLogger;
 		shapeFrom?: string;

@@ -1,7 +1,7 @@
 import { LunaticState } from '../type';
 
 /**
- * Generate page name from the pager
+ * Serialize the position in the pager (ex: 2.1#1.1)
  */
 export function getPageTag(pager: LunaticState['pager']): string {
 	const { page, iteration } = pager;
@@ -12,53 +12,65 @@ export function getPageTag(pager: LunaticState['pager']): string {
 	return page.join('.');
 }
 
-export function getPagerFromPageTag(pageTag: string) {
-	const pattern =
-		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?/g;
+export function getPagerFromPageTag(
+	pageTag: string
+): Pick<LunaticState['pager'], 'page' | 'iteration'> {
+	const pattern = /(?<page>((\d+\.?)+))#?(?<iteration>(\d+\.?)+)?/g;
 	const match = [...(pageTag?.matchAll(pattern) as any)] as
 		| [
 				{
 					groups: {
-						page: string;
-						subPagePlusUn: string;
-						iterationPlusUn: string;
+						page?: string;
+						iteration?: string;
 					};
 				}
 		  ]
 		| [];
+
 	if (match.length === 0) {
-		return null;
+		return {
+			page: [1],
+			iteration: [],
+		};
 	}
-	const [
-		{
-			groups: { page, subPagePlusUn, iterationPlusUn },
-		},
-	] = match;
+
+	const groups = match[0].groups;
+
 	return {
-		page,
-		subPage: parseInt(subPagePlusUn, 10) - 1,
-		iteration: parseInt(iterationPlusUn, 10) - 1,
+		page: groups.page?.split('.').map((v) => parseInt(v, 10)) ?? [1],
+		iteration:
+			groups.iteration?.split('.').map((v) => parseInt(v, 10) - 1) ?? [],
 	};
 }
 
-export function isNewReachedPage(pager: LunaticState['pager']): boolean {
-	const { lastReachedPage, page, subPage, iteration } = pager;
-	const reachedPager = getPagerFromPageTag(lastReachedPage ?? '0');
+/**
+ * Compare 2 positions as array
+ */
+function positionIsGreater(a: number[], b: number[]): boolean {
+	if ((a[0] ?? -1) > (b[0] ?? -1)) {
+		return true;
+	}
+	if (a.length === 1 || b.length === 1) {
+		return a.length > b.length;
+	}
+	return positionIsGreater(a.slice(1), b.slice(1));
+}
 
-	if (!reachedPager) {
-		return false;
+export function isNewReachedPage(
+	pager: Pick<LunaticState['pager'], 'lastReachedPage' | 'page' | 'iteration'>
+): boolean {
+	const { lastReachedPage, page, iteration } = pager;
+	const lastReached = getPagerFromPageTag(lastReachedPage ?? '0');
+
+	// The reached page is greater
+	if (positionIsGreater(page, lastReached.page)) {
+		return true;
 	}
 
+	// We are on the same page, compare the iteration level
 	return (
-		Number.parseInt(page) > Number.parseInt(reachedPager.page.toString()) ||
-		(Number.parseInt(page) === Number.parseInt(reachedPager.page.toString()) &&
-			Number.parseInt(subPage?.toString() ?? '-1') >
-				Number.parseInt(reachedPager.subPage.toString()) &&
-			Number.parseInt(iteration?.toString() ?? '-1') ===
-				Number.parseInt(reachedPager.iteration.toString())) ||
-		(Number.parseInt(page) === Number.parseInt(reachedPager.page.toString()) &&
-			Number.parseInt(iteration?.toString() ?? '-1') >
-				Number.parseInt(reachedPager.iteration.toString()))
+		page.join('.') === lastReached.page.join('.') &&
+		positionIsGreater(iteration, lastReached.iteration)
 	);
 }
 

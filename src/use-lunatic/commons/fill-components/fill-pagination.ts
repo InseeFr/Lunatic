@@ -1,6 +1,6 @@
 import { LunaticComponentDefinition, LunaticState } from '../../type';
 
-export type FilledProps = { iteration?: number };
+export type FilledProps = { iteration?: number[] };
 
 /**
  * Inject the iteration index in the component props

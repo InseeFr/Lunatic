@@ -24,11 +24,11 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 	while (nextPage.isLoop && nextPage.subPages && nextPage.subPages.length > 0) {
 		nextPager.page = pageStringToNumbers(nextPage.subPages[0]);
 		nextPager.maxPage = [
-			...resizeArray(nextPager.maxPage, nextPager.page.length - 1),
+			...resizeArray(nextPager.maxPage, nextPager.page.length - 1, 1),
 			nextPage.subPages.length,
 		];
 		nextPager.maxIteration = [
-			...resizeArray(nextPager.maxIteration, nextPager.iteration.length),
+			...resizeArray(nextPager.maxIteration, nextPager.iteration.length, 0),
 			executeExpression<number>(nextPage.iterations, {
 				iteration: nextPager.iteration,
 			}) - 1,

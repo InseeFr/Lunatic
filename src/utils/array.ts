@@ -15,7 +15,7 @@ export function extractValue(v: unknown, path: number[]) {
  * Resize an array and fill with defaultValue
  */
 export function resizeArray<T extends unknown = unknown>(
-	array: T[],
+	array: T[] | unknown,
 	length: number,
 	defaultValue?: T
 ): T[] {
@@ -29,4 +29,23 @@ export function resizeArray<T extends unknown = unknown>(
 		}, []);
 	}
 	return array;
+}
+
+/**
+ * Inject a value deep into an array and resize it if necessary
+ */
+export function deepSet<T extends unknown>(
+	array: T[] | T,
+	value: T,
+	iteration: number[],
+	sizes: number[]
+): T[] | T {
+	if (iteration.length === 0) {
+		return value;
+	}
+	const [index, ...nextIteration] = iteration;
+	const [size, ...nextSizes] = sizes;
+	const newArray = resizeArray(array, size);
+	newArray[index] = deepSet(newArray[index], value, nextIteration, nextSizes);
+	return newArray as T;
 }
