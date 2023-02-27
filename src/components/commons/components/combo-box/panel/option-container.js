@@ -14,10 +14,7 @@ function getMax(rect) {
 function isVisible(optionRect, parentRect) {
 	const min = Math.min(getMin(optionRect), getMin(parentRect));
 	const max = Math.max(getMax(optionRect), getMax(parentRect));
-	if (max - min < optionRect.height + parentRect.height) {
-		return true;
-	}
-	return false;
+	return max - min < optionRect.height + parentRect.height;  
 }
 
 function OptionContainer({ children, index, selected, onSelect }) {

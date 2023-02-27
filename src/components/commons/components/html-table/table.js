@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import createCustomizableLunaticField from '../../create-customizable-field';
+import './table.scss';
 
 function Table({ className, id, children }) {
 	return (

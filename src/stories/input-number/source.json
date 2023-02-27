@@ -6,7 +6,6 @@
 			"mandatory": false,
 			"page": "2",
 			"label": { "value": "\"➡ 1. \" || \"NB \"", "type": "VTL|MD" },
-			"conditionFilter": { "value": "true", "type": "VTL" },
 			"hierarchy": {
 				"sequence": {
 					"id": "ksyjs7vy",
@@ -14,7 +13,8 @@
 					"label": { "value": "S0", "type": "VTL|MD" }
 				}
 			},
-			"bindingDependencies": ["NB"],
+			"description": { "value": "\"Description\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
 			"response": { "name": "NB" }
 		}
 	],

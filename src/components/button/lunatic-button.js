@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { isElement } from '../../utils/is-element';
-import './button.scss';
 import { createCustomizableLunaticField } from '../commons';
+import './button.scss';
 
 function Button({ children, onClick, disabled, label, className }) {
 	const handleClick = useCallback(

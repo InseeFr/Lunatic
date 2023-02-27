@@ -25,7 +25,6 @@ function BlockForLoop({
 	management,
 	executeExpression,
 	iterations,
-	custom,
 	paginatedLoop,
 	errors,
 }) {
@@ -86,16 +85,8 @@ function BlockForLoop({
 	if (nbRows > 0) {
 		return (
 			<>
-				<DeclarationsBeforeText
-					declarations={declarations}
-					id={id}
-					custom={custom}
-				/>
-				<DeclarationsAfterText
-					declarations={declarations}
-					id={id}
-					custom={custom}
-				/>
+				<DeclarationsBeforeText declarations={declarations} id={id} />
+				<DeclarationsAfterText declarations={declarations} id={id} />
 				<BlockForLoopOrchestrator
 					components={components}
 					handleChange={handleChangeLoop}
@@ -107,28 +98,15 @@ function BlockForLoop({
 					features={features}
 					preferences={preferences}
 					executeExpression={executeExpression}
-					custom={custom}
 					errors={errors}
 				/>
-				<DeclarationsDetachable
-					declarations={declarations}
-					id={id}
-					custom={custom}
-				/>
+				<DeclarationsDetachable declarations={declarations} id={id} />
 				{min && max && min !== max && (
 					<>
-						<HandleRowButton
-							onClick={addRow}
-							disabled={nbRows === max}
-							custom={custom}
-						>
+						<HandleRowButton onClick={addRow} disabled={nbRows === max}>
 							{label || D.DEFAULT_BUTTON_ADD}
 						</HandleRowButton>
-						<HandleRowButton
-							onClick={removeRow}
-							disabled={nbRows === 1}
-							custom={custom}
-						>
+						<HandleRowButton onClick={removeRow} disabled={nbRows === 1}>
 							{D.DEFAULT_BUTTON_REMOVE}
 						</HandleRowButton>
 					</>

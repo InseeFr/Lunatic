@@ -15,7 +15,7 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
+				"COLLECTED": "1974-03-15",
 				"EDITED": null,
 				"INPUTED": null,
 				"FORCED": null,
@@ -38,11 +38,11 @@
 					"criticality": "ERROR",
 					"errorMessage": {
 						"type": "VTL|MD",
-						"value": "Le format de la date YYYY-MM-DD n'est pas respecté."
+						"value": "\"Le format de la date YYYY-MM-DD n'est pas respecté.\""
 					},
 					"control": {
 						"type": "VTL",
-						"value": "not(cast(\\\"Q1\\\", date, \\\"YYYY-MM-DD\\\"))"
+						"value": "cast(Q1, date,  \"YYYY-MM-DD\")"
 					},
 					"id": "l7ovm2rv-format"
 				},
@@ -50,11 +50,11 @@
 					"criticality": "ERROR",
 					"errorMessage": {
 						"type": "VTL|MD",
-						"value": "La date saisie doit être comprise entre 1900-01-01 et 2100-01-01."
+						"value": "\"La date saisie doit être comprise entre 1900-01-01 et 2100-01-01.\""
 					},
 					"control": {
 						"type": "VTL",
-						"value": "not(cast(\\\"Q1\\\", date, \\\"YYYY-MM-DD\\\")>cast(\\\"2100-01-01\\\", date, \\\"YYYY-MM-DD\\\") or cast(\\\"Q1\\\", date, \\\"YYYY-MM-DD\\\")<cast(\\\"1900-01-01\\\", date, \\\"YYYY-MM-DD\\\"))"
+						"value": "not(cast(Q1, date, \"YYYY-MM-DD\")>cast(\"2100-01-01\", date, \"YYYY-MM-DD\") or cast(Q1, date,\"YYYY-MM-DD\")<cast(\"1900-01-01\", date, \"YYYY-MM-DD\"))"
 					},
 					"id": "l7ovm2rv-formatborne"
 				}
@@ -64,14 +64,33 @@
 			"hierarchy": {
 				"sequence": {
 					"id": "l7ovaca8",
-					"page": "1",
+					"page": "\"1\"",
 					"label": { "type": "VTL|MD", "value": "\"I - \" || \"S1\"" }
 				}
 			},
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Test declaration before \" || Q1",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"For example, 2001-01-01.\"",
+						"type": "VTL|MD"
+					}
+				}
+			],
 			"conditionFilter": { "type": "VTL", "value": "true" },
-			"label": { "type": "VTL|MD", "value": "\"➡ 1. \" || \"Q1\"" },
+			"label": { "type": "VTL|MD", "value": "\"➡ 1. \" || \"Birth day\"" },
 			"mandatory": false,
-			"bindingDependencies": ["Q1"],
 			"min": "1900-01-01",
 			"response": { "name": "Q1" },
 			"id": "l7ovm2rv",
@@ -80,7 +99,7 @@
 	],
 	"pagination": "question",
 	"resizing": {},
-	"label": { "type": "VTL|MD", "value": "DatePicker" },
+	"label": { "type": "VTL|MD", "value": "\"Example DatePicker\"" },
 	"lunaticModelVersion": "2.2.13",
 	"modele": "DATEPICKER",
 	"enoCoreVersion": "2.3.10",

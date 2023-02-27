@@ -5,14 +5,26 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"header": [
-				{ "label": "" },
-				{ "label": "Header 1" },
-				{ "label": "Header 2" }
+				{ "label": { "value": "\"<=>\"", "type": "VTL|MD" } },
+				{ "label": { "value": "\"Header 1\"", "type": "VTL|MD" } },
+				{ "label": { "value": "\"Header 2\"", "type": "VTL|MD" } }
 			],
 			"body": [
-				[{ "label": "Line 1" }, { "label": "Cell 11" }, { "label": "Cell 12" }],
-				[{ "label": "Line 2" }, { "label": "Cell 21" }, { "label": "Cell 22" }],
-				[{ "label": "Line 3" }, { "label": "Cell 31" }, { "label": "Cell 32" }]
+				[
+					{ "label": { "value": "\"Line 1\"", "type": "VTL|MD" } },
+					{ "label": { "value": "\"Cell 11\"", "type": "VTL|MD" } },
+					{ "label": { "value": "\"Cell 12\"", "type": "VTL|MD" } }
+				],
+				[
+					{ "label": { "value": "\"Line 2\"", "type": "VTL|MD" } },
+					{ "label": { "value": "\"Cell 21\"", "type": "VTL|MD" } },
+					{ "label": { "value": "\"Cell 22\"", "type": "VTL|MD" } }
+				],
+				[
+					{ "label": { "value": "\"Line 3\"", "type": "VTL|MD" } },
+					{ "label": { "value": "\"Cell 31\"", "type": "VTL|MD" } },
+					{ "label": { "value": "\"Cell 32\"", "type": "VTL|MD" } }
+				]
 			]
 		}
 	]

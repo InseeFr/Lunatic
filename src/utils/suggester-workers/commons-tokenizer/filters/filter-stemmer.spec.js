@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import filterStemmer from './filter-stemmer';
 
 describe('filter-stemmer', function () {

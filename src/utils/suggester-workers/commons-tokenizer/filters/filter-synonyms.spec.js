@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import filterSynonyms from './filter-synonyms';
 
 describe('filter-synonyms', function () {
