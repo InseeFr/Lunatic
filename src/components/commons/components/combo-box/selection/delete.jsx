@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import classnames from 'classnames';
 import { Fab } from '../../fab';
-import { CrossIcon } from '../../../../commons/icons';
+import { CrossIcon } from '../../../icons';
 
 function isDisabled(search) {
 	return !search || search.trim().length === 0;
