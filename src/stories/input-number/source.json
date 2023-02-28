@@ -5,7 +5,10 @@
 			"componentType": "InputNumber",
 			"mandatory": false,
 			"page": "2",
-			"label": { "value": "\"➡ 1. \" || \"NB \"", "type": "VTL|MD" },
+			"label": {
+				"value": "\"➡ 1. \" || \"In put for Number \"",
+				"type": "VTL|MD"
+			},
 			"hierarchy": {
 				"sequence": {
 					"id": "ksyjs7vy",
