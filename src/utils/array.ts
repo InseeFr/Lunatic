@@ -49,3 +49,61 @@ export function deepSet<T extends unknown>(
 	newArray[index] = deepSet(newArray[index], value, nextIteration, nextSizes);
 	return newArray as T;
 }
+
+/**
+ * Deep for each loop inside nested arrays
+ * Exclude values that are not at the max depth for the array
+ */
+export function deepForEach(
+	value: unknown[],
+	callback: (v: unknown, k: number[]) => void
+) {
+	// Find the max depth for the array
+	const valueDepth = depth(value);
+	// We need recursion
+	const loop = (row: unknown[], index: number[]) => {
+		row.map((v, k) => {
+			const newIndex = [...index, k];
+			// We reached the bottom of the array
+			if (newIndex.length === valueDepth) {
+				callback(v, newIndex);
+				return;
+			}
+			// Otherwise go deeper
+			if (Array.isArray(v)) {
+				loop(v, newIndex);
+				return;
+			}
+		});
+	};
+	loop(value, []);
+}
+
+export function depth(value: unknown[], baseDepth: number = 0): number {
+	return Math.max.apply(
+		Math,
+		value.map((v) => {
+			return Array.isArray(v) ? depth(v, baseDepth + 1) : baseDepth + 1;
+		})
+	);
+}
+
+/**
+ * Return the depths of the array at multiple level
+ */
+export function deepLengths(value: unknown, index: number[]): number[] {
+	// Recursion is required
+	const loop = (v: typeof value, i: typeof index, acc: number[]): number[] => {
+		// we reached the end of indexes
+		if (i.length === 0) {
+			return acc;
+		}
+		// Move one level deeper
+		const nextLevel = Array.isArray(v) ? v[i[0]] : [];
+		return loop(nextLevel, i.slice(1), [...acc, nextLevel?.length ?? 0]);
+	};
+	if (!Array.isArray(value)) {
+		return [];
+	}
+	return loop(value, index, [value.length]);
+}

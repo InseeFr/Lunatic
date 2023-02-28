@@ -1,6 +1,12 @@
 import { CALCULATED, X_AXIS, Y_AXIS } from '../../../utils/constants';
 import { LunaticExpression, LunaticState, LunaticVariable } from '../../type';
 import { ExpressionLogger } from './create-execute-expression';
+import {
+	deepForEach,
+	deepLengths,
+	deepSet,
+	extractValue,
+} from '../../../utils/array';
 
 type Args = {
 	variables: LunaticState['variables'];
@@ -29,20 +35,6 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 		}
 	});
 
-	function getIteration({
-		name,
-		iteration,
-		linksIterations,
-	}: {
-		name: string;
-		iteration?: number[];
-		linksIterations?: number[];
-	}) {
-		if (name === X_AXIS && linksIterations) return linksIterations[0];
-		if (name === Y_AXIS && linksIterations) return linksIterations[1];
-		return iteration;
-	}
-
 	function buildValue(args: {
 		expression: LunaticExpression;
 		name: string;
@@ -53,52 +45,45 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 	}) {
 		const { expression, logging, shapeFrom, name, iteration, linksIterations } =
 			args;
-		const value = execute(expression, {
-			logging,
-			iteration: shapeFrom
-				? [getIteration({ name, iteration, linksIterations })!]
-				: undefined,
-		});
-		if (linksIterations !== undefined) return value;
-		if (shapeFrom && iteration !== undefined) {
-			if (bindings[name] === undefined) {
-				const shapeVariable = bindings[shapeFrom];
-				if (Array.isArray(shapeVariable)) {
-					const initialValue = shapeVariable.map((_, i) =>
-						execute(expression, {
-							logging,
-							iteration: [i],
-						})
+
+		// We need to mimic the shape of another variable (we are in a loop)
+		if (shapeFrom) {
+			const fromShapeValue = bindings[shapeFrom];
+			// The variable is not yet defined
+			let calculatedValue = bindings[name];
+			// We have no value to start with, create the whole array from the shape
+			if (
+				Array.isArray(fromShapeValue) &&
+				((iteration?.length ?? 0) === 0 || calculatedValue === undefined)
+			) {
+				deepForEach(fromShapeValue, (_, index) => {
+					const hello = { fromShapeValue, shapeFrom };
+					const lol = deepLengths(fromShapeValue, index.slice(0, -1));
+					const value = execute(expression, { logging, iteration: index });
+					calculatedValue = deepSet(
+						calculatedValue,
+						value,
+						index,
+						deepLengths(fromShapeValue, index.slice(0, -1))
 					);
-					bindings[name] = initialValue;
-					return initialValue[iteration];
-				}
+				});
+				bindings[name] = calculatedValue;
+				return extractValue(calculatedValue, iteration ?? []);
 			}
-			const binding = bindings[name];
-			if (Array.isArray(binding)) {
-				binding[iteration] = value;
-				return binding[iteration];
-			} else {
-				console.error(`Binding not array! ${bindings[name]} for ${name}`);
-				bindings[name] = null;
-				return null;
-			}
-		} else if (shapeFrom && iteration === undefined) {
-			// TODO: optimize
-			const baseVar = bindings[shapeFrom];
-			if (Array.isArray(baseVar)) {
-				const v = baseVar.map((_, i) =>
-					execute(expression, {
-						logging,
-						iteration: [i],
-					})
-				);
-				bindings[name] = v;
-				return v;
-			}
+			// Value is already calculated, update the value for the requested iteration
+			const demo = execute(expression, { logging, iteration });
+			calculatedValue = deepSet(
+				calculatedValue,
+				execute(expression, { logging, iteration }),
+				iteration ?? [],
+				deepLengths(fromShapeValue, iteration?.slice(0, -1) ?? [])
+			);
+			bindings[name] = calculatedValue;
+			return extractValue(calculatedValue, iteration ?? []);
 		}
-		bindings[name] = value;
-		return value;
+
+		bindings[name] = execute(expression, { logging });
+		return bindings[name];
 	}
 
 	function refreshCalculated(
@@ -109,9 +94,9 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 			linksIterations,
 		}: {
 			rootExpression?: string;
-			iteration?: number;
+			iteration?: number[];
 			linksIterations?: number[];
-		}
+		} = {}
 	) {
 		return Object.entries(map).reduce(function (sub, [name, current]) {
 			const calculatedVariable = variables[name];
@@ -145,7 +130,7 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 				return { ...sub, [name]: value };
 			}
 			return { ...sub, [name]: current };
-		}, {});
+		}, {} as Record<string, unknown>);
 	}
 
 	function setToRefreshCalculated(name: string, variable: LunaticVariable) {
