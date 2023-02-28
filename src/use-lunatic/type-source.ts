@@ -287,7 +287,7 @@ export type Variable =
 			expression: LabelType;
 			bindingDependencies: string[];
 			inFilter: string;
-			shapeFrom: string;
+			shapeFrom?: string;
 	  };
 
 export type LunaticSource = {
