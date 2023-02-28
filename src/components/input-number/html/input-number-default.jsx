@@ -13,7 +13,7 @@ function InputNumberDefault({
 	max,
 	decimals,
 }) {
-	// Decimals is un number indicates the number behind the separator of decimals
+	// Decimals is a number indicates the number behind the separator of decimals
 	// Computing step attribute of input according to decimal number
 	const [step] = useState(decimals ? 1 / Math.pow(10, decimals) : 1);
 

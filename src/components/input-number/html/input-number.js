@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import InputNumberDefault from './input-number-default';
 import InputNumberThousand from './input-number-thousand';
-//import './input-number.scss';
+import './input-number.scss';
 
 function InputNumber({
 	id,
@@ -21,7 +21,7 @@ function InputNumber({
 }) {
 	const labelId = `label-${id}`;
 
-	const useThousandSeparator = max && max > 1000;
+	const [useThousandSeparator] = useState(max && max > 1000);
 
 	return (
 		<div className="lunatic-input-number">
