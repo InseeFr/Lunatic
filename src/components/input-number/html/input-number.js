@@ -1,8 +1,9 @@
-import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import { createCustomizableLunaticField, Label, Errors } from '../../commons';
-import './input-number.scss';
+import React from 'react';
+import { createCustomizableLunaticField, Errors, Label } from '../../commons';
+import InputNumberDefault from './input-number-default';
+import InputNumberThousand from './input-number-thousand';
+//import './input-number.scss';
 
 function InputNumber({
 	id,
@@ -11,7 +12,7 @@ function InputNumber({
 	disabled,
 	min,
 	max,
-	step,
+	decimals,
 	unit,
 	label,
 	errors,
@@ -19,32 +20,41 @@ function InputNumber({
 	description,
 }) {
 	const labelId = `label-${id}`;
-	const handleChange = useCallback(
-		function (e) {
-			const val = e.target.valueAsNumber;
-			onChange(isNaN(val) ? null : val);
-		},
-		[onChange]
-	);
+
+	const useThousandSeparator = max && max > 1000;
+
 	return (
 		<div className="lunatic-input-number">
 			<Label htmlFor={id} id={labelId} description={description}>
 				{label}
 			</Label>
-			<input
-				id={id}
-				className={classnames({ disabled })}
-				type="number"
-				onChange={handleChange}
-				value={value ?? ''}
-				labelledby={labelId}
-				disabled={disabled}
-				required={required}
-				min={min}
-				max={max}
-				step={step}
-				lang="en"
-			/>
+			{useThousandSeparator && (
+				<InputNumberThousand
+					id={id}
+					value={value}
+					onChange={onChange}
+					disabled={disabled}
+					required={required}
+					labelId={labelId}
+					max={max}
+					min={min}
+					decimals={decimals}
+				/>
+			)}
+
+			{!useThousandSeparator && (
+				<InputNumberDefault
+					id={id}
+					value={value}
+					onChange={onChange}
+					disabled={disabled}
+					required={required}
+					labelId={labelId}
+					max={max}
+					min={min}
+					decimals={decimals}
+				/>
+			)}
 			{unit && <span>{unit}</span>}
 			<Errors errors={errors} activeId={id} />
 		</div>
@@ -64,7 +74,7 @@ InputNumber.propTypes = {
 	disabled: PropTypes.bool,
 	min: PropTypes.number,
 	max: PropTypes.number,
-	step: PropTypes.number,
+	decimals: PropTypes.number,
 	unit: PropTypes.string,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	errors: PropTypes.object,
@@ -80,7 +90,7 @@ InputNumber.defaultValue = {
 	required: true,
 	min: undefined,
 	max: undefined,
-	step: undefined,
+	deciamls: undefined,
 	unit: undefined,
 	label: undefined,
 	errors: undefined,
