@@ -51,7 +51,7 @@ function Row({
 								value={value}
 								id={idComponent}
 								preferences={preferences}
-								iteration={rowIndex}
+								iteration={[rowIndex]}
 								executeExpression={executeExpression}
 								errors={errors}
 							/>

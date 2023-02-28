@@ -18,8 +18,6 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 		throw new Error(`Cannot reach next page ${pageId}`);
 	}
 
-	debugger;
-
 	// We reached a loop, go inside
 	while (nextPage.isLoop && nextPage.subPages && nextPage.subPages.length > 0) {
 		nextPager.page = pageStringToNumbers(nextPage.subPages[0]);

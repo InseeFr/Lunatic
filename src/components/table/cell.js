@@ -62,7 +62,7 @@ function Cell({
 					value={valueField}
 					executeExpression={executeExpression}
 					paths={paths}
-					iteration={iteration}
+					iteration={[iteration]}
 					errors={errors}
 				/>
 			</Td>

@@ -61,6 +61,8 @@ function createCrawl({
 				}),
 			};
 		} catch (e) {
+			console.error(e);
+			debugger;
 			return {
 				...object,
 				[path]: e instanceof Error ? e.toString() : e,
