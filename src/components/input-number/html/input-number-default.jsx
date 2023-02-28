@@ -29,6 +29,7 @@ function InputNumberDefault({
 			id={id}
 			className={classnames({ disabled })}
 			type="number"
+			inputMode={decimals ? 'decimal' : 'numeric'}
 			onChange={handleChange}
 			value={value ?? ''}
 			labelledby={labelId}
