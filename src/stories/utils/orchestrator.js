@@ -5,6 +5,7 @@ import './custom-lunatic.scss';
 import Waiting from './waiting';
 
 import './orchestrator.scss';
+import { getPagerFromPageTag } from '../../use-lunatic/commons/page-tag';
 
 function getStoreInfoRequired() {
 	return {};
@@ -20,22 +21,23 @@ function DevOptions({ goToPage, getData }) {
 	return (
 		<div className="dev-options">
 			<div className="title">Options développeur</div>
-			<div className="contenur">
+			<div style={{ display: 'flex' }}>
 				<lunatic.Button onClick={() => console.log(getData(true))}>
-					Get State
+					Get Data
 				</lunatic.Button>
-				<lunatic.Button onClick={() => goToPage({ page: `${toPage}` })}>
+				<lunatic.Button
+					onClick={() => goToPage(getPagerFromPageTag(toPage.toString()))}
+				>
 					{`Go to page ${toPage}`}
 				</lunatic.Button>
-				<lunatic.InputNumber
-					id="page-to-jump"
-					value={toPage}
-					handleChange={handleChange}
-					min={1}
-					label={'Page'}
-					description={'the page wher you want to jump'}
-				/>
 			</div>
+			<lunatic.Input
+				id="page-to-jump"
+				value={toPage}
+				handleChange={handleChange}
+				label={'Page'}
+				description={'the page wher you want to jump'}
+			/>
 		</div>
 	);
 }

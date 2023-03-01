@@ -46,7 +46,20 @@ describe('reduceGoToPage', () => {
 		expect(state.pager.maxIteration).toEqual([1, 2]);
 	});
 
-	it('should hangle jumping from empty page', () => {
+	it('should force iteration', () => {
+		const state = reduceGoToPage(
+			generateState(source, baseData),
+			goToPage({
+				page: [2, 2],
+			})
+		);
+		expect(state.pager.page).toEqual([2, 2]);
+		expect(state.pager.maxPage).toEqual([3, 3]);
+		expect(state.pager.iteration).toEqual([0]);
+		expect(state.pager.maxIteration).toEqual([1]);
+	});
+
+	it('should handle jumping from empty page', () => {
 		const state = reduceGoToPage(
 			generateState(source, baseData),
 			goToPage({
@@ -55,8 +68,19 @@ describe('reduceGoToPage', () => {
 			})
 		);
 		expect(state.pager.page).toEqual([2, 1]);
-		expect(state.pager.page).toEqual([2, 1]);
 		expect(state.pager.maxPage).toEqual([3, 3]);
 		expect(state.pager.maxIteration).toEqual([1]);
+	});
+
+	it('should throw an error on unreachable page', () => {
+		expect(() =>
+			reduceGoToPage(
+				generateState(source, baseData),
+				goToPage({
+					page: [10, 3],
+					iteration: [],
+				})
+			)
+		).toThrowError();
 	});
 });

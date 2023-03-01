@@ -4,6 +4,7 @@ import { ActionGoToPage, ActionKind } from '../actions';
 import { autoExploreLoop } from './commons/auto-explore-loop';
 import { isPageEmpty } from '../commons/page';
 import reduceGoNextPage from './reduce-go-next-page';
+import { resizeArray } from '../../utils/array';
 
 function reduceGoToPage(
 	state: LunaticState,
@@ -12,13 +13,19 @@ function reduceGoToPage(
 	const pager = {
 		...state.pager,
 		page: action.payload.page,
-		iteration: action.payload.iteration,
+		iteration: resizeArray(
+			action.payload.iteration ?? [],
+			action.payload.page.length - 1,
+			0
+		),
 	};
 
-	if (pager.iteration.length > pager.page.length - 1) {
-		throw new Error('Iteration length does not match page depth');
+	// The page does not exist
+	if (!state.pages[pager.page.join('.')]) {
+		throw new Error(`Cannot reach unknown page ${pager.page.join('.')}`);
 	}
 
+	// Calculate length of every sub-page
 	pager.maxPage = [
 		// First level page count never change
 		pager.maxPage[0],
