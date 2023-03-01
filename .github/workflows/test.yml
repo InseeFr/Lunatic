@@ -3,9 +3,11 @@ name: Tests
 on:
   push:
     branches:
-      - main
+      branches:
+        - main
     pull_request_target:
-      - main
+      branches:
+        - main
 
 jobs:
   test:
