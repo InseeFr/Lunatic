@@ -55,10 +55,6 @@
 							font-size: 15px;
 							padding-left: 4px;
 							@include selection();
-
-							&::placeholderlist {
-								@include placeholderList();
-							}
 						}
 
 						.lunatic-suggester-selected {
