@@ -7,6 +7,7 @@ on:
 
 jobs:
   update-branches-on-gh-pages:
+    if: "!contains(github.head_ref, 'dependabot/')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
