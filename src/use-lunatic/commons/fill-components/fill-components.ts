@@ -18,7 +18,7 @@ import { LunaticComponentDefinition, LunaticState } from '../../type';
 import fillComponentExpressions, {
 	DeepTranslateExpression,
 } from './fill-component-expressions';
-import fillSpecificExpressions from './fill-specific-expression';
+import { fillRoundaboutProps } from './fill-roundabout-props';
 
 export type LunaticComponentProps<
 	T = LunaticComponentDefinition['componentType']
@@ -54,7 +54,7 @@ const fillComponent = compose(
 	fillErrors,
 	fillFromState,
 	fillComponentExpressions,
-	fillSpecificExpressions,
+	fillRoundaboutProps,
 	fillPagination,
 	fillComponentValue,
 	fillMissingResponse,

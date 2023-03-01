@@ -164,7 +164,7 @@ function OrchestratorForStories({
 
 						const storeInfo = storeName ? getStoreInfo(storeName) : {};
 
-						console.log('props', other);
+						console.log('props', { other, rest, component, storeInfo });
 
 						return (
 							<div

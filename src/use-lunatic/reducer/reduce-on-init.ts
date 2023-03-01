@@ -10,9 +10,10 @@ import {
 	LunaticStateVariable,
 	LunaticVariable,
 } from '../type';
-import { ActionInit } from '../actions';
+import { ActionInit, goToPage as goToPageAction } from '../actions';
 import { LunaticSource } from '../type-source';
 import { getPagerFromPageTag } from '../commons/page-tag';
+import reduceGoToPage from './reduce-go-to-page';
 
 /**
  * Extract value from colllected data
@@ -137,7 +138,7 @@ function createVariables(source: LunaticSource, data: LunaticData) {
 	return mapVariables;
 }
 
-function reduceOnInit(state: LunaticState, action: ActionInit) {
+export function reduceOnInit(state: LunaticState, action: ActionInit) {
 	const { payload } = action;
 	const {
 		source,
@@ -168,8 +169,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		} satisfies LunaticState['pager'];
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
-		// TODO : Handle initial page
-		return {
+		const newState = {
 			...state,
 			cleaning,
 			missingBlock,
@@ -188,9 +188,17 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 			activeControls,
 			goToPage,
 		};
+
+		// If we need an initialPage, jump to it
+		if (initialPage) {
+			return reduceGoToPage(
+				newState,
+				goToPageAction(getPagerFromPageTag(initialPage))
+			);
+		}
+
+		return newState;
 	}
 
 	return state;
 }
-
-export default reduceOnInit;

@@ -1,4 +1,4 @@
-import reduceOnInit from './reduce-on-init';
+import { reduceOnInit } from './reduce-on-init';
 import reduceGoPreviousPage from './reduce-go-previous-page';
 import reduceGoNextPage from './reduce-go-next-page';
 import reduceGoToPage from './reduce-go-to-page';

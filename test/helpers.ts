@@ -1,12 +1,8 @@
 import { LunaticSource } from '../src/use-lunatic/type-source';
-import {
-	LunaticCollectedValue,
-	LunaticData,
-	LunaticState,
-} from '../src/use-lunatic/type';
-import reduceOnInit from '../src/use-lunatic/reducer/reduce-on-init';
+import { LunaticData, LunaticState } from '../src/use-lunatic/type';
+import { reduceOnInit } from '../src/use-lunatic/reducer/reduce-on-init';
 import INITIAL_STATE from '../src/use-lunatic/initial-state';
-import { onInit } from '../src/use-lunatic/actions';
+import { ActionInit, onInit } from '../src/use-lunatic/actions';
 
 /**
  * Generate a base state from a source / data for unit testing reducer
@@ -17,7 +13,8 @@ export function generateState(
 		CALCULATED: {},
 		EXTERNAL: {},
 		COLLECTED: {},
-	}
+	},
+	options: Partial<ActionInit['payload']> = {}
 ): LunaticState {
 	return reduceOnInit(
 		INITIAL_STATE,
@@ -25,6 +22,7 @@ export function generateState(
 			features: ['VTL'],
 			source,
 			data: 'COLLECTED' in data ? data : generateData(data),
+			...options,
 		})
 	);
 }
