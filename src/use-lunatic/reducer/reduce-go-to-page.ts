@@ -1,82 +1,63 @@
-import { isOnEmptyPage } from './commons';
-import { getPageTag } from '../commons';
 import { createModalControlsReducer } from './validate-controls';
-import reduceGoNextPage from './reduce-go-next-page';
 import { LunaticState } from '../type';
 import { ActionGoToPage, ActionKind } from '../actions';
-
-function validateChange(state: LunaticState) {
-	const { pager, errors } = state;
-	const currentErrors =
-		errors !== undefined ? errors[getPageTag(pager)] : undefined;
-	const updatedState = { ...state, currentErrors } satisfies LunaticState;
-	if (isOnEmptyPage(updatedState)) {
-		return reduceGoNextPage(updatedState, {
-			type: ActionKind.GO_NEXT_PAGE,
-			payload: {},
-		});
-	}
-	return updatedState;
-}
-
-function resolveSubPage(
-	state: LunaticState,
-	action: ActionGoToPage
-): LunaticState {
-	const { pager, pages } = state;
-	const {
-		page,
-		iteration,
-		nbIterations,
-		subPage = 0,
-		roundabout,
-	} = action.payload;
-	const { subPages } = pages[page] || { subPages: [] };
-	const nbSubPages = subPages?.length;
-
-	return {
-		...state,
-		isInLoop: true,
-		pager: {
-			...pager,
-			page,
-			iteration,
-			nbIterations,
-			nbSubPages,
-			subPage,
-			roundabout,
-		},
-	};
-}
+import { autoExploreLoop } from './commons/auto-explore-loop';
+import { isPageEmpty } from '../commons/page';
+import reduceGoNextPage from './reduce-go-next-page';
 
 function reduceGoToPage(
 	state: LunaticState,
 	action: ActionGoToPage
 ): LunaticState {
-	const { isInLoop, pager } = state;
-	const { page: newPage, iteration } = action.payload;
+	const pager = {
+		...state.pager,
+		page: action.payload.page,
+		iteration: action.payload.iteration,
+	};
 
-	if (iteration !== undefined) {
-		return resolveSubPage(state, action);
+	if (pager.iteration.length > pager.page.length - 1) {
+		throw new Error('Iteration length does not match page depth');
 	}
 
-	if (!isInLoop)
-		return {
-			...state,
-			pager: {
-				...pager,
-				subPage: undefined,
-				nbSubPages: undefined,
-				iteration: undefined,
-				nbIterations: undefined,
-				page: newPage,
-			},
-		};
-	// TODO: fix when redirect to loop component
-	// How to calculate nbSubPages & nbIterations?
-	// How to calculate lazy variables we need?
-	// Handle setLoopBindings with the good iteration
-	return validateChange(state);
+	pager.maxPage = [
+		// First level page count never change
+		pager.maxPage[0],
+		// For each page compute the subpage length
+		...pager.page.slice(0, -1).map((_, k) => {
+			const page = pager.page.slice(0, k + 1).join('.');
+			return state.pages[page]?.subPages?.length ?? 0;
+		}),
+	];
+
+	// Loop through each page (starting from root, to find the iteration expression to compute each length)
+	pager.maxIteration = pager.page.slice(0, -1).map((_, k) => {
+		// Compute intermediary iteration / page
+		const pageIndex = pager.page.slice(0, k + 1).join('.');
+		const iteration = pager.iteration.slice(0, k);
+		// Extract the expression from the page
+		const iterationExpression = state.pages[pageIndex].iterations;
+		if (!iterationExpression) {
+			return 0;
+		}
+		// Find the length for the current iteration
+		return (
+			state.executeExpression<number>(iterationExpression, { iteration }) - 1
+		);
+	});
+
+	const newState = autoExploreLoop({
+		...state,
+		pager,
+	});
+
+	// We reached an empty page, fast-forward to the next
+	if (isPageEmpty(newState)) {
+		return reduceGoNextPage(newState, {
+			type: ActionKind.GO_NEXT_PAGE,
+			payload: {},
+		});
+	}
+	return newState;
 }
 
 export default createModalControlsReducer(reduceGoToPage);

@@ -152,10 +152,8 @@ export type LunaticState = {
 	// TODO : Explain this
 	management?: boolean;
 	goToPage: (page: {
-		page: string;
-		iteration?: number;
-		nbIterations?: number;
-		subPage?: number;
+		page: number[];
+		iteration: number[];
 		roundabout?: { page: string };
 	}) => void;
 };

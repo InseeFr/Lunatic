@@ -1,5 +1,13 @@
 {
+	"id": "loop-of-loop",
 	"maxPage": "3",
+	"label": {
+		"value": "",
+		"type": "VTL"
+	},
+	"suggesters": [],
+	"cleaning": {},
+	"missingBlock":  {},
 	"components": [
 		{
 			"id": "seq",

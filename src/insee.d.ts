@@ -21,3 +21,8 @@ declare module 'antlr4' {
 		InputStream: InputStream,
 	};
 }
+
+declare module '*.json' {
+	const value: any;
+	export default value;
+}

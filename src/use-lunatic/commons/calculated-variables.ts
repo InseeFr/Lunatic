@@ -14,7 +14,7 @@ export const interpretAllCalculatedVariables = ({
 }) => {
 	return Object.entries(partialVariables || variables).reduce((acc, [k, v]) => {
 		if (k in acc) return acc;
-		if (v.type === CALCULATED) {
+		if (v.type === CALCULATED && v.variable.shapeFrom) {
 			const {
 				variable: {
 					expression: { value: expression },
