@@ -181,7 +181,9 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		shortcut,
 		activeControls,
 		goToPage,
+		getSuggesterStatus,
 	} = payload;
+
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
 		const [executeExpression, updateBindings] = createExecuteExpression(
@@ -222,6 +224,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 				activeControls,
 				goToPage,
 				shortcut,
+				getSuggesterStatus,
 			},
 			initialPager
 		);

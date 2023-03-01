@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Suggester from './html/suggester';
 import createSearching from './searching';
 import CheckStore from './check-store';
+import SuggesterStatus from './suggester-status';
 
 function IDBSuggester({
 	storeName,
@@ -16,6 +17,7 @@ function IDBSuggester({
 	value,
 	label,
 	description,
+	getSuggesterStatus,
 	errors,
 }) {
 	const [store, setStore] = useState(undefined);
@@ -31,10 +33,11 @@ function IDBSuggester({
 	);
 
 	return (
-		<CheckStore
+		<SuggesterStatus
 			storeName={storeName}
 			idbVersion={idbVersion}
 			setStore={setStore}
+			getSuggesterStatus={getSuggesterStatus}
 		>
 			<Suggester
 				id={id}
@@ -49,7 +52,7 @@ function IDBSuggester({
 				description={description}
 				errors={errors}
 			/>
-		</CheckStore>
+		</SuggesterStatus>
 	);
 }
 

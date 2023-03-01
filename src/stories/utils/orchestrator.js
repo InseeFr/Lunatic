@@ -86,13 +86,12 @@ function OrchestratorForStories({
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	activeGoNextForMissing = false,
-	suggesterFetcher,
 	autoSuggesterLoading,
-	suggesters,
 	addExternal,
 	preferences,
 	custom,
 	filterDescription = true,
+	getReferentiel,
 	...rest
 }) {
 	const { maxPage } = source;
@@ -118,8 +117,7 @@ function OrchestratorForStories({
 		custom,
 		activeGoNextForMissing,
 		autoSuggesterLoading,
-		suggesters,
-		suggesterFetcher,
+		getReferentiel,
 		management,
 		shortcut,
 		activeControls,

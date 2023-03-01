@@ -1,6 +1,7 @@
 import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
+import simple from './simple';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
@@ -37,4 +38,26 @@ Default.args = {
 	},
 	suggesterFetcher,
 	pagination: true,
+};
+
+async function getReferentiel(name) {
+	switch (name) {
+		case 'naf-rev2':
+			return fetch(
+				'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json'
+			).then((r) => r.json());
+		case 'cog-communes':
+			return fetch(
+				'https://inseefr.github.io/Lunatic/storybook/communes-2019.json'
+			).then((r) => r.json());
+		default:
+			throw new Error(`Unkonw référentiel ${name}`);
+	}
+}
+
+export const Simple = Template.bind({});
+Simple.args = {
+	source: simple,
+	getReferentiel,
+	autoSuggesterLoading: true,
 };

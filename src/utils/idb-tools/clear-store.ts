@@ -1,5 +1,5 @@
-async function clearStore(db, name) {
-	new Promise(function (resolve, reject) {
+async function clearStore(db: IDBDatabase, name: string): Promise<boolean> {
+	return new Promise(function (resolve, reject) {
 		try {
 			const transaction = db.transaction(name, 'readwrite');
 			transaction.oncomplete = function () {
@@ -8,7 +8,7 @@ async function clearStore(db, name) {
 			const store = transaction.objectStore(name);
 			store.clear();
 		} catch (e) {
-			reject(e);
+			reject(false);
 		}
 	});
 }

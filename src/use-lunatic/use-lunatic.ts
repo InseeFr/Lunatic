@@ -3,7 +3,6 @@ import {
 	useEffect,
 	useCallback,
 	FunctionComponent,
-	PropsWithChildren,
 	useMemo,
 } from 'react';
 import INITIAL_STATE from './initial-state';
@@ -12,7 +11,7 @@ import reducer from './reducer';
 import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
 import { COLLECTED } from '../utils/constants';
 // @ts-ignore
-import { loadSuggesters } from '../utils/store-tools/auto-load';
+import { useSuggesters } from './use-suggesters';
 import { getQuestionnaireData } from './commons/get-data';
 import { LunaticData, LunaticState } from './type';
 import { LunaticSource } from './type-source';
@@ -35,10 +34,9 @@ function useLunatic(
 		shortcut = false,
 		initialPage = '1',
 		autoSuggesterLoading = false,
-		suggesters: suggestersConfiguration,
-		suggesterFetcher,
 		activeControls = false,
 		custom,
+		getReferentiel,
 	}: {
 		features: string[];
 		preferences: string[];
@@ -48,11 +46,7 @@ function useLunatic(
 		shortcut: boolean;
 		initialPage: string;
 		autoSuggesterLoading: boolean;
-		suggesters?: Record<
-			string,
-			{ version?: string; fields?: string[]; stopWords: string[]; url: string }
-		>;
-		suggesterFetcher?: typeof fetch;
+		getReferentiel: (name: string) => Promise<Array<unknown>>;
 		activeControls: boolean;
 		custom: Record<string, FunctionComponent<unknown>>;
 	}
@@ -63,36 +57,11 @@ function useLunatic(
 	const { suggesters } = source;
 	const Provider = useMemo(() => createLunaticProvider(custom), [custom]);
 
-	useEffect(() => {
-		(async () => {
-			if (
-				autoSuggesterLoading &&
-				typeof suggestersConfiguration === 'object' &&
-				Object.values(suggestersConfiguration).length > 0
-			) {
-				const s = suggesters.reduce(function (current, storeInfo) {
-					const { name } = storeInfo;
-					if (!suggestersConfiguration[name]) return current;
-					return {
-						...current,
-						[name]: {
-							...storeInfo,
-							url: suggestersConfiguration[name].url,
-							stopWords: suggestersConfiguration[name].stopWords,
-						},
-					};
-				}, {} as Record<string, { url: string; stopWords: string[] }>);
-				dispatch(actions.onSetWaiting(true));
-				await loadSuggesters(suggesterFetcher)(s);
-				dispatch(actions.onSetWaiting(false));
-			}
-		})();
-	}, [
-		autoSuggesterLoading,
-		suggesterFetcher,
-		suggestersConfiguration,
+	const getSuggesterStatus = useSuggesters({
+		auto: autoSuggesterLoading,
+		getReferentiel,
 		suggesters,
-	]);
+	});
 
 	const getErrors = useCallback(
 		function () {
@@ -174,6 +143,7 @@ function useLunatic(
 					handleChange,
 					activeControls,
 					goToPage,
+					getSuggesterStatus,
 				})
 			);
 		},
@@ -189,6 +159,7 @@ function useLunatic(
 			handleChange,
 			activeControls,
 			goToPage,
+			getSuggesterStatus,
 		]
 	);
 

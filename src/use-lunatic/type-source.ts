@@ -256,7 +256,7 @@ export type SuggesterType = {
 		params: { language: string; pattern: string; min?: number };
 	};
 	url?: string;
-	version: string;
+	version: number;
 };
 
 export type Variable =

@@ -1,5 +1,6 @@
 import { LunaticData, LunaticState } from './type';
 import { LunaticSource } from './type-source';
+import { SuggesterStatus } from './use-suggesters';
 
 export enum ActionKind {
 	GO_PREVIOUS_PAGE = 'use-lunatic/go-previous',
@@ -47,6 +48,7 @@ export type ActionInit = {
 		handleChange: LunaticState['handleChange'];
 		activeControls: boolean;
 		goToPage: (params: ActionGoToPage['payload']) => ActionGoToPage;
+		getSuggesterStatus: (name: string) => SuggesterStatus;
 	};
 };
 

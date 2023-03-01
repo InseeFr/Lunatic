@@ -122,4 +122,28 @@
 			}
 		}
 	}
+
+	.lunatic-notification {
+		line-height: 34px;
+		margin: 2px 2px;
+		padding: 3px 15px;
+
+		.title {
+			font-weight: bold;
+			font-size: large;
+			margin-bottom: 3px;
+		}
+		.descrition {
+		}
+
+		&.info {
+			background-color: lightblue;
+		}
+		&.warn {
+			background-color: darkorange;
+		}
+		&.error {
+			background-color: tomato;
+		}
+	}
 }

@@ -1,21 +1,21 @@
 /* eslint-disable no-restricted-globals */
 import CONSTANTE from './constantes';
-import { getIDB } from '../idb-tools';
+import getIDB from '../idb-tools/get-idb';
 
 const IDB_REF = getIDB();
 
-function openStorage(name, idbVersion = 1) {
+function openStorage(name: string, idbVersion = 1): Promise<IDBDatabase> {
 	return new Promise(function (resolve, reject) {
 		if (!IDB_REF) {
 			reject('indexedDb not supported !');
 		}
 		const request = IDB_REF.open(name, idbVersion);
-		let db;
+		let db: IDBDatabase;
 		let doIt = true;
 
 		request.onupgradeneeded = function (e) {
 			doIt = false;
-			db = e.target.result;
+			db = this.result;
 			const store = db.createObjectStore(CONSTANTE.STORE_DATA_NAME, {
 				keyPath: 'id',
 			});
@@ -26,10 +26,12 @@ function openStorage(name, idbVersion = 1) {
 				multiEntry: true,
 			});
 
-			const txn = e.target.transaction;
-			txn.oncomplete = function () {
-				resolve(db);
-			};
+			const txn = this.transaction;
+			if (txn) {
+				txn.oncomplete = function () {
+					resolve(db);
+				};
+			}
 		};
 
 		request.onsuccess = function () {

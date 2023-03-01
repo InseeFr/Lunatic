@@ -5,7 +5,6 @@ import { CONSTANTES } from '../../utils/store-tools';
 function CheckStore({ storeName, version, setStore, children }) {
 	const [ready, setReady] = useState(0);
 	const [refresh, setRefresh] = useState(false);
-	const [disabled, setDisabled] = useState(false);
 
 	const checkStore = useCallback(
 		async function () {
@@ -35,10 +34,8 @@ function CheckStore({ storeName, version, setStore, children }) {
 		function () {
 			if (refresh) {
 				setRefresh(false);
-				setDisabled(true);
 				async function go() {
 					await checkStore();
-					setDisabled(false);
 				}
 
 				go();
