@@ -1,4 +1,4 @@
-name: Lunatic CI (prisme, master)
+name: Lunatic CI
 
 on: [push]
 
@@ -45,7 +45,7 @@ jobs:
 
   check_if_version_upgraded:
     name: Check if version upgrade
-    if: github.event_name == 'push' && contains('refs/heads/master refs/heads/main refs/heads/prisme', github.ref)
+    if: github.event_name == 'push' && contains('refs/heads/v1-main refs/heads/main refs/heads/prisme', github.ref)
     runs-on: ubuntu-latest
     needs: test-build
     outputs:
@@ -81,7 +81,7 @@ jobs:
             echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
             false
           fi
-          if [ ${{github.ref}} = 'refs/heads/master' ]; then
+          if [ ${{github.ref}} = 'refs/heads/v1-main' ]; then
             yarn publish --access public
           fi
           if [ ${{github.ref}} = 'refs/heads/main' ]; then
@@ -94,8 +94,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           VERSION: ${{ needs.check_if_version_upgraded.outputs.to_version }}
 
-  build-assets:
-    if: github.ref == 'refs/heads/master'
+  build-assets-v1:
+    if: github.ref == 'refs/heads/v1-main'
     runs-on: ubuntu-latest
     needs: test-build
     steps:
@@ -107,44 +107,34 @@ jobs:
       - run: yarn
       # Build Storybook
       - run: yarn build-storybook
-      - run: mkdir -p deploy/storybook
-      - run: cp -R ./storybook-static/storybook/. ./deploy/storybook
-      - uses: actions/setup-node@v3
-        with:
-          # Because of gitbook support
-          node-version: 10
-      - run: |
-          npm i -g gitbook-cli
-          gitbook install
-          gitbook build
-        working-directory: ./docs/
-      - run: cp -a ./docs/_book/. ./deploy/
+      - run: mkdir -p deploy-v1/storybook-v1
+      - run: cp -R ./storybook-static/storybook/. ./deploy-v1/storybook-v1
       # Build orchestrator example
       - run: yarn
         working-directory: ./example/orchestrator
       - run: yarn build
         working-directory: ./example/orchestrator
-      - run: mkdir -p deploy/orchestrator
-      - run: cp -a ./example/orchestrator/build/. ./deploy/orchestrator
+      - run: mkdir -p deploy-v1/orchestrator-v1
+      - run: cp -a ./example/orchestrator/build/. ./deploy-v1/orchestrator-v1
       # Build editor example
       - run: yarn
         working-directory: ./example/lunatic-editor
       - run: yarn build
         working-directory: ./example/lunatic-editor
-      - run: mkdir -p deploy/editor
-      - run: cp -a ./example/lunatic-editor/build/. ./deploy/editor
+      - run: mkdir -p deploy-v1/editor-v1
+      - run: cp -a ./example/lunatic-editor/build/. ./deploy-v1/editor-v1
       # Add json to fetch for suggester stories
-      - run: cp -a ./public/. ./deploy/storybook
+      - run: cp -a ./public/. ./deploy-v1/storybook-v1
       - name: Upload deploy artifact
         uses: actions/upload-artifact@v3
         with:
-          name: deploy
-          path: deploy/
+          name: deploy-v1
+          path: deploy-v1/
 
-  deploy:
-    if: github.ref == 'refs/heads/master'
+  deploy-v1:
+    if: github.ref == 'refs/heads/v1-main'
     runs-on: ubuntu-latest
-    needs: build-assets
+    needs: build-assets-v1
     steps:
       - uses: actions/checkout@v3
         with:
@@ -152,16 +142,16 @@ jobs:
       - name: Download deploy artifact
         uses: actions/download-artifact@v3
         with:
-          name: deploy
+          name: deploy-v1
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           author_name: 'Github action'
-          message: 'Update master assets'
+          message: 'Update v1-main assets'
           branch: 'gh-pages'
 
-  build-assets-v2:
+  build-assets:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: test-build
@@ -176,21 +166,30 @@ jobs:
       - run: yarn
       # Build Storybook v2
       - run: yarn build-storybook
-      - run: mkdir -p deploy-v2/storybook-v2
-      - run: cp -R ./storybook-static/. ./deploy-v2/storybook-v2
+      - run: mkdir -p deploy/storybook
+      - run: cp -R ./storybook-static/. ./deploy/storybook
       # Add json to fetch for suggester stories
-      - run: cp -a ./public/. ./deploy-v2/storybook-v2
-      #
+      - run: cp -a ./public/. ./deploy/storybook
+      - uses: actions/setup-node@v3
+        with:
+          # Because of gitbook support
+          node-version: 10
+      - run: |
+          npm i -g gitbook-cli
+          gitbook install
+          gitbook build
+        working-directory: ./docs/
+      - run: cp -a ./docs/_book/. ./deploy/
       - name: Upload deploy artifact
         uses: actions/upload-artifact@v3
         with:
-          name: deploy-v2
-          path: deploy-v2/
+          name: deploy
+          path: deploy/
 
-  deploy-v2:
+  deploy:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: build-assets-v2
+    needs: build-assets
     steps:
       - uses: actions/checkout@v3
         with:
@@ -198,7 +197,7 @@ jobs:
       - name: Download deploy artifact
         uses: actions/download-artifact@v3
         with:
-          name: deploy-v2
+          name: deploy
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
