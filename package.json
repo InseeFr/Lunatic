@@ -63,7 +63,6 @@
 		"react-number-format": "^5.0.0-beta.4",
 		"react-tooltip": "^4.2.15",
 		"remove-accents": "^0.4.2",
-		"sass": "^1.32.2",
 		"snowball": "^0.3.1",
 		"string-tokenizer": "^0.0.8"
 	},
@@ -113,7 +112,6 @@
 		"eslint-plugin-jsx-a11y": "^6.1.1",
 		"eslint-plugin-react": "^7.17.0",
 		"eslint-plugin-react-hooks": "^4.0.8",
-		"node-sass": "^8.0.0",
 		"file-loader": "^6.2.0",
 		"identity-obj-proxy": "^3.0.0",
 		"jsdom": "^16.6.0",
@@ -126,6 +124,7 @@
 		"regenerator-runtime": "^0.13.7",
 		"remove-accents": "^0.4.2",
 		"rxjs-marbles": "^6.0.1",
+		"sass": "^1.58.3",
 		"sass-loader": "^13.2.0",
 		"source-map-explorer": "^2.4.2",
 		"ts-loader": "^9.4.2",
