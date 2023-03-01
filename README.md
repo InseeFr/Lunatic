@@ -10,21 +10,22 @@
 
 Lunatic est un librairie front-end sous forme de hook react et de librairies de composants pour générer un questionnaire à partir du format de données [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model).
 
-- [Storybook](https://inseefr.github.io/Lunatic/storybook).
 - [Storybook v2](https://inseefr.github.io/Lunatic/storybook-v2)
+- [Storybook v1](https://inseefr.github.io/Lunatic/storybook-v1)
+- [Storybook Beta](https://inseefr.github.io/Lunatic/storybook-beta)
 - [Editeur Lunatic](https://inseefr.github.io/Lunatic/editor/)
-- [Documentation](https://inseefr.github.io/Lunatic/fr/) 
+- [Documentation](https://inseefr.github.io/Lunatic/fr/)
 
 ## Sommaire
 
 - [Utilisation](#utilisation)
-  * [Le hook useLunatic](#le-hook-uselunatic)
-  * [Les composants](#les-composants)
+  - [Le hook useLunatic](#le-hook-uselunatic)
+  - [Les composants](#les-composants)
 - [Personnalisation](#personnalisation)
 - [Fonctionnement interne](#fonctionnement-interne)
-  * [Fonctionnement général](#fonctionnement-g-n-ral)
-  * [pages et pager](#pages-et-pager)
-  * [Exécution du VTL](#ex-cution-du-vtl)
+  - [Fonctionnement général](#fonctionnement-g-n-ral)
+  - [pages et pager](#pages-et-pager)
+  - [Exécution du VTL](#ex-cution-du-vtl)
 - [Convention et bonnes pratiques](#convention-et-bonnes-pratiques)
 
 ## Utilisation
@@ -37,12 +38,12 @@ yarn add @inseefr/lunatic@2.0.7-v2
 
 ### Le hook useLunatic
 
-Ensuite, à l'endroit où vous souhaiter afficher le formulaire il faudra utiliser le hook `useLunatic`. 
+Ensuite, à l'endroit où vous souhaiter afficher le formulaire il faudra utiliser le hook `useLunatic`.
 
 ```js
-import {useLunatic} from '@inseefr/lunatic'
+import { useLunatic } from '@inseefr/lunatic';
 
-const obj = useLunatic(source, data, options)
+const obj = useLunatic(source, data, options);
 ```
 
 Ce hook prend 3 paramètres :
@@ -80,38 +81,31 @@ Pour plus d'informations sur les types de ce retour vous pouvez vous référer a
 
 ### Les composants
 
-Pour afficher le questionnaire on commencera par récupérer la liste des composants à afficher à l'aide de la méthode `getComponents()` renvoyée par le hook. 
+Pour afficher le questionnaire on commencera par récupérer la liste des composants à afficher à l'aide de la méthode `getComponents()` renvoyée par le hook.
 
 Lunatic offre une librairie de composant préconçu pour répondre aux différents types de champs disponible dans les questionnaires.
 
 ```jsx
 import * as lunatic from '@inseefr/lunatic';
 
-function App ({source, data}) {
-  const {
-    getComponents,
-    getCurrentErrors,
-    getModalErrors
-  } = lunatic.useLunatic(source, data, {})
-  const components = getComponents();
-  const currentErrors = getCurrentErrors();
-  const modalErrors = getModalErrors();
+function App({ source, data }) {
+	const { getComponents, getCurrentErrors, getModalErrors } =
+		lunatic.useLunatic(source, data, {});
+	const components = getComponents();
+	const currentErrors = getCurrentErrors();
+	const modalErrors = getModalErrors();
 
-  return (
-    <div className="container">
-      {components.map(function (component) {
-        const Component = lunatic[component.componentType];
-        return (
-          <Component
-            key={component.id}
-            {...component}
-            errors={currentErrors}
-          />
-        );
-      })}
-      <lunatic.Modal errors={modalErrors} goNext={goNextPage}/>
-    </div>
-  );
+	return (
+		<div className="container">
+			{components.map(function (component) {
+				const Component = lunatic[component.componentType];
+				return (
+					<Component key={component.id} {...component} errors={currentErrors} />
+				);
+			})}
+			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
+		</div>
+	);
 }
 ```
 
@@ -123,29 +117,28 @@ Par défaut les composants offerts par Lunatic sont plutôt simples avec un styl
 
 ```jsx
 const custom = {
-  Input: MyCustomInput,
-  InputNumber: MyCustomInputNumber
-}
+	Input: MyCustomInput,
+	InputNumber: MyCustomInputNumber,
+};
 
-function App ({source, data}) {
-  
-  // ...
+function App({ source, data }) {
+	// ...
 
-  return (
-    <div className="container">
-      {components.map(function (component) {
-        const Component = lunatic[component.componentType];
-        return (
-          <Component
-            key={component.id}
-            {...component}
-            custom={custom}
-            errors={currentErrors}
-          />
-        );
-      })}
-    </div>
-  );
+	return (
+		<div className="container">
+			{components.map(function (component) {
+				const Component = lunatic[component.componentType];
+				return (
+					<Component
+						key={component.id}
+						{...component}
+						custom={custom}
+						errors={currentErrors}
+					/>
+				);
+			})}
+		</div>
+	);
 }
 ```
 

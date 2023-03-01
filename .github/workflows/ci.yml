@@ -82,10 +82,10 @@ jobs:
             false
           fi
           if [ ${{github.ref}} = 'refs/heads/v1-main' ]; then
-            yarn publish --access public
+            yarn publish --tag v1 --access public
           fi
           if [ ${{github.ref}} = 'refs/heads/main' ]; then
-            yarn publish --tag v2 --access public
+            yarn publish --access public
           fi
           if [ ${{github.ref}} = 'refs/heads/prisme' ]; then
             yarn publish --tag prisme --access public
