@@ -158,5 +158,8 @@ export type LunaticState = {
 		subPage?: number;
 		roundabout?: { page: string };
 	}) => void;
-	getSuggesterStatus: (name: string) => SuggesterStatus;
+	getSuggesterStatus: (name: string) => {
+		status: SuggesterStatus;
+		timestamp: number;
+	};
 };

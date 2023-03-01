@@ -145,6 +145,7 @@ function useSuggesters(_a) {
                                 case 6: return [3 /*break*/, 8];
                                 case 7:
                                     e_1 = _b.sent();
+                                    console.error(e_1);
                                     setStatus(status, name, SuggesterStatus.error);
                                     setTimestamp(Date.now());
                                     return [3 /*break*/, 8];

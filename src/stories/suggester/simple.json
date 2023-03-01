@@ -1,5 +1,5 @@
 {
-	"maxPage": "1",
+	"maxPage": "5",
 	"suggesters": [
 		{
 			"name": "naf-rev2",
@@ -60,7 +60,7 @@
 			"response": {
 				"name": "HELLO"
 			},
-			"page": "1"
+			"page": "2"
 		},
 		{
 			"id": "suggestions-inconnu",
@@ -75,7 +75,7 @@
 			"response": {
 				"name": "HELLO"
 			},
-			"page": "1"
+			"page": "3"
 		},
 		{
 			"id": "suggestions-in-error",
@@ -90,7 +90,23 @@
 			"response": {
 				"name": "HELLO"
 			},
-			"page": "1"
+			"page": "4"
+		},
+		{
+			"id": "bye!",
+			"componentType": "Sequence",
+			"page": "5",
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Merci beaucoup.\"",
+						"type": "VTL|MD"
+					}
+				}
+			]
 		}
 	],
 	"variables": [

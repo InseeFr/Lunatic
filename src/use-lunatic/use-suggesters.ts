@@ -110,6 +110,7 @@ export function useSuggesters({
 									}
 								}
 							} catch (e: any) {
+								console.error(e);
 								setStatus(status, name, SuggesterStatus.error);
 								setTimestamp(Date.now());
 							}

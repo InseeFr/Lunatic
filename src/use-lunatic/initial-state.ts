@@ -1,5 +1,6 @@
 import { COLLECTED, VTL } from '../utils/constants';
 import type { LunaticState } from './type';
+import { SuggesterStatus } from './use-suggesters';
 
 const INITIAL_STATE: LunaticState = {
 	variables: {}, // map des variables du questionnaires
@@ -32,6 +33,7 @@ const INITIAL_STATE: LunaticState = {
 	handleChange: () => {},
 	goToPage: () => undefined,
 	activeControls: false,
+	getSuggesterStatus: (name: string) => SuggesterStatus.unused,
 };
 
 export default INITIAL_STATE;

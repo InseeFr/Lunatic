@@ -181,7 +181,6 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		shortcut,
 		activeControls,
 		goToPage,
-		getSuggesterStatus,
 	} = payload;
 
 	if (source && data) {
@@ -224,7 +223,6 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 				activeControls,
 				goToPage,
 				shortcut,
-				getSuggesterStatus,
 			},
 			initialPager
 		);

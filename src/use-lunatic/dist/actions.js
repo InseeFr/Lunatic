@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.onSetWaiting = exports.handleChange = exports.onInit = exports.goToPage = exports.goNextPage = exports.goPreviousPage = exports.ActionKind = void 0;
+exports.updateState = exports.onSetWaiting = exports.handleChange = exports.onInit = exports.goToPage = exports.goNextPage = exports.goPreviousPage = exports.ActionKind = void 0;
 var ActionKind;
 (function (ActionKind) {
     ActionKind["GO_PREVIOUS_PAGE"] = "use-lunatic/go-previous";
@@ -9,6 +9,7 @@ var ActionKind;
     ActionKind["ON_INIT"] = "use-lunatic/on-init";
     ActionKind["HANDLE_CHANGE"] = "use-lunatic/handle-change";
     ActionKind["ON_SET_WAITING"] = "use-lunatic/on-set-waiting";
+    ActionKind["UPDATE_STATE"] = "use-lunatic/update-state";
 })(ActionKind = exports.ActionKind || (exports.ActionKind = {}));
 var actionCreator = function (type) {
     return function (payload) {
@@ -39,3 +40,4 @@ exports.onSetWaiting = function (status) {
         payload: { status: status }
     });
 };
+exports.updateState = actionCreator(ActionKind.UPDATE_STATE);

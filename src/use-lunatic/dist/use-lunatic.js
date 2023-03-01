@@ -73,8 +73,7 @@ function useLunatic(source, data, _a) {
             shortcut: shortcut,
             handleChange: handleChange,
             activeControls: activeControls,
-            goToPage: goToPage,
-            getSuggesterStatus: getSuggesterStatus
+            goToPage: goToPage
         }));
     }, [
         source,
@@ -88,8 +87,10 @@ function useLunatic(source, data, _a) {
         handleChange,
         activeControls,
         goToPage,
-        getSuggesterStatus,
     ]);
+    react_1.useEffect(function () {
+        dispatch(actions.updateState({ getSuggesterStatus: getSuggesterStatus }));
+    }, [getSuggesterStatus]);
     return {
         getComponents: getComponents,
         goPreviousPage: goPreviousPage,

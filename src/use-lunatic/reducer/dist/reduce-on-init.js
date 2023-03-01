@@ -137,7 +137,7 @@ function checkInLoop(state, initialPager) {
 function reduceOnInit(state, action) {
     var _a;
     var payload = action.payload;
-    var source = payload.source, data = payload.data, initialPage = payload.initialPage, features = payload.features, handleChange = payload.handleChange, preferences = payload.preferences, savingType = payload.savingType, management = payload.management, shortcut = payload.shortcut, activeControls = payload.activeControls, goToPage = payload.goToPage, getSuggesterStatus = payload.getSuggesterStatus;
+    var source = payload.source, data = payload.data, initialPage = payload.initialPage, features = payload.features, handleChange = payload.handleChange, preferences = payload.preferences, savingType = payload.savingType, management = payload.management, shortcut = payload.shortcut, activeControls = payload.activeControls, goToPage = payload.goToPage;
     if (source && data) {
         var variables = createVariables(source, data); // map des variables
         var _b = commons_1.createExecuteExpression(variables, features), executeExpression = _b[0], updateBindings = _b[1];
@@ -172,8 +172,7 @@ function reduceOnInit(state, action) {
             savingType: savingType,
             activeControls: activeControls,
             goToPage: goToPage,
-            shortcut: shortcut,
-            getSuggesterStatus: getSuggesterStatus }), initialPager);
+            shortcut: shortcut }), initialPager);
     }
     return state;
 }

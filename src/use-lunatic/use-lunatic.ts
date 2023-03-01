@@ -143,7 +143,6 @@ function useLunatic(
 					handleChange,
 					activeControls,
 					goToPage,
-					getSuggesterStatus,
 				})
 			);
 		},
@@ -159,8 +158,14 @@ function useLunatic(
 			handleChange,
 			activeControls,
 			goToPage,
-			getSuggesterStatus,
 		]
+	);
+
+	useEffect(
+		function () {
+			dispatch(actions.updateState({ getSuggesterStatus }));
+		},
+		[getSuggesterStatus]
 	);
 
 	return {
