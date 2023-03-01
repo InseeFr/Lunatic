@@ -11,6 +11,7 @@ import { LunaticData, LunaticState } from './type';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
 
 import { COLLECTED } from '../utils/constants';
+import D from '../i18n';
 import INITIAL_STATE from './initial-state';
 import { LunaticSource } from './type-source';
 import { createLunaticProvider } from './lunatic-context';
@@ -24,6 +25,10 @@ const empty = {}; // Keep the same empty object (to avoid problem with useEffect
 const DEFAULT_DATA = empty as LunaticData;
 const DEFAULT_FEATURES = ['VTL', 'MD'];
 const DEFAULT_PREFERENCES = [COLLECTED];
+const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
+
+const DEFAULT_DONT_KNOW = D.DK;
+const DEFAULT_REFUSED = D.RF;
 const nothing: LunaticState['handleChange'] = () => {};
 
 function useLunatic(
@@ -46,6 +51,9 @@ function useLunatic(
 		withOverview = false,
 		missing = false,
 		missingStrategy,
+		missingShortcut = DEFAULT_SHORTCUT,
+		dontKnowButton = DEFAULT_DONT_KNOW,
+		refusedButton = DEFAULT_REFUSED,
 	}: {
 		features?: string[];
 		preferences?: string[];
@@ -65,6 +73,9 @@ function useLunatic(
 		withOverview?: boolean;
 		missing: boolean;
 		missingStrategy: () => void;
+		missingShortcut: { dontKnow: string; refused: string };
+		dontKnowButton?: string;
+		refusedButton?: string;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -82,8 +93,20 @@ function useLunatic(
 				missing,
 				missingStrategy,
 				shortcut,
+				missingShortcut,
+				dontKnowButton,
+				refusedButton,
 			}),
-		[custom, management, missing, missingStrategy, shortcut]
+		[
+			custom,
+			management,
+			missing,
+			missingStrategy,
+			shortcut,
+			missingShortcut,
+			dontKnowButton,
+			refusedButton,
+		]
 	);
 
 	useEffect(() => {

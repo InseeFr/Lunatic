@@ -4,24 +4,20 @@ import { DK, RF } from '../../../../utils/constants';
 import React, { useCallback } from 'react';
 
 import Button from '../../../button';
-import D from '../../../../i18n';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { useLunaticMissing } from '../../../../use-lunatic/lunatic-context';
 import useOnHandleChange from '../../use-on-handle-change';
 
-const DEFAULT_SHORTCUT = { dontKnow: 'f2', refused: 'f4' };
-
 const Missing = (props) => {
+	const { missingResponse, handleChange, componentType, paginatedLoop } = props;
 	const {
-		dontKnowButton = D.DK,
-		refusedButton = D.RF,
-		missingResponse,
-		handleChange,
-		missingShortcut = DEFAULT_SHORTCUT,
-		componentType,
-		paginatedLoop,
-	} = props;
-	const { missing, missingStrategy, shortcut } = useLunaticMissing();
+		missing,
+		missingStrategy,
+		shortcut,
+		missingShortcut,
+		dontKnowButton,
+		refusedButton,
+	} = useLunaticMissing();
 	const value = missingResponse?.value;
 	const onClick = useOnHandleChange({
 		handleChange,

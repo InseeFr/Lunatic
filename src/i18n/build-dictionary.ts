@@ -1,3 +1,5 @@
+import { Dictionary, DictionaryLang } from './dictionary';
+
 /**
  * Based on the locale passed as a paremeter, this function will return
  * the corresponding dictionary.
@@ -5,19 +7,13 @@
  * @param {string} lang the lang of the user
  * @param {any} dict
  */
-export const createDictionary = (lang, dict) =>
-	Object.keys(dict).reduce((acc, k) => {
-		const hasChildObject = Object.keys(dict[k]).find(
-			(key) =>
-				dict[k][key] &&
-				typeof dict[k][key] === 'object' &&
-				dict[k][key].constructor === Object
-		);
+export const createDictionary = (lang: DictionaryLang, dict: Dictionary) =>
+	Object.entries(dict).reduce((acc, [k, v]) => {
 		return {
 			...acc,
-			[k]: !hasChildObject ? dict[k][lang] : createDictionary(lang, dict[k]),
+			[k]: v[lang],
 		};
-	}, {});
+	}, {}) as Record<keyof Dictionary, string>;
 
 /**
  * This function will return only the lang part of a locale
@@ -35,9 +31,5 @@ export const secondLang = 'en';
  * @param {String=} defaultLang
  * @returns {String}
  */
-export const getLang = (defaultLang) =>
-	(defaultLang || navigator.language || navigator.browserLanguage).split(
-		'-'
-	)[0] === firstLang
-		? firstLang
-		: secondLang;
+export const getLang = (): DictionaryLang =>
+	navigator.language.split('-')[0] === firstLang ? firstLang : secondLang;
