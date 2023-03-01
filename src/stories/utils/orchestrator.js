@@ -94,6 +94,8 @@ function OrchestratorForStories({
 	preferences,
 	custom,
 	filterDescription = true,
+	dontKnowButton,
+	refusedButton,
 	...rest
 }) {
 	const { maxPage } = source;
@@ -125,6 +127,8 @@ function OrchestratorForStories({
 		missingStrategy,
 		shortcut,
 		activeControls,
+		dontKnowButton,
+		refusedButton,
 	});
 
 	const components = getComponents();

@@ -47,5 +47,7 @@ With_Missing.args = {
 	missingStrategy: () => {
 		console.log('your strategy has been applied');
 	},
+	dontKnowButton: 'I dunno',
+	refusedButton: 'Oh no!',
 	data: { COLLECTED: { READY: { COLLECTED: true } } },
 };
