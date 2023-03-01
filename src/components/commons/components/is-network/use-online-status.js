@@ -49,3 +49,4 @@ function useOnlineStatus(online, offline) {
 }
 
 export default useOnlineStatus;
+git commit -am "test : test unitaire pour le composant common variable-status" -m "BREAKING CHANGE : changement d'extension pour tous les fichiers contenant du jsx dans le dossier components et ajout de test Id dans le component variable-status"

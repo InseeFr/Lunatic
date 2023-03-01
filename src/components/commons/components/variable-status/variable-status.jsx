@@ -23,9 +23,12 @@ const VariableStatus = ({ id = '', children }) => {
 		.join('');
 
 	return (
-		<div className="lunatic-component-container-test">
+		<div
+			className="lunatic-component-container-test"
+			data-testid="variable-status"
+		>
 			<div className="lunatic-component-body">{children}</div>
-			<div className="tooltip-lunatic">
+			<div className="tooltip-lunatic" data-testid="tooltip-lunatic">
 				<span
 					data-for={`${id}-management-tooltip`}
 					data-tip={text}

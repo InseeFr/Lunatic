@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import LabelSelection from './label-selection';
+import LabelSelection from './label-selection.jsx';
 import Input from './input';
 import SelectionContainer from './selection-container';
 
