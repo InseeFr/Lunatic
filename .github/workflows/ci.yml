@@ -1,4 +1,4 @@
-name: Lunatic CI (prisme, main)
+name: Lunatic CI
 
 on: [push]
 
