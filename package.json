@@ -24,7 +24,7 @@
 	],
 	"license": "MIT",
 	"main": "lib/index.js",
-	"module": "lib/index.js",
+	"module": "src/index.ts",
 	"files": [
 		"lib"
 	],
