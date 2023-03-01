@@ -1,5 +1,15 @@
 {
   "branches": [
-    "ci/storybook-beta"
+		"ci/storybook-beta",
+		"feat/suggester-status",
+		"feat/declaration",
+		"feat/loop-variables",
+		"test/create-refresh-calculated",
+		"feat/missing-missing-strategy",
+		"fix/search-workers",
+		"test/create-expression",
+		"test/playwright",
+		"feat/autofocusable-components",
+		"feat/loop-of-loop"
   ]
 }
