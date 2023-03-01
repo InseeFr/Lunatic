@@ -51,7 +51,11 @@ function Dragger({ el, children, onDrag }) {
 	useDocumentAddEventListener('mouseup', onMouseUp);
 
 	return (
-		<div className="lunatic-dragger" onMouseDown={onMouseDown}>
+		<div
+			className="lunatic-dragger"
+			data-testid="lunatic-dragger"
+			onMouseDown={onMouseDown}
+		>
 			{children}
 		</div>
 	);

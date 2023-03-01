@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import createCustomizableLunaticField from '../../commons/create-customizable-field';
+import createCustomizableLunaticField from '../create-customizable-field';
 import safetyLabel from '../safety-label';
 import Description from './description';
 import './fieldset.scss';
