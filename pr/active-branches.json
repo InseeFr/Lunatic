@@ -1,3 +1,5 @@
 {
-  "branches": []
+  "branches": [
+    "ci/storybook-beta"
+  ]
 }
