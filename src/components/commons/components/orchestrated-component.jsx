@@ -1,5 +1,5 @@
 import React from 'react';
-import * as lunatic from '../..';
+import * as lunatic from '../../../components';
 import { fillComponentExpressions } from '../../../use-lunatic/commons';
 
 function OrchestratedComponent({

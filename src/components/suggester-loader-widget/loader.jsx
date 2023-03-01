@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { createAppendTask } from '../../utils/suggester-workers/append-to-index';
+import { createAppendTask } from '../../utils/suggester-workers/append-to-index/index';
 import Progress from './progress';
 import { clearStoreData } from '../../utils/store-tools';
 
