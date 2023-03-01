@@ -49,5 +49,6 @@ With_Missing.args = {
 	},
 	dontKnowButton: 'I dunno',
 	refusedButton: 'Oh no!',
+	missingShortcut: { dontKnow: 'f2', refused: 'f4' },
 	data: { COLLECTED: { READY: { COLLECTED: true } } },
 };
