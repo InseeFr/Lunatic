@@ -1,13 +1,12 @@
-name: Lunatic CI-develop
+name: Lunatic CI beta
 
 on:
   push:
     branches:
-      - "v2-develop"
+      - 'develop'
 
 jobs:
-  test-build:
-    name: Test & build
+  build-storybook-beta:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -16,62 +15,21 @@ jobs:
           node-version: 16
       - uses: bahmutov/npm-install@v1
       - run: yarn
-      # Run tests & build sonar reports
-      - run: yarn test-coverage
-      # Build lib
-      - run: yarn build
-      - name: Upload deploy artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage
-          path: coverage/
-
-  sonarcloud:
-    runs-on: ubuntu-latest
-    needs: test-build
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Download coverage artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: coverage
-          path: coverage
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
-  build-assets-v2-develop:
-    runs-on: ubuntu-latest
-    needs: test-build
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: v2-develop
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - uses: bahmutov/npm-install@v1
-      - run: yarn
-      # Build Storybook v2
+      # Build Storybook
       - run: yarn build-storybook
-      - run: mkdir -p deploy-v2-develop/storybook-v2-develop
-      - run: cp -R ./storybook-static/. ./deploy-v2/storybook-v2-develop
+      - run: mkdir -p deploy-beta/storybook-beta
+      - run: cp -R ./storybook-static/. ./deploy-beta/storybook-beta
       # Add json to fetch for suggester stories
-      - run: cp -a ./public/. ./deploy-v2/storybook-v2-develop
-      #
+      - run: cp -a ./public/. ./deploy-beta/storybook-beta
       - name: Upload deploy artifact
         uses: actions/upload-artifact@v3
         with:
-          name: deploy-v2-develop
-          path: deploy-v2-develop/
+          name: deploy-beta
+          path: deploy-beta/
 
-  deploy-v2-develop:
+  deploy-beta:
     runs-on: ubuntu-latest
-    needs: build-assets-v2-develop
+    needs: build-storybook-beta
     steps:
       - uses: actions/checkout@v3
         with:
@@ -79,11 +37,11 @@ jobs:
       - name: Download deploy artifact
         uses: actions/download-artifact@v3
         with:
-          name: deploy-v2-develop
+          name: deploy-beta
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           author_name: 'Github action'
-          message: 'Update v2-develop assets'
+          message: 'Update Storybook beta (develop branch)'
           branch: 'gh-pages'

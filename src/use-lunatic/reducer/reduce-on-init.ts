@@ -151,6 +151,7 @@ function checkInLoop(
 		if (isLoop) {
 			return {
 				...state,
+				isInLoop: true,
 				pager: {
 					...pager,
 					subPage: initialPager?.subPage ?? 0,
@@ -191,7 +192,8 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		);
 		const pages = checkLoops(createMapPages(source));
 		const { maxPage, cleaning = {}, missingBlock = {}, resizing = {} } = source;
-		let initialPager = getPagerFromPageTag(initialPage);
+		const initialPager = getPagerFromPageTag(initialPage);
+
 		const pager = {
 			page: initialPager?.page ?? '1',
 			maxPage: maxPage,
@@ -201,6 +203,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 			nbIterations: undefined,
 			lastReachedPage: initialPage,
 		} satisfies LunaticState['pager'];
+
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
 		return checkInLoop(

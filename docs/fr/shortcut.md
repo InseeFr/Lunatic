@@ -2,15 +2,14 @@
 
 ## Composants
 
-Les modalitées des composants de type `CheckboxGroup`, `CheckboxOne` et `Radio` peuvent être sélectionnées grâce aux raccourcis clavier.
+Les modalités des composants de type `CheckboxGroup`, `CheckboxOne` et `Radio` peuvent être sélectionnées grâce aux raccourcis clavier.
 
 Pour activer cette fonctionnalité, il suffit d'activer la props `shortcut` de ces composants :
 
-```javascript
+```jsx
 <Component
-    ...
+    // ...
     shortcut
-    ...
 />
 ```
 
@@ -22,10 +21,9 @@ Lorsque le [mode non réponse](./missing.md) est activé, les buttons permettant
 
 Pour activer cette fonctionnalité, la props `missingShortcut` des composants de l'orchestrateur doit être alimentée par un objet donnant la valeur du raccourci pour le bouton "Ne sais pas" et le bouton "Refus". Par exemple :
 
-```javascript
+```jsx
 <Component
-    ...
+    // ...
     missingShortcut={{ dontKnow: 'f2', refused: 'f4' }}
-    ...
 />
 ```

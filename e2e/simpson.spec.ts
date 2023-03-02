@@ -1,60 +1,9 @@
-import React from 'react';
-import { playwrightToUserEvent } from '../../../../tests/utils/e2e';
-import { sleep } from '../../../../tests/utils/timer';
-import defaultArgTypes from '../../utils/default-arg-types';
-import Orchestrator from '../../utils/orchestrator';
-import simpsons from './source';
+import { test, expect } from '@playwright/test';
 
-const stories = {
-	title: 'Questionnaires/Simpsons',
-	component: Orchestrator,
-	argTypes: {
-		...defaultArgTypes,
-		missing: {
-			table: { disable: false },
-			control: 'boolean',
-			defaultValue: true,
-		},
-		activeGoNextForMissing: {
-			table: { disable: false },
-			control: 'boolean',
-			defaultValue: true,
-		},
-		management: {
-			table: { disable: false },
-			control: 'boolean',
-			defaultValue: false,
-		},
-		autofocus: {
-			table: { disable: false },
-			control: 'boolean',
-			defaultValue: true,
-		},
-	},
-};
-
-export default stories;
-
-const Template = (args) => <Orchestrator {...args} />;
-export const Default = Template.bind({});
-
-Default.args = {
-	id: 'simpsons-default',
-	source: simpsons,
-	pagination: true,
-	autofocus: true,
-	data: { COLLECTED: { READY: { COLLECTED: true } } },
-};
-
-export const Filled = Template.bind({});
-Filled.args = {
-	source: simpsons,
-	pagination: true,
-};
-
-Filled.play = async ({ args, canvasElement }) => {
-	const page = playwrightToUserEvent(canvasElement);
-	await sleep(100);
+test('can complete simpson form', async ({ page }) => {
+	await page.goto(
+		'http://localhost:9999/iframe.html?viewMode=story&id=questionnaires-simpsons--default'
+	);
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
 		.getByLabel(
@@ -144,26 +93,28 @@ Filled.play = async ({ args, canvasElement }) => {
 		.getByRole('radio', { name: 'Yes' })
 		.click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await sleep(1000);
 	await page
 		.getByRole('row', {
-			name: 'Break the windows of the whole city',
+			name: 'Break the windows of the whole city suggestions',
 		})
 		.getByRole('combobox')
+		.locator('div')
 		.click();
 	await page.getByText('Krusty the clown').click();
 	await page
 		.getByRole('row', {
-			name: 'Loose the violin of his daughter playing poker',
+			name: 'Loose the violin of his daughter playing poker suggestions',
 		})
-		.getByRole('combobox')
+		.getByText('Please, do something...')
 		.click();
 	await page.getByText('Jay').click();
 	await page
-		.getByRole('row', { name: 'Kill Mr Burns' })
-		.getByRole('combobox')
+		.getByRole('row', { name: 'Kill Mr Burns suggestions' })
+		.getByText('Please, do something...')
 		.click();
 	await page.getByText('Other').click();
+	await page.getByText('Please, do something...').click();
+	await page.getByRole('option', { name: 'Jay' }).getByText('Jay').click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
@@ -186,11 +137,11 @@ Filled.play = async ({ args, canvasElement }) => {
 		.click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
-		.getByRole('row', { name: 'Leave with pay' })
+		.getByRole('row', { name: 'Leave with pay suggestions' })
 		.getByRole('spinbutton')
 		.fill('12');
 	await page
-		.getByRole('row', { name: 'Leave with pay' })
+		.getByRole('row', { name: 'Leave with pay suggestions' })
 		.getByText('Please, do something...')
 		.click();
 	await page.getByText('Calendar days').click();
@@ -208,16 +159,32 @@ Filled.play = async ({ args, canvasElement }) => {
 		.fill('2');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
-		.getByLabel('➡ What is the first name of this character?', { index: 0 })
+		.getByLabel('➡ What is the first name of this character?')
+		.first()
+		.click();
+	await page
+		.getByLabel('➡ What is the first name of this character?')
+		.first()
 		.fill('Bart');
 	await page
 		.getByLabel(
-			'➡ How old is this character in the first episode of the Simpsons family?',
-			{ index: 0 }
+			'➡ How old is this character in the first episode of the Simpsons family?'
 		)
+		.first()
+		.click();
+	await page
+		.getByLabel(
+			'➡ How old is this character in the first episode of the Simpsons family?'
+		)
+		.first()
 		.fill('14');
 	await page
-		.getByLabel('➡ What is the first name of this character?', { index: 1 })
+		.getByLabel('➡ What is the first name of this character?')
+		.nth(1)
+		.click();
+	await page
+		.getByLabel('➡ What is the first name of this character?')
+		.nth(1)
 		.fill('Bart');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
@@ -235,5 +202,14 @@ Filled.play = async ({ args, canvasElement }) => {
 		.fill('No');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByText('PAGE: 39').shouldBeVisible();
-};
+
+	// Assertion
+	await expect(page.getByText('PAGE: 39')).toBeVisible();
+	const consoleOut = page.waitForEvent('console');
+	await page.getByRole('button', { name: 'Get State' }).click();
+	const output = await consoleOut;
+	expect(await output.args()[0].jsonValue()).toHaveProperty(
+		'COLLECTED.COMMENT.COLLECTED',
+		'They are yellow'
+	);
+});

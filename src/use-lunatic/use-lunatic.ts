@@ -7,19 +7,20 @@ import {
 	useMemo,
 	useReducer,
 } from 'react';
-import { LunaticData, LunaticState } from './type';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
+import { LunaticData, LunaticState } from './type';
 
 import { COLLECTED } from '../utils/constants';
-import INITIAL_STATE from './initial-state';
-import { LunaticSource } from './type-source';
-import { createLunaticProvider } from './lunatic-context';
 import { getQuestionnaireData } from './commons/get-data';
+import INITIAL_STATE from './initial-state';
+import { createLunaticProvider } from './lunatic-context';
+import { LunaticSource } from './type-source';
 // @ts-ignore
 import { loadSuggesters } from '../utils/store-tools/auto-load';
 import reducer from './reducer';
 
-const DEFAULT_DATA = {} as LunaticData;
+const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
+const DEFAULT_DATA = empty as LunaticData;
 const DEFAULT_FEATURES = ['VTL', 'MD'];
 const DEFAULT_PREFERENCES = [COLLECTED];
 const nothing: LunaticState['handleChange'] = () => {};
@@ -39,25 +40,25 @@ function useLunatic(
 		suggesters: suggestersConfiguration,
 		suggesterFetcher,
 		activeControls = false,
-		custom,
+		custom = empty,
 		autofocus = false,
 	}: {
-		features: string[];
-		preferences: string[];
-		savingType: string;
-		onChange: typeof nothing;
-		management: boolean;
-		shortcut: boolean;
-		initialPage: string;
-		autoSuggesterLoading: boolean;
+		features?: string[];
+		preferences?: string[];
+		savingType?: string;
+		onChange?: typeof nothing;
+		management?: boolean;
+		shortcut?: boolean;
+		initialPage?: string;
+		autoSuggesterLoading?: boolean;
 		suggesters?: Record<
 			string,
 			{ version?: string; fields?: string[]; stopWords: string[]; url: string }
 		>;
 		suggesterFetcher?: typeof fetch;
-		activeControls: boolean;
-		custom: Record<string, FunctionComponent<unknown>>;
-		autofocus: boolean;
+		activeControls?: boolean;
+		custom?: Record<string, FunctionComponent<unknown>>;
+		autofocus?: boolean;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
