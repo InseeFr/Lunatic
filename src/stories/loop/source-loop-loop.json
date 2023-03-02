@@ -79,7 +79,7 @@
 				{
 					"id": "loop-prenom-children",
 					"componentType": "Loop",
-					"label": { "value": "PRENOM || \", ajouter un enfant ?\"", "type": "VTL|MD" },
+					"label": { "value": "\"Ajouter un enfant à \" || PRENOM", "type": "VTL|MD" },
 					"conditionFilter": { "value": "true", "type": "VTL" },
 					"bindingDependencies": ["PRENOM_CHILDREN"],
 					"lines": {
@@ -90,7 +90,7 @@
 					"components": [
 						{
 							"componentType": "Input",
-							"label": { "value": "\"Prénom\"", "type": "VTL|MD" },
+							"label": { "value": "\"Prénom de l'enfant\"", "type": "VTL|MD" },
 							"conditionFilter": { "value": "true", "type": "VTL" },
 							"maxLength": 30,
 							"bindingDependencies": ["PRENOM_CHILDREN"],
@@ -165,7 +165,7 @@
 			"id": "seq-end",
 			"componentType": "Sequence",
 			"label": {
-				"value": "\"End\"",
+				"value": "\"END\"",
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
