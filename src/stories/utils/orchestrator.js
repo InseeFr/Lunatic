@@ -117,7 +117,6 @@ function OrchestratorForStories({
 		goNextPage,
 		goToPage,
 		pageTag,
-		pager,
 		isFirstPage,
 		isLastPage,
 		waiting,

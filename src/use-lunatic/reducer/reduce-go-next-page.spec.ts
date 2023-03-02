@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import source from '../../stories/roundabout/source.json';
-import { generateState } from '../../../test/helpers';
+import { generateState } from '../../../tests/helpers';
 import { goNextPage } from '../actions';
 import reduceGoNextPage from './reduce-go-next-page';
 

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import source from '../../stories/questionnaires/simpsons/source.json';
-import { generateState } from '../../../test/helpers';
+import { generateState } from '../../../tests/helpers';
 
 describe('reduceOnInit', () => {
 	it('should handle initialPage', () => {

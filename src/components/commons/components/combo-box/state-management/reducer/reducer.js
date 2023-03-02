@@ -5,7 +5,7 @@ import reduceOnChange from './reduce-on-change';
 import reduceOnSelect from './reduce-on-select';
 import reduceOnDelete from './reduce-on-delete';
 import reduceOnKeydown from './reduce-on-keydown';
-import { reduceOnInit } from './reduce-on-init';
+import reduceOnInit from './reduce-on-init';
 
 function reducer(state, action) {
 	const { type } = action;

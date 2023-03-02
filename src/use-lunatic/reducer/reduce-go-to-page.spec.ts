@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { reduceOnInit } from './reduce-on-init';
 import INITIAL_STATE from '../initial-state';
 import source from '../../stories/loop/source-loop-loop.json';
-import { generateData, generateState } from '../../../test/helpers';
+import { generateData, generateState } from '../../../tests/helpers';
 import { LunaticSource } from '../type-source';
 import reduceGoToPage from './reduce-go-to-page';
 import { goToPage } from '../actions';

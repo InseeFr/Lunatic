@@ -2,7 +2,7 @@ import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import sourceBloc from './source-loop-loop.json';
 import defaultArgTypes from '../utils/default-arg-types';
-import { generateData } from '../../../test/helpers';
+import { generateData } from '../../../tests/helpers';
 
 const stories = {
 	title: 'Components/Loop/LoopOfLoop',
