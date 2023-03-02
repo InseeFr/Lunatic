@@ -18,7 +18,7 @@ jobs:
       # Build Storybook
       - run: yarn build-storybook
       - run: mkdir -p deploy-beta/storybook-beta
-      - run: cp -R ./storybook-static/storybook/. ./deploy-beta/storybook-beta
+      - run: cp -R ./storybook-static/. ./deploy-beta/storybook-beta
       # Add json to fetch for suggester stories
       - run: cp -a ./public/. ./deploy-beta/storybook-beta
       - name: Upload deploy artifact
