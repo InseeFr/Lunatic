@@ -17,11 +17,18 @@ function SuggesterStatus({
 	idbVersion,
 	setStore,
 	getSuggesterStatus,
+	label,
+	description,
 }) {
 	const { status } = getSuggesterStatus(storeName);
 
 	return (
-		<SuggesterNotification status={status} storeName={storeName}>
+		<SuggesterNotification
+			status={status}
+			storeName={storeName}
+			label={label}
+			description={description}
+		>
 			<CheckStore
 				storeName={storeName}
 				idbVersion={idbVersion}

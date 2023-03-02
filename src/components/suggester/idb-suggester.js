@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import Suggester from './html/suggester';
 import createSearching from './searching';
-import CheckStore from './check-store';
 import SuggesterStatus from './suggester-status';
 
 function IDBSuggester({
@@ -31,13 +30,14 @@ function IDBSuggester({
 		},
 		[storeName, idbVersion, store]
 	);
-
 	return (
 		<SuggesterStatus
 			storeName={storeName}
 			idbVersion={idbVersion}
 			setStore={setStore}
 			getSuggesterStatus={getSuggesterStatus}
+			label={label}
+			description={description}
 		>
 			<Suggester
 				id={id}

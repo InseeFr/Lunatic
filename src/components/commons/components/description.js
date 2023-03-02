@@ -27,7 +27,7 @@ function Description({ value, className }) {
 			/>
 		));
 	}
-	return null;
+	return <OneDescription value={value} className={classnames(className)} />;
 }
 
 export const DescritionPropsType = PropTypes.oneOfType([

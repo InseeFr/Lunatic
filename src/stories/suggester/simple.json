@@ -36,7 +36,11 @@
 			"id": "suggestions-naf",
 			"componentType": "Suggester",
 			"mandatory": false,
-			"label": "\"Hello!\"",
+			"label": {
+				"value": "\"Code ou terme des libellés de la Naf-rev2\"",
+				"type": "VTL|MD"
+			},
+			"description": { "value": "Exemple: 01 ou tabac", "type": "VTL|MD" },
 			"storeName": "naf-rev2",
 			"conditionFilter": {
 				"value": "true",
@@ -45,6 +49,7 @@
 			"response": {
 				"name": "HELLO"
 			},
+			"missingResponse": { "name": "HELLO_MISSING" },
 			"page": "1"
 		},
 		{
@@ -60,6 +65,7 @@
 			"response": {
 				"name": "HELLO"
 			},
+			"missingResponse": { "name": "HELLO_MISSING" },
 			"page": "2"
 		},
 		{
@@ -75,6 +81,7 @@
 			"response": {
 				"name": "HELLO"
 			},
+			"missingResponse": { "name": "HELLO_MISSING" },
 			"page": "3"
 		},
 		{
@@ -87,6 +94,7 @@
 				"value": "true",
 				"type": "VTL"
 			},
+			"missingResponse": { "name": "HELLO_MISSING" },
 			"response": {
 				"name": "HELLO"
 			},
@@ -113,6 +121,18 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "HELLO",
+			"componentRef": "nn",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "HELLO_MISSING",
 			"componentRef": "nn",
 			"values": {
 				"PREVIOUS": null,

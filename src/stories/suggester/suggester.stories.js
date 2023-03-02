@@ -15,33 +15,9 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
-const suggesterFetcher = (url) =>
-	fetch(url, {
-		headers: { Accept: 'application/json' },
-	});
-
-Default.args = {
-	id: 'suggester',
-	source,
-	autoSuggesterLoading: true,
-	suggesters: {
-		'naf-rev2': {
-			url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
-		},
-		'naf-rev2-stop': {
-			url: 'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json',
-			stopWords: [],
-		},
-		'cog-communes': {
-			url: 'https://inseefr.github.io/Lunatic/storybook/communes-2019.json',
-		},
-	},
-	suggesterFetcher,
-	pagination: true,
-};
-
 async function getReferentiel(name) {
 	switch (name) {
+		case 'naf-rev2-stop':
 		case 'naf-rev2':
 			return fetch(
 				'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json'
@@ -55,9 +31,22 @@ async function getReferentiel(name) {
 	}
 }
 
+Default.args = {
+	id: 'suggester',
+	source,
+	autoSuggesterLoading: true,
+	getReferentiel,
+	pagination: true,
+};
+
 export const Simple = Template.bind({});
 Simple.args = {
 	source: simple,
 	getReferentiel,
 	autoSuggesterLoading: true,
+	missing: {
+		table: { disable: false },
+		control: 'boolean',
+		defaultValue: true,
+	},
 };
