@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import ReactTooltip from 'react-tooltip';
 
 type Props = PropsWithChildren<{ href: string; title: string }>;

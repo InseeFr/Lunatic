@@ -1,6 +1,5 @@
-import React from 'react';
 import classnames from 'classnames';
-import './field-container.scss';
+import React from 'react';
 
 function Tooltip({ management }) {
 	if (management) {

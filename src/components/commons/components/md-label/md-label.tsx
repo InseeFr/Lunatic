@@ -1,10 +1,4 @@
-import React, {
-	ComponentProps,
-	ComponentPropsWithoutRef,
-	FunctionComponent,
-	PropsWithChildren,
-	ReactNode,
-} from 'react';
+import { ComponentProps, FunctionComponent, PropsWithChildren } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from './link';
 
