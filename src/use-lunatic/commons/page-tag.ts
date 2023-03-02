@@ -1,4 +1,5 @@
 import { LunaticState } from '../type';
+import { deepCompare } from '../../utils/array';
 
 /**
  * Serialize the position in the pager (ex: 2.1#1.1)
@@ -43,34 +44,21 @@ export function getPagerFromPageTag(
 	};
 }
 
-/**
- * Compare 2 positions as array
- */
-function positionIsGreater(a: number[], b: number[]): boolean {
-	if ((a[0] ?? -1) > (b[0] ?? -1)) {
-		return true;
-	}
-	if (a.length === 1 || b.length === 1) {
-		return a.length > b.length;
-	}
-	return positionIsGreater(a.slice(1), b.slice(1));
-}
-
 export function isNewReachedPage(
 	pager: Pick<LunaticState['pager'], 'lastReachedPage' | 'page' | 'iteration'>
 ): boolean {
 	const { lastReachedPage, page, iteration } = pager;
-	const lastReached = getPagerFromPageTag(lastReachedPage ?? '0');
 
 	// The reached page is greater
-	if (positionIsGreater(page, lastReached.page)) {
+	const pageComparison = deepCompare(page, lastReachedPage.page);
+	if (pageComparison === 1) {
 		return true;
 	}
 
 	// We are on the same page, compare the iteration level
 	return (
-		page.join('.') === lastReached.page.join('.') &&
-		positionIsGreater(iteration, lastReached.iteration)
+		pageComparison === 0 &&
+		deepCompare(iteration, lastReachedPage.iteration) === 1
 	);
 }
 

@@ -11,8 +11,8 @@ function useComponentsFromState(state: LunaticState) {
 
 	useEffect(
 		function () {
-			const { pager, pages, isInLoop } = state;
-			const components = getComponentsFromState({ pager, pages, isInLoop });
+			const { pager, pages } = state;
+			const components = getComponentsFromState({ pager, pages });
 			const filled = fillComponents(components, state);
 			const filtered = filled.filter(({ conditionFilter }) => {
 				return conditionFilter !== undefined ? conditionFilter : true;

@@ -18,7 +18,7 @@ const INITIAL_STATE: LunaticState = {
 		maxPage: [1],
 		iteration: [],
 		maxIteration: [],
-		shallowIteration: undefined,
+		lastReachedPage: { page: [1], iteration: [] },
 	},
 	waiting: false,
 	errors: undefined,

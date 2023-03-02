@@ -30,24 +30,33 @@ describe('use-lunatic()', () => {
 
 	it('should initialize correcly', () => {
 		const { result } = renderHook(() => useLunatic(...defaultParams));
-		expect(result.current.pager.page).toBe('1');
-		expect(result.current.pager.lastReachedPage).toBe('1');
-		expect(result.current.pager.maxPage).toBe('39');
+		expect(result.current.pager.page).toEqual([1]);
+		expect(result.current.pager.lastReachedPage).toEqual({
+			page: [1],
+			iteration: [],
+		});
+		expect(result.current.pager.maxPage).toEqual([39]);
 	});
-	it('should go to the next page correcly', () => {
+	it('should go to the next page correctly', () => {
 		const { result } = renderHook(() => useLunatic(...defaultParams));
-		expect(result.current.pager.page).toBe('1');
-		expect(result.current.pager.lastReachedPage).toBe('1');
+		expect(result.current.pager.page).toEqual([1]);
+		expect(result.current.pager.lastReachedPage).toEqual({
+			page: [1],
+			iteration: [],
+		});
 		act(() => {
 			result.current.goNextPage();
 		});
-		expect(result.current.pager.page).toBe('2');
-		expect(result.current.pager.lastReachedPage).toBe('2');
+		expect(result.current.pager.page).toEqual([2]);
+		expect(result.current.pager.lastReachedPage).toEqual({
+			page: [2],
+			iteration: [],
+		});
 	});
 
 	it('should jump to a specific page', () => {
 		const params = [
-			source as any,
+			source,
 			dataFromObject({
 				COMMENT: 'Hello world',
 				READY: true,
@@ -59,10 +68,12 @@ describe('use-lunatic()', () => {
 		] as const;
 		const { result } = renderHook(() => useLunatic(...params));
 		const components = result.current.getComponents();
-		expect(result.current.pager.lastReachedPage).toBe('35.1#1');
-		expect(result.current.pager.iteration).toBe(0);
-		expect(result.current.pager.subPage).toBe(0);
-		expect(result.current.pager.page).toBe('35');
-		expect(components[0].id).toBe('kiq5xw5p');
+		expect(result.current.pager.lastReachedPage).toEqual({
+			page: [35, 1],
+			iteration: [0],
+		});
+		expect(result.current.pager.iteration).toEqual([0]);
+		expect(result.current.pager.page).toEqual([35, 1]);
+		expect(components[0].id).toEqual('kiq5xw5p');
 	});
 });

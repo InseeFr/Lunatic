@@ -9,6 +9,7 @@ describe('page-navigation', () => {
 			maxPage: [3, 3, 3],
 			iteration: [0, 0],
 			maxIteration: [2, 2],
+			lastReachedPage: { page: [1], iteration: [] },
 		} satisfies LunaticState['pager'];
 
 		it('should navigate inside a sequence', () => {
@@ -52,6 +53,7 @@ describe('page-navigation', () => {
 				maxPage: [3],
 				iteration: [],
 				maxIteration: [],
+				lastReachedPage: { page: [1], iteration: [] },
 			};
 			expect(getNextPager(pager).page).toEqual([2]);
 		});
@@ -61,6 +63,7 @@ describe('page-navigation', () => {
 				maxPage: [3],
 				iteration: [],
 				maxIteration: [],
+				lastReachedPage: { page: [1], iteration: [] },
 			};
 			expect(getNextPager(pager).page).toEqual([3]);
 		});
@@ -72,6 +75,7 @@ describe('page-navigation', () => {
 			maxPage: [3, 3, 3],
 			iteration: [0, 0],
 			maxIteration: [2, 2],
+			lastReachedPage: { page: [1], iteration: [] },
 		} satisfies LunaticState['pager'];
 
 		it('should navigate inside a sequence', () => {
@@ -109,6 +113,7 @@ describe('page-navigation', () => {
 				maxPage: [3],
 				iteration: [],
 				maxIteration: [],
+				lastReachedPage: { page: [1], iteration: [] },
 			};
 			expect(getPrevPager(pager).page).toEqual([1]);
 		});
@@ -118,6 +123,7 @@ describe('page-navigation', () => {
 				maxPage: [3],
 				iteration: [],
 				maxIteration: [],
+				lastReachedPage: { page: [1], iteration: [] },
 			};
 			expect(getPrevPager(pager).page).toEqual([1]);
 		});

@@ -5,15 +5,14 @@ function resolveControl(
 	control: LunaticControl
 ): LunaticError | undefined {
 	const { executeExpression } = state;
-	const { iteration, shallowIteration } = state.pager ?? {};
+	const { iteration } = state.pager ?? {};
 	const { criticality, errorMessage, id, typeOfControl } = control;
 	const { control: { value = 'true' } = {} } = control;
 	try {
-		const it = shallowIteration ? [shallowIteration] : iteration;
-		const result = executeExpression(value, { iteration: it });
+		const result = executeExpression(value, { iteration });
 		if (!result) {
 			const { value: labelValue } = errorMessage;
-			const label = executeExpression<string>(labelValue, { iteration: it });
+			const label = executeExpression<string>(labelValue, { iteration });
 			return {
 				criticality,
 				errorMessage: label,

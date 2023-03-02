@@ -106,7 +106,10 @@ export type LunaticState = {
 		};
 	};
 	pager: {
-		lastReachedPage?: string;
+		lastReachedPage: {
+			page: number[];
+			iteration: number[];
+		};
 		// Page numbers (starting with 1), page 3.1 will be [3, 1]
 		page: number[];
 		// Max page number / subPage for each level
@@ -117,7 +120,6 @@ export type LunaticState = {
 		maxIteration: number[];
 		shallowIteration?: number;
 		linksIterations?: number[];
-		roundabout?: { page: string };
 	};
 	// TODO : Explain this
 	waiting: boolean;

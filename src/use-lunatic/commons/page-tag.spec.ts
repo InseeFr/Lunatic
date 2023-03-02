@@ -23,7 +23,10 @@ describe('page-tag', () => {
 
 	describe('isNewReachedPage', () => {
 		const basePager = {
-			lastReachedPage: '2.1#1.1',
+			lastReachedPage: {
+				page: [2, 1],
+				iteration: [0, 0],
+			},
 			page: [2, 1],
 			iteration: [0, 0],
 		};

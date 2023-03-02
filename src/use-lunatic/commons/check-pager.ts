@@ -14,6 +14,5 @@ export default function clearPager(
 		iteration: [],
 		shallowIteration: undefined,
 		maxIteration: [],
-		roundabout: undefined,
 	};
 }

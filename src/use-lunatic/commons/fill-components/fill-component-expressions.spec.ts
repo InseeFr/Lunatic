@@ -17,6 +17,7 @@ describe('fillComponentExpressions', () => {
 				iteration: [1],
 				maxIteration: [1],
 				linksIterations: [1, 2],
+				lastReachedPage: { page: [1], iteration: [] },
 			},
 		});
 		expect(translated).toEqual({

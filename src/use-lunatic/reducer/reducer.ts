@@ -6,17 +6,18 @@ import reduceHandleChange from './reduce-handle-change';
 import reduceOnSetWaiting from './reduce-on-set-waiting';
 import { LunaticState } from '../type';
 import { Action, ActionKind } from '../actions';
+import { reduceLastReachedPage } from './reduce-last-reached-page';
 
 function reducer(state: LunaticState, action: Action): LunaticState {
 	switch (action.type) {
 		case ActionKind.ON_INIT:
-			return reduceOnInit(state, action);
+			return reduceLastReachedPage(reduceOnInit(state, action));
 		case ActionKind.GO_PREVIOUS_PAGE:
 			return reduceGoPreviousPage(state);
 		case ActionKind.GO_NEXT_PAGE:
-			return reduceGoNextPage(state, action);
+			return reduceLastReachedPage(reduceGoNextPage(state, action));
 		case ActionKind.GO_TO_PAGE:
-			return reduceGoToPage(state, action);
+			return reduceLastReachedPage(reduceGoToPage(state, action));
 		case ActionKind.HANDLE_CHANGE:
 			return reduceHandleChange(state, action);
 		case ActionKind.ON_SET_WAITING:

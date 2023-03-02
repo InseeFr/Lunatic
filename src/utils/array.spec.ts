@@ -1,5 +1,12 @@
 import { describe, it, expect, vi } from 'vitest';
-import { deepForEach, deepLengths, deepSet, depth, resizeArray } from './array';
+import {
+	deepCompare,
+	deepForEach,
+	deepLengths,
+	deepSet,
+	depth,
+	resizeArray,
+} from './array';
 
 describe('resizeArray', () => {
 	it('should not touch array with the correct size', () => {
@@ -80,5 +87,16 @@ describe('deepLength', () => {
 			3, 2, 4,
 		]);
 		expect(deepLengths([[1], [1, 2, 3], [1, 2]], [0])).toEqual([3, 1]);
+	});
+});
+
+describe('deepCompare', () => {
+	it('should compare array', () => {
+		expect(deepCompare([1, 1], [1, 2])).toBe(-1);
+		expect(deepCompare([1, 2], [1, 1, 1])).toBe(1);
+		expect(deepCompare([1, 1], [1, 1, 1])).toBe(-1);
+		expect(deepCompare([1, 1, 1], [1, 1])).toBe(1);
+		expect(deepCompare([1, 1], [1, 1])).toBe(0);
+		expect(deepCompare([2, 1], [1, 1])).toBe(1);
 	});
 });

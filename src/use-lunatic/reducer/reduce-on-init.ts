@@ -165,7 +165,7 @@ export function reduceOnInit(state: LunaticState, action: ActionInit) {
 			maxPage: [parseInt(maxPage, 10)],
 			iteration: [],
 			maxIteration: [],
-			lastReachedPage: initialPage,
+			lastReachedPage: { page: [1], iteration: [] },
 		} satisfies LunaticState['pager'];
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 

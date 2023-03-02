@@ -107,3 +107,18 @@ export function deepLengths(value: unknown, index: number[]): number[] {
 	}
 	return loop(value, index, [value.length]);
 }
+
+/**
+ * Compare 2 arrays and return -1 if a < b, 0 if a = b and 1 if a > b
+ */
+export function deepCompare(a: number[], b: number[]): -1 | 0 | 1 {
+	for (let k = 0; k < Math.max(a.length, b.length); k++) {
+		if ((a[k] ?? -Infinity) > (b[k] ?? -Infinity)) {
+			return 1;
+		}
+		if ((a[k] ?? -Infinity) < (b[k] ?? -Infinity)) {
+			return -1;
+		}
+	}
+	return 0;
+}
