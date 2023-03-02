@@ -1,7 +1,6 @@
 {
   "branches": [
     "feat/suggester-status",
-    "feat/declaration",
     "feat/loop-variables",
     "test/create-refresh-calculated",
     "feat/missing-missing-strategy",
