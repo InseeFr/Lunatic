@@ -9,6 +9,7 @@
     "test/create-expression",
     "test/playwright",
     "feat/autofocusable-components",
-    "feat/loop-of-loop"
+    "feat/loop-of-loop",
+    "feat/thousand-separator"
   ]
 }
