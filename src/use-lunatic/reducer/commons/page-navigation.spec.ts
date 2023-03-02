@@ -30,6 +30,12 @@ describe('page-navigation', () => {
 			};
 			expect(getNextPager(pager).page).toEqual([3, 3]);
 			expect(getNextPager(pager).iteration).toEqual([0]);
+			expect(getNextPager(pager, { moveUpWhenSequenceEnd: true }).page).toEqual(
+				[3, 2]
+			);
+			expect(
+				getNextPager(pager, { moveUpWhenSequenceEnd: true }).iteration
+			).toEqual([0]);
 		});
 		it('should move up multiple time at the end of all sequences and iterations', () => {
 			const pager = {
