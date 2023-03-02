@@ -10,7 +10,6 @@
     "test/playwright",
     "feat/autofocusable-components",
     "feat/loop-of-loop",
-    "feat/thousand-separator",
-    "ci/fix-develop"
+    "feat/thousand-separator"
   ]
 }
