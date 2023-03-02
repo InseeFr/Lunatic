@@ -3,7 +3,7 @@ import Orchestrator from '../../utils/orchestrator';
 import simpsons from './source';
 import defaultArgTypes from '../../utils/default-arg-types';
 import { playwrightToUserEvent } from '../../../../tests/utils/e2e';
-import { within } from '@storybook/testing-library';
+import { sleep } from '../../../../tests/utils/timer';
 
 const stories = {
 	title: 'Questionnaires/Simpsons',
@@ -44,10 +44,6 @@ Filled.args = {
 	source: simpsons,
 	pagination: true,
 };
-
-function sleep(duration) {
-	return new Promise((resolve) => setTimeout(resolve, duration));
-}
 
 Filled.play = async ({ args, canvasElement }) => {
 	const page = playwrightToUserEvent(canvasElement);
@@ -232,5 +228,5 @@ Filled.play = async ({ args, canvasElement }) => {
 		.fill('No');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await within(canvasElement).findByText('PAGE: 39');
+	await page.getByText('PAGE: 39').shouldBeVisible();
 };
