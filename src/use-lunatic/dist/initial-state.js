@@ -33,6 +33,9 @@ var INITIAL_STATE = {
     handleChange: function () { },
     goToPage: function () { return undefined; },
     activeControls: false,
-    getSuggesterStatus: function (name) { return use_suggesters_1.SuggesterStatus.unused; }
+    getSuggesterStatus: function (name) { return ({
+        status: use_suggesters_1.SuggesterStatus.unused,
+        timestamp: 0
+    }); }
 };
 exports["default"] = INITIAL_STATE;
