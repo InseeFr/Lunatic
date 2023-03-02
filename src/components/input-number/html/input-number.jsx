@@ -90,7 +90,7 @@ InputNumber.defaultValue = {
 	required: true,
 	min: undefined,
 	max: undefined,
-	deciamls: undefined,
+	decimals: 0,
 	unit: undefined,
 	label: undefined,
 	errors: undefined,
