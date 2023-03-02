@@ -3725,7 +3725,10 @@
 			"id": "COMMENT-SEQ",
 			"componentType": "Sequence",
 			"page": "38",
-			"label": {},
+			"label": {
+				"value": "\"Do you have any comment ?\"",
+				"type": "VTL"
+			},
 			"conditionFilter": { "value": "true" },
 			"hierarchy": {
 				"sequence": { "id": "COMMENT-SEQ", "page": "38", "label": {} }
@@ -3738,7 +3741,10 @@
 			"mandatory": false,
 			"page": "39",
 			"maxLength": 2000,
-			"label": {},
+			"label": {
+				"value": "\"Do you have any comment ?\"",
+				"type": "VTL"
+			},
 			"conditionFilter": { "value": "true" },
 			"hierarchy": {
 				"sequence": { "id": "COMMENT-SEQ", "page": "38", "label": {} }
