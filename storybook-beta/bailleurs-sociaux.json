@@ -1,0 +1,5640 @@
+[
+  {
+    "code": "1",
+    "typorg": "1",
+    "libelle1": "Domaxia",
+    "libelle2": "Logial-coop"
+  },
+  {
+    "code": "2",
+    "typorg": "1",
+    "libelle1": "OPH de Meaux",
+    "libelle2": "PAYS DE MEAUX HABITAT"
+  },
+  {
+    "code": "3",
+    "typorg": "1",
+    "libelle1": "OPH de Paris",
+    "libelle2": "Paris Habitat"
+  },
+  {
+    "code": "4",
+    "typorg": "1",
+    "libelle1": "OPH du Val-de-Marne",
+    "libelle2": "Valophis Habitat"
+  },
+  {
+    "code": "5",
+    "typorg": "1",
+    "libelle1": "Hauts-de-Bièvre Habitat",
+    "libelle2": "Hauts-de-Bièvre Habitat"
+  },
+  {
+    "code": "6",
+    "typorg": "1",
+    "libelle1": "OPH d'Arcueil-Gentilly",
+    "libelle2": "OPALY"
+  },
+  {
+    "code": "7",
+    "typorg": "7",
+    "libelle1": "SCIC Argenteuil Bezons Habitat",
+    "libelle2": "AB Habitat"
+  },
+  {
+    "code": "8",
+    "typorg": "1",
+    "libelle1": "OPH d'Aubervilliers",
+    "libelle2": "OPH d'Aubervilliers"
+  },
+  {
+    "code": "9",
+    "typorg": "1",
+    "libelle1": "OPH d'Aulnay-sous-Bois",
+    "libelle2": "OFFICE PUB HABITAT AULNAY SOUS BOIS"
+  },
+  {
+    "code": "10",
+    "typorg": "1",
+    "libelle1": "OPH de Bagneaux-Poligny-Nemours",
+    "libelle2": "Val du Loing Habitat"
+  },
+  {
+    "code": "11",
+    "typorg": "1",
+    "libelle1": "OPH de Bagnolet",
+    "libelle2": "OFFICE PUBLIC HABITAT BAGNOLET"
+  },
+  {
+    "code": "12",
+    "typorg": "1",
+    "libelle1": "OPH de Bobigny",
+    "libelle2": "OFFICE PUB L HABITAT VILLE BOBIGNY"
+  },
+  {
+    "code": "13",
+    "typorg": "1",
+    "libelle1": "OPH de Bondy",
+    "libelle2": "Bondy Habitat"
+  },
+  {
+    "code": "14",
+    "typorg": "1",
+    "libelle1": "OPH de Cachan",
+    "libelle2": "OFFICE PUBLIC D H L M DE CACHAN"
+  },
+  {
+    "code": "15",
+    "typorg": "1",
+    "libelle1": "OPH de Chatillon",
+    "libelle2": "CHATILLON HABITAT"
+  },
+  {
+    "code": "16",
+    "typorg": "1",
+    "libelle1": "OPH de Coulommiers",
+    "libelle2": "OFFICE PUBLIC D HABITAT DE COULOMMIERS"
+  },
+  {
+    "code": "17",
+    "typorg": "1",
+    "libelle1": "OPH de Courbevoie",
+    "libelle2": "OPH COURBEVOIE EPT PARIS OUEST DEFENSE"
+  },
+  {
+    "code": "18",
+    "typorg": "1",
+    "libelle1": "OPH de Drancy",
+    "libelle2": "OFFICE PUBLIC HABITAT DRANCY"
+  },
+  {
+    "code": "19",
+    "typorg": "3",
+    "libelle1": "Gennevilliers Habitat - socété coopérative HLM",
+    "libelle2": "Gennevilliers Habitat"
+  },
+  {
+    "code": "20",
+    "typorg": "1",
+    "libelle1": "OPH des Hauts-de-Seine",
+    "libelle2": "HAUTS DE SEINE HABITAT OPH"
+  },
+  {
+    "code": "21",
+    "typorg": "1",
+    "libelle1": "OPH d'Ivry-sur-Seine",
+    "libelle2": "OPH d'Ivry-sur-Seine"
+  },
+  {
+    "code": "22",
+    "typorg": "1",
+    "libelle1": "OPH du Kremlin-Bicètre",
+    "libelle2": "KREMLIN BICETRE HABITAT"
+  },
+  {
+    "code": "23",
+    "typorg": "7",
+    "libelle1": "Levallois-Perret Habitat",
+    "libelle2": "LEVALLOIS HABITAT"
+  },
+  {
+    "code": "24",
+    "typorg": "1",
+    "libelle1": "OPH de Montereau",
+    "libelle2": "CONFLUENCE HABITAT"
+  },
+  {
+    "code": "25",
+    "typorg": "1",
+    "libelle1": "OPH de Montrouge",
+    "libelle2": "MONTROUGE HABITAT OPH"
+  },
+  {
+    "code": "26",
+    "typorg": "1",
+    "libelle1": "OPH de Nanterre",
+    "libelle2": "OFFICE PUBLIC HABITAT NANTERRE"
+  },
+  {
+    "code": "27",
+    "typorg": "1",
+    "libelle1": "OPH de Pantin",
+    "libelle2": "Pantin Habitat"
+  },
+  {
+    "code": "28",
+    "typorg": "1",
+    "libelle1": "OPH de Puteaux",
+    "libelle2": "OFFICE PUB HABITAT COM PUTEAUX"
+  },
+  {
+    "code": "29",
+    "typorg": "1",
+    "libelle1": "OPH de Saint-Maur-des-Fossés",
+    "libelle2": "OPH DE SAINT MAUR DES FOSSES"
+  },
+  {
+    "code": "30",
+    "typorg": "1",
+    "libelle1": "OPH de Sceaux",
+    "libelle2": "Sceaux Habitat"
+  },
+  {
+    "code": "31",
+    "typorg": "1",
+    "libelle1": "OPH de Seine-et-Marne",
+    "libelle2": "OFFICE PUBLIC HABITAT SEINE ET MARNE"
+  },
+  {
+    "code": "32",
+    "typorg": "1",
+    "libelle1": "Seine-Saint-Denis habitat",
+    "libelle2": "SEINE SAINT DENIS HABITAT"
+  },
+  {
+    "code": "33",
+    "typorg": "1",
+    "libelle1": "OPH de Thiais",
+    "libelle2": "OFFICE PUBLIC HABITAT VILLE DE THIAIS"
+  },
+  {
+    "code": "34",
+    "typorg": "1",
+    "libelle1": "OPH de Villejuif",
+    "libelle2": "OFFICE PUBLIC DE L HABITAT VILLEJUIF"
+  },
+  {
+    "code": "35",
+    "typorg": "1",
+    "libelle1": "OPH de Villemomble",
+    "libelle2": "OPH VILLEMOMBLE GRAND PARIS GRAND EST"
+  },
+  {
+    "code": "36",
+    "typorg": "1",
+    "libelle1": "OPH de Villeneuve-Saint-Georges",
+    "libelle2": "OPH de Villeneuve-Saint-Georges"
+  },
+  {
+    "code": "37",
+    "typorg": "1",
+    "libelle1": "OPH de Vincennes",
+    "libelle2": "OFFICE PUBLIC HABITAT VILLE VINCENNES"
+  },
+  {
+    "code": "38",
+    "typorg": "1",
+    "libelle1": "OPH de Vitry-sur-Seine",
+    "libelle2": "OFFICE PUB HABITAT VITRY SUR SEINE"
+  },
+  {
+    "code": "39",
+    "typorg": "2",
+    "libelle1": "SA HLM IDF Habitat",
+    "libelle2": "IDF HABITAT"
+  },
+  {
+    "code": "40",
+    "typorg": "2",
+    "libelle1": "SA HLM Coopérer Pour Habiter",
+    "libelle2": "COOPERER POUR HABITER"
+  },
+  {
+    "code": "41",
+    "typorg": "2",
+    "libelle1": "SA HLM Efidis",
+    "libelle2": "SA EFIDIS"
+  },
+  {
+    "code": "42",
+    "typorg": "2",
+    "libelle1": "Emmaüs Habitat",
+    "libelle2": "EMMAUS HABITAT"
+  },
+  {
+    "code": "43",
+    "typorg": "2",
+    "libelle1": "SA HLM Espace Habitat Construction",
+    "libelle2": "ESPACE HABITAT CONSTRUCTION SA HLM"
+  },
+  {
+    "code": "44",
+    "typorg": "2",
+    "libelle1": "SA HLM Essonne Habitat",
+    "libelle2": "ESSONNE HABITAT"
+  },
+  {
+    "code": "45",
+    "typorg": "2",
+    "libelle1": "ESH DOMNIS",
+    "libelle2": "DOMNIS"
+  },
+  {
+    "code": "46",
+    "typorg": "2",
+    "libelle1": "SA HLM Les Foyers de Seine-et-Marne",
+    "libelle2": "HLM LES FOYERS DE SEINE ET MARNE"
+  },
+  {
+    "code": "47",
+    "typorg": "2",
+    "libelle1": "SA HLM Française des habitations économiques",
+    "libelle2": "SFHE"
+  },
+  { "code": "48", "typorg": "2", "libelle1": "SEQENS", "libelle2": "SEQENS" },
+  {
+    "code": "49",
+    "typorg": "2",
+    "libelle1": "SA HLM Gestion maintenance aménagement construction",
+    "libelle2": "SOGEMAC Habitat"
+  },
+  {
+    "code": "50",
+    "typorg": "2",
+    "libelle1": "SA HLM Aximo",
+    "libelle2": "AXIMO"
+  },
+  {
+    "code": "51",
+    "typorg": "2",
+    "libelle1": "SA HLM Habitat social français",
+    "libelle2": "HSF"
+  },
+  {
+    "code": "52",
+    "typorg": "1",
+    "libelle1": "L'HABITATION CONFORTABLE",
+    "libelle2": "L HABITATION CONFORTABLE"
+  },
+  {
+    "code": "53",
+    "typorg": "2",
+    "libelle1": "SA HLM Immobilière 3F",
+    "libelle2": "I3F"
+  },
+  {
+    "code": "54",
+    "typorg": "2",
+    "libelle1": "SA HLM immobilière du Moulin Vert",
+    "libelle2": "SAIMV"
+  },
+  {
+    "code": "55",
+    "typorg": "2",
+    "libelle1": "SA HLM interprofessionnelle de la région parisienne",
+    "libelle2": "HLM INTERPROFESSIONNELLE REGION PARIS"
+  },
+  {
+    "code": "56",
+    "typorg": "2",
+    "libelle1": "SA HLM LOGIREP",
+    "libelle2": "LogiRep"
+  },
+  {
+    "code": "57",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Logis social du Val-d'Oise",
+    "libelle2": "LSVO"
+  },
+  {
+    "code": "58",
+    "typorg": "2",
+    "libelle1": "SA HLM Logis Transports",
+    "libelle2": "SA HLM LOGIS TRANSPORTS"
+  },
+  { "code": "59", "typorg": "2", "libelle1": "Erigère", "libelle2": "ERIGERE" },
+  {
+    "code": "60",
+    "typorg": "2",
+    "libelle1": "SEQENS Solidarité",
+    "libelle2": "SEQENS Solidarité"
+  },
+  {
+    "code": "61",
+    "typorg": "2",
+    "libelle1": "SA HLM Pierres et Lumières",
+    "libelle2": "SA HLM PIERRES ET LUMIERES"
+  },
+  {
+    "code": "62",
+    "typorg": "2",
+    "libelle1": "SA HLM La Plaine de France",
+    "libelle2": "SA HLM DE LA PLAINE DE FRANCE"
+  },
+  {
+    "code": "63",
+    "typorg": "2",
+    "libelle1": "SA HLM Valophis Sarepa",
+    "libelle2": "Valophis Sarepa"
+  },
+  {
+    "code": "64",
+    "typorg": "2",
+    "libelle1": "SA HLM Résidence urbaine de France",
+    "libelle2": "3F Seine et Marne"
+  },
+  {
+    "code": "65",
+    "typorg": "2",
+    "libelle1": "SA HLM Résidences le logement des fonctionnaires",
+    "libelle2": "Résidences Logement  Fonctionnaires"
+  },
+  {
+    "code": "66",
+    "typorg": "2",
+    "libelle1": "SA HLM La Sablière",
+    "libelle2": "ICF La Sablière"
+  },
+  {
+    "code": "67",
+    "typorg": "2",
+    "libelle1": "SA HLM Antin Résidences",
+    "libelle2": "ANTIN RESIDENCES SA HABITAT LOYER MODE"
+  },
+  {
+    "code": "68",
+    "typorg": "2",
+    "libelle1": "SA HLM Batigère Île-de-France",
+    "libelle2": "BATIGERE ILE DE FRANCE SA D HLM"
+  },
+  {
+    "code": "69",
+    "typorg": "2",
+    "libelle1": "SA HLM Trois Moulins Habitat",
+    "libelle2": "Trois Moulins Habitat TMH"
+  },
+  {
+    "code": "70",
+    "typorg": "2",
+    "libelle1": "SA HLM Toit et Joie",
+    "libelle2": "TOIT ET JOIE"
+  },
+  {
+    "code": "71",
+    "typorg": "2",
+    "libelle1": "CDC HABITAT SOCIAL SA H.L.M",
+    "libelle2": "CDC Habitat Social"
+  },
+  {
+    "code": "72",
+    "typorg": "2",
+    "libelle1": "SA HLM Domaxis",
+    "libelle2": "Domaxis"
+  },
+  {
+    "code": "73",
+    "typorg": "2",
+    "libelle1": "CROIX ROUGE HABITAT SA D'HABITATIONS",
+    "libelle2": "CROIX ROUGE HABITAT SA D HABITATIONS"
+  },
+  {
+    "code": "74",
+    "typorg": "3",
+    "libelle1": "SCP d'HLM La Chaumière",
+    "libelle2": "Valophis La Chaumière d'Ile de France"
+  },
+  {
+    "code": "75",
+    "typorg": "7",
+    "libelle1": "SEM DU PAYS DE FONTAINEBLEAU",
+    "libelle2": "SAEM"
+  },
+  {
+    "code": "76",
+    "typorg": "7",
+    "libelle1": "Créteil Habitat SEMIC",
+    "libelle2": "SEMIC"
+  },
+  {
+    "code": "77",
+    "typorg": "7",
+    "libelle1": "SAEM d'Epinay-sur-Seine",
+    "libelle2": "REIMS HABITAT CHAMPAGNE ARDENNE OPH"
+  },
+  {
+    "code": "78",
+    "typorg": "7",
+    "libelle1": "Société Anonyme Immobilière d’Economie Mixte de Malakoff",
+    "libelle2": "SAIEM MALAKOFF HABITAT"
+  },
+  {
+    "code": "79",
+    "typorg": "7",
+    "libelle1": "SAIEM de la Garenne-Colombes",
+    "libelle2": "SEM"
+  },
+  {
+    "code": "80",
+    "typorg": "7",
+    "libelle1": "SAEM Habitation de Louveciennes",
+    "libelle2": "SAEMHL"
+  },
+  {
+    "code": "81",
+    "typorg": "7",
+    "libelle1": "SAEM de construction de Maisons-Laffitte",
+    "libelle2": "SAEM"
+  },
+  {
+    "code": "82",
+    "typorg": "7",
+    "libelle1": "Pays de Meaux Habitat",
+    "libelle2": "Pays de Meaux Habitat"
+  },
+  {
+    "code": "83",
+    "typorg": "7",
+    "libelle1": "SAEM de construction et d'aménagement de Mitry-Mory",
+    "libelle2": "SEMMY"
+  },
+  {
+    "code": "84",
+    "typorg": "7",
+    "libelle1": "SAIEM du Moulin-à-Vent à  Rueil-Malmaison",
+    "libelle2": "SAIEM du Moulin-à-Vent"
+  },
+  {
+    "code": "85",
+    "typorg": "7",
+    "libelle1": "SEM de Neuilly-sur-Seine",
+    "libelle2": "SEMINE SA"
+  },
+  {
+    "code": "86",
+    "typorg": "7",
+    "libelle1": "SEM Nocéenne",
+    "libelle2": "SEMINOC"
+  },
+  {
+    "code": "87",
+    "typorg": "7",
+    "libelle1": "SAIEM de Nogent-sur-Marne",
+    "libelle2": "SA ECONO MIXTE RENOVATION CONSTR NOGEN"
+  },
+  {
+    "code": "88",
+    "typorg": "7",
+    "libelle1": "SAEM de la ville de Noisy-le-Sec",
+    "libelle2": "SEMINO"
+  },
+  {
+    "code": "89",
+    "typorg": "7",
+    "libelle1": "Régie immobilière de la ville de Paris",
+    "libelle2": "RIVP"
+  },
+  {
+    "code": "90",
+    "typorg": "7",
+    "libelle1": "Elogie-SIEMP",
+    "libelle2": "SGIM"
+  },
+  {
+    "code": "91",
+    "typorg": "7",
+    "libelle1": "SAEM intercommunale du Pays de France et de l'Aulnoye",
+    "libelle2": "SEMIPFA"
+  },
+  {
+    "code": "92",
+    "typorg": "7",
+    "libelle1": "SAIEM de Rambouillet",
+    "libelle2": "SEMIR"
+  },
+  {
+    "code": "93",
+    "typorg": "7",
+    "libelle1": "SIEM de Saint-Maur-des-Fossés",
+    "libelle2": "SIEM"
+  },
+  {
+    "code": "94",
+    "typorg": "7",
+    "libelle1": "SAEM de construction et rénovation de la ville de Saint-Ouen",
+    "libelle2": "SEMISO"
+  },
+  {
+    "code": "95",
+    "typorg": "7",
+    "libelle1": "Sceaux Bourg-la-Reine Habitat - société d’économie mixte locale",
+    "libelle2": "SCEAUX BOURG LA REINE HABITAT SOC EC"
+  },
+  { "code": "96", "typorg": "7", "libelle1": "ADOMA", "libelle2": "ADOMA" },
+  {
+    "code": "97",
+    "typorg": "7",
+    "libelle1": "SAEM d'aménagement et de construction de Varennes-sur-Seine",
+    "libelle2": "SOCOVAR"
+  },
+  {
+    "code": "98",
+    "typorg": "7",
+    "libelle1": "SAEM de la ville de Vincennes",
+    "libelle2": "VINCEM"
+  },
+  {
+    "code": "99",
+    "typorg": "7",
+    "libelle1": "SAEM de la région parisienne - Secteur sud-est",
+    "libelle2": "SEMISE"
+  },
+  {
+    "code": "100",
+    "typorg": "1",
+    "libelle1": "OPH des Ardennes",
+    "libelle2": "HABITAT 08 OFFICE PUB HABITAT ARDENNES"
+  },
+  {
+    "code": "101",
+    "typorg": "1",
+    "libelle1": "OPH du département de l'Aube",
+    "libelle2": "Aube Immobilier"
+  },
+  {
+    "code": "102",
+    "typorg": "1",
+    "libelle1": "OPH de Châlons-en-Champagne",
+    "libelle2": "Châlons-en-Champagne Habitat"
+  },
+  {
+    "code": "103",
+    "typorg": "1",
+    "libelle1": "OPH de la Haute-Marne",
+    "libelle2": "Hamaris"
+  },
+  {
+    "code": "104",
+    "typorg": "1",
+    "libelle1": "OPH Reims Habitat Champagne Ardenne",
+    "libelle2": "REIMS HABITAT CHAMPAGNE ARDENNE OPH"
+  },
+  {
+    "code": "105",
+    "typorg": "1",
+    "libelle1": "OPH de Troyes",
+    "libelle2": "Troyes habitat"
+  },
+  {
+    "code": "106",
+    "typorg": "1",
+    "libelle1": "OPH de Chaumont",
+    "libelle2": "Chaumont Habitat"
+  },
+  {
+    "code": "107",
+    "typorg": "1",
+    "libelle1": "OPH de Saint-Dizier",
+    "libelle2": "OFFICE PUB DE L HABITAT DE ST DIZIER"
+  },
+  {
+    "code": "108",
+    "typorg": "2",
+    "libelle1": "PLURIAL NOVILIA",
+    "libelle2": "PLURIAL NOVILIA"
+  },
+  {
+    "code": "109",
+    "typorg": "2",
+    "libelle1": "SA HLM Espace Habitat des Ardennes",
+    "libelle2": "SA DES HABITATIONS A LOYER MODERE"
+  },
+  {
+    "code": "110",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Foyer Rémois",
+    "libelle2": "LE FOYER REMOIS"
+  },
+  {
+    "code": "111",
+    "typorg": "2",
+    "libelle1": "SA HLM Mon Logis",
+    "libelle2": "SOC ANONYME D HLM MON LOGIS"
+  },
+  {
+    "code": "112",
+    "typorg": "2",
+    "libelle1": "SA HLM Habitat de Champagne",
+    "libelle2": "ESPACE HABITAT"
+  },
+  {
+    "code": "113",
+    "typorg": "2",
+    "libelle1": "NOV'HABITAT",
+    "libelle2": "NOV'HABITAT"
+  },
+  {
+    "code": "114",
+    "typorg": "2",
+    "libelle1": "SA HLM Vitry-Habitat",
+    "libelle2": "VITRY HABITAT"
+  },
+  {
+    "code": "115",
+    "typorg": "7",
+    "libelle1": "SI d' Aménagement du Barsuraubois et de l'Aube",
+    "libelle2": "SIABA"
+  },
+  {
+    "code": "116",
+    "typorg": "1",
+    "libelle1": "OPH de l'Aisne",
+    "libelle2": "OPH de l'Aisne"
+  },
+  {
+    "code": "117",
+    "typorg": "1",
+    "libelle1": "Amsom Habitat",
+    "libelle2": "Amsom Habitat"
+  },
+  {
+    "code": "118",
+    "typorg": "1",
+    "libelle1": "OPH de Laon",
+    "libelle2": "OPAL"
+  },
+  {
+    "code": "119",
+    "typorg": "1",
+    "libelle1": "OPH de l'Oise",
+    "libelle2": "OFFICE PUB L HABITAT OPAC OISE"
+  },
+  {
+    "code": "120",
+    "typorg": "1",
+    "libelle1": "OPH Oise Habitat",
+    "libelle2": "Oise Habitat"
+  },
+  {
+    "code": "121",
+    "typorg": "1",
+    "libelle1": "OPH d'Abbeville",
+    "libelle2": "Baie de Somme Habitat"
+  },
+  {
+    "code": "122",
+    "typorg": "1",
+    "libelle1": "OPH de Saint-Quentin",
+    "libelle2": "Habitat Saint Quentinois"
+  },
+  {
+    "code": "123",
+    "typorg": "1",
+    "libelle1": "OPH de la Somme",
+    "libelle2": "OPSOM"
+  },
+  {
+    "code": "124",
+    "typorg": "2",
+    "libelle1": "SA HLM du département de l'Aisne",
+    "libelle2": "CLESENCE"
+  },
+  {
+    "code": "125",
+    "typorg": "2",
+    "libelle1": "SA HLM du Beauvaisis",
+    "libelle2": "SA HABITATIONS A LOYER MODERE BEAUVAIS"
+  },
+  {
+    "code": "126",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Logement famillial de Soissons-Aisne",
+    "libelle2": "LOGIVAM"
+  },
+  {
+    "code": "127",
+    "typorg": "2",
+    "libelle1": "SA HLM du département de l'Oise",
+    "libelle2": "SA HABITATION LOYER MODERE DEP OISE"
+  },
+  {
+    "code": "128",
+    "typorg": "2",
+    "libelle1": "SA HLM immobilière picarde",
+    "libelle2": "SIP"
+  },
+  {
+    "code": "129",
+    "typorg": "2",
+    "libelle1": "SA HLM Picardie Habitat",
+    "libelle2": "SA HLM Picardie Habitat"
+  },
+  {
+    "code": "130",
+    "typorg": "7",
+    "libelle1": "SA immobilière de Péronne",
+    "libelle2": "SAIP"
+  },
+  {
+    "code": "131",
+    "typorg": "1",
+    "libelle1": "OPH de l'Eure",
+    "libelle2": "Eure Habitat"
+  },
+  {
+    "code": "132",
+    "typorg": "1",
+    "libelle1": "OPH de Rouen",
+    "libelle2": "Rouen Habitat"
+  },
+  {
+    "code": "133",
+    "typorg": "1",
+    "libelle1": "HABITAT 76",
+    "libelle2": "Habitat 76"
+  },
+  {
+    "code": "134",
+    "typorg": "1",
+    "libelle1": "OPH de la C.O.D.A.H.",
+    "libelle2": "ALCEANE"
+  },
+  {
+    "code": "135",
+    "typorg": "2",
+    "libelle1": "SA HLM immobilière de la Basse-Seine",
+    "libelle2": "IBS"
+  },
+  {
+    "code": "136",
+    "typorg": "2",
+    "libelle1": "LOGEO SEINE",
+    "libelle2": "CIFN DIALOGE"
+  },
+  {
+    "code": "137",
+    "typorg": "2",
+    "libelle1": "SA HLM de la région d'Elbeuf",
+    "libelle2": "SA HLM REGION D ELBEUF"
+  },
+  {
+    "code": "138",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Foyer stéphanais",
+    "libelle2": "LE FOYER STEPHANAIS"
+  },
+  {
+    "code": "139",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Foyer du Toit familial",
+    "libelle2": "LE FOYER DU TOIT FAMILIAL"
+  },
+  {
+    "code": "140",
+    "typorg": "2",
+    "libelle1": "SA Gournaisienne d'HLM",
+    "libelle2": "S A GOURNAISIENNE D HLM"
+  },
+  {
+    "code": "141",
+    "typorg": "2",
+    "libelle1": "SA Quevilly Habitat",
+    "libelle2": "QUEVILLY HABITAT SA HABIT LOYER MODERE"
+  },
+  {
+    "code": "142",
+    "typorg": "2",
+    "libelle1": "Logeal Immobilère SA Habitations",
+    "libelle2": "LOGEAL IMMOB SA HABITATIONS"
+  },
+  {
+    "code": "143",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Logement familial de l'Eure",
+    "libelle2": "LE LOGEMENT FAMILIAL DE L EURE"
+  },
+  {
+    "code": "144",
+    "typorg": "2",
+    "libelle1": "SA HLM LogiSeine",
+    "libelle2": "SA D HLM LOGISEINE"
+  },
+  {
+    "code": "145",
+    "typorg": "2",
+    "libelle1": "Seine Habitat",
+    "libelle2": "SEINE HABITAT SOCIETE ANONYME D HABITA"
+  },
+  {
+    "code": "146",
+    "typorg": "2",
+    "libelle1": "SA HLM rurale de l'Eure",
+    "libelle2": "SA POSTE HABITAT NORMANDIE"
+  },
+  {
+    "code": "147",
+    "typorg": "2",
+    "libelle1": "Société immobilière du logement de l'Eure",
+    "libelle2": "SILOGE"
+  },
+  {
+    "code": "148",
+    "typorg": "2",
+    "libelle1": "SA HLM Sodineuf Habitat Normand",
+    "libelle2": "Sodineuf Habitat Normand"
+  },
+  {
+    "code": "149",
+    "typorg": "3",
+    "libelle1": "SCIC d'HLM Propriété familiale Normandie",
+    "libelle2": "PFN"
+  },
+  {
+    "code": "150",
+    "typorg": "7",
+    "libelle1": "SAIEM de la ville d'Elbeuf",
+    "libelle2": "SAIEM d'Elbeuf"
+  },
+  {
+    "code": "151",
+    "typorg": "7",
+    "libelle1": "SAIEM AGIRE",
+    "libelle2": "SAIEM AGIRE"
+  },
+  {
+    "code": "152",
+    "typorg": "7",
+    "libelle1": "SAEM Le Logement de l'Eure",
+    "libelle2": "SECOMILE"
+  },
+  {
+    "code": "153",
+    "typorg": "7",
+    "libelle1": "SAEM de Normandie",
+    "libelle2": "SEMINOR"
+  },
+  {
+    "code": "154",
+    "typorg": "7",
+    "libelle1": "SIEM d'Oissel et de la région",
+    "libelle2": "SIEMOR"
+  },
+  {
+    "code": "155",
+    "typorg": "7",
+    "libelle1": "SAEM de la ville du Trait",
+    "libelle2": "SEMVIT"
+  },
+  {
+    "code": "156",
+    "typorg": "1",
+    "libelle1": "OPH de Dreux",
+    "libelle2": "L'Habitat Drouais"
+  },
+  {
+    "code": "157",
+    "typorg": "1",
+    "libelle1": "OPH de l'Indre",
+    "libelle2": "OFFICE PUBLIC DE L HABITAT DE L INDRE"
+  },
+  {
+    "code": "158",
+    "typorg": "1",
+    "libelle1": "OPH d'Indre et Loire",
+    "libelle2": "Val Touraine Habitat"
+  },
+  {
+    "code": "159",
+    "typorg": "1",
+    "libelle1": "OPH de Loir-et-Cher",
+    "libelle2": "Terres de Loire-Habitat"
+  },
+  {
+    "code": "160",
+    "typorg": "1",
+    "libelle1": "OPH du Loiret",
+    "libelle2": "LogemLoiret"
+  },
+  {
+    "code": "161",
+    "typorg": "1",
+    "libelle1": "OPH de la ville de Tours",
+    "libelle2": "TOUR S HABITAT OPH"
+  },
+  {
+    "code": "162",
+    "typorg": "1",
+    "libelle1": "OPH de Chartres",
+    "libelle2": "Chartres Habitat"
+  },
+  {
+    "code": "163",
+    "typorg": "1",
+    "libelle1": "OPH de Chateaudun",
+    "libelle2": "Le Logement Dunois"
+  },
+  {
+    "code": "164",
+    "typorg": "1",
+    "libelle1": "OPH du Cher",
+    "libelle2": "OFFICE PUBLIC HABITAT DU CHER"
+  },
+  {
+    "code": "165",
+    "typorg": "1",
+    "libelle1": "OPH de Nogent-le-Rotrou",
+    "libelle2": "NOGENT PERCHE HABITAT OPH CC PERCHE"
+  },
+  {
+    "code": "166",
+    "typorg": "2",
+    "libelle1": "SA HLM ICF Atlantique",
+    "libelle2": "ICF Atlantique"
+  },
+  {
+    "code": "167",
+    "typorg": "2",
+    "libelle1": "VALLOGIS Bâtir Centre",
+    "libelle2": "VALLOGIS"
+  },
+  {
+    "code": "168",
+    "typorg": "2",
+    "libelle1": "SA HLM Eure-et-Loir Habitat",
+    "libelle2": "SA EURE & LOIR HABITAT SA D HLM"
+  },
+  {
+    "code": "169",
+    "typorg": "2",
+    "libelle1": "SA HLM France-Loire",
+    "libelle2": "FRANCE LOIRE"
+  },
+  { "code": "170", "typorg": "2", "libelle1": "SCALIS", "libelle2": "SCALIS" },
+  {
+    "code": "171",
+    "typorg": "2",
+    "libelle1": "SA HLM immobilière Centre Loire",
+    "libelle2": "3F Centre Val de Loire"
+  },
+  {
+    "code": "172",
+    "typorg": "2",
+    "libelle1": "SA HLM Loir-et-Cher Logement",
+    "libelle2": "SA REGIONALE HLM L C LOGEMENT"
+  },
+  {
+    "code": "173",
+    "typorg": "2",
+    "libelle1": "SA HLM Le nouveau logis Centre-Limousin",
+    "libelle2": "SA HLM LE NOUVEAU LOGIS CENTRE LIMOUSI"
+  },
+  {
+    "code": "174",
+    "typorg": "2",
+    "libelle1": "SA HLM La Roseraie",
+    "libelle2": "SA D HLM LA ROSERAIE"
+  },
+  {
+    "code": "175",
+    "typorg": "2",
+    "libelle1": "SA HLM de Pithiviers",
+    "libelle2": "SIAP"
+  },
+  {
+    "code": "176",
+    "typorg": "2",
+    "libelle1": "SA HLM Touraine-Logement",
+    "libelle2": "TOURAINE LOGEMENT E S H"
+  },
+  {
+    "code": "177",
+    "typorg": "2",
+    "libelle1": "SA HLM La Tourangelle",
+    "libelle2": "LA TOURANGELLE SA D H L M"
+  },
+  {
+    "code": "178",
+    "typorg": "7",
+    "libelle1": "LIGERIS",
+    "libelle2": "LIGERIS"
+  },
+  { "code": "179", "typorg": "1", "libelle1": "INOLYA", "libelle2": "INOLYA" },
+  {
+    "code": "180",
+    "typorg": "1",
+    "libelle1": "OPH de Caen",
+    "libelle2": "Caen Habitat"
+  },
+  {
+    "code": "181",
+    "typorg": "1",
+    "libelle1": "OPH CU de Cherbourg",
+    "libelle2": "Presqu'à®le Habitat"
+  },
+  {
+    "code": "182",
+    "typorg": "1",
+    "libelle1": "OPH de la Manche",
+    "libelle2": "Manche Habitat"
+  },
+  {
+    "code": "183",
+    "typorg": "1",
+    "libelle1": "OPH de l'Orne",
+    "libelle2": "Orne Habitat"
+  },
+  {
+    "code": "184",
+    "typorg": "2",
+    "libelle1": "SA HLM d'aménagement et de gestion immobilière",
+    "libelle2": "SAGIM"
+  },
+  {
+    "code": "185",
+    "typorg": "2",
+    "libelle1": "SA HLM du Calvados",
+    "libelle2": "Logi Pays"
+  },
+  {
+    "code": "186",
+    "typorg": "2",
+    "libelle1": "SA HLM Les Cités cherbourgeoises",
+    "libelle2": "SA HLM CC"
+  },
+  {
+    "code": "187",
+    "typorg": "2",
+    "libelle1": "SA HLM du Cotentin",
+    "libelle2": "SOC HLM DU COTENTIN"
+  },
+  {
+    "code": "188",
+    "typorg": "2",
+    "libelle1": "SA HLM de Coutances-Granville",
+    "libelle2": "SA HLM COUTANCES GRANVILLE"
+  },
+  {
+    "code": "189",
+    "typorg": "2",
+    "libelle1": "LES FOYERS NORMANDS",
+    "libelle2": "LES FOYERS NORMANDS"
+  },
+  {
+    "code": "190",
+    "typorg": "2",
+    "libelle1": "SA HLM de la ville d'Alençon et de l'Orne",
+    "libelle2": "Le Logis familial"
+  },
+  {
+    "code": "191",
+    "typorg": "2",
+    "libelle1": "SA HLM La Plaine normande",
+    "libelle2": "SOCIETE HLM LA PLAINE NORMANDE"
+  },
+  {
+    "code": "192",
+    "typorg": "2",
+    "libelle1": "SA HLM Porte de l'Europe",
+    "libelle2": "HPE 14 (Partélios Habitat)"
+  },
+  {
+    "code": "193",
+    "typorg": "7",
+    "libelle1": "SAIEM de la ville de Bayeux",
+    "libelle2": "SAIEM Bayeux"
+  },
+  {
+    "code": "194",
+    "typorg": "7",
+    "libelle1": "Groupement immobilier de la ville de Caen",
+    "libelle2": "GIVC"
+  },
+  {
+    "code": "195",
+    "typorg": "7",
+    "libelle1": "Société caennaise de développement immobilier",
+    "libelle2": "La Caennaise"
+  },
+  {
+    "code": "196",
+    "typorg": "7",
+    "libelle1": "SAEM Livarot",
+    "libelle2": "SEM Livarot"
+  },
+  {
+    "code": "197",
+    "typorg": "7",
+    "libelle1": "SEM de Vence",
+    "libelle2": "SOC ECONOMIE MIXTE DE VENCE"
+  },
+  {
+    "code": "198",
+    "typorg": "7",
+    "libelle1": "SAEM Viroise",
+    "libelle2": "SEMIVIR"
+  },
+  {
+    "code": "199",
+    "typorg": "1",
+    "libelle1": "OPH de Dijon",
+    "libelle2": "GRAND DIJON HABITAT"
+  },
+  {
+    "code": "200",
+    "typorg": "1",
+    "libelle1": "OPH de Saône-et-Loire",
+    "libelle2": "OPAC SAONE ET LOIRE OFFICE PUB HABITAT"
+  },
+  {
+    "code": "201",
+    "typorg": "1",
+    "libelle1": "OPH de l'Yonne",
+    "libelle2": "Domanys"
+  },
+  {
+    "code": "202",
+    "typorg": "1",
+    "libelle1": "OPH d'Auxerre",
+    "libelle2": "Office Auxerrois de l'habitat"
+  },
+  {
+    "code": "203",
+    "typorg": "1",
+    "libelle1": "OPH de la Côte-d'Or",
+    "libelle2": "OPH 21 - Côte-d'Or Habitat"
+  },
+  {
+    "code": "204",
+    "typorg": "1",
+    "libelle1": "OPH de la Nièvre",
+    "libelle2": "Nièvre Habitat"
+  },
+  {
+    "code": "205",
+    "typorg": "2",
+    "libelle1": "SCIC Habitat Bourgogne SA d'HLM",
+    "libelle2": "SHB"
+  },
+  {
+    "code": "206",
+    "typorg": "2",
+    "libelle1": "SOCIETE ANONYME D'HABITATIONS A LOYER MODERE HABELLIS",
+    "libelle2": "SA HLM HABELLIS"
+  },
+  {
+    "code": "207",
+    "typorg": "2",
+    "libelle1": "LOGIVIE SA HLM",
+    "libelle2": "LOGIVIE"
+  },
+  {
+    "code": "208",
+    "typorg": "2",
+    "libelle1": "SA HLM de l'arrondissement de Sens",
+    "libelle2": "BRENNUS HABITAT"
+  },
+  {
+    "code": "209",
+    "typorg": "7",
+    "libelle1": "Société immobilière de la Madeleine",
+    "libelle2": "SIMAD"
+  },
+  {
+    "code": "210",
+    "typorg": "1",
+    "libelle1": "OPH de la communauté urbaine de Lille",
+    "libelle2": "Lille Métropole Habitat"
+  },
+  {
+    "code": "211",
+    "typorg": "1",
+    "libelle1": "OPH du Nord",
+    "libelle2": "PARTENORD HABITAT"
+  },
+  {
+    "code": "212",
+    "typorg": "1",
+    "libelle1": "OPH du Pas-de-Calais",
+    "libelle2": "Pas-de-Calais Habitat"
+  },
+  {
+    "code": "213",
+    "typorg": "1",
+    "libelle1": "Habitat du Littoral",
+    "libelle2": "Habitat du littoral"
+  },
+  {
+    "code": "214",
+    "typorg": "1",
+    "libelle1": "OPH de Calais",
+    "libelle2": "Terre d'Opale Habitat"
+  },
+  {
+    "code": "215",
+    "typorg": "1",
+    "libelle1": "OPH de Fourmies",
+    "libelle2": "OFFICE PUBLIC DE L HABITAT DE FOURMIES"
+  },
+  {
+    "code": "216",
+    "typorg": "2",
+    "libelle1": "SA HLM Immobilière Artois",
+    "libelle2": "SIA Habitat"
+  },
+  {
+    "code": "217",
+    "typorg": "2",
+    "libelle1": "SA HLM Avesnoise",
+    "libelle2": "L'Avesnoise"
+  },
+  {
+    "code": "218",
+    "typorg": "2",
+    "libelle1": "SA HLM Logis des Flandes intérieure et maritime",
+    "libelle2": "LOGIFIM"
+  },
+  {
+    "code": "219",
+    "typorg": "2",
+    "libelle1": "SA HLM AXENTIA",
+    "libelle2": "CARPI"
+  },
+  {
+    "code": "220",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Cottage social des",
+    "libelle2": "Le cottage social des Flandres"
+  },
+  {
+    "code": "221",
+    "typorg": "2",
+    "libelle1": "SA HLM du Hainaut",
+    "libelle2": "SOCIETE IMMOBILIERE GRAND HAINAUT"
+  },
+  {
+    "code": "222",
+    "typorg": "2",
+    "libelle1": "VILOGIA",
+    "libelle2": "VILOGIA SA D HLM"
+  },
+  {
+    "code": "223",
+    "typorg": "2",
+    "libelle1": "Flandres Opale Habitat",
+    "libelle2": "Flandres Opale Habitat"
+  },
+  {
+    "code": "224",
+    "typorg": "2",
+    "libelle1": "SA HLM Logis Métropole",
+    "libelle2": "Logis Métropole"
+  },
+  {
+    "code": "225",
+    "typorg": "2",
+    "libelle1": "SA HLM La Maison flamande",
+    "libelle2": "MF"
+  },
+  {
+    "code": "226",
+    "typorg": "2",
+    "libelle1": "Habitat du Nord",
+    "libelle2": "Habitat du Nord"
+  },
+  {
+    "code": "227",
+    "typorg": "2",
+    "libelle1": "SA HLM immobilière Nord-Artois",
+    "libelle2": "3F Nord-Artois"
+  },
+  {
+    "code": "228",
+    "typorg": "2",
+    "libelle1": "SA HLM NOREVIE",
+    "libelle2": "Norevie"
+  },
+  {
+    "code": "229",
+    "typorg": "2",
+    "libelle1": "Notre Logis",
+    "libelle2": "Notre Logis"
+  },
+  {
+    "code": "230",
+    "typorg": "2",
+    "libelle1": "SA HLM du Pas-de-Calais et du Nord",
+    "libelle2": "Habitat 62/59"
+  },
+  {
+    "code": "231",
+    "typorg": "2",
+    "libelle1": "SA HLM Promocil",
+    "libelle2": "PROMOCIL HLM"
+  },
+  {
+    "code": "232",
+    "typorg": "2",
+    "libelle1": "SA HLM régionale des Cités-Jardins",
+    "libelle2": "TISSERIN HABITAT"
+  },
+  {
+    "code": "233",
+    "typorg": "3",
+    "libelle1": "SCP d'HLM Notre Cottage",
+    "libelle2": "Notre Cottage"
+  },
+  {
+    "code": "234",
+    "typorg": "7",
+    "libelle1": "SAEM de Drocourt",
+    "libelle2": "SAEMD"
+  },
+  {
+    "code": "235",
+    "typorg": "1",
+    "libelle1": "OPH de Metz",
+    "libelle2": "Metz Habitat Territoire"
+  },
+  {
+    "code": "236",
+    "typorg": "1",
+    "libelle1": "OPH de Meurthe et Moselle",
+    "libelle2": "Meurthe et Moselle Habitat MMH"
+  },
+  {
+    "code": "237",
+    "typorg": "1",
+    "libelle1": "OPH Moselis",
+    "libelle2": "Moselis"
+  },
+  {
+    "code": "238",
+    "typorg": "1",
+    "libelle1": "Office Métropolitain de l'habitat du grand Nancy",
+    "libelle2": "OMH"
+  },
+  {
+    "code": "239",
+    "typorg": "1",
+    "libelle1": "OPH des Vosges",
+    "libelle2": "Vosgelis"
+  },
+  {
+    "code": "240",
+    "typorg": "1",
+    "libelle1": "OPH d'Epinal",
+    "libelle2": "Epinal Habitat"
+  },
+  {
+    "code": "241",
+    "typorg": "1",
+    "libelle1": "OPH de Luneville",
+    "libelle2": "OFFICE PUB DE L HABITAT DE LUNEVILLE"
+  },
+  {
+    "code": "242",
+    "typorg": "1",
+    "libelle1": "OPH de Montigny-lès-Metz",
+    "libelle2": "OPH MONTIGNY LES METZ METZ METROPOLE"
+  },
+  {
+    "code": "243",
+    "typorg": "1",
+    "libelle1": "OPH de Sarreguemines",
+    "libelle2": "SARREGUEMINES CONFLUENCES HABITAT"
+  },
+  {
+    "code": "244",
+    "typorg": "1",
+    "libelle1": "OPH de Thionville",
+    "libelle2": "OPH PORTES FRANCE THIONVILLE"
+  },
+  {
+    "code": "245",
+    "typorg": "1",
+    "libelle1": "OPH de Toul",
+    "libelle2": "TOUL HABITAT"
+  },
+  {
+    "code": "246",
+    "typorg": "2",
+    "libelle1": "SA Batigère",
+    "libelle2": "BATIGERE"
+  },
+  {
+    "code": "247",
+    "typorg": "2",
+    "libelle1": "SA HLM Logement Gestion immobilière de la région de l'Est",
+    "libelle2": "LOGIEST"
+  },
+  {
+    "code": "248",
+    "typorg": "2",
+    "libelle1": "Présence Habitat",
+    "libelle2": "Présence Habitat"
+  },
+  {
+    "code": "249",
+    "typorg": "2",
+    "libelle1": "SA HLM des régions du Nord et de l'Est",
+    "libelle2": "ICF Nord-Est SAHLM"
+  },
+  {
+    "code": "250",
+    "typorg": "2",
+    "libelle1": "Batigère Rhône Alpes",
+    "libelle2": "BATIGERE RHONE ALPES SA HLM"
+  },
+  {
+    "code": "251",
+    "typorg": "2",
+    "libelle1": "SA lorraine d'HLM",
+    "libelle2": "Société Lorraine d'Habitat"
+  },
+  {
+    "code": "252",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Toit Vosgien",
+    "libelle2": "SA HLM LE TOIT VOSGIEN"
+  },
+  {
+    "code": "253",
+    "typorg": "7",
+    "libelle1": "SAEM de la ville de Golbey",
+    "libelle2": "SAEM de Golbey"
+  },
+  {
+    "code": "254",
+    "typorg": "7",
+    "libelle1": "SEMC de construction Le Logement thillois",
+    "libelle2": "Le Logement thillois"
+  },
+  {
+    "code": "255",
+    "typorg": "7",
+    "libelle1": "SAIEM du bassin de Pont-à-Mousson",
+    "libelle2": "SAIEM Bassin de Pont-à-Mousson"
+  },
+  {
+    "code": "256",
+    "typorg": "7",
+    "libelle1": "SAIEM de la ville de Rombas",
+    "libelle2": "SOCIETE IMMOBILIERE VILLE DE ROMBAS"
+  },
+  {
+    "code": "257",
+    "typorg": "7",
+    "libelle1": "SAIEM Le Logis sarrebourgeois",
+    "libelle2": "Logis Sarrebourgeois"
+  },
+  {
+    "code": "258",
+    "typorg": "7",
+    "libelle1": "SIEM La Sarrebourgeoise",
+    "libelle2": "SCI LA SARREBOURGOISE"
+  },
+  {
+    "code": "259",
+    "typorg": "7",
+    "libelle1": "SAEM des villes de Verdun et de Saint-Mihiel",
+    "libelle2": "SIEMVV-SM"
+  },
+  {
+    "code": "260",
+    "typorg": "7",
+    "libelle1": "SAEM de Villerupt",
+    "libelle2": "SEMIV"
+  },
+  {
+    "code": "261",
+    "typorg": "6",
+    "libelle1": "Société Sainte-Barbe",
+    "libelle2": "Société Sainte-Barbe"
+  },
+  {
+    "code": "262",
+    "typorg": "1",
+    "libelle1": "OPH de Colmar",
+    "libelle2": "La Colmarienne du logement"
+  },
+  {
+    "code": "263",
+    "typorg": "1",
+    "libelle1": "m2A Habitat",
+    "libelle2": "Mulhouse Habitat"
+  },
+  {
+    "code": "264",
+    "typorg": "1",
+    "libelle1": "OPH de la ville de Saint-Louis",
+    "libelle2": "Saint-Louis Habitat"
+  },
+  {
+    "code": "265",
+    "typorg": "1",
+    "libelle1": "OPH de Sainte-Marie-aux-Mines",
+    "libelle2": "Val d'Argent Habitat"
+  },
+  {
+    "code": "266",
+    "typorg": "1",
+    "libelle1": "OPH CU de Strasbourg",
+    "libelle2": "OPHEA"
+  },
+  {
+    "code": "267",
+    "typorg": "1",
+    "libelle1": "OPH de la Communauté de Communes de Thann-Cernay",
+    "libelle2": "OPH COMM COMMUNES THANN CERNAY"
+  },
+  {
+    "code": "268",
+    "typorg": "2",
+    "libelle1": "DOMIAL ESH",
+    "libelle2": "Habitat familial Alsace"
+  },
+  {
+    "code": "269",
+    "typorg": "2",
+    "libelle1": "SA HLM mulhousienne des Cités ouvrières",
+    "libelle2": "SA HLM SOMCO Groupe CIL"
+  },
+  {
+    "code": "270",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Nouveau Logis de l'Est",
+    "libelle2": "NOUVEAU LOGIS DE L EST SA D HLM"
+  },
+  {
+    "code": "271",
+    "typorg": "3",
+    "libelle1": "SC HLM Habitat de l'Ill",
+    "libelle2": "HLM Illkirch-Graffenstaden"
+  },
+  {
+    "code": "272",
+    "typorg": "3",
+    "libelle1": "SC HLM Colmar Habitat",
+    "libelle2": "Colmar Habitat"
+  },
+  {
+    "code": "273",
+    "typorg": "3",
+    "libelle1": "SC Logements Populaires",
+    "libelle2": "SEDES habitat coopératif Strasbourgeois"
+  },
+  {
+    "code": "274",
+    "typorg": "7",
+    "libelle1": "Société immobilière du Bas-Rhin",
+    "libelle2": "ALSACE HABITAT"
+  },
+  {
+    "code": "275",
+    "typorg": "7",
+    "libelle1": "Société de constructions économiques de Bischwiller",
+    "libelle2": "SOCONEC"
+  },
+  {
+    "code": "276",
+    "typorg": "7",
+    "libelle1": "SAEM de construction et gestion immobilière",
+    "libelle2": "Le Foyer Moderne de Schiltigheim"
+  },
+  {
+    "code": "277",
+    "typorg": "7",
+    "libelle1": "Erstein-Habitat",
+    "libelle2": "Erstein-Habitat"
+  },
+  {
+    "code": "278",
+    "typorg": "7",
+    "libelle1": "Société d'investissements immobiliers de Haguenau et de ses environs",
+    "libelle2": "SIIHE"
+  },
+  {
+    "code": "279",
+    "typorg": "7",
+    "libelle1": "Obernai Habitat",
+    "libelle2": "OBERNAI HABITAT"
+  },
+  {
+    "code": "280",
+    "typorg": "7",
+    "libelle1": "Société intercommunale de construction de Molsheim et Environs",
+    "libelle2": "Foyer de la Basse-Bruche"
+  },
+  {
+    "code": "281",
+    "typorg": "7",
+    "libelle1": "Habitat moderne de Reichstett",
+    "libelle2": "L'Habitat moderne"
+  },
+  {
+    "code": "282",
+    "typorg": "7",
+    "libelle1": "SEM de construction la ville de Schirmeck",
+    "libelle2": "SEM de Schirmeck"
+  },
+  {
+    "code": "283",
+    "typorg": "7",
+    "libelle1": "SEM de construction de Schweighouse-sur-Moder",
+    "libelle2": "SEM"
+  },
+  {
+    "code": "284",
+    "typorg": "7",
+    "libelle1": "SAEM locale Habitation moderne",
+    "libelle2": "Habitation moderne"
+  },
+  {
+    "code": "285",
+    "typorg": "1",
+    "libelle1": "OPH du Jura",
+    "libelle2": "Perspectives 39"
+  },
+  {
+    "code": "286",
+    "typorg": "1",
+    "libelle1": "OPH de la Haute-Saône",
+    "libelle2": "HABITAT 70"
+  },
+  {
+    "code": "287",
+    "typorg": "1",
+    "libelle1": "OPH de Besançon",
+    "libelle2": "Grand Besançon Habitat"
+  },
+  {
+    "code": "288",
+    "typorg": "1",
+    "libelle1": "OPH de Dole",
+    "libelle2": "GRAND DOLE HABITAT"
+  },
+  {
+    "code": "289",
+    "typorg": "1",
+    "libelle1": "OPH du Doubs",
+    "libelle2": "Habitat 25"
+  },
+  {
+    "code": "290",
+    "typorg": "1",
+    "libelle1": "OPH de Saint-Claude",
+    "libelle2": "OFFICE PUB DE L HABITAT DE ST CLAUDE"
+  },
+  {
+    "code": "291",
+    "typorg": "1",
+    "libelle1": "OPH du Territoire de Belfort",
+    "libelle2": "Territoire Habitat"
+  },
+  { "code": "292", "typorg": "2", "libelle1": "NEOLIA", "libelle2": "NEOLIA" },
+  {
+    "code": "293",
+    "typorg": "7",
+    "libelle1": "SAIEM de la ville de Besancon",
+    "libelle2": "SAIEM B"
+  },
+  { "code": "294", "typorg": "7", "libelle1": "IDEHA", "libelle2": "IDEHA" },
+  {
+    "code": "295",
+    "typorg": "1",
+    "libelle1": "OPH d'Angers",
+    "libelle2": "Angers Habitat"
+  },
+  {
+    "code": "296",
+    "typorg": "1",
+    "libelle1": "OPH du Choletais",
+    "libelle2": "Sèvre Loire Habitat"
+  },
+  {
+    "code": "297",
+    "typorg": "1",
+    "libelle1": "OPH de la Loire-Atlantique",
+    "libelle2": "Habitat 44"
+  },
+  {
+    "code": "298",
+    "typorg": "1",
+    "libelle1": "OPH de la Sarthe",
+    "libelle2": "Sarthe Habitat"
+  },
+  {
+    "code": "299",
+    "typorg": "1",
+    "libelle1": "Huisne Habitat",
+    "libelle2": "OPH HUISNE HABITAT"
+  },
+  {
+    "code": "300",
+    "typorg": "1",
+    "libelle1": "OPH de Maine-et-Loire",
+    "libelle2": "Habitat 49"
+  },
+  {
+    "code": "301",
+    "typorg": "1",
+    "libelle1": "OPH de la communauté urbaine du Mans",
+    "libelle2": "Le Mans Métropole Habitat"
+  },
+  {
+    "code": "302",
+    "typorg": "1",
+    "libelle1": "OPH de la Mayenne",
+    "libelle2": "Mayenne Habitat"
+  },
+  {
+    "code": "303",
+    "typorg": "1",
+    "libelle1": "OPH de la métropole nantaise",
+    "libelle2": "Nantes Métropole Habitat"
+  },
+  {
+    "code": "304",
+    "typorg": "1",
+    "libelle1": "OPH de Saint-Nazaire",
+    "libelle2": "SILENE"
+  },
+  {
+    "code": "305",
+    "typorg": "1",
+    "libelle1": "OPH Saumur Loire Habitat",
+    "libelle2": "Saumur Habitat"
+  },
+  {
+    "code": "306",
+    "typorg": "1",
+    "libelle1": "OPH de la Vendée",
+    "libelle2": "OFFICE PUBLIC DE L HABITAT DE VENDEE"
+  },
+  {
+    "code": "307",
+    "typorg": "2",
+    "libelle1": "SA Espace Domicile HLM Saint-Nazaire Région",
+    "libelle2": "ESPACE DOMICILE SA HABITAT LOYER MODER"
+  },
+  { "code": "308", "typorg": "2", "libelle1": "F2M", "libelle2": "F2M" },
+  {
+    "code": "309",
+    "typorg": "3",
+    "libelle1": "SCIC d’HLM GAMBETTA",
+    "libelle2": "SCIC d'HLM GAMBETTA"
+  },
+  {
+    "code": "310",
+    "typorg": "2",
+    "libelle1": "Vendée Logement",
+    "libelle2": "Vendée Logement â€“ la compagnie du logement"
+  },
+  {
+    "code": "311",
+    "typorg": "2",
+    "libelle1": "Harmonie Habitat",
+    "libelle2": "HARMONIE HABITAT"
+  },
+  {
+    "code": "312",
+    "typorg": "2",
+    "libelle1": "Méduane Habitat",
+    "libelle2": "MEDUANE HABITAT"
+  },
+  {
+    "code": "313",
+    "typorg": "2",
+    "libelle1": "SA HLM Logi-Ouest",
+    "libelle2": "LogiOuest"
+  },
+  {
+    "code": "314",
+    "typorg": "2",
+    "libelle1": "SA HLM Atlantique Habitations",
+    "libelle2": "Atlantique Habitations"
+  },
+  {
+    "code": "315",
+    "typorg": "2",
+    "libelle1": "SA HLM Mancelle d'Habitation",
+    "libelle2": "Mancelle d'habitation"
+  },
+  {
+    "code": "316",
+    "typorg": "2",
+    "libelle1": "SA HLM Les Marchés de l'Ouest",
+    "libelle2": "SAMO"
+  },
+  {
+    "code": "317",
+    "typorg": "2",
+    "libelle1": "SA HLM Nantaise d'Habitation",
+    "libelle2": "SA NANTAISE D HABITATIONS"
+  },
+  {
+    "code": "318",
+    "typorg": "2",
+    "libelle1": "Immobilière Podeliha",
+    "libelle2": "IMMOBILIERE PODELIHA"
+  },
+  {
+    "code": "319",
+    "typorg": "7",
+    "libelle1": "SAIEM de construction et gestion de logements de la ville d'Angers",
+    "libelle2": "SOCLOVA"
+  },
+  {
+    "code": "320",
+    "typorg": "7",
+    "libelle1": "SAEM de construction de la ville de Roche-sur-Yon",
+    "libelle2": "ORYON"
+  },
+  {
+    "code": "321",
+    "typorg": "7",
+    "libelle1": "Société d'équipement et de construction de la Sarthe",
+    "libelle2": "SECOS"
+  },
+  {
+    "code": "322",
+    "typorg": "1",
+    "libelle1": "OPH Brest Métropole Habitat",
+    "libelle2": "Brest Métropole Habitat"
+  },
+  {
+    "code": "323",
+    "typorg": "1",
+    "libelle1": "OPH du Finistère",
+    "libelle2": "Habitat 29"
+  },
+  {
+    "code": "324",
+    "typorg": "1",
+    "libelle1": "OPH d'Ille-et-Vilaine",
+    "libelle2": "Habitat 35- NEOTOA"
+  },
+  {
+    "code": "325",
+    "typorg": "1",
+    "libelle1": "OPH de Quimper et de Cornouaille",
+    "libelle2": "OPH OPAC QUIMPER CORNOUAILLE"
+  },
+  {
+    "code": "326",
+    "typorg": "1",
+    "libelle1": "OPH de Saint-Malo-Dol de Bretagne-Dinard",
+    "libelle2": "Emeraude Habitation"
+  },
+  {
+    "code": "327",
+    "typorg": "1",
+    "libelle1": "OPH des Côtes-d'Armor",
+    "libelle2": "Côtes d'Armor Habitat"
+  },
+  {
+    "code": "328",
+    "typorg": "1",
+    "libelle1": "OPH de Douarnenez",
+    "libelle2": "Douarnenez Habitat"
+  },
+  {
+    "code": "329",
+    "typorg": "1",
+    "libelle1": "OPH de Guingamp",
+    "libelle2": "Guingamp Habitat"
+  },
+  {
+    "code": "330",
+    "typorg": "1",
+    "libelle1": "OPH de Lorient",
+    "libelle2": "Lorient Habitat"
+  },
+  {
+    "code": "331",
+    "typorg": "1",
+    "libelle1": "OPH du Morbihan",
+    "libelle2": "Bretagne Sud Habitat"
+  },
+  {
+    "code": "332",
+    "typorg": "1",
+    "libelle1": "OPH de Saint-Brieuc Agglomération",
+    "libelle2": "Terre et Baie Habitat"
+  },
+  {
+    "code": "333",
+    "typorg": "1",
+    "libelle1": "OPH de Vannes",
+    "libelle2": "Vannes Golfe Habitat"
+  },
+  {
+    "code": "334",
+    "typorg": "1",
+    "libelle1": "OPH du district de Dinan",
+    "libelle2": "Dinan CODI Habitat"
+  },
+  {
+    "code": "335",
+    "typorg": "2",
+    "libelle1": "SA HLM Aiguillon-Construction",
+    "libelle2": "SA D'HLM  AIGUILLON CONSTRUCTION"
+  },
+  {
+    "code": "336",
+    "typorg": "2",
+    "libelle1": "SA HLM d'Armorique",
+    "libelle2": "Armorique Habitat"
+  },
+  {
+    "code": "337",
+    "typorg": "2",
+    "libelle1": "SA HLM Bâtiments et styles de Bretagne",
+    "libelle2": "BSB de Saint-Brieuc"
+  },
+  {
+    "code": "338",
+    "typorg": "2",
+    "libelle1": "SA HLM Espacil Habitat",
+    "libelle2": "ESPACIL HABITAT"
+  },
+  {
+    "code": "339",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Foyer d'Armor",
+    "libelle2": "LE FOYER D ARMOR"
+  },
+  {
+    "code": "340",
+    "typorg": "2",
+    "libelle1": "SA HLM Les Foyers",
+    "libelle2": "SA D HLM LES FOYERS"
+  },
+  {
+    "code": "341",
+    "typorg": "2",
+    "libelle1": "SA HLM La Rance",
+    "libelle2": "SOC HABITATION LOYER MODERE LA RANCE"
+  },
+  {
+    "code": "342",
+    "typorg": "1",
+    "libelle1": "OPH de l'Angoumois",
+    "libelle2": "OFFICE PUB DE L HABITAT DE L ANGOUMOIS"
+  },
+  {
+    "code": "343",
+    "typorg": "1",
+    "libelle1": "OPH Sud Deux-Sèvres",
+    "libelle2": "Habitat Sud Deux-Sèvres"
+  },
+  {
+    "code": "344",
+    "typorg": "1",
+    "libelle1": "OPH Nord Deux-Sèvres",
+    "libelle2": "Habitat Deux-Sèvres"
+  },
+  {
+    "code": "345",
+    "typorg": "1",
+    "libelle1": "EKIDOM",
+    "libelle2": "Logiparc"
+  },
+  {
+    "code": "346",
+    "typorg": "1",
+    "libelle1": "OPH de la Vienne",
+    "libelle2": "Habitat 86"
+  },
+  {
+    "code": "347",
+    "typorg": "1",
+    "libelle1": "OPH de la Charente",
+    "libelle2": "Logélia Charente"
+  },
+  {
+    "code": "348",
+    "typorg": "1",
+    "libelle1": "OPH de la Charente-Maritime",
+    "libelle2": "Habitat17"
+  },
+  {
+    "code": "349",
+    "typorg": "1",
+    "libelle1": "OPH de Rochefort-sur-Mer",
+    "libelle2": "OFFICE PUB HABITAT CA ROCHEFORT OCEAN"
+  },
+  {
+    "code": "350",
+    "typorg": "1",
+    "libelle1": "OPH de la Com. d' Agglomération de La Rochelle",
+    "libelle2": "OFFICE PUB HABITAT COM AGGLO ROCHELLE"
+  },
+  {
+    "code": "351",
+    "typorg": "2",
+    "libelle1": "Immobilière Atlantic Amenagement",
+    "libelle2": "IMMOBILIERE ATLANTIC AMENAGEMENT"
+  },
+  { "code": "352", "typorg": "2", "libelle1": "NOALIS", "libelle2": "NOALIS" },
+  {
+    "code": "353",
+    "typorg": "7",
+    "libelle1": "SEMIE de la ville de Niort",
+    "libelle2": "SEMIE Niort"
+  },
+  {
+    "code": "354",
+    "typorg": "7",
+    "libelle1": "SIEM de Saintonge",
+    "libelle2": "SEMIS"
+  },
+  {
+    "code": "355",
+    "typorg": "1",
+    "libelle1": "OPH de la communauté urbaine de Bordeaux",
+    "libelle2": "Aquitanis"
+  },
+  {
+    "code": "356",
+    "typorg": "1",
+    "libelle1": "OPH Gironde Habitat",
+    "libelle2": "Gironde Habitat"
+  },
+  {
+    "code": "357",
+    "typorg": "1",
+    "libelle1": "OPH d'Agen",
+    "libelle2": "Agen Habitat"
+  },
+  {
+    "code": "358",
+    "typorg": "1",
+    "libelle1": "OPH de Bayonne",
+    "libelle2": "HABITAT SUD ATLANTIC OFFICE PUB HAB"
+  },
+  {
+    "code": "359",
+    "typorg": "1",
+    "libelle1": "OPH de la Dordogne",
+    "libelle2": "Dordogne Habitat"
+  },
+  {
+    "code": "360",
+    "typorg": "1",
+    "libelle1": "OPH des Landes",
+    "libelle2": "OFFICE PUB L HABITAT DEP LANDES"
+  },
+  {
+    "code": "361",
+    "typorg": "1",
+    "libelle1": "OPH de Pau",
+    "libelle2": "Office Palois de l'Habitat"
+  },
+  {
+    "code": "362",
+    "typorg": "1",
+    "libelle1": "OPH de Périgueux",
+    "libelle2": "Périgueux Habitat"
+  },
+  {
+    "code": "363",
+    "typorg": "1",
+    "libelle1": "OPH des Pyrénées-Atlantiques",
+    "libelle2": "Office 64 de l'Habitat"
+  },
+  {
+    "code": "364",
+    "typorg": "2",
+    "libelle1": "SA HLM Clairsienne",
+    "libelle2": "CLAIRSIENNE"
+  },
+  {
+    "code": "365",
+    "typorg": "2",
+    "libelle1": "SA HLM de Coligny",
+    "libelle2": "SOC ANONYME HLM COLIGNY"
+  },
+  {
+    "code": "366",
+    "typorg": "2",
+    "libelle1": "SA HLM Domofrance",
+    "libelle2": "DOMOFRANCE"
+  },
+  { "code": "367", "typorg": "2", "libelle1": "ENEAL", "libelle2": "ENEAL" },
+  {
+    "code": "368",
+    "typorg": "2",
+    "libelle1": "SA HLM Ciliopée Habitat",
+    "libelle2": "CILIOPEE HABITAT SA HABITATIONS"
+  },
+  {
+    "code": "369",
+    "typorg": "2",
+    "libelle1": "Mesolia Habitat",
+    "libelle2": "MESOLIA HABITAT"
+  },
+  {
+    "code": "370",
+    "typorg": "2",
+    "libelle1": "Habitelem REEL",
+    "libelle2": "HABITELEM"
+  },
+  {
+    "code": "371",
+    "typorg": "3",
+    "libelle1": "SCP d'HLM Le Comité ouvrier du logement",
+    "libelle2": "COL"
+  },
+  {
+    "code": "372",
+    "typorg": "7",
+    "libelle1": "PAU BEARN HABITAT",
+    "libelle2": "PAU BEARN HABITAT"
+  },
+  {
+    "code": "373",
+    "typorg": "7",
+    "libelle1": "SAIEM de Bergerac",
+    "libelle2": "Urbalys Habitat"
+  },
+  {
+    "code": "374",
+    "typorg": "7",
+    "libelle1": "SEM In Cité",
+    "libelle2": "In Cité"
+  },
+  {
+    "code": "375",
+    "typorg": "7",
+    "libelle1": "Société d'aménagement touristique et d'équipement du département des Landes",
+    "libelle2": "SATEL"
+  },
+  {
+    "code": "376",
+    "typorg": "7",
+    "libelle1": "SEM du Pays marmandais",
+    "libelle2": "SEMPAM"
+  },
+  {
+    "code": "377",
+    "typorg": "7",
+    "libelle1": "Société orthézienne d'économie mixte pour l'habitat",
+    "libelle2": "SOEMH"
+  },
+  {
+    "code": "378",
+    "typorg": "1",
+    "libelle1": "OPH de l'Ariège",
+    "libelle2": "OFFICE PUBLIC DE L HABITAT"
+  },
+  {
+    "code": "379",
+    "typorg": "1",
+    "libelle1": "OPH Hautes-Pyrénées",
+    "libelle2": "OPH 65"
+  },
+  {
+    "code": "380",
+    "typorg": "1",
+    "libelle1": "OPH de Toulouse",
+    "libelle2": "Habitat Toulouse"
+  },
+  {
+    "code": "381",
+    "typorg": "1",
+    "libelle1": "OPH de l'Aveyron",
+    "libelle2": "AVEYRON HABITAT"
+  },
+  {
+    "code": "382",
+    "typorg": "1",
+    "libelle1": "OPH de Castres",
+    "libelle2": "OPH COMM AGGLO CASTRES MAZAMET"
+  },
+  {
+    "code": "383",
+    "typorg": "1",
+    "libelle1": "OPH de la Haute-Garonne",
+    "libelle2": "OFFICE PUB DE L HABITAT DE HTE GARONNE"
+  },
+  {
+    "code": "384",
+    "typorg": "1",
+    "libelle1": "OPH du Gers",
+    "libelle2": "OFFICE PUBLIC DE L HABITAT DU GERS"
+  },
+  {
+    "code": "385",
+    "typorg": "1",
+    "libelle1": "OPH du Lot",
+    "libelle2": "Lot Habitat"
+  },
+  {
+    "code": "386",
+    "typorg": "1",
+    "libelle1": "OPH de Millau et sa région",
+    "libelle2": "MILLAU GRANDS CAUSSES HABITAT"
+  },
+  {
+    "code": "387",
+    "typorg": "1",
+    "libelle1": "RODEZ AGGLO HABITAT",
+    "libelle2": "RODEZ AGGLO HABITAT"
+  },
+  {
+    "code": "388",
+    "typorg": "1",
+    "libelle1": "OPH du Tarn",
+    "libelle2": "Tarn Habitat"
+  },
+  {
+    "code": "389",
+    "typorg": "1",
+    "libelle1": "OPH du Tarn et Garonne",
+    "libelle2": "Tarn-et-Garonne Habitat"
+  },
+  {
+    "code": "390",
+    "typorg": "2",
+    "libelle1": "Sud Massif Central Habitat",
+    "libelle2": "Aveyron-Logement"
+  },
+  {
+    "code": "391",
+    "typorg": "2",
+    "libelle1": "SA HLM des Chalets",
+    "libelle2": "SA HABITATIONS A LOYER MODERE CHALETS"
+  },
+  {
+    "code": "392",
+    "typorg": "2",
+    "libelle1": "SA HLM La Cité-Jardins",
+    "libelle2": "SOC HLM LA CITE DES JARDINS"
+  },
+  {
+    "code": "393",
+    "typorg": "2",
+    "libelle1": "SA HLM Colomiers Habitat",
+    "libelle2": "SA D HABITATIONS A LOYER MODERE"
+  },
+  {
+    "code": "394",
+    "typorg": "2",
+    "libelle1": "SA HLM Gasconne HLM du Gers",
+    "libelle2": "SA GASCONNE D'HLM DU GERS"
+  },
+  {
+    "code": "395",
+    "typorg": "2",
+    "libelle1": "SA HLM languedocienne",
+    "libelle2": "PATRIMOINE LANGUEDOCIENNE SA H L M"
+  },
+  {
+    "code": "396",
+    "typorg": "2",
+    "libelle1": "SA d'HLM PROMOLOGIS",
+    "libelle2": "PROMOLOGIS"
+  },
+  {
+    "code": "397",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Nouveau Logis Méridional",
+    "libelle2": "Nouveau Logis Méridional"
+  },
+  {
+    "code": "398",
+    "typorg": "2",
+    "libelle1": "SA HLM de la Vallée du Thoré",
+    "libelle2": "3F Occitanie"
+  },
+  {
+    "code": "399",
+    "typorg": "7",
+    "libelle1": "SEMI de Tarbes",
+    "libelle2": "SEM CONSTRUC VILLE TARBES"
+  },
+  {
+    "code": "400",
+    "typorg": "1",
+    "libelle1": "OPH de Brive-la-Gaillarde",
+    "libelle2": "OFFICE PUB DE L HABITAT PAYS DE BRIVE"
+  },
+  {
+    "code": "401",
+    "typorg": "1",
+    "libelle1": "OPH de la Corrèze",
+    "libelle2": "Corrèze Habitat"
+  },
+  {
+    "code": "402",
+    "typorg": "1",
+    "libelle1": "OPH de la Creuse",
+    "libelle2": "Creusalis"
+  },
+  {
+    "code": "403",
+    "typorg": "1",
+    "libelle1": "OPH d'Egletons",
+    "libelle2": "OFFICE PUBLIC HABITAT VILLE EGLETONS"
+  },
+  {
+    "code": "404",
+    "typorg": "1",
+    "libelle1": "OPH de Limoges Métropole",
+    "libelle2": "OPHLM"
+  },
+  {
+    "code": "405",
+    "typorg": "1",
+    "libelle1": "OPH de Saint Junien",
+    "libelle2": "Saint Junien Habitat"
+  },
+  {
+    "code": "406",
+    "typorg": "1",
+    "libelle1": "OPH de la Haute-Vienne",
+    "libelle2": "ODHAC"
+  },
+  {
+    "code": "407",
+    "typorg": "3",
+    "libelle1": "SCP d'HLM de la Corrèze",
+    "libelle2": "COPROD"
+  },
+  {
+    "code": "408",
+    "typorg": "1",
+    "libelle1": "OPH de l'Ain",
+    "libelle2": "DYNACITE"
+  },
+  {
+    "code": "409",
+    "typorg": "1",
+    "libelle1": "OPH du Grand-Lyon",
+    "libelle2": "Grand Lyon Habitat"
+  },
+  {
+    "code": "410",
+    "typorg": "1",
+    "libelle1": "OPH de Grenoble",
+    "libelle2": "ACTIS - Acteur de l'Immobilier Social"
+  },
+  {
+    "code": "411",
+    "typorg": "1",
+    "libelle1": "OPH de Haute-Savoie",
+    "libelle2": "Haute Savoie Habitat"
+  },
+  {
+    "code": "412",
+    "typorg": "1",
+    "libelle1": "OPH de l'Isère",
+    "libelle2": "ALPES ISERE HABITAT"
+  },
+  {
+    "code": "413",
+    "typorg": "1",
+    "libelle1": "OPH de la Loire",
+    "libelle2": "Loire Habitat"
+  },
+  {
+    "code": "414",
+    "typorg": "1",
+    "libelle1": "OPH de l'Ondaine",
+    "libelle2": "ONDAINE HABITAT"
+  },
+  {
+    "code": "415",
+    "typorg": "1",
+    "libelle1": "OPH du Rhône",
+    "libelle2": "OFFICE PUB HABITAT DEP RHONE"
+  },
+  {
+    "code": "416",
+    "typorg": "1",
+    "libelle1": "OPH de Roanne",
+    "libelle2": "OPHEOR"
+  },
+  {
+    "code": "417",
+    "typorg": "1",
+    "libelle1": "OPH de Saint-Chamond-Loire Sud",
+    "libelle2": "GIER PILAT HABITAT"
+  },
+  {
+    "code": "418",
+    "typorg": "1",
+    "libelle1": "OPH Métropole Habitat Saint-Etienne",
+    "libelle2": "Métropole Habitat Saint-Etienne"
+  },
+  {
+    "code": "419",
+    "typorg": "1",
+    "libelle1": "OPH de Savoie",
+    "libelle2": "OPAC 73"
+  },
+  {
+    "code": "420",
+    "typorg": "1",
+    "libelle1": "OPH de Vienne",
+    "libelle2": "Clésence - advivo"
+  },
+  {
+    "code": "421",
+    "typorg": "1",
+    "libelle1": "Est Métropole Habitat",
+    "libelle2": "EST METROPOLE HABITAT"
+  },
+  {
+    "code": "422",
+    "typorg": "1",
+    "libelle1": "OPH de l'Ardèche",
+    "libelle2": "Vivarais Habitat"
+  },
+  {
+    "code": "423",
+    "typorg": "1",
+    "libelle1": "OPH de Bourg-en-Bresse",
+    "libelle2": "Bourg Habitat"
+  },
+  {
+    "code": "424",
+    "typorg": "1",
+    "libelle1": "OPH de la Drôme",
+    "libelle2": "Drôme aménagement habitat - DAH"
+  },
+  {
+    "code": "425",
+    "typorg": "1",
+    "libelle1": "OPH de Firminy",
+    "libelle2": "OFFICE PUBLIC DE L HABITAT FIRMINY"
+  },
+  {
+    "code": "426",
+    "typorg": "1",
+    "libelle1": "OPH de Montélimar",
+    "libelle2": "Habitat de Montélimar"
+  },
+  {
+    "code": "427",
+    "typorg": "1",
+    "libelle1": "romans habitat",
+    "libelle2": "Habitat du Pays de Romans"
+  },
+  {
+    "code": "428",
+    "typorg": "1",
+    "libelle1": "OPH de Thonon-les-Bains",
+    "libelle2": "Léman Habitat"
+  },
+  {
+    "code": "429",
+    "typorg": "1",
+    "libelle1": "OPH d'Ugine",
+    "libelle2": "OFFICE PUBLIC HABITATIONS VILLE UGINE"
+  },
+  {
+    "code": "430",
+    "typorg": "1",
+    "libelle1": "VALENCE ROMANS HABITAT",
+    "libelle2": "VALENCE ROMANS HABITAT"
+  },
+  {
+    "code": "431",
+    "typorg": "2",
+    "libelle1": "SA HLM de l'Ain",
+    "libelle2": "LOGIDIA"
+  },
+  {
+    "code": "432",
+    "typorg": "2",
+    "libelle1": "SA HLM de l'Ardèche",
+    "libelle2": "ADIS SA d'HLM"
+  },
+  {
+    "code": "433",
+    "typorg": "2",
+    "libelle1": "SA HLM Bâtir et Loger",
+    "libelle2": "BATIR ET LOGER S A D H L M"
+  },
+  {
+    "code": "434",
+    "typorg": "2",
+    "libelle1": "SA HLM Cité nouvelle",
+    "libelle2": "SA H L M CITE NOUVELLE"
+  },
+  {
+    "code": "435",
+    "typorg": "2",
+    "libelle1": "SA HLM dauphinoise pour l'Habitat",
+    "libelle2": "Société Dauphinoise pour l'Habitat"
+  },
+  {
+    "code": "436",
+    "typorg": "2",
+    "libelle1": "SA HLM pour le développement de l'habitat",
+    "libelle2": "SDH Constructeur"
+  },
+  {
+    "code": "437",
+    "typorg": "2",
+    "libelle1": "SA HLM Gabriel Rosset",
+    "libelle2": "SA HLM REG LYON GABRIEL ROSSET SA HLM"
+  },
+  {
+    "code": "438",
+    "typorg": "2",
+    "libelle1": "SA HLM Habitat Beaujolais Val-de-Saône",
+    "libelle2": "SA Habitat BVS"
+  },
+  {
+    "code": "439",
+    "typorg": "2",
+    "libelle1": "SA HLM Halpades",
+    "libelle2": "HALPADES S A D HLM"
+  },
+  {
+    "code": "440",
+    "typorg": "2",
+    "libelle1": "SA HLM Logement Alpes-Rhône",
+    "libelle2": "SOLLAR"
+  },
+  {
+    "code": "441",
+    "typorg": "2",
+    "libelle1": "ALLIADE HABITAT",
+    "libelle2": "ALLIADE HABITAT"
+  },
+  {
+    "code": "442",
+    "typorg": "2",
+    "libelle1": "SA HLM régionale de Lyon",
+    "libelle2": "SA REGIONALE D H L M DE LYON"
+  },
+  {
+    "code": "443",
+    "typorg": "2",
+    "libelle1": "SA HLM Mont-Blanc",
+    "libelle2": "SA MONT BLANC SOCIETE ANONYME D HLM"
+  },
+  {
+    "code": "444",
+    "typorg": "2",
+    "libelle1": "SA HLM ICF Sud-Est Méditerrannée",
+    "libelle2": "ICF Sud-Est Méditerrannée"
+  },
+  {
+    "code": "445",
+    "typorg": "2",
+    "libelle1": "SA HLM immobilière Rhône-Alpes",
+    "libelle2": "IMMOBILIERE RHONE ALPES SA D HLM"
+  },
+  {
+    "code": "446",
+    "typorg": "2",
+    "libelle1": "SA HLM Société d'habitation des Alpes",
+    "libelle2": "SOCIETE D HABITATIONS DES ALPES SA HLM"
+  },
+  {
+    "code": "447",
+    "typorg": "2",
+    "libelle1": "SA HLM Thoisseyenne",
+    "libelle2": "LA THOISSEYENNE SA H L M"
+  },
+  {
+    "code": "448",
+    "typorg": "3",
+    "libelle1": "SCIC Le Toit Forézien",
+    "libelle2": "Le toit forézien"
+  },
+  {
+    "code": "449",
+    "typorg": "2",
+    "libelle1": "SCIC Habitat Rhône-Alpes",
+    "libelle2": "SHRA"
+  },
+  {
+    "code": "450",
+    "typorg": "3",
+    "libelle1": "SCP d'HLM L'Habitat dauphinois",
+    "libelle2": "Groupe Valrim"
+  },
+  {
+    "code": "451",
+    "typorg": "3",
+    "libelle1": "RHONE SAONE HABITAT",
+    "libelle2": "RHONE SAONE HABITAT"
+  },
+  {
+    "code": "452",
+    "typorg": "7",
+    "libelle1": "SAEM de construction du département de l'Ain",
+    "libelle2": "SEMCODA"
+  },
+  {
+    "code": "453",
+    "typorg": "7",
+    "libelle1": "Société Construction et de gestion immobilière de l'Ardèche",
+    "libelle2": "SACOGA"
+  },
+  {
+    "code": "454",
+    "typorg": "7",
+    "libelle1": "SAIEM de Belleville-sur-Saône",
+    "libelle2": "SAEMIB"
+  },
+  {
+    "code": "455",
+    "typorg": "7",
+    "libelle1": "Cristal habitat",
+    "libelle2": "SAIEM de Chambery"
+  },
+  {
+    "code": "456",
+    "typorg": "7",
+    "libelle1": "SAIEM de la ville de Cours",
+    "libelle2": "SAIEMVC"
+  },
+  {
+    "code": "457",
+    "typorg": "7",
+    "libelle1": "SAIEM Grenoble habitat",
+    "libelle2": "Grenoble habitat"
+  },
+  {
+    "code": "458",
+    "typorg": "7",
+    "libelle1": "SAIEM Logement Pays de Vizille",
+    "libelle2": "LPV"
+  },
+  {
+    "code": "459",
+    "typorg": "7",
+    "libelle1": "SA de construction de la ville de Lyon",
+    "libelle2": "SACVL"
+  },
+  {
+    "code": "460",
+    "typorg": "7",
+    "libelle1": "SAIEM de construction de Val-d'Isère",
+    "libelle2": "SACOVAL"
+  },
+  {
+    "code": "461",
+    "typorg": "7",
+    "libelle1": "SA de construction de la ville de Venissieux",
+    "libelle2": "SACOVIV"
+  },
+  {
+    "code": "462",
+    "typorg": "7",
+    "libelle1": "Société villeurbanaise d'urbanisme",
+    "libelle2": "SVU"
+  },
+  {
+    "code": "463",
+    "typorg": "4",
+    "libelle1": "SOLIHA du Rhône",
+    "libelle2": "SOLIHA 69"
+  },
+  {
+    "code": "464",
+    "typorg": "4",
+    "libelle1": "SAS Un Toit Pour Tous-Développement",
+    "libelle2": "UN TOIT POUR TOUS DEVELOPPEMENT"
+  },
+  {
+    "code": "465",
+    "typorg": "4",
+    "libelle1": "Société foncière d'habitat et d'humanisme",
+    "libelle2": "Habitat et Humanisme"
+  },
+  {
+    "code": "466",
+    "typorg": "7",
+    "libelle1": "Assemblia",
+    "libelle2": "Assemblia"
+  },
+  {
+    "code": "467",
+    "typorg": "1",
+    "libelle1": "OPH de Haute-Loire",
+    "libelle2": "OPH DE LA HAUTE LOIRE"
+  },
+  { "code": "468", "typorg": "1", "libelle1": "EVOLEA", "libelle2": "EVOLEA" },
+  {
+    "code": "469",
+    "typorg": "1",
+    "libelle1": "OPH du Puy de Dome et du massif Central",
+    "libelle2": "OPHIS 63"
+  },
+  {
+    "code": "470",
+    "typorg": "1",
+    "libelle1": "OPH de l'Allier",
+    "libelle2": "ALLIER HABITAT"
+  },
+  {
+    "code": "471",
+    "typorg": "1",
+    "libelle1": "OPH du Cantal",
+    "libelle2": "OFFICE PUBLIC DE L HABITAT CANTAL"
+  },
+  {
+    "code": "472",
+    "typorg": "1",
+    "libelle1": "OPH de Commentry",
+    "libelle2": "OPAC DE COMMENTRY"
+  },
+  {
+    "code": "473",
+    "typorg": "1",
+    "libelle1": "OPH de Montluçon",
+    "libelle2": "MONTLUCON HABITAT OPH"
+  },
+  {
+    "code": "474",
+    "typorg": "2",
+    "libelle1": "SA HLM Auvergne Habitat",
+    "libelle2": "AUVERGNE HABITAT"
+  },
+  {
+    "code": "475",
+    "typorg": "2",
+    "libelle1": "SA HLM Polygone",
+    "libelle2": "Polygone (CFI)"
+  },
+  {
+    "code": "476",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Foyer Vellave",
+    "libelle2": "HLM LE FOYER VELLAVE"
+  },
+  {
+    "code": "477",
+    "typorg": "2",
+    "libelle1": "DOM'AULIM Entreprise sociale de l'habitat Auvergne Limousin",
+    "libelle2": "DOM'AULIM"
+  },
+  {
+    "code": "478",
+    "typorg": "7",
+    "libelle1": "SEM de Vichy",
+    "libelle2": "SEMIV"
+  },
+  {
+    "code": "479",
+    "typorg": "1",
+    "libelle1": "OPH de la Communauté d'agglomération de Montpellier",
+    "libelle2": "ACM"
+  },
+  {
+    "code": "480",
+    "typorg": "1",
+    "libelle1": "OPH du Grand Alès",
+    "libelle2": "Logis Cévenol"
+  },
+  {
+    "code": "481",
+    "typorg": "1",
+    "libelle1": "OPH de l'Aude",
+    "libelle2": "Habitat Audois"
+  },
+  {
+    "code": "482",
+    "typorg": "1",
+    "libelle1": "OPH du Gard",
+    "libelle2": "Habitat du Gard"
+  },
+  {
+    "code": "483",
+    "typorg": "1",
+    "libelle1": "OPH de l'Hérault",
+    "libelle2": "Hérault Habitat"
+  },
+  {
+    "code": "484",
+    "typorg": "1",
+    "libelle1": "OPH de la communauté d'agglomération Narbonnaise",
+    "libelle2": "Domitia Habitat"
+  },
+  {
+    "code": "485",
+    "typorg": "1",
+    "libelle1": "OPH des Pyrénées Orientales",
+    "libelle2": "L'Office 66"
+  },
+  {
+    "code": "486",
+    "typorg": "1",
+    "libelle1": "OPH de Sète",
+    "libelle2": "SETE THAU HABITAT OFFICE PUB HABITAT"
+  },
+  {
+    "code": "487",
+    "typorg": "2",
+    "libelle1": "ALOGEA",
+    "libelle2": "SA audoise et ariégoise d'HLM SAAHLM (ALOGEA)"
+  },
+  {
+    "code": "488",
+    "typorg": "2",
+    "libelle1": "SA HLM de Bessèges et Saint-Ambroix",
+    "libelle2": "HLM BESSEGES ST AMBROIX"
+  },
+  {
+    "code": "489",
+    "typorg": "2",
+    "libelle1": "SA HLM F.D.I. Habitat",
+    "libelle2": "F D I HABITAT"
+  },
+  {
+    "code": "490",
+    "typorg": "2",
+    "libelle1": "SA HLM Lozère Habitation",
+    "libelle2": "Lozère Habitation"
+  },
+  {
+    "code": "491",
+    "typorg": "2",
+    "libelle1": "SA HLM des Pyrénées-Orientales (Roussillon Habitat)",
+    "libelle2": "Roussillon Habitat"
+  },
+  {
+    "code": "492",
+    "typorg": "2",
+    "libelle1": "SA HLM Un toit pour tous",
+    "libelle2": "UN TOIT POUR TOUS"
+  },
+  {
+    "code": "493",
+    "typorg": "3",
+    "libelle1": "SCP HLM du Languedoc-Roussillon",
+    "libelle2": "Marcou Habitat"
+  },
+  {
+    "code": "494",
+    "typorg": "7",
+    "libelle1": "SAIEM du département du Gard (SEMIGA)",
+    "libelle2": "SEMIGA"
+  },
+  {
+    "code": "495",
+    "typorg": "7",
+    "libelle1": "SAIEM de Mende Fontanilles",
+    "libelle2": "SAIEM Mende Fontanilles"
+  },
+  {
+    "code": "496",
+    "typorg": "7",
+    "libelle1": "CDC Habitat",
+    "libelle2": "CDC Habitat"
+  },
+  {
+    "code": "497",
+    "typorg": "4",
+    "libelle1": "Association de développement  d'animation et de gestion d'établissements spécialisés",
+    "libelle2": "ADAGES"
+  },
+  {
+    "code": "498",
+    "typorg": "1",
+    "libelle1": "OPH de Marseille",
+    "libelle2": "Habitat Marseille Provence"
+  },
+  {
+    "code": "499",
+    "typorg": "1",
+    "libelle1": "OPH des Bouches-du-Rhône",
+    "libelle2": "13 HABITAT"
+  },
+  {
+    "code": "500",
+    "typorg": "1",
+    "libelle1": "OPH Pays d'Aix Habitat",
+    "libelle2": "Pays d'Aix Habitat"
+  },
+  {
+    "code": "501",
+    "typorg": "1",
+    "libelle1": "OPH d'Avignon",
+    "libelle2": "GD AVIGNON RESIDENCES OFFICE PUBLIC"
+  },
+  {
+    "code": "502",
+    "typorg": "1",
+    "libelle1": "OPH Cannes et rive droite du Var",
+    "libelle2": "OFFICE PUB HABITAT CANNES PAYS LERINS"
+  },
+  {
+    "code": "503",
+    "typorg": "1",
+    "libelle1": "OPH du Vaucluse",
+    "libelle2": "Mistral Habitat"
+  },
+  {
+    "code": "504",
+    "typorg": "1",
+    "libelle1": "OPH de Nice et des Alpes-Maritimes",
+    "libelle2": "Côte d'Azur Habitat"
+  },
+  {
+    "code": "505",
+    "typorg": "1",
+    "libelle1": "OPH de la Seyne-sur-Mer",
+    "libelle2": "TERRES DU SUD HABITAT"
+  },
+  {
+    "code": "506",
+    "typorg": "1",
+    "libelle1": "OPH de Toulon",
+    "libelle2": "TOULON HABITAT MEDITERRANEE"
+  },
+  {
+    "code": "507",
+    "typorg": "1",
+    "libelle1": "OPH du Var",
+    "libelle2": "VAR HABITAT"
+  },
+  {
+    "code": "508",
+    "typorg": "2",
+    "libelle1": "H2P",
+    "libelle2": "HABITATATION DE HAUTE PROVENCE"
+  },
+  {
+    "code": "509",
+    "typorg": "2",
+    "libelle1": "SA d'HLM UNICIL",
+    "libelle2": "UNICIL"
+  },
+  {
+    "code": "510",
+    "typorg": "2",
+    "libelle1": "SA HLM Famille et Provence",
+    "libelle2": "FAMILLE ET PROVENCE"
+  },
+  {
+    "code": "511",
+    "typorg": "2",
+    "libelle1": "3F SUD SA D'HABITATIONS A LOYER MODERE",
+    "libelle2": "3F SUD SA D'HABITATIONS A LOYER MODERE"
+  },
+  {
+    "code": "512",
+    "typorg": "2",
+    "libelle1": "SA HLM Logirem",
+    "libelle2": "LOGIREM"
+  },
+  {
+    "code": "513",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Logis Familial",
+    "libelle2": "LE LOGIS FAMILIAL"
+  },
+  {
+    "code": "514",
+    "typorg": "2",
+    "libelle1": "SA HLM Logis Familial Varois",
+    "libelle2": "LE LOGIS FAMILIAL VAROIS"
+  },
+  {
+    "code": "515",
+    "typorg": "2",
+    "libelle1": "SA HLM Le Nouveau Logis Azur",
+    "libelle2": "LE NOUVEAU LOGIS AZUR"
+  },
+  {
+    "code": "516",
+    "typorg": "2",
+    "libelle1": "SA HLM Prolétazur",
+    "libelle2": "PROLETAZUR"
+  },
+  { "code": "517", "typorg": "2", "libelle1": "ERILIA", "libelle2": "ERILIA" },
+  { "code": "518", "typorg": "2", "libelle1": "3F SUD", "libelle2": "3F SUD" },
+  {
+    "code": "519",
+    "typorg": "2",
+    "libelle1": "GRAND DELTA HABITAT",
+    "libelle2": "GRAND DELTA HABITAT"
+  },
+  {
+    "code": "520",
+    "typorg": "4",
+    "libelle1": "Société Habitat et Logement Alpes-Maritimes",
+    "libelle2": "SOHLAM"
+  },
+  {
+    "code": "521",
+    "typorg": "7",
+    "libelle1": "SEM d'expansion de La Valette-du-Var",
+    "libelle2": "SEMEXVAL"
+  },
+  {
+    "code": "522",
+    "typorg": "7",
+    "libelle1": "SA de construction et de gestion immobilière de la ville d'Aix-en-Provence",
+    "libelle2": "SACOGIVA"
+  },
+  {
+    "code": "523",
+    "typorg": "7",
+    "libelle1": "SACEM d'Antibes-Juan-les-Pins",
+    "libelle2": "Sophia Antipolis Habitat"
+  },
+  {
+    "code": "524",
+    "typorg": "7",
+    "libelle1": "SAEM du Pays d'Arles",
+    "libelle2": "SEMPA"
+  },
+  {
+    "code": "525",
+    "typorg": "7",
+    "libelle1": "SAEM immobilière et d'aménagement de la ville de Bollène et de la région",
+    "libelle2": "SEMIB+"
+  },
+  {
+    "code": "526",
+    "typorg": "7",
+    "libelle1": "Société cannoise de construction et d'aménagement",
+    "libelle2": "SOCACONAM"
+  },
+  {
+    "code": "527",
+    "typorg": "7",
+    "libelle1": "SAIEM de construction de Draguignan",
+    "libelle2": "SAIEM de Draguignan"
+  },
+  {
+    "code": "528",
+    "typorg": "7",
+    "libelle1": "SAEM gardéenne",
+    "libelle2": "SAGEM"
+  },
+  {
+    "code": "529",
+    "typorg": "7",
+    "libelle1": "SAIEM d'Istres",
+    "libelle2": "Ouest provence habitat"
+  },
+  {
+    "code": "530",
+    "typorg": "7",
+    "libelle1": "SAEM de la Londe-les-Maures",
+    "libelle2": "SAEM"
+  },
+  {
+    "code": "531",
+    "typorg": "7",
+    "libelle1": "SAEM de la ville de Mallemort",
+    "libelle2": "SAEM DE Mallemort"
+  },
+  {
+    "code": "532",
+    "typorg": "7",
+    "libelle1": "Société de gestion immobilière de la ville de Marseille",
+    "libelle2": "SOGIMA"
+  },
+  {
+    "code": "533",
+    "typorg": "7",
+    "libelle1": "SAEM Marseille habitat",
+    "libelle2": "MARSEILLE HABITAT"
+  },
+  {
+    "code": "534",
+    "typorg": "7",
+    "libelle1": "SIEM de la ville de Martigues",
+    "libelle2": "SEMIVIM"
+  },
+  {
+    "code": "535",
+    "typorg": "7",
+    "libelle1": "SAIEM de Saint-Jean-Cap-Ferrat",
+    "libelle2": "SAIEM de Saint-Jean-Cap-Ferrat"
+  },
+  {
+    "code": "536",
+    "typorg": "7",
+    "libelle1": "SAIEM Habitat 06",
+    "libelle2": "HABITAT 06"
+  },
+  {
+    "code": "537",
+    "typorg": "7",
+    "libelle1": "SAIEM de la ville de Salon-de-Provence",
+    "libelle2": "SEMISAP"
+  },
+  {
+    "code": "538",
+    "typorg": "7",
+    "libelle1": "SEM de Sorgues",
+    "libelle2": "SEMIS"
+  },
+  {
+    "code": "539",
+    "typorg": "7",
+    "libelle1": "HABITAT PLUS",
+    "libelle2": "HABITAT PLUS"
+  },
+  {
+    "code": "540",
+    "typorg": "1",
+    "libelle1": "OPH de la Corse-du-Sud",
+    "libelle2": "OPH COMMUNAUTE AGGLO PAYS AJACCIEN"
+  },
+  {
+    "code": "541",
+    "typorg": "1",
+    "libelle1": "OPH de la Haute-Corse",
+    "libelle2": "OFFICE PUBLIC HLM HAUTE CORSE"
+  },
+  {
+    "code": "542",
+    "typorg": "2",
+    "libelle1": "SA HLM de la Réunion",
+    "libelle2": "SHLMR"
+  },
+  {
+    "code": "543",
+    "typorg": "7",
+    "libelle1": "Société de développement du groupement intercommunal du sud",
+    "libelle2": "SODEGIS"
+  },
+  {
+    "code": "544",
+    "typorg": "7",
+    "libelle1": "SAEM d'aménagement  de développement et d'équipement de la Réunion",
+    "libelle2": "SEMADER"
+  },
+  {
+    "code": "545",
+    "typorg": "7",
+    "libelle1": "Société immobilière du département de la Réunion",
+    "libelle2": "SIDR"
+  },
+  {
+    "code": "546",
+    "typorg": "7",
+    "libelle1": "Société d'équipement du département de la Réunion",
+    "libelle2": "SEDRE"
+  },
+  {
+    "code": "547",
+    "typorg": "7",
+    "libelle1": "SAEM d'aménagement et construction",
+    "libelle2": "SEMAC"
+  },
+  {
+    "code": "548",
+    "typorg": "7",
+    "libelle1": "Société dionysienne d'aménagement et de construction",
+    "libelle2": "SODIAC"
+  },
+  {
+    "code": "549",
+    "typorg": "7",
+    "libelle1": "SAEM de la ville de Grimaud",
+    "libelle2": "SEGRIM"
+  },
+  {
+    "code": "550",
+    "typorg": "7",
+    "libelle1": "Société d'aménagement et d'équipement de la région de Strasbourg",
+    "libelle2": "SERS"
+  },
+  {
+    "code": "551",
+    "typorg": "4",
+    "libelle1": "Habitat logement immobilier",
+    "libelle2": "HLI"
+  },
+  {
+    "code": "552",
+    "typorg": "7",
+    "libelle1": "SI de la Guyane",
+    "libelle2": "SIGUY"
+  },
+  {
+    "code": "553",
+    "typorg": "7",
+    "libelle1": "SI de Kourou",
+    "libelle2": "SIMKO"
+  },
+  {
+    "code": "554",
+    "typorg": "2",
+    "libelle1": "SCIC Habitat Auvergne-Bourbonnais",
+    "libelle2": "SCIC HABITAT AUVERGNE ET BOURBONNAIS"
+  },
+  {
+    "code": "555",
+    "typorg": "1",
+    "libelle1": "OPH d'Albertville",
+    "libelle2": "OFFICE PUBLIC DE L HABITAT ALBERTVILLE"
+  },
+  { "code": "556", "typorg": "2", "libelle1": "SIKOA", "libelle2": "SIKOA" },
+  {
+    "code": "557",
+    "typorg": "3",
+    "libelle1": "SCP de Pointe à  Pitre",
+    "libelle2": "SCP"
+  },
+  {
+    "code": "558",
+    "typorg": "7",
+    "libelle1": "SI de la Guadeloupe",
+    "libelle2": "SIG"
+  },
+  {
+    "code": "559",
+    "typorg": "7",
+    "libelle1": "SEM d'aménagement de la Guadeloupe",
+    "libelle2": "SEMAG"
+  },
+  {
+    "code": "560",
+    "typorg": "2",
+    "libelle1": "SA HLM La Martiniquaise d'HLM",
+    "libelle2": "SM HLM"
+  },
+  {
+    "code": "561",
+    "typorg": "2",
+    "libelle1": "SA HLM Ozanam",
+    "libelle2": "OZANAM"
+  },
+  {
+    "code": "562",
+    "typorg": "7",
+    "libelle1": "Société immobilière de la Martinique",
+    "libelle2": "SIMAR"
+  },
+  {
+    "code": "563",
+    "typorg": "1",
+    "libelle1": "Les Résidences Yvelines Essonne",
+    "libelle2": "Les Résidences Yvelines Essonne"
+  },
+  {
+    "code": "564",
+    "typorg": "4",
+    "libelle1": "SNL- Prologues",
+    "libelle2": "SNL PROLOGUES"
+  },
+  {
+    "code": "565",
+    "typorg": "3",
+    "libelle1": "SCP d'HLM Les Maisons Claires",
+    "libelle2": "MAISONS CLAIRES"
+  },
+  {
+    "code": "566",
+    "typorg": "7",
+    "libelle1": "SEM de la ville de Boulay",
+    "libelle2": "SCI BOULAY"
+  },
+  {
+    "code": "567",
+    "typorg": "7",
+    "libelle1": "SEM Saint-Charles",
+    "libelle2": "SCI CONSTRUCTION ST CHARLES"
+  },
+  {
+    "code": "568",
+    "typorg": "1",
+    "libelle1": "OPH d'Eure-et-Loir",
+    "libelle2": "Habitat Eurélien"
+  },
+  {
+    "code": "569",
+    "typorg": "7",
+    "libelle1": "SAEM de Saint-Avertin",
+    "libelle2": "SA D ECONOMIE MIXTE SAINT AVERTIN"
+  },
+  {
+    "code": "570",
+    "typorg": "7",
+    "libelle1": "SEM de Saint-Martin",
+    "libelle2": "SEMSAMAR"
+  },
+  {
+    "code": "571",
+    "typorg": "3",
+    "libelle1": "SCP d'HLM Ain Habitat",
+    "libelle2": "SA COOP PRODUCTION D HLM AIN HABITAT"
+  },
+  {
+    "code": "572",
+    "typorg": "1",
+    "libelle1": "OPH de Marne et Chantereine",
+    "libelle2": "MC Habitat"
+  },
+  {
+    "code": "573",
+    "typorg": "7",
+    "libelle1": "SAEM Bastia Aménagement",
+    "libelle2": "Bastia Aménagement"
+  },
+  {
+    "code": "574",
+    "typorg": "1",
+    "libelle1": "OPH du Lot-et-Garonne",
+    "libelle2": "HABITALYS"
+  },
+  {
+    "code": "575",
+    "typorg": "1",
+    "libelle1": "OPH Mâcon Habitat",
+    "libelle2": "Mâcon Habitat"
+  },
+  {
+    "code": "576",
+    "typorg": "2",
+    "libelle1": "ESH Maisons-Alfort Habitat",
+    "libelle2": "Maisons-Alfort-SA  HLM"
+  },
+  {
+    "code": "577",
+    "typorg": "1",
+    "libelle1": "OPH du Bas Rhin",
+    "libelle2": "Opus 67"
+  },
+  {
+    "code": "578",
+    "typorg": "1",
+    "libelle1": "OPH de la Meuse",
+    "libelle2": "OFFICE PUBLIC DE L HABITAT DE LA MEUSE"
+  },
+  {
+    "code": "579",
+    "typorg": "1",
+    "libelle1": "OPH de Fougères",
+    "libelle2": "Fougères Habitat"
+  },
+  {
+    "code": "580",
+    "typorg": "1",
+    "libelle1": "OPH des Hautes-Alpes",
+    "libelle2": "OPAC 05"
+  },
+  {
+    "code": "581",
+    "typorg": "7",
+    "libelle1": "SEM Chablais Habitat",
+    "libelle2": "CHABLITAT"
+  },
+  {
+    "code": "582",
+    "typorg": "1",
+    "libelle1": "OPH du Val-d'Oise",
+    "libelle2": "Val d'Oise Habitat"
+  },
+  {
+    "code": "583",
+    "typorg": "3",
+    "libelle1": "SCP d'HLM Le Logis breton",
+    "libelle2": "SCP d'HLM Le Logis breton"
+  },
+  {
+    "code": "584",
+    "typorg": "1",
+    "libelle1": "OPH d'Orléans",
+    "libelle2": "Les Résidence de l'Orléanais"
+  },
+  {
+    "code": "585",
+    "typorg": "1",
+    "libelle1": "OPH de Versailles",
+    "libelle2": "Versailles Habitat"
+  },
+  {
+    "code": "586",
+    "typorg": "7",
+    "libelle1": "SEM Habitat Pays Chatelleraudais",
+    "libelle2": "SEM Habitat"
+  },
+  {
+    "code": "587",
+    "typorg": "1",
+    "libelle1": "OPH de Clamart",
+    "libelle2": "Clamart Habitat"
+  },
+  {
+    "code": "588",
+    "typorg": "1",
+    "libelle1": "OPH de Rennes Métropole",
+    "libelle2": "Archipel Habitat"
+  },
+  {
+    "code": "589",
+    "typorg": "3",
+    "libelle1": "La Maison familiale lorraine",
+    "libelle2": "VILOGIA PREMIUM GRAND EST"
+  },
+  {
+    "code": "590",
+    "typorg": "6",
+    "libelle1": "SCI Foncière DI 01/2003",
+    "libelle2": "FONCIERE 01 2003"
+  },
+  {
+    "code": "591",
+    "typorg": "6",
+    "libelle1": "SCI Foncière DI 01/2004",
+    "libelle2": "FONCIERE DI 01 2004"
+  },
+  {
+    "code": "592",
+    "typorg": "6",
+    "libelle1": "SCI Foncière DI 01/2005",
+    "libelle2": "FONCIERE DI 01 2005"
+  },
+  {
+    "code": "593",
+    "typorg": "7",
+    "libelle1": "SAEM Habiter à  Yerres",
+    "libelle2": "Habiter à  Yerres"
+  },
+  {
+    "code": "594",
+    "typorg": "1",
+    "libelle1": "OPH de Mantes-la-Jolie",
+    "libelle2": "Mantes en Yvelines Habitat"
+  },
+  {
+    "code": "595",
+    "typorg": "2",
+    "libelle1": "SA HLM Les Ajoncs",
+    "libelle2": "Les Ajoncs"
+  },
+  {
+    "code": "596",
+    "typorg": "1",
+    "libelle1": "OPH Béziers Méditerranée Habitat",
+    "libelle2": "OPH Béziers Méditerranée Habitat"
+  },
+  {
+    "code": "597",
+    "typorg": "1",
+    "libelle1": "OPH Perpignan Roussillon",
+    "libelle2": "OPH PERPIGNAN MEDITERRANEE"
+  },
+  {
+    "code": "598",
+    "typorg": "1",
+    "libelle1": "OPH de Montreuil",
+    "libelle2": "OPH Montreuillois"
+  },
+  {
+    "code": "599",
+    "typorg": "1",
+    "libelle1": "OPH communautaire de Plaine Commune",
+    "libelle2": "Plaine Commune Habitat"
+  },
+  {
+    "code": "600",
+    "typorg": "1",
+    "libelle1": "OPH du département du Haut-Rhin",
+    "libelle2": "Habitats de Haute-Alsace"
+  },
+  {
+    "code": "601",
+    "typorg": "3",
+    "libelle1": "Savoisienne Habitat",
+    "libelle2": "SAVOISIENNE HABITAT SA COOP PRODUC HLM"
+  },
+  {
+    "code": "602",
+    "typorg": "1",
+    "libelle1": "OPH Seine-Ouest Habitat",
+    "libelle2": "OPH SEINE OUEST HABITAT"
+  },
+  {
+    "code": "603",
+    "typorg": "1",
+    "libelle1": "OPH d'Ermont Habitat",
+    "libelle2": "VAL PARISIS Habitat"
+  },
+  {
+    "code": "604",
+    "typorg": "1",
+    "libelle1": "OPH de Colombes",
+    "libelle2": "Colombes Habitat Public"
+  },
+  {
+    "code": "605",
+    "typorg": "2",
+    "libelle1": "1001 Vies Habitat",
+    "libelle2": "1001 Vies Habitat"
+  },
+  {
+    "code": "606",
+    "typorg": "2",
+    "libelle1": "SA HLM Logis Méditerranée",
+    "libelle2": "Logis Méditerranée"
+  },
+  {
+    "code": "607",
+    "typorg": "2",
+    "libelle1": "SA HLM Immobilière 3F Alsace",
+    "libelle2": "3F Grand Est"
+  },
+  {
+    "code": "608",
+    "typorg": "2",
+    "libelle1": "Maisons & Cités",
+    "libelle2": "SOGINORPA"
+  },
+  {
+    "code": "609",
+    "typorg": "3",
+    "libelle1": "SCP HLM La maison familiale creusoise",
+    "libelle2": "SA COOPERATIVE PRODUCTION LOYER MODERE"
+  },
+  {
+    "code": "610",
+    "typorg": "3",
+    "libelle1": "SCIC d'HLM CIF Coopérative",
+    "libelle2": "CIF COOPERATIVE"
+  },
+  {
+    "code": "611",
+    "typorg": "3",
+    "libelle1": "Maisons & Cités Habitat",
+    "libelle2": "ACCECURA"
+  },
+  {
+    "code": "612",
+    "typorg": "6",
+    "libelle1": "SCI Foncière DI 01/2006",
+    "libelle2": "FONCIERE DI 01 2006"
+  },
+  {
+    "code": "613",
+    "typorg": "6",
+    "libelle1": "SCI Foncière DI 01/2007",
+    "libelle2": "FONCIERE DI 01 2007"
+  },
+  {
+    "code": "614",
+    "typorg": "6",
+    "libelle1": "SCI Foncière DI 01/2008",
+    "libelle2": "FONCIERE DI 01 2008"
+  },
+  {
+    "code": "615",
+    "typorg": "6",
+    "libelle1": "SCI Foncière DI 01/2009",
+    "libelle2": "FONCIERE DI 01 2009"
+  },
+  {
+    "code": "616",
+    "typorg": "6",
+    "libelle1": "SCI Foncière DI 01/2010",
+    "libelle2": "FONCIERE DI 01 2010"
+  },
+  {
+    "code": "617",
+    "typorg": "6",
+    "libelle1": "SCI Foncière DI 01/2011",
+    "libelle2": "FONCIERE DI 01 2011"
+  },
+  {
+    "code": "618",
+    "typorg": "6",
+    "libelle1": "SCI Foncière RU 01/2004",
+    "libelle2": "SCI FONCIERE R U 01 2004"
+  },
+  {
+    "code": "619",
+    "typorg": "6",
+    "libelle1": "SCI Foncière RU 01/2007",
+    "libelle2": "FONCIERE RU 01 2007"
+  },
+  {
+    "code": "620",
+    "typorg": "6",
+    "libelle1": "SCI Foncière RU 01/2008",
+    "libelle2": "FONCIERE RU 01 2008"
+  },
+  {
+    "code": "621",
+    "typorg": "6",
+    "libelle1": "SCI Foncière RU 01/2009",
+    "libelle2": "FONCIERE RU 01 2009"
+  },
+  {
+    "code": "622",
+    "typorg": "6",
+    "libelle1": "SCI Foncière RU 01/2010",
+    "libelle2": "FONCIERE RU 01 2010"
+  },
+  {
+    "code": "623",
+    "typorg": "6",
+    "libelle1": "SCI Foncière RU 01/2011",
+    "libelle2": "FONCIERE RU 01 2011"
+  },
+  {
+    "code": "624",
+    "typorg": "3",
+    "libelle1": "SCP Habitat francilien",
+    "libelle2": "HABITAT FRANCILIEN SOC COOP PRODUC HLM"
+  },
+  {
+    "code": "625",
+    "typorg": "3",
+    "libelle1": "SCP le Toit Girondin",
+    "libelle2": "LE TOIT GIRONDIN"
+  },
+  { "code": "626", "typorg": "4", "libelle1": "ALEOS", "libelle2": "ALEOS" },
+  {
+    "code": "627",
+    "typorg": "4",
+    "libelle1": "Habiter 12",
+    "libelle2": "HABITER 12"
+  },
+  {
+    "code": "628",
+    "typorg": "4",
+    "libelle1": "SOLIHA des Pays Normands",
+    "libelle2": "SOLIHA TERRITOIRES EN NORMANDIE"
+  },
+  {
+    "code": "629",
+    "typorg": "4",
+    "libelle1": "Un Toit",
+    "libelle2": "UN TOIT"
+  },
+  {
+    "code": "630",
+    "typorg": "4",
+    "libelle1": "SOLIHA Hauts-de-France",
+    "libelle2": "SOLIHA BATISS LOG INSERT HTS FRANCE"
+  },
+  {
+    "code": "631",
+    "typorg": "4",
+    "libelle1": "SOLIHA Haute-Garonne",
+    "libelle2": "SOLIHA HAUTE GARONNE"
+  },
+  {
+    "code": "632",
+    "typorg": "4",
+    "libelle1": "REHABAIL",
+    "libelle2": "REHABAIL"
+  },
+  {
+    "code": "633",
+    "typorg": "4",
+    "libelle1": "SOLIHA Seine-et-Marne",
+    "libelle2": "SOLIHA SEINE ET MARNE"
+  },
+  {
+    "code": "634",
+    "typorg": "4",
+    "libelle1": "SOLIHA Landes",
+    "libelle2": "SOLIHA LANDES"
+  },
+  {
+    "code": "635",
+    "typorg": "4",
+    "libelle1": "Monde en Marche  Monde en Marge",
+    "libelle2": "M&M"
+  },
+  {
+    "code": "636",
+    "typorg": "4",
+    "libelle1": "Centre d'amélioration du Logement de Meuthe et Moselle",
+    "libelle2": "CENTRE AMELIORATION DU LOGEMENT"
+  },
+  {
+    "code": "637",
+    "typorg": "4",
+    "libelle1": "Foncière Chàªnelet",
+    "libelle2": "FONCIERE CHENELET"
+  },
+  {
+    "code": "638",
+    "typorg": "4",
+    "libelle1": "Logement Service",
+    "libelle2": "LOGEMENT SERVICE"
+  },
+  {
+    "code": "639",
+    "typorg": "4",
+    "libelle1": "Centre d'amélioration du logement du Pas-de-Calais",
+    "libelle2": "CAL 62"
+  },
+  {
+    "code": "640",
+    "typorg": "4",
+    "libelle1": "SOLIHA-HD Pays Basque",
+    "libelle2": "SOLIHA PAYS BASQUE"
+  },
+  {
+    "code": "641",
+    "typorg": "4",
+    "libelle1": "SOLIHA-HD Béarn Bigorre",
+    "libelle2": "SOLIHA PYRENEES BEARN-BIGORRE"
+  },
+  {
+    "code": "642",
+    "typorg": "4",
+    "libelle1": "Habitat social SOLIHA 81",
+    "libelle2": "HABITAT SOCIAL PACT 81"
+  },
+  {
+    "code": "643",
+    "typorg": "4",
+    "libelle1": "SOLIHA du Tarn",
+    "libelle2": "SOLIHA TARN"
+  },
+  {
+    "code": "644",
+    "typorg": "4",
+    "libelle1": "SOLIHA IMMO",
+    "libelle2": "SOLIHA SOLIDAIR HABITA BATI LOG INSERT"
+  },
+  {
+    "code": "645",
+    "typorg": "4",
+    "libelle1": "Habitats solidaires",
+    "libelle2": "SCIC HABITATS SOLIDAIRES"
+  },
+  {
+    "code": "646",
+    "typorg": "4",
+    "libelle1": "Logeo Habitat",
+    "libelle2": "LOGEO HABITAT"
+  },
+  {
+    "code": "647",
+    "typorg": "4",
+    "libelle1": "Fondation des petits frères des pauvres",
+    "libelle2": "FONDATION DES PETITS FRERES DES PAUVRE"
+  },
+  {
+    "code": "648",
+    "typorg": "4",
+    "libelle1": "SOLIHA BLI Loire",
+    "libelle2": "SOLIHA BLI Loire"
+  },
+  {
+    "code": "649",
+    "typorg": "4",
+    "libelle1": "Une famille Un toit 44",
+    "libelle2": "UNE FAMILLE UN TOIT 44"
+  },
+  {
+    "code": "650",
+    "typorg": "4",
+    "libelle1": "Association Rhône-Alpes pour le logement et l'insertion",
+    "libelle2": "ARALIS"
+  },
+  {
+    "code": "651",
+    "typorg": "4",
+    "libelle1": "Loger Marseille Jeunes",
+    "libelle2": "ASSOCIATION LOGER MARSEILLE JEUNES"
+  },
+  {
+    "code": "652",
+    "typorg": "4",
+    "libelle1": "Organisme social de logement",
+    "libelle2": "OSLO"
+  },
+  {
+    "code": "653",
+    "typorg": "4",
+    "libelle1": "Aide aux travailleurs migrants - région NPC",
+    "libelle2": "ARELI"
+  },
+  {
+    "code": "654",
+    "typorg": "4",
+    "libelle1": "SOLIHA des Bouches-du-Rhône",
+    "libelle2": "SOLIHA 13"
+  },
+  {
+    "code": "655",
+    "typorg": "4",
+    "libelle1": "Association pour l'accueil et le travail des personnes handicapées",
+    "libelle2": "APATPH"
+  },
+  {
+    "code": "656",
+    "typorg": "4",
+    "libelle1": "SOLIHA Sud-Ouest",
+    "libelle2": "SOLIHA SOLIDAIRES HABITAT BATISSEUR"
+  },
+  {
+    "code": "657",
+    "typorg": "4",
+    "libelle1": "COALLIA",
+    "libelle2": "COALLIA"
+  },
+  {
+    "code": "658",
+    "typorg": "4",
+    "libelle1": "ALFA 3A",
+    "libelle2": "ALFA 3A"
+  },
+  {
+    "code": "659",
+    "typorg": "4",
+    "libelle1": "EMMAàœS Solidarité",
+    "libelle2": "EMMAUS SOLIDARITE"
+  },
+  {
+    "code": "660",
+    "typorg": "4",
+    "libelle1": "Ficosil",
+    "libelle2": "FILIALE IMMOB COMMUNE ORGAN SOCIAUX 37"
+  },
+  {
+    "code": "661",
+    "typorg": "4",
+    "libelle1": "Majo Logement",
+    "libelle2": "MAJO LOGEMENT"
+  },
+  {
+    "code": "662",
+    "typorg": "4",
+    "libelle1": "Centre d'Amélioration du Logement de la Drôme",
+    "libelle2": "SOLIHA DROME"
+  },
+  {
+    "code": "663",
+    "typorg": "4",
+    "libelle1": "Fondation pour le logement social",
+    "libelle2": "FONDATION POUR LE LOGEMENT SOCIAL"
+  },
+  {
+    "code": "664",
+    "typorg": "4",
+    "libelle1": "Fédération départementale pour le logement social",
+    "libelle2": "FEDERATION DEP POUR LE LOGEMENT SOCIAL"
+  },
+  {
+    "code": "665",
+    "typorg": "4",
+    "libelle1": "Noà«l-Paindavoine",
+    "libelle2": "ASS NOEL PAINDAVOINE HABITAT JEUNES"
+  },
+  {
+    "code": "666",
+    "typorg": "4",
+    "libelle1": "Foyer Notre Dame des sans abris",
+    "libelle2": "FNDSA"
+  },
+  {
+    "code": "667",
+    "typorg": "4",
+    "libelle1": "Ateliers pour la production et l'insertion",
+    "libelle2": "AIPI"
+  },
+  {
+    "code": "668",
+    "typorg": "4",
+    "libelle1": "FRANCE HORIZON",
+    "libelle2": "FRANCE HORIZON"
+  },
+  {
+    "code": "669",
+    "typorg": "4",
+    "libelle1": "Apremis",
+    "libelle2": "APREMIS"
+  },
+  {
+    "code": "670",
+    "typorg": "4",
+    "libelle1": "Loger jeunes Vaucluse",
+    "libelle2": "LOGER JEUNES VAUCLUSE"
+  },
+  {
+    "code": "671",
+    "typorg": "4",
+    "libelle1": "Accompagnement Lieux d'accueil Carrefour éducatif et social",
+    "libelle2": "ALC"
+  },
+  {
+    "code": "672",
+    "typorg": "4",
+    "libelle1": "APSA du Pas-de-Calais",
+    "libelle2": "ASSOCIATION POUR LA SOLIDARITE ACTIVE"
+  },
+  {
+    "code": "673",
+    "typorg": "4",
+    "libelle1": "Association des résidents  étudiants  apprentis et salariés",
+    "libelle2": "AREAS"
+  },
+  {
+    "code": "674",
+    "typorg": "4",
+    "libelle1": "Bailleur fictif saisie web pôle de Montpellier",
+    "libelle2": "FONDATION DE L ARMEE DU SALUT"
+  },
+  {
+    "code": "675",
+    "typorg": "4",
+    "libelle1": "Association pour la Rénovation des villes et des villages par la réhabilitation de l'habitat",
+    "libelle2": "REVIVRE"
+  },
+  {
+    "code": "676",
+    "typorg": "4",
+    "libelle1": "Chapitre Saint-Thomas",
+    "libelle2": "FONDATION SAINT THOMAS"
+  },
+  {
+    "code": "677",
+    "typorg": "4",
+    "libelle1": "Bailleur fictif saisie web pôle de Rennes",
+    "libelle2": "EDIT DE NANTES HABITAT JEUNES"
+  },
+  {
+    "code": "678",
+    "typorg": "4",
+    "libelle1": "Le Tremplin",
+    "libelle2": "ALCYON LE TREMPLIN"
+  },
+  {
+    "code": "679",
+    "typorg": "4",
+    "libelle1": "Loger Jeunes Tarn",
+    "libelle2": "LOGER JEUNES TARN"
+  },
+  {
+    "code": "680",
+    "typorg": "4",
+    "libelle1": "SOLIHA ADRIM de la Somme",
+    "libelle2": "SOLIHA SOLIDAIRES L HABITAT SOMME"
+  },
+  {
+    "code": "681",
+    "typorg": "4",
+    "libelle1": "Logiah Alpes de Haute Provence",
+    "libelle2": "Logiah 04"
+  },
+  {
+    "code": "682",
+    "typorg": "4",
+    "libelle1": "SOLIHA Flandres",
+    "libelle2": "SOLIHA FLANDRES"
+  },
+  {
+    "code": "683",
+    "typorg": "4",
+    "libelle1": "Société Dijonnaise de l'assistance par le travail",
+    "libelle2": "SDAT"
+  },
+  {
+    "code": "684",
+    "typorg": "4",
+    "libelle1": "Fondation du protestantisme",
+    "libelle2": "FONDATION DU PROTESTANTISME"
+  },
+  {
+    "code": "685",
+    "typorg": "4",
+    "libelle1": "France Euro Habitat",
+    "libelle2": "FREHA"
+  },
+  {
+    "code": "686",
+    "typorg": "4",
+    "libelle1": "La Gerbe",
+    "libelle2": "LA GERBE"
+  },
+  {
+    "code": "687",
+    "typorg": "4",
+    "libelle1": "Bailleur fictif saisie web pôle de Lyon",
+    "libelle2": "ASSOCIATION LA HALTE SAINT JEAN"
+  },
+  { "code": "688", "typorg": "", "libelle1": "LOGETRA", "libelle2": "LOGETRA" },
+  {
+    "code": "689",
+    "typorg": "4",
+    "libelle1": "SOLIHA métropole Nord",
+    "libelle2": "SOLIHA SOLIDAIRE HABITAT METROPOLE ND"
+  },
+  {
+    "code": "690",
+    "typorg": "4",
+    "libelle1": "Saint Benoà®t Labre",
+    "libelle2": "SAINT BENOIT LABRE"
+  },
+  {
+    "code": "691",
+    "typorg": "6",
+    "libelle1": "SCI du Chemin des Dames",
+    "libelle2": "SCI DU CHEMIN DES DAMES"
+  },
+  {
+    "code": "692",
+    "typorg": "4",
+    "libelle1": "Association Interdép pour le Dév des Actions en faveur des Pers Handicapées et Inadaptées",
+    "libelle2": "AIDAPHI"
+  },
+  { "code": "693", "typorg": "4", "libelle1": "AEDE", "libelle2": "AEDE" },
+  {
+    "code": "694",
+    "typorg": "4",
+    "libelle1": "SOLIHA Loire-Atlantique",
+    "libelle2": "SOLIHA LOIRE ATLANTIQUE"
+  },
+  {
+    "code": "695",
+    "typorg": "3",
+    "libelle1": "Coopérative Alterna",
+    "libelle2": "ALTERNA"
+  },
+  {
+    "code": "696",
+    "typorg": "7",
+    "libelle1": "SOLIHA Méditerranée",
+    "libelle2": "COOP SOLIHA MEDIT BATISS LOG INSERT"
+  },
+  {
+    "code": "697",
+    "typorg": "3",
+    "libelle1": "ALPES HABITAT COOPERATIF",
+    "libelle2": "ALPES HABITAT COOPERATIF"
+  },
+  {
+    "code": "698",
+    "typorg": "3",
+    "libelle1": "Poste Habitat Provence",
+    "libelle2": "POSTE HABITAT PROVENCE"
+  },
+  {
+    "code": "699",
+    "typorg": "3",
+    "libelle1": "Poste Habitat Rhône-Alpes",
+    "libelle2": "POSTE HABITAT RHONE ALPES"
+  },
+  {
+    "code": "700",
+    "typorg": "3",
+    "libelle1": "La Maison Familiale de Provence",
+    "libelle2": "LA MAISON FAMILIALE DE PROVENCE"
+  },
+  {
+    "code": "701",
+    "typorg": "2",
+    "libelle1": "Résidence sociale de France",
+    "libelle2": "3F Résidences"
+  },
+  {
+    "code": "702",
+    "typorg": "4",
+    "libelle1": "Inser'Toit",
+    "libelle2": "INSER TOIT"
+  },
+  {
+    "code": "703",
+    "typorg": "4",
+    "libelle1": "SOLIHA Vendée",
+    "libelle2": "SOLIHA VENDEE"
+  },
+  {
+    "code": "704",
+    "typorg": "4",
+    "libelle1": "SOLIHA Centre Val de Loire",
+    "libelle2": "SOLIDARITE HABITAT CENTRE VAL DE LOIRE"
+  },
+  {
+    "code": "705",
+    "typorg": "7",
+    "libelle1": "SOLIHA Bretagne",
+    "libelle2": "SOLIHA BATISSEUR LOGEMENT INSERT"
+  },
+  {
+    "code": "706",
+    "typorg": "1",
+    "libelle1": "OPH DE LA METROPOLE DE LYON",
+    "libelle2": "LYON METROPOLE HABITAT"
+  },
+  {
+    "code": "707",
+    "typorg": "3",
+    "libelle1": "SCIC d'hlm GAMBETTA PACA",
+    "libelle2": "GAMBETTA PACA SA CCOPERATIVE"
+  },
+  {
+    "code": "708",
+    "typorg": "3",
+    "libelle1": "L'abri familial",
+    "libelle2": "L ABRI FAMILIAL"
+  },
+  {
+    "code": "709",
+    "typorg": "2",
+    "libelle1": "Logis atlantique",
+    "libelle2": "Logis atlantique"
+  },
+  {
+    "code": "710",
+    "typorg": "2",
+    "libelle1": "coop access",
+    "libelle2": "Coop access"
+  },
+  {
+    "code": "711",
+    "typorg": "4",
+    "libelle1": "Association Arial",
+    "libelle2": "ASS ACCUEIL RESID INSERT ACCOMP LOGT"
+  },
+  {
+    "code": "712",
+    "typorg": "7",
+    "libelle1": "Société Immobilière de Mayotte",
+    "libelle2": "SOCIETE IMMOBILIERE DE MAYOTTE"
+  },
+  { "code": "713", "typorg": "3", "libelle1": "AXEDIA", "libelle2": "AXEDIA" },
+  {
+    "code": "714",
+    "typorg": "2",
+    "libelle1": "LOGIREP",
+    "libelle2": "LOGIREP"
+  },
+  {
+    "code": "715",
+    "typorg": "3",
+    "libelle1": "Le TOIT Charentais",
+    "libelle2": "LE TOIT CHARENTAIS SA COOP PRODU HLM"
+  },
+  {
+    "code": "716",
+    "typorg": "3",
+    "libelle1": "La Maison Familiale de la Région Parisienne",
+    "libelle2": "MFRP"
+  },
+  {
+    "code": "717",
+    "typorg": "3",
+    "libelle1": "SOLIHA BLI Rhône Alpes",
+    "libelle2": "SOLIHA SOL HAB BAT LOG INS RHONE ALPES"
+  },
+  {
+    "code": "718",
+    "typorg": "6",
+    "libelle1": "SCI Foncière RU PR 2016",
+    "libelle2": "FONCIERE RU PR 2016"
+  },
+  {
+    "code": "719",
+    "typorg": "6",
+    "libelle1": "SCI Fonciere RU 01/2012",
+    "libelle2": "FONCIERE RU 01 2012"
+  },
+  {
+    "code": "720",
+    "typorg": "6",
+    "libelle1": "SCI Fonciere RU 01/2014",
+    "libelle2": "FONCIERE RU 01 2014"
+  },
+  {
+    "code": "721",
+    "typorg": "6",
+    "libelle1": "SCCV Fonciere RU 2015",
+    "libelle2": "FONCIERE CV RU 2015"
+  },
+  {
+    "code": "722",
+    "typorg": "4",
+    "libelle1": "Entreprendre pour Humaniser la Dépendance",
+    "libelle2": "EHD"
+  },
+  {
+    "code": "723",
+    "typorg": "2",
+    "libelle1": "LOGEO PROMOTION",
+    "libelle2": "LOGEO PROMOTION"
+  },
+  {
+    "code": "724",
+    "typorg": "4",
+    "libelle1": "CMAL centre meusien d'amelioration du logement",
+    "libelle2": "CMAL"
+  },
+  {
+    "code": "725",
+    "typorg": "7",
+    "libelle1": "Hénéo",
+    "libelle2": "LERICHEMONT"
+  },
+  {
+    "code": "726",
+    "typorg": "4",
+    "libelle1": "AIDIPHIS",
+    "libelle2": "AIDIPHIS"
+  },
+  {
+    "code": "727",
+    "typorg": "4",
+    "libelle1": "SOLIHA Yvelines",
+    "libelle2": ""
+  },
+  {
+    "code": "728",
+    "typorg": "2",
+    "libelle1": "SOLIDARITE & LOGEMENT",
+    "libelle2": "SOLIDARITE & LOGEMENT"
+  },
+  {
+    "code": "729",
+    "typorg": "2",
+    "libelle1": "Opérateur National de Vente HLM Action Logement",
+    "libelle2": "Opérateur National de Vente HLM Action Logement"
+  },
+  {
+    "code": "730",
+    "typorg": "4",
+    "libelle1": "Société Philantropique",
+    "libelle2": "Société Philantropique"
+  },
+  {
+    "code": "731",
+    "typorg": "7",
+    "libelle1": "SEM des 4 Vallées",
+    "libelle2": "SEM4V"
+  },
+  {
+    "code": "732",
+    "typorg": "4",
+    "libelle1": "Le Pelican",
+    "libelle2": "Le Pelican"
+  },
+  {
+    "code": "733",
+    "typorg": "4",
+    "libelle1": "Ministère Transition Ecologique",
+    "libelle2": "Ministère Transition Ecologique"
+  },
+  {
+    "code": "734",
+    "typorg": "6",
+    "libelle1": "Fonciere CV RU 2015",
+    "libelle2": "Fonciere CV RU 2015"
+  },
+  {
+    "code": "735",
+    "typorg": "6",
+    "libelle1": "Fonciere NRU PAM 2019",
+    "libelle2": "Fonciere NRU PAM 2019"
+  },
+  {
+    "code": "736",
+    "typorg": "6",
+    "libelle1": "Foncière NRU 2020",
+    "libelle2": "Foncière NRU 2020"
+  },
+  {
+    "code": "737",
+    "typorg": "1",
+    "libelle1": "Habitat et Métropole",
+    "libelle2": "Habitat et Métropole"
+  },
+  {
+    "code": "738",
+    "typorg": "7",
+    "libelle1": "Ysalia Garonne Habitat",
+    "libelle2": "Ysalia Garonne Habitat"
+  },
+  {
+    "code": "739",
+    "typorg": "7",
+    "libelle1": "Centre Loire Habitat",
+    "libelle2": "Centre Loire Habitat"
+  },
+  { "code": "740", "typorg": "10", "libelle1": "ACTE IARD", "libelle2": "" },
+  { "code": "741", "typorg": "10", "libelle1": "ACTE VIE", "libelle2": "" },
+  {
+    "code": "742",
+    "typorg": "10",
+    "libelle1": "ADMIRAL EUROPE COMPANIA DE SEGUROS - L'OLIVIER ASSURANCE",
+    "libelle2": ""
+  },
+  { "code": "743", "typorg": "10", "libelle1": "AFI.ESCA", "libelle2": "" },
+  {
+    "code": "744",
+    "typorg": "10",
+    "libelle1": "AFI.ESCA IARD",
+    "libelle2": ""
+  },
+  { "code": "745", "typorg": "10", "libelle1": "AGEAS FRANCE", "libelle2": "" },
+  {
+    "code": "746",
+    "typorg": "10",
+    "libelle1": "AIG EUROPE SA",
+    "libelle2": ""
+  },
+  {
+    "code": "747",
+    "typorg": "10",
+    "libelle1": "AIOI NISSAY DOWA INSURANCE COMPANY OF EUROPE LIMITED",
+    "libelle2": ""
+  },
+  { "code": "748", "typorg": "10", "libelle1": "ALAN", "libelle2": "" },
+  { "code": "749", "typorg": "10", "libelle1": "ALBINGIA", "libelle2": "" },
+  {
+    "code": "750",
+    "typorg": "10",
+    "libelle1": "ALLIANZ GLOBAL CORPORATE & SPECIALTY SE",
+    "libelle2": ""
+  },
+  { "code": "751", "typorg": "10", "libelle1": "ALLIANZ IARD", "libelle2": "" },
+  { "code": "752", "typorg": "10", "libelle1": "ALLIANZ VIE", "libelle2": "" },
+  {
+    "code": "753",
+    "typorg": "10",
+    "libelle1": "ALTIMA ASSURANCE",
+    "libelle2": ""
+  },
+  { "code": "754", "typorg": "10", "libelle1": "ANTARIUS", "libelle2": "" },
+  {
+    "code": "755",
+    "typorg": "10",
+    "libelle1": "APICIL EPARGNE",
+    "libelle2": ""
+  },
+  {
+    "code": "756",
+    "typorg": "10",
+    "libelle1": "AREAS DOMMAGES",
+    "libelle2": ""
+  },
+  { "code": "757", "typorg": "10", "libelle1": "AREAS VIE", "libelle2": "" },
+  {
+    "code": "758",
+    "typorg": "10",
+    "libelle1": "ARIAL CNP ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "759",
+    "typorg": "10",
+    "libelle1": "ASSOCIATION GENERALE DE PREVOYANCE MILITAIRE ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "760",
+    "typorg": "10",
+    "libelle1": "ASSOCIATION GENERALE DE PREVOYANCE MILITAIRE VIE",
+    "libelle2": ""
+  },
+  { "code": "761", "typorg": "10", "libelle1": "ASSU VIE", "libelle2": "" },
+  {
+    "code": "762",
+    "typorg": "10",
+    "libelle1": "ASSURANCE MUTUELLE DES FONCTIONNAIRES ET ASSIMILES DES COMPTABLES PUBLICS ET DES AGENTS",
+    "libelle2": ""
+  },
+  {
+    "code": "763",
+    "typorg": "10",
+    "libelle1": "ASSURANCE MUTUELLE DES MOTARDS",
+    "libelle2": ""
+  },
+  {
+    "code": "764",
+    "typorg": "10",
+    "libelle1": "ASSURANCE MUTUELLE D'OUTRE-MER",
+    "libelle2": ""
+  },
+  {
+    "code": "765",
+    "typorg": "10",
+    "libelle1": "ASSURANCES DU CREDIT MUTUEL IARD SA",
+    "libelle2": ""
+  },
+  {
+    "code": "766",
+    "typorg": "10",
+    "libelle1": "ASSURANCES DU CREDIT MUTUEL VIE MUTUELLE",
+    "libelle2": ""
+  },
+  {
+    "code": "767",
+    "typorg": "10",
+    "libelle1": "ASSURANCES DU CREDIT MUTUEL VIE SA",
+    "libelle2": ""
+  },
+  {
+    "code": "768",
+    "typorg": "10",
+    "libelle1": "ASSURANCES MUTUELLES DE FRANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "769",
+    "typorg": "10",
+    "libelle1": "ASSURANCES MUTUELLES DE PICARDIE",
+    "libelle2": ""
+  },
+  {
+    "code": "770",
+    "typorg": "10",
+    "libelle1": "ASSURED GARANTY EUROPE SA",
+    "libelle2": ""
+  },
+  { "code": "771", "typorg": "10", "libelle1": "ASSURIMA", "libelle2": "" },
+  {
+    "code": "772",
+    "typorg": "10",
+    "libelle1": "ATRADIUS CREDITO Y CAUCION S.A. DE SEGUROS Y REASEGUROS",
+    "libelle2": ""
+  },
+  { "code": "773", "typorg": "10", "libelle1": "AUXIA SA", "libelle2": "" },
+  {
+    "code": "774",
+    "typorg": "10",
+    "libelle1": "AVIVA ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "775",
+    "typorg": "10",
+    "libelle1": "AVIVA EPARGNE RETRAITE",
+    "libelle2": ""
+  },
+  {
+    "code": "776",
+    "typorg": "10",
+    "libelle1": "AVIVA LIFE & PENSIONS IRELAND DESIGNATED ACTIVITY COMPANY",
+    "libelle2": ""
+  },
+  {
+    "code": "777",
+    "typorg": "10",
+    "libelle1": "AVIVA RETRAITE PROFESSIONNELLE",
+    "libelle2": ""
+  },
+  { "code": "778", "typorg": "10", "libelle1": "AVIVA VIE", "libelle2": "" },
+  {
+    "code": "779",
+    "typorg": "10",
+    "libelle1": "AWP HEALTH & LIFE SA",
+    "libelle2": ""
+  },
+  { "code": "780", "typorg": "10", "libelle1": "AWP P&C SA", "libelle2": "" },
+  {
+    "code": "781",
+    "typorg": "10",
+    "libelle1": "AXA ASSURANCES IARD MUTUELLE",
+    "libelle2": ""
+  },
+  {
+    "code": "782",
+    "typorg": "10",
+    "libelle1": "AXA ASSURANCES VIE MUTUELLE",
+    "libelle2": ""
+  },
+  {
+    "code": "783",
+    "typorg": "10",
+    "libelle1": "AXA ASSURCREDIT",
+    "libelle2": ""
+  },
+  {
+    "code": "784",
+    "typorg": "10",
+    "libelle1": "AXA FRANCE IARD",
+    "libelle2": ""
+  },
+  {
+    "code": "785",
+    "typorg": "10",
+    "libelle1": "AXA FRANCE VIE",
+    "libelle2": ""
+  },
+  {
+    "code": "786",
+    "typorg": "10",
+    "libelle1": "AXA GLOBAL RE",
+    "libelle2": ""
+  },
+  {
+    "code": "787",
+    "typorg": "10",
+    "libelle1": "AXA RETRAITE ENTREPRISE",
+    "libelle2": ""
+  },
+  { "code": "788", "typorg": "10", "libelle1": "AXERIA IARD", "libelle2": "" },
+  {
+    "code": "789",
+    "typorg": "10",
+    "libelle1": "AXERIA PREVOYANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "790",
+    "typorg": "10",
+    "libelle1": "BPCE ASSURANCES",
+    "libelle2": ""
+  },
+  { "code": "791", "typorg": "10", "libelle1": "BPCE IARD", "libelle2": "" },
+  {
+    "code": "792",
+    "typorg": "10",
+    "libelle1": "BPCE PREVOYANCE",
+    "libelle2": ""
+  },
+  { "code": "793", "typorg": "10", "libelle1": "BPCE VIE", "libelle2": "" },
+  {
+    "code": "794",
+    "typorg": "10",
+    "libelle1": "CAISSE CENTRALE DE REASSURANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "795",
+    "typorg": "10",
+    "libelle1": "CAISSE D'ASSURANCE MUTUELLE DU BATIMENT ET DES TRAVAUX PUBLICS (CAM BTP)",
+    "libelle2": ""
+  },
+  {
+    "code": "796",
+    "typorg": "10",
+    "libelle1": "CAISSE D'ASSURANCES MUTUELLES DU CREDIT AGRICOLE - C.A.M.C.A.",
+    "libelle2": ""
+  },
+  {
+    "code": "797",
+    "typorg": "10",
+    "libelle1": "CAISSE DE GARANTIE IMMOBILIERE DU BATIMENT - CGI BATIMENT",
+    "libelle2": ""
+  },
+  {
+    "code": "798",
+    "typorg": "10",
+    "libelle1": "CAISSE FRATERNELLE VIE",
+    "libelle2": ""
+  },
+  {
+    "code": "799",
+    "typorg": "10",
+    "libelle1": "CAISSE MEUSIENNE D'ASSURANCES MUTUELLES",
+    "libelle2": ""
+  },
+  {
+    "code": "800",
+    "typorg": "10",
+    "libelle1": "CAISSE MUTUELLE D'ASSURANCES SUR LA VIE",
+    "libelle2": ""
+  },
+  {
+    "code": "801",
+    "typorg": "10",
+    "libelle1": "CAISSE MUTUELLE MARNAISE D'ASSURANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "802",
+    "typorg": "10",
+    "libelle1": "CALI EUROPE SA",
+    "libelle2": ""
+  },
+  {
+    "code": "803",
+    "typorg": "10",
+    "libelle1": "CAPMA - CAPMI",
+    "libelle2": ""
+  },
+  {
+    "code": "804",
+    "typorg": "10",
+    "libelle1": "CARCEPT ACCIDENT",
+    "libelle2": ""
+  },
+  {
+    "code": "805",
+    "typorg": "10",
+    "libelle1": "CARDIF - ASSURANCES RISQUES DIVERS",
+    "libelle2": ""
+  },
+  {
+    "code": "806",
+    "typorg": "10",
+    "libelle1": "CARDIF ASSURANCE VIE",
+    "libelle2": ""
+  },
+  { "code": "807", "typorg": "10", "libelle1": "CARDIF IARD", "libelle2": "" },
+  { "code": "808", "typorg": "10", "libelle1": "CARMA", "libelle2": "" },
+  { "code": "809", "typorg": "10", "libelle1": "CARMA VIE", "libelle2": "" },
+  { "code": "810", "typorg": "10", "libelle1": "CCR RE", "libelle2": "" },
+  {
+    "code": "811",
+    "typorg": "10",
+    "libelle1": "CFDP ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "812",
+    "typorg": "10",
+    "libelle1": "CGPA - CAISSE DE GARANTIE DES PROFESSIONNELS DE L'ASSURANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "813",
+    "typorg": "10",
+    "libelle1": "CHUBB EUROPEAN GROUP SE",
+    "libelle2": ""
+  },
+  {
+    "code": "814",
+    "typorg": "10",
+    "libelle1": "CNA INSURANCE COMPANY (EUROPE) SA (CICE)",
+    "libelle2": ""
+  },
+  {
+    "code": "815",
+    "typorg": "10",
+    "libelle1": "CNP ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "816",
+    "typorg": "10",
+    "libelle1": "COMPAGNIE EUROPEENNE DE GARANTIES ET CAUTIONS",
+    "libelle2": ""
+  },
+  {
+    "code": "817",
+    "typorg": "10",
+    "libelle1": "COMPAGNIE FRAN�AISE D'ASSURANCE POUR LE COMMERCE EXTERIEUR - COFACE",
+    "libelle2": ""
+  },
+  {
+    "code": "818",
+    "typorg": "10",
+    "libelle1": "COMPAGNIE NANTAISE D'ASSURANCES MARITIMES ET TERRESTRES",
+    "libelle2": ""
+  },
+  {
+    "code": "819",
+    "typorg": "10",
+    "libelle1": "COVEA COOPERATIONS",
+    "libelle2": ""
+  },
+  {
+    "code": "820",
+    "typorg": "10",
+    "libelle1": "COVEA PROTECTION JURIDIQUE",
+    "libelle2": ""
+  },
+  {
+    "code": "821",
+    "typorg": "10",
+    "libelle1": "CREDENDO - SHORT - TERM - NON - EU RISKS",
+    "libelle2": ""
+  },
+  {
+    "code": "822",
+    "typorg": "10",
+    "libelle1": "CREDIT AGRICOLE INDOSUEZ RISK SOLUTIONS ASSURANCES - CAIRS ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "823",
+    "typorg": "10",
+    "libelle1": "ERGO VERSICHERUNG AG",
+    "libelle2": ""
+  },
+  {
+    "code": "824",
+    "typorg": "10",
+    "libelle1": "EULER HERMES SA",
+    "libelle2": ""
+  },
+  {
+    "code": "825",
+    "typorg": "10",
+    "libelle1": "FIDELIDADE COMPANHIA DE SEGUROS SA",
+    "libelle2": ""
+  },
+  {
+    "code": "826",
+    "typorg": "10",
+    "libelle1": "GALIAN ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "827",
+    "typorg": "10",
+    "libelle1": "GAN ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "828",
+    "typorg": "10",
+    "libelle1": "GAN OUTRE-MER",
+    "libelle2": ""
+  },
+  {
+    "code": "829",
+    "typorg": "10",
+    "libelle1": "GARANTIE MUTUELLE DES FONCTIONNAIRES - ASSURANCES  -  G.M.F. ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "830",
+    "typorg": "10",
+    "libelle1": "GARANTIE MUTUELLE DES FONCTIONNAIRES - VIE  -  G.M.F. VIE",
+    "libelle2": ""
+  },
+  { "code": "831", "typorg": "10", "libelle1": "GEN RE", "libelle2": "" },
+  {
+    "code": "832",
+    "typorg": "10",
+    "libelle1": "GENERALI IARD",
+    "libelle2": ""
+  },
+  { "code": "833", "typorg": "10", "libelle1": "GENERALI VIE", "libelle2": "" },
+  {
+    "code": "834",
+    "typorg": "10",
+    "libelle1": "GENERATION VIE",
+    "libelle2": ""
+  },
+  { "code": "835", "typorg": "10", "libelle1": "GFA CARAIBES", "libelle2": "" },
+  { "code": "836", "typorg": "10", "libelle1": "GOTHAER", "libelle2": "" },
+  {
+    "code": "837",
+    "typorg": "10",
+    "libelle1": "GPM ASSURANCES SA",
+    "libelle2": ""
+  },
+  {
+    "code": "838",
+    "typorg": "10",
+    "libelle1": "GREENVAL INSURANCE COMPANY LIMITED",
+    "libelle2": ""
+  },
+  { "code": "839", "typorg": "10", "libelle1": "GRESHAM", "libelle2": "" },
+  {
+    "code": "840",
+    "typorg": "10",
+    "libelle1": "GROUPAMA ASSURANCE CREDIT & CAUTION",
+    "libelle2": ""
+  },
+  {
+    "code": "841",
+    "typorg": "10",
+    "libelle1": "GROUPAMA ASSURANCES MUTUELLES",
+    "libelle2": ""
+  },
+  {
+    "code": "842",
+    "typorg": "10",
+    "libelle1": "GROUPAMA GAN VIE",
+    "libelle2": ""
+  },
+  {
+    "code": "843",
+    "typorg": "10",
+    "libelle1": "GROUPE D'ASSURANCES MUTUELLES DE L'EST - GAMEST",
+    "libelle2": ""
+  },
+  {
+    "code": "844",
+    "typorg": "10",
+    "libelle1": "GROUPEMENT FRANCAIS DE CAUTION",
+    "libelle2": ""
+  },
+  {
+    "code": "845",
+    "typorg": "10",
+    "libelle1": "HDI GLOBAL SE",
+    "libelle2": ""
+  },
+  {
+    "code": "846",
+    "typorg": "10",
+    "libelle1": "HELVETIA ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "847",
+    "typorg": "10",
+    "libelle1": "HELVETIA ASSURANCES S.A.",
+    "libelle2": ""
+  },
+  { "code": "848", "typorg": "10", "libelle1": "HISCOX S.A.", "libelle2": "" },
+  {
+    "code": "849",
+    "typorg": "10",
+    "libelle1": "HSBC ASSURANCES VIE (FRANCE)",
+    "libelle2": ""
+  },
+  {
+    "code": "850",
+    "typorg": "10",
+    "libelle1": "ICARE ASSURANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "851",
+    "typorg": "10",
+    "libelle1": "IF ASSURANCES FRANCE IARD",
+    "libelle2": ""
+  },
+  {
+    "code": "852",
+    "typorg": "10",
+    "libelle1": "IMA ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "853",
+    "typorg": "10",
+    "libelle1": "IMPERIO ASSURANCE ET CAPITALISATION S.A.",
+    "libelle2": ""
+  },
+  {
+    "code": "854",
+    "typorg": "10",
+    "libelle1": "INTER MUTUELLES ENTREPRISES",
+    "libelle2": ""
+  },
+  {
+    "code": "855",
+    "typorg": "10",
+    "libelle1": "INTER PARTNER ASSISTANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "856",
+    "typorg": "10",
+    "libelle1": "IPTIQ LIFE S.A.",
+    "libelle2": ""
+  },
+  { "code": "857", "typorg": "10", "libelle1": "JURIDICA", "libelle2": "" },
+  { "code": "858", "typorg": "10", "libelle1": "KLESIA SA", "libelle2": "" },
+  {
+    "code": "859",
+    "typorg": "10",
+    "libelle1": "LA BANQUE POSTALE ASSURANCE SANTE",
+    "libelle2": ""
+  },
+  {
+    "code": "860",
+    "typorg": "10",
+    "libelle1": "LA BANQUE POSTALE ASSURANCES IARD",
+    "libelle2": ""
+  },
+  {
+    "code": "861",
+    "typorg": "10",
+    "libelle1": "LA BANQUE POSTALE PREVOYANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "862",
+    "typorg": "10",
+    "libelle1": "LA GARANTIE MUTUELLE DES FONCTIONNAIRES",
+    "libelle2": ""
+  },
+  {
+    "code": "863",
+    "typorg": "10",
+    "libelle1": "LA MEDICALE DE FRANCE",
+    "libelle2": ""
+  },
+  { "code": "864", "typorg": "10", "libelle1": "LA MONDIALE", "libelle2": "" },
+  {
+    "code": "865",
+    "typorg": "10",
+    "libelle1": "LA MONDIALE PARTENAIRE",
+    "libelle2": ""
+  },
+  {
+    "code": "866",
+    "typorg": "10",
+    "libelle1": "LA MUTUELLE D'ASSURANCE DES ARMEES",
+    "libelle2": ""
+  },
+  {
+    "code": "867",
+    "typorg": "10",
+    "libelle1": "LA MUTUELLE DES ILES SAINT-PIERRE ET MIQUELON",
+    "libelle2": ""
+  },
+  {
+    "code": "868",
+    "typorg": "10",
+    "libelle1": "LA MUTUELLE PHOCEENNE ASSURANCES",
+    "libelle2": ""
+  },
+  { "code": "869", "typorg": "10", "libelle1": "LA RURALE", "libelle2": "" },
+  {
+    "code": "870",
+    "typorg": "10",
+    "libelle1": "LA SAUVEGARDE",
+    "libelle2": ""
+  },
+  {
+    "code": "871",
+    "typorg": "10",
+    "libelle1": "LA SECURITE FAMILIALE",
+    "libelle2": ""
+  },
+  { "code": "872", "typorg": "10", "libelle1": "L'AUXILIAIRE", "libelle2": "" },
+  {
+    "code": "873",
+    "typorg": "10",
+    "libelle1": "L'AUXILIAIRE-VIE",
+    "libelle2": ""
+  },
+  {
+    "code": "874",
+    "typorg": "10",
+    "libelle1": "LE FINISTERE ASSURANCE",
+    "libelle2": ""
+  },
+  { "code": "875", "typorg": "10", "libelle1": "L'EQUITE", "libelle2": "" },
+  {
+    "code": "876",
+    "typorg": "10",
+    "libelle1": "LES ASSOCIATIONS MUTUELLES \"LE CONSERVATEUR\"",
+    "libelle2": ""
+  },
+  {
+    "code": "877",
+    "typorg": "10",
+    "libelle1": "LES ASSURANCES MUTUELLES \"LE CONSERVATEUR\"",
+    "libelle2": ""
+  },
+  { "code": "878", "typorg": "10", "libelle1": "L'ETOILE", "libelle2": "" },
+  { "code": "879", "typorg": "10", "libelle1": "LIBEA", "libelle2": "" },
+  {
+    "code": "880",
+    "typorg": "10",
+    "libelle1": "LIBERTY MUTUAL INSURANCE EUROPE LIMITED",
+    "libelle2": ""
+  },
+  {
+    "code": "881",
+    "typorg": "10",
+    "libelle1": "LLOYD�S INSURANCE COMPANY SA",
+    "libelle2": ""
+  },
+  {
+    "code": "882",
+    "typorg": "10",
+    "libelle1": "LLOYD'S DE LONDRES",
+    "libelle2": ""
+  },
+  {
+    "code": "883",
+    "typorg": "10",
+    "libelle1": "LOURMEL SOLUTIONS ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "884",
+    "typorg": "10",
+    "libelle1": "MAAF ASSURANCES",
+    "libelle2": ""
+  },
+  { "code": "885", "typorg": "10", "libelle1": "MAAF SANTE", "libelle2": "" },
+  { "code": "886", "typorg": "10", "libelle1": "MACIFILIA", "libelle2": "" },
+  {
+    "code": "887",
+    "typorg": "10",
+    "libelle1": "MACSF EPARGNE RETRAITE",
+    "libelle2": ""
+  },
+  {
+    "code": "888",
+    "typorg": "10",
+    "libelle1": "MACSF PREVOYANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "889",
+    "typorg": "10",
+    "libelle1": "MADP ASSURANCES",
+    "libelle2": ""
+  },
+  { "code": "890", "typorg": "10", "libelle1": "MAIF VIE", "libelle2": "" },
+  {
+    "code": "891",
+    "typorg": "10",
+    "libelle1": "MALAKOFF HUMANIS ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "892",
+    "typorg": "10",
+    "libelle1": "MALAKOFF HUMANIS RETRAITE SUPPLEMENTAIRE",
+    "libelle2": ""
+  },
+  {
+    "code": "893",
+    "typorg": "10",
+    "libelle1": "MAPA MUTUELLE D'ASSURANCE",
+    "libelle2": ""
+  },
+  { "code": "894", "typorg": "10", "libelle1": "MATMUT & CO", "libelle2": "" },
+  {
+    "code": "895",
+    "typorg": "10",
+    "libelle1": "MATMUT PROTECTION JURIDIQUE",
+    "libelle2": ""
+  },
+  { "code": "896", "typorg": "10", "libelle1": "MATMUT VIE", "libelle2": "" },
+  { "code": "897", "typorg": "10", "libelle1": "METLIFE", "libelle2": "" },
+  { "code": "898", "typorg": "10", "libelle1": "MFPREVOYANCE", "libelle2": "" },
+  { "code": "899", "typorg": "10", "libelle1": "MILLEIS VIE", "libelle2": "" },
+  {
+    "code": "900",
+    "typorg": "10",
+    "libelle1": "MMA IARD (SA)",
+    "libelle2": ""
+  },
+  {
+    "code": "901",
+    "typorg": "10",
+    "libelle1": "MMA IARD ASSURANCES MUTUELLES",
+    "libelle2": ""
+  },
+  { "code": "902", "typorg": "10", "libelle1": "MMA VIE (SA)", "libelle2": "" },
+  {
+    "code": "903",
+    "typorg": "10",
+    "libelle1": "MMA VIE ASSURANCES MUTUELLES",
+    "libelle2": ""
+  },
+  {
+    "code": "904",
+    "typorg": "10",
+    "libelle1": "MONCEAU GENERALE ASSURANCES S.A.",
+    "libelle2": ""
+  },
+  {
+    "code": "905",
+    "typorg": "10",
+    "libelle1": "MONCEAU RETRAITE & EPARGNE",
+    "libelle2": ""
+  },
+  {
+    "code": "906",
+    "typorg": "10",
+    "libelle1": "MSIG INSURANCE EUROPE AG",
+    "libelle2": ""
+  },
+  { "code": "907", "typorg": "10", "libelle1": "MUTAVIE", "libelle2": "" },
+  { "code": "908", "typorg": "10", "libelle1": "MUTEX", "libelle2": "" },
+  {
+    "code": "909",
+    "typorg": "10",
+    "libelle1": "MUTUELLE ASSURANCE ARTISANALE DE FRANCE S.A.",
+    "libelle2": ""
+  },
+  {
+    "code": "910",
+    "typorg": "10",
+    "libelle1": "MUTUELLE ASSURANCE ARTISANALE DE FRANCE VIE",
+    "libelle2": ""
+  },
+  {
+    "code": "911",
+    "typorg": "10",
+    "libelle1": "MUTUELLE ASSURANCE DE L'EDUCATION",
+    "libelle2": ""
+  },
+  {
+    "code": "912",
+    "typorg": "10",
+    "libelle1": "MUTUELLE ASSURANCE DE L'EDUCATION VIE",
+    "libelle2": ""
+  },
+  {
+    "code": "913",
+    "typorg": "10",
+    "libelle1": "MUTUELLE ASSURANCE DES COMMERCANTS ET INDUSTRIELS DE FRANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "914",
+    "typorg": "10",
+    "libelle1": "MUTUELLE ASSURANCE DES INSTITUTEURS DE FRANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "915",
+    "typorg": "10",
+    "libelle1": "MUTUELLE ASSURANCE DES TRAVAILLEURS MUTUALISTES",
+    "libelle2": ""
+  },
+  {
+    "code": "916",
+    "typorg": "10",
+    "libelle1": "MUTUELLE CENTRALE DE REASSURANCE - M.C.R.",
+    "libelle2": ""
+  },
+  {
+    "code": "917",
+    "typorg": "10",
+    "libelle1": "MUTUELLE D'ASSURANCES DU CORPS DE SANTE FRAN�AIS - ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "918",
+    "typorg": "10",
+    "libelle1": "MUTUELLE DE POITIERS ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "919",
+    "typorg": "10",
+    "libelle1": "MUTUELLE DES ARCHITECTES FRANCAIS ASSURANCES - M.A.F.",
+    "libelle2": ""
+  },
+  {
+    "code": "920",
+    "typorg": "10",
+    "libelle1": "MUTUELLE DES RISQUES D'ASSURANCES DES CAISSES D'EPARGNE DE FRANCE - MURACEF",
+    "libelle2": ""
+  },
+  {
+    "code": "921",
+    "typorg": "10",
+    "libelle1": "MUTUELLE FRATERNELLE D'ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "922",
+    "typorg": "10",
+    "libelle1": "MUTUELLE GENERALE DE LA DISTRIBUTION",
+    "libelle2": ""
+  },
+  {
+    "code": "923",
+    "typorg": "10",
+    "libelle1": "MUTUELLE SAINT MARTIN",
+    "libelle2": ""
+  },
+  {
+    "code": "924",
+    "typorg": "10",
+    "libelle1": "MUTUELLE SAINT-CHRISTOPHE ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "925",
+    "typorg": "10",
+    "libelle1": "NAGICO INSURANCE COMPANY LIMITED",
+    "libelle2": ""
+  },
+  { "code": "926", "typorg": "10", "libelle1": "NEUFLIZE VIE", "libelle2": "" },
+  { "code": "927", "typorg": "10", "libelle1": "OCIRP VIE", "libelle2": "" },
+  {
+    "code": "928",
+    "typorg": "10",
+    "libelle1": "OPTEVEN ASSURANCES",
+    "libelle2": ""
+  },
+  { "code": "929", "typorg": "10", "libelle1": "OPTIMUM VIE", "libelle2": "" },
+  { "code": "930", "typorg": "10", "libelle1": "ORADEA VIE", "libelle2": "" },
+  { "code": "931", "typorg": "10", "libelle1": "PACIFICA", "libelle2": "" },
+  {
+    "code": "932",
+    "typorg": "10",
+    "libelle1": "PANACEA ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "933",
+    "typorg": "10",
+    "libelle1": "PARTNER REINSURANCE EUROPE SE",
+    "libelle2": ""
+  },
+  { "code": "934", "typorg": "10", "libelle1": "PREDICA", "libelle2": "" },
+  { "code": "935", "typorg": "10", "libelle1": "PREPAR IARD", "libelle2": "" },
+  { "code": "936", "typorg": "10", "libelle1": "PREPAR VIE", "libelle2": "" },
+  { "code": "937", "typorg": "10", "libelle1": "PREVOIR-VIE", "libelle2": "" },
+  {
+    "code": "938",
+    "typorg": "10",
+    "libelle1": "PREVOYANCE AESIO MACIF",
+    "libelle2": ""
+  },
+  {
+    "code": "939",
+    "typorg": "10",
+    "libelle1": "PREVOYANCE REASSURANCE INCENDIE MULTIRISQUES AUTO - PRIMA",
+    "libelle2": ""
+  },
+  {
+    "code": "940",
+    "typorg": "10",
+    "libelle1": "PRO BTP EPARGNE-RETRAITE-PREVOYANCE",
+    "libelle2": ""
+  },
+  { "code": "941", "typorg": "10", "libelle1": "PROTEC BTP", "libelle2": "" },
+  {
+    "code": "942",
+    "typorg": "10",
+    "libelle1": "PROTEXIA FRANCE",
+    "libelle2": ""
+  },
+  {
+    "code": "943",
+    "typorg": "10",
+    "libelle1": "PRUDENCE CREOLE",
+    "libelle2": ""
+  },
+  {
+    "code": "944",
+    "typorg": "10",
+    "libelle1": "QBE EUROPE SA/NV",
+    "libelle2": ""
+  },
+  {
+    "code": "945",
+    "typorg": "10",
+    "libelle1": "QBE INSURANCE (INTERNATIONAL) LIMITED - (GESTION DES TOM)",
+    "libelle2": ""
+  },
+  {
+    "code": "946",
+    "typorg": "10",
+    "libelle1": "QUATREM ASSURANCES COLLECTIVES",
+    "libelle2": ""
+  },
+  {
+    "code": "947",
+    "typorg": "10",
+    "libelle1": "REUNION DES MUTUELLES D'ASSURANCES REGIONALES - REMA",
+    "libelle2": ""
+  },
+  {
+    "code": "948",
+    "typorg": "10",
+    "libelle1": "RGA INTERNATIONAL REINSUR. COMP. DAC",
+    "libelle2": ""
+  },
+  {
+    "code": "949",
+    "typorg": "10",
+    "libelle1": "RISQUES CIVILS DE LA BOULANGERIE ET DE LA BOULANGERIE-PATISSERIE FRANCAISE",
+    "libelle2": ""
+  },
+  {
+    "code": "950",
+    "typorg": "10",
+    "libelle1": "RSA LUXEMBOURG S.A.",
+    "libelle2": ""
+  },
+  { "code": "951", "typorg": "10", "libelle1": "SAGEVIE", "libelle2": "" },
+  { "code": "952", "typorg": "10", "libelle1": "SCOR SE", "libelle2": "" },
+  {
+    "code": "953",
+    "typorg": "10",
+    "libelle1": "SERENIS ASSURANCES",
+    "libelle2": ""
+  },
+  { "code": "954", "typorg": "10", "libelle1": "SMA SA", "libelle2": "" },
+  {
+    "code": "955",
+    "typorg": "10",
+    "libelle1": "SMABTP (SOCIETE MUTUELLE D'ASSURANCE DU BATIMENT ET DES TRAVAUX PUBLICS)",
+    "libelle2": ""
+  },
+  {
+    "code": "956",
+    "typorg": "10",
+    "libelle1": "SMAVIE BTP (SOCIETE MUTUELLE D'ASSURANCE SUR LA VIE DU BATIMENT ET DES TRAVAUX PUBLICS)",
+    "libelle2": ""
+  },
+  {
+    "code": "957",
+    "typorg": "10",
+    "libelle1": "SOCIETE ANONYME DE DEFENSE ET D'ASSURANCES - S.A.D.A.",
+    "libelle2": ""
+  },
+  {
+    "code": "958",
+    "typorg": "10",
+    "libelle1": "SOCIETE D'ASSURANCE MUTUELLE DE L'ARMEMENT A LA PECHE - S.A.M.A.P.",
+    "libelle2": ""
+  },
+  {
+    "code": "959",
+    "typorg": "10",
+    "libelle1": "SOCIETE D'ASSURANCES FAMILIALES DES SALARIES ET ARTISANS DU BAT. ET DES T.P. IARD - SAF-BTP-IARD",
+    "libelle2": ""
+  },
+  {
+    "code": "960",
+    "typorg": "10",
+    "libelle1": "SOCIETE D'ASSURANCES FAMILIALES DES SALARIES ET ARTISANS DU BAT. ET DES T.P. VIE - SAF-BTP-VIE",
+    "libelle2": ""
+  },
+  {
+    "code": "961",
+    "typorg": "10",
+    "libelle1": "SOCIETE D'ASSURANCES MUTUELLES BRETAGNE OCEAN",
+    "libelle2": ""
+  },
+  {
+    "code": "962",
+    "typorg": "10",
+    "libelle1": "SOCIETE FRANCAISE DE PROTECTION JURIDIQUE",
+    "libelle2": ""
+  },
+  {
+    "code": "963",
+    "typorg": "10",
+    "libelle1": "SOCIETE HOSPITALIERE D'ASSURANCES MUTUELLES - S.H.A.M.",
+    "libelle2": ""
+  },
+  {
+    "code": "964",
+    "typorg": "10",
+    "libelle1": "SOCIETE MUTUELLE D'ASSURANCE DES COLLECTIVITES LOCALES",
+    "libelle2": ""
+  },
+  {
+    "code": "965",
+    "typorg": "10",
+    "libelle1": "SOCIETE SUISSE D'ASSURANCE CONTRE LA GRELE",
+    "libelle2": ""
+  },
+  {
+    "code": "966",
+    "typorg": "10",
+    "libelle1": "SOGECAP - SOCIETE ANONYME D'ASSURANCE SUR LA VIE ET DE CAPITALISATION",
+    "libelle2": ""
+  },
+  { "code": "967", "typorg": "10", "libelle1": "SOGESSUR", "libelle2": "" },
+  {
+    "code": "968",
+    "typorg": "10",
+    "libelle1": "SOLUCIA PROTECTION JURIDIQUE",
+    "libelle2": ""
+  },
+  { "code": "969", "typorg": "10", "libelle1": "SPIRICA", "libelle2": "" },
+  { "code": "970", "typorg": "10", "libelle1": "SURAVENIR", "libelle2": "" },
+  {
+    "code": "971",
+    "typorg": "10",
+    "libelle1": "SURAVENIR ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "972",
+    "typorg": "10",
+    "libelle1": "SWISS LIFE ASSURANCE ET PATRIMOINE",
+    "libelle2": ""
+  },
+  {
+    "code": "973",
+    "typorg": "10",
+    "libelle1": "SWISS LIFE ASSURANCES DE BIENS",
+    "libelle2": ""
+  },
+  {
+    "code": "974",
+    "typorg": "10",
+    "libelle1": "SWISS LIFE PREVOYANCE ET SANTE",
+    "libelle2": ""
+  },
+  {
+    "code": "975",
+    "typorg": "10",
+    "libelle1": "SWISS RE EUROPE S.A.",
+    "libelle2": ""
+  },
+  {
+    "code": "976",
+    "typorg": "10",
+    "libelle1": "SWISS RE INTERNATIONAL SE",
+    "libelle2": ""
+  },
+  {
+    "code": "977",
+    "typorg": "10",
+    "libelle1": "THE ONELIFE COMPANY SA",
+    "libelle2": ""
+  },
+  {
+    "code": "978",
+    "typorg": "10",
+    "libelle1": "THELEM ASSURANCES",
+    "libelle2": ""
+  },
+  {
+    "code": "979",
+    "typorg": "10",
+    "libelle1": "THELEM PREVOYANCE",
+    "libelle2": ""
+  },
+  { "code": "980", "typorg": "10", "libelle1": "THEMIS", "libelle2": "" },
+  {
+    "code": "981",
+    "typorg": "10",
+    "libelle1": "TOKIO MARINE EUROPE SA",
+    "libelle2": ""
+  },
+  {
+    "code": "982",
+    "typorg": "10",
+    "libelle1": "UNION DES MUTUELLES D'ASSURANCES MONCEAU - U.M.A.M.",
+    "libelle2": ""
+  },
+  {
+    "code": "983",
+    "typorg": "10",
+    "libelle1": "UNOFI - ASSURANCES",
+    "libelle2": ""
+  },
+  { "code": "984", "typorg": "10", "libelle1": "WAKAM", "libelle2": "" },
+  {
+    "code": "985",
+    "typorg": "10",
+    "libelle1": "XL INSURANCE COMPANY SE",
+    "libelle2": ""
+  },
+  {
+    "code": "986",
+    "typorg": "10",
+    "libelle1": "XL RE EUROPE SE",
+    "libelle2": ""
+  },
+  {
+    "code": "987",
+    "typorg": "10",
+    "libelle1": "ZURICH INSURANCE PLC",
+    "libelle2": ""
+  },
+  {
+    "code": "988",
+    "typorg": "8",
+    "libelle1": "ASSEMBLEE NATIONALE",
+    "libelle2": ""
+  },
+  {
+    "code": "989",
+    "typorg": "8",
+    "libelle1": "ASSISTANCE PUBLIQUE DE PARIS",
+    "libelle2": ""
+  },
+  {
+    "code": "990",
+    "typorg": "8",
+    "libelle1": "CAISSE D'ALLOCATION FAMILIALE (CAF)",
+    "libelle2": ""
+  },
+  {
+    "code": "991",
+    "typorg": "8",
+    "libelle1": "CCAS CENTRE COMMUNAL OU INTERCOMMUNAL DE �",
+    "libelle2": ""
+  },
+  {
+    "code": "992",
+    "typorg": "8",
+    "libelle1": "CENTRE INTERCOMMUNAL D'ACTION SOCIALE (CIAS) DE �",
+    "libelle2": ""
+  },
+  {
+    "code": "993",
+    "typorg": "8",
+    "libelle1": "CHR CENTRE HOSPITALIER REGIONAL DE ...",
+    "libelle2": ""
+  },
+  {
+    "code": "994",
+    "typorg": "8",
+    "libelle1": "CHU CENTRE HOSPITALIER UNIVERSITAIRE DE ..",
+    "libelle2": ""
+  },
+  { "code": "995", "typorg": "8", "libelle1": "CNRS", "libelle2": "" },
+  {
+    "code": "996",
+    "typorg": "8",
+    "libelle1": "COMMUNE DE ...",
+    "libelle2": ""
+  },
+  {
+    "code": "997",
+    "typorg": "8",
+    "libelle1": "CONSEIL GENERAL DE ...",
+    "libelle2": ""
+  },
+  {
+    "code": "998",
+    "typorg": "8",
+    "libelle1": "CONSEIL MUNICIPAL DE ...",
+    "libelle2": ""
+  },
+  {
+    "code": "999",
+    "typorg": "8",
+    "libelle1": "CONSEIL REGIONAL DE ...",
+    "libelle2": ""
+  },
+  { "code": "1000", "typorg": "8", "libelle1": "CROUS", "libelle2": "" },
+  {
+    "code": "1001",
+    "typorg": "8",
+    "libelle1": "DEPARTEMENT DE ...",
+    "libelle2": ""
+  },
+  {
+    "code": "1002",
+    "typorg": "8",
+    "libelle1": "GARDE REPUBLICAINE",
+    "libelle2": ""
+  },
+  {
+    "code": "1003",
+    "typorg": "8",
+    "libelle1": "GROUPEMENT DE COMMUNE DE �",
+    "libelle2": ""
+  },
+  {
+    "code": "1004",
+    "typorg": "8",
+    "libelle1": "HOPITAL (PUBLIC) DE ...",
+    "libelle2": ""
+  },
+  { "code": "1005", "typorg": "8", "libelle1": "MAIRIE DE ..", "libelle2": "" },
+  {
+    "code": "1006",
+    "typorg": "8",
+    "libelle1": "MINISTERE DE ...",
+    "libelle2": ""
+  },
+  {
+    "code": "1007",
+    "typorg": "8",
+    "libelle1": "MUNICIPALITE DE ...",
+    "libelle2": ""
+  },
+  {
+    "code": "1008",
+    "typorg": "8",
+    "libelle1": "PREFECTURE DE ..",
+    "libelle2": ""
+  },
+  {
+    "code": "1009",
+    "typorg": "8",
+    "libelle1": "PRESIDENCE DE LA REPUBLIQUE",
+    "libelle2": ""
+  },
+  {
+    "code": "1010",
+    "typorg": "8",
+    "libelle1": "RECTORAT DE ...",
+    "libelle2": ""
+  },
+  {
+    "code": "1011",
+    "typorg": "8",
+    "libelle1": "REGION DE ...",
+    "libelle2": ""
+  },
+  { "code": "1012", "typorg": "8", "libelle1": "SENAT", "libelle2": "" },
+  { "code": "1013", "typorg": "8", "libelle1": "VILLE DE ...", "libelle2": "" }
+]
