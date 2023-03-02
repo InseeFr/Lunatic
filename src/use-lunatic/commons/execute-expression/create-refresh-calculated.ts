@@ -15,7 +15,8 @@ type Args = {
 		expObject: unknown,
 		args: {
 			iteration?: number[];
-			linksIterations?: number[];
+			// Iteration numbers for pairwise values
+			linksIterations?: [number, number];
 			logging?: ExpressionLogger;
 		}
 	) => unknown;
@@ -46,6 +47,14 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 		const { expression, logging, shapeFrom, name, iteration, linksIterations } =
 			args;
 
+		// For pairwise expression, we need to emulate an iteration
+		if (linksIterations) {
+			return execute(expression, {
+				logging,
+				iteration: [name === X_AXIS ? linksIterations[0] : linksIterations[1]],
+			});
+		}
+
 		// We need to mimic the shape of another variable (we are in a loop)
 		if (shapeFrom) {
 			const fromShapeValue = bindings[shapeFrom];
@@ -57,8 +66,6 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 				((iteration?.length ?? 0) === 0 || calculatedValue === undefined)
 			) {
 				deepForEach(fromShapeValue, (_, index) => {
-					const hello = { fromShapeValue, shapeFrom };
-					const lol = deepLengths(fromShapeValue, index.slice(0, -1));
 					const value = execute(expression, { logging, iteration: index });
 					calculatedValue = deepSet(
 						calculatedValue,
@@ -71,7 +78,6 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 				return extractValue(calculatedValue, iteration ?? []);
 			}
 			// Value is already calculated, update the value for the requested iteration
-			const demo = execute(expression, { logging, iteration });
 			calculatedValue = deepSet(
 				calculatedValue,
 				execute(expression, { logging, iteration }),

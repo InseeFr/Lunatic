@@ -163,8 +163,6 @@ function OrchestratorForStories({
 
 						const storeInfo = storeName ? getStoreInfo(storeName) : {};
 
-						console.log('props', { other, rest, component, storeInfo });
-
 						return (
 							<div
 								className="lunatic lunatic-component"
