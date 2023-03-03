@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IDBSuggester from './idb-suggester';
+import { IDBSuggester } from './idb-suggester';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import * as commonPropTypes from '../commons/prop-types';

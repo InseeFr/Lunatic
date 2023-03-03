@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { openDb, getEntity } from '../../utils/idb-tools';
-import { CONSTANTES } from '../../utils/store-tools';
+import { openDb, getEntity } from '../../../utils/idb-tools';
+import { CONSTANTES } from '../../../utils/store-tools';
 
 function CheckStore({ storeName, version, setStore, children }) {
 	const [ready, setReady] = useState(0);

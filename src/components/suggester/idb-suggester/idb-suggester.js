@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import Suggester from './html/suggester';
-import createSearching from './searching';
-import SuggesterStatus from './suggester-status';
+import Suggester from '../html/suggester';
+import createSearching from '../searching';
+import CheckStore from './check-store';
+import { SuggesterStatus } from './suggester-status';
 
-function IDBSuggester({
+export function IDBSuggester({
 	storeName,
 	idbVersion,
 	id,
@@ -39,19 +40,25 @@ function IDBSuggester({
 			label={label}
 			description={description}
 		>
-			<Suggester
-				id={id}
-				className={className}
-				optionRenderer={optionRenderer}
-				labelRenderer={labelRenderer}
-				onSelect={onSelect}
-				searching={searching}
-				disabled={disabled}
-				value={value}
-				label={label}
-				description={description}
-				errors={errors}
-			/>
+			<CheckStore
+				storeName={storeName}
+				idbVersion={idbVersion}
+				setStore={setStore}
+			>
+				<Suggester
+					id={id}
+					className={className}
+					optionRenderer={optionRenderer}
+					labelRenderer={labelRenderer}
+					onSelect={onSelect}
+					searching={searching}
+					disabled={disabled}
+					value={value}
+					label={label}
+					description={description}
+					errors={errors}
+				/>
+			</CheckStore>
 		</SuggesterStatus>
 	);
 }
@@ -79,5 +86,3 @@ IDBSuggester.propTypes = {
 	]),
 	errors: PropTypes.object,
 };
-
-export default IDBSuggester;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { createCustomizableLunaticField } from '../commons';
+import { createCustomizableLunaticField } from '../../commons';
 import { STATUS } from './suggester-status';
-import Label from '../commons/components/label';
-import Notification from './html/notification';
+import Label from '../../commons/components/label';
+import Notification from '../html/notification';
 
 function SuggesterNotification({
 	children,

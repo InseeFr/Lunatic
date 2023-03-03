@@ -1,5 +1,4 @@
 import React from 'react';
-import CheckStore from './check-store';
 import SuggesterNotification from './suggester-notification';
 
 export const STATUS = {
@@ -11,11 +10,15 @@ export const STATUS = {
 	error: 5,
 };
 
-function SuggesterStatus({
+/**
+ * Component witch check status of loading process.
+ * it notifies users through SuggesterNotification, a customizable component.
+ * @param {} param0
+ * @returns
+ */
+export function SuggesterStatus({
 	children,
 	storeName,
-	idbVersion,
-	setStore,
 	getSuggesterStatus,
 	label,
 	description,
@@ -29,15 +32,7 @@ function SuggesterStatus({
 			label={label}
 			description={description}
 		>
-			<CheckStore
-				storeName={storeName}
-				idbVersion={idbVersion}
-				setStore={setStore}
-			>
-				{children}
-			</CheckStore>
+			{children}
 		</SuggesterNotification>
 	);
 }
-
-export default SuggesterStatus;
