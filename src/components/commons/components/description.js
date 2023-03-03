@@ -1,6 +1,6 @@
-import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 function OneDescription({ value, className }) {
 	if (
@@ -21,7 +21,7 @@ function Description({ value, className }) {
 	if (Array.isArray(value)) {
 		return value.map(({ label, declarationType }, index) => (
 			<OneDescription
-				key={index}
+				key={`description-${index}`}
 				value={label}
 				className={classnames(className, declarationType)}
 			/>
