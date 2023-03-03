@@ -139,7 +139,27 @@
 					"response": {
 						"name": "NAF_STOP"
 					},
-					"page": "3.2"
+					"page": "3.2",
+					"declarations": [
+						{
+							"id": "kb9hi4j0-krnoclfe",
+							"declarationType": "INSTRUCTION",
+							"position": "BEFORE_QUESTION_TEXT",
+							"label": {
+								"value": "\"Test declaration before\"",
+								"type": "VTL|MD"
+							}
+						},
+						{
+							"id": "kb9hi4j0-krnoclfe",
+							"declarationType": "HELP",
+							"position": "AFTER_QUESTION_TEXT",
+							"label": {
+								"value": "\"Test description from declaration\"",
+								"type": "VTL|MD"
+							}
+						}
+					]
 				},
 				{
 					"id": "sugg-communes",

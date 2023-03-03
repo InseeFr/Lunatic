@@ -15,7 +15,6 @@ function Row({
 	management,
 	preferences,
 	executeExpression,
-	custom,
 	errors,
 }) {
 	const handleChangeRow = useCallback(
@@ -27,7 +26,7 @@ function Row({
 
 	if (Array.isArray(components)) {
 		return (
-			<Tr id={id} custom={custom} row={rowIndex}>
+			<Tr id={id} row={rowIndex}>
 				{components.map(function (component) {
 					const { response, id } = component;
 					const idComponent = `${id}-${rowIndex} `;
@@ -41,7 +40,7 @@ function Row({
 					}
 
 					return (
-						<Td id={idComponent} key={key} custom={custom}>
+						<Td id={idComponent} key={key}>
 							<OrchestratedComponent
 								component={component}
 								handleChange={handleChangeRow}
@@ -54,7 +53,6 @@ function Row({
 								preferences={preferences}
 								iteration={rowIndex}
 								executeExpression={executeExpression}
-								custom={custom}
 								errors={errors}
 							/>
 						</Td>

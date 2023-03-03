@@ -8,6 +8,8 @@ import Delete from './selection/delete';
 import ComboBoxContainer from './combo-box-container';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import { INITIAL_STATE, reducer, actions } from './state-management';
+import Errors from '../errors';
+import Label from '../label';
 import './combo-box.scss';
 
 const EMPTY_SEARCH = '';
@@ -21,8 +23,6 @@ function ComboBox({
 	className,
 	classStyle,
 	placeholder,
-	labelledBy,
-	htmlFor,
 	editable,
 	disabled,
 	id,
@@ -35,7 +35,11 @@ function ComboBox({
 	messageError,
 	search: searchProps,
 	getOptionValue,
+	label,
+	description,
+	errors,
 }) {
+	const labelId = `label-${id}`;
 	const [state, dispatch] = useReducer(reducer, {
 		...INITIAL_STATE,
 		search: searchProps,
@@ -98,6 +102,9 @@ function ComboBox({
 
 	return (
 		<ComboBoxContainer id={id} classStyle={classStyle} className={className}>
+			<Label htmlFor={id} id={labelId} description={description}>
+				{label}
+			</Label>
 			<ComboBoxContent
 				id={id}
 				focused={focused}
@@ -108,11 +115,10 @@ function ComboBox({
 				<Selection
 					labelRenderer={labelRenderer}
 					placeholder={placeholder}
-					labelledBy={labelledBy}
-					htmlFor={htmlFor}
 					search={search}
 					expended={expended}
 					id={id}
+					labelId={labelId}
 					disabled={disabled}
 					focused={focused}
 					editable={editable}
@@ -139,6 +145,7 @@ function ComboBox({
 				onClick={onDelete}
 				editable={editable}
 			/>
+			<Errors errors={errors} activeId={id} />
 		</ComboBoxContainer>
 	);
 }
@@ -146,29 +153,24 @@ function ComboBox({
 ComboBox.propTypes = {
 	classStyle: PropTypes.string,
 	placeholder: PropTypes.string,
-	htmlFor: PropTypes.string.isRequired,
-	labelledBy: PropTypes.string.isRequired,
+	description: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element,
+		PropTypes.array,
+	]),
 	search: PropTypes.string,
 	editable: PropTypes.bool,
 	onSelect: PropTypes.func,
 	onChange: PropTypes.func,
 	options: PropTypes.array,
-
 	className: PropTypes.string,
 	disabled: PropTypes.bool,
 	id: PropTypes.string.isRequired,
 	optionRenderer: PropTypes.elementType.isRequired,
 	labelRenderer: PropTypes.elementType.isRequired,
 	getOptionValue: PropTypes.func,
-	// value: PropTypes.oneOf([
-	// 	null,
-	// 	PropTypes.oneOfType([
-	// 		PropTypes.string,
-	// 		PropTypes.number,
-	// 		PropTypes.array,
-	// 		PropTypes.bool,
-	// 	]),
-	// ]).isRequired,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	errors: PropTypes.object,
 };
 
 ComboBox.defaultProps = {
@@ -180,6 +182,9 @@ ComboBox.defaultProps = {
 	onChange: () => null,
 	options: [],
 	getOptionValue: getDefaultOptionValue,
+	errors: undefined,
+	label: undefined,
+	description: undefined,
 };
 
 export default createCustomizableLunaticField(ComboBox, 'ComboBox');

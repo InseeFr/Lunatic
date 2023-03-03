@@ -20,7 +20,6 @@ const Missing = (props) => {
 		componentType,
 		paginatedLoop,
 	} = props;
-
 	const { value } = missingResponse;
 	const onClick = useOnHandleChange({
 		handleChange,
@@ -36,6 +35,7 @@ const Missing = (props) => {
 		onClick(DK);
 		handleMissingStrategy();
 	}, [onClick, handleMissingStrategy]);
+
 	const onClickRF = useCallback(() => {
 		onClick(RF);
 		handleMissingStrategy();

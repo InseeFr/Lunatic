@@ -2,6 +2,7 @@ import source from '../stories/questionnaires/logement/source.json';
 import useLunatic from './use-lunatic';
 import { renderHook, act } from '@testing-library/react-hooks';
 import sourceWithoutHierarchy from '../stories/overview/source.json';
+import { describe, it, expect } from 'vitest';
 
 const lunaticConfigurationWithoutOverview = {
 	management: false,

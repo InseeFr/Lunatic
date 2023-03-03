@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import filterToLower from './filter-to-lower';
 
 describe('filter-to-lower', function () {

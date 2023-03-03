@@ -1,39 +1,60 @@
 import React from 'react';
-import CheckboxGroup from './checkbox-group';
-import {
-	createCustomizableLunaticField,
-	createLunaticComponent,
-	Errors,
-} from '../../commons';
+import CheckboxGroup from './html/checkbox-group';
+import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 
 function LunaticCheckboxGroup({
 	id,
 	value,
 	responses,
-	custom,
+	shortcut,
 	handleChange,
 	errors,
 	label,
+	description,
+	preferences,
+	declarations,
+	missingResponse,
+	missing,
+	management,
 }) {
+	const options = responses.map(function ({ label, response, description }) {
+		const { name } = response;
+		const checked = name in value ? value[name] : false;
+
+		return {
+			label,
+			name,
+			checked,
+			description,
+			onClick: function (checked) {
+				handleChange(response, checked);
+			},
+		};
+	});
+
 	return (
-		<>
+		<LunaticComponent
+			id={id}
+			label={label}
+			preferences={preferences}
+			declarations={declarations}
+			value={value}
+			missingResponse={missingResponse}
+			missing={missing}
+			management={management}
+			description={description}
+			handleChange={handleChange}
+		>
 			<CheckboxGroup
 				id={id}
-				options={responses}
+				options={options}
 				value={value}
-				handleChange={handleChange}
-				custom={custom}
 				label={label}
+				errors={errors}
+				shortcut={shortcut}
 			/>
-			<Errors errors={errors} activeId={id} />
-		</>
+		</LunaticComponent>
 	);
 }
 
-export default createLunaticComponent(
-	createCustomizableLunaticField(LunaticCheckboxGroup, 'LunaticCheckboxGroup'),
-	{
-		fieldset: true,
-		inputId: 'lunatic-checkbox-group',
-	}
-);
+export default LunaticCheckboxGroup;
