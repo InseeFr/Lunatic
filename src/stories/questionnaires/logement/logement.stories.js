@@ -16,11 +16,6 @@ const stories = {
 			control: 'boolean',
 			defaultValue: true,
 		},
-		activeGoNextForMissing: {
-			table: { disable: false },
-			control: 'boolean',
-			defaultValue: true,
-		},
 		management: {
 			table: { disable: false },
 			control: 'boolean',
