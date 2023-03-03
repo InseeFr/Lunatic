@@ -205,7 +205,6 @@ test('can complete simpson form', async ({ page }) => {
 
 	// Assertion
 	await expect(page.getByText('PAGE: 39')).toBeVisible();
-	await page.pause();
 	const consoleOut = page.waitForEvent('console');
 	await page.getByRole('button', { name: 'Get State' }).click();
 	const output = await consoleOut;
