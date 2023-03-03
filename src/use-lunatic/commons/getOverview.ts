@@ -1,6 +1,6 @@
 import { LunaticState } from '../type';
 
-type OverviewItem = {
+export type OverviewItem = {
 	lunaticId: string;
 	page: string;
 	type: string;
