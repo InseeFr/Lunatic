@@ -23,7 +23,7 @@ const stories = {
 		shortcut: {
 			table: { disable: false },
 			control: 'boolean',
-			defaultValue: false,
+			defaultValue: true,
 		},
 	},
 };
@@ -237,6 +237,7 @@ With_Missing.args = {
 	id: 'With-missing',
 	source: simpsons,
 	pagination: true,
+	missing: true,
 	missingStrategy: () => {
 		console.log('your strategy has been applied');
 	},
