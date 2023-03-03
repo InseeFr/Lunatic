@@ -236,6 +236,6 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 	return state;
 }
 
-const reducers = compose(reduceOnInit, reduceOverviewOnInit);
+const reducers = compose<ActionInit>(reduceOnInit, reduceOverviewOnInit);
 
-export default reduceOnInit;
+export default reducers;

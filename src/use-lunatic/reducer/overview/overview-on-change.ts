@@ -3,7 +3,7 @@ import { LunaticState } from '../../type';
 const isPageReached = (page: string, lastReachedPage: string) =>
 	parseInt(page, 10) <= parseInt(lastReachedPage, 10);
 
-export const overviewOnChange = (state: LunaticState) => {
+export const overviewOnChange = (state: LunaticState): LunaticState => {
 	// The breadcrumb was not initialized, do nothing
 	if (state.overview.length === 0) {
 		return state;
@@ -36,6 +36,6 @@ export const overviewOnChange = (state: LunaticState) => {
 				}) ?? false,
 			evaluatedLabel: executeExpression(overviewEntry.label),
 		};
-	});
+	}) satisfies LunaticState['overview'];
 	return { ...state, overview: updatedOverview };
 };

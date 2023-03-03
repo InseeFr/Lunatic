@@ -58,15 +58,19 @@ export type ActionOnSetWaiting = {
 	};
 };
 
+export type ActionGoNextPage = {
+	type: ActionKind.GO_NEXT_PAGE;
+	payload: { block?: unknown };
+};
+
+export type ActionGoPreviousPage = {
+	type: ActionKind.GO_PREVIOUS_PAGE;
+	payload: {};
+};
+
 export type Action =
-	| {
-			type: ActionKind.GO_NEXT_PAGE;
-			payload: { block?: unknown };
-	  }
-	| {
-			type: ActionKind.GO_PREVIOUS_PAGE;
-			payload: {};
-	  }
+	| ActionGoNextPage
+	| ActionGoPreviousPage
 	| ActionGoToPage
 	| ActionInit
 	| ActionHandleChange
