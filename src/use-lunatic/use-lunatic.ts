@@ -50,7 +50,7 @@ function useLunatic(
 		// Calculate an overview of every sequence (will be exposed as "overview")
 		withOverview = false,
 		missing = false,
-		missingStrategy,
+		missingStrategy = () => {},
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
@@ -71,9 +71,9 @@ function useLunatic(
 		activeControls?: boolean;
 		custom?: Record<string, FunctionComponent<unknown>>;
 		withOverview?: boolean;
-		missing: boolean;
-		missingStrategy: () => void;
-		missingShortcut: { dontKnow: string; refused: string };
+		missing?: boolean;
+		missingStrategy?: () => void;
+		missingShortcut?: { dontKnow: string; refused: string };
 		dontKnowButton?: string;
 		refusedButton?: string;
 	}
