@@ -8,7 +8,6 @@
     "test/create-expression",
     "feat/autofocusable-components",
     "feat/loop-of-loop",
-    "feat/thousand-separator",
-    "feat/overview"
+    "feat/thousand-separator"
   ]
 }
