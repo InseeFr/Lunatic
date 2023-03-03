@@ -14,7 +14,7 @@ const isSubsequenceSamePage = (sourceComponent, page) =>
 function getOverview(state) {
 	const { pages, executeExpression, pager } = state;
 
-	//prevent misordered pages by extracting forbidden pages
+	// prevent misordered pages by extracting forbidden pages
 	const subPages = Object.values(pages).reduce((acc, curr) => {
 		if (curr.subPages !== undefined) return [...acc, ...curr.subPages];
 		return acc;
@@ -38,7 +38,7 @@ function getOverview(state) {
 				type: 'subSequence',
 				parent: hierarchy.sequence.page,
 				conditionFilter,
-				visible: executeExpression(conditionFilter),
+				visible: executeExpression(conditionFilter) ?? false,
 				reached: isPageReached(
 					hierarchy.subSequence.page,
 					pager.lastReachedPage
@@ -51,7 +51,7 @@ function getOverview(state) {
 				type: 'sequence',
 				conditionFilter,
 				reached: isPageReached(hierarchy.sequence.page, pager.lastReachedPage),
-				visible: executeExpression(conditionFilter),
+				visible: executeExpression(conditionFilter) ?? false,
 				evaluatedLabel: executeExpression(hierarchy.sequence.label),
 			});
 		}
@@ -61,7 +61,7 @@ function getOverview(state) {
 	return [...sequences, ...subSequences];
 }
 
-export function reduceOverviewOnInit(state) {
-	const overview = getOverview(state);
+export function reduceOverviewOnInit(state, action) {
+	const overview = action.payload.withOverview ? getOverview(state) : [];
 	return { ...state, overview };
 }

@@ -1,6 +1,11 @@
 import { isPageReached } from '../../commons/page-tag';
 
 export const overviewOnChange = (state) => {
+	// The breadcrumb was not initialized, do nothing
+	if (state.overview.length === 0) {
+		return state;
+	}
+
 	const {
 		overview,
 		pager: { page, lastReachedPage },
@@ -21,9 +26,11 @@ export const overviewOnChange = (state) => {
 		return {
 			...overviewEntry,
 			reached: isPageReached(overviewEntry.page, lastReachedPage),
-			visible: executeExpression(overviewEntry.conditionFilter, {
-				bindingDependencies: overviewEntry.conditionFilter.bindingDependencies,
-			}),
+			visible:
+				executeExpression(overviewEntry.conditionFilter, {
+					bindingDependencies:
+						overviewEntry.conditionFilter.bindingDependencies,
+				}) ?? false,
 			evaluatedLabel: executeExpression(overviewEntry.label),
 		};
 	});

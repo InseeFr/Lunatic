@@ -81,7 +81,6 @@ function OrchestratorForStories({
 		isLastPage,
 		waiting,
 		overview,
-		getErrors,
 		getModalErrors,
 		getCurrentErrors,
 		getData,
@@ -96,10 +95,10 @@ function OrchestratorForStories({
 		suggesterFetcher,
 		management,
 		activeControls,
+		withOverview: showOverview,
 	});
 
 	const components = getComponents();
-	const errors = getErrors();
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
 
