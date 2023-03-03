@@ -31,6 +31,7 @@ export function IDBSuggester({
 		},
 		[storeName, idbVersion, store]
 	);
+
 	return (
 		<SuggesterStatus
 			storeName={storeName}

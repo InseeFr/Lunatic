@@ -25,6 +25,9 @@ export function SuggesterStatus({
 }) {
 	const { status } = getSuggesterStatus(storeName);
 
+	if (status === SuggesterStatus.unused) {
+		return children;
+	}
 	return (
 		<SuggesterNotification
 			status={status}
