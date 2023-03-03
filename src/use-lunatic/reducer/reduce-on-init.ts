@@ -182,6 +182,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		shortcut,
 		activeControls,
 		goToPage,
+		withOverview,
 	} = payload;
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables

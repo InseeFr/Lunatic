@@ -105,6 +105,7 @@ export type LunaticState = {
 			linksVariables?: string[];
 		};
 	};
+	overview: [];
 	pager: {
 		lastReachedPage?: string;
 		maxPage: string;
