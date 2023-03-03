@@ -13,6 +13,7 @@ const INITIAL_STATE: LunaticState = {
 	cleaning: {},
 	missingBlock: {},
 	resizing: {},
+	overview: [],
 	pager: {
 		page: '1',
 		maxPage: '1',

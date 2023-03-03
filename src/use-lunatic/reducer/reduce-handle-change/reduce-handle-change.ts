@@ -101,7 +101,7 @@ function updateBindings(state: LunaticState, action: ActionHandleChange) {
 	return state;
 }
 
-const reducers = compose<LunaticState, [ActionHandleChange]>(
+const reducers = compose<ActionHandleChange>(
 	updateVariables,
 	updateBindings,
 	reduceResizing,

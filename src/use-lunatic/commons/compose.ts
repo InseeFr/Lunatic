@@ -1,11 +1,13 @@
-const compose = <V extends unknown, Rest extends unknown[]>(
-	...functions: Array<(acc: V, ...rest: Rest) => V>
+import { LunaticState } from '../type';
+
+const compose = <V>(
+	...functions: Array<(acc: LunaticState, action: V) => LunaticState>
 ) => {
 	return functions.reverse().reduce(
 		function (next, current) {
-			return (first, ...rest) => next(current(first, ...rest), ...rest);
+			return (state, action) => next(current(state, action), action);
 		},
-		(value: V, ...rest: Rest) => value
+		(value: LunaticState, action: V) => value
 	);
 };
 
