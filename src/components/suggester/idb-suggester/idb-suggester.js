@@ -34,8 +34,6 @@ export function IDBSuggester({
 	return (
 		<SuggesterStatus
 			storeName={storeName}
-			idbVersion={idbVersion}
-			setStore={setStore}
 			getSuggesterStatus={getSuggesterStatus}
 			label={label}
 			description={description}
