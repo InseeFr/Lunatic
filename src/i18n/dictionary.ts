@@ -7,6 +7,14 @@ const dictionary = {
 	RF: { fr: 'Refus', en: 'Refused' },
 } as const;
 
+export type Entries<T> = {
+	[K in keyof T]: [K, T[K]];
+}[keyof T][];
+
+export type AbstractDictionary<T> = {
+	[Key in keyof T]: { fr: string; en: string };
+};
+
 export default dictionary;
 export type Dictionary = typeof dictionary;
 export type DictionaryLang = 'fr' | 'en';

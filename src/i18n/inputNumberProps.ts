@@ -6,6 +6,5 @@ const inputNumberProps = {
 export const allDecimalSeparators = Object.values(
 	inputNumberProps.decimalSeparator
 );
-
-export default inputNumberProps;
 export type InputNumberPropsI18N = typeof inputNumberProps;
+export default inputNumberProps;
