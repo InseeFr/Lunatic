@@ -59,6 +59,7 @@ function useLunatic(
 		suggesterFetcher?: typeof fetch;
 		activeControls?: boolean;
 		custom?: Record<string, FunctionComponent<unknown>>;
+		withOverview?: boolean;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);

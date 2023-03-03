@@ -1,4 +1,18 @@
-export const overviewWithChildren = (stateOverview) => {
+import { LunaticState } from '../type';
+
+type OverviewItem = {
+	lunaticId: string;
+	page: string;
+	type: string;
+	label: string;
+	visible: boolean;
+	reached: boolean;
+	children: OverviewItem[];
+};
+
+export const overviewWithChildren = (
+	stateOverview: LunaticState['overview']
+) => {
 	const wipOverview = stateOverview
 		.filter((entry) => entry.type === 'sequence')
 		.map((entry) => ({
@@ -8,7 +22,7 @@ export const overviewWithChildren = (stateOverview) => {
 			label: entry.evaluatedLabel,
 			visible: entry.visible,
 			reached: entry.reached,
-			children: [],
+			children: [] as OverviewItem[],
 		}));
 
 	stateOverview
@@ -21,7 +35,7 @@ export const overviewWithChildren = (stateOverview) => {
 				label: subSeq.evaluatedLabel,
 				visible: subSeq.visible,
 				reached: subSeq.reached,
-				children: [],
+				children: [] as OverviewItem[],
 			};
 			wipOverview.map((seq) => {
 				if (seq.page === subSeq.parent) {
