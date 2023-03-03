@@ -1,6 +1,9 @@
-import { isPageReached } from '../../commons/page-tag';
+import { LunaticState } from '../../type';
 
-export const overviewOnChange = (state) => {
+const isPageReached = (page: string, lastReachedPage: string) =>
+	parseInt(page, 10) <= parseInt(lastReachedPage, 10);
+
+export const overviewOnChange = (state: LunaticState) => {
 	// The breadcrumb was not initialized, do nothing
 	if (state.overview.length === 0) {
 		return state;
@@ -15,21 +18,21 @@ export const overviewOnChange = (state) => {
 	const updatedOverview = overview.map((overviewEntry) => {
 		// page avant la page courante : pas de changement de state possible
 		if (parseInt(overviewEntry.page, 10) < parseInt(page, 10)) {
-			if (overviewEntry.reached === false) {
+			if (!overviewEntry.reached) {
 				return {
 					...overviewEntry,
-					reached: isPageReached(overviewEntry.page, lastReachedPage),
+					reached: isPageReached(overviewEntry.page, lastReachedPage ?? '1'),
 				};
 			}
 			return overviewEntry;
 		}
 		return {
 			...overviewEntry,
-			reached: isPageReached(overviewEntry.page, lastReachedPage),
+			reached: isPageReached(overviewEntry.page, lastReachedPage ?? '1'),
 			visible:
 				executeExpression(overviewEntry.conditionFilter, {
 					bindingDependencies:
-						overviewEntry.conditionFilter.bindingDependencies,
+						overviewEntry.conditionFilter?.bindingDependencies,
 				}) ?? false,
 			evaluatedLabel: executeExpression(overviewEntry.label),
 		};

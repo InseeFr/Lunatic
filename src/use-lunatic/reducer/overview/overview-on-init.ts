@@ -46,7 +46,7 @@ function getOverview(state: LunaticState) {
 	};
 	for (const component of filteredComponents) {
 		const { hierarchy, conditionFilter } = component;
-		if ('subSequence' in hierarchy) {
+		if (hierarchy.subSequence) {
 			overviewEntries.subSequences.push({
 				...hierarchy.subSequence,
 				type: 'subSequence',
@@ -58,6 +58,7 @@ function getOverview(state: LunaticState) {
 					pager.lastReachedPage ?? '1'
 				),
 				evaluatedLabel: executeExpression(hierarchy.subSequence.label),
+				children: [],
 			});
 		} else {
 			overviewEntries.sequences.push({
@@ -70,6 +71,7 @@ function getOverview(state: LunaticState) {
 				),
 				visible: executeExpression(conditionFilter) ?? false,
 				evaluatedLabel: executeExpression(hierarchy.sequence.label),
+				children: [],
 			});
 		}
 	}

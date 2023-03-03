@@ -57,7 +57,7 @@ export type DeclarationType = {
 	label: LabelType;
 };
 
-export type ConditionFilterType = LabelType;
+export type ConditionFilterType = LabelType & { bindingDependencies: string[] };
 
 export type ControlType = {
 	id: string;
@@ -78,7 +78,7 @@ export type SequenceDescription = {
 
 export type Hierarchy = {
 	sequence: SequenceDescription;
-	subSequence: SequenceDescription;
+	subSequence?: SequenceDescription;
 };
 
 export type ComponentTypeBase = {
