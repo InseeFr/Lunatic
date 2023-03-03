@@ -1,6 +1,7 @@
 import { userEvent, waitFor, within } from '@storybook/testing-library';
-import { sleep } from './timer';
+
 import { expect } from '@storybook/jest';
+import { sleep } from './timer';
 
 /**
  * Bridge between playwright tests and storybook tests
@@ -40,6 +41,10 @@ class Page {
 			);
 		}
 		return new Instruction(this.canvas.findByLabelText(...args));
+	}
+
+	async keyPress(char) {
+		return userEvent.keyboard(char);
 	}
 }
 

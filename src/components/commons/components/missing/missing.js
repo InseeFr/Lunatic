@@ -65,6 +65,7 @@ const Missing = (props) => {
 				missingShortcut.refused && (
 					<KeyboardEventHandler
 						handleKeys={Object.values(missingShortcut)}
+						handleEventType="keypress"
 						onKeyEvent={(key, e) => {
 							e.preventDefault();
 							if (key === missingShortcut.dontKnow) onClickDK();

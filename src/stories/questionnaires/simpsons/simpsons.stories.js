@@ -43,6 +43,8 @@ export const Filled = Template.bind({});
 Filled.args = {
 	source: simpsons,
 	pagination: true,
+	missing: true,
+	missingShortcut: { dontKnow: 'x', refused: 'f4' },
 };
 
 Filled.play = async ({ args, canvasElement }) => {
@@ -78,9 +80,9 @@ Filled.play = async ({ args, canvasElement }) => {
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('radio', { name: 'Springfield' }).click();
+	await page.getByRole('radio', { name: '1 Springfield' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('radio', { name: 'Joe Quimby' }).click();
+	await page.getByRole('radio', { name: '3 Joe Quimby' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
 		.getByRole('combobox', { name: '➡ In which state do The Simpsons reside?' })
@@ -89,7 +91,7 @@ Filled.play = async ({ args, canvasElement }) => {
 	await page.getByText('Not in any state, you fool!').click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('checkbox', { name: 'Santa’s Little Helper' }).click();
+	await page.getByRole('checkbox', { name: '1 Santa’s Little Helper' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
@@ -180,13 +182,13 @@ Filled.play = async ({ args, canvasElement }) => {
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
 		.getByRole('row', { name: 'Leave with pay' })
-		.getByRole('spinbutton')
-		.fill('12');
-	await page
-		.getByRole('row', { name: 'Leave with pay' })
 		.getByText('Please, do something...')
 		.click();
 	await page.getByText('Calendar days').click();
+	await page
+		.getByRole('row', { name: 'Leave with pay' })
+		.getByRole('spinbutton')
+		.fill('12');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
@@ -214,18 +216,17 @@ Filled.play = async ({ args, canvasElement }) => {
 		.fill('Bart');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('radio', { name: 'Yes' }).click();
+	await page.getByRole('radio', { name: '1 Yes' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('radio', { name: 'Yes' }).click();
+	await page.getByRole('radio', { name: '1 Yes' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByLabel('➡ Do you have any comment about the survey?').click();
-	await page
-		.getByLabel('➡ Do you have any comment about the survey?')
-		.fill('No');
+	// should be catched by Missing component and trigger missingStrategy after handleChange with missingResponse 'DK'
+	await page.keyPress('x');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByText('PAGE: 39').shouldBeVisible();
