@@ -1,4 +1,5 @@
 import { Dictionary, DictionaryLang } from './dictionary';
+import { InputNumberPropsI18N } from './inputNumberProps';
 
 /**
  * Based on the locale passed as a paremeter, this function will return
@@ -7,13 +8,16 @@ import { Dictionary, DictionaryLang } from './dictionary';
  * @param {string} lang the lang of the user
  * @param {any} dict
  */
-export const createDictionary = (lang: DictionaryLang, dict: Dictionary) =>
+export const createDictionary = (
+	lang: DictionaryLang,
+	dict: Dictionary | InputNumberPropsI18N
+) =>
 	Object.entries(dict).reduce((acc, [k, v]) => {
 		return {
 			...acc,
 			[k]: v[lang],
 		};
-	}, {}) as Record<keyof Dictionary, string>;
+	}, {}) as Record<keyof (Dictionary | InputNumberPropsI18N), string>;
 
 /**
  * This function will return only the lang part of a locale
