@@ -10,7 +10,6 @@ const fields = [
 	'getStoreInfo',
 	'missing',
 	'shortcut',
-	'activeGoNextForMissing',
 	'filterDescription',
 ];
 

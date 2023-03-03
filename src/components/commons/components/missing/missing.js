@@ -1,26 +1,24 @@
-import React, { useCallback } from 'react';
-import useOnHandleChange from '../../use-on-handle-change';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
-import Button from '../../../button';
-import { DK, RF } from '../../../../utils/constants';
-import D from '../../../../i18n';
 import './missing.scss';
 
-const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
+import { DK, RF } from '../../../../utils/constants';
+import React, { useCallback } from 'react';
+
+import Button from '../../../button';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
+import { useLunaticMissing } from '../../../../use-lunatic/lunatic-context';
+import useOnHandleChange from '../../use-on-handle-change';
 
 const Missing = (props) => {
+	const { missingResponse, handleChange, componentType, paginatedLoop } = props;
 	const {
-		dontKnowButton = D.DK,
-		refusedButton = D.RF,
-		missingResponse,
-		handleChange,
+		missing,
 		missingStrategy,
-		missingShortcut = DEFAULT_SHORTCUT,
 		shortcut,
-		componentType,
-		paginatedLoop,
-	} = props;
-	const { value } = missingResponse;
+		missingShortcut,
+		dontKnowButton,
+		refusedButton,
+	} = useLunaticMissing();
+	const value = missingResponse?.value;
 	const onClick = useOnHandleChange({
 		handleChange,
 		response: missingResponse,
@@ -41,6 +39,7 @@ const Missing = (props) => {
 		handleMissingStrategy();
 	}, [onClick, handleMissingStrategy]);
 
+	if (!(missing && missingResponse)) return null;
 	if ((componentType === 'Loop' && paginatedLoop) || !missingResponse)
 		return null;
 
@@ -66,10 +65,11 @@ const Missing = (props) => {
 				missingShortcut.refused && (
 					<KeyboardEventHandler
 						handleKeys={Object.values(missingShortcut)}
+						handleEventType="keypress"
 						onKeyEvent={(key, e) => {
 							e.preventDefault();
-							if (key === missingShortcut.dontKnow) onClick(DK)();
-							if (key === missingShortcut.refused) onClick(RF)();
+							if (key === missingShortcut.dontKnow) onClickDK();
+							if (key === missingShortcut.refused) onClickRF();
 						}}
 						handleFocusableElements
 					/>
