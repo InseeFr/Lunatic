@@ -20,6 +20,7 @@ import { getQuestionnaireData } from './commons/get-data';
 import { loadSuggesters } from '../utils/store-tools/auto-load';
 import { overviewWithChildren } from './commons/getOverview';
 import reducer from './reducer';
+import { useLoopVariables } from './hooks/use-loop-variables';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const DEFAULT_DATA = empty as LunaticData;
@@ -261,6 +262,7 @@ function useLunatic(
 		getData,
 		Provider,
 		overview: buildedOverview,
+		loopVariables: useLoopVariables(pager, state.pages),
 	};
 }
 
