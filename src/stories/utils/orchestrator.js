@@ -3,6 +3,7 @@ import React, { memo, useState } from 'react';
 import * as lunatic from '../..';
 import './custom-lunatic.scss';
 import Waiting from './waiting';
+import { Overview } from './overview';
 
 import './orchestrator.scss';
 
@@ -92,6 +93,7 @@ function OrchestratorForStories({
 	addExternal,
 	preferences,
 	custom,
+	showOverview = false,
 	filterDescription = true,
 	...rest
 }) {
@@ -106,6 +108,7 @@ function OrchestratorForStories({
 		isLastPage,
 		waiting,
 		getErrors,
+		overview,
 		getModalErrors,
 		getCurrentErrors,
 		pager,
@@ -124,10 +127,10 @@ function OrchestratorForStories({
 		management,
 		shortcut,
 		activeControls,
+		withOverview: showOverview,
 	});
 
 	const components = getComponents();
-	const errors = getErrors();
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
 
@@ -178,6 +181,7 @@ function OrchestratorForStories({
 					maxPage={maxPage}
 					getData={getData}
 				/>
+				{showOverview && <Overview overview={overview} goToPage={goToPage} />}
 				<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
 				<Waiting status={waiting}>
 					<div className="waiting-orchestrator">

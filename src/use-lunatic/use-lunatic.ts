@@ -7,6 +7,7 @@ import {
 	useMemo,
 } from 'react';
 import INITIAL_STATE from './initial-state';
+import { overviewWithChildren } from './commons/getOverview';
 import * as actions from './actions';
 import reducer from './reducer';
 import { useComponentsFromState, getPageTag, isFirstLastPage } from './commons';
@@ -40,6 +41,8 @@ function useLunatic(
 		suggesterFetcher,
 		activeControls = false,
 		custom = empty,
+		// Calculate an overview of every sequence (will be exposed as "overview")
+		withOverview = false,
 	}: {
 		features?: string[];
 		preferences?: string[];
@@ -56,10 +59,12 @@ function useLunatic(
 		suggesterFetcher?: typeof fetch;
 		activeControls?: boolean;
 		custom?: Record<string, FunctionComponent<unknown>>;
+		withOverview?: boolean;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, waiting, modalErrors, errors, currentErrors } = state;
+	const { pager, waiting, modalErrors, errors, currentErrors, overview } =
+		state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
 	const Provider = useMemo(() => createLunaticProvider(custom), [custom]);
@@ -157,6 +162,11 @@ function useLunatic(
 		return getQuestionnaireData({ variables, withRefreshedCalculated });
 	};
 
+	const buildedOverview = useMemo(
+		() => overviewWithChildren(overview),
+		[overview]
+	);
+
 	const pageTag = getPageTag(pager);
 	const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
@@ -175,6 +185,7 @@ function useLunatic(
 					handleChange,
 					activeControls,
 					goToPage,
+					withOverview,
 				})
 			);
 		},
@@ -189,6 +200,7 @@ function useLunatic(
 			shortcut,
 			handleChange,
 			activeControls,
+			withOverview,
 			goToPage,
 		]
 	);
@@ -208,6 +220,7 @@ function useLunatic(
 		waiting,
 		getData,
 		Provider,
+		overview: buildedOverview,
 	};
 }
 
