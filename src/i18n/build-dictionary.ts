@@ -31,8 +31,7 @@ export default createDictionary;
  * @param {string} lang the lang of the user
  */
 
-export const firstLang = 'fr';
-export const secondLang = 'en';
+export const supportedLanguages: DictionaryLang[] = ['en', 'fr'];
 
 /**
  * Return the current lang based of the settings of the browser
@@ -40,5 +39,10 @@ export const secondLang = 'en';
  * @param {String=} defaultLang
  * @returns {String}
  */
-export const getLang = (): DictionaryLang =>
-	navigator.language.split('-')[0] === firstLang ? firstLang : secondLang;
+export const getLang = (): DictionaryLang => {
+	const currentLanguage = navigator.language.split('-')[0];
+	const index = supportedLanguages
+		.map((lang) => lang.toString())
+		.indexOf(currentLanguage);
+	return index === -1 ? supportedLanguages[0] : supportedLanguages[index];
+};
