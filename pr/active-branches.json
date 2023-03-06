@@ -6,7 +6,6 @@
     "fix/search-workers",
     "test/create-expression",
     "feat/autofocusable-components",
-    "feat/loop-of-loop",
-    "feat/thousand-separator"
+    "feat/loop-of-loop"
   ]
 }
