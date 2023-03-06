@@ -26,6 +26,8 @@ function LunaticInputNumber(props) {
 		readOnly,
 	} = props;
 
+	console.log('Decimals', decimals);
+
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
 	return (
