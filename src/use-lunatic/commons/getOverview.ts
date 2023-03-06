@@ -13,7 +13,7 @@ export type OverviewItem = {
 export const overviewWithChildren = (
 	stateOverview: LunaticState['overview']
 ) => {
-	const wipOverview = stateOverview
+	let wipOverview = stateOverview
 		.filter((entry) => entry.type === 'sequence')
 		.map((entry) => ({
 			lunaticId: entry.id,
@@ -37,12 +37,9 @@ export const overviewWithChildren = (
 				reached: subSeq.reached,
 				children: [] as OverviewItem[],
 			};
-			wipOverview.map((seq) => {
-				if (seq.page === subSeq.parent) {
-					return { ...seq, children: seq.children.push(subEntry) };
-				}
-				return seq;
-			});
+			wipOverview
+				.find((seq) => seq.page === subSeq.parent)
+				?.children.push(subEntry);
 		});
 	return wipOverview;
 };
