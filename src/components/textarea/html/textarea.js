@@ -1,6 +1,9 @@
-import React, { useCallback } from 'react';
-import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import './textarea.scss';
+
+import { Errors, Label, createCustomizableLunaticField } from '../../commons';
+import React, { useCallback } from 'react';
+
+import { useLunaticAutofocus } from '../../../use-lunatic/lunatic-context';
 
 function checkValue(value) {
 	return value || '';
@@ -25,6 +28,7 @@ function Textarea({
 		},
 		[onChange]
 	);
+	const { autofocusFn } = useLunaticAutofocus();
 
 	return (
 		<div className="lunatic-textarea">
@@ -33,6 +37,7 @@ function Textarea({
 			</Label>
 			<textarea
 				id={id}
+				ref={autofocusFn}
 				rows={rows}
 				maxLength={maxLength}
 				cols={cols}

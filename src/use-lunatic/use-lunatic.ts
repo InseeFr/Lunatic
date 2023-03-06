@@ -55,6 +55,8 @@ function useLunatic(
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
+		// allow first displayed component on each page to catch focus
+		autofocus = false,
 	}: {
 		features?: string[];
 		preferences?: string[];
@@ -77,6 +79,7 @@ function useLunatic(
 		missingShortcut?: { dontKnow: string; refused: string };
 		dontKnowButton?: string;
 		refusedButton?: string;
+		autofocus?: boolean;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -97,6 +100,7 @@ function useLunatic(
 				missingShortcut,
 				dontKnowButton,
 				refusedButton,
+				autofocus,
 			}),
 		[
 			custom,
@@ -107,6 +111,7 @@ function useLunatic(
 			missingShortcut,
 			dontKnowButton,
 			refusedButton,
+			autofocus,
 		]
 	);
 

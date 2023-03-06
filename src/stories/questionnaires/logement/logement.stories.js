@@ -39,6 +39,7 @@ Default.args = {
 	source: logement,
 	data,
 	pagination: true,
+	autofocus: true,
 };
 
 export const DefaultSum = Template.bind({});
@@ -47,6 +48,7 @@ DefaultSum.args = {
 	id: 'logement-sum',
 	source: logementSum,
 	pagination: true,
+	autofocus: true,
 };
 
 export const Sequence = Template.bind({});
@@ -56,4 +58,5 @@ Sequence.args = {
 	source: logementSequence,
 	data,
 	pagination: true,
+	autofocus: true,
 };

@@ -1,9 +1,12 @@
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
-import React, { useCallback } from 'react';
-import { createCustomizableLunaticField, Errors, Label } from '../../commons';
-import { DescritionPropsType } from '../../commons/components/description';
 import './input.scss';
+
+import { Errors, Label, createCustomizableLunaticField } from '../../commons';
+import React, { useCallback } from 'react';
+
+import { DescritionPropsType } from '../../commons/components/description';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { useLunaticAutofocus } from '../../../use-lunatic/lunatic-context';
 
 function checkValue(value) {
 	return value ?? '';
@@ -28,6 +31,7 @@ function Input({
 		},
 		[onChange]
 	);
+	const { autofocusFn } = useLunaticAutofocus();
 	return (
 		<div className={classnames('lunatic-input')}>
 			<Label htmlFor={id} id={labelId} description={description}>
@@ -35,6 +39,7 @@ function Input({
 			</Label>
 			<input
 				id={id}
+				ref={autofocusFn}
 				labelledbby={labelId}
 				autoComplete="off"
 				type="text"

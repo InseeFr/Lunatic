@@ -2,6 +2,7 @@ import {
 	FunctionComponent,
 	PropsWithChildren,
 	createContext,
+	useCallback,
 	useContext,
 } from 'react';
 
@@ -16,6 +17,7 @@ const LunaticContext = createContext({
 	missingShortcut: { dontKnow: '', refused: '' },
 	dontKnowButton: D.DK,
 	refusedButton: D.RF,
+	autofocus: false,
 });
 /** Provide `missing` `missingStrategy`, `shortcut` and `missingShortcut`, `dontKnowButton`, `refusedButton` to Missing component
  *  to manage non-response buttons and shortcut */
@@ -38,6 +40,17 @@ export const useLunaticMissing = () => {
 	};
 };
 
+// Enable autofocus on most single components
+export const useLunaticAutofocus = () => {
+	const { autofocus } = useContext(LunaticContext);
+	const autofocusFn = useCallback(
+		(element: any) => (element && autofocus ? element.focus() : null),
+		[autofocus]
+	);
+
+	return { autofocus, autofocusFn };
+};
+
 /** Return custom elements list to override native components */
 export const useLunaticCustom = () => {
 	return useContext(LunaticContext).custom;
@@ -57,6 +70,7 @@ export function createLunaticProvider({
 	missingShortcut,
 	dontKnowButton,
 	refusedButton,
+	autofocus,
 }: {
 	custom: Record<string, FunctionComponent<unknown>>;
 	management: boolean;
@@ -66,6 +80,7 @@ export function createLunaticProvider({
 	missingShortcut: { dontKnow: string; refused: string };
 	dontKnowButton: string;
 	refusedButton: string;
+	autofocus: boolean;
 }): FunctionComponent<PropsWithChildren> {
 	const value = {
 		custom,
@@ -76,6 +91,7 @@ export function createLunaticProvider({
 		missingShortcut,
 		dontKnowButton,
 		refusedButton,
+		autofocus,
 	};
 	return function Provider({ children }: PropsWithChildren) {
 		return (

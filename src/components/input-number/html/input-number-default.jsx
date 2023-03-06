@@ -1,6 +1,8 @@
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
 import React, { useCallback, useState } from 'react';
+
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { useLunaticAutofocus } from '../../../use-lunatic/lunatic-context';
 
 function InputNumberDefault({
 	id,
@@ -24,9 +26,11 @@ function InputNumberDefault({
 		},
 		[onChange]
 	);
+	const { autofocusFn } = useLunaticAutofocus();
 	return (
 		<input
 			id={id}
+			ref={autofocusFn}
 			className={classnames({ disabled })}
 			type="number"
 			inputMode={decimals ? 'decimal' : 'numeric'}
