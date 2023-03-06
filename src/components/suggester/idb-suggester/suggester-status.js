@@ -1,4 +1,5 @@
 import React from 'react';
+import Label from '../../commons/components/label';
 import SuggesterNotification from './suggester-notification';
 
 export const STATUS = {
@@ -26,7 +27,12 @@ export function SuggesterStatus({
 	const { status } = getSuggesterStatus(storeName);
 
 	if (status === SuggesterStatus.unused) {
-		return children;
+		return (
+			<>
+				<Label description={description}>{label}</Label>
+				{children}
+			</>
+		);
 	}
 	return (
 		<SuggesterNotification
