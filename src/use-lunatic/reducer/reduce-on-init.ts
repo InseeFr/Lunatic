@@ -13,6 +13,8 @@ import {
 import { ActionInit } from '../actions';
 import { LunaticSource } from '../type-source';
 import { getPagerFromPageTag } from '../commons/page-tag';
+import compose from '../commons/compose';
+import { reduceOverviewOnInit } from './overview/overview-on-init';
 
 /**
  * Extract value from colllected data
@@ -182,6 +184,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		shortcut,
 		activeControls,
 		goToPage,
+		withOverview,
 	} = payload;
 
 	if (source && data) {
@@ -234,4 +237,6 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 	return state;
 }
 
-export default reduceOnInit;
+const reducers = compose<ActionInit>(reduceOnInit, reduceOverviewOnInit);
+
+export default reducers;

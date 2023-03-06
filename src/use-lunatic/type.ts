@@ -52,6 +52,21 @@ export type LunaticCollectedValue = {
 	PREVIOUS: unknown;
 };
 
+export type LunaticOverviewItem = {
+	id: string;
+	page: string;
+	type: string;
+	evaluatedLabel: string;
+	visible: boolean;
+	reached: boolean;
+	parent?: unknown;
+	label: LunaticExpression;
+	conditionFilter?: {
+		bindingDependencies: string[];
+	};
+	children: LunaticOverviewItem[];
+};
+
 // We need a mapped type to correlate type and variableType
 export type LunaticStateVariable = {
 	[key in LunaticVariable['variableType']]: {
@@ -106,6 +121,7 @@ export type LunaticState = {
 			linksVariables?: string[];
 		};
 	};
+	overview: LunaticOverviewItem[];
 	pager: {
 		lastReachedPage?: string;
 		maxPage: string;

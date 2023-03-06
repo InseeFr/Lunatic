@@ -1,10 +1,12 @@
-import React, { memo, useState } from 'react';
+import './custom-lunatic.scss';
+import './orchestrator.scss';
 
 import * as lunatic from '../..';
-import './custom-lunatic.scss';
-import Waiting from './waiting';
 
-import './orchestrator.scss';
+import React, { memo, useState } from 'react';
+
+import { Overview } from './overview';
+import Waiting from './waiting';
 
 function getStoreInfoRequired() {
 	return {};
@@ -86,12 +88,17 @@ function OrchestratorForStories({
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	activeGoNextForMissing = false,
+	missingStrategy = () => console.log('no missing strategy'),
+	missingShortcut,
 	autoSuggesterLoading,
 	addExternal,
 	preferences,
 	custom,
+	showOverview = false,
 	filterDescription = true,
 	getReferentiel,
+	dontKnowButton,
+	refusedButton,
 	...rest
 }) {
 	const { maxPage } = source;
@@ -104,10 +111,9 @@ function OrchestratorForStories({
 		isFirstPage,
 		isLastPage,
 		waiting,
-		getErrors,
+		overview,
 		getModalErrors,
 		getCurrentErrors,
-		pager,
 		getData,
 		Provider,
 	} = lunatic.useLunatic(source, data, {
@@ -116,16 +122,20 @@ function OrchestratorForStories({
 		preferences,
 		onChange: onLogChange,
 		custom,
-		activeGoNextForMissing,
 		autoSuggesterLoading,
 		getReferentiel,
 		management,
+		missing,
+		missingStrategy,
+		missingShortcut,
 		shortcut,
 		activeControls,
+		withOverview: showOverview,
+		dontKnowButton,
+		refusedButton,
 	});
 
 	const components = getComponents();
-	const errors = getErrors();
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
 
@@ -157,8 +167,6 @@ function OrchestratorForStories({
 									{...rest}
 									{...component}
 									{...storeInfo}
-									missing={missing}
-									missingStrategy={goNextPage}
 									filterDescription={filterDescription}
 									errors={currentErrors}
 								/>
@@ -176,6 +184,7 @@ function OrchestratorForStories({
 					maxPage={maxPage}
 					getData={getData}
 				/>
+				{showOverview && <Overview overview={overview} goToPage={goToPage} />}
 				<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
 				<Waiting status={waiting}>
 					<div className="waiting-orchestrator">
