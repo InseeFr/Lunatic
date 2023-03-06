@@ -70,7 +70,7 @@ export function createLunaticProvider({
 	missingShortcut,
 	dontKnowButton,
 	refusedButton,
-	autofocus,
+	withAutofocus,
 }: {
 	custom: Record<string, FunctionComponent<unknown>>;
 	management: boolean;
@@ -80,7 +80,7 @@ export function createLunaticProvider({
 	missingShortcut: { dontKnow: string; refused: string };
 	dontKnowButton: string;
 	refusedButton: string;
-	autofocus: boolean;
+	withAutofocus: boolean;
 }): FunctionComponent<PropsWithChildren> {
 	const value = {
 		custom,
@@ -91,7 +91,7 @@ export function createLunaticProvider({
 		missingShortcut,
 		dontKnowButton,
 		refusedButton,
-		autofocus,
+		autofocus: withAutofocus,
 	};
 	return function Provider({ children }: PropsWithChildren) {
 		return (

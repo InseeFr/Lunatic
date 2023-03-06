@@ -25,6 +25,11 @@ const stories = {
 			control: 'boolean',
 			defaultValue: true,
 		},
+		withAutofocus: {
+			table: { disable: false },
+			control: 'boolean',
+			defaultValue: true,
+		},
 	},
 };
 
@@ -238,7 +243,6 @@ With_Missing.args = {
 	id: 'With-missing',
 	source: simpsons,
 	pagination: true,
-	autofocus: true,
 	missing: true,
 	missingStrategy: () => {
 		console.log('your strategy has been applied');

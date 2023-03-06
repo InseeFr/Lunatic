@@ -99,7 +99,7 @@ function OrchestratorForStories({
 	filterDescription = true,
 	dontKnowButton,
 	refusedButton,
-	autofocus = false,
+	withAutofocus = false,
 	...rest
 }) {
 	const { maxPage } = source;
@@ -135,7 +135,7 @@ function OrchestratorForStories({
 		withOverview: showOverview,
 		dontKnowButton,
 		refusedButton,
-		autofocus,
+		withAutofocus,
 	});
 
 	const components = getComponents();

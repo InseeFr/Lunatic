@@ -11,6 +11,7 @@ const fields = [
 	'missing',
 	'shortcut',
 	'filterDescription',
+	'withAutofocus',
 ];
 
 const defaultArgTypes = fields.reduce(
