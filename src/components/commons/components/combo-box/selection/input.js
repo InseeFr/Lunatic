@@ -1,6 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+
 import classnames from 'classnames';
 import displayLabelOrInput from './displayLabelOrInput';
+import { useLunaticAutofocus } from '../../../../../use-lunatic/lunatic-context';
 
 function Input({
 	placeholder,
@@ -29,11 +31,13 @@ function Input({
 			e.preventDefault();
 		}
 	}
+	const { autofocus } = useLunaticAutofocus();
 
 	return (
 		<input
 			ref={inputEl}
 			id={id}
+			autoFocus={autofocus}
 			className={classnames('lunatic-combo-box-input', className)}
 			type="text"
 			onChange={onChange}

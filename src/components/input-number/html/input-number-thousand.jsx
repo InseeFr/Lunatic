@@ -1,7 +1,9 @@
-import classNames from 'classnames';
 import React, { useCallback } from 'react';
+
 import { NumericFormat } from 'react-number-format';
+import classNames from 'classnames';
 import { inputNumberPropsI18N } from '../../../i18n';
+import { useLunaticAutofocus } from '../../../use-lunatic/lunatic-context';
 
 const InputNumberThousand = ({
 	id,
@@ -20,7 +22,7 @@ const InputNumberThousand = ({
 		},
 		[onChange]
 	);
-
+	const { autofocus } = useLunaticAutofocus();
 	const isAllowed = useCallback(
 		(values) => {
 			const { floatValue } = values;
@@ -37,6 +39,7 @@ const InputNumberThousand = ({
 			id={id}
 			className={classNames({ disabled })}
 			onValueChange={handleChange}
+			autoFocus={autofocus}
 			value={value ?? ''}
 			labelledby={labelId}
 			disabled={disabled}
