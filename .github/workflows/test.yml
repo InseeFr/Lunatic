@@ -1,6 +1,9 @@
 name: Lunatic CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - test/tests-unitaires
 
 jobs:
   test-build:
