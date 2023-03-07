@@ -34,6 +34,7 @@ function DevOptions({ goToPage, getData }) {
 					value={toPage}
 					handleChange={handleChange}
 					min={1}
+					autoFocus={false}
 					label={'Page'}
 					description={'the page wher you want to jump'}
 				/>
