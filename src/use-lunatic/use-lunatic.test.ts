@@ -71,6 +71,17 @@ describe('use-lunatic()', () => {
 		expect(components[0].id).toBe('kiq5xw5p');
 	});
 
+	describe('Provider', () => {
+		it('should not generate a new Provider every render', () => {
+			const { result } = renderHook(() => useLunatic(...defaultParams));
+			const oldProvider = result.current.Provider;
+			act(() => {
+				result.current.goNextPage();
+			});
+			expect(result.current.Provider).toBe(oldProvider);
+		});
+	});
+
 	describe('overview', function () {
 		const lunaticConfigurationWithoutOverview = {
 			management: false,
