@@ -1,12 +1,12 @@
-import { resolveComponentControls } from './validation-utils';
+import { Action } from '../../actions';
 import { getComponentsFromState, getPageTag } from '../../commons';
 import {
 	LunaticComponentDefinition,
 	LunaticError,
 	LunaticState,
 } from '../../type';
-import { Action } from '../../actions';
 import { isLoopComponent } from '../commons';
+import { resolveComponentControls } from './validation-utils';
 
 /**
  * Check if the component has errors
@@ -38,8 +38,8 @@ function validateComponents(
 				...recurs,
 			};
 		}
-		// If no error we remove the possible previous errors
-		return {};
+		// Keep previous errors to allow multiple controls in same page (multiple question/component in the same page)
+		return errors;
 	}, {});
 }
 

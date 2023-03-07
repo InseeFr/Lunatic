@@ -1,4 +1,4 @@
-import { resolveComponentControls } from './validation-utils';
+import { Action } from '../../actions';
 import {
 	getComponentsFromState,
 	getErrorsWithoutEmptyValue,
@@ -10,7 +10,7 @@ import {
 	LunaticState,
 } from '../../type';
 import { isLoopComponent } from '../commons';
-import { Action } from '../../actions';
+import { resolveComponentControls } from './validation-utils';
 
 function validateComponentsForModal(
 	state: LunaticState,
@@ -42,8 +42,8 @@ function validateComponentsForModal(
 				...recurs,
 			});
 		}
-		// If no error we remove the possible previous errors
-		return {};
+		// Keep previous errors to allow multiple controls in same page (multiple question/component in the same page)
+		return errors;
 	}, {} as Record<string, LunaticError[]>);
 }
 
