@@ -8,6 +8,7 @@
     "feat/autofocusable-components",
     "feat/loop-of-loop",
     "feat/autofocus-components",
-    "fix/build-babel"
+    "fix/build-babel",
+    "fix/provider-rerender"
   ]
 }
