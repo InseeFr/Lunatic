@@ -35,7 +35,7 @@ jobs:
           name: coverage
           path: coverage
       - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@test/tests-unitaires
+        uses: sonarsource/sonarcloud-github-action@v1.2.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_CLOUD: ${{ secrets.SONAR_CLOUD }}
