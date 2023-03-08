@@ -23,14 +23,13 @@ jobs:
         run: yarn run test
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
-      # TODO : make test work locally (wait a fix from jest playwright ?)
-      # - name: Build Storybook
-      #   run: yarn build-storybook --quiet
-      # - name: Serve Storybook and run tests
-      #   run: |
-      #     npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-      #       "npx http-server storybook-static --port 6006 --silent" \
-      #       "npx wait-on tcp:6006 && yarn test-storybook"
+      - name: Build Storybook
+        run: yarn build-storybook --quiet
+      - name: Serve Storybook and run tests
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "npx http-server storybook-static --port 6006 --silent" \
+            "npx wait-on tcp:6006 && yarn test-storybook"
       - name: E2E Tests
         run: yarn run test:e2e
       - uses: actions/upload-artifact@v3
