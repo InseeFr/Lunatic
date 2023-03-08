@@ -19,6 +19,12 @@ class Page {
 	}
 
 	getByRole(...args) {
+		if (args[1] && args[1].index !== undefined) {
+			const index = args[1].index;
+			return new Instruction(
+				this.canvas.findAllByRole(...args).then((r) => r[index])
+			);
+		}
 		return new Instruction(this.canvas.findByRole(...args));
 	}
 
@@ -53,6 +59,12 @@ class Instruction {
 
 	async shouldBeVisible() {
 		return waitFor(async () => expect(await this.element).toBeVisible());
+	}
+
+	async shouldNotBeDisabled() {
+		return waitFor(async () =>
+			expect(await this.element).not.toHaveAttribute('disabled')
+		);
 	}
 
 	locator(selector) {

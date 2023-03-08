@@ -122,3 +122,7 @@ export function deepCompare(a: number[], b: number[]): -1 | 0 | 1 {
 	}
 	return 0;
 }
+
+export function arrayFill<T>(size: number, cb: (k: number) => T): T[] {
+	return Array.from({ length: size }, (_, k) => cb(k));
+}

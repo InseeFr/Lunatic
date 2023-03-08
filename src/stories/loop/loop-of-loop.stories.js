@@ -76,4 +76,11 @@ Filled.play = async ({ args, canvasElement }) => {
 	await page.getByLabel("Age de l'enfant Jane Junior 1 de Jane").fill('9');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByText('END').shouldBeVisible();
+	for (let i = 0; i < 11; i++) {
+		await page.getByRole('button', { name: 'Previous' }).shouldNotBeDisabled();
+		await page.getByRole('button', { name: 'Previous' }).click();
+	}
+	await page
+		.getByText('Description des individus de votre logement')
+		.shouldBeVisible();
 };

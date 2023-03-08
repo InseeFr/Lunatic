@@ -2,7 +2,6 @@ import { LunaticComponentDefinition, LunaticState } from '../../type';
 import { DeepTranslateExpression } from './fill-component-expressions';
 import { objectMap } from '../../../utils/object';
 import { resizeArray } from '../../../utils/array';
-import { goToPage } from '../../actions';
 
 export function fillRoundaboutProps(
 	component: DeepTranslateExpression<LunaticComponentDefinition>,

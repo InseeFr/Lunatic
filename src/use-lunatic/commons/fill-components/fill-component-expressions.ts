@@ -11,7 +11,6 @@ const VTL_ATTRIBUTES = [
 	'options.label',
 	'responses.label',
 	'hierarchy.label',
-	'hierarchy.subSequence.label',
 	'hierarchy.sequence.label',
 	'declarations.label',
 	'description',
@@ -61,8 +60,8 @@ function createCrawl({
 				}),
 			};
 		} catch (e) {
-			console.error(e);
-			debugger;
+			console.log(iteration, candidate, path, object);
+			console.error(e, iteration, candidate);
 			return {
 				...object,
 				[path]: e instanceof Error ? e.toString() : e,

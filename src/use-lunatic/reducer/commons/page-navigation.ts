@@ -1,16 +1,17 @@
 import { LunaticState } from '../../type';
 
+type Options = {
+	// Move up instead of going to the next iteration
+	moveUpWhenSequenceEnd?: boolean;
+};
+
 /**
  * Increment the pager to reach the next page or iteration
  */
 export function getNextPager(
 	pager: LunaticState['pager'],
-	localOptions: {
-		// Move up instead of going to the next iteration
-		moveUpWhenSequenceEnd?: boolean;
-	} = {}
+	parents: string[] = []
 ): LunaticState['pager'] {
-	const options = { moveUpWhenSequenceEnd: false, ...localOptions };
 	const pageDepth = pager.page.length - 1;
 	const page = [...pager.page];
 	const iteration = [...pager.iteration];
@@ -21,8 +22,9 @@ export function getNextPager(
 	}
 	// We reached the end of the sequence
 	const isEndSequence = page[pageDepth] > pager.maxPage[pageDepth];
+	const moveUpOnEnd = (parents[pageDepth - 1] ?? 'Loop') === 'Roundabout';
 	// Move up at the end of a sequence (for roundabout)
-	if (isEndSequence && options.moveUpWhenSequenceEnd) {
+	if (isEndSequence && moveUpOnEnd) {
 		page.pop();
 		iteration.pop();
 		return {
@@ -46,7 +48,7 @@ export function getNextPager(
 				page,
 				iteration,
 			},
-			options
+			parents
 		);
 	}
 	return {
@@ -57,7 +59,8 @@ export function getNextPager(
 }
 
 export function getPrevPager(
-	pager: LunaticState['pager']
+	pager: LunaticState['pager'],
+	parents: string[] = []
 ): LunaticState['pager'] {
 	const pageDepth = pager.page.length - 1;
 	const page = [...pager.page];
@@ -75,15 +78,32 @@ export function getPrevPager(
 		iteration[pageDepth - 1]--;
 	}
 
-	// We reached the start of an iteration, move up
-	if (iteration[pageDepth - 1] < 0) {
+	const isStartSequence = iteration[pageDepth - 1] < 0;
+	const moveUpOnStart = (parents[pageDepth - 1] ?? 'Loop') === 'Roundabout';
+
+	// Move up at the end of a sequence (for roundabout)
+	if (isStartSequence && moveUpOnStart) {
 		page.pop();
 		iteration.pop();
-		return getPrevPager({
+		return {
 			...pager,
 			page,
 			iteration,
-		});
+		};
+	}
+
+	// We reached the start of an iteration, move up
+	if (isStartSequence) {
+		page.pop();
+		iteration.pop();
+		return getPrevPager(
+			{
+				...pager,
+				page,
+				iteration,
+			},
+			parents
+		);
 	}
 	return {
 		...pager,

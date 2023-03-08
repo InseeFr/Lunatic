@@ -6,14 +6,14 @@ import { LunaticState } from '../type';
 import { isPageEmpty } from '../commons/page';
 import { getNextPager } from './commons/page-navigation';
 import { autoExploreLoop } from './commons/auto-explore-loop';
+import { parentComponentsTypes } from './commons/parent-components-types';
 
 function reduceGoNextPage(state: LunaticState): LunaticState {
 	const { pages, pager } = state;
-	const parentPage = pages[pager.page.slice(0, -1).join('.')];
-	const nextPager = getNextPager(pager, {
-		moveUpWhenSequenceEnd:
-			parentPage?.components[0]?.componentType === 'Roundabout',
-	});
+	const nextPager = getNextPager(
+		pager,
+		parentComponentsTypes(pager.page, pages)
+	);
 	const pageId = nextPager.page.join('.');
 	let nextPage = pages[pageId];
 

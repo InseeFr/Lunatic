@@ -16,7 +16,6 @@ export function isPageEmpty(state: LunaticState): boolean {
 	const { executeExpression, pager } = state;
 	const { iteration } = pager;
 	const components = getComponentsFromState(state);
-	// Find visible components
 	return (
 		components.filter(function (component) {
 			const { conditionFilter } = component;

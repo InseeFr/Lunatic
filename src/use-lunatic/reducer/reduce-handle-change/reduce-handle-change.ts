@@ -11,7 +11,7 @@ import { LunaticState } from '../../type';
 import { toNumber } from '../../../utils/to-number';
 
 /**
- * Met à jour les variables collectés
+ * Update collected variables
  */
 function updateVariables(
 	state: LunaticState,
@@ -20,19 +20,9 @@ function updateVariables(
 	const { payload } = action;
 	const { response, value, args = {} } = payload;
 	const { name } = response;
-	const {
-		loop,
-		index,
-		length,
-		linksIterations,
-		symLinks,
-		paginatedLoop,
-		shallowIteration,
-		lengths,
-	} = args;
+	const { loop, linksIterations, symLinks, shallowIteration, lengths } = args;
 
 	const { pager, variables } = state;
-
 	if (linksIterations !== undefined) {
 		const variablesNext = reduceLinksVariable(variables, {
 			name,

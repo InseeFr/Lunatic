@@ -13,15 +13,15 @@ describe('page-navigation', () => {
 		} satisfies LunaticState['pager'];
 
 		it('should navigate inside a sequence', () => {
-			expect(getNextPager(base).page).toEqual([3, 2, 2]);
+			expect(getNextPager(base, []).page).toEqual([3, 2, 2]);
 		});
 		it('should increment iteration at the end of a sequence', () => {
 			const pager = {
 				...base,
 				page: [3, 2, 3],
 			};
-			expect(getNextPager(pager).page).toEqual([3, 2, 1]);
-			expect(getNextPager(pager).iteration).toEqual([0, 1]);
+			expect(getNextPager(pager, []).page).toEqual([3, 2, 1]);
+			expect(getNextPager(pager, []).iteration).toEqual([0, 1]);
 		});
 		it('should move up at the end of a sequence and an iteration', () => {
 			const pager = {
@@ -29,13 +29,13 @@ describe('page-navigation', () => {
 				iteration: [0, 2],
 				page: [3, 2, 3],
 			};
-			expect(getNextPager(pager).page).toEqual([3, 3]);
-			expect(getNextPager(pager).iteration).toEqual([0]);
-			expect(getNextPager(pager, { moveUpWhenSequenceEnd: true }).page).toEqual(
-				[3, 2]
-			);
+			expect(getNextPager(pager, []).page).toEqual([3, 3]);
+			expect(getNextPager(pager, []).iteration).toEqual([0]);
+			expect(getNextPager(pager, ['Roundabout', 'Roundabout']).page).toEqual([
+				3, 2,
+			]);
 			expect(
-				getNextPager(pager, { moveUpWhenSequenceEnd: true }).iteration
+				getNextPager(pager, ['Roundabout', 'Roundabout']).iteration
 			).toEqual([0]);
 		});
 		it('should move up multiple time at the end of all sequences and iterations', () => {

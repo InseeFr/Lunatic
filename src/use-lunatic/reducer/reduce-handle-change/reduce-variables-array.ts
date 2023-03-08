@@ -45,7 +45,7 @@ function injectValue(
 	}
 	const [index, ...nextIteration] = iteration;
 	const [size, ...nextSizes] = sizes;
-	const newArray = resizeArray(array, size);
+	const newArray = resizeArray(array, size + 1);
 	newArray[index] = injectValue(
 		newArray[index],
 		value,

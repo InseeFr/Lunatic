@@ -1,12 +1,16 @@
 import { LunaticState } from '../type';
-import { getPrevPager } from './commons/page-navigation';
+import { getNextPager, getPrevPager } from './commons/page-navigation';
 import { isPageEmpty, pageStringToNumbers } from '../commons/page';
 import { resizeArray } from '../../utils/array';
 import { autoExploreLoop } from './commons/auto-explore-loop';
 
 function reduceGoPreviousPage(state: LunaticState): LunaticState {
-	const { pages, pager, executeExpression } = state;
-	let prevPager = getPrevPager(pager);
+	const { pages, pager } = state;
+	const parentPage = pages[pager.page.slice(0, -1).join('.')];
+	const prevPager = getPrevPager(pager, {
+		moveUpWhenSequenceEnd:
+			parentPage?.components[0]?.componentType === 'Roundabout',
+	});
 	const pageId = prevPager.page.join('.');
 	let prevPage = pages[pageId];
 
