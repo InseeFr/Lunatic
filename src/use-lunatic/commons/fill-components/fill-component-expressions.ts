@@ -60,7 +60,6 @@ function createCrawl({
 				}),
 			};
 		} catch (e) {
-			console.log(iteration, candidate, path, object);
 			console.error(e, iteration, candidate);
 			return {
 				...object,
