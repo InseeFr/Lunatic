@@ -1,8 +1,8 @@
-import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
-import source from './source';
+import React from 'react';
 import data from './data';
 import defaultArgTypes from '../../utils/default-arg-types';
+import source from './source';
 
 const stories = {
 	title: 'Questionnaires/Recensement',
@@ -10,11 +10,6 @@ const stories = {
 	argTypes: {
 		...defaultArgTypes,
 		missing: {
-			table: { disable: false },
-			control: 'boolean',
-			defaultValue: true,
-		},
-		activeGoNextForMissing: {
 			table: { disable: false },
 			control: 'boolean',
 			defaultValue: true,

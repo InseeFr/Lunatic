@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import React, { useCallback } from 'react';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import { DescritionPropsType } from '../../commons/components/description';
 import './input.scss';

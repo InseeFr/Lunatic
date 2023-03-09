@@ -1,7 +1,7 @@
 import React from 'react';
-import InputNumber from './html/input-number';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
+import InputNumber from './html/input-number';
 
 function LunaticInputNumber(props) {
 	const {
@@ -19,12 +19,14 @@ function LunaticInputNumber(props) {
 		management,
 		min,
 		max,
-		step,
+		decimals,
 		unit,
 		description,
 		required,
 		readOnly,
 	} = props;
+
+	console.log('Decimals', decimals);
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
@@ -48,7 +50,7 @@ function LunaticInputNumber(props) {
 				disabled={disabled || readOnly}
 				min={min}
 				max={max}
-				step={step}
+				decimals={decimals}
 				unit={unit}
 				required={required}
 				errors={errors}
