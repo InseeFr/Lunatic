@@ -9,6 +9,7 @@
     "feat/loop-of-loop",
     "feat/autofocus-components",
     "fix/build-babel",
-    "fix/controls"
+    "fix/controls",
+    "develop"
   ]
 }
