@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import Description, { DescritionPropsType } from './description';
+import Description from './description';
 
 describe('Description', () => {
 	const testArray = [
