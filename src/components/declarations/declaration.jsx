@@ -5,6 +5,7 @@ import createCustomizableLunaticField from '../commons/create-customizable-field
 function Declaration({ children, type }) {
 	return (
 		<div
+			data-testid="declaration"
 			className={classnames(
 				'declaration-lunatic',
 				`declaration-${type.toLowerCase()}`
