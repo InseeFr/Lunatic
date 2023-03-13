@@ -1,3 +1,5 @@
+import { LunaticError } from './type';
+
 /**
  * Types used for source data (lunatic models and data.json)
  *
@@ -93,6 +95,7 @@ export type ComponentTypeBase = {
 	missingResponse: ResponseType;
 	mandatory?: boolean;
 	page: string;
+	errors?: Record<string, Array<LunaticError>>;
 };
 export type ComponentType =
 	| (ComponentTypeBase & ComponentSequenceType)

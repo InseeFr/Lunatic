@@ -20,6 +20,7 @@ function LunaticCheckboxBoolean({
 	description,
 }) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
+
 	return (
 		<LunaticComponent
 			id={id}

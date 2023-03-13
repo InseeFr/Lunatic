@@ -156,13 +156,6 @@ function useLunatic(
 		[modalErrors]
 	);
 
-	const getCurrentErrors = useCallback(
-		function () {
-			return currentErrors;
-		},
-		[currentErrors]
-	);
-
 	const goPreviousPage = useCallback(
 		function () {
 			dispatch(actions.goPreviousPage());
@@ -254,7 +247,6 @@ function useLunatic(
 		goToPage,
 		getErrors,
 		getModalErrors,
-		getCurrentErrors,
 		pageTag,
 		isFirstPage,
 		isLastPage,

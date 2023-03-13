@@ -137,7 +137,7 @@ export type LunaticState = {
 	// TODO : Explain this
 	waiting: boolean;
 	// Errors for the form
-	errors?: { [page: string]: { [id: string]: LunaticError[] } };
+	errors?: Record<string, Record<string, Array<LunaticError>>>;
 	// Contains the errors for the current page / iteration
 	currentErrors?: { [id: string]: LunaticError[] };
 	// Errors

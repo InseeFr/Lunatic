@@ -13,16 +13,10 @@ function fillErrors(
 	component: LunaticComponentDefinition,
 	state: LunaticState
 ): LunaticComponentDefinition & FilledProps {
-	const { id } = component;
 	const page = getPageTag(state.pager);
-	const errors = state.errors?.[page] ?? {};
-	if (errors) {
-		// TODO only keep criticality info
-		if (id in errors && errors) {
-			return { ...component, error: errors[id] };
-		}
-	}
-	return component;
+	const errors = state.errors?.[page];
+
+	return { ...component, errors };
 }
 
 export default fillErrors;

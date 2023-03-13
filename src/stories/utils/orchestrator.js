@@ -142,7 +142,7 @@ function OrchestratorForStories({
 
 	const components = getComponents();
 	const modalErrors = getModalErrors();
-	const currentErrors = getCurrentErrors();
+	// const currentErrors = getCurrentErrors();
 
 	return (
 		<Provider>
@@ -173,7 +173,6 @@ function OrchestratorForStories({
 									{...component}
 									{...storeInfo}
 									filterDescription={filterDescription}
-									errors={currentErrors}
 								/>
 							</div>
 						);
