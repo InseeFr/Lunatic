@@ -11,6 +11,7 @@
     "fix/build-babel",
     "fix/controls",
     "develop",
-    "fix/current-errors"
+    "fix/current-errors",
+    "doc/props-types"
   ]
 }
