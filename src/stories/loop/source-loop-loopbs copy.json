@@ -1,0 +1,203 @@
+{
+	"id": "loop-of-loop",
+	"maxPage": "4",
+	"label": {
+		"value": "",
+		"type": "VTL"
+	},
+	"suggesters": [],
+	"cleaning": {},
+	"missingBlock": {},
+	"components": [
+		{
+			"id": "seq",
+			"componentType": "Sequence",
+			"label": {
+				"value": "\"Description des individus de votre logement\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "1"
+		},
+		{
+			"id": "loop-prenom",
+			"componentType": "Loop",
+			"label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"bindingDependencies": ["PRENOM"],
+			"lines": {
+				"min": { "value": 1, "type": "VTL" },
+				"max": { "value": 10, "type": "VTL" }
+			},
+			"page": "1",
+			"components": [
+				{
+					"componentType": "Input",
+					"label": { "value": "\"Prénom\"", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"maxLength": 30,
+					"bindingDependencies": ["PRENOM"],
+					"id": "prenom",
+					"response": {
+						"name": "PRENOM"
+					}
+				}
+			]
+		},
+		{
+			"id": "seq",
+			"componentType": "Sequence",
+			"label": {
+				"value": "\"Liste des ménages de votre logement\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "2"
+		},
+		{
+			"id": "household",
+			"componentType": "Loop",
+			"label": { "value": "\"Ajouter un ménage\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"bindingDependencies": ["HOUSEHOLD"],
+			"lines": {
+				"min": { "value": 1, "type": "VTL" },
+				"max": { "value": 10, "type": "VTL" }
+			},
+			"page": "2",
+			"components": [
+				{
+					"componentType": "Input",
+					"label": { "value": "\"Ménage\"", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"maxLength": 30,
+					"bindingDependencies": ["HOUSEHOLD"],
+					"id": "household",
+					"response": {
+						"name": "HOUSEHOLD"
+					}
+				}
+			]
+		},
+		{
+			"id": "loop",
+			"componentType": "Loop",
+
+			"loopDependencies": ["HOUSEHOLD"],
+			"iterations": { "value": "count(HOUSEHOLD)", "type": "VTL" },
+			"page": "3",
+			"maxPage": "2",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"components": [
+				{
+					"id": "loop-seq",
+					"componentType": "Subsequence",
+					"label": {
+						"value": "\"Description des individus du ménage \" || HOUSEHOLD",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"page": "3.1"
+				},
+				{
+					"id": "looploop",
+					"componentType": "Loop",
+
+					"loopDependencies": ["PRENOM"],
+					"iterations": { "value": "count(PRENOM)", "type": "VTL" },
+					"page": "3.2",
+					"maxPage": "1",
+					"depth": 1,
+					"paginatedLoop": false,
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"components": [
+						{
+							"id": "PrenomOfHouseHold",
+							"label": {
+								"value": "PRENOM || \" appartient-il au ménage \" || HOUSEHOLD || \" ?\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "true",
+								"type": "VTL"
+							},
+							"options": [
+								{
+									"value": "Oui",
+									"label": { "value": "\"Oui\"", "type": "VTL|MD" }
+								},
+								{
+									"value": "Non",
+									"label": { "value": "\"Non\"", "type": "VTL|MD" }
+								}
+							],
+							"page": "3.1.1",
+							"componentType": "Radio",
+							"response": { "name": "POHH" }
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"id": "seq-end",
+			"componentType": "Sequence",
+			"label": {
+				"value": "\"END\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "4"
+		}
+	],
+	"resizing": {
+		"PRENOM": {
+			"size": "count(PRENOM)",
+			"variables": ["POHH"]
+		}
+	},
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "HOUSEHOLD",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "POHH",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		}
+	]
+}
