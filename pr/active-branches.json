@@ -12,7 +12,6 @@
     "develop",
     "fix/current-errors",
     "doc/props-types",
-    "fix/cleaning-loop",
-    "ci/playwright-fix"
+    "fix/cleaning-loop"
   ]
 }
