@@ -4,7 +4,7 @@ import source from './__mocks__/source-cleaning-loop.json';
 import reduceCleaning from './reduce-cleaning';
 import { ActionKind } from '../../actions';
 
-describe.only('reduceCleaning', () => {
+describe('reduceCleaning', () => {
 	it('should clean variable', () => {
 		const state = generateState(source as any, {
 			PRENOMREP: ['John', 'Jane'],
