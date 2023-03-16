@@ -12,6 +12,7 @@
     "fix/controls",
     "develop",
     "fix/current-errors",
-    "doc/props-types"
+    "doc/props-types",
+    "fix/cleaning-loop"
   ]
 }
