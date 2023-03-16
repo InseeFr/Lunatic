@@ -8,7 +8,6 @@
     "feat/autofocusable-components",
     "feat/loop-of-loop",
     "feat/autofocus-components",
-    "fix/build-babel",
     "fix/controls",
     "develop",
     "fix/current-errors",
