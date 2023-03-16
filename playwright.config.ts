@@ -60,10 +60,5 @@ export default defineConfig({
 	/* Folder for test artifacts such as screenshots, videos, traces, etc. */
 	// outputDir: 'test-results/',
 
-	webServer: process.env.CI
-		? {
-				command: 'yarn run storybook',
-				port: 9999,
-		  }
-		: undefined,
+	webServer: undefined,
 });

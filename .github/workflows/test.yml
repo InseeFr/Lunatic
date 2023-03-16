@@ -29,9 +29,12 @@ jobs:
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
-            "npx wait-on tcp:6006 && yarn test-storybook"
+            "npx wait-on tcp:6006 && yarn run test:storybook"
       - name: E2E Tests
-        run: yarn run test:e2e
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "npx http-server storybook-static --port 9999 --silent" \
+            "npx wait-on tcp:9999 && yarn run test:e2E"
       - uses: actions/upload-artifact@v3
         if: always()
         with:
