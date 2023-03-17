@@ -1,6 +1,6 @@
 {
 	"id": "loop-of-loop",
-	"maxPage": "3",
+	"maxPage": "4",
 	"label": {
 		"value": "",
 		"type": "VTL"
@@ -57,15 +57,14 @@
 		{
 			"componentType": "InputNumber",
 			"label": {
-				"value": "\" appartient-il au ménage \" || COUNTPRENOM || \" ?\"",
+				"value": "\" Combien y a-t-il de ménages dans le logement ?\"",
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"min": 1,
-			"max": "COUNTPRENOM",
+			"max": 5,
 			"page": "2",
 			"id": "householdCount",
-			"bindingDependencies": ["COUNTPRENOM"],
 			"response": {
 				"name": "HOUSEHOLDCOUNT"
 			}
@@ -74,37 +73,37 @@
 			"id": "household",
 			"componentType": "Loop",
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"bindingDependencies": ["HOUSEHOLDCOUNT"],
 			"paginatedLoop": true,
 			"maxPage": "2",
+			"iterations": { "value": "HOUSEHOLDCOUNT", "type": "VTL" },
+			"bindingDependencies": ["HOUSEHOLDCOUNT"],
 			"lines": {
-				"min": { "value": "cast(HOUSEHOLDCOUNT, integer)", "type": "VTL" },
-				"max": { "value": "cast(HOUSEHOLDCOUNT, integer)", "type": "VTL" }
+				"min": { "value": 1, "type": "VTL" },
+				"max": { "value": 3, "type": "VTL" }
 			},
 			"page": "3",
 			"components": [
 				{
 					"componentType": "Input",
-					"label": { "value": "\"Libéllé du Ménage\"", "type": "VTL|MD" },
+					"label": { "value": "\"Nom du ménage ?\"", "type": "VTL|MD" },
 					"conditionFilter": { "value": "true", "type": "VTL" },
-					"maxLength": 30,
-					"page": "3.1",
-					"bindingDependencies": ["HOUSEHOLD"],
-					"id": "household",
+					"id": "q2",
 					"response": {
 						"name": "HOUSEHOLD"
-					}
+					},
+					"page": "3.1"
 				},
 				{
 					"id": "looploop",
 					"componentType": "Loop",
 
-					"loopDependencies": ["PRENOM"],
-					"iterations": { "value": "count(PRENOM)", "type": "VTL" },
+					"loopDependencies": ["HOUSEHOLDPRENOM"],
+					"iterations": { "value": "count(HOUSEHOLDPRENOM)", "type": "VTL" },
 					"page": "3.2",
+					"maxPage": "1",
 					"depth": 1,
-					"paginatedLoop": false,
-					"bindingDependencies": ["PRENOM"],
+					"paginatedLoop": true,
+					"bindingDependencies": ["HOUSEHOLDPRENOM"],
 					"conditionFilter": {
 						"value": "true",
 						"type": "VTL"
@@ -113,9 +112,10 @@
 						{
 							"id": "PrenomOfHouseHold",
 							"label": {
-								"value": "PRENOM || \" appartient-il au ménage \" || HOUSEHOLD || \" ?\"",
+								"value": "HOUSEHOLDPRENOM || \" appartient-il au ménage \" || HOUSEHOLD || \" ?\"",
 								"type": "VTL"
 							},
+							"bindingDependencies": ["HOUSEHOLDPRENOM", "HOUSEHOLD"],
 							"conditionFilter": {
 								"value": "true",
 								"type": "VTL"
@@ -130,7 +130,7 @@
 									"label": { "value": "\"Non\"", "type": "VTL|MD" }
 								}
 							],
-							"page": "3.1.1",
+							"page": "3.2.1",
 							"componentType": "Radio",
 							"response": { "name": "POHH" }
 						}
@@ -146,7 +146,7 @@
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "3"
+			"page": "4"
 		}
 	],
 	"resizing": {
@@ -155,7 +155,7 @@
 			"variables": ["POHH"]
 		},
 		"HOUSEHOLDCOUNT": {
-			"size": "cast(HOUSEHOLDCOUNT, integer)",
+			"size": "HOUSEHOLDCOUNT",
 			"variables": ["HOUSEHOLD"]
 		}
 	},
@@ -201,6 +201,17 @@
 				"value": "count(PRENOM)",
 				"type": "VTL"
 			},
+			"bindingDependencies": ["PRENOM"],
+			"inFilter": "true"
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "HOUSEHOLDPRENOM",
+			"expression": {
+				"value": "PRENOM",
+				"type": "VTL"
+			},
+			"shapeFrom": "HOUSEHOLD",
 			"bindingDependencies": ["PRENOM"],
 			"inFilter": "true"
 		},
