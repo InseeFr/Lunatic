@@ -12,6 +12,7 @@
     "develop",
     "fix/current-errors",
     "doc/props-types",
-    "fix/cleaning-loop"
+    "fix/cleaning-loop",
+    "feat/trevas"
   ]
 }
