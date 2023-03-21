@@ -77,6 +77,10 @@ function onLogChange(response, value, args) {
 	console.log('onChange', { response, value, args });
 }
 
+function logMissingStrategy() {
+	console.log('no missing strategy');
+}
+
 function OrchestratorForStories({
 	source,
 	data,
@@ -87,7 +91,7 @@ function OrchestratorForStories({
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
-	missingStrategy = () => console.log('no missing strategy'),
+	missingStrategy = logMissingStrategy,
 	missingShortcut,
 	suggesterFetcher,
 	autoSuggesterLoading,
@@ -138,7 +142,7 @@ function OrchestratorForStories({
 
 	const components = getComponents();
 	const modalErrors = getModalErrors();
-	const currentErrors = getCurrentErrors();
+	// const currentErrors = getCurrentErrors();
 
 	return (
 		<Provider>
@@ -169,7 +173,6 @@ function OrchestratorForStories({
 									{...component}
 									{...storeInfo}
 									filterDescription={filterDescription}
-									errors={currentErrors}
 								/>
 							</div>
 						);

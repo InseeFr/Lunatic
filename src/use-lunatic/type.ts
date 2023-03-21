@@ -9,7 +9,10 @@ import { ExpressionLogger } from './commons/execute-expression/create-execute-ex
 
 export type LunaticComponentDefinition<
 	T extends ComponentType['componentType'] = ComponentType['componentType']
-> = ComponentType & { componentType: T };
+> = ComponentType & {
+	componentType: T;
+	errors?: Record<string, Array<LunaticError>>;
+};
 export type LunaticControl = ControlType;
 
 export type VTLBindings = { [variableName: string]: unknown };
@@ -137,7 +140,7 @@ export type LunaticState = {
 	// TODO : Explain this
 	waiting: boolean;
 	// Errors for the form
-	errors?: { [page: string]: { [id: string]: LunaticError[] } };
+	errors?: Record<string, Record<string, Array<LunaticError>>>;
 	// Contains the errors for the current page / iteration
 	currentErrors?: { [id: string]: LunaticError[] };
 	// Errors

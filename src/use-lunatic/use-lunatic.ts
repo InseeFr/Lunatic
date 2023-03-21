@@ -23,6 +23,7 @@ import reducer from './reducer';
 import { useLoopVariables } from './hooks/use-loop-variables';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
+const emptyFn = () => {};
 const DEFAULT_DATA = empty as LunaticData;
 const DEFAULT_FEATURES = ['VTL', 'MD'];
 const DEFAULT_PREFERENCES = [COLLECTED];
@@ -51,7 +52,7 @@ function useLunatic(
 		// Calculate an overview of every sequence (will be exposed as "overview")
 		withOverview = false,
 		missing = false,
-		missingStrategy = () => {},
+		missingStrategy = emptyFn,
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
@@ -155,13 +156,6 @@ function useLunatic(
 		[modalErrors]
 	);
 
-	const getCurrentErrors = useCallback(
-		function () {
-			return currentErrors;
-		},
-		[currentErrors]
-	);
-
 	const goPreviousPage = useCallback(
 		function () {
 			dispatch(actions.goPreviousPage());
@@ -253,7 +247,6 @@ function useLunatic(
 		goToPage,
 		getErrors,
 		getModalErrors,
-		getCurrentErrors,
 		pageTag,
 		isFirstPage,
 		isLastPage,
