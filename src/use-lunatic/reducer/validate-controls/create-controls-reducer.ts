@@ -1,5 +1,9 @@
-import { Action } from '../../actions';
-import { getComponentsFromState, getPageTag } from '../../commons';
+import { Action, ActionKind } from '../../actions';
+import {
+	getComponentsFromState,
+	getErrorsWithoutEmptyValue,
+	getPageTag,
+} from '../../commons';
 import {
 	LunaticComponentDefinition,
 	LunaticError,
@@ -23,24 +27,40 @@ function validateComponents(
 			const { shallowIteration } = pager;
 			const idC =
 				shallowIteration !== undefined ? `${id}-${shallowIteration}` : id;
-			return {
+			return getErrorsWithoutEmptyValue({
 				...errors,
 				[idC]: componentErrors,
-			};
+			});
 		}
 		//Thanks to init which split basic Loops, we only go into unPaginatedLoops
 		if (isLoopComponent(component)) {
 			const { components } = component;
 			const recurs = validateComponents(state, components);
-			return {
+			return getErrorsWithoutEmptyValue({
 				...((state.errors || {})[getPageTag(pager)] || {}),
 				...errors,
 				...recurs,
-			};
+			});
 		}
 		// Keep previous errors to allow multiple controls in same page (multiple question/component in the same page)
 		return errors;
 	}, {});
+}
+
+function computeErrors(state: LunaticState) {
+	const components = getComponentsFromState(state);
+	const { pager } = state;
+	const { errors } = state;
+	const pageTag = getPageTag(pager);
+	const e = {
+		...errors,
+		[pageTag]: validateComponents(state, components),
+	} satisfies LunaticState['errors'];
+	return {
+		...state,
+		errors: e,
+		currentErrors: e?.[pageTag],
+	};
 }
 
 /**
@@ -52,26 +72,25 @@ function createControlsReducer<T extends Action>(
 	// Nothing to init
 	return function (state: LunaticState, action: T): LunaticState {
 		const { activeControls } = state;
-		const updatedState = reducer(state, action);
+		const { payload } = action;
+
+		// if block in payload, we want to stay in current page, so we do nothing (only in goNext case)
 		if (
-			!activeControls ||
-			state.pager.lastReachedPage !== updatedState.pager.lastReachedPage
-		)
-			//if no active controls or is the first time we reach the page
-			return { ...updatedState, currentErrors: undefined };
-		const components = getComponentsFromState(updatedState);
-		const { pager } = updatedState;
-		const { errors } = state;
-		const pageTag = getPageTag(pager);
-		const e = {
-			...errors,
-			[pageTag]: validateComponents(updatedState, components),
-		} satisfies LunaticState['errors'];
-		return {
-			...updatedState,
-			errors: e,
-			currentErrors: e?.[pageTag],
-		};
+			action.type === ActionKind.GO_NEXT_PAGE &&
+			'block' in payload &&
+			payload.block
+		) {
+			return state;
+		}
+
+		if (!activeControls) {
+			// if no activeControls, skip computingErrors and fire the next action
+			return reducer(state, action);
+		} else {
+			// update state (with handleChange for example), then update state with errors
+			const updatedState = reducer(state, action);
+			return computeErrors(updatedState);
+		}
 	};
 }
 export default createControlsReducer;
