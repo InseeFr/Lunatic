@@ -1,6 +1,5 @@
 import { Action, ActionKind } from '../actions';
 import { LunaticState } from '../type';
-import reduceCompileControls from './reduce-compile-controls';
 import reduceGoNextPage from './reduce-go-next-page';
 import reduceGoPreviousPage from './reduce-go-previous-page';
 import reduceGoToPage from './reduce-go-to-page';
@@ -22,8 +21,6 @@ function reducer(state: LunaticState, action: Action): LunaticState {
 			return reduceHandleChange(state, action);
 		case ActionKind.ON_SET_WAITING:
 			return reduceOnSetWaiting(state, action);
-		case ActionKind.COMPILE_CONTROLS:
-			return reduceCompileControls(state, action);
 		default:
 			return state;
 	}

@@ -80,8 +80,7 @@ export type Action =
 	| ActionGoToPage
 	| ActionInit
 	| ActionHandleChange
-	| ActionOnSetWaiting
-	| ActionCompileControls;
+	| ActionOnSetWaiting;
 
 export type PayloadForAction<T extends Action['type']> = (Action & {
 	type: T;
@@ -120,5 +119,3 @@ export const onSetWaiting = (status: boolean): Action =>
 		type: ActionKind.ON_SET_WAITING,
 		payload: { status },
 	} as const);
-
-export const compileControls = actionCreator(ActionKind.COMPILE_CONTROLS);
