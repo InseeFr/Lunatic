@@ -7,20 +7,20 @@ import {
 	useMemo,
 	useReducer,
 } from 'react';
-import { LunaticData, LunaticState } from './type';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
+import { LunaticData, LunaticState } from './type';
 
-import { COLLECTED } from '../utils/constants';
 import D from '../i18n';
-import INITIAL_STATE from './initial-state';
-import { LunaticSource } from './type-source';
-import { createLunaticProvider } from './lunatic-context';
+import { COLLECTED } from '../utils/constants';
 import { getQuestionnaireData } from './commons/get-data';
+import INITIAL_STATE from './initial-state';
+import { createLunaticProvider } from './lunatic-context';
+import { LunaticSource } from './type-source';
 // @ts-ignore
 import { loadSuggesters } from '../utils/store-tools/auto-load';
 import { overviewWithChildren } from './commons/getOverview';
-import reducer from './reducer';
 import { useLoopVariables } from './hooks/use-loop-variables';
+import reducer from './reducer';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -170,6 +170,13 @@ function useLunatic(
 		[dispatch]
 	);
 
+	const compileControls = useCallback(
+		function (payload = {}) {
+			dispatch(actions.compileControls(payload));
+		},
+		[dispatch]
+	);
+
 	const goToPage = useCallback(
 		function (payload = {}) {
 			dispatch(actions.goToPage(payload));
@@ -245,6 +252,7 @@ function useLunatic(
 		goPreviousPage,
 		goNextPage,
 		goToPage,
+		compileControls,
 		getErrors,
 		getModalErrors,
 		pageTag,

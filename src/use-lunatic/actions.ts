@@ -8,6 +8,7 @@ export enum ActionKind {
 	ON_INIT = 'use-lunatic/on-init',
 	HANDLE_CHANGE = 'use-lunatic/handle-change',
 	ON_SET_WAITING = 'use-lunatic/on-set-waiting',
+	COMPILE_CONTROLS = 'use-lunatic/compile-controls',
 }
 
 export type ActionHandleChange = {
@@ -68,13 +69,19 @@ export type ActionGoPreviousPage = {
 	payload: {};
 };
 
+export type ActionCompileControls = {
+	type: ActionKind.COMPILE_CONTROLS;
+	payload: {};
+};
+
 export type Action =
 	| ActionGoNextPage
 	| ActionGoPreviousPage
 	| ActionGoToPage
 	| ActionInit
 	| ActionHandleChange
-	| ActionOnSetWaiting;
+	| ActionOnSetWaiting
+	| ActionCompileControls;
 
 export type PayloadForAction<T extends Action['type']> = (Action & {
 	type: T;
@@ -113,3 +120,5 @@ export const onSetWaiting = (status: boolean): Action =>
 		type: ActionKind.ON_SET_WAITING,
 		payload: { status },
 	} as const);
+
+export const compileControls = actionCreator(ActionKind.COMPILE_CONTROLS);
