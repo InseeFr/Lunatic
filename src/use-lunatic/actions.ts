@@ -8,7 +8,6 @@ export enum ActionKind {
 	ON_INIT = 'use-lunatic/on-init',
 	HANDLE_CHANGE = 'use-lunatic/handle-change',
 	ON_SET_WAITING = 'use-lunatic/on-set-waiting',
-	COMPILE_CONTROLS = 'use-lunatic/compile-controls',
 }
 
 export type ActionHandleChange = {
@@ -66,11 +65,6 @@ export type ActionGoNextPage = {
 
 export type ActionGoPreviousPage = {
 	type: ActionKind.GO_PREVIOUS_PAGE;
-	payload: {};
-};
-
-export type ActionCompileControls = {
-	type: ActionKind.COMPILE_CONTROLS;
 	payload: {};
 };
 
