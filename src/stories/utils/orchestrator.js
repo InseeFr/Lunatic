@@ -3,7 +3,7 @@ import './orchestrator.scss';
 
 import * as lunatic from '../..';
 
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 
 import { Overview } from './overview';
 import Waiting from './waiting';
@@ -117,7 +117,6 @@ function OrchestratorForStories({
 		waiting,
 		overview,
 		getModalErrors,
-		getCurrentErrors,
 		getData,
 		Provider,
 	} = lunatic.useLunatic(source, data, {
@@ -141,8 +140,25 @@ function OrchestratorForStories({
 	});
 
 	const components = getComponents();
-	const modalErrors = getModalErrors();
-	// const currentErrors = getCurrentErrors();
+	const currentErrors = getModalErrors();
+
+	const [errorActive, setErrorActive] = useState({});
+	const [errorsForModal, setErrorsForModal] = useState(null);
+
+	const skip = useCallback(
+		(arg) => {
+			setErrorsForModal(undefined);
+			goNextPage(arg);
+		},
+		[goNextPage]
+	);
+
+	const goNext = useCallback(() => {
+		if (currentErrors && Object.keys(currentErrors).length > 0) {
+			setErrorActive({ ...errorActive, [pageTag]: true });
+			setErrorsForModal(currentErrors);
+		} else skip();
+	}, [currentErrors, errorActive, pageTag, skip]);
 
 	return (
 		<Provider>
@@ -172,6 +188,8 @@ function OrchestratorForStories({
 									{...rest}
 									{...component}
 									{...storeInfo}
+									// fill error when needed
+									errors={errorActive[pageTag] && currentErrors}
 									filterDescription={filterDescription}
 								/>
 							</div>
@@ -180,7 +198,7 @@ function OrchestratorForStories({
 				</div>
 				<Pager
 					goPrevious={goPreviousPage}
-					goNext={goNextPage}
+					goNext={goNext}
 					goToPage={goToPage}
 					isLast={isLastPage}
 					isFirst={isFirstPage}
@@ -189,7 +207,9 @@ function OrchestratorForStories({
 					getData={getData}
 				/>
 				{showOverview && <Overview overview={overview} goToPage={goToPage} />}
-				<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
+				{errorsForModal && (
+					<lunatic.Modal errors={errorsForModal} goNext={skip} />
+				)}
 				<Waiting status={waiting}>
 					<div className="waiting-orchestrator">
 						Initialisation des données de suggestion...
