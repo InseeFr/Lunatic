@@ -14,12 +14,24 @@ describe('<Th />', () => {
 	};
 
 	it('renders children', () => {
-		const { getByRole } = render(<Th {...props} />);
+		const { getByRole } = render(
+			<table>
+				<tr>
+					<Th {...props} />
+				</tr>
+			</table>
+		);
 		expect(getByRole('columnheader')).toHaveTextContent(props.children);
 	});
 
 	it('renders with correct attributes', () => {
-		const { getByRole } = render(<Th {...props} />);
+		const { getByRole } = render(
+			<table>
+				<tr>
+					<Th {...props} />
+				</tr>
+			</table>
+		);
 		const th = getByRole('columnheader');
 		expect(th).toHaveAttribute(
 			'id',

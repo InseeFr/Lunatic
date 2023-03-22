@@ -5,7 +5,13 @@ import { expect, describe, it } from 'vitest';
 
 describe('Tr', () => {
 	it('renders a table row with the correct id and class name', () => {
-		render(<Tr id="1" row={1} className="highlighted-row" />);
+		render(
+			<table>
+				<tbody>
+					<Tr id="1" row={1} className="highlighted-row" />
+				</tbody>
+			</table>
+		);
 		const tr = screen.getByRole('row');
 		expect(tr).toHaveAttribute('id', 'lunatic-table-tr-1-1');
 		expect(tr).toHaveClass('lunatic-table-tr', 'highlighted-row');
