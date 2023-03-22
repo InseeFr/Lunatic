@@ -52,7 +52,7 @@ describe('Label', () => {
 				</Label>
 				<input
 					id="kze792d8"
-					class=""
+					className=""
 					type="number"
 					aria-labelledby="label"
 					min="0"

@@ -74,11 +74,9 @@ describe('Roundabout', () => {
 		);
 
 		const completeButton = getByText('Complété');
-		const partialButton = getByText('Modifier');
 		const unstartedButton = getByText('Commencer');
 
 		expect(completeButton).toBeDisabled();
-		// expect(partialButton).toBeDisabled();
 		expect(unstartedButton).not.toBeDisabled();
 	});
 });
