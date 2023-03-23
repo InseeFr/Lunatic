@@ -55,8 +55,8 @@ function isCriticalErrors(errors?: Record<string, LunaticError[]>): boolean {
 			.reduce(function (status, { criticality, typeOfControl }) {
 				return (
 					status ||
-					(typeOfControl === TypeOfControl.FORMAT &&
-						criticality.startsWith(Criticality.ERROR))
+					typeOfControl === TypeOfControl.FORMAT ||
+					criticality.startsWith(Criticality.ERROR)
 				);
 			}, false);
 	}
