@@ -1,7 +1,8 @@
-import { LunaticError, LunaticState, LunaticControl } from '../../type';
+import { StateForControls } from '../../commons/compile-controls';
+import { LunaticControl, LunaticError } from '../../type';
 
 function resolveControl(
-	state: LunaticState,
+	state: StateForControls,
 	control: LunaticControl
 ): LunaticError | undefined {
 	const { executeExpression } = state;
@@ -34,7 +35,7 @@ function resolveControl(
  * Convert controls into errors
  */
 export function resolveComponentControls(
-	state: LunaticState,
+	state: StateForControls,
 	controls: LunaticControl[]
 ): LunaticError[] {
 	return controls.reduce(function (errors, control) {

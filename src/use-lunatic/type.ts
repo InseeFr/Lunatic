@@ -139,10 +139,7 @@ export type LunaticState = {
 	};
 	// TODO : Explain this
 	waiting: boolean;
-	// Errors for the form
-	errors?: Record<string, Record<string, Array<LunaticError>>>;
-	// Contains the errors for the current page / iteration
-	currentErrors?: { [id: string]: LunaticError[] };
+
 	// Handler to call when updating a value
 	handleChange: (
 		response: { name: string },

@@ -5,7 +5,6 @@ import { ExpressionType, LunaticState } from '../type';
 import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
 import { overviewOnChange } from './overview/overview-on-change';
 import { reduceToRoundabout } from './reduce-roundabout';
-import { createControlsReducer } from './validate-controls';
 
 function getNextPage(state: LunaticState) {
 	const { pager } = state;
@@ -180,7 +179,4 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 	return validateChange(reduceNextPage(state, { next }));
 }
 
-export default compose<ActionGoNextPage>(
-	createControlsReducer(reduceGoNextPage),
-	overviewOnChange
-);
+export default compose<ActionGoNextPage>(reduceGoNextPage, overviewOnChange);

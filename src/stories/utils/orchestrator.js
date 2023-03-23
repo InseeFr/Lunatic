@@ -116,7 +116,7 @@ function OrchestratorForStories({
 		isLastPage,
 		waiting,
 		overview,
-		getCurrentErrors,
+		compileControls,
 		getData,
 		Provider,
 	} = lunatic.useLunatic(source, data, {
@@ -140,7 +140,6 @@ function OrchestratorForStories({
 	});
 
 	const components = getComponents();
-	const currentErrors = getCurrentErrors();
 
 	const [errorActive, setErrorActive] = useState({});
 	const [errorsForModal, setErrorsForModal] = useState(null);
@@ -153,12 +152,15 @@ function OrchestratorForStories({
 		[goNextPage]
 	);
 
-	const goNext = useCallback(() => {
+	const closeModal = useCallback(() => setErrorsForModal(undefined), []);
+
+	const handleGoNext = useCallback(() => {
+		const { currentErrors, isCritical } = compileControls();
 		if (currentErrors && Object.keys(currentErrors).length > 0) {
-			setErrorActive({ ...errorActive, [pageTag]: true });
-			setErrorsForModal(currentErrors);
-		} else skip();
-	}, [currentErrors, errorActive, pageTag, skip]);
+			setErrorActive({ ...errorActive, [pageTag]: currentErrors });
+			setErrorsForModal({ currentErrors, isCritical });
+		} else goNextPage();
+	}, [compileControls, errorActive, goNextPage, pageTag]);
 
 	return (
 		<Provider>
@@ -189,7 +191,7 @@ function OrchestratorForStories({
 									{...component}
 									{...storeInfo}
 									// fill error when needed
-									errors={errorActive[pageTag] && currentErrors}
+									errors={errorActive[pageTag]}
 									filterDescription={filterDescription}
 								/>
 							</div>
@@ -198,7 +200,7 @@ function OrchestratorForStories({
 				</div>
 				<Pager
 					goPrevious={goPreviousPage}
-					goNext={goNext}
+					goNext={handleGoNext}
 					goToPage={goToPage}
 					isLast={isLastPage}
 					isFirst={isFirstPage}
@@ -208,7 +210,12 @@ function OrchestratorForStories({
 				/>
 				{showOverview && <Overview overview={overview} goToPage={goToPage} />}
 				{errorsForModal && (
-					<lunatic.Modal errors={errorsForModal} goNext={skip} />
+					<lunatic.Modal
+						errors={errorsForModal.currentErrors}
+						goNext={skip}
+						onClose={closeModal}
+						isCritical={errorsForModal.isCritical}
+					/>
 				)}
 				<Waiting status={waiting}>
 					<div className="waiting-orchestrator">

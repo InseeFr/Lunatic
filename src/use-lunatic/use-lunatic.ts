@@ -18,6 +18,7 @@ import { createLunaticProvider } from './lunatic-context';
 import { LunaticSource } from './type-source';
 // @ts-ignore
 import { loadSuggesters } from '../utils/store-tools/auto-load';
+import compileControlsLib from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
@@ -81,7 +82,8 @@ function useLunatic(
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, waiting, errors, currentErrors, overview } = state;
+	const { pager, waiting, overview, pages, executeExpression, isInLoop } =
+		state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
 
@@ -141,18 +143,11 @@ function useLunatic(
 		suggesters,
 	]);
 
-	const getErrors = useCallback(
+	const compileControls = useCallback(
 		function () {
-			return errors;
+			return compileControlsLib({ pager, pages, isInLoop, executeExpression });
 		},
-		[errors]
-	);
-
-	const getCurrentErrors = useCallback(
-		function () {
-			return currentErrors;
-		},
-		[currentErrors]
+		[pager, pages, isInLoop, executeExpression]
 	);
 
 	const goPreviousPage = useCallback(
@@ -244,8 +239,7 @@ function useLunatic(
 		goPreviousPage,
 		goNextPage,
 		goToPage,
-		getErrors,
-		getCurrentErrors,
+		compileControls,
 		pageTag,
 		isFirstPage,
 		isLastPage,

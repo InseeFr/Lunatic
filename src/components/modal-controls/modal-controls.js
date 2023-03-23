@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
 import classnames from 'classnames';
-import ModalContainer from './modal-container';
+import React from 'react';
 import CloseOrSkip from './close-or-skip';
+import ModalContainer from './modal-container';
 import './modal-controls.scss';
 
 function Error({ criticality, errorMessage }) {
@@ -15,13 +15,7 @@ function ComponentErrors({ errors }) {
 	return <ul className={classnames('errors')}>{content}</ul>;
 }
 
-function ModalControls({ title, errors, goNext }) {
-	const onClose = useCallback(
-		function () {
-			goNext({ block: true });
-		},
-		[goNext]
-	);
+function ModalControls({ title, errors, isCritical, goNext, onClose }) {
 	if (typeof errors === 'object') {
 		const content = Object.entries(errors).map(function ([id, errors]) {
 			return <ComponentErrors errors={errors} key={id} />;
@@ -30,7 +24,12 @@ function ModalControls({ title, errors, goNext }) {
 		return (
 			<ModalContainer>
 				<div className="body">{content}</div>
-				<CloseOrSkip onSkip={goNext} onClose={onClose} errors={errors} />
+				<CloseOrSkip
+					onSkip={goNext}
+					onClose={onClose}
+					errors={errors}
+					isCritical={isCritical}
+				/>
 			</ModalContainer>
 		);
 	}
