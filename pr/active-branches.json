@@ -13,6 +13,7 @@
     "fix/current-errors",
     "doc/props-types",
     "fix/cleaning-loop",
-    "feat/trevas"
+    "feat/trevas",
+    "test/unit-components"
   ]
 }
