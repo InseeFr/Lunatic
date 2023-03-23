@@ -146,7 +146,7 @@ export type LunaticState = {
 	handleChange: (
 		response: { name: string },
 		value: unknown,
-		args: Record<string, unknown>
+		args?: Record<string, unknown>
 	) => void;
 	// Run and expression using the value from the state
 	executeExpression: <T extends unknown = unknown>(

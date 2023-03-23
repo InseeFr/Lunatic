@@ -1,0 +1,81 @@
+// Vitest Snapshot v1
+
+exports[`Selection component > should render correctly when it is disabled 1`] = `
+<div
+  aria-autocomplete="list"
+  aria-controls="todo"
+  aria-haspopup="listbox"
+  aria-owns="idUndefined"
+  class="lunatic-combo-box-selection"
+  id="idUndefined"
+  role="combobox"
+>
+  <div
+    class="lunatic-combo-box-selected disabled"
+  >
+    <div>
+      No selection
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Selection component > should render correctly when it is editable 1`] = `
+<div
+  aria-autocomplete="list"
+  aria-controls="todo"
+  aria-haspopup="listbox"
+  aria-owns="idUndefined"
+  class="lunatic-combo-box-selection"
+  id="idUndefined"
+  role="combobox"
+>
+  <div
+    class="lunatic-combo-box-selected"
+  >
+    <div>
+      No selection
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Selection component > should render correctly when it is expanded 1`] = `
+<div
+  aria-autocomplete="list"
+  aria-controls="todo"
+  aria-haspopup="listbox"
+  aria-owns="idUndefined"
+  class="lunatic-combo-box-selection"
+  id="idUndefined"
+  role="combobox"
+>
+  <div
+    class="lunatic-combo-box-selected"
+  >
+    <div>
+      No selection
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Selection component > should render correctly with default props 1`] = `
+<div
+  aria-autocomplete="list"
+  aria-controls="todo"
+  aria-haspopup="listbox"
+  aria-owns="idUndefined"
+  class="lunatic-combo-box-selection"
+  id="idUndefined"
+  role="combobox"
+>
+  <div
+    class="lunatic-combo-box-selected"
+  >
+    <div>
+      No selection
+    </div>
+  </div>
+</div>
+`;

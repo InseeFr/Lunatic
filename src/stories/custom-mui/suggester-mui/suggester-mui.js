@@ -25,12 +25,12 @@ function SuggesterContainer({
 	id,
 	className,
 	onBlur,
-	expended,
+	expanded,
 }) {
 	// const handleClickAway = useCallback(function () {
 	// 	onBlur();
 	// }, []);
-	const zIndex = expended ? '1' : '0';
+	const zIndex = expanded ? '1' : '0';
 	return (
 		<ClickAwayListener
 			mouseEvent="onMouseDown"
@@ -99,10 +99,10 @@ const SelectionInput = React.forwardRef(function SelectionInput(
 });
 
 const Selection = React.forwardRef(function Selection(
-	{ value, onChange, placeholderList, selection, onDelete, expended, onFocus },
+	{ value, onChange, placeholderList, selection, onDelete, expanded, onFocus },
 	inputRef
 ) {
-	if (!expended) {
+	if (!expanded) {
 		return (
 			<SelectionInput
 				value={getContent(selection, value)}
@@ -170,8 +170,8 @@ function OptionMUI({ label, id, selected, onClick, index }) {
 	);
 }
 
-function Panel({ options, expended, anchorEl, onClick, selectedIndex, index }) {
-	if (Array.isArray(options) && options.length && expended) {
+function Panel({ options, expanded, anchorEl, onClick, selectedIndex, index }) {
+	if (Array.isArray(options) && options.length && expanded) {
 		const items = options.map(function (option, index) {
 			const { label, id } = option;
 
@@ -188,7 +188,7 @@ function Panel({ options, expended, anchorEl, onClick, selectedIndex, index }) {
 		});
 		return (
 			<Popper
-				open={expended}
+				open={expanded}
 				placement="bottom-start"
 				disablePortal={true}
 				anchorEl={anchorEl}
@@ -218,7 +218,7 @@ function SuggesterMui({
 	const inputEl = useRef();
 
 	const [search, setSearch] = useState('');
-	const [expended, setExpended] = useState(false);
+	const [expanded, setExpended] = useState(false);
 	const [selectedIndex, setSelectedIndex] = useState(undefined);
 	const [selection, setSelection] = useState(undefined);
 
@@ -259,7 +259,7 @@ function SuggesterMui({
 			labelledBy={labelledBy}
 			className={className}
 			onBlur={onBlur}
-			expended={expended}
+			expanded={expanded}
 		>
 			<Selection
 				placeholder={placeholder}
@@ -268,12 +268,12 @@ function SuggesterMui({
 				value={search}
 				onFocus={onFocus}
 				ref={inputEl}
-				expended={expended}
+				expanded={expanded}
 				selection={selection}
 			/>
 			<Panel
 				options={options}
-				expended={expended}
+				expanded={expanded}
 				anchorEl={inputEl.current}
 				onClick={onClick}
 				selectedIndex={selectedIndex}
