@@ -116,7 +116,7 @@ function OrchestratorForStories({
 		isLastPage,
 		waiting,
 		overview,
-		getModalErrors,
+		getCurrentErrors,
 		getData,
 		Provider,
 	} = lunatic.useLunatic(source, data, {
@@ -140,7 +140,7 @@ function OrchestratorForStories({
 	});
 
 	const components = getComponents();
-	const currentErrors = getModalErrors();
+	const currentErrors = getCurrentErrors();
 
 	const [errorActive, setErrorActive] = useState({});
 	const [errorsForModal, setErrorsForModal] = useState(null);

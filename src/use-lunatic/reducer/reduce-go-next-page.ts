@@ -106,7 +106,6 @@ function reduceStartLoop(
 				...newPager,
 				lastReachedPage: getNewReachedPage(newPager),
 			},
-			modalErrors: undefined,
 		};
 	}
 
@@ -131,7 +130,6 @@ function reduceStartLoop(
 				...newPager,
 				lastReachedPage: getNewReachedPage(newPager),
 			},
-			modalErrors: undefined,
 		};
 	}
 	return state;

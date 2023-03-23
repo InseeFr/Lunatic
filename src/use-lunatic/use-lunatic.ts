@@ -148,7 +148,7 @@ function useLunatic(
 		[errors]
 	);
 
-	const getModalErrors = useCallback(
+	const getCurrentErrors = useCallback(
 		function () {
 			return currentErrors;
 		},
@@ -245,7 +245,7 @@ function useLunatic(
 		goNextPage,
 		goToPage,
 		getErrors,
-		getModalErrors,
+		getCurrentErrors,
 		pageTag,
 		isFirstPage,
 		isLastPage,
