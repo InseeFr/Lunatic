@@ -10,7 +10,6 @@
     "feat/autofocus-components",
     "fix/controls",
     "develop",
-    "fix/current-errors",
     "doc/props-types",
     "fix/cleaning-loop",
     "feat/trevas",
