@@ -8,16 +8,27 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { useLunaticMissing } from '../../../../use-lunatic/lunatic-context';
 import useOnHandleChange from '../../use-on-handle-change';
 
-const Missing = (props) => {
-	const { missingResponse, handleChange, componentType, paginatedLoop } = props;
+const MissingWithContext = (props) => {
+	const propsContext = useLunaticMissing();
+	if (!propsContext.missing || !props.missingResponse) {
+		return null;
+	}
+	if (props.componentType === 'Loop' && props.paginatedLoop) {
+		return null;
+	}
+	return <Missing {...props} {...propsContext} />;
+};
+
+export const Missing = (props) => {
 	const {
-		missing,
+		missingResponse,
+		handleChange,
 		missingStrategy,
 		shortcut,
 		missingShortcut,
 		dontKnowButton,
 		refusedButton,
-	} = useLunaticMissing();
+	} = props;
 	const value = missingResponse?.value;
 	const onClick = useOnHandleChange({
 		handleChange,
@@ -38,10 +49,6 @@ const Missing = (props) => {
 		onClick(RF);
 		handleMissingStrategy();
 	}, [onClick, handleMissingStrategy]);
-
-	if (!(missing && missingResponse)) return null;
-	if ((componentType === 'Loop' && paginatedLoop) || !missingResponse)
-		return null;
 
 	return (
 		<div className="missing-buttons">
@@ -78,4 +85,4 @@ const Missing = (props) => {
 	);
 };
 
-export default Missing;
+export default MissingWithContext;

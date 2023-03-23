@@ -11,8 +11,10 @@ exports[`InputNumber > renders without crashing 1`] = `
         <input
           class=""
           id="input"
+          inputmode="numeric"
           labelledby="label-input"
           lang="en"
+          step="1"
           type="number"
           value="input"
         />
@@ -26,8 +28,10 @@ exports[`InputNumber > renders without crashing 1`] = `
       <input
         class=""
         id="input"
+        inputmode="numeric"
         labelledby="label-input"
         lang="en"
+        step="1"
         type="number"
         value="input"
       />
