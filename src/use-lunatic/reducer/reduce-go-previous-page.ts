@@ -1,6 +1,6 @@
-import { isOnEmptyPage } from './commons';
-import { getCompatibleVTLExpression, getPageTag } from '../commons';
+import { getCompatibleVTLExpression } from '../commons';
 import { LunaticState } from '../type';
+import { isOnEmptyPage } from './commons';
 import { reduceToRoundabout } from './reduce-roundabout';
 
 function getPreviousPage(pager: LunaticState['pager']): string {
@@ -82,7 +82,7 @@ function goPreviousPage(
 	state: LunaticState,
 	{ previous }: { previous: string }
 ) {
-	const { pager, errors } = state;
+	const { pager } = state;
 	const { page } = pager;
 	const updatedPager = {
 		...pager,
@@ -94,14 +94,11 @@ function goPreviousPage(
 		shallowIteration: undefined,
 	};
 
-	const currentErrors = errors ? errors[getPageTag(updatedPager)] : undefined;
-
 	if (previous !== page) {
 		return {
 			...state,
 			isInLoop: false,
 			pager: updatedPager,
-			currentErrors,
 		};
 	}
 
@@ -109,10 +106,8 @@ function goPreviousPage(
 }
 
 function validateChange(state: LunaticState): LunaticState {
-	const { pager, errors } = state;
-	const currentErrors =
-		errors !== undefined ? errors[getPageTag(pager)] : undefined;
-	const updatedState = { ...state, currentErrors };
+	const { pager } = state;
+	const updatedState = { ...state };
 	if (isOnEmptyPage(updatedState)) {
 		return reduceGoPreviousPage(updatedState);
 	}

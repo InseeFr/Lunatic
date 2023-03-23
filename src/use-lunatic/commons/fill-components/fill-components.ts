@@ -5,7 +5,6 @@ import fillComponentExpressions, {
 import fillComponentValue, {
 	FilledProps as FilledValueProps,
 } from './fill-component-value';
-import { FilledProps as FilledErrorsProps } from './fill-errors';
 import fillFromState, {
 	FilledProps as FilledHandlersProps,
 } from './fill-from-state';
@@ -26,7 +25,6 @@ export type LunaticComponentProps<
 	FilledManagementProps &
 	FilledValueProps &
 	FilledMissingResponseProps &
-	FilledErrorsProps &
 	FilledHandlersProps &
 	FilledPaginationProps;
 
@@ -51,7 +49,6 @@ function compose(...fill: Function[]) {
  * Force typing for this function since it's doo dynamic
  */
 const fillComponent = compose(
-	//fillErrors,
 	fillFromState,
 	fillComponentExpressions,
 	fillSpecificExpressions,
