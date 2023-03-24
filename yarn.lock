@@ -1536,7 +1536,7 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@inseefr/trevas@^0.1.16":
+"@inseefr/trevas@^0.1.17":
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.17.tgz#747ee1b2c712b0d5b277760ea27ce1fb78f65415"
   integrity sha512-hQ6mXtcID6kmbpQPuJpyjiBMzGnsC2MAFKIt3qjHBCpYOXbgzl+VteSi+Sj0q4J2EQAx45drIcIZdX7FOf4EUw==
