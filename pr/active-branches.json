@@ -3,7 +3,6 @@
     "feat/suggester-status",
     "test/create-refresh-calculated",
     "feat/missing-missing-strategy",
-    "fix/search-workers",
     "test/create-expression",
     "feat/autofocusable-components",
     "feat/loop-of-loop",
