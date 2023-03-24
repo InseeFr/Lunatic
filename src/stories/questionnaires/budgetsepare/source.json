@@ -1,0 +1,275 @@
+{
+  "id": "loop-of-loop",
+  "maxPage": "6",
+  "label": {
+    "value": "",
+    "type": "VTL"
+  },
+  "suggesters": [],
+  "cleaning": {},
+  "missingBlock":  {},
+  "components": [
+    {
+      "id": "seq",
+      "componentType": "Sequence",
+      "label": {
+        "value": "\"Description des individus de votre logement\"",
+        "type": "VTL|MD"
+      },
+      "conditionFilter": { "value": "true", "type": "VTL" },
+      "page": "1"
+    },
+    {
+      "id": "loop-prenom",
+      "componentType": "Loop",
+      "label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
+      "conditionFilter": { "value": "true", "type": "VTL" },
+      "bindingDependencies": ["PRENOM"],
+      "lines": {
+        "min": { "value": 1, "type": "VTL" },
+        "max": { "value": 10, "type": "VTL" }
+      },
+      "page": "1",
+      "components": [
+        {
+          "componentType": "Input",
+          "label": { "value": "\"Prénom\"", "type": "VTL|MD" },
+          "conditionFilter": { "value": "true", "type": "VTL" },
+          "maxLength": 30,
+          "bindingDependencies": ["PRENOM"],
+          "id": "prenom",
+          "response": {
+            "name": "PRENOM"
+          }
+        }
+      ]
+    },
+    {
+      "id": "loop-menages",
+      "componentType": "Loop",
+      "label": { "value": "\"Ajouter un ménage\"", "type": "VTL|MD" },
+      "conditionFilter": { "value": "true", "type": "VTL" },
+      "bindingDependencies": ["MENAGES"],
+      "lines": {
+        "min": { "value": 1, "type": "VTL" },
+        "max": { "value": 10, "type": "VTL" }
+      },
+      "page": "1",
+      "components": [
+        {
+          "componentType": "Input",
+          "label": { "value": "\"Ménage\"", "type": "VTL|MD" },
+          "conditionFilter": { "value": "true", "type": "VTL" },
+          "maxLength": 30,
+          "bindingDependencies": ["MENAGES"],
+          "id": "menage",
+          "response": {
+            "name": "MENAGES"
+          }
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "componentType": "Loop",
+      "loopDependencies": [
+        "PRENOM"
+      ],
+      "iterations": {
+        "value": "count(PRENOM)",
+        "type": "VTL"
+      },
+      "page": "2",
+      "maxPage": "1",
+      "depth": 1,
+      "paginatedLoop": true,
+      "conditionFilter": {
+        "value": "true",
+        "type": "VTL"
+      },
+      "components": [
+        {
+          "id": "radio",
+          "componentType": "Radio",
+          "mandatory": false,
+          "page": "2.1",
+          "label": {
+            "value": "\"Dans quel ménage est \" || PRENOM",
+            "type": "VTL|MD"
+          },
+          "description": {
+            "value": "\"Dans quel ménage est \" || PRENOM",
+            "type": "VTL|MD"
+          },
+          "conditionFilter": { "value": "true", "type": "VTL" },
+          "options": [
+            {
+              "value": "Ménage 1",
+              "description": {
+                "value": "\"Ménage 1\"",
+                "type": "VTL|MD"
+              },
+              "label": { "value": "\"Ménage 1\"", "type": "VTL|MD" }
+            },
+            {
+              "value": "Ménage 2",
+              "description": {
+                "value": "\"Ménage 2\"",
+                "type": "VTL|MD"
+              },
+              "label": { "value": "\"Ménage 2\"", "type": "VTL|MD" }
+            }
+          ],
+          "response": { "name": "RELATION" }
+        }
+      ]
+    },
+    {
+      "id": "radio",
+      "componentType": "Radio",
+      "mandatory": false,
+      "page": "3",
+      "label": {
+        "value": "\"Quel est le ménage principal ?\"",
+        "type": "VTL|MD"
+      },
+      "conditionFilter": { "value": "true", "type": "VTL" },
+      "options": [
+        {
+          "value": "Ménage 1",
+          "description": {
+            "value": "\"Ménage 1\"",
+            "type": "VTL|MD"
+          },
+          "label": { "value": "\"Ménage 1\"", "type": "VTL|MD" }
+        },
+        {
+          "value": "Ménage 2",
+          "description": {
+            "value": "\"Ménage 2\"",
+            "type": "VTL|MD"
+          },
+          "label": { "value": "\"Ménage 2\"", "type": "VTL|MD" }
+        }
+      ],
+      "response": { "name": "MAIN" }
+    },
+    {
+      "id": "seq-end",
+      "componentType": "Sequence",
+      "label": {
+        "value": "\"On va intérroger sur le ménage principal : \" || MAIN",
+        "type": "VTL|MD"
+      },
+      "conditionFilter": { "value": "true", "type": "VTL" },
+      "page": "4"
+    },
+    {
+      "id": "loop",
+      "componentType": "Loop",
+      "loopDependencies": [
+        "PRENOM"
+      ],
+      "iterations": {
+        "value": "count(PRENOM)",
+        "type": "VTL"
+      },
+      "page": "5",
+      "maxPage": "1",
+      "depth": 1,
+      "paginatedLoop": true,
+      "conditionFilter": {
+        "value": "true",
+        "type": "VTL"
+      },
+      "components": [
+        {
+          "id": "age",
+          "label": {
+            "value": "PRENOM || \", quel est vôtre âge ?\"",
+            "type": "VTL"
+          },
+          "conditionFilter": {
+            "value": "RELATION = MAIN",
+            "type": "VTL"
+          },
+          "page": "5.1",
+          "componentType": "InputNumber",
+          "min": 0,
+          "max": 120,
+          "decimals": 0,
+          "response": { "name": "AGES" }
+        }
+      ]
+    },
+    {
+      "id": "seq-end",
+      "componentType": "Sequence",
+      "label": {
+        "value": "\"END\"",
+        "type": "VTL|MD"
+      },
+      "conditionFilter": { "value": "true", "type": "VTL" },
+      "page": "6"
+    }
+  ],
+  "resizing": {
+  },
+  "variables": [
+    {
+      "variableType": "COLLECTED",
+      "name": "PRENOM",
+      "values": {
+        "PREVIOUS": [null],
+        "COLLECTED": [null],
+        "FORCED": [null],
+        "EDITED": [null],
+        "INPUTED": [null]
+      }
+    },
+    {
+      "variableType": "COLLECTED",
+      "name": "MENAGES",
+      "values": {
+        "PREVIOUS": [null],
+        "COLLECTED": [null],
+        "FORCED": [null],
+        "EDITED": [null],
+        "INPUTED": [null]
+      }
+    },
+    {
+      "variableType": "COLLECTED",
+      "name": "RELATION",
+      "values": {
+        "PREVIOUS": [null],
+        "COLLECTED": [null],
+        "FORCED": [null],
+        "EDITED": [null],
+        "INPUTED": [null]
+      }
+    },
+    {
+      "variableType": "COLLECTED",
+      "name": "MAIN",
+      "values": {
+        "PREVIOUS": [null],
+        "COLLECTED": [null],
+        "FORCED": [null],
+        "EDITED": [null],
+        "INPUTED": [null]
+      }
+    },
+    {
+      "variableType": "COLLECTED",
+      "name": "AGES",
+      "values": {
+        "PREVIOUS": [null],
+        "COLLECTED": [null],
+        "FORCED": [null],
+        "EDITED": [null],
+        "INPUTED": [null]
+      }
+    }
+  ]
+}
