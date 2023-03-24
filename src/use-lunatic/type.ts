@@ -6,6 +6,7 @@ import {
 	Variable,
 } from './type-source';
 import { ExpressionLogger } from './commons/execute-expression/create-execute-expression';
+import { SuggesterStatus } from './use-suggesters';
 
 export type LunaticComponentDefinition<
 	T extends ComponentType['componentType'] = ComponentType['componentType']
@@ -173,4 +174,8 @@ export type LunaticState = {
 		subPage?: number;
 		roundabout?: { page: string };
 	}) => void;
+	getSuggesterStatus: (name: string) => {
+		status: SuggesterStatus;
+		timestamp: number;
+	};
 };

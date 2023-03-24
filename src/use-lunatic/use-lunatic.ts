@@ -1,5 +1,4 @@
 import * as actions from './actions';
-
 import {
 	FunctionComponent,
 	useCallback,
@@ -21,6 +20,7 @@ import { loadSuggesters } from '../utils/store-tools/auto-load';
 import { overviewWithChildren } from './commons/getOverview';
 import reducer from './reducer';
 import { useLoopVariables } from './hooks/use-loop-variables';
+import { useSuggesters } from './use-suggesters';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -45,9 +45,8 @@ function useLunatic(
 		shortcut = false,
 		initialPage = '1',
 		autoSuggesterLoading = false,
-		suggesters: suggestersConfiguration,
-		suggesterFetcher,
 		activeControls = false,
+		getReferentiel,
 		custom = empty,
 		// Calculate an overview of every sequence (will be exposed as "overview")
 		withOverview = false,
@@ -65,11 +64,7 @@ function useLunatic(
 		shortcut?: boolean;
 		initialPage?: string;
 		autoSuggesterLoading?: boolean;
-		suggesters?: Record<
-			string,
-			{ version?: string; fields?: string[]; stopWords: string[]; url: string }
-		>;
-		suggesterFetcher?: typeof fetch;
+		getReferentiel?: (name: string) => Promise<Array<unknown>>;
 		activeControls?: boolean;
 		custom?: Record<string, FunctionComponent<unknown>>;
 		withOverview?: boolean;
@@ -111,36 +106,11 @@ function useLunatic(
 		]
 	);
 
-	useEffect(() => {
-		(async () => {
-			if (
-				autoSuggesterLoading &&
-				typeof suggestersConfiguration === 'object' &&
-				Object.values(suggestersConfiguration).length > 0
-			) {
-				const s = suggesters.reduce(function (current, storeInfo) {
-					const { name } = storeInfo;
-					if (!suggestersConfiguration[name]) return current;
-					return {
-						...current,
-						[name]: {
-							...storeInfo,
-							url: suggestersConfiguration[name].url,
-							stopWords: suggestersConfiguration[name].stopWords,
-						},
-					};
-				}, {} as Record<string, { url: string; stopWords: string[] }>);
-				dispatch(actions.onSetWaiting(true));
-				await loadSuggesters(suggesterFetcher)(s);
-				dispatch(actions.onSetWaiting(false));
-			}
-		})();
-	}, [
-		autoSuggesterLoading,
-		suggesterFetcher,
-		suggestersConfiguration,
+	const getSuggesterStatus = useSuggesters({
+		auto: autoSuggesterLoading,
+		getReferentiel,
 		suggesters,
-	]);
+	});
 
 	const getErrors = useCallback(
 		function () {
@@ -245,6 +215,13 @@ function useLunatic(
 			withOverview,
 			goToPage,
 		]
+	);
+
+	useEffect(
+		function () {
+			dispatch(actions.updateState({ getSuggesterStatus }));
+		},
+		[getSuggesterStatus]
 	);
 
 	return {

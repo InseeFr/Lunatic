@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IDBSuggester from './idb-suggester';
+import { IDBSuggester } from './idb-suggester';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import * as commonPropTypes from '../commons/prop-types';
@@ -26,6 +26,7 @@ function LunaticSuggester(props) {
 		missingResponse,
 		management,
 		response,
+		getSuggesterStatus,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -54,6 +55,7 @@ function LunaticSuggester(props) {
 				value={value}
 				errors={errors}
 				label={label}
+				getSuggesterStatus={getSuggesterStatus}
 			/>
 		</LunaticComponent>
 	);

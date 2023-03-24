@@ -186,6 +186,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		goToPage,
 		withOverview,
 	} = payload;
+
 	if (source && data) {
 		const variables = createVariables(source, data); // map des variables
 		const [executeExpression, updateBindings] = createExecuteExpression(

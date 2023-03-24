@@ -12,16 +12,19 @@ import VariableStatus from './variable-status';
 
 function getDescription({ declarations, description }) {
 	if (Array.isArray(declarations)) {
-		return declarations.reduce(function (what, declaration) {
+		const finded = declarations.reduce(function (what, declaration) {
 			const { position, label, declarationType } = declaration;
 			if (position === DECLARATION_POSITIONS.after) {
 				return [...what, { label, declarationType }];
 			}
 			return what;
-		}, []); // Array<string | JSX.element>
+		}, []);
+		if (finded.length) {
+			return finded;
+		}
 	}
 
-	return description; // string | JSX.element
+	return description;
 }
 
 function LunaticComponent(props) {
