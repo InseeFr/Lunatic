@@ -1,0 +1,34 @@
+{
+	"components": [
+		{
+			"id": "kze792d8",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "2",
+			"label": { "value": "\"➡ 1. \" || \"Big number \"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyjs7vy",
+					"page": "1",
+					"label": { "value": "S0", "type": "VTL|MD" }
+				}
+			},
+			"bindingDependencies": ["NB"],
+			"response": { "name": "NB" }
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NB",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

@@ -2,19 +2,82 @@
 	"components": [
 		{
 			"componentType": "Input",
-			"label": { "value": "\"What's your name?\"", "type": "VTL|MD" },
+			"label": {
+				"value": "\"Prénom de l'occupant principal.\"",
+				"type": "VTL|MD"
+			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"maxLength": 30,
 			"id": "name",
 			"response": {
-				"name": "NAME"
-			}
+				"name": "PRENOM"
+			},
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Quel est le prénom de l'occupant principal du logement ?\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"For example, Marley.\"",
+						"type": "VTL|MD"
+					}
+				}
+			]
+		},
+		{
+			"componentType": "Input",
+			"label": {
+				"value": "\"Nom de l'occupant principal.\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"maxLength": 30,
+			"id": "surname",
+			"description": {
+				"value": "\"For example, Bob.\"",
+				"type": "VTL|MD"
+			},
+			"response": {
+				"name": "NOM"
+			},
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Quel est le nom de l'occupant principal ?\"",
+						"type": "VTL|MD"
+					}
+				}
+			]
 		}
 	],
 	"variables": [
 		{
 			"variableType": "COLLECTED",
-			"name": "NAME",
+			"name": "NOM",
+			"componentRef": "name",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
 			"componentRef": "name",
 			"values": {
 				"PREVIOUS": null,

@@ -6,20 +6,26 @@
 			"mandatory": false,
 			"positioning": "HORIZONTAL",
 			"label": {
-				"value": "➡ 1. Please, complete the following grid with your favourite characters"
+				"value": "\"➡ 1. Please, complete the following grid with your favourite characters\"",
+				"type": "VTL|MD"
 			},
 			"missingResponse": {
 				"name": "TABLE_MISSING"
 			},
-			"header": [{ "label": "Id" }, { "label": "Name" }, { "label": "Age" }],
+			"header": [
+				{ "label": { "value": "\"Id\"", "type": "VTL|MD" } },
+				{ "label": { "value": "\"Name\"", "type": "VTL|MD" } },
+				{ "label": { "value": "\"Age\"", "type": "VTL|MD" } }
+			],
 			"body": [
 				[
-					{ "label": "1" },
+					{ "label": { "value": "\"1\"", "type": "VTL|MD" } },
 					{
-						"componentType": "Textarea",
+						"componentType": "Input",
 						"maxLength": 255,
 						"id": "j6qg8rc6-QOP-jbgdl5jb",
 						"conditionFilter": { "value": "true", "type": "VTL" },
+						"label": { "value": "\"Darlalidada\"", "type": "VTL|MD" },
 						"response": {
 							"name": "FAVOURITE_CHARACTERS11"
 						}
@@ -37,7 +43,7 @@
 					}
 				],
 				[
-					{ "label": "2" },
+					{ "label": { "value": "\"2\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -60,7 +66,7 @@
 					}
 				],
 				[
-					{ "label": "3" },
+					{ "label": { "value": "\"3\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -83,7 +89,7 @@
 					}
 				],
 				[
-					{ "label": "4" },
+					{ "label": { "value": "\"4\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -106,7 +112,7 @@
 					}
 				],
 				[
-					{ "label": "5" },
+					{ "label": { "value": "\"5\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -129,7 +135,7 @@
 					}
 				],
 				[
-					{ "label": "6" },
+					{ "label": { "value": "\"6\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -152,7 +158,7 @@
 					}
 				],
 				[
-					{ "label": "7" },
+					{ "label": { "value": "\"7\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -175,7 +181,7 @@
 					}
 				],
 				[
-					{ "label": "8" },
+					{ "label": "\"8\"", "type": "VTL|MD" },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -198,7 +204,7 @@
 					}
 				],
 				[
-					{ "label": "9" },
+					{ "label": { "value": "\"9\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -221,7 +227,7 @@
 					}
 				],
 				[
-					{ "label": "10" },
+					{ "label": { "value": "\"10\"", "type": "VTL|MD" } },
 					{
 						"componentType": "Textarea",
 						"maxLength": 255,
@@ -244,7 +250,10 @@
 					}
 				]
 			],
-			"lines": { "min": "\"1\"", "max": "\"10\"" }
+			"lines": {
+				"min": { "value": "\"1\"", "type": "VTL|MD" },
+				"max": { "value": "\"10\"", "type": "VTL|MD" }
+			}
 		}
 	],
 	"variables": [

@@ -26,7 +26,6 @@ function Loop(props) {
 		missing,
 		features,
 		preferences,
-		custom,
 		paginatedLoop,
 		errors,
 	} = props;
@@ -49,7 +48,6 @@ function Loop(props) {
 					shortcut={shortcut}
 					features={features}
 					preferences={preferences}
-					custom={custom}
 					paginatedLoop={paginatedLoop}
 					errors={errors}
 				/>
@@ -73,7 +71,6 @@ function Loop(props) {
 					features={features}
 					preferences={preferences}
 					headers={headers}
-					custom={custom}
 					errors={errors}
 				/>
 			);

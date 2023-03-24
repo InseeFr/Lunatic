@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import filterATL from './filter-accents';
 
 describe('filter-length', function () {

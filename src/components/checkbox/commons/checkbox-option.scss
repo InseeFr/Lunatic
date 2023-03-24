@@ -1,3 +1,19 @@
-.lunatic-input-checkbox {
-	display: flex;
+.checkbox-modality {
+	.lunatic-input-checkbox {
+		display: flex;
+		.label-description {
+			font-weight: lighter;
+		}
+
+		.lunatic-label {
+			font-weight: normal;
+			display: flex;
+			gap: 0.5em;
+			align-items: center;
+		}
+	}
+}
+.lunatic-checkbox-label {
+	gap: 0.5em;
+	align-items: center;
 }

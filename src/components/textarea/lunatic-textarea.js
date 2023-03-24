@@ -1,15 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createLunaticComponent, Errors } from '../commons';
-import Textarea from './textarea';
+import LunaticComponent from '../commons/components/lunatic-component-without-label';
+import useOnHandleChange from '../commons/use-on-handle-change';
+import Textarea from './html/textarea';
 
-const LunaticTextarea = ({ errors, ...props }) => {
-	const { id } = props;
+const LunaticTextarea = (props) => {
+	const {
+		id,
+		rows,
+		maxLength,
+		cols,
+		value,
+		placeHolder,
+		handleChange,
+		response,
+		label,
+		description,
+		errors,
+		preferences,
+		declarations,
+		missing,
+		missingResponse,
+		management,
+	} = props;
+
+	const onChange = useOnHandleChange({ handleChange, response, value });
+
 	return (
-		<>
-			<Textarea {...props} />
-			<Errors errors={errors} activeId={id} />
-		</>
+		<LunaticComponent
+			id={id}
+			preferences={preferences}
+			declarations={declarations}
+			value={value}
+			missing={missing}
+			missingResponse={missingResponse}
+			management={management}
+			description={description}
+			handleChange={handleChange}
+		>
+			<Textarea
+				id={id}
+				rows={rows}
+				maxLength={maxLength}
+				cols={cols}
+				onChange={onChange}
+				value={value}
+				placeholder={placeHolder}
+				label={label}
+				errors={errors}
+			/>
+		</LunaticComponent>
 	);
 };
 
@@ -27,6 +67,4 @@ LunaticTextarea.propTypes = {
 	placeholder: PropTypes.string,
 };
 
-export default createLunaticComponent(LunaticTextarea, {
-	inputId: 'lunatic-textarea',
-});
+export default LunaticTextarea;

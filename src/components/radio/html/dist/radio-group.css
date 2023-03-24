@@ -1,0 +1,12 @@
+.lunatic-radio-group legend .label-description {
+  font-weight: lighter;
+}
+.lunatic-radio-group .lunatic-input-radio {
+  display: flex;
+}
+.lunatic-radio-group .lunatic-input-radio .label-description {
+  font-weight: lighter;
+}
+.lunatic-radio-group .lunatic-input-radio .lunatic-label {
+  font-weight: normal;
+}

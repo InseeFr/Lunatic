@@ -1,10 +1,45 @@
-import React, { memo } from 'react';
-import * as lunatic from '../..';
 import './custom-lunatic.scss';
+import './orchestrator.scss';
+
+import * as lunatic from '../..';
+
+import React, { memo, useState } from 'react';
+
+import { Overview } from './overview';
 import Waiting from './waiting';
 
 function getStoreInfoRequired() {
 	return {};
+}
+
+function DevOptions({ goToPage, getData }) {
+	const [toPage, setToPage] = useState(1);
+
+	function handleChange(_, value) {
+		setToPage(value);
+	}
+
+	return (
+		<div className="dev-options">
+			<div className="title">Options développeur</div>
+			<div className="contenur">
+				<lunatic.Button onClick={() => console.log(getData(true))}>
+					Get State
+				</lunatic.Button>
+				<lunatic.Button onClick={() => goToPage({ page: `${toPage}` })}>
+					{`Go to page ${toPage}`}
+				</lunatic.Button>
+				<lunatic.InputNumber
+					id="page-to-jump"
+					value={toPage}
+					handleChange={handleChange}
+					min={1}
+					label={'Page'}
+					description={'the page wher you want to jump'}
+				/>
+			</div>
+		</div>
+	);
 }
 
 function Pager({
@@ -19,6 +54,7 @@ function Pager({
 }) {
 	if (maxPage && maxPage > 1) {
 		const Button = lunatic.Button;
+
 		return (
 			<>
 				<div className="pagination">
@@ -28,12 +64,9 @@ function Pager({
 					<Button onClick={goNext} disabled={isLast}>
 						Next
 					</Button>
-					<Button onClick={() => console.log(getData(true))}>Get State</Button>
-					<Button onClick={() => goToPage({ page: '18' })}>
-						Go to page 18
-					</Button>
 				</div>
 				<div>PAGE: {pageTag}</div>
+				<DevOptions goToPage={goToPage} getData={getData} />
 			</>
 		);
 	}
@@ -44,28 +77,35 @@ function onLogChange(response, value, args) {
 	console.log('onChange', { response, value, args });
 }
 
+function logMissingStrategy() {
+	console.log('no missing strategy');
+}
+
 function OrchestratorForStories({
 	source,
 	data,
 	management = false,
+	shortcut = false,
 	activeControls = false,
 	features,
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
-	shortcut = false,
-	activeGoNextForMissing = false,
+	missingStrategy = logMissingStrategy,
+	missingShortcut,
 	suggesterFetcher,
 	autoSuggesterLoading,
 	suggesters,
 	addExternal,
 	preferences,
 	custom,
+	showOverview = false,
 	filterDescription = true,
+	dontKnowButton,
+	refusedButton,
 	...rest
 }) {
 	const { maxPage } = source;
-
 	const {
 		getComponents,
 		goPreviousPage,
@@ -75,80 +115,89 @@ function OrchestratorForStories({
 		isFirstPage,
 		isLastPage,
 		waiting,
-		getErrors,
+		overview,
 		getModalErrors,
 		getCurrentErrors,
 		getData,
+		Provider,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
 		features,
 		preferences,
 		onChange: onLogChange,
-		activeGoNextForMissing,
+		custom,
 		autoSuggesterLoading,
 		suggesters,
 		suggesterFetcher,
 		management,
+		missing,
+		missingStrategy,
+		missingShortcut,
+		shortcut,
 		activeControls,
+		withOverview: showOverview,
+		dontKnowButton,
+		refusedButton,
 	});
 
 	const components = getComponents();
-	const errors = getErrors();
 	const modalErrors = getModalErrors();
 	const currentErrors = getCurrentErrors();
 
 	return (
-		<div className="container">
-			<div className="components">
-				{components.map(function (component) {
-					const {
-						id,
-						componentType,
-						response,
-						storeName,
-						conditionFilter,
-						...other
-					} = component;
-					const Component = lunatic[componentType];
-					const storeInfo = storeName ? getStoreInfo(storeName) : {};
+		<Provider>
+			<div className="container">
+				<div className="components">
+					{components.map(function (component) {
+						const {
+							id,
+							componentType,
+							response,
+							storeName,
+							conditionFilter,
+							...other
+						} = component;
+						const Component = lunatic[componentType];
 
-					return (
-						<div className="lunatic lunatic-component" key={`component-${id}`}>
-							<Component
-								id={id}
-								response={response}
-								{...other}
-								{...rest}
-								{...component}
-								{...storeInfo}
-								missing={missing}
-								missingStrategy={goNextPage}
-								shortcut={shortcut}
-								custom={custom}
-								filterDescription={filterDescription}
-								errors={currentErrors}
-							/>
-						</div>
-					);
-				})}
-			</div>
-			<Pager
-				goPrevious={goPreviousPage}
-				goNext={goNextPage}
-				goToPage={goToPage}
-				isLast={isLastPage}
-				isFirst={isFirstPage}
-				pageTag={pageTag}
-				maxPage={maxPage}
-				getData={getData}
-			/>
-			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
-			<Waiting status={waiting}>
-				<div className="waiting-orchestrator">
-					Initialisation des données de suggestion...
+						const storeInfo = storeName ? getStoreInfo(storeName) : {};
+						return (
+							<div
+								className="lunatic lunatic-component"
+								key={`component-${id}`}
+							>
+								<Component
+									id={id}
+									response={response}
+									{...other}
+									{...rest}
+									{...component}
+									{...storeInfo}
+									filterDescription={filterDescription}
+									errors={currentErrors}
+								/>
+							</div>
+						);
+					})}
 				</div>
-			</Waiting>
-		</div>
+				<Pager
+					goPrevious={goPreviousPage}
+					goNext={goNextPage}
+					goToPage={goToPage}
+					isLast={isLastPage}
+					isFirst={isFirstPage}
+					pageTag={pageTag}
+					maxPage={maxPage}
+					getData={getData}
+				/>
+				{showOverview && <Overview overview={overview} goToPage={goToPage} />}
+				<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
+				<Waiting status={waiting}>
+					<div className="waiting-orchestrator">
+						Initialisation des données de suggestion...
+					</div>
+				</Waiting>
+			</div>
+		</Provider>
 	);
 }
 

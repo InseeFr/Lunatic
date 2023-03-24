@@ -13,7 +13,6 @@ function Body({
 	management,
 	features,
 	preferences,
-	custom,
 }) {
 	const handleChangeRow = useCallback(
 		function (response, value, args) {
@@ -24,7 +23,7 @@ function Body({
 
 	if (nbRows > 0) {
 		return (
-			<Tbody id={id} custom={custom}>
+			<Tbody id={id}>
 				<RosterForLoopOrchestrator
 					components={components}
 					nbRows={nbRows}
@@ -35,7 +34,6 @@ function Body({
 					management={management}
 					features={features}
 					preferences={preferences}
-					custom={custom}
 				/>
 			</Tbody>
 		);

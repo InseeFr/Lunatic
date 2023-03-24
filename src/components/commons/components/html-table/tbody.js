@@ -6,7 +6,7 @@ import createCustomizableLunaticField from '../../create-customizable-field';
 function Tbody({ id, className, children }) {
 	return (
 		<tbody
-			id={`lunatic-table-tbody-${id}`}
+			id={id ? `lunatic-table-tbody-${id}` : undefined}
 			className={classnames('lunatic-table-tbody', className)}
 		>
 			{children}
@@ -15,12 +15,13 @@ function Tbody({ id, className, children }) {
 }
 
 Tbody.propTypes = {
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	className: PropTypes.string,
 };
 
 Tbody.defaultProps = {
 	className: undefined,
+	id: undefined,
 };
 
 export default createCustomizableLunaticField(Tbody, 'Tbody');

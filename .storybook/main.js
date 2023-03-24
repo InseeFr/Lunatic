@@ -1,8 +1,10 @@
-const path = require('path');
-const { config } = require('process');
+const path = require('node:path');
 
 module.exports = {
 	stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+	reactOptions: {
+		legacyRootApi: false,
+	},
 	addons: [
 		'@storybook/addon-links',
 		'@storybook/addon-essentials',
@@ -17,12 +19,8 @@ module.exports = {
 		...config,
 		NODE_ENV: 'development',
 	}),
-	webpackFinal: async (config, { configType }) => {
-		// `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-		// You can change the configuration based on that.
-		// 'PRODUCTION' is used when building the static version of storybook.
-
-		// Make whatever fine-grained changes you need
+	webpackFinal: async (config) => {
+		// Add support for SCSS
 		config.module.rules.push({
 			test: /\.scss$/,
 			use: ['style-loader', 'css-loader', 'sass-loader'],
@@ -34,6 +32,7 @@ module.exports = {
 				...(config.resolve.modules || []),
 				path.resolve(__dirname, '../src'),
 			],
+			extensions: ['.ts', '.tsx', '.mjs', '.js', '.jsx', '.json', '.cjs'],
 			fallback: {
 				...(config.resolve || {}).fallback,
 				fs: false,

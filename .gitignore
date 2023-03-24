@@ -9,15 +9,20 @@ yarn-error.log*
 node_modules/
 
 # Built directories
+*.css
 /dist/
 /lib/
 /coverage/
 /test-report.xml
 /storybook-static/
 /bundle-report
+playwright-report
 /workers-release
 
 # Optional REPL history
 .node_repl_history
 .vscode
 .DS_Store
+/test-results/
+/playwright-report/
+/playwright/.cache/

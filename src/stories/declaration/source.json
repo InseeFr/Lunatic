@@ -1,0 +1,74 @@
+{
+	"components": [
+		{
+			"componentType": "Input",
+			"label": {
+				"value": "\"Prénom de l'occupant principal.\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"maxLength": 30,
+			"id": "name",
+			"response": {
+				"name": "PRENOM"
+			},
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Quel est le prénom de l'occupant principal du logement ?\"",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "jruq5os5-kqhuxnyt",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Première ligne de déclaration\"",
+						"type": "VTL|MD"
+					}
+				},
+
+				{
+					"id": "jruq5os5-kwgh1n9c",
+					"declarationType": "INSTRUCTION",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Il faut manger pour vivre   \n  sur 2 lignes\"",
+						"type": "VTL|MD"
+					}
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NOM",
+			"componentRef": "name",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"componentRef": "name",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

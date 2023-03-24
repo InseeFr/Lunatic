@@ -1,5 +1,5 @@
-import React from 'react';
 import classnames from 'classnames';
+import React from 'react';
 
 function DefaultOptionRenderer({ option, selected }) {
 	const { id, value, label } = option;
@@ -8,12 +8,8 @@ function DefaultOptionRenderer({ option, selected }) {
 		return (
 			<div className={classnames('lunatic-combo-box-option', { selected })}>
 				<span className="id">{id || value}</span>
-				{label && (
-					<>
-						<span> - </span>
-						<span className="label">{label}</span>
-					</>
-				)}
+				<span> - </span>
+				<span className="label">{label}</span>
 			</div>
 		);
 	}
