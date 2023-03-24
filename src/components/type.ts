@@ -1,9 +1,10 @@
+import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import {
 	LunaticComponentDefinition,
+	LunaticError,
 	LunaticExpression,
 	LunaticState,
 } from '../use-lunatic/type';
-import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
 type SharedProps<ValueType> = {
 	id: string;
@@ -12,7 +13,7 @@ type SharedProps<ValueType> = {
 		value: ValueType,
 		args: Record<string, unknown>
 	) => void;
-	errors?: LunaticState['errors'];
+	errors?: Record<string, LunaticError[]>;
 	preferences: LunaticState['preferences'];
 	declarations?: {
 		id: string;
