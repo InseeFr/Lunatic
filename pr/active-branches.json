@@ -9,7 +9,6 @@
     "feat/autofocus-components",
     "fix/controls",
     "develop",
-    "doc/props-types",
     "feat/trevas",
     "test/unit-components"
   ]
