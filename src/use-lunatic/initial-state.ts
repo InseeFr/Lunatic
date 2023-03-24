@@ -25,9 +25,6 @@ const INITIAL_STATE: LunaticState = {
 		nbIterations: undefined,
 	},
 	waiting: false,
-	errors: undefined,
-	currentErrors: undefined,
-	modalErrors: undefined,
 	/* fonctionnalités vtl & md */
 	updateBindings: () => {},
 	executeExpression: (() => {}) as LunaticState['executeExpression'],

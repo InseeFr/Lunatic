@@ -11,6 +11,7 @@ node_modules/
 # Built directories
 *.css
 /dist/
+**/dist/
 /lib/
 /coverage/
 /test-report.xml

@@ -20,6 +20,7 @@ function LunaticCheckboxOne({
 	shortcut,
 }) {
 	const onSelect = useOnHandleChange({ handleChange, response, value });
+
 	return (
 		<LunaticComponent
 			id={id}

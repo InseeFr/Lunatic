@@ -1,14 +1,13 @@
-import reduceVariablesArray from './reduce-variables-array';
-import reduceVariablesSimple from './reduce-variables-simple';
+import { toNumber } from '../../../utils/to-number';
+import { ActionHandleChange } from '../../actions';
+import compose from '../../commons/compose';
+import { LunaticState } from '../../type';
 import reduceCleaning from './reduce-cleaning';
+import reduceLinksVariable from './reduce-links-variable';
 import reduceMissing from './reduce-missing';
 import reduceResizing from './reduce-resizing';
-import reduceLinksVariable from './reduce-links-variable';
-import compose from '../../commons/compose';
-import { createControlsReducer } from '../validate-controls';
-import { ActionHandleChange } from '../../actions';
-import { LunaticState } from '../../type';
-import { toNumber } from '../../../utils/to-number';
+import reduceVariablesArray from './reduce-variables-array';
+import reduceVariablesSimple from './reduce-variables-simple';
 
 function isOnSubPage(
 	pager: LunaticState['pager']
@@ -113,4 +112,4 @@ function reduceHandleChange(state: LunaticState, action: ActionHandleChange) {
 	return reducers(state, action);
 }
 
-export default createControlsReducer(reduceHandleChange);
+export default reduceHandleChange;

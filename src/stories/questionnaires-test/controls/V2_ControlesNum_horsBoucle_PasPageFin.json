@@ -91,7 +91,7 @@
 					"id": "k0dzbfek-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QNUM,\"0\"),integer) > 5)",
+						"value": "not(cast(nvl(QNUM,0),integer) > 5)",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "\"sup à 5\"", "type": "VTL|MD" },
@@ -102,7 +102,7 @@
 					"id": "k0dzbfek-CI-1",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QNUM,\"0\"),integer) > 6.5)",
+						"value": "not(cast(nvl(QNUM,0),integer) > 6.5)",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "\"superieur à 6.5\"", "type": "VTL|MD" },
@@ -207,7 +207,7 @@
 					"id": "kd0a8h62-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QNUM3,\"\"),integer) < 8)",
+						"value": "not(cast(nvl(QNUM3,0),integer) < 8)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -268,7 +268,7 @@
 					"id": "kd0a4t4f-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QNUM4,\"0\"),integer) >=5)",
+						"value": "not(cast(nvl(QNUM4,0),integer) >=5)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -329,7 +329,7 @@
 					"id": "kd0ac92p-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QNUM5,\"\"),integer) <= 8)",
+						"value": "not(cast(nvl(QNUM5,0),integer) <= 8)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -379,7 +379,7 @@
 					"id": "k1cahy88-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QNUM6,\"0\"),integer) = 4)",
+						"value": "not(cast(nvl(QNUM6,0),integer) = 4)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -513,7 +513,7 @@
 					"id": "kd0aamy0-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REL,\"0\"),number) > -4)",
+						"value": "not(cast(nvl(REL,0),number) > -4)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -527,7 +527,7 @@
 					"id": "kd0aamy0-CI-1",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REL,\"0\"),number) >= -4)",
+						"value": "not(cast(nvl(REL,0),number) >= -4)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -541,7 +541,7 @@
 					"id": "kd0aamy0-CI-2",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REL,\"0\"),number) < -4)",
+						"value": "not(cast(nvl(REL,0),number) < -4)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -555,7 +555,7 @@
 					"id": "kd0aamy0-CI-3",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REL,\"0\"),number) <= -4)",
+						"value": "not(cast(nvl(REL,0),number) <= -4)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -569,7 +569,7 @@
 					"id": "kd0aamy0-CI-4",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REL,\"0\"),number) = -4)",
+						"value": "not(cast(nvl(REL,0),number) = -4)",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "c’est égal", "type": "VTL|MD" },
@@ -580,7 +580,7 @@
 					"id": "kd0aamy0-CI-5",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REL,\"0\"),number) <> -4)",
+						"value": "not(cast(nvl(REL,0),number) <> -4)",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "c’est différent", "type": "VTL|MD" },
@@ -656,7 +656,7 @@
 					"id": "kd0aa5ah-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REEL,\"\"),number) > -4.51)",
+						"value": "not(cast(nvl(REEL,0),number) > -4.51)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -670,7 +670,7 @@
 					"id": "kd0aa5ah-CI-1",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REEL,\"0\"),number) = -4.51)",
+						"value": "not(cast(nvl(REEL,0),number) = -4.51)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -684,7 +684,7 @@
 					"id": "kd0aa5ah-CI-2",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REEL,\"0\"),number) < -4.51)",
+						"value": "not(cast(nvl(REEL,0),number) < -4.51)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -734,7 +734,7 @@
 					"id": "l5qvuk9e-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REEL2,\"\"),number) > 4.51)",
+						"value": "not(cast(nvl(REEL2,0),number) > 4.51)",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "superieur à 4.51", "type": "VTL|MD" },
@@ -745,7 +745,7 @@
 					"id": "l5qvuk9e-CI-1",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REEL2,\"\"),number) < 4.51)",
+						"value": "not(cast(nvl(REEL2,0),number) < 4.51)",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "inferieur à 4.51", "type": "VTL|MD" },
@@ -792,7 +792,7 @@
 					"id": "l5qvtc2l-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REEL3,\"\"),number) > 4)",
+						"value": "not(cast(nvl(REEL3,0),number) > 4)",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "superieur à 4", "type": "VTL|MD" },
@@ -803,7 +803,7 @@
 					"id": "l5qvtc2l-CI-1",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(REEL3,\"\"),number) < 4)",
+						"value": "not(cast(nvl(REEL3,0),number) < 4)",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "inferieur à 4", "type": "VTL|MD" },
@@ -861,7 +861,7 @@
 					"id": "kd0c3h3b-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(GRAND,\"0\"),number) > 1000)",
+						"value": "not(cast(nvl(GRAND,0),number) > 1000)",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -1136,7 +1136,7 @@
 					"id": "l5qt3xu9-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QNUMBIS,\"0\"),number) > cast(nvl(QREL2,\"0\"),number))",
+						"value": "not(cast(nvl(QNUMBIS,0),number) > cast(nvl(QREL2,0),number))",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "saisie > QREL2", "type": "VTL|MD" },
@@ -1214,7 +1214,7 @@
 					"id": "kd0bu8xz-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(CALC_RATIO,number)<>cast(nvl(QRATIO,\"\"),number))",
+						"value": "not(cast(CALC_RATIO,number)<>cast(nvl(QRATIO,0),number))",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "RAtio différent", "type": "VTL|MD" },
@@ -1225,7 +1225,7 @@
 					"id": "kd0bu8xz-CI-1",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(CALC_RATIO,number)=cast(nvl(QRATIO,\"\"),number))",
+						"value": "not(cast(CALC_RATIO,number)=cast(nvl(QRATIO,0),number))",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "RAtio identique", "type": "VTL|MD" },
@@ -1303,7 +1303,7 @@
 					"id": "k0gj7g4v-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QSOMME,\"\"),number) = cast(CALC_SOMME,number))",
+						"value": "not(cast(nvl(QSOMME,0),number) = cast(CALC_SOMME,number))",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -1317,7 +1317,7 @@
 					"id": "k0gj7g4v-CI-1",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QSOMME,\"\"),number) < cast(CALC_SOMME,number))",
+						"value": "not(cast(nvl(QSOMME,0),number) < cast(CALC_SOMME,number))",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -1331,7 +1331,7 @@
 					"id": "k0gj7g4v-CI-2",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QSOMME,\"\"),number) > cast(CALC_SOMME,number))",
+						"value": "not(cast(nvl(QSOMME,0),number) > cast(CALC_SOMME,number))",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -1412,7 +1412,7 @@
 					"id": "kd0bx24r-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QPRODUIT,\"\"),number) >= cast(CALC_PRODUIT,number))",
+						"value": "not(cast(nvl(QPRODUIT,0),number) >= cast(CALC_PRODUIT,number))",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -1426,7 +1426,7 @@
 					"id": "kd0bx24r-CI-1",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QPRODUIT,\"\"),number)<= cast(CALC_PRODUIT,number))",
+						"value": "not(cast(nvl(QPRODUIT,0),number)<= cast(CALC_PRODUIT,number))",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -1507,7 +1507,7 @@
 					"id": "kd0c2j4a-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QDIFFERENCE,\"\"),number) = cast(CALC_DIFFERENCE,number))",
+						"value": "not(cast(nvl(QDIFFERENCE,0),number) = cast(CALC_DIFFERENCE,number))",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "Différence : idem", "type": "VTL|MD" },
@@ -1518,7 +1518,7 @@
 					"id": "kd0c2j4a-CI-1",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(QDIFFERENCE,\"\"),number) <> cast(CALC_DIFFERENCE,number))",
+						"value": "not(cast(nvl(QDIFFERENCE,0),number) <> cast(CALC_DIFFERENCE,number))",
 						"type": "VTL"
 					},
 					"errorMessage": {
@@ -1921,7 +1921,7 @@
 			"variableType": "CALCULATED",
 			"name": "CALC_SOMME",
 			"expression": {
-				"value": "cast(nvl(QREL,\"0\"),number) + cast(nvl(QREL2,\"0\"),number)",
+				"value": "cast(nvl(QREL,0),number) + cast(nvl(QREL2,0),number)",
 				"type": "VTL"
 			},
 			"bindingDependencies": ["QREL", "QREL2"],
@@ -1932,7 +1932,7 @@
 			"variableType": "CALCULATED",
 			"name": "CALC_PRODUIT",
 			"expression": {
-				"value": "cast(nvl(QREL,\"0\"),number) * cast(nvl(QREL2,\"0\"),number)",
+				"value": "cast(nvl(QREL,0),number) * cast(nvl(QREL2,0),number)",
 				"type": "VTL"
 			},
 			"bindingDependencies": ["QREL", "QREL2"],
@@ -1943,7 +1943,7 @@
 			"variableType": "CALCULATED",
 			"name": "CALC_DIFFERENCE",
 			"expression": {
-				"value": "cast(nvl(QREL,\"0\"),number) - cast(nvl(QREL2,\"0\"),number)",
+				"value": "cast(nvl(QREL,0),number) - cast(nvl(QREL2,0),number)",
 				"type": "VTL"
 			},
 			"bindingDependencies": ["QREL", "QREL2"],
@@ -1954,7 +1954,7 @@
 			"variableType": "CALCULATED",
 			"name": "CALC_RATIO",
 			"expression": {
-				"value": "cast(nvl(QREL,\"0\"),number) / cast(nvl(QREL2,\"0\"),number)",
+				"value": "cast(nvl(QREL,0),number) / cast(nvl(QREL2,0),number)",
 				"type": "VTL"
 			},
 			"bindingDependencies": ["QREL", "QREL2"],

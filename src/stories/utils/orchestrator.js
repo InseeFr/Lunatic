@@ -3,7 +3,7 @@ import './orchestrator.scss';
 
 import * as lunatic from '../..';
 
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 
 import { Overview } from './overview';
 import Waiting from './waiting';
@@ -115,8 +115,7 @@ function OrchestratorForStories({
 		isLastPage,
 		waiting,
 		overview,
-		getModalErrors,
-		getCurrentErrors,
+		compileControls,
 		getData,
 		Provider,
 	} = lunatic.useLunatic(source, data, {
@@ -139,8 +138,27 @@ function OrchestratorForStories({
 	});
 
 	const components = getComponents();
-	const modalErrors = getModalErrors();
-	const currentErrors = getCurrentErrors();
+
+	const [errorActive, setErrorActive] = useState({});
+	const [errorsForModal, setErrorsForModal] = useState(null);
+
+	const skip = useCallback(
+		(arg) => {
+			setErrorsForModal(undefined);
+			goNextPage(arg);
+		},
+		[goNextPage]
+	);
+
+	const closeModal = useCallback(() => setErrorsForModal(undefined), []);
+
+	const handleGoNext = useCallback(() => {
+		const { currentErrors, isCritical } = compileControls();
+		if (currentErrors && Object.keys(currentErrors).length > 0) {
+			setErrorActive({ ...errorActive, [pageTag]: currentErrors });
+			setErrorsForModal({ currentErrors, isCritical });
+		} else goNextPage();
+	}, [compileControls, errorActive, goNextPage, pageTag]);
 
 	return (
 		<Provider>
@@ -170,8 +188,9 @@ function OrchestratorForStories({
 									{...rest}
 									{...component}
 									{...storeInfo}
+									// fill error when needed
+									errors={errorActive[pageTag]}
 									filterDescription={filterDescription}
-									errors={currentErrors}
 								/>
 							</div>
 						);
@@ -179,7 +198,7 @@ function OrchestratorForStories({
 				</div>
 				<Pager
 					goPrevious={goPreviousPage}
-					goNext={goNextPage}
+					goNext={handleGoNext}
 					goToPage={goToPage}
 					isLast={isLastPage}
 					isFirst={isFirstPage}
@@ -188,7 +207,14 @@ function OrchestratorForStories({
 					getData={getData}
 				/>
 				{showOverview && <Overview overview={overview} goToPage={goToPage} />}
-				<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
+				{errorsForModal && (
+					<lunatic.Modal
+						errors={errorsForModal.currentErrors}
+						goNext={skip}
+						onClose={closeModal}
+						isCritical={errorsForModal.isCritical}
+					/>
+				)}
 				<Waiting status={waiting}>
 					<div className="waiting-orchestrator">
 						Initialisation des données de suggestion...

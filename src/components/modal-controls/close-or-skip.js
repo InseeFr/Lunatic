@@ -1,18 +1,9 @@
 import React from 'react';
-import Button from '../button';
 import D from '../../i18n';
+import Button from '../button';
 
-function CloseOrSkip({ errors, onClose, onSkip }) {
-	const flattenErrors = Object.values(errors).flat();
-	const bloc = flattenErrors.reduce(function (
-		status,
-		{ criticality, typeOfControl }
-	) {
-		return status || (typeOfControl === 'FORMAT' && criticality === 'ERROR');
-	},
-	false);
-
-	if (bloc) {
+function CloseOrSkip({ errors, onClose, onSkip, isCritical }) {
+	if (isCritical) {
 		return (
 			<div className="modal-buttons">
 				<Button className="modal-button" onClick={onClose}>

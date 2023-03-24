@@ -1,16 +1,19 @@
 import { ReactNode } from 'react';
+import { ExpressionLogger } from './commons/execute-expression/create-execute-expression';
 import {
 	ComponentType,
 	ControlType,
 	LunaticSource,
 	Variable,
 } from './type-source';
-import { ExpressionLogger } from './commons/execute-expression/create-execute-expression';
 import { SuggesterStatus } from './use-suggesters';
 
 export type LunaticComponentDefinition<
 	T extends ComponentType['componentType'] = ComponentType['componentType']
-> = ComponentType & { componentType: T };
+> = ComponentType & {
+	componentType: T;
+	errors?: Record<string, Array<LunaticError>>;
+};
 export type LunaticControl = ControlType;
 
 export type VTLBindings = { [variableName: string]: unknown };
@@ -137,12 +140,7 @@ export type LunaticState = {
 	};
 	// TODO : Explain this
 	waiting: boolean;
-	// Errors for the form
-	errors?: { [page: string]: { [id: string]: LunaticError[] } };
-	// Contains the errors for the current page / iteration
-	currentErrors?: { [id: string]: LunaticError[] };
-	// Errors
-	modalErrors?: Record<string, LunaticError[]>;
+
 	// Handler to call when updating a value
 	handleChange: (
 		response: { name: string },

@@ -1,12 +1,12 @@
-import reduceOnInit from './reduce-on-init';
-import reduceGoPreviousPage from './reduce-go-previous-page';
+import { Action, ActionKind } from '../actions';
+import { LunaticState } from '../type';
 import reduceGoNextPage from './reduce-go-next-page';
+import reduceGoPreviousPage from './reduce-go-previous-page';
 import reduceGoToPage from './reduce-go-to-page';
 import reduceHandleChange from './reduce-handle-change';
+import reduceOnInit from './reduce-on-init';
 import reduceOnSetWaiting from './reduce-on-set-waiting';
-import { LunaticState } from '../type';
 import { reduceUpdateState } from './reduce-update-state';
-import { Action, ActionKind } from '../actions';
 
 function reducer(state: LunaticState, action: Action): LunaticState {
 	switch (action.type) {

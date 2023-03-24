@@ -1,4 +1,3 @@
-import * as actions from './actions';
 import {
 	FunctionComponent,
 	useCallback,
@@ -6,20 +5,21 @@ import {
 	useMemo,
 	useReducer,
 } from 'react';
-import { LunaticData, LunaticState } from './type';
+import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
+import { LunaticData, LunaticState } from './type';
 
-import { COLLECTED } from '../utils/constants';
 import D from '../i18n';
-import INITIAL_STATE from './initial-state';
-import { LunaticSource } from './type-source';
-import { createLunaticProvider } from './lunatic-context';
+import { COLLECTED } from '../utils/constants';
 import { getQuestionnaireData } from './commons/get-data';
+import INITIAL_STATE from './initial-state';
+import { createLunaticProvider } from './lunatic-context';
+import { LunaticSource } from './type-source';
 // @ts-ignore
-import { loadSuggesters } from '../utils/store-tools/auto-load';
+import compileControlsLib from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
-import reducer from './reducer';
 import { useLoopVariables } from './hooks/use-loop-variables';
+import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
@@ -76,7 +76,7 @@ function useLunatic(
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, waiting, modalErrors, errors, currentErrors, overview } =
+	const { pager, waiting, overview, pages, executeExpression, isInLoop } =
 		state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
@@ -112,25 +112,11 @@ function useLunatic(
 		suggesters,
 	});
 
-	const getErrors = useCallback(
+	const compileControls = useCallback(
 		function () {
-			return errors;
+			return compileControlsLib({ pager, pages, isInLoop, executeExpression });
 		},
-		[errors]
-	);
-
-	const getModalErrors = useCallback(
-		function () {
-			return modalErrors;
-		},
-		[modalErrors]
-	);
-
-	const getCurrentErrors = useCallback(
-		function () {
-			return currentErrors;
-		},
-		[currentErrors]
+		[pager, pages, isInLoop, executeExpression]
 	);
 
 	const goPreviousPage = useCallback(
@@ -229,9 +215,7 @@ function useLunatic(
 		goPreviousPage,
 		goNextPage,
 		goToPage,
-		getErrors,
-		getModalErrors,
-		getCurrentErrors,
+		compileControls,
 		pageTag,
 		isFirstPage,
 		isLastPage,
