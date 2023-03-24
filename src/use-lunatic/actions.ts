@@ -15,7 +15,7 @@ export type ActionHandleChange = {
 	payload: {
 		response: { name: string };
 		value: unknown;
-		args: {
+		args?: {
 			loop?: boolean;
 			length?: number;
 			index?: number;
