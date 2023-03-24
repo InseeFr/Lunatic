@@ -6,7 +6,6 @@
     "feat/autofocusable-components",
     "feat/loop-of-loop",
     "feat/autofocus-components",
-    "fix/controls",
     "develop",
     "test/unit-components"
   ]
