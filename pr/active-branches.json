@@ -8,7 +8,6 @@
     "feat/autofocus-components",
     "fix/controls",
     "develop",
-    "feat/trevas",
     "test/unit-components"
   ]
 }
