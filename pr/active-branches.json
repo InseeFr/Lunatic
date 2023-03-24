@@ -10,7 +10,6 @@
     "fix/controls",
     "develop",
     "doc/props-types",
-    "fix/cleaning-loop",
     "feat/trevas",
     "test/unit-components"
   ]
