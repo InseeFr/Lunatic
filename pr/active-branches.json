@@ -1,6 +1,5 @@
 {
   "branches": [
-    "feat/suggester-status",
     "test/create-refresh-calculated",
     "feat/missing-missing-strategy",
     "test/create-expression",
