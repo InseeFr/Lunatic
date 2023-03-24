@@ -12,7 +12,7 @@ export function getPageTag(pager: LunaticState['pager']): string {
 	return `${page}`;
 }
 
-export function getPagerFromPageTag(pageTag: string) {
+export function getPagerFromPageTag(pageTag: string = '1') {
 	const pattern =
 		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?/g;
 	const match = [...(pageTag?.matchAll(pattern) as any)] as

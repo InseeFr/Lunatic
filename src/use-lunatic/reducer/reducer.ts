@@ -6,6 +6,7 @@ import reduceGoToPage from './reduce-go-to-page';
 import reduceHandleChange from './reduce-handle-change';
 import reduceOnInit from './reduce-on-init';
 import reduceOnSetWaiting from './reduce-on-set-waiting';
+import { reduceUpdateState } from './reduce-update-state';
 
 function reducer(state: LunaticState, action: Action): LunaticState {
 	switch (action.type) {
@@ -21,6 +22,8 @@ function reducer(state: LunaticState, action: Action): LunaticState {
 			return reduceHandleChange(state, action);
 		case ActionKind.ON_SET_WAITING:
 			return reduceOnSetWaiting(state, action);
+		case ActionKind.UPDATE_STATE:
+			return reduceUpdateState(state, action);
 		default:
 			return state;
 	}

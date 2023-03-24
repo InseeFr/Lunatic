@@ -12,7 +12,14 @@ function fillFromState(
 	component: LunaticComponentDefinition,
 	state: LunaticState
 ) {
-	const { handleChange, executeExpression, preferences, goToPage, shortcut } = state;
+	const {
+		handleChange,
+		executeExpression,
+		preferences,
+		goToPage,
+		shortcut,
+		getSuggesterStatus,
+	} = state;
 	return {
 		...component,
 		handleChange,
@@ -20,6 +27,7 @@ function fillFromState(
 		preferences,
 		goToPage,
 		shortcut,
+		getSuggesterStatus,
 	};
 }
 
