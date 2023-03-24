@@ -77,6 +77,10 @@ function onLogChange(response, value, args) {
 	console.log('onChange', { response, value, args });
 }
 
+function logMissingStrategy() {
+	console.log('no missing strategy');
+}
+
 function OrchestratorForStories({
 	source,
 	data,
@@ -87,8 +91,7 @@ function OrchestratorForStories({
 	initialPage = '1',
 	getStoreInfo = getStoreInfoRequired,
 	missing = false,
-	activeGoNextForMissing = false,
-	missingStrategy = () => console.log('no missing strategy'),
+	missingStrategy = logMissingStrategy,
 	missingShortcut,
 	autoSuggesterLoading,
 	addExternal,
