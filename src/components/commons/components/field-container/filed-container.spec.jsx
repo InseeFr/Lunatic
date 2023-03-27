@@ -16,10 +16,7 @@ describe('FieldContainer', () => {
 		render(<FieldContainer management={true}>Test Children</FieldContainer>);
 		expect(screen.getByText('Test Children')).toHaveClass('field-with-tooltip');
 	});
-	// it('renders the tooltip if management is true', () => {
-	// 	render(<FieldContainer management={true}>Test Children</FieldContainer>);
-	// 	expect(screen.getByRole('tooltip')).toBeInTheDocument();
-	// });
+
 	it('does not render the tooltip if management is false', () => {
 		render(<FieldContainer management={false}>Test Children</FieldContainer>);
 		expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
