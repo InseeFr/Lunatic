@@ -29,7 +29,7 @@ describe('Selection component', () => {
 					<div>{option ? option.label : 'No selection'}</div>
 				)}
 				options={options}
-				editable={true}
+				editable
 			/>
 		);
 
