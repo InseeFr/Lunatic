@@ -1,10 +1,10 @@
+import { ReactNode } from 'react';
+import { isObject } from '../../../utils/is-object';
 import {
 	LunaticComponentDefinition,
 	LunaticExpression,
 	LunaticState,
 } from '../../type';
-import { ReactNode } from 'react';
-import { isObject } from '../../../utils/is-object';
 
 const VTL_ATTRIBUTES = [
 	'label',
@@ -17,8 +17,9 @@ const VTL_ATTRIBUTES = [
 	'description',
 	'responses.description',
 	'options.description',
-	'controls.control',
-	'controls.errorMessage',
+	// Disable controls compilation
+	// 'controls.control',
+	// 'controls.errorMessage',
 	'lines.min',
 	'lines.max',
 	'iterations',
