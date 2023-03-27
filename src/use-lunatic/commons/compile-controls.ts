@@ -35,6 +35,7 @@ function validateComponents(
 				[idC]: componentErrors,
 			});
 		}
+
 		//Thanks to init which split basic Loops, we only go into unPaginatedLoops
 		if (isLoopComponent(component)) {
 			const { components } = component;

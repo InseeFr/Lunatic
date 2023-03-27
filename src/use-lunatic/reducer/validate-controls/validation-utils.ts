@@ -7,7 +7,7 @@ function resolveControl(
 	control: LunaticControl
 ): LunaticError | undefined {
 	const { executeExpression } = state;
-	const { iteration, shallowIteration, linksIterations } = state.pager ?? {};
+	const { iteration, linksIterations } = state.pager ?? {};
 	const { criticality, errorMessage, id, typeOfControl } = control;
 	const { control: { value = 'true' } = {} } = control;
 	try {
