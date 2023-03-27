@@ -32,8 +32,6 @@ export type LunaticError = Pick<
 	ControlType,
 	'id' | 'criticality' | 'typeOfControl'
 > & {
-	formula: string;
-	labelFormula: string;
 	errorMessage: ReactNode;
 };
 
