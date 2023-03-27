@@ -40,29 +40,6 @@ describe('InputNumber', () => {
 		expect(input).toHaveValue(10);
 	});
 
-	// it('renders input element with correct props', () => {
-	// 	const { getByRole } = render(
-	// 		<InputNumber
-	// 			id="input-number-test"
-	// 			value={5}
-	// 			disabled={true}
-	// 			readOnly={true}
-	// 			labelId="input-number-label"
-	// 			min={1}
-	// 			max={10}
-	// 			step={1}
-	// 		/>
-	// 	);
-	// 	const input = getByRole('spinbutton');
-	// 	expect(input).toHaveAttribute('id', 'input-number-test');
-	// 	expect(input).toHaveAttribute('disabled');
-	// 	expect(input).toHaveAttribute('readonly');
-	// 	expect(input).toHaveAttribute('labelledby', 'input-number-label');
-	// 	expect(input).toHaveAttribute('min', '1');
-	// 	expect(input).toHaveAttribute('max', '10');
-	// 	expect(input).toHaveAttribute('step', '1');
-	// 	expect(`${input.value}`).toEqual('5');
-	// });
 
 	it('calls onChange with parsed value', () => {
 		const { container } = render(
