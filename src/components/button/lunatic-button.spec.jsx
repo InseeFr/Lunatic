@@ -55,7 +55,7 @@ describe('Button', () => {
 		expect(input).toHaveAttribute('value', label);
 	});
 
-	it('applique la classe disabled lorsque la prop disabled est true', () => {
+	it('renders the disabled class when the disabled prop is true', () => {
 		const { getByText } = render(
 			<Button onClick={() => {}} disabled={true}>
 				Cliquez ici
