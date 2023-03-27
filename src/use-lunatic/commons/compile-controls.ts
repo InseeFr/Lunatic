@@ -6,6 +6,7 @@ import {
 	LunaticState,
 } from '../type';
 import { Criticality, TypeOfControl } from '../type-source';
+import fillComponentExpressions from './fill-components/fill-component-expressions';
 import getComponentsFromState from './get-components-from-state';
 import getErrorsWithoutEmptyValue from './get-errors-without-empty-value';
 
@@ -23,7 +24,7 @@ function validateComponents(
 ): Record<string, LunaticError[]> {
 	const { pager } = state;
 	return components.reduce(function (errors, component) {
-		const { controls, componentType, id } = component;
+		const { controls, id } = component;
 		if (Array.isArray(controls)) {
 			const componentErrors = resolveComponentControls(state, controls);
 			const { shallowIteration } = pager;
@@ -65,7 +66,14 @@ function isCriticalErrors(errors?: Record<string, LunaticError[]>): boolean {
 
 function computeErrors(state: StateForControls) {
 	const components = getComponentsFromState(state);
-	const errors = validateComponents(state, components);
+	const componentFiltered = components
+		.map(function (component) {
+			return fillComponentExpressions(component, state);
+		})
+		.filter(({ conditionFilter }) => {
+			return conditionFilter !== undefined ? conditionFilter : true;
+		});
+	const errors = validateComponents(state, componentFiltered);
 	const currentErrors = Object.keys(errors).length > 0 ? errors : undefined;
 	const isCritical = isCriticalErrors(currentErrors);
 	return { currentErrors, isCritical };
