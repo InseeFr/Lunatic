@@ -69,7 +69,7 @@ async function searching(search, { name, version = '1' }) {
 			return {
 				results: prepare(
 					getOrderingFunction(order)(
-						filterSize(computeScore(documents), max),
+						filterSize(computeScore(documents, tokens), max),
 						order
 					)
 				),

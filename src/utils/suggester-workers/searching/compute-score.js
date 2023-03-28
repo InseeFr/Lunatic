@@ -1,25 +1,25 @@
-function sort(withScore, max) {
-	return withScore
-		.sort(function (a, b) {
-			if (a.score > b.score) {
-				return -1;
-			}
-			if (a.score < b.score) {
-				return 1;
-			}
-			return 0;
-		})
-		.slice(0, max);
+import { melotoOrder } from './meloto-order';
+
+function sort(withScore) {
+	return withScore.sort(function (a, b) {
+		if (a.score > b.score) {
+			return -1;
+		}
+		if (a.score < b.score) {
+			return 1;
+		}
+		return 0;
+	});
 }
 
-function computeScore(documents, max = 30) {
+function computeScore(documents, tokens) {
 	const withScore = documents.map(function (doc) {
 		const { tokensSearch } = doc;
 		const score = Object.keys(tokensSearch).length;
 		return { ...doc, score };
 	});
 
-	return sort(withScore, max);
+	return melotoOrder(sort(withScore), tokens);
 }
 
 export default computeScore;
