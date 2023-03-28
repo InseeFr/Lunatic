@@ -12,14 +12,14 @@ function sort(withScore) {
 	});
 }
 
-function computeScore(documents, tokens) {
+function computeScore(documents, tokens, meloto = true) {
 	const withScore = documents.map(function (doc) {
 		const { tokensSearch } = doc;
 		const score = Object.keys(tokensSearch).length;
 		return { ...doc, score };
 	});
 
-	return melotoOrder(sort(withScore), tokens);
+	return melotoOrder(sort(withScore), tokens, meloto);
 }
 
 export default computeScore;

@@ -50,7 +50,7 @@ function filterSize(documents, max) {
 	return documents;
 }
 
-async function searching(search, { name, version = '1' }) {
+async function searching(search, { name, version = '1', meloto = true }) {
 	try {
 		if (isValideSearch(search)) {
 			const db = await getDb(name, version);
@@ -69,7 +69,7 @@ async function searching(search, { name, version = '1' }) {
 			return {
 				results: prepare(
 					getOrderingFunction(order)(
-						filterSize(computeScore(documents, tokens), max),
+						filterSize(computeScore(documents, tokens, meloto), max),
 						order
 					)
 				),
