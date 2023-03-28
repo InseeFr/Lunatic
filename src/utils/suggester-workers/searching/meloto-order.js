@@ -4,18 +4,21 @@ function value(entity, tokens) {
 	const { suggestion } = entity;
 	const { label } = suggestion;
 	const prepared = prepare(label);
-	return tokens.reduce(function (score, token, i) {
-		const index = prepared.search(token);
-		if (index >= 0) {
-			let how = label.length - index;
-			how /= label.length;
-			let weight = tokens.length - i;
-			weight /= tokens.length;
-			return score + how * weight;
-		}
+	if (label && label.length) {
+		return tokens.reduce(function (score, token, i) {
+			const index = prepared.search(token);
+			if (index >= 0) {
+				let how = label.length - index;
+				how /= label.length;
+				let weight = tokens.length - i;
+				weight /= tokens.length;
+				return score + how * weight;
+			}
 
-		return score;
-	}, 0);
+			return score;
+		}, 0);
+	}
+	return 0;
 }
 
 function permute(entities, i, j) {
