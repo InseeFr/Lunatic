@@ -1,6 +1,6 @@
 import prepare from '../commons-tokenizer/prepare-string-indexation';
 
-function value(entity, tokens) {
+export function value(entity, tokens) {
 	const { suggestion } = entity;
 	const { label } = suggestion;
 	const prepared = prepare(label);
@@ -27,19 +27,22 @@ function permute(entities, i, j) {
 	entities[j] = tmp;
 }
 
-export function melotoOrder(entities, tokens) {
-	let isPermute = true;
-	while (isPermute) {
-		isPermute = false;
-		for (let i = 0; i < entities.length - 2; i++) {
-			const a = entities[i];
-			const b = entities[i + 1];
-			if (a.score === b.score) {
-				const sa = value(a, tokens);
-				const sb = value(b, tokens);
-				if (sb > sa) {
-					permute(entities, i, i + 1);
-					isPermute = true;
+export function melotoOrder(entities, tokens, active = true) {
+	if (active) {
+		let isPermute = true;
+		while (isPermute) {
+			isPermute = false;
+
+			for (let i = 0; i < entities.length - 1; i++) {
+				const a = entities[i];
+				const b = entities[i + 1];
+				if (a.score === b.score) {
+					const sa = value(a, tokens);
+					const sb = value(b, tokens);
+					if (sb > sa) {
+						permute(entities, i, i + 1);
+						isPermute = true;
+					}
 				}
 			}
 		}
