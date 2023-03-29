@@ -9,6 +9,7 @@
     "develop",
     "test/unit-components",
     "feat/suggester-meloto",
-    "feat/jsonQuestionnaire"
+    "feat/jsonQuestionnaire",
+    "test/component-tests"
   ]
 }
