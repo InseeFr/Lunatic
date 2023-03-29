@@ -41,7 +41,6 @@ function LunaticComponent(props) {
 		handleChange,
 	} = props;
 	const labelId = `label-${id}`;
-	console.log('Current declaration', declarations);
 	const content = (
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
