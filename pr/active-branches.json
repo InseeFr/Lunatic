@@ -10,6 +10,7 @@
     "test/unit-components",
     "feat/suggester-meloto",
     "feat/jsonQuestionnaire",
-    "fix/controls"
+    "fix/controls",
+    "ref/components-ts"
   ]
 }
