@@ -9,21 +9,18 @@ describe('CheckboxGroupContent', () => {
 			checked: false,
 			name: 'option1',
 			onClick: vi.fn(),
-			description: 'This is option 1',
 		},
 		{
 			label: 'Option 2',
 			checked: true,
 			name: 'option2',
 			onClick: vi.fn(),
-			description: 'This is option 2',
 		},
 		{
 			label: 'Option 3',
 			checked: false,
 			name: 'option3',
 			onClick: vi.fn(),
-			description: 'This is option 3',
 		},
 	];
 

@@ -15,7 +15,12 @@ describe('CloseOrSkip', () => {
 			],
 		};
 		const { getByText, queryByText } = render(
-			<CloseOrSkip errors={errors} onClose={onClose} onSkip={onSkip} />
+			<CloseOrSkip
+				errors={errors}
+				onClose={onClose}
+				onSkip={onSkip}
+				isCritical
+			/>
 		);
 
 		expect(queryByText('Ignore')).toBeNull();

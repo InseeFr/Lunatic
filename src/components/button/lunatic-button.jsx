@@ -10,7 +10,7 @@ function Button({ children, onClick, disabled, label, className }) {
 		function (e) {
 			e.stopPropagation();
 			e.preventDefault();
-			onClick(e);
+			onClick?.(e);
 		},
 		[onClick]
 	);
@@ -43,7 +43,7 @@ function Button({ children, onClick, disabled, label, className }) {
 Button.propTypes = {
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	disabled: PropTypes.bool,
-	onClick: PropTypes.func.isRequired,
+	onClick: PropTypes.func,
 };
 
 export default createCustomizableLunaticField(Button, 'Button');
