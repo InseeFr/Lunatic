@@ -21,3 +21,8 @@ declare module 'antlr4' {
 		InputStream: InputStream,
 	};
 }
+
+declare module '*.png' {
+	const url: string;
+	export default url;
+}

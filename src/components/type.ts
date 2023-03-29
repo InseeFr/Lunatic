@@ -1,19 +1,19 @@
-import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import {
 	LunaticComponentDefinition,
 	LunaticError,
 	LunaticExpression,
 	LunaticState,
 } from '../use-lunatic/type';
+import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
-type SharedProps<ValueType> = {
+export type LunaticBaseProps<ValueType = unknown> = {
 	id: string;
 	handleChange: (
 		response: { name: string },
 		value: ValueType,
-		args: Record<string, unknown>
+		args?: Record<string, unknown>
 	) => void;
-	errors?: Record<string, LunaticError[]>;
+	errors?: { [id: string]: LunaticError[] };
 	preferences: LunaticState['preferences'];
 	declarations?: {
 		id: string;
@@ -24,9 +24,14 @@ type SharedProps<ValueType> = {
 	label: ReactNode;
 	disabled?: boolean;
 	missing?: unknown;
-	missingResponse?: unknown;
+	missingResponse?: { name: string; value?: unknown };
 	management?: LunaticState['management'];
-	description?: ReactNode;
+	description?:
+		| ReactNode
+		| {
+				label: ReactNode;
+				declarationType: string;
+		  }[];
 	shortcut?: boolean;
 	required?: boolean;
 	value: null | ValueType;
@@ -45,24 +50,24 @@ type SuggesterOption = {
 };
 
 type ComponentPropsByType = {
-	InputNumber: SharedProps<number> & {
+	InputNumber: LunaticBaseProps<number | null> & {
 		min: number;
 		max: number;
 		decimals: number;
 		unit?: string;
 		response: { name: string };
 	};
-	Input: SharedProps<string> & {
+	Input: LunaticBaseProps<string> & {
 		maxLength?: number;
 		value: null | string;
 		response: { name: string };
 	};
 	Sequence: Pick<
-		SharedProps<string>,
+		LunaticBaseProps<string>,
 		'id' | 'declarations' | 'label' | 'style'
 	>;
-	Subsequence: Pick<SharedProps<string>, 'id' | 'declarations' | 'label'>;
-	RosterForLoop: SharedProps<unknown> & {
+	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'declarations' | 'label'>;
+	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
 		components: LunaticComponentDefinition[];
@@ -72,7 +77,7 @@ type ComponentPropsByType = {
 		headers?: Array<{ label: LunaticExpression }>;
 		paginatedLoop?: boolean;
 	};
-	Loop: SharedProps<unknown> & {
+	Loop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
 		components: LunaticComponentDefinition[];
@@ -82,50 +87,56 @@ type ComponentPropsByType = {
 		headers?: Array<{ label: LunaticExpression }>;
 		paginatedLoop?: boolean;
 	};
-	Table: SharedProps<unknown> & {
-		header: Array<{ label: LunaticExpression }>;
+	Table: LunaticBaseProps<unknown> & {
+		header: Array<{
+			label: LunaticExpression;
+			rowspan?: number;
+			colspan?: number;
+		}>;
 		body: Array<Array<{ label: LunaticExpression }>>;
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};
-	Datepicker: SharedProps<string> & {
+	Datepicker: LunaticBaseProps<string> & {
 		min?: string;
 		max?: string;
 		value: null | string;
 		response: { name: string };
 	};
-	CheckboxGroup: SharedProps<Record<string, boolean | null>> & {
+	CheckboxGroup: LunaticBaseProps<Record<string, boolean | null>> & {
 		responses: Array<{
 			id: string;
 			label: ReactNode;
 			response: { name: string };
 		}>;
 	};
-	CheckboxOne: SharedProps<string> & {
+	CheckboxOne: LunaticBaseProps<string> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
 	};
-	CheckboxBoolean: SharedProps<string> & {
+	CheckboxBoolean: LunaticBaseProps<string> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
 	};
-	Radio: SharedProps<string> & {
+	Radio: LunaticBaseProps<string> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		checkboxStyle?: boolean;
 		response: { name: string };
 	};
-	Dropdown: SharedProps<string> & {
+	Dropdown: LunaticBaseProps<string> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
+		writable?: boolean;
 	};
-	Textarea: SharedProps<string> & {
+	Textarea: LunaticBaseProps<string> & {
 		cols?: number;
+		placeHolder?: string;
 		maxLength?: number;
 		rows?: number;
 		response: { name: string };
 	};
-	FilterDescription: Pick<SharedProps<string>, 'id' | 'label'>;
-	PairwiseLinks: SharedProps<string> & {
+	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'>;
+	PairwiseLinks: LunaticBaseProps<string> & {
 		components: LunaticComponentDefinition[];
 		features?: LunaticState['features'];
 		executeExpression: LunaticState['executeExpression'];
@@ -134,7 +145,7 @@ type ComponentPropsByType = {
 		symLinks: Record<string, Record<string, string>>;
 		value: Record<string, unknown[]>;
 	};
-	Suggester: SharedProps<string> & {
+	Suggester: LunaticBaseProps<string> & {
 		storeName: string;
 		optionRendered: FunctionComponent<{
 			option: SuggesterOption;
@@ -152,5 +163,5 @@ type ComponentPropsByType = {
 	};
 };
 
-export type ComponentProps<T extends keyof ComponentPropsByType> =
+export type LunaticComponentProps<T extends keyof ComponentPropsByType> =
 	ComponentPropsByType[T];
