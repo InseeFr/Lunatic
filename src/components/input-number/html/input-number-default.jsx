@@ -49,7 +49,7 @@ function InputNumberDefault({
 
 InputNumberDefault.propTypes = {
 	id: PropTypes.string.isRequired,
-	labelId: PointerEvent.string,
+	labelId: PropTypes.string,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,

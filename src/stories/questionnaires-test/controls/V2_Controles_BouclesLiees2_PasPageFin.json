@@ -109,7 +109,7 @@
 					"id": "kyn3wfvd-CI-0",
 					"criticality": "WARN",
 					"control": {
-						"value": "not(cast(nvl(NBHAB,\"0\"),integer) > 5)",
+						"value": "not(cast(nvl(NBHAB,0),integer) > 5)",
 						"type": "VTL"
 					},
 					"errorMessage": { "value": "supérieur à 5", "type": "VTL|MD" },
@@ -144,8 +144,8 @@
 			"bindingDependencies": ["NBHAB", "PRENOM"],
 			"loopDependencies": ["NBHAB"],
 			"lines": {
-				"min": { "value": "cast(nvl(NBHAB ,\"1\"),integer)", "type": "VTL" },
-				"max": { "value": "cast(nvl(NBHAB ,\"1\"),integer)", "type": "VTL" }
+				"min": { "value": "cast(nvl(NBHAB ,1),integer)", "type": "VTL" },
+				"max": { "value": "cast(nvl(NBHAB ,1),integer)", "type": "VTL" }
 			},
 			"components": [
 				{

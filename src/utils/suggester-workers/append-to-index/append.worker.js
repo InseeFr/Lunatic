@@ -14,3 +14,5 @@ self.onmessage = function (e) {
 		}
 	);
 };
+
+export const test = 'test';

@@ -15,6 +15,25 @@
 	font-weight: normal;
 }
 
+@mixin icon($name) {
+	&::before {
+		--icon-size: 2rem;
+		display: block;
+		float: left;
+		flex: 0 0 auto;
+		background-color: white;
+		width: var(--icon-size);
+		height: var(--icon-size);
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+		-webkit-mask-image: url($name);
+		mask-image: url($name);
+		content: '';
+		margin-left: -48px;
+		margin-top: 12px;
+	}
+}
+
 .lunatic-component {
 	.lunatic-suggester-message-error {
 		border: solid 1px darkred;
@@ -55,6 +74,10 @@
 							font-size: 15px;
 							padding-left: 4px;
 							@include selection();
+
+							&::placeholder {
+								@include placeholderList();
+							}
 						}
 
 						.lunatic-suggester-selected {
@@ -115,6 +138,37 @@
 						}
 					}
 				}
+			}
+		}
+	}
+
+	.lunatic-notification {
+		line-height: 34px;
+		margin: 2px 2px;
+		padding: 1px 1px 1px 60px;
+
+		&.info {
+			background-color: lightblue;
+			@include icon('./wait-icon.svg');
+		}
+		&.warn {
+			background-color: orange;
+			@include icon('./warn-icon.svg');
+		}
+		&.error {
+			background-color: crimson;
+			@include icon('./alert-icon.svg');
+		}
+
+		.lunatic-notification-container {
+			background-color: white;
+			padding: 0 15px;
+			.title {
+				font-weight: bold;
+				font-size: large;
+				margin-bottom: 3px;
+			}
+			.descrition {
 			}
 		}
 	}

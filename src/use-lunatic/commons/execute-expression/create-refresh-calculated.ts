@@ -19,9 +19,13 @@ type Args = {
  * Refresh calculated variables with the new value in the bindings
  */
 function createRefreshCalculated({ variables, execute, bindings }: Args) {
-	const toRefreshVariables = new Map<string, LunaticVariable>(); // variables calculées dépendantes d'une variable modifiée.
+	/**
+	 * Links beetween calculated and collected variables :
+	 * changes on collected involve changes on correlated variables.
+	 */
+	const toRefreshVariables = new Map<string, LunaticVariable>();
 
-	// à l'init, on y colle toutes les variables de calcul
+	// On start, all calculated variables need to be refresh.
 	Object.values(variables).forEach(function ({ variable }) {
 		const { variableType, name } = variable;
 		if (variableType === CALCULATED) {

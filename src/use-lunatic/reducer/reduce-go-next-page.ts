@@ -1,15 +1,10 @@
-import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
+import { ActionGoNextPage } from '../actions';
 import { getCompatibleVTLExpression, getNewReachedPage } from '../commons';
-import {
-	createControlsReducer,
-	createModalControlsReducer,
-} from './validate-controls';
-import clearPager from '../commons/check-pager';
-import { ExpressionType, LunaticState } from '../type';
-import { reduceToRoundabout } from './reduce-roundabout';
-import { overviewOnChange } from './overview/overview-on-change';
 import compose from '../commons/compose';
-import { ActionGoNextPage, ActionGoToPage } from '../actions';
+import { ExpressionType, LunaticState } from '../type';
+import { isOnEmptyPage, validateLoopConditionFilter } from './commons';
+import { overviewOnChange } from './overview/overview-on-change';
+import { reduceToRoundabout } from './reduce-roundabout';
 
 function getNextPage(state: LunaticState) {
 	const { pager } = state;
@@ -110,7 +105,6 @@ function reduceStartLoop(
 				...newPager,
 				lastReachedPage: getNewReachedPage(newPager),
 			},
-			modalErrors: undefined,
 		};
 	}
 
@@ -135,7 +129,6 @@ function reduceStartLoop(
 				...newPager,
 				lastReachedPage: getNewReachedPage(newPager),
 			},
-			modalErrors: undefined,
 		};
 	}
 	return state;
@@ -186,7 +179,4 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 	return validateChange(reduceNextPage(state, { next }));
 }
 
-export default compose<ActionGoNextPage>(
-	createModalControlsReducer(createControlsReducer(reduceGoNextPage)),
-	overviewOnChange
-);
+export default compose<ActionGoNextPage>(reduceGoNextPage, overviewOnChange);

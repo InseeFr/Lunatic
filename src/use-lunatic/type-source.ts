@@ -59,10 +59,21 @@ export type DeclarationType = {
 
 export type ConditionFilterType = LabelType & { bindingDependencies: string[] };
 
+export enum Criticality {
+	INFO = 'INFO',
+	WARN = 'WARN',
+	ERROR = 'ERROR',
+}
+
+export enum TypeOfControl {
+	FORMAT = 'FORMAT',
+	CONSISTENCY = 'CONSISTENCY',
+}
+
 export type ControlType = {
 	id: string;
-	criticality: 'INFO' | 'WARN' | 'ERROR';
-	typeOfControl: 'FORMAT' | 'CONSISTENCY';
+	criticality: Criticality;
+	typeOfControl: TypeOfControl;
 	control: LabelType;
 	errorMessage: LabelType;
 	bindingDependencies: string[];
@@ -256,7 +267,7 @@ export type SuggesterType = {
 		params: { language: string; pattern: string; min?: number };
 	};
 	url?: string;
-	version: string;
+	version: number;
 };
 
 export type Variable =

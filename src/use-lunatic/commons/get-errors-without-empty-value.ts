@@ -1,4 +1,4 @@
-import { LunaticError, LunaticState } from '../type';
+import { LunaticError } from '../type';
 
 /**
  * Keep errors with at least one error inside
@@ -12,7 +12,7 @@ function getErrorsWithoutEmptyValue(
 					([_, value]) => Array.isArray(value) && value.length
 				)
 		  )
-		: ({} satisfies LunaticState['errors']);
+		: {};
 }
 
 export default getErrorsWithoutEmptyValue;

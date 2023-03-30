@@ -1,0 +1,146 @@
+{
+	"maxPage": "5",
+	"suggesters": [
+		{
+			"name": "naf-rev2",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 2
+				},
+				{ "name": "id" }
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w.]+" }
+			},
+			"version": "1"
+		},
+		{
+			"name": "cog-communes",
+			"fields": [{ "name": "id", "rules": "soft" }],
+			"queryParser": { "type": "soft" },
+			"version": "1"
+		},
+		{
+			"name": "in-error",
+			"fields": [{ "name": "id", "rules": "soft" }],
+			"queryParser": { "type": "soft" },
+			"version": "1"
+		}
+	],
+	"components": [
+		{
+			"id": "suggestions-naf",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": {
+				"value": "\"Code ou terme des libellés de la Naf-rev2\"",
+				"type": "VTL|MD"
+			},
+			"description": { "value": "Exemple: 01 ou tabac", "type": "VTL|MD" },
+			"storeName": "naf-rev2",
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"response": {
+				"name": "HELLO"
+			},
+			"missingResponse": { "name": "HELLO_MISSING" },
+			"page": "1"
+		},
+		{
+			"id": "suggestions-cog",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "\"Hello!\"",
+			"storeName": "cog-communes",
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"response": {
+				"name": "HELLO"
+			},
+			"missingResponse": { "name": "HELLO_MISSING" },
+			"page": "2"
+		},
+		{
+			"id": "suggestions-inconnu",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "\"Hello!\"",
+			"storeName": "inconnu-au-bataillon",
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"response": {
+				"name": "HELLO"
+			},
+			"missingResponse": { "name": "HELLO_MISSING" },
+			"page": "3"
+		},
+		{
+			"id": "suggestions-in-error",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": "\"Hello!\"",
+			"storeName": "in-error",
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"missingResponse": { "name": "HELLO_MISSING" },
+			"response": {
+				"name": "HELLO"
+			},
+			"page": "4"
+		},
+		{
+			"id": "bye!",
+			"componentType": "Sequence",
+			"page": "5",
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Merci beaucoup.\"",
+						"type": "VTL|MD"
+					}
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "HELLO",
+			"componentRef": "nn",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "HELLO_MISSING",
+			"componentRef": "nn",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

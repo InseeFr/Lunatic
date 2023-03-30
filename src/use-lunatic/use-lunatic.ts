@@ -1,5 +1,3 @@
-import * as actions from './actions';
-
 import {
 	FunctionComponent,
 	useCallback,
@@ -7,22 +5,25 @@ import {
 	useMemo,
 	useReducer,
 } from 'react';
-import { LunaticData, LunaticState } from './type';
+import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
+import { LunaticData, LunaticState } from './type';
 
-import { COLLECTED } from '../utils/constants';
 import D from '../i18n';
-import INITIAL_STATE from './initial-state';
-import { LunaticSource } from './type-source';
-import { createLunaticProvider } from './lunatic-context';
+import { COLLECTED } from '../utils/constants';
 import { getQuestionnaireData } from './commons/get-data';
+import INITIAL_STATE from './initial-state';
+import { createLunaticProvider } from './lunatic-context';
+import { LunaticSource } from './type-source';
 // @ts-ignore
-import { loadSuggesters } from '../utils/store-tools/auto-load';
+import compileControlsLib from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
-import reducer from './reducer';
 import { useLoopVariables } from './hooks/use-loop-variables';
+import reducer from './reducer';
+import { useSuggesters } from './use-suggesters';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
+const emptyFn = () => {};
 const DEFAULT_DATA = empty as LunaticData;
 const DEFAULT_FEATURES = ['VTL', 'MD'];
 const DEFAULT_PREFERENCES = [COLLECTED];
@@ -44,14 +45,13 @@ function useLunatic(
 		shortcut = false,
 		initialPage = '1',
 		autoSuggesterLoading = false,
-		suggesters: suggestersConfiguration,
-		suggesterFetcher,
 		activeControls = false,
+		getReferentiel,
 		custom = empty,
 		// Calculate an overview of every sequence (will be exposed as "overview")
 		withOverview = false,
 		missing = false,
-		missingStrategy = () => {},
+		missingStrategy = emptyFn,
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
@@ -66,11 +66,7 @@ function useLunatic(
 		shortcut?: boolean;
 		initialPage?: string;
 		autoSuggesterLoading?: boolean;
-		suggesters?: Record<
-			string,
-			{ version?: string; fields?: string[]; stopWords: string[]; url: string }
-		>;
-		suggesterFetcher?: typeof fetch;
+		getReferentiel?: (name: string) => Promise<Array<unknown>>;
 		activeControls?: boolean;
 		custom?: Record<string, FunctionComponent<unknown>>;
 		withOverview?: boolean;
@@ -83,7 +79,7 @@ function useLunatic(
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, waiting, modalErrors, errors, currentErrors, overview } =
+	const { pager, waiting, overview, pages, executeExpression, isInLoop } =
 		state;
 	const components = useComponentsFromState(state);
 	const { suggesters } = source;
@@ -115,56 +111,17 @@ function useLunatic(
 		]
 	);
 
-	useEffect(() => {
-		(async () => {
-			if (
-				autoSuggesterLoading &&
-				typeof suggestersConfiguration === 'object' &&
-				Object.values(suggestersConfiguration).length > 0
-			) {
-				const s = suggesters.reduce(function (current, storeInfo) {
-					const { name } = storeInfo;
-					if (!suggestersConfiguration[name]) return current;
-					return {
-						...current,
-						[name]: {
-							...storeInfo,
-							url: suggestersConfiguration[name].url,
-							stopWords: suggestersConfiguration[name].stopWords,
-						},
-					};
-				}, {} as Record<string, { url: string; stopWords: string[] }>);
-				dispatch(actions.onSetWaiting(true));
-				await loadSuggesters(suggesterFetcher)(s);
-				dispatch(actions.onSetWaiting(false));
-			}
-		})();
-	}, [
-		autoSuggesterLoading,
-		suggesterFetcher,
-		suggestersConfiguration,
+	const getSuggesterStatus = useSuggesters({
+		auto: autoSuggesterLoading,
+		getReferentiel,
 		suggesters,
-	]);
+	});
 
-	const getErrors = useCallback(
+	const compileControls = useCallback(
 		function () {
-			return errors;
+			return compileControlsLib({ pager, pages, isInLoop, executeExpression });
 		},
-		[errors]
-	);
-
-	const getModalErrors = useCallback(
-		function () {
-			return modalErrors;
-		},
-		[modalErrors]
-	);
-
-	const getCurrentErrors = useCallback(
-		function () {
-			return currentErrors;
-		},
-		[currentErrors]
+		[pager, pages, isInLoop, executeExpression]
 	);
 
 	const goPreviousPage = useCallback(
@@ -251,14 +208,19 @@ function useLunatic(
 		]
 	);
 
+	useEffect(
+		function () {
+			dispatch(actions.updateState({ getSuggesterStatus }));
+		},
+		[getSuggesterStatus]
+	);
+
 	return {
 		getComponents,
 		goPreviousPage,
 		goNextPage,
 		goToPage,
-		getErrors,
-		getModalErrors,
-		getCurrentErrors,
+		compileControls,
 		pageTag,
 		isFirstPage,
 		isLastPage,
