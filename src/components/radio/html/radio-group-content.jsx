@@ -1,7 +1,7 @@
 import React from 'react';
-import RadioOption from './radio-option';
-import { useOptionsKeydown } from '../../commons';
 import { getShortcutKey } from '../../checkbox/commons/getShortcutKey';
+import { useOptionsKeydown } from '../../commons';
+import RadioOption from './radio-option';
 
 function RadioGroupContent({
 	options,
@@ -11,7 +11,7 @@ function RadioGroupContent({
 	checkboxStyle = false,
 	shortcut,
 }) {
-	const onKeyDown = useOptionsKeydown(options, onClick);
+	const onKeyDown = useOptionsKeydown(options, checkboxStyle, onClick);
 	const maxIndex = options.length;
 	return options.map(function (option, index) {
 		const { value: valueOption, label, description } = option;
@@ -22,7 +22,9 @@ function RadioGroupContent({
 				key={radioId}
 				id={radioId}
 				index={index}
+				maxIndex={maxIndex}
 				checked={value === valueOption}
+				currentValue={value}
 				onClick={onClick}
 				value={valueOption}
 				onKeyDown={onKeyDown}

@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 
-function useOptionsKeydown(options, onClick) {
+function useOptionsKeydown(options, checkboxStyle, onClick) {
 	const onKeyDown = useCallback(
-		function ({ key, index }) {
+		function ({ key, index, checked }) {
 			const { length } = options;
 
 			if (key === 'ArrowRight' || key === 'ArrowDown') {
@@ -11,9 +11,13 @@ function useOptionsKeydown(options, onClick) {
 			} else if (key === 'ArrowLeft' || key === 'ArrowUp') {
 				const next = index === 0 ? length - 1 : index - 1;
 				onClick(options[next].value);
+			} else if (key === ' ') {
+				checkboxStyle && checked
+					? onClick(null)
+					: onClick(options[index].value);
 			}
 		},
-		[onClick, options]
+		[checkboxStyle, onClick, options]
 	);
 
 	return onKeyDown;

@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { CheckboxOption } from '../../commons';
+import React from 'react';
 import { createCustomizableLunaticField, Errors } from '../../../commons';
+import { CheckboxOption } from '../../commons';
 
 function CheckboxBoolean({
 	checked,
@@ -24,6 +24,7 @@ function CheckboxBoolean({
 				value={checked}
 				label={label}
 				description={description}
+				index={0}
 			/>
 			<Errors errors={errors} activeId={id} />
 		</div>

@@ -28,6 +28,7 @@ function CheckboxGroupContent({ options, id, shortcut }) {
 						description={description}
 						shortcut={shortcut}
 						codeModality={shortcut && codeModality}
+						index={index}
 					/>
 				</CheckboxGroupContainer>
 			</>

@@ -1,14 +1,14 @@
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { createCustomizableLunaticField, Label } from '../../commons';
 import {
 	CheckboxChecked,
 	CheckboxUnchecked,
 	RadioChecked,
 	RadioUnchecked,
 } from '../../commons/icons';
-import { Label, createCustomizableLunaticField } from '../../commons';
-import React, { useCallback, useEffect, useRef } from 'react';
 
-import KeyboardEventHandler from 'react-keyboard-event-handler';
 import classnames from 'classnames';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { useLunaticAutofocus } from '../../../use-lunatic/lunatic-context';
 
 function getIcon(checked, checkboxStyle) {
@@ -28,10 +28,12 @@ function RadioOption({
 	checked,
 	onClick,
 	value,
+	currentValue,
 	id,
 	disabled,
 	onKeyDown,
 	index,
+	maxIndex,
 	labelledBy,
 	checkboxStyle,
 	label,
@@ -39,10 +41,20 @@ function RadioOption({
 	shortcut,
 	codeModality,
 }) {
-	const { autofocusFn } = useLunaticAutofocus();
-	const spanEl = useRef(autofocusFn);
+	const { autofocus, autofocusFn } = useLunaticAutofocus();
+	const [hastoBeFocus] = useState(() => {
+		if (autofocus) {
+			if (checked) return true;
+			if (!currentValue) return index === 0;
+		}
+		return false;
+	});
+	const spanEl = useRef();
 	const Icon = getIcon(checked, checkboxStyle);
-	const tabIndex = checked ? '0' : '-1';
+	const tabIndex =
+		checked || (!currentValue && (index === 0 || index === maxIndex))
+			? '0'
+			: '-1';
 	const onClickOption = useCallback(
 		function () {
 			// on checkboxStyle, clicking on checked value unchecks it, so it acts as if empty answer was clicked
@@ -54,11 +66,15 @@ function RadioOption({
 	const handleKeyDown = useCallback(
 		function (e) {
 			const { key } = e;
-			const { current } = spanEl;
-			onKeyDown({ key, index });
-			current.blur();
+			onKeyDown({ key, index, checked });
+			if (
+				['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', ' '].includes(key)
+			) {
+				e.stopPropagation();
+				e.preventDefault();
+			}
 		},
-		[onKeyDown, index, spanEl]
+		[onKeyDown, index, checked]
 	);
 
 	useEffect(
@@ -71,6 +87,15 @@ function RadioOption({
 		[checked, spanEl, value]
 	);
 
+	useEffect(
+		function () {
+			const { current } = spanEl;
+			if (current && hastoBeFocus) {
+				current.focus();
+			}
+		},
+		[spanEl, hastoBeFocus]
+	);
 	return (
 		<>
 			<div className="lunatic-radio-group-option">

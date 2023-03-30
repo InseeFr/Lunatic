@@ -1,12 +1,12 @@
 import './checkbox-option.scss';
 
-import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
-import { Label, createCustomizableLunaticField } from '../../commons';
 import React, { useCallback } from 'react';
+import { createCustomizableLunaticField, Label } from '../../commons';
+import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
 
-import KeyboardEventHandler from 'react-keyboard-event-handler';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { useLunaticAutofocus } from '../../../use-lunatic/lunatic-context';
 
 function CheckboxOption({
@@ -18,6 +18,7 @@ function CheckboxOption({
 	description,
 	codeModality,
 	shortcut,
+	index,
 }) {
 	const onClickOption = useCallback(
 		function () {
@@ -50,7 +51,7 @@ function CheckboxOption({
 			>
 				<span
 					id={id}
-					ref={autofocusFn}
+					ref={index === 0 ? autofocusFn : null}
 					role="checkbox"
 					className={`lunatic-input-checkbox`}
 					aria-checked={checked}

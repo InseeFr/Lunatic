@@ -1,9 +1,11 @@
-import React, { useRef, useCallback } from 'react';
 import classnames from 'classnames';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { useLunaticAutofocus } from '../../../../use-lunatic/lunatic-context';
 import useDocumentAddEventListener from '../../use-document-add-event-listener';
 import { KEYBOARD_KEY_CODES } from './state-management/reducer/reduce-on-keydown/keyboard-key-codes';
 
 function ComboBoxContent({ children, focused, onFocus, onBlur, onKeyDown }) {
+	const { autofocus } = useLunaticAutofocus();
 	const ref = useRef();
 
 	const onClick = useCallback(
@@ -15,6 +17,10 @@ function ComboBoxContent({ children, focused, onFocus, onBlur, onKeyDown }) {
 		},
 		[ref, onBlur]
 	);
+
+	useEffect(() => {
+		if (autofocus && ref) ref.current.focus();
+	}, [autofocus, ref]);
 
 	useDocumentAddEventListener('mousedown', onClick);
 
