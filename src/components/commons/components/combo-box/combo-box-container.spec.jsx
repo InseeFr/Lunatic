@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ComboBoxContainer from './combo-box-container';
+import { ComboBoxContainer } from './combo-box-container';
 import { expect, it, describe } from 'vitest';
 
 describe('ComboBoxContainer', () => {

@@ -1,15 +1,14 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import displayLabelOrInput from './displayLabelOrInput';
+import { displayLabelOrInput } from './displayLabelOrInput';
 import { describe, it, expect } from 'vitest';
 describe('displayLabelOrInput', () => {
 	const MockComponent = ({ value }) => <div>{value}</div>;
-	const WrappedComponent = displayLabelOrInput(MockComponent, 'Input');
 
 	it('should render Memoized component when name is Input and displayLabel is false', () => {
 		const WrappedComponent = displayLabelOrInput(MockComponent, 'Input');
 		const { getByText } = render(
-			<WrappedComponent editable value="hello" expended />
+			<WrappedComponent editable value="hello" expanded />
 		);
 		expect(getByText('hello')).toBeInTheDocument();
 	});
@@ -17,7 +16,7 @@ describe('displayLabelOrInput', () => {
 	it('should render nothing when name is Input and displayLabel is true', () => {
 		const WrappedComponent = displayLabelOrInput(MockComponent, 'Input');
 		const { container } = render(
-			<WrappedComponent editable={false} value="hello" expended />
+			<WrappedComponent editable={false} value="hello" expanded />
 		);
 		expect(container.firstChild).toBeNull();
 	});
@@ -28,7 +27,7 @@ describe('displayLabelOrInput', () => {
 			'LabelSelection'
 		);
 		const { getByText } = render(
-			<WrappedComponent editable={false} value="hello" expended />
+			<WrappedComponent editable={false} value="hello" expanded />
 		);
 		expect(getByText('hello')).toBeInTheDocument();
 	});
@@ -39,7 +38,7 @@ describe('displayLabelOrInput', () => {
 			'LabelSelection'
 		);
 		const { container } = render(
-			<WrappedComponent editable value="hello" expended />
+			<WrappedComponent editable value="hello" expanded />
 		);
 		expect(container.firstChild).toBeNull();
 	});
