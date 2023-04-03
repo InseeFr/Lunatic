@@ -7,7 +7,6 @@
     "feat/loop-of-loop",
     "feat/autofocus-components",
     "develop",
-    "test/unit-components",
     "feat/suggester-meloto",
     "feat/jsonQuestionnaire",
     "fix/controls",
