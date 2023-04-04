@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import classnames from 'classnames';
 import createCustomizableLunaticField from '../create-customizable-field';
 import safetyLabel from '../safety-label';
@@ -7,7 +7,7 @@ import './fieldset.scss';
 import { LunaticBaseProps } from '../../type';
 
 type Props = PropsWithChildren<{
-	legend?: unknown;
+	legend?: ReactNode;
 	description?: LunaticBaseProps['description'];
 	className?: string;
 }>;

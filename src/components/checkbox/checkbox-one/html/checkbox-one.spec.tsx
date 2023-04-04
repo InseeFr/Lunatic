@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import CheckboxOne from './checkbox-one';
 import { describe, it, expect, vi } from 'vitest';
@@ -17,8 +16,6 @@ describe('CheckboxOne component', () => {
 				value="option-1"
 				id="checkbox-one"
 				onSelect={onSelect}
-				errors={[]}
-				shortcut="c"
 			/>
 		);
 
@@ -36,8 +33,6 @@ describe('CheckboxOne component', () => {
 				label="Checkbox One"
 				description="Choose one option"
 				onSelect={onSelect}
-				errors={[]}
-				shortcut="c"
 			/>
 		);
 

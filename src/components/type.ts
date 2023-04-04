@@ -21,7 +21,7 @@ export type LunaticBaseProps<ValueType = unknown> = {
 		position: string;
 		label: ReactNode;
 	}[];
-	label: ReactNode;
+	label?: ReactNode;
 	disabled?: boolean;
 	missing?: unknown;
 	missingResponse?: { name: string; value?: unknown };
@@ -112,8 +112,12 @@ type ComponentPropsByType = {
 			response: { name: string };
 		}>;
 	};
-	CheckboxOne: LunaticBaseProps<string> & {
-		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
+	CheckboxOne: LunaticBaseProps<string | null> & {
+		options: Array<{
+			description: ReactNode;
+			label: ReactNode;
+			value: string;
+		}>;
 		response: { name: string };
 	};
 	CheckboxBoolean: LunaticBaseProps<string> & {

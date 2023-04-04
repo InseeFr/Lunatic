@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import CheckboxOption from './checkbox-option';
 import { describe, it, expect, vi } from 'vitest';

@@ -1,7 +1,7 @@
-import React from 'react';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../../commons/use-on-handle-change';
 import CheckboxOne from './html/checkbox-one';
+import { LunaticComponentProps } from '../../type';
 
 function LunaticCheckboxOne({
 	id,
@@ -18,7 +18,7 @@ function LunaticCheckboxOne({
 	missing,
 	management,
 	shortcut,
-}) {
+}: LunaticComponentProps<'CheckboxOne'>) {
 	const onSelect = useOnHandleChange({ handleChange, response, value });
 
 	return (
@@ -41,7 +41,6 @@ function LunaticCheckboxOne({
 				value={value}
 				errors={errors}
 				onSelect={onSelect}
-				response={response}
 				label={label}
 				shortcut={shortcut}
 			/>

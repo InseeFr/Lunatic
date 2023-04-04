@@ -6,7 +6,7 @@ import {
 
 import FieldContainer from './field-container';
 import Missing from './missing';
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement } from 'react';
 import VariableStatus from './variable-status';
 import { LunaticBaseProps } from '../../type';
 
@@ -25,6 +25,7 @@ type Props = {
 	| 'declarations'
 	| 'management'
 	| 'id'
+	| 'label'
 	| 'missingResponse'
 	| 'preferences'
 	| 'value'

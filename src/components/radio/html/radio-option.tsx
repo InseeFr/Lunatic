@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback, ReactNode } from 'react';
 import classnames from 'classnames';
 import { Label, createCustomizableLunaticField } from '../../commons';
 import {
@@ -9,18 +9,21 @@ import {
 } from '../../commons/icons';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
-function getIcon(checked, checkboxStyle) {
-	if (checked) {
-		if (checkboxStyle) {
-			return CheckboxChecked;
-		}
-		return RadioChecked;
-	}
-	if (checkboxStyle) {
-		return CheckboxUnchecked;
-	}
-	return RadioUnchecked;
-}
+export type Props = {
+	id: string;
+	value: string | null;
+	description?: ReactNode;
+	onClick: (v: string | null) => void;
+	checkboxStyle?: boolean;
+	shortcut?: boolean;
+	checked?: boolean;
+	disabled?: boolean;
+	onKeyDown: (v: { key: string; index: number }) => void;
+	index: number;
+	labelledBy?: string;
+	label?: ReactNode;
+	codeModality?: string;
+};
 
 function RadioOption({
 	checked,
@@ -36,30 +39,25 @@ function RadioOption({
 	description,
 	shortcut,
 	codeModality,
-}) {
-	const spanEl = useRef();
+}: Props) {
+	const spanEl = useRef<HTMLSpanElement>(null);
 	const Icon = getIcon(checked, checkboxStyle);
-	const tabIndex = checked ? '0' : '-1';
+	const tabIndex = checked ? 0 : -1;
 	const onClickOption = useCallback(
 		function () {
 			// on checkboxStyle, clicking on checked value unchecks it, so it acts as if empty answer was clicked
-			if (!disabled) {
-				checkboxStyle && checked ? onClick(null) : onClick(value);
-			}
+			checkboxStyle && checked ? onClick(null) : onClick(value);
 		},
-		[value, onClick, checked, checkboxStyle, disabled]
+		[value, onClick, checked, checkboxStyle]
 	);
 
 	const handleKeyDown = useCallback(
-		function (e) {
-			if (!disabled) {
-				const { key } = e;
-				const { current } = spanEl;
-				onKeyDown({ key, index });
-				current.blur();
-			}
+		function (e: { key: string }) {
+			const { key } = e;
+			onKeyDown({ key, index });
+			spanEl.current?.blur();
 		},
-		[onKeyDown, index, spanEl, disabled]
+		[onKeyDown, index, spanEl]
 	);
 
 	useEffect(
@@ -105,7 +103,7 @@ function RadioOption({
 				</div>
 			</div>
 
-			{shortcut && (
+			{shortcut && codeModality && (
 				<KeyboardEventHandler
 					handleKeys={[codeModality]}
 					onKeyEvent={(key, e) => {
@@ -117,6 +115,19 @@ function RadioOption({
 			)}
 		</>
 	);
+}
+
+function getIcon(checked?: boolean, checkboxStyle?: boolean) {
+	if (checked) {
+		if (checkboxStyle) {
+			return CheckboxChecked;
+		}
+		return RadioChecked;
+	}
+	if (checkboxStyle) {
+		return CheckboxUnchecked;
+	}
+	return RadioUnchecked;
 }
 
 export default createCustomizableLunaticField(RadioOption, 'RadioOption');

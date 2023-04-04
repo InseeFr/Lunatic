@@ -1,10 +1,21 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
+import { ReactNode, useCallback } from 'react';
 import classnames from 'classnames';
 import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
 import { createCustomizableLunaticField, Label } from '../../commons';
 import './checkbox-option.scss';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
+import { LunaticBaseProps } from '../../type';
+
+export type CheckboxOptionProps = {
+	disabled?: boolean;
+	checked?: boolean;
+	id?: string;
+	onClick: (b: boolean) => void;
+	label: ReactNode;
+	description?: LunaticBaseProps['description'];
+	codeModality?: string;
+	shortcut?: boolean;
+};
 
 function CheckboxOption({
 	disabled,
@@ -15,7 +26,7 @@ function CheckboxOption({
 	description,
 	codeModality,
 	shortcut,
-}) {
+}: CheckboxOptionProps) {
 	const onClickOption = useCallback(
 		function () {
 			onClick(!checked);
@@ -24,7 +35,7 @@ function CheckboxOption({
 	);
 
 	const handleKeyDown = useCallback(
-		function (e) {
+		function (e: { code: string }) {
 			const { code } = e;
 			if (code === 'Space') {
 				onClickOption();
@@ -49,7 +60,7 @@ function CheckboxOption({
 					role="checkbox"
 					className={`lunatic-input-checkbox`}
 					aria-checked={checked}
-					tabIndex="0"
+					tabIndex={0}
 					onClick={onClickOption}
 					onKeyDown={handleKeyDown}
 					aria-labelledby={labelId}
@@ -65,7 +76,7 @@ function CheckboxOption({
 					</Label>
 				</span>
 			</div>
-			{shortcut && (
+			{shortcut && codeModality && (
 				<KeyboardEventHandler
 					handleKeys={[codeModality]}
 					onKeyEvent={(key, e) => {
@@ -78,25 +89,5 @@ function CheckboxOption({
 		</>
 	);
 }
-
-CheckboxOption.prototype = {
-	id: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired,
-	checked: PropTypes.bool,
-	disabled: PropTypes.bool,
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	description: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element,
-		PropTypes.array,
-	]),
-};
-
-CheckboxOption.defaultProps = {
-	checked: undefined,
-	disabled: false,
-	label: undefined,
-	description: undefined,
-};
 
 export default createCustomizableLunaticField(CheckboxOption, 'CheckboxOption');
