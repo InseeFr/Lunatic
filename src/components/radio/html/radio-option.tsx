@@ -8,18 +8,19 @@ import {
 	CheckboxUnchecked,
 } from '../../commons/icons';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
+import { voidFunction } from '../../../utils/function';
 
 export type Props = {
 	id: string;
-	value: string | null;
+	value?: string | null;
 	description?: ReactNode;
-	onClick: (v: string | null) => void;
+	onClick?: (v: string | null) => void;
 	checkboxStyle?: boolean;
 	shortcut?: boolean;
 	checked?: boolean;
 	disabled?: boolean;
-	onKeyDown: (v: { key: string; index: number }) => void;
-	index: number;
+	onKeyDown?: (v: { key: string; index: number }) => void;
+	index?: number;
 	labelledBy?: string;
 	label?: ReactNode;
 	codeModality?: string;
@@ -27,12 +28,12 @@ export type Props = {
 
 function RadioOption({
 	checked,
-	onClick,
-	value,
+	onClick = voidFunction,
+	value = null,
 	id,
 	disabled,
-	onKeyDown,
-	index,
+	onKeyDown = voidFunction,
+	index = -1,
 	labelledBy,
 	checkboxStyle,
 	label,

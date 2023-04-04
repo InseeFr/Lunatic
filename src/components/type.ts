@@ -130,7 +130,7 @@ type ComponentPropsByType = {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
 	};
-	Radio: LunaticBaseProps<string> & {
+	Radio: LunaticBaseProps<string | null> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		checkboxStyle?: boolean;
 		response: { name: string };
