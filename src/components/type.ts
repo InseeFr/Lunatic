@@ -109,8 +109,14 @@ type ComponentPropsByType = {
 		responses: Array<{
 			id: string;
 			label: ReactNode;
+			description?: ReactNode;
 			response: { name: string };
 		}>;
+		handleChange: (
+			response: { name: string },
+			value: boolean,
+			args?: Record<string, unknown>
+		) => void;
 	};
 	CheckboxOne: LunaticBaseProps<string | null> & {
 		options: Array<{

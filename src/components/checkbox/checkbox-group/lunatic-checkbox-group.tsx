@@ -1,6 +1,15 @@
-import React from 'react';
-import CheckboxGroup from './html/checkbox-group';
+import React, { ReactNode } from 'react';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
+import { LunaticComponentProps } from '../../type';
+import CheckboxGroup from './html/checkbox-group';
+
+export type CheckboxGroupOption = {
+	label: ReactNode;
+	name: string;
+	checked: boolean;
+	description?: ReactNode;
+	onClick: (b: boolean) => void;
+};
 
 function LunaticCheckboxGroup({
 	id,
@@ -16,21 +25,20 @@ function LunaticCheckboxGroup({
 	missingResponse,
 	missing,
 	management,
-}) {
-	const options = responses.map(function ({ label, response, description }) {
+}: LunaticComponentProps<'CheckboxGroup'>) {
+	const options = responses.map(({ label, response, description }) => {
 		const { name } = response;
-		const checked = name in value ? value[name] : false;
 
 		return {
 			label,
 			name,
-			checked,
+			checked: castValueToBoolean(value, name),
 			description,
-			onClick: function (checked) {
+			onClick: function (checked: boolean) {
 				handleChange(response, checked);
 			},
 		};
-	});
+	}) satisfies CheckboxGroupOption[];
 
 	return (
 		<LunaticComponent
@@ -48,13 +56,22 @@ function LunaticCheckboxGroup({
 			<CheckboxGroup
 				id={id}
 				options={options}
-				value={value}
 				label={label}
 				errors={errors}
 				shortcut={shortcut}
 			/>
 		</LunaticComponent>
 	);
+}
+
+function castValueToBoolean(
+	value: LunaticComponentProps<'CheckboxGroup'>['value'],
+	name: string
+): boolean {
+	if (value && name in value) {
+		return value[name] ?? false;
+	}
+	return false;
 }
 
 export default LunaticCheckboxGroup;
