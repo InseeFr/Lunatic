@@ -14,13 +14,26 @@ function prepare(response) {
 }
 
 async function searchTokens(tokens, index) {
+	// ask IDB
 	const results = await Promise.all(
 		tokens.map((token) => searchInIndex(token, index))
 	);
+	// concat and tokens count
+	const map = results.reduce(function (m, docs, i) {
+		const token = tokens[i];
+		return docs.reduce(function (m2, doc) {
+			const { id } = doc;
+			const tokensSearch = id in m2 ? m2[id].tokensSearch : {};
+			const count = token in tokensSearch ? tokensSearch[token] + 1 : 1;
 
-	return results.reduce(function (a, step, i) {
-		return { ...a, [tokens[i]]: step };
+			return {
+				...m2,
+				[id]: { ...doc, tokensSearch: { ...tokensSearch, [token]: count } },
+			};
+		}, m);
 	}, {});
+
+	return Object.values(map);
 }
 
 function isValideSearch(search) {
@@ -30,11 +43,11 @@ function isValideSearch(search) {
 	return false;
 }
 
-function filterSize(response, max) {
-	if (max && max < response.length) {
-		return response.slice(0, max);
+function filterSize(documents, max) {
+	if (max && max < documents.length) {
+		return documents.slice(0, max);
 	}
-	return response;
+	return documents;
 }
 
 async function searching(search, { name, version = '1' }) {
@@ -51,13 +64,17 @@ async function searching(search, { name, version = '1' }) {
 			const store = transaction.objectStore(CONSTANTES.STORE_DATA_NAME);
 			const index = store.index(CONSTANTES.STORE_INDEX_NAME);
 			const tokens = parser(search);
-			const tokensSuggestions = await searchTokens(tokens, index);
-			const response = computeScore(tokensSuggestions);
+			const documents = await searchTokens(tokens, index);
+
 			return {
 				results: prepare(
-					getOrderingFunction(order)(filterSize(response, max), order)
+					getOrderingFunction(order)(
+						filterSize(computeScore(documents), max),
+						order
+					)
 				),
 				search,
+				tokens,
 			};
 		}
 		return { results: [], search };

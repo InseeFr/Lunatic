@@ -1,15 +1,19 @@
 import { ReactNode } from 'react';
+import { ExpressionLogger } from './commons/execute-expression/create-execute-expression';
 import {
 	ComponentType,
 	ControlType,
 	LunaticSource,
 	Variable,
 } from './type-source';
-import { ExpressionLogger } from './commons/execute-expression/create-execute-expression';
+import { SuggesterStatus } from './use-suggesters';
 
 export type LunaticComponentDefinition<
 	T extends ComponentType['componentType'] = ComponentType['componentType']
-> = ComponentType & { componentType: T };
+> = ComponentType & {
+	componentType: T;
+	errors?: Record<string, Array<LunaticError>>;
+};
 export type LunaticControl = ControlType;
 
 export type VTLBindings = { [variableName: string]: unknown };
@@ -28,8 +32,6 @@ export type LunaticError = Pick<
 	ControlType,
 	'id' | 'criticality' | 'typeOfControl'
 > & {
-	formula: string;
-	labelFormula: string;
 	errorMessage: ReactNode;
 };
 
@@ -49,6 +51,21 @@ export type LunaticCollectedValue = {
 	FORCED: unknown;
 	INPUTED: unknown;
 	PREVIOUS: unknown;
+};
+
+export type LunaticOverviewItem = {
+	id: string;
+	page: string;
+	type: string;
+	evaluatedLabel: string;
+	visible: boolean;
+	reached: boolean;
+	parent?: unknown;
+	label: LunaticExpression;
+	conditionFilter?: {
+		bindingDependencies: string[];
+	};
+	children: LunaticOverviewItem[];
 };
 
 // We need a mapped type to correlate type and variableType
@@ -105,6 +122,7 @@ export type LunaticState = {
 			linksVariables?: string[];
 		};
 	};
+	overview: LunaticOverviewItem[];
 	pager: {
 		lastReachedPage?: string;
 		maxPage: string;
@@ -120,12 +138,7 @@ export type LunaticState = {
 	};
 	// TODO : Explain this
 	waiting: boolean;
-	// Errors for the form
-	errors?: { [page: string]: { [id: string]: LunaticError[] } };
-	// Contains the errors for the current page / iteration
-	currentErrors?: { [id: string]: LunaticError[] };
-	// Errors
-	modalErrors?: Record<string, LunaticError[]>;
+
 	// Handler to call when updating a value
 	handleChange: (
 		response: { name: string },
@@ -157,4 +170,8 @@ export type LunaticState = {
 		subPage?: number;
 		roundabout?: { page: string };
 	}) => void;
+	getSuggesterStatus: (name: string) => {
+		status: SuggesterStatus;
+		timestamp: number;
+	};
 };

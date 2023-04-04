@@ -1,4 +1,4 @@
-function finalize(withScore, max = 30) {
+function sort(withScore, max) {
 	return withScore
 		.sort(function (a, b) {
 			if (a.score > b.score) {
@@ -12,22 +12,14 @@ function finalize(withScore, max = 30) {
 		.slice(0, max);
 }
 
-function compute(results) {
-	const listOfDocs = Object.values(results);
-	const mapResults = {};
-
-	listOfDocs.forEach(function (docs, i) {
-		docs.forEach(function (doc) {
-			const { id } = doc;
-			if (id in mapResults) {
-				mapResults[id].score++;
-				mapResults[id].step = [i, ...mapResults[id].step];
-			} else {
-				mapResults[id] = { ...doc, score: 1, step: [i] };
-			}
-		});
+function computeScore(documents, max = 30) {
+	const withScore = documents.map(function (doc) {
+		const { tokensSearch } = doc;
+		const score = Object.keys(tokensSearch).length;
+		return { ...doc, score };
 	});
-	return finalize(Object.values(mapResults));
+
+	return sort(withScore, max);
 }
 
-export default compute;
+export default computeScore;

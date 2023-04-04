@@ -1,2 +1,2 @@
 export { default } from './append';
-export { default as createAppendTask } from './create-append-task';
+export { createAppendTask } from './create-append-task';

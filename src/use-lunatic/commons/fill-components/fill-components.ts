@@ -1,23 +1,22 @@
-import fillErrors, { FilledProps as FilledErrorsProps } from './fill-errors';
-import fillFromState, {
-	FilledProps as FilledHandlersProps,
-} from './fill-from-state';
-import fillComponentValue, {
-	FilledProps as FilledValueProps,
-} from './fill-component-value';
-import fillPagination, {
-	FilledProps as FilledPaginationProps,
-} from './fill-pagination';
-import fillMissingResponse, {
-	FilledProps as FilledMissingResponseProps,
-} from './fill-missing-response';
-import fillManagement, {
-	FilledProps as FilledManagementProps,
-} from './fill-management';
 import { LunaticComponentDefinition, LunaticState } from '../../type';
 import fillComponentExpressions, {
 	DeepTranslateExpression,
 } from './fill-component-expressions';
+import fillComponentValue, {
+	FilledProps as FilledValueProps,
+} from './fill-component-value';
+import fillFromState, {
+	FilledProps as FilledHandlersProps,
+} from './fill-from-state';
+import fillManagement, {
+	FilledProps as FilledManagementProps,
+} from './fill-management';
+import fillMissingResponse, {
+	FilledProps as FilledMissingResponseProps,
+} from './fill-missing-response';
+import fillPagination, {
+	FilledProps as FilledPaginationProps,
+} from './fill-pagination';
 import fillSpecificExpressions from './fill-specific-expression';
 
 export type LunaticComponentProps<
@@ -26,7 +25,6 @@ export type LunaticComponentProps<
 	FilledManagementProps &
 	FilledValueProps &
 	FilledMissingResponseProps &
-	FilledErrorsProps &
 	FilledHandlersProps &
 	FilledPaginationProps;
 
@@ -51,7 +49,6 @@ function compose(...fill: Function[]) {
  * Force typing for this function since it's doo dynamic
  */
 const fillComponent = compose(
-	fillErrors,
 	fillFromState,
 	fillComponentExpressions,
 	fillSpecificExpressions,

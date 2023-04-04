@@ -11,6 +11,7 @@ node_modules/
 # Built directories
 *.css
 /dist/
+**/dist/
 /lib/
 /coverage/
 /test-report.xml
@@ -24,5 +25,6 @@ playwright-report
 .vscode
 .DS_Store
 /test-results/
+test-report.xml
 /playwright-report/
 /playwright/.cache/

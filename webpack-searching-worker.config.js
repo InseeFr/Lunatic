@@ -12,14 +12,19 @@ module.exports = {
 		libraryTarget: 'umd',
 	},
 	resolve: {
-		extensions: ['.js'],
+		extensions: ['.js', '.ts', '.tsx'],
 	},
 	module: {
 		rules: [
 			{
 				test: /\.js?$/,
 				exclude: /(node_modules)/,
-				use: 'babel-loader',
+				use: [
+					{
+						loader: 'ts-loader',
+						options: { configFile: 'tsconfig-workers.json' },
+					},
+				],
 			},
 		],
 	},

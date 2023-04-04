@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
 	testDir: './e2e',
 	/* Maximum time one test can run for. */
-	timeout: 30 * 1000,
+	timeout: 5 * 1000,
 	expect: {
 		/**
 		 * Maximum time expect() should wait for the condition to be met.
@@ -25,7 +25,7 @@ export default defineConfig({
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
-	retries: process.env.CI ? 2 : 0,
+	retries: 1,
 	/* Opt out of parallel tests on CI. */
 	workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -60,10 +60,5 @@ export default defineConfig({
 	/* Folder for test artifacts such as screenshots, videos, traces, etc. */
 	// outputDir: 'test-results/',
 
-	webServer: process.env.CI
-		? {
-				command: 'yarn run storybook',
-				port: 9999,
-		  }
-		: undefined,
+	webServer: undefined,
 });

@@ -1,15 +1,10 @@
-import { isOnEmptyPage } from './commons';
-import { getPageTag } from '../commons';
-import { createModalControlsReducer } from './validate-controls';
-import reduceGoNextPage from './reduce-go-next-page';
-import { LunaticState } from '../type';
 import { ActionGoToPage, ActionKind } from '../actions';
+import { LunaticState } from '../type';
+import { isOnEmptyPage } from './commons';
+import reduceGoNextPage from './reduce-go-next-page';
 
 function validateChange(state: LunaticState) {
-	const { pager, errors } = state;
-	const currentErrors =
-		errors !== undefined ? errors[getPageTag(pager)] : undefined;
-	const updatedState = { ...state, currentErrors } satisfies LunaticState;
+	const updatedState = { ...state } satisfies LunaticState;
 	if (isOnEmptyPage(updatedState)) {
 		return reduceGoNextPage(updatedState, {
 			type: ActionKind.GO_NEXT_PAGE,
@@ -79,4 +74,4 @@ function reduceGoToPage(
 	return validateChange(state);
 }
 
-export default createModalControlsReducer(reduceGoToPage);
+export default reduceGoToPage;

@@ -8,24 +8,27 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_Lunatic&metric=alert_status)](https://sonarcloud.io/dashboard?id=InseeFr_Lunatic)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Lunatic est un librairie front-end sous forme de hook react et de librairies de composants pour générer un questionnaire à partir du format de données [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model).
+Lunatic est une librairie front-end sous forme de hook react et de librairies de composants pour générer un questionnaire à partir du format de données [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model).
 
-- [Storybook](https://inseefr.github.io/Lunatic/storybook).
 - [Storybook v2](https://inseefr.github.io/Lunatic/storybook-v2)
+- [Storybook v1](https://inseefr.github.io/Lunatic/storybook-v1)
+- [Storybook Beta](https://inseefr.github.io/Lunatic/storybook-beta)
 - [Editeur Lunatic](https://inseefr.github.io/Lunatic/editor/)
-- [Documentation](https://inseefr.github.io/Lunatic/fr/) 
+- [Documentation](https://inseefr.github.io/Lunatic/fr/)
 
 ## Sommaire
 
-- [Utilisation](#utilisation)
-  * [Le hook useLunatic](#le-hook-uselunatic)
-  * [Les composants](#les-composants)
-- [Personnalisation](#personnalisation)
-- [Fonctionnement interne](#fonctionnement-interne)
-  * [Fonctionnement général](#fonctionnement-g-n-ral)
-  * [pages et pager](#pages-et-pager)
-  * [Exécution du VTL](#ex-cution-du-vtl)
-- [Convention et bonnes pratiques](#convention-et-bonnes-pratiques)
+- [Lunatic](#lunatic)
+	- [Sommaire](#sommaire)
+	- [Utilisation](#utilisation)
+		- [Le hook useLunatic](#le-hook-uselunatic)
+		- [Les composants](#les-composants)
+	- [Personnalisation](#personnalisation)
+	- [Fonctionnement interne](#fonctionnement-interne)
+		- [Fonctionnement général](#fonctionnement-général)
+		- [pages et pager](#pages-et-pager)
+		- [Exécution du VTL](#exécution-du-vtl)
+	- [Convention et bonnes pratiques](#convention-et-bonnes-pratiques)
 
 ## Utilisation
 
@@ -37,12 +40,12 @@ yarn add @inseefr/lunatic@2.0.7-v2
 
 ### Le hook useLunatic
 
-Ensuite, à l'endroit où vous souhaiter afficher le formulaire il faudra utiliser le hook `useLunatic`. 
+Ensuite, à l'endroit où vous souhaitez afficher le formulaire il faudra utiliser le hook `useLunatic`. 
 
 ```js
-import {useLunatic} from '@inseefr/lunatic'
+import { useLunatic } from '@inseefr/lunatic';
 
-const obj = useLunatic(source, data, options)
+const obj = useLunatic(source, data, options);
 ```
 
 Ce hook prend 3 paramètres :
@@ -75,43 +78,37 @@ Et retourne un objet permettant de piloter le questionnaire :
 - `pager`, un objet contenant les informations liées à la page
 - `waiting`, indique une attente d'information de la part d'un suggester
 - `getData()`, renvoie les données collectées dans le questionnaire
+- `loopVariables`, est un tableau contenant la liste des variables utilisées pour la boucle courante
 
 Pour plus d'informations sur les types de ce retour vous pouvez vous référer aux types disponibles dans le [code source](https://github.com/InseeFr/Lunatic/blob/v2-typescript/src/use-lunatic/type.ts#L64-L200). Vous pouvez aussi trouver un exemple d'utilisation du hook dans la partie [Storybook](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/stories/utils/orchestrator.js#L69-L93).
 
 ### Les composants
 
-Pour afficher le questionnaire on commencera par récupérer la liste des composants à afficher à l'aide de la méthode `getComponents()` renvoyée par le hook. 
+Pour afficher le questionnaire on commencera par récupérer la liste des composants à afficher à l'aide de la méthode `getComponents()` renvoyée par le hook.
 
 Lunatic offre une librairie de composant préconçu pour répondre aux différents types de champs disponible dans les questionnaires.
 
 ```jsx
 import * as lunatic from '@inseefr/lunatic';
 
-function App ({source, data}) {
-  const {
-    getComponents,
-    getCurrentErrors,
-    getModalErrors
-  } = lunatic.useLunatic(source, data, {})
-  const components = getComponents();
-  const currentErrors = getCurrentErrors();
-  const modalErrors = getModalErrors();
+function App({ source, data }) {
+	const { getComponents, getCurrentErrors, getModalErrors } =
+		lunatic.useLunatic(source, data, {});
+	const components = getComponents();
+	const currentErrors = getCurrentErrors();
+	const modalErrors = getModalErrors();
 
-  return (
-    <div className="container">
-      {components.map(function (component) {
-        const Component = lunatic[component.componentType];
-        return (
-          <Component
-            key={component.id}
-            {...component}
-            errors={currentErrors}
-          />
-        );
-      })}
-      <lunatic.Modal errors={modalErrors} goNext={goNextPage}/>
-    </div>
-  );
+	return (
+		<div className="container">
+			{components.map(function (component) {
+				const Component = lunatic[component.componentType];
+				return (
+					<Component key={component.id} {...component} errors={currentErrors} />
+				);
+			})}
+			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
+		</div>
+	);
 }
 ```
 
@@ -119,7 +116,7 @@ L'ensemble des composants offerts par Lunatic sont disponibles dans le dossier [
 
 ## Personnalisation
 
-Par défaut les composants offerts par Lunatic sont plutôt simples avec un style minimal. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer au composant.
+Par défaut les composants offerts par Lunatic sont plutôt simples avec un style minimal. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer lors de l'appel à useLunatic.
 
 ```jsx
 const custom = {
@@ -128,24 +125,9 @@ const custom = {
 }
 
 function App ({source, data}) {
+  const {} = useLunatic(source, data, {custom})
   
   // ...
-
-  return (
-    <div className="container">
-      {components.map(function (component) {
-        const Component = lunatic[component.componentType];
-        return (
-          <Component
-            key={component.id}
-            {...component}
-            custom={custom}
-            errors={currentErrors}
-          />
-        );
-      })}
-    </div>
-  );
 }
 ```
 
@@ -159,7 +141,7 @@ Le hook se base sur un [état interne](https://github.com/InseeFr/Lunatic/blob/v
 
 - Une action `'use-lunatic/on-init'` permet l'initialisation de l'état à partir des données reçu en paramètre du hook.
 - Les actions `'use-lunatic/go-previous'`, `'use-lunatic/go-next'` et `'use-lunatic/go-to-page'` sont appelées lors de la navigation à l'aide des méthodes renvoyées par le hook
-- L'action `use-lunatic/handle-change` est l'action la plus importante qui est appelé dès lors qu'une donnée est changée dans le questionnaire.
+- L'action `use-lunatic/handle-change` est l'action la plus importante qui est appelée dès lors qu'une donnée est changée dans le questionnaire.
 
 L'ensemble des [reducers correspondants à ces actions sont disponibles ici](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/use-lunatic/reducer/reducer.js). En général, ils sont décomposés en plusieurs méthodes en fonction de la partie de l'état qu'ils modifient.
 

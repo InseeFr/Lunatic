@@ -1,4 +1,7 @@
-import { userEvent, within } from '@storybook/testing-library';
+import { userEvent, waitFor, within } from '@storybook/testing-library';
+
+import { expect } from '@storybook/jest';
+import { sleep } from './timer';
 
 /**
  * Bridge between playwright tests and storybook tests
@@ -21,6 +24,12 @@ class Page {
 	}
 
 	getByText(...args) {
+		if (args[1] && args[1].index !== undefined) {
+			const index = args[1].index;
+			return new Instruction(
+				this.canvas.findAllByText(...args).then((r) => r[index])
+			);
+		}
 		return new Instruction(this.canvas.findByText(...args));
 	}
 
@@ -33,6 +42,10 @@ class Page {
 		}
 		return new Instruction(this.canvas.findByLabelText(...args));
 	}
+
+	async keyPress(char) {
+		return userEvent.keyboard(char);
+	}
 }
 
 class Instruction {
@@ -41,6 +54,10 @@ class Instruction {
 			throw element;
 		}
 		this.element = element;
+	}
+
+	async shouldBeVisible() {
+		return waitFor(async () => expect(await this.element).toBeVisible());
 	}
 
 	locator(selector) {
@@ -64,6 +81,9 @@ class Instruction {
 	}
 
 	async fill(text) {
-		return userEvent.type(await this.element, text, { delay: 1 });
+		const element = await this.element;
+		await userEvent.clear(element);
+		await sleep(1);
+		return userEvent.type(element, text, { delay: 1 });
 	}
 }

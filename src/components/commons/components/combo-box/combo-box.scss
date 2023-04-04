@@ -123,13 +123,14 @@
 	.lunatic-combo-box-fab {
 		position: absolute;
 		right: 4px;
-		top: 8px;
+		top: 36px;
 		z-index: 0;
 		&.focused {
 			z-index: 1;
 		}
 
 		.lunatic-icon {
+			padding-left: 1px;
 			svg {
 				fill: white;
 				width: 16px;

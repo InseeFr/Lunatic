@@ -1,0 +1,30 @@
+* {
+	box-sizing: border-box;
+	--color-primary-dark: #2a5885;
+	--color-primary-light: #5181b8;
+	--color-primary-main: #4a73a4;
+	--color-primary-contrast-text: #ffffff;
+
+	--color-secondary-dark: #14202d;
+	--color-secondary-light: #f7f8fa;
+	--color-secondary-main: #1a293b;
+	--color-secondary-contrast-text: #ffffff;
+
+	--color-very-light: #dbe4ef;
+	--color-very-very-light: #e6eaee;
+	--color-current-item: #0d823e;
+
+	--color-error: #f50c0c;
+	--color-disabled: rgb(235, 235, 228);
+}
+
+.row {
+	display: flex;
+	gap: 0.5em;
+	
+	:hover {
+		cursor: pointer;
+		font-weight: bold;
+	}
+}
+
