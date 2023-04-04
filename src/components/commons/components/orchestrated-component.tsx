@@ -1,6 +1,26 @@
-import React from 'react';
 import * as lunatic from '../../../components';
 import { fillComponentExpressions } from '../../../use-lunatic/commons';
+import { LunaticBaseProps } from '../../type';
+import { LunaticComponentDefinition } from '../../../use-lunatic/type';
+
+type Props = {
+	linksIterations?: [number, number];
+	iteration: number;
+	component: LunaticComponentDefinition;
+	features: string[];
+} & Pick<
+	LunaticBaseProps,
+	| 'id'
+	| 'iteration'
+	| 'executeExpression'
+	| 'handleChange'
+	| 'missing'
+	| 'shortcut'
+	| 'management'
+	| 'preferences'
+	| 'value'
+	| 'errors'
+>;
 
 function OrchestratedComponent({
 	id,
@@ -16,7 +36,7 @@ function OrchestratedComponent({
 	linksIterations,
 	executeExpression,
 	errors,
-}) {
+}: Props) {
 	const { componentType } = component;
 
 	const componentFilled = fillComponentExpressions(component, {
@@ -24,11 +44,11 @@ function OrchestratedComponent({
 		pager: { iteration, linksIterations },
 	});
 
-	const Component = lunatic[componentType];
 	const { conditionFilter } = componentFilled;
 	const hasToBeDisplay = conditionFilter !== undefined ? conditionFilter : true;
 
 	if (componentType in lunatic && hasToBeDisplay) {
+		const Component = lunatic[componentType];
 		return (
 			<Component
 				{...componentFilled}

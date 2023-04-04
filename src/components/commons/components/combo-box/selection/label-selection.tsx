@@ -10,7 +10,7 @@ export type LabelSelectionProps = {
 		search?: string;
 	}>;
 	placeholder?: string;
-	selectedIndex?: number | string;
+	selectedIndex?: number;
 	options: Array<ComboBoxOption>;
 	search?: string;
 	disabled?: boolean;

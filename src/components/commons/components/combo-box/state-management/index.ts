@@ -1,7 +1,7 @@
 export const INITIAL_STATE = {
 	focused: false,
 	expanded: false,
-	selectedIndex: undefined as undefined | number | string,
+	selectedIndex: undefined as undefined | number,
 	search: '',
 };
 

@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 type Props = {
 	option: {
 		id: string | number;

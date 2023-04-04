@@ -73,9 +73,10 @@ function ComboBox({
 	}, []);
 
 	const handleSelect = useCallback(
-		(index: number) => {
-			const option = options[index];
-			dispatch(actions.onSelect(index));
+		(index: string) => {
+			const indexNumber = parseInt(index, 10);
+			const option = options[indexNumber];
+			dispatch(actions.onSelect(indexNumber));
 			onSelect(getOptionValue(option));
 		},
 		[options, onSelect, getOptionValue]

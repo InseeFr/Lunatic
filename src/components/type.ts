@@ -38,6 +38,8 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	readOnly?: boolean;
 	className?: string;
 	style?: CSSProperties;
+	iteration?: number;
+	executeExpression: LunaticState['executeExpression'];
 };
 
 type SuggesterOption = {
@@ -123,6 +125,7 @@ type ComponentPropsByType = {
 		checkboxStyle?: boolean;
 		response: { name: string };
 	};
+	Roundabout: LunaticBaseProps<string> & {};
 	Dropdown: LunaticBaseProps<string> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
@@ -163,5 +166,6 @@ type ComponentPropsByType = {
 	};
 };
 
-export type LunaticComponentProps<T extends keyof ComponentPropsByType> =
-	ComponentPropsByType[T];
+export type LunaticComponentProps<
+	T extends keyof ComponentPropsByType = keyof ComponentPropsByType
+> = ComponentPropsByType[T];

@@ -19,9 +19,9 @@ function isVisible(optionRect: DOMRect, parentRect: DOMRect) {
 }
 
 type Props = PropsWithChildren<{
-	index: number;
+	index: string;
 	selected?: boolean;
-	onSelect: (index: number) => void;
+	onSelect: (index: string) => void;
 }>;
 
 export function OptionContainer({

@@ -135,7 +135,10 @@ function fillAttributes(
 
 function fillComponentExpressions(
 	component: LunaticComponentDefinition,
-	state: Pick<LunaticState, 'pager' | 'executeExpression'>
+	state: {
+		executeExpression: LunaticState['executeExpression'];
+		pager: Pick<LunaticState['pager'], 'iteration' | 'linksIterations'>;
+	}
 ) {
 	const { pager, executeExpression } = state;
 	const { iteration, linksIterations } = pager;

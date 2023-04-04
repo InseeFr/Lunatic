@@ -5,7 +5,7 @@ import { expect, it, describe, vi } from 'vitest';
 describe('option-container', () => {
 	const props = {
 		children: 'Option 1',
-		index: 0,
+		index: '0',
 		selected: false,
 		onSelect: vi.fn(),
 	};
