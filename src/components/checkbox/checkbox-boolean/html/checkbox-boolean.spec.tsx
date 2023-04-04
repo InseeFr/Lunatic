@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import CheckboxBoolean from './checkbox-boolean';
 import { describe, it, expect, vi, afterEach } from 'vitest';
@@ -13,14 +12,16 @@ describe('CheckboxBoolean', () => {
 	});
 
 	it('renders label ', () => {
-		const { getByText } = render(<CheckboxBoolean label={label} />);
+		const { getByText } = render(
+			<CheckboxBoolean id="checkbox" label={label} />
+		);
 
 		expect(getByText(label)).toBeInTheDocument();
 	});
 
 	it('renders unchecked checkbox', () => {
 		const { getByRole } = render(
-			<CheckboxBoolean label={label} description={description} />
+			<CheckboxBoolean id="checkbox" label={label} description={description} />
 		);
 
 		const checkbox = getByRole('checkbox');
@@ -32,6 +33,7 @@ describe('CheckboxBoolean', () => {
 	it('renders checked checkbox', () => {
 		const { getByRole } = render(
 			<CheckboxBoolean
+				id={'checkbox'}
 				label={label}
 				description={description}
 				checked={true}
@@ -48,6 +50,7 @@ describe('CheckboxBoolean', () => {
 	it('calls onClick when checkbox is clicked', () => {
 		const { getByRole } = render(
 			<CheckboxBoolean
+				id="checkbox"
 				label={label}
 				description={description}
 				onClick={onClick}
