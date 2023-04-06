@@ -1,10 +1,10 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import Textarea from './html/textarea';
+import { LunaticComponentProps } from '../type';
 
-const LunaticTextarea = (props) => {
+const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 	const {
 		id,
 		rows,

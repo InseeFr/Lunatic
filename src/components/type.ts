@@ -126,6 +126,10 @@ type ComponentPropsByType = {
 		}>;
 		response: { name: string };
 	};
+	Switch: LunaticBaseProps<boolean> & {
+		response: { name: string };
+		statusLabel?: { true: string; false: string };
+	};
 	CheckboxBoolean: LunaticBaseProps<boolean> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };

@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
@@ -6,8 +5,14 @@ import {
 } from '../declarations';
 import './sequence.scss';
 import { createCustomizableLunaticField } from '../commons';
+import { LunaticComponentProps } from '../type';
 
-function Sequence({ declarations, label, id, style }) {
+function Sequence({
+	declarations,
+	label,
+	id,
+	style,
+}: LunaticComponentProps<'Sequence'>) {
 	return (
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />

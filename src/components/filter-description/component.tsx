@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { createCustomizableLunaticField } from '../commons';
 
-const FilterDescription = ({ id, label }) => (
+type Props = {
+	id: string;
+	label?: ReactNode;
+};
+
+const FilterDescription = ({ id, label }: Props) => (
 	<div
 		id={`filter-description-${id}`}
 		aria-label={`filter-description`}

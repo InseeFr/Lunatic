@@ -1,8 +1,18 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { KeyboardEvent, ReactNode } from 'react';
 import classnames from 'classnames';
-import { createCustomizableLunaticField, Label, Errors } from '../../commons';
+import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import './switch.scss';
+import { LunaticError } from '../../../use-lunatic/type';
+
+type Props = {
+	checked?: boolean;
+	disabled?: boolean;
+	statusLabel: { true: ReactNode; false: ReactNode };
+	onClick: (v: boolean) => void;
+	id: string;
+	label: ReactNode;
+	errors?: Record<string, LunaticError[]>;
+};
 
 function Switch({
 	checked,
@@ -10,31 +20,24 @@ function Switch({
 	onClick,
 	statusLabel,
 	id,
-	description,
 	label,
 	errors,
-}) {
-	const handleClick = useCallback(
-		function () {
-			onClick(!checked);
-		},
-		[checked, onClick]
-	);
+}: Props) {
+	const handleClick = () => {
+		onClick(!checked);
+	};
 
-	const handleKeyDown = useCallback(
-		function (e) {
-			const { code } = e;
-			if (code === 'Space') {
-				onClick();
-			}
-		},
-		[onClick]
-	);
+	const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+		const { code } = e;
+		if (code === 'Space') {
+			onClick(!checked);
+		}
+	};
 	const { true: labelTrue, false: labelFalse } = statusLabel;
 	const labelId = `lunatic-switch-label-${id}`;
 	return (
 		<>
-			<Label htmlFor={id} id={labelId} description={description}>
+			<Label htmlFor={id} id={labelId}>
 				{label}
 			</Label>
 			<div className="lunatic-switch" id={id}>
@@ -46,7 +49,7 @@ function Switch({
 				<div
 					role="switch"
 					aria-checked={checked}
-					tabIndex="0"
+					tabIndex={0}
 					className={classnames('lunatic-switch-container', {
 						disabled,
 						checked,
@@ -65,23 +68,5 @@ function Switch({
 		</>
 	);
 }
-
-Switch.propTypes = {
-	checked: PropTypes.bool.isRequired,
-	disabled: PropTypes.bool,
-	onClick: PropTypes.func.isRequired,
-	statusLabel: PropTypes.shape({
-		true: PropTypes.string,
-		false: PropTypes.string,
-	}),
-};
-
-Switch.defaultProps = {
-	disabled: false,
-	statusLabel: {
-		true: 'True',
-		false: 'False',
-	},
-};
 
 export default createCustomizableLunaticField(Switch, 'Switch');

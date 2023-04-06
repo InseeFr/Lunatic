@@ -4,19 +4,19 @@ import { describe, it, expect } from 'vitest';
 describe('Sequence', () => {
 	const mockDeclarations = [
 		{
-			id: 1,
+			id: '1',
 			label: 'Declaration 1',
 			declarationType: 'TYPE_1',
 			position: 'BEFORE_QUESTION_TEXT',
 		},
 		{
-			id: 2,
+			id: '2',
 			label: 'Declaration 2',
 			declarationType: 'TYPE_2',
 			position: 'AFTER_QUESTION_TEXT',
 		},
 		{
-			id: 3,
+			id: '3',
 			label: 'Declaration 3',
 			declarationType: 'TYPE_3',
 			position: 'DETACHABLE',
@@ -38,15 +38,15 @@ describe('Sequence', () => {
 
 		// Declarations before text should appear before the label
 		expect(declaration1).toBeInTheDocument();
-		expect(subSequenceLabel.previousSibling.childNodes[0]).toBe(declaration1);
+		expect(subSequenceLabel.previousSibling?.childNodes[0]).toBe(declaration1);
 
 		// Declarations after text should appear after the label
 		expect(declaration2).toBeInTheDocument();
-		expect(subSequenceLabel.nextSibling.childNodes[0]).toBe(declaration2);
+		expect(subSequenceLabel.nextSibling?.childNodes[0]).toBe(declaration2);
 
 		// Detachable declarations should appear after the label and after declarations after text
 		expect(declaration3).toBeInTheDocument();
-		expect(subSequenceLabel.nextSibling.nextSibling.childNodes[0]).toBe(
+		expect(subSequenceLabel.nextSibling?.nextSibling?.childNodes[0]).toBe(
 			declaration3
 		);
 

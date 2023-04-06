@@ -5,8 +5,13 @@ import {
 	DeclarationsDetachable,
 } from '../declarations';
 import { createCustomizableLunaticField } from '../commons';
+import { LunaticComponentProps } from '../type';
 
-function Subsequence({ id, declarations, label }) {
+function Subsequence({
+	id,
+	declarations,
+	label,
+}: LunaticComponentProps<'Subsequence'>) {
 	return (
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
