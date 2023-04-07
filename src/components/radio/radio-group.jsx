@@ -10,6 +10,7 @@ function Radio({
 	onClick,
 	shortcut,
 	checkboxStyle = false,
+	disabled = false,
 }) {
 	const onKeyDown = useOptionsKeydown(options, onClick);
 	const maxIndex = options.length;
@@ -33,6 +34,7 @@ function Radio({
 					label={label}
 					shortcut={shortcut}
 					codeModality={codeModality}
+					disabled={disabled}
 				/>
 			</div>
 		);

@@ -72,4 +72,18 @@ describe('RadioGroupContent', () => {
 
 		expect(option1.parentNode).toHaveAttribute('aria-checked', 'true');
 	});
+
+	it('Click not working when disabled', () => {
+		const { getByText } = render(
+			<RadioGroupContent options={options} value="option1" disabled />
+		);
+
+		const option1 = getByText('Option 1');
+
+		expect(option1.parentNode).toHaveAttribute('tabIndex', '0');
+
+		fireEvent.keyDown(option1, { key: '1' });
+
+		expect(option1.parentNode).toHaveAttribute('aria-checked', 'true');
+	});
 });
