@@ -13,8 +13,7 @@ function resolveControl(
 	try {
 		const result = executeExpression(value, { iteration, linksIterations });
 		if (!result) {
-			const { value: labelValue } = errorMessage;
-			const label = executeExpression<ReactNode>(labelValue, {
+			const label = executeExpression<ReactNode>(errorMessage, {
 				iteration,
 				linksIterations,
 			});

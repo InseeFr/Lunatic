@@ -13,7 +13,6 @@ function TableOrchestrator({
 	preferences,
 	management,
 	missing,
-	errors,
 	paths,
 }) {
 	if (Array.isArray(body)) {
@@ -36,7 +35,6 @@ function TableOrchestrator({
 					management={management}
 					/* */
 					missing={missing}
-					errors={errors}
 				/>
 			);
 		});

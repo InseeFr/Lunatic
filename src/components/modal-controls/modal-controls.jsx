@@ -4,13 +4,13 @@ import CloseOrSkip from './close-or-skip';
 import ModalContainer from './modal-container';
 import './modal-controls.scss';
 
-function Error({ criticality, errorMessage }) {
+function ErrorItem({ criticality, errorMessage }) {
 	return <li className={classnames(criticality)}>{errorMessage}</li>;
 }
 
 function ComponentErrors({ errors }) {
 	const content = errors.map(function (error, index) {
-		return <Error {...error} key={index} />;
+		return <ErrorItem {...error} key={index} />;
 	}, []);
 	return <ul className={classnames('errors')}>{content}</ul>;
 }
