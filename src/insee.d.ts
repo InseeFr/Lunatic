@@ -5,6 +5,16 @@ declare module '@inseefr/trevas' {
 	) => unknown;
 }
 
+declare module 'string-tokenizer' {
+	class Tokenizer {
+		input(s: string): Tokenizer;
+		tokens(v: { tokens: RegExp }): Tokenizer;
+		resolve(): { tokens: string[] | string };
+	}
+	const tokenizer = () => new Tokenizer();
+	export default tokenizer;
+}
+
 declare module '@inseefr/vtl-2.0-antlr-tools' {
 	import type { Stream } from 'antlr4';
 	export class VtlLexer {

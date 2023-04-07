@@ -1,13 +1,15 @@
+// @ts-ignore
 import { createWorker } from '../../../utils/suggester-workers/create-worker';
 
-const WORKER_PATH =
+const WORKER_PATH: string =
 	process.env.LUNATIC_LABEL_WORKER_PATH ||
-	process.env.REACT_APP_LUNATIC_LABEL_WORKER_PATH;
+	process.env.REACT_APP_LUNATIC_LABEL_WORKER_PATH ||
+	'';
 
-let WORKER;
-const TASKS = new Map();
+let WORKER: Worker | null;
+const TASKS = new Map<string, (v: unknown) => void>();
 
-function getIdTask() {
+function getIdTask(): string {
 	const id = `${Date.now()}`;
 	if (id in TASKS) {
 		return getIdTask();
@@ -15,35 +17,29 @@ function getIdTask() {
 	return id;
 }
 
-function getWorker() {
+function getWorker(): Worker {
 	if (!WORKER) {
 		WORKER = createWorker(WORKER_PATH);
-		WORKER.addEventListener('message', function (e) {
+		WORKER!.addEventListener('message', function (e) {
 			const { data } = e;
 			const { response, idTask } = data;
-			if (idTask in TASKS) {
-				TASKS[idTask](response);
+			if (TASKS.has(idTask)) {
+				TASKS.get(idTask)!(response);
 			}
 		});
 	}
-	return WORKER;
+	return WORKER!;
 }
 
-/**
- *
- * @param {*} option
- * @param {*} search
- * @returns
- */
-function findBestLabel(option, search) {
+function findBestLabel(option: unknown, search: unknown) {
 	return new Promise(function (resolve) {
 		const idTask = getIdTask();
 		const worker = getWorker();
 
-		TASKS[idTask] = function (response) {
+		TASKS.set(idTask, function (response) {
 			resolve(response);
-			delete TASKS[idTask];
-		};
+			TASKS.delete(idTask);
+		});
 		worker.postMessage({ option, search, idTask });
 	});
 }

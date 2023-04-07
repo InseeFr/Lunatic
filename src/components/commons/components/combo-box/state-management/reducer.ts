@@ -15,7 +15,7 @@ export function reducer(
 		case ComboActionKind.ON_CHANGE:
 			return {
 				...state,
-				search: action.payload.search,
+				search: action.payload.search ?? '',
 				selectedIndex: undefined,
 			};
 		case ComboActionKind.ON_SELECT:

@@ -3,8 +3,17 @@ import getIDB from './get-idb';
 
 const IDB_REF = getIDB();
 
-function createOpenDb(onSuccess, onUpgradeNeeded) {
-	return function openStorage(name, version = 1) {
+function createOpenDb(
+	onSuccess: (
+		resolve: unknown,
+		reject: unknown
+	) => (this: IDBRequest, e: Event) => void,
+	onUpgradeNeeded: (
+		resolve: unknown,
+		reject: unknown
+	) => (this: IDBRequest, e: IDBVersionChangeEvent) => void
+) {
+	return function openStorage(name: string, version = 1) {
 		return new Promise(function (resolve, reject) {
 			if (!IDB_REF) {
 				reject('indexedDb not supported !');

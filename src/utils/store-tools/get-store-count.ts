@@ -1,6 +1,6 @@
 import CONSTANTES from './constantes';
 
-function get(db) {
+function get(db: IDBDatabase) {
 	return new Promise(function (resolve, reject) {
 		try {
 			const transaction = db.transaction(
@@ -11,7 +11,7 @@ function get(db) {
 			const store = transaction.objectStore(CONSTANTES.STORE_DATA_NAME);
 			const countRequest = store.count();
 			countRequest.onsuccess = function () {
-				resolve(countRequest.result);
+				resolve(countRequest.result as number);
 			};
 		} catch (e) {
 			reject(e);

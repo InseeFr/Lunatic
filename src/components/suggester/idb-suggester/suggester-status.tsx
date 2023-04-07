@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import Label from '../../commons/components/label';
 import SuggesterNotification from './suggester-notification';
+import { SuggesterStatus as SuggesterStatusEnum } from '../../../use-lunatic/use-suggesters';
 
 export const STATUS = {
 	unused: 0,
@@ -10,6 +11,13 @@ export const STATUS = {
 	unknown: 4,
 	error: 5,
 };
+
+type Props = PropsWithChildren<{
+	getSuggesterStatus: (s: string) => { status: SuggesterStatusEnum };
+	storeName: string;
+	label?: ReactNode;
+	description?: ReactNode;
+}>;
 
 /**
  * Component witch check status of loading process.
@@ -23,10 +31,10 @@ export function SuggesterStatus({
 	getSuggesterStatus,
 	label,
 	description,
-}) {
+}: Props) {
 	const { status } = getSuggesterStatus(storeName);
 
-	if (status === SuggesterStatus.unused) {
+	if (status === SuggesterStatusEnum.unused) {
 		return (
 			<>
 				<Label description={description}>{label}</Label>

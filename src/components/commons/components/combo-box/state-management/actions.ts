@@ -10,7 +10,7 @@ export enum ComboActionKind {
 	ON_INIT = 'combo-box/on-init',
 }
 
-export const onChange = (search: string) =>
+export const onChange = (search: string | null) =>
 	({
 		type: ComboActionKind.ON_CHANGE,
 		payload: { search },
@@ -43,7 +43,7 @@ export const onInit = ({
 	} as const);
 
 export type ComboAction<T extends ComboActionKind = ComboActionKind> = (
-	| { type: ComboActionKind.ON_CHANGE; payload: { search: string } }
+	| { type: ComboActionKind.ON_CHANGE; payload: { search: string | null } }
 	| { type: ComboActionKind.ON_SELECT; payload: { selectedIndex: number } }
 	| {
 			type: ComboActionKind.ON_KEYDOWN;
@@ -56,7 +56,7 @@ export type ComboAction<T extends ComboActionKind = ComboActionKind> = (
 			type: ComboActionKind.ON_INIT;
 			payload: {
 				options: ComboBoxOption[];
-				value: string;
+				value: string | null;
 				getOptionValue: (o: ComboBoxOption) => string;
 			};
 	  }

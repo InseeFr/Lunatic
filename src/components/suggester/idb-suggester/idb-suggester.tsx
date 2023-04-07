@@ -1,13 +1,31 @@
 import React, { useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
 import Suggester from '../html/suggester';
 import createSearching from '../searching';
 import CheckStore from './check-store';
 import { SuggesterStatus } from './suggester-status';
+import { LunaticComponentProps } from '../../type';
+
+type Props = Pick<
+	LunaticComponentProps<'Suggester'>,
+	| 'storeName'
+	| 'idbVersion'
+	| 'id'
+	| 'className'
+	| 'optionRenderer'
+	| 'labelRenderer'
+	| 'disabled'
+	| 'value'
+	| 'label'
+	| 'description'
+	| 'getSuggesterStatus'
+	| 'errors'
+> & {
+	onSelect: (v: string | null) => void;
+};
 
 export function IDBSuggester({
 	storeName,
-	idbVersion,
+	idbVersion = '1',
 	id,
 	className,
 	optionRenderer,
@@ -19,7 +37,7 @@ export function IDBSuggester({
 	description,
 	getSuggesterStatus,
 	errors,
-}) {
+}: Props) {
 	const [store, setStore] = useState(undefined);
 
 	const searching = useMemo(
@@ -41,7 +59,7 @@ export function IDBSuggester({
 		>
 			<CheckStore
 				storeName={storeName}
-				idbVersion={idbVersion}
+				version={parseInt(idbVersion, 10)}
 				setStore={setStore}
 			>
 				<Suggester
@@ -61,27 +79,3 @@ export function IDBSuggester({
 		</SuggesterStatus>
 	);
 }
-
-IDBSuggester.defaultProps = {
-	idbVersion: '1',
-	label: undefined,
-	description: undefined,
-	errors: undefined,
-};
-
-IDBSuggester.propTypes = {
-	storeName: PropTypes.string.isRequired,
-	idbVersion: PropTypes.string,
-	id: PropTypes.string,
-	className: PropTypes.string,
-	optionRenderer: PropTypes.func,
-	labelRenderer: PropTypes.func,
-	onSelect: PropTypes.func,
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	description: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element,
-		PropTypes.array,
-	]),
-	errors: PropTypes.object,
-};

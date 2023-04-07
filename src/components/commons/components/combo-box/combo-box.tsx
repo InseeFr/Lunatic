@@ -19,14 +19,14 @@ type Props = SelectionProps &
 	PanelProps & {
 		className?: string;
 		classStyle?: string;
-		value: string;
+		value: string | null;
 		messageError?: string;
 		getOptionValue?: (o: ComboBoxOption) => string;
 		label?: ReactNode;
 		description?: ReactNode;
 		errors?: LunaticBaseProps['errors'];
-		onChange?: (s: string) => void;
-		onSelect: (s: string) => void;
+		onChange?: (s: string | null) => void;
+		onSelect: (s: string | null) => void;
 		options: ComboBoxOption[];
 	};
 
@@ -83,7 +83,7 @@ function ComboBox({
 	);
 
 	const handleChange = useCallback(
-		(s: string) => {
+		(s: string | null) => {
 			dispatch(actions.onChange(s));
 			onChange?.(s);
 		},

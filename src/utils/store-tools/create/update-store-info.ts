@@ -1,6 +1,6 @@
 import CONSTANTES from '../constantes';
 
-function updateStoreInfo(db, storeInfo) {
+function updateStoreInfo(db: IDBDatabase, storeInfo: any) {
 	return new Promise(function (resolve, reject) {
 		try {
 			const transaction = db.transaction(

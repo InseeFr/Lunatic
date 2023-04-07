@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import createStore from './create';
 
-function useStoreIndex(storeInfo, idbVersion) {
-	const [db, setDb] = useState(undefined);
+function useStoreIndex(storeInfo: { name: string }, idbVersion?: number) {
+	const [db, setDb] = useState<IDBDatabase>();
 
 	useEffect(
 		function () {

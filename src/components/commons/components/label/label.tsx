@@ -1,4 +1,4 @@
-import React, { CSSProperties, PropsWithChildren } from 'react';
+import React, { CSSProperties, PropsWithChildren, ReactNode } from 'react';
 import classnames from 'classnames';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import Description from '../description';
@@ -10,7 +10,9 @@ type Props = PropsWithChildren<{
 	htmlFor?: string;
 	className?: string;
 	style?: CSSProperties;
-	description?: LunaticBaseProps['description'];
+	description?:
+		| ReactNode
+		| Array<{ label: ReactNode; declarationType: string }>;
 }>;
 
 function Label({

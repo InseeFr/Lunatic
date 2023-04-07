@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { PanelContainer } from './panel-container';
 import { OptionContainer } from './option-container';
 import { ComboBoxOption } from '../combo-box.type';
+import { DefaultOptionRenderer } from '../../../index';
 
 export type PanelProps = {
 	optionRenderer: FunctionComponent<{
@@ -19,7 +20,7 @@ export type PanelProps = {
 };
 
 export function Panel({
-	optionRenderer: OptionRender,
+	optionRenderer: OptionRender = DefaultOptionRenderer,
 	options = [],
 	focused,
 	selectedIndex,

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classnames from 'classnames';
 import { createCustomizableLunaticField } from '../../commons';
 
-function Notification({ className, title, description }) {
+type Props = {
+	className?: string;
+	title: ReactNode;
+	description: ReactNode;
+};
+
+function Notification({ className, title, description }: Props) {
 	return (
 		<div className={classnames('lunatic-notification', className)}>
 			<div className="lunatic-notification-container">

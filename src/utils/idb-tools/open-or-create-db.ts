@@ -2,7 +2,13 @@
 import CONSTANTE from '../store-tools/constantes';
 import createDbOpener from './create-db-opener';
 
-function onUpgradeNeeded(e, resolve, reject) {
+function onUpgradeNeeded(
+	e: IDBVersionChangeEvent & {
+		target: IDBOpenDBRequest;
+	},
+	resolve: (v: IDBDatabase) => void,
+	reject: (v: any) => void
+) {
 	try {
 		e.target.onsuccess = function () {
 			// Block success event!
@@ -19,15 +25,20 @@ function onUpgradeNeeded(e, resolve, reject) {
 		});
 
 		const txn = e.target.transaction;
-		txn.oncomplete = function () {
-			resolve(db);
-		};
+		if (txn) {
+			txn.oncomplete = function () {
+				resolve(db);
+			};
+		}
 	} catch (e) {
 		reject(e);
 	}
 }
 
-function onSuccess(e, resolve) {
+function onSuccess(
+	e: Event & { target: { result: IDBDatabase } },
+	resolve: (v: IDBDatabase) => void
+) {
 	resolve(e.target.result);
 }
 

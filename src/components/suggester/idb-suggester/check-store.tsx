@@ -1,8 +1,19 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, {
+	useEffect,
+	useState,
+	useCallback,
+	PropsWithChildren,
+} from 'react';
 import { openDb, getEntity } from '../../../utils/idb-tools';
 import { CONSTANTES } from '../../../utils/store-tools';
 
-function CheckStore({ storeName, version, setStore, children }) {
+type Props = PropsWithChildren<{
+	storeName: string;
+	version: number;
+	setStore: (v: any) => void;
+}>;
+
+function CheckStore({ storeName, version, setStore, children }: Props) {
 	const [ready, setReady] = useState(0);
 	const [refresh, setRefresh] = useState(false);
 
@@ -52,7 +63,7 @@ function CheckStore({ storeName, version, setStore, children }) {
 		);
 	}
 	if (ready === 200) {
-		return children;
+		return <>{children}</>;
 	}
 	return (
 		<div className="lunatic-suggester-unvailable">

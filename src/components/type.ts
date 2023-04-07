@@ -5,6 +5,7 @@ import {
 	LunaticState,
 } from '../use-lunatic/type';
 import { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import { SuggesterStatus } from '../use-lunatic/use-suggesters';
 
 export type LunaticBaseProps<ValueType = unknown> = {
 	id: string;
@@ -26,12 +27,7 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	missing?: unknown;
 	missingResponse?: { name: string; value?: unknown };
 	management?: LunaticState['management'];
-	description?:
-		| ReactNode
-		| {
-				label: ReactNode;
-				declarationType: string;
-		  }[];
+	description?: ReactNode;
 	shortcut?: boolean;
 	required?: boolean;
 	value: null | ValueType;
@@ -42,10 +38,12 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	executeExpression: LunaticState['executeExpression'];
 };
 
-type SuggesterOption = {
+export type SuggesterOption = {
 	children?: string[];
-	id: string;
-	label: string;
+	id?: string;
+	description?: ReactNode;
+	label?: ReactNode;
+	value: string;
 	niveau?: string;
 	parent?: string;
 	tokensMap?: Record<string, { count: number; fields: string[] }>;
@@ -162,9 +160,13 @@ type ComponentPropsByType = {
 		symLinks: Record<string, Record<string, string>>;
 		value: Record<string, unknown[]>;
 	};
-	Suggester: LunaticBaseProps<string> & {
+	Suggester: LunaticBaseProps<string | null> & {
 		storeName: string;
-		optionRendered: FunctionComponent<{
+		getSuggesterStatus: (name: string) => {
+			status: SuggesterStatus;
+			timestamp: number;
+		};
+		optionRenderer: FunctionComponent<{
 			option: SuggesterOption;
 			placeholder?: string;
 			search?: string;

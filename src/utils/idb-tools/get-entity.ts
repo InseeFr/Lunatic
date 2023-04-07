@@ -1,13 +1,17 @@
-function get(db, storeName, id) {
+function get<T = unknown>(
+	db: IDBDatabase,
+	storeName: string,
+	id: IDBValidKey | IDBKeyRange
+) {
 	return new Promise(function (resolve, reject) {
 		const transaction = db.transaction(storeName, 'readwrite');
-		var store = transaction.objectStore(storeName);
+		const store = transaction.objectStore(storeName);
 		const request = store.get(id);
 		transaction.onerror = function () {
 			reject(transaction.error);
 		};
 		request.onsuccess = function () {
-			resolve(request.result);
+			resolve(request.result as T);
 		};
 	});
 }

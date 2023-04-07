@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react';
 import { LunaticBaseProps } from '../../type';
 
 type Props = {
-	value?: LunaticBaseProps['description'];
+	value?: ReactNode | Array<{ label: ReactNode; declarationType: string }>;
 	className?: string;
 };
 

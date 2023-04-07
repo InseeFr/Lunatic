@@ -1,18 +1,16 @@
 import classnames from 'classnames';
+import { ReactNode } from 'react';
+import { SuggesterOption } from '../../type';
 
 type Props = {
-	option: {
-		id?: string;
-		label?: string;
-		value: string;
-	};
+	option: SuggesterOption;
 	selected?: boolean;
 };
 
 function DefaultOptionRenderer({ option, selected }: Props) {
 	const { id, value, label } = option;
 
-	if (label && label.length) {
+	if (label && typeof label === 'string' && label.length) {
 		return (
 			<div className={classnames('lunatic-combo-box-option', { selected })}>
 				<span className="id">{id || value}</span>

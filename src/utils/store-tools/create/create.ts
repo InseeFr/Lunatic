@@ -3,7 +3,7 @@ import CONSTANTES from '../constantes';
 import openOrCreateStore from '../open-or-create-store';
 import updateStoreInfo from './update-store-info';
 
-async function create(storeInfo, idbVersion) {
+async function create(storeInfo: { name: string }, idbVersion?: number) {
 	const { name } = storeInfo;
 	try {
 		const db = await openOrCreateStore(name, idbVersion);

@@ -6,7 +6,7 @@ import SelectionContainer from './selection-container';
 export type SelectionProps = {
 	expanded?: boolean;
 	focused?: boolean;
-	onChange?: (s: string) => void;
+	onChange?: (s: string | null) => void;
 	editable?: boolean;
 	labelId?: string;
 	id?: string;
