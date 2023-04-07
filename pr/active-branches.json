@@ -8,7 +8,6 @@
     "feat/autofocus-components",
     "feat/suggester-meloto",
     "feat/jsonQuestionnaire",
-    "fix/controls",
     "ref/components-ts",
     "fix/radio-disabled"
   ]
