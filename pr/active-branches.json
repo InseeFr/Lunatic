@@ -9,6 +9,7 @@
     "feat/suggester-meloto",
     "feat/jsonQuestionnaire",
     "ref/components-ts",
-    "fix/radio-disabled"
+    "fix/radio-disabled",
+    "fix/conflicts-main"
   ]
 }
