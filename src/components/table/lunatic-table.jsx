@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { Errors } from '../commons';
 import { Table, Tbody } from '../commons/components/html-table';
+import LunaticComponent from '../commons/components/lunatic-component-with-label';
 import Header from './header';
-import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import TableOrchestrator from './table-orchestrator';
 
 function LunaticTable(props) {
@@ -21,6 +22,7 @@ function LunaticTable(props) {
 		missingResponse,
 		management,
 		description,
+		label,
 	} = props;
 	const [nbRows, setNbRows] = useState(undefined);
 
@@ -38,6 +40,7 @@ function LunaticTable(props) {
 		<LunaticComponent
 			id={id}
 			preferences={preferences}
+			label={label}
 			declarations={declarations}
 			value={value}
 			missing={missing}
@@ -57,10 +60,10 @@ function LunaticTable(props) {
 						iteration={iteration}
 						nbRows={nbRows}
 						valueMap={value}
-						errors={errors}
 					/>
 				</Tbody>
 			</Table>
+			<Errors errors={errors} activeId={id} />
 		</LunaticComponent>
 	);
 }

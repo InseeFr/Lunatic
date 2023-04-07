@@ -154,8 +154,8 @@ function OrchestratorForStories({
 
 	const handleGoNext = useCallback(() => {
 		const { currentErrors, isCritical } = compileControls();
+		setErrorActive({ ...errorActive, [pageTag]: currentErrors || {} });
 		if (currentErrors && Object.keys(currentErrors).length > 0) {
-			setErrorActive({ ...errorActive, [pageTag]: currentErrors });
 			setErrorsForModal({ currentErrors, isCritical });
 		} else goNextPage();
 	}, [compileControls, errorActive, goNextPage, pageTag]);

@@ -1,11 +1,11 @@
 import './missing.scss';
 
-import { DK, RF } from '../../../../utils/constants';
 import React, { useCallback } from 'react';
+import { DK, RF } from '../../../../utils/constants';
 
-import Button from '../../../button';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { useLunaticMissing } from '../../../../use-lunatic/lunatic-context';
+import Button from '../../../button';
 import useOnHandleChange from '../../use-on-handle-change';
 
 const Missing = (props) => {
@@ -72,7 +72,7 @@ export const MissingPure = (props) => {
 				missingShortcut.refused && (
 					<KeyboardEventHandler
 						handleKeys={Object.values(missingShortcut)}
-						handleEventType="keypress"
+						handleEventType="keydown"
 						onKeyEvent={(key, e) => {
 							e.preventDefault();
 							if (key === missingShortcut.dontKnow) onClickDK();
