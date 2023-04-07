@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { createCustomizableLunaticField } from '../../commons';
 import Button from '../../button';
 
-function getStatus(complete, partial) {
+function getStatus(complete?: boolean, partial?: boolean) {
 	if (complete) {
 		return 'complete';
 	}
@@ -13,7 +13,15 @@ function getStatus(complete, partial) {
 	return 'unstarted';
 }
 
-function getLabel({ complete, partial, unnecessary }) {
+function getLabel({
+	complete,
+	partial,
+	unnecessary,
+}: {
+	complete?: boolean;
+	partial?: boolean;
+	unnecessary?: boolean;
+}) {
 	if (unnecessary) {
 		return 'Non concerné';
 	}
@@ -26,7 +34,15 @@ function getLabel({ complete, partial, unnecessary }) {
 	return 'Commencer';
 }
 
-function isDisabled({ status, locked, unnecessary }) {
+function isDisabled({
+	status,
+	locked,
+	unnecessary,
+}: {
+	status?: string;
+	locked?: boolean;
+	unnecessary?: boolean;
+}) {
 	if (unnecessary || (status === 'complete' && locked)) {
 		return true;
 	}
@@ -34,14 +50,23 @@ function isDisabled({ status, locked, unnecessary }) {
 	return false;
 }
 
+type Props = {
+	complete?: boolean;
+	partial?: boolean;
+	iteration: number;
+	unnecessary?: boolean;
+	goToIteration: (n: number) => void;
+	locked?: boolean;
+};
+
 function RoundaboutItButton({
 	complete,
 	partial,
 	iteration,
 	unnecessary,
 	goToIteration,
-	locked,
-}) {
+	locked = true,
+}: Props) {
 	const status = getStatus(complete, partial);
 	const label = getLabel({ complete, partial, unnecessary });
 
@@ -62,10 +87,6 @@ function RoundaboutItButton({
 		</Button>
 	);
 }
-
-RoundaboutItButton.defaultProps = {
-	locked: true,
-};
 
 export default createCustomizableLunaticField(
 	RoundaboutItButton,

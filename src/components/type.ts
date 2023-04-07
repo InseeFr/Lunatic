@@ -6,6 +6,7 @@ import {
 } from '../use-lunatic/type';
 import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
+import useLunatic from '../use-lunatic';
 
 export type LunaticBaseProps<ValueType = unknown> = {
 	id: string;
@@ -137,7 +138,18 @@ type ComponentPropsByType = {
 		checkboxStyle?: boolean;
 		response: { name: string };
 	};
-	Roundabout: LunaticBaseProps<string> & {};
+	Roundabout: LunaticBaseProps<string> & {
+		iterations: number;
+		goToPage: ReturnType<typeof useLunatic>['goToPage'];
+		page: string;
+		locked?: boolean;
+		expressions: {
+			unnecessary?: Array<boolean>;
+			complete?: Array<boolean>;
+			partial?: Array<boolean>;
+			label?: Array<string>;
+		};
+	};
 	Dropdown: LunaticBaseProps<string> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };

@@ -1,15 +1,7 @@
 import React, { useCallback } from 'react';
 import Roundabout from './roundabout';
 import Redirect from './redirect';
-
-export function isComplete(expressions = {}) {
-	const { complete } = expressions;
-	if (Array.isArray(complete)) {
-		return complete.reduce((state, current) => state && current);
-	}
-
-	return false;
-}
+import { LunaticComponentProps } from '../type';
 
 /**
  *  Logique fonctionnelle et immuable du composant
@@ -21,9 +13,17 @@ function LunaticRoundabout({
 	page,
 	label,
 	locked,
-}) {
+}: LunaticComponentProps<'Roundabout'>) {
+	console.log('lunatic', 'props', {
+		iterations,
+		expressions,
+		goToPage,
+		page,
+		label,
+		locked,
+	});
 	const goToIteration = useCallback(
-		function (iteration) {
+		function (iteration: number) {
 			goToPage({
 				page,
 				iteration,

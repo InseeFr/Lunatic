@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { createCustomizableLunaticField } from '../commons';
 import RoundaboutLabel from './components/roundabout-label';
@@ -8,6 +8,16 @@ import RoundaboutItContainer from './components/roundabout-it-container';
 import RoundaboutItButton from './components/roundabout-it-button';
 import RoundaboutItTitle from './components/roundabout-it-title';
 
+type PropsIteration = {
+	label?: ReactNode;
+	index: number;
+	complete?: boolean;
+	partial?: boolean;
+	unnecessary?: boolean;
+	locked?: boolean;
+	goToIteration: (v: number) => void;
+};
+
 function RoundaboutIteration({
 	label,
 	index,
@@ -16,7 +26,7 @@ function RoundaboutIteration({
 	unnecessary,
 	goToIteration,
 	locked,
-}) {
+}: PropsIteration) {
 	return (
 		<RoundaboutItContainer>
 			<RoundaboutItTitle label={label} />
@@ -32,12 +42,32 @@ function RoundaboutIteration({
 	);
 }
 
-function Roundabout({ iterations, expressions, goToIteration, label, locked }) {
+type Props = {
+	label?: ReactNode;
+	iterations?: unknown;
+	expressions: {
+		label?: Array<ReactNode | undefined>;
+		complete?: Array<boolean | undefined>;
+		partial?: Array<boolean | undefined>;
+		unnecessary?: Array<boolean | undefined>;
+	};
+	locked?: boolean;
+	goToIteration: (v: number) => void;
+};
+
+function Roundabout({
+	iterations,
+	expressions,
+	goToIteration,
+	label,
+	locked = true,
+}: Props) {
+	const emptyArray = new Array(iterations) as undefined[];
 	const {
-		complete = new Array(iterations),
-		partial = new Array(iterations),
-		label: iterationLabels = new Array(iterations),
-		unnecessary = new Array(iterations),
+		complete = emptyArray,
+		partial = emptyArray,
+		label: iterationLabels = emptyArray,
+		unnecessary = emptyArray,
 	} = expressions;
 
 	if (iterationLabels !== undefined && partial !== undefined) {
@@ -64,19 +94,5 @@ function Roundabout({ iterations, expressions, goToIteration, label, locked }) {
 	}
 	return <RoundaboutPending />;
 }
-
-Roundabout.propTypes = {
-	iterations: PropTypes.number.isRequired,
-	expressions: PropTypes.shape({
-		label: PropTypes.arrayOf(PropTypes.string).isRequired,
-		partial: PropTypes.arrayOf(PropTypes.bool).isRequired,
-		complete: PropTypes.arrayOf(PropTypes.bool).isRequired,
-	}).isRequired,
-	goToIteration: PropTypes.func.isRequired,
-	label: PropTypes.string,
-	locked: PropTypes.bool,
-};
-
-Roundabout.defaultProps = { label: undefined, locked: true };
 
 export default createCustomizableLunaticField(Roundabout, 'Roundabout');

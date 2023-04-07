@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { createCustomizableLunaticField } from '../../commons';
 import './roundabout.scss';
 
-function RoundaboutContainer({ children }) {
+function RoundaboutContainer({ children }: PropsWithChildren<{}>) {
 	return <div className="lunatic-roundabout">{children}</div>;
 }
 

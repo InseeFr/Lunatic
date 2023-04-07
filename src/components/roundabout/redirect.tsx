@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 
-function Redirect({ goToIteration, iteration }) {
+type Props = {
+	goToIteration: (n: number) => void,
+	iteration: number,
+};
+
+function Redirect({ goToIteration, iteration }: Props) {
 	useEffect(
 		function () {
 			if (typeof goToIteration === 'function') {
