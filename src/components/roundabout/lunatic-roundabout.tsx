@@ -14,14 +14,6 @@ function LunaticRoundabout({
 	label,
 	locked,
 }: LunaticComponentProps<'Roundabout'>) {
-	console.log('lunatic', 'props', {
-		iterations,
-		expressions,
-		goToPage,
-		page,
-		label,
-		locked,
-	});
 	const goToIteration = useCallback(
 		function (iteration: number) {
 			goToPage({
