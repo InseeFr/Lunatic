@@ -1,6 +1,6 @@
 import preparePrefix from './prepare-prefix';
 
-function match(label, prefix) {
+function match(label: string, prefix: string): number {
 	const pref = prefix.split('');
 	let pos = -1;
 	const clean = preparePrefix(label);

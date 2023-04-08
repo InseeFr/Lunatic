@@ -1,4 +1,4 @@
-import { isValidElement } from 'react';
+import { isValidElement, ReactNode } from 'react';
 
 /**
  * Les labels peuvent être des chaines des caractères ou des fragments JSX issus
@@ -7,10 +7,10 @@ import { isValidElement } from 'react';
  * @param {*} label
  * @returns une chaine de caractère
  */
-function getLabel(label) {
-	if (isValidElement(label)) {
+function getLabel(label: unknown): string {
+	if (label && typeof label === 'object' && 'props' in label) {
 		const { props } = label;
-		const { expression } = props;
+		const { expression } = props as Record<string, string>;
 		return `${expression}`;
 	}
 

@@ -1,10 +1,16 @@
 import React from 'react';
 import classnames from 'classnames';
+import { ComboBoxOption } from '../../../commons/components/combo-box/combo-box.type';
 
-function SimpleOptionRenderer({ option, selected }) {
+type Props = {
+	option: ComboBoxOption;
+	selected?: boolean;
+};
+
+function SimpleOptionRenderer({ option, selected }: Props) {
 	const { value, label } = option;
 
-	if (label && label.length) {
+	if (label && typeof label === 'string' && label.length) {
 		return (
 			<div className={classnames('lunatic-dropdown-option', { selected })}>
 				<span className="id">{value}</span>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import Dropdown from './html/dropdown';
+import { LunaticComponentProps } from '../type';
 
 function LunaticDropdown({
 	id,
@@ -20,7 +21,7 @@ function LunaticDropdown({
 	missingResponse,
 	management,
 	description,
-}) {
+}: LunaticComponentProps<'Dropdown'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
 	return (
@@ -49,34 +50,5 @@ function LunaticDropdown({
 		</LunaticComponent>
 	);
 }
-
-LunaticDropdown.propTypes = {
-	id: PropTypes.string.isRequired,
-	handleChange: PropTypes.func.isRequired,
-	options: PropTypes.arrayOf(
-		PropTypes.shape({
-			label: PropTypes.oneOfType([
-				PropTypes.string.isRequired,
-				PropTypes.element,
-			]),
-			value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-				.isRequired,
-		})
-	).isRequired,
-	disabled: PropTypes.bool,
-	writable: PropTypes.bool,
-	value: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-		PropTypes.bool,
-		PropTypes.array,
-	]),
-};
-
-LunaticDropdown.defaultProps = {
-	disabled: false,
-	value: null,
-	writable: false,
-};
 
 export default LunaticDropdown;

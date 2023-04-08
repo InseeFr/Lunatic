@@ -2,6 +2,7 @@ import React from 'react';
 import { ComboBox } from '../../../commons';
 import SimpleOptionRenderer from './simple-option-renderer';
 import SimpleLabelRenderer from './simple-label-renderer';
+import { DropdownProps } from '../dropdown';
 
 function DropdownSimple({
 	id,
@@ -13,7 +14,7 @@ function DropdownSimple({
 	label,
 	errors,
 	description,
-}) {
+}: DropdownProps) {
 	return (
 		<ComboBox
 			id={id}

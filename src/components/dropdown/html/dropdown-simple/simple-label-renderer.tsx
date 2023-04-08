@@ -1,7 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { ComboBoxOption } from '../../../commons/components/combo-box/combo-box.type';
 
-function getContent(option, search) {
+type Props = {
+	option: ComboBoxOption;
+	placeholder?: string;
+	search?: string;
+};
+
+function getContent(option: Props['option'], search?: string) {
 	if (option) {
 		const { value, label } = option;
 		return label || value;
@@ -12,20 +18,12 @@ function getContent(option, search) {
 	return null;
 }
 
-function SimpleLabelRenderer({ option, placeholder, search }) {
+function SimpleLabelRenderer({ option, placeholder, search }: Props) {
 	const content = getContent(option, search);
 	if (content) {
 		return <span className="selection">{content}</span>;
 	}
 	return <span className="placeholder">{placeholder}</span>;
 }
-
-SimpleLabelRenderer.propTypes = {
-	option: PropTypes.shape({
-		value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-	}),
-	placeholder: PropTypes.string,
-	search: PropTypes.string,
-};
 
 export default SimpleLabelRenderer;

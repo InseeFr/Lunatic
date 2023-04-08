@@ -1,8 +1,22 @@
-import React, { useCallback, useState } from 'react';
+import React, { ReactNode, useCallback, useState } from 'react';
 import { ComboBox } from '../../../commons';
 import WritableOptionRenderer from './writable-option-renderer';
 import WritableLabelRenderer from './writable-label-renderer';
 import filterOptions from './filter-tools/filter-options';
+import { ComboBoxOption } from '../../../commons/components/combo-box/combo-box.type';
+import { LunaticError } from '../../../../use-lunatic/type';
+
+type Props = {
+	id?: string;
+	disabled?: boolean;
+	options: ComboBoxOption[];
+	onSelect: (v: string | null) => void;
+	className?: string;
+	value: string | null;
+	label?: ReactNode;
+	errors?: Record<string, LunaticError[]>;
+	description?: ReactNode;
+};
 
 function DropdownWritable({
 	id,
@@ -14,11 +28,11 @@ function DropdownWritable({
 	label,
 	errors,
 	description,
-}) {
+}: Props) {
 	const [filtered, setFiltered] = useState(options);
 
 	const onChange = useCallback(
-		function (search) {
+		function (search: string | null) {
 			if (search) {
 				setFiltered(filterOptions(options, search));
 			} else {

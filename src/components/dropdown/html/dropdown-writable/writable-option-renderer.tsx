@@ -1,10 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import getLabel from './filter-tools/get-label';
 import lettersMatching from './filter-tools/letters-matching';
 import preparePrefix from './filter-tools/prepare-prefix';
+import { ComboBoxOption } from '../../../commons/components/combo-box/combo-box.type';
 
-function hightlightSearch(label, prefix) {
+type Props = {
+	option: ComboBoxOption;
+	selected?: boolean;
+	search?: string;
+};
+
+function hightlightSearch(label: ReactNode, prefix: string | undefined) {
 	const labelText = getLabel(label);
 	const initLetters = lettersMatching(labelText, prefix);
 	return labelText
@@ -25,7 +32,10 @@ function hightlightSearch(label, prefix) {
 					stack: [...stack, { char: c, className: 'normal' }],
 				};
 			},
-			{ letters: initLetters, stack: [] }
+			{
+				letters: initLetters,
+				stack: [] as Array<{ char: string; className: string }>,
+			}
 		)
 		.stack.reduce(
 			({ last, stack }, { char, className }) => {
@@ -44,13 +54,18 @@ function hightlightSearch(label, prefix) {
 					stack: [{ ...first, part: `${first.part}${char}` }, ...rest],
 				};
 			},
-			{ last: undefined, stack: [] }
+			{
+				last: undefined as undefined | string,
+				stack: [] as Array<{ part: string; className: string }>,
+			}
 		)
 		.stack.reverse();
 }
 
-function WritableOptionRenderer({ option, selected, search }) {
-	const [parts, setParts] = useState([]);
+function WritableOptionRenderer({ option, selected, search }: Props) {
+	const [parts, setParts] = useState(
+		[] as Array<{ part: string; className: string }>
+	);
 	const { value, label } = option;
 
 	useEffect(

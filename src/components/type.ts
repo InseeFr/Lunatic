@@ -150,7 +150,7 @@ type ComponentPropsByType = {
 			label?: Array<string>;
 		};
 	};
-	Dropdown: LunaticBaseProps<string> & {
+	Dropdown: LunaticBaseProps<string | null> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
 		writable?: boolean;

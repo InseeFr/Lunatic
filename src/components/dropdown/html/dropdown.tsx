@@ -3,6 +3,22 @@ import { createCustomizableLunaticField } from '../../commons';
 import DropdownSimple from './dropdown-simple';
 import DropdownWritable from './dropdown-writable';
 import './dropdown.scss';
+import { LunaticComponentProps } from '../../type';
+
+export type DropdownProps = {
+	onSelect: (v: string | null) => void;
+	className?: string;
+} & Pick<
+	LunaticComponentProps<'Dropdown'>,
+	| 'id'
+	| 'disabled'
+	| 'options'
+	| 'writable'
+	| 'value'
+	| 'description'
+	| 'label'
+	| 'errors'
+>;
 
 function Dropdown({
 	id,
@@ -15,7 +31,7 @@ function Dropdown({
 	description,
 	label,
 	errors,
-}) {
+}: DropdownProps) {
 	if (writable) {
 		return (
 			<DropdownWritable

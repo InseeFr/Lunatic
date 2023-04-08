@@ -5,4 +5,5 @@ export type ComboBoxOption = {
 	description?: ReactNode;
 	label?: ReactNode;
 	value: string;
+	search?: string;
 };

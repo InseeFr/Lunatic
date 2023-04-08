@@ -1,7 +1,14 @@
 import React, { isValidElement } from 'react';
 import PropTypes from 'prop-types';
+import { ComboBoxOption } from '../../../commons/components/combo-box/combo-box.type';
 
-function getContent(option, search) {
+type Props = {
+	option: ComboBoxOption;
+	placeholder?: string;
+	search?: string;
+};
+
+function getContent(option: Props['option'], search?: string) {
 	if (option) {
 		const { value, label } = option;
 		if (isValidElement(label)) {
@@ -15,20 +22,12 @@ function getContent(option, search) {
 	return null;
 }
 
-function WritableLabelRenderer({ option, placeholder, search }) {
+function WritableLabelRenderer({ option, placeholder, search }: Props) {
 	const content = getContent(option, search);
 	if (content) {
 		return <span className="selection">{content}</span>;
 	}
 	return <span className="placeholder">{placeholder}</span>;
 }
-
-WritableLabelRenderer.propTypes = {
-	option: PropTypes.shape({
-		value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-	}),
-	placeholder: PropTypes.string,
-	search: PropTypes.string,
-};
 
 export default WritableLabelRenderer;
