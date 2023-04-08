@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import ModalContainer from './modal-container';
 import { describe, it, expect } from 'vitest';
 
@@ -11,7 +10,7 @@ describe('ModalContainer component', () => {
 		const modalContentElement = getByText('Test modal content');
 		expect(modalContentElement).toBeInTheDocument();
 		expect(modalContentElement.parentNode).toHaveClass('modal-content');
-		expect(modalContentElement.parentNode.parentNode).toHaveClass(
+		expect(modalContentElement.parentNode!.parentNode).toHaveClass(
 			'lunatic-modal-controls'
 		);
 	});

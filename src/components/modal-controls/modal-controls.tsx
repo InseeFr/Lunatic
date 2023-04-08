@@ -1,21 +1,29 @@
 import classnames from 'classnames';
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import CloseOrSkip from './close-or-skip';
 import ModalContainer from './modal-container';
 import './modal-controls.scss';
+import { LunaticError } from '../../use-lunatic/type';
 
-function ErrorItem({ criticality, errorMessage }) {
+type Props = {
+	goNext: MouseEventHandler;
+	onClose: MouseEventHandler;
+	isCritical?: boolean;
+	errors: Record<string, LunaticError[]>;
+};
+
+function Error({ criticality, errorMessage }: LunaticError) {
 	return <li className={classnames(criticality)}>{errorMessage}</li>;
 }
 
-function ComponentErrors({ errors }) {
+function ComponentErrors({ errors }: { errors: LunaticError[] }) {
 	const content = errors.map(function (error, index) {
-		return <ErrorItem {...error} key={index} />;
+		return <Error {...error} key={index} />;
 	}, []);
 	return <ul className={classnames('errors')}>{content}</ul>;
 }
 
-function ModalControls({ title, errors, isCritical, goNext, onClose }) {
+function ModalControls({ errors, isCritical, goNext, onClose }: Props) {
 	if (typeof errors === 'object') {
 		const content = Object.entries(errors).map(function ([id, errors]) {
 			return <ComponentErrors errors={errors} key={id} />;
@@ -27,7 +35,6 @@ function ModalControls({ title, errors, isCritical, goNext, onClose }) {
 				<CloseOrSkip
 					onSkip={goNext}
 					onClose={onClose}
-					errors={errors}
 					isCritical={isCritical}
 				/>
 			</ModalContainer>

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import D from '../../i18n';
 import Button from '../button';
 
-function CloseOrSkip({ errors, onClose, onSkip, isCritical }) {
+type Props = {
+	onClose: MouseEventHandler;
+	onSkip: MouseEventHandler;
+	isCritical?: boolean;
+};
+
+function CloseOrSkip({ onClose, onSkip, isCritical }: Props) {
 	if (isCritical) {
 		return (
 			<div className="modal-buttons">
