@@ -1,32 +1,43 @@
 import React from 'react';
 import { FunctionComponent } from 'react';
 import { LunaticComponentProps } from '../type';
-import { LunaticState } from '../../use-lunatic/type';
+import {
+	LunaticComponentDefinition,
+	LunaticState,
+} from '../../use-lunatic/type';
 
 type OriginalProps = {
 	key: number;
 	rowIndex: number;
-	components: FunctionComponent<LunaticComponentProps>[];
+	components: LunaticComponentDefinition[];
 	valueMap: Record<string, unknown>;
-	handleChange: LunaticComponentProps<'Loop'>['handleChange'];
+	handleChange: (
+		response: { name: string },
+		value: unknown,
+		args: { index: number; [key: string]: unknown }
+	) => void;
 	executeExpression: LunaticState['executeExpression'];
 	iteration?: number;
-	linksIterations: [number, number];
+	linksIterations?: [number, number];
 	features?: string[];
 } & Pick<
 	LunaticComponentProps<'Loop'>,
-	'errors' | 'handleChange' | 'preferences' | 'missing' | 'shortcut' | 'id'
+	'errors' | 'preferences' | 'missing' | 'shortcut' | 'id'
 >;
 
 type OrchestratedProps = {
 	nbRows: number;
-	xAxisIterations: number;
+	xAxisIterations?: number;
+	handleChange: (
+		response: { name: string },
+		value: unknown,
+		args: { index: number; [key: string]: unknown }
+	) => void;
 } & Pick<
 	OriginalProps,
 	| 'id'
 	| 'components'
 	| 'valueMap'
-	| 'handleChange'
 	| 'features'
 	| 'missing'
 	| 'shortcut'
@@ -52,32 +63,41 @@ function createRowOrchestrator(Row: FunctionComponent<OriginalProps>) {
 		xAxisIterations,
 		errors,
 	}: OrchestratedProps) {
-		if (nbRows > 0) {
-			return new Array(nbRows).fill(null).map(function (_, index) {
-				const i = Math.trunc(index / xAxisIterations);
-				const j = index % xAxisIterations;
-				return (
-					<Row
-						key={index}
-						id={id}
-						rowIndex={index}
-						components={components}
-						valueMap={valueMap}
-						handleChange={handleChange}
-						executeExpression={executeExpression}
-						iteration={iteration}
-						linksIterations={[i, j]}
-						/** */
-						features={features}
-						shortcut={shortcut}
-						preferences={preferences}
-						missing={missing}
-						errors={errors}
-					/>
-				);
-			});
+		if (nbRows <= 0) {
+			return null;
 		}
-		return null;
+		const items = new Array(nbRows).fill(null);
+		return (
+			<>
+				{items.map((_, index) => {
+					const linksIterations = xAxisIterations
+						? ([
+								Math.trunc(index / xAxisIterations),
+								index % xAxisIterations,
+						  ] as [number, number])
+						: undefined;
+					return (
+						<Row
+							key={index}
+							id={id}
+							rowIndex={index}
+							components={components}
+							valueMap={valueMap}
+							handleChange={handleChange}
+							executeExpression={executeExpression}
+							iteration={iteration}
+							linksIterations={linksIterations}
+							/** */
+							features={features}
+							shortcut={shortcut}
+							preferences={preferences}
+							missing={missing}
+							errors={errors}
+						/>
+					);
+				})}
+			</>
+		);
 	};
 }
 

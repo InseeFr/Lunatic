@@ -9,12 +9,13 @@ import { createCustomizableLunaticField } from '../../commons';
 import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
 import getInitLength from '../commons/get-init-length';
+import { LunaticComponentProps } from '../../type';
 
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
 
 function RosterforLoop({
-	valueMap,
+	value: valueMap,
 	lines,
 	handleChange,
 	declarations,
@@ -27,7 +28,7 @@ function RosterforLoop({
 	id,
 	management,
 	errors,
-}) {
+}: LunaticComponentProps<'RosterForLoop'>) {
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [nbRows, setNbRows] = useState(() => getInitLength(valueMap));
@@ -43,7 +44,11 @@ function RosterforLoop({
 	);
 
 	const handleChangeLoop = useCallback(
-		function (response, value, args) {
+		function (
+			response: { name: string },
+			value: unknown,
+			args: { index: number; [k: string]: unknown }
+		) {
 			const v = valueMap[response.name];
 			v[args.index] = value;
 			handleChange(response, v, { loop: true, length: nbRows }); // TODO: a retaper pour déplacer cette compléxité
@@ -57,10 +62,7 @@ function RosterforLoop({
 				const newNbRows = nbRows - 1;
 				setNbRows(newNbRows);
 				Object.entries(valueMap).forEach(([k, v]) => {
-					const newValue = v.reduce((acc, e, i) => {
-						if (i < newNbRows) return [...acc, e];
-						return acc;
-					}, []);
+					const newValue = v.filter((_, i) => i < newNbRows);
 					handleChange({ name: k }, newValue);
 				});
 			}
@@ -78,9 +80,9 @@ function RosterforLoop({
 					components={components}
 					nbRows={nbRows}
 					executeExpression={executeExpression}
-					header={headers}
+					headers={headers}
 					handleChange={handleChangeLoop}
-					valueMap={valueMap}
+					value={valueMap}
 					management={management}
 					missing={missing}
 					shortcut={shortcut}
@@ -103,4 +105,4 @@ function RosterforLoop({
 	return null;
 }
 
-export default createCustomizableLunaticField(RosterforLoop);
+export default createCustomizableLunaticField(RosterforLoop, 'RosterforLoop');

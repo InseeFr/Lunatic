@@ -1,13 +1,14 @@
 import React from 'react';
 import BlockForLoop from './block-for-loop';
 import RosterForLoop from './roster-for-loop';
+import { LunaticComponentProps } from '../type';
 
 const LoopTypes = {
 	rosterForLoop: 'RosterForLoop',
 	blockForLoop: 'Loop',
 };
 
-function Loop(props) {
+function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
 	const {
 		declarations,
 		label,
@@ -18,7 +19,6 @@ function Loop(props) {
 		handleChange,
 		value,
 		executeExpression,
-		loopDependencies,
 		componentType,
 		headers,
 		shortcut,
@@ -40,10 +40,9 @@ function Loop(props) {
 					id={id}
 					components={components}
 					handleChange={handleChange}
-					valueMap={value}
+					value={value}
 					management={management}
 					executeExpression={executeExpression}
-					loopDependencies={loopDependencies}
 					missing={missing}
 					shortcut={shortcut}
 					features={features}
@@ -62,10 +61,9 @@ function Loop(props) {
 					id={id}
 					components={components}
 					handleChange={handleChange}
-					valueMap={value}
+					value={value}
 					management={management}
 					executeExpression={executeExpression}
-					loopDependencies={loopDependencies}
 					missing={missing}
 					shortcut={shortcut}
 					features={features}

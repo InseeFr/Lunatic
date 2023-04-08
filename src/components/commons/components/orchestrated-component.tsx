@@ -7,7 +7,7 @@ type Props = {
 	linksIterations?: [number, number];
 	iteration: number;
 	component: LunaticComponentDefinition;
-	features: string[];
+	features?: string[];
 } & Pick<
 	LunaticBaseProps,
 	| 'id'

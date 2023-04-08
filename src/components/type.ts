@@ -37,6 +37,8 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	style?: CSSProperties;
 	iteration?: number;
 	executeExpression: LunaticState['executeExpression'];
+	features?: string[];
+	componentType?: string;
 };
 
 export type SuggesterOption = {
@@ -74,8 +76,7 @@ type ComponentPropsByType = {
 		components: LunaticComponentDefinition[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
-		componentType: 'RosterForLoop';
-		headers?: Array<{ label: LunaticExpression }>;
+		headers?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
 	};
 	Loop: LunaticBaseProps<unknown> & {
@@ -84,8 +85,7 @@ type ComponentPropsByType = {
 		components: LunaticComponentDefinition[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
-		componentType: 'Loop';
-		headers?: Array<{ label: LunaticExpression }>;
+		headers?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
 	};
 	Table: LunaticBaseProps<unknown> & {
