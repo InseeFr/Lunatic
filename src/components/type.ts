@@ -163,7 +163,7 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'>;
-	PairwiseLinks: LunaticBaseProps<string> & {
+	PairwiseLinks: Omit<LunaticBaseProps, 'value'> & {
 		components: LunaticComponentDefinition[];
 		features?: LunaticState['features'];
 		executeExpression: LunaticState['executeExpression'];

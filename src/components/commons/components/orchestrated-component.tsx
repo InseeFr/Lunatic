@@ -5,7 +5,6 @@ import { LunaticComponentDefinition } from '../../../use-lunatic/type';
 
 type Props = {
 	linksIterations?: [number, number];
-	iteration: number;
 	component: LunaticComponentDefinition;
 	features?: string[];
 } & Pick<
