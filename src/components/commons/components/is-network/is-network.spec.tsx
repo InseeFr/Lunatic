@@ -4,13 +4,13 @@ import IsNetwork from './is-network';
 import { expect, describe, it, vi, afterEach, beforeEach } from 'vitest';
 
 describe('IsNetwork', () => {
-	let originalNavigator;
+	let originalNavigator: Navigator;
 	beforeEach(() => {
 		originalNavigator = window.navigator;
 	});
 	afterEach(() => {
 		vi.restoreAllMocks();
-		window.navigator = originalNavigator;
+		(window as any).navigator = originalNavigator;
 	});
 	it('renders the component', () => {
 		render(<IsNetwork />);
