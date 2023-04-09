@@ -1,5 +1,10 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
-import PropTypes from 'prop-types';
+import React, {
+	useEffect,
+	useState,
+	useCallback,
+	useRef,
+	ReactNode,
+} from 'react';
 import classnames from 'classnames';
 import LoaderRow from './loader-row';
 import { Tools, ActionTool } from './tools';
@@ -8,15 +13,34 @@ import WidgetContainer from './widget-container';
 import Dragger from '../commons/components/dragger';
 import { OnDragIcon } from '../commons/icons';
 import './widget.scss';
+import { voidFunction } from '../../utils/function';
+import { SuggesterType } from '../../use-lunatic/type-source';
 
-function empty() {}
+type Props = {
+	absolute?: boolean;
+	source: { suggesters: Array<StoreInfo> };
+	onRefresh: () => void;
+	getStoreInfo: (s: string) => {
+		idbVersion: number;
+		fetch: () => Promise<unknown[]>;
+	};
+};
 
-function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh, absolute }) {
+type StoreInfo = Pick<SuggesterType, 'name' | 'fields' | 'stopWords'>;
+
+type StoreState = { storeInfo: StoreInfo } & ReturnType<Props['getStoreInfo']>;
+
+function SuggesterLoaderWidget({
+	source,
+	getStoreInfo,
+	onRefresh = voidFunction,
+	absolute,
+}: Props) {
 	const { suggesters } = source;
-	const containerEl = useRef();
+	const containerEl = useRef<HTMLDivElement>(null);
 	const { current } = containerEl;
-	const [stores, setStores] = useState(undefined);
-	const [rows, setRows] = useState([]);
+	const [stores, setStores] = useState<Record<string, StoreState>>();
+	const [rows, setRows] = useState([] as ReactNode[]);
 	const [disabled, setDisabled] = useState(false);
 	const [drag, setDrag] = useState(false);
 
@@ -27,7 +51,7 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh, absolute }) {
 					const { name } = storeInfo;
 
 					return { ...current, [name]: { storeInfo, ...getStoreInfo(name) } };
-				}, {});
+				}, {} as typeof stores);
 
 				setStores(str);
 			}
@@ -35,12 +59,12 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh, absolute }) {
 		[suggesters, getStoreInfo]
 	);
 
-	const notify = useCallback(function (online) {
+	const notify = useCallback(function (online: boolean) {
 		setDisabled(!online);
 	}, []);
 
 	const onDrag = useCallback(
-		function (status) {
+		function (status: unknown) {
 			if (!drag && status) {
 				setDrag(true);
 			} else if (drag && !status) {
@@ -94,9 +118,11 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh, absolute }) {
 					display={absolute}
 					title="drag"
 				>
-					<Dragger el={current} onDrag={onDrag}>
-						<OnDragIcon className={classnames('on-drag-icon', { drag })} />
-					</Dragger>
+					{current && (
+						<Dragger el={current} onDrag={onDrag}>
+							<OnDragIcon className={classnames('on-drag-icon', { drag })} />
+						</Dragger>
+					)}
 				</ActionTool>
 			</Tools>
 			<IsNetwork
@@ -107,17 +133,5 @@ function SuggesterLoaderWidget({ source, getStoreInfo, onRefresh, absolute }) {
 		</WidgetContainer>
 	);
 }
-
-SuggesterLoaderWidget.propTypes = {
-	absolute: PropTypes.bool,
-	source: PropTypes.object.isRequired,
-	getStoreInfo: PropTypes.func.isRequired,
-	onRefresh: PropTypes.func,
-};
-
-SuggesterLoaderWidget.defaultProps = {
-	onRefresh: empty,
-	absolute: false,
-};
 
 export default SuggesterLoaderWidget;

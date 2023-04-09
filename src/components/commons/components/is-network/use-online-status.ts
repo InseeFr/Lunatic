@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function useOnlineStatus(online, offline) {
+function useOnlineStatus(online: () => void, offline: () => void) {
 	useEffect(
 		function () {
 			if (window.navigator.onLine && typeof online === 'function') {
@@ -13,9 +13,9 @@ function useOnlineStatus(online, offline) {
 	);
 	useEffect(
 		function () {
-			let callback;
+			let callback: () => void;
 			if (typeof online === 'function') {
-				callback = function (e) {
+				callback = function () {
 					online();
 				};
 				window.addEventListener('online', callback);
@@ -31,9 +31,9 @@ function useOnlineStatus(online, offline) {
 
 	useEffect(
 		function () {
-			let callback;
+			let callback: () => void;
 			if (typeof offline === 'function') {
-				callback = function (e) {
+				callback = function () {
 					offline();
 				};
 				window.addEventListener('offline', callback);

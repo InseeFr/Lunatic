@@ -1,7 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
 
-function Progress({ display, percent = 0, handleClick = () => null }) {
+type Props = {
+	display?: boolean;
+	percent?: number;
+	handleClick?: (v: number) => void;
+};
+
+function Progress({ display, percent = 0, handleClick = () => null }: Props) {
 	if (display) {
 		return (
 			<div

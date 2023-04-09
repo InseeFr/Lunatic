@@ -86,7 +86,11 @@ const bulkPush =
 	};
 
 /* */
-function bulkInsert(db: IDBDatabase, store: string, hook = () => null) {
+function bulkInsert(
+	db: IDBDatabase,
+	store: string,
+	hook: (v: { message: unknown; error?: Event }) => void = () => null
+) {
 	return (entities = []) => {
 		const lots = split(entities, BULK_LIMIT);
 		return new Promise((resolve, reject) => {

@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { PropsWithChildren, Ref } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 
-function WidgetContainer({ children, drag, absolute }, containerEl) {
+type Props = PropsWithChildren<{
+	drag?: boolean;
+	absolute?: boolean;
+}>;
+
+function WidgetContainer(
+	{ children, drag, absolute }: Props,
+	containerEl: Ref<HTMLDivElement>
+) {
 	if (absolute) {
 		return ReactDOM.createPortal(
 			<div

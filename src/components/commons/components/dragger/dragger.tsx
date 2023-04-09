@@ -1,14 +1,32 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, {
+	useState,
+	useEffect,
+	useCallback,
+	MouseEvent as ReactMouseEvent,
+	PropsWithChildren,
+} from 'react';
 import { useDocumentAddEventListener } from '../../../commons';
 import './dragger.scss';
+import { voidFunction } from '../../../../utils/function';
 
-function Dragger({ el, children, onDrag }) {
+type Props = PropsWithChildren<{
+	el?: {
+		style: { top?: string; left?: string };
+		getBoundingClientRect: () => { top: number; left: number };
+	};
+	onDrag?: (drag: boolean, position?: [x: number, y: number]) => void;
+}>;
+
+function Dragger({ el, children, onDrag = voidFunction }: Props) {
 	const [drag, setDrag] = useState(false);
-	const [delta, setDelta] = useState([undefined, undefined]);
-	const [anchor, setAnchor] = useState([undefined, undefined]);
+	const [delta, setDelta] = useState<[number, number] | [undefined, undefined]>(
+		[undefined, undefined]
+	);
+	const [anchor, setAnchor] = useState<
+		[number, number] | [undefined, undefined]
+	>([undefined, undefined]);
 
-	function onMouseDown(e) {
+	function onMouseDown(e: ReactMouseEvent) {
 		const { clientX, clientY } = e;
 		setDrag(true);
 		setAnchor([clientX, clientY]);
@@ -21,9 +39,9 @@ function Dragger({ el, children, onDrag }) {
 	}
 
 	const onMouseMove = useCallback(
-		function (e) {
+		function (e: MouseEvent) {
 			const { clientX, clientY } = e;
-			if (drag) {
+			if (drag && anchor[0]) {
 				const [ax, ay] = anchor;
 				const dx = clientX - ax;
 				const dy = clientY - ay;
@@ -60,9 +78,5 @@ function Dragger({ el, children, onDrag }) {
 		</div>
 	);
 }
-
-Dragger.propTypes = { el: PropTypes.object, onDrag: PropTypes.func };
-
-Dragger.defaultProps = { el: undefined, onDrag: () => null };
 
 export default Dragger;

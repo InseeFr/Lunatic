@@ -4,7 +4,11 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import Dragger from './dragger';
 
 describe('Dragger', () => {
-	let el, onDrag;
+	let el = {
+		getBoundingClientRect: vi.fn(() => ({ top: 0, left: 0 })),
+		style: {} as Record<string, unknown>,
+	};
+	let onDrag: () => void;
 
 	beforeEach(() => {
 		el = {

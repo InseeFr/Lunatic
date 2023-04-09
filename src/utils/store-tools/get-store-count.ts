@@ -1,6 +1,6 @@
 import CONSTANTES from './constantes';
 
-function get(db: IDBDatabase) {
+function get(db: IDBDatabase): Promise<number> {
 	return new Promise(function (resolve, reject) {
 		try {
 			const transaction = db.transaction(

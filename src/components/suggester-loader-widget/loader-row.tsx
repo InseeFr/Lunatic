@@ -7,6 +7,15 @@ import {
 } from '../../utils/store-tools';
 import { CrossIcon, LoadIcon } from '../commons/icons';
 import Loader from './loader';
+import { SuggesterType } from '../../use-lunatic/type-source';
+
+type Props = {
+	storeInfo: Pick<SuggesterType, 'name' | 'fields' | 'stopWords'>;
+	idbVersion: number;
+	fetchStore: () => Promise<unknown[]>;
+	disabled?: boolean;
+	onRefresh: (s: string) => void;
+};
 
 function LoaderRow({
 	storeInfo,
@@ -14,14 +23,14 @@ function LoaderRow({
 	fetchStore,
 	onRefresh,
 	disabled = false,
-}) {
+}: Props) {
 	const { name } = storeInfo;
 	const db = useStoreIndex(storeInfo, idbVersion);
-	const [nbEntities, setNbEntities] = useState(undefined);
+	const [nbEntities, setNbEntities] = useState<number>();
 	const [start, setStart] = useState(false);
 
 	const post = useCallback(
-		function (_, count) {
+		function (_: unknown, count: number) {
 			setNbEntities(count);
 			onRefresh(`Store ${name} loaded.`);
 		},
@@ -39,19 +48,14 @@ function LoaderRow({
 
 	useEffect(
 		function () {
-			async function count() {
-				const c = await getStoreCount(db);
-				setNbEntities(c);
-			}
-
 			if (db) {
-				count();
+				getStoreCount(db).then(setNbEntities);
 			}
 		},
 		[db]
 	);
 
-	const handleClick = useCallback(function (p) {
+	const handleClick = useCallback(function (p: number) {
 		if (p === 100) {
 			setStart(false);
 		}
@@ -65,7 +69,7 @@ function LoaderRow({
 					start={true}
 					db={db}
 					store={storeInfo}
-					idVersion={idbVersion}
+					idbVersion={idbVersion}
 					fetch={fetchStore}
 					post={post}
 					handleClick={handleClick}
@@ -73,7 +77,7 @@ function LoaderRow({
 			) : (
 				<>
 					<div className="stats">
-						{nbEntities > 0 ? `${nbEntities} entities.` : 'Empty store.'}
+						{nbEntities ? `${nbEntities} entities.` : 'Empty store.'}
 					</div>
 
 					<button

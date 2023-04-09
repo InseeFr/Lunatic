@@ -71,6 +71,9 @@
 		"snowball": "^0.3.1",
 		"string-tokenizer": "^0.0.8"
 	},
+	"resolutions": {
+		"@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0"
+	},
 	"devDependencies": {
 		"@babel/cli": "^7.18.6",
 		"@babel/core": "^7.18.6",

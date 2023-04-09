@@ -2,12 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { createAppendTask } from '../../utils/suggester-workers/append-to-index';
 import Progress from './progress';
 import { clearStoreData } from '../../utils/store-tools';
+import { voidFunction } from '../../utils/function';
+import { SuggesterType } from '../../use-lunatic/type-source';
 
-function empty() {}
+type Props = {
+	idbVersion?: number;
+	db?: IDBDatabase;
+	post?: (name: string, length: number) => void;
+	fetch: () => Promise<unknown[]>;
+	handleClick: (n: number) => void;
+	start?: boolean;
+	store: Pick<SuggesterType, 'name' | 'fields' | 'stopWords'>;
+};
 
-function Loader({ start, db, store, idbVersion, fetch, post, handleClick }) {
+function Loader({
+	start,
+	db,
+	store,
+	idbVersion = 1,
+	fetch,
+	post = voidFunction,
+	handleClick = voidFunction,
+}: Props) {
 	const [progress, setProgress] = useState(0);
-	const [entities, setEntities] = useState(undefined);
+	const [entities, setEntities] = useState<unknown[]>();
 
 	useEffect(
 		function () {
@@ -22,7 +40,7 @@ function Loader({ start, db, store, idbVersion, fetch, post, handleClick }) {
 		[fetch, start]
 	);
 
-	function log({ message }) {
+	function log({ message }: { message: { type: string; percent: number } }) {
 		const { type, percent } = message;
 		if (type === 'bulk-insert/complete') {
 			setProgress(percent);
@@ -31,7 +49,7 @@ function Loader({ start, db, store, idbVersion, fetch, post, handleClick }) {
 
 	useEffect(
 		function () {
-			let abort;
+			let abort: any;
 			async function go() {
 				try {
 					if (entities && db && idbVersion && store) {
@@ -61,7 +79,5 @@ function Loader({ start, db, store, idbVersion, fetch, post, handleClick }) {
 		<Progress percent={progress} display={true} handleClick={handleClick} />
 	);
 }
-
-Loader.defaultProps = { idbVersion: '1', post: empty, handleClick: empty };
 
 export default Loader;

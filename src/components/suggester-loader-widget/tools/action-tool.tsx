@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import classnames from 'classnames';
 
-function ActionTool({ children, ariaLabel, className, title, display = true }) {
+type Props = PropsWithChildren<{
+	ariaLabel?: string;
+	className?: string;
+	title?: string;
+	display?: boolean;
+}>;
+
+function ActionTool({
+	children,
+	ariaLabel,
+	className,
+	title,
+	display = true,
+}: Props) {
 	if (display) {
 		return (
 			<div

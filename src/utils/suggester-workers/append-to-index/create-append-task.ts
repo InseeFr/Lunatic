@@ -16,7 +16,7 @@ function consoleLogging(...args: Array<any>) {
  * Only with Worker
  */
 export function createAppendTask<T>(
-	info: SuggesterType,
+	info: Pick<SuggesterType, 'name' | 'fields' | 'stopWords'>,
 	version: number,
 	log = consoleLogging
 ): [(args: Array<any>) => Promise<boolean>, () => void] {
