@@ -98,10 +98,9 @@ type ComponentPropsByType = {
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};
-	Datepicker: LunaticBaseProps<string> & {
+	Datepicker: LunaticBaseProps<string | null> & {
 		min?: string;
 		max?: string;
-		value: null | string;
 		response: { name: string };
 	};
 	CheckboxGroup: LunaticBaseProps<Record<string, boolean | null>> & {

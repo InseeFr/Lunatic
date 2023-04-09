@@ -1,14 +1,27 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { ChangeEventHandler, ReactNode, useCallback } from 'react';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import DatepickerInput from './datepicker-input';
 import DatepickerContainer from './datepicker-container';
 import './datepicker.scss';
+import { LunaticError } from '../../../use-lunatic/type';
+
+type Props = {
+	label?: ReactNode;
+	description?: ReactNode;
+	errors?: Record<string, LunaticError[]>;
+	disabled?: boolean;
+	readOnly?: boolean;
+	min?: string;
+	max?: string;
+	id?: string;
+	value?: string;
+	onChange: (s: string) => void;
+};
 
 function Datepicker({
 	disabled,
 	readOnly,
-	value,
+	value = '',
 	onChange,
 	id,
 	min,
@@ -16,9 +29,9 @@ function Datepicker({
 	label,
 	errors,
 	description,
-}) {
+}: Props) {
 	const labelId = `lunatic-datepicker-${id}`;
-	const handleChange = useCallback(
+	const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
 		function (e) {
 			const value = e.target.value;
 			onChange(value);
@@ -45,26 +58,5 @@ function Datepicker({
 		</DatepickerContainer>
 	);
 }
-
-Datepicker.propTypes = {
-	readOnly: PropTypes.bool,
-	value: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-		PropTypes.bool,
-		PropTypes.array,
-	]),
-	onChange: PropTypes.func.isRequired,
-	disabled: PropTypes.bool,
-	required: PropTypes.bool,
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	errors: PropTypes.object,
-	description: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element,
-		PropTypes.array,
-	]),
-};
-Datepicker.defaultProps = { value: '' };
 
 export default createCustomizableLunaticField(Datepicker, 'Datepicker');

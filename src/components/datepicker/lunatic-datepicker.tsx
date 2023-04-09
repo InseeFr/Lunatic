@@ -3,8 +3,9 @@ import Datepicker from './html/datepicker';
 import { createCustomizableLunaticField } from '../commons';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
+import { LunaticComponentProps } from '../type';
 
-const LunaticDatepicker = (props) => {
+const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 	const {
 		id,
 		errors,
@@ -41,7 +42,7 @@ const LunaticDatepicker = (props) => {
 			<Datepicker
 				disabled={disabled}
 				readOnly={readOnly}
-				value={value}
+				value={value ?? ''}
 				onChange={onChange}
 				id={id}
 				min={min}
