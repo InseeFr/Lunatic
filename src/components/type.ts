@@ -16,7 +16,7 @@ export type LunaticBaseProps<ValueType = unknown> = {
 		args?: Record<string, unknown>
 	) => void;
 	errors?: { [id: string]: LunaticError[] };
-	preferences: LunaticState['preferences'];
+	preferences?: LunaticState['preferences'];
 	declarations?: {
 		id: string;
 		declarationType: string;
@@ -89,8 +89,9 @@ type ComponentPropsByType = {
 		paginatedLoop?: boolean;
 	};
 	Table: LunaticBaseProps<unknown> & {
+		value: Record<string, unknown>;
 		header: Array<{
-			label: LunaticExpression;
+			label: ReactNode;
 			rowspan?: number;
 			colspan?: number;
 		}>;

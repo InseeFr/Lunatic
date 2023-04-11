@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
-import { Errors } from '../commons';
+import { useState, useEffect } from 'react';
 import { Table, Tbody } from '../commons/components/html-table';
-import LunaticComponent from '../commons/components/lunatic-component-with-label';
 import Header from './header';
+import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import TableOrchestrator from './table-orchestrator';
+import { LunaticComponentProps } from '../type';
+import { Errors } from '../commons';
 
-function LunaticTable(props) {
+function LunaticTable(props: LunaticComponentProps<'Table'>) {
 	const {
 		id,
 		handleChange,
@@ -24,7 +24,7 @@ function LunaticTable(props) {
 		description,
 		label,
 	} = props;
-	const [nbRows, setNbRows] = useState(undefined);
+	const [nbRows, setNbRows] = useState<number>();
 
 	useEffect(
 		function () {
@@ -35,7 +35,6 @@ function LunaticTable(props) {
 		},
 		[body]
 	);
-
 	return (
 		<LunaticComponent
 			id={id}
@@ -49,7 +48,7 @@ function LunaticTable(props) {
 			description={description}
 			handleChange={handleChange}
 		>
-			<Table id={id} header={header}>
+			<Table id={id}>
 				<Header id={id} header={header} />
 				<Tbody>
 					<TableOrchestrator
@@ -58,8 +57,8 @@ function LunaticTable(props) {
 						executeExpression={executeExpression}
 						handleChange={handleChange}
 						iteration={iteration}
-						nbRows={nbRows}
-						valueMap={value}
+						value={value}
+						errors={errors}
 					/>
 				</Tbody>
 			</Table>
@@ -67,18 +66,5 @@ function LunaticTable(props) {
 		</LunaticComponent>
 	);
 }
-
-LunaticTable.propTypes = {
-	id: PropTypes.string.isRequired,
-	value: PropTypes.object,
-	body: PropTypes.arrayOf(PropTypes.array).isRequired,
-	header: PropTypes.array,
-};
-
-LunaticTable.defaultProps = {
-	lines: undefined,
-	value: {},
-	header: [],
-};
 
 export default LunaticTable;
