@@ -2,13 +2,14 @@ import React, { ReactNode } from 'react';
 import RadioOption from './radio-option';
 import { useOptionsKeydown } from '../../commons';
 import { getShortcutKey } from '../../checkbox/commons/getShortcutKey';
+import { voidFunction } from '../../../utils/function';
 
 export type Props = {
 	options: { description?: ReactNode; label: ReactNode; value: string }[];
-	id: string;
+	id?: string;
 	value?: string | null;
 	description?: ReactNode;
-	onClick: (v: string | null) => void;
+	onClick?: (v: string | null) => void;
 	checkboxStyle?: boolean;
 	shortcut?: boolean;
 };
@@ -17,7 +18,7 @@ function RadioGroupContent({
 	options,
 	value,
 	id,
-	onClick,
+	onClick = voidFunction,
 	checkboxStyle = false,
 	shortcut,
 }: Props) {

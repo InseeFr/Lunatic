@@ -11,7 +11,7 @@ const options = [
 describe('RadioGroupContent', () => {
 	it('renders all options', () => {
 		const { getAllByRole } = render(
-			<RadioGroupContent options={options} value="option4" checked={false} />
+			<RadioGroupContent options={options} value="option4" />
 		);
 
 		const radioOptions = getAllByRole('radio');

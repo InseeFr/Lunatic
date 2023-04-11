@@ -6,7 +6,9 @@ export function displayLabelOrInput<T extends Record<string, unknown>>(
 ) {
 	const Memoized = memo<T>(Field);
 
-	return function LabelOrInput(props: T) {
+	return function LabelOrInput(
+		props: T & { editable?: boolean; expanded?: boolean }
+	) {
 		const { editable, expanded } = props;
 
 		const displayLabel = !editable || !expanded;

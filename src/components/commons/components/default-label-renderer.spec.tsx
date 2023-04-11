@@ -5,7 +5,7 @@ import { describe, it, expect } from 'vitest';
 describe('DefaultLabelRenderer', () => {
 	describe('DefaultLabelRenderer', () => {
 		const option = {
-			id: 1,
+			id: '1',
 			value: 'Value',
 			label: 'Label',
 		};

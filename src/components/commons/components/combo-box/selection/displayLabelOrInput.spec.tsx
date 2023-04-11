@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import { displayLabelOrInput } from './displayLabelOrInput';
 import { describe, it, expect } from 'vitest';
 describe('displayLabelOrInput', () => {
-	const MockComponent = ({ value }) => <div>{value}</div>;
+	const MockComponent = ({ value }: { value: ReactNode }) => <div>{value}</div>;
 
 	it('should render Memoized component when name is Input and displayLabel is false', () => {
 		const WrappedComponent = displayLabelOrInput(MockComponent, 'Input');

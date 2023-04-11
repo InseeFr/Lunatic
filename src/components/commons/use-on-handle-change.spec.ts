@@ -5,7 +5,7 @@ import { describe, it, expect, vi } from 'vitest';
 describe('useOnHandleChange', () => {
 	it('should call handleChange when valueOption is different from value', () => {
 		const handleChange = vi.fn();
-		const response = 'some response';
+		const response = { name: 'some response' };
 		const value = 'initial value';
 		const newValue = 'new value';
 
@@ -23,7 +23,7 @@ describe('useOnHandleChange', () => {
 
 	it('should not call handleChange when valueOption is equal to value', () => {
 		const handleChange = vi.fn();
-		const response = 'some response';
+		const response = { name: 'some response' };
 		const value = 'initial value';
 
 		const { result } = renderHook(() =>

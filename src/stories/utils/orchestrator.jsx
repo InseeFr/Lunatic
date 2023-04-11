@@ -175,8 +175,6 @@ function OrchestratorForStories({
 						} = component;
 						const Component = lunatic[componentType];
 
-						console.log({ Component, componentType });
-
 						const storeInfo = storeName ? getStoreInfo(storeName) : {};
 						return (
 							<div

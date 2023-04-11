@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from './row';
-import { LunaticBaseProps, LunaticComponentProps } from '../type';
+import { LunaticComponentProps } from '../type';
+
 type Props = {} & Pick<
 	LunaticComponentProps<'Table'>,
 	| 'body'

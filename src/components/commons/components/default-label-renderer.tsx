@@ -1,7 +1,7 @@
 import { SuggesterOption } from '../../type';
 
 type Props = {
-	option?: SuggesterOption;
+	option?: SuggesterOption | null;
 	placeholder?: string;
 	search?: string;
 };

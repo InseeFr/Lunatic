@@ -33,16 +33,8 @@ type Props = {
 >;
 
 function LunaticComponent(props: Props) {
-	const {
-		id,
-		preferences,
-		declarations,
-		value,
-		children,
-		management,
-		description,
-		handleChange,
-	} = props;
+	const { id, declarations, children, management, description, handleChange } =
+		props;
 	const content = (
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />

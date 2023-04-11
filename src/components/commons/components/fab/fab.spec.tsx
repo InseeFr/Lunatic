@@ -46,7 +46,7 @@ describe('Fab', () => {
 	});
 
 	it('has custom tabIndex', () => {
-		render(<Fab tabIndex="1">Test Children</Fab>);
+		render(<Fab tabIndex={1}>Test Children</Fab>);
 		const button = screen.getByRole('button');
 		expect(button).toHaveAttribute('tabIndex', '1');
 	});
