@@ -7,34 +7,35 @@ type Props = {
 };
 
 function Errors({ errors, activeId }: Props) {
-	const activeErrors = getActiveError(errors, activeId);
-	if (Array.isArray(activeErrors) && Array.isArray(activeErrors[1])) {
-		const content = activeErrors[1].map(({ id, errorMessage }) => {
-			return (
+	if (!errors) {
+		return null;
+	}
+	const activeErrors = getActiveErrors(errors, activeId);
+	if (!activeErrors) {
+		return null;
+	}
+	return (
+		<div className="lunatic-errors">
+			{activeErrors.map(({ id, errorMessage }) => (
 				<div key={`error-${id}`} className="lunatic-error">
 					{errorMessage}
 				</div>
-			);
-		});
-		return <div className="lunatic-errors">{content}</div>;
-	}
-	return null;
+			))}
+		</div>
+	);
 }
 
-function getActiveError(
-	errors?: Record<string, LunaticError[]>,
-	activeId?: string
-): LunaticError[] {
-	if (!errors || !activeId) {
-		return [];
+function getActiveErrors(
+	errors: Record<string, LunaticError[]>,
+	activeId: Props['activeId']
+) {
+	const activeErrors = Object.entries(errors).find(([k]) =>
+		activeId?.trim().endsWith(k)
+	);
+	if (Array.isArray(activeErrors) && Array.isArray(activeErrors[1])) {
+		return activeErrors[1];
 	}
-	const error = Object.entries(errors).find(([k]) =>
-		activeId.trim().endsWith(k)
-	)?.[1];
-	if (!Array.isArray(error)) {
-		return [];
-	}
-	return error;
+	return null;
 }
 
 export default Errors;

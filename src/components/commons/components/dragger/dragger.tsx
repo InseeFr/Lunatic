@@ -41,10 +41,10 @@ function Dragger({ el, children, onDrag = voidFunction }: Props) {
 	const onMouseMove = useCallback(
 		function (e: MouseEvent) {
 			const { clientX, clientY } = e;
-			if (drag && anchor[0]) {
+			if (drag) {
 				const [ax, ay] = anchor;
-				const dx = clientX - ax;
-				const dy = clientY - ay;
+				const dx = clientX - (ax ?? 0);
+				const dy = clientY - (ay ?? 0);
 				setAnchor([clientX, clientY]);
 				setDelta([dx, dy]);
 				onDrag(true, [dx, dy]);
