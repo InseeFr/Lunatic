@@ -21,7 +21,7 @@ function useDocumentAddEventListener<K extends keyof DocumentEventMap>(
 		return () => {
 			document.removeEventListener(eventName, listener, options);
 		};
-	}, [eventName, options]);
+	}, [eventName, options, listener]);
 }
 
 export default useDocumentAddEventListener;

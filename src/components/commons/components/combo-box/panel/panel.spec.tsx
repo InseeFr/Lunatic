@@ -92,6 +92,6 @@ describe('Panel', () => {
 		const option = screen.getByText('Option 2');
 		userEvent.click(option);
 
-		expect(handleSelect).toHaveBeenCalledWith(1);
+		expect(handleSelect).toHaveBeenCalledWith('1');
 	});
 });
