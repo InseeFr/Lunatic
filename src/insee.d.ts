@@ -11,8 +11,7 @@ declare module 'string-tokenizer' {
 		tokens(v: { tokens: RegExp }): Tokenizer;
 		resolve(): { tokens: string[] | string };
 	}
-	const tokenizer = () => new Tokenizer();
-	export default tokenizer;
+	export default function (): Tokenizer;
 }
 
 declare module '@inseefr/vtl-2.0-antlr-tools' {
