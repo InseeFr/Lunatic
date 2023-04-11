@@ -1,5 +1,7 @@
 export { default as Button } from './button';
-export * from './checkbox';
+export { default as CheckboxGroup } from './checkbox/checkbox-group';
+export { default as CheckboxBoolean } from './checkbox/checkbox-boolean';
+export { default as CheckboxOne } from './checkbox/checkbox-one';
 export { default as Datepicker } from './datepicker';
 export { default as Declarations } from './declarations';
 export { default as Dropdown } from './dropdown';
