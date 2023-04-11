@@ -17,7 +17,7 @@ type Props = {
 	executeExpression: LunaticBaseProps['executeExpression'];
 	errors?: LunaticBaseProps['errors'];
 	components: LunaticComponentDefinition[];
-	preferences: LunaticBaseProps['preferences'];
+	preferences?: LunaticBaseProps['preferences'];
 	shortcut?: LunaticBaseProps['shortcut'];
 };
 
