@@ -12,7 +12,11 @@ exports[`Selection component > should render correctly when it is disabled 1`] =
 >
   <div
     class="lunatic-combo-box-selected disabled"
-  />
+  >
+    <div>
+      No selection
+    </div>
+  </div>
 </div>
 `;
 
@@ -28,7 +32,11 @@ exports[`Selection component > should render correctly when it is editable 1`] =
 >
   <div
     class="lunatic-combo-box-selected"
-  />
+  >
+    <div>
+      No selection
+    </div>
+  </div>
 </div>
 `;
 
@@ -45,7 +53,11 @@ exports[`Selection component > should render correctly when it is expanded 1`] =
 >
   <div
     class="lunatic-combo-box-selected"
-  />
+  >
+    <div>
+      No selection
+    </div>
+  </div>
 </div>
 `;
 
@@ -61,6 +73,10 @@ exports[`Selection component > should render correctly with default props 1`] = 
 >
   <div
     class="lunatic-combo-box-selected"
-  />
+  >
+    <div>
+      No selection
+    </div>
+  </div>
 </div>
 `;
