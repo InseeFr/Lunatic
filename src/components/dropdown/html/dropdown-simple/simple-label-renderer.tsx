@@ -2,7 +2,7 @@ import React from 'react';
 import { ComboBoxOption } from '../../../commons/components/combo-box/combo-box.type';
 
 type Props = {
-	option: ComboBoxOption;
+	option?: ComboBoxOption;
 	placeholder?: string;
 	search?: string;
 };

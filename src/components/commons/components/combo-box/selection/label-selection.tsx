@@ -5,7 +5,7 @@ import { ComboBoxOption } from '../combo-box.type';
 
 export type LabelSelectionProps = {
 	labelRenderer: FunctionComponent<{
-		option: ComboBoxOption;
+		option?: ComboBoxOption;
 		placeholder?: string;
 		search?: string;
 	}>;
@@ -33,9 +33,7 @@ export function LabelSelection({
 				disabled,
 			})}
 		>
-			{option && (
-				<Renderer option={option} placeholder={placeholder} search={search} />
-			)}
+			<Renderer option={option} placeholder={placeholder} search={search} />
 		</div>
 	);
 }

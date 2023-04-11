@@ -10,8 +10,8 @@ describe('LabelSelection', () => {
 		{ label: 'Option 3', value: 'banana' },
 	];
 
-	const LabelRenderer = (props: { option: ComboBoxOption }) => {
-		return <>{props.option.label ?? 'Unknown'}</>;
+	const LabelRenderer = (props: { option?: ComboBoxOption }) => {
+		return <>{props.option?.label ?? 'Unknown'}</>;
 	};
 
 	it('should render the labelRenderer when expanded is true and editable is false', () => {

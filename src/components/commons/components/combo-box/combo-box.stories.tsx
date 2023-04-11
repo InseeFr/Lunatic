@@ -10,9 +10,13 @@ const stories = {
 
 export default stories;
 
-const LabelRenderer = ({ option }: { option: ComboBoxOption }) => (
-	<>{option.label}</>
-);
+const LabelRenderer = ({
+	option,
+	placeholder,
+}: {
+	option?: ComboBoxOption;
+	placeholder?: string;
+}) => <>{option?.label ?? placeholder}</>;
 
 const Template: Story<ComponentProps<typeof ComboBox>> = (args) => (
 	<ComboBox

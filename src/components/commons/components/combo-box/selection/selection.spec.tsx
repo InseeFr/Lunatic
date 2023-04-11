@@ -10,7 +10,7 @@ const options = [
 ];
 
 describe('Selection component', () => {
-	const LabelRenderer = ({ option }: { option: ComboBoxOption }) => (
+	const LabelRenderer = ({ option }: { option?: ComboBoxOption }) => (
 		<div>{option ? option.label : 'No selection'}</div>
 	);
 

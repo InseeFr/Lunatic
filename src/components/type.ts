@@ -184,7 +184,7 @@ type ComponentPropsByType = {
 			search?: string;
 		}>;
 		labelRenderer: FunctionComponent<{
-			option: SuggesterOption;
+			option?: SuggesterOption;
 			selected?: boolean;
 			search?: string;
 		}>;

@@ -1,8 +1,7 @@
-import { ComboBoxOption } from './combo-box/combo-box.type';
 import { SuggesterOption } from '../../type';
 
 type Props = {
-	option: SuggesterOption;
+	option?: SuggesterOption;
 	placeholder?: string;
 	search?: string;
 };
@@ -19,7 +18,6 @@ function getContent(option: Props['option'], search: Props['search']) {
 }
 
 function DefaultLabelRenderer({ option, placeholder, search }: Props) {
-	console.log('lunatic', 'DefaultLabelRenderer', option);
 	const content = getContent(option, search);
 	if (content) {
 		return <span className="selection">{content}</span>;
