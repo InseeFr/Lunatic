@@ -45,7 +45,7 @@ function Row({
 		<>
 			{components.map((component) => {
 				const { id } = component;
-				const idComponent = `${id}-${rowIndex} `;
+				const idComponent = `${id}-${rowIndex}`;
 
 				let value = undefined;
 				if (hasResponse(component)) {

@@ -60,7 +60,7 @@ function Row({
 					return null;
 				}
 				const { response, id } = component;
-				const idComponent = `${id}-${rowIndex} `;
+				const idComponent = `${id}-${rowIndex}`;
 				let value = undefined;
 				const key = `${id}-${rowIndex}`;
 				if (response) {
