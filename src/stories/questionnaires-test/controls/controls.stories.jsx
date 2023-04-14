@@ -8,7 +8,7 @@ import defaultArgTypes from '../../utils/default-arg-types';
 import boucleNTabDynamique from './boucles-n';
 
 const stories = {
-	title: 'Questionnaires-Tests/Controls',
+	title: 'Behaviour/Controls',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
