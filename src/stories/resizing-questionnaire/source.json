@@ -36,42 +36,22 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [
-					null
-				],
-				"EDITED": [
-					null
-				],
-				"INPUTED": [
-					null
-				],
-				"FORCED": [
-					null
-				],
-				"PREVIOUS": [
-					null
-				]
+				"COLLECTED": [null],
+				"EDITED": [null],
+				"INPUTED": [null],
+				"FORCED": [null],
+				"PREVIOUS": [null]
 			},
 			"name": "PRENOM"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [
-					null
-				],
-				"EDITED": [
-					null
-				],
-				"INPUTED": [
-					null
-				],
-				"FORCED": [
-					null
-				],
-				"PREVIOUS": [
-					null
-				]
+				"COLLECTED": [null],
+				"EDITED": [null],
+				"INPUTED": [null],
+				"FORCED": [null],
+				"PREVIOUS": [null]
 			},
 			"name": "AGE"
 		},
@@ -107,9 +87,7 @@
 		},
 		{
 			"variableType": "CALCULATED",
-			"bindingDependencies": [
-				"AGE"
-			],
+			"bindingDependencies": ["AGE"],
 			"expression": {
 				"type": "VTL",
 				"value": "if nvl(AGE,0) > 17 then 1 else 0"
@@ -130,9 +108,7 @@
 		},
 		{
 			"variableType": "CALCULATED",
-			"bindingDependencies": [
-				"SUM_MAJEUR"
-			],
+			"bindingDependencies": ["SUM_MAJEUR"],
 			"expression": {
 				"type": "VTL",
 				"value": "(SUM_MAJEUR > 0)"
@@ -142,10 +118,7 @@
 		},
 		{
 			"variableType": "CALCULATED",
-			"bindingDependencies": [
-				"IND_MAJEUR",
-				"AGE"
-			],
+			"bindingDependencies": ["IND_MAJEUR", "AGE"],
 			"expression": {
 				"type": "VTL",
 				"value": "sum(IND_MAJEUR)"
@@ -155,9 +128,7 @@
 		},
 		{
 			"variableType": "CALCULATED",
-			"bindingDependencies": [
-				"AGE"
-			],
+			"bindingDependencies": ["AGE"],
 			"expression": {
 				"type": "VTL",
 				"value": "sum(AGE)"
@@ -167,9 +138,7 @@
 		},
 		{
 			"variableType": "CALCULATED",
-			"bindingDependencies": [
-				"AGE"
-			],
+			"bindingDependencies": ["AGE"],
 			"expression": {
 				"type": "VTL",
 				"value": "min(AGE)"
@@ -252,9 +221,7 @@
 				"value": "\"➡ 1. \" || \"NB\""
 			},
 			"mandatory": false,
-			"bindingDependencies": [
-				"NB"
-			],
+			"bindingDependencies": ["NB"],
 			"min": 0,
 			"response": {
 				"name": "NB"
@@ -266,15 +233,11 @@
 		{
 			"paginatedLoop": false,
 			"componentType": "Loop",
-			"loopDependencies": [
-				"NB"
-			],
+			"loopDependencies": ["NB"],
 			"components": [
 				{
 					"componentType": "Subsequence",
-					"bindingDependencies": [
-						"NB"
-					],
+					"bindingDependencies": ["NB"],
 					"goToPage": "3",
 					"hierarchy": {
 						"sequence": {
@@ -307,15 +270,10 @@
 				},
 				{
 					"componentType": "Input",
-					"bindingDependencies": [
-						"PRENOM",
-						"NB"
-					],
+					"bindingDependencies": ["PRENOM", "NB"],
 					"controls": [
 						{
-							"bindingDependencies": [
-								"PRENOM"
-							],
+							"bindingDependencies": ["PRENOM"],
 							"criticality": "WARN",
 							"errorMessage": {
 								"type": "VTL|MD",
@@ -329,9 +287,7 @@
 							"id": "ksyjvi40-CI-0"
 						},
 						{
-							"bindingDependencies": [
-								"PRENOM"
-							],
+							"bindingDependencies": ["PRENOM"],
 							"criticality": "WARN",
 							"errorMessage": {
 								"type": "VTL|MD",
@@ -391,10 +347,7 @@
 					]
 				}
 			],
-			"bindingDependencies": [
-				"NB",
-				"PRENOM"
-			],
+			"bindingDependencies": ["NB", "PRENOM"],
 			"depth": 1,
 			"hierarchy": {
 				"sequence": {
@@ -449,15 +402,11 @@
 		{
 			"paginatedLoop": true,
 			"componentType": "Loop",
-			"loopDependencies": [
-				"PRENOM"
-			],
+			"loopDependencies": ["PRENOM"],
 			"components": [
 				{
 					"componentType": "Subsequence",
-					"bindingDependencies": [
-						"PRENOM"
-					],
+					"bindingDependencies": ["PRENOM"],
 					"goToPage": "5.1",
 					"hierarchy": {
 						"sequence": {
@@ -517,9 +466,7 @@
 							"id": "ksyke448-format-decimal"
 						},
 						{
-							"bindingDependencies": [
-								"AGE"
-							],
+							"bindingDependencies": ["AGE"],
 							"criticality": "WARN",
 							"errorMessage": {
 								"type": "VTL|MD",
@@ -581,11 +528,7 @@
 							"position": "AFTER_QUESTION_TEXT"
 						}
 					],
-					"bindingDependencies": [
-						"AGE",
-						"IND_MAJEUR",
-						"PRENOM"
-					],
+					"bindingDependencies": ["AGE", "IND_MAJEUR", "PRENOM"],
 					"min": 0,
 					"response": {
 						"name": "AGE"
@@ -595,11 +538,7 @@
 					"page": "5.1"
 				}
 			],
-			"bindingDependencies": [
-				"AGE",
-				"IND_MAJEUR",
-				"PRENOM"
-			],
+			"bindingDependencies": ["AGE", "IND_MAJEUR", "PRENOM"],
 			"depth": 1,
 			"hierarchy": {
 				"sequence": {
@@ -625,11 +564,7 @@
 		},
 		{
 			"componentType": "Subsequence",
-			"bindingDependencies": [
-				"SUM_MAJEUR",
-				"SUM_AGE",
-				"MIN_AGE"
-			],
+			"bindingDependencies": ["SUM_MAJEUR", "SUM_AGE", "MIN_AGE"],
 			"goToPage": "6",
 			"hierarchy": {
 				"sequence": {
@@ -691,9 +626,7 @@
 		},
 		{
 			"componentType": "Input",
-			"bindingDependencies": [
-				"DIVERS"
-			],
+			"bindingDependencies": ["DIVERS"],
 			"response": {
 				"name": "DIVERS"
 			},
@@ -716,11 +649,7 @@
 				}
 			},
 			"conditionFilter": {
-				"bindingDependencies": [
-					"SUM_MAJEUR",
-					"IND_MAJEUR",
-					"AGE"
-				],
+				"bindingDependencies": ["SUM_MAJEUR", "IND_MAJEUR", "AGE"],
 				"type": "VTL",
 				"value": "(SUM_MAJEUR > 0)"
 			},
@@ -735,11 +664,7 @@
 		},
 		{
 			"componentType": "Sequence",
-			"bindingDependencies": [
-				"SUM_AGE",
-				"SUM_MAJEUR",
-				"MIN_AGE"
-			],
+			"bindingDependencies": ["SUM_AGE", "SUM_MAJEUR", "MIN_AGE"],
 			"hierarchy": {
 				"sequence": {
 					"id": "l7yz0fe5",
@@ -815,9 +740,7 @@
 		},
 		{
 			"componentType": "Textarea",
-			"bindingDependencies": [
-				"COMMENT_QE"
-			],
+			"bindingDependencies": ["COMMENT_QE"],
 			"response": {
 				"name": "COMMENT_QE"
 			},
@@ -848,9 +771,7 @@
 	"pagination": "question",
 	"resizing": {
 		"NB": {
-			"variables": [
-				"PRENOM"
-			],
+			"variables": ["PRENOM", "AGE"],
 			"size": "cast(NB,integer)"
 		}
 	},
