@@ -11,6 +11,7 @@
     "ref/components-ts",
     "fix/radio-disabled",
     "feat/SuggesterAndVersion",
-    "ref/behaviour-group"
+    "ref/behaviour-group",
+    "fix/suggester-first-time"
   ]
 }
