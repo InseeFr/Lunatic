@@ -124,7 +124,7 @@ export function useSuggesters({
 				};
 			}
 		},
-		[suggesters, getReferentiel, status]
+		[suggesters, auto, getReferentiel, status]
 	);
 
 	return getSuggesterStatus;
