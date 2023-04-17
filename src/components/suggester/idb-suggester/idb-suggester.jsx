@@ -47,6 +47,7 @@ export function IDBSuggester({
 				<Suggester
 					id={id}
 					className={className}
+					store={store}
 					optionRenderer={optionRenderer}
 					labelRenderer={labelRenderer}
 					onSelect={onSelect}
