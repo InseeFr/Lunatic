@@ -105,7 +105,6 @@ Suggester.propTypes = {
 		PropTypes.element,
 		PropTypes.array,
 	]),
-	store: PropTypes.object,
 	errors: PropTypes.object,
 };
 
@@ -119,7 +118,6 @@ Suggester.defaultProps = {
 	onSelect: () => null,
 	value: undefined,
 	searching: undefined,
-	store: undefined,
 };
 
 export default createCustomizableLunaticField(Suggester, 'Suggester');
