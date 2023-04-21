@@ -77,6 +77,8 @@ export type ControlType = {
 	control: LabelType;
 	errorMessage: LabelType;
 	bindingDependencies: string[];
+	roundabout?: boolean;
+	iterations?: number;
 };
 
 export type ResponseType = { name: string };
