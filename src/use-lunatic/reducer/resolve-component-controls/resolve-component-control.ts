@@ -1,18 +1,16 @@
 import { StateForControls } from '../../commons/compile-controls';
 import { LunaticControl, LunaticError } from '../../type';
-import { validateSimple } from './validate-simple';
-import { validateRoundabout } from './validate-roundabout';
+import { resolveRoundaboutControl } from './resolve-roundabout-control';
+import { resolveSimpleControl } from './resolve-simple-control';
 
 function resolveControl(
 	state: StateForControls,
 	control: LunaticControl
 ): LunaticError | undefined {
-	const { roundabout } = control;
-
-	if (roundabout) {
-		return validateRoundabout(state, control);
+	if (control.roundabout) {
+		return resolveRoundaboutControl(state, control);
 	}
-	return validateSimple(state, control);
+	return resolveSimpleControl(state, control);
 }
 
 /**
