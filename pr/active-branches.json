@@ -11,6 +11,7 @@
     "ref/components-ts",
     "fix/radio-disabled",
     "feat/SuggesterAndVersion",
-    "fix/suggester-first-time"
+    "fix/suggester-first-time",
+    "feat/roundabout-controls"
   ]
 }
