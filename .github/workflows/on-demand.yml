@@ -1,4 +1,4 @@
-name: OnDemand Lunatic CI (publish every branch)
+name: OnDemand Lunatic CI (publish selected branch)
 on:
   workflow_dispatch:
 jobs:
