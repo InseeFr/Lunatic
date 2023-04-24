@@ -15,42 +15,42 @@ function ComponentSetComponents({
 	classNames,
 	handleChange,
 }) {
-	if (Array.isArray(components)) {
-		return components.map(function (component) {
-			const { response, id } = component;
-			let componentValue = undefined;
-			if (response) {
-				const { name } = response;
-				if (name in value) {
-					componentValue = value[name] ?? '';
-				}
-			}
-			return (
-				<div
-					className={classnames(
-						'lunatic-component-set-component fr-mb-2w',
-						classNames
-					)}
-					key={id}
-				>
-					<OrchestratedComponent
-						component={component}
-						features={features}
-						missing={missing}
-						shortcut={shortcut}
-						management={management}
-						value={componentValue}
-						id={id}
-						preferences={preferences}
-						executeExpression={executeExpression}
-						errors={errors}
-						handleChange={handleChange}
-					/>
-				</div>
-			);
-		});
+	if (!Array.isArray(components)) {
+		return null;
 	}
-	return null;
+	return components.map(function (component) {
+		const { response, id } = component;
+		let componentValue = undefined;
+		if (response) {
+			const { name } = response;
+			if (name in value) {
+				componentValue = value[name] ?? '';
+			}
+		}
+		return (
+			<div
+				className={classnames(
+					'lunatic-component-set-component fr-mb-2w',
+					classNames
+				)}
+				key={id}
+			>
+				<OrchestratedComponent
+					component={component}
+					features={features}
+					missing={missing}
+					shortcut={shortcut}
+					management={management}
+					value={componentValue}
+					id={id}
+					preferences={preferences}
+					executeExpression={executeExpression}
+					errors={errors}
+					handleChange={handleChange}
+				/>
+			</div>
+		);
+	});
 }
 
 export default ComponentSetComponents;
