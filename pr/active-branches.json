@@ -12,6 +12,7 @@
     "fix/radio-disabled",
     "feat/SuggesterAndVersion",
     "fix/suggester-first-time",
-    "feat/roundabout-controls"
+    "feat/roundabout-controls",
+    "feat/OnDemandCi"
   ]
 }
