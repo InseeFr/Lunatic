@@ -22,7 +22,8 @@ export type ComponentTypeEnum =
 	| 'Textarea'
 	| 'FilterDescription'
 	| 'PairwiseLinks'
-	| 'Suggester';
+	| 'Suggester'
+	| 'ComponentSet';
 
 export type ValuesType<T = unknown> = {
 	PREVIOUS: T | null;
@@ -122,7 +123,8 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentRoundaboutType)
 	| (ComponentTypeBase & {
 			componentType: 'Input' | 'CheckboxOne' | 'Textarea';
-	  });
+	  })
+	| (ComponentTypeBase & ComponentComponentSet);
 
 export type ComponentSequenceType = {
 	componentType: 'Sequence';
@@ -247,6 +249,11 @@ export type ComponentPairWiseLinksType = {
 	symLinks: {
 		[variableName: string]: Record<string, string>;
 	};
+};
+
+export type ComponentComponentSet = {
+	componentType: 'ComponentSet';
+	components: ComponentType[];
 };
 
 export type SuggesterType = {

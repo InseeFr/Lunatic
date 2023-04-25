@@ -2,9 +2,35 @@ import type { LunaticState } from '../type';
 import { LunaticComponentDefinition } from '../type';
 
 /**
+ * Pour le ComponentSet : les composants du fieldset n'existe pas dans pages.
+ * Ils échappent donc aux controls. On les substitue ici au ComponentSet.
+ * On ne peut pas les ajouter directement dans pages (en spécifiant un page), car ils s'afficheraient 2 fois : dans le fieldset et en dessus, comme
+ * des composant à part entière.
+ * D'autres composant pourraient un jour figurer ici.
+ * @param components
+ * @returns
+ */
+function replaceComponentSequence(
+	components: Array<LunaticComponentDefinition>
+) {
+	return components.reduce(function (
+		acc: Array<LunaticComponentDefinition>,
+		component
+	) {
+		const { componentType } = component;
+		if (componentType === 'ComponentSet') {
+			const { components } = component;
+			return [...acc, ...components];
+		}
+		return [...acc, component];
+	},
+	[]);
+}
+
+/**
  * Extract the list of components to display for the current page
  */
-function getComponentsFromState(
+function getFromState(
 	state: Pick<LunaticState, 'pager' | 'pages' | 'isInLoop'>
 ): LunaticComponentDefinition[] {
 	const { pager, pages, isInLoop } = state;
@@ -39,6 +65,18 @@ function filterComponentsInPage(components: LunaticComponentDefinition[]) {
 	return components.filter((c) =>
 		c.componentType === 'FilterDescription' ? c.filterDescription : true
 	);
+}
+
+/**
+ *
+ * @param state compose les fonction getFromState et replaceComponent
+ * TODO vérifier que d'autres composant sont éligibles (Roundabout par ex)
+ * @returns
+ */
+function getComponentsFromState(
+	state: Pick<LunaticState, 'pager' | 'pages' | 'isInLoop'>
+): LunaticComponentDefinition[] {
+	return replaceComponentSequence(getFromState(state));
 }
 
 export default getComponentsFromState;

@@ -5,18 +5,20 @@
 			"id": "component-set",
 			"componentType": "ComponentSet",
 			"page": "1",
-			"depth": 1,
-			"paginatedLoop": false,
 			"conditionFilter": { "value": "true", "type": "VTL" },
-      "label": {
-        "value": "\"## Who are you?\"", 
-        "type":"VTL|MD"
-      },
-      "description": { "value": "\"This is your opportunity to tell me about yourself!\"", "type": "VTL|MD" },
+			"label": {
+				"value": "\"## Who are you?\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"This is your opportunity to tell me about yourself!\"",
+				"type": "VTL|MD"
+			},
 			"components": [
 				{
 					"id": "prenom",
 					"componentType": "Input",
+					"page": "1",
 					"mandatory": false,
 					"maxLength": 20,
 					"label": {
@@ -27,11 +29,27 @@
 						"value": "true",
 						"type": "VTL"
 					},
-					"response": { "name": "PRENOMS" }
+					"response": { "name": "PRENOMS" },
+					"controls": [
+						{
+							"criticality": "WARN",
+							"errorMessage": {
+								"type": "VTL",
+								"value": "\"booleen pas coché et on affiche un message un peu long histoire de tester le truc \""
+							},
+							"typeOfControl": "CONSISTENCY",
+							"control": {
+								"type": "VTL",
+								"value": "false"
+							},
+							"id": "kfxmjupm-CI-0"
+						}
+					]
 				},
 				{
 					"id": "age",
 					"componentType": "InputNumber",
+					"page": "1",
 					"maxLength": 3,
 					"label": {
 						"value": "\"Age\"))",
