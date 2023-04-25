@@ -18,7 +18,6 @@
 				{
 					"id": "prenom",
 					"componentType": "Input",
-					"page": "1",
 					"mandatory": false,
 					"maxLength": 20,
 					"label": {
@@ -49,7 +48,6 @@
 				{
 					"id": "age",
 					"componentType": "InputNumber",
-					"page": "1",
 					"maxLength": 3,
 					"label": {
 						"value": "\"Age\"))",

@@ -107,7 +107,22 @@
                 "value": "true",
                 "type": "VTL"
               },
-              "response": { "name": "AGE" }
+              "response": { "name": "AGE" }, 
+              "controls": [
+                {
+                  "criticality": "WARN",
+                  "errorMessage": {
+                    "type": "VTL",
+                    "value": "\"booleen pas coché et on affiche un message un peu long histoire de tester le truc \""
+                  },
+                  "typeOfControl": "CONSISTENCY",
+                  "control": {
+                    "type": "VTL",
+                    "value": "false"
+                  },
+                  "id": "kfxmjupm-CI-0"
+                }
+              ]
             },
             {
               "id": "j4nw5cqz",
