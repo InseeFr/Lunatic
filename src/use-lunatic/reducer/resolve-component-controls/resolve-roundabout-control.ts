@@ -26,6 +26,12 @@ export function resolveRoundaboutControl(
 	}
 
 	const errors = Array.from({ length: iterations }, (_, k) => k)
+		/**
+		 * Currently, the controls are lifted when the condition is false.
+		 * An evolution is planned on the questionnaire generation side (Eno) to come back to a more coherent logic (i.e. lift the control when the condition is true)
+		 *
+		 * After this change, we have to change the next line to `.filter((iteration) => executeExpression(value, { iteration }))`
+		 */
 		.filter((iteration) => !executeExpression(value, { iteration }))
 		.map((iteration) =>
 			executeExpression<ReactNode>(errorMessage, { iteration })

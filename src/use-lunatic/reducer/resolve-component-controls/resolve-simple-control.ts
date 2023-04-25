@@ -14,9 +14,13 @@ export function resolveSimpleControl(
 	const result = executeExpression(value, { iteration, linksIterations });
 
 	try {
-		if (!result) {
-			return undefined;
-		}
+		/**
+		 * Currently, the controls are lifted when the condition is false.
+		 * An evolution is planned on the questionnaire generation side (Eno) to come back to a more coherent logic (i.e. lift the control when the condition is true)
+		 *
+		 * After this change, we have to change the next line to `if (!result) return undefined;`
+		 */
+		if (result) return undefined;
 
 		const label = executeExpression<ReactNode>(errorMessage, {
 			iteration,
