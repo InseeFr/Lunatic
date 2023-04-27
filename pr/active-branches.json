@@ -14,6 +14,7 @@
     "fix/suggester-first-time",
     "feat/roundabout-controls",
     "feat/OnDemandCi",
-    "feat/components-set"
+    "feat/components-set",
+    "test/fix-port"
   ]
 }
