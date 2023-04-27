@@ -1,6 +1,7 @@
 import { melotoOrder } from './meloto-order';
+import { Entities, Entity } from './meloto-order';
 
-function sort(withScore) {
+function sort(withScore: Array<Entity & { score: number }>) {
 	return withScore.sort(function (a, b) {
 		if (a.score > b.score) {
 			return -1;
@@ -12,7 +13,11 @@ function sort(withScore) {
 	});
 }
 
-function computeScore(documents, tokens, meloto = true) {
+function computeScore(
+	documents: Entities,
+	tokens: Array<string>,
+	meloto = true
+) {
 	const withScore = documents.map(function (doc) {
 		const { tokensSearch } = doc;
 		const score = Object.keys(tokensSearch).length;
