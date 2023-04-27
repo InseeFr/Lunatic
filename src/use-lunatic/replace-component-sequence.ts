@@ -6,8 +6,6 @@ import { LunaticComponentDefinition } from './type';
  * On ne peut pas les ajouter directement dans pages (en spécifiant un page), car ils s'afficheraient 2 fois : dans le fieldset et en dessus, comme
  * des composant à part entière.
  * D'autres composant pourraient un jour figurer ici.
- * @param components
- * @returns
  */
 export function replaceComponentSequence(
 	components: Array<LunaticComponentDefinition>
@@ -18,8 +16,7 @@ export function replaceComponentSequence(
 	) {
 		const { componentType } = component;
 		if (componentType === 'ComponentSet') {
-			const { components } = component;
-			return [...acc, ...components];
+			return [...acc, ...component.components];
 		}
 		return [...acc, component];
 	},
