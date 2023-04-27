@@ -1,4 +1,4 @@
-"use strict";
+
 exports.__esModule = true;
 exports.createAppendTask = void 0;
 var create_worker_ts_1 = require("../create-worker-ts");

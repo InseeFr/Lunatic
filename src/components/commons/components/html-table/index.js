@@ -1,6 +1,6 @@
-export { default as Table } from './table.js';
-export { default as Tbody } from './tbody.js';
-export { default as Td } from './td.js';
-export { default as Th } from './th.js';
-export { default as Thead } from './thead.js';
-export { default as Tr } from './tr.js';
+export { default as Table } from './table';
+export { default as Tbody } from './tbody';
+export { default as Td } from './td';
+export { default as Th } from './th';
+export { default as Thead } from './thead';
+export { default as Tr } from './tr';

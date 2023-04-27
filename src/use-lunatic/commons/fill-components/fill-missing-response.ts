@@ -9,7 +9,7 @@ export type FilledProps = {
 /**
  * Inject the value for the missingResponse variable
  */
-function fillMissingResponse<T extends LunaticComponentDefinition>(
+function fillMissingResponse(
 	component: LunaticComponentDefinition,
 	state: LunaticState
 ): LunaticComponentDefinition & FilledProps {
