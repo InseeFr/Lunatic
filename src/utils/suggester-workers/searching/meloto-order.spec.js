@@ -25,7 +25,7 @@ describe('meloto', function () {
 		expect(entities[1].suggestion.id).toEqual(1);
 	});
 
-	it('sort', function () {
+	it('sort2', function () {
 		const entities = [
 			{ suggestion: { label: 'after after culture', id: 1 }, score: 1 },
 			{ suggestion: { label: 'after culture before', id: 2 }, score: 1 },
