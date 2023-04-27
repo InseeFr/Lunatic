@@ -8,10 +8,6 @@ import { LunaticControl, LunaticError } from '../../type';
  * Itération prend pour valeur le rang de l'unité stat au sein de l'unité enquêté.
  * Le rondpoint ne peut pas être placé dans une boucle car l'itération est effacée.
  * TODO intégrer cela dans le cadre de boucle de bloucle.
- *
- * @param state
- * @param control
- * @returns
  */
 export function resolveRoundaboutControl(
 	state: StateForControls,
