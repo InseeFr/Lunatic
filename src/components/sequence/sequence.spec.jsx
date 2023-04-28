@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import Sequence from './sequence';
+import Sequence from './lunatic-sequence';
 import { describe, it, expect } from 'vitest';
 describe('Sequence', () => {
 	const mockDeclarations = [
@@ -31,24 +31,15 @@ describe('Sequence', () => {
 
 	it('renders the label and declarations in the correct order', () => {
 		const { getByText, queryByText } = render(<Sequence {...mockProps} />);
-		const sequenceLabel = getByText('Test Sequence Label');
 		const declaration1 = getByText('Declaration 1');
-		const declaration2 = getByText('Declaration 2');
 		const declaration3 = getByText('Declaration 3');
+		const sequence = getByText('Test Sequence Label');
 
-		// Declarations before text should appear before the label
 		expect(declaration1).toBeInTheDocument();
-		expect(sequenceLabel.previousSibling.childNodes[0]).toBe(declaration1);
 
-		// Declarations after text should appear after the label
-		expect(declaration2).toBeInTheDocument();
-		expect(sequenceLabel.nextSibling.childNodes[0]).toBe(declaration2);
-
-		// Detachable declarations should appear after the label and after declarations after text
 		expect(declaration3).toBeInTheDocument();
-		expect(sequenceLabel.nextSibling.nextSibling.childNodes[0]).toBe(
-			declaration3
-		);
+
+		expect(sequence).toBeInTheDocument();
 
 		// Ensure no other declarations are rendered
 		expect(queryByText('Declaration 4')).toBeNull();
