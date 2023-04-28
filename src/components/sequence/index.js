@@ -1,1 +1,1 @@
-export { default } from './sequence';
+export { default } from './lunatic-sequence';

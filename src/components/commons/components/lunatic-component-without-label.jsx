@@ -9,6 +9,9 @@ import Missing from './missing';
 import PropTypes from 'prop-types';
 import React from 'react';
 import VariableStatus from './variable-status';
+import { InformationMessage, ContentMessage } from '../../messages';
+
+// TODO  fichier à renomer : lunatic-component
 
 function getDescription({ declarations, description }) {
 	if (Array.isArray(declarations)) {
@@ -37,14 +40,18 @@ function LunaticComponent(props) {
 		management,
 		description,
 		handleChange,
+		informationMessage,
+		contentMessage,
 	} = props;
 	const content = (
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
+			<InformationMessage text={informationMessage} />
 			<FieldContainer value={value} id={id} preferences={preferences}>
 				{React.cloneElement(children, {
 					description: getDescription({ declarations, description }),
 				})}
+				<ContentMessage text={contentMessage} />
 			</FieldContainer>
 			<DeclarationsDetachable declarations={declarations} id={id} />
 			<Missing {...props} handleChange={handleChange} />

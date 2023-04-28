@@ -28,6 +28,8 @@ const VTL_ATTRIBUTES = [
 	'conditionFilter',
 	'headers.label',
 	'header.label',
+	'informationMessage',
+	'contentMessage',
 ];
 
 type CrawlArgs = Pick<LunaticState, 'executeExpression'> &
