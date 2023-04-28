@@ -1,5 +1,5 @@
 import { MessageType } from './type';
-// TODO comment faire en attendant de passer à ts ?
+// @ts-ignore
 import { createCustomizableLunaticField } from '../commons';
 import './content-message.scss';
 
