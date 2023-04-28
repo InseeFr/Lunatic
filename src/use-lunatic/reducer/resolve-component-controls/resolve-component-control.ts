@@ -1,16 +1,21 @@
 import { StateForControls } from '../../commons/compile-controls';
 import { LunaticControl, LunaticError } from '../../type';
 import { resolveRoundaboutControl } from './resolve-roundabout-control';
+import { ControlTypeEnum } from '../../type-source';
 import { resolveSimpleControl } from './resolve-simple-control';
 
 function resolveControl(
 	state: StateForControls,
 	control: LunaticControl
 ): LunaticError | undefined {
-	if (control.roundabout) {
-		return resolveRoundaboutControl(state, control);
+	const { type } = control;
+	switch (type) {
+		case ControlTypeEnum.roundabout:
+			return resolveRoundaboutControl(state, control);
+		case ControlTypeEnum.simple:
+		default:
+			return resolveSimpleControl(state, control);
 	}
-	return resolveSimpleControl(state, control);
 }
 
 /**

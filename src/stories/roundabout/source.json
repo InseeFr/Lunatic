@@ -104,7 +104,7 @@
 						"value": "not(isnull(KNOWREC)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
 						"type": "VTL"
 					},
-					"roundabout": true,
+					"type": "roundabout",
 					"iterations": { "value": "NB_HAB", "type": "VTL" },
 					"errorMessage": {
 						"value": "\"Le formulaire n'est pas complet pour \" || PRENOMS",
