@@ -79,6 +79,8 @@ jobs:
           yarn build
       - name: Publishing on NPM
         run: |
+          git config --global user.email "no-reply@insee.fr"
+          git config --global user.name "Insee"
           if [ "$(npm show . version)" = "$VERSION" ]; then
             echo "This version is already published"
             exit 0
