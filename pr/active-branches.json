@@ -13,7 +13,6 @@
     "feat/SuggesterAndVersion",
     "fix/suggester-first-time",
     "feat/roundabout-controls",
-    "feat/OnDemandCi",
     "feat/components-set",
     "feat/alt-declarations",
     "feat/declarationType"
