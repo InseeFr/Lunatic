@@ -15,6 +15,7 @@
     "feat/roundabout-controls",
     "feat/OnDemandCi",
     "feat/components-set",
-    "feat/alt-declarations"
+    "feat/alt-declarations",
+    "feat/onDemandCi"
   ]
 }
