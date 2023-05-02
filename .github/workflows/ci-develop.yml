@@ -27,7 +27,7 @@ jobs:
           name: deploy-beta
           path: deploy-beta/
 
-  deploy-beta:
+  deploy-storybook-beta:
     runs-on: ubuntu-latest
     needs: build-storybook-beta
     steps:
@@ -45,3 +45,26 @@ jobs:
           author_name: 'Github action'
           message: 'Update Storybook beta (develop branch)'
           branch: 'gh-pages'
+
+
+# ToDo : check if version of package.json is upgraded
+  publish_beta_on_npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          registry-url: https://registry.npmjs.org/
+      - uses: bahmutov/npm-install@v1
+      - run: |
+          yarn build
+      - name: Publishing on NPM
+        run: |
+          if [ "$NODE_AUTH_TOKEN" = "" ]; then
+            echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
+            exit 1
+          fi
+          yarn publish --tag beta --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
