@@ -1,6 +1,15 @@
 import React from 'react';
 import { OrchestratedComponent } from '../../commons';
-import classnames from 'classnames';
+import ComponentSetComponentContainer from './component-set-component-container';
+
+function getComponentValue(component, value) {
+	const { response } = component;
+
+	if (response && response.name in value) {
+		return value[response.name] ?? '';
+	}
+	return undefined;
+}
 
 function ComponentSetComponents({
 	components,
@@ -21,19 +30,10 @@ function ComponentSetComponents({
 	return (
 		<>
 			{components.map((component) => {
-				const { response, id } = component;
-				let componentValue = undefined;
-				if (response && response.name in value) {
-					componentValue = value[response.name] ?? '';
-				}
+				const { id } = component;
+				let componentValue = getComponentValue(component, value);
 				return (
-					<div
-						className={classnames(
-							'lunatic-component-set-component fr-mb-2w',
-							classNames
-						)}
-						key={id}
-					>
+					<ComponentSetComponentContainer className={classNames} key={id}>
 						<OrchestratedComponent
 							component={component}
 							features={features}
@@ -47,7 +47,7 @@ function ComponentSetComponents({
 							errors={errors}
 							handleChange={handleChange}
 						/>
-					</div>
+					</ComponentSetComponentContainer>
 				);
 			})}
 		</>
