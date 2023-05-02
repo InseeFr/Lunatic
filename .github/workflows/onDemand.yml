@@ -1,0 +1,44 @@
+name: OnDemand Lunatic CI (published selected branch)
+on:
+  push:
+    branches: ['!main', '!develop', '!v1-main']
+jobs:
+  publish_on_npm:
+    if: github.repository == 'InseeFr/Lunatic'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      - name: Get current package version
+        id: version
+        uses: notiz-dev/github-action-json-property@release
+        with:
+          path: 'package.json'
+          prop_path: 'version'
+      - name: Get custom version
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+            if [[ $COMMIT_MSG =~ Publish:[[:space:]](.*) ]]; 
+            then
+              NEW_VERSION=${{steps.version.outputs.prop}}-${BASH_REMATCH[1]}
+              echo "Commit message is: $COMMIT_MSG"
+              echo "New version is: $NEW_VERSION"
+              git config --global user.email "no-reply@insee.fr"
+              git config --global user.name "Insee"
+              yarn version --new-version $NEW_VERSION
+            else
+              echo "The commit convention is not respected / Unable to publish see the readme"
+              exit 1
+            fi
+      - run: yarn build
+      - name: Publishing on NPM
+        run: |
+          if [ "$NODE_AUTH_TOKEN" = "" ]; then
+            echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
+            exit 1
+          fi
+          yarn publish --tag experimental --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
