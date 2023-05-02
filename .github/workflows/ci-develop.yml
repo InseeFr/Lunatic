@@ -73,6 +73,8 @@ jobs:
             echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
             exit 1
           fi
+          git config --global user.email "no-reply@insee.fr"
+          git config --global user.name "Insee"
           echo "Publish new version : ${{steps.version.outputs.prop}}-$TAG under tag: $TAG"
           yarn publish --new-version ${{steps.version.outputs.prop}}-$TAG --tag $TAG --access public
         env:
