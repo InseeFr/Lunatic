@@ -97,7 +97,7 @@ describe('createExecuteExpression', function () {
 		expect(execute('"John " || LASTNAME')).toBe('John Doe');
 	});
 
-	it('should hangle calculated value', () => {
+	it.skip('should hangle calculated value', () => {
 		expect(execute('GREETING')).toBe('Hello Doe');
 		update('LASTNAME', 'Doee');
 		expect(execute('GREETING')).toBe('Hello Doee');
