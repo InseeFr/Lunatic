@@ -1,7 +1,10 @@
 name: OnDemand Lunatic CI (published selected branch)
 on:
   push:
-    branches: ['!main', '!develop', '!v1-main']
+      branches:
+      - '!main'
+      - '!develop'
+      - '!v1-main'
 jobs:
   publish_on_npm:
     if: github.repository == 'InseeFr/Lunatic'
