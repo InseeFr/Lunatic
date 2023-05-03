@@ -4,7 +4,7 @@ import simpsons from './source';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Questionnaires-PasteYour/Paste',
+	title: 'Behaviour/Paste',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,

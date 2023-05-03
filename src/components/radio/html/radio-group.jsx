@@ -20,6 +20,7 @@ function RadioGroup({
 	errors,
 	className,
 	shortcut,
+	disabled,
 }) {
 	const onKeyDown = useOptionsKeydown(options, onSelect);
 
@@ -34,6 +35,7 @@ function RadioGroup({
 				label={label}
 				options={options}
 				shortcut={shortcut}
+				disabled={disabled}
 			/>
 			<Errors errors={errors} activeId={id} />
 		</Fieldset>
@@ -68,6 +70,7 @@ RadioGroup.propTypes = {
 	className: PropTypes.string,
 	errors: PropTypes.object,
 	shortcut: PropTypes.bool,
+	disabled: PropTypes.bool,
 };
 
 RadioGroup.defaultProps = {
@@ -75,6 +78,7 @@ RadioGroup.defaultProps = {
 	value: undefined,
 	label: undefined,
 	className: undefined,
+	disabled: false,
 };
 
 export default createCustomizableLunaticField(RadioGroup, 'Radio');

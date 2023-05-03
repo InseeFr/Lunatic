@@ -6,6 +6,7 @@ import {
 	DefaultLabelRenderer,
 	createCustomizableLunaticField,
 } from '../../commons';
+import D from '../../../i18n';
 import './default-style.scss';
 
 function getSearch(search, value) {
@@ -111,7 +112,7 @@ Suggester.propTypes = {
 Suggester.defaultProps = {
 	className: 'lunatic-suggester-default-style',
 	labelledBy: undefined,
-	placeholder: 'Veuillez...',
+	placeholder: D.PLACEHOLDER,
 	optionRenderer: DefaultOptionRenderer,
 	labelRenderer: DefaultLabelRenderer,
 	language: 'French',

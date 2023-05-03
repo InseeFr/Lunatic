@@ -10,6 +10,7 @@ function RadioGroupContent({
 	onClick,
 	checkboxStyle = false,
 	shortcut,
+	disabled,
 }) {
 	const onKeyDown = useOptionsKeydown(options, onClick);
 	const maxIndex = options.length;
@@ -31,6 +32,7 @@ function RadioGroupContent({
 				description={description}
 				codeModality={shortcut && codeModality}
 				shortcut={shortcut}
+				disabled={disabled}
 			/>
 		);
 	});

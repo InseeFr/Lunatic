@@ -1,5 +1,5 @@
 import { isLoopComponent } from '../reducer/commons';
-import { resolveComponentControls } from '../reducer/validate-controls/validation-utils';
+import { resolveComponentControls } from '../reducer/resolve-component-controls';
 import { replaceComponentSequence } from '../replace-component-sequence';
 import {
 	LunaticComponentDefinition,

@@ -71,6 +71,11 @@ export enum TypeOfControl {
 	CONSISTENCY = 'CONSISTENCY',
 }
 
+export enum ControlTypeEnum {
+	roundabout = 'roundabout',
+	simple = 'simple',
+}
+
 export type ControlType = {
 	id: string;
 	criticality: Criticality;
@@ -78,6 +83,8 @@ export type ControlType = {
 	control: LabelType;
 	errorMessage: LabelType;
 	bindingDependencies: string[];
+	type: ControlTypeEnum;
+	iterations?: number;
 };
 
 export type ResponseType = { name: string };
@@ -275,6 +282,7 @@ export type SuggesterType = {
 	};
 	url?: string;
 	version: number;
+	meloto?: boolean;
 };
 
 export type Variable =
@@ -294,7 +302,7 @@ export type Variable =
 			expression: LabelType;
 			bindingDependencies: string[];
 			inFilter: string;
-			shapeFrom: string;
+			shapeFrom?: string;
 	  };
 
 export type LunaticSource = {
