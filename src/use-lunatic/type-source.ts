@@ -70,6 +70,11 @@ export enum TypeOfControl {
 	CONSISTENCY = 'CONSISTENCY',
 }
 
+export enum ControlTypeEnum {
+	roundabout = 'roundabout',
+	simple = 'simple',
+}
+
 export type ControlType = {
 	id: string;
 	criticality: Criticality;
@@ -77,6 +82,8 @@ export type ControlType = {
 	control: LabelType;
 	errorMessage: LabelType;
 	bindingDependencies: string[];
+	type: ControlTypeEnum;
+	iterations?: number;
 };
 
 export type ResponseType = { name: string };
