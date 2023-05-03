@@ -27,7 +27,7 @@ export const interpretAllCalculatedVariables = ({
 				bindingDependencies,
 				variables,
 			});
-			const shapeTarget = acc[shapeFrom];
+			const shapeTarget = shapeFrom ? acc[shapeFrom] : null;
 			if (shapeFrom && Array.isArray(shapeTarget)) {
 				const result = shapeTarget.map((_, index) => {
 					const scopedBindings = buildScopedBindings({ bindings, index });

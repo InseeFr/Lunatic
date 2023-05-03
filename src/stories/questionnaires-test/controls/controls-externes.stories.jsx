@@ -1,10 +1,10 @@
 import React from 'react';
-import Orchestrator from '../utils/orchestrator';
-import simpsons from './source';
-import defaultArgTypes from '../utils/default-arg-types';
+import Orchestrator from '../../utils/orchestrator';
+import defaultArgTypes from '../../utils/default-arg-types';
+import source from './controls-externes.json';
 
 const stories = {
-	title: 'Behaviour/Paste',
+	title: 'Questionnaires-Tests/Controls-externes',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
@@ -27,25 +27,17 @@ const stories = {
 			control: 'boolean',
 			defaultValue: true,
 		},
-		source: {
-			table: { disable: false },
-			control: { type: 'object' },
-			defaultValue: simpsons,
-		},
-		data: {
-			table: { disable: false },
-			control: { type: 'object' },
-			defaultValue: { COLLECTED: { READY: { COLLECTED: true } } },
-		},
 	},
 };
 
 export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
-export const Default = Template.bind({});
+export const BoucleN = Template.bind({});
 
-Default.args = {
-	id: 'simpsons-default',
+BoucleN.args = {
+	id: 'externes',
 	pagination: true,
+	activeControls: true,
+	source,
 };

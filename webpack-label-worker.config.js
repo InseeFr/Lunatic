@@ -18,14 +18,18 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js?$/,
+				test: /\.([cm]?ts|tsx|js)$/,
 				exclude: /(node_modules)/,
-				use: [
-					{
-						loader: 'ts-loader',
-						options: { configFile: 'tsconfig-workers.json' },
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: [
+							'@babel/preset-env',
+							'@babel/preset-typescript',
+							['@babel/preset-react', { runtime: 'automatic' }],
+						],
 					},
-				],
+				},
 			},
 		],
 	},
