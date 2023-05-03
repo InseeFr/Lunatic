@@ -56,6 +56,7 @@ const infoNaf = {
 		params: { language: 'French', pattern: '[\\w.]+' },
 	},
 	version: '1',
+	meloto: false,
 };
 
 async function loadOne(info, fetchIt) {
@@ -69,7 +70,7 @@ async function loadOne(info, fetchIt) {
 }
 
 function Search({ storeInfo, version = '1', max = 30, defaultValue = '' }) {
-	const { name, order } = storeInfo;
+	const { name, order, meloto } = storeInfo;
 	const [value, setValue] = useState(defaultValue);
 	const onClick = useCallback(
 		function () {
@@ -79,6 +80,7 @@ function Search({ storeInfo, version = '1', max = 30, defaultValue = '' }) {
 					version,
 					max,
 					order,
+					meloto,
 				});
 				console.log(results);
 			}
@@ -86,7 +88,7 @@ function Search({ storeInfo, version = '1', max = 30, defaultValue = '' }) {
 				doIt();
 			}
 		},
-		[value, name, version, max, order]
+		[value, name, version, max, order, meloto]
 	);
 	return (
 		<>
