@@ -5,6 +5,7 @@ const dictionary = {
 	MODAL_CORRECT: { fr: 'Corriger ma réponse', en: 'Correct' },
 	DK: { fr: 'Ne sais pas', en: "Don't know" },
 	RF: { fr: 'Refus', en: 'Refused' },
+	PLACEHOLDER: { fr: 'Commencez votre saisie...', en: 'Start typing...' },
 } as const;
 
 export default dictionary;
