@@ -20,7 +20,7 @@ export function createAppendTask<T>(
 	version: number,
 	log = consoleLogging
 ): [(args: Array<any>) => Promise<boolean>, () => void] {
-	const { name, fields, stopWords } = info;
+	const { name, fields, stopWords, meloto } = info;
 	const worker = createWorker(workerPath);
 	let start = false;
 	let stop = false;
@@ -40,7 +40,14 @@ export function createAppendTask<T>(
 						log(data);
 					}
 				});
-				worker.postMessage({ name, version, fields, stopWords, entities });
+				worker.postMessage({
+					name,
+					version,
+					fields,
+					stopWords,
+					entities,
+					meloto,
+				});
 			}
 		});
 	}

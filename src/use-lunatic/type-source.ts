@@ -275,6 +275,7 @@ export type SuggesterType = {
 	};
 	url?: string;
 	version: number;
+	meloto?: boolean;
 };
 
 export type Variable =
@@ -294,7 +295,7 @@ export type Variable =
 			expression: LabelType;
 			bindingDependencies: string[];
 			inFilter: string;
-			shapeFrom: string;
+			shapeFrom?: string;
 	  };
 
 export type LunaticSource = {
