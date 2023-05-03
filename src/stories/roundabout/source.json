@@ -96,6 +96,22 @@
 					"type": "VTL"
 				}
 			},
+			"controls": [
+				{
+					"id": "roundabout-Carefull",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(isnull(KNOWREC)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
+						"type": "VTL"
+					},
+					"type": "roundabout",
+					"iterations": { "value": "NB_HAB", "type": "VTL" },
+					"errorMessage": {
+						"value": "\"Le formulaire n'est pas complet pour \" || PRENOMS",
+						"type": "VTL|MD"
+					}
+				}
+			],
 			"components": [
 				{
 					"id": "radio",

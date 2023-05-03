@@ -22,6 +22,7 @@ function LunaticRadioGroup(props) {
 		shortcut,
 		management,
 		className,
+		disabled,
 	} = props;
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
@@ -47,12 +48,16 @@ function LunaticRadioGroup(props) {
 				label={label}
 				className={className}
 				shortcut={shortcut}
+				disabled={disabled}
 			/>
 		</LunaticComponent>
 	);
 }
 
-LunaticRadioGroup.defaultProps = { className: 'lunatic-radio-group' };
+LunaticRadioGroup.defaultProps = {
+	className: 'lunatic-radio-group',
+	disabled: false,
+};
 
 export default createCustomizableLunaticField(
 	LunaticRadioGroup,

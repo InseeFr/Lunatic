@@ -22,7 +22,8 @@ export type ComponentTypeEnum =
 	| 'Textarea'
 	| 'FilterDescription'
 	| 'PairwiseLinks'
-	| 'Suggester';
+	| 'Suggester'
+	| 'ComponentSet';
 
 export type ValuesType<T = unknown> = {
 	PREVIOUS: T | null;
@@ -70,6 +71,11 @@ export enum TypeOfControl {
 	CONSISTENCY = 'CONSISTENCY',
 }
 
+export enum ControlTypeEnum {
+	roundabout = 'roundabout',
+	simple = 'simple',
+}
+
 export type ControlType = {
 	id: string;
 	criticality: Criticality;
@@ -77,6 +83,8 @@ export type ControlType = {
 	control: LabelType;
 	errorMessage: LabelType;
 	bindingDependencies: string[];
+	type: ControlTypeEnum;
+	iterations?: number;
 };
 
 export type ResponseType = { name: string };
@@ -122,7 +130,8 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentRoundaboutType)
 	| (ComponentTypeBase & {
 			componentType: 'Input' | 'CheckboxOne' | 'Textarea';
-	  });
+	  })
+	| (ComponentTypeBase & ComponentComponentSet);
 
 export type ComponentSequenceType = {
 	componentType: 'Sequence';
@@ -249,6 +258,11 @@ export type ComponentPairWiseLinksType = {
 	};
 };
 
+export type ComponentComponentSet = {
+	componentType: 'ComponentSet';
+	components: ComponentType[];
+};
+
 export type SuggesterType = {
 	name: string;
 	fields: {
@@ -268,6 +282,7 @@ export type SuggesterType = {
 	};
 	url?: string;
 	version: number;
+	meloto?: boolean;
 };
 
 export type Variable =
@@ -287,7 +302,7 @@ export type Variable =
 			expression: LabelType;
 			bindingDependencies: string[];
 			inFilter: string;
-			shapeFrom: string;
+			shapeFrom?: string;
 	  };
 
 export type LunaticSource = {
