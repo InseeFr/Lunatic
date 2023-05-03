@@ -5,7 +5,10 @@ import './content-message.scss';
 
 function InformationMessage(props: MessageType) {
 	const { text } = props;
-	return <div className="lunatic-content-message">{text}</div>;
+	if (text) {
+		return <div className="lunatic-content-message">{text}</div>;
+	}
+	return null;
 }
 
 export default createCustomizableLunaticField(
