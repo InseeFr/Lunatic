@@ -12,7 +12,6 @@ import Label from './label';
 import Missing from './missing';
 import VariableStatus from './variable-status';
 
-// TODO à détruire
 /**
  * This functions returns declartions with "after" position if exist, else return description
  * @param {declarations, description}
