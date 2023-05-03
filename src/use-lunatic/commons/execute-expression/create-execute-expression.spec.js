@@ -1,4 +1,5 @@
 import createExecuteExpression from './create-execute-expression';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 const variables = {
 	LASTNAME: {
@@ -84,7 +85,7 @@ variables.PRENOMS.CalculatedLinked = [
 ];
 variables.LASTNAME.CalculatedLinked = [variables.GREETING.variable];
 
-describe.only('createExecuteExpression', function () {
+describe('createExecuteExpression', function () {
 	let execute, update;
 
 	beforeEach(() => {
