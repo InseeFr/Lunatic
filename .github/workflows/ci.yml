@@ -38,7 +38,7 @@ jobs:
           name: coverage
           path: coverage
       - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
+        uses: SonarSource/sonarcloud-github-action@v1.9.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -69,10 +69,18 @@ jobs:
           node-version: '16'
           registry-url: https://registry.npmjs.org/
       - uses: bahmutov/npm-install@v1
+      - name: Get current package version
+        id: version
+        uses: notiz-dev/github-action-json-property@release
+        with:
+          path: 'package.json'
+          prop_path: 'version'
       - run: |
           yarn build
       - name: Publishing on NPM
         run: |
+          git config --global user.email "no-reply@insee.fr"
+          git config --global user.name "Insee"
           if [ "$(npm show . version)" = "$VERSION" ]; then
             echo "This version is already published"
             exit 0
@@ -82,13 +90,13 @@ jobs:
             false
           fi
           if [ ${{github.ref}} = 'refs/heads/v1-main' ]; then
-            yarn publish --tag v1 --access public
+            yarn publish --new-version ${{steps.version.outputs.prop}}-v1 --tag v1 --access public
           fi
           if [ ${{github.ref}} = 'refs/heads/main' ]; then
             yarn publish --access public
           fi
           if [ ${{github.ref}} = 'refs/heads/prisme' ]; then
-            yarn publish --tag prisme --access public
+            yarn publish  ${{steps.version.outputs.prop}}-prisme --tag prisme --access public
           fi
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
