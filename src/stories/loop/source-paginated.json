@@ -1,0 +1,126 @@
+{
+	"maxPage": "3",
+	"components": [
+		{
+			"id": "kb9hi4j0",
+			"componentType": "Sequence",
+			"page": "1",
+			"label": { "value": "\"Sequence\"", "type": "VTL|MD" },
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Bonjour!\"",
+						"type": "VTL"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" }
+		},
+		{
+			"id": "kmw4iq4w",
+			"componentType": "Loop",
+			"page": "2",
+			"maxPage": "2",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"loopDependencies": ["3"],
+			"iterations": { "value": "3", "type": "VTL" },
+			"components": [
+				{
+					"id": "kmno1n7m",
+					"componentType": "Input",
+					"mandatory": false,
+					"page": "2.1",
+					"maxLength": 20,
+					"label": {
+						"value": "\"Page 1\"",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"response": { "name": "PAGE1" }
+				},
+				{
+					"id": "kmno1n7m",
+					"componentType": "Input",
+					"mandatory": false,
+					"page": "2.2",
+					"maxLength": 20,
+					"label": {
+						"value": "\"Vous avez mis en page 1 \" || LIBELLE",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"response": { "name": "PAGE2" }
+				}
+			]
+		},
+		{
+			"id": "kb9hi4j0",
+			"componentType": "Sequence",
+			"page": "3",
+			"label": { "value": "\"Sequence\"", "type": "VTL" },
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Au revoir!\"",
+						"type": "VTL"
+					}
+				}
+			],
+			"conditionFilter": { "value": "true", "type": "VTL" }
+		}
+	],
+	"resizing": {},
+	"variables": [
+		{ "variableType": "EXTERNAL", "name": "NUMBER", "value": "3" },
+		{
+			"variableType": "COLLECTED",
+			"name": "PAGE1",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PAGE2",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "LIBELLE",
+			"expression": {
+				"value": "PAGE1",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["PAGE1"],
+			"inFilter": "false",
+			"shapeFrom": "PAGE1"
+		}
+	]
+}

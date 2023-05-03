@@ -19,7 +19,7 @@ function consoleLogging() {
  */
 function createAppendTask(info, version, log) {
     if (log === void 0) { log = consoleLogging; }
-    var name = info.name, fields = info.fields, stopWords = info.stopWords;
+    var name = info.name, fields = info.fields, stopWords = info.stopWords, meloto = info.meloto;
     var worker = create_worker_ts_1.createWorker(workerPath);
     var start = false;
     var stop = false;
@@ -40,7 +40,14 @@ function createAppendTask(info, version, log) {
                         log(data);
                     }
                 });
-                worker.postMessage({ name: name, version: version, fields: fields, stopWords: stopWords, entities: entities });
+                worker.postMessage({
+                    name: name,
+                    version: version,
+                    fields: fields,
+                    stopWords: stopWords,
+                    entities: entities,
+                    meloto: meloto
+                });
             }
         });
     }

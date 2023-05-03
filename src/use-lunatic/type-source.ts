@@ -268,6 +268,7 @@ export type SuggesterType = {
 	};
 	url?: string;
 	version: number;
+	meloto?: boolean;
 };
 
 export type Variable =
