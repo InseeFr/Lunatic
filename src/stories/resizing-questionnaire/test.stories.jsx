@@ -1,10 +1,10 @@
 import React from 'react';
 import Orchestrator from '../utils/orchestrator';
-import simpsons from './source';
+import source from './source';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Behaviour/Paste',
+	title: 'Behaviour/Resizing',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
@@ -30,7 +30,7 @@ const stories = {
 		source: {
 			table: { disable: false },
 			control: { type: 'object' },
-			defaultValue: simpsons,
+			defaultValue: source,
 		},
 		data: {
 			table: { disable: false },
@@ -46,6 +46,6 @@ const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-	id: 'simpsons-default',
+	id: 'resizing-default',
 	pagination: true,
 };
