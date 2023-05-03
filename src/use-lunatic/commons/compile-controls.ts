@@ -1,5 +1,6 @@
 import { isLoopComponent } from '../reducer/commons';
 import { resolveComponentControls } from '../reducer/resolve-component-controls';
+import { replaceComponentSequence } from '../replace-component-sequence';
 import {
 	LunaticComponentDefinition,
 	LunaticError,
@@ -66,7 +67,7 @@ function isCriticalErrors(errors?: Record<string, LunaticError[]>): boolean {
 }
 
 function computeErrors(state: StateForControls) {
-	const components = getComponentsFromState(state);
+	const components = replaceComponentSequence(getComponentsFromState(state));
 	const componentFiltered = components
 		.map(function (component) {
 			return fillComponentExpressions(component, state);
