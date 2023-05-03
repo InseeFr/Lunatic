@@ -8,7 +8,7 @@ import declarationsSimples from './V2_DeclarationsSimples';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Questionnaires - Tests/Others',
+	title: 'Behaviour/Others',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
