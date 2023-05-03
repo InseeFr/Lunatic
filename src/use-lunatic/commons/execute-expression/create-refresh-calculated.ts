@@ -115,7 +115,7 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 			rootExpression?: string;
 			iteration?: number;
 			linksIterations?: number[];
-		}
+		} = {}
 	) {
 		return Object.entries(map).reduce(function (sub, [name, current]) {
 			const calculatedVariable = variables[name];
@@ -149,7 +149,7 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 				return { ...sub, [name]: value };
 			}
 			return { ...sub, [name]: current };
-		}, {});
+		}, {} as Record<string, unknown>);
 	}
 
 	function setToRefreshCalculated(name: string, variable: LunaticVariable) {

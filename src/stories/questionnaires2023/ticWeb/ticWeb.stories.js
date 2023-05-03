@@ -1,10 +1,10 @@
 import React from 'react';
-import Orchestrator from '../utils/orchestrator';
-import simpsons from './source';
-import defaultArgTypes from '../utils/default-arg-types';
+import Orchestrator from '../../utils/orchestrator';
+import ticweb from './source';
+import defaultArgTypes from '../../utils/default-arg-types';
 
 const stories = {
-	title: 'Behaviour/Paste',
+	title: 'Questionnaires2023/ticweb',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
@@ -23,20 +23,6 @@ const stories = {
 			control: 'boolean',
 			defaultValue: false,
 		},
-		activeControls: {
-			control: 'boolean',
-			defaultValue: true,
-		},
-		source: {
-			table: { disable: false },
-			control: { type: 'object' },
-			defaultValue: simpsons,
-		},
-		data: {
-			table: { disable: false },
-			control: { type: 'object' },
-			defaultValue: { COLLECTED: { READY: { COLLECTED: true } } },
-		},
 	},
 };
 
@@ -46,6 +32,8 @@ const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-	id: 'simpsons-default',
+	id: 'ticweb-default',
+	source: ticweb,
 	pagination: true,
+	data: { COLLECTED: { READY: { COLLECTED: true } } },
 };
