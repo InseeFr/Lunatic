@@ -10,7 +10,7 @@ import Loader from './loader';
 import { SuggesterType } from '../../use-lunatic/type-source';
 
 type Props = {
-	storeInfo: Pick<SuggesterType, 'name' | 'fields' | 'stopWords'>;
+	storeInfo: SuggesterType;
 	idbVersion: number;
 	fetchStore: () => Promise<unknown[]>;
 	disabled?: boolean;

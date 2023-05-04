@@ -12,7 +12,7 @@ type Props = {
 	fetch: () => Promise<unknown[]>;
 	handleClick: (n: number) => void;
 	start?: boolean;
-	store: Pick<SuggesterType, 'name' | 'fields' | 'stopWords'>;
+	store: SuggesterType;
 };
 
 function Loader({

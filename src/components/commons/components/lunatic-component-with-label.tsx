@@ -1,10 +1,10 @@
 import {
+	DECLARATION_POSITIONS,
 	DeclarationsBeforeText,
 	DeclarationsDetachable,
 } from '../../declarations';
 
-import React, { Fragment, ReactElement, ReactNode } from 'react';
-import { DECLARATION_POSITIONS } from '../../declarations';
+import React, { Fragment, ReactNode } from 'react';
 import FieldContainer from './field-container';
 import Label from './label';
 import Missing from './missing';

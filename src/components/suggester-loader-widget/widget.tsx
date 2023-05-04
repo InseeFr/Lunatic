@@ -18,7 +18,7 @@ import { SuggesterType } from '../../use-lunatic/type-source';
 
 type Props = {
 	absolute?: boolean;
-	source: { suggesters: Array<StoreInfo> };
+	source: { suggesters: Array<SuggesterType> };
 	onRefresh: () => void;
 	getStoreInfo: (s: string) => {
 		idbVersion: number;
@@ -26,9 +26,9 @@ type Props = {
 	};
 };
 
-type StoreInfo = Pick<SuggesterType, 'name' | 'fields' | 'stopWords'>;
-
-type StoreState = { storeInfo: StoreInfo } & ReturnType<Props['getStoreInfo']>;
+type StoreState = { storeInfo: SuggesterType } & ReturnType<
+	Props['getStoreInfo']
+>;
 
 function SuggesterLoaderWidget({
 	source,

@@ -19,6 +19,7 @@ export type RadioGroupProps = {
 	errors?: Record<string, LunaticError[]>;
 	className?: string;
 	shortcut?: boolean;
+	disabled?: boolean;
 };
 
 function RadioGroup({
@@ -32,6 +33,7 @@ function RadioGroup({
 	errors,
 	className,
 	shortcut,
+	disabled,
 }: RadioGroupProps) {
 	return (
 		<Fieldset className={className} legend={label} description={description}>
@@ -42,6 +44,7 @@ function RadioGroup({
 				checkboxStyle={checkboxStyle}
 				options={options}
 				shortcut={shortcut}
+				disabled={disabled}
 			/>
 			<Errors errors={errors} activeId={id} />
 		</Fieldset>

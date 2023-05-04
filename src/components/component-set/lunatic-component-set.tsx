@@ -1,9 +1,9 @@
-import React from 'react';
-import LunaticComponent from '../commons/components/lunatic-component-without-label';
+import LunaticComponentWithoutLabel from '../commons/components/lunatic-component-without-label';
+import { LunaticComponentProps } from '../type';
 import ComponentSet from './html/component-set';
 import ComponentSetComponents from './html/component-set-components';
 
-function LunaticComponentSet(props) {
+function LunaticComponentSet(props: LunaticComponentProps<'ComponentSet'>) {
 	const {
 		declarations,
 		label,
@@ -19,10 +19,11 @@ function LunaticComponentSet(props) {
 		errors,
 		description,
 		handleChange,
+		className,
 	} = props;
 
 	return (
-		<LunaticComponent
+		<LunaticComponentWithoutLabel
 			id={id}
 			preferences={preferences}
 			declarations={declarations}
@@ -30,26 +31,11 @@ function LunaticComponentSet(props) {
 			missing={missing}
 			management={management}
 			description={description}
-			components={components}
-			executeExpression={executeExpression}
-			shortcut={shortcut}
-			features={features}
 			handleChange={handleChange}
 		>
-			<ComponentSet
-				id={id}
-				legendText={label}
-				errors={errors}
-				components={components}
-				value={value}
-				features={features}
-				executeExpression={executeExpression}
-				preferences={preferences}
-				management={management}
-				missing={missing}
-				shortcut={shortcut}
-			>
+			<ComponentSet id={id} legendText={label} errors={errors}>
 				<ComponentSetComponents
+					className={className}
 					components={components}
 					features={features}
 					errors={errors}
@@ -62,7 +48,7 @@ function LunaticComponentSet(props) {
 					handleChange={handleChange}
 				/>
 			</ComponentSet>
-		</LunaticComponent>
+		</LunaticComponentWithoutLabel>
 	);
 }
 

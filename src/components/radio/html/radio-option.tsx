@@ -46,10 +46,13 @@ function RadioOption({
 	const tabIndex = checked ? 0 : -1;
 	const onClickOption = useCallback(
 		function () {
+			if (disabled) {
+				return;
+			}
 			// on checkboxStyle, clicking on checked value unchecks it, so it acts as if empty answer was clicked
 			checkboxStyle && checked ? onClick(null) : onClick(value);
 		},
-		[value, onClick, checked, checkboxStyle]
+		[value, onClick, checked, checkboxStyle, disabled]
 	);
 
 	const handleKeyDown = useCallback(

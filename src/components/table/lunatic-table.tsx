@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Table, Tbody } from '../commons/components/html-table';
 import Header from './header';
 import LunaticComponent from '../commons/components/lunatic-component-with-label';
@@ -16,7 +15,6 @@ function LunaticTable(props: LunaticComponentProps<'Table'>) {
 		executeExpression,
 		iteration,
 		errors,
-		preferences,
 		missing,
 		declarations,
 		missingResponse,

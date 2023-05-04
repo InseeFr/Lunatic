@@ -1,8 +1,12 @@
 import classnames from 'classnames';
 import { createCustomizableLunaticField } from '../../commons';
+import { PropsWithChildren } from 'react';
 
-function ComponentSetComponentContainer(props) {
-	const { children, className } = props;
+type Props = PropsWithChildren<{
+	className?: string;
+}>;
+
+function ComponentSetComponentContainer({ children, className }: Props) {
 	return (
 		<div className={classnames('lunatic-component-set-component', className)}>
 			{children}

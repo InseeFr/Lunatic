@@ -10,6 +10,7 @@ import { voidFunction } from '../../../utils/function';
 import { LunaticError } from '../../../use-lunatic/type';
 import { ComboBoxOption } from '../../commons/components/combo-box/combo-box.type';
 import { LunaticComponentProps } from '../../type';
+import D from '../../../i18n';
 
 type Props = {
 	className?: string;
@@ -28,7 +29,7 @@ type Props = {
 
 function Suggester({
 	className = 'lunatic-suggester-default-style',
-	placeholder = 'Veuillez...',
+	placeholder = D.PLACEHOLDER,
 	onSelect = voidFunction,
 	labelRenderer = DefaultLabelRenderer,
 	optionRenderer = DefaultOptionRenderer,

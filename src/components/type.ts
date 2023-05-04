@@ -70,6 +70,10 @@ type ComponentPropsByType = {
 		'id' | 'declarations' | 'label' | 'style'
 	>;
 	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'declarations' | 'label'>;
+	ComponentSet: LunaticBaseProps<unknown> & {
+		components: LunaticComponentDefinition[];
+		value: Record<string, unknown>;
+	};
 	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
