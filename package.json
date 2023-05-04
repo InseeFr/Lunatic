@@ -30,7 +30,7 @@
 	"scripts": {
 		"test": "vitest run",
 		"test:e2e": "playwright test",
-		"test:e2e:visual": "playwright test --headed",
+		"test:e2e:visual": "playwright test --headed --debug",
 		"test:e2e:codegen": "playwright codegen",
 		"test:storybook": "test-storybook --url http://localhost:9999 --maxWorkers=4 --no-cache",
 		"test-watch": "vitest",
