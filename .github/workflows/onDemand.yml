@@ -1,16 +1,31 @@
 name: OnDemand Lunatic CI (published selected branch)
 on:
   push:
-    branches: ['!main', '!develop', '!v1-main']
+    branches-ignore: ['main', 'develop', 'v1-main', 'prisme']
+
 jobs:
+
+  check_conventional_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check conventional commit
+        run: |
+          if [[ "${{ github.event.head_commit.message }}" =~ Publish:[[:space:]]([^[:space:]]*) ]]; 
+          then
+            echo "The commit convention is respected with suffix version: ${BASH_REMATCH[1]}"
+          else
+            echo "The commit convention is not respected. Pattern is \"Publish: yourCustomSuffix\""
+            echo "Your message is : ${{ github.event.head_commit.message }}"
+            exit 1
+          fi
+
   publish_on_npm:
     if: github.repository == 'InseeFr/Lunatic'
+    needs: check_conventional_commit
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref }}
       - name: Get current package version
         id: version
         uses: notiz-dev/github-action-json-property@release
@@ -19,19 +34,14 @@ jobs:
           prop_path: 'version'
       - name: Get custom version
         run: |
-          COMMIT_MSG=$(git log -1 --pretty=%B)
-            if [[ $COMMIT_MSG =~ Publish:[[:space:]](.*) ]]; 
-            then
-              NEW_VERSION=${{steps.version.outputs.prop}}-${BASH_REMATCH[1]}
-              echo "Commit message is: $COMMIT_MSG"
-              echo "New version is: $NEW_VERSION"
-              git config --global user.email "no-reply@insee.fr"
-              git config --global user.name "Insee"
-              yarn version --new-version $NEW_VERSION
-            else
-              echo "The commit convention is not respected / Unable to publish see the readme"
-              exit 1
-            fi
+          if [[ "${{ github.event.head_commit.message }}" =~ Publish:[[:space:]]([^[:space:]]*) ]]; 
+          then
+            NEW_VERSION=${{steps.version.outputs.prop}}-${BASH_REMATCH[1]}
+            echo "New version is: $NEW_VERSION"
+            git config --global user.email "no-reply@insee.fr"
+            git config --global user.name "Insee"
+            yarn version --new-version $NEW_VERSION
+          fi
       - run: yarn build
       - name: Publishing on NPM
         run: |
