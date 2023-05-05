@@ -1,4 +1,4 @@
-name: Lunatic CI beta
+name: Publish beta
 
 on:
   push:
