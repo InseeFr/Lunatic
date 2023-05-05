@@ -1,4 +1,4 @@
-name: OnDemand Lunatic CI (published selected branch)
+name: Publish OnDemand CI (published selected branch)
 on:
   push:
     branches-ignore: ['main', 'develop', 'v1-main', 'prisme']

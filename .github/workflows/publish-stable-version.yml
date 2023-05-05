@@ -1,6 +1,8 @@
-name: Lunatic CI
+name: Publish stable to NPM
 
-on: [push]
+on:
+  push:
+    branches: ['main', 'v1-main', 'prisme']
 
 jobs:
   test-build:
