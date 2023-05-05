@@ -1,4 +1,5 @@
 name: Publish OnDemand CI (published selected branch)
+
 on:
   push:
     branches-ignore: ['main', 'develop', 'v1-main', 'prisme']
@@ -6,6 +7,7 @@ on:
 jobs:
 
   check_conventional_commit:
+    if: contains(github.event.head_commit.message, 'Publish')
     runs-on: ubuntu-latest
     steps:
       - name: Check conventional commit
