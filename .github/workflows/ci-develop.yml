@@ -2,8 +2,8 @@ name: Publish beta
 
 on:
   push:
-    branches:
-      - 'develop'
+    branches: ['develop']
+    paths: ['package.json']
 
 jobs:
   build-storybook-beta:

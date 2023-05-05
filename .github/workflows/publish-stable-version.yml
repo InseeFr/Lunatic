@@ -3,6 +3,7 @@ name: Publish stable to NPM
 on:
   push:
     branches: ['main', 'v1-main', 'prisme']
+    paths: ['package.json']
 
 jobs:
   test-build:
