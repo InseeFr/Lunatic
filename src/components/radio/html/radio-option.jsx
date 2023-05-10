@@ -43,19 +43,23 @@ function RadioOption({
 	const onClickOption = useCallback(
 		function () {
 			// on checkboxStyle, clicking on checked value unchecks it, so it acts as if empty answer was clicked
-			checkboxStyle && checked ? onClick(null) : onClick(value);
+			if (!disabled) {
+				checkboxStyle && checked ? onClick(null) : onClick(value);
+			}
 		},
-		[value, onClick, checked, checkboxStyle]
+		[value, onClick, checked, checkboxStyle, disabled]
 	);
 
 	const handleKeyDown = useCallback(
 		function (e) {
-			const { key } = e;
-			const { current } = spanEl;
-			onKeyDown({ key, index });
-			current.blur();
+			if (!disabled) {
+				const { key } = e;
+				const { current } = spanEl;
+				onKeyDown({ key, index });
+				current.blur();
+			}
 		},
-		[onKeyDown, index, spanEl]
+		[onKeyDown, index, spanEl, disabled]
 	);
 
 	useEffect(

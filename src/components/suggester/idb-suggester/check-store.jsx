@@ -55,10 +55,13 @@ function CheckStore({ storeName, version, setStore, children }) {
 		return children;
 	}
 	return (
-		<div className="lunatic-suggester-unvailable">
-			La suggestion sur liste n'est pas possible sur votre navigateur, vous
-			pouvez passer la question en appuyant sur Enregistrer et Continuer
-		</div>
+		<>
+			<div className="lunatic-suggester-unvailable">
+				La suggestion sur liste n'est pas possible sur votre navigateur, vous
+				pouvez passer la question en appuyant sur Enregistrer et Continuer
+			</div>
+			{children}
+		</>
 	);
 }
 

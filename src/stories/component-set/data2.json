@@ -1,0 +1,18 @@
+{
+	"COLLECTED": {
+		"PRENOM": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": ["Fanny", "Renaud"]
+		},
+		"AGELOOP": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [15, 4]
+		}
+	}
+}

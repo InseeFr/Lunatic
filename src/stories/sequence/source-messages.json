@@ -7,7 +7,7 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"label": { "value": "\"Sequence example\"", "type": "VTL|MD" },
 			"informationMessage": {
-				"value": "\"Information Message\"",
+				"value": "\"Information Message\n\ncoucou\"",
 				"type": "VTL|MD"
 			},
 			"contentMessage": {

@@ -1,0 +1,99 @@
+{
+	"maxPage": "5",
+	"components": [
+		{
+			"id": "component-set",
+			"componentType": "ComponentSet",
+			"page": "1",
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"label": {
+				"value": "\"## Who are you?\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"This is your opportunity to tell me about yourself!\"",
+				"type": "VTL|MD"
+			},
+			"components": [
+				{
+					"id": "prenom",
+					"componentType": "Input",
+					"mandatory": false,
+					"maxLength": 20,
+					"label": {
+						"value": "\"Prénom\"))",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"response": { "name": "PRENOMS" },
+					"controls": [
+						{
+							"criticality": "WARN",
+							"errorMessage": {
+								"type": "VTL",
+								"value": "\"booleen pas coché et on affiche un message un peu long histoire de tester le truc \""
+							},
+							"typeOfControl": "CONSISTENCY",
+							"control": {
+								"type": "VTL",
+								"value": "false"
+							},
+							"id": "kfxmjupm-CI-0"
+						}
+					]
+				},
+				{
+					"id": "age",
+					"componentType": "InputNumber",
+					"maxLength": 3,
+					"label": {
+						"value": "\"Age\"))",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"response": { "name": "AGE" }
+				}
+			]
+		},
+		{
+			"id": "seq",
+			"componentType": "Sequence",
+			"label": {
+				"value": "\"Merci !\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "2"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOMS",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

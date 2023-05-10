@@ -20,10 +20,16 @@
 		color: green;
 	}
 
-	.declaration-codecard {
+	.CODECARD {
 		font-style: bold;
 		font-size: 80%;
-		color: purple;
+		color: grey;
+		border: solid 1px grey;
+		width: fit-content;
+		padding: 1em;
+		&:before {
+			content: "→ "
+		}
 	}
 
 	.declaration-message_filter {

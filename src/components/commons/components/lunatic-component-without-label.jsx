@@ -46,12 +46,13 @@ function LunaticComponent(props) {
 	const content = (
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
-			<InformationMessage text={informationMessage} />
+			<ContentMessage text={contentMessage} />
 			<FieldContainer value={value} id={id} preferences={preferences}>
 				{React.cloneElement(children, {
 					description: getDescription({ declarations, description }),
 				})}
-				<ContentMessage text={contentMessage} />
+
+				<InformationMessage text={informationMessage} />
 			</FieldContainer>
 			<DeclarationsDetachable declarations={declarations} id={id} />
 			<Missing {...props} handleChange={handleChange} />

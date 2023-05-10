@@ -28,13 +28,12 @@
 				}
 			},
 			"missingResponse": { "name": "SITUMATRI_MISSING" },
-			"bindingDependencies": ["NATIO1N1", "NATIO1N2", "NATIO1N3", "NATIO1N4"],
 			"responses": [
 				{
 					"id": "kmort6x9-QOP-kmosa98y",
 					"label": {
 						"value": "Française de naissance ou par réintégration",
-						"type": "VTL|MD"
+						"type": "VTL"
 					},
 					"response": { "name": "NATIO1N1" }
 				},
@@ -43,14 +42,14 @@
 					"id": "kmort6x9-QOP-kmos360k",
 					"label": {
 						"value": "\"Française par déclaration, naturalisation, option à la majorité\"",
-						"type": "VTL|MD"
+						"type": "VTL"
 					},
 					"response": { "name": "NATIO1N2" }
 				},
 
 				{
 					"id": "kmort6x9-QOP-kmos37e1",
-					"label": { "value": "Étrangère", "type": "VTL|MD" },
+					"label": { "value": "Étrangère", "type": "VTL" },
 					"response": { "name": "NATIO1N3" }
 				},
 
@@ -58,7 +57,7 @@
 					"id": "kmort6x9-QOP-kmorue9c",
 					"label": {
 						"value": "Apatride (pas de nationalité)",
-						"type": "VTL|MD"
+						"type": "VTL"
 					},
 					"response": { "name": "NATIO1N4" }
 				}
