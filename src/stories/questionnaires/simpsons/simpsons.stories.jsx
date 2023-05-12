@@ -142,20 +142,20 @@ Filled.play = async ({ args, canvasElement }) => {
 	await sleep(1000);
 	await page
 		.getByRole('row', {
-			name: 'Break the windows of the whole city',
+			name: /Break the windows of the whole city/,
 		})
 		.getByRole('combobox')
 		.click();
 	await page.getByText('Krusty the clown').click();
 	await page
 		.getByRole('row', {
-			name: 'Loose the violin of his daughter playing poker',
+			name: /Loose the violin of his daughter playing poker/,
 		})
 		.getByRole('combobox')
 		.click();
 	await page.getByText('Jay').click();
 	await page
-		.getByRole('row', { name: 'Kill Mr Burns' })
+		.getByRole('row', { name: /Kill Mr Burns/ })
 		.getByRole('combobox')
 		.click();
 	await page.getByText('Other').click();
@@ -181,12 +181,12 @@ Filled.play = async ({ args, canvasElement }) => {
 		.click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
-		.getByRole('row', { name: 'Leave with pay' })
+		.getByRole('row', { name: /Leave with pay/ })
 		.getByText('Please, do something...')
 		.click();
 	await page.getByText('Calendar days').click();
 	await page
-		.getByRole('row', { name: 'Leave with pay' })
+		.getByRole('row', { name: /Leave with pay/ })
 		.getByRole('spinbutton')
 		.fill('12');
 	await page.getByRole('button', { name: 'Next' }).click();
