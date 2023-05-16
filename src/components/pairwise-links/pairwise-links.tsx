@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import LinksOrchestrator from './orchestrator';
 import {
-	DeclarationsBeforeText,
 	DeclarationsAfterText,
+	DeclarationsBeforeText,
 	DeclarationsDetachable,
 } from '../declarations';
 import NothingToDisplay from '../commons/components/nothing-to-display';
@@ -25,8 +25,6 @@ const PairwiseLinks = ({
 	symLinks,
 }: LunaticComponentProps<'PairwiseLinks'>) => {
 	const nbRows = xAxisIterations * yAxisIterations;
-
-	console.log('lunatic', 'pairwise', value);
 
 	if (nbRows <= 1) {
 		return <NothingToDisplay />;

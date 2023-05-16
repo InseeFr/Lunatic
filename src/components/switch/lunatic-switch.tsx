@@ -20,7 +20,7 @@ function LunaticSwitch({
 	label,
 	errors,
 }: LunaticComponentProps<'Switch'>) {
-	const booleanValue = value || false;
+	const booleanValue = value ?? false;
 
 	const onClick = useOnHandleChange({ handleChange, response, value });
 

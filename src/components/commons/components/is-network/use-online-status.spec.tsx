@@ -1,17 +1,13 @@
 import React from 'react';
-import { renderHook, act } from '@testing-library/react-hooks';
-import { expect, describe, it, vi, beforeEach, afterEach } from 'vitest';
+import { renderHook } from '@testing-library/react-hooks';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import useOnlineStatus from './use-online-status';
 
 describe('useOnlineStatus', () => {
 	let originalNavigator: Navigator;
-	let onlineCallback: () => void;
-	let offlineCallback: () => void;
 
 	beforeEach(() => {
 		originalNavigator = window.navigator;
-		onlineCallback = vi.fn();
-		offlineCallback = vi.fn();
 	});
 
 	afterEach(() => {

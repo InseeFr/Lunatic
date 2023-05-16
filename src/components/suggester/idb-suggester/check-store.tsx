@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import { openDb, getEntity } from '../../../utils/idb-tools';
 import { CONSTANTES } from '../../../utils/store-tools';
+import { Logger } from '../../../utils/logger';
 
 type Props = PropsWithChildren<{
 	storeName: string;
@@ -49,7 +50,7 @@ function CheckStore({ storeName, version, setStore, children }: Props) {
 					await checkStore();
 				}
 
-				go();
+				go().catch(Logger.error);
 			}
 		},
 		[refresh, checkStore]

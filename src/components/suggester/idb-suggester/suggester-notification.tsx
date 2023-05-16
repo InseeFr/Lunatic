@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import { createCustomizableLunaticField } from '../../commons';
 import { STATUS } from './suggester-status';
 import Label from '../../commons/components/label';
 import Notification from '../html/notification';
-import { PropsWithChildren } from 'react';
 import { SuggesterStatus } from '../../../use-lunatic/use-suggesters';
-import { ReactNode } from 'react';
 
 type Props = PropsWithChildren<{
-	status: SuggesterStatus,
-	storeName: string,
-	label?: ReactNode,
-	description?: ReactNode,
+	status: SuggesterStatus;
+	storeName: string;
+	label?: ReactNode;
+	description?: ReactNode;
 }>;
 
 function SuggesterNotification({

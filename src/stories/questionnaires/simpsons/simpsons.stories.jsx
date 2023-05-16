@@ -4,6 +4,7 @@ import defaultArgTypes from '../../utils/default-arg-types';
 import { playwrightToUserEvent } from '../../../../tests/utils/e2e';
 import simpsons from './source';
 import { sleep } from '../../../../tests/utils/timer';
+import { Logger } from '../../../utils/logger';
 
 const stories = {
 	title: 'Questionnaires/Simpsons',
@@ -240,7 +241,7 @@ With_Missing.args = {
 	pagination: true,
 	missing: true,
 	missingStrategy: () => {
-		console.log('your strategy has been applied');
+		Logger.info('your strategy has been applied');
 	},
 	dontKnowButton: 'I dunno',
 	refusedButton: 'Oh no!',
