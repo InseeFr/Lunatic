@@ -1,5 +1,4 @@
 import { MessageType } from './type';
-// @ts-ignore
 import { createCustomizableLunaticField } from '../commons';
 import './content-message.scss';
 

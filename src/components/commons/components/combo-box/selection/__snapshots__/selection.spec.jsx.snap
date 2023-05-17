@@ -40,7 +40,7 @@ exports[`Selection component > should render correctly when it is editable 1`] =
 </div>
 `;
 
-exports[`Selection component > should render correctly when it is expended 1`] = `
+exports[`Selection component > should render correctly when it is expanded 1`] = `
 <div
   aria-autocomplete="list"
   aria-controls="todo"

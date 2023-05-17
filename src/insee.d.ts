@@ -5,6 +5,15 @@ declare module '@inseefr/trevas' {
 	) => unknown;
 }
 
+declare module 'string-tokenizer' {
+	class Tokenizer {
+		input(s: string): Tokenizer;
+		tokens(v: { tokens: RegExp }): Tokenizer;
+		resolve(): { tokens: string[] | string };
+	}
+	export default function (): Tokenizer;
+}
+
 declare module '@inseefr/vtl-2.0-antlr-tools' {
 	import type { Stream } from 'antlr4';
 	export class VtlLexer {
@@ -20,4 +29,9 @@ declare module 'antlr4' {
 	export default {
 		InputStream: InputStream,
 	};
+}
+
+declare module '*.png' {
+	const url: string;
+	export default url;
 }
