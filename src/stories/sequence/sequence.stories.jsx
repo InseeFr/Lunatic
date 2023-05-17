@@ -1,7 +1,7 @@
 import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import sourceDeclarations from './source-declarations.json';
-import sourceMessages from './source-messages.json';
+import sourceQuestions from './source-questions.json';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
@@ -22,5 +22,5 @@ WithDeclarations.args = {
 	source: sourceDeclarations,
 };
 
-export const WithMessages = Template.bind({});
-WithMessages.args = { id: 'sequence-messages', source: sourceMessages };
+export const WithQuestions = Template.bind({});
+WithQuestions.args = { id: 'sequence-questions', source: sourceQuestions };

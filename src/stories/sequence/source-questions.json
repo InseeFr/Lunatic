@@ -6,12 +6,12 @@
 			"page": "1",
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"label": { "value": "\"Sequence example\"", "type": "VTL|MD" },
-			"informationMessage": {
-				"value": "\"Information Message\n\ncoucou\"",
+			"questionInformation": {
+				"value": "\"Question Information\"",
 				"type": "VTL|MD"
 			},
-			"contentMessage": {
-				"value": "\"Content Message\"",
+			"questionContext": {
+				"value": "\"Question Context\"",
 				"type": "VTL|MD"
 			}
 		}

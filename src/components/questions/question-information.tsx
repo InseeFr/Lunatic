@@ -1,16 +1,16 @@
 import { MessageType } from './type';
 import { createCustomizableLunaticField } from '../commons';
-import './content-message.scss';
+import './question-information.scss';
 
-function InformationMessage(props: MessageType) {
+function QuestionInformation(props: MessageType) {
 	const { text } = props;
 	if (text) {
-		return <div className="lunatic-content-message">{text}</div>;
+		return <div className="lunatic-alert-information">{text}</div>;
 	}
 	return null;
 }
 
 export default createCustomizableLunaticField(
-	InformationMessage,
-	'InformationMessage'
+	QuestionInformation,
+	'QuestionInformation'
 );
