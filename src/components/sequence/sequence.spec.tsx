@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import Sequence from './sequence';
+import Sequence from './lunatic-sequence';
 import { describe, it, expect } from 'vitest';
 describe('Sequence', () => {
 	const mockDeclarations = [
