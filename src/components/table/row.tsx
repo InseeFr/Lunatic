@@ -17,7 +17,7 @@ type Props = {
 	valueMap: Record<string, unknown>;
 	rowIndex?: string | number;
 	handleChange: LunaticBaseProps['handleChange'];
-	errors: LunaticBaseProps['errors'];
+	errors?: LunaticBaseProps['errors'];
 };
 function Row({
 	id,
