@@ -134,7 +134,7 @@ function checkArrayForSubPage(map: AccumulatorMap, state: LunaticState) {
 			return { ...sub, [name]: value[iteration] };
 		}
 		return { ...sub, [name]: value };
-	}, {});
+	}, {} as Record<string, unknown>);
 }
 
 function checkUseContext(map: AccumulatorMap, state: LunaticState) {
