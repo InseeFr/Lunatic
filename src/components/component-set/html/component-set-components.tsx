@@ -28,6 +28,7 @@ function hasResponse(
 
 type Props = {
 	className?: string;
+	componentClassName?: string;
 } & Pick<
 	LunaticComponentProps<'ComponentSet'>,
 	| 'components'
@@ -55,6 +56,7 @@ function ComponentSetComponents({
 	errors,
 	className,
 	handleChange,
+	componentClassName,
 }: Props) {
 	if (!Array.isArray(components)) {
 		return null;
@@ -78,6 +80,7 @@ function ComponentSetComponents({
 							executeExpression={executeExpression}
 							errors={errors}
 							handleChange={handleChange}
+							className={componentClassName}
 						/>
 					</ComponentSetComponentContainer>
 				);
