@@ -4,13 +4,7 @@ import { LunaticComponentProps } from '../type';
 
 type Props = {} & Pick<
 	LunaticComponentProps<'Table'>,
-	| 'body'
-	| 'id'
-	| 'executeExpression'
-	| 'value'
-	| 'handleChange'
-	| 'iteration'
-	| 'errors'
+	'body' | 'id' | 'executeExpression' | 'value' | 'handleChange' | 'iteration'
 >;
 function TableOrchestrator({
 	body,
@@ -19,7 +13,6 @@ function TableOrchestrator({
 	value: valueMap,
 	handleChange,
 	iteration,
-	errors,
 }: Props) {
 	if (!Array.isArray(body)) {
 		return null;
@@ -37,7 +30,6 @@ function TableOrchestrator({
 						handleChange={handleChange}
 						iteration={iteration}
 						executeExpression={executeExpression}
-						errors={errors}
 					/>
 				);
 			})}

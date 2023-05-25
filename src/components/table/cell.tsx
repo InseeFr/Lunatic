@@ -67,7 +67,7 @@ type Props = {
 	row?: string | number;
 	index?: string | number;
 	handleChange: LunaticBaseProps['handleChange'];
-	errors: LunaticBaseProps['errors'];
+	errors?: LunaticBaseProps['errors'];
 };
 function Cell({
 	content,
