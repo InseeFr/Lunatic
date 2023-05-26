@@ -1,10 +1,10 @@
 import { ReactNode, useState } from 'react';
-import { createCustomizableLunaticField, Errors, Label } from '../../commons';
+import { voidFunction } from '../../../utils/function';
+import { Errors, Label, createCustomizableLunaticField } from '../../commons';
+import { LunaticBaseProps } from '../../type';
 import InputNumberDefault from './input-number-default';
 import InputNumberThousand from './input-number-thousand';
 import './input-number.scss';
-import { LunaticBaseProps } from '../../type';
-import { voidFunction } from '../../../utils/function';
 
 type Props = {
 	id?: string;
@@ -54,7 +54,6 @@ function InputNumber({
 					required={required}
 					labelId={labelId}
 					max={max}
-					min={min}
 					decimals={decimals}
 				/>
 			)}

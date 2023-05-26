@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
 	NumberFormatValues,
 	NumericFormat,
@@ -14,7 +14,6 @@ type Props = {
 	disabled?: boolean;
 	required?: boolean;
 	labelId?: string;
-	min?: number;
 	max?: number;
 	decimals?: number;
 };
@@ -25,7 +24,6 @@ const InputNumberThousand = ({
 	onChange,
 	disabled,
 	labelId,
-	min,
 	max,
 	decimals,
 }: Props) => {
@@ -40,17 +38,11 @@ const InputNumberThousand = ({
 	const isAllowed = useCallback(
 		(values: NumberFormatValues) => {
 			const { floatValue } = values;
-			if (
-				Number.isInteger(min) &&
-				Number.isInteger(max) &&
-				floatValue &&
-				min &&
-				max
-			)
-				return (floatValue >= min && floatValue <= max) || false;
+			if (Number.isInteger(max) && floatValue && max)
+				return floatValue <= max || false;
 			return true;
 		},
-		[max, min]
+		[max]
 	);
 	return (
 		<NumericFormat
