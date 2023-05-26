@@ -1,30 +1,32 @@
-import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import {
 	LunaticComponentDefinition,
 	LunaticError,
 	LunaticExpression,
 	LunaticState,
 } from '../use-lunatic/type';
+import { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import { SuggesterStatus } from '../use-lunatic/use-suggesters';
+import useLunatic from '../use-lunatic';
 
-type SharedProps<ValueType> = {
+export type LunaticBaseProps<ValueType = unknown> = {
 	id: string;
 	handleChange: (
 		response: { name: string },
 		value: ValueType,
-		args: Record<string, unknown>
+		args?: Record<string, unknown>
 	) => void;
-	errors?: Record<string, LunaticError[]>;
-	preferences: LunaticState['preferences'];
+	errors?: { [id: string]: LunaticError[] };
+	preferences?: LunaticState['preferences'];
 	declarations?: {
 		id: string;
 		declarationType: string;
 		position: string;
 		label: ReactNode;
 	}[];
-	label: ReactNode;
+	label?: ReactNode;
 	disabled?: boolean;
 	missing?: unknown;
-	missingResponse?: unknown;
+	missingResponse?: { name: string; value?: unknown };
 	management?: LunaticState['management'];
 	description?: ReactNode;
 	shortcut?: boolean;
@@ -33,99 +35,146 @@ type SharedProps<ValueType> = {
 	readOnly?: boolean;
 	className?: string;
 	style?: CSSProperties;
+	iteration?: number;
+	executeExpression: LunaticState['executeExpression'];
+	features?: string[];
+	componentType?: string;
+	questionContext?: ReactNode;
+	questionInformation?: ReactNode;
 };
 
-type SuggesterOption = {
+export type SuggesterOption = {
 	children?: string[];
-	id: string;
-	label: string;
+	id?: string;
+	description?: ReactNode;
+	label?: ReactNode;
+	value: string;
 	niveau?: string;
 	parent?: string;
 	tokensMap?: Record<string, { count: number; fields: string[] }>;
 };
 
 type ComponentPropsByType = {
-	InputNumber: SharedProps<number> & {
+	InputNumber: LunaticBaseProps<number | null> & {
 		min: number;
 		max: number;
 		decimals: number;
 		unit?: string;
 		response: { name: string };
 	};
-	Input: SharedProps<string> & {
+	Input: LunaticBaseProps<string> & {
 		maxLength?: number;
 		value: null | string;
 		response: { name: string };
 	};
 	Sequence: Pick<
-		SharedProps<string>,
-		'id' | 'declarations' | 'label' | 'style'
+		LunaticBaseProps<string>,
+		| 'id'
+		| 'declarations'
+		| 'label'
+		| 'style'
+		| 'questionContext'
+		| 'questionInformation'
 	>;
-	Subsequence: Pick<SharedProps<string>, 'id' | 'declarations' | 'label'>;
-	RosterForLoop: SharedProps<unknown> & {
+	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'declarations' | 'label'>;
+	ComponentSet: LunaticBaseProps<unknown> & {
+		components: LunaticComponentDefinition[];
+		value: Record<string, unknown>;
+	};
+	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
 		components: LunaticComponentDefinition[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
-		componentType: 'RosterForLoop';
-		headers?: Array<{ label: LunaticExpression }>;
+		headers?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
 	};
-	Loop: SharedProps<unknown> & {
+	Loop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
 		components: LunaticComponentDefinition[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
-		componentType: 'Loop';
-		headers?: Array<{ label: LunaticExpression }>;
+		headers?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
 	};
-	Table: SharedProps<unknown> & {
-		header: Array<{ label: LunaticExpression }>;
+	Table: LunaticBaseProps<unknown> & {
+		value: Record<string, unknown>;
+		header: Array<{
+			label: ReactNode;
+			rowspan?: number;
+			colspan?: number;
+		}>;
 		body: Array<Array<{ label: LunaticExpression }>>;
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};
-	Datepicker: SharedProps<string> & {
+	Datepicker: LunaticBaseProps<string | null> & {
 		min?: string;
 		max?: string;
-		value: null | string;
 		response: { name: string };
 	};
-	CheckboxGroup: SharedProps<Record<string, boolean | null>> & {
+	CheckboxGroup: LunaticBaseProps<Record<string, boolean | null>> & {
 		responses: Array<{
 			id: string;
 			label: ReactNode;
+			description?: ReactNode;
 			response: { name: string };
 		}>;
+		handleChange: (
+			response: { name: string },
+			value: boolean,
+			args?: Record<string, unknown>
+		) => void;
 	};
-	CheckboxOne: SharedProps<string> & {
+	CheckboxOne: LunaticBaseProps<string | null> & {
+		options: Array<{
+			description: ReactNode;
+			label: ReactNode;
+			value: string;
+		}>;
+		response: { name: string };
+	};
+	Switch: LunaticBaseProps<boolean> & {
+		response: { name: string };
+		statusLabel?: { true: string; false: string };
+	};
+	CheckboxBoolean: LunaticBaseProps<boolean> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
 	};
-	CheckboxBoolean: SharedProps<string> & {
-		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
-		response: { name: string };
-	};
-	Radio: SharedProps<string> & {
+	Radio: LunaticBaseProps<string | null> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		checkboxStyle?: boolean;
 		response: { name: string };
 	};
-	Dropdown: SharedProps<string> & {
+	Roundabout: LunaticBaseProps<string> & {
+		iterations: number;
+		goToPage: ReturnType<typeof useLunatic>['goToPage'];
+		page: string;
+		locked?: boolean;
+		expressions: {
+			unnecessary?: Array<boolean>;
+			complete?: Array<boolean>;
+			partial?: Array<boolean>;
+			label?: Array<string>;
+		};
+	};
+	Dropdown: LunaticBaseProps<string | null> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
+		writable?: boolean;
 	};
-	Textarea: SharedProps<string> & {
+	Textarea: LunaticBaseProps<string> & {
 		cols?: number;
+		placeHolder?: string;
 		maxLength?: number;
 		rows?: number;
 		response: { name: string };
 	};
-	FilterDescription: Pick<SharedProps<string>, 'id' | 'label'>;
-	PairwiseLinks: SharedProps<string> & {
+	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'>;
+	PairwiseLinks: Omit<LunaticBaseProps, 'value'> & {
 		components: LunaticComponentDefinition[];
 		features?: LunaticState['features'];
 		executeExpression: LunaticState['executeExpression'];
@@ -134,15 +183,19 @@ type ComponentPropsByType = {
 		symLinks: Record<string, Record<string, string>>;
 		value: Record<string, unknown[]>;
 	};
-	Suggester: SharedProps<string> & {
+	Suggester: LunaticBaseProps<string | null> & {
 		storeName: string;
-		optionRendered: FunctionComponent<{
+		getSuggesterStatus: (name: string) => {
+			status: SuggesterStatus;
+			timestamp: number;
+		};
+		optionRenderer: FunctionComponent<{
 			option: SuggesterOption;
 			placeholder?: string;
 			search?: string;
 		}>;
 		labelRenderer: FunctionComponent<{
-			option: SuggesterOption;
+			option?: SuggesterOption;
 			selected?: boolean;
 			search?: string;
 		}>;
@@ -152,5 +205,8 @@ type ComponentPropsByType = {
 	};
 };
 
-export type ComponentProps<T extends keyof ComponentPropsByType> =
-	ComponentPropsByType[T];
+export type LunaticComponentType = keyof ComponentPropsByType;
+
+export type LunaticComponentProps<
+	T extends LunaticComponentType = LunaticComponentType
+> = ComponentPropsByType[T];

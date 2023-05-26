@@ -14,3 +14,5 @@ export type {
 	LunaticStateVariable,
 	LunaticState,
 } from './use-lunatic/type';
+
+export type { LunaticComponentProps } from './components/type';

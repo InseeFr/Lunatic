@@ -95,7 +95,7 @@ test('can complete simpson form', async ({ page }) => {
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
 		.getByRole('row', {
-			name: 'Break the windows of the whole city suggestions',
+			name: 'Break the windows of the whole city',
 		})
 		.getByRole('combobox')
 		.locator('div')
@@ -103,13 +103,13 @@ test('can complete simpson form', async ({ page }) => {
 	await page.getByText('Krusty the clown').click();
 	await page
 		.getByRole('row', {
-			name: 'Loose the violin of his daughter playing poker suggestions',
+			name: 'Loose the violin of his daughter playing poker',
 		})
 		.getByText('Please, do something...')
 		.click();
 	await page.getByText('Jay').click();
 	await page
-		.getByRole('row', { name: 'Kill Mr Burns suggestions' })
+		.getByRole('row', { name: 'Kill Mr Burns' })
 		.getByText('Please, do something...')
 		.click();
 	await page.getByText('Other').click();
@@ -137,11 +137,11 @@ test('can complete simpson form', async ({ page }) => {
 		.click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
-		.getByRole('row', { name: 'Leave with pay suggestions' })
+		.getByRole('row', { name: 'Leave with pay' })
 		.getByRole('spinbutton')
 		.fill('12');
 	await page
-		.getByRole('row', { name: 'Leave with pay suggestions' })
+		.getByRole('row', { name: 'Leave with pay' })
 		.getByText('Please, do something...')
 		.click();
 	await page.getByText('Calendar days').click();

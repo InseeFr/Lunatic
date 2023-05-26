@@ -65,6 +65,7 @@ async function loadOne(info, fetchIt) {
 	const db = await openOnCreateDb(name);
 	await clearDb(db, CONSTANTES.STORE_DATA_NAME);
 	await clearDb(db, CONSTANTES.STORE_INFO_NAME);
+	console.log({ info, rubriques });
 	await append(info, '1', rubriques, console.log);
 	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, info);
 }
