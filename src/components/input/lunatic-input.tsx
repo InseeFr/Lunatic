@@ -20,8 +20,6 @@ function LunaticInput(props: LunaticComponentProps<'Input'>) {
 		description,
 		required,
 		maxLength,
-		questionContext,
-		questionInformation,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -37,8 +35,6 @@ function LunaticInput(props: LunaticComponentProps<'Input'>) {
 			management={management}
 			description={description}
 			handleChange={handleChange}
-			questionContext={questionContext}
-			questionInformation={questionInformation}
 		>
 			<Input
 				id={id}

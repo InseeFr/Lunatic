@@ -1,6 +1,11 @@
 {
 	"components": [
 		{
+			"componentType": "QuestionInformation",
+			"label": { "value": "\"Question Information\"", "type": "VTL|MD" },
+			"page": "1"
+		},
+		{
 			"componentType": "Input",
 			"label": {
 				"value": "\"Prénom de l'occupant principal.\"",
@@ -12,14 +17,12 @@
 			"response": {
 				"name": "PRENOM"
 			},
-			"questionInformation": {
-				"value": "\"Question Information\"",
-				"type": "VTL|MD"
-			},
-			"questionContext": {
-				"value": "\"Question Context\"",
-				"type": "VTL|MD"
-			}
+			"page": "1"
+		},
+		{
+			"componentType": "QuestionContext",
+			"label": { "value": "\"Question Context\"", "type": "VTL|MD" },
+			"page": "1"
 		},
 		{
 			"componentType": "Input",
@@ -37,14 +40,7 @@
 			"response": {
 				"name": "NOM"
 			},
-			"questionInformation": {
-				"value": "\"Question Information\"",
-				"type": "VTL|MD"
-			},
-			"questionContext": {
-				"value": "\"Question Context\"",
-				"type": "VTL|MD"
-			}
+			"page": "1"
 		}
 	],
 	"variables": [

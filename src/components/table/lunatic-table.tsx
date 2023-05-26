@@ -44,7 +44,6 @@ function LunaticTable(props: LunaticComponentProps<'Table'>) {
 						handleChange={handleChange}
 						iteration={iteration}
 						value={value}
-						errors={errors}
 					/>
 				</Tbody>
 			</Table>

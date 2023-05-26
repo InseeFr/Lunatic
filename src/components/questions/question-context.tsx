@@ -1,11 +1,11 @@
-import { MessageType } from './type';
 import { createCustomizableLunaticField } from '../commons';
+import { LunaticComponentProps } from '../type';
 import './question-context.scss';
 
-function QuestionContext(props: MessageType) {
-	const { text } = props;
-	if (text) {
-		return <div className="lunatic-call-out">{text}</div>;
+function QuestionContext(props: LunaticComponentProps<'Question'>) {
+	const { label } = props;
+	if (label) {
+		return <div className="lunatic-call-out">{label}</div>;
 	}
 	return null;
 }
