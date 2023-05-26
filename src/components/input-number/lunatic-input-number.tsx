@@ -1,7 +1,7 @@
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
-import InputNumber from './html/input-number';
 import { LunaticComponentProps } from '../type';
+import InputNumber from './html/input-number';
 
 function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 	const {
