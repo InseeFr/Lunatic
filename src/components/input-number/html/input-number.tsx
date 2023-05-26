@@ -12,6 +12,7 @@ type Props = {
 	disabled?: boolean;
 	required?: boolean;
 	labelId?: string;
+	min?: number;
 	max?: number;
 	decimals?: number;
 	label?: ReactNode;
@@ -25,6 +26,7 @@ function InputNumber({
 	value = null,
 	onChange = voidFunction,
 	disabled = false,
+	min,
 	max,
 	decimals = 0,
 	unit,
@@ -47,6 +49,7 @@ function InputNumber({
 				disabled={disabled}
 				required={required}
 				labelId={labelId}
+				min={min}
 				max={max}
 				decimals={decimals}
 			/>

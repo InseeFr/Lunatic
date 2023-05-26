@@ -14,6 +14,7 @@ type Props = {
 	disabled?: boolean;
 	required?: boolean;
 	labelId?: string;
+	min?: number;
 	max?: number;
 	decimals?: number;
 };
@@ -24,6 +25,7 @@ const InputNumberThousand = ({
 	onChange,
 	disabled,
 	labelId,
+	min,
 	max,
 	decimals,
 }: Props) => {
@@ -50,6 +52,8 @@ const InputNumberThousand = ({
 			className={classNames({ disabled })}
 			onValueChange={handleChange}
 			value={value ?? ''}
+			min={min}
+			max={max}
 			aria-labelledby={labelId}
 			disabled={disabled}
 			lang="en"
