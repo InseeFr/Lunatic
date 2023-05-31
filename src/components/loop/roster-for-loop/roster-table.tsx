@@ -18,7 +18,7 @@ type Props = {
 	| 'id'
 	| 'components'
 	| 'executeExpression'
-	| 'headers'
+	| 'header'
 	| 'value'
 	| 'management'
 	| 'missing'
@@ -31,20 +31,20 @@ function RosterTable({
 	nbRows,
 	executeExpression,
 	id,
-	headers,
+	header,
 	value: valueMap,
 	shortcut,
 	missing,
 	management,
 	handleChange,
 }: Props) {
-	console.log('lunatic', 'roster-table', headers);
+	console.log('lunatic', 'roster-table', header);
 	if (nbRows <= 0) {
 		return <NothingToDisplay />;
 	}
 	return (
 		<Table id={id}>
-			<Header header={headers} id={id} />
+			<Header header={header} id={id} />
 			<Body
 				id={id}
 				components={components}

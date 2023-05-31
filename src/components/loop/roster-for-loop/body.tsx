@@ -15,7 +15,7 @@ type Props = {
 	| 'id'
 	| 'components'
 	| 'executeExpression'
-	| 'headers'
+	| 'header'
 	| 'value'
 	| 'management'
 	| 'missing'

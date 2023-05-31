@@ -22,7 +22,7 @@ function RosterforLoop({
 	label,
 	components,
 	executeExpression,
-	headers,
+	header,
 	missing,
 	shortcut,
 	id,
@@ -74,13 +74,20 @@ function RosterforLoop({
 		return (
 			<>
 				<DeclarationsBeforeText declarations={declarations} id={id} />
+				<div
+					aria-label={`rosterforloop-${id}`}
+				    className="rosterforloop-lunatic"
+				    id={`rosterforloop-${id}`}
+				>
+					{label}
+				</div>
 				<DeclarationsAfterText declarations={declarations} id={id} />
 				<RosterTable
 					id={id}
 					components={components}
 					nbRows={nbRows}
 					executeExpression={executeExpression}
-					headers={headers}
+					header={header}
 					handleChange={handleChangeLoop}
 					value={valueMap}
 					management={management}
@@ -92,7 +99,7 @@ function RosterforLoop({
 				{showButtons && (
 					<>
 						<HandleRowButton onClick={addRow} disabled={nbRows === max}>
-							{label || D.DEFAULT_BUTTON_ADD}
+							{D.DEFAULT_BUTTON_ADD}
 						</HandleRowButton>
 						<HandleRowButton onClick={removeRow} disabled={nbRows === min}>
 							{D.DEFAULT_BUTTON_REMOVE}
