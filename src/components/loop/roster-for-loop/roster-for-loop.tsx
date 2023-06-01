@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { createCustomizableLunaticField, Errors } from '../../commons';
 import LunaticComponent from '../../commons/components/lunatic-component-with-label';
 import RosterTable from './roster-table';
@@ -6,6 +6,7 @@ import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
 import getInitLength from '../commons/get-init-length';
 import { LunaticComponentProps } from '../../type';
+import { useRefSync } from '../../../hooks/use-ref-sync';
 
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
@@ -20,7 +21,6 @@ function RosterforLoop({
 	executeExpression,
 	header,
 	missing,
-	shortcut,
 	id,
 	management,
 	errors,
@@ -31,6 +31,8 @@ function RosterforLoop({
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [nbRows, setNbRows] = useState(() => getInitLength(valueMap));
 	const showButtons = min && max && min !== max;
+	const valueMapRef = useRefSync(valueMap);
+	const nbRowsRef = useRefSync(nbRows);
 
 	const addRow = useCallback(
 		function () {
@@ -47,11 +49,11 @@ function RosterforLoop({
 			value: unknown,
 			args: { index: number; [k: string]: unknown }
 		) {
-			const v = valueMap[response.name];
+			const v = valueMapRef.current[response.name];
 			v[args.index] = value;
-			handleChange(response, v, { loop: true, length: nbRows }); // TODO: a retaper pour déplacer cette compléxité
+			handleChange(response, v, { loop: true, length: nbRowsRef.current }); // TODO: a retaper pour déplacer cette compléxité
 		},
-		[handleChange, nbRows, valueMap]
+		[handleChange, nbRowsRef, valueMapRef]
 	);
 
 	const removeRow = useCallback(
@@ -89,9 +91,7 @@ function RosterforLoop({
 						header={header}
 						handleChange={handleChangeLoop}
 						value={valueMap}
-						management={management}
 						missing={missing}
-						shortcut={shortcut}
 						errors={errors}
 					/>
 					<Errors errors={errors} activeId={id} />

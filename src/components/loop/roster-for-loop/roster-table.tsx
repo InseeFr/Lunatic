@@ -1,10 +1,9 @@
-import React from 'react';
-import { Table } from '../../commons/components/html-table';
+import { Table, Tbody } from '../../commons/components/html-table';
 import Header from './header';
-import Body from './body';
 import './roster.scss';
 import { NothingToDisplay } from '../../commons';
 import { LunaticComponentProps } from '../../type';
+import RosterForLoopOrchestrator from './roster-for-loop-orchestrator';
 
 type Props = {
 	nbRows: number;
@@ -20,11 +19,11 @@ type Props = {
 	| 'executeExpression'
 	| 'header'
 	| 'value'
-	| 'management'
 	| 'missing'
-	| 'shortcut'
 	| 'errors'
 >;
+
+const preferences = ['COLLECTED'] as ['COLLECTED'];
 
 function RosterTable({
 	components,
@@ -33,29 +32,27 @@ function RosterTable({
 	id,
 	header,
 	value: valueMap,
-	shortcut,
 	missing,
-	management,
 	handleChange,
 }: Props) {
-	console.log('lunatic', 'roster-table', header);
 	if (nbRows <= 0) {
 		return <NothingToDisplay />;
 	}
 	return (
 		<Table id={id}>
 			<Header header={header} id={id} />
-			<Body
-				id={id}
-				components={components}
-				handleChange={handleChange}
-				nbRows={nbRows}
-				value={valueMap}
-				management={management}
-				missing={missing}
-				shortcut={shortcut}
-				executeExpression={executeExpression}
-			/>
+			<Tbody id={id}>
+				<RosterForLoopOrchestrator
+					id={`roster-${id}`}
+					components={components}
+					nbRows={nbRows}
+					handleChange={handleChange}
+					executeExpression={executeExpression}
+					valueMap={valueMap}
+					missing={missing}
+					preferences={preferences}
+				/>
+			</Tbody>
 		</Table>
 	);
 }
