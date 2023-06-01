@@ -39,7 +39,7 @@ function RosterTable({
 		return <NothingToDisplay />;
 	}
 	return (
-		<Table id={id}>
+		<Table id={id} className="rosterTable">
 			<Header header={header} id={id} />
 			<Tbody id={id}>
 				<RosterForLoopOrchestrator
