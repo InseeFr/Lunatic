@@ -1,7 +1,7 @@
-import { IDBSuggester } from './idb-suggester';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { LunaticComponentProps } from '../type';
+import { IDBSuggester } from './idb-suggester';
 
 function LunaticSuggester({
 	id,
@@ -22,10 +22,21 @@ function LunaticSuggester({
 	missingResponse,
 	management,
 	response,
+	responses,
 	getSuggesterStatus,
 }: LunaticComponentProps<'Suggester'>) {
-	const onChange = useOnHandleChange({ handleChange, response, value });
-
+	// ToDo :
+	/**
+	 * response -> responses
+	 * onChange(id) -> onChange({ code: '', label: '', info: '' }) -> onSelect in subComponent
+	 * useOnHandleChange -> update to handleChange on 3 response REPONSENAME (historical value i.e the code), REPONSENAME_LABEL, REPONSENAME_INFO
+	 */
+	const onChange = useOnHandleChange({
+		handleChange,
+		response,
+		responses,
+		value,
+	});
 	return (
 		<LunaticComponent
 			id={id}

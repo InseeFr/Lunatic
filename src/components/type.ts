@@ -1,12 +1,12 @@
+import { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import useLunatic from '../use-lunatic';
 import {
 	LunaticComponentDefinition,
 	LunaticError,
 	LunaticExpression,
 	LunaticState,
 } from '../use-lunatic/type';
-import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
-import useLunatic from '../use-lunatic';
 
 export type LunaticBaseProps<ValueType = unknown> = {
 	id: string;
@@ -201,7 +201,8 @@ type ComponentPropsByType = {
 		}>;
 		idbVersion?: string;
 		focused: boolean;
-		response: { name: string };
+		response?: { name: string };
+		responses?: Array<{ id: string; response: { name: string } }>;
 	};
 };
 

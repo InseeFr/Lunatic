@@ -1,9 +1,9 @@
 import React from 'react';
-import Orchestrator from '../utils/orchestrator';
-import source from './source';
-import simple from './simple';
 import defaultArgTypes from '../utils/default-arg-types';
-import { SuggesterNotification } from './SuggesterNotification';
+import Orchestrator from '../utils/orchestrator';
+import multipleResponses from './multipleResponses';
+import simple from './simple';
+import source from './source';
 
 const stories = {
 	title: 'Components/Suggester',
@@ -27,6 +27,8 @@ async function getReferentiel(name) {
 			return fetch(
 				'https://inseefr.github.io/Lunatic/storybook/communes-2019.json'
 			).then((r) => r.json());
+		case 'nomenclature-multiple':
+			return fetch('/nomenclature-multiple.json').then((r) => r.json());
 		default:
 			throw new Error(`Unkonw référentiel ${name}`);
 	}
@@ -50,4 +52,12 @@ Simple.args = {
 		control: 'boolean',
 		defaultValue: true,
 	},
+};
+
+export const MultipleResponses = Template.bind({});
+MultipleResponses.args = {
+	id: 'suggester-multiple',
+	source: multipleResponses,
+	getReferentiel,
+	autoSuggesterLoading: true,
 };
