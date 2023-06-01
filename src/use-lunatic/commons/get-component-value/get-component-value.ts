@@ -114,6 +114,13 @@ function collecteComponentResponse({
 			map,
 		});
 	}
+	if ('responses' in component && component.componentType === 'Suggester') {
+		return collecteArrayResponses({
+			components: component.responses as LunaticComponentDefinition[],
+			variables,
+			map,
+		});
+	}
 	if ('responses' in component) {
 		// TODO : Understand this cause types doesn't match
 		return collecteArrayResponses({
