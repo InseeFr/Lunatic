@@ -23,6 +23,7 @@ function LunaticSuggester({
 	management,
 	response,
 	responses,
+	displayResponses,
 	getSuggesterStatus,
 }: LunaticComponentProps<'Suggester'>) {
 	// ToDo :
@@ -34,10 +35,20 @@ function LunaticSuggester({
 	const onChange = useOnHandleChange({
 		handleChange,
 		response,
-		responses,
 		value,
 	});
-	console.log('value', value);
+	const onChange2 = (
+		responses: Array<{ id: string; response: { name: string } }>
+	) => {
+		if (responses) {
+			responses?.forEach((r) => {
+				console.log('r', r);
+				useOnHandleChange(handleChange, r.response, r.id);
+			});
+		} else {
+			useOnHandleChange(handleChange, response, value);
+		}
+	};
 	return (
 		<LunaticComponent
 			id={id}
@@ -61,6 +72,7 @@ function LunaticSuggester({
 				value={value}
 				errors={errors}
 				label={label}
+				displayResponses={displayResponses}
 				getSuggesterStatus={getSuggesterStatus}
 			/>
 		</LunaticComponent>
