@@ -31,6 +31,7 @@ const VTL_ATTRIBUTES = [
 	'header.label',
 	'questionContext',
 	'questionInformation',
+	'displayResponses',
 ];
 
 type CrawlArgs = Pick<LunaticState, 'executeExpression'> &

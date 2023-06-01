@@ -24,6 +24,7 @@ type Props = {
 	searching?: (s: string | null) => Promise<{ results: ComboBoxOption[] }>;
 	label?: ReactNode;
 	description?: ReactNode;
+	displayResponses: ReactNode;
 	errors?: Record<string, LunaticError[]>;
 };
 
@@ -38,6 +39,7 @@ function Suggester({
 	id,
 	searching,
 	label,
+	displayResponses,
 	description,
 	errors,
 }: Props) {
@@ -66,7 +68,7 @@ function Suggester({
 		[searching, onSelect]
 	);
 
-	const defaultSearch = getSearch(search, value);
+	const defaultSearch = getSearch(search, displayResponses);
 
 	return (
 		<ComboBox
@@ -89,9 +91,9 @@ function Suggester({
 	);
 }
 
-function getSearch(search: string, value: string | null) {
-	if (!search.length && value) {
-		return value;
+function getSearch(search: string, displayResponses: ReactNode | null) {
+	if (!search.length && displayResponses) {
+		return displayResponses;
 	}
 
 	return '';
