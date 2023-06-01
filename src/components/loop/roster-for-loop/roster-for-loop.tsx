@@ -25,7 +25,7 @@ function RosterforLoop({
 	management,
 	errors,
 	missingResponse,
-	description,	
+	description,
 }: LunaticComponentProps<'RosterForLoop'>) {
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
@@ -71,43 +71,43 @@ function RosterforLoop({
 	if (nbRows > 0) {
 		return (
 			<>
-			<LunaticComponent
-			id={id}
-			label={label}
-			declarations={declarations}
-			missing={missing}
-			missingResponse={missingResponse}
-			management={management}
-			description={description}
-			handleChange={handleChange}
-		>
-			<RosterTable
+				<LunaticComponent
 					id={id}
-					components={components}
-					nbRows={nbRows}
-					executeExpression={executeExpression}
-					header={header}
-					handleChange={handleChangeLoop}
-					value={valueMap}
-					management={management}
+					label={label}
+					declarations={declarations}
 					missing={missing}
-					shortcut={shortcut}
-					errors={errors}
-				/>
-			<Errors errors={errors} activeId={id} />
-		</LunaticComponent>
-		{showButtons && (
-			<>
-				<HandleRowButton onClick={addRow} disabled={nbRows === max}>
-					{D.DEFAULT_BUTTON_ADD}
-				</HandleRowButton>
-				<HandleRowButton onClick={removeRow} disabled={nbRows === min}>
-					{D.DEFAULT_BUTTON_REMOVE}
-				</HandleRowButton>
+					missingResponse={missingResponse}
+					management={management}
+					description={description}
+					handleChange={handleChange}
+				>
+					<RosterTable
+						id={id}
+						components={components}
+						nbRows={nbRows}
+						executeExpression={executeExpression}
+						header={header}
+						handleChange={handleChangeLoop}
+						value={valueMap}
+						management={management}
+						missing={missing}
+						shortcut={shortcut}
+						errors={errors}
+					/>
+					<Errors errors={errors} activeId={id} />
+				</LunaticComponent>
+				{showButtons && (
+					<>
+						<HandleRowButton onClick={addRow} disabled={nbRows === max}>
+							{D.DEFAULT_BUTTON_ADD}
+						</HandleRowButton>
+						<HandleRowButton onClick={removeRow} disabled={nbRows === min}>
+							{D.DEFAULT_BUTTON_REMOVE}
+						</HandleRowButton>
+					</>
+				)}
 			</>
-		)}
-		</>
-	)
+		);
 	}
 	return null;
 }
