@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { ComboBoxOption } from '../../commons/components/combo-box/combo-box.type';
+import { LunaticComponentProps } from '../../type';
 import Suggester from '../html/suggester';
 import createSearching from '../searching';
 import CheckStore from './check-store';
 import { SuggesterStatus } from './suggester-status';
-import { LunaticComponentProps } from '../../type';
 
 type Props = Pick<
 	LunaticComponentProps<'Suggester'>,
@@ -20,7 +21,7 @@ type Props = Pick<
 	| 'getSuggesterStatus'
 	| 'errors'
 > & {
-	onSelect: (v: string | null) => void;
+	onSelect: (v: ComboBoxOption | null) => void;
 };
 
 export function IDBSuggester({

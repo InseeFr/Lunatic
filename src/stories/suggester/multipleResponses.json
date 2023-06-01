@@ -1,0 +1,99 @@
+{
+	"maxPage": "2",
+	"suggesters": [
+		{
+			"name": "nomenclature-multiple",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 2
+				},
+				{ "name": "id" }
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w.]+" }
+			},
+			"version": "1"
+		}
+	],
+	"components": [
+		{
+			"id": "sugg1",
+			"componentType": "Suggester",
+			"mandatory": false,
+			"label": {
+				"value": "\" Sélectionner un produit\"",
+				"type": "VTL|MD"
+			},
+			"storeName": "nomenclature-multiple",
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"responses": [
+				{
+					"id": "id",
+					"response": { "name": "ID" }
+				},
+
+				{
+					"id": "label",
+					"response": { "name": "LABEL" }
+				},
+				{
+					"id": "unit",
+					"response": { "name": "UNIT" }
+				}
+			],
+			"page": "1"
+		},
+		{
+			"id": "kk",
+			"componentType": "Sequence",
+			"label": { "value": "\"END\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "2"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "ID",
+			"componentRef": "sugg1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "LABEL",
+			"componentRef": "sugg1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "UNIT",
+			"componentRef": "sugg1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

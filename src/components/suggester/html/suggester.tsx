@@ -1,21 +1,21 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
+import D from '../../../i18n';
+import { LunaticError } from '../../../use-lunatic/type';
+import { voidFunction } from '../../../utils/function';
 import {
 	ComboBox,
-	DefaultOptionRenderer,
 	DefaultLabelRenderer,
+	DefaultOptionRenderer,
 	createCustomizableLunaticField,
 } from '../../commons';
-import './default-style.scss';
-import { voidFunction } from '../../../utils/function';
-import { LunaticError } from '../../../use-lunatic/type';
 import { ComboBoxOption } from '../../commons/components/combo-box/combo-box.type';
 import { LunaticComponentProps } from '../../type';
-import D from '../../../i18n';
+import './default-style.scss';
 
 type Props = {
 	className?: string;
 	placeholder?: string;
-	onSelect?: (s: string | null) => void;
+	onSelect?: (s: ComboBoxOption | null) => void;
 	value: string | null;
 	labelRenderer: LunaticComponentProps<'Suggester'>['labelRenderer'];
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
@@ -43,10 +43,10 @@ function Suggester({
 }: Props) {
 	const [search, setSearch] = useState('');
 	const [options, setOptions] = useState<Array<ComboBoxOption>>([]);
-
 	const handleSelect = useCallback(
-		function (id: string | null) {
-			onSelect(id ? id : null);
+		function (option: ComboBoxOption | null) {
+			// CHannge to onSelect({id, label, info})
+			onSelect(option ? option : null);
 		},
 		[onSelect]
 	);

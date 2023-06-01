@@ -124,6 +124,7 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentRadioType)
 	| (ComponentTypeBase & ComponentFilterDescriptionType)
 	| (ComponentTypeBase & ComponentDropdownType)
+	| (ComponentTypeBase & ComponentSuggesterType)
 	| (ComponentTypeBase & ComponentPairWiseLinksType)
 	| (ComponentTypeBase & ComponentRoundaboutType)
 	| (ComponentTypeBase & ComponentSuggesterType)
@@ -251,6 +252,12 @@ export type ComponentDropdownType = {
 	options: { value: string; label: LabelType }[];
 	response: ResponseType;
 	missingResponse?: ResponseType;
+};
+
+export type ComponentSuggesterType = {
+	componentType: 'Suggester';
+	response?: ResponseType;
+	responses?: Array<{ id: string; response: ResponseType }>;
 };
 
 export type ComponentFilterDescriptionType = {
