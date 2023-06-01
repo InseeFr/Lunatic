@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+import { ComboBoxOption } from '../commons/components/combo-box/combo-box.type';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { LunaticComponentProps } from '../type';
@@ -32,23 +34,19 @@ function LunaticSuggester({
 	 * onChange(id) -> onChange({ code: '', label: '', info: '' }) -> onSelect in subComponent
 	 * useOnHandleChange -> update to handleChange on 3 response REPONSENAME (historical value i.e the code), REPONSENAME_LABEL, REPONSENAME_INFO
 	 */
-	const onChange = useOnHandleChange({
-		handleChange,
-		response,
-		value,
-	});
-	const onChange2 = (
-		responses: Array<{ id: string; response: { name: string } }>
-	) => {
-		if (responses) {
-			responses?.forEach((r) => {
-				console.log('r', r);
-				useOnHandleChange(handleChange, r.response, r.id);
-			});
-		} else {
-			useOnHandleChange(handleChange, response, value);
-		}
-	};
+	const onChange = useCallback(
+		(option: ComboBoxOption) => {
+			if (responses) {
+				responses.forEach((r) => {
+					if (value[r.id] != option[r.id]) {
+						handleChange(r.response, option[r.id]);
+					}
+				});
+			}
+		},
+		[handleChange, responses, value]
+	);
+
 	return (
 		<LunaticComponent
 			id={id}
@@ -67,6 +65,7 @@ function LunaticSuggester({
 				labelRenderer={labelRenderer}
 				idbVersion={idbVersion}
 				onSelect={onChange}
+				responses={responses}
 				disabled={disabled}
 				id={id}
 				value={value}
