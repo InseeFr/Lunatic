@@ -40,6 +40,7 @@ export function IDBSuggester({
 	displayResponses,
 	getSuggesterStatus,
 	errors,
+	responses,
 }: Props) {
 	const [store, setStore] = useState(undefined);
 
@@ -78,6 +79,7 @@ export function IDBSuggester({
 					displayResponses={displayResponses}
 					description={description}
 					errors={errors}
+					responses={responses}
 				/>
 			</CheckStore>
 		</SuggesterStatus>
