@@ -18,6 +18,7 @@ type Props = Pick<
 	| 'value'
 	| 'label'
 	| 'description'
+	| 'displayResponses'
 	| 'getSuggesterStatus'
 	| 'errors'
 > & {
@@ -36,11 +37,12 @@ export function IDBSuggester({
 	value,
 	label,
 	description,
+	displayResponses,
 	getSuggesterStatus,
 	errors,
 }: Props) {
 	const [store, setStore] = useState(undefined);
-	
+
 	const searching = useMemo(
 		function () {
 			if (store) {
@@ -73,6 +75,7 @@ export function IDBSuggester({
 					disabled={disabled}
 					value={value}
 					label={label}
+					displayResponses={displayResponses}
 					description={description}
 					errors={errors}
 				/>
