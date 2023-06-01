@@ -33,9 +33,6 @@
 				"value": "true",
 				"type": "VTL"
 			},
-			"response": {
-				"name": "ID"
-			},
 			"responses": [
 				{
 					"id": "id",

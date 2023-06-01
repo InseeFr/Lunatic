@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import D from '../../../i18n';
 import { LunaticError } from '../../../use-lunatic/type';
 import { voidFunction } from '../../../utils/function';
@@ -36,6 +36,7 @@ function Suggester({
 	optionRenderer = DefaultOptionRenderer,
 	value,
 	disabled,
+	responses,
 	id,
 	searching,
 	label,
@@ -45,14 +46,15 @@ function Suggester({
 }: Props) {
 	const [search, setSearch] = useState('');
 	const [options, setOptions] = useState<Array<ComboBoxOption>>([]);
+
 	const handleSelect = useCallback(
 		function (option: ComboBoxOption | null) {
-			// CHannge to onSelect({id, label, info})
 			onSelect(option ? option : null);
 		},
 		[onSelect]
 	);
 
+	/*UserInput*/
 	const handleChange = useCallback(
 		async function (search: string | null) {
 			if (search && typeof searching === 'function') {
@@ -67,9 +69,12 @@ function Suggester({
 		},
 		[searching, onSelect]
 	);
-
-	const defaultSearch = getSearch(search, displayResponses);
-
+	console.log('search', search);
+	useEffect(() => {
+		const newSearch = getDisplayValue(responses, value);
+		console.log('newSearch', newSearch);
+		setSearch(newSearch);
+	}, [responses, value]);
 	return (
 		<ComboBox
 			id={id}
@@ -80,7 +85,7 @@ function Suggester({
 			editable={true}
 			onSelect={handleSelect}
 			value={value}
-			search={defaultSearch}
+			search={search}
 			optionRenderer={optionRenderer}
 			labelRenderer={labelRenderer}
 			placeholder={placeholder}
@@ -91,11 +96,14 @@ function Suggester({
 	);
 }
 
-function getSearch(search: string, displayResponses: ReactNode | null) {
-	if (!search.length && displayResponses) {
-		return displayResponses;
+function getDisplayValue(responses: any, value: any) {
+	if (responses) {
+		const responseId = responses.find((r) => r.id === 'id').response.name;
+		const responseLabel = responses.find((r) => r.id === 'label').response.name;
+		return value[responseId]
+			? `${value[responseId]} - ${value[responseLabel]}`
+			: '';
 	}
-
 	return '';
 }
 
