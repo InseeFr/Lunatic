@@ -7,6 +7,8 @@ type Props = {
 };
 
 function getContent(option: Props['option'], search: Props['search']) {
+	console.log('option : ', option);
+	console.log('search : ', search);
 	if (option) {
 		const { id, value, label } = option;
 		return label ? `${id || value} - ${label}` : id || value;
@@ -18,6 +20,9 @@ function getContent(option: Props['option'], search: Props['search']) {
 }
 
 function DefaultLabelRenderer({ option, placeholder, search }: Props) {
+	console.log('option : ', option);
+	console.log('search : ', search);
+	console.log('placeholder', placeholder);
 	const content = getContent(option, search);
 	if (content) {
 		return <span className="selection">{content}</span>;

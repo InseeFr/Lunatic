@@ -40,7 +40,7 @@ export function IDBSuggester({
 	errors,
 }: Props) {
 	const [store, setStore] = useState(undefined);
-
+	
 	const searching = useMemo(
 		function () {
 			if (store) {
