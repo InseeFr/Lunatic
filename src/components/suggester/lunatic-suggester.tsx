@@ -37,6 +37,7 @@ function LunaticSuggester({
 		responses,
 		value,
 	});
+	console.log('value', value);
 	return (
 		<LunaticComponent
 			id={id}
