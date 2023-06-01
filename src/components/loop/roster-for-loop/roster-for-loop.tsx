@@ -1,11 +1,7 @@
-import React, { useState, useCallback } from 'react';
-import {
-	DeclarationsBeforeText,
-	DeclarationsAfterText,
-	DeclarationsDetachable,
-} from '../../declarations';
+import { useState, useCallback } from 'react';
+import { createCustomizableLunaticField, Errors } from '../../commons';
+import LunaticComponent from '../../commons/components/lunatic-component-with-label';
 import RosterTable from './roster-table';
-import { createCustomizableLunaticField } from '../../commons';
 import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
 import getInitLength from '../commons/get-init-length';
@@ -28,6 +24,8 @@ function RosterforLoop({
 	id,
 	management,
 	errors,
+	missingResponse,
+	description,	
 }: LunaticComponentProps<'RosterForLoop'>) {
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
@@ -73,16 +71,17 @@ function RosterforLoop({
 	if (nbRows > 0) {
 		return (
 			<>
-				<DeclarationsBeforeText declarations={declarations} id={id} />
-				<div
-					aria-label={`rosterforloop-${id}`}
-				    className="rosterforloop-lunatic"
-				    id={`rosterforloop-${id}`}
-				>
-					{label}
-				</div>
-				<DeclarationsAfterText declarations={declarations} id={id} />
-				<RosterTable
+			<LunaticComponent
+			id={id}
+			label={label}
+			declarations={declarations}
+			missing={missing}
+			missingResponse={missingResponse}
+			management={management}
+			description={description}
+			handleChange={handleChange}
+		>
+			<RosterTable
 					id={id}
 					components={components}
 					nbRows={nbRows}
@@ -95,19 +94,20 @@ function RosterforLoop({
 					shortcut={shortcut}
 					errors={errors}
 				/>
-				<DeclarationsDetachable declarations={declarations} id={id} />
-				{showButtons && (
-					<>
-						<HandleRowButton onClick={addRow} disabled={nbRows === max}>
-							{D.DEFAULT_BUTTON_ADD}
-						</HandleRowButton>
-						<HandleRowButton onClick={removeRow} disabled={nbRows === min}>
-							{D.DEFAULT_BUTTON_REMOVE}
-						</HandleRowButton>
-					</>
-				)}
+			<Errors errors={errors} activeId={id} />
+		</LunaticComponent>
+		{showButtons && (
+			<>
+				<HandleRowButton onClick={addRow} disabled={nbRows === max}>
+					{D.DEFAULT_BUTTON_ADD}
+				</HandleRowButton>
+				<HandleRowButton onClick={removeRow} disabled={nbRows === min}>
+					{D.DEFAULT_BUTTON_REMOVE}
+				</HandleRowButton>
 			</>
-		);
+		)}
+		</>
+	)
 	}
 	return null;
 }
