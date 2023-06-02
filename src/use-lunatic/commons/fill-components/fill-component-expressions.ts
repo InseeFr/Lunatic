@@ -31,6 +31,7 @@ const VTL_ATTRIBUTES = [
 	'questionContext',
 	'questionInformation',
 	'displayResponses',
+	'dynamicUnit',
 ];
 
 type CrawlArgs = Pick<LunaticState, 'executeExpression'> &
