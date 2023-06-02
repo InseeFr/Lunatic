@@ -40,6 +40,9 @@ function LunaticSuggester({
 	const onChange = useCallback(
 		(option: ComboBoxOption) => {
 			if (responses) {
+				console.log('ON CHANGE - responses', responses);
+				console.log('ON CHANGE - option', option);
+				console.log('ON CHANGE - value', value);
 				responses.forEach((r) => {
 					if (value[r.id] != option[r.id]) {
 						handleChange(r.response, option[r.id]);

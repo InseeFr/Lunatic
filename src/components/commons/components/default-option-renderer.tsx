@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import { ReactNode } from 'react';
 import { SuggesterOption } from '../../type';
 
 type Props = {

@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
 import D from '../../../i18n';
 import { LunaticError } from '../../../use-lunatic/type';
 import { voidFunction } from '../../../utils/function';
@@ -57,7 +57,7 @@ function Suggester({
 		[onSelect]
 	);
 
-	/*UserInput*/
+	/* UserInput */
 	const handleChange = useCallback(
 		async function (search: string | null) {
 			if (search && typeof searching === 'function') {
@@ -72,10 +72,8 @@ function Suggester({
 		},
 		[searching, onSelect]
 	);
-	useEffect(() => {
-		const newSearch = getDisplayValue(responses, value);
-		setSearch(newSearch);
-	}, [responses, value]);
+
+	const defaultSearch = getSearch(responses, search, value);
 
 	return (
 		<ComboBox
@@ -87,7 +85,7 @@ function Suggester({
 			editable={true}
 			onSelect={handleSelect}
 			value={value}
-			search={search}
+			search={defaultSearch}
 			optionRenderer={optionRenderer}
 			labelRenderer={labelRenderer}
 			placeholder={placeholder}
@@ -107,6 +105,23 @@ function getDisplayValue(responses: any, value: any) {
 			: '';
 	}
 	return '';
+}
+
+function getSearch(
+	responses: any,
+	search: string,
+	value: Object | string | null
+) {
+	if (responses && typeof value === 'object') {
+		const displayValue = getDisplayValue(responses, value);
+		return displayValue;
+	} else {
+		if (typeof value === 'string' && !search.length && value) {
+			return value;
+		}
+
+		return '';
+	}
 }
 
 export default createCustomizableLunaticField(Suggester, 'Suggester');
