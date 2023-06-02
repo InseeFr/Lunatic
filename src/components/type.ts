@@ -87,6 +87,10 @@ type ComponentPropsByType = {
 		iterations?: number;
 		components: LunaticComponentDefinition[];
 		executeExpression: LunaticState['executeExpression'];
+		getSuggesterStatus: (name: string) => {
+			status: SuggesterStatus;
+			timestamp: number;
+		};
 		value: Record<string, unknown[]>;
 		header?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
@@ -96,6 +100,10 @@ type ComponentPropsByType = {
 		iterations?: number;
 		components: LunaticComponentDefinition[];
 		executeExpression: LunaticState['executeExpression'];
+		getSuggesterStatus: (name: string) => {
+			status: SuggesterStatus;
+			timestamp: number;
+		};
 		value: Record<string, unknown[]>;
 		header?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;

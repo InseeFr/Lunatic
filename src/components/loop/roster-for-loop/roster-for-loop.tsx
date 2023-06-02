@@ -1,12 +1,12 @@
 import { useCallback, useState } from 'react';
-import { createCustomizableLunaticField, Errors } from '../../commons';
-import LunaticComponent from '../../commons/components/lunatic-component-with-label';
-import RosterTable from './roster-table';
-import HandleRowButton from '../commons/handle-row-button';
-import D from '../../../i18n';
-import getInitLength from '../commons/get-init-length';
-import { LunaticComponentProps } from '../../type';
 import { useRefSync } from '../../../hooks/use-ref-sync';
+import D from '../../../i18n';
+import { Errors, createCustomizableLunaticField } from '../../commons';
+import LunaticComponent from '../../commons/components/lunatic-component-with-label';
+import { LunaticComponentProps } from '../../type';
+import getInitLength from '../commons/get-init-length';
+import HandleRowButton from '../commons/handle-row-button';
+import RosterTable from './roster-table';
 
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
@@ -19,6 +19,7 @@ function RosterforLoop({
 	label,
 	components,
 	executeExpression,
+	getSuggesterStatus,
 	header,
 	missing,
 	id,
@@ -32,7 +33,12 @@ function RosterforLoop({
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [nbRows, setNbRows] = useState(() => getInitLength(valueMap));
 	const showButtons = min && max && min !== max;
+	/**
+	 * ToDo : perf by row
+	 */
+	/* disable improve perf by cell
 	const valueMapRef = useRefSync(valueMap);
+	*/
 	const nbRowsRef = useRefSync(nbRows);
 
 	const addRow = useCallback(
@@ -50,11 +56,11 @@ function RosterforLoop({
 			value: unknown,
 			args: { index: number; [k: string]: unknown }
 		) {
-			const v = valueMapRef.current[response.name];
+			const v = valueMap[response.name];
 			v[args.index] = value;
 			handleChange(response, v, { loop: true, length: nbRowsRef.current }); // TODO: a retaper pour déplacer cette compléxité
 		},
-		[handleChange, nbRowsRef, valueMapRef]
+		[handleChange, nbRowsRef, valueMap]
 	);
 
 	const removeRow = useCallback(
@@ -85,6 +91,7 @@ function RosterforLoop({
 					handleChange={handleChange}
 				>
 					<RosterTable
+						getSuggesterStatus={getSuggesterStatus}
 						id={id}
 						components={components}
 						nbRows={nbRows}

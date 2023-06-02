@@ -1,6 +1,6 @@
 {
 	"cleaning": {},
-		"suggesters": [
+	"suggesters": [
 		{
 			"name": "nomenclature-multiple",
 			"fields": [
@@ -33,6 +33,7 @@
 		},
 		{
 			"variableType": "COLLECTED",
+
 			"values": {
 				"COLLECTED": [null],
 				"EDITED": [null],
@@ -63,6 +64,40 @@
 				"PREVIOUS": [null]
 			},
 			"name": "UNIT"
+		},
+		{
+			"variableType": "COLLECTED",
+
+			"values": {
+				"COLLECTED": [null],
+				"EDITED": [null],
+				"INPUTED": [null],
+				"FORCED": [null],
+				"PREVIOUS": [null]
+			},
+			"name": "ID_2"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [null],
+				"EDITED": [null],
+				"INPUTED": [null],
+				"FORCED": [null],
+				"PREVIOUS": [null]
+			},
+			"name": "LABEL_2"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [null],
+				"EDITED": [null],
+				"INPUTED": [null],
+				"FORCED": [null],
+				"PREVIOUS": [null]
+			},
+			"name": "UNIT_2"
 		},
 		{
 			"variableType": "COLLECTED",
@@ -100,76 +135,41 @@
 	],
 	"components": [
 		{
-			"componentType": "Sequence",
-			"hierarchy": {
-				"sequence": {
-					"id": "la6i18y5",
-					"page": "1",
-					"label": {
-						"type": "VTL|MD",
-						"value": "\"I - \" || \"Votre production industrielle\""
-					}
-				}
-			},
-			"conditionFilter": { "type": "VTL", "value": "true" },
-			"id": "la6i18y5",
+			"id": "sugg1",
 			"page": "1",
+			"componentType": "Suggester",
+			"mandatory": false,
 			"label": {
-				"type": "VTL|MD",
-				"value": "\"I - \" || \"Votre production industrielle\""
+				"value": "\" Sélectionner un produit\"",
+				"type": "VTL|MD"
 			},
-			"declarations": [
+			"storeName": "nomenclature-multiple",
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"responses": [
 				{
-					"declarationType": "HELP",
-					"id": "la6i18y5-lh7swor9",
-					"label": {
-						"type": "VTL|MD",
-						"value": "Dans cette séquence, nous vous demandons de renseigner vos ventes de produits et services industriels."
-					},
-					"position": "AFTER_QUESTION_TEXT"
+					"id": "id",
+					"response": { "name": "ID_2" }
+				},
+
+				{
+					"id": "label",
+					"response": { "name": "LABEL_2" }
 				},
 				{
-					"declarationType": "HELP",
-					"id": "la6i18y5-lh7szia5",
-					"label": {
-						"type": "VTL|MD",
-						"value": "Dans un premier temps nous allons vous demander de ventiler vos ventes de produits et de services industriels selon la ou les modalités de fabrication (en compte propre, en sous-traitace ou comme donneur d’ordre)"
-					},
-					"position": "AFTER_QUESTION_TEXT"
-				},
-				{
-					"declarationType": "HELP",
-					"id": "la6i18y5-lh7t8b2q",
-					"label": {
-						"type": "VTL|MD",
-						"value": "Dans un second temps, nous vous demanderons de renseigner vos ventes de produits ou services industriels, pour ceux que vous avez rensigné les années précédentes"
-					},
-					"position": "AFTER_QUESTION_TEXT"
-				},
-				{
-					"declarationType": "HELP",
-					"id": "la6i18y5-lh7t4nq9",
-					"label": {
-						"type": "VTL|MD",
-						"value": "Dans un trosième temps, vous aurez la possibilité, le cas échéant, de rajouter des produits ou services industriels."
-					},
-					"position": "AFTER_QUESTION_TEXT"
-				},
-				{
-					"declarationType": "HELP",
-					"id": "la6i18y5-lh7tftjn",
-					"label": {
-						"type": "VTL|MD",
-						"value": "\"**Attention : Si vous revendez des produits que vous n’avez pas fabriqué (activité de négoce), les ventes affairantes vous serons demandées dans une séquence ultérieure**\""
-					},
-					"position": "AFTER_QUESTION_TEXT"
+					"id": "unit",
+					"response": { "name": "UNIT_2" }
 				}
 			]
 		},
 		{
 			"componentType": "RosterForLoop",
 			"bindingDependencies": [
-			    "ID","LABEL","UNIT",
+				"ID",
+				"LABEL",
+				"UNIT",
 				"facturation1",
 				"LESANNESPR12",
 				"LESANNESPR13"
@@ -266,13 +266,20 @@
 				}
 			},
 			"header": [
-				{ "label": { "type": "VTL|MD", "value": "" } },
-				{ "label": { "type": "VTL|MD", "value": "facturations" } },
-				{ "label": { "type": "VTL|MD", "value": "quantités facturées" } },
+				{ "label": { "type": "VTL|MD", "value": "\"Produits\"" } },
+				{ "label": { "type": "VTL|MD", "value": "\"facturations\"" } },
+				{ "label": { "type": "VTL|MD", "value": "\"quantités facturées\"" } },
 				{
-					"label": { "type": "VTL|MD", "value": "quantités totales fabriquées" }
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"quantités totales fabriquées\""
+					}
 				}
 			],
+			"lines": {
+				"min": { "value": 1, "type": "VTL" },
+				"max": { "value": 300, "type": "VTL" }
+			},
 			"conditionFilter": { "type": "VTL", "value": "true" },
 			"id": "lh7pozh6",
 			"page": "2",
@@ -280,81 +287,76 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 1. \" || \"Les années précédentes, vous avez déclaré fabriquer les produits ci-dessous, veuillez remplir les informations correspondantes pour l’année 2022\""
 			},
-			"components": 
-				[
-							{
-			"id": "sugg1",
-			"componentType": "Suggester",
-			"mandatory": false,
-			"label": {
-				"value": "\" Sélectionner un produit\"",
-				"type": "VTL|MD"
-			},
-			"storeName": "nomenclature-multiple",
-			"conditionFilter": {
-				"value": "true",
-				"type": "VTL"
-			},
-			"responses": [
+			"components": [
 				{
-					"id": "id",
-					"response": { "name": "ID" }
+					"id": "sugg1",
+					"componentType": "Suggester",
+					"mandatory": false,
+					"label": {
+						"value": "\" Sélectionner un produit\"",
+						"type": "VTL|MD"
+					},
+					"storeName": "nomenclature-multiple",
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"responses": [
+						{
+							"id": "id",
+							"response": { "name": "ID" }
+						},
+
+						{
+							"id": "label",
+							"response": { "name": "LABEL" }
+						},
+						{
+							"id": "unit",
+							"response": { "name": "UNIT" }
+						}
+					]
 				},
 				{
-					"id": "label",
-					"response": { "name": "LABEL" }
+					"componentType": "InputNumber",
+					"dynamicUnit": {
+						"type": "VTL",
+						"value": "\"kilo\" || \"€\""
+					},
+					"bindingDependencies": ["facturation1", "UNIT"],
+					"min": 0,
+					"max": 10000000,
+					"response": { "name": "facturation1" },
+					"decimals": 0,
+					"id": "lh7pozh6-QOP-lh8v4mbu"
 				},
 				{
-					"id": "unit",
-					"response": { "name": "UNIT" }
+					"componentType": "InputNumber",
+					"dynamicUnit": {
+						"type": "VTL|MD",
+						"value": "UNIT"
+					},
+					"bindingDependencies": ["LESANNESPR12"],
+					"min": 0,
+					"max": 100000000,
+					"response": { "name": "LESANNESPR12" },
+					"decimals": 0,
+					"id": "lh7pozh6-QOP-lh8viuae"
+				},
+				{
+					"componentType": "InputNumber",
+					"dynamicUnit": {
+						"type": "VTL|MD",
+						"value": "UNIT"
+					},
+					"bindingDependencies": ["LESANNESPR13"],
+					"min": 0,
+					"max": 1000000000,
+					"response": { "name": "LESANNESPR13" },
+					"decimals": 0,
+					"id": "lh7pozh6-QOP-lh8v3u73"
 				}
 			],
-			"displayResponses": {
-				"value": "if (isnull(ID)) then \"\" else ID || \" - \" || LABEL",
-				"type": "VTL"
-			}
-		},
-					{
-						"componentType": "InputNumber",
-						"dynamicUnit": {
-							"type": "VTL|MD",
-							"value": "UNIT"
-						},
-						"bindingDependencies": ["facturation1", "UNIT"],
-						"min": 0,
-						"max": 10000000,
-						"response": { "name": "facturation1" },
-						"decimals": 0,
-						"id": "lh7pozh6-QOP-lh8v4mbu"
-					},
-					{
-						"componentType": "InputNumber",
-						"dynamicUnit": {
-							"type": "VTL|MD",
-							"value": "\"kilo\" || \"€\""
-						},
-						"bindingDependencies": ["LESANNESPR12"],
-						"min": 0,
-						"max": 100000000,
-						"response": { "name": "LESANNESPR12" },
-						"decimals": 0,
-						"id": "lh7pozh6-QOP-lh8viuae"
-					},
-					{
-						"componentType": "InputNumber",
-						"dynamicUnit": {
-							"type": "VTL|MD",
-							"value": "\"kilo\" || \"€\""
-						},
-						"bindingDependencies": ["LESANNESPR13"],
-						"min": 0,
-						"max": 1000000000,
-						"response": { "name": "LESANNESPR13" },
-						"decimals": 0,
-						"id": "lh7pozh6-QOP-lh8v3u73"
-					}
-				]
-			,
 			"mandatory": false
 		},
 		{

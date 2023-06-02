@@ -1,10 +1,12 @@
 import { memo, useCallback } from 'react';
-import { Tr, Td } from '../../commons/components/html-table';
+import { Td, Tr } from '../../commons/components/html-table';
 
+import {
+	LunaticComponentDefinition,
+	LunaticState,
+} from '../../../use-lunatic/type';
 import { OrchestratedComponent } from '../../commons';
 import { LunaticBaseProps } from '../../type';
-import { LunaticComponentDefinition } from '../../../use-lunatic/type';
-import { useDidChange } from '../../../hooks/use-did-change';
 
 type Props = {
 	id: string;
@@ -20,6 +22,7 @@ type Props = {
 	missing?: LunaticBaseProps['missing'];
 	management?: LunaticBaseProps['management'];
 	executeExpression: LunaticBaseProps['executeExpression'];
+	getSuggesterStatus: LunaticState['getSuggesterStatus'];
 	errors?: LunaticBaseProps['errors'];
 	components: LunaticComponentDefinition[];
 	preferences?: LunaticBaseProps['preferences'];
@@ -40,6 +43,7 @@ function Row({
 	management,
 	preferences,
 	executeExpression,
+	getSuggesterStatus,
 	errors,
 	disabled,
 }: Props) {
@@ -59,25 +63,46 @@ function Row({
 	return (
 		<Tr id={id} row={rowIndex}>
 			{components.map(function (component) {
-				if (!('response' in component)) {
+				if (!('response' in component || 'responses' in component)) {
 					return null;
 				}
-				const { response, id } = component;
+
+				const { id } = component;
 				const idComponent = `${id}-${rowIndex}`;
-				let value = undefined;
 				const key = `${id}-${rowIndex}`;
-				if (response) {
-					const { name } = response;
-					if (name in valueMap) {
-						const v = valueMap[name];
-						if (Array.isArray(v)) {
-							value = v[rowIndex] || '';
-						} else {
-							value = '';
+				let value;
+
+				if ('responses' in component) {
+					value = {};
+					const { responses } = component;
+					responses?.forEach((res) => {
+						const { name } = res?.response;
+						if (name in valueMap) {
+							const v = valueMap[name];
+							if (Array.isArray(v)) {
+								value[name] = v[rowIndex] || '';
+							} else {
+								value[name] = '';
+							}
+						}
+					});
+				}
+				if ('response' in component) {
+					const { response } = component;
+					if (response) {
+						const { name } = response;
+						if (name in valueMap) {
+							const v = valueMap[name];
+							if (Array.isArray(v)) {
+								value = v[rowIndex] || '';
+							} else {
+								value = '';
+							}
 						}
 					}
 				}
 
+				console.log('My values', value);
 				return (
 					<RowCell
 						id={idComponent}
@@ -92,6 +117,7 @@ function Row({
 						preferences={preferences}
 						rowIndex={rowIndex}
 						executeExpression={executeExpression}
+						getSuggesterStatus={getSuggesterStatus}
 						errors={errors}
 					/>
 				);
@@ -115,6 +141,7 @@ const RowCell = memo<
 		| 'rowIndex'
 		| 'executeExpression'
 		| 'errors'
+		| 'getSuggesterStatus'
 	> & {
 		value: unknown;
 		component: LunaticComponentDefinition;
@@ -132,6 +159,7 @@ const RowCell = memo<
 		value,
 		preferences,
 		rowIndex,
+		getSuggesterStatus,
 		executeExpression,
 		errors,
 	}) => {
@@ -149,6 +177,7 @@ const RowCell = memo<
 					preferences={preferences}
 					iteration={rowIndex}
 					executeExpression={executeExpression}
+					getSuggesterStatus={getSuggesterStatus}
 					errors={errors}
 				/>
 			</Td>

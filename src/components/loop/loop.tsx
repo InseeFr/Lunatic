@@ -1,7 +1,6 @@
-import React from 'react';
+import { LunaticComponentProps } from '../type';
 import BlockForLoop from './block-for-loop';
 import RosterForLoop from './roster-for-loop';
-import { LunaticComponentProps } from '../type';
 
 const LoopTypes = {
 	rosterForLoop: 'RosterForLoop',
@@ -19,8 +18,9 @@ function Loop(
 		id,
 		components,
 		handleChange,
-		value,
 		executeExpression,
+		getSuggesterStatus,
+		value,
 		componentType,
 		header,
 		shortcut,
@@ -32,6 +32,7 @@ function Loop(
 		errors,
 		disabled,
 	} = props;
+	console.log('Props Loop', props);
 	switch (componentType) {
 		case LoopTypes.blockForLoop:
 			return (
@@ -46,6 +47,7 @@ function Loop(
 					value={value}
 					management={management}
 					executeExpression={executeExpression}
+					getSuggesterStatus={getSuggesterStatus}
 					missing={missing}
 					shortcut={shortcut}
 					features={features}
@@ -65,6 +67,7 @@ function Loop(
 					id={id}
 					components={components}
 					handleChange={handleChange}
+					getSuggesterStatus={getSuggesterStatus}
 					value={value}
 					management={management}
 					executeExpression={executeExpression}

@@ -1,9 +1,9 @@
+import { NothingToDisplay } from '../../commons';
 import { Table, Tbody } from '../../commons/components/html-table';
 import Header from '../../table/header';
-import './roster.scss';
-import { NothingToDisplay } from '../../commons';
 import { LunaticComponentProps } from '../../type';
 import RosterForLoopOrchestrator from './roster-for-loop-orchestrator';
+import './roster.scss';
 
 type Props = {
 	nbRows: number;
@@ -22,6 +22,7 @@ type Props = {
 	| 'missing'
 	| 'errors'
 	| 'disabled'
+	| 'getSuggesterStatus'
 >;
 
 const preferences = ['COLLECTED'] as ['COLLECTED'];
@@ -30,6 +31,7 @@ function RosterTable({
 	components,
 	nbRows,
 	executeExpression,
+	getSuggesterStatus,
 	id,
 	header,
 	value: valueMap,
@@ -50,6 +52,7 @@ function RosterTable({
 					nbRows={nbRows}
 					handleChange={handleChange}
 					executeExpression={executeExpression}
+					getSuggesterStatus={getSuggesterStatus}
 					valueMap={valueMap}
 					missing={missing}
 					preferences={preferences}

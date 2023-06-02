@@ -2,8 +2,8 @@ import React from 'react';
 import defaultArgTypes from '../../utils/default-arg-types';
 import Orchestrator from '../../utils/orchestrator';
 import data from './data';
-import eapQuestionnaire from './source';
 import data2 from './data2';
+import eapQuestionnaire from './source';
 import eapQuestionnaire2 from './source2';
 
 const stories = {
@@ -23,9 +23,7 @@ export const Estanpette = Template.bind({});
 async function getReferentiel(name) {
 	switch (name) {
 		case 'nomenclature-multiple':
-			return fetch(
-				'https://inseefr.github.io/Lunatic/storybook/questionnaires/EAP/prod-eap.json'
-			).then((r) => r.json());
+			return fetch('prod-eap.json').then((r) => r.json());
 		default:
 			throw new Error(`Unknown referentiel ${name}`);
 	}
