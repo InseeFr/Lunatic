@@ -32,7 +32,6 @@ function Loop(
 		errors,
 		disabled,
 	} = props;
-	console.log('Props Loop', props);
 	switch (componentType) {
 		case LoopTypes.blockForLoop:
 			return (

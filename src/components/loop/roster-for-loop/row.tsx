@@ -102,7 +102,6 @@ function Row({
 					}
 				}
 
-				console.log('My values', value);
 				return (
 					<RowCell
 						id={idComponent}

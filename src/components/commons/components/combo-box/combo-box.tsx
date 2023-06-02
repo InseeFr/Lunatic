@@ -159,7 +159,6 @@ function ComboBox({
 }
 
 function getResponseOptionValue(option: ComboBoxOption = { value: '' }) {
-	console.log('option dans getResponse', option);
 	return option.id;
 }
 

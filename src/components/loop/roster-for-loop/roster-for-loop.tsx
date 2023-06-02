@@ -57,6 +57,8 @@ function RosterforLoop({
 			args: { index: number; [k: string]: unknown }
 		) {
 			const v = valueMap[response.name];
+			// disable perf by cell
+			// const v = valueMapRef.current.[response.name];
 			v[args.index] = value;
 			handleChange(response, v, { loop: true, length: nbRowsRef.current }); // TODO: a retaper pour déplacer cette compléxité
 		},

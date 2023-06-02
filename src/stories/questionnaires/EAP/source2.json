@@ -323,7 +323,7 @@
 						"type": "VTL",
 						"value": "\"kilo\" || \"€\""
 					},
-					"bindingDependencies": ["facturation1", "UNIT"],
+					"bindingDependencies": ["facturation1"],
 					"min": 0,
 					"max": 10000000,
 					"response": { "name": "facturation1" },
@@ -333,10 +333,14 @@
 				{
 					"componentType": "InputNumber",
 					"dynamicUnit": {
-						"type": "VTL|MD",
+						"type": "VTL",
 						"value": "UNIT"
 					},
-					"bindingDependencies": ["LESANNESPR12"],
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "nvl(UNIT,\"\") <> \"\""
+					},
+					"bindingDependencies": ["LESANNESPR12", "UNIT"],
 					"min": 0,
 					"max": 100000000,
 					"response": { "name": "LESANNESPR12" },
@@ -346,8 +350,12 @@
 				{
 					"componentType": "InputNumber",
 					"dynamicUnit": {
-						"type": "VTL|MD",
+						"type": "VTL",
 						"value": "UNIT"
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "nvl(UNIT,\"\") <> \"\""
 					},
 					"bindingDependencies": ["LESANNESPR13"],
 					"min": 0,
