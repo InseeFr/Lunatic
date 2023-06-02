@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import {
 	NumberFormatValues,
 	NumericFormat,
@@ -21,14 +21,19 @@ type Props = {
 
 const InputNumberThousand = ({
 	id,
-	value,
 	onChange,
+	value,
 	disabled,
+	required,
 	labelId,
 	min,
 	max,
 	decimals,
 }: Props) => {
+	// Decimals is a number indicates the number behind the separator of decimals
+	// Computing step attribute of input according to decimal number
+	const [step] = useState(decimals ? 1 / Math.pow(10, decimals) : 1);
+
 	const handleChange = useCallback<OnValueChange>(
 		function (e) {
 			const val = e.floatValue ?? null;
@@ -40,17 +45,11 @@ const InputNumberThousand = ({
 	const isAllowed = useCallback(
 		(values: NumberFormatValues) => {
 			const { floatValue } = values;
-			if (
-				Number.isInteger(min) &&
-				Number.isInteger(max) &&
-				floatValue &&
-				min &&
-				max
-			)
-				return (floatValue >= min && floatValue <= max) || false;
+			if (Number.isInteger(max) && floatValue && max)
+				return floatValue <= max || false;
 			return true;
 		},
-		[max, min]
+		[max]
 	);
 	return (
 		<NumericFormat
@@ -58,8 +57,12 @@ const InputNumberThousand = ({
 			className={classNames({ disabled })}
 			onValueChange={handleChange}
 			value={value ?? ''}
-			aria-labbeledby={labelId}
+			min={min}
+			max={max}
+			step={step}
+			aria-labelledby={labelId}
 			disabled={disabled}
+			required={required}
 			lang="en"
 			isAllowed={isAllowed}
 			allowedDecimalSeparators={inputNumberPropsI18N.allDecimalSeparators}

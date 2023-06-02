@@ -1,6 +1,6 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import InputNumber from './input-number';
-import { describe, vi, it, expect, beforeEach } from 'vitest';
 describe('InputNumber', () => {
 	const mockOnChange = vi.fn();
 
@@ -16,7 +16,6 @@ describe('InputNumber', () => {
 				aria-labelledby="input"
 			/>
 		);
-		expect(screen.getByRole('spinbutton')).toBeInTheDocument();
 		expect(container).toMatchSnapshot();
 	});
 
@@ -27,20 +26,35 @@ describe('InputNumber', () => {
 		);
 
 		const label = screen.getByText(labelText);
-		const input = container.querySelector('input[type="number"]');
+		const input = container.querySelector('input[type="text"]');
 
 		expect(label).toBeInTheDocument();
 		expect(input).toBeInTheDocument();
 	});
 
 	it('renders with value', () => {
-		const { getByRole } = render(
+		const { container } = render(
 			<InputNumber id="number" value={10} onChange={mockOnChange} />
 		);
 
-		const input = getByRole('spinbutton');
+		const input = container.querySelector('input[type="text"]');
 
-		expect(input).toHaveValue(10);
+		expect(input).toHaveValue('10');
+	});
+
+	it('renders with big value', () => {
+		const { container } = render(
+			<InputNumber
+				id="number"
+				value={10000.45}
+				decimals={2}
+				onChange={mockOnChange}
+			/>
+		);
+
+		const input = container.querySelector('input[type="text"]');
+
+		expect(input).toHaveValue('10,000.45');
 	});
 
 	it('calls onChange with parsed value', () => {
@@ -48,7 +62,7 @@ describe('InputNumber', () => {
 			<InputNumber id="number" onChange={mockOnChange} />
 		);
 
-		const input = container.querySelector('input[type="number"]')!;
+		const input = container.querySelector('input[type="text"]')!;
 		fireEvent.change(input, { target: { value: '10' } });
 
 		expect(mockOnChange).toHaveBeenCalledTimes(1);
@@ -69,22 +83,12 @@ describe('InputNumber', () => {
 		expect(unit).toBeInTheDocument();
 	});
 
-	it('calls onChange with new value when input value changes', () => {
-		const handleChange = vi.fn();
-		const { getByRole } = render(
-			<InputNumber id="input-number-test" value={5} onChange={handleChange} />
-		);
-		const input = getByRole('spinbutton');
-		fireEvent.change(input, { target: { value: '7' } });
-		expect(handleChange).toHaveBeenCalledWith(7);
-	});
-
 	it('disables input when disabled prop is true', () => {
 		const { container } = render(
 			<InputNumber id="number" disabled onChange={mockOnChange} />
 		);
 
-		const input = container.querySelector('input[type="number"]');
+		const input = container.querySelector('input[type="text"]');
 		expect(input).toBeDisabled();
 	});
 

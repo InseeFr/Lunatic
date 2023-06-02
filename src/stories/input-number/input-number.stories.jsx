@@ -27,7 +27,7 @@ export const ThousandSeparator = Template.bind({});
 ThousandSeparator.args = {
 	id: 'input-number-thousand',
 	source: sourceThousand,
-	min: 0,
+	min: 10,
 	max: 1000000,
 	decimals: 0,
 	thousandSeparator: true,
