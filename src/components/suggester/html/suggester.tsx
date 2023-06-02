@@ -26,6 +26,8 @@ type Props = {
 	description?: ReactNode;
 	displayResponses: ReactNode;
 	errors?: Record<string, LunaticError[]>;
+	responses?: any;
+	response?: any;
 };
 
 function Suggester({
@@ -36,6 +38,7 @@ function Suggester({
 	optionRenderer = DefaultOptionRenderer,
 	value,
 	disabled,
+	response,
 	responses,
 	id,
 	searching,
@@ -69,12 +72,11 @@ function Suggester({
 		},
 		[searching, onSelect]
 	);
-	console.log('search', search);
 	useEffect(() => {
 		const newSearch = getDisplayValue(responses, value);
-		console.log('newSearch', newSearch);
 		setSearch(newSearch);
 	}, [responses, value]);
+
 	return (
 		<ComboBox
 			id={id}

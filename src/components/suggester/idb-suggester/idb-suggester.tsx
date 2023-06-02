@@ -21,6 +21,8 @@ type Props = Pick<
 	| 'displayResponses'
 	| 'getSuggesterStatus'
 	| 'errors'
+	| 'response'
+	| 'responses'
 > & {
 	onSelect: (v: ComboBoxOption | null) => void;
 };
@@ -41,6 +43,7 @@ export function IDBSuggester({
 	getSuggesterStatus,
 	errors,
 	responses,
+	response,
 }: Props) {
 	const [store, setStore] = useState(undefined);
 
@@ -80,6 +83,7 @@ export function IDBSuggester({
 					description={description}
 					errors={errors}
 					responses={responses}
+					response={response}
 				/>
 			</CheckStore>
 		</SuggesterStatus>

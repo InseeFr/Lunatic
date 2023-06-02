@@ -1,11 +1,11 @@
 import React from 'react';
 import LinksOrchestrator from './orchestrator';
+import NothingToDisplay from '../commons/components/nothing-to-display';
 import {
 	DeclarationsAfterText,
 	DeclarationsBeforeText,
 	DeclarationsDetachable,
 } from '../declarations';
-import NothingToDisplay from '../commons/components/nothing-to-display';
 import { LunaticComponentProps } from '../type';
 
 const PairwiseLinks = ({
