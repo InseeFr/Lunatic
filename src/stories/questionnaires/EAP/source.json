@@ -1,0 +1,662 @@
+{
+	"cleaning": {},
+	"variables": [
+		{
+			"variableType": "EXTERNAL",
+			"name": "UNITE_KG"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "COMMENT_QE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "facturation1"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "LESANNESPR12"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "LESANNESPR13"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "facturation2"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "LESANNESPR22"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "LESANNESPR23"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "facturation3"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "LESANNESPR32"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "LESANNESPR33"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": { "type": "VTL", "value": "true" },
+			"name": "FILTER_RESULT_LESANNESPR",
+			"inFilter": "false"
+		}
+	],
+	"components": [
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "la6i18y5",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"Votre production industrielle\""
+					}
+				}
+			},
+			"conditionFilter": { "type": "VTL", "value": "true" },
+			"id": "la6i18y5",
+			"page": "1",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"I - \" || \"Votre production industrielle\""
+			},
+			"declarations": [
+				{
+					"declarationType": "HELP",
+					"id": "la6i18y5-lh7swor9",
+					"label": {
+						"type": "VTL|MD",
+						"value": "Dans cette séquence, nous vous demandons de renseigner vos ventes de produits et services industriels."
+					},
+					"position": "AFTER_QUESTION_TEXT"
+				},
+				{
+					"declarationType": "HELP",
+					"id": "la6i18y5-lh7szia5",
+					"label": {
+						"type": "VTL|MD",
+						"value": "Dans un premier temps nous allons vous demander de ventiler vos ventes de produits et de services industriels selon la ou les modalités de fabrication (en compte propre, en sous-traitace ou comme donneur d’ordre)"
+					},
+					"position": "AFTER_QUESTION_TEXT"
+				},
+				{
+					"declarationType": "HELP",
+					"id": "la6i18y5-lh7t8b2q",
+					"label": {
+						"type": "VTL|MD",
+						"value": "Dans un second temps, nous vous demanderons de renseigner vos ventes de produits ou services industriels, pour ceux que vous avez rensigné les années précédentes"
+					},
+					"position": "AFTER_QUESTION_TEXT"
+				},
+				{
+					"declarationType": "HELP",
+					"id": "la6i18y5-lh7t4nq9",
+					"label": {
+						"type": "VTL|MD",
+						"value": "Dans un trosième temps, vous aurez la possibilité, le cas échéant, de rajouter des produits ou services industriels."
+					},
+					"position": "AFTER_QUESTION_TEXT"
+				},
+				{
+					"declarationType": "HELP",
+					"id": "la6i18y5-lh7tftjn",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"**Attention : Si vous revendez des produits que vous n’avez pas fabriqué (activité de négoce), les ventes affairantes vous serons demandées dans une séquence ultérieure**\""
+					},
+					"position": "AFTER_QUESTION_TEXT"
+				}
+			]
+		},
+		{
+			"componentType": "Table",
+			"bindingDependencies": [
+				"facturation1",
+				"LESANNESPR12",
+				"LESANNESPR13",
+				"facturation2",
+				"LESANNESPR22",
+				"LESANNESPR23",
+				"facturation3",
+				"LESANNESPR32",
+				"LESANNESPR33"
+			],
+			"controls": [
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 10000000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(facturation1)) and (0>facturation1 or 10000000<facturation1))"
+					},
+					"id": "lh7pozh6-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(facturation1))  and round(facturation1,0)<>facturation1)"
+					},
+					"id": "lh7pozh6-format-decimal"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 100000000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR12)) and (0>LESANNESPR12 or 100000000<LESANNESPR12))"
+					},
+					"id": "lh7pozh6-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR12))  and round(LESANNESPR12,0)<>LESANNESPR12)"
+					},
+					"id": "lh7pozh6-format-decimal"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 1000000000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR13)) and (0>LESANNESPR13 or 1000000000<LESANNESPR13))"
+					},
+					"id": "lh7pozh6-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR13))  and round(LESANNESPR13,0)<>LESANNESPR13)"
+					},
+					"id": "lh7pozh6-format-decimal"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 10000000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(facturation2)) and (0>facturation2 or 10000000<facturation2))"
+					},
+					"id": "lh7pozh6-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(facturation2))  and round(facturation2,0)<>facturation2)"
+					},
+					"id": "lh7pozh6-format-decimal"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 100000000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR22)) and (0>LESANNESPR22 or 100000000<LESANNESPR22))"
+					},
+					"id": "lh7pozh6-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR22))  and round(LESANNESPR22,0)<>LESANNESPR22)"
+					},
+					"id": "lh7pozh6-format-decimal"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 1000000000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR23)) and (0>LESANNESPR23 or 1000000000<LESANNESPR23))"
+					},
+					"id": "lh7pozh6-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR23))  and round(LESANNESPR23,0)<>LESANNESPR23)"
+					},
+					"id": "lh7pozh6-format-decimal"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 10000000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(facturation3)) and (0>facturation3 or 10000000<facturation3))"
+					},
+					"id": "lh7pozh6-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(facturation3))  and round(facturation3,0)<>facturation3)"
+					},
+					"id": "lh7pozh6-format-decimal"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 100000000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR32)) and (0>LESANNESPR32 or 100000000<LESANNESPR32))"
+					},
+					"id": "lh7pozh6-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR32))  and round(LESANNESPR32,0)<>LESANNESPR32)"
+					},
+					"id": "lh7pozh6-format-decimal"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 1000000000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR33)) and (0>LESANNESPR33 or 1000000000<LESANNESPR33))"
+					},
+					"id": "lh7pozh6-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(LESANNESPR33))  and round(LESANNESPR33,0)<>LESANNESPR33)"
+					},
+					"id": "lh7pozh6-format-decimal"
+				}
+			],
+			"positioning": "HORIZONTAL",
+			"hierarchy": {
+				"sequence": {
+					"id": "la6i18y5",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"Votre production industrielle\""
+					}
+				}
+			},
+			"header": [
+				{ "label": { "type": "VTL|MD", "value": "" } },
+				{ "label": { "type": "VTL|MD", "value": "facturations" } },
+				{ "label": { "type": "VTL|MD", "value": "quantités facturées" } },
+				{
+					"label": { "type": "VTL|MD", "value": "quantités totales fabriquées" }
+				}
+			],
+			"conditionFilter": { "type": "VTL", "value": "true" },
+			"id": "lh7pozh6",
+			"page": "2",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 1. \" || \"Les années précédentes, vous avez déclaré fabriquer les produits ci-dessous, veuillez remplir les informations correspondantes pour l’année 2022\""
+			},
+			"body": [
+				[
+					{
+						"label": {
+							"type": "VTL|MD",
+							"value": "Béton prêt à l’emploi : béton non réfractaire, prêt à la coulée"
+						},
+						"value": "2363100000"
+					},
+					{
+						"componentType": "InputNumber",
+						"dynamicUnit": {
+							"type": "VTL|MD",
+							"value": "\"kilo\" || \"€\""
+						},
+						"bindingDependencies": ["facturation1"],
+						"min": 0,
+						"max": 10000000,
+						"response": { "name": "facturation1" },
+						"decimals": 0,
+						"id": "lh7pozh6-QOP-lh8v4mbu"
+					},
+					{
+						"componentType": "InputNumber",
+						"dynamicUnit": {
+							"type": "VTL|MD",
+							"value": "\"kilo\" || \"€\""
+						},
+						"bindingDependencies": ["LESANNESPR12"],
+						"min": 0,
+						"max": 100000000,
+						"response": { "name": "LESANNESPR12" },
+						"decimals": 0,
+						"id": "lh7pozh6-QOP-lh8viuae"
+					},
+					{
+						"componentType": "InputNumber",
+						"dynamicUnit": {
+							"type": "VTL|MD",
+							"value": "\"kilo\" || \"€\""
+						},
+						"bindingDependencies": ["LESANNESPR13"],
+						"min": 0,
+						"max": 1000000000,
+						"response": { "name": "LESANNESPR13" },
+						"decimals": 0,
+						"id": "lh7pozh6-QOP-lh8v3u73"
+					}
+				],
+				[
+					{
+						"label": {
+							"type": "VTL|MD",
+							"value": "Autres éléments structurels préfabriqués pour le bâtiment ou le génie civil, en ciment, béton ou pierre artificielle, même armés"
+						},
+						"value": "2361120050"
+					},
+					{
+						"componentType": "InputNumber",
+						"dynamicUnit": {
+							"type": "VTL|MD",
+							"value": "\"kilo \" || UNITE_KG"
+						},
+						"bindingDependencies": ["facturation2"],
+						"min": 0,
+						"max": 10000000,
+						"response": { "name": "facturation2" },
+						"decimals": 0,
+						"id": "lh7pozh6-QOP-lh8v1a4x"
+					},
+					{
+						"componentType": "InputNumber",
+						"dynamicUnit": {
+							"type": "VTL|MD",
+							"value": "\"kilo\" || \"€\""
+						},
+						"bindingDependencies": ["LESANNESPR22"],
+						"min": 0,
+						"max": 100000000,
+						"response": { "name": "LESANNESPR22" },
+						"decimals": 0,
+						"id": "lh7pozh6-QOP-lh8vdjar"
+					},
+					{
+						"componentType": "InputNumber",
+						"dynamicUnit": {
+							"type": "VTL|MD",
+							"value": "\"kilo\" || \"€\""
+						},
+						"bindingDependencies": ["LESANNESPR23"],
+						"min": 0,
+						"max": 1000000000,
+						"response": { "name": "LESANNESPR23" },
+						"decimals": 0,
+						"id": "lh7pozh6-QOP-lh8v4l5z"
+					}
+				],
+				[
+					{
+						"label": {
+							"type": "VTL|MD",
+							"value": "Dalles ou prédalles en béton précontraint ou armé"
+						},
+						"value": "2361120020"
+					},
+					{
+						"componentType": "InputNumber",
+						"dynamicUnit": {
+							"type": "VTL|MD",
+							"value": "\"kilo\" || \"€\""
+						},
+						"bindingDependencies": ["facturation3"],
+						"min": 0,
+						"max": 10000000,
+						"response": { "name": "facturation3" },
+						"decimals": 0,
+						"id": "lh7pozh6-QOP-lh8uzvom"
+					},
+					{
+						"componentType": "InputNumber",
+						"dynamicUnit": {
+							"type": "VTL|MD",
+							"value": "\"kilo\" || \"€\""
+						},
+						"bindingDependencies": ["LESANNESPR32"],
+						"min": 0,
+						"max": 100000000,
+						"response": { "name": "LESANNESPR32" },
+						"decimals": 0,
+						"id": "lh7pozh6-QOP-lh8vflbr"
+					},
+					{
+						"componentType": "InputNumber",
+						"dynamicUnit": {
+							"type": "VTL|MD",
+							"value": "\"kilo\" || \"€\""
+						},
+						"bindingDependencies": ["LESANNESPR33"],
+						"min": 0,
+						"max": 1000000000,
+						"response": { "name": "LESANNESPR33" },
+						"decimals": 0,
+						"id": "lh7pozh6-QOP-lh8v82lh"
+					}
+				]
+			],
+			"mandatory": false
+		},
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "COMMENT-SEQ",
+					"page": "3",
+					"label": { "type": "VTL|MD", "value": "\"Commentaire\"" }
+				}
+			},
+			"conditionFilter": { "type": "VTL", "value": "true" },
+			"id": "COMMENT-SEQ",
+			"page": "3",
+			"label": { "type": "VTL|MD", "value": "\"Commentaire\"" }
+		},
+		{
+			"componentType": "Textarea",
+			"bindingDependencies": ["COMMENT_QE"],
+			"response": { "name": "COMMENT_QE" },
+			"hierarchy": {
+				"sequence": {
+					"id": "COMMENT-SEQ",
+					"page": "3",
+					"label": { "type": "VTL|MD", "value": "\"Commentaire\"" }
+				}
+			},
+			"conditionFilter": { "type": "VTL", "value": "true" },
+			"id": "COMMENT-QUESTION",
+			"page": "4",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"Avez-vous des remarques concernant l'enquête ou des commentaires ?\""
+			},
+			"mandatory": false,
+			"maxLength": 2000
+		}
+	],
+	"pagination": "question",
+	"resizing": {},
+	"label": { "type": "VTL|MD", "value": "Hackaton EAP Copie" },
+	"lunaticModelVersion": "2.3.1",
+	"modele": "HackEAP",
+	"enoCoreVersion": "2.4.1",
+	"generatingDate": "31-05-2023 11:51:48",
+	"missing": false,
+	"id": "libjk0lj",
+	"maxPage": "4"
+}

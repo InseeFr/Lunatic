@@ -63,6 +63,7 @@ type ComponentPropsByType = {
 		max: number;
 		decimals: number;
 		unit?: string;
+		dynamicUnit?: ReactNode;
 		response: { name: string };
 	};
 	Input: LunaticBaseProps<string> & {

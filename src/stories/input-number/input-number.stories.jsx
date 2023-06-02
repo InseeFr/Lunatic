@@ -2,6 +2,7 @@ import React from 'react';
 import defaultArgTypes from '../utils/default-arg-types';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
+import sourceDynamic from './source-dynamic';
 import sourceEuros from './source-euros';
 import sourceThousand from './source-thansand';
 
@@ -21,6 +22,13 @@ Default.args = { id: 'input-number', source, min: 0, max: 10, decimals: 0 };
 export const UnitEuros = Template.bind({});
 
 UnitEuros.args = { id: 'input-number-euro', source: sourceEuros, unit: '€' };
+
+export const DynamicUnit = Template.bind({});
+
+DynamicUnit.args = {
+	id: 'input-number-dynamic',
+	source: sourceDynamic,
+};
 
 export const ThousandSeparator = Template.bind({});
 
