@@ -11,8 +11,6 @@ type Args<T> = {
 };
 
 function useOnHandleChange<T>({ handleChange, response, value }: Args<T>) {
-	console.log("response",response);
-	
 	return useCallback(
 		function (valueOption: T) {
 			if (value !== valueOption) {

@@ -26,7 +26,7 @@ type Props = SelectionProps &
 		description?: ReactNode;
 		errors?: LunaticBaseProps['errors'];
 		onChange?: (s: string | null) => void;
-		onSelect: (s: string | null) => void;
+		onSelect: (s: ComboBoxOption | null) => void;
 		options: ComboBoxOption[];
 	};
 
@@ -79,7 +79,7 @@ function ComboBox({
 			dispatch(actions.onSelect(indexNumber));
 			onSelect(option);
 		},
-		[options, onSelect, getOptionValue]
+		[options, onSelect]
 	);
 
 	const handleChange = useCallback(

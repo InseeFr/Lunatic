@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
+import { useOnHandleChange } from '../commons';
 import { ComboBoxOption } from '../commons/components/combo-box/combo-box.type';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
-import useOnHandleChange from '../commons/use-on-handle-change';
 import { LunaticComponentProps } from '../type';
 import { IDBSuggester } from './idb-suggester';
 
@@ -34,6 +34,9 @@ function LunaticSuggester({
 	 * onChange(id) -> onChange({ code: '', label: '', info: '' }) -> onSelect in subComponent
 	 * useOnHandleChange -> update to handleChange on 3 response REPONSENAME (historical value i.e the code), REPONSENAME_LABEL, REPONSENAME_INFO
 	 */
+
+	const onChangeSimple = useOnHandleChange({ handleChange, response, value });
+
 	const onChange = useCallback(
 		(option: ComboBoxOption) => {
 			if (responses) {
@@ -42,9 +45,11 @@ function LunaticSuggester({
 						handleChange(r.response, option[r.id]);
 					}
 				});
+			} else {
+				onChangeSimple(option?.id);
 			}
 		},
-		[handleChange, responses, value]
+		[handleChange, onChangeSimple, responses, value]
 	);
 
 	return (
@@ -66,6 +71,7 @@ function LunaticSuggester({
 				idbVersion={idbVersion}
 				onSelect={onChange}
 				responses={responses}
+				response={response}
 				disabled={disabled}
 				id={id}
 				value={value}
