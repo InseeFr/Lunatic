@@ -1,10 +1,9 @@
-import React from 'react';
-import { Table } from '../../commons/components/html-table';
-import Header from './header';
-import Body from './body';
+import { Table, Tbody } from '../../commons/components/html-table';
+import Header from '../../table/header';
 import './roster.scss';
 import { NothingToDisplay } from '../../commons';
 import { LunaticComponentProps } from '../../type';
+import RosterForLoopOrchestrator from './roster-for-loop-orchestrator';
 
 type Props = {
 	nbRows: number;
@@ -18,25 +17,23 @@ type Props = {
 	| 'id'
 	| 'components'
 	| 'executeExpression'
-	| 'headers'
+	| 'header'
 	| 'value'
-	| 'management'
 	| 'missing'
-	| 'shortcut'
 	| 'errors'
 	| 'disabled'
 >;
+
+const preferences = ['COLLECTED'] as ['COLLECTED'];
 
 function RosterTable({
 	components,
 	nbRows,
 	executeExpression,
 	id,
-	headers,
+	header,
 	value: valueMap,
-	shortcut,
 	missing,
-	management,
 	handleChange,
 	disabled,
 }: Props) {
@@ -44,20 +41,20 @@ function RosterTable({
 		return <NothingToDisplay />;
 	}
 	return (
-		<Table id={id}>
-			<Header header={headers} id={id} />
-			<Body
-				id={id}
-				components={components}
-				handleChange={handleChange}
-				nbRows={nbRows}
-				value={valueMap}
-				management={management}
-				missing={missing}
-				shortcut={shortcut}
-				executeExpression={executeExpression}
-				disabled={disabled}
-			/>
+		<Table id={id} className="rosterTable">
+			<Header header={header} id={id} />
+			<Tbody id={id}>
+				<RosterForLoopOrchestrator
+					id={`roster-${id}`}
+					components={components}
+					nbRows={nbRows}
+					handleChange={handleChange}
+					executeExpression={executeExpression}
+					valueMap={valueMap}
+					missing={missing}
+					preferences={preferences}
+				/>
+			</Tbody>
 		</Table>
 	);
 }

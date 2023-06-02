@@ -22,7 +22,7 @@ function Loop(
 		value,
 		executeExpression,
 		componentType,
-		headers,
+		header,
 		shortcut,
 		management,
 		missing,
@@ -72,7 +72,7 @@ function Loop(
 					shortcut={shortcut}
 					features={features}
 					preferences={preferences}
-					headers={headers}
+					header={header}
 					errors={errors}
 					disabled={disabled}
 				/>
