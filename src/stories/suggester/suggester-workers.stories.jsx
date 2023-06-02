@@ -1,11 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import Orchestrator from '../utils/orchestrator';
 // import source from './source';
-import defaultArgTypes from '../utils/default-arg-types';
-import { clearDb, openOnCreateDb, insertEntity } from '../../utils/idb-tools';
+import { clearDb, insertEntity, openOnCreateDb } from '../../utils/idb-tools';
 import { CONSTANTES } from '../../utils/store-tools';
 import append from '../../utils/suggester-workers/append-to-index';
 import searching from '../../utils/suggester-workers/searching';
+import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
 	title: 'Components/Suggester-workers',
