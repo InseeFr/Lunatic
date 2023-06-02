@@ -1,12 +1,12 @@
+import { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import useLunatic from '../use-lunatic';
 import {
 	LunaticComponentDefinition,
 	LunaticError,
 	LunaticExpression,
 	LunaticState,
 } from '../use-lunatic/type';
-import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
-import useLunatic from '../use-lunatic';
 
 export type LunaticBaseProps<ValueType = unknown> = {
 	id: string;
@@ -60,6 +60,7 @@ type ComponentPropsByType = {
 		max: number;
 		decimals: number;
 		unit?: string;
+		dynamicUnit?: ReactNode;
 		response: { name: string };
 	};
 	Input: LunaticBaseProps<string> & {
