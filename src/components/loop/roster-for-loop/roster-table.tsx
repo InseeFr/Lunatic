@@ -1,5 +1,5 @@
 import { Table, Tbody } from '../../commons/components/html-table';
-import Header from './header';
+import Header from '../../table/header';
 import './roster.scss';
 import { NothingToDisplay } from '../../commons';
 import { LunaticComponentProps } from '../../type';
