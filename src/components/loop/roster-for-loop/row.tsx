@@ -1,9 +1,10 @@
-import React, { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { Tr, Td } from '../../commons/components/html-table';
 
 import { OrchestratedComponent } from '../../commons';
 import { LunaticBaseProps } from '../../type';
 import { LunaticComponentDefinition } from '../../../use-lunatic/type';
+import { useDidChange } from '../../../hooks/use-did-change';
 
 type Props = {
 	id: string;
@@ -78,27 +79,81 @@ function Row({
 				}
 
 				return (
-					<Td id={idComponent} key={key}>
-						<OrchestratedComponent
-							component={component}
-							handleChange={handleChangeRow}
-							features={features}
-							missing={missing}
-							shortcut={shortcut}
-							management={management}
-							value={value}
-							id={idComponent}
-							preferences={preferences}
-							iteration={rowIndex}
-							executeExpression={executeExpression}
-							disabled={disabled}
-							errors={errors}
-						/>
-					</Td>
+					<RowCell
+						id={idComponent}
+						key={key}
+						component={component}
+						handleChange={handleChangeRow}
+						features={features}
+						missing={missing}
+						shortcut={shortcut}
+						management={management}
+						value={value}
+						preferences={preferences}
+						rowIndex={rowIndex}
+						executeExpression={executeExpression}
+						errors={errors}
+					/>
 				);
 			})}
 		</Tr>
 	);
 }
+
+/**
+ * Memoïzed version of a cell (for optimisation)
+ */
+const RowCell = memo<
+	Pick<
+		Props,
+		| 'id'
+		| 'features'
+		| 'missing'
+		| 'shortcut'
+		| 'management'
+		| 'preferences'
+		| 'rowIndex'
+		| 'executeExpression'
+		| 'errors'
+	> & {
+		value: unknown;
+		component: LunaticComponentDefinition;
+		handleChange: (response: { name: string }, value: unknown) => void;
+	}
+>(
+	({
+		id,
+		component,
+		handleChange,
+		features,
+		missing,
+		shortcut,
+		management,
+		value,
+		preferences,
+		rowIndex,
+		executeExpression,
+		errors,
+	}) => {
+		return (
+			<Td id={id}>
+				<OrchestratedComponent
+					component={component}
+					handleChange={handleChange}
+					features={features}
+					missing={missing}
+					shortcut={shortcut}
+					management={management}
+					value={value}
+					id={id}
+					preferences={preferences}
+					iteration={rowIndex}
+					executeExpression={executeExpression}
+					errors={errors}
+				/>
+			</Td>
+		);
+	}
+);
 
 export default Row;
