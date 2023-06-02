@@ -277,8 +277,8 @@
 				}
 			],
 			"lines": {
-				"min": { "value": 1, "type": "VTL" },
-				"max": { "value": 300, "type": "VTL" }
+				"min": { "value": "1", "type": "VTL" },
+				"max": { "value": "300", "type": "VTL" }
 			},
 			"conditionFilter": { "type": "VTL", "value": "true" },
 			"id": "lh7pozh6",
