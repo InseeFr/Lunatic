@@ -20,7 +20,7 @@ function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
 		value,
 		executeExpression,
 		componentType,
-		headers,
+		header,
 		shortcut,
 		management,
 		missing,
@@ -68,7 +68,7 @@ function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
 					shortcut={shortcut}
 					features={features}
 					preferences={preferences}
-					headers={headers}
+					header={header}
 					errors={errors}
 				/>
 			);

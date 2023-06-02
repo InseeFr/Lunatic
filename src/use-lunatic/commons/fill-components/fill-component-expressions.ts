@@ -27,11 +27,10 @@ const VTL_ATTRIBUTES = [
 	'xAxisIterations',
 	'yAxisIterations',
 	'conditionFilter',
-	'headers.label',
 	'header.label',
 	'questionContext',
 	'questionInformation',
-	'displayResponses',
+	'dynamicUnit'
 ];
 
 type CrawlArgs = Pick<LunaticState, 'executeExpression'> &

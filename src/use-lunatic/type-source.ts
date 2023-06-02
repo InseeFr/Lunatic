@@ -168,6 +168,7 @@ export type ComponentRosterForLoopType = {
 		format?: string;
 		dateFormat?: string;
 		unit?: string;
+		dynamicUnit?: LabelType;
 		options: { value: string; label: LabelType }[];
 		response: ResponseType;
 		bindingDependencies: string[];
@@ -205,6 +206,7 @@ export type ComponentTableType = {
 export type ComponentNumberType = {
 	componentType: 'InputNumber';
 	unit: string;
+	dynamicUnit?: LabelType;
 	response: ResponseType;
 	min?: number;
 	max?: number;
