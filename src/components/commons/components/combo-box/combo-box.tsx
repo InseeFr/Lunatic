@@ -158,13 +158,9 @@ function ComboBox({
 	);
 }
 
-function getDefaultOptionValue(option: ComboBoxOption = { value: '' }) {
-	const { id, value } = option;
-	return id || value;
-}
-
 function getResponseOptionValue(option: ComboBoxOption = { value: '' }) {
-	return option;
+	console.log('option dans getResponse', option);
+	return option.id;
 }
 
 export default createCustomizableLunaticField(ComboBox, 'ComboBox');

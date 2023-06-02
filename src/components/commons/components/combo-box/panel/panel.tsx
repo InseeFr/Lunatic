@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { PanelContainer } from './panel-container';
-import { OptionContainer } from './option-container';
-import { ComboBoxOption } from '../combo-box.type';
+import { FunctionComponent } from 'react';
 import { DefaultOptionRenderer } from '../../../index';
+import { ComboBoxOption } from '../combo-box.type';
+import { OptionContainer } from './option-container';
+import { PanelContainer } from './panel-container';
 
 export type PanelProps = {
 	optionRenderer: FunctionComponent<{
@@ -16,7 +16,7 @@ export type PanelProps = {
 	expanded?: boolean;
 	id?: string;
 	search?: string;
-	onSelect: (value: string) => void;
+	onSelect: (value: ComboBoxOption) => void;
 };
 
 export function Panel({
