@@ -16,8 +16,8 @@ exports[`InputNumber > renders without crashing 1`] = `
           lang="en"
           required=""
           step="1"
-          type="number"
-          value="input"
+          type="text"
+          value=""
         />
       </div>
     </div>
@@ -34,8 +34,8 @@ exports[`InputNumber > renders without crashing 1`] = `
         lang="en"
         required=""
         step="1"
-        type="number"
-        value="input"
+        type="text"
+        value=""
       />
     </div>
   </div>,
