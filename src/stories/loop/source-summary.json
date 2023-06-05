@@ -1,5 +1,5 @@
 {
-	"maxPage": "4",
+	"maxPage": "6",
 	"components": [
 		{
 			"componentType": "Input",
@@ -8,7 +8,6 @@
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"maxLength": 30,
 			"id": "name",
 			"response": {
 				"name": "PRENOM"
@@ -38,7 +37,6 @@
     {
 			"id": "kze792d8",
 			"componentType": "InputNumber",
-			"mandatory": false,
 			"page": "2",
 			"min": 0,
 			"max": 120,
@@ -51,33 +49,161 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"response": { "name": "AGE" }
 		},
+    {
+			"id": "loop-prenom",
+			"componentType": "RosterForLoop",
+			"label": { "value": "\"Ajoute un aristochat\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"lines": {
+				"min": { "value": 1, "type": "VTL" },
+				"max": { "value": 10, "type": "VTL" }
+			},
+      "declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Quel sont les noms des Aristochats ?\"",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"page": "3",
+			"components": [
+				{
+					"componentType": "Input",
+					"label": { "value": "\"Nom d'un aristochat: \"", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"maxLength": 30,
+					"id": "aristochat",
+					"response": {
+						"name": "ARISTOCHAT"
+					}
+				}
+			]
+		},
+    {
+			"id": "kmw4iq4w",
+			"componentType": "Loop",
+			"page": "4",
+			"maxPage": "2",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"loopDependencies": ["ARISTOCHAT"],
+			"iterations": { "value": "count(ARISTOCHAT)", "type": "VTL" },
+			"components": [
+				{
+					"id": "kmnosf1n7m",
+					"componentType": "Input",
+					"mandatory": false,
+					"page": "4.1",
+					"maxLength": 20,
+					"label": {
+						"value": "\"Quel couleur est \" || ARISTOCHAT",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"response": { "name": "COLOUR" }
+				},
+				{
+					"id": "kmnofs1n7m",
+					"componentType": "InputNumber",
+					"mandatory": false,
+					"page": "4.2",
+					"label": {
+						"value": "\"Quel age a \" || ARISTOCHAT || \", le chat \" || COLOUR",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"response": { "name": "AGECHAT" }
+				}
+			]
+		},
 		{
 			"id": "loop-prenom",
 			"componentType": "SummaryLoop",
 			"label": { "value": "\"Récapulatif de vos réponses\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"bindingDependencies": ["PRENOM", "AGE"],
-			"page": "3",
+			"bindingDependencies": ["PRENOM", "AGE", "ARISTOCHAT"],
+			"page": "5",
+      "iterations": { "value": "true", "type": "VTL"}, 
+      "declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Si vous voulez modifier vos réponses, veuillez naviguer en arrière\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Vos réponses:\"",
+						"type": "VTL|MD"
+					}
+				}
+			],
 			"components": [
 				{
 					"componentType": "Sequence",
 					"label": { "value": "\"Prénom : \" || PRENOM", "type": "VTL|MD" },
 					"conditionFilter": { "value": "true", "type": "VTL" },
 					"bindingDependencies": ["PRENOM"],
-					"id": "prenom",
-					"response": {
-						"name": "PRENOM"
-					}
+					"id": "recap-prenom"
 				},
         {
 					"componentType": "Sequence",
-					"label": { "value": "\"Age : \" || AGE", "type": "VTL|MD" },
+					"label": { "value": "\"Age : \" || cast(AGE, string)", "type": "VTL|MD" },
 					"conditionFilter": { "value": "true", "type": "VTL" },
 					"bindingDependencies": ["AGE"],
-					"id": "age",
-					"response": {
-						"name": "AGE"
-					}
+					"id": "recap-age"
+				}
+			]
+		},
+    {
+			"id": "loop-prenomx",
+			"componentType": "SummaryLoop",
+      "iterations": {"value": "count(ARISTOCHAT)", "type": "VTL"},
+			"label": { "value": "\"Récapulatif des réponses sur les aristochats: \"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"bindingDependencies": ["ARISTOCHAT"],
+			"page": "5",
+			"components": [
+        {
+					"componentType": "Sequence",
+					"label": { "value": "\"Aristochat: \" || ARISTOCHAT", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"bindingDependencies": ["ARISTOCHAT"],
+					"id": "recap-aristochat"
+				},
+        {
+					"componentType": "Sequence",
+					"label": { "value": "\"La couleur de \" || ARISTOCHAT || \": \" || COLOUR", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"bindingDependencies": ["COLOUR"],
+					"id": "recap-aristochat-colour"
+				},
+        {
+					"componentType": "Sequence",
+					"label": { "value": "\"L'age de \" || ARISTOCHAT || \" : \" || cast(AGECHAT, string)", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"bindingDependencies": ["AGECHAT"],
+					"id": "recap-aristochat-age"
 				}
 			]
 		},
@@ -89,7 +215,7 @@
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "4"
+			"page": "6"
 		}
 	],
 	"variables": [
@@ -113,6 +239,39 @@
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
+			}
+		},
+    {
+			"variableType": "COLLECTED",
+			"name": "ARISTOCHAT",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+    {
+			"variableType": "COLLECTED",
+			"name": "COLOUR",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+    {
+			"variableType": "COLLECTED",
+			"name": "AGECHAT",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		}
 	]

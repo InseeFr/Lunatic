@@ -31,6 +31,7 @@ function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop' | 'SummaryLo
 		paginatedLoop,
 		errors,
 	} = props;
+  console.log(props)
 	switch (componentType) {
 		case LoopTypes.blockForLoop:
 			return (
@@ -91,7 +92,6 @@ function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop' | 'SummaryLo
             shortcut={shortcut}
             features={features}
             preferences={preferences}
-            headers={headers}
             errors={errors}
           />
         );
