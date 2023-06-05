@@ -1,14 +1,16 @@
 import React from 'react';
 import BlockForLoop from './block-for-loop';
 import RosterForLoop from './roster-for-loop';
+import SummaryLoop from './summary-loop';
 import { LunaticComponentProps } from '../type';
 
 const LoopTypes = {
 	rosterForLoop: 'RosterForLoop',
 	blockForLoop: 'Loop',
+  summaryLoop: 'SummaryLoop',
 };
 
-function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
+function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop' | 'SummaryLoop'>) {
 	const {
 		declarations,
 		label,
@@ -72,6 +74,27 @@ function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
 					errors={errors}
 				/>
 			);
+      case LoopTypes.summaryLoop:
+        return (
+          <SummaryLoop
+            declarations={declarations}
+            label={label}
+            lines={lines}
+            iterations={iterations}
+            id={id}
+            components={components}
+            handleChange={handleChange}
+            value={value}
+            management={management}
+            executeExpression={executeExpression}
+            missing={missing}
+            shortcut={shortcut}
+            features={features}
+            preferences={preferences}
+            headers={headers}
+            errors={errors}
+          />
+        );
 		default:
 			return null;
 	}

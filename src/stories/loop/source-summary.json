@@ -1,0 +1,119 @@
+{
+	"maxPage": "4",
+	"components": [
+		{
+			"componentType": "Input",
+			"label": {
+				"value": "\"Prénom de l'occupant principal.\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"maxLength": 30,
+			"id": "name",
+			"response": {
+				"name": "PRENOM"
+			},
+      "page": "1", 
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Quel est le prénom de l'occupant principal du logement ?\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"For example, Marley.\"",
+						"type": "VTL|MD"
+					}
+				}
+			]
+		},
+    {
+			"id": "kze792d8",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"page": "2",
+			"min": 0,
+			"max": 120,
+			"decimals": 0,
+			"label": {
+				"value": "\"Quelle age avez-vous ?\"",
+				"type": "VTL|MD"
+			},
+			"description": { "value": "\"Veuillez saisir un nombre entre 0 et 120\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"response": { "name": "AGE" }
+		},
+		{
+			"id": "loop-prenom",
+			"componentType": "SummaryLoop",
+			"label": { "value": "\"Récapulatif de vos réponses\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"bindingDependencies": ["PRENOM", "AGE"],
+			"page": "3",
+			"components": [
+				{
+					"componentType": "Sequence",
+					"label": { "value": "\"Prénom : \" || PRENOM", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"bindingDependencies": ["PRENOM"],
+					"id": "prenom",
+					"response": {
+						"name": "PRENOM"
+					}
+				},
+        {
+					"componentType": "Sequence",
+					"label": { "value": "\"Age : \" || AGE", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"bindingDependencies": ["AGE"],
+					"id": "age",
+					"response": {
+						"name": "AGE"
+					}
+				}
+			]
+		},
+		{
+			"id": "seq-end",
+			"componentType": "Sequence",
+			"label": {
+				"value": "\"End\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "4"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

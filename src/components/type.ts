@@ -90,6 +90,15 @@ type ComponentPropsByType = {
 		headers?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
 	};
+  SummaryLoop: LunaticBaseProps<unknown> & {
+		lines: { min: number; max: number };
+		iterations?: number;
+		components: LunaticComponentDefinition[];
+		executeExpression: LunaticState['executeExpression'];
+		value: Record<string, unknown[]>;
+		headers?: Array<{ label: ReactNode }>;
+		paginatedLoop?: boolean;
+	};
 	Loop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
