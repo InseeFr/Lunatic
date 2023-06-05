@@ -4,17 +4,13 @@ import cleanStorage from './clear-store-data';
 import cleanInfoStorage from './clear-store-info';
 // @ts-ignore
 import { createWorker } from '../suggester-workers/create-worker';
+import { getWorkerPath } from './worker-path';
 
 type Task = {
 	name: string;
 	fields: string[];
 	stopWords: string[];
 };
-
-const workerPath =
-	process.env.LUNATIC_LOADER_WORKER_PATH ||
-	process.env.REACT_APP_LUNATIC_LOADER_WORKER_PATH ||
-	'workers/lunatic-loader-worker-0.1.0.js';
 
 export const loadSuggesters =
 	(suggesterFetcher: typeof fetch) =>
@@ -53,7 +49,7 @@ function task(
 	version: number,
 	log: (v: any) => void = () => null
 ) {
-	const worker = createWorker(workerPath);
+	const worker = createWorker(getWorkerPath());
 	let start = false;
 	let stop = false;
 
