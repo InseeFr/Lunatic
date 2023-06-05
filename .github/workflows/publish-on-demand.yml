@@ -5,7 +5,6 @@ on:
     branches-ignore: ['main', 'develop', 'v1-main', 'prisme']
 
 jobs:
-
   check_conventional_commit:
     if: contains(github.event.head_commit.message, 'Publish')
     runs-on: ubuntu-latest
@@ -28,6 +27,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          registry-url: https://registry.npmjs.org/
+      - uses: bahmutov/npm-install@v1
       - name: Get current package version
         id: version
         uses: notiz-dev/github-action-json-property@release
@@ -44,6 +48,7 @@ jobs:
             git config --global user.name "Insee"
             yarn version --new-version $NEW_VERSION
           fi
+      - run: yarn install
       - run: yarn build
       - name: Publishing on NPM
         run: |
@@ -51,6 +56,8 @@ jobs:
             echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
             exit 1
           fi
+          git config --global user.email "no-reply@insee.fr"
+          git config --global user.name "Insee"
           yarn publish --tag experimental --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

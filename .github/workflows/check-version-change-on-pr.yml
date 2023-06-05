@@ -1,0 +1,13 @@
+name: Check if version change
+
+on:
+  pull_request:
+    # check if version upgrade on PR targeting develop or main branch
+    branches: ["main", "develop"]
+
+jobs:
+  check_if_version_changed:
+    uses: ./.github/workflows/test-change-version.yml
+    with:
+      current_branch: ${{ github.ref }}
+      target_branch: ${{ github.event.pull_request.base.ref }}

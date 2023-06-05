@@ -39,6 +39,8 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	executeExpression: LunaticState['executeExpression'];
 	features?: string[];
 	componentType?: string;
+	questionContext?: ReactNode;
+	questionInformation?: ReactNode;
 };
 
 export type SuggesterOption = {
@@ -67,7 +69,12 @@ type ComponentPropsByType = {
 	};
 	Sequence: Pick<
 		LunaticBaseProps<string>,
-		'id' | 'declarations' | 'label' | 'style'
+		| 'id'
+		| 'declarations'
+		| 'label'
+		| 'style'
+		| 'questionContext'
+		| 'questionInformation'
 	>;
 	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'declarations' | 'label'>;
 	ComponentSet: LunaticBaseProps<unknown> & {

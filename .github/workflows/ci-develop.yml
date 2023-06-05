@@ -2,8 +2,9 @@ name: Publish beta
 
 on:
   push:
-    branches:
-      - 'develop'
+    branches: ['develop']
+    # CI only if package.json has changed
+    paths: ['package.json']
 
 jobs:
   build-storybook-beta:
@@ -47,11 +48,8 @@ jobs:
           branch: 'gh-pages'
 
 
-# ToDo : check if version of package.json is upgraded
   publish_beta_on_npm:
     runs-on: ubuntu-latest
-    env:
-      TAG: beta
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -68,14 +66,22 @@ jobs:
       - run: |
           yarn build
       - name: Publishing on NPM
-        run: |
+        run: |        
+          git config --global user.email "no-reply@insee.fr"
+          git config --global user.name "Insee"
+          export TAG=beta
+          export NEW_VERSION=${{steps.version.outputs.prop}}-$TAG
+
+          if [ "$(npm show . dist-tags.$TAG)" = "$NEW_VERSION" ]; then
+            echo "This version is already published"
+            exit 1
+          fi
           if [ "$NODE_AUTH_TOKEN" = "" ]; then
             echo "Can't publish on NPM, You must first create a secret called NPM_TOKEN that contains your NPM auth token. https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets"
             exit 1
           fi
-          git config --global user.email "no-reply@insee.fr"
-          git config --global user.name "Insee"
-          echo "Publish new version : ${{steps.version.outputs.prop}}-$TAG under tag: $TAG"
-          yarn publish --new-version ${{steps.version.outputs.prop}}-$TAG --tag $TAG --access public
+
+          echo "Publish new version : $NEW_VERSION under tag: $TAG"
+          yarn publish --new-version $NEW_VERSION --tag $TAG --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

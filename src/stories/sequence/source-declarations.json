@@ -1,0 +1,31 @@
+{
+	"maxPages": "1",
+	"components": [
+		{
+			"componentType": "Sequence",
+			"page": "1",
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"label": { "value": "\"Sequence example\"", "type": "VTL|MD" },
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "BEFORE_QUESTION_TEXT",
+					"label": {
+						"value": "\"Déclaration Before\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "DETACHABLE",
+					"label": {
+						"value": "\"Declaration Detachable\"",
+						"type": "VTL|MD"
+					}
+				}
+			]
+		}
+	]
+}
