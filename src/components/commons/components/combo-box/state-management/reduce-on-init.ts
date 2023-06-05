@@ -11,6 +11,14 @@ function reduceOnInit(
 	if (Array.isArray(options) && value !== undefined) {
 		const next = options.reduce((current, option, index) => {
 			const optionValue = getOptionValue(option);
+			if (
+				value &&
+				typeof value === 'object' &&
+				'ID' in value &&
+				value.ID === optionValue
+			) {
+				return index;
+			}
 			if (value === optionValue) {
 				return index;
 			}
