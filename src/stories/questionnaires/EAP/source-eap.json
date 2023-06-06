@@ -2,7 +2,7 @@
 	"cleaning": {},
 	"suggesters": [
 		{
-			"name": "nomenclature-multiple",
+			"name": "nomenclature-eap",
 			"fields": [
 				{
 					"name": "label",
@@ -108,7 +108,7 @@
 				"FORCED": [null],
 				"PREVIOUS": [null]
 			},
-			"name": "facturation1"
+			"name": "FACTURATION"
 		},
 		{
 			"variableType": "COLLECTED",
@@ -119,7 +119,7 @@
 				"FORCED": [null],
 				"PREVIOUS": [null]
 			},
-			"name": "LESANNESPR12"
+			"name": "QUANTITE_PRODUITE"
 		},
 		{
 			"variableType": "COLLECTED",
@@ -130,7 +130,7 @@
 				"FORCED": [null],
 				"PREVIOUS": [null]
 			},
-			"name": "LESANNESPR13"
+			"name": "QUANTITE_FACTUREE"
 		}
 	],
 	"components": [
@@ -143,7 +143,7 @@
 				"value": "\" Sélectionner un produit\"",
 				"type": "VTL|MD"
 			},
-			"storeName": "nomenclature-multiple",
+			"storeName": "nomenclature-eap",
 			"conditionFilter": {
 				"value": "true",
 				"type": "VTL"
@@ -170,9 +170,9 @@
 				"ID",
 				"LABEL",
 				"UNIT",
-				"facturation1",
-				"LESANNESPR12",
-				"LESANNESPR13"
+				"FACTURATION",
+				"QUANTITE_PRODUITE",
+				"QUANTITE_FACTUREE"
 			],
 			"controls": [
 				{
@@ -184,7 +184,7 @@
 					"typeOfControl": "FORMAT",
 					"control": {
 						"type": "VTL",
-						"value": "not(not(isnull(facturation1)) and (0>facturation1 or 10000000<facturation1))"
+						"value": "not(not(isnull(FACTURATION)) and (0>FACTURATION or 10000000<FACTURATION))"
 					},
 					"id": "lh7pozh6-format-borne-inf-sup"
 				},
@@ -197,7 +197,7 @@
 					"typeOfControl": "FORMAT",
 					"control": {
 						"type": "VTL",
-						"value": "not(not(isnull(facturation1))  and round(facturation1,0)<>facturation1)"
+						"value": "not(not(isnull(FACTURATION))  and round(FACTURATION,0)<>FACTURATION)"
 					},
 					"id": "lh7pozh6-format-decimal"
 				},
@@ -210,7 +210,7 @@
 					"typeOfControl": "FORMAT",
 					"control": {
 						"type": "VTL",
-						"value": "not(not(isnull(LESANNESPR12)) and (0>LESANNESPR12 or 100000000<LESANNESPR12))"
+						"value": "not(not(isnull(QUANTITE_PRODUITE)) and (0>QUANTITE_PRODUITE or 100000000<QUANTITE_PRODUITE))"
 					},
 					"id": "lh7pozh6-format-borne-inf-sup"
 				},
@@ -223,7 +223,7 @@
 					"typeOfControl": "FORMAT",
 					"control": {
 						"type": "VTL",
-						"value": "not(not(isnull(LESANNESPR12))  and round(LESANNESPR12,0)<>LESANNESPR12)"
+						"value": "not(not(isnull(QUANTITE_PRODUITE))  and round(QUANTITE_PRODUITE,0)<>QUANTITE_PRODUITE)"
 					},
 					"id": "lh7pozh6-format-decimal"
 				},
@@ -236,7 +236,7 @@
 					"typeOfControl": "FORMAT",
 					"control": {
 						"type": "VTL",
-						"value": "not(not(isnull(LESANNESPR13)) and (0>LESANNESPR13 or 1000000000<LESANNESPR13))"
+						"value": "not(not(isnull(QUANTITE_FACTUREE)) and (0>QUANTITE_FACTUREE or 1000000000<QUANTITE_FACTUREE))"
 					},
 					"id": "lh7pozh6-format-borne-inf-sup"
 				},
@@ -249,7 +249,7 @@
 					"typeOfControl": "FORMAT",
 					"control": {
 						"type": "VTL",
-						"value": "not(not(isnull(LESANNESPR13))  and round(LESANNESPR13,0)<>LESANNESPR13)"
+						"value": "not(not(isnull(QUANTITE_FACTUREE))  and round(QUANTITE_FACTUREE,0)<>QUANTITE_FACTUREE)"
 					},
 					"id": "lh7pozh6-format-decimal"
 				}
@@ -267,12 +267,12 @@
 			},
 			"header": [
 				{ "label": { "type": "VTL|MD", "value": "\"Produits\"" } },
-				{ "label": { "type": "VTL|MD", "value": "\"facturations\"" } },
-				{ "label": { "type": "VTL|MD", "value": "\"quantités facturées\"" } },
+				{ "label": { "type": "VTL|MD", "value": "\"Facturations\"" } },
+				{ "label": { "type": "VTL|MD", "value": "\"Quantités produites\"" } },
 				{
 					"label": {
 						"type": "VTL|MD",
-						"value": "\"quantités totales fabriquées\""
+						"value": "\"Quantités facturées\""
 					}
 				}
 			],
@@ -296,7 +296,7 @@
 						"value": "\" Sélectionner un produit\"",
 						"type": "VTL|MD"
 					},
-					"storeName": "nomenclature-multiple",
+					"storeName": "nomenclature-eap",
 					"conditionFilter": {
 						"value": "true",
 						"type": "VTL"
@@ -321,12 +321,12 @@
 					"componentType": "InputNumber",
 					"dynamicUnit": {
 						"type": "VTL",
-						"value": "\"kilo\" || \"€\""
+						"value": "\"k\" || \"€\""
 					},
-					"bindingDependencies": ["facturation1"],
+					"bindingDependencies": ["FACTURATION"],
 					"min": 0,
 					"max": 10000000,
-					"response": { "name": "facturation1" },
+					"response": { "name": "FACTURATION" },
 					"decimals": 0,
 					"id": "lh7pozh6-QOP-lh8v4mbu"
 				},
@@ -340,10 +340,10 @@
 						"type": "VTL",
 						"value": "nvl(UNIT,\"\") <> \"\""
 					},
-					"bindingDependencies": ["LESANNESPR12", "UNIT"],
+					"bindingDependencies": ["QUANTITE_PRODUITE", "UNIT"],
 					"min": 0,
 					"max": 100000000,
-					"response": { "name": "LESANNESPR12" },
+					"response": { "name": "QUANTITE_PRODUITE" },
 					"decimals": 0,
 					"id": "lh7pozh6-QOP-lh8viuae"
 				},
@@ -357,10 +357,10 @@
 						"type": "VTL",
 						"value": "nvl(UNIT,\"\") <> \"\""
 					},
-					"bindingDependencies": ["LESANNESPR13"],
+					"bindingDependencies": ["QUANTITE_FACTUREE"],
 					"min": 0,
 					"max": 1000000000,
-					"response": { "name": "LESANNESPR13" },
+					"response": { "name": "QUANTITE_FACTUREE" },
 					"decimals": 0,
 					"id": "lh7pozh6-QOP-lh8v3u73"
 				}
