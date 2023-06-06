@@ -61,6 +61,7 @@ function OrchestratedComponent({
 				value={value}
 				executeExpression={executeExpression}
 				errors={errors}
+				iteration={iteration}
 			/>
 		);
 	}
