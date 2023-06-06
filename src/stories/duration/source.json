@@ -1,0 +1,19 @@
+{
+	"components": [
+		{
+			"id": "kxi788",
+			"componentType": "Duration",
+			"mandatory": false,
+			"initialValue": "PT5H12M",
+			"format": "PTnHnM",
+			"page": "1",
+			"label": {
+				"value": "\"➡ 1. \" || \"Duration \"",
+				"type": "VTL|MD"
+			},
+			"description": { "value": "\"Description\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"response": { "name": "NB" }
+		}
+	]
+}
