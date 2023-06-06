@@ -22,4 +22,3 @@ export { default as SuggesterLoaderWidget } from './suggester-loader-widget';
 export { default as Roundabout } from './roundabout';
 export { default as Table } from './table';
 export { default as ComponentSet } from './component-set';
-export { default as Duration } from "./duration";
