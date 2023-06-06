@@ -13,13 +13,13 @@
 			},
 			"description": { "value": "\"Description\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"response": { "name": "TOTO" }
+			"response": { "name": "DUREE" }
 		}
 	],
 	"variables": [
 		{
 			"variableType": "COLLECTED",
-			"name": "TOTO",
+			"name": "DUREE",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": "PT5H12M",
