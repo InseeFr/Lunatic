@@ -1,7 +1,7 @@
 import React from 'react';
 import { getByText, render } from '@testing-library/react';
 import RoundaboutLabel from './roundabout-label';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 describe('RoundaboutLabel', () => {
 	it('renders the label', () => {

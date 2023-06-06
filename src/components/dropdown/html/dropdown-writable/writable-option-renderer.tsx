@@ -75,7 +75,7 @@ function WritableOptionRenderer({ option, selected, search }: Props) {
 		[search, label]
 	);
 
-	if (parts && parts.length) {
+	if (parts?.length) {
 		return (
 			<div className={classnames('lunatic-dropdown-option', { selected })}>
 				<span className="id">{value}</span>

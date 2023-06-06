@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { ReactNode } from 'react';
-import { LunaticBaseProps } from '../../type';
 
 type Props = {
 	value?: ReactNode | Array<{ label: ReactNode; declarationType: string }>;

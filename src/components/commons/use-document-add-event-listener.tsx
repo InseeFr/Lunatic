@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useRefSync } from '../../hooks/use-ref-sync';
 
 function useDocumentAddEventListener<K extends keyof DocumentEventMap>(

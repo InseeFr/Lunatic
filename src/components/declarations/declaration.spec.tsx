@@ -1,6 +1,7 @@
 import Declaration from './declaration';
 import { render } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
+
 describe('Declaration component', () => {
 	it('renders correctly with children prop', () => {
 		const { getByText } = render(
