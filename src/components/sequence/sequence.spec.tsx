@@ -21,7 +21,6 @@ describe('Sequence', () => {
 		id: 'test-sequence',
 		label: 'Test Sequence Label',
 		style: { backgroundColor: 'red' },
-		questionContext: 'question-context',
 		questionInformation: 'question-information',
 	};
 
@@ -30,11 +29,9 @@ describe('Sequence', () => {
 		const sequenceLabel = getByText('Test Sequence Label');
 		const declaration1 = getByText('Declaration 1');
 		const declaration3 = getByText('Declaration 3');
-		const questionContext = getByText('question-context');
 		const questionInformation = getByText('question-information');
 
 		expect(sequenceLabel).toBeInTheDocument();
-		expect(questionContext).toBeInTheDocument();
 		expect(questionInformation).toBeInTheDocument();
 		// Declarations before text should appear before the label
 		expect(declaration1).toBeInTheDocument();
