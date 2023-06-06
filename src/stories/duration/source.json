@@ -1,0 +1,32 @@
+{
+	"components": [
+		{
+			"id": "kxi788",
+			"componentType": "Duration",
+			"mandatory": false,
+			"format": "PnYnM",
+			"page": "1",
+			"maxPage": "3",
+			"label": {
+				"value": "\"➡ 1. \" || \"Duration \"",
+				"type": "VTL|MD"
+			},
+			"description": { "value": "\"Description\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"response": { "name": "TOTO" }
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "TOTO",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "PT5H12M",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}
