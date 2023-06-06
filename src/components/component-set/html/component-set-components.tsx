@@ -42,6 +42,7 @@ type Props = {
 	| 'errors'
 	| 'className'
 	| 'handleChange'
+	| 'iteration'
 >;
 
 function ComponentSetComponents({
@@ -57,6 +58,7 @@ function ComponentSetComponents({
 	className,
 	handleChange,
 	componentClassName,
+	iteration,
 }: Props) {
 	if (!Array.isArray(components)) {
 		return null;
@@ -75,6 +77,7 @@ function ComponentSetComponents({
 							shortcut={shortcut}
 							management={management}
 							value={componentValue}
+							iteration={iteration}
 							id={id}
 							preferences={preferences}
 							executeExpression={executeExpression}

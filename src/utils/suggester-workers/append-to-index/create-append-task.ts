@@ -1,5 +1,6 @@
 import { SuggesterType } from '../../../use-lunatic/type-source';
 import { createWorker } from '../create-worker-ts';
+import { Logger } from '../../logger';
 
 const workerPath =
 	process.env.LUNATIC_LOADER_WORKER_PATH ||
@@ -8,7 +9,7 @@ const workerPath =
 
 function consoleLogging(...args: Array<any>) {
 	args.forEach(function (any) {
-		console.log(`suggester: ${JSON.stringify(any)}`);
+		Logger.log(`suggester: ${JSON.stringify(any)}`);
 	});
 }
 

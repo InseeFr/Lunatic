@@ -98,7 +98,7 @@ function createCrawl({
 		if (step in object && rest.length === 0) {
 			return executeAndFillObject(object, step);
 		} else if (step in object) {
-			const value = (object as Record<string, unknown>)[step];
+			const value = object[step];
 			if (Array.isArray(value)) {
 				return { ...object, [step]: crawlArray(value, rest) };
 			}

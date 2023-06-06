@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import Orchestrator from '../utils/orchestrator';
-// import source from './source';
 import defaultArgTypes from '../utils/default-arg-types';
 import { clearDb, openOnCreateDb, insertEntity } from '../../utils/idb-tools';
 import { CONSTANTES } from '../../utils/store-tools';
 import append from '../../utils/suggester-workers/append-to-index';
 import searching from '../../utils/suggester-workers/searching';
+import { Logger } from '../../utils/logger';
 
 const stories = {
 	title: 'Components/Suggester-workers',
@@ -65,8 +65,8 @@ async function loadOne(info, fetchIt) {
 	const db = await openOnCreateDb(name);
 	await clearDb(db, CONSTANTES.STORE_DATA_NAME);
 	await clearDb(db, CONSTANTES.STORE_INFO_NAME);
-	console.log({ info, rubriques });
-	await append(info, '1', rubriques, console.log);
+	Logger.log({ info, rubriques });
+	await append(info, '1', rubriques, Logger.log);
 	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, info);
 }
 
@@ -83,10 +83,10 @@ function Search({ storeInfo, version = '1', max = 30, defaultValue = '' }) {
 					order,
 					meloto,
 				});
-				console.log(results);
+				Logger.log(results);
 			}
 			if (value.length) {
-				doIt();
+				doIt().catch(Logger.error);
 			}
 		},
 		[value, name, version, max, order, meloto]

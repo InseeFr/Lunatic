@@ -1,5 +1,3 @@
-import { isValidElement, ReactNode } from 'react';
-
 /**
  * Les labels peuvent être des chaines des caractères ou des fragments JSX issus
  * du composant de transformation Markdown (voir components/commons/components/md-label).
