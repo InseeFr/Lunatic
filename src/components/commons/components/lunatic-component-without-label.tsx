@@ -9,7 +9,6 @@ import Missing from './missing';
 import React, { ReactElement } from 'react';
 import VariableStatus from './variable-status';
 import { LunaticBaseProps } from '../../type';
-import { QuestionContext, QuestionInformation } from '../../questions';
 
 type Props = {
 	children: ReactElement;
@@ -31,30 +30,18 @@ type Props = {
 	| 'preferences'
 	| 'value'
 	| 'missing'
-	| 'questionContext'
-	| 'questionInformation'
 >;
 
 function LunaticComponent(props: Props) {
-	const {
-		id,
-		declarations,
-		children,
-		management,
-		description,
-		handleChange,
-		questionContext,
-		questionInformation,
-	} = props;
+	const { id, declarations, children, management, description, handleChange } =
+		props;
 	const content = (
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
-			<QuestionContext text={questionContext} />
 			<FieldContainer>
 				{React.cloneElement(children, {
 					description: getDescription({ declarations, description }),
 				})}
-				<QuestionInformation text={questionInformation} />
 			</FieldContainer>
 			<DeclarationsDetachable declarations={declarations} id={id} />
 			<Missing {...props} handleChange={handleChange} />

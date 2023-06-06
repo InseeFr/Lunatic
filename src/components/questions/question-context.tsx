@@ -1,16 +1,29 @@
-import { MessageType } from './type';
 import { createCustomizableLunaticField } from '../commons';
+import { LunaticComponentProps } from '../type';
 import './question-context.scss';
 
-function QuestionContent(props: MessageType) {
-	const { text } = props;
-	if (text) {
-		return <div className="lunatic-call-out">{text}</div>;
+function Description({description}: LunaticComponentProps<'Question'>) {
+  if (!description) {
+    return null;
+  }
+  return <span>{description}</span>
+}
+
+function QuestionContext(props: LunaticComponentProps<'Question'>) {
+	const { label, description } = props;
+
+	if (label) {
+		return <>
+      <div className="lunatic-call-out">
+        {label}
+        <Description description={description} />
+      </div>
+    </>;
 	}
 	return null;
 }
 
 export default createCustomizableLunaticField(
-	QuestionContent,
-	'QuestionContent'
+	QuestionContext,
+	'QuestionContext'
 );

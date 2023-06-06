@@ -19,6 +19,7 @@ type Props = {
 	| 'preferences'
 	| 'value'
 	| 'errors'
+	| 'className'
 >;
 
 function OrchestratedComponent({
