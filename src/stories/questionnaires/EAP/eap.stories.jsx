@@ -1,10 +1,8 @@
 import React from 'react';
 import defaultArgTypes from '../../utils/default-arg-types';
 import Orchestrator from '../../utils/orchestrator';
-import data from './data';
-import data2 from './data2';
-import eapQuestionnaire from './source';
-import eapQuestionnaire2 from './source2';
+import dataEAP from './data-eap';
+import sourceEAP from './source-eap';
 
 const stories = {
 	title: 'Questionnaires/EAP',
@@ -17,30 +15,22 @@ const stories = {
 export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
-export const Default = Template.bind({});
 export const Estanpette = Template.bind({});
 
 async function getReferentiel(name) {
 	switch (name) {
-		case 'nomenclature-multiple':
+		case 'nomenclature-eap':
 			return fetch('prod-eap.json').then((r) => r.json());
 		default:
 			throw new Error(`Unknown referentiel ${name}`);
 	}
 }
 
-Default.args = {
-	id: 'eap-mvp',
-	source: eapQuestionnaire,
-	pagination: true,
-	data,
-};
-
 Estanpette.args = {
 	id: 'eap-estanpette',
-	source: eapQuestionnaire2,
+	source: sourceEAP,
 	pagination: true,
-	data: data2,
+	data: dataEAP,
 	getReferentiel,
 	autoSuggesterLoading: true,
 };
