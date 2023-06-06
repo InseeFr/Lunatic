@@ -7,10 +7,12 @@ import { LunaticComponentProps } from '../type';
 const LoopTypes = {
 	rosterForLoop: 'RosterForLoop',
 	blockForLoop: 'Loop',
-  summaryLoop: 'SummaryLoop',
+	summaryLoop: 'SummaryLoop',
 };
 
-function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop' | 'SummaryLoop'>) {
+function Loop(
+	props: LunaticComponentProps<'Loop' | 'RosterForLoop' | 'SummaryLoop'>
+) {
 	const {
 		declarations,
 		label,
@@ -31,7 +33,6 @@ function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop' | 'SummaryLo
 		paginatedLoop,
 		errors,
 	} = props;
-  console.log(props)
 	switch (componentType) {
 		case LoopTypes.blockForLoop:
 			return (
@@ -75,26 +76,26 @@ function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop' | 'SummaryLo
 					errors={errors}
 				/>
 			);
-      case LoopTypes.summaryLoop:
-        return (
-          <SummaryLoop
-            declarations={declarations}
-            label={label}
-            lines={lines}
-            iterations={iterations}
-            id={id}
-            components={components}
-            handleChange={handleChange}
-            value={value}
-            management={management}
-            executeExpression={executeExpression}
-            missing={missing}
-            shortcut={shortcut}
-            features={features}
-            preferences={preferences}
-            errors={errors}
-          />
-        );
+		case LoopTypes.summaryLoop:
+			return (
+				<SummaryLoop
+					declarations={declarations}
+					label={label}
+					lines={lines}
+					iterations={iterations}
+					id={id}
+					components={components}
+					handleChange={handleChange}
+					value={value}
+					management={management}
+					executeExpression={executeExpression}
+					missing={missing}
+					shortcut={shortcut}
+					features={features}
+					preferences={preferences}
+					errors={errors}
+				/>
+			);
 		default:
 			return null;
 	}
