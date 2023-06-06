@@ -3,7 +3,6 @@ import Orchestrator from '../utils/orchestrator';
 import source from './source';
 import simple from './simple';
 import defaultArgTypes from '../utils/default-arg-types';
-import { SuggesterNotification } from './SuggesterNotification';
 
 const stories = {
 	title: 'Components/Suggester',

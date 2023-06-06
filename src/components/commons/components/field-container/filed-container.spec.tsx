@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen, logRoles } from '@testing-library/react';
-import { expect, it, describe } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
 import FieldContainer from './field-container';
 
 describe('FieldContainer', () => {

@@ -53,14 +53,12 @@
 				min-width: 260px;
 				width: 100%;
 				.lunatic-suggester-content {
-					/* */
 
 					&.focused {
 						.lunatic-suggester-selection {
 						}
 					}
 
-					/* */
 					.lunatic-suggester-selection {
 						border-radius: 5px;
 						border: 2px solid var(--color-primary-dark);
@@ -69,7 +67,7 @@
 							border-color: var(--color-primary-main);
 						}
 						.lunatic-suggester-input {
-							height: 34;
+							height: 34px;
 							line-height: 34px;
 							font-size: 15px;
 							padding-left: 4px;
@@ -104,7 +102,6 @@
 						}
 					}
 
-					/* */
 					.lunatic-suggester-panel {
 						@include defaultFont();
 						height: 0;
@@ -167,8 +164,6 @@
 				font-weight: bold;
 				font-size: large;
 				margin-bottom: 3px;
-			}
-			.descrition {
 			}
 		}
 	}

@@ -44,7 +44,7 @@ function OrchestratedComponent({
 	});
 
 	const { conditionFilter } = componentFilled;
-	const hasToBeDisplay = conditionFilter !== undefined ? conditionFilter : true;
+	const hasToBeDisplay = conditionFilter ?? true;
 
 	if (componentType in lunatic && hasToBeDisplay) {
 		const Component = (lunatic as any)[componentType]; // This is too dynamic, orchestration has no way to check props

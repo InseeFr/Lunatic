@@ -42,8 +42,6 @@ const Orchestrator = ({
 
 	const Button = lunatic.Button;
 
-	console.log(lunatic.getCollectedState(questionnaire));
-
 	return (
 		<div className="container">
 			<div className="components">
