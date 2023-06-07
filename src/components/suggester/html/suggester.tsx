@@ -72,7 +72,6 @@ function Suggester({
 	);
 
 	const defaultSearch = getSearch(responses, search, value);
-
 	return (
 		<ComboBox
 			id={id}
@@ -98,7 +97,8 @@ function getDisplayValue(responses: any, value: any) {
 	if (responses) {
 		const responseId = responses.find((r) => r.id === 'id').response.name;
 		const responseLabel = responses.find((r) => r.id === 'label').response.name;
-		return value[responseId]
+		console.log("responseId"? responseId)
+		return value[responseId] && value[responseId].length > 0
 			? `${value[responseId]} - ${value[responseLabel]}`
 			: '';
 	}
