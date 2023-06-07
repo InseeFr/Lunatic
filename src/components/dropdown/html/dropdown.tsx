@@ -4,9 +4,10 @@ import DropdownSimple from './dropdown-simple';
 import DropdownWritable from './dropdown-writable';
 import './dropdown.scss';
 import { LunaticComponentProps } from '../../type';
+import { ComboBoxOption } from '../../commons/components/combo-box/combo-box.type';
 
 export type DropdownProps = {
-	onSelect: (v: string | null) => void;
+	onSelect: (value: string | ComboBoxOption | null) => void;
 	className?: string;
 } & Pick<
 	LunaticComponentProps<'Dropdown'>,

@@ -44,6 +44,12 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	executeExpression: LunaticState['executeExpression'];
 	features?: string[];
 	componentType?: string;
+	questionContext?: ReactNode;
+	questionInformation?: ReactNode;
+	getSuggesterStatus?: (name: string) => {
+		status: SuggesterStatus;
+		timestamp: number;
+	};
 };
 
 export type SuggesterOption = {
