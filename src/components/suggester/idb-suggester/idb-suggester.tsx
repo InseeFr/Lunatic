@@ -72,6 +72,7 @@ export function IDBSuggester({
 					className={className}
 					optionRenderer={optionRenderer}
 					labelRenderer={labelRenderer}
+					// @ts-ignore
 					onSelect={onSelect}
 					searching={searching}
 					disabled={disabled}

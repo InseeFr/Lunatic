@@ -180,6 +180,7 @@ type ComponentPropsByType = {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
 		writable?: boolean;
+		onSelect?: any;
 	};
 	Textarea: LunaticBaseProps<string> & {
 		cols?: number;

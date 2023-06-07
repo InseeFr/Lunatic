@@ -7,6 +7,7 @@ import {
 } from '../../../use-lunatic/type';
 import { OrchestratedComponent } from '../../commons';
 import { LunaticBaseProps } from '../../type';
+import { ComboBoxOption } from '../../commons/components/combo-box/combo-box.type';
 
 type Props = {
 	id: string;
@@ -59,7 +60,7 @@ function Row({
 	if (!Array.isArray(components)) {
 		return <Tr id={id}></Tr>;
 	}
-
+	// @ts-ignore
 	return (
 		<Tr id={id} row={rowIndex}>
 			{components.map(function (component) {
@@ -70,8 +71,8 @@ function Row({
 				const { id } = component;
 				const idComponent = `${id}-${rowIndex}`;
 				const key = `${id}-${rowIndex}`;
-				let value;
-
+				let value: any;
+				/* FixMe type any */
 				if ('responses' in component) {
 					value = {};
 					const { responses } = component;

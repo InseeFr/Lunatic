@@ -16,7 +16,7 @@ type OriginalProps = {
 		args: { index: number; [key: string]: unknown }
 	) => void;
 	executeExpression: LunaticState['executeExpression'];
-	getSuggesterStatus: LunaticState['getSuggesterStatus'];
+	getSuggesterStatus?: LunaticState['getSuggesterStatus'];
 	iteration?: number;
 	linksIterations?: [number, number];
 	features?: string[];

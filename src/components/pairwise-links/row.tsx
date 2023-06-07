@@ -46,6 +46,7 @@ function Row({
 				let value = undefined;
 
 				if ('response' in component) {
+					// @ts-ignore
 					const { name } = component.response;
 					const valueArray = valueMap[name];
 					if (Array.isArray(valueArray) && Array.isArray(valueArray[x])) {
