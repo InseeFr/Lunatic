@@ -249,7 +249,6 @@ export type ComponentSuggesterType = {
 	componentType: 'Suggester';
 	response?: ResponseType;
 	responses?: Array<{ id: string; response: ResponseType }>;
-	displayResponses: LabelType;
 };
 
 export type ComponentFilterDescriptionType = {

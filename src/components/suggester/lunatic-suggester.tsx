@@ -25,7 +25,6 @@ function LunaticSuggester({
 	management,
 	response,
 	responses,
-	displayResponses,
 	getSuggesterStatus,
 }: LunaticComponentProps<'Suggester'>) {
 	// ToDo :
@@ -77,7 +76,6 @@ function LunaticSuggester({
 				value={value}
 				errors={errors}
 				label={label}
-				displayResponses={displayResponses}
 				getSuggesterStatus={getSuggesterStatus}
 			/>
 		</LunaticComponent>

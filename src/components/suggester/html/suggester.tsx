@@ -24,7 +24,6 @@ type Props = {
 	searching?: (s: string | null) => Promise<{ results: ComboBoxOption[] }>;
 	label?: ReactNode;
 	description?: ReactNode;
-	displayResponses: ReactNode;
 	errors?: Record<string, LunaticError[]>;
 	responses?: any;
 	response?: any;
@@ -43,7 +42,6 @@ function Suggester({
 	id,
 	searching,
 	label,
-	displayResponses,
 	description,
 	errors,
 }: Props) {

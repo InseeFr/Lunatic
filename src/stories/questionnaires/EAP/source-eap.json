@@ -17,6 +17,23 @@
 				"params": { "language": "French", "pattern": "[\\w.]+" }
 			},
 			"version": "1"
+		},
+		{
+			"name": "nomenclature-multiple",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 2
+				},
+				{ "name": "id" }
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w.]+" }
+			},
+			"version": "1"
 		}
 	],
 	"variables": [
@@ -75,7 +92,7 @@
 				"FORCED": [null],
 				"PREVIOUS": [null]
 			},
-			"name": "ID_2"
+			"name": "ID_SIMPLE"
 		},
 		{
 			"variableType": "COLLECTED",
@@ -86,7 +103,7 @@
 				"FORCED": [null],
 				"PREVIOUS": [null]
 			},
-			"name": "LABEL_2"
+			"name": "LABEL_SIMPLE"
 		},
 		{
 			"variableType": "COLLECTED",
@@ -97,7 +114,7 @@
 				"FORCED": [null],
 				"PREVIOUS": [null]
 			},
-			"name": "UNIT_2"
+			"name": "UNIT_SIMPLE"
 		},
 		{
 			"variableType": "COLLECTED",
@@ -136,14 +153,13 @@
 	"components": [
 		{
 			"id": "sugg1",
-			"page": "1",
 			"componentType": "Suggester",
 			"mandatory": false,
 			"label": {
 				"value": "\" Sélectionner un produit\"",
 				"type": "VTL|MD"
 			},
-			"storeName": "nomenclature-eap",
+			"storeName": "nomenclature-multiple",
 			"conditionFilter": {
 				"value": "true",
 				"type": "VTL"
@@ -151,18 +167,19 @@
 			"responses": [
 				{
 					"id": "id",
-					"response": { "name": "ID_2" }
+					"response": { "name": "ID_SIMPLE" }
 				},
 
 				{
 					"id": "label",
-					"response": { "name": "LABEL_2" }
+					"response": { "name": "LABEL_SIMPLE" }
 				},
 				{
 					"id": "unit",
-					"response": { "name": "UNIT_2" }
+					"response": { "name": "UNIT_SIMPLE" }
 				}
-			]
+			],
+			"page": "1"
 		},
 		{
 			"componentType": "RosterForLoop",

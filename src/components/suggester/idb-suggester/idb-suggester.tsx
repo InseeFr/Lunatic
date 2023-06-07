@@ -18,7 +18,6 @@ type Props = Pick<
 	| 'value'
 	| 'label'
 	| 'description'
-	| 'displayResponses'
 	| 'getSuggesterStatus'
 	| 'errors'
 	| 'response'
@@ -39,7 +38,6 @@ export function IDBSuggester({
 	value,
 	label,
 	description,
-	displayResponses,
 	getSuggesterStatus,
 	errors,
 	responses,
@@ -79,7 +77,6 @@ export function IDBSuggester({
 					disabled={disabled}
 					value={value}
 					label={label}
-					displayResponses={displayResponses}
 					description={description}
 					errors={errors}
 					responses={responses}

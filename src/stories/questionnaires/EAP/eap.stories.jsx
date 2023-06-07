@@ -21,6 +21,8 @@ async function getReferentiel(name) {
 	switch (name) {
 		case 'nomenclature-eap':
 			return fetch('prod-eap.json').then((r) => r.json());
+		case 'nomenclature-multiple':
+			return fetch('/nomenclature-multiple.json').then((r) => r.json());
 		default:
 			throw new Error(`Unknown referentiel ${name}`);
 	}
