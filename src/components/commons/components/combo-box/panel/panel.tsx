@@ -16,7 +16,7 @@ export type PanelProps = {
 	expanded?: boolean;
 	id?: string;
 	search?: string;
-	onSelect: (value: ComboBoxOption) => void;
+	onSelect: (value: string | ComboBoxOption) => void;
 };
 
 export function Panel({

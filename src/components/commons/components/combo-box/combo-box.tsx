@@ -21,7 +21,7 @@ type Props = SelectionProps &
 		classStyle?: string;
 		value: string | null;
 		messageError?: string;
-		getOptionValue?: (o: ComboBoxOption) => string;
+		getOptionValue?: (o: ComboBoxOption) => string | undefined;
 		label?: ReactNode;
 		description?: ReactNode;
 		errors?: LunaticBaseProps['errors'];
@@ -72,8 +72,9 @@ function ComboBox({
 		dispatch(actions.onBlur());
 	}, []);
 
+	/* fixMe : typescript any*/
 	const handleSelect = useCallback(
-		(index: string) => {
+		(index: any) => {
 			const indexNumber = parseInt(index, 10);
 			const option = options[indexNumber];
 			dispatch(actions.onSelect(indexNumber));
