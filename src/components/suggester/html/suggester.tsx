@@ -15,7 +15,7 @@ import './default-style.scss';
 type Props = {
 	className?: string;
 	placeholder?: string;
-	onSelect?: (s: ComboBoxOption | null) => void;
+	onSelect?: (s: ComboBoxOption | null | string) => void;
 	value: string | null;
 	labelRenderer: LunaticComponentProps<'Suggester'>['labelRenderer'];
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
@@ -49,7 +49,7 @@ function Suggester({
 	const [options, setOptions] = useState<Array<ComboBoxOption>>([]);
 
 	const handleSelect = useCallback(
-		function (option: ComboBoxOption | null) {
+		function (option: ComboBoxOption | null | string) {
 			onSelect(option ? option : null);
 		},
 		[onSelect]
@@ -95,8 +95,11 @@ function Suggester({
 
 function getDisplayValue(responses: any, value: any) {
 	if (responses) {
-		const responseId = responses.find((r) => r.id === 'id').response.name;
-		const responseLabel = responses.find((r) => r.id === 'label').response.name;
+		const responseId = responses.find((r: { id: string }) => r.id === 'id')
+			.response.name;
+		const responseLabel = responses.find(
+			(r: { id: string }) => r.id === 'label'
+		).response.name;
 		return value[responseId] && value[responseId].length > 0
 			? `${value[responseId]} - ${value[responseLabel]}`
 			: '';
