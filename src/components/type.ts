@@ -212,7 +212,6 @@ type ComponentPropsByType = {
 		focused: boolean;
 		response?: { name: string };
 		responses?: Array<{ id: string; response: { name: string } }>;
-		displayResponses: string;
 	};
 	Summary: LunaticBaseProps<string | null> & {
 		sections: Array<{

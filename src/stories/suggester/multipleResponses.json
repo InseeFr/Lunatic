@@ -48,10 +48,7 @@
 					"response": { "name": "UNIT" }
 				}
 			],
-			"displayResponses": {
-				"value": "if (isnull(ID)) then \"\" else ID || \" - \" || LABEL",
-				"type": "VTL"
-			},
+			
 			"page": "1"
 		},
 		{
