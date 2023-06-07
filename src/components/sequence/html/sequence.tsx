@@ -14,6 +14,7 @@ function Sequence({
 			<div className="sequence-lunatic" id={`sequence-${id}`} style={style}>
 				{label}
 			</div>
+			{/* before sequence */}
 			<Description value={description} />
 		</>
 	);
