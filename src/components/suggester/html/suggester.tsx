@@ -97,7 +97,6 @@ function getDisplayValue(responses: any, value: any) {
 	if (responses) {
 		const responseId = responses.find((r) => r.id === 'id').response.name;
 		const responseLabel = responses.find((r) => r.id === 'label').response.name;
-		console.log("responseId"? responseId)
 		return value[responseId] && value[responseId].length > 0
 			? `${value[responseId]} - ${value[responseLabel]}`
 			: '';
