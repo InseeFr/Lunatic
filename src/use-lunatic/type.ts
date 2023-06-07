@@ -172,7 +172,7 @@ export type LunaticState = {
 		subPage?: number;
 		roundabout?: { page: string };
 	}) => void;
-	getSuggesterStatus: (name: string) => {
+	getSuggesterStatus: (name: string | undefined) => {
 		status: SuggesterStatus;
 		timestamp: number;
 	};

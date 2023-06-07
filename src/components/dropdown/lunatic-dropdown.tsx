@@ -21,7 +21,8 @@ function LunaticDropdown({
 	management,
 	description,
 }: LunaticComponentProps<'Dropdown'>) {
-	const onChange = useOnHandleChange({ handleChange, response, value });
+	/*FixMe : type any*/
+	const onChange: any = useOnHandleChange({ handleChange, response, value });
 
 	return (
 		<LunaticComponent
