@@ -1,0 +1,293 @@
+{
+  "cleaning": {},
+  "variables": [
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "COMMENT_QE"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "Q1"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "Q2"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "Q3"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "Q4"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "Q5"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "Q6"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "Q7"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "Q8"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "Q9"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "Q10"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "MIX1"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "MIX2"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "MIX3"
+    },
+    {
+      "variableType": "COLLECTED",
+      "values": {
+        "COLLECTED": null,
+        "EDITED": null,
+        "INPUTED": null,
+        "FORCED": null,
+        "PREVIOUS": null
+      },
+      "name": "MIX4"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_Q1",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_Q2",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_Q3",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_Q4",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_Q5",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_Q6",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_Q7",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_Q8",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_Q9",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_Q10",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_MIX1",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_MIX2",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_MIX3",
+      "inFilter": "false"
+    },
+    {
+      "variableType": "CALCULATED",
+      "expression": { "type": "VTL", "value": "true" },
+      "name": "FILTER_RESULT_MIX4",
+      "inFilter": "false"
+    }
+  ],
+  "components": [
+    {
+      "componentType": "Sequence",
+      "hierarchy": {
+        "sequence": {
+          "id": "kanya0cm",
+          "page": "1",
+          "label": {
+            "type": "VTL|MD",
+            "value": "\"I - \" || \"Séquence - questions comportant des déclarations de différents types\""
+          }
+        }
+      },
+      "conditionFilter": { "type": "VTL", "value": "true" },
+      "id": "kanya0cm",
+      "page": "1",
+      "label": {
+        "type": "VTL|MD",
+        "value": "\"I - \" || \"Séquence - questions comportant des déclarations de différents types\""
+      },
+      "declarations": [
+        {
+          "declarationType": "INSTRUCTION",
+          "id": "kanya0cm-kanzilet",
+          "label": {
+            "type": "VTL|MD",
+            "value": "\"consigne de séquence cawi\""
+          },
+          "position": "AFTER_QUESTION_TEXT"
+        },
+        {
+          "declarationType": "HELP",
+          "id": "kanya0cm-kzfdtx2b",
+          "label": { "type": "VTL|MD", "value": "\"aide de séquence cawi\"" },
+          "position": "AFTER_QUESTION_TEXT"
+        }
+      ]
+    }
+  ]
+}
