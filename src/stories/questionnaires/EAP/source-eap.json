@@ -302,7 +302,7 @@
 			"page": "2",
 			"label": {
 				"type": "VTL|MD",
-				"value": "\"➡ 1. \" || \"Les années précédentes, vous avez déclaré fabriquer les produits ci-dessous, veuillez remplir les informations correspondantes pour l’année 2022\""
+				"value": "\"Ajouter une ligne\""
 			},
 			"components": [
 				{
