@@ -20,6 +20,15 @@
 				"Minerais de fer et leurs concentrés, agglomérés (à l'exclusion des pyrites de fer grillées)"
 			]
 		},
+		"UNIT_SIMPLE": {
+			"COLLECTED": []
+		},
+		"ID_SIMPLE": {
+			"COLLECTED": []
+		},
+		"LABEL_SIMPLE": {
+			"COLLECTED": []
+		},
 		"UNIT": {
 			"COLLECTED": ["", "", "", "", "tonnes", "tonnes"]
 		},
