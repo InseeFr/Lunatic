@@ -26,7 +26,7 @@ type Props = SelectionProps &
 		description?: ReactNode;
 		errors?: LunaticBaseProps['errors'];
 		onChange?: (s: string | null) => void;
-		onSelect: (s: ComboBoxOption | null) => void;
+		onSelect: (s: ComboBoxOption | null | string) => void;
 		options: ComboBoxOption[];
 	};
 
