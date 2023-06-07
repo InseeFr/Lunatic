@@ -52,6 +52,7 @@ function RosterTable({
 					nbRows={nbRows}
 					handleChange={handleChange}
 					executeExpression={executeExpression}
+					// @ts-ignore
 					getSuggesterStatus={getSuggesterStatus}
 					valueMap={valueMap}
 					missing={missing}

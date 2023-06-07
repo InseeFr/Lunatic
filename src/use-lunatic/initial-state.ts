@@ -31,6 +31,7 @@ const INITIAL_STATE: LunaticState = {
 	handleChange: () => {},
 	goToPage: () => undefined,
 	activeControls: false,
+	// @ts-ignore
 	getSuggesterStatus: (name: string) => ({
 		status: SuggesterStatus.unused,
 		timestamp: 0,
