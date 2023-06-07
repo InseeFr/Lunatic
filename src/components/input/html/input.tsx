@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { ChangeEventHandler, ReactNode, useCallback } from 'react';
+import React, { ChangeEventHandler, ReactNode, useCallback, useState } from 'react';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import './input.scss';
 import { LunaticBaseProps } from '../../type';
@@ -28,9 +28,11 @@ function Input({
 	errors,
 }: Props) {
 	const labelId = `label-${id}`;
+  const [localValue, setLocalValue] = useState<string | null | undefined>(value);
 	const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
 		function (e) {
 			const value = e.target.value;
+      setLocalValue(value)
 			onChange(value);
 		},
 		[onChange]
@@ -46,7 +48,7 @@ function Input({
 				autoComplete="off"
 				type="text"
 				disabled={disabled}
-				value={checkValue(value)}
+				value={checkValue(localValue)}
 				onChange={handleChange}
 				aria-required={required}
 				required={required}
