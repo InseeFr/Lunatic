@@ -7,18 +7,13 @@
 		border: 0;
 		height: 1.875rem;
 	}
-// deccription
 }
 
-.HELP p {
-	margin: 10px;
-}
-.INSTRUCTION p {
-	margin: 10px;
-}
-.COMMENT p {
-	margin: 10px;
-}
+.HELP p,
+.INSTRUCTION p,
+.COMMENT p,
 .STATEMENT p {
 	margin: 10px;
+	font-size: 12px;
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
