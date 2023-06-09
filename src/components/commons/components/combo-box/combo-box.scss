@@ -59,7 +59,6 @@
 					}
 
 					.lunatic-combo-box-selected {
-						// height: 36px;
 						height: 42px;
 						line-height: 34px;
 						background-color: var(--color-combo-box-background);
@@ -67,7 +66,7 @@
 						padding-left: 4px;
 						@include selection();
 						outline: none;
-
+						overflow-y: hidden;
 						display: block;
 						@include placeholder();
 
