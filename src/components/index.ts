@@ -13,7 +13,6 @@ export { default as Modal } from './modal-controls';
 export { default as PairwiseLinks } from './pairwise-links';
 export { default as Radio } from './radio';
 export { default as RosterForLoop } from './loop';
-export { default as SummaryLoop } from './loop';
 export { default as Sequence } from './sequence';
 export { default as Subsequence } from './subsequence';
 export { default as Suggester } from './suggester';

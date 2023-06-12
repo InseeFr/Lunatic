@@ -3,7 +3,7 @@ import { LunaticComponentDefinition } from '../../type';
 export const isLoopComponent = (
 	component: LunaticComponentDefinition
 ): component is LunaticComponentDefinition & {
-	componentType: 'Loop' | 'RosterForLoop' | 'SummaryLoop';
+	componentType: 'Loop' | 'RosterForLoop';
 } => {
-	return ['Loop', 'RosterForLoop', 'SummaryLoop'].includes(component.componentType);
+	return ['Loop', 'RosterForLoop'].includes(component.componentType);
 };

@@ -1,71 +1,102 @@
 import { LunaticComponentProps, VtlExpression } from '../type';
 import SummaryTitle from './html/summary-title';
-import SummaryLoop from './html/summary-loop';
 import SummaryContainer from './html/summary-container';
 import { ReactNode } from 'react';
+import SummaryResponses from './html/summary-responses';
 
-export type SummaryLoopEntry = {
+export type SummaryResponsesEntry = {
 	label: ReactNode;
 	value: ReactNode;
-	title?: ReactNode;
 };
 
-function compileLoop(
-	loop: Array<{ label: VtlExpression; value: VtlExpression }>,
-	executeExpression: (
+type CompiledTitleProps = {
+  executeExpression: (
 		expression: VtlExpression,
 		args?: {
 			iteration?: number | undefined;
 		}
 	) => unknown,
-
-	iteration: number
-) {
-	return loop.map(function ({ label, value }) {
-		return {
-			label: executeExpression(label, { iteration }),
-			value: executeExpression(value, { iteration }),
-		} as SummaryLoopEntry;
-	});
+	iteration?: number,
+	title?: VtlExpression,
 }
 
-function compileLoopTitle(
+function compileResponses(
+	responses: Array<{ label: VtlExpression; value: VtlExpression }>,
 	executeExpression: (
 		expression: VtlExpression,
 		args?: {
 			iteration?: number | undefined;
 		}
 	) => unknown,
-	iteration: number,
-	loopTitle?: VtlExpression
-): ReactNode {
-	return loopTitle ? (
-		(executeExpression(loopTitle, { iteration }) as ReactNode)
-	) : (
-		<>`Valeur pour ${iteration + 1}`</>
-	);
+	iteration?: number
+) {
+	return responses && (iteration || iteration === 0) ? (
+    responses.map(function ({ label, value }) {
+      return {
+        label: executeExpression(label, { iteration }),
+        value: executeExpression(value, { iteration }),
+      } as SummaryResponsesEntry;
+    })
+  ) : ( 
+    responses.map(function ({ label, value }) {
+      return {
+        label: executeExpression(label, {  }),
+        value: executeExpression(value, {  }), 
+      } as SummaryResponsesEntry;
+    })    
+  );
+}
+
+function CompiledTitle ({
+  executeExpression,
+  iteration, 
+  title, 
+}: CompiledTitleProps) {
+  if ( !title && iteration  ) {
+    return <>{`Valeur pour ${iteration + 1}`}</>
+  }
+  if ( !title ) {
+    return <>{`Valeurs renseignés :`}</>
+  } 
+  if ( (!iteration && iteration !== 0) && title ) {
+    return <>{(executeExpression(title, { iteration: undefined }) as ReactNode)}</>
+  }
+  return <>{(executeExpression(title, { iteration }) as ReactNode)}</>
 }
 
 function LunaticSummary(props: LunaticComponentProps<'Summary'>) {
-	const { executeExpression, iterations, label, loop, loopTitle } = props;
-	let rows: Array<{ values: SummaryLoopEntry[]; title: ReactNode }> = [];
+	const { executeExpression, label, sections } = props;
 
-	if (typeof iterations === 'number' && iterations > 0 && loop) {
-		rows = Array(iterations)
-			.fill(null)
-			.map(function (_, iteration) {
-				const title = compileLoopTitle(executeExpression, iteration, loopTitle);
-				return {
-					values: compileLoop(loop, executeExpression, iteration),
-					title,
-				};
-			});
-	}
+  const compiledSections = sections.reduce((acc, section) => {
+    const { iterations, title, responses } = section;
+    if (iterations) {
+      const compiledIterations: number = executeExpression(iterations)
+      if (responses) {
+        const elements = Array(compiledIterations)
+        .fill(null)
+        .map(function (_, iteration) {
+          return {
+            values: compileResponses(responses, executeExpression, iteration), 
+            title: <CompiledTitle executeExpression={executeExpression} iteration={iteration} title={title} />
+          }
+        })
+        return [...acc, ...elements]
+      }
+    }
+    if (responses) {
+      const element = {
+        title: <CompiledTitle executeExpression={executeExpression} iteration={undefined} title={title} />, 
+        values: compileResponses(responses, executeExpression, undefined)
+      }
+      return [...acc, element]
+    }
+    return acc;
+  }, [] as Array<{title?: ReactNode; values?: Array<{label: ReactNode, value: ReactNode}>}>)
 
 	return (
 		<SummaryContainer>
 			<SummaryTitle label={label} />
-			<SummaryLoop rows={rows} />
+      <SummaryResponses sections={compiledSections} />
 		</SummaryContainer>
 	);
 }

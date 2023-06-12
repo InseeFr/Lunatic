@@ -95,15 +95,6 @@ type ComponentPropsByType = {
 		headers?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
 	};
-	SummaryLoop: LunaticBaseProps<unknown> & {
-		lines: { min: number; max: number };
-		iterations?: number;
-		components: LunaticComponentDefinition[];
-		executeExpression: LunaticState['executeExpression'];
-		value: Record<string, unknown[]>;
-		headers?: Array<{ label: ReactNode }>;
-		paginatedLoop?: boolean;
-	};
 	Loop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
@@ -218,9 +209,11 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	Summary: LunaticBaseProps<string | null> & {
-		iterations?: number;
-		loop?: Array<{ label: VtlExpression; value: VtlExpression }>;
-		loopTitle?: VtlExpression;
+    sections: Array<{
+      responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
+      title?: VtlExpression;
+      iterations?: number;
+    }>
 	};
 };
 
