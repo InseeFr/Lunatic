@@ -6,7 +6,7 @@
 			"mandatory": false,
 			"format": "PnYnM",
 			"page": "1",
-			"maxPage": "3",
+			"maxPage": "1",
 			"label": {
 				"value": "\"➡ 1. \" || \"Duration \"",
 				"type": "VTL|MD"
@@ -22,7 +22,7 @@
 			"name": "DUREE",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": "PT5H12M",
+				"COLLECTED": "P10Y11M",
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
