@@ -1,4 +1,6 @@
 // Enable cross domain workers
+import { Logger } from '../logger';
+
 declare var window: any;
 
 const testSameOrigin = (url: string) => {
@@ -13,7 +15,7 @@ const testSameOrigin = (url: string) => {
 };
 
 const createWorkerFallback = (workerUrl: string) => {
-	console.log('Create worker for MFE');
+	Logger.info('Create worker for MFE');
 	var worker = null;
 	try {
 		var blob;

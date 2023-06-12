@@ -14,12 +14,8 @@ function SimpleOptionRenderer({ option, selected }: Props) {
 		return (
 			<div className={classnames('lunatic-dropdown-option', { selected })}>
 				<span className="id">{value}</span>
-				{label && (
-					<>
-						<span>&nbsp;&#x2014;&nbsp;</span>
-						<span className="label">{label}</span>
-					</>
-				)}
+				<span>&nbsp;&#x2014;&nbsp;</span>
+				<span className="label">{label}</span>
 			</div>
 		);
 	}

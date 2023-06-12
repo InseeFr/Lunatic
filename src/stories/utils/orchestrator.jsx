@@ -7,6 +7,7 @@ import React, { memo, useCallback, useState } from 'react';
 
 import { Overview } from './overview';
 import Waiting from './waiting';
+import { Logger } from '../../utils/logger';
 
 function getStoreInfoRequired() {
 	return {};
@@ -23,7 +24,7 @@ function DevOptions({ goToPage, getData }) {
 		<div className="dev-options">
 			<div className="title">Options développeur</div>
 			<div className="contenur">
-				<lunatic.Button onClick={() => console.log(getData(true))}>
+				<lunatic.Button onClick={() => Logger.log(getData(true))}>
 					Get State
 				</lunatic.Button>
 				<lunatic.Button onClick={() => goToPage({ page: `${toPage}` })}>
@@ -74,11 +75,11 @@ function Pager({
 }
 
 function onLogChange(response, value, args) {
-	console.log('onChange', { response, value, args });
+	Logger.log('onChange', { response, value, args });
 }
 
 function logMissingStrategy() {
-	console.log('no missing strategy');
+	Logger.log('no missing strategy');
 }
 
 function OrchestratorForStories({

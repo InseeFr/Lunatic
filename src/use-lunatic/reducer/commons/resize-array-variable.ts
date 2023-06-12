@@ -1,7 +1,7 @@
 /**
  * Cast the variable into an array and adjust the length if necessary
  */
-function resizeArrayVariable<T extends unknown = unknown>(
+function resizeArrayVariable<T = unknown>(
 	array: unknown,
 	length: number,
 	defaultValue?: T

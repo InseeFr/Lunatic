@@ -1,6 +1,7 @@
 import { ComponentProps, FunctionComponent, PropsWithChildren } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from './link';
+import { voidFunction } from '../../../../utils/function';
 
 const renderers = (otherProps: {
 	logFunction: typeof DEFAULT_LOG_FUNCTION;
@@ -14,7 +15,7 @@ const renderers = (otherProps: {
 	};
 };
 
-const DEFAULT_LOG_FUNCTION = () => {};
+const DEFAULT_LOG_FUNCTION = voidFunction;
 
 type Props = { expression: string; logFunction?: typeof DEFAULT_LOG_FUNCTION };
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { FunctionComponent } from 'react';
-import { LunaticComponentProps } from '../type';
+import type { FunctionComponent } from 'react';
+import type { LunaticComponentProps } from '../type';
 import {
 	LunaticComponentDefinition,
 	LunaticState,

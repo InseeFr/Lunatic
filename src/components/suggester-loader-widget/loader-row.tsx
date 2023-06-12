@@ -8,6 +8,7 @@ import {
 import { CrossIcon, LoadIcon } from '../commons/icons';
 import Loader from './loader';
 import { SuggesterType } from '../../use-lunatic/type-source';
+import { Logger } from '../../utils/logger';
 
 type Props = {
 	storeInfo: SuggesterType;
@@ -39,7 +40,7 @@ function LoaderRow({
 	const clear = useCallback(
 		function () {
 			if (db) {
-				clearStoreData(db);
+				clearStoreData(db).catch(Logger.error);
 				setNbEntities(0);
 			}
 		},

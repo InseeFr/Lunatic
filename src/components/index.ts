@@ -23,3 +23,5 @@ export { default as Roundabout } from './roundabout';
 export { default as Table } from './table';
 export { default as ComponentSet } from './component-set';
 export { default as Summary } from './summary';
+export { default as QuestionInformation } from './questions/question-information';
+export { default as QuestionContext } from './questions/question-context';

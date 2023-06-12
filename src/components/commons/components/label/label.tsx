@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import Description from '../description';
 import './label.scss';
-import { LunaticBaseProps } from '../../../type';
 
 type Props = PropsWithChildren<{
 	id?: string;

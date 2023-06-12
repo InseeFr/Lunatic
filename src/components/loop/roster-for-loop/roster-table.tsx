@@ -38,7 +38,6 @@ function RosterTable({
 	management,
 	handleChange,
 }: Props) {
-	console.log('lunatic', 'roster-table', headers);
 	if (nbRows <= 0) {
 		return <NothingToDisplay />;
 	}
