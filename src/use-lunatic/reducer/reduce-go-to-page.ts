@@ -1,8 +1,8 @@
 import { ActionGoToPage, ActionKind } from '../actions';
+import { getPagerFromPageTag } from '../commons/page-tag';
 import { LunaticState } from '../type';
 import { isOnEmptyPage } from './commons';
 import reduceGoNextPage from './reduce-go-next-page';
-import { getPagerFromPageTag } from '../commons/page-tag';
 
 function validateChange(state: LunaticState) {
 	if (isOnEmptyPage(state)) {
