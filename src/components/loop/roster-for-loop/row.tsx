@@ -10,6 +10,7 @@ type Props = {
 	valueMap?: Record<string, unknown>;
 	features?: string[];
 	rowIndex: number;
+	disabled?: boolean;
 	handleChange: (
 		response: { name: string },
 		value: unknown,
@@ -39,6 +40,7 @@ function Row({
 	preferences,
 	executeExpression,
 	errors,
+	disabled,
 }: Props) {
 	const handleChangeRow = useCallback<
 		(response: { name: string }, value: unknown) => void
@@ -89,6 +91,7 @@ function Row({
 							preferences={preferences}
 							iteration={rowIndex}
 							executeExpression={executeExpression}
+							disabled={disabled}
 							errors={errors}
 						/>
 					</Td>

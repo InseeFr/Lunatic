@@ -28,6 +28,7 @@ function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
 		preferences,
 		paginatedLoop,
 		errors,
+		disabled,
 	} = props;
 	switch (componentType) {
 		case LoopTypes.blockForLoop:
@@ -49,6 +50,7 @@ function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
 					preferences={preferences}
 					paginatedLoop={paginatedLoop}
 					errors={errors}
+					disabled={disabled}
 				/>
 			);
 		case LoopTypes.rosterForLoop:
@@ -70,6 +72,7 @@ function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
 					preferences={preferences}
 					headers={headers}
 					errors={errors}
+					disabled={disabled}
 				/>
 			);
 		default:

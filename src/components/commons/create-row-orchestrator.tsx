@@ -22,12 +22,13 @@ type OriginalProps = {
 	features?: string[];
 } & Pick<
 	LunaticComponentProps<'Loop'>,
-	'errors' | 'preferences' | 'missing' | 'shortcut' | 'id'
+	'errors' | 'preferences' | 'missing' | 'shortcut' | 'id' | 'disabled'
 >;
 
 type OrchestratedProps = {
 	nbRows: number;
 	xAxisIterations?: number;
+	disabled?: boolean;
 	handleChange: (
 		response: { name: string },
 		value: unknown,
@@ -62,6 +63,7 @@ function createRowOrchestrator(Row: FunctionComponent<OriginalProps>) {
 		iteration,
 		xAxisIterations,
 		errors,
+		disabled,
 	}: OrchestratedProps) {
 		if (nbRows <= 0) {
 			return null;
@@ -87,6 +89,7 @@ function createRowOrchestrator(Row: FunctionComponent<OriginalProps>) {
 							executeExpression={executeExpression}
 							iteration={iteration}
 							linksIterations={linksIterations}
+							disabled={disabled}
 							/** */
 							features={features}
 							shortcut={shortcut}
