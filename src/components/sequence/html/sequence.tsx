@@ -10,10 +10,12 @@ function Sequence({
 	description,
 }: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'style' | 'description'>) {
 	return (
-		<div className="sequence-lunatic" id={`sequence-${id}`} style={style}>
-			{label}
+		<>
+			<div className="sequence-lunatic" id={`sequence-${id}`} style={style}>
+				{label}
+			</div>
 			<Description value={description} />
-		</div>
+		</>
 	);
 }
 
