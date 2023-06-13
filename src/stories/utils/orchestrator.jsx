@@ -103,6 +103,7 @@ function OrchestratorForStories({
 	getReferentiel,
 	dontKnowButton,
 	refusedButton,
+	readOnly,
 	...rest
 }) {
 	const { maxPage } = source;
@@ -192,6 +193,7 @@ function OrchestratorForStories({
 									// fill error when needed
 									errors={errorActive[pageTag]}
 									filterDescription={filterDescription}
+									disabled={readOnly}
 								/>
 							</div>
 						);
