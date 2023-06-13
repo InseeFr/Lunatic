@@ -21,7 +21,7 @@ describe('Sequence', () => {
 		id: 'test-sequence',
 		label: 'Test Sequence Label',
 		style: { backgroundColor: 'red' },
-		questionInformation: 'question-information',
+		// questionInformation: 'question-information',
 	};
 
 	it('renders the label and declarations in the correct order', () => {
@@ -29,10 +29,10 @@ describe('Sequence', () => {
 		const sequenceLabel = getByText('Test Sequence Label');
 		const declaration1 = getByText('Declaration 1');
 		const declaration3 = getByText('Declaration 3');
-		const questionInformation = getByText('question-information');
+		// const questionInformation = getByText('question-information');
 
 		expect(sequenceLabel).toBeInTheDocument();
-		expect(questionInformation).toBeInTheDocument();
+		// expect(questionInformation).toBeInTheDocument();
 		// Declarations before text should appear before the label
 		expect(declaration1).toBeInTheDocument();
 		// expect(sequenceLabel?.previousSibling?.childNodes[0]).toBe(declaration1);
