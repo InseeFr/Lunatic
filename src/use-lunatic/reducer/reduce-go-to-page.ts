@@ -68,10 +68,8 @@ function reduceGoToPage(
 	}
 
 	if (action.payload.iteration !== undefined) {
-		return resolveSubPage(state, action);
-	}
-
-	if (!isInLoop)
+		newState = resolveSubPage(state, action);
+	} else if (!isInLoop) {
 		newState = {
 			...state,
 			pager: {
@@ -83,10 +81,11 @@ function reduceGoToPage(
 				page: action.payload.page,
 			},
 		};
-	// TODO: fix when redirect to loop component
-	// How to calculate nbSubPages & nbIterations?
-	// How to calculate lazy variables we need?
-	// Handle setLoopBindings with the good iteration
+		// TODO: fix when redirect to loop component
+		// How to calculate nbSubPages & nbIterations?
+		// How to calculate lazy variables we need?
+		// Handle setLoopBindings with the good iteration
+	}
 	return validateChange(newState);
 }
 
