@@ -20,8 +20,8 @@ function LunaticComponentSet(props: LunaticComponentProps<'ComponentSet'>) {
 		description,
 		handleChange,
 		className,
+		iteration,
 	} = props;
-
 	return (
 		<LunaticComponentWithoutLabel
 			id={id}
@@ -40,6 +40,7 @@ function LunaticComponentSet(props: LunaticComponentProps<'ComponentSet'>) {
 					features={features}
 					errors={errors}
 					value={value}
+					iteration={iteration}
 					executeExpression={executeExpression}
 					preferences={preferences}
 					management={management}

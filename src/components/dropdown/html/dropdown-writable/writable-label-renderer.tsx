@@ -1,5 +1,4 @@
 import React, { isValidElement } from 'react';
-import PropTypes from 'prop-types';
 import { ComboBoxOption } from '../../../commons/components/combo-box/combo-box.type';
 
 type Props = {
@@ -16,7 +15,7 @@ function getContent(option: Props['option'], search?: string) {
 		}
 		return label ? `${value} - ${label}` : value;
 	}
-	if (search && search.trim().length) {
+	if (search?.trim().length) {
 		return search;
 	}
 	return null;

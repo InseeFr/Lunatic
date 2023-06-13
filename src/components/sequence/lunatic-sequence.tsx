@@ -8,9 +8,7 @@ function LunaticSequence({
 	declarations,
 	label,
 	id,
-	style,
-	questionContext,
-	questionInformation,
+	style
 }: LunaticComponentProps<'Sequence'>) {
 	return (
 		<LunaticComponent
@@ -19,8 +17,6 @@ function LunaticSequence({
 			declarations={declarations}
 			handleChange={empty}
 			value={undefined}
-			questionContext={questionContext}
-			questionInformation={questionInformation}
 		>
 			<Sequence label={label} id={id} style={style} />
 		</LunaticComponent>

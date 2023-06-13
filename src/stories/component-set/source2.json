@@ -115,41 +115,11 @@
           "depth": 1,
           "conditionFilter": { "value": "true", "type": "VTL" },
           "label": {
-            "value": "\"## Who are you? <- this is inside a roundabout ->\"", 
+            "value": "\"## Who are you?\"", 
             "type":"VTL|MD"
           },
           "description": { "value": "\"This is your opportunity to tell me about yourself!\"", "type": "VTL|MD" },
           "components": [
-            {
-              "id": "color",
-              "componentType": "Input",
-              "mandatory": false,
-              "maxLength": 20,
-              "label": {
-                "value": "\"Favourite Color?\"))",
-                "type": "VTL|MD"
-              },
-              "conditionFilter": {
-                "value": "true",
-                "type": "VTL"
-              },
-              "controls": [
-                {
-                  "criticality": "WARN",
-                  "errorMessage": {
-                    "type": "VTL",
-                    "value": "\"booleen pas coché et on affiche un message un peu long histoire de tester le truc \""
-                  },
-                  "typeOfControl": "CONSISTENCY",
-                  "control": {
-                    "type": "VTL",
-                    "value": "false"
-                  },
-                  "id": "kfxmjupm-CI-0"
-                }
-              ],
-              "response": { "name": "COLOR" }
-            },
             {
               "id": "sexe",
               "componentType": "Radio",
@@ -172,6 +142,36 @@
                 }
               ],
               "response": { "name": "SEXE" }
+            },
+            {
+              "id": "color",
+              "componentType": "Input",
+              "mandatory": false,
+              "maxLength": 20,
+              "label": {
+                "value": "\"Favourite Color?\"))",
+                "type": "VTL|MD"
+              },
+              "conditionFilter": {
+                "value": "not(isnull(SEXE))",
+                "type": "VTL"
+              },
+              "controls": [
+                {
+                    "id": "j4nw5cqz",
+                    "typeOfControl": "CONSISTENCY",
+                    "criticality": "WARN",
+                    "control": {
+                        "value": "COLOR <> \"Green\"",
+                        "type": "VTL"
+                    },
+                    "errorMessage": {
+                        "value": "\"Green is the worst colour!!!\"",
+                        "type": "VTL|MD"
+                    }
+                }
+              ],
+              "response": { "name": "COLOR" }
             },
             {
               "id": "j4nw5cqz",

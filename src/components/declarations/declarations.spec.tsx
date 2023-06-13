@@ -74,7 +74,7 @@ describe('Declarations component', () => {
 	});
 
 	it('renders nothing with empty declarations array', () => {
-		const { getByTestId, queryByTestId } = render(
+		const { queryByTestId } = render(
 			<div>
 				<div data-testid={`declarations-1-DETACHABLE`} />
 				<Declarations id="1" type="DETACHABLE" declarations={[]} />

@@ -18,6 +18,15 @@
 				},
 				{
 					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "INSTRUCTION",
+					"position": "AFTER_QUESTION_TEXT",
+					"label": {
+						"value": "\"Déclaration AFTER\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "kb9hi4j0-krnoclfe",
 					"declarationType": "HELP",
 					"position": "DETACHABLE",
 					"label": {

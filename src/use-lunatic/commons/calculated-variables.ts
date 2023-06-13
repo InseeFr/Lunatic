@@ -12,7 +12,7 @@ export const interpretAllCalculatedVariables = ({
 	builtVariables: LunaticValues;
 	partialVariables?: LunaticState['variables'];
 }) => {
-	return Object.entries(partialVariables || variables).reduce((acc, [k, v]) => {
+	return Object.entries(partialVariables ?? variables).reduce((acc, [k, v]) => {
 		if (k in acc) return acc;
 		if (v.type === CALCULATED) {
 			const {
