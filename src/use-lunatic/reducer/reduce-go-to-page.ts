@@ -2,16 +2,16 @@ import { ActionGoToPage, ActionKind } from '../actions';
 import { LunaticState } from '../type';
 import { isOnEmptyPage } from './commons';
 import reduceGoNextPage from './reduce-go-next-page';
+import { getPagerFromPageTag } from '../commons/page-tag';
 
 function validateChange(state: LunaticState) {
-	const updatedState = { ...state } satisfies LunaticState;
-	if (isOnEmptyPage(updatedState)) {
-		return reduceGoNextPage(updatedState, {
+	if (isOnEmptyPage(state)) {
+		return reduceGoNextPage(state, {
 			type: ActionKind.GO_NEXT_PAGE,
 			payload: {},
 		});
 	}
-	return updatedState;
+	return state;
 }
 
 function resolveSubPage(
@@ -49,14 +49,30 @@ function reduceGoToPage(
 	action: ActionGoToPage
 ): LunaticState {
 	const { isInLoop, pager } = state;
-	const { page: newPage, iteration } = action.payload;
+	let newState = { ...state };
 
-	if (iteration !== undefined) {
+	// The page contains non digit, extract information from it
+	if (action.payload.page.match(/\D/)) {
+		const pager = getPagerFromPageTag(action.payload.page);
+		if (pager) {
+			action.payload.iteration = pager.iteration;
+			action.payload.subPage = pager.subPage;
+			action.payload.page = pager.page;
+		}
+	}
+
+	// The page is still not a number, cancel the action
+	if (action.payload.page.match(/\D/)) {
+		console.error(`Cannot reach page "${action.payload.page}", not a number`);
+		return state;
+	}
+
+	if (action.payload.iteration !== undefined) {
 		return resolveSubPage(state, action);
 	}
 
 	if (!isInLoop)
-		return {
+		newState = {
 			...state,
 			pager: {
 				...pager,
@@ -64,14 +80,14 @@ function reduceGoToPage(
 				nbSubPages: undefined,
 				iteration: undefined,
 				nbIterations: undefined,
-				page: newPage,
+				page: action.payload.page,
 			},
 		};
 	// TODO: fix when redirect to loop component
 	// How to calculate nbSubPages & nbIterations?
 	// How to calculate lazy variables we need?
 	// Handle setLoopBindings with the good iteration
-	return validateChange(state);
+	return validateChange(newState);
 }
 
 export default reduceGoToPage;
