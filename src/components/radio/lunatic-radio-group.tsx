@@ -1,8 +1,10 @@
 import RadioGroup from './html/radio-group';
-import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { createCustomizableLunaticField } from '../commons';
 import { LunaticComponentProps } from '../type';
+import { wrapWithDeclarations } from '../commons/hoc/wrap-with-declarations';
+
+const WrappedRadioGroup = wrapWithDeclarations(RadioGroup);
 
 function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 	const {
@@ -15,42 +17,30 @@ function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 		response,
 		label,
 		description,
-		preferences,
 		declarations,
 		missingResponse,
-		missing,
 		shortcut,
-		management,
 		className = 'lunatic-radio-group',
 		disabled,
 	} = props;
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
-		<LunaticComponent
-			id={id}
-			label={label}
-			preferences={preferences}
+		<WrappedRadioGroup
 			declarations={declarations}
-			value={value}
 			missingResponse={missingResponse}
-			missing={missing}
-			management={management}
 			description={description}
 			handleChange={handleChange}
-		>
-			<RadioGroup
-				id={id}
-				options={options}
-				value={value}
-				onSelect={onChange}
-				checkboxStyle={checkboxStyle}
-				errors={errors}
-				label={label}
-				className={className}
-				shortcut={shortcut}
-				disabled={disabled}
-			/>
-		</LunaticComponent>
+			id={id}
+			options={options}
+			value={value}
+			onSelect={onChange}
+			checkboxStyle={checkboxStyle}
+			errors={errors}
+			label={label}
+			className={className}
+			shortcut={shortcut}
+			disabled={disabled}
+		/>
 	);
 }
 

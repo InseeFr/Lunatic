@@ -1,9 +1,10 @@
-import React from 'react';
 import Datepicker from './html/datepicker';
 import { createCustomizableLunaticField } from '../commons';
-import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { LunaticComponentProps } from '../type';
+import { wrapWithDeclarations } from '../commons/hoc/wrap-with-declarations';
+
+const WrappedDatepicker = wrapWithDeclarations(Datepicker);
 
 const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 	const {
@@ -18,40 +19,28 @@ const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 		max,
 		label,
 		description,
-		preferences,
 		declarations,
-		missing,
 		missingResponse,
-		management,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
 	return (
-		<LunaticComponent
-			id={id}
-			preferences={preferences}
+		<WrappedDatepicker
 			declarations={declarations}
-			value={value}
-			missing={missing}
 			missingResponse={missingResponse}
-			management={management}
 			description={description}
 			handleChange={handleChange}
-		>
-			<Datepicker
-				disabled={disabled}
-				readOnly={readOnly}
-				value={value ?? ''}
-				onChange={onChange}
-				id={id}
-				min={min}
-				max={max}
-				label={label}
-				description={description}
-				errors={errors}
-			/>
-		</LunaticComponent>
+			disabled={disabled}
+			readOnly={readOnly}
+			value={value ?? ''}
+			onChange={onChange}
+			id={id}
+			min={min}
+			max={max}
+			label={label}
+			errors={errors}
+		/>
 	);
 };
 

@@ -1,6 +1,8 @@
 import Sequence from './html/sequence';
 import { LunaticComponentProps } from '../type';
-import LunaticComponent from '../commons/components/lunatic-component-without-label';
+import { wrapWithDeclarations } from '../commons/hoc/wrap-with-declarations';
+
+const WrappedSequence = wrapWithDeclarations(Sequence);
 
 function empty() {}
 
@@ -13,7 +15,7 @@ function LunaticSequence({
 	questionInformation,
 }: LunaticComponentProps<'Sequence'>) {
 	return (
-		<LunaticComponent
+		<WrappedSequence
 			id={id}
 			label={label}
 			declarations={declarations}
@@ -21,9 +23,8 @@ function LunaticSequence({
 			value={undefined}
 			questionContext={questionContext}
 			questionInformation={questionInformation}
-		>
-			<Sequence label={label} id={id} style={style} />
-		</LunaticComponent>
+			style={style}
+		/>
 	);
 }
 

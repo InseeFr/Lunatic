@@ -1,12 +1,13 @@
 import { createCustomizableLunaticField } from '../../commons';
 import './sequence.scss';
 import { LunaticBaseProps } from '../../type';
+import { ReactNode } from 'react';
 
-function Sequence({
-	label,
-	id,
-	style,
-}: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'style'>) {
+type Props = Pick<LunaticBaseProps<string>, 'id' | 'label' | 'style'> & {
+	description?: ReactNode;
+};
+
+function Sequence({ label, id, style }: Props) {
 	return (
 		<div className="sequence-lunatic" id={`sequence-${id}`} style={style}>
 			{label}

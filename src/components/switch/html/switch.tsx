@@ -11,6 +11,7 @@ type Props = {
 	onClick: (v: boolean) => void;
 	id: string;
 	label: ReactNode;
+	description?: ReactNode;
 	errors?: Record<string, LunaticError[]>;
 };
 

@@ -1,9 +1,11 @@
 import Switch from './html/switch';
-import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { LunaticComponentProps } from '../type';
+import { wrapWithDeclarations } from '../commons/hoc/wrap-with-declarations';
 
 const defaultLabel = { true: 'True', false: 'False' };
+
+const WrappedSwitch = wrapWithDeclarations(Switch);
 
 function LunaticSwitch({
 	id,
@@ -11,11 +13,8 @@ function LunaticSwitch({
 	statusLabel = defaultLabel,
 	handleChange,
 	response,
-	preferences,
 	declarations,
-	missing,
 	missingResponse,
-	management,
 	description,
 	label,
 	errors,
@@ -25,26 +24,19 @@ function LunaticSwitch({
 	const onClick = useOnHandleChange({ handleChange, response, value });
 
 	return (
-		<LunaticComponent
+		<WrappedSwitch
 			id={id}
-			preferences={preferences}
 			declarations={declarations}
 			value={value}
-			missing={missing}
 			missingResponse={missingResponse}
-			management={management}
 			description={description}
 			handleChange={handleChange}
-		>
-			<Switch
-				id={id}
-				checked={booleanValue}
-				onClick={onClick}
-				statusLabel={statusLabel}
-				label={label}
-				errors={errors}
-			/>
-		</LunaticComponent>
+			checked={booleanValue}
+			onClick={onClick}
+			statusLabel={statusLabel}
+			label={label}
+			errors={errors}
+		/>
 	);
 }
 

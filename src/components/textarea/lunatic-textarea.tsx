@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
-import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import Textarea from './html/textarea';
 import { LunaticComponentProps } from '../type';
+import { wrapWithDeclarations } from '../commons/hoc/wrap-with-declarations';
+
+const WrappedTextarea = wrapWithDeclarations(Textarea);
 
 const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 	const {
@@ -27,29 +29,21 @@ const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
 	return (
-		<LunaticComponent
-			id={id}
-			preferences={preferences}
+		<WrappedTextarea
 			declarations={declarations}
-			value={value}
-			missing={missing}
 			missingResponse={missingResponse}
-			management={management}
 			description={description}
 			handleChange={handleChange}
-		>
-			<Textarea
-				id={id}
-				rows={rows}
-				maxLength={maxLength}
-				cols={cols}
-				onChange={onChange}
-				value={value}
-				placeholder={placeHolder}
-				label={label}
-				errors={errors}
-			/>
-		</LunaticComponent>
+			id={id}
+			rows={rows}
+			maxLength={maxLength}
+			cols={cols}
+			onChange={onChange}
+			value={value}
+			placeholder={placeHolder}
+			label={label}
+			errors={errors}
+		/>
 	);
 };
 

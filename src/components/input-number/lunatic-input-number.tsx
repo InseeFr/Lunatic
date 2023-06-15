@@ -1,7 +1,9 @@
-import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { LunaticComponentProps } from '../type';
 import InputNumber from './html/input-number';
+import { wrapWithDeclarations } from '../commons/hoc/wrap-with-declarations';
+
+const WrappedInputNumber = wrapWithDeclarations(InputNumber);
 
 function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 	const {
@@ -11,17 +13,13 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 		response,
 		errors,
 		declarations,
-		preferences,
 		label,
 		disabled,
-		missing,
 		missingResponse,
-		management,
 		min,
 		max,
 		decimals,
 		unit,
-		description,
 		required,
 		readOnly,
 	} = props;
@@ -29,31 +27,22 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
 	return (
-		<LunaticComponent
-			id={id}
-			preferences={preferences}
+		<WrappedInputNumber
 			declarations={declarations}
-			value={value}
-			missing={missing}
 			missingResponse={missingResponse}
-			management={management}
-			description={description}
 			handleChange={handleChange}
-		>
-			<InputNumber
-				onChange={onChange}
-				id={id}
-				value={value}
-				label={label}
-				disabled={disabled || readOnly}
-				min={min}
-				max={max}
-				decimals={decimals}
-				unit={unit}
-				required={required}
-				errors={errors}
-			/>
-		</LunaticComponent>
+			onChange={onChange}
+			id={id}
+			value={value}
+			label={label}
+			disabled={disabled || readOnly}
+			min={min}
+			max={max}
+			decimals={decimals}
+			unit={unit}
+			required={required}
+			errors={errors}
+		/>
 	);
 }
 
