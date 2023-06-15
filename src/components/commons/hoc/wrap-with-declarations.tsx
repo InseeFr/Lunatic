@@ -15,7 +15,9 @@ import FieldContainer from '../components/field-container';
 import Missing from '../components/missing';
 import { LunaticBaseProps } from '../../type';
 
-type ExtendedProps<T extends { description?: ReactNode }> = Pick<
+type ExtendedProps<
+	T extends { description?: LunaticBaseProps['description'] }
+> = Pick<
 	LunaticBaseProps<any>,
 	| 'description'
 	| 'value'
@@ -60,14 +62,11 @@ export const wrapWithDeclarations =
 function getDescription({
 	declarations,
 	description,
-}: Pick<LunaticBaseProps, 'declarations' | 'description'>): ReactNode {
+}: Pick<LunaticBaseProps, 'declarations' | 'description'>) {
 	if (Array.isArray(declarations)) {
-		return declarations
-			.filter(
-				(declaration) => declaration.position === DECLARATION_POSITIONS.after
-			)
-			.map((d) => d.label)
-			.join(', ');
+		return declarations.filter(
+			(declaration) => declaration.position === DECLARATION_POSITIONS.after
+		);
 	}
 
 	return description;
