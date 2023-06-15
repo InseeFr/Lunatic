@@ -7,6 +7,7 @@ type Props = PropsWithChildren<{
 	id?: string;
 	errors?: Record<string, LunaticError[]>;
 	legendText: ReactNode;
+	description?: ReactNode;
 }>;
 
 function ComponentSet({ id, errors, legendText, children }: Props) {

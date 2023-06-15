@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import { LunaticComponentProps } from '../../type';
 import CheckboxGroup from './html/checkbox-group';
+import { wrapWithDeclarations } from '../../commons/hoc/wrap-with-declarations';
 
 export type CheckboxGroupOption = {
 	label: ReactNode;
@@ -10,6 +10,8 @@ export type CheckboxGroupOption = {
 	description?: ReactNode;
 	onClick: (b: boolean) => void;
 };
+
+const WrappedCheckoupBox = wrapWithDeclarations(CheckboxGroup);
 
 function LunaticCheckboxGroup({
 	id,
@@ -20,11 +22,8 @@ function LunaticCheckboxGroup({
 	errors,
 	label,
 	description,
-	preferences,
 	declarations,
 	missingResponse,
-	missing,
-	management,
 }: LunaticComponentProps<'CheckboxGroup'>) {
 	const options = responses.map(({ label, response, description }) => {
 		const { name } = response;
@@ -41,26 +40,18 @@ function LunaticCheckboxGroup({
 	}) satisfies CheckboxGroupOption[];
 
 	return (
-		<LunaticComponent
+		<WrappedCheckoupBox
 			id={id}
 			label={label}
-			preferences={preferences}
 			declarations={declarations}
 			value={value}
 			missingResponse={missingResponse}
-			missing={missing}
-			management={management}
 			description={description}
 			handleChange={handleChange}
-		>
-			<CheckboxGroup
-				id={id}
-				options={options}
-				label={label}
-				errors={errors}
-				shortcut={shortcut}
-			/>
-		</LunaticComponent>
+			options={options}
+			errors={errors}
+			shortcut={shortcut}
+		/>
 	);
 }
 

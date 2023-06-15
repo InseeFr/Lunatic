@@ -12,7 +12,7 @@ type Props = {
 	placeholder?: string;
 	label?: ReactNode;
 	value?: string | number | null;
-	description?: string;
+	description?: ReactNode;
 	errors?: LunaticBaseProps['errors'];
 };
 

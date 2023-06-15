@@ -3,12 +3,14 @@ import './sequence.scss';
 import { LunaticBaseProps } from '../../type';
 import Description from '../../commons/components/description';
 
+type Props = Pick<LunaticBaseProps<string>, 'id' | 'label' | 'style' | 'description'>
+
 function Sequence({
 	label,
 	id,
 	style,
 	description,
-}: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'style' | 'description'>) {
+}: Props ) {
 	return (
 		<>
 			<div className="sequence-lunatic" id={`sequence-${id}`} style={style}>

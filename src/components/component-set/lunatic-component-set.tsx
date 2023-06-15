@@ -1,7 +1,9 @@
-import LunaticComponentWithoutLabel from '../commons/components/lunatic-component-without-label';
 import { LunaticComponentProps } from '../type';
 import ComponentSet from './html/component-set';
 import ComponentSetComponents from './html/component-set-components';
+import { wrapWithDeclarations } from '../commons/hoc/wrap-with-declarations';
+
+const WrappedComponentSet = wrapWithDeclarations(ComponentSet);
 
 function LunaticComponentSet(props: LunaticComponentProps<'ComponentSet'>) {
 	const {
@@ -22,34 +24,32 @@ function LunaticComponentSet(props: LunaticComponentProps<'ComponentSet'>) {
 		className,
 		iteration,
 	} = props;
+
 	return (
-		<LunaticComponentWithoutLabel
+		<WrappedComponentSet
 			id={id}
-			preferences={preferences}
 			declarations={declarations}
 			value={value}
-			missing={missing}
-			management={management}
 			description={description}
 			handleChange={handleChange}
+			legendText={label}
+			errors={errors}
 		>
-			<ComponentSet id={id} legendText={label} errors={errors}>
-				<ComponentSetComponents
-					className={className}
-					components={components}
-					features={features}
-					errors={errors}
-					value={value}
-					iteration={iteration}
-					executeExpression={executeExpression}
-					preferences={preferences}
-					management={management}
-					missing={missing}
-					shortcut={shortcut}
-					handleChange={handleChange}
-				/>
-			</ComponentSet>
-		</LunaticComponentWithoutLabel>
+			<ComponentSetComponents
+				className={className}
+				components={components}
+				features={features}
+				errors={errors}
+				value={value}
+				iteration={iteration}
+				executeExpression={executeExpression}
+				preferences={preferences}
+				management={management}
+				missing={missing}
+				shortcut={shortcut}
+				handleChange={handleChange}
+			/>
+		</WrappedComponentSet>
 	);
 }
 

@@ -1,7 +1,9 @@
-import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../../commons/use-on-handle-change';
 import CheckboxOne from './html/checkbox-one';
 import { LunaticComponentProps } from '../../type';
+import { wrapWithDeclarations } from '../../commons/hoc/wrap-with-declarations';
+
+const WrappedCheckboxOne = wrapWithDeclarations(CheckboxOne);
 
 function LunaticCheckboxOne({
 	id,
@@ -12,39 +14,27 @@ function LunaticCheckboxOne({
 	response,
 	label,
 	description,
-	preferences,
 	declarations,
 	missingResponse,
-	missing,
-	management,
 	shortcut,
 }: LunaticComponentProps<'CheckboxOne'>) {
 	const onSelect = useOnHandleChange({ handleChange, response, value });
 
 	return (
-		<LunaticComponent
+		<WrappedCheckboxOne
 			id={id}
 			label={label}
-			preferences={preferences}
 			declarations={declarations}
 			value={value}
 			missingResponse={missingResponse}
-			missing={missing}
-			management={management}
 			description={description}
 			handleChange={handleChange}
-		>
-			<CheckboxOne
-				id={id}
-				className="lunatic-checkbox-one"
-				options={options}
-				value={value}
-				errors={errors}
-				onSelect={onSelect}
-				label={label}
-				shortcut={shortcut}
-			/>
-		</LunaticComponent>
+			className="lunatic-checkbox-one"
+			options={options}
+			errors={errors}
+			onSelect={onSelect}
+			shortcut={shortcut}
+		/>
 	);
 }
 

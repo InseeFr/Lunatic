@@ -1,7 +1,9 @@
 import Input from './html/input';
-import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { LunaticComponentProps } from '../type';
+import { wrapWithDeclarations } from '../commons/hoc/wrap-with-declarations';
+
+const WrappedInput = wrapWithDeclarations(Input);
 
 function LunaticInput(props: LunaticComponentProps<'Input'>) {
 	const {
@@ -11,13 +13,9 @@ function LunaticInput(props: LunaticComponentProps<'Input'>) {
 		response,
 		errors,
 		declarations,
-		preferences,
 		label,
 		disabled,
-		missing,
 		missingResponse,
-		management,
-		description,
 		required,
 		maxLength,
 	} = props;
@@ -25,28 +23,19 @@ function LunaticInput(props: LunaticComponentProps<'Input'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
 	return (
-		<LunaticComponent
-			id={id}
-			preferences={preferences}
+		<WrappedInput
 			declarations={declarations}
-			value={value}
-			missing={missing}
 			missingResponse={missingResponse}
-			management={management}
-			description={description}
 			handleChange={handleChange}
-		>
-			<Input
-				id={id}
-				value={value}
-				onChange={onChange}
-				label={label}
-				disabled={disabled}
-				errors={errors}
-				required={required}
-				maxLength={maxLength}
-			/>
-		</LunaticComponent>
+			id={id}
+			value={value}
+			onChange={onChange}
+			label={label}
+			disabled={disabled}
+			errors={errors}
+			required={required}
+			maxLength={maxLength}
+		/>
 	);
 }
 

@@ -1,47 +1,38 @@
-import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../../commons/use-on-handle-change';
 import { LunaticComponentProps } from '../../type';
 import CheckboxBoolean from './html/checkbox-boolean';
+import { wrapWithDeclarations } from '../../commons/hoc/wrap-with-declarations';
+
+const WrappedCheckboxBoolean = wrapWithDeclarations(CheckboxBoolean);
 
 function LunaticCheckboxBoolean({
 	value,
 	id,
-	options,
 	disabled,
 	handleChange,
 	response,
 	errors,
 	label,
-	preferences,
 	declarations,
-	missing,
 	missingResponse,
-	management,
 	description,
 }: LunaticComponentProps<'CheckboxBoolean'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
 	return (
-		<LunaticComponent
+		<WrappedCheckboxBoolean
 			id={id}
-			preferences={preferences}
 			declarations={declarations}
 			value={value}
-			missing={missing}
 			missingResponse={missingResponse}
-			management={management}
 			description={description}
 			handleChange={handleChange}
-		>
-			<CheckboxBoolean
-				id={id}
-				checked={value ?? false}
-				onClick={onChange}
-				disabled={disabled}
-				label={label}
-				errors={errors}
-			/>
-		</LunaticComponent>
+			checked={value ?? false}
+			onClick={onChange}
+			disabled={disabled}
+			label={label}
+			errors={errors}
+		/>
 	);
 }
 
