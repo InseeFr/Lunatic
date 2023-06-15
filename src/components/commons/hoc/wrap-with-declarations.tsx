@@ -62,13 +62,12 @@ function getDescription({
 	description,
 }: Pick<LunaticBaseProps, 'declarations' | 'description'>): ReactNode {
 	if (Array.isArray(declarations)) {
-		return (
-			<>
-				{declarations.filter(
-					(declaration) => declaration.position === DECLARATION_POSITIONS.after
-				)}
-			</>
-		);
+		return declarations
+			.filter(
+				(declaration) => declaration.position === DECLARATION_POSITIONS.after
+			)
+			.map((d) => d.label)
+			.join(', ');
 	}
 
 	return description;
