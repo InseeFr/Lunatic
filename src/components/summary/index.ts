@@ -1,1 +1,1 @@
-export { LunaticSummary } from './lunatic-summary';
+export { LunaticSummary as Summary } from './lunatic-summary';

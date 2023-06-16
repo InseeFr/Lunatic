@@ -1,6 +1,6 @@
 import { LunaticComponentProps, VtlExpression } from '../type';
 import SummaryTitle from './html/summary-title';
-import SummaryContainer from './html/summary-container';
+import { SummaryContainer } from './html/summary-container';
 import { ReactNode } from 'react';
 import SummaryResponses from './html/summary-responses';
 
