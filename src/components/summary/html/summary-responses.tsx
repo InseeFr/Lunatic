@@ -21,9 +21,7 @@ function Responses({values}: {values?: Array<{
     {values.map(({ label, value }, index) => {
       return (
         <li key={index}>
-          <div>
-            {label} : {value}
-          </div>
+          {label} : {value}
         </li>
       );
     })}
