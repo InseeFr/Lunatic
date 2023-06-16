@@ -59,14 +59,14 @@
 					}
 
 					.lunatic-combo-box-selected {
-						height: 34px;
+						height: 42px;
 						line-height: 34px;
 						background-color: var(--color-combo-box-background);
 						border-radius: 5px;
 						padding-left: 4px;
 						@include selection();
 						outline: none;
-
+						overflow-y: hidden;
 						display: block;
 						@include placeholder();
 
@@ -134,6 +134,7 @@
 				fill: white;
 				width: 16px;
 				height: 16px;
+				margin: auto;
 			}
 		}
 	}
