@@ -34,15 +34,7 @@ function compileResponses(
     return []
   }
   const option = iteration || iteration === 0 ? iteration : undefined
-  console.log(iteration, responses)
-  console.log(iteration || iteration === 0)
-  return responses.map((r) => {
-    console.log(option)
-    return {
-      label: executeExpression(r.label, {iteration: option}), 
-      value: executeExpression(r.value, {iteration: option})
-    } as SummaryResponsesEntry;
-  })
+  return responses.map(r => ({label: executeExpression(r.label, {iteration: option}), value: executeExpression(r.value, {iteration: option})} as SummaryResponsesEntry))
 }
 
 function CompiledTitle ({
