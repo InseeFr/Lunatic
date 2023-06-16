@@ -27,7 +27,7 @@ function compileResponses(
 		args?: {
 			iteration?: number | undefined;
 		}
-	) => unknown,
+	) => ReactNode,
 	iteration?: number
 ) {
   if (!responses) {
@@ -48,10 +48,8 @@ function CompiledTitle({
   if ( !title ) {
     return <>{`Valeurs renseignés :`}</>
   } 
-  if ( (!iteration && iteration !== 0) && title ) {
-    return <>{executeExpression(title, { iteration: undefined })}</>
-  }
-  return <>{executeExpression(title, { iteration })}</>
+  const hasIteration = iteration || iteration === 0
+  return <>{executeExpression(title, hasIteration ? { iteration } : {})}</>
 }
 
 export function LunaticSummary(props: LunaticComponentProps<'Summary'>) {
