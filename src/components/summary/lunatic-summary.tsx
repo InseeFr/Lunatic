@@ -64,7 +64,7 @@ function CompiledTitle ({
   return <>{(executeExpression(title, { iteration }) as ReactNode)}</>
 }
 
-function LunaticSummary(props: LunaticComponentProps<'Summary'>) {
+export function LunaticSummary(props: LunaticComponentProps<'Summary'>) {
 	const { executeExpression, label, sections } = props;
 
   const compiledSections = sections.reduce((acc, section) => {
@@ -100,5 +100,3 @@ function LunaticSummary(props: LunaticComponentProps<'Summary'>) {
 		</SummaryContainer>
 	);
 }
-
-export default LunaticSummary;

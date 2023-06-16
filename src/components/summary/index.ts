@@ -1,1 +1,1 @@
-export { default } from './lunatic-summary';
+export { LunaticSummary } from './lunatic-summary';
