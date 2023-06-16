@@ -1,6 +1,11 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { createCustomizableLunaticField } from '../../commons';
 
+type ResponsesValue = Array<{
+  label: ReactNode;
+  value: ReactNode;
+}>
+
 function ListResponses({title, children}: PropsWithChildren<{title: ReactNode}>) {
   return (
     <div className="lunatic-summary-responses-iteration">
@@ -10,10 +15,7 @@ function ListResponses({title, children}: PropsWithChildren<{title: ReactNode}>)
   )
 }
 
-function Responses({values}: {values?: Array<{
-  label: ReactNode;
-  value: ReactNode;
-}>}) {
+function Responses({values}: {values?: ResponsesValue;}) {
   if (!values) {
     return null;
   }
@@ -33,22 +35,18 @@ function Responses({values}: {values?: Array<{
 function SummaryResponses({sections}: {
   sections: Array<{ 
     title?: ReactNode;
-    values?: Array<{label: ReactNode, value: ReactNode }>
+    values?: ResponsesValue;
   }>}) {
+
+    const visibleSections = sections.filter(s => s) 
   return (
     <>
-      {
-        sections.map((section) => {
-          if (section) {
-            const { title, values } = section
-            return <ListResponses title={title}>
-              <Responses values={values} />
-             </ListResponses>
-          }
-          return null; 
-        }) 
-
-      }
+      {visibleSections.map((section, index) => {
+          const { title, values } = section
+          return <ListResponses key={index} title={title}>
+            <Responses values={values} />
+          </ListResponses>
+        })}
     </>
   )
 }

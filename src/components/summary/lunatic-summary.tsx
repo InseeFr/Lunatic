@@ -30,21 +30,19 @@ function compileResponses(
 	) => unknown,
 	iteration?: number
 ) {
-	return responses && (iteration || iteration === 0) ? (
-    responses.map(function ({ label, value }) {
-      return {
-        label: executeExpression(label, { iteration }),
-        value: executeExpression(value, { iteration }),
-      } as SummaryResponsesEntry;
-    })
-  ) : ( 
-    responses.map(function ({ label, value }) {
-      return {
-        label: executeExpression(label, {  }),
-        value: executeExpression(value, {  }), 
-      } as SummaryResponsesEntry;
-    })    
-  );
+  if (!responses) {
+    return []
+  }
+  const option = iteration || iteration === 0 ? iteration : undefined
+  console.log(iteration, responses)
+  console.log(iteration || iteration === 0)
+  return responses.map((r) => {
+    console.log(option)
+    return {
+      label: executeExpression(r.label, {iteration: option}), 
+      value: executeExpression(r.value, {iteration: option})
+    } as SummaryResponsesEntry;
+  })
 }
 
 function CompiledTitle ({
