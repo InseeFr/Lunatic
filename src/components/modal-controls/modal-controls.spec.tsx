@@ -41,20 +41,7 @@ describe('ModalControls component', () => {
 		expect(queryByText('Error message 1')).toBeNull();
 		expect(queryByText('Error message 2')).toBeNull();
 	});
-	/*
-	it('should call the goNext function with block:true when the close button is clicked', () => {
-		const errors = {
-			field1: [{ criticality: 'ERROR', errorMessage: 'Error message 1' }],
-			field2: [{ criticality: 'ERROR', errorMessage: 'Error message 2' }],
-		};
-		const goNext = vi.fn();
-		const { getByText } = render(
-			<ModalControls errors={errors} goNext={goNext} />
-		);
-		fireEvent.click(getByText('Correct'));
-		expect(goNext).toHaveBeenCalledWith({ block: true });
-	});
-*/
+
 	it('should call the goNext function when the skip button is clicked', () => {
 		const errors = {
 			field1: [

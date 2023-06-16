@@ -28,6 +28,7 @@ function hasResponse(
 
 type Props = {
 	className?: string;
+	componentClassName?: string;
 } & Pick<
 	LunaticComponentProps<'ComponentSet'>,
 	| 'components'
@@ -41,6 +42,7 @@ type Props = {
 	| 'errors'
 	| 'className'
 	| 'handleChange'
+	| 'iteration'
 >;
 
 function ComponentSetComponents({
@@ -55,6 +57,8 @@ function ComponentSetComponents({
 	errors,
 	className,
 	handleChange,
+	componentClassName,
+	iteration,
 }: Props) {
 	if (!Array.isArray(components)) {
 		return null;
@@ -73,11 +77,13 @@ function ComponentSetComponents({
 							shortcut={shortcut}
 							management={management}
 							value={componentValue}
+							iteration={iteration}
 							id={id}
 							preferences={preferences}
 							executeExpression={executeExpression}
 							errors={errors}
 							handleChange={handleChange}
+							className={componentClassName}
 						/>
 					</ComponentSetComponentContainer>
 				);

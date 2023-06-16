@@ -226,7 +226,6 @@ function SuggesterMui({
 		function (e) {
 			onChange(e.target.value);
 			setSearch(e.target.value);
-			console.log(e.target.value);
 		},
 		[onChange]
 	);

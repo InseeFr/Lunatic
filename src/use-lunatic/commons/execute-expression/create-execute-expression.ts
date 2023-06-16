@@ -60,7 +60,6 @@ function createExecuteExpression(
 	// on aimerait map d'expression, avec les bindings
 	const bindings = createBindings(variables);
 	const tokensMap = new Map<LunaticExpression | string, string[]>();
-	const collectedUpdated = new Map();
 	const [memoize, getMemoizedValue] = createMemoizer();
 	const [refreshCalculated, setToRefreshCalculated] = createRefreshCalculated({
 		variables,
@@ -89,7 +88,6 @@ function createExecuteExpression(
 	function updateBindings(name: string, value: unknown) {
 		if (name in bindings) {
 			bindings[name] = value;
-			collectedUpdated.set(name, []);
 		}
 		pushToLazy(name);
 	}
@@ -141,14 +139,14 @@ function createExecuteExpression(
 	/**
 	 * Retrieve variable affected by the dependencies
 	 */
-	function collecteVariables(dependencies: string[] | unknown): {
+	function collecteVariables(dependencies: unknown): {
 		[name: string]: LunaticState['variables'];
 	} {
 		if (Array.isArray(dependencies)) {
 			return dependencies.reduce(function (map, name) {
 				if (name in variables) {
 					const data = variables[name];
-					const { variable, type } = data;
+					const { variable } = data;
 					if (!(name in map)) {
 						if (variable.variableType === 'CALCULATED') {
 							const { expression } = variable;

@@ -73,7 +73,7 @@ function computeErrors(state: StateForControls) {
 			return fillComponentExpressions(component, state);
 		})
 		.filter(({ conditionFilter }) => {
-			return conditionFilter !== undefined ? conditionFilter : true;
+			return conditionFilter ?? true;
 		});
 	const errors = validateComponents(state, componentFiltered);
 	const currentErrors = Object.keys(errors).length > 0 ? errors : undefined;

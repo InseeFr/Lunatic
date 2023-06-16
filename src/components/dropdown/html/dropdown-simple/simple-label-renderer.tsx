@@ -12,7 +12,7 @@ function getContent(option: Props['option'], search?: string) {
 		const { value, label } = option;
 		return label || value;
 	}
-	if (search && search.trim().length) {
+	if (search?.trim().length) {
 		return search;
 	}
 	return null;
