@@ -15,7 +15,7 @@ type CompiledTitleProps = {
 		args?: {
 			iteration?: number | undefined;
 		}
-	) => unknown,
+	) => ReactNode,
 	iteration?: number,
 	title?: VtlExpression,
 }
@@ -37,7 +37,7 @@ function compileResponses(
   return responses.map(r => ({label: executeExpression(r.label, {iteration: option}), value: executeExpression(r.value, {iteration: option})} as SummaryResponsesEntry))
 }
 
-function CompiledTitle ({
+function CompiledTitle({
   executeExpression,
   iteration, 
   title, 
@@ -49,9 +49,9 @@ function CompiledTitle ({
     return <>{`Valeurs renseignés :`}</>
   } 
   if ( (!iteration && iteration !== 0) && title ) {
-    return <>{(executeExpression(title, { iteration: undefined }) as ReactNode)}</>
+    return <>{executeExpression(title, { iteration: undefined })}</>
   }
-  return <>{(executeExpression(title, { iteration }) as ReactNode)}</>
+  return <>{executeExpression(title, { iteration })}</>
 }
 
 export function LunaticSummary(props: LunaticComponentProps<'Summary'>) {
