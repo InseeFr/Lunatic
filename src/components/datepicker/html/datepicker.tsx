@@ -1,7 +1,6 @@
 import React, {
 	ChangeEventHandler,
 	ReactNode,
-	useCallback,
 	useState,
 	ChangeEvent,
 } from 'react';
@@ -41,7 +40,7 @@ function Datepicker({
 	// store the date value in the local date state
 	const [date, setDate] = useState(value || '');
 
-	// custom event handler to update the date value
+	// custom event handler to update date value
 	const handleDateChange: ChangeEventHandler<HTMLInputElement> = (
 		event: ChangeEvent<HTMLInputElement>
 	) => {
