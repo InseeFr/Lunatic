@@ -1,4 +1,10 @@
-import React, { ChangeEventHandler, ReactNode, useCallback } from 'react';
+import React, {
+	ChangeEventHandler,
+	ReactNode,
+	useCallback,
+	useState,
+	ChangeEvent,
+} from 'react';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import DatepickerInput from './datepicker-input';
 import DatepickerContainer from './datepicker-container';
@@ -31,14 +37,20 @@ function Datepicker({
 	description,
 }: Props) {
 	const labelId = `lunatic-datepicker-${id}`;
-	const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
-		function (e) {
-			const value = e.target.value;
-			onChange(value);
-		},
-		[onChange]
-	);
 
+	// store the date value in the local date state
+	const [date, setDate] = useState(value || '');
+
+	// custom event handler to update the date value
+	const handleDateChange: ChangeEventHandler<HTMLInputElement> = (
+		event: ChangeEvent<HTMLInputElement>
+	) => {
+		const { value: inputValue } = event.target;
+		setDate(inputValue);
+		if (onChange) {
+			onChange(inputValue);
+		}
+	};
 	return (
 		<DatepickerContainer>
 			<Label htmlFor={id} id={labelId} description={description}>
@@ -49,8 +61,8 @@ function Datepicker({
 				labelId={labelId}
 				readOnly={readOnly}
 				disabled={disabled}
-				value={value}
-				onChange={handleChange}
+				value={date}
+				onChange={handleDateChange}
 				min={min}
 				max={max}
 			/>
