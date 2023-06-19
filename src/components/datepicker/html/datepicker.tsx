@@ -41,14 +41,10 @@ function Datepicker({
 	const [date, setDate] = useState(value || '');
 
 	// custom event handler to update date value
-	const handleDateChange: ChangeEventHandler<HTMLInputElement> = (
-		event: ChangeEvent<HTMLInputElement>
-	) => {
-		const { value: inputValue } = event.target;
+	const handleDateChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+		const inputValue = event.target.value;
 		setDate(inputValue);
-		if (onChange) {
-			onChange(inputValue);
-		}
+		onChange?.(inputValue);
 	};
 	return (
 		<DatepickerContainer>
