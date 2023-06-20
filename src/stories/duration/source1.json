@@ -4,7 +4,7 @@
 			"id": "kxi788",
 			"componentType": "Duration",
 			"mandatory": false,
-			"format": "PnYnM",
+			"format": "PTnHnM",
 			"page": "1",
 			"maxPage": "1",
 			"label": {
@@ -22,7 +22,7 @@
 			"name": "DUREE",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": null,
+				"COLLECTED": "PT12H50M",
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
