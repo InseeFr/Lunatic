@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import { PropsWithChildren } from 'react';
 
