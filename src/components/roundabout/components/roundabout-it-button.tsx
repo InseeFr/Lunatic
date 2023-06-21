@@ -57,6 +57,7 @@ type Props = {
 	unnecessary?: boolean;
 	goToIteration: (n: number) => void;
 	locked?: boolean;
+	onClick: () => void;
 };
 
 function RoundaboutItButton({

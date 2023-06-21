@@ -36,7 +36,6 @@ function InputNumber({
 	description,
 }: Props) {
 	const labelId = `label-${id}`;
-
 	return (
 		<div className="lunatic-input-number">
 			<Label htmlFor={id} id={labelId} description={description}>

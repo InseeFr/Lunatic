@@ -58,9 +58,12 @@ function getDescription({
 	description: LunaticBaseProps['description'];
 }) {
 	if (Array.isArray(declarations)) {
-		return declarations.filter(
+		const declarationAfter = declarations.find(
 			(declaration) => declaration.position === DECLARATION_POSITIONS.after
 		);
+		if (declarationAfter) {
+			return declarationAfter.label;
+		}
 	}
 
 	return description;
