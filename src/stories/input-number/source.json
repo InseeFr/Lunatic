@@ -12,7 +12,7 @@
 				"value": "\"➡ 1. \" || \"In put for Number \"",
 				"type": "VTL|MD"
 			},
-
+			"description": { "value": "\"hello!\"", "type": "VTL" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"response": { "name": "NB" },
 			"declarations": [
@@ -21,7 +21,7 @@
 					"id": "lioamtmo-lioas8z4",
 					"label": {
 						"type": "VTL",
-						"value": "\"Declaration after is like a declaration!\""
+						"value": "\"Declaration after is like a declaration!!!!\""
 					},
 					"position": "AFTER_QUESTION_TEXT"
 				}

@@ -22,6 +22,7 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 		unit,
 		required,
 		readOnly,
+		description,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -42,6 +43,7 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 			unit={unit}
 			required={required}
 			errors={errors}
+			description={description}
 		/>
 	);
 }

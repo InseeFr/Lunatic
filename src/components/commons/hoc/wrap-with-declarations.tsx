@@ -38,13 +38,17 @@ export const wrapWithDeclarations =
 			questionInformation,
 			handleChange,
 		} = props;
-		const descriptionProps = getDescription({ declarations, description });
+		debugger;
+		const descriptionNodeOrString = getDescription({
+			declarations,
+			description,
+		});
 		return (
 			<>
 				<DeclarationsBeforeText declarations={declarations} id={id} />
 				<QuestionContext text={questionContext} />
 				<FieldContainer>
-					<Component {...props} description={descriptionProps} />
+					<Component {...props} description={descriptionNodeOrString} />
 					<QuestionInformation text={questionInformation} />
 				</FieldContainer>
 				<DeclarationsDetachable declarations={declarations} id={props.id} />
