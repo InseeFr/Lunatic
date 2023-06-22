@@ -12,9 +12,20 @@
 				"value": "\"➡ 1. \" || \"In put for Number \"",
 				"type": "VTL|MD"
 			},
-			"description": { "value": "\"Description\"", "type": "VTL|MD" },
+
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"response": { "name": "NB" }
+			"response": { "name": "NB" },
+			"declarations": [
+				{
+					"declarationType": "HELP",
+					"id": "lioamtmo-lioas8z4",
+					"label": {
+						"type": "VTL",
+						"value": "\"Declaration after is like a declaration!\""
+					},
+					"position": "AFTER_QUESTION_TEXT"
+				}
+			]
 		}
 	],
 	"variables": [
