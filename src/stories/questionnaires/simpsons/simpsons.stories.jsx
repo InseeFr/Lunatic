@@ -186,10 +186,7 @@ Filled.play = async ({ args, canvasElement }) => {
 		.getByText('Please, do something...')
 		.click();
 	await page.getByText('Calendar days').click();
-	await page
-		.getByRole('row', { name: /Leave with pay/ })
-		.getByRole('spinbutton')
-		.fill('12');
+	await page.getByRole('row', { name: /Leave with pay/ }).fill('12');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
