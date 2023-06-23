@@ -138,7 +138,6 @@ test('can complete simpson form', async ({ page }) => {
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
 		.getByRole('row', { name: 'Leave with pay' })
-		.getByRole('spinbutton')
 		.fill('12');
 	await page
 		.getByRole('row', { name: 'Leave with pay' })
