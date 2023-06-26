@@ -8,6 +8,11 @@ import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
 import useLunatic from '../use-lunatic';
 
+export type VtlExpression = {
+	value: string;
+	type: 'VTL' | 'VTL|MD';
+};
+
 export type LunaticBaseProps<ValueType = unknown> = {
 	id: string;
 	handleChange: (
@@ -196,6 +201,13 @@ type ComponentPropsByType = {
 		idbVersion?: string;
 		focused: boolean;
 		response: { name: string };
+	};
+	Summary: LunaticBaseProps<string | null> & {
+    sections: Array<{
+      responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
+      title?: VtlExpression;
+      iterations?: number;
+    }>
 	};
 };
 
