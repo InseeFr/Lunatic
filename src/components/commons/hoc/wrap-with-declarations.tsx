@@ -44,7 +44,6 @@ function getDescription({
 	declarations,
 	description,
 }: Pick<LunaticBaseProps, 'declarations' | 'description'>) {
-	console.log({ declarations, description });
 	if (Array.isArray(declarations)) {
 		return declarations.filter(
 			(declaration) => declaration.position === DECLARATION_POSITIONS.after

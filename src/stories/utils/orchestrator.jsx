@@ -165,7 +165,7 @@ function OrchestratorForStories({
 		<Provider>
 			<div className="container">
 				<div className="components">
-					{components.map(function (component) {
+					{components.map(function (component, k) {
 						const {
 							id,
 							componentType,
@@ -180,7 +180,7 @@ function OrchestratorForStories({
 						return (
 							<div
 								className="lunatic lunatic-component"
-								key={`component-${id}`}
+								key={`component-${id}-${k}`}
 							>
 								<Component
 									id={id}
