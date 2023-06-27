@@ -2,6 +2,7 @@ import * as lunatic from '../../../components';
 import { fillComponentExpressions } from '../../../use-lunatic/commons';
 import { LunaticBaseProps } from '../../type';
 import { LunaticComponentDefinition } from '../../../use-lunatic/type';
+import { getSuggesterStatusType } from '../../component-set/lunatic-component-set';
 
 type Props = {
 	linksIterations?: [number, number];
@@ -21,7 +22,8 @@ type Props = {
 	| 'errors'
 	| 'className'
 	| 'disabled'
->;
+> &
+	getSuggesterStatusType;
 
 function OrchestratedComponent({
 	id,
@@ -38,6 +40,7 @@ function OrchestratedComponent({
 	executeExpression,
 	disabled,
 	errors,
+	getSuggesterStatus,
 }: Props) {
 	const { componentType } = component;
 
@@ -66,6 +69,7 @@ function OrchestratedComponent({
 				errors={errors}
 				iteration={iteration}
 				disabled={disabled}
+				getSuggesterStatus={getSuggesterStatus}
 			/>
 		);
 	}

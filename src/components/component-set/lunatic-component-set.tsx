@@ -3,7 +3,14 @@ import { LunaticComponentProps } from '../type';
 import ComponentSet from './html/component-set';
 import ComponentSetComponents from './html/component-set-components';
 
-function LunaticComponentSet(props: LunaticComponentProps<'ComponentSet'>) {
+export type getSuggesterStatusType = Pick<
+	LunaticComponentProps<'Suggester'>,
+	'getSuggesterStatus'
+>;
+
+function LunaticComponentSet(
+	props: LunaticComponentProps<'ComponentSet'> & getSuggesterStatusType
+) {
 	const {
 		declarations,
 		label,
@@ -22,6 +29,7 @@ function LunaticComponentSet(props: LunaticComponentProps<'ComponentSet'>) {
 		className,
 		iteration,
 		disabled,
+		getSuggesterStatus,
 	} = props;
 	return (
 		<LunaticComponentWithoutLabel
@@ -48,6 +56,7 @@ function LunaticComponentSet(props: LunaticComponentProps<'ComponentSet'>) {
 					missing={missing}
 					shortcut={shortcut}
 					handleChange={handleChange}
+					getSuggesterStatus={getSuggesterStatus}
 					disabled={disabled}
 				/>
 			</ComponentSet>

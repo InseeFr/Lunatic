@@ -3,6 +3,7 @@ import { OrchestratedComponent } from '../../commons';
 import ComponentSetComponentContainer from './component-set-component-container';
 import { LunaticComponentProps } from '../../type';
 import { LunaticComponentDefinition } from '../../../use-lunatic/type';
+import { getSuggesterStatusType } from '../lunatic-component-set';
 
 /**
  * Extract the value associated with a component
@@ -60,6 +61,7 @@ function ComponentSetComponents({
 	handleChange,
 	componentClassName,
 	iteration,
+	getSuggesterStatus,
 	disabled,
 }: Props) {
 	if (!Array.isArray(components)) {
@@ -87,6 +89,7 @@ function ComponentSetComponents({
 							handleChange={handleChange}
 							className={componentClassName}
 							disabled={disabled}
+							getSuggesterStatus={getSuggesterStatus}
 						/>
 					</ComponentSetComponentContainer>
 				);
