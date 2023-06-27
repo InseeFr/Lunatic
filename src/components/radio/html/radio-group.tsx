@@ -7,12 +7,13 @@ import {
 import './radio-group.scss';
 import { ReactNode } from 'react';
 import { LunaticError } from '../../../use-lunatic/type';
+import { LunaticBaseProps } from '../../type';
 
 export type RadioGroupProps = {
 	options: { description?: ReactNode; label: ReactNode; value: string }[];
 	id: string;
 	value?: string | null;
-	description?: ReactNode;
+	description?: LunaticBaseProps['description'];
 	label?: ReactNode;
 	onSelect: (v: string | null) => void;
 	checkboxStyle?: boolean;

@@ -9,7 +9,7 @@ import './default-style.scss';
 import { voidFunction } from '../../../utils/function';
 import { LunaticError } from '../../../use-lunatic/type';
 import { ComboBoxOption } from '../../commons/components/combo-box/combo-box.type';
-import { LunaticComponentProps } from '../../type';
+import { LunaticBaseProps, LunaticComponentProps } from '../../type';
 import D from '../../../i18n';
 
 type Props = {
@@ -23,7 +23,7 @@ type Props = {
 	id?: string;
 	searching?: (s: string | null) => Promise<{ results: ComboBoxOption[] }>;
 	label?: ReactNode;
-	description?: ReactNode;
+	description?: LunaticBaseProps['description'];
 	errors?: Record<string, LunaticError[]>;
 };
 

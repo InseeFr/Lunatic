@@ -8,13 +8,14 @@ import {
 import './checkbox-group.scss';
 import { LunaticError } from '../../../../use-lunatic/type';
 import { CheckboxGroupOption } from '../lunatic-checkbox-group';
+import { LunaticBaseProps } from '../../../type';
 
 type Props = {
 	options: CheckboxGroupOption[];
 	errors?: Record<string, LunaticError[]>;
 	id: string;
 	label?: ReactNode;
-	description?: ReactNode;
+	description?: LunaticBaseProps['description'];
 	shortcut?: boolean;
 };
 

@@ -8,12 +8,14 @@ function empty() {}
 
 function LunaticSequence({
 	declarations,
+	description,
 	label,
 	id,
 	style,
 }: LunaticComponentProps<'Sequence'>) {
 	return (
 		<WrappedSequence
+			description={description}
 			id={id}
 			label={label}
 			declarations={declarations}

@@ -5,6 +5,7 @@ import WritableLabelRenderer from './writable-label-renderer';
 import filterOptions from './filter-tools/filter-options';
 import { ComboBoxOption } from '../../../commons/components/combo-box/combo-box.type';
 import { LunaticError } from '../../../../use-lunatic/type';
+import { LunaticBaseProps } from '../../../type';
 
 type Props = {
 	id?: string;
@@ -15,7 +16,7 @@ type Props = {
 	value: string | null;
 	label?: ReactNode;
 	errors?: Record<string, LunaticError[]>;
-	description?: ReactNode;
+	description?: LunaticBaseProps['description'];
 };
 
 function DropdownWritable({

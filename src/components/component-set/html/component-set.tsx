@@ -2,12 +2,13 @@ import React, { PropsWithChildren, ReactNode } from 'react';
 import { createCustomizableLunaticField, Errors } from '../../commons';
 import Legend from './legend';
 import { LunaticError } from '../../../use-lunatic/type';
+import { LunaticBaseProps } from '../../type';
 
 type Props = PropsWithChildren<{
 	id?: string;
 	errors?: Record<string, LunaticError[]>;
 	legendText: ReactNode;
-	description?: ReactNode;
+	description?: LunaticBaseProps['description'];
 }>;
 
 function ComponentSet({ id, errors, legendText, children }: Props) {

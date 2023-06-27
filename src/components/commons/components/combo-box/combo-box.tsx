@@ -23,7 +23,7 @@ type Props = SelectionProps &
 		messageError?: string;
 		getOptionValue?: (o: ComboBoxOption) => string;
 		label?: ReactNode;
-		description?: ReactNode;
+		description?: LunaticBaseProps['description'];
 		errors?: LunaticBaseProps['errors'];
 		onChange?: (s: string | null) => void;
 		onSelect: (s: string | null) => void;

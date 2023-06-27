@@ -19,11 +19,8 @@ const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 		label,
 		description,
 		errors,
-		preferences,
 		declarations,
-		missing,
 		missingResponse,
-		management,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });

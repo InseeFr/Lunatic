@@ -16,7 +16,7 @@ type Props = {
 	max?: number;
 	decimals?: number;
 	label?: ReactNode;
-	description?: string;
+	description?: LunaticBaseProps['description'];
 	unit?: string;
 	errors?: LunaticBaseProps['errors'];
 };

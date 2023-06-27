@@ -7,6 +7,7 @@ import {
 import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
 import useLunatic from '../use-lunatic';
+import description from './commons/components/description';
 
 export type VtlExpression = {
 	value: string;
@@ -33,7 +34,9 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	missing?: unknown;
 	missingResponse?: { name: string; value?: unknown };
 	management?: LunaticState['management'];
-	description?: ReactNode;
+	description?:
+		| ReactNode
+		| Array<{ label: ReactNode; declarationType: string }>;
 	shortcut?: boolean;
 	required?: boolean;
 	value: null | ValueType;
@@ -72,7 +75,7 @@ type ComponentPropsByType = {
 	};
 	Sequence: Pick<
 		LunaticBaseProps<string>,
-		'id' | 'declarations' | 'label' | 'style'
+		'id' | 'declarations' | 'label' | 'style' | 'description'
 	>;
 	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'declarations' | 'label'>;
 	Question: Pick<LunaticBaseProps<unknown>, 'label' | 'description'>;

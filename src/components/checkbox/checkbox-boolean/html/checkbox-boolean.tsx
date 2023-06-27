@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { LunaticError } from '../../../../use-lunatic/type';
 import { CheckboxOption } from '../../commons';
 import { voidFunction } from '../../../../utils/function';
+import { LunaticBaseProps } from '../../../type';
 
 type Props = {
 	id: string;
@@ -10,7 +11,7 @@ type Props = {
 	disabled?: boolean;
 	onClick?: (b: boolean) => void;
 	label?: ReactNode;
-	description?: ReactNode;
+	description?: LunaticBaseProps['description'];
 	errors?: Record<string, LunaticError[]>;
 };
 

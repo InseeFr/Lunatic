@@ -4,10 +4,11 @@ import DatepickerInput from './datepicker-input';
 import DatepickerContainer from './datepicker-container';
 import './datepicker.scss';
 import { LunaticError } from '../../../use-lunatic/type';
+import { LunaticBaseProps } from '../../type';
 
 type Props = {
 	label?: ReactNode;
-	description?: ReactNode;
+	description?: LunaticBaseProps['description'];
 	errors?: Record<string, LunaticError[]>;
 	disabled?: boolean;
 	readOnly?: boolean;

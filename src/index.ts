@@ -1,6 +1,7 @@
 // @ts-ignore
 export * from './components';
 export { default as useLunatic } from './use-lunatic';
+export { descriptionAsString } from './utils/description';
 
 export type {
 	LunaticComponentDefinition,

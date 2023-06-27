@@ -1,4 +1,4 @@
-import React, { ComponentProps, ComponentType, ReactNode } from 'react';
+import React, { ComponentProps, ComponentType } from 'react';
 import {
 	DECLARATION_POSITIONS,
 	DeclarationsBeforeText,
@@ -22,7 +22,9 @@ type ExtendedProps<
  * and inject the after declaration as a "description" prop
  */
 export const wrapWithDeclarations =
-	<T extends { description?: ReactNode }>(Component: ComponentType<T>) =>
+	<T extends { description?: LunaticBaseProps['description'] }>(
+		Component: ComponentType<T>
+	) =>
 	(props: ExtendedProps<T>) => {
 		const { declarations, description, id, handleChange } = props;
 		const descriptionProps = getDescription({ declarations, description });
@@ -42,6 +44,7 @@ function getDescription({
 	declarations,
 	description,
 }: Pick<LunaticBaseProps, 'declarations' | 'description'>) {
+	console.log({ declarations, description });
 	if (Array.isArray(declarations)) {
 		return declarations.filter(
 			(declaration) => declaration.position === DECLARATION_POSITIONS.after

@@ -7,7 +7,7 @@ import { LunaticBaseProps } from '../../type';
 type Props = {
 	label?: ReactNode;
 	onChange: (v: string) => void;
-	description?: string;
+	description?: LunaticBaseProps['description'];
 	errors: LunaticBaseProps['errors'];
 	value?: string | null;
 	disabled?: boolean;

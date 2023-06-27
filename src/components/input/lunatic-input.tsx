@@ -2,6 +2,7 @@ import Input from './html/input';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { LunaticComponentProps } from '../type';
 import { wrapWithDeclarations } from '../commons/hoc/wrap-with-declarations';
+import description from '../commons/components/description';
 
 const WrappedInput = wrapWithDeclarations(Input);
 
@@ -18,8 +19,8 @@ function LunaticInput(props: LunaticComponentProps<'Input'>) {
 		missingResponse,
 		required,
 		maxLength,
+		description,
 	} = props;
-
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
 	return (
@@ -34,6 +35,7 @@ function LunaticInput(props: LunaticComponentProps<'Input'>) {
 			disabled={disabled}
 			errors={errors}
 			required={required}
+			description={description}
 			maxLength={maxLength}
 		/>
 	);
