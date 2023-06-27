@@ -11,8 +11,6 @@ function LunaticSequence({
 	label,
 	id,
 	style,
-	questionContext,
-	questionInformation,
 }: LunaticComponentProps<'Sequence'>) {
 	return (
 		<WrappedSequence
@@ -21,8 +19,6 @@ function LunaticSequence({
 			declarations={declarations}
 			handleChange={empty}
 			value={undefined}
-			questionContext={questionContext}
-			questionInformation={questionInformation}
 			style={style}
 		/>
 	);
