@@ -13,13 +13,13 @@ const stories = {
 export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
-export const PnYnM = Template.bind({});
+export const DateDuration = Template.bind({});
 
-PnYnM.args = { id: 'durationAnnéesMois', source };
+DateDuration.args = { id: 'durationAnnéesMois', source };
 
-export const PTnHnM = Template.bind({});
+export const TimeDuration = Template.bind({});
 
-PTnHnM.args = {
+TimeDuration.args = {
 	id: 'durationHeureMinute',
 	source: source1,
 };
