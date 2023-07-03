@@ -15,3 +15,7 @@ export function objectMap<T extends Record<string, any>, V extends unknown>(
 		return acc;
 	}, {} as Record<keyof T, V>);
 }
+
+export function objectKeys<T extends Record<string, unknown>>(object: T) {
+	return Object.keys(object) as (keyof T)[];
+}
