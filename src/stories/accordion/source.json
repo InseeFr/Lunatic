@@ -10,7 +10,8 @@
             "description": {
                 "value": "\"Accordion content\"",
                 "type": "VTL"
-            }
+            },
+            "bgColor": "red"
         }
     ]
 }

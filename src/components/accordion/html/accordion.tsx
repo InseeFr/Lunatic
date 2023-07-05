@@ -6,11 +6,13 @@ import { LunaticBaseProps } from '../../type';
 function Accordion({
     label,
     description,
-}: Pick<LunaticBaseProps<string>, 'label' | 'description'>) {
+    bgColor,
+}: Pick<LunaticBaseProps<string>, 'label' | 'description'> & { bgColor?: string }) {
     const [isActive, setIsActive] = useState(false);
+    const defaultBgcolor = '#FFFFFF';
 
     return (
-        <div className="accordion-item">
+        <div className="accordion-item" style={{ backgroundColor: bgColor ? bgColor : defaultBgcolor }}>
             <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
                 <div>{label}</div>
                 <div>{isActive ? '-' : '+'}</div>

@@ -8,6 +8,7 @@ function LunaticAccordion({
     id,
     label,
     description,
+    bgColor,
 }: LunaticComponentProps<'Accordion'>) {
 
     return (
@@ -18,7 +19,7 @@ function LunaticAccordion({
             description={description}
             value={undefined}
         >
-            <Accordion label={label} description={description} />
+            <Accordion label={label} description={description} bgColor={bgColor} />
         </LunaticComponent>
     );
 }

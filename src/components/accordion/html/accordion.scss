@@ -9,11 +9,8 @@
     flex-direction: row;
     justify-content: space-between;
     cursor: pointer;
-    background-color: #21aeca;
-  }
-
-  .accordion-title:hover {
-    background-color: #3ab4cc;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
   }
 
   .accordion-title,
@@ -21,7 +18,5 @@
     padding: 1rem;
   }
 
-  .accordion-content {
-    background-color: #92c9d4;
-  }
+
 }

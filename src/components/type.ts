@@ -174,7 +174,7 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'>;
-	Accordion: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'description'>;
+	Accordion: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'description'> & { bgColor?: string };
 	PairwiseLinks: Omit<LunaticBaseProps, 'value'> & {
 		components: LunaticComponentDefinition[];
 		features?: LunaticState['features'];
@@ -209,7 +209,7 @@ type ComponentPropsByType = {
 			responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
 			title?: VtlExpression;
 			iterations?: number;
-		}>;
+		}>
 	};
 };
 
