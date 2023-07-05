@@ -1,0 +1,16 @@
+{
+    "components": [
+        {
+            "id": "accordion",
+            "componentType": "Accordion",
+            "label": {
+                "value": "\"Accordion label\"",
+                "type": "VTL"
+            },
+            "description": {
+                "value": "\"Accordion content\"",
+                "type": "VTL"
+            }
+        }
+    ]
+}

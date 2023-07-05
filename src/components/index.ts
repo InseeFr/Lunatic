@@ -25,3 +25,4 @@ export { default as ComponentSet } from './component-set';
 export { Summary } from './summary';
 export { default as QuestionInformation } from './questions/question-information';
 export { default as QuestionContext } from './questions/question-context';
+export { default as Accordion } from './accordion';
