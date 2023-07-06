@@ -19,7 +19,7 @@ describe('Accordion', () => {
     it('expands content on label click', async () => {
         const { getByText, container } = render(<Accordion {...mockProps} />);
         const accordionLabel = getByText(mockProps.label);
-        await fireEvent.click(accordionLabel);
+        fireEvent.click(accordionLabel);
         await waitFor(() => expect(container.getElementsByClassName('accordion-content').length).toBe(1));
     });
 });
