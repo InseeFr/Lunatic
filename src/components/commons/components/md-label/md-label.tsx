@@ -7,9 +7,7 @@ const renderers = (otherProps: {
 	logFunction: typeof DEFAULT_LOG_FUNCTION;
 }): Record<string, FunctionComponent<any>> => {
 	return {
-		p: (props: PropsWithChildren) => (
-			<p style={{ margin: '0' }}>{props.children}</p>
-		),
+		p: (props: PropsWithChildren) => <p>{props.children}</p>,
 		a: (props: ComponentProps<typeof Link>) =>
 			Link({ ...otherProps, ...props }),
 	};

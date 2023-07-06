@@ -8,7 +8,9 @@ const LoopTypes = {
 	blockForLoop: 'Loop',
 };
 
-function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
+function Loop(
+	props: LunaticComponentProps<'Loop' | 'RosterForLoop'>
+) {
 	const {
 		declarations,
 		label,
