@@ -19,7 +19,7 @@ function LunaticAccordion({
             description={description}
             value={undefined}
         >
-            <Accordion label={label} description={description} bgColor={bgColor} />
+            <Accordion label={label} id={id} description={description} bgColor={bgColor} />
         </LunaticComponent>
     );
 }

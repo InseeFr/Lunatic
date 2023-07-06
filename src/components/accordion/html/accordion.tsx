@@ -4,21 +4,21 @@ import './accordion.scss';
 import { LunaticBaseProps } from '../../type';
 
 function Accordion({
+    id,
     label,
     description,
     bgColor,
-}: Pick<LunaticBaseProps<string>, 'label' | 'description'> & { bgColor?: string }) {
+}: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'description'> & { bgColor?: string }) {
     const [isActive, setIsActive] = useState(false);
-    const defaultBgcolor = '#FFFFFF';
 
     return (
-        <div className="accordion-item" style={{ backgroundColor: bgColor ? bgColor : defaultBgcolor }}>
-            <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
-                <div>{label}</div>
-                <div>{isActive ? '-' : '+'}</div>
-            </div>
-            {isActive && <div className="accordion-content">{description}</div>}
-        </div>
+        <section className="accordion-item" style={bgColor ? { backgroundColor: bgColor } : {}}>
+            <h3 className="accordion-title" onClick={() => setIsActive(!isActive)}>
+                <button className="accordion-trigger" aria-expanded={isActive}  aria-controls={`accordion-${id}`}>{label}</button>
+                <span>{isActive ? '-' : '+'}</span>
+            </h3>
+            {isActive && <div className="accordion-content" id={`accordion-${id}`}>{description}</div>}
+        </section>
     );
 };
 
