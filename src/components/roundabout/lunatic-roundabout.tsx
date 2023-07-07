@@ -6,16 +6,22 @@ import { LunaticComponentProps } from '../type';
 /**
  *  Logique fonctionnelle et immuable du composant
  */
-function LunaticRoundabout({
-	iterations,
-	expressions,
-	goToPage,
-	page,
-	label,
-	locked,
-}: LunaticComponentProps<'Roundabout'>) {
+function LunaticRoundabout(props: LunaticComponentProps<'Roundabout'>) {
+  const {
+    iterations,
+    expressions,
+    goToPage,
+    page,
+    label,
+    locked,
+    handleGoIteration
+  } = props;
+  console.log(props)
 	const goToIteration = useCallback(
-		function (iteration: number) {
+    function (iteration: number) {
+      if (handleGoIteration) {
+        handleGoIteration();
+      }
 			goToPage({
 				page,
 				iteration,
@@ -23,7 +29,7 @@ function LunaticRoundabout({
 				roundabout: { page },
 			});
 		},
-		[goToPage, page, iterations]
+		[goToPage, page, iterations, handleGoIteration]
 	);
 
 	if (iterations === 1) {

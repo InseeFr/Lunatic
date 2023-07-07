@@ -159,6 +159,7 @@ type ComponentPropsByType = {
 			partial?: Array<boolean>;
 			label?: Array<string>;
 		};
+    handleGoIteration?: () => void;
 	};
 	Dropdown: LunaticBaseProps<string | null> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
