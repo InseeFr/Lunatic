@@ -16,8 +16,8 @@ function LunaticRoundabout(props: LunaticComponentProps<'Roundabout'>) {
     locked,
     handleGoIteration
   } = props;
-  console.log(props)
-	const goToIteration = useCallback(
+
+  const goToIteration = useCallback(
     function (iteration: number) {
       if (handleGoIteration) {
         handleGoIteration();
