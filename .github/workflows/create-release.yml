@@ -2,7 +2,7 @@ name: Release Candidate
 on:
   push:
     branches:
-      - 'v2-develop'
+      - 'main'
     tags:
       - '*'
 jobs:
