@@ -20,6 +20,7 @@ type Props = {
 	| 'value'
 	| 'errors'
 	| 'className'
+	| 'disabled'
 >;
 
 function OrchestratedComponent({
@@ -35,6 +36,7 @@ function OrchestratedComponent({
 	iteration,
 	linksIterations,
 	executeExpression,
+	disabled,
 	errors,
 }: Props) {
 	const { componentType } = component;
@@ -63,6 +65,7 @@ function OrchestratedComponent({
 				executeExpression={executeExpression}
 				errors={errors}
 				iteration={iteration}
+				disabled={disabled}
 			/>
 		);
 	}

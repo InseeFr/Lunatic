@@ -13,5 +13,7 @@ export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
+export const ReadOnly = Template.bind({});
 
 Default.args = { id: 'roster-for-loop', source: sourceRoster };
+ReadOnly.args = { id: 'roster-for-loop', source: sourceRoster, readOnly: true };
