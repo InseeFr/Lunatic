@@ -28,7 +28,7 @@ function hasResponse(
 type Props = {
 	className?: string;
 	componentClassName?: string;
-} & Omit<LunaticComponentProps<'ComponentSet'>, 'id'>;
+} & Omit<LunaticComponentProps<'ComponentSet'>, 'id' | 'response'>;
 
 function ComponentSetComponents({
 	components,
