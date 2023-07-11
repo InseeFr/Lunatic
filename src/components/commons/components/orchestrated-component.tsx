@@ -2,51 +2,25 @@ import * as lunatic from '../../../components';
 import { fillComponentExpressions } from '../../../use-lunatic/commons';
 import { LunaticBaseProps } from '../../type';
 import { LunaticComponentDefinition } from '../../../use-lunatic/type';
-import { getSuggesterStatusType } from '../../component-set/lunatic-component-set';
 
-type Props = {
-	linksIterations?: [number, number];
+type Props<T extends Record<string, unknown>> = {
 	component: LunaticComponentDefinition;
-	features?: string[];
-} & Pick<
-	LunaticBaseProps,
-	| 'id'
-	| 'iteration'
-	| 'executeExpression'
-	| 'handleChange'
-	| 'missing'
-	| 'shortcut'
-	| 'management'
-	| 'preferences'
-	| 'value'
-	| 'errors'
-	| 'className'
-	| 'disabled'
-> &
-	getSuggesterStatusType;
+	linksIterations?: number[];
+} & Pick<LunaticBaseProps, 'iteration' | 'executeExpression'> &
+	T;
 
-function OrchestratedComponent({
-	id,
+function OrchestratedComponent<T extends Record<string, unknown>>({
 	component,
-	handleChange,
-	features,
-	missing,
-	shortcut,
-	management,
-	preferences,
-	value,
-	iteration,
-	linksIterations,
-	executeExpression,
-	disabled,
-	errors,
-	getSuggesterStatus,
-}: Props) {
+	...props
+}: Props<T>) {
 	const { componentType } = component;
 
 	const componentFilled = fillComponentExpressions(component, {
-		executeExpression,
-		pager: { iteration, linksIterations },
+		executeExpression: props.executeExpression,
+		pager: {
+			iteration: props.iteration,
+			linksIterations: props.linksIterations,
+		},
 	});
 
 	const { conditionFilter } = componentFilled;
@@ -54,24 +28,7 @@ function OrchestratedComponent({
 
 	if (componentType in lunatic && hasToBeDisplay) {
 		const Component = (lunatic as any)[componentType]; // This is too dynamic, orchestration has no way to check props
-		return (
-			<Component
-				{...componentFilled}
-				id={id}
-				handleChange={handleChange}
-				preferences={preferences}
-				management={management}
-				features={features}
-				missing={missing}
-				shortcut={shortcut}
-				value={value}
-				executeExpression={executeExpression}
-				errors={errors}
-				iteration={iteration}
-				disabled={disabled}
-				getSuggesterStatus={getSuggesterStatus}
-			/>
-		);
+		return <Component {...componentFilled} {...props} />;
 	}
 	return null;
 }

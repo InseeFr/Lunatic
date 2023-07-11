@@ -1,9 +1,7 @@
-import React from 'react';
 import { OrchestratedComponent } from '../../commons';
 import ComponentSetComponentContainer from './component-set-component-container';
 import { LunaticComponentProps } from '../../type';
 import { LunaticComponentDefinition } from '../../../use-lunatic/type';
-import { getSuggesterStatusType } from '../lunatic-component-set';
 
 /**
  * Extract the value associated with a component
@@ -30,39 +28,14 @@ function hasResponse(
 type Props = {
 	className?: string;
 	componentClassName?: string;
-} & Pick<
-	LunaticComponentProps<'ComponentSet'>,
-	| 'components'
-	| 'value'
-	| 'features'
-	| 'missing'
-	| 'shortcut'
-	| 'management'
-	| 'preferences'
-	| 'executeExpression'
-	| 'errors'
-	| 'className'
-	| 'handleChange'
-	| 'iteration'
-	| 'disabled'
->;
+} & Omit<LunaticComponentProps<'ComponentSet'>, 'id'>;
 
 function ComponentSetComponents({
 	components,
-	value,
-	features,
-	missing,
-	shortcut,
-	management,
-	preferences,
-	executeExpression,
-	errors,
-	className,
-	handleChange,
 	componentClassName,
-	iteration,
-	getSuggesterStatus,
-	disabled,
+	className,
+	value,
+	...props
 }: Props) {
 	if (!Array.isArray(components)) {
 		return null;
@@ -75,21 +48,11 @@ function ComponentSetComponents({
 				return (
 					<ComponentSetComponentContainer className={className} key={id}>
 						<OrchestratedComponent
+							{...props}
 							component={component}
-							features={features}
-							missing={missing}
-							shortcut={shortcut}
-							management={management}
-							value={componentValue}
-							iteration={iteration}
 							id={id}
-							preferences={preferences}
-							executeExpression={executeExpression}
-							errors={errors}
-							handleChange={handleChange}
 							className={componentClassName}
-							disabled={disabled}
-							getSuggesterStatus={getSuggesterStatus}
+							value={componentValue}
 						/>
 					</ComponentSetComponentContainer>
 				);

@@ -3,62 +3,27 @@ import { LunaticComponentProps } from '../type';
 import ComponentSet from './html/component-set';
 import ComponentSetComponents from './html/component-set-components';
 
-export type getSuggesterStatusType = Pick<
-	LunaticComponentProps<'Suggester'>,
-	'getSuggesterStatus'
->;
-
-function LunaticComponentSet(
-	props: LunaticComponentProps<'ComponentSet'> & getSuggesterStatusType
-) {
-	const {
-		declarations,
-		label,
-		id,
-		components,
-		value,
-		executeExpression,
-		shortcut,
-		management,
-		missing,
-		features,
-		preferences,
-		errors,
-		description,
-		handleChange,
-		className,
-		iteration,
-		disabled,
-		getSuggesterStatus,
-	} = props;
+function LunaticComponentSet({
+	id,
+	label,
+	declarations,
+	description,
+	response, // Do not propagate the response (it's undefined)
+	...props // These props will be sent down to children components
+}: LunaticComponentProps<'ComponentSet'>) {
 	return (
 		<LunaticComponentWithoutLabel
 			id={id}
-			preferences={preferences}
 			declarations={declarations}
-			value={value}
-			missing={missing}
-			management={management}
 			description={description}
-			handleChange={handleChange}
+			preferences={props.preferences}
+			value={props.value}
+			missing={props.missing}
+			management={props.management}
+			handleChange={props.handleChange}
 		>
-			<ComponentSet id={id} legendText={label} errors={errors}>
-				<ComponentSetComponents
-					className={className}
-					components={components}
-					features={features}
-					errors={errors}
-					value={value}
-					iteration={iteration}
-					executeExpression={executeExpression}
-					preferences={preferences}
-					management={management}
-					missing={missing}
-					shortcut={shortcut}
-					handleChange={handleChange}
-					getSuggesterStatus={getSuggesterStatus}
-					disabled={disabled}
-				/>
+			<ComponentSet id={id} legendText={label} errors={props.errors}>
+				<ComponentSetComponents {...props} />
 			</ComponentSet>
 		</LunaticComponentWithoutLabel>
 	);
