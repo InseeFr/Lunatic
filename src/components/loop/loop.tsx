@@ -30,6 +30,7 @@ function Loop(
 		preferences,
 		paginatedLoop,
 		errors,
+		disabled,
 	} = props;
 	switch (componentType) {
 		case LoopTypes.blockForLoop:
@@ -51,6 +52,7 @@ function Loop(
 					preferences={preferences}
 					paginatedLoop={paginatedLoop}
 					errors={errors}
+					disabled={disabled}
 				/>
 			);
 		case LoopTypes.rosterForLoop:
@@ -72,6 +74,7 @@ function Loop(
 					preferences={preferences}
 					headers={headers}
 					errors={errors}
+					disabled={disabled}
 				/>
 			);
 		default:

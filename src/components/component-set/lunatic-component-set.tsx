@@ -21,6 +21,7 @@ function LunaticComponentSet(props: LunaticComponentProps<'ComponentSet'>) {
 		handleChange,
 		className,
 		iteration,
+		disabled,
 	} = props;
 	return (
 		<LunaticComponentWithoutLabel
@@ -47,6 +48,7 @@ function LunaticComponentSet(props: LunaticComponentProps<'ComponentSet'>) {
 					missing={missing}
 					shortcut={shortcut}
 					handleChange={handleChange}
+					disabled={disabled}
 				/>
 			</ComponentSet>
 		</LunaticComponentWithoutLabel>

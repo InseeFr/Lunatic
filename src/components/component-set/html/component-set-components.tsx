@@ -43,6 +43,7 @@ type Props = {
 	| 'className'
 	| 'handleChange'
 	| 'iteration'
+	| 'disabled'
 >;
 
 function ComponentSetComponents({
@@ -59,6 +60,7 @@ function ComponentSetComponents({
 	handleChange,
 	componentClassName,
 	iteration,
+	disabled,
 }: Props) {
 	if (!Array.isArray(components)) {
 		return null;
@@ -84,6 +86,7 @@ function ComponentSetComponents({
 							errors={errors}
 							handleChange={handleChange}
 							className={componentClassName}
+							disabled={disabled}
 						/>
 					</ComponentSetComponentContainer>
 				);

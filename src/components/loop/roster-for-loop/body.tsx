@@ -21,6 +21,7 @@ type Props = {
 	| 'missing'
 	| 'shortcut'
 	| 'errors'
+	| 'disabled'
 >;
 
 function Body({
@@ -31,6 +32,7 @@ function Body({
 	handleChange,
 	value: valueMap,
 	missing,
+	disabled,
 }: Props) {
 	const handleChangeRow = useCallback<Props['handleChange']>(
 		function (response, value, args) {
@@ -54,6 +56,7 @@ function Body({
 				valueMap={valueMap}
 				missing={missing}
 				preferences={['COLLECTED']}
+				disabled={disabled}
 			/>
 		</Tbody>
 	);
