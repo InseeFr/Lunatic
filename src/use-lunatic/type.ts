@@ -101,7 +101,7 @@ export type LunaticState = {
 	isInLoop: boolean;
 	isFirstPage: boolean;
 	isLastPage: boolean;
-	features: 'VTL'[];
+	features: ['VTL'] | ['VTL', 'MD'];
 	preferences: ['COLLECTED'];
 	savingType: 'COLLECTED';
 	// Map of variable associated with the expression used to repopulate it
