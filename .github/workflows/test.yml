@@ -2,9 +2,9 @@ name: Tests - Unit & End to end
 
 on:
   push:
-    branches: [main]
+    branches: [main,develop]
   pull_request_target:
-      branches: [main]
+    branches: [main,develop]
 
 jobs:
   test:
