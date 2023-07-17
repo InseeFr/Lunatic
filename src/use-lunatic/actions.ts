@@ -48,7 +48,7 @@ export type ActionInit = {
 		management: boolean;
 		handleChange: LunaticState['handleChange'];
 		activeControls: boolean;
-		goToPage: (params: ActionGoToPage['payload']) => ActionGoToPage;
+		goToPage: (params: ActionGoToPage['payload']) => void;
 		withOverview: boolean;
 	};
 };

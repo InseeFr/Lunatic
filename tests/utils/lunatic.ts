@@ -21,9 +21,9 @@ export function generateState(
 		onInit({
 			features: ['VTL'],
 			source,
-			data: 'COLLECTED' in data ? data : generateData(data),
+			data: 'COLLECTED' in data ? (data as LunaticData) : generateData(data),
 			...options,
-		})
+		} as ActionInit['payload'])
 	);
 }
 

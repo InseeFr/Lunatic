@@ -25,8 +25,8 @@ import { useSuggesters } from './use-suggesters';
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
 const DEFAULT_DATA = empty as LunaticData;
-const DEFAULT_FEATURES = ['VTL', 'MD'];
-const DEFAULT_PREFERENCES = [COLLECTED];
+const DEFAULT_FEATURES = ['VTL', 'MD'] as ['VTL', 'MD'];
+const DEFAULT_PREFERENCES = [COLLECTED] as ['COLLECTED'];
 const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
 const DEFAULT_DONT_KNOW = D.DK;
@@ -56,9 +56,9 @@ function useLunatic(
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
 	}: {
-		features?: string[];
-		preferences?: string[];
-		savingType?: string;
+		features?: LunaticState['features'];
+		preferences?: LunaticState['preferences'];
+		savingType?: LunaticState['savingType'];
 		onChange?: typeof nothing;
 		management?: boolean;
 		shortcut?: boolean;
@@ -133,8 +133,8 @@ function useLunatic(
 		[dispatch]
 	);
 
-	const goToPage = useCallback(
-		function (payload = {}) {
+	const goToPage: LunaticState['goToPage'] = useCallback(
+		function (payload) {
 			dispatch(actions.goToPage(payload));
 		},
 		[dispatch]
