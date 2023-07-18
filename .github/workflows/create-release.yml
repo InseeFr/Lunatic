@@ -35,12 +35,12 @@ jobs:
       - run: echo ${{steps.version.outputs.prop}}
       - name: Release snapshot
         id: release-snapshot
-        uses: 'marvinpinto/action-automatic-releases@latest'
+      - uses: 'marvinpinto/action-automatic-releases@latest'
         with:
-        repo_token: '${{ secrets.GITHUB_TOKEN }}'
-        automatic_release_tag: 'latest'
-        prerelease: false
-        title: Release Candidate ${{steps.version.outputs.prop}}
-        files: |
-          LICENSE.txt
-          *.jar
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          automatic_release_tag: 'latest'
+          prerelease: false
+          title: Release Candidate ${{steps.version.outputs.prop}}
+          files: |
+            LICENSE.txt
+            *.jar
