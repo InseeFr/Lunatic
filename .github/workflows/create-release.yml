@@ -2,7 +2,7 @@ name: Release Candidate
 on:
   push:
     branches:
-      - 'main'
+      - 'v2-release'
     tags:
       - '*'
 jobs:
@@ -35,11 +35,10 @@ jobs:
       - run: echo ${{steps.version.outputs.prop}}
       - name: Release snapshot
         id: release-snapshot
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: 'marvinpinto/action-automatic-releases@latest'
         with:
-          tag_name: ${{steps.version.outputs.prop}}-rc
-          release_name: Release Candidate ${{steps.version.outputs.prop}}
-          draft: false
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
           prerelease: false
+          files: |
+            LICENSE.txt
+            *.jar
