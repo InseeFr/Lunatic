@@ -315,7 +315,7 @@ export type LunaticSource = {
 	label: LabelType;
 	components: ComponentType[];
 	variables: Variable[];
-	suggesters: SuggesterType[];
+	suggesters?: SuggesterType[];
 	cleaning: {
 		[variableName: string]: {
 			[variableName: string]: string;
