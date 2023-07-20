@@ -20,28 +20,26 @@ function resolveSubPage(
 	action: ActionGoToPage
 ): LunaticState {
 	const { pager, pages } = state;
-	const {
-		page,
-		iteration,
-		nbIterations,
-		subPage = 0,
-		roundabout,
-	} = action.payload;
-	const parsed = getPagerFromPageTag(page);
-	const rootPage = parsed ? parsed.page : '1';
-	const { subPages } = pages[rootPage] || { subPages: [] };
+	const { pageTag } = action.payload;
+	const parsed = getPagerFromPageTag(pageTag);
+	if (!parsed) {
+		return state;
+	}
+	const { page, subPage, iteration, nbIterations } = parsed;
+	const { subPages } = pages[page] || { subPages: [] };
 	const nbSubPages = subPages?.length;
+
 	return {
 		...state,
 		isInLoop: true,
 		pager: {
 			...pager,
-			page: rootPage,
+			page,
 			iteration,
 			nbIterations,
 			nbSubPages,
 			subPage,
-			roundabout,
+			// roundabout: {page},
 		},
 	};
 }
@@ -51,8 +49,13 @@ function reduceGoToPage(
 	action: ActionGoToPage
 ): LunaticState {
 	const { isInLoop, pager } = state;
-	const { page: newPage, iteration } = action.payload;
+	const { pageTag } = action.payload;
+	const content = getPagerFromPageTag(pageTag);
+	if (!content) {
+		return state;
+	}
 
+	const { iteration, page: newPage } = content;
 	if (iteration !== undefined) {
 		return resolveSubPage(state, action);
 	}

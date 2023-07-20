@@ -149,7 +149,6 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 		nbIterations: 0,
 		...pager,
 	};
-
 	/* next iteration of loop/roundabout */
 	if (isInLoop && subPage !== undefined && subPage < nbSubPages - 1) {
 		return validateChange(reduceNextSubPage(state));

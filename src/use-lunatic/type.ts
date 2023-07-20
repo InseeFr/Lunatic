@@ -165,13 +165,7 @@ export type LunaticState = {
 	shortcut?: boolean;
 	// TODO : Explain this
 	management?: boolean;
-	goToPage: (page: {
-		page: string;
-		iteration?: number;
-		nbIterations?: number;
-		subPage?: number;
-		roundabout?: { page: string };
-	}) => void;
+	goToPage: (page: { pageTag: string }) => void;
 	getSuggesterStatus: (name: string) => {
 		status: SuggesterStatus;
 		timestamp: number;

@@ -6,31 +6,12 @@ import { Overview } from './overview';
 import Waiting from './waiting';
 import { Logger } from '../../utils/logger';
 
-export function getPagerFromPageTag(pageTag = '1') {
-	const pattern =
-		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?/g;
-	const match = [...pageTag?.matchAll(pattern)];
-	if (match.length === 0) {
-		return null;
-	}
-	const [
-		{
-			groups: { page, subPagePlusUn, iterationPlusUn },
-		},
-	] = match;
-	return {
-		page,
-		subPage: parseInt(subPagePlusUn, 10) - 1,
-		iteration: parseInt(iterationPlusUn, 10) - 1,
-	};
-}
-
 function getStoreInfoRequired() {
 	return {};
 }
 
 function DevOptions({ goToPage, getData }) {
-	const [toPage, setToPage] = useState('2.1#2');
+	const [toPage, setToPage] = useState('2.1#2|5');
 
 	function handleChange(_, value) {
 		setToPage(value);
@@ -43,9 +24,7 @@ function DevOptions({ goToPage, getData }) {
 				<lunatic.Button onClick={() => Logger.log(getData(true))}>
 					Get State
 				</lunatic.Button>
-				<lunatic.Button
-					onClick={() => goToPage({ ...getPagerFromPageTag(`${toPage}`) })}
-				>
+				<lunatic.Button onClick={() => goToPage({ pageTag: toPage })}>
 					{`Go to page ${toPage}`}
 				</lunatic.Button>
 				<lunatic.Input

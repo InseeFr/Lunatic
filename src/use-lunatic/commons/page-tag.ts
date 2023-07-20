@@ -4,9 +4,9 @@ import { LunaticState } from '../type';
  * Generate page name from the pager
  */
 export function getPageTag(pager: LunaticState['pager']): string {
-	const { page, subPage, iteration } = pager;
+	const { page, subPage, iteration, nbIterations } = pager;
 	if (subPage !== undefined && iteration !== undefined) {
-		return `${page}.${subPage + 1}#${iteration + 1}`; //|${nbIterations}
+		return `${page}.${subPage + 1}#${iteration + 1}|${nbIterations}`;
 	}
 
 	return `${page}`;
@@ -14,7 +14,7 @@ export function getPageTag(pager: LunaticState['pager']): string {
 
 export function getPagerFromPageTag(pageTag: string = '1') {
 	const pattern =
-		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?/g;
+		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?\|?(?<nbIterations>\d+)/g;
 	const match = [...(pageTag?.matchAll(pattern) as any)] as
 		| [
 				{
@@ -22,6 +22,7 @@ export function getPagerFromPageTag(pageTag: string = '1') {
 						page: string;
 						subPagePlusUn: string;
 						iterationPlusUn: string;
+						nbIterations: string;
 					};
 				}
 		  ]
@@ -31,13 +32,14 @@ export function getPagerFromPageTag(pageTag: string = '1') {
 	}
 	const [
 		{
-			groups: { page, subPagePlusUn, iterationPlusUn },
+			groups: { page, subPagePlusUn, iterationPlusUn, nbIterations },
 		},
 	] = match;
 	return {
 		page,
 		subPage: parseInt(subPagePlusUn, 10) - 1,
 		iteration: parseInt(iterationPlusUn, 10) - 1,
+		nbIterations: parseInt(nbIterations),
 	};
 }
 
