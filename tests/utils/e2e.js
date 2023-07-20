@@ -82,8 +82,12 @@ class Instruction {
 
 	async fill(text) {
 		const element = await this.element;
-		await userEvent.clear(element);
-		await sleep(1);
+		try {
+			await userEvent.clear(element);
+			await sleep(1);
+		} catch (e) {
+			// Do nothing
+		}
 		return userEvent.type(element, text, { delay: 1 });
 	}
 }
