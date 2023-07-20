@@ -2,7 +2,7 @@ name: Tests - Unit & End to end
 
 on:
   push:
-    branches: ['main','develop', 'test/encure-working']
+    branches: ['main','develop']
   pull_request_target:
     branches: ['main','develop']
 
