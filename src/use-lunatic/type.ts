@@ -60,7 +60,7 @@ export type LunaticOverviewItem = {
 	parent?: unknown;
 	label: LunaticExpression;
 	conditionFilter?: {
-		bindingDependencies: string[];
+		bindingDependencies?: string[];
 	};
 	children: LunaticOverviewItem[];
 };
