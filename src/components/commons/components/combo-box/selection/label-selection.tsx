@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import classnames from 'classnames';
 import { displayLabelOrInput } from './displayLabelOrInput';
 import { ComboBoxOption } from '../combo-box.type';
+import LabelSelectionContainer from './label-selection-container';
 
 export type LabelSelectionProps = {
 	labelRenderer: FunctionComponent<{
@@ -28,13 +28,9 @@ export function LabelSelection({
 		selectedIndex !== undefined ? options[selectedIndex] : undefined;
 
 	return (
-		<div
-			className={classnames('lunatic-combo-box-selected', {
-				disabled,
-			})}
-		>
+		<LabelSelectionContainer disabled={disabled}>
 			<Renderer option={option} placeholder={placeholder} search={search} />
-		</div>
+		</LabelSelectionContainer>
 	);
 }
 

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { PanelContainer } from './panel-container';
+import { default as PanelContainer } from './panel-container';
 import { OptionContainer } from './option-container';
 import { ComboBoxOption } from '../combo-box.type';
 import { DefaultOptionRenderer } from '../../../index';
