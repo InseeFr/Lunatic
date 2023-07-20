@@ -1,18 +1,25 @@
 {
 	"COLLECTED": {
+		"COUNT_PERSONS": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": 5
+		},
 		"PRENOMS": {
 			"EDITED": [null],
 			"FORCED": [null],
 			"INPUTED": [null],
 			"PREVIOUS": [null],
-			"COLLECTED": ["Fanny", "Renaud"]
+			"COLLECTED": ["Fanny", "Renaud", "Julia", "Matt", "Tien"]
 		},
-		"AGE": {
+		"AGES": {
 			"EDITED": [null],
 			"FORCED": [null],
 			"INPUTED": [null],
 			"PREVIOUS": [null],
-			"COLLECTED": [15, 4]
+			"COLLECTED": [11, 49, 37, 26, 25]
 		}
 	}
 }

@@ -2,6 +2,7 @@ import { ActionGoToPage, ActionKind } from '../actions';
 import { LunaticState } from '../type';
 import { isOnEmptyPage } from './commons';
 import reduceGoNextPage from './reduce-go-next-page';
+import { getPagerFromPageTag } from '../commons/page-tag';
 
 function validateChange(state: LunaticState) {
 	const updatedState = { ...state } satisfies LunaticState;
@@ -26,15 +27,16 @@ function resolveSubPage(
 		subPage = 0,
 		roundabout,
 	} = action.payload;
-	const { subPages } = pages[page] || { subPages: [] };
+	const parsed = getPagerFromPageTag(page);
+	const rootPage = parsed ? parsed.page : '1';
+	const { subPages } = pages[rootPage] || { subPages: [] };
 	const nbSubPages = subPages?.length;
-
 	return {
 		...state,
 		isInLoop: true,
 		pager: {
 			...pager,
-			page,
+			page: rootPage,
 			iteration,
 			nbIterations,
 			nbSubPages,

@@ -6,7 +6,7 @@ import { LunaticState } from '../type';
 export function getPageTag(pager: LunaticState['pager']): string {
 	const { page, subPage, iteration } = pager;
 	if (subPage !== undefined && iteration !== undefined) {
-		return `${page}.${subPage + 1}#${iteration + 1}`;
+		return `${page}.${subPage + 1}#${iteration + 1}`; //|${nbIterations}
 	}
 
 	return `${page}`;
