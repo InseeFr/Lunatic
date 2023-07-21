@@ -115,7 +115,7 @@ function validateChange(state: LunaticState): LunaticState {
 }
 
 function reduceGoPreviousPage(state: LunaticState): LunaticState {
-	const { pages, pager, isInLoop, variables } = state;
+	const { pages, pager, isInLoop } = state;
 	const { iteration, subPage, roundabout, nbIterations } = pager;
 
 	// dans une boucle et l'itération courante n'est pas finie

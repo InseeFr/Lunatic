@@ -24,7 +24,11 @@ function DevOptions({ goToPage, getData }) {
 				<lunatic.Button onClick={() => Logger.log(getData(true))}>
 					Get State
 				</lunatic.Button>
-				<lunatic.Button onClick={() => goToPage({ pageTag: toPage })}>
+				<lunatic.Button
+					onClick={() => {
+						goToPage({ pageTag: toPage });
+					}}
+				>
 					{`Go to page ${toPage}`}
 				</lunatic.Button>
 				<lunatic.Input

@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import Roundabout from './roundabout';
 import Redirect from './redirect';
 import { LunaticComponentProps } from '../type';
+import { getPageTag } from '../../use-lunatic/commons';
 
 /**
  *  Logique fonctionnelle et immuable du composant
@@ -16,11 +17,16 @@ function LunaticRoundabout({
 }: LunaticComponentProps<'Roundabout'>) {
 	const goToIteration = useCallback(
 		function (iteration: number) {
-			goToPage({
+			const pageTag = getPageTag({
 				page,
 				iteration,
 				nbIterations: iterations,
+				maxPage: '',
+				subPage: 0,
 				roundabout: { page },
+			});
+			goToPage({
+				pageTag,
 			});
 		},
 		[goToPage, page, iterations]

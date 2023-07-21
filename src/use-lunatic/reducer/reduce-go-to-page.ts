@@ -25,10 +25,9 @@ function resolveSubPage(
 	if (!parsed) {
 		return state;
 	}
-	const { page, subPage, iteration, nbIterations } = parsed;
+	const { page, subPage, iteration, nbIterations, roundabout } = parsed;
 	const { subPages } = pages[page] || { subPages: [] };
 	const nbSubPages = subPages?.length;
-
 	return {
 		...state,
 		isInLoop: true,
@@ -39,7 +38,7 @@ function resolveSubPage(
 			nbIterations,
 			nbSubPages,
 			subPage,
-			// roundabout: {page},
+			roundabout,
 		},
 	};
 }

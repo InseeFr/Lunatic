@@ -19,5 +19,5 @@ Default.args = {
 	source,
 	pagination: true,
 	data,
-	readOnly: true,
+	readOnly: false,
 };

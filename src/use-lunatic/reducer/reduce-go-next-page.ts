@@ -142,13 +142,14 @@ function validateChange(state: LunaticState): LunaticState {
 }
 
 function reduceGoNextPage(state: LunaticState): LunaticState {
-	const { pages, isInLoop, pager, variables } = state;
+	const { pages, isInLoop, pager } = state;
 	const { iteration, nbIterations, subPage, nbSubPages, page, roundabout } = {
 		nbSubPages: 0,
 		iteration: 0,
 		nbIterations: 0,
 		...pager,
 	};
+
 	/* next iteration of loop/roundabout */
 	if (isInLoop && subPage !== undefined && subPage < nbSubPages - 1) {
 		return validateChange(reduceNextSubPage(state));
