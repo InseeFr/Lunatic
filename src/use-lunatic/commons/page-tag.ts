@@ -1,22 +1,12 @@
 import { LunaticState } from '../type';
 
-function getRoundaboutSection(roundabout?: { page: string }) {
-	if (roundabout) {
-		return `r${roundabout.page}`;
-	}
-
-	return '';
-}
-
 /**
  * Generate page name from the pager
  */
 export function getPageTag(pager: LunaticState['pager']): string {
-	const { page, subPage, iteration, nbIterations, roundabout } = pager;
+	const { page, subPage, iteration, nbIterations } = pager;
 	if (subPage !== undefined && iteration !== undefined) {
-		return `${page}.${subPage + 1}#${
-			iteration + 1
-		}|${nbIterations}${getRoundaboutSection(roundabout)}`;
+		return `${page}.${subPage + 1}#${iteration + 1}|${nbIterations}`;
 	}
 
 	return `${page}`;
@@ -31,7 +21,7 @@ function safeParseInt(numb?: string, how: number = 0) {
 
 export function getPagerFromPageTag(pageTag: string = '1') {
 	const pattern =
-		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?\|?(?<nbIterations>\d+)?r?(?<roundabout>\d+)?/g;
+		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?\|?(?<nbIterations>\d+)/g;
 	const match = [...(pageTag?.matchAll(pattern) as any)] as
 		| [
 				{
@@ -40,7 +30,6 @@ export function getPagerFromPageTag(pageTag: string = '1') {
 						subPagePlusUn: string;
 						iterationPlusUn: string;
 						nbIterations: string;
-						roundabout: string;
 					};
 				}
 		  ]
@@ -50,13 +39,7 @@ export function getPagerFromPageTag(pageTag: string = '1') {
 	}
 	const [
 		{
-			groups: {
-				page,
-				subPagePlusUn,
-				iterationPlusUn,
-				nbIterations,
-				roundabout,
-			},
+			groups: { page, subPagePlusUn, iterationPlusUn, nbIterations },
 		},
 	] = match;
 	return {
@@ -64,10 +47,12 @@ export function getPagerFromPageTag(pageTag: string = '1') {
 		subPage: safeParseInt(subPagePlusUn, -1),
 		iteration: safeParseInt(iterationPlusUn, -1),
 		nbIterations: safeParseInt(nbIterations),
-		roundabout: roundabout ? { page: roundabout } : undefined,
 	};
 }
 
+/*
+ * Est-ce vraiment utilisé ?
+ */
 export function isNewReachedPage(pager: LunaticState['pager']): boolean {
 	const { lastReachedPage, page, subPage, iteration } = pager;
 	const reachedPager = getPagerFromPageTag(lastReachedPage ?? '0');
