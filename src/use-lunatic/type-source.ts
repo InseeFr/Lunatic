@@ -1,7 +1,5 @@
 /**
  * Types used for source data (lunatic models and data.json)
- *
- * These types should not be used outside of use-lunatic
  */
 export type LabelType = { value: string; type: 'VTL' | 'VTL|MD' };
 
@@ -58,7 +56,9 @@ export type DeclarationType = {
 	label: LabelType;
 };
 
-export type ConditionFilterType = LabelType & { bindingDependencies: string[] };
+export type ConditionFilterType = LabelType & {
+	bindingDependencies?: string[];
+};
 
 export enum Criticality {
 	INFO = 'INFO',
@@ -102,14 +102,12 @@ export type Hierarchy = {
 
 export type ComponentTypeBase = {
 	label: LabelType;
-	declarations: DeclarationType[];
+	declarations?: DeclarationType[];
 	conditionFilter: ConditionFilterType;
 	controls?: ControlType[];
 	id: string;
-	storeName: string;
-	bindingDependencies: string[];
+	bindingDependencies?: string[];
 	hierarchy: Hierarchy;
-	missingResponse: ResponseType;
 	mandatory?: boolean;
 	page: string;
 };
@@ -128,11 +126,19 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentDropdownType)
 	| (ComponentTypeBase & ComponentPairWiseLinksType)
 	| (ComponentTypeBase & ComponentRoundaboutType)
+	| (ComponentTypeBase & ComponentSuggesterType)
+	| (ComponentTypeBase & ComponentInputOrTextareaType)
 	| (ComponentTypeBase & {
-			componentType: 'Input' | 'CheckboxOne' | 'Textarea';
+			componentType: 'CheckboxOne';
 	  })
-	| (ComponentTypeBase & ComponentComponentSet);
+	| (ComponentTypeBase & ComponentComponentSetType);
 
+export type ComponentInputOrTextareaType = {
+	componentType: 'Input' | 'Textarea';
+	maxLength: number;
+	missingResponse?: ResponseType;
+	response: ResponseType;
+};
 export type ComponentSequenceType = {
 	componentType: 'Sequence';
 };
@@ -230,18 +236,21 @@ export type ComponentCheckboxGroupType = {
 export type ComponentCheckboxBooleanType = {
 	componentType: 'CheckboxBoolean';
 	response: ResponseType;
+	missingResponse?: ResponseType;
 };
 
 export type ComponentRadioType = {
 	componentType: 'Radio';
 	options: { value: string; label: LabelType }[];
 	response: ResponseType;
+	missingResponse?: ResponseType;
 };
 
 export type ComponentDropdownType = {
 	componentType: 'Dropdown';
 	options: { value: string; label: LabelType }[];
 	response: ResponseType;
+	missingResponse?: ResponseType;
 };
 
 export type ComponentFilterDescriptionType = {
@@ -258,9 +267,14 @@ export type ComponentPairWiseLinksType = {
 	};
 };
 
-export type ComponentComponentSet = {
+export type ComponentComponentSetType = {
 	componentType: 'ComponentSet';
 	components: ComponentType[];
+};
+
+export type ComponentSuggesterType = {
+	componentType: 'Suggester';
+	storeName: string;
 };
 
 export type SuggesterType = {
@@ -312,12 +326,12 @@ export type LunaticSource = {
 	lunaticModelVersion?: string;
 	generatingDate?: string;
 	missing?: boolean;
-	pagination?: boolean;
+	pagination?: 'question' | 'sequence' | 'subsequence';
 	maxPage: string;
 	label: LabelType;
 	components: ComponentType[];
 	variables: Variable[];
-	suggesters: SuggesterType[];
+	suggesters?: SuggesterType[];
 	cleaning: {
 		[variableName: string]: {
 			[variableName: string]: string;

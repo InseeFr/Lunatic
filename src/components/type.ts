@@ -79,6 +79,7 @@ type ComponentPropsByType = {
 	ComponentSet: LunaticBaseProps<unknown> & {
 		components: LunaticComponentDefinition[];
 		value: Record<string, unknown>;
+		response: undefined;
 	};
 	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
@@ -203,11 +204,11 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	Summary: LunaticBaseProps<string | null> & {
-    sections: Array<{
-      responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
-      title?: VtlExpression;
-      iterations?: number;
-    }>
+		sections: Array<{
+			responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
+			title?: VtlExpression;
+			iterations?: number;
+		}>;
 	};
 };
 

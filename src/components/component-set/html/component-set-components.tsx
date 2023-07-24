@@ -1,4 +1,3 @@
-import React from 'react';
 import { OrchestratedComponent } from '../../commons';
 import ComponentSetComponentContainer from './component-set-component-container';
 import { LunaticComponentProps } from '../../type';
@@ -29,38 +28,14 @@ function hasResponse(
 type Props = {
 	className?: string;
 	componentClassName?: string;
-} & Pick<
-	LunaticComponentProps<'ComponentSet'>,
-	| 'components'
-	| 'value'
-	| 'features'
-	| 'missing'
-	| 'shortcut'
-	| 'management'
-	| 'preferences'
-	| 'executeExpression'
-	| 'errors'
-	| 'className'
-	| 'handleChange'
-	| 'iteration'
-	| 'disabled'
->;
+} & Omit<LunaticComponentProps<'ComponentSet'>, 'id' | 'response'>;
 
 function ComponentSetComponents({
 	components,
-	value,
-	features,
-	missing,
-	shortcut,
-	management,
-	preferences,
-	executeExpression,
-	errors,
-	className,
-	handleChange,
 	componentClassName,
-	iteration,
-	disabled,
+	className,
+	value,
+	...props
 }: Props) {
 	if (!Array.isArray(components)) {
 		return null;
@@ -73,20 +48,11 @@ function ComponentSetComponents({
 				return (
 					<ComponentSetComponentContainer className={className} key={id}>
 						<OrchestratedComponent
+							{...props}
 							component={component}
-							features={features}
-							missing={missing}
-							shortcut={shortcut}
-							management={management}
-							value={componentValue}
-							iteration={iteration}
 							id={id}
-							preferences={preferences}
-							executeExpression={executeExpression}
-							errors={errors}
-							handleChange={handleChange}
 							className={componentClassName}
-							disabled={disabled}
+							value={componentValue}
 						/>
 					</ComponentSetComponentContainer>
 				);
