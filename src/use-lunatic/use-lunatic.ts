@@ -146,6 +146,11 @@ function useLunatic(
 			only,
 			except,
 		}: { only?: LunaticComponentType[]; except?: LunaticComponentType } = {}) {
+			if (only && except) {
+				throw new Error(
+					'"only" and "except" cannot be used together in getComponents()'
+				);
+			}
 			if (only) {
 				return components.filter((c) => only.includes(c.componentType));
 			}
