@@ -21,17 +21,17 @@ import { reduceOverviewOnInit } from './overview/overview-on-init';
  */
 function getInitalValueFromCollected(
 	variable: LunaticVariable,
-	data = {} as LunaticData['COLLECTED']
-): unknown {
+	data: LunaticData['COLLECTED']
+) {
 	const { name } = variable;
 	let fromData;
-	if (name in data) {
+	if (data && name in data) {
 		const { COLLECTED, FORCED } = data[name];
 		fromData = COLLECTED || FORCED;
 	}
 	if ('values' in variable && variable.values) {
 		const { COLLECTED, FORCED } = variable.values;
-		return fromData || FORCED || COLLECTED;
+		return fromData ?? (FORCED || COLLECTED);
 	}
 	return undefined;
 }
@@ -44,10 +44,7 @@ function getInitialValueFromExternal(
 	data = {} as LunaticData['EXTERNAL']
 ) {
 	const { name } = variable;
-	if (name in data) {
-		return data[name];
-	}
-	return undefined;
+	return data?.[name];
 }
 
 /**
