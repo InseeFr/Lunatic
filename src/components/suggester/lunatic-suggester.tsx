@@ -27,27 +27,17 @@ function LunaticSuggester({
 	responses,
 	getSuggesterStatus,
 }: LunaticComponentProps<'Suggester'>) {
-	// ToDo :
-	/**
-	 * response -> responses
-	 * onChange(id) -> onChange({ code: '', label: '', info: '' }) -> onSelect in subComponent
-	 * useOnHandleChange -> update to handleChange on 3 response REPONSENAME (historical value i.e the code), REPONSENAME_LABEL, REPONSENAME_INFO
-	 */
-	// @ts-ignore
 	const onChangeSimple = useOnHandleChange({ handleChange, response, value });
 	console.log('disabled', disabled);
 	const onChange = useCallback(
 		(option: ComboBoxOption) => {
 			if (responses) {
 				responses.forEach((r) => {
-					// @ts-ignore
 					if (value[r.id] != option[r.id]) {
-						// @ts-ignore
 						handleChange(r.response, option[r.id]);
 					}
 				});
 			} else {
-				// @ts-ignore
 				onChangeSimple(option?.id);
 			}
 		},
@@ -71,7 +61,6 @@ function LunaticSuggester({
 				optionRenderer={optionRenderer}
 				labelRenderer={labelRenderer}
 				idbVersion={idbVersion}
-				// @ts-ignore
 				onSelect={onChange}
 				responses={responses}
 				response={response}

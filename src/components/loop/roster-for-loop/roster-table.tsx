@@ -22,7 +22,6 @@ type Props = {
 	| 'missing'
 	| 'errors'
 	| 'disabled'
-	| 'getSuggesterStatus'
 >;
 
 const preferences = ['COLLECTED'] as ['COLLECTED'];
@@ -31,7 +30,6 @@ function RosterTable({
 	components,
 	nbRows,
 	executeExpression,
-	getSuggesterStatus,
 	id,
 	header,
 	value: valueMap,
@@ -52,8 +50,6 @@ function RosterTable({
 					nbRows={nbRows}
 					handleChange={handleChange}
 					executeExpression={executeExpression}
-					// @ts-ignore
-					getSuggesterStatus={getSuggesterStatus}
 					valueMap={valueMap}
 					missing={missing}
 					preferences={preferences}

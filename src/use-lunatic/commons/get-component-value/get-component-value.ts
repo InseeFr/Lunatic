@@ -105,7 +105,6 @@ function collecteComponentResponse({
 		return collectTableResponse({ map, body: component.body, variables });
 	}
 	if ('response' in component) {
-		// @ts-ignore
 		return mergeResponse({ map, response: component.response, variables });
 	}
 	if ('components' in component) {

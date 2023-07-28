@@ -32,6 +32,46 @@ type Props = {
 
 const emptyValue = {};
 
+const getComponentValue = (
+	component: LunaticComponentDefinition,
+	valueMap: Record<string, unknown>,
+	rowIndex: number
+) => {
+	// If there the component accept many response, like multiple-suggester
+	if ('responses' in component) {
+		let value: unknown;
+		const { responses } = component;
+		responses?.forEach((res: { response: { name: any } }) => {
+			const { name } = res?.response;
+			if (name in valueMap) {
+				const v = valueMap[name];
+				if (Array.isArray(v)) {
+					value[name] = v[rowIndex] || '';
+				} else {
+					value[name] = '';
+				}
+			}
+		});
+		return value;
+	}
+	if ('response' in component) {
+		const { response } = component;
+		let value = '';
+		if (response) {
+			const { name } = response;
+			if (name in valueMap) {
+				const v = valueMap[name];
+				if (Array.isArray(v)) {
+					value = v[rowIndex] || '';
+				} else {
+					value = '';
+				}
+			}
+		}
+		return value;
+	}
+};
+
 function Row({
 	id,
 	components,
@@ -44,7 +84,6 @@ function Row({
 	management,
 	preferences,
 	executeExpression,
-	getSuggesterStatus,
 	errors,
 	disabled,
 }: Props) {
@@ -60,7 +99,6 @@ function Row({
 	if (!Array.isArray(components)) {
 		return <Tr id={id}></Tr>;
 	}
-	// @ts-ignore
 	return (
 		<Tr id={id} row={rowIndex}>
 			{components.map(function (component) {
@@ -71,37 +109,7 @@ function Row({
 				const { id } = component;
 				const idComponent = `${id}-${rowIndex}`;
 				const key = `${id}-${rowIndex}`;
-				let value: any;
-				/* FixMe type any */
-				if ('responses' in component) {
-					value = {};
-					const { responses } = component;
-					responses?.forEach((res) => {
-						const { name } = res?.response;
-						if (name in valueMap) {
-							const v = valueMap[name];
-							if (Array.isArray(v)) {
-								value[name] = v[rowIndex] || '';
-							} else {
-								value[name] = '';
-							}
-						}
-					});
-				}
-				if ('response' in component) {
-					const { response } = component;
-					if (response) {
-						const { name } = response;
-						if (name in valueMap) {
-							const v = valueMap[name];
-							if (Array.isArray(v)) {
-								value = v[rowIndex] || '';
-							} else {
-								value = '';
-							}
-						}
-					}
-				}
+				let value: unknown = getComponentValue(component, valueMap, rowIndex);
 
 				return (
 					<RowCell
@@ -117,7 +125,6 @@ function Row({
 						preferences={preferences}
 						rowIndex={rowIndex}
 						executeExpression={executeExpression}
-						getSuggesterStatus={getSuggesterStatus}
 						errors={errors}
 					/>
 				);

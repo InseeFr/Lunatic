@@ -44,12 +44,6 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	executeExpression: LunaticState['executeExpression'];
 	features?: string[];
 	componentType?: string;
-	questionContext?: ReactNode;
-	questionInformation?: ReactNode;
-	getSuggesterStatus?: (name: string) => {
-		status: SuggesterStatus;
-		timestamp: number;
-	};
 };
 
 export type SuggesterOption = {
@@ -93,10 +87,6 @@ type ComponentPropsByType = {
 		iterations?: number;
 		components: LunaticComponentDefinition[];
 		executeExpression: LunaticState['executeExpression'];
-		getSuggesterStatus: (name: string) => {
-			status: SuggesterStatus;
-			timestamp: number;
-		};
 		value: Record<string, unknown[]>;
 		header?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
@@ -106,10 +96,6 @@ type ComponentPropsByType = {
 		iterations?: number;
 		components: LunaticComponentDefinition[];
 		executeExpression: LunaticState['executeExpression'];
-		getSuggesterStatus: (name: string) => {
-			status: SuggesterStatus;
-			timestamp: number;
-		};
 		value: Record<string, unknown[]>;
 		header?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
@@ -180,7 +166,7 @@ type ComponentPropsByType = {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
 		writable?: boolean;
-		onSelect?: any;
+		onSelect?: Function;
 	};
 	Textarea: LunaticBaseProps<string> & {
 		cols?: number;

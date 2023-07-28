@@ -93,8 +93,17 @@ function Suggester({
 	);
 }
 
-function getDisplayValue(responses: any, value: any) {
-	if (responses) {
+/**
+ *
+ * @param responses
+ * @param value
+ * @returns The value to display in the suggester : build on the keys and label field defines in the source.json
+ */
+function getDisplayValue(
+	responses: { id: string }[],
+	value: Record<string, unknown[]>
+) {
+	if (responses.length > 0) {
 		const responseId = responses.find((r: { id: string }) => r.id === 'id')
 			.response.name;
 		const responseLabel = responses.find(
@@ -115,13 +124,11 @@ function getSearch(
 	if (responses && typeof value === 'object') {
 		const displayValue = getDisplayValue(responses, value);
 		return displayValue;
-	} else {
-		if (typeof value === 'string' && !search.length && value) {
-			return value;
-		}
-
-		return '';
 	}
+	if (typeof value === 'string' && !search.length && value) {
+		return value;
+	}
+	return '';
 }
 
 export default createCustomizableLunaticField(Suggester, 'Suggester');

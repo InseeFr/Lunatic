@@ -19,7 +19,6 @@ function RosterforLoop({
 	label,
 	components,
 	executeExpression,
-	getSuggesterStatus,
 	header,
 	missing,
 	id,
@@ -93,7 +92,6 @@ function RosterforLoop({
 					handleChange={handleChange}
 				>
 					<RosterTable
-						getSuggesterStatus={getSuggesterStatus}
 						id={id}
 						components={components}
 						nbRows={nbRows}

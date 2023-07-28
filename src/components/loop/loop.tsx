@@ -7,9 +7,7 @@ const LoopTypes = {
 	blockForLoop: 'Loop',
 };
 
-function Loop(
-	props: LunaticComponentProps<'Loop' | 'RosterForLoop'>
-) {
+function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
 	const {
 		declarations,
 		label,
@@ -19,7 +17,6 @@ function Loop(
 		components,
 		handleChange,
 		executeExpression,
-		getSuggesterStatus,
 		value,
 		componentType,
 		header,
@@ -46,7 +43,6 @@ function Loop(
 					value={value}
 					management={management}
 					executeExpression={executeExpression}
-					getSuggesterStatus={getSuggesterStatus}
 					missing={missing}
 					shortcut={shortcut}
 					features={features}
@@ -66,7 +62,6 @@ function Loop(
 					id={id}
 					components={components}
 					handleChange={handleChange}
-					getSuggesterStatus={getSuggesterStatus}
 					value={value}
 					management={management}
 					executeExpression={executeExpression}
