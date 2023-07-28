@@ -5,7 +5,6 @@ import { clearDb, openOnCreateDb, insertEntity } from '../../utils/idb-tools';
 import { CONSTANTES } from '../../utils/store-tools';
 import append from '../../utils/suggester-workers/append-to-index';
 import searching from '../../utils/suggester-workers/searching';
-import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
 	title: 'Components/Suggester-workers',

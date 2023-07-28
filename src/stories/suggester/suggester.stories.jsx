@@ -1,5 +1,4 @@
 import React from 'react';
-import defaultArgTypes from '../utils/default-arg-types';
 import Orchestrator from '../utils/orchestrator';
 import multipleResponses from './multipleResponses';
 import simple from './simple';

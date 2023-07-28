@@ -35,7 +35,7 @@ function LunaticSuggester({
 	 */
 	// @ts-ignore
 	const onChangeSimple = useOnHandleChange({ handleChange, response, value });
-
+	console.log('disabled', disabled);
 	const onChange = useCallback(
 		(option: ComboBoxOption) => {
 			if (responses) {
