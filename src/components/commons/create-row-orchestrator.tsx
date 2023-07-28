@@ -16,7 +16,6 @@ type OriginalProps = {
 		args: { index: number; [key: string]: unknown }
 	) => void;
 	executeExpression: LunaticState['executeExpression'];
-	getSuggesterStatus?: LunaticState['getSuggesterStatus'];
 	iteration?: number;
 	linksIterations?: [number, number];
 	features?: string[];
@@ -46,7 +45,6 @@ type OrchestratedProps = {
 	| 'executeExpression'
 	| 'iteration'
 	| 'errors'
-	| 'getSuggesterStatus'
 >;
 
 function createRowOrchestrator(Row: FunctionComponent<OriginalProps>) {
@@ -61,7 +59,6 @@ function createRowOrchestrator(Row: FunctionComponent<OriginalProps>) {
 		shortcut,
 		preferences,
 		executeExpression,
-		getSuggesterStatus,
 		iteration,
 		xAxisIterations,
 		errors,
@@ -89,7 +86,6 @@ function createRowOrchestrator(Row: FunctionComponent<OriginalProps>) {
 							valueMap={valueMap}
 							handleChange={handleChange}
 							executeExpression={executeExpression}
-							getSuggesterStatus={getSuggesterStatus}
 							iteration={iteration}
 							linksIterations={linksIterations}
 							disabled={disabled}

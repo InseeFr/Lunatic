@@ -11,8 +11,6 @@ function getContent(option: Props['option'], search: Props['search']) {
 		const { id, value, label } = option;
 		return label ? `${id || value} - ${label}` : id || value;
 	}
-	console.log('option', option);
-	console.log('search', search);
 	if (search?.trim().length) {
 		return search;
 	}
