@@ -1,4 +1,3 @@
-import React from 'react';
 import type { FunctionComponent } from 'react';
 import type { LunaticComponentProps } from '../type';
 import {

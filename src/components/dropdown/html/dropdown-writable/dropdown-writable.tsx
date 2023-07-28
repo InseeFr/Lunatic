@@ -10,7 +10,7 @@ type Props = {
 	id?: string;
 	disabled?: boolean;
 	options: ComboBoxOption[];
-	onSelect: (v: string | null) => void;
+	onSelect: (v: string | null | ComboBoxOption) => void;
 	className?: string;
 	value: string | null;
 	label?: ReactNode;

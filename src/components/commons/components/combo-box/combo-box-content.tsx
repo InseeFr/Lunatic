@@ -1,8 +1,8 @@
-import type { KeyboardEvent } from 'react';
-import React, { PropsWithChildren, useCallback, useRef } from 'react';
 import classnames from 'classnames';
-import { KEYBOARD_KEY_CODES } from './state-management/reduce-on-keydown/keyboard-key-codes';
+import type { KeyboardEvent } from 'react';
+import { PropsWithChildren, useCallback, useRef } from 'react';
 import { useDocumentAddEventListener } from '../../index';
+import { KEYBOARD_KEY_CODES } from './state-management/reduce-on-keydown/keyboard-key-codes';
 
 type Props = PropsWithChildren<{
 	focused?: boolean;

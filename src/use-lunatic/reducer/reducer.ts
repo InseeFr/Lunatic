@@ -23,6 +23,7 @@ function reducer(state: LunaticState, action: Action): LunaticState {
 		case ActionKind.ON_SET_WAITING:
 			return reduceOnSetWaiting(state, action);
 		case ActionKind.UPDATE_STATE:
+			// @ts-ignore
 			return reduceUpdateState(state, action);
 		default:
 			return state;

@@ -1,12 +1,12 @@
+import { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import useLunatic from '../use-lunatic';
 import {
 	LunaticComponentDefinition,
 	LunaticError,
 	LunaticExpression,
 	LunaticState,
 } from '../use-lunatic/type';
-import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
-import useLunatic from '../use-lunatic';
 
 export type VtlExpression = {
 	value: string;
@@ -63,6 +63,7 @@ type ComponentPropsByType = {
 		max: number;
 		decimals: number;
 		unit?: string;
+		dynamicUnit?: ReactNode;
 		response: { name: string };
 	};
 	Input: LunaticBaseProps<string> & {
@@ -87,7 +88,7 @@ type ComponentPropsByType = {
 		components: LunaticComponentDefinition[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
-		headers?: Array<{ label: ReactNode }>;
+		header?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
 	};
 	Loop: LunaticBaseProps<unknown> & {
@@ -96,7 +97,7 @@ type ComponentPropsByType = {
 		components: LunaticComponentDefinition[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
-		headers?: Array<{ label: ReactNode }>;
+		header?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
 	};
 	Table: LunaticBaseProps<unknown> & {
@@ -165,6 +166,7 @@ type ComponentPropsByType = {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
 		writable?: boolean;
+		onSelect?: Function;
 	};
 	Textarea: LunaticBaseProps<string> & {
 		cols?: number;
@@ -201,7 +203,8 @@ type ComponentPropsByType = {
 		}>;
 		idbVersion?: string;
 		focused: boolean;
-		response: { name: string };
+		response?: { name: string };
+		responses?: Array<{ id: string; response: { name: string } }>;
 	};
 	Summary: LunaticBaseProps<string | null> & {
 		sections: Array<{

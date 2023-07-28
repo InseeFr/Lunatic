@@ -1,21 +1,21 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
+import D from '../../../i18n';
+import { LunaticError } from '../../../use-lunatic/type';
+import { voidFunction } from '../../../utils/function';
 import {
 	ComboBox,
-	DefaultOptionRenderer,
 	DefaultLabelRenderer,
+	DefaultOptionRenderer,
 	createCustomizableLunaticField,
 } from '../../commons';
-import './default-style.scss';
-import { voidFunction } from '../../../utils/function';
-import { LunaticError } from '../../../use-lunatic/type';
 import { ComboBoxOption } from '../../commons/components/combo-box/combo-box.type';
 import { LunaticComponentProps } from '../../type';
-import D from '../../../i18n';
+import './default-style.scss';
 
 type Props = {
 	className?: string;
 	placeholder?: string;
-	onSelect?: (s: string | null) => void;
+	onSelect?: (s: ComboBoxOption | null | string) => void;
 	value: string | null;
 	labelRenderer: LunaticComponentProps<'Suggester'>['labelRenderer'];
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
@@ -25,6 +25,8 @@ type Props = {
 	label?: ReactNode;
 	description?: ReactNode;
 	errors?: Record<string, LunaticError[]>;
+	responses?: any;
+	response?: any;
 };
 
 function Suggester({
@@ -35,6 +37,8 @@ function Suggester({
 	optionRenderer = DefaultOptionRenderer,
 	value,
 	disabled,
+	response,
+	responses,
 	id,
 	searching,
 	label,
@@ -45,12 +49,13 @@ function Suggester({
 	const [options, setOptions] = useState<Array<ComboBoxOption>>([]);
 
 	const handleSelect = useCallback(
-		function (id: string | null) {
-			onSelect(id ? id : null);
+		function (option: ComboBoxOption | null | string) {
+			onSelect(option ? option : null);
 		},
 		[onSelect]
 	);
 
+	/* UserInput */
 	const handleChange = useCallback(
 		async function (search: string | null) {
 			if (search && typeof searching === 'function') {
@@ -66,8 +71,7 @@ function Suggester({
 		[searching, onSelect]
 	);
 
-	const defaultSearch = getSearch(search, value);
-
+	const defaultSearch = getSearch(responses, search, value);
 	return (
 		<ComboBox
 			id={id}
@@ -89,11 +93,41 @@ function Suggester({
 	);
 }
 
-function getSearch(search: string, value: string | null) {
-	if (!search.length && value) {
+/**
+ *
+ * @param responses
+ * @param value
+ * @returns The value to display in the suggester : build on the keys and label field defines in the source.json
+ */
+function getDisplayValue(
+	responses: { id: string }[],
+	value: Record<string, unknown[]>
+) {
+	if (responses.length > 0) {
+		const responseId = responses.find((r: { id: string }) => r.id === 'id')
+			.response.name;
+		const responseLabel = responses.find(
+			(r: { id: string }) => r.id === 'label'
+		).response.name;
+		return value[responseId] && value[responseId].length > 0
+			? `${value[responseId]} - ${value[responseLabel]}`
+			: '';
+	}
+	return '';
+}
+
+function getSearch(
+	responses: any,
+	search: string,
+	value: Object | string | null
+) {
+	if (responses && typeof value === 'object') {
+		const displayValue = getDisplayValue(responses, value);
+		return displayValue;
+	}
+	if (typeof value === 'string' && !search.length && value) {
 		return value;
 	}
-
 	return '';
 }
 

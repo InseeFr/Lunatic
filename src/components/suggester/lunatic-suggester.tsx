@@ -1,7 +1,9 @@
-import { IDBSuggester } from './idb-suggester';
+import { useCallback } from 'react';
+import { useOnHandleChange } from '../commons';
+import { ComboBoxOption } from '../commons/components/combo-box/combo-box.type';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
-import useOnHandleChange from '../commons/use-on-handle-change';
 import { LunaticComponentProps } from '../type';
+import { IDBSuggester } from './idb-suggester';
 
 function LunaticSuggester({
 	id,
@@ -22,9 +24,25 @@ function LunaticSuggester({
 	missingResponse,
 	management,
 	response,
+	responses,
 	getSuggesterStatus,
 }: LunaticComponentProps<'Suggester'>) {
-	const onChange = useOnHandleChange({ handleChange, response, value });
+	const onChangeSimple = useOnHandleChange({ handleChange, response, value });
+	console.log('disabled', disabled);
+	const onChange = useCallback(
+		(option: ComboBoxOption) => {
+			if (responses) {
+				responses.forEach((r) => {
+					if (value[r.id] != option[r.id]) {
+						handleChange(r.response, option[r.id]);
+					}
+				});
+			} else {
+				onChangeSimple(option?.id);
+			}
+		},
+		[handleChange, onChangeSimple, responses, value]
+	);
 
 	return (
 		<LunaticComponent
@@ -44,6 +62,8 @@ function LunaticSuggester({
 				labelRenderer={labelRenderer}
 				idbVersion={idbVersion}
 				onSelect={onChange}
+				responses={responses}
+				response={response}
 				disabled={disabled}
 				id={id}
 				value={value}

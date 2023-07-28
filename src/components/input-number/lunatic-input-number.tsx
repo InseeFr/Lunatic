@@ -21,6 +21,7 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 		max,
 		decimals,
 		unit,
+		dynamicUnit,
 		description,
 		required,
 		readOnly,
@@ -50,6 +51,7 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 				max={max}
 				decimals={decimals}
 				unit={unit}
+				dynamicUnit={dynamicUnit}
 				required={required}
 				errors={errors}
 			/>

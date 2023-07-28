@@ -18,6 +18,7 @@ type Props = {
 	label?: ReactNode;
 	description?: string;
 	unit?: string;
+	dynamicUnit?: ReactNode;
 	errors?: LunaticBaseProps['errors'];
 };
 
@@ -30,6 +31,7 @@ function InputNumber({
 	max,
 	decimals = 0,
 	unit,
+	dynamicUnit,
 	label,
 	errors,
 	required = true,
@@ -55,6 +57,7 @@ function InputNumber({
 			/>
 
 			{unit && <span>{unit}</span>}
+			{dynamicUnit}
 			<Errors errors={errors} activeId={id} />
 		</div>
 	);

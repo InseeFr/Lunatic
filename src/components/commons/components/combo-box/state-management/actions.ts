@@ -56,8 +56,8 @@ export type ComboAction<T extends ComboActionKind = ComboActionKind> = (
 			type: ComboActionKind.ON_INIT;
 			payload: {
 				options: ComboBoxOption[];
-				value: string | null;
-				getOptionValue: (o: ComboBoxOption) => string;
+				value: string | ComboBoxOption | null;
+				getOptionValue: (o: ComboBoxOption) => string | undefined;
 			};
 	  }
 ) & { type: T };

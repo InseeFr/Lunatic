@@ -1,7 +1,6 @@
 import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import sourceBloc from './source-bloc.json';
-import sourceWithHeader from './source-with-header.json';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {

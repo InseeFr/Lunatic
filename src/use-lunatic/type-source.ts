@@ -124,6 +124,7 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentRadioType)
 	| (ComponentTypeBase & ComponentFilterDescriptionType)
 	| (ComponentTypeBase & ComponentDropdownType)
+	| (ComponentTypeBase & ComponentSuggesterType)
 	| (ComponentTypeBase & ComponentPairWiseLinksType)
 	| (ComponentTypeBase & ComponentRoundaboutType)
 	| (ComponentTypeBase & ComponentSuggesterType)
@@ -173,6 +174,7 @@ export type ComponentRosterForLoopType = {
 		format?: string;
 		dateFormat?: string;
 		unit?: string;
+		dynamicUnit?: LabelType;
 		options: { value: string; label: LabelType }[];
 		response: ResponseType;
 		bindingDependencies: string[];
@@ -210,6 +212,7 @@ export type ComponentTableType = {
 export type ComponentNumberType = {
 	componentType: 'InputNumber';
 	unit: string;
+	dynamicUnit?: LabelType;
 	response: ResponseType;
 	min?: number;
 	max?: number;
@@ -251,6 +254,12 @@ export type ComponentDropdownType = {
 	options: { value: string; label: LabelType }[];
 	response: ResponseType;
 	missingResponse?: ResponseType;
+};
+
+export type ComponentSuggesterType = {
+	componentType: 'Suggester';
+	response?: ResponseType;
+	responses?: Array<{ id: string; response: ResponseType }>;
 };
 
 export type ComponentFilterDescriptionType = {

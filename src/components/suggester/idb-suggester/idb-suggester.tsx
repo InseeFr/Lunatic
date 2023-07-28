@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { ComboBoxOption } from '../../commons/components/combo-box/combo-box.type';
+import { LunaticComponentProps } from '../../type';
 import Suggester from '../html/suggester';
 import createSearching from '../searching';
 import CheckStore from './check-store';
 import { SuggesterStatus } from './suggester-status';
-import { LunaticComponentProps } from '../../type';
 
 type Props = Pick<
 	LunaticComponentProps<'Suggester'>,
@@ -19,8 +20,10 @@ type Props = Pick<
 	| 'description'
 	| 'getSuggesterStatus'
 	| 'errors'
+	| 'response'
+	| 'responses'
 > & {
-	onSelect: (v: string | null) => void;
+	onSelect: (v: ComboBoxOption | null) => void;
 };
 
 export function IDBSuggester({
@@ -37,6 +40,8 @@ export function IDBSuggester({
 	description,
 	getSuggesterStatus,
 	errors,
+	responses,
+	response,
 }: Props) {
 	const [store, setStore] = useState(undefined);
 
@@ -74,6 +79,8 @@ export function IDBSuggester({
 					label={label}
 					description={description}
 					errors={errors}
+					responses={responses}
+					response={response}
 				/>
 			</CheckStore>
 		</SuggesterStatus>
