@@ -72,13 +72,14 @@ function ComboBox({
 		dispatch(actions.onBlur());
 	}, []);
 
-	/* fixMe : typescript any*/
 	const handleSelect = useCallback(
-		(index: any) => {
-			const indexNumber = parseInt(index, 10);
-			const option = options[indexNumber];
-			dispatch(actions.onSelect(indexNumber));
-			onSelect(option);
+		(index: string | ComboBoxOption | null) => {
+			if (index) {
+				const indexNumber = parseInt(index.toString(), 10);
+				const option = options[indexNumber];
+				dispatch(actions.onSelect(indexNumber));
+				onSelect(option);
+			}
 		},
 		[options, onSelect]
 	);
