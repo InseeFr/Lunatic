@@ -160,7 +160,9 @@ function ComboBox({
 	);
 }
 
-function getResponseOptionValue(option: ComboBoxOption = { value: '' }) {
+function getResponseOptionValue(
+	option: ComboBoxOption = { value: '', id: '' }
+) {
 	return option.id;
 }
 
