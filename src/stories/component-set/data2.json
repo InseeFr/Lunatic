@@ -3,21 +3,21 @@
     "NB_HAB": {
 			"EDITED": null,
 			"FORCED": null,
-			"INPUTED": null,
+			"INPUTTED": null,
 			"PREVIOUS": null,
 			"COLLECTED": 2
 		},
 		"PRENOM": {
 			"EDITED": [null],
 			"FORCED": [null],
-			"INPUTED": [null],
+			"INPUTTED": [null],
 			"PREVIOUS": [null],
 			"COLLECTED": ["Fanny", "Renaud"]
 		},
 		"AGELOOP": {
 			"EDITED": [null],
 			"FORCED": [null],
-			"INPUTED": [null],
+			"INPUTTED": [null],
 			"PREVIOUS": [null],
 			"COLLECTED": [15, 4]
 		}

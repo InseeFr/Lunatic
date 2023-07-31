@@ -14,7 +14,7 @@ const variables = {
 				COLLECTED: null,
 				FORCED: null,
 				EDITED: null,
-				INPUTED: null,
+				INPUTTED: null,
 			},
 			name: 'AGE',
 		},

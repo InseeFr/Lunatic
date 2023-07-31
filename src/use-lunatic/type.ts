@@ -46,7 +46,7 @@ export type LunaticCollectedValue = {
 	COLLECTED: unknown;
 	EDITED: unknown;
 	FORCED: unknown;
-	INPUTED: unknown;
+	INPUTTED: unknown;
 	PREVIOUS: unknown;
 };
 

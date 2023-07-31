@@ -28,7 +28,7 @@ export type ValuesType<T = unknown> = {
 	COLLECTED: T | null;
 	FORCED: T | null;
 	EDITED: T | null;
-	INPUTED: T | null;
+	INPUTTED: T | null;
 };
 
 export type ValuesTypeArray<T = unknown> = {
@@ -36,7 +36,7 @@ export type ValuesTypeArray<T = unknown> = {
 	COLLECTED: T[] | [null];
 	FORCED: T[] | [null];
 	EDITED: T[] | [null];
-	INPUTED: T[] | [null];
+	INPUTTED: T[] | [null];
 };
 
 export type DeclarationType = {

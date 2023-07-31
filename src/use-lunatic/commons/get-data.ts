@@ -26,7 +26,7 @@ export const getQuestionnaireData = ({
 						[k]: {
 							EDITED: null,
 							FORCED: null,
-							INPUTED: null,
+							INPUTTED: null,
 							PREVIOUS: null,
 							COLLECTED: value,
 						},

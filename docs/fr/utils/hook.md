@@ -18,7 +18,7 @@ Le hook `useLunatic` permet de simplifier la gestion de l'état d'questionnaire 
 			"COLLECTED": "Collected",
 			"FORCED": "Forced",
 			"EDITED": "Edited",
-			"INPUTED": "Inputed"
+			"INPUTTED": "Inputted"
 		},
 		"variable2": {
 			"COLLECTED": "Var 2"

@@ -67,7 +67,7 @@
 					"max": 120,
 					"decimals": 0,
 					"response": { "name": "AGE1" }
-				}, 
+				},
         {
           "id": "component-set",
           "componentType": "ComponentSet",
@@ -75,7 +75,7 @@
           "depth": 1,
           "conditionFilter": { "value": "true", "type": "VTL" },
           "label": {
-            "value": "\"## Who are you?\"", 
+            "value": "\"## Who are you?\"",
             "type":"VTL|MD"
           },
           "description": { "value": "\"This is your opportunity to tell me about yourself!\"", "type": "VTL|MD" },
@@ -107,7 +107,7 @@
                 "value": "true",
                 "type": "VTL"
               },
-              "response": { "name": "AGE" }, 
+              "response": { "name": "AGE" },
               "controls": [
                 {
                   "criticality": "WARN",
@@ -236,7 +236,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
 		{
@@ -247,7 +247,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
     {
@@ -258,7 +258,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
     {
@@ -269,7 +269,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
     {
@@ -280,7 +280,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		}
 	]

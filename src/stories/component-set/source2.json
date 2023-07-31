@@ -115,7 +115,7 @@
           "depth": 1,
           "conditionFilter": { "value": "true", "type": "VTL" },
           "label": {
-            "value": "\"## Who are you?\"", 
+            "value": "\"## Who are you?\"",
             "type":"VTL|MD"
           },
           "description": { "value": "\"This is your opportunity to tell me about yourself!\"", "type": "VTL|MD" },
@@ -305,7 +305,7 @@
 				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
-				"INPUTED": null
+				"INPUTTED": null
 			}
 		},
 		{
@@ -316,7 +316,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
     {
@@ -327,7 +327,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
     {
@@ -338,7 +338,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
 		{
@@ -349,7 +349,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
     {
@@ -360,7 +360,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
     {
@@ -371,7 +371,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
     {
@@ -382,7 +382,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
 		{
@@ -393,7 +393,7 @@
 				"COLLECTED": [null],
 				"FORCED": [null],
 				"EDITED": [null],
-				"INPUTED": [null]
+				"INPUTTED": [null]
 			}
 		},
 		{
