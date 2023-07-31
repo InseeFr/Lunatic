@@ -114,6 +114,11 @@ describe('page-navigation', () => {
 				...reset,
 				page: '2',
 			});
+			expect(getPrevPager({...pager, iteration: 1}, 'Roundabout')).toEqual({
+				...pager,
+				...reset,
+				page: '2',
+			});
 		});
 		it('should navigate on simple page without iteration', () => {
 			const pager = {

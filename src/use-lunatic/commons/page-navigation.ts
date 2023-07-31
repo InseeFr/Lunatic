@@ -78,6 +78,7 @@ export function getPrevPager(
 			? [parseInt(pager.page, 10), pager.subPage - 1]
 			: [parseInt(pager.page, 10) - 1, undefined];
 	let iteration = pager.iteration;
+	const moveUpOnStart = parent === 'Roundabout';
 
 	// We reached the start of the questionnaire
 	if (page <= 0) {
@@ -86,21 +87,19 @@ export function getPrevPager(
 
 	// We reached the start of the sequence, move up
 	if (subPage !== undefined && pager.nbSubPages !== undefined && subPage < 0) {
+		// Move up at the start of an iteration (for roundabout)
+		if (moveUpOnStart) {
+			return {
+				...pager,
+				page: page.toString(),
+				...resetIteration,
+			};
+		}
 		subPage = pager.nbSubPages - 1;
 		iteration = (iteration ?? 0) - 1;
 	}
 
 	const isStartSequence = iteration !== undefined && iteration < 0;
-	const moveUpOnStart = parent === 'Roundabout';
-
-	// Move up at the start of a sequence (for roundabout)
-	if (isStartSequence && moveUpOnStart) {
-		return {
-			...pager,
-			page: page.toString(),
-			...resetIteration,
-		};
-	}
 
 	// We reached the start of an iteration, keep going backward
 	if (isStartSequence) {
