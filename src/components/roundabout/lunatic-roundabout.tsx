@@ -20,7 +20,6 @@ function LunaticRoundabout({
 				page,
 				iteration,
 				nbIterations: iterations,
-				roundabout: { page },
 			});
 		},
 		[goToPage, page, iterations]

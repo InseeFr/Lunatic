@@ -30,7 +30,7 @@ function DevOptions({ goToPage, getData }) {
 				<lunatic.Button onClick={() => goToPage({ page: `${toPage}` })}>
 					{`Go to page ${toPage}`}
 				</lunatic.Button>
-				<lunatic.InputNumber
+				<lunatic.Input
 					id="page-to-jump"
 					value={toPage}
 					handleChange={handleChange}
@@ -119,6 +119,7 @@ function OrchestratorForStories({
 		overview,
 		compileControls,
 		getData,
+		pager,
 		Provider,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
@@ -161,6 +162,7 @@ function OrchestratorForStories({
 			setErrorsForModal({ currentErrors, isCritical });
 		} else goNextPage();
 	}, [compileControls, errorActive, goNextPage, pageTag]);
+	console.log(pager);
 
 	return (
 		<Provider>

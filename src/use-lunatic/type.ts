@@ -131,7 +131,6 @@ export type LunaticState = {
 		nbIterations?: number;
 		shallowIteration?: number;
 		linksIterations?: number[];
-		roundabout?: { page: string };
 	};
 	// TODO : Explain this
 	waiting: boolean;
@@ -170,7 +169,6 @@ export type LunaticState = {
 		iteration?: number;
 		nbIterations?: number;
 		subPage?: number;
-		roundabout?: { page: string };
 	}) => void;
 	getSuggesterStatus: (name: string) => {
 		status: SuggesterStatus;

@@ -16,6 +16,5 @@ export default function clearPager(
 		iteration: undefined,
 		shallowIteration: undefined,
 		nbIterations: undefined,
-		roundabout: undefined,
 	};
 }
