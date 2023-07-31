@@ -1,6 +1,6 @@
 import { useCallback, useReducer, useEffect, ReactNode } from 'react';
 import classnames from 'classnames';
-import { Delete } from './selection/delete';
+import { ClearButton } from './selection/clear-button';
 import { INITIAL_STATE, reducer, actions } from './state-management';
 import './combo-box.scss';
 import { ComboBoxOption } from './combo-box.type';
@@ -148,7 +148,7 @@ function ComboBox({
 					onSelect={handleSelect}
 				/>
 			</ComboBoxContent>
-			<Delete
+			<ClearButton
 				className={classnames({ focused })}
 				search={search}
 				onClick={onDelete}

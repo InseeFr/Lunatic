@@ -26,7 +26,4 @@ function OptionRenderer({ option, selected }: Props) {
 	);
 }
 
-export default createCustomizableLunaticField(
-	OptionRenderer,
-	'ComboboxOptionRenderer'
-);
+export default createCustomizableLunaticField(OptionRenderer, 'ComboboxOption');

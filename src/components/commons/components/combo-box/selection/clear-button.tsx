@@ -26,7 +26,7 @@ type Props = {
 	editable?: boolean;
 };
 
-function DeleteCmp({ className, search, onClick, editable }: Props) {
+function ClearButtonComponent({ className, search, onClick, editable }: Props) {
 	const onKeyDown = useMemo(() => createOnKeyDown(onClick), [onClick]);
 	if (!editable) {
 		return null;
@@ -44,7 +44,7 @@ function DeleteCmp({ className, search, onClick, editable }: Props) {
 	);
 }
 
-export const Delete = createCustomizableLunaticField(
-	DeleteCmp,
-	'ComboboxDelete'
+export const ClearButton = createCustomizableLunaticField(
+	ClearButtonComponent,
+	'ComboboxClearButton'
 );
