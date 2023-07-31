@@ -138,10 +138,7 @@ test('can complete simpson form', async ({ page }) => {
 		.getByRole('radio', { name: 'Down' })
 		.click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await page
-		.getByRole('row', { name: 'Leave with pay' })
-		.getByRole('textbox')
-		.fill('12');
+	await page.getByRole('row', { name: 'Leave with pay' }).fill('12');
 	await page
 		.getByRole('row', { name: 'Leave with pay' })
 		.getByText('Please, do something...')
