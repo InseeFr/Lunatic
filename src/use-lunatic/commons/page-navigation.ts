@@ -39,6 +39,7 @@ export function getNextPager(
 			...resetIteration,
 		};
 	}
+
 	// Move to the next parent page (for loops)
 	if (isEndSequence && iteration !== undefined) {
 		subPage = 0;

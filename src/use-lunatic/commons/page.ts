@@ -8,7 +8,7 @@ export function getPageId({
 	if (subPage === undefined) {
 		return page;
 	}
-	return `${page}.${subPage}`;
+	return `${page}.${subPage + 1}`;
 }
 
 /**
