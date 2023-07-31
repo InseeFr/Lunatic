@@ -1,6 +1,16 @@
 import { LunaticState } from '../type';
 import { executeConditionFilter, getComponentsFromState } from './index';
 
+export function getPageId({
+	subPage,
+	page,
+}: Pick<LunaticState['pager'], 'page' | 'subPage'>) {
+	if (subPage === undefined) {
+		return page;
+	}
+	return `${page}.${subPage}`;
+}
+
 /**
  * Converts a page number (3.1.2) to an array of numbers [3, 1, 2]
  */

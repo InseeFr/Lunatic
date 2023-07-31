@@ -1,14 +1,13 @@
 import { LunaticState } from '../type';
 import { getPrevPager } from '../commons/page-navigation';
-import { getPageTag } from '../commons';
 import { autoExploreLoop } from './commons/auto-explore-loop';
-import { isPageEmpty } from '../commons/page';
+import { getPageId, isPageEmpty } from '../commons/page';
 
 function reduceGoPreviousPage(state: LunaticState): LunaticState {
 	const { pages, pager } = state;
 	const parentType = pages[pager.page]?.components[0].componentType;
 	const prevPager = getPrevPager(pager, parentType);
-	const pageId = getPageTag(prevPager).split('#')[0];
+	const pageId = getPageId(prevPager);
 	let prevPage = pages[pageId];
 
 	if (!prevPage) {

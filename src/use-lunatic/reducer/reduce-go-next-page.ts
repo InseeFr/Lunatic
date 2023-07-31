@@ -1,17 +1,17 @@
 import { ActionGoNextPage } from '../actions';
-import { getPageTag } from '../commons';
+import { getNewReachedPage } from '../commons';
 import compose from '../commons/compose';
 import { LunaticState } from '../type';
 import { overviewOnChange } from './overview/overview-on-change';
 import { getNextPager } from '../commons/page-navigation';
-import { isPageEmpty } from '../commons/page';
+import { getPageId, isPageEmpty } from '../commons/page';
 import { autoExploreLoop } from './commons/auto-explore-loop';
 
 function reduceGoNextPage(state: LunaticState): LunaticState {
 	const { pages, pager } = state;
 	const parentType = pages[pager.page]?.components[0].componentType;
 	const nextPager = getNextPager(pager, parentType);
-	const pageId = getPageTag(nextPager).split('#')[0];
+	const pageId = getPageId(nextPager);
 
 	if (!pages[pageId]) {
 		throw new Error(`Cannot reach next page ${pageId}`);
@@ -25,7 +25,13 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 		return reduceGoNextPage(newState);
 	}
 
-	return newState;
+	return {
+		...newState,
+		pager: {
+			...newState.pager,
+			lastReachedPage: getNewReachedPage(newState.pager),
+		},
+	};
 }
 
 export default compose<ActionGoNextPage>(reduceGoNextPage, overviewOnChange);

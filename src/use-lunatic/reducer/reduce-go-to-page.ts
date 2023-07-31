@@ -1,8 +1,8 @@
 import { ActionGoToPage, ActionKind } from '../actions';
-import { getPagerFromPageTag, getPageTag } from '../commons/page-tag';
+import { getPagerFromPageTag } from '../commons/page-tag';
 import { LunaticState } from '../type';
 import reduceGoNextPage from './reduce-go-next-page';
-import { isPageEmpty } from '../commons/page';
+import { getPageId, isPageEmpty } from '../commons/page';
 
 function reduceGoToPage(
 	state: LunaticState,
@@ -34,7 +34,7 @@ function reduceGoToPage(
 	};
 
 	// The page is not reachable
-	const pageId = getPageTag(newPager).split('#')[0];
+	const pageId = getPageId(newPager);
 	if (!(pageId in state.pages)) {
 		console.error(`Page "${pageId}" does not exists in this questionnaire`);
 		return state;

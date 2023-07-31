@@ -119,7 +119,6 @@ function OrchestratorForStories({
 		overview,
 		compileControls,
 		getData,
-		pager,
 		Provider,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
@@ -162,7 +161,6 @@ function OrchestratorForStories({
 			setErrorsForModal({ currentErrors, isCritical });
 		} else goNextPage();
 	}, [compileControls, errorActive, goNextPage, pageTag]);
-	console.log(pager);
 
 	return (
 		<Provider>

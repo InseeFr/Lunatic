@@ -1,6 +1,5 @@
 import { LunaticState } from '../../type';
-import { getPageTag } from '../../commons';
-import { pageStringToNumbers } from '../../commons/page';
+import { getPageId, pageStringToNumbers } from '../../commons/page';
 
 /**
  * Update the pager to enter a loop if the pager is on a loop
@@ -12,11 +11,11 @@ export function autoExploreLoop(
 	const newPager = {
 		...state.pager,
 	};
-	const pageId = getPageTag(newPager).split('#')[0];
+	const pageId = getPageId(newPager);
 	let page = state.pages[pageId];
 	const isForward = direction === 'forward';
-	// Plan for nested loop
-	while (page.isLoop && page.subPages && page.subPages.length > 0) {
+	// The page is a loop
+	if (page.isLoop && page.subPages && page.subPages.length > 0) {
 		const maxSubPage = page.subPages.length;
 		const firstSubPage = pageStringToNumbers(
 			page.subPages[isForward ? 0 : maxSubPage - 1]
@@ -28,8 +27,6 @@ export function autoExploreLoop(
 			iteration: newPager.iteration,
 		});
 		newPager.iteration = isForward ? 0 : newPager.nbIterations - 1;
-		// Update the page to explore
-		page = state.pages[getPageTag(newPager).split('#')[0]];
 	}
 	return {
 		...state,
