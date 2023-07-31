@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import classnames from 'classnames';
 import { CrossIcon } from '../../../icons';
 import { Fab } from '../../fab';
+import createCustomizableLunaticField from '../../../create-customizable-field';
 
 function isDisabled(search?: string) {
 	return !search || search.trim().length === 0;
@@ -25,7 +26,7 @@ type Props = {
 	editable?: boolean;
 };
 
-export function Delete({ className, search, onClick, editable }: Props) {
+function DeleteCmp({ className, search, onClick, editable }: Props) {
 	const onKeyDown = useMemo(() => createOnKeyDown(onClick), [onClick]);
 	if (!editable) {
 		return null;
@@ -42,3 +43,8 @@ export function Delete({ className, search, onClick, editable }: Props) {
 		</Fab>
 	);
 }
+
+export const Delete = createCustomizableLunaticField(
+	DeleteCmp,
+	'ComboboxDelete'
+);

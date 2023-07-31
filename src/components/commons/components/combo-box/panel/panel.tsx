@@ -2,9 +2,12 @@ import React, { FunctionComponent } from 'react';
 import { PanelContainer } from './panel-container';
 import { OptionContainer } from './option-container';
 import { ComboBoxOption } from '../combo-box.type';
-import { DefaultOptionRenderer } from '../../../index';
+import { OptionRenderer } from '../../../index';
 
 export type PanelProps = {
+	/**
+	 * @deprecated use createCustomizableField with ComboboxOptionRenderer as name.
+	 */
 	optionRenderer: FunctionComponent<{
 		option: ComboBoxOption;
 		selected?: boolean;
@@ -20,7 +23,7 @@ export type PanelProps = {
 };
 
 export function Panel({
-	optionRenderer: OptionRender = DefaultOptionRenderer,
+	optionRenderer: OptionRender = OptionRenderer,
 	options = [],
 	focused,
 	selectedIndex,

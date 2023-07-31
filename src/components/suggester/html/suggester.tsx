@@ -1,7 +1,7 @@
 import React, { ReactNode, useCallback, useState } from 'react';
 import {
 	ComboBox,
-	DefaultOptionRenderer,
+	OptionRenderer,
 	DefaultLabelRenderer,
 	createCustomizableLunaticField,
 } from '../../commons';
@@ -32,7 +32,7 @@ function Suggester({
 	placeholder = D.PLACEHOLDER,
 	onSelect = voidFunction,
 	labelRenderer = DefaultLabelRenderer,
-	optionRenderer = DefaultOptionRenderer,
+	optionRenderer = OptionRenderer,
 	value,
 	disabled,
 	id,

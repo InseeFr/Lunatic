@@ -2,6 +2,7 @@ import { ChangeEventHandler, useCallback } from 'react';
 import { LabelSelection, LabelSelectionProps } from './label-selection';
 import Input from './input';
 import SelectionContainer from './selection-container';
+import { LabelOrInput } from './LabelOrInput';
 
 export type SelectionProps = {
 	expanded?: boolean;
@@ -40,7 +41,25 @@ export function Selection({
 			expanded={expanded}
 			aria-owns={`${id}-list`}
 		>
-			<LabelSelection
+			<LabelOrInput
+				labelRenderer={labelRenderer}
+				placeholder={placeholder}
+				selectedIndex={selectedIndex}
+				options={options}
+				search={search}
+				disabled={disabled}
+				onChange={onChangeEx}
+				value={search}
+				focused={focused}
+				editable={editable}
+				expanded={expanded}
+			/>
+		</SelectionContainer>
+	);
+}
+
+/*
+<LabelSelection
 				labelRenderer={labelRenderer}
 				placeholder={placeholder}
 				selectedIndex={selectedIndex}
@@ -59,6 +78,5 @@ export function Selection({
 				editable={editable}
 				expanded={expanded}
 			/>
-		</SelectionContainer>
-	);
-}
+
+			*/
