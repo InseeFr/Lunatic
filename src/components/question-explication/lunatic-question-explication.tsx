@@ -1,15 +1,15 @@
-import Accordion from './html/accordion';
+import QuestionExplication from './html/question-explication';
 import { LunaticComponentProps } from '../type';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 
 function empty() { }
 
-function LunaticAccordion({
+function LunaticQuestionExplication({
     id,
     label,
     description,
     bgColor,
-}: LunaticComponentProps<'Accordion'>) {
+}: LunaticComponentProps<'QuestionExplication'>) {
 
     return (
         <LunaticComponent
@@ -19,9 +19,9 @@ function LunaticAccordion({
             description={description}
             value={undefined}
         >
-            <Accordion label={label} id={id} description={description} bgColor={bgColor} />
+            <QuestionExplication label={label} id={id} description={description} bgColor={bgColor} />
         </LunaticComponent>
     );
 }
 
-export default LunaticAccordion;
+export default LunaticQuestionExplication;

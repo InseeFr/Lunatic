@@ -42,17 +42,17 @@ export type ValuesTypeArray<T = unknown> = {
 export type DeclarationType = {
 	id: string;
 	declarationType:
-		| 'INSTRUCTION'
-		| 'COMMENT'
-		| 'HELP'
-		| 'CODECARD'
-		| 'WARNING'
-		| 'STATEMENT';
+	| 'INSTRUCTION'
+	| 'COMMENT'
+	| 'HELP'
+	| 'CODECARD'
+	| 'WARNING'
+	| 'STATEMENT';
 	position:
-		| 'AFTER_QUESTION_TEXT'
-		| 'AFTER_RESPONSE'
-		| 'BEFORE_QUESTION_TEXT'
-		| 'DETACHABLE';
+	| 'AFTER_QUESTION_TEXT'
+	| 'AFTER_RESPONSE'
+	| 'BEFORE_QUESTION_TEXT'
+	| 'DETACHABLE';
 	label: LabelType;
 };
 
@@ -129,9 +129,10 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentSuggesterType)
 	| (ComponentTypeBase & ComponentInputOrTextareaType)
 	| (ComponentTypeBase & {
-			componentType: 'CheckboxOne';
-	  })
-	| (ComponentTypeBase & ComponentComponentSetType);
+		componentType: 'CheckboxOne';
+	})
+	| (ComponentTypeBase & ComponentComponentSetType)
+	| (ComponentTypeBase & ComponentQuestionExplicationType);
 
 export type ComponentInputOrTextareaType = {
 	componentType: 'Input' | 'Textarea';
@@ -301,23 +302,23 @@ export type SuggesterType = {
 
 export type Variable =
 	| {
-			variableType: 'EXTERNAL';
-			name: string;
-			value: unknown;
-	  }
+		variableType: 'EXTERNAL';
+		name: string;
+		value: unknown;
+	}
 	| {
-			variableType: 'COLLECTED';
-			name: string;
-			values: ValuesType | ValuesTypeArray;
-	  }
+		variableType: 'COLLECTED';
+		name: string;
+		values: ValuesType | ValuesTypeArray;
+	}
 	| {
-			variableType: 'CALCULATED';
-			name: string;
-			expression: LabelType;
-			bindingDependencies: string[];
-			inFilter: string;
-			shapeFrom?: string;
-	  };
+		variableType: 'CALCULATED';
+		name: string;
+		expression: LabelType;
+		bindingDependencies: string[];
+		inFilter: string;
+		shapeFrom?: string;
+	};
 
 export type LunaticSource = {
 	id: string;
@@ -346,4 +347,10 @@ export type LunaticSource = {
 			variables: string[];
 		};
 	};
+};
+
+export type ComponentQuestionExplicationType = {
+	componentType: 'QuestionExplication';
+	description: string;
+	bgColor?: string
 };

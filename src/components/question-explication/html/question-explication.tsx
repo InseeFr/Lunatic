@@ -1,9 +1,9 @@
 import { useState, ReactNode } from 'react';
 import { createCustomizableLunaticField } from '../../commons';
-import './accordion.scss';
+import './question-explication.scss';
 import { LunaticBaseProps } from '../../type';
 
-function Accordion({
+function QuestionExplication({
     id,
     label,
     description,
@@ -22,5 +22,5 @@ function Accordion({
     );
 };
 
-export default createCustomizableLunaticField(Accordion, 'Accordion');
+export default createCustomizableLunaticField(QuestionExplication, 'QuestionExplication');
 

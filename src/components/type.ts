@@ -174,7 +174,7 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'>;
-	Accordion: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'description'> & { bgColor?: string };
+	QuestionExplication: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'description'> & { bgColor?: string };
 	PairwiseLinks: Omit<LunaticBaseProps, 'value'> & {
 		components: LunaticComponentDefinition[];
 		features?: LunaticState['features'];

@@ -1,8 +1,8 @@
 {
     "components": [
         {
-            "id": "accordion",
-            "componentType": "Accordion",
+            "id": "questionExplication",
+            "componentType": "QuestionExplication",
             "label": {
                 "value": "\"Accordion label\"",
                 "type": "VTL"
