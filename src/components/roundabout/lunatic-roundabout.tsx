@@ -18,6 +18,7 @@ function LunaticRoundabout({
 		function (iteration: number) {
 			goToPage({
 				page,
+				subPage: 0,
 				iteration,
 				nbIterations: iterations,
 			});
