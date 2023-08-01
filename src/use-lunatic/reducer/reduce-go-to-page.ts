@@ -45,10 +45,7 @@ function reduceGoToPage(
 	if (action.payload.subPage !== undefined) {
 		newPager.nbSubPages = parentPage.subPages?.length;
 		newPager.nbIterations = state.executeExpression<number>(
-			parentPage.iterations,
-			{
-				iteration: newPager.iteration,
-			}
+			parentPage.iterations
 		);
 	}
 

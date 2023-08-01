@@ -23,9 +23,7 @@ export function autoExploreLoop(
 		newPager.page = firstSubPage[0].toString();
 		newPager.subPage = firstSubPage[1] - 1; // Subpage starts at 0
 		newPager.nbSubPages = maxSubPage;
-		newPager.nbIterations = state.executeExpression<number>(page.iterations, {
-			iteration: newPager.iteration,
-		});
+		newPager.nbIterations = state.executeExpression<number>(page.iterations);
 		newPager.iteration = isForward ? 0 : newPager.nbIterations - 1;
 	}
 	return {
