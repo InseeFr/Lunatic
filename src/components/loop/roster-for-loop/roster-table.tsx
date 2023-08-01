@@ -24,6 +24,7 @@ type Props = {
 	| 'missing'
 	| 'shortcut'
 	| 'errors'
+	| 'disabled'
 >;
 
 function RosterTable({
@@ -37,6 +38,7 @@ function RosterTable({
 	missing,
 	management,
 	handleChange,
+	disabled,
 }: Props) {
 	if (nbRows <= 0) {
 		return <NothingToDisplay />;
@@ -54,6 +56,7 @@ function RosterTable({
 				missing={missing}
 				shortcut={shortcut}
 				executeExpression={executeExpression}
+				disabled={disabled}
 			/>
 		</Table>
 	);

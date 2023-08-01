@@ -7,6 +7,7 @@ type Props = {
 	valueMap?: Record<string, unknown>;
 	features?: string[];
 	rowIndex: number;
+	disabled?: boolean;
 	handleChange: (
 		response: { name: string },
 		value: unknown,
@@ -33,6 +34,7 @@ function Row({
 	rowIndex,
 	executeExpression,
 	errors,
+	disabled,
 }: Props) {
 	const handleChangeRow = useCallback<LunaticBaseProps['handleChange']>(
 		function (response, value) {
@@ -71,6 +73,7 @@ function Row({
 						iteration={rowIndex}
 						executeExpression={executeExpression}
 						errors={errors}
+						disabled={disabled}
 					/>
 				);
 			})}

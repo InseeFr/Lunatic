@@ -30,7 +30,7 @@ function DevOptions({ goToPage, getData }) {
 				<lunatic.Button onClick={() => goToPage({ page: `${toPage}` })}>
 					{`Go to page ${toPage}`}
 				</lunatic.Button>
-				<lunatic.InputNumber
+				<lunatic.Input
 					id="page-to-jump"
 					value={toPage}
 					handleChange={handleChange}
@@ -103,6 +103,7 @@ function OrchestratorForStories({
 	getReferentiel,
 	dontKnowButton,
 	refusedButton,
+	readOnly,
 	...rest
 }) {
 	const { maxPage } = source;
@@ -192,6 +193,7 @@ function OrchestratorForStories({
 									// fill error when needed
 									errors={errorActive[pageTag]}
 									filterDescription={filterDescription}
+									disabled={readOnly}
 								/>
 							</div>
 						);

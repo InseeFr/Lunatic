@@ -28,6 +28,7 @@ function BlockForLoop({
 	iterations,
 	paginatedLoop,
 	errors,
+	disabled,
 }: LunaticComponentProps<'Loop'>) {
 	const min = lines?.min;
 	const max = lines?.max;
@@ -103,6 +104,7 @@ function BlockForLoop({
 				preferences={preferences}
 				executeExpression={executeExpression}
 				errors={errors}
+				disabled={disabled}
 			/>
 			<DeclarationsDetachable declarations={declarations} id={id} />
 			{min && max && min !== max && (

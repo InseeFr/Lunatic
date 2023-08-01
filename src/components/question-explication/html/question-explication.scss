@@ -1,0 +1,35 @@
+.lunatic-component {
+  .accordion-item {
+    max-width: 600px;
+    background-color: '#FFFFFF';
+  }
+
+  .accordion-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+  }
+
+  .accordion-title,
+  .accordion-content {
+    padding: 1rem;
+  }
+
+  .accordion-trigger {
+    background: none;
+    display: block;
+    font-size: 1rem;
+    margin: 0;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+
+}

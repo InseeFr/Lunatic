@@ -21,12 +21,13 @@ import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
+import { LunaticComponentType } from '../components/type';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
 const DEFAULT_DATA = empty as LunaticData;
-const DEFAULT_FEATURES = ['VTL', 'MD'];
-const DEFAULT_PREFERENCES = [COLLECTED];
+const DEFAULT_FEATURES = ['VTL', 'MD'] as ['VTL', 'MD'];
+const DEFAULT_PREFERENCES = [COLLECTED] as ['COLLECTED'];
 const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
 const DEFAULT_DONT_KNOW = D.DK;
@@ -56,9 +57,9 @@ function useLunatic(
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
 	}: {
-		features?: string[];
-		preferences?: string[];
-		savingType?: string;
+		features?: LunaticState['features'];
+		preferences?: LunaticState['preferences'];
+		savingType?: LunaticState['savingType'];
 		onChange?: typeof nothing;
 		management?: boolean;
 		shortcut?: boolean;
@@ -133,16 +134,32 @@ function useLunatic(
 		[dispatch]
 	);
 
-	const goToPage = useCallback(
-		function (payload = {}) {
+	const goToPage: LunaticState['goToPage'] = useCallback(
+		function (payload) {
 			dispatch(actions.goToPage(payload));
 		},
 		[dispatch]
 	);
 
 	const getComponents = useCallback(
-		function () {
-			// validate variables ?
+		function ({
+			only,
+			except,
+		}: {
+			only?: LunaticComponentType[];
+			except?: LunaticComponentType[];
+		} = {}) {
+			if (only && except) {
+				throw new Error(
+					'"only" and "except" cannot be used together in getComponents()'
+				);
+			}
+			if (only) {
+				return components.filter((c) => only.includes(c.componentType));
+			}
+			if (except) {
+				return components.filter((c) => !except.includes(c.componentType));
+			}
 			return components;
 		},
 		[components]

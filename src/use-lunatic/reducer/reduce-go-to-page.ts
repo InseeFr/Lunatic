@@ -1,77 +1,76 @@
 import { ActionGoToPage, ActionKind } from '../actions';
+import { getPagerFromPageTag } from '../commons/page-tag';
 import { LunaticState } from '../type';
-import { isOnEmptyPage } from './commons';
 import reduceGoNextPage from './reduce-go-next-page';
-
-function validateChange(state: LunaticState) {
-	const updatedState = { ...state } satisfies LunaticState;
-	if (isOnEmptyPage(updatedState)) {
-		return reduceGoNextPage(updatedState, {
-			type: ActionKind.GO_NEXT_PAGE,
-			payload: {},
-		});
-	}
-	return updatedState;
-}
-
-function resolveSubPage(
-	state: LunaticState,
-	action: ActionGoToPage
-): LunaticState {
-	const { pager, pages } = state;
-	const {
-		page,
-		iteration,
-		nbIterations,
-		subPage = 0,
-		roundabout,
-	} = action.payload;
-	const { subPages } = pages[page] || { subPages: [] };
-	const nbSubPages = subPages?.length;
-
-	return {
-		...state,
-		isInLoop: true,
-		pager: {
-			...pager,
-			page,
-			iteration,
-			nbIterations,
-			nbSubPages,
-			subPage,
-			roundabout,
-		},
-	};
-}
+import { getPageId, isPageEmpty } from '../commons/page';
 
 function reduceGoToPage(
 	state: LunaticState,
 	action: ActionGoToPage
 ): LunaticState {
-	const { isInLoop, pager } = state;
-	const { page: newPage, iteration } = action.payload;
-
-	if (iteration !== undefined) {
-		return resolveSubPage(state, action);
+	// The page contains non digit, extract information from it
+	if (action.payload.page.match(/\D/)) {
+		const pager = getPagerFromPageTag(action.payload.page);
+		if (pager) {
+			action.payload.iteration = pager.iteration;
+			action.payload.subPage = pager.subPage;
+			action.payload.page = pager.page;
+		}
 	}
 
-	if (!isInLoop)
-		return {
-			...state,
-			pager: {
-				...pager,
-				subPage: undefined,
-				nbSubPages: undefined,
-				iteration: undefined,
-				nbIterations: undefined,
-				page: newPage,
-			},
-		};
-	// TODO: fix when redirect to loop component
-	// How to calculate nbSubPages & nbIterations?
-	// How to calculate lazy variables we need?
-	// Handle setLoopBindings with the good iteration
-	return validateChange(state);
+	// The page is still not a number, cancel the action
+	if (action.payload.page.match(/\D/)) {
+		console.error(`Cannot reach page "${action.payload.page}", not a number`);
+		return state;
+	}
+
+	const newPager: LunaticState['pager'] = {
+		...state.pager,
+		page: action.payload.page,
+		subPage: action.payload.subPage,
+		iteration: action.payload.iteration,
+		nbIterations: undefined,
+		nbSubPages: undefined,
+	};
+
+	// The page is not reachable
+	const pageId = getPageId(newPager);
+	if (!(pageId in state.pages)) {
+		console.error(`Page "${pageId}" does not exists in this questionnaire`);
+		return state;
+	}
+
+	// Find the number of subPages and iteration
+	const parentPage = state.pages[action.payload.page];
+	if (action.payload.subPage !== undefined) {
+		newPager.nbSubPages = parentPage.subPages?.length;
+		newPager.nbIterations = state.executeExpression<number>(
+			parentPage.iterations
+		);
+	}
+
+	// Prevent an out of bound iteration
+	if (
+		newPager.iteration !== undefined &&
+		newPager.nbIterations !== undefined &&
+		newPager.iteration >= newPager.nbIterations
+	) {
+		newPager.iteration = newPager.nbIterations - 1;
+	}
+
+	// Move forward if the page is empty
+	if (isPageEmpty(state)) {
+		return reduceGoNextPage(state, {
+			type: ActionKind.GO_NEXT_PAGE,
+			payload: {},
+		});
+	}
+
+	return {
+		...state,
+		isInLoop: newPager.nbIterations !== undefined,
+		pager: newPager,
+	};
 }
 
 export default reduceGoToPage;

@@ -2,6 +2,7 @@ import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
 import simple from './simple';
+import sourceComponentSet from './source-component-set';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
@@ -49,4 +50,11 @@ Simple.args = {
 		control: 'boolean',
 		defaultValue: true,
 	},
+};
+
+export const ComponentSet = Template.bind({});
+ComponentSet.args = {
+	source: sourceComponentSet,
+	getReferentiel,
+	autoSuggesterLoading: true,
 };
