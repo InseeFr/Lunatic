@@ -187,8 +187,6 @@ function useLunatic(
 	const pageTag = getPageTag(pager);
 	const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
-	console.log('State overview', state.overview);
-
 	useEffect(
 		function () {
 			dispatch(
