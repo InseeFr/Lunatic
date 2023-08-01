@@ -45,7 +45,7 @@ function useLunatic(
 		management = false,
 		shortcut = false,
 		initialPage = '1',
-		lastReachedPage = '1',
+		lastReachedPage = undefined,
 		autoSuggesterLoading = false,
 		activeControls = false,
 		getReferentiel,

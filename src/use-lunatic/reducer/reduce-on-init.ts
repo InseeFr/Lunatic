@@ -201,7 +201,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 			nbSubPages: undefined,
 			iteration: undefined,
 			nbIterations: undefined,
-			lastReachedPage: lastReachedPage,
+			lastReachedPage: lastReachedPage ?? initialPage,
 		} satisfies LunaticState['pager'];
 
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
