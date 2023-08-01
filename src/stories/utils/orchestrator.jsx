@@ -30,7 +30,7 @@ function DevOptions({ goToPage, getData }) {
 				<lunatic.Button onClick={() => goToPage({ page: `${toPage}` })}>
 					{`Go to page ${toPage}`}
 				</lunatic.Button>
-				<lunatic.InputNumber
+				<lunatic.Input
 					id="page-to-jump"
 					value={toPage}
 					handleChange={handleChange}
