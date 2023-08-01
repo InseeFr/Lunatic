@@ -8,6 +8,7 @@ import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
 import useLunatic from '../use-lunatic';
 
+type Formats = 'PTnHnM' | 'PnYnM';
 export type VtlExpression = {
 	value: string;
 	type: 'VTL' | 'VTL|MD';
@@ -65,6 +66,10 @@ type ComponentPropsByType = {
 		unit?: string;
 		response: { name: string };
 	};
+	Duration: LunaticBaseProps<string | null> &  {
+		format: Formats;
+		response: { name: string };
+	}
 	Input: LunaticBaseProps<string> & {
 		maxLength?: number;
 		value: null | string;
