@@ -1,5 +1,5 @@
 {
-	"maxPage": "1",
+	"maxPage": "2",
 	"components": [
 		{
 			"id": "radio",
@@ -33,7 +33,31 @@
 					"label": { "value": "\"non\"", "type": "VTL|MD" }
 				}
 			],
-			"response": { "name": "Q2" }
+			"response": { "name": "Q2" },
+			"controls": [
+				{
+					"id": "oups",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(isnull(Q2))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "\"Veuillez cocher une valeur\"",
+						"type": "VTL|MD"
+					}
+				}
+			]
+		},
+		{
+			"id": "seq",
+			"componentType": "Sequence",
+			"label": {
+				"value": "\"Merci !\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "2"
 		}
 	],
 	"variables": [
