@@ -1,0 +1,52 @@
+{
+	"maxPage": "1",
+	"components": [
+		{
+			"id": "radio",
+			"componentType": "Radio",
+			"mandatory": false,
+			"page": "1",
+			"label": {
+				"value": "\"Label for a Radio component\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"Description of a Radio component\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"options": [
+				{
+					"value": true,
+					"description": {
+						"value": "\"Déclaration oui\"",
+						"type": "VTL|MD"
+					},
+					"label": { "value": "\"oui\"", "type": "VTL|MD" }
+				},
+				{
+					"value": false,
+					"description": {
+						"value": "\"Déclaration non\"",
+						"type": "VTL|MD"
+					},
+					"label": { "value": "\"non\"", "type": "VTL|MD" }
+				}
+			],
+			"response": { "name": "Q2" }
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "Q2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}
