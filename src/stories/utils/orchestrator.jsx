@@ -173,10 +173,10 @@ function OrchestratorForStories({
 							response,
 							storeName,
 							conditionFilter,
+							disabled,
 							...other
 						} = component;
 						const Component = lunatic[componentType];
-
 						const storeInfo = storeName ? getStoreInfo(storeName) : {};
 						return (
 							<div
@@ -193,7 +193,7 @@ function OrchestratorForStories({
 									// fill error when needed
 									errors={errorActive[pageTag]}
 									filterDescription={filterDescription}
-									disabled={readOnly}
+									disabled={readOnly ?? disabled}
 								/>
 							</div>
 						);

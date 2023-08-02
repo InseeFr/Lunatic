@@ -28,6 +28,7 @@ function Input({
 	errors,
 }: Props) {
 	const labelId = `label-${id}`;
+
 	const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
 		function (e) {
 			const value = e.target.value;

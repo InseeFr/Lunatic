@@ -1,9 +1,11 @@
 {
+	"maxPage": "1",
 	"components": [
 		{
 			"componentType": "Input",
+			"page": "1",
 			"label": {
-				"value": "\"Prénom de l'occupant principal.\"",
+				"value": "\"Nom de l'occupant principal.\"",
 				"type": "VTL|MD"
 			},
 			"disabled": { "value": "DISABLED", "type": "VTL" },
@@ -11,7 +13,7 @@
 			"maxLength": 30,
 			"id": "name",
 			"response": {
-				"name": "PRENOM"
+				"name": "NOM"
 			},
 			"declarations": [
 				{
@@ -35,32 +37,38 @@
 			]
 		},
 		{
-			"componentType": "Input",
+			"id": "radio",
+			"componentType": "Radio",
+			"mandatory": false,
+			"page": "1",
 			"label": {
-				"value": "\"Nom de l'occupant principal.\"",
+				"value": "\"Disabled or enabled!\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"true or false\"",
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"maxLength": 30,
-			"id": "surname",
-			"description": {
-				"value": "\"For example, Bob.\"",
-				"type": "VTL|MD"
-			},
-			"response": {
-				"name": "NOM"
-			},
-			"declarations": [
+			"options": [
 				{
-					"id": "kb9hi4j0-krnoclfe",
-					"declarationType": "INSTRUCTION",
-					"position": "BEFORE_QUESTION_TEXT",
-					"label": {
-						"value": "\"Quel est le nom de l'occupant principal ?\"",
+					"value": true,
+					"description": {
+						"value": "\"with VTL\"",
 						"type": "VTL|MD"
-					}
+					},
+					"label": { "value": "\"Disabled\"", "type": "VTL|MD" }
+				},
+				{
+					"value": false,
+					"description": {
+						"value": "\"with VTL\"",
+						"type": "VTL|MD"
+					},
+					"label": { "value": "\"Unabled\"", "type": "VTL|MD" }
 				}
-			]
+			],
+			"response": { "name": "DISABLED" }
 		}
 	],
 	"variables": [
@@ -78,7 +86,7 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "PRENOM",
+			"name": "DISABLED",
 			"componentRef": "name",
 			"values": {
 				"PREVIOUS": null,
@@ -87,11 +95,6 @@
 				"EDITED": null,
 				"INPUTED": null
 			}
-		},
-		{
-			"variableType": "CALCULATED",
-			"name": "DISABLED",
-			"expression": { "value": "true", "type": "VTL" }
 		}
 	]
 }

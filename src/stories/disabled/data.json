@@ -1,0 +1,18 @@
+{
+	"COLLECTED": {
+		"NOM": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "Renaud"
+		},
+		"DISABLED": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": true
+		}
+	}
+}
