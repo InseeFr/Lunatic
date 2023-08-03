@@ -1,16 +1,16 @@
 import React, { FunctionComponent } from 'react';
-import classnames from 'classnames';
+import LabelSelectionRenderer from '../../label-selection-renderer';
 import { ComboBoxOption } from '../combo-box.type';
-import createCustomizableLunaticField from '../../../create-customizable-field';
 
 export type LabelSelectionProps = {
 	/**
 	 * @deprecated use createCustomizableField with ComboboxLabelRenderer as name.
 	 */
-	labelRenderer: FunctionComponent<{
+	labelRenderer?: FunctionComponent<{
 		option?: ComboBoxOption;
 		placeholder?: string;
 		search?: string;
+		disabled?: boolean;
 	}>;
 	placeholder?: string;
 	selectedIndex?: number;
@@ -29,19 +29,16 @@ export function LabelSelection({
 }: LabelSelectionProps) {
 	const option =
 		selectedIndex !== undefined ? options[selectedIndex] : undefined;
+	const EffectifRenderer = Renderer ?? LabelSelectionRenderer;
 
 	return (
-		<div
-			className={classnames('lunatic-combo-box-selected', {
-				disabled,
-			})}
-		>
-			<Renderer option={option} placeholder={placeholder} search={search} />
-		</div>
+		<EffectifRenderer
+			option={option}
+			placeholder={placeholder}
+			search={search}
+			disabled={disabled}
+		/>
 	);
 }
 
-export default createCustomizableLunaticField(
-	LabelSelection,
-	'ComboboxLabelSelection'
-);
+export default LabelSelection;

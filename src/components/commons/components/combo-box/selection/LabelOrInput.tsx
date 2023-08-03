@@ -44,26 +44,3 @@ export function LabelOrInput(props: LabelOrInputType) {
 		/>
 	);
 }
-
-/*
-<LabelSelection
-				labelRenderer={labelRenderer}
-				placeholder={placeholder}
-				selectedIndex={selectedIndex}
-				options={options}
-				search={search}
-				disabled={disabled}
-			/>
-			<Input
-				id={`combobox-input-${id}`}
-				className="lunatic-combo-box-input"
-				onChange={onChangeEx}
-				value={search}
-				placeholder={placeholder}
-				disabled={disabled}
-				focused={focused}
-				editable={editable}
-				expanded={expanded}
-			/>
-
-			*/
