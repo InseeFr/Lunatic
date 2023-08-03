@@ -27,11 +27,11 @@ function getInitalValueFromCollected(
 	let fromData;
 	if (data && name in data) {
 		const { COLLECTED, FORCED } = data[name];
-		fromData = COLLECTED || FORCED;
+		fromData = COLLECTED ?? FORCED;
 	}
 	if ('values' in variable && variable.values) {
 		const { COLLECTED, FORCED } = variable.values;
-		return fromData ?? (FORCED || COLLECTED);
+		return fromData ?? (FORCED ?? COLLECTED);
 	}
 	return undefined;
 }
