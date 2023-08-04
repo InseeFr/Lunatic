@@ -12,6 +12,8 @@ type Task = {
 	stopWords: string[];
 };
 
+const voidFunction = () => {};
+
 export const loadSuggesters =
 	(suggesterFetcher: typeof fetch) =>
 	async (
@@ -28,6 +30,7 @@ export const loadSuggesters =
 				await cleanInfoStorage(db);
 				await updateStoreInfo(db, attrs);
 			}
+			voidFunction();
 		});
 		Object.entries(suggesters).forEach(([name, attrs]) => {
 			const { url, version, fields, stopWords } = attrs;
