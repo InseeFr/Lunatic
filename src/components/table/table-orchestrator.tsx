@@ -1,8 +1,7 @@
-import React from 'react';
-import Row from './row';
 import { LunaticComponentProps } from '../type';
+import Row from './row';
 
-type Props = {} & Pick<
+type Props = Pick<
 	LunaticComponentProps<'Table'>,
 	'body' | 'id' | 'executeExpression' | 'value' | 'handleChange' | 'iteration'
 >;
