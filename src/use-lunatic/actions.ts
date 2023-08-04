@@ -41,6 +41,7 @@ export type ActionInit = {
 		data: LunaticData;
 		source: LunaticSource;
 		initialPage: string;
+		lastReachedPage?: string;
 		features: LunaticState['features'];
 		preferences: LunaticState['preferences'];
 		savingType: LunaticState['savingType'];

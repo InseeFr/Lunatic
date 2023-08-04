@@ -1,19 +1,19 @@
+import { ActionInit } from '../actions';
 import {
 	checkLoops,
 	createExecuteExpression,
 	createMapPages,
 	isFirstLastPage,
 } from '../commons';
+import compose from '../commons/compose';
+import { getPagerFromPageTag } from '../commons/page-tag';
 import {
 	LunaticData,
 	LunaticState,
 	LunaticStateVariable,
 	LunaticVariable,
 } from '../type';
-import { ActionInit } from '../actions';
 import { LunaticSource } from '../type-source';
-import { getPagerFromPageTag } from '../commons/page-tag';
-import compose from '../commons/compose';
 import { reduceOverviewOnInit } from './overview/overview-on-init';
 
 /**
@@ -173,6 +173,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		source,
 		data,
 		initialPage,
+		lastReachedPage,
 		features,
 		handleChange,
 		preferences,
@@ -200,7 +201,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 			nbSubPages: undefined,
 			iteration: undefined,
 			nbIterations: undefined,
-			lastReachedPage: initialPage,
+			lastReachedPage: lastReachedPage ?? initialPage,
 		} satisfies LunaticState['pager'];
 
 		const { isFirstPage, isLastPage } = isFirstLastPage(pager);
