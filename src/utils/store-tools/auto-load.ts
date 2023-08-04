@@ -20,7 +20,7 @@ export const loadSuggesters =
 			{ version: number; url: string; fields: string[]; stopWords: string[] }
 		>
 	) => {
-		Object.entries(suggesters).map(async ([name, attrs]) => {
+		Object.entries(suggesters).forEach(async ([name, attrs]) => {
 			const { version } = attrs;
 			const db = await openStorage(name, version);
 			if (db) {
@@ -28,7 +28,6 @@ export const loadSuggesters =
 				await cleanInfoStorage(db);
 				await updateStoreInfo(db, attrs);
 			}
-			return;
 		});
 		Object.entries(suggesters).forEach(([name, attrs]) => {
 			const { url, version, fields, stopWords } = attrs;
