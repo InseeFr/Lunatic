@@ -1,7 +1,7 @@
-import openStorage from './open-or-create-store';
-import updateStoreInfo from './create/update-store-info';
 import cleanStorage from './clear-store-data';
 import cleanInfoStorage from './clear-store-info';
+import updateStoreInfo from './create/update-store-info';
+import openStorage from './open-or-create-store';
 // @ts-ignore
 import { createWorker } from '../suggester-workers/create-worker';
 import { getWorkerPath } from './worker-path';
@@ -28,6 +28,7 @@ export const loadSuggesters =
 				await cleanInfoStorage(db);
 				await updateStoreInfo(db, attrs);
 			}
+			return;
 		});
 		Object.entries(suggesters).forEach(([name, attrs]) => {
 			const { url, version, fields, stopWords } = attrs;

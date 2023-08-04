@@ -88,7 +88,6 @@ function BlockForLoop({
 	if (nbRows <= 0) {
 		return null;
 	}
-
 	return (
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
