@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type ComboBoxOption = {
+export type ComboBoxOptionType = {
 	id?: string;
 	description?: ReactNode;
 	label?: ReactNode;
