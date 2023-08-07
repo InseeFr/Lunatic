@@ -1,13 +1,13 @@
 import classnames from 'classnames';
-import { SuggesterOption } from '../../type';
-import createCustomizableLunaticField from '../create-customizable-field';
+import { SuggesterOption } from '../../../../type';
+import createCustomizableLunaticField from '../../../create-customizable-field';
 
 type Props = {
 	option: SuggesterOption;
 	selected?: boolean;
 };
 
-function OptionRenderer({ option, selected }: Props) {
+function ComboBoxOption({ option, selected }: Props) {
 	const { id, value, label } = option;
 
 	if (label && typeof label === 'string' && label.length) {
@@ -26,4 +26,4 @@ function OptionRenderer({ option, selected }: Props) {
 	);
 }
 
-export default createCustomizableLunaticField(OptionRenderer, 'ComboboxOption');
+export default createCustomizableLunaticField(ComboBoxOption, 'ComboboxOption');

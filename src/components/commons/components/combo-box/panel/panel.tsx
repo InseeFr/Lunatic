@@ -1,19 +1,19 @@
 import React, { FunctionComponent } from 'react';
 import { PanelContainer } from './panel-container';
 import { OptionContainer } from './option-container';
-import { ComboBoxOption } from '../combo-box.type';
-import { OptionRenderer } from '../../../index';
+import { ComboBoxOptionType } from '../combo-box.type';
+import ComboBoxOption from './combo-box-option';
 
 export type PanelProps = {
 	/**
 	 * @deprecated use createCustomizableField with ComboboxOptionRenderer as name.
 	 */
 	optionRenderer?: FunctionComponent<{
-		option: ComboBoxOption;
+		option: ComboBoxOptionType;
 		selected?: boolean;
 		search?: string;
 	}>;
-	options: Array<ComboBoxOption>;
+	options: Array<ComboBoxOptionType>;
 	focused?: boolean;
 	selectedIndex?: number | string | null;
 	expanded?: boolean;
@@ -34,7 +34,7 @@ export function Panel({
 }: PanelProps) {
 	const visibleOptions = expanded ? options : [];
 
-	const EffectifRenderer = OptionRenderCustom ?? OptionRenderer;
+	const EffectifRenderer = OptionRenderCustom ?? ComboBoxOption;
 	return (
 		<PanelContainer expanded={expanded} focused={focused} id={`${id}-list`}>
 			{visibleOptions.map((option, index) => (
