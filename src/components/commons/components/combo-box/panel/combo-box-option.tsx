@@ -1,9 +1,9 @@
 import classnames from 'classnames';
-import { SuggesterOption } from '../../../../type';
+import { ComboBoxOptionType } from '../combo-box.type';
 import createCustomizableLunaticField from '../../../create-customizable-field';
 
 type Props = {
-	option: SuggesterOption;
+	option: ComboBoxOptionType;
 	selected?: boolean;
 };
 

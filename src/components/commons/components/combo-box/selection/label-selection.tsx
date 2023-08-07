@@ -1,20 +1,20 @@
 import React, { FunctionComponent } from 'react';
-import LabelSelectionRenderer from '../../label-selection-renderer';
-import { ComboBoxOption } from '../combo-box.type';
+import ComboBoxLabelSelection from './combo-box-label-selection';
+import { ComboBoxOptionType } from '../combo-box.type';
 
 export type LabelSelectionProps = {
 	/**
 	 * @deprecated use createCustomizableField with ComboboxLabelRenderer as name.
 	 */
 	labelRenderer?: FunctionComponent<{
-		option?: ComboBoxOption;
+		option?: ComboBoxOptionType;
 		placeholder?: string;
 		search?: string;
 		disabled?: boolean;
 	}>;
 	placeholder?: string;
 	selectedIndex?: number;
-	options: Array<ComboBoxOption>;
+	options: Array<ComboBoxOptionType>;
 	search?: string;
 	disabled?: boolean;
 };
@@ -29,7 +29,7 @@ export function LabelSelection({
 }: LabelSelectionProps) {
 	const option =
 		selectedIndex !== undefined ? options[selectedIndex] : undefined;
-	const EffectifRenderer = Renderer ?? LabelSelectionRenderer;
+	const EffectifRenderer = Renderer ?? ComboBoxLabelSelection;
 
 	return (
 		<EffectifRenderer

@@ -1,12 +1,23 @@
-import { ComboBoxOption } from '../combo-box.type';
+import classNames from 'classnames';
+import { ComboBoxOptionType } from '../combo-box.type';
+import createCustomizableLunaticField from '../../../create-customizable-field';
 
 type Props = {
-	option?: ComboBoxOption | null;
+	option?: ComboBoxOptionType | null;
 	placeholder?: string;
 	search?: string;
+	disabled?: boolean;
 };
 
-function getContent(option: Props['option'], search: Props['search']) {
+function isPlaceholder(option: Props['option'], search: Props['search']) {
+	return !option && (!search || search.length === 0);
+}
+
+function getContent(
+	option: Props['option'],
+	search?: Props['search'],
+	placeholder?: string
+) {
 	if (option) {
 		const { id, value, label } = option;
 		return label ? `${id || value} - ${label}` : id || value;
@@ -14,15 +25,35 @@ function getContent(option: Props['option'], search: Props['search']) {
 	if (search && search.trim().length) {
 		return search;
 	}
-	return null;
+	return placeholder ?? '';
 }
 
-function ComboBoxLabelSelection({ option, placeholder, search }: Props) {
-	const content = getContent(option, search);
-	if (content) {
-		return <span className="selection">{content}</span>;
-	}
-	return <span className="placeholder">{placeholder}</span>;
+function ComboBoxLabelSelection({
+	option,
+	placeholder,
+	search,
+	disabled = false,
+}: Props) {
+	const isPh = isPlaceholder(option, search);
+	return (
+		<div
+			className={classNames('lunatic-combo-box-selected', {
+				disabled,
+			})}
+		>
+			<span
+				className={classNames({
+					placeholder: isPh,
+					selection: !isPh,
+				})}
+			>
+				{getContent(option, search, placeholder)}
+			</span>
+		</div>
+	);
 }
 
-export default ComboBoxLabelSelection;
+export default createCustomizableLunaticField(
+	ComboBoxLabelSelection,
+	'ComboboxLabelSelection'
+);
