@@ -8,7 +8,7 @@ export type PanelProps = {
 	/**
 	 * @deprecated use createCustomizableField with ComboboxOptionRenderer as name.
 	 */
-	optionRenderer: FunctionComponent<{
+	optionRenderer?: FunctionComponent<{
 		option: ComboBoxOption;
 		selected?: boolean;
 		search?: string;
@@ -23,7 +23,7 @@ export type PanelProps = {
 };
 
 export function Panel({
-	optionRenderer: OptionRender = OptionRenderer,
+	optionRenderer: OptionRenderCustom,
 	options = [],
 	focused,
 	selectedIndex,
@@ -34,6 +34,7 @@ export function Panel({
 }: PanelProps) {
 	const visibleOptions = expanded ? options : [];
 
+	const EffectifRenderer = OptionRenderCustom ?? OptionRenderer;
 	return (
 		<PanelContainer expanded={expanded} focused={focused} id={`${id}-list`}>
 			{visibleOptions.map((option, index) => (
@@ -43,7 +44,7 @@ export function Panel({
 					selected={selectedIndex === index}
 					onSelect={onSelect}
 				>
-					<OptionRender
+					<EffectifRenderer
 						option={option}
 						selected={selectedIndex === index}
 						search={search}

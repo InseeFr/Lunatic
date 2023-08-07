@@ -13,6 +13,6 @@ describe('displayLabelOrInput', () => {
 				selectedIndex={0}
 			/>
 		);
-		expect(getByText('hello')).toBeInTheDocument();
+		expect(getByText('-1 - hello')).toBeInTheDocument();
 	});
 });

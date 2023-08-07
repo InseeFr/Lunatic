@@ -1,5 +1,5 @@
 import { default as OptionRendererFn } from './components/option-renderer';
-export { default as DefaultLabelRenderer } from './components/default-label-renderer';
+export { default as LabelSelectionRenderer } from './components/label-selection-renderer';
 export { default as FieldContainer } from './components/field-container';
 export { default as Label } from './components/label';
 export { default as Fieldset } from './components/fieldset';

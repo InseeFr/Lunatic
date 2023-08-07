@@ -1,10 +1,5 @@
 import React, { ReactNode, useCallback, useState } from 'react';
-import {
-	ComboBox,
-	OptionRenderer,
-	DefaultLabelRenderer,
-	createCustomizableLunaticField,
-} from '../../commons';
+import { ComboBox, createCustomizableLunaticField } from '../../commons';
 import './default-style.scss';
 import { voidFunction } from '../../../utils/function';
 import { LunaticError } from '../../../use-lunatic/type';
@@ -31,8 +26,8 @@ function Suggester({
 	className = 'lunatic-suggester-default-style',
 	placeholder = D.PLACEHOLDER,
 	onSelect = voidFunction,
-	labelRenderer = DefaultLabelRenderer,
-	optionRenderer = OptionRenderer,
+	labelRenderer,
+	optionRenderer,
 	value,
 	disabled,
 	id,
