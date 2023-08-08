@@ -1,10 +1,10 @@
 import LabelSelection, { LabelSelectionProps } from './label-selection';
 import Input, { InputProps } from './input';
 
-type LabelOrInputType = LabelSelectionProps &
+type LabelOrInputTypeProps = LabelSelectionProps &
 	InputProps & { editable?: boolean; expanded?: boolean };
 
-export function LabelOrInput(props: LabelOrInputType) {
+export function LabelOrInput(props: LabelOrInputTypeProps) {
 	const { editable, expanded } = props;
 	const displayLabel = !editable || !expanded;
 
