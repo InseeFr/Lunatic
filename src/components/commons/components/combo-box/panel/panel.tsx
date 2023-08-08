@@ -34,7 +34,7 @@ export function Panel({
 }: PanelProps) {
 	const visibleOptions = expanded ? options : [];
 
-	const EffectifComboBoxOption = OptionRender ?? ComboBoxOption;
+	const ComboBoxOptionComponent = OptionRender ?? ComboBoxOption;
 	return (
 		<PanelContainer expanded={expanded} focused={focused} id={`${id}-list`}>
 			{visibleOptions.map((option, index) => (
@@ -44,7 +44,7 @@ export function Panel({
 					selected={selectedIndex === index}
 					onSelect={onSelect}
 				>
-					<EffectifComboBoxOption
+					<ComboBoxOptionComponent
 						option={option}
 						selected={selectedIndex === index}
 						search={search}

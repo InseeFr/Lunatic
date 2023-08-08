@@ -29,10 +29,10 @@ export function LabelSelection({
 }: LabelSelectionProps) {
 	const option =
 		selectedIndex !== undefined ? options[selectedIndex] : undefined;
-	const EffectifLabelSelection = Renderer ?? ComboBoxLabelSelection;
+	const LabelSelectionComponent = Renderer ?? ComboBoxLabelSelection;
 
 	return (
-		<EffectifLabelSelection
+		<LabelSelectionComponent
 			option={option}
 			placeholder={placeholder}
 			search={search}
