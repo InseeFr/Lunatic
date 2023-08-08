@@ -7,7 +7,6 @@ function empty() {}
 function LunaticModal(props: LunaticComponentProps<'Modal'>) {
 	const { id, label, description, goToPage, page, goNextPage, goPreviousPage } =
 		props;
-	console.log(props);
 
 	return (
 		<LunaticComponent
