@@ -5,12 +5,11 @@ type LabelOrInputTypeProps = LabelSelectionProps &
 	InputProps & { editable?: boolean; expanded?: boolean };
 
 /**
- * Affiche l'input ou le libellé de la selection selon l'état du suggester.
- * Lorsque le composant n'est pas focus, une représentation de la recherche active
- * est présenté plutôt que le champ input. Ce dernier est liè à la recherche de l'utilisateur
- * (les lettres saisies), non directement à l'option choisi parmi les suggestions.
- * Utiliser directement le champ input pour représenter la selection entre en conflit avec les inter-action de recherche
- * de l'utilisateur.
+ * Display the input or the label of the selection based on the state of the Suggester.
+ * When the component is not focused, a representation of what is being searched
+ * is presented instead of the Input. This is related to what the user searched
+ * (i.e. the letters entered), not directly to the option chosen among the sugesstions.
+ * Using the input directly to represent the selection causes a conflict with that which the user enters in order to search.
  * @param props
  * @returns
  */
