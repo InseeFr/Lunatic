@@ -216,6 +216,12 @@ type ComponentPropsByType = {
 			iterations?: number;
 		}>
 	};
+  Modal: LunaticBaseProps<string | null> & {
+    goToPage: ReturnType<typeof useLunatic>['goToPage'];
+    page: string;
+    goNextPage?: () => void;
+    goPreviousPage?: () => void; 
+  } 
 };
 
 export type LunaticComponentType = keyof ComponentPropsByType;
