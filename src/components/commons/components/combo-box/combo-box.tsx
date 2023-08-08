@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { ClearButton } from './selection/clear-button';
 import { INITIAL_STATE, reducer, actions } from './state-management';
 import './combo-box.scss';
-import { ComboBoxOption } from './combo-box.type';
+import { ComboBoxOptionType } from './combo-box.type';
 import { SelectionProps, Selection } from './selection/selection';
 import { Panel, PanelProps } from './panel/panel';
 import { ComboBoxContainer } from './combo-box-container';
@@ -21,13 +21,13 @@ type Props = SelectionProps &
 		classStyle?: string;
 		value: string | null;
 		messageError?: string;
-		getOptionValue?: (o: ComboBoxOption) => string;
+		getOptionValue?: (o: ComboBoxOptionType) => string;
 		label?: ReactNode;
 		description?: ReactNode;
 		errors?: LunaticBaseProps['errors'];
 		onChange?: (s: string | null) => void;
 		onSelect: (s: string | null) => void;
-		options: ComboBoxOption[];
+		options: ComboBoxOptionType[];
 	};
 
 function ComboBox({
@@ -159,7 +159,7 @@ function ComboBox({
 	);
 }
 
-function getDefaultOptionValue(option: ComboBoxOption = { value: '' }) {
+function getDefaultOptionValue(option: ComboBoxOptionType = { value: '' }) {
 	const { id, value } = option;
 	return id || value;
 }
