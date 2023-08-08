@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import createRefreshCalculated from './create-refresh-calculated';
-import { ExpressionLogger } from './create-execute-expression';
+import { describe, expect, it } from 'vitest';
 import { LunaticExpression, LunaticState } from '../../type';
+import { ExpressionLogger } from './create-execute-expression';
+import createRefreshCalculated from './create-refresh-calculated';
 
 const variables = {
 	AGE: {
@@ -57,6 +57,8 @@ const fakeExecute =
 			logging?: ExpressionLogger;
 		} = {}
 	): unknown => {
+		// Assume this code doesn't provide vulnerabilities (only in test)
+		// eslint-disable-next-line no-new-func
 		return new Function(
 			...Object.keys(bindings),
 			`return ${(expression as LunaticExpression).value}`
