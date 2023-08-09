@@ -47,7 +47,6 @@ jobs:
           message: 'Update Storybook beta (develop branch)'
           branch: 'gh-pages'
 
-
   publish_beta_on_npm:
     runs-on: ubuntu-latest
     steps:
@@ -66,7 +65,7 @@ jobs:
       - run: |
           yarn build
       - name: Publishing on NPM
-        run: |        
+        run: |
           git config --global user.email "no-reply@insee.fr"
           git config --global user.name "Insee"
           export TAG=beta
