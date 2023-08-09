@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "2.4.9",
+	"version": "2.5.0",
 	"workersVersion": "0.2.5-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
@@ -52,7 +52,7 @@
 		"library"
 	],
 	"dependencies": {
-		"@inseefr/trevas": "^0.1.18",
+		"@inseefr/trevas": "^0.1.19",
 		"@inseefr/vtl-2.0-antlr-tools": "^0.1.0-bundle",
 		"antlr4": "4.11.0",
 		"classnames": "^2.3.1",
@@ -145,7 +145,7 @@
 		"sass-loader": "^13.2.0",
 		"source-map-explorer": "^2.4.2",
 		"ts-loader": "^9.4.2",
-		"typescript": "^5.0.4",
+		"typescript": "^5.1.6",
 		"vite": "^4.0.0",
 		"vitest": "^0.27.2",
 		"wait-on": "^7.0.1",

@@ -1,6 +1,6 @@
 import ComboBox from './combo-box';
 import { Meta, Story } from '@storybook/react';
-import { ComboBoxOption } from './combo-box.type';
+import { ComboBoxOptionType } from './combo-box.type';
 import { ComponentProps } from 'react';
 
 const stories = {
@@ -14,7 +14,7 @@ const LabelRenderer = ({
 	option,
 	placeholder,
 }: {
-	option?: ComboBoxOption;
+	option?: ComboBoxOptionType;
 	placeholder?: string;
 }) => <>{option?.label ?? placeholder}</>;
 

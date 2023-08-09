@@ -16,6 +16,7 @@ import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
 import { LunaticSource } from './type-source';
 // @ts-ignore
+import { LunaticComponentType } from '../components/type';
 import compileControlsLib from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
@@ -25,8 +26,8 @@ import { useSuggesters } from './use-suggesters';
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
 const DEFAULT_DATA = empty as LunaticData;
-const DEFAULT_FEATURES = ['VTL', 'MD'];
-const DEFAULT_PREFERENCES = [COLLECTED];
+const DEFAULT_FEATURES = ['VTL', 'MD'] as ['VTL', 'MD'];
+const DEFAULT_PREFERENCES = [COLLECTED] as ['COLLECTED'];
 const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
 const DEFAULT_DONT_KNOW = D.DK;
@@ -44,6 +45,7 @@ function useLunatic(
 		management = false,
 		shortcut = false,
 		initialPage = '1',
+		lastReachedPage = undefined,
 		autoSuggesterLoading = false,
 		activeControls = false,
 		getReferentiel,
@@ -56,13 +58,14 @@ function useLunatic(
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
 	}: {
-		features?: string[];
-		preferences?: string[];
-		savingType?: string;
+		features?: LunaticState['features'];
+		preferences?: LunaticState['preferences'];
+		savingType?: LunaticState['savingType'];
 		onChange?: typeof nothing;
 		management?: boolean;
 		shortcut?: boolean;
 		initialPage?: string;
+		lastReachedPage?: string;
 		autoSuggesterLoading?: boolean;
 		getReferentiel?: (name: string) => Promise<Array<unknown>>;
 		activeControls?: boolean;
@@ -133,16 +136,32 @@ function useLunatic(
 		[dispatch]
 	);
 
-	const goToPage = useCallback(
-		function (payload = {}) {
+	const goToPage: LunaticState['goToPage'] = useCallback(
+		function (payload) {
 			dispatch(actions.goToPage(payload));
 		},
 		[dispatch]
 	);
 
 	const getComponents = useCallback(
-		function () {
-			// validate variables ?
+		function ({
+			only,
+			except,
+		}: {
+			only?: LunaticComponentType[];
+			except?: LunaticComponentType[];
+		} = {}) {
+			if (only && except) {
+				throw new Error(
+					'"only" and "except" cannot be used together in getComponents()'
+				);
+			}
+			if (only) {
+				return components.filter((c) => only.includes(c.componentType));
+			}
+			if (except) {
+				return components.filter((c) => !except.includes(c.componentType));
+			}
 			return components;
 		},
 		[components]
@@ -175,6 +194,7 @@ function useLunatic(
 					source,
 					data,
 					initialPage,
+					lastReachedPage,
 					features,
 					preferences,
 					savingType,
@@ -200,6 +220,7 @@ function useLunatic(
 			activeControls,
 			withOverview,
 			goToPage,
+			lastReachedPage,
 		]
 	);
 

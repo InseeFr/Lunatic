@@ -8,6 +8,7 @@ import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
 import useLunatic from '../use-lunatic';
 
+type Formats = 'PTnHnM' | 'PnYnM';
 export type VtlExpression = {
 	value: string;
 	type: 'VTL' | 'VTL|MD';
@@ -65,6 +66,10 @@ type ComponentPropsByType = {
 		unit?: string;
 		response: { name: string };
 	};
+	Duration: LunaticBaseProps<string | null> & {
+		format: Formats;
+		response: { name: string };
+	};
 	Input: LunaticBaseProps<string> & {
 		maxLength?: number;
 		value: null | string;
@@ -79,6 +84,7 @@ type ComponentPropsByType = {
 	ComponentSet: LunaticBaseProps<unknown> & {
 		components: LunaticComponentDefinition[];
 		value: Record<string, unknown>;
+		response: undefined;
 	};
 	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
@@ -173,6 +179,10 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'>;
+	QuestionExplication: Pick<
+		LunaticBaseProps<string>,
+		'id' | 'label' | 'description'
+	> & { bgColor?: string };
 	PairwiseLinks: Omit<LunaticBaseProps, 'value'> & {
 		components: LunaticComponentDefinition[];
 		features?: LunaticState['features'];
@@ -203,11 +213,11 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	Summary: LunaticBaseProps<string | null> & {
-    sections: Array<{
-      responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
-      title?: VtlExpression;
-      iterations?: number;
-    }>
+		sections: Array<{
+			responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
+			title?: VtlExpression;
+			iterations?: number;
+		}>;
 	};
 };
 

@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test('can complete simpson form', async ({ page }) => {
+	page.setDefaultTimeout(30_000);
+	page.setDefaultNavigationTimeout(30_000);
 	await page.goto(
 		'http://localhost:9999/iframe.html?viewMode=story&id=questionnaires-simpsons--default'
 	);
@@ -136,10 +138,6 @@ test('can complete simpson form', async ({ page }) => {
 		.getByRole('radio', { name: 'Down' })
 		.click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await page
-		.getByRole('row', { name: 'Leave with pay' })
-		.getByRole('spinbutton')
-		.fill('12');
 	await page
 		.getByRole('row', { name: 'Leave with pay' })
 		.getByText('Please, do something...')

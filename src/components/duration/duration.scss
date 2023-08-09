@@ -1,0 +1,17 @@
+.input-field {
+  width: 100px;
+  margin-right: 10px
+}
+.field-group {
+  display: flex;
+}
+
+.input-field-group {
+  display: flex;
+  align-items: first baseline;
+  margin: 5px;
+}
+
+.input-label {
+  margin-right: 5px;
+}

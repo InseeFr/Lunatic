@@ -68,6 +68,9 @@ function createRowOrchestrator(Row: FunctionComponent<OriginalProps>) {
 		if (nbRows <= 0) {
 			return null;
 		}
+		if (isNaN(nbRows)) {
+			throw new Error(`nbRows should be a number`);
+		}
 		const items = new Array(nbRows).fill(null);
 		return (
 			<>

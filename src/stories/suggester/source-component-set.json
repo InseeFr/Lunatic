@@ -1,0 +1,67 @@
+{
+	"maxPage": "1",
+	"suggesters": [
+		{
+			"name": "naf-rev2",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 2
+				},
+				{ "name": "id" }
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": { "language": "French", "pattern": "[\\w.]+" }
+			},
+			"version": "1"
+		}
+	],
+	"components": [
+		{
+			"id": "lfwg2ny2",
+			"componentType": "ComponentSet",
+			"page": "1",
+			"className": "ComponentSet",
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"label": {
+				"value": "\"Chercher votre activité principale.\"",
+				"type": "VTL"
+			},
+			"components": [
+				{
+					"id": "communes-2023",
+					"componentType": "Suggester",
+					"label": { "value": "\"NAF\"", "type": "VTL" },
+					"description": "\"industrie\"",
+					"storeName": "naf-rev2",
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"response": {
+						"name": "ACT"
+					}
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "ACT",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}
