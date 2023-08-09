@@ -14,4 +14,4 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
-Default.args = { id: 'modal', source, min: 0, max: 10, decimals: 0 };
+Default.args = { id: 'modal', source };
