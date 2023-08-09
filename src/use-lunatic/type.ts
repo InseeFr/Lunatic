@@ -170,6 +170,9 @@ export type LunaticState = {
 		nbIterations?: number;
 		subPage?: number;
 	}) => void;
+	// Enable components to independently navigate next/previous
+	goNextPage: () => void;
+	goPreviousPage: () => void;
 	getSuggesterStatus: (name: string) => {
 		status: SuggesterStatus;
 		timestamp: number;

@@ -45,6 +45,8 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	executeExpression: LunaticState['executeExpression'];
 	features?: string[];
 	componentType?: string;
+	goNextPage: () => void;
+	goPreviousPage: () => void;
 };
 
 export type SuggesterOption = {
@@ -222,8 +224,6 @@ type ComponentPropsByType = {
 	Modal: LunaticBaseProps<string | null> & {
 		goToPage: ReturnType<typeof useLunatic>['goToPage'];
 		page: string;
-		goNextPage?: () => void;
-		goPreviousPage?: () => void;
 	};
 };
 

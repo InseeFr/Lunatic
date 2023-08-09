@@ -17,38 +17,19 @@ function Modal(
 		| 'goPreviousPage'
 	>
 ) {
-	const { id, label, description, goToPage, page, goNextPage, goPreviousPage } =
-		props;
+	const { id, label, description, goNextPage, goPreviousPage } = props;
 
 	const handleNextClick = useCallback(
 		function () {
-			// If goNextPage is explicitly passed down by the orchestrator, it is used.
-			if (goNextPage) {
-				goNextPage();
-			} else {
-				// Else we go to page n+1
-				const nextPage = parseInt(page) + 1;
-				goToPage({
-					page: `${nextPage}`,
-				});
-			}
+			goNextPage();
 		},
-		[goToPage, page, goNextPage]
+		[goNextPage]
 	);
 	const handlePreviousClick = useCallback(
 		function () {
-			// If goPreviousPage is explicitly passed down by the orchestrator, it is used.
-			if (goPreviousPage) {
-				goPreviousPage();
-			} else {
-				// Else we go to page n-1
-				const previousPage = parseInt(page) - 1;
-				goToPage({
-					page: `${previousPage}`,
-				});
-			}
+			goPreviousPage();
 		},
-		[goToPage, page, goPreviousPage]
+		[goPreviousPage]
 	);
 
 	return createPortal(
