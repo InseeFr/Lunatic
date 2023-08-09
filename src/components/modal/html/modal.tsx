@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { createCustomizableLunaticField } from '../../commons';
 import { LunaticComponentProps } from '../../type';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import './modal.scss';
 import Button from '../../button';
 
@@ -51,7 +51,7 @@ function Modal(
 		[goToPage, page, goPreviousPage]
 	);
 
-	return ReactDOM.createPortal(
+	return createPortal(
 		<div className="lunatic-modal">
 			<div className="modal-content">
 				<div id={id} className="lunatic-modal-container">
