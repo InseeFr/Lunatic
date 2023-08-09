@@ -3,10 +3,10 @@ import classnames from 'classnames';
 import getLabel from './filter-tools/get-label';
 import lettersMatching from './filter-tools/letters-matching';
 import preparePrefix from './filter-tools/prepare-prefix';
-import { ComboBoxOption } from '../../../commons/components/combo-box/combo-box.type';
+import { ComboBoxOptionType } from '../../../commons/components/combo-box/combo-box.type';
 
 type Props = {
-	option: ComboBoxOption;
+	option: ComboBoxOptionType;
 	selected?: boolean;
 	search?: string;
 };

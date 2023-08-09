@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import DefaultLabelRenderer from './default-label-renderer';
+import ComboBoxLabelSelection from './combo-box-label-selection';
 import { describe, it, expect } from 'vitest';
 describe('DefaultLabelRenderer', () => {
 	describe('DefaultLabelRenderer', () => {
@@ -12,7 +12,10 @@ describe('DefaultLabelRenderer', () => {
 
 		it('should render with selected option', () => {
 			const { getByText } = render(
-				<DefaultLabelRenderer option={option} placeholder="Select an option" />
+				<ComboBoxLabelSelection
+					option={option}
+					placeholder="Select an option"
+				/>
 			);
 
 			const expectedContent = `${option.id || option.value} - ${option.label}`;
@@ -21,7 +24,7 @@ describe('DefaultLabelRenderer', () => {
 
 		it('should render with placeholder', () => {
 			const { getByText } = render(
-				<DefaultLabelRenderer option={null} placeholder="Select an option" />
+				<ComboBoxLabelSelection option={null} placeholder="Select an option" />
 			);
 
 			expect(getByText('Select an option')).toBeInTheDocument();
@@ -29,7 +32,7 @@ describe('DefaultLabelRenderer', () => {
 
 		it('should render with search value', () => {
 			const { getByText } = render(
-				<DefaultLabelRenderer
+				<ComboBoxLabelSelection
 					option={null}
 					search="Search value"
 					placeholder="Select an option"

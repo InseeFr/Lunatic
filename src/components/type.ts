@@ -66,10 +66,10 @@ type ComponentPropsByType = {
 		unit?: string;
 		response: { name: string };
 	};
-	Duration: LunaticBaseProps<string | null> &  {
+	Duration: LunaticBaseProps<string | null> & {
 		format: Formats;
 		response: { name: string };
-	}
+	};
 	Input: LunaticBaseProps<string> & {
 		maxLength?: number;
 		value: null | string;
@@ -179,7 +179,10 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'>;
-	QuestionExplication: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'description'> & { bgColor?: string };
+	QuestionExplication: Pick<
+		LunaticBaseProps<string>,
+		'id' | 'label' | 'description'
+	> & { bgColor?: string };
 	PairwiseLinks: Omit<LunaticBaseProps, 'value'> & {
 		components: LunaticComponentDefinition[];
 		features?: LunaticState['features'];
@@ -214,7 +217,7 @@ type ComponentPropsByType = {
 			responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
 			title?: VtlExpression;
 			iterations?: number;
-		}>
+		}>;
 	};
 };
 

@@ -1,14 +1,9 @@
 import React, { ReactNode, useCallback, useState } from 'react';
-import {
-	ComboBox,
-	DefaultOptionRenderer,
-	DefaultLabelRenderer,
-	createCustomizableLunaticField,
-} from '../../commons';
+import { ComboBox, createCustomizableLunaticField } from '../../commons';
 import './default-style.scss';
 import { voidFunction } from '../../../utils/function';
 import { LunaticError } from '../../../use-lunatic/type';
-import { ComboBoxOption } from '../../commons/components/combo-box/combo-box.type';
+import { ComboBoxOptionType } from '../../commons/components/combo-box/combo-box.type';
 import { LunaticComponentProps } from '../../type';
 import D from '../../../i18n';
 
@@ -21,7 +16,7 @@ type Props = {
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
 	disabled?: boolean;
 	id?: string;
-	searching?: (s: string | null) => Promise<{ results: ComboBoxOption[] }>;
+	searching?: (s: string | null) => Promise<{ results: ComboBoxOptionType[] }>;
 	label?: ReactNode;
 	description?: ReactNode;
 	errors?: Record<string, LunaticError[]>;
@@ -31,8 +26,8 @@ function Suggester({
 	className = 'lunatic-suggester-default-style',
 	placeholder = D.PLACEHOLDER,
 	onSelect = voidFunction,
-	labelRenderer = DefaultLabelRenderer,
-	optionRenderer = DefaultOptionRenderer,
+	labelRenderer,
+	optionRenderer,
 	value,
 	disabled,
 	id,
@@ -42,7 +37,7 @@ function Suggester({
 	errors,
 }: Props) {
 	const [search, setSearch] = useState('');
-	const [options, setOptions] = useState<Array<ComboBoxOption>>([]);
+	const [options, setOptions] = useState<Array<ComboBoxOptionType>>([]);
 
 	const handleSelect = useCallback(
 		function (id: string | null) {
