@@ -40,10 +40,11 @@ export function autoExploreLoop(
 	if (
 		page.components[0].componentType === 'Roundabout' &&
 		page.subPages &&
-		page.subPages.length > 0
+		page.subPages.length > 0 &&
+		isForward
 	) {
 		const nbIterations = state.executeExpression<number>(page.iterations);
-		if (nbIterations === 1 && isForward) {
+		if (nbIterations === 1) {
 			goInsideSubpage(page.subPages, 1);
 		}
 	}
