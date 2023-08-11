@@ -56,7 +56,7 @@ export function ComboBoxContent({
 		<ComboBoxContentBox
 			className={className}
 			onFocus={onFocus}
-			handleKeyDown={handleKeyDown}
+			onKeyDown={handleKeyDown}
 			ref={ref}
 		>
 			<div
@@ -66,7 +66,7 @@ export function ComboBoxContent({
 			>
 				{children}
 			</div>
-		</ ComboBoxContentBox>
+		</ComboBoxContentBox>
 	);
 }
 

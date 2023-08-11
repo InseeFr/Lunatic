@@ -6,7 +6,7 @@ import { createCustomizableLunaticField } from '../../index';
 type Props = PropsWithChildren<{
 	focused?: boolean;
 	onFocus: () => void;
-	handleKeyDown: (e: KeyboardEvent<Element>) => void;
+	onKeyDown: (e: KeyboardEvent<Element>) => void;
 	className?: string;
 	ref: React.RefObject<HTMLDivElement>;
 }>;
@@ -15,11 +15,10 @@ export function ComboBoxContentBox({
 	children,
 	className,
 	onFocus,
-	handleKeyDown,
+	onKeyDown,
 	focused,
-	ref
+	ref,
 }: Props) {
-
 	return (
 		<div
 			className={classnames(`${className ?? 'lunatic'}-combo-box`, {
@@ -27,7 +26,7 @@ export function ComboBoxContentBox({
 			})}
 			onFocus={onFocus}
 			onClick={onFocus}
-			onKeyDown={handleKeyDown}
+			onKeyDown={onKeyDown}
 			ref={ref}
 			tabIndex={0}
 		>
@@ -36,4 +35,7 @@ export function ComboBoxContentBox({
 	);
 }
 
-export default createCustomizableLunaticField(ComboBoxContentBox, 'ComboboxContentBox');
+export default createCustomizableLunaticField(
+	ComboBoxContentBox,
+	'ComboboxContentBox'
+);
