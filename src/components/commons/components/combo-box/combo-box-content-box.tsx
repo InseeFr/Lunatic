@@ -8,7 +8,6 @@ type Props = PropsWithChildren<{
 	onFocus: () => void;
 	onKeyDown: (e: KeyboardEvent<Element>) => void;
 	className?: string;
-	ref: React.RefObject<HTMLDivElement>;
 }>;
 
 export function ComboBoxContentBox({
@@ -17,7 +16,6 @@ export function ComboBoxContentBox({
 	onFocus,
 	onKeyDown,
 	focused,
-	ref,
 }: Props) {
 	return (
 		<div
@@ -27,8 +25,6 @@ export function ComboBoxContentBox({
 			onFocus={onFocus}
 			onClick={onFocus}
 			onKeyDown={onKeyDown}
-			ref={ref}
-			tabIndex={0}
 		>
 			{children}
 		</div>
