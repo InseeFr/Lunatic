@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useRef, KeyboardEvent } from 'react';
 import { createCustomizableLunaticField } from '../../commons';
 import { LunaticComponentProps } from '../../type';
 import { createPortal } from 'react-dom';
@@ -18,6 +18,32 @@ function Modal(
 	>
 ) {
 	const { id, label, description, goNextPage, goPreviousPage } = props;
+	const first = useRef<HTMLDivElement>(null);
+	const last = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const focusOnInit = first?.current?.lastElementChild as HTMLButtonElement;
+		focusOnInit.focus()
+	}, [first])
+
+	const onKeyDown = useCallback(
+		(e: KeyboardEvent<HTMLElement>) => {
+			const firstButtonToFocus = first?.current?.lastElementChild as HTMLButtonElement
+			const lastButtonToFocus = last?.current?.lastElementChild as HTMLButtonElement
+			if (e.key === 'Tab') {
+				if (e.shiftKey) {
+					if (document.activeElement === firstButtonToFocus) {
+						lastButtonToFocus.focus();
+						e.nativeEvent.preventDefault();
+					}
+				} else if (document.activeElement === lastButtonToFocus) {
+					firstButtonToFocus.focus();
+					e.nativeEvent.preventDefault();
+				}
+			}
+		},
+		[first, last]
+	);
 
 	const handleNextClick = useCallback(
 		function () {
@@ -33,21 +59,23 @@ function Modal(
 	);
 
 	return createPortal(
-		<div className="lunatic-modal">
-			<div className="modal-content">
+		<dialog className="lunatic-modal" open>
+			<div className="modal-content" onKeyDown={onKeyDown}>
 				<div id={id} className="lunatic-modal-container">
-					<div className="close-button">
-						<a onClick={handlePreviousClick}>fermer x</a>
+					<div className="close-button" ref={first}>
+						<Button onClick={handlePreviousClick} >fermer x</Button>
 					</div>
 					<div className="modal-message">
 						<span>{label}</span>
 						<span>{description}</span>
 					</div>
-					<Button onClick={handlePreviousClick}>Annuler</Button>
-					<Button onClick={handleNextClick}>Je confirme</Button>
+					<div className="cancel-confirm-buttons" ref={last}>
+						<Button onClick={handlePreviousClick}>Annuler</Button>
+						<Button onClick={handleNextClick} >Je confirme</Button>
+					</div>
 				</div>
 			</div>
-		</div>,
+		</dialog>,
 		document.body
 	);
 }
