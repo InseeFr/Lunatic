@@ -23,7 +23,7 @@ type Props = {
 };
 
 function Suggester({
-	className = 'lunatic-suggester-default-style',
+	className = 'lunatic',
 	placeholder = D.PLACEHOLDER,
 	onSelect = voidFunction,
 	labelRenderer,

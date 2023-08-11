@@ -22,10 +22,10 @@ function LunaticSuggester({
 	missingResponse,
 	management,
 	response,
+	className,
 	getSuggesterStatus,
 }: LunaticComponentProps<'Suggester'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
-
 	return (
 		<LunaticComponent
 			id={id}
@@ -50,6 +50,7 @@ function LunaticSuggester({
 				errors={errors}
 				label={label}
 				getSuggesterStatus={getSuggesterStatus}
+				className={className}
 			/>
 		</LunaticComponent>
 	);

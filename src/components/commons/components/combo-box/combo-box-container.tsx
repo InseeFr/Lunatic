@@ -15,10 +15,11 @@ export function ComboBoxContainer({
 }: Props) {
 	return (
 		<div
-			id={`lunatic-combo-box-container-${id}`}
+			id={`${className ?? 'lunatic'}-combo-box-container-${id}`}
 			className={classnames(
-				'lunatic-combo-box-container',
-				className,
+				`${className ?? 'lunatic'}-combo-box-container`,
+				`${className ?? 'lunatic'}-suggester-${classStyle}`,
+				`lunatic-suggester-default-style`,
 				classStyle
 			)}
 		>

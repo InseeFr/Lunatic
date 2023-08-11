@@ -122,6 +122,7 @@ function ComboBox({
 				onFocus={onFocus}
 				onBlur={onBlur}
 				onKeyDown={onKeyDown}
+				className={className}
 			>
 				<Selection
 					labelRenderer={labelRenderer}
@@ -136,6 +137,7 @@ function ComboBox({
 					selectedIndex={selectedIndex}
 					options={options}
 					onChange={handleChange}
+					className={className}
 				/>
 				<Panel
 					optionRenderer={optionRenderer}

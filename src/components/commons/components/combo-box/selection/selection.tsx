@@ -10,6 +10,7 @@ export type SelectionProps = {
 	editable?: boolean;
 	labelId?: string;
 	id?: string;
+	className?: string;
 } & LabelSelectionProps;
 
 export function Selection({
@@ -25,6 +26,7 @@ export function Selection({
 	editable,
 	labelId,
 	id,
+	className,
 }: SelectionProps) {
 	const onChangeEx = useCallback<ChangeEventHandler<HTMLInputElement>>(
 		(e) => {
@@ -39,6 +41,7 @@ export function Selection({
 			labelId={labelId}
 			expanded={expanded}
 			aria-owns={`${id}-list`}
+			className={className}
 		>
 			<LabelOrInput
 				labelRenderer={labelRenderer}

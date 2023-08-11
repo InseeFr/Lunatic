@@ -7,6 +7,7 @@ type Props = PropsWithChildren<{
 	disabled?: boolean;
 	labelId?: string;
 	id?: string;
+	className?: string;
 }>;
 
 function SelectionContainer({
@@ -16,12 +17,13 @@ function SelectionContainer({
 	focused,
 	disabled,
 	labelId,
+	className,
 }: Props) {
 	const comboBoxId = `${id}`;
 	return (
 		<div
 			id={comboBoxId}
-			className={classnames('lunatic-combo-box-selection', {
+			className={classnames(`${className ?? 'lunatic'}-combo-box-selection`, {
 				focused,
 				disabled,
 			})}
