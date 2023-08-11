@@ -3,6 +3,7 @@ import React, { PropsWithChildren, useCallback, useRef } from 'react';
 import classnames from 'classnames';
 import { KEYBOARD_KEY_CODES } from './state-management/reduce-on-keydown/keyboard-key-codes';
 import { useDocumentAddEventListener } from '../../index';
+import ComboBoxContentBox from './combo-box-content-box';
 
 type Props = PropsWithChildren<{
 	focused?: boolean;
@@ -52,15 +53,11 @@ export function ComboBoxContent({
 	);
 
 	return (
-		<div
-			className={classnames(`${className ?? 'lunatic'}-combo-box`, {
-				focused,
-			})}
+		<ComboBoxContentBox
+			className={className}
 			onFocus={onFocus}
-			onClick={onFocus}
-			onKeyDown={handleKeyDown}
+			handleKeyDown={handleKeyDown}
 			ref={ref}
-			tabIndex={0}
 		>
 			<div
 				className={classnames(`${className ?? 'lunatic'}-combo-box-content`, {
@@ -69,7 +66,7 @@ export function ComboBoxContent({
 			>
 				{children}
 			</div>
-		</div>
+		</ ComboBoxContentBox>
 	);
 }
 
