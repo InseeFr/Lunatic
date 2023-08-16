@@ -6,11 +6,10 @@ import './combo-box.scss';
 import { ComboBoxOptionType } from './combo-box.type';
 import { SelectionProps, Selection } from './selection/selection';
 import { Panel, PanelProps } from './panel/panel';
-import { ComboBoxContainer } from './combo-box-container';
+import ComboBoxContainer from './combo-box-container';
 import ComboBoxContent from './combo-box-content';
 import { LunaticBaseProps } from '../../../type';
 import Label from '../label';
-import Errors from '../errors';
 import { createCustomizableLunaticField } from '../../index';
 
 const EMPTY_SEARCH = '';
@@ -113,7 +112,12 @@ function ComboBox({
 	}
 
 	return (
-		<ComboBoxContainer id={id} classStyle={classStyle} className={className}>
+		<ComboBoxContainer
+			id={id}
+			classStyle={classStyle}
+			className={className}
+			errors={errors}
+		>
 			<Label htmlFor={id} id={labelId} description={description}>
 				{label}
 			</Label>
@@ -156,7 +160,6 @@ function ComboBox({
 				onClick={onDelete}
 				editable={editable}
 			/>
-			{errors && <Errors errors={errors} activeId={id} />}
 		</ComboBoxContainer>
 	);
 }
