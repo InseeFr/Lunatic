@@ -65,8 +65,11 @@ function ComboBox({
 
 	useEffect(
 		function() {
-
-		}, [options, selectedIndex, onSelect]
+			if (selectedIndex) {
+				const option = options[selectedIndex]
+				onSelect(getOptionValue(option))
+			}
+		}, [selectedIndex, options, getOptionValue, onSelect]
 	)
 
 	const onFocus = useCallback(function () {
