@@ -26,10 +26,6 @@ function LunaticRoundabout({
 		[goToPage, page, iterations]
 	);
 
-	if (iterations === 1) {
-		return <Redirect goToIteration={goToIteration} iteration={0} />;
-	}
-
 	return (
 		<Roundabout
 			label={label}
