@@ -63,6 +63,7 @@ function ComboBox({
 		[options, value, getOptionValue]
 	);
 
+	// This useEffect ensures that onSelect is called when selectedIndex changes
 	useEffect(
 		function() {
 			if (selectedIndex) {
