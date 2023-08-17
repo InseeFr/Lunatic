@@ -55,8 +55,6 @@ export function ComboBoxContent({
 	return (
 		<ComboBoxContentBox
 			className={className}
-			onFocus={onFocus}
-			onKeyDown={handleKeyDown}
 		>
 			<div
 				className={classnames(`${className ?? 'lunatic'}-combo-box-content`, {
@@ -64,6 +62,8 @@ export function ComboBoxContent({
 				})}
 				ref={ref}
 				tabIndex={0}
+				onFocus={onFocus}
+				onClick={onFocus}
 				onKeyDown={handleKeyDown}
 			>
 				{children}
