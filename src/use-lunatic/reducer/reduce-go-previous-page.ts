@@ -2,6 +2,7 @@ import { LunaticState } from '../type';
 import { getPrevPager } from '../commons/page-navigation';
 import { autoExploreLoop } from './commons/auto-explore-loop';
 import { getPageId, isPageEmpty } from '../commons/page';
+import { getComponentsFromState } from '../commons';
 
 function reduceGoPreviousPage(state: LunaticState): LunaticState {
 	const { pages, pager } = state;
@@ -14,11 +15,23 @@ function reduceGoPreviousPage(state: LunaticState): LunaticState {
 		throw new Error(`Cannot reach previous page ${pageId}`);
 	}
 
-	// If we reached a loop, go to the last iteration / sequence
-	const newState = autoExploreLoop({ ...state, pager: prevPager }, 'backward');
+	let newState = { ...state, pager: prevPager };
 
 	// We reached an empty page, keep going backward
 	if (isPageEmpty(newState)) {
+		return reduceGoPreviousPage(newState);
+	}
+
+	// If we reached a loop, go to the last iteration / sequence
+	newState = autoExploreLoop(newState, 'backward');
+
+	// We have a roundabout with only one iteration skip it
+	const components = getComponentsFromState(newState);
+	if (
+		components.length === 1 &&
+		components[0]?.componentType === 'Roundabout' &&
+		newState.executeExpression<number>(components[0].iterations) === 1
+	) {
 		return reduceGoPreviousPage(newState);
 	}
 

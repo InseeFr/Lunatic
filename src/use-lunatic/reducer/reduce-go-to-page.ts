@@ -59,18 +59,19 @@ function reduceGoToPage(
 	}
 
 	// Move forward if the page is empty
-	if (isPageEmpty(state)) {
-		return reduceGoNextPage(state, {
+	const newState = {
+		...state,
+		isInLoop: newPager.nbIterations !== undefined,
+		pager: newPager,
+	};
+	if (isPageEmpty(newState)) {
+		return reduceGoNextPage(newState, {
 			type: ActionKind.GO_NEXT_PAGE,
 			payload: {},
 		});
 	}
 
-	return {
-		...state,
-		isInLoop: newPager.nbIterations !== undefined,
-		pager: newPager,
-	};
+	return newState;
 }
 
 export default reduceGoToPage;

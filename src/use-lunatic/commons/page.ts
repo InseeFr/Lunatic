@@ -43,15 +43,5 @@ export function isPageEmpty(state: LunaticState): boolean {
 		return true;
 	}
 
-	// We have a roundabout with only one iteration
-	const firstComponent = visibleComponents[0];
-	if (
-		visibleComponents.length === 1 &&
-		firstComponent?.componentType === 'Roundabout' &&
-		executeExpression<number>(firstComponent.iterations) === 1
-	) {
-		return true;
-	}
-
 	return false;
 }
