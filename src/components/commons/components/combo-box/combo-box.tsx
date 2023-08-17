@@ -63,6 +63,12 @@ function ComboBox({
 		[options, value, getOptionValue]
 	);
 
+	useEffect(
+		function() {
+
+		}, [options, selectedIndex, onSelect]
+	)
+
 	const onFocus = useCallback(function () {
 		dispatch(actions.onFocus());
 	}, []);
