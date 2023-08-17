@@ -14,7 +14,6 @@ export function ComboBoxContentBox({
 	children,
 	className,
 	onFocus,
-	onKeyDown,
 	focused,
 }: Props) {
 	return (
@@ -24,7 +23,6 @@ export function ComboBoxContentBox({
 			})}
 			onFocus={onFocus}
 			onClick={onFocus}
-			onKeyDown={onKeyDown}
 		>
 			{children}
 		</div>

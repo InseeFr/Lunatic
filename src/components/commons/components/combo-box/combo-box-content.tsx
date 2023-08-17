@@ -64,6 +64,7 @@ export function ComboBoxContent({
 				})}
 				ref={ref}
 				tabIndex={0}
+				onKeyDown={handleKeyDown}
 			>
 				{children}
 			</div>
