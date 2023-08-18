@@ -4,7 +4,7 @@ import useOnHandleChange from '../commons/use-on-handle-change';
 import Dropdown from './html/dropdown';
 import { LunaticComponentProps } from '../type';
 
-const dropdownClassname = "lunatic-dropdown";
+const dropdownClassName = "lunatic-dropdown";
 function LunaticDropdown({
 	id,
 	handleChange,
@@ -24,7 +24,7 @@ function LunaticDropdown({
 	description,
 }: LunaticComponentProps<'Dropdown'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
-	const classNameConcat = className ? `${className} ${dropdownClassname}` : dropdownClassname;
+	const classNameConcat = className ? `${className} ${dropdownClassName}` : dropdownClassName;
 
 	return (
 		<LunaticComponent
