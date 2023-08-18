@@ -52,6 +52,8 @@ function Suggester({
 				const { results } = await searching(search);
 				setOptions(results);
 				setSearch(search);
+				// if a user does not select an option in the list, their search term is saved
+				onSelect(search)
 			} else {
 				setOptions([]);
 				onSelect(null);
