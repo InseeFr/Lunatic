@@ -8,6 +8,7 @@ import {
 import NothingToDisplay from '../commons/components/nothing-to-display';
 import { LunaticComponentProps } from '../type';
 
+const className = "pairwise-link"
 const PairwiseLinks = ({
 	declarations,
 	components,
@@ -40,6 +41,7 @@ const PairwiseLinks = ({
 				handleChange={handleChange}
 				nbRows={nbRows}
 				value={value}
+				className={className}
 				management={management}
 				missing={missing}
 				shortcut={shortcut}

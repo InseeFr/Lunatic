@@ -10,6 +10,7 @@ function LunaticDropdown({
 	options,
 	writable,
 	disabled,
+	className,
 	value,
 	response,
 	errors,
@@ -22,7 +23,6 @@ function LunaticDropdown({
 	description,
 }: LunaticComponentProps<'Dropdown'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
-
 	return (
 		<LunaticComponent
 			id={id}
@@ -42,7 +42,7 @@ function LunaticDropdown({
 				options={options}
 				onSelect={onChange}
 				value={value}
-				className="lunatic-dropdown"
+				className={`${className} lunatic-dropdown`}
 				errors={errors}
 				label={label}
 			/>
