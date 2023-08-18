@@ -27,6 +27,11 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 	// If we reached a loop, go inside
 	newState = autoExploreLoop(newState, 'forward');
 
+	// We explored a loop, check if we reached an empty page, move forward
+	if (newState.pager !== nextPager && isPageEmpty(newState)) {
+		return reduceGoNextPage(newState);
+	}
+
 	return {
 		...newState,
 		pager: {
