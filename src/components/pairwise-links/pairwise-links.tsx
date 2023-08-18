@@ -1,4 +1,3 @@
-import React from 'react';
 import LinksOrchestrator from './orchestrator';
 import {
 	DeclarationsAfterText,
@@ -8,7 +7,6 @@ import {
 import NothingToDisplay from '../commons/components/nothing-to-display';
 import { LunaticComponentProps } from '../type';
 
-const className = "pairwise-link"
 const PairwiseLinks = ({
 	declarations,
 	components,
@@ -41,7 +39,7 @@ const PairwiseLinks = ({
 				handleChange={handleChange}
 				nbRows={nbRows}
 				value={value}
-				className={className}
+				className="pairwise-link"
 				management={management}
 				missing={missing}
 				shortcut={shortcut}

@@ -3,8 +3,8 @@ import LunaticComponent from '../commons/components/lunatic-component-without-la
 import useOnHandleChange from '../commons/use-on-handle-change';
 import Dropdown from './html/dropdown';
 import { LunaticComponentProps } from '../type';
+import classNames from 'classnames';
 
-const dropdownClassName = "lunatic-dropdown";
 function LunaticDropdown({
 	id,
 	handleChange,
@@ -24,7 +24,6 @@ function LunaticDropdown({
 	description,
 }: LunaticComponentProps<'Dropdown'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
-	const classNameConcat = className ? `${className} ${dropdownClassName}` : dropdownClassName;
 
 	return (
 		<LunaticComponent
@@ -45,7 +44,7 @@ function LunaticDropdown({
 				options={options}
 				onSelect={onChange}
 				value={value}
-				className={classNameConcat}
+				className={classNames(className, 'lunatic-dropdown')}
 				errors={errors}
 				label={label}
 			/>
