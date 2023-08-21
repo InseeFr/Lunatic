@@ -6,6 +6,7 @@ import Errors from '../errors';
 
 type Props = PropsWithChildren<{
 	classNamePrefix?: string;
+	className?: string;
 	id?: string;
 	classStyle?: string;
 	errors?: LunaticBaseProps['errors'];
@@ -13,6 +14,7 @@ type Props = PropsWithChildren<{
 
 function ComboBoxContainer({
 	children,
+	className,
 	classNamePrefix,
 	id,
 	classStyle = 'default-style',
@@ -22,6 +24,7 @@ function ComboBoxContainer({
 		<div
 			id={`${classNamePrefix ?? 'lunatic'}-combo-box-container-${id}`}
 			className={classnames(
+				className,
 				`${classNamePrefix ?? 'lunatic'}-combo-box-container`,
 				`${classNamePrefix ?? 'lunatic'}-suggester-${classStyle}`,
 				`lunatic-suggester-default-style`,
