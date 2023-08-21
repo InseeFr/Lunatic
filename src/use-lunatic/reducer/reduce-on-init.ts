@@ -31,7 +31,7 @@ function getInitalValueFromCollected(
 	}
 	if ('values' in variable && variable.values) {
 		const { COLLECTED, FORCED } = variable.values;
-		return fromData ?? (FORCED ?? COLLECTED);
+		return fromData ?? FORCED ?? COLLECTED;
 	}
 	return undefined;
 }
@@ -182,6 +182,8 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		shortcut,
 		activeControls,
 		goToPage,
+		goNextPage,
+		goPreviousPage,
 	} = payload;
 
 	if (source && data) {
@@ -225,6 +227,8 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 				savingType,
 				activeControls,
 				goToPage,
+				goNextPage,
+				goPreviousPage,
 				shortcut,
 			},
 			initialPager

@@ -17,13 +17,15 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 		throw new Error(`Cannot reach next page ${pageId}`);
 	}
 
-	// If we reached a loop, go inside
-	const newState = autoExploreLoop({ ...state, pager: nextPager }, 'forward');
+	let newState = { ...state, pager: nextPager };
 
 	// We reached an empty page, move forward
 	if (isPageEmpty(newState)) {
 		return reduceGoNextPage(newState);
 	}
+
+	// If we reached a loop, go inside
+	newState = autoExploreLoop(newState, 'forward');
 
 	return {
 		...newState,
