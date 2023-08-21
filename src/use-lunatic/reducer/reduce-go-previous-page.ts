@@ -30,16 +30,6 @@ function reduceGoPreviousPage(state: LunaticState): LunaticState {
 		return reduceGoPreviousPage(newState);
 	}
 
-	// We have a roundabout with only one iteration skip it
-	const components = getComponentsFromState(newState);
-	if (
-		components.length === 1 &&
-		components[0]?.componentType === 'Roundabout' &&
-		newState.executeExpression<number>(components[0].iterations) === 1
-	) {
-		return reduceGoPreviousPage(newState);
-	}
-
 	return {
 		...newState,
 		isInLoop: newState.pager.iteration !== undefined,

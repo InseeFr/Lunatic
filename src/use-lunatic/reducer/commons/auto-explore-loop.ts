@@ -24,7 +24,7 @@ export function autoExploreLoop(
 		newPager.page = firstSubPage[0].toString();
 		newPager.subPage = firstSubPage[1] - 1; // Subpage starts at 0
 		newPager.nbSubPages = maxSubPage;
-		newPager.nbIterations = state.executeExpression<number>(page.iterations);
+		newPager.nbIterations = nbIteration;
 		newPager.iteration = isForward ? 0 : newPager.nbIterations - 1;
 		hasExploredLoop = true;
 	};
@@ -41,8 +41,7 @@ export function autoExploreLoop(
 	if (
 		page.components[0].componentType === 'Roundabout' &&
 		page.subPages &&
-		page.subPages.length > 0 &&
-		isForward
+		page.subPages.length > 0
 	) {
 		const nbIterations = state.executeExpression<number>(page.iterations);
 		if (nbIterations === 1) {
