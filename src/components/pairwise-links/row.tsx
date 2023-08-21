@@ -20,6 +20,7 @@ function Row({
 	missing,
 	shortcut,
 	management,
+	className,
 	preferences,
 	executeExpression,
 	linksIterations,
@@ -61,6 +62,7 @@ function Row({
 						features={features}
 						missing={missing}
 						shortcut={shortcut}
+						className={className}
 						management={management}
 						value={value}
 						id={idComponent}
