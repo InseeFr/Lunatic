@@ -203,6 +203,8 @@ function useLunatic(
 					handleChange,
 					activeControls,
 					goToPage,
+					goNextPage,
+					goPreviousPage,
 					withOverview,
 				})
 			);
@@ -220,6 +222,8 @@ function useLunatic(
 			activeControls,
 			withOverview,
 			goToPage,
+			goNextPage,
+			goPreviousPage,
 			lastReachedPage,
 		]
 	);
