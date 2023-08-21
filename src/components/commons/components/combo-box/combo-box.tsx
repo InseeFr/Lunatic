@@ -64,13 +64,25 @@ function ComboBox({
 		[options, value, getOptionValue]
 	);
 
-	const onFocus = useCallback(function () {
-		dispatch(actions.onFocus());
-	}, []);
+	const onFocus = useCallback(
+		function () {
+			if (disabled) {
+				return;
+			}
+			dispatch(actions.onFocus());
+		},
+		[disabled]
+	);
 
-	const onBlur = useCallback(function () {
-		dispatch(actions.onBlur());
-	}, []);
+	const onBlur = useCallback(
+		function () {
+			if (disabled) {
+				return;
+			}
+			dispatch(actions.onBlur());
+		},
+		[disabled]
+	);
 
 	const handleSelect = useCallback(
 		(index: string) => {
@@ -105,6 +117,7 @@ function ComboBox({
 		},
 		[onChange]
 	);
+	const showClearButton = !disabled;
 
 	if (messageError) {
 		return (
@@ -148,12 +161,14 @@ function ComboBox({
 					onSelect={handleSelect}
 				/>
 			</ComboBoxContent>
-			<ClearButton
-				className={classnames({ focused })}
-				search={search}
-				onClick={onDelete}
-				editable={editable}
-			/>
+			{showClearButton && (
+				<ClearButton
+					className={classnames({ focused })}
+					search={search}
+					onClick={onDelete}
+					editable={editable}
+				/>
+			)}
 			{errors && <Errors errors={errors} activeId={id} />}
 		</ComboBoxContainer>
 	);
