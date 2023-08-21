@@ -9,6 +9,7 @@ import D from '../../../i18n';
 
 type Props = {
 	className?: string;
+	classNamePrefix?: string;
 	placeholder?: string;
 	onSelect?: (s: string | null) => void;
 	value: string | null;
@@ -23,7 +24,8 @@ type Props = {
 };
 
 function Suggester({
-	className = 'lunatic',
+	className,
+	classNamePrefix = 'lunatic',
 	placeholder = D.PLACEHOLDER,
 	onSelect = voidFunction,
 	labelRenderer,
@@ -69,6 +71,7 @@ function Suggester({
 		<ComboBox
 			id={id}
 			className={className}
+			classNamePrefix={classNamePrefix}
 			onChange={handleChange}
 			disabled={disabled}
 			options={options}

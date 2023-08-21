@@ -4,17 +4,17 @@ import { createCustomizableLunaticField } from '../../index';
 
 type Props = PropsWithChildren<{
 	focused?: boolean;
-	className?: string;
+	classNamePrefix?: string;
 }>;
 
 export function ComboBoxContentBox({
 	children,
-	className,
+	classNamePrefix,
 	focused,
 }: Props) {
 	return (
 		<div
-			className={classnames(`${className ?? 'lunatic'}-combo-box`, {
+			className={classnames(`${classNamePrefix ?? 'lunatic'}-combo-box`, {
 				focused,
 			})}
 		>

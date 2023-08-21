@@ -10,7 +10,7 @@ type Props = PropsWithChildren<{
 	onBlur: () => void;
 	onFocus: () => void;
 	onKeyDown: (key: string) => void;
-	className?: string;
+	classNamePrefix?: string;
 }>;
 
 export function ComboBoxContent({
@@ -19,7 +19,7 @@ export function ComboBoxContent({
 	onFocus,
 	onBlur,
 	onKeyDown,
-	className,
+	classNamePrefix,
 }: Props) {
 	const ref = useRef<HTMLDivElement>(null);
 
@@ -54,10 +54,10 @@ export function ComboBoxContent({
 
 	return (
 		<ComboBoxContentBox
-			className={className}
+			classNamePrefix={classNamePrefix}
 		>
 			<div
-				className={classnames(`${className ?? 'lunatic'}-combo-box-content`, {
+				className={classnames(`${classNamePrefix ?? 'lunatic'}-combo-box-content`, {
 					focused,
 				})}
 				ref={ref}

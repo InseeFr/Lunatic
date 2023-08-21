@@ -17,6 +17,7 @@ const EMPTY_SEARCH = '';
 type Props = SelectionProps &
 	PanelProps & {
 		className?: string;
+		classNamePrefix?: string;
 		classStyle?: string;
 		value: string | null;
 		messageError?: string;
@@ -31,6 +32,7 @@ type Props = SelectionProps &
 
 function ComboBox({
 	className,
+	classNamePrefix,
 	classStyle = 'default-style',
 	placeholder = 'Please, do something...',
 	editable = false,
@@ -125,7 +127,7 @@ function ComboBox({
 		<ComboBoxContainer
 			id={id}
 			classStyle={classStyle}
-			className={className}
+			classNamePrefix={classNamePrefix}
 			errors={errors}
 		>
 			<Label htmlFor={id} id={labelId} description={description}>
@@ -136,7 +138,7 @@ function ComboBox({
 				onFocus={onFocus}
 				onBlur={onBlur}
 				onKeyDown={onKeyDown}
-				className={className}
+				classNamePrefix={classNamePrefix}
 			>
 				<Selection
 					labelRenderer={labelRenderer}
@@ -151,7 +153,7 @@ function ComboBox({
 					selectedIndex={selectedIndex}
 					options={options}
 					onChange={handleChange}
-					className={className}
+					classNamePrefix={classNamePrefix}
 				/>
 				<Panel
 					optionRenderer={optionRenderer}
