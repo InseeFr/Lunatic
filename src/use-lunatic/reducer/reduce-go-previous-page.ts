@@ -40,7 +40,10 @@ function reduceGoPreviousPage(state: LunaticState): LunaticState {
 		return reduceGoPreviousPage(newState);
 	}
 
-	return newState;
+	return {
+		...newState,
+		isInLoop: newState.pager.iteration !== undefined,
+	};
 }
 
 export default reduceGoPreviousPage;

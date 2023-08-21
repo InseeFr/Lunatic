@@ -34,6 +34,7 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 
 	return {
 		...newState,
+		isInLoop: newState.pager.iteration !== undefined,
 		pager: {
 			...newState.pager,
 			lastReachedPage: getNewReachedPage(newState.pager),
