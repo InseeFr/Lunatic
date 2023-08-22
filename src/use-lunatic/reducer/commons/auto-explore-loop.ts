@@ -13,6 +13,7 @@ export function autoExploreLoop(
 	};
 	const pageId = getPageId(newPager);
 	let page = state.pages[pageId];
+	let hasExploredLoop = false;
 	const isForward = direction === 'forward';
 
 	const goInsideSubpage = (subPages: string[], nbIteration: number) => {
@@ -23,8 +24,9 @@ export function autoExploreLoop(
 		newPager.page = firstSubPage[0].toString();
 		newPager.subPage = firstSubPage[1] - 1; // Subpage starts at 0
 		newPager.nbSubPages = maxSubPage;
-		newPager.nbIterations = state.executeExpression<number>(page.iterations);
+		newPager.nbIterations = nbIteration;
 		newPager.iteration = isForward ? 0 : newPager.nbIterations - 1;
+		hasExploredLoop = true;
 	};
 
 	// The page is a loop
@@ -36,17 +38,20 @@ export function autoExploreLoop(
 	}
 
 	// The page contains a roundabout, go to the first iteration if it only has one iteration
-	const firstComponent = page.components[0];
 	if (
 		page.components[0].componentType === 'Roundabout' &&
 		page.subPages &&
-		page.subPages.length > 0 &&
-		isForward
+		page.subPages.length > 0
 	) {
 		const nbIterations = state.executeExpression<number>(page.iterations);
 		if (nbIterations === 1) {
 			goInsideSubpage(page.subPages, 1);
 		}
+	}
+
+	// No loop were explored, don't mutate the state
+	if (!hasExploredLoop) {
+		return state;
 	}
 
 	return {
