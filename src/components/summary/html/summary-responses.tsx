@@ -6,9 +6,9 @@ type ResponsesValue = Array<{
   value: ReactNode;
 }>
 
-function ListResponses({title, children}: PropsWithChildren<{title: ReactNode}>) {
+function ListResponses({title, index, children}: PropsWithChildren<{title: ReactNode; index: number;}>) {
   return (
-    <div className="lunatic-summary-responses-iteration">
+    <div key={index} className="lunatic-summary-responses-iteration">
       {title}
       <ul>{children}</ul>
     </div>
@@ -33,17 +33,17 @@ function Responses({values}: {values?: ResponsesValue;}) {
 
 
 function SummaryResponses({sections}: {
-  sections: Array<{ 
+  sections: Array<{
     title?: ReactNode;
     values?: ResponsesValue;
   }>}) {
 
-    const visibleSections = sections.filter(s => s) 
+    const visibleSections = sections.filter(s => s)
   return (
     <>
       {visibleSections.map((section, index) => {
           const { title, values } = section
-          return <ListResponses key={index} title={title}>
+          return <ListResponses index={index} key={index} title={title}>
             <Responses values={values} />
           </ListResponses>
         })}
