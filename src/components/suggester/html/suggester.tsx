@@ -9,6 +9,7 @@ import D from '../../../i18n';
 
 type Props = {
 	className?: string;
+	classNamePrefix?: string;
 	placeholder?: string;
 	onSelect?: (s: string | null) => void;
 	value: string | null;
@@ -23,7 +24,8 @@ type Props = {
 };
 
 function Suggester({
-	className = 'lunatic-suggester-default-style',
+	className,
+	classNamePrefix = 'lunatic',
 	placeholder = D.PLACEHOLDER,
 	onSelect = voidFunction,
 	labelRenderer,
@@ -52,6 +54,8 @@ function Suggester({
 				const { results } = await searching(search);
 				setOptions(results);
 				setSearch(search);
+				// if a user does not select an option in the list, their search term is saved
+				onSelect(search)
 			} else {
 				setOptions([]);
 				onSelect(null);
@@ -67,6 +71,7 @@ function Suggester({
 		<ComboBox
 			id={id}
 			className={className}
+			classNamePrefix={classNamePrefix}
 			onChange={handleChange}
 			disabled={disabled}
 			options={options}
