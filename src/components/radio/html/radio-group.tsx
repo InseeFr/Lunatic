@@ -20,6 +20,7 @@ export type RadioGroupProps = {
 	className?: string;
 	shortcut?: boolean;
 	disabled?: boolean;
+	readOnly?: boolean;
 };
 
 function RadioGroup({
@@ -34,6 +35,7 @@ function RadioGroup({
 	className,
 	shortcut,
 	disabled,
+	readOnly,
 }: RadioGroupProps) {
 	return (
 		<Fieldset className={className} legend={label} description={description}>
@@ -45,6 +47,7 @@ function RadioGroup({
 				options={options}
 				shortcut={shortcut}
 				disabled={disabled}
+				readOnly={readOnly}
 			/>
 			<Errors errors={errors} activeId={id} />
 		</Fieldset>

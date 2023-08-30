@@ -1,5 +1,5 @@
 {
-	"maxPage": "1",
+	"maxPage": "2",
 	"components": [
 		{
 			"componentType": "Input",
@@ -8,7 +8,7 @@
 				"value": "\"Nom de l'occupant principal.\"",
 				"type": "VTL|MD"
 			},
-			"disabled": { "value": "DISABLED", "type": "VTL" },
+			"readOnly": { "value": "DISABLED_NOM", "type": "VTL" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"maxLength": 30,
 			"id": "name",
@@ -46,7 +46,7 @@
 				"type": "VTL|MD"
 			},
 			"description": {
-				"value": "\"true or false\"",
+				"value": "\"Select whether you would like the above component to be disabled. \"",
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
@@ -65,10 +65,79 @@
 						"value": "\"with VTL\"",
 						"type": "VTL|MD"
 					},
-					"label": { "value": "\"Unabled\"", "type": "VTL|MD" }
+					"label": { "value": "\"Enabled\"", "type": "VTL|MD" }
 				}
 			],
-			"response": { "name": "DISABLED" }
+			"response": { "name": "DISABLED_NOM" }
+		},
+		{
+			"id": "radio1",
+			"componentType": "Radio",
+			"mandatory": false,
+			"page": "2",
+			"readOnly": { "value": "DISABLED_SEXE", "type": "VTL" },
+			"label": {
+				"value": "\"Quel est votre sexe ?\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"Ceci est un exemple pour tester le comportement pour rendre les composants en mode readOnly\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"options": [
+				{
+					"value": "1",
+					"description": {
+						"value": "\"Test\"",
+						"type": "VTL|MD"
+					},
+					"label": { "value": "\"masculin\"", "type": "VTL|MD" }
+				},
+				{
+					"value": "2",
+					"description": {
+						"value": "\"Test 2\"",
+						"type": "VTL|MD"
+					},
+					"label": { "value": "\"féminin\"", "type": "VTL|MD" }
+				}
+			],
+			"response": { "name": "SEXE" }
+		},
+		{
+			"id": "radio3",
+			"componentType": "Radio",
+			"mandatory": false,
+			"page": "2",
+			"label": {
+				"value": "\"Disabled or enabled!\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"Select whether you would like the above component to be disabled. \"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"options": [
+				{
+					"value": true,
+					"description": {
+						"value": "\"with VTL\"",
+						"type": "VTL|MD"
+					},
+					"label": { "value": "\"Disabled\"", "type": "VTL|MD" }
+				},
+				{
+					"value": false,
+					"description": {
+						"value": "\"with VTL\"",
+						"type": "VTL|MD"
+					},
+					"label": { "value": "\"Enabled\"", "type": "VTL|MD" }
+				}
+			],
+			"response": { "name": "DISABLED_SEXE" }
 		}
 	],
 	"variables": [
@@ -86,8 +155,32 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "DISABLED",
+			"name": "DISABLED_NOM",
 			"componentRef": "name",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "SEXE",
+			"componentRef": "sexe",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "DISABLED_SEXE",
+			"componentRef": "sexe",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,

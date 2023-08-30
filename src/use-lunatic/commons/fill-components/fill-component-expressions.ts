@@ -30,6 +30,7 @@ const VTL_ATTRIBUTES = [
 	'headers.label',
 	'header.label',
 	'disabled',
+	'readOnly',
 ];
 
 type CrawlArgs = Pick<LunaticState, 'executeExpression'> &

@@ -20,6 +20,7 @@ function LunaticInput(props: LunaticComponentProps<'Input'>) {
 		description,
 		required,
 		maxLength,
+		readOnly,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -45,6 +46,7 @@ function LunaticInput(props: LunaticComponentProps<'Input'>) {
 				errors={errors}
 				required={required}
 				maxLength={maxLength}
+				readOnly={readOnly}
 			/>
 		</LunaticComponent>
 	);

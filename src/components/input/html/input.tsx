@@ -11,6 +11,7 @@ type Props = {
 	errors: LunaticBaseProps['errors'];
 	value?: string | null;
 	disabled?: boolean;
+	readOnly?: boolean;
 	required?: boolean;
 	maxLength?: number;
 	id?: string;
@@ -26,6 +27,7 @@ function Input({
 	description,
 	id,
 	errors,
+	readOnly,
 }: Props) {
 	const labelId = `label-${id}`;
 
@@ -47,6 +49,7 @@ function Input({
 				autoComplete="off"
 				type="text"
 				disabled={disabled}
+				readOnly={readOnly}
 				value={checkValue(value)}
 				onChange={handleChange}
 				aria-required={required}
