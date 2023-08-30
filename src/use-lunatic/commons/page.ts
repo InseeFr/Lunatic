@@ -26,17 +26,22 @@ export function isPageEmpty(state: LunaticState): boolean {
 	const { executeExpression, pager } = state;
 	const { iteration } = pager;
 	const components = getComponentsFromState(state);
-	return (
-		components.filter(function (component) {
-			const { conditionFilter } = component;
-			if (conditionFilter) {
-				return executeConditionFilter(
-					conditionFilter,
-					executeExpression,
-					iteration
-				);
-			}
-			return true;
-		}).length === 0
-	);
+	const visibleComponents = components.filter(function (component) {
+		const { conditionFilter } = component;
+		if (conditionFilter) {
+			return executeConditionFilter(
+				conditionFilter,
+				executeExpression,
+				iteration
+			);
+		}
+		return true;
+	});
+
+	// No components are displayable on this page
+	if (visibleComponents.length === 0) {
+		return true;
+	}
+
+	return false;
 }

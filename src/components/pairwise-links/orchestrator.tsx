@@ -15,6 +15,7 @@ function LinksOrchestrator(props: Props) {
 		handleChange,
 		features,
 		missing,
+		className,
 		shortcut,
 		preferences,
 		executeExpression,
@@ -59,6 +60,7 @@ function LinksOrchestrator(props: Props) {
 						/** */
 						features={features}
 						shortcut={shortcut}
+						className={className}
 						preferences={preferences}
 						missing={missing}
 						errors={errors}

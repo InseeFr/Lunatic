@@ -41,6 +41,7 @@ export type ActionInit = {
 		data: LunaticData;
 		source: LunaticSource;
 		initialPage: string;
+		lastReachedPage?: string;
 		features: LunaticState['features'];
 		preferences: LunaticState['preferences'];
 		savingType: LunaticState['savingType'];
@@ -49,6 +50,8 @@ export type ActionInit = {
 		handleChange: LunaticState['handleChange'];
 		activeControls: boolean;
 		goToPage: (params: ActionGoToPage['payload']) => void;
+		goNextPage: () => void;
+		goPreviousPage: () => void;
 		withOverview: boolean;
 	};
 };

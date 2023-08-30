@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { Delete } from './delete';
+import { ClearButton } from './clear-button';
 
 describe('Delete', () => {
 	const onClickMock = vi.fn();
@@ -13,18 +13,18 @@ describe('Delete', () => {
 	});
 
 	it('should not render when editable is false', () => {
-		render(<Delete editable={false} />);
+		render(<ClearButton editable={false} />);
 		expect(screen.queryByRole('button')).not.toBeInTheDocument();
 	});
 
 	it('should call onClick when clicked and search is not empty', () => {
-		render(<Delete editable search={search} onClick={onClickMock} />);
+		render(<ClearButton editable search={search} onClick={onClickMock} />);
 		userEvent.click(screen.getByRole('button'));
 		expect(onClickMock).toHaveBeenCalledTimes(1);
 	});
 
 	it('should not call onClick when clicked and search is empty', () => {
-		render(<Delete editable search="" onClick={onClickMock} />);
+		render(<ClearButton editable search="" onClick={onClickMock} />);
 		userEvent.click(screen.getByRole('button'));
 		expect(onClickMock).toHaveBeenCalledTimes(0);
 	});
@@ -32,7 +32,7 @@ describe('Delete', () => {
 	it('should call onClick when the Enter key is pressed and search is not empty', () => {
 		const search = 'test';
 		const onClick = vi.fn();
-		render(<Delete search={search} onClick={onClick} editable />);
+		render(<ClearButton search={search} onClick={onClick} editable />);
 
 		const deleteButton = screen.getByTitle('delete');
 		fireEvent.keyDown(deleteButton, { key: 'Enter' });
@@ -41,14 +41,14 @@ describe('Delete', () => {
 	});
 
 	it('should not call onClick when the Enter key is pressed and search is empty', () => {
-		render(<Delete editable search="" onClick={onClickMock} />);
+		render(<ClearButton editable search="" onClick={onClickMock} />);
 		userEvent.type(screen.getByRole('button'), '{Enter}');
 		expect(onClickMock).toHaveBeenCalledTimes(0);
 	});
 
 	it('should apply the className prop', () => {
 		render(
-			<Delete
+			<ClearButton
 				className={className}
 				editable
 				search={search}
@@ -59,12 +59,12 @@ describe('Delete', () => {
 	});
 
 	it('should be disabled when search is empty', () => {
-		render(<Delete editable search="" onClick={onClickMock} />);
+		render(<ClearButton editable search="" onClick={onClickMock} />);
 		expect(screen.getByRole('button')).toBeDisabled();
 	});
 
 	it('should not be disabled when search is not empty', () => {
-		render(<Delete editable search={search} onClick={onClickMock} />);
+		render(<ClearButton editable search={search} onClick={onClickMock} />);
 		expect(screen.getByRole('button')).not.toBeDisabled();
 	});
 });

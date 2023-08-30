@@ -30,7 +30,8 @@ export function getNextPager(
 	// We reached the end of the sequence
 	const isEndSequence =
 		subPage && pager.nbSubPages ? subPage >= pager.nbSubPages : false;
-	const moveUpOnEnd = parent === 'Roundabout';
+	const moveUpOnEnd =
+		parent === 'Roundabout' && pager.nbIterations && pager.nbIterations > 1;
 	// Move up at the end of a sequence (instead of going to the next Iteration)
 	if (isEndSequence && moveUpOnEnd) {
 		return {
@@ -78,7 +79,8 @@ export function getPrevPager(
 			? [parseInt(pager.page, 10), pager.subPage - 1]
 			: [parseInt(pager.page, 10) - 1, undefined];
 	let iteration = pager.iteration;
-	const moveUpOnStart = parent === 'Roundabout';
+	const moveUpOnStart =
+		parent === 'Roundabout' && pager.nbIterations && pager.nbIterations > 1;
 
 	// We reached the start of the questionnaire
 	if (page <= 0) {

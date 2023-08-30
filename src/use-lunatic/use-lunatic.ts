@@ -16,12 +16,12 @@ import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
 import { LunaticSource } from './type-source';
 // @ts-ignore
+import { LunaticComponentType } from '../components/type';
 import compileControlsLib from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
-import { LunaticComponentType } from '../components/type';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -45,6 +45,7 @@ function useLunatic(
 		management = false,
 		shortcut = false,
 		initialPage = '1',
+		lastReachedPage = undefined,
 		autoSuggesterLoading = false,
 		activeControls = false,
 		getReferentiel,
@@ -64,6 +65,7 @@ function useLunatic(
 		management?: boolean;
 		shortcut?: boolean;
 		initialPage?: string;
+		lastReachedPage?: string;
 		autoSuggesterLoading?: boolean;
 		getReferentiel?: (name: string) => Promise<Array<unknown>>;
 		activeControls?: boolean;
@@ -192,6 +194,7 @@ function useLunatic(
 					source,
 					data,
 					initialPage,
+					lastReachedPage,
 					features,
 					preferences,
 					savingType,
@@ -200,6 +203,8 @@ function useLunatic(
 					handleChange,
 					activeControls,
 					goToPage,
+					goNextPage,
+					goPreviousPage,
 					withOverview,
 				})
 			);
@@ -217,6 +222,9 @@ function useLunatic(
 			activeControls,
 			withOverview,
 			goToPage,
+			goNextPage,
+			goPreviousPage,
+			lastReachedPage,
 		]
 	);
 

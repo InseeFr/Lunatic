@@ -85,7 +85,7 @@ jobs:
               export TAG=prisme
               export NEW_VERSION=${{steps.version.outputs.prop}}-$TAG ;;
           esac
-          
+
           if [ "$(npm show . dist-tags.$TAG)" = "$NEW_VERSION" ]; then
             echo "This version is already published"
             exit 1
@@ -108,7 +108,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 15
+          node-version: 16
       - uses: bahmutov/npm-install@v1
       - run: yarn
       # Build Storybook

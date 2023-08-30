@@ -1,4 +1,4 @@
-import { ComboBoxOption } from '../combo-box.type';
+import { ComboBoxOptionType } from '../combo-box.type';
 
 export enum ComboActionKind {
 	ON_CHANGE = 'combo-box/on-change',
@@ -55,9 +55,9 @@ export type ComboAction<T extends ComboActionKind = ComboActionKind> = (
 	| {
 			type: ComboActionKind.ON_INIT;
 			payload: {
-				options: ComboBoxOption[];
+				options: ComboBoxOptionType[];
 				value: string | null;
-				getOptionValue: (o: ComboBoxOption) => string;
+				getOptionValue: (o: ComboBoxOptionType) => string;
 			};
 	  }
 ) & { type: T };

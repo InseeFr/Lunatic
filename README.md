@@ -2,7 +2,7 @@
 
 # Lunatic
 
-[![Lunatic CI](https://github.com/InseeFr/Lunatic/actions/workflows/ci.yml/badge.svg)](https://github.com/InseeFr/Lunatic/actions/workflows/ci.yml)
+[![Lunatic CI](https://github.com/InseeFr/Lunatic/actions/workflows/quality.yml/badge.svg)](https://github.com/InseeFr/Lunatic/actions/workflows/quality.yml)
 [![npm version](https://badge.fury.io/js/%40inseefr%2Flunatic.svg)](https://badge.fury.io/js/%40inseefr%2Flunatic)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_Lunatic&metric=coverage)](https://sonarcloud.io/dashboard?id=InseeFr_Lunatic)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_Lunatic&metric=alert_status)](https://sonarcloud.io/dashboard?id=InseeFr_Lunatic)
@@ -10,37 +10,36 @@
 
 Lunatic est une librairie front-end sous forme de hook react et de librairies de composants pour générer un questionnaire à partir du format de données [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model).
 
-- [Storybook v2](https://inseefr.github.io/Lunatic/storybook-v2)
-- [Storybook v1](https://inseefr.github.io/Lunatic/storybook-v1)
-- [Storybook Beta](https://inseefr.github.io/Lunatic/storybook-beta)
-- [Editeur Lunatic](https://inseefr.github.io/Lunatic/editor/)
+- [Storybook](https://inseefr.github.io/Lunatic/storybook), branche `main`
+- [Storybook v1](https://inseefr.github.io/Lunatic/storybook-v1), branche `v1-main`
+- [Storybook Beta](https://inseefr.github.io/Lunatic/storybook-beta), branche `develop`
 - [Documentation](https://inseefr.github.io/Lunatic/fr/)
 
 ## Sommaire
 
 - [Lunatic](#lunatic)
-	- [Sommaire](#sommaire)
-	- [Utilisation](#utilisation)
-		- [Le hook useLunatic](#le-hook-uselunatic)
-		- [Les composants](#les-composants)
-	- [Personnalisation](#personnalisation)
-	- [Fonctionnement interne](#fonctionnement-interne)
-		- [Fonctionnement général](#fonctionnement-général)
-		- [pages et pager](#pages-et-pager)
-		- [Exécution du VTL](#exécution-du-vtl)
-	- [Convention et bonnes pratiques](#convention-et-bonnes-pratiques)
+  - [Sommaire](#sommaire)
+  - [Utilisation](#utilisation)
+    - [Le hook useLunatic](#le-hook-uselunatic)
+    - [Les composants](#les-composants)
+  - [Personnalisation](#personnalisation)
+  - [Fonctionnement interne](#fonctionnement-interne)
+    - [Fonctionnement général](#fonctionnement-général)
+    - [pages et pager](#pages-et-pager)
+    - [Exécution du VTL](#exécution-du-vtl)
+  - [Convention et bonnes pratiques](#convention-et-bonnes-pratiques)
 
 ## Utilisation
 
 Pour commencer il faut installer lunatic
 
 ```bash
-yarn add @inseefr/lunatic@2.0.7-v2
+yarn add @inseefr/lunatic@2.5.0
 ```
 
 ### Le hook useLunatic
 
-Ensuite, à l'endroit où vous souhaitez afficher le formulaire il faudra utiliser le hook `useLunatic`. 
+Ensuite, à l'endroit où vous souhaitez afficher le formulaire il faudra utiliser le hook `useLunatic`.
 
 ```js
 import { useLunatic } from '@inseefr/lunatic';
@@ -56,8 +55,9 @@ Ce hook prend 3 paramètres :
   - **features** (défaut `['VTL', 'MD']`), permet de définir les fonctionnalité supportées
   - **preferences** (défaut `['COLLECTED']`)
   - **onChange** (défaut `() => {}`), permet d'ajouter une logique à appliquer lorsqu'une réponse est modifiée (doit être mémoïsé car est utilisé comme dépendance d'un useCallback en interne)
-  - **management** (défaut `false`)
+  - **management** (défaut `false`) : Non implémenté encore, permettra de gérer plusieurs état d'une même variable (utilisation par des postes de reprise)
   - **initialPage** (défaut `'1'`), permet de définir la page de départ
+  - **lastReachedPage** (défaut `undefined`) permet de définir quelle est la page la plus lointaine déjà atteinte
   - **autoSuggesterLoading** (défaut `false`)
   - **suggesters**
   - **suggesterFetcher** (défaut `fetch`), méthode utilisée pour récupérer les données du suggester
@@ -68,7 +68,7 @@ Et retourne un objet permettant de piloter le questionnaire :
 - `getComponents()`, renvoie les composants à afficher pour la page courante
 - `goPreviousPage()`, permet d'aller à la page précédente
 - `goNextPage()`, permet d'aller à la page suivante
-- `goToPage(page: string)`, permet d'aller à une page arbitraire
+- `goToPage({ page: string })`, permet d'aller à une page arbitraire
 - `getErrors()`, renvoie les erreurs
 - `getModalErrors()`, renvoie les erreurs dans les modales
 - `getCurrentErrors()`, renvoie les erreurs de la page courante
@@ -120,14 +120,14 @@ Par défaut les composants offerts par Lunatic sont plutôt simples avec un styl
 
 ```jsx
 const custom = {
-  Input: MyCustomInput,
-  InputNumber: MyCustomInputNumber
-}
+	Input: MyCustomInput,
+	InputNumber: MyCustomInputNumber,
+};
 
-function App ({source, data}) {
-  const {} = useLunatic(source, data, {custom})
-  
-  // ...
+function App({ source, data }) {
+	const {} = useLunatic(source, data, { custom });
+
+	// ...
 }
 ```
 

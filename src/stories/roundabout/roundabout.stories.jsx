@@ -1,6 +1,7 @@
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
-import data from './data';
+import data1 from './data1';
+import data2 from './data2';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
@@ -18,6 +19,14 @@ Default.args = {
 	id: 'roundabout',
 	source,
 	pagination: true,
-	data,
-	readOnly: true,
+	data: data2,
+};
+
+export const OneIteration = Template.bind({});
+
+OneIteration.args = {
+	id: 'roundabout-one-iteration',
+	source,
+	pagination: true,
+	data: data1,
 };

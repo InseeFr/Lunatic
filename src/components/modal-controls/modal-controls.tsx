@@ -1,9 +1,9 @@
 import classnames from 'classnames';
-import React, { MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
+import { LunaticError } from '../../use-lunatic/type';
 import CloseOrSkip from './close-or-skip';
 import ModalContainer from './modal-container';
 import './modal-controls.scss';
-import { LunaticError } from '../../use-lunatic/type';
 
 type Props = {
 	goNext: MouseEventHandler;
@@ -12,13 +12,13 @@ type Props = {
 	errors: Record<string, LunaticError[]>;
 };
 
-function Error({ criticality, errorMessage }: LunaticError) {
+function ErrorItem({ criticality, errorMessage }: LunaticError) {
 	return <li className={classnames(criticality)}>{errorMessage}</li>;
 }
 
 function ComponentErrors({ errors }: { errors: LunaticError[] }) {
 	const content = errors.map(function (error, index) {
-		return <Error {...error} key={index} />;
+		return <ErrorItem {...error} key={index} />;
 	}, []);
 	return <ul className={classnames('errors')}>{content}</ul>;
 }
