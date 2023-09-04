@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { PropsWithChildren } from 'react';
+import createCustomizableLunaticField from '../../../create-customizable-field';
 
 type Props = PropsWithChildren<{
 	focused?: boolean;
@@ -7,7 +8,7 @@ type Props = PropsWithChildren<{
 	id?: string;
 }>;
 
-export function PanelContainer({ children, focused, expanded, id }: Props) {
+function PanelContainer({ children, focused, expanded, id }: Props) {
 	return (
 		<ul
 			id={`lunatic-combo-box-panel-${id}`}
@@ -22,3 +23,8 @@ export function PanelContainer({ children, focused, expanded, id }: Props) {
 		</ul>
 	);
 }
+
+export default createCustomizableLunaticField(
+	PanelContainer,
+	'ComboboxPanelContainer'
+);
