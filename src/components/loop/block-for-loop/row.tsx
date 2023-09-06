@@ -1,8 +1,11 @@
-import React, { ReactNode, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { OrchestratedComponent } from '../../commons';
 import { LunaticBaseProps } from '../../type';
 import { LunaticComponentDefinition } from '../../../use-lunatic/type';
-import { objectMap } from '../../../utils/object';
+import {
+	ComponentWithResponses,
+	getComponentValue,
+} from '../../../utils/get-component-value';
 
 type Props = {
 	valueMap?: Record<string, unknown>;
@@ -49,25 +52,12 @@ function Row({
 			{components.map((component) => {
 				const { id } = component;
 				const idComponent = `${id}-${rowIndex}`;
-				let value = undefined;
 
-				if (hasResponse(component)) {
-					const { name } = component.response;
-					const valueArray = valueMap[name];
-					if (Array.isArray(valueArray)) {
-						value = valueArray[rowIndex] || '';
-					}
-				}
-
-				// For checkbox group we need to send the map of values
-				if (hasResponses(component)) {
-					value = objectMap(valueMap, (k, v) => {
-						if (Array.isArray(v)) {
-							return [k, v[rowIndex]];
-						}
-						return [k, v];
-					});
-				}
+				const value = getComponentValue(
+					component as ComponentWithResponses,
+					valueMap,
+					rowIndex
+				);
 
 				return (
 					<OrchestratedComponent
@@ -89,26 +79,6 @@ function Row({
 				);
 			})}
 		</>
-	);
-}
-
-function hasResponse(
-	component: unknown
-): component is { response: { name?: string } } {
-	return (
-		!!component && typeof component === 'object' && 'response' in component
-	);
-}
-
-function hasResponses(component: unknown): component is {
-	responses?: Array<{
-		label: ReactNode;
-		description?: ReactNode;
-		response: { name: string };
-	}>;
-} {
-	return (
-		!!component && typeof component === 'object' && 'responses' in component
 	);
 }
 

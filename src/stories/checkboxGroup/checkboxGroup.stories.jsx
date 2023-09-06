@@ -2,6 +2,7 @@ import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
 import sourceComponentset from './sourceComponentset';
+import sourceLoop from './sourceLoop';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
@@ -33,5 +34,13 @@ export const ComponentSet = Template.bind({});
 ComponentSet.args = {
 	id: 'checkboxGroup',
 	source: sourceComponentset,
+	shortcut: true,
+};
+
+export const Loop = Template.bind({});
+
+Loop.args = {
+	id: 'checkboxGroup',
+	source: sourceLoop,
 	shortcut: true,
 };
