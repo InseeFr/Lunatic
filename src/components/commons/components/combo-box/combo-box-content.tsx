@@ -53,7 +53,7 @@ export function ComboBoxContent({
 	);
 
 	return (
-		<ComboBoxContentBox classNamePrefix={classNamePrefix}>
+		<ComboBoxContentBox classNamePrefix={classNamePrefix} focused={focused}>
 			<div
 				className={classnames(
 					`${classNamePrefix ?? 'lunatic'}-combo-box-content`,
