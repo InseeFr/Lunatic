@@ -1,8 +1,8 @@
-import React, { ReactNode, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { OrchestratedComponent } from '../../commons';
 import { LunaticBaseProps } from '../../type';
 import { LunaticComponentDefinition } from '../../../use-lunatic/type';
-import { objectMap } from '../../../utils/object';
+import { getComponentValue } from '../../../utils/get-component-value';
 
 type Props = {
 	valueMap?: Record<string, unknown>;
@@ -47,39 +47,19 @@ function Row({
 	return (
 		<>
 			{components.map((component) => {
-				const { id } = component;
-				const idComponent = `${id}-${rowIndex}`;
-				let value = undefined;
-
-				if (hasResponse(component)) {
-					const { name } = component.response;
-					const valueArray = valueMap[name];
-					if (Array.isArray(valueArray)) {
-						value = valueArray[rowIndex] || '';
-					}
-				}
-
-				// For checkbox group we need to send the map of values
-				if (hasResponses(component)) {
-					value = objectMap(valueMap, (k, v) => {
-						if (Array.isArray(v)) {
-							return [k, v[rowIndex]];
-						}
-						return [k, v];
-					});
-				}
-
+				const id = `${component.id}-${rowIndex}`;
+				const value = getComponentValue(component, valueMap, rowIndex);
 				return (
 					<OrchestratedComponent
 						component={component}
-						key={idComponent}
+						key={id}
 						handleChange={handleChangeRow}
 						features={features}
 						missing={missing}
 						shortcut={shortcut}
 						management={management}
 						value={value}
-						id={idComponent}
+						id={id}
 						preferences={preferences}
 						iteration={rowIndex}
 						executeExpression={executeExpression}
@@ -89,26 +69,6 @@ function Row({
 				);
 			})}
 		</>
-	);
-}
-
-function hasResponse(
-	component: unknown
-): component is { response: { name?: string } } {
-	return (
-		!!component && typeof component === 'object' && 'response' in component
-	);
-}
-
-function hasResponses(component: unknown): component is {
-	responses?: Array<{
-		label: ReactNode;
-		description?: ReactNode;
-		response: { name: string };
-	}>;
-} {
-	return (
-		!!component && typeof component === 'object' && 'responses' in component
 	);
 }
 
