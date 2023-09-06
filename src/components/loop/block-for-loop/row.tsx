@@ -2,10 +2,7 @@ import React, { useCallback } from 'react';
 import { OrchestratedComponent } from '../../commons';
 import { LunaticBaseProps } from '../../type';
 import { LunaticComponentDefinition } from '../../../use-lunatic/type';
-import {
-	ComponentWithResponses,
-	getComponentValue,
-} from '../../../utils/get-component-value';
+import { getComponentValue } from '../../../utils/get-component-value';
 
 type Props = {
 	valueMap?: Record<string, unknown>;
@@ -50,26 +47,19 @@ function Row({
 	return (
 		<>
 			{components.map((component) => {
-				const { id } = component;
-				const idComponent = `${id}-${rowIndex}`;
-
-				const value = getComponentValue(
-					component as ComponentWithResponses,
-					valueMap,
-					rowIndex
-				);
-
+				const id = `${component.id}-${rowIndex}`;
+				const value = getComponentValue(component, valueMap, rowIndex);
 				return (
 					<OrchestratedComponent
 						component={component}
-						key={idComponent}
+						key={id}
 						handleChange={handleChangeRow}
 						features={features}
 						missing={missing}
 						shortcut={shortcut}
 						management={management}
 						value={value}
-						id={idComponent}
+						id={id}
 						preferences={preferences}
 						iteration={rowIndex}
 						executeExpression={executeExpression}
