@@ -67,15 +67,16 @@ function ComboBox({
 
 	// This useEffect ensures that onSelect is called when selectedIndex changes
 	useEffect(
-		function() {
+		function () {
 			if (selectedIndex) {
-				const option = options[selectedIndex]
-				onSelect(getOptionValue(option))
+				const option = options[selectedIndex];
+				onSelect(getOptionValue(option));
 			}
-		}, [selectedIndex, options, getOptionValue, onSelect]
-	)
+		},
+		[selectedIndex, options, getOptionValue, onSelect]
+	);
 
-  const onFocus = useCallback(
+	const onFocus = useCallback(
 		function () {
 			if (disabled) {
 				return;
@@ -139,6 +140,7 @@ function ComboBox({
 	return (
 		<ComboBoxContainer
 			id={id}
+			className={className}
 			classStyle={classStyle}
 			classNamePrefix={classNamePrefix}
 			errors={errors}
