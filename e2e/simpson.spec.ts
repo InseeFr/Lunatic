@@ -42,7 +42,6 @@ test('can complete simpson form', async ({ page }) => {
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
 		.getByRole('combobox', { name: '➡ In which state do The Simpsons reside?' })
-		.locator('div')
 		.click();
 	await page.getByText('Not in any state, you fool!').click();
 	await page.getByRole('button', { name: 'Next' }).click();
@@ -100,7 +99,6 @@ test('can complete simpson form', async ({ page }) => {
 			name: 'Break the windows of the whole city',
 		})
 		.getByRole('combobox')
-		.locator('div')
 		.click();
 	await page.getByText('Krusty the clown').click();
 	await page
