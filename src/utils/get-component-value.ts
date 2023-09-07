@@ -5,30 +5,30 @@ import type { ReactNode } from 'react';
  * Extract the value associated with a component
  * If the component expect multiple values (it has a responses property) then extract a map of values
  */
-export function getComponentValue<T = unknown>(
+export function getComponentValue(
 	component: unknown,
 	valueMap: Record<string, unknown>,
 	rowIndex?: number
-): T {
-	let value = undefined;
-
+): unknown {
+	
 	if (hasResponse(component)) {
-		const valueArray = valueMap[component.response.name];
-		if (Array.isArray(valueArray)) {
-			value = valueArray[rowIndex ?? 0] || '';
+		const value = valueMap[component.response.name];
+		if (Array.isArray(value)) {
+			return value[rowIndex ?? 0] || '';
 		}
+		return value;
 	}
 
 	// For checkbox group we need to send the map of values
 	if (hasResponses(component)) {
-		value = objectMap(valueMap, (k, v) => {
+		return objectMap(valueMap, (k, v) => {
 			if (Array.isArray(v)) {
 				return [k, v[rowIndex ?? 0]];
 			}
 			return [k, v];
 		});
 	}
-	return value;
+	return undefined;
 }
 
 function hasResponse(
