@@ -1,4 +1,3 @@
-import { objectMap } from './object';
 import type { ReactNode } from 'react';
 
 /**
@@ -10,23 +9,25 @@ export function getComponentValue(
 	valueMap: Record<string, unknown>,
 	rowIndex?: number
 ): unknown {
-	
 	if (hasResponse(component)) {
 		const value = valueMap[component.response.name];
 		if (Array.isArray(value)) {
-			return value[rowIndex ?? 0] || '';
+			return value[rowIndex ?? 0];
 		}
 		return value;
 	}
 
 	// For checkbox group we need to send the map of values
 	if (hasResponses(component)) {
-		return objectMap(valueMap, (k, v) => {
-			if (Array.isArray(v)) {
-				return [k, v[rowIndex ?? 0]];
-			}
-			return [k, v];
-		});
+		return Object.fromEntries(
+			component.responses?.map(({ response }) => {
+				const value = valueMap[response.name];
+				if (Array.isArray(value)) {
+					return [response.name, value[rowIndex ?? 0]];
+				}
+				return [response.name, value];
+			}) ?? []
+		);
 	}
 	return undefined;
 }
