@@ -1,5 +1,5 @@
 import { VTL } from '../../../utils/constants';
-import { LunaticExpression } from '../../type';
+import type { LunaticExpression } from '../../type';
 
 /**
  * Convert an unknown variable into a valid VTL expression object

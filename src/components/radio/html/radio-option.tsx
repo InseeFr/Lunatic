@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, ReactNode } from 'react';
+import { useEffect, useRef, useCallback, type ReactNode } from 'react';
 import classnames from 'classnames';
 import { Label, createCustomizableLunaticField } from '../../commons';
 import {

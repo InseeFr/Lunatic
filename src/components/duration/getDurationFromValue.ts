@@ -1,4 +1,4 @@
-import { Formats, DurationValue } from './durationUtils';
+import { type Formats, type DurationValue } from './durationUtils';
 
 /**
  * Convert a string into a duration

@@ -1,5 +1,5 @@
-import { ActionUpdateState } from '../actions';
-import { LunaticState } from '../type';
+import { type ActionUpdateState } from '../actions';
+import { type LunaticState } from '../type';
 
 export function reduceUpdateState(
 	state: LunaticState,

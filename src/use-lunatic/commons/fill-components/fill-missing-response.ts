@@ -1,5 +1,4 @@
-import { LunaticComponentDefinition, LunaticState } from '../../type';
-import missing from '../../../components/commons/components/missing';
+import type { LunaticComponentDefinition, LunaticState } from '../../type';
 
 export type FilledProps = {
 	missingResponse?: {

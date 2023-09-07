@@ -1,7 +1,7 @@
-import React, { ChangeEventHandler, ReactNode, useCallback } from 'react';
+import { type ChangeEventHandler, type ReactNode, useCallback } from 'react';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import './textarea.scss';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticBaseProps } from '../../type';
 
 type Props = {
 	id?: string;

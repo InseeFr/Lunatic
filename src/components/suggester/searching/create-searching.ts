@@ -1,6 +1,6 @@
 // @ts-ignore
 import { createWorker } from '../../../utils/suggester-workers/create-worker';
-import { ComboBoxOptionType } from '../../commons/components/combo-box/combo-box.type';
+import type { ComboBoxOptionType } from '../../commons/components/combo-box/combo-box.type';
 
 const WORKER_PATH =
 	process.env.LUNATIC_SEARCH_WORKER_PATH ||

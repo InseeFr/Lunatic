@@ -1,10 +1,10 @@
-import {
+import type {
 	LunaticComponentDefinition,
 	LunaticError,
 	LunaticExpression,
 	LunaticState,
 } from '../use-lunatic/type';
-import { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
 import useLunatic from '../use-lunatic';
 

@@ -1,7 +1,7 @@
 import Declaration from './declaration';
 import { createCustomizableLunaticField } from '../commons';
 import './declarations.scss';
-import { LunaticBaseProps } from '../type';
+import type { LunaticBaseProps } from '../type';
 
 export const DECLARATION_POSITIONS = {
 	after: 'AFTER_QUESTION_TEXT',

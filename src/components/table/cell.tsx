@@ -1,7 +1,6 @@
-import React from 'react';
 import { OrchestratedComponent } from '../commons';
 import { Td } from '../commons/components/html-table';
-import { LunaticBaseProps } from '../type';
+import type { LunaticBaseProps } from '../type';
 import type {
 	LunaticComponentDefinition,
 	LunaticExpression,
@@ -58,8 +57,8 @@ function collecteValue(
 
 type Props = {
 	content:
-		| LunaticComponentDefinition
-		| { label: LunaticExpression; rowspan?: number; colspan?: number };
+	| LunaticComponentDefinition
+	| { label: LunaticExpression; rowspan?: number; colspan?: number };
 	id: string;
 	executeExpression: LunaticBaseProps['executeExpression'];
 	iteration?: number;

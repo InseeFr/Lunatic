@@ -1,4 +1,4 @@
-import { DurationValue } from './durationUtils';
+import { type DurationValue } from './durationUtils';
 
 export const formatDuration = (duration: DurationValue): string | null => {
 	const prefix = 'hours' in duration && 'minutes' in duration ? 'PT' : 'P';

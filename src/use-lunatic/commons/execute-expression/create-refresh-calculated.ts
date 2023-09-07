@@ -1,6 +1,10 @@
 import { CALCULATED, X_AXIS, Y_AXIS } from '../../../utils/constants';
-import { LunaticExpression, LunaticState, LunaticVariable } from '../../type';
-import { ExpressionLogger } from './create-execute-expression';
+import type {
+	LunaticExpression,
+	LunaticState,
+	LunaticVariable,
+} from '../../type';
+import { type ExpressionLogger } from './create-execute-expression';
 
 type Args = {
 	variables: LunaticState['variables'];

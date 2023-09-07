@@ -5,7 +5,7 @@ import useLunatic from './use-lunatic';
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
-import { LunaticData } from './type';
+import type { LunaticData } from './type';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {

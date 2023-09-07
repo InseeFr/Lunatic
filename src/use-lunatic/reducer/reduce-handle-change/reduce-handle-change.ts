@@ -1,7 +1,7 @@
 import { toNumber } from '../../../utils/to-number';
-import { ActionHandleChange } from '../../actions';
+import { type ActionHandleChange } from '../../actions';
 import compose from '../../commons/compose';
-import { LunaticState } from '../../type';
+import type { LunaticState } from '../../type';
 import reduceCleaning from './reduce-cleaning';
 import reduceLinksVariable from './reduce-links-variable';
 import reduceMissing from './reduce-missing';

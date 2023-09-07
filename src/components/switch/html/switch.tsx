@@ -1,8 +1,8 @@
-import React, { KeyboardEvent, ReactNode } from 'react';
+import { type KeyboardEvent, type ReactNode } from 'react';
 import classnames from 'classnames';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import './switch.scss';
-import { LunaticError } from '../../../use-lunatic/type';
+import type { LunaticError } from '../../../use-lunatic/type';
 
 type Props = {
 	checked?: boolean;

@@ -1,5 +1,5 @@
 import LunaticComponentWithoutLabel from '../commons/components/lunatic-component-without-label';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 import ComponentSet from './html/component-set';
 import ComponentSetComponents from './html/component-set-components';
 

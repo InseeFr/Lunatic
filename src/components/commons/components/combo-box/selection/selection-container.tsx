@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 
 type Props = PropsWithChildren<{
 	expanded?: boolean;
