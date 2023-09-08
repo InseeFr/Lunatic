@@ -34,7 +34,7 @@ function Responses({
 		<>
 			{values.map(({ label, value, id }, index) => {
 				return (
-					<li key={id} id={`${id}-${sectionIndex}`}>
+					<li key={`${id}-${sectionIndex}`}>
 						{label} : {value}
 					</li>
 				);
@@ -58,7 +58,7 @@ function SummaryResponses({
 			{visibleSections.map((section, index) => {
 				const { title, values, id } = section;
 				return (
-					<ListResponses key={id} id={`${id}-${index}`} title={title}>
+					<ListResponses key={`${id}-${index}`} title={title}>
 						<Responses values={values} sectionIndex={index} />
 					</ListResponses>
 				);
