@@ -25,17 +25,15 @@ function reduceGoPreviousPage(state: LunaticState): LunaticState {
 	// If we reached a loop, go to the last iteration / sequence
 	newState = autoExploreLoop(newState, 'backward');
 
-	// We have a roundabout with only one iteration skip it
-	const components = getComponentsFromState(newState);
-	if (
-		components.length === 1 &&
-		components[0]?.componentType === 'Roundabout' &&
-		newState.executeExpression<number>(components[0].iterations) === 1
-	) {
+	// We explored a loop, check if we reached an empty page, move forward
+	if (newState.pager !== prevPager && isPageEmpty(newState)) {
 		return reduceGoPreviousPage(newState);
 	}
 
-	return newState;
+	return {
+		...newState,
+		isInLoop: newState.pager.iteration !== undefined,
+	};
 }
 
 export default reduceGoPreviousPage;
