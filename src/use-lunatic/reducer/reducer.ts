@@ -15,7 +15,7 @@ function reducer(state: LunaticState, action: Action): LunaticState {
 		case ActionKind.GO_PREVIOUS_PAGE:
 			return reduceGoPreviousPage(state);
 		case ActionKind.GO_NEXT_PAGE:
-			return reduceGoNextPage(state, action);
+			return reduceGoNextPage(state);
 		case ActionKind.GO_TO_PAGE:
 			return reduceGoToPage(state, action);
 		case ActionKind.HANDLE_CHANGE:

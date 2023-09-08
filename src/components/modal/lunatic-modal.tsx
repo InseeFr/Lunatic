@@ -4,7 +4,7 @@ import { LunaticComponentProps } from '../type';
 
 function empty() {}
 
-function LunaticModal(props: LunaticComponentProps<'Modal'>) {
+function LunaticModal(props: LunaticComponentProps<'ConfirmationModal'>) {
 	const { id, label, description, goToPage, page, goNextPage, goPreviousPage } =
 		props;
 

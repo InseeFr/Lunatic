@@ -42,4 +42,6 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 	};
 }
 
-export default compose<ActionGoNextPage>(reduceGoNextPage, overviewOnChange);
+export default function (state: LunaticState) {
+	return overviewOnChange(reduceGoNextPage(state));
+}

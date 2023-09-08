@@ -65,10 +65,7 @@ function reduceGoToPage(
 		pager: newPager,
 	};
 	if (isPageEmpty(newState)) {
-		return reduceGoNextPage(newState, {
-			type: ActionKind.GO_NEXT_PAGE,
-			payload: {},
-		});
+		return reduceGoNextPage(newState);
 	}
 
 	return newState;
