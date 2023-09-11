@@ -23,7 +23,7 @@ Default.args = {
 	source,
 	pagination: true,
 	data,
-	readOnly: true,
+	readOnly: false,
 };
 
 export const InRoundabout = Template.bind({});

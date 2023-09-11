@@ -190,6 +190,505 @@
 						"type": "VTL"
 					},
 					"response": { "name": "SOMETHING" }
+				},
+				{
+					"page": "4.4",
+					"id": "question-explication",
+					"componentType": "QuestionExplication",
+					"label": {
+						"value": "\"Pourquoi cette question ?\"",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"description": {
+						"value": "\"Le nom de l'employeur permet de déterminer avec Sirène le répertoire des entreprises géré par l’Insee  les secteurs économiques dans lesquels travaillent les français et d’établir un état des lieux des activités économiques à un niveau local. \n\n L’activité de l’établissement permet de déterminer les secteurs économiques dans lesquels travaillent les français et d’établir un état des lieux des activités économiques à un niveau local.\"",
+						"type": "VTL|MD"
+					},
+					"bgColor": "greenMenthe.default"
+				},
+				{
+					"id": "component-set",
+					"componentType": "ComponentSet",
+					"page": "4.4",
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"label": {
+						"value": "\"## Who are you?\"",
+						"type": "VTL|MD"
+					},
+					"description": {
+						"value": "\"This is your opportunity to tell me about yourself!\"",
+						"type": "VTL|MD"
+					},
+					"components": [
+						{
+							"id": "jsygk7m7",
+							"componentType": "Subsequence",
+							"label": {
+								"value": "\"Questionnaire individuel de \" || PRENOMS",
+								"type": "VTL|MD"
+							},
+							"conditionFilter": {
+								"value": "true",
+								"type": "VTL"
+							}
+						},
+						{
+							"id": "input-etablissement-situ",
+							"componentType": "Radio",
+							"label": {
+								"value": "\"### Quel est le type de votre emploi principal ?\"",
+								"type": "VTL|MD"
+							},
+							"description": {
+								"value": "\"Si vous exercez plusieurs emplois, décrivez uniquement votre emploi principal\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "true",
+								"type": "VTL"
+							},
+							"response": {
+								"name": "INTERRS"
+							},
+							"controls": [
+								{
+									"id": "klqn2o7tx-CI-0",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(INTERRS))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez indiquer votre situation\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["INTERRS"]
+								}
+							],
+							"options": [
+								{
+									"value": "1",
+									"label": {
+										"value": "\"A votre compte\"",
+										"type": "VTL"
+									}
+								},
+								{
+									"value": "2",
+									"label": {
+										"value": "\"Intérimaire\"",
+										"type": "VTL"
+									}
+								},
+								{
+									"value": "3",
+									"label": {
+										"value": "\"Salarié.e\"",
+										"type": "VTL"
+									}
+								},
+								{
+									"value": "4",
+									"label": {
+										"value": "\"Employé chez un sous-traitant\"",
+										"type": "VTL"
+									}
+								},
+								{
+									"value": "5",
+									"label": {
+										"value": "\"Employé par plusieurs particuliers et rémunérés en chèque emploi-service\"",
+										"type": "VTL"
+									}
+								},
+								{
+									"value": "6",
+									"label": {
+										"value": "\"Assistante maternelle employée par une association ou une collectivité locale\"",
+										"type": "VTL"
+									}
+								},
+								{
+									"value": "7",
+									"label": {
+										"value": "\"Assistante maternelle employée par une ou plusieurs familles\"",
+										"type": "VTL"
+									}
+								},
+								{
+									"value": "8",
+									"label": {
+										"value": "\"Dans une autre situtation\"",
+										"type": "VTL"
+									}
+								}
+							]
+						},
+						{
+							"id": "kkxuu8ov",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 249,
+							"label": {
+								"value": "\"Nom de votre entreprise ou votre nom\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "INTERRS = \"1\"",
+								"type": "VTL"
+							},
+							"controls": [
+								{
+									"id": "lf3368896s5q1zj-CI-2",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(RS))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez renseigner le nom de votre entreprise\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["RS"]
+								}
+							],
+							"bindingDependencies": ["RS"],
+							"response": {
+								"name": "RS"
+							}
+						},
+						{
+							"id": "kkxuufdsfds8ov",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 249,
+							"label": {
+								"value": "\"Activité de l'entreprise\"",
+								"type": "VTL"
+							},
+							"description": {
+								"value": "\"Soyez très précis (par exemple: Réparation automobile). S'il s'agit d'une exploitation agricole, précisez également l'orientation des productions (vigne, élevage de volailles, etc.).\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "INTERRS = \"1\"",
+								"type": "VTL"
+							},
+							"controls": [
+								{
+									"id": "lfs5q1zj-dfCI-2",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(ACTET))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez renseigner l'activité de votre entreprise\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["ACTET"]
+								}
+							],
+							"bindingDependencies": ["ACTET"],
+							"response": {
+								"name": "ACTET"
+							}
+						},
+						{
+							"id": "kkxufdfffffdu8ov",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 249,
+							"label": {
+								"value": "\"Nom de l’établissement ou vous faites votre mission\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "INTERRS = \"2\"",
+								"type": "VTL"
+							},
+							"controls": [
+								{
+									"id": "lfs5qds1zj-CI-2",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(RS))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez renseigner le nom de l’établissement ou vous faites votre mission\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["RS"]
+								}
+							],
+							"bindingDependencies": ["RS"],
+							"response": {
+								"name": "RS"
+							}
+						},
+						{
+							"id": "kkdsfdsfdsxuu8ov",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 249,
+							"label": {
+								"value": "\"Activité de l'entreprise\"",
+								"type": "VTL"
+							},
+							"description": {
+								"value": "\"Soyez très précis (par exemple: Réparation automobile). S'il s'agit d'une exploitation agricole, précisez également l'orientation des productions (vigne, élevage de volailles, etc.).\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "INTERRS = \"2\"",
+								"type": "VTL"
+							},
+							"controls": [
+								{
+									"id": "lfsqqq5q1zj-CI-2",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(ACTET))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez renseigner l'activité de l'établissement ou vous faites votre mission'\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["ACTET"]
+								}
+							],
+							"bindingDependencies": ["ACTET"],
+							"response": {
+								"name": "ACTET"
+							}
+						},
+						{
+							"id": "kkxfsdfdsfguu8ov",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 249,
+							"label": {
+								"value": "\"Nom de l’établissement\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "INTERRS = \"3\" or INTERRS = \"8\"",
+								"type": "VTL"
+							},
+							"controls": [
+								{
+									"id": "lfsqqqf5q1zj-CI-2",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(RS))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez renseigner le nom de l’établissement\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["RS"]
+								}
+							],
+							"bindingDependencies": ["RS"],
+							"response": {
+								"name": "RS"
+							}
+						},
+						{
+							"id": "kkxuuaaasd8ov",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 249,
+							"label": {
+								"value": "\"Activité de l'entreprise\"",
+								"type": "VTL"
+							},
+							"description": {
+								"value": "\"Soyez très précis (par exemple: Réparation automobile). S'il s'agit d'une exploitation agricole, précisez également l'orientation des productions (vigne, élevage de volailles, etc.).\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "INTERRS = \"3\" or INTERRS = \"8\"",
+								"type": "VTL"
+							},
+							"controls": [
+								{
+									"id": "lfs5q1zjnn-CI-2",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(ACTET))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez renseigner l'activité de l'établissement'\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["ACTET"]
+								}
+							],
+							"bindingDependencies": ["ACTET"],
+							"response": {
+								"name": "ACTET"
+							}
+						},
+						{
+							"id": "kkaapppxuu8ov",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 249,
+							"label": {
+								"value": "\"Nom de l’établissement de sous-traitance\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "INTERRS = \"4\"",
+								"type": "VTL"
+							},
+							"controls": [
+								{
+									"id": "lfs5qfdsfd1zj-CI-2",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(RS))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez renseigner le nom de l’établissement de sous-traitance\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["RS"]
+								}
+							],
+							"bindingDependencies": ["RS"],
+							"response": {
+								"name": "RS"
+							}
+						},
+						{
+							"id": "kkxsuu8ov",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 249,
+							"label": {
+								"value": "\"Activité de l'entreprise\"",
+								"type": "VTL"
+							},
+							"description": {
+								"value": "\"Soyez très précis (par exemple: Réparation automobile). S'il s'agit d'une exploitation agricole, précisez également l'orientation des productions (vigne, élevage de volailles, etc.).\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "INTERRS = \"4\"",
+								"type": "VTL"
+							},
+							"controls": [
+								{
+									"id": "lfs5ds9q1zj-CI-22",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(ACTET))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez renseigner l'activité de l'établissement'\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["ACTET"]
+								}
+							],
+							"bindingDependencies": ["ACTET"],
+							"response": {
+								"name": "ACTET"
+							}
+						},
+						{
+							"id": "kkfdcvbvxuu8ov",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 249,
+							"label": {
+								"value": "\"Nom de l’association ou de la collectivité locale\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "INTERRS = \"6\"",
+								"type": "VTL"
+							},
+							"controls": [
+								{
+									"id": "lfs5q1zj-CI-12",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(RS))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez renseigner le nom de l’association ou de la collectivité locale\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["RS"]
+								}
+							],
+							"bindingDependencies": ["RS"],
+							"response": {
+								"name": "RS"
+							}
+						},
+						{
+							"id": "kkxfsdov",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 249,
+							"label": {
+								"value": "\"Activité de l'association ou de la collectivité locale\"",
+								"type": "VTL"
+							},
+							"description": {
+								"value": "\"Soyez très précis (par exemple: Réparation automobile). S'il s'agit d'une exploitation agricole, précisez également l'orientation des productions (vigne, élevage de volailles, etc.).\"",
+								"type": "VTL"
+							},
+							"conditionFilter": {
+								"value": "INTERRS = \"6\"",
+								"type": "VTL"
+							},
+							"controls": [
+								{
+									"id": "lfs5ds9q1zj-CI-22",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(isnull(ACTET))",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Veuillez renseigner l'activité de l'association ou de la collectivité locale'\"",
+										"type": "VTL"
+									},
+									"bindingDependencies": ["ACTET"]
+								}
+							],
+							"bindingDependencies": ["ACTET"],
+							"response": {
+								"name": "ACTET"
+							}
+						}
+					]
 				}
 			]
 		},
@@ -220,6 +719,39 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "SOMETHING",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "INTERRS",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "RS",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ACTET",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],
@@ -283,7 +815,16 @@
 	"resizing": {
 		"NB_HAB": {
 			"size": "NB_HAB",
-			"variables": ["PRENOMS", "AGE", "SEXE", "SOMETHING", "DATNAIS"]
+			"variables": [
+				"PRENOMS",
+				"AGE",
+				"SEXE",
+				"SOMETHING",
+				"DATNAIS",
+				"INTERRS",
+				"RS",
+				"ACTET"
+			]
 		}
 	}
 }

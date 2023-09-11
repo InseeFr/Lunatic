@@ -58,6 +58,20 @@
 						"type": "VTL"
 					},
 					"response": { "name": "AGE" }
+				},
+				{
+					"id": "conditionfilter",
+					"componentType": "Sequence",
+					"mandatory": false,
+					"label": {
+						"value": "\"ConditionFilter\"))",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "not(isnull(PRENOMS))",
+						"type": "VTL"
+					},
+					"response": { "name": "PRENOMS" }
 				}
 			]
 		},

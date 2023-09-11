@@ -13,6 +13,7 @@ function ComponentSetComponents({
 	componentClassName,
 	className,
 	value: valueMap,
+	executeExpression,
 	...props
 }: Props) {
 	if (!Array.isArray(components)) {
@@ -24,9 +25,12 @@ function ComponentSetComponents({
 				<ComponentSetComponentContainer
 					className={className}
 					key={component.id}
+					executeExpression={executeExpression}
+					conditionFilter={component.conditionFilter}
 				>
 					<OrchestratedComponent
 						{...props}
+						executeExpression={executeExpression}
 						component={component}
 						id={component.id}
 						className={componentClassName}
