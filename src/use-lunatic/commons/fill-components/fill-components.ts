@@ -19,7 +19,7 @@ import fillPagination, {
 } from './fill-pagination';
 import fillSpecificExpressions from './fill-specific-expression';
 
-export type LunaticComponentProps<
+export type FilledLunaticComponentProps<
 	T = LunaticComponentDefinition['componentType']
 > = DeepTranslateExpression<LunaticComponentDefinition & { componentType: T }> &
 	FilledManagementProps &
@@ -59,12 +59,12 @@ const fillComponent = compose(
 ) as (
 	component: LunaticComponentDefinition,
 	state: LunaticState
-) => LunaticComponentProps;
+) => FilledLunaticComponentProps;
 
 function fillComponents(
 	components: LunaticComponentDefinition[],
 	state: LunaticState
-): LunaticComponentProps[] {
+): FilledLunaticComponentProps[] {
 	return components.map(function (component) {
 		return fillComponent(component, state);
 	});

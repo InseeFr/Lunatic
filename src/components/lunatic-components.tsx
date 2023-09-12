@@ -5,23 +5,20 @@ import React, {
 	useEffect,
 	useRef,
 } from 'react';
-import * as lunatic from '../index';
-import { useLunatic } from '../index';
-import { ItemOf } from '../type.utils';
-
-type FilledComponent = ItemOf<
-	ReturnType<ReturnType<typeof useLunatic>['getComponents']>
->;
+import * as lunatic from './index';
+import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 
 type Props<T extends Record<string, unknown>> = {
 	// List of components to display (coming from getComponents)
-	components: FilledComponent[];
+	components: FilledLunaticComponentProps[];
 	// Key that trigger autofocus when it changes (pageTag)
 	autoFocusKey?: string;
 	// Returns the list of extra props to add to components
-	componentProps?: (component: FilledComponent) => T;
+	componentProps?: (component: FilledLunaticComponentProps) => T;
 	// Add additional wrapper around each component
-	wrapper?: (props: PropsWithChildren<FilledComponent & T>) => ReactNode;
+	wrapper?: (
+		props: PropsWithChildren<FilledLunaticComponentProps & T>
+	) => ReactNode;
 };
 
 /**
@@ -69,7 +66,7 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 	);
 }
 
-type ItemProps = FilledComponent;
+type ItemProps = FilledLunaticComponentProps;
 
 function LunaticComponent({ componentType, ...props }: ItemProps) {
 	// Component is too dynamic to be typed

@@ -28,4 +28,3 @@ export { default as QuestionInformation } from './questions/question-information
 export { default as QuestionContext } from './questions/question-context';
 export { default as QuestionExplication } from './question-explication';
 export { default as ConfirmationModal } from './modal';
-export { LunaticComponents } from './lunatic-components';
