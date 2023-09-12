@@ -8,6 +8,7 @@ import React, { memo, useCallback, useState } from 'react';
 import { Logger } from '../../utils/logger';
 import { Overview } from './overview';
 import Waiting from './waiting';
+import { LunaticComponents } from '../..';
 
 function getStoreInfoRequired() {
 	return {};
@@ -178,38 +179,16 @@ function OrchestratorForStories({
 		<Provider>
 			<div className="container">
 				<div className="components">
-					{components.map(function (component) {
-						const {
-							id,
-							componentType,
-							response,
-							storeName,
-							conditionFilter,
-							...other
-						} = component;
-						const Component = lunatic[componentType];
-
-						const storeInfo = storeName ? getStoreInfo(storeName) : {};
-						return (
-							<div
-								className="lunatic lunatic-component"
-								key={`component-${id}`}
-							>
-								<Component
-									id={id}
-									response={response}
-									{...other}
-									{...rest}
-									{...component}
-									{...storeInfo}
-									// fill error when needed
-									errors={errorActive[pageTag]}
-									filterDescription={filterDescription}
-									disabled={readOnly}
-								/>
-							</div>
-						);
-					})}
+					<LunaticComponents
+						autoFocusKey={pageTag}
+						components={components}
+						componentProps={({ storeName }) => ({
+							errors: errorActive[pageTag],
+							filterDescription: filterDescription,
+							disabled: readOnly,
+							...(storeName ? getStoreInfo(storeName) : {}),
+						})}
+					/>
 				</div>
 				<Pager
 					goPrevious={goPreviousPage}
