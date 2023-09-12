@@ -1,12 +1,7 @@
-import React, {
-	Fragment,
-	PropsWithChildren,
-	ReactNode,
-	useEffect,
-	useRef,
-} from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import * as lunatic from './index';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
+import type { PropsWithChildren, ReactNode } from 'react';
 
 type Props<T extends Record<string, unknown>> = {
 	// List of components to display (coming from getComponents)
@@ -28,7 +23,9 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 	components,
 	autoFocusKey,
 	componentProps,
-	wrapper = ({ children }) => children,
+	wrapper = ({ children }) => (
+		<div className="lunatic lunatic-component">{children}</div>
+	),
 }: Props<T>) {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const hasComponents = components.length > 0;
@@ -71,9 +68,5 @@ type ItemProps = FilledLunaticComponentProps;
 function LunaticComponent({ componentType, ...props }: ItemProps) {
 	// Component is too dynamic to be typed
 	const Component = lunatic[componentType as keyof typeof lunatic] as any;
-	return (
-		<div className="lunatic lunatic-component">
-			<Component {...props} />
-		</div>
-	);
+	return <Component {...props} />;
 }
