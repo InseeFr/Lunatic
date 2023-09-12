@@ -5,7 +5,7 @@ import {
 	type PropsWithChildren,
 	type ReactNode,
 } from 'react';
-import * as lunatic from './index';
+import * as lunaticComponents from './index';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 
 type Props<T extends Record<string, unknown>> = {
@@ -72,6 +72,6 @@ type ItemProps = FilledLunaticComponentProps;
 
 function LunaticComponent({ componentType, ...props }: ItemProps) {
 	// Component is too dynamic to be typed
-	const Component = lunatic[componentType as keyof typeof lunatic] as any;
+	const Component = lunaticComponents[componentType] as any;
 	return <Component {...props} />;
 }
