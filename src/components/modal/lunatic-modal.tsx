@@ -1,12 +1,40 @@
 import { Modal } from './html/modal';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import { LunaticComponentProps } from '../type';
+import { MouseEventHandler, useEffect, useRef } from 'react';
+import { isEventInRect } from '../../utils/dom';
 
 function empty() {}
 
 function LunaticModal(props: LunaticComponentProps<'Modal'>) {
-	const { id, label, description, goToPage, page, goNextPage, goPreviousPage } =
-		props;
+	const { id, label, description, goNextPage, goPreviousPage } = props;
+
+	const dialogRef = useRef<HTMLDialogElement>(null);
+
+	useEffect(() => {
+		// Browser behaviour is different for dialog displayed with this API, it creates de dialog with backdrop
+		dialogRef.current?.showModal();
+	}, []);
+
+	const handleClose = () => {
+		// A cancel button was pressed
+		if (dialogRef.current?.returnValue === 'cancel') {
+			handleCancel();
+			return;
+		}
+		goNextPage();
+	};
+
+	const handleCancel = () => {
+		goPreviousPage();
+	};
+
+	const handleDialogClick: MouseEventHandler<HTMLDialogElement> = (e) => {
+		// Cancel the modal on backdrop blick
+		if (!isEventInRect(e, dialogRef.current!.getBoundingClientRect())) {
+			handleCancel();
+		}
+	};
 
 	return (
 		<LunaticComponent
@@ -17,13 +45,13 @@ function LunaticModal(props: LunaticComponentProps<'Modal'>) {
 			description={description}
 		>
 			<Modal
+				dialogRef={dialogRef}
+				onClose={handleClose}
+				onCancel={handleCancel}
+				onClick={handleDialogClick}
 				id={id}
 				label={label}
-				page={page}
 				description={description}
-				goToPage={goToPage}
-				goNextPage={goNextPage}
-				goPreviousPage={goPreviousPage}
 			/>
 		</LunaticComponent>
 	);

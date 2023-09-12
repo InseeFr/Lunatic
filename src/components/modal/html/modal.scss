@@ -8,11 +8,14 @@
   border-radius: 8px;
   overflow-wrap: break-word;
   position: relative;
-  width: 50vw;
+  width: max-content;
+  min-width: 400px;
+  max-width: calc(100vw - 2rem);
   padding: 0.5rem;
 }
 .lunatic-modal_buttons {
   display: flex;
+  flex-direction: row-reverse;
   gap: .5rem;
 }
 .lunatic-modal_close {
