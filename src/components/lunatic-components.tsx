@@ -1,7 +1,12 @@
-import { Fragment, useEffect, useRef } from 'react';
+import {
+	Fragment,
+	useEffect,
+	useRef,
+	type PropsWithChildren,
+	type ReactNode,
+} from 'react';
 import * as lunatic from './index';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
-import type { PropsWithChildren, ReactNode } from 'react';
 
 type Props<T extends Record<string, unknown>> = {
 	// List of components to display (coming from getComponents)
