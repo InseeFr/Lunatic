@@ -61,11 +61,9 @@ function ModalPure({
 			id={id}
 			onClick={handleDialogClick}
 		>
-			<form method="dialog" className="lunatic-modal_body">
-				<div className="modal-message">
-					<div>{label}</div>
-					<div>{description}</div>
-				</div>
+			<form method="dialog">
+				<div className="lunatic-modal_title">{label}</div>
+				<div className="lunatic-modal_description">{description}</div>
 				<div className="lunatic-modal_buttons">
 					<Button type="submit" value="default">
 						Je confirme
