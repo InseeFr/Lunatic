@@ -1,4 +1,4 @@
-import Modal from './html/modal';
+import { Modal } from './html/modal';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import { LunaticComponentProps } from '../type';
 

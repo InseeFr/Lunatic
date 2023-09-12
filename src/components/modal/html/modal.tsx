@@ -1,82 +1,86 @@
-import { useCallback, useEffect, useRef, KeyboardEvent } from 'react';
+import { useEffect, useRef } from 'react';
+import type { MouseEventHandler } from 'react';
+import type { LunaticComponentProps } from '../../type';
 import { createCustomizableLunaticField } from '../../commons';
-import { LunaticComponentProps } from '../../type';
 import { createPortal } from 'react-dom';
 import './modal.scss';
 import Button from '../../button';
+import { isEventInRect } from '../../../utils/dom';
 
-function Modal(
-	props: Pick<
-		LunaticComponentProps<'Modal'>,
-		| 'id'
-		| 'label'
-		| 'description'
-		| 'goToPage'
-		| 'page'
-		| 'goNextPage'
-		| 'goPreviousPage'
-	>
-) {
-	const { id, label, description, goNextPage, goPreviousPage } = props;
-	const first = useRef<HTMLDivElement>(null);
-	const last = useRef<HTMLDivElement>(null);
+type Props = Pick<
+	LunaticComponentProps<'Modal'>,
+	| 'id'
+	| 'label'
+	| 'description'
+	| 'goToPage'
+	| 'page'
+	| 'goNextPage'
+	| 'goPreviousPage'
+>;
+
+function ModalPure({
+	id,
+	label,
+	description,
+	goNextPage,
+	goPreviousPage,
+}: Props) {
+	const dialogRef = useRef<HTMLDialogElement>(null);
 
 	useEffect(() => {
-		const focusOnInit = first?.current?.lastElementChild as HTMLButtonElement;
-		focusOnInit.focus()
-	}, [first])
+		// Browser behaviour is different for dialog displayed with this API, it creates de dialog with backdrop
+		dialogRef.current?.showModal();
+	}, []);
 
-	const onKeyDown = useCallback(
-		(e: KeyboardEvent<HTMLElement>) => {
-			const firstButtonToFocus = first?.current?.lastElementChild as HTMLButtonElement
-			const lastButtonToFocus = last?.current?.lastElementChild as HTMLButtonElement
-			if (e.key === 'Tab') {
-				if (e.shiftKey) {
-					if (document.activeElement === firstButtonToFocus) {
-						lastButtonToFocus.focus();
-						e.nativeEvent.preventDefault();
-					}
-				} else if (document.activeElement === lastButtonToFocus) {
-					firstButtonToFocus.focus();
-					e.nativeEvent.preventDefault();
-				}
-			}
-		},
-		[first, last]
-	);
+	const handleClose = () => {
+		// A cancel button was pressed
+		if (dialogRef.current?.returnValue === 'cancel') {
+			handleCancel();
+			return;
+		}
+		goNextPage();
+	};
 
-	const handleNextClick = useCallback(
-		function () {
-			goNextPage();
-		},
-		[goNextPage]
-	);
-	const handlePreviousClick = useCallback(
-		function () {
-			goPreviousPage();
-		},
-		[goPreviousPage]
-	);
+	const handleCancel = () => {
+		goPreviousPage();
+	};
+
+	const handleDialogClick: MouseEventHandler<HTMLDialogElement> = (e) => {
+		// Cancel the modal on backdrop blick
+		if (!isEventInRect(e, dialogRef.current!.getBoundingClientRect())) {
+			handleCancel();
+		}
+	};
 
 	return createPortal(
-		<dialog className="lunatic-modal" open>
-			<div className="modal-content" onKeyDown={onKeyDown}>
-				<div id={id} className="lunatic-modal-container">
-					<div className="close-button" ref={first}>
-						<Button onClick={handlePreviousClick} >fermer x</Button>
-					</div>
-					<div className="modal-message">
-						<span>{label}</span>
-						<span>{description}</span>
-					</div>
-					<div className="cancel-confirm-buttons" ref={last}>
-						<Button onClick={handlePreviousClick}>Annuler</Button>
-						<Button onClick={handleNextClick} >Je confirme</Button>
-					</div>
+		<dialog
+			onClose={handleClose}
+			onCancel={handleCancel}
+			className="lunatic-modal"
+			ref={dialogRef}
+			id={id}
+			onClick={handleDialogClick}
+		>
+			<form method="dialog" className="lunatic-modal_body">
+				<div className="modal-message">
+					<div>{label}</div>
+					<div>{description}</div>
 				</div>
-			</div>
+				<div className="lunatic-modal_buttons">
+					<Button type="submit" value="default">
+						Je confirme
+					</Button>
+					<Button type="submit" value="cancel">
+						Annuler
+					</Button>
+				</div>
+				<Button type="submit" value="cancel" className="lunatic-modal_close">
+					fermer <span aria-hidden>x</span>
+				</Button>
+			</form>
 		</dialog>,
 		document.body
 	);
 }
-export default createCustomizableLunaticField(Modal, 'Modal');
+
+export const Modal = createCustomizableLunaticField(ModalPure, 'Modal');
