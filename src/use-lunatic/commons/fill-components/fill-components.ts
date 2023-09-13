@@ -26,10 +26,7 @@ export type FilledLunaticComponentProps<
 	FilledValueProps &
 	FilledMissingResponseProps &
 	FilledHandlersProps &
-	FilledPaginationProps & {
-		components?: FilledLunaticComponentProps[];
-		conditionFilter?: boolean;
-	};
+	FilledPaginationProps;
 
 /**
  * Compose multiple methods together to create a new method
@@ -54,11 +51,11 @@ function compose(...fill: Function[]) {
 const fillComponent = compose(
 	fillFromState,
 	fillComponentExpressions,
-	fillSpecificExpressions,
 	fillPagination,
 	fillComponentValue,
 	fillMissingResponse,
-	fillManagement
+	fillManagement,
+	fillSpecificExpressions
 ) as (
 	component: LunaticComponentDefinition,
 	state: LunaticState
@@ -72,19 +69,7 @@ function fillComponents(
 	state: LunaticState
 ): FilledLunaticComponentProps[] {
 	return components
-		.map(function (component) {
-			const filledComponent = fillComponent(component, state);
-			if ('components' in filledComponent) {
-				return {
-					...filledComponent,
-					components: fillComponents(
-						filledComponent.components as LunaticComponentDefinition[],
-						state
-					),
-				};
-			}
-			return filledComponent;
-		})
+		.map((component) => fillComponent(component, state))
 		.filter(matchConditionFilter) as FilledLunaticComponentProps[];
 }
 

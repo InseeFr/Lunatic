@@ -10,6 +10,9 @@ export type FilledProps = {
 	goPreviousPage: LunaticState['goPreviousPage'];
 };
 
+/**
+ * Add state data as component props
+ */
 function fillFromState(
 	component: LunaticComponentDefinition,
 	state: LunaticState

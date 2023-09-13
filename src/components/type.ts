@@ -92,7 +92,7 @@ type ComponentPropsByType = {
 	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
-		components: LunaticComponentDefinition[];
+		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
 		headers?: Array<{ label: ReactNode }>;
@@ -101,7 +101,7 @@ type ComponentPropsByType = {
 	Loop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
-		components: LunaticComponentDefinition[];
+		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
 		headers?: Array<{ label: ReactNode }>;

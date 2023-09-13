@@ -142,7 +142,7 @@ export type LunaticState = {
 	modalErrors?: Record<string, LunaticError[]>;
 	// Handler to call when updating a value
 	handleChange: (
-		response: { name: string } | string,
+		response: { name: string },
 		value: any,
 		args?: Record<string, unknown>
 	) => void;

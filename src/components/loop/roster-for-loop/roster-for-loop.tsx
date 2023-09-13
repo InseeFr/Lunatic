@@ -10,26 +10,31 @@ import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
 import getInitLength from '../commons/get-init-length';
 import { LunaticComponentProps } from '../../type';
+import { Table, Tbody, Td, Tr } from '../../commons/components/html-table';
+import Header from '../../table/header';
+import { times } from '../../../utils/array';
+import { LunaticComponents } from '../../lunatic-components';
 
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
 
-function RosterforLoop({
-	value: valueMap,
-	lines,
-	handleChange,
-	declarations,
-	label,
-	components,
-	executeExpression,
-	headers,
-	missing,
-	shortcut,
-	id,
-	management,
-	disabled,
-	errors,
-}: LunaticComponentProps<'RosterForLoop'>) {
+function RosterforLoop(props: LunaticComponentProps<'RosterForLoop'>) {
+	const {
+		value: valueMap,
+		lines,
+		handleChange,
+		declarations,
+		label,
+		getComponents,
+		executeExpression,
+		headers,
+		missing,
+		shortcut,
+		id,
+		management,
+		disabled,
+		errors,
+	} = props;
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [nbRows, setNbRows] = useState(() => getInitLength(valueMap));
@@ -71,40 +76,53 @@ function RosterforLoop({
 		[nbRows, handleChange, valueMap]
 	);
 
-	if (nbRows > 0) {
-		return (
-			<>
-				<DeclarationsBeforeText declarations={declarations} id={id} />
-				<DeclarationsAfterText declarations={declarations} id={id} />
-				<RosterTable
-					id={id}
-					components={components}
-					nbRows={nbRows}
-					executeExpression={executeExpression}
-					headers={headers}
-					handleChange={handleChangeLoop}
-					value={valueMap}
-					management={management}
-					missing={missing}
-					shortcut={shortcut}
-					disabled={disabled}
-					errors={errors}
-				/>
-				<DeclarationsDetachable declarations={declarations} id={id} />
-				{showButtons && (
-					<>
-						<HandleRowButton onClick={addRow} disabled={nbRows === max}>
-							{label || D.DEFAULT_BUTTON_ADD}
-						</HandleRowButton>
-						<HandleRowButton onClick={removeRow} disabled={nbRows === min}>
-							{D.DEFAULT_BUTTON_REMOVE}
-						</HandleRowButton>
-					</>
-				)}
-			</>
-		);
+	if (nbRows === 0) {
+		return null;
 	}
-	return null;
+
+	return (
+		<>
+			<DeclarationsBeforeText declarations={declarations} id={id} />
+			<DeclarationsAfterText declarations={declarations} id={id} />
+
+			<Table id={id}>
+				<Header header={headers} id={id} />
+				<Tbody id={id}>
+					{times(nbRows, (n) => (
+						<Row {...props} key={n} row={n} />
+					))}
+				</Tbody>
+			</Table>
+			<DeclarationsDetachable declarations={declarations} id={id} />
+			{showButtons && (
+				<>
+					<HandleRowButton onClick={addRow} disabled={nbRows === max}>
+						{label || D.DEFAULT_BUTTON_ADD}
+					</HandleRowButton>
+					<HandleRowButton onClick={removeRow} disabled={nbRows === min}>
+						{D.DEFAULT_BUTTON_REMOVE}
+					</HandleRowButton>
+				</>
+			)}
+		</>
+	);
+}
+
+export function Row(
+	props: LunaticComponentProps<'RosterForLoop'> & { row: number }
+) {
+	const components = props.getComponents(props.row);
+	return (
+		<Tr id={props.id} row={props.row}>
+			<LunaticComponents
+				components={components}
+				componentProps={(c) => ({ ...props, ...c })}
+				wrapper={({ id, children }) => (
+					<Td id={`${id}-${props.row}`}>{children}</Td>
+				)}
+			/>
+		</Tr>
+	);
 }
 
 export default createCustomizableLunaticField(RosterforLoop, 'RosterforLoop');

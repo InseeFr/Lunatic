@@ -35,7 +35,7 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const hasComponents = components.length > 0;
 	useEffect(() => {
-		if (!autoFocusKey || !hasComponents) {
+		if (!autoFocusKey || !hasComponents || !wrapperRef.current) {
 			return;
 		}
 
@@ -47,9 +47,12 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 			return firstFocusableElement.focus();
 		}
 	}, [autoFocusKey, hasComponents]);
+	const WrapperComponent = autoFocusKey ? 'div' : Fragment;
 
 	return (
-		<div ref={wrapperRef}>
+		<WrapperComponent
+			ref={WrapperComponent === Fragment ? undefined : wrapperRef}
+		>
 			{components.map((component, k) => {
 				const props = {
 					...component,
@@ -64,7 +67,7 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 					</Fragment>
 				);
 			})}
-		</div>
+		</WrapperComponent>
 	);
 }
 

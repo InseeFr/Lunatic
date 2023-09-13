@@ -9,27 +9,20 @@ import {
 import { LunaticComponentProps } from '../../type';
 import getInitLength from '../commons/get-init-length';
 import HandleRowButton from '../commons/handle-row-button';
-import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
+import { LunaticComponents } from '../../lunatic-components';
+import { times } from '../../../utils/array';
 
-function BlockForLoop({
-	declarations,
-	id,
-	label,
-	lines,
-	components,
-	handleChange,
-	value: valueMap,
-	missing,
-	shortcut,
-	features,
-	preferences,
-	management,
-	executeExpression,
-	iterations,
-	paginatedLoop,
-	errors,
-	disabled,
-}: LunaticComponentProps<'Loop'>) {
+function BlockForLoop(props: LunaticComponentProps<'Loop'>) {
+	const {
+		declarations,
+		id,
+		label,
+		lines,
+		handleChange,
+		value,
+		iterations,
+		getComponents,
+	} = props;
 	const min = lines?.min;
 	const max = lines?.max;
 
@@ -38,7 +31,7 @@ function BlockForLoop({
 			//This should be an Integer
 			return Number.parseInt(iterations.toString());
 		}
-		const initLength = getInitLength(valueMap);
+		const initLength = getInitLength(value);
 		return Math.max(initLength, min);
 	});
 
@@ -56,33 +49,13 @@ function BlockForLoop({
 			if (nbRows > 1) {
 				const newNbRows = nbRows - 1;
 				setNbRows(newNbRows);
-				Object.entries(valueMap).forEach(([k, v]) => {
+				Object.entries(value).forEach(([k, v]) => {
 					const newValue = v.filter((_, i) => i < newNbRows);
 					handleChange({ name: k }, newValue);
 				});
 			}
 		},
-		[nbRows, handleChange, valueMap]
-	);
-
-	const handleChangeLoop = useCallback(
-		function (
-			response: { name: string },
-			value: unknown,
-			args: { index: number; [k: string]: unknown }
-		) {
-			if (!paginatedLoop) {
-				const v = valueMap[response.name];
-				v[args.index] = value;
-				handleChange(response, v, {
-					loop: true,
-					length: nbRows,
-					shallowIteration: args.index,
-				});
-			} else
-				handleChange(response, value, { ...args, loop: true, length: nbRows });
-		},
-		[handleChange, nbRows, paginatedLoop, valueMap]
+		[nbRows, handleChange, value]
 	);
 
 	if (nbRows <= 0) {
@@ -92,20 +65,13 @@ function BlockForLoop({
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
 			<DeclarationsAfterText declarations={declarations} id={id} />
-			<BlockForLoopOrchestrator
-				id={id}
-				components={components}
-				handleChange={handleChangeLoop}
-				nbRows={nbRows}
-				valueMap={valueMap}
-				missing={missing}
-				shortcut={shortcut}
-				features={features}
-				preferences={preferences}
-				executeExpression={executeExpression}
-				errors={errors}
-				disabled={disabled}
-			/>
+			{times(nbRows, (n) => (
+				<LunaticComponents
+					key={n}
+					components={getComponents(n)}
+					componentProps={(c) => ({ ...props, ...c })}
+				/>
+			))}
 			<DeclarationsDetachable declarations={declarations} id={id} />
 			{Number.isInteger(min) && Number.isInteger(max) && min !== max && (
 				<>

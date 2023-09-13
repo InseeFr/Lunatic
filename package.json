@@ -31,8 +31,8 @@
 	"scripts": {
 		"test": "vitest run",
 		"test:e2e": "playwright test",
-		"test:e2e:visual": "playwright test --headed --debug",
-		"test:e2e:codegen": "playwright codegen",
+		"test:e2e:visual": "playwright test --headed --debug e2e/loop.spec.ts",
+		"test:e2e:codegen": "playwright codegen http://localhost:9999/iframe.html?viewMode=story&id=",
 		"test:storybook": "test-storybook --url http://localhost:9999 --maxWorkers=4 --no-cache",
 		"test-watch": "vitest",
 		"check": "tsc",
