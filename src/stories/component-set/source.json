@@ -28,7 +28,7 @@
 						"value": "true",
 						"type": "VTL"
 					},
-					"response": { "name": "PRENOMS" },
+					"response": { "name": "PRENOM" },
 					"controls": [
 						{
 							"criticality": "WARN",
@@ -58,6 +58,20 @@
 						"type": "VTL"
 					},
 					"response": { "name": "AGE" }
+				},
+				{
+					"id": "conditionfilter",
+					"componentType": "Sequence",
+					"mandatory": false,
+					"label": {
+						"value": "\"ConditionFilter\"))",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "not(nvl(PRENOM, \"\") = \"\")",
+						"type": "VTL"
+					},
+					"response": { "name": "PRENOM" }
 				}
 			]
 		},
@@ -86,7 +100,7 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "PRENOMS",
+			"name": "PRENOM",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,

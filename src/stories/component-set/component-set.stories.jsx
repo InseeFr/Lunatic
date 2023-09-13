@@ -1,10 +1,10 @@
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
 import data from './data';
-import sourceLoop from './source1';
-import dataLoop from './data1';
-import sourceRoundabout from './source2';
-import dataRoundabout from './data2';
+import sourceLoop from './source-loop.json';
+import dataLoop from './data-loop.json';
+import sourceRoundabout from './source-roundabout.json';
+import dataRoundabout from './data-roundabout.json';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
@@ -23,7 +23,7 @@ Default.args = {
 	source,
 	pagination: true,
 	data,
-	readOnly: true,
+	readOnly: false,
 };
 
 export const InRoundabout = Template.bind({});
