@@ -32,7 +32,7 @@ const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
 const DEFAULT_DONT_KNOW = D.DK;
 const DEFAULT_REFUSED = D.RF;
-const nothing: LunaticState['handleChange'] = () => {};
+const nothing = () => {};
 
 function useLunatic(
 	source: LunaticSource,
@@ -61,7 +61,7 @@ function useLunatic(
 		features?: LunaticState['features'];
 		preferences?: LunaticState['preferences'];
 		savingType?: LunaticState['savingType'];
-		onChange?: typeof nothing;
+		onChange?: LunaticState['handleChange'];
 		management?: boolean;
 		shortcut?: boolean;
 		initialPage?: string;
@@ -168,7 +168,13 @@ function useLunatic(
 	);
 	const handleChange = useCallback<LunaticState['handleChange']>(
 		(response, value, args) => {
-			dispatch(actions.handleChange(response, value, args));
+			dispatch(
+				actions.handleChange(
+					typeof response === 'string' ? { name: response } : response,
+					value,
+					args
+				)
+			);
 			onChange(response, value, args);
 		},
 		[dispatch, onChange]
@@ -248,6 +254,7 @@ function useLunatic(
 		waiting,
 		getData,
 		Provider,
+		onChange: handleChange,
 		overview: buildedOverview,
 		loopVariables: useLoopVariables(pager, state.pages),
 	};
