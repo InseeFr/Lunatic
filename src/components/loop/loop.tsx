@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react';
-import BlockForLoop from './block-for-loop';
-import RosterForLoop from './roster-for-loop';
+import { BlockForLoop } from './block-for-loop';
+import { RosterForLoop } from './roster-for-loop/roster-for-loop';
 import { LunaticComponentProps } from '../type';
 
 const LoopTypes = {
@@ -8,7 +8,7 @@ const LoopTypes = {
 	blockForLoop: 'Loop',
 };
 
-function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
+export function Loop(props: LunaticComponentProps<'Loop' | 'RosterForLoop'>) {
 	const Component = getComponent(props.componentType);
 	if (!Component) {
 		return null;
@@ -26,5 +26,3 @@ function getComponent(componentType?: string) {
 			return null;
 	}
 }
-
-export default Loop;

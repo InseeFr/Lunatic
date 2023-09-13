@@ -1,9 +1,10 @@
 import LunaticComponentWithoutLabel from '../commons/components/lunatic-component-without-label';
 import { LunaticComponentProps } from '../type';
-import ComponentSet from './html/component-set';
 import { LunaticComponents } from '../lunatic-components';
+import { ComponentSet } from './html/component-set';
+import { ComponentSetWrapper } from './html/component-set-wrapper';
 
-function LunaticComponentSet({
+export function LunaticComponentSet({
 	id,
 	label,
 	declarations,
@@ -28,10 +29,9 @@ function LunaticComponentSet({
 					components={components}
 					// Component props take precedence (we don't want to override value for instance)
 					componentProps={(c) => ({ ...props, ...c })}
+					wrapper={(p) => <ComponentSetWrapper {...p} />}
 				/>
 			</ComponentSet>
 		</LunaticComponentWithoutLabel>
 	);
 }
-
-export default LunaticComponentSet;

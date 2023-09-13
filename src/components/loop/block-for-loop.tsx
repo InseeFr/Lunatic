@@ -1,18 +1,23 @@
 import { useCallback, useState } from 'react';
-import D from '../../../i18n';
-import { createCustomizableLunaticField } from '../../commons';
+import D from '../../i18n';
+import { createCustomizableLunaticField } from '../commons';
 import {
 	DeclarationsAfterText,
 	DeclarationsBeforeText,
 	DeclarationsDetachable,
-} from '../../declarations';
-import { LunaticComponentProps } from '../../type';
-import getInitLength from '../commons/get-init-length';
-import HandleRowButton from '../commons/handle-row-button';
-import { LunaticComponents } from '../../lunatic-components';
-import { times } from '../../../utils/array';
+} from '../declarations';
+import { LunaticComponentProps } from '../type';
+import { getInitialNbRows } from './utils/get-initial-nb-rows';
+import { LoopButton } from './loop-button';
+import { LunaticComponents } from '../lunatic-components';
+import { times } from '../../utils/array';
 
-function BlockForLoop(props: LunaticComponentProps<'Loop'>) {
+/**
+ * Loop without specific markup
+ */
+export const BlockForLoop = createCustomizableLunaticField<
+	LunaticComponentProps<'Loop'>
+>((props) => {
 	const {
 		declarations,
 		id,
@@ -31,7 +36,7 @@ function BlockForLoop(props: LunaticComponentProps<'Loop'>) {
 			//This should be an Integer
 			return Number.parseInt(iterations.toString());
 		}
-		const initLength = getInitLength(value);
+		const initLength = getInitialNbRows(value);
 		return Math.max(initLength, min);
 	});
 
@@ -75,16 +80,14 @@ function BlockForLoop(props: LunaticComponentProps<'Loop'>) {
 			<DeclarationsDetachable declarations={declarations} id={id} />
 			{Number.isInteger(min) && Number.isInteger(max) && min !== max && (
 				<>
-					<HandleRowButton onClick={addRow} disabled={nbRows === max}>
+					<LoopButton onClick={addRow} disabled={nbRows === max}>
 						{label || D.DEFAULT_BUTTON_ADD}
-					</HandleRowButton>
-					<HandleRowButton onClick={removeRow} disabled={nbRows === 1}>
+					</LoopButton>
+					<LoopButton onClick={removeRow} disabled={nbRows === 1}>
 						{D.DEFAULT_BUTTON_REMOVE}
-					</HandleRowButton>
+					</LoopButton>
 				</>
 			)}
 		</>
 	);
-}
-
-export default createCustomizableLunaticField(BlockForLoop, 'BlockForLoop');
+}, 'BlockForLoop');
