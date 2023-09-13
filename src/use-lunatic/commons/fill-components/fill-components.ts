@@ -26,7 +26,9 @@ export type FilledLunaticComponentProps<
 	FilledValueProps &
 	FilledMissingResponseProps &
 	FilledHandlersProps &
-	FilledPaginationProps;
+	FilledPaginationProps & {
+		conditionFilter?: boolean;
+	};
 
 /**
  * Compose multiple methods together to create a new method

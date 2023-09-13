@@ -1,10 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
-	DeclarationsBeforeText,
 	DeclarationsAfterText,
+	DeclarationsBeforeText,
 	DeclarationsDetachable,
 } from '../../declarations';
-import RosterTable from './roster-table';
 import { createCustomizableLunaticField } from '../../commons';
 import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';

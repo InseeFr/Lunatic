@@ -47,7 +47,7 @@ function fillChildComponentsWithIteration(
 	component: DeepTranslateExpression<
 		LunaticComponentDefinition<'Loop' | 'RosterForLoop'>
 	> & {
-		value: Record<string, unknown[]>;
+		value?: Record<string, unknown[]>;
 	},
 	state: LunaticState
 ) {
@@ -59,7 +59,7 @@ function fillChildComponentsWithIteration(
 				handleChange: (response, value) => {
 					state.handleChange(
 						response,
-						setAtIndex(component.value[response.name], iteration, value)
+						setAtIndex(component.value?.[response.name] ?? [], iteration, value)
 					);
 				},
 				pager: {
