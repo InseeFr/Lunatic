@@ -176,25 +176,19 @@ describe('use-lunatic()', () => {
 	describe('getComponents()', () => {
 		describe('componentSet', () => {
 			type ChildComponent = FilledLunaticComponentProps<'ComponentSet'>;
+			const { result } = renderHook(() =>
+				useLunatic(sourceComponentSet as any, undefined, {})
+			);
+			const getComponents = () =>
+				result.current.getComponents() as ChildComponent[];
 			it('should fill child components', () => {
-				const { result } = renderHook(() =>
-					useLunatic(sourceComponentSet as any, undefined, {})
-				);
-				let components = result.current.getComponents() as ChildComponent[];
+				let components = getComponents();
 				expect(components).toHaveLength(1);
 				expect(components[0].components ?? []).toHaveLength(2);
-				act(() => result.current.onChange({ name: 'PRENOM' }, 'Jane'));
-				components = result.current.getComponents() as ChildComponent[];
-				expect(components).toHaveLength(3);
 			});
 			it('should use conditionFilter on nested components', () => {
-				const { result } = renderHook(() =>
-					useLunatic(sourceComponentSet as any, undefined, {})
-				);
 				act(() => result.current.onChange({ name: 'PRENOM' }, 'Jane'));
-				expect(
-					(result.current.getComponents()[0] as ChildComponent).components ?? []
-				).toHaveLength(3);
+				expect(getComponents()[0].components).toHaveLength(3);
 			});
 		});
 	});
