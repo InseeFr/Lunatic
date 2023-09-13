@@ -70,8 +70,8 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 
 type ItemProps = FilledLunaticComponentProps;
 
-function LunaticComponent({ componentType, ...props }: ItemProps) {
+function LunaticComponent(props: ItemProps) {
 	// Component is too dynamic to be typed
-	const Component = lunaticComponents[componentType] as any;
+	const Component = lunaticComponents[props.componentType] as any;
 	return <Component {...props} />;
 }
