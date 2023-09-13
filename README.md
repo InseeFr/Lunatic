@@ -86,37 +86,32 @@ Pour plus d'informations sur les types de ce retour vous pouvez vous référer a
 
 Pour afficher le questionnaire on commencera par récupérer la liste des composants à afficher à l'aide de la méthode `getComponents()` renvoyée par le hook.
 
-Lunatic offre une librairie de composant préconçu pour répondre aux différents types de champs disponible dans les questionnaires.
+Ensuite, on pourra utiliser le composant `<LunaticComponents />` pour gérer l'affichage des composants
 
 ```jsx
-import * as lunatic from '@inseefr/lunatic';
+import {LunaticComponents} from '@inseefr/lunatic';
 
-function App({ source, data }) {
-	const { getComponents, getCurrentErrors, getModalErrors } =
-		lunatic.useLunatic(source, data, {});
-	const components = getComponents();
-	const currentErrors = getCurrentErrors();
-	const modalErrors = getModalErrors();
+function App({source, data}) {
+  const {getComponents, getCurrentErrors, getModalErrors} =
+          lunatic.useLunatic(source, data, {});
+  const components = getComponents();
+  const currentErrors = getCurrentErrors();
+  const modalErrors = getModalErrors();
 
-	return (
-		<div className="container">
-			{components.map(function (component) {
-				const Component = lunatic[component.componentType];
-				return (
-					<Component key={component.id} {...component} errors={currentErrors} />
-				);
-			})}
-			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
-		</div>
-	);
+  return (
+          <div className="container">
+            <LunaticComponents components={components} />
+            <lunatic.Modal errors={modalErrors} goNext={goNextPage}/>
+          </div>
+  );
 }
 ```
 
-L'ensemble des composants offerts par Lunatic sont disponibles dans le dossier [src/components](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/components/components.js)
+Ce composant se charge de récupérer le bon composant à afficher en fonction des champs demandés. Il est possible de personnaliser les propriétés passées aux composants gràce à la propriété `componentProps` mais aussi de rajouter un élément autour de chaque composant gràce à la méthode `wrapper`. Vous pouvez regarder [l'orchestrateur du storybook](./src/stories/utils/orchestrator.jsx) pour avoir un exemple d'utilisation.
 
 ## Personnalisation
 
-Par défaut les composants offerts par Lunatic sont plutôt simples avec un style minimal. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer lors de l'appel à useLunatic.
+Par défaut les composants offerts par Lunatic sont plutôt simples avec un style minimal. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes, vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer lors de l'appel à useLunatic.
 
 ```jsx
 const custom = {
