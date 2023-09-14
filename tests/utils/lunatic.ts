@@ -48,3 +48,17 @@ export function generateData<T extends Record<string, unknown>>(
 		EXTERNAL: {},
 	};
 }
+
+export function generateVariable({ type = 'COLLECTED', name = 'VARIABLE' }) {
+	return {
+		variableType: type,
+		name: name,
+		values: {
+			PREVIOUS: null,
+			COLLECTED: null,
+			FORCED: null,
+			EDITED: null,
+			INPUTED: null,
+		},
+	};
+}
