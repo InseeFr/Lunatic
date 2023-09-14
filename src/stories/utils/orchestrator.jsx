@@ -5,15 +5,15 @@ import * as lunatic from '../..';
 
 import React, { memo, useCallback, useState } from 'react';
 
+import { Logger } from '../../utils/logger';
 import { Overview } from './overview';
 import Waiting from './waiting';
-import { Logger } from '../../utils/logger';
 
 function getStoreInfoRequired() {
 	return {};
 }
 
-function DevOptions({ goToPage, getData }) {
+function DevOptions({ goToPage, getData, lastReachedPage }) {
 	const [toPage, setToPage] = useState(1);
 
 	function handleChange(_, value) {
@@ -30,7 +30,12 @@ function DevOptions({ goToPage, getData }) {
 				<lunatic.Button onClick={() => goToPage({ page: `${toPage}` })}>
 					{`Go to page ${toPage}`}
 				</lunatic.Button>
-				<lunatic.InputNumber
+				<lunatic.Button
+					onClick={() => goToPage({ page: `${lastReachedPage}` })}
+				>
+					{`Go to lastReachedPage : ${lastReachedPage}`}
+				</lunatic.Button>
+				<lunatic.Input
 					id="page-to-jump"
 					value={toPage}
 					handleChange={handleChange}
@@ -47,6 +52,7 @@ function Pager({
 	goPrevious,
 	goNext,
 	goToPage,
+	lastReachedPage,
 	isLast,
 	isFirst,
 	pageTag,
@@ -67,7 +73,11 @@ function Pager({
 					</Button>
 				</div>
 				<div>PAGE: {pageTag}</div>
-				<DevOptions goToPage={goToPage} getData={getData} />
+				<DevOptions
+					goToPage={goToPage}
+					getData={getData}
+					lastReachedPage={lastReachedPage}
+				/>
 			</>
 		);
 	}
@@ -103,6 +113,7 @@ function OrchestratorForStories({
 	getReferentiel,
 	dontKnowButton,
 	refusedButton,
+	readOnly,
 	...rest
 }) {
 	const { maxPage } = source;
@@ -111,6 +122,7 @@ function OrchestratorForStories({
 		goPreviousPage,
 		goNextPage,
 		goToPage,
+		pager,
 		pageTag,
 		isFirstPage,
 		isLastPage,
@@ -139,6 +151,7 @@ function OrchestratorForStories({
 	});
 
 	const components = getComponents();
+	const { lastReachedPage } = pager;
 
 	const [errorActive, setErrorActive] = useState({});
 	const [errorsForModal, setErrorsForModal] = useState(null);
@@ -192,6 +205,7 @@ function OrchestratorForStories({
 									// fill error when needed
 									errors={errorActive[pageTag]}
 									filterDescription={filterDescription}
+									disabled={readOnly}
 								/>
 							</div>
 						);
@@ -201,6 +215,7 @@ function OrchestratorForStories({
 					goPrevious={goPreviousPage}
 					goNext={handleGoNext}
 					goToPage={goToPage}
+					lastReachedPage={lastReachedPage}
 					isLast={isLastPage}
 					isFirst={isFirstPage}
 					pageTag={pageTag}

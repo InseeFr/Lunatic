@@ -1,4 +1,3 @@
-import React from 'react';
 import LinksOrchestrator from './orchestrator';
 import {
 	DeclarationsAfterText,
@@ -40,6 +39,7 @@ const PairwiseLinks = ({
 				handleChange={handleChange}
 				nbRows={nbRows}
 				value={value}
+				className="pairwise-link"
 				management={management}
 				missing={missing}
 				shortcut={shortcut}

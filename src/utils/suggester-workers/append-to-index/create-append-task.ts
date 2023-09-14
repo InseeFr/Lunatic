@@ -1,11 +1,7 @@
 import { SuggesterType } from '../../../use-lunatic/type-source';
 import { createWorker } from '../create-worker-ts';
+import { getWorkerPath } from '../../store-tools/worker-path';
 import { Logger } from '../../logger';
-
-const workerPath =
-	process.env.LUNATIC_LOADER_WORKER_PATH ||
-	process.env.REACT_APP_LUNATIC_LOADER_WORKER_PATH ||
-	'workers/lunatic-loader-worker-0.1.0.js';
 
 function consoleLogging(...args: Array<any>) {
 	args.forEach(function (any) {
@@ -22,7 +18,7 @@ export function createAppendTask<T>(
 	log = consoleLogging
 ): [(args: Array<any>) => Promise<boolean>, () => void] {
 	const { name, fields, stopWords, meloto } = info;
-	const worker = createWorker(workerPath);
+	const worker = createWorker(getWorkerPath());
 	let start = false;
 	let stop = false;
 

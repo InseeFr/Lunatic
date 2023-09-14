@@ -1,0 +1,424 @@
+{
+	"maxPage": "5",
+	"components": [
+		{
+			"id": "component-set",
+			"componentType": "ComponentSet",
+			"page": "1",
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"label": {
+				"value": "\"## Who are you?\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"This is your opportunity to tell me about yourself!\"",
+				"type": "VTL|MD"
+			},
+			"components": [
+				{
+					"id": "checkboxbooleanGroupNumeric",
+					"componentType": "CheckboxGroup",
+					"label": {
+						"value": "Situation matrimoniale",
+						"type": "VTL|MD"
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "kmnnjaf1",
+							"label": {
+								"value": "Situation matrimoniale",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "kmw3dz2a",
+							"page": "2",
+							"label": {
+								"value": "Mois préférés de l'année",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"missingResponse": { "name": "SITUMATRI_MISSING" },
+					"responses": [
+						{
+							"id": "kmort6x9-QOP-kmosa98y",
+							"label": {
+								"value": "Française de naissance ou par réintégration",
+								"type": "VTL"
+							},
+							"response": { "name": "NATIO1N1" }
+						},
+
+						{
+							"id": "kmort6x9-QOP-kmos360k",
+							"label": {
+								"value": "\"Française par déclaration, naturalisation, option à la majorité\"",
+								"type": "VTL"
+							},
+							"response": { "name": "NATIO1N2" }
+						},
+
+						{
+							"id": "kmort6x9-QOP-kmos37e1",
+							"label": { "value": "Étrangère", "type": "VTL" },
+							"response": { "name": "NATIO1N3" }
+						},
+
+						{
+							"id": "kmort6x9-QOP-kmorue9c",
+							"label": {
+								"value": "Apatride (pas de nationalité)",
+								"type": "VTL"
+							},
+							"response": { "name": "NATIO1N4" }
+						}
+					]
+				},
+				{
+					"id": "checkboxbooleanGroupAlpha",
+					"componentType": "CheckboxGroup",
+					"label": {
+						"value": "Mois préférés de l'année",
+						"type": "VTL|MD"
+					},
+
+					"hierarchy": {
+						"sequence": {
+							"id": "kmnnjaf1",
+							"page": "1",
+							"label": {
+								"value": "Situation matrimoniale",
+								"type": "VTL|MD"
+							}
+						},
+						"subSequence": {
+							"id": "kmw3dz2a",
+							"label": {
+								"value": "Mois préférés de l'année",
+								"type": "VTL|MD"
+							}
+						}
+					},
+					"missingResponse": { "name": "SITUMATRI_MISSING" },
+					"bindingDependencies": [
+						"MOIS1",
+						"MOIS2",
+						"MOIS3",
+						"MOIS4",
+						"MOIS5",
+						"MOIS6",
+						"MOIS7",
+						"MOIS8",
+						"MOIS9",
+						"MOIS10",
+						"MOIS11",
+						"MOIS12"
+					],
+					"responses": [
+						{
+							"id": "mois1",
+							"label": {
+								"value": "Janvier",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS1" }
+						},
+
+						{
+							"id": "mois2",
+							"label": {
+								"value": "Février",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS2" }
+						},
+						{
+							"id": "mois3",
+							"label": {
+								"value": "Mars",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS3" }
+						},
+						{
+							"id": "mois4",
+							"label": {
+								"value": "Avril",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS4" }
+						},
+						{
+							"id": "mois5",
+							"label": {
+								"value": "Mai",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS5" }
+						},
+						{
+							"id": "mois6",
+							"label": {
+								"value": "Juin",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS6" }
+						},
+						{
+							"id": "mois7",
+							"label": {
+								"value": "Juillet",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS7" }
+						},
+						{
+							"id": "mois8",
+							"label": {
+								"value": "Août",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS8" }
+						},
+						{
+							"id": "mois9",
+							"label": {
+								"value": "Septembre",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS9" }
+						},
+						{
+							"id": "mois10",
+							"label": {
+								"value": "Octobre",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS10" }
+						},
+						{
+							"id": "mois11",
+							"label": {
+								"value": "Novembre",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS11" }
+						},
+						{
+							"id": "mois12",
+							"label": {
+								"value": "Décembre",
+								"type": "VTL|MD"
+							},
+							"response": { "name": "MOIS12" }
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "seq",
+			"componentType": "Sequence",
+			"label": {
+				"value": "\"Merci !\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "2"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NATIO1N1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NATIO1N2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NATIO1N3",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NATIO1N4",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS3",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS4",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS5",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS7",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS8",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS9",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS10",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS11",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "MOIS12",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}

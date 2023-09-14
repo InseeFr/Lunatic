@@ -3,12 +3,14 @@ import React, { PropsWithChildren, useCallback, useRef } from 'react';
 import classnames from 'classnames';
 import { KEYBOARD_KEY_CODES } from './state-management/reduce-on-keydown/keyboard-key-codes';
 import { useDocumentAddEventListener } from '../../index';
+import ComboBoxContentBox from './combo-box-content-box';
 
 type Props = PropsWithChildren<{
 	focused?: boolean;
 	onBlur: () => void;
 	onFocus: () => void;
 	onKeyDown: (key: string) => void;
+	classNamePrefix?: string;
 }>;
 
 export function ComboBoxContent({
@@ -17,6 +19,7 @@ export function ComboBoxContent({
 	onFocus,
 	onBlur,
 	onKeyDown,
+	classNamePrefix,
 }: Props) {
 	const ref = useRef<HTMLDivElement>(null);
 
@@ -50,20 +53,23 @@ export function ComboBoxContent({
 	);
 
 	return (
-		<div
-			className={classnames('lunatic-combo-box', {
-				focused,
-			})}
-			onFocus={onFocus}
-			onClick={onFocus}
-			onKeyDown={handleKeyDown}
-			ref={ref}
-			tabIndex={0}
-		>
-			<div className={classnames('lunatic-combo-box-content', { focused })}>
+		<ComboBoxContentBox classNamePrefix={classNamePrefix} focused={focused}>
+			<div
+				className={classnames(
+					`${classNamePrefix ?? 'lunatic'}-combo-box-content`,
+					{
+						focused,
+					}
+				)}
+				ref={ref}
+				tabIndex={0}
+				onFocus={onFocus}
+				onClick={onFocus}
+				onKeyDown={handleKeyDown}
+			>
 				{children}
 			</div>
-		</div>
+		</ComboBoxContentBox>
 	);
 }
 

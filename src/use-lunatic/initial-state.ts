@@ -30,6 +30,8 @@ const INITIAL_STATE: LunaticState = {
 	executeExpression: (() => {}) as LunaticState['executeExpression'],
 	handleChange: () => {},
 	goToPage: () => undefined,
+	goNextPage: () => {},
+	goPreviousPage: () => {},
 	activeControls: false,
 	getSuggesterStatus: (name: string) => ({
 		status: SuggesterStatus.unused,

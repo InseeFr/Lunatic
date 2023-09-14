@@ -6,6 +6,8 @@ export type FilledProps = {
 	preferences: LunaticState['preferences'];
 	goToPage: LunaticState['goToPage'];
 	shortcut: LunaticState['shortcut'];
+	goNextPage: LunaticState['goNextPage'];
+	goPreviousPage: LunaticState['goPreviousPage'];
 };
 
 function fillFromState(
@@ -19,6 +21,8 @@ function fillFromState(
 		goToPage,
 		shortcut,
 		getSuggesterStatus,
+		goNextPage,
+		goPreviousPage,
 	} = state;
 	return {
 		...component,
@@ -28,6 +32,8 @@ function fillFromState(
 		goToPage,
 		shortcut,
 		getSuggesterStatus,
+		goNextPage,
+		goPreviousPage,
 	};
 }
 

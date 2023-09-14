@@ -27,6 +27,7 @@ function RosterforLoop({
 	shortcut,
 	id,
 	management,
+	disabled,
 	errors,
 }: LunaticComponentProps<'RosterForLoop'>) {
 	const min = lines?.min || DEFAULT_MIN_ROWS;
@@ -86,6 +87,7 @@ function RosterforLoop({
 					management={management}
 					missing={missing}
 					shortcut={shortcut}
+					disabled={disabled}
 					errors={errors}
 				/>
 				<DeclarationsDetachable declarations={declarations} id={id} />

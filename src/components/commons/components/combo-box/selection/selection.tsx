@@ -1,7 +1,7 @@
 import { ChangeEventHandler, useCallback } from 'react';
-import { LabelSelection, LabelSelectionProps } from './label-selection';
-import Input from './input';
+import { LabelSelectionProps } from './label-selection';
 import SelectionContainer from './selection-container';
+import { LabelOrInput } from './LabelOrInput';
 
 export type SelectionProps = {
 	expanded?: boolean;
@@ -10,6 +10,7 @@ export type SelectionProps = {
 	editable?: boolean;
 	labelId?: string;
 	id?: string;
+	classNamePrefix?: string;
 } & LabelSelectionProps;
 
 export function Selection({
@@ -25,6 +26,7 @@ export function Selection({
 	editable,
 	labelId,
 	id,
+	classNamePrefix,
 }: SelectionProps) {
 	const onChangeEx = useCallback<ChangeEventHandler<HTMLInputElement>>(
 		(e) => {
@@ -39,22 +41,17 @@ export function Selection({
 			labelId={labelId}
 			expanded={expanded}
 			aria-owns={`${id}-list`}
+			classNamePrefix={classNamePrefix}
 		>
-			<LabelSelection
+			<LabelOrInput
 				labelRenderer={labelRenderer}
 				placeholder={placeholder}
 				selectedIndex={selectedIndex}
 				options={options}
 				search={search}
 				disabled={disabled}
-			/>
-			<Input
-				id={`combobox-input-${id}`}
-				className="lunatic-combo-box-input"
 				onChange={onChangeEx}
 				value={search}
-				placeholder={placeholder}
-				disabled={disabled}
 				focused={focused}
 				editable={editable}
 				expanded={expanded}

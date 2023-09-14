@@ -18,7 +18,13 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
-Default.args = { id: 'component-set', source, pagination: true, data };
+Default.args = {
+	id: 'component-set',
+	source,
+	pagination: true,
+	data,
+	readOnly: true,
+};
 
 export const InRoundabout = Template.bind({});
 

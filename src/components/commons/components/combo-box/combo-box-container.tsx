@@ -1,28 +1,44 @@
 import type { PropsWithChildren } from 'react';
 import classnames from 'classnames';
+import { LunaticBaseProps } from '../../../type';
+import createCustomizableLunaticField from '../../create-customizable-field';
+import Errors from '../errors';
 
 type Props = PropsWithChildren<{
+	classNamePrefix?: string;
 	className?: string;
 	id?: string;
 	classStyle?: string;
+	errors?: LunaticBaseProps['errors'];
 }>;
 
-export function ComboBoxContainer({
+function ComboBoxContainer({
 	children,
 	className,
+	classNamePrefix,
 	id,
 	classStyle = 'default-style',
+	errors,
 }: Props) {
 	return (
 		<div
-			id={`lunatic-combo-box-container-${id}`}
+			id={`${classNamePrefix ?? 'lunatic'}-combo-box-container-${id}`}
 			className={classnames(
-				'lunatic-combo-box-container',
 				className,
+				`${classNamePrefix ?? 'lunatic'}-combo-box-container`,
+				`${classNamePrefix ?? 'lunatic'}-suggester-${classStyle}`,
+				`lunatic-suggester-default-style`,
 				classStyle
 			)}
 		>
 			{children}
+			{/* Errors are called here so that they can be customised */}
+			{errors && <Errors errors={errors} activeId={id} />}
 		</div>
 	);
 }
+
+export default createCustomizableLunaticField(
+	ComboBoxContainer,
+	'ComboboxContainer'
+);

@@ -19,3 +19,6 @@ Default.args = { id: 'bloc-for-loop', source: sourceBloc };
 
 export const WithHeader = Template.bind({});
 WithHeader.args = { id: 'bloc-for-loop-headers', source: sourceWithHeader };
+
+export const ReadOnly = Template.bind({});
+ReadOnly.args = { id: 'bloc-for-loop', source: sourceBloc, readOnly: true };

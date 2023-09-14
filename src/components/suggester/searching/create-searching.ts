@@ -1,6 +1,6 @@
 // @ts-ignore
 import { createWorker } from '../../../utils/suggester-workers/create-worker';
-import { ComboBoxOption } from '../../commons/components/combo-box/combo-box.type';
+import { ComboBoxOptionType } from '../../commons/components/combo-box/combo-box.type';
 
 const WORKER_PATH =
 	process.env.LUNATIC_SEARCH_WORKER_PATH ||
@@ -16,7 +16,7 @@ const searching =
 		search: string | null,
 		name: string,
 		version: string
-	): Promise<{ results: ComboBoxOption[] }> => {
+	): Promise<{ results: ComboBoxOptionType[] }> => {
 		if (!WORKER_PATH) {
 			throw new Error("Worker path is required for suggester's searches.");
 		}

@@ -224,7 +224,7 @@ function createExecuteExpression(
 	}
 
 	function execute<T = unknown>(
-		expObject: unknown,
+		expObject: unknown, // VtlExpression
 		args: Parameters<LunaticState['executeExpression']>[1] = {}
 	): T {
 		const { value: expression, type } = validateExpression(

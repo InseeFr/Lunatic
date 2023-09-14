@@ -46,6 +46,21 @@
 				"value": "true",
 				"type": "VTL"
 			},
+			"controls": [
+				{
+					"id": "age-controls",
+					"criticality": "ERROR",
+					"typeOfControl": "FORMAT",
+					"control": {
+						"value": "not(isnull(HELLO))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "\"Veuillez selectionner quelquechose\"",
+						"type": "VTL"
+					}
+				}
+			],
 			"response": {
 				"name": "HELLO"
 			},

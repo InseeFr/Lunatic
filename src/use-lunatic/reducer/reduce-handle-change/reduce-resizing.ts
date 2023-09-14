@@ -4,9 +4,6 @@ import { LunaticState } from '../../type';
 import { ActionHandleChange } from '../../actions';
 
 function refillValue(size: number, precSize: number, value: unknown) {
-	if (precSize > size) {
-		return new Array(size).fill(null);
-	}
 	return resizeArrayVariable(value, size, null);
 }
 

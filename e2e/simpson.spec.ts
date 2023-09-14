@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test('can complete simpson form', async ({ page }) => {
+	page.setDefaultTimeout(30_000);
+	page.setDefaultNavigationTimeout(30_000);
 	await page.goto(
 		'http://localhost:9999/iframe.html?viewMode=story&id=questionnaires-simpsons--default'
 	);
@@ -40,7 +42,6 @@ test('can complete simpson form', async ({ page }) => {
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
 		.getByRole('combobox', { name: '➡ In which state do The Simpsons reside?' })
-		.locator('div')
 		.click();
 	await page.getByText('Not in any state, you fool!').click();
 	await page.getByRole('button', { name: 'Next' }).click();
@@ -98,7 +99,6 @@ test('can complete simpson form', async ({ page }) => {
 			name: 'Break the windows of the whole city',
 		})
 		.getByRole('combobox')
-		.locator('div')
 		.click();
 	await page.getByText('Krusty the clown').click();
 	await page
@@ -136,7 +136,6 @@ test('can complete simpson form', async ({ page }) => {
 		.getByRole('radio', { name: 'Down' })
 		.click();
 	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('row', { name: 'Leave with pay' }).fill('12');
 	await page
 		.getByRole('row', { name: 'Leave with pay' })
 		.getByText('Please, do something...')

@@ -15,11 +15,11 @@ export type LunaticControl = ControlType;
 
 export type VTLBindings = { [variableName: string]: unknown };
 
-export type LunaticData = {
-	CALCULATED: Record<string, unknown>;
-	EXTERNAL: Record<string, unknown>;
-	COLLECTED: Record<string, LunaticCollectedValue>;
-};
+export type LunaticData = Partial<
+	Record<Exclude<VariableType, 'COLLECTED'>, Record<string, unknown>> & {
+		COLLECTED: Record<string, LunaticCollectedValue>;
+	}
+>;
 
 export type LunaticValues = {
 	[variableName: string]: unknown;
@@ -60,7 +60,7 @@ export type LunaticOverviewItem = {
 	parent?: unknown;
 	label: LunaticExpression;
 	conditionFilter?: {
-		bindingDependencies: string[];
+		bindingDependencies?: string[];
 	};
 	children: LunaticOverviewItem[];
 };
@@ -101,7 +101,7 @@ export type LunaticState = {
 	isInLoop: boolean;
 	isFirstPage: boolean;
 	isLastPage: boolean;
-	features: 'VTL'[];
+	features: ['VTL'] | ['VTL', 'MD'];
 	preferences: ['COLLECTED'];
 	savingType: 'COLLECTED';
 	// Map of variable associated with the expression used to repopulate it
@@ -131,7 +131,6 @@ export type LunaticState = {
 		nbIterations?: number;
 		shallowIteration?: number;
 		linksIterations?: number[];
-		roundabout?: { page: string };
 	};
 	// TODO : Explain this
 	waiting: boolean;
@@ -170,8 +169,10 @@ export type LunaticState = {
 		iteration?: number;
 		nbIterations?: number;
 		subPage?: number;
-		roundabout?: { page: string };
 	}) => void;
+	// Enable components to independently navigate next/previous
+	goNextPage: () => void;
+	goPreviousPage: () => void;
 	getSuggesterStatus: (name: string) => {
 		status: SuggesterStatus;
 		timestamp: number;

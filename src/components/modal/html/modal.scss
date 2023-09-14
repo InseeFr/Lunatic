@@ -1,0 +1,43 @@
+.lunatic-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50, 50, 50, 0.5);
+    z-index: 101;
+  
+    .modal-content {
+      background-color: snow;
+      height: fit-content;
+      width: 50%;
+      margin: auto;
+      padding: 0.5rem;
+      margin-top: 38vh;
+      display: flex;
+      flex-direction: column;
+      border-radius: 8px;
+      overflow-wrap: break-word;
+      .lunatic-modal-container {
+        .close-button {
+          color: blue;
+          display: flex;
+          justify-content: right;
+        }
+      }
+      .body {
+        color: black;
+        font-size: 16px;
+        font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      }
+  
+      .modal-buttons {
+        align-self: end;
+        margin: 0 0.2em 0.2em 0;
+        :first-child {
+          margin-right: 0.5em;
+        }
+      }
+    }
+  }
+  

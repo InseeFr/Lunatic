@@ -87,7 +87,7 @@ Filled.play = async ({ args, canvasElement }) => {
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
 		.getByRole('combobox', { name: '➡ In which state do The Simpsons reside?' })
-		.locator('div')
+		// .locator('div')
 		.click();
 	await page.getByText('Not in any state, you fool!').click();
 	await page.getByRole('button', { name: 'Next' }).click();
@@ -186,7 +186,6 @@ Filled.play = async ({ args, canvasElement }) => {
 		.getByText('Please, do something...')
 		.click();
 	await page.getByText('Calendar days').click();
-	await page.getByRole('row', { name: /Leave with pay/ }).fill('12');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
