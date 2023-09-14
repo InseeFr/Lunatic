@@ -5,7 +5,7 @@ import MdLabel from './md-label';
 describe('md-label', () => {
 	it('should handle emoticon', () => {
 		const obj = render(<MdLabel expression="**Demo** of a :dog:" />);
-		return expect(obj.container).toMatchInlineSnapshot(`
+		return expect(obj.container.firstChild).toMatchInlineSnapshot(`
 			<p>
 			  <strong>
 			    Demo
