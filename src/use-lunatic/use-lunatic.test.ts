@@ -6,6 +6,7 @@ import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
 import { LunaticData } from './type';
+import { generateData, generateVariable } from '../../tests/utils/lunatic';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {
@@ -167,6 +168,51 @@ describe('use-lunatic()', () => {
 				expect(overview[0].visible).toEqual(true);
 				expect(overview[1].reached).toEqual(true);
 				expect(overview[1].visible).toEqual(true);
+			});
+		});
+	});
+
+	describe('getData', function () {
+		it('work with calculated variable', async () => {
+			const source = {
+				components: [],
+				variables: [
+					generateVariable({ name: 'PRENOM' }),
+					generateVariable({ name: 'NOM' }),
+					generateVariable({ name: 'AGE' }),
+					{
+						variableType: 'CALCULATED',
+						name: 'FULLNAME',
+						expression: { value: 'PRENOM || " " || NOM', type: 'VTL' },
+						bindingDependencies: ['PRENOM', 'NOM'],
+					},
+					{
+						variableType: 'CALCULATED',
+						name: 'LABEL',
+						expression: {
+							value: 'FULLNAME || " a " || cast(AGE, string)',
+							type: 'VTL',
+						},
+						bindingDependencies: ['FULLNAME', 'AGE'],
+					},
+				],
+			};
+			const data = generateData({
+				PRENOM: 'John',
+				NOM: 'Doe',
+				AGE: 18,
+			});
+			const { result } = renderHook(() => useLunatic(source as any, data));
+			expect(result.current.getData(true)).toMatchObject({
+				CALCULATED: {
+					FULLNAME: 'John Doe',
+					LABEL: 'John Doe a 18',
+				},
+				COLLECTED: {
+					NOM: { COLLECTED: 'Doe' },
+					PRENOM: { COLLECTED: 'John' },
+					AGE: { COLLECTED: 18 },
+				},
 			});
 		});
 	});

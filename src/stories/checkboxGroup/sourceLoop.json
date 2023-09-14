@@ -1,0 +1,83 @@
+{
+	"maxPage": "5",
+	"components": [
+		{
+			"id": "component-set",
+			"componentType": "Loop",
+			"page": "1",
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"iterations": { "value": 2, "type": "VTL" },
+			"label": {
+				"value": "\"## Who are you?\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"This is your opportunity to tell me about yourself!\"",
+				"type": "VTL|MD"
+			},
+			"components": [
+				{
+					"id": "checkboxbooleanGroupNumeric",
+					"componentType": "CheckboxGroup",
+					"label": {
+						"value": "Est-ce que vous travaillez à l'Insee ?",
+						"type": "VTL|MD"
+					},
+					"missingResponse": { "name": "SITUMATRI_MISSING" },
+					"responses": [
+						{
+							"id": "kmort6x9-QOP-kmosa98y",
+							"label": {
+								"value": "non",
+								"type": "VTL"
+							},
+							"response": { "name": "NON" }
+						},
+						{
+							"id": "kmort6x9-QOP-kmos360k",
+							"label": {
+								"value": "\"oui\"",
+								"type": "VTL"
+							},
+							"response": { "name": "OUI" }
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "seq",
+			"componentType": "Sequence",
+			"label": {
+				"value": "\"Merci !\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "2"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "OUI",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NON",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		}
+	]
+}

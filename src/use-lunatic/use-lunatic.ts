@@ -23,6 +23,27 @@ import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
 
+type LunaticOptions = {
+	features?: LunaticState['features'];
+	preferences?: LunaticState['preferences'];
+	savingType?: LunaticState['savingType'];
+	onChange?: typeof nothing;
+	management?: boolean;
+	shortcut?: boolean;
+	initialPage?: string;
+	lastReachedPage?: string;
+	autoSuggesterLoading?: boolean;
+	getReferentiel?: (name: string) => Promise<Array<unknown>>;
+	activeControls?: boolean;
+	custom?: Record<string, FunctionComponent<unknown>>;
+	withOverview?: boolean;
+	missing?: boolean;
+	missingStrategy?: () => void;
+	missingShortcut?: { dontKnow: string; refused: string };
+	dontKnowButton?: string;
+	refusedButton?: string;
+};
+
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
 const DEFAULT_DATA = empty as LunaticData;
@@ -37,7 +58,9 @@ const nothing: LunaticState['handleChange'] = () => {};
 function useLunatic(
 	source: LunaticSource,
 	data: LunaticData = DEFAULT_DATA,
-	{
+	options: LunaticOptions = empty
+) {
+	const {
 		features = DEFAULT_FEATURES,
 		preferences = DEFAULT_PREFERENCES,
 		savingType = COLLECTED,
@@ -57,27 +80,7 @@ function useLunatic(
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
-	}: {
-		features?: LunaticState['features'];
-		preferences?: LunaticState['preferences'];
-		savingType?: LunaticState['savingType'];
-		onChange?: typeof nothing;
-		management?: boolean;
-		shortcut?: boolean;
-		initialPage?: string;
-		lastReachedPage?: string;
-		autoSuggesterLoading?: boolean;
-		getReferentiel?: (name: string) => Promise<Array<unknown>>;
-		activeControls?: boolean;
-		custom?: Record<string, FunctionComponent<unknown>>;
-		withOverview?: boolean;
-		missing?: boolean;
-		missingStrategy?: () => void;
-		missingShortcut?: { dontKnow: string; refused: string };
-		dontKnowButton?: string;
-		refusedButton?: string;
-	}
-) {
+	} = options;
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { pager, waiting, overview, pages, executeExpression, isInLoop } =
 		state;
