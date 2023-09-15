@@ -1,0 +1,13 @@
+name: pull-request-main
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, edited]
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: bcoe/conventional-release-labels@v1
+        with:
+          type_labels: '{"feature": "feature", "fix": "fix", "breaking": "breaking", "ci": "ci", "docs": "docs", "refactor": "refactor", "chore": "chore", "style": "style", "test": "test", "perf": "perf", "build": "build", "revert": "revert"}'
