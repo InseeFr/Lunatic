@@ -1,4 +1,4 @@
-import { LunaticError } from '../type';
+import type { LunaticError } from '../type';
 
 /**
  * Keep errors with at least one error inside

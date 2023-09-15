@@ -1,6 +1,6 @@
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../../commons/use-on-handle-change';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticComponentProps } from '../../type';
 import CheckboxBoolean from './html/checkbox-boolean';
 
 function LunaticCheckboxBoolean({

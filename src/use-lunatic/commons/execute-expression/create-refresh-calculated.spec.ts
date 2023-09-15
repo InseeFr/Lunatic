@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { LunaticExpression, LunaticState } from '../../type';
-import { ExpressionLogger } from './create-execute-expression';
+import type { LunaticExpression, LunaticState } from '../../type';
+import { type ExpressionLogger } from './create-execute-expression';
 import createRefreshCalculated from './create-refresh-calculated';
 
 const variables = {

@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import React, { type PropsWithChildren, type ReactNode } from 'react';
 import Label from '../../commons/components/label';
 import SuggesterNotification from './suggester-notification';
 import { SuggesterStatus as SuggesterStatusEnum } from '../../../use-lunatic/use-suggesters';

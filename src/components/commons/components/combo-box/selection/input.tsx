@@ -1,8 +1,8 @@
 import React, {
 	useRef,
 	useEffect,
-	HTMLAttributes,
-	KeyboardEventHandler,
+	type HTMLAttributes,
+	type KeyboardEventHandler,
 } from 'react';
 import classnames from 'classnames';
 import createCustomizableLunaticField from '../../../create-customizable-field';

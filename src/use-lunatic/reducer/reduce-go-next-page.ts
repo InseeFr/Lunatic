@@ -1,7 +1,7 @@
-import { ActionGoNextPage } from '../actions';
+import { type ActionGoNextPage } from '../actions';
 import { getNewReachedPage } from '../commons';
 import compose from '../commons/compose';
-import { LunaticState } from '../type';
+import type { LunaticState } from '../type';
 import { overviewOnChange } from './overview/overview-on-change';
 import { getNextPager } from '../commons/page-navigation';
 import { getPageId, isPageEmpty } from '../commons/page';

@@ -1,4 +1,4 @@
-import { LunaticState } from '../type';
+import type { LunaticState } from '../type';
 
 export type OverviewItem = {
 	lunaticId: string;

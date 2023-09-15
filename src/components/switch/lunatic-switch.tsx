@@ -1,7 +1,7 @@
 import Switch from './html/switch';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 const defaultLabel = { true: 'True', false: 'False' };
 

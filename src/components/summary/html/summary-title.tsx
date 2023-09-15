@@ -1,5 +1,5 @@
 import { createCustomizableLunaticField } from '../../commons';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticBaseProps } from '../../type';
 
 type SummaryTitleProps = Pick<LunaticBaseProps<string>, 'label'>;
 

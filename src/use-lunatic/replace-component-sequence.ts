@@ -1,4 +1,4 @@
-import { LunaticComponentDefinition } from './type';
+import type { LunaticComponentDefinition } from './type';
 
 /**
  * Pour le ComponentSet : les composants du fieldset n'existe pas dans pages.

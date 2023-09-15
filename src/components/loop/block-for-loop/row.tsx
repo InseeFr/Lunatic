@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { OrchestratedComponent } from '../../commons';
-import { LunaticBaseProps } from '../../type';
-import { LunaticComponentDefinition } from '../../../use-lunatic/type';
+import type { LunaticBaseProps } from '../../type';
+import type { LunaticComponentDefinition } from '../../../use-lunatic/type';
 import { getComponentValue } from '../../../utils/get-component-value';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 	handleChange: (
 		response: { name: string },
 		value: unknown,
-		args: { index: number; [key: string]: unknown }
+		args: { index: number;[key: string]: unknown }
 	) => void;
 	missing?: LunaticBaseProps['missing'];
 	management?: LunaticBaseProps['management'];

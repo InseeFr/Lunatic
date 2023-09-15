@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useRef, KeyboardEvent } from 'react';
+import { useCallback, useEffect, useRef, type KeyboardEvent } from 'react';
 import { createCustomizableLunaticField } from '../../commons';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticComponentProps } from '../../type';
 import { createPortal } from 'react-dom';
 import './modal.scss';
 import Button from '../../button';

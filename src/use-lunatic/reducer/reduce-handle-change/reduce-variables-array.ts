@@ -1,5 +1,5 @@
 import { resizeArrayVariable } from '../commons';
-import { LunaticState } from '../../type';
+import type { LunaticState } from '../../type';
 
 type Args = { name: string; value: unknown; index: number; length: number };
 

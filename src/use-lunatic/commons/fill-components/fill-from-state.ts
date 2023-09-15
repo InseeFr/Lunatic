@@ -1,4 +1,4 @@
-import { LunaticComponentDefinition, LunaticState } from '../../type';
+import type { LunaticComponentDefinition, LunaticState } from '../../type';
 
 export type FilledProps = {
 	handleChange: LunaticState['handleChange'];

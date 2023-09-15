@@ -1,6 +1,6 @@
 import Modal from './html/modal';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 function empty() {}
 

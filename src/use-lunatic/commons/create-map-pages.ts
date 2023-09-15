@@ -1,7 +1,7 @@
 import isPaginatedLoop from './is-paginated-loop';
 import isRoundabout from './is-roundabout';
-import { LunaticComponentDefinition, LunaticState } from '../type';
-import { LunaticSource } from '../type-source';
+import type { LunaticComponentDefinition, LunaticState } from '../type';
+import type { LunaticSource } from '../type-source';
 
 function isUnpaginated(questionnaire: { maxPage?: unknown }): boolean {
 	const { maxPage } = questionnaire;

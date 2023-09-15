@@ -1,5 +1,5 @@
-import { LunaticData, LunaticState } from './type';
-import { LunaticSource } from './type-source';
+import type { LunaticData, LunaticState } from './type';
+import type { LunaticSource } from './type-source';
 import { SuggesterStatus } from './use-suggesters';
 
 export enum ActionKind {

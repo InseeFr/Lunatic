@@ -6,7 +6,7 @@ import {
 	DeclarationsBeforeText,
 	DeclarationsDetachable,
 } from '../../declarations';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticComponentProps } from '../../type';
 import getInitLength from '../commons/get-init-length';
 import HandleRowButton from '../commons/handle-row-button';
 import BlockForLoopOrchestrator from './block-for-loop-ochestrator';

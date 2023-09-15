@@ -1,4 +1,4 @@
-import { ComboBoxState } from '../index';
+import { type ComboBoxState } from '../index';
 
 export function onEnd(state: ComboBoxState, nbOptions?: number): ComboBoxState {
 	if (nbOptions) {
