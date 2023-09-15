@@ -1,4 +1,4 @@
-import { useCallback, useReducer, useEffect, ReactNode } from 'react';
+import { useCallback, useReducer, useEffect, ReactNode, useRef } from 'react';
 import classnames from 'classnames';
 import { ClearButton } from './selection/clear-button';
 import { INITIAL_STATE, reducer, actions } from './state-management';
@@ -57,6 +57,7 @@ function ComboBox({
 		search: searchProps,
 	});
 	const { focused, expanded, search, selectedIndex } = state;
+	const callOnSelect = useRef(false);
 
 	useEffect(
 		function () {
@@ -68,7 +69,8 @@ function ComboBox({
 	// This useEffect ensures that onSelect is called when selectedIndex changes
 	useEffect(
 		function () {
-			if (selectedIndex) {
+			if (selectedIndex !== undefined && callOnSelect.current) {
+				callOnSelect.current = false;
 				const option = options[selectedIndex];
 				onSelect(getOptionValue(option));
 			}
@@ -96,15 +98,11 @@ function ComboBox({
 		[disabled]
 	);
 
-	const handleSelect = useCallback(
-		(index: string) => {
-			const indexNumber = parseInt(index, 10);
-			const option = options[indexNumber];
-			dispatch(actions.onSelect(indexNumber));
-			onSelect(getOptionValue(option));
-		},
-		[options, onSelect, getOptionValue]
-	);
+	const handleSelect = useCallback((index: string) => {
+		const indexNumber = parseInt(index, 10);
+		dispatch(actions.onSelect(indexNumber));
+		callOnSelect.current = true;
+	}, []);
 
 	const handleChange = useCallback(
 		(s: string | null) => {
@@ -118,6 +116,7 @@ function ComboBox({
 		(key: string) => {
 			const { length } = options;
 			dispatch(actions.onKeydown(key, length));
+			callOnSelect.current = true;
 		},
 		[options]
 	);
