@@ -2,7 +2,7 @@ import RadioGroup from './html/radio-group';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { createCustomizableLunaticField } from '../commons';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 	const {

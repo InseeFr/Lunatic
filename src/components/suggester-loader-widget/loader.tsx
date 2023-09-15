@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createAppendTask } from '../../utils/suggester-workers/append-to-index';
 import Progress from './progress';
 import { clearStoreData } from '../../utils/store-tools';
 import { voidFunction } from '../../utils/function';
-import { SuggesterType } from '../../use-lunatic/type-source';
+import type { SuggesterType } from '../../use-lunatic/type-source';
 
 type Props = {
 	idbVersion?: number;

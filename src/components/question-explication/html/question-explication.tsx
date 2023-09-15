@@ -1,7 +1,7 @@
-import { useState, ReactNode } from 'react';
+import { useState } from 'react';
 import { createCustomizableLunaticField } from '../../commons';
 import './question-explication.scss';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticBaseProps } from '../../type';
 
 function QuestionExplication({
     id,

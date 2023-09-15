@@ -1,5 +1,5 @@
 import { VTL } from '../../utils/constants';
-import { LunaticExpression } from '../type';
+import type { LunaticExpression } from '../type';
 
 /**
  * Ensure that an expression is compatible with VTL (convert if necessary)

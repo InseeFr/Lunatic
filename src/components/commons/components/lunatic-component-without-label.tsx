@@ -6,9 +6,9 @@ import {
 
 import FieldContainer from './field-container';
 import Missing from './missing';
-import React, { ReactElement } from 'react';
+import React, { type ReactElement } from 'react';
 import VariableStatus from './variable-status';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticBaseProps } from '../../type';
 
 type Props = {
 	children: ReactElement;

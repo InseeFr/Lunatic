@@ -2,7 +2,7 @@ import React, {
 	useEffect,
 	useState,
 	useCallback,
-	PropsWithChildren,
+	type PropsWithChildren,
 } from 'react';
 import { openDb, getEntity } from '../../../utils/idb-tools';
 import { CONSTANTES } from '../../../utils/store-tools';

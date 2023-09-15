@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import React, { type PropsWithChildren, type ReactNode } from 'react';
 import { createCustomizableLunaticField } from '../../commons';
 import { STATUS } from './suggester-status';
 import Label from '../../commons/components/label';

@@ -11,7 +11,7 @@ import {
 	X_AXIS,
 	Y_AXIS,
 } from '../../../utils/constants';
-import { LunaticExpression, LunaticState } from '../../type';
+import type { LunaticExpression, LunaticState } from '../../type';
 
 export type ExpressionLogger = (
 	expression: string | LunaticExpression,
@@ -247,6 +247,10 @@ function createExecuteExpression(
 			}),
 			{ rootExpression: expression, iteration, linksIterations }
 		);
+		// Add index has a specific variable
+		vtlBindings['GLOBAL_ITERATION_INDEX'] = (
+			(args?.iteration ?? 0) + 1
+		).toString();
 		const memoized = getMemoizedValue(expression, vtlBindings);
 		if (memoized === undefined) {
 			const result = executeExpression(

@@ -1,4 +1,4 @@
-import { SuggesterType } from '../../use-lunatic/type-source';
+import type { SuggesterType } from '../../use-lunatic/type-source';
 import CONSTANTES from './constantes';
 import openStorage from './open-or-create-store';
 import clearStore from '../idb-tools/clear-store';

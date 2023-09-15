@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React, { type FunctionComponent } from 'react';
 import ComboBoxLabelSelection from './combo-box-label-selection';
-import { ComboBoxOptionType } from '../combo-box.type';
+import type { ComboBoxOptionType } from '../combo-box.type';
+
 
 export type LabelSelectionProps = {
 	/**

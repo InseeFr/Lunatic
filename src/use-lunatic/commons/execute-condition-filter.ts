@@ -1,6 +1,6 @@
 import getCompatibleVTLExpression from './get-compatible-vtl-expression';
-import { LunaticExpression, LunaticState } from '../type';
-import { ExpressionLogger } from './execute-expression/create-execute-expression';
+import type { LunaticExpression, LunaticState } from '../type';
+import { type ExpressionLogger } from './execute-expression/create-execute-expression';
 
 function executeConditionFilter(
 	filter: LunaticExpression,

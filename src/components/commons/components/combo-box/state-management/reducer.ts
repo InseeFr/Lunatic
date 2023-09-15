@@ -1,7 +1,7 @@
-import { ComboAction, ComboActionKind } from './actions';
+import { type ComboAction, ComboActionKind } from './actions';
 import reduceOnKeydown from './reduce-on-keydown/reduce-on-keydown';
 import reduceOnInit from './reduce-on-init';
-import { ComboBoxState } from './index';
+import { type ComboBoxState } from './index';
 
 export function reducer(
 	state: ComboBoxState,

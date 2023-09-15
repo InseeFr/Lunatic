@@ -1,7 +1,7 @@
 import React from 'react';
 import Declarations, {
 	DECLARATION_POSITIONS,
-	DeclarationsProps,
+	type DeclarationsProps,
 } from './declarations';
 
 function DeclarationsBeforeText(props: Omit<DeclarationsProps, 'type'>) {

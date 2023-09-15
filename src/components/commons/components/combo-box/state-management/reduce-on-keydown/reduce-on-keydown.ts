@@ -6,8 +6,8 @@ import { onHome } from './on-home';
 import { onEnd } from './on-end';
 import { onEnter } from './on-enter';
 import { onEscape } from './on-escape';
-import { ComboBoxState } from '../index';
-import { ComboAction, ComboActionKind } from '../actions';
+import { type ComboBoxState } from '../index';
+import { type ComboAction, ComboActionKind } from '../actions';
 
 export function reduceOnKeyDown(
 	state: ComboBoxState,

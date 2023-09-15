@@ -1,10 +1,10 @@
-import {
+import type {
 	LunaticComponentDefinition,
 	LunaticError,
 	LunaticExpression,
 	LunaticState,
 } from '../use-lunatic/type';
-import { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
 import useLunatic from '../use-lunatic';
 
@@ -216,7 +216,12 @@ type ComponentPropsByType = {
 	};
 	Summary: LunaticBaseProps<string | null> & {
 		sections: Array<{
-			responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
+			id: string;
+			responses?: Array<{
+				id: string;
+				label: VtlExpression;
+				value: VtlExpression;
+			}>;
 			title?: VtlExpression;
 			iterations?: number;
 		}>;

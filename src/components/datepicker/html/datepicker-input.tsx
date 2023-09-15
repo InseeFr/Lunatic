@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import { type ChangeEventHandler } from 'react';
 import classnames from 'classnames';
 
 export type Props = {

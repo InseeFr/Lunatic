@@ -1,5 +1,5 @@
 import { LunaticIcon } from './lunatic-icon';
-import { IconProps } from './icon-props';
+import { type IconProps } from './icon-props';
 
 export function CheckboxCheckedIcon({
 	className,

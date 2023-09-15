@@ -1,4 +1,4 @@
-import { SuggesterType } from '../../../use-lunatic/type-source';
+import type { SuggesterType } from '../../../use-lunatic/type-source';
 import { createWorker } from '../create-worker-ts';
 import { getWorkerPath } from '../../store-tools/worker-path';
 import { Logger } from '../../logger';

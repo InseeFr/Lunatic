@@ -1,4 +1,4 @@
-import { LunaticState } from '../type';
+import type { LunaticState } from '../type';
 import { executeConditionFilter, getComponentsFromState } from './index';
 
 export function getPageId({

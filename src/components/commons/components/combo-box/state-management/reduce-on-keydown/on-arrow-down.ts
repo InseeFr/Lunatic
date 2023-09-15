@@ -1,4 +1,4 @@
-import { ComboBoxState } from '../index';
+import { type ComboBoxState } from '../index';
 
 export function onArrowDown(
 	state: ComboBoxState,

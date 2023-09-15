@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { objectKeys } from '../../utils/object';
 import { formatDuration } from './formatDuration';
 import { getDurationFromValue } from './getDurationFromValue';
-import { Formats, labelByUnit, propsByUnit } from './durationUtils';
+import { type Formats, labelByUnit, propsByUnit } from './durationUtils';
 
 const DurationInput = ({
 	value,
@@ -20,20 +20,20 @@ const DurationInput = ({
 	// Generate handler for a specific unit field (year, month...)
 	const changeHandler =
 		(unit: string) =>
-		(e: {
-			// CheckValidity function is used to apply constraints to a field Ex: (min, max)
-			target: { valueAsNumber: number; checkValidity: () => boolean };
-		}) => {
-			if (!e.target.checkValidity()) {
-				return;
-			}
-			const fieldValue = Number.isNaN(e.target.valueAsNumber)
-				? null
-				: e.target.valueAsNumber;
-			const newDuration = { ...duration, [unit]: fieldValue };
-			onChange(formatDuration(newDuration));
-			setDuration(newDuration);
-		};
+			(e: {
+				// CheckValidity function is used to apply constraints to a field Ex: (min, max)
+				target: { valueAsNumber: number; checkValidity: () => boolean };
+			}) => {
+				if (!e.target.checkValidity()) {
+					return;
+				}
+				const fieldValue = Number.isNaN(e.target.valueAsNumber)
+					? null
+					: e.target.valueAsNumber;
+				const newDuration = { ...duration, [unit]: fieldValue };
+				onChange(formatDuration(newDuration));
+				setDuration(newDuration);
+			};
 
 	return (
 		<div className="field-group">

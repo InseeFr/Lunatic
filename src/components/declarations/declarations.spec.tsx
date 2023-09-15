@@ -1,7 +1,7 @@
 import Declarations from './declarations';
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { LunaticBaseProps } from '../type';
+import type { LunaticBaseProps } from '../type';
 
 const declarations = [
 	{

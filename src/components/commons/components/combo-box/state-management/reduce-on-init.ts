@@ -1,5 +1,5 @@
-import { ComboBoxState } from './index';
-import { ComboAction, ComboActionKind } from './actions';
+import { type ComboBoxState } from './index';
+import { type ComboAction, ComboActionKind } from './actions';
 
 function reduceOnInit(
 	state: ComboBoxState,

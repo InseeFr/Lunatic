@@ -1,9 +1,8 @@
-import React from 'react';
 import Datepicker from './html/datepicker';
 import { createCustomizableLunaticField } from '../commons';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 	const {

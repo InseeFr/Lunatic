@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import classnames from 'classnames';
 import {
 	useStoreIndex,
@@ -7,7 +7,7 @@ import {
 } from '../../utils/store-tools';
 import { CrossIcon, LoadIcon } from '../commons/icons';
 import Loader from './loader';
-import { SuggesterType } from '../../use-lunatic/type-source';
+import type { SuggesterType } from '../../use-lunatic/type-source';
 import { Logger } from '../../utils/logger';
 
 type Props = {

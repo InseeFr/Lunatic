@@ -1,4 +1,4 @@
-import { LunaticState } from '../../type';
+import type { LunaticState } from '../../type';
 
 /**
  * Add the value for the variable in the corresponding variable object
