@@ -216,7 +216,12 @@ type ComponentPropsByType = {
 	};
 	Summary: LunaticBaseProps<string | null> & {
 		sections: Array<{
-			responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
+			id: string;
+			responses?: Array<{
+				id: string;
+				label: VtlExpression;
+				value: VtlExpression;
+			}>;
 			title?: VtlExpression;
 			iterations?: number;
 		}>;

@@ -26,7 +26,7 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"response": { "name": "NB_HAB" }
 		},
-    {
+		{
 			"id": "hoew",
 			"componentType": "InputNumber",
 			"mandatory": false,
@@ -216,44 +216,59 @@
 				"value": "\"## Vos réponses.\"",
 				"type": "VTL|MD"
 			},
-      "sections": [
-        {
-          "iterations": { "value": "NB_HAB", "type": "VTL" },
-          "title": {
-            "value": "\"### Le bulletin individuel de \" || PRENOMS",
-            "type": "VTL|MD"
-          },
-          "responses": [
-            {
-              "label": { "value": "\"L'age de \" || PRENOMS", "type": "VTL" },
-              "value": { "value": "cast(AGE,string) || \" ans\"", "type": "VTL" }
-            },
-            {
-              "label": { "value": "\"Le sexe de \" || PRENOMS", "type": "VTL" },
-              "value": {
-                "value": "if(SEXE = \"1\") then \"Masculin\" else \"Féminin\"",
-                "type": "VTL"
-              }
-            }
-          ]
-        },
-        {
-          "title": {
-            "value": "\"### La feuille logement\"",
-            "type": "VTL|MD"
-          },
-          "responses": [
-            {
-              "label": { "value": "\"Zéro divisé par zéro \"", "type": "VTL" },
-              "value": { "value": "cast(ZERO,string) || \", mais ça tu savais déjà !\"", "type": "VTL" }
-            },
-            {
-              "label": { "value": "\"Nombre d'habitants \"", "type": "VTL" },
-              "value": { "value": "cast(NB_HAB,string) || \" personnes\"", "type": "VTL" }
-            }
-          ]
-        }
-      ],
+			"sections": [
+				{
+					"id": "summary-section-0",
+					"iterations": { "value": "NB_HAB", "type": "VTL" },
+					"title": {
+						"value": "\"### Le bulletin individuel de \" || PRENOMS",
+						"type": "VTL|MD"
+					},
+					"responses": [
+						{
+							"id": "summary-section-0-response-0",
+							"label": { "value": "\"L'age de \" || PRENOMS", "type": "VTL" },
+							"value": {
+								"value": "cast(AGE,string) || \" ans\"",
+								"type": "VTL"
+							}
+						},
+						{
+							"id": "summary-section-0-response-1",
+							"label": { "value": "\"Le sexe de \" || PRENOMS", "type": "VTL" },
+							"value": {
+								"value": "if(SEXE = \"1\") then \"Masculin\" else \"Féminin\"",
+								"type": "VTL"
+							}
+						}
+					]
+				},
+				{
+					"id": "summary-section-1",
+					"title": {
+						"value": "\"### La feuille logement\"",
+						"type": "VTL|MD"
+					},
+					"responses": [
+						{
+							"id": "summary-section-1-response-0",
+							"label": { "value": "\"Zéro divisé par zéro \"", "type": "VTL" },
+							"value": {
+								"value": "cast(ZERO,string) || \", mais ça tu savais déjà !\"",
+								"type": "VTL"
+							}
+						},
+						{
+							"id": "summary-section-1-response-1",
+							"label": { "value": "\"Nombre d'habitants \"", "type": "VTL" },
+							"value": {
+								"value": "cast(NB_HAB,string) || \" personnes\"",
+								"type": "VTL"
+							}
+						}
+					]
+				}
+			],
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"page": "5"
 		}
@@ -270,7 +285,7 @@
 				"INPUTED": null
 			}
 		},
-    {
+		{
 			"variableType": "COLLECTED",
 			"name": "ZERO",
 			"values": {
