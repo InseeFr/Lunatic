@@ -1,4 +1,4 @@
-import { LunaticState } from '../../type';
+import type { LunaticState } from '../../type';
 
 const isPageReached = (page: string, lastReachedPage: string) =>
 	parseInt(page, 10) <= parseInt(lastReachedPage, 10);

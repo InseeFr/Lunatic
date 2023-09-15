@@ -4,12 +4,12 @@ import {
 	DeclarationsDetachable,
 } from '../../declarations';
 
-import React, { Fragment, ReactNode } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import FieldContainer from './field-container';
 import Label from './label';
 import Missing from './missing';
 import VariableStatus from './variable-status';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticBaseProps } from '../../type';
 
 /**
  * Returns declarations with "after" position if exists, return description otherwise

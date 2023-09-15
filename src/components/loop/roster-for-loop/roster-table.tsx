@@ -1,17 +1,16 @@
-import React from 'react';
 import { Table } from '../../commons/components/html-table';
 import Header from './header';
 import Body from './body';
 import './roster.scss';
 import { NothingToDisplay } from '../../commons';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticComponentProps } from '../../type';
 
 type Props = {
 	nbRows: number;
 	handleChange: (
 		response: { name: string },
 		value: unknown,
-		args: { index: number; [k: string]: unknown }
+		args: { index: number;[k: string]: unknown }
 	) => void;
 } & Pick<
 	LunaticComponentProps<'RosterForLoop'>,

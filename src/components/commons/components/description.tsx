@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 
 type Props = {
 	value?: ReactNode | Array<{ label: ReactNode; declarationType: string }>;

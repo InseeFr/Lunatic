@@ -1,5 +1,5 @@
-import React, { isValidElement } from 'react';
-import { ComboBoxOptionType } from '../../../commons/components/combo-box/combo-box.type';
+import { isValidElement } from 'react';
+import type { ComboBoxOptionType } from '../../../commons/components/combo-box/combo-box.type';
 
 type Props = {
 	option?: ComboBoxOptionType;

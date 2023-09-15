@@ -1,8 +1,7 @@
-import React from 'react';
 import { ComboBox } from '../../../commons';
 import SimpleOptionRenderer from './simple-option-renderer';
 import SimpleLabelRenderer from './simple-label-renderer';
-import { DropdownProps } from '../dropdown';
+import { type DropdownProps } from '../dropdown';
 
 function DropdownSimple({
 	id,

@@ -1,4 +1,5 @@
-import React, { PropsWithChildren } from 'react';
+import React, { type PropsWithChildren } from 'react';
+
 import ReactDOM from 'react-dom';
 
 function ModalContainer({ children }: PropsWithChildren) {

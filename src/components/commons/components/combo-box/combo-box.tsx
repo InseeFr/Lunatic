@@ -1,14 +1,14 @@
-import { useCallback, useReducer, useEffect, ReactNode, useRef } from 'react';
+import { useCallback, useReducer, useEffect, type ReactNode } from 'react';
 import classnames from 'classnames';
 import { ClearButton } from './selection/clear-button';
 import { INITIAL_STATE, reducer, actions } from './state-management';
 import './combo-box.scss';
-import { ComboBoxOptionType } from './combo-box.type';
-import { SelectionProps, Selection } from './selection/selection';
-import { Panel, PanelProps } from './panel/panel';
+import type { ComboBoxOptionType } from './combo-box.type';
+import { type SelectionProps, Selection } from './selection/selection';
+import { Panel, type PanelProps } from './panel/panel';
 import ComboBoxContainer from './combo-box-container';
 import ComboBoxContent from './combo-box-content';
-import { LunaticBaseProps } from '../../../type';
+import type { LunaticBaseProps } from '../../../type';
 import Label from '../label';
 import { createCustomizableLunaticField } from '../../index';
 

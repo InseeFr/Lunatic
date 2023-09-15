@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { OrchestratedComponent } from '../commons';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 type Props = {
 	linksIterations: [number, number];

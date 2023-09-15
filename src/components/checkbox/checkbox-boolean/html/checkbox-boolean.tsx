@@ -1,6 +1,6 @@
 import { createCustomizableLunaticField, Errors } from '../../../commons';
-import { ReactNode } from 'react';
-import { LunaticError } from '../../../../use-lunatic/type';
+import type { ReactNode } from 'react';
+import type { LunaticError } from '../../../../use-lunatic/type';
 import { CheckboxOption } from '../../commons';
 import { voidFunction } from '../../../../utils/function';
 

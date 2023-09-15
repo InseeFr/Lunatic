@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import classnames from 'classnames';
-import { LunaticBaseProps } from '../../../type';
+import type { LunaticBaseProps } from '../../../type';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import Errors from '../errors';
 

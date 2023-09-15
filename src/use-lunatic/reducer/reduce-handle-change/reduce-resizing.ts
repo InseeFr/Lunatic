@@ -1,7 +1,7 @@
 import { getCompatibleVTLExpression } from '../../commons';
 import { resizeArrayVariable } from '../commons';
-import { LunaticState } from '../../type';
-import { ActionHandleChange } from '../../actions';
+import type { LunaticState } from '../../type';
+import { type ActionHandleChange } from '../../actions';
 
 function refillValue(size: number, precSize: number, value: unknown) {
 	return resizeArrayVariable(value, size, null);
