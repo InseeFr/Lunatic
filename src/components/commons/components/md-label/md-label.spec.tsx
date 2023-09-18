@@ -11,7 +11,12 @@ describe('md-label', () => {
 			    Demo
 			  </strong>
 			   of a 
-			  🐶
+			  <span
+			    aria-label="dog emoji"
+			    role="img"
+			  >
+			    🐶
+			  </span>
 			</p>
 		`);
 	});

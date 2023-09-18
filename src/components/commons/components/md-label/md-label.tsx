@@ -22,7 +22,7 @@ const MdLabel = ({ expression, logFunction = DEFAULT_LOG_FUNCTION }: Props) => (
 	<ReactMarkdown
 		children={expression}
 		components={renderers({ logFunction })}
-		remarkPlugins={[emoji]}
+		remarkPlugins={[[emoji, { accessible: true }]]}
 	/>
 );
 
