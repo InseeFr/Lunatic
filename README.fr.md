@@ -111,7 +111,6 @@ Ce composant se charge de récupérer le bon composant à afficher en fonction d
 
 Pour activer l'**autofocus**, il faut passer une clé dans la propriété `autoFocusKey` de `LunaticComponents`. Dès que cette valeur change, le premier champ est focus (une bonne solution est de passer le pageTag fourni par useLunatic).
 
-
 ## Personnalisation
 
 Par défaut les composants offerts par Lunatic sont plutôt simples avec un style minimal. Il est possible de personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes, vous pouvez aussi remplacer les composants de bases à l'aide de la propriété `custom` que vous pouvez passer lors de l'appel à useLunatic.
