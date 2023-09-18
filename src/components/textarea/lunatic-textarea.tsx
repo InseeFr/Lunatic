@@ -22,6 +22,7 @@ const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 		missing,
 		missingResponse,
 		management,
+		readOnly,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -48,6 +49,7 @@ const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 				placeholder={placeHolder}
 				label={label}
 				errors={errors}
+				readOnly={readOnly}
 			/>
 		</LunaticComponent>
 	);
