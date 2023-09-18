@@ -23,13 +23,15 @@ function Modal(
 
 	useEffect(() => {
 		const focusOnInit = first?.current?.lastElementChild as HTMLButtonElement;
-		focusOnInit.focus()
-	}, [first])
+		focusOnInit.focus();
+	}, [first]);
 
 	const onKeyDown = useCallback(
 		(e: KeyboardEvent<HTMLElement>) => {
-			const firstButtonToFocus = first?.current?.lastElementChild as HTMLButtonElement
-			const lastButtonToFocus = last?.current?.lastElementChild as HTMLButtonElement
+			const firstButtonToFocus = first?.current
+				?.lastElementChild as HTMLButtonElement;
+			const lastButtonToFocus = last?.current
+				?.lastElementChild as HTMLButtonElement;
 			if (e.key === 'Tab') {
 				if (e.shiftKey) {
 					if (document.activeElement === firstButtonToFocus) {
@@ -63,7 +65,7 @@ function Modal(
 			<div className="modal-content" onKeyDown={onKeyDown}>
 				<div id={id} className="lunatic-modal-container">
 					<div className="close-button" ref={first}>
-						<Button onClick={handlePreviousClick} >fermer x</Button>
+						<Button onClick={handlePreviousClick}>fermer x</Button>
 					</div>
 					<div className="modal-message">
 						<span>{label}</span>
@@ -71,7 +73,7 @@ function Modal(
 					</div>
 					<div className="cancel-confirm-buttons" ref={last}>
 						<Button onClick={handlePreviousClick}>Annuler</Button>
-						<Button onClick={handleNextClick} >Je confirme</Button>
+						<Button onClick={handleNextClick}>Je confirme</Button>
 					</div>
 				</div>
 			</div>

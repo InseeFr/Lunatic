@@ -8,7 +8,7 @@ import {
 import D from '../i18n/index';
 
 const LunaticContext = createContext({
-	missingStrategy: () => { },
+	missingStrategy: () => {},
 	management: false,
 	missing: false,
 	shortcut: false,

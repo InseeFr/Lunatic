@@ -30,7 +30,7 @@ function extractDataSetResult(dataSet: DataSet) {
 /**
  * Run a VTL expression and return the result
  */
-export function executeVtlExpression<T = unknown>(
+export function executeVtlExpression(
 	expression: string,
 	vtlBindings: { [variableName: string]: unknown }
 ) {

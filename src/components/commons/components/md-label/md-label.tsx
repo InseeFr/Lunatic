@@ -1,8 +1,12 @@
-import type { ComponentProps, FunctionComponent, PropsWithChildren } from 'react';
+import type {
+	ComponentProps,
+	FunctionComponent,
+	PropsWithChildren,
+} from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from './link';
 import { voidFunction } from '../../../../utils/function';
-import emoji from "remark-emoji"
+import emoji from 'remark-emoji';
 
 const renderers = (otherProps: {
 	logFunction: typeof DEFAULT_LOG_FUNCTION;
