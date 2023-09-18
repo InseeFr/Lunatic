@@ -13,6 +13,7 @@ function LunaticSuggester({
 	value,
 	handleChange,
 	disabled,
+	readOnly,
 	errors,
 	label,
 	description,
@@ -51,6 +52,7 @@ function LunaticSuggester({
 				label={label}
 				getSuggesterStatus={getSuggesterStatus}
 				className={className}
+				readOnly={readOnly}
 			/>
 		</LunaticComponent>
 	);

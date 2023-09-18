@@ -16,6 +16,7 @@ type Props = {
 	labelRenderer: LunaticComponentProps<'Suggester'>['labelRenderer'];
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
 	disabled?: boolean;
+	readOnly?: boolean;
 	id?: string;
 	searching?: (s: string | null) => Promise<{ results: ComboBoxOptionType[] }>;
 	label?: ReactNode;
@@ -32,6 +33,7 @@ function Suggester({
 	optionRenderer,
 	value,
 	disabled,
+	readOnly,
 	id,
 	searching,
 	label,
@@ -74,6 +76,7 @@ function Suggester({
 			classNamePrefix={classNamePrefix}
 			onChange={handleChange}
 			disabled={disabled}
+			readOnly={readOnly}
 			options={options}
 			editable={true}
 			onSelect={handleSelect}

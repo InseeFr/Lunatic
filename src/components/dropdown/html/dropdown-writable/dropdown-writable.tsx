@@ -16,6 +16,7 @@ type Props = {
 	label?: ReactNode;
 	errors?: Record<string, LunaticError[]>;
 	description?: ReactNode;
+	readOnly?: boolean;
 };
 
 function DropdownWritable({
@@ -28,6 +29,7 @@ function DropdownWritable({
 	label,
 	errors,
 	description,
+	readOnly,
 }: Props) {
 	const [filtered, setFiltered] = useState(options);
 
@@ -48,6 +50,7 @@ function DropdownWritable({
 			id={id}
 			className={className}
 			disabled={disabled}
+			readOnly={readOnly}
 			options={filtered}
 			onSelect={onSelect}
 			onChange={onChange}

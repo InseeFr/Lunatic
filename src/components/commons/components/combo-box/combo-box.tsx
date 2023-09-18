@@ -12,6 +12,7 @@ import { KEYBOARD_KEY_CODES } from './keyboard-key-codes';
 import { Panel, type PanelProps } from './panel/panel';
 import { ClearButton } from './selection/clear-button';
 import { Selection, type SelectionProps } from './selection/selection';
+import { read } from 'fs';
 
 const EMPTY_SEARCH = '';
 
@@ -29,6 +30,7 @@ type Props = SelectionProps &
 		onChange?: (s: string | null) => void;
 		onSelect: (s: string | null) => void;
 		options: ComboBoxOptionType[];
+		readOnly?: boolean;
 	};
 
 function ComboBox({
@@ -38,6 +40,7 @@ function ComboBox({
 	placeholder = 'Please, do something...',
 	editable = false,
 	disabled,
+	readOnly,
 	id,
 	optionRenderer,
 	labelRenderer,
@@ -60,7 +63,7 @@ function ComboBox({
 	const labelId = `label-${id}`;
 
 	const handleFocus = () => {
-		if (disabled) {
+		if (disabled || readOnly) {
 			return;
 		}
 		setExpanded(true);
@@ -68,7 +71,7 @@ function ComboBox({
 	};
 
 	const handleBlur = () => {
-		if (disabled) {
+		if (disabled || readOnly) {
 			return;
 		}
 		setExpanded(false);
@@ -120,13 +123,14 @@ function ComboBox({
 				return;
 		}
 	};
-	const showClearButton = !disabled;
+	const showClearButton = !disabled || !readOnly;
 
 	if (messageError) {
 		return (
 			<div className="lunatic-combo-box-message-error">{messageError}</div>
 		);
 	}
+	console.log(readOnly);
 
 	return (
 		<ComboBoxContainer
@@ -154,6 +158,7 @@ function ComboBox({
 					id={id}
 					labelId={labelId}
 					disabled={disabled}
+					readOnly={readOnly}
 					focused={focused}
 					editable={editable}
 					selectedIndex={selectedIndex}
