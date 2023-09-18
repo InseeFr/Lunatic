@@ -57,107 +57,129 @@
 				}
 			]
 		},
+
 		{
-			"id": "pairwise-links",
-			"componentType": "PairwiseLinks",
-			"conditionFilter": { "value": "true" },
-			"xAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
-			"yAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"id": "component-set",
+			"componentType": "ComponentSet",
 			"page": "3",
-			"symLinks": {
-				"LINKS": {
-					"1": "1",
-					"2": "3",
-					"3": "2",
-					"4": "4",
-					"5": "6",
-					"6": "5",
-					"7": "8",
-					"8": "7",
-					"9": "10",
-					"10": "9",
-					"11": "13",
-					"12": "12",
-					"13": "11",
-					"14": null,
-					"15": "15",
-					"16": "16",
-					"17": "17",
-					"18": "18"
-				}
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"label": {
+				"value": "\"## Who are you?\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"This is your opportunity to tell me about yourself!\"",
+				"type": "VTL|MD"
 			},
 			"components": [
 				{
-					"componentType": "Dropdown",
-					"id": "dropdown-1",
-					"conditionFilter": { "value": "xAxis <> yAxis", "type": "VTL" },
-					"label": {
-						"value": "\"Qui est \" || yAxis || \" pour \" || xAxis || \" ?\"",
-						"type": "VTL|MD"
+					"id": "pairwise-links",
+					"componentType": "PairwiseLinks",
+					"conditionFilter": { "value": "true" },
+					"xAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
+					"yAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
+					"symLinks": {
+						"LINKS": {
+							"1": "1",
+							"2": "3",
+							"3": "2",
+							"4": "4",
+							"5": "6",
+							"6": "5",
+							"7": "8",
+							"8": "7",
+							"9": "10",
+							"10": "9",
+							"11": "13",
+							"12": "12",
+							"13": "11",
+							"14": null,
+							"15": "15",
+							"16": "16",
+							"17": "17",
+							"18": "18"
+						}
 					},
-					"response": {
-						"name": "LINKS"
-					},
-					"options": [
-						{ "value": "1", "label": "\"Son conjoint, sa conjointe\"" },
-						{ "value": "2", "label": "\"Sa mère, son père\"" },
-						{ "value": "3", "label": "\"Sa fille, son fils\"" },
+					"components": [
 						{
-							"value": "4",
-							"label": "\"Sa soeur, son frère (y compris demi et quasi)\""
+							"componentType": "Dropdown",
+							"id": "dropdown-1",
+							"conditionFilter": { "value": "xAxis <> yAxis", "type": "VTL" },
+							"label": {
+								"value": "\"Qui est \" || yAxis || \" pour \" || xAxis || \" ?\"",
+								"type": "VTL|MD"
+							},
+							"response": {
+								"name": "LINKS"
+							},
+							"options": [
+								{ "value": "1", "label": "\"Son conjoint, sa conjointe\"" },
+								{ "value": "2", "label": "\"Sa mère, son père\"" },
+								{ "value": "3", "label": "\"Sa fille, son fils\"" },
+								{
+									"value": "4",
+									"label": "\"Sa soeur, son frère (y compris demi et quasi)\""
+								},
+								{
+									"value": "5",
+									"label": "\"Sa belle-mère, son beau-père (conjoint.e d'un des parents)\""
+								},
+								{
+									"value": "6",
+									"label": "\"L'enfant du conjoint (belle-fille, beau-fils)\""
+								},
+								{
+									"value": "7",
+									"label": "\"Sa belle-mère, son beau-père (parent du conjoint)\""
+								},
+								{
+									"value": "8",
+									"label": "\"Sa belle-fille, son beau-fils (conjoint.e d'un enfant)\""
+								},
+								{ "value": "9", "label": "\"Sa grand-mère, son grand-père\"" },
+								{ "value": "10", "label": "\"Sa petite-fille, petit-fils\"" },
+								{ "value": "11", "label": "\"Sa tante, son oncle\"" },
+								{ "value": "12", "label": "\"Sa cousine, son cousin\"" },
+								{ "value": "13", "label": "\"Sa nièce, son neveu\"" },
+								{
+									"value": "14",
+									"label": "\"Un enfant placé en famille d'accueil\""
+								},
+								{
+									"value": "15",
+									"label": "\"Sa belle-soeur, son beau-frère\""
+								},
+								{ "value": "16", "label": "\"Un autre lien familial\"" },
+								{
+									"value": "17",
+									"label": "\"Un colocataire, sous-locataire\""
+								},
+								{
+									"value": "18",
+									"label": "\"Autre lien (employé de maison, salarié logé, jeune au pair …)\""
+								}
+							]
 						},
 						{
-							"value": "5",
-							"label": "\"Sa belle-mère, son beau-père (conjoint.e d'un des parents)\""
-						},
-						{
-							"value": "6",
-							"label": "\"L'enfant du conjoint (belle-fille, beau-fils)\""
-						},
-						{
-							"value": "7",
-							"label": "\"Sa belle-mère, son beau-père (parent du conjoint)\""
-						},
-						{
-							"value": "8",
-							"label": "\"Sa belle-fille, son beau-fils (conjoint.e d'un enfant)\""
-						},
-						{ "value": "9", "label": "\"Sa grand-mère, son grand-père\"" },
-						{ "value": "10", "label": "\"Sa petite-fille, petit-fils\"" },
-						{ "value": "11", "label": "\"Sa tante, son oncle\"" },
-						{ "value": "12", "label": "\"Sa cousine, son cousin\"" },
-						{ "value": "13", "label": "\"Sa nièce, son neveu\"" },
-						{
-							"value": "14",
-							"label": "\"Un enfant placé en famille d'accueil\""
-						},
-						{ "value": "15", "label": "\"Sa belle-soeur, son beau-frère\"" },
-						{ "value": "16", "label": "\"Un autre lien familial\"" },
-						{ "value": "17", "label": "\"Un colocataire, sous-locataire\"" },
-						{
-							"value": "18",
-							"label": "\"Autre lien (employé de maison, salarié logé, jeune au pair …)\""
+							"componentType": "Textarea",
+							"label": {
+								"value": "\"Pouvez-vous décrire le lien entre \" || xAxis || \" et \" || yAxis || \" ?\"",
+								"type": "VTL|MD"
+							},
+							"conditionFilter": {
+								"value": "not(nvl(cast(LINKS, string), \"\") = \"\") and cast(LINKS, string) = \"17\"",
+								"type": "VTL"
+							},
+							"id": "other",
+							"response": {
+								"name": "OTHER"
+							}
 						}
 					]
-				},
-				{
-					"componentType": "Textarea",
-
-					"label": {
-						"value": "\"Pouvez-vous décrire le lien entre \" || xAxis || \" et \" || yAxis || \" ?\"",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "LINKS = \"17\"",
-						"type": "VTL"
-					},
-					"id": "other",
-					"response": {
-						"name": "OTHER"
-					}
 				}
 			]
 		},
+
 		{
 			"id": "pariwise-block",
 			"componentType": "Loop",

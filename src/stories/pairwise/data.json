@@ -1,12 +1,24 @@
 {
 	"COLLECTED": {
-		"PRENOM": { "COLLECTED": ["Dad", "Mom", "Unknow"] },
-		"AGE": { "COLLECTED": [30, 29, 5] },
+		"PRENOM": {
+			"COLLECTED": ["Papa", "Maman", "Fiston", "Fantome de l'opéra"]
+		},
+		"AGE": { "COLLECTED": [30, 29, 5, 1000] },
 		"LINKS": {
-			"COLLECTED": [[null]]
+			"COLLECTED": [
+				[null, "1", "2", "17"],
+				["1", null, null, null],
+				["3", null, null, null],
+				[null, null, null, null]
+			]
 		},
 		"OTHER": {
-			"COLLECTED": [[null]]
+			"COLLECTED": [
+				[null, null, null, "son meilleurs ami"],
+				[null, null, null, null],
+				[null, null, null, null],
+				[null, null, null, null]
+			]
 		}
 	}
 }

@@ -1,11 +1,12 @@
 import type { ReactNode } from 'react';
+import { ComponentType } from '../use-lunatic/type-source';
 
 /**
  * Extract the value associated with a component
  * If the component expect multiple values (it has a responses property) then extract a map of values
  */
 export function getComponentValue(
-	component: unknown,
+	component: ComponentType,
 	valueMap: Record<string, unknown>,
 	rowIndex?: number
 ): unknown {
@@ -28,6 +29,9 @@ export function getComponentValue(
 				return [response.name, value];
 			}) ?? []
 		);
+	}
+	if (component.componentType === 'PairwiseLinks') {
+		return valueMap;
 	}
 	return undefined;
 }
