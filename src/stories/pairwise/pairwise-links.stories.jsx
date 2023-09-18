@@ -3,7 +3,6 @@ import Orchestrator from '../utils/orchestrator';
 import links from './links';
 import data from './data';
 import linksComponentSet from './links-componentset.json';
-import dataComponentSet from './data-componentset.json';
 import defaultArgTypes from '../utils/default-arg-types';
 import { playwrightToUserEvent } from '../../../tests/utils/e2e';
 import { sleep } from '../../../tests/utils/timer';
@@ -25,7 +24,7 @@ PairwiseInComponentSet.args = {
 	id: 'links-componentset',
 	source: linksComponentSet,
 	pagination: true,
-	data: dataComponentSet,
+	data,
 };
 
 export const Filled = Template.bind({});
