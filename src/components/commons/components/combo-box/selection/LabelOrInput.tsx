@@ -2,7 +2,7 @@ import LabelSelection, { type LabelSelectionProps } from './label-selection';
 import Input, { type InputProps } from './input';
 
 type LabelOrInputTypeProps = LabelSelectionProps &
-	InputProps & { editable?: boolean; expanded?: boolean; readOnly?: boolean };
+	InputProps & { editable?: boolean; expanded?: boolean };
 
 /**
  * Display the input or the label of the selection based on the state of the Suggester.
@@ -23,7 +23,6 @@ export function LabelOrInput(props: LabelOrInputTypeProps) {
 		options,
 		search,
 		disabled,
-		readOnly,
 		id,
 		focused,
 		onChange,
@@ -38,7 +37,6 @@ export function LabelOrInput(props: LabelOrInputTypeProps) {
 				options={options}
 				search={search}
 				disabled={disabled}
-				readOnly={readOnly}
 			/>
 		);
 	}
@@ -50,7 +48,6 @@ export function LabelOrInput(props: LabelOrInputTypeProps) {
 			value={search}
 			placeholder={placeholder}
 			disabled={disabled}
-			readOnly={readOnly}
 			focused={focused}
 		/>
 	);

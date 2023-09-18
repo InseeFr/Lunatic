@@ -28,7 +28,6 @@ type Props = SelectionProps &
 		onChange?: (s: string | null) => void;
 		onSelect: (s: string | null) => void;
 		options: ComboBoxOptionType[];
-		readOnly?: boolean;
 	};
 
 function ComboBox({
@@ -38,7 +37,6 @@ function ComboBox({
 	placeholder = 'Please, do something...',
 	editable = false,
 	disabled,
-	readOnly,
 	id,
 	optionRenderer,
 	labelRenderer,
@@ -80,22 +78,22 @@ function ComboBox({
 
 	const onFocus = useCallback(
 		function () {
-			if (disabled || readOnly) {
+			if (disabled) {
 				return;
 			}
 			dispatch(actions.onFocus());
 		},
-		[disabled, readOnly]
+		[disabled]
 	);
 
 	const onBlur = useCallback(
 		function () {
-			if (disabled || readOnly) {
+			if (disabled) {
 				return;
 			}
 			dispatch(actions.onBlur());
 		},
-		[disabled, readOnly]
+		[disabled]
 	);
 
 	const handleSelect = useCallback(
@@ -131,7 +129,7 @@ function ComboBox({
 		},
 		[onChange]
 	);
-	const showClearButton = !disabled || !readOnly;
+	const showClearButton = !disabled;
 
 	if (messageError) {
 		return (
@@ -165,7 +163,6 @@ function ComboBox({
 					id={id}
 					labelId={labelId}
 					disabled={disabled}
-					readOnly={readOnly}
 					focused={focused}
 					editable={editable}
 					selectedIndex={selectedIndex}

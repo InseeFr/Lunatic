@@ -17,7 +17,6 @@ export type LabelSelectionProps = {
 	options: Array<ComboBoxOptionType>;
 	search?: string;
 	disabled?: boolean;
-	readOnly?: boolean;
 };
 
 export function LabelSelection({
@@ -27,7 +26,6 @@ export function LabelSelection({
 	options,
 	search,
 	disabled,
-	readOnly,
 }: LabelSelectionProps) {
 	const option =
 		selectedIndex !== undefined ? options[selectedIndex] : undefined;
@@ -39,7 +37,6 @@ export function LabelSelection({
 			placeholder={placeholder}
 			search={search}
 			disabled={disabled}
-			readOnly={readOnly}
 		/>
 	);
 }
