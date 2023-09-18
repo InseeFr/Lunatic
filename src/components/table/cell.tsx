@@ -57,8 +57,8 @@ function collecteValue(
 
 type Props = {
 	content:
-	| LunaticComponentDefinition
-	| { label: LunaticExpression; rowspan?: number; colspan?: number };
+		| LunaticComponentDefinition
+		| { label: LunaticExpression; rowspan?: number; colspan?: number };
 	id: string;
 	executeExpression: LunaticBaseProps['executeExpression'];
 	iteration?: number;

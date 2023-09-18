@@ -157,28 +157,28 @@ To facilitate expression execution, an `executeExpression()` method is exposed i
 - Files containing JSX should use the .jsx (or .tsx) extension.
 - Commits follow the specification [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 - Pull Requests should be prefixed in the same convention as commits:
-   - `test(XXX?)`: XXX for adding tests.
-   - `feat(XXX?)`: XXX for adding new features.
-   - `fix(XXX?)`: XXX for bug fixes.
-   - `docs(XXX?)`: XXX for adding documentation.
-   - `refactor(XXX?)`: XXX for refactoring that doesn't change functionality.
-   - `build(XXX?)`: XXX for changes related to the build process, compilation scripts, etc.
-   - `style(XXX?)`: XXX for style modifications.
-   - `ci(XXX?)`: XXX for CI modification.
-   - `perf(XXX?)`: XXX for performance improvement.
-   - `revert(XXX?)`: XXX to revert a previous PR. 
-   - `chore(XXX?)`: XXX for maintenance tasks or tasks that don't fall into other categories.
+
+  - `test(XXX?)`: XXX for adding tests.
+  - `feat(XXX?)`: XXX for adding new features.
+  - `fix(XXX?)`: XXX for bug fixes.
+  - `docs(XXX?)`: XXX for adding documentation.
+  - `refactor(XXX?)`: XXX for refactoring that doesn't change functionality.
+  - `build(XXX?)`: XXX for changes related to the build process, compilation scripts, etc.
+  - `style(XXX?)`: XXX for style modifications.
+  - `ci(XXX?)`: XXX for CI modification.
+  - `perf(XXX?)`: XXX for performance improvement.
+  - `revert(XXX?)`: XXX to revert a previous PR.
+  - `chore(XXX?)`: XXX for maintenance tasks or tasks that don't fall into other categories.
 
 - Branches should be prefixed (following the same prefixes as Conventional Commits):
-   - `test/XXX`: for adding tests.
-   - `feat/XXX`: for adding new features.
-   - `fix/XXX`: for bug fixes.
-   - `docs/XXX`: for adding documentation.
-   - `refactor/XXX`: for refactoring that doesn't change functionality.
-   - `build/XXX`: for changes related to the build process, compilation scripts, etc.
-   - `style/XXX`: for changes related to code style.
-   - `ci/XXX`: for changes related to continuous integration (CI).
-   - `perf/XXX`: for performance improvements.
-   - `revert/XXX`: to revert a previous PR.
-   - `chore/XXX`: for maintenance tasks or tasks that don't fall into other categories.
-
+  - `test/XXX`: for adding tests.
+  - `feat/XXX`: for adding new features.
+  - `fix/XXX`: for bug fixes.
+  - `docs/XXX`: for adding documentation.
+  - `refactor/XXX`: for refactoring that doesn't change functionality.
+  - `build/XXX`: for changes related to the build process, compilation scripts, etc.
+  - `style/XXX`: for changes related to code style.
+  - `ci/XXX`: for changes related to continuous integration (CI).
+  - `perf/XXX`: for performance improvements.
+  - `revert/XXX`: to revert a previous PR.
+  - `chore/XXX`: for maintenance tasks or tasks that don't fall into other categories.

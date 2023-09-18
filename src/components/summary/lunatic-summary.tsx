@@ -61,7 +61,7 @@ function CompiledTitle({
 }
 
 export function LunaticSummary(props: LunaticComponentProps<'Summary'>) {
-  const { executeExpression, label, sections } = props;
+	const { executeExpression, label, sections } = props;
 
 	const compiledSections = sections.reduce((acc, section) => {
 		const { iterations, title, responses, id } = section;
