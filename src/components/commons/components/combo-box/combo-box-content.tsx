@@ -1,7 +1,7 @@
 import type { KeyboardEvent } from 'react';
 import React, { type PropsWithChildren, useCallback, useRef } from 'react';
 import classnames from 'classnames';
-import { KEYBOARD_KEY_CODES } from './state-management/reduce-on-keydown/keyboard-key-codes';
+import { KEYBOARD_KEY_CODES } from './keyboard-key-codes';
 import { useDocumentAddEventListener } from '../../index';
 import ComboBoxContentBox from './combo-box-content-box';
 
