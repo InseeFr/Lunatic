@@ -14,12 +14,14 @@ function DropdownSimple({
 	label,
 	errors,
 	description,
+	readOnly,
 }: DropdownProps) {
 	return (
 		<ComboBox
 			id={id}
 			className={className}
 			disabled={disabled}
+			readOnly={readOnly}
 			options={options}
 			editable={false}
 			onSelect={onSelect}

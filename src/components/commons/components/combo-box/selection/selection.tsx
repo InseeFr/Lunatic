@@ -11,6 +11,7 @@ export type SelectionProps = {
 	labelId?: string;
 	id?: string;
 	classNamePrefix?: string;
+	readOnly?: boolean;
 } & LabelSelectionProps;
 
 export function Selection({
@@ -19,6 +20,7 @@ export function Selection({
 	search,
 	expanded,
 	disabled,
+	readOnly,
 	focused,
 	onChange,
 	selectedIndex,
@@ -50,6 +52,7 @@ export function Selection({
 				options={options}
 				search={search}
 				disabled={disabled}
+				readOnly={readOnly}
 				onChange={onChangeEx}
 				value={search}
 				focused={focused}
