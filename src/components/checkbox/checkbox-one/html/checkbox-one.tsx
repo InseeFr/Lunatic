@@ -1,4 +1,6 @@
-import RadioGroup, { type RadioGroupProps } from '../../../radio/html/radio-group';
+import RadioGroup, {
+	type RadioGroupProps,
+} from '../../../radio/html/radio-group';
 import { createCustomizableLunaticField } from '../../../commons';
 import './checkbox-one.scss';
 

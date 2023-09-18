@@ -13,7 +13,7 @@ type Props = {
 	handleChange: (
 		response: { name: string },
 		value: unknown,
-		args: { index: number;[key: string]: unknown }
+		args: { index: number; [key: string]: unknown }
 	) => void;
 	missing?: LunaticBaseProps['missing'];
 	management?: LunaticBaseProps['management'];

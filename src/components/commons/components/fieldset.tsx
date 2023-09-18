@@ -9,8 +9,8 @@ import type { LunaticBaseProps } from '../../type';
 type Props = PropsWithChildren<{
 	legend?: ReactNode;
 	description?:
-	| LunaticBaseProps['description']
-	| { label: string; declarationType: string }[];
+		| LunaticBaseProps['description']
+		| { label: string; declarationType: string }[];
 	className?: string;
 }>;
 

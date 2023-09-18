@@ -48,7 +48,7 @@ function RosterforLoop({
 		function (
 			response: { name: string },
 			value: unknown,
-			args: { index: number;[k: string]: unknown }
+			args: { index: number; [k: string]: unknown }
 		) {
 			const v = valueMap[response.name];
 			v[args.index] = value;
