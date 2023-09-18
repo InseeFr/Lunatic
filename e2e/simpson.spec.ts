@@ -1,8 +1,6 @@
 import { test, expect } from '@playwright/test';
 
 test('can complete simpson form', async ({ page }) => {
-	page.setDefaultTimeout(30_000);
-	page.setDefaultNavigationTimeout(30_000);
 	await page.goto(
 		'http://localhost:9999/iframe.html?viewMode=story&id=questionnaires-simpsons--default'
 	);
