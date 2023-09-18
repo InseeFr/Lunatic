@@ -135,6 +135,9 @@ function fillAttributes(
 	);
 }
 
+/**
+ * Fill props interpreting VTL expression
+ */
 function fillComponentExpressions(
 	component: LunaticComponentDefinition,
 	state: {

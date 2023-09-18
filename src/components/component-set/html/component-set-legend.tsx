@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import Description from '../../../commons/components/description';
+import Description from '../../commons/components/description';
 import { type PropsWithChildren } from 'react';
 
 type Props = PropsWithChildren<{
@@ -8,7 +8,12 @@ type Props = PropsWithChildren<{
 	description?: string;
 }>;
 
-function Legend({ children, id, className, description }: Props) {
+export function ComponentSetLegend({
+	children,
+	id,
+	className,
+	description,
+}: Props) {
 	if (!children) {
 		return null;
 	}
@@ -21,5 +26,3 @@ function Legend({ children, id, className, description }: Props) {
 		</>
 	);
 }
-
-export default Legend;

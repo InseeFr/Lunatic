@@ -21,7 +21,7 @@ Lunatic is a front-end library in the form of a React hook and component librari
   - [Table of Contents](#table-of-contents)
   - [Usage](#usage)
     - [The useLunatic Hook](#the-uselunatic-hook)
-    - [The Components](#the-components)
+    - [Components](#components)
   - [Customization](#customization)
   - [Internal Working](#internal-working)
     - [General Functioning](#general-functioning)
@@ -34,7 +34,7 @@ Lunatic is a front-end library in the form of a React hook and component librari
 To get started, you need to install Lunatic:
 
 ```bash
-yarn add @inseefr/lunatic@2.5.0
+yarn add @inseefr/lunatic
 ```
 
 ### The useLunatic Hook
@@ -82,7 +82,7 @@ And it returns an object that allows you to control the questionnaire:
 
 For more information on the types of this return, you can refer to the available types in the [source code](https://github.com/InseeFr/Lunatic/blob/v2-typescript/src/use-lunatic/type.ts#L64-L200). You can also find an example of using the hook in the [Storybook section](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/stories/utils/orchestrator.js#L69-L93).
 
-### The Components
+### Components
 
 To display the questionnaire, start by retrieving the list of components to display using the `getComponents()` method returned by the hook.
 
@@ -100,12 +100,7 @@ function App({ source, data }) {
 
 	return (
 		<div className="container">
-			{components.map(function (component) {
-				const Component = lunatic[component.componentType];
-				return (
-					<Component key={component.id} {...component} errors={currentErrors} />
-				);
-			})}
+			<LunaticComponents components={components} />
 			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
 		</div>
 	);
@@ -113,6 +108,8 @@ function App({ source, data }) {
 ```
 
 All the components offered by Lunatic are available in the [src/components](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/components/components.js) folder.
+
+To activate the **autofocus**, you need to pass a key in the `autoFocusKey` property of `LunaticComponents`. As soon as this value changes, the first field is focused (a good solution is to pass the `pageTag` provided by `useLunatic`).
 
 ## Customization
 
