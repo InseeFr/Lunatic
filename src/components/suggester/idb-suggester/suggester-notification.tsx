@@ -37,7 +37,7 @@ function SuggesterNotification({
 				<Label description={description}>{label}</Label>
 				<Notification
 					className="error"
-					title={`Echec chargement`}
+					title={`Échec chargement`}
 					description={`Le référentiel ${storeName} n'a pas pu finir son chargement correctement.`}
 				/>
 			</>
