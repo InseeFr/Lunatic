@@ -1,8 +1,5 @@
 import classnames from 'classnames';
-import {
-	type MouseEventHandler,
-	type PropsWithChildren
-} from 'react';
+import { type MouseEventHandler, type PropsWithChildren } from 'react';
 import { prevent } from '../../utils/dom';
 import { isElement } from '../../utils/is-element';
 import { createCustomizableLunaticField } from '../commons';
@@ -14,7 +11,7 @@ type Props = PropsWithChildren<{
 	disabled?: boolean;
 	label?: string;
 	value?: string;
-	type?: 'button' | 'submit' | 'reset' ;
+	type?: 'button' | 'submit' | 'reset';
 }>;
 
 function Button({
