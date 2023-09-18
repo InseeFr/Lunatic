@@ -45,7 +45,8 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 				id={id}
 				value={value}
 				label={label}
-				disabled={disabled || readOnly}
+				disabled={disabled}
+				readOnly={readOnly}
 				min={min}
 				max={max}
 				decimals={decimals}

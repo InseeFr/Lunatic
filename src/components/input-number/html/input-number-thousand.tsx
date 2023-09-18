@@ -12,6 +12,7 @@ type Props = {
 	onChange: (n: number | null) => void;
 	value?: number | null;
 	disabled?: boolean;
+	readOnly?: boolean;
 	required?: boolean;
 	labelId?: string;
 	min?: number;
@@ -24,6 +25,7 @@ const InputNumberThousand = ({
 	onChange,
 	value,
 	disabled,
+	readOnly,
 	required,
 	labelId,
 	min,
@@ -62,6 +64,7 @@ const InputNumberThousand = ({
 			step={step}
 			aria-labelledby={labelId}
 			disabled={disabled}
+			readOnly={readOnly}
 			required={required}
 			lang="en"
 			isAllowed={isAllowed}
