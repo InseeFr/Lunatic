@@ -74,7 +74,7 @@ export const BlockForLoop = createCustomizableLunaticField<
 				<LunaticComponents
 					key={n}
 					components={getComponents(n)}
-					componentProps={(c) => ({ ...props, ...c })}
+					componentProps={(c) => ({ ...props, ...c, id: `${c.id}-${n}` })}
 				/>
 			))}
 			<DeclarationsDetachable declarations={declarations} id={id} />

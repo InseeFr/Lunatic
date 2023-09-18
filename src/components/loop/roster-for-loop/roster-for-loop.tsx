@@ -93,7 +93,7 @@ function Row(props: LunaticComponentProps<'RosterForLoop'> & { row: number }) {
 		<Tr id={props.id} row={props.row}>
 			<LunaticComponents
 				components={components}
-				componentProps={(c) => ({ ...props, ...c })}
+				componentProps={(c) => ({ ...props, ...c, id: `${c.id}-${props.row}` })}
 				wrapper={({ id, children }) => (
 					<Td id={`${id}-${props.row}`}>{children}</Td>
 				)}
