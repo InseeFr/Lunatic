@@ -35,7 +35,7 @@ function ComboBox({
 	className,
 	classNamePrefix,
 	classStyle = 'default-style',
-	placeholder = 'Please, do something...',
+	placeholder = 'Commencez votre saisie...',
 	editable = false,
 	disabled,
 	id,
