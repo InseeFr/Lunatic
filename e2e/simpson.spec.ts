@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test('can complete simpson form', async ({ page }) => {
 	await page.goto(
@@ -103,15 +103,15 @@ test('can complete simpson form', async ({ page }) => {
 		.getByRole('row', {
 			name: 'Loose the violin of his daughter playing poker',
 		})
-		.getByText('Please, do something...')
+		.getByText('Commencez votre saisie...')
 		.click();
 	await page.getByText('Jay').click();
 	await page
 		.getByRole('row', { name: 'Kill Mr Burns' })
-		.getByText('Please, do something...')
+		.getByText('Commencez votre saisie...')
 		.click();
 	await page.getByText('Other').click();
-	await page.getByText('Please, do something...').click();
+	await page.getByText('Commencez votre saisie...').click();
 	await page.getByRole('option', { name: 'Jay' }).getByText('Jay').click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
@@ -136,7 +136,7 @@ test('can complete simpson form', async ({ page }) => {
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
 		.getByRole('row', { name: 'Leave with pay' })
-		.getByText('Please, do something...')
+		.getByText('Commencez votre saisie...')
 		.click();
 	await page.getByText('Calendar days').click();
 	await page.getByRole('button', { name: 'Next' }).click();
