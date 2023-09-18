@@ -10,7 +10,7 @@ type Props = {
 	onChange?: (n: number | null) => void;
 	value?: number | null;
 	disabled?: boolean;
-	readonly?: boolean;
+	readOnly?: boolean;
 	required?: boolean;
 	labelId?: string;
 	min?: number;
