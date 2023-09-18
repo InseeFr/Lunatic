@@ -1,4 +1,7 @@
-function getInitLength(value: Record<string, unknown>) {
+/**
+ * Find the length of the variable (the biggest value sent to the loop)
+ */
+export function getInitialNbRows(value: Record<string, unknown>) {
 	return Object.values(value).reduce(function (
 		length: number,
 		variable: unknown
@@ -10,4 +13,3 @@ function getInitLength(value: Record<string, unknown>) {
 	},
 	1);
 }
-export default getInitLength;

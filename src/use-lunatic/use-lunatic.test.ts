@@ -5,8 +5,9 @@ import useLunatic from './use-lunatic';
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
+import sourceComponentSet from '../stories/component-set/source.json';
 import type { LunaticData } from './type';
-import { generateData, generateVariable } from '../../tests/utils/lunatic';
+import { type FilledLunaticComponentProps } from './commons/fill-components/fill-components';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {
@@ -83,7 +84,7 @@ describe('use-lunatic()', () => {
 		});
 	});
 
-	describe('overview', function () {
+	describe('overview', () => {
 		const lunaticConfigurationWithoutOverview = {
 			management: false,
 			activeControls: false,
@@ -172,47 +173,22 @@ describe('use-lunatic()', () => {
 		});
 	});
 
-	describe('getData', function () {
-		it('work with calculated variable', async () => {
-			const source = {
-				components: [],
-				variables: [
-					generateVariable({ name: 'PRENOM' }),
-					generateVariable({ name: 'NOM' }),
-					generateVariable({ name: 'AGE' }),
-					{
-						variableType: 'CALCULATED',
-						name: 'FULLNAME',
-						expression: { value: 'PRENOM || " " || NOM', type: 'VTL' },
-						bindingDependencies: ['PRENOM', 'NOM'],
-					},
-					{
-						variableType: 'CALCULATED',
-						name: 'LABEL',
-						expression: {
-							value: 'FULLNAME || " a " || cast(AGE, string)',
-							type: 'VTL',
-						},
-						bindingDependencies: ['FULLNAME', 'AGE'],
-					},
-				],
-			};
-			const data = generateData({
-				PRENOM: 'John',
-				NOM: 'Doe',
-				AGE: 18,
+	describe('getComponents()', () => {
+		describe('componentSet', () => {
+			type ChildComponent = FilledLunaticComponentProps<'ComponentSet'>;
+			const { result } = renderHook(() =>
+				useLunatic(sourceComponentSet as any, undefined, {})
+			);
+			const getComponents = () =>
+				result.current.getComponents() as ChildComponent[];
+			it('should fill child components', () => {
+				let components = getComponents();
+				expect(components).toHaveLength(1);
+				expect(components[0].components ?? []).toHaveLength(2);
 			});
-			const { result } = renderHook(() => useLunatic(source as any, data));
-			expect(result.current.getData(true)).toMatchObject({
-				CALCULATED: {
-					FULLNAME: 'John Doe',
-					LABEL: 'John Doe a 18',
-				},
-				COLLECTED: {
-					NOM: { COLLECTED: 'Doe' },
-					PRENOM: { COLLECTED: 'John' },
-					AGE: { COLLECTED: 18 },
-				},
+			it('should use conditionFilter on nested components', () => {
+				act(() => result.current.onChange({ name: 'PRENOM' }, 'Jane'));
+				expect(getComponents()[0].components).toHaveLength(3);
 			});
 		});
 	});

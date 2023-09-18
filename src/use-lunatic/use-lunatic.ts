@@ -8,6 +8,7 @@ import {
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
 import type { LunaticData, LunaticState } from './type';
+
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
 import { getQuestionnaireData } from './commons/get-data';
@@ -21,27 +22,6 @@ import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
 
-type LunaticOptions = {
-	features?: LunaticState['features'];
-	preferences?: LunaticState['preferences'];
-	savingType?: LunaticState['savingType'];
-	onChange?: typeof nothing;
-	management?: boolean;
-	shortcut?: boolean;
-	initialPage?: string;
-	lastReachedPage?: string;
-	autoSuggesterLoading?: boolean;
-	getReferentiel?: (name: string) => Promise<Array<unknown>>;
-	activeControls?: boolean;
-	custom?: Record<string, FunctionComponent<unknown>>;
-	withOverview?: boolean;
-	missing?: boolean;
-	missingStrategy?: () => void;
-	missingShortcut?: { dontKnow: string; refused: string };
-	dontKnowButton?: string;
-	refusedButton?: string;
-};
-
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
 const DEFAULT_DATA = empty as LunaticData;
@@ -51,14 +31,12 @@ const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
 const DEFAULT_DONT_KNOW = D.DK;
 const DEFAULT_REFUSED = D.RF;
-const nothing: LunaticState['handleChange'] = () => {};
+const nothing = () => {};
 
 function useLunatic(
 	source: LunaticSource,
 	data: LunaticData = DEFAULT_DATA,
-	options: LunaticOptions = empty
-) {
-	const {
+	{
 		features = DEFAULT_FEATURES,
 		preferences = DEFAULT_PREFERENCES,
 		savingType = COLLECTED,
@@ -78,7 +56,27 @@ function useLunatic(
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
-	} = options;
+	}: {
+		features?: LunaticState['features'];
+		preferences?: LunaticState['preferences'];
+		savingType?: LunaticState['savingType'];
+		onChange?: LunaticState['handleChange'];
+		management?: boolean;
+		shortcut?: boolean;
+		initialPage?: string;
+		lastReachedPage?: string;
+		autoSuggesterLoading?: boolean;
+		getReferentiel?: (name: string) => Promise<Array<unknown>>;
+		activeControls?: boolean;
+		custom?: Record<string, FunctionComponent<unknown>>;
+		withOverview?: boolean;
+		missing?: boolean;
+		missingStrategy?: () => void;
+		missingShortcut?: { dontKnow: string; refused: string };
+		dontKnowButton?: string;
+		refusedButton?: string;
+	}
+) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { pager, waiting, overview, pages, executeExpression, isInLoop } =
 		state;
@@ -169,7 +167,13 @@ function useLunatic(
 	);
 	const handleChange = useCallback<LunaticState['handleChange']>(
 		(response, value, args) => {
-			dispatch(actions.handleChange(response, value, args));
+			dispatch(
+				actions.handleChange(
+					typeof response === 'string' ? { name: response } : response,
+					value,
+					args
+				)
+			);
 			onChange(response, value, args);
 		},
 		[dispatch, onChange]
@@ -249,6 +253,7 @@ function useLunatic(
 		waiting,
 		getData,
 		Provider,
+		onChange: handleChange,
 		overview: buildedOverview,
 		loopVariables: useLoopVariables(pager, state.pages),
 	};

@@ -1,12 +1,12 @@
 import { type ReactNode } from 'react';
-import { Tr, Th, Thead } from '../../commons/components/html-table';
+import { Tr, Th, Thead } from '../commons/components/html-table';
 
 type Props = {
 	id?: string;
 	header?: Array<{ label: ReactNode }>;
 };
 
-function Header({ header, id }: Props) {
+export function LoopHeader({ header, id }: Props) {
 	if (!Array.isArray(header)) {
 		return null;
 	}
@@ -24,5 +24,3 @@ function Header({ header, id }: Props) {
 		</Thead>
 	);
 }
-
-export default Header;
