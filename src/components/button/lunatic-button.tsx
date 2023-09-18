@@ -1,13 +1,12 @@
-import React, {
-	type MouseEventHandler,
-	type PropsWithChildren,
-	useCallback,
-} from 'react';
 import classnames from 'classnames';
+import {
+	type MouseEventHandler,
+	type PropsWithChildren
+} from 'react';
+import { prevent } from '../../utils/dom';
 import { isElement } from '../../utils/is-element';
 import { createCustomizableLunaticField } from '../commons';
 import './button.scss';
-import { prevent } from '../../utils/dom';
 
 type Props = PropsWithChildren<{
 	onClick?: MouseEventHandler<HTMLButtonElement | HTMLInputElement>;
@@ -15,7 +14,7 @@ type Props = PropsWithChildren<{
 	disabled?: boolean;
 	label?: string;
 	value?: string;
-	type?: 'button' | 'submit' | 'reset' | undefined;
+	type?: 'button' | 'submit' | 'reset' ;
 }>;
 
 function Button({
