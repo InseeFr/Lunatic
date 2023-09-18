@@ -7,7 +7,7 @@ import type {
 import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
 import useLunatic from '../use-lunatic';
-import { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
+import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 
 type Formats = 'PTnHnM' | 'PnYnM';
 export type VtlExpression = {

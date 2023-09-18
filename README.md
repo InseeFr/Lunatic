@@ -34,7 +34,7 @@ Lunatic is a front-end library in the form of a React hook and component librari
 To get started, you need to install Lunatic:
 
 ```bash
-yarn add @inseefr/lunatic@2.5.0
+yarn add @inseefr/lunatic
 ```
 
 ### The useLunatic Hook

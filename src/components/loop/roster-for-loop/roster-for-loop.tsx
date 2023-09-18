@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
 	DeclarationsAfterText,
 	DeclarationsBeforeText,
@@ -8,7 +8,7 @@ import { createCustomizableLunaticField } from '../../commons';
 import { LoopButton } from '../loop-button';
 import D from '../../../i18n';
 import { getInitialNbRows } from '../utils/get-initial-nb-rows';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticComponentProps } from '../../type';
 import { Table, Tbody, Td, Tr } from '../../commons/components/html-table';
 import Header from '../../table/header';
 import { times } from '../../../utils/array';

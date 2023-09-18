@@ -6,8 +6,8 @@ import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
 import sourceComponentSet from '../stories/component-set/source.json';
-import { LunaticData } from './type';
-import { FilledLunaticComponentProps } from './commons/fill-components/fill-components';
+import type { LunaticData } from './type';
+import { type FilledLunaticComponentProps } from './commons/fill-components/fill-components';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {

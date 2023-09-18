@@ -8,6 +8,7 @@ import {
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
 import type { LunaticData, LunaticState } from './type';
+
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
 import { getQuestionnaireData } from './commons/get-data';
@@ -20,27 +21,6 @@ import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
-
-type LunaticOptions = {
-	features?: LunaticState['features'];
-	preferences?: LunaticState['preferences'];
-	savingType?: LunaticState['savingType'];
-	onChange?: typeof nothing;
-	management?: boolean;
-	shortcut?: boolean;
-	initialPage?: string;
-	lastReachedPage?: string;
-	autoSuggesterLoading?: boolean;
-	getReferentiel?: (name: string) => Promise<Array<unknown>>;
-	activeControls?: boolean;
-	custom?: Record<string, FunctionComponent<unknown>>;
-	withOverview?: boolean;
-	missing?: boolean;
-	missingStrategy?: () => void;
-	missingShortcut?: { dontKnow: string; refused: string };
-	dontKnowButton?: string;
-	refusedButton?: string;
-};
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -56,9 +36,7 @@ const nothing = () => {};
 function useLunatic(
 	source: LunaticSource,
 	data: LunaticData = DEFAULT_DATA,
-	options: LunaticOptions = empty
-) {
-	const {
+	{
 		features = DEFAULT_FEATURES,
 		preferences = DEFAULT_PREFERENCES,
 		savingType = COLLECTED,

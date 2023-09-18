@@ -1,6 +1,5 @@
-import classnames from 'classnames';
 import { createCustomizableLunaticField } from '../../commons';
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 
 type Props = PropsWithChildren<{
 	className?: string;

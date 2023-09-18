@@ -6,7 +6,7 @@ import {
 	DeclarationsBeforeText,
 	DeclarationsDetachable,
 } from '../declarations';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 import { getInitialNbRows } from './utils/get-initial-nb-rows';
 import { LoopButton } from './loop-button';
 import { LunaticComponents } from '../lunatic-components';
