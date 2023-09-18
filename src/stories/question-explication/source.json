@@ -1,17 +1,17 @@
 {
-    "components": [
-        {
-            "id": "questionExplication",
-            "componentType": "QuestionExplication",
-            "label": {
-                "value": "\"Accordion label\"",
-                "type": "VTL"
-            },
-            "description": {
-                "value": "\"Accordion content\"",
-                "type": "VTL"
-            },
-            "bgColor": "red"
-        }
-    ]
+	"components": [
+		{
+			"id": "questionExplication",
+			"componentType": "QuestionExplication",
+			"label": {
+				"value": "\"Accordion label\"",
+				"type": "VTL"
+			},
+			"description": {
+				"value": "\"Accordion content\"",
+				"type": "VTL"
+			},
+			"bgColor": "red"
+		}
+	]
 }

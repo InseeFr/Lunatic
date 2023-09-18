@@ -67,147 +67,168 @@
 					"max": 120,
 					"decimals": 0,
 					"response": { "name": "AGE1" }
-				}, 
-        {
-          "id": "component-set",
-          "componentType": "ComponentSet",
-          "page": "2.1",
-          "depth": 1,
-          "conditionFilter": { "value": "true", "type": "VTL" },
-          "label": {
-            "value": "\"## Who are you?\"", 
-            "type":"VTL|MD"
-          },
-          "description": { "value": "\"This is your opportunity to tell me about yourself!\"", "type": "VTL|MD" },
-          "components": [
-            {
-              "id": "prenom",
-              "componentType": "Input",
-              "mandatory": false,
-              "maxLength": 20,
-              "label": {
-                "value": "\"Prénom\"))",
-                "type": "VTL|MD"
-              },
-              "conditionFilter": {
-                "value": "true",
-                "type": "VTL"
-              },
-              "response": { "name": "PRENOMS" }
-            },
-            {
-              "id": "age",
-              "componentType": "InputNumber",
-              "maxLength": 3,
-              "label": {
-                "value": "\"Age\"))",
-                "type": "VTL|MD"
-              },
-              "conditionFilter": {
-                "value": "true",
-                "type": "VTL"
-              },
-              "response": { "name": "AGE" }, 
-              "controls": [
-                {
-                  "criticality": "WARN",
-                  "errorMessage": {
-                    "type": "VTL",
-                    "value": "\"booleen pas coché et on affiche un message un peu long histoire de tester le truc \""
-                  },
-                  "typeOfControl": "CONSISTENCY",
-                  "control": {
-                    "type": "VTL",
-                    "value": "false"
-                  },
-                  "id": "kfxmjupm-CI-0"
-                }
-              ]
-            },
-            {
-              "id": "j4nw5cqz",
-              "componentType": "Dropdown",
-              "mandatory": false,
-              "label": { "value": "\"In which state do The Simpsons reside?\"", "type": "VTL|MD" },
-              "description": "\"This is a test description\"",
-              "response": {
-                  "name": "STATE"
-              },
-              "controls": [
-                  {
-                      "id": "j4nw5cqz",
-                      "typeOfControl": "CONSISTENCY",
-                      "criticality": "WARN",
-                      "control": {
-                          "value": "not(nvl(STATE,\"\") = \"13\")",
-                          "type": "VTL"
-                      },
-                      "errorMessage": {
-                          "value": "\"Please choose a state!\"",
-                          "type": "VTL|MD"
-                      },
-                      "bindingDependencies": ["STATE"]
-                  },
-                  {
-                      "id": "j4nw5cqz",
-                      "typeOfControl": "CONSISTENCY",
-                      "criticality": "INFO",
-                      "control": {
-                          "value": "not(nvl(STATE,\"\") = \"4\")",
-                          "type": "VTL"
-                      },
-                      "errorMessage": {
-                          "value": "\"Idk if this is right, I'm just testing error messages!!\"",
-                          "type": "VTL|MD"
-                      },
-                      "bindingDependencies": ["STATE"]
-                  }
-              ],
-              "options": [
-                  {
-                      "value": "1",
-                      "label": { "value": "\"Washington\"", "type": "VTL" }
-                  },
-                  {
-                      "value": "2",
-                      "label": { "value": "\"Kentucky\"", "type": "VTL" }
-                  },
-                  { "value": "3", "label": { "value": "\"Ohio\"", "type": "VTL" } },
-                  { "value": "4", "label": { "value": "\"Maine\"", "type": "VTL" } },
-                  {
-                      "value": "5",
-                      "label": { "value": "\"North Dakota\"", "type": "VTL" }
-                  },
-                  { "value": "6", "label": { "value": "\"Florida\"", "type": "VTL" } },
-                  {
-                      "value": "7",
-                      "label": { "value": "\"North Takoma\"", "type": "VTL" }
-                  },
-                  {
-                      "value": "8",
-                      "label": { "value": "\"California\"", "type": "VTL" }
-                  },
-                  { "value": "9", "label": { "value": "\"Texas\"", "type": "VTL" } },
-                  {
-                      "value": "10",
-                      "label": { "value": "\"Massachusetts\"", "type": "VTL" }
-                  },
-                  { "value": "11", "label": { "value": "\"Nevada\"", "type": "VTL" } },
-                  {
-                      "value": "12",
-                      "label": { "value": "\"Illinois\"", "type": "VTL" }
-                  },
-                  {
-                      "value": "13",
-                      "label": {
-                          "value": "\"Not in any state, you fool!\"",
-                          "type": "VTL"
-                      }
-                  }
-              ]
-            }
-          ]
-        }
+				},
+				{
+					"id": "component-set",
+					"componentType": "ComponentSet",
+					"page": "2.1",
+					"depth": 1,
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"label": {
+						"value": "\"## Who are you?\"",
+						"type": "VTL|MD"
+					},
+					"description": {
+						"value": "\"This is your opportunity to tell me about yourself!\"",
+						"type": "VTL|MD"
+					},
+					"components": [
+						{
+							"id": "prenom",
+							"componentType": "Input",
+							"mandatory": false,
+							"maxLength": 20,
+							"label": {
+								"value": "\"Prénom\"))",
+								"type": "VTL|MD"
+							},
+							"conditionFilter": {
+								"value": "true",
+								"type": "VTL"
+							},
+							"response": { "name": "PRENOMS" }
+						},
+						{
+							"id": "age",
+							"componentType": "InputNumber",
+							"maxLength": 3,
+							"label": {
+								"value": "\"Age\"))",
+								"type": "VTL|MD"
+							},
+							"conditionFilter": {
+								"value": "true",
+								"type": "VTL"
+							},
+							"response": { "name": "AGE" },
+							"controls": [
+								{
+									"criticality": "WARN",
+									"errorMessage": {
+										"type": "VTL",
+										"value": "\"booleen pas coché et on affiche un message un peu long histoire de tester le truc \""
+									},
+									"typeOfControl": "CONSISTENCY",
+									"control": {
+										"type": "VTL",
+										"value": "false"
+									},
+									"id": "kfxmjupm-CI-0"
+								}
+							]
+						},
+						{
+							"id": "j4nw5cqz",
+							"componentType": "Dropdown",
+							"mandatory": false,
+							"label": {
+								"value": "\"In which state do The Simpsons reside?\"",
+								"type": "VTL|MD"
+							},
+							"description": "\"This is a test description\"",
+							"response": {
+								"name": "STATE"
+							},
+							"controls": [
+								{
+									"id": "j4nw5cqz",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "WARN",
+									"control": {
+										"value": "not(nvl(STATE,\"\") = \"13\")",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Please choose a state!\"",
+										"type": "VTL|MD"
+									},
+									"bindingDependencies": ["STATE"]
+								},
+								{
+									"id": "j4nw5cqz",
+									"typeOfControl": "CONSISTENCY",
+									"criticality": "INFO",
+									"control": {
+										"value": "not(nvl(STATE,\"\") = \"4\")",
+										"type": "VTL"
+									},
+									"errorMessage": {
+										"value": "\"Idk if this is right, I'm just testing error messages!!\"",
+										"type": "VTL|MD"
+									},
+									"bindingDependencies": ["STATE"]
+								}
+							],
+							"options": [
+								{
+									"value": "1",
+									"label": { "value": "\"Washington\"", "type": "VTL" }
+								},
+								{
+									"value": "2",
+									"label": { "value": "\"Kentucky\"", "type": "VTL" }
+								},
+								{
+									"value": "3",
+									"label": { "value": "\"Ohio\"", "type": "VTL" }
+								},
+								{
+									"value": "4",
+									"label": { "value": "\"Maine\"", "type": "VTL" }
+								},
+								{
+									"value": "5",
+									"label": { "value": "\"North Dakota\"", "type": "VTL" }
+								},
+								{
+									"value": "6",
+									"label": { "value": "\"Florida\"", "type": "VTL" }
+								},
+								{
+									"value": "7",
+									"label": { "value": "\"North Takoma\"", "type": "VTL" }
+								},
+								{
+									"value": "8",
+									"label": { "value": "\"California\"", "type": "VTL" }
+								},
+								{
+									"value": "9",
+									"label": { "value": "\"Texas\"", "type": "VTL" }
+								},
+								{
+									"value": "10",
+									"label": { "value": "\"Massachusetts\"", "type": "VTL" }
+								},
+								{
+									"value": "11",
+									"label": { "value": "\"Nevada\"", "type": "VTL" }
+								},
+								{
+									"value": "12",
+									"label": { "value": "\"Illinois\"", "type": "VTL" }
+								},
+								{
+									"value": "13",
+									"label": {
+										"value": "\"Not in any state, you fool!\"",
+										"type": "VTL"
+									}
+								}
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -250,7 +271,7 @@
 				"INPUTED": [null]
 			}
 		},
-    {
+		{
 			"variableType": "COLLECTED",
 			"name": "PRENOMS",
 			"values": {
@@ -261,7 +282,7 @@
 				"INPUTED": [null]
 			}
 		},
-    {
+		{
 			"variableType": "COLLECTED",
 			"name": "AGE",
 			"values": {
@@ -272,7 +293,7 @@
 				"INPUTED": [null]
 			}
 		},
-    {
+		{
 			"variableType": "COLLECTED",
 			"name": "STATE",
 			"values": {

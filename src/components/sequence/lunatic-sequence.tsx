@@ -2,13 +2,13 @@ import Sequence from './html/sequence';
 import type { LunaticComponentProps } from '../type';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 
-function empty() { }
+function empty() {}
 
 function LunaticSequence({
 	declarations,
 	label,
 	id,
-	style
+	style,
 }: LunaticComponentProps<'Sequence'>) {
 	return (
 		<LunaticComponent

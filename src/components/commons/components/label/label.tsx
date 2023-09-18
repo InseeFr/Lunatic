@@ -1,4 +1,8 @@
-import React, { type CSSProperties, type PropsWithChildren, type ReactNode } from 'react';
+import React, {
+	type CSSProperties,
+	type PropsWithChildren,
+	type ReactNode,
+} from 'react';
 import classnames from 'classnames';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import Description from '../description';
@@ -10,8 +14,8 @@ type Props = PropsWithChildren<{
 	className?: string;
 	style?: CSSProperties;
 	description?:
-	| ReactNode
-	| Array<{ label: ReactNode; declarationType: string }>;
+		| ReactNode
+		| Array<{ label: ReactNode; declarationType: string }>;
 }>;
 
 function Label({
