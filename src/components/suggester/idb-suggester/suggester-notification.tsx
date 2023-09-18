@@ -26,7 +26,7 @@ function SuggesterNotification({
 				<Notification
 					className="info"
 					title={`Chargement : ${storeName}`}
-					description={`Votre référentiel est en court de chargement. Vous pouvez poursuivre le questionnaire et revenir ultèrieurement sur cette question.`}
+					description={`Votre référentiel est en cours de chargement. Vous pouvez poursuivre le questionnaire et revenir ultérieurement sur cette question.`}
 				/>
 			</>
 		);
