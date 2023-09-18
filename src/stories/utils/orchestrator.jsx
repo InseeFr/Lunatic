@@ -24,7 +24,7 @@ function DevOptions({ goToPage, getData, lastReachedPage }) {
 	return (
 		<div className="dev-options">
 			<div className="title">Options développeur</div>
-			<div className="contenur">
+			<div className="conteneur">
 				<lunatic.Button onClick={() => Logger.log(getData(true))}>
 					Get State
 				</lunatic.Button>
@@ -42,7 +42,7 @@ function DevOptions({ goToPage, getData, lastReachedPage }) {
 					handleChange={handleChange}
 					min={1}
 					label={'Page'}
-					description={'the page wher you want to jump'}
+					description={'the page where you want to jump'}
 				/>
 			</div>
 		</div>
