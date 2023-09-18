@@ -1,12 +1,12 @@
-import React, {
+import {
+	useCallback,
 	useEffect,
 	useState,
-	useCallback,
 	type PropsWithChildren,
 } from 'react';
-import { openDb, getEntity } from '../../../utils/idb-tools';
-import { CONSTANTES } from '../../../utils/store-tools';
+import { getEntity, openDb } from '../../../utils/idb-tools';
 import { Logger } from '../../../utils/logger';
+import { CONSTANTES } from '../../../utils/store-tools';
 
 type Props = PropsWithChildren<{
 	storeName: string;
@@ -59,7 +59,7 @@ function CheckStore({ storeName, version, setStore, children }: Props) {
 	if (ready === 0) {
 		return (
 			<div className="lunatic-suggester-in-progress">
-				Le store {storeName} est en cour de chargement.
+				Le store {storeName} est en cours de chargement.
 			</div>
 		);
 	}
