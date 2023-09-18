@@ -10,7 +10,8 @@ import ComboBoxContent from './combo-box-content';
 import type {LunaticBaseProps} from '../../../type';
 import Label from '../label';
 import {createCustomizableLunaticField} from '../../index';
-import {KEYBOARD_KEY_CODES} from "./state-management/reduce-on-keydown/keyboard-key-codes";
+import {KEYBOARD_KEY_CODES} from "./keyboard-key-codes";
+import {between, forceInt} from "../../../../utils/number";
 
 const EMPTY_SEARCH = '';
 
@@ -79,7 +80,7 @@ function ComboBox({
     }
 
     const handleSelect = (index: string | number, close = true) => {
-        const indexNumber = typeof index === 'number' ? index : parseInt(index, 10);
+        const indexNumber = between(forceInt(index), 0, options.length);
         const option = options[indexNumber];
         if (close) {
             setExpanded(false)
@@ -191,13 +192,13 @@ function getIndexFromOptions(
     options: ComboBoxOptionType[],
     value: string | null,
     getOptionValue: (o: ComboBoxOptionType) => string
-): number | null {
+): number | undefined {
     if (!Array.isArray(options)) {
-        return null
+        return undefined
     }
     return options
         .map(getOptionValue)
-        .findIndex(v => v === value) ?? null
+        .findIndex(v => v === value)
 
 }
 
