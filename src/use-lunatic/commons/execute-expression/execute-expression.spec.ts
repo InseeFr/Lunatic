@@ -1,13 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import executeExpression from './execute-expression';
 
-type BreadCrumItem = {
-	label: string;
-	disabled: boolean;
-	page: '19.2';
-	children: BreadCrumItem[];
-};
-
 describe('executeVTL', () => {
 	const cases = [
 		['"Hello World"', {}, 'Hello World'],
