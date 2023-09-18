@@ -91,23 +91,26 @@ Ensuite, on pourra utiliser le composant `<LunaticComponents />` pour gérer l'a
 ```jsx
 import { LunaticComponents } from '@inseefr/lunatic';
 
-function App({source, data}) {
-  const { getComponents, getCurrentErrors, getModalErrors } =
-          lunatic.useLunatic(source, data, {});
-  const components = getComponents();
-  const currentErrors = getCurrentErrors();
-  const modalErrors = getModalErrors();
+function App({ source, data }) {
+	const { getComponents, getCurrentErrors, getModalErrors } =
+		lunatic.useLunatic(source, data, {});
+	const components = getComponents();
+	const currentErrors = getCurrentErrors();
+	const modalErrors = getModalErrors();
 
-  return (
-          <div className="container">
-            <LunaticComponents components={components} />
-            <lunatic.Modal errors={modalErrors} goNext={goNextPage}/>
-          </div>
-  );
+	return (
+		<div className="container">
+			<LunaticComponents components={components} />
+			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
+		</div>
+	);
 }
 ```
 
 Ce composant se charge de récupérer le bon composant à afficher en fonction des champs demandés. Il est possible de personnaliser les propriétés passées aux composants grâce à la propriété `componentProps` mais aussi de rajouter un élément autour de chaque composant grâce à la méthode `wrapper`. Vous pouvez regarder [l'orchestrateur du storybook](./src/stories/utils/orchestrator.jsx) pour avoir un exemple d'utilisation.
+
+Pour activer l'**autofocus**, il faut passer une clé dans la propriété `autoFocusKey` de `LunaticComponents`. Dès que cette valeur change, le premier champ est focus (une bonne solution est de passer le pageTag fourni par useLunatic).
+
 
 ## Personnalisation
 
