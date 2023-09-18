@@ -26,7 +26,9 @@ export type FilledLunaticComponentProps<
 	FilledValueProps &
 	FilledMissingResponseProps &
 	FilledHandlersProps &
-	FilledPaginationProps;
+	FilledPaginationProps & {
+		conditionFilter?: boolean;
+	};
 
 /**
  * Compose multiple methods together to create a new method
@@ -51,23 +53,34 @@ function compose(...fill: Function[]) {
 const fillComponent = compose(
 	fillFromState,
 	fillComponentExpressions,
-	fillSpecificExpressions,
 	fillPagination,
 	fillComponentValue,
 	fillMissingResponse,
-	fillManagement
+	fillManagement,
+	fillSpecificExpressions
 ) as (
 	component: LunaticComponentDefinition,
 	state: LunaticState
 ) => FilledLunaticComponentProps;
 
+/**
+ * Fill components with values coming from the state, and interpret VTL expression
+ */
 function fillComponents(
 	components: LunaticComponentDefinition[],
 	state: LunaticState
 ): FilledLunaticComponentProps[] {
-	return components.map(function (component) {
-		return fillComponent(component, state);
-	});
+	return components
+		.map((component) => fillComponent(component, state))
+		.filter(matchConditionFilter) as FilledLunaticComponentProps[];
+}
+
+function matchConditionFilter({
+	conditionFilter,
+}: {
+	conditionFilter?: boolean;
+}): boolean {
+	return conditionFilter !== undefined ? conditionFilter : true;
 }
 
 export default fillComponents;

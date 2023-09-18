@@ -1,15 +1,17 @@
 import LunaticComponentWithoutLabel from '../commons/components/lunatic-component-without-label';
 import { LunaticComponentProps } from '../type';
-import ComponentSet from './html/component-set';
-import ComponentSetComponents from './html/component-set-components';
+import { LunaticComponents } from '../lunatic-components';
+import { ComponentSet } from './html/component-set';
+import { ComponentSetWrapper } from './html/component-set-wrapper';
 
-function LunaticComponentSet({
+export function LunaticComponentSet({
 	id,
 	label,
 	declarations,
 	description,
 	response, // Do not propagate the response (it's undefined)
-	...props // These props will be sent down to children components
+	components,
+	...props // Props to propagate to children
 }: LunaticComponentProps<'ComponentSet'>) {
 	return (
 		<LunaticComponentWithoutLabel
@@ -23,10 +25,13 @@ function LunaticComponentSet({
 			handleChange={props.handleChange}
 		>
 			<ComponentSet id={id} legendText={label} errors={props.errors}>
-				<ComponentSetComponents {...props} />
+				<LunaticComponents
+					components={components}
+					// Component props take precedence (we don't want to override value for instance)
+					componentProps={(c) => ({ ...props, ...c })}
+					wrapper={(p) => <ComponentSetWrapper {...p} />}
+				/>
 			</ComponentSet>
 		</LunaticComponentWithoutLabel>
 	);
 }
-
-export default LunaticComponentSet;

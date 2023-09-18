@@ -7,6 +7,7 @@ import {
 import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
 import useLunatic from '../use-lunatic';
+import { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 
 type Formats = 'PTnHnM' | 'PnYnM';
 export type VtlExpression = {
@@ -84,14 +85,14 @@ type ComponentPropsByType = {
 	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'declarations' | 'label'>;
 	Question: Pick<LunaticBaseProps<unknown>, 'label' | 'description'>;
 	ComponentSet: LunaticBaseProps<unknown> & {
-		components: LunaticComponentDefinition[];
+		components: FilledLunaticComponentProps[];
 		value: Record<string, unknown>;
 		response: undefined;
 	};
 	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
-		components: LunaticComponentDefinition[];
+		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
 		headers?: Array<{ label: ReactNode }>;
@@ -100,7 +101,7 @@ type ComponentPropsByType = {
 	Loop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations?: number;
-		components: LunaticComponentDefinition[];
+		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
 		headers?: Array<{ label: ReactNode }>;
