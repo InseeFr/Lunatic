@@ -11,7 +11,7 @@ type Props = PropsWithChildren<{
 }>;
 
 const VariableStatus = ({ id = '', children }: Props) => {
-	const [tooltipElements, setTooltipElements] = useState(() => ({
+	const [tooltipElements] = useState(() => ({
 		imgName: 'editedImg',
 		content: [{ key: 'TODO', value: ' coming soon' }],
 	}));

@@ -10,7 +10,7 @@ type Props = {
 	handleChange: (
 		response: { name: string },
 		value: unknown,
-		args: { index: number;[k: string]: unknown }
+		args: { index: number; [k: string]: unknown }
 	) => void;
 } & Pick<
 	LunaticComponentProps<'RosterForLoop'>,

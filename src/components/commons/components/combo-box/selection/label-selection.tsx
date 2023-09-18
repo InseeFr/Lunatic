@@ -2,7 +2,6 @@ import React, { type FunctionComponent } from 'react';
 import ComboBoxLabelSelection from './combo-box-label-selection';
 import type { ComboBoxOptionType } from '../combo-box.type';
 
-
 export type LabelSelectionProps = {
 	/**
 	 * @deprecated use createCustomizableField with ComboboxLabelRenderer as name.
