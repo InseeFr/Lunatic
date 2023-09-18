@@ -1,4 +1,4 @@
-import { ComboBoxOptionType } from '../combo-box.type';
+import type { ComboBoxOptionType } from '../combo-box.type';
 
 export enum ComboActionKind {
 	ON_CHANGE = 'combo-box/on-change',

@@ -1,21 +1,21 @@
-import { LunaticComponentDefinition, LunaticState } from '../../type';
+import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import fillComponentExpressions, {
-	DeepTranslateExpression,
+	type DeepTranslateExpression,
 } from './fill-component-expressions';
 import fillComponentValue, {
-	FilledProps as FilledValueProps,
+	type FilledProps as FilledValueProps,
 } from './fill-component-value';
 import fillFromState, {
-	FilledProps as FilledHandlersProps,
+	type FilledProps as FilledHandlersProps,
 } from './fill-from-state';
 import fillManagement, {
-	FilledProps as FilledManagementProps,
+	type FilledProps as FilledManagementProps,
 } from './fill-management';
 import fillMissingResponse, {
-	FilledProps as FilledMissingResponseProps,
+	type FilledProps as FilledMissingResponseProps,
 } from './fill-missing-response';
 import fillPagination, {
-	FilledProps as FilledPaginationProps,
+	type FilledProps as FilledPaginationProps,
 } from './fill-pagination';
 import fillSpecificExpressions from './fill-specific-expression';
 

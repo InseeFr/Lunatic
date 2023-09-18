@@ -1,7 +1,7 @@
 import { COLLECTED, CALCULATED, EXTERNAL } from '../../constants';
 import { interpretAllCalculatedVariables } from './calculated-variables';
-import { LunaticState, LunaticValues } from '../type';
-import { VariablesByType } from '../reducer/reduce-on-init';
+import type { LunaticState, LunaticValues } from '../type';
+import type { VariablesByType } from '../reducer/reduce-on-init';
 
 /**
  * Extract the value from a questionnaire

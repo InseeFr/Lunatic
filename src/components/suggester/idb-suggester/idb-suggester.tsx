@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import Suggester from '../html/suggester';
 import createSearching from '../searching';
 import CheckStore from './check-store';
 import { SuggesterStatus } from './suggester-status';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticComponentProps } from '../../type';
 
 type Props = Pick<
 	LunaticComponentProps<'Suggester'>,

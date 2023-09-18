@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { isObject } from '../../../utils/is-object';
-import {
+import type {
 	LunaticComponentDefinition,
 	LunaticExpression,
 	LunaticState,

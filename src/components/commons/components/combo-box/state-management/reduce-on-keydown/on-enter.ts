@@ -1,4 +1,4 @@
-import { ComboBoxState } from '../index';
+import { type ComboBoxState } from '../index';
 
 export function onEnter(state: ComboBoxState): ComboBoxState {
 	const { expanded } = state;

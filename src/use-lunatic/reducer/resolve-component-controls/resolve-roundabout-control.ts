@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { StateForControls } from '../../commons/compile-controls';
-import { LunaticControl, LunaticError } from '../../type';
+import { type ReactNode } from 'react';
+import { type StateForControls } from '../../commons/compile-controls';
+import type { LunaticControl, LunaticError } from '../../type';
 
 /**
  * Pour le Roundabout, le controle doit être validé pour chaque itération

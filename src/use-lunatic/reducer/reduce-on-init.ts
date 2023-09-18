@@ -1,4 +1,4 @@
-import { ActionInit } from '../actions';
+import { type ActionInit } from '../actions';
 import {
 	checkLoops,
 	createExecuteExpression,
@@ -7,13 +7,13 @@ import {
 } from '../commons';
 import compose from '../commons/compose';
 import { getPagerFromPageTag } from '../commons/page-tag';
-import {
+import type {
 	LunaticData,
 	LunaticState,
 	LunaticStateVariable,
 	LunaticVariable,
 } from '../type';
-import { LunaticSource } from '../type-source';
+import type { LunaticSource } from '../type-source';
 import { reduceOverviewOnInit } from './overview/overview-on-init';
 
 /**

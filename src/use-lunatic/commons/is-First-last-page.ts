@@ -1,4 +1,4 @@
-import { LunaticState } from '../type';
+import type { LunaticState } from '../type';
 
 function isFirstLastPage(pager: LunaticState['pager']) {
 	const { page, maxPage } = pager;

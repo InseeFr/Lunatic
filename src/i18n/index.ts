@@ -1,8 +1,8 @@
 import createDictionary, { getLang } from './build-dictionary';
-import dictionary, { Dictionary } from './dictionary';
+import dictionary, { type Dictionary } from './dictionary';
 import inputNumberProps, {
 	allDecimalSeparators,
-	InputNumberPropsI18N,
+	type InputNumberPropsI18N,
 } from './inputNumberProps';
 
 const D1 = createDictionary<Dictionary>('fr', dictionary);

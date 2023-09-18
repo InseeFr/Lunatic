@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { LunaticComponentProps } from '../type';
+import { useState, useEffect } from 'react';
+import type { LunaticComponentProps } from '../type';
 import Row from './row';
 
 type Props = {

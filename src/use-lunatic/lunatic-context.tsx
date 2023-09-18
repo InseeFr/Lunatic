@@ -1,6 +1,6 @@
 import {
-	FunctionComponent,
-	PropsWithChildren,
+	type FunctionComponent,
+	type PropsWithChildren,
 	createContext,
 	useContext,
 } from 'react';
@@ -8,7 +8,7 @@ import {
 import D from '../i18n/index';
 
 const LunaticContext = createContext({
-	missingStrategy: () => {},
+	missingStrategy: () => { },
 	management: false,
 	missing: false,
 	shortcut: false,

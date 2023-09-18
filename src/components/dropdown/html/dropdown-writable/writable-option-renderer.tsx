@@ -1,9 +1,9 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import getLabel from './filter-tools/get-label';
 import lettersMatching from './filter-tools/letters-matching';
 import preparePrefix from './filter-tools/prepare-prefix';
-import { ComboBoxOptionType } from '../../../commons/components/combo-box/combo-box.type';
+import type { ComboBoxOptionType } from '../../../commons/components/combo-box/combo-box.type';
 
 type Props = {
 	option: ComboBoxOptionType;

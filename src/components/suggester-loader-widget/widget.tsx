@@ -3,7 +3,7 @@ import React, {
 	useState,
 	useCallback,
 	useRef,
-	ReactNode,
+	type ReactNode,
 } from 'react';
 import classnames from 'classnames';
 import LoaderRow from './loader-row';
@@ -14,7 +14,7 @@ import Dragger from '../commons/components/dragger';
 import { OnDragIcon } from '../commons/icons';
 import './widget.scss';
 import { voidFunction } from '../../utils/function';
-import { SuggesterType } from '../../use-lunatic/type-source';
+import type { SuggesterType } from '../../use-lunatic/type-source';
 
 type Props = {
 	absolute?: boolean;

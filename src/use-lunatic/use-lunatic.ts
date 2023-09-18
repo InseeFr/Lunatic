@@ -1,5 +1,5 @@
 import {
-	FunctionComponent,
+	type FunctionComponent,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -7,21 +7,40 @@ import {
 } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
-import { LunaticData, LunaticState } from './type';
-
+import type { LunaticData, LunaticState } from './type';
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
 import { getQuestionnaireData } from './commons/get-data';
 import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
-import { LunaticSource } from './type-source';
-// @ts-ignore
-import { LunaticComponentType } from '../components/type';
+import type { LunaticSource } from './type-source';
+import type { LunaticComponentType } from '../components/type';
 import compileControlsLib from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
+
+type LunaticOptions = {
+	features?: LunaticState['features'];
+	preferences?: LunaticState['preferences'];
+	savingType?: LunaticState['savingType'];
+	onChange?: typeof nothing;
+	management?: boolean;
+	shortcut?: boolean;
+	initialPage?: string;
+	lastReachedPage?: string;
+	autoSuggesterLoading?: boolean;
+	getReferentiel?: (name: string) => Promise<Array<unknown>>;
+	activeControls?: boolean;
+	custom?: Record<string, FunctionComponent<unknown>>;
+	withOverview?: boolean;
+	missing?: boolean;
+	missingStrategy?: () => void;
+	missingShortcut?: { dontKnow: string; refused: string };
+	dontKnowButton?: string;
+	refusedButton?: string;
+};
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -37,7 +56,9 @@ const nothing = () => {};
 function useLunatic(
 	source: LunaticSource,
 	data: LunaticData = DEFAULT_DATA,
-	{
+	options: LunaticOptions = empty
+) {
+	const {
 		features = DEFAULT_FEATURES,
 		preferences = DEFAULT_PREFERENCES,
 		savingType = COLLECTED,
