@@ -1,6 +1,6 @@
 import './duration.scss';
 import { useOnHandleChange } from '../commons';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import DurationInput from './durationInput';
 

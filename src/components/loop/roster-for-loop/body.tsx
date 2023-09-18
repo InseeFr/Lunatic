@@ -1,14 +1,14 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { Tbody } from '../../commons/components/html-table';
 import RosterForLoopOrchestrator from './roster-for-loop-orchestrator';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticComponentProps } from '../../type';
 
 type Props = {
 	nbRows: number;
 	handleChange: (
 		response: { name: string },
 		value: unknown,
-		args: { index: number; [k: string]: unknown }
+		args: { index: number;[k: string]: unknown }
 	) => void;
 } & Pick<
 	LunaticComponentProps<'RosterForLoop'>,

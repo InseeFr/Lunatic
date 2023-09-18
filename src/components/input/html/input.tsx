@@ -1,8 +1,8 @@
 import classnames from 'classnames';
-import React, { ChangeEventHandler, ReactNode, useCallback } from 'react';
+import { type ChangeEventHandler, type ReactNode, useCallback } from 'react';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import './input.scss';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticBaseProps } from '../../type';
 
 type Props = {
 	label?: ReactNode;

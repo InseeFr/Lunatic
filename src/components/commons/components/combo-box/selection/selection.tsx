@@ -1,5 +1,5 @@
-import { ChangeEventHandler, useCallback } from 'react';
-import { LabelSelectionProps } from './label-selection';
+import { type ChangeEventHandler, useCallback } from 'react';
+import { type LabelSelectionProps } from './label-selection';
 import SelectionContainer from './selection-container';
 import { LabelOrInput } from './LabelOrInput';
 

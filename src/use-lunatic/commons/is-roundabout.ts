@@ -1,4 +1,4 @@
-import { LunaticComponentDefinition } from '../type';
+import type { LunaticComponentDefinition } from '../type';
 
 export default function isRoundabout(
 	component: LunaticComponentDefinition

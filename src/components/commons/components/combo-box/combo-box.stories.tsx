@@ -1,7 +1,7 @@
 import ComboBox from './combo-box';
-import { Meta, Story } from '@storybook/react';
-import { ComboBoxOptionType } from './combo-box.type';
-import { ComponentProps } from 'react';
+import { type Meta, type Story } from '@storybook/react';
+import type { ComboBoxOptionType } from './combo-box.type';
+import { type ComponentProps } from 'react';
 
 const stories = {
 	title: 'Components/Commons/ComboBox',

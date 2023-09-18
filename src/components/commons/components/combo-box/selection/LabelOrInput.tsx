@@ -1,5 +1,5 @@
-import LabelSelection, { LabelSelectionProps } from './label-selection';
-import Input, { InputProps } from './input';
+import LabelSelection, { type LabelSelectionProps } from './label-selection';
+import Input, { type InputProps } from './input';
 
 type LabelOrInputTypeProps = LabelSelectionProps &
 	InputProps & { editable?: boolean; expanded?: boolean; readOnly?: boolean };

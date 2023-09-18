@@ -1,5 +1,5 @@
-import { LunaticComponentDefinition, LunaticState } from '../../type';
-import { DeepTranslateExpression } from './fill-component-expressions';
+import type { LunaticComponentDefinition, LunaticState } from '../../type';
+import { type DeepTranslateExpression } from './fill-component-expressions';
 
 function resolveRoundabout(
 	component: DeepTranslateExpression<LunaticComponentDefinition>,

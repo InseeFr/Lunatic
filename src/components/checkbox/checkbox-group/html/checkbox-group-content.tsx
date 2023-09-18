@@ -1,6 +1,6 @@
 import { CheckboxOption } from '../../commons';
 import { getShortcutKey } from '../../commons/getShortcutKey';
-import { CheckboxGroupOption } from '../lunatic-checkbox-group';
+import { type CheckboxGroupOption } from '../lunatic-checkbox-group';
 
 type Props = {
 	options: CheckboxGroupOption[];

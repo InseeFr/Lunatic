@@ -1,6 +1,6 @@
 import { resizeArrayVariable } from '../commons';
-import { LunaticState } from '../../type';
-import { ActionHandleChange } from '../../actions';
+import type { LunaticState } from '../../type';
+import { type ActionHandleChange } from '../../actions';
 
 type Payload = ActionHandleChange['payload']['args'] & {
 	name: string;

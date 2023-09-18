@@ -5,7 +5,7 @@ import {
 	DeclarationsDetachable,
 } from '../declarations';
 import NothingToDisplay from '../commons/components/nothing-to-display';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 const PairwiseLinks = ({
 	declarations,

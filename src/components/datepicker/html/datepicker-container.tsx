@@ -1,4 +1,5 @@
-import React, { PropsWithChildren } from 'react';
+import React, { type PropsWithChildren } from 'react';
+
 
 function DatepickerContainer({ children }: PropsWithChildren) {
 	return <div className="lunatic-input">{children}</div>;

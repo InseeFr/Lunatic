@@ -1,10 +1,10 @@
-import { ReactNode, useCallback } from 'react';
+import { type ReactNode, useCallback } from 'react';
 import classnames from 'classnames';
 import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
 import { createCustomizableLunaticField, Label } from '../../commons';
 import './checkbox-option.scss';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticBaseProps } from '../../type';
 
 export type CheckboxOptionProps = {
 	disabled?: boolean;

@@ -1,5 +1,5 @@
-import { LunaticState } from '../type';
-import { ActionOnSetWaiting } from '../actions';
+import type { LunaticState } from '../type';
+import { type ActionOnSetWaiting } from '../actions';
 
 function reduceOnSetWaiting(
 	state: LunaticState,

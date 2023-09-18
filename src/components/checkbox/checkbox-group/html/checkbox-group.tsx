@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import CheckboxGroupContent from './checkbox-group-content';
 import {
 	createCustomizableLunaticField,
@@ -6,8 +6,8 @@ import {
 	Fieldset,
 } from '../../../commons';
 import './checkbox-group.scss';
-import { LunaticError } from '../../../../use-lunatic/type';
-import { CheckboxGroupOption } from '../lunatic-checkbox-group';
+import type { LunaticError } from '../../../../use-lunatic/type';
+import { type CheckboxGroupOption } from '../lunatic-checkbox-group';
 
 type Props = {
 	options: CheckboxGroupOption[];
