@@ -3,6 +3,7 @@ import LunaticComponent from '../commons/components/lunatic-component-without-la
 import useOnHandleChange from '../commons/use-on-handle-change';
 import Dropdown from './html/dropdown';
 import { LunaticComponentProps } from '../type';
+import classNames from 'classnames';
 
 function LunaticDropdown({
 	id,
@@ -10,6 +11,7 @@ function LunaticDropdown({
 	options,
 	writable,
 	disabled,
+	className,
 	value,
 	response,
 	errors,
@@ -42,7 +44,7 @@ function LunaticDropdown({
 				options={options}
 				onSelect={onChange}
 				value={value}
-				className="lunatic-dropdown"
+				className={classNames(className, "lunatic-dropdown")}
 				errors={errors}
 				label={label}
 			/>

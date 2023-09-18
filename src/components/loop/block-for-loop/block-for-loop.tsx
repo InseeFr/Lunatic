@@ -1,15 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
+import D from '../../../i18n';
 import { createCustomizableLunaticField } from '../../commons';
 import {
-	DeclarationsBeforeText,
 	DeclarationsAfterText,
+	DeclarationsBeforeText,
 	DeclarationsDetachable,
 } from '../../declarations';
-import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
-import HandleRowButton from '../commons/handle-row-button';
-import D from '../../../i18n';
-import getInitLength from '../commons/get-init-length';
 import { LunaticComponentProps } from '../../type';
+import getInitLength from '../commons/get-init-length';
+import HandleRowButton from '../commons/handle-row-button';
+import BlockForLoopOrchestrator from './block-for-loop-ochestrator';
 
 function BlockForLoop({
 	declarations,
@@ -28,6 +28,7 @@ function BlockForLoop({
 	iterations,
 	paginatedLoop,
 	errors,
+	disabled,
 }: LunaticComponentProps<'Loop'>) {
 	const min = lines?.min;
 	const max = lines?.max;
@@ -103,9 +104,10 @@ function BlockForLoop({
 				preferences={preferences}
 				executeExpression={executeExpression}
 				errors={errors}
+				disabled={disabled}
 			/>
 			<DeclarationsDetachable declarations={declarations} id={id} />
-			{min && max && min !== max && (
+			{Number.isInteger(min) && Number.isInteger(max) && min !== max && (
 				<>
 					<HandleRowButton onClick={addRow} disabled={nbRows === max}>
 						{label || D.DEFAULT_BUTTON_ADD}

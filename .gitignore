@@ -28,3 +28,4 @@ playwright-report
 test-report.xml
 /playwright-report/
 /playwright/.cache/
+*.tgz

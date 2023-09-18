@@ -1,11 +1,11 @@
-import { describe, it, expect } from 'vitest';
 import { act, renderHook } from '@testing-library/react-hooks';
+import { describe, expect, it } from 'vitest';
 import useLunatic from './use-lunatic';
 
+import sourceWithoutHierarchy from '../stories/overview/source.json';
+import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
 import { LunaticData } from './type';
-import sourceLogement from '../stories/questionnaires/logement/source.json';
-import sourceWithoutHierarchy from '../stories/overview/source.json';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {
@@ -156,7 +156,9 @@ describe('use-lunatic()', () => {
 					useLunatic(sourceLogement as any, advancedQestionnaireData, {
 						...lunaticConfiguration,
 						// hack on initialPage : useLunatic SHOULD find lastReachedPage from COLLECTED data
-						initialPage: '16',
+						initialPage: '1',
+						// use lastReachedPage saved by orchestrator
+						lastReachedPage: '16',
 					})
 				);
 				const overview = result.current.overview;

@@ -5,9 +5,9 @@ import React, {
 	KeyboardEventHandler,
 } from 'react';
 import classnames from 'classnames';
-import { displayLabelOrInput } from './displayLabelOrInput';
+import createCustomizableLunaticField from '../../../create-customizable-field';
 
-type Props = {
+export type InputProps = {
 	placeholder?: string;
 	disabled?: boolean;
 	value?: string;
@@ -24,7 +24,7 @@ function Input({
 	labelledBy,
 	focused,
 	className,
-}: Props) {
+}: InputProps) {
 	const inputEl = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
@@ -62,4 +62,4 @@ function Input({
 	);
 }
 
-export default displayLabelOrInput(Input, 'Input');
+export default createCustomizableLunaticField(Input, 'ComboboxInput');

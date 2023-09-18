@@ -18,17 +18,13 @@ function LunaticRoundabout({
 		function (iteration: number) {
 			goToPage({
 				page,
+				subPage: 0,
 				iteration,
 				nbIterations: iterations,
-				roundabout: { page },
 			});
 		},
 		[goToPage, page, iterations]
 	);
-
-	if (iterations === 1) {
-		return <Redirect goToIteration={goToIteration} iteration={0} />;
-	}
 
 	return (
 		<Roundabout
