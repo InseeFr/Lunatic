@@ -1,6 +1,6 @@
 import classnames from 'classnames';
-import { MouseEventHandler } from 'react';
-import { LunaticError } from '../../use-lunatic/type';
+import { type MouseEventHandler } from 'react';
+import type { LunaticError } from '../../use-lunatic/type';
 import CloseOrSkip from './close-or-skip';
 import ModalContainer from './modal-container';
 import './modal-controls.scss';

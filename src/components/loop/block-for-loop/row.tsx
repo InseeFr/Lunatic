@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { OrchestratedComponent } from '../../commons';
-import { LunaticBaseProps } from '../../type';
-import { LunaticComponentDefinition } from '../../../use-lunatic/type';
+import type { LunaticBaseProps } from '../../type';
+import type { LunaticComponentDefinition } from '../../../use-lunatic/type';
 import { getComponentValue } from '../../../utils/get-component-value';
 
 type Props = {

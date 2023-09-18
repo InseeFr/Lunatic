@@ -1,11 +1,10 @@
-import React from 'react';
 import { Tr as HtmlTr } from '../commons/components/html-table';
 import Cell from './cell';
 import type {
 	LunaticComponentDefinition,
 	LunaticExpression,
 } from '../../use-lunatic/type';
-import { LunaticBaseProps } from '../type';
+import type { LunaticBaseProps } from '../type';
 type Props = {
 	components: Array<
 		| LunaticComponentDefinition

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 
 type Props = {
-	goToIteration: (n: number) => void,
-	iteration: number,
+	goToIteration: (n: number) => void;
+	iteration: number;
 };
 
 function Redirect({ goToIteration, iteration }: Props) {

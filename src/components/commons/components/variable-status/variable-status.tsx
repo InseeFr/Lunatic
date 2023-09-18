@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { PropsWithChildren, useState } from 'react';
+import React, { type PropsWithChildren, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { editedImg, forcedImg } from './img';
 import './variable-status.scss';
@@ -11,7 +11,7 @@ type Props = PropsWithChildren<{
 }>;
 
 const VariableStatus = ({ id = '', children }: Props) => {
-	const [tooltipElements, setTooltipElements] = useState(() => ({
+	const [tooltipElements] = useState(() => ({
 		imgName: 'editedImg',
 		content: [{ key: 'TODO', value: ' coming soon' }],
 	}));

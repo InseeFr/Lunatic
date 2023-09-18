@@ -1,4 +1,4 @@
-import { LunaticComponentDefinition } from '../type';
+import type { LunaticComponentDefinition } from '../type';
 
 function isPaginatedLoop(
 	component: LunaticComponentDefinition

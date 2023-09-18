@@ -1,8 +1,7 @@
-import React from 'react';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import Dropdown from './html/dropdown';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 import classNames from 'classnames';
 
 function LunaticDropdown({
@@ -44,7 +43,7 @@ function LunaticDropdown({
 				options={options}
 				onSelect={onChange}
 				value={value}
-				className={classNames(className, "lunatic-dropdown")}
+				className={classNames(className, 'lunatic-dropdown')}
 				errors={errors}
 				label={label}
 			/>

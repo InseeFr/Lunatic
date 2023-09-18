@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { SuggesterType } from './type-source';
+import type { SuggesterType } from './type-source';
 import { initStore } from '../utils/store-tools/initStore';
 import { createAppendTask } from '../utils/suggester-workers/append-to-index/create-append-task';
 

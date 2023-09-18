@@ -1,6 +1,6 @@
 import Declarations, {
 	DECLARATION_POSITIONS,
-	DeclarationsProps,
+	type DeclarationsProps,
 } from './declarations';
 
 function DeclarationsAfterText(props: Omit<DeclarationsProps, 'type'>) {

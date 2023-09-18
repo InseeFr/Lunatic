@@ -1,7 +1,7 @@
 import { executeVtlExpression } from './execute-expression/execute-expression';
 import getVtlCompatibleValue from '../../utils/vtl';
 import { CALCULATED } from '../../constants';
-import { LunaticState, LunaticValues } from '../type';
+import type { LunaticState, LunaticValues } from '../type';
 
 export const interpretAllCalculatedVariables = ({
 	variables,

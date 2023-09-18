@@ -2,7 +2,7 @@ import { Table, Tbody } from '../commons/components/html-table';
 import Header from './header';
 import LunaticComponent from '../commons/components/lunatic-component-with-label';
 import TableOrchestrator from './table-orchestrator';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 import { Errors } from '../commons';
 
 function LunaticTable(props: LunaticComponentProps<'Table'>) {

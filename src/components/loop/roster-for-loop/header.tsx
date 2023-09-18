@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { Tr, Th, Thead } from '../../commons/components/html-table';
 
 type Props = {

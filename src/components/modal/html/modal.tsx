@@ -1,9 +1,9 @@
 import type { MouseEventHandler, ReactEventHandler, RefObject } from 'react';
-import type { LunaticComponentProps } from '../../type';
-import { createCustomizableLunaticField } from '../../commons';
 import { createPortal } from 'react-dom';
-import './modal.scss';
 import Button from '../../button';
+import { createCustomizableLunaticField } from '../../commons';
+import type { LunaticComponentProps } from '../../type';
+import './modal.scss';
 
 type Props = Pick<
 	LunaticComponentProps<'Modal'>,

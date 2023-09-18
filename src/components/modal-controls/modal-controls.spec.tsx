@@ -1,8 +1,7 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import ModalControls from './modal-controls';
 import { describe, expect, it, vi } from 'vitest';
-import { LunaticError } from '../../use-lunatic/type';
+import type { LunaticError } from '../../use-lunatic/type';
 import { Criticality, TypeOfControl } from '../../use-lunatic/type-source';
 
 describe('ModalControls component', () => {

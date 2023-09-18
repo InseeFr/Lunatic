@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import Description from '../../../commons/components/description';
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 
 type Props = PropsWithChildren<{
 	id?: string;

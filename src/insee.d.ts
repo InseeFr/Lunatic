@@ -26,6 +26,7 @@ declare module 'antlr4' {
 	class InputStream {
 		constructor(expression: string);
 	}
+	// eslint-disable-next-line import/no-anonymous-default-export
 	export default {
 		InputStream: InputStream,
 	};

@@ -1,4 +1,4 @@
-import { LunaticComponentDefinition, LunaticState } from '../type';
+import type { LunaticComponentDefinition, LunaticState } from '../type';
 import { useMemo } from 'react';
 
 /**
@@ -19,5 +19,5 @@ export function useLoopVariables(
 			(c) => c.componentType === 'Loop'
 		) as LunaticComponentDefinition<'Loop'> | undefined;
 		return loop?.loopDependencies ?? [];
-	}, [page, inIteration]);
+	}, [page, pages, inIteration]);
 }

@@ -1,6 +1,6 @@
 import reduceCleaning from './reduce-cleaning';
-import { LunaticState } from '../../type';
-import { ActionHandleChange, ActionKind } from '../../actions';
+import type { LunaticState } from '../../type';
+import { type ActionHandleChange, ActionKind } from '../../actions';
 
 /**
  * Find the new value for a variable from the state

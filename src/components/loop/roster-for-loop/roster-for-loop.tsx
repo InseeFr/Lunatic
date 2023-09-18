@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import {
 	DeclarationsBeforeText,
 	DeclarationsAfterText,
@@ -9,7 +9,7 @@ import { createCustomizableLunaticField } from '../../commons';
 import HandleRowButton from '../commons/handle-row-button';
 import D from '../../../i18n';
 import getInitLength from '../commons/get-init-length';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticComponentProps } from '../../type';
 
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;

@@ -1,6 +1,6 @@
 import React, {
-	MouseEventHandler,
-	PropsWithChildren,
+	type MouseEventHandler,
+	type PropsWithChildren,
 	useCallback,
 } from 'react';
 import classnames from 'classnames';

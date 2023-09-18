@@ -1,5 +1,5 @@
-import { StateForControls } from '../../commons/compile-controls';
-import { LunaticControl, LunaticError } from '../../type';
+import { type StateForControls } from '../../commons/compile-controls';
+import type { LunaticControl, LunaticError } from '../../type';
 import { resolveRoundaboutControl } from './resolve-roundabout-control';
 import { ControlTypeEnum } from '../../type-source';
 import { resolveSimpleControl } from './resolve-simple-control';

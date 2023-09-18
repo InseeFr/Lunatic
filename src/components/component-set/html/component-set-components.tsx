@@ -1,6 +1,6 @@
 import { OrchestratedComponent } from '../../commons';
 import ComponentSetComponentContainer from './component-set-component-container';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticComponentProps } from '../../type';
 import { getComponentValue } from '../../../utils/get-component-value';
 
 type Props = {

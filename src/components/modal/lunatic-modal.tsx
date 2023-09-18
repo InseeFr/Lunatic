@@ -1,8 +1,8 @@
-import { Modal } from './html/modal';
-import LunaticComponent from '../commons/components/lunatic-component-without-label';
-import { LunaticComponentProps } from '../type';
-import { MouseEventHandler, useEffect, useRef } from 'react';
+import { useEffect, useRef, type MouseEventHandler } from 'react';
 import { isEventInRect } from '../../utils/dom';
+import LunaticComponent from '../commons/components/lunatic-component-without-label';
+import { type LunaticComponentProps } from '../type';
+import { Modal } from './html/modal';
 
 function empty() {}
 

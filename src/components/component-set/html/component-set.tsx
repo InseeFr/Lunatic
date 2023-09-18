@@ -1,7 +1,7 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import { type PropsWithChildren, type ReactNode } from 'react';
 import { createCustomizableLunaticField, Errors } from '../../commons';
 import Legend from './legend';
-import { LunaticError } from '../../../use-lunatic/type';
+import type { LunaticError } from '../../../use-lunatic/type';
 
 type Props = PropsWithChildren<{
 	id?: string;
