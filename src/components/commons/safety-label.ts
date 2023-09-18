@@ -1,5 +1,5 @@
 import { isElement } from '../../utils/is-element';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 function safetyLabel(label: unknown): ReactNode {
 	if (!label) {

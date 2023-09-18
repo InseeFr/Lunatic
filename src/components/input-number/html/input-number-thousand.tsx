@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { useCallback, useState } from 'react';
 import {
-	NumberFormatValues,
+	type NumberFormatValues,
 	NumericFormat,
-	OnValueChange,
+	type OnValueChange,
 } from 'react-number-format';
 import { inputNumberPropsI18N } from '../../../i18n';
 

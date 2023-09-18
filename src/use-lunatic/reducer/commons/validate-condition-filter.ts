@@ -1,5 +1,5 @@
 import { executeConditionFilter } from '../../commons';
-import { LunaticState } from '../../type';
+import type { LunaticState } from '../../type';
 
 function validateLoopConditionFilter(
 	state: LunaticState,

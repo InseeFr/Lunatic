@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import { type FunctionComponent } from 'react';
 import PanelContainer from './panel-container';
 import { OptionContainer } from './option-container';
-import { ComboBoxOptionType } from '../combo-box.type';
+import { type ComboBoxOptionType } from '../combo-box.type';
 import ComboBoxOption from './combo-box-option';
 
 export type PanelProps = {

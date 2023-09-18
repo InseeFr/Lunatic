@@ -1,10 +1,10 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import { type ReactNode, useCallback, useState } from 'react';
 import { ComboBox, createCustomizableLunaticField } from '../../commons';
 import './default-style.scss';
 import { voidFunction } from '../../../utils/function';
-import { LunaticError } from '../../../use-lunatic/type';
-import { ComboBoxOptionType } from '../../commons/components/combo-box/combo-box.type';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticError } from '../../../use-lunatic/type';
+import type { ComboBoxOptionType } from '../../commons/components/combo-box/combo-box.type';
+import type { LunaticComponentProps } from '../../type';
 import D from '../../../i18n';
 
 type Props = {

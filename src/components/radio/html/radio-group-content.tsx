@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import RadioOption from './radio-option';
 import { useOptionsKeydown } from '../../commons';
 import { getShortcutKey } from '../../checkbox/commons/getShortcutKey';

@@ -1,6 +1,6 @@
 import isPaginatedLoop from './is-paginated-loop';
 import isRoundabout from './is-roundabout';
-import {
+import type {
 	LunaticExpression,
 	LunaticComponentDefinition,
 	LunaticState,

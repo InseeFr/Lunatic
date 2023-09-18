@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { createCustomizableLunaticField } from '../commons';
 import RoundaboutLabel from './components/roundabout-label';
 import RoundaboutPending from './components/roundabout-pending';

@@ -1,13 +1,11 @@
 import './missing.scss';
-
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { DK, RF } from '../../../../utils/constants';
-
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { useLunaticMissing } from '../../../../use-lunatic/lunatic-context';
 import Button from '../../../button';
 import useOnHandleChange from '../../use-on-handle-change';
-import { LunaticBaseProps } from '../../../type';
+import type { LunaticBaseProps } from '../../../type';
 
 type Props = {
 	handleChange: LunaticBaseProps<any>['handleChange'];
@@ -73,16 +71,14 @@ export const MissingPure = (
 	return (
 		<div className="missing-buttons">
 			<span
-				className={`missing-button${
-					value === DK ? '-active' : ''
-				} missing-button-dk${value === DK ? '-active' : ''}`}
+				className={`missing-button${value === DK ? '-active' : ''
+					} missing-button-dk${value === DK ? '-active' : ''}`}
 			>
 				<Button label={dontKnowButton} onClick={onClickDK} />
 			</span>
 			<span
-				className={`missing-button${
-					value === RF ? '-active' : ''
-				} missing-button-rf${value === RF ? '-active' : ''}`}
+				className={`missing-button${value === RF ? '-active' : ''
+					} missing-button-rf${value === RF ? '-active' : ''}`}
 			>
 				<Button label={refusedButton} onClick={onClickRF} />
 			</span>

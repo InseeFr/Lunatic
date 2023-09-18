@@ -1,7 +1,7 @@
 import { IDBSuggester } from './idb-suggester';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 function LunaticSuggester({
 	id,

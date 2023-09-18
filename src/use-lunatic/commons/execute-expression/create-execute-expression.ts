@@ -11,7 +11,7 @@ import {
 	X_AXIS,
 	Y_AXIS,
 } from '../../../utils/constants';
-import { LunaticExpression, LunaticState } from '../../type';
+import type { LunaticExpression, LunaticState } from '../../type';
 
 export type ExpressionLogger = (
 	expression: string | LunaticExpression,

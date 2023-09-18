@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
 	ComponentType,
 	ControlType,
 	LunaticSource,
 	Variable,
 } from './type-source';
-import { ExpressionLogger } from './commons/execute-expression/create-execute-expression';
+import { type ExpressionLogger } from './commons/execute-expression/create-execute-expression';
 import { SuggesterStatus } from './use-suggesters';
 
 export type LunaticComponentDefinition<

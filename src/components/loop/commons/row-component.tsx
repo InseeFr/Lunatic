@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as lunatic from '../../../components';
 import { fillComponentExpressions } from '../../../use-lunatic/commons';
-import { LunaticComponentDefinition } from '../../../use-lunatic/type';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticComponentDefinition } from '../../../use-lunatic/type';
+import type { LunaticBaseProps } from '../../type';
 
 type Props = {
 	linksIterations?: [number, number];

@@ -1,7 +1,6 @@
-import React from 'react';
 import BlockForLoop from './block-for-loop';
 import RosterForLoop from './roster-for-loop';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 const LoopTypes = {
 	rosterForLoop: 'RosterForLoop',

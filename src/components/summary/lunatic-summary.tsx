@@ -1,7 +1,7 @@
-import { LunaticComponentProps, VtlExpression } from '../type';
+import type { LunaticComponentProps, VtlExpression } from '../type';
 import SummaryTitle from './html/summary-title';
 import { SummaryContainer } from './html/summary-container';
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import SummaryResponses from './html/summary-responses';
 
 export type SummaryResponsesEntry = {
@@ -61,7 +61,7 @@ function CompiledTitle({
 }
 
 export function LunaticSummary(props: LunaticComponentProps<'Summary'>) {
-	const { executeExpression, label, sections } = props;
+  const { executeExpression, label, sections } = props;
 
 	const compiledSections = sections.reduce((acc, section) => {
 		const { iterations, title, responses, id } = section;

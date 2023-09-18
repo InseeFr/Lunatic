@@ -1,5 +1,5 @@
 import getComponentValue from '../get-component-value';
-import { LunaticComponentDefinition, LunaticState } from '../../type';
+import type { LunaticComponentDefinition, LunaticState } from '../../type';
 
 export type FilledProps = { value: unknown };
 

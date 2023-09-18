@@ -1,5 +1,5 @@
 import QuestionExplication from './html/question-explication';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 
 function empty() { }

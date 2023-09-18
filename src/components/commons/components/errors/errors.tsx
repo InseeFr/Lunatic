@@ -1,5 +1,5 @@
 import './errors.scss';
-import { LunaticError } from '../../../../use-lunatic/type';
+import type { LunaticError } from '../../../../use-lunatic/type';
 
 type Props = {
 	errors?: Record<string, LunaticError[]>;

@@ -5,8 +5,8 @@ import {
 	Fieldset,
 } from '../../commons';
 import './radio-group.scss';
-import { ReactNode } from 'react';
-import { LunaticError } from '../../../use-lunatic/type';
+import type { ReactNode } from 'react';
+import type { LunaticError } from '../../../use-lunatic/type';
 
 export type RadioGroupProps = {
 	options: { description?: ReactNode; label: ReactNode; value: string }[];

@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, PropsWithChildren } from 'react';
+import { type MouseEventHandler, type PropsWithChildren } from 'react';
 import Button from '../../button/lunatic-button';
 
 type Props = PropsWithChildren<{

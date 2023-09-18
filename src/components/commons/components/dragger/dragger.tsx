@@ -2,8 +2,8 @@ import React, {
 	useState,
 	useEffect,
 	useCallback,
-	MouseEvent as ReactMouseEvent,
-	PropsWithChildren,
+	type MouseEvent as ReactMouseEvent,
+	type PropsWithChildren,
 } from 'react';
 import { useDocumentAddEventListener } from '../../../commons';
 import './dragger.scss';

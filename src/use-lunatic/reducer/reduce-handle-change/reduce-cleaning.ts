@@ -1,6 +1,6 @@
 import { getCompatibleVTLExpression } from '../../commons';
-import { LunaticState, LunaticStateVariable } from '../../type';
-import { ActionHandleChange } from '../../actions';
+import type { LunaticState, LunaticStateVariable } from '../../type';
+import { type ActionHandleChange } from '../../actions';
 import { objectMap } from '../../../utils/object';
 
 /**

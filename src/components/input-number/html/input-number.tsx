@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { voidFunction } from '../../../utils/function';
 import { Errors, Label, createCustomizableLunaticField } from '../../commons';
-import { LunaticBaseProps } from '../../type';
+import { type LunaticBaseProps } from '../../type';
 import InputNumberThousand from './input-number-thousand';
 import './input-number.scss';
 
