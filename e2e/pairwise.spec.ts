@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test('can complete pairwise form', async ({ page }) => {
 	await page.goto(
@@ -14,7 +14,7 @@ test('can complete pairwise form', async ({ page }) => {
 	await page.getByLabel('Âge de Jane').click();
 	await page.getByLabel('Âge de Jane').fill('20');
 	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByText('Please, do something...').nth(0).click();
+	await page.getByText('Commencez votre saisie...').nth(0).click();
 	await page.getByText('Sa mère, son père').click();
 	await expect(page.getByText('Sa fille, son fils')).toBeVisible();
 	await page.getByText('Sa fille, son fils').isVisible();
