@@ -11,6 +11,15 @@ export async function goToStory(page: Page, storyId: string) {
 }
 
 /**
+ * Go to the next page
+ */
+export async function gotoNextPage(page: Page, n = 1) {
+	for (let i = 0; i < n; i++) {
+		await page.getByRole('button', { name: 'Next' }).click();
+	}
+}
+
+/**
  * Check the output of getData() from lunatic
  */
 export async function expectLunaticData(

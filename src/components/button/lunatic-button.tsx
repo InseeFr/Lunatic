@@ -1,37 +1,38 @@
-import React, {
-	type MouseEventHandler,
-	type PropsWithChildren,
-	useCallback,
-} from 'react';
 import classnames from 'classnames';
+import { type MouseEventHandler, type PropsWithChildren } from 'react';
+import { prevent } from '../../utils/dom';
 import { isElement } from '../../utils/is-element';
 import { createCustomizableLunaticField } from '../commons';
 import './button.scss';
 
 type Props = PropsWithChildren<{
-	onClick: MouseEventHandler<HTMLButtonElement | HTMLInputElement>;
+	onClick?: MouseEventHandler<HTMLButtonElement | HTMLInputElement>;
 	className?: string;
 	disabled?: boolean;
 	label?: string;
+	value?: string;
+	type?: 'button' | 'submit' | 'reset';
 }>;
 
-function Button({ children, onClick, disabled, label, className }: Props) {
-	const handleClick: Props['onClick'] = useCallback(
-		function (e) {
-			e.stopPropagation();
-			e.preventDefault();
-			onClick?.(e);
-		},
-		[onClick]
-	);
+function Button({
+	children,
+	onClick,
+	disabled,
+	label,
+	className,
+	value,
+	type = 'button',
+}: Props) {
+	const handleClick = prevent(onClick);
 
-	if (isElement(children))
+	if (isElement(children) || value)
 		return (
 			<button
 				disabled={disabled}
-				type="button"
+				type={type}
 				className={classnames('button-lunatic', className, { disabled })}
 				onClick={handleClick}
+				value={value}
 			>
 				{children}
 			</button>
@@ -43,7 +44,7 @@ function Button({ children, onClick, disabled, label, className }: Props) {
 				disabled={disabled}
 				type="button"
 				className={classnames('button-lunatic', className, { disabled })}
-				value={label || children?.toString()}
+				value={label ?? children?.toString()}
 				onClick={handleClick}
 			/>
 		</>

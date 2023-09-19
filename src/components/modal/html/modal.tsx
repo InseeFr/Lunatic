@@ -1,84 +1,56 @@
-import { useCallback, useEffect, useRef, type KeyboardEvent } from 'react';
+import type { MouseEventHandler, ReactEventHandler, RefObject } from 'react';
+import { createPortal } from 'react-dom';
+import Button from '../../button';
 import { createCustomizableLunaticField } from '../../commons';
 import type { LunaticComponentProps } from '../../type';
-import { createPortal } from 'react-dom';
 import './modal.scss';
-import Button from '../../button';
 
-function Modal(
-	props: Pick<
-		LunaticComponentProps<'Modal'>,
-		| 'id'
-		| 'label'
-		| 'description'
-		| 'goToPage'
-		| 'page'
-		| 'goNextPage'
-		| 'goPreviousPage'
-	>
-) {
-	const { id, label, description, goNextPage, goPreviousPage } = props;
-	const first = useRef<HTMLDivElement>(null);
-	const last = useRef<HTMLDivElement>(null);
+type Props = Pick<
+	LunaticComponentProps<'Modal'>,
+	'id' | 'label' | 'description'
+> & {
+	onClose: ReactEventHandler<HTMLDialogElement>;
+	onCancel: ReactEventHandler<HTMLDialogElement>;
+	onClick: MouseEventHandler<HTMLDialogElement>;
+	dialogRef: RefObject<HTMLDialogElement>;
+};
 
-	useEffect(() => {
-		const focusOnInit = first?.current?.lastElementChild as HTMLButtonElement;
-		focusOnInit.focus();
-	}, [first]);
-
-	const onKeyDown = useCallback(
-		(e: KeyboardEvent<HTMLElement>) => {
-			const firstButtonToFocus = first?.current
-				?.lastElementChild as HTMLButtonElement;
-			const lastButtonToFocus = last?.current
-				?.lastElementChild as HTMLButtonElement;
-			if (e.key === 'Tab') {
-				if (e.shiftKey) {
-					if (document.activeElement === firstButtonToFocus) {
-						lastButtonToFocus.focus();
-						e.nativeEvent.preventDefault();
-					}
-				} else if (document.activeElement === lastButtonToFocus) {
-					firstButtonToFocus.focus();
-					e.nativeEvent.preventDefault();
-				}
-			}
-		},
-		[first, last]
-	);
-
-	const handleNextClick = useCallback(
-		function () {
-			goNextPage();
-		},
-		[goNextPage]
-	);
-	const handlePreviousClick = useCallback(
-		function () {
-			goPreviousPage();
-		},
-		[goPreviousPage]
-	);
-
+function ModalPure({
+	id,
+	label,
+	description,
+	onClose,
+	onCancel,
+	onClick,
+	dialogRef,
+}: Props) {
 	return createPortal(
-		<dialog className="lunatic-modal" open>
-			<div className="modal-content" onKeyDown={onKeyDown}>
-				<div id={id} className="lunatic-modal-container">
-					<div className="close-button" ref={first}>
-						<Button onClick={handlePreviousClick}>fermer x</Button>
-					</div>
-					<div className="modal-message">
-						<span>{label}</span>
-						<span>{description}</span>
-					</div>
-					<div className="cancel-confirm-buttons" ref={last}>
-						<Button onClick={handlePreviousClick}>Annuler</Button>
-						<Button onClick={handleNextClick}>Je confirme</Button>
-					</div>
+		<dialog
+			onClose={onClose}
+			onCancel={onCancel}
+			className="lunatic-modal"
+			ref={dialogRef}
+			id={id}
+			onClick={onClick}
+		>
+			<form method="dialog">
+				<div className="lunatic-modal_title">{label}</div>
+				<div className="lunatic-modal_description">{description}</div>
+				<div className="lunatic-modal_buttons">
+					<Button type="submit" value="default">
+						Je confirme
+					</Button>
+					<Button type="submit" value="cancel">
+						Annuler
+					</Button>
 				</div>
-			</div>
+				<Button type="submit" value="cancel" className="lunatic-modal_close">
+					fermer <span aria-hidden>x</span>
+				</Button>
+			</form>
 		</dialog>,
 		document.body
 	);
 }
-export default createCustomizableLunaticField(Modal, 'Modal');
+
+export const Modal = createCustomizableLunaticField(ModalPure, 'Modal');
