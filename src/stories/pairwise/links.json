@@ -148,7 +148,7 @@
 						"type": "VTL|MD"
 					},
 					"conditionFilter": {
-						"value": "LINKS = \"17\"",
+						"value": "LINKS = \"16\"",
 						"type": "VTL"
 					},
 					"id": "other",

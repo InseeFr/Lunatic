@@ -167,7 +167,7 @@
 								"type": "VTL|MD"
 							},
 							"conditionFilter": {
-								"value": "not(nvl(cast(LINKS, string), \"\") = \"\") and cast(LINKS, string) = \"17\"",
+								"value": "not(nvl(cast(LINKS, string), \"\") = \"\") and cast(LINKS, string) = \"16\"",
 								"type": "VTL"
 							},
 							"id": "other",
