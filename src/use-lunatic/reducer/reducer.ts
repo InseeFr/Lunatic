@@ -1,5 +1,5 @@
-import { Action, ActionKind } from '../actions';
-import { LunaticState } from '../type';
+import { type Action, ActionKind } from '../actions';
+import type { LunaticState } from '../type';
 import reduceGoNextPage from './reduce-go-next-page';
 import reduceGoPreviousPage from './reduce-go-previous-page';
 import reduceGoToPage from './reduce-go-to-page';

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import getComponentsFromState from './get-components-from-state';
 import fillComponents from './fill-components';
-import { LunaticState } from '../type';
+import type { LunaticState } from '../type';
 
 function useComponentsFromState(state: LunaticState) {
 	return useMemo(

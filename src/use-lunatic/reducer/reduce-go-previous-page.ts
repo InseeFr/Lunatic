@@ -1,4 +1,4 @@
-import { LunaticState } from '../type';
+import type { LunaticState } from '../type';
 import { getPrevPager } from '../commons/page-navigation';
 import { autoExploreLoop } from './commons/auto-explore-loop';
 import { getPageId, isPageEmpty } from '../commons/page';

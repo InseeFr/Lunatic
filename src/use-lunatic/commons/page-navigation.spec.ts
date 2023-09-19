@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getNextPager, getPrevPager } from './page-navigation';
-import { LunaticState } from '../type';
+import type { LunaticState } from '../type';
 
 describe('page-navigation', () => {
 	describe('getNextPager', () => {
@@ -114,7 +114,7 @@ describe('page-navigation', () => {
 				...reset,
 				page: '2',
 			});
-			expect(getPrevPager({...pager, iteration: 1}, 'Roundabout')).toEqual({
+			expect(getPrevPager({ ...pager, iteration: 1 }, 'Roundabout')).toEqual({
 				...pager,
 				...reset,
 				page: '2',

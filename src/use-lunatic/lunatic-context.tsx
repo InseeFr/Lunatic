@@ -1,6 +1,6 @@
 import {
-	FunctionComponent,
-	PropsWithChildren,
+	type FunctionComponent,
+	type PropsWithChildren,
 	createContext,
 	useContext,
 } from 'react';

@@ -1,13 +1,10 @@
-import { LunaticComponentDefinition, LunaticState } from '../../type';
-import { ResponseType } from '../../type-source';
+import type { LunaticComponentDefinition, LunaticState } from '../../type';
+import type { ResponseType } from '../../type-source';
 
 type AccumulatorMap = Record<string, unknown>;
 
 function isInSubPage(state: Pick<LunaticState, 'pager'>) {
-	const { pager } = state;
-	const { subPage } = pager;
-
-	return subPage !== undefined;
+	return state.pager.subPage !== undefined;
 }
 
 /**

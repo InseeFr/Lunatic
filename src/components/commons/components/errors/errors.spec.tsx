@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import Errors from './errors';
-import { LunaticError } from '../../../../use-lunatic/type';
+import type { LunaticError } from '../../../../use-lunatic/type';
 import {
 	Criticality,
 	TypeOfControl,

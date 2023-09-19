@@ -1,9 +1,9 @@
-import {
+import type {
 	LunaticComponentDefinition,
 	LunaticOverviewItem,
 	LunaticState,
 } from '../../type';
-import { ActionInit } from '../../actions';
+import { type ActionInit } from '../../actions';
 
 type Page = LunaticState['pages'][keyof LunaticState['pages']];
 

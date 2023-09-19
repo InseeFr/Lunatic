@@ -1,36 +1,33 @@
 import { test, expect } from '@playwright/test';
+import { expectLunaticData, goToStory, gotoNextPage } from './utils';
 
-test('can complete pairwise form', async ({ page }) => {
-	await page.goto(
-		'http://localhost:9999/iframe.html?viewMode=story&id=components-pairwiselinks--default'
-	);
-	await page.getByLabel('Prénom').nth(2).fill('Marc');
-	await page.getByRole('button', { name: 'Ajouter un individu' }).click();
-	await page.getByLabel('Prénom').nth(3).fill('Jane');
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByLabel('Âge de Jane').click();
-	await page.getByLabel('Âge de Jane').fill('20');
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByText('Please, do something...').nth(0).click();
-	await page.getByText('Sa mère, son père').click();
-	await expect(page.getByText('Sa fille, son fils')).toBeVisible();
-	await page.getByText('Sa fille, son fils').isVisible();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await expect(page.getByText('END')).toBeVisible();
-	const consoleOut = page.waitForEvent('console');
-	await page.getByRole('button', { name: 'Get State' }).click();
-	const output = await consoleOut;
-	expect(await output.args()[0].jsonValue()).toHaveProperty(
-		'COLLECTED.LINKS.COLLECTED',
-		[
-			[null, '2', null, null],
-			['3', null, null, null],
+const stories = [
+	['pairwise', 'components-pairwiselinks--default'],
+	[
+		'pairwise in component set',
+		'components-pairwiselinks--pairwise-in-component-set',
+	],
+];
+
+for (const [label, story] of stories) {
+	test(`can complete ${label} form`, async ({ page }) => {
+		await goToStory(page, story);
+		await page.getByLabel('Prénom').nth(2).fill('Marc');
+		await page.getByRole('button', { name: 'Ajouter un individu' }).click();
+		await page.getByLabel('Prénom').nth(3).fill('Jane');
+		await gotoNextPage(page, 4);
+		await page.getByLabel('Âge de Jane').click();
+		await page.getByLabel('Âge de Jane').fill('20');
+		await page.getByRole('button', { name: 'Next' }).click();
+		await page.getByText('Sa fille, son fils').click();
+		await expect(page.getByText('Sa mère, son père')).toBeVisible();
+		await gotoNextPage(page, 2);
+		await expect(page.getByText('END')).toBeVisible();
+		await expectLunaticData(page, 'COLLECTED.LINKS.COLLECTED', [
+			[null, '3', null, null],
+			['2', null, null, null],
 			[null, null, null, null],
 			[null, null, null, null],
-		]
-	);
-});
+		]);
+	});
+}

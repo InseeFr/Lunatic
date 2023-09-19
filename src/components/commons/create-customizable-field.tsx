@@ -1,4 +1,4 @@
-import { ComponentType, FunctionComponent, memo } from 'react';
+import { type ComponentType, type FunctionComponent, memo } from 'react';
 import { useLunaticCustom } from '../../use-lunatic/lunatic-context';
 
 function createCustomizableLunaticField<T extends Record<string, unknown>>(
@@ -6,6 +6,7 @@ function createCustomizableLunaticField<T extends Record<string, unknown>>(
 	name: string
 ): ComponentType<T> {
 	const Memoized = memo(LunaticField);
+	Memoized.displayName = name;
 
 	return function OverlayField(props) {
 		const custom = useLunaticCustom();

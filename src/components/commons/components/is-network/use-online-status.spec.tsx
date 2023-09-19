@@ -1,4 +1,3 @@
-import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import useOnlineStatus from './use-online-status';

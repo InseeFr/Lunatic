@@ -4,7 +4,7 @@ import {
 	DeclarationsDetachable,
 } from '../declarations';
 import { createCustomizableLunaticField } from '../commons';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 function Subsequence({
 	id,

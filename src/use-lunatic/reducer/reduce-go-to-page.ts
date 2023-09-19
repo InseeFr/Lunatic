@@ -1,6 +1,6 @@
-import { ActionGoToPage, ActionKind } from '../actions';
+import { type ActionGoToPage, ActionKind } from '../actions';
 import { getPagerFromPageTag } from '../commons/page-tag';
-import { LunaticState } from '../type';
+import type { LunaticState } from '../type';
 import reduceGoNextPage from './reduce-go-next-page';
 import { getPageId, isPageEmpty } from '../commons/page';
 

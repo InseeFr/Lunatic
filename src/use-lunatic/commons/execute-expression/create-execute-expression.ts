@@ -4,14 +4,8 @@ import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
 import getVtlCompatibleValue from '../../../utils/vtl';
-import {
-	COLLECTED,
-	VTL,
-	VTL_MD,
-	X_AXIS,
-	Y_AXIS,
-} from '../../../utils/constants';
-import { LunaticExpression, LunaticState } from '../../type';
+import { VTL, VTL_MD, X_AXIS, Y_AXIS } from '../../../utils/constants';
+import type { LunaticExpression, LunaticState } from '../../type';
 
 export type ExpressionLogger = (
 	expression: string | LunaticExpression,
@@ -90,34 +84,6 @@ function createExecuteExpression(
 			bindings[name] = value;
 		}
 		pushToLazy(name);
-	}
-
-	/**
-	 * Update the binding for a loop
-	 */
-	function setLoopBindings(
-		variables: LunaticState['variables'],
-		iteration: number
-	) {
-		Object.entries(bindings).forEach(([k, v]) => {
-			const { type, value } = variables[k];
-			if (!Array.isArray(v) && type === COLLECTED && Array.isArray(value)) {
-				bindings[k] = value[iteration];
-				pushToLazy(k);
-			}
-		});
-	}
-
-	/**
-	 * Reset the values in a loop
-	 */
-	function resetLoopBindings(variables: LunaticState['variables']) {
-		Object.entries(bindings).forEach(([k, v]) => {
-			const { type, value } = variables[k];
-			if (type === COLLECTED && Array.isArray(value) && !Array.isArray(v)) {
-				bindings[k] = value;
-			}
-		});
 	}
 
 	/**
@@ -247,6 +213,10 @@ function createExecuteExpression(
 			}),
 			{ rootExpression: expression, iteration, linksIterations }
 		);
+		// Add index has a specific variable
+		vtlBindings['GLOBAL_ITERATION_INDEX'] = (
+			(args?.iteration ?? 0) + 1
+		).toString();
 		const memoized = getMemoizedValue(expression, vtlBindings);
 		if (memoized === undefined) {
 			const result = executeExpression(

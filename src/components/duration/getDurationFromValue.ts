@@ -1,4 +1,4 @@
-import { Formats, DurationValue } from './durationUtils';
+import { type Formats, type DurationValue } from './durationUtils';
 
 /**
  * Convert a string into a duration
@@ -38,6 +38,6 @@ const matchFromFormat = (value: string, format: Formats): number[] => {
 			`Invalid duration value "${value}" does not match the format "${format}"`
 		);
 	}
-	const [_, ...matches] = match;
+	const [, ...matches] = match;
 	return matches.map((v) => parseInt(v, 10));
 };

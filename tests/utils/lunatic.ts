@@ -1,8 +1,8 @@
-import { LunaticSource } from '../../src/use-lunatic/type-source';
+import type { LunaticSource } from '../../src/use-lunatic/type-source';
 import type { LunaticData, LunaticState } from '../../src/use-lunatic/type';
 import reduceOnInit from '../../src/use-lunatic/reducer/reduce-on-init';
 import INITIAL_STATE from '../../src/use-lunatic/initial-state';
-import { ActionInit, onInit } from '../../src/use-lunatic/actions';
+import { type ActionInit, onInit } from '../../src/use-lunatic/actions';
 
 /**
  * Generate a base state from a source / data for unit testing reducer

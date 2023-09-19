@@ -1,4 +1,4 @@
-import { LunaticState } from '../type';
+import type { LunaticState } from '../type';
 
 const compose = <V>(
 	...functions: Array<(acc: LunaticState, action: V) => LunaticState>
