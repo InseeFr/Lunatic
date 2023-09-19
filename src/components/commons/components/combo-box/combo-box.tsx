@@ -12,7 +12,6 @@ import { KEYBOARD_KEY_CODES } from './keyboard-key-codes';
 import { Panel, type PanelProps } from './panel/panel';
 import { ClearButton } from './selection/clear-button';
 import { Selection, type SelectionProps } from './selection/selection';
-import { read } from 'fs';
 
 const EMPTY_SEARCH = '';
 
