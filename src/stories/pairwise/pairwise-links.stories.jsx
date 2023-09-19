@@ -1,10 +1,11 @@
 import React from 'react';
+import Orchestrator from '../utils/orchestrator';
+import links from './links';
+import data from './data';
+import linksComponentSet from './links-componentset.json';
+import defaultArgTypes from '../utils/default-arg-types';
 import { playwrightToUserEvent } from '../../../tests/utils/e2e';
 import { sleep } from '../../../tests/utils/timer';
-import defaultArgTypes from '../utils/default-arg-types';
-import Orchestrator from '../utils/orchestrator';
-import data from './data';
-import links from './links';
 
 const stories = {
 	title: 'Components/PairwiseLinks',
@@ -16,8 +17,15 @@ export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
-
 Default.args = { id: 'links', source: links, pagination: true, data };
+
+export const PairwiseInComponentSet = Template.bind({});
+PairwiseInComponentSet.args = {
+	id: 'links-componentset',
+	source: linksComponentSet,
+	pagination: true,
+	data,
+};
 
 export const Filled = Template.bind({});
 Filled.args = { ...Default.args, id: 'links-filled' };
