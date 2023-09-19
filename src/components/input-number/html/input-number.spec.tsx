@@ -92,6 +92,19 @@ describe('InputNumber', () => {
 		expect(input).toBeDisabled();
 	});
 
+	it('renders input readable but not editable when readOnly prop is true', () => {
+		const { container } = render(
+			<InputNumber id="number" value={123} readOnly onChange={mockOnChange} />
+		);
+		expect(container).toMatchSnapshot();
+
+		const input = container.querySelector('input[type="text"]');
+		expect(input).toHaveAttribute('readOnly');
+		(input as HTMLElement).focus();
+		expect(input).toHaveFocus();
+		expect(input).toHaveValue('123');
+	});
+
 	it('renders with unit', () => {
 		const { container } = render(
 			<InputNumber id="number" value={10} unit="kg" onChange={mockOnChange} />
