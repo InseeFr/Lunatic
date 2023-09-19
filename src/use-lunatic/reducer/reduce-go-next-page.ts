@@ -1,11 +1,9 @@
-import { type ActionGoNextPage } from '../actions';
 import { getNewReachedPage } from '../commons';
-import compose from '../commons/compose';
-import type { LunaticState } from '../type';
-import { overviewOnChange } from './overview/overview-on-change';
-import { getNextPager } from '../commons/page-navigation';
 import { getPageId, isPageEmpty } from '../commons/page';
+import { getNextPager } from '../commons/page-navigation';
+import type { LunaticState } from '../type';
 import { autoExploreLoop } from './commons/auto-explore-loop';
+import { overviewOnChange } from './overview/overview-on-change';
 
 function reduceGoNextPage(state: LunaticState): LunaticState {
 	const { pages, pager } = state;

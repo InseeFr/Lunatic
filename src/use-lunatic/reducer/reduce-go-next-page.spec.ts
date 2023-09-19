@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { generateState } from '../../../tests/utils/lunatic';
 import sourceConfirmationModal from '../../stories/modal/source.json';
-import { LunaticSource } from '../type-source';
+import { type LunaticSource } from '../type-source';
 import reduceGoNextPage from './reduce-go-next-page';
 
 describe('reduceGoPreviousPage', () => {
