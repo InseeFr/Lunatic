@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { generateState } from '../../../tests/utils/lunatic';
 import sourceConfirmationModal from '../../stories/modal/source.json';
 import { type LunaticSource } from '../type-source';
-import reduceGoNextPage from './reduce-go-next-page';
+import { reduceGoNextPage } from './reduce-go-next-page';
 
 describe('reduceGoPreviousPage', () => {
 	it('should move forward for modal', () => {

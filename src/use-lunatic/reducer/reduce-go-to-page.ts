@@ -2,7 +2,7 @@ import { type ActionGoToPage } from '../actions';
 import { getPageId, isPageEmpty } from '../commons/page';
 import { getPagerFromPageTag } from '../commons/page-tag';
 import type { LunaticState } from '../type';
-import reduceGoNextPage from './reduce-go-next-page';
+import { reduceGoNextPage } from './reduce-go-next-page';
 
 function reduceGoToPage(
 	state: LunaticState,
