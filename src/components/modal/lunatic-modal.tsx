@@ -7,8 +7,7 @@ import { Modal } from './html/modal';
 function empty() {}
 
 function LunaticModal(props: LunaticComponentProps<'ConfirmationModal'>) {
-	const { id, label, description, goNextPage, goPreviousPage } =
-		props;
+	const { id, label, description, goNextPage, goPreviousPage } = props;
 
 	const dialogRef = useRef<HTMLDialogElement>(null);
 
