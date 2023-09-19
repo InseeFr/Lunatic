@@ -9,7 +9,7 @@ describe('Input', () => {
 	});
 
 	it('renders without crashing', () => {
-		const container = render(
+		const { container } = render(
 			<Input
 				value={'input'}
 				id="input"
@@ -60,7 +60,7 @@ describe('Input', () => {
 		expect(input).toBeDisabled();
 	});
 
-	it('renders input readable but not editable when readOnly prop is true', () => {
+	it('should handle readOnly', () => {
 		const { container } = render(
 			<Input
 				id="number"
@@ -73,7 +73,7 @@ describe('Input', () => {
 		expect(container).toMatchSnapshot();
 
 		const input = container.querySelector('input[type="text"]');
-		expect(input).toHaveAttribute('readOnly');
+		expect(input).toHaveAttribute('readonly');
 		(input as HTMLElement).focus();
 		expect(input).toHaveFocus();
 		expect(input).toHaveValue('toto');

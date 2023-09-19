@@ -10,18 +10,18 @@ describe('Datepicker', () => {
 	});
 
 	it('renders without crashing', () => {
-		const container = render(
+		const { container } = render(
 			<Datepicker
 				value={'1999-01-01'}
-				id="date[ocler"
-				aria-labelledby="date[ocler"
+				id="datepicker"
+				aria-labelledby="datepicker"
 				onChange={mockOnChange}
 			/>
 		);
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders datepicker readable but not editable when readOnly prop is true', () => {
+	it('should handle readOnly', () => {
 		const { container } = render(
 			<Datepicker
 				id="Datepicker"
@@ -33,7 +33,7 @@ describe('Datepicker', () => {
 		expect(container).toMatchSnapshot();
 
 		const input = container.querySelector('input[type="date"]');
-		expect(input).toHaveAttribute('readOnly');
+		expect(input).toHaveAttribute('readonly');
 		(input as HTMLElement).focus();
 		expect(input).toHaveFocus();
 		expect(input).toHaveValue('1980-01-19');

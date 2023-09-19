@@ -10,7 +10,7 @@ describe('Textarea', () => {
 	});
 
 	it('renders without crashing', () => {
-		const container = render(
+		const { container } = render(
 			<Textarea
 				value={'input'}
 				id="input"
@@ -21,7 +21,7 @@ describe('Textarea', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders input readable but not editable when readOnly prop is true', () => {
+	it('should handle readOnly', () => {
 		const { container } = render(
 			<Textarea
 				id="textarea"
@@ -35,7 +35,7 @@ describe('Textarea', () => {
 		expect(container).toMatchSnapshot();
 
 		const input = container.querySelector('textarea');
-		expect(input).toHaveAttribute('readOnly');
+		expect(input).toHaveAttribute('readonly');
 		(input as HTMLElement).focus();
 		expect(input).toHaveFocus();
 		expect(input).toHaveValue(

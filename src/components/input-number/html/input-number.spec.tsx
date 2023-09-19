@@ -9,7 +9,7 @@ describe('InputNumber', () => {
 	});
 
 	it('renders without crashing', () => {
-		const container = render(
+		const { container } = render(
 			<InputNumber
 				value={'input' as any as number}
 				id="input"
@@ -92,14 +92,14 @@ describe('InputNumber', () => {
 		expect(input).toBeDisabled();
 	});
 
-	it('renders input readable but not editable when readOnly prop is true', () => {
+	it('should handle readOnly', () => {
 		const { container } = render(
 			<InputNumber id="number" value={123} readOnly onChange={mockOnChange} />
 		);
 		expect(container).toMatchSnapshot();
 
 		const input = container.querySelector('input[type="text"]');
-		expect(input).toHaveAttribute('readOnly');
+		expect(input).toHaveAttribute('readonly');
 		(input as HTMLElement).focus();
 		expect(input).toHaveFocus();
 		expect(input).toHaveValue('123');
