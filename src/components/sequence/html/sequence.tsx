@@ -1,6 +1,6 @@
 import { createCustomizableLunaticField } from '../../commons';
 import './sequence.scss';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticBaseProps } from '../../type';
 import Description from '../../commons/components/description';
 
 function Sequence({

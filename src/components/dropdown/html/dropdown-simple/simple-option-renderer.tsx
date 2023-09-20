@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { ComboBoxOptionType } from '../../../commons/components/combo-box/combo-box.type';
+import type { ComboBoxOptionType } from '../../../commons/components/combo-box/combo-box.type';
 
 type Props = {
 	option: ComboBoxOptionType;

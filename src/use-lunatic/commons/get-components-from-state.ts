@@ -1,5 +1,4 @@
-import type { LunaticState } from '../type';
-import { LunaticComponentDefinition } from '../type';
+import type { LunaticState, LunaticComponentDefinition } from '../type';
 
 /**
  * Extract the list of components to display for the current page

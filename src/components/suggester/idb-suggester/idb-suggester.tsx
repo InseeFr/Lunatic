@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import Suggester from '../html/suggester';
 import createSearching from '../searching';
 import CheckStore from './check-store';
 import { SuggesterStatus } from './suggester-status';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticComponentProps } from '../../type';
 
 type Props = Pick<
 	LunaticComponentProps<'Suggester'>,
@@ -14,6 +14,7 @@ type Props = Pick<
 	| 'optionRenderer'
 	| 'labelRenderer'
 	| 'disabled'
+	| 'readOnly'
 	| 'value'
 	| 'label'
 	| 'description'
@@ -37,6 +38,7 @@ export function IDBSuggester({
 	description,
 	getSuggesterStatus,
 	errors,
+	readOnly,
 }: Props) {
 	const [store, setStore] = useState(undefined);
 
@@ -70,6 +72,7 @@ export function IDBSuggester({
 					onSelect={onSelect}
 					searching={searching}
 					disabled={disabled}
+					readOnly={readOnly}
 					value={value}
 					label={label}
 					description={description}

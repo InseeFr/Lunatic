@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { voidFunction } from '../../../utils/function';
 import { Errors, Label, createCustomizableLunaticField } from '../../commons';
-import { LunaticBaseProps } from '../../type';
+import { type LunaticBaseProps } from '../../type';
 import InputNumberThousand from './input-number-thousand';
 import './input-number.scss';
 
@@ -10,6 +10,7 @@ type Props = {
 	onChange?: (n: number | null) => void;
 	value?: number | null;
 	disabled?: boolean;
+	readOnly?: boolean;
 	required?: boolean;
 	labelId?: string;
 	min?: number;
@@ -26,6 +27,7 @@ function InputNumber({
 	value = null,
 	onChange = voidFunction,
 	disabled = false,
+	readOnly = false,
 	min,
 	max,
 	decimals = 0,
@@ -47,6 +49,7 @@ function InputNumber({
 				value={value}
 				onChange={onChange}
 				disabled={disabled}
+				readOnly={readOnly}
 				required={required}
 				labelId={labelId}
 				min={min}

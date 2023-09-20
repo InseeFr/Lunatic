@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ComboBoxOptionType } from '../combo-box.type';
+import type { ComboBoxOptionType } from '../combo-box.type';
 import createCustomizableLunaticField from '../../../create-customizable-field';
 
 type Props = {
@@ -7,6 +7,7 @@ type Props = {
 	placeholder?: string;
 	search?: string;
 	disabled?: boolean;
+	readOnly?: boolean;
 };
 
 function isPlaceholder(option: Props['option'], search: Props['search']) {
@@ -33,12 +34,14 @@ function ComboBoxLabelSelection({
 	placeholder,
 	search,
 	disabled = false,
+	readOnly = false,
 }: Props) {
 	const isPh = isPlaceholder(option, search);
 	return (
 		<div
 			className={classNames('lunatic-combo-box-selected', {
 				disabled,
+				readOnly,
 			})}
 		>
 			<span

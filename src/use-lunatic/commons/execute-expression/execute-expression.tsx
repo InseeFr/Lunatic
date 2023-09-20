@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { interpret } from '@inseefr/trevas';
 import MdLabel from '../../../components/commons/components/md-label';
 import getVtlCompatibleValue from '../../../utils/vtl';
 import { MD, VTL } from '../../../utils/constants';
-import { VTLBindings } from '../../type';
+import type { VTLBindings } from '../../type';
 
 type DataSet = { dataPoints: { result: unknown } };
 
@@ -30,7 +30,7 @@ function extractDataSetResult(dataSet: DataSet) {
 /**
  * Run a VTL expression and return the result
  */
-export function executeVtlExpression<T = unknown>(
+export function executeVtlExpression(
 	expression: string,
 	vtlBindings: { [variableName: string]: unknown }
 ) {

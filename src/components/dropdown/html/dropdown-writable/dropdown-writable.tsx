@@ -1,10 +1,10 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import { type ReactNode, useCallback, useState } from 'react';
 import { ComboBox } from '../../../commons';
 import WritableOptionRenderer from './writable-option-renderer';
 import WritableLabelRenderer from './writable-label-renderer';
 import filterOptions from './filter-tools/filter-options';
-import { ComboBoxOptionType } from '../../../commons/components/combo-box/combo-box.type';
-import { LunaticError } from '../../../../use-lunatic/type';
+import type { ComboBoxOptionType } from '../../../commons/components/combo-box/combo-box.type';
+import type { LunaticError } from '../../../../use-lunatic/type';
 
 type Props = {
 	id?: string;
@@ -16,6 +16,7 @@ type Props = {
 	label?: ReactNode;
 	errors?: Record<string, LunaticError[]>;
 	description?: ReactNode;
+	readOnly?: boolean;
 };
 
 function DropdownWritable({
@@ -28,6 +29,7 @@ function DropdownWritable({
 	label,
 	errors,
 	description,
+	readOnly,
 }: Props) {
 	const [filtered, setFiltered] = useState(options);
 
@@ -48,6 +50,7 @@ function DropdownWritable({
 			id={id}
 			className={className}
 			disabled={disabled}
+			readOnly={readOnly}
 			options={filtered}
 			onSelect={onSelect}
 			onChange={onChange}

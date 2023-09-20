@@ -1,7 +1,7 @@
 import * as lunatic from '../../../components';
 import { fillComponentExpressions } from '../../../use-lunatic/commons';
-import { LunaticBaseProps } from '../../type';
-import { LunaticComponentDefinition } from '../../../use-lunatic/type';
+import type { LunaticBaseProps } from '../../type';
+import type { LunaticComponentDefinition } from '../../../use-lunatic/type';
 
 type Props<T extends Record<string, unknown>> = {
 	component: LunaticComponentDefinition;

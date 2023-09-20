@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { isObject } from '../../../utils/is-object';
-import {
+import type {
 	LunaticComponentDefinition,
 	LunaticExpression,
 	LunaticState,
@@ -29,6 +29,8 @@ const VTL_ATTRIBUTES = [
 	'conditionFilter',
 	'headers.label',
 	'header.label',
+	'disabled',
+	'readOnly',
 ];
 
 type CrawlArgs = Pick<LunaticState, 'executeExpression'> &
@@ -133,6 +135,9 @@ function fillAttributes(
 	);
 }
 
+/**
+ * Fill props interpreting VTL expression
+ */
 function fillComponentExpressions(
 	component: LunaticComponentDefinition,
 	state: {

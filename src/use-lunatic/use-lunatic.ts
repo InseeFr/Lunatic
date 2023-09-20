@@ -1,5 +1,5 @@
 import {
-	FunctionComponent,
+	type FunctionComponent,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -7,16 +7,15 @@ import {
 } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
-import { LunaticData, LunaticState } from './type';
+import type { LunaticData, LunaticState } from './type';
 
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
 import { getQuestionnaireData } from './commons/get-data';
 import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
-import { LunaticSource } from './type-source';
-// @ts-ignore
-import { LunaticComponentType } from '../components/type';
+import type { LunaticSource } from './type-source';
+import type { LunaticComponentType } from '../components/type';
 import compileControlsLib from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
@@ -32,7 +31,7 @@ const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
 const DEFAULT_DONT_KNOW = D.DK;
 const DEFAULT_REFUSED = D.RF;
-const nothing: LunaticState['handleChange'] = () => {};
+const nothing = () => {};
 
 function useLunatic(
 	source: LunaticSource,
@@ -61,7 +60,7 @@ function useLunatic(
 		features?: LunaticState['features'];
 		preferences?: LunaticState['preferences'];
 		savingType?: LunaticState['savingType'];
-		onChange?: typeof nothing;
+		onChange?: LunaticState['handleChange'];
 		management?: boolean;
 		shortcut?: boolean;
 		initialPage?: string;
@@ -168,7 +167,13 @@ function useLunatic(
 	);
 	const handleChange = useCallback<LunaticState['handleChange']>(
 		(response, value, args) => {
-			dispatch(actions.handleChange(response, value, args));
+			dispatch(
+				actions.handleChange(
+					typeof response === 'string' ? { name: response } : response,
+					value,
+					args
+				)
+			);
 			onChange(response, value, args);
 		},
 		[dispatch, onChange]
@@ -248,6 +253,7 @@ function useLunatic(
 		waiting,
 		getData,
 		Provider,
+		onChange: handleChange,
 		overview: buildedOverview,
 		loopVariables: useLoopVariables(pager, state.pages),
 	};

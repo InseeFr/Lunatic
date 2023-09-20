@@ -1,4 +1,8 @@
-import React, { CSSProperties, PropsWithChildren, ReactNode } from 'react';
+import React, {
+	type CSSProperties,
+	type PropsWithChildren,
+	type ReactNode,
+} from 'react';
 import classnames from 'classnames';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import Description from '../description';

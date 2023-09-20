@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { objectKeys } from '../../utils/object';
 import { formatDuration } from './formatDuration';
 import { getDurationFromValue } from './getDurationFromValue';
-import { Formats, labelByUnit, propsByUnit } from './durationUtils';
+import { type Formats, labelByUnit, propsByUnit } from './durationUtils';
 
 const DurationInput = ({
 	value,

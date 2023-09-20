@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import './lunatic-icon.scss';
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 
 export function LunaticIcon({
 	className,

@@ -1,8 +1,7 @@
-import { LunaticState } from '../type';
+import type { LunaticState } from '../type';
 import { getPrevPager } from '../commons/page-navigation';
 import { autoExploreLoop } from './commons/auto-explore-loop';
 import { getPageId, isPageEmpty } from '../commons/page';
-import { getComponentsFromState } from '../commons';
 
 function reduceGoPreviousPage(state: LunaticState): LunaticState {
 	const { pages, pager } = state;
@@ -18,15 +17,15 @@ function reduceGoPreviousPage(state: LunaticState): LunaticState {
 	let newState = { ...state, pager: prevPager };
 
 	// We reached an empty page, keep going backward
-	if (isPageEmpty(newState)) {
+	if (isPageEmpty(newState, true)) {
 		return reduceGoPreviousPage(newState);
 	}
 
 	// If we reached a loop, go to the last iteration / sequence
 	newState = autoExploreLoop(newState, 'backward');
 
-	// We explored a loop, check if we reached an empty page, move forward
-	if (newState.pager !== prevPager && isPageEmpty(newState)) {
+	// We explored a loop, check if we reached an empty page, move backward
+	if (newState.pager !== prevPager && isPageEmpty(newState, true)) {
 		return reduceGoPreviousPage(newState);
 	}
 

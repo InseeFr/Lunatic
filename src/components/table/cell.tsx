@@ -1,7 +1,6 @@
-import React from 'react';
 import { OrchestratedComponent } from '../commons';
 import { Td } from '../commons/components/html-table';
-import { LunaticBaseProps } from '../type';
+import type { LunaticBaseProps } from '../type';
 import type {
 	LunaticComponentDefinition,
 	LunaticExpression,

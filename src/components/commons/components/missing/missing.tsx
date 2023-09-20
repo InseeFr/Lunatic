@@ -1,13 +1,11 @@
 import './missing.scss';
-
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { DK, RF } from '../../../../utils/constants';
-
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { useLunaticMissing } from '../../../../use-lunatic/lunatic-context';
 import Button from '../../../button';
 import useOnHandleChange from '../../use-on-handle-change';
-import { LunaticBaseProps } from '../../../type';
+import type { LunaticBaseProps } from '../../../type';
 
 type Props = {
 	handleChange: LunaticBaseProps<any>['handleChange'];

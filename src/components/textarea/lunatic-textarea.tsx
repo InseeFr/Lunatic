@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import Textarea from './html/textarea';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 	const {
@@ -22,6 +22,7 @@ const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 		missing,
 		missingResponse,
 		management,
+		readOnly,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -48,6 +49,7 @@ const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 				placeholder={placeHolder}
 				label={label}
 				errors={errors}
+				readOnly={readOnly}
 			/>
 		</LunaticComponent>
 	);

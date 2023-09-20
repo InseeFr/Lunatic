@@ -1,1 +1,1 @@
-export { default } from "./duration";
+export { default } from './duration';

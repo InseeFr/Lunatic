@@ -3,7 +3,10 @@
 		{
 			"componentType": "QuestionInformation",
 			"label": { "value": "\"Question Information\"", "type": "VTL|MD" },
-      "description": { "value": "\"Question Information description\"", "type": "VTL|MD" },
+			"description": {
+				"value": "\"Question Information description\"",
+				"type": "VTL|MD"
+			},
 			"page": "1"
 		},
 		{
@@ -23,8 +26,11 @@
 		{
 			"componentType": "QuestionContext",
 			"label": { "value": "\"Question Context\"", "type": "VTL|MD" },
-      "description": { "value": "\"Question Context description\"", "type": "VTL|MD" },
-      "page": "1"
+			"description": {
+				"value": "\"Question Context description\"",
+				"type": "VTL|MD"
+			},
+			"page": "1"
 		},
 		{
 			"componentType": "Input",

@@ -1,5 +1,5 @@
-import { LunaticData, LunaticState } from './type';
-import { LunaticSource } from './type-source';
+import type { LunaticData, LunaticState } from './type';
+import type { LunaticSource } from './type-source';
 import { SuggesterStatus } from './use-suggesters';
 
 export enum ActionKind {
@@ -75,7 +75,7 @@ export type ActionUpdateState = {
 
 export type ActionGoNextPage = {
 	type: ActionKind.GO_NEXT_PAGE;
-	payload: { block?: unknown };
+	payload: {};
 };
 
 export type ActionGoPreviousPage = {

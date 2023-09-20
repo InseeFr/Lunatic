@@ -1,4 +1,8 @@
-import { ComponentProps, FunctionComponent, PropsWithChildren } from 'react';
+import type {
+	ComponentProps,
+	FunctionComponent,
+	PropsWithChildren,
+} from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from './link';
 import { voidFunction } from '../../../../utils/function';

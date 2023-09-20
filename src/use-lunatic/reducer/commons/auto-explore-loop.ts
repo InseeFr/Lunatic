@@ -1,4 +1,4 @@
-import { LunaticState } from '../../type';
+import type { LunaticState } from '../../type';
 import { getPageId, pageStringToNumbers } from '../../commons/page';
 
 /**

@@ -1,6 +1,6 @@
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
-import { LunaticComponentProps } from '../type';
+import { type LunaticComponentProps } from '../type';
 import InputNumber from './html/input-number';
 
 function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
@@ -45,7 +45,8 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 				id={id}
 				value={value}
 				label={label}
-				disabled={disabled || readOnly}
+				disabled={disabled}
+				readOnly={readOnly}
 				min={min}
 				max={max}
 				decimals={decimals}
