@@ -6,6 +6,7 @@
 				"value": "\"Prénom de l'occupant principal.\"",
 				"type": "VTL|MD"
 			},
+			"disabled": { "value": "DISABLED", "type": "VTL" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"maxLength": 30,
 			"id": "name",
@@ -86,6 +87,11 @@
 				"EDITED": null,
 				"INPUTED": null
 			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "DISABLED",
+			"expression": { "value": "true", "type": "VTL" }
 		}
 	]
 }

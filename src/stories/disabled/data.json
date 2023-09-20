@@ -1,0 +1,32 @@
+{
+	"COLLECTED": {
+		"NOM": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "Renaud"
+		},
+		"DISABLED_NOM": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": true
+		},
+		"SEXE": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": "2"
+		},
+		"DISABLED_SEXE": {
+			"EDITED": null,
+			"FORCED": null,
+			"INPUTED": null,
+			"PREVIOUS": null,
+			"COLLECTED": true
+		}
+	}
+}

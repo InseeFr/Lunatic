@@ -1,0 +1,34 @@
+// Vitest Snapshot v1
+
+exports[`Datepicker > renders without crashing 1`] = `
+<div>
+  <div
+    class="lunatic-input"
+  >
+    <input
+      aria-labelledby="lunatic-datepicker-datepicker"
+      class="lunatic-datepicker"
+      id="datepicker"
+      type="date"
+      value="1999-01-01"
+    />
+  </div>
+</div>
+`;
+
+exports[`Datepicker > should handle readOnly 1`] = `
+<div>
+  <div
+    class="lunatic-input"
+  >
+    <input
+      aria-labelledby="lunatic-datepicker-Datepicker"
+      class="lunatic-datepicker readOnly"
+      id="Datepicker"
+      readonly=""
+      type="date"
+      value="1980-01-19"
+    />
+  </div>
+</div>
+`;

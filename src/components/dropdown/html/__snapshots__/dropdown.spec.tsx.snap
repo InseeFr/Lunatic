@@ -1,0 +1,85 @@
+// Vitest Snapshot v1
+
+exports[`Dropdown > renders without crashing 1`] = `
+<div>
+  <div
+    class="lunatic-combo-box-container lunatic-suggester-default-style lunatic-suggester-default-style default-style"
+    id="lunatic-combo-box-container-dropdown"
+  >
+    <div
+      class="lunatic-combo-box"
+    >
+      <div
+        class="lunatic-combo-box-content"
+        tabindex="0"
+      >
+        <div
+          aria-autocomplete="list"
+          aria-controls="todo"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-labelledby="label-dropdown"
+          aria-owns="dropdown"
+          class="lunatic-combo-box-selection"
+          id="dropdown"
+          role="combobox"
+        >
+          <span
+            class="selection"
+          >
+            toto
+          </span>
+        </div>
+        <ul
+          aria-label="suggestions"
+          class="lunatic-combo-box-panel"
+          id="lunatic-combo-box-panel-dropdown-list"
+          role="listbox"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dropdown > should handle readOnly 1`] = `
+<div>
+  <div
+    class="lunatic-combo-box-container lunatic-suggester-default-style lunatic-suggester-default-style default-style"
+    id="lunatic-combo-box-container-dropdown"
+  >
+    <div
+      class="lunatic-combo-box"
+    >
+      <div
+        class="lunatic-combo-box-content"
+        tabindex="0"
+      >
+        <div
+          aria-autocomplete="list"
+          aria-controls="todo"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-labelledby="label-dropdown"
+          aria-owns="dropdown"
+          class="lunatic-combo-box-selection"
+          id="dropdown"
+          role="combobox"
+        >
+          <span
+            class="selection"
+          >
+            toto label
+          </span>
+        </div>
+        <ul
+          aria-label="suggestions"
+          class="lunatic-combo-box-panel"
+          id="lunatic-combo-box-panel-dropdown-list"
+          role="listbox"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

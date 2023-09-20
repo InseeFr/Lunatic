@@ -46,6 +46,10 @@
 				"value": "true",
 				"type": "VTL"
 			},
+			"readOnly": {
+				"value": "true",
+				"type": "VTL"
+			},
 			"controls": [
 				{
 					"id": "age-controls",

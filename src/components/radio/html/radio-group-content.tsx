@@ -13,6 +13,7 @@ export type Props = {
 	checkboxStyle?: boolean;
 	shortcut?: boolean;
 	disabled?: boolean;
+	readOnly?: boolean;
 };
 
 function RadioGroupContent({
@@ -23,6 +24,7 @@ function RadioGroupContent({
 	checkboxStyle = false,
 	shortcut,
 	disabled,
+	readOnly,
 }: Props) {
 	const onKeyDown = useOptionsKeydown(options, onClick);
 	const maxIndex = options.length;
@@ -47,6 +49,7 @@ function RadioGroupContent({
 						codeModality={shortcut ? codeModality : undefined}
 						shortcut={shortcut}
 						disabled={disabled}
+						readOnly={readOnly}
 					/>
 				);
 			})}

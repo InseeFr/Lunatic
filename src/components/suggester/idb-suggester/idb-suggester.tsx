@@ -14,6 +14,7 @@ type Props = Pick<
 	| 'optionRenderer'
 	| 'labelRenderer'
 	| 'disabled'
+	| 'readOnly'
 	| 'value'
 	| 'label'
 	| 'description'
@@ -37,6 +38,7 @@ export function IDBSuggester({
 	description,
 	getSuggesterStatus,
 	errors,
+	readOnly,
 }: Props) {
 	const [store, setStore] = useState(undefined);
 
@@ -70,6 +72,7 @@ export function IDBSuggester({
 					onSelect={onSelect}
 					searching={searching}
 					disabled={disabled}
+					readOnly={readOnly}
 					value={value}
 					label={label}
 					description={description}

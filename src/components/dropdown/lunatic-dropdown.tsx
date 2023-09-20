@@ -21,6 +21,7 @@ function LunaticDropdown({
 	missingResponse,
 	management,
 	description,
+	readOnly,
 }: LunaticComponentProps<'Dropdown'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
@@ -46,6 +47,7 @@ function LunaticDropdown({
 				className={classNames(className, 'lunatic-dropdown')}
 				errors={errors}
 				label={label}
+				readOnly={readOnly}
 			/>
 		</LunaticComponent>
 	);

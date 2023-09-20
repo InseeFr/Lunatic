@@ -23,6 +23,7 @@ function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 		management,
 		className = 'lunatic-radio-group',
 		disabled,
+		readOnly,
 	} = props;
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
@@ -49,6 +50,7 @@ function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 				className={className}
 				shortcut={shortcut}
 				disabled={disabled}
+				readOnly={readOnly}
 			/>
 		</LunaticComponent>
 	);
