@@ -6,7 +6,7 @@
 			"mandatory": false,
 			"page": "3",
 			"label": {
-				"value": "\"checkboxone ONE component \"",
+				"value": "\"checkboxone ONE component\"",
 				"type": "VTL|MD"
 			},
 			"description": {
@@ -18,7 +18,7 @@
 				{
 					"value": "1",
 					"description": {
-						"value": "Déclaration :warning:",
+						"value": "\"Déclaration oui\"",
 						"type": "VTL|MD"
 					},
 					"label": { "value": "\"oui\"", "type": "VTL|MD" }

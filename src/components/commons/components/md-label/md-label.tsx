@@ -6,7 +6,6 @@ import type {
 import ReactMarkdown from 'react-markdown';
 import Link from './link';
 import { voidFunction } from '../../../../utils/function';
-import emoji from 'remark-emoji';
 
 const renderers = (otherProps: {
 	logFunction: typeof DEFAULT_LOG_FUNCTION;
@@ -26,7 +25,6 @@ const MdLabel = ({ expression, logFunction = DEFAULT_LOG_FUNCTION }: Props) => (
 	<ReactMarkdown
 		children={expression}
 		components={renderers({ logFunction })}
-		remarkPlugins={[[emoji, { accessible: true }]]}
 	/>
 );
 

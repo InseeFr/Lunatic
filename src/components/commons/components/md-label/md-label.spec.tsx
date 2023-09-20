@@ -4,20 +4,14 @@ import MdLabel from './md-label';
 
 describe('md-label', () => {
 	it('should handle emoticon', () => {
-		const obj = render(<MdLabel expression="**Demo** of a :dog:" />);
+		const obj = render(<MdLabel expression="**Demo** of a" />);
 		return expect(obj.container.firstChild).toMatchInlineSnapshot(`
-			<p>
-			  <strong>
-			    Demo
-			  </strong>
-			   of a 
-			  <span
-			    aria-label="dog emoji"
-			    role="img"
-			  >
-			    🐶
-			  </span>
-			</p>
-		`);
+      <p>
+        <strong>
+          Demo
+        </strong>
+         of a
+      </p>
+    `);
 	});
 });
