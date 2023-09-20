@@ -75,7 +75,7 @@ export type ActionUpdateState = {
 
 export type ActionGoNextPage = {
 	type: ActionKind.GO_NEXT_PAGE;
-	payload: { block?: unknown };
+	payload: {};
 };
 
 export type ActionGoPreviousPage = {

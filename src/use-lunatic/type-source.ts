@@ -21,6 +21,7 @@ export type ComponentTypeEnum =
 	| 'FilterDescription'
 	| 'PairwiseLinks'
 	| 'Suggester'
+	| 'ConfirmationModal'
 	| 'ComponentSet';
 
 export type ValuesType<T = unknown> = {
@@ -130,6 +131,9 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentInputOrTextareaType)
 	| (ComponentTypeBase & {
 			componentType: 'CheckboxOne';
+	  })
+	| (ComponentTypeBase & {
+			componentType: 'ConfirmationModal';
 	  })
 	| (ComponentTypeBase & ComponentComponentSetType)
 	| (ComponentTypeBase & ComponentQuestionExplicationType);

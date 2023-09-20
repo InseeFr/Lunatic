@@ -1,13 +1,11 @@
-import { type ActionGoNextPage } from '../actions';
 import { getNewReachedPage } from '../commons';
-import compose from '../commons/compose';
-import type { LunaticState } from '../type';
-import { overviewOnChange } from './overview/overview-on-change';
-import { getNextPager } from '../commons/page-navigation';
 import { getPageId, isPageEmpty } from '../commons/page';
+import { getNextPager } from '../commons/page-navigation';
+import type { LunaticState } from '../type';
 import { autoExploreLoop } from './commons/auto-explore-loop';
+import { overviewOnChange } from './overview/overview-on-change';
 
-function reduceGoNextPage(state: LunaticState): LunaticState {
+function reduceGoNext(state: LunaticState): LunaticState {
 	const { pages, pager } = state;
 	const parentType = pages[pager.page]?.components[0].componentType;
 	const nextPager = getNextPager(pager, parentType);
@@ -21,7 +19,7 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 
 	// We reached an empty page, move forward
 	if (isPageEmpty(newState)) {
-		return reduceGoNextPage(newState);
+		return reduceGoNext(newState);
 	}
 
 	// If we reached a loop, go inside
@@ -29,7 +27,7 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 
 	// We explored a loop, check if we reached an empty page, move forward
 	if (newState.pager !== nextPager && isPageEmpty(newState)) {
-		return reduceGoNextPage(newState);
+		return reduceGoNext(newState);
 	}
 
 	return {
@@ -42,4 +40,6 @@ function reduceGoNextPage(state: LunaticState): LunaticState {
 	};
 }
 
-export default compose<ActionGoNextPage>(reduceGoNextPage, overviewOnChange);
+export const reduceGoNextPage = (state: LunaticState) => {
+	return overviewOnChange(reduceGoNext(state));
+};

@@ -227,7 +227,7 @@ type ComponentPropsByType = {
 			iterations?: number;
 		}>;
 	};
-	Modal: LunaticBaseProps<string | null> & {
+	ConfirmationModal: LunaticBaseProps<string | null> & {
 		goToPage: ReturnType<typeof useLunatic>['goToPage'];
 		page: string;
 		goNextPage: () => void;
