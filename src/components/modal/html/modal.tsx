@@ -6,7 +6,7 @@ import type { LunaticComponentProps } from '../../type';
 import './modal.scss';
 
 type Props = Pick<
-	LunaticComponentProps<'Modal'>,
+	LunaticComponentProps<'ConfirmationModal'>,
 	'id' | 'label' | 'description'
 > & {
 	onClose: ReactEventHandler<HTMLDialogElement>;
