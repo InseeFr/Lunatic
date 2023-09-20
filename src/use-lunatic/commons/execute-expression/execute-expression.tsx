@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { interpret } from '@inseefr/trevas';
 import MdLabel from '../../../components/commons/components/md-label';
-import getVtlCompatibleValue from '../../../utils/vtl';
+import { getVTLCompatibleValue } from '../../../utils/vtl';
 import { MD, VTL } from '../../../utils/constants';
 import type { VTLBindings } from '../../type';
 
@@ -36,7 +36,7 @@ export function executeVtlExpression(
 ) {
 	// Make sur all values can be handled by VTL
 	const legalVtlBindings = Object.entries(vtlBindings).reduce(
-		(acc, [k, v]) => ({ ...acc, [k]: getVtlCompatibleValue(v) }),
+		(acc, [k, v]) => ({ ...acc, [k]: getVTLCompatibleValue(v) }),
 		{}
 	);
 	const result = interpret(expression, legalVtlBindings);

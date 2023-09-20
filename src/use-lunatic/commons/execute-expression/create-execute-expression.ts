@@ -3,7 +3,7 @@ import getSafetyExpression from './get-safety-expression';
 import getExpressionVariables from './get-expressions-variables';
 import createMemoizer from './create-memoizer';
 import createRefreshCalculated from './create-refresh-calculated';
-import getVtlCompatibleValue from '../../../utils/vtl';
+import { getVTLCompatibleValue } from '../../../utils/vtl';
 import { VTL, VTL_MD, X_AXIS, Y_AXIS } from '../../../utils/constants';
 import type { LunaticExpression, LunaticState } from '../../type';
 
@@ -171,7 +171,7 @@ function createExecuteExpression(
 
 			return null;
 		}
-		return getVtlCompatibleValue(value);
+		return getVTLCompatibleValue(value);
 	}
 
 	function fillVariablesValues(

@@ -1,9 +1,9 @@
-import { VtlLexer } from '@inseefr/vtl-2.0-antlr-tools';
-import antlr4 from 'antlr4';
-import { interpret } from '@inseefr/trevas';
+import { interpretVTL, parseVTLVariables } from '../../utils/vtl';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
+
+type IterationLevel = number;
 
 export class LunaticVariables {
 	private dictionary = new Map<string, LunaticVariable>();
@@ -15,11 +15,11 @@ export class LunaticVariables {
 	/**
 	 * Retrieve variable value
 	 */
-	public get<T>(name: string) {
+	public get<T>(name: string, iteration?: IterationLevel) {
 		if (!this.dictionary.has(name)) {
 			return undefined;
 		}
-		return this.dictionary.get(name)!.getValue() as T;
+		return this.dictionary.get(name)!.getValue(iteration) as T;
 	}
 
 	/**
@@ -54,8 +54,8 @@ export class LunaticVariables {
 		return variable;
 	}
 
-	public run(expression: string): unknown {
-		return this.setCalculated(expression, expression).getValue();
+	public run(expression: string, iteration?: IterationLevel): unknown {
+		return this.setCalculated(expression, expression).getValue(iteration);
 	}
 
 	// Retrieve the number of interpret() run, used in testing
@@ -66,16 +66,16 @@ export class LunaticVariables {
 
 class LunaticVariable {
 	// Last time the value was updated (changed)
-	public updatedAt = 0;
+	public updatedAt = new Map<undefined | IterationLevel, number>();
 	// Last time "calculation" was run (for calculated variable)
-	private calculatedAt = 0;
+	private calculatedAt = new Map<undefined | IterationLevel, number>();
 	// Internal value for the variable
 	private value: unknown;
 	// List of dependencies, ex: ['FIRSTNAME', 'LASTNAME']
 	private dependencies?: string[];
 	// Expression for calculated variable
 	private readonly expression?: string;
-	// Dictionnary holding all the available variables
+	// Dictionary holding all the available variables
 	private readonly dictionary?: Map<string, LunaticVariable>;
 
 	constructor(
@@ -96,77 +96,89 @@ class LunaticVariable {
 		this.dependencies = dependencies;
 	}
 
-	getValue(): unknown {
+	getValue(iteration?: IterationLevel): unknown {
 		// The variable is not calculated
 		if (!this.expression) {
-			return this.value;
+			return this.getSavedValue(iteration);
 		}
 		// Calculate bindings first to refresh "updatedAt" on calculated dependencies
-		const bindings = this.getDependenciesValues();
-		if (!this.isOutdated()) {
-			return this.value;
+		const bindings = this.getDependenciesValues(iteration);
+		if (!this.isOutdated(iteration)) {
+			return this.getSavedValue(iteration);
 		}
 		if ((import.meta as any).env.MODE === 'test') {
 			interpretCount++;
 		}
 		// Remember the value
-		this.setValue(interpret(this.expression, bindings));
-		this.calculatedAt = performance.now();
-		return this.value;
+		try {
+			this.setValue(interpretVTL(this.expression, bindings), iteration);
+		} catch (e) {
+			throw new Error(
+				`Cannot interpret expression "${
+					this.expression
+				}" with bindings ${JSON.stringify(bindings)}, error : ${(
+					e as Error
+				).toString()}`
+			);
+		}
+		this.calculatedAt.set(iteration, performance.now());
+		this.calculatedAt.set(undefined, performance.now());
+		return this.getSavedValue(iteration);
 	}
 
-	setValue(v: unknown) {
-		if (v === this.value) {
+	setValue(value: unknown, iteration?: IterationLevel): void {
+		if (value === this.getSavedValue(iteration)) {
 			return;
 		}
-		this.value = v;
-		this.updatedAt = performance.now();
+		// Decompose arrays, to only update items that changed
+		if (Array.isArray(value) && iteration === undefined) {
+			value.forEach((v, k) => this.setValue(v, k));
+			return;
+		}
+		// We want to save a value at a specific iteration, but the value is not an array yet
+		if (iteration !== undefined && !Array.isArray(this.value)) {
+			this.value = [];
+		}
+		if (iteration === undefined) {
+			this.value = value;
+		} else {
+			(this.value as unknown[])[iteration] = value;
+		}
+		this.updatedAt.set(iteration, performance.now());
+		this.updatedAt.set(undefined, performance.now());
+	}
+
+	private getSavedValue(iteration?: IterationLevel): unknown {
+		if (iteration !== undefined && Array.isArray(this.value)) {
+			return this.value[iteration];
+		}
+		return this.value;
 	}
 
 	private getDependencies(): string[] {
 		// Calculate dependencies from expression on the fly if necessary
 		if (this.dependencies === undefined) {
-			this.dependencies = getExpressionVariables(this.expression!);
+			this.dependencies = parseVTLVariables(this.expression!);
 		}
 		return this.dependencies;
 	}
 
-	private getDependenciesValues(): Record<string, unknown> {
+	private getDependenciesValues(
+		iteration?: IterationLevel
+	): Record<string, unknown> {
 		return Object.fromEntries(
-			this.getDependencies().map((dep) => [
-				dep,
-				this.dictionary?.get(dep)?.getValue(),
-			])
+			this.getDependencies().map((dep) => {
+				return [dep, this.dictionary?.get(dep)?.getValue(iteration)];
+			})
 		);
 	}
 
-	private isOutdated(): boolean {
+	private isOutdated(iteration?: IterationLevel): boolean {
 		const dependenciesUpdatedAt = Math.max(
 			...this.getDependencies().map(
-				(dep) => this.dictionary?.get(dep)?.updatedAt ?? 0
+				(dep) => this.dictionary?.get(dep)?.updatedAt.get(iteration) ?? 0
 			)
 		);
-		return dependenciesUpdatedAt > this.calculatedAt;
-	}
-}
-
-/**
- * Find variables used in an expression
- */
-function getExpressionVariables(expression: string): string[] {
-	try {
-		const chars = new antlr4.InputStream(expression);
-		const lexer = new VtlLexer(chars);
-		const dependencySet = lexer
-			.getAllTokens()
-			.reduce(function (acc, { start, stop, type }) {
-				if (type === 234) {
-					acc.add(expression.substring(start, stop + 1));
-				}
-				return acc;
-			}, new Set<string>());
-		return Array.from(dependencySet);
-	} catch (e) {
-		return [];
+		return dependenciesUpdatedAt > (this.calculatedAt.get(iteration) ?? -1);
 	}
 }

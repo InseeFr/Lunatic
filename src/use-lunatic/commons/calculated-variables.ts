@@ -1,5 +1,5 @@
 import { executeVtlExpression } from './execute-expression/execute-expression';
-import getVtlCompatibleValue from '../../utils/vtl';
+import { getVTLCompatibleValue } from '../../utils/vtl';
 import { CALCULATED } from '../../constants';
 import type { LunaticState, LunaticValues } from '../type';
 
@@ -86,6 +86,6 @@ const buildScopedBindings = ({
 
 const buildVectorialBindings = ({ bindings }: { bindings: LunaticValues }) =>
 	Object.entries(bindings).reduce((acc, [k, v]) => {
-		if (Array.isArray(v)) return { ...acc, [k]: getVtlCompatibleValue(v) };
+		if (Array.isArray(v)) return { ...acc, [k]: getVTLCompatibleValue(v) };
 		return { ...acc, [k]: v };
 	}, {});

@@ -72,4 +72,53 @@ describe('lunatic-variables', () => {
 		variables.set('FIRSTNAME', 'Jane');
 		expect(variables.run('FIRSTNAME || " " || LASTNAME')).toEqual('Jane Doe');
 	});
+
+	describe('with iteration', () => {
+		it('should handle arrays', () => {
+			variables.set('FIRSTNAME', ['John', 'Jane']);
+			expect(variables.get('FIRSTNAME')).toEqual(['John', 'Jane']);
+			expect(variables.get('FIRSTNAME', 0)).toEqual('John');
+			expect(variables.get('FIRSTNAME', 1)).toEqual('Jane');
+		});
+		it('should ignore non array values', () => {
+			variables.set('FIRSTNAME', 'John');
+			expect(variables.get('FIRSTNAME', 0)).toEqual('John');
+		});
+		it('should handle iteration in calculation', () => {
+			variables.set('FIRSTNAME', ['John', 'Jane']);
+			variables.set('LASTNAME', ['Doe', 'Dae']);
+			variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', [
+				'FIRSTNAME',
+				'LASTNAME',
+			]);
+			expect(variables.get('FULLNAME', 0)).toEqual('John Doe');
+			expect(variables.get('FULLNAME', 1)).toEqual('Jane Dae');
+			expect(variables.interpretCount).toBe(2);
+			expect(variables.get('FULLNAME', 0)).toEqual('John Doe');
+			expect(variables.get('FULLNAME', 1)).toEqual('Jane Dae');
+			expect(variables.interpretCount).toBe(2);
+			expect(variables.get('FULLNAME', 0)).toEqual('John Doe');
+			variables.set('FIRSTNAME', ['John', 'Marc']);
+			expect(variables.get('FULLNAME', 0)).toEqual('John Doe');
+			expect(variables.get('FULLNAME', 1)).toEqual('Marc Dae');
+			// Only the second iteration should be calculated
+			expect(variables.interpretCount).toBe(3);
+		});
+		it('should handle aggregation expression', () => {
+			variables.set('FIRSTNAME', ['John', 'Jane']);
+			expect(variables.run('count(FIRSTNAME)')).toEqual(2);
+			variables.set('FIRSTNAME', ['John', 'Jane', 'Marc']);
+			expect(variables.run('count(FIRSTNAME)')).toEqual(3);
+		});
+		it('should handle non array values', () => {
+			variables.set('FIRSTNAME', ['John', 'Jane']);
+			variables.set('LASTNAME', 'Doe');
+			expect(variables.run('FIRSTNAME || " " || LASTNAME', 0)).toEqual(
+				'John Doe'
+			);
+			expect(variables.run('FIRSTNAME || " " || LASTNAME', 1)).toEqual(
+				'Jane Doe'
+			);
+		});
+	});
 });
