@@ -66,7 +66,12 @@ function isCriticalErrors(errors?: Record<string, LunaticError[]>): boolean {
 	return false;
 }
 
-function computeErrors(state: StateForControls) {
+type ControlsResult = {
+	currentErrors: Record<string, LunaticError[]> | undefined;
+	isCritical: boolean;
+};
+
+export function compileControls(state: StateForControls): ControlsResult {
 	const components = replaceComponentSequence(getComponentsFromState(state));
 	const componentFiltered = components
 		.map(function (component) {
@@ -80,5 +85,3 @@ function computeErrors(state: StateForControls) {
 	const isCritical = isCriticalErrors(currentErrors);
 	return { currentErrors, isCritical };
 }
-
-export default computeErrors;

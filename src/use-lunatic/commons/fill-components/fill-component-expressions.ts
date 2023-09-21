@@ -60,7 +60,6 @@ function createCrawl({
 				...object,
 				[path]: executeExpression(candidate, {
 					iteration,
-					linksIterations,
 				}),
 			};
 		} catch (e) {

@@ -56,6 +56,36 @@ export function getVTLCompatibleValue(value: unknown) {
 	return value;
 }
 
+export function getExpressionType(expression: unknown): string {
+	if (typeof expression === 'string') {
+		return 'VTL';
+	}
+	if (
+		expression &&
+		typeof expression === 'object' &&
+		'type' in expression &&
+		typeof expression.type === 'string'
+	) {
+		return expression.type;
+	}
+	return '';
+}
+
+export function getExpressionAsString(expression: unknown): string {
+	if (typeof expression === 'string') {
+		return expression;
+	}
+	if (
+		expression &&
+		typeof expression === 'object' &&
+		'value' in expression &&
+		typeof expression.value === 'string'
+	) {
+		return expression.value;
+	}
+	return '';
+}
+
 function isDataSet(result: unknown): result is DataSet {
 	return (
 		typeof result === 'object' &&

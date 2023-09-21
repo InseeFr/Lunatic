@@ -1,15 +1,21 @@
 import { describe, it, beforeEach, expect } from 'vitest';
-import { LunaticVariables } from './lunatic-variables';
+import { LunaticVariablesStore } from './lunatic-variables-store';
 
-describe('lunatic-variables', () => {
-	let variables: LunaticVariables;
+describe('lunatic-variables-store', () => {
+	let variables: LunaticVariablesStore;
 	beforeEach(() => {
-		variables = new LunaticVariables();
+		variables = new LunaticVariablesStore();
 	});
 
 	it('should record basic variables', () => {
 		variables.set('FIRSTNAME', 'John');
 		expect(variables.get('FIRSTNAME')).toEqual('John');
+	});
+
+	it('should run simple types', () => {
+		expect(variables.run('"Hello world"')).toEqual('Hello world');
+		expect(variables.run('true')).toEqual(true);
+		expect(variables.run('2')).toEqual(2);
 	});
 
 	it('should handle calculated', () => {
@@ -113,12 +119,12 @@ describe('lunatic-variables', () => {
 		it('should handle non array values', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
 			variables.set('LASTNAME', 'Doe');
-			expect(variables.run('FIRSTNAME || " " || LASTNAME', 0)).toEqual(
-				'John Doe'
-			);
-			expect(variables.run('FIRSTNAME || " " || LASTNAME', 1)).toEqual(
-				'Jane Doe'
-			);
+			expect(
+				variables.run('FIRSTNAME || " " || LASTNAME', { iteration: 0 })
+			).toEqual('John Doe');
+			expect(
+				variables.run('FIRSTNAME || " " || LASTNAME', { iteration: 1 })
+			).toEqual('Jane Doe');
 		});
 	});
 });

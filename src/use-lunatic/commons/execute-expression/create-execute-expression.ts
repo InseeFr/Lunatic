@@ -196,7 +196,7 @@ function createExecuteExpression(
 		const { value: expression, type } = validateExpression(
 			getSafetyExpression(expObject)
 		);
-		const { iteration, linksIterations, logging } = args;
+		const { iteration } = args;
 		const bindingDependencies = getVariablesAndCatch(expression);
 
 		function loggingDefault(_: unknown, bindings: Bindings, e: unknown) {
@@ -209,9 +209,8 @@ function createExecuteExpression(
 		const vtlBindings = refreshCalculated(
 			fillVariablesValues(collecteVariables(bindingDependencies), {
 				iteration,
-				linksIterations,
 			}),
-			{ rootExpression: expression, iteration, linksIterations }
+			{ rootExpression: expression, iteration }
 		);
 		// Add index has a specific variable
 		vtlBindings['GLOBAL_ITERATION_INDEX'] = (
@@ -219,13 +218,7 @@ function createExecuteExpression(
 		).toString();
 		const memoized = getMemoizedValue(expression, vtlBindings);
 		if (memoized === undefined) {
-			const result = executeExpression(
-				vtlBindings,
-				expression,
-				type,
-				features,
-				logging || loggingDefault
-			);
+			const result = executeExpression(vtlBindings, expression, type, features);
 			memoize(expression, vtlBindings, result);
 
 			return result as T; // We need to force this type to match with the signature

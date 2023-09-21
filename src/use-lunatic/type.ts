@@ -5,8 +5,8 @@ import type {
 	LunaticSource,
 	Variable,
 } from './type-source';
-import { type ExpressionLogger } from './commons/execute-expression/create-execute-expression';
 import { SuggesterStatus } from './use-suggesters';
+import type { LunaticVariablesStore } from './commons/lunatic-variables-store';
 
 export type LunaticComponentDefinition<
 	T extends ComponentType['componentType'] = ComponentType['componentType']
@@ -79,6 +79,7 @@ export type LunaticState = {
 	variables: {
 		[variableName: string]: LunaticStateVariable;
 	};
+	dataStore: LunaticVariablesStore;
 	pages: {
 		[key: number | string]:
 			| {
@@ -151,8 +152,6 @@ export type LunaticState = {
 		expression: unknown,
 		args?: {
 			iteration?: number;
-			linksIterations?: number[];
-			logging?: ExpressionLogger;
 			bindingDependencies?: string[];
 		}
 	) => T;

@@ -1,6 +1,10 @@
 export function forceInt(n: unknown): number {
 	if (typeof n === 'string') {
-		return parseInt(n, 10);
+		const casted = parseInt(n, 10);
+		if (Number.isNaN(casted)) {
+			throw new Error(`Cannot cast ${n} to int`);
+		}
+		return casted;
 	}
 	if (typeof n === 'number') {
 		return n;

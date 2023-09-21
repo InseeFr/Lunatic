@@ -16,7 +16,7 @@ import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
 import type { LunaticSource } from './type-source';
 import type { LunaticComponentType } from '../components/type';
-import compileControlsLib from './commons/compile-controls';
+import { compileControls as compileControlsLib } from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
@@ -180,8 +180,10 @@ function useLunatic(
 	);
 
 	const getData = (withRefreshedCalculated: boolean) => {
-		const { variables } = state;
-		return getQuestionnaireData({ variables, withRefreshedCalculated });
+		// TODO : Replace this
+		return {};
+		// const { variables } = state;
+		// return getQuestionnaireData({ variables, withRefreshedCalculated });
 	};
 
 	const buildedOverview = useMemo(

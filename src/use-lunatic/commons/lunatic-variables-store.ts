@@ -1,11 +1,12 @@
 import { interpretVTL, parseVTLVariables } from '../../utils/vtl';
+import { isTestEnv } from '../../utils/env';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
 
 type IterationLevel = number;
 
-export class LunaticVariables {
+export class LunaticVariablesStore {
 	private dictionary = new Map<string, LunaticVariable>();
 
 	constructor() {
@@ -54,8 +55,22 @@ export class LunaticVariables {
 		return variable;
 	}
 
-	public run(expression: string, iteration?: IterationLevel): unknown {
-		return this.setCalculated(expression, expression).getValue(iteration);
+	public run(
+		expression: string,
+		args: { iteration?: IterationLevel; deps?: string[] } = {}
+	): unknown {
+		return this.setCalculated(expression, expression, args.deps).getValue(
+			args.iteration
+		);
+	}
+
+	public all(): Record<string, unknown> {
+		return Object.fromEntries(
+			Array.from(this.dictionary.entries()).map(([name, variable]) => [
+				name,
+				variable.getValue(),
+			])
+		);
 	}
 
 	// Retrieve the number of interpret() run, used in testing
@@ -106,7 +121,7 @@ class LunaticVariable {
 		if (!this.isOutdated(iteration)) {
 			return this.getSavedValue(iteration);
 		}
-		if ((import.meta as any).env.MODE === 'test') {
+		if (isTestEnv()) {
 			interpretCount++;
 		}
 		// Remember the value
@@ -175,6 +190,7 @@ class LunaticVariable {
 
 	private isOutdated(iteration?: IterationLevel): boolean {
 		const dependenciesUpdatedAt = Math.max(
+			0,
 			...this.getDependencies().map(
 				(dep) => this.dictionary?.get(dep)?.updatedAt.get(iteration) ?? 0
 			)

@@ -11,7 +11,7 @@ export function resolveSimpleControl(
 	const { criticality, errorMessage, id, typeOfControl } = control;
 	const value = control?.control?.value ?? 'true';
 
-	const result = executeExpression(value, { iteration, linksIterations });
+	const result = executeExpression(value, { iteration });
 
 	try {
 		/**
@@ -24,7 +24,6 @@ export function resolveSimpleControl(
 
 		const label = executeExpression<ReactNode>(errorMessage, {
 			iteration,
-			linksIterations,
 		});
 		return {
 			criticality,
