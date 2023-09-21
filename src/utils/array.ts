@@ -19,3 +19,22 @@ export function setAtIndex<T>(arr: T[], index: number, newValue: T): T[] {
 	newArray[index] = newValue;
 	return newArray;
 }
+
+export function resizeArray<T = unknown>(
+	array: unknown,
+	newLength: number,
+	defaultValue?: T
+): T[] {
+	// The value is not an array, create an empty array
+	if (!Array.isArray(array)) {
+		return new Array(newLength).fill(defaultValue ?? null);
+	}
+	if (array.length === newLength) {
+		return array
+	}
+	return new Array(newLength)
+		.fill(defaultValue ?? null)
+		.map(function (value, index) {
+			return index < array.length ? array[index] : value
+		}, []);
+}

@@ -91,6 +91,7 @@ function reduceResizing(state: LunaticState, action: ActionHandleChange) {
 			sizeForLinksVariables,
 			linksVariables,
 		} = resizing[name];
+		console.log({linksVariables})
 		const { executeExpression } = state;
 		const newLinksVariables = reduceResizingLinksVariables({
 			sizeForLinksVariables,

@@ -1,5 +1,7 @@
 import { describe, it, beforeEach, expect } from 'vitest';
 import { LunaticVariablesStore } from './lunatic-variables-store';
+import {resizingBehaviour} from "./behaviours/resizing-behaviour";
+import {cleaningBehaviour} from "./behaviours/cleaning-behaviour";
 
 describe('lunatic-variables-store', () => {
 	let variables: LunaticVariablesStore;
@@ -86,6 +88,14 @@ describe('lunatic-variables-store', () => {
 			expect(variables.get('FIRSTNAME', 0)).toEqual('John');
 			expect(variables.get('FIRSTNAME', 1)).toEqual('Jane');
 		});
+		it('should handle setting at a specific index', () => {
+			variables.set('FIRSTNAME', ['John', 'Jane']);
+			variables.set('LASTNAME', null);
+			variables.set('FIRSTNAME', 'Marc', 1);
+			expect(variables.get('FIRSTNAME')).toEqual(['John', 'Marc']);
+			variables.set('LASTNAME', 'Doe', 1);
+			expect(variables.get('LASTNAME')).toEqual([undefined, 'Doe']);
+		})
 		it('should ignore non array values', () => {
 			variables.set('FIRSTNAME', 'John');
 			expect(variables.get('FIRSTNAME', 0)).toEqual('John');
@@ -127,4 +137,60 @@ describe('lunatic-variables-store', () => {
 			).toEqual('Jane Doe');
 		});
 	});
+
+	describe('resizing', () => {
+		it('should resize variables', () => {
+			variables.set('PRENOM', ['John', 'Jane'])
+			variables.set('NOM', ['Doe'])
+			resizingBehaviour(variables, {
+				PRENOM: {
+					size: 'count(PRENOM)',
+					variables: ['NOM']
+				}
+			})
+			variables.set('PRENOM', ['John', 'Jane', 'Marc'])
+			expect((variables.get('PRENOM') as string[]).length).toEqual(3)
+			expect((variables.get('NOM') as string[]).length).toEqual(3)
+		})
+	})
+
+	describe('cleaning', () => {
+		it('should clean variables', () => {
+			variables.set('PRENOM', 'John')
+			variables.set('NOM', 'Doe')
+			variables.set('READY', true)
+			cleaningBehaviour(variables, {
+				READY: {
+					PRENOM: 'READY',
+				}
+			})
+			expect(variables.get('PRENOM')).toEqual('John')
+			variables.set('READY', false)
+			expect(variables.get('PRENOM')).toEqual(null)
+		})
+		it('should clean variables with initial values', () => {
+			variables.set('PRENOM', 'John')
+			variables.set('READY', true)
+			cleaningBehaviour(variables, {
+				READY: {
+					PRENOM: 'READY',
+				}
+			}, {
+				PRENOM: 'Jane'
+			})
+			variables.set('READY', false)
+			expect(variables.get('PRENOM')).toEqual('Jane')
+		})
+		it('should clean variables at a specific iteration', () => {
+			variables.set('PRENOM', ['John', 'Jane', 'Marc'])
+			variables.set('READY', [true, true, true])
+			cleaningBehaviour(variables, {
+				READY: {
+					PRENOM: 'READY',
+				}
+			})
+			variables.set('READY', false, 1)
+			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc'])
+		})
+	})
 });
