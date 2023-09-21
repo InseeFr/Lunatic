@@ -5,7 +5,7 @@ import { getPagerFromPageTag } from '../commons/page-tag';
 import type { LunaticData, LunaticState, LunaticVariable } from '../type';
 import type { LunaticSource } from '../type-source';
 import { reduceOverviewOnInit } from './overview/overview-on-init';
-import { LunaticVariablesStore } from '../commons/lunatic-variables-store';
+import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { getInitialVariableValue } from '../../utils/variables';
 import { MD, VTL } from '../../utils/constants';
 import MdLabel from '../../components/commons/components/md-label';

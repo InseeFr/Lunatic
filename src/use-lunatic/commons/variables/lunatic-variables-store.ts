@@ -1,13 +1,17 @@
-import { interpretVTL, parseVTLVariables } from '../../utils/vtl';
-import { isTestEnv } from '../../utils/env';
+import { interpretVTL, parseVTLVariables } from '../../../utils/vtl';
+import { isTestEnv } from '../../../utils/env';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
 
 type IterationLevel = number;
+type Events = {
+	change: {name: string, value: unknown}
+}
 
 export class LunaticVariablesStore {
 	private dictionary = new Map<string, LunaticVariable>();
+	private eventTarget = new EventTarget()
 
 	constructor() {
 		interpretCount = 0;
@@ -31,7 +35,14 @@ export class LunaticVariablesStore {
 			this.dictionary.set(name, new LunaticVariable());
 		}
 		const variable = this.dictionary.get(name)!;
-		variable.setValue(value);
+		if (variable.setValue(value)) {
+			this.eventTarget.dispatchEvent(new CustomEvent('change', {
+				detail: {
+					name: name,
+					value: value
+				}
+			}))
+		}
 		return variable;
 	}
 
@@ -71,6 +82,14 @@ export class LunaticVariablesStore {
 				variable.getValue(),
 			])
 		);
+	}
+
+	public on<T extends keyof Events>(eventName: T, cb: (e: CustomEvent<Events[T]>) => void): void {
+		this.eventTarget.addEventListener(eventName, cb as EventListener)
+	}
+
+	public off<T extends keyof Events>(eventName: T, cb: (e: CustomEvent<Events[T]>) => void): void {
+		this.eventTarget.removeEventListener(eventName, cb as EventListener)
 	}
 
 	// Retrieve the number of interpret() run, used in testing
@@ -141,14 +160,15 @@ class LunaticVariable {
 		return this.getSavedValue(iteration);
 	}
 
-	setValue(value: unknown, iteration?: IterationLevel): void {
+	setValue(value: unknown, iteration?: IterationLevel): boolean {
 		if (value === this.getSavedValue(iteration)) {
-			return;
+			return false;
 		}
 		// Decompose arrays, to only update items that changed
 		if (Array.isArray(value) && iteration === undefined) {
-			value.forEach((v, k) => this.setValue(v, k));
-			return;
+			return !!value
+				.map((v, k) => this.setValue(v, k))
+				.find(v => v);
 		}
 		// We want to save a value at a specific iteration, but the value is not an array yet
 		if (iteration !== undefined && !Array.isArray(this.value)) {
@@ -161,6 +181,7 @@ class LunaticVariable {
 		}
 		this.updatedAt.set(iteration, performance.now());
 		this.updatedAt.set(undefined, performance.now());
+		return true
 	}
 
 	private getSavedValue(iteration?: IterationLevel): unknown {

@@ -1,7 +1,7 @@
 import { COLLECTED, VTL } from '../utils/constants';
 import type { LunaticState } from './type';
 import { SuggesterStatus } from './use-suggesters';
-import { LunaticVariablesStore } from './commons/lunatic-variables-store';
+import { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
 
 const INITIAL_STATE: LunaticState = {
 	variables: {}, // map des variables du questionnaires

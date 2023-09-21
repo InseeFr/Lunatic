@@ -6,7 +6,7 @@ import type {
 	Variable,
 } from './type-source';
 import { SuggesterStatus } from './use-suggesters';
-import type { LunaticVariablesStore } from './commons/lunatic-variables-store';
+import type { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
 
 export type LunaticComponentDefinition<
 	T extends ComponentType['componentType'] = ComponentType['componentType']
