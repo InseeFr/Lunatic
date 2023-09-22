@@ -1644,10 +1644,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@inseefr/trevas@^0.1.19":
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.19.tgz#5b0cf8d288afba4880ac15592cf80657dc8ade9d"
-  integrity sha512-zvNw8JPf7jlgqznvnteEYTTnS3i0Lslb7y8EPs1OHYqsSyDiXwp9RG25oUSMK8A/y4kblkQO/cVDc971+H3RoA==
+"@inseefr/trevas@^0.1.20":
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/@inseefr/trevas/-/trevas-0.1.20.tgz#a1d68cf3d22a4da1ef99c1c8560470c8dda407d7"
+  integrity sha512-x1UotSHqHfGhut0JgPCLu+TXZtDpcYSrFQtlIl/L1kav6zYBa888AHhkADWB2hpJM/XAG3lQEfZrqgnsgbQK1g==
   dependencies:
     "@inseefr/vtl-2.0-antlr-tools" "0.1.0"
     antlr4 "4.8.0"
