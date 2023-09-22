@@ -6,7 +6,16 @@ let interpretCount = 0;
 
 type IterationLevel = number;
 type Events = {
-	change: {name: string, value: unknown, iteration: IterationLevel | undefined}
+	change: {
+		// Name of the changed variable
+		name: string,
+		// New value for the variable
+		value: unknown,
+		// Iteration changed (for array)
+		iteration?: IterationLevel | undefined,
+		// Source of the change
+		source?: string | undefined
+	}
 }
 
 export class LunaticVariablesStore {
@@ -30,17 +39,17 @@ export class LunaticVariablesStore {
 	/**
 	 * Set variable value
 	 */
-	public set(name: string, value: unknown, iteration?: IterationLevel): LunaticVariable {
+	public set(name: string, value: unknown, args: Pick<Events['change'], 'iteration' | 'source'>): LunaticVariable {
 		if (!this.dictionary.has(name)) {
 			this.dictionary.set(name, new LunaticVariable());
 		}
 		const variable = this.dictionary.get(name)!;
-		if (variable.setValue(value, iteration)) {
+		if (variable.setValue(value, args.iteration)) {
 			this.eventTarget.dispatchEvent(new CustomEvent('change', {
 				detail: {
 					name: name,
 					value: value,
-					iteration: iteration
+					...args
 				} satisfies Events['change']
 			}))
 		}
