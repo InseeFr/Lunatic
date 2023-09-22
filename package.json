@@ -57,7 +57,7 @@
 		"library"
 	],
 	"dependencies": {
-		"@inseefr/trevas": "^0.1.19",
+		"@inseefr/trevas": "^0.1.20",
 		"@inseefr/vtl-2.0-antlr-tools": "^0.1.0-bundle",
 		"antlr4": "4.11.0",
 		"classnames": "^2.3.1",
