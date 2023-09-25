@@ -346,10 +346,15 @@ export type LunaticSource = {
 		[variableName: string]: string[];
 	};
 	resizing: {
-		[variableName: string]: {
-			size: string; // VTL Expression
-			variables: string[];
-		};
+		[variableName: string]:
+			| {
+					size: string; // VTL Expression
+					variables: string[];
+			  }
+			| {
+					sizeForLinksVariables: string[];
+					linksVariables: string[];
+			  };
 	};
 };
 
