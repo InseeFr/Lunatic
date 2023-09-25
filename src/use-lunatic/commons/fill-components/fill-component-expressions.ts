@@ -23,7 +23,6 @@ const VTL_ATTRIBUTES = [
 	'controls.iterations',
 	'lines.min',
 	'lines.max',
-	'iterations',
 	'xAxisIterations',
 	'yAxisIterations',
 	'conditionFilter',
@@ -45,11 +44,7 @@ export type DeepTranslateExpression<T> = T extends LunaticExpression
 	  }
 	: T;
 
-function createCrawl({
-	executeExpression,
-	iteration,
-	linksIterations,
-}: CrawlArgs) {
+function createCrawl({ executeExpression, iteration }: CrawlArgs) {
 	/**
 	 * Translate the expression for the property
 	 */

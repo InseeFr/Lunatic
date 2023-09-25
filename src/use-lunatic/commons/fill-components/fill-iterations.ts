@@ -1,5 +1,6 @@
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import { hasResponse } from '../component';
+import { forceInt } from '../../../utils/number';
 
 /**
  * Fill the number of iterations for loop components without "iterations" expression
@@ -8,11 +9,26 @@ export function fillIterations(
 	component: LunaticComponentDefinition,
 	state: LunaticState
 ) {
-	// Iterations expression is not present on the component definition
-	if (!('components' in component && !('iterations' in component))) {
+	if ('iterations' in component && component.iterations) {
+		return {
+			...component,
+			iterations: forceInt(
+				state.executeExpression(component.iterations, {
+					iteration: state.pager.iteration,
+				})
+			),
+		};
+	}
+
+	if (
+		component.componentType !== 'RosterForLoop' &&
+		component.componentType !== 'Loop'
+	) {
 		return component;
 	}
-	// Infer the number of iterations from the value of child components
+
+	// Iterations expression is not present on the component definition
+	// infer it from the value of child components
 	const iterations = component.components.reduce((acc, component) => {
 		if (!hasResponse(component)) {
 			return acc;

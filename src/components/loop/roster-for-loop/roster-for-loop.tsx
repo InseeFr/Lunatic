@@ -7,7 +7,6 @@ import {
 import { createCustomizableLunaticField } from '../../commons';
 import { LoopButton } from '../loop-button';
 import D from '../../../i18n';
-import { getInitialNbRows } from '../utils/get-initial-nb-rows';
 import type { LunaticComponentProps } from '../../type';
 import { Table, Tbody, Td, Tr } from '../../commons/components/html-table';
 import Header from '../../table/header';
@@ -30,11 +29,12 @@ export const RosterForLoop = createCustomizableLunaticField<
 		declarations,
 		label,
 		headers,
+		iterations,
 		id,
 	} = props;
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
-	const [nbRows, setNbRows] = useState(() => getInitialNbRows(valueMap));
+	const [nbRows, setNbRows] = useState(iterations);
 	const showButtons = min && max && min !== max;
 
 	const addRow = useCallback(() => {
