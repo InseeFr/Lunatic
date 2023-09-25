@@ -31,8 +31,7 @@ export const overviewOnChange = (state: LunaticState): LunaticState => {
 			reached: isPageReached(overviewEntry.page, lastReachedPage ?? '1'),
 			visible:
 				executeExpression(overviewEntry.conditionFilter, {
-					bindingDependencies:
-						overviewEntry.conditionFilter?.bindingDependencies,
+					deps: overviewEntry.conditionFilter?.bindingDependencies,
 				}) ?? false,
 			evaluatedLabel: executeExpression(overviewEntry.label),
 		};

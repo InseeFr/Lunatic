@@ -150,7 +150,9 @@ export type LunaticState = {
 		expression: unknown,
 		args?: {
 			iteration?: number;
+			// @deprecated
 			bindingDependencies?: string[];
+			deps?: string[];
 		}
 	) => T;
 	// Update the value collected for the variable

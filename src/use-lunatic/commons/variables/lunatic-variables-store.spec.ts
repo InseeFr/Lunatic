@@ -6,6 +6,7 @@ import { missingBehaviour } from './behaviours/missing-behaviour';
 
 describe('lunatic-variables-store', () => {
 	let variables: LunaticVariablesStore;
+
 	beforeEach(() => {
 		variables = new LunaticVariablesStore();
 	});

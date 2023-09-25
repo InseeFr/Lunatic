@@ -6,7 +6,6 @@ import { getInitialVariableValue } from '../../../utils/variables';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
-import { resizeArray, setAtIndex } from '../../../utils/array';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
@@ -47,9 +46,11 @@ export class LunaticVariablesStore {
 						variable.expression.value,
 						variable.bindingDependencies
 					);
+					break;
 				case 'COLLECTED':
 				case 'EXTERNAL':
 					store.set(variable.name, initialValues[variable.name ?? null]);
+					break;
 			}
 		}
 		resizingBehaviour(store, source.resizing);
@@ -114,6 +115,9 @@ export class LunaticVariablesStore {
 		return variable;
 	}
 
+	/**
+	 * Run a VTL expression
+	 */
 	public run(
 		expression: string,
 		args: { iteration?: IterationLevel; deps?: string[] } = {}
@@ -123,6 +127,9 @@ export class LunaticVariablesStore {
 		);
 	}
 
+	/**
+	 * Bind event listeners
+	 */
 	public on<T extends keyof Events>(
 		eventName: T,
 		cb: (e: CustomEvent<Events[T]>) => void
@@ -130,6 +137,9 @@ export class LunaticVariablesStore {
 		this.eventTarget.addEventListener(eventName, cb as EventListener);
 	}
 
+	/**
+	 * Detach a listener
+	 */
 	public off<T extends keyof Events>(
 		eventName: T,
 		cb: (e: CustomEvent<Events[T]>) => void
@@ -137,7 +147,7 @@ export class LunaticVariablesStore {
 		this.eventTarget.removeEventListener(eventName, cb as EventListener);
 	}
 
-	// Retrieve the number of interpret() run, used in testing
+	// Retrieve the number of interpret() run (used in testing only)
 	get interpretCount() {
 		return interpretCount;
 	}
@@ -248,11 +258,24 @@ class LunaticVariable {
 	private getDependenciesValues(
 		iteration?: IterationLevel
 	): Record<string, unknown> {
-		return Object.fromEntries(
-			this.getDependencies().map((dep) => {
-				return [dep, this.dictionary?.get(dep)?.getValue(iteration)];
-			})
-		);
+		try {
+			return Object.fromEntries(
+				this.getDependencies().map((dep) => {
+					return [dep, this.dictionary?.get(dep)?.getValue(iteration)];
+				})
+			);
+		} catch (e) {
+			if (e instanceof RangeError) {
+				throw new Error(
+					`Cannot resolve dependencies for "${
+						this.expression
+					}" with dependencies ${JSON.stringify(
+						this.getDependencies()
+					)} \n ${e.toString()}`
+				);
+			}
+			throw e;
+		}
 	}
 
 	private isOutdated(iteration?: IterationLevel): boolean {

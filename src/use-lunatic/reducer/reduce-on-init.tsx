@@ -23,7 +23,7 @@ function fillLoopState(
 	state: LunaticState,
 	initialPager: { page: string; subPage: number; iteration: number } | null
 ): LunaticState {
-	const { pager, pages, variables } = state;
+	const { pager, pages } = state;
 	const { page } = pager;
 	if (page in pages) {
 		const { isLoop, subPages, iterations, loopDependencies } = pages[page];
@@ -37,7 +37,7 @@ function fillLoopState(
 					nbSubPages: (subPages ?? []).length,
 					iteration: initialPager?.iteration ?? 0,
 					nbIterations: forceInt(
-						variables.run(iterations, {
+						state.executeExpression(iterations, {
 							deps: loopDependencies,
 						})
 					),
@@ -87,22 +87,33 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 
 	const executeExpression: LunaticState['executeExpression'] = (
 		expression,
-		args
+		args = {}
 	) => {
+		// This is kept to ensure backward compatibility
+		if (args?.bindingDependencies) {
+			args.deps = args.bindingDependencies;
+		}
 		const expressionType = getExpressionType(expression);
 		const features = action.payload.features as string[];
 		if (!features.includes(VTL) || !expressionType.includes(VTL)) {
 			return expression;
 		}
-		const result = variables.run(getExpressionAsString(expression), args);
-		if (
-			features.includes(MD) &&
-			expressionType.includes(MD) &&
-			typeof result === 'string'
-		) {
-			return <MdLabel expression={result} />;
+		const expressionString = getExpressionAsString(expression);
+		try {
+			const result = variables.run(expressionString, args);
+			if (
+				features.includes(MD) &&
+				expressionType.includes(MD) &&
+				typeof result === 'string'
+			) {
+				return <MdLabel expression={result} />;
+			}
+			return result as any;
+		} catch (e) {
+			// If there is an error interpreting a variable, return the raw expression
+			console.error(`Cannot interpret expression : ${expressionString}`);
+			return expressionString;
 		}
-		return result as any;
 	};
 
 	const updateBindings: LunaticState['updateBindings'] = (

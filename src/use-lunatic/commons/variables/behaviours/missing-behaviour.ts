@@ -9,6 +9,10 @@ export function missingBehaviour(
 	store: LunaticVariablesStore,
 	missing: LunaticSource['missingBlock']
 ) {
+	if (!missing) {
+		return;
+	}
+
 	// Create a map to improve performance
 	const missingMap = new Map(Object.entries(missing));
 

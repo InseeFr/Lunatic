@@ -34,6 +34,7 @@ export function parseVTLVariables(expression: string): string[] {
 				}
 				return acc;
 			}, new Set<string>());
+		dependencySet.delete(expression); // Prevent dependency loop
 		return Array.from(dependencySet);
 	} catch (e) {
 		return [];
