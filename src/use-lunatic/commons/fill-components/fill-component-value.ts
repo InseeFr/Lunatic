@@ -1,14 +1,33 @@
-import getComponentValue from '../get-component-value';
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
+import { hasResponse, hasResponses } from '../component';
+import { string } from 'prop-types';
 
-export type FilledProps = { value: unknown };
+export type FilledProps = { value?: unknown };
 
-function fillComponentValue(
+export function fillComponentValue(
 	component: LunaticComponentDefinition,
 	state: LunaticState
 ): LunaticComponentDefinition & FilledProps {
-	const value = getComponentValue(component, state);
-	return { ...component, value };
+	return {
+		...component,
+		value: getValueForComponent(component, state),
+	};
 }
 
-export default fillComponentValue;
+function getValueForComponent(
+	component: LunaticComponentDefinition,
+	state: LunaticState
+): unknown {
+	if (hasResponses(component)) {
+		return Object.entries(
+			component.responses?.map(({ response }) => [
+				response.name,
+				state.variables.get(response.name, state.pager.iteration),
+			]) ?? []
+		);
+	}
+	if (hasResponse(component)) {
+		return state.variables.get(component.response.name, state.pager.iteration);
+	}
+	return null;
+}

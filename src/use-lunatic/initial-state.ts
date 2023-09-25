@@ -4,8 +4,8 @@ import { SuggesterStatus } from './use-suggesters';
 import { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
 
 const INITIAL_STATE: LunaticState = {
-	variables: {}, // map des variables du questionnaires
-	dataStore: new LunaticVariablesStore(),
+	updatedAt: 0,
+	variables: new LunaticVariablesStore(),
 	pages: {},
 	isInLoop: false,
 	isFirstPage: false,

@@ -2,11 +2,9 @@ import { type ActionInit } from '../actions';
 import { checkLoops, createMapPages, isFirstLastPage } from '../commons';
 import compose from '../commons/compose';
 import { getPagerFromPageTag } from '../commons/page-tag';
-import type { LunaticData, LunaticState, LunaticVariable } from '../type';
-import type { LunaticSource } from '../type-source';
+import type { LunaticState, LunaticVariable } from '../type';
 import { reduceOverviewOnInit } from './overview/overview-on-init';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
-import { getInitialVariableValue } from '../../utils/variables';
 import { MD, VTL } from '../../utils/constants';
 import MdLabel from '../../components/commons/components/md-label';
 import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
@@ -19,37 +17,13 @@ export type VariablesByType = {
 };
 
 /**
- * Creates the variables object to set in the state
- */
-function createVariablesStore(
-	source: LunaticSource,
-	data: LunaticData
-): LunaticVariablesStore {
-	const store = new LunaticVariablesStore();
-	for (const variable of source.variables) {
-		switch (variable.variableType) {
-			case 'CALCULATED':
-				store.setCalculated(
-					variable.name,
-					variable.expression.value,
-					variable.bindingDependencies
-				);
-			case 'COLLECTED':
-			case 'EXTERNAL':
-				store.set(variable.name, getInitialVariableValue(variable, data));
-		}
-	}
-	return store;
-}
-
-/**
  * Check if there is a loop and populate the pager accordingly
  */
 function fillLoopState(
 	state: LunaticState,
 	initialPager: { page: string; subPage: number; iteration: number } | null
 ): LunaticState {
-	const { pager, pages, dataStore } = state;
+	const { pager, pages, variables } = state;
 	const { page } = pager;
 	if (page in pages) {
 		const { isLoop, subPages, iterations, loopDependencies } = pages[page];
@@ -63,7 +37,7 @@ function fillLoopState(
 					nbSubPages: (subPages ?? []).length,
 					iteration: initialPager?.iteration ?? 0,
 					nbIterations: forceInt(
-						dataStore.run(iterations, {
+						variables.run(iterations, {
 							deps: loopDependencies,
 						})
 					),
@@ -96,7 +70,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		return state;
 	}
 
-	const variables = createVariablesStore(source, data);
+	const variables = LunaticVariablesStore.makeFromSource(source, data);
 	const pages = checkLoops(createMapPages(source));
 	const { maxPage, cleaning = {}, missingBlock = {}, resizing = {} } = source;
 	const initialPager = getPagerFromPageTag(initialPage);
@@ -146,7 +120,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 			cleaning,
 			missingBlock,
 			resizing,
-			dataStore: variables,
+			variables: variables,
 			pages,
 			isFirstPage,
 			isLastPage,

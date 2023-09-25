@@ -1,4 +1,5 @@
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
+import missing from '../../../components/commons/components/missing';
 
 export type FilledProps = {
 	missingResponse?: {
@@ -19,22 +20,14 @@ function fillMissingResponse(
 		return component;
 	}
 
-	const { missingResponse } = component;
-	const { variables, pager } = state;
-	const { name } = missingResponse;
-	if (name in variables) {
-		const { value } = variables[name];
-		const missingValue =
-			pager.iteration === undefined
-				? value
-				: (value as unknown[])[pager.iteration];
-		return {
-			...component,
-			missingResponse: { ...missingResponse, value: missingValue },
-		};
-	}
-
-	return component;
+	const missingResponse = component.missingResponse;
+	return {
+		...component,
+		missingResponse: {
+			...missingResponse,
+			value: state.variables.get(missingResponse.name, state.pager.iteration),
+		},
+	};
 }
 
 export default fillMissingResponse;

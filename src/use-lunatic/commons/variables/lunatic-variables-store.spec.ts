@@ -1,7 +1,8 @@
 import { describe, it, beforeEach, expect } from 'vitest';
 import { LunaticVariablesStore } from './lunatic-variables-store';
-import {resizingBehaviour} from "./behaviours/resizing-behaviour";
-import {cleaningBehaviour} from "./behaviours/cleaning-behaviour";
+import { resizingBehaviour } from './behaviours/resizing-behaviour';
+import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
+import { missingBehaviour } from './behaviours/missing-behaviour';
 
 describe('lunatic-variables-store', () => {
 	let variables: LunaticVariablesStore;
@@ -91,11 +92,11 @@ describe('lunatic-variables-store', () => {
 		it('should handle setting at a specific index', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
 			variables.set('LASTNAME', null);
-			variables.set('FIRSTNAME', 'Marc', 1);
+			variables.set('FIRSTNAME', 'Marc', { iteration: 1 });
 			expect(variables.get('FIRSTNAME')).toEqual(['John', 'Marc']);
-			variables.set('LASTNAME', 'Doe', 1);
+			variables.set('LASTNAME', 'Doe', { iteration: 1 });
 			expect(variables.get('LASTNAME')).toEqual([undefined, 'Doe']);
-		})
+		});
 		it('should ignore non array values', () => {
 			variables.set('FIRSTNAME', 'John');
 			expect(variables.get('FIRSTNAME', 0)).toEqual('John');
@@ -140,57 +141,85 @@ describe('lunatic-variables-store', () => {
 
 	describe('resizing', () => {
 		it('should resize variables', () => {
-			variables.set('PRENOM', ['John', 'Jane'])
-			variables.set('NOM', ['Doe'])
+			variables.set('PRENOM', ['John', 'Jane']);
+			variables.set('NOM', ['Doe']);
 			resizingBehaviour(variables, {
 				PRENOM: {
 					size: 'count(PRENOM)',
-					variables: ['NOM']
-				}
-			})
-			variables.set('PRENOM', ['John', 'Jane', 'Marc'])
-			expect((variables.get('PRENOM') as string[]).length).toEqual(3)
-			expect((variables.get('NOM') as string[]).length).toEqual(3)
-		})
-	})
+					variables: ['NOM'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			expect((variables.get('PRENOM') as string[]).length).toEqual(3);
+			expect((variables.get('NOM') as string[]).length).toEqual(3);
+		});
+	});
 
 	describe('cleaning', () => {
 		it('should clean variables', () => {
-			variables.set('PRENOM', 'John')
-			variables.set('NOM', 'Doe')
-			variables.set('READY', true)
+			variables.set('PRENOM', 'John');
+			variables.set('NOM', 'Doe');
+			variables.set('READY', true);
 			cleaningBehaviour(variables, {
 				READY: {
 					PRENOM: 'READY',
-				}
-			})
-			expect(variables.get('PRENOM')).toEqual('John')
-			variables.set('READY', false)
-			expect(variables.get('PRENOM')).toEqual(null)
-		})
+				},
+			});
+			expect(variables.get('PRENOM')).toEqual('John');
+			variables.set('READY', false);
+			expect(variables.get('PRENOM')).toEqual(null);
+		});
 		it('should clean variables with initial values', () => {
-			variables.set('PRENOM', 'John')
-			variables.set('READY', true)
-			cleaningBehaviour(variables, {
-				READY: {
-					PRENOM: 'READY',
+			variables.set('PRENOM', 'John');
+			variables.set('READY', true);
+			cleaningBehaviour(
+				variables,
+				{
+					READY: {
+						PRENOM: 'READY',
+					},
+				},
+				{
+					PRENOM: 'Jane',
 				}
-			}, {
-				PRENOM: 'Jane'
-			})
-			variables.set('READY', false)
-			expect(variables.get('PRENOM')).toEqual('Jane')
-		})
+			);
+			variables.set('READY', false);
+			expect(variables.get('PRENOM')).toEqual('Jane');
+		});
 		it('should clean variables at a specific iteration', () => {
-			variables.set('PRENOM', ['John', 'Jane', 'Marc'])
-			variables.set('READY', [true, true, true])
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('READY', [true, true, true]);
 			cleaningBehaviour(variables, {
 				READY: {
 					PRENOM: 'READY',
-				}
-			})
-			variables.set('READY', false, 1)
-			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc'])
-		})
-	})
+				},
+			});
+			variables.set('READY', false, { iteration: 1 });
+			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
+		});
+	});
+
+	describe('missing', () => {
+		beforeEach(() => {
+			missingBehaviour(variables, {
+				PRENOM: ['PRENOM_MISSING'],
+				PRENOM_MISSING: ['PRENOM'],
+			});
+		});
+		it('should handle missing', () => {
+			variables.set('PRENOM', 'John');
+			expect(variables.get('PRENOM')).toEqual('John');
+			expect(variables.get('PRENOM_MISSING')).toEqual(null);
+			variables.set('PRENOM_MISSING', 'DK');
+			expect(variables.get('PRENOM')).toEqual(null);
+			expect(variables.get('PRENOM_MISSING')).toEqual('DK');
+		});
+		it('should handle missing for iteration', () => {
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			expect(variables.get('PRENOM_MISSING')).toEqual(null);
+			variables.set('PRENOM_MISSING', 'DK', { iteration: 1 });
+			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
+			expect(variables.get('PRENOM_MISSING', 1)).toEqual('DK');
+		});
+	});
 });

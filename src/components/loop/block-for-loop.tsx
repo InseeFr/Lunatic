@@ -7,7 +7,6 @@ import {
 	DeclarationsDetachable,
 } from '../declarations';
 import type { LunaticComponentProps } from '../type';
-import { getInitialNbRows } from './utils/get-initial-nb-rows';
 import { LoopButton } from './loop-button';
 import { LunaticComponents } from '../lunatic-components';
 import { times } from '../../utils/array';
@@ -32,12 +31,7 @@ export const BlockForLoop = createCustomizableLunaticField<
 	const max = lines?.max;
 
 	const [nbRows, setNbRows] = useState(() => {
-		if (iterations) {
-			//This should be an Integer
-			return Number.parseInt(iterations.toString());
-		}
-		const initLength = getInitialNbRows(value);
-		return Math.max(initLength, min);
+		return Math.max(iterations, min);
 	});
 
 	const addRow = useCallback(

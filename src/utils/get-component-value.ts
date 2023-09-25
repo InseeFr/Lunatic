@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { hasResponse, hasResponses } from '../use-lunatic/commons/component';
 
 /**
  * Extract the value associated with a component
@@ -30,27 +31,4 @@ export function getComponentValue(
 		);
 	}
 	return undefined;
-}
-
-function hasResponse(
-	component: unknown
-): component is { response: { name: string } } {
-	return (
-		!!component &&
-		typeof component === 'object' &&
-		'response' in component &&
-		'name' in (component.response as {})
-	);
-}
-
-function hasResponses(component: unknown): component is {
-	responses?: Array<{
-		label: ReactNode;
-		description?: ReactNode;
-		response: { name: string };
-	}>;
-} {
-	return (
-		!!component && typeof component === 'object' && 'responses' in component
-	);
 }

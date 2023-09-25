@@ -11,7 +11,6 @@ import type { LunaticData, LunaticState } from './type';
 
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
-import { getQuestionnaireData } from './commons/get-data';
 import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
 import type { LunaticSource } from './type-source';
@@ -21,6 +20,7 @@ import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
+import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -180,10 +180,11 @@ function useLunatic(
 	);
 
 	const getData = (withRefreshedCalculated: boolean) => {
-		// TODO : Replace this
-		return {};
-		// const { variables } = state;
-		// return getQuestionnaireData({ variables, withRefreshedCalculated });
+		return getQuestionnaireData(
+			state.variables,
+			source.variables,
+			withRefreshedCalculated
+		);
 	};
 
 	const buildedOverview = useMemo(

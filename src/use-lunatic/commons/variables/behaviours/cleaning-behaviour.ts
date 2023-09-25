@@ -24,7 +24,7 @@ export function cleaningBehaviour (store: LunaticVariablesStore, cleaning: Lunat
                 continue;
             }
 
-            store.set(variableName, initialValues[variableName] ?? null, e.detail.iteration)
+            store.set(variableName, initialValues[variableName] ?? null, {iteration: e.detail.iteration})
         }
     })
 

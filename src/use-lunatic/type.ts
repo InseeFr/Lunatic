@@ -76,10 +76,8 @@ export type LunaticStateVariable = {
 }[LunaticVariable['variableType']];
 
 export type LunaticState = {
-	variables: {
-		[variableName: string]: LunaticStateVariable;
-	};
-	dataStore: LunaticVariablesStore;
+	updatedAt: number;
+	variables: LunaticVariablesStore;
 	pages: {
 		[key: number | string]:
 			| {

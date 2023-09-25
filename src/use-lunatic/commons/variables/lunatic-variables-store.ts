@@ -1,5 +1,12 @@
 import { interpretVTL, parseVTLVariables } from '../../../utils/vtl';
 import { isTestEnv } from '../../../utils/env';
+import type { LunaticSource } from '../../type-source';
+import type { LunaticData } from '../../type';
+import { getInitialVariableValue } from '../../../utils/variables';
+import { resizingBehaviour } from './behaviours/resizing-behaviour';
+import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
+import { missingBehaviour } from './behaviours/missing-behaviour';
+import { resizeArray, setAtIndex } from '../../../utils/array';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
@@ -8,22 +15,47 @@ type IterationLevel = number;
 type Events = {
 	change: {
 		// Name of the changed variable
-		name: string,
+		name: string;
 		// New value for the variable
-		value: unknown,
+		value: unknown;
 		// Iteration changed (for array)
-		iteration?: IterationLevel | undefined,
-		// Source of the change
-		source?: string | undefined
-	}
-}
+		iteration?: IterationLevel | undefined;
+	};
+};
 
 export class LunaticVariablesStore {
 	private dictionary = new Map<string, LunaticVariable>();
-	private eventTarget = new EventTarget()
+	private eventTarget = new EventTarget();
 
 	constructor() {
 		interpretCount = 0;
+	}
+
+	public static makeFromSource(source: LunaticSource, data: LunaticData) {
+		const store = new LunaticVariablesStore();
+		const initialValues = Object.fromEntries(
+			source.variables.map((variable) => [
+				variable.name,
+				getInitialVariableValue(variable, data),
+			])
+		);
+		for (const variable of source.variables) {
+			switch (variable.variableType) {
+				case 'CALCULATED':
+					store.setCalculated(
+						variable.name,
+						variable.expression.value,
+						variable.bindingDependencies
+					);
+				case 'COLLECTED':
+				case 'EXTERNAL':
+					store.set(variable.name, initialValues[variable.name ?? null]);
+			}
+		}
+		resizingBehaviour(store, source.resizing);
+		cleaningBehaviour(store, source.cleaning, initialValues);
+		missingBehaviour(store, source.missingBlock);
+		return store;
 	}
 
 	/**
@@ -31,7 +63,7 @@ export class LunaticVariablesStore {
 	 */
 	public get<T>(name: string, iteration?: IterationLevel) {
 		if (!this.dictionary.has(name)) {
-			return undefined;
+			return null;
 		}
 		return this.dictionary.get(name)!.getValue(iteration) as T;
 	}
@@ -39,19 +71,25 @@ export class LunaticVariablesStore {
 	/**
 	 * Set variable value
 	 */
-	public set(name: string, value: unknown, args: Pick<Events['change'], 'iteration' | 'source'>): LunaticVariable {
+	public set(
+		name: string,
+		value: unknown,
+		args: Pick<Events['change'], 'iteration'> = {}
+	): LunaticVariable {
 		if (!this.dictionary.has(name)) {
 			this.dictionary.set(name, new LunaticVariable());
 		}
 		const variable = this.dictionary.get(name)!;
 		if (variable.setValue(value, args.iteration)) {
-			this.eventTarget.dispatchEvent(new CustomEvent('change', {
-				detail: {
-					name: name,
-					value: value,
-					...args
-				} satisfies Events['change']
-			}))
+			this.eventTarget.dispatchEvent(
+				new CustomEvent('change', {
+					detail: {
+						...args,
+						name: name,
+						value: value,
+					} satisfies Events['change'],
+				})
+			);
 		}
 		return variable;
 	}
@@ -85,21 +123,18 @@ export class LunaticVariablesStore {
 		);
 	}
 
-	public all(): Record<string, unknown> {
-		return Object.fromEntries(
-			Array.from(this.dictionary.entries()).map(([name, variable]) => [
-				name,
-				variable.getValue(),
-			])
-		);
+	public on<T extends keyof Events>(
+		eventName: T,
+		cb: (e: CustomEvent<Events[T]>) => void
+	): void {
+		this.eventTarget.addEventListener(eventName, cb as EventListener);
 	}
 
-	public on<T extends keyof Events>(eventName: T, cb: (e: CustomEvent<Events[T]>) => void): void {
-		this.eventTarget.addEventListener(eventName, cb as EventListener)
-	}
-
-	public off<T extends keyof Events>(eventName: T, cb: (e: CustomEvent<Events[T]>) => void): void {
-		this.eventTarget.removeEventListener(eventName, cb as EventListener)
+	public off<T extends keyof Events>(
+		eventName: T,
+		cb: (e: CustomEvent<Events[T]>) => void
+	): void {
+		this.eventTarget.removeEventListener(eventName, cb as EventListener);
 	}
 
 	// Retrieve the number of interpret() run, used in testing
@@ -170,15 +205,16 @@ class LunaticVariable {
 		return this.getSavedValue(iteration);
 	}
 
+	/**
+	 * Set the value and returns true if the variable is touched
+	 */
 	setValue(value: unknown, iteration?: IterationLevel): boolean {
 		if (value === this.getSavedValue(iteration)) {
 			return false;
 		}
 		// Decompose arrays, to only update items that changed
 		if (Array.isArray(value) && iteration === undefined) {
-			return !!value
-				.map((v, k) => this.setValue(v, k))
-				.find(v => v);
+			return !!value.map((v, k) => this.setValue(v, k)).find((v) => v);
 		}
 		// We want to save a value at a specific iteration, but the value is not an array yet
 		if (iteration !== undefined && !Array.isArray(this.value)) {
@@ -191,7 +227,7 @@ class LunaticVariable {
 		}
 		this.updatedAt.set(iteration, performance.now());
 		this.updatedAt.set(undefined, performance.now());
-		return true
+		return true;
 	}
 
 	private getSavedValue(iteration?: IterationLevel): unknown {
