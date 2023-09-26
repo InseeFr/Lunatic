@@ -2,19 +2,13 @@ import { type ActionInit } from '../actions';
 import { checkLoops, createMapPages, isFirstLastPage } from '../commons';
 import compose from '../commons/compose';
 import { getPagerFromPageTag } from '../commons/page-tag';
-import type { LunaticState, LunaticVariable } from '../type';
+import type { LunaticState } from '../type';
 import { reduceOverviewOnInit } from './overview/overview-on-init';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { MD, VTL } from '../../utils/constants';
 import MdLabel from '../../components/commons/components/md-label';
 import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
 import { forceInt } from '../../utils/number';
-
-export type VariablesByType = {
-	EXTERNAL: (LunaticVariable & { variableType: 'EXTERNAL' })[];
-	COLLECTED: (LunaticVariable & { variableType: 'COLLECTED' })[];
-	CALCULATED: (LunaticVariable & { variableType: 'CALCULATED' })[];
-};
 
 /**
  * Check if there is a loop and populate the pager accordingly
@@ -130,7 +124,6 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 			...state,
 			cleaning,
 			missingBlock,
-			resizing,
 			variables: variables,
 			pages,
 			isFirstPage,
