@@ -24,3 +24,10 @@ export function between(n: number, min: number, max: number): number {
 	}
 	return n;
 }
+
+/**
+ * Check if the value is a number
+ */
+export function isNumber(n: unknown): n is number {
+	return typeof n === 'number' && Number.isFinite(n);
+}

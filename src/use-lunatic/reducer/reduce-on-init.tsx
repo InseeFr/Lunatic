@@ -87,6 +87,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		if (args?.bindingDependencies) {
 			args.deps = args.bindingDependencies;
 		}
+		// Remove above code on next update
 		const expressionType = getExpressionType(expression);
 		const features = action.payload.features as string[];
 		if (!features.includes(VTL) || !expressionType.includes(VTL)) {
@@ -94,7 +95,13 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		}
 		const expressionString = getExpressionAsString(expression);
 		try {
-			const result = variables.run(expressionString, args);
+			const result = variables.run(expressionString, {
+				...args,
+				iteration:
+					typeof args.iteration === 'number'
+						? [args.iteration]
+						: args.iteration,
+			});
 			if (
 				features.includes(MD) &&
 				expressionType.includes(MD) &&
@@ -112,9 +119,10 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 
 	const updateBindings: LunaticState['updateBindings'] = (
 		variableName,
-		value
+		value,
+		options
 	) => {
-		variables.set(variableName, value);
+		variables.set(variableName, value, options);
 	};
 
 	const { isFirstPage, isLastPage } = isFirstLastPage(pager);

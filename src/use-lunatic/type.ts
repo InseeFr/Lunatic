@@ -149,14 +149,18 @@ export type LunaticState = {
 	executeExpression: <T extends unknown = unknown>(
 		expression: unknown,
 		args?: {
-			iteration?: number;
+			iteration?: number | number[];
 			// @deprecated
 			bindingDependencies?: string[];
 			deps?: string[];
 		}
 	) => T;
 	// Update the value collected for the variable
-	updateBindings: (variableName: string, value: unknown) => unknown;
+	updateBindings: (
+		variableName: string,
+		value: unknown,
+		options: { iteration?: number[] }
+	) => unknown;
 	// Enable controls for data (form validation)
 	activeControls: boolean;
 	// enable shortcut on radio/checkbox/missing buttons

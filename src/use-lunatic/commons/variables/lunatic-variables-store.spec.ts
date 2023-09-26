@@ -87,20 +87,20 @@ describe('lunatic-variables-store', () => {
 		it('should handle arrays', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
 			expect(variables.get('FIRSTNAME')).toEqual(['John', 'Jane']);
-			expect(variables.get('FIRSTNAME', 0)).toEqual('John');
-			expect(variables.get('FIRSTNAME', 1)).toEqual('Jane');
+			expect(variables.get('FIRSTNAME', [0])).toEqual('John');
+			expect(variables.get('FIRSTNAME', [1])).toEqual('Jane');
 		});
 		it('should handle setting at a specific index', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
 			variables.set('LASTNAME', null);
-			variables.set('FIRSTNAME', 'Marc', { iteration: 1 });
+			variables.set('FIRSTNAME', 'Marc', { iteration: [1] });
 			expect(variables.get('FIRSTNAME')).toEqual(['John', 'Marc']);
-			variables.set('LASTNAME', 'Doe', { iteration: 1 });
+			variables.set('LASTNAME', 'Doe', { iteration: [1] });
 			expect(variables.get('LASTNAME')).toEqual([undefined, 'Doe']);
 		});
 		it('should ignore non array values', () => {
 			variables.set('FIRSTNAME', 'John');
-			expect(variables.get('FIRSTNAME', 0)).toEqual('John');
+			expect(variables.get('FIRSTNAME', [0])).toEqual('John');
 		});
 		it('should handle iteration in calculation', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
@@ -109,16 +109,16 @@ describe('lunatic-variables-store', () => {
 				'FIRSTNAME',
 				'LASTNAME',
 			]);
-			expect(variables.get('FULLNAME', 0)).toEqual('John Doe');
-			expect(variables.get('FULLNAME', 1)).toEqual('Jane Dae');
+			expect(variables.get('FULLNAME', [0])).toEqual('John Doe');
+			expect(variables.get('FULLNAME', [1])).toEqual('Jane Dae');
 			expect(variables.interpretCount).toBe(2);
-			expect(variables.get('FULLNAME', 0)).toEqual('John Doe');
-			expect(variables.get('FULLNAME', 1)).toEqual('Jane Dae');
+			expect(variables.get('FULLNAME', [0])).toEqual('John Doe');
+			expect(variables.get('FULLNAME', [1])).toEqual('Jane Dae');
 			expect(variables.interpretCount).toBe(2);
-			expect(variables.get('FULLNAME', 0)).toEqual('John Doe');
+			expect(variables.get('FULLNAME', [0])).toEqual('John Doe');
 			variables.set('FIRSTNAME', ['John', 'Marc']);
-			expect(variables.get('FULLNAME', 0)).toEqual('John Doe');
-			expect(variables.get('FULLNAME', 1)).toEqual('Marc Dae');
+			expect(variables.get('FULLNAME', [0])).toEqual('John Doe');
+			expect(variables.get('FULLNAME', [1])).toEqual('Marc Dae');
 			// Only the second iteration should be calculated
 			expect(variables.interpretCount).toBe(3);
 		});
@@ -132,10 +132,10 @@ describe('lunatic-variables-store', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
 			variables.set('LASTNAME', 'Doe');
 			expect(
-				variables.run('FIRSTNAME || " " || LASTNAME', { iteration: 0 })
+				variables.run('FIRSTNAME || " " || LASTNAME', { iteration: [0] })
 			).toEqual('John Doe');
 			expect(
-				variables.run('FIRSTNAME || " " || LASTNAME', { iteration: 1 })
+				variables.run('FIRSTNAME || " " || LASTNAME', { iteration: [1] })
 			).toEqual('Jane Doe');
 		});
 	});
@@ -195,7 +195,7 @@ describe('lunatic-variables-store', () => {
 					PRENOM: 'READY',
 				},
 			});
-			variables.set('READY', false, { iteration: 1 });
+			variables.set('READY', false, { iteration: [1] });
 			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
 		});
 	});
@@ -218,9 +218,9 @@ describe('lunatic-variables-store', () => {
 		it('should handle missing for iteration', () => {
 			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
 			expect(variables.get('PRENOM_MISSING')).toEqual(null);
-			variables.set('PRENOM_MISSING', 'DK', { iteration: 1 });
+			variables.set('PRENOM_MISSING', 'DK', { iteration: [1] });
 			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
-			expect(variables.get('PRENOM_MISSING', 1)).toEqual('DK');
+			expect(variables.get('PRENOM_MISSING', [1])).toEqual('DK');
 		});
 	});
 });

@@ -1,6 +1,6 @@
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import { hasResponse } from '../component';
-import { forceInt } from '../../../utils/number';
+import { forceInt, isNumber } from '../../../utils/number';
 
 /**
  * Fill the number of iterations for loop components without "iterations" expression
@@ -35,7 +35,7 @@ export function fillIterations(
 		}
 		const value = state.variables.get(
 			component.response.name,
-			state.pager.iteration
+			isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
 		);
 		if (Array.isArray(value) && value.length > acc) {
 			return value.length;

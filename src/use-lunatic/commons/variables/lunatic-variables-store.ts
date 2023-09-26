@@ -6,11 +6,12 @@ import { getInitialVariableValue } from '../../../utils/variables';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
+import { setAtIndex } from '../../../utils/array';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
 
-type IterationLevel = number;
+type IterationLevel = number[];
 type Events = {
 	change: {
 		// Name of the changed variable
@@ -155,9 +156,9 @@ export class LunaticVariablesStore {
 
 class LunaticVariable {
 	// Last time the value was updated (changed)
-	public updatedAt = new Map<undefined | IterationLevel, number>();
+	public updatedAt = new Map<undefined | string, number>();
 	// Last time "calculation" was run (for calculated variable)
-	private calculatedAt = new Map<undefined | IterationLevel, number>();
+	private calculatedAt = new Map<undefined | string, number>();
 	// Internal value for the variable
 	private value: unknown;
 	// List of dependencies, ex: ['FIRSTNAME', 'LASTNAME']
@@ -210,7 +211,7 @@ class LunaticVariable {
 				).toString()}`
 			);
 		}
-		this.calculatedAt.set(iteration, performance.now());
+		this.calculatedAt.set(iteration?.join('.'), performance.now());
 		this.calculatedAt.set(undefined, performance.now());
 		return this.getSavedValue(iteration);
 	}
@@ -223,28 +224,33 @@ class LunaticVariable {
 			return false;
 		}
 		// Decompose arrays, to only update items that changed
-		if (Array.isArray(value) && iteration === undefined) {
-			return !!value.map((v, k) => this.setValue(v, k)).find((v) => v);
+		if (Array.isArray(value) && !Array.isArray(iteration)) {
+			return !!value.map((v, k) => this.setValue(v, [k])).find((v) => v);
 		}
 		// We want to save a value at a specific iteration, but the value is not an array yet
 		if (iteration !== undefined && !Array.isArray(this.value)) {
 			this.value = [];
 		}
-		if (iteration === undefined) {
-			this.value = value;
-		} else {
-			(this.value as unknown[])[iteration] = value;
-		}
-		this.updatedAt.set(iteration, performance.now());
+		this.value = !Array.isArray(iteration)
+			? value
+			: setAtIndex(this.value, iteration, value);
+		this.updatedAt.set(iteration?.join('.'), performance.now());
 		this.updatedAt.set(undefined, performance.now());
 		return true;
 	}
 
 	private getSavedValue(iteration?: IterationLevel): unknown {
-		if (iteration !== undefined && Array.isArray(this.value)) {
-			return this.value[iteration];
+		if (!Array.isArray(iteration)) {
+			return this.value;
 		}
-		return this.value;
+		let current = this.value;
+		for (const index of iteration) {
+			if (!Array.isArray(current)) {
+				return current;
+			}
+			current = current[index];
+		}
+		return current;
 	}
 
 	private getDependencies(): string[] {
@@ -282,9 +288,13 @@ class LunaticVariable {
 		const dependenciesUpdatedAt = Math.max(
 			0,
 			...this.getDependencies().map(
-				(dep) => this.dictionary?.get(dep)?.updatedAt.get(iteration) ?? 0
+				(dep) =>
+					this.dictionary?.get(dep)?.updatedAt.get(iteration?.join('.')) ?? 0
 			)
 		);
-		return dependenciesUpdatedAt > (this.calculatedAt.get(iteration) ?? -1);
+		return (
+			dependenciesUpdatedAt >
+			(this.calculatedAt.get(iteration?.join('.')) ?? -1)
+		);
 	}
 }

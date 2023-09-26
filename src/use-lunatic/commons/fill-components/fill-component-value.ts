@@ -1,6 +1,7 @@
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import { hasResponse, hasResponses } from '../component';
 import { string } from 'prop-types';
+import { isNumber } from '../../../utils/number';
 
 export type FilledProps = { value?: unknown };
 
@@ -22,12 +23,18 @@ function getValueForComponent(
 		return Object.entries(
 			component.responses?.map(({ response }) => [
 				response.name,
-				state.variables.get(response.name, state.pager.iteration),
+				state.variables.get(
+					response.name,
+					isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
+				),
 			]) ?? []
 		);
 	}
 	if (hasResponse(component)) {
-		return state.variables.get(component.response.name, state.pager.iteration);
+		return state.variables.get(
+			component.response.name,
+			isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
+		);
 	}
 	return null;
 }

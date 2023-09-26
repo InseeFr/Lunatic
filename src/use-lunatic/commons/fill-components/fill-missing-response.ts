@@ -1,5 +1,6 @@
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import missing from '../../../components/commons/components/missing';
+import { isNumber } from '../../../utils/number';
 
 export type FilledProps = {
 	missingResponse?: {
@@ -25,7 +26,10 @@ function fillMissingResponse(
 		...component,
 		missingResponse: {
 			...missingResponse,
-			value: state.variables.get(missingResponse.name, state.pager.iteration),
+			value: state.variables.get(
+				missingResponse.name,
+				isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
+			),
 		},
 	};
 }

@@ -56,7 +56,7 @@ function resizePairwise(
 		linksVariables: string[];
 	},
 	args: {
-		iteration?: number;
+		iteration?: number[];
 	}
 ) {
 	const [xSize, ySize] = resizingInfo.sizeForLinksVariables.map(
