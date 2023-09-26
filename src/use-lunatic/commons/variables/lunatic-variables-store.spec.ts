@@ -25,10 +25,9 @@ describe('lunatic-variables-store', () => {
 	it('should handle calculated', () => {
 		variables.set('FIRSTNAME', 'John');
 		variables.set('LASTNAME', 'Doe');
-		variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', [
-			'FIRSTNAME',
-			'LASTNAME',
-		]);
+		variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', {
+			dependencies: ['FIRSTNAME', 'LASTNAME'],
+		});
 		expect(variables.get('FULLNAME')).toEqual('John Doe');
 		expect(variables.interpretCount).toBe(1);
 		// The result should be cached
@@ -44,14 +43,12 @@ describe('lunatic-variables-store', () => {
 		variables.set('FIRSTNAME', 'John');
 		variables.set('LASTNAME', 'Doe');
 		variables.set('AGE', '18');
-		variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', [
-			'FIRSTNAME',
-			'LASTNAME',
-		]);
-		variables.setCalculated('LABEL', 'FULLNAME || " is " || AGE', [
-			'FULLNAME',
-			'AGE',
-		]);
+		variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', {
+			dependencies: ['FIRSTNAME', 'LASTNAME'],
+		});
+		variables.setCalculated('LABEL', 'FULLNAME || " is " || AGE', {
+			dependencies: ['FULLNAME', 'AGE'],
+		});
 		expect(variables.get('LABEL')).toEqual('John Doe is 18');
 		expect(variables.interpretCount).toBe(2);
 		variables.set('AGE', '20');
@@ -96,7 +93,7 @@ describe('lunatic-variables-store', () => {
 			variables.set('FIRSTNAME', 'Marc', { iteration: [1] });
 			expect(variables.get('FIRSTNAME')).toEqual(['John', 'Marc']);
 			variables.set('LASTNAME', 'Doe', { iteration: [1] });
-			expect(variables.get('LASTNAME')).toEqual([undefined, 'Doe']);
+			expect(variables.get('LASTNAME')).toEqual([null, 'Doe']);
 		});
 		it('should ignore non array values', () => {
 			variables.set('FIRSTNAME', 'John');
@@ -105,10 +102,9 @@ describe('lunatic-variables-store', () => {
 		it('should handle iteration in calculation', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
 			variables.set('LASTNAME', ['Doe', 'Dae']);
-			variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', [
-				'FIRSTNAME',
-				'LASTNAME',
-			]);
+			variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', {
+				dependencies: ['FIRSTNAME', 'LASTNAME'],
+			});
 			expect(variables.get('FULLNAME', [0])).toEqual('John Doe');
 			expect(variables.get('FULLNAME', [1])).toEqual('Jane Dae');
 			expect(variables.interpretCount).toBe(2);

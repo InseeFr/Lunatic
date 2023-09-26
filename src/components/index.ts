@@ -10,7 +10,7 @@ export { default as InputNumber } from './input-number';
 export { default as FilterDescription } from './filter-description';
 export { Loop } from './loop/loop';
 export { default as Modal } from './modal-controls';
-export { default as PairwiseLinks } from './pairwise-links';
+export { PairwiseLinks } from './pairwise-links/pairwise-links';
 export { default as Radio } from './radio';
 export { RosterForLoop } from './loop/roster-for-loop/roster-for-loop';
 export { default as Sequence } from './sequence';

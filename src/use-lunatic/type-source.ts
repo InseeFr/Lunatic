@@ -270,6 +270,7 @@ export type ComponentPairWiseLinksType = {
 	symLinks: {
 		[variableName: string]: Record<string, string>;
 	};
+	components: ComponentType[];
 };
 
 export type ComponentComponentSetType = {

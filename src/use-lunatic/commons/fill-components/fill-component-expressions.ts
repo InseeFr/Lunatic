@@ -44,7 +44,11 @@ export type DeepTranslateExpression<T> = T extends LunaticExpression
 	  }
 	: T;
 
-function createCrawl({ executeExpression, iteration }: CrawlArgs) {
+function createCrawl({
+	executeExpression,
+	iteration,
+	linksIterations,
+}: CrawlArgs) {
 	/**
 	 * Translate the expression for the property
 	 */
@@ -54,7 +58,7 @@ function createCrawl({ executeExpression, iteration }: CrawlArgs) {
 			return {
 				...object,
 				[path]: executeExpression(candidate, {
-					iteration,
+					iteration: linksIterations ?? iteration,
 				}),
 			};
 		} catch (e) {

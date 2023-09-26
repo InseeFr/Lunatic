@@ -57,10 +57,7 @@ function fillChildComponentsWithIteration(
 			fillComponents(component.components, {
 				...state,
 				handleChange: (response, value) => {
-					state.handleChange(
-						response,
-						setAtIndex(component.value?.[response.name] ?? [], iteration, value)
-					);
+					state.handleChange(response, value, { iteration: [iteration] });
 				},
 				pager: {
 					...state.pager,
@@ -68,6 +65,47 @@ function fillChildComponentsWithIteration(
 					subPage: 0, // Fake a subpage to simulate an iteration
 				},
 			}),
+	};
+}
+
+/**
+ * Fill child components for nested component type
+ */
+function fillPairwise(
+	component: DeepTranslateExpression<
+		LunaticComponentDefinition<'PairwiseLinks'>
+	>,
+	state: LunaticState
+) {
+	return {
+		...component,
+		getComponents: (x: number, y: number) => {
+			if (x === y) {
+				return [];
+			}
+			return fillComponents(component.components, {
+				...state,
+				handleChange: (response, value) => {
+					state.handleChange(response, value, { iteration: [x, y] });
+					// Update linked value
+					if (
+						response.name in component.symLinks &&
+						value in component.symLinks[response.name]
+					) {
+						state.handleChange(
+							response,
+							component.symLinks[response.name][value],
+							{ iteration: [y, x] }
+						);
+					}
+				},
+				pager: {
+					...state.pager,
+					linksIterations: [x, y],
+					subPage: 0, // Fake a subpage to simulate an iteration
+				},
+			});
+		},
 	};
 }
 
@@ -86,6 +124,8 @@ function fillSpecificExpressions(
 		case 'Loop':
 		case 'RosterForLoop':
 			return fillChildComponentsWithIteration(component, state);
+		case 'PairwiseLinks':
+			return fillPairwise(component, state);
 		default:
 			return component;
 	}

@@ -1,4 +1,3 @@
-import LinksOrchestrator from './orchestrator';
 import {
 	DeclarationsAfterText,
 	DeclarationsBeforeText,
@@ -6,22 +5,16 @@ import {
 } from '../declarations';
 import NothingToDisplay from '../commons/components/nothing-to-display';
 import type { LunaticComponentProps } from '../type';
+import { times } from '../../utils/array';
+import { Fragment } from 'react';
+import { LunaticComponents } from '../lunatic-components';
 
-const PairwiseLinks = ({
+export const PairwiseLinks = ({
 	declarations,
-	components,
-	handleChange,
-	value,
-	missing,
-	shortcut,
-	features,
-	preferences,
-	management,
-	executeExpression,
 	xAxisIterations,
 	yAxisIterations,
 	id,
-	symLinks,
+	getComponents,
 }: LunaticComponentProps<'PairwiseLinks'>) => {
 	const nbRows = xAxisIterations * yAxisIterations;
 
@@ -33,26 +26,22 @@ const PairwiseLinks = ({
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
 			<DeclarationsAfterText declarations={declarations} id={id} />
-			<LinksOrchestrator
-				id={id}
-				components={components}
-				handleChange={handleChange}
-				nbRows={nbRows}
-				value={value}
-				className="pairwise-link"
-				management={management}
-				missing={missing}
-				shortcut={shortcut}
-				features={features}
-				preferences={preferences}
-				executeExpression={executeExpression}
-				xAxisIterations={xAxisIterations}
-				yAxisIterations={yAxisIterations}
-				symLinks={symLinks}
-			/>
+			{times(xAxisIterations, (x) => (
+				<Fragment key={x}>
+					{times(yAxisIterations, (y) => (
+						<Fragment key={`${x}-${y}`}>
+							<LunaticComponents
+								components={getComponents(x, y)}
+								componentProps={(props) => ({
+									...props,
+									id: `${props.id}-${x + 1}-${y + 1} `,
+								})}
+							/>
+						</Fragment>
+					))}
+				</Fragment>
+			))}
 			<DeclarationsDetachable declarations={declarations} id={id} />
 		</>
 	);
 };
-
-export default PairwiseLinks;

@@ -194,6 +194,7 @@ type ComponentPropsByType = {
 		yAxisIterations: number;
 		symLinks: Record<string, Record<string, string>>;
 		value: Record<string, unknown[]>;
+		getComponents: (x: number, y: number) => FilledLunaticComponentProps[];
 	};
 	Suggester: LunaticBaseProps<string | null> & {
 		storeName: string;

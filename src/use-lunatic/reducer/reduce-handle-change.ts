@@ -9,10 +9,8 @@ export function reduceHandleChange(
 	state: LunaticState,
 	action: ActionHandleChange
 ): LunaticState {
-	state.updateBindings(action.payload.response.name, action.payload.value, {
-		iteration: isNumber(state.pager.iteration)
-			? [state.pager.iteration]
-			: undefined,
+	state.updateBindings(action.payload.name, action.payload.value, {
+		iteration: action.payload.iteration,
 	});
 
 	return {

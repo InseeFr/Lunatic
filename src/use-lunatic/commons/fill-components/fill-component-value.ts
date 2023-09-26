@@ -19,22 +19,22 @@ function getValueForComponent(
 	component: LunaticComponentDefinition,
 	state: LunaticState
 ): unknown {
+	let iteration = isNumber(state.pager.iteration)
+		? [state.pager.iteration]
+		: undefined;
+	if (state.pager.linksIterations) {
+		iteration = state.pager.linksIterations;
+	}
 	if (hasResponses(component)) {
 		return Object.entries(
 			component.responses?.map(({ response }) => [
 				response.name,
-				state.variables.get(
-					response.name,
-					isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
-				),
+				state.variables.get(response.name, iteration),
 			]) ?? []
 		);
 	}
 	if (hasResponse(component)) {
-		return state.variables.get(
-			component.response.name,
-			isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
-		);
+		return state.variables.get(component.response.name, iteration);
 	}
 	return null;
 }

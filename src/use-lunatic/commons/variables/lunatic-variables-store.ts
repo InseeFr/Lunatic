@@ -7,6 +7,7 @@ import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
 import { setAtIndex } from '../../../utils/array';
+import { isNumber } from '../../../utils/number';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
@@ -39,14 +40,18 @@ export class LunaticVariablesStore {
 				getInitialVariableValue(variable, data),
 			])
 		);
+		const getIterationDepth = (name: string) => {
+			if (name === 'xAxis') return 0;
+			if (name === 'yAxis') return 1;
+			return undefined;
+		};
 		for (const variable of source.variables) {
 			switch (variable.variableType) {
 				case 'CALCULATED':
-					store.setCalculated(
-						variable.name,
-						variable.expression.value,
-						variable.bindingDependencies
-					);
+					store.setCalculated(variable.name, variable.expression.value, {
+						dependencies: variable.bindingDependencies,
+						iterationDepth: getIterationDepth(variable.name),
+					});
 					break;
 				case 'COLLECTED':
 				case 'EXTERNAL':
@@ -79,7 +84,12 @@ export class LunaticVariablesStore {
 		args: Pick<Events['change'], 'iteration'> = {}
 	): LunaticVariable {
 		if (!this.dictionary.has(name)) {
-			this.dictionary.set(name, new LunaticVariable());
+			this.dictionary.set(
+				name,
+				new LunaticVariable({
+					name,
+				})
+			);
 		}
 		const variable = this.dictionary.get(name)!;
 		if (variable.setValue(value, args.iteration)) {
@@ -102,7 +112,10 @@ export class LunaticVariablesStore {
 	public setCalculated(
 		name: string,
 		expression: string,
-		dependencies?: string[]
+		{
+			dependencies,
+			iterationDepth,
+		}: { dependencies?: string[]; iterationDepth?: number } = {}
 	): LunaticVariable {
 		if (this.dictionary.has(name)) {
 			return this.dictionary.get(name)!;
@@ -110,7 +123,9 @@ export class LunaticVariablesStore {
 		const variable = new LunaticVariable({
 			expression: expression,
 			dictionary: this.dictionary,
-			dependencies: dependencies,
+			dependencies,
+			iterationDepth,
+			name,
 		});
 		this.dictionary.set(name, variable);
 		return variable;
@@ -123,9 +138,9 @@ export class LunaticVariablesStore {
 		expression: string,
 		args: { iteration?: IterationLevel; deps?: string[] } = {}
 	): unknown {
-		return this.setCalculated(expression, expression, args.deps).getValue(
-			args.iteration
-		);
+		return this.setCalculated(expression, expression, {
+			dependencies: args.deps,
+		}).getValue(args.iteration);
 	}
 
 	/**
@@ -167,23 +182,30 @@ class LunaticVariable {
 	private readonly expression?: string;
 	// Dictionary holding all the available variables
 	private readonly dictionary?: Map<string, LunaticVariable>;
+	// Specific iteration depth to get value from dependencies (used for yAxis for instance)
+	private readonly iterationDepth?: number;
+	// Keep a record of variable name (optional, used for debug)
+	private readonly name?: string;
 
 	constructor(
 		args: {
 			expression?: string;
 			dependencies?: string[];
 			dictionary?: Map<string, LunaticVariable>;
+			iterationDepth?: number;
+			name?: string;
 		} = {}
 	) {
-		const { expression, dictionary, dependencies } = args;
-		if (expression && !dictionary) {
+		if (args.expression && !args.dictionary) {
 			throw new Error(
 				`A calculated variable needs a dictionary to retrieve his deps`
 			);
 		}
-		this.expression = expression;
-		this.dictionary = dictionary;
-		this.dependencies = dependencies;
+		this.expression = args.expression;
+		this.dictionary = args.dictionary;
+		this.dependencies = args.dependencies;
+		this.iterationDepth = args.iterationDepth;
+		this.name = args.name ?? args.expression;
 	}
 
 	getValue(iteration?: IterationLevel): unknown {
@@ -267,7 +289,14 @@ class LunaticVariable {
 		try {
 			return Object.fromEntries(
 				this.getDependencies().map((dep) => {
-					return [dep, this.dictionary?.get(dep)?.getValue(iteration)];
+					const dependencyIteration =
+						isNumber(this.iterationDepth) && Array.isArray(iteration)
+							? [iteration[this.iterationDepth]]
+							: iteration;
+					return [
+						dep,
+						this.dictionary?.get(dep)?.getValue(dependencyIteration),
+					];
 				})
 			);
 		} catch (e) {

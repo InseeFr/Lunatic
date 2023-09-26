@@ -169,9 +169,9 @@ function useLunatic(
 		(response, value, args) => {
 			dispatch(
 				actions.handleChange(
-					typeof response === 'string' ? { name: response } : response,
+					typeof response === 'string' ? response : response.name,
 					value,
-					args
+					args?.iteration
 				)
 			);
 			onChange(response, value, args);
