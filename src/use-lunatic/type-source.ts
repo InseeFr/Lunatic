@@ -1,5 +1,3 @@
-import type { LunaticComponentDefinition } from './type';
-
 /**
  * Types used for source data (lunatic models and data.json)
  */

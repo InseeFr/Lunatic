@@ -22,6 +22,9 @@ export function interpretVTL<T>(
 	return result as T;
 }
 
+/**
+ * Extract variables used in a VTL expression
+ */
 export function parseVTLVariables(expression: string): string[] {
 	try {
 		const chars = new antlr4.InputStream(expression);
@@ -41,6 +44,9 @@ export function parseVTLVariables(expression: string): string[] {
 	}
 }
 
+/**
+ * Transform a value to make it compatible with VTL (for bindings)
+ */
 export function getVTLCompatibleValue(value: unknown) {
 	if (value === undefined) {
 		return null;

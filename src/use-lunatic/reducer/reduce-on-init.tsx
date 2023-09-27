@@ -66,7 +66,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 
 	const variables = LunaticVariablesStore.makeFromSource(source, data);
 	const pages = checkLoops(createMapPages(source));
-	const { maxPage, cleaning = {}, missingBlock = {}, resizing = {} } = source;
+	const { maxPage, cleaning = {}, missingBlock = {} } = source;
 	const initialPager = getPagerFromPageTag(initialPage);
 
 	const pager = {

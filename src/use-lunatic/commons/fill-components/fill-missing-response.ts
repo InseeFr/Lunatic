@@ -1,5 +1,4 @@
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
-import missing from '../../../components/commons/components/missing';
 import { isNumber } from '../../../utils/number';
 
 export type FilledProps = {
