@@ -52,15 +52,15 @@ function compose(...fill: Function[]) {
  *
  * Force typing for this function since it's doo dynamic
  */
-const fillComponent = compose(
+export const fillComponent = compose(
 	fillFromState,
 	fillComponentExpressions,
 	fillPagination,
 	fillComponentValue,
 	fillMissingResponse,
 	fillManagement,
-	fillSpecificExpressions,
-	fillIterations
+	fillIterations,
+	fillSpecificExpressions
 ) as (
 	component: LunaticComponentDefinition,
 	state: LunaticState

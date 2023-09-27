@@ -20,7 +20,7 @@ export { default as Switch } from './switch';
 export { default as Textarea } from './textarea';
 export { default as SuggesterLoaderWidget } from './suggester-loader-widget';
 export { default as Roundabout } from './roundabout';
-export { default as Table } from './table';
+export { LunaticTable as Table } from './table/lunatic-table';
 export { LunaticComponentSet as ComponentSet } from './component-set/lunatic-component-set';
 export { default as Duration } from './duration';
 export { Summary } from './summary';

@@ -21,6 +21,10 @@ export function getQuestionnaireData(
 		>,
 	};
 
+	if (!variables) {
+		return {};
+	}
+
 	for (const variable of variables) {
 		// Skip calculated value if necessary
 		if (variable.variableType === 'CALCULATED' && !withCalculated) {

@@ -9,7 +9,7 @@ import { LoopButton } from '../loop-button';
 import D from '../../../i18n';
 import type { LunaticComponentProps } from '../../type';
 import { Table, Tbody, Td, Tr } from '../../commons/components/html-table';
-import Header from '../../table/header';
+import { TableHeader } from '../../table/table-header';
 import { times } from '../../../utils/array';
 import { LunaticComponents } from '../../lunatic-components';
 
@@ -65,7 +65,7 @@ export const RosterForLoop = createCustomizableLunaticField<
 			<DeclarationsAfterText declarations={declarations} id={id} />
 
 			<Table id={id}>
-				<Header header={headers} id={id} />
+				<TableHeader header={headers} id={id} />
 				<Tbody id={id}>
 					{times(nbRows, (n) => (
 						<Row {...props} key={n} row={n} />

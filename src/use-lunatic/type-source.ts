@@ -1,3 +1,5 @@
+import type { LunaticComponentDefinition } from './type';
+
 /**
  * Types used for source data (lunatic models and data.json)
  */
@@ -172,24 +174,7 @@ export type ComponentRosterForLoopType = {
 		colspan?: number;
 		rowspan?: number;
 	}[];
-	body: {
-		label?: LabelType;
-		value?: string;
-		format?: string;
-		dateFormat?: string;
-		unit?: string;
-		options: { value: string; label: LabelType }[];
-		response: ResponseType;
-		bindingDependencies: string[];
-		componentType?: ComponentTypeEnum;
-		maxLength?: number;
-		min?: number;
-		max?: number;
-		decimals?: number;
-		colspan?: number;
-		rowspan?: number;
-		id?: string;
-	}[];
+	body: ({ label: LabelType } | ComponentType)[][];
 	positioning: 'HORIZONTAL';
 };
 

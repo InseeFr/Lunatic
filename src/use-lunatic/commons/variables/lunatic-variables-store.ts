@@ -34,6 +34,9 @@ export class LunaticVariablesStore {
 
 	public static makeFromSource(source: LunaticSource, data: LunaticData) {
 		const store = new LunaticVariablesStore();
+		if (!source.variables) {
+			return store;
+		}
 		const initialValues = Object.fromEntries(
 			source.variables.map((variable) => [
 				variable.name,

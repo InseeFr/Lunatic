@@ -1,6 +1,5 @@
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import { hasResponse, hasResponses } from '../component';
-import { string } from 'prop-types';
 import { isNumber } from '../../../utils/number';
 
 export type FilledProps = { value?: unknown };

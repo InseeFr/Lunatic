@@ -27,8 +27,9 @@ export const BlockForLoop = createCustomizableLunaticField<
 		iterations,
 		getComponents,
 	} = props;
-	const min = lines?.min;
-	const max = lines?.max;
+	const min = lines?.min ?? 0;
+	const max = lines?.max ?? Infinity;
+	const canControlRows = min !== max;
 
 	const [nbRows, setNbRows] = useState(() => {
 		return Math.max(iterations, min);
@@ -60,6 +61,7 @@ export const BlockForLoop = createCustomizableLunaticField<
 	if (nbRows <= 0) {
 		return null;
 	}
+
 	return (
 		<>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
@@ -72,7 +74,7 @@ export const BlockForLoop = createCustomizableLunaticField<
 				/>
 			))}
 			<DeclarationsDetachable declarations={declarations} id={id} />
-			{Number.isInteger(min) && Number.isInteger(max) && min !== max && (
+			{canControlRows && (
 				<>
 					<LoopButton onClick={addRow} disabled={nbRows === max}>
 						{label || D.DEFAULT_BUTTON_ADD}

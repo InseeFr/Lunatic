@@ -114,7 +114,7 @@ type ComponentPropsByType = {
 			rowspan?: number;
 			colspan?: number;
 		}>;
-		body: Array<Array<{ label: LunaticExpression }>>;
+		body: FilledLunaticComponentProps[][];
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};

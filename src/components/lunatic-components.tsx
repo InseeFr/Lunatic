@@ -1,23 +1,27 @@
 import {
 	Fragment,
+	type PropsWithChildren,
+	type ReactElement,
+	type ReactNode,
 	useEffect,
 	useRef,
-	type PropsWithChildren,
-	type ReactNode,
 } from 'react';
 import * as lunaticComponents from './index';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
+import { hasComponentType } from '../use-lunatic/commons/component';
 
 type Props<T extends Record<string, unknown>> = {
 	// List of components to display (coming from getComponents)
-	components: FilledLunaticComponentProps[];
+	components: (FilledLunaticComponentProps | ReactElement)[];
 	// Key that trigger autofocus when it changes (pageTag)
 	autoFocusKey?: string;
 	// Returns the list of extra props to add to components
 	componentProps?: (component: FilledLunaticComponentProps) => T;
 	// Add additional wrapper around each component
 	wrapper?: (
-		props: PropsWithChildren<FilledLunaticComponentProps & T>
+		props: PropsWithChildren<
+			FilledLunaticComponentProps & T & { index: number }
+		>
 	) => ReactNode;
 };
 
@@ -54,16 +58,28 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 			ref={WrapperComponent === Fragment ? undefined : wrapperRef}
 		>
 			{components.map((component, k) => {
-				const props = {
-					...component,
-					...componentProps?.(component),
-				};
+				if (hasComponentType(component)) {
+					const props = {
+						...component,
+						...componentProps?.(component),
+					};
+					return (
+						<Fragment key={'id' in component ? component.id : `index-${k}`}>
+							{wrapper({
+								children: <LunaticComponent {...props} />,
+								index: k,
+								...props,
+							})}
+						</Fragment>
+					);
+				}
+				// In some case (table for instance) we have static component that only have a label (no componentType)
 				return (
-					<Fragment key={'id' in component ? component.id : `index-${k}`}>
+					<Fragment key={`index-${k}`}>
 						{wrapper({
-							children: <LunaticComponent {...props} />,
-							...props,
-						})}
+							children: component,
+							index: k,
+						} as any)}
 					</Fragment>
 				);
 			})}

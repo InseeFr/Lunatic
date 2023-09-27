@@ -1,7 +1,8 @@
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import { type DeepTranslateExpression } from './fill-component-expressions';
-import fillComponents from './fill-components';
-import { setAtIndex } from '../../../utils/array';
+import fillComponents, { fillComponent } from './fill-components';
+import { hasComponentType } from '../component';
+import { getVTLCompatibleValue } from '../../../utils/vtl';
 
 /**
  * Fill props for roundabout
@@ -69,7 +70,7 @@ function fillChildComponentsWithIteration(
 }
 
 /**
- * Fill child components for nested component type
+ * For pairwise, inject a method to retrieve component at a specific iteration combination
  */
 function fillPairwise(
 	component: DeepTranslateExpression<
@@ -110,6 +111,26 @@ function fillPairwise(
 }
 
 /**
+ * For pairwise, inject a method to retrieve component at a specific iteration combination
+ */
+function fillTable(
+	component: DeepTranslateExpression<LunaticComponentDefinition<'Table'>>,
+	state: LunaticState
+) {
+	return {
+		...component,
+		body: component.body.map((row) =>
+			row.map((component) => {
+				if (hasComponentType(component)) {
+					return fillComponent(component, state);
+				}
+				return state.executeExpression(getVTLCompatibleValue(component.label));
+			})
+		),
+	};
+}
+
+/**
  * Fill component specific props (RoundAbout for instance)
  */
 function fillSpecificExpressions(
@@ -126,6 +147,8 @@ function fillSpecificExpressions(
 			return fillChildComponentsWithIteration(component, state);
 		case 'PairwiseLinks':
 			return fillPairwise(component, state);
+		case 'Table':
+			return fillTable(component, state);
 		default:
 			return component;
 	}

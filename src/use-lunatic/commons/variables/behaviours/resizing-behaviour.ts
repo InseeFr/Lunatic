@@ -41,9 +41,7 @@ export function resizingBehaviour(
 		for (const variableName of resizingInfo.variables) {
 			const value = store.get(variableName);
 			if (!Array.isArray(value) || value.length !== newSize) {
-				store.set(variableName, resizeArrayVariable(value, newSize, null), {
-					iteration: e.detail.iteration,
-				});
+				store.set(variableName, resizeArrayVariable(value, newSize, null));
 			}
 		}
 	});
@@ -72,6 +70,6 @@ function resizePairwise(
 			xSize,
 			new Array(ySize).fill(null)
 		);
-		store.set(variable, resizedValue, { iteration: args.iteration });
+		store.set(variable, resizedValue);
 	});
 }
