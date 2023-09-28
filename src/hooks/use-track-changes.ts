@@ -27,6 +27,11 @@ export function useTrackChanges(enabled: boolean, getData: getDataType) {
 		[enabledRef, changedVariables]
 	);
 
+	// Reset list of changed variables
+	const resetChangedData = useCallback(() => {
+		changedVariables.current.clear();
+	}, [changedVariables]);
+
 	const getChangedData = useCallback(
 		(reset: boolean = false) => {
 			if (!enabledRef.current) {
@@ -43,13 +48,8 @@ export function useTrackChanges(enabled: boolean, getData: getDataType) {
 			}
 			return data;
 		},
-		[enabledRef, getDataRef]
+		[enabledRef, getDataRef, resetChangedData]
 	);
-
-	// Reset list of changed variables
-	const resetChangedData = useCallback(() => {
-		changedVariables.current.clear();
-	}, [changedVariables]);
 
 	return {
 		addChange,
