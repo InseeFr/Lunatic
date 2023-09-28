@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, beforeEach } from 'vitest';
 import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
@@ -189,6 +189,115 @@ describe('use-lunatic()', () => {
 			it('should use conditionFilter on nested components', () => {
 				act(() => result.current.onChange({ name: 'PRENOM' }, 'Jane'));
 				expect(getComponents()[0].components).toHaveLength(3);
+			});
+		});
+	});
+
+	describe('getData()', () => {
+		let hookRef: { current: ReturnType<typeof useLunatic> };
+		beforeEach(() => {
+			const { result } = renderHook(() =>
+				useLunatic(sourceSimpsons as any, undefined, {})
+			);
+			act(() => {
+				result.current.onChange({ name: 'COMMENT' }, 'Mon commentaire');
+				result.current.onChange({ name: 'READY' }, true);
+			});
+			hookRef = result;
+		});
+		it('should return every value', () => {
+			const data = hookRef.current.getData(false);
+			expect(data).toMatchObject({
+				COLLECTED: {
+					COMMENT: {
+						COLLECTED: 'Mon commentaire',
+					},
+					READY: {
+						COLLECTED: true,
+					},
+				},
+			});
+			expect(Object.keys(data.COLLECTED)).toHaveLength(164);
+			expect(Object.keys(data.CALCULATED)).toHaveLength(0);
+		});
+		it('should return calculated values', () => {
+			const data = hookRef.current.getData(true);
+			expect(Object.keys(data.COLLECTED)).toHaveLength(164);
+			expect(Object.keys(data.CALCULATED)).toHaveLength(165);
+		});
+		it('should only return requested variables', () => {
+			const data = hookRef.current.getData(false, ['COMMENT']);
+			expect(data).toMatchObject({
+				COLLECTED: {
+					COMMENT: {
+						COLLECTED: 'Mon commentaire',
+					},
+				},
+			});
+			expect(Object.keys(data.COLLECTED)).toHaveLength(1);
+		});
+	});
+
+	describe('getChangedData()', () => {
+		let hookRef: { current: ReturnType<typeof useLunatic> };
+		beforeEach(() => {
+			const { result } = renderHook(() =>
+				useLunatic(sourceSimpsons as any, undefined, { trackChanges: true })
+			);
+			hookRef = result;
+		});
+		it('should return every value', () => {
+			const data = hookRef.current.getChangedData();
+			expect(data.COLLECTED).toEqual({});
+		});
+		it('should return changes since the last update', () => {
+			act(() => {
+				hookRef.current.onChange({ name: 'COMMENT' }, 'Mon commentaire');
+				hookRef.current.onChange({ name: 'READY' }, true);
+			});
+			expect(hookRef.current.getChangedData()).toMatchObject({
+				COLLECTED: {
+					COMMENT: {
+						COLLECTED: 'Mon commentaire',
+					},
+					READY: {
+						COLLECTED: true,
+					},
+				},
+			});
+		});
+		it('should reset changes with true parameter', () => {
+			act(() => {
+				hookRef.current.onChange({ name: 'COMMENT' }, 'Mon commentaire');
+				hookRef.current.onChange({ name: 'READY' }, true);
+			});
+			const data = hookRef.current.getChangedData(true);
+			expect(data).toMatchObject({
+				COLLECTED: {
+					COMMENT: {
+						COLLECTED: 'Mon commentaire',
+					},
+					READY: {
+						COLLECTED: true,
+					},
+				},
+			});
+			expect(hookRef.current.getChangedData().COLLECTED).toEqual({});
+		});
+		it('should reset changes with resetChanges()', () => {
+			act(() => {
+				hookRef.current.onChange({ name: 'COMMENT' }, 'Mon commentaire');
+				hookRef.current.onChange({ name: 'READY' }, true);
+			});
+			hookRef.current.resetChangedData();
+			expect(hookRef.current.getChangedData().COLLECTED).toEqual({});
+			act(() => {
+				hookRef.current.onChange({ name: 'READY' }, true);
+			});
+			expect(hookRef.current.getChangedData().COLLECTED).toMatchObject({
+				READY: {
+					COLLECTED: true,
+				},
 			});
 		});
 	});
