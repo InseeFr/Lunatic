@@ -27,7 +27,7 @@ function fillMissingResponse(
 		const missingValue =
 			pager.iteration === undefined
 				? value
-				: (value as unknown[])[pager.iteration];
+				: ((value as unknown[]) ?? [])[pager.iteration];
 		return {
 			...component,
 			missingResponse: { ...missingResponse, value: missingValue },
