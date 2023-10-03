@@ -35,7 +35,7 @@ export function LunaticTable(props: LunaticComponentProps<'Table'>) {
 				<TableHeader id={id} header={header} />
 				<Tbody>
 					{body.map((row, rowIndex) => (
-						<Tr id={id} row={rowIndex}>
+						<Tr id={id} row={rowIndex} key={rowIndex}>
 							<LunaticComponents
 								components={row}
 								wrapper={({ children, index }) => (
