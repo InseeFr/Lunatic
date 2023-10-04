@@ -1,6 +1,10 @@
 export function forceInt(n: unknown): number {
 	if (typeof n === 'string') {
-		return parseInt(n, 10);
+		const casted = parseInt(n, 10);
+		if (Number.isNaN(casted)) {
+			throw new Error(`Cannot cast ${n} to int`);
+		}
+		return casted;
 	}
 	if (typeof n === 'number') {
 		return n;
@@ -19,4 +23,11 @@ export function between(n: number, min: number, max: number): number {
 		return max;
 	}
 	return n;
+}
+
+/**
+ * Check if the value is a number
+ */
+export function isNumber(n: unknown): n is number {
+	return typeof n === 'number' && Number.isFinite(n);
 }

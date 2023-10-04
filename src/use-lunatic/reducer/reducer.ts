@@ -3,7 +3,7 @@ import type { LunaticState } from '../type';
 import { reduceGoNextPage } from './reduce-go-next-page';
 import reduceGoPreviousPage from './reduce-go-previous-page';
 import reduceGoToPage from './reduce-go-to-page';
-import reduceHandleChange from './reduce-handle-change';
+import { reduceHandleChange } from './reduce-handle-change';
 import reduceOnInit from './reduce-on-init';
 import reduceOnSetWaiting from './reduce-on-set-waiting';
 import { reduceUpdateState } from './reduce-update-state';

@@ -1,22 +1,18 @@
 import { type ReactNode } from 'react';
-import {
-	Thead as HtmlThead,
-	Tr as HtmlTr,
-	Th as HtmlTh,
-} from '../commons/components/html-table';
+import { Thead, Tr, Th } from '../commons/components/html-table';
 
 type Props = {
 	id?: string;
 	header?: Array<{ label?: ReactNode; colspan?: number; rowspan?: number }>;
 };
 
-function Header({ id, header }: Props) {
+export function TableHeader({ id, header }: Props) {
 	if (!Array.isArray(header)) {
 		return null;
 	}
 	const content = header.map(function ({ label, rowspan, colspan }, index) {
 		return (
-			<HtmlTh
+			<Th
 				id={id}
 				row={0}
 				index={index}
@@ -25,16 +21,14 @@ function Header({ id, header }: Props) {
 				key={index}
 			>
 				{label}
-			</HtmlTh>
+			</Th>
 		);
 	});
 	return (
-		<HtmlThead id={id}>
-			<HtmlTr id={id} row={0}>
+		<Thead id={id}>
+			<Tr id={id} row={0}>
 				{content}
-			</HtmlTr>
-		</HtmlThead>
+			</Tr>
+		</Thead>
 	);
 }
-
-export default Header;

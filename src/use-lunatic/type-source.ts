@@ -172,24 +172,7 @@ export type ComponentRosterForLoopType = {
 		colspan?: number;
 		rowspan?: number;
 	}[];
-	body: {
-		label?: LabelType;
-		value?: string;
-		format?: string;
-		dateFormat?: string;
-		unit?: string;
-		options: { value: string; label: LabelType }[];
-		response: ResponseType;
-		bindingDependencies: string[];
-		componentType?: ComponentTypeEnum;
-		maxLength?: number;
-		min?: number;
-		max?: number;
-		decimals?: number;
-		colspan?: number;
-		rowspan?: number;
-		id?: string;
-	}[];
+	body: ({ label: LabelType } | ComponentType)[][];
 	positioning: 'HORIZONTAL';
 };
 
@@ -270,6 +253,7 @@ export type ComponentPairWiseLinksType = {
 	symLinks: {
 		[variableName: string]: Record<string, string>;
 	};
+	components: ComponentType[];
 };
 
 export type ComponentComponentSetType = {
@@ -346,10 +330,15 @@ export type LunaticSource = {
 		[variableName: string]: string[];
 	};
 	resizing: {
-		[variableName: string]: {
-			size: string; // VTL Expression
-			variables: string[];
-		};
+		[variableName: string]:
+			| {
+					size: string; // VTL Expression
+					variables: string[];
+			  }
+			| {
+					sizeForLinksVariables: string[];
+					linksVariables: string[];
+			  };
 	};
 };
 

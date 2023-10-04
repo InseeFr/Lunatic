@@ -23,7 +23,6 @@ const VTL_ATTRIBUTES = [
 	'controls.iterations',
 	'lines.min',
 	'lines.max',
-	'iterations',
 	'xAxisIterations',
 	'yAxisIterations',
 	'conditionFilter',
@@ -59,8 +58,7 @@ function createCrawl({
 			return {
 				...object,
 				[path]: executeExpression(candidate, {
-					iteration,
-					linksIterations,
+					iteration: linksIterations ?? iteration,
 				}),
 			};
 		} catch (e) {

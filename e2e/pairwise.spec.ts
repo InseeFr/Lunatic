@@ -21,8 +21,7 @@ for (const [label, story] of stories) {
 		await page.getByRole('button', { name: 'Next' }).click();
 		await page.getByText('Sa fille, son fils').click();
 		await expect(page.getByText('Sa mère, son père')).toBeVisible();
-		await gotoNextPage(page, 2);
-		await expect(page.getByText('END')).toBeVisible();
+		await gotoNextPage(page);
 		await expectLunaticData(page, 'COLLECTED.LINKS.COLLECTED', [
 			[null, '3', null, null],
 			['2', null, null, null],

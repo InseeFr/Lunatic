@@ -2,7 +2,8 @@ import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import fillComponentExpressions, {
 	type DeepTranslateExpression,
 } from './fill-component-expressions';
-import fillComponentValue, {
+import {
+	fillComponentValue,
 	type FilledProps as FilledValueProps,
 } from './fill-component-value';
 import fillFromState, {
@@ -18,6 +19,7 @@ import fillPagination, {
 	type FilledProps as FilledPaginationProps,
 } from './fill-pagination';
 import fillSpecificExpressions from './fill-specific-expression';
+import { fillIterations } from './fill-iterations';
 
 export type FilledLunaticComponentProps<
 	T = LunaticComponentDefinition['componentType']
@@ -50,13 +52,14 @@ function compose(...fill: Function[]) {
  *
  * Force typing for this function since it's doo dynamic
  */
-const fillComponent = compose(
+export const fillComponent = compose(
 	fillFromState,
 	fillComponentExpressions,
 	fillPagination,
 	fillComponentValue,
 	fillMissingResponse,
 	fillManagement,
+	fillIterations,
 	fillSpecificExpressions
 ) as (
 	component: LunaticComponentDefinition,

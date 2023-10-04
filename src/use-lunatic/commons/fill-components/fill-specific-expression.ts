@@ -1,7 +1,8 @@
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import { type DeepTranslateExpression } from './fill-component-expressions';
-import fillComponents from './fill-components';
-import { setAtIndex } from '../../../utils/array';
+import fillComponents, { fillComponent } from './fill-components';
+import { hasComponentType } from '../component';
+import { getVTLCompatibleValue } from '../../../utils/vtl';
 
 /**
  * Fill props for roundabout
@@ -57,10 +58,7 @@ function fillChildComponentsWithIteration(
 			fillComponents(component.components, {
 				...state,
 				handleChange: (response, value) => {
-					state.handleChange(
-						response,
-						setAtIndex(component.value?.[response.name] ?? [], iteration, value)
-					);
+					state.handleChange(response, value, { iteration: [iteration] });
 				},
 				pager: {
 					...state.pager,
@@ -68,6 +66,67 @@ function fillChildComponentsWithIteration(
 					subPage: 0, // Fake a subpage to simulate an iteration
 				},
 			}),
+	};
+}
+
+/**
+ * For pairwise, inject a method to retrieve component at a specific iteration combination
+ */
+function fillPairwise(
+	component: DeepTranslateExpression<
+		LunaticComponentDefinition<'PairwiseLinks'>
+	>,
+	state: LunaticState
+) {
+	return {
+		...component,
+		getComponents: (x: number, y: number) => {
+			if (x === y) {
+				return [];
+			}
+			return fillComponents(component.components, {
+				...state,
+				handleChange: (response, value) => {
+					state.handleChange(response, value, { iteration: [x, y] });
+					// Update linked value
+					if (
+						response.name in component.symLinks &&
+						value in component.symLinks[response.name]
+					) {
+						state.handleChange(
+							response,
+							component.symLinks[response.name][value],
+							{ iteration: [y, x] }
+						);
+					}
+				},
+				pager: {
+					...state.pager,
+					linksIterations: [x, y],
+					subPage: 0, // Fake a subpage to simulate an iteration
+				},
+			});
+		},
+	};
+}
+
+/**
+ * For pairwise, inject a method to retrieve component at a specific iteration combination
+ */
+function fillTable(
+	component: DeepTranslateExpression<LunaticComponentDefinition<'Table'>>,
+	state: LunaticState
+) {
+	return {
+		...component,
+		body: component.body.map((row) =>
+			row.map((component) => {
+				if (hasComponentType(component)) {
+					return fillComponent(component, state);
+				}
+				return state.executeExpression(getVTLCompatibleValue(component.label));
+			})
+		),
 	};
 }
 
@@ -86,6 +145,10 @@ function fillSpecificExpressions(
 		case 'Loop':
 		case 'RosterForLoop':
 			return fillChildComponentsWithIteration(component, state);
+		case 'PairwiseLinks':
+			return fillPairwise(component, state);
+		case 'Table':
+			return fillTable(component, state);
 		default:
 			return component;
 	}

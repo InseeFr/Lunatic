@@ -7,10 +7,9 @@ import {
 import { createCustomizableLunaticField } from '../../commons';
 import { LoopButton } from '../loop-button';
 import D from '../../../i18n';
-import { getInitialNbRows } from '../utils/get-initial-nb-rows';
 import type { LunaticComponentProps } from '../../type';
 import { Table, Tbody, Td, Tr } from '../../commons/components/html-table';
-import Header from '../../table/header';
+import { TableHeader } from '../../table/table-header';
 import { times } from '../../../utils/array';
 import { LunaticComponents } from '../../lunatic-components';
 
@@ -30,11 +29,13 @@ export const RosterForLoop = createCustomizableLunaticField<
 		declarations,
 		label,
 		headers,
+		iterations,
 		id,
+		getComponents,
 	} = props;
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
-	const [nbRows, setNbRows] = useState(() => getInitialNbRows(valueMap));
+	const [nbRows, setNbRows] = useState(iterations);
 	const showButtons = min && max && min !== max;
 
 	const addRow = useCallback(() => {
@@ -65,10 +66,18 @@ export const RosterForLoop = createCustomizableLunaticField<
 			<DeclarationsAfterText declarations={declarations} id={id} />
 
 			<Table id={id}>
-				<Header header={headers} id={id} />
+				<TableHeader header={headers} id={id} />
 				<Tbody id={id}>
 					{times(nbRows, (n) => (
-						<Row {...props} key={n} row={n} />
+						<Tr id={props.id} row={n}>
+							<LunaticComponents
+								components={getComponents(n)}
+								componentProps={(c) => ({ ...props, ...c, id: `${c.id}-${n}` })}
+								wrapper={({ id, children }) => (
+									<Td id={`${id}-${n}`}>{children}</Td>
+								)}
+							/>
+						</Tr>
 					))}
 				</Tbody>
 			</Table>
@@ -86,18 +95,3 @@ export const RosterForLoop = createCustomizableLunaticField<
 		</>
 	);
 }, 'RosterforLoop');
-
-function Row(props: LunaticComponentProps<'RosterForLoop'> & { row: number }) {
-	const components = props.getComponents(props.row);
-	return (
-		<Tr id={props.id} row={props.row}>
-			<LunaticComponents
-				components={components}
-				componentProps={(c) => ({ ...props, ...c, id: `${c.id}-${props.row}` })}
-				wrapper={({ id, children }) => (
-					<Td id={`${id}-${props.row}`}>{children}</Td>
-				)}
-			/>
-		</Tr>
-	);
-}

@@ -3,6 +3,7 @@ import type { LunaticExpression } from '../type';
 
 /**
  * Ensure that an expression is compatible with VTL (convert if necessary)
+ * @deprecated use getExpressionAsString() instead
  */
 function getCompatibleVTLExpression(
 	expression: LunaticExpression | string

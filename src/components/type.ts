@@ -91,7 +91,7 @@ type ComponentPropsByType = {
 	};
 	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
-		iterations?: number;
+		iterations: number;
 		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
@@ -100,7 +100,7 @@ type ComponentPropsByType = {
 	};
 	Loop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
-		iterations?: number;
+		iterations: number;
 		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
@@ -114,7 +114,7 @@ type ComponentPropsByType = {
 			rowspan?: number;
 			colspan?: number;
 		}>;
-		body: Array<Array<{ label: LunaticExpression }>>;
+		body: FilledLunaticComponentProps[][];
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};
@@ -194,6 +194,7 @@ type ComponentPropsByType = {
 		yAxisIterations: number;
 		symLinks: Record<string, Record<string, string>>;
 		value: Record<string, unknown[]>;
+		getComponents: (x: number, y: number) => FilledLunaticComponentProps[];
 	};
 	Suggester: LunaticBaseProps<string | null> & {
 		storeName: string;
