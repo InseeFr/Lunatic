@@ -292,11 +292,11 @@ describe('use-lunatic()', () => {
 			hookRef.current.resetChangedData();
 			expect(hookRef.current.getChangedData().COLLECTED).toEqual({});
 			act(() => {
-				hookRef.current.onChange({ name: 'READY' }, true);
+				hookRef.current.onChange({ name: 'READY' }, false);
 			});
 			expect(hookRef.current.getChangedData().COLLECTED).toMatchObject({
 				READY: {
-					COLLECTED: true,
+					COLLECTED: false,
 				},
 			});
 		});

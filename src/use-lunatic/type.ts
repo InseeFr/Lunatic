@@ -15,11 +15,12 @@ export type LunaticControl = ControlType;
 
 export type VTLBindings = { [variableName: string]: unknown };
 
-export type LunaticData = Partial<
-	Record<Exclude<VariableType, 'COLLECTED'>, Record<string, unknown>> & {
-		COLLECTED: Record<string, LunaticCollectedValue>;
-	}
->;
+export type LunaticData = Record<
+	Exclude<VariableType, 'COLLECTED'>,
+	Record<string, unknown>
+> & {
+	COLLECTED: Record<string, LunaticCollectedValue>;
+};
 
 export type LunaticValues = {
 	[variableName: string]: unknown;

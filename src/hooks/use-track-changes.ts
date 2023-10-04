@@ -1,31 +1,35 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useRefSync } from './use-ref-sync';
-import { getQuestionnaireData } from '../use-lunatic/commons/get-data';
-
-type getDataType = (
-	withRefreshedCalculated: boolean,
-	variableNames?: string[]
-) => ReturnType<typeof getQuestionnaireData>;
+import type {
+	LunaticVariablesStore,
+	LunaticVariablesStoreEvent,
+} from '../use-lunatic/commons/variables/lunatic-variables-store';
+import type { LunaticData } from '../use-lunatic/type';
 
 /**
  * Allow tracking changed while interacting with Lunatic forms
  */
-export function useTrackChanges(enabled: boolean, getData: getDataType) {
+export function useTrackChanges(
+	enabled: boolean,
+	store: LunaticVariablesStore,
+	getData: (names: string[]) => LunaticData
+) {
 	// Saves the list of changed variable
 	const changedVariables = useRef(new Set<string>());
 	// Use ref to avoid dependencies in useCallback
 	const enabledRef = useRefSync(enabled);
 	const getDataRef = useRefSync(getData);
 
-	// Add a new variable in the changeList
-	const addChange = useCallback(
-		(name: string) => {
-			if (enabledRef.current) {
-				changedVariables.current.add(name);
-			}
-		},
-		[enabledRef, changedVariables]
-	);
+	useEffect(() => {
+		if (!enabled || !store) {
+			return;
+		}
+		const handleChange = (e: LunaticVariablesStoreEvent<'change'>) => {
+			changedVariables.current.add(e.detail.name);
+		};
+		store.on('change', handleChange);
+		return () => store.off('change', handleChange);
+	}, [enabled, store]);
 
 	// Reset list of changed variables
 	const resetChangedData = useCallback(() => {
@@ -39,10 +43,7 @@ export function useTrackChanges(enabled: boolean, getData: getDataType) {
 					'getChangedData() cannot be used without enabling tracking mode, add "trackChanges: true" to useLunatic options'
 				);
 			}
-			const data = getDataRef.current(
-				false,
-				Array.from(changedVariables.current)
-			);
+			const data = getDataRef.current(Array.from(changedVariables.current));
 			if (reset) {
 				resetChangedData();
 			}
@@ -52,7 +53,6 @@ export function useTrackChanges(enabled: boolean, getData: getDataType) {
 	);
 
 	return {
-		addChange,
 		getChangedData,
 		resetChangedData,
 	};
