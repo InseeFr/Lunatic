@@ -21,6 +21,7 @@ import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
+import { useTrackChanges } from '../hooks/use-track-changes';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -56,6 +57,7 @@ function useLunatic(
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
+		trackChanges = false,
 	}: {
 		features?: LunaticState['features'];
 		preferences?: LunaticState['preferences'];
@@ -75,6 +77,8 @@ function useLunatic(
 		missingShortcut?: { dontKnow: string; refused: string };
 		dontKnowButton?: string;
 		refusedButton?: string;
+		// Enable change tracking to keep a track of what variable changed (allow using getChangedData())
+		trackChanges?: boolean;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -179,13 +183,23 @@ function useLunatic(
 		[dispatch, onChange]
 	);
 
-	const getData = (withRefreshedCalculated: boolean) => {
+	const getData = (
+		withRefreshedCalculated: boolean,
+		variableNames?: string[]
+	) => {
 		return getQuestionnaireData(
 			state.variables,
 			source.variables,
-			withRefreshedCalculated
+			withRefreshedCalculated,
+			variableNames
 		);
 	};
+
+	const { resetChangedData, getChangedData } = useTrackChanges(
+		trackChanges,
+		state.variables,
+		(variableNames?: string[]) => getData(false, variableNames)
+	);
 
 	const buildedOverview = useMemo(
 		() => overviewWithChildren(overview),
@@ -259,6 +273,8 @@ function useLunatic(
 		onChange: handleChange,
 		overview: buildedOverview,
 		loopVariables: useLoopVariables(pager, state.pages),
+		getChangedData,
+		resetChangedData,
 	};
 }
 

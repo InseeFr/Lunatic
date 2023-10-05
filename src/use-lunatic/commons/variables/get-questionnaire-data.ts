@@ -1,11 +1,13 @@
 import type { LunaticVariablesStore } from './lunatic-variables-store';
 import type { LunaticSource } from '../../type-source';
+import type { LunaticData } from '../../type';
 
 export function getQuestionnaireData(
 	store: LunaticVariablesStore,
 	variables: LunaticSource['variables'],
-	withCalculated: boolean = false
-) {
+	withCalculated: boolean = false,
+	variableNames?: string[]
+): LunaticData {
 	const result = {
 		EXTERNAL: {} as Record<string, unknown>,
 		CALCULATED: {} as Record<string, unknown>,
@@ -22,7 +24,26 @@ export function getQuestionnaireData(
 	};
 
 	if (!variables) {
-		return {};
+		return result;
+	}
+
+	// Only return requested variables
+	if (variableNames) {
+		return {
+			...result,
+			COLLECTED: Object.fromEntries(
+				variableNames.map((name) => [
+					name,
+					{
+						EDITED: null,
+						FORCED: null,
+						INPUTED: null,
+						PREVIOUS: null,
+						COLLECTED: store.get(name),
+					},
+				])
+			),
+		};
 	}
 
 	for (const variable of variables) {

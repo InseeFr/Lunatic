@@ -13,7 +13,7 @@ import { isNumber } from '../../../utils/number';
 let interpretCount = 0;
 
 type IterationLevel = number[];
-type Events = {
+type EventArgs = {
 	change: {
 		// Name of the changed variable
 		name: string;
@@ -22,6 +22,9 @@ type Events = {
 		// Iteration changed (for array)
 		iteration?: IterationLevel | undefined;
 	};
+};
+export type LunaticVariablesStoreEvent<T extends keyof EventArgs> = {
+	detail: EventArgs[T];
 };
 
 export class LunaticVariablesStore {
@@ -84,7 +87,7 @@ export class LunaticVariablesStore {
 	public set(
 		name: string,
 		value: unknown,
-		args: Pick<Events['change'], 'iteration'> = {}
+		args: Pick<EventArgs['change'], 'iteration'> = {}
 	): LunaticVariable {
 		if (!this.dictionary.has(name)) {
 			this.dictionary.set(
@@ -102,7 +105,7 @@ export class LunaticVariablesStore {
 						...args,
 						name: name,
 						value: value,
-					} satisfies Events['change'],
+					} satisfies EventArgs['change'],
 				})
 			);
 		}
@@ -149,9 +152,9 @@ export class LunaticVariablesStore {
 	/**
 	 * Bind event listeners
 	 */
-	public on<T extends keyof Events>(
+	public on<T extends keyof EventArgs>(
 		eventName: T,
-		cb: (e: CustomEvent<Events[T]>) => void
+		cb: (e: CustomEvent<EventArgs[T]>) => void
 	): void {
 		this.eventTarget.addEventListener(eventName, cb as EventListener);
 	}
@@ -159,9 +162,9 @@ export class LunaticVariablesStore {
 	/**
 	 * Detach a listener
 	 */
-	public off<T extends keyof Events>(
+	public off<T extends keyof EventArgs>(
 		eventName: T,
-		cb: (e: CustomEvent<Events[T]>) => void
+		cb: (e: CustomEvent<EventArgs[T]>) => void
 	): void {
 		this.eventTarget.removeEventListener(eventName, cb as EventListener);
 	}
