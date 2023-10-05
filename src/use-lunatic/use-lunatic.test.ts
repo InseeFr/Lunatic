@@ -4,7 +4,7 @@ import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
-import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
+import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
 import sourceComponentSet from '../stories/component-set/source.json';
 import type { LunaticData } from './type';
 import { type FilledLunaticComponentProps } from './commons/fill-components/fill-components';
@@ -40,7 +40,7 @@ describe('use-lunatic()', () => {
 		const { result } = renderHook(() => useLunatic(...defaultParams));
 		expect(result.current.pager.page).toBe('1');
 		expect(result.current.pager.lastReachedPage).toBe('1');
-		expect(result.current.pager.maxPage).toBe('39');
+		expect(result.current.pager.maxPage).toBe('41');
 	});
 	it('should go to the next page correcly', () => {
 		const { result } = renderHook(() => useLunatic(...defaultParams));
@@ -217,13 +217,13 @@ describe('use-lunatic()', () => {
 					},
 				},
 			});
-			expect(Object.keys(data.COLLECTED)).toHaveLength(164);
+			expect(Object.keys(data.COLLECTED)).toHaveLength(109);
 			expect(Object.keys(data.CALCULATED)).toHaveLength(0);
 		});
 		it('should return calculated values', () => {
 			const data = hookRef.current.getData(true);
-			expect(Object.keys(data.COLLECTED)).toHaveLength(164);
-			expect(Object.keys(data.CALCULATED)).toHaveLength(165);
+			expect(Object.keys(data.COLLECTED)).toHaveLength(109);
+			expect(Object.keys(data.CALCULATED)).toHaveLength(33);
 		});
 		it('should only return requested variables', () => {
 			const data = hookRef.current.getData(false, ['COMMENT']);
