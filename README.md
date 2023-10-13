@@ -156,7 +156,7 @@ To facilitate expression execution, an `executeExpression()` method is exposed i
 
 ### Stable Branchs
 
-- Stable branches follow the glob pattern `'[0-9]+.[0-9]+'`, like `2.6` or `2.7`.
+- Stable branches follow the glob pattern `'2.*'`, like `2.6` or `2.7`.
 - We can maintain if needs, the old stable branches
 - `main` branch corresponding to the latest release
 - `develop` branch is temporarily maintained. (actually `develop` is the `2.7` branch = the future main release)
