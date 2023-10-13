@@ -1,11 +1,10 @@
 name: Main CI
 on:
   push:
-    branches:
-      - main
+    # on branche like main or 2.6, 2.64
+    branches: ['main', '2.*']
   pull_request:
-    branches:
-      - main
+    branches: ['main', '2.*']
 
 jobs:
   test_lint:
