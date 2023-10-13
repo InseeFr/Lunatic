@@ -154,6 +154,16 @@ To facilitate expression execution, an `executeExpression()` method is exposed i
 
 ## Convention and Best Practices
 
+### Stable Branchs
+
+- Stable branches follow the glob pattern `'2.*'`, like `2.6` or `2.7`.
+- We can maintain if needs, the old stable branches
+- `main` branch corresponding to the latest release
+- `develop` branch is temporarily maintained. (actually `develop` is the `2.7` branch = the future main release)
+- `develop` branch will be deleted soon with this new convention
+
+### Commits and feature branches
+
 - Avoid "default" exports as it impairs readability during import.
 - Comments in the code should be in English.
 - Files containing JSX should use the .jsx (or .tsx) extension.
