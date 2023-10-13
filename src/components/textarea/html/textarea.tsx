@@ -15,6 +15,7 @@ type Props = {
 	description?: string;
 	errors?: LunaticBaseProps['errors'];
 	readOnly?: boolean;
+	required?: boolean;
 };
 
 function Textarea({
@@ -29,6 +30,7 @@ function Textarea({
 	description,
 	errors,
 	readOnly,
+	required,
 }: Props) {
 	const labelId = `label-${id}`;
 	const handleChange = useCallback<ChangeEventHandler<HTMLTextAreaElement>>(
@@ -44,6 +46,7 @@ function Textarea({
 				{label}
 			</Label>
 			<textarea
+				required={required}
 				id={id}
 				rows={rows}
 				maxLength={maxLength}
