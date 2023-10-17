@@ -53,6 +53,9 @@ jobs:
     needs: test
     if: github.event_name == 'push'
     steps:
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v7
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -61,9 +64,9 @@ jobs:
       # Build Storybook v2
       - run: yarn build-storybook
       - run: mkdir -p deploy/storybook
-      - run: cp -R ./storybook-static/. ./deploy/storybook
+      - run: cp -R ./storybook-static/. ./deploy-${{ steps.branch-name.outputs.current_branch }}/storybook-${{ steps.branch-name.outputs.current_branch }}
       # Add json to fetch for suggester stories
-      - run: cp -a ./public/. ./deploy/storybook
+      - run: cp -a ./public/. ./deploy-${{ steps.branch-name.outputs.current_branch }}/storybook-${{ steps.branch-name.outputs.current_branch }}
       - uses: actions/setup-node@v3
         with:
           # Because of gitbook support
@@ -73,12 +76,12 @@ jobs:
           gitbook install
           gitbook build
         working-directory: ./docs/
-      - run: cp -a ./docs/_book/. ./deploy/
+      - run: cp -a ./docs/_book/. ./deploy-${{ steps.branch-name.outputs.current_branch }}/
       - name: Upload deploy artifact
         uses: actions/upload-artifact@v3
         with:
-          name: deploy
-          path: deploy/
+          name: deploy-${{ steps.branch-name.outputs.current_branch }}
+          path: deploy-${{ steps.branch-name.outputs.current_branch }}/
 
   deploy:
     runs-on: ubuntu-latest
@@ -90,7 +93,7 @@ jobs:
       - name: Download deploy artifact
         uses: actions/download-artifact@v3
         with:
-          name: deploy
+          name: deploy-${{ steps.branch-name.outputs.current_branch }}
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
