@@ -1,18 +1,14 @@
-import { type Meta, type Story } from '@storybook/react';
-import { useState, type ComponentProps } from 'react';
+import { type Meta, type StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import ComboBox from './combo-box';
 import type { ComboBoxOptionType } from './combo-box.type';
 
-const stories = {
+const meta: Meta<typeof ComboBox> = {
 	title: 'Components/Commons/ComboBox',
 	component: ComboBox,
-	argTypes: {
-		onChange: { action: 'onChange' },
-		onSelect: { action: 'onSelect' },
-	},
-} as Meta;
+};
 
-export default stories;
+export default meta;
 
 const LabelRenderer = ({
 	option,
@@ -22,7 +18,8 @@ const LabelRenderer = ({
 	placeholder?: string;
 }) => <>{option?.label ?? placeholder}</>;
 
-const Template: Story<ComponentProps<typeof ComboBox>> = (args) => {
+const Template: typeof ComboBox = (args) => {
+	console.log({ args });
 	const [localValue, setLocalValue] = useState(args.value);
 	const [search, setSearch] = useState<string | null>('');
 	// Simulate a search
@@ -55,20 +52,24 @@ const Template: Story<ComponentProps<typeof ComboBox>> = (args) => {
 	);
 };
 
-export const Default = Template.bind({});
-Default.args = {
-	value: '1',
-	options: [
-		{ id: '1', value: 'Option 1', label: <strong>Option 1</strong> },
-		{ id: '2', value: 'Option 2', label: 'Option 2' },
-		{ id: '3', value: 'Option 3', label: 'Option 3' },
-		{ id: 'paris', value: 'Paris', label: 'Paris' },
-		{ id: 'toulouse', value: 'Toulouse', label: 'Toulouse' },
-	],
+export const Default: StoryObj<typeof ComboBox> = {
+	render: (args) => <Template {...args} />,
+	args: {
+		value: '1',
+		options: [
+			{ id: '1', value: 'Option 1', label: <strong>Option 1</strong> },
+			{ id: '2', value: 'Option 2', label: 'Option 2' },
+			{ id: '3', value: 'Option 3', label: 'Option 3' },
+			{ id: 'paris', value: 'Paris', label: 'Paris' },
+			{ id: 'toulouse', value: 'Toulouse', label: 'Toulouse' },
+		],
+	},
 };
 
-export const Editable = Template.bind({});
-Editable.args = {
-	...Default.args,
-	editable: true,
+export const Editable: StoryObj<typeof ComboBox> = {
+	...Default,
+	args: {
+		...Default.parameters,
+		editable: true,
+	},
 };
