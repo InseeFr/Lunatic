@@ -11,6 +11,8 @@ import { isNumber } from '../../../utils/number';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
+// Special variable that will take the current iteration value
+const iterationVariableName = 'GLOBAL_ITERATION_INDEX';
 
 type IterationLevel = number[];
 type EventArgs = {
@@ -295,6 +297,9 @@ class LunaticVariable {
 		try {
 			return Object.fromEntries(
 				this.getDependencies().map((dep) => {
+					if (dep === iterationVariableName && iteration) {
+						return [dep, iteration[0]];
+					}
 					const dependencyIteration =
 						isNumber(this.iterationDepth) && Array.isArray(iteration)
 							? [iteration[this.iterationDepth]]
