@@ -87,6 +87,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-assets
     steps:
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v7
       - uses: actions/checkout@v3
         with:
           ref: gh-pages
