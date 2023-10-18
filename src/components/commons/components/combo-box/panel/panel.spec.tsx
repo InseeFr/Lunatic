@@ -71,7 +71,7 @@ describe('Panel', () => {
 	// 	});
 	// });
 
-	it('calls onSelect when an option is clicked', () => {
+	it('calls onSelect when an option is clicked', async () => {
 		const handleSelect = vi.fn();
 
 		render(
@@ -90,7 +90,7 @@ describe('Panel', () => {
 		expect(screen.getByRole('listbox')).toBeInTheDocument();
 
 		const option = screen.getByText('Option 2');
-		userEvent.click(option);
+		await userEvent.click(option);
 
 		expect(handleSelect).toHaveBeenCalledWith('1');
 	});
