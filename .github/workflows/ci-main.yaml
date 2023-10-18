@@ -63,7 +63,7 @@ jobs:
       - uses: bahmutov/npm-install@v1
       # Build Storybook v2
       - run: yarn build-storybook
-      - run: mkdir -p deploy/storybook
+      - run: mkdir -p deploy-${{ steps.branch-name.outputs.current_branch }}/storybook-${{ steps.branch-name.outputs.current_branch }}
       - run: cp -R ./storybook-static/. ./deploy-${{ steps.branch-name.outputs.current_branch }}/storybook-${{ steps.branch-name.outputs.current_branch }}
       # Add json to fetch for suggester stories
       - run: cp -a ./public/. ./deploy-${{ steps.branch-name.outputs.current_branch }}/storybook-${{ steps.branch-name.outputs.current_branch }}
