@@ -3,8 +3,10 @@ import { createWorker } from '../../../utils/suggester-workers/create-worker';
 import type { ComboBoxOptionType } from '../../commons/components/combo-box/combo-box.type';
 
 const WORKER_PATH =
-	process.env.LUNATIC_SEARCH_WORKER_PATH ||
-	process.env.REACT_APP_LUNATIC_SEARCH_WORKER_PATH;
+	// @ts-ignore
+	import.meta.env.LUNATIC_SEARCH_WORKER_PATH ||
+	// @ts-ignore
+	import.meta.env.REACT_APP_LUNATIC_SEARCH_WORKER_PATH;
 
 export function isWorkerCompatible(): boolean {
 	return !!window.Worker;

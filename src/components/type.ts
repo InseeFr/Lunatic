@@ -1,7 +1,6 @@
 import type {
 	LunaticComponentDefinition,
 	LunaticError,
-	LunaticExpression,
 	LunaticState,
 } from '../use-lunatic/type';
 import type { CSSProperties, FunctionComponent, ReactNode } from 'react';

@@ -47,8 +47,8 @@
 		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
 		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
 		"build-workers": "yarn build-append-worker && yarn build-searching-worker && yarn build-label-worker",
-		"storybook": "start-storybook -p 9999 -s ./public",
-		"build-storybook": "build-storybook"
+		"storybook": "storybook dev -p 9999 --no-open",
+		"build-storybook": "storybook build"
 	},
 	"keywords": [
 		"react",
@@ -77,12 +77,14 @@
 		"string-tokenizer": "^0.0.8"
 	},
 	"resolutions": {
-		"@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0"
+		"@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0",
+		"jackspeak": "2.1.1"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.18.6",
 		"@babel/core": "^7.18.6",
 		"@babel/plugin-proposal-class-properties": "^7.7.4",
+		"@babel/plugin-proposal-object-rest-spread": "^7.20.7",
 		"@babel/plugin-proposal-private-methods": "^7.18.6",
 		"@babel/plugin-proposal-private-property-in-object": "^7.18.6",
 		"@babel/plugin-syntax-dynamic-import": "^7.7.4",
@@ -96,18 +98,20 @@
 		"@emotion/styled": "^11.9.3",
 		"@mui/material": "^5.8.6",
 		"@playwright/test": "^1.30.0",
-		"@storybook/addon-a11y": "^6.5.12",
-		"@storybook/addon-actions": "^6.5.8",
-		"@storybook/addon-essentials": "^6.5.8",
-		"@storybook/addon-interactions": "^6.5.8",
-		"@storybook/addon-links": "^6.5.8",
-		"@storybook/builder-webpack5": "^6.5.8",
-		"@storybook/jest": "^0.0.10",
-		"@storybook/manager-webpack5": "^6.5.8",
-		"@storybook/react": "^6.5.8",
-		"@storybook/test-runner": "^0.9.4",
-		"@storybook/testing-library": "^0.0.11",
-		"@testing-library/jest-dom": "^5.16.5",
+		"@storybook/addon-a11y": "^7.4.6",
+		"@storybook/addon-actions": "^7.4.6",
+		"@storybook/addon-essentials": "^7.4.6",
+		"@storybook/addon-interactions": "^7.4.6",
+		"@storybook/addon-links": "^7.4.6",
+		"@storybook/addon-mdx-gfm": "^7.4.6",
+		"@storybook/addon-onboarding": "^1.0.8",
+		"@storybook/blocks": "^7.4.6",
+		"@storybook/jest": "^0.2.3",
+		"@storybook/react": "^7.4.6",
+		"@storybook/react-vite": "^7.4.6",
+		"@storybook/react-webpack5": "^7.4.6",
+		"@storybook/test-runner": "^0.13.0",
+		"@storybook/testing-library": "^0.2.2",
 		"@testing-library/react": "^14.0.0",
 		"@testing-library/react-hooks": "^8.0.1",
 		"@types/object-hash": "^2.2.0",
@@ -133,6 +137,7 @@
 		"eslint-plugin-jsx-a11y": "^6.1.1",
 		"eslint-plugin-react": "^7.17.0",
 		"eslint-plugin-react-hooks": "^4.0.8",
+		"eslint-plugin-storybook": "^0.6.15",
 		"file-loader": "^6.2.0",
 		"http-server": "^14.1.1",
 		"identity-obj-proxy": "^3.0.0",
@@ -149,10 +154,12 @@
 		"rxjs-marbles": "^6.0.1",
 		"sass-loader": "^13.2.0",
 		"source-map-explorer": "^2.4.2",
+		"storybook": "^7.4.6",
 		"ts-loader": "^9.4.2",
 		"typescript": "^5.1.6",
 		"vite": "^4.0.0",
 		"vitest": "^0.27.2",
+		"vitest-dom": "^0.1.1",
 		"wait-on": "^7.0.1",
 		"webpack": "^5.75.0",
 		"webpack-cli": "^5.0.0"
@@ -169,5 +176,10 @@
 	},
 	"peerDependencies": {
 		"react": "^18.0.0"
+	},
+	"eslintConfig": {
+		"extends": [
+			"plugin:storybook/recommended"
+		]
 	}
 }
