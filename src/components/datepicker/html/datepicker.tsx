@@ -8,7 +8,7 @@ import type { LunaticError } from '../../../use-lunatic/type';
 type Props = {
 	label?: ReactNode;
 	description?: ReactNode;
-	errors?: Record<string, LunaticError[]>;
+	errors?: LunaticError[];
 	disabled?: boolean;
 	readOnly?: boolean;
 	min?: string;
@@ -53,8 +53,9 @@ function Datepicker({
 				onChange={handleChange}
 				min={min}
 				max={max}
+				invalid={!!errors}
 			/>
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={errors} />
 		</DatepickerContainer>
 	);
 }

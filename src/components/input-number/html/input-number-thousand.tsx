@@ -18,6 +18,7 @@ type Props = {
 	min?: number;
 	max?: number;
 	decimals?: number;
+	invalid?: boolean;
 };
 
 const InputNumberThousand = ({
@@ -31,6 +32,7 @@ const InputNumberThousand = ({
 	min,
 	max,
 	decimals,
+	invalid,
 }: Props) => {
 	// Decimals is a number indicates the number behind the separator of decimals
 	// Computing step attribute of input according to decimal number
@@ -74,6 +76,7 @@ const InputNumberThousand = ({
 			allowLeadingZeros
 			thousandSeparator={inputNumberPropsI18N.thousandSeparator}
 			inputMode={decimals ? 'decimal' : 'numeric'}
+			aria-invalid={invalid}
 		/>
 	);
 };
