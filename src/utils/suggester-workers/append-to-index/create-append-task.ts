@@ -10,13 +10,13 @@ function consoleLogging(...args: Array<any>) {
 }
 
 /**
- * Only with Worker
+ * Creates methods to communicate with workers for indexing data
  */
 export function createAppendTask<T>(
 	info: SuggesterType,
 	version: number,
 	log = consoleLogging
-): [(args: Array<any>) => Promise<boolean>, () => void] {
+): [(args: Array<T>) => Promise<boolean>, () => void] {
 	const { name, fields, stopWords, meloto } = info;
 	const worker = createWorker(getWorkerPath());
 	let start = false;

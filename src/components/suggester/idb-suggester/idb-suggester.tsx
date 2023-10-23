@@ -40,16 +40,16 @@ export function IDBSuggester({
 	errors,
 	readOnly,
 }: Props) {
-	const [store, setStore] = useState(undefined);
+	const [storeInfo, setStoreInfo] = useState(undefined);
 
 	const searching = useMemo(
 		function () {
-			if (store) {
+			if (storeInfo) {
 				return createSearching(storeName, idbVersion);
 			}
 			return undefined;
 		},
-		[storeName, idbVersion, store]
+		[storeName, idbVersion, storeInfo]
 	);
 
 	return (
@@ -62,7 +62,7 @@ export function IDBSuggester({
 			<CheckStore
 				storeName={storeName}
 				version={parseInt(idbVersion, 10)}
-				setStore={setStore}
+				onInfo={setStoreInfo}
 			>
 				<Suggester
 					id={id}

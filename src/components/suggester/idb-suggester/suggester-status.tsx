@@ -20,10 +20,7 @@ type Props = PropsWithChildren<{
 }>;
 
 /**
- * Component witch check status of loading process.
- * it notifies users through SuggesterNotification, a customizable component.
- * @param {} param0
- * @returns
+ * Check the status of suggester status and shows a warning / error
  */
 export function SuggesterStatus({
 	children,
