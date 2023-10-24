@@ -11,9 +11,16 @@ function reduceCleaning(
 	action: ActionHandleChange
 ): LunaticState {
 	const response = action.payload.response;
-	const { executeExpression, cleaning, updateBindings, variables, pager } =
-		state;
+	const { executeExpression, cleaning, variables, pager } = state;
 	const { iteration } = pager;
+	const updateBindings = (variableName: string, newValue: unknown) => {
+		state.updateBindings(variableName, newValue);
+		action.payload.args?.onChange(
+			{ name: variableName },
+			newValue,
+			action.payload.args
+		);
+	};
 	if (!response || !(response.name in cleaning)) {
 		return state;
 	}

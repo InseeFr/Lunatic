@@ -1,11 +1,12 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
 import sourceComponentSet from '../stories/component-set/source.json';
+import sourceCleaning from '../stories/behaviour/cleaning/source.json';
 import type { LunaticData } from './type';
 import { type FilledLunaticComponentProps } from './commons/fill-components/fill-components';
 
@@ -170,6 +171,27 @@ describe('use-lunatic()', () => {
 				expect(overview[1].reached).toEqual(true);
 				expect(overview[1].visible).toEqual(true);
 			});
+		});
+	});
+
+	describe('cleaning', () => {
+		it('should call handleChange on cleaned variable', () => {
+			const spy = vi.fn();
+			const { result } = renderHook(() =>
+				useLunatic(sourceCleaning as any, undefined, {
+					onChange: spy,
+				})
+			);
+			result.current.onChange({ name: 'ORIGIN' }, 'FR');
+			expect(spy).toHaveBeenCalledTimes(1);
+			expect(spy.mock.calls[0][0]).toEqual({ name: 'ORIGIN' });
+			expect(spy.mock.calls[0][1]).toEqual('FR');
+			result.current.onChange({ name: 'ORIGIN' }, 'US');
+			expect(spy).toHaveBeenCalledTimes(3);
+			expect(spy.mock.calls[1][0]).toEqual({ name: 'CITY' });
+			expect(spy.mock.calls[1][1]).toEqual(null);
+			expect(spy.mock.calls[2][0]).toEqual({ name: 'ORIGIN' });
+			expect(spy.mock.calls[2][1]).toEqual('US');
 		});
 	});
 
