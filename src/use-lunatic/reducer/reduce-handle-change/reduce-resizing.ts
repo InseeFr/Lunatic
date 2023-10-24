@@ -84,7 +84,7 @@ function reduceResizing(state: LunaticState, action: ActionHandleChange) {
 	const { resizing, variables } = state;
 	const updateBindings = (variableName: string, newValue: unknown) => {
 		state.updateBindings(variableName, newValue);
-		action.payload.args?.onChange(
+		action.payload.args?.onChange?.(
 			{ name: variableName },
 			newValue,
 			action.payload.args
