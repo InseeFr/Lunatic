@@ -21,7 +21,7 @@ type Props = Pick<
 	| 'description'
 	| 'getSuggesterStatus'
 > & {
-	errors: LunaticError[];
+	errors?: LunaticError[];
 	onSelect: (v: string | null) => void;
 };
 
