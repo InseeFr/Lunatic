@@ -1,5 +1,5 @@
 var path = require('path');
-var PACKAGE = require('./package.json');
+var PACKAGE = require('../../package.json');
 var version = PACKAGE.workersVersion;
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
 	entry: './src/utils/suggester-workers/append-to-index/append.worker.js',
 	target: 'webworker',
 	output: {
-		path: path.resolve(`./workers-release/${version}`),
+		path: path.resolve(`./public/workers`),
 		filename: `lunatic-append-worker-${version}.js`,
 		libraryTarget: 'umd',
 	},

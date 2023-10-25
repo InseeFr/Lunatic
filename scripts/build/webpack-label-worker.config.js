@@ -1,5 +1,5 @@
 var path = require('path');
-var PACKAGE = require('./package.json');
+var PACKAGE = require('../../package.json');
 var version = PACKAGE.workersVersion;
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
 		'./src/utils/suggester-workers/find-best-label/find-best-label.worker.js',
 	target: 'webworker',
 	output: {
-		path: path.resolve(`./workers-release/${version}`),
+		path: path.resolve(`./public/workers`),
 		filename: `lunatic-label-worker-${version}.js`,
 		libraryTarget: 'umd',
 	},
