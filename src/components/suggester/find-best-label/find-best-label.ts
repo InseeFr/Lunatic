@@ -1,10 +1,9 @@
 // @ts-ignore
-import { createWorker } from '../../../utils/suggester-workers/create-worker';
-
-const WORKER_PATH: string =
-	process.env.LUNATIC_LABEL_WORKER_PATH ||
-	process.env.REACT_APP_LUNATIC_LABEL_WORKER_PATH ||
-	'';
+import { createWorker } from '../../../utils/suggester-workers/create-worker-ts';
+import {
+	WorkerEnum,
+	getWorkerPath,
+} from '../../../utils/suggester-workers/worker-path';
 
 let WORKER: Worker | null;
 const TASKS = new Map<string, (v: unknown) => void>();
@@ -19,7 +18,7 @@ function getIdTask(): string {
 
 function getWorker(): Worker {
 	if (!WORKER) {
-		WORKER = createWorker(WORKER_PATH);
+		WORKER = createWorker(getWorkerPath(WorkerEnum.LABEL));
 		WORKER!.addEventListener('message', function (e) {
 			const { data } = e;
 			const { response, idTask } = data;

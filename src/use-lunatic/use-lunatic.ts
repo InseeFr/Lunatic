@@ -1,27 +1,27 @@
 import {
-	type FunctionComponent,
 	useCallback,
 	useEffect,
 	useMemo,
 	useReducer,
+	type FunctionComponent,
 } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
 import type { LunaticData, LunaticState } from './type';
 
+import type { LunaticComponentType } from '../components/type';
+import { useTrackChanges } from '../hooks/use-track-changes';
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
-import INITIAL_STATE from './initial-state';
-import { createLunaticProvider } from './lunatic-context';
-import type { LunaticSource } from './type-source';
-import type { LunaticComponentType } from '../components/type';
 import { compileControls as compileControlsLib } from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
-import { useLoopVariables } from './hooks/use-loop-variables';
-import reducer from './reducer';
-import { useSuggesters } from './use-suggesters';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
-import { useTrackChanges } from '../hooks/use-track-changes';
+import { useLoopVariables } from './hooks/use-loop-variables';
+import INITIAL_STATE from './initial-state';
+import { createLunaticProvider } from './lunatic-context';
+import reducer from './reducer';
+import type { LunaticSource } from './type-source';
+import { useSuggesters } from './use-suggesters';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -58,6 +58,7 @@ function useLunatic(
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
 		trackChanges = false,
+		workersBasePath = undefined,
 	}: {
 		features?: LunaticState['features'];
 		preferences?: LunaticState['preferences'];
@@ -79,6 +80,8 @@ function useLunatic(
 		refusedButton?: string;
 		// Enable change tracking to keep a track of what variable changed (allow using getChangedData())
 		trackChanges?: boolean;
+		// Enable workers on Micro frontend (worker deployed in another server than the current)
+		workersBasePath?: string;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
