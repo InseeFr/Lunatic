@@ -31,11 +31,11 @@
 		"scripts/build/workers-paths.js"
 	],
 	"scripts": {
-		"test": "vitest run",
-		"test:e2e": "playwright test",
-		"test:e2e:visual": "playwright test --headed --debug e2e/pairwise.spec.ts",
-		"test:e2e:codegen": "playwright codegen http://localhost:9999/iframe.html?viewMode=story&id=",
-		"test:storybook": "test-storybook --url http://localhost:9999 --maxWorkers=4 --no-cache",
+		"test": "npm run prepare-workers && vitest run",
+		"test:e2e": "npm run prepare-workers && playwright test",
+		"test:e2e:visual": "npm run prepare-workers && playwright test --headed --debug e2e/pairwise.spec.ts",
+		"test:e2e:codegen": "npm run prepare-workers && playwright codegen http://localhost:9999/iframe.html?viewMode=story&id=",
+		"test:storybook": "npm run prepare-workers && test-storybook --url http://localhost:9999 --maxWorkers=4 --no-cache",
 		"test-watch": "vitest",
 		"check": "tsc",
 		"lint": "eslint ./src",
@@ -45,14 +45,13 @@
 		"format:check": "npm run _format -- --list-different",
 		"test-coverage": "vitest run --coverage",
 		"build-workers": "node ./scripts/build/build-workers.js",
-		"build": "babel src --out-dir lib --extensions \".ts,.js,.tsx,.jsx\" --copy-files && tsc --project tsconfig.prod.json",
-		"postbuild": "yarn build-workers",
-		"postinstall": "yarn build-workers && node ./scripts/build/add-workers-to-public.js",
-		"storybook": "storybook dev -p 9999 --no-open",
-		"build-storybook": "yarn postinstall && storybook build"
+		"prepare-workers": "npm run build-workers && node ./scripts/build/add-workers-to-public.js",
+		"build": "babel src --out-dir lib --extensions \".ts,.js,.tsx,.jsx\" --copy-files && tsc --project tsconfig.prod.json && npm run build-workers",
+		"storybook": "npm run prepare-workers && storybook dev -p 9999 --no-open",
+		"build-storybook": "npm run prepare-workers && storybook build"
 	},
 	"bin": {
-		"add-lunatic-workers": "./scripts/build/add-workers-to-public.js"
+		"add-lunatic-workes": "./scripts/build/add-workers-to-public.js"
 	},
 	"keywords": [
 		"react",
