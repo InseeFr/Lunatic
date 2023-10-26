@@ -8,7 +8,7 @@ module.exports = {
 		'./src/utils/suggester-workers/find-best-label/find-best-label.worker.js',
 	target: 'webworker',
 	output: {
-		path: path.resolve(`./public/workers`),
+		path: path.resolve(`workers-release`),
 		filename: `lunatic-label-worker-${version}.js`,
 		libraryTarget: 'umd',
 	},

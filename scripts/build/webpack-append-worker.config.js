@@ -7,7 +7,7 @@ module.exports = {
 	entry: './src/utils/suggester-workers/append-to-index/append.worker.js',
 	target: 'webworker',
 	output: {
-		path: path.resolve(`./public/workers`),
+		path: path.resolve(`workers-release`),
 		filename: `lunatic-append-worker-${version}.js`,
 		libraryTarget: 'umd',
 	},
