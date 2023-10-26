@@ -27,7 +27,8 @@
 	"types": "lib/src/index.d.ts",
 	"files": [
 		"lib",
-		"workers-release"
+		"workers-release",
+		"scripts/build/workers-paths.js"
 	],
 	"scripts": {
 		"test": "vitest run",
@@ -45,6 +46,7 @@
 		"test-coverage": "vitest run --coverage",
 		"build-workers": "node ./scripts/build/build-workers.js",
 		"build": "babel src --out-dir lib --extensions \".ts,.js,.tsx,.jsx\" --copy-files && tsc --project tsconfig.prod.json",
+		"postbuild": "yarn build-workers",
 		"postinstall": "yarn build-workers && node ./scripts/build/add-workers-to-public.js",
 		"storybook": "storybook dev -p 9999 --no-open",
 		"build-storybook": "storybook build"
