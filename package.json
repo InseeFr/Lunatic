@@ -49,7 +49,7 @@
 		"postbuild": "yarn build-workers",
 		"postinstall": "yarn build-workers && node ./scripts/build/add-workers-to-public.js",
 		"storybook": "storybook dev -p 9999 --no-open",
-		"build-storybook": "storybook build"
+		"build-storybook": "yarn postinstall && storybook build"
 	},
 	"bin": {
 		"add-lunatic-workers": "./scripts/build/add-workers-to-public.js"
