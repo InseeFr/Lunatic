@@ -134,6 +134,15 @@ describe('lunatic-variables-store', () => {
 				variables.run('FIRSTNAME || " " || LASTNAME', { iteration: [1] })
 			).toEqual('Jane Doe');
 		});
+		it('should handle global iteration variable', () => {
+			variables.set('FIRSTNAME', ['John', 'Jane']);
+			variables.setCalculated(
+				'FULLNAME',
+				'FIRSTNAME || " " || cast(GLOBAL_ITERATION_INDEX, string)'
+			);
+			expect(variables.get('FULLNAME', [0])).toEqual('John 0');
+			expect(variables.get('FULLNAME', [1])).toEqual('Jane 1');
+		});
 	});
 
 	describe('resizing', () => {
