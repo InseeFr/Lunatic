@@ -15,7 +15,6 @@ type Props = {
 	readOnly?: boolean;
 	required?: boolean;
 	labelId?: string;
-	min?: number;
 	max?: number;
 	decimals?: number;
 };

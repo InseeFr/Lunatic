@@ -17,7 +17,6 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 		missing,
 		missingResponse,
 		management,
-		min,
 		max,
 		decimals,
 		unit,
@@ -47,7 +46,6 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 				label={label}
 				disabled={disabled}
 				readOnly={readOnly}
-				min={min}
 				max={max}
 				decimals={decimals}
 				unit={unit}
