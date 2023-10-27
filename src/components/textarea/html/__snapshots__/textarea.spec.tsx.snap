@@ -6,6 +6,7 @@ exports[`Textarea > renders without crashing 1`] = `
     class="lunatic-textarea"
   >
     <textarea
+      aria-invalid="false"
       id="input"
     >
       input
@@ -20,6 +21,7 @@ exports[`Textarea > should handle readOnly 1`] = `
     class="lunatic-textarea"
   >
     <textarea
+      aria-invalid="false"
       id="textarea"
       readonly=""
     >

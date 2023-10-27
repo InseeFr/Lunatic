@@ -17,6 +17,7 @@ type Props = {
 	labelId?: string;
 	max?: number;
 	decimals?: number;
+	invalid?: boolean;
 };
 
 const InputNumberThousand = ({
@@ -29,6 +30,7 @@ const InputNumberThousand = ({
 	labelId,
 	max,
 	decimals,
+	invalid,
 }: Props) => {
 	const handleChange = useCallback<OnValueChange>(
 		function (e) {
@@ -65,6 +67,7 @@ const InputNumberThousand = ({
 			allowLeadingZeros
 			thousandSeparator={inputNumberPropsI18N.thousandSeparator}
 			inputMode={decimals ? 'decimal' : 'numeric'}
+			aria-invalid={invalid}
 		/>
 	);
 };

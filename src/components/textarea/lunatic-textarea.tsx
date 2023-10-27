@@ -3,6 +3,7 @@ import LunaticComponent from '../commons/components/lunatic-component-without-la
 import useOnHandleChange from '../commons/use-on-handle-change';
 import Textarea from './html/textarea';
 import type { LunaticComponentProps } from '../type';
+import { getComponentErrors } from '../commons/components/errors/errors';
 
 const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 	const {
@@ -49,7 +50,7 @@ const LunaticTextarea = (props: LunaticComponentProps<'Textarea'>) => {
 				value={value}
 				placeholder={placeHolder}
 				label={label}
-				errors={errors}
+				errors={getComponentErrors(errors, id)}
 				readOnly={readOnly}
 				required={required}
 			/>
