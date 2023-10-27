@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "2.7.0-rc.5",
+	"version": "2.7.0-rc.6",
 	"workersVersion": "0.3.0-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
@@ -46,10 +46,9 @@
 		"format:check": "npm run _format -- --list-different",
 		"test-coverage": "vitest run --coverage",
 		"build-workers": "node ./scripts/build/build-workers.js",
-		"add-workers-to-public": "node ./scripts/build/add-workers-to-public.js",
-		"prepare-workers": "npm run build-workers && npm run add-workers-to-public",
+		"prepare-workers": "npm run build-workers && node ./scripts/build/add-workers-to-public.js",
 		"build": "babel src --out-dir lib --extensions \".ts,.js,.tsx,.jsx\" --copy-files && tsc --project tsconfig.prod.json && npm run build-workers",
-		"postinstall": "npm run add-workers-to-public",
+		"postinstall": "node ./scripts/build/add-workers-to-public.js",
 		"storybook": "npm run prepare-workers && storybook dev -p 9999 --no-open",
 		"build-storybook": "npm run prepare-workers && storybook build"
 	},
