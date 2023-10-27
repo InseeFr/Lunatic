@@ -38,10 +38,13 @@ function Duration(props: LunaticComponentProps<'Duration'>) {
 			description={description}
 			handleChange={handleChange}
 		>
-			<div className="container">
-				{label}
-				<DurationInput value={value} format={format} onChange={onChange} />
-			</div>
+			<DurationInput
+				id={id}
+				label={label}
+				value={value}
+				format={format}
+				onChange={onChange}
+			/>
 		</LunaticComponent>
 	);
 }
