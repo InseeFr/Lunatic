@@ -2,6 +2,7 @@ import { IDBSuggester } from './idb-suggester';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import type { LunaticComponentProps } from '../type';
+import { getComponentErrors } from '../commons/components/errors/errors';
 
 function LunaticSuggester({
 	id,
@@ -48,7 +49,7 @@ function LunaticSuggester({
 				disabled={disabled}
 				id={id}
 				value={value}
-				errors={errors}
+				errors={getComponentErrors(errors, id)}
 				label={label}
 				getSuggesterStatus={getSuggesterStatus}
 				className={className}

@@ -4,6 +4,7 @@ import createSearching from '../searching';
 import CheckStore from './check-store';
 import { SuggesterStatus } from './suggester-status';
 import type { LunaticComponentProps } from '../../type';
+import type { LunaticError } from '../../../use-lunatic/type';
 
 type Props = Pick<
 	LunaticComponentProps<'Suggester'>,
@@ -19,8 +20,8 @@ type Props = Pick<
 	| 'label'
 	| 'description'
 	| 'getSuggesterStatus'
-	| 'errors'
 > & {
+	errors?: LunaticError[];
 	onSelect: (v: string | null) => void;
 };
 
