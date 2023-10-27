@@ -26,6 +26,7 @@ export type ActionHandleChange = {
 			paginatedLoop?: unknown;
 			shallowIteration?: unknown;
 			lengths?: number[];
+			onChange?: LunaticState['handleChange'];
 		};
 	};
 };

@@ -1,11 +1,11 @@
 import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
-import simple from './V2_ControlesNonNum_horsBoucle_PasPageFin';
-import simpleNum from './V2_ControlesNum_horsBoucle_PasPageFin';
-import linkedLoop from './V2_Controles_BouclesLiees_PasPageFin';
-import linkedLoop2 from './V2_Controles_BouclesLiees2_PasPageFin';
+import simple from './V2_ControlesNonNum_horsBoucle_PasPageFin.json';
+import simpleNum from './V2_ControlesNum_horsBoucle_PasPageFin.json';
+import linkedLoop from './V2_Controles_BouclesLiees_PasPageFin.json';
+import linkedLoop2 from './V2_Controles_BouclesLiees2_PasPageFin.json';
 import defaultArgTypes from '../../utils/default-arg-types';
-import boucleNTabDynamique from './boucles-n';
+import boucleNTabDynamique from './boucles-n.json';
 
 const stories = {
 	title: 'Behaviour/Controls',

@@ -19,6 +19,7 @@ function reduceResizingVariables({
 	variables: LunaticState['variables'];
 	executeExpression: LunaticState['executeExpression'];
 	updateBindings: LunaticState['updateBindings'];
+	onChange?: Required<ActionHandleChange['payload']>['args']['onChange'];
 }) {
 	if (size === undefined) {
 		return {};
@@ -78,12 +79,17 @@ function reduceResizingLinksVariables({
 }
 
 function reduceResizing(state: LunaticState, action: ActionHandleChange) {
-	const {
-		payload: {
-			response: { name },
-		},
-	} = action;
-	const { resizing, variables, updateBindings } = state;
+	const name = action.payload.response.name;
+	const onChange = action.payload.args?.onChange;
+	const { resizing, variables } = state;
+	const updateBindings = (variableName: string, newValue: unknown) => {
+		state.updateBindings(variableName, newValue);
+		action.payload.args?.onChange?.(
+			{ name: variableName },
+			newValue,
+			action.payload.args
+		);
+	};
 	if (name in resizing) {
 		const {
 			size,
@@ -105,6 +111,7 @@ function reduceResizing(state: LunaticState, action: ActionHandleChange) {
 			variables,
 			executeExpression,
 			updateBindings,
+			onChange,
 		});
 		return {
 			...state,
