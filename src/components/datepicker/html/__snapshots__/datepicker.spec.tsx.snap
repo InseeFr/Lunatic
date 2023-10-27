@@ -6,6 +6,7 @@ exports[`Datepicker > renders without crashing 1`] = `
     class="lunatic-input"
   >
     <input
+      aria-invalid="false"
       aria-labelledby="lunatic-datepicker-datepicker"
       class="lunatic-datepicker"
       id="datepicker"
@@ -22,6 +23,7 @@ exports[`Datepicker > should handle readOnly 1`] = `
     class="lunatic-input"
   >
     <input
+      aria-invalid="false"
       aria-labelledby="lunatic-datepicker-Datepicker"
       class="lunatic-datepicker readOnly"
       id="Datepicker"
