@@ -4,11 +4,12 @@ var version = PACKAGE.workersVersion;
 
 module.exports = {
 	mode: 'production',
-	entry: './src/utils/suggester-workers/searching/searching.worker.js',
+	entry:
+		'./src/utils/suggester-workers/find-best-label/find-best-label.worker.js',
 	target: 'webworker',
 	output: {
 		path: path.resolve(`workers-release`),
-		filename: `lunatic-searching-worker-${version}.js`,
+		filename: `lunatic-label-worker-${version}.js`,
 		libraryTarget: 'umd',
 	},
 	resolve: {
