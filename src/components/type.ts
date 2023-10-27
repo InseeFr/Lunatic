@@ -197,6 +197,7 @@ type ComponentPropsByType = {
 	};
 	Suggester: LunaticBaseProps<string | null> & {
 		storeName: string;
+		workersBasePath?: string;
 		getSuggesterStatus: (name: string) => {
 			status: SuggesterStatus;
 			timestamp: number;

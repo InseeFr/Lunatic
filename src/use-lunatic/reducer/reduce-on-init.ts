@@ -184,6 +184,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 		goToPage,
 		goNextPage,
 		goPreviousPage,
+		workersBasePath,
 	} = payload;
 
 	if (source && data) {
@@ -230,6 +231,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 				goNextPage,
 				goPreviousPage,
 				shortcut,
+				workersBasePath,
 			},
 			initialPager
 		);
