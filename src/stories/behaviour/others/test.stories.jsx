@@ -1,11 +1,11 @@
 import React from 'react';
-import Orchestrator from '../utils/orchestrator';
-import testDylan from './test-dylan';
-import minMaxLoops from './V2_MinMaxSum_Boucles';
-import simpleLoops from './V2_QuestSimple_Boucles';
-import rallyGames from './V2_TCMRallyeGames';
-import declarationsSimples from './V2_DeclarationsSimples';
-import defaultArgTypes from '../utils/default-arg-types';
+import Orchestrator from '../../utils/orchestrator';
+import testDylan from './test-dylan.json';
+import minMaxLoops from './V2_MinMaxSum_Boucles.json';
+import simpleLoops from './V2_QuestSimple_Boucles.json';
+import rallyGames from './V2_TCMRallyeGames.json';
+import declarationsSimples from './V2_DeclarationsSimples.json';
+import defaultArgTypes from '../../utils/default-arg-types';
 
 const stories = {
 	title: 'Behaviour/Others',

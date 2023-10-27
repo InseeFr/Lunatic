@@ -1,0 +1,151 @@
+{
+	"cleaning": {
+		"ORIGIN": {
+			"CITY": "ORIGIN = \"FR\""
+		}
+	},
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "ORIGIN"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "CITY"
+		}
+	],
+	"components": [
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyjs7vy",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"S0\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "ksyjs7vy",
+			"page": "1",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"I - \" || \"Test du cleaning\""
+			}
+		},
+		{
+			"componentType": "Radio",
+			"id": "radio",
+			"controls": [],
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyjs7vy",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"S0\""
+					}
+				}
+			},
+			"options": [
+				{
+					"value": "US",
+					"label": {
+						"value": "\"Etats unis\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"value": "FR",
+					"label": {
+						"value": "\"France\"",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 1. \" || \"Origine\""
+			},
+			"mandatory": false,
+			"bindingDependencies": ["ORIGIN"],
+			"response": {
+				"name": "ORIGIN"
+			},
+			"page": "2"
+		},
+		{
+			"componentType": "Input",
+			"id": "input",
+			"controls": [],
+			"hierarchy": {
+				"sequence": {
+					"id": "ksyjs7vy",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"S0\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "ORIGIN = \"FR\""
+			},
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 2. \" || \"Ville de france\""
+			},
+			"mandatory": false,
+			"bindingDependencies": ["CITY"],
+			"response": {
+				"name": "CITY"
+			},
+			"page": "3"
+		},
+		{
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "ksyjs7vy",
+			"page": "4",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"END\""
+			}
+		}
+	],
+	"pagination": "question",
+	"lunaticModelVersion": "2.3.2-rc4",
+	"modele": "TESTSURSUM",
+	"enoCoreVersion": "2.4.1-pairwise",
+	"generatingDate": "14-04-2023 09:00:09",
+	"missing": false,
+	"id": "lb3ei722",
+	"maxPage": "4"
+}

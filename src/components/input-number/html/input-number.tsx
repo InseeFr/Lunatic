@@ -13,7 +13,6 @@ type Props = {
 	readOnly?: boolean;
 	required?: boolean;
 	labelId?: string;
-	min?: number;
 	max?: number;
 	decimals?: number;
 	label?: ReactNode;
@@ -28,7 +27,6 @@ function InputNumber({
 	onChange = voidFunction,
 	disabled = false,
 	readOnly = false,
-	min,
 	max,
 	decimals = 0,
 	unit,
@@ -52,7 +50,6 @@ function InputNumber({
 				readOnly={readOnly}
 				required={required}
 				labelId={labelId}
-				min={min}
 				max={max}
 				decimals={decimals}
 				invalid={!!errors}
