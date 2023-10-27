@@ -2,13 +2,13 @@ import classnames from 'classnames';
 import { type ChangeEventHandler, type ReactNode, useCallback } from 'react';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import './input.scss';
-import type { LunaticError } from '../../../use-lunatic/type';
+import type { LunaticBaseProps } from '../../type';
 
 type Props = {
 	label?: ReactNode;
 	onChange: (v: string) => void;
 	description?: string;
-	errors?: LunaticError[];
+	errors: LunaticBaseProps['errors'];
 	value?: string | null;
 	disabled?: boolean;
 	readOnly?: boolean;
@@ -55,9 +55,8 @@ function Input({
 				aria-required={required}
 				required={required}
 				maxLength={maxLength}
-				aria-invalid={!!errors}
 			/>
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</div>
 	);
 }

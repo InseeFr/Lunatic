@@ -10,7 +10,6 @@ export type Props = {
 	onChange?: ChangeEventHandler<HTMLInputElement>;
 	min?: string;
 	max?: string;
-	invalid?: boolean;
 };
 
 function DatepickerInput({
@@ -22,7 +21,6 @@ function DatepickerInput({
 	onChange,
 	min,
 	max,
-	invalid,
 }: Props) {
 	return (
 		<input
@@ -36,7 +34,6 @@ function DatepickerInput({
 			onChange={onChange}
 			min={min}
 			max={max}
-			aria-invalid={invalid}
 		/>
 	);
 }

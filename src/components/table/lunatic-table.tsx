@@ -4,7 +4,6 @@ import LunaticComponent from '../commons/components/lunatic-component-with-label
 import TableOrchestrator from './table-orchestrator';
 import type { LunaticComponentProps } from '../type';
 import { Errors } from '../commons';
-import { getComponentErrors } from '../commons/components/errors/errors';
 
 function LunaticTable(props: LunaticComponentProps<'Table'>) {
 	const {
@@ -48,7 +47,7 @@ function LunaticTable(props: LunaticComponentProps<'Table'>) {
 					/>
 				</Tbody>
 			</Table>
-			<Errors errors={getComponentErrors(errors, id)} />
+			<Errors errors={errors} activeId={id} />
 		</LunaticComponent>
 	);
 }

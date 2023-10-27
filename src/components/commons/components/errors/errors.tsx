@@ -2,19 +2,21 @@ import './errors.scss';
 import type { LunaticError } from '../../../../use-lunatic/type';
 
 type Props = {
-	errors?: LunaticError[];
+	errors?: Record<string, LunaticError[]>;
+	activeId?: string;
 };
 
-/**
- * Display a list of error as simple red text
- */
-function Errors({ errors }: Props) {
+function Errors({ errors, activeId }: Props) {
 	if (!errors) {
+		return null;
+	}
+	const activeErrors = getActiveErrors(errors, activeId);
+	if (!activeErrors) {
 		return null;
 	}
 	return (
 		<div className="lunatic-errors">
-			{errors.map(({ id, errorMessage }) => (
+			{activeErrors.map(({ id, errorMessage }) => (
 				<div key={`error-${id}`} className="lunatic-error">
 					{errorMessage}
 				</div>
@@ -23,20 +25,17 @@ function Errors({ errors }: Props) {
 	);
 }
 
-export function getComponentErrors(
-	errors?: Record<string, LunaticError[]>,
-	componentId?: string
-): LunaticError[] | undefined {
-	if (!componentId || !errors) {
-		return undefined;
-	}
+function getActiveErrors(
+	errors: Record<string, LunaticError[]>,
+	activeId: Props['activeId']
+) {
 	const activeErrors = Object.entries(errors).find(([k]) =>
-		componentId?.trim().endsWith(k)
+		activeId?.trim().endsWith(k)
 	);
 	if (Array.isArray(activeErrors) && Array.isArray(activeErrors[1])) {
 		return activeErrors[1];
 	}
-	return undefined;
+	return null;
 }
 
 export default Errors;

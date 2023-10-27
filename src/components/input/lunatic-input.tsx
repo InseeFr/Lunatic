@@ -2,7 +2,6 @@ import Input from './html/input';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import type { LunaticComponentProps } from '../type';
-import { getComponentErrors } from '../commons/components/errors/errors';
 
 function LunaticInput(props: LunaticComponentProps<'Input'>) {
 	const {
@@ -44,7 +43,7 @@ function LunaticInput(props: LunaticComponentProps<'Input'>) {
 				onChange={onChange}
 				label={label}
 				disabled={disabled}
-				errors={getComponentErrors(errors, id)}
+				errors={errors}
 				required={required}
 				maxLength={maxLength}
 				readOnly={readOnly}

@@ -2,7 +2,6 @@ import React, { type ReactNode } from 'react';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import type { LunaticComponentProps } from '../../type';
 import CheckboxGroup from './html/checkbox-group';
-import { getComponentErrors } from '../../commons/components/errors/errors';
 
 export type CheckboxGroupOption = {
 	label: ReactNode;
@@ -58,7 +57,7 @@ function LunaticCheckboxGroup({
 				id={id}
 				options={options}
 				label={label}
-				errors={getComponentErrors(errors, id)}
+				errors={errors}
 				shortcut={shortcut}
 			/>
 		</LunaticComponent>

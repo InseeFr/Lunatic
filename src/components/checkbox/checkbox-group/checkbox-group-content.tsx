@@ -1,3 +1,4 @@
+import React from 'react';
 import { CheckboxOption } from '../commons';
 import './checkbox.scss';
 import { type CheckboxGroupOption } from './lunatic-checkbox-group';

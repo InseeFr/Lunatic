@@ -2,7 +2,6 @@ import LunaticComponent from '../../commons/components/lunatic-component-without
 import useOnHandleChange from '../../commons/use-on-handle-change';
 import type { LunaticComponentProps } from '../../type';
 import CheckboxBoolean from './html/checkbox-boolean';
-import { getComponentErrors } from '../../commons/components/errors/errors';
 
 function LunaticCheckboxBoolean({
 	value,
@@ -21,7 +20,7 @@ function LunaticCheckboxBoolean({
 	description,
 }: LunaticComponentProps<'CheckboxBoolean'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
-	console.log({ errors, computed: getComponentErrors(errors, id), id });
+
 	return (
 		<LunaticComponent
 			id={id}
@@ -40,7 +39,7 @@ function LunaticCheckboxBoolean({
 				onClick={onChange}
 				disabled={disabled}
 				label={label}
-				errors={getComponentErrors(errors, id)}
+				errors={errors}
 			/>
 		</LunaticComponent>
 	);

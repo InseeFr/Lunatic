@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 import { voidFunction } from '../../../utils/function';
-import { createCustomizableLunaticField, Errors, Label } from '../../commons';
+import { Errors, Label, createCustomizableLunaticField } from '../../commons';
+import { type LunaticBaseProps } from '../../type';
 import InputNumberThousand from './input-number-thousand';
 import './input-number.scss';
-import type { LunaticError } from '../../../use-lunatic/type';
 
 type Props = {
 	id?: string;
@@ -18,7 +18,7 @@ type Props = {
 	label?: ReactNode;
 	description?: string;
 	unit?: string;
-	errors?: LunaticError[];
+	errors?: LunaticBaseProps['errors'];
 };
 
 function InputNumber({
@@ -52,11 +52,10 @@ function InputNumber({
 				labelId={labelId}
 				max={max}
 				decimals={decimals}
-				invalid={!!errors}
 			/>
 
 			{unit && <span>{unit}</span>}
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</div>
 	);
 }

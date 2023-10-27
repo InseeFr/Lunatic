@@ -1,6 +1,7 @@
 import classnames from 'classnames';
-import { type ReactNode, useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { between, forceInt } from '../../../../utils/number';
+import type { LunaticBaseProps } from '../../../type';
 import { createCustomizableLunaticField } from '../../index';
 import Label from '../label';
 import ComboBoxContainer from './combo-box-container';
@@ -11,7 +12,6 @@ import { KEYBOARD_KEY_CODES } from './keyboard-key-codes';
 import { Panel, type PanelProps } from './panel/panel';
 import { ClearButton } from './selection/clear-button';
 import { Selection, type SelectionProps } from './selection/selection';
-import type { LunaticError } from '../../../../use-lunatic/type';
 
 const EMPTY_SEARCH = '';
 
@@ -25,7 +25,7 @@ type Props = SelectionProps &
 		getOptionValue?: (o: ComboBoxOptionType) => string;
 		label?: ReactNode;
 		description?: ReactNode;
-		errors?: LunaticError[];
+		errors?: LunaticBaseProps['errors'];
 		onChange?: (s: string | null) => void;
 		onSelect: (s: string | null) => void;
 		options: ComboBoxOptionType[];
@@ -129,6 +129,7 @@ function ComboBox({
 			<div className="lunatic-combo-box-message-error">{messageError}</div>
 		);
 	}
+	console.log(readOnly);
 
 	return (
 		<ComboBoxContainer
@@ -163,7 +164,6 @@ function ComboBox({
 					options={options}
 					onChange={handleChange}
 					classNamePrefix={classNamePrefix}
-					invalid={!!errors}
 				/>
 				<Panel
 					optionRenderer={optionRenderer}

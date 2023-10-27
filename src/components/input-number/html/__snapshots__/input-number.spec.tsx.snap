@@ -6,7 +6,6 @@ exports[`InputNumber > renders without crashing 1`] = `
     class="lunatic-input-number"
   >
     <input
-      aria-invalid="false"
       aria-labelledby="label-input"
       class=""
       id="input"
@@ -26,7 +25,6 @@ exports[`InputNumber > should handle readOnly 1`] = `
     class="lunatic-input-number"
   >
     <input
-      aria-invalid="false"
       aria-labelledby="label-number"
       class=""
       id="number"

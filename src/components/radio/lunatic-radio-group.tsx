@@ -3,7 +3,6 @@ import LunaticComponent from '../commons/components/lunatic-component-without-la
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { createCustomizableLunaticField } from '../commons';
 import type { LunaticComponentProps } from '../type';
-import { getComponentErrors } from '../commons/components/errors/errors';
 
 function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 	const {
@@ -46,7 +45,7 @@ function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 				value={value}
 				onSelect={onChange}
 				checkboxStyle={checkboxStyle}
-				errors={getComponentErrors(errors, id)}
+				errors={errors}
 				label={label}
 				className={className}
 				shortcut={shortcut}

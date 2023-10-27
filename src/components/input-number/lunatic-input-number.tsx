@@ -2,7 +2,6 @@ import LunaticComponent from '../commons/components/lunatic-component-without-la
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { type LunaticComponentProps } from '../type';
 import InputNumber from './html/input-number';
-import { getComponentErrors } from '../commons/components/errors/errors';
 
 function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 	const {
@@ -51,7 +50,7 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 				decimals={decimals}
 				unit={unit}
 				required={required}
-				errors={getComponentErrors(errors, id)}
+				errors={errors}
 			/>
 		</LunaticComponent>
 	);

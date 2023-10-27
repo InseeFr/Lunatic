@@ -25,7 +25,6 @@ export type Props = {
 	labelledBy?: string;
 	label?: ReactNode;
 	codeModality?: string;
-	invalid?: boolean;
 };
 
 function RadioOption({
@@ -43,7 +42,6 @@ function RadioOption({
 	shortcut,
 	codeModality,
 	readOnly,
-	invalid,
 }: Props) {
 	const spanEl = useRef<HTMLSpanElement>(null);
 	const Icon = getIcon(checked, checkboxStyle);
@@ -98,7 +96,6 @@ function RadioOption({
 						onKeyDown={handleKeyDown}
 						aria-labelledby={labelledBy}
 						ref={spanEl}
-						aria-invalid={invalid}
 					>
 						<Icon />
 						<Label id={labelledBy} htmlFor={id} description={description}>

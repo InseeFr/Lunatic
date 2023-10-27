@@ -6,10 +6,9 @@ type Props = {
 	options: CheckboxGroupOption[];
 	id: string;
 	shortcut?: boolean;
-	invalid?: boolean;
 };
 
-function CheckboxGroupContent({ options, id, shortcut, invalid }: Props) {
+function CheckboxGroupContent({ options, id, shortcut }: Props) {
 	const maxIndex = options.length;
 	return (
 		<>
@@ -29,7 +28,6 @@ function CheckboxGroupContent({ options, id, shortcut, invalid }: Props) {
 							description={description}
 							shortcut={shortcut}
 							codeModality={shortcut ? codeModality : undefined}
-							invalid={invalid}
 						/>
 					</div>
 				);

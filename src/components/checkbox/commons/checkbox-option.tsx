@@ -15,7 +15,6 @@ export type CheckboxOptionProps = {
 	description?: LunaticBaseProps['description'];
 	codeModality?: string;
 	shortcut?: boolean;
-	invalid?: boolean;
 };
 
 function CheckboxOption({
@@ -27,7 +26,6 @@ function CheckboxOption({
 	description,
 	codeModality,
 	shortcut,
-	invalid,
 }: CheckboxOptionProps) {
 	const onClickOption = useCallback(
 		function () {
@@ -60,7 +58,6 @@ function CheckboxOption({
 				<span
 					id={id}
 					role="checkbox"
-					aria-invalid={invalid}
 					className={`lunatic-input-checkbox`}
 					aria-checked={checked}
 					tabIndex={0}

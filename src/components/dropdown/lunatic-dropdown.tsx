@@ -3,7 +3,6 @@ import useOnHandleChange from '../commons/use-on-handle-change';
 import Dropdown from './html/dropdown';
 import type { LunaticComponentProps } from '../type';
 import classNames from 'classnames';
-import { getComponentErrors } from '../commons/components/errors/errors';
 
 function LunaticDropdown({
 	id,
@@ -46,7 +45,7 @@ function LunaticDropdown({
 				onSelect={onChange}
 				value={value}
 				className={classNames(className, 'lunatic-dropdown')}
-				errors={getComponentErrors(errors, id)}
+				errors={errors}
 				label={label}
 				readOnly={readOnly}
 			/>

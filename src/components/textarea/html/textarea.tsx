@@ -1,7 +1,7 @@
 import { type ChangeEventHandler, type ReactNode, useCallback } from 'react';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import './textarea.scss';
-import { type LunaticError } from '../../../use-lunatic/type';
+import type { LunaticBaseProps } from '../../type';
 
 type Props = {
 	id?: string;
@@ -13,7 +13,7 @@ type Props = {
 	label?: ReactNode;
 	value?: string | number | null;
 	description?: string;
-	errors?: LunaticError[];
+	errors?: LunaticBaseProps['errors'];
 	readOnly?: boolean;
 	required?: boolean;
 };
@@ -55,9 +55,8 @@ function Textarea({
 				value={checkValue(value)}
 				placeholder={placeholder}
 				readOnly={readOnly}
-				aria-invalid={!!errors}
 			/>
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</div>
 	);
 }

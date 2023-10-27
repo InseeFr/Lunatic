@@ -11,7 +11,7 @@ type Props = {
 	onClick?: (b: boolean) => void;
 	label?: ReactNode;
 	description?: ReactNode;
-	errors?: LunaticError[];
+	errors?: Record<string, LunaticError[]>;
 };
 
 function CheckboxBoolean({
@@ -32,9 +32,8 @@ function CheckboxBoolean({
 				onClick={onClick ?? voidFunction}
 				label={label}
 				description={description}
-				invalid={!!errors}
 			/>
-			<Errors errors={errors} />
+			<Errors errors={errors} activeId={id} />
 		</div>
 	);
 }

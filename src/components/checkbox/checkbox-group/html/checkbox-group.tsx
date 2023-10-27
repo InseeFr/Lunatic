@@ -11,7 +11,7 @@ import { type CheckboxGroupOption } from '../lunatic-checkbox-group';
 
 type Props = {
 	options: CheckboxGroupOption[];
-	errors?: LunaticError[];
+	errors?: Record<string, LunaticError[]>;
 	id: string;
 	label?: ReactNode;
 	description?: ReactNode;
@@ -32,13 +32,8 @@ function CheckboxGroup({
 			legend={label}
 			description={description}
 		>
-			<CheckboxGroupContent
-				id={id}
-				options={options}
-				shortcut={shortcut}
-				invalid={!!errors}
-			/>
-			<Errors errors={errors} />
+			<CheckboxGroupContent id={id} options={options} shortcut={shortcut} />
+			<Errors errors={errors} activeId={id} />
 		</Fieldset>
 	);
 }

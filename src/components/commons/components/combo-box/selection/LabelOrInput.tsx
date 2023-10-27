@@ -2,12 +2,7 @@ import LabelSelection, { type LabelSelectionProps } from './label-selection';
 import Input, { type InputProps } from './input';
 
 type LabelOrInputTypeProps = LabelSelectionProps &
-	InputProps & {
-		editable?: boolean;
-		expanded?: boolean;
-		readOnly?: boolean;
-		invalid?: boolean;
-	};
+	InputProps & { editable?: boolean; expanded?: boolean; readOnly?: boolean };
 
 /**
  * Display the input or the label of the selection based on the state of the Suggester.
@@ -32,7 +27,6 @@ export function LabelOrInput(props: LabelOrInputTypeProps) {
 		id,
 		focused,
 		onChange,
-		invalid,
 	} = props;
 
 	if (displayLabel) {
@@ -50,7 +44,6 @@ export function LabelOrInput(props: LabelOrInputTypeProps) {
 	}
 	return (
 		<Input
-			invalid={invalid}
 			id={`combobox-input-${id}`}
 			className="lunatic-combo-box-input"
 			onChange={onChange}
