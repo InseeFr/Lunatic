@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import {
-	type NumberFormatValues,
 	NumericFormat,
+	type NumberFormatValues,
 	type OnValueChange,
 } from 'react-number-format';
 import { inputNumberPropsI18N } from '../../../i18n';
@@ -28,14 +28,9 @@ const InputNumberThousand = ({
 	readOnly,
 	required,
 	labelId,
-	min,
 	max,
 	decimals,
 }: Props) => {
-	// Decimals is a number indicates the number behind the separator of decimals
-	// Computing step attribute of input according to decimal number
-	const [step] = useState(decimals ? 1 / Math.pow(10, decimals) : 1);
-
 	const handleChange = useCallback<OnValueChange>(
 		function (e) {
 			const val = e.floatValue ?? null;
