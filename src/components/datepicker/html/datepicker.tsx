@@ -30,8 +30,6 @@ function Datepicker({
 	format = 'YYYY-MM-DD',
 	onChange,
 	id,
-	min,
-	max,
 	label,
 	errors,
 	description,
@@ -113,18 +111,6 @@ function Datepicker({
 					{...extraProps}
 				/>
 			</div>
-			{/*
-			<DatepickerInput
-				id={id}
-				labelId={labelId}
-				readOnly={readOnly}
-				disabled={disabled}
-				value={value}
-				onChange={handleChange}
-				min={min}
-				max={max}
-			/>
-			*/}
 			<Errors errors={errors} activeId={id} />
 		</div>
 	);
