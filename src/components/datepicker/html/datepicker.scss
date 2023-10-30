@@ -1,1 +1,19 @@
-// see input.scss
+.lunaticDatepickerFields {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.lunaticDatepickerField input {
+  width: 2.5em;
+}
+
+.lunaticDatepickerFieldLarge input {
+  width: 4.5em;
+}
+
+.lunaticDatepickerHint {
+  display: block;
+  font-weight: 400;
+  font-size: .9em;
+}

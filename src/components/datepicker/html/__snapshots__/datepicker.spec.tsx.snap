@@ -1,34 +1,226 @@
 // Vitest Snapshot v1
 
-exports[`Datepicker > renders without crashing 1`] = `
+exports[`Datepicker > should render properly with format YYYY 1`] = `
 <div>
   <div
     class="lunatic-input"
   >
-    <input
-      aria-labelledby="lunatic-datepicker-datepicker"
-      class="lunatic-datepicker"
-      id="datepicker"
-      type="date"
-      value="1999-01-01"
-    />
+    <div
+      class="lunaticDatepickerFields"
+    >
+      <div
+        class="lunaticDatepickerField"
+      >
+        <label
+          for="datepickerday"
+        >
+          Jour
+          <span
+            class="lunaticDatepickerHint"
+          >
+            Exemple: 14
+          </span>
+        </label>
+        <input
+          id="datepickerday"
+          max="31"
+          min="1"
+          type="number"
+          value="1"
+        />
+      </div>
+      <div
+        class="lunaticDatepickerField"
+      >
+        <label
+          for="datepickermonth"
+        >
+          Mois
+          <span
+            class="lunaticDatepickerHint"
+          >
+            Exemple: 07
+          </span>
+        </label>
+        <input
+          id="datepickermonth"
+          max="12"
+          min="1"
+          type="number"
+          value="1"
+        />
+      </div>
+      <div
+        class="lunaticDatepickerField lunaticDatepickerFieldLarge"
+      >
+        <label
+          for="datepickeryear"
+        >
+          Année
+          <span
+            class="lunaticDatepickerHint"
+          >
+            Exemple: 2023
+          </span>
+        </label>
+        <input
+          id="datepickeryear"
+          min="1"
+          type="number"
+          value="1999"
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;
 
-exports[`Datepicker > should handle readOnly 1`] = `
+exports[`Datepicker > should render properly with format YYYY-MM 1`] = `
 <div>
   <div
     class="lunatic-input"
   >
-    <input
-      aria-labelledby="lunatic-datepicker-Datepicker"
-      class="lunatic-datepicker readOnly"
-      id="Datepicker"
-      readonly=""
-      type="date"
-      value="1980-01-19"
-    />
+    <div
+      class="lunaticDatepickerFields"
+    >
+      <div
+        class="lunaticDatepickerField"
+      >
+        <label
+          for="datepickerday"
+        >
+          Jour
+          <span
+            class="lunaticDatepickerHint"
+          >
+            Exemple: 14
+          </span>
+        </label>
+        <input
+          id="datepickerday"
+          max="31"
+          min="1"
+          type="number"
+          value="1"
+        />
+      </div>
+      <div
+        class="lunaticDatepickerField"
+      >
+        <label
+          for="datepickermonth"
+        >
+          Mois
+          <span
+            class="lunaticDatepickerHint"
+          >
+            Exemple: 07
+          </span>
+        </label>
+        <input
+          id="datepickermonth"
+          max="12"
+          min="1"
+          type="number"
+          value="1"
+        />
+      </div>
+      <div
+        class="lunaticDatepickerField lunaticDatepickerFieldLarge"
+      >
+        <label
+          for="datepickeryear"
+        >
+          Année
+          <span
+            class="lunaticDatepickerHint"
+          >
+            Exemple: 2023
+          </span>
+        </label>
+        <input
+          id="datepickeryear"
+          min="1"
+          type="number"
+          value="1999"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Datepicker > should render properly with format YYYY-MM-DD 1`] = `
+<div>
+  <div
+    class="lunatic-input"
+  >
+    <div
+      class="lunaticDatepickerFields"
+    >
+      <div
+        class="lunaticDatepickerField"
+      >
+        <label
+          for="datepickerday"
+        >
+          Jour
+          <span
+            class="lunaticDatepickerHint"
+          >
+            Exemple: 14
+          </span>
+        </label>
+        <input
+          id="datepickerday"
+          max="31"
+          min="1"
+          type="number"
+          value="1"
+        />
+      </div>
+      <div
+        class="lunaticDatepickerField"
+      >
+        <label
+          for="datepickermonth"
+        >
+          Mois
+          <span
+            class="lunaticDatepickerHint"
+          >
+            Exemple: 07
+          </span>
+        </label>
+        <input
+          id="datepickermonth"
+          max="12"
+          min="1"
+          type="number"
+          value="1"
+        />
+      </div>
+      <div
+        class="lunaticDatepickerField lunaticDatepickerFieldLarge"
+      >
+        <label
+          for="datepickeryear"
+        >
+          Année
+          <span
+            class="lunaticDatepickerHint"
+          >
+            Exemple: 2023
+          </span>
+        </label>
+        <input
+          id="datepickeryear"
+          min="1"
+          type="number"
+          value="1999"
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;

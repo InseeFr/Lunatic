@@ -22,6 +22,7 @@ const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 		missing,
 		missingResponse,
 		management,
+		format,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -39,6 +40,7 @@ const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 			handleChange={handleChange}
 		>
 			<Datepicker
+				format={format}
 				disabled={disabled}
 				readOnly={readOnly}
 				value={value ?? ''}
