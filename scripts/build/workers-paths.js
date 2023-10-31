@@ -11,19 +11,29 @@ const workersPath = {
 		name: 'Append worker',
 		source: `${workersReleaseFolder}/lunatic-append-worker-${version}.js`,
 		dest: `${currentPublicFolder}/lunatic-append-worker-${version}.js`,
-		webpack: `${path.resolve(__dirname)}/webpack-append-worker.config.js`,
+		webpack: {
+			entry: './src/utils/suggester-workers/append-to-index/append.worker.js',
+			filename: `lunatic-append-worker-${version}.js`,
+		},
 	},
 	label: {
 		name: 'Label worker',
 		source: `${workersReleaseFolder}/lunatic-label-worker-${version}.js`,
 		dest: `${currentPublicFolder}/lunatic-label-worker-${version}.js`,
-		webpack: `${path.resolve(__dirname)}/webpack-label-worker.config.js`,
+		webpack: {
+			entry:
+				'./src/utils/suggester-workers/find-best-label/find-best-label.worker.js',
+			filename: `lunatic-label-worker-${version}.js`,
+		},
 	},
 	searching: {
 		name: 'Searching worker',
 		source: `${workersReleaseFolder}/lunatic-searching-worker-${version}.js`,
 		dest: `${currentPublicFolder}/lunatic-searching-worker-${version}.js`,
-		webpack: `${path.resolve(__dirname)}/webpack-searching-worker.config.js`,
+		webpack: {
+			entry: './src/utils/suggester-workers/searching/searching.worker.js',
+			filename: `lunatic-searching-worker-${version}.js`,
+		},
 	},
 };
 
