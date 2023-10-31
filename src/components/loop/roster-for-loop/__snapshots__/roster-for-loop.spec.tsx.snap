@@ -1,0 +1,86 @@
+// Vitest Snapshot v1
+
+exports[`RosterForLoop > renders the right number of columns 1`] = `
+<div>
+  <table
+    class="lunatic-table"
+    id="table-table"
+  >
+    <tbody
+      class="lunatic-table-tbody"
+      id="lunatic-table-tbody-table"
+    >
+      <tr
+        class="lunatic-table-tr"
+        id="lunatic-table-tr-table-0"
+      >
+        <td
+          class="lunatic-table-td"
+          id="lunatic-table-td-jrc3ye5q-QOP-lo6tcvvx-0-0-undefined-undefined"
+        >
+          <div
+            class="field-container"
+          >
+            <div
+              class="field"
+            >
+              <div
+                class="lunatic-input"
+              >
+                <input
+                  aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-0"
+                  autocomplete="off"
+                  id="jrc3ye5q-QOP-lo6tcvvx-0"
+                  maxlength="249"
+                  type="text"
+                  value="azeaze"
+                />
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class="lunatic-table-tr"
+        id="lunatic-table-tr-table-1"
+      >
+        <td
+          class="lunatic-table-td"
+          id="lunatic-table-td-jrc3ye5q-QOP-lo6tcvvx-1-1-undefined-undefined"
+        >
+          <div
+            class="field-container"
+          >
+            <div
+              class="field"
+            >
+              <div
+                class="lunatic-input"
+              >
+                <input
+                  aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-1"
+                  autocomplete="off"
+                  id="jrc3ye5q-QOP-lo6tcvvx-1"
+                  maxlength="249"
+                  type="text"
+                  value="azeaze"
+                />
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <input
+    class="button-lunatic"
+    type="button"
+    value="Ceci est un test"
+  />
+  <input
+    class="button-lunatic"
+    type="button"
+    value="Remove row"
+  />
+</div>
+`;
