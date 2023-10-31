@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { expectLunaticData, goToStory, gotoNextPage } from './utils';
 
 const stories = [
@@ -19,6 +19,7 @@ for (const [label, story] of stories) {
 		await page.getByLabel('Âge de Jane').click();
 		await page.getByLabel('Âge de Jane').fill('20');
 		await page.getByRole('button', { name: 'Next' }).click();
+		await page.getByText('Commencez votre saisie...').nth(0).click();
 		await page.getByText('Sa fille, son fils').click();
 		await expect(page.getByText('Sa mère, son père')).toBeVisible();
 		await gotoNextPage(page, 2);

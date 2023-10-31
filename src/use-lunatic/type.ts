@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
+import { type ExpressionLogger } from './commons/execute-expression/create-execute-expression';
 import type {
 	ComponentType,
 	ControlType,
 	LunaticSource,
 	Variable,
 } from './type-source';
-import { type ExpressionLogger } from './commons/execute-expression/create-execute-expression';
 import { SuggesterStatus } from './use-suggesters';
 
 export type LunaticComponentDefinition<
@@ -177,4 +177,5 @@ export type LunaticState = {
 		status: SuggesterStatus;
 		timestamp: number;
 	};
+	workersBasePath?: string;
 };
