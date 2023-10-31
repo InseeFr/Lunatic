@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react';
+import type { LunaticError } from '../../../use-lunatic/type';
+import type { LunaticComponentProps } from '../../type';
 import Suggester from '../html/suggester';
 import createSearching from '../searching';
 import CheckStore from './check-store';
 import { SuggesterStatus } from './suggester-status';
-import type { LunaticComponentProps } from '../../type';
-import type { LunaticError } from '../../../use-lunatic/type';
 
 type Props = Pick<
 	LunaticComponentProps<'Suggester'>,
@@ -23,6 +23,7 @@ type Props = Pick<
 > & {
 	errors?: LunaticError[];
 	onSelect: (v: string | null) => void;
+	workersBasePath?: string;
 };
 
 export function IDBSuggester({
@@ -40,17 +41,18 @@ export function IDBSuggester({
 	getSuggesterStatus,
 	errors,
 	readOnly,
+	workersBasePath,
 }: Props) {
 	const [store, setStore] = useState(undefined);
 
 	const searching = useMemo(
 		function () {
 			if (store) {
-				return createSearching(storeName, idbVersion);
+				return createSearching(storeName, idbVersion, workersBasePath);
 			}
 			return undefined;
 		},
-		[storeName, idbVersion, store]
+		[storeName, idbVersion, store, workersBasePath]
 	);
 
 	return (

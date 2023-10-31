@@ -1,25 +1,25 @@
 import {
-	type FunctionComponent,
 	useCallback,
 	useEffect,
 	useMemo,
 	useReducer,
+	type FunctionComponent,
 } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
 import type { LunaticData, LunaticState } from './type';
 
+import type { LunaticComponentType } from '../components/type';
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
-import { getQuestionnaireData } from './commons/get-data';
-import INITIAL_STATE from './initial-state';
-import { createLunaticProvider } from './lunatic-context';
-import type { LunaticSource } from './type-source';
-import type { LunaticComponentType } from '../components/type';
 import compileControlsLib from './commons/compile-controls';
+import { getQuestionnaireData } from './commons/get-data';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
+import INITIAL_STATE from './initial-state';
+import { createLunaticProvider } from './lunatic-context';
 import reducer from './reducer';
+import type { LunaticSource } from './type-source';
 import { useSuggesters } from './use-suggesters';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
@@ -56,6 +56,7 @@ function useLunatic(
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
+		workersBasePath = undefined,
 	}: {
 		features?: LunaticState['features'];
 		preferences?: LunaticState['preferences'];
@@ -75,6 +76,8 @@ function useLunatic(
 		missingShortcut?: { dontKnow: string; refused: string };
 		dontKnowButton?: string;
 		refusedButton?: string;
+		// Enable workers on Micro frontend (worker deployed in another server than the current)
+		workersBasePath?: string;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -112,6 +115,7 @@ function useLunatic(
 		auto: autoSuggesterLoading,
 		getReferentiel,
 		suggesters,
+		workersBasePath,
 	});
 
 	const compileControls = useCallback(
@@ -211,6 +215,7 @@ function useLunatic(
 					goNextPage,
 					goPreviousPage,
 					withOverview,
+					workersBasePath,
 				})
 			);
 		},
@@ -230,6 +235,7 @@ function useLunatic(
 			goNextPage,
 			goPreviousPage,
 			lastReachedPage,
+			workersBasePath,
 		]
 	);
 

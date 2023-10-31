@@ -1,7 +1,7 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "2.6.2",
-	"workersVersion": "0.2.5-experimental",
+	"version": "2.6.3-rc.2",
+	"workersVersion": "0.3.0-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -26,7 +26,10 @@
 	"main": "lib/index.js",
 	"types": "lib/src/index.d.ts",
 	"files": [
-		"lib"
+		"lib",
+		"workers-release",
+		"scripts/build/workers-paths.js",
+		"scripts/build/add-workers-to-public.js"
 	],
 	"scripts": {
 		"test": "vitest run",
@@ -42,13 +45,15 @@
 		"format": "npm run _format -- --write",
 		"format:check": "npm run _format -- --list-different",
 		"test-coverage": "vitest run --coverage",
-		"build": "babel src --out-dir lib --extensions \".ts,.js,.tsx,.jsx\" --copy-files && tsc --project tsconfig.prod.json",
-		"build-append-worker": "webpack --config ./webpack-append-worker.config.js",
-		"build-searching-worker": "webpack --config ./webpack-searching-worker.config.js",
-		"build-label-worker": "webpack --config ./webpack-label-worker.config.js",
-		"build-workers": "yarn build-append-worker && yarn build-searching-worker && yarn build-label-worker",
-		"storybook": "start-storybook -p 9999 -s ./public",
-		"build-storybook": "build-storybook"
+		"build-workers": "node ./scripts/build/build-workers.js",
+		"build": "babel src --out-dir lib --extensions \".ts,.js,.tsx,.jsx\" --copy-files && tsc --project tsconfig.prod.json && npm run build-workers",
+		"prepare-workers": "npm run build-workers && node ./scripts/build/add-workers-to-public.js",
+		"postinstall": "node ./scripts/build/add-workers-to-public.js",
+		"storybook": "npm run prepare-workers && start-storybook -p 9999 -s ./public",
+		"build-storybook": "npm run prepare-workers && build-storybook"
+	},
+	"bin": {
+		"workers": "./scripts/build/add-workers-to-public.js"
 	},
 	"keywords": [
 		"react",

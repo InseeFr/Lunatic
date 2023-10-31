@@ -54,6 +54,7 @@ export type ActionInit = {
 		goNextPage: () => void;
 		goPreviousPage: () => void;
 		withOverview: boolean;
+		workersBasePath?: string;
 	};
 };
 
