@@ -12,6 +12,8 @@ const lunaticPackageJson = require('../../package.json');
  * Copy worker only if not exists
  */
 const copyWorkerToPublicFolder = () => {
+	console.log('Running add-workers-to-public....');
+
 	if (!fs.existsSync(currentPublicFolder)) {
 		fs.mkdirSync(currentPublicFolder, { recursive: true });
 	}
