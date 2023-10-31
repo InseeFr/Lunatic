@@ -3,6 +3,7 @@ import { createCustomizableLunaticField } from '../commons';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import type { LunaticComponentProps } from '../type';
+import { getComponentErrors } from '../commons/components/errors/errors';
 
 const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 	const {
@@ -48,7 +49,7 @@ const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 				max={max}
 				label={label}
 				description={description}
-				errors={errors}
+				errors={getComponentErrors(errors, id)}
 			/>
 		</LunaticComponent>
 	);

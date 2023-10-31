@@ -183,4 +183,5 @@ export type LunaticState = {
 		status: SuggesterStatus;
 		timestamp: number;
 	};
+	workersBasePath?: string;
 };

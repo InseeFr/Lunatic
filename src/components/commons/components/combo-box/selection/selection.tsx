@@ -12,6 +12,7 @@ export type SelectionProps = {
 	id?: string;
 	classNamePrefix?: string;
 	readOnly?: boolean;
+	invalid?: boolean;
 } & LabelSelectionProps;
 
 export function Selection({
@@ -29,6 +30,7 @@ export function Selection({
 	labelId,
 	id,
 	classNamePrefix,
+	invalid,
 }: SelectionProps) {
 	const onChangeEx = useCallback<ChangeEventHandler<HTMLInputElement>>(
 		(e) => {
@@ -46,6 +48,7 @@ export function Selection({
 			classNamePrefix={classNamePrefix}
 		>
 			<LabelOrInput
+				invalid={invalid}
 				labelRenderer={labelRenderer}
 				placeholder={placeholder}
 				selectedIndex={selectedIndex}

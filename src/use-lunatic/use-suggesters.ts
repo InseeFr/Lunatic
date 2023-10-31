@@ -1,12 +1,13 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
-import type { SuggesterType } from './type-source';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { initStore } from '../utils/store-tools/initStore';
 import { createAppendTask } from '../utils/suggester-workers/append-to-index/create-append-task';
+import type { SuggesterType } from './type-source';
 
 type useSuggestersType = {
 	auto: boolean;
 	getReferentiel?: (name: string) => Promise<Array<unknown>>;
 	suggesters?: Array<SuggesterType>;
+	workersBasePath?: string;
 };
 
 export enum SuggesterStatus {
@@ -36,6 +37,7 @@ export function useSuggesters({
 	auto,
 	getReferentiel,
 	suggesters,
+	workersBasePath,
 }: useSuggestersType) {
 	const status = useRef<Record<string, SuggesterStatus>>();
 
@@ -97,7 +99,8 @@ export function useSuggesters({
 									const [append, abort] = createAppendTask<any>(
 										store,
 										1,
-										nothing
+										nothing,
+										workersBasePath
 									);
 									aborts.push(abort);
 									const result = await append(data);
@@ -124,7 +127,7 @@ export function useSuggesters({
 				};
 			}
 		},
-		[suggesters, auto, getReferentiel, status]
+		[suggesters, auto, getReferentiel, status, workersBasePath]
 	);
 
 	return getSuggesterStatus;

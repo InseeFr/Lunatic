@@ -19,6 +19,7 @@ node_modules/
 /bundle-report
 playwright-report
 /workers-release
+/public/workers
 
 # Optional REPL history
 .node_repl_history

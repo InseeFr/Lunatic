@@ -21,7 +21,7 @@ type Props = {
 	searching?: (s: string | null) => Promise<{ results: ComboBoxOptionType[] }>;
 	label?: ReactNode;
 	description?: ReactNode;
-	errors?: Record<string, LunaticError[]>;
+	errors?: LunaticError[];
 };
 
 function Suggester({
