@@ -1,13 +1,8 @@
-import {
-	type ChangeEventHandler,
-	type ReactNode,
-	useCallback,
-	useState,
-} from 'react';
-import { createCustomizableLunaticField, Errors, Label } from '../../commons';
-import './datepicker.scss';
+import { useState, type ReactNode } from 'react';
 import type { LunaticError } from '../../../use-lunatic/type';
+import { Errors, Label, createCustomizableLunaticField } from '../../commons';
 import { DatepickerField } from './DatepickerField';
+import './datepicker.scss';
 
 type Props = {
 	label?: ReactNode;
