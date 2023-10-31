@@ -16,7 +16,7 @@ export type RadioGroupProps = {
 	label?: ReactNode;
 	onSelect: (v: string | null) => void;
 	checkboxStyle?: boolean;
-	errors?: Record<string, LunaticError[]>;
+	errors?: LunaticError[];
 	className?: string;
 	shortcut?: boolean;
 	disabled?: boolean;
@@ -48,8 +48,9 @@ function RadioGroup({
 				shortcut={shortcut}
 				disabled={disabled}
 				readOnly={readOnly}
+				invalid={!!errors}
 			/>
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={errors} />
 		</Fieldset>
 	);
 }

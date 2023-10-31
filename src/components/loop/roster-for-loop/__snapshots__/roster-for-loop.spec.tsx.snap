@@ -28,6 +28,7 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
                 class="lunatic-input"
               >
                 <input
+                  aria-invalid="false"
                   aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-0"
                   autocomplete="off"
                   id="jrc3ye5q-QOP-lo6tcvvx-0"
@@ -58,6 +59,7 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
                 class="lunatic-input"
               >
                 <input
+                  aria-invalid="false"
                   aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-1"
                   autocomplete="off"
                   id="jrc3ye5q-QOP-lo6tcvvx-1"

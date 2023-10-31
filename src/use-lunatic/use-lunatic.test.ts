@@ -1,11 +1,12 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { describe, expect, it, beforeEach } from 'vitest';
+import { describe, expect, it, vi, beforeEach } from 'vitest';
 import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
 import sourceComponentSet from '../stories/component-set/source.json';
+import sourceCleaning from '../stories/behaviour/cleaning/source.json';
 import type { LunaticData } from './type';
 import { type FilledLunaticComponentProps } from './commons/fill-components/fill-components';
 

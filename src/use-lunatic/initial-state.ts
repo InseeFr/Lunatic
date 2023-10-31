@@ -41,6 +41,7 @@ const INITIAL_STATE: LunaticState = {
 		status: SuggesterStatus.unused,
 		timestamp: 0,
 	}),
+	workersBasePath: undefined,
 };
 
 export default INITIAL_STATE;

@@ -13,6 +13,7 @@ export type InputProps = {
 	value?: string;
 	labelledBy?: string;
 	focused?: boolean;
+	invalid?: boolean;
 } & HTMLAttributes<HTMLInputElement>;
 
 function Input({
@@ -24,6 +25,7 @@ function Input({
 	labelledBy,
 	focused,
 	className,
+	invalid,
 }: InputProps) {
 	const inputEl = useRef<HTMLInputElement>(null);
 
@@ -49,6 +51,7 @@ function Input({
 			onChange={onChange}
 			value={value}
 			aria-label="lunatic-combo-box"
+			aria-invalid={invalid}
 			title="combo-box"
 			autoComplete="off"
 			autoCapitalize="off"
