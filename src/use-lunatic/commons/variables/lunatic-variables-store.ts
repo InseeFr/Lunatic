@@ -74,6 +74,17 @@ export class LunaticVariablesStore {
 	}
 
 	/**
+	 * Create a new store from an object (useful for testing)
+	 */
+	public static makeFromObject(values: Record<string, unknown> = {}) {
+		const store = new LunaticVariablesStore();
+		for (const name of Object.keys(values)) {
+			store.set(name, values[name]);
+		}
+		return store;
+	}
+
+	/**
 	 * Retrieve variable value
 	 */
 	public get<T>(name: string, iteration?: IterationLevel) {

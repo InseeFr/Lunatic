@@ -16,7 +16,16 @@ describe('lunatic-variables-store', () => {
 		expect(variables.get('FIRSTNAME')).toEqual('John');
 	});
 
-	it('should run simple types', () => {
+	it('should create a store from an object', () => {
+		const store = LunaticVariablesStore.makeFromObject({
+			name: 'John',
+			lastname: 'Doe',
+		});
+		expect(store.get('name')).toEqual('John');
+		expect(store.get('lastname')).toEqual('Doe');
+	});
+
+	it('should run with simple types', () => {
 		expect(variables.run('"Hello world"')).toEqual('Hello world');
 		expect(variables.run('true')).toEqual(true);
 		expect(variables.run('2')).toEqual(2);
