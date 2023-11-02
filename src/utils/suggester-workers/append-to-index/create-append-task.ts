@@ -10,7 +10,7 @@ function consoleLogging(...args: Array<any>) {
 }
 
 /**
- * Only with Worker
+ * Creates methods to communicate with workers for indexing data
  */
 export function createAppendTask<T>(
 	info: SuggesterType,

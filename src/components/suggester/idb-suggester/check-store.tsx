@@ -11,10 +11,13 @@ import { CONSTANTES } from '../../../utils/store-tools';
 type Props = PropsWithChildren<{
 	storeName: string;
 	version: number;
-	setStore: (v: any) => void;
+	onInfo: (v: any) => void;
 }>;
 
-function CheckStore({ storeName, version, setStore, children }: Props) {
+/**
+ * Check the store info displaying a message while it is fetching
+ */
+function CheckStore({ storeName, version, onInfo, children }: Props) {
 	const [ready, setReady] = useState(0);
 	const [refresh, setRefresh] = useState(false);
 
@@ -23,16 +26,15 @@ function CheckStore({ storeName, version, setStore, children }: Props) {
 			try {
 				const db = await openDb(storeName, version);
 				const info = await getEntity(db, CONSTANTES.STORE_INFO_NAME, storeName);
-
 				if (db && info) {
 					setReady(200);
-					setStore(info);
+					onInfo(info);
 				}
 			} catch (e) {
 				setReady(400);
 			}
 		},
-		[storeName, version, setStore]
+		[storeName, version, onInfo]
 	);
 
 	useEffect(
