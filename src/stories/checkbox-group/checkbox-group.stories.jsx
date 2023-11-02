@@ -26,6 +26,13 @@ export const Default = Template.bind({});
 Default.args = {
 	id: 'checkboxGroup',
 	source,
+	shortcut: false,
+};
+
+export const WithShortcut = Template.bind({});
+WithShortcut.args = {
+	id: 'checkboxGroup',
+	source,
 	shortcut: true,
 };
 

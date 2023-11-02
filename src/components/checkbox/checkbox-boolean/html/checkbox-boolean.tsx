@@ -29,7 +29,7 @@ function CheckboxBoolean({
 				disabled={disabled}
 				checked={checked}
 				id={id}
-				onClick={onClick ?? voidFunction}
+				onChange={onClick}
 				label={label}
 				description={description}
 				invalid={!!errors}

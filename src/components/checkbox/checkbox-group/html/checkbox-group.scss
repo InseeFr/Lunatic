@@ -1,12 +1,7 @@
-.lunatic-checkbox-group {
-	legend {
-		.label-description {
-			font-weight: lighter;
-			display: block;
-		}
-	}
-	.lunatic-checkbox-group-option {
-		display: flex;
-		font-size: 13px;
-	}
+.LunaticCheckboxGroup {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: .5rem;
+	margin-bottom: 1rem;
 }

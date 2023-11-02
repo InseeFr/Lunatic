@@ -218,6 +218,10 @@ export type ComponentCheckboxGroupType = {
 		label: LabelType;
 		response: ResponseType;
 		id: string;
+		detail: {
+			label: LabelType;
+			response: ResponseType;
+		};
 	}>;
 };
 

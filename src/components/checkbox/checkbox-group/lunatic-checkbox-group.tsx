@@ -9,7 +9,9 @@ export type CheckboxGroupOption = {
 	name: string;
 	checked: boolean;
 	description?: ReactNode;
-	onClick: (b: boolean) => void;
+	onChange: (v: boolean) => void;
+	onDetailChange?: (v: string | null) => void;
+	detailLabel?: ReactNode;
 };
 
 function LunaticCheckboxGroup({
@@ -27,7 +29,7 @@ function LunaticCheckboxGroup({
 	missing,
 	management,
 }: LunaticComponentProps<'CheckboxGroup'>) {
-	const options = responses.map(({ label, response, description }) => {
+	const options = responses.map(({ label, response, description, detail }) => {
 		const { name } = response;
 
 		return {
@@ -35,9 +37,15 @@ function LunaticCheckboxGroup({
 			name,
 			checked: castValueToBoolean(value, name),
 			description,
-			onClick: function (checked: boolean) {
+			onChange: function (checked: boolean) {
 				handleChange(response, checked);
 			},
+			detailLabel: detail?.label,
+			onDetailChange: detail?.response
+				? (value: string | null) => {
+						handleChange(detail.response, value);
+				  }
+				: undefined,
 		};
 	}) satisfies CheckboxGroupOption[];
 

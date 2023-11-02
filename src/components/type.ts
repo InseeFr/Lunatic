@@ -128,10 +128,14 @@ type ComponentPropsByType = {
 			label: ReactNode;
 			description?: ReactNode;
 			response: { name: string };
+			detail?: {
+				label: ReactNode;
+				response: { name: string };
+			};
 		}>;
 		handleChange: (
 			response: { name: string },
-			value: boolean,
+			value: boolean | string | null,
 			args?: Record<string, unknown>
 		) => void;
 	};

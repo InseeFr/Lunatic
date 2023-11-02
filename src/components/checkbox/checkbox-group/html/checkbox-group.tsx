@@ -1,5 +1,4 @@
 import { type ReactNode } from 'react';
-import CheckboxGroupContent from './checkbox-group-content';
 import {
 	createCustomizableLunaticField,
 	Errors,
@@ -8,6 +7,8 @@ import {
 import './checkbox-group.scss';
 import type { LunaticError } from '../../../../use-lunatic/type';
 import { type CheckboxGroupOption } from '../lunatic-checkbox-group';
+import { CheckboxOption } from '../../commons';
+import { getShortcutKey } from '../../commons/getShortcutKey';
 
 type Props = {
 	options: CheckboxGroupOption[];
@@ -26,18 +27,24 @@ function CheckboxGroup({
 	errors,
 	shortcut,
 }: Props) {
+	const maxIndex = options.length;
 	return (
 		<Fieldset
-			className="lunatic-checkbox-group"
+			className="LunaticCheckboxGroup"
 			legend={label}
 			description={description}
 		>
-			<CheckboxGroupContent
-				id={id}
-				options={options}
-				shortcut={shortcut}
-				invalid={!!errors}
-			/>
+			{options.map((option, index) => (
+				<CheckboxOption
+					key={option.name}
+					{...option}
+					id={`lunatic-checkbox-${id}-${option.name}`}
+					keyboardShortcut={
+						shortcut ? getShortcutKey(index, maxIndex) : undefined
+					}
+					invalid={!!errors}
+				/>
+			))}
 			<Errors errors={errors} />
 		</Fieldset>
 	);

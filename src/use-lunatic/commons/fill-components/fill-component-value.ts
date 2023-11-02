@@ -25,7 +25,7 @@ function getValueForComponent(
 		iteration = state.pager.linksIterations;
 	}
 	if (hasResponses(component)) {
-		return Object.entries(
+		return Object.fromEntries(
 			component.responses?.map(({ response }) => [
 				response.name,
 				state.variables.get(response.name, iteration),
