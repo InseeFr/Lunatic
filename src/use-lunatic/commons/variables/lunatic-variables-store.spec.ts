@@ -16,7 +16,16 @@ describe('lunatic-variables-store', () => {
 		expect(variables.get('FIRSTNAME')).toEqual('John');
 	});
 
-	it('should run simple types', () => {
+	it('should create a store from an object', () => {
+		const store = LunaticVariablesStore.makeFromObject({
+			name: 'John',
+			lastname: 'Doe',
+		});
+		expect(store.get('name')).toEqual('John');
+		expect(store.get('lastname')).toEqual('Doe');
+	});
+
+	it('should run with simple types', () => {
 		expect(variables.run('"Hello world"')).toEqual('Hello world');
 		expect(variables.run('true')).toEqual(true);
 		expect(variables.run('2')).toEqual(2);
@@ -133,6 +142,15 @@ describe('lunatic-variables-store', () => {
 			expect(
 				variables.run('FIRSTNAME || " " || LASTNAME', { iteration: [1] })
 			).toEqual('Jane Doe');
+		});
+		it('should handle global iteration variable', () => {
+			variables.set('FIRSTNAME', ['John', 'Jane']);
+			variables.setCalculated(
+				'FULLNAME',
+				'FIRSTNAME || " " || cast(GLOBAL_ITERATION_INDEX, string)'
+			);
+			expect(variables.get('FULLNAME', [0])).toEqual('John 0');
+			expect(variables.get('FULLNAME', [1])).toEqual('Jane 1');
 		});
 	});
 

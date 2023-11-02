@@ -6,7 +6,7 @@ export type FilledProps = { value?: unknown };
 
 export function fillComponentValue(
 	component: LunaticComponentDefinition,
-	state: LunaticState
+	state: Pick<LunaticState, 'pager' | 'variables'>
 ): LunaticComponentDefinition & FilledProps {
 	return {
 		...component,
@@ -16,7 +16,7 @@ export function fillComponentValue(
 
 function getValueForComponent(
 	component: LunaticComponentDefinition,
-	state: LunaticState
+	state: Pick<LunaticState, 'pager' | 'variables'>
 ): unknown {
 	let iteration = isNumber(state.pager.iteration)
 		? [state.pager.iteration]
@@ -25,7 +25,7 @@ function getValueForComponent(
 		iteration = state.pager.linksIterations;
 	}
 	if (hasResponses(component)) {
-		return Object.entries(
+		return Object.fromEntries(
 			component.responses?.map(({ response }) => [
 				response.name,
 				state.variables.get(response.name, iteration),

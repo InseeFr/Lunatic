@@ -14,7 +14,7 @@ type Props = {
 	className?: string;
 	value: string | null;
 	label?: ReactNode;
-	errors?: Record<string, LunaticError[]>;
+	errors?: LunaticError[];
 	description?: ReactNode;
 	readOnly?: boolean;
 };

@@ -11,6 +11,8 @@ import { isNumber } from '../../../utils/number';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
+// Special variable that will take the current iteration value
+const iterationVariableName = 'GLOBAL_ITERATION_INDEX';
 
 type IterationLevel = number[];
 type EventArgs = {
@@ -68,6 +70,17 @@ export class LunaticVariablesStore {
 		resizingBehaviour(store, source.resizing);
 		cleaningBehaviour(store, source.cleaning, initialValues);
 		missingBehaviour(store, source.missingBlock);
+		return store;
+	}
+
+	/**
+	 * Create a new store from an object (useful for testing)
+	 */
+	public static makeFromObject(values: Record<string, unknown> = {}) {
+		const store = new LunaticVariablesStore();
+		for (const name of Object.keys(values)) {
+			store.set(name, values[name]);
+		}
 		return store;
 	}
 
@@ -295,6 +308,9 @@ class LunaticVariable {
 		try {
 			return Object.fromEntries(
 				this.getDependencies().map((dep) => {
+					if (dep === iterationVariableName && iteration) {
+						return [dep, iteration[0]];
+					}
 					const dependencyIteration =
 						isNumber(this.iterationDepth) && Array.isArray(iteration)
 							? [iteration[this.iterationDepth]]

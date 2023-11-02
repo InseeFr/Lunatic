@@ -2,6 +2,7 @@ import Switch from './html/switch';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import type { LunaticComponentProps } from '../type';
+import { getComponentErrors } from '../commons/components/errors/errors';
 
 const defaultLabel = { true: 'True', false: 'False' };
 
@@ -42,7 +43,7 @@ function LunaticSwitch({
 				onClick={onClick}
 				statusLabel={statusLabel}
 				label={label}
-				errors={errors}
+				errors={getComponentErrors(errors, id)}
 			/>
 		</LunaticComponent>
 	);
