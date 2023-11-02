@@ -3,7 +3,7 @@ import useOnHandleChange from '../../commons/use-on-handle-change';
 import type { LunaticComponentProps } from '../../type';
 import { getComponentErrors } from '../../commons/components/errors/errors';
 import type { CheckboxGroupOption } from '../checkbox-group/lunatic-checkbox-group';
-import CheckboxGroup from '../checkbox-group/html/checkbox-group';
+import { CheckboxGroup } from '../../commons/components/checkbox-group/checkbox-group';
 
 function LunaticCheckboxOne({
 	id,
@@ -27,7 +27,7 @@ function LunaticCheckboxOne({
 		return {
 			label: option.label,
 			name: response.name,
-			value: value,
+			value: option.value,
 			checked: value === option.value,
 			description: option.description,
 			onChange: (v) => onSelect(v ? option.value : null),
@@ -40,7 +40,13 @@ function LunaticCheckboxOne({
 		};
 	}) satisfies CheckboxGroupOption[];
 
-	console.log({ checkboxOptions });
+	const handleArrowNavigation = (direction: -1 | 1, focusedIndex: number) => {
+		const newIndex = focusedIndex + direction;
+		if (newIndex < 0 || newIndex >= checkboxOptions.length) {
+			return;
+		}
+		onSelect(checkboxOptions[newIndex].value);
+	};
 
 	return (
 		<LunaticComponent
@@ -56,12 +62,12 @@ function LunaticCheckboxOne({
 			handleChange={handleChange}
 		>
 			<CheckboxGroup
-				type="radio"
 				id={id}
 				options={checkboxOptions}
 				label={label}
 				errors={getComponentErrors(errors, id)}
 				shortcut={shortcut}
+				onArrowNavigation={handleArrowNavigation}
 			/>
 		</LunaticComponent>
 	);

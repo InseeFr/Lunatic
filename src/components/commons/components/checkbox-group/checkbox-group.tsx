@@ -1,14 +1,10 @@
 import { type ReactNode } from 'react';
-import {
-	createCustomizableLunaticField,
-	Errors,
-	Fieldset,
-} from '../../../commons';
+import { createCustomizableLunaticField, Errors, Fieldset } from '../../index';
 import './checkbox-group.scss';
 import type { LunaticError } from '../../../../use-lunatic/type';
-import { type CheckboxGroupOption } from '../lunatic-checkbox-group';
-import { CheckboxOption } from '../../commons';
-import { getShortcutKey } from '../../commons/getShortcutKey';
+import { type CheckboxGroupOption } from '../../../checkbox/checkbox-group/lunatic-checkbox-group';
+import { CheckboxOption } from '../../../checkbox/commons';
+import { getShortcutKey } from '../../../checkbox/commons/getShortcutKey';
 
 type Props = {
 	options: CheckboxGroupOption[];
@@ -18,9 +14,11 @@ type Props = {
 	label?: ReactNode;
 	description?: ReactNode;
 	shortcut?: boolean;
+	// Handle arrow navigation (-1 = backward, 1 = forward)
+	onArrowNavigation?: (direction: -1 | 1, index: number) => void;
 };
 
-function CheckboxGroup({
+function CheckboxGroupBase({
 	options,
 	id,
 	label,
@@ -28,6 +26,7 @@ function CheckboxGroup({
 	errors,
 	shortcut,
 	type,
+	onArrowNavigation,
 }: Props) {
 	const maxIndex = options.length;
 	return (
@@ -46,6 +45,11 @@ function CheckboxGroup({
 						shortcut ? getShortcutKey(index, maxIndex) : undefined
 					}
 					invalid={!!errors}
+					onArrowNavigation={
+						onArrowNavigation
+							? (direction) => onArrowNavigation(direction, index)
+							: undefined
+					}
 				/>
 			))}
 			<Errors errors={errors} />
@@ -53,4 +57,7 @@ function CheckboxGroup({
 	);
 }
 
-export default createCustomizableLunaticField(CheckboxGroup, 'CheckboxGroup');
+export const CheckboxGroup = createCustomizableLunaticField(
+	CheckboxGroupBase,
+	'CheckboxGroup'
+);

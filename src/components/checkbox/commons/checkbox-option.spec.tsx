@@ -49,10 +49,4 @@ describe('CheckboxOption', () => {
 		expect(props.onChange).toHaveBeenCalledTimes(1);
 		expect(props.onChange).toHaveBeenCalledWith(true);
 	});
-	it('calls the onChange function when space key is pressed', () => {
-		const { getByRole } = render(<CheckboxOption {...defaultProps} />);
-		const checkbox = getByRole('checkbox');
-		fireEvent.keyDown(checkbox, { code: 'Space' });
-		expect(defaultProps.onChange).toHaveBeenCalledWith(true);
-	});
 });

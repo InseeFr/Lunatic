@@ -2,6 +2,8 @@ import {
 	type KeyboardEventHandler,
 	type MouseEventHandler,
 	type ReactNode,
+	useEffect,
+	useRef,
 	useState,
 } from 'react';
 import classnames from 'classnames';
@@ -12,6 +14,7 @@ import KeyboardEventHandlerComponent from 'react-keyboard-event-handler';
 
 export type CheckboxOptionProps = {
 	id?: string;
+	value?: string;
 	name?: string;
 	disabled?: boolean;
 	type?: 'checkbox' | 'radio';
@@ -25,6 +28,8 @@ export type CheckboxOptionProps = {
 	onChange?: (v: boolean) => void;
 	detailLabel?: ReactNode;
 	onDetailChange?: (v: string | null) => void;
+	// Handle arrow navigation (-1 = backward, 1 = forward)
+	onArrowNavigation?: (direction: -1 | 1) => void;
 };
 
 function CheckboxOption({
@@ -41,20 +46,14 @@ function CheckboxOption({
 	onDetailChange,
 	readOnly,
 	name,
+	onArrowNavigation,
+	value,
 }: CheckboxOptionProps) {
 	const [focused, setFocused] = useState(false);
 	const labelId = `label-${id}`;
 	const hasDetail = !!onDetailChange;
 	const detailId = `${id}-detail`;
-	let handleClick: MouseEventHandler<HTMLInputElement> | undefined = undefined;
-	let handleKeyPress: KeyboardEventHandler<HTMLInputElement> | undefined =
-		undefined;
-
-	// We want to make radio uncheckable
-	if (checked && type === 'radio' && onChange) {
-		handleClick = () => onChange(false);
-		handleKeyPress = keyHandler('space', () => onChange(false));
-	}
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	const handleChange = (isChecked: boolean) => {
 		// Reset the detail answer when unchecked
@@ -63,6 +62,21 @@ function CheckboxOption({
 		}
 		onChange?.(isChecked);
 	};
+
+	const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+		if (['ArrowLeft', 'ArrowUp'].includes(e.key)) {
+			onArrowNavigation?.(-1);
+		} else if (['ArrowRight', 'ArrowDown'].includes(e.key)) {
+			onArrowNavigation?.(1);
+		}
+	};
+
+	// If we want arrow navigation, auto-focus the field when it is checked
+	useEffect(() => {
+		if (onArrowNavigation && checked) {
+			inputRef.current?.focus();
+		}
+	}, [checked, onArrowNavigation]);
 
 	return (
 		<div className="LunaticCheckboxWrapper">
@@ -74,14 +88,15 @@ function CheckboxOption({
 				})}
 			>
 				<input
+					ref={inputRef}
 					name={name}
 					type={type}
 					id={id}
+					value={value}
 					checked={checked}
 					disabled={disabled}
 					aria-invalid={invalid}
-					onClick={handleClick}
-					onKeyDown={handleKeyPress}
+					onKeyDown={handleKeyDown}
 					onChange={(e) => handleChange(e.target.checked)}
 					onFocus={() => setFocused(true)}
 					onBlur={() => setFocused(false)}

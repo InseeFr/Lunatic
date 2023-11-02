@@ -1,7 +1,7 @@
 import React, { type ReactNode } from 'react';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import type { LunaticComponentProps } from '../../type';
-import CheckboxGroup from './html/checkbox-group';
+import { CheckboxGroup } from '../../commons/components/checkbox-group/checkbox-group';
 import { getComponentErrors } from '../../commons/components/errors/errors';
 
 export type CheckboxGroupOption = {

@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
-import CheckboxGroup from './checkbox-group';
+import { CheckboxGroup } from './checkbox-group';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('CheckboxGroupCon', () => {
