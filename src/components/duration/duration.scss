@@ -1,17 +1,9 @@
-.input-field {
-  width: 100px;
-  margin-right: 10px
-}
-.field-group {
+.duration-fields,
+.duration-field {
   display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-
-.input-field-group {
-  display: flex;
-  align-items: first baseline;
-  margin: 5px;
-}
-
-.input-label {
-  margin-right: 5px;
+.duration-field {
+  gap: .5rem;
 }
