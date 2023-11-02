@@ -7,7 +7,7 @@ import './datepicker.scss';
 type Props = {
 	label?: ReactNode;
 	description?: ReactNode;
-	errors?: Record<string, LunaticError[]>;
+	errors?: LunaticError[];
 	disabled?: boolean;
 	readOnly?: boolean;
 	min?: string;
@@ -106,7 +106,7 @@ function Datepicker({
 					{...extraProps}
 				/>
 			</div>
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={errors} />
 		</div>
 	);
 }
