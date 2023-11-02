@@ -1,15 +1,15 @@
 import type { PropsWithChildren } from 'react';
 import classnames from 'classnames';
-import type { LunaticBaseProps } from '../../../type';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import Errors from '../errors';
+import type { LunaticError } from '../../../../use-lunatic/type';
 
 type Props = PropsWithChildren<{
 	classNamePrefix?: string;
 	className?: string;
 	id?: string;
 	classStyle?: string;
-	errors?: LunaticBaseProps['errors'];
+	errors?: LunaticError[];
 }>;
 
 function ComboBoxContainer({
@@ -33,7 +33,7 @@ function ComboBoxContainer({
 		>
 			{children}
 			{/* Errors are called here so that they can be customised */}
-			{errors && <Errors errors={errors} activeId={id} />}
+			{errors && <Errors errors={errors} />}
 		</div>
 	);
 }

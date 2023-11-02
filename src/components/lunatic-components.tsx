@@ -3,11 +3,11 @@ import {
 	type PropsWithChildren,
 	type ReactElement,
 	type ReactNode,
-	useEffect,
 	useRef,
 } from 'react';
 import * as lunaticComponents from './index';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
+import { useAutoFocus } from '../hooks/use-auto-focus';
 import { hasComponentType } from '../use-lunatic/commons/component';
 
 type Props<T extends Record<string, unknown>> = {
@@ -38,20 +38,9 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 }: Props<T>) {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const hasComponents = components.length > 0;
-	useEffect(() => {
-		if (!autoFocusKey || !hasComponents || !wrapperRef.current) {
-			return;
-		}
-
-		const firstFocusableElement = wrapperRef.current?.querySelector(
-			'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-		) as HTMLElement | undefined;
-		// The first element can be focusable
-		if (firstFocusableElement) {
-			return firstFocusableElement.focus();
-		}
-	}, [autoFocusKey, hasComponents]);
 	const WrapperComponent = autoFocusKey ? 'div' : Fragment;
+
+	useAutoFocus(wrapperRef, hasComponents ? autoFocusKey : undefined);
 
 	return (
 		<WrapperComponent

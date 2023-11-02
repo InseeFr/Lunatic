@@ -111,6 +111,42 @@ All the components offered by Lunatic are available in the [src/components](http
 
 To activate the **autofocus**, you need to pass a key in the `autoFocusKey` property of `LunaticComponents`. As soon as this value changes, the first field is focused (a good solution is to pass the `pageTag` provided by `useLunatic`).
 
+### Workers
+
+#### General
+
+Lunatic uses webWorkers to take the load off the main execution frame (e.g. list search).
+
+Workers are normally installed when the library is installed (postinstall scripts). If this is not the case, you can always manually run the command `npx @inseefr/lunatic workers` to add Lunatic workers to your project.
+
+Lunatic workers are added to the public/workers folder of the current project when the library is installed.
+
+If a new version of Lunatic offers new workers, they will be automatically updated.
+This ensures that you always have the right version of workers for the version of Lunatic you're using.
+
+A good practice is to add the public/workers folder to your `.gitignore.`
+
+#### How it works
+
+Workers are loaded into the latest version (version `workersVersion` of package.json) of the public `workers` folder.
+
+It's up to you if you want to load them at runtime from another location.
+Simply specify the base url of the workers folder to useLunatic.
+
+For example, if your workers are hosted on the server `http://localhost:9090/static/final-workers`.
+We would then have the workers available at the addresses :
+
+- `http://localhost:9090/static/final-workers/lunatic-append-worker-0.3.0-experimental.js`
+- `http://localhost:9090/static/final-workers/lunatic-label-worker-0.3.0-experimental.js`
+- `http://localhost:9090/static/final-workers/lunatic-searching-worker-0.3.0-experimental.js`
+
+You'll need to specify the `workersBasePath` props in the useLunatic:
+
+```js
+const { getComponents } = useLunatic(source, data,
+ { features, preferences, ..., workersBasePath: 'http://localhost:9090/static/final-workers' })
+```
+
 ## Customization
 
 By default, the components offered by Lunatic are quite simple with a minimal style. You can customize the fields with your own CSS, but for more complex cases, you can also replace the basic components using the `custom` property that you can pass when calling `useLunatic`.

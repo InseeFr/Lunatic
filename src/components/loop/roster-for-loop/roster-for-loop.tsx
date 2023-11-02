@@ -32,6 +32,7 @@ export const RosterForLoop = createCustomizableLunaticField<
 		iterations,
 		id,
 		getComponents,
+		...otherProps // These props will be passed down to the child components
 	} = props;
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
@@ -69,10 +70,14 @@ export const RosterForLoop = createCustomizableLunaticField<
 				<TableHeader header={headers} id={id} />
 				<Tbody id={id}>
 					{times(nbRows, (n) => (
-						<Tr id={props.id} row={n}>
+						<Tr id={props.id} row={n} key={n}>
 							<LunaticComponents
 								components={getComponents(n)}
-								componentProps={(c) => ({ ...props, ...c, id: `${c.id}-${n}` })}
+								componentProps={(c) => ({
+									...otherProps,
+									...c,
+									id: `${c.id}-${n}`,
+								})}
 								wrapper={({ id, children }) => (
 									<Td id={`${id}-${n}`}>{children}</Td>
 								)}

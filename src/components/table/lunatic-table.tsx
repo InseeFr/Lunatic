@@ -4,6 +4,7 @@ import type { LunaticComponentProps } from '../type';
 import { Errors } from '../commons';
 import { LunaticComponents } from '../lunatic-components';
 import { TableHeader } from './table-header';
+import { getComponentErrors } from '../commons/components/errors/errors';
 
 export function LunaticTable(props: LunaticComponentProps<'Table'>) {
 	const {
@@ -48,7 +49,7 @@ export function LunaticTable(props: LunaticComponentProps<'Table'>) {
 					))}
 				</Tbody>
 			</Table>
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={getComponentErrors(errors, id)} />
 		</LunaticComponent>
 	);
 }

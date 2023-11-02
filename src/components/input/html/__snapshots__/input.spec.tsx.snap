@@ -6,6 +6,7 @@ exports[`Input > renders without crashing 1`] = `
     class="lunatic-input"
   >
     <input
+      aria-invalid="false"
       aria-labelledby="label-input"
       autocomplete="off"
       id="input"
@@ -22,6 +23,7 @@ exports[`Input > should handle readOnly 1`] = `
     class="lunatic-input"
   >
     <input
+      aria-invalid="false"
       aria-labelledby="label-number"
       autocomplete="off"
       id="number"

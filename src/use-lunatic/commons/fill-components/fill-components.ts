@@ -19,6 +19,7 @@ import fillPagination, {
 	type FilledProps as FilledPaginationProps,
 } from './fill-pagination';
 import fillSpecificExpressions from './fill-specific-expression';
+import { fillComponentRequired } from './fill-component-required';
 import { fillIterations } from './fill-iterations';
 
 export type FilledLunaticComponentProps<
@@ -58,6 +59,7 @@ export const fillComponent = compose(
 	fillPagination,
 	fillComponentValue,
 	fillMissingResponse,
+	fillComponentRequired,
 	fillManagement,
 	fillIterations,
 	fillSpecificExpressions

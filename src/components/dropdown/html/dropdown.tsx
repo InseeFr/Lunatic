@@ -3,21 +3,16 @@ import DropdownSimple from './dropdown-simple';
 import DropdownWritable from './dropdown-writable';
 import './dropdown.scss';
 import type { LunaticComponentProps } from '../../type';
+import type { LunaticError } from '../../../use-lunatic/type';
 
 export type DropdownProps = {
 	onSelect: (v: string | null) => void;
 	className?: string;
 	readOnly?: boolean;
+	errors?: LunaticError[];
 } & Pick<
 	LunaticComponentProps<'Dropdown'>,
-	| 'id'
-	| 'disabled'
-	| 'options'
-	| 'writable'
-	| 'value'
-	| 'description'
-	| 'label'
-	| 'errors'
+	'id' | 'disabled' | 'options' | 'writable' | 'value' | 'description' | 'label'
 >;
 
 function Dropdown({

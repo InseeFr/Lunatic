@@ -1,12 +1,12 @@
+import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import useLunatic from '../use-lunatic';
+import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 import type {
 	LunaticComponentDefinition,
 	LunaticError,
 	LunaticState,
 } from '../use-lunatic/type';
-import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
-import useLunatic from '../use-lunatic';
-import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 
 type Formats = 'PTnHnM' | 'PnYnM';
 export type VtlExpression = {
@@ -62,7 +62,7 @@ export type SuggesterOption = {
 
 type ComponentPropsByType = {
 	InputNumber: LunaticBaseProps<number | null> & {
-		min: number;
+		min?: number;
 		max: number;
 		decimals: number;
 		unit?: string;
@@ -198,6 +198,7 @@ type ComponentPropsByType = {
 	};
 	Suggester: LunaticBaseProps<string | null> & {
 		storeName: string;
+		workersBasePath?: string;
 		getSuggesterStatus: (name: string) => {
 			status: SuggesterStatus;
 			timestamp: number;

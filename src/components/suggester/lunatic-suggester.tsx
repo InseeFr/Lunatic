@@ -1,7 +1,8 @@
-import { IDBSuggester } from './idb-suggester';
+import { getComponentErrors } from '../commons/components/errors/errors';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import type { LunaticComponentProps } from '../type';
+import { IDBSuggester } from './idb-suggester';
 
 function LunaticSuggester({
 	id,
@@ -25,6 +26,7 @@ function LunaticSuggester({
 	response,
 	className,
 	getSuggesterStatus,
+	workersBasePath,
 }: LunaticComponentProps<'Suggester'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
@@ -48,11 +50,12 @@ function LunaticSuggester({
 				disabled={disabled}
 				id={id}
 				value={value}
-				errors={errors}
+				errors={getComponentErrors(errors, id)}
 				label={label}
 				getSuggesterStatus={getSuggesterStatus}
 				className={className}
 				readOnly={readOnly}
+				workersBasePath={workersBasePath}
 			/>
 		</LunaticComponent>
 	);
