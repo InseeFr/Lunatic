@@ -14,6 +14,7 @@ type Props = {
 	options: CheckboxGroupOption[];
 	errors?: LunaticError[];
 	id: string;
+	type?: 'checkbox' | 'radio';
 	label?: ReactNode;
 	description?: ReactNode;
 	shortcut?: boolean;
@@ -26,6 +27,7 @@ function CheckboxGroup({
 	description,
 	errors,
 	shortcut,
+	type,
 }: Props) {
 	const maxIndex = options.length;
 	return (
@@ -38,7 +40,8 @@ function CheckboxGroup({
 				<CheckboxOption
 					key={option.name}
 					{...option}
-					id={`lunatic-checkbox-${id}-${option.name}`}
+					type={type}
+					id={`lunatic-checkbox-${id}-${index}`}
 					keyboardShortcut={
 						shortcut ? getShortcutKey(index, maxIndex) : undefined
 					}

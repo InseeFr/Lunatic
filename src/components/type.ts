@@ -144,6 +144,10 @@ type ComponentPropsByType = {
 			description: ReactNode;
 			label: ReactNode;
 			value: string;
+			detail?: {
+				label: ReactNode;
+				response: { name: string };
+			};
 		}>;
 		response: { name: string };
 	};

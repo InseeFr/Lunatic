@@ -275,6 +275,29 @@
 
 		{
 			"variableType": "COLLECTED",
+			"name": "NATIO1N5",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "NATIO1N5DETAIL",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
 			"name": "MOIS1",
 			"values": {
 				"PREVIOUS": null,

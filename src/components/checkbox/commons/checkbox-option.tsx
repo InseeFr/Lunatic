@@ -1,16 +1,24 @@
-import { type ReactNode, useState } from 'react';
+import {
+	type KeyboardEventHandler,
+	type MouseEventHandler,
+	type ReactNode,
+	useState,
+} from 'react';
 import classnames from 'classnames';
 import { createCustomizableLunaticField, Label } from '../../commons';
 import './checkbox-option.scss';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
-import { CheckboxIcon } from '../../commons/icons/checkbox-icon';
+import { keyHandler } from '../../../utils/event';
+import KeyboardEventHandlerComponent from 'react-keyboard-event-handler';
 
 export type CheckboxOptionProps = {
 	id?: string;
+	name?: string;
 	disabled?: boolean;
+	type?: 'checkbox' | 'radio';
 	// Keyboard shortcut that toggle the checkbox
 	keyboardShortcut?: string;
 	invalid?: boolean;
+	readOnly?: boolean;
 	label?: ReactNode;
 	checked?: boolean;
 	description?: ReactNode;
@@ -23,6 +31,7 @@ function CheckboxOption({
 	disabled,
 	checked,
 	id,
+	type = 'checkbox',
 	onChange,
 	label,
 	description,
@@ -30,11 +39,22 @@ function CheckboxOption({
 	invalid,
 	detailLabel,
 	onDetailChange,
+	readOnly,
+	name,
 }: CheckboxOptionProps) {
 	const [focused, setFocused] = useState(false);
 	const labelId = `label-${id}`;
 	const hasDetail = !!onDetailChange;
 	const detailId = `${id}-detail`;
+	let handleClick: MouseEventHandler<HTMLInputElement> | undefined = undefined;
+	let handleKeyPress: KeyboardEventHandler<HTMLInputElement> | undefined =
+		undefined;
+
+	// We want to make radio uncheckable
+	if (checked && type === 'radio' && onChange) {
+		handleClick = () => onChange(false);
+		handleKeyPress = keyHandler('space', () => onChange(false));
+	}
 
 	const handleChange = (isChecked: boolean) => {
 		// Reset the detail answer when unchecked
@@ -54,16 +74,19 @@ function CheckboxOption({
 				})}
 			>
 				<input
-					type="checkbox"
+					name={name}
+					type={type}
 					id={id}
 					checked={checked}
 					disabled={disabled}
 					aria-invalid={invalid}
+					onClick={handleClick}
+					onKeyDown={handleKeyPress}
 					onChange={(e) => handleChange(e.target.checked)}
 					onFocus={() => setFocused(true)}
 					onBlur={() => setFocused(false)}
+					readOnly={readOnly}
 				/>
-				<CheckboxIcon checked={checked} />
 				<Label id={labelId} htmlFor={id} description={description}>
 					{keyboardShortcut && (
 						<span className="code-modality">
@@ -74,7 +97,7 @@ function CheckboxOption({
 				</Label>
 			</div>
 			{keyboardShortcut && (
-				<KeyboardEventHandler
+				<KeyboardEventHandlerComponent
 					handleKeys={[keyboardShortcut]}
 					onKeyEvent={(key, e) => {
 						e.preventDefault();

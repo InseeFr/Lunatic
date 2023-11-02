@@ -17,6 +17,7 @@ const VTL_ATTRIBUTES = [
 	'description',
 	'responses.description',
 	'options.description',
+	'options.detail.label',
 	// Disable controls compilation
 	// 'controls.control',
 	// 'controls.errorMessage',
