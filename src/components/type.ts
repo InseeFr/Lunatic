@@ -1,12 +1,12 @@
-import {
+import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import useLunatic from '../use-lunatic';
+import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
+import type {
 	LunaticComponentDefinition,
 	LunaticError,
-	LunaticExpression,
 	LunaticState,
 } from '../use-lunatic/type';
-import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import { SuggesterStatus } from '../use-lunatic/use-suggesters';
-import useLunatic from '../use-lunatic';
 
 type Formats = 'PTnHnM' | 'PnYnM';
 export type VtlExpression = {
@@ -62,7 +62,7 @@ export type SuggesterOption = {
 
 type ComponentPropsByType = {
 	InputNumber: LunaticBaseProps<number | null> & {
-		min: number;
+		min?: number;
 		max: number;
 		decimals: number;
 		unit?: string;
@@ -84,14 +84,14 @@ type ComponentPropsByType = {
 	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'declarations' | 'label'>;
 	Question: Pick<LunaticBaseProps<unknown>, 'label' | 'description'>;
 	ComponentSet: LunaticBaseProps<unknown> & {
-		components: LunaticComponentDefinition[];
+		components: FilledLunaticComponentProps[];
 		value: Record<string, unknown>;
 		response: undefined;
 	};
 	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
-		iterations?: number;
-		components: LunaticComponentDefinition[];
+		iterations: number;
+		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
 		headers?: Array<{ label: ReactNode }>;
@@ -99,8 +99,8 @@ type ComponentPropsByType = {
 	};
 	Loop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
-		iterations?: number;
-		components: LunaticComponentDefinition[];
+		iterations: number;
+		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
 		headers?: Array<{ label: ReactNode }>;
@@ -113,11 +113,12 @@ type ComponentPropsByType = {
 			rowspan?: number;
 			colspan?: number;
 		}>;
-		body: Array<Array<{ label: LunaticExpression }>>;
+		body: FilledLunaticComponentProps[][];
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};
 	Datepicker: LunaticBaseProps<string | null> & {
+		format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY';
 		min?: string;
 		max?: string;
 		response: { name: string };
@@ -193,9 +194,11 @@ type ComponentPropsByType = {
 		yAxisIterations: number;
 		symLinks: Record<string, Record<string, string>>;
 		value: Record<string, unknown[]>;
+		getComponents: (x: number, y: number) => FilledLunaticComponentProps[];
 	};
 	Suggester: LunaticBaseProps<string | null> & {
 		storeName: string;
+		workersBasePath?: string;
 		getSuggesterStatus: (name: string) => {
 			status: SuggesterStatus;
 			timestamp: number;
@@ -216,12 +219,17 @@ type ComponentPropsByType = {
 	};
 	Summary: LunaticBaseProps<string | null> & {
 		sections: Array<{
-			responses?: Array<{ label: VtlExpression; value: VtlExpression }>;
+			id: string;
+			responses?: Array<{
+				id: string;
+				label: VtlExpression;
+				value: VtlExpression;
+			}>;
 			title?: VtlExpression;
 			iterations?: number;
 		}>;
 	};
-	Modal: LunaticBaseProps<string | null> & {
+	ConfirmationModal: LunaticBaseProps<string | null> & {
 		goToPage: ReturnType<typeof useLunatic>['goToPage'];
 		page: string;
 		goNextPage: () => void;

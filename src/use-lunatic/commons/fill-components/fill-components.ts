@@ -1,32 +1,37 @@
-import { LunaticComponentDefinition, LunaticState } from '../../type';
+import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import fillComponentExpressions, {
-	DeepTranslateExpression,
+	type DeepTranslateExpression,
 } from './fill-component-expressions';
-import fillComponentValue, {
-	FilledProps as FilledValueProps,
+import {
+	fillComponentValue,
+	type FilledProps as FilledValueProps,
 } from './fill-component-value';
 import fillFromState, {
-	FilledProps as FilledHandlersProps,
+	type FilledProps as FilledHandlersProps,
 } from './fill-from-state';
 import fillManagement, {
-	FilledProps as FilledManagementProps,
+	type FilledProps as FilledManagementProps,
 } from './fill-management';
 import fillMissingResponse, {
-	FilledProps as FilledMissingResponseProps,
+	type FilledProps as FilledMissingResponseProps,
 } from './fill-missing-response';
 import fillPagination, {
-	FilledProps as FilledPaginationProps,
+	type FilledProps as FilledPaginationProps,
 } from './fill-pagination';
 import fillSpecificExpressions from './fill-specific-expression';
+import { fillComponentRequired } from './fill-component-required';
+import { fillIterations } from './fill-iterations';
 
-export type LunaticComponentProps<
+export type FilledLunaticComponentProps<
 	T = LunaticComponentDefinition['componentType']
 > = DeepTranslateExpression<LunaticComponentDefinition & { componentType: T }> &
 	FilledManagementProps &
 	FilledValueProps &
 	FilledMissingResponseProps &
 	FilledHandlersProps &
-	FilledPaginationProps;
+	FilledPaginationProps & {
+		conditionFilter?: boolean;
+	};
 
 /**
  * Compose multiple methods together to create a new method
@@ -48,26 +53,39 @@ function compose(...fill: Function[]) {
  *
  * Force typing for this function since it's doo dynamic
  */
-const fillComponent = compose(
+export const fillComponent = compose(
 	fillFromState,
 	fillComponentExpressions,
-	fillSpecificExpressions,
 	fillPagination,
 	fillComponentValue,
 	fillMissingResponse,
-	fillManagement
+	fillComponentRequired,
+	fillManagement,
+	fillIterations,
+	fillSpecificExpressions
 ) as (
 	component: LunaticComponentDefinition,
 	state: LunaticState
-) => LunaticComponentProps;
+) => FilledLunaticComponentProps;
 
+/**
+ * Fill components with values coming from the state, and interpret VTL expression
+ */
 function fillComponents(
 	components: LunaticComponentDefinition[],
 	state: LunaticState
-): LunaticComponentProps[] {
-	return components.map(function (component) {
-		return fillComponent(component, state);
-	});
+): FilledLunaticComponentProps[] {
+	return components
+		.map((component) => fillComponent(component, state))
+		.filter(matchConditionFilter) as FilledLunaticComponentProps[];
+}
+
+function matchConditionFilter({
+	conditionFilter,
+}: {
+	conditionFilter?: boolean;
+}): boolean {
+	return conditionFilter !== undefined ? conditionFilter : true;
 }
 
 export default fillComponents;

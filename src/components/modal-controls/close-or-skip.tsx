@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import { type MouseEventHandler } from 'react';
 import D from '../../i18n';
 import Button from '../button';
 

@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React, { type FunctionComponent } from 'react';
 import ComboBoxLabelSelection from './combo-box-label-selection';
-import { ComboBoxOptionType } from '../combo-box.type';
+import type { ComboBoxOptionType } from '../combo-box.type';
 
 export type LabelSelectionProps = {
 	/**
@@ -17,6 +17,7 @@ export type LabelSelectionProps = {
 	options: Array<ComboBoxOptionType>;
 	search?: string;
 	disabled?: boolean;
+	readOnly?: boolean;
 };
 
 export function LabelSelection({
@@ -26,6 +27,7 @@ export function LabelSelection({
 	options,
 	search,
 	disabled,
+	readOnly,
 }: LabelSelectionProps) {
 	const option =
 		selectedIndex !== undefined ? options[selectedIndex] : undefined;
@@ -37,6 +39,7 @@ export function LabelSelection({
 			placeholder={placeholder}
 			search={search}
 			disabled={disabled}
+			readOnly={readOnly}
 		/>
 	);
 }

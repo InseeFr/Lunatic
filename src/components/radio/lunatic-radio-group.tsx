@@ -2,7 +2,8 @@ import RadioGroup from './html/radio-group';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { createCustomizableLunaticField } from '../commons';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
+import { getComponentErrors } from '../commons/components/errors/errors';
 
 function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 	const {
@@ -23,6 +24,7 @@ function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 		management,
 		className = 'lunatic-radio-group',
 		disabled,
+		readOnly,
 	} = props;
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
@@ -44,11 +46,12 @@ function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 				value={value}
 				onSelect={onChange}
 				checkboxStyle={checkboxStyle}
-				errors={errors}
+				errors={getComponentErrors(errors, id)}
 				label={label}
 				className={className}
 				shortcut={shortcut}
 				disabled={disabled}
+				readOnly={readOnly}
 			/>
 		</LunaticComponent>
 	);

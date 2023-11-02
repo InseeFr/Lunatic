@@ -1,9 +1,9 @@
-import { Action, ActionKind } from '../actions';
-import { LunaticState } from '../type';
-import reduceGoNextPage from './reduce-go-next-page';
+import { ActionKind, type Action } from '../actions';
+import type { LunaticState } from '../type';
+import { reduceGoNextPage } from './reduce-go-next-page';
 import reduceGoPreviousPage from './reduce-go-previous-page';
 import reduceGoToPage from './reduce-go-to-page';
-import reduceHandleChange from './reduce-handle-change';
+import { reduceHandleChange } from './reduce-handle-change';
 import reduceOnInit from './reduce-on-init';
 import reduceOnSetWaiting from './reduce-on-set-waiting';
 import { reduceUpdateState } from './reduce-update-state';
@@ -15,7 +15,7 @@ function reducer(state: LunaticState, action: Action): LunaticState {
 		case ActionKind.GO_PREVIOUS_PAGE:
 			return reduceGoPreviousPage(state);
 		case ActionKind.GO_NEXT_PAGE:
-			return reduceGoNextPage(state, action);
+			return reduceGoNextPage(state);
 		case ActionKind.GO_TO_PAGE:
 			return reduceGoToPage(state, action);
 		case ActionKind.HANDLE_CHANGE:

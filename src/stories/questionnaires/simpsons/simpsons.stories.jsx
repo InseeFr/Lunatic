@@ -1,10 +1,10 @@
-import Orchestrator from '../../utils/orchestrator';
 import React from 'react';
-import defaultArgTypes from '../../utils/default-arg-types';
 import { playwrightToUserEvent } from '../../../../tests/utils/e2e';
-import simpsons from './source';
 import { sleep } from '../../../../tests/utils/timer';
 import { Logger } from '../../../utils/logger';
+import defaultArgTypes from '../../utils/default-arg-types';
+import Orchestrator from '../../utils/orchestrator';
+import simpsons from './source';
 
 const stories = {
 	title: 'Questionnaires/Simpsons',
@@ -183,7 +183,7 @@ Filled.play = async ({ args, canvasElement }) => {
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
 		.getByRole('row', { name: /Leave with pay/ })
-		.getByText('Please, do something...')
+		.getByText('Commencez votre saisie...')
 		.click();
 	await page.getByText('Calendar days').click();
 	await page.getByRole('button', { name: 'Next' }).click();

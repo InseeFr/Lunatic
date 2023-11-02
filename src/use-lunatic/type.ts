@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
 	ComponentType,
 	ControlType,
 	LunaticSource,
 	Variable,
 } from './type-source';
-import { ExpressionLogger } from './commons/execute-expression/create-execute-expression';
 import { SuggesterStatus } from './use-suggesters';
+import type { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
 
 export type LunaticComponentDefinition<
 	T extends ComponentType['componentType'] = ComponentType['componentType']
@@ -15,11 +15,12 @@ export type LunaticControl = ControlType;
 
 export type VTLBindings = { [variableName: string]: unknown };
 
-export type LunaticData = Partial<
-	Record<Exclude<VariableType, 'COLLECTED'>, Record<string, unknown>> & {
-		COLLECTED: Record<string, LunaticCollectedValue>;
-	}
->;
+export type LunaticData = Record<
+	Exclude<VariableType, 'COLLECTED'>,
+	Record<string, unknown>
+> & {
+	COLLECTED: Record<string, LunaticCollectedValue>;
+};
 
 export type LunaticValues = {
 	[variableName: string]: unknown;
@@ -76,9 +77,8 @@ export type LunaticStateVariable = {
 }[LunaticVariable['variableType']];
 
 export type LunaticState = {
-	variables: {
-		[variableName: string]: LunaticStateVariable;
-	};
+	updatedAt: number;
+	variables: LunaticVariablesStore;
 	pages: {
 		[key: number | string]:
 			| {
@@ -144,20 +144,26 @@ export type LunaticState = {
 	handleChange: (
 		response: { name: string },
 		value: any,
-		args?: Record<string, unknown>
+		args?: {
+			iteration?: number[];
+		}
 	) => void;
 	// Run and expression using the value from the state
 	executeExpression: <T extends unknown = unknown>(
 		expression: unknown,
 		args?: {
-			iteration?: number;
-			linksIterations?: number[];
-			logging?: ExpressionLogger;
+			iteration?: number | number[];
+			// @deprecated
 			bindingDependencies?: string[];
+			deps?: string[];
 		}
 	) => T;
 	// Update the value collected for the variable
-	updateBindings: (variableName: string, value: unknown) => unknown;
+	updateBindings: (
+		variableName: string,
+		value: unknown,
+		options: { iteration?: number[] }
+	) => unknown;
 	// Enable controls for data (form validation)
 	activeControls: boolean;
 	// enable shortcut on radio/checkbox/missing buttons
@@ -177,4 +183,5 @@ export type LunaticState = {
 		status: SuggesterStatus;
 		timestamp: number;
 	};
+	workersBasePath?: string;
 };

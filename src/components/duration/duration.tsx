@@ -1,6 +1,6 @@
 import './duration.scss';
 import { useOnHandleChange } from '../commons';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import DurationInput from './durationInput';
 
@@ -38,10 +38,13 @@ function Duration(props: LunaticComponentProps<'Duration'>) {
 			description={description}
 			handleChange={handleChange}
 		>
-			<div className="container">
-				{label}
-				<DurationInput value={value} format={format} onChange={onChange} />
-			</div>
+			<DurationInput
+				id={id}
+				label={label}
+				value={value}
+				format={format}
+				onChange={onChange}
+			/>
 		</LunaticComponent>
 	);
 }

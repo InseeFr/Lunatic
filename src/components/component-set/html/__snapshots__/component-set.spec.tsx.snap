@@ -1,0 +1,126 @@
+// Vitest Snapshot v1
+
+exports[`ComponentSet > renders without crashing 1`] = `
+<div>
+  <fieldset
+    class="lunatic-component-set"
+  >
+    <legend
+      class="lunatic-legend"
+      id="label-componentSet"
+    >
+      component set test
+    </legend>
+    <div
+      class="lunatic lunatic-component"
+    >
+      <div
+        aria-label="subsequence-toto"
+        class="subsequence-lunatic"
+        id="subsequence-toto"
+      >
+        label
+      </div>
+    </div>
+    <div
+      class="lunatic lunatic-component"
+    >
+      <div
+        class="field-container"
+      >
+        <div
+          class="field"
+        >
+          <div
+            class="lunatic-input"
+          >
+            <label
+              class="lunatic-label"
+              for="toto1"
+              id="label-toto1"
+            >
+              input label
+              <span
+                class="label-description"
+              >
+                input description
+              </span>
+            </label>
+            <input
+              aria-invalid="false"
+              aria-labelledby="label-toto1"
+              autocomplete="off"
+              id="toto1"
+              type="text"
+              value="input value"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`ComponentSet > should handle readOnly in sub-components 1`] = `
+<div>
+  <fieldset
+    class="lunatic-component-set"
+  >
+    <legend
+      class="lunatic-legend"
+      id="label-componentSet"
+    >
+      component set test
+    </legend>
+    <div
+      class="lunatic lunatic-component"
+    >
+      <div
+        aria-label="subsequence-toto"
+        class="subsequence-lunatic"
+        id="subsequence-toto"
+      >
+        label
+      </div>
+    </div>
+    <div
+      class="lunatic lunatic-component"
+    >
+      <div
+        class="field-container"
+      >
+        <div
+          class="field"
+        >
+          <div
+            class="lunatic-input"
+          >
+            <label
+              class="lunatic-label"
+              for="toto1"
+              id="label-toto1"
+            >
+              input label
+              <span
+                class="label-description"
+              >
+                input description
+              </span>
+            </label>
+            <input
+              aria-invalid="false"
+              aria-labelledby="label-toto1"
+              autocomplete="off"
+              id="toto1"
+              readonly=""
+              type="text"
+              value="input value"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;

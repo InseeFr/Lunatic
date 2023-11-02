@@ -1,4 +1,8 @@
-import { AbstractDictionary, DictionaryLang, Entries } from './dictionary';
+import {
+	type AbstractDictionary,
+	type DictionaryLang,
+	type Entries,
+} from './dictionary';
 
 /**
  * Based on the locale passed as a paremeter, this function will return

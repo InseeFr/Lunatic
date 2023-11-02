@@ -1,16 +1,17 @@
 import classnames from 'classnames';
-import React, { ChangeEventHandler, ReactNode, useCallback } from 'react';
+import { type ChangeEventHandler, type ReactNode, useCallback } from 'react';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import './input.scss';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticError } from '../../../use-lunatic/type';
 
 type Props = {
 	label?: ReactNode;
 	onChange: (v: string) => void;
 	description?: string;
-	errors: LunaticBaseProps['errors'];
+	errors?: LunaticError[];
 	value?: string | null;
 	disabled?: boolean;
+	readOnly?: boolean;
 	required?: boolean;
 	maxLength?: number;
 	id?: string;
@@ -26,8 +27,10 @@ function Input({
 	description,
 	id,
 	errors,
+	readOnly,
 }: Props) {
 	const labelId = `label-${id}`;
+
 	const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
 		function (e) {
 			const value = e.target.value;
@@ -46,13 +49,15 @@ function Input({
 				autoComplete="off"
 				type="text"
 				disabled={disabled}
+				readOnly={readOnly}
 				value={checkValue(value)}
 				onChange={handleChange}
 				aria-required={required}
 				required={required}
 				maxLength={maxLength}
+				aria-invalid={!!errors}
 			/>
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={errors} />
 		</div>
 	);
 }

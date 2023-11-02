@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it, describe, vi } from 'vitest';
@@ -17,19 +16,19 @@ describe('Fab', () => {
 		expect(button).toHaveAttribute('aria-label', 'Test Title');
 	});
 
-	it('calls onClick when clicked', () => {
+	it('calls onClick when clicked', async () => {
 		const handleClick = vi.fn();
 		render(<Fab onClick={handleClick}>Test Children</Fab>);
 		const button = screen.getByRole('button');
-		userEvent.click(button);
+		await userEvent.click(button);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
 
-	it('calls onKeyDown when a key is pressed', () => {
+	it('calls onKeyDown when a key is pressed', async () => {
 		const handleKeyDown = vi.fn();
 		render(<Fab onKeyDown={handleKeyDown}>Test Children</Fab>);
 		const button = screen.getByRole('button');
-		userEvent.type(button, '{enter}');
+		await userEvent.type(button, '{enter}');
 		expect(handleKeyDown).toHaveBeenCalledTimes(1);
 	});
 

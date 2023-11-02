@@ -1,10 +1,10 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import { type ReactNode, useCallback, useState } from 'react';
 import { ComboBox, createCustomizableLunaticField } from '../../commons';
 import './default-style.scss';
 import { voidFunction } from '../../../utils/function';
-import { LunaticError } from '../../../use-lunatic/type';
-import { ComboBoxOptionType } from '../../commons/components/combo-box/combo-box.type';
-import { LunaticComponentProps } from '../../type';
+import type { LunaticError } from '../../../use-lunatic/type';
+import type { ComboBoxOptionType } from '../../commons/components/combo-box/combo-box.type';
+import type { LunaticComponentProps } from '../../type';
 import D from '../../../i18n';
 
 type Props = {
@@ -16,11 +16,12 @@ type Props = {
 	labelRenderer: LunaticComponentProps<'Suggester'>['labelRenderer'];
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
 	disabled?: boolean;
+	readOnly?: boolean;
 	id?: string;
 	searching?: (s: string | null) => Promise<{ results: ComboBoxOptionType[] }>;
 	label?: ReactNode;
 	description?: ReactNode;
-	errors?: Record<string, LunaticError[]>;
+	errors?: LunaticError[];
 };
 
 function Suggester({
@@ -32,6 +33,7 @@ function Suggester({
 	optionRenderer,
 	value,
 	disabled,
+	readOnly,
 	id,
 	searching,
 	label,
@@ -55,7 +57,7 @@ function Suggester({
 				setOptions(results);
 				setSearch(search);
 				// if a user does not select an option in the list, their search term is saved
-				onSelect(search)
+				onSelect(search);
 			} else {
 				setOptions([]);
 				onSelect(null);
@@ -74,6 +76,7 @@ function Suggester({
 			classNamePrefix={classNamePrefix}
 			onChange={handleChange}
 			disabled={disabled}
+			readOnly={readOnly}
 			options={options}
 			editable={true}
 			onSelect={handleSelect}

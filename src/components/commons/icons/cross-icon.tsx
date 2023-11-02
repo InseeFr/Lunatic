@@ -1,6 +1,5 @@
-import React from 'react';
 import { LunaticIcon } from './lunatic-icon';
-import { IconProps } from './icon-props';
+import { type IconProps } from './icon-props';
 
 export function CrossIcon({ className, width = 32, height = 32 }: IconProps) {
 	return (

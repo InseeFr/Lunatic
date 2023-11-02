@@ -1,4 +1,4 @@
-import { IDBLotItem } from './idb-types';
+import type { IDBLotItem } from './idb-types';
 
 const BULK_LIMIT = 300;
 

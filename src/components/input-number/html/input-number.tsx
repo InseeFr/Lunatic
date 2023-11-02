@@ -1,24 +1,24 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { voidFunction } from '../../../utils/function';
-import { Errors, Label, createCustomizableLunaticField } from '../../commons';
-import { LunaticBaseProps } from '../../type';
+import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import InputNumberThousand from './input-number-thousand';
 import './input-number.scss';
+import type { LunaticError } from '../../../use-lunatic/type';
 
 type Props = {
 	id?: string;
 	onChange?: (n: number | null) => void;
 	value?: number | null;
 	disabled?: boolean;
+	readOnly?: boolean;
 	required?: boolean;
 	labelId?: string;
-	min?: number;
 	max?: number;
 	decimals?: number;
 	label?: ReactNode;
 	description?: string;
 	unit?: string;
-	errors?: LunaticBaseProps['errors'];
+	errors?: LunaticError[];
 };
 
 function InputNumber({
@@ -26,7 +26,7 @@ function InputNumber({
 	value = null,
 	onChange = voidFunction,
 	disabled = false,
-	min,
+	readOnly = false,
 	max,
 	decimals = 0,
 	unit,
@@ -47,15 +47,16 @@ function InputNumber({
 				value={value}
 				onChange={onChange}
 				disabled={disabled}
+				readOnly={readOnly}
 				required={required}
 				labelId={labelId}
-				min={min}
 				max={max}
 				decimals={decimals}
+				invalid={!!errors}
 			/>
 
 			{unit && <span>{unit}</span>}
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={errors} />
 		</div>
 	);
 }

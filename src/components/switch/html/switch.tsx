@@ -1,8 +1,8 @@
-import React, { KeyboardEvent, ReactNode } from 'react';
+import { type KeyboardEvent, type ReactNode } from 'react';
 import classnames from 'classnames';
 import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import './switch.scss';
-import { LunaticError } from '../../../use-lunatic/type';
+import type { LunaticError } from '../../../use-lunatic/type';
 
 type Props = {
 	checked?: boolean;
@@ -11,7 +11,7 @@ type Props = {
 	onClick: (v: boolean) => void;
 	id: string;
 	label: ReactNode;
-	errors?: Record<string, LunaticError[]>;
+	errors?: LunaticError[];
 };
 
 function Switch({
@@ -49,6 +49,7 @@ function Switch({
 				<div
 					role="switch"
 					aria-checked={checked}
+					aria-invalid={!!errors}
 					tabIndex={0}
 					className={classnames('lunatic-switch-container', {
 						disabled,
@@ -64,7 +65,7 @@ function Switch({
 					{labelTrue}
 				</div>
 			</div>
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={errors} />
 		</>
 	);
 }

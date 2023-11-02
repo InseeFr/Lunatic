@@ -1,5 +1,5 @@
-import { ChangeEventHandler, useCallback } from 'react';
-import { LabelSelectionProps } from './label-selection';
+import { type ChangeEventHandler, useCallback } from 'react';
+import { type LabelSelectionProps } from './label-selection';
 import SelectionContainer from './selection-container';
 import { LabelOrInput } from './LabelOrInput';
 
@@ -11,6 +11,8 @@ export type SelectionProps = {
 	labelId?: string;
 	id?: string;
 	classNamePrefix?: string;
+	readOnly?: boolean;
+	invalid?: boolean;
 } & LabelSelectionProps;
 
 export function Selection({
@@ -19,6 +21,7 @@ export function Selection({
 	search,
 	expanded,
 	disabled,
+	readOnly,
 	focused,
 	onChange,
 	selectedIndex,
@@ -27,6 +30,7 @@ export function Selection({
 	labelId,
 	id,
 	classNamePrefix,
+	invalid,
 }: SelectionProps) {
 	const onChangeEx = useCallback<ChangeEventHandler<HTMLInputElement>>(
 		(e) => {
@@ -44,12 +48,14 @@ export function Selection({
 			classNamePrefix={classNamePrefix}
 		>
 			<LabelOrInput
+				invalid={invalid}
 				labelRenderer={labelRenderer}
 				placeholder={placeholder}
 				selectedIndex={selectedIndex}
 				options={options}
 				search={search}
 				disabled={disabled}
+				readOnly={readOnly}
 				onChange={onChangeEx}
 				value={search}
 				focused={focused}

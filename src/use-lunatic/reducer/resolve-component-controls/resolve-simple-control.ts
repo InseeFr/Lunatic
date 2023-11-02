@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { StateForControls } from '../../commons/compile-controls';
-import { LunaticControl, LunaticError } from '../../type';
+import { type ReactNode } from 'react';
+import { type StateForControls } from '../../commons/compile-controls';
+import type { LunaticControl, LunaticError } from '../../type';
 
 export function resolveSimpleControl(
 	state: StateForControls,
@@ -11,7 +11,9 @@ export function resolveSimpleControl(
 	const { criticality, errorMessage, id, typeOfControl } = control;
 	const value = control?.control?.value ?? 'true';
 
-	const result = executeExpression(value, { iteration, linksIterations });
+	const result = executeExpression(value, {
+		iteration: linksIterations ?? iteration,
+	});
 
 	try {
 		/**
@@ -24,7 +26,6 @@ export function resolveSimpleControl(
 
 		const label = executeExpression<ReactNode>(errorMessage, {
 			iteration,
-			linksIterations,
 		});
 		return {
 			criticality,

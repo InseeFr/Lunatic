@@ -1,19 +1,17 @@
-import { Table, Tbody } from '../commons/components/html-table';
-import Header from './header';
+import { Table, Tbody, Td, Tr } from '../commons/components/html-table';
 import LunaticComponent from '../commons/components/lunatic-component-with-label';
-import TableOrchestrator from './table-orchestrator';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 import { Errors } from '../commons';
+import { LunaticComponents } from '../lunatic-components';
+import { TableHeader } from './table-header';
+import { getComponentErrors } from '../commons/components/errors/errors';
 
-function LunaticTable(props: LunaticComponentProps<'Table'>) {
+export function LunaticTable(props: LunaticComponentProps<'Table'>) {
 	const {
 		id,
 		handleChange,
-		value,
 		body,
 		header,
-		executeExpression,
-		iteration,
 		errors,
 		missing,
 		declarations,
@@ -35,19 +33,23 @@ function LunaticTable(props: LunaticComponentProps<'Table'>) {
 			handleChange={handleChange}
 		>
 			<Table id={id}>
-				<Header id={id} header={header} />
+				<TableHeader id={id} header={header} />
 				<Tbody>
-					<TableOrchestrator
-						id={id}
-						body={body}
-						executeExpression={executeExpression}
-						handleChange={handleChange}
-						iteration={iteration}
-						value={value}
-					/>
+					{body.map((row, rowIndex) => (
+						<Tr id={id} row={rowIndex} key={rowIndex}>
+							<LunaticComponents
+								components={row}
+								wrapper={({ children, index }) => (
+									<Td id={id} row={rowIndex} index={index}>
+										{children}
+									</Td>
+								)}
+							/>
+						</Tr>
+					))}
 				</Tbody>
 			</Table>
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={getComponentErrors(errors, id)} />
 		</LunaticComponent>
 	);
 }

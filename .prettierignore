@@ -1,0 +1,9 @@
+/node_modules/
+/.eslintrc.js
+/docs/
+/lib/
+/storybook-static/
+/test-results/
+/CHANGELOG.md
+/.yarn_home
+/public/

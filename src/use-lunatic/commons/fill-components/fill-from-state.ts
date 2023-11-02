@@ -1,4 +1,4 @@
-import { LunaticComponentDefinition, LunaticState } from '../../type';
+import type { LunaticComponentDefinition, LunaticState } from '../../type';
 
 export type FilledProps = {
 	handleChange: LunaticState['handleChange'];
@@ -10,6 +10,9 @@ export type FilledProps = {
 	goPreviousPage: LunaticState['goPreviousPage'];
 };
 
+/**
+ * Add state data as component props
+ */
 function fillFromState(
 	component: LunaticComponentDefinition,
 	state: LunaticState
@@ -21,6 +24,7 @@ function fillFromState(
 		goToPage,
 		shortcut,
 		getSuggesterStatus,
+		workersBasePath,
 		goNextPage,
 		goPreviousPage,
 	} = state;
@@ -32,6 +36,7 @@ function fillFromState(
 		goToPage,
 		shortcut,
 		getSuggesterStatus,
+		workersBasePath,
 		goNextPage,
 		goPreviousPage,
 	};

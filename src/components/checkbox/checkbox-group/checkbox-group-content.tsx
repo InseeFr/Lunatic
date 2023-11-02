@@ -1,7 +1,6 @@
-import React from 'react';
 import { CheckboxOption } from '../commons';
 import './checkbox.scss';
-import { CheckboxGroupOption } from './lunatic-checkbox-group';
+import { type CheckboxGroupOption } from './lunatic-checkbox-group';
 
 type Props = {
 	id: string;

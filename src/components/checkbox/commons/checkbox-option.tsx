@@ -1,10 +1,10 @@
-import { ReactNode, useCallback } from 'react';
+import { type ReactNode, useCallback } from 'react';
 import classnames from 'classnames';
 import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
 import { createCustomizableLunaticField, Label } from '../../commons';
 import './checkbox-option.scss';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import { LunaticBaseProps } from '../../type';
+import type { LunaticBaseProps } from '../../type';
 
 export type CheckboxOptionProps = {
 	disabled?: boolean;
@@ -15,6 +15,7 @@ export type CheckboxOptionProps = {
 	description?: LunaticBaseProps['description'];
 	codeModality?: string;
 	shortcut?: boolean;
+	invalid?: boolean;
 };
 
 function CheckboxOption({
@@ -26,6 +27,7 @@ function CheckboxOption({
 	description,
 	codeModality,
 	shortcut,
+	invalid,
 }: CheckboxOptionProps) {
 	const onClickOption = useCallback(
 		function () {
@@ -58,6 +60,7 @@ function CheckboxOption({
 				<span
 					id={id}
 					role="checkbox"
+					aria-invalid={invalid}
 					className={`lunatic-input-checkbox`}
 					aria-checked={checked}
 					tabIndex={0}

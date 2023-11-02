@@ -17,15 +17,15 @@ describe('Delete', () => {
 		expect(screen.queryByRole('button')).not.toBeInTheDocument();
 	});
 
-	it('should call onClick when clicked and search is not empty', () => {
+	it('should call onClick when clicked and search is not empty', async () => {
 		render(<ClearButton editable search={search} onClick={onClickMock} />);
-		userEvent.click(screen.getByRole('button'));
+		await userEvent.click(screen.getByRole('button'));
 		expect(onClickMock).toHaveBeenCalledTimes(1);
 	});
 
-	it('should not call onClick when clicked and search is empty', () => {
+	it('should not call onClick when clicked and search is empty', async () => {
 		render(<ClearButton editable search="" onClick={onClickMock} />);
-		userEvent.click(screen.getByRole('button'));
+		await userEvent.click(screen.getByRole('button'));
 		expect(onClickMock).toHaveBeenCalledTimes(0);
 	});
 
@@ -40,9 +40,9 @@ describe('Delete', () => {
 		expect(onClick).toHaveBeenCalledTimes(1);
 	});
 
-	it('should not call onClick when the Enter key is pressed and search is empty', () => {
+	it('should not call onClick when the Enter key is pressed and search is empty', async () => {
 		render(<ClearButton editable search="" onClick={onClickMock} />);
-		userEvent.type(screen.getByRole('button'), '{Enter}');
+		await userEvent.type(screen.getByRole('button'), '{Enter}');
 		expect(onClickMock).toHaveBeenCalledTimes(0);
 	});
 

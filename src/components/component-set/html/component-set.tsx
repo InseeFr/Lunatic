@@ -1,7 +1,8 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import { type PropsWithChildren, type ReactNode } from 'react';
 import { createCustomizableLunaticField, Errors } from '../../commons';
-import Legend from './legend';
-import { LunaticError } from '../../../use-lunatic/type';
+import type { LunaticError } from '../../../use-lunatic/type';
+import { ComponentSetLegend } from './component-set-legend';
+import { getComponentErrors } from '../../commons/components/errors/errors';
 
 type Props = PropsWithChildren<{
 	id?: string;
@@ -9,15 +10,18 @@ type Props = PropsWithChildren<{
 	legendText: ReactNode;
 }>;
 
-function ComponentSet({ id, errors, legendText, children }: Props) {
+export function ComponentSetBase({ id, errors, legendText, children }: Props) {
 	const labelId = `label-${id}`;
 	return (
 		<fieldset className="lunatic-component-set">
-			<Legend id={labelId}>{legendText}</Legend>
+			<ComponentSetLegend id={labelId}>{legendText}</ComponentSetLegend>
 			{children}
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={getComponentErrors(errors, id)} />
 		</fieldset>
 	);
 }
 
-export default createCustomizableLunaticField(ComponentSet, 'ComponentSet');
+export const ComponentSet = createCustomizableLunaticField(
+	ComponentSetBase,
+	'ComponentSet'
+);

@@ -1,5 +1,5 @@
 import {
-	FunctionComponent,
+	type FunctionComponent,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -7,21 +7,21 @@ import {
 } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
-import { LunaticData, LunaticState } from './type';
+import type { LunaticData, LunaticState } from './type';
 
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
-import { getQuestionnaireData } from './commons/get-data';
 import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
-import { LunaticSource } from './type-source';
-// @ts-ignore
-import { LunaticComponentType } from '../components/type';
-import compileControlsLib from './commons/compile-controls';
+import type { LunaticSource } from './type-source';
+import type { LunaticComponentType } from '../components/type';
+import { compileControls as compileControlsLib } from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
+import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
+import { useTrackChanges } from '../hooks/use-track-changes';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -32,7 +32,7 @@ const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
 const DEFAULT_DONT_KNOW = D.DK;
 const DEFAULT_REFUSED = D.RF;
-const nothing: LunaticState['handleChange'] = () => {};
+const nothing = () => {};
 
 function useLunatic(
 	source: LunaticSource,
@@ -57,11 +57,13 @@ function useLunatic(
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
+		workersBasePath = undefined,
+		trackChanges = false,
 	}: {
 		features?: LunaticState['features'];
 		preferences?: LunaticState['preferences'];
 		savingType?: LunaticState['savingType'];
-		onChange?: typeof nothing;
+		onChange?: LunaticState['handleChange'];
 		management?: boolean;
 		shortcut?: boolean;
 		initialPage?: string;
@@ -76,6 +78,10 @@ function useLunatic(
 		missingShortcut?: { dontKnow: string; refused: string };
 		dontKnowButton?: string;
 		refusedButton?: string;
+		// Enable workers on Micro frontend (worker deployed in another server than the current)
+		workersBasePath?: string;
+		// Enable change tracking to keep a track of what variable changed (allow using getChangedData())
+		trackChanges?: boolean;
 	}
 ) {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -113,6 +119,7 @@ function useLunatic(
 		auto: autoSuggesterLoading,
 		getReferentiel,
 		suggesters,
+		workersBasePath,
 	});
 
 	const compileControls = useCallback(
@@ -168,16 +175,35 @@ function useLunatic(
 	);
 	const handleChange = useCallback<LunaticState['handleChange']>(
 		(response, value, args) => {
-			dispatch(actions.handleChange(response, value, args));
+			dispatch(
+				actions.handleChange(
+					typeof response === 'string' ? response : response.name,
+					value,
+					args?.iteration
+				)
+			);
 			onChange(response, value, args);
 		},
 		[dispatch, onChange]
 	);
 
-	const getData = (withRefreshedCalculated: boolean) => {
-		const { variables } = state;
-		return getQuestionnaireData({ variables, withRefreshedCalculated });
+	const getData = (
+		withRefreshedCalculated: boolean,
+		variableNames?: string[]
+	) => {
+		return getQuestionnaireData(
+			state.variables,
+			source.variables,
+			withRefreshedCalculated,
+			variableNames
+		);
 	};
+
+	const { resetChangedData, getChangedData } = useTrackChanges(
+		trackChanges,
+		state.variables,
+		(variableNames?: string[]) => getData(false, variableNames)
+	);
 
 	const buildedOverview = useMemo(
 		() => overviewWithChildren(overview),
@@ -206,6 +232,7 @@ function useLunatic(
 					goNextPage,
 					goPreviousPage,
 					withOverview,
+					workersBasePath,
 				})
 			);
 		},
@@ -225,6 +252,7 @@ function useLunatic(
 			goNextPage,
 			goPreviousPage,
 			lastReachedPage,
+			workersBasePath,
 		]
 	);
 
@@ -248,8 +276,11 @@ function useLunatic(
 		waiting,
 		getData,
 		Provider,
+		onChange: handleChange,
 		overview: buildedOverview,
 		loopVariables: useLoopVariables(pager, state.pages),
+		getChangedData,
+		resetChangedData,
 	};
 }
 

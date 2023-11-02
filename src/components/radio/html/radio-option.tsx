@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, ReactNode } from 'react';
+import { useEffect, useRef, useCallback, type ReactNode } from 'react';
 import classnames from 'classnames';
 import { Label, createCustomizableLunaticField } from '../../commons';
 import {
@@ -19,11 +19,13 @@ export type Props = {
 	shortcut?: boolean;
 	checked?: boolean;
 	disabled?: boolean;
+	readOnly?: boolean;
 	onKeyDown?: (v: { key: string; index: number }) => void;
 	index?: number;
 	labelledBy?: string;
 	label?: ReactNode;
 	codeModality?: string;
+	invalid?: boolean;
 };
 
 function RadioOption({
@@ -40,19 +42,21 @@ function RadioOption({
 	description,
 	shortcut,
 	codeModality,
+	readOnly,
+	invalid,
 }: Props) {
 	const spanEl = useRef<HTMLSpanElement>(null);
 	const Icon = getIcon(checked, checkboxStyle);
 	const tabIndex = checked ? 0 : -1;
 	const onClickOption = useCallback(
 		function () {
-			if (disabled) {
+			if (disabled || readOnly) {
 				return;
 			}
 			// on checkboxStyle, clicking on checked value unchecks it, so it acts as if empty answer was clicked
 			checkboxStyle && checked ? onClick(null) : onClick(value);
 		},
-		[value, onClick, checked, checkboxStyle, disabled]
+		[value, onClick, checked, checkboxStyle, disabled, readOnly]
 	);
 
 	const handleKeyDown = useCallback(
@@ -81,7 +85,9 @@ function RadioOption({
 					className={classnames('radio-modality', 'radio-modality-block', {
 						checked,
 						disabled,
+						readOnly,
 					})}
+					aria-invalid={invalid}
 				>
 					<span
 						id={id}

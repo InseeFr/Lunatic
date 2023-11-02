@@ -1,20 +1,23 @@
-import React, {
+import {
+	useCallback,
 	useEffect,
 	useState,
-	useCallback,
-	PropsWithChildren,
+	type PropsWithChildren,
 } from 'react';
-import { openDb, getEntity } from '../../../utils/idb-tools';
-import { CONSTANTES } from '../../../utils/store-tools';
+import { getEntity, openDb } from '../../../utils/idb-tools';
 import { Logger } from '../../../utils/logger';
+import { CONSTANTES } from '../../../utils/store-tools';
 
 type Props = PropsWithChildren<{
 	storeName: string;
 	version: number;
-	setStore: (v: any) => void;
+	onInfo: (v: any) => void;
 }>;
 
-function CheckStore({ storeName, version, setStore, children }: Props) {
+/**
+ * Check the store info displaying a message while it is fetching
+ */
+function CheckStore({ storeName, version, onInfo, children }: Props) {
 	const [ready, setReady] = useState(0);
 	const [refresh, setRefresh] = useState(false);
 
@@ -23,16 +26,15 @@ function CheckStore({ storeName, version, setStore, children }: Props) {
 			try {
 				const db = await openDb(storeName, version);
 				const info = await getEntity(db, CONSTANTES.STORE_INFO_NAME, storeName);
-
 				if (db && info) {
 					setReady(200);
-					setStore(info);
+					onInfo(info);
 				}
 			} catch (e) {
 				setReady(400);
 			}
 		},
-		[storeName, version, setStore]
+		[storeName, version, onInfo]
 	);
 
 	useEffect(
@@ -59,7 +61,7 @@ function CheckStore({ storeName, version, setStore, children }: Props) {
 	if (ready === 0) {
 		return (
 			<div className="lunatic-suggester-in-progress">
-				Le store {storeName} est en cour de chargement.
+				Le store {storeName} est en cours de chargement.
 			</div>
 		);
 	}

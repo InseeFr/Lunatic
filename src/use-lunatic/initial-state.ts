@@ -1,9 +1,13 @@
 import { COLLECTED, VTL } from '../utils/constants';
 import type { LunaticState } from './type';
 import { SuggesterStatus } from './use-suggesters';
+import { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
+import { isTestEnv } from '../utils/env';
 
 const INITIAL_STATE: LunaticState = {
-	variables: {}, // map des variables du questionnaires
+	updatedAt: 0,
+	// There is a bug with this constructor in vitest
+	variables: isTestEnv() ? (null as any) : new LunaticVariablesStore(),
 	pages: {},
 	isInLoop: false,
 	isFirstPage: false,
@@ -37,6 +41,7 @@ const INITIAL_STATE: LunaticState = {
 		status: SuggesterStatus.unused,
 		timestamp: 0,
 	}),
+	workersBasePath: undefined,
 };
 
 export default INITIAL_STATE;

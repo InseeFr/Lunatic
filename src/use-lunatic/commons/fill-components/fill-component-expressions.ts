@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { isObject } from '../../../utils/is-object';
-import {
+import type {
 	LunaticComponentDefinition,
 	LunaticExpression,
 	LunaticState,
@@ -23,12 +23,13 @@ const VTL_ATTRIBUTES = [
 	'controls.iterations',
 	'lines.min',
 	'lines.max',
-	'iterations',
 	'xAxisIterations',
 	'yAxisIterations',
 	'conditionFilter',
 	'headers.label',
 	'header.label',
+	'disabled',
+	'readOnly',
 ];
 
 type CrawlArgs = Pick<LunaticState, 'executeExpression'> &
@@ -57,8 +58,7 @@ function createCrawl({
 			return {
 				...object,
 				[path]: executeExpression(candidate, {
-					iteration,
-					linksIterations,
+					iteration: linksIterations ?? iteration,
 				}),
 			};
 		} catch (e) {
@@ -133,6 +133,9 @@ function fillAttributes(
 	);
 }
 
+/**
+ * Fill props interpreting VTL expression
+ */
 function fillComponentExpressions(
 	component: LunaticComponentDefinition,
 	state: {

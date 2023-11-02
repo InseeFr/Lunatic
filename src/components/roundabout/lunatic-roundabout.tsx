@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import Roundabout from './roundabout';
-import Redirect from './redirect';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 
 /**
  *  Logique fonctionnelle et immuable du composant

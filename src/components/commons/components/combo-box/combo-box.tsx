@@ -1,16 +1,17 @@
-import { useCallback, useReducer, useEffect, ReactNode } from 'react';
 import classnames from 'classnames';
-import { ClearButton } from './selection/clear-button';
-import { INITIAL_STATE, reducer, actions } from './state-management';
-import './combo-box.scss';
-import { ComboBoxOptionType } from './combo-box.type';
-import { SelectionProps, Selection } from './selection/selection';
-import { Panel, PanelProps } from './panel/panel';
+import { type ReactNode, useState } from 'react';
+import { between, forceInt } from '../../../../utils/number';
+import { createCustomizableLunaticField } from '../../index';
+import Label from '../label';
 import ComboBoxContainer from './combo-box-container';
 import ComboBoxContent from './combo-box-content';
-import { LunaticBaseProps } from '../../../type';
-import Label from '../label';
-import { createCustomizableLunaticField } from '../../index';
+import './combo-box.scss';
+import type { ComboBoxOptionType } from './combo-box.type';
+import { KEYBOARD_KEY_CODES } from './keyboard-key-codes';
+import { Panel, type PanelProps } from './panel/panel';
+import { ClearButton } from './selection/clear-button';
+import { Selection, type SelectionProps } from './selection/selection';
+import type { LunaticError } from '../../../../use-lunatic/type';
 
 const EMPTY_SEARCH = '';
 
@@ -24,19 +25,21 @@ type Props = SelectionProps &
 		getOptionValue?: (o: ComboBoxOptionType) => string;
 		label?: ReactNode;
 		description?: ReactNode;
-		errors?: LunaticBaseProps['errors'];
+		errors?: LunaticError[];
 		onChange?: (s: string | null) => void;
 		onSelect: (s: string | null) => void;
 		options: ComboBoxOptionType[];
+		readOnly?: boolean;
 	};
 
 function ComboBox({
 	className,
 	classNamePrefix,
 	classStyle = 'default-style',
-	placeholder = 'Please, do something...',
+	placeholder = 'Commencez votre saisie...',
 	editable = false,
 	disabled,
+	readOnly,
 	id,
 	optionRenderer,
 	labelRenderer,
@@ -51,85 +54,75 @@ function ComboBox({
 	description,
 	errors,
 }: Props) {
+	const [expanded, setExpanded] = useState(false);
+	const [focused, setFocused] = useState(false);
+	const [search, setSearch] = useState(searchProps ?? '');
+	const selectedIndex = getIndexFromOptions(options, value, getOptionValue);
+
 	const labelId = `label-${id}`;
-	const [state, dispatch] = useReducer(reducer, {
-		...INITIAL_STATE,
-		search: searchProps,
-	});
-	const { focused, expanded, search, selectedIndex } = state;
 
-	useEffect(
-		function () {
-			dispatch(actions.onInit({ options, value, getOptionValue }));
-		},
-		[options, value, getOptionValue]
-	);
+	const handleFocus = () => {
+		if (disabled || readOnly) {
+			return;
+		}
+		setExpanded(true);
+		setFocused(true);
+	};
 
-	// This useEffect ensures that onSelect is called when selectedIndex changes
-	useEffect(
-		function () {
-			if (selectedIndex) {
-				const option = options[selectedIndex];
-				onSelect(getOptionValue(option));
-			}
-		},
-		[selectedIndex, options, getOptionValue, onSelect]
-	);
+	const handleBlur = () => {
+		if (disabled || readOnly) {
+			return;
+		}
+		setExpanded(false);
+		setFocused(false);
+	};
 
-	const onFocus = useCallback(
-		function () {
-			if (disabled) {
+	const handleSelect = (index: string | number, close = true) => {
+		const indexNumber = between(forceInt(index), 0, options.length);
+		const option = options[indexNumber];
+		if (close) {
+			setExpanded(false);
+		}
+		onSelect(getOptionValue(option));
+	};
+
+	const handleChange = (s: string | null) => {
+		setSearch(s ?? '');
+		onChange?.(s);
+	};
+
+	const handleClear = () => {
+		setSearch('');
+		setExpanded(false);
+		onChange?.(EMPTY_SEARCH);
+		onSelect(null);
+	};
+
+	const onKeyDown = (key: string) => {
+		const length = options.length;
+		switch (key) {
+			case KEYBOARD_KEY_CODES.Tab:
+			case KEYBOARD_KEY_CODES.Escape:
+				setExpanded(false);
 				return;
-			}
-			dispatch(actions.onFocus());
-		},
-		[disabled]
-	);
-
-	const onBlur = useCallback(
-		function () {
-			if (disabled) {
+			case KEYBOARD_KEY_CODES.ArrowDown:
+				handleSelect((selectedIndex ?? -1) + 1, false);
 				return;
-			}
-			dispatch(actions.onBlur());
-		},
-		[disabled]
-	);
-
-	const handleSelect = useCallback(
-		(index: string) => {
-			const indexNumber = parseInt(index, 10);
-			const option = options[indexNumber];
-			dispatch(actions.onSelect(indexNumber));
-			onSelect(getOptionValue(option));
-		},
-		[options, onSelect, getOptionValue]
-	);
-
-	const handleChange = useCallback(
-		(s: string | null) => {
-			dispatch(actions.onChange(s));
-			onChange?.(s);
-		},
-		[onChange]
-	);
-
-	const onKeyDown = useCallback(
-		(key: string) => {
-			const { length } = options;
-			dispatch(actions.onKeydown(key, length));
-		},
-		[options]
-	);
-
-	const onDelete = useCallback(
-		function () {
-			dispatch(actions.onDelete());
-			onChange?.(EMPTY_SEARCH);
-		},
-		[onChange]
-	);
-	const showClearButton = !disabled;
+			case KEYBOARD_KEY_CODES.ArrowUp:
+				handleSelect((selectedIndex ?? length) - 1, false);
+				return;
+			case KEYBOARD_KEY_CODES.Home:
+				handleSelect(0, false);
+				return;
+			case KEYBOARD_KEY_CODES.End:
+				handleSelect(length - 1, false);
+				return;
+			case KEYBOARD_KEY_CODES.Enter:
+				setExpanded((v) => !v);
+				return;
+		}
+	};
+	const showClearButton = !disabled || !readOnly;
 
 	if (messageError) {
 		return (
@@ -150,8 +143,8 @@ function ComboBox({
 			</Label>
 			<ComboBoxContent
 				focused={focused}
-				onFocus={onFocus}
-				onBlur={onBlur}
+				onFocus={handleFocus}
+				onBlur={handleBlur}
 				onKeyDown={onKeyDown}
 				classNamePrefix={classNamePrefix}
 			>
@@ -163,12 +156,14 @@ function ComboBox({
 					id={id}
 					labelId={labelId}
 					disabled={disabled}
+					readOnly={readOnly}
 					focused={focused}
 					editable={editable}
 					selectedIndex={selectedIndex}
 					options={options}
 					onChange={handleChange}
 					classNamePrefix={classNamePrefix}
+					invalid={!!errors}
 				/>
 				<Panel
 					optionRenderer={optionRenderer}
@@ -185,7 +180,7 @@ function ComboBox({
 				<ClearButton
 					className={classnames({ focused })}
 					search={search}
-					onClick={onDelete}
+					onClick={handleClear}
 					editable={editable}
 				/>
 			)}
@@ -193,6 +188,20 @@ function ComboBox({
 	);
 }
 
+function getIndexFromOptions(
+	options: ComboBoxOptionType[],
+	value: string | null,
+	getOptionValue: (o: ComboBoxOptionType) => string
+): number | undefined {
+	if (!Array.isArray(options)) {
+		return undefined;
+	}
+	return options.map(getOptionValue).findIndex((v) => v === value);
+}
+
+/**
+ * Extract value from an option item
+ */
 function getDefaultOptionValue(option: ComboBoxOptionType = { value: '' }) {
 	const { id, value } = option;
 	return id || value;

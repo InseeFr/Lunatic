@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, PropsWithChildren } from 'react';
+import type { HTMLAttributes, PropsWithChildren } from 'react';
 import classnames from 'classnames';
 import './fab.scss';
 import { voidFunction } from '../../../../utils/function';

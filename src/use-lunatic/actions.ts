@@ -1,5 +1,5 @@
-import { LunaticData, LunaticState } from './type';
-import { LunaticSource } from './type-source';
+import type { LunaticData, LunaticState } from './type';
+import type { LunaticSource } from './type-source';
 import { SuggesterStatus } from './use-suggesters';
 
 export enum ActionKind {
@@ -15,18 +15,9 @@ export enum ActionKind {
 export type ActionHandleChange = {
 	type: ActionKind.HANDLE_CHANGE;
 	payload: {
-		response: { name: string };
+		name: string;
 		value: unknown;
-		args?: {
-			loop?: boolean;
-			length?: number;
-			index?: number;
-			linksIterations?: number[];
-			symLinks?: { [variableName: string]: Record<string, string> };
-			paginatedLoop?: unknown;
-			shallowIteration?: unknown;
-			lengths?: number[];
-		};
+		iteration?: number[];
 	};
 };
 
@@ -53,6 +44,7 @@ export type ActionInit = {
 		goNextPage: () => void;
 		goPreviousPage: () => void;
 		withOverview: boolean;
+		workersBasePath?: string;
 	};
 };
 
@@ -75,7 +67,7 @@ export type ActionUpdateState = {
 
 export type ActionGoNextPage = {
 	type: ActionKind.GO_NEXT_PAGE;
-	payload: { block?: unknown };
+	payload: {};
 };
 
 export type ActionGoPreviousPage = {
@@ -115,13 +107,13 @@ export const goNextPage = actionCreator(ActionKind.GO_NEXT_PAGE);
 export const goToPage = actionCreator(ActionKind.GO_TO_PAGE);
 export const onInit = actionCreator(ActionKind.ON_INIT);
 export const handleChange = (
-	response: ActionHandleChange['payload']['response'],
+	name: ActionHandleChange['payload']['name'],
 	value: ActionHandleChange['payload']['value'],
-	args: ActionHandleChange['payload']['args']
+	iteration: ActionHandleChange['payload']['iteration']
 ): Action =>
 	({
 		type: ActionKind.HANDLE_CHANGE,
-		payload: { response, value, args },
+		payload: { name, value, iteration },
 	} as const);
 
 export const onSetWaiting = (status: boolean): Action =>

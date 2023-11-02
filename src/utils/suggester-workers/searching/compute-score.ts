@@ -1,5 +1,5 @@
 import { melotoOrder } from './meloto-order';
-import { Entities, Entity } from './meloto-order';
+import { type Entities, type Entity } from './meloto-order';
 
 function sort(withScore: Array<Entity & { score: number }>) {
 	return withScore.sort(function (a, b) {

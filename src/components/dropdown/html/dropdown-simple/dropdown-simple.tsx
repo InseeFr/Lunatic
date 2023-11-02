@@ -1,8 +1,7 @@
-import React from 'react';
 import { ComboBox } from '../../../commons';
 import SimpleOptionRenderer from './simple-option-renderer';
 import SimpleLabelRenderer from './simple-label-renderer';
-import { DropdownProps } from '../dropdown';
+import { type DropdownProps } from '../dropdown';
 
 function DropdownSimple({
 	id,
@@ -14,12 +13,14 @@ function DropdownSimple({
 	label,
 	errors,
 	description,
+	readOnly,
 }: DropdownProps) {
 	return (
 		<ComboBox
 			id={id}
 			className={className}
 			disabled={disabled}
+			readOnly={readOnly}
 			options={options}
 			editable={false}
 			onSelect={onSelect}

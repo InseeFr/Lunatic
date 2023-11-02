@@ -1,9 +1,9 @@
-import React from 'react';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import Dropdown from './html/dropdown';
-import { LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 import classNames from 'classnames';
+import { getComponentErrors } from '../commons/components/errors/errors';
 
 function LunaticDropdown({
 	id,
@@ -22,6 +22,7 @@ function LunaticDropdown({
 	missingResponse,
 	management,
 	description,
+	readOnly,
 }: LunaticComponentProps<'Dropdown'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 
@@ -44,9 +45,10 @@ function LunaticDropdown({
 				options={options}
 				onSelect={onChange}
 				value={value}
-				className={classNames(className, "lunatic-dropdown")}
-				errors={errors}
+				className={classNames(className, 'lunatic-dropdown')}
+				errors={getComponentErrors(errors, id)}
 				label={label}
+				readOnly={readOnly}
 			/>
 		</LunaticComponent>
 	);

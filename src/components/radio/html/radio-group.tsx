@@ -5,8 +5,8 @@ import {
 	Fieldset,
 } from '../../commons';
 import './radio-group.scss';
-import { ReactNode } from 'react';
-import { LunaticError } from '../../../use-lunatic/type';
+import type { ReactNode } from 'react';
+import type { LunaticError } from '../../../use-lunatic/type';
 
 export type RadioGroupProps = {
 	options: { description?: ReactNode; label: ReactNode; value: string }[];
@@ -16,10 +16,11 @@ export type RadioGroupProps = {
 	label?: ReactNode;
 	onSelect: (v: string | null) => void;
 	checkboxStyle?: boolean;
-	errors?: Record<string, LunaticError[]>;
+	errors?: LunaticError[];
 	className?: string;
 	shortcut?: boolean;
 	disabled?: boolean;
+	readOnly?: boolean;
 };
 
 function RadioGroup({
@@ -34,6 +35,7 @@ function RadioGroup({
 	className,
 	shortcut,
 	disabled,
+	readOnly,
 }: RadioGroupProps) {
 	return (
 		<Fieldset className={className} legend={label} description={description}>
@@ -45,8 +47,10 @@ function RadioGroup({
 				options={options}
 				shortcut={shortcut}
 				disabled={disabled}
+				readOnly={readOnly}
+				invalid={!!errors}
 			/>
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={errors} />
 		</Fieldset>
 	);
 }

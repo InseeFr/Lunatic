@@ -1,7 +1,7 @@
-import { SuggesterType } from '../../../use-lunatic/type-source';
-import { createWorker } from '../create-worker-ts';
-import { getWorkerPath } from '../../store-tools/worker-path';
+import type { SuggesterType } from '../../../use-lunatic/type-source';
 import { Logger } from '../../logger';
+import { createWorker } from '../create-worker-ts';
+import { WorkerEnum, getWorkerPath } from '../worker-path';
 
 function consoleLogging(...args: Array<any>) {
 	args.forEach(function (any) {
@@ -10,15 +10,18 @@ function consoleLogging(...args: Array<any>) {
 }
 
 /**
- * Only with Worker
+ * Creates methods to communicate with workers for indexing data
  */
 export function createAppendTask<T>(
 	info: SuggesterType,
 	version: number,
-	log = consoleLogging
+	log = consoleLogging,
+	workersBasePath?: string
 ): [(args: Array<any>) => Promise<boolean>, () => void] {
 	const { name, fields, stopWords, meloto } = info;
-	const worker = createWorker(getWorkerPath());
+	const worker = createWorker(
+		getWorkerPath(WorkerEnum.LOADER, workersBasePath)
+	);
 	let start = false;
 	let stop = false;
 

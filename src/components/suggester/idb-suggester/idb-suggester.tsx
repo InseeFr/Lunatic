@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import type { LunaticError } from '../../../use-lunatic/type';
+import type { LunaticComponentProps } from '../../type';
 import Suggester from '../html/suggester';
 import createSearching from '../searching';
 import CheckStore from './check-store';
 import { SuggesterStatus } from './suggester-status';
-import { LunaticComponentProps } from '../../type';
 
 type Props = Pick<
 	LunaticComponentProps<'Suggester'>,
@@ -14,13 +15,15 @@ type Props = Pick<
 	| 'optionRenderer'
 	| 'labelRenderer'
 	| 'disabled'
+	| 'readOnly'
 	| 'value'
 	| 'label'
 	| 'description'
 	| 'getSuggesterStatus'
-	| 'errors'
 > & {
+	errors?: LunaticError[];
 	onSelect: (v: string | null) => void;
+	workersBasePath?: string;
 };
 
 export function IDBSuggester({
@@ -37,17 +40,19 @@ export function IDBSuggester({
 	description,
 	getSuggesterStatus,
 	errors,
+	readOnly,
+	workersBasePath,
 }: Props) {
-	const [store, setStore] = useState(undefined);
+	const [storeInfo, setStoreInfo] = useState(undefined);
 
 	const searching = useMemo(
 		function () {
-			if (store) {
-				return createSearching(storeName, idbVersion);
+			if (storeInfo) {
+				return createSearching(storeName, idbVersion, workersBasePath);
 			}
 			return undefined;
 		},
-		[storeName, idbVersion, store]
+		[storeInfo, storeName, idbVersion, workersBasePath]
 	);
 
 	return (
@@ -60,7 +65,7 @@ export function IDBSuggester({
 			<CheckStore
 				storeName={storeName}
 				version={parseInt(idbVersion, 10)}
-				setStore={setStore}
+				onInfo={setStoreInfo}
 			>
 				<Suggester
 					id={id}
@@ -70,6 +75,7 @@ export function IDBSuggester({
 					onSelect={onSelect}
 					searching={searching}
 					disabled={disabled}
+					readOnly={readOnly}
 					value={value}
 					label={label}
 					description={description}

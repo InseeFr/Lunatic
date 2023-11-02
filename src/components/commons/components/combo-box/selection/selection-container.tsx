@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 
 type Props = PropsWithChildren<{
 	expanded?: boolean;
@@ -23,10 +23,13 @@ function SelectionContainer({
 	return (
 		<div
 			id={comboBoxId}
-			className={classnames(`${classNamePrefix ?? 'lunatic'}-combo-box-selection`, {
-				focused,
-				disabled,
-			})}
+			className={classnames(
+				`${classNamePrefix ?? 'lunatic'}-combo-box-selection`,
+				{
+					focused,
+					disabled,
+				}
+			)}
 			role="combobox"
 			aria-controls={'todo'}
 			aria-haspopup="listbox"

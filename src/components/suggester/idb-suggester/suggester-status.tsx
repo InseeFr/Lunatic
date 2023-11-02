@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import React, { type PropsWithChildren, type ReactNode } from 'react';
 import Label from '../../commons/components/label';
 import SuggesterNotification from './suggester-notification';
 import { SuggesterStatus as SuggesterStatusEnum } from '../../../use-lunatic/use-suggesters';
@@ -20,10 +20,7 @@ type Props = PropsWithChildren<{
 }>;
 
 /**
- * Component witch check status of loading process.
- * it notifies users through SuggesterNotification, a customizable component.
- * @param {} param0
- * @returns
+ * Check the status of suggester status and shows a warning / error
  */
 export function SuggesterStatus({
 	children,

@@ -1,6 +1,6 @@
 import { createCustomizableLunaticField, Errors } from '../../../commons';
-import { ReactNode } from 'react';
-import { LunaticError } from '../../../../use-lunatic/type';
+import type { ReactNode } from 'react';
+import type { LunaticError } from '../../../../use-lunatic/type';
 import { CheckboxOption } from '../../commons';
 import { voidFunction } from '../../../../utils/function';
 
@@ -11,7 +11,7 @@ type Props = {
 	onClick?: (b: boolean) => void;
 	label?: ReactNode;
 	description?: ReactNode;
-	errors?: Record<string, LunaticError[]>;
+	errors?: LunaticError[];
 };
 
 function CheckboxBoolean({
@@ -32,8 +32,9 @@ function CheckboxBoolean({
 				onClick={onClick ?? voidFunction}
 				label={label}
 				description={description}
+				invalid={!!errors}
 			/>
-			<Errors errors={errors} activeId={id} />
+			<Errors errors={errors} />
 		</div>
 	);
 }
