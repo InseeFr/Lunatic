@@ -8,7 +8,7 @@ export enum WorkerEnum {
 
 const version = packageInfo.workersVersion;
 
-const DEFAULT_BASE_PATH = '/workers';
+const DEFAULT_BASE_PATH = 'workers';
 const WORKER_PATH = {
 	APPEND: `lunatic-append-worker-${version}.js`,
 	SEARCH: `lunatic-search-worker-${version}.js`,
