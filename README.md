@@ -136,9 +136,9 @@ Simply specify the base url of the workers folder to useLunatic.
 For example, if your workers are hosted on the server `http://localhost:9090/static/final-workers`.
 We would then have the workers available at the addresses :
 
-- `http://localhost:9090/static/final-workers/lunatic-append-worker-0.3.0-experimental.js`
-- `http://localhost:9090/static/final-workers/lunatic-label-worker-0.3.0-experimental.js`
-- `http://localhost:9090/static/final-workers/lunatic-searching-worker-0.3.0-experimental.js`
+- `http://localhost:9090/static/final-workers/lunatic-append-worker-0.3.0.js`
+- `http://localhost:9090/static/final-workers/lunatic-label-worker-0.3.0.js`
+- `http://localhost:9090/static/final-workers/lunatic-search-worker-0.3.0.js`
 
 You'll need to specify the `workersBasePath` props in the useLunatic:
 

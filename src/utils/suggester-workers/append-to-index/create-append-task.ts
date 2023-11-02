@@ -1,6 +1,6 @@
 import type { SuggesterType } from '../../../use-lunatic/type-source';
 import { Logger } from '../../logger';
-import { createWorker } from '../create-worker-ts';
+import { createWorker } from '../create-worker';
 import { WorkerEnum, getWorkerPath } from '../worker-path';
 
 function consoleLogging(...args: Array<any>) {
@@ -20,7 +20,7 @@ export function createAppendTask<T>(
 ): [(args: Array<any>) => Promise<boolean>, () => void] {
 	const { name, fields, stopWords, meloto } = info;
 	const worker = createWorker(
-		getWorkerPath(WorkerEnum.LOADER, workersBasePath)
+		getWorkerPath(WorkerEnum.APPEND, workersBasePath)
 	);
 	let start = false;
 	let stop = false;

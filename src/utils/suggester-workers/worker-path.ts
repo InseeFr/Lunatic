@@ -1,16 +1,18 @@
 import packageInfo from '../../../package.json';
 
 export enum WorkerEnum {
-	LOADER = 'LOADER',
+	APPEND = 'APPEND',
 	SEARCH = 'SEARCH',
 	LABEL = 'LABEL',
 }
 
-const DEFAULT_BASE_PATH = 'workers';
+const version = packageInfo.workersVersion;
+
+const DEFAULT_BASE_PATH = '/workers';
 const WORKER_PATH = {
-	LOADER: `lunatic-append-worker-${packageInfo.workersVersion}.js`,
-	SEARCH: `lunatic-searching-worker-${packageInfo.workersVersion}.js`,
-	LABEL: `lunatic-label-worker-${packageInfo.workersVersion}.js`,
+	APPEND: `lunatic-append-worker-${version}.js`,
+	SEARCH: `lunatic-search-worker-${version}.js`,
+	LABEL: `lunatic-label-worker-${version}.js`,
 };
 
 export function getWorkerPath(
