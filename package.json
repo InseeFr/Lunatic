@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "2.7.1",
+	"version": "2.7.2",
 	"workersVersion": "0.3.0-experimental",
 	"description": "Library of questionnaire components",
 	"repository": {
@@ -10,8 +10,16 @@
 	"author": "INSEE (http://www.insee.fr)",
 	"contributor": [
 		{
+			"name": "Jonathan Boyer",
+			"email": "contact@grafikart.fr"
+		},
+		{
 			"name": "Laurent Caouissin",
-			"email": "laurent.caouissin@agriculture.gouv.fr"
+			"email": "laurent.caouissin@insee.fr"
+		},
+		{
+			"name": "Dylan Decrulle",
+			"email": "dylan.decrulle@insee.fr"
 		},
 		{
 			"name": "Renaud Genevois",
