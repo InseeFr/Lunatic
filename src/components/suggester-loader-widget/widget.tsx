@@ -19,6 +19,7 @@ import './widget.scss';
 type Props = {
 	absolute?: boolean;
 	source: { suggesters: Array<SuggesterType> };
+	workersBasePath?: string;
 	onRefresh: () => void;
 	getStoreInfo: (s: string) => {
 		idbVersion: number;
