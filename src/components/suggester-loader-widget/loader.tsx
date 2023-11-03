@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
+import type { SuggesterType } from '../../use-lunatic/type-source';
+import { voidFunction } from '../../utils/function';
+import { clearStoreData } from '../../utils/store-tools';
 import { createAppendTask } from '../../utils/suggester-workers/append-to-index';
 import Progress from './progress';
-import { clearStoreData } from '../../utils/store-tools';
-import { voidFunction } from '../../utils/function';
-import type { SuggesterType } from '../../use-lunatic/type-source';
 
 type Props = {
 	idbVersion?: number;
@@ -13,12 +13,14 @@ type Props = {
 	handleClick: (n: number) => void;
 	start?: boolean;
 	store: SuggesterType;
+	workersBasePath?: string;
 };
 
 function Loader({
 	start,
 	db,
 	store,
+	workersBasePath,
 	idbVersion = 1,
 	fetch,
 	post = voidFunction,
@@ -53,7 +55,12 @@ function Loader({
 			async function go() {
 				try {
 					if (entities && db && idbVersion && store) {
-						const [startT, abort_] = createAppendTask(store, idbVersion, log);
+						const [startT, abort_] = createAppendTask(
+							store,
+							idbVersion,
+							log,
+							workersBasePath
+						);
 						abort = abort_;
 						clearStoreData(db);
 						await startT(entities);
@@ -72,7 +79,7 @@ function Loader({
 				}
 			};
 		},
-		[store, db, entities, idbVersion, post]
+		[store, db, entities, idbVersion, post, workersBasePath]
 	);
 
 	return (

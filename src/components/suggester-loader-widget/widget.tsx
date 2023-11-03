@@ -1,20 +1,20 @@
-import React, {
-	useEffect,
-	useState,
+import classnames from 'classnames';
+import {
 	useCallback,
+	useEffect,
 	useRef,
+	useState,
 	type ReactNode,
 } from 'react';
-import classnames from 'classnames';
-import LoaderRow from './loader-row';
-import { Tools, ActionTool } from './tools';
-import { IsNetwork } from '../commons/components/is-network';
-import WidgetContainer from './widget-container';
-import Dragger from '../commons/components/dragger';
-import { OnDragIcon } from '../commons/icons';
-import './widget.scss';
-import { voidFunction } from '../../utils/function';
 import type { SuggesterType } from '../../use-lunatic/type-source';
+import { voidFunction } from '../../utils/function';
+import Dragger from '../commons/components/dragger';
+import { IsNetwork } from '../commons/components/is-network';
+import { OnDragIcon } from '../commons/icons';
+import LoaderRow from './loader-row';
+import { ActionTool, Tools } from './tools';
+import WidgetContainer from './widget-container';
+import './widget.scss';
 
 type Props = {
 	absolute?: boolean;
@@ -32,6 +32,7 @@ type StoreState = { storeInfo: SuggesterType } & ReturnType<
 
 function SuggesterLoaderWidget({
 	source,
+	workersBasePath,
 	getStoreInfo,
 	onRefresh = voidFunction,
 	absolute,
@@ -86,6 +87,7 @@ function SuggesterLoaderWidget({
 							<LoaderRow
 								key={name}
 								storeInfo={storeInfo}
+								workersBasePath={workersBasePath}
 								idbVersion={idbVersion}
 								fetchStore={fetchStore}
 								onRefresh={onRefresh}
@@ -96,7 +98,7 @@ function SuggesterLoaderWidget({
 				);
 			}
 		},
-		[stores, disabled, onRefresh]
+		[stores, disabled, onRefresh, workersBasePath]
 	);
 
 	useEffect(
