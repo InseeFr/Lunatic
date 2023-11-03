@@ -5,9 +5,6 @@ declare let window: any;
 
 const logStyle = 'color: #915211; font-size: 20px;';
 
-const getRegisterError = (workerUrl: string) =>
-	`%cFailed to register Lunatic-Worker at : "${workerUrl}".`;
-
 const testSameOrigin = (url: string) => {
 	let loc = window.location;
 	let a = document.createElement('a');
@@ -40,7 +37,7 @@ const createWorkerFallback = (workerUrl: string) => {
 		worker = new Worker(blobUrl);
 		worker.onerror = (event) => {
 			event.preventDefault();
-			console.error(getRegisterError(workerUrl));
+			console.error(`Failed to register Lunatic-Worker at : "${workerUrl}".`);
 			console.error(
 				`%cAre you sure that the worker is available at "${workerUrl}" ? \n Did you run "npx @inseefr/lunatic workers" to add Lunatic workers to your project ?`,
 				logStyle
