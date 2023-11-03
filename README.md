@@ -2,7 +2,7 @@
 
 # Lunatic
 
-[![Lunatic CI](https://github.com/InseeFr/Lunatic/actions/workflows/quality.yml/badge.svg)](https://github.com/InseeFr/Lunatic/actions/workflows/quality.yml)
+[![Lunatic CI](https://github.com/InseeFr/Lunatic/actions/workflows/ci-main.yaml/badge.svg)](https://github.com/InseeFr/Lunatic/actions/workflows/ci-main.yaml)
 [![npm version](https://badge.fury.io/js/%40inseefr%2Flunatic.svg)](https://badge.fury.io/js/%40inseefr%2Flunatic)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_Lunatic&metric=coverage)](https://sonarcloud.io/dashboard?id=InseeFr_Lunatic)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_Lunatic&metric=alert_status)](https://sonarcloud.io/dashboard?id=InseeFr_Lunatic)
@@ -10,9 +10,9 @@
 
 Lunatic is a front-end library in the form of a React hook and component libraries for generating a questionnaire from the [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model) data format.
 
+- [Storybook 2.7](https://inseefr.github.io/Lunatic/storybook-2.7), branch `2.7`
+- [Storybook 2.6](https://inseefr.github.io/Lunatic/storybook-2.6), branch `2.6`
 - [Storybook v1](https://inseefr.github.io/Lunatic/storybook-0.3.9), branch `v1-main`
-- [Storybook 2.7](https://inseefr.github.io/Lunatic/storybook), branch `2.7`
-- [Storybook 2.6](https://inseefr.github.io/Lunatic/storybook-beta), branch `2.6`
 - [Documentation](https://inseefr.github.io/Lunatic/en/)
 
 ## Table of Contents
@@ -80,7 +80,7 @@ And it returns an object that allows you to control the questionnaire:
 - `getData()`, returns the collected data in the questionnaire.
 - `loopVariables`, is an array containing the list of variables used for the current loop.
 
-For more information on the types of this return, you can refer to the available types in the [source code](https://github.com/InseeFr/Lunatic/blob/v2-typescript/src/use-lunatic/type.ts#L64-L200). You can also find an example of using the hook in the [Storybook section](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/stories/utils/orchestrator.js#L69-L93).
+For more information on the types of this return, you can refer to the available types in the [source code](https://github.com/InseeFr/Lunatic/blob/2.7/src/use-lunatic/type.ts). You can also find an example of using the hook in the [Storybook section](https://github.com/InseeFr/Lunatic/blob/2.7/src/stories/utils/orchestrator.jsx#L121-L152).
 
 ### Components
 
@@ -107,7 +107,7 @@ function App({ source, data }) {
 }
 ```
 
-All the components offered by Lunatic are available in the [src/components](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/components/components.js) folder.
+All the components offered by Lunatic are available in the [src/components](https://github.com/InseeFr/Lunatic/tree/2.7/src/components) folder.
 
 To activate the **autofocus**, you need to pass a key in the `autoFocusKey` property of `LunaticComponents`. As soon as this value changes, the first field is focused (a good solution is to pass the `pageTag` provided by `useLunatic`).
 
@@ -117,14 +117,14 @@ To activate the **autofocus**, you need to pass a key in the `autoFocusKey` prop
 
 Lunatic uses webWorkers to take the load off the main execution frame (e.g. list search).
 
-Workers are normally installed when the library is installed (postinstall scripts). If this is not the case, you can always manually run the command `npx @inseefr/lunatic workers` to add Lunatic workers to your project.
+Workers are normally installed when the library is installed (postinstall scripts). If this is not the case, you can always manually run the command `npx @inseefr/lunatic workers` at the root of your project to add Lunatic workers to your project.
 
-Lunatic workers are added to the public/workers folder of the current project when the library is installed.
+Lunatic workers are added to the `public/workers` folder of the current project when the library is installed.
 
 If a new version of Lunatic offers new workers, they will be automatically updated.
 This ensures that you always have the right version of workers for the version of Lunatic you're using.
 
-A good practice is to add the public/workers folder to your `.gitignore.`
+A good practice is to add the `public/workers` folder to your `.gitignore.`
 
 #### How it works
 
@@ -170,13 +170,13 @@ This section covers the internal working of the `useLunatic()` hook. The goal is
 
 ### General Functioning
 
-The hook is based on an [internal state](https://github.com/InseeFr/Lunatic/blob/v2-typescript/src/use-lunatic/type.ts#L64-L200) that is updated through a [reducer](https://reactjs.org/docs/hooks-reference.html#usereducer) system. The [actions](https://github.com/InseeFr/Lunatic/blob/v2-typescript/src/use-lunatic/actions.ts) affecting this state are limited:
+The hook is based on an [internal state](https://github.com/InseeFr/Lunatic/blob/2.7/src/use-lunatic/type.ts#L79-L187) that is updated through a [reducer](https://reactjs.org/docs/hooks-reference.html#usereducer) system. The [actions](https://github.com/InseeFr/Lunatic/blob/2.7/src/use-lunatic/actions.ts) affecting this state are limited:
 
 - An action `'use-lunatic/on-init'` allows initialization of the state from the data received as a parameter of the hook.
 - The actions `'use-lunatic/go-previous'`, `'use-lunatic/go-next'`, and `'use-lunatic/go-to-page'` are called during navigation using the methods returned by the hook.
 - The action `use-lunatic/handle-change` is the most important action and is called whenever data is changed in the questionnaire.
 
-All the [reducers corresponding to these actions are available here](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/use-lunatic/reducer/reducer.js). Generally, they are broken down into several methods depending on the part of the state they modify.
+All the [reducers corresponding to these actions are available here](https://github.com/InseeFr/Lunatic/blob/2.7/src/use-lunatic/reducer/reducer.ts). Generally, they are broken down into several methods depending on the part of the state they modify.
 
 ### Pages and Pager
 
@@ -184,7 +184,7 @@ At initialization, the questionnaire scenario is modeled as an object which is s
 
 ### VTL Execution
 
-Another important point of Lunatic is the execution of VTL expressions which allow making certain properties dynamic (labels, errors, etc.). This filling is done [when the state changes](https://github.com/InseeFr/Lunatic/blob/v2-develop/src/use-lunatic/commons/use-components-from-state.js).
+Another important point of Lunatic is the execution of VTL expressions which allow making certain properties dynamic (labels, errors, etc.). This filling is done [when the state changes](https://github.com/InseeFr/Lunatic/blob/2.7/src/use-lunatic/commons/use-components-from-state.ts).
 
 To facilitate expression execution, an `executeExpression()` method is exposed in the Lunatic state. This method is accompanied by an `updateBindings()` method which allows updating internal values. This expression execution system uses a memoization system to not re-execute the same expression multiple times. When the `use-lunatic/handle-change` action is executed, the values ("bindings") are updated to memorize the values associated with the different VTL variables. Similarly, the values of calculated variables on which the modified variable depends are forgotten to refresh the value during the next execution.
 
@@ -194,9 +194,7 @@ To facilitate expression execution, an `executeExpression()` method is exposed i
 
 - Stable branches follow the glob pattern `'2.*'`, like `2.6` or `2.7`.
 - We can maintain if needs, the old stable branches
-- `main` branch corresponding to the latest release
-- `develop` branch is temporarily maintained. (actually `develop` is the `2.7` branch = the future main release)
-- `develop` branch will be deleted soon with this new convention
+- `2.7` branch is currently the most advanced branch
 
 ### Commits and feature branches
 
