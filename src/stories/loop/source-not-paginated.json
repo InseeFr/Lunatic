@@ -1,0 +1,138 @@
+{
+	"enoCoreVersion": "2.4.1",
+	"lunaticModelVersion": "2.3.1",
+	"pagination": "question",
+	"maxPage": "4",
+	"label": {
+		"value": "\"Test Sympa\"",
+		"type": "VTL|MD"
+	},
+	"suggesters": [
+		{
+			"name": "cog-communes",
+			"fields": [
+				{ "name": "label", "rules": "soft" },
+				{ "name": "nccenr", "rules": "soft" },
+				{ "name": "id", "rules": "soft" }
+			],
+			"queryParser": { "type": "soft" },
+			"version": "1"
+		}
+	],
+	"components": [
+		{
+			"id": "nn",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"min": 1,
+			"max": 4,
+			"decimals": 0,
+			"label": { "value": "\"Number of inhabitants\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"response": {
+				"name": "NUM"
+			},
+			"page": "1"
+		},
+		{
+			"id": "idLoop",
+			"label": { "value": "\"Boucle individu\"", "type": "VTL|MD" },
+			"componentType": "Loop",
+			"iterations": { "value": "cast(NUM, integer)", "type": "VTL" },
+			"paginatedLoop": false,
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"loopDependencies": ["NUM"],
+			"page": "2",
+			"components": [
+				{
+					"id": "k3ym6x16",
+					"label": { "value": "\"Prénom :\"", "type": "VTL|MD" },
+					"componentType": "Input",
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"mandatory": false,
+					"response": {
+						"name": "PRENOM"
+					},
+					"page": "2"
+				}
+			]
+		},
+		{
+			"id": "idLoopInd",
+			"label": { "value": "\"Boucle individu\"", "type": "VTL|MD" },
+			"componentType": "Loop",
+			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"paginatedLoop": true,
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"loopDependencies": ["PRENOM"],
+			"page": "3",
+			"maxPage": "1",
+			"depth": 1,
+			"components": [
+				{
+					"id": "sugg-communes",
+					"componentType": "Suggester",
+					"mandatory": false,
+					"label": {
+						"value": "PRENOM || \" what's your favorite city?\"",
+						"type": "VTL|MD"
+					},
+					"storeName": "cog-communes",
+					"conditionFilter": {
+						"value": "not(isnull(PRENOM))",
+						"type": "VTL"
+					},
+					"response": {
+						"name": "CITY"
+					},
+					"page": "3.1"
+				}
+			]
+		},
+		{
+			"id": "kk",
+			"componentType": "Sequence",
+			"label": { "value": "\"END\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "4"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NUM",
+			"componentRef": "nn",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"componentRef": "idLoop",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CITY",
+			"componentRef": "idLoopInd",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		}
+	]
+}

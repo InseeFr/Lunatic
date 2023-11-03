@@ -18,8 +18,8 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"bindingDependencies": ["PRENOM"],
 			"lines": {
-				"min": { "value": 1, "type": "VTL" },
-				"max": { "value": 10, "type": "VTL" }
+				"min": { "value": "1", "type": "VTL" },
+				"max": { "value": "10", "type": "VTL" }
 			},
 			"page": "1",
 			"components": [
