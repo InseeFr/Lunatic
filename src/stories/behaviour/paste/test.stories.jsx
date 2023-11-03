@@ -1,7 +1,7 @@
 import React from 'react';
-import Orchestrator from '../../utils/orchestrator';
-import simpsons from './source.json';
 import defaultArgTypes from '../../utils/default-arg-types';
+import Orchestrator from '../../utils/orchestrator';
+import source from './source.json';
 
 const stories = {
 	title: 'Behaviour/Paste',
@@ -30,7 +30,7 @@ const stories = {
 		source: {
 			table: { disable: false },
 			control: { type: 'object' },
-			defaultValue: simpsons,
+			defaultValue: source,
 		},
 		data: {
 			table: { disable: false },
@@ -48,4 +48,5 @@ export const Default = Template.bind({});
 Default.args = {
 	id: 'simpsons-default',
 	pagination: true,
+	source,
 };
