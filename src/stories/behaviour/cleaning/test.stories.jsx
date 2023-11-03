@@ -1,7 +1,7 @@
 import React from 'react';
+import defaultArgTypes from '../../utils/default-arg-types';
 import Orchestrator from '../../utils/orchestrator';
 import source from './source.json';
-import defaultArgTypes from '../../utils/default-arg-types';
 
 const stories = {
 	title: 'Behaviour/Cleaning',
@@ -48,4 +48,5 @@ export const Default = Template.bind({});
 Default.args = {
 	id: 'resizing-default',
 	pagination: true,
+	source,
 };
