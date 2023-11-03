@@ -1,11 +1,16 @@
 // Enable cross domain workers
 import { Logger } from '../logger';
 
-declare var window: any;
+declare let window: any;
+
+const logStyle = 'color: #915211; font-size: 20px;';
+
+const getRegisterError = (workerUrl: string) =>
+	`%cFailed to register Lunatic-Worker at : "${workerUrl}".`;
 
 const testSameOrigin = (url: string) => {
-	var loc = window.location;
-	var a = document.createElement('a');
+	let loc = window.location;
+	let a = document.createElement('a');
 	a.href = url;
 	return (
 		a.hostname === loc.hostname &&
@@ -16,31 +21,41 @@ const testSameOrigin = (url: string) => {
 
 const createWorkerFallback = (workerUrl: string) => {
 	Logger.info('Create worker for MFE');
-	var worker = null;
+	let worker = null;
 	try {
-		var blob;
+		let blob;
 		try {
 			blob = new Blob([`importScripts('${workerUrl}');`], {
 				type: 'application/javascript',
 			});
 		} catch (e) {
-			var blobBuilder = new (window.BlobBuilder ||
+			let blobBuilder = new (window.BlobBuilder ||
 				window.WebKitBlobBuilder ||
 				window.MozBlobBuilder)();
 			blobBuilder.append(`importScripts('${workerUrl}');`);
 			blob = blobBuilder.getBlob('application/javascript');
 		}
-		var url = window.URL || window.webkitURL;
-		var blobUrl = url.createObjectURL(blob);
+		let url = window.URL || window.webkitURL;
+		let blobUrl = url.createObjectURL(blob);
 		worker = new Worker(blobUrl);
+		worker.onerror = (event) => {
+			event.preventDefault();
+			console.error(getRegisterError(workerUrl));
+			console.error(
+				`%cAre you sure that the worker is available at "${workerUrl}" ? \n Did you run "npx @inseefr/lunatic workers" to add Lunatic workers to your project ?`,
+				logStyle
+			);
+		};
 	} catch (e1) {
-		console.error(`Lunatic-worker : Failed to load web worker : ${workerUrl}`);
+		console.error(
+			`Lunatic-worker : Failed to load web worker at : "${workerUrl}"`
+		);
 	}
 	return worker;
 };
 
 export const createWorker = (workerUrl: string) => {
-	var worker = null;
+	let worker = null;
 	try {
 		if (testSameOrigin(workerUrl)) {
 			worker = new Worker(workerUrl);
