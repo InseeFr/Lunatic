@@ -40,7 +40,7 @@
 					"page": "2.1",
 					"maxLength": 20,
 					"label": {
-						"value": "\"Questions 1, Itération : \" || GLOBAL_ITERATION_INDEX",
+						"value": "\"Questions 1, Itération : \" || cast(GLOBAL_ITERATION_INDEX, string)",
 						"type": "VTL"
 					},
 					"conditionFilter": {
@@ -56,7 +56,7 @@
 					"page": "2.2",
 					"maxLength": 20,
 					"label": {
-						"value": "\"Vous avez mis en question 1, itération  \" || GLOBAL_ITERATION_INDEX || \" : \" || LIBELLE",
+						"value": "\"Vous avez mis en question 1, itération  \" || cast(GLOBAL_ITERATION_INDEX, string) || \" : \" || LIBELLE",
 						"type": "VTL"
 					},
 					"conditionFilter": {
