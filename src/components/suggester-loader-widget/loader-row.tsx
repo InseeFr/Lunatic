@@ -1,17 +1,18 @@
-import { useEffect, useState, useCallback } from 'react';
 import classnames from 'classnames';
+import { useCallback, useEffect, useState } from 'react';
+import type { SuggesterType } from '../../use-lunatic/type-source';
+import { Logger } from '../../utils/logger';
 import {
-	useStoreIndex,
-	getStoreCount,
 	clearStoreData,
+	getStoreCount,
+	useStoreIndex,
 } from '../../utils/store-tools';
 import { CrossIcon, LoadIcon } from '../commons/icons';
 import Loader from './loader';
-import type { SuggesterType } from '../../use-lunatic/type-source';
-import { Logger } from '../../utils/logger';
 
 type Props = {
 	storeInfo: SuggesterType;
+	workersBasePath?: string;
 	idbVersion: number;
 	fetchStore: () => Promise<unknown[]>;
 	disabled?: boolean;
@@ -20,6 +21,7 @@ type Props = {
 
 function LoaderRow({
 	storeInfo,
+	workersBasePath,
 	idbVersion,
 	fetchStore,
 	onRefresh,
@@ -71,6 +73,7 @@ function LoaderRow({
 					db={db}
 					store={storeInfo}
 					idbVersion={idbVersion}
+					workersBasePath={workersBasePath}
 					fetch={fetchStore}
 					post={post}
 					handleClick={handleClick}
