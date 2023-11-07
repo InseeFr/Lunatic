@@ -118,7 +118,7 @@ type ComponentPropsByType = {
 		iteration: LunaticState['pager']['iteration'];
 	};
 	Datepicker: LunaticBaseProps<string | null> & {
-		format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY';
+		dateFormat: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY';
 		min?: string;
 		max?: string;
 		response: { name: string };

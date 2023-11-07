@@ -15,14 +15,14 @@ type Props = {
 	id?: string;
 	value?: string;
 	onChange: (s: string | null) => void;
-	format?: string;
+	dateFormat?: string;
 };
 
 function Datepicker({
 	disabled,
 	readOnly,
 	value = '',
-	format = 'YYYY-MM-DD',
+	dateFormat = 'YYYY-MM-DD',
 	onChange,
 	id,
 	label,
@@ -30,8 +30,8 @@ function Datepicker({
 	description,
 }: Props) {
 	const labelId = `lunatic-datepicker-${id}`;
-	const showDay = format.includes('DD');
-	const showMonth = format.includes('MM');
+	const showDay = dateFormat.includes('DD');
+	const showMonth = dateFormat.includes('MM');
 
 	// Raw state, we allow invalid dates to be typed
 	const [numbers, setNumbers] = useState(() => numbersFromDateString(value));
@@ -43,7 +43,7 @@ function Datepicker({
 	};
 
 	const handleChange = (numbers: [number, number, number]) => {
-		const formatParts = format.split('-');
+		const formatParts = dateFormat.split('-');
 		const hasNaNIndex = numbers.findIndex((v) => Number.isNaN(v));
 
 		// Date has a missing part
@@ -53,7 +53,7 @@ function Datepicker({
 		}
 
 		// Date is not valid
-		if (format === 'YYYY-MM-DD' && !isDateValid(numbers)) {
+		if (dateFormat === 'YYYY-MM-DD' && !isDateValid(numbers)) {
 			onChange(null);
 			return;
 		}
