@@ -89,6 +89,10 @@ describe('lunatic-variables-store', () => {
 		expect(variables.run('FIRSTNAME || " " || LASTNAME')).toEqual('Jane Doe');
 	});
 
+	it('should throw an exception when calculated incorrect VTL', () => {
+		expect(() => variables.run('Hello world')).toThrowError();
+	});
+
 	describe('with iteration', () => {
 		it('should handle arrays', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);

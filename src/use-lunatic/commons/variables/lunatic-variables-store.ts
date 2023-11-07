@@ -315,10 +315,16 @@ class LunaticVariable {
 						isNumber(this.iterationDepth) && Array.isArray(iteration)
 							? [iteration[this.iterationDepth]]
 							: iteration;
-					return [
-						dep,
-						this.dictionary?.get(dep)?.getValue(dependencyIteration),
-					];
+
+					// The variable is not registered in the variable dictionary
+					// Happens when calculating unquoted VTL expression
+					if (!this.dictionary || !this.dictionary?.has(dep)) {
+						throw new Error(
+							`Unknown variable "${dep}" in expression ${this.expression}`
+						);
+					}
+
+					return [dep, this.dictionary.get(dep)?.getValue(dependencyIteration)];
 				})
 			);
 		} catch (e) {
