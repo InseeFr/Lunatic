@@ -15,7 +15,7 @@ export function useAutoFocus(
 		// First look for invalid fields, then all fields
 		const firstFocusableElement =
 			(wrapperRef.current?.querySelector(
-				'button[aria-invalid], [href][aria-invalid], input[aria-invalid], select[aria-invalid], textarea[aria-invalid], [tabindex][aria-invalid]:not([tabindex="-1"])'
+				'button[aria-invalid="true"], [href][aria-invalid="true"], input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"], [tabindex][aria-invalid="true"]:not([tabindex="-1"])'
 			) as HTMLElement | undefined) ??
 			(wrapperRef.current?.querySelector(
 				'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
