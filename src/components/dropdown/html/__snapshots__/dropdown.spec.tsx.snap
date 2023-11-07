@@ -14,15 +14,8 @@ exports[`Dropdown > renders without crashing 1`] = `
         tabindex="0"
       >
         <div
-          aria-autocomplete="list"
-          aria-controls="todo"
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          aria-labelledby="label-dropdown"
-          aria-owns="dropdown"
           class="lunatic-combo-box-selection"
           id="dropdown"
-          role="combobox"
         >
           <span
             class="selection"
@@ -56,15 +49,8 @@ exports[`Dropdown > should handle readOnly 1`] = `
         tabindex="0"
       >
         <div
-          aria-autocomplete="list"
-          aria-controls="todo"
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          aria-labelledby="label-dropdown"
-          aria-owns="dropdown"
           class="lunatic-combo-box-selection"
           id="dropdown"
-          role="combobox"
         >
           <span
             class="selection"

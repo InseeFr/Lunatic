@@ -11,22 +11,10 @@ export type InputProps = {
 	placeholder?: string;
 	disabled?: boolean;
 	value?: string;
-	labelledBy?: string;
 	focused?: boolean;
-	invalid?: boolean;
 } & HTMLAttributes<HTMLInputElement>;
 
-function Input({
-	placeholder,
-	disabled,
-	onChange,
-	value,
-	id,
-	labelledBy,
-	focused,
-	className,
-	invalid,
-}: InputProps) {
+function Input({ focused, className, ...props }: InputProps) {
 	const inputEl = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
@@ -44,22 +32,16 @@ function Input({
 
 	return (
 		<input
+			{...props}
 			ref={inputEl}
-			id={id}
 			className={classnames('lunatic-combo-box-input', className)}
 			type="text"
-			onChange={onChange}
-			value={value}
 			aria-label="lunatic-combo-box"
-			aria-invalid={invalid}
 			title="combo-box"
 			autoComplete="off"
 			autoCapitalize="off"
 			autoCorrect="off"
 			spellCheck="false"
-			placeholder={placeholder}
-			disabled={disabled}
-			aria-labelledby={labelledBy}
 			onKeyDown={onKeydown}
 		/>
 	);

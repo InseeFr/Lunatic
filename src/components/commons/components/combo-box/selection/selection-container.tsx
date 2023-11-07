@@ -30,13 +30,6 @@ function SelectionContainer({
 					disabled,
 				}
 			)}
-			role="combobox"
-			aria-controls={'todo'}
-			aria-haspopup="listbox"
-			aria-expanded={expanded}
-			aria-autocomplete="list"
-			aria-owns={comboBoxId}
-			aria-labelledby={labelId}
 		>
 			{children}
 		</div>
