@@ -102,6 +102,7 @@ function Datepicker({
 					label="Année"
 					description="Exemple: 2023"
 					value={numbers[0]}
+					max={9999}
 					onChange={setNumber(0)}
 					{...extraProps}
 				/>
