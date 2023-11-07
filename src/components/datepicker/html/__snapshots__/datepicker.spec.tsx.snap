@@ -51,7 +51,7 @@ exports[`Datepicker > should render properly with format YYYY 1`] = `
         />
       </div>
       <div
-        class="lunaticDatepickerField"
+        class="lunaticDatepickerField lunaticDatepickerFieldLarge"
       >
         <label
           for="datepickeryear"
@@ -127,7 +127,7 @@ exports[`Datepicker > should render properly with format YYYY-MM 1`] = `
         />
       </div>
       <div
-        class="lunaticDatepickerField"
+        class="lunaticDatepickerField lunaticDatepickerFieldLarge"
       >
         <label
           for="datepickeryear"
@@ -203,7 +203,7 @@ exports[`Datepicker > should render properly with format YYYY-MM-DD 1`] = `
         />
       </div>
       <div
-        class="lunaticDatepickerField"
+        class="lunaticDatepickerField lunaticDatepickerFieldLarge"
       >
         <label
           for="datepickeryear"
