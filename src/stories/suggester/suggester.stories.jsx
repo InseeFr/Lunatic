@@ -18,7 +18,8 @@ export const Default = Template.bind({});
 
 async function getReferentiel(name) {
 	switch (name) {
-		case 'naf-rev2-stop':
+		case 'libelle-pcs2020':
+			return fetch('/libelles-pcs-2020.json').then((r) => r.json());
 		case 'naf-rev2':
 			return fetch(
 				'https://inseefr.github.io/Lunatic/storybook/naf-rev2.json'
