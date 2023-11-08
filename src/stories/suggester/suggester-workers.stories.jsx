@@ -23,6 +23,53 @@ function fetchFake() {
 	return fetch('/fake-nomenclature.json').then((r) => r.json());
 }
 
+function fetchPCS2020() {
+	return fetch('/libelles-pcs-2020.json').then((r) => r.json());
+}
+
+const infoPCS2020 = {
+	name: 'libelle-pcs2020',
+	fields: [
+		{
+			name: 'id',
+			rules: ['[\\w]+'],
+			language: 'French',
+			min: 2,
+		},
+	],
+	queryParser: {
+		type: 'tokenized',
+		params: { language: 'French', pattern: '[\\w]+' },
+	},
+	meloto: true,
+	version: '1',
+	stopWords: [
+		'a',
+		'au',
+		'dans',
+		'de',
+		'des',
+		'du',
+		'en',
+		'er',
+		'la',
+		'le',
+		'ou',
+		'sur',
+		'd',
+		'l',
+		'aux',
+		'dans',
+		'un',
+		'une',
+		'pour',
+		'avec',
+		'chez',
+		'par',
+		'les',
+	],
+};
+
 const infoFake = {
 	name: 'fake',
 	fields: [
@@ -56,7 +103,7 @@ const infoNaf = {
 		params: { language: 'French', pattern: '[\\w.]+' },
 	},
 	version: '1',
-	meloto: false,
+	meloto: true,
 };
 
 async function loadOne(info, fetchIt) {
@@ -106,6 +153,14 @@ function Search({ storeInfo, version = '1', max = 30, defaultValue = '' }) {
 const Template = (args) => (
 	<>
 		<ul>
+			<li>
+				<input
+					type="button"
+					value="load PCS2020"
+					onClick={() => loadOne(infoPCS2020, fetchPCS2020)}
+				/>
+				<Search storeInfo={infoPCS2020} defaultValue="st" />
+			</li>
 			<li>
 				<input
 					type="button"
