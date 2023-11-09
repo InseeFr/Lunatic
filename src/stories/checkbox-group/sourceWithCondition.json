@@ -43,7 +43,10 @@
 						"value": "\"Vous étiez sur le point d’avoir un enfant\"",
 						"type": "VTL"
 					},
-					"conditionFilter": { "value": "cast(AGE, number) <= 50", "type": "VTL" },
+					"conditionFilter": {
+						"value": "cast(AGE, number) <= 50",
+						"type": "VTL"
+					},
 					"response": { "name": "CHECK3" }
 				},
 				{
@@ -68,7 +71,10 @@
 						"value": "\"Vous étiez à la retraite ou proche de la retraite\"",
 						"type": "VTL"
 					},
-					"conditionFilter": { "value": "cast(AGE, number) >= 50", "type": "VTL" },
+					"conditionFilter": {
+						"value": "cast(AGE, number) >= 50",
+						"type": "VTL"
+					},
 					"response": { "name": "CHECK6" }
 				},
 				{

@@ -1,150 +1,150 @@
 {
-  "components": [
-    {
-      "id": "number",
-      "componentType": "InputNumber",
-      "page": "1",
-      "label": {
-        "value": "\"Votre age\"",
-        "type": "VTL|MD"
-      },
-      "response": {
-        "name": "AGE"
-      }
-    },
-    {
-      "response": {
-        "name": "CHECK"
-      },
-      "id": "checkboxes",
-      "componentType": "CheckboxOne",
-      "page": "2",
-      "label": {
-        "value": "\"Pour quelle raison principale n’étiez-vous pas disponible ?\"",
-        "type": "VTL|MD"
-      },
-      "options": [
-        {
-          "id": "check1",
-          "label": {
-            "value": "\"Vous suiviez (ou aviez le projet de suivre) des études ou une formation\"",
-            "type": "VTL"
-          },
-          "value": "CHECK1"
-        },
-        {
-          "id": "check2",
-          "label": {
-            "value": "\"Vous aviez des problèmes de santé ou étiez en situation de handicap\"",
-            "type": "VTL"
-          },
-          "value": "CHECK2"
-        },
-        {
-          "id": "check3",
-          "label": {
-            "value": "\"Vous étiez sur le point d’avoir un enfant\"",
-            "type": "VTL"
-          },
-          "conditionFilter": {
-            "value": "cast(AGE, number) <= 50",
-            "type": "VTL"
-          },
-          "value": "CHECK3",
-          "description": {
-            "value": "\"AGE <= 50\"",
-            "type": "VTL|MD"
-          }
-        },
-        {
-          "id": "check4",
-          "label": {
-            "value": "\"Vous vous occupiez de vos enfants ou d’un proche\"",
-            "type": "VTL"
-          },
-          "value": "CHECK4"
-        },
-        {
-          "id": "check5",
-          "label": {
-            "value": "\"Vous étiez en vacances, preniez du temps pour vous ou réfléchissiez à votre avenir\"",
-            "type": "VTL"
-          },
-          "value": "CHECK5"
-        },
-        {
-          "id": "check6",
-          "label": {
-            "value": "\"Vous étiez à la retraite ou proche de la retraite\"",
-            "type": "VTL"
-          },
-          "conditionFilter": {
-            "value": "cast(AGE, number) >= 50",
-            "type": "VTL"
-          },
-          "value": "CHECK6",
-          "description": {
-            "value": "\"AGE >= 50\"",
-            "type": "VTL|MD"
-          }
-        },
-        {
-          "id": "check7",
-          "label": {
-            "value": "\"Vous aviez des difficultés pour vous déplacer (pas le permis de conduire, voiture en panne, pas de transport à proximité…)\"",
-            "type": "VTL"
-          },
-          "value": "CHECK7"
-        },
-        {
-          "id": "check8",
-          "label": {
-            "value": "\"Vous déménagiez\"",
-            "type": "VTL"
-          },
-          "value": "CHECK8"
-        },
-        {
-          "id": "check9",
-          "label": {
-            "value": "\"Vous aviez des problèmes de papier / titre de séjour\"",
-            "type": "VTL"
-          },
-          "value": "CHECK9"
-        },
-        {
-          "id": "check10",
-          "label": {
-            "value": "\"Pour une autre raison\"",
-            "type": "VTL"
-          },
-          "value": "CHECK10"
-        }
-      ]
-    }
-  ],
-  "variables": [
-    {
-      "variableType": "COLLECTED",
-      "name": "CHECK",
-      "values": {
-        "PREVIOUS": null,
-        "COLLECTED": null,
-        "FORCED": null,
-        "EDITED": null,
-        "INPUTED": null
-      }
-    },
-    {
-      "variableType": "COLLECTED",
-      "name": "AGE",
-      "values": {
-        "PREVIOUS": null,
-        "COLLECTED": null,
-        "FORCED": null,
-        "EDITED": null,
-        "INPUTED": null
-      }
-    }
-  ]
+	"components": [
+		{
+			"id": "number",
+			"componentType": "InputNumber",
+			"page": "1",
+			"label": {
+				"value": "\"Votre age\"",
+				"type": "VTL|MD"
+			},
+			"response": {
+				"name": "AGE"
+			}
+		},
+		{
+			"response": {
+				"name": "CHECK"
+			},
+			"id": "checkboxes",
+			"componentType": "CheckboxOne",
+			"page": "2",
+			"label": {
+				"value": "\"Pour quelle raison principale n’étiez-vous pas disponible ?\"",
+				"type": "VTL|MD"
+			},
+			"options": [
+				{
+					"id": "check1",
+					"label": {
+						"value": "\"Vous suiviez (ou aviez le projet de suivre) des études ou une formation\"",
+						"type": "VTL"
+					},
+					"value": "CHECK1"
+				},
+				{
+					"id": "check2",
+					"label": {
+						"value": "\"Vous aviez des problèmes de santé ou étiez en situation de handicap\"",
+						"type": "VTL"
+					},
+					"value": "CHECK2"
+				},
+				{
+					"id": "check3",
+					"label": {
+						"value": "\"Vous étiez sur le point d’avoir un enfant\"",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "cast(AGE, number) <= 50",
+						"type": "VTL"
+					},
+					"value": "CHECK3",
+					"description": {
+						"value": "\"AGE <= 50\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "check4",
+					"label": {
+						"value": "\"Vous vous occupiez de vos enfants ou d’un proche\"",
+						"type": "VTL"
+					},
+					"value": "CHECK4"
+				},
+				{
+					"id": "check5",
+					"label": {
+						"value": "\"Vous étiez en vacances, preniez du temps pour vous ou réfléchissiez à votre avenir\"",
+						"type": "VTL"
+					},
+					"value": "CHECK5"
+				},
+				{
+					"id": "check6",
+					"label": {
+						"value": "\"Vous étiez à la retraite ou proche de la retraite\"",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "cast(AGE, number) >= 50",
+						"type": "VTL"
+					},
+					"value": "CHECK6",
+					"description": {
+						"value": "\"AGE >= 50\"",
+						"type": "VTL|MD"
+					}
+				},
+				{
+					"id": "check7",
+					"label": {
+						"value": "\"Vous aviez des difficultés pour vous déplacer (pas le permis de conduire, voiture en panne, pas de transport à proximité…)\"",
+						"type": "VTL"
+					},
+					"value": "CHECK7"
+				},
+				{
+					"id": "check8",
+					"label": {
+						"value": "\"Vous déménagiez\"",
+						"type": "VTL"
+					},
+					"value": "CHECK8"
+				},
+				{
+					"id": "check9",
+					"label": {
+						"value": "\"Vous aviez des problèmes de papier / titre de séjour\"",
+						"type": "VTL"
+					},
+					"value": "CHECK9"
+				},
+				{
+					"id": "check10",
+					"label": {
+						"value": "\"Pour une autre raison\"",
+						"type": "VTL"
+					},
+					"value": "CHECK10"
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
 }
