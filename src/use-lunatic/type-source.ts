@@ -218,6 +218,7 @@ export type ComponentCheckboxGroupType = {
 		label: LabelType;
 		response: ResponseType;
 		id: string;
+		conditionFilter?: ConditionFilterType;
 	}>;
 };
 

@@ -131,6 +131,27 @@ function fillTable(
 }
 
 /**
+ * For CheckboxGroup some responses can be filtered via a conditionFilter
+ */
+function fillCheckboxGroup(
+	component: DeepTranslateExpression<
+		LunaticComponentDefinition<'CheckboxGroup'>
+	>,
+	state: LunaticState
+) {
+	return {
+		...component,
+		responses: component.responses.filter((response) => {
+			if (!('conditionFilter' in response)) {
+				return true;
+			}
+
+			return state.executeExpression(response.conditionFilter);
+		}),
+	};
+}
+
+/**
  * Fill component specific props (RoundAbout for instance)
  */
 function fillSpecificExpressions(
@@ -149,6 +170,8 @@ function fillSpecificExpressions(
 			return fillPairwise(component, state);
 		case 'Table':
 			return fillTable(component, state);
+		case 'CheckboxGroup':
+			return fillCheckboxGroup(component, state);
 		default:
 			return component;
 	}

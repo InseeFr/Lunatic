@@ -1,0 +1,232 @@
+{
+	"components": [
+		{
+			"id": "number",
+			"componentType": "InputNumber",
+			"page": "1",
+			"label": {
+				"value": "\"Votre age\"",
+				"type": "VTL|MD"
+			},
+			"response": {
+				"name": "AGE"
+			}
+		},
+		{
+			"id": "checkboxes",
+			"componentType": "CheckboxGroup",
+			"page": "2",
+			"label": {
+				"value": "\"Pour quelle raison principale n’étiez-vous pas disponible ?\"",
+				"type": "VTL|MD"
+			},
+			"responses": [
+				{
+					"id": "kmort6x9-QOP-kmosa98y",
+					"label": {
+						"value": "\"Vous suiviez (ou aviez le projet de suivre) des études ou une formation\"",
+						"type": "VTL"
+					},
+					"response": { "name": "CHECK1" }
+				},
+				{
+					"id": "kmort6x9-QOP-kmos360k",
+					"label": {
+						"value": "\"Vous aviez des problèmes de santé ou étiez en situation de handicap\"",
+						"type": "VTL"
+					},
+					"response": { "name": "CHECK2" }
+				},
+				{
+					"id": "new_id_1",
+					"label": {
+						"value": "\"Vous étiez sur le point d’avoir un enfant\"",
+						"type": "VTL"
+					},
+					"conditionFilter": { "value": "cast(AGE, number) <= 50", "type": "VTL" },
+					"response": { "name": "CHECK3" }
+				},
+				{
+					"id": "new_id_2",
+					"label": {
+						"value": "\"Vous vous occupiez de vos enfants ou d’un proche\"",
+						"type": "VTL"
+					},
+					"response": { "name": "CHECK4" }
+				},
+				{
+					"id": "new_id_3",
+					"label": {
+						"value": "\"Vous étiez en vacances, preniez du temps pour vous ou réfléchissiez à votre avenir\"",
+						"type": "VTL"
+					},
+					"response": { "name": "CHECK5" }
+				},
+				{
+					"id": "new_id_4",
+					"label": {
+						"value": "\"Vous étiez à la retraite ou proche de la retraite\"",
+						"type": "VTL"
+					},
+					"conditionFilter": { "value": "cast(AGE, number) >= 50", "type": "VTL" },
+					"response": { "name": "CHECK6" }
+				},
+				{
+					"id": "new_id_5",
+					"label": {
+						"value": "\"Vous aviez des difficultés pour vous déplacer (pas le permis de conduire, voiture en panne, pas de transport à proximité…)\"",
+						"type": "VTL"
+					},
+					"response": { "name": "CHECK7" }
+				},
+				{
+					"id": "new_id_6",
+					"label": {
+						"value": "\"Vous déménagiez\"",
+						"type": "VTL"
+					},
+					"response": { "name": "CHECK8" }
+				},
+				{
+					"id": "new_id_7",
+					"label": {
+						"value": "\"Vous aviez des problèmes de papier / titre de séjour\"",
+						"type": "VTL"
+					},
+					"response": { "name": "CHECK9" }
+				},
+				{
+					"id": "new_id_8",
+					"label": {
+						"value": "\"Pour une autre raison\"",
+						"type": "VTL"
+					},
+					"response": { "name": "CHECK10" }
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK3",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK4",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK5",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK6",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK7",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK8",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK9",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CHECK10",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	]
+}
