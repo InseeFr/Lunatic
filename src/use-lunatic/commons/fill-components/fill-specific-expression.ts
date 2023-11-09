@@ -152,6 +152,30 @@ function fillCheckboxGroup(
 }
 
 /**
+ * For Radio / CheckboxOne some options can be filtered via a conditionFilter
+ */
+function fillRadio(
+	component: DeepTranslateExpression<
+		LunaticComponentDefinition<'CheckboxOne' | 'Radio'>
+	>,
+	state: LunaticState
+) {
+	if (!('options' in component)) {
+		return component;
+	}
+	return {
+		...component,
+		options: component.options.filter((o) => {
+			if (!('conditionFilter' in o)) {
+				return true;
+			}
+
+			return state.executeExpression(o.conditionFilter);
+		}),
+	};
+}
+
+/**
  * Fill component specific props (RoundAbout for instance)
  */
 function fillSpecificExpressions(
@@ -172,6 +196,9 @@ function fillSpecificExpressions(
 			return fillTable(component, state);
 		case 'CheckboxGroup':
 			return fillCheckboxGroup(component, state);
+		case 'Radio':
+		case 'CheckboxOne':
+			return fillRadio(component, state);
 		default:
 			return component;
 	}
