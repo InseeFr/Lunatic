@@ -2,21 +2,21 @@ import prepare from '../commons-tokenizer/prepare-string-indexation';
 
 export type Entity = Record<string, unknown> & {
 	id: string | number;
-	suggestion: { label: string };
+	suggestion: { label?: string; id: string };
 	tokensSearch: {};
 };
 export type Entities = Array<Entity>;
 
 export function value(entity: Entity, tokens: Array<string> = []) {
 	const { suggestion } = entity;
-	const { label } = suggestion;
-	const prepared = prepare(label);
-	if (label && label.length) {
+	const used = suggestion.label ?? suggestion.id;
+	const prepared = prepare(used);
+	if (used && used.length) {
 		return tokens.reduce(function (score, token, i) {
 			const index = prepared.search(token);
 			if (index >= 0) {
-				let how = label.length - index;
-				how /= label.length;
+				let how = used.length - index;
+				how /= used.length;
 				let weight = tokens.length - i;
 				weight /= tokens.length;
 				return score + how * weight;

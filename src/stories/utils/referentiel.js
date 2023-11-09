@@ -1,5 +1,7 @@
 export const getReferentiel = async (name) => {
 	switch (name) {
+		case 'libelle-pcs2020':
+			return fetch('/libelles-pcs-2020.json').then((r) => r.json());
 		case 'naf-rev2-stop':
 		case 'naf-rev2':
 			return fetch(
