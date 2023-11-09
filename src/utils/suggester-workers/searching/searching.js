@@ -3,22 +3,32 @@ import { CONSTANTES } from '../../store-tools';
 import { getEntity } from '../../idb-tools';
 import searchInIndex from './search-in-index';
 import resolveQueryParser from './resolve-query-parser';
-import computeScore from './compute-score';
+import sortDocuments from './sort-documents';
 import getOrderingFunction from './order';
 
-function prepare(response) {
+/**
+ * Transform documents before sending it back to the main thread
+ */
+function normalizeDocuments(response) {
 	return response.map(({ suggestion, tokensMap }) => ({
 		...suggestion,
 		tokensMap,
 	}));
 }
 
+/**
+ * Search documents matching one of the token and add the token count
+ *
+ * @param {string[]} tokens
+ * @param {IDBIndex} index
+ * @return {Promise<[{id: string, tokensSearch: {[token: string]: number},[key: string]: unknown}]>}
+ */
 async function searchTokens(tokens, index) {
-	// ask IDB
+	// Find the rows matching each token in the index
 	const results = await Promise.all(
 		tokens.map((token) => searchInIndex(token, index))
 	);
-	// concat and tokens count
+	// Flatten the results and add the number of time a token is encountered for each row
 	const map = results.reduce(function (m, docs, i) {
 		const token = tokens[i];
 		return docs.reduce(function (m2, doc) {
@@ -43,7 +53,10 @@ function isValideSearch(search) {
 	return false;
 }
 
-function filterSize(documents, max) {
+/**
+ * Limit the number of results retrieved
+ */
+function limitSize(documents, max) {
 	if (max && max < documents.length) {
 		return documents.slice(0, max);
 	}
@@ -67,9 +80,9 @@ async function searching(search, { name, version = '1', meloto = true }) {
 			const documents = await searchTokens(tokens, index);
 
 			return {
-				results: prepare(
+				results: normalizeDocuments(
 					getOrderingFunction(order)(
-						filterSize(computeScore(documents, tokens, meloto), max),
+						limitSize(sortDocuments(documents, tokens, meloto), max),
 						order
 					)
 				),

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { value, melotoOrder } from './meloto-order';
+import { value, sortWithMeloto } from './sort-with-meloto';
 
 describe('meloto', function () {
 	it('value', function () {
@@ -20,7 +20,7 @@ describe('meloto', function () {
 			{ suggestion: { label: 'culture before', id: 2 }, score: 1 },
 		];
 
-		melotoOrder(entities, ['culture']);
+		sortWithMeloto(entities, ['culture']);
 		expect(entities[0].suggestion.id).toEqual(2);
 		expect(entities[1].suggestion.id).toEqual(1);
 	});
@@ -32,7 +32,7 @@ describe('meloto', function () {
 			{ suggestion: { label: 'culture before before', id: 3 }, score: 1 },
 		];
 
-		melotoOrder(entities, ['cultu']);
+		sortWithMeloto(entities, ['cultu']);
 		expect(entities[0].suggestion.id).toEqual(3);
 		expect(entities[1].suggestion.id).toEqual(2);
 		expect(entities[2].suggestion.id).toEqual(1);

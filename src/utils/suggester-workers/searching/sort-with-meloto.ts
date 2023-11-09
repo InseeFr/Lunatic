@@ -3,12 +3,12 @@ import prepare from '../commons-tokenizer/prepare-string-indexation';
 export type Entity = Record<string, unknown> & {
 	id: string | number;
 	suggestion: { label: string };
-	tokensSearch: {};
+	tokensSearch: { [key: string]: number };
 };
 export type Entities = Array<Entity>;
 
-export function value(entity: Entity, tokens: Array<string> = []) {
-	const { suggestion } = entity;
+export function getDocumentScore(document: Entity, tokens: Array<string>) {
+	const { suggestion } = document;
 	const { label } = suggestion;
 	const prepared = prepare(label);
 	if (label && label.length) {
@@ -32,23 +32,17 @@ export function value(entity: Entity, tokens: Array<string> = []) {
  * Applique une fonction de score supplémentaire pour approcher au mieux
  * la classification obtenue avec l'outil Meloto, developpé par un prestataire
  * pour le compte de l'Insee.
- * Le nouveau classement favorise l'ordre d'apparation des token de recherche
+ *
+ * Le nouveau classement favorise l'ordre d'apparation des tokesn de recherche
  * dans la chaine label des entités indéxées. Si la recherche contient électricien,
  * la suggestion avec un label électricien sera mieux classée que celle avec chef électricien.
- * S'il y a plusieur tokens de recherche, un poid dégréssif leur est appliqué lors du tri.
- *
- * @param {*} entities
- * @param {*} tokens
- * @param {*} active
- * @returns
+ * S'il y a plusieurs tokens de recherche, un poid dégréssif leur est appliqué lors du tri.
  */
-export function melotoOrder(
-	entities: Entities,
-	tokens: Array<string>,
-	active = true
+export function sortWithMeloto(
+	documents: Entities,
+	tokens: Array<string> = []
 ) {
-	if (active) {
-		return entities.sort((a, b) => value(b, tokens) - value(a, tokens));
-	}
-	return entities;
+	return documents.sort(
+		(a, b) => getDocumentScore(b, tokens) - getDocumentScore(a, tokens)
+	);
 }

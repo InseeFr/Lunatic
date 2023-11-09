@@ -2,25 +2,16 @@ import { queryParserTokenized, queryParserSoft } from './query-parser';
 
 async function resolve(queryParser) {
 	try {
-		const { type } = queryParser;
-		switch (type) {
+		switch (queryParser.type) {
 			case 'tokenized':
-				const { params } = queryParser;
-				const { language, pattern, min, stemmer } = params;
-				return (query) =>
-					queryParserTokenized(query, {
-						language,
-						pattern,
-						min,
-						stemmer,
-					});
+				return (query) => queryParserTokenized(query, queryParser.params);
 			case 'soft':
 				return queryParserSoft;
 			default:
-				throw new Error(`Unknown parser type ${type}`);
+				throw new Error(`Unknown parser type ${queryParser.type}`);
 		}
 	} catch (e) {
-		throw new Error(e);
+		throw new Error(`Cannot resolve parser, ${e.toString()}`);
 	}
 }
 
