@@ -156,13 +156,10 @@ function fillCheckboxGroup(
  */
 function fillRadio(
 	component: DeepTranslateExpression<
-		LunaticComponentDefinition<'CheckboxOne' | 'Radio'>
+		LunaticComponentDefinition<'CheckboxOne' | 'Radio' | 'Dropdown'>
 	>,
 	state: LunaticState
 ) {
-	if (!('options' in component)) {
-		return component;
-	}
 	return {
 		...component,
 		options: component.options.filter((o) => {
@@ -198,6 +195,7 @@ function fillSpecificExpressions(
 			return fillCheckboxGroup(component, state);
 		case 'Radio':
 		case 'CheckboxOne':
+		case 'Dropdown':
 			return fillRadio(component, state);
 		default:
 			return component;
