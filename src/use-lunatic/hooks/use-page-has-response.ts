@@ -34,7 +34,7 @@ export function usePageHasResponse(
 		}
 
 		return false;
-	}, [components]);
+	}, [components, executeExpression]);
 }
 
 /**
