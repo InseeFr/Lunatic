@@ -3,10 +3,6 @@ import { resizeArrayVariable } from '../commons';
 import type { LunaticState } from '../../type';
 import { type ActionHandleChange } from '../../actions';
 
-function refillValue(size: number, precSize: number, value: unknown) {
-	return resizeArrayVariable(value, size, null);
-}
-
 function reduceResizingVariables({
 	size,
 	variableArray,
@@ -24,12 +20,15 @@ function reduceResizingVariables({
 	if (size === undefined) {
 		return {};
 	}
-	const sizeValue = executeExpression<number>(getCompatibleVTLExpression(size));
+	const newSize = executeExpression<number>(getCompatibleVTLExpression(size));
 	return variableArray.reduce((acc, v) => {
 		if (v in variables) {
 			const { value } = variables[v];
-			const precSize = Array.isArray(value) ? value.length : 0;
-			const newValue = refillValue(sizeValue, precSize, value);
+			const newValue = resizeArrayVariable(value, newSize);
+			// Variable had the right size, do nothing
+			if (newValue === value) {
+				return acc;
+			}
 			updateBindings(v, newValue);
 			return {
 				...acc,
@@ -68,6 +67,10 @@ function reduceResizingLinksVariables({
 				xSize,
 				new Array(ySize).fill(null)
 			);
+			// Variable had the right size, do nothing
+			if (newValue === value) {
+				return acc;
+			}
 			updateBindings(v, newValue);
 			return {
 				...acc,
