@@ -75,12 +75,9 @@ function Pager({
 					getData={getData}
 					lastReachedPage={lastReachedPage}
 				/>
-				<div>
-					<h3 style={{ marginBottom: 0 }}>Pager</h3>
-					<hr />
-					<ul
-						style={{ margin: 0, padding: 0, paddingLeft: 20, lineHeight: 1.6 }}
-					>
+				<div className="story-pager">
+					<h3>Pager</h3>
+					<ul>
 						<li>
 							<strong>PageTag:</strong> {JSON.stringify(pageTag)}
 						</li>

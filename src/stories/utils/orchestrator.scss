@@ -33,3 +33,22 @@
 		margin-top: 0;
 	}
 }
+
+.story-pager h3 {
+	font-size: 1rem;
+	padding-bottom: .3rem;
+	margin-bottom: .5rem;
+	border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+}
+
+.story-pager ul {
+	margin: 0;
+	padding: 0 0 0 20px;
+	line-height: 1.4;
+	font-size: 0.9rem;
+	color: rgba(0, 0, 0, 0.75)
+}
+
+.story-pager ul strong {
+	color: #000;
+}
