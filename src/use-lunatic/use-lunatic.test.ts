@@ -203,9 +203,9 @@ describe('use-lunatic()', () => {
 			expectedValue: unknown
 		) => {
 			expect(spy).toHaveBeenCalled();
-			const lastChangeCall = spy.mock.calls.findLast(
-				(args) => args[0].name === responseName
-			);
+			const lastChangeCall = [...spy.mock.calls]
+				.reverse()
+				.find((args) => args[0].name === responseName);
 			expect(
 				lastChangeCall[1],
 				'onChange should have been called with the right value'
