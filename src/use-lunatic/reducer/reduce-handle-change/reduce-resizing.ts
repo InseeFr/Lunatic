@@ -1,7 +1,7 @@
-import { getCompatibleVTLExpression } from '../../commons';
-import { resizeArrayVariable } from '../commons';
-import type { LunaticState } from '../../type';
 import { type ActionHandleChange } from '../../actions';
+import { getCompatibleVTLExpression } from '../../commons';
+import type { LunaticState } from '../../type';
+import { resizeArrayVariable } from '../commons';
 
 function reduceResizingVariables({
 	size,
@@ -24,7 +24,7 @@ function reduceResizingVariables({
 	return variableArray.reduce((acc, v) => {
 		if (v in variables) {
 			const { value } = variables[v];
-			const newValue = resizeArrayVariable(value, newSize);
+			const newValue = resizeArrayVariable(value, newSize, null);
 			// Variable had the right size, do nothing
 			if (newValue === value) {
 				return acc;
