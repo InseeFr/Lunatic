@@ -22,6 +22,7 @@ import reducer from './reducer';
 import { useSuggesters } from './use-suggesters';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
 import { useTrackChanges } from '../hooks/use-track-changes';
+import { usePageHasResponse } from './hooks/use-page-has-response';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -281,6 +282,7 @@ function useLunatic(
 		loopVariables: useLoopVariables(pager, state.pages),
 		getChangedData,
 		resetChangedData,
+		hasPageResponse: usePageHasResponse(components, executeExpression),
 	};
 }
 
