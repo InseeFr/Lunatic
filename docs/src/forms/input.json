@@ -1,0 +1,31 @@
+{
+  "maxPage": "1",
+  "components": [
+    {
+      "componentType": "Input",
+      "label": {
+        "value": "\"Prénom\"",
+        "type": "VTL|MD"
+      },
+      "id": "prenom",
+      "response": {
+        "name": "PRENOM"
+      },
+      "maxLength": 30,
+      "page": "1"
+    }
+  ],
+  "variables": [
+    {
+      "variableType": "COLLECTED",
+      "name": "PRENOM",
+      "values": {
+        "PREVIOUS": null,
+        "COLLECTED": null,
+        "FORCED": null,
+        "EDITED": null,
+        "INPUTED": null
+      }
+    }
+  ]
+}

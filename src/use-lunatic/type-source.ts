@@ -108,7 +108,7 @@ export type ComponentTypeBase = {
 	controls?: ControlType[];
 	id: string;
 	bindingDependencies?: string[];
-	hierarchy: Hierarchy;
+	hierarchy?: Hierarchy;
 	mandatory?: boolean;
 	page: string;
 };

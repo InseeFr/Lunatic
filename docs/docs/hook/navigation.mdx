@@ -1,0 +1,17 @@
+---
+sidebarPosition: 3
+---
+
+# Navigation
+
+Par défaut le formulaire est décomposé en plusieurs pages qui peuvent être atteinte par le biais d'une navigation. L'interface visuelle de la navigation n'est pas incluse dans `@inseefr/lunatic` et c'est à l'orchestrateur d'ajouter les éléments de navigations. Le hook fournit plusieurs méthodes pour simplifier le travail.
+
+- `goPreviousPage()`, permet de revenir en arrière d'une page
+- `goNextPage()`, permet d'aller à la page suivante
+- `goToPage({page: string; iteration?: number; nbIterations?: number; subPage?: number;})`, permet d'aller à une page spécifique
+- `isFirstPage`, indique si on est à la première page
+- `isLastPage`, indique si on est à la dernière page du formulaire (on a atteind `maxPage`)
+- `pageTag`, chaine de caractère représentant la page courante
+
+## pageTag
+

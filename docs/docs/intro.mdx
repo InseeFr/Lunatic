@@ -1,0 +1,25 @@
+---
+sidebar_position: 1
+slug: /
+---
+
+# Démarrage
+
+Lunatic est une bibliothèque **React** pour générer des questionnaires basés sur le format [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model).
+
+## Pour commencer
+
+Pour commencer à utiliser Lunatic dans votre application il faut télécharger la dépendance depuis `npm`.
+
+```bash
+yarn add @inseefr/lunatic
+```
+
+Ensuite la librairie se décompose en 2 parties, un hook `useLunatic()` qui permet de lire un fichier [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model) et d'offrir les différentes fonctionnalités permettant de naviguer dans les composants. Ensuite un composant `<LunaticComponents/>` permet d'afficher la liste des composants.
+
+## Exemple
+
+import source from '@site/src/forms/input.json';
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+
+<FormExample source={source} />
