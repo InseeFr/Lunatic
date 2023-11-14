@@ -39,6 +39,7 @@ const infoPCS2020 = {
 	],
 	queryParser: {
 		type: 'tokenized',
+		min: 3,
 		params: { language: 'French', pattern: '[\\w]+' },
 	},
 	meloto: true,
