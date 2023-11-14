@@ -15,6 +15,7 @@ const VTL_ATTRIBUTES = [
 	'hierarchy.subSequence.label',
 	'declarations.label',
 	'description',
+	'unit',
 	'responses.description',
 	'options.description',
 	// Disable controls compilation
