@@ -103,9 +103,9 @@ function updateBindings(state: LunaticState, action: ActionHandleChange) {
 const reducers = compose<ActionHandleChange>(
 	updateVariables,
 	updateBindings,
-	reduceResizing,
 	reduceMissing,
-	reduceCleaning
+	reduceCleaning,
+	reduceResizing
 );
 
 function reduceHandleChange(state: LunaticState, action: ActionHandleChange) {
