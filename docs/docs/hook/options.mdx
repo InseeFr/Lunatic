@@ -1,0 +1,77 @@
+# Options
+
+`useLunatic()` prend en 3ème argument un objet d'option permettant de configurer le fonctionnement.
+
+- **features**, allows you to define supported functionalities (défaut `['VTL', 'MD']`).
+- **savingType**, définit dans quelle clef sauvegarder les données (défaut `'COLLECTED'`)
+- **onChange**, méthode appelée lorsqu'une variable change suite à une action utilisateur (doit être mémoïsé car utilisé en dépendance d'un useCallback en interne). (optionnel `(response: {name: string}, value: any, args?: {iteration?: number}) => {}`)
+- **shortcut**, active les racourcis clavier pour les cases à cocher / radio (défaut `false`)
+- **initialPage**, définit la page de démarrage (défaut `'1'`)
+- **lastReachedPage**, définit la dernière page atteinte (défaut `undefined`)
+- **autoSuggesterLoading**, active le préchargement des données du suggester à l'initialisation de Lunatic (défaut `false`).
+- **custom**, objet permettant de [personnaliser les composants](./personnalisation) (défaut `empty`)
+- **workersBasePath**, définit le chemin de base des worker pour le [suggester](./components/fields/suggester) (défaut `/workers`)
+- ~~**preferences** (défaut `['COLLECTED']`), non utilisé~~
+
+## Vue d'ensemble
+
+- **withOverview**, active le système de vue d'ensemble (défaut `false`)
+
+Si cette option est à `true` une propriété `overview` sera disponible dans le retour de `useLunatic`.
+
+```tsx
+const {
+    overview
+} = useLunatic(source, data, {withOverview: true})
+```
+
+## Suivi des changements {#trackChanges}
+
+- **trackChanges**, active le suivi des changements (défaut `false`),
+
+Afin de simplifier le suivi des changements `@inseefr/lunatic` offre un système intégré permettant d'obtenir les variables modifiées entre 2 étapes. Cela permet par exemple de mettre en place une synchronisation partielle des données au fil du remplissage du formulaire (plutôt que d'attendre la finalisation du formulaire).
+
+Pour activer ce mode de suivi, passez l'option `trackChanges` à `true`. Le hook `useLunatic()` renverra alors 2 méthodes supplémentaires permettant de contrôler le suivi des changements.
+
+```tsx
+const {
+    getChangedData,
+    resetChangedData,
+} = useLunatic(source, data, {trackChanges: true})
+```
+
+- `getChangedData(reset: boolean = false)`, récupère les données qui ont changé depuis le dernier reset. Le format de retour est le même que `getData()`.
+- `resetChangedData()`, vide le dictionnaire des variables changée
+
+## Mode "Ne sais pas" {#missing}
+
+- **missing** (défaut `false`)
+
+Ce mode permet à l'utilisateur d'indiquer qu'il ne connait pas la réponse à une question ou qu'il souhaite ne pas y répondre. Des options supplémentaires permettent de définir le comportement des boutons.
+
+- **missingStrategy** (défaut `emptyFn`)
+- **missingShortcut** (défaut `{ dontKnow: '', refused: '' }`)
+- **dontKnowButton** (défaut `{ fr: 'Ne sais pas', en: "Don't know" }`)
+- **refusedButton** (défaut `{ fr: 'Refus', en: 'Refused' }`)
+
+Pour chaque champ une clef `missingResponse` doit enregistrer le choix fait par l'utilisateur.
+
+```json
+{
+  "missingResponse": { "name": "READY_MISSING" }
+}
+```
+
+La valeur de cette réponse sera `RF` en cas de refus, `DK` en cas de "Je ne sais pas".
+
+## Mode "management" {#management}
+
+- **management**, active le mode management (défaut `false`)
+
+Ce mode permet de gérer plusieurs états de la même variable (utilisé par les positions de récupération). L'administrateur pourra osciller entre le mode `COLLECTED`, `EDITED`, `INPUTED`...
+
+:::danger
+
+Ce mode n'est pas encore implémenté, l'option `management` n'a pas donc pas d'effet pour le moment.
+
+:::

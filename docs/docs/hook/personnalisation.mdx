@@ -1,0 +1,108 @@
+# Personnalisation
+
+Par défaut, les composants proposés par `@inseefr/lunatic` sont assez simples avec un style minimal. Vous pouvez personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes, vous pouvez remplacer les composants de bases par vos propres composants à l'aide de l'option `custom`.
+
+```jsx
+const custom = {
+  Input: MyCustomInput,
+  InputNumber: MyCustomInputNumber,
+};
+
+function App({ source, data }) {
+  const {} = useLunatic(source, data, { custom });
+  // ...
+}
+```
+
+## Liste des composants personnalisables
+
+N'hésitez pas à regarder le type des propriétés des composants originaux.
+
+### Base
+
+- [Button](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/button/lunatic-button.tsx), Composant bouton.
+- [Fieldset](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/fieldset.tsx)
+- [Label](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/label/label.tsx)
+- [Declaration](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/declarations/declaration.tsx)
+- [Declarations](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/declarations/declarations.tsx)
+
+### Élément de formulaire
+
+- [ComponentSet](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/component-set/html/component-set.tsx)
+- [Input](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/input/html/input.tsx), Champs texte avec label.
+- [Textarea](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/textarea/html/textarea.tsx), Champs texte multiligne avec label.
+- [Datepicker](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/datepicker/html/datepicker.tsx)
+- [Dropdown](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/dropdown/html/dropdown.tsx), Menu déroulant simple.
+- [InputNumber](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/input-number/html/input-number.tsx), Champs numérique.
+- [Modal](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/modal/html/modal.tsx), Boîte modale.
+- [Switch](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/switch/html/switch.tsx).
+
+### Cases à cocher
+
+- [CheckboxBoolean](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/checkbox/checkbox-boolean/html/checkbox-boolean.tsx), Case à cocher unique.
+- [CheckboxGroup](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/checkbox/checkbox-group/html/checkbox-group.tsx), Cases à cocher (chaque case correspondant à une réponse).
+- [CheckboxOne](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/checkbox/checkbox-one/html/checkbox-one.tsx), Cases à cocher (simule un radio décochable).
+- [CheckboxOption](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/checkbox/commons/checkbox-option.tsx), Sous composant représentant une case à cocher.
+- [Radio](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/radio/html/radio-group.tsx), Boutons radios.
+- [RadioOption](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/radio/html/radio-option.tsx), Boutons radios.
+
+### Menu déroulant
+
+- [Combobox](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/combo-box/combo-box.tsx), élément contenant le champ et le label.
+- [ComboboxContainer](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/combo-box/combo-box-container.tsx), élément entourant le champ.
+- [ComboboxContentBox](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/combo-box/combo-box-content-box.tsx), élément entourant le champ.
+- [ComboBoxOption](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/combo-box/panel/combo-box-option.tsx), élément dans la liste déroulante
+- [ComboboxPanelContainer](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/combo-box/panel/panel-container.tsx), élément représentant le menu déroulant.
+- [ComboxClearButton](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/combo-box/selection/clear-button.tsx), bouton permettant de vider la sélection (croix par défaut).
+- [ComboboxLabelSelection](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/combo-box/selection/combo-box-label-selection.tsx), label représentant la valeur sélectionnée.
+- [ComboboxInput](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/combo-box/selection/input.tsx), champs permettant la recherche dans le menu déroulant.
+
+### Suggester
+
+- [Suggester](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/suggester/html/suggester.tsx)
+- [SuggesterNotifcation](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/suggester/idb-suggester/suggester-notification.tsx)
+- [Notification](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/suggester/html/notification.tsx)
+
+### Tableau
+
+- [Table](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/html-table/table.tsx)
+- [Tbody](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/html-table/tbody.tsx)
+- [Td](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/html-table/td.tsx)
+- [Th](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/html-table/th.tsx)
+- [Thead](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/html-table/thead.tsx)
+- [Tr](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/commons/components/html-table/tr.tsx)
+
+### Sequence
+
+- [Sequence](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/sequence/html/sequence.tsx)
+- [Subsequence](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/subsequence/subsequence.tsx)
+
+### Rond point
+
+- [Roundabout](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/roundabout)
+- [RoundaboutItTitle](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/roundabout/components/roundabout-it-title.tsx)
+- [RoundaboutContainer](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/roundabout/components/roundabout-container.tsx), élément entourant le rond-point.
+- [RoundaboutItButton](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/roundabout/components/roundabout-it-button.tsx), bouton associé à un élément du rond-point.
+- [RoundaboutItContainer](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/roundabout/components/roundabout-it-container.tsx)
+- [RoundaboutLabel](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/roundabout/components/roundabout-label.tsx)
+- [RoundaboutPending](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/roundabout/components/roundabout-pending.tsx)
+
+### Sommaire
+
+- [SummaryResponses](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/summary/html/summary-responses.tsx)
+- [SummaryTitle](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/summary/html/summary-title.tsx)
+
+### Autres
+
+- [FilterDescription](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/filter-description/component.tsx)
+- [QuestionContext](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/questions/question-context.tsx)
+- [QuestionInformation](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/questions/question-information.tsx)
+
+### Composants racines
+
+Ces composants sont assez haut niveau et contiennent souvent beaucoup de logique que vous devrez dupliquer. Aussi, ne les personnalisez qu'en dernier recours.
+
+- [LunaticRadioGroup](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/radio/lunatic-radio-group.tsx)
+- [LunaticDatepicker](https://github.com/InseeFr/Lunatic/blob/2.7/src/components/datepicker/lunatic-datepicker.tsx)
+
+

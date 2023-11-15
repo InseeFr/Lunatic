@@ -8,6 +8,10 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+	markdown: {
+		mermaid: true,
+	},
+	themes: ['@docusaurus/theme-mermaid'],
 	title: '@inseefr/lunatic',
 	tagline: '',
 	favicon: 'img/favicon.ico',
@@ -15,13 +19,13 @@ const config = {
 	url: 'https://inseefr.github.io/',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
-	baseUrl: '/Lunatic/docs',
+	baseUrl: '/Lunatic',
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
 	organizationName: 'InseeFr', // Usually your GitHub org/user name.
 	projectName: 'lunatic', // Usually your repo name.
-
+	trailingSlash: false,
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 
@@ -54,7 +58,6 @@ const config = {
 			}),
 		],
 	],
-
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
@@ -69,9 +72,17 @@ const config = {
 				items: [
 					{
 						type: 'docSidebar',
-						sidebarId: 'tutorialSidebar',
-						position: 'left',
+						sidebarId: 'docs',
 						label: 'Documentation',
+					},
+					{
+						to: 'changelog',
+						label: 'Changelog'
+					},
+					{
+						href: 'https://inseefr.github.io/Lunatic/storybook-2.7',
+						label: 'Storybook',
+						position: 'right',
 					},
 					{
 						href: 'https://github.com/InseeFr/Lunatic',

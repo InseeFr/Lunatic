@@ -1,0 +1,21 @@
+# Roundabout
+
+Ce composant se comporte comme une boucle avec une page carrefour qui permet de sauter à n'importe quelle itération.
+
+- **components**, tableau contenant les composants enfant à cette boucle
+- **iterations**, expression VTL permettant de calculer le nombre d'itérations
+- **expressions**, un objet contenant les différents libellés à afficher pour chaque élément du rond point
+  - **unnecessary**, condition d'affichage du libellé "Non concerné" sur le bouton (expression VTL)
+  - **complete**, condition d'affichage du libellé "Complété" sur le bouton (expression VTL)
+  - **partial**, condition d'affichage du libellé "Modifier" sur le bouton (expression VTL)
+  - **label**, libellé à afficher au dessus du bouton (expression VTL)
+
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+import {GoToType} from '@site/src/components/GoToType';
+
+<GoToType type="ComponentRoundaboutType"/>
+
+import source from '../../../../src/stories/roundabout/source.json';
+
+<FormExample source={source} options={{initialPage: '3'}}/>
+

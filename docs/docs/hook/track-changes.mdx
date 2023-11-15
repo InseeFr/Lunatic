@@ -1,0 +1,15 @@
+# Suivi des changements
+
+Afin de simplifier le suivi des changements `@inseefr/lunatic` offre un système intégré permettant d'obtenir les variables modifiées entre 2 étapes. Cela permet par exemple de mettre en place une synchronisation partielle des données au fil du remplissage du formulaire (plutôt que d'attendre la finalisation du formulaire).
+
+Pour activer ce mode de suivi, passez l'option `trackChanges` à `true`. Le hook `useLunatic()` renverra alors 2 méthodes supplémentaires permettant de contrôler le suivi des changements.
+
+```tsx
+const {
+    getChangedData,
+    resetChangedData,
+} = useLunatic(source, data, {trackChanges: true})
+```
+
+- `getChangedData(reset: boolean = false)`, récupère les données qui ont changé depuis le dernier reset. Le format de retour est le même que `getData()`.
+- `resetChangedData()`, vide le dictionnaire des variables changée

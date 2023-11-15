@@ -1,0 +1,35 @@
+# VTL
+
+Il est possible à plusieurs endroits dans la définition des composants d'utiliser la syntaxe VTL.
+
+```json
+{ "value": "count(PRENOM)", "type": "VTL" }
+```
+
+Pour l'interprétation de ces expressions `@inseefr/lunatic` se repose sur la librairie [@inseefr/trevas](https://github.com/InseeFr/Trevas).
+
+:::info
+
+En cas d'expression invalide, Lunatic se contentera d'afficher l'expression non interprétée. Par exemple si un formulaire à une expression sans guillements
+
+```json
+{ "value": "Bonjour les gens", "type": "VTL" }
+```
+
+Lunatic affichera `Bonjour les gens` au lieu de crasher (il est tout de même conseillé de ne pas se reposer sur ce comportement et de plutôt corriger le JSON)
+
+:::
+
+## Markdown
+
+Lunatic fournit en plus un mode markdown qui permet, une fois l'expression exécutée d'interpréter le format markdown. Dans ce cas-là, il faudra utiliser un type `VTL|MD`.
+
+```json
+{ "value": "\"Je suis du **markdown**\"", "type": "VTL|MD" }
+```
+
+## Variable spéciale
+
+Certaines variables sont injecté dynamiquement lors de l'interprétation d'une expression.
+
+- **GLOBAL_ITERATION_INDEX** (entier), permet de faire référence à l'itération courante dans le cas d'une boucle
