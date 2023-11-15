@@ -274,7 +274,7 @@
 					"id": "kfxn6f16-kfxn36ru",
 					"label": {
 						"type": "VTL|MD",
-						"value": "Tester la saisie de BLABLA"
+						"value": "\"Tester la saisie de BLABLA\""
 					},
 					"position": "AFTER_QUESTION_TEXT"
 				}
@@ -378,7 +378,7 @@
 					"id": "kfxn91jl-kfxn7ugm",
 					"label": {
 						"type": "VTL|MD",
-						"value": "Tester cocher 1, ne rien cocher, cocher 2"
+						"value": "\"Tester cocher 1, ne rien cocher, cocher 2\""
 					},
 					"position": "AFTER_QUESTION_TEXT"
 				}

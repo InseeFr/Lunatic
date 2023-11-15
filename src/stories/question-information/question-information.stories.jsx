@@ -1,10 +1,10 @@
 import React from 'react';
 import Orchestrator from '../utils/orchestrator';
-import source from './source-paginated.json';
+import source from './source';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Components/Loop/PaginatedLoop',
+	title: 'Components/QuestionInformation',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };
@@ -12,6 +12,6 @@ const stories = {
 export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
-
 export const Default = Template.bind({});
-Default.args = { id: 'paginated-loop', source };
+
+Default.args = { id: 'input', source };

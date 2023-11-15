@@ -1,39 +1,18 @@
 {
+	"maxPage": "1",
 	"components": [
 		{
 			"id": "j4nw5cqz",
 			"componentType": "Dropdown",
 			"mandatory": false,
-			"label": "\"In which state do The Simpsons reside?\"",
+			"page": "1",
+			"label": {
+				"value": "\"In which state do The Simpsons reside?\"",
+				"type": "VTL|MD"
+			},
 			"response": {
 				"name": "STATE"
 			},
-			"declarations": [
-				{
-					"id": "d1",
-					"declarationType": "COMMENT",
-					"position": "BEFORE_QUESTION_TEXT",
-					"label": {
-						"value": "\"## Test declaration before \n ### other title\n lkfsdjkfdsjklhldkfsghldf\"",
-						"type": "VTL|MD"
-					}
-				},
-				{
-					"id": "d2",
-					"declarationType": "COMMENT",
-					"position": "AFTER_QUESTION_TEXT",
-					"label": { "value": "\"Test declaration after\"", "type": "VTL|MD" }
-				},
-				{
-					"id": "d3",
-					"declarationType": "COMMENT",
-					"position": "DETACHABLE",
-					"label": {
-						"value": "\"Test detachable declaration\"",
-						"type": "VTL|MD"
-					}
-				}
-			],
 			"options": [
 				{
 					"value": "1",
@@ -81,7 +60,8 @@
 			"id": "j4nw5cqz-bis",
 			"componentType": "Dropdown",
 			"mandatory": false,
-			"label": { "value": "\"In which state do The Simpsons reside?\"" },
+			"page": "1",
+			"label": { "value": "\"In which state do The Simpsons reside?\"", "type": "VTL|MD" },
 			"response": {
 				"name": "STATE2"
 			},

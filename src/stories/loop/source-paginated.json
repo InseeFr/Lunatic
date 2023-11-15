@@ -2,125 +2,112 @@
 	"maxPage": "3",
 	"components": [
 		{
-			"id": "kb9hi4j0",
+			"id": "seq",
 			"componentType": "Sequence",
-			"page": "1",
-			"label": { "value": "\"Sequence\"", "type": "VTL|MD" },
-			"declarations": [
-				{
-					"id": "kb9hi4j0-krnoclfe",
-					"declarationType": "HELP",
-					"position": "AFTER_QUESTION_TEXT",
-					"label": {
-						"value": "\"Bonjour!\"",
-						"type": "VTL"
-					}
-				}
-			],
-			"conditionFilter": { "value": "true", "type": "VTL" }
+			"label": {
+				"value": "\"Description des individus de votre logement\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "1"
 		},
 		{
-			"id": "kmw4iq4w",
+			"id": "loop-prenom",
 			"componentType": "Loop",
+			"label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"bindingDependencies": ["PRENOM"],
+			"lines": {
+				"min": { "value": "1", "type": "VTL" },
+				"max": { "value": "10", "type": "VTL" }
+			},
+			"page": "1",
+			"components": [
+				{
+					"componentType": "Input",
+					"label": { "value": "\"Prénom\"", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"maxLength": 30,
+					"bindingDependencies": ["PRENOM"],
+					"id": "prenom",
+					"response": {
+						"name": "PRENOM"
+					}
+				}
+			]
+		},
+		{
+			"id": "loop",
+			"componentType": "Loop",
+			"loopDependencies": ["PRENOM"],
+			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
 			"page": "2",
-			"maxPage": "2",
+			"maxPage": "1",
 			"depth": 1,
 			"paginatedLoop": true,
 			"conditionFilter": {
 				"value": "true",
 				"type": "VTL"
 			},
-			"loopDependencies": ["3"],
-			"iterations": { "value": "3", "type": "VTL" },
 			"components": [
 				{
-					"id": "kmno1n7m",
-					"componentType": "Input",
-					"mandatory": false,
+					"id": "age",
+					"label": {
+						"value": "PRENOM || \", quel est vôtre âge ?\"",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
 					"page": "2.1",
-					"maxLength": 20,
-					"label": {
-						"value": "\"Questions 1, Itération : \" || cast(GLOBAL_ITERATION_INDEX, string)",
-						"type": "VTL"
-					},
-					"conditionFilter": {
-						"value": "true",
-						"type": "VTL"
-					},
-					"response": { "name": "PAGE1" }
-				},
-				{
-					"id": "kmno1n7m",
-					"componentType": "Input",
-					"mandatory": false,
-					"page": "2.2",
-					"maxLength": 20,
-					"label": {
-						"value": "\"Vous avez mis en question 1, itération  \" || cast(GLOBAL_ITERATION_INDEX, string) || \" : \" || LIBELLE",
-						"type": "VTL"
-					},
-					"conditionFilter": {
-						"value": "true",
-						"type": "VTL"
-					},
-					"response": { "name": "PAGE2" }
+					"componentType": "InputNumber",
+					"min": 0,
+					"max": 120,
+					"decimals": 0,
+					"response": { "name": "AGE" }
 				}
 			]
 		},
 		{
-			"id": "kb9hi4j0",
+			"id": "seq-end",
 			"componentType": "Sequence",
-			"page": "3",
-			"label": { "value": "\"Sequence\"", "type": "VTL" },
-			"declarations": [
-				{
-					"id": "kb9hi4j0-krnoclfe",
-					"declarationType": "HELP",
-					"position": "AFTER_QUESTION_TEXT",
-					"label": {
-						"value": "\"Au revoir!\"",
-						"type": "VTL"
-					}
-				}
-			],
-			"conditionFilter": { "value": "true", "type": "VTL" }
+			"label": {
+				"value": "\"End\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "3"
 		}
 	],
-	"resizing": {},
+	"resizing": {
+		"PRENOM": {
+			"size": "count(PRENOM)",
+			"variables": ["AGE"]
+		}
+	},
 	"variables": [
-		{ "variableType": "EXTERNAL", "name": "NUMBER", "value": "3" },
 		{
 			"variableType": "COLLECTED",
-			"name": "PAGE1",
+			"name": "PRENOM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
+				"PREVIOUS": null,
+				"COLLECTED": ["John", "Jane", "Marc"],
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "PAGE2",
+			"name": "AGE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
-		},
-		{
-			"variableType": "CALCULATED",
-			"name": "LIBELLE",
-			"expression": {
-				"value": "PAGE1",
-				"type": "VTL"
-			},
-			"bindingDependencies": ["PAGE1"],
-			"inFilter": "false",
-			"shapeFrom": "PAGE1"
 		}
 	]
 }

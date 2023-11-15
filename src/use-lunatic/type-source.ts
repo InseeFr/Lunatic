@@ -144,6 +144,7 @@ export type ComponentInputOrTextareaType = {
 	missingResponse?: ResponseType;
 	response: ResponseType;
 };
+
 export type ComponentSequenceType = {
 	componentType: 'Sequence';
 };
@@ -189,10 +190,8 @@ export type ComponentLoopType = {
 
 export type ComponentTableType = {
 	componentType: 'Table';
-	lines: ComponentRosterForLoopType['lines'];
 	header: ComponentRosterForLoopType['header'];
 	body: ComponentRosterForLoopType['body'];
-	positioning: ComponentRosterForLoopType['positioning'];
 };
 
 export type ComponentNumberType = {
@@ -206,7 +205,7 @@ export type ComponentNumberType = {
 
 export type ComponentDatePickerType = {
 	componentType: 'Datepicker';
-	dateFormat: string;
+	dateFormat: 'YYYY-MM-DD' | 'YYYY' | 'YYYY-MM';
 	response: ResponseType;
 	min?: string;
 	max?: string;
