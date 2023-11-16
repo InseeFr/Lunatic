@@ -89,7 +89,7 @@ const sidebars = {
         description: "Cette section décrit le fonctionnement interne de Lunatic",
         type: 'generated-index',
       },
-      items: ['internal/reducer', 'internal/resizing', 'internal/cleaning']
+      items: ['internal/reducer', 'internal/resizing', 'internal/cleaning', 'internal/missing']
     }
   ],
 };
