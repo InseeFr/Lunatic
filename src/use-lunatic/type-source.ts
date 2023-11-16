@@ -266,50 +266,51 @@ export type ComponentSuggesterType = {
 };
 
 export type SuggesterType = {
-	// Nom métier de la liste.
+	// Name of the list (will be used as storeName for suggester)
 	name: string;
-	// Champs à utiliser pour l'indexation
+	// Fields to use for indexing the data
 	fields: {
-		// Nom de la propriété dans le JSON
+		// Property name in the JSON
 		name: string;
-		// Taille minimale des tokens à conserver pour l'indexation.
+		// Minimum length for a token to be indexed
 		min?: number;
-		// Expressions régulières pour extraire les tokens (ex: ["[\\w]+"])
+		// Regular expression to match words (ex: ["[\\w]+"])
 		rules?: string[];
-		// Langue de référence pour la lemmatisation.
+		// Language used for stemming (we only keep the root of a word).
 		language?: 'French' | 'English';
-		// Active ou pas la lemmatisation.
+		// Enable stemming
 		stemmer?: boolean;
-		// Définit les mots synonymes
+		// Define synonyms
 		synonyms: { source: string; target: string[] }[];
 	}[];
-	// Nombre de résultats à renvoyer lors d'une recherche
+	// Limit the number of results to return
 	max: number;
-	// Liste des mots à ignorer.
+	// Ignored words
 	stopWords?: string;
+	// Overwrite order on the result using alphabetical order
 	order?: { field: string; type: string };
-	// Définit comment la recherche va être interprété
+	// How the search query will be parsed
 	queryParser:
 		| {
-				// Search is done word by word
+				// Search is done word by word (OR operator)
 				type: 'tokenized';
 				params: {
-					// Langue de référence pour la lemmatisation.
+					// Language used for stemming (we only keep the root of a word).
 					language: 'French' | 'English';
-					// Expressions régulières pour extraire les tokens (ex: ["[\\w]+"])
+					// Regular expression to match words (ex: ["[\\w]+"])
 					pattern: string;
-					// Taille minimale de la recherche
+					// Minimum length for a token to be used in the search
 					min?: number;
 				};
 		  }
 		| {
 				type: 'soft';
 		  };
-	// Propriété pour créer un worker avec une api distante (pas utilisé actuellement)
+	// Create a worker from a remote API (not used currently)
 	url?: string;
-	// Version qui peut servir pour index db (pas utilisé actuellement)
+	// IndexDB version (pas utilisé actuellement)
 	version: number;
-	// Active la recherche de mots proches de la saisie (échos). Améliore le score des résultats si les mots sont proches.
+	// Enable "melauto" ranking, words closer to the start of the string are ranked better
 	meloto?: boolean;
 };
 
