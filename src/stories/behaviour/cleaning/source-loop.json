@@ -1,0 +1,130 @@
+{
+	"resizing": {
+		"PRENOM": {
+			"variables": ["AGE", "HIDE_AGE"],
+			"size": "count(PRENOM)"
+		}
+	},
+	"cleaning": {
+		"HIDE_AGE": {
+			"AGE": "false"
+		}
+	},
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": ["John", "Jane"],
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "PRENOM"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [null],
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "AGE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [null],
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "HIDE_AGE"
+		}
+	],
+	"components": [
+		{
+			"componentType": "Loop",
+			"id": "loop",
+			"label": "Ajouter",
+			"bindingDependencies": ["PRENOM"],
+			"lines": {
+				"min": { "value": 1, "type": "VTL" },
+				"max": { "value": 10, "type": "VTL" }
+			},
+			"page": "1",
+			"components": [
+				{
+					"componentType": "Input",
+					"label": "Prénom",
+					"bindingDependencies": ["PRENOM"],
+					"id": "prenom",
+					"response": {
+						"name": "PRENOM"
+					}
+				}
+			]
+		},
+		{
+			"componentType": "Loop",
+			"id": "loop2",
+			"paginatedLoop": true,
+			"bindingDependencies": ["PRENOM"],
+			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"page": "2",
+			"maxPage": "2",
+			"components": [
+				{
+					"componentType": "Input",
+					"label":  {
+						"value": "\"Age de \" || PRENOM",
+						"type": "VTL"
+					},
+					"bindingDependencies": ["AGE"],
+					"id": "age",
+					"page": "2.1",
+					"response": {
+						"name": "AGE"
+					}
+				},
+				{
+					"componentType": "CheckboxBoolean",
+					"label":  {
+						"value": "\"Masquer l'age de \" || PRENOM || \" ?\"",
+						"type": "VTL"
+					},
+					"bindingDependencies": ["HIDE_AGE"],
+					"id": "hideage",
+					"page": "2.2",
+					"response": {
+						"name": "HIDE_AGE"
+					}
+				}
+			]
+		},
+		{
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "ksyjs7vy",
+			"page": "3",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"END\""
+			}
+		}
+	],
+	"pagination": "question",
+	"lunaticModelVersion": "2.3.2-rc4",
+	"modele": "TESTSURSUM",
+	"enoCoreVersion": "2.4.1-pairwise",
+	"generatingDate": "14-04-2023 09:00:09",
+	"missing": false,
+	"id": "lb3ei722",
+	"maxPage": "3"
+}
