@@ -79,7 +79,7 @@
 			"components": [
 				{
 					"componentType": "Input",
-					"label":  {
+					"label": {
 						"value": "\"Age de \" || PRENOM",
 						"type": "VTL"
 					},
@@ -92,7 +92,7 @@
 				},
 				{
 					"componentType": "CheckboxBoolean",
-					"label":  {
+					"label": {
 						"value": "\"Masquer l'age de \" || PRENOM || \" ?\"",
 						"type": "VTL"
 					},
