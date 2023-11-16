@@ -1,6 +1,12 @@
-# Options
+# Paramètres
 
-`useLunatic()` prend en 3ème argument un objet d'option permettant de configurer le fonctionnement.
+Le premier point d'entrée avec la librairie est le hook `useLunatic(source, data, options)` qui prend 3 arguments :
+
+1. Un objet source correspondant à un [modèle lunatic](https://github.com/InseeFr/Lunatic-Model).
+2. Un objet contenant les données du formulaire (s'il a été prérempli par exemple)
+3. Un [objet d'option](#options) pour définir des comportements spécifique
+
+## Options
 
 - **features**, allows you to define supported functionalities (défaut `['VTL', 'MD']`).
 - **savingType**, définit dans quelle clef sauvegarder les données (défaut `'COLLECTED'`)
@@ -13,7 +19,7 @@
 - **workersBasePath**, définit le chemin de base des worker pour le [suggester](./components/fields/suggester) (défaut `/workers`)
 - ~~**preferences** (défaut `['COLLECTED']`), non utilisé~~
 
-## Vue d'ensemble
+### Vue d'ensemble
 
 - **withOverview**, active le système de vue d'ensemble (défaut `false`)
 
@@ -25,7 +31,7 @@ const {
 } = useLunatic(source, data, {withOverview: true})
 ```
 
-## Suivi des changements {#trackChanges}
+### Suivi des changements {#trackChanges}
 
 - **trackChanges**, active le suivi des changements (défaut `false`),
 
@@ -43,7 +49,7 @@ const {
 - `getChangedData(reset: boolean = false)`, récupère les données qui ont changé depuis le dernier reset. Le format de retour est le même que `getData()`.
 - `resetChangedData()`, vide le dictionnaire des variables changée
 
-## Mode "Ne sais pas" {#missing}
+### Mode "Ne sais pas" {#missing}
 
 - **missing** (défaut `false`)
 
@@ -64,13 +70,13 @@ Pour chaque champ une clef `missingResponse` doit enregistrer le choix fait par 
 
 La valeur de cette réponse sera `RF` en cas de refus, `DK` en cas de "Je ne sais pas".
 
-## Mode "management" {#management}
+### Mode "management" {#management}
 
 - **management**, active le mode management (défaut `false`)
 
 Ce mode permet de gérer plusieurs états de la même variable (utilisé par les positions de récupération). L'administrateur pourra osciller entre le mode `COLLECTED`, `EDITED`, `INPUTED`...
 
-:::danger
+:::warning
 
 Ce mode n'est pas encore implémenté, l'option `management` n'a pas donc pas d'effet pour le moment.
 

@@ -266,24 +266,50 @@ export type ComponentSuggesterType = {
 };
 
 export type SuggesterType = {
+	// Nom métier de la liste.
 	name: string;
+	// Champs à utiliser pour l'indexation
 	fields: {
+		// Nom de la propriété dans le JSON
 		name: string;
+		// Taille minimale des tokens à conserver pour l'indexation.
 		min?: number;
+		// Expressions régulières pour extraire les tokens (ex: ["[\\w]+"])
 		rules?: string[];
-		language?: string;
+		// Langue de référence pour la lemmatisation.
+		language?: 'French' | 'English';
+		// Active ou pas la lemmatisation.
 		stemmer?: boolean;
+		// Définit les mots synonymes
 		synonyms: { source: string; target: string[] }[];
 	}[];
+	// Nombre de résultats à renvoyer lors d'une recherche
 	max: number;
+	// Liste des mots à ignorer.
 	stopWords?: string;
 	order?: { field: string; type: string };
-	queryParser: {
-		type: string;
-		params: { language: string; pattern: string; min?: number };
-	};
+	// Définit comment la recherche va être interprété
+	queryParser:
+		| {
+				// Search is done word by word
+				type: 'tokenized';
+				params: {
+					// Langue de référence pour la lemmatisation.
+					language: 'French' | 'English';
+					// Expressions régulières pour extraire les tokens (ex: ["[\\w]+"])
+					pattern: string;
+					// Taille minimale de la recherche
+					min?: number;
+				};
+		  }
+		| {
+				type: 'soft';
+		  };
+	// Propriété pour créer un worker avec une api distante (pas utilisé actuellement)
 	url?: string;
+	// Version qui peut servir pour index db (pas utilisé actuellement)
 	version: number;
+	// Active la recherche de mots proches de la saisie (échos). Améliore le score des résultats si les mots sont proches.
 	meloto?: boolean;
 };
 

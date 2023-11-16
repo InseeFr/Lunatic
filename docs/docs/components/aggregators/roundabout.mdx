@@ -19,3 +19,11 @@ import source from '../../../../src/stories/roundabout/source.json';
 
 <FormExample source={source} options={{initialPage: '3'}}/>
 
+## Navigation
+
+Si le rond-point ne contient qu'un seul élément, il se comporte alors comme une boucle paginée. En revanche s'il a plus d'un élément certains comportement changent par rapport à une boucle paginée.
+
+- Lors de l'arrivée sur le rond-point, on n'est pas redirigé automatiquement sur la première itération. On propose à l'utilisateur de choisir l'itération sur laquelle il souhaite aller.
+- À la fin d'une séquence, on n'est pas amené à l'itération suivante, on revient à la page d'accueil du rond-point.
+
+Ce comportement fonctionne dans les 2 sens de navigation.

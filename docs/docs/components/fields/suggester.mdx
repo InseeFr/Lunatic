@@ -12,6 +12,8 @@ import {FormExample} from '@site/src/components/FormExample/FormExample';
 
 ## Indexation
 
+Dans le fichier source la liste des données à rendre disponible et définit dans la propriété `suggesters`. Vous pouvez retrouver les détails sur le format de cette définition en regardant le type [SuggesterType](https://github.com/InseeFr/Lunatic/blob/2.7/src/use-lunatic/type-source.ts#L269) dans le code source.
+
 Lors de l'indexation des données, un fichier JSON est chargé puis son contenu est sauvegardé dans IndexDB avec 2 stores :
 
 - `store/info`, sauvegarde les informations à propos de l'index (name, fields, queryParser, version...)
@@ -19,9 +21,9 @@ Lors de l'indexation des données, un fichier JSON est chargé puis son contenu 
 
 Pour le deuxième store, un index est créé en fonction des tokens utilisés pour chaque suggestion. Par exemple, "Hello world" sera indexé sur "hello" et "world". Cet index sera utilisé lors de la recherche pour trouver tous les enregistrements correspondant à une chaîne spécifique. Afin d'éviter d'avoir un index trop volumineux, les jetons sont réduits à l'aide de plusieurs opérations :
 
-- Mise en minuscule
-- Les accents / caractères spéciaux sont supprimés
-- Les mots sont simplifiés à l'aide d'un algorithme de stemming (snowball, qui supprime les suffix)
+- Mise en minuscule.
+- Les accents / caractères spéciaux sont supprimés.
+- Les mots sont simplifiés à l'aide d'un algorithme de stemming (snowball, qui supprime les suffix).
 
 ## La recherche
 

@@ -19,8 +19,9 @@
     "path": false
   },
   "dependencies": {
-    "@docusaurus/core": "3.0.0",
-    "@docusaurus/preset-classic": "3.0.0",
+    "@cmfcmf/docusaurus-search-local": "^1.1.0",
+    "@docusaurus/core": "^3.0.0",
+    "@docusaurus/preset-classic": "^3.0.0",
     "@docusaurus/theme-mermaid": "^3.0.0",
     "@inseefr/lunatic": "^2.7.4",
     "@mdx-js/react": "^3.0.0",

@@ -11,7 +11,7 @@ const sidebars = {
         type: 'generated-index',
       },
       collapsed: false,
-      items: ['hook/options', 'hook/navigation', 'hook/personnalisation'],
+      items: ['hook/options', 'hook/return', 'hook/navigation', 'hook/personnalisation'],
     },
     'components/lunatic-components',
     {
@@ -81,7 +81,16 @@ const sidebars = {
         },
       ],
     },
-      "vtl"
+      "vtl",
+    {
+      type: 'category',
+      label: 'Fonctionnement interne',
+      link: {
+        description: "Cette section décrit le fonctionnement interne de Lunatic",
+        type: 'generated-index',
+      },
+      items: ['internal/reducer', 'internal/resizing', 'internal/cleaning']
+    }
   ],
 };
 
