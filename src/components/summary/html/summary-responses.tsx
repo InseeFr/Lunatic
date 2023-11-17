@@ -20,11 +20,7 @@ function ListResponses({
 	);
 }
 
-function Responses({
-	values
-}: {
-	values?: ResponsesValue;
-}) {
+function Responses({ values }: { values?: ResponsesValue }) {
 	if (!values) {
 		return null;
 	}
