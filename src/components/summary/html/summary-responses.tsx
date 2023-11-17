@@ -21,11 +21,9 @@ function ListResponses({
 }
 
 function Responses({
-	values,
-	sectionIndex,
+	values
 }: {
 	values?: ResponsesValue;
-	sectionIndex: number;
 }) {
 	if (!values) {
 		return null;
@@ -33,8 +31,9 @@ function Responses({
 	return (
 		<>
 			{values.map(({ label, value, id }, index) => {
+				console.log(label, value, id)
 				return (
-					<li key={`${id}-${sectionIndex}`}>
+					<li key={`response-${index}`}>
 						{label} : {value}
 					</li>
 				);
@@ -59,7 +58,7 @@ function SummaryResponses({
 				const { title, values, id } = section;
 				return (
 					<ListResponses key={`${id}-${index}`} title={title}>
-						<Responses values={values} sectionIndex={index} />
+						<Responses values={values} />
 					</ListResponses>
 				);
 			})}
