@@ -63,7 +63,7 @@ function cleanedValue(
 		initialValue = variable.variable.values.COLLECTED ?? null;
 	}
 
-	if (!iteration || !Array.isArray(variable.value)) {
+	if (iteration === undefined || !Array.isArray(variable.value)) {
 		return initialValue;
 	}
 
