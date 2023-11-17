@@ -61,7 +61,10 @@
 			"componentType": "Dropdown",
 			"mandatory": false,
 			"page": "1",
-			"label": { "value": "\"In which state do The Simpsons reside?\"", "type": "VTL|MD" },
+			"label": {
+				"value": "\"In which state do The Simpsons reside?\"",
+				"type": "VTL|MD"
+			},
 			"response": {
 				"name": "STATE2"
 			},
