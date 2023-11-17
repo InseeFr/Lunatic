@@ -31,7 +31,6 @@ function Responses({
 	return (
 		<>
 			{values.map(({ label, value, id }, index) => {
-				console.log(label, value, id)
 				return (
 					<li key={`response-${index}`}>
 						{label} : {value}
