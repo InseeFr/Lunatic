@@ -130,7 +130,6 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 				calculatedVariable.variable.variableType === CALCULATED &&
 				toRefreshVariables.has(name)
 			) {
-				console.log('refreshing', name, iteration, skipCleaningRefresh);
 				const { expression, shapeFrom } = calculatedVariable.variable;
 
 				const logging: ExpressionLogger = (expression, bindings, e) => {
