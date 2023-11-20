@@ -9,10 +9,9 @@ const DEFAULT_LOG_FUNCTION = voidFunction;
 type Props = { expression: string; logFunction?: typeof DEFAULT_LOG_FUNCTION };
 
 const MdLabel = ({ expression, logFunction = DEFAULT_LOG_FUNCTION }: Props) => (
-	<ReactMarkdown
-		children={expression}
-		components={renderComponentsFor(expression, { logFunction })}
-	/>
+	<ReactMarkdown components={renderComponentsFor(expression, { logFunction })}>
+		{expression}
+	</ReactMarkdown>
 );
 
 const renderComponentsFor = (

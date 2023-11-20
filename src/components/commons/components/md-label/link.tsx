@@ -1,8 +1,9 @@
-import { type PropsWithChildren } from 'react';
-import ReactTooltip from 'react-tooltip';
+import { Fragment, type PropsWithChildren, useId } from 'react';
+import { Tooltip } from 'react-tooltip';
+import ReactMarkdown from 'react-markdown';
+import routerLink from './router-link';
 
 type Props = PropsWithChildren<{ href: string; title: string }>;
-
 const Link = (props: Props) => {
 	const {
 		href,
@@ -10,46 +11,42 @@ const Link = (props: Props) => {
 		title,
 		// logFunction
 	} = props;
-	// TODO: reactivate
-	const listener = (/* link = true */) => () => {
-		// if (isFunction(logFunction))
-		// 	logFunction(
-		// 		createObjectEvent(
-		// 			link ? `link-${href}` : `tooltip-${title}`,
-		// 			link ? LINK_CATEGORY : TOOLTIP_CATEGORY,
-		// 			EVENT_CLICK
-		// 		)
-		// 	);
-	};
-	if (href.trim().startsWith('http'))
-		return (
-			<a
-				href={href}
-				target="_blank"
-				rel="noreferrer noopener"
-				onClick={listener()}
-			>
-				{children}
-			</a>
-		);
+
+	const id = useId();
+
+	const LinkComponent: React.FC<{
+		to?: string;
+		href?: string;
+		id: string;
+		'data-tooltip-id'?: string;
+	}> = (() => {
+		if (href.trim().startsWith('/')) {
+			return routerLink;
+		} else {
+			return 'a' as any;
+		}
+	})();
+
+	const linkProps = href.trim().startsWith('/')
+		? { to: href, id }
+		: { href, target: '_blank', rel: 'noopener noreferrer', id };
+
 	return (
-		<span className="link-md" onPointerUp={listener(/*false*/)}>
-			<span
-				data-for={`${title}-tooltip`}
-				data-tip={title}
-				data-multiline
-				className="field-md"
+		<>
+			<LinkComponent
+				{...linkProps}
+				{...(title
+					? { 'data-tooltip-id': `tooltip-${id}`, className: 'link-md' }
+					: {})}
 			>
 				{children}
-			</span>
-			<ReactTooltip
-				id={`${title}-tooltip`}
-				className="tooltip-content"
-				place="bottom"
-				effect="solid"
-				globalEventOff="click"
-			/>
-		</span>
+			</LinkComponent>
+			{title && (
+				<Tooltip className="tooltip-content" id={`tooltip-${id}`}>
+					<ReactMarkdown components={{ p: Fragment }}>{title}</ReactMarkdown>
+				</Tooltip>
+			)}
+		</>
 	);
 };
 
