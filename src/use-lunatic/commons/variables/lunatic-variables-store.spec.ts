@@ -145,6 +145,11 @@ describe('lunatic-variables-store', () => {
 			variables.set('LASTNAME', 'Doe', { iteration: [1] });
 			expect(variables.get('LASTNAME')).toEqual([null, 'Doe']);
 		});
+		it('should handle downsizing an array', () => {
+			variables.set('FIRSTNAME', ['John', 'Jane', 'Marc']);
+			variables.set('FIRSTNAME', ['John', 'Jane']);
+			expect(variables.get('FIRSTNAME')).toEqual(['John', 'Jane']);
+		});
 		it('should ignore non array values', () => {
 			variables.set('FIRSTNAME', 'John');
 			expect(variables.get('FIRSTNAME', [0])).toEqual('John');

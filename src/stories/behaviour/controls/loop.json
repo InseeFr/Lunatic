@@ -43,7 +43,7 @@
 					"typeOfControl": "FORMAT",
 					"control": {
 						"type": "VTL",
-						"value": "count(AGES) >= 3"
+						"value": "NB >= 3"
 					},
 					"id": "kfxmjupm-CI-1"
 				}
@@ -96,6 +96,14 @@
 		}
 	],
 	"variables": [
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "count(PRENOMS)"
+			},
+			"name": "NB"
+		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
