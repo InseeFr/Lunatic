@@ -74,6 +74,7 @@ export enum TypeOfControl {
 
 export enum ControlTypeEnum {
 	roundabout = 'roundabout',
+	row = 'ROW',
 	simple = 'simple',
 }
 
@@ -104,7 +105,7 @@ export type Hierarchy = {
 export type ComponentTypeBase = {
 	label: LabelType;
 	declarations?: DeclarationType[];
-	conditionFilter: ConditionFilterType;
+	conditionFilter?: ConditionFilterType;
 	controls?: ControlType[];
 	id: string;
 	bindingDependencies?: string[];

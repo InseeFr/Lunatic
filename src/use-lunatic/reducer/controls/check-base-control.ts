@@ -1,13 +1,12 @@
 import { type ReactNode } from 'react';
-import { type StateForControls } from '../../commons/compile-controls';
-import type { LunaticControl, LunaticError } from '../../type';
+import type { LunaticControl, LunaticError, LunaticState } from '../../type';
 
-export function resolveSimpleControl(
-	state: StateForControls,
-	control: LunaticControl
+export function checkBaseControl(
+	control: LunaticControl,
+	executeExpression: LunaticState['executeExpression'],
+	pager: LunaticState['pager']
 ): LunaticError | undefined {
-	const { executeExpression } = state;
-	const { iteration, linksIterations } = state.pager ?? {};
+	const { iteration, linksIterations } = pager;
 	const { criticality, errorMessage, id, typeOfControl } = control;
 	const value = control?.control?.value ?? 'true';
 

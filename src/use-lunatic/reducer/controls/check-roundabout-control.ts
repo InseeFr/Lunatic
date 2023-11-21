@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
-import { type StateForControls } from '../../commons/compile-controls';
 import type { LunaticControl, LunaticError } from '../../type';
+import type { LunaticState } from '../../type';
 
 /**
  * Pour le Roundabout, le controle doit être validé pour chaque itération
@@ -9,11 +9,10 @@ import type { LunaticControl, LunaticError } from '../../type';
  * Le rondpoint ne peut pas être placé dans une boucle car l'itération est effacée.
  * TODO intégrer cela dans le cadre de boucle de bloucle.
  */
-export function resolveRoundaboutControl(
-	state: StateForControls,
-	control: LunaticControl
+export function checkRoundaboutControl(
+	control: LunaticControl,
+	executeExpression: LunaticState['executeExpression']
 ): LunaticError | undefined {
-	const { executeExpression } = state;
 	const { criticality, errorMessage, id, typeOfControl, iterations } = control;
 	const value = control?.control?.value ?? 'true';
 
