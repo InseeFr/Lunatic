@@ -6,7 +6,7 @@ import { getInitialVariableValue } from '../../../utils/variables';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
-import { setAtIndex } from '../../../utils/array';
+import { setAtIndex, times } from '../../../utils/array';
 import { isNumber } from '../../../utils/number';
 
 // Interpret counter, used for testing purpose
@@ -266,7 +266,7 @@ class LunaticVariable {
 		}
 		// Decompose arrays, to only update items that changed
 		if (Array.isArray(value) && !Array.isArray(iteration)) {
-			return !!value.map((v, k) => this.setValue(v, [k])).find((v) => v);
+			return this.setValueForArray(value);
 		}
 		// We want to save a value at a specific iteration, but the value is not an array yet
 		if (iteration !== undefined && !Array.isArray(this.value)) {
@@ -275,9 +275,29 @@ class LunaticVariable {
 		this.value = !Array.isArray(iteration)
 			? value
 			: setAtIndex(this.value, iteration, value);
-		this.updatedAt.set(iteration?.join('.'), performance.now());
+		if (value === undefined) {
+			this.updatedAt.delete(iteration?.join('.'));
+		} else {
+			this.updatedAt.set(iteration?.join('.'), performance.now());
+		}
 		this.updatedAt.set(undefined, performance.now());
 		return true;
+	}
+
+	private setValueForArray(value: unknown[]) {
+		const savedValue = this.getSavedValue();
+		const oldSize = Array.isArray(savedValue) ? savedValue.length : -1;
+		const newSize = value.length;
+		// Update every item of the array and look if we changed one item
+		const oneValueChanged =
+			times(Math.max(oldSize, newSize), (k) =>
+				this.setValue(value[k], [k])
+			).find((v) => v) !== undefined;
+		// New array is smaller, shorten the array
+		if (oldSize > newSize && Array.isArray(this.value)) {
+			this.value = this.value.slice(0, newSize);
+		}
+		return oneValueChanged;
 	}
 
 	private getSavedValue(iteration?: IterationLevel): unknown {
