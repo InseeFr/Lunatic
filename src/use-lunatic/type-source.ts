@@ -3,27 +3,6 @@
  */
 export type LabelType = { value: string; type: 'VTL' | 'VTL|MD' };
 
-export type ComponentTypeEnum =
-	| 'Sequence'
-	| 'Subsequence'
-	| 'RosterForLoop'
-	| 'Loop'
-	| 'Table'
-	| 'Input'
-	| 'InputNumber'
-	| 'Datepicker'
-	| 'CheckboxGroup'
-	| 'CheckboxOne'
-	| 'CheckboxBoolean'
-	| 'Radio'
-	| 'Dropdown'
-	| 'Textarea'
-	| 'FilterDescription'
-	| 'PairwiseLinks'
-	| 'Suggester'
-	| 'ConfirmationModal'
-	| 'ComponentSet';
-
 export type ValuesType<T = unknown> = {
 	PREVIOUS: T | null;
 	COLLECTED: T | null;
@@ -138,6 +117,8 @@ export type ComponentType =
 	  })
 	| (ComponentTypeBase & ComponentComponentSetType)
 	| (ComponentTypeBase & ComponentQuestionExplicationType);
+
+export type ComponentTypeEnum = ComponentType['componentType'];
 
 export type ComponentInputOrTextareaType = {
 	componentType: 'Input' | 'Textarea';

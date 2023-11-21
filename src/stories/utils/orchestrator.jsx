@@ -178,7 +178,6 @@ function OrchestratorForStories({
 
 	const handleGoNext = useCallback(() => {
 		const { currentErrors, isCritical } = compileControls();
-		console.log({ currentErrors });
 		setErrorActive({ ...errorActive, [pageTag]: currentErrors || {} });
 		if (currentErrors && Object.keys(currentErrors).length > 0) {
 			setErrorsForModal({ currentErrors, isCritical });
