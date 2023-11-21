@@ -92,7 +92,7 @@
 			"name": "PRENOM",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": ["John", "Jane", "Marc"],
+				"COLLECTED": ["John", "Jane"],
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
