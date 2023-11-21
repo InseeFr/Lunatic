@@ -1,7 +1,7 @@
 import { Fragment, type PropsWithChildren, useId } from 'react';
 import { Tooltip } from 'react-tooltip';
 import ReactMarkdown from 'react-markdown';
-import routerLink from './router-link';
+import RouterLink from './router-link';
 
 type Props = PropsWithChildren<{ href: string; title: string }>;
 const Link = (props: Props) => {
@@ -21,7 +21,7 @@ const Link = (props: Props) => {
 		'data-tooltip-id'?: string;
 	}> = (() => {
 		if (href.trim().startsWith('/')) {
-			return routerLink;
+			return RouterLink;
 		} else {
 			return 'a' as any;
 		}
