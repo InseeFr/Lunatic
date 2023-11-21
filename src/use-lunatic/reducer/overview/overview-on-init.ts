@@ -12,11 +12,11 @@ const isSequence = (sourceComponent: Page) =>
 	'hierarchy' in sourceComponent.components[0];
 
 const isSequenceSamePage = (sourceComponent: Page, page: string) =>
-	sourceComponent.components[0].hierarchy.sequence.page === page;
+	sourceComponent.components[0].hierarchy?.sequence.page === page;
 
 const isSubsequenceSamePage = (sourceComponent: Page, page: string) =>
-	sourceComponent.components[0].hierarchy.subSequence !== undefined &&
-	sourceComponent.components[0].hierarchy.subSequence.page === page;
+	sourceComponent.components[0].hierarchy?.subSequence !== undefined &&
+	sourceComponent.components[0].hierarchy?.subSequence.page === page;
 
 const isPageReached = (page: string, lastReachedPage: string) =>
 	parseInt(page, 10) <= parseInt(lastReachedPage, 10);
@@ -46,7 +46,7 @@ function getOverview(state: LunaticState) {
 	};
 	for (const component of filteredComponents) {
 		const { hierarchy, conditionFilter } = component;
-		if (hierarchy.subSequence) {
+		if (hierarchy && hierarchy.subSequence) {
 			overviewEntries.subSequences.push({
 				...hierarchy.subSequence,
 				type: 'subSequence',
@@ -60,7 +60,7 @@ function getOverview(state: LunaticState) {
 				evaluatedLabel: executeExpression(hierarchy.subSequence.label),
 				children: [],
 			});
-		} else {
+		} else if (hierarchy) {
 			overviewEntries.sequences.push({
 				...hierarchy.sequence,
 				type: 'sequence',
