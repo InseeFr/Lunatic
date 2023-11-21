@@ -115,10 +115,13 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 			rootExpression,
 			iteration,
 			linksIterations,
+			skipCleaningRefresh,
 		}: {
 			rootExpression?: string;
 			iteration?: number;
 			linksIterations?: number[];
+			// Do not clean refreshed variable if true (for instance when executing multiple iteration in a row)
+			skipCleaningRefresh?: boolean;
 		} = {}
 	) {
 		return Object.entries(map).reduce(function (sub, [name, current]) {
@@ -149,7 +152,7 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 					iteration,
 					linksIterations,
 				});
-				if (iteration !== undefined) toRefreshVariables.delete(name);
+				if (!skipCleaningRefresh) toRefreshVariables.delete(name);
 				return { ...sub, [name]: value };
 			}
 			return { ...sub, [name]: current };

@@ -154,6 +154,8 @@ export type LunaticState = {
 			linksIterations?: number[];
 			logging?: ExpressionLogger;
 			bindingDependencies?: string[];
+			// Do not clean refreshed variable if true (for instance when executing multiple iteration in a row)
+			skipCleaningRefresh?: boolean;
 		}
 	) => T;
 	// Update the value collected for the variable

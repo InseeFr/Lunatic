@@ -11,13 +11,16 @@ function fillRoundaboutProps(
 	component: DeepTranslateExpression<LunaticComponentDefinition<'Roundabout'>>,
 	state: Pick<LunaticState, 'executeExpression'>
 ) {
-	const { iterations, expressions } = component;
-	const compiled = Object.entries(expressions).reduce(function (
+	const iterations = component.iterations as number; // iterations is the result of an expression but we know it's a number
+	const compiled = Object.entries(component.expressions).reduce(function (
 		result,
 		[name, expression]
 	) {
 		const values = new Array(iterations).fill(null).map((_, iteration) => {
-			return state.executeExpression(expression, { iteration });
+			return state.executeExpression(expression, {
+				iteration,
+				skipCleaningRefresh: iteration < iterations - 1,
+			});
 		});
 		return { ...result, [name]: values };
 	},

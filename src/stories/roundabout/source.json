@@ -84,11 +84,11 @@
 					"type": "VTL"
 				},
 				"complete": {
-					"value": "not(isnull(KNOWREC)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
+					"value": "COMPLETE",
 					"type": "VTL"
 				},
 				"partial": {
-					"value": "not(isnull(KNOWREC)) or not(isnull(SEXE)) or not(isnull(SOMETHING))",
+					"value": "PARTIAL",
 					"type": "VTL"
 				},
 				"label": {
@@ -96,22 +96,7 @@
 					"type": "VTL"
 				}
 			},
-			"controls": [
-				{
-					"id": "roundabout-Carefull",
-					"criticality": "WARN",
-					"control": {
-						"value": "not(isnull(KNOWREC)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
-						"type": "VTL"
-					},
-					"type": "roundabout",
-					"iterations": { "value": "NB_HAB", "type": "VTL" },
-					"errorMessage": {
-						"value": "\"Le formulaire n'est pas complet pour \" || PRENOMS",
-						"type": "VTL|MD"
-					}
-				}
-			],
+			"controls": [],
 			"components": [
 				{
 					"id": "radio",
@@ -277,6 +262,28 @@
 			"name": "PRENOMREF",
 			"expression": { "value": "first_value(PRENOMS over())", "type": "VTL" },
 			"bindingDependencies": ["PRENOMS"],
+			"inFilter": "true"
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "COMPLETE",
+			"expression": {
+				"value": "not(isnull(KNOWREC)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["KNOWREC", "SEXE", "SOMETHING"],
+			"shapeFrom": "PRENOMS",
+			"inFilter": "true"
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "PARTIAL",
+			"expression": {
+				"value": "not(isnull(KNOWREC)) or not(isnull(SEXE)) or not(isnull(SOMETHING))",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["KNOWREC", "SEXE", "SOMETHING"],
+			"shapeFrom": "PRENOMS",
 			"inFilter": "true"
 		}
 	],
