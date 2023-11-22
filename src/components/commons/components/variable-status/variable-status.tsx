@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { type PropsWithChildren, useState } from 'react';
-import ReactTooltip from 'react-tooltip';
+import { Tooltip } from 'react-tooltip';
 import { editedImg, forcedImg } from './img';
 import './variable-status.scss';
 
@@ -42,7 +42,7 @@ const VariableStatus = ({ id = '', children }: Props) => {
 				>
 					<img id={id} alt="img-tooltip" src={img[imgName] ?? ''} />
 				</span>
-				<ReactTooltip
+				<Tooltip
 					id={`${id}-management-tooltip`}
 					className="tooltip-text"
 					place="left"
