@@ -15,6 +15,7 @@ afterEach(() => {
 	return JSON.parse(JSON.stringify(val));
 };
 
+// We need ResizeObserver to test Tooltip
 global.ResizeObserver = vi.fn().mockImplementation(() => ({
 	observe: vi.fn(),
 	unobserve: vi.fn(),

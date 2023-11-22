@@ -27,20 +27,18 @@ const Link = (props: Props) => {
 		}
 	})();
 
-	const linkProps = href.trim().startsWith('/')
-		? { to: href, id }
-		: { href, target: '_blank', rel: 'noopener noreferrer', id };
+	const linkProps = {
+		...(href.trim().startsWith('/')
+			? { to: href, id }
+			: { href, target: '_blank', rel: 'noopener noreferrer', id }),
+		...(title
+			? { 'data-tooltip-id': `tooltip-${id}`, className: 'link-md' }
+			: {}),
+	};
 
 	return (
 		<>
-			<LinkComponent
-				{...linkProps}
-				{...(title
-					? { 'data-tooltip-id': `tooltip-${id}`, className: 'link-md' }
-					: {})}
-			>
-				{children}
-			</LinkComponent>
+			<LinkComponent {...linkProps}>{children}</LinkComponent>
 			{title && (
 				<Tooltip className="tooltip-content" id={`tooltip-${id}`}>
 					<ReactMarkdown components={{ p: Fragment }}>{title}</ReactMarkdown>
