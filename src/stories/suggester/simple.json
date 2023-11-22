@@ -20,7 +20,10 @@
 		},
 		{
 			"name": "cog-communes",
-			"fields": [{ "name": "id", "rules": "soft" }],
+			"fields": [
+				{ "name": "id", "rules": "soft" },
+				{ "name": "label", "rules": "soft" }
+			],
 			"queryParser": { "type": "soft" },
 			"version": "1"
 		},
@@ -85,7 +88,7 @@
 				"name": "HELLO"
 			},
 			"missingResponse": { "name": "HELLO_MISSING" },
-			"page": "2"
+			"page": "1"
 		},
 		{
 			"id": "suggestions-inconnu",
