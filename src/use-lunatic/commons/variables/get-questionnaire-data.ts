@@ -58,7 +58,12 @@ export function getQuestionnaireData(
 				COLLECTED: store.get(variable.name),
 			};
 		} else {
-			result[variable.variableType][variable.name] = store.get(variable.name);
+			try {
+				result[variable.variableType][variable.name] = store.get(variable.name);
+			} catch (e) {
+				// Error can happen when calculating variable, send null to prevent crashing the mehod
+				result[variable.variableType][variable.name] = null;
+			}
 		}
 	}
 	return result;

@@ -26,16 +26,21 @@ export function cleaningBehaviour(
 		}
 
 		for (const variableName in cleaningInfo) {
-			const skipCleaning = store.run(cleaningInfo[variableName], {
-				iteration: e.detail.iteration,
-			});
-			if (skipCleaning) {
-				continue;
-			}
+			try {
+				const skipCleaning = store.run(cleaningInfo[variableName], {
+					iteration: e.detail.iteration,
+				});
+				if (skipCleaning) {
+					continue;
+				}
 
-			store.set(variableName, initialValues[variableName] ?? null, {
-				iteration: e.detail.iteration,
-			});
+				store.set(variableName, initialValues[variableName] ?? null, {
+					iteration: e.detail.iteration,
+				});
+			} catch (e) {
+				// If we have an error, skip this cleaning
+				console.error(e);
+			}
 		}
 	});
 }

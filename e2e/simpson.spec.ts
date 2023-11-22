@@ -198,9 +198,9 @@ test('can complete simpson form', async ({ page }) => {
 	await page.getByRole('button', { name: 'Next' }).click();
 
 	// Assertion
-	await expect(page.getByText('PAGE: 39')).toBeVisible();
+	await expect(page.getByText('PageTag: "39"')).toBeVisible();
 	const consoleOut = page.waitForEvent('console');
-	await page.getByRole('button', { name: 'Get State' }).click();
+	await page.getByRole('button', { name: 'Get Data' }).click();
 	const output = await consoleOut;
 	expect(await output.args()[0].jsonValue()).toHaveProperty(
 		'COLLECTED.COMMENT.COLLECTED',

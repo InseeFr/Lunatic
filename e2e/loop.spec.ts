@@ -13,7 +13,7 @@ loopTypes.forEach((loopType) => {
 		await page.getByRole('button', { name: 'Next' }).click();
 		await page.getByLabel('Jane, quel est vôtre âge ?').fill('20');
 		await page.getByRole('button', { name: 'Next' }).click();
-		await expect(page.getByText('PAGE: 3')).toBeVisible();
+		await expect(page.getByText('PageTag: "3"')).toBeVisible();
 		await expectLunaticData(page, 'COLLECTED.PRENOM.COLLECTED', [
 			'John',
 			'Jane',

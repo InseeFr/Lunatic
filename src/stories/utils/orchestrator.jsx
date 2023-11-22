@@ -3,7 +3,7 @@ import './orchestrator.scss';
 
 import * as lunatic from '../..';
 
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useState, useEffect } from 'react';
 
 import { Logger } from '../../utils/logger';
 import { Overview } from './overview';
@@ -23,28 +23,21 @@ function DevOptions({ goToPage, getData, lastReachedPage }) {
 
 	return (
 		<div className="dev-options">
-			<div className="title">Options développeur</div>
-			<div className="conteneur">
+			<div style={{ display: 'flex' }}>
 				<lunatic.Button onClick={() => Logger.log(getData(true))}>
-					Get State
+					Get Data
 				</lunatic.Button>
 				<lunatic.Button onClick={() => goToPage({ page: `${toPage}` })}>
-					{`Go to page ${toPage}`}
+					{`Go to "${toPage}"`}
 				</lunatic.Button>
-				<lunatic.Button
-					onClick={() => goToPage({ page: `${lastReachedPage}` })}
-				>
-					{`Go to lastReachedPage : ${lastReachedPage}`}
-				</lunatic.Button>
-				<lunatic.Input
-					id="page-to-jump"
-					value={toPage}
-					handleChange={handleChange}
-					min={1}
-					label={'Page'}
-					description={'the page where you want to jump'}
-				/>
 			</div>
+			<lunatic.Input
+				id="page-to-jump"
+				value={toPage}
+				handleChange={handleChange}
+				min={1}
+				label={'Page to reach : '}
+			/>
 		</div>
 	);
 }
@@ -59,6 +52,7 @@ function Pager({
 	pageTag,
 	maxPage,
 	getData,
+	pager,
 }) {
 	if (maxPage && maxPage > 1) {
 		const Button = lunatic.Button;
@@ -72,13 +66,28 @@ function Pager({
 					<Button onClick={goNext} disabled={isLast}>
 						Next
 					</Button>
+					<div style={{ fontSize: '.8em', opacity: 0.7, marginTop: '.3em' }}>
+						You can use PgDown / PgUp shortcut
+					</div>
 				</div>
-				<div>PAGE: {pageTag}</div>
 				<DevOptions
 					goToPage={goToPage}
 					getData={getData}
 					lastReachedPage={lastReachedPage}
 				/>
+				<div className="story-pager">
+					<h3>Pager</h3>
+					<ul>
+						<li>
+							<strong>PageTag:</strong> {JSON.stringify(pageTag)}
+						</li>
+						{Object.keys(pager).map((key) => (
+							<li key={key}>
+								<strong>{key}:</strong> {JSON.stringify(pager[key])}
+							</li>
+						))}
+					</ul>
+				</div>
 			</>
 		);
 	}
@@ -175,9 +184,32 @@ function OrchestratorForStories({
 		} else goNextPage();
 	}, [compileControls, errorActive, goNextPage, pageTag]);
 
+	// Allow PageDown / PageUp shortcut to ease navigation
+	useEffect(() => {
+		const listener = (e) => {
+			let stopPropagation = false;
+			if (e.key === 'PageDown') {
+				handleGoNext();
+				stopPropagation = true;
+			}
+			if (e.key === 'PageUp') {
+				goPreviousPage();
+				stopPropagation = true;
+			}
+			if (stopPropagation) {
+				e.preventDefault();
+				e.stopPropagation();
+			}
+		};
+		document.addEventListener('keydown', listener);
+		return () => {
+			document.removeEventListener('keydown', listener);
+		};
+	}, [handleGoNext, goPreviousPage]);
+
 	return (
 		<Provider>
-			<div className="container">
+			<div className="container story-with-sidebar">
 				<div className="components">
 					<LunaticComponents
 						autoFocusKey={pageTag}
@@ -190,31 +222,34 @@ function OrchestratorForStories({
 						})}
 					/>
 				</div>
-				<Pager
-					goPrevious={goPreviousPage}
-					goNext={handleGoNext}
-					goToPage={goToPage}
-					lastReachedPage={lastReachedPage}
-					isLast={isLastPage}
-					isFirst={isFirstPage}
-					pageTag={pageTag}
-					maxPage={maxPage}
-					getData={getData}
-				/>
-				{showOverview && <Overview overview={overview} goToPage={goToPage} />}
-				{errorsForModal && (
-					<lunatic.Modal
-						errors={errorsForModal.currentErrors}
-						goNext={skip}
-						onClose={closeModal}
-						isCritical={errorsForModal.isCritical}
+				<aside>
+					<Pager
+						goPrevious={goPreviousPage}
+						goNext={handleGoNext}
+						goToPage={goToPage}
+						lastReachedPage={lastReachedPage}
+						isLast={isLastPage}
+						isFirst={isFirstPage}
+						pageTag={pageTag}
+						maxPage={maxPage}
+						getData={getData}
+						pager={pager}
 					/>
-				)}
-				<Waiting status={waiting}>
-					<div className="waiting-orchestrator">
-						Initialisation des données de suggestion...
-					</div>
-				</Waiting>
+					{showOverview && <Overview overview={overview} goToPage={goToPage} />}
+					{errorsForModal && (
+						<lunatic.Modal
+							errors={errorsForModal.currentErrors}
+							goNext={skip}
+							onClose={closeModal}
+							isCritical={errorsForModal.isCritical}
+						/>
+					)}
+					<Waiting status={waiting}>
+						<div className="waiting-orchestrator">
+							Initialisation des données de suggestion...
+						</div>
+					</Waiting>
+				</aside>
 			</div>
 		</Provider>
 	);
