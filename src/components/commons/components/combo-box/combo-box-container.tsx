@@ -1,10 +1,8 @@
-import type { PropsWithChildren } from 'react';
 import classnames from 'classnames';
-import type { LunaticBaseProps } from '../../../type';
+import type { PropsWithChildren } from 'react';
+import type { LunaticError } from '../../../../use-lunatic/type';
 import createCustomizableLunaticField from '../../create-customizable-field';
 import Errors from '../errors';
-import { getComponentErrors } from '../errors/errors';
-import type { LunaticError } from '../../../../use-lunatic/type';
 
 type Props = PropsWithChildren<{
 	classNamePrefix?: string;

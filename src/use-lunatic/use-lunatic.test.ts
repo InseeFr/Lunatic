@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, type Mock, vi } from 'vitest';
 import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
@@ -7,6 +7,8 @@ import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
 import sourceComponentSet from '../stories/component-set/source.json';
 import sourceCleaning from '../stories/behaviour/cleaning/source.json';
+import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
+import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { LunaticData } from './type';
 import { type FilledLunaticComponentProps } from './commons/fill-components/fill-components';
 
@@ -192,6 +194,58 @@ describe('use-lunatic()', () => {
 			expect(spy.mock.calls[1][1]).toEqual(null);
 			expect(spy.mock.calls[2][0]).toEqual({ name: 'ORIGIN' });
 			expect(spy.mock.calls[2][1]).toEqual('US');
+		});
+		it('should handle cleaning in a loop', () => {
+			const { result } = renderHook(() =>
+				useLunatic(sourceCleaningLoop as any, undefined, {})
+			);
+			act(() => {
+				result.current.onChange({ name: 'PRENOM' }, ['John', 'Doe', 'Marc']);
+				result.current.onChange({ name: 'AGE' }, [18, 18, 18]);
+				// Go in the first iteration
+				result.current.goNextPage();
+				result.current.goNextPage();
+			});
+			const expectCollectedAgeToEqual = (expectation: unknown[]) => {
+				expect(
+					(result.current.getData(false).COLLECTED as any).AGE.COLLECTED
+				).toEqual(expectation);
+			};
+			expectCollectedAgeToEqual([18, 18, 18]);
+			act(() => {
+				result.current.onChange({ name: 'HIDE_AGE' }, true, { iteration: 0 });
+			});
+			expectCollectedAgeToEqual([null, 18, 18]);
+		});
+	});
+
+	describe('resizing', () => {
+		const expectValueForResponse = (
+			spy: Mock,
+			responseName: string,
+			expectedValue: unknown
+		) => {
+			expect(spy).toHaveBeenCalled();
+			const lastChangeCall = [...spy.mock.calls]
+				.reverse()
+				.find((args) => args[0].name === responseName);
+			expect(
+				lastChangeCall[1],
+				'onChange should have been called with the right value'
+			).toEqual(expectedValue);
+		};
+
+		it('should resize after cleaning', () => {
+			const spy = vi.fn();
+			const { result } = renderHook(() =>
+				useLunatic(sourceCleaningResizing as any, undefined, {
+					onChange: spy,
+				})
+			);
+			result.current.onChange({ name: 'NB' }, 3);
+			expectValueForResponse(spy, 'PRENOMS', [null, null, null]);
+			result.current.onChange({ name: 'NB' }, 2);
+			expectValueForResponse(spy, 'PRENOMS', [null, null]);
 		});
 	});
 

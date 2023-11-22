@@ -1,6 +1,7 @@
 import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
 import source from './source.json';
+import sourceLoop from './source-loop.json';
 import defaultArgTypes from '../../utils/default-arg-types';
 
 const stories = {
@@ -44,8 +45,13 @@ export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
-
 Default.args = {
-	id: 'resizing-default',
+	id: 'cleaning-default',
 	pagination: true,
+};
+export const Loop = Template.bind({});
+Loop.args = {
+	id: 'cleaning-loop',
+	pagination: true,
+	source: sourceLoop,
 };

@@ -211,7 +211,12 @@ function createExecuteExpression(
 				iteration,
 				linksIterations,
 			}),
-			{ rootExpression: expression, iteration, linksIterations }
+			{
+				rootExpression: expression,
+				iteration,
+				linksIterations,
+				skipCleaningRefresh: args.skipCleaningRefresh,
+			}
 		);
 		// Add index has a specific variable
 		vtlBindings['GLOBAL_ITERATION_INDEX'] = (

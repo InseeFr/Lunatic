@@ -81,8 +81,9 @@ describe('createRefreshCalculated', () => {
 			execute: fakeExecute(bindings),
 			bindings,
 		});
-		expect(refresh(variables, {}).COUNT_AGES).toBe(3);
-		expect(refresh(variables, { iteration: 1 }).COUNT_AGES).toBe(3);
+		const refreshedVariables = refresh(variables, {});
+		expect(refreshedVariables.COUNT_AGES).toBe(3);
+		expect(refresh(refreshedVariables, { iteration: 1 }).COUNT_AGES).toBe(3);
 		expect(bindings.AGE).toEqual([10, 20, 30]);
 		expect(bindings.COUNT_AGES).toEqual(3);
 	});
