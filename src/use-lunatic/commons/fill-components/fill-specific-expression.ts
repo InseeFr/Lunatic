@@ -1,8 +1,8 @@
+import { getVTLCompatibleValue } from '../../../utils/vtl';
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
+import { hasComponentType } from '../component';
 import { type DeepTranslateExpression } from './fill-component-expressions';
 import fillComponents, { fillComponent } from './fill-components';
-import { hasComponentType } from '../component';
-import { getVTLCompatibleValue } from '../../../utils/vtl';
 
 /**
  * Fill props for roundabout
@@ -124,7 +124,12 @@ function fillTable(
 				if (hasComponentType(component)) {
 					return fillComponent(component, state);
 				}
-				return state.executeExpression(getVTLCompatibleValue(component.label));
+				return {
+					...component,
+					label: state.executeExpression(
+						getVTLCompatibleValue(component.label)
+					),
+				};
 			})
 		),
 	};

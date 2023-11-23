@@ -1,10 +1,10 @@
+import { Errors } from '../commons';
+import { getComponentErrors } from '../commons/components/errors/errors';
 import { Table, Tbody, Td, Tr } from '../commons/components/html-table';
 import LunaticComponent from '../commons/components/lunatic-component-with-label';
-import type { LunaticComponentProps } from '../type';
-import { Errors } from '../commons';
 import { LunaticComponents } from '../lunatic-components';
+import type { LunaticComponentProps } from '../type';
 import { TableHeader } from './table-header';
-import { getComponentErrors } from '../commons/components/errors/errors';
 
 export function LunaticTable(props: LunaticComponentProps<'Table'>) {
 	const {
@@ -35,18 +35,29 @@ export function LunaticTable(props: LunaticComponentProps<'Table'>) {
 			<Table id={id}>
 				<TableHeader id={id} header={header} />
 				<Tbody>
-					{body.map((row, rowIndex) => (
-						<Tr id={id} row={rowIndex} key={rowIndex}>
-							<LunaticComponents
-								components={row}
-								wrapper={({ children, index }) => (
-									<Td id={id} row={rowIndex} index={index}>
-										{children}
-									</Td>
-								)}
-							/>
-						</Tr>
-					))}
+					{body.map((row, rowIndex) => {
+						return (
+							<Tr id={id} row={rowIndex} key={rowIndex}>
+								<LunaticComponents
+									components={row}
+									wrapper={(cell) => {
+										const { children, index, colspan, rowspan } = cell;
+										return (
+											<Td
+												id={id}
+												row={rowIndex}
+												index={index}
+												colSpan={colspan}
+												rowSpan={rowspan}
+											>
+												{children}
+											</Td>
+										);
+									}}
+								/>
+							</Tr>
+						);
+					})}
 				</Tbody>
 			</Table>
 			<Errors errors={getComponentErrors(errors, id)} />

@@ -173,7 +173,10 @@ export type ComponentRosterForLoopType = {
 		colspan?: number;
 		rowspan?: number;
 	}[];
-	body: ({ label: LabelType } | ComponentType)[][];
+	body: (
+		| { label: LabelType; colspan?: number; rowspan?: number }
+		| (ComponentType & { colspan?: number; rowspan?: number })
+	)[][];
 	positioning: 'HORIZONTAL';
 };
 

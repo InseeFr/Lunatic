@@ -45,3 +45,7 @@ export function hasComponentType(
 		typeof component.componentType === 'string'
 	);
 }
+
+export function hasLabel(component: unknown) {
+	return !!component && typeof component === 'object' && 'label' in component;
+}
