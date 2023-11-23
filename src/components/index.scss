@@ -125,12 +125,30 @@
 		position: relative;
 	}
 
-	.link-md .field-md {
+	.link-md {
 		border-bottom: dashed 0.1em var(--color-primary-dark);
 		&:hover {
 			cursor: help;
 			color: var(--color-primary-contrast-text);
 			background-color: var(--color-primary-dark);
+		}
+	}
+
+	.tooltip-content {
+		min-width: 15em;
+		max-width: 25em;
+		background: var(--color-primary-dark);
+		color: var(--color-primary-contrast-text);
+		padding: 0.5em;
+		border-radius: 6px;
+		font-size: 1em;
+		&.place-bottom {
+			&::before {
+				border-bottom: 10px solid var(--color-primary-dark);
+			}
+			&::after {
+				content: none;
+			}
 		}
 	}
 }
