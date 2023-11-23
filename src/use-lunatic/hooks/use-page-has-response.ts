@@ -1,6 +1,8 @@
-import type { FilledLunaticComponentProps } from '../commons/fill-components/fill-components';
 import { useCallback } from 'react';
+import { isObject } from '../../utils/is-object';
+import type { FilledLunaticComponentProps } from '../commons/fill-components/fill-components';
 import type { LunaticComponentDefinition, LunaticState } from '../type';
+import type { ComponentType } from '../type-source';
 
 /**
  * Check if a page has one response (value is filled for at least one field)
@@ -19,6 +21,18 @@ export function usePageHasResponse(
 			if (['PairwiseLinks', 'Roundabout'].includes(component.componentType)) {
 				return true;
 			}
+			// For Table, we have to extract components for its body and apply isSubComponentsEmpty function
+			if (component.componentType === 'Table') {
+				// Body is array for array (line), each "cell" could be an Label or Component, so we filter array.
+				const childrenComponent = component.body.reduce((_, line) => {
+					const componentsInLine = line.filter(
+						(cell) => isObject(cell) && 'componentType' in cell
+					);
+					return [..._, ...componentsInLine];
+				}, []) as ComponentType[];
+				return !isSubComponentsEmpty(childrenComponent, executeExpression);
+			}
+
 			// We found a value in one of the root component
 			if ('value' in component && !isEmpty(component.value)) {
 				return true;
