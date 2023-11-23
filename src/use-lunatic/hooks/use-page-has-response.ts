@@ -21,7 +21,7 @@ export function usePageHasResponse(
 			if (['PairwiseLinks', 'Roundabout'].includes(component.componentType)) {
 				return true;
 			}
-			// For Table, we have to extract components for its body and apply isSubComponentsEmpty function
+			// For Table, we have to extract components from its body and apply isSubComponentsEmpty function
 			if (component.componentType === 'Table') {
 				// Body is array for array (line), each "cell" could be an Label or Component, so we filter array.
 				const childrenComponent = component.body.reduce((_, line) => {
