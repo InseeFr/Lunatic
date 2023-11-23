@@ -67,7 +67,7 @@ jobs:
       - run: cp -a ./public/. ./deploy-${{ steps.branch-name.outputs.current_branch }}/storybook-${{ steps.branch-name.outputs.current_branch }}
       - name: build docs website
         working-directory: ./docs/
-        run: yarn build
+        run: yarn install --frozen-lockfile && yarn build
       - run: cp -a ./docs/build/. ./deploy-${{ steps.branch-name.outputs.current_branch }}/docs
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
