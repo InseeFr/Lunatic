@@ -23,12 +23,12 @@ export function usePageHasResponse(
 			}
 			// For Table, we have to extract components from its body and apply isSubComponentsEmpty function
 			if (component.componentType === 'Table') {
-				// Body is array for array (line), each "cell" could be an Label or Component, so we filter array.
-				const childrenComponent = component.body.reduce((_, line) => {
-					const componentsInLine = line.filter(
+				// Body is array for array (row), each "cell" could be an Label or Component, so we filter array.
+				const childrenComponent = component.body.reduce((_, row) => {
+					const componentsInRow = row.filter(
 						(cell) => isObject(cell) && 'componentType' in cell
 					);
-					return [..._, ...componentsInLine];
+					return [..._, ...componentsInRow];
 				}, []) as ComponentType[];
 				return !isSubComponentsEmpty(childrenComponent, executeExpression);
 			}
