@@ -1,0 +1,17 @@
+# Radio
+
+Permet de sélectionner une valeur parmi une liste d'option
+
+- **options**, liste des options sélectionnables
+  - **value**, valeur a associé à la réponse
+  - **label**, libellé de l'option (expression VTL)
+  - **description**, libellé de l'option (expression VTL)
+
+import {GoToType} from '@site/src/components/GoToType';
+
+<GoToType type="ComponentRadioType"/>
+
+import source from '../../../../src/stories/radio/source.json';
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+
+<FormExample source={source} />

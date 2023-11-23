@@ -3,17 +3,15 @@
 		{
 			"id": "kze792d8",
 			"componentType": "InputNumber",
-			"mandatory": false,
-			"page": "2",
+			"page": "1",
 			"min": 0,
-			"max": 10,
-			"decimals": 0,
+			"max": 100000,
+			"decimals": 2,
 			"label": {
-				"value": "\"➡ 1. \" || \"In put for Number \"",
+				"value": "\"➡ 1. \" || \"Input number (between 0 and 100 000)\"",
 				"type": "VTL|MD"
 			},
 			"description": { "value": "\"Description\"", "type": "VTL|MD" },
-			"conditionFilter": { "value": "true", "type": "VTL" },
 			"response": { "name": "NB" }
 		}
 	],

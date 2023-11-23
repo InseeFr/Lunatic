@@ -1,0 +1,14 @@
+# Datepicker
+
+Le composant **Datepicker** permet à l'utilisateur de sélectionner une date.
+
+- **dateFormat**, format d'entrée de la date (`YYYY-MM-DD` | `YYYY` | `YYYY-MM`)
+- **min**, date minimale
+- **max**, date maximale
+
+Le choix a été fait pour ce composant de ne plus utiliser un datepicker natif, car le comportement était trop différent en fonction des navigateurs et freiné l'entrée des informations par les enquêteurs. Aussi, cela permet le support de format qui n'était pas forcément pris en charge par les navigateurs à l'heure actuelle.
+
+import source from '../../../../src/stories/date-picker/source.json';
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+
+<FormExample source={source} />

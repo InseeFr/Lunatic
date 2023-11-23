@@ -1,38 +1,16 @@
 {
-	"cleaning": {},
-	"variables": [
-		{
-			"variableType": "COLLECTED",
-			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
-			},
-			"name": "COMMENT_QE"
-		},
-		{
-			"variableType": "COLLECTED",
-			"values": {
-				"COLLECTED": "1974-03-15",
-				"EDITED": null,
-				"INPUTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
-			},
-			"name": "Q1"
-		},
-		{
-			"variableType": "CALCULATED",
-			"expression": { "type": "VTL", "value": "true" },
-			"name": "FILTER_RESULT_Q1",
-			"inFilter": "false"
-		}
-	],
 	"components": [
 		{
 			"componentType": "Datepicker",
+			"max": "2100-01-01",
+			"dateFormat": "YYYY-MM-DD",
+			"conditionFilter": { "type": "VTL", "value": "true" },
+			"label": { "type": "VTL|MD", "value": "\"➡ 1. \" || \"Birth day\"" },
+			"mandatory": false,
+			"min": "1900-01-01",
+			"response": { "name": "Q1" },
+			"id": "l7ovm2rv",
+			"page": "1",
 			"controls": [
 				{
 					"criticality": "ERROR",
@@ -58,43 +36,20 @@
 					},
 					"id": "l7ovm2rv-formatborne"
 				}
-			],
-			"max": "2100-01-01",
-			"dateFormat": "YYYY-MM-DD",
-			"hierarchy": {
-				"sequence": {
-					"id": "l7ovaca8",
-					"page": "\"1\"",
-					"label": { "type": "VTL|MD", "value": "\"I - \" || \"S1\"" }
-				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": "1974-03-15",
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
 			},
-			"declarations": [
-				{
-					"id": "kb9hi4j0-krnoclfe",
-					"declarationType": "INSTRUCTION",
-					"position": "BEFORE_QUESTION_TEXT",
-					"label": {
-						"value": "\"Test declaration before \" || Q1",
-						"type": "VTL|MD"
-					}
-				},
-				{
-					"id": "kb9hi4j0-krnoclfe",
-					"declarationType": "HELP",
-					"position": "AFTER_QUESTION_TEXT",
-					"label": {
-						"value": "\"For example, 2001-01-01.\"",
-						"type": "VTL|MD"
-					}
-				}
-			],
-			"conditionFilter": { "type": "VTL", "value": "true" },
-			"label": { "type": "VTL|MD", "value": "\"➡ 1. \" || \"Birth day\"" },
-			"mandatory": false,
-			"min": "1900-01-01",
-			"response": { "name": "Q1" },
-			"id": "l7ovm2rv",
-			"page": "1"
+			"name": "Q1"
 		}
 	],
 	"pagination": "question",

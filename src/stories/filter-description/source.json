@@ -1,10 +1,11 @@
 {
+	"maxPage": "1",
 	"components": [
 		{
 			"componentType": "FilterDescription",
 			"label": { "value": "I'm a filter description", "type": "VTL|MD" },
-			"conditionFilter": { "value": "true", "type": "VTL" },
-			"id": "desc"
+			"id": "desc",
+			"page": "1"
 		}
 	],
 	"variables": []

@@ -1,0 +1,20 @@
+# Missing
+
+Le système de **missing** permet à l'utilisateur d'indiquer qu'il ne connait pas ou ne souhaite pas répondre à la question. Le choix de ne pas répondre est sauvegardé dans une variable distincte, mais doit aussi vider la valeur entrée pour la variable originale. Ce système est semblable à celui du cleaning mais la déclaration se fait différemment au travers de la propriété `missingBlock`.
+
+```json
+{
+	"missingBlock": {
+		"CADR_MISSING": ["CADR"],
+		"CADR": ["CADR_MISSING"]
+    }
+}
+```
+
+Cette propriété prend en clef les variables à observer et en valeur la liste des variables à nettoyer lorsque la valeur change.
+
+:::info
+
+Vous ne pouvez observer que des variables collectées.
+
+:::

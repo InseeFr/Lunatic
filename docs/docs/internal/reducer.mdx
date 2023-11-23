@@ -1,0 +1,40 @@
+# État & Reducer
+
+Cette partie est destinée aux personnes qui explorent le code de Lunatic. L'objectif est d'offrir une version généraliste du fonctionnement de la bibliothèque.
+
+## Le reducer
+
+En son cœur Lunatic repose sur un système de reducer qui peut recevoir plusieurs actions. L'état lié à ce reducer est [documenté via un type TypeScript](https://github.com/InseeFr/Lunatic/blob/2.7/src/use-lunatic/type.ts#L79).
+
+### Initialisation
+
+Cette action (`ActionKind.On_INIT`) est lancée lorsque le composant utilisant `useLunatic()` est monté et permet d'effectuer plusieurs opérations pour initialiser les données qui vont servir pour la suite.
+
+- Boucle sur les variables définies dans la source pour les sauvegarder dans un dictionnaire ([LunaticVariableStore](https://github.com/InseeFr/Lunatic/blob/2.7/src/use-lunatic/commons/variables/lunatic-variables-store.ts))
+- Extrait depuis les composants les différentes pages et crée un objet contenant la liste des composants groupé par nom de page.
+- Décompose la valeur d'**initialPage** pour générer l'objet qui représentera l'état de la navigation (pager).
+- Génère une fonction `executeExpression()` qui permettra d'exécuter les expressions VTL
+
+### Navigation
+
+Ces actions (`ActionKind.GO_PREVIOUS_PAGE`, `ActionKind.GO_NEXT_PAGE`, `ActionKind.GO_TO_PAGE`) sont déclenchées par les [méthodes de navigation](./hook/navigation). Lors de cette opération un nouveau `pager` va être calculé en fonction de la position dans le formulaire. Cette action est appelé avec les données suivantes :
+
+- **name**, nom de la variable modifiée
+- **value**, nouvelle valeur
+- **iteration**, l'itération sur laquelle on se trouve (cette itération est représentée sous forme d'un tableau, car dans le cas du [PairWise](./components/aggregators/pairwise) il y a 2 niveaux de profondeur)
+
+### Changement d'une valeur
+
+Cette action (`ActionKind.HANDLE_CHANGE`) est déclenchée lorsque l'utilisateur modifie une valeur dans le formulaire. Lors de cette opération la valeur entrée par l'utilisateur va être enregistré par le dictionnaire.
+
+### Changement d'état du Worker
+
+Cette action (`ActionKind.ON_SET_WAITING`) est liée à l'utilisation du suggester et va venir changer la valeur de `waiting` dans l'état lorsque l'indexation des données est terminée.
+
+	ON_SET_WAITING = 'use-lunatic/on-set-waiting',
+	UPDATE_STATE = 'use-lunatic/update-state',
+
+## Génération des composants
+
+Lorsque l'état change Lunatic va régénérer la liste des composants à afficher. Cette génération se fait au travers du hook `useComponentsFromState()` qui prendra l'état en paramètre et renverra la liste des composants (de leurs propriétés). Pour comprendre comment se passe ce remplissage, vous pouvez regarder le code de la méthode [fillComponent](https://github.com/InseeFr/Lunatic/blob/2.7/src/use-lunatic/commons/fill-components/fill-components.ts#L51-L69) qui sépare la logique.
+

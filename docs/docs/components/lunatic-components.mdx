@@ -1,0 +1,39 @@
+# Afficher le formulaire
+
+Le hook `useLunatic()` renvoie une méthode `getComponents()` qui permet de récupérer les composants à afficher dans l'application. Cette méthode renvoie un tableau contenant les propriétés des différents composants et c'est à l'orchestrateur de gérer leur affichage en utilisant la propriété `componentType` pour sélectionner le bon composant.
+
+En plus du hook `useLunatic()`, `@inseefr/lunatic` offre une librairie de composant qui peut être utilisé pour le rendu. Pour ne pas avoir à boucler manuellement sur chaque élément un composant [LunaticComponents](https://github.com/InseeFr/Lunatic/pull/664) est fourni et permet de se charger de l'affichage.
+
+```jsx
+import {LunaticComponents, useLunatic} from "@inseefr/lunatic";
+
+function App () {
+  const {getComponents, Provider} = useLunatic(source, data, {initialPage: '1'})
+
+  return <Provider>
+    <LunaticComponents components={getComponents()}/>
+  </Provider>
+}
+```
+
+Ce composant peut aussi recevoir des propriétés supplémentaires afin d'ajouter des comportements plus poussés :
+
+- **componentProps**, est une fonction qui permet de passer des propriétés supplémentaires à chaque composant
+- **autoFocusKey**, est une chaine de caractère qui déclenche un focus du premier champ lorsque sa valeur change
+- **wrapper**, permet de définir un élément qui va venir entourer chaque élément du formulaire
+
+```jsx
+<LunaticComponents
+  autoFocusKey={pageTag}
+  components={components}
+  componentProps={({ storeName }) => ({
+	  errors: currentErrors,
+	  disabled: true,
+  })}
+  wrapper={({ children, id }) => (
+	<div className="lunatic lunatic-component">{children}</div>
+  )}
+/>
+```
+
+Le reste de l'interface (navigation, affichage des erreurs) est à la charge de l'orchestrateur.

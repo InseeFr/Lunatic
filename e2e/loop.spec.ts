@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { expectLunaticData, goToStory } from './utils';
 
-const loopTypes = ['blockforloop', 'rosterforloop'];
+const loopTypes = ['loop--paginated', 'rosterforloop--default'];
 loopTypes.forEach((loopType) => {
-	test(`can complete a simple ${loopType}`, async ({ page }) => {
-		await goToStory(page, `components-loop-${loopType}--default`);
+	test(`can complete a simple ${loopType.split('--')[0]}`, async ({ page }) => {
+		await goToStory(page, `components-loop-${loopType}`);
 		await page.locator('#prenom-0').fill('John');
 		await page.getByRole('button', { name: 'Ajouter un individu' }).click();
 		await page.locator('#prenom-1').fill('Jane');

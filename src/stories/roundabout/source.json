@@ -1,21 +1,11 @@
 {
-	"maxPage": "5",
+	"maxPage": "4",
 	"components": [
-		{
-			"id": "seq",
-			"componentType": "Sequence",
-			"label": {
-				"value": "\"Description des individus de votre logement\"",
-				"type": "VTL|MD"
-			},
-			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "1"
-		},
 		{
 			"id": "how",
 			"componentType": "InputNumber",
 			"mandatory": false,
-			"page": "2",
+			"page": "1",
 			"min": 1,
 			"max": 10,
 			"decimals": 0,
@@ -29,7 +19,7 @@
 		{
 			"id": "loop",
 			"componentType": "Loop",
-			"page": "3",
+			"page": "2",
 			"depth": 1,
 			"paginatedLoop": false,
 			"conditionFilter": { "value": "true", "type": "VTL" },
@@ -73,7 +63,7 @@
 		{
 			"id": "roundabout",
 			"componentType": "Roundabout",
-			"page": "4",
+			"page": "3",
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
 			"label": { "value": "\"Libellé du rondpoint\"", "type": "VTL" },
@@ -117,7 +107,7 @@
 					"id": "radio",
 					"componentType": "Radio",
 					"mandatory": false,
-					"page": "4.1",
+					"page": "3.1",
 					"label": {
 						"value": "\"Connaissez-vous le recensement de la population ?\"",
 						"type": "VTL|MD"
@@ -135,7 +125,7 @@
 				{
 					"id": "jsygk7m7",
 					"componentType": "Subsequence",
-					"page": "4.2",
+					"page": "3.2",
 					"label": {
 						"value": "\"Deuxième page de questions pour \"|| PRENOMS",
 						"type": "VTL|MD"
@@ -145,7 +135,7 @@
 				{
 					"id": "sexe",
 					"componentType": "Radio",
-					"page": "4.2",
+					"page": "3.2",
 					"label": {
 						"value": "\"Sexe\"",
 						"type": "VTL"
@@ -169,7 +159,7 @@
 				{
 					"id": "jsygk7m7",
 					"componentType": "Subsequence",
-					"page": "4.3",
+					"page": "3.3",
 					"label": {
 						"value": "\"Troisième page de questions \" || PRENOMS",
 						"type": "VTL|MD"
@@ -180,7 +170,7 @@
 					"id": "kmno1n7m",
 					"componentType": "Input",
 					"maxLength": 30,
-					"page": "4.3",
+					"page": "3.3",
 					"label": {
 						"value": "\"Dites quelque chose.\"))",
 						"type": "VTL|MD"
@@ -202,7 +192,7 @@
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "5"
+			"page": "4"
 		}
 	],
 	"variables": [
@@ -211,7 +201,7 @@
 			"name": "NB_HAB",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": null,
+				"COLLECTED": 2,
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
@@ -232,11 +222,11 @@
 			"variableType": "COLLECTED",
 			"name": "AGE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
+				"PREVIOUS": null,
+				"COLLECTED": [15, 15],
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		},
 		{
@@ -254,11 +244,11 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOMS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
+				"PREVIOUS": null,
+				"COLLECTED": ["Fanny", "Ines"],
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		},
 		{
