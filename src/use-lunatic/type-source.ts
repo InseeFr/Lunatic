@@ -3,6 +3,12 @@
  */
 export type LabelType = { value: string; type: 'VTL' | 'VTL|MD' };
 
+type ComponentOption = {
+	value: string;
+	label: LabelType;
+	conditionFilter?: ConditionFilterType;
+};
+
 export type ComponentTypeEnum =
 	| 'Sequence'
 	| 'Subsequence'
@@ -130,9 +136,6 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentSuggesterType)
 	| (ComponentTypeBase & ComponentInputOrTextareaType)
 	| (ComponentTypeBase & {
-			componentType: 'CheckboxOne';
-	  })
-	| (ComponentTypeBase & {
 			componentType: 'ConfirmationModal';
 	  })
 	| (ComponentTypeBase & ComponentComponentSetType)
@@ -217,6 +220,7 @@ export type ComponentCheckboxGroupType = {
 		label: LabelType;
 		response: ResponseType;
 		id: string;
+		conditionFilter?: ConditionFilterType;
 	}>;
 };
 
@@ -227,15 +231,15 @@ export type ComponentCheckboxBooleanType = {
 };
 
 export type ComponentRadioType = {
-	componentType: 'Radio';
-	options: { value: string; label: LabelType }[];
+	componentType: 'Radio' | 'CheckboxOne';
+	options: ComponentOption[];
 	response: ResponseType;
 	missingResponse?: ResponseType;
 };
 
 export type ComponentDropdownType = {
 	componentType: 'Dropdown';
-	options: { value: string; label: LabelType }[];
+	options: ComponentOption[];
 	response: ResponseType;
 	missingResponse?: ResponseType;
 };

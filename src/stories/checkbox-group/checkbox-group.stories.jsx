@@ -2,6 +2,7 @@ import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
 import sourceComponentset from './sourceComponentset';
+import sourceWithCondition from './sourceWithCondition.json';
 import sourceLoop from './sourceLoop';
 import defaultArgTypes from '../utils/default-arg-types';
 
@@ -41,4 +42,11 @@ export const Loop = Template.bind({});
 Loop.args = {
 	...Default.args,
 	source: sourceLoop,
+};
+
+export const WithCondition = Template.bind({});
+
+WithCondition.args = {
+	...Default.args,
+	source: sourceWithCondition,
 };
