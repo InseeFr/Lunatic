@@ -29,14 +29,16 @@ function createSearching(
 	workersBasePath?: string
 ) {
 	return async function (search: string | null) {
-		return new Promise<{ results: ComboBoxOptionType[] }>(function (resolve) {
-			const worker = getWorker(resolve, workersBasePath);
-			worker.postMessage({
-				search,
-				name,
-				version,
-			});
-		});
+		return new Promise<{ results: ComboBoxOptionType[]; search: string }>(
+			function (resolve) {
+				const worker = getWorker(resolve, workersBasePath);
+				worker.postMessage({
+					search,
+					name,
+					version,
+				});
+			}
+		);
 	};
 }
 export default createSearching;
