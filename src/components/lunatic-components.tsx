@@ -1,5 +1,6 @@
 import {
 	Fragment,
+	isValidElement,
 	type PropsWithChildren,
 	type ReactElement,
 	type ReactNode,
@@ -10,19 +11,23 @@ import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-co
 import { useAutoFocus } from '../hooks/use-auto-focus';
 import { hasComponentType } from '../use-lunatic/commons/component';
 
-type Props<T extends Record<string, unknown>> = {
+type Props<T extends FilledLunaticComponentProps, V = undefined> = {
 	// List of components to display (coming from getComponents)
-	components: (FilledLunaticComponentProps | ReactElement)[];
+	components: (
+		| FilledLunaticComponentProps
+		| ReactElement
+		| { label: string; [key: string]: unknown }
+	)[];
 	// Key that trigger autofocus when it changes (pageTag)
 	autoFocusKey?: string;
 	// Returns the list of extra props to add to components
-	componentProps?: (component: FilledLunaticComponentProps) => T;
+	componentProps?: (component: FilledLunaticComponentProps) => V;
 	// Forbidden components
 	blocklist?: string[];
 	// Add additional wrapper around each component
 	wrapper?: (
 		props: PropsWithChildren<
-			FilledLunaticComponentProps & T & { index: number }
+			FilledLunaticComponentProps & T & V & { index: number }
 		>
 	) => ReactNode;
 };
@@ -30,7 +35,10 @@ type Props<T extends Record<string, unknown>> = {
 /**
  * Entry point for orchestrators, this component display the list of fields
  */
-export function LunaticComponents<T extends Record<string, unknown>>({
+export function LunaticComponents<
+	T extends FilledLunaticComponentProps,
+	V = undefined
+>({
 	components,
 	autoFocusKey,
 	componentProps,
@@ -38,7 +46,7 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 	wrapper = ({ children }) => (
 		<div className="lunatic lunatic-component">{children}</div>
 	),
-}: Props<T>) {
+}: Props<T, V>) {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const hasComponents = components.length > 0;
 	const WrapperComponent = autoFocusKey ? 'div' : Fragment;
@@ -53,7 +61,7 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 				if (hasComponentType(component)) {
 					if (blocklist && blocklist.includes(component.componentType)) {
 						return (
-							<Fragment key={'id' in component ? component.id : `index-${k}`}>
+							<Fragment key={computeId(component, k)}>
 								{wrapper({
 									children: (
 										<div style={{ color: 'red' }}>
@@ -71,7 +79,7 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 						...componentProps?.(component),
 					};
 					return (
-						<Fragment key={'id' in component ? component.id : `index-${k}`}>
+						<Fragment key={computeId(component, k)}>
 							{wrapper({
 								children: <LunaticComponent {...props} />,
 								index: k,
@@ -80,15 +88,33 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 						</Fragment>
 					);
 				}
+
 				// In some case (table for instance) we have static component that only have a label (no componentType)
-				return (
-					<Fragment key={`index-${k}`}>
-						{wrapper({
-							children: component,
-							index: k,
-						} as any)}
-					</Fragment>
-				);
+				if (hasLabel(component)) {
+					return (
+						<Fragment key={k}>
+							{wrapper({
+								...component,
+								children: component.label,
+								index: k,
+							} as any)}
+						</Fragment>
+					);
+				}
+
+				// Component is a ReactNode
+				if (isValidElement(component)) {
+					return (
+						<Fragment key={k}>
+							{wrapper({
+								children: component,
+								index: k,
+							} as any)}
+						</Fragment>
+					);
+				}
+
+				return null;
 			})}
 		</WrapperComponent>
 	);
@@ -100,4 +126,25 @@ function LunaticComponent(props: ItemProps) {
 	// Component is too dynamic to be typed
 	const Component = lunaticComponents[props.componentType] as any;
 	return <Component {...props} />;
+}
+
+function computeId(
+	component: Record<string, unknown>,
+	fallback: number | string
+): number | string {
+	if ('id' in component && typeof component.id === 'string') {
+		return component.id;
+	}
+	return fallback;
+}
+
+export function hasLabel(
+	component: unknown
+): component is { label: ReactNode } & FilledLunaticComponentProps {
+	return (
+		!!component &&
+		typeof component === 'object' &&
+		'label' in component &&
+		isValidElement(component.label)
+	);
 }
