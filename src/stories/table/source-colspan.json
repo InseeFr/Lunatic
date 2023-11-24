@@ -1,0 +1,314 @@
+{
+  "components": [
+    {
+      "id": "j4nwc63q",
+      "componentType": "Table",
+      "mandatory": false,
+      "positioning": "HORIZONTAL",
+      "label": {
+        "value": "\"➡ \" || \"Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
+        "type": "VTL|MD"
+      },
+      "conditionFilter": {
+        "value": "true",
+        "type": "VTL"
+      },
+      "missingResponse": { "name": "PERCENTAGE_EXPENSES_MISSING" },
+      "bindingDependencies": [
+        "PERCENTAGE_EXPENSES_MISSING",
+        "PERCENTAGE_EXPENSES11",
+        "PERCENTAGE_EXPENSES21",
+        "PERCENTAGE_EXPENSES31",
+        "PERCENTAGE_EXPENSES41",
+        "PERCENTAGE_EXPENSES51",
+        "PERCENTAGE_EXPENSES61",
+        "PERCENTAGE_EXPENSES71"
+      ],
+      "header": [
+        { "colspan": 2, "label": { "value": "", "type": "VTL|MD" } },
+
+        { "label": { "value": "\"Percentage\"", "type": "VTL|MD" } }
+      ],
+      "body": [
+        [
+          {
+            "rowspan": 2,
+            "value": "A",
+            "label": { "value": "\"Frozen products\"", "type": "VTL|MD" }
+          },
+
+          {
+            "value": "A1",
+            "label": { "value": "\"Ice creams\"", "type": "VTL|MD" }
+          },
+
+          {
+            "componentType": "InputNumber",
+            "min": 0,
+            "max": 100,
+            "decimals": 1,
+            "id": "j4nwc63q-QOP-kewv2h3o",
+            "unit": "%",
+            "response": { "name": "PERCENTAGE_EXPENSES11" },
+            "bindingDependencies": ["PERCENTAGE_EXPENSES11"]
+          }
+        ],
+
+        [
+          {
+            "value": "A2",
+            "label": { "value": "\"Jasper Beardly\"", "type": "VTL|MD" }
+          },
+
+          {
+            "componentType": "InputNumber",
+            "min": 0,
+            "max": 100,
+            "decimals": 1,
+            "id": "j4nwc63q-QOP-kewvka2j",
+            "unit": "%",
+            "response": { "name": "PERCENTAGE_EXPENSES21" },
+            "bindingDependencies": ["PERCENTAGE_EXPENSES21"]
+          }
+        ],
+
+        [
+          {
+            "rowspan": 3,
+            "value": "B",
+            "label": { "value": "\"Meat\"", "type": "VTL|MD" }
+          },
+
+          {
+            "value": "B1",
+            "label": { "value": "\"Bacon\"", "type": "VTL|MD" }
+          },
+
+          {
+            "componentType": "InputNumber",
+            "min": 0,
+            "max": 100,
+            "decimals": 1,
+            "id": "j4nwc63q-QOP-kewv1f2a",
+            "unit": "%",
+            "response": { "name": "PERCENTAGE_EXPENSES31" },
+            "bindingDependencies": ["PERCENTAGE_EXPENSES31"]
+          }
+        ],
+
+        [
+          {
+            "value": "B2",
+            "label": { "value": "\"Pork chop\"", "type": "VTL|MD" }
+          },
+
+          {
+            "componentType": "InputNumber",
+            "min": 0,
+            "max": 100,
+            "decimals": 1,
+            "id": "j4nwc63q-QOP-kewvb2ql",
+            "unit": "%",
+            "response": { "name": "PERCENTAGE_EXPENSES41" },
+            "bindingDependencies": ["PERCENTAGE_EXPENSES41"]
+          }
+        ],
+
+        [
+          {
+            "value": "B3",
+            "label": { "value": "\"Chicken\"", "type": "VTL|MD" }
+          },
+
+          {
+            "componentType": "InputNumber",
+            "min": 0,
+            "max": 100,
+            "decimals": 1,
+            "id": "j4nwc63q-QOP-kewvbxla",
+            "unit": "%",
+            "response": { "name": "PERCENTAGE_EXPENSES51" },
+            "bindingDependencies": ["PERCENTAGE_EXPENSES51"]
+          }
+        ],
+
+        [
+          {
+            "value": "C",
+            "label": { "value": "\"Compote\"", "type": "VTL|MD" }
+          },
+
+          {
+            "value": "C1",
+            "label": { "value": "\"Powersauce\"", "type": "VTL|MD" }
+          },
+
+          {
+            "componentType": "InputNumber",
+            "min": 0,
+            "max": 100,
+            "decimals": 1,
+            "id": "j4nwc63q-QOP-kewvkjp0",
+            "unit": "%",
+            "response": { "name": "PERCENTAGE_EXPENSES61" },
+            "bindingDependencies": ["PERCENTAGE_EXPENSES61"]
+          }
+        ],
+
+        [
+          {
+            "colspan": 2,
+            "value": "D",
+            "label": { "value": "\"Other\"", "type": "VTL|MD" }
+          },
+
+          {
+            "componentType": "InputNumber",
+            "min": 0,
+            "max": 100,
+            "decimals": 1,
+            "id": "j4nwc63q-QOP-kewv2cyx",
+            "unit": "%",
+            "response": { "name": "PERCENTAGE_EXPENSES71" },
+            "bindingDependencies": ["PERCENTAGE_EXPENSES71"]
+          }
+        ],
+
+        [
+          {
+            "colspan": 2,
+            "value": "E",
+            "label": { "value": "\"Total\"", "type": "VTL|MD" }
+          },
+
+          { "label": { "value": "SUM_EXPENSES", "type": "VTL|MD" } }
+        ]
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "variableType": "COLLECTED",
+      "name": "PERCENTAGE_EXPENSES11",
+      "values": {
+        "PREVIOUS": null,
+        "COLLECTED": null,
+        "FORCED": null,
+        "EDITED": null,
+        "INPUTED": null
+      }
+    },
+
+    {
+      "variableType": "COLLECTED",
+      "name": "PERCENTAGE_EXPENSES21",
+      "values": {
+        "PREVIOUS": null,
+        "COLLECTED": null,
+        "FORCED": null,
+        "EDITED": null,
+        "INPUTED": null
+      }
+    },
+
+    {
+      "variableType": "COLLECTED",
+      "name": "PERCENTAGE_EXPENSES31",
+      "values": {
+        "PREVIOUS": null,
+        "COLLECTED": null,
+        "FORCED": null,
+        "EDITED": null,
+        "INPUTED": null
+      }
+    },
+
+    {
+      "variableType": "COLLECTED",
+      "name": "PERCENTAGE_EXPENSES41",
+      "values": {
+        "PREVIOUS": null,
+        "COLLECTED": null,
+        "FORCED": null,
+        "EDITED": null,
+        "INPUTED": null
+      }
+    },
+
+    {
+      "variableType": "COLLECTED",
+      "name": "PERCENTAGE_EXPENSES51",
+      "values": {
+        "PREVIOUS": null,
+        "COLLECTED": null,
+        "FORCED": null,
+        "EDITED": null,
+        "INPUTED": null
+      }
+    },
+
+    {
+      "variableType": "COLLECTED",
+      "name": "PERCENTAGE_EXPENSES61",
+      "values": {
+        "PREVIOUS": null,
+        "COLLECTED": null,
+        "FORCED": null,
+        "EDITED": null,
+        "INPUTED": null
+      }
+    },
+
+    {
+      "variableType": "COLLECTED",
+      "name": "PERCENTAGE_EXPENSES71",
+      "values": {
+        "PREVIOUS": null,
+        "COLLECTED": null,
+        "FORCED": null,
+        "EDITED": null,
+        "INPUTED": null
+      }
+    },
+
+    {
+      "variableType": "COLLECTED",
+      "name": "PERCENTAGE_EXPENSES81",
+      "values": {
+        "PREVIOUS": null,
+        "COLLECTED": null,
+        "FORCED": null,
+        "EDITED": null,
+        "INPUTED": null
+      }
+    },
+
+    {
+      "variableType": "CALCULATED",
+      "name": "FILTER_RESULT_PERCENTAGE_EXPENSES",
+      "expression": { "value": "true", "type": "VTL" },
+      "inFilter": "false"
+    },
+
+    {
+      "variableType": "CALCULATED",
+      "name": "SUM_EXPENSES",
+      "expression": {
+        "value": "nvl(PERCENTAGE_EXPENSES11,0) + nvl(PERCENTAGE_EXPENSES21,0) + nvl(PERCENTAGE_EXPENSES31,0) + nvl(PERCENTAGE_EXPENSES41,0) + nvl(PERCENTAGE_EXPENSES51,0) + nvl(PERCENTAGE_EXPENSES61,0), + nvl(PERCENTAGE_EXPENSES71,0)",
+        "type": "VTL"
+      },
+      "bindingDependencies": [
+        "PERCENTAGE_EXPENSES11",
+        "PERCENTAGE_EXPENSES21",
+        "PERCENTAGE_EXPENSES31",
+        "PERCENTAGE_EXPENSES41",
+        "PERCENTAGE_EXPENSES51",
+        "PERCENTAGE_EXPENSES61",
+        "PERCENTAGE_EXPENSES71"
+      ],
+      "inFilter": "false"
+    }
+  ],
+  "cleaning": {},
+  "resizing": {}
+}

@@ -113,7 +113,10 @@ type ComponentPropsByType = {
 			rowspan?: number;
 			colspan?: number;
 		}>;
-		body: FilledLunaticComponentProps[][];
+		body: (FilledLunaticComponentProps & {
+			colspan?: number;
+			rowspan?: number;
+		})[][];
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};
