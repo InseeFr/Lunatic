@@ -66,22 +66,16 @@ function checkControls(
 	executeExpression: LunaticState['executeExpression'],
 	pager: LunaticState['pager']
 ): LunaticError[] {
-	const errors = [] as LunaticError[];
-	for (const control of controls) {
-		let error: undefined | LunaticError;
-		switch (control.type) {
-			case ControlTypeEnum.roundabout:
-				error = checkRoundaboutControl(control, executeExpression);
-				break;
-			default:
-				error = checkBaseControl(control, executeExpression, pager);
-				break;
-		}
-		if (error) {
-			errors.push(error);
-		}
-	}
-	return errors;
+	return controls
+		.map((control) => {
+			switch (control.type) {
+				case ControlTypeEnum.roundabout:
+					return checkRoundaboutControl(control, executeExpression);
+				default:
+					return checkBaseControl(control, executeExpression, pager);
+			}
+		})
+		.filter((error) => error !== undefined) as LunaticError[];
 }
 
 /**
