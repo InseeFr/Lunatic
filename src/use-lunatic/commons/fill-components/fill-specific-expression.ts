@@ -125,6 +125,7 @@ function fillTable(
 					return fillComponent(component, state);
 				}
 				return {
+					// In case of table component, we have to keep other attributes like colspan/rowspan
 					...component,
 					label: state.executeExpression(
 						getVTLCompatibleValue(component.label)
