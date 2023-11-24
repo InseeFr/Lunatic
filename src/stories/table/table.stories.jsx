@@ -1,5 +1,5 @@
 import React from 'react';
-import * as custom from '../custom-mui';
+import * as customMui from '../custom-mui';
 import defaultArgTypes from '../utils/default-arg-types';
 import Orchestrator from '../utils/orchestrator';
 import dataRoster from './data-roster.json';
@@ -30,7 +30,7 @@ RosterMui.args = {
 	id: 'table',
 	source: sourceRoster,
 	data: dataRoster,
-	custom,
+	custom: { ...customMui },
 };
 
 export const DynamicTable = Template.bind({});

@@ -28,8 +28,10 @@ type Props<T extends Record<string, unknown>> = {
 	// Add additional wrapper around each component
 	wrapper?: (
 		props: PropsWithChildren<
-			FilledLunaticComponentProps &
-				T & { index: number } & { colspan?: number; rowspan?: number }
+			FilledLunaticComponentProps & {
+				colspan?: number;
+				rowspan?: number;
+			} & T & { index: number }
 		>
 	) => ReactNode;
 };
@@ -72,6 +74,7 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 					);
 				}
 
+				// In some case (table for instance) we have static component that only have a label (no componentType)
 				if (hasLabel(component)) {
 					const { label, ...props } = component;
 					return (
@@ -84,15 +87,9 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 						</Fragment>
 					);
 				}
-				// In some case (table for instance) we have static component that only have a label (no componentType)
-				return (
-					<Fragment key={`index-${k}`}>
-						{wrapper({
-							children: component,
-							index: k,
-						} as any)}
-					</Fragment>
-				);
+
+				// Unknown case, we assume to return nothing
+				return null;
 			})}
 		</WrapperComponent>
 	);
