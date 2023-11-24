@@ -61,20 +61,23 @@ jobs:
       - uses: bahmutov/npm-install@v1
       # Build Storybook v2
       - run: yarn build-storybook
-      - run: mkdir -p deploy-${{ steps.branch-name.outputs.current_branch }}/storybook-${{ steps.branch-name.outputs.current_branch }}
-      - run: cp -R ./storybook-static/. ./deploy-${{ steps.branch-name.outputs.current_branch }}/storybook-${{ steps.branch-name.outputs.current_branch }}
       # Add json to fetch for suggester stories
-      - run: cp -a ./public/. ./deploy-${{ steps.branch-name.outputs.current_branch }}/storybook-${{ steps.branch-name.outputs.current_branch }}
-      - name: build docs website
-        working-directory: ./docs/
-        run: yarn install --frozen-lockfile && yarn build
-      - run: cp -a ./docs/build/. ./deploy-${{ steps.branch-name.outputs.current_branch }}/docs
+      - run: cp -a ./public/. ./storybook-static
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./deploy-${{ steps.branch-name.outputs.current_branch }}
-          keep_files: true
+          publish_dir: ./storybook-static
+          destination_dir: ./storybook-${{ steps.branch-name.outputs.current_branch }}
+      - name: build docs website
+        working-directory: ./docs/
+        run: yarn install --frozen-lockfile && yarn build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/build
+          destination_dir: ./docs
 
   check_if_version_upgraded:
     name: Check if version upgrade
