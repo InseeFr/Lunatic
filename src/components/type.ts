@@ -70,7 +70,7 @@ export type ComponentTableType =
 			rowspan?: number;
 			colspan?: number;
 	  })
-	| { label: ReactElement; colspan?: number; rowspan?: number };
+	| { label: ReactElement; id: string; colspan?: number; rowspan?: number };
 
 type ComponentPropsByType = {
 	InputNumber: LunaticBaseProps<number | null> & {
