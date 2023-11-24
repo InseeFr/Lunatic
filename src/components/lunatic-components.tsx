@@ -13,7 +13,11 @@ import { hasComponentType } from '../use-lunatic/commons/component';
 
 type Props<T extends FilledLunaticComponentProps, V = undefined> = {
 	// List of components to display (coming from getComponents)
-	components: (FilledLunaticComponentProps | ReactElement)[];
+	components: (
+		| FilledLunaticComponentProps
+		| ReactElement
+		| { label: string; [key: string]: unknown }
+	)[];
 	// Key that trigger autofocus when it changes (pageTag)
 	autoFocusKey?: string;
 	// Returns the list of extra props to add to components
