@@ -1,4 +1,9 @@
-import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import type {
+	CSSProperties,
+	FunctionComponent,
+	ReactElement,
+	ReactNode,
+} from 'react';
 import useLunatic from '../use-lunatic';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 import type {
@@ -60,6 +65,13 @@ export type SuggesterOption = {
 	tokensMap?: Record<string, { count: number; fields: string[] }>;
 };
 
+export type ComponentTableType =
+	| (FilledLunaticComponentProps & {
+			rowspan?: number;
+			colspan?: number;
+	  })
+	| { label: ReactElement; colspan?: number; rowspan?: number };
+
 type ComponentPropsByType = {
 	InputNumber: LunaticBaseProps<number | null> & {
 		min?: number;
@@ -113,10 +125,7 @@ type ComponentPropsByType = {
 			rowspan?: number;
 			colspan?: number;
 		}>;
-		body: (FilledLunaticComponentProps & {
-			rowspan?: number;
-			colspan?: number;
-		})[][];
+		body: ComponentTableType[][];
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};

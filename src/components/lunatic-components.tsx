@@ -2,20 +2,17 @@ import {
 	Fragment,
 	useRef,
 	type PropsWithChildren,
-	type ReactElement,
 	type ReactNode,
 } from 'react';
 import { useAutoFocus } from '../hooks/use-auto-focus';
 import { hasComponentType, hasLabel } from '../use-lunatic/commons/component';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 import * as lunaticComponents from './index';
+import type { ComponentTableType } from './type';
 
 type Props<T extends Record<string, unknown>> = {
 	// List of components to display (coming from getComponents)
-	components: (
-		| (FilledLunaticComponentProps & { colspan?: number; rowspan?: number })
-		| { label: ReactElement; colspan?: number; rowspan?: number }
-	)[];
+	components: (FilledLunaticComponentProps | ComponentTableType)[];
 	// Key that trigger autofocus when it changes (pageTag)
 	autoFocusKey?: string;
 	// Returns the list of extra props to add to components
@@ -28,10 +25,7 @@ type Props<T extends Record<string, unknown>> = {
 	// Add additional wrapper around each component
 	wrapper?: (
 		props: PropsWithChildren<
-			FilledLunaticComponentProps & {
-				colspan?: number;
-				rowspan?: number;
-			} & T & { index: number }
+			(FilledLunaticComponentProps | ComponentTableType) & T & { index: number }
 		>
 	) => ReactNode;
 };
