@@ -35,5 +35,14 @@ function getValueForComponent(
 	if (hasResponse(component)) {
 		return state.variables.get(component.response.name, iteration);
 	}
+	// For loop, value will be a map of child component values
+	if ('components' in component) {
+		return Object.fromEntries(
+			component.components
+				.map((c) => ('response' in c ? c.response.name : null))
+				.filter((name) => name !== null)
+				.map((name) => [name, state.variables.get(name!)])
+		);
+	}
 	return null;
 }

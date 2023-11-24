@@ -10,6 +10,7 @@ import {
 import { LunaticComponents } from '../lunatic-components';
 import type { LunaticComponentProps } from '../type';
 import { LoopButton } from './loop-button';
+import { blockedInLoopComponents } from './constant';
 
 /**
  * Loop without specific markup
@@ -68,6 +69,7 @@ export const BlockForLoop = createCustomizableLunaticField<
 			<DeclarationsAfterText declarations={declarations} id={id} />
 			{times(nbRows, (n) => (
 				<LunaticComponents
+					blocklist={blockedInLoopComponents}
 					key={n}
 					components={getComponents(n)}
 					componentProps={(c) => ({ ...props, ...c, id: `${c.id}-${n}` })}
