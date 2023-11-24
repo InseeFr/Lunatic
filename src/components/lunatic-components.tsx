@@ -8,22 +8,22 @@ import { useAutoFocus } from '../hooks/use-auto-focus';
 import { hasComponentType, hasLabel } from '../use-lunatic/commons/component';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 import * as lunaticComponents from './index';
-import type { ComponentTableType } from './type';
+import type { ComponentTableElementType } from './type';
 
 type Props<T extends Record<string, unknown>> = {
 	// List of components to display (coming from getComponents)
-	components: (ComponentTableType | FilledLunaticComponentProps)[];
+	components: (ComponentTableElementType | FilledLunaticComponentProps)[];
 	// Key that trigger autofocus when it changes (pageTag)
 	autoFocusKey?: string;
 	// Returns the list of extra props to add to components
 	componentProps?: (
-		component: ComponentTableType | FilledLunaticComponentProps
+		component: ComponentTableElementType | FilledLunaticComponentProps
 	) => T;
 	// Forbidden components
 	blocklist?: string[];
 	// Add additional wrapper around each component
 	wrapper?: (
-		props: PropsWithChildren<ComponentTableType & T & { index: number }>
+		props: PropsWithChildren<ComponentTableElementType & T & { index: number }>
 	) => ReactNode;
 };
 

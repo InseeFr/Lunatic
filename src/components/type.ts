@@ -65,7 +65,7 @@ export type SuggesterOption = {
 	tokensMap?: Record<string, { count: number; fields: string[] }>;
 };
 
-export type ComponentTableType =
+export type ComponentTableElementType =
 	| (FilledLunaticComponentProps & {
 			rowspan?: number;
 			colspan?: number;
@@ -125,7 +125,7 @@ type ComponentPropsByType = {
 			rowspan?: number;
 			colspan?: number;
 		}>;
-		body: ComponentTableType[][];
+		body: ComponentTableElementType[][];
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};
