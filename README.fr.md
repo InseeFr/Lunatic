@@ -13,7 +13,7 @@ Lunatic est une librairie front-end sous forme de hook react et de librairies de
 - [Storybook](https://inseefr.github.io/Lunatic/storybook), branche `main`
 - [Storybook v1](https://inseefr.github.io/Lunatic/storybook-v1), branche `v1-main`
 - [Storybook Beta](https://inseefr.github.io/Lunatic/storybook-beta), branche `develop`
-- [Documentation](https://inseefr.github.io/Lunatic/fr/)
+- [Documentation](https://inseefr.github.io/Lunatic/)
 
 ## Sommaire
 

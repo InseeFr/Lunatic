@@ -19,6 +19,8 @@ type Props<T extends Record<string, unknown>> = {
 	componentProps?: (
 		component: ComponentTableType | FilledLunaticComponentProps
 	) => T;
+	// Forbidden components
+	blocklist?: string[];
 	// Add additional wrapper around each component
 	wrapper?: (
 		props: PropsWithChildren<ComponentTableType & T & { index: number }>
@@ -32,6 +34,7 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 	components,
 	autoFocusKey,
 	componentProps,
+	blocklist,
 	wrapper = ({ children }) => (
 		<div className="lunatic lunatic-component">{children}</div>
 	),
@@ -48,6 +51,21 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 		>
 			{components.map((component, k) => {
 				if (hasComponentType(component)) {
+					if (blocklist && blocklist.includes(component.componentType)) {
+						return (
+							<Fragment key={'id' in component ? component.id : `index-${k}`}>
+								{wrapper({
+									children: (
+										<div style={{ color: 'red' }}>
+											Component "{component.componentType}" is not allowed here
+										</div>
+									),
+									index: k,
+									...component,
+								})}
+							</Fragment>
+						);
+					}
 					const props = {
 						...component,
 						...componentProps?.(component),
