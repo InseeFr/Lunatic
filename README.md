@@ -13,7 +13,7 @@ Lunatic is a front-end library in the form of a React hook and component librari
 - [Storybook 2.7](https://inseefr.github.io/Lunatic/storybook-2.7), branch `2.7`
 - [Storybook 2.6](https://inseefr.github.io/Lunatic/storybook-2.6), branch `2.6`
 - [Storybook v1](https://inseefr.github.io/Lunatic/storybook-0.3.9), branch `v1-main`
-- [Documentation](https://inseefr.github.io/Lunatic/en/)
+- [Documentation](https://inseefr.github.io/Lunatic/)
 
 ## Table of Contents
 
@@ -22,12 +22,17 @@ Lunatic is a front-end library in the form of a React hook and component librari
   - [Usage](#usage)
     - [The useLunatic Hook](#the-uselunatic-hook)
     - [Components](#components)
+    - [Workers](#workers)
+      - [General](#general)
+      - [How it works](#how-it-works)
   - [Customization](#customization)
   - [Internal Working](#internal-working)
     - [General Functioning](#general-functioning)
     - [Pages and Pager](#pages-and-pager)
     - [VTL Execution](#vtl-execution)
   - [Convention and Best Practices](#convention-and-best-practices)
+    - [Stable Branchs](#stable-branchs)
+    - [Commits and feature branches](#commits-and-feature-branches)
 
 ## Usage
 
