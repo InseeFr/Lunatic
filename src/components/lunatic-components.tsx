@@ -12,21 +12,16 @@ import type { ComponentTableType } from './type';
 
 type Props<T extends Record<string, unknown>> = {
 	// List of components to display (coming from getComponents)
-	components: (FilledLunaticComponentProps | ComponentTableType)[];
+	components: (ComponentTableType | FilledLunaticComponentProps)[];
 	// Key that trigger autofocus when it changes (pageTag)
 	autoFocusKey?: string;
 	// Returns the list of extra props to add to components
 	componentProps?: (
-		component: FilledLunaticComponentProps & {
-			colspan?: number;
-			rowspan?: number;
-		}
+		component: ComponentTableType | FilledLunaticComponentProps
 	) => T;
 	// Add additional wrapper around each component
 	wrapper?: (
-		props: PropsWithChildren<
-			(FilledLunaticComponentProps | ComponentTableType) & T & { index: number }
-		>
+		props: PropsWithChildren<ComponentTableType & T & { index: number }>
 	) => ReactNode;
 };
 
