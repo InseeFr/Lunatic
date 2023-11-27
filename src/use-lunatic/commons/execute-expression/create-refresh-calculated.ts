@@ -152,7 +152,6 @@ function createRefreshCalculated({ variables, execute, bindings }: Args) {
 					iteration,
 					linksIterations,
 				});
-				if (!skipCleaningRefresh) toRefreshVariables.delete(name);
 				return { ...sub, [name]: value };
 			}
 			return { ...sub, [name]: current };
