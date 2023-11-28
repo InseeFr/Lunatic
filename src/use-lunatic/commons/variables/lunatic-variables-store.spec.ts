@@ -154,6 +154,7 @@ describe('lunatic-variables-store', () => {
 			variables.set('LASTNAME', ['Doe', 'Dae']);
 			variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', {
 				dependencies: ['FIRSTNAME', 'LASTNAME'],
+				shapeFrom: 'FIRSTNAME',
 			});
 			expect(variables.get('FULLNAME', [0])).toEqual('John Doe');
 			expect(variables.get('FULLNAME', [1])).toEqual('Jane Dae');
@@ -188,7 +189,8 @@ describe('lunatic-variables-store', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
 			variables.setCalculated(
 				'FULLNAME',
-				'FIRSTNAME || " " || cast(GLOBAL_ITERATION_INDEX, string)'
+				'FIRSTNAME || " " || cast(GLOBAL_ITERATION_INDEX, string)',
+				{ shapeFrom: 'FIRSTNAME' }
 			);
 			expect(variables.get('FULLNAME', [0])).toEqual('John 0');
 			expect(variables.get('FULLNAME', [1])).toEqual('Jane 1');
