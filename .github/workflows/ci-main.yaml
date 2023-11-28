@@ -69,12 +69,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
           destination_dir: ./storybook-${{ steps.branch-name.outputs.current_branch }}
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/build
-          destination_dir: ./docs
 
   check_if_version_upgraded:
     name: Check if version upgrade
