@@ -69,9 +69,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
           destination_dir: ./storybook-${{ steps.branch-name.outputs.current_branch }}
-      - name: build docs website
-        working-directory: ./docs/
-        run: yarn install --frozen-lockfile && yarn build
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
