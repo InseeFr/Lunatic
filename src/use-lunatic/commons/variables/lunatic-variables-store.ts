@@ -350,7 +350,7 @@ class LunaticVariable {
 			return Object.fromEntries(
 				this.getDependencies().map((dep) => {
 					if (dep === iterationVariableName && iteration) {
-						return [dep, iteration[0]];
+						return [dep, iteration[0] + 1];
 					}
 					const dependencyIteration =
 						isNumber(this.iterationDepth) && Array.isArray(iteration)

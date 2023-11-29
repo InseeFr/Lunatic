@@ -192,8 +192,8 @@ describe('lunatic-variables-store', () => {
 				'FIRSTNAME || " " || cast(GLOBAL_ITERATION_INDEX, string)',
 				{ shapeFrom: 'FIRSTNAME' }
 			);
-			expect(variables.get('FULLNAME', [0])).toEqual('John 0');
-			expect(variables.get('FULLNAME', [1])).toEqual('Jane 1');
+			expect(variables.get('FULLNAME', [0])).toEqual('John 1');
+			expect(variables.get('FULLNAME', [1])).toEqual('Jane 2');
 		});
 	});
 
