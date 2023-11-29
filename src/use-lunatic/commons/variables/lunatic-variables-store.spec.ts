@@ -195,6 +195,15 @@ describe('lunatic-variables-store', () => {
 			expect(variables.get('FULLNAME', [0])).toEqual('John 0');
 			expect(variables.get('FULLNAME', [1])).toEqual('Jane 1');
 		});
+		it('should handle shapeFrom correctly', () => {
+			variables.set('FIRSTNAME', ['John', 'Jane']);
+			variables.setCalculated(
+				'FULLNAME',
+				'FIRSTNAME || " " || cast(GLOBAL_ITERATION_INDEX, string)',
+				{ shapeFrom: 'FIRSTNAME' }
+			);
+			expect(variables.get('FULLNAME')).toEqual(['John 0', 'Jane 1']);
+		});
 	});
 
 	describe('resizing', () => {
