@@ -59,6 +59,7 @@ export class LunaticVariablesStore {
 					store.setCalculated(variable.name, variable.expression.value, {
 						dependencies: variable.bindingDependencies,
 						iterationDepth: getIterationDepth(variable.name),
+						shapeFrom: variable.shapeFrom,
 					});
 					break;
 				case 'COLLECTED':
@@ -134,7 +135,12 @@ export class LunaticVariablesStore {
 		{
 			dependencies,
 			iterationDepth,
-		}: { dependencies?: string[]; iterationDepth?: number } = {}
+			shapeFrom,
+		}: {
+			dependencies?: string[];
+			iterationDepth?: number;
+			shapeFrom?: string;
+		} = {}
 	): LunaticVariable {
 		if (this.dictionary.has(name)) {
 			return this.dictionary.get(name)!;
@@ -142,6 +148,7 @@ export class LunaticVariablesStore {
 		const variable = new LunaticVariable({
 			expression: expression,
 			dictionary: this.dictionary,
+			shapeFrom,
 			dependencies,
 			iterationDepth,
 			name,
@@ -203,6 +210,8 @@ class LunaticVariable {
 	private readonly dictionary?: Map<string, LunaticVariable>;
 	// Specific iteration depth to get value from dependencies (used for yAxis for instance)
 	private readonly iterationDepth?: number;
+	// For calculated variable, shape is copied from another variable
+	private readonly shapeFrom?: string;
 	// Keep a record of variable name (optional, used for debug)
 	private readonly name?: string;
 
@@ -212,6 +221,7 @@ class LunaticVariable {
 			dependencies?: string[];
 			dictionary?: Map<string, LunaticVariable>;
 			iterationDepth?: number;
+			shapeFrom?: string;
 			name?: string;
 		} = {}
 	) {
@@ -224,6 +234,7 @@ class LunaticVariable {
 		this.dictionary = args.dictionary;
 		this.dependencies = args.dependencies;
 		this.iterationDepth = args.iterationDepth;
+		this.shapeFrom = args.shapeFrom;
 		this.name = args.name ?? args.expression;
 	}
 
@@ -232,6 +243,16 @@ class LunaticVariable {
 		if (!this.expression) {
 			return this.getSavedValue(iteration);
 		}
+
+		// For calculated variable, ignore iteration if the shapeFrom is not an array
+		if (
+			this.name !== this.expression &&
+			(!this.shapeFrom ||
+				!Array.isArray(this.dictionary?.get(this.shapeFrom)?.getValue()))
+		) {
+			iteration = undefined;
+		}
+
 		// Calculate bindings first to refresh "updatedAt" on calculated dependencies
 		const bindings = this.getDependenciesValues(iteration);
 		if (!this.isOutdated(iteration)) {
