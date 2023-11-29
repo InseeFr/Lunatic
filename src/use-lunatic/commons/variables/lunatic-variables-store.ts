@@ -244,11 +244,19 @@ class LunaticVariable {
 			return this.getSavedValue(iteration);
 		}
 
-		// For calculated variable, ignore iteration if the shapeFrom is not an array
+		const shapeFromValue = this.shapeFrom
+			? this.dictionary?.get(this.shapeFrom)?.getValue()
+			: null;
+		// If we want the root value of a calculated array, loop using the shapeFrom value
+		if (!iteration && Array.isArray(shapeFromValue)) {
+			return shapeFromValue.map((_, k) => this.getValue([k]));
+		}
+
+		// For calculated variable, ignore iteration if shapeFrom exists and is not an array
 		if (
+			// We have a calculated variable (not a simple expression)
 			this.name !== this.expression &&
-			(!this.shapeFrom ||
-				!Array.isArray(this.dictionary?.get(this.shapeFrom)?.getValue()))
+			!Array.isArray(shapeFromValue)
 		) {
 			iteration = undefined;
 		}
