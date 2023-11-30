@@ -35,7 +35,7 @@ export function DatepickerField({
 		<div
 			className={classNames(
 				'lunaticDatepickerField',
-				!max && 'lunaticDatepickerFieldLarge'
+				(!max || max > 999) && 'lunaticDatepickerFieldLarge'
 			)}
 		>
 			<label htmlFor={id}>

@@ -18,8 +18,8 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"bindingDependencies": ["PRENOM"],
 			"lines": {
-				"min": { "value": 1, "type": "VTL" },
-				"max": { "value": 10, "type": "VTL" }
+				"min": { "value": "1", "type": "VTL" },
+				"max": { "value": "10", "type": "VTL" }
 			},
 			"page": "1",
 			"components": [
@@ -33,40 +33,17 @@
 					"response": {
 						"name": "PRENOM"
 					}
-				}
-			]
-		},
-		{
-			"id": "loop",
-			"componentType": "Loop",
-
-			"loopDependencies": ["PRENOM"],
-			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
-			"page": "2",
-			"maxPage": "1",
-			"depth": 1,
-			"paginatedLoop": true,
-			"conditionFilter": {
-				"value": "true",
-				"type": "VTL"
-			},
-			"components": [
+				},
 				{
-					"id": "age",
-					"label": {
-						"value": "PRENOM || \", quel est vôtre âge ?\"",
-						"type": "VTL"
-					},
-					"conditionFilter": {
-						"value": "true",
-						"type": "VTL"
-					},
-					"page": "2.1",
 					"componentType": "InputNumber",
-					"min": 0,
-					"max": 120,
-					"decimals": 0,
-					"response": { "name": "AGE" }
+					"label": { "value": "\"Age\"", "type": "VTL|MD" },
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"maxLength": 30,
+					"bindingDependencies": ["AGE"],
+					"id": "Age",
+					"response": {
+						"name": "AGE"
+					}
 				}
 			]
 		},
@@ -78,15 +55,9 @@
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "3"
+			"page": "2"
 		}
 	],
-	"resizing": {
-		"PRENOM": {
-			"size": "count(PRENOM)",
-			"variables": ["AGE"]
-		}
-	},
 	"variables": [
 		{
 			"variableType": "COLLECTED",

@@ -1,0 +1,22 @@
+# Resizing
+
+Le resizing permet de synchroniser la taille de plusieurs variables. Par exemple lorsque l'on rajoute des personnes, on va ajuster la liste des ages. Ce processus est déclaré dans la propriété resizing.
+
+```json
+{
+	"resizing": {
+		"NB": {
+			"variables": ["PRENOM", "AGE"],
+			"size": "cast(NB,integer)"
+		}
+	}
+}
+```
+
+On observe les changements de la variable `NB` et lorsqu'elle change, on va calculer la taille associée gràce à l'expression dans la propriété `size`. Les variables listées dans `variables` seront automatiquement dimensionnées à la bonne taille.
+
+:::info
+
+Vous ne pouvez observer que des variables collectées.
+
+:::

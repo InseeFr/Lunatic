@@ -1,0 +1,63 @@
+# Suggester
+
+Le composant de `Suggester` permet d'avoir un menu déroulant avec une option de recherche.
+
+- La liste des options est indexée en amont par un worker (automatiquement via l'option `autoSuggesterLoading`, ou manuellement) afin de ne pas bloquer le thread principal.
+- De la même manière la recherche utilise le même système de worker.
+
+import source from '../../../../src/stories/suggester/simple.json';
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+
+<FormExample source={source} />
+
+## Indexation
+
+Dans le fichier source la liste des données à rendre disponible et définit dans la propriété `suggesters`. Vous pouvez retrouver les détails sur le format de cette définition en regardant le type [SuggesterType](https://github.com/InseeFr/Lunatic/blob/2.7/src/use-lunatic/type-source.ts#L269) dans le code source.
+
+Lors de l'indexation des données, un fichier JSON est chargé puis son contenu est sauvegardé dans IndexDB avec 2 stores :
+
+- `store/info`, sauvegarde les informations à propos de l'index (name, fields, queryParser, version...)
+- `store/entities`, sauvegarde chaque suggestion indexée par l'id
+
+Pour le deuxième store, un index est créé en fonction des tokens utilisés pour chaque suggestion. Par exemple, "Hello world" sera indexé sur "hello" et "world". Cet index sera utilisé lors de la recherche pour trouver tous les enregistrements correspondant à une chaîne spécifique. Afin d'éviter d'avoir un index trop volumineux, les jetons sont réduits à l'aide de plusieurs opérations :
+
+- Mise en minuscule.
+- Les accents / caractères spéciaux sont supprimés.
+- Les mots sont simplifiés à l'aide d'un algorithme de stemming (snowball, qui supprime les suffix).
+
+## La recherche
+
+Lors de la recherche dans un suggester, un message est envoyé au worker enregistré par Lunatic (`lunatic-search-worker-XXX.js`) avec les données.
+
+```json
+{
+  "search": "My Search",
+  "name": "naf-rev2",
+  "version": "1"
+}
+```
+
+Le worker (via [searching.js](https://github.com/InseeFr/Lunatic/blob/2.7/src/utils/suggester-workers/searching/searching.js#L55-L67)) va parser la requête en plusieurs tokens (un token par mot). Pour chaque token, une recherche va se faire dans l'index "store/entities/index" pour trouver les suggestions qui correspondent au token.
+
+Vous pouvez essayer ce code dans la console pour voir les tokens qui sont renvoyés.
+
+```js
+indexedDB.open("naf-rev2", 1).onsuccess = (e) => {
+    const search = "32" // Mot recherché
+    const db = e.target.result
+    console.log(Array.from(db.objectStoreNames))
+    const transaction = db.transaction(
+        "store/entities",
+        "readonly"
+    )
+    const max = String.fromCharCode(65535)
+    const store = transaction.objectStore('store/entities')
+    const index = store.index("store/entities/index")
+    const range = IDBKeyRange.bound(search, search + max)
+    index.getAll(range).onsuccess = (req) => {
+        console.log(req.target.result)
+    }
+}
+```
+
+Lorsque tous les résultats sont récupérés, ils sont triés par score (ou en utilisant une adaptation du système de classement de Melauto) avant d'être renvoyés au suggester.

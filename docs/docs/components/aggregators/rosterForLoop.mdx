@@ -1,0 +1,19 @@
+# RosterForLoop
+
+Le composant **RosterForLoop** fonctionne comme une boucle non paginée mais présente les différents champs dans un tableau.
+
+- **components**, tableau contenant les composants enfant à cette boucle
+- **lines**, permet le contrôle sur le nombre de lignes (ajouter / supprimer)
+    - **min**, nombre minimal de lignes
+    - **max**, nombre maximal de lignes
+- **headers**, définit l'en-tête du tableau (optionel)
+
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+import {GoToType} from '@site/src/components/GoToType';
+
+<GoToType type="ComponentRosterForLoopType"/>
+
+import source from '../../../../src/stories/loop/source-with-header.json';
+
+<FormExample source={source} />
+

@@ -1,3 +1,0 @@
-# Developers guide
-
-* [French](fr/)

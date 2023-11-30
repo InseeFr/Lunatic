@@ -114,7 +114,12 @@ export function useSuggesters({
 						}
 						if (current[name] === SuggesterStatus.pending) {
 							const data = await getReferentiel(name);
-							const [append, abort] = createAppendTask<any>(store, 1, nothing);
+							const [append, abort] = createAppendTask<any>(
+								store,
+								1,
+								nothing,
+								workersBasePath
+							);
 							aborts.push(abort);
 							const result = await append(data);
 							if (result) {

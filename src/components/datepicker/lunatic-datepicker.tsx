@@ -1,9 +1,9 @@
-import Datepicker from './html/datepicker';
 import { createCustomizableLunaticField } from '../commons';
+import { getComponentErrors } from '../commons/components/errors/errors';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import type { LunaticComponentProps } from '../type';
-import { getComponentErrors } from '../commons/components/errors/errors';
+import Datepicker from './html/datepicker';
 
 const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 	const {
@@ -23,7 +23,7 @@ const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 		missing,
 		missingResponse,
 		management,
-		format,
+		dateFormat,
 	} = props;
 
 	const onChange = useOnHandleChange({ handleChange, response, value });
@@ -41,7 +41,7 @@ const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 			handleChange={handleChange}
 		>
 			<Datepicker
-				format={format}
+				dateFormat={dateFormat}
 				disabled={disabled}
 				readOnly={readOnly}
 				value={value ?? ''}

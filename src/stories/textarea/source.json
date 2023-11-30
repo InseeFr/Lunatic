@@ -4,34 +4,18 @@
 			"id": "name",
 			"componentType": "Textarea",
 			"label": {
-				"value": "\"What you say\"",
+				"value": "\"Label\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"Description\"",
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"maxLength": 30,
 			"response": {
 				"name": "SOMETHING"
-			},
-			"declarations": [
-				{
-					"id": "kb9hi4j0-krnoclfe",
-					"declarationType": "INSTRUCTION",
-					"position": "BEFORE_QUESTION_TEXT",
-					"label": {
-						"value": "\"## Can you say something, please?\nwhat you want't.\n\"",
-						"type": "VTL|MD"
-					}
-				},
-				{
-					"id": "kb9hi4j0-krnoclfe",
-					"declarationType": "HELP",
-					"position": "AFTER_QUESTION_TEXT",
-					"label": {
-						"value": "\"For example,hello World!\"",
-						"type": "VTL|MD"
-					}
-				}
-			]
+			}
 		}
 	],
 	"variables": [

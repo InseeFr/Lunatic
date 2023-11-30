@@ -1,20 +1,23 @@
-import LunaticDatepicker from '../../components/datepicker';
 import { action } from '@storybook/addon-actions';
+import LunaticDatepicker from '../../components/datepicker';
 
 export default {
 	title: 'Components/Datepicker',
 	component: LunaticDatepicker,
 	args: {
 		value: '1920-02-01',
-		format: 'YYYY-MM-DD',
+		dateFormat: 'YYYY-MM-DD',
 		handleChange: action('handleChange'),
 		response: { name: 'date' },
 	},
 	parameters: {
-		controls: { include: ['format', 'readOnly', 'disabled'] },
+		controls: { include: ['dateFormat', 'readOnly', 'disabled'] },
 	},
 	argTypes: {
-		format: { control: 'radio', options: ['YYYY-MM-DD', 'YYYY-MM', 'YYYY'] },
+		dateFormat: {
+			control: 'radio',
+			options: ['YYYY-MM-DD', 'YYYY-MM', 'YYYY'],
+		},
 		readOnly: { control: 'boolean' },
 		disabled: { control: 'boolean' },
 	},

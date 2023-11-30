@@ -1,9 +1,10 @@
 import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
-import simple from './V2_ControlesNonNum_horsBoucle_PasPageFin.json';
-import simpleNum from './V2_ControlesNum_horsBoucle_PasPageFin.json';
-import linkedLoop from './V2_Controles_BouclesLiees_PasPageFin.json';
+import simple from './simple.json';
+import simpleNum from './simple-numeric.json';
+import linkedLoop from './loop.json';
 import linkedLoop2 from './V2_Controles_BouclesLiees2_PasPageFin.json';
+import sourceLoop from './loop.json';
 import defaultArgTypes from '../../utils/default-arg-types';
 import boucleNTabDynamique from './boucles-n.json';
 
@@ -77,6 +78,14 @@ export const LinkedLoop2 = Template.bind({});
 LinkedLoop2.args = {
 	id: 'controls-linked-loop2',
 	source: linkedLoop2,
+	pagination: true,
+	activeControls: true,
+};
+
+export const Loop = Template.bind({});
+Loop.args = {
+	id: 'controls-loop',
+	source: sourceLoop,
 	pagination: true,
 	activeControls: true,
 };

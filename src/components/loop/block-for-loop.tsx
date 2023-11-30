@@ -1,15 +1,16 @@
 import { useCallback, useState } from 'react';
 import D from '../../i18n';
+import { times } from '../../utils/array';
 import { createCustomizableLunaticField } from '../commons';
 import {
 	DeclarationsAfterText,
 	DeclarationsBeforeText,
 	DeclarationsDetachable,
 } from '../declarations';
+import { LunaticComponents } from '../lunatic-components';
 import type { LunaticComponentProps } from '../type';
 import { LoopButton } from './loop-button';
-import { LunaticComponents } from '../lunatic-components';
-import { times } from '../../utils/array';
+import { blockedInLoopComponents } from './constant';
 
 /**
  * Loop without specific markup
@@ -29,7 +30,7 @@ export const BlockForLoop = createCustomizableLunaticField<
 	} = props;
 	const min = lines?.min ?? 0;
 	const max = lines?.max ?? Infinity;
-	const canControlRows = min !== max;
+	const canControlRows = min !== max && Number.isFinite(max);
 
 	const [nbRows, setNbRows] = useState(() => {
 		return Math.max(iterations, min);
@@ -68,6 +69,7 @@ export const BlockForLoop = createCustomizableLunaticField<
 			<DeclarationsAfterText declarations={declarations} id={id} />
 			{times(nbRows, (n) => (
 				<LunaticComponents
+					blocklist={blockedInLoopComponents}
 					key={n}
 					components={getComponents(n)}
 					componentProps={(c) => ({ ...props, ...c, id: `${c.id}-${n}` })}

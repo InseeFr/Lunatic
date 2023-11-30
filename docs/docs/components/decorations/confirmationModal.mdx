@@ -1,0 +1,17 @@
+# ConfirmationModal
+
+Ce composant permet d'afficher une modale de confirmation qui permet à l'utilisateur de confirmer si il souhaite continuer ou pas le remplissage du formulaire.
+
+- **label**, expression VTL qui sera utilisé pour le titre de la boite de dialogue
+- **description**, expression VTL qui sera utilisé comme contenu de la boite de dialogue
+
+:::warning
+
+Ce composant doit être inséré sur sa propre page et ne peut pas être mélangé à d'autres composants.
+
+:::
+
+import source from '../../../../src/stories/modal/source.json';
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+
+<FormExample source={source} />

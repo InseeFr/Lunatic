@@ -5,7 +5,7 @@ import defaultArgTypes from '../utils/default-arg-types';
 import source from './sourceWithHierarchy';
 
 const stories = {
-	title: 'Components/Overview',
+	title: 'Behaviour/Overview',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };

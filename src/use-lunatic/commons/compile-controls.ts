@@ -1,15 +1,16 @@
 import { isLoopComponent } from '../reducer/commons';
-import { resolveComponentControls } from '../reducer/resolve-component-controls';
 import { replaceComponentSequence } from '../replace-component-sequence';
 import type {
 	LunaticComponentDefinition,
+	LunaticControl,
 	LunaticError,
 	LunaticState,
 } from '../type';
-import { Criticality, TypeOfControl } from '../type-source';
+import { ControlTypeEnum, Criticality, TypeOfControl } from '../type-source';
 import fillComponentExpressions from './fill-components/fill-component-expressions';
 import getComponentsFromState from './get-components-from-state';
-import getErrorsWithoutEmptyValue from './get-errors-without-empty-value';
+import { checkRoundaboutControl } from '../reducer/controls/check-roundabout-control';
+import { checkBaseControl } from '../reducer/controls/check-base-control';
 
 export type StateForControls = Pick<
 	LunaticState,
@@ -17,71 +18,164 @@ export type StateForControls = Pick<
 >;
 
 /**
- * Check if components of current page have errors
+ * Check if components of the current page have errors, and return a map of error (indexed by component ID)
  */
-function validateComponents(
+function checkComponents(
 	state: StateForControls,
 	components: LunaticComponentDefinition[]
 ): Record<string, LunaticError[]> {
-	const { pager } = state;
-	return components.reduce(function (errors, component) {
+	let errors = {} as Record<string, LunaticError[]>;
+
+	for (const component of components) {
 		const { controls, id } = component;
+		// The component has global level controls
 		if (Array.isArray(controls)) {
-			const componentErrors = resolveComponentControls(state, controls);
-			const { shallowIteration } = pager;
-			const idC =
-				shallowIteration !== undefined ? `${id}-${shallowIteration}` : id;
-			return getErrorsWithoutEmptyValue({
-				...errors,
-				[idC]: componentErrors,
-			});
+			const componentErrors = checkControls(
+				controls.filter((c) => c.type !== ControlTypeEnum.row),
+				state.executeExpression,
+				state.pager
+			);
+			if (componentErrors.length > 0) {
+				errors[id] = componentErrors;
+			}
 		}
 
-		//Thanks to init which split basic Loops, we only go into unPaginatedLoops
+		// For loop, inspect children
 		if (isLoopComponent(component)) {
-			const { components } = component;
-			const recurs = validateComponents(state, components);
-			return getErrorsWithoutEmptyValue({
-				...errors,
-				...recurs,
-			});
-		}
-		// Keep previous errors to allow multiple controls in same page (multiple question/component in the same page)
-		return errors;
-	}, {});
-}
-
-function isCriticalErrors(errors?: Record<string, LunaticError[]>): boolean {
-	if (errors) {
-		return Object.values(errors)
-			.flat()
-			.reduce(function (status, { criticality, typeOfControl }) {
-				return (
-					status ||
-					typeOfControl === TypeOfControl.FORMAT ||
-					criticality.startsWith(Criticality.ERROR)
+			const rowControls = component.controls?.filter(
+				(c) => c.type === ControlTypeEnum.row
+			);
+			if (rowControls?.length) {
+				errors = checkComponentInLoop(
+					state,
+					{ ...component, controls: rowControls },
+					errors
 				);
-			}, false);
+			}
+			for (const child of component.components) {
+				errors = checkComponentInLoop(state, child, errors);
+			}
+		}
 	}
-	return false;
+
+	return errors;
 }
 
-type ControlsResult = {
-	currentErrors: Record<string, LunaticError[]> | undefined;
-	isCritical: boolean;
-};
+function checkControls(
+	controls: LunaticControl[],
+	executeExpression: LunaticState['executeExpression'],
+	pager: LunaticState['pager']
+): LunaticError[] {
+	return controls
+		.map((control) => {
+			switch (control.type) {
+				case ControlTypeEnum.roundabout:
+					return checkRoundaboutControl(control, executeExpression);
+				default:
+					return checkBaseControl(control, executeExpression, pager);
+			}
+		})
+		.filter((error) => error !== undefined) as LunaticError[];
+}
 
-export function compileControls(state: StateForControls): ControlsResult {
+/**
+ * Figure out the number of iterations of a component
+ */
+function computeIterations(
+	component: LunaticComponentDefinition,
+	executeExpression: LunaticState['executeExpression']
+): number {
+	if ('iterations' in component) {
+		return executeExpression<number>(component.iterations.value);
+	}
+	if ('response' in component) {
+		const value = executeExpression(component.response.name);
+		if (Array.isArray(value)) {
+			return value.length;
+		}
+	}
+	// Look at the first component
+	if ('components' in component) {
+		return computeIterations(component.components[0], executeExpression);
+	}
+	return 0;
+}
+
+/**
+ * Check controls on a component for each iteration
+ * Errors are returned using a map of id suffixed with the iteration index (ex: {prenom-1: [], prenom-3: []})
+ */
+function checkComponentInLoop(
+	state: StateForControls,
+	component: LunaticComponentDefinition,
+	errors: Record<string, LunaticError[]>
+): Record<string, LunaticError[]> {
+	// The component has no controls, skip it
+	if (!Array.isArray(component.controls)) {
+		return errors;
+	}
+
+	// Execute control for each iteration
+	const iterations = computeIterations(component, state.executeExpression);
+	for (let i = 0; i < iterations; i++) {
+		// Create a pager representing the iteration we want to check
+		const iterationPager = {
+			...state.pager,
+			iteration: i,
+			nbIterations: iterations,
+		};
+		// The component is filtered on this iteration, skip it
+		if (
+			component.conditionFilter &&
+			!state.executeExpression(component.conditionFilter.value, iterationPager)
+		) {
+			continue;
+		}
+		const componentErrors = checkControls(
+			component.controls,
+			state.executeExpression,
+			iterationPager
+		);
+		if (componentErrors.length > 0) {
+			errors[`${component.id}-${i}`] = componentErrors;
+		}
+	}
+
+	return errors;
+}
+
+/**
+ * Check if there is a critical error (type: "Error" and criticality: "Format")
+ */
+function hasCriticalError(errors?: Record<string, LunaticError[]>): boolean {
+	if (!errors) {
+		return false;
+	}
+	// Look for at least one critical error in the list
+	const criticalError = Object.values(errors)
+		.flat()
+		.find(
+			(error) =>
+				error.criticality.startsWith(Criticality.ERROR) ||
+				error.typeOfControl === TypeOfControl.FORMAT
+		);
+	return criticalError !== undefined;
+}
+
+/**
+ * Check controls for currently visible components and output errors
+ */
+export function compileControls(state: StateForControls) {
 	const components = replaceComponentSequence(getComponentsFromState(state));
 	const componentFiltered = components
-		.map(function (component) {
-			return fillComponentExpressions(component, state);
-		})
+		.map((component) => fillComponentExpressions(component, state))
 		.filter(({ conditionFilter }) => {
 			return conditionFilter ?? true;
 		});
-	const errors = validateComponents(state, componentFiltered);
+	let errors = checkComponents(state, componentFiltered);
 	const currentErrors = Object.keys(errors).length > 0 ? errors : undefined;
-	const isCritical = isCriticalErrors(currentErrors);
-	return { currentErrors, isCritical };
+	return {
+		currentErrors,
+		isCritical: hasCriticalError(currentErrors),
+	};
 }

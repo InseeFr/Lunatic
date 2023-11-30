@@ -19,7 +19,6 @@ const LabelRenderer = ({
 }) => <>{option?.label ?? placeholder}</>;
 
 const Template: typeof ComboBox = (args) => {
-	console.log({ args });
 	const [localValue, setLocalValue] = useState(args.value);
 	const [search, setSearch] = useState<string | null>('');
 	// Simulate a search

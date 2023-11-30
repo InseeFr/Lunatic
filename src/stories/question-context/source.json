@@ -1,0 +1,13 @@
+{
+	"components": [
+		{
+			"componentType": "QuestionContext",
+			"label": { "value": "\"Question Context\"", "type": "VTL|MD" },
+			"description": {
+				"value": "\"Question Context description\"",
+				"type": "VTL|MD"
+			},
+			"page": "1"
+		}
+	]
+}

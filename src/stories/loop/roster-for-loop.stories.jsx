@@ -4,6 +4,7 @@ import sourceRoster from './source-roster';
 import defaultArgTypes from '../utils/default-arg-types';
 import { playwrightToUserEvent } from '../../../tests/utils/e2e';
 import { sleep } from '../../../tests/utils/timer';
+import sourceWithHeader from './source-with-header.json';
 
 const stories = {
 	title: 'Components/Loop/RosterForLoop',
@@ -16,9 +17,16 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 export const ReadOnly = Template.bind({});
+export const WithHeader = Template.bind({});
 
 Default.args = { id: 'roster-for-loop', source: sourceRoster };
-ReadOnly.args = { id: 'roster-for-loop', source: sourceRoster, readOnly: true };
+ReadOnly.args = {
+	id: 'roster-for-loop-readonly',
+	source: sourceRoster,
+	readOnly: true,
+};
+
+WithHeader.args = { id: 'roster-for-loop-headers', source: sourceWithHeader };
 
 export const Filled = Template.bind({});
 Filled.args = { id: 'roster-for-loop', source: sourceRoster };

@@ -1,8 +1,8 @@
-import { describe, it, beforeEach, expect } from 'vitest';
-import { LunaticVariablesStore } from './lunatic-variables-store';
-import { resizingBehaviour } from './behaviours/resizing-behaviour';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
+import { resizingBehaviour } from './behaviours/resizing-behaviour';
+import { LunaticVariablesStore } from './lunatic-variables-store';
 
 describe('lunatic-variables-store', () => {
 	let variables: LunaticVariablesStore;
@@ -14,6 +14,13 @@ describe('lunatic-variables-store', () => {
 	it('should record basic variables', () => {
 		variables.set('FIRSTNAME', 'John');
 		expect(variables.get('FIRSTNAME')).toEqual('John');
+	});
+
+	it('should handle array correctly', () => {
+		variables.set('AGE', [10, 20, 30]);
+		expect(variables.get('AGE')).toEqual([10, 20, 30]);
+		variables.set('AGE', [10, 20]);
+		expect(variables.get('AGE')).toEqual([10, 20]);
 	});
 
 	it('should create a store from an object', () => {
@@ -89,6 +96,40 @@ describe('lunatic-variables-store', () => {
 		expect(variables.run('FIRSTNAME || " " || LASTNAME')).toEqual('Jane Doe');
 	});
 
+	it('should throw an exception when calculated incorrect VTL', () => {
+		expect(() => variables.run('Hello world')).toThrowError();
+	});
+
+	describe('event listener', () => {
+		it('should trigger onChange', () => {
+			variables.set('FIRSTNAME', 'John');
+			const spy = vi.fn();
+			variables.on('change', (e) => spy(e.detail.name, e.detail.value));
+			variables.set('FIRSTNAME', 'Jane');
+			expect(spy).toHaveBeenCalledWith('FIRSTNAME', 'Jane');
+		});
+
+		it('should trigger onChange on array', () => {
+			variables.set('AGE', [18, 23, 24]);
+			const spy = vi.fn();
+			variables.on('change', (e) => spy(e.detail.name, e.detail.value));
+			variables.set('AGE', [18, 23]);
+			expect(spy).toHaveBeenCalledWith('AGE', [18, 23]);
+			variables.set('AGE', [18, 25]);
+			expect(spy).toHaveBeenCalledWith('AGE', [18, 25]);
+		});
+
+		it('should not trigger onChange when value does not change', () => {
+			variables.set('FIRSTNAME', 'John');
+			variables.set('AGE', [18, 20]);
+			const spy = vi.fn();
+			variables.on('change', (e) => spy(e.detail.name, e.detail.value));
+			variables.set('FIRSTNAME', 'John');
+			variables.set('AGE', [18, 20]);
+			expect(spy).not.toHaveBeenCalled();
+		});
+	});
+
 	describe('with iteration', () => {
 		it('should handle arrays', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
@@ -113,6 +154,7 @@ describe('lunatic-variables-store', () => {
 			variables.set('LASTNAME', ['Doe', 'Dae']);
 			variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', {
 				dependencies: ['FIRSTNAME', 'LASTNAME'],
+				shapeFrom: 'FIRSTNAME',
 			});
 			expect(variables.get('FULLNAME', [0])).toEqual('John Doe');
 			expect(variables.get('FULLNAME', [1])).toEqual('Jane Dae');
@@ -147,10 +189,20 @@ describe('lunatic-variables-store', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
 			variables.setCalculated(
 				'FULLNAME',
-				'FIRSTNAME || " " || cast(GLOBAL_ITERATION_INDEX, string)'
+				'FIRSTNAME || " " || cast(GLOBAL_ITERATION_INDEX, string)',
+				{ shapeFrom: 'FIRSTNAME' }
 			);
-			expect(variables.get('FULLNAME', [0])).toEqual('John 0');
-			expect(variables.get('FULLNAME', [1])).toEqual('Jane 1');
+			expect(variables.get('FULLNAME', [0])).toEqual('John 1');
+			expect(variables.get('FULLNAME', [1])).toEqual('Jane 2');
+		});
+		it('should handle shapeFrom correctly', () => {
+			variables.set('FIRSTNAME', ['John', 'Jane']);
+			variables.setCalculated(
+				'FULLNAME',
+				'FIRSTNAME || " " || cast(GLOBAL_ITERATION_INDEX, string)',
+				{ shapeFrom: 'FIRSTNAME' }
+			);
+			expect(variables.get('FULLNAME')).toEqual(['John 1', 'Jane 2']);
 		});
 	});
 

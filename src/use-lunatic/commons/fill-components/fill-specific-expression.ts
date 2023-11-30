@@ -124,7 +124,13 @@ function fillTable(
 				if (hasComponentType(component)) {
 					return fillComponent(component, state);
 				}
-				return state.executeExpression(getVTLCompatibleValue(component.label));
+				// We can have a non typed component with extra attributes (colspan, rowspan)
+				return {
+					...component,
+					label: state.executeExpression(
+						getVTLCompatibleValue(component.label)
+					),
+				};
 			})
 		),
 	};

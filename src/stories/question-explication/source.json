@@ -11,7 +11,7 @@
 				"value": "\"Accordion content\"",
 				"type": "VTL"
 			},
-			"bgColor": "red"
+			"bgColor": "rgb(246, 248, 250)"
 		}
 	]
 }

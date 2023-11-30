@@ -1,5 +1,5 @@
 // @ts-ignore
-import { createWorker } from '../../../utils/suggester-workers/create-worker-ts';
+import { createWorker } from '../../../utils/suggester-workers/create-worker';
 import {
 	WorkerEnum,
 	getWorkerPath,

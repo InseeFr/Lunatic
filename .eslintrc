@@ -1,4 +1,5 @@
 {
+	"ignorePatterns": ["docs/**"],
 	"extends": ["prettier", "react-app"],
 	"rules": {
 		"react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],

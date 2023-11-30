@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import Datepicker from './datepicker';
 
@@ -48,7 +48,7 @@ describe('Datepicker', () => {
 	it('handle change correctly for format YYYY-MM', () => {
 		render(
 			<Datepicker
-				format="YYYY-MM"
+				dateFormat="YYYY-MM"
 				value="1999-01"
 				id="datepicker"
 				aria-labelledby="datepicker"
@@ -68,7 +68,7 @@ describe('Datepicker', () => {
 	it('handle change correctly for year YYYY', () => {
 		render(
 			<Datepicker
-				format="YYYY"
+				dateFormat="YYYY"
 				value="1999"
 				id="datepicker"
 				aria-labelledby="datepicker"

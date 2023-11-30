@@ -1,0 +1,21 @@
+# Cleaning
+
+Le cleaning permet de nettoyer des variables lors d'un changement d'une autre variable. Cela permet de supprimer les valeurs associées à des composants qui seraient sautés par exemple.
+
+```json
+{
+	"cleaning": {
+		"ORIGIN": {
+			"CITY": "ORIGIN = \"FR\""
+		}
+	}
+}
+```
+
+On observe les changements de la variable `ORIGIN` et lorsque sa valeur change, on va réinitialiser les variables définit dans l'objet (ici `CITY`). Si l'expression VTL est interprété avec la valeur `true` alors le cleaning n'est pas effectué.
+
+:::info
+
+Vous ne pouvez observer que des variables collectées.
+
+:::

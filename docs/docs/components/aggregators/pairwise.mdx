@@ -1,0 +1,103 @@
+# PairwiseLinks
+
+Le composant **lien 2 à 2** permet de définir des relations bidirectionnelles entre les données.
+
+- **xAxisIterations**, nombre d'éléments sur le premier axe
+- **yAxisIterations**, nombre d'éléments sur le second axe
+- **components**, liste des questions à poser pour chaque combinaison possible
+- **symLinks**, définit la relation bidirectionnelle entre les données
+
+## symLinks
+
+L'option symLinks va permettre d'indiquer la valeur inverse à une valeur sélectionnée. Si on prend l'exemple d'un sélect avec 3 valeurs
+
+```json
+{
+    "symLinks": {
+        "LINKS": {
+            "époux": "époux",
+            "fils": "parent",
+            "parent": "fils"
+        }
+    }
+}
+```
+
+De cette manière lorsqu'on indiquera que **X** est **"fils"** de **Y**, le système changera aussi la relation inverse pour indiquer que **Y** est **"parent"** de **X**.
+
+## xAxis et yAxis
+
+Lorsque le pairwise est utilisé, 2 variables calculées vont agir de manière spéciale afin de pouvoir renvoyer les bonnes indications à l'utilisateur : **xAxis** et **yAxis**.
+
+```json
+[
+    {
+        "variableType": "CALCULATED",
+        "name": "xAxis",
+        "expression": { "value": "PRENOM", "type": "VTL" },
+        "bindingDependencies": ["PRENOM"]
+    },
+    {
+        "variableType": "CALCULATED",
+        "name": "yAxis",
+        "expression": { "value": "PRENOM", "type": "VTL" },
+        "bindingDependencies": ["PRENOM"]
+    }
+]
+```
+
+Si ces variables sont utilisées dans une expression d'un composant du pairwise, le système de calcul ira piocher l'élément au bon index.
+
+```json
+{
+    "label": {
+        "value": "\"Qui est \" || yAxis || \" pour \" || xAxis || \" ?\"",
+        "type": "VTL|MD"
+    }
+}
+```
+
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+import source from '../../../../src/stories/pairwise/source.json';
+
+<FormExample source={source} data={{
+    "COLLECTED": {
+        "PRENOM": { "COLLECTED": ["Maman", "Papa", "Fils"] },
+        "AGE": { "COLLECTED": [30, 29, 5] },
+        "LINKS": {
+            "COLLECTED": [[null]]
+        },
+        "OTHER": {
+            "COLLECTED": [[null]]
+        }
+    }
+}} options={{initialPage: '3'}} />
+
+## Format des données
+
+Les données sont sauvegardées sous forme d'un tableau à 2 dimensions
+
+| x \ y | Maman | Papa | Fils |
+|-------|-------|------|------|
+| Maman |       |      |      |
+| Papa  |       |      |      |
+| Fils  |       |      |      |
+
+Si on souhaite indiquer la rélation Parent (valeur "2") et enfant (valeur "3").
+En suivant la question "qui est Y pour X ?" le tableau sera complété de la manière suivante.
+
+| x \ y | Maman | Papa | Fils |
+|-------|-------|------|------|
+| Maman |       |      | 3    |
+| Papa  |       |      | 3    |
+| Fils  | 2     |  2   |      |
+
+Ce qui donnera ce tableau en JavaScript
+
+```js
+[
+    [null, null, "3" ],
+    [null, null, "3" ],
+    ["2",  "2",  null]
+]
+```
