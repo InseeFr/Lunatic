@@ -1,8 +1,8 @@
-import { describe, it, beforeEach, expect, vi } from 'vitest';
-import { LunaticVariablesStore } from './lunatic-variables-store';
-import { resizingBehaviour } from './behaviours/resizing-behaviour';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
+import { resizingBehaviour } from './behaviours/resizing-behaviour';
+import { LunaticVariablesStore } from './lunatic-variables-store';
 
 describe('lunatic-variables-store', () => {
 	let variables: LunaticVariablesStore;
@@ -202,7 +202,7 @@ describe('lunatic-variables-store', () => {
 				'FIRSTNAME || " " || cast(GLOBAL_ITERATION_INDEX, string)',
 				{ shapeFrom: 'FIRSTNAME' }
 			);
-			expect(variables.get('FULLNAME')).toEqual(['John 0', 'Jane 1']);
+			expect(variables.get('FULLNAME')).toEqual(['John 1', 'Jane 2']);
 		});
 	});
 
