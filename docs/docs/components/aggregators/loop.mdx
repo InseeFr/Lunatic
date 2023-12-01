@@ -1,0 +1,36 @@
+# Loop
+
+Le composant **Loop** (parfois appelé BlockForLoop) permet de créer une boucle permettant de poser une série de questions plusieurs fois (exemple: demander des informations sur plusieurs personnes).
+
+- **paginatedLoop**, indique si la boucle doit être paginée ou non (defaut: false)
+- **components**, tableau contenant les composants enfant à cette boucle
+
+## Boucle non paginée
+
+Une boucle non paginée présentera l'ensemble des champs les uns à la suite des autres.
+
+- **lines**, permet le contrôle sur le nombre de lignes (ajouter / supprimer)
+    - **min**, nombre minimal de lignes
+    - **max**, nombre maximal de lignes
+
+import source from '../../../../src/stories/loop/source-bloc.json';
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+
+<FormExample source={source} />
+
+## Boucle paginée
+
+Une boucle paginée déclenchera un système de sous-navigation. Lorsque l'utilisateur arrive sur la page d'une boucle il sera automatiquement redirigé sur la première sous page.
+
+- **iterations**, expression VTL permettant de calculer le nombre d'itérations à effectuer
+- **maxPage**, numéro de la dernière sous page
+
+:::info
+
+Les composants dans le tableau `components` devront avoir un numéro de page préfixé par la `page` de cette boucle, ex: `3.1`)
+
+:::
+
+import sourcePaginated from '../../../../src/stories/loop/source-paginated.json';
+
+<FormExample source={sourcePaginated} />

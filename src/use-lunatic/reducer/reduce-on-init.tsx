@@ -113,7 +113,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 			return result as any;
 		} catch (e) {
 			// If there is an error interpreting a variable, return the raw expression
-			console.error(`Cannot interpret expression : ${expressionString}`);
+			console.error(`Cannot interpret expression : ${expressionString}`, e);
 			return expressionString;
 		}
 	};

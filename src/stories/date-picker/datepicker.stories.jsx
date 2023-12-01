@@ -1,18 +1,26 @@
-import React from 'react';
-import Orchestrator from '../utils/orchestrator';
-import source from './source';
-import data from './data';
-import defaultArgTypes from '../utils/default-arg-types';
+import { action } from '@storybook/addon-actions';
+import LunaticDatepicker from '../../components/datepicker';
 
-const stories = {
-	title: 'Components/DatePicker',
-	component: Orchestrator,
-	argTypes: defaultArgTypes,
+export default {
+	title: 'Components/Datepicker',
+	component: LunaticDatepicker,
+	args: {
+		value: '1920-02-01',
+		dateFormat: 'YYYY-MM-DD',
+		handleChange: action('handleChange'),
+		response: { name: 'date' },
+	},
+	parameters: {
+		controls: { include: ['dateFormat', 'readOnly', 'disabled'] },
+	},
+	argTypes: {
+		dateFormat: {
+			control: 'radio',
+			options: ['YYYY-MM-DD', 'YYYY-MM', 'YYYY'],
+		},
+		readOnly: { control: 'boolean' },
+		disabled: { control: 'boolean' },
+	},
 };
 
-export default stories;
-
-const Template = (args) => <Orchestrator {...args} />;
-export const Default = Template.bind({});
-
-Default.args = { id: 'input', source, data, disabled: false, readOnly: false };
+export const Basic = {};

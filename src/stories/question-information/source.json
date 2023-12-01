@@ -1,0 +1,14 @@
+{
+	"components": [
+		{
+			"componentType": "QuestionInformation",
+			"label": { "value": "\"Question Information\"", "type": "VTL|MD" },
+			"description": {
+				"value": "\"Question Information description\"",
+				"type": "VTL|MD"
+			},
+			"page": "1"
+		}
+	],
+	"variables": []
+}

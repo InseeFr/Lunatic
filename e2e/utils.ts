@@ -28,7 +28,7 @@ export async function expectLunaticData(
 	expected: unknown
 ) {
 	const consoleOut = page.waitForEvent('console');
-	await page.getByRole('button', { name: 'Get State' }).click();
+	await page.getByRole('button', { name: 'Get Data' }).click();
 	const output = await consoleOut;
 	expect(await output.args()[0].jsonValue()).toHaveProperty(
 		propertyPath,

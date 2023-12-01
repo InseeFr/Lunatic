@@ -3,27 +3,6 @@
  */
 export type LabelType = { value: string; type: 'VTL' | 'VTL|MD' };
 
-export type ComponentTypeEnum =
-	| 'Sequence'
-	| 'Subsequence'
-	| 'RosterForLoop'
-	| 'Loop'
-	| 'Table'
-	| 'Input'
-	| 'InputNumber'
-	| 'Datepicker'
-	| 'CheckboxGroup'
-	| 'CheckboxOne'
-	| 'CheckboxBoolean'
-	| 'Radio'
-	| 'Dropdown'
-	| 'Textarea'
-	| 'FilterDescription'
-	| 'PairwiseLinks'
-	| 'Suggester'
-	| 'ConfirmationModal'
-	| 'ComponentSet';
-
 export type ValuesType<T = unknown> = {
 	PREVIOUS: T | null;
 	COLLECTED: T | null;
@@ -74,6 +53,7 @@ export enum TypeOfControl {
 
 export enum ControlTypeEnum {
 	roundabout = 'roundabout',
+	row = 'ROW',
 	simple = 'simple',
 }
 
@@ -104,11 +84,11 @@ export type Hierarchy = {
 export type ComponentTypeBase = {
 	label: LabelType;
 	declarations?: DeclarationType[];
-	conditionFilter: ConditionFilterType;
+	conditionFilter?: ConditionFilterType;
 	controls?: ControlType[];
 	id: string;
 	bindingDependencies?: string[];
-	hierarchy: Hierarchy;
+	hierarchy?: Hierarchy;
 	mandatory?: boolean;
 	page: string;
 };
@@ -138,12 +118,15 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentComponentSetType)
 	| (ComponentTypeBase & ComponentQuestionExplicationType);
 
+export type ComponentTypeEnum = ComponentType['componentType'];
+
 export type ComponentInputOrTextareaType = {
 	componentType: 'Input' | 'Textarea';
 	maxLength: number;
 	missingResponse?: ResponseType;
 	response: ResponseType;
 };
+
 export type ComponentSequenceType = {
 	componentType: 'Sequence';
 };
@@ -172,7 +155,10 @@ export type ComponentRosterForLoopType = {
 		colspan?: number;
 		rowspan?: number;
 	}[];
-	body: ({ label: LabelType } | ComponentType)[][];
+	body: (
+		| { label: LabelType; colspan?: number; rowspan?: number }
+		| (ComponentType & { colspan?: number; rowspan?: number })
+	)[][];
 	positioning: 'HORIZONTAL';
 };
 
@@ -189,10 +175,8 @@ export type ComponentLoopType = {
 
 export type ComponentTableType = {
 	componentType: 'Table';
-	lines: ComponentRosterForLoopType['lines'];
 	header: ComponentRosterForLoopType['header'];
 	body: ComponentRosterForLoopType['body'];
-	positioning: ComponentRosterForLoopType['positioning'];
 };
 
 export type ComponentNumberType = {
@@ -206,7 +190,7 @@ export type ComponentNumberType = {
 
 export type ComponentDatePickerType = {
 	componentType: 'Datepicker';
-	dateFormat: string;
+	dateFormat: 'YYYY-MM-DD' | 'YYYY' | 'YYYY-MM';
 	response: ResponseType;
 	min?: string;
 	max?: string;
@@ -271,24 +255,51 @@ export type ComponentSuggesterType = {
 };
 
 export type SuggesterType = {
+	// Name of the list (will be used as storeName for suggester)
 	name: string;
+	// Fields to use for indexing the data
 	fields: {
+		// Property name in the JSON
 		name: string;
+		// Minimum length for a token to be indexed
 		min?: number;
+		// Regular expression to match words (ex: ["[\\w]+"])
 		rules?: string[];
-		language?: string;
+		// Language used for stemming (we only keep the root of a word).
+		language?: 'French' | 'English';
+		// Enable stemming
 		stemmer?: boolean;
+		// Define synonyms
 		synonyms: { source: string; target: string[] }[];
 	}[];
+	// Limit the number of results to return
 	max: number;
+	// Ignored words
 	stopWords?: string;
+	// Overwrite order on the result using alphabetical order
 	order?: { field: string; type: string };
-	queryParser: {
-		type: string;
-		params: { language: string; pattern: string; min?: number };
-	};
+	// How the search query will be parsed
+	queryParser:
+		| {
+				// Search is done word by word (OR operator)
+				type: 'tokenized';
+				params: {
+					// Language used for stemming (we only keep the root of a word).
+					language: 'French' | 'English';
+					// Regular expression to match words (ex: ["[\\w]+"])
+					pattern: string;
+					// Minimum length for a token to be used in the search
+					min?: number;
+				};
+		  }
+		| {
+				type: 'soft';
+		  };
+	// Create a worker from a remote API (not used currently)
 	url?: string;
+	// IndexDB version (pas utilisé actuellement)
 	version: number;
+	// Enable "melauto" ranking, words closer to the start of the string are ranked better
 	meloto?: boolean;
 };
 

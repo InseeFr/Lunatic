@@ -40,7 +40,7 @@
 				"value": "\"Code ou terme des libellés de la Naf-rev2\"",
 				"type": "VTL|MD"
 			},
-			"description": { "value": "Exemple: 01 ou tabac", "type": "VTL|MD" },
+			"description": { "value": "\"Exemple: 01 ou tabac\"", "type": "VTL|MD" },
 			"storeName": "naf-rev2",
 			"conditionFilter": {
 				"value": "true",

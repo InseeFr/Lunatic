@@ -1,7 +1,7 @@
-var PACKAGE = require('../../package.json');
+const lunaticPackageJson = require('../../package.json');
 const path = require('path');
 
-var version = PACKAGE.workersVersion;
+const version = lunaticPackageJson.workersVersion;
 
 const currentPublicFolder = path.resolve(`${process.cwd()}/public/workers`);
 const workersReleaseFolder = path.resolve(__dirname, '../../workers-release');
@@ -16,6 +16,7 @@ const workersPath = {
 			filename: `lunatic-append-worker-${version}.js`,
 		},
 	},
+	// Label worker is not currently used
 	label: {
 		name: 'Label worker',
 		source: `${workersReleaseFolder}/lunatic-label-worker-${version}.js`,
@@ -28,11 +29,11 @@ const workersPath = {
 	},
 	searching: {
 		name: 'Searching worker',
-		source: `${workersReleaseFolder}/lunatic-searching-worker-${version}.js`,
-		dest: `${currentPublicFolder}/lunatic-searching-worker-${version}.js`,
+		source: `${workersReleaseFolder}/lunatic-search-worker-${version}.js`,
+		dest: `${currentPublicFolder}/lunatic-search-worker-${version}.js`,
 		webpack: {
 			entry: './src/utils/suggester-workers/searching/searching.worker.js',
-			filename: `lunatic-searching-worker-${version}.js`,
+			filename: `lunatic-search-worker-${version}.js`,
 		},
 	},
 };

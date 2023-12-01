@@ -1,0 +1,51 @@
+# Propriétés de base
+
+import {GoToType} from '@site/src/components/GoToType';
+
+Les champs qui composent un formulaire Lunatic sont définis dans la propriété `components` du fichier source JSON. Certaines propriétés sont communes à tous les composants :
+
+- **label**, permet de définir le libellé affiché au-dessus du champ
+- **description**, permet de définir un texte à afficher sous le libellé
+- **conditionFilter**, permet de définir une condition d'affichage (sous forme d'expression VTL) qui devra renvoyer `true` pour que le composant soit affiché lorsque l'on navigue sur la bonne page.
+- **id**, clef unique permettant d'identifier le champ
+- **bindingDependencies**, liste des variables qui affectent la présentation des champs
+- **mandatory**, précise si le champ doit être rempli par l'utilisateur (optionnel, se traduit par l'attribut `required` au niveau HTML)
+- **page**, page dans lequel le champ doit être présenté
+
+Pour les composants qui permettent une entrée utilisateur des propriétés supplémentaires sont disponibles :
+
+- **response**, objet avec une propriété `name` permettant de définir dans quelle variable sera sauvegardée la valeur associée (exemple `{"name": "PRENOM"}`)
+- **readOnly**, permet de mettre le champ en lecture seul (optionnel, expression VTL).
+- **disabled**, permet de désactiver le champ (il n'est plus focusable) (optionnel, expression VTL).
+
+<GoToType type="ComponentTypeBase"/>
+
+## Déclarations <GoToType type="DeclarationType"/>
+
+- **declarations**, permettent d'ajouter du texte autour des composants.
+
+:::warning
+
+La déclaration AFTER_QUESTION_TEXT est dépréciée au profit du champs "description"
+
+:::
+
+import source from '../../../src/stories/declaration/source.json';
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+
+<FormExample source={source} />
+
+## Contrôles <GoToType type="ControlType"/>
+
+- **controls**, définit les contrôles de validation à effectuer sur la valeur des champs.
+
+:::info
+
+Les contrôles n'ont aucun effet dans Lunatic directement, c'est à l'orchestrateur d'agir comme il le souhaite en utilisant la méthode `compileControls()`.
+
+:::
+
+import sourceControls from '../../../src/stories/behaviour/controls/simple.json';
+
+<FormExample source={sourceControls} />
+

@@ -1,0 +1,23 @@
+.FormExample {
+    align-items: stretch;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+}
+
+.FormExample > * {
+    min-width: 0
+}
+
+.FormExampleRender {
+    border: 1px solid var(--ifm-toc-border-color);
+    padding: var(--ifm-pre-padding);
+}
+
+.FormExampleCode {
+    max-height: 400px;
+    overflow: auto
+}
+
+.FormExample  .margin-top--md  {
+    margin-top: 0!important
+}

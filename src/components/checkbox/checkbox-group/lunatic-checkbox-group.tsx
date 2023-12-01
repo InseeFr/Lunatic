@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import LunaticComponent from '../../commons/components/lunatic-component-without-label';
 import type { LunaticComponentProps } from '../../type';
 import { CheckboxGroup } from '../../commons/components/checkbox-group/checkbox-group';

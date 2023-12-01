@@ -39,8 +39,14 @@ export function LunaticTable(props: LunaticComponentProps<'Table'>) {
 						<Tr id={id} row={rowIndex} key={rowIndex}>
 							<LunaticComponents
 								components={row}
-								wrapper={({ children, index }) => (
-									<Td id={id} row={rowIndex} index={index}>
+								wrapper={({ children, index, colspan, rowspan }) => (
+									<Td
+										id={id}
+										row={rowIndex}
+										index={index}
+										colSpan={colspan}
+										rowSpan={rowspan}
+									>
 										{children}
 									</Td>
 								)}

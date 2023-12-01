@@ -6,7 +6,7 @@ import { getInitialVariableValue } from '../../../utils/variables';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
-import { setAtIndex } from '../../../utils/array';
+import { setAtIndex, times } from '../../../utils/array';
 import { isNumber } from '../../../utils/number';
 
 // Interpret counter, used for testing purpose
@@ -59,6 +59,7 @@ export class LunaticVariablesStore {
 					store.setCalculated(variable.name, variable.expression.value, {
 						dependencies: variable.bindingDependencies,
 						iterationDepth: getIterationDepth(variable.name),
+						shapeFrom: variable.shapeFrom,
 					});
 					break;
 				case 'COLLECTED':
@@ -70,6 +71,17 @@ export class LunaticVariablesStore {
 		resizingBehaviour(store, source.resizing);
 		cleaningBehaviour(store, source.cleaning, initialValues);
 		missingBehaviour(store, source.missingBlock);
+		return store;
+	}
+
+	/**
+	 * Create a new store from an object (useful for testing)
+	 */
+	public static makeFromObject(values: Record<string, unknown> = {}) {
+		const store = new LunaticVariablesStore();
+		for (const name of Object.keys(values)) {
+			store.set(name, values[name]);
+		}
 		return store;
 	}
 
@@ -123,7 +135,12 @@ export class LunaticVariablesStore {
 		{
 			dependencies,
 			iterationDepth,
-		}: { dependencies?: string[]; iterationDepth?: number } = {}
+			shapeFrom,
+		}: {
+			dependencies?: string[];
+			iterationDepth?: number;
+			shapeFrom?: string;
+		} = {}
 	): LunaticVariable {
 		if (this.dictionary.has(name)) {
 			return this.dictionary.get(name)!;
@@ -131,6 +148,7 @@ export class LunaticVariablesStore {
 		const variable = new LunaticVariable({
 			expression: expression,
 			dictionary: this.dictionary,
+			shapeFrom,
 			dependencies,
 			iterationDepth,
 			name,
@@ -192,6 +210,8 @@ class LunaticVariable {
 	private readonly dictionary?: Map<string, LunaticVariable>;
 	// Specific iteration depth to get value from dependencies (used for yAxis for instance)
 	private readonly iterationDepth?: number;
+	// For calculated variable, shape is copied from another variable
+	private readonly shapeFrom?: string;
 	// Keep a record of variable name (optional, used for debug)
 	private readonly name?: string;
 
@@ -201,6 +221,7 @@ class LunaticVariable {
 			dependencies?: string[];
 			dictionary?: Map<string, LunaticVariable>;
 			iterationDepth?: number;
+			shapeFrom?: string;
 			name?: string;
 		} = {}
 	) {
@@ -213,6 +234,7 @@ class LunaticVariable {
 		this.dictionary = args.dictionary;
 		this.dependencies = args.dependencies;
 		this.iterationDepth = args.iterationDepth;
+		this.shapeFrom = args.shapeFrom;
 		this.name = args.name ?? args.expression;
 	}
 
@@ -221,6 +243,24 @@ class LunaticVariable {
 		if (!this.expression) {
 			return this.getSavedValue(iteration);
 		}
+
+		const shapeFromValue = this.shapeFrom
+			? this.dictionary?.get(this.shapeFrom)?.getValue()
+			: null;
+		// If we want the root value of a calculated array, loop using the shapeFrom value
+		if (!iteration && Array.isArray(shapeFromValue)) {
+			return shapeFromValue.map((_, k) => this.getValue([k]));
+		}
+
+		// For calculated variable, ignore iteration if shapeFrom exists and is not an array
+		if (
+			// We have a calculated variable (not a simple expression)
+			this.name !== this.expression &&
+			!Array.isArray(shapeFromValue)
+		) {
+			iteration = undefined;
+		}
+
 		// Calculate bindings first to refresh "updatedAt" on calculated dependencies
 		const bindings = this.getDependenciesValues(iteration);
 		if (!this.isOutdated(iteration)) {
@@ -255,7 +295,7 @@ class LunaticVariable {
 		}
 		// Decompose arrays, to only update items that changed
 		if (Array.isArray(value) && !Array.isArray(iteration)) {
-			return !!value.map((v, k) => this.setValue(v, [k])).find((v) => v);
+			return this.setValueForArray(value);
 		}
 		// We want to save a value at a specific iteration, but the value is not an array yet
 		if (iteration !== undefined && !Array.isArray(this.value)) {
@@ -264,9 +304,29 @@ class LunaticVariable {
 		this.value = !Array.isArray(iteration)
 			? value
 			: setAtIndex(this.value, iteration, value);
-		this.updatedAt.set(iteration?.join('.'), performance.now());
+		if (value === undefined) {
+			this.updatedAt.delete(iteration?.join('.'));
+		} else {
+			this.updatedAt.set(iteration?.join('.'), performance.now());
+		}
 		this.updatedAt.set(undefined, performance.now());
 		return true;
+	}
+
+	private setValueForArray(value: unknown[]) {
+		const savedValue = this.getSavedValue();
+		const oldSize = Array.isArray(savedValue) ? savedValue.length : -1;
+		const newSize = value.length;
+		// Update every item of the array and look if we changed one item
+		const oneValueChanged =
+			times(Math.max(oldSize, newSize), (k) =>
+				this.setValue(value[k], [k])
+			).find((v) => v) !== undefined;
+		// New array is smaller, shorten the array
+		if (oldSize > newSize && Array.isArray(this.value)) {
+			this.value = this.value.slice(0, newSize);
+		}
+		return oneValueChanged;
 	}
 
 	private getSavedValue(iteration?: IterationLevel): unknown {
@@ -298,16 +358,22 @@ class LunaticVariable {
 			return Object.fromEntries(
 				this.getDependencies().map((dep) => {
 					if (dep === iterationVariableName && iteration) {
-						return [dep, iteration[0]];
+						return [dep, iteration[0] + 1];
 					}
 					const dependencyIteration =
 						isNumber(this.iterationDepth) && Array.isArray(iteration)
 							? [iteration[this.iterationDepth]]
 							: iteration;
-					return [
-						dep,
-						this.dictionary?.get(dep)?.getValue(dependencyIteration),
-					];
+
+					// The variable is not registered in the variable dictionary
+					// Happens when calculating unquoted VTL expression
+					if (!this.dictionary || !this.dictionary?.has(dep)) {
+						throw new Error(
+							`Unknown variable "${dep}" in expression ${this.expression}`
+						);
+					}
+
+					return [dep, this.dictionary.get(dep)?.getValue(dependencyIteration)];
 				})
 			);
 		} catch (e) {
