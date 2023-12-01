@@ -1,19 +1,36 @@
-.checkbox-modality {
-	.lunatic-input-checkbox {
-		display: flex;
-		.label-description {
-			font-weight: lighter;
-		}
-
-		.lunatic-label {
-			font-weight: normal;
-			display: flex;
-			gap: 0.5em;
-			align-items: center;
-		}
-	}
+.LunaticCheckboxWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: .3rem;
 }
-.lunatic-checkbox-label {
+
+.LunaticCheckboxRow {
+	display: flex;
+	align-items: center;
+	position: relative;
+	gap: .5rem;
+}
+
+.LunaticCheckboxRow input {
+	width: 18px;
+	height: 18px;
+}
+
+.LunaticCheckboxRow label {
+	font-weight: normal;
+	display: flex;
 	gap: 0.5em;
 	align-items: center;
+	margin: 0;
+}
+
+.LunaticCheckboxDetail {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+}
+
+.LunaticCheckboxDetail label {
+	margin: 0;
 }

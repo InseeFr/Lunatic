@@ -1,16 +1,16 @@
-import RadioGroup from './html/radio-group';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import { createCustomizableLunaticField } from '../commons';
 import type { LunaticComponentProps } from '../type';
 import { getComponentErrors } from '../commons/components/errors/errors';
+import { CheckboxGroup } from '../commons/components/checkbox-group/checkbox-group';
+import type { CheckboxGroupOption } from '../checkbox/checkbox-group/lunatic-checkbox-group';
 
 function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 	const {
 		id,
 		options,
 		value,
-		checkboxStyle,
 		errors,
 		handleChange,
 		response,
@@ -22,11 +22,30 @@ function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 		missing,
 		shortcut,
 		management,
-		className = 'lunatic-radio-group',
 		disabled,
 		readOnly,
 	} = props;
 	const onChange = useOnHandleChange({ handleChange, response, value });
+
+	const radioOptions = options.map((option) => {
+		return {
+			label: option.label,
+			name: response.name,
+			value: option.value,
+			checked: value === option.value,
+			description: option.description,
+			disabled: disabled,
+			readOnly: readOnly,
+			onChange: (v) => onChange(v ? option.value : null),
+			detailLabel: option.detail?.label,
+			onDetailChange: option.detail?.response
+				? (value: string | null) => {
+						handleChange(option.detail!.response, value);
+				  }
+				: undefined,
+		};
+	}) satisfies CheckboxGroupOption[];
+
 	return (
 		<LunaticComponent
 			id={id}
@@ -40,18 +59,13 @@ function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 			description={description}
 			handleChange={handleChange}
 		>
-			<RadioGroup
+			<CheckboxGroup
 				id={id}
-				options={options}
-				value={value}
-				onSelect={onChange}
-				checkboxStyle={checkboxStyle}
-				errors={getComponentErrors(errors, id)}
+				type="radio"
+				options={radioOptions}
 				label={label}
-				className={className}
+				errors={getComponentErrors(errors, id)}
 				shortcut={shortcut}
-				disabled={disabled}
-				readOnly={readOnly}
 			/>
 		</LunaticComponent>
 	);

@@ -132,10 +132,14 @@ type ComponentPropsByType = {
 			label: ReactNode;
 			description?: ReactNode;
 			response: { name: string };
+			detail?: {
+				label: ReactNode;
+				response: { name: string };
+			};
 		}>;
 		handleChange: (
 			response: { name: string },
-			value: boolean,
+			value: boolean | string | null,
 			args?: Record<string, unknown>
 		) => void;
 	};
@@ -144,6 +148,10 @@ type ComponentPropsByType = {
 			description: ReactNode;
 			label: ReactNode;
 			value: string;
+			detail?: {
+				label: ReactNode;
+				response: { name: string };
+			};
 		}>;
 		response: { name: string };
 	};
@@ -156,7 +164,15 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	Radio: LunaticBaseProps<string | null> & {
-		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
+		options: Array<{
+			description: ReactNode;
+			label: ReactNode;
+			value: string;
+			detail?: {
+				label: ReactNode;
+				response: { name: string };
+			};
+		}>;
 		checkboxStyle?: boolean;
 		response: { name: string };
 	};

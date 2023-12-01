@@ -1,95 +1,141 @@
-import { type ReactNode, useCallback } from 'react';
+import {
+	type KeyboardEventHandler,
+	type MouseEventHandler,
+	type ReactNode,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import classnames from 'classnames';
-import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
 import { createCustomizableLunaticField, Label } from '../../commons';
 import './checkbox-option.scss';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
-import type { LunaticBaseProps } from '../../type';
+import { keyHandler } from '../../../utils/event';
+import KeyboardEventHandlerComponent from 'react-keyboard-event-handler';
 
 export type CheckboxOptionProps = {
-	disabled?: boolean;
-	checked?: boolean;
 	id?: string;
-	onClick: (b: boolean) => void;
-	label: ReactNode;
-	description?: LunaticBaseProps['description'];
-	codeModality?: string;
-	shortcut?: boolean;
+	value?: string;
+	name?: string;
+	disabled?: boolean;
+	type?: 'checkbox' | 'radio';
+	// Keyboard shortcut that toggle the checkbox
+	keyboardShortcut?: string;
 	invalid?: boolean;
+	readOnly?: boolean;
+	label?: ReactNode;
+	checked?: boolean;
+	description?: ReactNode;
+	onChange?: (v: boolean) => void;
+	detailLabel?: ReactNode;
+	onDetailChange?: (v: string | null) => void;
+	// Handle arrow navigation (-1 = backward, 1 = forward)
+	onArrowNavigation?: (direction: -1 | 1) => void;
 };
 
 function CheckboxOption({
 	disabled,
 	checked,
 	id,
-	onClick,
+	type = 'checkbox',
+	onChange,
 	label,
 	description,
-	codeModality,
-	shortcut,
+	keyboardShortcut,
 	invalid,
+	detailLabel,
+	onDetailChange,
+	readOnly,
+	name,
+	onArrowNavigation,
+	value,
 }: CheckboxOptionProps) {
-	const onClickOption = useCallback(
-		function () {
-			onClick(!checked);
-		},
-		[checked, onClick]
-	);
-
-	const handleKeyDown = useCallback(
-		function (e: { code: string }) {
-			const { code } = e;
-			if (code === 'Space') {
-				onClickOption();
-			}
-		},
-		[onClickOption]
-	);
-
-	const Icon = checked ? CheckboxChecked : CheckboxUnchecked;
+	const [focused, setFocused] = useState(false);
 	const labelId = `label-${id}`;
+	const hasDetail = !!onDetailChange;
+	const detailId = `${id}-detail`;
+	const inputRef = useRef<HTMLInputElement>(null);
+
+	const handleChange = (isChecked: boolean) => {
+		// Reset the detail answer when unchecked
+		if (!isChecked && onDetailChange) {
+			onDetailChange(null);
+		}
+		onChange?.(isChecked);
+	};
+
+	const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+		if (['ArrowLeft', 'ArrowUp'].includes(e.key)) {
+			onArrowNavigation?.(-1);
+		} else if (['ArrowRight', 'ArrowDown'].includes(e.key)) {
+			onArrowNavigation?.(1);
+		}
+	};
+
+	// If we want arrow navigation, auto-focus the field when it is checked
+	useEffect(() => {
+		if (onArrowNavigation && checked) {
+			inputRef.current?.focus();
+		}
+	}, [checked, onArrowNavigation]);
 
 	return (
-		<>
+		<div className="LunaticCheckboxWrapper">
 			<div
-				className={classnames('checkbox-modality', 'checkbox-modality-block', {
+				className={classnames('LunaticCheckboxRow', {
+					focused,
 					checked,
 					disabled,
 				})}
 			>
-				<span
+				<input
+					ref={inputRef}
+					name={name}
+					type={type}
 					id={id}
-					role="checkbox"
+					value={value}
+					checked={checked}
+					disabled={disabled}
 					aria-invalid={invalid}
-					className={`lunatic-input-checkbox`}
-					aria-checked={checked}
-					tabIndex={0}
-					onClick={onClickOption}
 					onKeyDown={handleKeyDown}
-					aria-labelledby={labelId}
-				>
-					<Icon />
-					<Label id={labelId} htmlFor={id} description={description}>
-						{codeModality && (
-							<span className="code-modality">
-								{codeModality.toUpperCase()}
-							</span>
-						)}
-						{label}
-					</Label>
-				</span>
+					onChange={(e) => handleChange(e.target.checked)}
+					onFocus={() => setFocused(true)}
+					onBlur={() => setFocused(false)}
+					readOnly={readOnly}
+				/>
+				<Label id={labelId} htmlFor={id} description={description}>
+					{keyboardShortcut && (
+						<span className="code-modality">
+							{keyboardShortcut.toUpperCase()}
+						</span>
+					)}
+					{label}
+				</Label>
 			</div>
-			{shortcut && codeModality && (
-				<KeyboardEventHandler
-					handleKeys={[codeModality]}
+			{keyboardShortcut && (
+				<KeyboardEventHandlerComponent
+					handleKeys={[keyboardShortcut]}
 					onKeyEvent={(key, e) => {
 						e.preventDefault();
-						onClickOption();
+						e.stopPropagation();
+						handleChange(!checked);
 					}}
 					handleFocusableElements
 				/>
 			)}
-		</>
+
+			{hasDetail && checked && (
+				<div className="LunaticCheckboxDetail">
+					<Label htmlFor={detailId}>{detailLabel ?? 'Précisez :'}</Label>
+					<input
+						autoFocus
+						type="text"
+						id={detailId}
+						disabled={disabled}
+						onChange={(e) => onDetailChange(e.target.value ?? null)}
+					/>
+				</div>
+			)}
+		</div>
 	);
 }
 
