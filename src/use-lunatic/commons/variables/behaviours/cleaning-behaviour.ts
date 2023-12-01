@@ -19,6 +19,7 @@ export function cleaningBehaviour(
 
 	store.on('change', (e) => {
 		const cleaningInfo = cleaningMap.get(e.detail.name);
+		const iteration = e.detail.iteration;
 
 		// The variable does not have cleaning
 		if (!cleaningInfo) {
@@ -28,19 +29,35 @@ export function cleaningBehaviour(
 		for (const variableName in cleaningInfo) {
 			try {
 				const skipCleaning = store.run(cleaningInfo[variableName], {
-					iteration: e.detail.iteration,
+					iteration,
 				});
 				if (skipCleaning) {
 					continue;
 				}
 
-				store.set(variableName, initialValues[variableName] ?? null, {
-					iteration: e.detail.iteration,
-				});
+				store.set(
+					variableName,
+					getValueAtIteration(initialValues[variableName], iteration),
+					{
+						iteration,
+					}
+				);
 			} catch (e) {
 				// If we have an error, skip this cleaning
 				console.error(e);
 			}
 		}
 	});
+}
+
+function getValueAtIteration(value: unknown, iteration?: number[]) {
+	if (!iteration || iteration.length === 0) {
+		return value ?? null;
+	}
+
+	if (!Array.isArray(value)) {
+		return null;
+	}
+
+	return getValueAtIteration(value[iteration[0]], iteration.slice(1));
 }
