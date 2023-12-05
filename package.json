@@ -1,7 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "0.2.3-prisme",
-	"workersVersion": "0.2.4-experimental",
+	"version": "0.3.0-prisme",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -24,7 +23,13 @@
 	],
 	"license": "MIT",
 	"main": "lib/index.js",
-	"module": "src/index.js",
+	"module": "lib/index.esm.js",
+	"exports": {
+		".": {
+			"main": "./lib/index.js",
+			"module": "./lib/index.esm.js"
+		}
+	},
 	"files": [
 		"lib",
 		"src"

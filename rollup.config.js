@@ -10,16 +10,28 @@ const { dependencies } = require('./package.json');
 
 const config = {
 	input: 'src/components/index.js',
-	output: {
-		name: 'lunatic',
-		file: 'lib/index.js',
-		format: 'cjs',
-		strict: false,
-		globals: {
-			react: 'React',
+	output: [
+		{
+			name: 'lunatic',
+			file: 'lib/index.js',
+			format: 'cjs',
+			strict: false,
+			globals: {
+				react: 'React',
+			},
+			sourcemap: true,
 		},
-		sourcemap: true,
-	},
+		{
+			name: 'lunatic',
+			file: 'lib/index.esm.js',
+			format: 'esm',
+			strict: false,
+			globals: {
+				react: 'React',
+			},
+			sourcemap: true,
+		},
+	],
 	plugins: [
 		resolve(),
 		babel({
