@@ -1,7 +1,8 @@
-import { Fragment, type PropsWithChildren, useId } from 'react';
+import { Fragment, type PropsWithChildren } from 'react';
 import { Tooltip } from 'react-tooltip';
 import ReactMarkdown from 'react-markdown';
 import RouterLink from './router-link';
+import { generateUniqueId } from './generateUniqueId';
 
 type Props = PropsWithChildren<{ href: string; title: string }>;
 const Link = (props: Props) => {
@@ -12,7 +13,8 @@ const Link = (props: Props) => {
 		// logFunction
 	} = props;
 
-	const id = useId();
+	// Must be replace by useId when queen move to React 18.
+	const id = generateUniqueId();
 
 	const LinkComponent: React.FC<{
 		to?: string;
@@ -49,3 +51,5 @@ const Link = (props: Props) => {
 };
 
 export default Link;
+
+
