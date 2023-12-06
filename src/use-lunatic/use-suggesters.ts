@@ -71,60 +71,56 @@ export function useSuggesters({
 
 	useEffect(
 		function () {
-			const aborts: Array<() => void> = [];
+			const aborts: { current: Array<() => void> } = { current: [] };
 			if (
 				typeof getReferentiel === 'function' &&
 				Array.isArray(suggesters) &&
 				auto
 			) {
-				suggesters.forEach(function (store) {
+				const suggesterWorkers = suggesters.map(async (store) => {
 					const { name } = store;
 					const { current } = status;
-
-					(async function () {
-						if (current) {
-							try {
-								if (current[name] === SuggesterStatus.idle) {
-									const isClean = await initStore(store);
-									if (!isClean) {
-										setStatus(status, name, SuggesterStatus.error);
-										setTimestamp(Date.now());
-									} else {
-										setStatus(status, name, SuggesterStatus.pending);
-										setTimestamp(Date.now());
-									}
-								}
-								if (current[name] === SuggesterStatus.pending) {
-									const data = await getReferentiel(name);
-									const [append, abort] = createAppendTask<any>(
-										store,
-										1,
-										nothing,
-										workersBasePath
-									);
-									aborts.push(abort);
-									const result = await append(data);
-									if (result) {
-										setStatus(status, name, SuggesterStatus.success);
-										setTimestamp(Date.now());
-									} else {
-										setStatus(status, name, SuggesterStatus.error);
-										setTimestamp(Date.now());
-									}
-								}
-							} catch (e: any) {
-								console.error(e);
+					if (!current) {
+						return;
+					}
+					try {
+						if (current[name] === SuggesterStatus.idle) {
+							const isClean = await initStore(store);
+							if (!isClean) {
+								setStatus(status, name, SuggesterStatus.error);
+								setTimestamp(Date.now());
+							} else {
+								setStatus(status, name, SuggesterStatus.pending);
+								setTimestamp(Date.now());
+							}
+						}
+						if (current[name] === SuggesterStatus.pending) {
+							const data = await getReferentiel(name);
+							const [append, abort] = createAppendTask<any>(
+								store,
+								1,
+								nothing,
+								workersBasePath
+							);
+							aborts.current.push(abort);
+							const result = await append(data);
+							if (result) {
+								setStatus(status, name, SuggesterStatus.success);
+								setTimestamp(Date.now());
+							} else {
 								setStatus(status, name, SuggesterStatus.error);
 								setTimestamp(Date.now());
 							}
 						}
-					})();
+					} catch (e: any) {
+						console.error(e);
+						setStatus(status, name, SuggesterStatus.error);
+						setTimestamp(Date.now());
+					}
 				});
-				return () => {
-					aborts.forEach(function (a) {
-						a();
-					});
-				};
+				const clearWorkers = () => aborts.current.forEach((a) => a());
+				Promise.all(suggesterWorkers).finally(clearWorkers);
+				return clearWorkers;
 			}
 		},
 		[suggesters, auto, getReferentiel, status, workersBasePath]
