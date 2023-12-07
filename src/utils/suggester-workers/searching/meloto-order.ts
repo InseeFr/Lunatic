@@ -46,7 +46,7 @@ export function melotoOrder(
 	entities: Entities,
 	tokens: Array<string>,
 	active = true
-) {
+): Entities {
 	if (active) {
 		return entities.sort((a, b) => value(b, tokens) - value(a, tokens));
 	}

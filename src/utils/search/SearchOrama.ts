@@ -1,5 +1,7 @@
 import type { SearchInfo, SearchInterface } from './SearchInterface';
 import { create, insertMultiple, search } from '@orama/orama';
+import { tokenizer as defaultTokenizer } from '@orama/orama/components';
+import { melotoOrder } from '../suggester-workers/searching/meloto-order';
 
 export class SearchOrama implements SearchInterface {
 	db: any;
@@ -14,6 +16,12 @@ export class SearchOrama implements SearchInterface {
 			schema: {
 				id: 'string',
 			},
+			components: {
+				tokenizer: await defaultTokenizer.createTokenizer({
+					language: 'french',
+					stemming: this.info.fields[0].stemmer,
+				}),
+			},
 		});
 		await insertMultiple(this.db, data);
 	}
@@ -22,10 +30,26 @@ export class SearchOrama implements SearchInterface {
 		if (!this.db) {
 			return [];
 		}
-		const data = await search(this.db, {
-			term: q,
-			limit: this.info.max ?? 100,
-		});
-		return data.hits.map((h) => h.document) as Record<string, unknown>[];
+		let data = (
+			await search(this.db, {
+				term: q,
+				limit: this.info.max ?? 100,
+			})
+		).hits.map((h) => h.document) as { id: string }[];
+
+		// Apply meloto on top
+		if (this.info.meloto) {
+			data = melotoOrder(
+				data.map((d) => ({
+					id: d.id,
+					suggestion: { id: d.id },
+					tokensSearch: {},
+				})),
+				q.split(' '),
+				true
+			).map((r) => r.suggestion);
+		}
+
+		return data;
 	}
 }
