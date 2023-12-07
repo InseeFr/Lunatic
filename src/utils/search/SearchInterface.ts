@@ -2,8 +2,10 @@ import type { SuggesterType } from '../../use-lunatic/type-source';
 
 export type SearchInfo = SuggesterType;
 
-export interface SearchInterface {
-	index(data: Record<string, unknown>[]): Promise<void>;
+export type IndexEntry = { id: string; label?: string };
 
-	search(q: string): Promise<Record<string, unknown>[]>;
+export interface SearchInterface<T extends IndexEntry> {
+	index(data: T[]): Promise<void>;
+
+	search(q: string): Promise<T[]>;
 }

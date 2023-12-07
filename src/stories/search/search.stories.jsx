@@ -5,6 +5,7 @@ import { SearchIndexedDB } from '../../utils/search/SearchIndexedDB';
 import { objectMap } from '../../utils/object';
 import { SearchFlexSearch } from '../../utils/search/SearchFlexSearch';
 import { SearchOrama } from '../../utils/search/SearchOrama';
+import { SearchMinisearch } from '../../utils/search/SearchMinisearch';
 
 const stories = {
 	title: 'Behaviour/Search',
@@ -87,6 +88,7 @@ const Template = (args) => {
 			IDB: new SearchIndexedDB(index),
 			FlexSearch: new SearchFlexSearch(index),
 			Orama: new SearchOrama(index),
+			Minisearch: new SearchMinisearch(index),
 		}),
 		[index]
 	);
@@ -95,13 +97,14 @@ const Template = (args) => {
 	);
 	const [search, setSearch] = useState('');
 	const [indexed, setIndexed] = useState(null);
-	const isIndexed = true; // indexed === index.name;
+	const isIndexed = indexed === index.name;
 
 	const handleIndex = async () => {
 		const data = await fetch(`/${index.name}.json`).then((r) => r.json());
 		await Promise.all(
 			Object.keys(searches).map(async (k) => {
 				const title = `Indexation ${k}`;
+				performance.mark(title + '/start');
 				console.time(title);
 				await searches[k].index(data);
 				console.timeEnd(title);
@@ -109,6 +112,10 @@ const Template = (args) => {
 			})
 		);
 		setIndexed(index.name);
+		await wait(500);
+		setSearch(
+			index.name === 'libelles-pcs-2020' ? 'abat arbre' : 'Montpellier'
+		);
 	};
 
 	const handleSearch = async (s: string) => {

@@ -1,18 +1,22 @@
-import type { SearchInterface } from './SearchInterface';
+import type { IndexEntry, SearchInterface } from './SearchInterface';
 import type { SearchInfo } from './SearchInterface';
+// @ts-ignore
 import Flexsearch from 'flexsearch';
-import { melotoOrder } from '../suggester-workers/searching/meloto-order';
+import { applyMelauto } from './melauto';
 
-export class SearchFlexSearch implements SearchInterface {
+export class SearchFlexSearch<T extends IndexEntry>
+	implements SearchInterface<T>
+{
 	_index: any;
 	info: SearchInfo;
-	data: Record<string, unknown>[];
+	data: T[] = [];
 
 	constructor(info: SearchInfo) {
 		this.info = info;
 	}
 
-	async index(data: Record<string, unknown>[]): Promise<void> {
+	async index(data: T[]): Promise<void> {
+		// @ts-ignore
 		this._index = new Flexsearch.Document({
 			index: ['id'],
 			// Enable partial matching
@@ -24,7 +28,7 @@ export class SearchFlexSearch implements SearchInterface {
 		this.data = data;
 	}
 
-	search(q: string): Promise<Record<string, unknown>[]> {
+	search(q: string): Promise<T[]> {
 		if (!this._index) {
 			return Promise.resolve([]);
 		}
@@ -36,15 +40,7 @@ export class SearchFlexSearch implements SearchInterface {
 
 		// Apply meloto on top
 		if (this.info.meloto) {
-			data = melotoOrder(
-				data.map((d) => ({
-					id: d.id,
-					suggestion: { id: d.id },
-					tokensSearch: {},
-				})),
-				q.split(' '),
-				true
-			).map((r) => r.suggestion);
+			data = applyMelauto(q, data);
 		}
 
 		return Promise.resolve(data);

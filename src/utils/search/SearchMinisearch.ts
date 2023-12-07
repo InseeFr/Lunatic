@@ -3,13 +3,15 @@ import type {
 	SearchInfo,
 	SearchInterface,
 } from './SearchInterface';
-import { create, insertMultiple, search } from '@orama/orama';
 // @ts-ignore
 import { tokenizer as defaultTokenizer } from '@orama/orama/components';
 import { applyMelauto } from './melauto';
+import MiniSearch from 'minisearch';
 
-export class SearchOrama<T extends IndexEntry> implements SearchInterface<T> {
-	db: any;
+export class SearchMinisearch<T extends IndexEntry>
+	implements SearchInterface<T>
+{
+	db: MiniSearch | null = null;
 	info: SearchInfo;
 
 	constructor(info: SearchInfo) {
@@ -17,35 +19,29 @@ export class SearchOrama<T extends IndexEntry> implements SearchInterface<T> {
 	}
 
 	async index(data: Record<string, unknown>[]): Promise<void> {
-		this.db = await create({
-			schema: {
-				id: 'string',
-			},
-			components: {
-				tokenizer: await defaultTokenizer.createTokenizer({
-					language: 'french',
-					stemming: this.info.fields[0].stemmer,
-				}),
-			},
+		this.db = new MiniSearch({
+			fields: ['id'],
+			storeFields: ['id'],
 		});
-		await insertMultiple(this.db, data);
+		this.db.addAll(data);
 	}
 
 	async search(q: string): Promise<T[]> {
 		if (!this.db) {
 			return [];
 		}
-		let data = (
-			await search(this.db, {
-				term: q,
-				limit: this.info.max ?? 100,
-			})
-		).hits.map((h) => h.document) as T[];
+		let data = this.db.search(q, {
+			prefix: true,
+		});
+
+		console.log(data);
 
 		// Apply meloto on top
 		if (this.info.meloto) {
 			data = applyMelauto(q, data);
 		}
+
+		data = data.slice(0, this.info.max);
 
 		return data;
 	}
