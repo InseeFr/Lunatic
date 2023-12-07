@@ -11,7 +11,6 @@ self.onmessage = function (e) {
 	append({ name, version, stopWords, fields }, version, entities, log).then(
 		function () {
 			self.postMessage('success');
-			self.close()
 		}
 	);
 };
