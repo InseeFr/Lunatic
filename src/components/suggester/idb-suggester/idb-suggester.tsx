@@ -50,7 +50,7 @@ export function IDBSuggester({
 			if (store) {
 				return createSearching(storeName, idbVersion, workersBasePath);
 			}
-			return undefined;
+			return Promise.resolve(undefined);
 		},
 		[storeName, idbVersion, store, workersBasePath]
 	);

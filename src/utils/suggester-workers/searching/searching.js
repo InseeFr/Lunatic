@@ -66,6 +66,8 @@ async function searching(search, { name, version = '1', meloto = true }) {
 			const tokens = parser(search);
 			const documents = await searchTokens(tokens, index);
 
+			await db.close();
+			console.log('db closed searching');
 			return {
 				results: prepare(
 					getOrderingFunction(order)(

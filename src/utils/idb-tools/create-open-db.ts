@@ -18,7 +18,8 @@ function createOpenDb(
 			if (!IDB_REF) {
 				reject('indexedDb not supported !');
 			}
-			const request = IDB_REF.open(name, version);
+			console.log('openstorage version', version);
+			const request = IDB_REF.open(name, Number(version));
 
 			request.onupgradeneeded = onUpgradeNeeded(resolve, reject);
 

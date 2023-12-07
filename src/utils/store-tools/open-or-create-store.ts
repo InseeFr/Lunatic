@@ -8,7 +8,9 @@ function openStorage(name: string, idbVersion = 1): Promise<IDBDatabase> {
 		if (!idb) {
 			reject('indexedDb not supported !');
 		}
-		const request = idb.open(name, idbVersion);
+		console.log('openStorage', idbVersion);
+		console.log(typeof idbVersion);
+		const request = idb.open(name, Number(idbVersion));
 		let db: IDBDatabase;
 		let doIt = true;
 

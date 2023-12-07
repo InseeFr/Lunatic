@@ -34,7 +34,8 @@ function createDbOpener({
 			if (!IDB_REF) {
 				reject('indexedDb not supported !');
 			}
-			const request = IDB_REF.open(name, version);
+			console.log('version db', version);
+			const request = IDB_REF.open(name, Number(version));
 			request.onupgradeneeded = function (e) {
 				if (isOpenDBRequestEvent(e)) {
 					onUpgradeNeeded(e, resolve, reject);
@@ -43,6 +44,7 @@ function createDbOpener({
 
 			request.onsuccess = function (e) {
 				if (isOpenDBRequestEvent(e)) {
+					console.log('db opened with createDbOpener (create-db-opener)');
 					onSuccess(e, resolve, reject);
 				}
 			};

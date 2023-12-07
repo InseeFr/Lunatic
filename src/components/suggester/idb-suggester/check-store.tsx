@@ -28,6 +28,8 @@ function CheckStore({ storeName, version, setStore, children }: Props) {
 					setReady(200);
 					setStore(info);
 				}
+				await db.close()
+				console.log("db closed checkstore")
 			} catch (e) {
 				setReady(400);
 			}

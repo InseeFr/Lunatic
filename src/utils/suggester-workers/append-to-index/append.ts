@@ -20,6 +20,8 @@ async function append(
 			const { message } = args;
 			log({ message });
 		})(prepared);
+		await db.close();
+		console.log('db closed (append)');
 		log({ message: MESSAGES.insertBatchDone });
 		log({ message: MESSAGES.done });
 		return 'success';
