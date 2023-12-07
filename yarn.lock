@@ -2331,6 +2331,16 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@orama/orama@^2.0.0-beta.9":
+  version "2.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@orama/orama/-/orama-2.0.0-beta.9.tgz#3c7cadef97b3f85271bfc454de00fe42930d9e2f"
+  integrity sha512-jT9UfHEw1BVlkopY8+SPbriftEQdw/ika9u5qtRBxgGTYMDl/wNy9Oht/8FSpw7LnsiHG3NRwwJ6LrutWKw8Yw==
+
+"@orama/stemmers@^2.0.0-beta.9":
+  version "2.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@orama/stemmers/-/stemmers-2.0.0-beta.9.tgz#971142c155949b659862ae5e265eb25ff8e999b9"
+  integrity sha512-XD+OE84AZcA4MiQ7vXkDpiI++JhOAx8GVBx8PJoEvabbZwG6KHVo0WuXZlaHLwtDIEKlbZv8lDOt8IimppcNQg==
+
 "@playwright/test@^1.30.0":
   version "1.36.0"
   resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.36.0.tgz#df2c0b09bbd27016adf1892b0c3502c4ce88d307"
@@ -7863,6 +7873,11 @@ flatted@^3.1.0:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
+
+flexsearch@^0.7.31:
+  version "0.7.31"
+  resolved "https://registry.yarnpkg.com/flexsearch/-/flexsearch-0.7.31.tgz#065d4110b95083110b9b6c762a71a77cc52e4702"
+  integrity sha512-XGozTsMPYkm+6b5QL3Z9wQcJjNYxp0CYn3U1gO7dwD6PAqU1SVWZxI9CCg3z+ml3YfqdPnrBehaBrnH2AGKbNA==
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
