@@ -1513,7 +1513,7 @@
     data-forge "^1.8.8"
     date-fns "^2.27.0"
 
-"@inseefr/vtl-2.0-antlr-tools@0.1.0", "@inseefr/vtl-2.0-antlr-tools@^0.1.0-bundle":
+"@inseefr/vtl-2.0-antlr-tools@0.1.0", "@inseefr/vtl-2.0-antlr-tools@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@inseefr/vtl-2.0-antlr-tools/-/vtl-2.0-antlr-tools-0.1.0.tgz#5c2d13621b4cab0a092b45d9edd64d8062f348d9"
   integrity sha512-VgNDBE9dqtPFnlk8nCcFD0/dEcuzlhUd5RWsf+dlRsbjSb2wZZhwL8BKCopfLWKLSkTdPyRaosIVL1neiOAB2A==
