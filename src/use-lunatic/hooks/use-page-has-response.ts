@@ -67,7 +67,7 @@ function isEmpty(value: unknown): boolean {
 	if (typeof value === 'object' && value !== null) {
 		return isEmpty(Object.values(value));
 	}
-	return !value;
+	return (value ?? '') === '';
 }
 
 /**
