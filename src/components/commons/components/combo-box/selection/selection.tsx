@@ -61,6 +61,15 @@ export function Selection({
 				focused={focused}
 				editable={editable}
 				expanded={expanded}
+				// Input props
+				role="combobox"
+				aria-controls={'todo'}
+				aria-haspopup="listbox"
+				aria-expanded={expanded}
+				aria-autocomplete="list"
+				aria-owns={id}
+				aria-labelledby={labelId}
+				aria-invalid={invalid}
 			/>
 		</SelectionContainer>
 	);

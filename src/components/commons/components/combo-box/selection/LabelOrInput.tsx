@@ -33,6 +33,7 @@ export function LabelOrInput(props: LabelOrInputTypeProps) {
 		focused,
 		onChange,
 		invalid,
+		...inputProps
 	} = props;
 
 	if (displayLabel) {
@@ -50,7 +51,7 @@ export function LabelOrInput(props: LabelOrInputTypeProps) {
 	}
 	return (
 		<Input
-			invalid={invalid}
+			{...inputProps}
 			id={`combobox-input-${id}`}
 			className="lunatic-combo-box-input"
 			onChange={onChange}
