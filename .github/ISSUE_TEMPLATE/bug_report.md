@@ -10,7 +10,7 @@ assignees: ''
 **Describe the bug**
 A clear and concise description of what the bug is.
 
-[ ] I tested it on the storybook, which leads me to believe that it's a lunatic bug.
+- [ ] I tested it on the storybook, which leads me to believe that it's a lunatic bug.
 
 **To Reproduce**
 Steps to reproduce the behavior:
