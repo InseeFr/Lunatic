@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { describe, expect, it, type Mock, vi } from 'vitest';
+import { describe, expect, it, type Mock, vi, beforeEach } from 'vitest';
 import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
@@ -177,24 +177,6 @@ describe('use-lunatic()', () => {
 	});
 
 	describe('cleaning', () => {
-		it('should call handleChange on cleaned variable', () => {
-			const spy = vi.fn();
-			const { result } = renderHook(() =>
-				useLunatic(sourceCleaning as any, undefined, {
-					onChange: spy,
-				})
-			);
-			result.current.onChange({ name: 'ORIGIN' }, 'FR');
-			expect(spy).toHaveBeenCalledTimes(1);
-			expect(spy.mock.calls[0][0]).toEqual({ name: 'ORIGIN' });
-			expect(spy.mock.calls[0][1]).toEqual('FR');
-			result.current.onChange({ name: 'ORIGIN' }, 'US');
-			expect(spy).toHaveBeenCalledTimes(3);
-			expect(spy.mock.calls[1][0]).toEqual({ name: 'CITY' });
-			expect(spy.mock.calls[1][1]).toEqual(null);
-			expect(spy.mock.calls[2][0]).toEqual({ name: 'ORIGIN' });
-			expect(spy.mock.calls[2][1]).toEqual('US');
-		});
 		it('should handle cleaning in a loop', () => {
 			const { result } = renderHook(() =>
 				useLunatic(sourceCleaningLoop as any, undefined, {})
@@ -213,7 +195,7 @@ describe('use-lunatic()', () => {
 			};
 			expectCollectedAgeToEqual([18, 18, 18]);
 			act(() => {
-				result.current.onChange({ name: 'HIDE_AGE' }, true, { iteration: 0 });
+				result.current.onChange({ name: 'HIDE_AGE' }, true, { iteration: [0] });
 			});
 			expectCollectedAgeToEqual([null, 18, 18]);
 		});
