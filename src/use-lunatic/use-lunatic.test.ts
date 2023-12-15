@@ -202,21 +202,6 @@ describe('use-lunatic()', () => {
 	});
 
 	describe('resizing', () => {
-		const expectValueForResponse = (
-			spy: Mock,
-			responseName: string,
-			expectedValue: unknown
-		) => {
-			expect(spy).toHaveBeenCalled();
-			const lastChangeCall = [...spy.mock.calls]
-				.reverse()
-				.find((args) => args[0].name === responseName);
-			expect(
-				lastChangeCall[1],
-				'onChange should have been called with the right value'
-			).toEqual(expectedValue);
-		};
-
 		it('should resize after cleaning', () => {
 			const spy = vi.fn();
 			const { result } = renderHook(() =>
@@ -225,9 +210,13 @@ describe('use-lunatic()', () => {
 				})
 			);
 			result.current.onChange({ name: 'NB' }, 3);
-			expectValueForResponse(spy, 'PRENOMS', [null, null, null]);
+			expect(
+				(result.current.getData(true).COLLECTED.PRENOMS as any).COLLECTED
+			).toEqual([null, null, null]);
 			result.current.onChange({ name: 'NB' }, 2);
-			expectValueForResponse(spy, 'PRENOMS', [null, null]);
+			expect(
+				(result.current.getData(true).COLLECTED.PRENOMS as any).COLLECTED
+			).toEqual([null, null]);
 		});
 	});
 
