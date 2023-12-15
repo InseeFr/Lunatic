@@ -20,7 +20,6 @@ function fillRoundaboutProps(
 		const values = new Array(iterations).fill(null).map((_, iteration) => {
 			return state.executeExpression(expression, {
 				iteration,
-				skipCleaningRefresh: true, // TODO : this should be "iteration < iterations - 1" but this cause an issue with recensement, investigate further later,
 			});
 		});
 		return { ...result, [name]: values };
