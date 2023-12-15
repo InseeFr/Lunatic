@@ -87,20 +87,18 @@ export function useSuggesters({
 	// Index the data
 	useEffect(
 		function () {
-			const aborts: Array<() => void> = [];
+			const aborts: { current: Array<() => void> } = { current: [] };
 			if (
 				typeof getReferentiel === 'function' &&
 				Array.isArray(suggesters) &&
 				auto
 			) {
-				suggesters.forEach(async function (store) {
+				const suggesterWorkers = suggesters.map(async (store) => {
 					const { name } = store;
 					const { current } = status;
-
 					if (!current) {
 						return;
 					}
-
 					try {
 						if (current[name] === SuggesterStatus.idle) {
 							const isClean = await initStore(store);
@@ -120,7 +118,7 @@ export function useSuggesters({
 								nothing,
 								workersBasePath
 							);
-							aborts.push(abort);
+							aborts.current.push(abort);
 							const result = await append(data);
 							if (result) {
 								setStatus(status, name, SuggesterStatus.success);
@@ -136,9 +134,9 @@ export function useSuggesters({
 						setTimestamp(Date.now());
 					}
 				});
-				return () => {
-					aborts.forEach((abort) => abort());
-				};
+				const clearWorkers = () => aborts.current.forEach((a) => a());
+				Promise.all(suggesterWorkers).finally(clearWorkers);
+				return clearWorkers;
 			}
 		},
 		[suggesters, auto, getReferentiel, status, workersBasePath]

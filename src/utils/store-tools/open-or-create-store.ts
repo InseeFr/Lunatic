@@ -2,14 +2,13 @@
 import CONSTANTE from './constantes';
 import getIDB from '../idb-tools/get-idb';
 
-const IDB_REF = getIDB();
-
 function openStorage(name: string, idbVersion = 1): Promise<IDBDatabase> {
 	return new Promise(function (resolve, reject) {
-		if (!IDB_REF) {
+		const idb = getIDB();
+		if (!idb) {
 			reject('indexedDb not supported !');
 		}
-		const request = IDB_REF.open(name, idbVersion);
+		const request = idb.open(name, idbVersion);
 		let db: IDBDatabase;
 		let doIt = true;
 
