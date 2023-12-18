@@ -2,6 +2,7 @@ import React from 'react';
 import defaultArgTypes from '../../utils/default-arg-types';
 import Orchestrator from '../../utils/orchestrator';
 import source from './source.json';
+import sourceResizingCleaning from './source-resizing-cleaning.json';
 
 const stories = {
 	title: 'Behaviour/Resizing',
@@ -49,4 +50,11 @@ Default.args = {
 	id: 'resizing-default',
 	pagination: true,
 	source,
+};
+export const ResizingWithCleaning = Template.bind({});
+
+ResizingWithCleaning.args = {
+	id: 'resizing-with-cleaning',
+	source: sourceResizingCleaning,
+	pagination: true,
 };

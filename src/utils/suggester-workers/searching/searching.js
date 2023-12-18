@@ -57,15 +57,23 @@ async function searching(search, { name, version = '1', meloto = true }) {
 			const info = await getEntity(db, CONSTANTES.STORE_INFO_NAME, name);
 			const { queryParser, max, order } = info;
 			const parser = await resolveQueryParser(queryParser);
+			const tokens = parser(search);
+
+			// Do not start a transaction if we have nothing to search
+			if (tokens.length === 0) {
+				return {
+					results: [],
+					search,
+					tokens
+				}
+			}
 			const transaction = db.transaction(
 				CONSTANTES.STORE_DATA_NAME,
 				'readonly'
 			);
 			const store = transaction.objectStore(CONSTANTES.STORE_DATA_NAME);
 			const index = store.index(CONSTANTES.STORE_INDEX_NAME);
-			const tokens = parser(search);
 			const documents = await searchTokens(tokens, index);
-
 			return {
 				results: prepare(
 					getOrderingFunction(order)(

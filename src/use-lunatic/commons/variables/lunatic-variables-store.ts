@@ -68,8 +68,8 @@ export class LunaticVariablesStore {
 					break;
 			}
 		}
-		resizingBehaviour(store, source.resizing);
 		cleaningBehaviour(store, source.cleaning, initialValues);
+		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);
 		return store;
 	}

@@ -1,4 +1,4 @@
-import { type ReactNode, useCallback, useState } from 'react';
+import { type ReactNode, useCallback, useState, useRef } from 'react';
 import { ComboBox, createCustomizableLunaticField } from '../../commons';
 import './default-style.scss';
 import { voidFunction } from '../../../utils/function';
@@ -18,7 +18,9 @@ type Props = {
 	disabled?: boolean;
 	readOnly?: boolean;
 	id?: string;
-	searching?: (s: string | null) => Promise<{ results: ComboBoxOptionType[] }>;
+	searching?: (
+		s: string | null
+	) => Promise<{ results: ComboBoxOptionType[]; search: string }>;
 	label?: ReactNode;
 	description?: ReactNode;
 	errors?: LunaticError[];
@@ -42,6 +44,7 @@ function Suggester({
 }: Props) {
 	const [search, setSearch] = useState('');
 	const [options, setOptions] = useState<Array<ComboBoxOptionType>>([]);
+	const lastSearch = useRef('');
 
 	const handleSelect = useCallback(
 		function (id: string | null) {
@@ -52,12 +55,15 @@ function Suggester({
 
 	const handleChange = useCallback(
 		async function (search: string | null) {
+			lastSearch.current = search ?? '';
 			if (search && typeof searching === 'function') {
-				const { results } = await searching(search);
-				setOptions(results);
-				setSearch(search);
-				// if a user does not select an option in the list, their search term is saved
-				onSelect(search);
+				const { results, search: previous } = await searching(search);
+				if (previous === lastSearch.current) {
+					setOptions(results);
+					setSearch(search);
+					// if a user does not select an option in the list, their search term is saved
+					onSelect(search);
+				}
 			} else {
 				setOptions([]);
 				onSelect(null);
