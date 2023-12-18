@@ -79,16 +79,17 @@ export function getExpressionType(expression: unknown): string {
 }
 
 export function getExpressionAsString(expression: unknown): string {
-	if (typeof expression === 'string') {
-		return expression;
+	if (typeof expression === 'string' || typeof expression === 'number') {
+		return expression.toString();
 	}
 	if (
 		expression &&
 		typeof expression === 'object' &&
 		'value' in expression &&
-		typeof expression.value === 'string'
+		(typeof expression.value === 'string' ||
+			typeof expression.value === 'number')
 	) {
-		return expression.value;
+		return expression.value.toString();
 	}
 	return '';
 }

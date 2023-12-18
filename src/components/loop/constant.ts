@@ -6,5 +6,4 @@ export const blockedInLoopComponents = [
 	'Loop',
 	'PairwiseLinks',
 	'Roundabout',
-	'CheckboxGroup',
 ];
