@@ -31,7 +31,7 @@ export const RosterForLoop = createCustomizableLunaticField<
 		handleChange,
 		declarations,
 		label,
-		headers,
+		header,
 		iterations,
 		id,
 		getComponents,
@@ -71,7 +71,7 @@ export const RosterForLoop = createCustomizableLunaticField<
 			<DeclarationsBeforeText declarations={declarations} id={id} />
 			<DeclarationsAfterText declarations={declarations} id={id} />
 			<Table id={id}>
-				<TableHeader header={headers} id={id} />
+				<TableHeader header={header} id={id} />
 				<Tbody id={id}>
 					{times(nbRows, (n) => {
 						const components = getComponents(n);
