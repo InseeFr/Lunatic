@@ -14,7 +14,7 @@
 		{
 			"id": "loop-prenom",
 			"componentType": "RosterForLoop",
-			"headers": [
+			"header": [
 				{ "headerCell": true, "label": "Prénom" },
 				{ "headerCell": true, "label": "Age" }
 			],

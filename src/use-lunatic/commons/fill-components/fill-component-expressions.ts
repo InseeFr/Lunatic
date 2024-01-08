@@ -26,7 +26,6 @@ const VTL_ATTRIBUTES = [
 	'xAxisIterations',
 	'yAxisIterations',
 	'conditionFilter',
-	'headers.label',
 	'header.label',
 	'disabled',
 	'readOnly',
