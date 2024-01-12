@@ -24,7 +24,7 @@ type Props = {
 	label?: ReactNode;
 	description?: ReactNode;
 	errors?: LunaticError[];
-	allowArbitraryOption: boolean
+	allowArbitraryOption: boolean;
 };
 
 function Suggester({
