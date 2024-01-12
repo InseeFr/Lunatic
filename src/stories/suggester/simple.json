@@ -40,7 +40,7 @@
 			"componentType": "Suggester",
 			"mandatory": false,
 			"label": {
-				"value": "\"Code ou terme des libellés de la Naf-rev2\"",
+				"value": "\"Suggester sur les codes naf en read-only\"",
 				"type": "VTL|MD"
 			},
 			"description": { "value": "\"Exemple: 01 ou tabac\"", "type": "VTL|MD" },
@@ -88,7 +88,8 @@
 				"name": "HELLO"
 			},
 			"missingResponse": { "name": "HELLO_MISSING" },
-			"page": "1"
+			"page": "1",
+			"allowArbitraryOption": false
 		},
 		{
 			"id": "suggestions-inconnu",

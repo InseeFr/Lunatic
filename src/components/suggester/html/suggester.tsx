@@ -24,6 +24,7 @@ type Props = {
 	label?: ReactNode;
 	description?: ReactNode;
 	errors?: LunaticError[];
+	allowArbitraryOption: boolean
 };
 
 function Suggester({
@@ -41,6 +42,7 @@ function Suggester({
 	label,
 	description,
 	errors,
+	allowArbitraryOption,
 }: Props) {
 	const [search, setSearch] = useState('');
 	const [options, setOptions] = useState<Array<ComboBoxOptionType>>([]);
@@ -48,7 +50,7 @@ function Suggester({
 
 	const handleSelect = useCallback(
 		function (id: string | null) {
-			onSelect(id ? id : null);
+			onSelect(id ?? null);
 		},
 		[onSelect]
 	);
@@ -62,7 +64,7 @@ function Suggester({
 					setOptions(results);
 					setSearch(search);
 					// if a user does not select an option in the list, their search term is saved
-					onSelect(search);
+					allowArbitraryOption && onSelect(search);
 				}
 			} else {
 				setOptions([]);

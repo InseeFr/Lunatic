@@ -20,6 +20,7 @@ type Props = Pick<
 	| 'label'
 	| 'description'
 	| 'getSuggesterStatus'
+	| 'allowArbitraryOption'
 > & {
 	errors?: LunaticError[];
 	onSelect: (v: string | null) => void;
@@ -34,6 +35,7 @@ export function IDBSuggester({
 	optionRenderer,
 	labelRenderer,
 	onSelect,
+	allowArbitraryOption = true,
 	disabled,
 	value,
 	label,
@@ -80,6 +82,7 @@ export function IDBSuggester({
 					label={label}
 					description={description}
 					errors={errors}
+					allowArbitraryOption={allowArbitraryOption}
 				/>
 			</CheckStore>
 		</SuggesterStatus>
