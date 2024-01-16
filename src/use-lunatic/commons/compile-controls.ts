@@ -59,7 +59,6 @@ function checkComponents(
 				(c) => c.type === ControlTypeEnum.row
 			);
 			if (rowControls?.length) {
-				console.log('ERROR', component);
 				errors = checkComponentInLoop(
 					state,
 					{ ...component, controls: rowControls },
