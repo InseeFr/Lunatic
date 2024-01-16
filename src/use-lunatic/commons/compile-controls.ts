@@ -1,4 +1,3 @@
-import { isLoopComponent } from '../reducer/commons';
 import { replaceComponentSequence } from '../replace-component-sequence';
 import type {
 	LunaticComponentDefinition,
@@ -11,23 +10,37 @@ import fillComponentExpressions from './fill-components/fill-component-expressio
 import getComponentsFromState from './get-components-from-state';
 import { checkRoundaboutControl } from '../reducer/controls/check-roundabout-control';
 import { checkBaseControl } from '../reducer/controls/check-base-control';
+import type { FilledLunaticComponentProps } from './fill-components/fill-components';
 
 export type StateForControls = Pick<
 	LunaticState,
 	'pager' | 'pages' | 'isInLoop' | 'executeExpression'
 >;
 
+type ComponentDefinition =
+	| LunaticComponentDefinition
+	| FilledLunaticComponentProps;
+
+const isLoopComponent = (
+	component: ComponentDefinition
+): component is ComponentDefinition & {
+	componentType: 'Loop' | 'RosterForLoop';
+} => {
+	return ['Loop', 'RosterForLoop'].includes(component.componentType);
+};
+
 /**
  * Check if components of the current page have errors, and return a map of error (indexed by component ID)
  */
 function checkComponents(
 	state: StateForControls,
-	components: LunaticComponentDefinition[]
+	components: ComponentDefinition[]
 ): Record<string, LunaticError[]> {
 	let errors = {} as Record<string, LunaticError[]>;
 
 	for (const component of components) {
 		const { controls, id } = component;
+
 		// The component has global level controls
 		if (Array.isArray(controls)) {
 			const componentErrors = checkControls(
@@ -46,6 +59,7 @@ function checkComponents(
 				(c) => c.type === ControlTypeEnum.row
 			);
 			if (rowControls?.length) {
+				console.log('ERROR', component);
 				errors = checkComponentInLoop(
 					state,
 					{ ...component, controls: rowControls },
@@ -82,10 +96,15 @@ function checkControls(
  * Figure out the number of iterations of a component
  */
 function computeIterations(
-	component: LunaticComponentDefinition,
+	component: ComponentDefinition,
 	executeExpression: LunaticState['executeExpression']
 ): number {
-	if ('iterations' in component) {
+	if (
+		'iterations' in component &&
+		component.iterations &&
+		typeof component.iterations === 'object' &&
+		'value' in component.iterations
+	) {
 		return executeExpression<number>(component.iterations.value);
 	}
 	if ('response' in component) {
@@ -107,7 +126,7 @@ function computeIterations(
  */
 function checkComponentInLoop(
 	state: StateForControls,
-	component: LunaticComponentDefinition,
+	component: ComponentDefinition,
 	errors: Record<string, LunaticError[]>
 ): Record<string, LunaticError[]> {
 	// The component has no controls, skip it
@@ -126,8 +145,13 @@ function checkComponentInLoop(
 		};
 		// The component is filtered on this iteration, skip it
 		if (
-			component.conditionFilter &&
-			!state.executeExpression(component.conditionFilter.value, iterationPager)
+			// conditionFilter can be the interpreted expression, or the object representing the expression
+			(typeof component.conditionFilter == 'object' &&
+				!state.executeExpression(
+					component.conditionFilter.value,
+					iterationPager
+				)) ||
+			component.conditionFilter === false
 		) {
 			continue;
 		}
