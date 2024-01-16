@@ -13,7 +13,7 @@ for (const [label, story] of stories) {
 	test(`can complete ${label} form`, async ({ page }) => {
 		await goToStory(page, story);
 		await page.getByLabel('Prénom').nth(2).fill('Marc');
-		await page.getByRole('button', { name: 'Ajouter un individu' }).click();
+		await page.getByRole('button', { name: 'Add row' }).click();
 		await page.getByLabel('Prénom').nth(3).fill('Jane');
 		await gotoNextPage(page, 4);
 		await page.getByLabel('Âge de Jane').click();

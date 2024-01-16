@@ -5,7 +5,7 @@ import {
 	DeclarationsBeforeText,
 	DeclarationsDetachable,
 } from '../../declarations';
-import { createCustomizableLunaticField, Errors } from '../../commons';
+import { createCustomizableLunaticField, Errors, Label } from '../../commons';
 import { LoopButton } from '../loop-button';
 import D from '../../../i18n';
 import type { LunaticComponentProps } from '../../type';
@@ -30,11 +30,11 @@ export const RosterForLoop = createCustomizableLunaticField<
 		lines,
 		handleChange,
 		declarations,
-		label,
 		header,
 		iterations,
 		id,
 		getComponents,
+		label,
 		...otherProps // These props will be passed down to the child components
 	} = props;
 	const min = lines?.min || DEFAULT_MIN_ROWS;
@@ -65,9 +65,11 @@ export const RosterForLoop = createCustomizableLunaticField<
 	}
 
 	let cols = 0;
-
 	return (
 		<>
+			<Label htmlFor={id} id={`label-${id}`}>
+				{label}
+			</Label>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
 			<DeclarationsAfterText declarations={declarations} id={id} />
 			<Table id={id}>
@@ -118,7 +120,7 @@ export const RosterForLoop = createCustomizableLunaticField<
 			{showButtons && (
 				<>
 					<LoopButton onClick={addRow} disabled={nbRows === max}>
-						{label || D.DEFAULT_BUTTON_ADD}
+						{D.DEFAULT_BUTTON_ADD}
 					</LoopButton>
 					<LoopButton onClick={removeRow} disabled={nbRows === min}>
 						{D.DEFAULT_BUTTON_REMOVE}
