@@ -395,7 +395,12 @@ class LunaticVariable {
 			0,
 			...this.getDependencies().map(
 				(dep) =>
-					this.dictionary?.get(dep)?.updatedAt.get(iteration?.join('.')) ?? 0
+					// Check when a value at the same iteration was calculated
+					this.dictionary?.get(dep)?.updatedAt.get(iteration?.join('.')) ??
+					// For aggregated value (max / min) look the global updatedAt time
+					this.dictionary?.get(dep)?.updatedAt.get(undefined) ??
+					// Otherwise this is a static value that never changes
+					0
 			)
 		);
 		return (
