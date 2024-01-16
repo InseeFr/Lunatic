@@ -204,6 +204,17 @@ describe('lunatic-variables-store', () => {
 			);
 			expect(variables.get('FULLNAME')).toEqual(['John 1', 'Jane 2']);
 		});
+		it('should handle aggregate functions', () => {
+			variables.set('AGE', [1, 2, 3]);
+			variables.setCalculated('MAXAGE', 'max(AGE)');
+			variables.setCalculated('AGE_AND_MAX', 'AGE + MAXAGE', {
+				shapeFrom: 'AGE',
+			});
+			expect(variables.get('AGE_AND_MAX', [0])).toEqual(4);
+			variables.set('AGE', 12, { iteration: [1] });
+			expect(variables.get('AGE', [1])).toEqual(12);
+			expect(variables.get('AGE_AND_MAX', [0])).toEqual(13);
+		});
 	});
 
 	describe('resizing', () => {
