@@ -11,7 +11,6 @@ import * as lunaticComponents from './index';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 import { useAutoFocus } from '../hooks/use-auto-focus';
 import { hasComponentType } from '../use-lunatic/commons/component';
-import { useWhyRender } from '../hooks/use-why-render';
 
 type Props<T extends FilledLunaticComponentProps, V = undefined> = {
 	// List of components to display (coming from getComponents)
