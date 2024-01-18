@@ -1,6 +1,7 @@
 import {
 	Fragment,
 	isValidElement,
+	memo,
 	type PropsWithChildren,
 	type ReactElement,
 	type ReactNode,
@@ -10,6 +11,7 @@ import * as lunaticComponents from './index';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 import { useAutoFocus } from '../hooks/use-auto-focus';
 import { hasComponentType } from '../use-lunatic/commons/component';
+import { useWhyRender } from '../hooks/use-why-render';
 
 type Props<T extends FilledLunaticComponentProps, V = undefined> = {
 	// List of components to display (coming from getComponents)
@@ -18,6 +20,8 @@ type Props<T extends FilledLunaticComponentProps, V = undefined> = {
 		| ReactElement
 		| { label: string; [key: string]: unknown }
 	)[];
+	// Should we memoized children
+	memo?: boolean;
 	// Key that trigger autofocus when it changes (pageTag)
 	autoFocusKey?: string;
 	// Returns the list of extra props to add to components
@@ -43,6 +47,7 @@ export function LunaticComponents<
 	autoFocusKey,
 	componentProps,
 	blocklist,
+	memo,
 	wrapper = ({ children }) => (
 		<div className="lunatic lunatic-component">{children}</div>
 	),
@@ -81,7 +86,11 @@ export function LunaticComponents<
 					return (
 						<Fragment key={computeId(component, k)}>
 							{wrapper({
-								children: <LunaticComponent {...props} />,
+								children: memo ? (
+									<LunaticComponentMemo {...props} />
+								) : (
+									<LunaticComponent {...props} />
+								),
 								index: k,
 								...props,
 							})}
@@ -127,6 +136,8 @@ function LunaticComponent(props: ItemProps) {
 	const Component = lunaticComponents[props.componentType] as any;
 	return <Component {...props} />;
 }
+
+const LunaticComponentMemo = memo(LunaticComponent);
 
 function computeId(
 	component: Record<string, unknown>,

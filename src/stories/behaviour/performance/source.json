@@ -1,0 +1,172 @@
+{
+  "maxPage": "3",
+  "components": [
+    {
+      "id": "seq",
+      "componentType": "Sequence",
+      "label": {
+        "value": "\"Description des individus de votre logement\"",
+        "type": "VTL|MD"
+      },
+      "conditionFilter": { "value": "true", "type": "VTL" },
+      "page": "1"
+    },
+    {
+      "id": "loop-prenom",
+      "componentType": "RosterForLoop",
+      "header": [
+        { "headerCell": true, "label": "Prénom" },
+        { "headerCell": true, "label": "Nom" },
+        { "headerCell": true, "label": "Date de naissance" },
+        { "headerCell": true, "label": "Age" }
+      ],
+      "label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
+      "conditionFilter": { "value": "true", "type": "VTL" },
+      "bindingDependencies": ["PRENOM", "AGE"],
+      "lines": {
+        "min": { "value": 1, "type": "VTL" },
+        "max": { "value": 10, "type": "VTL" }
+      },
+      "page": "1",
+      "components": [
+        {
+          "componentType": "Input",
+          "conditionFilter": { "value": "true", "type": "VTL" },
+          "maxLength": 30,
+          "bindingDependencies": ["PRENOM"],
+          "id": "prenom",
+          "response": {
+            "name": "PRENOM"
+          }
+        },
+        {
+          "componentType": "Input",
+          "conditionFilter": { "value": "true", "type": "VTL" },
+          "maxLength": 30,
+          "bindingDependencies": ["NOM"],
+          "id": "nom",
+          "response": {
+            "name": "NOM"
+          }
+        },
+        {
+          "componentType": "Datepicker",
+          "conditionFilter": { "value": "true", "type": "VTL" },
+          "maxLength": 30,
+          "bindingDependencies": ["BIRTHDAY"],
+          "id": "birthday",
+          "dateFormat": "YYYY-MM-DD",
+          "response": {
+            "name": "BIRTHDAY"
+          }
+        },
+        {
+          "componentType": "Input",
+          "conditionFilter": { "value": "true", "type": "VTL" },
+          "maxLength": 30,
+          "bindingDependencies": ["AGE"],
+          "id": "age",
+          "response": {
+            "name": "AGE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "componentType": "Loop",
+
+      "loopDependencies": ["PRENOM"],
+      "iterations": { "value": "count(PRENOM)", "type": "VTL" },
+      "page": "2",
+      "maxPage": "1",
+      "depth": 1,
+      "paginatedLoop": true,
+      "conditionFilter": {
+        "value": "true",
+        "type": "VTL"
+      },
+      "components": [
+        {
+          "id": "age",
+          "label": {
+            "value": "PRENOM || \", quel est vôtre âge ?\"",
+            "type": "VTL"
+          },
+          "conditionFilter": {
+            "value": "true",
+            "type": "VTL"
+          },
+          "page": "2.1",
+          "componentType": "InputNumber",
+          "min": 0,
+          "max": 120,
+          "decimals": 0,
+          "response": { "name": "AGE" }
+        }
+      ]
+    },
+    {
+      "id": "seq-end",
+      "componentType": "Sequence",
+      "label": {
+        "value": "\"End\"",
+        "type": "VTL|MD"
+      },
+      "conditionFilter": { "value": "true", "type": "VTL" },
+      "page": "3"
+    }
+  ],
+  "resizing": {
+    "PRENOM": {
+      "size": "count(PRENOM)",
+      "variables": ["AGE"]
+    }
+  },
+  "variables": [
+    {
+      "variableType": "COLLECTED",
+      "name": "PRENOM",
+      "values": {
+        "PREVIOUS": [null],
+        "COLLECTED": [null],
+        "FORCED": [null],
+        "EDITED": [null],
+        "INPUTED": [null]
+      }
+    },
+    {
+      "variableType": "COLLECTED",
+      "name": "NOM",
+      "values": {
+        "PREVIOUS": [null],
+        "COLLECTED": [null],
+        "FORCED": [null],
+        "EDITED": [null],
+        "INPUTED": [null]
+      }
+    },
+    {
+      "variableType": "COLLECTED",
+      "name": "BIRTHDAY",
+      "values": {
+        "PREVIOUS": [null],
+        "COLLECTED": [null],
+        "FORCED": [null],
+        "EDITED": [null],
+        "INPUTED": [null]
+      }
+    },
+    {
+      "variableType": "COLLECTED",
+      "name": "AGE",
+      "values": {
+        "PREVIOUS": [null],
+        "COLLECTED": [null],
+        "FORCED": [null],
+        "EDITED": [null],
+        "INPUTED": [null]
+      }
+    }
+  ]
+}
