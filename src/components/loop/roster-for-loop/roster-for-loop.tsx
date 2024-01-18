@@ -93,6 +93,7 @@ export const RosterForLoop = createCustomizableLunaticField<
 									<LunaticComponents
 										blocklist={blockedInLoopComponents}
 										components={components}
+										memo
 										componentProps={(c) => ({
 											...otherProps,
 											...c,
