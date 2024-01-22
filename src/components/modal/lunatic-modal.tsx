@@ -12,8 +12,13 @@ function LunaticModal(props: LunaticComponentProps<'ConfirmationModal'>) {
 	const dialogRef = useRef<HTMLDialogElement>(null);
 
 	useEffect(() => {
-		// Browser behaviour is different for dialog displayed with this API, it creates de dialog with backdrop
-		dialogRef.current?.showModal();
+		try {
+			// Browser behaviour is different for dialog displayed with this API, it creates de dialog with backdrop
+			dialogRef.current?.showModal();
+		} catch (e) {
+			// Browser may not support showModal(), try to add open attribute
+			dialogRef.current?.setAttribute('open', '');
+		}
 	}, []);
 
 	const handleClose = () => {
