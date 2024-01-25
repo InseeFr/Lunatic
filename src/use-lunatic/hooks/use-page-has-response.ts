@@ -12,15 +12,30 @@ export function usePageHasResponse(
 	executeExpression: LunaticState['executeExpression']
 ): () => boolean {
 	return useCallback(() => {
-		if (!Array.isArray(components)) {
-			return false;
+		if (!Array.isArray(components) || components.length === 0) {
+			return true;
 		}
 
+		debugger;
 		for (const component of components) {
 			// Some components are considered as "filled" by default
-			if (['PairwiseLinks', 'Roundabout'].includes(component.componentType)) {
+			if (
+				['PairwiseLinks', 'Roundabout', 'Sequence'].includes(
+					component.componentType
+				)
+			) {
 				return true;
 			}
+
+			// We have a missing response for this component
+			if (
+				'missingResponse' in component &&
+				component.missingResponse &&
+				component.missingResponse.value
+			) {
+				return true;
+			}
+
 			// For Table, we have to extract components from its body and apply isSubComponentsEmpty function
 			if (component.componentType === 'Table') {
 				// Body is array for array (row), each "cell" could be an Label or Component, so we filter array.
@@ -37,6 +52,7 @@ export function usePageHasResponse(
 			if ('value' in component && !isEmpty(component.value)) {
 				return true;
 			}
+
 			// For rosterForLoop we need to inspect child components
 			if (
 				'components' in component &&
