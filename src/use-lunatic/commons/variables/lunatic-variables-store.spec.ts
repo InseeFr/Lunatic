@@ -215,6 +215,12 @@ describe('lunatic-variables-store', () => {
 			expect(variables.get('AGE', [1])).toEqual(12);
 			expect(variables.get('AGE_AND_MAX', [0])).toEqual(13);
 		});
+		it('should handle primitive value', () => {
+			variables.run('"hello"', { iteration: [0] });
+			variables.run('"hello"', { iteration: [1] });
+			expect(variables.run('"hello"')).toEqual('hello');
+			expect(variables.interpretCount).toBe(1);
+		});
 	});
 
 	describe('resizing', () => {
