@@ -263,6 +263,11 @@ class LunaticVariable {
 
 		// Calculate bindings first to refresh "updatedAt" on calculated dependencies
 		const bindings = this.getDependenciesValues(iteration);
+		// A variable without binding is a primitive (string, boolean...)
+		// it yields the same results for every iteration, so we can ignore iteration
+		if (Object.keys(bindings).length === 0) {
+			iteration = undefined;
+		}
 		if (!this.isOutdated(iteration)) {
 			return this.getSavedValue(iteration);
 		}
