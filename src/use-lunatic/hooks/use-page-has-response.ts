@@ -16,11 +16,11 @@ export function usePageHasResponse(
 			return true;
 		}
 
-		debugger;
 		for (const component of components) {
 			// Some components are considered as "filled" by default
+			// We assume they are not in the same page has other components
 			if (
-				['PairwiseLinks', 'Roundabout', 'Sequence'].includes(
+				['PairwiseLinks', 'Roundabout', 'Sequence', 'Subsequence'].includes(
 					component.componentType
 				)
 			) {
