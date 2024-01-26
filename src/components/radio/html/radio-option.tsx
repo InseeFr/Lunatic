@@ -1,14 +1,15 @@
-import { useEffect, useRef, useCallback, type ReactNode } from 'react';
+/* eslint-disable jsx-a11y/role-supports-aria-props */
 import classnames from 'classnames';
-import { Label, createCustomizableLunaticField } from '../../commons';
-import {
-	RadioChecked,
-	RadioUnchecked,
-	CheckboxChecked,
-	CheckboxUnchecked,
-} from '../../commons/icons';
+import { useCallback, useEffect, useRef, type ReactNode } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { voidFunction } from '../../../utils/function';
+import { Label, createCustomizableLunaticField } from '../../commons';
+import {
+	CheckboxChecked,
+	CheckboxUnchecked,
+	RadioChecked,
+	RadioUnchecked,
+} from '../../commons/icons';
 
 export type Props = {
 	id: string;

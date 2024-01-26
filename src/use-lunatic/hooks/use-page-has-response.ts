@@ -67,7 +67,7 @@ function isEmpty(value: unknown): boolean {
 	if (typeof value === 'object' && value !== null) {
 		return isEmpty(Object.values(value));
 	}
-	return !value;
+	return (value ?? '') === '';
 }
 
 /**
@@ -78,6 +78,13 @@ function isSubComponentsEmpty(
 	executeExpression: LunaticState['executeExpression']
 ): boolean {
 	for (const component of components) {
+		if ('responses' in component) {
+			for (const response of component.responses) {
+				if (!isEmpty(executeExpression(response.response.name))) {
+					return false;
+				}
+			}
+		}
 		if (
 			'response' in component &&
 			!isEmpty(executeExpression(component.response.name))

@@ -204,6 +204,23 @@ describe('lunatic-variables-store', () => {
 			);
 			expect(variables.get('FULLNAME')).toEqual(['John 1', 'Jane 2']);
 		});
+		it('should handle aggregate functions', () => {
+			variables.set('AGE', [1, 2, 3]);
+			variables.setCalculated('MAXAGE', 'max(AGE)');
+			variables.setCalculated('AGE_AND_MAX', 'AGE + MAXAGE', {
+				shapeFrom: 'AGE',
+			});
+			expect(variables.get('AGE_AND_MAX', [0])).toEqual(4);
+			variables.set('AGE', 12, { iteration: [1] });
+			expect(variables.get('AGE', [1])).toEqual(12);
+			expect(variables.get('AGE_AND_MAX', [0])).toEqual(13);
+		});
+		it('should handle primitive value', () => {
+			variables.run('"hello"', { iteration: [0] });
+			variables.run('"hello"', { iteration: [1] });
+			expect(variables.run('"hello"')).toEqual('hello');
+			expect(variables.interpretCount).toBe(1);
+		});
 	});
 
 	describe('resizing', () => {
@@ -261,6 +278,21 @@ describe('lunatic-variables-store', () => {
 					PRENOM: 'READY',
 				},
 			});
+			variables.set('READY', false, { iteration: [1] });
+			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
+		});
+		it('should clean variables with initial value at specific iteration', () => {
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('READY', [true, true, true]);
+			cleaningBehaviour(
+				variables,
+				{
+					READY: {
+						PRENOM: 'READY',
+					},
+				},
+				{ PRENOM: [null] }
+			);
 			variables.set('READY', false, { iteration: [1] });
 			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
 		});

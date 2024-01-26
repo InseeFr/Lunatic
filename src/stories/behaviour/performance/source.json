@@ -16,6 +16,8 @@
 			"componentType": "RosterForLoop",
 			"header": [
 				{ "headerCell": true, "label": "Prénom" },
+				{ "headerCell": true, "label": "Nom" },
+				{ "headerCell": true, "label": "Date de naissance" },
 				{ "headerCell": true, "label": "Age" }
 			],
 			"label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
@@ -23,7 +25,7 @@
 			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": {
 				"min": { "value": 1, "type": "VTL" },
-				"max": { "value": 10, "type": "VTL" }
+				"max": { "value": 250, "type": "VTL" }
 			},
 			"page": "1",
 			"components": [
@@ -35,6 +37,27 @@
 					"id": "prenom",
 					"response": {
 						"name": "PRENOM"
+					}
+				},
+				{
+					"componentType": "Input",
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"maxLength": 30,
+					"bindingDependencies": ["NOM"],
+					"id": "nom",
+					"response": {
+						"name": "NOM"
+					}
+				},
+				{
+					"componentType": "Datepicker",
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"maxLength": 30,
+					"bindingDependencies": ["BIRTHDAY"],
+					"id": "birthday",
+					"dateFormat": "YYYY-MM-DD",
+					"response": {
+						"name": "BIRTHDAY"
 					}
 				},
 				{
@@ -104,6 +127,28 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NOM",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "BIRTHDAY",
 			"values": {
 				"PREVIOUS": [null],
 				"COLLECTED": [null],

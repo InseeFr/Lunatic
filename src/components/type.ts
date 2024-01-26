@@ -94,7 +94,7 @@ type ComponentPropsByType = {
 		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
-		headers?: Array<{ label: ReactNode }>;
+		header?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
 	};
 	Loop: LunaticBaseProps<unknown> & {
@@ -103,7 +103,7 @@ type ComponentPropsByType = {
 		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
-		headers?: Array<{ label: ReactNode }>;
+		header?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
 	};
 	Table: LunaticBaseProps<unknown> & {

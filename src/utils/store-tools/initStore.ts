@@ -15,6 +15,7 @@ export async function initStore(storeInfo: SuggesterType): Promise<boolean> {
 			CONSTANTES.STORE_INFO_NAME,
 			storeInfo
 		);
+		db.close();
 		return a && b && c;
 	}
 	return false;

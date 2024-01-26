@@ -68,8 +68,8 @@ export class LunaticVariablesStore {
 					break;
 			}
 		}
-		resizingBehaviour(store, source.resizing);
 		cleaningBehaviour(store, source.cleaning, initialValues);
+		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);
 		return store;
 	}
@@ -263,6 +263,11 @@ class LunaticVariable {
 
 		// Calculate bindings first to refresh "updatedAt" on calculated dependencies
 		const bindings = this.getDependenciesValues(iteration);
+		// A variable without binding is a primitive (string, boolean...)
+		// it yields the same results for every iteration, so we can ignore iteration
+		if (Object.keys(bindings).length === 0) {
+			iteration = undefined;
+		}
 		if (!this.isOutdated(iteration)) {
 			return this.getSavedValue(iteration);
 		}
@@ -395,7 +400,12 @@ class LunaticVariable {
 			0,
 			...this.getDependencies().map(
 				(dep) =>
-					this.dictionary?.get(dep)?.updatedAt.get(iteration?.join('.')) ?? 0
+					// Check when a value at the same iteration was calculated
+					this.dictionary?.get(dep)?.updatedAt.get(iteration?.join('.')) ??
+					// For aggregated value (max / min) look the global updatedAt time
+					this.dictionary?.get(dep)?.updatedAt.get(undefined) ??
+					// Otherwise this is a static value that never changes
+					0
 			)
 		);
 		return (

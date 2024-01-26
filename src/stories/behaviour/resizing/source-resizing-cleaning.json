@@ -1,0 +1,171 @@
+{
+	"id": "lfrzny8b",
+	"modele": "RP",
+	"enoCoreVersion": "2.4.1",
+	"lunaticModelVersion": "2.3.1",
+	"generatingDate": "28-03-2023 12:57:35",
+	"missing": false,
+	"pagination": "question",
+	"maxPage": "2",
+	"label": {
+		"value": "\"Resizing with cleaning\"",
+		"type": "VTL|MD"
+	},
+	"components": [
+		{
+			"page": "1",
+			"id": "lfwih8tj-habitants",
+			"componentType": "InputNumber",
+			"mandatory": false,
+			"min": 0,
+			"max": 25,
+			"label": {
+				"value": "\"Nombre d'habitant(s) \"",
+				"type": "VTL"
+			},
+			"declarations": [
+				{
+					"id": "kb9hi4j0-krnoclfe",
+					"declarationType": "HELP",
+					"position": "DETACHABLE",
+					"label": {
+						"value": "\"Changing this value should both clean and resize 'PRENOMS'\"",
+						"type": "VTL|MD"
+					}
+				}
+			],
+			"controls": [
+				{
+					"id": "lfwih8tj-habitants-CI-0",
+					"typeOfControl": "CONSISTENCY",
+					"criticality": "ERROR",
+					"control": {
+						"value": "not(isnull(NB))",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "\"Veuillez entrer un nombre d'habitant(s)\"",
+						"type": "VTL"
+					}
+				},
+				{
+					"id": "lfwih8tj-habitants-CI-1",
+					"typeOfControl": "CONSISTENCY",
+					"criticality": "ERROR",
+					"control": {
+						"value": "isnull(NB) or NB >= 0",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "\"Veuillez entrer un nombre d'habitant(s) valide\"",
+						"type": "VTL"
+					}
+				}
+			],
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"response": {
+				"name": "NB"
+			}
+		},
+		{
+			"id": "lfwg2ny2-list-habitants",
+			"componentType": "Loop",
+			"loopDependencies": ["NB"],
+			"iterations": {
+				"value": "NB",
+				"type": "VTL"
+			},
+			"page": "2",
+			"maxPage": "4",
+			"depth": 1,
+			"paginatedLoop": true,
+			"conditionFilter": {
+				"value": "NB >= 1",
+				"type": "VTL"
+			},
+			"components": [
+				{
+					"id": "lfwg2ny2-prenoms",
+					"label": {
+						"value": "\"Prénom \"",
+						"type": "VTL"
+					},
+					"conditionFilter": {
+						"value": "true",
+						"type": "VTL"
+					},
+					"controls": [
+						{
+							"id": "lfwg2ny2-prenoms-CI-0",
+							"typeOfControl": "CONSISTENCY",
+							"criticality": "ERROR",
+							"control": {
+								"value": "not(nvl(PRENOMS, \"\") = \"\")",
+								"type": "VTL"
+							},
+							"errorMessage": {
+								"value": "\"Veuillez entrer un prénom\"",
+								"type": "VTL"
+							}
+						},
+						{
+							"id": "lfwg2ny2-prenoms-CI-1",
+							"typeOfControl": "CONSISTENCY",
+							"criticality": "ERROR",
+							"control": {
+								"value": "not(match_characters(PRENOMS, \"^[-'a-zA-ZÀ-ÿœ$*\\s]+$\") = false)",
+								"type": "VTL"
+							},
+							"errorMessage": {
+								"value": "\"Votre prénom ne peut pas comporter de chiffres ou caractères spéciaux.\"",
+								"type": "VTL"
+							}
+						}
+					],
+					"componentType": "Input",
+					"response": {
+						"name": "PRENOMS"
+					}
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOMS",
+			"values": {
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NB",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		}
+	],
+	"cleaning": {
+		"NB": {
+			"PRENOMS": "false"
+		}
+	},
+	"resizing": {
+		"NB": {
+			"size": "cast(NB, integer)",
+			"variables": ["PRENOMS"]
+		}
+	}
+}

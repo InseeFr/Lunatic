@@ -12,13 +12,15 @@ function fillRoundaboutProps(
 	component: DeepTranslateExpression<LunaticComponentDefinition<'Roundabout'>>,
 	state: Pick<LunaticState, 'executeExpression'>
 ) {
-	const { iterations, expressions } = component;
-	const compiled = Object.entries(expressions).reduce(function (
+	const iterations = component.iterations as number; // iterations is the result of an expression but we know it's a number
+	const compiled = Object.entries(component.expressions).reduce(function (
 		result,
 		[name, expression]
 	) {
 		const values = new Array(iterations).fill(null).map((_, iteration) => {
-			return state.executeExpression(expression, { iteration });
+			return state.executeExpression(expression, {
+				iteration,
+			});
 		});
 		return { ...result, [name]: values };
 	},
@@ -57,9 +59,10 @@ function fillChildComponentsWithIteration(
 		getComponents: (iteration: number) =>
 			fillComponents(component.components, {
 				...state,
-				handleChange: (response, value) => {
-					state.handleChange(response, value, { iteration: [iteration] });
-				},
+				handleChange: createChangeHandlerForIteration(
+					state.handleChange,
+					iteration
+				),
 				pager: {
 					...state.pager,
 					iteration: iteration,
@@ -67,6 +70,28 @@ function fillChildComponentsWithIteration(
 				},
 			}),
 	};
+}
+
+// Create change handler memoized for every iteration
+let changeHandler = null as null | LunaticState['handleChange'];
+const changeHandlerMap = new Map<number, LunaticState['handleChange']>();
+function createChangeHandlerForIteration(
+	handleChange: LunaticState['handleChange'],
+	iteration: number
+) {
+	if (handleChange !== changeHandler) {
+		changeHandler = handleChange;
+		changeHandlerMap.clear();
+	}
+	let handler = changeHandlerMap.get(iteration);
+	if (handler) {
+		return handler;
+	}
+	handler = (response, value) => {
+		handleChange(response, value, { iteration: [iteration] });
+	};
+	changeHandlerMap.set(iteration, handler);
+	return handler;
 }
 
 /**

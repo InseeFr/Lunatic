@@ -1,11 +1,14 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { describe, expect, it, beforeEach } from 'vitest';
+import { describe, expect, it, type Mock, vi, beforeEach } from 'vitest';
 import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
 import sourceComponentSet from '../stories/component-set/source.json';
+import sourceCleaning from '../stories/behaviour/cleaning/source.json';
+import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
+import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { LunaticData } from './type';
 import { type FilledLunaticComponentProps } from './commons/fill-components/fill-components';
 
@@ -36,7 +39,7 @@ describe('use-lunatic()', () => {
 		{},
 	] as const;
 
-	it('should initialize correcly', () => {
+	it('should initialize correctly', () => {
 		const { result } = renderHook(() => useLunatic(...defaultParams));
 		expect(result.current.pager.page).toBe('1');
 		expect(result.current.pager.lastReachedPage).toBe('1');
@@ -170,6 +173,50 @@ describe('use-lunatic()', () => {
 				expect(overview[1].reached).toEqual(true);
 				expect(overview[1].visible).toEqual(true);
 			});
+		});
+	});
+
+	describe('cleaning', () => {
+		it('should handle cleaning in a loop', () => {
+			const { result } = renderHook(() =>
+				useLunatic(sourceCleaningLoop as any, undefined, {})
+			);
+			act(() => {
+				result.current.onChange({ name: 'PRENOM' }, ['John', 'Doe', 'Marc']);
+				result.current.onChange({ name: 'AGE' }, [18, 18, 18]);
+				// Go in the first iteration
+				result.current.goNextPage();
+				result.current.goNextPage();
+			});
+			const expectCollectedAgeToEqual = (expectation: unknown[]) => {
+				expect(
+					(result.current.getData(false).COLLECTED as any).AGE.COLLECTED
+				).toEqual(expectation);
+			};
+			expectCollectedAgeToEqual([18, 18, 18]);
+			act(() => {
+				result.current.onChange({ name: 'HIDE_AGE' }, true, { iteration: [0] });
+			});
+			expectCollectedAgeToEqual([null, 18, 18]);
+		});
+	});
+
+	describe('resizing', () => {
+		it('should resize after cleaning', () => {
+			const spy = vi.fn();
+			const { result } = renderHook(() =>
+				useLunatic(sourceCleaningResizing as any, undefined, {
+					onChange: spy,
+				})
+			);
+			result.current.onChange({ name: 'NB' }, 3);
+			expect(
+				(result.current.getData(true).COLLECTED.PRENOMS as any).COLLECTED
+			).toEqual([null, null, null]);
+			result.current.onChange({ name: 'NB' }, 2);
+			expect(
+				(result.current.getData(true).COLLECTED.PRENOMS as any).COLLECTED
+			).toEqual([null, null]);
 		});
 	});
 
