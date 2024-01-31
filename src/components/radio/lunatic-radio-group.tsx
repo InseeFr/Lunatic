@@ -29,6 +29,7 @@ function LunaticRadioGroup(props: LunaticComponentProps<'Radio'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
 		<LunaticComponent
+			disabled={readOnly || disabled}
 			id={id}
 			label={label}
 			preferences={preferences}

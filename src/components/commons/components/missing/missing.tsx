@@ -11,6 +11,7 @@ type Props = {
 	handleChange: LunaticBaseProps<any>['handleChange'];
 	componentType?: string;
 	paginatedLoop?: boolean;
+	disabled?: boolean;
 	missingResponse?: LunaticBaseProps['missingResponse'];
 };
 
@@ -36,7 +37,8 @@ const Missing = (props: Props) => {
 };
 
 export const MissingPure = (
-	props: Pick<Props, 'handleChange' | 'missingResponse'> & PropsFromContext
+	props: Pick<Props, 'handleChange' | 'missingResponse' | 'disabled'> &
+		PropsFromContext
 ) => {
 	const {
 		missingResponse,
@@ -46,6 +48,7 @@ export const MissingPure = (
 		missingShortcut,
 		dontKnowButton,
 		refusedButton,
+		disabled,
 	} = props;
 	const value = missingResponse?.value;
 	const onClick = useOnHandleChange({
@@ -75,14 +78,18 @@ export const MissingPure = (
 					value === DK ? '-active' : ''
 				} missing-button-dk${value === DK ? '-active' : ''}`}
 			>
-				<Button label={dontKnowButton} onClick={onClickDK} />
+				<Button
+					disabled={disabled}
+					label={dontKnowButton}
+					onClick={onClickDK}
+				/>
 			</span>
 			<span
 				className={`missing-button${
 					value === RF ? '-active' : ''
 				} missing-button-rf${value === RF ? '-active' : ''}`}
 			>
-				<Button label={refusedButton} onClick={onClickRF} />
+				<Button disabled={disabled} label={refusedButton} onClick={onClickRF} />
 			</span>
 			{shortcut &&
 				missingShortcut &&

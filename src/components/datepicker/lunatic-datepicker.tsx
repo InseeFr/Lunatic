@@ -30,6 +30,7 @@ const LunaticDatepicker = (props: LunaticComponentProps<'Datepicker'>) => {
 
 	return (
 		<LunaticComponent
+			disabled={readOnly || disabled}
 			id={id}
 			preferences={preferences}
 			declarations={declarations}

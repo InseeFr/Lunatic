@@ -19,11 +19,14 @@ function LunaticCheckboxOne({
 	missing,
 	management,
 	shortcut,
+	readOnly,
+	disabled,
 }: LunaticComponentProps<'CheckboxOne'>) {
 	const onSelect = useOnHandleChange({ handleChange, response, value });
 
 	return (
 		<LunaticComponent
+			disabled={readOnly || disabled}
 			id={id}
 			label={label}
 			preferences={preferences}
@@ -44,6 +47,8 @@ function LunaticCheckboxOne({
 				onSelect={onSelect}
 				label={label}
 				shortcut={shortcut}
+				readOnly={readOnly}
+				disabled={disabled}
 			/>
 		</LunaticComponent>
 	);
