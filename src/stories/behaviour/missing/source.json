@@ -92,10 +92,7 @@
 			"missingResponse": {
 				"name": "NB_MISSING"
 			},
-			"bindingDependencies": [
-				"NB_MISSING",
-				"NB"
-			],
+			"bindingDependencies": ["NB_MISSING", "NB"],
 			"response": {
 				"name": "NB"
 			}
@@ -120,14 +117,8 @@
 					}
 				}
 			},
-			"bindingDependencies": [
-				"NB",
-				"PRENOM_MISSING",
-				"PRENOM"
-			],
-			"loopDependencies": [
-				"NB"
-			],
+			"bindingDependencies": ["NB", "PRENOM_MISSING", "PRENOM"],
+			"loopDependencies": ["NB"],
 			"lines": {
 				"min": {
 					"value": "cast(NB,integer)",
@@ -170,9 +161,7 @@
 							}
 						}
 					},
-					"bindingDependencies": [
-						"NB"
-					]
+					"bindingDependencies": ["NB"]
 				},
 				{
 					"id": "ksyjvi40",
@@ -202,10 +191,7 @@
 						"value": "true",
 						"type": "VTL"
 					},
-					"bindingDependencies": [
-						"PRENOM",
-						"NB"
-					],
+					"bindingDependencies": ["PRENOM", "NB"],
 					"response": {
 						"name": "PRENOM"
 					}
@@ -238,10 +224,7 @@
 						"value": "true",
 						"type": "VTL"
 					},
-					"bindingDependencies": [
-						"NOM",
-						"NB"
-					],
+					"bindingDependencies": ["NOM", "NB"],
 					"response": {
 						"name": "NOM"
 					}
@@ -292,15 +275,8 @@
 					}
 				}
 			},
-			"bindingDependencies": [
-				"AGE",
-				"IND_MAJEUR",
-				"PRENOM",
-				"AGE_MISSING"
-			],
-			"loopDependencies": [
-				"PRENOM"
-			],
+			"bindingDependencies": ["AGE", "IND_MAJEUR", "PRENOM", "AGE_MISSING"],
+			"loopDependencies": ["PRENOM"],
 			"components": [
 				{
 					"id": "ksyjxw3a",
@@ -332,9 +308,7 @@
 							}
 						}
 					},
-					"bindingDependencies": [
-						"PRENOM"
-					]
+					"bindingDependencies": ["PRENOM"]
 				},
 				{
 					"id": "ksyke448",
@@ -421,12 +395,7 @@
 					"missingResponse": {
 						"name": "AGE_MISSING"
 					},
-					"bindingDependencies": [
-						"AGE",
-						"IND_MAJEUR",
-						"PRENOM",
-						"AGE_MISSING"
-					],
+					"bindingDependencies": ["AGE", "IND_MAJEUR", "PRENOM", "AGE_MISSING"],
 					"response": {
 						"name": "AGE"
 					}
@@ -497,11 +466,7 @@
 					}
 				}
 			},
-			"bindingDependencies": [
-				"SUM_MAJEUR",
-				"SUM_AGE",
-				"MIN_AGE"
-			]
+			"bindingDependencies": ["SUM_MAJEUR", "SUM_AGE", "MIN_AGE"]
 		},
 		{
 			"id": "ku2pxugf",
@@ -516,11 +481,7 @@
 			"conditionFilter": {
 				"value": "(SUM_MAJEUR > 0)",
 				"type": "VTL",
-				"bindingDependencies": [
-					"SUM_MAJEUR",
-					"IND_MAJEUR",
-					"AGE"
-				]
+				"bindingDependencies": ["SUM_MAJEUR", "IND_MAJEUR", "AGE"]
 			},
 			"hierarchy": {
 				"sequence": {
@@ -543,10 +504,7 @@
 			"missingResponse": {
 				"name": "DIVERS_MISSING"
 			},
-			"bindingDependencies": [
-				"DIVERS_MISSING",
-				"DIVERS"
-			],
+			"bindingDependencies": ["DIVERS_MISSING", "DIVERS"],
 			"response": {
 				"name": "DIVERS"
 			}
@@ -602,11 +560,7 @@
 					}
 				}
 			},
-			"bindingDependencies": [
-				"SUM_AGE",
-				"SUM_MAJEUR",
-				"MIN_AGE"
-			]
+			"bindingDependencies": ["SUM_AGE", "SUM_MAJEUR", "MIN_AGE"]
 		},
 		{
 			"id": "COMMENT-SEQ",
@@ -655,9 +609,7 @@
 					}
 				}
 			},
-			"bindingDependencies": [
-				"COMMENT_QE"
-			],
+			"bindingDependencies": ["COMMENT_QE"],
 			"response": {
 				"name": "COMMENT_QE"
 			}
@@ -745,63 +697,33 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
 			"values": {
-				"PREVIOUS": [
-					null
-				],
-				"COLLECTED": [
-					null
-				],
-				"FORCED": [
-					null
-				],
-				"EDITED": [
-					null
-				],
-				"INPUTED": [
-					null
-				]
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "AGE",
 			"values": {
-				"PREVIOUS": [
-					null
-				],
-				"COLLECTED": [
-					null
-				],
-				"FORCED": [
-					null
-				],
-				"EDITED": [
-					null
-				],
-				"INPUTED": [
-					null
-				]
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "AGE_MISSING",
 			"values": {
-				"PREVIOUS": [
-					null
-				],
-				"COLLECTED": [
-					null
-				],
-				"FORCED": [
-					null
-				],
-				"EDITED": [
-					null
-				],
-				"INPUTED": [
-					null
-				]
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTED": [null]
 			}
 		},
 		{
@@ -833,9 +755,7 @@
 				"value": "if nvl(AGE,0) > 17 then 1 else 0",
 				"type": "VTL"
 			},
-			"bindingDependencies": [
-				"AGE"
-			],
+			"bindingDependencies": ["AGE"],
 			"shapeFrom": "PRENOM",
 			"inFilter": "true"
 		},
@@ -846,10 +766,7 @@
 				"value": "sum(IND_MAJEUR)",
 				"type": "VTL"
 			},
-			"bindingDependencies": [
-				"IND_MAJEUR",
-				"AGE"
-			],
+			"bindingDependencies": ["IND_MAJEUR", "AGE"],
 			"inFilter": "true"
 		},
 		{
@@ -859,9 +776,7 @@
 				"value": "sum(AGE)",
 				"type": "VTL"
 			},
-			"bindingDependencies": [
-				"AGE"
-			],
+			"bindingDependencies": ["AGE"],
 			"inFilter": "false"
 		},
 		{
@@ -871,9 +786,7 @@
 				"value": "min(AGE)",
 				"type": "VTL"
 			},
-			"bindingDependencies": [
-				"AGE"
-			],
+			"bindingDependencies": ["AGE"],
 			"inFilter": "false"
 		}
 	],
@@ -889,44 +802,21 @@
 		}
 	},
 	"missingBlock": {
-		"NB_MISSING": [
-			"NB"
-		],
-		"NB": [
-			"NB_MISSING"
-		],
-		"PRENOM_MISSING": [
-			"PRENOM"
-		],
-		"NOM_MISSING": [
-			"NOM"
-		],
-		"PRENOM": [
-			"PRENOM_MISSING"
-		],
-		"NOM": [
-			"NOM_MISSING"
-		],
-		"AGE_MISSING": [
-			"AGE"
-		],
-		"AGE": [
-			"AGE_MISSING"
-		],
-		"DIVERS_MISSING": [
-			"DIVERS"
-		],
-		"DIVERS": [
-			"DIVERS_MISSING"
-		]
+		"NB_MISSING": ["NB"],
+		"NB": ["NB_MISSING"],
+		"PRENOM_MISSING": ["PRENOM"],
+		"NOM_MISSING": ["NOM"],
+		"PRENOM": ["PRENOM_MISSING"],
+		"NOM": ["NOM_MISSING"],
+		"AGE_MISSING": ["AGE"],
+		"AGE": ["AGE_MISSING"],
+		"DIVERS_MISSING": ["DIVERS"],
+		"DIVERS": ["DIVERS_MISSING"]
 	},
 	"resizing": {
 		"NB": {
 			"size": "cast(NB,integer)",
-			"variables": [
-				"PRENOM",
-				"AGE"
-			]
+			"variables": ["PRENOM", "AGE"]
 		}
 	}
 }
