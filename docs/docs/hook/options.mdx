@@ -8,18 +8,30 @@ Le premier point d'entrée avec la librairie est le hook `useLunatic(source, dat
 
 ## Options
 
+Toutes les options sont **optionnelles**.
+
 - **features**, allows you to define supported functionalities (défaut `['VTL', 'MD']`).
+- ~~**preferences** (défaut `['COLLECTED']`), non utilisé~~
 - **savingType**, définit dans quelle clef sauvegarder les données (défaut `'COLLECTED'`)
 - **onChange**, méthode appelée lorsqu'une variable change suite à une action utilisateur (doit être mémoïsé car utilisé en dépendance d'un useCallback en interne). (optionnel `(response: {name: string}, value: any, args?: {iteration?: number}) => {}`)
+- **management**, active le [mode management](#management) (défaut `false`)
 - **shortcut**, active les racourcis clavier pour les cases à cocher / radio (défaut `false`)
 - **initialPage**, définit la page de démarrage (défaut `'1'`)
 - **lastReachedPage**, définit la dernière page atteinte (défaut `undefined`)
 - **autoSuggesterLoading**, active le préchargement des données du suggester à l'initialisation de Lunatic (défaut `false`).
+- **getReferentiel** promesse appelée pour récupérer les nomenclatures necessaire au fonctionnement des suggesters (`(name: string) => Promise<Array<unknown>>`)
+- **activeControls** active les controles (default `false`)
 - **custom**, objet permettant de [personnaliser les composants](./personnalisation) (défaut `empty`)
+- **withOverview**, active le système de [vue d'ensemble](#overview) (défaut `false`)
+- **missing**, active le système de [missing](#missing) (Ne sait pas / Refus) (défault `false`)
+- **missingStrategy** fonction exécutée au clique sur un button missing (défaut `emptyFn`) 
+- **missingShortcut** raccourcis clavier déclanchant les boutons missing (défaut `{ dontKnow: '', refused: '' }`) 
+- **dontKnowButton** label du bouton "Ne sait pas" (défaut `{ fr: 'Ne sais pas', en: "Don't know" }`)
+- **refusedButton** label du bouton "Refus" (défaut `{ fr: 'Refus', en: 'Refused' }`)
 - **workersBasePath**, définit le chemin de base des worker pour le [suggester](./components/fields/suggester) (défaut `/workers`)
-- ~~**preferences** (défaut `['COLLECTED']`), non utilisé~~
+- **trackChanges**, active le [suivi des changements](#trackChanges) (défaut `false`),
 
-### Vue d'ensemble
+### Vue d'ensemble {#overview}
 
 - **withOverview**, active le système de vue d'ensemble (défaut `false`)
 
@@ -49,16 +61,16 @@ const {
 - `getChangedData(reset: boolean = false)`, récupère les données qui ont changé depuis le dernier reset. Le format de retour est le même que `getData()`.
 - `resetChangedData()`, vide le dictionnaire des variables changée
 
-### Mode "Ne sais pas" {#missing}
+### Mode "Ne sais pas" / "Refus" {#missing}
 
 - **missing** (défaut `false`)
 
 Ce mode permet à l'utilisateur d'indiquer qu'il ne connait pas la réponse à une question ou qu'il souhaite ne pas y répondre. Des options supplémentaires permettent de définir le comportement des boutons.
 
-- **missingStrategy** (défaut `emptyFn`)
-- **missingShortcut** (défaut `{ dontKnow: '', refused: '' }`)
-- **dontKnowButton** (défaut `{ fr: 'Ne sais pas', en: "Don't know" }`)
-- **refusedButton** (défaut `{ fr: 'Refus', en: 'Refused' }`)
+- **missingStrategy** fonction exécutée au clique sur un button missing (défaut `emptyFn`) 
+- **missingShortcut** raccourcis clavier déclanchant les boutons missing (défaut `{ dontKnow: '', refused: '' }`) 
+- **dontKnowButton** label du bouton "Ne sait pas" (défaut `{ fr: 'Ne sais pas', en: "Don't know" }`)
+- **refusedButton** label du bouton "Refus" (défaut `{ fr: 'Refus', en: 'Refused' }`)
 
 Pour chaque champ une clef `missingResponse` doit enregistrer le choix fait par l'utilisateur.
 
