@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import D from '../../i18n';
 import { times } from '../../utils/array';
-import { createCustomizableLunaticField } from '../commons';
+import { createCustomizableLunaticField, Label } from '../commons';
 import {
 	DeclarationsAfterText,
 	DeclarationsBeforeText,
@@ -65,6 +65,9 @@ export const BlockForLoop = createCustomizableLunaticField<
 
 	return (
 		<>
+			<Label htmlFor={id} id={`label-${id}`}>
+				{label}
+			</Label>
 			<DeclarationsBeforeText declarations={declarations} id={id} />
 			<DeclarationsAfterText declarations={declarations} id={id} />
 			{times(nbRows, (n) => (
@@ -79,7 +82,7 @@ export const BlockForLoop = createCustomizableLunaticField<
 			{canControlRows && (
 				<>
 					<LoopButton onClick={addRow} disabled={nbRows === max}>
-						{label || D.DEFAULT_BUTTON_ADD}
+						{D.DEFAULT_BUTTON_ADD}
 					</LoopButton>
 					<LoopButton onClick={removeRow} disabled={nbRows === 1}>
 						{D.DEFAULT_BUTTON_REMOVE}

@@ -59,9 +59,10 @@ function fillChildComponentsWithIteration(
 		getComponents: (iteration: number) =>
 			fillComponents(component.components, {
 				...state,
-				handleChange: (response, value) => {
-					state.handleChange(response, value, { iteration: [iteration] });
-				},
+				handleChange: createChangeHandlerForIteration(
+					state.handleChange,
+					iteration
+				),
 				pager: {
 					...state.pager,
 					iteration: iteration,
@@ -69,6 +70,28 @@ function fillChildComponentsWithIteration(
 				},
 			}),
 	};
+}
+
+// Create change handler memoized for every iteration
+let changeHandler = null as null | LunaticState['handleChange'];
+const changeHandlerMap = new Map<number, LunaticState['handleChange']>();
+function createChangeHandlerForIteration(
+	handleChange: LunaticState['handleChange'],
+	iteration: number
+) {
+	if (handleChange !== changeHandler) {
+		changeHandler = handleChange;
+		changeHandlerMap.clear();
+	}
+	let handler = changeHandlerMap.get(iteration);
+	if (handler) {
+		return handler;
+	}
+	handler = (response, value) => {
+		handleChange(response, value, { iteration: [iteration] });
+	};
+	changeHandlerMap.set(iteration, handler);
+	return handler;
 }
 
 /**
