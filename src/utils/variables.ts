@@ -15,14 +15,14 @@ export function getInitialVariableValue(
 			const collectedData = data.COLLECTED;
 			let fromData;
 			if (collectedData && variable.name in collectedData) {
-				const { COLLECTED, FORCED } = collectedData[variable.name];
-				fromData = COLLECTED ?? FORCED;
+				const { COLLECTED } = collectedData[variable.name];
+				fromData = COLLECTED;
 			}
 			if ('values' in variable && variable.values) {
-				const { COLLECTED, FORCED } = variable.values;
-				return fromData ?? FORCED ?? COLLECTED;
+				const { COLLECTED } = variable.values;
+				return fromData ?? COLLECTED;
 			}
-			return undefined;
+			return fromData ?? undefined;
 		default:
 			return null;
 	}
