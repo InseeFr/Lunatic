@@ -69,3 +69,15 @@ export function resizeArray<T = unknown>(
 			return index < array.length ? array[index] : value;
 		}, []);
 }
+
+export function firstItem<T = unknown>(items: T | T[]): T {
+	if (!Array.isArray(items)) {
+		return items;
+	}
+	for (const item of items) {
+		if (item !== undefined) {
+			return item;
+		}
+	}
+	return undefined as T;
+}
