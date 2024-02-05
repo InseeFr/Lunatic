@@ -141,6 +141,7 @@ function OrchestratorForStories({
 		compileControls,
 		getData,
 		Provider,
+		hasPageResponse,
 	} = lunatic.useLunatic(source, data, {
 		initialPage,
 		features,
@@ -235,6 +236,15 @@ function OrchestratorForStories({
 						getData={getData}
 						pager={pager}
 					/>
+					<div className="story-pager">
+						<h3>Misc</h3>
+						<ul>
+							<li>
+								<strong>pageHasResponse:</strong>{' '}
+								{JSON.stringify(hasPageResponse())}
+							</li>
+						</ul>
+					</div>
 					{showOverview && <Overview overview={overview} goToPage={goToPage} />}
 					{errorsForModal && (
 						<lunatic.Modal
