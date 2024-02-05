@@ -39,6 +39,7 @@ function LunaticInputNumber(props: LunaticComponentProps<'InputNumber'>) {
 			management={management}
 			description={description}
 			handleChange={handleChange}
+			disabled={readOnly || disabled}
 		>
 			<InputNumber
 				onChange={onChange}
