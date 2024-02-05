@@ -28,6 +28,7 @@ function LunaticInput(props: LunaticComponentProps<'Input'>) {
 
 	return (
 		<LunaticComponent
+			disabled={readOnly || disabled}
 			id={id}
 			preferences={preferences}
 			declarations={declarations}

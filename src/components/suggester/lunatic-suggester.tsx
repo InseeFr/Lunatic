@@ -31,6 +31,7 @@ function LunaticSuggester({
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
 		<LunaticComponent
+			disabled={readOnly || disabled}
 			id={id}
 			preferences={preferences}
 			declarations={declarations}
