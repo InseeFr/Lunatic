@@ -12,7 +12,7 @@ export function getInitialVariableValue(
 		case 'CALCULATED':
 			return data[variable.variableType]?.[variable.name];
 		case 'COLLECTED':
-			let fromData = data.COLLECTED?.[variable.name]?.COLLECTED;
+			const fromData = data.COLLECTED?.[variable.name]?.COLLECTED;
 			if ('values' in variable && variable.values) {
 				return fromData ?? variable.values.COLLECTED;
 			}
