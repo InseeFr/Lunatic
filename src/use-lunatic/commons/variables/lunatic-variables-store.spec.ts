@@ -221,6 +221,19 @@ describe('lunatic-variables-store', () => {
 			expect(variables.run('"hello"')).toEqual('hello');
 			expect(variables.interpretCount).toBe(1);
 		});
+		it('should handle deep refresh', () => {
+			variables.set('LIENS', [
+				['17', null],
+				[null, '17'],
+			]);
+			variables.setCalculated('IS_12', 'if ("12" in LIENS) then 1 else 0', {
+				dependencies: ['LIENS'],
+				shapeFrom: 'LIENS',
+			});
+			expect(variables.get('IS_12', [0])).toBe(0);
+			variables.set('LIENS', '12', { iteration: [0, 0] });
+			expect(variables.get('IS_12', [0])).toBe(1);
+		});
 	});
 
 	describe('resizing', () => {
