@@ -72,7 +72,7 @@ function Suggester({
 				setSearch('');
 			}
 		},
-		[searching, onSelect]
+		[searching, allowArbitraryOption, onSelect]
 	);
 
 	const defaultSearch = getSearch(search, value);
