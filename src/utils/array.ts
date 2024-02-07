@@ -73,16 +73,11 @@ export function resizeArray<T = unknown>(
 /**
  * Return the first non null/undefined value of an array
  */
-export function firstValueItem<T = unknown>(items: T | T[]): T {
+export function firstValueItem<T = unknown>(items: T | T[]): T | undefined {
 	if (!Array.isArray(items)) {
 		return items;
 	}
-	for (const item of items) {
-		if (item !== undefined && item !== null) {
-			return item;
-		}
-	}
-	return undefined as T;
+	return items.find((v) => v !== undefined && v !== null);
 }
 
 /**
