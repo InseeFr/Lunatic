@@ -35,7 +35,7 @@ export function IDBSuggester({
 	optionRenderer,
 	labelRenderer,
 	onSelect,
-	allowArbitraryOption = true,
+	allowArbitraryOption = false,
 	disabled,
 	value,
 	label,
