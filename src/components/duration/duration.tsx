@@ -18,6 +18,8 @@ function Duration(props: LunaticComponentProps<'Duration'>) {
 		missingResponse,
 		management,
 		description,
+		readOnly,
+		disabled,
 	} = props;
 
 	const onChange = useOnHandleChange({
@@ -28,6 +30,7 @@ function Duration(props: LunaticComponentProps<'Duration'>) {
 
 	return (
 		<LunaticComponent
+			disabled={readOnly || disabled}
 			id={id}
 			preferences={preferences}
 			declarations={declarations}

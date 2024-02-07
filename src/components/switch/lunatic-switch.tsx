@@ -20,6 +20,8 @@ function LunaticSwitch({
 	description,
 	label,
 	errors,
+	readOnly,
+	disabled,
 }: LunaticComponentProps<'Switch'>) {
 	const booleanValue = value ?? false;
 
@@ -27,6 +29,7 @@ function LunaticSwitch({
 
 	return (
 		<LunaticComponent
+			disabled={readOnly || disabled}
 			id={id}
 			preferences={preferences}
 			declarations={declarations}
@@ -44,6 +47,8 @@ function LunaticSwitch({
 				statusLabel={statusLabel}
 				label={label}
 				errors={getComponentErrors(errors, id)}
+				readOnly={readOnly}
+				disabled={disabled}
 			/>
 		</LunaticComponent>
 	);

@@ -69,3 +69,35 @@ export function resizeArray<T = unknown>(
 			return index < array.length ? array[index] : value;
 		}, []);
 }
+
+export function firstItem<T = unknown>(items: T | T[]): T {
+	if (!Array.isArray(items)) {
+		return items;
+	}
+	for (const item of items) {
+		if (item !== undefined) {
+			return item;
+		}
+	}
+	return undefined as T;
+}
+
+/**
+ * Return a list of partial array
+ *
+ * Example :
+ * - subArray([1, 2, 3]) // [[1], [1, 2], [1, 2, 3]]
+ */
+export function subArrays<T = unknown>(items: T[] | T): T[][] {
+	if (!Array.isArray(items)) {
+		return [];
+	}
+	if (items.length === 1) {
+		return [items];
+	}
+	const arrays = [] as T[][];
+	for (let i = 1; i <= items.length; i++) {
+		arrays.push(items.slice(0, i));
+	}
+	return arrays;
+}

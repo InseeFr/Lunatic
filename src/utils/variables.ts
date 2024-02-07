@@ -12,17 +12,11 @@ export function getInitialVariableValue(
 		case 'CALCULATED':
 			return data[variable.variableType]?.[variable.name];
 		case 'COLLECTED':
-			const collectedData = data.COLLECTED;
-			let fromData;
-			if (collectedData && variable.name in collectedData) {
-				const { COLLECTED, FORCED } = collectedData[variable.name];
-				fromData = COLLECTED ?? FORCED;
-			}
+			const fromData = data.COLLECTED?.[variable.name]?.COLLECTED;
 			if ('values' in variable && variable.values) {
-				const { COLLECTED, FORCED } = variable.values;
-				return fromData ?? FORCED ?? COLLECTED;
+				return fromData ?? variable.values.COLLECTED;
 			}
-			return undefined;
+			return fromData;
 		default:
 			return null;
 	}

@@ -30,6 +30,7 @@ type Props = {
 	| 'preferences'
 	| 'value'
 	| 'missing'
+	| 'disabled'
 >;
 
 function LunaticComponent(props: Props) {

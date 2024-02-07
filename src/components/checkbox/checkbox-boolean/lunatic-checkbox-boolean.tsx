@@ -19,10 +19,12 @@ function LunaticCheckboxBoolean({
 	missingResponse,
 	management,
 	description,
+	readOnly,
 }: LunaticComponentProps<'CheckboxBoolean'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
 		<LunaticComponent
+			disabled={readOnly || disabled}
 			id={id}
 			preferences={preferences}
 			declarations={declarations}

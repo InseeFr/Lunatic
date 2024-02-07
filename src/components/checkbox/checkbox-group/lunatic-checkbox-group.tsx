@@ -26,6 +26,8 @@ function LunaticCheckboxGroup({
 	missingResponse,
 	missing,
 	management,
+	readOnly,
+	disabled,
 }: LunaticComponentProps<'CheckboxGroup'>) {
 	const options = responses.map(({ label, response, description }) => {
 		const { name } = response;
@@ -43,6 +45,7 @@ function LunaticCheckboxGroup({
 
 	return (
 		<LunaticComponent
+			disabled={readOnly || disabled}
 			id={id}
 			label={label}
 			preferences={preferences}
