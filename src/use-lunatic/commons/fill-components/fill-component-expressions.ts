@@ -5,7 +5,7 @@ import type {
 	LunaticExpression,
 	LunaticState,
 } from '../../type';
-import { firstItem } from '../../../utils/array';
+import { firstValueItem } from '../../../utils/array';
 
 const VTL_ATTRIBUTES = [
 	'label',
@@ -61,7 +61,7 @@ function createCrawl({
 			return {
 				...object,
 				// Todo : replace this with a casting system on execute
-				[path]: Array.isArray(result) ? firstItem(result) : result,
+				[path]: Array.isArray(result) ? firstValueItem(result) : result,
 			};
 		} catch (e) {
 			return {

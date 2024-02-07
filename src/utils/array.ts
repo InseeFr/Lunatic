@@ -70,12 +70,15 @@ export function resizeArray<T = unknown>(
 		}, []);
 }
 
-export function firstItem<T = unknown>(items: T | T[]): T {
+/**
+ * Return the first non null/undefined value of an array
+ */
+export function firstValueItem<T = unknown>(items: T | T[]): T {
 	if (!Array.isArray(items)) {
 		return items;
 	}
 	for (const item of items) {
-		if (item !== undefined) {
+		if (item !== undefined && item !== null) {
 			return item;
 		}
 	}
