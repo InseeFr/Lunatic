@@ -1,6 +1,6 @@
 import getCompatibleVTLExpression from './get-compatible-vtl-expression';
 import type { LunaticExpression, LunaticState } from '../type';
-import { firstItem } from '../../utils/array';
+import { firstValueItem } from '../../utils/array';
 
 function executeConditionFilter(
 	filter: LunaticExpression,
@@ -11,7 +11,7 @@ function executeConditionFilter(
 		const { value } = filter;
 		const result = execute(getCompatibleVTLExpression(value), { iteration });
 		// Todo : replace this with a casting system on execute
-		return Array.isArray(result) ? firstItem(result) : result;
+		return Array.isArray(result) ? firstValueItem(result) : result;
 	}
 	return undefined;
 }
