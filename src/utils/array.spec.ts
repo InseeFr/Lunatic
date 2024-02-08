@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { resizeArray, setAtIndex } from './array';
+import { firstValueItem, resizeArray, setAtIndex } from './array';
 
 describe('array', () => {
 	describe('resizeArray()', () => {
@@ -39,5 +39,10 @@ describe('array', () => {
 		it('should work with deep and non array value', () => {
 			expect(setAtIndex([null], [1, 2], 10)).toEqual([null, [null, null, 10]]);
 		});
+	});
+	it('firstValueItem', () => {
+		expect(firstValueItem([0, 1, 2])).toBe(0);
+		expect(firstValueItem([null, 1, 2])).toBe(1);
+		expect(firstValueItem([null, undefined, false])).toBe(false);
 	});
 });

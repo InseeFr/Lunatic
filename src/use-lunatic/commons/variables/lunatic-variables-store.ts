@@ -268,7 +268,7 @@ class LunaticVariable {
 		if (Object.keys(bindings).length === 0) {
 			iteration = undefined;
 		}
-		if (!this.isOutdated(iteration)) {
+		if (this.shapeFrom && !this.isOutdated(iteration)) {
 			return this.getSavedValue(iteration);
 		}
 		if (isTestEnv()) {
