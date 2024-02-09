@@ -39,7 +39,7 @@ export const RosterForLoop = createCustomizableLunaticField<
 	} = props;
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
-	const [nbRows, setNbRows] = useState(iterations);
+	const [nbRows, setNbRows] = useState(Math.max(min, iterations));
 	const showButtons = min && max && min !== max;
 
 	const addRow = useCallback(() => {

@@ -92,22 +92,22 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
+				"PREVIOUS": [],
+				"COLLECTED": [],
+				"FORCED": [],
+				"EDITED": [],
+				"INPUTED": []
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "AGE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
+				"PREVIOUS": [],
+				"COLLECTED": [],
+				"FORCED": [],
+				"EDITED": [],
+				"INPUTED": []
 			}
 		}
 	]
