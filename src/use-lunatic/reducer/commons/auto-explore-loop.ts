@@ -21,7 +21,7 @@ export function autoExploreLoop(
 		const firstSubPage = pageStringToNumbers(
 			subPages[isForward ? 0 : maxSubPage - 1]
 		);
-		newPager.page = firstSubPage[0].toString();
+		newPager.page = firstSubPage[0];
 		newPager.subPage = firstSubPage[1] - 1; // Subpage starts at 0
 		newPager.nbSubPages = maxSubPage;
 		newPager.nbIterations = nbIteration;

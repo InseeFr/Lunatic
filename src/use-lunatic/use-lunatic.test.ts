@@ -7,7 +7,7 @@ import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
-import type { LunaticData } from './type';
+import type { LunaticData, PageTag } from './type';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {
@@ -88,7 +88,7 @@ describe('use-lunatic()', () => {
 		const lunaticConfigurationWithoutOverview = {
 			management: false,
 			activeControls: false,
-			initialPage: '1',
+			initialPage: '1' as PageTag,
 			getStoreInfo: () => {},
 			missing: false,
 			shortcut: false,

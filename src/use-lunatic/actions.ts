@@ -1,4 +1,4 @@
-import type { LunaticData, LunaticState } from './type';
+import type { LunaticData, LunaticState, PageTag } from './type';
 import type { LunaticSource } from './type-source';
 import { SuggesterStatus } from './use-suggesters';
 
@@ -31,8 +31,8 @@ export type ActionInit = {
 	payload: {
 		data: LunaticData;
 		source: LunaticSource;
-		initialPage: string;
-		lastReachedPage?: string;
+		initialPage: PageTag;
+		lastReachedPage?: PageTag;
 		features: LunaticState['features'];
 		preferences: LunaticState['preferences'];
 		savingType: LunaticState['savingType'];

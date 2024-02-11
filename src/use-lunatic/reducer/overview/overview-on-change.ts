@@ -1,7 +1,7 @@
-import type { LunaticState } from '../../type';
+import type { LunaticState, PageTag } from '../../type';
 
-const isPageReached = (page: string, lastReachedPage: string) =>
-	parseInt(page, 10) <= parseInt(lastReachedPage, 10);
+const isPageReached = (page: string, lastReachedPage: PageTag) =>
+	page.toString() <= lastReachedPage;
 
 export const overviewOnChange = (state: LunaticState): LunaticState => {
 	// The breadcrumb was not initialized, do nothing
@@ -17,7 +17,7 @@ export const overviewOnChange = (state: LunaticState): LunaticState => {
 
 	const updatedOverview = overview.map((overviewEntry) => {
 		// page avant la page courante : pas de changement de state possible
-		if (parseInt(overviewEntry.page, 10) < parseInt(page, 10)) {
+		if (parseInt(overviewEntry.page, 10) < page) {
 			if (!overviewEntry.reached) {
 				return {
 					...overviewEntry,

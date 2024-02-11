@@ -18,12 +18,12 @@ export function getNextPager(
 	// Increment the page or subPage
 	let [page, subPage] =
 		pager.subPage !== undefined
-			? [parseInt(pager.page, 10), pager.subPage + 1]
-			: [parseInt(pager.page, 10) + 1, undefined];
+			? [pager.page, pager.subPage + 1]
+			: [pager.page + 1, undefined];
 	let iteration = pager.iteration;
 
 	// We reached the end of the questionnaire
-	if (page > parseInt(pager.maxPage, 10)) {
+	if (page > pager.maxPage) {
 		return pager;
 	}
 
@@ -36,7 +36,7 @@ export function getNextPager(
 	if (isEndSequence && moveUpOnEnd) {
 		return {
 			...pager,
-			page: page.toString(),
+			page: page,
 			...resetIteration,
 		};
 	}
@@ -55,7 +55,7 @@ export function getNextPager(
 		return getNextPager(
 			{
 				...pager,
-				page: page.toString(),
+				page: page,
 				...resetIteration,
 			},
 			parent
@@ -63,7 +63,7 @@ export function getNextPager(
 	}
 	return {
 		...pager,
-		page: page.toString(),
+		page: page,
 		subPage,
 		iteration,
 	};
@@ -76,8 +76,8 @@ export function getPrevPager(
 	// Decrement the page or subPage
 	let [page, subPage] =
 		pager.subPage !== undefined
-			? [parseInt(pager.page, 10), pager.subPage - 1]
-			: [parseInt(pager.page, 10) - 1, undefined];
+			? [pager.page, pager.subPage - 1]
+			: [pager.page - 1, undefined];
 	let iteration = pager.iteration;
 	const moveUpOnStart =
 		parent === 'Roundabout' && pager.nbIterations && pager.nbIterations > 1;
@@ -93,7 +93,7 @@ export function getPrevPager(
 		if (moveUpOnStart) {
 			return {
 				...pager,
-				page: page.toString(),
+				page: page,
 				...resetIteration,
 			};
 		}
@@ -108,7 +108,7 @@ export function getPrevPager(
 		return getPrevPager(
 			{
 				...pager,
-				page: page.toString(),
+				page: page,
 				...resetIteration,
 			},
 			parent
@@ -117,7 +117,7 @@ export function getPrevPager(
 
 	return {
 		...pager,
-		page: page.toString(),
+		page: page,
 		subPage,
 		iteration,
 	};

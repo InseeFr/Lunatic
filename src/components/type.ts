@@ -171,7 +171,7 @@ type ComponentPropsByType = {
 	Roundabout: LunaticBaseProps<string> & {
 		iterations: number;
 		goToPage: ReturnType<typeof useLunatic>['goToPage'];
-		page: string;
+		page: number;
 		locked?: boolean;
 		expressions: {
 			unnecessary?: Array<boolean>;

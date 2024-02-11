@@ -19,7 +19,7 @@ const isSubsequenceSamePage = (sourceComponent: Page, page: string) =>
 	sourceComponent.components[0].hierarchy?.subSequence.page === page;
 
 const isPageReached = (page: string, lastReachedPage: string) =>
-	parseInt(page, 10) <= parseInt(lastReachedPage, 10);
+	page <= lastReachedPage;
 
 function getOverview(state: LunaticState) {
 	const { pages, executeExpression, pager } = state;

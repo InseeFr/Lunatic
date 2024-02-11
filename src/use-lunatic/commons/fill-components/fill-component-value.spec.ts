@@ -17,8 +17,8 @@ describe('fillComponentValue', () => {
 			fillComponentValue(component, {
 				variables: LunaticVariablesStore.makeFromObject(values),
 				pager: {
-					maxPage: '2',
-					page: '1',
+					maxPage: 2,
+					page: 1,
 					iteration,
 				},
 			}).value

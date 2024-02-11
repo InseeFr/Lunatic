@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
-import type { LunaticData, LunaticState } from './type';
+import type { LunaticData, LunaticState, PageTag } from './type';
 
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
@@ -60,8 +60,8 @@ function useLunatic(
 		onChange?: LunaticState['handleChange'];
 		management?: boolean;
 		shortcut?: boolean;
-		initialPage?: string;
-		lastReachedPage?: string;
+		initialPage?: PageTag;
+		lastReachedPage?: PageTag;
 		autoSuggesterLoading?: boolean;
 		getReferentiel?: (name: string) => Promise<Array<unknown>>;
 		activeControls?: boolean;

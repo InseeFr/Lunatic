@@ -9,24 +9,20 @@ function reduceGoToPage(
 	action: ActionGoToPage
 ): LunaticState {
 	// The page contains non digit, extract information from it
-	if (action.payload.page.match(/\D/)) {
+	if (typeof action.payload.page === 'string') {
 		const pager = getPagerFromPageTag(action.payload.page);
-		if (pager) {
-			action.payload.iteration = pager.iteration;
-			action.payload.subPage = pager.subPage;
-			action.payload.page = pager.page;
+		if (!pager) {
+			console.error(`Cannot reach page "${action.payload.page}", not a number`);
+			return state;
 		}
-	}
-
-	// The page is still not a number, cancel the action
-	if (action.payload.page.match(/\D/)) {
-		console.error(`Cannot reach page "${action.payload.page}", not a number`);
-		return state;
+		action.payload.iteration = pager.iteration;
+		action.payload.subPage = pager.subPage;
+		action.payload.page = pager.page;
 	}
 
 	const newPager: LunaticState['pager'] = {
 		...state.pager,
-		page: action.payload.page,
+		page: action.payload.page as number,
 		subPage: action.payload.subPage,
 		iteration: action.payload.iteration,
 		nbIterations: undefined,
