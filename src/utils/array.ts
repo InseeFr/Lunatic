@@ -81,3 +81,13 @@ export function firstItem<T = unknown>(items: T | T[]): T {
 	}
 	return undefined as T;
 }
+
+/**
+ * Calculates the depth of an array
+ */
+export function depth(arr: unknown, base = 0) {
+	if (!Array.isArray(arr)) {
+		return base;
+	}
+	return depth(arr[0], base + 1);
+}
