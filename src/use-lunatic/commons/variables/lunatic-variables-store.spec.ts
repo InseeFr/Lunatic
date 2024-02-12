@@ -289,11 +289,15 @@ describe('lunatic-variables-store', () => {
 		it('should clean variables at a specific iteration', () => {
 			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
 			variables.set('READY', [true, true, true]);
-			cleaningBehaviour(variables, {
-				READY: {
-					PRENOM: 'READY',
+			cleaningBehaviour(
+				variables,
+				{
+					READY: {
+						PRENOM: 'READY',
+					},
 				},
-			});
+				{ PRENOM: [null] }
+			);
 			variables.set('READY', false, { iteration: [1] });
 			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
 		});
@@ -311,6 +315,21 @@ describe('lunatic-variables-store', () => {
 			);
 			variables.set('READY', false, { iteration: [1] });
 			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
+		});
+		it('should clean root variables even when in an iteration', () => {
+			variables.set('PRENOM', 'John');
+			variables.set('READY', [true, true, true]);
+			cleaningBehaviour(
+				variables,
+				{
+					READY: {
+						PRENOM: 'READY',
+					},
+				},
+				{ PRENOM: null }
+			);
+			variables.set('READY', false, { iteration: [1] });
+			expect(variables.get('PRENOM')).toEqual(null);
 		});
 	});
 

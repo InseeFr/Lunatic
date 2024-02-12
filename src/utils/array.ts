@@ -99,3 +99,13 @@ export function subArrays<T = unknown>(items: T[] | T): T[][] {
 	}
 	return arrays;
 }
+
+/**
+ * Calculates the depth of an array
+ */
+export function depth(arr: unknown, base = 0) {
+	if (!Array.isArray(arr)) {
+		return base;
+	}
+	return depth(arr[0], base + 1);
+}
