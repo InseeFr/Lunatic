@@ -70,16 +70,34 @@ export function resizeArray<T = unknown>(
 		}, []);
 }
 
-export function firstItem<T = unknown>(items: T | T[]): T {
+/**
+ * Return the first non null/undefined value of an array
+ */
+export function firstValueItem<T = unknown>(items: T | T[]): T | undefined {
 	if (!Array.isArray(items)) {
 		return items;
 	}
-	for (const item of items) {
-		if (item !== undefined) {
-			return item;
-		}
+	return items.find((v) => v !== undefined && v !== null);
+}
+
+/**
+ * Return a list of partial array
+ *
+ * Example :
+ * - subArray([1, 2, 3]) // [[1], [1, 2], [1, 2, 3]]
+ */
+export function subArrays<T = unknown>(items: T[] | T): T[][] {
+	if (!Array.isArray(items)) {
+		return [];
 	}
-	return undefined as T;
+	if (items.length === 1) {
+		return [items];
+	}
+	const arrays = [] as T[][];
+	for (let i = 1; i <= items.length; i++) {
+		arrays.push(items.slice(0, i));
+	}
+	return arrays;
 }
 
 /**

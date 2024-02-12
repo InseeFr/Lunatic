@@ -6,7 +6,7 @@ import { getInitialVariableValue } from '../../../utils/variables';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
-import { setAtIndex, times } from '../../../utils/array';
+import { setAtIndex, subArrays, times } from '../../../utils/array';
 import { isNumber } from '../../../utils/number';
 
 // Interpret counter, used for testing purpose
@@ -268,7 +268,7 @@ class LunaticVariable {
 		if (Object.keys(bindings).length === 0) {
 			iteration = undefined;
 		}
-		if (!this.isOutdated(iteration)) {
+		if (this.shapeFrom && !this.isOutdated(iteration)) {
 			return this.getSavedValue(iteration);
 		}
 		if (isTestEnv()) {
@@ -286,8 +286,7 @@ class LunaticVariable {
 				).toString()}`
 			);
 		}
-		this.calculatedAt.set(iteration?.join('.'), performance.now());
-		this.calculatedAt.set(undefined, performance.now());
+		this.updateTimestamps(iteration, 'calculatedAt');
 		return this.getSavedValue(iteration);
 	}
 
@@ -309,13 +308,19 @@ class LunaticVariable {
 		this.value = !Array.isArray(iteration)
 			? value
 			: setAtIndex(this.value, iteration, value);
-		if (value === undefined) {
-			this.updatedAt.delete(iteration?.join('.'));
-		} else {
-			this.updatedAt.set(iteration?.join('.'), performance.now());
-		}
-		this.updatedAt.set(undefined, performance.now());
+		this.updateTimestamps(iteration, 'updatedAt');
 		return true;
+	}
+
+	private updateTimestamps(
+		iteration: IterationLevel | undefined,
+		key: 'updatedAt' | 'calculatedAt'
+	) {
+		// Update parent iteration level timestamp
+		for (const subIteration of subArrays(iteration)) {
+			this[key].set(subIteration.join('.'), performance.now());
+		}
+		this[key].set(undefined, performance.now());
 	}
 
 	private setValueForArray(value: unknown[]) {

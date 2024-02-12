@@ -43,6 +43,7 @@ describe('lunatic-variables-store', () => {
 		variables.set('LASTNAME', 'Doe');
 		variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', {
 			dependencies: ['FIRSTNAME', 'LASTNAME'],
+			shapeFrom: 'FIRSTNAME',
 		});
 		expect(variables.get('FULLNAME')).toEqual('John Doe');
 		expect(variables.interpretCount).toBe(1);
@@ -61,9 +62,11 @@ describe('lunatic-variables-store', () => {
 		variables.set('AGE', '18');
 		variables.setCalculated('FULLNAME', 'FIRSTNAME || " " || LASTNAME', {
 			dependencies: ['FIRSTNAME', 'LASTNAME'],
+			shapeFrom: 'FIRSTNAME',
 		});
 		variables.setCalculated('LABEL', 'FULLNAME || " is " || AGE', {
 			dependencies: ['FULLNAME', 'AGE'],
+			shapeFrom: 'FULLNAME',
 		});
 		expect(variables.get('LABEL')).toEqual('John Doe is 18');
 		expect(variables.interpretCount).toBe(2);
@@ -91,7 +94,7 @@ describe('lunatic-variables-store', () => {
 		variables.set('LASTNAME', 'Doe');
 		expect(variables.run('FIRSTNAME || " " || LASTNAME')).toEqual('John Doe');
 		expect(variables.run('FIRSTNAME || " " || LASTNAME')).toEqual('John Doe');
-		expect(variables.interpretCount).toBe(1);
+		expect(variables.interpretCount).toBe(2);
 		variables.set('FIRSTNAME', 'Jane');
 		expect(variables.run('FIRSTNAME || " " || LASTNAME')).toEqual('Jane Doe');
 	});
@@ -219,7 +222,20 @@ describe('lunatic-variables-store', () => {
 			variables.run('"hello"', { iteration: [0] });
 			variables.run('"hello"', { iteration: [1] });
 			expect(variables.run('"hello"')).toEqual('hello');
-			expect(variables.interpretCount).toBe(1);
+			expect(variables.interpretCount).toBe(3);
+		});
+		it('should handle deep refresh', () => {
+			variables.set('LIENS', [
+				['17', null],
+				[null, '17'],
+			]);
+			variables.setCalculated('IS_12', 'if ("12" in LIENS) then 1 else 0', {
+				dependencies: ['LIENS'],
+				shapeFrom: 'LIENS',
+			});
+			expect(variables.get('IS_12', [0])).toBe(0);
+			variables.set('LIENS', '12', { iteration: [0, 0] });
+			expect(variables.get('IS_12', [0])).toBe(1);
 		});
 	});
 
