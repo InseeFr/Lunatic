@@ -3,7 +3,15 @@ const path = require('path');
 
 const version = lunaticPackageJson.workersVersion;
 
-const currentPublicFolder = path.resolve(`${process.cwd()}/public/workers`);
+/**
+ * process.argv return an array, for example, for this command "node ./my-script.js hello"
+ * process.argv = ["node", ""./my-script.js", "hello"]
+ */
+const getPublicFolder = () => process.argv[2] || 'public';
+
+const currentPublicFolder = path.resolve(
+	`${process.cwd()}/${getPublicFolder()}/workers`
+);
 const workersReleaseFolder = path.resolve(__dirname, '../../workers-release');
 
 const workersPath = {
