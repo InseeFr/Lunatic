@@ -5,7 +5,7 @@ const version = lunaticPackageJson.workersVersion;
 
 /**
  * process.argv return an array, for example, for this command "node ./my-script.js hello"
- * process.argv = ["node", ""./my-script.js", "hello"]
+ * process.argv = ["node", "./my-script.js", "hello"], process.argv[2] = "hello" (or undefined if no argument)
  */
 const getPublicFolder = () => process.argv[2] || 'public';
 
