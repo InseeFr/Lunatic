@@ -124,7 +124,8 @@ Lunatic uses webWorkers to take the load off the main execution frame (e.g. list
 
 Workers are normally installed when the library is installed (postinstall scripts). If this is not the case, you can always manually run the command `npx @inseefr/lunatic workers` at the root of your project to add Lunatic workers to your project.
 
-Lunatic workers are added to the `public/workers` folder of the current project when the library is installed.
+By default: Lunatic workers are added to the `public/workers` folder of the current project when the library is installed.
+If you want to install inside another folder, just run `npx @inseefr/lunatic workers my-custom-folder`. Workers will be available to the `my-custom-folder/workers` folder of the current project.
 
 If a new version of Lunatic offers new workers, they will be automatically updated.
 This ensures that you always have the right version of workers for the version of Lunatic you're using.
