@@ -30,7 +30,9 @@ export function resizingBehaviour(
 		// Pairwise resizing
 		if ('sizeForLinksVariables' in resizingInfo) {
 			resizePairwise(store, resizingInfo, e.detail);
-			return;
+			if (!('size' in resizingInfo)) {
+				return;
+			}
 		}
 
 		if (!resizingInfo.size) {
