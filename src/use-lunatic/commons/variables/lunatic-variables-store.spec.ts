@@ -253,6 +253,42 @@ describe('lunatic-variables-store', () => {
 			expect((variables.get('PRENOM') as string[]).length).toEqual(3);
 			expect((variables.get('NOM') as string[]).length).toEqual(3);
 		});
+		it('should resize pairwise', () => {
+			variables.set('PRENOM', []);
+			variables.set('LINKS', [[]]);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					sizeForLinksVariables: ['count(PRENOM)', 'count(PRENOM)'],
+					linksVariables: ['LINKS'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			expect(variables.get('LINKS') as string[][]).toEqual([
+				[null, null, null],
+				[null, null, null],
+				[null, null, null],
+			]);
+		});
+		it('should handle both pairwise and normal resize', () => {
+			variables.set('PRENOM', []);
+			variables.set('NOM', []);
+			variables.set('LINKS', [[]]);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					sizeForLinksVariables: ['count(PRENOM)', 'count(PRENOM)'],
+					linksVariables: ['LINKS'],
+					size: 'count(PRENOM)',
+					variables: ['NOM'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			expect(variables.get('LINKS') as string[][]).toEqual([
+				[null, null, null],
+				[null, null, null],
+				[null, null, null],
+			]);
+			expect(variables.get('NOM') as string[]).toEqual([null, null, null]);
+		});
 	});
 
 	describe('cleaning', () => {

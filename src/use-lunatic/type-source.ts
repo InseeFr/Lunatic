@@ -349,6 +349,12 @@ export type LunaticSource = {
 			| {
 					sizeForLinksVariables: string[];
 					linksVariables: string[];
+			  }
+			| {
+					size: string; // VTL Expression
+					variables: string[];
+					sizeForLinksVariables: string[];
+					linksVariables: string[];
 			  };
 	};
 };
