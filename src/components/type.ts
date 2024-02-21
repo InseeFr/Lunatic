@@ -87,6 +87,7 @@ type ComponentPropsByType = {
 		'declarations' | 'label' | 'id' | 'description'
 	> & { components: FilledLunaticComponentProps[] };
 	QuestionContext: Pick<LunaticBaseProps<unknown>, 'label' | 'description'>;
+	QuestionInformation: Pick<LunaticBaseProps<unknown>, 'label' | 'description'>;
 	ComponentSet: LunaticBaseProps<unknown> & {
 		components: FilledLunaticComponentProps[];
 		value: Record<string, unknown>;
