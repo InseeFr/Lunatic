@@ -15,10 +15,13 @@ export function replaceComponentSequence(
 		component
 	) {
 		const { componentType } = component;
-		if (componentType === 'ComponentSet') {
-			return [...acc, ...component.components];
+		switch (componentType) {
+			case 'Question':
+			case 'ComponentSet':
+				return [...acc, ...component.components];
+			default:
+				return [...acc, component];
 		}
-		return [...acc, component];
 	},
 	[]);
 }

@@ -116,7 +116,12 @@ export type ComponentType =
 			componentType: 'ConfirmationModal';
 	  })
 	| (ComponentTypeBase & ComponentComponentSetType)
-	| (ComponentTypeBase & ComponentQuestionExplicationType);
+	| (ComponentTypeBase & ComponentQuestionExplicationType)
+	| (ComponentTypeBase & {
+			componentType: 'Question';
+			components: ComponentType[];
+			description: LabelType;
+	  });
 
 export type ComponentTypeEnum = ComponentType['componentType'];
 
@@ -237,6 +242,12 @@ export type ComponentPairWiseLinksType = {
 	symLinks: {
 		[variableName: string]: Record<string, string>;
 	};
+	components: ComponentType[];
+};
+
+//Is it realy needed ?
+export type ComponentQuestionType = {
+	componentType: 'Question';
 	components: ComponentType[];
 };
 
