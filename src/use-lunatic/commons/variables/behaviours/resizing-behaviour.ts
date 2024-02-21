@@ -52,18 +52,28 @@ export function resizingBehaviour(
 function resizePairwise(
 	store: LunaticVariablesStore,
 	resizingInfo: {
-		sizeForLinksVariables: string[];
+		sizeForLinksVariables:
+			| [string, string]
+			| { xAxisSize: string; yAxisSize: string };
 		linksVariables: string[];
 	},
 	args: {
 		iteration?: number[];
 	}
 ) {
-	const [xSize, ySize] = resizingInfo.sizeForLinksVariables.map(
-		(expression) => {
-			return forceInt(store.run(getExpressionAsString(expression)));
-		}
-	);
+	// Handle expression being sent as an array or an object (ensure backward compatibility)
+	// Issue : https://github.com/InseeFr/Lunatic/issues/883
+	const sizeExpressions: [string, string] = Array.isArray(
+		resizingInfo.sizeForLinksVariables
+	)
+		? resizingInfo.sizeForLinksVariables
+		: [
+				resizingInfo.sizeForLinksVariables.xAxisSize,
+				resizingInfo.sizeForLinksVariables.yAxisSize,
+		  ];
+	const [xSize, ySize] = sizeExpressions.map((expression) => {
+		return forceInt(store.run(getExpressionAsString(expression)));
+	});
 	resizingInfo.linksVariables.forEach((variable) => {
 		const value = store.get(variable, args.iteration);
 		const resizedValue = resizeArray(

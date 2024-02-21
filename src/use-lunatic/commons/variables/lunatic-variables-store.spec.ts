@@ -253,12 +253,31 @@ describe('lunatic-variables-store', () => {
 			expect((variables.get('PRENOM') as string[]).length).toEqual(3);
 			expect((variables.get('NOM') as string[]).length).toEqual(3);
 		});
-		it('should resize pairwise', () => {
+		it('should resize pairwise with the array syntax', () => {
 			variables.set('PRENOM', []);
 			variables.set('LINKS', [[]]);
 			resizingBehaviour(variables, {
 				PRENOM: {
 					sizeForLinksVariables: ['count(PRENOM)', 'count(PRENOM)'],
+					linksVariables: ['LINKS'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			expect(variables.get('LINKS') as string[][]).toEqual([
+				[null, null, null],
+				[null, null, null],
+				[null, null, null],
+			]);
+		});
+		it('should resize pairwise with the object syntax', () => {
+			variables.set('PRENOM', []);
+			variables.set('LINKS', [[]]);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					sizeForLinksVariables: {
+						xAxisSize: 'count(PRENOM)',
+						yAxisSize: 'count(PRENOM)',
+					},
 					linksVariables: ['LINKS'],
 				},
 			});

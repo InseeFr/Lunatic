@@ -347,13 +347,17 @@ export type LunaticSource = {
 					variables: string[];
 			  }
 			| {
-					sizeForLinksVariables: string[];
+					sizeForLinksVariables:
+						| [string, string]
+						| { xAxisSize: string; yAxisSize: string };
 					linksVariables: string[];
 			  }
 			| {
 					size: string; // VTL Expression
 					variables: string[];
-					sizeForLinksVariables: string[];
+					sizeForLinksVariables:
+						| [string, string]
+						| { xAxisSize: string; yAxisSize: string };
 					linksVariables: string[];
 			  };
 	};
