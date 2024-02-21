@@ -100,7 +100,7 @@ const Template = (args) => {
 	const isIndexed = indexed === index.name;
 
 	const handleIndex = async () => {
-		const data = await fetch(`/${index.name}.json`).then((r) => r.json());
+		const data = await fetch(`./${index.name}.json`).then((r) => r.json());
 		await Promise.all(
 			Object.keys(searches).map(async (k) => {
 				const title = `Indexation ${k}`;

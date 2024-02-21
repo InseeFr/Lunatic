@@ -49,7 +49,7 @@
 		"build": "babel src --out-dir lib --extensions \".ts,.js,.tsx,.jsx\" --copy-files && tsc --project tsconfig.prod.json && npm run build-workers",
 		"prepare-workers": "npm run build-workers && node ./scripts/build/add-workers-to-public.js",
 		"postinstall": "node ./scripts/build/add-workers-to-public.js",
-		"storybook": "npm run prepare-workers && start-storybook -p 9999 -s ./public",
+		"storybook": "npm run prepare-workers && start-storybook -p 9999",
 		"build-storybook": "npm run prepare-workers && build-storybook"
 	},
 	"bin": {
