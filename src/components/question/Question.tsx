@@ -1,5 +1,4 @@
 import { createCustomizableLunaticField } from '../commons';
-import { ComponentSetWrapper } from '../component-set/html/component-set-wrapper';
 import { DeclarationsAfterText, DeclarationsBeforeText } from '../declarations';
 import { LunaticComponents } from '../lunatic-components';
 import type { LunaticComponentProps } from '../type';
@@ -9,7 +8,7 @@ import type { LunaticComponentProps } from '../type';
  */
 export const Question = createCustomizableLunaticField(
   (props: LunaticComponentProps<'Question'>) => {
-    const { id, description, declarations, label, components, ...rest } = props;
+    const { id, description, declarations, label, components } = props;
     return (
       <>
         <DeclarationsBeforeText declarations={declarations} id={id} />
