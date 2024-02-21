@@ -1,0 +1,9010 @@
+[
+  {
+    "id": "1A",
+    "label": "Domaxia"
+  },
+  {
+    "id": "2A",
+    "label": "OPH de Meaux"
+  },
+  {
+    "id": "3A",
+    "label": "OPH de Paris"
+  },
+  {
+    "id": "4A",
+    "label": "OPH du Val-de-Marne"
+  },
+  {
+    "id": "5A",
+    "label": "Hauts-de-Bièvre Habitat"
+  },
+  {
+    "id": "6A",
+    "label": "OPH d'Arcueil-Gentilly"
+  },
+  {
+    "id": "7A",
+    "label": "SCIC Argenteuil Bezons Habitat"
+  },
+  {
+    "id": "8A",
+    "label": "OPH d'Aubervilliers"
+  },
+  {
+    "id": "9A",
+    "label": "OPH d'Aulnay-sous-Bois"
+  },
+  {
+    "id": "10A",
+    "label": "OPH de Bagneaux-Poligny-Nemours"
+  },
+  {
+    "id": "11A",
+    "label": "OPH de Bagnolet"
+  },
+  {
+    "id": "12A",
+    "label": "OPH de Bobigny"
+  },
+  {
+    "id": "13A",
+    "label": "OPH de Bondy"
+  },
+  {
+    "id": "14A",
+    "label": "OPH de Cachan"
+  },
+  {
+    "id": "15A",
+    "label": "OPH de Chatillon"
+  },
+  {
+    "id": "16A",
+    "label": "OPH de Coulommiers"
+  },
+  {
+    "id": "17A",
+    "label": "OPH de Courbevoie"
+  },
+  {
+    "id": "18A",
+    "label": "OPH de Drancy"
+  },
+  {
+    "id": "19A",
+    "label": "Gennevilliers Habitat – société coopérative HLM"
+  },
+  {
+    "id": "20A",
+    "label": "OPH des Hauts-de-Seine"
+  },
+  {
+    "id": "21A",
+    "label": "OPH d'Ivry-sur-Seine"
+  },
+  {
+    "id": "22A",
+    "label": "OPH du Kremlin-Bicêtre"
+  },
+  {
+    "id": "23A",
+    "label": "Levallois-Perret Habitat"
+  },
+  {
+    "id": "24A",
+    "label": "OPH de Montereau"
+  },
+  {
+    "id": "25A",
+    "label": "OPH de Montrouge"
+  },
+  {
+    "id": "26A",
+    "label": "OPH de Nanterre"
+  },
+  {
+    "id": "27A",
+    "label": "OPH de Pantin"
+  },
+  {
+    "id": "28A",
+    "label": "OPH de Puteaux"
+  },
+  {
+    "id": "29A",
+    "label": "OPH de Saint-Maur-des-Fossés"
+  },
+  {
+    "id": "30A",
+    "label": "OPH de Sceaux"
+  },
+  {
+    "id": "31A",
+    "label": "OPH de Seine-et-Marne"
+  },
+  {
+    "id": "32A",
+    "label": "Seine-Saint-Denis habitat"
+  },
+  {
+    "id": "33A",
+    "label": "OPH de Thiais"
+  },
+  {
+    "id": "34A",
+    "label": "OPH de Villejuif"
+  },
+  {
+    "id": "35A",
+    "label": "OPH de Villemomble"
+  },
+  {
+    "id": "36A",
+    "label": "OPH de Villeneuve-Saint-Georges"
+  },
+  {
+    "id": "37A",
+    "label": "OPH de Vincennes"
+  },
+  {
+    "id": "38A",
+    "label": "OPH de Vitry-sur-Seine"
+  },
+  {
+    "id": "39A",
+    "label": "SA HLM IDF Habitat"
+  },
+  {
+    "id": "40A",
+    "label": "SA HLM Coopérer Pour Habiter"
+  },
+  {
+    "id": "41A",
+    "label": "SA HLM Efidis"
+  },
+  {
+    "id": "42A",
+    "label": "Emmaüs Habitat"
+  },
+  {
+    "id": "43A",
+    "label": "SA HLM Espace Habitat Construction"
+  },
+  {
+    "id": "44A",
+    "label": "SA HLM Essonne Habitat"
+  },
+  {
+    "id": "45A",
+    "label": "ESH DOMNIS"
+  },
+  {
+    "id": "46A",
+    "label": "SA HLM Les Foyers de Seine-et-Marne"
+  },
+  {
+    "id": "47A",
+    "label": "SA HLM française des habitations économiques"
+  },
+  {
+    "id": "48A",
+    "label": "SEQENS"
+  },
+  {
+    "id": "49A",
+    "label": "SA HLM Gestion maintenance aménagement construction"
+  },
+  {
+    "id": "50A",
+    "label": "SA HLM Aximo"
+  },
+  {
+    "id": "51A",
+    "label": "SA HLM Habitat social français"
+  },
+  {
+    "id": "52A",
+    "label": "L'HABITATION CONFORTABLE"
+  },
+  {
+    "id": "53A",
+    "label": "SA HLM Immobilière 3F"
+  },
+  {
+    "id": "54A",
+    "label": "SA HLM Immobilière du Moulin Vert"
+  },
+  {
+    "id": "55A",
+    "label": "SA HLM interprofessionnelle de la région parisienne"
+  },
+  {
+    "id": "56A",
+    "label": "SA HLM LOGIREP"
+  },
+  {
+    "id": "57A",
+    "label": "SA HLM Le Logis social du Val-d'Oise"
+  },
+  {
+    "id": "58A",
+    "label": "SA HLM Logis Transports"
+  },
+  {
+    "id": "59A",
+    "label": "Erigère"
+  },
+  {
+    "id": "60A",
+    "label": "SEQENS Solidarité"
+  },
+  {
+    "id": "61A",
+    "label": "SA HLM Pierres et Lumières"
+  },
+  {
+    "id": "62A",
+    "label": "SA HLM La Plaine de France"
+  },
+  {
+    "id": "63A",
+    "label": "SA HLM Valophis Sarepa"
+  },
+  {
+    "id": "64A",
+    "label": "SA HLM Résidence urbaine de France"
+  },
+  {
+    "id": "65A",
+    "label": "SA HLM Résidences le logement des fonctionnaires"
+  },
+  {
+    "id": "66A",
+    "label": "SA HLM La Sablière"
+  },
+  {
+    "id": "67A",
+    "label": "SA HLM Antin Résidences"
+  },
+  {
+    "id": "68A",
+    "label": "SA HLM Batigère île-de-France"
+  },
+  {
+    "id": "69A",
+    "label": "SA HLM Trois Moulins Habitat"
+  },
+  {
+    "id": "70A",
+    "label": "SA HLM Toit et Joie"
+  },
+  {
+    "id": "71A",
+    "label": "CDC HABITAT SOCIAL SA H.L.M"
+  },
+  {
+    "id": "72A",
+    "label": "SA HLM Domaxis"
+  },
+  {
+    "id": "73A",
+    "label": "CROIX ROUGE HABITAT SA D'HABITATIONS"
+  },
+  {
+    "id": "74A",
+    "label": "SCP d'HLM La Chaumière"
+  },
+  {
+    "id": "75A",
+    "label": "SEM DU PAYS DE FONTAINEBLEAU"
+  },
+  {
+    "id": "76A",
+    "label": "Créteil Habitat SEMIC"
+  },
+  {
+    "id": "77A",
+    "label": "SAEM d'Epinay-sur-Seine"
+  },
+  {
+    "id": "78A",
+    "label": "Société Anonyme Immobilière d'Economie Mixte de Malakoff"
+  },
+  {
+    "id": "79A",
+    "label": "SAIEM de la Garenne-Colombes"
+  },
+  {
+    "id": "80A",
+    "label": "SAEM Habitation de Louveciennes"
+  },
+  {
+    "id": "81A",
+    "label": "SAEM de construction de Maisons-Laffitte"
+  },
+  {
+    "id": "82A",
+    "label": "Pays de Meaux Habitat"
+  },
+  {
+    "id": "83A",
+    "label": "SAEM de construction et d'aménagement de Mitry-Mory"
+  },
+  {
+    "id": "84A",
+    "label": "SAIEM du Moulin-à-Vent à  Rueil-Malmaison"
+  },
+  {
+    "id": "85A",
+    "label": "SEM de Neuilly-sur-Seine"
+  },
+  {
+    "id": "86A",
+    "label": "SEM Nocéenne"
+  },
+  {
+    "id": "87A",
+    "label": "SAIEM de Nogent-sur-Marne"
+  },
+  {
+    "id": "88A",
+    "label": "SAEM de la ville de Noisy-le-Sec"
+  },
+  {
+    "id": "89A",
+    "label": "Régie Immobilière de la ville de Paris"
+  },
+  {
+    "id": "90A",
+    "label": "Elogie-SIEMP"
+  },
+  {
+    "id": "91A",
+    "label": "SAEM intercommunale du Pays de France et de l'Aulnoye"
+  },
+  {
+    "id": "92A",
+    "label": "SAIEM de Rambouillet"
+  },
+  {
+    "id": "93A",
+    "label": "SIEM de Saint-Maur-des-Fossés"
+  },
+  {
+    "id": "94A",
+    "label": "SAEM de construction et rénovation de la ville de Saint-Ouen"
+  },
+  {
+    "id": "95A",
+    "label": "Sceaux Bourg-la-Reine Habitat - société d'économie mixte locale"
+  },
+  {
+    "id": "96A",
+    "label": "ADOMA"
+  },
+  {
+    "id": "97A",
+    "label": "SAEM d'aménagement et de construction de Varennes-sur-Seine"
+  },
+  {
+    "id": "98A",
+    "label": "SAEM de la ville de Vincennes"
+  },
+  {
+    "id": "99A",
+    "label": "SAEM de la région parisienne - Secteur sud-est"
+  },
+  {
+    "id": "100A",
+    "label": "OPH des Ardennes"
+  },
+  {
+    "id": "101A",
+    "label": "OPH du département de l'Aube"
+  },
+  {
+    "id": "102A",
+    "label": "OPH de Châlons-en-Champagne"
+  },
+  {
+    "id": "103A",
+    "label": "OPH de la Haute-Marne"
+  },
+  {
+    "id": "104A",
+    "label": "OPH Reims Habitat Champagne Ardenne"
+  },
+  {
+    "id": "105A",
+    "label": "OPH de Troyes"
+  },
+  {
+    "id": "106A",
+    "label": "OPH de Chaumont"
+  },
+  {
+    "id": "107A",
+    "label": "OPH de Saint-Dizier"
+  },
+  {
+    "id": "108A",
+    "label": "PLURIAL NOVILIA"
+  },
+  {
+    "id": "109A",
+    "label": "SA HLM Espace Habitat des Ardennes"
+  },
+  {
+    "id": "110A",
+    "label": "SA HLM Le Foyer Rémois"
+  },
+  {
+    "id": "111A",
+    "label": "SA HLM Mon Logis"
+  },
+  {
+    "id": "112A",
+    "label": "SA HLM Habitat de Champagne"
+  },
+  {
+    "id": "113A",
+    "label": "NOV'HABITAT"
+  },
+  {
+    "id": "114A",
+    "label": "SA HLM Vitry-Habitat"
+  },
+  {
+    "id": "115A",
+    "label": "SI d' Aménagement du Barsuraubois et de l'Aube"
+  },
+  {
+    "id": "116A",
+    "label": "OPH de l'Aisne"
+  },
+  {
+    "id": "117A",
+    "label": "Amsom Habitat"
+  },
+  {
+    "id": "118A",
+    "label": "OPH de Laon"
+  },
+  {
+    "id": "119A",
+    "label": "OPH de l'Oise"
+  },
+  {
+    "id": "120A",
+    "label": "OPH Oise Habitat"
+  },
+  {
+    "id": "121A",
+    "label": "OPH d'Abbeville"
+  },
+  {
+    "id": "122A",
+    "label": "OPH de Saint-Quentin"
+  },
+  {
+    "id": "123A",
+    "label": "OPH de la Somme"
+  },
+  {
+    "id": "124A",
+    "label": "SA HLM du département de l'Aisne"
+  },
+  {
+    "id": "125A",
+    "label": "SA HLM du Beauvaisis"
+  },
+  {
+    "id": "126A",
+    "label": "SA HLM Le Logement famillial de Soissons-Aisne"
+  },
+  {
+    "id": "127A",
+    "label": "SA HLM du département de l'Oise"
+  },
+  {
+    "id": "128A",
+    "label": "SA HLM Immobilière picarde"
+  },
+  {
+    "id": "129A",
+    "label": "SA HLM Picardie Habitat"
+  },
+  {
+    "id": "130A",
+    "label": "SA Immobilière de Péronne"
+  },
+  {
+    "id": "131A",
+    "label": "OPH de l'Eure"
+  },
+  {
+    "id": "132A",
+    "label": "OPH de Rouen"
+  },
+  {
+    "id": "133A",
+    "label": "HABITAT 76"
+  },
+  {
+    "id": "134A",
+    "label": "OPH de la C.O.D.A.H."
+  },
+  {
+    "id": "135A",
+    "label": "SA HLM Immobilière de la Basse-Seine"
+  },
+  {
+    "id": "136A",
+    "label": "LOGEO SEINE"
+  },
+  {
+    "id": "137A",
+    "label": "SA HLM de la région d'Elbeuf"
+  },
+  {
+    "id": "138A",
+    "label": "SA HLM Le Foyer stéphanais"
+  },
+  {
+    "id": "139A",
+    "label": "SA HLM Le Foyer du Toit familial"
+  },
+  {
+    "id": "140A",
+    "label": "SA Gournaisienne d'HLM"
+  },
+  {
+    "id": "141A",
+    "label": "SA Quevilly Habitat"
+  },
+  {
+    "id": "142A",
+    "label": "Logeal Immobilière SA Habitations"
+  },
+  {
+    "id": "143A",
+    "label": "SA HLM Le Logement familial de l'Eure"
+  },
+  {
+    "id": "144A",
+    "label": "SA HLM LogiSeine"
+  },
+  {
+    "id": "145A",
+    "label": "Seine Habitat"
+  },
+  {
+    "id": "146A",
+    "label": "SA HLM rurale de l'Eure"
+  },
+  {
+    "id": "147A",
+    "label": "Société Immobilière du logement de l'Eure"
+  },
+  {
+    "id": "148A",
+    "label": "SA HLM Sodineuf Habitat Normand"
+  },
+  {
+    "id": "149A",
+    "label": "SCIC d'HLM Propriété familiale Normandie"
+  },
+  {
+    "id": "150A",
+    "label": "SAIEM de la ville d'Elbeuf"
+  },
+  {
+    "id": "151A",
+    "label": "SAIEM AGIRE"
+  },
+  {
+    "id": "152A",
+    "label": "SAEM Le Logement de l'Eure"
+  },
+  {
+    "id": "153A",
+    "label": "SAEM de Normandie"
+  },
+  {
+    "id": "154A",
+    "label": "SIEM d'Oissel et de la région"
+  },
+  {
+    "id": "155A",
+    "label": "SAEM de la ville du Trait"
+  },
+  {
+    "id": "156A",
+    "label": "OPH de Dreux"
+  },
+  {
+    "id": "157A",
+    "label": "OPH de l'Indre"
+  },
+  {
+    "id": "158A",
+    "label": "OPH d'Indre et Loire"
+  },
+  {
+    "id": "159A",
+    "label": "OPH de Loir-et-Cher"
+  },
+  {
+    "id": "160A",
+    "label": "OPH du Loiret"
+  },
+  {
+    "id": "161A",
+    "label": "OPH de la ville de Tours"
+  },
+  {
+    "id": "162A",
+    "label": "OPH de Chartres"
+  },
+  {
+    "id": "163A",
+    "label": "OPH de Chateaudun"
+  },
+  {
+    "id": "164A",
+    "label": "OPH du Cher"
+  },
+  {
+    "id": "165A",
+    "label": "OPH de Nogent-le-Rotrou"
+  },
+  {
+    "id": "166A",
+    "label": "SA HLM ICF Atlantique"
+  },
+  {
+    "id": "167A",
+    "label": "VALLOGIS Bâtir Centre"
+  },
+  {
+    "id": "168A",
+    "label": "SA HLM Eure-et-Loir Habitat"
+  },
+  {
+    "id": "169A",
+    "label": "SA HLM France-Loire"
+  },
+  {
+    "id": "170A",
+    "label": "SCALIS"
+  },
+  {
+    "id": "171A",
+    "label": "SA HLM Immobilière Centre Loire"
+  },
+  {
+    "id": "172A",
+    "label": "SA HLM Loir-et-Cher Logement"
+  },
+  {
+    "id": "173A",
+    "label": "SA HLM Le nouveau logis Centre-Limousin"
+  },
+  {
+    "id": "174A",
+    "label": "SA HLM La Roseraie"
+  },
+  {
+    "id": "175A",
+    "label": "SA HLM de Pithiviers"
+  },
+  {
+    "id": "176A",
+    "label": "SA HLM Touraine-Logement"
+  },
+  {
+    "id": "177A",
+    "label": "SA HLM La Tourangelle"
+  },
+  {
+    "id": "178A",
+    "label": "LIGERIS"
+  },
+  {
+    "id": "179A",
+    "label": "INOLYA"
+  },
+  {
+    "id": "180A",
+    "label": "OPH de Caen"
+  },
+  {
+    "id": "181A",
+    "label": "OPH CU de Cherbourg"
+  },
+  {
+    "id": "182A",
+    "label": "OPH de la Manche"
+  },
+  {
+    "id": "183A",
+    "label": "OPH de l'Orne"
+  },
+  {
+    "id": "184A",
+    "label": "SA HLM d'aménagement et de gestion Immobilière"
+  },
+  {
+    "id": "185A",
+    "label": "SA HLM du Calvados"
+  },
+  {
+    "id": "186A",
+    "label": "SA HLM Les Cités cherbourgeoises"
+  },
+  {
+    "id": "187A",
+    "label": "SA HLM du Cotentin"
+  },
+  {
+    "id": "188A",
+    "label": "SA HLM de Coutances-Granville"
+  },
+  {
+    "id": "189A",
+    "label": "LES FOYERS NORMANDS"
+  },
+  {
+    "id": "190A",
+    "label": "SA HLM de la ville d'Alençon et de l'Orne"
+  },
+  {
+    "id": "191A",
+    "label": "SA HLM La Plaine normande"
+  },
+  {
+    "id": "192A",
+    "label": "SA HLM Porte de l'Europe"
+  },
+  {
+    "id": "193A",
+    "label": "SAIEM de la ville de Bayeux"
+  },
+  {
+    "id": "194A",
+    "label": "Groupement immobilier de la ville de Caen"
+  },
+  {
+    "id": "195A",
+    "label": "Société caennaise de développement immobilier"
+  },
+  {
+    "id": "196A",
+    "label": "SAEM Livarot"
+  },
+  {
+    "id": "197A",
+    "label": "SEM de Vence"
+  },
+  {
+    "id": "198A",
+    "label": "SAEM Viroise"
+  },
+  {
+    "id": "199A",
+    "label": "OPH de Dijon"
+  },
+  {
+    "id": "200A",
+    "label": "OPH de Saône-et-Loire"
+  },
+  {
+    "id": "201A",
+    "label": "OPH de l'Yonne"
+  },
+  {
+    "id": "202A",
+    "label": "OPH d'Auxerre"
+  },
+  {
+    "id": "203A",
+    "label": "OPH de la Côte-d'Or"
+  },
+  {
+    "id": "204A",
+    "label": "OPH de la Nièvre"
+  },
+  {
+    "id": "205A",
+    "label": "SCIC Habitat Bourgogne SA d'HLM"
+  },
+  {
+    "id": "206A",
+    "label": "SOCIETE ANONYME D'HABITATIONS A LOYER MODERE HABELLIS"
+  },
+  {
+    "id": "207A",
+    "label": "LOGIVIE SA HLM"
+  },
+  {
+    "id": "208A",
+    "label": "SA HLM de l'arrondissement de Sens"
+  },
+  {
+    "id": "209A",
+    "label": "Société Immobilière de la Madeleine"
+  },
+  {
+    "id": "210A",
+    "label": "OPH de la communauté urbaine de Lille"
+  },
+  {
+    "id": "211A",
+    "label": "OPH du Nord"
+  },
+  {
+    "id": "212A",
+    "label": "OPH du Pas-de-Calais"
+  },
+  {
+    "id": "213A",
+    "label": "Habitat du Littoral"
+  },
+  {
+    "id": "214A",
+    "label": "OPH de Calais"
+  },
+  {
+    "id": "215A",
+    "label": "OPH de Fourmies"
+  },
+  {
+    "id": "216A",
+    "label": "SA HLM Immobilière Artois"
+  },
+  {
+    "id": "217A",
+    "label": "SA HLM Avesnoise"
+  },
+  {
+    "id": "218A",
+    "label": "SA HLM Logis des Flandes intérieure et maritime"
+  },
+  {
+    "id": "219A",
+    "label": "SA HLM AXENTIA"
+  },
+  {
+    "id": "220A",
+    "label": "SA HLM Le Cottage social des"
+  },
+  {
+    "id": "221A",
+    "label": "SA HLM du Hainaut"
+  },
+  {
+    "id": "222A",
+    "label": "VILOGIA"
+  },
+  {
+    "id": "223A",
+    "label": "Flandres Opale Habitat"
+  },
+  {
+    "id": "224A",
+    "label": "SA HLM Logis Métropole"
+  },
+  {
+    "id": "225A",
+    "label": "SA HLM La Maison flamande"
+  },
+  {
+    "id": "226A",
+    "label": "Habitat du Nord"
+  },
+  {
+    "id": "227A",
+    "label": "SA HLM Immobilière Nord-Artois"
+  },
+  {
+    "id": "228A",
+    "label": "SA HLM NOREVIE"
+  },
+  {
+    "id": "229A",
+    "label": "Notre Logis"
+  },
+  {
+    "id": "230A",
+    "label": "SA HLM du Pas-de-Calais et du Nord"
+  },
+  {
+    "id": "231A",
+    "label": "SA HLM Promocil"
+  },
+  {
+    "id": "232A",
+    "label": "SA HLM régionale des Cités-Jardins"
+  },
+  {
+    "id": "233A",
+    "label": "SCP d'HLM Notre Cottage"
+  },
+  {
+    "id": "234A",
+    "label": "SAEM de Drocourt"
+  },
+  {
+    "id": "235A",
+    "label": "OPH de Metz"
+  },
+  {
+    "id": "236A",
+    "label": "OPH de Meurthe et Moselle"
+  },
+  {
+    "id": "237A",
+    "label": "OPH Moselis"
+  },
+  {
+    "id": "238A",
+    "label": "Office Métropolitain de l'habitat du grand Nancy"
+  },
+  {
+    "id": "239A",
+    "label": "OPH des Vosges"
+  },
+  {
+    "id": "240A",
+    "label": "OPH d'Epinal"
+  },
+  {
+    "id": "241A",
+    "label": "OPH de Luneville"
+  },
+  {
+    "id": "242A",
+    "label": "OPH de Montigny-lès-Metz"
+  },
+  {
+    "id": "243A",
+    "label": "OPH de Sarreguemines"
+  },
+  {
+    "id": "244A",
+    "label": "OPH de Thionville"
+  },
+  {
+    "id": "245A",
+    "label": "OPH de Toul"
+  },
+  {
+    "id": "246A",
+    "label": "SA Batigère"
+  },
+  {
+    "id": "247A",
+    "label": "SA HLM Logement Gestion Immobilière de la région de l'Est"
+  },
+  {
+    "id": "248A",
+    "label": "Présence Habitat"
+  },
+  {
+    "id": "249A",
+    "label": "SA HLM des régions du Nord et de l'Est"
+  },
+  {
+    "id": "250A",
+    "label": "Batigère Rhône Alpes"
+  },
+  {
+    "id": "251A",
+    "label": "SA lorraine d'HLM"
+  },
+  {
+    "id": "252A",
+    "label": "SA HLM Le Toit Vosgien"
+  },
+  {
+    "id": "253A",
+    "label": "SAEM de la ville de Golbey"
+  },
+  {
+    "id": "254A",
+    "label": "SEMC de construction Le Logement thillois"
+  },
+  {
+    "id": "255A",
+    "label": "SAIEM du bassin de Pont-à-Mousson"
+  },
+  {
+    "id": "256A",
+    "label": "SAIEM de la ville de Rombas"
+  },
+  {
+    "id": "257A",
+    "label": "SAIEM Le Logis sarrebourgeois"
+  },
+  {
+    "id": "258A",
+    "label": "SIEM La Sarrebourgeoise"
+  },
+  {
+    "id": "259A",
+    "label": "SAEM des villes de Verdun et de Saint-Mihiel"
+  },
+  {
+    "id": "260A",
+    "label": "SAEM de Villerupt"
+  },
+  {
+    "id": "261A",
+    "label": "Société Sainte-Barbe"
+  },
+  {
+    "id": "262A",
+    "label": "OPH de Colmar"
+  },
+  {
+    "id": "263A",
+    "label": "m2A Habitat"
+  },
+  {
+    "id": "264A",
+    "label": "OPH de la ville de Saint-Louis"
+  },
+  {
+    "id": "265A",
+    "label": "OPH de Sainte-Marie-aux-Mines"
+  },
+  {
+    "id": "266A",
+    "label": "OPH CU de Strasbourg"
+  },
+  {
+    "id": "267A",
+    "label": "OPH de la Communauté de Communes de Thann-Cernay"
+  },
+  {
+    "id": "268A",
+    "label": "DOMIAL ESH"
+  },
+  {
+    "id": "269A",
+    "label": "SA HLM mulhousienne des Cités ouvrières"
+  },
+  {
+    "id": "270A",
+    "label": "SA HLM Le Nouveau Logis de l'Est"
+  },
+  {
+    "id": "271A",
+    "label": "SC HLM Habitat de l'Ill"
+  },
+  {
+    "id": "272A",
+    "label": "SC HLM Colmar Habitat"
+  },
+  {
+    "id": "273A",
+    "label": "SC Logements Populaires"
+  },
+  {
+    "id": "274A",
+    "label": "Société Immobilière du Bas-Rhin"
+  },
+  {
+    "id": "275A",
+    "label": "Société de constructions économiques de Bischwiller"
+  },
+  {
+    "id": "276A",
+    "label": "SAEM de construction et gestion Immobilière"
+  },
+  {
+    "id": "277A",
+    "label": "Erstein-Habitat"
+  },
+  {
+    "id": "278A",
+    "label": "Société d'investissements immobiliers de Haguenau et de ses environs"
+  },
+  {
+    "id": "279A",
+    "label": "Obernai Habitat"
+  },
+  {
+    "id": "280A",
+    "label": "Société intercommunale de construction de Molsheim et Environs"
+  },
+  {
+    "id": "281A",
+    "label": "Habitat moderne de Reichstett"
+  },
+  {
+    "id": "282A",
+    "label": "SEM de construction la ville de Schirmeck"
+  },
+  {
+    "id": "283A",
+    "label": "SEM de construction de Schweighouse-sur-Moder"
+  },
+  {
+    "id": "284A",
+    "label": "SAEM locale Habitation moderne"
+  },
+  {
+    "id": "285A",
+    "label": "OPH du Jura"
+  },
+  {
+    "id": "286A",
+    "label": "OPH de la Haute-Saône"
+  },
+  {
+    "id": "287A",
+    "label": "OPH de Besançon"
+  },
+  {
+    "id": "288A",
+    "label": "OPH de Dole"
+  },
+  {
+    "id": "289A",
+    "label": "OPH du Doubs"
+  },
+  {
+    "id": "290A",
+    "label": "OPH de Saint-Claude"
+  },
+  {
+    "id": "291A",
+    "label": "OPH du Territoire de Belfort"
+  },
+  {
+    "id": "292A",
+    "label": "NEOLIA"
+  },
+  {
+    "id": "293A",
+    "label": "LOGE.GBM"
+  },
+  {
+    "id": "294A",
+    "label": "IDEHA"
+  },
+  {
+    "id": "295A",
+    "label": "OPH d'Angers"
+  },
+  {
+    "id": "296A",
+    "label": "OPH du Choletais"
+  },
+  {
+    "id": "297A",
+    "label": "OPH de la Loire-Atlantique"
+  },
+  {
+    "id": "298A",
+    "label": "OPH de la Sarthe"
+  },
+  {
+    "id": "299A",
+    "label": "Huisne Habitat"
+  },
+  {
+    "id": "300A",
+    "label": "OPH de Maine-et-Loire"
+  },
+  {
+    "id": "301A",
+    "label": "OPH de la communauté urbaine du Mans"
+  },
+  {
+    "id": "302A",
+    "label": "OPH de la Mayenne"
+  },
+  {
+    "id": "303A",
+    "label": "OPH de la métropole nantaise"
+  },
+  {
+    "id": "304A",
+    "label": "OPH de Saint-Nazaire"
+  },
+  {
+    "id": "305A",
+    "label": "OPH Saumur Loire Habitat"
+  },
+  {
+    "id": "306A",
+    "label": "OPH de la Vendée"
+  },
+  {
+    "id": "307A",
+    "label": "SA Espace Domicile HLM Saint-Nazaire Région"
+  },
+  {
+    "id": "308A",
+    "label": "F2M"
+  },
+  {
+    "id": "309A",
+    "label": "SCIC d'HLM GAMBETTA"
+  },
+  {
+    "id": "310A",
+    "label": "Vendée Logement"
+  },
+  {
+    "id": "311A",
+    "label": "Harmonie Habitat"
+  },
+  {
+    "id": "312A",
+    "label": "Méduane Habitat"
+  },
+  {
+    "id": "313A",
+    "label": "SA HLM Logi-Ouest"
+  },
+  {
+    "id": "314A",
+    "label": "SA HLM Atlantique Habitations"
+  },
+  {
+    "id": "315A",
+    "label": "SA HLM Mancelle d'Habitation"
+  },
+  {
+    "id": "316A",
+    "label": "SA HLM Les Marchés de l'Ouest"
+  },
+  {
+    "id": "317A",
+    "label": "SA HLM Nantaise d'Habitation"
+  },
+  {
+    "id": "318A",
+    "label": "Immobilière Podeliha"
+  },
+  {
+    "id": "319A",
+    "label": "SAIEM de construction et gestion de logements de la ville d'Angers"
+  },
+  {
+    "id": "320A",
+    "label": "SAEM de construction de la ville de Roche-sur-Yon"
+  },
+  {
+    "id": "321A",
+    "label": "Société d'équipement et de construction de la Sarthe"
+  },
+  {
+    "id": "322A",
+    "label": "OPH Brest Métropole Habitat"
+  },
+  {
+    "id": "323A",
+    "label": "OPH du Finistère"
+  },
+  {
+    "id": "324A",
+    "label": "OPH d'Ille-et-Vilaine"
+  },
+  {
+    "id": "325A",
+    "label": "OPH de Quimper et de Cornouaille"
+  },
+  {
+    "id": "326A",
+    "label": "OPH de Saint-Malo-Dol de Bretagne-Dinard"
+  },
+  {
+    "id": "327A",
+    "label": "OPH des Côtes-d'Armor"
+  },
+  {
+    "id": "328A",
+    "label": "OPH de Douarnenez"
+  },
+  {
+    "id": "329A",
+    "label": "OPH de Guingamp"
+  },
+  {
+    "id": "330A",
+    "label": "OPH de Lorient"
+  },
+  {
+    "id": "331A",
+    "label": "OPH du Morbihan"
+  },
+  {
+    "id": "332A",
+    "label": "OPH de Saint-Brieuc Agglomération"
+  },
+  {
+    "id": "333A",
+    "label": "OPH de Vannes"
+  },
+  {
+    "id": "334A",
+    "label": "OPH du district de Dinan"
+  },
+  {
+    "id": "335A",
+    "label": "SA HLM Aiguillon-Construction"
+  },
+  {
+    "id": "336A",
+    "label": "SA HLM d'Armorique"
+  },
+  {
+    "id": "337A",
+    "label": "SA HLM Bâtiments et styles de Bretagne"
+  },
+  {
+    "id": "338A",
+    "label": "SA HLM Espacil Habitat"
+  },
+  {
+    "id": "339A",
+    "label": "SA HLM Le Foyer d'Armor"
+  },
+  {
+    "id": "340A",
+    "label": "SA HLM Les Foyers"
+  },
+  {
+    "id": "341A",
+    "label": "SA HLM La Rance"
+  },
+  {
+    "id": "342A",
+    "label": "OPH de l'Angoumois"
+  },
+  {
+    "id": "343A",
+    "label": "OPH Sud Deux-Sèvres"
+  },
+  {
+    "id": "344A",
+    "label": "OPH Nord Deux-Sèvres"
+  },
+  {
+    "id": "345A",
+    "label": "EKIDOM"
+  },
+  {
+    "id": "346A",
+    "label": "OPH de la Vienne"
+  },
+  {
+    "id": "347A",
+    "label": "OPH de la Charente"
+  },
+  {
+    "id": "348A",
+    "label": "OPH de la Charente-Maritime"
+  },
+  {
+    "id": "349A",
+    "label": "OPH de Rochefort-sur-Mer"
+  },
+  {
+    "id": "350A",
+    "label": "OPH de la Com. d' Agglomération de La Rochelle"
+  },
+  {
+    "id": "351A",
+    "label": "Immobilière Atlantic Amenagement"
+  },
+  {
+    "id": "352A",
+    "label": "NOALIS"
+  },
+  {
+    "id": "353A",
+    "label": "SEMIE de la ville de Niort"
+  },
+  {
+    "id": "354A",
+    "label": "SIEM de Saintonge"
+  },
+  {
+    "id": "355A",
+    "label": "OPH de la communauté urbaine de Bordeaux"
+  },
+  {
+    "id": "356A",
+    "label": "OPH Gironde Habitat"
+  },
+  {
+    "id": "357A",
+    "label": "OPH d'Agen"
+  },
+  {
+    "id": "358A",
+    "label": "OPH de Bayonne"
+  },
+  {
+    "id": "359A",
+    "label": "OPH de la Dordogne"
+  },
+  {
+    "id": "360A",
+    "label": "OPH des Landes"
+  },
+  {
+    "id": "361A",
+    "label": "OPH de Pau"
+  },
+  {
+    "id": "362A",
+    "label": "OPH de Périgueux"
+  },
+  {
+    "id": "363A",
+    "label": "OPH des Pyrénées-Atlantiques"
+  },
+  {
+    "id": "364A",
+    "label": "SA HLM Clairsienne"
+  },
+  {
+    "id": "365A",
+    "label": "SA HLM de Coligny"
+  },
+  {
+    "id": "366A",
+    "label": "SA HLM Domofrance"
+  },
+  {
+    "id": "367A",
+    "label": "ENEAL"
+  },
+  {
+    "id": "368A",
+    "label": "SA HLM Ciliopée Habitat"
+  },
+  {
+    "id": "369A",
+    "label": "Mesolia Habitat"
+  },
+  {
+    "id": "370A",
+    "label": "Habitelem REEL"
+  },
+  {
+    "id": "371A",
+    "label": "SCP d'HLM Le Comité ouvrier du logement"
+  },
+  {
+    "id": "372A",
+    "label": "PAU BEARN HABITAT"
+  },
+  {
+    "id": "373A",
+    "label": "SAIEM de Bergerac"
+  },
+  {
+    "id": "374A",
+    "label": "SEM In Cité"
+  },
+  {
+    "id": "375A",
+    "label": "Société d'aménagement touristique et d'équipement du département des Landes"
+  },
+  {
+    "id": "376A",
+    "label": "SEM du Pays marmandais"
+  },
+  {
+    "id": "377A",
+    "label": "Société orthézienne d'économie mixte pour l'habitat"
+  },
+  {
+    "id": "378A",
+    "label": "OPH de l'Ariège"
+  },
+  {
+    "id": "379A",
+    "label": "OPH Hautes-Pyrénées"
+  },
+  {
+    "id": "380A",
+    "label": "OPH de Toulouse"
+  },
+  {
+    "id": "381A",
+    "label": "OPH de l'Aveyron"
+  },
+  {
+    "id": "382A",
+    "label": "OPH de Castres"
+  },
+  {
+    "id": "383A",
+    "label": "OPH de la Haute-Garonne"
+  },
+  {
+    "id": "384A",
+    "label": "OPH du Gers"
+  },
+  {
+    "id": "385A",
+    "label": "OPH du Lot"
+  },
+  {
+    "id": "386A",
+    "label": "OPH de Millau et sa région"
+  },
+  {
+    "id": "388A",
+    "label": "OPH du Tarn"
+  },
+  {
+    "id": "389A",
+    "label": "OPH du Tarn et Garonne"
+  },
+  {
+    "id": "390A",
+    "label": "Sud Massif Central Habitat"
+  },
+  {
+    "id": "391A",
+    "label": "SA HLM des Chalets"
+  },
+  {
+    "id": "392A",
+    "label": "SA HLM La Cité-Jardins"
+  },
+  {
+    "id": "393A",
+    "label": "SA HLM Colomiers Habitat"
+  },
+  {
+    "id": "394A",
+    "label": "SA HLM Gasconne HLM du Gers"
+  },
+  {
+    "id": "395A",
+    "label": "SA HLM languedocienne"
+  },
+  {
+    "id": "396A",
+    "label": "SA d'HLM PROMOLOGIS"
+  },
+  {
+    "id": "397A",
+    "label": "SA HLM Le Nouveau Logis Méridional"
+  },
+  {
+    "id": "398A",
+    "label": "SA HLM de la Vallée du Thoré"
+  },
+  {
+    "id": "399A",
+    "label": "SEMI de Tarbes"
+  },
+  {
+    "id": "400A",
+    "label": "OPH de Brive-la-Gaillarde"
+  },
+  {
+    "id": "401A",
+    "label": "OPH de la Corrèze"
+  },
+  {
+    "id": "402A",
+    "label": "OPH de la Creuse"
+  },
+  {
+    "id": "403A",
+    "label": "OPH d'Egletons"
+  },
+  {
+    "id": "404A",
+    "label": "OPH de Limoges Métropole"
+  },
+  {
+    "id": "405A",
+    "label": "OPH de Saint Junien"
+  },
+  {
+    "id": "406A",
+    "label": "OPH de la Haute-Vienne"
+  },
+  {
+    "id": "407A",
+    "label": "SCP d'HLM de la Corrèèe"
+  },
+  {
+    "id": "408A",
+    "label": "OPH de l'Ain"
+  },
+  {
+    "id": "409A",
+    "label": "OPH du Grand-Lyon"
+  },
+  {
+    "id": "410A",
+    "label": "OPH de Grenoble"
+  },
+  {
+    "id": "411A",
+    "label": "OPH de Haute-Savoie"
+  },
+  {
+    "id": "412A",
+    "label": "OPH de l'Isère"
+  },
+  {
+    "id": "413A",
+    "label": "OPH de la Loire"
+  },
+  {
+    "id": "414A",
+    "label": "OPH de l'Ondaine"
+  },
+  {
+    "id": "415A",
+    "label": "OPH du Rhône"
+  },
+  {
+    "id": "416A",
+    "label": "OPH de Roanne"
+  },
+  {
+    "id": "417A",
+    "label": "OPH de Saint-Chamond-Loire Sud"
+  },
+  {
+    "id": "418A",
+    "label": "OPH Métropole Habitat Saint-Etienne"
+  },
+  {
+    "id": "419A",
+    "label": "OPH de Savoie"
+  },
+  {
+    "id": "420A",
+    "label": "OPH de Vienne"
+  },
+  {
+    "id": "421A",
+    "label": "Est Métropole Habitat"
+  },
+  {
+    "id": "422A",
+    "label": "OPH de l'Ardèche"
+  },
+  {
+    "id": "423A",
+    "label": "OPH de Bourg-en-Bresse"
+  },
+  {
+    "id": "424A",
+    "label": "OPH de la Drôme"
+  },
+  {
+    "id": "425A",
+    "label": "OPH de Firminy"
+  },
+  {
+    "id": "426A",
+    "label": "OPH de Montélimar"
+  },
+  {
+    "id": "427A",
+    "label": "romans habitat"
+  },
+  {
+    "id": "428A",
+    "label": "OPH de Thonon-les-Bains"
+  },
+  {
+    "id": "429A",
+    "label": "OPH d'Ugine"
+  },
+  {
+    "id": "430A",
+    "label": "VALENCE ROMANS HABITAT"
+  },
+  {
+    "id": "431A",
+    "label": "SA HLM de l'Ain"
+  },
+  {
+    "id": "432A",
+    "label": "SA HLM de l'Ardèche"
+  },
+  {
+    "id": "433A",
+    "label": "SA HLM Bâtir et Loger"
+  },
+  {
+    "id": "434A",
+    "label": "SA HLM Cité nouvelle"
+  },
+  {
+    "id": "435A",
+    "label": "SA HLM dauphinoise pour l'Habitat"
+  },
+  {
+    "id": "436A",
+    "label": "SA HLM pour le développement de l'habitat"
+  },
+  {
+    "id": "437A",
+    "label": "SA HLM Gabriel Rosset"
+  },
+  {
+    "id": "438A",
+    "label": "SA HLM Habitat Beaujolais Val-de-Saône"
+  },
+  {
+    "id": "439A",
+    "label": "SA HLM Halpades"
+  },
+  {
+    "id": "440A",
+    "label": "SA HLM Logement Alpes-Rhône"
+  },
+  {
+    "id": "441A",
+    "label": "ALLIADE HABITAT"
+  },
+  {
+    "id": "442A",
+    "label": "SA HLM régionale de Lyon"
+  },
+  {
+    "id": "443A",
+    "label": "SA HLM Mont-Blanc"
+  },
+  {
+    "id": "444A",
+    "label": "SA HLM ICF Sud-Est Méditerrannée"
+  },
+  {
+    "id": "445A",
+    "label": "SA HLM Immobilière Rhône-Alpes"
+  },
+  {
+    "id": "446A",
+    "label": "SA HLM Société d'habitation des Alpes"
+  },
+  {
+    "id": "447A",
+    "label": "SA HLM Thoisseyenne"
+  },
+  {
+    "id": "448A",
+    "label": "SCIC Le Toit Forézien"
+  },
+  {
+    "id": "449A",
+    "label": "SCIC Habitat Rhône-Alpes"
+  },
+  {
+    "id": "450A",
+    "label": "SCP d'HLM L'Habitat dauphinois"
+  },
+  {
+    "id": "451A",
+    "label": "RHONE SAONE HABITAT"
+  },
+  {
+    "id": "452A",
+    "label": "SAEM de construction du département de l'Ain"
+  },
+  {
+    "id": "453A",
+    "label": "Société Construction et de gestion Immobilière de l'Ardèche"
+  },
+  {
+    "id": "454A",
+    "label": "SAIEM de Belleville-sur-Saône"
+  },
+  {
+    "id": "455A",
+    "label": "Cristal habitat"
+  },
+  {
+    "id": "456A",
+    "label": "SAIEM de la ville de Cours"
+  },
+  {
+    "id": "457A",
+    "label": "SAIEM Grenoble habitat"
+  },
+  {
+    "id": "458A",
+    "label": "SAIEM Logement Pays de Vizille"
+  },
+  {
+    "id": "459A",
+    "label": "SA de construction de la ville de Lyon"
+  },
+  {
+    "id": "460A",
+    "label": "SAIEM de construction de Val-d'Isère"
+  },
+  {
+    "id": "461A",
+    "label": "SA de construction de la ville de Venissieux"
+  },
+  {
+    "id": "462A",
+    "label": "Société villeurbanaise d'urbanisme"
+  },
+  {
+    "id": "463A",
+    "label": "SOLIHA du Rhône"
+  },
+  {
+    "id": "464A",
+    "label": "SAS Un Toit Pour Tous-Développement"
+  },
+  {
+    "id": "465A",
+    "label": "Société foncière d'habitat et d'humanisme"
+  },
+  {
+    "id": "466A",
+    "label": "Assemblia"
+  },
+  {
+    "id": "467A",
+    "label": "OPH de Haute-Loire"
+  },
+  {
+    "id": "468A",
+    "label": "EVOLEA"
+  },
+  {
+    "id": "469A",
+    "label": "OPH du Puy de Dome et du massif Central"
+  },
+  {
+    "id": "470A",
+    "label": "OPH de l'Allier"
+  },
+  {
+    "id": "471A",
+    "label": "OPH du Cantal"
+  },
+  {
+    "id": "472A",
+    "label": "OPH de Commentry"
+  },
+  {
+    "id": "473A",
+    "label": "OPH de Montluçon"
+  },
+  {
+    "id": "474A",
+    "label": "SA HLM Auvergne Habitat"
+  },
+  {
+    "id": "475A",
+    "label": "SA HLM Polygone"
+  },
+  {
+    "id": "476A",
+    "label": "SA HLM Le Foyer Vellave"
+  },
+  {
+    "id": "477A",
+    "label": "DOM'AULIM Entreprise sociale de l'habitat Auvergne Limousin"
+  },
+  {
+    "id": "478A",
+    "label": "SEM de Vichy"
+  },
+  {
+    "id": "479A",
+    "label": "OPH de la Communauté d'agglomération de Montpellier"
+  },
+  {
+    "id": "480A",
+    "label": "OPH du Grand Alès"
+  },
+  {
+    "id": "481A",
+    "label": "OPH de l'Aude"
+  },
+  {
+    "id": "482A",
+    "label": "OPH du Gard"
+  },
+  {
+    "id": "483A",
+    "label": "OPH de l'Hérault"
+  },
+  {
+    "id": "484A",
+    "label": "OPH de la communauté d'agglomération Narbonnaise"
+  },
+  {
+    "id": "485A",
+    "label": "OPH des Pyrénées Orientales"
+  },
+  {
+    "id": "486A",
+    "label": "OPH de Sète"
+  },
+  {
+    "id": "487A",
+    "label": "ALOGEA"
+  },
+  {
+    "id": "488A",
+    "label": "SA HLM de Bességes et Saint-Ambroix"
+  },
+  {
+    "id": "489A",
+    "label": "SA HLM F.D.I. Habitat"
+  },
+  {
+    "id": "490A",
+    "label": "SA HLM Lozère Habitation"
+  },
+  {
+    "id": "491A",
+    "label": "SA HLM des Pyrénées-Orientales (Roussillon Habitat)"
+  },
+  {
+    "id": "492A",
+    "label": "SA HLM Un toit pour tous"
+  },
+  {
+    "id": "493A",
+    "label": "SCP HLM du Languedoc-Roussillon"
+  },
+  {
+    "id": "494A",
+    "label": "SAIEM du département du Gard (SEMIGA)"
+  },
+  {
+    "id": "495A",
+    "label": "SAIEM de Mende Fontanilles"
+  },
+  {
+    "id": "496A",
+    "label": "CDC Habitat"
+  },
+  {
+    "id": "497A",
+    "label": "Association de développement d'animation et de gestion d'établissements spécialisés"
+  },
+  {
+    "id": "498A",
+    "label": "OPH de Marseille"
+  },
+  {
+    "id": "499A",
+    "label": "OPH des Bouches-du-Rhône"
+  },
+  {
+    "id": "500A",
+    "label": "OPH Pays d'Aix Habitat"
+  },
+  {
+    "id": "501A",
+    "label": "OPH d'Avignon"
+  },
+  {
+    "id": "502A",
+    "label": "OPH Cannes et rive droite du Var"
+  },
+  {
+    "id": "503A",
+    "label": "OPH du Vaucluse"
+  },
+  {
+    "id": "504A",
+    "label": "OPH de Nice et des Alpes-Maritimes"
+  },
+  {
+    "id": "505A",
+    "label": "OPH de la Seyne-sur-Mer"
+  },
+  {
+    "id": "506A",
+    "label": "OPH de Toulon"
+  },
+  {
+    "id": "507A",
+    "label": "OPH du Var"
+  },
+  {
+    "id": "508A",
+    "label": "H2P"
+  },
+  {
+    "id": "509A",
+    "label": "SA d'HLM UNICIL"
+  },
+  {
+    "id": "510A",
+    "label": "SA HLM Famille et Provence"
+  },
+  {
+    "id": "511A",
+    "label": "3F SUD SA D'HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "512A",
+    "label": "SA HLM Logirem"
+  },
+  {
+    "id": "513A",
+    "label": "SA HLM Le Logis Familial"
+  },
+  {
+    "id": "514A",
+    "label": "SA HLM Logis Familial Varois"
+  },
+  {
+    "id": "515A",
+    "label": "SA HLM Le Nouveau Logis Azur"
+  },
+  {
+    "id": "516A",
+    "label": "SA HLM Prolétazur"
+  },
+  {
+    "id": "517A",
+    "label": "ERILIA"
+  },
+  {
+    "id": "518A",
+    "label": "3F SUD"
+  },
+  {
+    "id": "519A",
+    "label": "GRAND DELTA HABITAT"
+  },
+  {
+    "id": "520A",
+    "label": "Société Habitat et Logement Alpes-Maritimes"
+  },
+  {
+    "id": "521A",
+    "label": "SEM d'expansion de La Valette-du-Var"
+  },
+  {
+    "id": "522A",
+    "label": "SA de construction et de gestion Immobilière de la ville d'Aix-en-Provence"
+  },
+  {
+    "id": "523A",
+    "label": "SACEM d'Antibes-Juan-les-Pins"
+  },
+  {
+    "id": "524A",
+    "label": "SAEM du Pays d'Arles"
+  },
+  {
+    "id": "525A",
+    "label": "SAEM Immobilière et d'aménagement de la ville de Bollène et de la région"
+  },
+  {
+    "id": "526A",
+    "label": "Société cannoise de construction et d'aménagement"
+  },
+  {
+    "id": "527A",
+    "label": "SAIEM de construction de Draguignan"
+  },
+  {
+    "id": "528A",
+    "label": "SAEM gardéenne"
+  },
+  {
+    "id": "529A",
+    "label": "SAIEM d'Istres"
+  },
+  {
+    "id": "530A",
+    "label": "SAEM de la Londe-les-Maures"
+  },
+  {
+    "id": "531A",
+    "label": "SAEM de la ville de Mallemort"
+  },
+  {
+    "id": "532A",
+    "label": "Société de gestion Immobilière de la ville de Marseille"
+  },
+  {
+    "id": "533A",
+    "label": "SAEM Marseille habitat"
+  },
+  {
+    "id": "534A",
+    "label": "SIEM de la ville de Martigues"
+  },
+  {
+    "id": "535A",
+    "label": "SAIEM de Saint-Jean-Cap-Ferrat"
+  },
+  {
+    "id": "536A",
+    "label": "SAIEM Habitat 06"
+  },
+  {
+    "id": "537A",
+    "label": "SAIEM de la ville de Salon-de-Provence"
+  },
+  {
+    "id": "538A",
+    "label": "SEM de Sorgues"
+  },
+  {
+    "id": "539A",
+    "label": "HABITAT PLUS"
+  },
+  {
+    "id": "540A",
+    "label": "OPH de la Corse-du-Sud"
+  },
+  {
+    "id": "541A",
+    "label": "OPH de la Haute-Corse"
+  },
+  {
+    "id": "542A",
+    "label": "SA HLM de la Réunion"
+  },
+  {
+    "id": "543A",
+    "label": "Société de développement du groupement intercommunal du sud"
+  },
+  {
+    "id": "544A",
+    "label": "SAEM d'aménagement de développement et d'équipement de la Réunion"
+  },
+  {
+    "id": "545A",
+    "label": "Société Immobilière du département de la Réunion"
+  },
+  {
+    "id": "546A",
+    "label": "Société d'équipement du département de la Réunion"
+  },
+  {
+    "id": "547A",
+    "label": "SAEM d'aménagement et construction"
+  },
+  {
+    "id": "548A",
+    "label": "Société dionysienne d'aménagement et de construction"
+  },
+  {
+    "id": "549A",
+    "label": "SAEM de la ville de Grimaud"
+  },
+  {
+    "id": "550A",
+    "label": "Société d'aménagement et d'équipement de la région de Strasbourg"
+  },
+  {
+    "id": "551A",
+    "label": "Habitat logement immobilier"
+  },
+  {
+    "id": "552A",
+    "label": "SI de la Guyane"
+  },
+  {
+    "id": "553A",
+    "label": "SI de Kourou"
+  },
+  {
+    "id": "554A",
+    "label": "SCIC Habitat Auvergne-Bourbonnais"
+  },
+  {
+    "id": "555A",
+    "label": "OPH d'Albertville"
+  },
+  {
+    "id": "556A",
+    "label": "SIKOA"
+  },
+  {
+    "id": "557A",
+    "label": "SCP de Pointe à Pitre"
+  },
+  {
+    "id": "558A",
+    "label": "SI de la Guadeloupe"
+  },
+  {
+    "id": "559A",
+    "label": "SEM d'aménagement de la Guadeloupe"
+  },
+  {
+    "id": "560A",
+    "label": "SA HLM La Martiniquaise d'HLM"
+  },
+  {
+    "id": "561A",
+    "label": "SA HLM Ozanam"
+  },
+  {
+    "id": "562A",
+    "label": "Société Immobilière de la Martinique"
+  },
+  {
+    "id": "563A",
+    "label": "Les Résidences Yvelines Essonne"
+  },
+  {
+    "id": "564A",
+    "label": "SNL- Prologues"
+  },
+  {
+    "id": "565A",
+    "label": "SCP d'HLM Les Maisons Claires"
+  },
+  {
+    "id": "566A",
+    "label": "SEM de la ville de Boulay"
+  },
+  {
+    "id": "567A",
+    "label": "SEM Saint-Charles"
+  },
+  {
+    "id": "568A",
+    "label": "OPH d'Eure-et-Loir"
+  },
+  {
+    "id": "569A",
+    "label": "SAEM de Saint-Avertin"
+  },
+  {
+    "id": "570A",
+    "label": "SEM de Saint-Martin"
+  },
+  {
+    "id": "571A",
+    "label": "SCP d'HLM Ain Habitat"
+  },
+  {
+    "id": "572A",
+    "label": "OPH de Marne et Chantereine"
+  },
+  {
+    "id": "573A",
+    "label": "SAEM Bastia Aménagement"
+  },
+  {
+    "id": "574A",
+    "label": "OPH du Lot-et-Garonne"
+  },
+  {
+    "id": "575A",
+    "label": "OPH Mâcon Habitat"
+  },
+  {
+    "id": "576A",
+    "label": "ESH Maisons-Alfort Habitat"
+  },
+  {
+    "id": "577A",
+    "label": "OPH du Bas Rhin"
+  },
+  {
+    "id": "578A",
+    "label": "OPH de la Meuse"
+  },
+  {
+    "id": "579A",
+    "label": "OPH de Fougères"
+  },
+  {
+    "id": "580A",
+    "label": "OPH des Hautes-Alpes"
+  },
+  {
+    "id": "581A",
+    "label": "SEM Chablais Habitat"
+  },
+  {
+    "id": "582A",
+    "label": "OPH du Val-d'Oise"
+  },
+  {
+    "id": "583A",
+    "label": "SCP d'HLM Le Logis breton"
+  },
+  {
+    "id": "584A",
+    "label": "OPH d'Orléans"
+  },
+  {
+    "id": "585A",
+    "label": "OPH de Versailles"
+  },
+  {
+    "id": "586A",
+    "label": "SEM Habitat Pays Chatelleraudais"
+  },
+  {
+    "id": "587A",
+    "label": "OPH de Clamart"
+  },
+  {
+    "id": "588A",
+    "label": "OPH de Rennes Métropole"
+  },
+  {
+    "id": "589A",
+    "label": "La Maison familiale lorraine"
+  },
+  {
+    "id": "590A",
+    "label": "SCI Foncière DI 01/2003"
+  },
+  {
+    "id": "591A",
+    "label": "SCI Foncière DI 01/2004"
+  },
+  {
+    "id": "592A",
+    "label": "SCI Foncière DI 01/2005"
+  },
+  {
+    "id": "593A",
+    "label": "SAEM Habiter à Yerres"
+  },
+  {
+    "id": "594A",
+    "label": "OPH de Mantes-la-Jolie"
+  },
+  {
+    "id": "595A",
+    "label": "SA HLM Les Ajoncs"
+  },
+  {
+    "id": "596A",
+    "label": "OPH Béziers Méditerranée Habitat"
+  },
+  {
+    "id": "597A",
+    "label": "OPH Perpignan Roussillon"
+  },
+  {
+    "id": "598A",
+    "label": "OPH de Montreuil"
+  },
+  {
+    "id": "599A",
+    "label": "OPH communautaire de Plaine Commune"
+  },
+  {
+    "id": "600A",
+    "label": "OPH du département du Haut-Rhin"
+  },
+  {
+    "id": "601A",
+    "label": "Savoisienne Habitat"
+  },
+  {
+    "id": "602A",
+    "label": "OPH Seine-Ouest Habitat"
+  },
+  {
+    "id": "603A",
+    "label": "OPH d'Ermont Habitat"
+  },
+  {
+    "id": "604A",
+    "label": "OPH de Colombes"
+  },
+  {
+    "id": "605A",
+    "label": "1001 Vies Habitat"
+  },
+  {
+    "id": "606A",
+    "label": "SA HLM Logis Méditerranée"
+  },
+  {
+    "id": "607A",
+    "label": "SA HLM Immobilière 3F Alsace"
+  },
+  {
+    "id": "608A",
+    "label": "Maisons & Cités"
+  },
+  {
+    "id": "609A",
+    "label": "SCP HLM La maison familiale creusoise"
+  },
+  {
+    "id": "610A",
+    "label": "SCIC d'HLM CIF Coopérative"
+  },
+  {
+    "id": "611A",
+    "label": "Maisons & Cités Habitat"
+  },
+  {
+    "id": "612A",
+    "label": "SCI Foncière DI 01/2006"
+  },
+  {
+    "id": "613A",
+    "label": "SCI Foncière DI 01/2007"
+  },
+  {
+    "id": "614A",
+    "label": "SCI Foncière DI 01/2008"
+  },
+  {
+    "id": "615A",
+    "label": "SCI Foncière DI 01/2009"
+  },
+  {
+    "id": "616A",
+    "label": "SCI Foncière DI 01/2010"
+  },
+  {
+    "id": "617A",
+    "label": "SCI Foncière DI 01/2011"
+  },
+  {
+    "id": "618A",
+    "label": "SCI Foncière RU 01/2004"
+  },
+  {
+    "id": "619A",
+    "label": "SCI Foncière RU 01/2007"
+  },
+  {
+    "id": "620A",
+    "label": "SCI Foncière RU 01/2008"
+  },
+  {
+    "id": "621A",
+    "label": "SCI Foncière RU 01/2009"
+  },
+  {
+    "id": "622A",
+    "label": "SCI Foncière RU 01/2010"
+  },
+  {
+    "id": "623A",
+    "label": "SCI Foncière RU 01/2011"
+  },
+  {
+    "id": "624A",
+    "label": "SCP Habitat francilien"
+  },
+  {
+    "id": "625A",
+    "label": "SCP le Toit Girondin"
+  },
+  {
+    "id": "626A",
+    "label": "ALEOS"
+  },
+  {
+    "id": "627A",
+    "label": "Habiter 12"
+  },
+  {
+    "id": "628A",
+    "label": "SOLIHA des Pays Normands"
+  },
+  {
+    "id": "629A",
+    "label": "Un Toit"
+  },
+  {
+    "id": "630A",
+    "label": "SOLIHA Hauts-de-France"
+  },
+  {
+    "id": "631A",
+    "label": "SOLIHA Haute-Garonne"
+  },
+  {
+    "id": "632A",
+    "label": "REHABAIL"
+  },
+  {
+    "id": "633A",
+    "label": "SOLIHA Seine-et-Marne"
+  },
+  {
+    "id": "634A",
+    "label": "SOLIHA Landes"
+  },
+  {
+    "id": "635A",
+    "label": "Monde en Marche Monde en Marge"
+  },
+  {
+    "id": "636A",
+    "label": "Centre d'amélioration du Logement de Meuthe et Moselle"
+  },
+  {
+    "id": "637A",
+    "label": "Foncière Chéénelet"
+  },
+  {
+    "id": "638A",
+    "label": "Logement Service"
+  },
+  {
+    "id": "639A",
+    "label": "Centre d'amélioration du logement du Pas-de-Calais"
+  },
+  {
+    "id": "640A",
+    "label": "SOLIHA-HD Pays Basque"
+  },
+  {
+    "id": "641A",
+    "label": "SOLIHA-HD Béarn Bigorre"
+  },
+  {
+    "id": "642A",
+    "label": "Habitat social SOLIHA 81"
+  },
+  {
+    "id": "643A",
+    "label": "SOLIHA du Tarn"
+  },
+  {
+    "id": "644A",
+    "label": "SOLIHA IMMO"
+  },
+  {
+    "id": "645A",
+    "label": "Habitats solidaires"
+  },
+  {
+    "id": "646A",
+    "label": "Logeo Habitat"
+  },
+  {
+    "id": "647A",
+    "label": "Fondation des petits frères des pauvres"
+  },
+  {
+    "id": "648A",
+    "label": "SOLIHA BLI Loire"
+  },
+  {
+    "id": "649A",
+    "label": "Une famille Un toit 44"
+  },
+  {
+    "id": "650A",
+    "label": "Association Rhône-Alpes pour le logement et l'insertion"
+  },
+  {
+    "id": "651A",
+    "label": "Loger Marseille Jeunes"
+  },
+  {
+    "id": "652A",
+    "label": "Organisme social de logement"
+  },
+  {
+    "id": "653A",
+    "label": "Aide aux travailleurs migrants - région NPC"
+  },
+  {
+    "id": "654A",
+    "label": "SOLIHA des Bouches-du-Rhône"
+  },
+  {
+    "id": "655A",
+    "label": "Association pour l'accueil et le travail des personnes handicapées"
+  },
+  {
+    "id": "656A",
+    "label": "SOLIHA Sud-Ouest"
+  },
+  {
+    "id": "657A",
+    "label": "COALLIA"
+  },
+  {
+    "id": "658A",
+    "label": "ALFA 3A"
+  },
+  {
+    "id": "659A",
+    "label": "EMMAÜS Solidarité"
+  },
+  {
+    "id": "660A",
+    "label": "Ficosil"
+  },
+  {
+    "id": "661A",
+    "label": "Majo Logement"
+  },
+  {
+    "id": "662A",
+    "label": "Centre d'Amélioration du Logement de la Drôme"
+  },
+  {
+    "id": "663A",
+    "label": "Fondation pour le logement social"
+  },
+  {
+    "id": "664A",
+    "label": "Fédération départementale pour le logement social"
+  },
+  {
+    "id": "665A",
+    "label": "Noël-Paindavoine"
+  },
+  {
+    "id": "666A",
+    "label": "Foyer Notre Dame des sans abris"
+  },
+  {
+    "id": "667A",
+    "label": "Ateliers pour la production et l'insertion"
+  },
+  {
+    "id": "668A",
+    "label": "FRANCE HORIZON"
+  },
+  {
+    "id": "669A",
+    "label": "Apremis"
+  },
+  {
+    "id": "670A",
+    "label": "Loger jeunes Vaucluse"
+  },
+  {
+    "id": "671A",
+    "label": "Accompagnement Lieux d'accueil Carrefour éducatif et social"
+  },
+  {
+    "id": "672A",
+    "label": "APSA du Pas-de-Calais"
+  },
+  {
+    "id": "673A",
+    "label": "Association des résidents étudiants apprentis et salariés"
+  },
+  {
+    "id": "675A",
+    "label": "Association pour la Rénovation des villes et des villages par la réhabilitation de l'habitat"
+  },
+  {
+    "id": "676A",
+    "label": "Chapitre Saint-Thomas"
+  },
+  {
+    "id": "678A",
+    "label": "Le Tremplin"
+  },
+  {
+    "id": "679A",
+    "label": "Loger Jeunes Tarn"
+  },
+  {
+    "id": "680A",
+    "label": "SOLIHA ADRIM de la Somme"
+  },
+  {
+    "id": "681A",
+    "label": "Logiah Alpes de Haute Provence"
+  },
+  {
+    "id": "682A",
+    "label": "SOLIHA Flandres"
+  },
+  {
+    "id": "683A",
+    "label": "Société Dijonnaise de l'assistance par le travail"
+  },
+  {
+    "id": "684A",
+    "label": "Fondation du protestantisme"
+  },
+  {
+    "id": "685A",
+    "label": "France Euro Habitat"
+  },
+  {
+    "id": "686A",
+    "label": "La Gerbe"
+  },
+  {
+    "id": "688A",
+    "label": "LOGETRA"
+  },
+  {
+    "id": "689A",
+    "label": "SOLIHA métropole Nord"
+  },
+  {
+    "id": "690A",
+    "label": "Saint Benoît Labre"
+  },
+  {
+    "id": "691A",
+    "label": "SCI du Chemin des Dames"
+  },
+  {
+    "id": "692A",
+    "label": "Association Interdép pour le Dév des Actions en faveur des Pers Handicapées et Inadaptées"
+  },
+  {
+    "id": "693A",
+    "label": "AEDE"
+  },
+  {
+    "id": "694A",
+    "label": "SOLIHA Loire-Atlantique"
+  },
+  {
+    "id": "695A",
+    "label": "Coopérative Alterna"
+  },
+  {
+    "id": "696A",
+    "label": "SOLIHA Méditerranée"
+  },
+  {
+    "id": "697A",
+    "label": "ALPES HABITAT COOPERATIF"
+  },
+  {
+    "id": "700A",
+    "label": "La Maison Familiale de Provence"
+  },
+  {
+    "id": "701A",
+    "label": "Résidence sociale de France"
+  },
+  {
+    "id": "702A",
+    "label": "Inser'Toit"
+  },
+  {
+    "id": "703A",
+    "label": "SOLIHA Vendée"
+  },
+  {
+    "id": "704A",
+    "label": "SOLIHA Centre Val de Loire"
+  },
+  {
+    "id": "705A",
+    "label": "SOLIHA Bretagne"
+  },
+  {
+    "id": "706A",
+    "label": "OPH DE LA METROPOLE DE LYON"
+  },
+  {
+    "id": "707A",
+    "label": "SCIC d'hlm GAMBETTA PACA"
+  },
+  {
+    "id": "708A",
+    "label": "L'abri familial"
+  },
+  {
+    "id": "709A",
+    "label": "Logis atlantique"
+  },
+  {
+    "id": "710A",
+    "label": "coop access"
+  },
+  {
+    "id": "711A",
+    "label": "Association Arial"
+  },
+  {
+    "id": "712A",
+    "label": "Société Immobilière de Mayotte"
+  },
+  {
+    "id": "713A",
+    "label": "AXEDIA"
+  },
+  {
+    "id": "714A",
+    "label": "LOGIREP"
+  },
+  {
+    "id": "715A",
+    "label": "Le TOIT Charentais"
+  },
+  {
+    "id": "716A",
+    "label": "La Maison Familiale de la Région Parisienne"
+  },
+  {
+    "id": "717A",
+    "label": "SOLIHA BLI Rhône Alpes"
+  },
+  {
+    "id": "718A",
+    "label": "SCI Foncière RU PR 2016"
+  },
+  {
+    "id": "719A",
+    "label": "SCI Fonciere RU 01/2012"
+  },
+  {
+    "id": "720A",
+    "label": "SCI Fonciere RU 01/2014"
+  },
+  {
+    "id": "721A",
+    "label": "SCCV Fonciere RU 2015"
+  },
+  {
+    "id": "722A",
+    "label": "Entreprendre pour Humaniser la Dépendance"
+  },
+  {
+    "id": "723A",
+    "label": "LOGEO PROMOTION"
+  },
+  {
+    "id": "724A",
+    "label": "CMAL centre meusien d'amelioration du logement"
+  },
+  {
+    "id": "725A",
+    "label": "Hénéo"
+  },
+  {
+    "id": "726A",
+    "label": "AIDIPHIS"
+  },
+  {
+    "id": "727A",
+    "label": "SOLIHA Yvelines"
+  },
+  {
+    "id": "728A",
+    "label": "SOLIDARITE & LOGEMENT"
+  },
+  {
+    "id": "729A",
+    "label": "Opérateur National de Vente HLM Action Logement"
+  },
+  {
+    "id": "730A",
+    "label": "Société Philantropique"
+  },
+  {
+    "id": "731A",
+    "label": "SEM des 4 Vallées"
+  },
+  {
+    "id": "732A",
+    "label": "Le Pelican"
+  },
+  {
+    "id": "733A",
+    "label": "Ministère Transition Ecologique"
+  },
+  {
+    "id": "734A",
+    "label": "Fonciere CV RU 2015"
+  },
+  {
+    "id": "735A",
+    "label": "Fonciere NRU PAM 2019"
+  },
+  {
+    "id": "736A",
+    "label": "Foncière NRU 2020"
+  },
+  {
+    "id": "737A",
+    "label": "Habitat et Métropole"
+  },
+  {
+    "id": "738A",
+    "label": "Ysalia Garonne Habitat"
+  },
+  {
+    "id": "739A",
+    "label": "Centre Loire Habitat"
+  },
+  {
+    "id": "740A",
+    "label": "SOLIHA BLI Pays de la Loire"
+  },
+  {
+    "id": "741A",
+    "label": "IRLF"
+  },
+  {
+    "id": "742A",
+    "label": "ACTE IARD"
+  },
+  {
+    "id": "743A",
+    "label": "ACTE VIE"
+  },
+  {
+    "id": "744A",
+    "label": "ADMIRAL EUROPE COMPANIA DE SEGUROS - L'OLIVIER ASSURANCE"
+  },
+  {
+    "id": "745A",
+    "label": "AFI.ESCA"
+  },
+  {
+    "id": "746A",
+    "label": "AFI.ESCA IARD"
+  },
+  {
+    "id": "747A",
+    "label": "AGEAS FRANCE"
+  },
+  {
+    "id": "748A",
+    "label": "AIG EUROPE SA"
+  },
+  {
+    "id": "749A",
+    "label": "AIOI NISSAY DOWA INSURANCE COMPANY OF EUROPE LIMITED"
+  },
+  {
+    "id": "750A",
+    "label": "ALAN"
+  },
+  {
+    "id": "751A",
+    "label": "ALBINGIA"
+  },
+  {
+    "id": "752A",
+    "label": "ALLIANZ GLOBAL CORPORATE & SPECIALTY SE"
+  },
+  {
+    "id": "753A",
+    "label": "ALLIANZ IARD"
+  },
+  {
+    "id": "754A",
+    "label": "ALLIANZ VIE"
+  },
+  {
+    "id": "755A",
+    "label": "ALTIMA ASSURANCE"
+  },
+  {
+    "id": "756A",
+    "label": "ANTARIUS"
+  },
+  {
+    "id": "757A",
+    "label": "APICIL EPARGNE"
+  },
+  {
+    "id": "758A",
+    "label": "AREAS DOMMAGES"
+  },
+  {
+    "id": "759A",
+    "label": "AREAS VIE"
+  },
+  {
+    "id": "760A",
+    "label": "ARIAL CNP ASSURANCES"
+  },
+  {
+    "id": "761A",
+    "label": "ASSOCIATION GENERALE DE PREVOYANCE MILITAIRE ASSURANCES"
+  },
+  {
+    "id": "762A",
+    "label": "ASSOCIATION GENERALE DE PREVOYANCE MILITAIRE VIE"
+  },
+  {
+    "id": "763A",
+    "label": "ASSU VIE"
+  },
+  {
+    "id": "764A",
+    "label": "ASSURANCE MUTUELLE DES FONCTIONNAIRES ET ASSIMILES DES COMPTABLES PUBLICS ET DES AGENTS"
+  },
+  {
+    "id": "765A",
+    "label": "ASSURANCE MUTUELLE DES MOTARDS"
+  },
+  {
+    "id": "766A",
+    "label": "ASSURANCE MUTUELLE D'OUTRE-MER"
+  },
+  {
+    "id": "767A",
+    "label": "ASSURANCES DU CREDIT MUTUEL IARD SA"
+  },
+  {
+    "id": "768A",
+    "label": "ASSURANCES DU CREDIT MUTUEL VIE MUTUELLE"
+  },
+  {
+    "id": "769A",
+    "label": "ASSURANCES DU CREDIT MUTUEL VIE SA"
+  },
+  {
+    "id": "770A",
+    "label": "ASSURANCES MUTUELLES DE FRANCE"
+  },
+  {
+    "id": "771A",
+    "label": "ASSURANCES MUTUELLES DE PICARDIE"
+  },
+  {
+    "id": "772A",
+    "label": "ASSURED GARANTY EUROPE SA"
+  },
+  {
+    "id": "773A",
+    "label": "ASSURIMA"
+  },
+  {
+    "id": "774A",
+    "label": "ATRADIUS CREDITO Y CAUCION S.A. DE SEGUROS Y REASEGUROS"
+  },
+  {
+    "id": "775A",
+    "label": "AUXIA SA"
+  },
+  {
+    "id": "776A",
+    "label": "AVIVA ASSURANCES"
+  },
+  {
+    "id": "777A",
+    "label": "AVIVA EPARGNE RETRAITE"
+  },
+  {
+    "id": "778A",
+    "label": "AVIVA LIFE & PENSIONS IRELAND DESIGNATED ACTIVITY COMPANY"
+  },
+  {
+    "id": "779A",
+    "label": "AVIVA RETRAITE PROFESSIONNELLE"
+  },
+  {
+    "id": "780A",
+    "label": "AVIVA VIE"
+  },
+  {
+    "id": "781A",
+    "label": "AWP HEALTH & LIFE SA"
+  },
+  {
+    "id": "782A",
+    "label": "AWP P&C SA"
+  },
+  {
+    "id": "783A",
+    "label": "AXA ASSURANCES IARD MUTUELLE"
+  },
+  {
+    "id": "784A",
+    "label": "AXA ASSURANCES VIE MUTUELLE"
+  },
+  {
+    "id": "785A",
+    "label": "AXA ASSURCREDIT"
+  },
+  {
+    "id": "786A",
+    "label": "AXA FRANCE IARD"
+  },
+  {
+    "id": "787A",
+    "label": "AXA FRANCE VIE"
+  },
+  {
+    "id": "788A",
+    "label": "AXA GLOBAL RE"
+  },
+  {
+    "id": "789A",
+    "label": "AXA RETRAITE ENTREPRISE"
+  },
+  {
+    "id": "790A",
+    "label": "AXERIA IARD"
+  },
+  {
+    "id": "791A",
+    "label": "AXERIA PREVOYANCE"
+  },
+  {
+    "id": "792A",
+    "label": "BPCE ASSURANCES"
+  },
+  {
+    "id": "793A",
+    "label": "BPCE IARD"
+  },
+  {
+    "id": "794A",
+    "label": "BPCE PREVOYANCE"
+  },
+  {
+    "id": "795A",
+    "label": "BPCE VIE"
+  },
+  {
+    "id": "796A",
+    "label": "CAISSE CENTRALE DE REASSURANCE"
+  },
+  {
+    "id": "797A",
+    "label": "CAISSE D'ASSURANCE MUTUELLE DU BATIMENT ET DES TRAVAUX PUBLICS (CAM BTP)"
+  },
+  {
+    "id": "798A",
+    "label": "CAISSE D'ASSURANCES MUTUELLES DU CREDIT AGRICOLE - C.A.M.C.A."
+  },
+  {
+    "id": "799A",
+    "label": "CAISSE DE GARANTIE IMMOBILIERE DU BATIMENT - CGI BATIMENT"
+  },
+  {
+    "id": "800A",
+    "label": "CAISSE FRATERNELLE VIE"
+  },
+  {
+    "id": "801A",
+    "label": "CAISSE MEUSIENNE D'ASSURANCES MUTUELLES"
+  },
+  {
+    "id": "802A",
+    "label": "CAISSE MUTUELLE D'ASSURANCES SUR LA VIE"
+  },
+  {
+    "id": "803A",
+    "label": "CAISSE MUTUELLE MARNAISE D'ASSURANCE"
+  },
+  {
+    "id": "804A",
+    "label": "CALI EUROPE SA"
+  },
+  {
+    "id": "805A",
+    "label": "CAPMA - CAPMI"
+  },
+  {
+    "id": "806A",
+    "label": "CARCEPT ACCIDENT"
+  },
+  {
+    "id": "807A",
+    "label": "CARDIF - ASSURANCES RISQUES DIVERS"
+  },
+  {
+    "id": "808A",
+    "label": "CARDIF ASSURANCE VIE"
+  },
+  {
+    "id": "809A",
+    "label": "CARDIF IARD"
+  },
+  {
+    "id": "810A",
+    "label": "CARMA"
+  },
+  {
+    "id": "811A",
+    "label": "CARMA VIE"
+  },
+  {
+    "id": "812A",
+    "label": "CCR RE"
+  },
+  {
+    "id": "813A",
+    "label": "CFDP ASSURANCES"
+  },
+  {
+    "id": "814A",
+    "label": "CGPA - CAISSE DE GARANTIE DES PROFESSIONNELS DE L'ASSURANCE"
+  },
+  {
+    "id": "815A",
+    "label": "CHUBB EUROPEAN GROUP SE"
+  },
+  {
+    "id": "816A",
+    "label": "CNA INSURANCE COMPANY (EUROPE) SA (CICE)"
+  },
+  {
+    "id": "817A",
+    "label": "CNP ASSURANCES"
+  },
+  {
+    "id": "818A",
+    "label": "COMPAGNIE EUROPEENNE DE GARANTIES ET CAUTIONS"
+  },
+  {
+    "id": "819A",
+    "label": "COMPAGNIE françaisE D'ASSURANCE POUR LE COMMERCE EXTERIEUR - COFACE"
+  },
+  {
+    "id": "820A",
+    "label": "COMPAGNIE NANTAISE D'ASSURANCES MARITIMES ET TERRESTRES"
+  },
+  {
+    "id": "821A",
+    "label": "COVEA COOPERATIONS"
+  },
+  {
+    "id": "822A",
+    "label": "COVEA PROTECTION JURIDIQUE"
+  },
+  {
+    "id": "823A",
+    "label": "CREDENDO - SHORT - TERM - NON - EU RISKS"
+  },
+  {
+    "id": "824A",
+    "label": "CREDIT AGRICOLE INDOSUEZ RISK SOLUTIONS ASSURANCES - CAIRS ASSURANCES"
+  },
+  {
+    "id": "825A",
+    "label": "ERGO VERSICHERUNG AG"
+  },
+  {
+    "id": "826A",
+    "label": "EULER HERMES SA"
+  },
+  {
+    "id": "827A",
+    "label": "FIDELIDADE COMPANHIA DE SEGUROS SA"
+  },
+  {
+    "id": "828A",
+    "label": "GALIAN ASSURANCES"
+  },
+  {
+    "id": "829A",
+    "label": "GAN ASSURANCES"
+  },
+  {
+    "id": "830A",
+    "label": "GAN OUTRE-MER"
+  },
+  {
+    "id": "831A",
+    "label": "GARANTIE MUTUELLE DES FONCTIONNAIRES - ASSURANCES  -  G.M.F. ASSURANCES"
+  },
+  {
+    "id": "832A",
+    "label": "GARANTIE MUTUELLE DES FONCTIONNAIRES - VIE  -  G.M.F. VIE"
+  },
+  {
+    "id": "833A",
+    "label": "GEN RE"
+  },
+  {
+    "id": "834A",
+    "label": "GENERALI IARD"
+  },
+  {
+    "id": "835A",
+    "label": "GENERALI VIE"
+  },
+  {
+    "id": "836A",
+    "label": "GENERATION VIE"
+  },
+  {
+    "id": "837A",
+    "label": "GFA CARAIBES"
+  },
+  {
+    "id": "838A",
+    "label": "GOTHAER"
+  },
+  {
+    "id": "839A",
+    "label": "GPM ASSURANCES SA"
+  },
+  {
+    "id": "840A",
+    "label": "GREENVAL INSURANCE COMPANY LIMITED"
+  },
+  {
+    "id": "841A",
+    "label": "GRESHAM"
+  },
+  {
+    "id": "842A",
+    "label": "GROUPAMA ASSURANCE CREDIT & CAUTION"
+  },
+  {
+    "id": "843A",
+    "label": "GROUPAMA ASSURANCES MUTUELLES"
+  },
+  {
+    "id": "844A",
+    "label": "GROUPAMA GAN VIE"
+  },
+  {
+    "id": "845A",
+    "label": "GROUPE D'ASSURANCES MUTUELLES DE L'EST - GAMEST"
+  },
+  {
+    "id": "846A",
+    "label": "GROUPEMENT FRANCAIS DE CAUTION"
+  },
+  {
+    "id": "847A",
+    "label": "HDI GLOBAL SE"
+  },
+  {
+    "id": "848A",
+    "label": "HELVETIA ASSURANCES"
+  },
+  {
+    "id": "849A",
+    "label": "HELVETIA ASSURANCES S.A."
+  },
+  {
+    "id": "850A",
+    "label": "HISCOX S.A."
+  },
+  {
+    "id": "851A",
+    "label": "HSBC ASSURANCES VIE (FRANCE)"
+  },
+  {
+    "id": "852A",
+    "label": "ICARE ASSURANCE"
+  },
+  {
+    "id": "853A",
+    "label": "IF ASSURANCES FRANCE IARD"
+  },
+  {
+    "id": "854A",
+    "label": "IMA ASSURANCES"
+  },
+  {
+    "id": "855A",
+    "label": "IMPERIO ASSURANCE ET CAPITALISATION S.A."
+  },
+  {
+    "id": "856A",
+    "label": "INTER MUTUELLES ENTREPRISES"
+  },
+  {
+    "id": "857A",
+    "label": "INTER PARTNER ASSISTANCE"
+  },
+  {
+    "id": "858A",
+    "label": "IPTIQ LIFE S.A."
+  },
+  {
+    "id": "859A",
+    "label": "JURIDICA"
+  },
+  {
+    "id": "860A",
+    "label": "KLESIA SA"
+  },
+  {
+    "id": "861A",
+    "label": "LA BANQUE POSTALE ASSURANCE SANTE"
+  },
+  {
+    "id": "862A",
+    "label": "LA BANQUE POSTALE ASSURANCES IARD"
+  },
+  {
+    "id": "863A",
+    "label": "LA BANQUE POSTALE PREVOYANCE"
+  },
+  {
+    "id": "864A",
+    "label": "LA GARANTIE MUTUELLE DES FONCTIONNAIRES"
+  },
+  {
+    "id": "865A",
+    "label": "LA MEDICALE DE FRANCE"
+  },
+  {
+    "id": "866A",
+    "label": "LA MONDIALE"
+  },
+  {
+    "id": "867A",
+    "label": "LA MONDIALE PARTENAIRE"
+  },
+  {
+    "id": "868A",
+    "label": "LA MUTUELLE D'ASSURANCE DES ARMEES"
+  },
+  {
+    "id": "869A",
+    "label": "LA MUTUELLE DES ILES SAINT-PIERRE ET MIQUELON"
+  },
+  {
+    "id": "870A",
+    "label": "LA MUTUELLE PHOCEENNE ASSURANCES"
+  },
+  {
+    "id": "871A",
+    "label": "LA RURALE"
+  },
+  {
+    "id": "872A",
+    "label": "LA SAUVEGARDE"
+  },
+  {
+    "id": "873A",
+    "label": "LA SECURITE FAMILIALE"
+  },
+  {
+    "id": "874A",
+    "label": "L'AUXILIAIRE"
+  },
+  {
+    "id": "875A",
+    "label": "L'AUXILIAIRE-VIE"
+  },
+  {
+    "id": "876A",
+    "label": "LE FINISTERE ASSURANCE"
+  },
+  {
+    "id": "877A",
+    "label": "L'EQUITE"
+  },
+  {
+    "id": "878A",
+    "label": "LES ASSOCIATIONS MUTUELLES \"\"LE CONSERVATEUR\""
+  },
+  {
+    "id": "879A",
+    "label": "LES ASSURANCES MUTUELLES \"\"LE CONSERVATEUR\""
+  },
+  {
+    "id": "880A",
+    "label": "L'ETOILE"
+  },
+  {
+    "id": "881A",
+    "label": "LIBEA"
+  },
+  {
+    "id": "882A",
+    "label": "LIBERTY MUTUAL INSURANCE EUROPE LIMITED"
+  },
+  {
+    "id": "883A",
+    "label": "LLOYD'S INSURANCE COMPANY SA"
+  },
+  {
+    "id": "884A",
+    "label": "LLOYD'S DE LONDRES"
+  },
+  {
+    "id": "885A",
+    "label": "LOURMEL SOLUTIONS ASSURANCES"
+  },
+  {
+    "id": "886A",
+    "label": "MAAF ASSURANCES"
+  },
+  {
+    "id": "887A",
+    "label": "MAAF SANTE"
+  },
+  {
+    "id": "888A",
+    "label": "MACIFILIA"
+  },
+  {
+    "id": "889A",
+    "label": "MACSF EPARGNE RETRAITE"
+  },
+  {
+    "id": "890A",
+    "label": "MACSF PREVOYANCE"
+  },
+  {
+    "id": "891A",
+    "label": "MADP ASSURANCES"
+  },
+  {
+    "id": "892A",
+    "label": "MAIF VIE"
+  },
+  {
+    "id": "893A",
+    "label": "MALAKOFF HUMANIS ASSURANCES"
+  },
+  {
+    "id": "894A",
+    "label": "MALAKOFF HUMANIS RETRAITE SUPPLEMENTAIRE"
+  },
+  {
+    "id": "895A",
+    "label": "MAPA MUTUELLE D'ASSURANCE"
+  },
+  {
+    "id": "896A",
+    "label": "MATMUT & CO"
+  },
+  {
+    "id": "897A",
+    "label": "MATMUT PROTECTION JURIDIQUE"
+  },
+  {
+    "id": "898A",
+    "label": "MATMUT VIE"
+  },
+  {
+    "id": "899A",
+    "label": "METLIFE"
+  },
+  {
+    "id": "900A",
+    "label": "MFPREVOYANCE"
+  },
+  {
+    "id": "901A",
+    "label": "MILLEIS VIE"
+  },
+  {
+    "id": "902A",
+    "label": "MMA IARD (SA)"
+  },
+  {
+    "id": "903A",
+    "label": "MMA IARD ASSURANCES MUTUELLES"
+  },
+  {
+    "id": "904A",
+    "label": "MMA VIE (SA)"
+  },
+  {
+    "id": "905A",
+    "label": "MMA VIE ASSURANCES MUTUELLES"
+  },
+  {
+    "id": "906A",
+    "label": "MONCEAU GENERALE ASSURANCES S.A."
+  },
+  {
+    "id": "907A",
+    "label": "MONCEAU RETRAITE & EPARGNE"
+  },
+  {
+    "id": "908A",
+    "label": "MSIG INSURANCE EUROPE AG"
+  },
+  {
+    "id": "909A",
+    "label": "MUTAVIE"
+  },
+  {
+    "id": "910A",
+    "label": "MUTEX"
+  },
+  {
+    "id": "911A",
+    "label": "MUTUELLE ASSURANCE ARTISANALE DE FRANCE S.A."
+  },
+  {
+    "id": "912A",
+    "label": "MUTUELLE ASSURANCE ARTISANALE DE FRANCE VIE"
+  },
+  {
+    "id": "913A",
+    "label": "MUTUELLE ASSURANCE DE L'EDUCATION"
+  },
+  {
+    "id": "914A",
+    "label": "MUTUELLE ASSURANCE DE L'EDUCATION VIE"
+  },
+  {
+    "id": "915A",
+    "label": "MUTUELLE ASSURANCE DES COMMERCANTS ET INDUSTRIELS DE FRANCE"
+  },
+  {
+    "id": "916A",
+    "label": "MUTUELLE ASSURANCE DES INSTITUTEURS DE FRANCE"
+  },
+  {
+    "id": "917A",
+    "label": "MUTUELLE ASSURANCE DES TRAVAILLEURS MUTUALISTES"
+  },
+  {
+    "id": "918A",
+    "label": "MUTUELLE CENTRALE DE REASSURANCE - M.C.R."
+  },
+  {
+    "id": "919A",
+    "label": "MUTUELLE D'ASSURANCES DU CORPS DE SANTE français - ASSURANCES"
+  },
+  {
+    "id": "920A",
+    "label": "MUTUELLE DE POITIERS ASSURANCES"
+  },
+  {
+    "id": "921A",
+    "label": "MUTUELLE DES ARCHITECTES FRANCAIS ASSURANCES - M.A.F."
+  },
+  {
+    "id": "922A",
+    "label": "MUTUELLE DES RISQUES D'ASSURANCES DES CAISSES D'EPARGNE DE FRANCE - MURACEF"
+  },
+  {
+    "id": "923A",
+    "label": "MUTUELLE FRATERNELLE D'ASSURANCES"
+  },
+  {
+    "id": "924A",
+    "label": "MUTUELLE GENERALE DE LA DISTRIBUTION"
+  },
+  {
+    "id": "925A",
+    "label": "MUTUELLE SAINT MARTIN"
+  },
+  {
+    "id": "926A",
+    "label": "MUTUELLE SAINT-CHRISTOPHE ASSURANCES"
+  },
+  {
+    "id": "927A",
+    "label": "NAGICO INSURANCE COMPANY LIMITED"
+  },
+  {
+    "id": "928A",
+    "label": "NEUFLIZE VIE"
+  },
+  {
+    "id": "929A",
+    "label": "OCIRP VIE"
+  },
+  {
+    "id": "930A",
+    "label": "OPTEVEN ASSURANCES"
+  },
+  {
+    "id": "931A",
+    "label": "OPTIMUM VIE"
+  },
+  {
+    "id": "932A",
+    "label": "ORADEA VIE"
+  },
+  {
+    "id": "933A",
+    "label": "PACIFICA"
+  },
+  {
+    "id": "934A",
+    "label": "PANACEA ASSURANCES"
+  },
+  {
+    "id": "935A",
+    "label": "PARTNER REINSURANCE EUROPE SE"
+  },
+  {
+    "id": "936A",
+    "label": "PREDICA"
+  },
+  {
+    "id": "937A",
+    "label": "PREPAR IARD"
+  },
+  {
+    "id": "938A",
+    "label": "PREPAR VIE"
+  },
+  {
+    "id": "939A",
+    "label": "PREVOIR-VIE"
+  },
+  {
+    "id": "940A",
+    "label": "PREVOYANCE AESIO MACIF"
+  },
+  {
+    "id": "941A",
+    "label": "PREVOYANCE REASSURANCE INCENDIE MULTIRISQUES AUTO - PRIMA"
+  },
+  {
+    "id": "942A",
+    "label": "PRO BTP EPARGNE-RETRAITE-PREVOYANCE"
+  },
+  {
+    "id": "943A",
+    "label": "PROTEC BTP"
+  },
+  {
+    "id": "944A",
+    "label": "PROTEXIA FRANCE"
+  },
+  {
+    "id": "945A",
+    "label": "PRUDENCE CREOLE"
+  },
+  {
+    "id": "946A",
+    "label": "QBE EUROPE SA/NV"
+  },
+  {
+    "id": "947A",
+    "label": "QBE INSURANCE (INTERNATIONAL) LIMITED - (GESTION DES TOM)"
+  },
+  {
+    "id": "948A",
+    "label": "QUATREM ASSURANCES COLLECTIVES"
+  },
+  {
+    "id": "949A",
+    "label": "REUNION DES MUTUELLES D'ASSURANCES REGIONALES - REMA"
+  },
+  {
+    "id": "950A",
+    "label": "RGA INTERNATIONAL REINSUR. COMP. DAC"
+  },
+  {
+    "id": "951A",
+    "label": "RISQUES CIVILS DE LA BOULANGERIE ET DE LA BOULANGERIE-PATISSERIE FRANCAISE"
+  },
+  {
+    "id": "952A",
+    "label": "RSA LUXEMBOURG S.A."
+  },
+  {
+    "id": "953A",
+    "label": "SAGEVIE"
+  },
+  {
+    "id": "954A",
+    "label": "SCOR SE"
+  },
+  {
+    "id": "955A",
+    "label": "SERENIS ASSURANCES"
+  },
+  {
+    "id": "956A",
+    "label": "SMA SA"
+  },
+  {
+    "id": "957A",
+    "label": "SMABTP (SOCIETE MUTUELLE D'ASSURANCE DU BATIMENT ET DES TRAVAUX PUBLICS)"
+  },
+  {
+    "id": "958A",
+    "label": "SMAVIE BTP (SOCIETE MUTUELLE D'ASSURANCE SUR LA VIE DU BATIMENT ET DES TRAVAUX PUBLICS)"
+  },
+  {
+    "id": "959A",
+    "label": "SOCIETE ANONYME DE DEFENSE ET D'ASSURANCES - S.A.D.A."
+  },
+  {
+    "id": "960A",
+    "label": "SOCIETE D'ASSURANCE MUTUELLE DE L'ARMEMENT A LA PECHE - S.A.M.A.P."
+  },
+  {
+    "id": "961A",
+    "label": "SOCIETE D'ASSURANCES FAMILIALES DES SALARIES ET ARTISANS DU BAT. ET DES T.P. IARD - SAF-BTP-IARD"
+  },
+  {
+    "id": "962A",
+    "label": "SOCIETE D'ASSURANCES FAMILIALES DES SALARIES ET ARTISANS DU BAT. ET DES T.P. VIE - SAF-BTP-VIE"
+  },
+  {
+    "id": "963A",
+    "label": "SOCIETE D'ASSURANCES MUTUELLES BRETAGNE OCEAN"
+  },
+  {
+    "id": "964A",
+    "label": "SOCIETE FRANCAISE DE PROTECTION JURIDIQUE"
+  },
+  {
+    "id": "965A",
+    "label": "SOCIETE HOSPITALIERE D'ASSURANCES MUTUELLES - S.H.A.M."
+  },
+  {
+    "id": "966A",
+    "label": "SOCIETE MUTUELLE D'ASSURANCE DES COLLECTIVITES LOCALES"
+  },
+  {
+    "id": "967A",
+    "label": "SOCIETE SUISSE D'ASSURANCE CONTRE LA GRELE"
+  },
+  {
+    "id": "968A",
+    "label": "SOGECAP - SOCIETE ANONYME D'ASSURANCE SUR LA VIE ET DE CAPITALISATION"
+  },
+  {
+    "id": "969A",
+    "label": "SOGESSUR"
+  },
+  {
+    "id": "970A",
+    "label": "SOLUCIA PROTECTION JURIDIQUE"
+  },
+  {
+    "id": "971A",
+    "label": "SPIRICA"
+  },
+  {
+    "id": "972A",
+    "label": "SURAVENIR"
+  },
+  {
+    "id": "973A",
+    "label": "SURAVENIR ASSURANCES"
+  },
+  {
+    "id": "974A",
+    "label": "SWISS LIFE ASSURANCE ET PATRIMOINE"
+  },
+  {
+    "id": "975A",
+    "label": "SWISS LIFE ASSURANCES DE BIENS"
+  },
+  {
+    "id": "976A",
+    "label": "SWISS LIFE PREVOYANCE ET SANTE"
+  },
+  {
+    "id": "977A",
+    "label": "SWISS RE EUROPE S.A."
+  },
+  {
+    "id": "978A",
+    "label": "SWISS RE INTERNATIONAL SE"
+  },
+  {
+    "id": "979A",
+    "label": "THE ONELIFE COMPANY SA"
+  },
+  {
+    "id": "980A",
+    "label": "THELEM ASSURANCES"
+  },
+  {
+    "id": "981A",
+    "label": "THELEM PREVOYANCE"
+  },
+  {
+    "id": "982A",
+    "label": "THEMIS"
+  },
+  {
+    "id": "983A",
+    "label": "TOKIO MARINE EUROPE SA"
+  },
+  {
+    "id": "984A",
+    "label": "UNION DES MUTUELLES D'ASSURANCES MONCEAU - U.M.A.M."
+  },
+  {
+    "id": "985A",
+    "label": "UNOFI - ASSURANCES"
+  },
+  {
+    "id": "986A",
+    "label": "WAKAM"
+  },
+  {
+    "id": "987A",
+    "label": "XL INSURANCE COMPANY SE"
+  },
+  {
+    "id": "988A",
+    "label": "XL RE EUROPE SE"
+  },
+  {
+    "id": "989A",
+    "label": "ZURICH INSURANCE PLC"
+  },
+  {
+    "id": "990A",
+    "label": "ASSEMBLEE NATIONALE"
+  },
+  {
+    "id": "991A",
+    "label": "ASSISTANCE PUBLIQUE DE PARIS"
+  },
+  {
+    "id": "992A",
+    "label": "CAISSE D'ALLOCATION FAMILIALE (CAF)"
+  },
+  {
+    "id": "993A",
+    "label": "CCAS CENTRE COMMUNAL OU INTERCOMMUNAL DE"
+  },
+  {
+    "id": "994A",
+    "label": "CENTRE INTERCOMMUNAL D'ACTION SOCIALE (CIAS) DE"
+  },
+  {
+    "id": "995A",
+    "label": "CHR CENTRE HOSPITALIER REGIONAL DE ..."
+  },
+  {
+    "id": "996A",
+    "label": "CHU CENTRE HOSPITALIER UNIVERSITAIRE DE .."
+  },
+  {
+    "id": "997A",
+    "label": "CNRS"
+  },
+  {
+    "id": "998A",
+    "label": "COMMUNE DE ..."
+  },
+  {
+    "id": "999A",
+    "label": "CONSEIL GENERAL DE ..."
+  },
+  {
+    "id": "1000A",
+    "label": "CONSEIL MUNICIPAL DE ..."
+  },
+  {
+    "id": "1001A",
+    "label": "CONSEIL REGIONAL DE ..."
+  },
+  {
+    "id": "1002A",
+    "label": "CROUS"
+  },
+  {
+    "id": "1003A",
+    "label": "DEPARTEMENT DE ..."
+  },
+  {
+    "id": "1004A",
+    "label": "GARDE REPUBLICAINE"
+  },
+  {
+    "id": "1005A",
+    "label": "GROUPEMENT DE COMMUNE DE"
+  },
+  {
+    "id": "1006A",
+    "label": "HOPITAL (PUBLIC) DE ..."
+  },
+  {
+    "id": "1007A",
+    "label": "MAIRIE DE .."
+  },
+  {
+    "id": "1008A",
+    "label": "MINISTERE DE ..."
+  },
+  {
+    "id": "1009A",
+    "label": "MUNICIPALITE DE ..."
+  },
+  {
+    "id": "1010A",
+    "label": "PREFECTURE DE .."
+  },
+  {
+    "id": "1011A",
+    "label": "PRESIDENCE DE LA REPUBLIQUE"
+  },
+  {
+    "id": "1012A",
+    "label": "RECTORAT DE ..."
+  },
+  {
+    "id": "1013A",
+    "label": "REGION DE ..."
+  },
+  {
+    "id": "1014A",
+    "label": "SENAT"
+  },
+  {
+    "id": "1015A",
+    "label": "VILLE DE ..."
+  },
+  {
+    "id": "1016A",
+    "label": "ICF NORD-EST SA D'HLM"
+  },
+  {
+    "id": "1017A",
+    "label": "ICF LA SABLIERE SA D'HLM"
+  },
+  {
+    "id": "1018A",
+    "label": "SA HABITAT A LOYER MODERE TOIT JOIE"
+  },
+  {
+    "id": "1019A",
+    "label": "RATP HABITAT"
+  },
+  {
+    "id": "1020A",
+    "label": "POSTE HABITAT RHONE-ALPES"
+  },
+  {
+    "id": "1021A",
+    "label": "SA POSTE HABITAT NORMANDIE"
+  },
+  {
+    "id": "1022A",
+    "label": "ICF ATLANTIQUE SA D'HLM"
+  },
+  {
+    "id": "1023A",
+    "label": "ICF SUD-EST MEDITERRANEE SA D'HLM"
+  },
+  {
+    "id": "1025A",
+    "label": "AVEYRON HABITAT"
+  },
+  {
+    "id": "1026A",
+    "label": "RODEZ AGGLO HABITAT"
+  },
+  {
+    "id": "1027A",
+    "label": "MILLAU GRANDS CAUSSES HABITAT"
+  },
+  {
+    "id": "1028A",
+    "label": "OFFICE PUB HABITAT CA ROCHEFORT OCEAN"
+  },
+  {
+    "id": "1029A",
+    "label": "OFFICE PUB L HABITAT COTE D"
+  },
+  {
+    "id": "1030A",
+    "label": "CHARTRES METROPOLE HABITAT"
+  },
+  {
+    "id": "1031A",
+    "label": "DOUARNENEZ HABITAT"
+  },
+  {
+    "id": "1032A",
+    "label": "OFFICE PUB DE L HABITAT DE HTE GARONNE"
+  },
+  {
+    "id": "1033A",
+    "label": "OFFICE PUB L HABITAT DEP L HERAULT"
+  },
+  {
+    "id": "1034A",
+    "label": "OFFICE PUB L HABITAT DEP LANDES"
+  },
+  {
+    "id": "1035A",
+    "label": "OFFICE PUB DE L'HABITAT SAUMUR HABITAT"
+  },
+  {
+    "id": "1036A",
+    "label": "MAINE-ET-LOIRE OFFICE PUB HABITAT"
+  },
+  {
+    "id": "1037A",
+    "label": "MANCHE HABITAT"
+  },
+  {
+    "id": "1038A",
+    "label": "OPH COMMUNAUTE AGGLO PAYS DE LORIENT"
+  },
+  {
+    "id": "1039A",
+    "label": "OFFICE PUBLIC DE L HABITAT DU MORBIHAN"
+  },
+  {
+    "id": "1040A",
+    "label": "OFFICE PUBLIC D'H L M DE BOULOGNE"
+  },
+  {
+    "id": "1041A",
+    "label": "HABITAT SUD ATLANTIC - OFFICE PUB HAB"
+  },
+  {
+    "id": "1042A",
+    "label": "OPH EUROMETROPOLE STRASBOURG"
+  },
+  {
+    "id": "1043A",
+    "label": "OPH DE LA COMMUNAUTE URBAINE DU MANS"
+  },
+  {
+    "id": "1044A",
+    "label": "OFFICE PUBLIC HABITAT SEINE ET MARNE"
+  },
+  {
+    "id": "1045A",
+    "label": "OFFICE PUBLIC DE L HABITAT DU TARN"
+  },
+  {
+    "id": "1046A",
+    "label": "HAUTS-DE-SEINE HABITAT - OPH"
+  },
+  {
+    "id": "1047A",
+    "label": "OFFICE PUBLIC HABITAT LEVALLOIS"
+  },
+  {
+    "id": "1048A",
+    "label": "OFFICE PUBLIC HABITAT SCEAUX"
+  },
+  {
+    "id": "1049A",
+    "label": "OFFICE PUB L HABITAT VILLE BOBIGNY"
+  },
+  {
+    "id": "1050A",
+    "label": "SEINE-SAINT-DENIS HABITAT"
+  },
+  {
+    "id": "1051A",
+    "label": "OPH DE SAINT MAUR DES FOSSES"
+  },
+  {
+    "id": "1052A",
+    "label": "SOCIETE ECONOMIE MIXTE LOGEMENT DE EUR"
+  },
+  {
+    "id": "1053A",
+    "label": "ESPACIL HABITAT"
+  },
+  {
+    "id": "1054A",
+    "label": "SOC IMMOBILIERE DE LA GUADELOUPE"
+  },
+  {
+    "id": "1055A",
+    "label": "SA HLM DE LA GUADELOUPE"
+  },
+  {
+    "id": "1056A",
+    "label": "SOCIETE OZANAM S.A HABIT LOYER MODERE"
+  },
+  {
+    "id": "1057A",
+    "label": "SOCIETE IMMOBILIERE DE LA MARTINIQUE"
+  },
+  {
+    "id": "1058A",
+    "label": "PROLETAZUR"
+  },
+  {
+    "id": "1059A",
+    "label": "HABITAT 06"
+  },
+  {
+    "id": "1060A",
+    "label": "IMMOBILIERE ATLANTIC AMENAGEMENT"
+  },
+  {
+    "id": "1062A",
+    "label": "SOC IMMOBILIERE DE LA GUYANE"
+  },
+  {
+    "id": "1063A",
+    "label": "COOP HABITAT PARIS METROPOLE"
+  },
+  {
+    "id": "1064A",
+    "label": "ECONOMIE MIXTE D'ANTIBES JUAN LES PINS"
+  },
+  {
+    "id": "1065A",
+    "label": "LA MARTINIQ HLM SA HABIT LOYER MODERE"
+  },
+  {
+    "id": "1067A",
+    "label": "SOCIETE IMMOBILIERE DE KOUROU"
+  },
+  {
+    "id": "1068A",
+    "label": "BATIMENTS ET STYLES DE BRETAGNE"
+  },
+  {
+    "id": "1069A",
+    "label": "SOC D'ECONOMIE MIXTE VILLE GOLBEY"
+  },
+  {
+    "id": "1070A",
+    "label": "SAS SAINTE BARBE"
+  },
+  {
+    "id": "1071A",
+    "label": "SA CO GI VA"
+  },
+  {
+    "id": "1072A",
+    "label": "IMM ECO MIX AMENA GEST IMM REAL EVREUX"
+  },
+  {
+    "id": "1073A",
+    "label": "GEXIO"
+  },
+  {
+    "id": "1074A",
+    "label": "RESIDENCES SA HABITATIONS A LOYER"
+  },
+  {
+    "id": "1075A",
+    "label": "L HABITAT SOCIAL FRANCAIS"
+  },
+  {
+    "id": "1076A",
+    "label": "SOC COOP INTERET COLLE H L M CORREZE"
+  },
+  {
+    "id": "1077A",
+    "label": "SA MONT-BLANC SOCIETE ANONYME D'HLM"
+  },
+  {
+    "id": "1078A",
+    "label": "SOC D'EQUIPEMENT DU DEP DE LA REUNION"
+  },
+  {
+    "id": "1079A",
+    "label": "SOCIETE IMMOBILIERE DEPARTEMENT REUNIO"
+  },
+  {
+    "id": "1080A",
+    "label": "SA HABITATIONS A LOYER MODERE REUNION"
+  },
+  {
+    "id": "1081A",
+    "label": "SOC GARDEENNE D ECONOMIE MIXTE"
+  },
+  {
+    "id": "1082A",
+    "label": "VALOPHIS CHAUMIERE ILE FRANCE..."
+  },
+  {
+    "id": "1083A",
+    "label": "HLM BESSEGES ST AMBROIX"
+  },
+  {
+    "id": "1084A",
+    "label": "LOGIS MEDITERRANEE"
+  },
+  {
+    "id": "1085A",
+    "label": "ANTIN RESIDENCES SA HABITAT LOYER MODE"
+  },
+  {
+    "id": "1086A",
+    "label": "SOC ECO CONSTRUC MAISONS LAFFITTE SAEM"
+  },
+  {
+    "id": "1087A",
+    "label": "OPH AMIENS METROPOLE"
+  },
+  {
+    "id": "1088A",
+    "label": "SAIEM ST JEAN CAP FERRAT"
+  },
+  {
+    "id": "1089A",
+    "label": "DOMAXIS SA HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "1090A",
+    "label": "HALPADES S.A. D'HLM"
+  },
+  {
+    "id": "1091A",
+    "label": "SA HLM LE NOUVEAU LOGIS MERIDIONAL"
+  },
+  {
+    "id": "1092A",
+    "label": "SA D'HLM LE NOUVEAU LOGIS AZUR"
+  },
+  {
+    "id": "1093A",
+    "label": "SEMADER"
+  },
+  {
+    "id": "1094A",
+    "label": "SA HLM LE NOUVEAU LOGIS CENTRE-LIMOUSI"
+  },
+  {
+    "id": "1095A",
+    "label": "NOUVEAU LOGIS DE L'EST SA D'HLM"
+  },
+  {
+    "id": "1096A",
+    "label": "MAISONS & CITES SA D'HLM"
+  },
+  {
+    "id": "1098A",
+    "label": "LE FOYER REMOIS"
+  },
+  {
+    "id": "1099A",
+    "label": "FONCIERE D'HABITAT ET HUMANISME"
+  },
+  {
+    "id": "1100A",
+    "label": "OFFICE PUBLIC HABITAT AUBE IMMOBILIER"
+  },
+  {
+    "id": "1101A",
+    "label": "LOGEMLOIRET"
+  },
+  {
+    "id": "1102A",
+    "label": "PAS DE CALAIS HABITAT"
+  },
+  {
+    "id": "1103A",
+    "label": "OFFICE PUBLIC DE L'HABITAT DE L'INDRE"
+  },
+  {
+    "id": "1104A",
+    "label": "PARIS HABITAT-OPH"
+  },
+  {
+    "id": "1105A",
+    "label": "GRAND DIJON HABITAT"
+  },
+  {
+    "id": "1106A",
+    "label": "SA ECONOMIE MIXTE IMMOB NORMANDIE"
+  },
+  {
+    "id": "1107A",
+    "label": "NEOTOA"
+  },
+  {
+    "id": "1108A",
+    "label": "OFFICE PUB HABITAT HTE SAVOIE"
+  },
+  {
+    "id": "1109A",
+    "label": "OFFICE PUB HABITAT LOIR CHER"
+  },
+  {
+    "id": "1110A",
+    "label": "BREST METROPOLE HABITAT"
+  },
+  {
+    "id": "1111A",
+    "label": "OFFICE PUBLIC DE L'HABITAT DU JURA"
+  },
+  {
+    "id": "1112A",
+    "label": "TOUR(S)HABITAT (OPH)"
+  },
+  {
+    "id": "1113A",
+    "label": "SOC ECONOMIE MIXTE INTERCOMMUNALE..."
+  },
+  {
+    "id": "1114A",
+    "label": "SA HABITATIONS A LOYER MODERE BEAUVAIS"
+  },
+  {
+    "id": "1115A",
+    "label": "PROPRIETE FAMILIALE DE NORMANDIE"
+  },
+  {
+    "id": "1116A",
+    "label": "SOCIETE IMMOBILIERE VILLE DE ROMBAS"
+  },
+  {
+    "id": "1118A",
+    "label": "SA HABITATIONS A LOYER MODERE LOGIEST"
+  },
+  {
+    "id": "1119A",
+    "label": "LOGEO SEINE ESTUAIRE"
+  },
+  {
+    "id": "1120A",
+    "label": "SOCIETE D'ECONOMIE MIXTE DU PAYS D'ARL"
+  },
+  {
+    "id": "1121A",
+    "label": "SOC DIONYSIENNE AMENAGEMENT CONSTRUC"
+  },
+  {
+    "id": "1122A",
+    "label": "FILIALE IMMOB COMMUNE ORGAN SOCIAUX 37"
+  },
+  {
+    "id": "1123A",
+    "label": "SOC DEVELOPP GESTION IMMOB SOCIAL"
+  },
+  {
+    "id": "1124A",
+    "label": "SOC ECONOMIE MIXTE AMENAG CONSTRUC"
+  },
+  {
+    "id": "1125A",
+    "label": "OFFICE PUB HABITAT HAUTES-PYRENEES"
+  },
+  {
+    "id": "1126A",
+    "label": "SOCIETE D'ECONOMIE MIXTE NOCEENNE"
+  },
+  {
+    "id": "1127A",
+    "label": "DOMANYS"
+  },
+  {
+    "id": "1128A",
+    "label": "UN TOIT POUR TOUS-DEVELOPPEMENT"
+  },
+  {
+    "id": "1129A",
+    "label": "SA CONSTRUCTION GESTION IMMOBILIERE 07"
+  },
+  {
+    "id": "1130A",
+    "label": "ADIS SA D'HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "1131A",
+    "label": "OPH OPAC QUIMPER CORNOUAILLE"
+  },
+  {
+    "id": "1132A",
+    "label": "SOC HABITAT LOGEMENT ALPES-MARITIMES"
+  },
+  {
+    "id": "1133A",
+    "label": "OPH DE LA HAUTE-LOIRE"
+  },
+  {
+    "id": "1134A",
+    "label": "HABITAT MARSEILLE PROVENCE"
+  },
+  {
+    "id": "1135A",
+    "label": "POLE HABITAT COLMAR CENTRE ALSACE"
+  },
+  {
+    "id": "1136A",
+    "label": "REIMS HABITAT CHAMPAGNE ARDENNE OPH"
+  },
+  {
+    "id": "1137A",
+    "label": "LOGISTART STE ANONYME HLM"
+  },
+  {
+    "id": "1138A",
+    "label": "FINISTERE HABITAT"
+  },
+  {
+    "id": "1139A",
+    "label": "S A GOURNAISIENNE D'HLM"
+  },
+  {
+    "id": "1140A",
+    "label": "SA GASCONNE D'H L M"
+  },
+  {
+    "id": "1141A",
+    "label": "IMMOBILIERE RHONE ALPES SA D'HLM"
+  },
+  {
+    "id": "1142A",
+    "label": "AQUITANIS OPH BORDEAUX METROPOLE"
+  },
+  {
+    "id": "1143A",
+    "label": "GRANDLYON HABITAT - OFFICE PUB HABITAT"
+  },
+  {
+    "id": "1144A",
+    "label": "TOULOUSE METROPOLE HABITAT"
+  },
+  {
+    "id": "1145A",
+    "label": "OFFICE PUB HABITAT METROPOLE GD NANCY"
+  },
+  {
+    "id": "1146A",
+    "label": "EST METROPOLE HABITAT"
+  },
+  {
+    "id": "1147A",
+    "label": "SA UES HABITAT PACT"
+  },
+  {
+    "id": "1148A",
+    "label": "INTERREGIONALE POLYGONE SA D'HLM"
+  },
+  {
+    "id": "1149A",
+    "label": "HABITAT LOGEMENT IMMOBILIER"
+  },
+  {
+    "id": "1150A",
+    "label": "HABITAT SOCIAL PACT 81"
+  },
+  {
+    "id": "1151A",
+    "label": "OFFICE PUBLIC DE L'HABITAT"
+  },
+  {
+    "id": "1152A",
+    "label": "IMMO MED SA HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "1153A",
+    "label": "OFFICE PUBLIC HABITAT AISNE"
+  },
+  {
+    "id": "1154A",
+    "label": "SUD MASSIF CENTRAL HABITAT ENTREPRISE"
+  },
+  {
+    "id": "1155A",
+    "label": "SCI ECONOMIE MIXTE LOGIS SARREBOURGEO"
+  },
+  {
+    "id": "1156A",
+    "label": "OFFICE PUB DE L'HABITAT D'EURE ET LOIR"
+  },
+  {
+    "id": "1157A",
+    "label": "OPAC PAYS D'AIX HABITAT"
+  },
+  {
+    "id": "1158A",
+    "label": "OFFICE PUBLIC DE L'HABITAT DE LA MEUSE"
+  },
+  {
+    "id": "1159A",
+    "label": "HABITAT DAUPHINOIS"
+  },
+  {
+    "id": "1160A",
+    "label": "SOC DEV HABITAT SDH CONSTRUC SA HLM"
+  },
+  {
+    "id": "1161A",
+    "label": "PROMOCIL HLM"
+  },
+  {
+    "id": "1162A",
+    "label": "HLM L AVESNOISE"
+  },
+  {
+    "id": "1163A",
+    "label": "SCIC HABITATS SOLIDAIRES"
+  },
+  {
+    "id": "1164A",
+    "label": "SAEM HABITER A YERRES"
+  },
+  {
+    "id": "1165A",
+    "label": "OPH RENNES METROPOLE ARCHIPEL HABITAT"
+  },
+  {
+    "id": "1166A",
+    "label": "SOCIETE REGIONALE DES CITES JARDINS"
+  },
+  {
+    "id": "1167A",
+    "label": "LE TOIT GIRONDIN"
+  },
+  {
+    "id": "1168A",
+    "label": "HABITAT DU NORD SA D HLM"
+  },
+  {
+    "id": "1169A",
+    "label": "LOGIS FLANDRES INTERIEURE MARITIME"
+  },
+  {
+    "id": "1170A",
+    "label": "DOMOFRANCE"
+  },
+  {
+    "id": "1171A",
+    "label": "CLAIRSIENNE"
+  },
+  {
+    "id": "1172A",
+    "label": "LOGEVIE SA D HLM"
+  },
+  {
+    "id": "1173A",
+    "label": "F.D.I HABITAT"
+  },
+  {
+    "id": "1174A",
+    "label": "MESOLIA HABITAT"
+  },
+  {
+    "id": "1175A",
+    "label": "SOC NATIONALE IMMOBILIERE"
+  },
+  {
+    "id": "1176A",
+    "label": "VILOGIA SA D'HLM"
+  },
+  {
+    "id": "1177A",
+    "label": "OPH BEZIERS MEDITERRANEE HABITAT"
+  },
+  {
+    "id": "1178A",
+    "label": "OPAC VAL D OISE HABITAT"
+  },
+  {
+    "id": "1179A",
+    "label": "OPH COMMUNAUTAIRE DE PLAINE COMMUNE"
+  },
+  {
+    "id": "1180A",
+    "label": "OFFICE PUBLIC HABITAT DEP HAUT RHIN"
+  },
+  {
+    "id": "1181A",
+    "label": "OFFICE PUBLIC D'URBANISME SOCIAL"
+  },
+  {
+    "id": "1182A",
+    "label": "VAL PARISIS HABITAT"
+  },
+  {
+    "id": "1183A",
+    "label": "OFFICE PUB HABITAT PYRENEES ORIENTALES"
+  },
+  {
+    "id": "1184A",
+    "label": "SAIEMB LOGEMENT"
+  },
+  {
+    "id": "1185A",
+    "label": "IMMOBILIERE 3F ALSACE"
+  },
+  {
+    "id": "1186A",
+    "label": "SA HLM LE TOIT VOSGIEN"
+  },
+  {
+    "id": "1187A",
+    "label": "SOCIETE MMOBILIERE DE LA MADELEINE"
+  },
+  {
+    "id": "1188A",
+    "label": "SOLIDARITE & LOGEMENT SA HLM"
+  },
+  {
+    "id": "1189A",
+    "label": "SA HABITATION LOYER MODERE DEP OISE"
+  },
+  {
+    "id": "1190A",
+    "label": "SOC ECONOMIE MIXTE IMMOBILIERE SAINTON"
+  },
+  {
+    "id": "1191A",
+    "label": "SOLIHA SOL HAB BAT LOG INS RHONE-ALPES"
+  },
+  {
+    "id": "1192A",
+    "label": "LE TOIT CHARENTAIS SA COOP PRODU HLM"
+  },
+  {
+    "id": "1194A",
+    "label": "EMMAUS HABITAT"
+  },
+  {
+    "id": "1195A",
+    "label": "VENDEE LOGEMENT ESH"
+  },
+  {
+    "id": "1196A",
+    "label": "ORYON"
+  },
+  {
+    "id": "1197A",
+    "label": "SOC D INVESTISSEMENTS IMMOBIL"
+  },
+  {
+    "id": "1198A",
+    "label": "SOCIETE IMMOBILIERE DU BAS-RHIN"
+  },
+  {
+    "id": "1199A",
+    "label": "SOCIETE IMMOBILIERE GRAND HAINAUT"
+  },
+  {
+    "id": "1200A",
+    "label": "PATRIMOINE LANGUEDOCIENNE SA H L M"
+  },
+  {
+    "id": "1201A",
+    "label": "MARCOU HABITAT SOC COOP PRODUC HLM L.R"
+  },
+  {
+    "id": "1203A",
+    "label": "REGIE IMMOBILIERE DE LA VILLE DE PARIS"
+  },
+  {
+    "id": "1204A",
+    "label": "ELOGIE - SIEMP"
+  },
+  {
+    "id": "1205A",
+    "label": "OSICA SA D HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "1206A",
+    "label": "LOGEMENT GEST IMMOBILIERE REG PARISIEN"
+  },
+  {
+    "id": "1207A",
+    "label": "LA VINCENNOISE"
+  },
+  {
+    "id": "1208A",
+    "label": "IMMOBILIERE 3F"
+  },
+  {
+    "id": "1209A",
+    "label": "IMMOBILIERE BASSE SEINE"
+  },
+  {
+    "id": "1210A",
+    "label": "MEDUANE HABITAT"
+  },
+  {
+    "id": "1211A",
+    "label": "HLM INTERPROFESSIONNELLE REGION PARIS"
+  },
+  {
+    "id": "1212A",
+    "label": "SOCIETE IMMOBILIERE PICARDE D'HLM"
+  },
+  {
+    "id": "1213A",
+    "label": "LE FOYER"
+  },
+  {
+    "id": "1214A",
+    "label": "RES LOGEMT FONCTIONN SOC ANONY HLM"
+  },
+  {
+    "id": "1215A",
+    "label": "SOC ANONYME D HLM MON LOGIS"
+  },
+  {
+    "id": "1216A",
+    "label": "SA H L M CITE NOUVELLE"
+  },
+  {
+    "id": "1217A",
+    "label": "HABITATION MODERNE"
+  },
+  {
+    "id": "1218A",
+    "label": "SEINE HABITAT SOCIETE ANONYME D'HABITA"
+  },
+  {
+    "id": "1219A",
+    "label": "LOGEMENT FRANCAIS"
+  },
+  {
+    "id": "1220A",
+    "label": "SA IMMO ECO MIXTE MOULIN VENT RUEIL"
+  },
+  {
+    "id": "1221A",
+    "label": "SAIEM DU FONDS DES GROUX"
+  },
+  {
+    "id": "1222A",
+    "label": "TOIT ET JOIE"
+  },
+  {
+    "id": "1223A",
+    "label": "SA IMMO MOULIN VERT-SA HAB LOYER MODER"
+  },
+  {
+    "id": "1224A",
+    "label": "SA IMMOBIL ECONOMIE MIXTE CHARENTONNEA"
+  },
+  {
+    "id": "1226A",
+    "label": "VALOPHIS SAREPA - SA D'HLM"
+  },
+  {
+    "id": "1227A",
+    "label": "DOMICIL SA HABITATION LOYER MODERE"
+  },
+  {
+    "id": "1228A",
+    "label": "HABITAT BEAUJOLAIS VAL DE SAONE"
+  },
+  {
+    "id": "1229A",
+    "label": "LE TOIT FOREZIEN"
+  },
+  {
+    "id": "1230A",
+    "label": "MANCELLE D HABITATION"
+  },
+  {
+    "id": "1231A",
+    "label": "SOC EQUIPEMENT CONSTRUCTION SARTHE"
+  },
+  {
+    "id": "1232A",
+    "label": "SOC ECONOMIE MIXTE DE CONSTRUCTION"
+  },
+  {
+    "id": "1233A",
+    "label": "LE FOYER STEPHANAIS"
+  },
+  {
+    "id": "1234A",
+    "label": "SOC IMMOB ECONOMIE MIXTE OISSEL REGION"
+  },
+  {
+    "id": "1235A",
+    "label": "BATIGERE ILE DE FRANCE SA D'HLM"
+  },
+  {
+    "id": "1236A",
+    "label": "EFIDIS SA HABITATION LOYER MODERE"
+  },
+  {
+    "id": "1237A",
+    "label": "SA D'H L M FRANCE HABITATION"
+  },
+  {
+    "id": "1238A",
+    "label": "SODINEUF HABITAT NORMAND"
+  },
+  {
+    "id": "1239A",
+    "label": "HLM LE FOYER VELLAVE"
+  },
+  {
+    "id": "1240A",
+    "label": "LA MAISON DU CIL SA D HLM"
+  },
+  {
+    "id": "1241A",
+    "label": "LE FOYER MODERNE DE SCHILTIGHEIM"
+  },
+  {
+    "id": "1242A",
+    "label": "QUEVILLY HABITAT SA HABIT LOYER MODERE"
+  },
+  {
+    "id": "1243A",
+    "label": "LOGIVIE SA , SOCIETE ANONYME D HLM"
+  },
+  {
+    "id": "1244A",
+    "label": "ENTR SOCIALE POUR L'HABITAT DOMNIS"
+  },
+  {
+    "id": "1245A",
+    "label": "SA HLM LOGIS TRANSPORTS"
+  },
+  {
+    "id": "1247A",
+    "label": "SA REGIONALE HLM L C LOGEMENT"
+  },
+  {
+    "id": "1249A",
+    "label": "SOC HLM LA CITE DES JARDINS"
+  },
+  {
+    "id": "1251A",
+    "label": "AXIMO"
+  },
+  {
+    "id": "1252A",
+    "label": "IMMOBILIERE PARIS SUD EST"
+  },
+  {
+    "id": "1253A",
+    "label": "SOC IMMOB & AMENAGEM BARSURAUBOIS & AU"
+  },
+  {
+    "id": "1254A",
+    "label": "BATIR ET LOGER S A D H L M"
+  },
+  {
+    "id": "1255A",
+    "label": "SA D'HLM LES FOYERS"
+  },
+  {
+    "id": "1256A",
+    "label": "SOC ECONO MIXTE IMMOBI VILLE MARTIGUES"
+  },
+  {
+    "id": "1257A",
+    "label": "ERIGERE"
+  },
+  {
+    "id": "1258A",
+    "label": "SAEM IMMOBILIERE DE BELLEVILLE"
+  },
+  {
+    "id": "1259A",
+    "label": "CAENNAISE SOC CAENNAISE DEVELOPP IMMO"
+  },
+  {
+    "id": "1260A",
+    "label": "LOGIPAYS SOC ANONYME D HLM DU CALVADOS"
+  },
+  {
+    "id": "1261A",
+    "label": "LOGIS 62 SA D'HLM"
+  },
+  {
+    "id": "1262A",
+    "label": "SA HLM LOGIS FAMILIAL VAROIS"
+  },
+  {
+    "id": "1263A",
+    "label": "SAEM DE LA LONDE LES MAURES"
+  },
+  {
+    "id": "1264A",
+    "label": "SOC IMMOBILIERE MIXTE DE SAINT MAUR"
+  },
+  {
+    "id": "1265A",
+    "label": "SEM CONSTRUC VILLE TARBES"
+  },
+  {
+    "id": "1266A",
+    "label": "HLM RURALE DE L'EURE"
+  },
+  {
+    "id": "1267A",
+    "label": "PARTELIOS HABITAT"
+  },
+  {
+    "id": "1268A",
+    "label": "SA D'HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "1269A",
+    "label": "SOC ECONOMIE MIXTE IMMOBILIERE VICHY"
+  },
+  {
+    "id": "1270A",
+    "label": "SAEM NOISY-LE-SEC HABITAT"
+  },
+  {
+    "id": "1271A",
+    "label": "SA D'HLM D'ARMORIQUE"
+  },
+  {
+    "id": "1272A",
+    "label": "SEMISAP"
+  },
+  {
+    "id": "1273A",
+    "label": "OUEST PROVENCE HABITAT"
+  },
+  {
+    "id": "1274A",
+    "label": "SA D'HLM LOGISEINE"
+  },
+  {
+    "id": "1275A",
+    "label": "SOC FR HABITATIONS ECONOMIQUES-SA HLM"
+  },
+  {
+    "id": "1276A",
+    "label": "SOC IMMOB LOGEMENT DE L'EURE SA HLM"
+  },
+  {
+    "id": "1277A",
+    "label": "BATIGERE NORD EST"
+  },
+  {
+    "id": "1278A",
+    "label": "LE LOGEMENT THILLOIS"
+  },
+  {
+    "id": "1279A",
+    "label": "SOC ECONOMIE MIXTE IMMOB RAMBOUILLET"
+  },
+  {
+    "id": "1280A",
+    "label": "SA HABITATIONS A LOYER MODERE CHALETS"
+  },
+  {
+    "id": "1281A",
+    "label": "HABITAT 62-59 SA D HLM DU PDC ET DU NO"
+  },
+  {
+    "id": "1282A",
+    "label": "SA IMMOB ECONO MIXTE VILLE MEAUX"
+  },
+  {
+    "id": "1283A",
+    "label": "SEMISO ECO MIXTE CONSTR RENOV ST OUEN"
+  },
+  {
+    "id": "1285A",
+    "label": "LA TOURANGELLE SA D'H.L.M."
+  },
+  {
+    "id": "1286A",
+    "label": "CRETEIL HABITAT SEMIC"
+  },
+  {
+    "id": "1287A",
+    "label": "SA HLM PIERRES ET LUMIERES"
+  },
+  {
+    "id": "1288A",
+    "label": "SA D'H.L.M. FRANCE LOIRE"
+  },
+  {
+    "id": "1289A",
+    "label": "SOC INTERCO \"\"LE FOYER BASSE BRUCHE\""
+  },
+  {
+    "id": "1290A",
+    "label": "OBERNAI HABITAT"
+  },
+  {
+    "id": "1291A",
+    "label": "SOCIETE D ECONOMIE MIXTE VILLE SCHIRME"
+  },
+  {
+    "id": "1292A",
+    "label": "SOC H L M UN TOIT POUR TOUS"
+  },
+  {
+    "id": "1293A",
+    "label": "SA D'HLM LES CITES CHERBOURGEOISES"
+  },
+  {
+    "id": "1294A",
+    "label": "LE LOGEMENT FAMILIAL DE L EURE"
+  },
+  {
+    "id": "1295A",
+    "label": "TOURAINE LOGEMENT E.S.H."
+  },
+  {
+    "id": "1296A",
+    "label": "PROMOLOGIS-SA D HABITATION LOYER MODER"
+  },
+  {
+    "id": "1297A",
+    "label": "COOPERER POUR HABITER"
+  },
+  {
+    "id": "1298A",
+    "label": "SA HLM DE LA PLAINE DE FRANCE"
+  },
+  {
+    "id": "1299A",
+    "label": "SOC CANNOISE CONSTRUCTION ET AMENAGEME"
+  },
+  {
+    "id": "1300A",
+    "label": "SA D'HLM AIGUILLON CONSTRUCTION"
+  },
+  {
+    "id": "1301A",
+    "label": "H L M PYRENEES ORIENTALES"
+  },
+  {
+    "id": "1302A",
+    "label": "BRENNUS HABITAT"
+  },
+  {
+    "id": "1303A",
+    "label": "SEMIB PLUS ECONO MIXTEIMM AMEN VILLE"
+  },
+  {
+    "id": "1304A",
+    "label": "MAISONS CLAIRES"
+  },
+  {
+    "id": "1305A",
+    "label": "IMMOB MIDI-PYRENEES SA VALLEE THORE"
+  },
+  {
+    "id": "1306A",
+    "label": "LE LOGEMENT FAMILIAL SOISSONS ET AISNE"
+  },
+  {
+    "id": "1307A",
+    "label": "SA ECO MIXTE CONSTRUCTION DRAGUIGNAN"
+  },
+  {
+    "id": "1308A",
+    "label": "SA IMMOBILIERE ECONOMIE MIXTE DE COURS"
+  },
+  {
+    "id": "1309A",
+    "label": "RENAISSANCE IMMOBILIERE CHALONNAISE"
+  },
+  {
+    "id": "1310A",
+    "label": "VITRY HABITAT"
+  },
+  {
+    "id": "1311A",
+    "label": "S.A.E.M DE LA VILLE DE MALLEMORT"
+  },
+  {
+    "id": "1312A",
+    "label": "CRISTAL HABITAT"
+  },
+  {
+    "id": "1313A",
+    "label": "LOGIDIA SA HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "1314A",
+    "label": "VILOGIA MAISON FAMILIALE LORRAINE"
+  },
+  {
+    "id": "1315A",
+    "label": "SEM DE CONSTRUCTION DU DPT DE L AIN"
+  },
+  {
+    "id": "1316A",
+    "label": "SA COOP PRODUCTION D'HLM AIN HABITAT"
+  },
+  {
+    "id": "1317A",
+    "label": "LA THOISSEYENNE SA H.L.M"
+  },
+  {
+    "id": "1318A",
+    "label": "SOCIETE LORRAINE D'HABITAT"
+  },
+  {
+    "id": "1319A",
+    "label": "SOCIETE HLM LA PLAINE NORMANDE"
+  },
+  {
+    "id": "1320A",
+    "label": "INCITE BORDEAUX LA CUB"
+  },
+  {
+    "id": "1321A",
+    "label": "SA D HLM PICARDIE HABITAT"
+  },
+  {
+    "id": "1322A",
+    "label": "IMMOBILIERE NORD ARTOIS SA D'HLM"
+  },
+  {
+    "id": "1325A",
+    "label": "SOC GESTION MAINTENAN AMENAGEM CONSTRU"
+  },
+  {
+    "id": "1326A",
+    "label": "LE LOGIS SOCIAL DU VAL D'OISE"
+  },
+  {
+    "id": "1327A",
+    "label": "POSTE HABITAT PROVENCE"
+  },
+  {
+    "id": "1328A",
+    "label": "OPAC SAONE ET LOIRE OFFICE PUB HABITAT"
+  },
+  {
+    "id": "1329A",
+    "label": "BATIGERE RHONE ALPES SA HLM"
+  },
+  {
+    "id": "1330A",
+    "label": "SOC COOP HABITATION LOYER MODERE"
+  },
+  {
+    "id": "1331A",
+    "label": "COLMAR HABITAT HLM"
+  },
+  {
+    "id": "1332A",
+    "label": "OFFICE PUB HABITAT IMMOBILIER SOCIAL"
+  },
+  {
+    "id": "1333A",
+    "label": "DYNACITE OFFICE PUB HABITAT AIN"
+  },
+  {
+    "id": "1334A",
+    "label": "OPAC DE L'ISERE"
+  },
+  {
+    "id": "1335A",
+    "label": "OFFICE PUB HABITAT DEP RHONE"
+  },
+  {
+    "id": "1336A",
+    "label": "METZ HABITAT TERRITOIRE"
+  },
+  {
+    "id": "1337A",
+    "label": "OFFICE PUB L 'HABITAT - OPAC OISE"
+  },
+  {
+    "id": "1338A",
+    "label": "SA IMMOBILIER ECONOMIE MIXTE DE BAYEUX"
+  },
+  {
+    "id": "1339A",
+    "label": "CALVADOS HABITAT"
+  },
+  {
+    "id": "1340A",
+    "label": "SOC HLM DU COTENTIN"
+  },
+  {
+    "id": "1341A",
+    "label": "LE FOYER DU TOIT FAMILIAL"
+  },
+  {
+    "id": "1342A",
+    "label": "SOC ANONYME HLM COLIGNY"
+  },
+  {
+    "id": "1343A",
+    "label": "FAMILLE ET PROVENCE"
+  },
+  {
+    "id": "1344A",
+    "label": "MEURTHE ET MOSELLE HABITAT"
+  },
+  {
+    "id": "1345A",
+    "label": "VOSGELIS OFFICE PUB HABITAT DEP VOSGES"
+  },
+  {
+    "id": "1346A",
+    "label": "SOC D ECONOMIE MIXTE MARYSE BASTIE"
+  },
+  {
+    "id": "1347A",
+    "label": "LA RESIDENCE URBAINE DE FRANCE"
+  },
+  {
+    "id": "1348A",
+    "label": "HLM LES FOYERS DE SEINE ET MARNE"
+  },
+  {
+    "id": "1349A",
+    "label": "S.A. ECONOMIE MIXTE GARENNE COLOMBES"
+  },
+  {
+    "id": "1350A",
+    "label": "SA DES HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "1351A",
+    "label": "PRESENCE HABITAT"
+  },
+  {
+    "id": "1352A",
+    "label": "IDF HABITAT"
+  },
+  {
+    "id": "1353A",
+    "label": "VALOPHIS HABITAT OFFICE PUB HABITAT 94"
+  },
+  {
+    "id": "1354A",
+    "label": "SA HLM TROIS MOULINS HABITAT"
+  },
+  {
+    "id": "1355A",
+    "label": "HABITAT DE CHAMPAGNE"
+  },
+  {
+    "id": "1356A",
+    "label": "F2M - SA D'HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "1357A",
+    "label": "DOM'AULIM ENTR SOCIALE HABITAT ..."
+  },
+  {
+    "id": "1358A",
+    "label": "SOC H L M LOZERE HABITATIONS"
+  },
+  {
+    "id": "1359A",
+    "label": "IMMOB ECONOMIE MIXTE MENDE FONTANILLES"
+  },
+  {
+    "id": "1360A",
+    "label": "SA EURE & LOIR HABITAT SA D' HLM"
+  },
+  {
+    "id": "1362A",
+    "label": "SOC ECO MIXTE HABIT PAYS CHATELLERAUDA"
+  },
+  {
+    "id": "1363A",
+    "label": "AUVERGNE HABITAT"
+  },
+  {
+    "id": "1364A",
+    "label": "SA NANTAISE D HABITATIONS"
+  },
+  {
+    "id": "1365A",
+    "label": "LE FOYER D ARMOR"
+  },
+  {
+    "id": "1366A",
+    "label": "SA H L M LES AJONCS"
+  },
+  {
+    "id": "1367A",
+    "label": "ATLANTIQUE HABITATIONS SA HLM"
+  },
+  {
+    "id": "1368A",
+    "label": "HARMONIE HABITAT"
+  },
+  {
+    "id": "1369A",
+    "label": "SA D'HLM DES MARCHES DE L'OUEST"
+  },
+  {
+    "id": "1371A",
+    "label": "SA D'HLM NOTRE LOGIS"
+  },
+  {
+    "id": "1372A",
+    "label": "LOGIS METROPOLE"
+  },
+  {
+    "id": "1373A",
+    "label": "SOC HABITATION LOYER MODERE LA RANCE"
+  },
+  {
+    "id": "1374A",
+    "label": "SCIC HABITAT AUVERGNE ET BOURBONNAIS"
+  },
+  {
+    "id": "1375A",
+    "label": "DOMIAL"
+  },
+  {
+    "id": "1376A",
+    "label": "SOCIETE MULHOUSIENNE DES CITES OUVRIER"
+  },
+  {
+    "id": "1377A",
+    "label": "SA HLM COUTANCES-GRANVILLE"
+  },
+  {
+    "id": "1378A",
+    "label": "SOC ECONOMIE MIXTE IMMOBILIER VIROISE"
+  },
+  {
+    "id": "1379A",
+    "label": "SA DE CONSTRUCTION DE LA VILLE DE LYON"
+  },
+  {
+    "id": "1380A",
+    "label": "SA REGIONALE D H L M DE LYON"
+  },
+  {
+    "id": "1381A",
+    "label": "SCIC HABITAT RHONE ALPES. SA DE HLM"
+  },
+  {
+    "id": "1383A",
+    "label": "SA CONSTRUCT DE LA VILLE DE VENISSIEUX"
+  },
+  {
+    "id": "1384A",
+    "label": "ESSONNE HABITAT"
+  },
+  {
+    "id": "1385A",
+    "label": "LOGEO MEDITERRANEE, SA HLM"
+  },
+  {
+    "id": "1386A",
+    "label": "IMMOBILIERE CENTRE LOIRE"
+  },
+  {
+    "id": "1387A",
+    "label": "LOGIS FAMILIAL SOC D'HLM"
+  },
+  {
+    "id": "1388A",
+    "label": "SOCIETE VILLEURBANNAISE D'URBANISME"
+  },
+  {
+    "id": "1389A",
+    "label": "SA HLM REG LYON GABRIEL ROSSET SA HLM"
+  },
+  {
+    "id": "1390A",
+    "label": "LOGEAL IMMOB SA HABITATIONS"
+  },
+  {
+    "id": "1B",
+    "label": "Logial-coop"
+  },
+  {
+    "id": "2B",
+    "label": "PAYS DE MEAUX HABITAT"
+  },
+  {
+    "id": "3B",
+    "label": "Paris Habitat"
+  },
+  {
+    "id": "4B",
+    "label": "Valophis Habitat"
+  },
+  {
+    "id": "5B",
+    "label": "Hauts-de-Bièvre Habitat"
+  },
+  {
+    "id": "6B",
+    "label": "OPALY"
+  },
+  {
+    "id": "7B",
+    "label": "AB Habitat"
+  },
+  {
+    "id": "8B",
+    "label": "OPH d'Aubervilliers"
+  },
+  {
+    "id": "9B",
+    "label": "OFFICE PUB HABITAT AULNAY SOUS BOIS"
+  },
+  {
+    "id": "10B",
+    "label": "Val du Loing Habitat"
+  },
+  {
+    "id": "11B",
+    "label": "OFFICE PUBLIC HABITAT BAGNOLET"
+  },
+  {
+    "id": "12B",
+    "label": "OFFICE PUB L HABITAT VILLE BOBIGNY"
+  },
+  {
+    "id": "13B",
+    "label": "Bondy Habitat"
+  },
+  {
+    "id": "14B",
+    "label": "OFFICE PUBLIC D H L M DE CACHAN"
+  },
+  {
+    "id": "15B",
+    "label": "CHATILLON HABITAT"
+  },
+  {
+    "id": "16B",
+    "label": "OFFICE PUBLIC D HABITAT DE COULOMMIERS"
+  },
+  {
+    "id": "17B",
+    "label": "OPH COURBEVOIE EPT PARIS OUEST DEFENSE"
+  },
+  {
+    "id": "18B",
+    "label": "OFFICE PUBLIC HABITAT DRANCY"
+  },
+  {
+    "id": "19B",
+    "label": "Gennevilliers Habitat"
+  },
+  {
+    "id": "20B",
+    "label": "HAUTS DE SEINE HABITAT OPH"
+  },
+  {
+    "id": "21B",
+    "label": "OPH d'Ivry-sur-Seine"
+  },
+  {
+    "id": "22B",
+    "label": "KREMLIN BICETRE HABITAT"
+  },
+  {
+    "id": "23B",
+    "label": "LEVALLOIS HABITAT"
+  },
+  {
+    "id": "24B",
+    "label": "CONFLUENCE HABITAT"
+  },
+  {
+    "id": "25B",
+    "label": "MONTROUGE HABITAT OPH"
+  },
+  {
+    "id": "26B",
+    "label": "OFFICE PUBLIC HABITAT NANTERRE"
+  },
+  {
+    "id": "27B",
+    "label": "Pantin Habitat"
+  },
+  {
+    "id": "28B",
+    "label": "OFFICE PUB HABITAT COM PUTEAUX"
+  },
+  {
+    "id": "29B",
+    "label": "OPH DE SAINT MAUR DES FOSSES"
+  },
+  {
+    "id": "30B",
+    "label": "Sceaux Habitat"
+  },
+  {
+    "id": "31B",
+    "label": "OFFICE PUBLIC HABITAT SEINE ET MARNE"
+  },
+  {
+    "id": "32B",
+    "label": "SEINE SAINT DENIS HABITAT"
+  },
+  {
+    "id": "33B",
+    "label": "OFFICE PUBLIC HABITAT VILLE DE THIAIS"
+  },
+  {
+    "id": "34B",
+    "label": "OFFICE PUBLIC DE L HABITAT VILLEJUIF"
+  },
+  {
+    "id": "35B",
+    "label": "OPH VILLEMOMBLE GRAND PARIS GRAND EST"
+  },
+  {
+    "id": "36B",
+    "label": "OPH de Villeneuve-Saint-Georges"
+  },
+  {
+    "id": "37B",
+    "label": "OFFICE PUBLIC HABITAT VILLE VINCENNES"
+  },
+  {
+    "id": "38B",
+    "label": "OFFICE PUB HABITAT VITRY SUR SEINE"
+  },
+  {
+    "id": "39B",
+    "label": "IDF HABITAT"
+  },
+  {
+    "id": "40B",
+    "label": "COOPERER POUR HABITER"
+  },
+  {
+    "id": "41B",
+    "label": "SA EFIDIS"
+  },
+  {
+    "id": "42B",
+    "label": "EMMAUS HABITAT"
+  },
+  {
+    "id": "43B",
+    "label": "ESPACE HABITAT CONSTRUCTION SA HLM"
+  },
+  {
+    "id": "44B",
+    "label": "ESSONNE HABITAT"
+  },
+  {
+    "id": "45B",
+    "label": "DOMNIS"
+  },
+  {
+    "id": "46B",
+    "label": "HLM LES FOYERS DE SEINE ET MARNE"
+  },
+  {
+    "id": "47B",
+    "label": "SFHE"
+  },
+  {
+    "id": "48B",
+    "label": "SEQENS"
+  },
+  {
+    "id": "49B",
+    "label": "SOGEMAC Habitat"
+  },
+  {
+    "id": "50B",
+    "label": "AXIMO"
+  },
+  {
+    "id": "51B",
+    "label": "HSF"
+  },
+  {
+    "id": "52B",
+    "label": "L HABITATION CONFORTABLE"
+  },
+  {
+    "id": "53B",
+    "label": "I3F"
+  },
+  {
+    "id": "54B",
+    "label": "SAIMV"
+  },
+  {
+    "id": "55B",
+    "label": "HLM INTERPROFESSIONNELLE REGION PARIS"
+  },
+  {
+    "id": "56B",
+    "label": "LogiRep"
+  },
+  {
+    "id": "57B",
+    "label": "LSVO"
+  },
+  {
+    "id": "58B",
+    "label": "SA HLM LOGIS TRANSPORTS"
+  },
+  {
+    "id": "59B",
+    "label": "ERIGERE"
+  },
+  {
+    "id": "60B",
+    "label": "SEQENS Solidarité"
+  },
+  {
+    "id": "61B",
+    "label": "SA HLM PIERRES ET LUMIERES"
+  },
+  {
+    "id": "62B",
+    "label": "SA HLM DE LA PLAINE DE FRANCE"
+  },
+  {
+    "id": "63B",
+    "label": "Valophis Sarepa"
+  },
+  {
+    "id": "64B",
+    "label": "3F Seine et Marne"
+  },
+  {
+    "id": "65B",
+    "label": "Résidences Logement Fonctionnaires"
+  },
+  {
+    "id": "66B",
+    "label": "ICF La Sablière"
+  },
+  {
+    "id": "67B",
+    "label": "ANTIN RESIDENCES SA HABITAT LOYER MODE"
+  },
+  {
+    "id": "68B",
+    "label": "BATIGERE ILE DE FRANCE SA D HLM"
+  },
+  {
+    "id": "69B",
+    "label": "Trois Moulins Habitat TMH"
+  },
+  {
+    "id": "70B",
+    "label": "TOIT ET JOIE"
+  },
+  {
+    "id": "71B",
+    "label": "CDC Habitat Social"
+  },
+  {
+    "id": "72B",
+    "label": "Domaxis"
+  },
+  {
+    "id": "73B",
+    "label": "CROIX ROUGE HABITAT SA D HABITATIONS"
+  },
+  {
+    "id": "74B",
+    "label": "Valophis La Chaumière d'Ile de France"
+  },
+  {
+    "id": "75B",
+    "label": "SAEM"
+  },
+  {
+    "id": "76B",
+    "label": "SEMIC"
+  },
+  {
+    "id": "77B",
+    "label": "SAEM d'Epinay-sur-Seine"
+  },
+  {
+    "id": "78B",
+    "label": "SAIEM MALAKOFF HABITAT"
+  },
+  {
+    "id": "79B",
+    "label": "SEM"
+  },
+  {
+    "id": "80B",
+    "label": "SAEMHL"
+  },
+  {
+    "id": "81B",
+    "label": "SAEM"
+  },
+  {
+    "id": "82B",
+    "label": "Pays de Meaux Habitat"
+  },
+  {
+    "id": "83B",
+    "label": "SEMMY"
+  },
+  {
+    "id": "84B",
+    "label": "SAIEM du Moulin-à-Vent"
+  },
+  {
+    "id": "85B",
+    "label": "SEMINE SA"
+  },
+  {
+    "id": "86B",
+    "label": "SEMINOC"
+  },
+  {
+    "id": "87B",
+    "label": "SA ECONO MIXTE RENOVATION CONSTR NOGEN"
+  },
+  {
+    "id": "88B",
+    "label": "SEMINO"
+  },
+  {
+    "id": "89B",
+    "label": "RIVP"
+  },
+  {
+    "id": "90B",
+    "label": "SGIM"
+  },
+  {
+    "id": "91B",
+    "label": "SEMIPFA"
+  },
+  {
+    "id": "92B",
+    "label": "SEMIR"
+  },
+  {
+    "id": "93B",
+    "label": "SIEM"
+  },
+  {
+    "id": "94B",
+    "label": "SEMISO"
+  },
+  {
+    "id": "95B",
+    "label": "SCEAUX BOURG LA REINE HABITAT SOC EC"
+  },
+  {
+    "id": "96B",
+    "label": "ADOMA"
+  },
+  {
+    "id": "97B",
+    "label": "SOCOVAR"
+  },
+  {
+    "id": "98B",
+    "label": "VINCEM"
+  },
+  {
+    "id": "99B",
+    "label": "SEMISE"
+  },
+  {
+    "id": "100B",
+    "label": "HABITAT 08 OFFICE PUB HABITAT ARDENNES"
+  },
+  {
+    "id": "101B",
+    "label": "Aube Immobilier"
+  },
+  {
+    "id": "102B",
+    "label": "Châlons-en-Champagne Habitat"
+  },
+  {
+    "id": "103B",
+    "label": "Hamaris"
+  },
+  {
+    "id": "104B",
+    "label": "REIMS HABITAT CHAMPAGNE ARDENNE OPH"
+  },
+  {
+    "id": "105B",
+    "label": "Troyes habitat"
+  },
+  {
+    "id": "106B",
+    "label": "Chaumont Habitat"
+  },
+  {
+    "id": "107B",
+    "label": "OFFICE PUB DE L HABITAT DE ST DIZIER"
+  },
+  {
+    "id": "108B",
+    "label": "PLURIAL NOVILIA"
+  },
+  {
+    "id": "109B",
+    "label": "SA DES HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "110B",
+    "label": "LE FOYER REMOIS"
+  },
+  {
+    "id": "111B",
+    "label": "SOC ANONYME D HLM MON LOGIS"
+  },
+  {
+    "id": "112B",
+    "label": "ESPACE HABITAT"
+  },
+  {
+    "id": "113B",
+    "label": "NOV'HABITAT"
+  },
+  {
+    "id": "114B",
+    "label": "VITRY HABITAT"
+  },
+  {
+    "id": "115B",
+    "label": "SIABA"
+  },
+  {
+    "id": "116B",
+    "label": "OPH de l'Aisne"
+  },
+  {
+    "id": "117B",
+    "label": "Amsom Habitat"
+  },
+  {
+    "id": "118B",
+    "label": "OPAL"
+  },
+  {
+    "id": "119B",
+    "label": "OFFICE PUB L HABITAT OPAC OISE"
+  },
+  {
+    "id": "120B",
+    "label": "Oise Habitat"
+  },
+  {
+    "id": "121B",
+    "label": "Baie de Somme Habitat"
+  },
+  {
+    "id": "122B",
+    "label": "Habitat Saint Quentinois"
+  },
+  {
+    "id": "123B",
+    "label": "OPSOM"
+  },
+  {
+    "id": "124B",
+    "label": "CLESENCE"
+  },
+  {
+    "id": "125B",
+    "label": "SA HABITATIONS A LOYER MODERE BEAUVAIS"
+  },
+  {
+    "id": "126B",
+    "label": "LOGIVAM"
+  },
+  {
+    "id": "127B",
+    "label": "SA HABITATION LOYER MODERE DEP OISE"
+  },
+  {
+    "id": "128B",
+    "label": "SIP"
+  },
+  {
+    "id": "129B",
+    "label": "SA HLM Picardie Habitat"
+  },
+  {
+    "id": "130B",
+    "label": "SAIP"
+  },
+  {
+    "id": "131B",
+    "label": "Eure Habitat"
+  },
+  {
+    "id": "132B",
+    "label": "Rouen Habitat"
+  },
+  {
+    "id": "133B",
+    "label": "Habitat 76"
+  },
+  {
+    "id": "134B",
+    "label": "ALCEANE"
+  },
+  {
+    "id": "135B",
+    "label": "IBS"
+  },
+  {
+    "id": "136B",
+    "label": "CIFN DIALOGE"
+  },
+  {
+    "id": "137B",
+    "label": "SA HLM REGION D ELBEUF"
+  },
+  {
+    "id": "138B",
+    "label": "LE FOYER STEPHANAIS"
+  },
+  {
+    "id": "139B",
+    "label": "LE FOYER DU TOIT FAMILIAL"
+  },
+  {
+    "id": "140B",
+    "label": "S A GOURNAISIENNE D HLM"
+  },
+  {
+    "id": "141B",
+    "label": "QUEVILLY HABITAT SA HABIT LOYER MODERE"
+  },
+  {
+    "id": "142B",
+    "label": "LOGEAL IMMOB SA HABITATIONS"
+  },
+  {
+    "id": "143B",
+    "label": "LE LOGEMENT FAMILIAL DE L EURE"
+  },
+  {
+    "id": "144B",
+    "label": "SA D HLM LOGISEINE"
+  },
+  {
+    "id": "145B",
+    "label": "SEINE HABITAT SOCIETE ANONYME D HABITA"
+  },
+  {
+    "id": "146B",
+    "label": "SA POSTE HABITAT NORMANDIE"
+  },
+  {
+    "id": "147B",
+    "label": "SILOGE"
+  },
+  {
+    "id": "148B",
+    "label": "Sodineuf Habitat Normand"
+  },
+  {
+    "id": "149B",
+    "label": "PFN"
+  },
+  {
+    "id": "150B",
+    "label": "SAIEM d'Elbeuf"
+  },
+  {
+    "id": "151B",
+    "label": "SAIEM AGIRE"
+  },
+  {
+    "id": "152B",
+    "label": "SECOMILE"
+  },
+  {
+    "id": "153B",
+    "label": "SEMINOR"
+  },
+  {
+    "id": "154B",
+    "label": "SIEMOR"
+  },
+  {
+    "id": "155B",
+    "label": "SEMVIT"
+  },
+  {
+    "id": "156B",
+    "label": "L'Habitat Drouais"
+  },
+  {
+    "id": "157B",
+    "label": "OFFICE PUBLIC DE L HABITAT DE L INDRE"
+  },
+  {
+    "id": "158B",
+    "label": "Val Touraine Habitat"
+  },
+  {
+    "id": "159B",
+    "label": "Terres de Loire-Habitat"
+  },
+  {
+    "id": "160B",
+    "label": "LogemLoiret"
+  },
+  {
+    "id": "161B",
+    "label": "TOUR S HABITAT OPH"
+  },
+  {
+    "id": "162B",
+    "label": "Chartres Habitat"
+  },
+  {
+    "id": "163B",
+    "label": "Le Logement Dunois"
+  },
+  {
+    "id": "164B",
+    "label": "OFFICE PUBLIC HABITAT DU CHER"
+  },
+  {
+    "id": "165B",
+    "label": "NOGENT PERCHE HABITAT OPH CC PERCHE"
+  },
+  {
+    "id": "166B",
+    "label": "ICF Atlantique"
+  },
+  {
+    "id": "167B",
+    "label": "VALLOGIS"
+  },
+  {
+    "id": "168B",
+    "label": "SA EURE & LOIR HABITAT SA D HLM"
+  },
+  {
+    "id": "169B",
+    "label": "FRANCE LOIRE"
+  },
+  {
+    "id": "170B",
+    "label": "SCALIS"
+  },
+  {
+    "id": "171B",
+    "label": "3F Centre Val de Loire"
+  },
+  {
+    "id": "172B",
+    "label": "SA REGIONALE HLM L C LOGEMENT"
+  },
+  {
+    "id": "173B",
+    "label": "SA HLM LE NOUVEAU LOGIS CENTRE LIMOUSI"
+  },
+  {
+    "id": "174B",
+    "label": "SA D HLM LA ROSERAIE"
+  },
+  {
+    "id": "175B",
+    "label": "SIAP"
+  },
+  {
+    "id": "176B",
+    "label": "TOURAINE LOGEMENT E S H"
+  },
+  {
+    "id": "177B",
+    "label": "LA TOURANGELLE SA D H L M"
+  },
+  {
+    "id": "178B",
+    "label": "LIGERIS"
+  },
+  {
+    "id": "179B",
+    "label": "INOLYA"
+  },
+  {
+    "id": "180B",
+    "label": "Caen Habitat"
+  },
+  {
+    "id": "181B",
+    "label": "Presqu'île Habitat"
+  },
+  {
+    "id": "182B",
+    "label": "Manche Habitat"
+  },
+  {
+    "id": "183B",
+    "label": "Orne Habitat"
+  },
+  {
+    "id": "184B",
+    "label": "SAGIM"
+  },
+  {
+    "id": "185B",
+    "label": "Logi Pays"
+  },
+  {
+    "id": "186B",
+    "label": "SA HLM CC"
+  },
+  {
+    "id": "187B",
+    "label": "SOC HLM DU COTENTIN"
+  },
+  {
+    "id": "188B",
+    "label": "SA HLM COUTANCES GRANVILLE"
+  },
+  {
+    "id": "189B",
+    "label": "LES FOYERS NORMANDS"
+  },
+  {
+    "id": "190B",
+    "label": "Le Logis familial"
+  },
+  {
+    "id": "191B",
+    "label": "SOCIETE HLM LA PLAINE NORMANDE"
+  },
+  {
+    "id": "192B",
+    "label": "HPE 14 (Partélios Habitat)"
+  },
+  {
+    "id": "193B",
+    "label": "SAIEM Bayeux"
+  },
+  {
+    "id": "194B",
+    "label": "GIVC"
+  },
+  {
+    "id": "195B",
+    "label": "La Caennaise"
+  },
+  {
+    "id": "196B",
+    "label": "SEM Livarot"
+  },
+  {
+    "id": "197B",
+    "label": "SOC ECONOMIE MIXTE DE VENCE"
+  },
+  {
+    "id": "198B",
+    "label": "SEMIVIR"
+  },
+  {
+    "id": "199B",
+    "label": "GRAND DIJON HABITAT"
+  },
+  {
+    "id": "200B",
+    "label": "OPAC SAONE ET LOIRE OFFICE PUB HABITAT"
+  },
+  {
+    "id": "201B",
+    "label": "Domanys"
+  },
+  {
+    "id": "202B",
+    "label": "Office Auxerrois de l'habitat"
+  },
+  {
+    "id": "203B",
+    "label": "OPH 21 – Côte-d'Or Habitat"
+  },
+  {
+    "id": "204B",
+    "label": "Nièvre Habitat"
+  },
+  {
+    "id": "205B",
+    "label": "SHB"
+  },
+  {
+    "id": "206B",
+    "label": "SA HLM HABELLIS"
+  },
+  {
+    "id": "207B",
+    "label": "LOGIVIE"
+  },
+  {
+    "id": "208B",
+    "label": "BRENNUS HABITAT"
+  },
+  {
+    "id": "209B",
+    "label": "SIMAD"
+  },
+  {
+    "id": "210B",
+    "label": "Lille Métropole Habitat"
+  },
+  {
+    "id": "211B",
+    "label": "PARTENORD HABITAT"
+  },
+  {
+    "id": "212B",
+    "label": "Pas-de-Calais Habitat"
+  },
+  {
+    "id": "213B",
+    "label": "Habitat du littoral"
+  },
+  {
+    "id": "214B",
+    "label": "Terre d'Opale Habitat"
+  },
+  {
+    "id": "215B",
+    "label": "OFFICE PUBLIC DE L HABITAT DE FOURMIES"
+  },
+  {
+    "id": "216B",
+    "label": "SIA Habitat"
+  },
+  {
+    "id": "217B",
+    "label": "L'Avesnoise"
+  },
+  {
+    "id": "218B",
+    "label": "LOGIFIM"
+  },
+  {
+    "id": "219B",
+    "label": "CARPI"
+  },
+  {
+    "id": "220B",
+    "label": "Le cottage social des Flandres"
+  },
+  {
+    "id": "221B",
+    "label": "SOCIETE IMMOBILIERE GRAND HAINAUT"
+  },
+  {
+    "id": "222B",
+    "label": "VILOGIA SA D HLM"
+  },
+  {
+    "id": "223B",
+    "label": "Flandres Opale Habitat"
+  },
+  {
+    "id": "224B",
+    "label": "Logis Métropole"
+  },
+  {
+    "id": "225B",
+    "label": "MF"
+  },
+  {
+    "id": "226B",
+    "label": "Habitat du Nord"
+  },
+  {
+    "id": "227B",
+    "label": "3F Nord-Artois"
+  },
+  {
+    "id": "228B",
+    "label": "Norevie"
+  },
+  {
+    "id": "229B",
+    "label": "Notre Logis"
+  },
+  {
+    "id": "230B",
+    "label": "Habitat 62/59"
+  },
+  {
+    "id": "231B",
+    "label": "PROMOCIL HLM"
+  },
+  {
+    "id": "232B",
+    "label": "TISSERIN HABITAT"
+  },
+  {
+    "id": "233B",
+    "label": "Notre Cottage"
+  },
+  {
+    "id": "234B",
+    "label": "SAEMD"
+  },
+  {
+    "id": "235B",
+    "label": "Metz Habitat Territoire"
+  },
+  {
+    "id": "236B",
+    "label": "Meurthe et Moselle Habitat MMH"
+  },
+  {
+    "id": "237B",
+    "label": "Moselis"
+  },
+  {
+    "id": "238B",
+    "label": "OMH"
+  },
+  {
+    "id": "239B",
+    "label": "Vosgelis"
+  },
+  {
+    "id": "240B",
+    "label": "Epinal Habitat"
+  },
+  {
+    "id": "241B",
+    "label": "OFFICE PUB DE L HABITAT DE LUNEVILLE"
+  },
+  {
+    "id": "242B",
+    "label": "OPH MONTIGNY LES METZ METZ METROPOLE"
+  },
+  {
+    "id": "243B",
+    "label": "SARREGUEMINES CONFLUENCES HABITAT"
+  },
+  {
+    "id": "244B",
+    "label": "OPH PORTES FRANCE THIONVILLE"
+  },
+  {
+    "id": "245B",
+    "label": "TOUL HABITAT"
+  },
+  {
+    "id": "246B",
+    "label": "BATIGERE"
+  },
+  {
+    "id": "247B",
+    "label": "LOGIEST"
+  },
+  {
+    "id": "248B",
+    "label": "Présence Habitat"
+  },
+  {
+    "id": "249B",
+    "label": "ICF Nord-Est SAHLM"
+  },
+  {
+    "id": "250B",
+    "label": "BATIGERE RHONE ALPES SA HLM"
+  },
+  {
+    "id": "251B",
+    "label": "Société Lorraine d'Habitat"
+  },
+  {
+    "id": "252B",
+    "label": "SA HLM LE TOIT VOSGIEN"
+  },
+  {
+    "id": "253B",
+    "label": "SAEM de Golbey"
+  },
+  {
+    "id": "254B",
+    "label": "Le Logement thillois"
+  },
+  {
+    "id": "255B",
+    "label": "SAIEM Bassin de Pont-à-Mousson"
+  },
+  {
+    "id": "256B",
+    "label": "SOCIETE IMMOBILIERE VILLE DE ROMBAS"
+  },
+  {
+    "id": "257B",
+    "label": "Logis Sarrebourgeois"
+  },
+  {
+    "id": "258B",
+    "label": "SCI LA SARREBOURGOISE"
+  },
+  {
+    "id": "259B",
+    "label": "SIEMVV-SM"
+  },
+  {
+    "id": "260B",
+    "label": "SEMIV"
+  },
+  {
+    "id": "261B",
+    "label": "Société Sainte-Barbe"
+  },
+  {
+    "id": "262B",
+    "label": "La Colmarienne du logement"
+  },
+  {
+    "id": "263B",
+    "label": "Mulhouse Habitat"
+  },
+  {
+    "id": "264B",
+    "label": "Saint-Louis Habitat"
+  },
+  {
+    "id": "265B",
+    "label": "Val d'Argent Habitat"
+  },
+  {
+    "id": "266B",
+    "label": "OPHEA"
+  },
+  {
+    "id": "267B",
+    "label": "OPH COMM COMMUNES THANN CERNAY"
+  },
+  {
+    "id": "268B",
+    "label": "Habitat familial Alsace"
+  },
+  {
+    "id": "269B",
+    "label": "SA HLM SOMCO Groupe CIL"
+  },
+  {
+    "id": "270B",
+    "label": "NOUVEAU LOGIS DE L EST SA D HLM"
+  },
+  {
+    "id": "271B",
+    "label": "HLM Illkirch-Graffenstaden"
+  },
+  {
+    "id": "272B",
+    "label": "Colmar Habitat"
+  },
+  {
+    "id": "273B",
+    "label": "SEDES habitat coopératif Strasbourgeois"
+  },
+  {
+    "id": "274B",
+    "label": "ALSACE HABITAT"
+  },
+  {
+    "id": "275B",
+    "label": "SOCONEC"
+  },
+  {
+    "id": "276B",
+    "label": "Le Foyer Moderne de Schiltigheim"
+  },
+  {
+    "id": "277B",
+    "label": "Erstein-Habitat"
+  },
+  {
+    "id": "278B",
+    "label": "SIIHE"
+  },
+  {
+    "id": "279B",
+    "label": "OBERNAI HABITAT"
+  },
+  {
+    "id": "280B",
+    "label": "Foyer de la Basse-Bruche"
+  },
+  {
+    "id": "281B",
+    "label": "L'Habitat moderne"
+  },
+  {
+    "id": "282B",
+    "label": "SEM de Schirmeck"
+  },
+  {
+    "id": "283B",
+    "label": "SEM"
+  },
+  {
+    "id": "284B",
+    "label": "Habitation moderne"
+  },
+  {
+    "id": "285B",
+    "label": "Perspectives 39"
+  },
+  {
+    "id": "286B",
+    "label": "HABITAT 70"
+  },
+  {
+    "id": "287B",
+    "label": "Grand Besançon Habitat"
+  },
+  {
+    "id": "288B",
+    "label": "GRAND DOLE HABITAT"
+  },
+  {
+    "id": "289B",
+    "label": "Habitat 25"
+  },
+  {
+    "id": "290B",
+    "label": "OFFICE PUB DE L HABITAT DE ST CLAUDE"
+  },
+  {
+    "id": "291B",
+    "label": "Territoire Habitat"
+  },
+  {
+    "id": "292B",
+    "label": "NEOLIA"
+  },
+  {
+    "id": "293B",
+    "label": "SAIEMB L"
+  },
+  {
+    "id": "294B",
+    "label": "UFC"
+  },
+  {
+    "id": "295B",
+    "label": "Angers Habitat"
+  },
+  {
+    "id": "296B",
+    "label": "Sèvre Loire Habitat"
+  },
+  {
+    "id": "297B",
+    "label": "Habitat 44"
+  },
+  {
+    "id": "298B",
+    "label": "Sarthe Habitat"
+  },
+  {
+    "id": "299B",
+    "label": "OPH HUISNE HABITAT"
+  },
+  {
+    "id": "300B",
+    "label": "Habitat 49"
+  },
+  {
+    "id": "301B",
+    "label": "Le Mans Métropole Habitat"
+  },
+  {
+    "id": "302B",
+    "label": "Mayenne Habitat"
+  },
+  {
+    "id": "303B",
+    "label": "Nantes Métropole Habitat"
+  },
+  {
+    "id": "304B",
+    "label": "SILENE"
+  },
+  {
+    "id": "305B",
+    "label": "Saumur Habitat"
+  },
+  {
+    "id": "306B",
+    "label": "OFFICE PUBLIC DE L HABITAT DE VENDEE"
+  },
+  {
+    "id": "307B",
+    "label": "ESPACE DOMICILE SA HABITAT LOYER MODER"
+  },
+  {
+    "id": "308B",
+    "label": "F2M"
+  },
+  {
+    "id": "309B",
+    "label": "SCIC d'HLM GAMBETTA"
+  },
+  {
+    "id": "310B",
+    "label": "Vendée Logement  la compagnie du logement"
+  },
+  {
+    "id": "311B",
+    "label": "HARMONIE HABITAT"
+  },
+  {
+    "id": "312B",
+    "label": "MEDUANE HABITAT"
+  },
+  {
+    "id": "313B",
+    "label": "LogiOuest"
+  },
+  {
+    "id": "314B",
+    "label": "Atlantique Habitations"
+  },
+  {
+    "id": "315B",
+    "label": "Mancelle d'habitation"
+  },
+  {
+    "id": "316B",
+    "label": "SAMO"
+  },
+  {
+    "id": "317B",
+    "label": "SA NANTAISE D HABITATIONS"
+  },
+  {
+    "id": "318B",
+    "label": "IMMOBILIERE PODELIHA"
+  },
+  {
+    "id": "319B",
+    "label": "SOCLOVA"
+  },
+  {
+    "id": "320B",
+    "label": "ORYON"
+  },
+  {
+    "id": "321B",
+    "label": "SECOS"
+  },
+  {
+    "id": "322B",
+    "label": "Brest Métropole Habitat"
+  },
+  {
+    "id": "323B",
+    "label": "Habitat 29"
+  },
+  {
+    "id": "324B",
+    "label": "Habitat 35- NEOTOA"
+  },
+  {
+    "id": "325B",
+    "label": "OPH OPAC QUIMPER CORNOUAILLE"
+  },
+  {
+    "id": "326B",
+    "label": "Emeraude Habitation"
+  },
+  {
+    "id": "327B",
+    "label": "Côtes d'Armor Habitat"
+  },
+  {
+    "id": "328B",
+    "label": "Douarnenez Habitat"
+  },
+  {
+    "id": "329B",
+    "label": "Guingamp Habitat"
+  },
+  {
+    "id": "330B",
+    "label": "Lorient Habitat"
+  },
+  {
+    "id": "331B",
+    "label": "Bretagne Sud Habitat"
+  },
+  {
+    "id": "332B",
+    "label": "Terre et Baie Habitat"
+  },
+  {
+    "id": "333B",
+    "label": "Vannes Golfe Habitat"
+  },
+  {
+    "id": "334B",
+    "label": "Dinan CODI Habitat"
+  },
+  {
+    "id": "335B",
+    "label": "SA D'HLM AIGUILLON CONSTRUCTION"
+  },
+  {
+    "id": "336B",
+    "label": "Armorique Habitat"
+  },
+  {
+    "id": "337B",
+    "label": "BSB de Saint-Brieuc"
+  },
+  {
+    "id": "338B",
+    "label": "ESPACIL HABITAT"
+  },
+  {
+    "id": "339B",
+    "label": "LE FOYER D ARMOR"
+  },
+  {
+    "id": "340B",
+    "label": "SA D HLM LES FOYERS"
+  },
+  {
+    "id": "341B",
+    "label": "SOC HABITATION LOYER MODERE LA RANCE"
+  },
+  {
+    "id": "342B",
+    "label": "OFFICE PUB DE L HABITAT DE L ANGOUMOIS"
+  },
+  {
+    "id": "343B",
+    "label": "Habitat Sud Deux-Sèvres"
+  },
+  {
+    "id": "344B",
+    "label": "Habitat Deux-Sèvres"
+  },
+  {
+    "id": "345B",
+    "label": "Logiparc"
+  },
+  {
+    "id": "346B",
+    "label": "Habitat 86"
+  },
+  {
+    "id": "347B",
+    "label": "Logélia Charente"
+  },
+  {
+    "id": "348B",
+    "label": "Habitat17"
+  },
+  {
+    "id": "349B",
+    "label": "OFFICE PUB HABITAT CA ROCHEFORT OCEAN"
+  },
+  {
+    "id": "350B",
+    "label": "OFFICE PUB HABITAT COM AGGLO ROCHELLE"
+  },
+  {
+    "id": "351B",
+    "label": "IMMOBILIERE ATLANTIC AMENAGEMENT"
+  },
+  {
+    "id": "352B",
+    "label": "NOALIS"
+  },
+  {
+    "id": "353B",
+    "label": "SEMIE Niort"
+  },
+  {
+    "id": "354B",
+    "label": "SEMIS"
+  },
+  {
+    "id": "355B",
+    "label": "Aquitanis"
+  },
+  {
+    "id": "356B",
+    "label": "Gironde Habitat"
+  },
+  {
+    "id": "357B",
+    "label": "Agen Habitat"
+  },
+  {
+    "id": "358B",
+    "label": "HABITAT SUD ATLANTIC OFFICE PUB HAB"
+  },
+  {
+    "id": "359B",
+    "label": "Dordogne Habitat"
+  },
+  {
+    "id": "360B",
+    "label": "OFFICE PUB L HABITAT DEP LANDES"
+  },
+  {
+    "id": "361B",
+    "label": "Office Palois de l'Habitat"
+  },
+  {
+    "id": "362B",
+    "label": "Périgueux Habitat"
+  },
+  {
+    "id": "363B",
+    "label": "Office 64 de l'Habitat"
+  },
+  {
+    "id": "364B",
+    "label": "CLAIRSIENNE"
+  },
+  {
+    "id": "365B",
+    "label": "SOC ANONYME HLM COLIGNY"
+  },
+  {
+    "id": "366B",
+    "label": "DOMOFRANCE"
+  },
+  {
+    "id": "367B",
+    "label": "ENEAL"
+  },
+  {
+    "id": "368B",
+    "label": "CILIOPEE HABITAT SA HABITATIONS"
+  },
+  {
+    "id": "369B",
+    "label": "MESOLIA HABITAT"
+  },
+  {
+    "id": "370B",
+    "label": "HABITELEM"
+  },
+  {
+    "id": "371B",
+    "label": "COL"
+  },
+  {
+    "id": "372B",
+    "label": "PAU BEARN HABITAT"
+  },
+  {
+    "id": "373B",
+    "label": "Urbalys Habitat"
+  },
+  {
+    "id": "374B",
+    "label": "In Cité"
+  },
+  {
+    "id": "375B",
+    "label": "SATEL"
+  },
+  {
+    "id": "376B",
+    "label": "SEMPAM"
+  },
+  {
+    "id": "377B",
+    "label": "SOEMH"
+  },
+  {
+    "id": "378B",
+    "label": "OFFICE PUBLIC DE L HABITAT"
+  },
+  {
+    "id": "379B",
+    "label": "OPH 65"
+  },
+  {
+    "id": "380B",
+    "label": "Habitat Toulouse"
+  },
+  {
+    "id": "381B",
+    "label": "AVEYRON HABITAT"
+  },
+  {
+    "id": "382B",
+    "label": "OPH COMM AGGLO CASTRES MAZAMET"
+  },
+  {
+    "id": "383B",
+    "label": "OFFICE PUB DE L HABITAT DE HTE GARONNE"
+  },
+  {
+    "id": "384B",
+    "label": "OFFICE PUBLIC DE L HABITAT DU GERS"
+  },
+  {
+    "id": "385B",
+    "label": "Lot Habitat"
+  },
+  {
+    "id": "386B",
+    "label": "MILLAU GRANDS CAUSSES HABITAT"
+  },
+  {
+    "id": "388B",
+    "label": "Tarn Habitat"
+  },
+  {
+    "id": "389B",
+    "label": "Tarn-et-Garonne Habitat"
+  },
+  {
+    "id": "390B",
+    "label": "Aveyron-Logement"
+  },
+  {
+    "id": "391B",
+    "label": "SA HABITATIONS A LOYER MODERE CHALETS"
+  },
+  {
+    "id": "392B",
+    "label": "SOC HLM LA CITE DES JARDINS"
+  },
+  {
+    "id": "393B",
+    "label": "SA D HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "394B",
+    "label": "SA GASCONNE D'HLM DU GERS"
+  },
+  {
+    "id": "395B",
+    "label": "PATRIMOINE LANGUEDOCIENNE SA H L M"
+  },
+  {
+    "id": "396B",
+    "label": "PROMOLOGIS"
+  },
+  {
+    "id": "397B",
+    "label": "Nouveau Logis Méridional"
+  },
+  {
+    "id": "398B",
+    "label": "3F Occitanie"
+  },
+  {
+    "id": "399B",
+    "label": "SEM CONSTRUC VILLE TARBES"
+  },
+  {
+    "id": "400B",
+    "label": "OFFICE PUB DE L HABITAT PAYS DE BRIVE"
+  },
+  {
+    "id": "401B",
+    "label": "Corrèze Habitat"
+  },
+  {
+    "id": "402B",
+    "label": "Creusalis"
+  },
+  {
+    "id": "403B",
+    "label": "OFFICE PUBLIC HABITAT VILLE EGLETONS"
+  },
+  {
+    "id": "404B",
+    "label": "OPHLM"
+  },
+  {
+    "id": "405B",
+    "label": "Saint Junien Habitat"
+  },
+  {
+    "id": "406B",
+    "label": "ODHAC"
+  },
+  {
+    "id": "407B",
+    "label": "COPROD"
+  },
+  {
+    "id": "408B",
+    "label": "DYNACITE"
+  },
+  {
+    "id": "409B",
+    "label": "Grand Lyon Habitat"
+  },
+  {
+    "id": "410B",
+    "label": "ACTIS - Acteur de l'Immobilier Social"
+  },
+  {
+    "id": "411B",
+    "label": "Haute Savoie Habitat"
+  },
+  {
+    "id": "412B",
+    "label": "ALPES ISERE HABITAT"
+  },
+  {
+    "id": "413B",
+    "label": "Loire Habitat"
+  },
+  {
+    "id": "414B",
+    "label": "ONDAINE HABITAT"
+  },
+  {
+    "id": "415B",
+    "label": "OFFICE PUB HABITAT DEP RHONE"
+  },
+  {
+    "id": "416B",
+    "label": "OPHEOR"
+  },
+  {
+    "id": "417B",
+    "label": "GIER PILAT HABITAT"
+  },
+  {
+    "id": "418B",
+    "label": "Métropole Habitat Saint-Etienne"
+  },
+  {
+    "id": "419B",
+    "label": "OPAC 73"
+  },
+  {
+    "id": "420B",
+    "label": "Clésence - advivo"
+  },
+  {
+    "id": "421B",
+    "label": "EST METROPOLE HABITAT"
+  },
+  {
+    "id": "422B",
+    "label": "Vivarais Habitat"
+  },
+  {
+    "id": "423B",
+    "label": "Bourg Habitat"
+  },
+  {
+    "id": "424B",
+    "label": "Drôme aménagement habitat - DAH"
+  },
+  {
+    "id": "425B",
+    "label": "OFFICE PUBLIC DE L HABITAT FIRMINY"
+  },
+  {
+    "id": "426B",
+    "label": "Habitat de Montélimar"
+  },
+  {
+    "id": "427B",
+    "label": "Habitat du Pays de Romans"
+  },
+  {
+    "id": "428B",
+    "label": "Léman Habitat"
+  },
+  {
+    "id": "429B",
+    "label": "OFFICE PUBLIC HABITATIONS VILLE UGINE"
+  },
+  {
+    "id": "430B",
+    "label": "VALENCE ROMANS HABITAT"
+  },
+  {
+    "id": "431B",
+    "label": "LOGIDIA"
+  },
+  {
+    "id": "432B",
+    "label": "ADIS SA d'HLM"
+  },
+  {
+    "id": "433B",
+    "label": "BATIR ET LOGER S A D H L M"
+  },
+  {
+    "id": "434B",
+    "label": "SA H L M CITE NOUVELLE"
+  },
+  {
+    "id": "435B",
+    "label": "Société Dauphinoise pour l'Habitat"
+  },
+  {
+    "id": "436B",
+    "label": "SDH Constructeur"
+  },
+  {
+    "id": "437B",
+    "label": "SA HLM REG LYON GABRIEL ROSSET SA HLM"
+  },
+  {
+    "id": "438B",
+    "label": "SA Habitat BVS"
+  },
+  {
+    "id": "439B",
+    "label": "HALPADES S A D HLM"
+  },
+  {
+    "id": "440B",
+    "label": "SOLLAR"
+  },
+  {
+    "id": "441B",
+    "label": "ALLIADE HABITAT"
+  },
+  {
+    "id": "442B",
+    "label": "SA REGIONALE D H L M DE LYON"
+  },
+  {
+    "id": "443B",
+    "label": "SA MONT BLANC SOCIETE ANONYME D HLM"
+  },
+  {
+    "id": "444B",
+    "label": "ICF Sud-Est Méditerrannée"
+  },
+  {
+    "id": "445B",
+    "label": "IMMOBILIERE RHONE ALPES SA D HLM"
+  },
+  {
+    "id": "446B",
+    "label": "SOCIETE D HABITATIONS DES ALPES SA HLM"
+  },
+  {
+    "id": "447B",
+    "label": "LA THOISSEYENNE SA H L M"
+  },
+  {
+    "id": "448B",
+    "label": "Le toit forézien"
+  },
+  {
+    "id": "449B",
+    "label": "SHRA"
+  },
+  {
+    "id": "450B",
+    "label": "Groupe Valrim"
+  },
+  {
+    "id": "451B",
+    "label": "RHONE SAONE HABITAT"
+  },
+  {
+    "id": "452B",
+    "label": "SEMCODA"
+  },
+  {
+    "id": "453B",
+    "label": "SACOGA"
+  },
+  {
+    "id": "454B",
+    "label": "SAEMIB"
+  },
+  {
+    "id": "455B",
+    "label": "SAIEM de Chambery"
+  },
+  {
+    "id": "456B",
+    "label": "SAIEMVC"
+  },
+  {
+    "id": "457B",
+    "label": "Grenoble habitat"
+  },
+  {
+    "id": "458B",
+    "label": "LPV"
+  },
+  {
+    "id": "459B",
+    "label": "SACVL"
+  },
+  {
+    "id": "460B",
+    "label": "SACOVAL"
+  },
+  {
+    "id": "461B",
+    "label": "SACOVIV"
+  },
+  {
+    "id": "462B",
+    "label": "SVU"
+  },
+  {
+    "id": "463B",
+    "label": "SOLIHA 69"
+  },
+  {
+    "id": "464B",
+    "label": "UN TOIT POUR TOUS DEVELOPPEMENT"
+  },
+  {
+    "id": "465B",
+    "label": "Habitat et Humanisme"
+  },
+  {
+    "id": "466B",
+    "label": "Assemblia"
+  },
+  {
+    "id": "467B",
+    "label": "OPH DE LA HAUTE LOIRE"
+  },
+  {
+    "id": "468B",
+    "label": "EVOLEA"
+  },
+  {
+    "id": "469B",
+    "label": "OPHIS 63"
+  },
+  {
+    "id": "470B",
+    "label": "ALLIER HABITAT"
+  },
+  {
+    "id": "471B",
+    "label": "OFFICE PUBLIC DE L HABITAT CANTAL"
+  },
+  {
+    "id": "472B",
+    "label": "OPAC DE COMMENTRY"
+  },
+  {
+    "id": "473B",
+    "label": "MONTLUCON HABITAT OPH"
+  },
+  {
+    "id": "474B",
+    "label": "AUVERGNE HABITAT"
+  },
+  {
+    "id": "475B",
+    "label": "Polygone (CFI)"
+  },
+  {
+    "id": "476B",
+    "label": "HLM LE FOYER VELLAVE"
+  },
+  {
+    "id": "477B",
+    "label": "DOM'AULIM"
+  },
+  {
+    "id": "478B",
+    "label": "SEMIV"
+  },
+  {
+    "id": "479B",
+    "label": "ACM"
+  },
+  {
+    "id": "480B",
+    "label": "Logis Cévenol"
+  },
+  {
+    "id": "481B",
+    "label": "Habitat Audois"
+  },
+  {
+    "id": "482B",
+    "label": "Habitat du Gard"
+  },
+  {
+    "id": "483B",
+    "label": "Hérault Habitat"
+  },
+  {
+    "id": "484B",
+    "label": "Domitia Habitat"
+  },
+  {
+    "id": "485B",
+    "label": "L'Office 66"
+  },
+  {
+    "id": "486B",
+    "label": "SETE THAU HABITAT OFFICE PUB HABITAT"
+  },
+  {
+    "id": "487B",
+    "label": "SA audoise et ariègoise d'HLM SAAHLM (ALOGEA)"
+  },
+  {
+    "id": "488B",
+    "label": "HLM BESSEGES ST AMBROIX"
+  },
+  {
+    "id": "489B",
+    "label": "F D I HABITAT"
+  },
+  {
+    "id": "490B",
+    "label": "Lozère Habitation"
+  },
+  {
+    "id": "491B",
+    "label": "Roussillon Habitat"
+  },
+  {
+    "id": "492B",
+    "label": "UN TOIT POUR TOUS"
+  },
+  {
+    "id": "493B",
+    "label": "Marcou Habitat"
+  },
+  {
+    "id": "494B",
+    "label": "SEMIGA"
+  },
+  {
+    "id": "495B",
+    "label": "SAIEM Mende Fontanilles"
+  },
+  {
+    "id": "496B",
+    "label": "CDC Habitat"
+  },
+  {
+    "id": "497B",
+    "label": "ADAGES"
+  },
+  {
+    "id": "498B",
+    "label": "Habitat Marseille Provence"
+  },
+  {
+    "id": "499B",
+    "label": "13 HABITAT"
+  },
+  {
+    "id": "500B",
+    "label": "Pays d'Aix Habitat"
+  },
+  {
+    "id": "501B",
+    "label": "GD AVIGNON RESIDENCES OFFICE PUBLIC"
+  },
+  {
+    "id": "502B",
+    "label": "OFFICE PUB HABITAT CANNES PAYS LERINS"
+  },
+  {
+    "id": "503B",
+    "label": "Mistral Habitat"
+  },
+  {
+    "id": "504B",
+    "label": "Côte d'Azur Habitat"
+  },
+  {
+    "id": "505B",
+    "label": "TERRES DU SUD HABITAT"
+  },
+  {
+    "id": "506B",
+    "label": "TOULON HABITAT MEDITERRANEE"
+  },
+  {
+    "id": "507B",
+    "label": "VAR HABITAT"
+  },
+  {
+    "id": "508B",
+    "label": "HABITATATION DE HAUTE PROVENCE"
+  },
+  {
+    "id": "509B",
+    "label": "UNICIL"
+  },
+  {
+    "id": "510B",
+    "label": "FAMILLE ET PROVENCE"
+  },
+  {
+    "id": "511B",
+    "label": "3F SUD SA D'HABITATIONS A LOYER MODERE"
+  },
+  {
+    "id": "512B",
+    "label": "LOGIREM"
+  },
+  {
+    "id": "513B",
+    "label": "LE LOGIS FAMILIAL"
+  },
+  {
+    "id": "514B",
+    "label": "LE LOGIS FAMILIAL VAROIS"
+  },
+  {
+    "id": "515B",
+    "label": "LE NOUVEAU LOGIS AZUR"
+  },
+  {
+    "id": "516B",
+    "label": "PROLETAZUR"
+  },
+  {
+    "id": "517B",
+    "label": "ERILIA"
+  },
+  {
+    "id": "518B",
+    "label": "3F SUD"
+  },
+  {
+    "id": "519B",
+    "label": "GRAND DELTA HABITAT"
+  },
+  {
+    "id": "520B",
+    "label": "SOHLAM"
+  },
+  {
+    "id": "521B",
+    "label": "SEMEXVAL"
+  },
+  {
+    "id": "522B",
+    "label": "SACOGIVA"
+  },
+  {
+    "id": "523B",
+    "label": "Sophia Antipolis Habitat"
+  },
+  {
+    "id": "524B",
+    "label": "SEMPA"
+  },
+  {
+    "id": "525B",
+    "label": "SEMIB+"
+  },
+  {
+    "id": "526B",
+    "label": "SOCACONAM"
+  },
+  {
+    "id": "527B",
+    "label": "SAIEM de Draguignan"
+  },
+  {
+    "id": "528B",
+    "label": "SAGEM"
+  },
+  {
+    "id": "529B",
+    "label": "Ouest provence habitat"
+  },
+  {
+    "id": "530B",
+    "label": "SAEM"
+  },
+  {
+    "id": "531B",
+    "label": "SAEM DE Mallemort"
+  },
+  {
+    "id": "532B",
+    "label": "SOGIMA"
+  },
+  {
+    "id": "533B",
+    "label": "MARSEILLE HABITAT"
+  },
+  {
+    "id": "534B",
+    "label": "SEMIVIM"
+  },
+  {
+    "id": "535B",
+    "label": "SAIEM de Saint-Jean-Cap-Ferrat"
+  },
+  {
+    "id": "536B",
+    "label": "HABITAT 06"
+  },
+  {
+    "id": "537B",
+    "label": "SEMISAP"
+  },
+  {
+    "id": "538B",
+    "label": "SEMIS"
+  },
+  {
+    "id": "539B",
+    "label": "HABITAT PLUS"
+  },
+  {
+    "id": "540B",
+    "label": "OPH COMMUNAUTE AGGLO PAYS AJACCIEN"
+  },
+  {
+    "id": "541B",
+    "label": "OFFICE PUBLIC HLM HAUTE CORSE"
+  },
+  {
+    "id": "542B",
+    "label": "SHLMR"
+  },
+  {
+    "id": "543B",
+    "label": "SODEGIS"
+  },
+  {
+    "id": "544B",
+    "label": "SEMADER"
+  },
+  {
+    "id": "545B",
+    "label": "SIDR"
+  },
+  {
+    "id": "546B",
+    "label": "SEDRE"
+  },
+  {
+    "id": "547B",
+    "label": "SEMAC"
+  },
+  {
+    "id": "548B",
+    "label": "SODIAC"
+  },
+  {
+    "id": "549B",
+    "label": "SEGRIM"
+  },
+  {
+    "id": "550B",
+    "label": "SERS"
+  },
+  {
+    "id": "551B",
+    "label": "HLI"
+  },
+  {
+    "id": "552B",
+    "label": "SIGUY"
+  },
+  {
+    "id": "553B",
+    "label": "SIMKO"
+  },
+  {
+    "id": "554B",
+    "label": "SCIC HABITAT AUVERGNE ET BOURBONNAIS"
+  },
+  {
+    "id": "555B",
+    "label": "OFFICE PUBLIC DE L HABITAT ALBERTVILLE"
+  },
+  {
+    "id": "556B",
+    "label": "SIKOA"
+  },
+  {
+    "id": "557B",
+    "label": "SCP"
+  },
+  {
+    "id": "558B",
+    "label": "SIG"
+  },
+  {
+    "id": "559B",
+    "label": "SEMAG"
+  },
+  {
+    "id": "560B",
+    "label": "SM HLM"
+  },
+  {
+    "id": "561B",
+    "label": "OZANAM"
+  },
+  {
+    "id": "562B",
+    "label": "SIMAR"
+  },
+  {
+    "id": "563B",
+    "label": "Les Résidences Yvelines Essonne"
+  },
+  {
+    "id": "564B",
+    "label": "SNL PROLOGUES"
+  },
+  {
+    "id": "565B",
+    "label": "MAISONS CLAIRES"
+  },
+  {
+    "id": "566B",
+    "label": "SCI BOULAY"
+  },
+  {
+    "id": "567B",
+    "label": "SCI CONSTRUCTION ST CHARLES"
+  },
+  {
+    "id": "568B",
+    "label": "Habitat Eurélien"
+  },
+  {
+    "id": "569B",
+    "label": "SA D ECONOMIE MIXTE SAINT AVERTIN"
+  },
+  {
+    "id": "570B",
+    "label": "SEMSAMAR"
+  },
+  {
+    "id": "571B",
+    "label": "SA COOP PRODUCTION D HLM AIN HABITAT"
+  },
+  {
+    "id": "572B",
+    "label": "MC Habitat"
+  },
+  {
+    "id": "573B",
+    "label": "Bastia Aménagement"
+  },
+  {
+    "id": "574B",
+    "label": "HABITALYS"
+  },
+  {
+    "id": "575B",
+    "label": "Mâcon Habitat"
+  },
+  {
+    "id": "576B",
+    "label": "Maisons-Alfort-SA HLM"
+  },
+  {
+    "id": "577B",
+    "label": "Opus 67"
+  },
+  {
+    "id": "578B",
+    "label": "OFFICE PUBLIC DE L HABITAT DE LA MEUSE"
+  },
+  {
+    "id": "579B",
+    "label": "Fougères Habitat"
+  },
+  {
+    "id": "580B",
+    "label": "OPAC 05"
+  },
+  {
+    "id": "581B",
+    "label": "CHABLITAT"
+  },
+  {
+    "id": "582B",
+    "label": "Val d'Oise Habitat"
+  },
+  {
+    "id": "583B",
+    "label": "SCP d'HLM Le Logis breton"
+  },
+  {
+    "id": "584B",
+    "label": "Les Résidence de l'Orléanais"
+  },
+  {
+    "id": "585B",
+    "label": "Versailles Habitat"
+  },
+  {
+    "id": "586B",
+    "label": "SEM Habitat"
+  },
+  {
+    "id": "587B",
+    "label": "Clamart Habitat"
+  },
+  {
+    "id": "588B",
+    "label": "Archipel Habitat"
+  },
+  {
+    "id": "589B",
+    "label": "VILOGIA PREMIUM GRAND EST"
+  },
+  {
+    "id": "590B",
+    "label": "FONCIERE 01 2003"
+  },
+  {
+    "id": "591B",
+    "label": "FONCIERE DI 01 2004"
+  },
+  {
+    "id": "592B",
+    "label": "FONCIERE DI 01 2005"
+  },
+  {
+    "id": "593B",
+    "label": "Habiter à Yerres"
+  },
+  {
+    "id": "594B",
+    "label": "Mantes en Yvelines Habitat"
+  },
+  {
+    "id": "595B",
+    "label": "Les Ajoncs"
+  },
+  {
+    "id": "596B",
+    "label": "OPH Béziers Méditerranée Habitat"
+  },
+  {
+    "id": "597B",
+    "label": "OPH PERPIGNAN MEDITERRANEE"
+  },
+  {
+    "id": "598B",
+    "label": "OPH Montreuillois"
+  },
+  {
+    "id": "599B",
+    "label": "Plaine Commune Habitat"
+  },
+  {
+    "id": "600B",
+    "label": "Habitats de Haute-Alsace"
+  },
+  {
+    "id": "601B",
+    "label": "SAVOISIENNE HABITAT SA COOP PRODUC HLM"
+  },
+  {
+    "id": "602B",
+    "label": "OPH SEINE OUEST HABITAT"
+  },
+  {
+    "id": "603B",
+    "label": "VAL PARISIS Habitat"
+  },
+  {
+    "id": "604B",
+    "label": "Colombes Habitat Public"
+  },
+  {
+    "id": "605B",
+    "label": "1001 Vies Habitat"
+  },
+  {
+    "id": "606B",
+    "label": "Logis Méditerranée"
+  },
+  {
+    "id": "607B",
+    "label": "3F Grand Est"
+  },
+  {
+    "id": "608B",
+    "label": "SOGINORPA"
+  },
+  {
+    "id": "609B",
+    "label": "SA COOPERATIVE PRODUCTION LOYER MODERE"
+  },
+  {
+    "id": "610B",
+    "label": "CIF COOPERATIVE"
+  },
+  {
+    "id": "611B",
+    "label": "ACCECURA"
+  },
+  {
+    "id": "612B",
+    "label": "FONCIERE DI 01 2006"
+  },
+  {
+    "id": "613B",
+    "label": "FONCIERE DI 01 2007"
+  },
+  {
+    "id": "614B",
+    "label": "FONCIERE DI 01 2008"
+  },
+  {
+    "id": "615B",
+    "label": "FONCIERE DI 01 2009"
+  },
+  {
+    "id": "616B",
+    "label": "FONCIERE DI 01 2010"
+  },
+  {
+    "id": "617B",
+    "label": "FONCIERE DI 01 2011"
+  },
+  {
+    "id": "618B",
+    "label": "SCI FONCIERE R U 01 2004"
+  },
+  {
+    "id": "619B",
+    "label": "FONCIERE RU 01 2007"
+  },
+  {
+    "id": "620B",
+    "label": "FONCIERE RU 01 2008"
+  },
+  {
+    "id": "621B",
+    "label": "FONCIERE RU 01 2009"
+  },
+  {
+    "id": "622B",
+    "label": "FONCIERE RU 01 2010"
+  },
+  {
+    "id": "623B",
+    "label": "FONCIERE RU 01 2011"
+  },
+  {
+    "id": "624B",
+    "label": "HABITAT FRANCILIEN SOC COOP PRODUC HLM"
+  },
+  {
+    "id": "625B",
+    "label": "LE TOIT GIRONDIN"
+  },
+  {
+    "id": "626B",
+    "label": "ALEOS"
+  },
+  {
+    "id": "627B",
+    "label": "HABITER 12"
+  },
+  {
+    "id": "628B",
+    "label": "SOLIHA TERRITOIRES EN NORMANDIE"
+  },
+  {
+    "id": "629B",
+    "label": "UN TOIT"
+  },
+  {
+    "id": "630B",
+    "label": "SOLIHA BATISS LOG INSERT HTS FRANCE"
+  },
+  {
+    "id": "631B",
+    "label": "SOLIHA HAUTE GARONNE"
+  },
+  {
+    "id": "632B",
+    "label": "REHABAIL"
+  },
+  {
+    "id": "633B",
+    "label": "SOLIHA SEINE ET MARNE"
+  },
+  {
+    "id": "634B",
+    "label": "SOLIHA LANDES"
+  },
+  {
+    "id": "635B",
+    "label": "M&M"
+  },
+  {
+    "id": "636B",
+    "label": "CENTRE AMELIORATION DU LOGEMENT"
+  },
+  {
+    "id": "637B",
+    "label": "FONCIERE CHENELET"
+  },
+  {
+    "id": "638B",
+    "label": "LOGEMENT SERVICE"
+  },
+  {
+    "id": "639B",
+    "label": "CAL 62"
+  },
+  {
+    "id": "640B",
+    "label": "SOLIHA PAYS BASQUE"
+  },
+  {
+    "id": "641B",
+    "label": "SOLIHA PYRENEES BEARN-BIGORRE"
+  },
+  {
+    "id": "642B",
+    "label": "HABITAT SOCIAL PACT 81"
+  },
+  {
+    "id": "643B",
+    "label": "SOLIHA TARN"
+  },
+  {
+    "id": "644B",
+    "label": "SOLIHA SOLIDAIR HABITA BATI LOG INSERT"
+  },
+  {
+    "id": "645B",
+    "label": "SCIC HABITATS SOLIDAIRES"
+  },
+  {
+    "id": "646B",
+    "label": "LOGEO HABITAT"
+  },
+  {
+    "id": "647B",
+    "label": "FONDATION DES PETITS FRERES DES PAUVRE"
+  },
+  {
+    "id": "648B",
+    "label": "SOLIHA BLI Loire"
+  },
+  {
+    "id": "649B",
+    "label": "UNE FAMILLE UN TOIT 44"
+  },
+  {
+    "id": "650B",
+    "label": "ARALIS"
+  },
+  {
+    "id": "651B",
+    "label": "ASSOCIATION LOGER MARSEILLE JEUNES"
+  },
+  {
+    "id": "652B",
+    "label": "OSLO"
+  },
+  {
+    "id": "653B",
+    "label": "ARELI"
+  },
+  {
+    "id": "654B",
+    "label": "SOLIHA 13"
+  },
+  {
+    "id": "655B",
+    "label": "APATPH"
+  },
+  {
+    "id": "656B",
+    "label": "SOLIHA SOLIDAIRES HABITAT BATISSEUR"
+  },
+  {
+    "id": "657B",
+    "label": "COALLIA"
+  },
+  {
+    "id": "658B",
+    "label": "ALFA 3A"
+  },
+  {
+    "id": "659B",
+    "label": "EMMAUS SOLIDARITE"
+  },
+  {
+    "id": "660B",
+    "label": "FILIALE IMMOB COMMUNE ORGAN SOCIAUX 37"
+  },
+  {
+    "id": "661B",
+    "label": "MAJO LOGEMENT"
+  },
+  {
+    "id": "662B",
+    "label": "SOLIHA DROME"
+  },
+  {
+    "id": "663B",
+    "label": "FONDATION POUR LE LOGEMENT SOCIAL"
+  },
+  {
+    "id": "664B",
+    "label": "FEDERATION DEP POUR LE LOGEMENT SOCIAL"
+  },
+  {
+    "id": "665B",
+    "label": "ASS NOEL PAINDAVOINE HABITAT JEUNES"
+  },
+  {
+    "id": "666B",
+    "label": "FNDSA"
+  },
+  {
+    "id": "667B",
+    "label": "AIPI"
+  },
+  {
+    "id": "668B",
+    "label": "FRANCE HORIZON"
+  },
+  {
+    "id": "669B",
+    "label": "APREMIS"
+  },
+  {
+    "id": "670B",
+    "label": "LOGER JEUNES VAUCLUSE"
+  },
+  {
+    "id": "671B",
+    "label": "ALC"
+  },
+  {
+    "id": "672B",
+    "label": "ASSOCIATION POUR LA SOLIDARITE ACTIVE"
+  },
+  {
+    "id": "673B",
+    "label": "AREAS"
+  },
+  {
+    "id": "675B",
+    "label": "REVIVRE"
+  },
+  {
+    "id": "676B",
+    "label": "FONDATION SAINT THOMAS"
+  },
+  {
+    "id": "678B",
+    "label": "ALCYON LE TREMPLIN"
+  },
+  {
+    "id": "679B",
+    "label": "LOGER JEUNES TARN"
+  },
+  {
+    "id": "680B",
+    "label": "SOLIHA SOLIDAIRES L HABITAT SOMME"
+  },
+  {
+    "id": "681B",
+    "label": "Logiah 04"
+  },
+  {
+    "id": "682B",
+    "label": "SOLIHA FLANDRES"
+  },
+  {
+    "id": "683B",
+    "label": "SDAT"
+  },
+  {
+    "id": "684B",
+    "label": "FONDATION DU PROTESTANTISME"
+  },
+  {
+    "id": "685B",
+    "label": "FREHA"
+  },
+  {
+    "id": "686B",
+    "label": "LA GERBE"
+  },
+  {
+    "id": "688B",
+    "label": "LOGETRA"
+  },
+  {
+    "id": "689B",
+    "label": "SOLIHA SOLIDAIRE HABITAT METROPOLE ND"
+  },
+  {
+    "id": "690B",
+    "label": "SAINT BENOIT LABRE"
+  },
+  {
+    "id": "691B",
+    "label": "SCI DU CHEMIN DES DAMES"
+  },
+  {
+    "id": "692B",
+    "label": "AIDAPHI"
+  },
+  {
+    "id": "693B",
+    "label": "AEDE"
+  },
+  {
+    "id": "694B",
+    "label": "SOLIHA LOIRE ATLANTIQUE"
+  },
+  {
+    "id": "695B",
+    "label": "ALTERNA"
+  },
+  {
+    "id": "696B",
+    "label": "COOP SOLIHA MEDIT BATISS LOG INSERT"
+  },
+  {
+    "id": "697B",
+    "label": "ALPES HABITAT COOPERATIF"
+  },
+  {
+    "id": "700B",
+    "label": "LA MAISON FAMILIALE DE PROVENCE"
+  },
+  {
+    "id": "701B",
+    "label": "3F Résidences"
+  },
+  {
+    "id": "702B",
+    "label": "INSER TOIT"
+  },
+  {
+    "id": "703B",
+    "label": "SOLIHA VENDEE"
+  },
+  {
+    "id": "704B",
+    "label": "SOLIDARITE HABITAT CENTRE VAL DE LOIRE"
+  },
+  {
+    "id": "705B",
+    "label": "SOLIHA BATISSEUR LOGEMENT INSERT"
+  },
+  {
+    "id": "706B",
+    "label": "LYON METROPOLE HABITAT"
+  },
+  {
+    "id": "707B",
+    "label": "GAMBETTA PACA SA CCOPERATIVE"
+  },
+  {
+    "id": "708B",
+    "label": "L ABRI FAMILIAL"
+  },
+  {
+    "id": "709B",
+    "label": "Logis atlantique"
+  },
+  {
+    "id": "710B",
+    "label": "Coop access"
+  },
+  {
+    "id": "711B",
+    "label": "ASS ACCUEIL RESID INSERT ACCOMP LOGT"
+  },
+  {
+    "id": "712B",
+    "label": "SOCIETE IMMOBILIERE DE MAYOTTE"
+  },
+  {
+    "id": "713B",
+    "label": "AXEDIA"
+  },
+  {
+    "id": "714B",
+    "label": "LOGIREP"
+  },
+  {
+    "id": "715B",
+    "label": "LE TOIT CHARENTAIS SA COOP PRODU HLM"
+  },
+  {
+    "id": "716B",
+    "label": "MFRP"
+  },
+  {
+    "id": "717B",
+    "label": "SOLIHA SOL HAB BAT LOG INS RHONE ALPES"
+  },
+  {
+    "id": "718B",
+    "label": "FONCIERE RU PR 2016"
+  },
+  {
+    "id": "719B",
+    "label": "FONCIERE RU 01 2012"
+  },
+  {
+    "id": "720B",
+    "label": "FONCIERE RU 01 2014"
+  },
+  {
+    "id": "721B",
+    "label": "FONCIERE CV RU 2015"
+  },
+  {
+    "id": "722B",
+    "label": "EHD"
+  },
+  {
+    "id": "723B",
+    "label": "LOGEO PROMOTION"
+  },
+  {
+    "id": "724B",
+    "label": "CMAL"
+  },
+  {
+    "id": "725B",
+    "label": "LERICHEMONT"
+  },
+  {
+    "id": "726B",
+    "label": "AIDIPHIS"
+  },
+  {
+    "id": "728B",
+    "label": "SOLIDARITE & LOGEMENT"
+  },
+  {
+    "id": "729B",
+    "label": "Opérateur National de Vente HLM Action Logement"
+  },
+  {
+    "id": "730B",
+    "label": "Société Philantropique"
+  },
+  {
+    "id": "731B",
+    "label": "SEM4V"
+  },
+  {
+    "id": "732B",
+    "label": "Le Pelican"
+  },
+  {
+    "id": "733B",
+    "label": "Ministère Transition Ecologique"
+  },
+  {
+    "id": "734B",
+    "label": "Fonciere CV RU 2015"
+  },
+  {
+    "id": "735B",
+    "label": "Fonciere NRU PAM 2019"
+  },
+  {
+    "id": "736B",
+    "label": "Foncière NRU 2020"
+  },
+  {
+    "id": "737B",
+    "label": "Habitat et Métropole"
+  },
+  {
+    "id": "738B",
+    "label": "Ysalia Garonne Habitat"
+  },
+  {
+    "id": "739B",
+    "label": "Centre Loire Habitat"
+  },
+  {
+    "id": "740B",
+    "label": "SOLIHA BLI Pays de la Loire"
+  },
+  {
+    "id": "741B",
+    "label": "IRLF"
+  },
+  {
+    "id": "1025B",
+    "label": "OPH AVEYRON"
+  },
+  {
+    "id": "1026B",
+    "label": "OPH RODEZ"
+  },
+  {
+    "id": "1027B",
+    "label": "OPH"
+  },
+  {
+    "id": "1028B",
+    "label": "OPH DE ROCHEFORT"
+  },
+  {
+    "id": "1029B",
+    "label": "OPH"
+  },
+  {
+    "id": "1031B",
+    "label": "OPH"
+  },
+  {
+    "id": "1032B",
+    "label": "OPH"
+  },
+  {
+    "id": "1033B",
+    "label": "OPH"
+  },
+  {
+    "id": "1034B",
+    "label": "XL HABITAT"
+  },
+  {
+    "id": "1035B",
+    "label": "OPH"
+  },
+  {
+    "id": "1036B",
+    "label": "OPH"
+  },
+  {
+    "id": "1037B",
+    "label": "OPH"
+  },
+  {
+    "id": "1038B",
+    "label": "LORIENT HABITAT"
+  },
+  {
+    "id": "1039B",
+    "label": "OPH DU MORBIHAN"
+  },
+  {
+    "id": "1040B",
+    "label": "OPHLM"
+  },
+  {
+    "id": "1041B",
+    "label": "OPH"
+  },
+  {
+    "id": "1042B",
+    "label": "OPH CUS"
+  },
+  {
+    "id": "1043B",
+    "label": "OPH"
+  },
+  {
+    "id": "1044B",
+    "label": "OPH"
+  },
+  {
+    "id": "1045B",
+    "label": "OPH"
+  },
+  {
+    "id": "1046B",
+    "label": "OPDH92"
+  },
+  {
+    "id": "1047B",
+    "label": "OPH"
+  },
+  {
+    "id": "1048B",
+    "label": "SCEAUX HABITAT"
+  },
+  {
+    "id": "1049B",
+    "label": "OPH"
+  },
+  {
+    "id": "1050B",
+    "label": "SSDH"
+  },
+  {
+    "id": "1051B",
+    "label": "OPH"
+  },
+  {
+    "id": "1052B",
+    "label": "SECOMILE"
+  },
+  {
+    "id": "1054B",
+    "label": "SIG"
+  },
+  {
+    "id": "1055B",
+    "label": "SIKOA"
+  },
+  {
+    "id": "1057B",
+    "label": "SIMAR"
+  },
+  {
+    "id": "1062B",
+    "label": "SIGUY"
+  },
+  {
+    "id": "1064B",
+    "label": "SACEMA"
+  },
+  {
+    "id": "1067B",
+    "label": "SIMKO"
+  },
+  {
+    "id": "1068B",
+    "label": "BSB"
+  },
+  {
+    "id": "1069B",
+    "label": "SEM"
+  },
+  {
+    "id": "1072B",
+    "label": "S A I E M A G I R E"
+  },
+  {
+    "id": "1074B",
+    "label": "SA HLMAP"
+  },
+  {
+    "id": "1076B",
+    "label": "COPROD"
+  },
+  {
+    "id": "1078B",
+    "label": "SEDRE"
+  },
+  {
+    "id": "1079B",
+    "label": "SIDR"
+  },
+  {
+    "id": "1080B",
+    "label": "SHLMR"
+  },
+  {
+    "id": "1081B",
+    "label": "SAGEM"
+  },
+  {
+    "id": "1086B",
+    "label": "SAEM"
+  },
+  {
+    "id": "1087B",
+    "label": "OPH AMIENS METROPOLE"
+  },
+  {
+    "id": "1093B",
+    "label": "SEMADER"
+  },
+  {
+    "id": "1096B",
+    "label": "M & C"
+  },
+  {
+    "id": "1100B",
+    "label": "OPH"
+  },
+  {
+    "id": "1101B",
+    "label": "O.P.H."
+  },
+  {
+    "id": "1102B",
+    "label": "OPH"
+  },
+  {
+    "id": "1103B",
+    "label": "OPHAC DE L'INDRE"
+  },
+  {
+    "id": "1106B",
+    "label": "SEMINOR"
+  },
+  {
+    "id": "1107B",
+    "label": "HABITAT 35"
+  },
+  {
+    "id": "1108B",
+    "label": "OPH"
+  },
+  {
+    "id": "1109B",
+    "label": "O.P.H."
+  },
+  {
+    "id": "1110B",
+    "label": "OPH"
+  },
+  {
+    "id": "1111B",
+    "label": "OPH"
+  },
+  {
+    "id": "1112B",
+    "label": "TOUR(S)HABITAT"
+  },
+  {
+    "id": "1113B",
+    "label": "SEMIPFA"
+  },
+  {
+    "id": "1115B",
+    "label": "PFN"
+  },
+  {
+    "id": "1118B",
+    "label": "LOGIEST"
+  },
+  {
+    "id": "1120B",
+    "label": "SEMPA"
+  },
+  {
+    "id": "1122B",
+    "label": "FICOSIL"
+  },
+  {
+    "id": "1123B",
+    "label": "SODEGIS"
+  },
+  {
+    "id": "1124B",
+    "label": "S.E.M.A.C."
+  },
+  {
+    "id": "1125B",
+    "label": "OPH 65"
+  },
+  {
+    "id": "1126B",
+    "label": "SEMINOC"
+  },
+  {
+    "id": "1127B",
+    "label": "OPH"
+  },
+  {
+    "id": "1129B",
+    "label": "SACOGA"
+  },
+  {
+    "id": "1131B",
+    "label": "OPH"
+  },
+  {
+    "id": "1132B",
+    "label": "SOLHAM"
+  },
+  {
+    "id": "1134B",
+    "label": "HMP"
+  },
+  {
+    "id": "1135B",
+    "label": "OPH"
+  },
+  {
+    "id": "1139B",
+    "label": "SAGHLM"
+  },
+  {
+    "id": "1140B",
+    "label": "SAG"
+  },
+  {
+    "id": "1143B",
+    "label": "OPH"
+  },
+  {
+    "id": "1144B",
+    "label": "HABITAT TOULOUSE"
+  },
+  {
+    "id": "1145B",
+    "label": "OPH DE LA METROPOLE"
+  },
+  {
+    "id": "1148B",
+    "label": "CFI"
+  },
+  {
+    "id": "1149B",
+    "label": "HLI"
+  },
+  {
+    "id": "1151B",
+    "label": "OPH ARIEGE"
+  },
+  {
+    "id": "1152B",
+    "label": "HLM"
+  },
+  {
+    "id": "1153B",
+    "label": "OPAL"
+  },
+  {
+    "id": "1156B",
+    "label": "OPH D'EURE ET LOIR"
+  },
+  {
+    "id": "1158B",
+    "label": "OPH DE LA MEUSE"
+  },
+  {
+    "id": "1160B",
+    "label": "SDH"
+  },
+  {
+    "id": "1166B",
+    "label": "SRCJ"
+  },
+  {
+    "id": "1175B",
+    "label": "SNI"
+  },
+  {
+    "id": "1180B",
+    "label": "OPH"
+  },
+  {
+    "id": "1181B",
+    "label": "OPUS 67"
+  },
+  {
+    "id": "1182B",
+    "label": "OPAC"
+  },
+  {
+    "id": "1183B",
+    "label": "OPH 66"
+  },
+  {
+    "id": "1184B",
+    "label": "SAIEMB L"
+  },
+  {
+    "id": "1187B",
+    "label": "SIMAD"
+  },
+  {
+    "id": "1190B",
+    "label": "SEMIS"
+  },
+  {
+    "id": "1198B",
+    "label": "SIBAR"
+  },
+  {
+    "id": "1199B",
+    "label": "HLM DU HAINAUT"
+  },
+  {
+    "id": "1203B",
+    "label": "RIVP"
+  },
+  {
+    "id": "1206B",
+    "label": "LOGIREP"
+  },
+  {
+    "id": "1211B",
+    "label": "HLM IRP"
+  },
+  {
+    "id": "1212B",
+    "label": "SIP HLM"
+  },
+  {
+    "id": "1223B",
+    "label": "SAIMV"
+  },
+  {
+    "id": "1228B",
+    "label": "HBVS"
+  },
+  {
+    "id": "1229B",
+    "label": "TF"
+  },
+  {
+    "id": "1231B",
+    "label": "SAEM SECOS"
+  },
+  {
+    "id": "1234B",
+    "label": "SIEMOR"
+  },
+  {
+    "id": "1243B",
+    "label": "SA HLM"
+  },
+  {
+    "id": "1252B",
+    "label": "SEMISE"
+  },
+  {
+    "id": "1253B",
+    "label": "SIABA"
+  },
+  {
+    "id": "1256B",
+    "label": "SEMIVIM"
+  },
+  {
+    "id": "1258B",
+    "label": "SAEMIB"
+  },
+  {
+    "id": "1259B",
+    "label": "SCDI"
+  },
+  {
+    "id": "1265B",
+    "label": "SEMI TARBES"
+  },
+  {
+    "id": "1269B",
+    "label": "SEMIV"
+  },
+  {
+    "id": "1270B",
+    "label": "SEMINO"
+  },
+  {
+    "id": "1273B",
+    "label": "SACEMI"
+  },
+  {
+    "id": "1275B",
+    "label": "SFHE"
+  },
+  {
+    "id": "1276B",
+    "label": "SILOGE"
+  },
+  {
+    "id": "1279B",
+    "label": "SEMIR"
+  },
+  {
+    "id": "1282B",
+    "label": "SAIEM"
+  },
+  {
+    "id": "1286B",
+    "label": "SEMIC"
+  },
+  {
+    "id": "1287B",
+    "label": "SAPEL"
+  },
+  {
+    "id": "1299B",
+    "label": "SOCACONAM"
+  },
+  {
+    "id": "1306B",
+    "label": "LOGIVAM"
+  },
+  {
+    "id": "1307B",
+    "label": "SAIEMC"
+  },
+  {
+    "id": "1308B",
+    "label": "SAIEMVC"
+  },
+  {
+    "id": "1309B",
+    "label": "RIC"
+  },
+  {
+    "id": "1312B",
+    "label": "SAIEM"
+  },
+  {
+    "id": "1315B",
+    "label": "SEMCODA"
+  },
+  {
+    "id": "1320B",
+    "label": "INCITE"
+  },
+  {
+    "id": "1325B",
+    "label": "SOGEMAC HABITAT"
+  },
+  {
+    "id": "1326B",
+    "label": "LSVO"
+  },
+  {
+    "id": "1327B",
+    "label": "SACLAC"
+  },
+  {
+    "id": "1328B",
+    "label": "OPAC"
+  },
+  {
+    "id": "1332B",
+    "label": "OPHIS"
+  },
+  {
+    "id": "1333B",
+    "label": "OPH DE L'AIN"
+  },
+  {
+    "id": "1335B",
+    "label": "OPAC DU RHONE"
+  },
+  {
+    "id": "1336B",
+    "label": "MHT"
+  },
+  {
+    "id": "1337B",
+    "label": "OPH - OPAC DE L'OISE"
+  },
+  {
+    "id": "1344B",
+    "label": "MMH"
+  },
+  {
+    "id": "1350B",
+    "label": "HLM"
+  },
+  {
+    "id": "1353B",
+    "label": "OPH 94"
+  },
+  {
+    "id": "1357B",
+    "label": "DOM'AULIM"
+  },
+  {
+    "id": "1359B",
+    "label": "SAIEM"
+  },
+  {
+    "id": "1362B",
+    "label": "SAIEM"
+  },
+  {
+    "id": "1369B",
+    "label": "SAMO"
+  },
+  {
+    "id": "1373B",
+    "label": "HLM LA RANCE"
+  },
+  {
+    "id": "1376B",
+    "label": "SOMCO"
+  },
+  {
+    "id": "1378B",
+    "label": "SEMI VIR"
+  },
+  {
+    "id": "1379B",
+    "label": "SACVL"
+  },
+  {
+    "id": "1383B",
+    "label": "SACOVIV"
+  },
+  {
+    "id": "1388B",
+    "label": "SVU"
+  }
+]
