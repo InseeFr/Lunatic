@@ -39,7 +39,9 @@ test('can complete simpson form', async ({ page }) => {
 	await page.getByRole('radio', { name: 'Joe Quimby' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
-		.getByRole('combobox', { name: '➡ In which state do The Simpsons reside?' })
+		.getByRole('combobox', {
+			name: '➡ In which state do The Simpsons reside?',
+		})
 		.click();
 	await page.getByText('Not in any state, you fool!').click();
 	await page.getByRole('button', { name: 'Next' }).click();

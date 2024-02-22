@@ -40,8 +40,6 @@ export type ConditionFilterType = LabelType & {
 	bindingDependencies?: string[];
 };
 
-
-
 export type ControlType = {
 	id: string;
 	criticality: 'INFO' | 'WARN' | 'ERROR';
