@@ -180,13 +180,6 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"prettier": {
-		"singleQuote": true,
-		"semi": true,
-		"useTabs": true,
-		"bracketSpacing": true,
-		"trailingComma": "es5"
-	},
 	"peerDependencies": {
 		"react": "^18.0.0"
 	},
