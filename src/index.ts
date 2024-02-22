@@ -1,3 +1,4 @@
+//We should remove this line but this is a breaking change
 export * from './components';
 export * as components from './components';
 export { LunaticComponents } from './components/lunatic-components';
