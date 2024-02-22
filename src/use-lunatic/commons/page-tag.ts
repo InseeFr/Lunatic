@@ -23,7 +23,7 @@ export function getPagerFromPageTag(pageTag: string = '1') {
 						subPagePlusUn: string;
 						iterationPlusUn: string;
 					};
-				}
+				},
 		  ]
 		| [];
 	if (match.length === 0) {

@@ -70,7 +70,7 @@ function resizePairwise(
 		: [
 				resizingInfo.sizeForLinksVariables.xAxisSize,
 				resizingInfo.sizeForLinksVariables.yAxisSize,
-		  ];
+			];
 	const [xSize, ySize] = sizeExpressions.map((expression) => {
 		return forceInt(store.run(getExpressionAsString(expression)));
 	});

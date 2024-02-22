@@ -5,7 +5,7 @@ export function prevent<
 	T extends {
 		preventDefault: () => void;
 		stopPropagation: () => void;
-	}
+	},
 >(cb?: (e: T) => void): undefined | ((e: T) => void) {
 	if (!cb) {
 		return undefined;

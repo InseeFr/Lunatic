@@ -22,6 +22,5 @@ export function replaceComponentSequence(
 			default:
 				return [...acc, component];
 		}
-	},
-	[]);
+	}, []);
 }
