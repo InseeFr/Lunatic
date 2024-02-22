@@ -5,7 +5,6 @@ import type {
 	LunaticError,
 	LunaticState,
 } from '../type';
-import { ControlTypeEnum, Criticality, TypeOfControl } from '../type-source';
 import fillComponentExpressions from './fill-components/fill-component-expressions';
 import getComponentsFromState from './get-components-from-state';
 import { checkRoundaboutControl } from '../reducer/controls/check-roundabout-control';
@@ -44,7 +43,7 @@ function checkComponents(
 		// The component has global level controls
 		if (Array.isArray(controls)) {
 			const componentErrors = checkControls(
-				controls.filter((c) => c.type !== ControlTypeEnum.row),
+				controls.filter((c) => c.type !== 'ROW'),
 				state.executeExpression,
 				state.pager
 			);
@@ -55,9 +54,7 @@ function checkComponents(
 
 		// For loop, inspect children
 		if (isLoopComponent(component)) {
-			const rowControls = component.controls?.filter(
-				(c) => c.type === ControlTypeEnum.row
-			);
+			const rowControls = component.controls?.filter((c) => c.type === 'ROW');
 			if (rowControls?.length) {
 				errors = checkComponentInLoop(
 					state,
@@ -82,7 +79,7 @@ function checkControls(
 	return controls
 		.map((control) => {
 			switch (control.type) {
-				case ControlTypeEnum.roundabout:
+				case 'roundabout':
 					return checkRoundaboutControl(control, executeExpression);
 				default:
 					return checkBaseControl(control, executeExpression, pager);
@@ -179,8 +176,8 @@ function hasCriticalError(errors?: Record<string, LunaticError[]>): boolean {
 		.flat()
 		.find(
 			(error) =>
-				error.criticality.startsWith(Criticality.ERROR) ||
-				error.typeOfControl === TypeOfControl.FORMAT
+				error.criticality.startsWith('ERROR') ||
+				error.typeOfControl === 'FORMAT'
 		);
 	return criticalError !== undefined;
 }

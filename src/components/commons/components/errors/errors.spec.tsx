@@ -2,10 +2,6 @@ import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import Errors, { getComponentErrors } from './errors';
 import type { LunaticError } from '../../../../use-lunatic/type';
-import {
-	Criticality,
-	TypeOfControl,
-} from '../../../../use-lunatic/type-source';
 
 describe('Errors component', () => {
 	const errors = {
@@ -13,22 +9,22 @@ describe('Errors component', () => {
 			{
 				id: 'error1',
 				errorMessage: 'Error 1 message',
-				criticality: Criticality.ERROR,
-				typeOfControl: TypeOfControl.CONSISTENCY,
+				criticality: 'ERROR',
+				typeOfControl: 'CONSISTENCY',
 			},
 		],
 		id2: [
 			{
 				id: 'error2',
 				errorMessage: 'Error 2 message',
-				criticality: Criticality.ERROR,
-				typeOfControl: TypeOfControl.CONSISTENCY,
+				criticality: 'ERROR',
+				typeOfControl: 'CONSISTENCY',
 			},
 			{
 				id: 'error3',
 				errorMessage: 'Error 3 message',
-				criticality: Criticality.ERROR,
-				typeOfControl: TypeOfControl.CONSISTENCY,
+				criticality: 'ERROR',
+				typeOfControl: 'CONSISTENCY',
 			},
 		],
 	} satisfies Record<string, LunaticError[]>;

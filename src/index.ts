@@ -1,5 +1,5 @@
-// @ts-ignore
 export * from './components';
+export * as components from './components';
 export { LunaticComponents } from './components/lunatic-components';
 export { default as useLunatic } from './use-lunatic';
 
