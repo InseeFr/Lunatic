@@ -40,31 +40,14 @@ export type ConditionFilterType = LabelType & {
 	bindingDependencies?: string[];
 };
 
-export enum Criticality {
-	INFO = 'INFO',
-	WARN = 'WARN',
-	ERROR = 'ERROR',
-}
-
-export enum TypeOfControl {
-	FORMAT = 'FORMAT',
-	CONSISTENCY = 'CONSISTENCY',
-}
-
-export enum ControlTypeEnum {
-	roundabout = 'roundabout',
-	row = 'ROW',
-	simple = 'simple',
-}
-
 export type ControlType = {
 	id: string;
-	criticality: Criticality;
-	typeOfControl: TypeOfControl;
+	criticality: 'INFO' | 'WARN' | 'ERROR';
+	typeOfControl: 'FORMAT' | 'CONSISTENCY';
 	control: LabelType;
 	errorMessage: LabelType;
 	bindingDependencies: string[];
-	type: ControlTypeEnum;
+	type: 'roundabout' | 'ROW' | 'simple';
 	iterations?: number;
 };
 
