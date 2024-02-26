@@ -1,5 +1,10 @@
-// @ts-ignore
+/**
+ * We should remove this export to avoid `import * as lunatic from "@inseefr/lunatic"` in orchestrators
+ *  but this is a breaking change
+ */
 export * from './components';
+export * as components from './components';
+
 export { LunaticComponents } from './components/lunatic-components';
 export { default as useLunatic } from './use-lunatic';
 
