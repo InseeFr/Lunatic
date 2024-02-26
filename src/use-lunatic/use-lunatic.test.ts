@@ -1,12 +1,11 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { describe, expect, it, type Mock, vi, beforeEach } from 'vitest';
+import { describe, expect, it, vi, beforeEach } from 'vitest';
 import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
 import sourceComponentSet from '../stories/component-set/source.json';
-import sourceCleaning from '../stories/behaviour/cleaning/source.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { LunaticData } from './type';
