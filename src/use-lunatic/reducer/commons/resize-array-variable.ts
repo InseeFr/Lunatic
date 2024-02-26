@@ -11,14 +11,16 @@ function resizeArrayVariable<T = unknown>(
 		return new Array(length).fill(defaultValue);
 	} else if (array.length !== length) {
 		// renew array end keep previous values
-		return new Array(length)
-			.fill(defaultValue)
-			.reduce(function (step, current, index) {
-				if (index < array.length) {
-					return [...step, array[index]];
-				}
-				return [...step, current];
-			}, []);
+		return new Array(length).fill(defaultValue).reduce(function (
+			step,
+			current,
+			index
+		) {
+			if (index < array.length) {
+				return [...step, array[index]];
+			}
+			return [...step, current];
+		}, []);
 	}
 	return array;
 }

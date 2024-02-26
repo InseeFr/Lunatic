@@ -19,6 +19,5 @@ export function replaceComponentSequence(
 			return [...acc, ...component.components];
 		}
 		return [...acc, component];
-	},
-	[]);
+	}, []);
 }

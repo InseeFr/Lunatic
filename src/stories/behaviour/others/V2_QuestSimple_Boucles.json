@@ -1773,7 +1773,10 @@
 			"mandatory": false,
 			"page": "28",
 			"positioning": "HORIZONTAL",
-			"label": { "value": "\"➡ 3. \" || \"Tableau 2 axes\"", "type": "VTL|MD" },
+			"label": {
+				"value": "\"➡ 3. \" || \"Tableau 2 axes\"",
+				"type": "VTL|MD"
+			},
 			"conditionFilter": {
 				"value": "(COCHECASE = true)",
 				"type": "VTL",

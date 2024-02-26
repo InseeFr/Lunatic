@@ -243,5 +243,5 @@ type ComponentPropsByType = {
 export type LunaticComponentType = keyof ComponentPropsByType;
 
 export type LunaticComponentProps<
-	T extends LunaticComponentType = LunaticComponentType
+	T extends LunaticComponentType = LunaticComponentType,
 > = ComponentPropsByType[T];

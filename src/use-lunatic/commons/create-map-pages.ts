@@ -59,17 +59,20 @@ function createPages(questionnaire: LunaticSource): LunaticState['pages'] {
 	if (isUnpaginated(questionnaire)) {
 		return { '1': { components: components, isLoop: false } };
 	}
-	return components.reduce(function (current, component) {
-		if (isPaginatedLoop(component) || isRoundabout(component)) {
-			return mergeComponent(
-				component,
-				component.page,
-				mergeNestedComponents(component.components, current)
-			);
-		}
+	return components.reduce(
+		function (current, component) {
+			if (isPaginatedLoop(component) || isRoundabout(component)) {
+				return mergeComponent(
+					component,
+					component.page,
+					mergeNestedComponents(component.components, current)
+				);
+			}
 
-		return mergeComponent(component, component.page, current);
-	}, {} as LunaticState['pages']);
+			return mergeComponent(component, component.page, current);
+		},
+		{} as LunaticState['pages']
+	);
 }
 
 export default createPages;

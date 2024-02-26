@@ -63,11 +63,12 @@ export function resizeArray<T = unknown>(
 	if (array.length === newLength) {
 		return array;
 	}
-	return new Array(newLength)
-		.fill(defaultValue ?? null)
-		.map(function (value, index) {
-			return index < array.length ? array[index] : value;
-		}, []);
+	return new Array(newLength).fill(defaultValue ?? null).map(function (
+		value,
+		index
+	) {
+		return index < array.length ? array[index] : value;
+	}, []);
 }
 
 /**
