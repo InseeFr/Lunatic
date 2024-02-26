@@ -143,7 +143,7 @@
 		"css-loader": "^5.0.0",
 		"damerau-levenshtein": "^1.0.7",
 		"eslint": "7.30.0",
-		"eslint-config-prettier": "^7.2.0",
+		"eslint-config-prettier": "^9.1.0",
 		"eslint-config-react-app": "^6.0.0",
 		"eslint-plugin-flowtype": "^5.2.0",
 		"eslint-plugin-import": "^2.19.1",
@@ -159,7 +159,7 @@
 		"jsdom-global": "^3.0.2",
 		"postcss": "^8.2.6",
 		"postcss-scss": "^3.0.4",
-		"prettier": "^2.0.5",
+		"prettier": "^3.2.5",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"regenerator-runtime": "^0.13.7",
@@ -179,13 +179,6 @@
 	},
 	"publishConfig": {
 		"access": "public"
-	},
-	"prettier": {
-		"singleQuote": true,
-		"semi": true,
-		"useTabs": true,
-		"bracketSpacing": true,
-		"trailingComma": "es5"
 	},
 	"peerDependencies": {
 		"react": "^18.0.0"

@@ -25,7 +25,7 @@ const Template: typeof ComboBox = (args) => {
 	const options = search
 		? args.options.filter((v) =>
 				v.value.toLowerCase().includes(search.toLowerCase())
-		  )
+			)
 		: args.options;
 
 	return (

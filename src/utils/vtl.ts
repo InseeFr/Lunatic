@@ -29,14 +29,15 @@ export function parseVTLVariables(expression: string): string[] {
 	try {
 		const chars = new antlr4.InputStream(expression);
 		const lexer = new VtlLexer(chars);
-		const dependencySet = lexer
-			.getAllTokens()
-			.reduce(function (acc, { start, stop, type }) {
-				if (type === 234) {
-					acc.add(expression.substring(start, stop + 1));
-				}
-				return acc;
-			}, new Set<string>());
+		const dependencySet = lexer.getAllTokens().reduce(function (
+			acc,
+			{ start, stop, type }
+		) {
+			if (type === 234) {
+				acc.add(expression.substring(start, stop + 1));
+			}
+			return acc;
+		}, new Set<string>());
 		dependencySet.delete(expression); // Prevent dependency loop
 		return Array.from(dependencySet);
 	} catch (e) {

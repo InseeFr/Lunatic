@@ -40,7 +40,7 @@ type Props<T extends FilledLunaticComponentProps, V = undefined> = {
  */
 export function LunaticComponents<
 	T extends FilledLunaticComponentProps,
-	V = undefined
+	V = undefined,
 >({
 	components,
 	autoFocusKey,

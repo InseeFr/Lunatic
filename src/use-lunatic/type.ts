@@ -9,7 +9,7 @@ import { SuggesterStatus } from './use-suggesters';
 import type { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
 
 export type LunaticComponentDefinition<
-	T extends ComponentType['componentType'] = ComponentType['componentType']
+	T extends ComponentType['componentType'] = ComponentType['componentType'],
 > = ComponentType & { componentType: T };
 export type LunaticControl = ControlType;
 

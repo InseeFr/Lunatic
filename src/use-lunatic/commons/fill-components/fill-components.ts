@@ -23,7 +23,7 @@ import { fillComponentRequired } from './fill-component-required';
 import { fillIterations } from './fill-iterations';
 
 export type FilledLunaticComponentProps<
-	T = LunaticComponentDefinition['componentType']
+	T = LunaticComponentDefinition['componentType'],
 > = DeepTranslateExpression<LunaticComponentDefinition & { componentType: T }> &
 	FilledManagementProps &
 	FilledValueProps &

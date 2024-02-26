@@ -23,8 +23,7 @@ function fillRoundaboutProps(
 			});
 		});
 		return { ...result, [name]: values };
-	},
-	{});
+	}, {});
 	return { ...component, expressions: compiled };
 }
 

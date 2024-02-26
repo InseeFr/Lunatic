@@ -41,7 +41,7 @@ function compileResponses(
 				label: executeExpression(r.label, { iteration: option }),
 				value: executeExpression(r.value, { iteration: option }),
 				id: r.id,
-			} as SummaryResponsesEntry)
+			}) as SummaryResponsesEntry
 	);
 }
 
@@ -63,45 +63,56 @@ function CompiledTitle({
 export function LunaticSummary(props: LunaticComponentProps<'Summary'>) {
 	const { executeExpression, label, sections } = props;
 
-	const compiledSections = sections.reduce((acc, section) => {
-		const { iterations, title, responses, id } = section;
-		if (iterations) {
-			const compiledIterations: number = executeExpression(iterations);
-			if (responses) {
-				const elements = Array(compiledIterations)
-					.fill(null)
-					.map(function (_, iteration) {
-						return {
-							values: compileResponses(responses, executeExpression, iteration),
-							title: (
-								<CompiledTitle
-									executeExpression={executeExpression}
-									iteration={iteration}
-									title={title}
-								/>
-							),
-							id: id,
-						};
-					});
-				return [...acc, ...elements];
+	const compiledSections = sections.reduce(
+		(acc, section) => {
+			const { iterations, title, responses, id } = section;
+			if (iterations) {
+				const compiledIterations: number = executeExpression(iterations);
+				if (responses) {
+					const elements = Array(compiledIterations)
+						.fill(null)
+						.map(function (_, iteration) {
+							return {
+								values: compileResponses(
+									responses,
+									executeExpression,
+									iteration
+								),
+								title: (
+									<CompiledTitle
+										executeExpression={executeExpression}
+										iteration={iteration}
+										title={title}
+									/>
+								),
+								id: id,
+							};
+						});
+					return [...acc, ...elements];
+				}
 			}
-		}
-		if (responses) {
-			const element = {
-				title: (
-					<CompiledTitle
-						executeExpression={executeExpression}
-						iteration={undefined}
-						title={title}
-					/>
-				),
-				values: compileResponses(responses, executeExpression, undefined),
-				id: id,
-			};
-			return [...acc, element];
-		}
-		return acc;
-	}, [] as Array<{ id?: string; title?: ReactNode; values?: Array<{ label: ReactNode; value: ReactNode; id: string }> }>);
+			if (responses) {
+				const element = {
+					title: (
+						<CompiledTitle
+							executeExpression={executeExpression}
+							iteration={undefined}
+							title={title}
+						/>
+					),
+					values: compileResponses(responses, executeExpression, undefined),
+					id: id,
+				};
+				return [...acc, element];
+			}
+			return acc;
+		},
+		[] as Array<{
+			id?: string;
+			title?: ReactNode;
+			values?: Array<{ label: ReactNode; value: ReactNode; id: string }>;
+		}>
+	);
 
 	return (
 		<SummaryContainer>
