@@ -11,5 +11,5 @@ function DeclarationsBeforeText(props: Omit<DeclarationsProps, 'type'>) {
 
 export default createCustomizableLunaticField(
 	DeclarationsBeforeText,
-	' DeclarationsBeforeText'
+	'DeclarationsBeforeText'
 );
