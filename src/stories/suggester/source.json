@@ -1,118 +1,4 @@
 {
-	"cleaning": {},
-	"variables": [
-		{
-			"variableType": "COLLECTED",
-			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
-			},
-			"name": "COMMENT_QE"
-		},
-		{
-			"variableType": "COLLECTED",
-			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
-			},
-			"name": "VARIABLECO"
-		},
-		{
-			"variableType": "COLLECTED",
-			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
-			},
-			"name": "VARIABLEPA"
-		},
-		{
-			"variableType": "COLLECTED",
-			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
-			},
-			"name": "VARIABLENA"
-		},
-		{
-			"variableType": "COLLECTED",
-			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
-			},
-			"name": "VARIABLE_P"
-		},
-		{
-			"variableType": "COLLECTED",
-			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
-			},
-			"name": "VARIABLE_B"
-		},
-		{
-			"variableType": "CALCULATED",
-			"expression": {
-				"type": "VTL",
-				"value": "true"
-			},
-			"name": "FILTER_RESULT_VARIABLECO",
-			"inFilter": "false"
-		},
-		{
-			"variableType": "CALCULATED",
-			"expression": {
-				"type": "VTL",
-				"value": "true"
-			},
-			"name": "FILTER_RESULT_VARIABLEPA",
-			"inFilter": "false"
-		},
-		{
-			"variableType": "CALCULATED",
-			"expression": {
-				"type": "VTL",
-				"value": "true"
-			},
-			"name": "FILTER_RESULT_VARIABLENA",
-			"inFilter": "false"
-		},
-		{
-			"variableType": "CALCULATED",
-			"expression": {
-				"type": "VTL",
-				"value": "true"
-			},
-			"name": "FILTER_RESULT_VARIABLE_P",
-			"inFilter": "false"
-		},
-		{
-			"variableType": "CALCULATED",
-			"expression": {
-				"type": "VTL",
-				"value": "true"
-			},
-			"name": "FILTER_RESULT_VARIABLE_B",
-			"inFilter": "false"
-		}
-	],
 	"suggesters": [
 		{
 			"responseNames": ["VARIABLE_COMMUNE"],
@@ -395,5 +281,118 @@
 	"generatingDate": "27-02-2024 13:43:43",
 	"missing": false,
 	"id": "lt4f6mib",
-	"maxPage": "5"
+	"maxPage": "5",
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "COMMENT_QE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLECO"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLEPA"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLENA"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLE_P"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLE_B"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_VARIABLECO",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_VARIABLEPA",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_VARIABLENA",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_VARIABLE_P",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_VARIABLE_B",
+			"inFilter": "false"
+		}
+	]
 }
