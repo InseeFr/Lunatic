@@ -1,0 +1,882 @@
+[
+  {
+    "id": "FRA",
+    "label": "FRANCAISE"
+  },
+  {
+    "id": "DNK",
+    "label": "DANOISE"
+  },
+  {
+    "id": "ISL",
+    "label": "ISLANDAISE"
+  },
+  {
+    "id": "NOR",
+    "label": "NORVEGIENNE"
+  },
+  {
+    "id": "SWE",
+    "label": "SUEDOISE"
+  },
+  {
+    "id": "FIN",
+    "label": "FINLANDAISE"
+  },
+  {
+    "id": "EST",
+    "label": "ESTONIENNE"
+  },
+  {
+    "id": "LVA",
+    "label": "LETTONNE"
+  },
+  {
+    "id": "LTU",
+    "label": "LITUANIENNE"
+  },
+  {
+    "id": "DEU",
+    "label": "ALLEMANDE"
+  },
+  {
+    "id": "AUT",
+    "label": "AUTRICHIENNE"
+  },
+  {
+    "id": "BGR",
+    "label": "BULGARE"
+  },
+  {
+    "id": "HUN",
+    "label": "HONGROISE"
+  },
+  {
+    "id": "LIE",
+    "label": "LIECHTENSTEINOISE"
+  },
+  {
+    "id": "ROU",
+    "label": "ROUMAINE"
+  },
+  {
+    "id": "CZE",
+    "label": "TCHEQUE"
+  },
+  {
+    "id": "SVK",
+    "label": "SLOVAQUE"
+  },
+  {
+    "id": "BIH",
+    "label": "BOSNIENNE"
+  },
+  {
+    "id": "HRV",
+    "label": "CROATE"
+  },
+  {
+    "id": "MNE",
+    "label": "MONTENEGRINE"
+  },
+  {
+    "id": "SRB",
+    "label": "SERBE"
+  },
+  {
+    "id": "POL",
+    "label": "POLONAISE"
+  },
+  {
+    "id": "RUS",
+    "label": "RUSSE"
+  },
+  {
+    "id": "ALB",
+    "label": "ALBANAISE"
+  },
+  {
+    "id": "GRC",
+    "label": "GRECQUE"
+  },
+  {
+    "id": "ITA",
+    "label": "ITALIENNE"
+  },
+  {
+    "id": "SMR",
+    "label": "SAINT-MARINAISE"
+  },
+  {
+    "id": "VAT",
+    "label": "VATICANE"
+  },
+  {
+    "id": "AND",
+    "label": "ANDORRANE"
+  },
+  {
+    "id": "BEL",
+    "label": "BELGE"
+  },
+  {
+    "id": "GBR",
+    "label": "BRITANNIQUE"
+  },
+  {
+    "id": "GIB",
+    "label": "GIBRALTARIENNE"
+  },
+  {
+    "id": "ESP",
+    "label": "ESPAGNOLE"
+  },
+  {
+    "id": "NLD",
+    "label": "NEERLANDAISE"
+  },
+  {
+    "id": "IRL",
+    "label": "IRLANDAISE"
+  },
+  {
+    "id": "LUX",
+    "label": "LUXEMBOURGEOISE"
+  },
+  {
+    "id": "MCO",
+    "label": "MONEGASQUE"
+  },
+  {
+    "id": "PRT",
+    "label": "PORTUGAISE"
+  },
+  {
+    "id": "CHE",
+    "label": "SUISSE"
+  },
+  {
+    "id": "MLT",
+    "label": "MALTAISE"
+  },
+  {
+    "id": "SVN",
+    "label": "SLOVENE"
+  },
+  {
+    "id": "BLR",
+    "label": "BIELORUSSE"
+  },
+  {
+    "id": "MDA",
+    "label": "MOLDAVE"
+  },
+  {
+    "id": "UKR",
+    "label": "UKRAINIENNE"
+  },
+  {
+    "id": "MKD",
+    "label": "MACEDONIENNE"
+  },
+  {
+    "id": "KOS",
+    "label": "KOSOVARE"
+  },
+  {
+    "id": "SAU",
+    "label": "SAOUDIENNE"
+  },
+  {
+    "id": "IRQ",
+    "label": "IRAQUIENNE"
+  },
+  {
+    "id": "IRN",
+    "label": "IRANIENNE"
+  },
+  {
+    "id": "LBN",
+    "label": "LIBANAISE"
+  },
+  {
+    "id": "SYR",
+    "label": "SYRIENNE"
+  },
+  {
+    "id": "ISR",
+    "label": "ISRAELIENNE"
+  },
+  {
+    "id": "TUR",
+    "label": "TURQUE"
+  },
+  {
+    "id": "AFG",
+    "label": "AFGHANE"
+  },
+  {
+    "id": "PAK",
+    "label": "PAKISTANAISE"
+  },
+  {
+    "id": "BTN",
+    "label": "BHOUTANAISE"
+  },
+  {
+    "id": "NPL",
+    "label": "NEPALAISE"
+  },
+  {
+    "id": "CHN",
+    "label": "CHINOISE"
+  },
+  {
+    "id": "JPN",
+    "label": "JAPONAISE"
+  },
+  {
+    "id": "THA",
+    "label": "THAILANDAISE"
+  },
+  {
+    "id": "PHL",
+    "label": "PHILIPPINE"
+  },
+  {
+    "id": "JOR",
+    "label": "JORDANIENNE"
+  },
+  {
+    "id": "IND",
+    "label": "INDIENNE"
+  },
+  {
+    "id": "MMR",
+    "label": "BIRMANE"
+  },
+  {
+    "id": "BRN",
+    "label": "BRUNEIENNE"
+  },
+  {
+    "id": "SGP",
+    "label": "SINGAPOURIENNE"
+  },
+  {
+    "id": "MYS",
+    "label": "MALAISIENNE"
+  },
+  {
+    "id": "MDV",
+    "label": "MALDIVIENNE"
+  },
+  {
+    "id": "IDN",
+    "label": "INDONESIENNE"
+  },
+  {
+    "id": "KHM",
+    "label": "CAMBODGIENNE"
+  },
+  {
+    "id": "LKA",
+    "label": "SRI-LANKAISE"
+  },
+  {
+    "id": "TWN",
+    "label": "TAIWANAISE"
+  },
+  {
+    "id": "PRK",
+    "label": "NORD-COREENNE"
+  },
+  {
+    "id": "KOR",
+    "label": "SUD-COREENNE"
+  },
+  {
+    "id": "KWT",
+    "label": "KOWEITIENNE"
+  },
+  {
+    "id": "LAO",
+    "label": "LAOTIENNE"
+  },
+  {
+    "id": "MNG",
+    "label": "MONGOLE"
+  },
+  {
+    "id": "VNM",
+    "label": "VIETNAMIENNE"
+  },
+  {
+    "id": "BGD",
+    "label": "BANGLADAISE"
+  },
+  {
+    "id": "ARE",
+    "label": "EMIRIENNE"
+  },
+  {
+    "id": "QAT",
+    "label": "QATARIENNE"
+  },
+  {
+    "id": "BHR",
+    "label": "BAHREINIENNE"
+  },
+  {
+    "id": "OMN",
+    "label": "OMANAISE"
+  },
+  {
+    "id": "YEM",
+    "label": "YEMENITE"
+  },
+  {
+    "id": "ARM",
+    "label": "ARMENIENNE"
+  },
+  {
+    "id": "AZE",
+    "label": "AZERBAIDJANAISE"
+  },
+  {
+    "id": "CYP",
+    "label": "CHYPRIOTE"
+  },
+  {
+    "id": "GEO",
+    "label": "GEORGIENNE"
+  },
+  {
+    "id": "KAZ",
+    "label": "KAZAKH"
+  },
+  {
+    "id": "KGZ",
+    "label": "KIRGHIZE"
+  },
+  {
+    "id": "UZB",
+    "label": "OUZBEK"
+  },
+  {
+    "id": "TJK",
+    "label": "TADJIK"
+  },
+  {
+    "id": "TKM",
+    "label": "TURKMENE"
+  },
+  {
+    "id": "PSE",
+    "label": "PALESTINIENNE"
+  },
+  {
+    "id": "TLS",
+    "label": "TIMORAISE"
+  },
+  {
+    "id": "EGY",
+    "label": "EGYPTIENNE"
+  },
+  {
+    "id": "LBR",
+    "label": "LIBERIENNE"
+  },
+  {
+    "id": "ZAF",
+    "label": "SUD-AFRICAINE"
+  },
+  {
+    "id": "GMB",
+    "label": "GAMBIENNE"
+  },
+  {
+    "id": "SHN",
+    "label": "SAINT-HELENOISE, ASCENSIONNAISE ET TRISTANAISE"
+  },
+  {
+    "id": "IOT",
+    "label": "CHAGOSSIENNE"
+  },
+  {
+    "id": "TZA",
+    "label": "TANZANIENNE"
+  },
+  {
+    "id": "ZWE",
+    "label": "ZIMBABWEENNE"
+  },
+  {
+    "id": "NAM",
+    "label": "NAMIBIENNE"
+  },
+  {
+    "id": "COD",
+    "label": "CONGOLAISE (KINSHASA)"
+  },
+  {
+    "id": "GNQ",
+    "label": "EQUATOGUINEENNE"
+  },
+  {
+    "id": "ETH",
+    "label": "ETHIOPIENNE"
+  },
+  {
+    "id": "LBY",
+    "label": "LIBYENNE"
+  },
+  {
+    "id": "ERI",
+    "label": "ERYTHREENNE"
+  },
+  {
+    "id": "SOM",
+    "label": "SOMALIENNE"
+  },
+  {
+    "id": "BDI",
+    "label": "BURUNDAISE"
+  },
+  {
+    "id": "CMR",
+    "label": "CAMEROUNAISE"
+  },
+  {
+    "id": "CAF",
+    "label": "CENTRAFRICAINE"
+  },
+  {
+    "id": "COG",
+    "label": "CONGOLAISE (BRAZZAVILLE)"
+  },
+  {
+    "id": "CIV",
+    "label": "IVOIRIENNE"
+  },
+  {
+    "id": "BEN",
+    "label": "BENINOISE"
+  },
+  {
+    "id": "GAB",
+    "label": "GABONAISE"
+  },
+  {
+    "id": "GHA",
+    "label": "GHANEENNE"
+  },
+  {
+    "id": "GIN",
+    "label": "GUINEENNE"
+  },
+  {
+    "id": "BFA",
+    "label": "BURKINABE"
+  },
+  {
+    "id": "KEN",
+    "label": "KENYANE"
+  },
+  {
+    "id": "MDG",
+    "label": "MALGACHE"
+  },
+  {
+    "id": "MWI",
+    "label": "MALAWITE"
+  },
+  {
+    "id": "MLI",
+    "label": "MALIENNE"
+  },
+  {
+    "id": "MRT",
+    "label": "MAURITANIENNE"
+  },
+  {
+    "id": "NER",
+    "label": "NIGERIENNE"
+  },
+  {
+    "id": "NGA",
+    "label": "NIGERIANE"
+  },
+  {
+    "id": "UGA",
+    "label": "OUGANDAISE"
+  },
+  {
+    "id": "RWA",
+    "label": "RWANDAISE"
+  },
+  {
+    "id": "SEN",
+    "label": "SENEGALAISE"
+  },
+  {
+    "id": "SLE",
+    "label": "SIERRA-LEONAISE"
+  },
+  {
+    "id": "SDN",
+    "label": "SOUDANAISE"
+  },
+  {
+    "id": "TCD",
+    "label": "TCHADIENNE"
+  },
+  {
+    "id": "TGO",
+    "label": "TOGOLAISE"
+  },
+  {
+    "id": "ZMB",
+    "label": "ZAMBIENNE"
+  },
+  {
+    "id": "BWA",
+    "label": "BOTSWANAISE"
+  },
+  {
+    "id": "LSO",
+    "label": "LESOTHANE"
+  },
+  {
+    "id": "SSD",
+    "label": "SUD-SOUDANAISE"
+  },
+  {
+    "id": "MAR",
+    "label": "MAROCAINE"
+  },
+  {
+    "id": "TUN",
+    "label": "TUNISIENNE"
+  },
+  {
+    "id": "DZA",
+    "label": "ALGERIENNE"
+  },
+  {
+    "id": "ESH",
+    "label": "SAHRAOUIS"
+  },
+  {
+    "id": "MUS",
+    "label": "MAURICIENNE"
+  },
+  {
+    "id": "SWZ",
+    "label": "SWAZI"
+  },
+  {
+    "id": "GNB",
+    "label": "BISSAOGUINEENNE"
+  },
+  {
+    "id": "MOZ",
+    "label": "MOZAMBICAINE"
+  },
+  {
+    "id": "STP",
+    "label": "SANTOMEENNE"
+  },
+  {
+    "id": "AGO",
+    "label": "ANGOLAISE"
+  },
+  {
+    "id": "CPV",
+    "label": "CAP-VERDIENNE"
+  },
+  {
+    "id": "COM",
+    "label": "COMORIENNE"
+  },
+  {
+    "id": "SYC",
+    "label": "SEYCHELLOISE"
+  },
+  {
+    "id": "DJI",
+    "label": "DJIBOUTIENNE"
+  },
+  {
+    "id": "CAN",
+    "label": "CANADIENNE"
+  },
+  {
+    "id": "USA",
+    "label": "AMERICAINE"
+  },
+  {
+    "id": "MEX",
+    "label": "MEXICAINE"
+  },
+  {
+    "id": "CRI",
+    "label": "COSTARICAINE"
+  },
+  {
+    "id": "CUB",
+    "label": "CUBAINE"
+  },
+  {
+    "id": "DOM",
+    "label": "DOMINICAINE"
+  },
+  {
+    "id": "GTM",
+    "label": "GUATEMALTEQUE"
+  },
+  {
+    "id": "HTI",
+    "label": "HAITIENNE"
+  },
+  {
+    "id": "HND",
+    "label": "HONDURIENNE"
+  },
+  {
+    "id": "NIC",
+    "label": "NICARAGUAYENNE"
+  },
+  {
+    "id": "PAN",
+    "label": "PANAMEENNE"
+  },
+  {
+    "id": "SLV",
+    "label": "SALVADORIENNE"
+  },
+  {
+    "id": "ARG",
+    "label": "ARGENTINE"
+  },
+  {
+    "id": "BRA",
+    "label": "BRESILIENNE"
+  },
+  {
+    "id": "CHL",
+    "label": "CHILIENNE"
+  },
+  {
+    "id": "BOL",
+    "label": "BOLIVIENNE"
+  },
+  {
+    "id": "COL",
+    "label": "COLOMBIENNE"
+  },
+  {
+    "id": "ECU",
+    "label": "EQUATORIENNE"
+  },
+  {
+    "id": "PRY",
+    "label": "PARAGUAYENNE"
+  },
+  {
+    "id": "PER",
+    "label": "PERUVIENNE"
+  },
+  {
+    "id": "URY",
+    "label": "URUGUAYENNE"
+  },
+  {
+    "id": "VEN",
+    "label": "VENEZUELIENNE"
+  },
+  {
+    "id": "AIA",
+    "label": "ANGUILLAISE"
+  },
+  {
+    "id": "BMU",
+    "label": "BERMUDIENNE"
+  },
+  {
+    "id": "CYM",
+    "label": "CAIMANAISE"
+  },
+  {
+    "id": "MSR",
+    "label": "MONTSERRATIENNE"
+  },
+  {
+    "id": "TCA",
+    "label": "INSULAIRE DES ILES TURQUES-ET-CAIQUES"
+  },
+  {
+    "id": "VGB",
+    "label": "INSULAIRE DES ILES VIERGES BRITANNIQUES"
+  },
+  {
+    "id": "JAM",
+    "label": "JAMAICAINE"
+  },
+  {
+    "id": "FLK",
+    "label": "MALOUINS"
+  },
+  {
+    "id": "SGS",
+    "label": "SUD-GEORGIENNE"
+  },
+  {
+    "id": "GUY",
+    "label": "GUYANIENNE"
+  },
+  {
+    "id": "BLZ",
+    "label": "BELIZIENNE"
+  },
+  {
+    "id": "GRL",
+    "label": "GROENLANDAISE"
+  },
+  {
+    "id": "PRI",
+    "label": "PORTORICAINE"
+  },
+  {
+    "id": "VIR",
+    "label": "INSULAIRE DES ILES VIERGES DES ETATS-UNIS"
+  },
+  {
+    "id": "TTO",
+    "label": "TRINIDADIENNE"
+  },
+  {
+    "id": "BRB",
+    "label": "BARBADIENNE"
+  },
+  {
+    "id": "GRD",
+    "label": "GRENADIENNE"
+  },
+  {
+    "id": "BHS",
+    "label": "BAHAMEENNE"
+  },
+  {
+    "id": "SUR",
+    "label": "SURINAMIENNE"
+  },
+  {
+    "id": "DMA",
+    "label": "DOMINIQUAISE"
+  },
+  {
+    "id": "LCA",
+    "label": "LUCIENNE"
+  },
+  {
+    "id": "VCT",
+    "label": "GRENADINES"
+  },
+  {
+    "id": "ATG",
+    "label": "ANTIGUAYENNE"
+  },
+  {
+    "id": "KNA",
+    "label": "CHRISTOPHIENNE"
+  },
+  {
+    "id": "BES",
+    "label": "BONAIRIENNE, EUSTACHOISE ET SABEENNE"
+  },
+  {
+    "id": "CUW",
+    "label": "CURACIENNE"
+  },
+  {
+    "id": "SXM",
+    "label": "SAINT-MARTINOISE"
+  },
+  {
+    "id": "AUS",
+    "label": "AUSTRALIENNE"
+  },
+  {
+    "id": "NZL",
+    "label": "NEO-ZELANDAISE"
+  },
+  {
+    "id": "PCN",
+    "label": "PITCAIRNAISE"
+  },
+  {
+    "id": "ASM",
+    "label": "AMERICAINE SAMOANE"
+  },
+  {
+    "id": "GUM",
+    "label": "GUAMIENNE"
+  },
+  {
+    "id": "MNP",
+    "label": "MARIANNAISE"
+  },
+  {
+    "id": "WSM",
+    "label": "SAMOANE"
+  },
+  {
+    "id": "NRU",
+    "label": "NAURUANE"
+  },
+  {
+    "id": "FJI",
+    "label": "FIDJIENNE"
+  },
+  {
+    "id": "TON",
+    "label": "TONGIENNE"
+  },
+  {
+    "id": "PNG",
+    "label": "PAPOUASIENNE"
+  },
+  {
+    "id": "TUV",
+    "label": "TUVALUANE"
+  },
+  {
+    "id": "SLB",
+    "label": "SALOMONIENNE"
+  },
+  {
+    "id": "KIR",
+    "label": "KIRIBATIENNE"
+  },
+  {
+    "id": "VUT",
+    "label": "VANUATUAISE"
+  },
+  {
+    "id": "MHL",
+    "label": "MARSHALLAISE"
+  },
+  {
+    "id": "FSM",
+    "label": "MICRONESIENNE"
+  },
+  {
+    "id": "PLW",
+    "label": "PALUANE"
+  },
+  {
+    "id": "APA",
+    "label": "APATRIDE"
+  }
+]
