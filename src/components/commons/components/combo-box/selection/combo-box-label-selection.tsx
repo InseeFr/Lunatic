@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComboBoxOptionType } from '../combo-box.type';
-import createCustomizableLunaticField from '../../../create-customizable-field';
+import { customizedComponent } from '../../../../shared/HOC/customizedComponent';
 
 type Props = {
 	option?: ComboBoxOptionType | null;
@@ -56,7 +56,7 @@ function ComboBoxLabelSelection({
 	);
 }
 
-export default createCustomizableLunaticField(
-	ComboBoxLabelSelection,
-	'ComboboxLabelSelection'
+export default customizedComponent(
+	'ComboboxLabelSelection',
+	ComboBoxLabelSelection
 );

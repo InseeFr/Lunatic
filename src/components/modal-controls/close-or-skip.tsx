@@ -1,6 +1,6 @@
 import { type MouseEventHandler } from 'react';
 import D from '../../i18n';
-import Button from '../button';
+import Button from '../shared/Button';
 
 type Props = {
 	onClose: MouseEventHandler;

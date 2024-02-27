@@ -24,6 +24,6 @@ Default.args = {
 
 export const WithDeclarations = Template.bind({});
 WithDeclarations.args = {
-	id: 'sequence-declarations',
+	id: 'sequence-Declarations',
 	source: sourceDeclarations,
 };

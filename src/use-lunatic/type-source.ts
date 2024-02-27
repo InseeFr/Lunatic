@@ -99,8 +99,7 @@ export type ComponentType =
 			componentType: 'ConfirmationModal';
 	  })
 	| (ComponentTypeBase & ComponentComponentSetType)
-	| (ComponentTypeBase & ComponentQuestionType)
-	| (ComponentTypeBase & ComponentQuestionExplicationType);
+	| (ComponentTypeBase & ComponentQuestionType);
 
 export type ComponentTypeEnum = ComponentType['componentType'];
 
@@ -351,10 +350,4 @@ export type LunaticSource = {
 					linksVariables: string[];
 			  };
 	};
-};
-
-export type ComponentQuestionExplicationType = {
-	componentType: 'QuestionExplication';
-	description: string;
-	bgColor?: string;
 };

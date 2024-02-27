@@ -2,10 +2,10 @@ import {
 	DeclarationsBeforeText,
 	DeclarationsDetachable,
 	DECLARATION_POSITIONS,
-} from '../../declarations';
+} from '../../Declarations';
 
 import FieldContainer from './field-container';
-import Missing from './missing';
+import Missing from '../../shared/Missing';
 import React, { type ReactElement } from 'react';
 import VariableStatus from './variable-status';
 import type { LunaticBaseProps } from '../../type';

@@ -2,17 +2,17 @@ import {
 	DECLARATION_POSITIONS,
 	DeclarationsBeforeText,
 	DeclarationsDetachable,
-} from '../../declarations';
+} from '../../Declarations';
 
 import { Fragment, type ReactNode } from 'react';
 import FieldContainer from './field-container';
 import Label from './label';
-import Missing from './missing';
+import Missing from '../../shared/Missing';
 import VariableStatus from './variable-status';
 import type { LunaticBaseProps } from '../../type';
 
 /**
- * Returns declarations with "after" position if exists, return description otherwise
+ * Returns Declarations with "after" position if exists, return description otherwise
  */
 function getDescription({
 	declarations,

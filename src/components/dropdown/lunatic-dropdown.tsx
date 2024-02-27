@@ -3,7 +3,7 @@ import useOnHandleChange from '../commons/use-on-handle-change';
 import Dropdown from './html/dropdown';
 import type { LunaticComponentProps } from '../type';
 import classNames from 'classnames';
-import { getComponentErrors } from '../commons/components/errors/errors';
+import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 
 function LunaticDropdown({
 	id,

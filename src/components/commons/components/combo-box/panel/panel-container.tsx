@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { type PropsWithChildren } from 'react';
-import createCustomizableLunaticField from '../../../create-customizable-field';
+import { customizedComponent } from '../../../../shared/HOC/customizedComponent';
 
 type Props = PropsWithChildren<{
 	focused?: boolean;
@@ -24,7 +24,4 @@ function PanelContainer({ children, focused, expanded, id }: Props) {
 	);
 }
 
-export default createCustomizableLunaticField(
-	PanelContainer,
-	'ComboboxPanelContainer'
-);
+export default customizedComponent('ComboboxPanelContainer', PanelContainer);

@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions';
-import LunaticDatepicker from '../../components/datepicker';
+import { Datepicker } from '../../components/Datepicker/Datepicker';
 
 export default {
 	title: 'Components/Datepicker',
-	component: LunaticDatepicker,
+	component: Datepicker,
 	args: {
 		value: '1920-02-01',
 		dateFormat: 'YYYY-MM-DD',

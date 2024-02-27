@@ -5,7 +5,7 @@ import React, {
 	type KeyboardEventHandler,
 } from 'react';
 import classnames from 'classnames';
-import createCustomizableLunaticField from '../../../create-customizable-field';
+import { customizedComponent } from '../../../../shared/HOC/customizedComponent';
 
 export type InputProps = {
 	placeholder?: string;
@@ -65,4 +65,4 @@ function Input({
 	);
 }
 
-export default createCustomizableLunaticField(Input, 'ComboboxInput');
+export default customizedComponent('ComboboxInput', Input);

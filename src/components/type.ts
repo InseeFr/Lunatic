@@ -23,12 +23,6 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	) => void;
 	errors?: { [id: string]: LunaticError[] };
 	preferences?: LunaticState['preferences'];
-	declarations?: {
-		id: string;
-		declarationType: string;
-		position: string;
-		label: ReactNode;
-	}[];
 	label?: ReactNode;
 	disabled?: boolean;
 	missing?: unknown;
@@ -42,7 +36,13 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	className?: string;
 	style?: CSSProperties;
 	iteration?: number;
-	executeExpression: LunaticState['executeExpression'];
+	declarations?: {
+		id: string;
+		declarationType: string;
+		position: string;
+		label: ReactNode;
+	}[];
+	// executeExpression: LunaticState['executeExpression'];
 	features?: string[];
 	componentType?: string;
 	goNextPage?: () => void;
@@ -79,15 +79,15 @@ type ComponentPropsByType = {
 	};
 	Sequence: Pick<
 		LunaticBaseProps<string>,
-		'id' | 'declarations' | 'label' | 'style'
+		'id' | 'label' | 'style' | 'declarations' | 'description'
 	>;
-	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'declarations' | 'label'>;
-	QuestionContext: Pick<LunaticBaseProps<unknown>, 'label' | 'description'>;
-	QuestionInformation: Pick<LunaticBaseProps<unknown>, 'label' | 'description'>;
+	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'declarations'>;
 	Question: Pick<
 		LunaticBaseProps<unknown>,
-		'declarations' | 'label' | 'id' | 'description'
-	> & { components: FilledLunaticComponentProps[] };
+		'label' | 'id' | 'description' | 'declarations'
+	> & {
+		components: FilledLunaticComponentProps[];
+	};
 	ComponentSet: LunaticBaseProps<unknown> & {
 		components: FilledLunaticComponentProps[];
 		value: Record<string, unknown>;
@@ -99,7 +99,11 @@ type ComponentPropsByType = {
 		getComponents: (n: number) => FilledLunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
-		header?: Array<{ label: ReactNode }>;
+		header?: Array<{
+			label: ReactNode;
+			rowspan?: number;
+			colspan?: number;
+		}>;
 		paginatedLoop?: boolean;
 	};
 	Loop: LunaticBaseProps<unknown> & {
@@ -146,7 +150,7 @@ type ComponentPropsByType = {
 	};
 	CheckboxOne: LunaticBaseProps<string | null> & {
 		options: Array<{
-			description: ReactNode;
+			description?: ReactNode;
 			label: ReactNode;
 			value: string;
 		}>;
@@ -157,7 +161,6 @@ type ComponentPropsByType = {
 		statusLabel?: { true: string; false: string };
 	};
 	CheckboxBoolean: LunaticBaseProps<boolean> & {
-		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
 	};
 	Radio: LunaticBaseProps<string | null> & {
@@ -190,10 +193,6 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'>;
-	QuestionExplication: Pick<
-		LunaticBaseProps<string>,
-		'id' | 'label' | 'description'
-	> & { bgColor?: string };
 	PairwiseLinks: Omit<LunaticBaseProps, 'value'> & {
 		components: LunaticComponentDefinition[];
 		features?: LunaticState['features'];
@@ -237,16 +236,10 @@ type ComponentPropsByType = {
 			iterations?: number;
 		}>;
 	};
-	ConfirmationModal: LunaticBaseProps<string | null> & {
-		goToPage: ReturnType<typeof useLunatic>['goToPage'];
-		page: string;
-		goNextPage: () => void;
-		goPreviousPage: () => void;
-	};
 };
 
 export type LunaticComponentType = keyof ComponentPropsByType;
 
 export type LunaticComponentProps<
-	T extends LunaticComponentType = LunaticComponentType,
+	T extends LunaticComponentType = LunaticComponentType
 > = ComponentPropsByType[T];

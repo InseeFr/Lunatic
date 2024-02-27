@@ -48,7 +48,7 @@ TestDylan.args = {
 export const DeclarationsSimples = Template.bind({});
 
 DeclarationsSimples.args = {
-	id: 'declarations-simples',
+	id: 'Declarations-simples',
 	pagination: true,
 	source: declarationsSimples,
 };

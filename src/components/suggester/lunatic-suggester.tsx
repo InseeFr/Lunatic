@@ -1,4 +1,4 @@
-import { getComponentErrors } from '../commons/components/errors/errors';
+import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import LunaticComponent from '../commons/components/lunatic-component-without-label';
 import useOnHandleChange from '../commons/use-on-handle-change';
 import type { LunaticComponentProps } from '../type';

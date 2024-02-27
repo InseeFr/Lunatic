@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react';
-import createCustomizableLunaticField from '../../create-customizable-field';
+import { customizedComponent } from '../../../shared/HOC/customizedComponent';
 
 type Props = Omit<ComponentProps<'a'>, 'href'> & { to: string };
 
@@ -12,4 +12,4 @@ const RouterLink = (props: Props) => {
 	);
 };
 
-export default createCustomizableLunaticField(RouterLink, 'RouterLink');
+export default customizedComponent('RouterLink', RouterLink);

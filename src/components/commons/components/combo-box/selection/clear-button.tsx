@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import classnames from 'classnames';
 import { CrossIcon } from '../../../icons';
 import { Fab } from '../../fab';
-import createCustomizableLunaticField from '../../../create-customizable-field';
+import { customizedComponent } from '../../../../shared/HOC/customizedComponent';
 
 function isDisabled(search?: string) {
 	return !search || search.trim().length === 0;
@@ -44,7 +44,7 @@ function ClearButtonComponent({ className, search, onClick, editable }: Props) {
 	);
 }
 
-export const ClearButton = createCustomizableLunaticField(
-	ClearButtonComponent,
-	'ComboboxClearButton'
+export const ClearButton = customizedComponent(
+	'ComboboxClearButton',
+	ClearButtonComponent
 );

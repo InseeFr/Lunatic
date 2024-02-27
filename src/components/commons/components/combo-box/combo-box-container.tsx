@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import classnames from 'classnames';
-import createCustomizableLunaticField from '../../create-customizable-field';
+import { customizedComponent } from '../../../shared/HOC/customizedComponent';
 import Errors from '../errors';
 import type { LunaticError } from '../../../../use-lunatic/type';
 
@@ -38,7 +38,4 @@ function ComboBoxContainer({
 	);
 }
 
-export default createCustomizableLunaticField(
-	ComboBoxContainer,
-	'ComboboxContainer'
-);
+export default customizedComponent('ComboboxContainer', ComboBoxContainer);

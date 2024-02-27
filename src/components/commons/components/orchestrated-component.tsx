@@ -1,4 +1,4 @@
-import * as lunatic from '../../../components';
+import * as lunatic from '../../library';
 import { fillComponentExpressions } from '../../../use-lunatic/commons';
 import type { LunaticBaseProps } from '../../type';
 import type { LunaticComponentDefinition } from '../../../use-lunatic/type';
