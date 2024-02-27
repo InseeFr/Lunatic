@@ -17,68 +17,159 @@ export default stories;
 
 const indexes = [
 	{
-		name: 'libelles-pcs-2020',
-		max: 100,
-		fields: [
+		"responseNames": ["VARIABLE_COMMUNE"],
+		"name": "L_COMMUNEPASSEE-1-2-0",
+		"fields": [
 			{
-				name: 'id',
-				rules: ['[\\w]+'],
-				language: 'French',
-				min: 2,
-				stemmer: false,
-			},
+				"name": "label",
+				"rules": ["[\\w]+"],
+				"language": "French",
+				"min": 3,
+				"stemmer": false
+			}
 		],
-		queryParser: {
-			type: 'tokenized',
-			params: {
-				language: 'French',
-				pattern: '[\\w]+',
-				min: 3,
-				stemmer: false,
-			},
+		"queryParser": {
+			"type": "tokenized",
+			"params": {
+				"language": "French",
+				"pattern": "[\\w.]+",
+				"min": 3,
+				"stemmer": false
+			}
 		},
-		meloto: true,
-		version: '1',
-		stopWords: [
-			'a',
-			'au',
-			'dans',
-			'de',
-			'des',
-			'du',
-			'en',
-			'er',
-			'la',
-			'le',
-			'ou',
-			'sur',
-			'd',
-			'l',
-			'aux',
-			'dans',
-			'un',
-			'une',
-			'pour',
-			'avec',
-			'chez',
-			'par',
-			'les',
-		],
+		"version": "1"
 	},
 	{
-		name: 'communes-2023',
-		max: 100,
-		fields: [
+		"responseNames": ["VARIABLE_PAYS"],
+		"name": "L_PAYS-1-2-0",
+		"fields": [
 			{
-				name: 'id',
-				rules: 'soft',
-			},
+				"name": "label",
+				"rules": ["[\\w]+"],
+				"language": "French",
+				"min": 3,
+				"stemmer": false
+			}
 		],
-		queryParser: {
-			type: 'soft',
+		"queryParser": {
+			"type": "tokenized",
+			"params": {
+				"language": "French",
+				"pattern": "[\\w.]+",
+				"min": 3,
+				"stemmer": false
+			}
 		},
-		version: '1',
+		"version": "1"
 	},
+	{
+		"responseNames": ["VARIABLE_NATIONALITE"],
+		"name": "L_NATIONALITE-1-2-0",
+		"fields": [
+			{
+				"name": "label",
+				"rules": ["[\\w]+"],
+				"language": "French",
+				"stemmer": false
+			}
+		],
+		"queryParser": {
+			"type": "tokenized",
+			"params": {
+				"language": "French",
+				"pattern": "[\\w.]+",
+				"stemmer": false
+			}
+		},
+		"version": "1"
+	},
+	{
+		"responseNames": ["VARIABLE_PCS"],
+		"name": "L_PCS_HOMMES-1-5-0",
+		"fields": [
+			{
+				"name": "label",
+				"rules": ["[\\w]+"],
+				"language": "French",
+				"stemmer": false,
+				"synonyms": {
+					"accueil": ["ACCEUIL"],
+					"échafaudage": ["ECHAFFAUDAGE"],
+					"URSSAF": ["URSAF", "URSAFF"],
+					"ingénierie": ["INGENIEURIE", "INGENERIE", "INGIENERIE"],
+					"construction": ["CONSTRUCTEUR"],
+					"distribution": ["DISTRIBUTEUR"],
+					"fabrication": ["FABRICANT"],
+					"abattoir": ["ABATOIR", "ABBATOIR", "ABATOIRE", "ABATTOIRE"],
+					"ascenseur": ["ASCENCEUR"],
+					"ascenseurs": ["ASCENCEURS"],
+					"assenseur": ["ASSENCEUR"],
+					"assenseurs": ["ASSENCEURS"],
+					"joaillerie": ["JOAILLIER"],
+					"agroalimentaire": ["AGGROALIMANTAIRE", "AGROALIMANTAIRE"],
+					"alimentaires": ["ALIMANTAIRE"],
+					"alimentaires": ["ALIMANTAIRES"],
+					"agroalimentaires": ["AGGROALIMANTAIRES", "AGROALIMENTAIRES"]
+				}
+			}
+		],
+		"queryParser": {
+			"type": "tokenized",
+			"params": {
+				"language": "French",
+				"pattern": "[\\w.]+",
+				"stemmer": false
+			}
+		},
+		"version": "1",
+		"meloto": true,
+		"stopWords": [
+			"a",
+			"au",
+			"dans",
+			"de",
+			"des",
+			"du",
+			"en",
+			"er",
+			"la",
+			"le",
+			"ou",
+			"sur",
+			"d",
+			"l",
+			"aux",
+			"dans",
+			"un",
+			"une",
+			"pour",
+			"avec",
+			"chez",
+			"par",
+			"les"
+		]
+	},
+	{
+		"responseNames": ["VARIABLE_BAILLEURS_SOCIAUX"],
+		"name": "bailleurs_sociaux-1-5-0",
+		"fields": [
+			{
+				"name": "label",
+				"rules": ["[\\w]+"],
+				"language": "French",
+				"stemmer": false
+			}
+		],
+		"queryParser": {
+			"type": "tokenized",
+			"params": {
+				"language": "French",
+				"pattern": "[\\w.]+",
+				"stemmer": false
+			}
+		},
+		"version": "1"
+	}
 ];
 
 const Template = (args) => {
@@ -142,6 +233,9 @@ const Template = (args) => {
 		return () => clearTimeout(timer);
 	}, [search]);
 
+	useEffect(() => {
+		console.log(results)
+	}, [results]);
 	return (
 		<div
 			style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr' }}
@@ -179,7 +273,7 @@ const Template = (args) => {
 					<h5>{name}</h5>
 					<ul>
 						{results[name].map((row) => (
-							<li key={row.id}>{row.id}</li>
+							<li key={row.label}>{row.label ?? row.id}</li>
 						))}
 					</ul>
 				</div>

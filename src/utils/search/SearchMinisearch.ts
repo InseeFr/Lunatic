@@ -19,9 +19,11 @@ export class SearchMinisearch<T extends IndexEntry>
 	}
 
 	async index(data: Record<string, unknown>[]): Promise<void> {
+		const nameFields = this.info.fields.map(({name})=> name );
 		this.db = new MiniSearch({
-			fields: ['id'],
-			storeFields: ['id'],
+			fields: nameFields,
+			storeFields: nameFields,
+			
 		});
 		this.db.addAll(data);
 	}

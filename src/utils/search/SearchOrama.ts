@@ -18,9 +18,8 @@ export class SearchOrama<T extends IndexEntry> implements SearchInterface<T> {
 
 	async index(data: Record<string, unknown>[]): Promise<void> {
 		this.db = await create({
-			schema: {
-				id: 'string',
-			},
+			schema: this.info.fields.reduce((acc, { name }) => ({...acc,[name]:"string"}), {})
+			,
 			components: {
 				tokenizer: await defaultTokenizer.createTokenizer({
 					language: 'french',

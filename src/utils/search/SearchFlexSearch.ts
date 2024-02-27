@@ -18,7 +18,7 @@ export class SearchFlexSearch<T extends IndexEntry>
 	async index(data: T[]): Promise<void> {
 		// @ts-ignore
 		this._index = new Flexsearch.Document({
-			index: ['id'],
+			index: this.info.fields.map(({name})=> name ),
 			// Enable partial matching
 			tokenize: 'forward',
 		});
