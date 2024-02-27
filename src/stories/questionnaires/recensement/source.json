@@ -2697,7 +2697,7 @@
 							}
 						}
 					},
-					"storeName": "L_DEPNAIS-1-0-0",
+					"storeName": "L_DEPNAIS-1-1-0",
 					"bindingDependencies": [
 						"DPNAI_FRANCE",
 						"NOM",
@@ -12739,7 +12739,7 @@
 	],
 	"suggesters": [
 		{
-			"name": "L_DEPNAIS-1-0-0",
+			"name": "L_DEPNAIS-1-1-0",
 			"fields": [
 				{ "name": "label", "rules": "soft" },
 

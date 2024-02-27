@@ -2,21 +2,67 @@
 	"maxPage": "1",
 	"suggesters": [
 		{
-			"name": "naf-rev2",
+			"responseNames": ["VARIABLE_ACTIVITE"],
+			"name": "L_ACTIVITES-1-0-0",
 			"fields": [
 				{
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
-					"min": 2
-				},
-				{ "name": "id" }
+					"min": 3,
+					"stemmer": false,
+					"synonyms": {
+						"EHPAD": ["EPHAD", "HEPAD", "EPAD", "EPAHD", "EPADH"],
+						"plaquisterie": ["PLACO", "PLACOPLATRE"],
+						"pneumatiques": ["PNEUS"],
+						"prestations": ["PRESTATAIRE"],
+						"echafaudages": ["ECHAFFAUDAGE", "ECHAFFAUDEUR"],
+						"URSSAF": ["URSAF", "URSAFF"],
+						"ascenseurs": ["ASCENCEUR", "ASSENCEUR", "ACSENCEUR"],
+						"briqueterie": ["BRIQUETTERIE"],
+						"joaillerie": ["JOAILLIER"],
+						"agroalimentaire": ["AGGROALIMANTAIRE", "AGROALIMANTAIRE"],
+						"alimentaire": ["ALIMANTAIRE"],
+						"alimentaires": ["ALIMANTAIRES"],
+						"agroalimentaires": ["AGGROALIMANTAIRES", "AGROALIMENTAIRES"]
+					}
+				}
 			],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+" }
+				"params": {
+					"language": "French",
+					"pattern": "[\\w.]+",
+					"min": 3,
+					"stemmer": false
+				}
 			},
-			"version": "1"
+			"version": "1",
+			"stopWords": [
+				"a",
+				"au",
+				"dans",
+				"de",
+				"des",
+				"du",
+				"en",
+				"er",
+				"la",
+				"le",
+				"ou",
+				"sur",
+				"d",
+				"l",
+				"aux",
+				"dans",
+				"un",
+				"une",
+				"pour",
+				"avec",
+				"chez",
+				"par",
+				"les"
+			]
 		}
 	],
 	"components": [
@@ -37,9 +83,9 @@
 				{
 					"id": "communes-2023",
 					"componentType": "Suggester",
-					"label": { "value": "\"NAF\"", "type": "VTL" },
+					"label": { "value": "\"Activité\"", "type": "VTL" },
 					"description": "\"industrie\"",
-					"storeName": "naf-rev2",
+					"storeName": "L_ACTIVITES-1-0-0",
 					"conditionFilter": {
 						"value": "true",
 						"type": "VTL"
