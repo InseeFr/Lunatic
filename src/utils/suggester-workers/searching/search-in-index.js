@@ -1,7 +1,7 @@
-import { CONSTANTES } from '../../store-tools';
+import { MAX_STRING } from '../../../constants/indexedDBStore';
 
 function search(token, index) {
-	const range = IDBKeyRange.bound(token, `${token}${CONSTANTES.MAX_STRING}`);
+	const range = IDBKeyRange.bound(token, `${token}${MAX_STRING}`);
 	return new Promise(function (resolve, reject) {
 		try {
 			index.getAll(range).onsuccess = function (req) {

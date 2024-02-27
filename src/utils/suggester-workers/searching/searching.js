@@ -5,6 +5,11 @@ import searchInIndex from './search-in-index';
 import resolveQueryParser from './resolve-query-parser';
 import computeScore from './compute-score';
 import getOrderingFunction from './order';
+import {
+	STORE_DATA_NAME,
+	STORE_INDEX_NAME,
+	STORE_INFO_NAME,
+} from '../../../constants/indexedDBStore';
 
 function prepare(response) {
 	return response.map(({ suggestion, tokensMap }) => ({
@@ -54,7 +59,7 @@ async function searching(search, { name, version = '1', meloto = true }) {
 	try {
 		if (isValideSearch(search)) {
 			const db = await getDb(name, version);
-			const info = await getEntity(db, CONSTANTES.STORE_INFO_NAME, name);
+			const info = await getEntity(db, STORE_INFO_NAME, name);
 			const { queryParser, max, order } = info;
 			const parser = await resolveQueryParser(queryParser);
 			const tokens = parser(search);
@@ -64,15 +69,12 @@ async function searching(search, { name, version = '1', meloto = true }) {
 				return {
 					results: [],
 					search,
-					tokens
-				}
+					tokens,
+				};
 			}
-			const transaction = db.transaction(
-				CONSTANTES.STORE_DATA_NAME,
-				'readonly'
-			);
-			const store = transaction.objectStore(CONSTANTES.STORE_DATA_NAME);
-			const index = store.index(CONSTANTES.STORE_INDEX_NAME);
+			const transaction = db.transaction(STORE_DATA_NAME, 'readonly');
+			const store = transaction.objectStore(STORE_DATA_NAME);
+			const index = store.index(STORE_INDEX_NAME);
 			const documents = await searchTokens(tokens, index);
 			return {
 				results: prepare(

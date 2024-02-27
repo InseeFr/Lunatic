@@ -39,8 +39,6 @@ function LunaticDeclarations({
 		return null;
 	}
 
-	console.log({ filtered });
-
 	return (
 		<div id={`declarations-${id}-${type}`} className="declarations-lunatic">
 			{filtered.map(({ id, label, declarationType }) => (

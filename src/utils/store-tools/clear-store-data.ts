@@ -1,8 +1,8 @@
 import { clearDb } from '../idb-tools';
-import CONSTANTES from './constantes';
+import IndexedDBStore from '../../constants/indexedDBStore';
 
 async function clear(db: IDBDatabase) {
-	await clearDb(db, CONSTANTES.STORE_DATA_NAME);
+	await clearDb(db, IndexedDBStore.STORE_DATA_NAME);
 }
 
 export default clear;

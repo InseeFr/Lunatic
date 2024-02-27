@@ -4,7 +4,7 @@ import defaultArgTypes from '../utils/default-arg-types';
 import source from './source.json';
 
 const stories = {
-	title: 'Components/Markdown',
+	title: 'Behaviour/Markdown',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };

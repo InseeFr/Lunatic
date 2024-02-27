@@ -1,8 +1,7 @@
 import './custom-lunatic.scss';
 import './orchestrator.scss';
 
-import * as lunatic from '../..';
-
+import { useLunatic, Button, components, ModalControls } from '../..';
 import React, { memo, useCallback, useState, useEffect } from 'react';
 
 import { Logger } from '../../utils/logger';
@@ -10,11 +9,13 @@ import { Overview } from './overview';
 import Waiting from './waiting';
 import { LunaticComponents } from '../..';
 
+const Input = components.Input;
+
 function getStoreInfoRequired() {
 	return {};
 }
 
-function DevOptions({ goToPage, getData, lastReachedPage }) {
+function DevOptions({ goToPage, getData }) {
 	const [toPage, setToPage] = useState(1);
 
 	function handleChange(_, value) {
@@ -24,14 +25,12 @@ function DevOptions({ goToPage, getData, lastReachedPage }) {
 	return (
 		<div className="dev-options">
 			<div style={{ display: 'flex' }}>
-				<lunatic.Button onClick={() => Logger.log(getData(true))}>
-					Get Data
-				</lunatic.Button>
-				<lunatic.Button onClick={() => goToPage({ page: `${toPage}` })}>
+				<Button onClick={() => Logger.log(getData(true))}>Get Data</Button>
+				<Button onClick={() => goToPage({ page: `${toPage}` })}>
 					{`Go to "${toPage}"`}
-				</lunatic.Button>
+				</Button>
 			</div>
-			<lunatic.Input
+			<Input
 				id="page-to-jump"
 				value={toPage}
 				handleChange={handleChange}
@@ -55,8 +54,6 @@ function Pager({
 	pager,
 }) {
 	if (maxPage && maxPage > 1) {
-		const Button = lunatic.Button;
-
 		return (
 			<>
 				<div className="pagination">
@@ -142,7 +139,7 @@ function OrchestratorForStories({
 		getData,
 		Provider,
 		hasPageResponse,
-	} = lunatic.useLunatic(source, data, {
+	} = useLunatic(source, data, {
 		initialPage,
 		features,
 		preferences,
@@ -248,7 +245,7 @@ function OrchestratorForStories({
 					</div>
 					{showOverview && <Overview overview={overview} goToPage={goToPage} />}
 					{errorsForModal && (
-						<lunatic.Modal
+						<ModalControls
 							errors={errorsForModal.currentErrors}
 							goNext={skip}
 							onClose={closeModal}

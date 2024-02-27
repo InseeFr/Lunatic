@@ -20,6 +20,7 @@ export function CheckboxGroup({
 	handleChange,
 	errors,
 	label,
+	description,
 }: LunaticComponentProps<'CheckboxGroup'>) {
 	const options = responses.map(({ label, response, description }) => {
 		const { name } = response;
@@ -38,6 +39,7 @@ export function CheckboxGroup({
 	return (
 		<CustomCheckboxGroup
 			id={id}
+			description={description}
 			options={options}
 			label={label}
 			errors={getComponentErrors(errors, id)}

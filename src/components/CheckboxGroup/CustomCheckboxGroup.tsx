@@ -5,6 +5,7 @@ import { customizedComponent } from '../shared/HOC/customizedComponent';
 import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { Fieldset } from '../shared/Fieldset/Fieldset';
 import { CheckboxOption } from '../shared/Checkbox/CheckboxOption';
+import { getShortcutKey } from '../shared/Checkbox/getShortcutKey';
 
 type Props = {
 	options: CheckboxGroupOption[];
@@ -17,18 +18,26 @@ type Props = {
 
 export const CustomCheckboxGroup = customizedComponent<Props>(
 	'CheckboxGroup',
-	({ options, id, label, description, errors }: Props) => {
+	({ options, id, label, description, errors, shortcut }: Props) => {
 		return (
 			<Fieldset
 				className="lunatic-checkbox-group"
 				legend={label}
 				description={description}
 			>
-				{options.map((option) => {
+				{options.map((option, index) => {
 					const checkboxId = `lunatic-checkbox-${id}-${option.name}`;
 					return (
 						<div className="lunatic-checkbox-group-option" key={checkboxId}>
-							<CheckboxOption id={checkboxId} {...option} />
+							<CheckboxOption
+								{...option}
+								shortcut={shortcut}
+								invalid={!!errors}
+								id={checkboxId}
+								codeModality={
+									shortcut ? getShortcutKey(index, options.length) : undefined
+								}
+							/>
 						</div>
 					);
 				})}

@@ -5,7 +5,7 @@ import sourcePaginated from './source-paginated.json';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Components/Loop/Loop',
+	title: 'Components/Loop',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };

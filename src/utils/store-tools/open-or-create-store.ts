@@ -1,6 +1,10 @@
 /* eslint-disable no-restricted-globals */
-import CONSTANTE from './constantes';
 import getIDB from '../idb-tools/get-idb';
+import {
+	STORE_DATA_NAME,
+	STORE_INDEX_NAME,
+	STORE_INFO_NAME,
+} from '../../constants/indexedDBStore';
 
 function openStorage(name: string, idbVersion = 1): Promise<IDBDatabase> {
 	return new Promise(function (resolve, reject) {
@@ -15,13 +19,13 @@ function openStorage(name: string, idbVersion = 1): Promise<IDBDatabase> {
 		request.onupgradeneeded = function (e) {
 			doIt = false;
 			db = this.result;
-			const store = db.createObjectStore(CONSTANTE.STORE_DATA_NAME, {
+			const store = db.createObjectStore(STORE_DATA_NAME, {
 				keyPath: 'id',
 			});
-			db.createObjectStore(CONSTANTE.STORE_INFO_NAME, {
+			db.createObjectStore(STORE_INFO_NAME, {
 				keyPath: 'name',
 			});
-			store.createIndex(CONSTANTE.STORE_INDEX_NAME, 'tokens', {
+			store.createIndex(STORE_INDEX_NAME, 'tokens', {
 				multiEntry: true,
 			});
 

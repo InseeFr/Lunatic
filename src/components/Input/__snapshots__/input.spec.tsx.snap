@@ -1,0 +1,36 @@
+// Vitest Snapshot v1
+
+exports[`Input > renders without crashing 1`] = `
+<div>
+  <div
+    class="lunatic-input"
+  >
+    <input
+      aria-invalid="false"
+      aria-labelledby="label-input"
+      autocomplete="off"
+      id="input"
+      type="text"
+      value="input"
+    />
+  </div>
+</div>
+`;
+
+exports[`Input > should handle readOnly 1`] = `
+<div>
+  <div
+    class="lunatic-input"
+  >
+    <input
+      aria-invalid="false"
+      aria-labelledby="label-number"
+      autocomplete="off"
+      id="number"
+      readonly=""
+      type="text"
+      value="toto"
+    />
+  </div>
+</div>
+`;

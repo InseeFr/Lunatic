@@ -7,7 +7,7 @@ import { sleep } from '../../../tests/utils/timer';
 import sourceWithHeader from './source-with-header.json';
 
 const stories = {
-	title: 'Components/Loop/RosterForLoop',
+	title: 'Components/RosterForLoop',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };

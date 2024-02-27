@@ -1,4 +1,4 @@
-export * as CONSTANTES from './constantes';
+export * as CONSTANTES from '../../constants/indexedDBStore';
 export { default as openOrCreateStore } from './open-or-create-store';
 export { default as clearStoreData } from './clear-store-data';
 export { default as clearStoreInfo } from './clear-store-info';

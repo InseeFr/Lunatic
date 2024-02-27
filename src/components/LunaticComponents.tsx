@@ -12,6 +12,7 @@ import { useAutoFocus } from '../hooks/use-auto-focus';
 import { hasComponentType } from '../use-lunatic/commons/component';
 import { ComponentWrapper } from './shared/ComponentWrapper';
 import { library } from './library';
+import { ErrorBoundary } from 'react-error-boundary';
 
 type Props<T extends FilledLunaticComponentProps, V = undefined> = {
 	// List of components to display (coming from getComponents)
@@ -41,7 +42,7 @@ type Props<T extends FilledLunaticComponentProps, V = undefined> = {
  */
 export function LunaticComponents<
 	T extends FilledLunaticComponentProps,
-	V = undefined
+	V = undefined,
 >({
 	components,
 	autoFocusKey,
@@ -135,9 +136,20 @@ function LunaticComponent(props: ItemProps) {
 	// Component is too dynamic to be typed
 	const Component = (library as any)[props.componentType];
 	return (
-		<ComponentWrapper {...(props as any)}>
-			<Component {...props} />
-		</ComponentWrapper>
+		<ErrorBoundary FallbackComponent={LunaticError}>
+			<ComponentWrapper {...(props as any)}>
+				<Component {...props} />
+			</ComponentWrapper>
+		</ErrorBoundary>
+	);
+}
+
+function LunaticError({ error }: { error: { toString: () => string } }) {
+	console.error(error);
+	return (
+		<p style={{ color: 'red' }}>
+			Cannot render this component : {error.toString()}
+		</p>
 	);
 }
 

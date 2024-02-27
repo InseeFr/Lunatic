@@ -2,8 +2,9 @@
  * We should remove this export to avoid `import * as lunatic from "@inseefr/lunatic"` in orchestrators
  *  but this is a breaking change
  */
-export * from './components/library';
-export * as components from './components/library';
+export { library as components } from './components/library';
+export { ModalControls } from './components/shared/ModalControls/ModalControls';
+export { Button } from './components/shared/Button/Button';
 
 export { LunaticComponents } from './components/LunaticComponents';
 export { default as useLunatic } from './use-lunatic';

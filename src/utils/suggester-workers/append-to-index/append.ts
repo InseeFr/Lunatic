@@ -4,6 +4,7 @@ import { openDb, idbBulkInsert } from '../../idb-tools';
 import MESSAGES from './store-messages';
 // @ts-ignore
 import prepareEntities from './prepare-entities';
+import { STORE_DATA_NAME } from '../../../constants/indexedDBStore';
 
 async function append(
 	storeInfo: { name: string; stopWords?: string[]; fields: string[] },
@@ -16,7 +17,7 @@ async function append(
 		const prepared = prepareEntities(entities, { fields, stopWords }, log);
 		const db = await openDb(name, version);
 		log({ message: MESSAGES.startInsertBatch });
-		await idbBulkInsert(db, CONSTANTES.STORE_DATA_NAME, function (args) {
+		await idbBulkInsert(db, STORE_DATA_NAME, function (args) {
 			const { message } = args;
 			log({ message });
 		})(prepared);

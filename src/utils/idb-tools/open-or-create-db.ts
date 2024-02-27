@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import CONSTANTE from '../store-tools/constantes';
+import CONSTANTE from '../../constants/indexedDBStore';
 import createDbOpener from './create-db-opener';
 
 function onUpgradeNeeded(
@@ -14,13 +14,13 @@ function onUpgradeNeeded(
 			// Block success event!
 		};
 		const db = e.target.result;
-		const store = db.createObjectStore(CONSTANTE.STORE_DATA_NAME, {
+		const store = db.createObjectStore(STORE_DATA_NAME, {
 			keyPath: 'id',
 		});
-		db.createObjectStore(CONSTANTE.STORE_INFO_NAME, {
+		db.createObjectStore(STORE_INFO_NAME, {
 			keyPath: 'name',
 		});
-		store.createIndex(CONSTANTE.STORE_INDEX_NAME, 'tokens', {
+		store.createIndex(STORE_INDEX_NAME, 'tokens', {
 			multiEntry: true,
 		});
 

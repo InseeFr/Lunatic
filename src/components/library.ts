@@ -17,6 +17,11 @@ import { ComponentSet } from './ComponentSet/ComponentSet';
 import { InputNumber } from './InputNumber/InputNumber';
 import { Duration } from './Duration/Duration';
 import { Loop } from './Loop/Loop';
+import { Dropdown } from './Dropdown/Dropdown';
+import { Roundabout } from './Roundabout/Roundabout';
+import { PairwiseLinks } from './PairwiseLinks/PairwiseLinks';
+import { CheckboxOne } from './CheckboxOne/CheckboxOne';
+import { Suggester } from './Suggester/Suggester';
 
 // List of all the "componentType"
 export const library = {
@@ -28,6 +33,7 @@ export const library = {
 	InputNumber: InputNumber,
 	Datepicker: Datepicker,
 	CheckboxGroup: CheckboxGroup,
+	CheckboxOne: CheckboxOne,
 	CheckboxBoolean: CheckboxBoolean,
 	Radio: Radio,
 	Input: Input,
@@ -37,10 +43,10 @@ export const library = {
 	Question: Question,
 	ComponentSet: ComponentSet,
 	FilterDescription: FilterDescription,
-	// Dropdown: Dropdown,
-	// PairwiseLinks: PairwiseLinks,
-	// Roundabout: Roundabout,
-	// Suggester: Suggester
+	Dropdown: Dropdown,
+	PairwiseLinks: PairwiseLinks,
+	Roundabout: Roundabout,
+	Suggester: Suggester,
 } satisfies {
 	[Property in LunaticComponentType]: ComponentType<
 		LunaticComponentProps<Property>

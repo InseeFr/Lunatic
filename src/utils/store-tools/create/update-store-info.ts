@@ -1,13 +1,13 @@
-import CONSTANTES from '../constantes';
+import IndexedDBStore from '../../../constants/indexedDBStore';
 
 function updateStoreInfo(db: IDBDatabase, storeInfo: any) {
 	return new Promise(function (resolve, reject) {
 		try {
 			const transaction = db.transaction(
-				CONSTANTES.STORE_INFO_NAME,
+				IndexedDBStore.STORE_INFO_NAME,
 				'readwrite'
 			);
-			const store = transaction.objectStore(CONSTANTES.STORE_INFO_NAME);
+			const store = transaction.objectStore(IndexedDBStore.STORE_INFO_NAME);
 			const request = store.add(storeInfo);
 
 			request.onsuccess = function () {

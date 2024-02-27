@@ -7,7 +7,7 @@ import {
 	getStoreCount,
 	useStoreIndex,
 } from '../../utils/store-tools';
-import { CrossIcon, LoadIcon } from '../commons/icons';
+import { CrossIcon, LoadIcon } from '../shared/Icons';
 import Loader from './loader';
 
 type Props = {

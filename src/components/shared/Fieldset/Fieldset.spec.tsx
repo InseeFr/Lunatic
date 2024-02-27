@@ -9,15 +9,6 @@ describe('Fieldset', () => {
 		expect(legendElement).toBeInTheDocument();
 	});
 
-	it('renders the description', () => {
-		const description = [
-			{ label: 'test label 1', declarationType: 'test-type-1' },
-		];
-		const { getByText } = render(<Fieldset description={description} />);
-		const descriptionElement = getByText(description[0].label); // find the label text
-		expect(descriptionElement).toBeInTheDocument();
-	});
-
 	it('renders the children', () => {
 		const childText = 'Example child text';
 		const { getByText } = render(

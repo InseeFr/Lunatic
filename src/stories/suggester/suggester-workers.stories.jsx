@@ -6,9 +6,13 @@ import { CONSTANTES } from '../../utils/store-tools';
 import append from '../../utils/suggester-workers/append-to-index';
 import searching from '../../utils/suggester-workers/searching';
 import { Logger } from '../../utils/logger';
+import {
+	STORE_DATA_NAME,
+	STORE_INFO_NAME,
+} from '../../constants/indexedDBStore';
 
 const stories = {
-	title: 'Components/Suggester-workers',
+	title: 'Behaviour/Suggester',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };
@@ -110,11 +114,11 @@ async function loadOne(info, fetchIt) {
 	const { name } = info;
 	const rubriques = await fetchIt();
 	const db = await openOnCreateDb(name);
-	await clearDb(db, CONSTANTES.STORE_DATA_NAME);
-	await clearDb(db, CONSTANTES.STORE_INFO_NAME);
+	await clearDb(db, STORE_DATA_NAME);
+	await clearDb(db, STORE_INFO_NAME);
 	Logger.log({ info, rubriques });
 	await append(info, '1', rubriques, Logger.log);
-	await insertEntity(db, CONSTANTES.STORE_INFO_NAME, info);
+	await insertEntity(db, STORE_INFO_NAME, info);
 }
 
 function Search({ storeInfo, version = '1', max = 30, defaultValue = '' }) {

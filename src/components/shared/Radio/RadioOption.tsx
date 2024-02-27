@@ -3,14 +3,14 @@ import classnames from 'classnames';
 import { useCallback, useEffect, useRef, type ReactNode } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { voidFunction } from '../../../utils/function';
-import {
-	CheckboxChecked,
-	CheckboxUnchecked,
-	RadioChecked,
-	RadioUnchecked,
-} from '../../commons/icons';
 import { Label } from '../Label/Label';
 import { customizedComponent } from '../HOC/customizedComponent';
+import {
+	CheckboxCheckedIcon,
+	CheckboxUncheckedIcon,
+	RadioCheckedIcon,
+	RadioUncheckedIcon,
+} from '../Icons';
 
 export type Props = {
 	id: string;
@@ -132,14 +132,14 @@ function LunaticRadioOption({
 function getIcon(checked?: boolean, checkboxStyle?: boolean) {
 	if (checked) {
 		if (checkboxStyle) {
-			return CheckboxChecked;
+			return CheckboxCheckedIcon;
 		}
-		return RadioChecked;
+		return RadioCheckedIcon;
 	}
 	if (checkboxStyle) {
-		return CheckboxUnchecked;
+		return CheckboxUncheckedIcon;
 	}
-	return RadioUnchecked;
+	return RadioUncheckedIcon;
 }
 
 export const RadioOption = customizedComponent(

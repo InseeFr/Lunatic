@@ -10,7 +10,7 @@ import type { SuggesterType } from '../../use-lunatic/type-source';
 import { voidFunction } from '../../utils/function';
 import Dragger from '../commons/components/dragger';
 import { IsNetwork } from '../commons/components/is-network';
-import { OnDragIcon } from '../commons/icons';
+import { OnDragIcon } from '../shared/Icons';
 import LoaderRow from './loader-row';
 import { ActionTool, Tools } from './tools';
 import WidgetContainer from './widget-container';
@@ -49,14 +49,11 @@ function SuggesterLoaderWidget({
 	useEffect(
 		function () {
 			if (suggesters) {
-				const str = suggesters.reduce(
-					function (current, storeInfo) {
-						const { name } = storeInfo;
+				const str = suggesters.reduce(function (current, storeInfo) {
+					const { name } = storeInfo;
 
-						return { ...current, [name]: { storeInfo, ...getStoreInfo(name) } };
-					},
-					{} as typeof stores
-				);
+					return { ...current, [name]: { storeInfo, ...getStoreInfo(name) } };
+				}, {} as typeof stores);
 
 				setStores(str);
 			}

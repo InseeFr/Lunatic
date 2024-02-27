@@ -1,6 +1,6 @@
 import { type ReactNode, useCallback } from 'react';
 import classnames from 'classnames';
-import { CheckboxChecked, CheckboxUnchecked } from '../../commons/icons';
+import { CheckboxCheckedIcon, CheckboxUncheckedIcon } from '../Icons';
 import './CheckboxOption.scss';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import type { LunaticBaseProps } from '../../type';
@@ -47,7 +47,7 @@ function LunaticCheckboxOption({
 		[onClickOption]
 	);
 
-	const Icon = checked ? CheckboxChecked : CheckboxUnchecked;
+	const Icon = checked ? CheckboxCheckedIcon : CheckboxUncheckedIcon;
 	const labelId = `label-${id}`;
 
 	return (

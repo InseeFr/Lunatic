@@ -4,6 +4,7 @@ import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
 import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { Declarations } from '../shared/Declarations/Declarations';
 
 function LunaticTextarea({
 	id,
@@ -19,6 +20,7 @@ function LunaticTextarea({
 	placeHolder,
 	readOnly,
 	required,
+	declarations,
 }: LunaticComponentProps<'Textarea'>) {
 	const labelId = `label-${id}`;
 	const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
@@ -30,6 +32,11 @@ function LunaticTextarea({
 			<Label htmlFor={id} id={labelId} description={description}>
 				{label}
 			</Label>
+			<Declarations
+				type="AFTER_QUESTION_TEXT"
+				declarations={declarations}
+				id={id}
+			/>
 			<textarea
 				required={required}
 				id={id}

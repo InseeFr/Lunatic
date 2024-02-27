@@ -2,7 +2,7 @@
 	"maxPage": "5",
 	"components": [
 		{
-			"id": "component-set",
+			"id": "loop",
 			"componentType": "Loop",
 			"page": "1",
 			"conditionFilter": { "value": "true", "type": "VTL" },
