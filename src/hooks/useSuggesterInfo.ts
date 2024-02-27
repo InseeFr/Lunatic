@@ -1,8 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { getEntity, openDb } from '../utils/idb-tools';
 import type { SuggesterType } from '../use-lunatic/type-source';
 import { STORE_INFO_NAME } from '../constants/indexedDBStore';
 
+/**
+ * Retrieves suggester info from indexedDB
+ */
 export function useSuggesterInfo(storeName: string, version: string) {
 	const [infos, setInfos] = useState<SuggesterType>();
 	const [state, setState] = useState<'Loading' | 'Ready' | 'Error'>('Loading');

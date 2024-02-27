@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import MdLabel from './md-label';
+import MdLabel from './MDLabel';
 
 function getStringHtmlWithoutId(htmlElement: HTMLElement) {
 	return htmlElement.outerHTML.replace(/id="[^"]+"/g, '');

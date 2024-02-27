@@ -39,6 +39,14 @@ import { ComboboxOption } from './shared/Combobox/Panel/ComboboxOption';
 import type { ComboboxPanelContainer } from './shared/Combobox/Panel/ComboboxPanelContainer';
 import type { ComboboxClearButton } from './shared/Combobox/Selection/ComboboxClearButton';
 import type { ComboboxLabelSelection } from './shared/Combobox/Selection/ComboboxLabelSelection';
+import { SuggesterNotification } from './Suggester/SuggesterNotification';
+import type { Radio } from './Radio/Radio';
+import type { ComboboxInput } from './shared/Combobox/Selection/ComboboxInput';
+import type { FilterDescription } from './FilterDescription/FilterDescription';
+import type { CustomSuggester } from './Suggester/CustomSuggester';
+import type { CustomCheckboxGroup } from './CheckboxGroup/CustomCheckboxGroup';
+import { ComponentSet, ComponentSetItem } from './ComponentSet/ComponentSet';
+import type { RouterLink } from './shared/MDLabel/RouterLink';
 
 /**
  * Contains the type of every customizable component
@@ -57,21 +65,28 @@ export type CustomizedComponent = {
 	BlockForLoop: typeof Loop;
 	RosterForLoop: typeof RosterForLoop;
 	Dropdown: typeof Dropdown;
+	LunaticRadio: typeof Radio;
+	FilterDescription: typeof FilterDescription;
+	Suggester: typeof CustomSuggester;
+	ComponentSet: typeof ComponentSet;
+	ComponentSetItem: typeof ComponentSetItem;
 
 	// Checkbox
-	Radio: typeof RadioGroup;
 	CheckboxBoolean: typeof CheckboxBoolean;
+	CheckboxGroup: typeof CustomCheckboxGroup;
 	CheckboxOne: typeof CheckboxOne;
 	CheckboxOption: typeof CheckboxOption;
+	Radio: typeof RadioGroup;
 	RadioGroup: typeof RadioGroup;
 	RadioOption: typeof RadioOption;
 
 	// ComboBox
-	ComboBox: typeof Combobox;
-	ComboBoxContainer: typeof ComboboxContainer; // Top level wrapper
-	ComboBoxContentBox: typeof ComboboxContentBox; // Wrapper around the field
-	ComboBoxPanelContainer: typeof ComboboxPanelContainer; // ul element
-	ComboBoxOption: typeof ComboboxOption; // option (inside the li)
+	Combobox: typeof Combobox;
+	ComboboxContainer: typeof ComboboxContainer; // Top level wrapper
+	ComboboxContentBox: typeof ComboboxContentBox; // Wrapper around the field
+	ComboboxPanelContainer: typeof ComboboxPanelContainer; // ul element
+	ComboboxOption: typeof ComboboxOption; // option (inside the li)
+	ComboboxInput: typeof ComboboxInput; // option (inside the li)
 	ComboboxClearButton: typeof ComboboxClearButton;
 	ComboboxLabelSelection: typeof ComboboxLabelSelection;
 
@@ -83,6 +98,9 @@ export type CustomizedComponent = {
 	RoundaboutItContainer: typeof RoundaboutItContainer;
 	RoundaboutItButton: typeof RoundaboutItButton;
 	RoundaboutPending: typeof RoundaboutPending;
+
+	// Suggester
+	SuggesterNotification: typeof SuggesterNotification;
 
 	// Shared
 	Button: typeof Button;
@@ -96,4 +114,6 @@ export type CustomizedComponent = {
 	Table: typeof Table;
 	Thead: typeof Thead;
 	Fieldset: typeof Fieldset;
+	Notification: typeof Notification;
+	RouterLink: typeof RouterLink;
 };

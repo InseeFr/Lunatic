@@ -1,5 +1,5 @@
 import './Sequence.scss';
-import type { LunaticBaseProps, LunaticComponentProps } from '../type';
+import type { LunaticComponentProps } from '../type';
 import { customizedComponent } from '../shared/HOC/customizedComponent';
 import { LabelDescription } from '../shared/LabelDescription';
 import { Declarations } from '../shared/Declarations/Declarations';

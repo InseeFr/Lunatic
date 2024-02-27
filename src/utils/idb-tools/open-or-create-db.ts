@@ -1,5 +1,9 @@
 /* eslint-disable no-restricted-globals */
-import CONSTANTE from '../../constants/indexedDBStore';
+import {
+	STORE_DATA_NAME,
+	STORE_INDEX_NAME,
+	STORE_INFO_NAME,
+} from '../../constants/indexedDBStore';
 import createDbOpener from './create-db-opener';
 
 function onUpgradeNeeded(

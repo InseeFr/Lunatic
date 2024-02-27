@@ -1,11 +1,11 @@
 import { Fragment, useState, type PropsWithChildren } from 'react';
 import { Tooltip } from 'react-tooltip';
 import ReactMarkdown from 'react-markdown';
-import RouterLink from './router-link';
-import { generateUniqueId } from './generateUniqueId';
+import { RouterLink } from './RouterLink';
 
 type Props = PropsWithChildren<{ href: string; title: string }>;
-const Link = (props: Props) => {
+
+export const MDLabelLink = (props: Props) => {
 	const {
 		href,
 		children,
@@ -50,4 +50,8 @@ const Link = (props: Props) => {
 	);
 };
 
-export default Link;
+export function generateUniqueId(): string {
+	const timestamp = Date.now().toString(36);
+	const randomPart = Math.random().toString(36).substring(2, 8);
+	return `${timestamp}-${randomPart}`;
+}

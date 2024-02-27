@@ -6,7 +6,7 @@ import type { LunaticState } from '../type';
 import { reduceOverviewOnInit } from './overview/overview-on-init';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { MD, VTL } from '../../utils/constants';
-import MdLabel from '../../components/commons/components/md-label';
+import { MDLabel } from '../../components/shared/MDLabel/MDLabel';
 import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
 import { forceInt } from '../../utils/number';
 
@@ -108,7 +108,7 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 				expressionType.includes(MD) &&
 				typeof result === 'string'
 			) {
-				return <MdLabel expression={result} />;
+				return <MDLabel expression={result} />;
 			}
 			return result as any;
 		} catch (e) {

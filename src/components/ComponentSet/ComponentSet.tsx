@@ -19,7 +19,7 @@ export function ComponentSet({
 				components={components}
 				// Component props take precedence (we don't want to override value for instance)
 				componentProps={(c) => ({ ...props, ...c })}
-				wrapper={(p) => <ComponentSetItemWrapper {...p} />}
+				wrapper={(p) => <ComponentSetItem {...p} />}
 			/>
 		</ComponentSetWrapper>
 	);
@@ -49,7 +49,7 @@ const ComponentSetWrapper = customizedComponent<ComponentSetWrapperProps>(
 	}
 );
 
-const ComponentSetItemWrapper = customizedComponent<PropsWithChildren>(
+export const ComponentSetItem = customizedComponent<PropsWithChildren>(
 	'ComponentSetItem',
 	({ children }) => {
 		return <div className="lunatic-component-set-component">{children}</div>;

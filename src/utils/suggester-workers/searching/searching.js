@@ -1,5 +1,4 @@
 import getDb from './get-db';
-import { CONSTANTES } from '../../store-tools';
 import { getEntity } from '../../idb-tools';
 import searchInIndex from './search-in-index';
 import resolveQueryParser from './resolve-query-parser';

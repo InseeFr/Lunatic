@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import Orchestrator from '../utils/orchestrator';
 import defaultArgTypes from '../utils/default-arg-types';
 import { clearDb, openOnCreateDb, insertEntity } from '../../utils/idb-tools';
-import { CONSTANTES } from '../../utils/store-tools';
 import append from '../../utils/suggester-workers/append-to-index';
 import searching from '../../utils/suggester-workers/searching';
 import { Logger } from '../../utils/logger';

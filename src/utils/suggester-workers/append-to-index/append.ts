@@ -1,4 +1,3 @@
-import { CONSTANTES } from '../../store-tools';
 import { openDb, idbBulkInsert } from '../../idb-tools';
 // @ts-ignore
 import MESSAGES from './store-messages';
