@@ -41,11 +41,6 @@ export function isPageEmpty(
 		return true;
 	});
 
-	// When moving backward, modal only pages should be skipped
-	if (isMovingBackward && visibleComponents.length === 1) {
-		return true;
-	}
-
 	// No components are displayable on this page
 	if (visibleComponents.length === 0) {
 		return true;
