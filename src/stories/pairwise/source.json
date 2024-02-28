@@ -248,13 +248,17 @@
 			"variableType": "CALCULATED",
 			"name": "xAxis",
 			"expression": { "value": "PRENOM", "type": "VTL" },
-			"bindingDependencies": ["PRENOM"]
+			"bindingDependencies": ["PRENOM"],
+			"shapeFrom": "PRENOM",
+			"inFilter": "false"
 		},
 		{
 			"variableType": "CALCULATED",
 			"name": "yAxis",
 			"expression": { "value": "PRENOM", "type": "VTL" },
-			"bindingDependencies": ["PRENOM"]
+			"bindingDependencies": ["PRENOM"],
+			"shapeFrom": "PRENOM",
+			"inFilter": "false"
 		}
 	],
 	"resizing": {
