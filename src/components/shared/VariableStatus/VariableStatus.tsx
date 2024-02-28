@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import React, { type PropsWithChildren, useState } from 'react';
+import { type PropsWithChildren, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
-import { editedImg, forcedImg } from './img';
-import './variable-status.scss';
+import editedImg from './icons/edited.png';
+import forcedImg from './icons/forced.png';
+import './VariableStatus.scss';
 
 const img = { editedImg, forcedImg } as Record<string, string>;
 
@@ -10,15 +10,11 @@ type Props = PropsWithChildren<{
 	id?: string;
 }>;
 
-const VariableStatus = ({ id = '', children }: Props) => {
+export const VariableStatus = ({ id = '', children }: Props) => {
 	const [tooltipElements] = useState(() => ({
 		imgName: 'editedImg',
 		content: [{ key: 'TODO', value: ' coming soon' }],
 	}));
-
-	// useEffect(() => {
-	// 	setTooltipElements({ imgName: 'edited', content: 'toto' });
-	// }, [response]);
 
 	const { content, imgName } = tooltipElements;
 
@@ -51,13 +47,3 @@ const VariableStatus = ({ id = '', children }: Props) => {
 		</div>
 	);
 };
-
-VariableStatus.defaultProps = {
-	response: {},
-};
-
-VariableStatus.propTypes = {
-	id: PropTypes.string,
-};
-
-export default VariableStatus;

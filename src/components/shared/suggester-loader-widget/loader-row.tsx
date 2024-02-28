@@ -1,13 +1,13 @@
 import classnames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
-import type { SuggesterType } from '../../use-lunatic/type-source';
-import { Logger } from '../../utils/logger';
+import type { SuggesterType } from '../../../use-lunatic/type-source';
+import { Logger } from '../../../utils/logger';
 import {
 	clearStoreData,
 	getStoreCount,
 	useStoreIndex,
-} from '../../utils/store-tools';
-import { CrossIcon, LoadIcon } from '../shared/Icons';
+} from '../../../utils/store-tools';
+import { CrossIcon, LoadIcon } from '../Icons';
 import Loader from './loader';
 
 type Props = {

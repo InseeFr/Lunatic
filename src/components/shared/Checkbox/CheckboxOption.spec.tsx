@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
-import CheckboxOption from './CheckboxOption';
+import { CheckboxOption } from './CheckboxOption';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('CheckboxOption', () => {

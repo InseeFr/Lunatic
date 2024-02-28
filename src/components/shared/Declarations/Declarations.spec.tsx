@@ -1,4 +1,4 @@
-import Declarations from './Declarations';
+import { Declarations } from './Declarations';
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import type { LunaticBaseProps } from '../../type';
@@ -37,10 +37,10 @@ describe('Declarations component', () => {
 			</div>
 		);
 		const declarationsElement = getByTestId(
-			'Declarations-1-AFTER_QUESTION_TEXT'
+			'declarations-1-AFTER_QUESTION_TEXT'
 		);
 		expect(declarationsElement.nextElementSibling).toHaveClass(
-			'Declarations-lunatic'
+			'declarations-lunatic'
 		);
 		const declarationElement = getByText('Declaration 1');
 		expect(declarationElement).toBeInTheDocument();
@@ -68,7 +68,7 @@ describe('Declarations component', () => {
 			</div>
 		);
 		const declarationsElement = queryByTestId(
-			'Declarations-1-BEFORE_QUESTION_TEXT'
+			'declarations-1-BEFORE_QUESTION_TEXT'
 		)!;
 		expect(declarationsElement.nextElementSibling).toBeNull();
 	});
@@ -80,7 +80,7 @@ describe('Declarations component', () => {
 				<Declarations id="1" type="DETACHABLE" declarations={[]} />
 			</div>
 		);
-		const declarationsElement = queryByTestId('Declarations-1-DETACHABLE')!;
+		const declarationsElement = queryByTestId('declarations-1-DETACHABLE')!;
 		expect(declarationsElement.nextElementSibling).toBeNull();
 	});
 });

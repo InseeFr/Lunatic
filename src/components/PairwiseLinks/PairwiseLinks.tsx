@@ -1,7 +1,6 @@
-import NothingToDisplay from '../commons/components/nothing-to-display';
 import type { LunaticComponentProps } from '../type';
 import { times } from '../../utils/array';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { LunaticComponents } from '../LunaticComponents';
 import { Declarations } from '../shared/Declarations/Declarations';
 
@@ -15,7 +14,7 @@ export const PairwiseLinks = ({
 	const nbRows = xAxisIterations * yAxisIterations;
 
 	if (nbRows <= 1) {
-		return <NothingToDisplay />;
+		return <div>Nothing to display!</div>;
 	}
 
 	return (

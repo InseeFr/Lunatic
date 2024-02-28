@@ -13,7 +13,7 @@ function LunaticInputNumber({
 	handleChange = voidFunction,
 	disabled = false,
 	readOnly = false,
-	max,
+	max = 1_000_000,
 	decimals = 0,
 	unit,
 	label,

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import type { SuggesterType } from '../../use-lunatic/type-source';
-import { voidFunction } from '../../utils/function';
-import { clearStoreData } from '../../utils/store-tools';
-import { createAppendTask } from '../../utils/suggester-workers/append-to-index';
+import type { SuggesterType } from '../../../use-lunatic/type-source';
+import { voidFunction } from '../../../utils/function';
+import { clearStoreData } from '../../../utils/store-tools';
+import { createAppendTask } from '../../../utils/suggester-workers/append-to-index';
 import Progress from './progress';
 
 type Props = {

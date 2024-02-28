@@ -42,11 +42,7 @@ export function isPageEmpty(
 	});
 
 	// When moving backward, modal only pages should be skipped
-	if (
-		isMovingBackward &&
-		visibleComponents.length === 1 &&
-		visibleComponents[0].componentType === 'ConfirmationModal'
-	) {
+	if (isMovingBackward && visibleComponents.length === 1) {
 		return true;
 	}
 

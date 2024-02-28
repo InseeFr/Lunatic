@@ -95,9 +95,6 @@ export type ComponentType =
 	| (ComponentTypeBase & {
 			componentType: 'CheckboxOne';
 	  })
-	| (ComponentTypeBase & {
-			componentType: 'ConfirmationModal';
-	  })
 	| (ComponentTypeBase & ComponentComponentSetType)
 	| (ComponentTypeBase & ComponentQuestionType);
 

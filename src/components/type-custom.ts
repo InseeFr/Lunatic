@@ -47,6 +47,7 @@ import type { CustomSuggester } from './Suggester/CustomSuggester';
 import type { CustomCheckboxGroup } from './CheckboxGroup/CustomCheckboxGroup';
 import { ComponentSet, ComponentSetItem } from './ComponentSet/ComponentSet';
 import type { RouterLink } from './shared/MDLabel/RouterLink';
+import { SummaryResponses, type SummaryTitle } from './Summary/Summary';
 
 /**
  * Contains the type of every customizable component
@@ -101,6 +102,10 @@ export type CustomizedComponent = {
 
 	// Suggester
 	SuggesterNotification: typeof SuggesterNotification;
+
+	// Summary
+	SummaryTitle: typeof SummaryTitle;
+	SummaryResponses: typeof SummaryResponses;
 
 	// Shared
 	Button: typeof Button;

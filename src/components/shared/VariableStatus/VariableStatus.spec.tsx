@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import VariableStatus from './variable-status';
+import { VariableStatus } from './VariableStatus';
 
 describe('VariableStatus', () => {
 	it('renders correctly with default props', () => {

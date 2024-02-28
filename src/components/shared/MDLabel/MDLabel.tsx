@@ -28,7 +28,7 @@ const renderComponentsFor = (
 		br: 'br',
 		a: (props) => (
 			<MDLabelLink
-				{...({ ...extraProps, ...props } as ComponentProps<typeof Link>)}
+				{...({ ...extraProps, ...props } as ComponentProps<typeof MDLabelLink>)}
 			/>
 		),
 	} satisfies ComponentProps<typeof ReactMarkdown>['components'];

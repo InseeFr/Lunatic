@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import MdLabel from './MDLabel';
+import { MDLabel } from './MDLabel';
 
 function getStringHtmlWithoutId(htmlElement: HTMLElement) {
 	return htmlElement.outerHTML.replace(/id="[^"]+"/g, '');
@@ -9,7 +9,7 @@ function getStringHtmlWithoutId(htmlElement: HTMLElement) {
 
 describe('md-label', () => {
 	it('should handle simple text', () => {
-		const obj = render(<MdLabel expression="This **is** a simple test" />);
+		const obj = render(<MDLabel expression="This **is** a simple test" />);
 		return expect(obj.container).toMatchInlineSnapshot(`
 			<div>
 			  This 
@@ -22,7 +22,7 @@ describe('md-label', () => {
 	});
 	it('should handle line break', () => {
 		const obj = render(
-			<MdLabel expression={'This **is** a simple test\non multiple line'} />
+			<MDLabel expression={'This **is** a simple test\non multiple line'} />
 		);
 		return expect(obj.container).toMatchInlineSnapshot(`
 			<div>
@@ -37,7 +37,7 @@ describe('md-label', () => {
 	});
 	it('should handle paragraphs break', () => {
 		const obj = render(
-			<MdLabel
+			<MDLabel
 				expression={'This **is** a simple test\n\nwith multiple paragraphs'}
 			/>
 		);
@@ -60,7 +60,7 @@ describe('md-label', () => {
 	});
 	it('should render external link', () => {
 		const obj = render(
-			<MdLabel
+			<MDLabel
 				expression={'This is a [link](https://inseefr.github.io/Lunatic/docs)'}
 			/>
 		);
@@ -73,7 +73,7 @@ describe('md-label', () => {
 
 	it('should render external link with tooltip', async () => {
 		const { container } = render(
-			<MdLabel
+			<MDLabel
 				expression={
 					"This is a [link](https://inseefr.github.io/Lunatic/docs 'with a tooltip')"
 				}
@@ -99,7 +99,7 @@ describe('md-label', () => {
 
 	it('should render internal link', () => {
 		const obj = render(
-			<MdLabel expression={'This is an [internal link](/docs)'} />
+			<MDLabel expression={'This is an [internal link](/docs)'} />
 		);
 		return expect(getStringHtmlWithoutId(obj.container)).toMatchInlineSnapshot(
 			'"<div>This is an <a href=\\"/docs\\" >internal link</a></div>"'
@@ -108,7 +108,7 @@ describe('md-label', () => {
 
 	it('should render internal link with tooltip', async () => {
 		const { container } = render(
-			<MdLabel
+			<MDLabel
 				expression={"This is an [internal link](/docs 'with a tooltip')"}
 			/>
 		);

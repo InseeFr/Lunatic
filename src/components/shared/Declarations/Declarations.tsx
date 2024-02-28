@@ -1,6 +1,10 @@
 import { customizedComponent } from '../HOC/customizedComponent';
 import './Declarations.scss';
-import { type PropsWithChildren, type ReactNode } from 'react';
+import {
+	type HTMLAttributes,
+	type PropsWithChildren,
+	type ReactNode,
+} from 'react';
 import classnames from 'classnames';
 
 export const Declaration = customizedComponent<

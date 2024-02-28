@@ -6,11 +6,11 @@ import {
 	useState,
 	type ReactNode,
 } from 'react';
-import type { SuggesterType } from '../../use-lunatic/type-source';
-import { voidFunction } from '../../utils/function';
-import Dragger from '../commons/components/dragger';
-import { IsNetwork } from '../commons/components/is-network';
-import { OnDragIcon } from '../shared/Icons';
+import type { SuggesterType } from '../../../use-lunatic/type-source';
+import { voidFunction } from '../../../utils/function';
+import Dragger from './dragger';
+import { IsNetwork } from './is-network';
+import { OnDragIcon } from '../Icons';
 import LoaderRow from './loader-row';
 import { ActionTool, Tools } from './tools';
 import WidgetContainer from './widget-container';

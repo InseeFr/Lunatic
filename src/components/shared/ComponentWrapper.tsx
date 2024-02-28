@@ -1,7 +1,7 @@
 import { type PropsWithChildren } from 'react';
 import type { LunaticBaseProps } from '../type';
 import { Missing } from './Missing/Missing';
-import VariableStatus from '../commons/components/variable-status';
+import { VariableStatus } from './VariableStatus/VariableStatus';
 import classnames from 'classnames';
 import { Declarations } from './Declarations/Declarations';
 import { voidFunction } from '../../utils/function';

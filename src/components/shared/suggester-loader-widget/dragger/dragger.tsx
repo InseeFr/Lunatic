@@ -5,9 +5,9 @@ import React, {
 	type MouseEvent as ReactMouseEvent,
 	type PropsWithChildren,
 } from 'react';
-import { useDocumentAddEventListener } from '../../../commons';
 import './dragger.scss';
 import { voidFunction } from '../../../../utils/function';
+import useDocumentEvent from '../../../../hooks/useDocumentEvent';
 
 type Props = PropsWithChildren<{
 	el?: {
@@ -65,8 +65,8 @@ function Dragger({ el, children, onDrag = voidFunction }: Props) {
 		[el, delta]
 	);
 
-	useDocumentAddEventListener('mousemove', onMouseMove);
-	useDocumentAddEventListener('mouseup', onMouseUp);
+	useDocumentEvent('mousemove', onMouseMove);
+	useDocumentEvent('mouseup', onMouseUp);
 
 	return (
 		<div

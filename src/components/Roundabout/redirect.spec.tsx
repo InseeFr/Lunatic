@@ -1,6 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import RoundaboutRedirect from './RoundaboutRedirect';
+import { RoundaboutRedirect } from './RoundaboutRedirect';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('Redirect', () => {

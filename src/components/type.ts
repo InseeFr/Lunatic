@@ -63,8 +63,8 @@ export type SuggesterOption = {
 type ComponentPropsByType = {
 	InputNumber: LunaticBaseProps<number | null> & {
 		min?: number;
-		max: number;
-		decimals: number;
+		max?: number;
+		decimals?: number;
 		unit?: string;
 		response: { name: string };
 	};
@@ -225,6 +225,7 @@ type ComponentPropsByType = {
 		response: { name: string };
 	};
 	Summary: LunaticBaseProps<string | null> & {
+		executeExpression: LunaticState['executeExpression'];
 		sections: Array<{
 			id: string;
 			responses?: Array<{

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import RadioOption from './RadioOption';
+import { RadioOption } from './RadioOption';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('RadioOption', () => {

@@ -1,0 +1,42 @@
+// Vitest Snapshot v1
+
+exports[`InputNumber > renders without crashing 1`] = `
+<div>
+  <div
+    class="lunatic-input-number"
+  >
+    <input
+      aria-invalid="false"
+      aria-labelledby="label-number"
+      class=""
+      id="number"
+      inputmode="numeric"
+      lang="en"
+      required=""
+      type="text"
+      value="10"
+    />
+  </div>
+</div>
+`;
+
+exports[`InputNumber > should handle readOnly 1`] = `
+<div>
+  <div
+    class="lunatic-input-number"
+  >
+    <input
+      aria-invalid="false"
+      aria-labelledby="label-number"
+      class=""
+      id="number"
+      inputmode="numeric"
+      lang="en"
+      readonly=""
+      required=""
+      type="text"
+      value="123"
+    />
+  </div>
+</div>
+`;

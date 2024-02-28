@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import classnames from 'classnames';
 import useOnlineStatus from './use-online-status';
-import { NetworkIcon } from '../../../shared/Icons';
+import { NetworkIcon } from '../../Icons';
 
 function getTitle(online?: boolean) {
 	return `Network ${online ? 'on' : 'off'}`;

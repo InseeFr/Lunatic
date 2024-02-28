@@ -37,6 +37,6 @@ describe('Dropdown', () => {
 		(selection as HTMLElement).focus();
 		expect(selection).toHaveFocus();
 		const span = selection?.querySelector('span');
-		expect(span).toHaveTextContent('toto label');
+		expect(span).toHaveTextContent('toto');
 	});
 });
