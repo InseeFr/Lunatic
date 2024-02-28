@@ -23,4 +23,5 @@ export type {
 } from './use-lunatic/type';
 
 export type { LunaticComponentProps } from './components/type';
+export type { LunaticCustomizedComponent } from './components/type-custom';
 export type { LunaticSource } from './use-lunatic/type-source';

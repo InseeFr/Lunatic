@@ -52,7 +52,7 @@ import { SummaryResponses, type SummaryTitle } from './Summary/Summary';
 /**
  * Contains the type of every customizable component
  */
-export type CustomizedComponent = {
+export type LunaticCustomizedComponent = {
 	// Components
 	Input: typeof Input;
 	InputNumber: typeof InputNumber;

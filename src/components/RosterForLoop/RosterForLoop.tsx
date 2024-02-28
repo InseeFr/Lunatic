@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { Fragment, useCallback, useState } from 'react';
 import './RosterForLoop.scss';
 import D from '../../i18n';
 import type { LunaticComponentProps } from '../type';
@@ -83,7 +83,7 @@ export const RosterForLoop = customizedComponent<
 						const hasLineErrors = !!lineErrors?.length;
 						cols = components.length;
 						return (
-							<>
+							<Fragment key={n}>
 								<Tr
 									id={props.id}
 									row={n}
@@ -113,7 +113,7 @@ export const RosterForLoop = customizedComponent<
 										</td>
 									</tr>
 								)}
-							</>
+							</Fragment>
 						);
 					})}
 				</Tbody>

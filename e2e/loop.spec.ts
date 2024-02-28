@@ -4,7 +4,7 @@ import { expectLunaticData, goToStory } from './utils';
 const loopTypes = ['loop--paginated', 'rosterforloop--default'];
 loopTypes.forEach((loopType) => {
 	test(`can complete a simple ${loopType.split('--')[0]}`, async ({ page }) => {
-		await goToStory(page, `components-loop-${loopType}`);
+		await goToStory(page, `components-${loopType}`);
 		await page.locator('#prenom-0').fill('John');
 		await page.getByRole('button', { name: 'Add row' }).click();
 		await page.locator('#prenom-1').fill('Jane');
