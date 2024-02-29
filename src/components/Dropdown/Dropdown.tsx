@@ -7,56 +7,80 @@ import { SimpleLabelRenderer } from './renderer/SimpleLabelRenderer';
 import { DropdownWritable } from './DropdownWritable';
 import { Combobox } from '../shared/Combobox/Combobox';
 import classNames from 'classnames';
+import type { LunaticError } from '../../use-lunatic/type';
 
-function LunaticDropdown({
-	id,
-	disabled,
-	options,
-	writable,
-	className,
-	value,
-	description,
-	label,
-	errors,
-	readOnly,
-	response,
+export function Dropdown({
 	handleChange,
+	response,
+	errors,
+	...props
 }: LunaticComponentProps<'Dropdown'>) {
-	const onSelect = (v: string | null) => handleChange(response, v);
-	if (writable) {
+	return (
+		<CustomDropdown
+			{...props}
+			onChange={(v) => handleChange(response, v)}
+			errors={getComponentErrors(errors, props.id)}
+		/>
+	);
+}
+
+type CustomProps = Omit<
+	LunaticComponentProps<'Dropdown'>,
+	'response' | 'handleChange' | 'errors'
+> & {
+	onChange: (v: string | null) => void;
+	errors?: LunaticError[];
+};
+
+export const CustomDropdown = customizedComponent<CustomProps>(
+	'Dropdown',
+	(props) => {
+		const {
+			id,
+			disabled,
+			options,
+			writable,
+			className,
+			value,
+			description,
+			label,
+			errors,
+			onChange,
+			readOnly,
+		} = props;
+		if (writable) {
+			return (
+				<DropdownWritable
+					id={id}
+					className={classNames(className, 'lunatic-dropdown')}
+					disabled={disabled}
+					readOnly={readOnly}
+					options={options}
+					onSelect={onChange}
+					value={value}
+					label={label}
+					errors={errors}
+					description={description}
+				/>
+			);
+		}
+
 		return (
-			<DropdownWritable
+			<Combobox
 				id={id}
 				className={classNames(className, 'lunatic-dropdown')}
 				disabled={disabled}
 				readOnly={readOnly}
 				options={options}
-				onSelect={onSelect}
+				editable={false}
+				onSelect={onChange}
+				optionRenderer={SimpleOptionRenderer}
+				labelRenderer={SimpleLabelRenderer}
 				value={value}
 				label={label}
-				errors={getComponentErrors(errors, id)}
+				errors={errors}
 				description={description}
 			/>
 		);
 	}
-
-	return (
-		<Combobox
-			id={id}
-			className={classNames(className, 'lunatic-dropdown')}
-			disabled={disabled}
-			readOnly={readOnly}
-			options={options}
-			editable={false}
-			onSelect={onSelect}
-			optionRenderer={SimpleOptionRenderer}
-			labelRenderer={SimpleLabelRenderer}
-			value={value}
-			label={label}
-			errors={getComponentErrors(errors, id)}
-			description={description}
-		/>
-	);
-}
-
-export const Dropdown = customizedComponent('Dropdown', LunaticDropdown);
+);

@@ -2,14 +2,31 @@ import { LunaticComponents } from '../LunaticComponents';
 import type { LunaticComponentProps } from '../type';
 import { customizedComponent } from '../shared/HOC/customizedComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
+import type { LunaticError } from '../../use-lunatic/type';
+import type { PropsWithChildren } from 'react';
 
 /**
  * Surround a question giving additional context with label / description / declarations
  */
-export const Question = customizedComponent(
+export const Question = ({
+	components,
+	...props
+}: LunaticComponentProps<'Question'>) => {
+	return (
+		<CustomQuestion {...props}>
+			<LunaticComponents components={components} />
+		</CustomQuestion>
+	);
+};
+
+type CustomProps = PropsWithChildren<
+	Omit<LunaticComponentProps<'Question'>, 'components'>
+>;
+
+export const CustomQuestion = customizedComponent<CustomProps>(
 	'Question',
-	(props: LunaticComponentProps<'Question'>) => {
-		const { id, description, declarations, label, components } = props;
+	(props) => {
+		const { id, description, declarations, label, children } = props;
 		return (
 			<fieldset>
 				<legend id={`question-legend-${id}`}>
@@ -23,12 +40,7 @@ export const Question = customizedComponent(
 					declarations={declarations}
 					id={id}
 				/>
-				<LunaticComponents
-					components={components}
-					wrapper={({ children }) => (
-						<div className="question-components">{children}</div>
-					)}
-				/>
+				{children}
 			</fieldset>
 		);
 	}

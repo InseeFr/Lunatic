@@ -1,13 +1,12 @@
 import { RadioGroup } from '../shared/Radio/RadioGroup';
 import './CheckboxOne.scss';
 import type { LunaticComponentProps } from '../type';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 
 /**
  * Checkbox acting as a radio (only one option can be checked at a time)
  */
-function LunaticCheckboxOne({
+export function CheckboxOne({
 	options,
 	value,
 	id,
@@ -30,11 +29,7 @@ function LunaticCheckboxOne({
 			onSelect={(value: string | null) => handleChange(response, value)}
 			checkboxStyle={true}
 			shortcut={shortcut}
+			clearable
 		/>
 	);
 }
-
-export const CheckboxOne = customizedComponent(
-	'CheckboxOne',
-	LunaticCheckboxOne
-);

@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useState } from 'react';
+import { Fragment, type PropsWithChildren, useCallback, useState } from 'react';
 import './RosterForLoop.scss';
 import D from '../../i18n';
 import type { LunaticComponentProps } from '../type';
@@ -14,6 +14,8 @@ import { Declarations } from '../shared/Declarations/Declarations';
 import { customizedComponent } from '../shared/HOC/customizedComponent';
 import { Label } from '../shared/Label/Label';
 import { Button } from '../shared/Button/Button';
+import type { LunaticError } from '../../use-lunatic/type';
+import { CustomLoop } from '../Loop/Loop';
 
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
@@ -21,12 +23,13 @@ const DEFAULT_MAX_ROWS = 12;
 /**
  * Loop displayed as a table
  */
-export const RosterForLoop = customizedComponent<
-	LunaticComponentProps<'RosterForLoop'>
->('RosterforLoop', (props) => {
+export const RosterForLoop = (
+	props: LunaticComponentProps<'RosterForLoop'>
+) => {
 	const {
 		value: valueMap,
 		lines,
+		errors,
 		handleChange,
 		declarations,
 		header,
@@ -39,7 +42,6 @@ export const RosterForLoop = customizedComponent<
 	const min = lines?.min || DEFAULT_MIN_ROWS;
 	const max = lines?.max || DEFAULT_MAX_ROWS;
 	const [nbRows, setNbRows] = useState(Math.max(min, iterations));
-	const showButtons = min && max && min !== max;
 
 	const addRow = useCallback(() => {
 		if (nbRows < max) {
@@ -64,16 +66,15 @@ export const RosterForLoop = customizedComponent<
 	}
 
 	let cols = 0;
+
 	return (
-		<>
-			<Label htmlFor={id} id={`label-${id}`}>
-				{label}
-			</Label>
-			<Declarations
-				type="AFTER_QUESTION_TEXT"
-				declarations={declarations}
-				id={id}
-			/>
+		<CustomLoop
+			{...props}
+			errors={getComponentErrors(errors, props.id)}
+			addRow={nbRows === max ? undefined : addRow}
+			removeRow={nbRows === 1 ? undefined : removeRow}
+			canControlRows={!!(min && max && min !== max)}
+		>
 			<Table id={id}>
 				{header && <TableHeader header={header} id={id} />}
 				<Tbody id={id}>
@@ -118,17 +119,6 @@ export const RosterForLoop = customizedComponent<
 					})}
 				</Tbody>
 			</Table>
-			<ComponentErrors errors={props.errors} componentId={id} />
-			{showButtons && (
-				<>
-					<Button onClick={addRow} disabled={nbRows === max}>
-						{D.DEFAULT_BUTTON_ADD}
-					</Button>
-					<Button onClick={removeRow} disabled={nbRows === min}>
-						{D.DEFAULT_BUTTON_REMOVE}
-					</Button>
-				</>
-			)}
-		</>
+		</CustomLoop>
 	);
-});
+};

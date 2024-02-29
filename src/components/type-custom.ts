@@ -1,15 +1,15 @@
 import type { Subsequence } from './Subsequence/Subsequence';
-import type { Input } from './Input/Input';
+import type { CustomInput } from './Input/Input';
 import type {
 	Declaration,
 	Declarations,
 } from './shared/Declarations/Declarations';
 import type { Label } from './shared/Label/Label';
-import { Tr, Td, Th, Tbody, Thead, Table } from './shared/Table';
-import type { Textarea } from './Textarea/Textarea';
+import type { Table, Tbody, Td, Th, Thead, Tr } from './shared/Table';
+import type { CustomTextarea } from './Textarea/Textarea';
 import type { RadioGroup } from './shared/Radio/RadioGroup';
 import type { CustomRoundabout } from './Roundabout/CustomRoundabout';
-import {
+import type {
 	RoundaboutContainer,
 	RoundaboutItContainer,
 	RoundaboutItTitle,
@@ -18,24 +18,23 @@ import {
 } from './Roundabout/extra';
 import type { RoundaboutItButton } from './Roundabout/RoundaboutItButton';
 import type { Button } from './shared/Button/Button';
-import type { CheckboxBoolean } from './CheckboxBoolean/CheckboxBoolean';
-import { CheckboxOne } from './CheckboxOne/CheckboxOne';
+import type { CustomCheckboxBoolean } from './CheckboxBoolean/CheckboxBoolean';
+import type { CheckboxOne } from './CheckboxOne/CheckboxOne';
 import type { CheckboxOption } from './shared/Checkbox/CheckboxOption';
-import type { Datepicker } from './Datepicker/Datepicker';
-import type { Duration } from './Duration/Duration';
-import { Fieldset } from './shared/Fieldset/Fieldset';
-import type { InputNumber } from './InputNumber/InputNumber';
-import type { Question } from './Question/Question';
+import type { CustomDatepicker } from './Datepicker/Datepicker';
+import type { CustomDuration } from './Duration/Duration';
+import type { Fieldset } from './shared/Fieldset/Fieldset';
+import type { CustomInputNumber } from './InputNumber/InputNumber';
+import type { CustomQuestion } from './Question/Question';
 import type { RadioOption } from './shared/Radio/RadioOption';
 import type { Sequence } from './Sequence/Sequence';
-import type { Switch } from './Switch/Switch';
-import type { Loop } from './Loop/Loop';
-import type { RosterForLoop } from './RosterForLoop/RosterForLoop';
-import type { Dropdown } from './Dropdown/Dropdown';
+import type { CustomSwitch } from './Switch/Switch';
+import type { CustomLoop } from './Loop/Loop';
+import type { CustomDropdown } from './Dropdown/Dropdown';
 import type { Combobox } from './shared/Combobox/Combobox';
-import { ComboboxContainer } from './shared/Combobox/ComboboxContainer';
-import { ComboboxContentBox } from './shared/Combobox/ComboboxContentBox';
-import { ComboboxOption } from './shared/Combobox/Panel/ComboboxOption';
+import type { ComboboxContainer } from './shared/Combobox/ComboboxContainer';
+import type { ComboboxContentBox } from './shared/Combobox/ComboboxContentBox';
+import type { ComboboxOption } from './shared/Combobox/Panel/ComboboxOption';
 import type { ComboboxPanelContainer } from './shared/Combobox/Panel/ComboboxPanelContainer';
 import type { ComboboxClearButton } from './shared/Combobox/Selection/ComboboxClearButton';
 import type { ComboboxLabelSelection } from './shared/Combobox/Selection/ComboboxLabelSelection';
@@ -45,39 +44,33 @@ import type { ComboboxInput } from './shared/Combobox/Selection/ComboboxInput';
 import type { FilterDescription } from './FilterDescription/FilterDescription';
 import type { CustomSuggester } from './Suggester/CustomSuggester';
 import type { CustomCheckboxGroup } from './CheckboxGroup/CustomCheckboxGroup';
-import { ComponentSet, ComponentSetItem } from './ComponentSet/ComponentSet';
 import type { RouterLink } from './shared/MDLabel/RouterLink';
-import { SummaryResponses, type SummaryTitle } from './Summary/Summary';
+import type { SummaryResponses, SummaryTitle } from './Summary/Summary';
 
 /**
  * Contains the type of every customizable component
  */
 export type LunaticCustomizedComponent = {
 	// Components
-	Input: typeof Input;
-	InputNumber: typeof InputNumber;
+	Input: typeof CustomInput;
+	InputNumber: typeof CustomInputNumber;
 	Sequence: typeof Sequence;
-	Switch: typeof Switch;
+	Switch: typeof CustomSwitch;
 	Subsequence: typeof Subsequence;
-	Textarea: typeof Textarea;
-	Datepicker: typeof Datepicker;
-	Duration: typeof Duration;
-	Question: typeof Question;
-	BlockForLoop: typeof Loop;
-	RosterForLoop: typeof RosterForLoop;
-	Dropdown: typeof Dropdown;
-	LunaticRadio: typeof Radio;
-	FilterDescription: typeof FilterDescription;
+	Textarea: typeof CustomTextarea;
+	Datepicker: typeof CustomDatepicker;
+	Duration: typeof CustomDuration;
+	Question: typeof CustomQuestion;
+	Loop: typeof CustomLoop;
+	Dropdown: typeof CustomDropdown;
+	Radio: typeof Radio;
 	Suggester: typeof CustomSuggester;
-	ComponentSet: typeof ComponentSet;
-	ComponentSetItem: typeof ComponentSetItem;
 
 	// Checkbox
-	CheckboxBoolean: typeof CheckboxBoolean;
+	CheckboxBoolean: typeof CustomCheckboxBoolean;
 	CheckboxGroup: typeof CustomCheckboxGroup;
 	CheckboxOne: typeof CheckboxOne;
 	CheckboxOption: typeof CheckboxOption;
-	Radio: typeof RadioGroup;
 	RadioGroup: typeof RadioGroup;
 	RadioOption: typeof RadioOption;
 

@@ -1,58 +1,81 @@
 import classnames from 'classnames';
-import { type ChangeEventHandler } from 'react';
 import './Input.scss';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
 import { customizedComponent } from '../shared/HOC/customizedComponent';
-import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+import {
+	ComponentErrors,
+	getComponentErrors,
+} from '../shared/ComponentErrors/ComponentErrors';
 import { Declarations } from '../shared/Declarations/Declarations';
+import type { LunaticError } from '../../use-lunatic/type';
 
-function LunaticInput({
-	value,
+export function Input({
 	handleChange,
 	response,
-	disabled,
-	required,
-	maxLength,
-	label,
-	description,
-	id,
 	errors,
-	readOnly,
-	declarations,
+	...props
 }: LunaticComponentProps<'Input'>) {
-	const labelId = `label-${id}`;
-
-	const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-		handleChange(response, e.target.value);
-	};
 	return (
-		<div className={classnames('lunatic-input')}>
-			<Label htmlFor={id} id={labelId} description={description}>
-				{label}
-			</Label>
-			<Declarations
-				type="AFTER_QUESTION_TEXT"
-				declarations={declarations}
-				id={id}
-			/>
-			<input
-				id={id}
-				aria-labelledby={labelId}
-				autoComplete="off"
-				type="text"
-				disabled={disabled}
-				readOnly={readOnly}
-				value={(value ?? '').toString()}
-				onChange={onChange}
-				aria-required={required}
-				required={required}
-				maxLength={maxLength}
-				aria-invalid={!!errors}
-			/>
-			<ComponentErrors errors={errors} componentId={id} />
-		</div>
+		<CustomInput
+			{...props}
+			onChange={(v) => handleChange(response, v)}
+			errors={getComponentErrors(errors, props.id)}
+		/>
 	);
 }
 
-export const Input = customizedComponent('Input', LunaticInput);
+type CustomProps = Omit<
+	LunaticComponentProps<'Input'>,
+	'response' | 'handleChange' | 'errors'
+> & {
+	onChange: (v: string) => void;
+	errors?: LunaticError[];
+};
+
+export const CustomInput = customizedComponent<CustomProps>(
+	'Input',
+	(props) => {
+		const {
+			value,
+			onChange,
+			disabled,
+			required,
+			maxLength,
+			label,
+			description,
+			id,
+			errors,
+			readOnly,
+			declarations,
+		} = props;
+		const labelId = `label-${id}`;
+		return (
+			<div className={classnames('lunatic-input')}>
+				<Label htmlFor={id} id={labelId} description={description}>
+					{label}
+				</Label>
+				<Declarations
+					type="AFTER_QUESTION_TEXT"
+					declarations={declarations}
+					id={id}
+				/>
+				<input
+					id={id}
+					aria-labelledby={labelId}
+					autoComplete="off"
+					type="text"
+					disabled={disabled}
+					readOnly={readOnly}
+					value={(value ?? '').toString()}
+					onChange={(e) => onChange(e.target.value)}
+					aria-required={required}
+					required={required}
+					maxLength={maxLength}
+					aria-invalid={!!errors}
+				/>
+				<ComponentErrors errors={errors} />
+			</div>
+		);
+	}
+);

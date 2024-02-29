@@ -21,6 +21,7 @@ export type RadioGroupProps = {
 	shortcut?: boolean;
 	disabled?: boolean;
 	readOnly?: boolean;
+	clearable?: boolean;
 };
 
 /**
@@ -39,6 +40,7 @@ function LunaticRadioGroup({
 	shortcut,
 	disabled,
 	readOnly,
+	clearable,
 }: RadioGroupProps) {
 	const onKeyDown = useListKeyboardHandler(options, onSelect);
 	const maxIndex = options.length;
@@ -70,4 +72,4 @@ function LunaticRadioGroup({
 	);
 }
 
-export const RadioGroup = customizedComponent('Radio', LunaticRadioGroup);
+export const RadioGroup = customizedComponent('RadioGroup', LunaticRadioGroup);

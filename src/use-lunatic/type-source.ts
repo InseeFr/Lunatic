@@ -95,7 +95,6 @@ export type ComponentType =
 	| (ComponentTypeBase & {
 			componentType: 'CheckboxOne';
 	  })
-	| (ComponentTypeBase & ComponentComponentSetType)
 	| (ComponentTypeBase & ComponentQuestionType);
 
 export type ComponentTypeEnum = ComponentType['componentType'];
@@ -224,11 +223,6 @@ export type ComponentQuestionType = {
 	componentType: 'Question';
 	components: ComponentType[];
 	description: LabelType;
-};
-
-export type ComponentComponentSetType = {
-	componentType: 'ComponentSet';
-	components: ComponentType[];
 };
 
 export type ComponentSuggesterType = {

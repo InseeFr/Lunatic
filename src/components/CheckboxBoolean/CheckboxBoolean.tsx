@@ -1,45 +1,74 @@
 import type { LunaticComponentProps } from '../type';
-import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+import {
+	ComponentErrors,
+	getComponentErrors,
+} from '../shared/ComponentErrors/ComponentErrors';
 import { CheckboxOption } from '../shared/Checkbox/CheckboxOption';
 import { customizedComponent } from '../shared/HOC/customizedComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
+import type { LunaticError } from '../../use-lunatic/type';
 
-function LunaticCheckboxBoolean({
-	value,
-	id,
-	disabled,
-	errors,
-	label,
-	response,
+export function CheckboxBoolean({
 	handleChange,
-	declarations,
-	description,
+	response,
+	errors,
+	value,
+	...props
 }: LunaticComponentProps<'CheckboxBoolean'>) {
+	const checked = !!value;
 	return (
-		<div className="lunatic-checkbox-boolean">
-			<CheckboxOption
-				disabled={disabled}
-				checked={value ?? false}
-				id={id}
-				onClick={(v: boolean) => handleChange(response, v)}
-				label={
-					<>
-						{label}
-						<Declarations
-							type="AFTER_QUESTION_TEXT"
-							declarations={declarations}
-						/>
-					</>
-				}
-				description={description}
-				invalid={!!errors}
-			/>
-			<ComponentErrors errors={errors} componentId={id} />
-		</div>
+		<CustomCheckboxBoolean
+			{...props}
+			checked={checked}
+			onChange={() => handleChange(response, !checked)}
+			errors={getComponentErrors(errors, props.id)}
+		/>
 	);
 }
 
-export const CheckboxBoolean = customizedComponent(
-	'CheckboxBoolean',
-	LunaticCheckboxBoolean
+type CustomProps = Omit<
+	LunaticComponentProps<'CheckboxBoolean'>,
+	'response' | 'handleChange' | 'errors' | 'value'
+> & {
+	onChange: () => void;
+	errors?: LunaticError[];
+	checked?: boolean;
+};
+
+export const CustomCheckboxBoolean = customizedComponent<CustomProps>(
+	'Input',
+	(props) => {
+		const {
+			disabled,
+			checked,
+			id,
+			onChange,
+			label,
+			declarations,
+			description,
+			errors,
+		} = props;
+		return (
+			<div className="lunatic-checkbox-boolean">
+				<CheckboxOption
+					disabled={disabled}
+					checked={checked}
+					id={id}
+					onClick={onChange}
+					label={
+						<>
+							{label}
+							<Declarations
+								type="AFTER_QUESTION_TEXT"
+								declarations={declarations}
+							/>
+						</>
+					}
+					description={description}
+					invalid={!!errors}
+				/>
+				<ComponentErrors errors={errors} />
+			</div>
+		);
+	}
 );

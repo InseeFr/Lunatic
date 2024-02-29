@@ -5,7 +5,6 @@ import useLunatic from './use-lunatic';
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
-import sourceComponentSet from '../stories/component-set/source.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { LunaticData } from './type';
@@ -216,26 +215,6 @@ describe('use-lunatic()', () => {
 			expect(
 				(result.current.getData(true).COLLECTED.PRENOMS as any).COLLECTED
 			).toEqual([null, null]);
-		});
-	});
-
-	describe('getComponents()', () => {
-		describe('componentSet', () => {
-			type ChildComponent = FilledLunaticComponentProps<'ComponentSet'>;
-			const { result } = renderHook(() =>
-				useLunatic(sourceComponentSet as any, undefined, {})
-			);
-			const getComponents = () =>
-				result.current.getComponents() as ChildComponent[];
-			it('should fill child components', () => {
-				let components = getComponents();
-				expect(components).toHaveLength(1);
-				expect(components[0].components ?? []).toHaveLength(2);
-			});
-			it('should use conditionFilter on nested components', () => {
-				act(() => result.current.onChange({ name: 'PRENOM' }, 'Jane'));
-				expect(getComponents()[0].components).toHaveLength(3);
-			});
 		});
 	});
 

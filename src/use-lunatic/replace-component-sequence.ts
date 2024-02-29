@@ -1,8 +1,8 @@
 import type { LunaticComponentDefinition } from './type';
 
 /**
- * Pour le ComponentSet : les composants du fieldset n'existe pas dans pages.
- * Ils échappent donc aux controls. On les substitue ici au ComponentSet.
+ * Pour le Question : les composants du fieldset n'existe pas dans pages.
+ * Ils échappent donc aux controls. On les substitue ici au Question.
  * On ne peut pas les ajouter directement dans pages (en spécifiant un page), car ils s'afficheraient 2 fois : dans le fieldset et en dessus, comme
  * des composant à part entière.
  * D'autres composant pourraient un jour figurer ici.
@@ -17,7 +17,6 @@ export function replaceComponentSequence(
 		const { componentType } = component;
 		switch (componentType) {
 			case 'Question':
-			case 'ComponentSet':
 				return [...acc, ...component.components];
 			default:
 				return [...acc, component];

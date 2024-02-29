@@ -1,7 +1,6 @@
 import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
-import sourceComponentset from './sourceComponentset';
 import sourceLoop from './sourceLoop';
 import defaultArgTypes from '../utils/default-arg-types';
 
@@ -27,13 +26,6 @@ Default.args = {
 	id: 'checkboxGroup',
 	source,
 	shortcut: true,
-};
-
-export const ComponentSet = Template.bind({});
-
-ComponentSet.args = {
-	...Default.args,
-	source: sourceComponentset,
 };
 
 export const Loop = Template.bind({});

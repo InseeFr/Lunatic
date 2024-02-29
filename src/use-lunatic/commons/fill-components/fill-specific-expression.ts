@@ -31,9 +31,7 @@ function fillRoundaboutProps(
  * Fill child components for nested component type
  */
 function fillChildComponents(
-	component: DeepTranslateExpression<
-		LunaticComponentDefinition<'ComponentSet' | 'Question'>
-	>,
+	component: DeepTranslateExpression<LunaticComponentDefinition<'Question'>>,
 	state: LunaticState
 ) {
 	return {
@@ -170,7 +168,6 @@ function fillSpecificExpressions(
 	switch (component.componentType) {
 		case 'Roundabout':
 			return fillRoundaboutProps(component, state);
-		case 'ComponentSet':
 		case 'Question':
 			return fillChildComponents(component, state);
 		case 'Loop':

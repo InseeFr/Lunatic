@@ -1,59 +1,84 @@
-import { voidFunction } from '../../utils/function';
 import { InputNumberThousand } from './InputNumberThousand';
 import './InputNumber.scss';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
-import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+import {
+	ComponentErrors,
+	getComponentErrors,
+} from '../shared/ComponentErrors/ComponentErrors';
 import { customizedComponent } from '../shared/HOC/customizedComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
+import type { LunaticError } from '../../use-lunatic/type';
 
-function LunaticInputNumber({
-	id,
-	value = null,
-	handleChange = voidFunction,
-	disabled = false,
-	readOnly = false,
-	max = 1_000_000,
-	decimals = 0,
-	unit,
-	label,
-	errors,
+export function InputNumber({
+	handleChange,
 	response,
-	required = true,
-	description,
-	declarations,
+	errors,
+	decimals,
+	...props
 }: LunaticComponentProps<'InputNumber'>) {
-	const labelId = `label-${id}`;
-
 	return (
-		<div className="lunatic-input-number">
-			<Label htmlFor={id} id={labelId} description={description}>
-				{label}
-			</Label>
-			<Declarations
-				type="AFTER_QUESTION_TEXT"
-				declarations={declarations}
-				id={id}
-			/>
-			<InputNumberThousand
-				id={id}
-				value={value}
-				onChange={(v: number | null) => handleChange(response, v)}
-				disabled={disabled}
-				readOnly={readOnly}
-				required={required}
-				labelId={labelId}
-				max={max}
-				decimals={decimals}
-				invalid={!!errors}
-			/>
-			{unit && <span>{unit}</span>}
-			<ComponentErrors errors={errors} componentId={id} />
-		</div>
+		<CustomInputNumber
+			{...props}
+			decimals={decimals ?? 0}
+			onChange={(v) => handleChange(response, v)}
+			errors={getComponentErrors(errors, props.id)}
+		/>
 	);
 }
 
-export const InputNumber = customizedComponent(
+type CustomProps = Omit<
+	LunaticComponentProps<'InputNumber'>,
+	'response' | 'handleChange' | 'errors'
+> & {
+	onChange: (v: number | null) => void;
+	errors?: LunaticError[];
+};
+
+export const CustomInputNumber = customizedComponent<CustomProps>(
 	'InputNumber',
-	LunaticInputNumber
+	(props) => {
+		const {
+			id,
+			value,
+			onChange,
+			disabled,
+			readOnly,
+			max,
+			decimals,
+			unit,
+			label,
+			errors,
+			required,
+			description,
+			declarations,
+		} = props;
+		const labelId = `label-${id}`;
+		return (
+			<div className="lunatic-input-number">
+				<Label htmlFor={id} id={labelId} description={description}>
+					{label}
+				</Label>
+				<Declarations
+					type="AFTER_QUESTION_TEXT"
+					declarations={declarations}
+					id={id}
+				/>
+				<InputNumberThousand
+					id={id}
+					value={value}
+					onChange={onChange}
+					disabled={!!disabled}
+					readOnly={!!readOnly}
+					required={!!required}
+					labelId={labelId}
+					max={max}
+					decimals={decimals}
+					invalid={!!errors}
+				/>
+				{unit && <span>{unit}</span>}
+				<ComponentErrors errors={errors} />
+			</div>
+		);
+	}
 );

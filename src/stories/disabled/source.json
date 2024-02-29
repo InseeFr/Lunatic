@@ -141,7 +141,7 @@
 		},
 		{
 			"id": "component-set",
-			"componentType": "ComponentSet",
+			"componentType": "Question",
 			"page": "3",
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"label": {

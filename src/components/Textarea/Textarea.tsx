@@ -2,56 +2,84 @@ import { type ChangeEventHandler } from 'react';
 import './Textarea.scss';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
-import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+import {
+	ComponentErrors,
+	getComponentErrors,
+} from '../shared/ComponentErrors/ComponentErrors';
 import { customizedComponent } from '../shared/HOC/customizedComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
+import type { LunaticError } from '../../use-lunatic/type';
+import { CustomInput } from '../Input/Input';
 
-function LunaticTextarea({
-	id,
-	rows,
-	maxLength,
-	cols,
-	value,
-	label,
+export function Textarea({
 	handleChange,
 	response,
-	description,
 	errors,
-	placeHolder,
-	readOnly,
-	required,
-	declarations,
+	...props
 }: LunaticComponentProps<'Textarea'>) {
-	const labelId = `label-${id}`;
-	const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
-		handleChange(response, e.target.value);
-	};
-
 	return (
-		<div className="lunatic-textarea">
-			<Label htmlFor={id} id={labelId} description={description}>
-				{label}
-			</Label>
-			<Declarations
-				type="AFTER_QUESTION_TEXT"
-				declarations={declarations}
-				id={id}
-			/>
-			<textarea
-				required={required}
-				id={id}
-				rows={rows}
-				maxLength={maxLength}
-				cols={cols}
-				onChange={onChange}
-				value={value ?? ''}
-				placeholder={placeHolder}
-				readOnly={readOnly}
-				aria-invalid={!!errors}
-			/>
-			<ComponentErrors errors={errors} componentId={id} />
-		</div>
+		<CustomTextarea
+			{...props}
+			onChange={(v) => handleChange(response, v)}
+			errors={getComponentErrors(errors, props.id)}
+		/>
 	);
 }
 
-export const Textarea = customizedComponent('Textarea', LunaticTextarea);
+type CustomProps = Omit<
+	LunaticComponentProps<'Textarea'>,
+	'response' | 'handleChange' | 'errors'
+> & {
+	onChange: (v: string) => void;
+	errors?: LunaticError[];
+};
+
+export const CustomTextarea = customizedComponent<CustomProps>(
+	'Input',
+	(props) => {
+		const {
+			value,
+			onChange,
+			disabled,
+			required,
+			maxLength,
+			label,
+			description,
+			id,
+			errors,
+			readOnly,
+			declarations,
+			rows,
+			cols,
+			placeHolder,
+		} = props;
+		const labelId = `label-${id}`;
+
+		return (
+			<div className="lunatic-textarea">
+				<Label htmlFor={id} id={labelId} description={description}>
+					{label}
+				</Label>
+				<Declarations
+					type="AFTER_QUESTION_TEXT"
+					declarations={declarations}
+					id={id}
+				/>
+				<textarea
+					required={required}
+					disabled={disabled}
+					id={id}
+					rows={rows}
+					maxLength={maxLength}
+					cols={cols}
+					onChange={(e) => onChange(e.target.value)}
+					value={value ?? ''}
+					placeholder={placeHolder}
+					readOnly={readOnly}
+					aria-invalid={!!errors}
+				/>
+				<ComponentErrors errors={errors} />
+			</div>
+		);
+	}
+);

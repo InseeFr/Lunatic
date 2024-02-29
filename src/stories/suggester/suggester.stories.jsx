@@ -3,7 +3,6 @@ import defaultArgTypes from '../utils/default-arg-types';
 import Orchestrator from '../utils/orchestrator';
 import { getReferentiel } from '../utils/referentiel';
 import source from './source';
-import sourceComponentSet from './source-component-set';
 
 const stories = {
 	title: 'Components/Suggester',
@@ -22,12 +21,4 @@ Default.args = {
 	autoSuggesterLoading: true,
 	getReferentiel,
 	pagination: true,
-};
-
-
-export const ComponentSet = Template.bind({});
-ComponentSet.args = {
-	source: sourceComponentSet,
-	getReferentiel,
-	autoSuggesterLoading: true,
 };

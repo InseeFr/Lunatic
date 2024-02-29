@@ -13,7 +13,6 @@ import type { ComponentType } from 'react';
 import { Switch } from './Switch/Switch';
 import { FilterDescription } from './FilterDescription/FilterDescription';
 import { Question } from './Question/Question';
-import { ComponentSet } from './ComponentSet/ComponentSet';
 import { InputNumber } from './InputNumber/InputNumber';
 import { Duration } from './Duration/Duration';
 import { Loop } from './Loop/Loop';
@@ -42,7 +41,6 @@ export const library = {
 	Textarea: Textarea,
 	Switch: Switch,
 	Question: Question,
-	ComponentSet: ComponentSet,
 	FilterDescription: FilterDescription,
 	Dropdown: Dropdown,
 	PairwiseLinks: PairwiseLinks,

@@ -42,7 +42,6 @@ export type LunaticBaseProps<ValueType = unknown> = {
 		position: string;
 		label: ReactNode;
 	}[];
-	// executeExpression: LunaticState['executeExpression'];
 	features?: string[];
 	componentType?: string;
 	goNextPage?: () => void;
@@ -87,11 +86,6 @@ type ComponentPropsByType = {
 		'label' | 'id' | 'description' | 'declarations'
 	> & {
 		components: FilledLunaticComponentProps[];
-	};
-	ComponentSet: LunaticBaseProps<unknown> & {
-		components: FilledLunaticComponentProps[];
-		value: Record<string, unknown>;
-		response: undefined;
 	};
 	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
