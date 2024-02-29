@@ -7,7 +7,7 @@ test(`can complete pairwise form`, async ({ page }) => {
 	await page.getByRole('button', { name: 'Add row' }).click();
 	await page.getByLabel('Prénom').nth(3).fill('Jane');
 	await gotoNextPage(page, 4);
-	await page.getBKyLabel('Âge de Jane').click();
+	await page.getByLabel('Âge de Jane').click();
 	await page.getByLabel('Âge de Jane').fill('20');
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page.getByText('Commencez votre saisie...').nth(0).click();
