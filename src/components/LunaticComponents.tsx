@@ -14,7 +14,7 @@ import { ComponentWrapper } from './shared/ComponentWrapper';
 import { library } from './library';
 import { ErrorBoundary } from 'react-error-boundary';
 
-type Props<T extends FilledLunaticComponentProps, V = undefined> = {
+type Props<T extends FilledLunaticComponentProps, V = unknown> = {
 	// List of components to display (coming from getComponents)
 	components: (
 		| FilledLunaticComponentProps
