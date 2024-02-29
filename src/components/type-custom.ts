@@ -19,7 +19,6 @@ import type {
 import type { RoundaboutItButton } from './Roundabout/RoundaboutItButton';
 import type { Button } from './shared/Button/Button';
 import type { CustomCheckboxBoolean } from './CheckboxBoolean/CheckboxBoolean';
-import type { CheckboxOne } from './CheckboxOne/CheckboxOne';
 import type { CheckboxOption } from './shared/Checkbox/CheckboxOption';
 import type { CustomDatepicker } from './Datepicker/Datepicker';
 import type { CustomDuration } from './Duration/Duration';
@@ -69,7 +68,6 @@ export type LunaticCustomizedComponent = {
 	// Checkbox
 	CheckboxBoolean: typeof CustomCheckboxBoolean;
 	CheckboxGroup: typeof CustomCheckboxGroup;
-	CheckboxOne: typeof CheckboxOne;
 	CheckboxOption: typeof CheckboxOption;
 	RadioGroup: typeof RadioGroup;
 	RadioOption: typeof RadioOption;
