@@ -8,7 +8,6 @@ import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { LunaticData } from './type';
-import { type FilledLunaticComponentProps } from './commons/fill-components/fill-components';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {

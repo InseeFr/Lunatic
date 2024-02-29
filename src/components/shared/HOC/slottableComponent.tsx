@@ -41,7 +41,7 @@ import type { ComboboxOption } from '../Combobox/Panel/ComboboxOption';
 import type { ComboboxPanelContainer } from '../Combobox/Panel/ComboboxPanelContainer';
 import type { ComboboxClearButton } from '../Combobox/Selection/ComboboxClearButton';
 import type { ComboboxLabelSelection } from '../Combobox/Selection/ComboboxLabelSelection';
-import { SuggesterNotification } from '../../Suggester/SuggesterNotification';
+import type { SuggesterNotification } from '../../Suggester/SuggesterNotification';
 import type { Radio } from '../../Radio/Radio';
 import type { ComboboxInput } from '../Combobox/Selection/ComboboxInput';
 import type { CustomSuggester } from '../../Suggester/CustomSuggester';
