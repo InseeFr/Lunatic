@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Button } from '../shared/Button/Button';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 	locked?: boolean;
 };
 
-export const RoundaboutItButton = customizedComponent<Props>(
+export const RoundaboutItButton = slottableComponent<Props>(
 	'RoundaboutItButton',
 	({
 		complete,

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, type ReactNode } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { voidFunction } from '../../../utils/function';
 import { Label } from '../Label/Label';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 import {
 	CheckboxCheckedIcon,
 	CheckboxUncheckedIcon,
@@ -142,7 +142,7 @@ function getIcon(checked?: boolean, checkboxStyle?: boolean) {
 	return RadioUncheckedIcon;
 }
 
-export const RadioOption = customizedComponent(
+export const RadioOption = slottableComponent(
 	'RadioOption',
 	LunaticRadioOption
 );

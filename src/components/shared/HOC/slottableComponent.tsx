@@ -52,7 +52,7 @@ import type { SummaryResponses, SummaryTitle } from '../../Summary/Summary';
 /**
  * Contains the type of every customizable component
  */
-export type LunaticCustomizedComponent = {
+export type LunaticSlotComponents = {
 	// Components
 	Input: typeof CustomInput;
 	InputNumber: typeof CustomInputNumber;
@@ -117,37 +117,39 @@ export type LunaticCustomizedComponent = {
 	RouterLink: typeof RouterLink;
 };
 
-const empty = {} as Partial<LunaticCustomizedComponent> | undefined;
+const empty = {} as Partial<LunaticSlotComponents> | undefined;
 
-const CustomComponentsContext = createContext(empty);
+const SlotsContext = createContext(empty);
 
-export const CustomComponentsProvider = ({
-	custom,
+export const SlotsProvider = ({
+	slots,
 	children,
-}: PropsWithChildren<{ custom?: Partial<LunaticCustomizedComponent> }>) => {
-	if (!custom) {
+}: PropsWithChildren<{ slots?: Partial<LunaticSlotComponents> }>) => {
+	if (!slots) {
 		return <>{children}</>;
 	}
 	return (
-		<CustomComponentsContext.Provider value={custom ?? empty}>
+		<SlotsContext.Provider value={slots ?? empty}>
 			{children}
-		</CustomComponentsContext.Provider>
+		</SlotsContext.Provider>
 	);
 };
 
 /**
  * Create a replaceable version of a component
+ *
+ * The component can be replaced using the "slots" props on <LunaticComponents>
  */
-export function customizedComponent<T extends Record<string, unknown>>(
-	name: keyof LunaticCustomizedComponent,
+export function slottableComponent<T extends Record<string, unknown>>(
+	name: keyof LunaticSlotComponents,
 	OriginalComponent: FunctionComponent<T>
 ): ComponentType<T> {
 	const DecoratedComponent = (props: T) => {
-		const custom = useContext(CustomComponentsContext) ?? empty;
+		const custom = useContext(SlotsContext) ?? empty;
 
 		if (custom && name in custom) {
-			const CustomComponent = custom[name] as ComponentType<T>;
-			return <CustomComponent {...props} />;
+			const SlotComponent = custom[name] as ComponentType<T>;
+			return <SlotComponent {...props} />;
 		}
 
 		return <OriginalComponent {...props} />;

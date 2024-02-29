@@ -2,7 +2,7 @@ import './RadioGroup.scss';
 import type { ReactNode } from 'react';
 import { Fieldset } from '../Fieldset/Fieldset';
 import { ComponentErrors } from '../ComponentErrors/ComponentErrors';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 import { getShortcutKey } from '../Checkbox/getShortcutKey';
 import { RadioOption } from './RadioOption';
 import { useListKeyboardHandler } from '../../../hooks/useListKeyboardHandler';
@@ -72,4 +72,4 @@ function LunaticRadioGroup({
 	);
 }
 
-export const RadioGroup = customizedComponent('RadioGroup', LunaticRadioGroup);
+export const RadioGroup = slottableComponent('RadioGroup', LunaticRadioGroup);

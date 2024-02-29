@@ -1,7 +1,7 @@
 import type { LunaticComponentProps } from '../type';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { RadioGroup } from '../shared/Radio/RadioGroup';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 
 function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 	const {
@@ -35,4 +35,4 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 	);
 }
 
-export const Radio = customizedComponent('Radio', LunaticRadio);
+export const Radio = slottableComponent('Radio', LunaticRadio);

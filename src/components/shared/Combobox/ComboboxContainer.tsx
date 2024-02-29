@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import classnames from 'classnames';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 import type { LunaticError } from '../../../use-lunatic/type';
 import { ComponentErrors } from '../ComponentErrors/ComponentErrors';
 
@@ -12,7 +12,7 @@ type Props = PropsWithChildren<{
 	errors?: LunaticError[];
 }>;
 
-export const ComboboxContainer = customizedComponent<Props>(
+export const ComboboxContainer = slottableComponent<Props>(
 	'ComboboxContainer',
 	({
 		children,

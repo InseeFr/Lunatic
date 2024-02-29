@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { type PropsWithChildren } from 'react';
-import { customizedComponent } from '../../HOC/customizedComponent';
+import { slottableComponent } from '../../HOC/slottableComponent';
 
 type Props = PropsWithChildren<{
 	focused?: boolean;
@@ -8,7 +8,7 @@ type Props = PropsWithChildren<{
 	id?: string;
 }>;
 
-export const ComboboxPanelContainer = customizedComponent(
+export const ComboboxPanelContainer = slottableComponent(
 	'ComboboxPanelContainer',
 	({ children, focused, expanded, id }: Props) => (
 		<ul

@@ -1,6 +1,6 @@
 import type { LunaticComponentProps, VtlExpression } from '../type';
 import { type ReactNode } from 'react';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 
 type Section = {
 	id?: string;
@@ -57,12 +57,12 @@ export function Summary(props: LunaticComponentProps<'Summary'>) {
 /**
  * Title displayed on top of the Summary
  */
-export const SummaryTitle = customizedComponent<{ label: ReactNode }>(
+export const SummaryTitle = slottableComponent<{ label: ReactNode }>(
 	'SummaryTitle',
 	({ label }) => <div className="lunatic-summary-label">{label}</div>
 );
 
-export const SummaryResponses = customizedComponent<{ sections: Section[] }>(
+export const SummaryResponses = slottableComponent<{ sections: Section[] }>(
 	'SummaryResponses',
 	({ sections }) => {
 		return (

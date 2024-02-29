@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComboboxOptionType } from '../ComboboxType';
-import { customizedComponent } from '../../HOC/customizedComponent';
+import { slottableComponent } from '../../HOC/slottableComponent';
 
 type Props = {
 	option?: ComboboxOptionType | null;
@@ -52,7 +52,7 @@ const LunaticComboBoxLabelSelection = ({
 	);
 };
 
-export const ComboboxLabelSelection = customizedComponent(
+export const ComboboxLabelSelection = slottableComponent(
 	'ComboboxLabelSelection',
 	LunaticComboBoxLabelSelection
 );

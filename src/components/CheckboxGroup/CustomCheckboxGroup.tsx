@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import type { LunaticError } from '../../use-lunatic/type';
 import { type CheckboxGroupOption } from './CheckboxGroup';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { Fieldset } from '../shared/Fieldset/Fieldset';
 import { CheckboxOption } from '../shared/Checkbox/CheckboxOption';
@@ -16,7 +16,7 @@ type Props = {
 	shortcut?: boolean;
 };
 
-export const CustomCheckboxGroup = customizedComponent<Props>(
+export const CustomCheckboxGroup = slottableComponent<Props>(
 	'CheckboxGroup',
 	({ options, id, label, description, errors, shortcut }: Props) => {
 		return (

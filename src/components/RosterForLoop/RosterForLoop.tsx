@@ -11,7 +11,7 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import { Declarations } from '../shared/Declarations/Declarations';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Label } from '../shared/Label/Label';
 import { Button } from '../shared/Button/Button';
 import type { LunaticError } from '../../use-lunatic/type';

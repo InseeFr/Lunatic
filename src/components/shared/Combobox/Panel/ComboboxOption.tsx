@@ -1,13 +1,13 @@
 import classnames from 'classnames';
 import type { ComboboxOptionType } from '../ComboboxType';
-import { customizedComponent } from '../../HOC/customizedComponent';
+import { slottableComponent } from '../../HOC/slottableComponent';
 
 type Props = {
 	option: ComboboxOptionType;
 	selected?: boolean;
 };
 
-export const ComboboxOption = customizedComponent(
+export const ComboboxOption = slottableComponent(
 	'ComboboxOption',
 	({ option, selected }: Props) => {
 		const { id, value, label } = option;

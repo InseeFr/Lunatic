@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { DatepickerField } from './DatepickerField';
 import './Datepicker.scss';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
 import {
@@ -36,7 +36,7 @@ type CustomProps = Omit<
 	errors?: LunaticError[];
 };
 
-export const CustomDatepicker = customizedComponent<CustomProps>(
+export const CustomDatepicker = slottableComponent<CustomProps>(
 	'Datepicker',
 	(props) => {
 		const {

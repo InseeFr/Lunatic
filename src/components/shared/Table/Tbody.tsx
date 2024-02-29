@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import classnames from 'classnames';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 
 type Props = PropsWithChildren<{
 	className?: string;
@@ -18,4 +18,4 @@ function LunaticTbody({ id, className, children }: Props) {
 	);
 }
 
-export const Tbody = customizedComponent('Tbody', LunaticTbody);
+export const Tbody = slottableComponent('Tbody', LunaticTbody);

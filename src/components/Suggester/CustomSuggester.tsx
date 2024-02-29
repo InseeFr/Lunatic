@@ -3,7 +3,7 @@ import { voidFunction } from '../../utils/function';
 import type { LunaticError } from '../../use-lunatic/type';
 import type { LunaticComponentProps } from '../type';
 import D from '../../i18n';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import type { ComboboxOptionType } from '../shared/Combobox/ComboboxType';
 import { Combobox } from '../shared/Combobox/Combobox';
 
@@ -26,7 +26,7 @@ type Props = {
 	errors?: LunaticError[];
 };
 
-export const CustomSuggester = customizedComponent<Props>(
+export const CustomSuggester = slottableComponent<Props>(
 	'Suggester',
 	({
 		className,

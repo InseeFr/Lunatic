@@ -1,6 +1,6 @@
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticComponentProps } from '../type';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 
 function LunaticSubsequence({
 	id,
@@ -25,7 +25,7 @@ function LunaticSubsequence({
 	);
 }
 
-export const Subsequence = customizedComponent(
+export const Subsequence = slottableComponent(
 	'Subsequence',
 	LunaticSubsequence
 );

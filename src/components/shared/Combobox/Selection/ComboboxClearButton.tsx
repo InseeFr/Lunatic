@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import classnames from 'classnames';
 import { CrossIcon } from '../../Icons';
-import { customizedComponent } from '../../HOC/customizedComponent';
+import { slottableComponent } from '../../HOC/slottableComponent';
 import { IconButton } from '../../Button/IconButton';
 
 function isDisabled(search?: string) {
@@ -49,7 +49,7 @@ function LunaticComboboxClearButton({
 	);
 }
 
-export const ComboboxClearButton = customizedComponent(
+export const ComboboxClearButton = slottableComponent(
 	'ComboboxClearButton',
 	LunaticComboboxClearButton
 );

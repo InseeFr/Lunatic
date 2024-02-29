@@ -1,6 +1,6 @@
 import './Sequence.scss';
 import type { LunaticComponentProps } from '../type';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { LabelDescription } from '../shared/LabelDescription';
 import { Declarations } from '../shared/Declarations/Declarations';
 
@@ -26,4 +26,4 @@ function LunaticSequence({
 	);
 }
 
-export const Sequence = customizedComponent('Sequence', LunaticSequence);
+export const Sequence = slottableComponent('Sequence', LunaticSequence);

@@ -1,7 +1,7 @@
 import React, { type PropsWithChildren } from 'react';
 import classnames from 'classnames';
 import './Table.scss';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 
 type Props = PropsWithChildren<{
 	className?: string;
@@ -19,4 +19,4 @@ function LunaticTable({ className, id, children }: Props) {
 	);
 }
 
-export const Table = customizedComponent('Table', LunaticTable);
+export const Table = slottableComponent('Table', LunaticTable);

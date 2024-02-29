@@ -14,9 +14,9 @@ import { ComponentWrapper } from './shared/ComponentWrapper';
 import { library } from './library';
 import { ErrorBoundary } from 'react-error-boundary';
 import {
-	CustomComponentsProvider,
-	type LunaticCustomizedComponent,
-} from './shared/HOC/customizedComponent';
+	SlotsProvider,
+	type LunaticSlotComponents,
+} from './shared/HOC/slottableComponent';
 
 type Props<T extends FilledLunaticComponentProps, V = unknown> = {
 	// List of components to display (coming from getComponents)
@@ -40,7 +40,7 @@ type Props<T extends FilledLunaticComponentProps, V = unknown> = {
 		>
 	) => ReactNode;
 	// Customized deep components
-	custom?: Partial<LunaticCustomizedComponent>;
+	slots?: Partial<LunaticSlotComponents>;
 };
 
 /**
@@ -55,7 +55,7 @@ export function LunaticComponents<
 	componentProps,
 	blocklist,
 	memo,
-	custom,
+	slots,
 	wrapper = ({ children }) => (
 		<div className="lunatic lunatic-component">{children}</div>
 	),
@@ -70,7 +70,7 @@ export function LunaticComponents<
 		<WrapperComponent
 			ref={WrapperComponent === Fragment ? undefined : wrapperRef}
 		>
-			<CustomComponentsProvider custom={custom}>
+			<SlotsProvider slots={slots}>
 				{components.map((component, k) => {
 					if (hasComponentType(component)) {
 						if (blocklist && blocklist.includes(component.componentType)) {
@@ -135,7 +135,7 @@ export function LunaticComponents<
 
 					return null;
 				})}
-			</CustomComponentsProvider>
+			</SlotsProvider>
 		</WrapperComponent>
 	);
 }

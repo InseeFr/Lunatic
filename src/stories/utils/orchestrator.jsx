@@ -114,7 +114,7 @@ function OrchestratorForStories({
 	autoSuggesterLoading,
 	addExternal,
 	preferences,
-	custom,
+	slots,
 	showOverview = false,
 	filterDescription = true,
 	getReferentiel,
@@ -210,7 +210,7 @@ function OrchestratorForStories({
 			<div className="container story-with-sidebar">
 				<div className="components">
 					<LunaticComponents
-						custom={custom}
+						slots={slots}
 						autoFocusKey={pageTag}
 						components={components}
 						componentProps={({ storeName }) => ({

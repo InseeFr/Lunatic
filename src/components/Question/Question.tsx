@@ -1,6 +1,6 @@
 import { LunaticComponents } from '../LunaticComponents';
 import type { LunaticComponentProps } from '../type';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
 import type { PropsWithChildren } from 'react';
@@ -23,7 +23,7 @@ type CustomProps = PropsWithChildren<
 	Omit<LunaticComponentProps<'Question'>, 'components'>
 >;
 
-export const CustomQuestion = customizedComponent<CustomProps>(
+export const CustomQuestion = slottableComponent<CustomProps>(
 	'Question',
 	(props) => {
 		const { id, description, declarations, label, children } = props;

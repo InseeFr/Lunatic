@@ -5,7 +5,7 @@ import React, {
 	type KeyboardEventHandler,
 } from 'react';
 import classnames from 'classnames';
-import { customizedComponent } from '../../HOC/customizedComponent';
+import { slottableComponent } from '../../HOC/slottableComponent';
 
 export type InputProps = {
 	placeholder?: string;
@@ -65,7 +65,7 @@ function LunaticComboboxInput({
 	);
 }
 
-export const ComboboxInput = customizedComponent(
+export const ComboboxInput = slottableComponent(
 	'ComboboxInput',
 	LunaticComboboxInput
 );

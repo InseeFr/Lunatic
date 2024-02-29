@@ -1,7 +1,7 @@
 import './Dropdown.scss';
 import type { LunaticComponentProps } from '../type';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { SimpleOptionRenderer } from './renderer/SimpleOptionRenderer';
 import { SimpleLabelRenderer } from './renderer/SimpleLabelRenderer';
 import { DropdownWritable } from './DropdownWritable';
@@ -32,7 +32,7 @@ type CustomProps = Omit<
 	errors?: LunaticError[];
 };
 
-export const CustomDropdown = customizedComponent<CustomProps>(
+export const CustomDropdown = slottableComponent<CustomProps>(
 	'Dropdown',
 	(props) => {
 		const {

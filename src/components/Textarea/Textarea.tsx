@@ -6,7 +6,7 @@ import {
 	ComponentErrors,
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
 import { CustomInput } from '../Input/Input';
@@ -34,7 +34,7 @@ type CustomProps = Omit<
 	errors?: LunaticError[];
 };
 
-export const CustomTextarea = customizedComponent<CustomProps>(
+export const CustomTextarea = slottableComponent<CustomProps>(
 	'Input',
 	(props) => {
 		const {

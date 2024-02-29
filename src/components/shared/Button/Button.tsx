@@ -3,7 +3,7 @@ import { type MouseEventHandler, type PropsWithChildren } from 'react';
 import { prevent } from '../../../utils/dom';
 import { isElement } from '../../../utils/is-element';
 import './Button.scss';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 
 type Props = PropsWithChildren<{
 	onClick?: MouseEventHandler<HTMLButtonElement | HTMLInputElement>;
@@ -51,4 +51,4 @@ function LunaticButton({
 	);
 }
 
-export const Button = customizedComponent('Button', LunaticButton);
+export const Button = slottableComponent('Button', LunaticButton);

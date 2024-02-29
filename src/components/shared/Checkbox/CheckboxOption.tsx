@@ -4,7 +4,7 @@ import { CheckboxCheckedIcon, CheckboxUncheckedIcon } from '../Icons';
 import './CheckboxOption.scss';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import type { LunaticBaseProps } from '../../type';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 import { Label } from '../Label/Label';
 
 export type CheckboxOptionProps = {
@@ -94,7 +94,7 @@ function LunaticCheckboxOption({
 	);
 }
 
-export const CheckboxOption = customizedComponent(
+export const CheckboxOption = slottableComponent(
 	'CheckboxOption',
 	LunaticCheckboxOption
 );

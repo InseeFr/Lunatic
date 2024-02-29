@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import type { PropsWithChildren } from 'react';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 
 type Props = PropsWithChildren<{
 	className?: string;
@@ -32,4 +32,4 @@ function LunaticTd({
 	);
 }
 
-export const Td = customizedComponent('Td', LunaticTd);
+export const Td = slottableComponent('Td', LunaticTd);

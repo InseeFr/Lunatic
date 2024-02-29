@@ -14,7 +14,7 @@ import { ComboboxClearButton } from './Selection/ComboboxClearButton';
 import { ComboboxSelection } from './Selection/ComboboxSelection';
 import { between, forceInt } from '../../../utils/number';
 import { Label } from '../Label/Label';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 import type { LunaticError } from '../../../use-lunatic/type';
 
 const EMPTY_SEARCH = '';
@@ -211,4 +211,4 @@ function getDefaultOptionValue(option: ComboboxOptionType = { value: '' }) {
 	return id || value;
 }
 
-export const Combobox = customizedComponent('Combobox', LunaticComboBox);
+export const Combobox = slottableComponent('Combobox', LunaticComboBox);

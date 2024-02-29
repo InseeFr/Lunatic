@@ -1,18 +1,17 @@
 # Personnalisation
 
-Par défaut, les composants proposés par `@inseefr/lunatic` sont assez simples avec un style minimal. Vous pouvez personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes, vous pouvez remplacer les composants de bases par vos propres composants à l'aide de l'option `custom`.
+Par défaut, les composants proposés par `@inseefr/lunatic` sont assez simples avec un style minimal. Vous pouvez personnaliser les champs avec votre propre CSS, mais pour des cas plus complexes, vous pouvez remplacer les composants de bases par vos propres composants à l'aide de l'option `slots`.
 
 ```jsx
-const custom = {
+const slots = {
   Input: MyCustomInput,
   InputNumber: MyCustomInputNumber,
 };
 
-function App({ source, data }) {
-  const {} = useLunatic(source, data, { custom });
-  // ...
-}
+<LunaticComponents slots={slots} />
 ```
+
+Si vous utilisez TypeScript, vous pouvez utiliser le type `LunaticSlotComponents` pour typer vos composants (l'objet contient en index tous les composants personnalisables).
 
 ## Liste des composants personnalisables
 

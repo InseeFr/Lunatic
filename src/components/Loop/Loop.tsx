@@ -4,7 +4,7 @@ import { times } from '../../utils/array';
 import { LunaticComponents } from '../LunaticComponents';
 import type { LunaticComponentProps } from '../type';
 import { blockedInLoopComponents } from './constant';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Label } from '../shared/Label/Label';
 import { Declarations } from '../shared/Declarations/Declarations';
 import { Button } from '../shared/Button/Button';
@@ -88,7 +88,7 @@ type CustomProps = Omit<
 		canControlRows?: boolean;
 	}>;
 
-export const CustomLoop = customizedComponent<CustomProps>('Loop', (props) => {
+export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
 	const {
 		declarations,
 		id,

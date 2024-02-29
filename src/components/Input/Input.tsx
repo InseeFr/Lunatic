@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import './Input.scss';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import {
 	ComponentErrors,
 	getComponentErrors,
@@ -33,49 +33,46 @@ type CustomProps = Omit<
 	errors?: LunaticError[];
 };
 
-export const CustomInput = customizedComponent<CustomProps>(
-	'Input',
-	(props) => {
-		const {
-			value,
-			onChange,
-			disabled,
-			required,
-			maxLength,
-			label,
-			description,
-			id,
-			errors,
-			readOnly,
-			declarations,
-		} = props;
-		const labelId = `label-${id}`;
-		return (
-			<div className={classnames('lunatic-input')}>
-				<Label htmlFor={id} id={labelId} description={description}>
-					{label}
-				</Label>
-				<Declarations
-					type="AFTER_QUESTION_TEXT"
-					declarations={declarations}
-					id={id}
-				/>
-				<input
-					id={id}
-					aria-labelledby={labelId}
-					autoComplete="off"
-					type="text"
-					disabled={disabled}
-					readOnly={readOnly}
-					value={(value ?? '').toString()}
-					onChange={(e) => onChange(e.target.value)}
-					aria-required={required}
-					required={required}
-					maxLength={maxLength}
-					aria-invalid={!!errors}
-				/>
-				<ComponentErrors errors={errors} />
-			</div>
-		);
-	}
-);
+export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
+	const {
+		value,
+		onChange,
+		disabled,
+		required,
+		maxLength,
+		label,
+		description,
+		id,
+		errors,
+		readOnly,
+		declarations,
+	} = props;
+	const labelId = `label-${id}`;
+	return (
+		<div className={classnames('lunatic-input')}>
+			<Label htmlFor={id} id={labelId} description={description}>
+				{label}
+			</Label>
+			<Declarations
+				type="AFTER_QUESTION_TEXT"
+				declarations={declarations}
+				id={id}
+			/>
+			<input
+				id={id}
+				aria-labelledby={labelId}
+				autoComplete="off"
+				type="text"
+				disabled={disabled}
+				readOnly={readOnly}
+				value={(value ?? '').toString()}
+				onChange={(e) => onChange(e.target.value)}
+				aria-required={required}
+				required={required}
+				maxLength={maxLength}
+				aria-invalid={!!errors}
+			/>
+			<ComponentErrors errors={errors} />
+		</div>
+	);
+});

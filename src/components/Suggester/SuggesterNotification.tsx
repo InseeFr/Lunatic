@@ -2,7 +2,7 @@ import React, { type PropsWithChildren, type ReactNode } from 'react';
 import { STATUS } from './SuggesterStatus';
 import { Notification } from '../shared/Notification';
 import { SuggesterStatus } from '../../use-lunatic/use-suggesters';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Label } from '../shared/Label/Label';
 
 type Props = PropsWithChildren<{
@@ -59,7 +59,7 @@ function LunaticSuggesterNotification({
 	return <>{children}</>;
 }
 
-export const SuggesterNotification = customizedComponent(
+export const SuggesterNotification = slottableComponent(
 	'SuggesterNotification',
 	LunaticSuggesterNotification
 );

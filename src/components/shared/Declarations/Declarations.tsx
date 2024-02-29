@@ -1,4 +1,4 @@
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 import './Declarations.scss';
 import {
 	type HTMLAttributes,
@@ -7,7 +7,7 @@ import {
 } from 'react';
 import classnames from 'classnames';
 
-export const Declaration = customizedComponent<
+export const Declaration = slottableComponent<
 	PropsWithChildren<{ type: string }>
 >('Declaration', ({ children, type }) => (
 	<div
@@ -54,7 +54,7 @@ function LunaticDeclarations({
 	);
 }
 
-export const Declarations = customizedComponent(
+export const Declarations = slottableComponent(
 	'Declarations',
 	LunaticDeclarations
 );

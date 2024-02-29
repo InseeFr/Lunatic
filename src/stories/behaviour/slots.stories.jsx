@@ -5,7 +5,7 @@ import data from '../input/data';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
-	title: 'Behaviour/Custom',
+	title: 'Behaviour/Slots',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };
@@ -29,4 +29,4 @@ const CustomInput = ({ onChange, value, label }) => (
 	</fieldset>
 );
 
-Default.args = { id: 'input', source, data, custom: { Input: CustomInput } };
+Default.args = { id: 'input', source, data, slots: { Input: CustomInput } };

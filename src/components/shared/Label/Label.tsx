@@ -4,7 +4,7 @@ import {
 	type ReactNode,
 } from 'react';
 import classnames from 'classnames';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 import { LabelDescription } from '../LabelDescription';
 import './Label.scss';
 
@@ -44,4 +44,4 @@ function LunaticLabel({
 	);
 }
 
-export const Label = customizedComponent('Label', LunaticLabel);
+export const Label = slottableComponent('Label', LunaticLabel);

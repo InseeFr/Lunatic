@@ -4,7 +4,7 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import { CheckboxOption } from '../shared/Checkbox/CheckboxOption';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
 
@@ -35,7 +35,7 @@ type CustomProps = Omit<
 	checked?: boolean;
 };
 
-export const CustomCheckboxBoolean = customizedComponent<CustomProps>(
+export const CustomCheckboxBoolean = slottableComponent<CustomProps>(
 	'Input',
 	(props) => {
 		const {

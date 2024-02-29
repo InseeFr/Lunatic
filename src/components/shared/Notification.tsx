@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import classnames from 'classnames';
-import { customizedComponent } from './HOC/customizedComponent';
+import { slottableComponent } from './HOC/slottableComponent';
 
 type Props = {
 	className?: string;
@@ -19,7 +19,7 @@ function LunaticNotification({ className, title, description }: Props) {
 	);
 }
 
-export const Notification = customizedComponent(
+export const Notification = slottableComponent(
 	'Notification',
 	LunaticNotification
 );

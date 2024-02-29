@@ -5,7 +5,7 @@ import {
 } from '../shared/ComponentErrors/ComponentErrors';
 import React, { type KeyboardEvent } from 'react';
 import classnames from 'classnames';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Label } from '../shared/Label/Label';
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
@@ -41,7 +41,7 @@ type CustomProps = Omit<
 	checked: boolean;
 };
 
-export const CustomSwitch = customizedComponent<CustomProps>(
+export const CustomSwitch = slottableComponent<CustomProps>(
 	'Switch',
 	(props) => {
 		const {
@@ -105,4 +105,4 @@ export const CustomSwitch = customizedComponent<CustomProps>(
 	}
 );
 
-export const Switch = customizedComponent('Switch', LunaticSwitch);
+export const Switch = slottableComponent('Switch', LunaticSwitch);

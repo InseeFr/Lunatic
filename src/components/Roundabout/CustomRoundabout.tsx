@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import { RoundaboutItButton } from './RoundaboutItButton';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import {
 	RoundaboutContainer,
 	RoundaboutItContainer,
@@ -56,7 +56,7 @@ type Props = {
 	goToIteration: (v: number) => void;
 };
 
-export const CustomRoundabout = customizedComponent<Props>(
+export const CustomRoundabout = slottableComponent<Props>(
 	'Roundabout',
 	({ iterations, expressions, goToIteration, label, locked = true }) => {
 		const emptyArray = new Array(iterations) as undefined[];

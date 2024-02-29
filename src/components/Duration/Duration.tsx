@@ -6,7 +6,7 @@ import { clampDuration, labelByUnit, propsByUnit } from './durationUtils';
 import { formatDuration } from './formatDuration';
 import classnames from 'classnames';
 import { objectKeys } from '../../utils/object';
-import { customizedComponent } from '../shared/HOC/customizedComponent';
+import { slottableComponent } from '../shared/HOC/slottableComponent';
 import type { LunaticError } from '../../use-lunatic/type';
 import {
 	ComponentErrors,
@@ -37,7 +37,7 @@ type CustomProps = Omit<
 	errors?: LunaticError[];
 };
 
-export const CustomDuration = customizedComponent<CustomProps>(
+export const CustomDuration = slottableComponent<CustomProps>(
 	'Duration',
 	(props) => {
 		const { errors, value, label, format, onChange, declarations, id } = props;

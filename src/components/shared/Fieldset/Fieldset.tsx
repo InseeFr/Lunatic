@@ -1,6 +1,6 @@
 import { type PropsWithChildren, type ReactNode } from 'react';
 import classnames from 'classnames';
-import { customizedComponent } from '../HOC/customizedComponent';
+import { slottableComponent } from '../HOC/slottableComponent';
 import { LabelDescription } from '../LabelDescription';
 import './Fieldset.scss';
 import type { LunaticBaseProps } from '../../type';
@@ -45,4 +45,4 @@ function labelToReactNode(label: unknown): ReactNode {
 	return ``;
 }
 
-export const Fieldset = customizedComponent('Fieldset', LunaticFieldset);
+export const Fieldset = slottableComponent('Fieldset', LunaticFieldset);
