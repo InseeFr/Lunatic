@@ -13,6 +13,10 @@ import { hasComponentType } from '../use-lunatic/commons/component';
 import { ComponentWrapper } from './shared/ComponentWrapper';
 import { library } from './library';
 import { ErrorBoundary } from 'react-error-boundary';
+import {
+	CustomComponentsProvider,
+	type LunaticCustomizedComponent,
+} from './shared/HOC/customizedComponent';
 
 type Props<T extends FilledLunaticComponentProps, V = unknown> = {
 	// List of components to display (coming from getComponents)
@@ -35,6 +39,8 @@ type Props<T extends FilledLunaticComponentProps, V = unknown> = {
 			FilledLunaticComponentProps & T & V & { index: number }
 		>
 	) => ReactNode;
+	// Customized deep components
+	custom?: Partial<LunaticCustomizedComponent>;
 };
 
 /**
@@ -49,6 +55,7 @@ export function LunaticComponents<
 	componentProps,
 	blocklist,
 	memo,
+	custom,
 	wrapper = ({ children }) => (
 		<div className="lunatic lunatic-component">{children}</div>
 	),
@@ -63,69 +70,72 @@ export function LunaticComponents<
 		<WrapperComponent
 			ref={WrapperComponent === Fragment ? undefined : wrapperRef}
 		>
-			{components.map((component, k) => {
-				if (hasComponentType(component)) {
-					if (blocklist && blocklist.includes(component.componentType)) {
+			<CustomComponentsProvider custom={custom}>
+				{components.map((component, k) => {
+					if (hasComponentType(component)) {
+						if (blocklist && blocklist.includes(component.componentType)) {
+							return (
+								<Fragment key={computeId(component, k)}>
+									{wrapper({
+										children: (
+											<div style={{ color: 'red' }}>
+												Component "{component.componentType}" is not allowed
+												here
+											</div>
+										),
+										index: k,
+										...component,
+									})}
+								</Fragment>
+							);
+						}
+						const props = {
+							...component,
+							...componentProps?.(component),
+						};
 						return (
 							<Fragment key={computeId(component, k)}>
 								{wrapper({
-									children: (
-										<div style={{ color: 'red' }}>
-											Component "{component.componentType}" is not allowed here
-										</div>
+									children: memo ? (
+										<LunaticComponentMemo {...props} />
+									) : (
+										<LunaticComponent {...props} />
 									),
 									index: k,
-									...component,
+									...props,
 								})}
 							</Fragment>
 						);
 					}
-					const props = {
-						...component,
-						...componentProps?.(component),
-					};
-					return (
-						<Fragment key={computeId(component, k)}>
-							{wrapper({
-								children: memo ? (
-									<LunaticComponentMemo {...props} />
-								) : (
-									<LunaticComponent {...props} />
-								),
-								index: k,
-								...props,
-							})}
-						</Fragment>
-					);
-				}
 
-				// In some case (table for instance) we have static component that only have a label (no componentType)
-				if (hasLabel(component)) {
-					return (
-						<Fragment key={k}>
-							{wrapper({
-								...component,
-								children: component.label,
-								index: k,
-							} as any)}
-						</Fragment>
-					);
-				}
+					// In some case (table for instance) we have static component that only have a label (no componentType)
+					if (hasLabel(component)) {
+						return (
+							<Fragment key={k}>
+								{wrapper({
+									...component,
+									children: component.label,
+									index: k,
+								} as any)}
+							</Fragment>
+						);
+					}
 
-				// Component is a ReactNode
-				if (isValidElement(component)) {
-					return (
-						<Fragment key={k}>
-							{wrapper({
-								children: component,
-								index: k,
-							} as any)}
-						</Fragment>
-					);
-				}
+					// Component is a ReactNode
+					if (isValidElement(component)) {
+						return (
+							<Fragment key={k}>
+								{wrapper({
+									children: component,
+									index: k,
+								} as any)}
+							</Fragment>
+						);
+					}
 
-				return null;
-			})}
+					return null;
+				})}
+			</CustomComponentsProvider>
 		</WrapperComponent>
 	);
 }

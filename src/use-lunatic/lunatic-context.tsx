@@ -12,7 +12,6 @@ const LunaticContext = createContext({
 	management: false,
 	missing: false,
 	shortcut: false,
-	custom: {} as Record<string, FunctionComponent<unknown>>,
 	missingShortcut: { dontKnow: '', refused: '' },
 	dontKnowButton: D.DK,
 	refusedButton: D.RF,
@@ -38,18 +37,12 @@ export const useLunaticMissing = () => {
 	};
 };
 
-/** Return custom elements list to override native components */
-export const useLunaticCustom = () => {
-	return useContext(LunaticContext).custom;
-};
-
 /** Provide `management` to display data states [COLLECTED,EDITED,FORCED] */
 export const useLunaticManagement = () => {
 	return useContext(LunaticContext).management;
 };
 
 export function createLunaticProvider({
-	custom,
 	management,
 	missing,
 	missingStrategy,
@@ -58,7 +51,6 @@ export function createLunaticProvider({
 	dontKnowButton,
 	refusedButton,
 }: {
-	custom: Record<string, FunctionComponent<unknown>>;
 	management: boolean;
 	missing: boolean;
 	missingStrategy: () => void;
@@ -68,7 +60,6 @@ export function createLunaticProvider({
 	refusedButton: string;
 }): FunctionComponent<PropsWithChildren> {
 	const value = {
-		custom,
 		management,
 		missing,
 		missingStrategy,

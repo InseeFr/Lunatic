@@ -13,7 +13,7 @@ type Props = PropsWithChildren<{
 }>;
 
 export const ComboboxContainer = customizedComponent<Props>(
-	'ComboBoxContainer',
+	'ComboboxContainer',
 	({
 		children,
 		className,

@@ -1,10 +1,4 @@
-import {
-	type FunctionComponent,
-	useCallback,
-	useEffect,
-	useMemo,
-	useReducer,
-} from 'react';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
 import type { LunaticData, LunaticState } from './type';
@@ -50,7 +44,6 @@ function useLunatic(
 		autoSuggesterLoading = false,
 		activeControls = false,
 		getReferentiel,
-		custom = empty,
 		// Calculate an overview of every sequence (will be exposed as "overview")
 		withOverview = false,
 		missing = false,
@@ -72,7 +65,6 @@ function useLunatic(
 		autoSuggesterLoading?: boolean;
 		getReferentiel?: (name: string) => Promise<Array<unknown>>;
 		activeControls?: boolean;
-		custom?: Record<string, FunctionComponent<unknown>>;
 		withOverview?: boolean;
 		missing?: boolean;
 		missingStrategy?: () => void;
@@ -95,7 +87,6 @@ function useLunatic(
 	const Provider = useMemo(
 		() =>
 			createLunaticProvider({
-				custom,
 				management,
 				missing,
 				missingStrategy,
@@ -105,7 +96,6 @@ function useLunatic(
 				refusedButton,
 			}),
 		[
-			custom,
 			management,
 			missing,
 			missingStrategy,

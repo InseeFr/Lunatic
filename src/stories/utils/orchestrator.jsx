@@ -144,10 +144,9 @@ function OrchestratorForStories({
 		features,
 		preferences,
 		onChange: onLogChange,
-		custom,
 		autoSuggesterLoading,
 		getReferentiel,
-		workersBasePath: "./workers",
+		workersBasePath: './workers',
 		management,
 		missing,
 		missingStrategy,
@@ -211,6 +210,7 @@ function OrchestratorForStories({
 			<div className="container story-with-sidebar">
 				<div className="components">
 					<LunaticComponents
+						custom={custom}
 						autoFocusKey={pageTag}
 						components={components}
 						componentProps={({ storeName }) => ({
