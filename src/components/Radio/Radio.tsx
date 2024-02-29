@@ -35,4 +35,4 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 	);
 }
 
-export const Radio = customizedComponent('LunaticRadio', LunaticRadio);
+export const Radio = customizedComponent('Radio', LunaticRadio);
