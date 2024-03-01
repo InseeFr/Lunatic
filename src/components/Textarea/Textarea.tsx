@@ -1,4 +1,3 @@
-import { type ChangeEventHandler } from 'react';
 import './Textarea.scss';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
@@ -9,7 +8,6 @@ import {
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
-import { CustomInput } from '../Input/Input';
 
 export function Textarea({
 	handleChange,

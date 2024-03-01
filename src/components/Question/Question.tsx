@@ -2,7 +2,6 @@ import { LunaticComponents } from '../LunaticComponents';
 import type { LunaticComponentProps } from '../type';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
-import type { LunaticError } from '../../use-lunatic/type';
 import type { PropsWithChildren } from 'react';
 
 /**

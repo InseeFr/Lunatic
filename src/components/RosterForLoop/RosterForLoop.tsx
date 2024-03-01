@@ -1,6 +1,5 @@
-import { Fragment, type PropsWithChildren, useCallback, useState } from 'react';
+import { Fragment, useCallback, useState } from 'react';
 import './RosterForLoop.scss';
-import D from '../../i18n';
 import type { LunaticComponentProps } from '../type';
 import { Table, Tbody, Td, Tr, TableHeader } from '../shared/Table';
 import { times } from '../../utils/array';
@@ -10,11 +9,6 @@ import {
 	ComponentErrors,
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
-import { Declarations } from '../shared/Declarations/Declarations';
-import { slottableComponent } from '../shared/HOC/slottableComponent';
-import { Label } from '../shared/Label/Label';
-import { Button } from '../shared/Button/Button';
-import type { LunaticError } from '../../use-lunatic/type';
 import { CustomLoop } from '../Loop/Loop';
 
 const DEFAULT_MIN_ROWS = 1;
