@@ -36,7 +36,7 @@ type CustomProps = Omit<
 };
 
 export const CustomCheckboxBoolean = slottableComponent<CustomProps>(
-	'Input',
+	'CheckboxBoolean',
 	(props) => {
 		const {
 			disabled,
