@@ -35,7 +35,7 @@ type CustomProps = Omit<
 };
 
 export const CustomTextarea = slottableComponent<CustomProps>(
-	'Input',
+	'Textarea',
 	(props) => {
 		const {
 			value,
