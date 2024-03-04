@@ -4,7 +4,6 @@ import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { SimpleOptionRenderer } from './renderer/SimpleOptionRenderer';
 import { SimpleLabelRenderer } from './renderer/SimpleLabelRenderer';
-import { DropdownWritable } from './DropdownWritable';
 import { Combobox } from '../shared/Combobox/Combobox';
 import classNames from 'classnames';
 import type { LunaticError } from '../../use-lunatic/type';
@@ -39,7 +38,6 @@ export const CustomDropdown = slottableComponent<CustomProps>(
 			id,
 			disabled,
 			options,
-			writable,
 			className,
 			value,
 			description,
@@ -48,22 +46,6 @@ export const CustomDropdown = slottableComponent<CustomProps>(
 			onChange,
 			readOnly,
 		} = props;
-		if (writable) {
-			return (
-				<DropdownWritable
-					id={id}
-					className={classNames(className, 'lunatic-dropdown')}
-					disabled={disabled}
-					readOnly={readOnly}
-					options={options}
-					onSelect={onChange}
-					value={value}
-					label={label}
-					errors={errors}
-					description={description}
-				/>
-			);
-		}
 
 		return (
 			<Combobox

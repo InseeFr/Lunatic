@@ -177,7 +177,6 @@ type ComponentPropsByType = {
 	Dropdown: LunaticBaseProps<string | null> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
-		writable?: boolean;
 	};
 	Textarea: LunaticBaseProps<string> & {
 		cols?: number;
