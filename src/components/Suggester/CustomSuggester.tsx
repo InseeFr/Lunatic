@@ -11,19 +11,22 @@ type Props = {
 	className?: string;
 	classNamePrefix?: string;
 	placeholder?: string;
-	onSelect: (s: string | null) => void;
+	onSelect: (
+		option: string | null | { id?: string; [key: string]: ReactNode }
+	) => void;
 	value: string | null;
 	labelRenderer: LunaticComponentProps<'Suggester'>['labelRenderer'];
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
 	disabled?: boolean;
 	readOnly?: boolean;
 	id?: string;
-	searching: (
+	searching?: (
 		s: string | null
 	) => Promise<{ results: ComboboxOptionType[]; search: string }>;
 	label?: ReactNode;
 	description?: ReactNode;
 	errors?: LunaticError[];
+	defaultOptions?: ComboboxOptionType[];
 };
 
 export const CustomSuggester = slottableComponent<Props>(
@@ -43,14 +46,17 @@ export const CustomSuggester = slottableComponent<Props>(
 		label,
 		description,
 		errors,
+		defaultOptions,
 	}) => {
 		const [search, setSearch] = useState('');
-		const [options, setOptions] = useState<Array<ComboboxOptionType>>([]);
+		const [options, setOptions] = useState<Array<ComboboxOptionType>>(
+			defaultOptions ?? []
+		);
 		const lastSearch = useRef('');
 
 		const handleSelect = useCallback(
-			function (id: string | null) {
-				onSelect(id ? id : null);
+			(id: string | null) => {
+				onSelect(id ? options.find((o) => o.id === id)! : null);
 			},
 			[onSelect]
 		);
@@ -67,7 +73,7 @@ export const CustomSuggester = slottableComponent<Props>(
 						onSelect(search);
 					}
 				} else {
-					setOptions([]);
+					setOptions(defaultOptions ?? []);
 					onSelect(null);
 					setSearch('');
 				}

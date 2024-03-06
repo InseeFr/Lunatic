@@ -1,0 +1,142 @@
+{
+	"suggesters": [
+		{
+			"name": "products",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 3,
+					"stemmer": false
+				}
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": {
+					"language": "French",
+					"pattern": "[\\w.]+",
+					"min": 3,
+					"stemmer": false
+				}
+			},
+			"version": "1"
+		}
+	],
+	"components": [
+		{
+			"componentType": "Suggester",
+			"response": {
+				"name": "PRODUCT"
+			},
+			"optionResponses": [{
+				"name": "PRODUCT_NAME",
+				"attribute": "label"
+			},{
+				"name": "PRODUCT_PRICE",
+				"attribute": "price"
+			}],
+			"storeName": "products",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lt4ezymk",
+			"page": "1",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 1. \" || \"Quel est votre produit préféré ?\""
+			},
+			"mandatory": false,
+			"maxLength": 249
+		},
+		{
+			"componentType": "Input",
+			"response": {
+				"name": "NOM"
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "prenom",
+			"page": "2",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 2. Vous aimez \" || PRODUCT_NAME || \" mais quel est votre prénom ?\""
+			},
+			"mandatory": false,
+			"maxLength": 249
+		}
+	],
+	"pagination": "question",
+	"resizing": {},
+	"label": {
+		"type": "VTL|MD",
+		"value": "Suggester"
+	},
+	"lunaticModelVersion": "2.5.0",
+	"modele": "SUGGESTER",
+	"enoCoreVersion": "2.7.1",
+	"generatingDate": "27-02-2024 13:43:43",
+	"missing": false,
+	"id": "lt4f6mib",
+	"maxPage": "2",
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "PRODUCT"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "PRODUCT_PRICE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "PRODUCT_NAME"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "PRODUCT_PRICE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "PRENOM"
+		}
+	]
+}
