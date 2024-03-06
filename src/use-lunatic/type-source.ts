@@ -235,6 +235,7 @@ export type ComponentQuestionType = {
 export type ComponentSuggesterType = {
 	componentType: 'Suggester';
 	storeName: string;
+	response: ResponseType;
 };
 
 export type SuggesterType = {
@@ -253,10 +254,10 @@ export type SuggesterType = {
 		// Enable stemming
 		stemmer?: boolean;
 		// Define synonyms
-		synonyms: { source: string; target: string[] }[];
+		synonyms?: { source: string; target: string[] }[];
 	}[];
 	// Limit the number of results to return
-	max: number;
+	max?: number;
 	// Ignored words
 	stopWords?: string;
 	// Overwrite order on the result using alphabetical order
