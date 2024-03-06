@@ -47,7 +47,7 @@ export type ControlType = {
 	control: LabelType;
 	errorMessage: LabelType;
 	bindingDependencies: string[];
-	type: 'roundabout' | 'ROW' | 'simple';
+	type?: 'roundabout' | 'ROW' | 'simple';
 	iterations?: number;
 };
 
@@ -92,9 +92,7 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentRoundaboutType)
 	| (ComponentTypeBase & ComponentSuggesterType)
 	| (ComponentTypeBase & ComponentInputOrTextareaType)
-	| (ComponentTypeBase & {
-			componentType: 'CheckboxOne';
-	  })
+	| (ComponentTypeBase & ComponentCheckboxOneType)
 	| (ComponentTypeBase & ComponentQuestionType);
 
 export type ComponentTypeEnum = ComponentType['componentType'];
@@ -177,8 +175,10 @@ export type ComponentDatePickerType = {
 
 export type ComponentCheckboxGroupType = {
 	componentType: 'CheckboxGroup';
+	description?: LabelType;
 	responses: Array<{
 		label: LabelType;
+		description?: LabelType;
 		response: ResponseType;
 		id: string;
 	}>;
@@ -188,6 +188,13 @@ export type ComponentCheckboxBooleanType = {
 	componentType: 'CheckboxBoolean';
 	response: ResponseType;
 	missingResponse?: ResponseType;
+};
+
+export type ComponentCheckboxOneType = {
+	componentType: 'CheckboxOne';
+	response: ResponseType;
+	missingResponse?: ResponseType;
+	options: { value: string; label: LabelType }[];
 };
 
 export type ComponentRadioType = {
@@ -294,7 +301,7 @@ export type Variable =
 			variableType: 'CALCULATED';
 			name: string;
 			expression: LabelType;
-			bindingDependencies: string[];
+			bindingDependencies?: string[];
 			inFilter: string;
 			shapeFrom?: string;
 	  };
@@ -317,7 +324,7 @@ export type LunaticSource = {
 			[variableName: string]: string;
 		};
 	};
-	missingBlock: {
+	missingBlock?: {
 		[variableName: string]: string[];
 	};
 	resizing: {
