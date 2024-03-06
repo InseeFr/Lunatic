@@ -29,13 +29,16 @@
 			"response": {
 				"name": "PRODUCT"
 			},
-			"optionResponses": [{
-				"name": "PRODUCT_NAME",
-				"attribute": "label"
-			},{
-				"name": "PRODUCT_PRICE",
-				"attribute": "price"
-			}],
+			"optionResponses": [
+				{
+					"name": "PRODUCT_NAME",
+					"attribute": "label"
+				},
+				{
+					"name": "PRODUCT_PRICE",
+					"attribute": "price"
+				}
+			],
 			"storeName": "products",
 			"conditionFilter": {
 				"type": "VTL",
