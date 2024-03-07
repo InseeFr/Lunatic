@@ -150,6 +150,7 @@ function OrchestratorForStories({
 		custom,
 		autoSuggesterLoading,
 		getReferentiel,
+		workersBasePath: "./workers",
 		management,
 		missing,
 		missingStrategy,

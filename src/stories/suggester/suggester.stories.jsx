@@ -2,7 +2,6 @@ import React from 'react';
 import defaultArgTypes from '../utils/default-arg-types';
 import Orchestrator from '../utils/orchestrator';
 import { getReferentiel } from '../utils/referentiel';
-import simple from './simple';
 import source from './source';
 import sourceComponentSet from './source-component-set';
 
@@ -25,17 +24,6 @@ Default.args = {
 	pagination: true,
 };
 
-export const Simple = Template.bind({});
-Simple.args = {
-	source: simple,
-	getReferentiel,
-	autoSuggesterLoading: true,
-	missing: {
-		table: { disable: false },
-		control: 'boolean',
-		defaultValue: true,
-	},
-};
 
 export const ComponentSet = Template.bind({});
 ComponentSet.args = {

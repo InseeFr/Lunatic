@@ -49,11 +49,14 @@ function SuggesterLoaderWidget({
 	useEffect(
 		function () {
 			if (suggesters) {
-				const str = suggesters.reduce(function (current, storeInfo) {
-					const { name } = storeInfo;
+				const str = suggesters.reduce(
+					function (current, storeInfo) {
+						const { name } = storeInfo;
 
-					return { ...current, [name]: { storeInfo, ...getStoreInfo(name) } };
-				}, {} as typeof stores);
+						return { ...current, [name]: { storeInfo, ...getStoreInfo(name) } };
+					},
+					{} as typeof stores
+				);
 
 				setStores(str);
 			}

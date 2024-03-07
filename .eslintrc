@@ -1,9 +1,9 @@
 {
 	"ignorePatterns": ["docs/**"],
-	"extends": ["prettier", "react-app"],
+	"extends": ["prettier", "react-app", "plugin:storybook/recommended"],
 	"rules": {
 		"react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
 		"jsx-a11y/href-no-hash": "off",
-		"jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }]
-	}
+		"jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
+	},
 }

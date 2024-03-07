@@ -63,11 +63,12 @@ export function resizeArray<T = unknown>(
 	if (array.length === newLength) {
 		return array;
 	}
-	return new Array(newLength)
-		.fill(defaultValue ?? null)
-		.map(function (value, index) {
-			return index < array.length ? array[index] : value;
-		}, []);
+	return new Array(newLength).fill(defaultValue ?? null).map(function (
+		value,
+		index
+	) {
+		return index < array.length ? array[index] : value;
+	}, []);
 }
 
 /**
@@ -98,4 +99,14 @@ export function subArrays<T = unknown>(items: T[] | T): T[][] {
 		arrays.push(items.slice(0, i));
 	}
 	return arrays;
+}
+
+/**
+ * Calculates the depth of an array
+ */
+export function depth(arr: unknown, base = 0) {
+	if (!Array.isArray(arr)) {
+		return base;
+	}
+	return depth(arr[0], base + 1);
 }

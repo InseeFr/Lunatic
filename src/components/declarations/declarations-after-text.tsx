@@ -1,3 +1,4 @@
+import { createCustomizableLunaticField } from '../commons';
 import Declarations, {
 	DECLARATION_POSITIONS,
 	type DeclarationsProps,
@@ -7,4 +8,7 @@ function DeclarationsAfterText(props: Omit<DeclarationsProps, 'type'>) {
 	return <Declarations type={DECLARATION_POSITIONS.after} {...props} />;
 }
 
-export default DeclarationsAfterText;
+export default createCustomizableLunaticField(
+	DeclarationsAfterText,
+	'DeclarationsAfterText'
+);

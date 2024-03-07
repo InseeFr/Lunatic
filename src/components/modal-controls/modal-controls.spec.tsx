@@ -2,7 +2,6 @@ import { fireEvent, render } from '@testing-library/react';
 import ModalControls from './modal-controls';
 import { describe, expect, it, vi } from 'vitest';
 import type { LunaticError } from '../../use-lunatic/type';
-import { Criticality, TypeOfControl } from '../../use-lunatic/type-source';
 
 describe('ModalControls component', () => {
 	it('should render correctly when there are errors', () => {
@@ -10,17 +9,17 @@ describe('ModalControls component', () => {
 			field1: [
 				{
 					id: 'message1',
-					criticality: Criticality.ERROR,
+					criticality: 'ERROR',
 					errorMessage: 'Error message 1',
-					typeOfControl: TypeOfControl.CONSISTENCY,
+					typeOfControl: 'CONSISTENCY',
 				},
 			],
 			field2: [
 				{
 					id: 'message2',
-					criticality: Criticality.ERROR,
+					criticality: 'ERROR',
 					errorMessage: 'Error message 2',
-					typeOfControl: TypeOfControl.CONSISTENCY,
+					typeOfControl: 'CONSISTENCY',
 				},
 			],
 		} satisfies Record<string, LunaticError[]>;
@@ -45,18 +44,18 @@ describe('ModalControls component', () => {
 		const errors = {
 			field1: [
 				{
-					criticality: Criticality.ERROR,
+					criticality: 'ERROR',
 					errorMessage: 'Error message 1',
 					id: 'message1',
-					typeOfControl: TypeOfControl.CONSISTENCY,
+					typeOfControl: 'CONSISTENCY',
 				},
 			],
 			field2: [
 				{
-					criticality: Criticality.ERROR,
+					criticality: 'ERROR',
 					errorMessage: 'Error message 2',
 					id: 'message2',
-					typeOfControl: TypeOfControl.CONSISTENCY,
+					typeOfControl: 'CONSISTENCY',
 				},
 			],
 		} satisfies Record<string, LunaticError[]>;

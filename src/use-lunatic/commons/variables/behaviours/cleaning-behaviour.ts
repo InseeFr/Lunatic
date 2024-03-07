@@ -1,5 +1,6 @@
 import type { LunaticVariablesStore } from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type-source';
+import { depth } from '../../../../utils/array';
 
 /**
  * Cleaning behaviour for the store
@@ -35,11 +36,18 @@ export function cleaningBehaviour(
 					continue;
 				}
 
+				// Variable may be top level, so we need to deduce expected iteration
+				const variableDepth = depth(initialValues[variableName]);
+				const variableIteration =
+					variableDepth === 0
+						? undefined
+						: iteration?.slice(0, depth(initialValues[variableName]));
+
 				store.set(
 					variableName,
-					getValueAtIteration(initialValues[variableName], iteration),
+					getValueAtIteration(initialValues[variableName], variableIteration),
 					{
-						iteration,
+						iteration: variableIteration,
 					}
 				);
 			} catch (e) {

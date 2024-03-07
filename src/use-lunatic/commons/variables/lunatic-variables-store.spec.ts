@@ -253,6 +253,61 @@ describe('lunatic-variables-store', () => {
 			expect((variables.get('PRENOM') as string[]).length).toEqual(3);
 			expect((variables.get('NOM') as string[]).length).toEqual(3);
 		});
+		it('should resize pairwise with the array syntax', () => {
+			variables.set('PRENOM', []);
+			variables.set('LINKS', [[]]);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					sizeForLinksVariables: ['count(PRENOM)', 'count(PRENOM)'],
+					linksVariables: ['LINKS'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			expect(variables.get('LINKS') as string[][]).toEqual([
+				[null, null, null],
+				[null, null, null],
+				[null, null, null],
+			]);
+		});
+		it('should resize pairwise with the object syntax', () => {
+			variables.set('PRENOM', []);
+			variables.set('LINKS', [[]]);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					sizeForLinksVariables: {
+						xAxisSize: 'count(PRENOM)',
+						yAxisSize: 'count(PRENOM)',
+					},
+					linksVariables: ['LINKS'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			expect(variables.get('LINKS') as string[][]).toEqual([
+				[null, null, null],
+				[null, null, null],
+				[null, null, null],
+			]);
+		});
+		it('should handle both pairwise and normal resize', () => {
+			variables.set('PRENOM', []);
+			variables.set('NOM', []);
+			variables.set('LINKS', [[]]);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					sizeForLinksVariables: ['count(PRENOM)', 'count(PRENOM)'],
+					linksVariables: ['LINKS'],
+					size: 'count(PRENOM)',
+					variables: ['NOM'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			expect(variables.get('LINKS') as string[][]).toEqual([
+				[null, null, null],
+				[null, null, null],
+				[null, null, null],
+			]);
+			expect(variables.get('NOM') as string[]).toEqual([null, null, null]);
+		});
 	});
 
 	describe('cleaning', () => {
@@ -289,11 +344,15 @@ describe('lunatic-variables-store', () => {
 		it('should clean variables at a specific iteration', () => {
 			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
 			variables.set('READY', [true, true, true]);
-			cleaningBehaviour(variables, {
-				READY: {
-					PRENOM: 'READY',
+			cleaningBehaviour(
+				variables,
+				{
+					READY: {
+						PRENOM: 'READY',
+					},
 				},
-			});
+				{ PRENOM: [null] }
+			);
 			variables.set('READY', false, { iteration: [1] });
 			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
 		});
@@ -311,6 +370,21 @@ describe('lunatic-variables-store', () => {
 			);
 			variables.set('READY', false, { iteration: [1] });
 			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
+		});
+		it('should clean root variables even when in an iteration', () => {
+			variables.set('PRENOM', 'John');
+			variables.set('READY', [true, true, true]);
+			cleaningBehaviour(
+				variables,
+				{
+					READY: {
+						PRENOM: 'READY',
+					},
+				},
+				{ PRENOM: null }
+			);
+			variables.set('READY', false, { iteration: [1] });
+			expect(variables.get('PRENOM')).toEqual(null);
 		});
 	});
 

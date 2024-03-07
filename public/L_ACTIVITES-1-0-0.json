@@ -1,0 +1,9502 @@
+[
+  {
+    "id": "999_999",
+    "label": "Je n’ai pas trouvé dans la liste"
+  },
+  {
+    "id": "01_001",
+    "label": "Accouvage"
+  },
+  {
+    "id": "01_002",
+    "label": "Activité de maréchal-ferrant"
+  },
+  {
+    "id": "01_003",
+    "label": "Agriculture"
+  },
+  {
+    "id": "01_004",
+    "label": "Agriculture élevage"
+  },
+  {
+    "id": "01_005",
+    "label": "Apiculture"
+  },
+  {
+    "id": "01_006",
+    "label": "Arboriculture"
+  },
+  {
+    "id": "01_007",
+    "label": "Aviculture"
+  },
+  {
+    "id": "01_008",
+    "label": "Culture d’endives"
+  },
+  {
+    "id": "01_009",
+    "label": "Culture de cannes à sucre"
+  },
+  {
+    "id": "01_010",
+    "label": "Culture de céréales"
+  },
+  {
+    "id": "01_011",
+    "label": "Culture de champignons"
+  },
+  {
+    "id": "01_012",
+    "label": "Culture de fraises"
+  },
+  {
+    "id": "01_013",
+    "label": "Culture de la vigne"
+  },
+  {
+    "id": "01_014",
+    "label": "Culture de vergers"
+  },
+  {
+    "id": "01_015",
+    "label": "Culture fruitière"
+  },
+  {
+    "id": "01_016",
+    "label": "Culture sous serres"
+  },
+  {
+    "id": "01_017",
+    "label": "Élevage"
+  },
+  {
+    "id": "01_018",
+    "label": "Élevage bovin"
+  },
+  {
+    "id": "01_019",
+    "label": "Élevage canin"
+  },
+  {
+    "id": "01_020",
+    "label": "Élevage caprin"
+  },
+  {
+    "id": "01_021",
+    "label": "Élevage de chevaux"
+  },
+  {
+    "id": "01_022",
+    "label": "Élevage de gibier"
+  },
+  {
+    "id": "01_023",
+    "label": "Élevage de vaches"
+  },
+  {
+    "id": "01_024",
+    "label": "Élevage de volailles"
+  },
+  {
+    "id": "01_025",
+    "label": "Élevage équin"
+  },
+  {
+    "id": "01_026",
+    "label": "Élevage ovin"
+  },
+  {
+    "id": "01_027",
+    "label": "Élevage porcin"
+  },
+  {
+    "id": "01_028",
+    "label": "Entreprise de travaux agricoles"
+  },
+  {
+    "id": "01_029",
+    "label": "Entreprise de travaux viticoles"
+  },
+  {
+    "id": "01_030",
+    "label": "Exploitation agricole"
+  },
+  {
+    "id": "01_031",
+    "label": "Exploitation apicole"
+  },
+  {
+    "id": "01_032",
+    "label": "Exploitation arboricole"
+  },
+  {
+    "id": "01_033",
+    "label": "Exploitation avicole"
+  },
+  {
+    "id": "01_034",
+    "label": "Exploitation céréalière"
+  },
+  {
+    "id": "01_035",
+    "label": "Exploitation d’un haras"
+  },
+  {
+    "id": "01_036",
+    "label": "Exploitation de grandes cultures"
+  },
+  {
+    "id": "01_037",
+    "label": "Exploitation de polyculture-élevage"
+  },
+  {
+    "id": "01_038",
+    "label": "Exploitation horticole"
+  },
+  {
+    "id": "01_039",
+    "label": "Exploitation viticole"
+  },
+  {
+    "id": "01_040",
+    "label": "Horticulture"
+  },
+  {
+    "id": "01_041",
+    "label": "Insémination artificielle"
+  },
+  {
+    "id": "01_042",
+    "label": "Maraîchage"
+  },
+  {
+    "id": "01_043",
+    "label": "Pension pour chevaux"
+  },
+  {
+    "id": "01_044",
+    "label": "Pépinière"
+  },
+  {
+    "id": "01_045",
+    "label": "Pépinière viticole"
+  },
+  {
+    "id": "01_046",
+    "label": "Polyculture"
+  },
+  {
+    "id": "01_047",
+    "label": "Polyculture-élevage"
+  },
+  {
+    "id": "01_048",
+    "label": "Prestations viticoles"
+  },
+  {
+    "id": "01_049",
+    "label": "Production d’œufs"
+  },
+  {
+    "id": "01_050",
+    "label": "Production de céréales"
+  },
+  {
+    "id": "01_051",
+    "label": "Production de légumes"
+  },
+  {
+    "id": "01_052",
+    "label": "Production de pommes"
+  },
+  {
+    "id": "01_053",
+    "label": "Production de semences"
+  },
+  {
+    "id": "01_054",
+    "label": "Production laitière"
+  },
+  {
+    "id": "01_055",
+    "label": "Production maraîchère"
+  },
+  {
+    "id": "01_056",
+    "label": "Ramassage de volailles"
+  },
+  {
+    "id": "01_057",
+    "label": "Reproduction de plantes"
+  },
+  {
+    "id": "01_058",
+    "label": "Taille de la vigne"
+  },
+  {
+    "id": "01_059",
+    "label": "Viticulture"
+  },
+  {
+    "id": "02_001",
+    "label": "Abattage débardage"
+  },
+  {
+    "id": "02_002",
+    "label": "Bûcheronnage"
+  },
+  {
+    "id": "02_003",
+    "label": "Exploitation forestière"
+  },
+  {
+    "id": "02_004",
+    "label": "Gestion des forêts"
+  },
+  {
+    "id": "02_005",
+    "label": "Gestion forestière"
+  },
+  {
+    "id": "02_006",
+    "label": "Production de bois de chauffage"
+  },
+  {
+    "id": "02_007",
+    "label": "Sylviculture"
+  },
+  {
+    "id": "02_008",
+    "label": "Travaux forestiers"
+  },
+  {
+    "id": "03_001",
+    "label": "Aquaculture"
+  },
+  {
+    "id": "03_002",
+    "label": "Conchyliculture"
+  },
+  {
+    "id": "03_003",
+    "label": "Mytiliculture"
+  },
+  {
+    "id": "03_004",
+    "label": "Ostréiculture"
+  },
+  {
+    "id": "03_005",
+    "label": "Pêche"
+  },
+  {
+    "id": "03_006",
+    "label": "Pisciculture"
+  },
+  {
+    "id": "05_001",
+    "label": "Extraction de houille"
+  },
+  {
+    "id": "05_002",
+    "label": "Extraction de lignite"
+  },
+  {
+    "id": "06_001",
+    "label": "Extraction de pétrole brut"
+  },
+  {
+    "id": "06_002",
+    "label": "Extraction de gaz naturel"
+  },
+  {
+    "id": "07_001",
+    "label": "Extraction minière"
+  },
+  {
+    "id": "08_001",
+    "label": "Extraction (carrière, sablière, gravière)"
+  },
+  {
+    "id": "08_002",
+    "label": "Production de granulats"
+  },
+  {
+    "id": "08_003",
+    "label": "Activités extractives"
+  },
+  {
+    "id": "08_004",
+    "label": "Production/extraction de sel"
+  },
+  {
+    "id": "09_001",
+    "label": "Services de soutien aux industries extractives"
+  },
+  {
+    "id": "10_001",
+    "label": "Abattage d’animaux"
+  },
+  {
+    "id": "10_002",
+    "label": "Abattage et transformation de volailles"
+  },
+  {
+    "id": "10_003",
+    "label": "Amidonnerie"
+  },
+  {
+    "id": "10_004",
+    "label": "Biscuiterie"
+  },
+  {
+    "id": "10_005",
+    "label": "Boucherie industrielle"
+  },
+  {
+    "id": "10_006",
+    "label": "Boulangerie artisanale"
+  },
+  {
+    "id": "10_007",
+    "label": "Boulangerie industrielle"
+  },
+  {
+    "id": "10_008",
+    "label": "Boulangerie pâtisserie"
+  },
+  {
+    "id": "10_009",
+    "label": "Boulangerie sandwicherie"
+  },
+  {
+    "id": "10_010",
+    "label": "Boulangerie viennoiserie"
+  },
+  {
+    "id": "10_011",
+    "label": "Charcuterie artisanale"
+  },
+  {
+    "id": "10_012",
+    "label": "Charcuterie industrielle"
+  },
+  {
+    "id": "10_013",
+    "label": "Charcuterie salaison"
+  },
+  {
+    "id": "10_014",
+    "label": "Conserverie"
+  },
+  {
+    "id": "10_015",
+    "label": "Coopérative laitière (transformation)"
+  },
+  {
+    "id": "10_016",
+    "label": "Découpe et transformation de viande"
+  },
+  {
+    "id": "10_017",
+    "label": "Fabrication d’alimentation animale"
+  },
+  {
+    "id": "10_018",
+    "label": "Fabrication d’aliments pour le bétail"
+  },
+  {
+    "id": "10_019",
+    "label": "Fabrication d’aliments pour chiens et chats"
+  },
+  {
+    "id": "10_020",
+    "label": "Fabrication d’ingrédients alimentaires"
+  },
+  {
+    "id": "10_021",
+    "label": "Fabrication de beurre"
+  },
+  {
+    "id": "10_022",
+    "label": "Fabrication de biscuits"
+  },
+  {
+    "id": "10_023",
+    "label": "Fabrication de charcuterie"
+  },
+  {
+    "id": "10_024",
+    "label": "Fabrication de chocolat"
+  },
+  {
+    "id": "10_025",
+    "label": "Fabrication de compléments alimentaires"
+  },
+  {
+    "id": "10_026",
+    "label": "Fabrication de confiseries"
+  },
+  {
+    "id": "10_027",
+    "label": "Fabrication de confitures"
+  },
+  {
+    "id": "10_028",
+    "label": "Fabrication de conserves alimentaires"
+  },
+  {
+    "id": "10_029",
+    "label": "Fabrication de farines"
+  },
+  {
+    "id": "10_030",
+    "label": "Fabrication de fromages"
+  },
+  {
+    "id": "10_031",
+    "label": "Fabrication de gâteaux"
+  },
+  {
+    "id": "10_032",
+    "label": "Fabrication de glaces"
+  },
+  {
+    "id": "10_033",
+    "label": "Fabrication de levures"
+  },
+  {
+    "id": "10_034",
+    "label": "Fabrication de pain"
+  },
+  {
+    "id": "10_035",
+    "label": "Fabrication de pâtes"
+  },
+  {
+    "id": "10_036",
+    "label": "Fabrication de pâtisseries"
+  },
+  {
+    "id": "10_037",
+    "label": "Fabrication de plats cuisinés"
+  },
+  {
+    "id": "10_038",
+    "label": "Fabrication de plats préparés"
+  },
+  {
+    "id": "10_039",
+    "label": "Fabrication de produits agroalimentaires"
+  },
+  {
+    "id": "10_040",
+    "label": "Fabrication de produits laitiers"
+  },
+  {
+    "id": "10_041",
+    "label": "Fabrication de sucre"
+  },
+  {
+    "id": "10_042",
+    "label": "Fabrication de viennoiseries"
+  },
+  {
+    "id": "10_043",
+    "label": "Fabrication de yaourts"
+  },
+  {
+    "id": "10_044",
+    "label": "Fromagerie (fabrication)"
+  },
+  {
+    "id": "10_045",
+    "label": "Industries agroalimentaires (IAA)"
+  },
+  {
+    "id": "10_046",
+    "label": "Industrie de la viande"
+  },
+  {
+    "id": "10_047",
+    "label": "Laiterie (transformation)"
+  },
+  {
+    "id": "10_048",
+    "label": "Meunerie"
+  },
+  {
+    "id": "10_049",
+    "label": "Minoterie"
+  },
+  {
+    "id": "10_050",
+    "label": "Pâtisserie artisanale"
+  },
+  {
+    "id": "10_051",
+    "label": "Pâtisserie chocolaterie"
+  },
+  {
+    "id": "10_052",
+    "label": "Pâtisserie industrielle"
+  },
+  {
+    "id": "10_053",
+    "label": "Préparation de jus de fruits"
+  },
+  {
+    "id": "10_054",
+    "label": "Préparation industrielle de produits à base de viande"
+  },
+  {
+    "id": "10_055",
+    "label": "Production agroalimentaire"
+  },
+  {
+    "id": "10_056",
+    "label": "Production de laits infantiles"
+  },
+  {
+    "id": "10_057",
+    "label": "Sucrerie"
+  },
+  {
+    "id": "10_058",
+    "label": "Terminal de cuisson de produits de boulangerie"
+  },
+  {
+    "id": "10_059",
+    "label": "Torréfaction de café"
+  },
+  {
+    "id": "10_060",
+    "label": "Transformation de fruits"
+  },
+  {
+    "id": "10_061",
+    "label": "Transformation de légumes"
+  },
+  {
+    "id": "10_062",
+    "label": "Transformation de poissons"
+  },
+  {
+    "id": "10_063",
+    "label": "Transformation de pommes de terre"
+  },
+  {
+    "id": "10_064",
+    "label": "Transformation de produits de la mer"
+  },
+  {
+    "id": "10_065",
+    "label": "Transformation de viande"
+  },
+  {
+    "id": "10_066",
+    "label": "Transformation de volailles"
+  },
+  {
+    "id": "11_001",
+    "label": "Brasserie artisanale (fabrication de bière)"
+  },
+  {
+    "id": "11_002",
+    "label": "Cave coopérative vinicole"
+  },
+  {
+    "id": "11_003",
+    "label": "Embouteillage d’eau"
+  },
+  {
+    "id": "11_004",
+    "label": "Fabrication de bière"
+  },
+  {
+    "id": "11_005",
+    "label": "Production de boissons"
+  },
+  {
+    "id": "11_006",
+    "label": "Production de champagne"
+  },
+  {
+    "id": "11_007",
+    "label": "Production de liqueurs et spiritueux"
+  },
+  {
+    "id": "11_008",
+    "label": "Production de vins"
+  },
+  {
+    "id": "11_009",
+    "label": "Vinification"
+  },
+  {
+    "id": "12_001",
+    "label": "Fabrication de produits à base de tabac"
+  },
+  {
+    "id": "13_001",
+    "label": "Broderie industrielle"
+  },
+  {
+    "id": "13_002",
+    "label": "Création textile (hors habillement)"
+  },
+  {
+    "id": "13_003",
+    "label": "Ennoblissement textile"
+  },
+  {
+    "id": "13_004",
+    "label": "Fabrication d’isolants d’origine végétale (chanvre, lin, etc.)"
+  },
+  {
+    "id": "13_005",
+    "label": "Fabrication de cordes"
+  },
+  {
+    "id": "13_006",
+    "label": "Fabrication de dentelles"
+  },
+  {
+    "id": "13_007",
+    "label": "Fabrication de moquettes"
+  },
+  {
+    "id": "13_008",
+    "label": "Fabrication de stores en textile"
+  },
+  {
+    "id": "13_009",
+    "label": "Fabrication de tapis"
+  },
+  {
+    "id": "13_010",
+    "label": "Fabrication de textiles médicaux"
+  },
+  {
+    "id": "13_011",
+    "label": "Fabrication de textiles (hors habillement)"
+  },
+  {
+    "id": "13_012",
+    "label": "Fabrication de textiles industriels"
+  },
+  {
+    "id": "13_013",
+    "label": "Fabrication de textiles techniques"
+  },
+  {
+    "id": "13_014",
+    "label": "Filature"
+  },
+  {
+    "id": "13_015",
+    "label": "Industrie textile (hors habillement)"
+  },
+  {
+    "id": "13_016",
+    "label": "Production textile (hors habillement)"
+  },
+  {
+    "id": "13_017",
+    "label": "Teillage de lin"
+  },
+  {
+    "id": "13_018",
+    "label": "Tissage"
+  },
+  {
+    "id": "14_001",
+    "label": "Bonneterie"
+  },
+  {
+    "id": "14_002",
+    "label": "Confection de vêtements"
+  },
+  {
+    "id": "14_003",
+    "label": "Couture (création-fabrication)"
+  },
+  {
+    "id": "14_004",
+    "label": "Création d'accessoires de l’habillement"
+  },
+  {
+    "id": "14_005",
+    "label": "Création de robes de mariée"
+  },
+  {
+    "id": "14_006",
+    "label": "Création textile (industrie de l’habillement)"
+  },
+  {
+    "id": "14_007",
+    "label": "Fabrication de vêtements"
+  },
+  {
+    "id": "14_008",
+    "label": "Haute-couture (création-fabrication)"
+  },
+  {
+    "id": "14_009",
+    "label": "Industrie de l'habillement"
+  },
+  {
+    "id": "15_001",
+    "label": "Fabrication d'articles de maroquinerie"
+  },
+  {
+    "id": "15_002",
+    "label": "Fabrication d'articles en cuir"
+  },
+  {
+    "id": "15_003",
+    "label": "Fabrication de bottes"
+  },
+  {
+    "id": "15_004",
+    "label": "Fabrication de chaussures"
+  },
+  {
+    "id": "15_005",
+    "label": "Fabrication de chaussures orthopédiques"
+  },
+  {
+    "id": "15_006",
+    "label": "Fabrication de sacs à main"
+  },
+  {
+    "id": "15_007",
+    "label": "Industrie du cuir"
+  },
+  {
+    "id": "15_008",
+    "label": "Mégisserie"
+  },
+  {
+    "id": "15_009",
+    "label": "Production d’articles de maroquineries"
+  },
+  {
+    "id": "15_010",
+    "label": "Sellerie"
+  },
+  {
+    "id": "15_011",
+    "label": "Sellerie maroquinerie"
+  },
+  {
+    "id": "15_012",
+    "label": "Tannerie"
+  },
+  {
+    "id": "16_001",
+    "label": "Fabrication d’emballages en bois"
+  },
+  {
+    "id": "16_002",
+    "label": "Fabrication d’escaliers en bois"
+  },
+  {
+    "id": "16_003",
+    "label": "Fabrication d’isolants en fibres de bois"
+  },
+  {
+    "id": "16_004",
+    "label": "Fabrication d’objets en bois"
+  },
+  {
+    "id": "16_005",
+    "label": "Fabrication de barriques"
+  },
+  {
+    "id": "16_006",
+    "label": "Fabrication de charpentes en bois"
+  },
+  {
+    "id": "16_007",
+    "label": "Fabrication de granulés ou pellets en bois"
+  },
+  {
+    "id": "16_008",
+    "label": "Fabrication de menuiseries en bois"
+  },
+  {
+    "id": "16_009",
+    "label": "Fabrication de palettes en bois"
+  },
+  {
+    "id": "16_010",
+    "label": "Fabrication de panneaux de bois"
+  },
+  {
+    "id": "16_011",
+    "label": "Fabrication de parquet"
+  },
+  {
+    "id": "16_012",
+    "label": "Fabrication de portes et fenêtres en bois"
+  },
+  {
+    "id": "16_013",
+    "label": "Fabrication de tonneaux"
+  },
+  {
+    "id": "16_014",
+    "label": "Industrie du bois"
+  },
+  {
+    "id": "16_015",
+    "label": "Menuiserie industrielle (bois)"
+  },
+  {
+    "id": "16_016",
+    "label": "Merranderie"
+  },
+  {
+    "id": "16_017",
+    "label": "Scierie"
+  },
+  {
+    "id": "16_018",
+    "label": "Tonnellerie"
+  },
+  {
+    "id": "16_019",
+    "label": "Tournage sur bois"
+  },
+  {
+    "id": "16_020",
+    "label": "Travail mécanique du bois"
+  },
+  {
+    "id": "16_021",
+    "label": "Vannerie"
+  },
+  {
+    "id": "17_001",
+    "label": "Cartonnage"
+  },
+  {
+    "id": "17_002",
+    "label": "Fabrication d’articles en papier ou carton"
+  },
+  {
+    "id": "17_003",
+    "label": "Fabrication d’emballages en carton"
+  },
+  {
+    "id": "17_004",
+    "label": "Fabrication d’emballages en papier"
+  },
+  {
+    "id": "17_005",
+    "label": "Fabrication d’étiquettes"
+  },
+  {
+    "id": "17_006",
+    "label": "Fabrication de carton"
+  },
+  {
+    "id": "17_007",
+    "label": "Fabrication de papier"
+  },
+  {
+    "id": "17_008",
+    "label": "Industrie du carton"
+  },
+  {
+    "id": "17_009",
+    "label": "Industrie papetière"
+  },
+  {
+    "id": "17_010",
+    "label": "Transformation de papier, carton, cellulose"
+  },
+  {
+    "id": "18_001",
+    "label": "Activités de pré-presse"
+  },
+  {
+    "id": "18_002",
+    "label": "Fabrication de billets"
+  },
+  {
+    "id": "18_003",
+    "label": "Façonnage de livres ou d’imprimés"
+  },
+  {
+    "id": "18_004",
+    "label": "Impression d’étiquettes"
+  },
+  {
+    "id": "18_005",
+    "label": "Impression sur textile"
+  },
+  {
+    "id": "18_006",
+    "label": "Imprimerie de journaux"
+  },
+  {
+    "id": "18_007",
+    "label": "Imprimerie de labeur"
+  },
+  {
+    "id": "18_008",
+    "label": "Marquage publicitaire sur objets et textiles"
+  },
+  {
+    "id": "18_009",
+    "label": "Photogravure"
+  },
+  {
+    "id": "18_010",
+    "label": "Reliure et activités connexes"
+  },
+  {
+    "id": "18_011",
+    "label": "Reproduction d’enregistrements"
+  },
+  {
+    "id": "18_012",
+    "label": "Sérigraphie"
+  },
+  {
+    "id": "19_001",
+    "label": "Fabrication de lubrifiants à base de pétrole"
+  },
+  {
+    "id": "19_002",
+    "label": "Raffinage du pétrole"
+  },
+  {
+    "id": "20_001",
+    "label": "Chimie industrielle"
+  },
+  {
+    "id": "20_002",
+    "label": "Fabrication d'arômes alimentaires"
+  },
+  {
+    "id": "20_003",
+    "label": "Fabrication d'encres"
+  },
+  {
+    "id": "20_004",
+    "label": "Fabrication d'engrais"
+  },
+  {
+    "id": "20_005",
+    "label": "Fabrication d’additifs chimiques"
+  },
+  {
+    "id": "20_006",
+    "label": "Fabrication d’arômes et de parfums"
+  },
+  {
+    "id": "20_007",
+    "label": "Fabrication d’articles de pyrotechnie"
+  },
+  {
+    "id": "20_008",
+    "label": "Fabrication de caoutchouc synthétique"
+  },
+  {
+    "id": "20_009",
+    "label": "Fabrication de cartouches d’encres et toners"
+  },
+  {
+    "id": "20_010",
+    "label": "Fabrication de colles"
+  },
+  {
+    "id": "20_011",
+    "label": "Fabrication de gaz industriels"
+  },
+  {
+    "id": "20_012",
+    "label": "Fabrication de lubrifiants chimiques"
+  },
+  {
+    "id": "20_013",
+    "label": "Fabrication de matières plastiques de base"
+  },
+  {
+    "id": "20_014",
+    "label": "Fabrication de parfums"
+  },
+  {
+    "id": "20_015",
+    "label": "Fabrication de parfums et cosmétiques"
+  },
+  {
+    "id": "20_016",
+    "label": "Fabrication de peintures"
+  },
+  {
+    "id": "20_017",
+    "label": "Fabrication de pesticides"
+  },
+  {
+    "id": "20_018",
+    "label": "Fabrication de produits agrochimiques"
+  },
+  {
+    "id": "20_019",
+    "label": "Fabrication de produits cosmétiques"
+  },
+  {
+    "id": "20_020",
+    "label": "Fabrication de produits de beauté"
+  },
+  {
+    "id": "20_021",
+    "label": "Fabrication de produits phytosanitaires"
+  },
+  {
+    "id": "20_022",
+    "label": "Fabrication de réactifs de diagnostic in vitro"
+  },
+  {
+    "id": "20_023",
+    "label": "Fabrication de résines"
+  },
+  {
+    "id": "20_024",
+    "label": "Fabrication de savons"
+  },
+  {
+    "id": "20_025",
+    "label": "Industrie chimique"
+  },
+  {
+    "id": "20_026",
+    "label": "Industrie pétrochimique"
+  },
+  {
+    "id": "20_027",
+    "label": "Laboratoire cosmétique (production)"
+  },
+  {
+    "id": "20_028",
+    "label": "Production chimique"
+  },
+  {
+    "id": "20_029",
+    "label": "Production d'engrais"
+  },
+  {
+    "id": "20_030",
+    "label": "Production d’huiles essentielles"
+  },
+  {
+    "id": "20_031",
+    "label": "Production de caoutchouc synthétique"
+  },
+  {
+    "id": "20_032",
+    "label": "Production de gaz industriels"
+  },
+  {
+    "id": "20_033",
+    "label": "Production de matières premières aromatiques"
+  },
+  {
+    "id": "20_034",
+    "label": "Production de parfums"
+  },
+  {
+    "id": "20_035",
+    "label": "Production de peintures"
+  },
+  {
+    "id": "20_036",
+    "label": "Production de produits cosmétiques"
+  },
+  {
+    "id": "20_037",
+    "label": "Retraitement du combustible nucléaire usé"
+  },
+  {
+    "id": "20_038",
+    "label": "Savonnerie"
+  },
+  {
+    "id": "20_039",
+    "label": "Traitement du combustible nucléaire usé"
+  },
+  {
+    "id": "20_040",
+    "label": "Usine agrochimique"
+  },
+  {
+    "id": "20_041",
+    "label": "Usine chimique"
+  },
+  {
+    "id": "20_042",
+    "label": "Usine pétrochimique"
+  },
+  {
+    "id": "21_001",
+    "label": "Fabrication de médicaments"
+  },
+  {
+    "id": "21_002",
+    "label": "Fabrication de préparations pharmaceutiques"
+  },
+  {
+    "id": "21_003",
+    "label": "Fabrication de vaccins"
+  },
+  {
+    "id": "21_004",
+    "label": "Façonnage pharmaceutique"
+  },
+  {
+    "id": "21_005",
+    "label": "Industrie pharmaceutique (production)"
+  },
+  {
+    "id": "21_006",
+    "label": "Industrie pharmaceutique vétérinaire"
+  },
+  {
+    "id": "21_007",
+    "label": "Laboratoire de l’industrie pharmaceutique"
+  },
+  {
+    "id": "21_008",
+    "label": "Laboratoire industriel vétérinaire"
+  },
+  {
+    "id": "21_009",
+    "label": "Production de médicaments"
+  },
+  {
+    "id": "21_010",
+    "label": "Production de produits pharmaceutiques"
+  },
+  {
+    "id": "21_011",
+    "label": "Production de produits vétérinaires"
+  },
+  {
+    "id": "21_012",
+    "label": "Production de vaccins"
+  },
+  {
+    "id": "21_013",
+    "label": "Production pharmaceutique"
+  },
+  {
+    "id": "21_014",
+    "label": "Usine pharmaceutique"
+  },
+  {
+    "id": "22_001",
+    "label": "Chaudronnerie plastique"
+  },
+  {
+    "id": "22_002",
+    "label": "Extrusion plastique"
+  },
+  {
+    "id": "22_003",
+    "label": "Fabrication d'objets en plastique"
+  },
+  {
+    "id": "22_004",
+    "label": "Fabrication d'ustensiles de cuisine en plastique"
+  },
+  {
+    "id": "22_005",
+    "label": "Fabrication d’emballages plastiques"
+  },
+  {
+    "id": "22_006",
+    "label": "Fabrication d’isolants organiques (polystyrène, polyuréthane, etc.)"
+  },
+  {
+    "id": "22_007",
+    "label": "Fabrication de bouchons plastiques"
+  },
+  {
+    "id": "22_008",
+    "label": "Fabrication de conteneurs plastiques"
+  },
+  {
+    "id": "22_009",
+    "label": "Fabrication de films plastiques"
+  },
+  {
+    "id": "22_010",
+    "label": "Fabrication de flacons en plastique"
+  },
+  {
+    "id": "22_011",
+    "label": "Fabrication de joints"
+  },
+  {
+    "id": "22_012",
+    "label": "Fabrication de menuiseries en PVC"
+  },
+  {
+    "id": "22_013",
+    "label": "Fabrication de panneaux isolants synthétiques"
+  },
+  {
+    "id": "22_014",
+    "label": "Fabrication de pièces automobiles plastiques"
+  },
+  {
+    "id": "22_015",
+    "label": "Fabrication de pièces plastiques"
+  },
+  {
+    "id": "22_016",
+    "label": "Fabrication de piscines à coques"
+  },
+  {
+    "id": "22_017",
+    "label": "Fabrication de pneumatiques"
+  },
+  {
+    "id": "22_018",
+    "label": "Fabrication de portes et fenêtres en PVC"
+  },
+  {
+    "id": "22_019",
+    "label": "Fabrication de produits à base de plastique"
+  },
+  {
+    "id": "22_020",
+    "label": "Fabrication de produits en caoutchouc"
+  },
+  {
+    "id": "22_021",
+    "label": "Fabrication de produits en PVC"
+  },
+  {
+    "id": "22_022",
+    "label": "Fabrication de raccords plastiques"
+  },
+  {
+    "id": "22_023",
+    "label": "Fabrication de réservoirs plastiques"
+  },
+  {
+    "id": "22_024",
+    "label": "Fabrication de revêtements de sol en PVC"
+  },
+  {
+    "id": "22_025",
+    "label": "Fabrication de tubes et tuyaux en PVC"
+  },
+  {
+    "id": "22_026",
+    "label": "Fabrication de volets en PVC"
+  },
+  {
+    "id": "22_027",
+    "label": "Industrie du caoutchouc"
+  },
+  {
+    "id": "22_028",
+    "label": "Industrie plastique"
+  },
+  {
+    "id": "22_029",
+    "label": "Industrie plasturgique"
+  },
+  {
+    "id": "22_030",
+    "label": "Industrie pneumatique"
+  },
+  {
+    "id": "22_031",
+    "label": "Injection plastique"
+  },
+  {
+    "id": "22_032",
+    "label": "Manufacture de pneumatiques (fabrication)"
+  },
+  {
+    "id": "22_033",
+    "label": "Menuiserie industrielle (PVC)"
+  },
+  {
+    "id": "22_034",
+    "label": "Plasturgie"
+  },
+  {
+    "id": "22_035",
+    "label": "Production de pièces plastiques"
+  },
+  {
+    "id": "22_036",
+    "label": "Production de pneumatiques"
+  },
+  {
+    "id": "22_037",
+    "label": "Production de produits en caoutchouc"
+  },
+  {
+    "id": "22_038",
+    "label": "Rotomoulage"
+  },
+  {
+    "id": "22_039",
+    "label": "Thermoformage plastique"
+  },
+  {
+    "id": "22_040",
+    "label": "Transformation de matières plastiques"
+  },
+  {
+    "id": "22_041",
+    "label": "Transformation du caoutchouc"
+  },
+  {
+    "id": "22_042",
+    "label": "Usinage plastique"
+  },
+  {
+    "id": "22_043",
+    "label": "Usine plastique"
+  },
+  {
+    "id": "23_001",
+    "label": "Briqueterie"
+  },
+  {
+    "id": "23_002",
+    "label": "Centrale à béton"
+  },
+  {
+    "id": "23_003",
+    "label": "Cimenterie"
+  },
+  {
+    "id": "23_004",
+    "label": "Cristallerie (production)"
+  },
+  {
+    "id": "23_005",
+    "label": "Décoration sur verre"
+  },
+  {
+    "id": "23_006",
+    "label": "Fabrication d'éléments en béton pour la construction"
+  },
+  {
+    "id": "23_007",
+    "label": "Fabrication d’articles en cristal"
+  },
+  {
+    "id": "23_008",
+    "label": "Fabrication d’ouvrages en granit"
+  },
+  {
+    "id": "23_009",
+    "label": "Fabrication de béton"
+  },
+  {
+    "id": "23_010",
+    "label": "Fabrication de bouteilles en verre"
+  },
+  {
+    "id": "23_011",
+    "label": "Fabrication de briques"
+  },
+  {
+    "id": "23_012",
+    "label": "Fabrication de carrelage"
+  },
+  {
+    "id": "23_013",
+    "label": "Fabrication de céramique"
+  },
+  {
+    "id": "23_014",
+    "label": "Fabrication de chaux"
+  },
+  {
+    "id": "23_015",
+    "label": "Fabrication de ciment"
+  },
+  {
+    "id": "23_016",
+    "label": "Fabrication de conduits de cheminée en béton"
+  },
+  {
+    "id": "23_017",
+    "label": "Fabrication de double vitrage"
+  },
+  {
+    "id": "23_018",
+    "label": "Fabrication de flacons en verre"
+  },
+  {
+    "id": "23_019",
+    "label": "Fabrication de laine de roche ou de laine de verre"
+  },
+  {
+    "id": "23_020",
+    "label": "Fabrication de mortiers industriels"
+  },
+  {
+    "id": "23_021",
+    "label": "Fabrication de panneaux isolants en laine minérale"
+  },
+  {
+    "id": "23_022",
+    "label": "Fabrication de parpaings"
+  },
+  {
+    "id": "23_023",
+    "label": "Fabrication de plaques de plâtre"
+  },
+  {
+    "id": "23_024",
+    "label": "Fabrication de porcelaine"
+  },
+  {
+    "id": "23_025",
+    "label": "Fabrication de produits céramiques"
+  },
+  {
+    "id": "23_026",
+    "label": "Fabrication de produits en béton"
+  },
+  {
+    "id": "23_027",
+    "label": "Fabrication de structures en béton"
+  },
+  {
+    "id": "23_028",
+    "label": "Fabrication de traverses en béton"
+  },
+  {
+    "id": "23_029",
+    "label": "Fabrication de tuiles"
+  },
+  {
+    "id": "23_030",
+    "label": "Fabrication de vaisselle (faïence, verre, cristal, porcelaine ou céramique)"
+  },
+  {
+    "id": "23_031",
+    "label": "Fabrication de verre"
+  },
+  {
+    "id": "23_032",
+    "label": "Fabrication de vitrage"
+  },
+  {
+    "id": "23_033",
+    "label": "Fabrication mécanique du verre"
+  },
+  {
+    "id": "23_034",
+    "label": "Industrie du béton"
+  },
+  {
+    "id": "23_035",
+    "label": "Industrie du verre"
+  },
+  {
+    "id": "23_036",
+    "label": "Industrie verrière"
+  },
+  {
+    "id": "23_037",
+    "label": "Manufacture de porcelaine"
+  },
+  {
+    "id": "23_038",
+    "label": "Marbrerie"
+  },
+  {
+    "id": "23_039",
+    "label": "Miroiterie (fabrication)"
+  },
+  {
+    "id": "23_040",
+    "label": "Poterie"
+  },
+  {
+    "id": "23_041",
+    "label": "Préfabrication de béton"
+  },
+  {
+    "id": "23_042",
+    "label": "Production de béton"
+  },
+  {
+    "id": "23_043",
+    "label": "Production de bouteilles en verre"
+  },
+  {
+    "id": "23_044",
+    "label": "Production de ciment"
+  },
+  {
+    "id": "23_045",
+    "label": "Production de tuiles"
+  },
+  {
+    "id": "23_046",
+    "label": "Production de verre"
+  },
+  {
+    "id": "23_047",
+    "label": "Taille de pierre (hors maçonnerie)"
+  },
+  {
+    "id": "23_048",
+    "label": "Taille et façonnage de granit"
+  },
+  {
+    "id": "23_049",
+    "label": "Transformation du verre"
+  },
+  {
+    "id": "23_050",
+    "label": "Tuilerie"
+  },
+  {
+    "id": "23_051",
+    "label": "Verrerie"
+  },
+  {
+    "id": "23_052",
+    "label": "Verrerie cristallerie"
+  },
+  {
+    "id": "24_001",
+    "label": "Aciérie"
+  },
+  {
+    "id": "24_002",
+    "label": "Extrusion de métaux"
+  },
+  {
+    "id": "24_003",
+    "label": "Fabrication de combustible nucléaire"
+  },
+  {
+    "id": "24_004",
+    "label": "Fabrication de conduits de cheminée (métal)"
+  },
+  {
+    "id": "24_005",
+    "label": "Fabrication de profilés (métal)"
+  },
+  {
+    "id": "24_006",
+    "label": "Fabrication de tôles"
+  },
+  {
+    "id": "24_007",
+    "label": "Fabrication de tubes (métal)"
+  },
+  {
+    "id": "24_008",
+    "label": "Fabrication de tuyaux (métal)"
+  },
+  {
+    "id": "24_009",
+    "label": "Fonderie"
+  },
+  {
+    "id": "24_010",
+    "label": "Métallurgie (production de métaux)"
+  },
+  {
+    "id": "24_011",
+    "label": "Sidérurgie"
+  },
+  {
+    "id": "24_012",
+    "label": "Tréfilerie"
+  },
+  {
+    "id": "25_001",
+    "label": "Chaudronnerie métallerie"
+  },
+  {
+    "id": "25_002",
+    "label": "Coutellerie"
+  },
+  {
+    "id": "25_003",
+    "label": "Décolletage"
+  },
+  {
+    "id": "25_004",
+    "label": "Découpage des métaux"
+  },
+  {
+    "id": "25_005",
+    "label": "Découpage emboutissage"
+  },
+  {
+    "id": "25_006",
+    "label": "Emboutissage"
+  },
+  {
+    "id": "25_007",
+    "label": "Fabrication d'outils"
+  },
+  {
+    "id": "25_008",
+    "label": "Fabrication d'ustensiles de cuisine en métal"
+  },
+  {
+    "id": "25_009",
+    "label": "Fabrication d’armatures métalliques"
+  },
+  {
+    "id": "25_010",
+    "label": "Fabrication d’armes et de munitions"
+  },
+  {
+    "id": "25_011",
+    "label": "Fabrication d’emballages métalliques"
+  },
+  {
+    "id": "25_012",
+    "label": "Fabrication d’outillage (non motorisé)"
+  },
+  {
+    "id": "25_013",
+    "label": "Fabrication de boîtes alimentaires métalliques"
+  },
+  {
+    "id": "25_014",
+    "label": "Fabrication de boîtes de conserve"
+  },
+  {
+    "id": "25_015",
+    "label": "Fabrication de capsules métalliques"
+  },
+  {
+    "id": "25_016",
+    "label": "Fabrication de chaudières"
+  },
+  {
+    "id": "25_017",
+    "label": "Fabrication de citernes (hors transport)"
+  },
+  {
+    "id": "25_018",
+    "label": "Fabrication de conteneurs métalliques"
+  },
+  {
+    "id": "25_019",
+    "label": "Fabrication de couverts en métal"
+  },
+  {
+    "id": "25_020",
+    "label": "Fabrication de générateurs vapeur"
+  },
+  {
+    "id": "25_021",
+    "label": "Fabrication de menuiseries métalliques"
+  },
+  {
+    "id": "25_022",
+    "label": "Fabrication de moules métalliques"
+  },
+  {
+    "id": "25_023",
+    "label": "Fabrication de pales d'éoliennes"
+  },
+  {
+    "id": "25_024",
+    "label": "Fabrication de panneaux de signalisation"
+  },
+  {
+    "id": "25_025",
+    "label": "Fabrication de pièces automobiles métalliques"
+  },
+  {
+    "id": "25_026",
+    "label": "Fabrication de portails métalliques"
+  },
+  {
+    "id": "25_027",
+    "label": "Fabrication de portes de garage métalliques"
+  },
+  {
+    "id": "25_028",
+    "label": "Fabrication de portes et fenêtres métalliques"
+  },
+  {
+    "id": "25_029",
+    "label": "Fabrication de réservoirs métalliques"
+  },
+  {
+    "id": "25_030",
+    "label": "Fabrication de ressorts métalliques"
+  },
+  {
+    "id": "25_031",
+    "label": "Fabrication de serrures"
+  },
+  {
+    "id": "25_032",
+    "label": "Fabrication de stores métalliques"
+  },
+  {
+    "id": "25_033",
+    "label": "Fabrication de vis et boulons"
+  },
+  {
+    "id": "25_034",
+    "label": "Fabrication de volets métalliques"
+  },
+  {
+    "id": "25_035",
+    "label": "Ferronnerie (industrie métallurgique)"
+  },
+  {
+    "id": "25_036",
+    "label": "Forge"
+  },
+  {
+    "id": "25_037",
+    "label": "Galvanisation"
+  },
+  {
+    "id": "25_038",
+    "label": "Galvanoplastie"
+  },
+  {
+    "id": "25_039",
+    "label": "Mécanique de précision"
+  },
+  {
+    "id": "25_040",
+    "label": "Mécanique générale"
+  },
+  {
+    "id": "25_041",
+    "label": "Menuiserie industrielle (métal)"
+  },
+  {
+    "id": "25_042",
+    "label": "Métallerie (industrie métallurgique)"
+  },
+  {
+    "id": "25_043",
+    "label": "Serrurerie métallerie (industrie métallurgique)"
+  },
+  {
+    "id": "25_044",
+    "label": "Thermolaquage des métaux"
+  },
+  {
+    "id": "25_045",
+    "label": "Tôlerie chaudronnerie"
+  },
+  {
+    "id": "25_046",
+    "label": "Tournage fraisage"
+  },
+  {
+    "id": "25_047",
+    "label": "Traitement de surface des métaux"
+  },
+  {
+    "id": "25_048",
+    "label": "Usinage de pièces mécaniques"
+  },
+  {
+    "id": "25_049",
+    "label": "Usinage des métaux"
+  },
+  {
+    "id": "26_001",
+    "label": "Électronique de défense et sécurité"
+  },
+  {
+    "id": "26_002",
+    "label": "Équipementier aéronautique (instruments de navigation)"
+  },
+  {
+    "id": "26_003",
+    "label": "Fabrication d'équipements d'aide à la navigation"
+  },
+  {
+    "id": "26_004",
+    "label": "Fabrication d'instrumentation scientifique et technique"
+  },
+  {
+    "id": "26_005",
+    "label": "Fabrication d’équipements d’irradiation médicale"
+  },
+  {
+    "id": "26_006",
+    "label": "Fabrication d’équipements de communication"
+  },
+  {
+    "id": "26_007",
+    "label": "Fabrication d’équipements électroniques"
+  },
+  {
+    "id": "26_008",
+    "label": "Fabrication d’imprimantes"
+  },
+  {
+    "id": "26_009",
+    "label": "Fabrication d’instruments de mesure"
+  },
+  {
+    "id": "26_010",
+    "label": "Fabrication d’instruments électroniques pour l’aéronautique"
+  },
+  {
+    "id": "26_011",
+    "label": "Fabrication d’ordinateurs et équipements périphériques"
+  },
+  {
+    "id": "26_012",
+    "label": "Fabrication de capteurs électroniques"
+  },
+  {
+    "id": "26_013",
+    "label": "Fabrication de cartes électroniques"
+  },
+  {
+    "id": "26_014",
+    "label": "Fabrication de circuits imprimés"
+  },
+  {
+    "id": "26_015",
+    "label": "Fabrication de composants électroniques"
+  },
+  {
+    "id": "26_016",
+    "label": "Fabrication de compteurs (eau, gaz, électricité, etc.)"
+  },
+  {
+    "id": "26_017",
+    "label": "Fabrication de connecteurs électroniques"
+  },
+  {
+    "id": "26_018",
+    "label": "Fabrication de matériel électromédical"
+  },
+  {
+    "id": "26_019",
+    "label": "Fabrication de matériel optique et photographique"
+  },
+  {
+    "id": "26_020",
+    "label": "Fabrication de microprocesseurs"
+  },
+  {
+    "id": "26_021",
+    "label": "Fabrication de montres"
+  },
+  {
+    "id": "26_022",
+    "label": "Fabrication de panneaux photovoltaïques"
+  },
+  {
+    "id": "26_023",
+    "label": "Fabrication de panneaux solaires"
+  },
+  {
+    "id": "26_024",
+    "label": "Fabrication de produits électroniques grand public (TV, radio, etc.)"
+  },
+  {
+    "id": "26_025",
+    "label": "Fabrication de puces électroniques"
+  },
+  {
+    "id": "26_026",
+    "label": "Fabrication de semi-conducteurs"
+  },
+  {
+    "id": "26_027",
+    "label": "Fabrication de supports magnétiques et optiques"
+  },
+  {
+    "id": "26_028",
+    "label": "Fabrication de systèmes d’information et communication sécurisés"
+  },
+  {
+    "id": "26_029",
+    "label": "Fabrication de systèmes de détection incendie"
+  },
+  {
+    "id": "26_030",
+    "label": "Fabrication de thermostats"
+  },
+  {
+    "id": "26_031",
+    "label": "Fabrication de transmetteurs et antennes radio"
+  },
+  {
+    "id": "26_032",
+    "label": "Fabrication électronique"
+  },
+  {
+    "id": "26_033",
+    "label": "Horlogerie"
+  },
+  {
+    "id": "26_034",
+    "label": "Manufacture horlogère"
+  },
+  {
+    "id": "26_035",
+    "label": "Microélectronique"
+  },
+  {
+    "id": "26_036",
+    "label": "Optronique"
+  },
+  {
+    "id": "27_001",
+    "label": "Équipementier aéronautique (appareils d’éclairage)"
+  },
+  {
+    "id": "27_002",
+    "label": "Fabrication d’accumulateurs électriques"
+  },
+  {
+    "id": "27_003",
+    "label": "Fabrication d’appareillage électrique"
+  },
+  {
+    "id": "27_004",
+    "label": "Fabrication d’appareils d’éclairage"
+  },
+  {
+    "id": "27_005",
+    "label": "Fabrication d’appareils de chauffage (hors chauffage central)"
+  },
+  {
+    "id": "27_006",
+    "label": "Fabrication d’appareils électroménagers"
+  },
+  {
+    "id": "27_007",
+    "label": "Fabrication d’armoires électriques"
+  },
+  {
+    "id": "27_008",
+    "label": "Fabrication d’enseignes lumineuses"
+  },
+  {
+    "id": "27_009",
+    "label": "Fabrication de batteries"
+  },
+  {
+    "id": "27_010",
+    "label": "Fabrication de câbles électriques"
+  },
+  {
+    "id": "27_011",
+    "label": "Fabrication de chauffe-eaux"
+  },
+  {
+    "id": "27_012",
+    "label": "Fabrication de composants électriques"
+  },
+  {
+    "id": "27_013",
+    "label": "Fabrication de connecteurs électriques"
+  },
+  {
+    "id": "27_014",
+    "label": "Fabrication de décorations lumineuses"
+  },
+  {
+    "id": "27_015",
+    "label": "Fabrication de disjoncteurs"
+  },
+  {
+    "id": "27_016",
+    "label": "Fabrication de faisceaux électriques (hors industrie automobile)"
+  },
+  {
+    "id": "27_017",
+    "label": "Fabrication de fibres optiques"
+  },
+  {
+    "id": "27_018",
+    "label": "Fabrication de groupes électrogènes"
+  },
+  {
+    "id": "27_019",
+    "label": "Fabrication de luminaires"
+  },
+  {
+    "id": "27_020",
+    "label": "Fabrication de machines à café domestiques"
+  },
+  {
+    "id": "27_021",
+    "label": "Fabrication de machines à laver domestiques"
+  },
+  {
+    "id": "27_022",
+    "label": "Fabrication de matériel électrique"
+  },
+  {
+    "id": "27_023",
+    "label": "Fabrication de moteurs électriques (y.c. automobiles)"
+  },
+  {
+    "id": "27_024",
+    "label": "Fabrication de radiateurs électriques"
+  },
+  {
+    "id": "27_025",
+    "label": "Fabrication de robots culinaires domestiques"
+  },
+  {
+    "id": "27_026",
+    "label": "Fabrication de tableaux électriques"
+  },
+  {
+    "id": "27_027",
+    "label": "Fabrication de transformateurs"
+  },
+  {
+    "id": "28_001",
+    "label": "Construction d'engins de travaux publics"
+  },
+  {
+    "id": "28_002",
+    "label": "Construction de chariots élévateurs"
+  },
+  {
+    "id": "28_003",
+    "label": "Construction de remorques agricoles"
+  },
+  {
+    "id": "28_004",
+    "label": "Équipementier aéronautique (pistons, carburateurs, etc.)"
+  },
+  {
+    "id": "28_005",
+    "label": "Fabrication d'appareils de climatisation industrielle"
+  },
+  {
+    "id": "28_006",
+    "label": "Fabrication d'appareils de filtration industrielle"
+  },
+  {
+    "id": "28_007",
+    "label": "Fabrication d'appareils de ventilation industrielle"
+  },
+  {
+    "id": "28_008",
+    "label": "Fabrication d'ascenseurs"
+  },
+  {
+    "id": "28_009",
+    "label": "Fabrication d'échangeurs thermiques"
+  },
+  {
+    "id": "28_010",
+    "label": "Fabrication d'engins de chantier"
+  },
+  {
+    "id": "28_011",
+    "label": "Fabrication d'engrenages et d'organes mécaniques de transmission"
+  },
+  {
+    "id": "28_012",
+    "label": "Fabrication d'équipements hydrauliques"
+  },
+  {
+    "id": "28_013",
+    "label": "Fabrication d'horodateurs"
+  },
+  {
+    "id": "28_014",
+    "label": "Fabrication d’appareils de réfrigération industrielle"
+  },
+  {
+    "id": "28_015",
+    "label": "Fabrication d’équipements aérauliques"
+  },
+  {
+    "id": "28_016",
+    "label": "Fabrication d’équipements de pesage industriel"
+  },
+  {
+    "id": "28_017",
+    "label": "Fabrication d’équipements de traitement de l'air"
+  },
+  {
+    "id": "28_018",
+    "label": "Fabrication d’outillage motorisé"
+  },
+  {
+    "id": "28_019",
+    "label": "Fabrication de bennes agricoles"
+  },
+  {
+    "id": "28_020",
+    "label": "Fabrication de chariots élévateurs"
+  },
+  {
+    "id": "28_021",
+    "label": "Fabrication de convoyeurs"
+  },
+  {
+    "id": "28_022",
+    "label": "Fabrication de filtres à air"
+  },
+  {
+    "id": "28_023",
+    "label": "Fabrication de groupes frigorifiques"
+  },
+  {
+    "id": "28_024",
+    "label": "Fabrication de grues"
+  },
+  {
+    "id": "28_025",
+    "label": "Fabrication de machines à café professionnelles"
+  },
+  {
+    "id": "28_026",
+    "label": "Fabrication de machines à laver professionnelles"
+  },
+  {
+    "id": "28_027",
+    "label": "Fabrication de machines à vendanger"
+  },
+  {
+    "id": "28_028",
+    "label": "Fabrication de machines agricoles"
+  },
+  {
+    "id": "28_029",
+    "label": "Fabrication de machines d’emballage"
+  },
+  {
+    "id": "28_030",
+    "label": "Fabrication de machines de conditionnement"
+  },
+  {
+    "id": "28_031",
+    "label": "Fabrication de machines de manutention"
+  },
+  {
+    "id": "28_032",
+    "label": "Fabrication de machines industrielles"
+  },
+  {
+    "id": "28_033",
+    "label": "Fabrication de machines pour le bâtiment et les travaux publics"
+  },
+  {
+    "id": "28_034",
+    "label": "Fabrication de machines spéciales"
+  },
+  {
+    "id": "28_035",
+    "label": "Fabrication de machines-outils"
+  },
+  {
+    "id": "28_036",
+    "label": "Fabrication de matériel agricole"
+  },
+  {
+    "id": "28_037",
+    "label": "Fabrication de matériel de manutention"
+  },
+  {
+    "id": "28_038",
+    "label": "Fabrication de moteurs thermiques (hors automobiles)"
+  },
+  {
+    "id": "28_039",
+    "label": "Fabrication de nacelles élévatrices"
+  },
+  {
+    "id": "28_040",
+    "label": "Fabrication de pompes à chaleur"
+  },
+  {
+    "id": "28_041",
+    "label": "Fabrication de pompes à vide"
+  },
+  {
+    "id": "28_042",
+    "label": "Fabrication de pompes doseuses"
+  },
+  {
+    "id": "28_043",
+    "label": "Fabrication de pompes et/ou compresseurs"
+  },
+  {
+    "id": "28_044",
+    "label": "Fabrication de robinetteries industrielles"
+  },
+  {
+    "id": "28_045",
+    "label": "Fabrication de robots culinaires professionnels"
+  },
+  {
+    "id": "28_046",
+    "label": "Fabrication de robots industriels"
+  },
+  {
+    "id": "28_047",
+    "label": "Fabrication de roulements"
+  },
+  {
+    "id": "28_048",
+    "label": "Fabrication de roulements à billes"
+  },
+  {
+    "id": "28_049",
+    "label": "Fabrication de système de pompage"
+  },
+  {
+    "id": "28_050",
+    "label": "Fabrication de tracteurs"
+  },
+  {
+    "id": "28_051",
+    "label": "Fabrication de turbines à gaz"
+  },
+  {
+    "id": "28_052",
+    "label": "Fabrication de vérins hydrauliques"
+  },
+  {
+    "id": "29_001",
+    "label": "Aménagement de véhicules"
+  },
+  {
+    "id": "29_002",
+    "label": "Assemblage de camions"
+  },
+  {
+    "id": "29_003",
+    "label": "Construction automobile"
+  },
+  {
+    "id": "29_004",
+    "label": "Construction de bus"
+  },
+  {
+    "id": "29_005",
+    "label": "Construction de camions"
+  },
+  {
+    "id": "29_006",
+    "label": "Construction de camping-cars"
+  },
+  {
+    "id": "29_007",
+    "label": "Construction de poids lourds"
+  },
+  {
+    "id": "29_008",
+    "label": "Construction de remorques de transport"
+  },
+  {
+    "id": "29_009",
+    "label": "Équipementier automobile"
+  },
+  {
+    "id": "29_010",
+    "label": "Fabrication automobile"
+  },
+  {
+    "id": "29_011",
+    "label": "Fabrication d'amortisseurs de véhicules"
+  },
+  {
+    "id": "29_012",
+    "label": "Fabrication d’accessoires automobiles"
+  },
+  {
+    "id": "29_013",
+    "label": "Fabrication d’alternateurs"
+  },
+  {
+    "id": "29_014",
+    "label": "Fabrication d’équipements automobiles"
+  },
+  {
+    "id": "29_015",
+    "label": "Fabrication de bennes de transport"
+  },
+  {
+    "id": "29_016",
+    "label": "Fabrication de boîtes de vitesse"
+  },
+  {
+    "id": "29_017",
+    "label": "Fabrication de bus"
+  },
+  {
+    "id": "29_018",
+    "label": "Fabrication de camions (y.c. frigorifiques)"
+  },
+  {
+    "id": "29_019",
+    "label": "Fabrication de camping-cars"
+  },
+  {
+    "id": "29_020",
+    "label": "Fabrication de carrosseries de poids lourds"
+  },
+  {
+    "id": "29_021",
+    "label": "Fabrication de carrosseries et remorques"
+  },
+  {
+    "id": "29_022",
+    "label": "Fabrication de carrosseries frigorifiques"
+  },
+  {
+    "id": "29_023",
+    "label": "Fabrication de carrosseries industrielles"
+  },
+  {
+    "id": "29_024",
+    "label": "Fabrication de citernes de transport"
+  },
+  {
+    "id": "29_025",
+    "label": "Fabrication de faisceaux électriques (industrie automobile)"
+  },
+  {
+    "id": "29_026",
+    "label": "Fabrication de mobil-homes"
+  },
+  {
+    "id": "29_027",
+    "label": "Fabrication de moteurs automobiles thermiques"
+  },
+  {
+    "id": "29_028",
+    "label": "Fabrication de selleries automobiles"
+  },
+  {
+    "id": "29_029",
+    "label": "Fabrication de sièges automobiles"
+  },
+  {
+    "id": "29_030",
+    "label": "Fabrication de systèmes de freinage (véhicules)"
+  },
+  {
+    "id": "29_031",
+    "label": "Fabrication de transmissions automobiles"
+  },
+  {
+    "id": "29_032",
+    "label": "Fabrication de véhicules de transport"
+  },
+  {
+    "id": "29_033",
+    "label": "Fabrication de véhicules militaires de transport"
+  },
+  {
+    "id": "29_034",
+    "label": "Industrie automobile"
+  },
+  {
+    "id": "29_035",
+    "label": "Production automobile"
+  },
+  {
+    "id": "29_036",
+    "label": "Production de systèmes de chauffage de véhicules"
+  },
+  {
+    "id": "29_037",
+    "label": "Sous-traitant automobile"
+  },
+  {
+    "id": "29_038",
+    "label": "Transformation de véhicules"
+  },
+  {
+    "id": "29_039",
+    "label": "Usine automobile"
+  },
+  {
+    "id": "30_001",
+    "label": "Construction aéronautique"
+  },
+  {
+    "id": "30_002",
+    "label": "Construction aéronautique et spatiale"
+  },
+  {
+    "id": "30_003",
+    "label": "Construction aérospatiale"
+  },
+  {
+    "id": "30_004",
+    "label": "Construction d'hélicoptères"
+  },
+  {
+    "id": "30_005",
+    "label": "Construction d’avions"
+  },
+  {
+    "id": "30_006",
+    "label": "Construction de bateaux"
+  },
+  {
+    "id": "30_007",
+    "label": "Construction de catamarans"
+  },
+  {
+    "id": "30_008",
+    "label": "Construction de navires"
+  },
+  {
+    "id": "30_009",
+    "label": "Construction de satellites"
+  },
+  {
+    "id": "30_010",
+    "label": "Construction de sous-marins"
+  },
+  {
+    "id": "30_011",
+    "label": "Construction de trains"
+  },
+  {
+    "id": "30_012",
+    "label": "Construction ferroviaire"
+  },
+  {
+    "id": "30_013",
+    "label": "Construction nautique"
+  },
+  {
+    "id": "30_014",
+    "label": "Construction navale"
+  },
+  {
+    "id": "30_015",
+    "label": "Construction navale de défense"
+  },
+  {
+    "id": "30_016",
+    "label": "Construction spatiale"
+  },
+  {
+    "id": "30_017",
+    "label": "Équipementier aéronautique (fuselages, ailes, trains d’atterrissage, etc.)"
+  },
+  {
+    "id": "30_018",
+    "label": "Équipementier aéronautique (hélices, rotors, etc.)"
+  },
+  {
+    "id": "30_019",
+    "label": "Équipementier aéronautique (fabrication de sièges)"
+  },
+  {
+    "id": "30_020",
+    "label": "Équipementier ferroviaire"
+  },
+  {
+    "id": "30_021",
+    "label": "Fabrication d’aéronefs"
+  },
+  {
+    "id": "30_022",
+    "label": "Fabrication de matériel aéronautique"
+  },
+  {
+    "id": "30_023",
+    "label": "Fabrication de matériel ferroviaire"
+  },
+  {
+    "id": "30_024",
+    "label": "Fabrication de missiles"
+  },
+  {
+    "id": "30_025",
+    "label": "Fabrication de moteurs aéronautiques"
+  },
+  {
+    "id": "30_026",
+    "label": "Fabrication de moteurs aéronautiques et spatiaux"
+  },
+  {
+    "id": "30_027",
+    "label": "Fabrication de moteurs d’avions"
+  },
+  {
+    "id": "30_028",
+    "label": "Fabrication de systèmes de freinage (avion)"
+  },
+  {
+    "id": "30_029",
+    "label": "Fabrication de turbines aéronautiques"
+  },
+  {
+    "id": "30_030",
+    "label": "Fabrication de véhicules militaires de combat"
+  },
+  {
+    "id": "30_031",
+    "label": "Fabrication de vélos"
+  },
+  {
+    "id": "30_032",
+    "label": "Industrie nautique"
+  },
+  {
+    "id": "31_001",
+    "label": "Ébénisterie"
+  },
+  {
+    "id": "31_002",
+    "label": "Fabrication de canapés"
+  },
+  {
+    "id": "31_003",
+    "label": "Fabrication de literie"
+  },
+  {
+    "id": "31_004",
+    "label": "Fabrication de matelas et sommiers"
+  },
+  {
+    "id": "31_005",
+    "label": "Fabrication de meubles"
+  },
+  {
+    "id": "31_006",
+    "label": "Fabrication de meubles de cuisines"
+  },
+  {
+    "id": "31_007",
+    "label": "Fabrication de mobilier d’intérieur"
+  },
+  {
+    "id": "31_008",
+    "label": "Fabrication de sièges d’ameublement"
+  },
+  {
+    "id": "31_009",
+    "label": "Tapisserie d’ameublement"
+  },
+  {
+    "id": "32_001",
+    "label": "Bijouterie (création, fabrication)"
+  },
+  {
+    "id": "32_002",
+    "label": "Bijouterie joaillerie (création, fabrication)"
+  },
+  {
+    "id": "32_003",
+    "label": "Création de bijoux fantaisie"
+  },
+  {
+    "id": "32_004",
+    "label": "Fabrication d’articles de brosserie"
+  },
+  {
+    "id": "32_005",
+    "label": "Fabrication d’articles de sport"
+  },
+  {
+    "id": "32_006",
+    "label": "Fabrication d’implants chirurgicaux"
+  },
+  {
+    "id": "32_007",
+    "label": "Fabrication d’instruments de musique"
+  },
+  {
+    "id": "32_008",
+    "label": "Fabrication d’orthèses et prothèses"
+  },
+  {
+    "id": "32_009",
+    "label": "Fabrication de bijoux fantaisie"
+  },
+  {
+    "id": "32_010",
+    "label": "Fabrication de bougies"
+  },
+  {
+    "id": "32_011",
+    "label": "Fabrication de briquets"
+  },
+  {
+    "id": "32_012",
+    "label": "Fabrication de cercueils"
+  },
+  {
+    "id": "32_013",
+    "label": "Fabrication de dispositifs médicaux"
+  },
+  {
+    "id": "32_014",
+    "label": "Fabrication de jeux et jouets"
+  },
+  {
+    "id": "32_015",
+    "label": "Fabrication de lunettes"
+  },
+  {
+    "id": "32_016",
+    "label": "Fabrication de matériel médical"
+  },
+  {
+    "id": "32_017",
+    "label": "Fabrication de matériel orthopédique"
+  },
+  {
+    "id": "32_018",
+    "label": "Fabrication de prothèses dentaires"
+  },
+  {
+    "id": "32_019",
+    "label": "Fabrication de verres ophtalmiques"
+  },
+  {
+    "id": "32_020",
+    "label": "Frappe de monnaie"
+  },
+  {
+    "id": "32_021",
+    "label": "Joaillerie (création, fabrication)"
+  },
+  {
+    "id": "32_022",
+    "label": "Lutherie"
+  },
+  {
+    "id": "32_023",
+    "label": "Orfèvrerie"
+  },
+  {
+    "id": "33_001",
+    "label": "Installation de machines et équipements mécaniques"
+  },
+  {
+    "id": "33_002",
+    "label": "Installation de matériel frigorifique industriel"
+  },
+  {
+    "id": "33_003",
+    "label": "Installation de structures métalliques chaudronnées et de tuyauterie"
+  },
+  {
+    "id": "33_004",
+    "label": "Installation de tuyauterie industrielle"
+  },
+  {
+    "id": "33_005",
+    "label": "Maintenance aéronautique"
+  },
+  {
+    "id": "33_006",
+    "label": "Maintenance d’éoliennes"
+  },
+  {
+    "id": "33_007",
+    "label": "Maintenance d’équipements de pesage"
+  },
+  {
+    "id": "33_008",
+    "label": "Maintenance d’équipements hydrauliques"
+  },
+  {
+    "id": "33_009",
+    "label": "Maintenance de groupes électrogènes"
+  },
+  {
+    "id": "33_010",
+    "label": "Maintenance de stations-service"
+  },
+  {
+    "id": "33_011",
+    "label": "Maintenance électrique industrielle"
+  },
+  {
+    "id": "33_012",
+    "label": "Maintenance électronique industrielle"
+  },
+  {
+    "id": "33_013",
+    "label": "Maintenance industrielle"
+  },
+  {
+    "id": "33_014",
+    "label": "Maintenance navale"
+  },
+  {
+    "id": "33_015",
+    "label": "Maintenance nucléaire"
+  },
+  {
+    "id": "33_016",
+    "label": "Maintenance pétrolière"
+  },
+  {
+    "id": "33_017",
+    "label": "Montage d’équipements industriels"
+  },
+  {
+    "id": "33_018",
+    "label": "Réparation aéronautique"
+  },
+  {
+    "id": "33_019",
+    "label": "Réparation d'équipements électriques (professionnels)"
+  },
+  {
+    "id": "33_020",
+    "label": "Réparation d’engins de motoculture"
+  },
+  {
+    "id": "33_021",
+    "label": "Réparation d’ouvrages en métaux"
+  },
+  {
+    "id": "33_022",
+    "label": "Réparation de bateaux"
+  },
+  {
+    "id": "33_023",
+    "label": "Réparation de flexibles hydrauliques"
+  },
+  {
+    "id": "33_024",
+    "label": "Réparation de machines et équipements mécaniques"
+  },
+  {
+    "id": "33_025",
+    "label": "Réparation de moteurs d’avions"
+  },
+  {
+    "id": "33_026",
+    "label": "Réparation de moteurs électriques"
+  },
+  {
+    "id": "33_027",
+    "label": "Réparation de palettes en bois"
+  },
+  {
+    "id": "33_028",
+    "label": "Réparation de tuyauterie industrielle"
+  },
+  {
+    "id": "33_029",
+    "label": "Réparation de wagons"
+  },
+  {
+    "id": "33_030",
+    "label": "Réparation et entretien de matériel de traitement du courrier"
+  },
+  {
+    "id": "33_031",
+    "label": "Réparation hydraulique"
+  },
+  {
+    "id": "33_032",
+    "label": "Réparation navale"
+  },
+  {
+    "id": "35_001",
+    "label": "Activités des fournisseurs d’énergie (IEG)"
+  },
+  {
+    "id": "35_002",
+    "label": "Commerce de combustibles gazeux par conduite"
+  },
+  {
+    "id": "35_003",
+    "label": "Distribution d’électricité"
+  },
+  {
+    "id": "35_004",
+    "label": "Distribution d’énergie"
+  },
+  {
+    "id": "35_005",
+    "label": "Distribution de gaz"
+  },
+  {
+    "id": "35_006",
+    "label": "Exploitation de réseaux de gaz"
+  },
+  {
+    "id": "35_007",
+    "label": "Exploitation de réseaux énergétiques"
+  },
+  {
+    "id": "35_008",
+    "label": "Maintenance de réseaux électriques"
+  },
+  {
+    "id": "35_009",
+    "label": "Production d'électricité"
+  },
+  {
+    "id": "35_010",
+    "label": "Production d'énergie"
+  },
+  {
+    "id": "35_011",
+    "label": "Production d’énergie nucléaire"
+  },
+  {
+    "id": "35_012",
+    "label": "Production de chauffage urbain"
+  },
+  {
+    "id": "35_013",
+    "label": "Production de combustibles gazeux"
+  },
+  {
+    "id": "35_014",
+    "label": "Production et distribution d’électricité"
+  },
+  {
+    "id": "35_015",
+    "label": "Production et distribution de chauffage"
+  },
+  {
+    "id": "35_016",
+    "label": "Production et distribution de vapeur et d’air conditionné"
+  },
+  {
+    "id": "35_017",
+    "label": "Production et vente d'énergie"
+  },
+  {
+    "id": "35_018",
+    "label": "Production hydroélectrique"
+  },
+  {
+    "id": "35_019",
+    "label": "Transport d'électricité (réseau)"
+  },
+  {
+    "id": "35_020",
+    "label": "Vente d’énergie"
+  },
+  {
+    "id": "35_021",
+    "label": "Vente et commerce d’électricité"
+  },
+  {
+    "id": "36_001",
+    "label": "Captage, traitement et distribution d’eau"
+  },
+  {
+    "id": "36_002",
+    "label": "Distribution d’eau"
+  },
+  {
+    "id": "36_003",
+    "label": "Traitement et distribution d'eau"
+  },
+  {
+    "id": "37_001",
+    "label": "Assainissement (station d’épuration)"
+  },
+  {
+    "id": "37_002",
+    "label": "Assainissement des eaux usées"
+  },
+  {
+    "id": "37_003",
+    "label": "Traitement des eaux usées"
+  },
+  {
+    "id": "38_001",
+    "label": "Centre de tri des déchets"
+  },
+  {
+    "id": "38_002",
+    "label": "Collecte de déchets industriels"
+  },
+  {
+    "id": "38_003",
+    "label": "Collecte de déchets ménagers"
+  },
+  {
+    "id": "38_004",
+    "label": "Collecte des ordures ménagères"
+  },
+  {
+    "id": "38_005",
+    "label": "Collecte et recyclage des déchets"
+  },
+  {
+    "id": "38_006",
+    "label": "Collecte et traitement des déchets"
+  },
+  {
+    "id": "38_007",
+    "label": "Collecte et valorisation des déchets"
+  },
+  {
+    "id": "38_008",
+    "label": "Déchetterie"
+  },
+  {
+    "id": "38_009",
+    "label": "Démantèlement d’épaves"
+  },
+  {
+    "id": "38_010",
+    "label": "Incinération de déchets"
+  },
+  {
+    "id": "38_011",
+    "label": "Ramassage des déchets"
+  },
+  {
+    "id": "38_012",
+    "label": "Ramassage des ordures ménagères"
+  },
+  {
+    "id": "38_013",
+    "label": "Ramassage des poubelles"
+  },
+  {
+    "id": "38_014",
+    "label": "Récupération de déchets triés"
+  },
+  {
+    "id": "38_015",
+    "label": "Récupération de métaux et de ferraille"
+  },
+  {
+    "id": "38_016",
+    "label": "Recyclage"
+  },
+  {
+    "id": "38_017",
+    "label": "Recyclage du verre"
+  },
+  {
+    "id": "38_018",
+    "label": "Recyclage des déchets"
+  },
+  {
+    "id": "38_019",
+    "label": "Recyclage des déchets nucléaires"
+  },
+  {
+    "id": "38_020",
+    "label": "Recyclage des métaux"
+  },
+  {
+    "id": "38_021",
+    "label": "Recyclage industriel"
+  },
+  {
+    "id": "38_022",
+    "label": "Traitement des ordures"
+  },
+  {
+    "id": "38_023",
+    "label": "Traitement et élimination des déchets dangereux"
+  },
+  {
+    "id": "38_024",
+    "label": "Traitement et valorisation des déchets"
+  },
+  {
+    "id": "39_001",
+    "label": "Désamiantage et/ou déplombage"
+  },
+  {
+    "id": "39_002",
+    "label": "Dépollution"
+  },
+  {
+    "id": "39_003",
+    "label": "Dépollution des sols"
+  },
+  {
+    "id": "41_001",
+    "label": "Construction de logements"
+  },
+  {
+    "id": "41_002",
+    "label": "Construction de maisons individuelles"
+  },
+  {
+    "id": "41_003",
+    "label": "Construction de piscines couvertes"
+  },
+  {
+    "id": "41_004",
+    "label": "Construction et réhabilitation de bâtiments"
+  },
+  {
+    "id": "41_005",
+    "label": "Construction générale de bâtiments"
+  },
+  {
+    "id": "41_006",
+    "label": "Entreprise générale de construction de bâtiments"
+  },
+  {
+    "id": "41_007",
+    "label": "Promotion et construction immobilière"
+  },
+  {
+    "id": "41_008",
+    "label": "Promotion immobilière commerciale (vente)"
+  },
+  {
+    "id": "42_001",
+    "label": "Construction d'ouvrages maritimes et fluviaux"
+  },
+  {
+    "id": "42_002",
+    "label": "Construction d’ouvrages de génie civil (routes, tunnels, réseaux, etc.)"
+  },
+  {
+    "id": "42_003",
+    "label": "Construction de caténaires"
+  },
+  {
+    "id": "42_004",
+    "label": "Construction de ponts et tunnels"
+  },
+  {
+    "id": "42_005",
+    "label": "Construction de réseaux électriques et de télécommunications"
+  },
+  {
+    "id": "42_006",
+    "label": "Construction de réseaux et canalisations d’eau"
+  },
+  {
+    "id": "42_007",
+    "label": "Construction de réseaux pour fluides"
+  },
+  {
+    "id": "42_008",
+    "label": "Construction de routes et autoroutes"
+  },
+  {
+    "id": "42_009",
+    "label": "Construction de voies ferrées"
+  },
+  {
+    "id": "42_010",
+    "label": "Installation de fibres optiques (construction de réseaux)"
+  },
+  {
+    "id": "42_011",
+    "label": "Installation de signalisations ferroviaires"
+  },
+  {
+    "id": "42_012",
+    "label": "Installation de signalisations routières"
+  },
+  {
+    "id": "42_013",
+    "label": "Installation de systèmes de sécurité ferroviaire"
+  },
+  {
+    "id": "42_014",
+    "label": "Marquage routier"
+  },
+  {
+    "id": "42_015",
+    "label": "Travaux publics (construction de routes et réseaux)"
+  },
+  {
+    "id": "43_001",
+    "label": "Bâtiment (gros œuvre)"
+  },
+  {
+    "id": "43_002",
+    "label": "Bâtiment (rénovation)"
+  },
+  {
+    "id": "43_003",
+    "label": "Bâtiment (second œuvre)"
+  },
+  {
+    "id": "43_004",
+    "label": "Bâtiment (tous travaux)"
+  },
+  {
+    "id": "43_005",
+    "label": "Bâtiment travaux publics (travaux spécialisés)"
+  },
+  {
+    "id": "43_006",
+    "label": "BTP (travaux spécialisés du bâtiment)"
+  },
+  {
+    "id": "43_007",
+    "label": "Charpenterie couverture"
+  },
+  {
+    "id": "43_008",
+    "label": "Construction de piscines extérieures"
+  },
+  {
+    "id": "43_009",
+    "label": "Construction en ossature bois"
+  },
+  {
+    "id": "43_010",
+    "label": "Couverture zinguerie étanchéité bardage"
+  },
+  {
+    "id": "43_011",
+    "label": "Démolition"
+  },
+  {
+    "id": "43_012",
+    "label": "Dépannage et entretien de chauffage et climatisation"
+  },
+  {
+    "id": "43_013",
+    "label": "Électricité du bâtiment"
+  },
+  {
+    "id": "43_014",
+    "label": "Électricité générale"
+  },
+  {
+    "id": "43_015",
+    "label": "Électricité plomberie"
+  },
+  {
+    "id": "43_016",
+    "label": "Entreprise de construction (travaux spécialisés)"
+  },
+  {
+    "id": "43_017",
+    "label": "Entreprise de peinture"
+  },
+  {
+    "id": "43_018",
+    "label": "Entreprise du bâtiment (travaux spécialisés)"
+  },
+  {
+    "id": "43_019",
+    "label": "Ferronnerie (bâtiment)"
+  },
+  {
+    "id": "43_020",
+    "label": "Génie climatique"
+  },
+  {
+    "id": "43_021",
+    "label": "Installation d'alarmes (hors surveillance)"
+  },
+  {
+    "id": "43_022",
+    "label": "Installation d'énergies renouvelables"
+  },
+  {
+    "id": "43_023",
+    "label": "Installation d’antennes"
+  },
+  {
+    "id": "43_024",
+    "label": "Installation de courant faible"
+  },
+  {
+    "id": "43_025",
+    "label": "Installation de fibres optiques (raccordement)"
+  },
+  {
+    "id": "43_026",
+    "label": "Installation de panneaux photovoltaïques"
+  },
+  {
+    "id": "43_027",
+    "label": "Installation de panneaux solaires"
+  },
+  {
+    "id": "43_028",
+    "label": "Installation de pompes à chaleur"
+  },
+  {
+    "id": "43_029",
+    "label": "Installation de systèmes de sécurité (hors surveillance)"
+  },
+  {
+    "id": "43_030",
+    "label": "Installation domotique"
+  },
+  {
+    "id": "43_031",
+    "label": "Installation et dépannage électrique (hors industrie)"
+  },
+  {
+    "id": "43_032",
+    "label": "Installation et maintenance d’ascenseurs"
+  },
+  {
+    "id": "43_033",
+    "label": "Installation et maintenance de portes automatiques"
+  },
+  {
+    "id": "43_034",
+    "label": "Installation sanitaire, chauffage, ventilation, climatisation (CVC)"
+  },
+  {
+    "id": "43_035",
+    "label": "Levage et manutention (bâtiment)"
+  },
+  {
+    "id": "43_036",
+    "label": "Maçonnerie"
+  },
+  {
+    "id": "43_037",
+    "label": "Maintenance électrique (hors industrie)"
+  },
+  {
+    "id": "43_038",
+    "label": "Maintenance immobilière"
+  },
+  {
+    "id": "43_039",
+    "label": "Maintenance multitechnique (bâtiment)"
+  },
+  {
+    "id": "43_040",
+    "label": "Marbrerie du bâtiment"
+  },
+  {
+    "id": "43_041",
+    "label": "Menuiserie charpenterie"
+  },
+  {
+    "id": "43_042",
+    "label": "Menuiserie d’agencement"
+  },
+  {
+    "id": "43_043",
+    "label": "Menuiserie du bâtiment"
+  },
+  {
+    "id": "43_044",
+    "label": "Menuiserie ébénisterie (hors fabrication de meubles)"
+  },
+  {
+    "id": "43_045",
+    "label": "Métallerie (bâtiment)"
+  },
+  {
+    "id": "43_046",
+    "label": "Miroiterie vitrerie (pose et réparation)"
+  },
+  {
+    "id": "43_047",
+    "label": "Montage d’échafaudages (hors location)"
+  },
+  {
+    "id": "43_048",
+    "label": "Montage de charpentes (bois, métal, etc.)"
+  },
+  {
+    "id": "43_049",
+    "label": "Peinture en bâtiment"
+  },
+  {
+    "id": "43_050",
+    "label": "Plâtrerie plaquisterie peinture"
+  },
+  {
+    "id": "43_051",
+    "label": "Plomberie"
+  },
+  {
+    "id": "43_052",
+    "label": "Plomberie chauffage climatisation"
+  },
+  {
+    "id": "43_053",
+    "label": "Pose de carrelage"
+  },
+  {
+    "id": "43_054",
+    "label": "Pose de clôtures, portails, etc."
+  },
+  {
+    "id": "43_055",
+    "label": "Pose de cuisines"
+  },
+  {
+    "id": "43_056",
+    "label": "Pose de fenêtres"
+  },
+  {
+    "id": "43_057",
+    "label": "Pose de menuiseries (bois, alu, PVC, etc.)"
+  },
+  {
+    "id": "43_058",
+    "label": "Pose de pavés, dallages, etc."
+  },
+  {
+    "id": "43_059",
+    "label": "Pose de revêtements (sols, murs, etc.)"
+  },
+  {
+    "id": "43_060",
+    "label": "Pose de stores"
+  },
+  {
+    "id": "43_061",
+    "label": "Pose de vérandas"
+  },
+  {
+    "id": "43_062",
+    "label": "Ravalement de façades"
+  },
+  {
+    "id": "43_063",
+    "label": "Restauration de monuments historiques"
+  },
+  {
+    "id": "43_064",
+    "label": "Serrurerie métallerie (bâtiment)"
+  },
+  {
+    "id": "43_065",
+    "label": "Taille de pierre (maçonnerie)"
+  },
+  {
+    "id": "43_066",
+    "label": "Terrassement"
+  },
+  {
+    "id": "43_067",
+    "label": "Travaux d'accès difficiles"
+  },
+  {
+    "id": "43_068",
+    "label": "Travaux d'installations électriques"
+  },
+  {
+    "id": "43_069",
+    "label": "Travaux d'isolation"
+  },
+  {
+    "id": "43_070",
+    "label": "Travaux d’agencement intérieur"
+  },
+  {
+    "id": "43_071",
+    "label": "Travaux d’aménagement et de décoration intérieurs"
+  },
+  {
+    "id": "43_072",
+    "label": "Travaux d’installation d’éclairage public"
+  },
+  {
+    "id": "43_073",
+    "label": "Travaux de fermetures du bâtiment"
+  },
+  {
+    "id": "43_074",
+    "label": "Travaux de forage"
+  },
+  {
+    "id": "43_075",
+    "label": "Travaux de peinture"
+  },
+  {
+    "id": "43_076",
+    "label": "Travaux de peinture et revêtements de sol"
+  },
+  {
+    "id": "43_077",
+    "label": "Travaux de rénovation énergétique"
+  },
+  {
+    "id": "43_078",
+    "label": "Travaux de toitures"
+  },
+  {
+    "id": "45_001",
+    "label": "Achat-vente de caravanes et camping-cars"
+  },
+  {
+    "id": "45_002",
+    "label": "Achat-vente de pièces détachées automobiles d’occasion"
+  },
+  {
+    "id": "45_003",
+    "label": "Achat-vente de véhicules automobiles ou motocycles"
+  },
+  {
+    "id": "45_004",
+    "label": "Achat-vente de véhicules de collection"
+  },
+  {
+    "id": "45_005",
+    "label": "Carrosserie peinture automobile"
+  },
+  {
+    "id": "45_006",
+    "label": "Centre automobile"
+  },
+  {
+    "id": "45_007",
+    "label": "Commerce d’équipements automobiles (détail)"
+  },
+  {
+    "id": "45_008",
+    "label": "Commerce de pièces automobiles (détail)"
+  },
+  {
+    "id": "45_009",
+    "label": "Commerce de pièces automobiles (gros)"
+  },
+  {
+    "id": "45_010",
+    "label": "Commerce de véhicules automobiles ou motocycles"
+  },
+  {
+    "id": "45_011",
+    "label": "Commerce de voitures et de véhicules automobiles légers"
+  },
+  {
+    "id": "45_012",
+    "label": "Concessionnaire de caravanes et camping-cars"
+  },
+  {
+    "id": "45_013",
+    "label": "Concessionnaire de poids lourds"
+  },
+  {
+    "id": "45_014",
+    "label": "Concessionnaire de véhicules automobiles ou motocycles"
+  },
+  {
+    "id": "45_015",
+    "label": "Dépannage de poids lourds"
+  },
+  {
+    "id": "45_016",
+    "label": "Dépannage et remorquage de véhicules automobiles"
+  },
+  {
+    "id": "45_017",
+    "label": "Entretien et réparation de poids lourds"
+  },
+  {
+    "id": "45_018",
+    "label": "Entretien et réparation de véhicules automobiles ou motocycles"
+  },
+  {
+    "id": "45_019",
+    "label": "Garage de réparation automobiles ou motocycles"
+  },
+  {
+    "id": "45_020",
+    "label": "Garage de réparation poids-lourds"
+  },
+  {
+    "id": "45_021",
+    "label": "Grossiste en pièces automobiles"
+  },
+  {
+    "id": "45_022",
+    "label": "Importation d’automobiles"
+  },
+  {
+    "id": "45_023",
+    "label": "Maintenance automobile"
+  },
+  {
+    "id": "45_024",
+    "label": "Mandataire automobile"
+  },
+  {
+    "id": "45_025",
+    "label": "Montage de pneumatiques"
+  },
+  {
+    "id": "45_026",
+    "label": "Négoce automobile"
+  },
+  {
+    "id": "45_027",
+    "label": "Nettoyage de véhicules automobiles"
+  },
+  {
+    "id": "45_028",
+    "label": "Pose et réparation de pare-brises"
+  },
+  {
+    "id": "45_029",
+    "label": "Préparation automobile"
+  },
+  {
+    "id": "45_030",
+    "label": "Réparation de véhicules de collection"
+  },
+  {
+    "id": "45_031",
+    "label": "Réparation de véhicules industriels et utilitaires"
+  },
+  {
+    "id": "45_032",
+    "label": "Réparation et remplacement de vitrage automobile"
+  },
+  {
+    "id": "45_033",
+    "label": "Station de lavage automobile"
+  },
+  {
+    "id": "45_034",
+    "label": "Vente d’accessoires automobiles"
+  },
+  {
+    "id": "45_035",
+    "label": "Vente de camping-cars et caravanes"
+  },
+  {
+    "id": "45_036",
+    "label": "Vente de pièces détachées automobiles (détail)"
+  },
+  {
+    "id": "45_037",
+    "label": "Vente de pièces détachées automobiles (gros)"
+  },
+  {
+    "id": "45_038",
+    "label": "Vente de pneumatiques (détail)"
+  },
+  {
+    "id": "45_039",
+    "label": "Vente de pneumatiques (gros)"
+  },
+  {
+    "id": "45_040",
+    "label": "Vente de véhicules automobiles d’occasion"
+  },
+  {
+    "id": "45_041",
+    "label": "Vente de véhicules automobiles ou motocycles"
+  },
+  {
+    "id": "45_042",
+    "label": "Vente de véhicules neufs et d’occasion"
+  },
+  {
+    "id": "45_043",
+    "label": "Vente de véhicules utilitaires"
+  },
+  {
+    "id": "46_001",
+    "label": "Achat-vente de matériel agricole d'occasion"
+  },
+  {
+    "id": "46_002",
+    "label": "Centrale d'achats"
+  },
+  {
+    "id": "46_003",
+    "label": "Centrale d'achats grande distribution"
+  },
+  {
+    "id": "46_004",
+    "label": "Centrale d'achat public"
+  },
+  {
+    "id": "46_005",
+    "label": "Commerce alimentaire (gros)"
+  },
+  {
+    "id": "46_006",
+    "label": "Commerce d'appareils électroménagers (gros)"
+  },
+  {
+    "id": "46_007",
+    "label": "Commerce d'articles de sport (gros)"
+  },
+  {
+    "id": "46_008",
+    "label": "Commerce d'habillement et de chaussures (gros)"
+  },
+  {
+    "id": "46_009",
+    "label": "Commerce d'ordinateurs et d'équipements informatiques (gros)"
+  },
+  {
+    "id": "46_010",
+    "label": "Commerce d’agro-fournitures"
+  },
+  {
+    "id": "46_011",
+    "label": "Commerce d’outillage (gros)"
+  },
+  {
+    "id": "46_012",
+    "label": "Commerce de bestiaux"
+  },
+  {
+    "id": "46_013",
+    "label": "Commerce de bois (gros)"
+  },
+  {
+    "id": "46_014",
+    "label": "Commerce de boissons (gros)"
+  },
+  {
+    "id": "46_015",
+    "label": "Commerce de céréales (gros)"
+  },
+  {
+    "id": "46_016",
+    "label": "Commerce de combustibles (gros)"
+  },
+  {
+    "id": "46_017",
+    "label": "Commerce de fruits et légumes (gros)"
+  },
+  {
+    "id": "46_018",
+    "label": "Commerce de gros (hors secteur automobile)"
+  },
+  {
+    "id": "46_019",
+    "label": "Commerce de gros de fournitures et équipements industriels"
+  },
+  {
+    "id": "46_020",
+    "label": "Commerce de gros industriel"
+  },
+  {
+    "id": "46_021",
+    "label": "Commerce de livres (gros)"
+  },
+  {
+    "id": "46_022",
+    "label": "Commerce de machines-outils (gros)"
+  },
+  {
+    "id": "46_023",
+    "label": "Commerce de matériaux de construction (gros)"
+  },
+  {
+    "id": "46_024",
+    "label": "Commerce de matériel agricole"
+  },
+  {
+    "id": "46_025",
+    "label": "Commerce de matériel bureautique et informatique (gros)"
+  },
+  {
+    "id": "46_026",
+    "label": "Commerce de matériel électrique (gros)"
+  },
+  {
+    "id": "46_027",
+    "label": "Commerce de médicaments (gros)"
+  },
+  {
+    "id": "46_028",
+    "label": "Commerce de motoculteurs (gros)"
+  },
+  {
+    "id": "46_029",
+    "label": "Commerce de parfums et de produits de beauté (gros)"
+  },
+  {
+    "id": "46_030",
+    "label": "Commerce de peintures (gros)"
+  },
+  {
+    "id": "46_031",
+    "label": "Commerce de produits cosmétiques (gros)"
+  },
+  {
+    "id": "46_032",
+    "label": "Commerce de produits d’hygiène et d’entretien (gros)"
+  },
+  {
+    "id": "46_033",
+    "label": "Commerce de produits pharmaceutiques (gros)"
+  },
+  {
+    "id": "46_034",
+    "label": "Commerce de quincaillerie (gros)"
+  },
+  {
+    "id": "46_035",
+    "label": "Commerce de textiles (gros)"
+  },
+  {
+    "id": "46_036",
+    "label": "Commerce de viande (gros)"
+  },
+  {
+    "id": "46_037",
+    "label": "Commerce de vins et spiritueux (gros)"
+  },
+  {
+    "id": "46_038",
+    "label": "Commerce interentreprises"
+  },
+  {
+    "id": "46_039",
+    "label": "Commerce international (gros)"
+  },
+  {
+    "id": "46_040",
+    "label": "Commerce non alimentaire (gros)"
+  },
+  {
+    "id": "46_041",
+    "label": "Commerce pour le bâtiment"
+  },
+  {
+    "id": "46_042",
+    "label": "Commercialisation de dispositifs médicaux"
+  },
+  {
+    "id": "46_043",
+    "label": "Concessionnaire de matériel agricole"
+  },
+  {
+    "id": "46_044",
+    "label": "Coopérative agricole (commerce de gros)"
+  },
+  {
+    "id": "46_045",
+    "label": "Coopérative fruitière (commerce de gros)"
+  },
+  {
+    "id": "46_046",
+    "label": "Courtage en vins"
+  },
+  {
+    "id": "46_047",
+    "label": "Distribution d’emballages"
+  },
+  {
+    "id": "46_048",
+    "label": "Distribution de boissons"
+  },
+  {
+    "id": "46_049",
+    "label": "Distribution de composants électroniques"
+  },
+  {
+    "id": "46_050",
+    "label": "Distribution de fournitures industrielles"
+  },
+  {
+    "id": "46_051",
+    "label": "Distribution de matériel électrique"
+  },
+  {
+    "id": "46_052",
+    "label": "Distribution de sanitaire et de chauffage"
+  },
+  {
+    "id": "46_053",
+    "label": "Expédition de fruits et légumes"
+  },
+  {
+    "id": "46_054",
+    "label": "Grossiste (hors secteur automobile)"
+  },
+  {
+    "id": "46_055",
+    "label": "Grossiste alimentaire"
+  },
+  {
+    "id": "46_056",
+    "label": "Grossiste en boissons"
+  },
+  {
+    "id": "46_057",
+    "label": "Grossiste en chauffage sanitaire"
+  },
+  {
+    "id": "46_058",
+    "label": "Grossiste en électricité"
+  },
+  {
+    "id": "46_059",
+    "label": "Grossiste en fleurs et plantes"
+  },
+  {
+    "id": "46_060",
+    "label": "Grossiste en fournitures industrielles"
+  },
+  {
+    "id": "46_061",
+    "label": "Grossiste en fruits et légumes"
+  },
+  {
+    "id": "46_062",
+    "label": "Grossiste en matériel électrique"
+  },
+  {
+    "id": "46_063",
+    "label": "Grossiste en plomberie"
+  },
+  {
+    "id": "46_064",
+    "label": "Grossiste en textiles"
+  },
+  {
+    "id": "46_065",
+    "label": "Grossiste en vêtements"
+  },
+  {
+    "id": "46_066",
+    "label": "Grossiste informatique"
+  },
+  {
+    "id": "46_067",
+    "label": "Grossiste pharmaceutique"
+  },
+  {
+    "id": "46_068",
+    "label": "Import-export"
+  },
+  {
+    "id": "46_069",
+    "label": "Importation distribution"
+  },
+  {
+    "id": "46_070",
+    "label": "Intermédiaire du commerce"
+  },
+  {
+    "id": "46_071",
+    "label": "Mareyage"
+  },
+  {
+    "id": "46_072",
+    "label": "Négoce (hors secteur automobile)"
+  },
+  {
+    "id": "46_073",
+    "label": "Négoce alimentaire"
+  },
+  {
+    "id": "46_074",
+    "label": "Négoce dans le bâtiment"
+  },
+  {
+    "id": "46_075",
+    "label": "Négoce de bestiaux"
+  },
+  {
+    "id": "46_076",
+    "label": "Négoce de bois"
+  },
+  {
+    "id": "46_077",
+    "label": "Négoce de carrelage"
+  },
+  {
+    "id": "46_078",
+    "label": "Négoce de céréales"
+  },
+  {
+    "id": "46_079",
+    "label": "Négoce de fournitures industrielles"
+  },
+  {
+    "id": "46_080",
+    "label": "Négoce de fruits et légumes"
+  },
+  {
+    "id": "46_081",
+    "label": "Négoce de matériaux"
+  },
+  {
+    "id": "46_082",
+    "label": "Négoce de matières premières"
+  },
+  {
+    "id": "46_083",
+    "label": "Négoce de métaux"
+  },
+  {
+    "id": "46_084",
+    "label": "Négoce de produits agricoles"
+  },
+  {
+    "id": "46_085",
+    "label": "Négoce de produits pétroliers"
+  },
+  {
+    "id": "46_086",
+    "label": "Négoce de quincaillerie"
+  },
+  {
+    "id": "46_087",
+    "label": "Négoce de vins et spiritueux"
+  },
+  {
+    "id": "46_088",
+    "label": "Négoce international"
+  },
+  {
+    "id": "46_089",
+    "label": "Quincaillerie professionnelle"
+  },
+  {
+    "id": "46_090",
+    "label": "Répartition pharmaceutique"
+  },
+  {
+    "id": "46_091",
+    "label": "Vente aux professionnels"
+  },
+  {
+    "id": "46_092",
+    "label": "Vente d'emballages (gros)"
+  },
+  {
+    "id": "46_093",
+    "label": "Vente d'objets publicitaires (gros)"
+  },
+  {
+    "id": "46_094",
+    "label": "Vente d’alcools (gros)"
+  },
+  {
+    "id": "46_095",
+    "label": "Vente d’articles de quincaillerie (gros)"
+  },
+  {
+    "id": "46_096",
+    "label": "Vente d’articles de sport (gros)"
+  },
+  {
+    "id": "46_097",
+    "label": "Vente d’outillage (gros)"
+  },
+  {
+    "id": "46_098",
+    "label": "Vente de bateaux de plaisance"
+  },
+  {
+    "id": "46_099",
+    "label": "Vente de bois (gros)"
+  },
+  {
+    "id": "46_100",
+    "label": "Vente de boissons (gros)"
+  },
+  {
+    "id": "46_101",
+    "label": "Vente de carrelage et de sanitaire (gros)"
+  },
+  {
+    "id": "46_102",
+    "label": "Vente de chariots élévateurs"
+  },
+  {
+    "id": "46_103",
+    "label": "Vente de composants électroniques (gros)"
+  },
+  {
+    "id": "46_104",
+    "label": "Vente de dispositifs médicaux (gros)"
+  },
+  {
+    "id": "46_105",
+    "label": "Vente de fournitures alimentaires pour professionnels"
+  },
+  {
+    "id": "46_106",
+    "label": "Vente de fournitures et de mobiliers de bureau (gros)"
+  },
+  {
+    "id": "46_107",
+    "label": "Vente de fournitures industrielles"
+  },
+  {
+    "id": "46_108",
+    "label": "Vente de fruits et légumes (gros)"
+  },
+  {
+    "id": "46_109",
+    "label": "Vente de gaz (gros)"
+  },
+  {
+    "id": "46_110",
+    "label": "Vente de machines agricoles (gros)"
+  },
+  {
+    "id": "46_111",
+    "label": "Vente de matériaux de construction (gros)"
+  },
+  {
+    "id": "46_112",
+    "label": "Vente de matériels agricoles"
+  },
+  {
+    "id": "46_113",
+    "label": "Vente de matériel audiovisuel (gros)"
+  },
+  {
+    "id": "46_114",
+    "label": "Vente de matériel bureautique (gros)"
+  },
+  {
+    "id": "46_115",
+    "label": "Vente de matériel de chauffage"
+  },
+  {
+    "id": "46_116",
+    "label": "Vente de matériel de golf (gros)"
+  },
+  {
+    "id": "46_117",
+    "label": "Vente de matériel de piscine (gros)"
+  },
+  {
+    "id": "46_118",
+    "label": "Vente de matériel de sécurité"
+  },
+  {
+    "id": "46_119",
+    "label": "Vente de matériel électrique (gros)"
+  },
+  {
+    "id": "46_120",
+    "label": "Vente de matériel industriel"
+  },
+  {
+    "id": "46_121",
+    "label": "Vente de matériel informatique (gros)"
+  },
+  {
+    "id": "46_122",
+    "label": "Vente de matériel médical (gros)"
+  },
+  {
+    "id": "46_123",
+    "label": "Vente de matériel pour la restauration"
+  },
+  {
+    "id": "46_124",
+    "label": "Vente de matériel pour les travaux publics"
+  },
+  {
+    "id": "46_125",
+    "label": "Vente de mobiliers (gros)"
+  },
+  {
+    "id": "46_126",
+    "label": "Vente de peintures (gros)"
+  },
+  {
+    "id": "46_127",
+    "label": "Vente de photocopieurs (gros)"
+  },
+  {
+    "id": "46_128",
+    "label": "Vente de produits agricoles (gros)"
+  },
+  {
+    "id": "46_129",
+    "label": "Vente de produits alimentaires (gros)"
+  },
+  {
+    "id": "46_130",
+    "label": "Vente de produits chimiques (gros)"
+  },
+  {
+    "id": "46_131",
+    "label": "Vente de produits cosmétiques (gros)"
+  },
+  {
+    "id": "46_132",
+    "label": "Vente de produits d'hygiène (gros)"
+  },
+  {
+    "id": "46_133",
+    "label": "Vente de produits d’entretien (gros)"
+  },
+  {
+    "id": "46_134",
+    "label": "Vente de produits de coiffure (gros)"
+  },
+  {
+    "id": "46_135",
+    "label": "Vente de produits pétroliers (gros)"
+  },
+  {
+    "id": "46_136",
+    "label": "Vente de produits phytosanitaires"
+  },
+  {
+    "id": "46_137",
+    "label": "Vente de vins et spiritueux (gros)"
+  },
+  {
+    "id": "46_138",
+    "label": "Vente en gros (hors secteur automobile)"
+  },
+  {
+    "id": "46_139",
+    "label": "Vente en sanitaire chauffage (gros)"
+  },
+  {
+    "id": "47_001",
+    "label": "Alimentation (commerce de détail)"
+  },
+  {
+    "id": "47_002",
+    "label": "Animalerie (commerce de détail)"
+  },
+  {
+    "id": "47_003",
+    "label": "Armurerie (commerce de détail)"
+  },
+  {
+    "id": "47_004",
+    "label": "Bazar (commerce de détail)"
+  },
+  {
+    "id": "47_005",
+    "label": "Bijouterie (commerce de détail)"
+  },
+  {
+    "id": "47_006",
+    "label": "Bijouterie horlogerie (commerce de détail)"
+  },
+  {
+    "id": "47_007",
+    "label": "Boucherie (commerce de détail)"
+  },
+  {
+    "id": "47_008",
+    "label": "Boucherie charcuterie (commerce de détail)"
+  },
+  {
+    "id": "47_009",
+    "label": "Boutique de prêt-à-porter"
+  },
+  {
+    "id": "47_010",
+    "label": "Boutique de vêtements"
+  },
+  {
+    "id": "47_011",
+    "label": "Brocante"
+  },
+  {
+    "id": "47_012",
+    "label": "Bureau de tabac"
+  },
+  {
+    "id": "47_013",
+    "label": "Cave à vin (commerce de détail)"
+  },
+  {
+    "id": "47_014",
+    "label": "Centre commercial"
+  },
+  {
+    "id": "47_015",
+    "label": "Commerce alimentaire (détail)"
+  },
+  {
+    "id": "47_016",
+    "label": "Commerce ambulant sur marché"
+  },
+  {
+    "id": "47_017",
+    "label": "Commerce d'articles de sport (détail)"
+  },
+  {
+    "id": "47_018",
+    "label": "Commerce d’antiquités"
+  },
+  {
+    "id": "47_019",
+    "label": "Commerce d’appareils électroménagers (détail)"
+  },
+  {
+    "id": "47_020",
+    "label": "Commerce d’habillement (détail)"
+  },
+  {
+    "id": "47_021",
+    "label": "Commerce d’optique (détail)"
+  },
+  {
+    "id": "47_022",
+    "label": "Commerce de bricolage (détail)"
+  },
+  {
+    "id": "47_023",
+    "label": "Commerce de chaussures (détail)"
+  },
+  {
+    "id": "47_024",
+    "label": "Commerce de décoration (détail)"
+  },
+  {
+    "id": "47_025",
+    "label": "Commerce de fruits et légumes (détail)"
+  },
+  {
+    "id": "47_026",
+    "label": "Commerce de jouets (détail)"
+  },
+  {
+    "id": "47_027",
+    "label": "Commerce de linge de maison (détail)"
+  },
+  {
+    "id": "47_028",
+    "label": "Commerce de literie"
+  },
+  {
+    "id": "47_029",
+    "label": "Commerce de meubles (détail)"
+  },
+  {
+    "id": "47_030",
+    "label": "Commerce de prêt-à-porter (détail)"
+  },
+  {
+    "id": "47_031",
+    "label": "Commerce de produits pharmaceutiques (détail)"
+  },
+  {
+    "id": "47_032",
+    "label": "Commerce de prothèses auditives (détail)"
+  },
+  {
+    "id": "47_033",
+    "label": "Commerce de proximité"
+  },
+  {
+    "id": "47_034",
+    "label": "Commerce de vêtements (détail)"
+  },
+  {
+    "id": "47_035",
+    "label": "Commerce en équipement de la maison (détail)"
+  },
+  {
+    "id": "47_036",
+    "label": "Commerce en libre-service (détail)"
+  },
+  {
+    "id": "47_037",
+    "label": "Commerce en ligne"
+  },
+  {
+    "id": "47_038",
+    "label": "Commerce en téléphonie (détail)"
+  },
+  {
+    "id": "47_039",
+    "label": "Commerce non alimentaire (détail)"
+  },
+  {
+    "id": "47_040",
+    "label": "Commerce par internet (détail)"
+  },
+  {
+    "id": "47_041",
+    "label": "Commerce spécialisé (détail)"
+  },
+  {
+    "id": "47_042",
+    "label": "Conception et vente de cuisine"
+  },
+  {
+    "id": "47_043",
+    "label": "Crèmerie fromagerie (commerce de détail)"
+  },
+  {
+    "id": "47_044",
+    "label": "Délivrance de médicaments"
+  },
+  {
+    "id": "47_045",
+    "label": "Distribution automatique de produits alimentaires"
+  },
+  {
+    "id": "47_046",
+    "label": "Distribution de carburant en station-service"
+  },
+  {
+    "id": "47_047",
+    "label": "Drive alimentaire"
+  },
+  {
+    "id": "47_048",
+    "label": "Droguerie (commerce de détail)"
+  },
+  {
+    "id": "47_049",
+    "label": "E-commerce (détail)"
+  },
+  {
+    "id": "47_050",
+    "label": "Épicerie"
+  },
+  {
+    "id": "47_051",
+    "label": "Espace culturel (commerce de détail)"
+  },
+  {
+    "id": "47_052",
+    "label": "Fleuriste (commerce de détail)"
+  },
+  {
+    "id": "47_053",
+    "label": "Galerie d'art"
+  },
+  {
+    "id": "47_054",
+    "label": "Grand magasin"
+  },
+  {
+    "id": "47_055",
+    "label": "Grande distribution"
+  },
+  {
+    "id": "47_056",
+    "label": "Grande surface alimentaire"
+  },
+  {
+    "id": "47_057",
+    "label": "Grande surface commerciale"
+  },
+  {
+    "id": "47_058",
+    "label": "Herboristerie (commerce de détail)"
+  },
+  {
+    "id": "47_059",
+    "label": "Horlogerie joaillerie (commerce de détail)"
+  },
+  {
+    "id": "47_060",
+    "label": "Hypermarché"
+  },
+  {
+    "id": "47_061",
+    "label": "Jardinerie (commerce de détail)"
+  },
+  {
+    "id": "47_062",
+    "label": "Librairie"
+  },
+  {
+    "id": "47_064",
+    "label": "Librairie papeterie"
+  },
+  {
+    "id": "47_065",
+    "label": "Magasin alimentaire"
+  },
+  {
+    "id": "47_066",
+    "label": "Magasin d'ameublement et de décoration"
+  },
+  {
+    "id": "47_067",
+    "label": "Magasin d'articles de sport"
+  },
+  {
+    "id": "47_068",
+    "label": "Magasin d'optique"
+  },
+  {
+    "id": "47_069",
+    "label": "Magasin d'outillage (commerce de détail)"
+  },
+  {
+    "id": "47_070",
+    "label": "Magasin d’électroménager"
+  },
+  {
+    "id": "47_071",
+    "label": "Magasin de bricolage"
+  },
+  {
+    "id": "47_072",
+    "label": "Magasin de chaussures"
+  },
+  {
+    "id": "47_073",
+    "label": "Magasin de cosmétiques"
+  },
+  {
+    "id": "47_074",
+    "label": "Magasin de déstockage"
+  },
+  {
+    "id": "47_075",
+    "label": "Magasin de fournitures de bureau (commerce de détail)"
+  },
+  {
+    "id": "47_076",
+    "label": "Magasin de jouets"
+  },
+  {
+    "id": "47_077",
+    "label": "Magasin de prêt-à-porter"
+  },
+  {
+    "id": "47_078",
+    "label": "Magasin de produits biologiques"
+  },
+  {
+    "id": "47_079",
+    "label": "Magasin de souvenirs"
+  },
+  {
+    "id": "47_080",
+    "label": "Magasin de vêtements"
+  },
+  {
+    "id": "47_081",
+    "label": "Magasin discount"
+  },
+  {
+    "id": "47_082",
+    "label": "Maison de la presse"
+  },
+  {
+    "id": "47_083",
+    "label": "Maison de vente aux enchères (détail)"
+  },
+  {
+    "id": "47_084",
+    "label": "Maroquinerie (commerce de détail)"
+  },
+  {
+    "id": "47_085",
+    "label": "Mercerie (commerce de détail)"
+  },
+  {
+    "id": "47_086",
+    "label": "Parapharmacie (commerce de détail)"
+  },
+  {
+    "id": "47_087",
+    "label": "Parfumerie (commerce de détail)"
+  },
+  {
+    "id": "47_088",
+    "label": "Pharmacie (commerce de détail)"
+  },
+  {
+    "id": "47_089",
+    "label": "Poissonnerie"
+  },
+  {
+    "id": "47_090",
+    "label": "Primeur (commerce de détail)"
+  },
+  {
+    "id": "47_091",
+    "label": "Quincaillerie (commerce de détail)"
+  },
+  {
+    "id": "47_092",
+    "label": "Station-service"
+  },
+  {
+    "id": "47_093",
+    "label": "Supérette"
+  },
+  {
+    "id": "47_094",
+    "label": "Supermarché"
+  },
+  {
+    "id": "47_095",
+    "label": "Tabac presse loto"
+  },
+  {
+    "id": "47_096",
+    "label": "Vente à distance (détail)"
+  },
+  {
+    "id": "47_097",
+    "label": "Vente à distance sur catalogue"
+  },
+  {
+    "id": "47_098",
+    "label": "Vente à domicile"
+  },
+  {
+    "id": "47_099",
+    "label": "Vente d'articles de bricolage (détail)"
+  },
+  {
+    "id": "47_100",
+    "label": "Vente d'articles de puériculture (détail)"
+  },
+  {
+    "id": "47_101",
+    "label": "Vente d'instruments de musique (détail)"
+  },
+  {
+    "id": "47_102",
+    "label": "Vente d’articles de mode (détail)"
+  },
+  {
+    "id": "47_103",
+    "label": "Vente d’articles de sport (détail)"
+  },
+  {
+    "id": "47_104",
+    "label": "Vente d’articles multimédias et électroménagers"
+  },
+  {
+    "id": "47_105",
+    "label": "Vente d’habillement (détail)"
+  },
+  {
+    "id": "47_106",
+    "label": "Vente de bijoux (détail)"
+  },
+  {
+    "id": "47_107",
+    "label": "Vente de bois de chauffage (détail)"
+  },
+  {
+    "id": "47_108",
+    "label": "Vente de café (détail)"
+  },
+  {
+    "id": "47_109",
+    "label": "Vente de carburants (détail)"
+  },
+  {
+    "id": "47_110",
+    "label": "Vente de charcuterie (détail)"
+  },
+  {
+    "id": "47_111",
+    "label": "Vente de chaussures (détail)"
+  },
+  {
+    "id": "47_112",
+    "label": "Vente de chocolats (détail)"
+  },
+  {
+    "id": "47_113",
+    "label": "Vente de cigarettes électroniques (détail)"
+  },
+  {
+    "id": "47_114",
+    "label": "Vente de combustibles (détail)"
+  },
+  {
+    "id": "47_115",
+    "label": "Vente de compléments alimentaires (détail)"
+  },
+  {
+    "id": "47_116",
+    "label": "Vente de confiseries (détail)"
+  },
+  {
+    "id": "47_117",
+    "label": "Vente de cycles (détail)"
+  },
+  {
+    "id": "47_118",
+    "label": "Vente de fleurs (détail)"
+  },
+  {
+    "id": "47_119",
+    "label": "Vente de fromages (détail)"
+  },
+  {
+    "id": "47_120",
+    "label": "Vente de fruits et légumes (détail)"
+  },
+  {
+    "id": "47_121",
+    "label": "Vente de jeux et jouets (détail)"
+  },
+  {
+    "id": "47_122",
+    "label": "Vente de lingerie (détail)"
+  },
+  {
+    "id": "47_123",
+    "label": "Vente de literie (détail)"
+  },
+  {
+    "id": "47_124",
+    "label": "Vente de livres (détail)"
+  },
+  {
+    "id": "47_125",
+    "label": "Vente de luminaires (détail)"
+  },
+  {
+    "id": "47_126",
+    "label": "Vente de lunettes (détail)"
+  },
+  {
+    "id": "47_127",
+    "label": "Vente de matériel informatique (détail)"
+  },
+  {
+    "id": "47_128",
+    "label": "Vente de matériel médical (détail)"
+  },
+  {
+    "id": "47_129",
+    "label": "Vente de médicaments (détail)"
+  },
+  {
+    "id": "47_130",
+    "label": "Vente de meubles (détail)"
+  },
+  {
+    "id": "47_131",
+    "label": "Vente de meubles et d’appareils électroménagers (détail)"
+  },
+  {
+    "id": "47_132",
+    "label": "Vente de meubles et d’articles de décoration (détail)"
+  },
+  {
+    "id": "47_133",
+    "label": "Vente de parfums et cosmétiques (détail)"
+  },
+  {
+    "id": "47_134",
+    "label": "Vente de piscines (détail)"
+  },
+  {
+    "id": "47_135",
+    "label": "Vente de plantes (détail)"
+  },
+  {
+    "id": "47_136",
+    "label": "Vente de prêt-à-porter (détail)"
+  },
+  {
+    "id": "47_137",
+    "label": "Vente de produits alimentaires (détail)"
+  },
+  {
+    "id": "47_138",
+    "label": "Vente de produits alimentaires bio (détail)"
+  },
+  {
+    "id": "47_139",
+    "label": "Vente de produits artisanaux (détail)"
+  },
+  {
+    "id": "47_140",
+    "label": "Vente de produits cosmétiques (détail)"
+  },
+  {
+    "id": "47_141",
+    "label": "Vente de produits culturels"
+  },
+  {
+    "id": "47_142",
+    "label": "Vente de produits de beauté (détail)"
+  },
+  {
+    "id": "47_143",
+    "label": "Vente de produits de bien-être (détail)"
+  },
+  {
+    "id": "47_144",
+    "label": "Vente de produits de luxe (détail)"
+  },
+  {
+    "id": "47_145",
+    "label": "Vente de produits de vapotage (détail)"
+  },
+  {
+    "id": "47_146",
+    "label": "Vente de produits électroniques (détail)"
+  },
+  {
+    "id": "47_147",
+    "label": "Vente de produits fermiers (détail)"
+  },
+  {
+    "id": "47_148",
+    "label": "Vente de produits frais (détail)"
+  },
+  {
+    "id": "47_149",
+    "label": "Vente de produits laitiers (détail)"
+  },
+  {
+    "id": "47_150",
+    "label": "Vente de produits naturels (détail)"
+  },
+  {
+    "id": "47_151",
+    "label": "Vente de produits non alimentaires (détail)"
+  },
+  {
+    "id": "47_152",
+    "label": "Vente de produits régionaux (détail)"
+  },
+  {
+    "id": "47_153",
+    "label": "Vente de produits surgelés (détail)"
+  },
+  {
+    "id": "47_154",
+    "label": "Vente de textiles (détail)"
+  },
+  {
+    "id": "47_155",
+    "label": "Vente de tissus (détail)"
+  },
+  {
+    "id": "47_156",
+    "label": "Vente de vélos (détail)"
+  },
+  {
+    "id": "47_157",
+    "label": "Vente de vêtements (détail)"
+  },
+  {
+    "id": "47_158",
+    "label": "Vente de vins et spiritueux (détail)"
+  },
+  {
+    "id": "47_159",
+    "label": "Vente en ligne (détail)"
+  },
+  {
+    "id": "47_160",
+    "label": "Vente en téléphonie (détail)"
+  },
+  {
+    "id": "47_161",
+    "label": "Vente par correspondance"
+  },
+  {
+    "id": "47_162",
+    "label": "Vente sur internet (détail)"
+  },
+  {
+    "id": "49_001",
+    "label": "Déménagement"
+  },
+  {
+    "id": "49_002",
+    "label": "Exploitation de domaine skiable"
+  },
+  {
+    "id": "49_003",
+    "label": "Exploitation de remontées mécaniques"
+  },
+  {
+    "id": "49_004",
+    "label": "Location d’automobiles (avec chauffeur)"
+  },
+  {
+    "id": "49_005",
+    "label": "Location de camions (avec chauffeur)"
+  },
+  {
+    "id": "49_006",
+    "label": "Location de véhicules industriels (avec chauffeur)"
+  },
+  {
+    "id": "49_007",
+    "label": "Location de véhicules professionnels (avec chauffeur)"
+  },
+  {
+    "id": "49_008",
+    "label": "Location de voitures (avec chauffeur)"
+  },
+  {
+    "id": "49_009",
+    "label": "Taxi"
+  },
+  {
+    "id": "49_010",
+    "label": "Transport d’animaux vivants"
+  },
+  {
+    "id": "49_011",
+    "label": "Transport d’hydrocarbures par pipeline"
+  },
+  {
+    "id": "49_012",
+    "label": "Transport de bois"
+  },
+  {
+    "id": "49_013",
+    "label": "Transport de carburants par camion"
+  },
+  {
+    "id": "49_014",
+    "label": "Transport de gaz par gazoduc"
+  },
+  {
+    "id": "49_015",
+    "label": "Transport de liquides alimentaires"
+  },
+  {
+    "id": "49_016",
+    "label": "Transport de meubles"
+  },
+  {
+    "id": "49_017",
+    "label": "Transport de personnes à mobilité réduite (hors ambulance)"
+  },
+  {
+    "id": "49_018",
+    "label": "Transport de personnes par taxi"
+  },
+  {
+    "id": "49_019",
+    "label": "Transport en commun"
+  },
+  {
+    "id": "49_020",
+    "label": "Transport exceptionnel"
+  },
+  {
+    "id": "49_021",
+    "label": "Transport ferroviaire de fret"
+  },
+  {
+    "id": "49_022",
+    "label": "Transport ferroviaire de voyageurs"
+  },
+  {
+    "id": "49_023",
+    "label": "Transport frigorifique routier"
+  },
+  {
+    "id": "49_024",
+    "label": "Transport par bus ou car"
+  },
+  {
+    "id": "49_025",
+    "label": "Transport par conduites"
+  },
+  {
+    "id": "49_026",
+    "label": "Transport par métro"
+  },
+  {
+    "id": "49_027",
+    "label": "Transport par poids lourds"
+  },
+  {
+    "id": "49_028",
+    "label": "Transport par train"
+  },
+  {
+    "id": "49_029",
+    "label": "Transport pétrolier par pipeline"
+  },
+  {
+    "id": "49_030",
+    "label": "Transport public"
+  },
+  {
+    "id": "49_031",
+    "label": "Transport routier"
+  },
+  {
+    "id": "49_032",
+    "label": "Transport routier de fret de proximité"
+  },
+  {
+    "id": "49_033",
+    "label": "Transport routier de fret interurbain"
+  },
+  {
+    "id": "49_034",
+    "label": "Transport routier de marchandises"
+  },
+  {
+    "id": "49_035",
+    "label": "Transport routier de matières dangereuses"
+  },
+  {
+    "id": "49_036",
+    "label": "Transport routier de personnes"
+  },
+  {
+    "id": "49_037",
+    "label": "Transport routier et accompagnement de personnes à mobilité réduite"
+  },
+  {
+    "id": "49_038",
+    "label": "Transport scolaire"
+  },
+  {
+    "id": "49_039",
+    "label": "Transport urbain de personnes"
+  },
+  {
+    "id": "49_040",
+    "label": "Transport urbain et interurbain"
+  },
+  {
+    "id": "49_041",
+    "label": "Voiture de transport avec chauffeur (VTC)"
+  },
+  {
+    "id": "50_001",
+    "label": "Compagnie maritime"
+  },
+  {
+    "id": "50_002",
+    "label": "Croisiériste"
+  },
+  {
+    "id": "50_003",
+    "label": "Marine commerciale"
+  },
+  {
+    "id": "50_004",
+    "label": "Marine marchande"
+  },
+  {
+    "id": "50_005",
+    "label": "Promenades en mer"
+  },
+  {
+    "id": "50_006",
+    "label": "Tourisme fluvial"
+  },
+  {
+    "id": "50_007",
+    "label": "Transport fluvial de fret"
+  },
+  {
+    "id": "50_008",
+    "label": "Transport fluvial de passagers"
+  },
+  {
+    "id": "50_009",
+    "label": "Transport maritime de fret"
+  },
+  {
+    "id": "50_010",
+    "label": "Transport maritime de passagers"
+  },
+  {
+    "id": "51_001",
+    "label": "Compagnie aérienne"
+  },
+  {
+    "id": "51_002",
+    "label": "Transport aérien de fret"
+  },
+  {
+    "id": "51_003",
+    "label": "Transport aérien de passagers"
+  },
+  {
+    "id": "51_004",
+    "label": "Transport spatial de fret et de personnes"
+  },
+  {
+    "id": "52_001",
+    "label": "Activités des commissionnaires de transport"
+  },
+  {
+    "id": "52_002",
+    "label": "Activités des commissionnaires en douane"
+  },
+  {
+    "id": "52_003",
+    "label": "Affrètement et organisation des transports"
+  },
+  {
+    "id": "52_004",
+    "label": "Agence maritime"
+  },
+  {
+    "id": "52_005",
+    "label": "Assistance aéroportuaire"
+  },
+  {
+    "id": "52_006",
+    "label": "Entreposage et stockage non frigorifique"
+  },
+  {
+    "id": "52_007",
+    "label": "Entreposage et stockage frigorifique"
+  },
+  {
+    "id": "52_008",
+    "label": "Entreposage logistique"
+  },
+  {
+    "id": "52_009",
+    "label": "Entretien du réseau ferroviaire"
+  },
+  {
+    "id": "52_010",
+    "label": "Exploitation aéroportuaire"
+  },
+  {
+    "id": "52_011",
+    "label": "Exploitation autoroutière"
+  },
+  {
+    "id": "52_012",
+    "label": "Exploitation d’aéroports"
+  },
+  {
+    "id": "52_013",
+    "label": "Exploitation d’aires de stationnement"
+  },
+  {
+    "id": "52_014",
+    "label": "Exploitation de docks"
+  },
+  {
+    "id": "52_015",
+    "label": "Exploitation de parkings"
+  },
+  {
+    "id": "52_016",
+    "label": "Exploitation de ports de commerce"
+  },
+  {
+    "id": "52_017",
+    "label": "Exploitation de ports maritimes"
+  },
+  {
+    "id": "52_018",
+    "label": "Exploitation portuaire"
+  },
+  {
+    "id": "52_019",
+    "label": "Gestion aéroportuaire"
+  },
+  {
+    "id": "52_020",
+    "label": "Gestion d’autoroutes"
+  },
+  {
+    "id": "52_021",
+    "label": "Gestion d’infrastructure ferroviaire"
+  },
+  {
+    "id": "52_022",
+    "label": "Gestion de parkings"
+  },
+  {
+    "id": "52_023",
+    "label": "Maintenance du réseau ferroviaire"
+  },
+  {
+    "id": "52_024",
+    "label": "Manutention portuaire"
+  },
+  {
+    "id": "52_025",
+    "label": "Messagerie, fret express"
+  },
+  {
+    "id": "52_026",
+    "label": "Organisation du fret aérien"
+  },
+  {
+    "id": "52_027",
+    "label": "Pilotage maritime portuaire"
+  },
+  {
+    "id": "52_028",
+    "label": "Remorquage portuaire"
+  },
+  {
+    "id": "52_029",
+    "label": "Services auxiliaires des transports aériens"
+  },
+  {
+    "id": "52_030",
+    "label": "Services auxiliaires des transports par eau"
+  },
+  {
+    "id": "52_031",
+    "label": "Services auxiliaires des transports terrestres"
+  },
+  {
+    "id": "52_032",
+    "label": "Société concessionnaire d’autoroutes"
+  },
+  {
+    "id": "52_033",
+    "label": "Stockage alimentaire"
+  },
+  {
+    "id": "52_034",
+    "label": "Stockage de produits pétroliers"
+  },
+  {
+    "id": "52_035",
+    "label": "Transit de marchandises"
+  },
+  {
+    "id": "53_001",
+    "label": "Acheminement de courrier et colis"
+  },
+  {
+    "id": "53_002",
+    "label": "Acheminement et distribution de courrier"
+  },
+  {
+    "id": "53_003",
+    "label": "Activités des coursiers à vélo"
+  },
+  {
+    "id": "53_004",
+    "label": "Activités des facteurs"
+  },
+  {
+    "id": "53_005",
+    "label": "Activités postales"
+  },
+  {
+    "id": "53_006",
+    "label": "Bureau de poste"
+  },
+  {
+    "id": "53_007",
+    "label": "Centre de tri du courrier"
+  },
+  {
+    "id": "53_008",
+    "label": "Centre de tri postal"
+  },
+  {
+    "id": "53_009",
+    "label": "Distribution de colis"
+  },
+  {
+    "id": "53_010",
+    "label": "Distribution de courrier"
+  },
+  {
+    "id": "53_011",
+    "label": "Distribution postale"
+  },
+  {
+    "id": "53_012",
+    "label": "Livraison de courrier et colis"
+  },
+  {
+    "id": "53_013",
+    "label": "Opérateur de services postaux"
+  },
+  {
+    "id": "53_014",
+    "label": "Plateforme industrielle de courrier"
+  },
+  {
+    "id": "53_015",
+    "label": "Portage de repas"
+  },
+  {
+    "id": "53_016",
+    "label": "Services postaux"
+  },
+  {
+    "id": "53_017",
+    "label": "Traitement de courrier et/ou de colis"
+  },
+  {
+    "id": "53_018",
+    "label": "Transport de courrier et colis"
+  },
+  {
+    "id": "53_019",
+    "label": "Tri et distribution du courrier"
+  },
+  {
+    "id": "55_001",
+    "label": "Auberge de jeunesse"
+  },
+  {
+    "id": "55_002",
+    "label": "Camping"
+  },
+  {
+    "id": "55_003",
+    "label": "Centre de vacances"
+  },
+  {
+    "id": "55_004",
+    "label": "Chambres d’hôtes"
+  },
+  {
+    "id": "55_005",
+    "label": "Club de vacances"
+  },
+  {
+    "id": "55_006",
+    "label": "Foyer de jeunes travailleurs"
+  },
+  {
+    "id": "55_007",
+    "label": "Gîte et chambres d’hôtes"
+  },
+  {
+    "id": "55_008",
+    "label": "Hébergement de courte durée"
+  },
+  {
+    "id": "55_009",
+    "label": "Hébergement étudiant"
+  },
+  {
+    "id": "55_010",
+    "label": "Hébergement touristique"
+  },
+  {
+    "id": "55_011",
+    "label": "Hôtel spa"
+  },
+  {
+    "id": "55_012",
+    "label": "Hôtel thalassothérapie"
+  },
+  {
+    "id": "55_013",
+    "label": "Hôtellerie"
+  },
+  {
+    "id": "55_014",
+    "label": "Hôtellerie de luxe"
+  },
+  {
+    "id": "55_015",
+    "label": "Hôtellerie de plein air"
+  },
+  {
+    "id": "55_016",
+    "label": "Hôtellerie touristique"
+  },
+  {
+    "id": "55_017",
+    "label": "Location d’appartements de courte durée"
+  },
+  {
+    "id": "55_018",
+    "label": "Location de chambres"
+  },
+  {
+    "id": "55_019",
+    "label": "Location de gîte de courte durée"
+  },
+  {
+    "id": "55_020",
+    "label": "Location de meublés de tourisme"
+  },
+  {
+    "id": "55_021",
+    "label": "Maison d’hôtes"
+  },
+  {
+    "id": "55_022",
+    "label": "Résidence de tourisme"
+  },
+  {
+    "id": "55_023",
+    "label": "Résidence de vacances"
+  },
+  {
+    "id": "55_024",
+    "label": "Résidence hôtelière"
+  },
+  {
+    "id": "55_025",
+    "label": "Résidence universitaire"
+  },
+  {
+    "id": "55_026",
+    "label": "Village vacances"
+  },
+  {
+    "id": "56_001",
+    "label": "Bar à bière"
+  },
+  {
+    "id": "56_002",
+    "label": "Bar café"
+  },
+  {
+    "id": "56_003",
+    "label": "Bar PMU"
+  },
+  {
+    "id": "56_004",
+    "label": "Bar restaurant"
+  },
+  {
+    "id": "56_005",
+    "label": "Bar tabac"
+  },
+  {
+    "id": "56_006",
+    "label": "Bar tabac brasserie"
+  },
+  {
+    "id": "56_007",
+    "label": "Bar tabac loto PMU"
+  },
+  {
+    "id": "56_008",
+    "label": "Bar tabac PMU vente de jeux"
+  },
+  {
+    "id": "56_009",
+    "label": "Bar tabac presse"
+  },
+  {
+    "id": "56_010",
+    "label": "Bar tabac restaurant"
+  },
+  {
+    "id": "56_011",
+    "label": "Brasserie (restauration)"
+  },
+  {
+    "id": "56_012",
+    "label": "Café tabac"
+  },
+  {
+    "id": "56_013",
+    "label": "Cafétéria"
+  },
+  {
+    "id": "56_014",
+    "label": "Cantine scolaire"
+  },
+  {
+    "id": "56_015",
+    "label": "Coffee shop"
+  },
+  {
+    "id": "56_016",
+    "label": "Crêperie"
+  },
+  {
+    "id": "56_017",
+    "label": "Cuisine à domicile"
+  },
+  {
+    "id": "56_018",
+    "label": "Cuisine collective"
+  },
+  {
+    "id": "56_019",
+    "label": "Débit de boissons (bar, café, etc.)"
+  },
+  {
+    "id": "56_020",
+    "label": "Pizzeria"
+  },
+  {
+    "id": "56_021",
+    "label": "Restauration à emporter"
+  },
+  {
+    "id": "56_022",
+    "label": "Restauration aérienne (catering aérien)"
+  },
+  {
+    "id": "56_023",
+    "label": "Restauration collective"
+  },
+  {
+    "id": "56_024",
+    "label": "Restauration d’entreprise"
+  },
+  {
+    "id": "56_025",
+    "label": "Restauration ferroviaire"
+  },
+  {
+    "id": "56_026",
+    "label": "Restauration gastronomique"
+  },
+  {
+    "id": "56_027",
+    "label": "Restauration rapide (fast food, sandwicherie, food truck, etc.))"
+  },
+  {
+    "id": "56_028",
+    "label": "Restauration routière"
+  },
+  {
+    "id": "56_029",
+    "label": "Restauration scolaire"
+  },
+  {
+    "id": "56_030",
+    "label": "Restauration traditionnelle"
+  },
+  {
+    "id": "56_031",
+    "label": "Salon de thé"
+  },
+  {
+    "id": "56_032",
+    "label": "Traiteur"
+  },
+  {
+    "id": "56_033",
+    "label": "Vente de glaces"
+  },
+  {
+    "id": "56_034",
+    "label": "Vente de pizzas"
+  },
+  {
+    "id": "58_001",
+    "label": "Édition de jeux vidéos"
+  },
+  {
+    "id": "58_002",
+    "label": "Édition de journaux, presse régionale ou nationale"
+  },
+  {
+    "id": "58_003",
+    "label": "Édition de livres et manuels"
+  },
+  {
+    "id": "58_004",
+    "label": "Édition de logiciels"
+  },
+  {
+    "id": "58_005",
+    "label": "Édition de magazines, périodiques ou revues spécialisées"
+  },
+  {
+    "id": "58_006",
+    "label": "Édition de répertoires"
+  },
+  {
+    "id": "59_001",
+    "label": "Archives audiovisuelles"
+  },
+  {
+    "id": "59_002",
+    "label": "Distribution cinématographique"
+  },
+  {
+    "id": "59_003",
+    "label": "Édition et distribution de films vidéos"
+  },
+  {
+    "id": "59_004",
+    "label": "Édition musicale"
+  },
+  {
+    "id": "59_005",
+    "label": "Enregistrement sonore et édition musicale"
+  },
+  {
+    "id": "59_006",
+    "label": "Exploitation cinématographique"
+  },
+  {
+    "id": "59_007",
+    "label": "Post-production de films cinématographiques, de vidéos et de programmes de télévision"
+  },
+  {
+    "id": "59_008",
+    "label": "Production audiovisuelle pour la télévision"
+  },
+  {
+    "id": "59_009",
+    "label": "Production de films cinématographiques"
+  },
+  {
+    "id": "59_010",
+    "label": "Production de films d'animation"
+  },
+  {
+    "id": "59_011",
+    "label": "Production de films institutionnels et publicitaires"
+  },
+  {
+    "id": "59_012",
+    "label": "Production de vidéos pour internet"
+  },
+  {
+    "id": "59_013",
+    "label": "Production phonographique"
+  },
+  {
+    "id": "59_014",
+    "label": "Projection de films cinématographiques"
+  },
+  {
+    "id": "60_001",
+    "label": "Diffusion via médias audiovisuels"
+  },
+  {
+    "id": "60_002",
+    "label": "Édition de chaînes de télévision"
+  },
+  {
+    "id": "60_003",
+    "label": "Édition et diffusion de programmes radios"
+  },
+  {
+    "id": "60_004",
+    "label": "Programmation de télévision et télédiffusion"
+  },
+  {
+    "id": "61_001",
+    "label": "Fournisseur d'accès Internet"
+  },
+  {
+    "id": "61_002",
+    "label": "Opérateur de télécommunications"
+  },
+  {
+    "id": "61_003",
+    "label": "Opérateur fibre optique (exploitation et maintenance)"
+  },
+  {
+    "id": "61_004",
+    "label": "Opérateur Internet"
+  },
+  {
+    "id": "61_005",
+    "label": "Opérateur téléphonique"
+  },
+  {
+    "id": "61_006",
+    "label": "Opérateur téléphonique et Internet"
+  },
+  {
+    "id": "62_001",
+    "label": "Assistance et services informatiques"
+  },
+  {
+    "id": "62_002",
+    "label": "Conseil en systèmes et logiciels informatiques"
+  },
+  {
+    "id": "62_003",
+    "label": "Conseil en technologies de l’information"
+  },
+  {
+    "id": "62_004",
+    "label": "Conseil en transformation digitale"
+  },
+  {
+    "id": "62_005",
+    "label": "Conseil et services numériques"
+  },
+  {
+    "id": "62_006",
+    "label": "Conseil informatique"
+  },
+  {
+    "id": "62_007",
+    "label": "Création de logiciels"
+  },
+  {
+    "id": "62_008",
+    "label": "Création et développement de sites internet (web)"
+  },
+  {
+    "id": "62_009",
+    "label": "Cybersécurité (sécurité informatique)"
+  },
+  {
+    "id": "62_010",
+    "label": "Développement d'applications mobiles"
+  },
+  {
+    "id": "62_011",
+    "label": "Développement de logiciels (software)"
+  },
+  {
+    "id": "62_012",
+    "label": "Développement de solutions informatiques"
+  },
+  {
+    "id": "62_013",
+    "label": "Développement et conseil en informatique"
+  },
+  {
+    "id": "62_014",
+    "label": "Expertise informatique"
+  },
+  {
+    "id": "62_015",
+    "label": "Gestion d'installations informatiques"
+  },
+  {
+    "id": "62_016",
+    "label": "Gestion informatique"
+  },
+  {
+    "id": "62_017",
+    "label": "Infogérance informatique"
+  },
+  {
+    "id": "62_018",
+    "label": "Informatique industrielle"
+  },
+  {
+    "id": "62_019",
+    "label": "Ingénierie logicielle"
+  },
+  {
+    "id": "62_020",
+    "label": "Intégration de logiciels"
+  },
+  {
+    "id": "62_021",
+    "label": "Maintenance informatique"
+  },
+  {
+    "id": "62_022",
+    "label": "Prestations de services et de maintenance informatiques"
+  },
+  {
+    "id": "62_023",
+    "label": "Programmation informatique"
+  },
+  {
+    "id": "62_024",
+    "label": "Tierce maintenance de systèmes et d'applications informatiques"
+  },
+  {
+    "id": "62_025",
+    "label": "Web design"
+  },
+  {
+    "id": "63_001",
+    "label": "Activités des agences de presse"
+  },
+  {
+    "id": "63_002",
+    "label": "Collecte d’information et veille média"
+  },
+  {
+    "id": "63_003",
+    "label": "Exploitation de sites internet (web)"
+  },
+  {
+    "id": "63_004",
+    "label": "Hébergement de données (data center)"
+  },
+  {
+    "id": "63_005",
+    "label": "Numérisation et dématérialisation de documents"
+  },
+  {
+    "id": "63_006",
+    "label": "Portails internet"
+  },
+  {
+    "id": "63_007",
+    "label": "Saisie et traitement de données"
+  },
+  {
+    "id": "63_008",
+    "label": "Traitement de données, hébergement et activités connexes"
+  },
+  {
+    "id": "64_001",
+    "label": "Activités des sociétés holding"
+  },
+  {
+    "id": "64_002",
+    "label": "Affacturage"
+  },
+  {
+    "id": "64_003",
+    "label": "Banque centrale"
+  },
+  {
+    "id": "64_004",
+    "label": "Banque d'affaires"
+  },
+  {
+    "id": "64_005",
+    "label": "Banque de financement et d'investissement"
+  },
+  {
+    "id": "64_006",
+    "label": "Banque et activités bancaires"
+  },
+  {
+    "id": "64_007",
+    "label": "Banque postale"
+  },
+  {
+    "id": "64_008",
+    "label": "Crédit-bail"
+  },
+  {
+    "id": "64_009",
+    "label": "Établissement de crédit"
+  },
+  {
+    "id": "64_010",
+    "label": "Fonds d’investissement"
+  },
+  {
+    "id": "64_011",
+    "label": "Gestion d’épargne salariale"
+  },
+  {
+    "id": "64_012",
+    "label": "Institution financière"
+  },
+  {
+    "id": "64_013",
+    "label": "Intermédiation monétaire"
+  },
+  {
+    "id": "64_014",
+    "label": "Rachat de crédits"
+  },
+  {
+    "id": "64_015",
+    "label": "Services financiers (crédits, placements)"
+  },
+  {
+    "id": "65_001",
+    "label": "Assurance automobile"
+  },
+  {
+    "id": "65_002",
+    "label": "Assurance complémentaire santé"
+  },
+  {
+    "id": "65_003",
+    "label": "Assurance construction"
+  },
+  {
+    "id": "65_004",
+    "label": "Assurance crédit"
+  },
+  {
+    "id": "65_005",
+    "label": "Assurance de biens et de personnes"
+  },
+  {
+    "id": "65_006",
+    "label": "Assurance IARD"
+  },
+  {
+    "id": "65_007",
+    "label": "Assurance multi-risques"
+  },
+  {
+    "id": "65_008",
+    "label": "Assurance mutuelle"
+  },
+  {
+    "id": "65_009",
+    "label": "Assurance prévoyance"
+  },
+  {
+    "id": "65_010",
+    "label": "Assurance protection juridique"
+  },
+  {
+    "id": "65_011",
+    "label": "Assurance retraite (adhésion volontaire)"
+  },
+  {
+    "id": "65_012",
+    "label": "Assurance santé et prévoyance"
+  },
+  {
+    "id": "65_013",
+    "label": "Assurance vie"
+  },
+  {
+    "id": "65_014",
+    "label": "Caisse de retraite (adhésion volontaire)"
+  },
+  {
+    "id": "65_015",
+    "label": "Complémentaire santé"
+  },
+  {
+    "id": "65_016",
+    "label": "Mutuelle prévoyance"
+  },
+  {
+    "id": "65_017",
+    "label": "Mutuelle santé"
+  },
+  {
+    "id": "65_018",
+    "label": "Mutuelle santé et prévoyance"
+  },
+  {
+    "id": "65_019",
+    "label": "Prévoyance"
+  },
+  {
+    "id": "65_020",
+    "label": "Réassurance"
+  },
+  {
+    "id": "66_001",
+    "label": "Activités auxiliaires de services financiers"
+  },
+  {
+    "id": "66_002",
+    "label": "Administration de marchés financiers (bourse)"
+  },
+  {
+    "id": "66_003",
+    "label": "Activités des agents d’assurance"
+  },
+  {
+    "id": "66_004",
+    "label": "Assistance assurance (gestion de sinistres)"
+  },
+  {
+    "id": "66_005",
+    "label": "Bureau de change"
+  },
+  {
+    "id": "66_006",
+    "label": "Conseil en investissement financier"
+  },
+  {
+    "id": "66_007",
+    "label": "Courtage en assurances"
+  },
+  {
+    "id": "66_008",
+    "label": "Courtage en financement/crédit"
+  },
+  {
+    "id": "66_009",
+    "label": "Courtage en prêt immobilier"
+  },
+  {
+    "id": "66_010",
+    "label": "Évaluation des risques et dommages"
+  },
+  {
+    "id": "66_011",
+    "label": "Expertise automobile (assurance)"
+  },
+  {
+    "id": "66_012",
+    "label": "Expertise en assurance"
+  },
+  {
+    "id": "66_013",
+    "label": "Expertise en sinistres"
+  },
+  {
+    "id": "66_014",
+    "label": "Gestion d'actifs financiers"
+  },
+  {
+    "id": "66_015",
+    "label": "Gestion de fonds"
+  },
+  {
+    "id": "66_016",
+    "label": "Gestion de fonds d'investissement"
+  },
+  {
+    "id": "66_017",
+    "label": "Gestion de portefeuille"
+  },
+  {
+    "id": "66_018",
+    "label": "Mandataire en assurance"
+  },
+  {
+    "id": "66_019",
+    "label": "Traitement de chèques"
+  },
+  {
+    "id": "68_001",
+    "label": "Activités immobilières"
+  },
+  {
+    "id": "68_002",
+    "label": "Administration de biens immobiliers"
+  },
+  {
+    "id": "68_003",
+    "label": "Agence immobilière"
+  },
+  {
+    "id": "68_004",
+    "label": "Bailleur privé"
+  },
+  {
+    "id": "68_005",
+    "label": "Bailleur social (HLM ou autre)"
+  },
+  {
+    "id": "68_006",
+    "label": "Gestion de logements sociaux"
+  },
+  {
+    "id": "68_007",
+    "label": "Gestion immobilière"
+  },
+  {
+    "id": "68_008",
+    "label": "Gestion locative"
+  },
+  {
+    "id": "68_009",
+    "label": "Location de logements (meublés ou vides) de longue durée"
+  },
+  {
+    "id": "68_010",
+    "label": "Location immobilière de longue durée"
+  },
+  {
+    "id": "68_011",
+    "label": "Mandataire immobilier"
+  },
+  {
+    "id": "68_012",
+    "label": "Marchand de biens immobiliers"
+  },
+  {
+    "id": "68_013",
+    "label": "Régie immobilière"
+  },
+  {
+    "id": "68_014",
+    "label": "Syndic de copropriété"
+  },
+  {
+    "id": "68_015",
+    "label": "Transaction immobilière"
+  },
+  {
+    "id": "68_016",
+    "label": "Vente de biens immobiliers"
+  },
+  {
+    "id": "68_017",
+    "label": "Vente de fonds de commerce"
+  },
+  {
+    "id": "68_018",
+    "label": "Vente immobilière"
+  },
+  {
+    "id": "69_001",
+    "label": "Activités des administrateurs judiciaires"
+  },
+  {
+    "id": "69_002",
+    "label": "Activités des avocats"
+  },
+  {
+    "id": "69_003",
+    "label": "Activités des commissaires de justice"
+  },
+  {
+    "id": "69_004",
+    "label": "Activités des commissaires-priseurs judiciaires"
+  },
+  {
+    "id": "69_005",
+    "label": "Activités des huissiers"
+  },
+  {
+    "id": "69_006",
+    "label": "Activités des notaires"
+  },
+  {
+    "id": "69_007",
+    "label": "Activités juridiques"
+  },
+  {
+    "id": "69_008",
+    "label": "Audit et conseil juridique"
+  },
+  {
+    "id": "69_009",
+    "label": "Audit financier"
+  },
+  {
+    "id": "69_010",
+    "label": "Centre de gestion agréé"
+  },
+  {
+    "id": "69_011",
+    "label": "Commissariat aux comptes"
+  },
+  {
+    "id": "69_012",
+    "label": "Comptabilité"
+  },
+  {
+    "id": "69_013",
+    "label": "Conseil juridique"
+  },
+  {
+    "id": "69_014",
+    "label": "Expertise comptable"
+  },
+  {
+    "id": "69_015",
+    "label": "Généalogie (services notariaux)"
+  },
+  {
+    "id": "69_016",
+    "label": "Gestion de tutelle et curatelle"
+  },
+  {
+    "id": "69_017",
+    "label": "Gestion des mesures juridiques de protection"
+  },
+  {
+    "id": "69_018",
+    "label": "Mandataire judiciaire"
+  },
+  {
+    "id": "69_019",
+    "label": "Notariat"
+  },
+  {
+    "id": "69_020",
+    "label": "Protection juridique des majeurs"
+  },
+  {
+    "id": "69_021",
+    "label": "Service de tutelle"
+  },
+  {
+    "id": "70_001",
+    "label": "Activités des sièges sociaux"
+  },
+  {
+    "id": "70_002",
+    "label": "Agence de communication (relations publiques)"
+  },
+  {
+    "id": "70_003",
+    "label": "Agence en relations presse"
+  },
+  {
+    "id": "70_004",
+    "label": "Conseil en communication d’entreprise"
+  },
+  {
+    "id": "70_005",
+    "label": "Conseil en formation"
+  },
+  {
+    "id": "70_006",
+    "label": "Conseil en fusion-acquisition"
+  },
+  {
+    "id": "70_007",
+    "label": "Conseil en gestion d’entreprise"
+  },
+  {
+    "id": "70_008",
+    "label": "Conseil en innovation"
+  },
+  {
+    "id": "70_009",
+    "label": "Conseil en management"
+  },
+  {
+    "id": "70_010",
+    "label": "Conseil en marketing"
+  },
+  {
+    "id": "70_011",
+    "label": "Conseil en organisation d’entreprise"
+  },
+  {
+    "id": "70_012",
+    "label": "Conseil en recrutement"
+  },
+  {
+    "id": "70_013",
+    "label": "Conseil en relation client"
+  },
+  {
+    "id": "70_014",
+    "label": "Conseil en relations publiques et communication"
+  },
+  {
+    "id": "70_015",
+    "label": "Conseil en ressources humaines"
+  },
+  {
+    "id": "70_016",
+    "label": "Conseil en stratégie d’entreprise"
+  },
+  {
+    "id": "70_017",
+    "label": "Conseil pour les affaires et autres conseils de gestion"
+  },
+  {
+    "id": "70_018",
+    "label": "Contrôle de gestion (conseil, assistance)"
+  },
+  {
+    "id": "70_019",
+    "label": "Coopérative d’activité et d’emploi (CAE)"
+  },
+  {
+    "id": "71_001",
+    "label": "Activités des géomètres-topographes"
+  },
+  {
+    "id": "71_002",
+    "label": "Analyses, essais, inspections techniques (bâtiment, industrie, etc.)"
+  },
+  {
+    "id": "71_003",
+    "label": "Architecture"
+  },
+  {
+    "id": "71_004",
+    "label": "Architecture et urbanisme"
+  },
+  {
+    "id": "71_005",
+    "label": "Architecture paysagère"
+  },
+  {
+    "id": "71_006",
+    "label": "Assistance à maîtrise d’ouvrage"
+  },
+  {
+    "id": "71_007",
+    "label": "Bureau d’études techniques"
+  },
+  {
+    "id": "71_008",
+    "label": "Certification technique (BTP, nucléaire, industrie, alimentation, etc.)"
+  },
+  {
+    "id": "71_009",
+    "label": "Contrôle technique (bâtiment, génie civil, industrie, etc.)"
+  },
+  {
+    "id": "71_010",
+    "label": "Contrôle technique automobile"
+  },
+  {
+    "id": "71_011",
+    "label": "Diagnostic immobilier"
+  },
+  {
+    "id": "71_012",
+    "label": "Ingénierie (études techniques)"
+  },
+  {
+    "id": "71_013",
+    "label": "Inspections, contrôles, certifications"
+  },
+  {
+    "id": "71_014",
+    "label": "Laboratoire d’analyses techniques (environnement, alimentaire, microbiologie, etc.)"
+  },
+  {
+    "id": "71_015",
+    "label": "Laboratoire d’essais techniques (bâtiment, industrie, etc.)"
+  },
+  {
+    "id": "71_016",
+    "label": "Maîtrise d’œuvre (bâtiment, construction)"
+  },
+  {
+    "id": "71_017",
+    "label": "Police scientifique"
+  },
+  {
+    "id": "71_018",
+    "label": "Surveillance de la qualité de l’air ou de l’eau"
+  },
+  {
+    "id": "71_019",
+    "label": "Urbanisme et aménagement du territoire"
+  },
+  {
+    "id": "72_001",
+    "label": "Agence nationale de sécurité sanitaire (Anses)"
+  },
+  {
+    "id": "72_002",
+    "label": "Archéologie"
+  },
+  {
+    "id": "72_003",
+    "label": "Archéologie préventive"
+  },
+  {
+    "id": "72_004",
+    "label": "Centre de recherche"
+  },
+  {
+    "id": "72_005",
+    "label": "Centre technique industriel"
+  },
+  {
+    "id": "72_006",
+    "label": "Établissement de recherche"
+  },
+  {
+    "id": "72_007",
+    "label": "Établissement public à caractère scientifique et technologique (EPST)"
+  },
+  {
+    "id": "72_008",
+    "label": "Études spatiales"
+  },
+  {
+    "id": "72_009",
+    "label": "Institut de recherche"
+  },
+  {
+    "id": "72_010",
+    "label": "Laboratoire de recherche vétérinaire"
+  },
+  {
+    "id": "72_011",
+    "label": "Manufacture de pneumatiques (recherche-développement)"
+  },
+  {
+    "id": "72_012",
+    "label": "Organisme de recherche"
+  },
+  {
+    "id": "72_013",
+    "label": "Recherche aéronautique"
+  },
+  {
+    "id": "72_014",
+    "label": "Recherche aérospatiale"
+  },
+  {
+    "id": "72_015",
+    "label": "Recherche agricole"
+  },
+  {
+    "id": "72_016",
+    "label": "Recherche agroalimentaire"
+  },
+  {
+    "id": "72_017",
+    "label": "Recherche agronomique"
+  },
+  {
+    "id": "72_018",
+    "label": "Recherche archéologique"
+  },
+  {
+    "id": "72_019",
+    "label": "Recherche biomédicale"
+  },
+  {
+    "id": "72_020",
+    "label": "Recherche en agriculture, alimentation et environnement"
+  },
+  {
+    "id": "72_021",
+    "label": "Recherche en astrophysique"
+  },
+  {
+    "id": "72_022",
+    "label": "Recherche en biologie"
+  },
+  {
+    "id": "72_023",
+    "label": "Recherche en biotechnologie"
+  },
+  {
+    "id": "72_024",
+    "label": "Recherche en cancérologie"
+  },
+  {
+    "id": "72_025",
+    "label": "Recherche en énergie"
+  },
+  {
+    "id": "72_026",
+    "label": "Recherche en informatique et automatique"
+  },
+  {
+    "id": "72_027",
+    "label": "Recherche en matériaux"
+  },
+  {
+    "id": "72_028",
+    "label": "Recherche en neurosciences"
+  },
+  {
+    "id": "72_029",
+    "label": "Recherche en physique"
+  },
+  {
+    "id": "72_030",
+    "label": "Recherche en santé"
+  },
+  {
+    "id": "72_031",
+    "label": "Recherche fondamentale"
+  },
+  {
+    "id": "72_032",
+    "label": "Recherche médicale"
+  },
+  {
+    "id": "72_033",
+    "label": "Recherche nucléaire"
+  },
+  {
+    "id": "72_034",
+    "label": "Recherche scientifique"
+  },
+  {
+    "id": "72_035",
+    "label": "Recherche-développement en sciences humaines et sociales"
+  },
+  {
+    "id": "72_036",
+    "label": "Recherche-développement pharmaceutique"
+  },
+  {
+    "id": "73_001",
+    "label": "Affichage publicitaire"
+  },
+  {
+    "id": "73_002",
+    "label": "Agence de communication (publicité)"
+  },
+  {
+    "id": "73_003",
+    "label": "Agence de publicité"
+  },
+  {
+    "id": "73_004",
+    "label": "Agence média"
+  },
+  {
+    "id": "73_005",
+    "label": "Aménagement et entretien de panneaux publicitaires"
+  },
+  {
+    "id": "73_006",
+    "label": "Cabinet d’études de marché"
+  },
+  {
+    "id": "73_007",
+    "label": "Communication extérieure et mobilier urbain"
+  },
+  {
+    "id": "73_008",
+    "label": "Communication publicitaire"
+  },
+  {
+    "id": "73_009",
+    "label": "Distribution d'imprimés publicitaires"
+  },
+  {
+    "id": "73_010",
+    "label": "Distribution de prospectus"
+  },
+  {
+    "id": "73_011",
+    "label": "Distribution de publicité"
+  },
+  {
+    "id": "73_012",
+    "label": "Études de marché et sondages"
+  },
+  {
+    "id": "73_013",
+    "label": "Institut de sondage"
+  },
+  {
+    "id": "73_014",
+    "label": "Marketing (opérations publicitaires)"
+  },
+  {
+    "id": "73_015",
+    "label": "Régie publicitaire"
+  },
+  {
+    "id": "73_016",
+    "label": "Vente d'espaces publicitaires"
+  },
+  {
+    "id": "74_001",
+    "label": "Activités des économistes de la construction"
+  },
+  {
+    "id": "74_002",
+    "label": "Activités spécialisées de design"
+  },
+  {
+    "id": "74_003",
+    "label": "Architecture d'intérieur"
+  },
+  {
+    "id": "74_004",
+    "label": "Décoration d'intérieur (services)"
+  },
+  {
+    "id": "74_005",
+    "label": "Design graphique"
+  },
+  {
+    "id": "74_006",
+    "label": "Design industriel"
+  },
+  {
+    "id": "74_007",
+    "label": "Design intérieur"
+  },
+  {
+    "id": "74_008",
+    "label": "Design textile"
+  },
+  {
+    "id": "74_009",
+    "label": "Gestion de droits d’auteurs"
+  },
+  {
+    "id": "74_010",
+    "label": "Graphisme et communication visuelle"
+  },
+  {
+    "id": "74_011",
+    "label": "Graphisme et illustration publicitaire ou commerciale"
+  },
+  {
+    "id": "74_012",
+    "label": "Interprétariat"
+  },
+  {
+    "id": "74_013",
+    "label": "Laboratoire photo"
+  },
+  {
+    "id": "74_014",
+    "label": "Météorologie"
+  },
+  {
+    "id": "74_015",
+    "label": "Photographie"
+  },
+  {
+    "id": "74_016",
+    "label": "Prévisions météorologiques"
+  },
+  {
+    "id": "74_017",
+    "label": "Studio de photographie"
+  },
+  {
+    "id": "74_018",
+    "label": "Traduction et interprétation"
+  },
+  {
+    "id": "75_001",
+    "label": "Activités vétérinaires"
+  },
+  {
+    "id": "75_002",
+    "label": "Clinique vétérinaire"
+  },
+  {
+    "id": "75_003",
+    "label": "Soins vétérinaires"
+  },
+  {
+    "id": "77_001",
+    "label": "Blanchisserie (avec location de vêtements)"
+  },
+  {
+    "id": "77_002",
+    "label": "Location d'engins de chantier (sans conducteur)"
+  },
+  {
+    "id": "77_003",
+    "label": "Location d'engins de travaux publics (sans conducteur)"
+  },
+  {
+    "id": "77_004",
+    "label": "Location d’automobiles (sans chauffeur)"
+  },
+  {
+    "id": "77_005",
+    "label": "Location d’échafaudages"
+  },
+  {
+    "id": "77_006",
+    "label": "Location de bateaux"
+  },
+  {
+    "id": "77_007",
+    "label": "Location de biens domestiques"
+  },
+  {
+    "id": "77_008",
+    "label": "Location de camions (sans chauffeur)"
+  },
+  {
+    "id": "77_009",
+    "label": "Location de groupes électrogènes"
+  },
+  {
+    "id": "77_010",
+    "label": "Location de machines"
+  },
+  {
+    "id": "77_011",
+    "label": "Location de matériel audiovisuel"
+  },
+  {
+    "id": "77_012",
+    "label": "Location de matériel comptable"
+  },
+  {
+    "id": "77_013",
+    "label": "Location de matériel de BTP"
+  },
+  {
+    "id": "77_014",
+    "label": "Location de matériel de sport"
+  },
+  {
+    "id": "77_015",
+    "label": "Location de matériel événementiel"
+  },
+  {
+    "id": "77_016",
+    "label": "Location de matériel médical (prestations de santé)"
+  },
+  {
+    "id": "77_017",
+    "label": "Location de matériel professionnel"
+  },
+  {
+    "id": "77_018",
+    "label": "Location de nacelles"
+  },
+  {
+    "id": "77_019",
+    "label": "Location de vaisselle"
+  },
+  {
+    "id": "77_020",
+    "label": "Location de véhicules"
+  },
+  {
+    "id": "77_021",
+    "label": "Location de véhicules frigorifiques"
+  },
+  {
+    "id": "77_022",
+    "label": "Location de véhicules industriels (sans chauffeur)"
+  },
+  {
+    "id": "77_023",
+    "label": "Location de véhicules professionnels (sans chauffeur)"
+  },
+  {
+    "id": "77_024",
+    "label": "Location de vélos (hors vente)"
+  },
+  {
+    "id": "77_025",
+    "label": "Location de voitures (sans chauffeur)"
+  },
+  {
+    "id": "78_001",
+    "label": "Agence d'emploi temporaire"
+  },
+  {
+    "id": "78_002",
+    "label": "Agence d’intérim"
+  },
+  {
+    "id": "78_003",
+    "label": "Agence de mannequins"
+  },
+  {
+    "id": "78_004",
+    "label": "Agence de placement de personnel"
+  },
+  {
+    "id": "78_005",
+    "label": "Agence de recrutement"
+  },
+  {
+    "id": "78_006",
+    "label": "Agence de travail temporaire"
+  },
+  {
+    "id": "78_007",
+    "label": "Groupement d'employeurs"
+  },
+  {
+    "id": "78_008",
+    "label": "Mise à disposition de personnel"
+  },
+  {
+    "id": "78_009",
+    "label": "Mise à disposition de ressources humaines"
+  },
+  {
+    "id": "79_001",
+    "label": "Activités des guides touristiques"
+  },
+  {
+    "id": "79_002",
+    "label": "Activités des voyagistes"
+  },
+  {
+    "id": "79_003",
+    "label": "Agence de tourisme"
+  },
+  {
+    "id": "79_004",
+    "label": "Agence de voyage"
+  },
+  {
+    "id": "79_005",
+    "label": "Office de tourisme"
+  },
+  {
+    "id": "79_006",
+    "label": "Organisation de voyages"
+  },
+  {
+    "id": "79_007",
+    "label": "Promotion touristique"
+  },
+  {
+    "id": "79_008",
+    "label": "Tour opérateur"
+  },
+  {
+    "id": "79_009",
+    "label": "Vente de billets (spectacles, manifestations sportives)"
+  },
+  {
+    "id": "79_010",
+    "label": "Vente de voyages"
+  },
+  {
+    "id": "80_001",
+    "label": "Agence de sécurité privée"
+  },
+  {
+    "id": "80_002",
+    "label": "Convoyage de fonds"
+  },
+  {
+    "id": "80_003",
+    "label": "Enquêtes privées"
+  },
+  {
+    "id": "80_004",
+    "label": "Installation d'alarmes (avec surveillance)"
+  },
+  {
+    "id": "80_005",
+    "label": "Installation de systèmes de sécurité (avec surveillance)"
+  },
+  {
+    "id": "80_006",
+    "label": "Prévention et sécurité privée"
+  },
+  {
+    "id": "80_007",
+    "label": "Sécurité incendie privée"
+  },
+  {
+    "id": "80_008",
+    "label": "Sécurité privée"
+  },
+  {
+    "id": "80_009",
+    "label": "Sécurité privée et gardiennage"
+  },
+  {
+    "id": "80_010",
+    "label": "Sécurité privée et surveillance"
+  },
+  {
+    "id": "80_011",
+    "label": "Sûreté aéroportuaire"
+  },
+  {
+    "id": "80_012",
+    "label": "Sûreté et sécurité privée"
+  },
+  {
+    "id": "80_013",
+    "label": "Surveillance gardiennage"
+  },
+  {
+    "id": "80_014",
+    "label": "Télésurveillance privée"
+  },
+  {
+    "id": "80_015",
+    "label": "Transport de fonds"
+  },
+  {
+    "id": "81_001",
+    "label": "Activités des paysagistes"
+  },
+  {
+    "id": "81_002",
+    "label": "Aménagement et entretien des espaces verts"
+  },
+  {
+    "id": "81_003",
+    "label": "Création et entretien d’espaces verts"
+  },
+  {
+    "id": "81_004",
+    "label": "Désinfection, désinsectisation, dératisation"
+  },
+  {
+    "id": "81_005",
+    "label": "Élagage"
+  },
+  {
+    "id": "81_006",
+    "label": "Entreprise de nettoyage"
+  },
+  {
+    "id": "81_007",
+    "label": "Entretien d’espaces verts"
+  },
+  {
+    "id": "81_008",
+    "label": "Entretien de bureaux"
+  },
+  {
+    "id": "81_009",
+    "label": "Entretien de jardins (entreprise de services)"
+  },
+  {
+    "id": "81_010",
+    "label": "Entretien et aménagement paysager"
+  },
+  {
+    "id": "81_011",
+    "label": "Entretien industriel (nettoyage)"
+  },
+  {
+    "id": "81_012",
+    "label": "Entretien, nettoyage, propreté"
+  },
+  {
+    "id": "81_013",
+    "label": "Lavage de vitres"
+  },
+  {
+    "id": "81_014",
+    "label": "Ménage de bureaux ou de locaux professionnels"
+  },
+  {
+    "id": "81_015",
+    "label": "Ménage en entreprise"
+  },
+  {
+    "id": "81_016",
+    "label": "Ménage industriel"
+  },
+  {
+    "id": "81_017",
+    "label": "Nettoyage après sinistre"
+  },
+  {
+    "id": "81_018",
+    "label": "Nettoyage d’entreprises"
+  },
+  {
+    "id": "81_019",
+    "label": "Nettoyage d’immeubles"
+  },
+  {
+    "id": "81_020",
+    "label": "Nettoyage de bureaux"
+  },
+  {
+    "id": "81_021",
+    "label": "Nettoyage de locaux"
+  },
+  {
+    "id": "81_022",
+    "label": "Nettoyage de vitres"
+  },
+  {
+    "id": "81_023",
+    "label": "Nettoyage des bâtiments"
+  },
+  {
+    "id": "81_024",
+    "label": "Nettoyage des trains"
+  },
+  {
+    "id": "81_025",
+    "label": "Nettoyage industriel"
+  },
+  {
+    "id": "81_026",
+    "label": "Nettoyage multi-services"
+  },
+  {
+    "id": "81_027",
+    "label": "Propreté et services associés"
+  },
+  {
+    "id": "81_028",
+    "label": "Propreté industrielle"
+  },
+  {
+    "id": "81_029",
+    "label": "Ramonage"
+  },
+  {
+    "id": "81_030",
+    "label": "Travaux paysagers"
+  },
+  {
+    "id": "82_001",
+    "label": "Accueil en entreprise"
+  },
+  {
+    "id": "82_002",
+    "label": "Accueil événementiel"
+  },
+  {
+    "id": "82_003",
+    "label": "Activités de soutien aux entreprises"
+  },
+  {
+    "id": "82_004",
+    "label": "Activités des commissaires-priseurs habilités"
+  },
+  {
+    "id": "82_005",
+    "label": "Agence d’hôtes et hôtesses d’accueil"
+  },
+  {
+    "id": "82_006",
+    "label": "Agence de recouvrement"
+  },
+  {
+    "id": "82_007",
+    "label": "Centrale d'appel"
+  },
+  {
+    "id": "82_008",
+    "label": "Centre d'appel (call center)"
+  },
+  {
+    "id": "82_009",
+    "label": "Centre de contact"
+  },
+  {
+    "id": "82_010",
+    "label": "Centre de relation client"
+  },
+  {
+    "id": "82_011",
+    "label": "Conditionnement à façon"
+  },
+  {
+    "id": "82_012",
+    "label": "Organisation de salons professionnels et congrès"
+  },
+  {
+    "id": "82_013",
+    "label": "Permanence téléphonique"
+  },
+  {
+    "id": "82_014",
+    "label": "Plateforme téléphonique"
+  },
+  {
+    "id": "82_015",
+    "label": "Recouvrement de créances"
+  },
+  {
+    "id": "82_016",
+    "label": "Routage"
+  },
+  {
+    "id": "82_017",
+    "label": "Secrétariat indépendant"
+  },
+  {
+    "id": "82_018",
+    "label": "Télémarketing"
+  },
+  {
+    "id": "82_019",
+    "label": "Télésecrétariat"
+  },
+  {
+    "id": "84_001",
+    "label": "Activités militaires"
+  },
+  {
+    "id": "84_002",
+    "label": "Administration communale"
+  },
+  {
+    "id": "84_003",
+    "label": "Administration d’État"
+  },
+  {
+    "id": "84_004",
+    "label": "Administration de l’agriculture"
+  },
+  {
+    "id": "84_005",
+    "label": "Administration départementale"
+  },
+  {
+    "id": "84_006",
+    "label": "Administration des douanes"
+  },
+  {
+    "id": "84_007",
+    "label": "Administration des impôts"
+  },
+  {
+    "id": "84_008",
+    "label": "Administration fiscale"
+  },
+  {
+    "id": "84_009",
+    "label": "Administration pénitentiaire"
+  },
+  {
+    "id": "84_010",
+    "label": "Administration publique"
+  },
+  {
+    "id": "84_011",
+    "label": "Administration régionale"
+  },
+  {
+    "id": "84_012",
+    "label": "Administration territoriale"
+  },
+  {
+    "id": "84_013",
+    "label": "Affaires étrangères"
+  },
+  {
+    "id": "84_014",
+    "label": "Agence régionale de santé (ARS)"
+  },
+  {
+    "id": "84_015",
+    "label": "Armée"
+  },
+  {
+    "id": "84_016",
+    "label": "Assurance chômage"
+  },
+  {
+    "id": "84_017",
+    "label": "Assurance maladie (régime général)"
+  },
+  {
+    "id": "84_018",
+    "label": "Assurance retraite (régime général)"
+  },
+  {
+    "id": "84_019",
+    "label": "Caisse d’allocations familiales (CAF)"
+  },
+  {
+    "id": "84_020",
+    "label": "Caisse de retraite (régime général)"
+  },
+  {
+    "id": "84_021",
+    "label": "Collectivité locale"
+  },
+  {
+    "id": "84_022",
+    "label": "Collectivité territoriale"
+  },
+  {
+    "id": "84_023",
+    "label": "Commissariat de police"
+  },
+  {
+    "id": "84_024",
+    "label": "Communauté d’agglomération"
+  },
+  {
+    "id": "84_025",
+    "label": "Communauté de communes"
+  },
+  {
+    "id": "84_026",
+    "label": "Communauté urbaine"
+  },
+  {
+    "id": "84_027",
+    "label": "Commune"
+  },
+  {
+    "id": "84_028",
+    "label": "Conseil départemental"
+  },
+  {
+    "id": "84_029",
+    "label": "Conseil général"
+  },
+  {
+    "id": "84_030",
+    "label": "Conseil régional"
+  },
+  {
+    "id": "84_031",
+    "label": "Contrôle aérien"
+  },
+  {
+    "id": "84_032",
+    "label": "Défense Nationale"
+  },
+  {
+    "id": "84_033",
+    "label": "Direction départementale des territoires (DDT)"
+  },
+  {
+    "id": "84_034",
+    "label": "Direction des routes"
+  },
+  {
+    "id": "84_035",
+    "label": "Direction régionale de l’environnement (DREAL)"
+  },
+  {
+    "id": "84_036",
+    "label": "Établissement public d’État"
+  },
+  {
+    "id": "84_037",
+    "label": "Établissement public de coopération intercommunale (EPCI)"
+  },
+  {
+    "id": "84_038",
+    "label": "Établissement public territorial"
+  },
+  {
+    "id": "84_039",
+    "label": "Finances publiques"
+  },
+  {
+    "id": "84_040",
+    "label": "Fonction publique d’État"
+  },
+  {
+    "id": "84_041",
+    "label": "Fonction publique territoriale"
+  },
+  {
+    "id": "84_042",
+    "label": "Forces de l’ordre"
+  },
+  {
+    "id": "84_043",
+    "label": "Gendarmerie"
+  },
+  {
+    "id": "84_044",
+    "label": "Inspection académique"
+  },
+  {
+    "id": "84_045",
+    "label": "Inspection du travail"
+  },
+  {
+    "id": "84_046",
+    "label": "Juridiction administrative"
+  },
+  {
+    "id": "84_047",
+    "label": "Juridiction judiciaire"
+  },
+  {
+    "id": "84_048",
+    "label": "Justice"
+  },
+  {
+    "id": "84_049",
+    "label": "Mairie"
+  },
+  {
+    "id": "84_050",
+    "label": "Marine Nationale"
+  },
+  {
+    "id": "84_051",
+    "label": "Métropole"
+  },
+  {
+    "id": "84_052",
+    "label": "Ministère"
+  },
+  {
+    "id": "84_053",
+    "label": "Ministère de l’agriculture"
+  },
+  {
+    "id": "84_054",
+    "label": "Ministère de l’écologie"
+  },
+  {
+    "id": "84_055",
+    "label": "Ministère de l’éducation nationale"
+  },
+  {
+    "id": "84_056",
+    "label": "Ministère de l’environnement"
+  },
+  {
+    "id": "84_057",
+    "label": "Ministère de l’intérieur"
+  },
+  {
+    "id": "84_058",
+    "label": "Ministère de la culture"
+  },
+  {
+    "id": "84_059",
+    "label": "Ministère de la défense"
+  },
+  {
+    "id": "84_060",
+    "label": "Ministère de la justice"
+  },
+  {
+    "id": "84_061",
+    "label": "Ministère des armées"
+  },
+  {
+    "id": "84_062",
+    "label": "Ministère des finances"
+  },
+  {
+    "id": "84_063",
+    "label": "Mission locale"
+  },
+  {
+    "id": "84_064",
+    "label": "Municipalité"
+  },
+  {
+    "id": "84_065",
+    "label": "Mutualité sociale agricole (MSA)"
+  },
+  {
+    "id": "84_066",
+    "label": "Parlement"
+  },
+  {
+    "id": "84_067",
+    "label": "Police (sécurité publique)"
+  },
+  {
+    "id": "84_068",
+    "label": "Police municipale"
+  },
+  {
+    "id": "84_069",
+    "label": "Police nationale"
+  },
+  {
+    "id": "84_070",
+    "label": "Pompiers"
+  },
+  {
+    "id": "84_071",
+    "label": "Préfecture"
+  },
+  {
+    "id": "84_072",
+    "label": "Prestations familiales"
+  },
+  {
+    "id": "84_073",
+    "label": "Prestations sociales"
+  },
+  {
+    "id": "84_074",
+    "label": "Prison"
+  },
+  {
+    "id": "84_075",
+    "label": "Protection des personnes et des biens (administration publique)"
+  },
+  {
+    "id": "84_076",
+    "label": "Protection judiciaire de la jeunesse"
+  },
+  {
+    "id": "84_077",
+    "label": "Protection sociale"
+  },
+  {
+    "id": "84_078",
+    "label": "Recouvrement des cotisations sociales"
+  },
+  {
+    "id": "84_079",
+    "label": "Rectorat"
+  },
+  {
+    "id": "84_080",
+    "label": "Retraite complémentaire (régime général)"
+  },
+  {
+    "id": "84_081",
+    "label": "Sécurité des personnes et des biens (administration publique)"
+  },
+  {
+    "id": "84_082",
+    "label": "Sécurité publique"
+  },
+  {
+    "id": "84_083",
+    "label": "Sécurité sociale"
+  },
+  {
+    "id": "84_084",
+    "label": "Service de l’aviation civile"
+  },
+  {
+    "id": "84_085",
+    "label": "Service de la navigation aérienne"
+  },
+  {
+    "id": "84_086",
+    "label": "Service de protection maternelle et infantile"
+  },
+  {
+    "id": "84_087",
+    "label": "Service départemental d’incendie et de secours (SDIS)"
+  },
+  {
+    "id": "84_088",
+    "label": "Service public administratif"
+  },
+  {
+    "id": "84_089",
+    "label": "Service public de l’emploi"
+  },
+  {
+    "id": "84_090",
+    "label": "Service public de l’insertion professionnelle"
+  },
+  {
+    "id": "84_091",
+    "label": "Services techniques de l’État"
+  },
+  {
+    "id": "84_092",
+    "label": "Services techniques des collectivités territoriales"
+  },
+  {
+    "id": "84_093",
+    "label": "Services vétérinaires (État)"
+  },
+  {
+    "id": "84_094",
+    "label": "Statistique publique"
+  },
+  {
+    "id": "84_095",
+    "label": "Syndicat intercommunal"
+  },
+  {
+    "id": "84_096",
+    "label": "Trésor public"
+  },
+  {
+    "id": "84_097",
+    "label": "Tribunal"
+  },
+  {
+    "id": "84_098",
+    "label": "URSSAF"
+  },
+  {
+    "id": "85_001",
+    "label": "Centre de formation d'apprentis (CFA)"
+  },
+  {
+    "id": "85_002",
+    "label": "Centre de formation professionnelle"
+  },
+  {
+    "id": "85_003",
+    "label": "Coaching sportif"
+  },
+  {
+    "id": "85_004",
+    "label": "Collège"
+  },
+  {
+    "id": "85_005",
+    "label": "Conservatoire à rayonnement départemental"
+  },
+  {
+    "id": "85_006",
+    "label": "Conservatoire d’art"
+  },
+  {
+    "id": "85_007",
+    "label": "Conservatoire de musique"
+  },
+  {
+    "id": "85_008",
+    "label": "Cours particuliers (enseignement)"
+  },
+  {
+    "id": "85_009",
+    "label": "École (maternelle, primaire, élémentaire)"
+  },
+  {
+    "id": "85_010",
+    "label": "École d'ingénieur"
+  },
+  {
+    "id": "85_011",
+    "label": "École de commerce"
+  },
+  {
+    "id": "85_012",
+    "label": "École de formation initiale de gendarmerie"
+  },
+  {
+    "id": "85_013",
+    "label": "École de musique"
+  },
+  {
+    "id": "85_014",
+    "label": "École de ski"
+  },
+  {
+    "id": "85_015",
+    "label": "École nationale de police"
+  },
+  {
+    "id": "85_016",
+    "label": "Éducation Nationale (établissement d’enseignement)"
+  },
+  {
+    "id": "85_017",
+    "label": "Enseignement à domicile"
+  },
+  {
+    "id": "85_018",
+    "label": "Enseignement agricole"
+  },
+  {
+    "id": "85_019",
+    "label": "Enseignement artistique"
+  },
+  {
+    "id": "85_020",
+    "label": "Enseignement culturel"
+  },
+  {
+    "id": "85_021",
+    "label": "Enseignement de la conduite (auto-école)"
+  },
+  {
+    "id": "85_022",
+    "label": "Enseignement primaire (maternel et/ou élémentaire)"
+  },
+  {
+    "id": "85_023",
+    "label": "Enseignement professionnel"
+  },
+  {
+    "id": "85_024",
+    "label": "Enseignement secondaire"
+  },
+  {
+    "id": "85_025",
+    "label": "Enseignement spécialisé"
+  },
+  {
+    "id": "85_026",
+    "label": "Enseignement sportif et d’activités de loisirs"
+  },
+  {
+    "id": "85_027",
+    "label": "Enseignement supérieur et universitaire"
+  },
+  {
+    "id": "85_028",
+    "label": "Établissement scolaire"
+  },
+  {
+    "id": "85_029",
+    "label": "Faculté"
+  },
+  {
+    "id": "85_030",
+    "label": "Formation apprentissage"
+  },
+  {
+    "id": "85_031",
+    "label": "Formation continue d’adultes"
+  },
+  {
+    "id": "85_032",
+    "label": "Formation en langues"
+  },
+  {
+    "id": "85_033",
+    "label": "Formation professionnelle"
+  },
+  {
+    "id": "85_034",
+    "label": "Groupe scolaire"
+  },
+  {
+    "id": "85_035",
+    "label": "Institut de formation"
+  },
+  {
+    "id": "85_036",
+    "label": "Lycée agricole"
+  },
+  {
+    "id": "85_037",
+    "label": "Lycée d'enseignement général et/ou technologique"
+  },
+  {
+    "id": "85_038",
+    "label": "Lycée polyvalent"
+  },
+  {
+    "id": "85_039",
+    "label": "Lycée professionnel"
+  },
+  {
+    "id": "85_040",
+    "label": "Organisme de formation"
+  },
+  {
+    "id": "85_041",
+    "label": "Orientation scolaire"
+  },
+  {
+    "id": "85_042",
+    "label": "Soutien scolaire"
+  },
+  {
+    "id": "85_043",
+    "label": "Université"
+  },
+  {
+    "id": "86_001",
+    "label": "Accompagnement périnatal (secteur médical)"
+  },
+  {
+    "id": "86_002",
+    "label": "Activités des auxiliaires médicaux"
+  },
+  {
+    "id": "86_003",
+    "label": "Activités des dentistes"
+  },
+  {
+    "id": "86_004",
+    "label": "Activités des infirmiers"
+  },
+  {
+    "id": "86_005",
+    "label": "Activités des masseurs-kinésithérapeutes"
+  },
+  {
+    "id": "86_006",
+    "label": "Activités des sages-femmes"
+  },
+  {
+    "id": "86_007",
+    "label": "Activités médicales et/ou paramédicales"
+  },
+  {
+    "id": "86_008",
+    "label": "Ambulances"
+  },
+  {
+    "id": "86_009",
+    "label": "Analyses biologiques"
+  },
+  {
+    "id": "86_010",
+    "label": "Anatomie et cytologie pathologiques"
+  },
+  {
+    "id": "86_011",
+    "label": "Anesthésie-réanimation"
+  },
+  {
+    "id": "86_012",
+    "label": "Art-thérapie"
+  },
+  {
+    "id": "86_013",
+    "label": "Bio-nettoyage (hôpital, clinique)"
+  },
+  {
+    "id": "86_014",
+    "label": "Biologie médicale"
+  },
+  {
+    "id": "86_015",
+    "label": "Cabinet de psychologie"
+  },
+  {
+    "id": "86_016",
+    "label": "Cabinet dentaire"
+  },
+  {
+    "id": "86_017",
+    "label": "Cabinet médical"
+  },
+  {
+    "id": "86_018",
+    "label": "Cabinet paramédical"
+  },
+  {
+    "id": "86_019",
+    "label": "Cancérologie"
+  },
+  {
+    "id": "86_020",
+    "label": "Cardiologie"
+  },
+  {
+    "id": "86_021",
+    "label": "Centre de dialyse"
+  },
+  {
+    "id": "86_022",
+    "label": "Centre de lutte contre le cancer"
+  },
+  {
+    "id": "86_023",
+    "label": "Centre de rééducation et/ou de réadaptation"
+  },
+  {
+    "id": "86_024",
+    "label": "Centre de santé"
+  },
+  {
+    "id": "86_025",
+    "label": "Centre de soins"
+  },
+  {
+    "id": "86_026",
+    "label": "Centre dentaire"
+  },
+  {
+    "id": "86_027",
+    "label": "Centre hospitalier (CH)"
+  },
+  {
+    "id": "86_028",
+    "label": "Centre hospitalier universitaire (CHU)"
+  },
+  {
+    "id": "86_029",
+    "label": "Centre médical"
+  },
+  {
+    "id": "86_030",
+    "label": "Chiropraxie"
+  },
+  {
+    "id": "86_031",
+    "label": "Chirurgie"
+  },
+  {
+    "id": "86_032",
+    "label": "Chirurgie dentaire"
+  },
+  {
+    "id": "86_033",
+    "label": "Chirurgie esthétique"
+  },
+  {
+    "id": "86_034",
+    "label": "Chirurgie orthopédique"
+  },
+  {
+    "id": "86_035",
+    "label": "Chirurgie urologique"
+  },
+  {
+    "id": "86_036",
+    "label": "Chirurgie vasculaire"
+  },
+  {
+    "id": "86_037",
+    "label": "Clinique"
+  },
+  {
+    "id": "86_038",
+    "label": "Clinique dentaire"
+  },
+  {
+    "id": "86_039",
+    "label": "Clinique psychiatrique"
+  },
+  {
+    "id": "86_040",
+    "label": "Collecte de sang"
+  },
+  {
+    "id": "86_041",
+    "label": "Dermatologie"
+  },
+  {
+    "id": "86_042",
+    "label": "Diététique, nutrition (santé humaine)"
+  },
+  {
+    "id": "86_043",
+    "label": "Don du sang"
+  },
+  {
+    "id": "86_044",
+    "label": "Électroradiologie médicale"
+  },
+  {
+    "id": "86_045",
+    "label": "Ergothérapie"
+  },
+  {
+    "id": "86_046",
+    "label": "Établissement de santé"
+  },
+  {
+    "id": "86_047",
+    "label": "Établissement de santé mentale"
+  },
+  {
+    "id": "86_048",
+    "label": "Établissement de soins (clinique, hôpital, etc.)"
+  },
+  {
+    "id": "86_049",
+    "label": "Établissement de soins médicaux"
+  },
+  {
+    "id": "86_050",
+    "label": "Établissement de soins psychiatriques"
+  },
+  {
+    "id": "86_051",
+    "label": "Établissement hospitalier"
+  },
+  {
+    "id": "86_052",
+    "label": "Établissement public de santé"
+  },
+  {
+    "id": "86_053",
+    "label": "Établissement public de santé mentale"
+  },
+  {
+    "id": "86_054",
+    "label": "Établissement public hospitalier"
+  },
+  {
+    "id": "86_055",
+    "label": "Étiopathie"
+  },
+  {
+    "id": "86_056",
+    "label": "Fonction publique hospitalière"
+  },
+  {
+    "id": "86_057",
+    "label": "Gastro-entérologie"
+  },
+  {
+    "id": "86_058",
+    "label": "Gériatrie"
+  },
+  {
+    "id": "86_059",
+    "label": "Gynécologie"
+  },
+  {
+    "id": "86_060",
+    "label": "Gynécologie obstétrique"
+  },
+  {
+    "id": "86_061",
+    "label": "Hôpital"
+  },
+  {
+    "id": "86_062",
+    "label": "Hôpital militaire"
+  },
+  {
+    "id": "86_063",
+    "label": "Hôpital psychiatrique"
+  },
+  {
+    "id": "86_064",
+    "label": "Hospitalisation à domicile"
+  },
+  {
+    "id": "86_065",
+    "label": "Imagerie médicale"
+  },
+  {
+    "id": "86_066",
+    "label": "Kinésiologie"
+  },
+  {
+    "id": "86_067",
+    "label": "Kinésithérapie"
+  },
+  {
+    "id": "86_068",
+    "label": "Kinésithérapie ostéopathie"
+  },
+  {
+    "id": "86_069",
+    "label": "Laboratoire d’analyses médicales"
+  },
+  {
+    "id": "86_070",
+    "label": "Laboratoire d’anatomopathologie"
+  },
+  {
+    "id": "86_071",
+    "label": "Laboratoire de biologie médicale"
+  },
+  {
+    "id": "86_072",
+    "label": "Laboratoire médical"
+  },
+  {
+    "id": "86_073",
+    "label": "Maison de santé"
+  },
+  {
+    "id": "86_074",
+    "label": "Masso-kinésithérapie"
+  },
+  {
+    "id": "86_075",
+    "label": "Maternité"
+  },
+  {
+    "id": "86_076",
+    "label": "Médecine du travail ou de prévention"
+  },
+  {
+    "id": "86_077",
+    "label": "Médecine générale"
+  },
+  {
+    "id": "86_078",
+    "label": "Médecine spécialisée"
+  },
+  {
+    "id": "86_079",
+    "label": "Naturopathie"
+  },
+  {
+    "id": "86_080",
+    "label": "Neurologie"
+  },
+  {
+    "id": "86_081",
+    "label": "Neuropsychologie"
+  },
+  {
+    "id": "86_082",
+    "label": "Oncologie"
+  },
+  {
+    "id": "86_083",
+    "label": "Ophtalmologie"
+  },
+  {
+    "id": "86_084",
+    "label": "Orthodontie"
+  },
+  {
+    "id": "86_085",
+    "label": "Orthophonie"
+  },
+  {
+    "id": "86_086",
+    "label": "Orthoptie"
+  },
+  {
+    "id": "86_087",
+    "label": "Ostéopathie"
+  },
+  {
+    "id": "86_088",
+    "label": "Oto-rhino-laryngologie (ORL)"
+  },
+  {
+    "id": "86_089",
+    "label": "Pédiatrie"
+  },
+  {
+    "id": "86_090",
+    "label": "Pédicurie-podologie"
+  },
+  {
+    "id": "86_091",
+    "label": "Pédopsychiatrie"
+  },
+  {
+    "id": "86_092",
+    "label": "Pharmacie hospitalière"
+  },
+  {
+    "id": "86_093",
+    "label": "Pneumologie"
+  },
+  {
+    "id": "86_094",
+    "label": "Podologie"
+  },
+  {
+    "id": "86_095",
+    "label": "Polyclinique"
+  },
+  {
+    "id": "86_096",
+    "label": "Prise en charge médicale"
+  },
+  {
+    "id": "86_097",
+    "label": "Psychanalyse"
+  },
+  {
+    "id": "86_098",
+    "label": "Psychiatrie"
+  },
+  {
+    "id": "86_099",
+    "label": "Psychologie"
+  },
+  {
+    "id": "86_100",
+    "label": "Psychomotricité"
+  },
+  {
+    "id": "86_101",
+    "label": "Psychothérapie"
+  },
+  {
+    "id": "86_102",
+    "label": "Radiologie médicale"
+  },
+  {
+    "id": "86_103",
+    "label": "Radiothérapie"
+  },
+  {
+    "id": "86_104",
+    "label": "Rééducation (santé humaine)"
+  },
+  {
+    "id": "86_105",
+    "label": "Rééducation et réadaptation fonctionnelle"
+  },
+  {
+    "id": "86_106",
+    "label": "Réflexologie"
+  },
+  {
+    "id": "86_107",
+    "label": "Régulation médicale"
+  },
+  {
+    "id": "86_108",
+    "label": "Rhumatologie"
+  },
+  {
+    "id": "86_109",
+    "label": "Santé au travail"
+  },
+  {
+    "id": "86_110",
+    "label": "Santé dentaire"
+  },
+  {
+    "id": "86_111",
+    "label": "Santé humaine"
+  },
+  {
+    "id": "86_112",
+    "label": "Santé mentale"
+  },
+  {
+    "id": "86_113",
+    "label": "Secrétariat médical"
+  },
+  {
+    "id": "86_114",
+    "label": "Service de soins à domicile"
+  },
+  {
+    "id": "86_115",
+    "label": "Service médical"
+  },
+  {
+    "id": "86_116",
+    "label": "Service public hospitalier"
+  },
+  {
+    "id": "86_117",
+    "label": "Services de soins infirmiers à domicile (SSIAD)"
+  },
+  {
+    "id": "86_118",
+    "label": "Soins de suite et de réadaptation (SSR)"
+  },
+  {
+    "id": "86_119",
+    "label": "Soins dentaires"
+  },
+  {
+    "id": "86_120",
+    "label": "Soins énergétiques (secteur médical)"
+  },
+  {
+    "id": "86_121",
+    "label": "Soins hospitaliers"
+  },
+  {
+    "id": "86_122",
+    "label": "Soins infirmiers (à domicile, en cabinet, etc.)"
+  },
+  {
+    "id": "86_123",
+    "label": "Soins infirmiers spécialisés en puériculture"
+  },
+  {
+    "id": "86_124",
+    "label": "Soins médicaux et/ou paramédicaux"
+  },
+  {
+    "id": "86_125",
+    "label": "Soins palliatifs"
+  },
+  {
+    "id": "86_126",
+    "label": "Soins psychiatriques"
+  },
+  {
+    "id": "86_127",
+    "label": "Soins, enseignement et recherche"
+  },
+  {
+    "id": "86_128",
+    "label": "Sophrologie thérapeutique"
+  },
+  {
+    "id": "86_129",
+    "label": "Stérilisation de matériel médical ou chirurgical"
+  },
+  {
+    "id": "86_130",
+    "label": "Traitement de l’insuffisance rénale"
+  },
+  {
+    "id": "86_131",
+    "label": "Transfusion sanguine"
+  },
+  {
+    "id": "86_132",
+    "label": "Transport de personnes par brancard"
+  },
+  {
+    "id": "86_133",
+    "label": "Transport sanitaire"
+  },
+  {
+    "id": "86_134",
+    "label": "Urgences médicales"
+  },
+  {
+    "id": "87_001",
+    "label": "Accompagnement de personnes en situation de handicap (avec hébergement)"
+  },
+  {
+    "id": "87_002",
+    "label": "Accueil de personnes âgées (avec hébergement)"
+  },
+  {
+    "id": "87_003",
+    "label": "Accueil de personnes en situation de handicap (avec hébergement)"
+  },
+  {
+    "id": "87_004",
+    "label": "Accueil de personnes sans abri (avec hébergement)"
+  },
+  {
+    "id": "87_005",
+    "label": "Accueil familial"
+  },
+  {
+    "id": "87_006",
+    "label": "Bio-nettoyage (maison de retraite)"
+  },
+  {
+    "id": "87_007",
+    "label": "Centre d’accueil pour demandeurs d’asile"
+  },
+  {
+    "id": "87_008",
+    "label": "Centre d’hébergement d’urgence"
+  },
+  {
+    "id": "87_009",
+    "label": "Centre d’hébergement et de réinsertion sociale"
+  },
+  {
+    "id": "87_010",
+    "label": "Centre éducatif fermé"
+  },
+  {
+    "id": "87_011",
+    "label": "Centre maternel"
+  },
+  {
+    "id": "87_012",
+    "label": "Établissement d’hébergement pour personnes âgées dépendantes (EHPAD)"
+  },
+  {
+    "id": "87_013",
+    "label": "Établissement pour enfants et adolescents en situation de handicap (avec hébergement)"
+  },
+  {
+    "id": "87_014",
+    "label": "Famille d’accueil"
+  },
+  {
+    "id": "87_015",
+    "label": "Foyer d’accueil (avec hébergement)"
+  },
+  {
+    "id": "87_016",
+    "label": "Foyer d’accueil d’urgence pour enfants"
+  },
+  {
+    "id": "87_017",
+    "label": "Foyer d’accueil médicalisé (FAM)"
+  },
+  {
+    "id": "87_018",
+    "label": "Foyer d’aide médicalisé"
+  },
+  {
+    "id": "87_019",
+    "label": "Foyer d’hébergement de personnes en situation de handicap"
+  },
+  {
+    "id": "87_020",
+    "label": "Foyer de l’enfance"
+  },
+  {
+    "id": "87_021",
+    "label": "Foyer de protection de l’enfance"
+  },
+  {
+    "id": "87_022",
+    "label": "Foyer de vie (avec hébergement)"
+  },
+  {
+    "id": "87_023",
+    "label": "Foyer de vie occupationnel"
+  },
+  {
+    "id": "87_024",
+    "label": "Foyer éducatif"
+  },
+  {
+    "id": "87_025",
+    "label": "Foyer pour personnes âgées (avec hébergement)"
+  },
+  {
+    "id": "87_026",
+    "label": "Foyer pour personnes en situation de handicap (avec hébergement)"
+  },
+  {
+    "id": "87_027",
+    "label": "Foyer-logement pour personnes âgées"
+  },
+  {
+    "id": "87_028",
+    "label": "Hébergement de personnes dépendantes"
+  },
+  {
+    "id": "87_029",
+    "label": "Hébergement de personnes en situation de handicap"
+  },
+  {
+    "id": "87_030",
+    "label": "Hébergement et soins aux personnes âgées"
+  },
+  {
+    "id": "87_031",
+    "label": "Hébergement médicalisé pour adultes handicapés"
+  },
+  {
+    "id": "87_032",
+    "label": "Hébergement médicalisé pour enfants handicapés"
+  },
+  {
+    "id": "87_033",
+    "label": "Hébergement médicalisé pour personnes âgées"
+  },
+  {
+    "id": "87_034",
+    "label": "Hébergement pour personnes âgées"
+  },
+  {
+    "id": "87_035",
+    "label": "Hébergement social (hors foyers de travailleurs)"
+  },
+  {
+    "id": "87_036",
+    "label": "Hébergement social pour adultes et familles en difficultés"
+  },
+  {
+    "id": "87_037",
+    "label": "Hébergement social pour enfants en difficultés"
+  },
+  {
+    "id": "87_038",
+    "label": "Hébergement social pour handicapés mentaux"
+  },
+  {
+    "id": "87_039",
+    "label": "Hébergement social pour personnes âgées ou handicapées physiques"
+  },
+  {
+    "id": "87_040",
+    "label": "Hébergement social pour toxicomanes"
+  },
+  {
+    "id": "87_041",
+    "label": "Institut d’éducation motrice (IEM)"
+  },
+  {
+    "id": "87_042",
+    "label": "Institut médico-éducatif (IME)"
+  },
+  {
+    "id": "87_043",
+    "label": "Institut médico-social (avec hébergement)"
+  },
+  {
+    "id": "87_044",
+    "label": "Institut thérapeutique, éducatif et pédagogique (ITEP)"
+  },
+  {
+    "id": "87_045",
+    "label": "Maison d’accueil pour personnes âgées"
+  },
+  {
+    "id": "87_046",
+    "label": "Maison d’accueil spécialisée (MAS)"
+  },
+  {
+    "id": "87_047",
+    "label": "Maison d’enfants à caractère social (MECS)"
+  },
+  {
+    "id": "87_048",
+    "label": "Maison de retraite"
+  },
+  {
+    "id": "87_049",
+    "label": "Maison de retraite médicalisée"
+  },
+  {
+    "id": "87_050",
+    "label": "Résidence autonomie"
+  },
+  {
+    "id": "87_051",
+    "label": "Résidence médicalisée"
+  },
+  {
+    "id": "87_052",
+    "label": "Résidence pour personnes âgées"
+  },
+  {
+    "id": "88_001",
+    "label": "Accompagnement à la vie sociale (sans hébergement)"
+  },
+  {
+    "id": "88_002",
+    "label": "Accompagnement de personnes en situation de handicap (sans hébergement)"
+  },
+  {
+    "id": "88_003",
+    "label": "Accompagnement médico-social (sans hébergement)"
+  },
+  {
+    "id": "88_004",
+    "label": "Accompagnement social (sans hébergement)"
+  },
+  {
+    "id": "88_005",
+    "label": "Accueil de jeunes enfants"
+  },
+  {
+    "id": "88_006",
+    "label": "Accueil de jour (social)"
+  },
+  {
+    "id": "88_007",
+    "label": "Accueil de personnes en situation de handicap (sans hébergement)"
+  },
+  {
+    "id": "88_008",
+    "label": "Accueil de travailleurs handicapés (sans hébergement)"
+  },
+  {
+    "id": "88_009",
+    "label": "Accueil périscolaire"
+  },
+  {
+    "id": "88_010",
+    "label": "Accueil petite enfance"
+  },
+  {
+    "id": "88_011",
+    "label": "Action médico-sociale (sans hébergement)"
+  },
+  {
+    "id": "88_012",
+    "label": "Action sociale (sans hébergement)"
+  },
+  {
+    "id": "88_013",
+    "label": "Activités des assistantes maternelles"
+  },
+  {
+    "id": "88_014",
+    "label": "Activités des nounous (entreprise de services)"
+  },
+  {
+    "id": "88_015",
+    "label": "Activités des nourrices (entreprise de services)"
+  },
+  {
+    "id": "88_016",
+    "label": "Aide à domicile"
+  },
+  {
+    "id": "88_017",
+    "label": "Aide à l’enfance (sans hébergement)"
+  },
+  {
+    "id": "88_018",
+    "label": "Aide à la personne"
+  },
+  {
+    "id": "88_019",
+    "label": "Aide au maintien à domicile"
+  },
+  {
+    "id": "88_020",
+    "label": "Aide aux familles (sans hébergement)"
+  },
+  {
+    "id": "88_021",
+    "label": "Aide aux personnes âgées (sans hébergement)"
+  },
+  {
+    "id": "88_022",
+    "label": "Aide aux personnes en difficulté (sans hébergement)"
+  },
+  {
+    "id": "88_023",
+    "label": "Aide aux personnes handicapées (sans hébergement)"
+  },
+  {
+    "id": "88_024",
+    "label": "Atelier protégé"
+  },
+  {
+    "id": "88_025",
+    "label": "Baby-sitting (entreprise de services)"
+  },
+  {
+    "id": "88_026",
+    "label": "Blanchisserie (CAT, ESAT)"
+  },
+  {
+    "id": "88_027",
+    "label": "Centre d’aide par le travail (CAT)"
+  },
+  {
+    "id": "88_028",
+    "label": "Centre médico-psycho-pédagogique (CMPP)"
+  },
+  {
+    "id": "88_029",
+    "label": "Centre social"
+  },
+  {
+    "id": "88_030",
+    "label": "Chantier d’insertion"
+  },
+  {
+    "id": "88_031",
+    "label": "Conseil conjugal et familial"
+  },
+  {
+    "id": "88_032",
+    "label": "Conseil en économie sociale"
+  },
+  {
+    "id": "88_033",
+    "label": "Crèche"
+  },
+  {
+    "id": "88_034",
+    "label": "Entreprise d’insertion"
+  },
+  {
+    "id": "88_035",
+    "label": "Établissement et service d’aide par le travail (ESAT)"
+  },
+  {
+    "id": "88_036",
+    "label": "Garde à domicile (entreprise de services)"
+  },
+  {
+    "id": "88_037",
+    "label": "Garde d’enfants (entreprise de services)"
+  },
+  {
+    "id": "88_038",
+    "label": "Garde de personnes âgées (entreprises de service)"
+  },
+  {
+    "id": "88_039",
+    "label": "Halte-garderie"
+  },
+  {
+    "id": "88_040",
+    "label": "Insertion de personnes handicapées"
+  },
+  {
+    "id": "88_041",
+    "label": "Insertion par l’activité économique"
+  },
+  {
+    "id": "88_042",
+    "label": "Insertion sociale"
+  },
+  {
+    "id": "88_043",
+    "label": "Jardin d’enfants"
+  },
+  {
+    "id": "88_044",
+    "label": "Maison d’assistantes maternelles (MAM)"
+  },
+  {
+    "id": "88_045",
+    "label": "Médiation familiale"
+  },
+  {
+    "id": "88_046",
+    "label": "Médiation sociale ou familiale"
+  },
+  {
+    "id": "88_047",
+    "label": "Ménage (entreprise de services d’aide à la personne)"
+  },
+  {
+    "id": "88_048",
+    "label": "Micro-crèche"
+  },
+  {
+    "id": "88_049",
+    "label": "Multi-accueil"
+  },
+  {
+    "id": "88_050",
+    "label": "Protection de l’enfance (sans hébergement)"
+  },
+  {
+    "id": "88_051",
+    "label": "Réadaptation professionnelle"
+  },
+  {
+    "id": "88_052",
+    "label": "Recyclerie, ressourcerie (action sociale)"
+  },
+  {
+    "id": "88_053",
+    "label": "Réinsertion professionnelle"
+  },
+  {
+    "id": "88_054",
+    "label": "Réinsertion sociale"
+  },
+  {
+    "id": "88_055",
+    "label": "Repassage (entreprise de services)"
+  },
+  {
+    "id": "88_056",
+    "label": "Service à domicile (entreprise de services)"
+  },
+  {
+    "id": "88_057",
+    "label": "Service à la personne (entreprise de services)"
+  },
+  {
+    "id": "88_058",
+    "label": "Service des auxiliaires de vie"
+  },
+  {
+    "id": "88_059",
+    "label": "Service médico-social (sans hébergement)"
+  },
+  {
+    "id": "88_060",
+    "label": "Service social (sans hébergement)"
+  },
+  {
+    "id": "88_061",
+    "label": "Services d'éducation spéciale et de soins à domicile (SESSAD)"
+  },
+  {
+    "id": "88_062",
+    "label": "Travail social (sans hébergement)"
+  },
+  {
+    "id": "90_001",
+    "label": "Activités artistiques"
+  },
+  {
+    "id": "90_002",
+    "label": "Activités culturelles et artistiques"
+  },
+  {
+    "id": "90_003",
+    "label": "Activités de soutien au spectacle vivant"
+  },
+  {
+    "id": "90_004",
+    "label": "Activités des artistes de la danse"
+  },
+  {
+    "id": "90_005",
+    "label": "Activités des artistes-auteurs"
+  },
+  {
+    "id": "90_006",
+    "label": "Activités des artistes-chanteurs"
+  },
+  {
+    "id": "90_007",
+    "label": "Activités des artistes-illustrateurs"
+  },
+  {
+    "id": "90_008",
+    "label": "Activités des artistes-musiciens"
+  },
+  {
+    "id": "90_009",
+    "label": "Activités des artistes-peintres"
+  },
+  {
+    "id": "90_010",
+    "label": "Activités des compositeurs de musique"
+  },
+  {
+    "id": "90_011",
+    "label": "Activités des conférenciers"
+  },
+  {
+    "id": "90_012",
+    "label": "Activités des écrivains"
+  },
+  {
+    "id": "90_013",
+    "label": "Activités des scénaristes"
+  },
+  {
+    "id": "90_014",
+    "label": "Activités musicales"
+  },
+  {
+    "id": "90_015",
+    "label": "Animation musicale"
+  },
+  {
+    "id": "90_016",
+    "label": "Arts du spectacle vivant"
+  },
+  {
+    "id": "90_017",
+    "label": "Arts plastiques"
+  },
+  {
+    "id": "90_018",
+    "label": "Centre dramatique national (CDN)"
+  },
+  {
+    "id": "90_019",
+    "label": "Chorégraphie"
+  },
+  {
+    "id": "90_020",
+    "label": "Cirque"
+  },
+  {
+    "id": "90_021",
+    "label": "Compagnie de danse"
+  },
+  {
+    "id": "90_022",
+    "label": "Compagnie de spectacle vivant"
+  },
+  {
+    "id": "90_023",
+    "label": "Compagnie de théâtre"
+  },
+  {
+    "id": "90_024",
+    "label": "Composition musicale"
+  },
+  {
+    "id": "90_025",
+    "label": "Création artistique"
+  },
+  {
+    "id": "90_026",
+    "label": "Création de spectacles"
+  },
+  {
+    "id": "90_027",
+    "label": "Création et diffusion de spectacles"
+  },
+  {
+    "id": "90_028",
+    "label": "Création graphique (art)"
+  },
+  {
+    "id": "90_029",
+    "label": "Diffusion de spectacles"
+  },
+  {
+    "id": "90_030",
+    "label": "Entreprise de spectacles"
+  },
+  {
+    "id": "90_031",
+    "label": "Gestion de cabarets"
+  },
+  {
+    "id": "90_032",
+    "label": "Gestion de salles de concerts"
+  },
+  {
+    "id": "90_033",
+    "label": "Gestion de salles de spectacles"
+  },
+  {
+    "id": "90_034",
+    "label": "Graphisme et illustration d’art"
+  },
+  {
+    "id": "90_035",
+    "label": "Illustration de livres"
+  },
+  {
+    "id": "90_036",
+    "label": "Orchestre"
+  },
+  {
+    "id": "90_037",
+    "label": "Organisation de concerts"
+  },
+  {
+    "id": "90_038",
+    "label": "Organisation de festivals de spectacles vivants"
+  },
+  {
+    "id": "90_039",
+    "label": "Organisation de spectacles"
+  },
+  {
+    "id": "90_040",
+    "label": "Photographie d’art"
+  },
+  {
+    "id": "90_041",
+    "label": "Prestations de spectacles"
+  },
+  {
+    "id": "90_042",
+    "label": "Prestations techniques du spectacle"
+  },
+  {
+    "id": "90_043",
+    "label": "Production artistique"
+  },
+  {
+    "id": "90_044",
+    "label": "Production de concerts"
+  },
+  {
+    "id": "90_045",
+    "label": "Production de spectacles"
+  },
+  {
+    "id": "90_046",
+    "label": "Production et diffusion de spectacles vivants"
+  },
+  {
+    "id": "90_047",
+    "label": "Production musicale"
+  },
+  {
+    "id": "90_048",
+    "label": "Régie du spectacle"
+  },
+  {
+    "id": "90_049",
+    "label": "Restauration d’objets d’art"
+  },
+  {
+    "id": "90_050",
+    "label": "Restauration d’œuvres d’art"
+  },
+  {
+    "id": "90_051",
+    "label": "Restauration de tableaux"
+  },
+  {
+    "id": "90_052",
+    "label": "Restauration de vitraux"
+  },
+  {
+    "id": "90_053",
+    "label": "Scène de musique"
+  },
+  {
+    "id": "90_054",
+    "label": "Scène nationale"
+  },
+  {
+    "id": "90_055",
+    "label": "Scénographie"
+  },
+  {
+    "id": "90_056",
+    "label": "Sculpture"
+  },
+  {
+    "id": "90_057",
+    "label": "Services techniques du spectacle"
+  },
+  {
+    "id": "90_058",
+    "label": "Sonorisation des spectacles"
+  },
+  {
+    "id": "90_059",
+    "label": "Théâtre"
+  },
+  {
+    "id": "91_001",
+    "label": "Activités des archives (hors audiovisuelles)"
+  },
+  {
+    "id": "91_002",
+    "label": "Activités des bibliothèques"
+  },
+  {
+    "id": "91_003",
+    "label": "Activités des musées"
+  },
+  {
+    "id": "91_004",
+    "label": "Gestion des jardins botaniques et zoologiques"
+  },
+  {
+    "id": "91_005",
+    "label": "Gestion des réserves naturelles"
+  },
+  {
+    "id": "91_006",
+    "label": "Gestion des sites et monuments touristiques"
+  },
+  {
+    "id": "91_007",
+    "label": "Parc animalier"
+  },
+  {
+    "id": "91_008",
+    "label": "Parc zoologique"
+  },
+  {
+    "id": "92_001",
+    "label": "Établissement de jeux"
+  },
+  {
+    "id": "92_002",
+    "label": "Exploitation de casinos de jeux"
+  },
+  {
+    "id": "92_003",
+    "label": "Exploitation de clubs de jeux"
+  },
+  {
+    "id": "92_004",
+    "label": "Exploitation de machines à sous"
+  },
+  {
+    "id": "92_005",
+    "label": "Jeux d'argent"
+  },
+  {
+    "id": "92_006",
+    "label": "Organisation de jeux de hasard et d'argent"
+  },
+  {
+    "id": "92_007",
+    "label": "Vente de jeux de hasard"
+  },
+  {
+    "id": "93_001",
+    "label": "Accueil de loisirs"
+  },
+  {
+    "id": "93_002",
+    "label": "Activités sportives, récréatives et de loisirs"
+  },
+  {
+    "id": "93_003",
+    "label": "Animation socio-culturelle"
+  },
+  {
+    "id": "93_004",
+    "label": "Association sportive"
+  },
+  {
+    "id": "93_005",
+    "label": "Base de loisirs"
+  },
+  {
+    "id": "93_006",
+    "label": "Centre aéré"
+  },
+  {
+    "id": "93_007",
+    "label": "Centre aquatique"
+  },
+  {
+    "id": "93_008",
+    "label": "Centre de loisirs"
+  },
+  {
+    "id": "93_009",
+    "label": "Centre sportif"
+  },
+  {
+    "id": "93_010",
+    "label": "Club d’équitation"
+  },
+  {
+    "id": "93_011",
+    "label": "Club de basket"
+  },
+  {
+    "id": "93_012",
+    "label": "Club de fitness"
+  },
+  {
+    "id": "93_013",
+    "label": "Club de football"
+  },
+  {
+    "id": "93_014",
+    "label": "Club de gymnastique"
+  },
+  {
+    "id": "93_015",
+    "label": "Club de handball"
+  },
+  {
+    "id": "93_016",
+    "label": "Club de natation"
+  },
+  {
+    "id": "93_017",
+    "label": "Club de remise en forme"
+  },
+  {
+    "id": "93_018",
+    "label": "Club de rugby"
+  },
+  {
+    "id": "93_019",
+    "label": "Club de ski"
+  },
+  {
+    "id": "93_020",
+    "label": "Club de tennis"
+  },
+  {
+    "id": "93_021",
+    "label": "Club équestre"
+  },
+  {
+    "id": "93_022",
+    "label": "Club sportif"
+  },
+  {
+    "id": "93_023",
+    "label": "Complexe sportif"
+  },
+  {
+    "id": "93_024",
+    "label": "École de voile"
+  },
+  {
+    "id": "93_025",
+    "label": "Enseignement du tennis"
+  },
+  {
+    "id": "93_026",
+    "label": "Entraînement de chevaux de course"
+  },
+  {
+    "id": "93_027",
+    "label": "Établissement sportif"
+  },
+  {
+    "id": "93_028",
+    "label": "Exploitation de bowling"
+  },
+  {
+    "id": "93_029",
+    "label": "Exploitation de fêtes foraines"
+  },
+  {
+    "id": "93_030",
+    "label": "Exploitation de manèges"
+  },
+  {
+    "id": "93_031",
+    "label": "Exploitation de piscines"
+  },
+  {
+    "id": "93_032",
+    "label": "Fédération sportive"
+  },
+  {
+    "id": "93_033",
+    "label": "Gestion d'installations sportives"
+  },
+  {
+    "id": "93_034",
+    "label": "Golf"
+  },
+  {
+    "id": "93_035",
+    "label": "Hippodrome"
+  },
+  {
+    "id": "93_036",
+    "label": "Jeu d’évasion (escape game)"
+  },
+  {
+    "id": "93_037",
+    "label": "Ludothèque"
+  },
+  {
+    "id": "93_038",
+    "label": "Maison des jeunes et de la culture (MJC)"
+  },
+  {
+    "id": "93_039",
+    "label": "Organisation d’événements sportifs"
+  },
+  {
+    "id": "93_040",
+    "label": "Parc à thème"
+  },
+  {
+    "id": "93_041",
+    "label": "Parc aquatique"
+  },
+  {
+    "id": "93_042",
+    "label": "Parc d’attraction"
+  },
+  {
+    "id": "93_043",
+    "label": "Parc de jeux"
+  },
+  {
+    "id": "93_044",
+    "label": "Parc de loisirs"
+  },
+  {
+    "id": "93_045",
+    "label": "Patinoire"
+  },
+  {
+    "id": "93_046",
+    "label": "Piscine municipale"
+  },
+  {
+    "id": "93_047",
+    "label": "Salle d'escalade"
+  },
+  {
+    "id": "93_048",
+    "label": "Salle de fitness"
+  },
+  {
+    "id": "93_049",
+    "label": "Salle de sport"
+  },
+  {
+    "id": "94_001",
+    "label": "Accompagnement à la création d'entreprise (organisations professionnelles)"
+  },
+  {
+    "id": "94_002",
+    "label": "Accompagnement des agriculteurs (organisations professionnelles)"
+  },
+  {
+    "id": "94_003",
+    "label": "Activités religieuses"
+  },
+  {
+    "id": "94_004",
+    "label": "Aide humanitaire"
+  },
+  {
+    "id": "94_005",
+    "label": "Association caritative"
+  },
+  {
+    "id": "94_006",
+    "label": "Association cultuelle"
+  },
+  {
+    "id": "94_007",
+    "label": "Association d'éducation populaire"
+  },
+  {
+    "id": "94_008",
+    "label": "Association de défense des consommateurs"
+  },
+  {
+    "id": "94_009",
+    "label": "Association de développement agricole"
+  },
+  {
+    "id": "94_010",
+    "label": "Association de protection animale"
+  },
+  {
+    "id": "94_011",
+    "label": "Association de protection de la nature"
+  },
+  {
+    "id": "94_012",
+    "label": "Association de solidarité internationale"
+  },
+  {
+    "id": "94_013",
+    "label": "Association environnementale"
+  },
+  {
+    "id": "94_014",
+    "label": "Chambre consulaire"
+  },
+  {
+    "id": "94_015",
+    "label": "Chambre de commerce et d'industrie (CCI)"
+  },
+  {
+    "id": "94_016",
+    "label": "Chambre des métiers et de l'artisanat (CMA)"
+  },
+  {
+    "id": "94_017",
+    "label": "Comité d'entreprise"
+  },
+  {
+    "id": "94_018",
+    "label": "Conseil agricole"
+  },
+  {
+    "id": "94_019",
+    "label": "Conseil social et économique (CSE)"
+  },
+  {
+    "id": "94_020",
+    "label": "Église"
+  },
+  {
+    "id": "94_021",
+    "label": "Établissement consulaire"
+  },
+  {
+    "id": "94_022",
+    "label": "Opérateur de compétences (OPCO)"
+  },
+  {
+    "id": "94_023",
+    "label": "Organisation non gouvernementale (ONG)"
+  },
+  {
+    "id": "94_024",
+    "label": "Organisation patronale"
+  },
+  {
+    "id": "94_025",
+    "label": "Organisation politique"
+  },
+  {
+    "id": "94_026",
+    "label": "Organisation professionnelle"
+  },
+  {
+    "id": "94_027",
+    "label": "Organisation syndicale"
+  },
+  {
+    "id": "94_028",
+    "label": "Pôle de compétitivité"
+  },
+  {
+    "id": "94_029",
+    "label": "Refuge animalier"
+  },
+  {
+    "id": "94_030",
+    "label": "Syndicat agricole"
+  },
+  {
+    "id": "94_031",
+    "label": "Syndicat de salariés"
+  },
+  {
+    "id": "94_032",
+    "label": "Unité pastorale"
+  },
+  {
+    "id": "95_001",
+    "label": "Cordonnerie"
+  },
+  {
+    "id": "95_002",
+    "label": "Cordonnerie multiservices"
+  },
+  {
+    "id": "95_003",
+    "label": "Couture (réparation-retouche)"
+  },
+  {
+    "id": "95_004",
+    "label": "Dépannage d’équipements informatiques"
+  },
+  {
+    "id": "95_005",
+    "label": "Réparation d'instruments de musique"
+  },
+  {
+    "id": "95_006",
+    "label": "Réparation d’appareils électroménagers (services aux particuliers)"
+  },
+  {
+    "id": "95_007",
+    "label": "Réparation d’ordinateurs (hors vente)"
+  },
+  {
+    "id": "95_008",
+    "label": "Réparation de chaussures"
+  },
+  {
+    "id": "95_009",
+    "label": "Réparation de matériel informatique (hors vente)"
+  },
+  {
+    "id": "95_010",
+    "label": "Réparation de produits électroniques domestiques"
+  },
+  {
+    "id": "95_011",
+    "label": "Réparation de téléphones (hors vente)"
+  },
+  {
+    "id": "95_012",
+    "label": "Réparation de vélos (hors vente)"
+  },
+  {
+    "id": "95_013",
+    "label": "Réparation horlogère"
+  },
+  {
+    "id": "95_014",
+    "label": "Restauration de meubles (hors fabrication)"
+  },
+  {
+    "id": "95_015",
+    "label": "Retoucherie"
+  },
+  {
+    "id": "95_016",
+    "label": "Tapisserie de décoration et de restauration"
+  },
+  {
+    "id": "96_001",
+    "label": "Accompagnement périnatal (services personnels)"
+  },
+  {
+    "id": "96_002",
+    "label": "Blanchisserie (hors location de vêtements)"
+  },
+  {
+    "id": "96_003",
+    "label": "Centre de bien-être"
+  },
+  {
+    "id": "96_004",
+    "label": "Coaching de vie"
+  },
+  {
+    "id": "96_005",
+    "label": "Coiffure à domicile"
+  },
+  {
+    "id": "96_006",
+    "label": "Coiffure barberie"
+  },
+  {
+    "id": "96_007",
+    "label": "Coiffure esthétique"
+  },
+  {
+    "id": "96_008",
+    "label": "Éducation canine"
+  },
+  {
+    "id": "96_009",
+    "label": "Entretien corporel"
+  },
+  {
+    "id": "96_010",
+    "label": "Établissement thermal"
+  },
+  {
+    "id": "96_011",
+    "label": "Généalogie (services personnels)"
+  },
+  {
+    "id": "96_012",
+    "label": "Hypnose (hors secteur médical)"
+  },
+  {
+    "id": "96_013",
+    "label": "Institut de beauté"
+  },
+  {
+    "id": "96_014",
+    "label": "Institut esthétique"
+  },
+  {
+    "id": "96_015",
+    "label": "Laverie automatique"
+  },
+  {
+    "id": "96_016",
+    "label": "Magnétisme (hors secteur médical)"
+  },
+  {
+    "id": "96_017",
+    "label": "Manucure"
+  },
+  {
+    "id": "96_018",
+    "label": "Maquillage (soins de beauté)"
+  },
+  {
+    "id": "96_019",
+    "label": "Marbrerie (services funéraires)"
+  },
+  {
+    "id": "96_020",
+    "label": "Massage bien-être"
+  },
+  {
+    "id": "96_021",
+    "label": "Onglerie"
+  },
+  {
+    "id": "96_022",
+    "label": "Pension canine"
+  },
+  {
+    "id": "96_023",
+    "label": "Pension pour animaux de compagnie"
+  },
+  {
+    "id": "96_024",
+    "label": "Pompes funèbres"
+  },
+  {
+    "id": "96_025",
+    "label": "Pressing"
+  },
+  {
+    "id": "96_026",
+    "label": "Pressing blanchisserie"
+  },
+  {
+    "id": "96_027",
+    "label": "Prothésie ongulaire"
+  },
+  {
+    "id": "96_028",
+    "label": "Repassage (blanchisserie)"
+  },
+  {
+    "id": "96_029",
+    "label": "Salon de beauté"
+  },
+  {
+    "id": "96_030",
+    "label": "Salon de coiffure"
+  },
+  {
+    "id": "96_031",
+    "label": "Salon de tatouage"
+  },
+  {
+    "id": "96_032",
+    "label": "Salon de toilettage"
+  },
+  {
+    "id": "96_033",
+    "label": "Salon esthétique"
+  },
+  {
+    "id": "96_034",
+    "label": "Services funéraires"
+  },
+  {
+    "id": "96_035",
+    "label": "Soins de beauté"
+  },
+  {
+    "id": "96_036",
+    "label": "Soins énergétiques (bien-être)"
+  },
+  {
+    "id": "96_037",
+    "label": "Soins esthétiques"
+  },
+  {
+    "id": "96_038",
+    "label": "Soins esthétiques à domicile"
+  },
+  {
+    "id": "96_039",
+    "label": "Soins socio-esthétiques"
+  },
+  {
+    "id": "96_040",
+    "label": "Soins thermaux"
+  },
+  {
+    "id": "96_041",
+    "label": "Sophrologie non thérapeutique"
+  },
+  {
+    "id": "96_042",
+    "label": "Spa (bien-être)"
+  },
+  {
+    "id": "96_043",
+    "label": "Tatouage"
+  },
+  {
+    "id": "96_044",
+    "label": "Tatouage piercing"
+  },
+  {
+    "id": "96_045",
+    "label": "Thalassothérapie"
+  },
+  {
+    "id": "96_046",
+    "label": "Thanatopraxie"
+  },
+  {
+    "id": "96_047",
+    "label": "Toilettage animalier"
+  },
+  {
+    "id": "96_048",
+    "label": "Toilettage canin"
+  },
+  {
+    "id": "96_049",
+    "label": "Voyance"
+  },
+  {
+    "id": "97_001",
+    "label": "Ménage (particuliers employeurs)"
+  },
+  {
+    "id": "97_002",
+    "label": "Repassage (particuliers employeurs)"
+  },
+  {
+    "id": "97_003",
+    "label": "Entretien de jardins (particuliers employeurs)"
+  },
+  {
+    "id": "97_004",
+    "label": "Garde d’enfants (particuliers employeurs)"
+  },
+  {
+    "id": "97_005",
+    "label": "Activités des nounous (particuliers employeurs)"
+  },
+  {
+    "id": "97_006",
+    "label": "Activités des nourrices (particuliers employeurs)"
+  },
+  {
+    "id": "97_007",
+    "label": "Baby-sitting (particuliers employeurs)"
+  },
+  {
+    "id": "97_008",
+    "label": "Employé de maison (particuliers employeurs)"
+  },
+  {
+    "id": "97_009",
+    "label": "Garde de personnes âgées (particuliers employeurs)"
+  },
+  {
+    "id": "99_001",
+    "label": "Ambassade"
+  },
+  {
+    "id": "99_002",
+    "label": "Consulat"
+  },
+  {
+    "id": "99_003",
+    "label": "Institution européenne"
+  },
+  {
+    "id": "99_004",
+    "label": "Mission diplomatique"
+  },
+  {
+    "id": "99_005",
+    "label": "Organisation des Nations unies"
+  },
+  {
+    "id": "99_006",
+    "label": "Organisation intergouvernementale"
+  },
+  {
+    "id": "99_007",
+    "label": "Organisation internationale"
+  },
+  {
+    "id": "99_008",
+    "label": "Organisme international"
+  },
+  {
+    "id": "99_009",
+    "label": "Représentation diplomatique"
+  }
+]

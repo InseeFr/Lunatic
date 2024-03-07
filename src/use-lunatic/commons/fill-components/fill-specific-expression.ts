@@ -23,8 +23,7 @@ function fillRoundaboutProps(
 			});
 		});
 		return { ...result, [name]: values };
-	},
-	{});
+	}, {});
 	return { ...component, expressions: compiled };
 }
 
@@ -33,7 +32,7 @@ function fillRoundaboutProps(
  */
 function fillChildComponents(
 	component: DeepTranslateExpression<
-		LunaticComponentDefinition<'ComponentSet'>
+		LunaticComponentDefinition<'ComponentSet' | 'Question'>
 	>,
 	state: LunaticState
 ) {
@@ -172,6 +171,7 @@ function fillSpecificExpressions(
 		case 'Roundabout':
 			return fillRoundaboutProps(component, state);
 		case 'ComponentSet':
+		case 'Question':
 			return fillChildComponents(component, state);
 		case 'Loop':
 		case 'RosterForLoop':

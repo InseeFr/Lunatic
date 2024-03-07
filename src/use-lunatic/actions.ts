@@ -101,7 +101,7 @@ export const goPreviousPage = () =>
 	({
 		type: ActionKind.GO_PREVIOUS_PAGE,
 		payload: {},
-	} as const);
+	}) as const;
 
 export const goNextPage = actionCreator(ActionKind.GO_NEXT_PAGE);
 export const goToPage = actionCreator(ActionKind.GO_TO_PAGE);
@@ -114,11 +114,11 @@ export const handleChange = (
 	({
 		type: ActionKind.HANDLE_CHANGE,
 		payload: { name, value, iteration },
-	} as const);
+	}) as const;
 
 export const onSetWaiting = (status: boolean): Action =>
 	({
 		type: ActionKind.ON_SET_WAITING,
 		payload: { status },
-	} as const);
+	}) as const;
 export const updateState = actionCreator(ActionKind.UPDATE_STATE);

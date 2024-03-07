@@ -82,7 +82,12 @@ type ComponentPropsByType = {
 		'id' | 'declarations' | 'label' | 'style'
 	>;
 	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'declarations' | 'label'>;
-	Question: Pick<LunaticBaseProps<unknown>, 'label' | 'description'>;
+	QuestionContext: Pick<LunaticBaseProps<unknown>, 'label' | 'description'>;
+	QuestionInformation: Pick<LunaticBaseProps<unknown>, 'label' | 'description'>;
+	Question: Pick<
+		LunaticBaseProps<unknown>,
+		'declarations' | 'label' | 'id' | 'description'
+	> & { components: FilledLunaticComponentProps[] };
 	ComponentSet: LunaticBaseProps<unknown> & {
 		components: FilledLunaticComponentProps[];
 		value: Record<string, unknown>;
@@ -244,5 +249,5 @@ type ComponentPropsByType = {
 export type LunaticComponentType = keyof ComponentPropsByType;
 
 export type LunaticComponentProps<
-	T extends LunaticComponentType = LunaticComponentType
+	T extends LunaticComponentType = LunaticComponentType,
 > = ComponentPropsByType[T];

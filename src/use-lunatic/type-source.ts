@@ -40,31 +40,14 @@ export type ConditionFilterType = LabelType & {
 	bindingDependencies?: string[];
 };
 
-export enum Criticality {
-	INFO = 'INFO',
-	WARN = 'WARN',
-	ERROR = 'ERROR',
-}
-
-export enum TypeOfControl {
-	FORMAT = 'FORMAT',
-	CONSISTENCY = 'CONSISTENCY',
-}
-
-export enum ControlTypeEnum {
-	roundabout = 'roundabout',
-	row = 'ROW',
-	simple = 'simple',
-}
-
 export type ControlType = {
 	id: string;
-	criticality: Criticality;
-	typeOfControl: TypeOfControl;
+	criticality: 'INFO' | 'WARN' | 'ERROR';
+	typeOfControl: 'FORMAT' | 'CONSISTENCY';
 	control: LabelType;
 	errorMessage: LabelType;
 	bindingDependencies: string[];
-	type: ControlTypeEnum;
+	type: 'roundabout' | 'ROW' | 'simple';
 	iterations?: number;
 };
 
@@ -116,6 +99,7 @@ export type ComponentType =
 			componentType: 'ConfirmationModal';
 	  })
 	| (ComponentTypeBase & ComponentComponentSetType)
+	| (ComponentTypeBase & ComponentQuestionType)
 	| (ComponentTypeBase & ComponentQuestionExplicationType);
 
 export type ComponentTypeEnum = ComponentType['componentType'];
@@ -240,6 +224,12 @@ export type ComponentPairWiseLinksType = {
 	components: ComponentType[];
 };
 
+export type ComponentQuestionType = {
+	componentType: 'Question';
+	components: ComponentType[];
+	description: LabelType;
+};
+
 export type ComponentComponentSetType = {
 	componentType: 'ComponentSet';
 	components: ComponentType[];
@@ -347,7 +337,17 @@ export type LunaticSource = {
 					variables: string[];
 			  }
 			| {
-					sizeForLinksVariables: string[];
+					sizeForLinksVariables:
+						| [string, string]
+						| { xAxisSize: string; yAxisSize: string };
+					linksVariables: string[];
+			  }
+			| {
+					size: string; // VTL Expression
+					variables: string[];
+					sizeForLinksVariables:
+						| [string, string]
+						| { xAxisSize: string; yAxisSize: string };
 					linksVariables: string[];
 			  };
 	};

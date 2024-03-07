@@ -1,254 +1,398 @@
 {
-	"maxPage": "4",
 	"suggesters": [
 		{
-			"name": "naf-rev2",
+			"responseNames": ["VARIABLE_COMMUNE"],
+			"name": "L_COMMUNEPASSEE-1-2-0",
 			"fields": [
 				{
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
-					"min": 2
-				},
-				{ "name": "id" }
+					"min": 3,
+					"stemmer": false
+				}
 			],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+" }
+				"params": {
+					"language": "French",
+					"pattern": "[\\w.]+",
+					"min": 3,
+					"stemmer": false
+				}
 			},
 			"version": "1"
 		},
 		{
-			"name": "naf-rev2-stop",
+			"responseNames": ["VARIABLE_PAYS"],
+			"name": "L_PAYS-1-2-0",
 			"fields": [
 				{
 					"name": "label",
 					"rules": ["[\\w]+"],
 					"language": "French",
-					"min": 2
-				},
-				{ "name": "id" }
+					"min": 3,
+					"stemmer": false
+				}
 			],
 			"queryParser": {
 				"type": "tokenized",
-				"params": { "language": "French", "pattern": "[\\w.]+" }
+				"params": {
+					"language": "French",
+					"pattern": "[\\w.]+",
+					"min": 3,
+					"stemmer": false
+				}
 			},
 			"version": "1"
 		},
 		{
-			"name": "cog-communes",
+			"responseNames": ["VARIABLE_NATIONALITE"],
+			"name": "L_NATIONALITE-1-2-0",
 			"fields": [
-				{ "name": "label", "rules": "soft" },
-				{ "name": "nccenr", "rules": "soft" },
-				{ "name": "id", "rules": "soft" }
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 3,
+					"stemmer": false
+				}
 			],
-			"queryParser": { "type": "soft" },
+			"queryParser": {
+				"type": "tokenized",
+				"params": {
+					"language": "French",
+					"pattern": "[\\w.]+",
+					"min": 3,
+					"stemmer": false
+				}
+			},
+			"version": "1"
+		},
+		{
+			"responseNames": ["VARIABLE_PCS"],
+			"name": "L_PCS_HOMMES-1-5-0",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 3,
+					"stemmer": false,
+					"synonyms": {
+						"accueil": ["ACCEUIL"],
+						"échafaudage": ["ECHAFFAUDAGE"],
+						"URSSAF": ["URSAF", "URSAFF"],
+						"ingénierie": ["INGENIEURIE", "INGENERIE", "INGIENERIE"],
+						"construction": ["CONSTRUCTEUR"],
+						"distribution": ["DISTRIBUTEUR"],
+						"fabrication": ["FABRICANT"],
+						"abattoir": ["ABATOIR", "ABBATOIR", "ABATOIRE", "ABATTOIRE"],
+						"ascenseur": ["ASCENCEUR"],
+						"ascenseurs": ["ASCENCEURS"],
+						"assenseur": ["ASSENCEUR"],
+						"assenseurs": ["ASSENCEURS"],
+						"joaillerie": ["JOAILLIER"],
+						"agroalimentaire": ["AGGROALIMANTAIRE", "AGROALIMANTAIRE"],
+						"alimentaires": ["ALIMANTAIRE"],
+						"alimentaires": ["ALIMANTAIRES"],
+						"agroalimentaires": ["AGGROALIMANTAIRES", "AGROALIMENTAIRES"]
+					}
+				}
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": {
+					"language": "French",
+					"pattern": "[\\w.]+",
+					"min": 3,
+					"stemmer": false
+				}
+			},
+			"version": "1",
+			"meloto": true,
+			"stopWords": [
+				"a",
+				"au",
+				"dans",
+				"de",
+				"des",
+				"du",
+				"en",
+				"er",
+				"la",
+				"le",
+				"ou",
+				"sur",
+				"d",
+				"l",
+				"aux",
+				"dans",
+				"un",
+				"une",
+				"pour",
+				"avec",
+				"chez",
+				"par",
+				"les"
+			]
+		},
+		{
+			"responseNames": ["VARIABLE_BAILLEURS_SOCIAUX"],
+			"name": "bailleurs_sociaux-1-5-0",
+			"fields": [
+				{
+					"name": "label",
+					"rules": ["[\\w]+"],
+					"language": "French",
+					"min": 3,
+					"stemmer": false
+				}
+			],
+			"queryParser": {
+				"type": "tokenized",
+				"params": {
+					"language": "French",
+					"pattern": "[\\w.]+",
+					"min": 3,
+					"stemmer": false
+				}
+			},
 			"version": "1"
 		}
 	],
 	"components": [
 		{
-			"id": "nn",
-			"componentType": "InputNumber",
-			"mandatory": false,
-			"min": 1,
-			"max": 4,
-			"decimals": 0,
-			"label": { "value": "\"Number of inhabitants\"", "type": "VTL|MD" },
-			"conditionFilter": { "value": "true", "type": "VTL" },
+			"componentType": "Suggester",
 			"response": {
-				"name": "NUM"
+				"name": "VARIABLECO"
 			},
-			"page": "1"
+			"storeName": "L_COMMUNEPASSEE-1-2-0",
+			"hierarchy": {
+				"sequence": {
+					"id": "lt4fhgd6",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"Sequence\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lt4ezymk",
+			"page": "1",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 1. \" || \"Variable Commune\""
+			},
+			"mandatory": false,
+			"maxLength": 249
 		},
 		{
-			"id": "idLoop",
-			"label": { "value": "\"Boucle individu\"", "type": "VTL|MD" },
-			"componentType": "Loop",
-			"iterations": { "value": "cast(NUM, integer)", "type": "VTL" },
-			"paginatedLoop": false,
-			"conditionFilter": { "value": "true", "type": "VTL" },
-			"loopDependencies": ["NUM"],
+			"componentType": "Suggester",
+			"response": {
+				"name": "VARIABLEPA"
+			},
+			"storeName": "L_PAYS-1-2-0",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lt4fjoev",
 			"page": "2",
-			"components": [
-				{
-					"id": "k3ym6x16",
-					"label": { "value": "\"Prénom :\"", "type": "VTL|MD" },
-					"componentType": "Input",
-					"conditionFilter": { "value": "true", "type": "VTL" },
-					"mandatory": false,
-					"response": {
-						"name": "PRENOM"
-					},
-					"page": "2"
-				}
-			]
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 2. \" || \"Variable Pays\""
+			},
+			"mandatory": false,
+			"maxLength": 249
 		},
 		{
-			"id": "idLoopInd",
-			"label": { "value": "\"Boucle individu\"", "type": "VTL|MD" },
-			"componentType": "Loop",
-			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
-			"paginatedLoop": true,
-			"conditionFilter": { "value": "true", "type": "VTL" },
-			"loopDependencies": ["PRENOM"],
+			"componentType": "Suggester",
+			"storeName": "L_NATIONALITE-1-2-0",
+			"response": {
+				"name": "VARIABLENA"
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lt4f6i2y",
 			"page": "3",
-			"maxPage": "3",
-			"components": [
-				{
-					"id": "k3ym61vfzzzzzzzzzzzz",
-					"componentType": "Sequence",
-					"label": {
-						"value": "\"Questionnaire de : \" || PRENOM",
-						"type": "VTL|MD"
-					},
-					"conditionFilter": {
-						"value": "not(isnull(PRENOM))",
-						"type": "VTL"
-					},
-					"page": "3.1"
-				},
-				{
-					"id": "sugg1",
-					"componentType": "Suggester",
-					"mandatory": false,
-					"label": {
-						"value": "PRENOM || \" what's your favorite NAF code? (default stop words)\"",
-						"type": "VTL|MD"
-					},
-					"storeName": "naf-rev2",
-					"conditionFilter": {
-						"value": "not(isnull(PRENOM))",
-						"type": "VTL"
-					},
-					"response": {
-						"name": "NAF"
-					},
-					"page": "3.2"
-				},
-				{
-					"id": "sugg2",
-					"componentType": "Suggester",
-					"mandatory": false,
-					"label": "PRENOM || \" what's your favorite NAF code? (without stop words)\"",
-					"storeName": "naf-rev2-stop",
-					"conditionFilter": {
-						"value": "not(isnull(PRENOM))",
-						"type": "VTL"
-					},
-					"response": {
-						"name": "NAF_STOP"
-					},
-					"page": "3.2",
-					"declarations": [
-						{
-							"id": "kb9hi4j0-krnoclfe",
-							"declarationType": "INSTRUCTION",
-							"position": "BEFORE_QUESTION_TEXT",
-							"label": {
-								"value": "\"Test declaration before\"",
-								"type": "VTL|MD"
-							}
-						},
-						{
-							"id": "kb9hi4j0-krnoclfe",
-							"declarationType": "HELP",
-							"position": "AFTER_QUESTION_TEXT",
-							"label": {
-								"value": "\"Test description from declaration\"",
-								"type": "VTL|MD"
-							}
-						}
-					]
-				},
-				{
-					"id": "sugg-communes",
-					"componentType": "Suggester",
-					"mandatory": false,
-					"label": {
-						"value": "PRENOM || \" what's your favorite city?\"",
-						"type": "VTL|MD"
-					},
-					"storeName": "cog-communes",
-					"conditionFilter": {
-						"value": "not(isnull(PRENOM))",
-						"type": "VTL"
-					},
-					"response": {
-						"name": "CITY"
-					},
-					"page": "3.3"
-				}
-			]
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 3. \" || \"Variable Nationalité\""
+			},
+			"mandatory": false,
+			"maxLength": 249
 		},
 		{
-			"id": "kk",
-			"componentType": "Sequence",
-			"label": { "value": "\"END\"", "type": "VTL|MD" },
-			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "4"
+			"componentType": "Suggester",
+			"storeName": "L_PCS_HOMMES-1-5-0",
+			"response": {
+				"name": "VARIABLE_P"
+			},
+
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lt4f9q1o",
+			"page": "4",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 4. \" || \"VARIABLE_PCS\""
+			},
+			"mandatory": false,
+			"maxLength": 249
+		},
+		{
+			"componentType": "Suggester",
+			"storeName": "bailleurs_sociaux-1-5-0",
+			"response": {
+				"name": "VARIABLE_B"
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lt4f8uba",
+			"page": "5",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 5. \" || \"VARIABLE_BAILLEURS_SOCIAUX\""
+			},
+			"mandatory": false,
+			"maxLength": 249
 		}
 	],
+	"pagination": "question",
+	"resizing": {},
+	"label": {
+		"type": "VTL|MD",
+		"value": "Suggester"
+	},
+	"lunaticModelVersion": "2.5.0",
+	"modele": "SUGGESTER",
+	"enoCoreVersion": "2.7.1",
+	"generatingDate": "27-02-2024 13:43:43",
+	"missing": false,
+	"id": "lt4f6mib",
+	"maxPage": "5",
 	"variables": [
 		{
 			"variableType": "COLLECTED",
-			"name": "NUM",
-			"componentRef": "nn",
 			"values": {
-				"PREVIOUS": null,
 				"COLLECTED": null,
-				"FORCED": null,
 				"EDITED": null,
-				"INPUTED": null
-			}
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "COMMENT_QE"
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "PRENOM",
-			"componentRef": "idLoop",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLECO"
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "NAF",
-			"componentRef": "idLoopInd",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLEPA"
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "NAF_STOP",
-			"componentRef": "idLoopInd",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLENA"
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "CITY",
-			"componentRef": "idLoopInd",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTED": [null]
-			}
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLE_P"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLE_B"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_VARIABLECO",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_VARIABLEPA",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_VARIABLENA",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_VARIABLE_P",
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_VARIABLE_B",
+			"inFilter": "false"
 		}
 	]
 }
