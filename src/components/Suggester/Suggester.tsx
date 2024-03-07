@@ -63,14 +63,14 @@ export function Suggester({
 					pouvez passer la question en appuyant sur Enregistrer et Continuer
 				</div>
 			)}
-			{state === 'Ready' && (
+			{state === 'Ready' && searching && (
 				<CustomSuggester
 					id={id}
 					className={className}
 					optionRenderer={optionRenderer}
 					labelRenderer={labelRenderer}
 					onSelect={onChange}
-					searching={searching!}
+					searching={searching}
 					disabled={disabled}
 					readOnly={readOnly}
 					value={value}
