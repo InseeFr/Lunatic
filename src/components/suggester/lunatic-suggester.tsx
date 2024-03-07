@@ -11,6 +11,7 @@ function LunaticSuggester({
 	labelRenderer,
 	idbVersion,
 	focused,
+	allowArbitraryOption,
 	value,
 	handleChange,
 	disabled,
@@ -50,6 +51,7 @@ function LunaticSuggester({
 				onSelect={onChange}
 				disabled={disabled}
 				id={id}
+				allowArbitraryOption={allowArbitraryOption}
 				value={value}
 				errors={getComponentErrors(errors, id)}
 				label={label}

@@ -246,6 +246,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 4. \" || \"VARIABLE_PCS\""
 			},
+			"allowArbitraryOption": true,
 			"mandatory": false,
 			"maxLength": 249
 		},
