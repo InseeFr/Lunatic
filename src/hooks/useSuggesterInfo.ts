@@ -46,7 +46,7 @@ export function useSuggesterInfo(storeName: string, version: string) {
 
 	return {
 		state: state.type,
-		infos: 'info' in state ? state.info : null,
+		infos: 'info' in state ? state.info : undefined,
 		fetchInfos,
 	};
 }
