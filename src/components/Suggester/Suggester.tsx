@@ -70,7 +70,7 @@ export function Suggester({
 					optionRenderer={optionRenderer}
 					labelRenderer={labelRenderer}
 					onSelect={onChange}
-					searching={searching}
+					searching={searching!}
 					disabled={disabled}
 					readOnly={readOnly}
 					value={value}

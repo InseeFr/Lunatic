@@ -11,14 +11,14 @@ type Props = {
 	className?: string;
 	classNamePrefix?: string;
 	placeholder?: string;
-	onSelect?: (s: string | null) => void;
+	onSelect: (s: string | null) => void;
 	value: string | null;
 	labelRenderer: LunaticComponentProps<'Suggester'>['labelRenderer'];
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
 	disabled?: boolean;
 	readOnly?: boolean;
 	id?: string;
-	searching?: (
+	searching: (
 		s: string | null
 	) => Promise<{ results: ComboboxOptionType[]; search: string }>;
 	label?: ReactNode;

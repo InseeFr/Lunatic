@@ -3,12 +3,28 @@ import { getEntity, openDb } from '../utils/idb-tools';
 import type { SuggesterType } from '../use-lunatic/type-source';
 import { STORE_INFO_NAME } from '../constants/indexedDBStore';
 
+type State =
+	| {
+			type: 'Loading';
+	  }
+	| {
+			type: 'Ready';
+			info: SuggesterType;
+	  }
+	| {
+			type: 'Loading';
+	  }
+	| {
+			type: 'Error';
+	  };
+
 /**
  * Retrieves suggester info from indexedDB
  */
 export function useSuggesterInfo(storeName: string, version: string) {
-	const [infos, setInfos] = useState<SuggesterType>();
-	const [state, setState] = useState<'Loading' | 'Ready' | 'Error'>('Loading');
+	const [state, setState] = useState<State>({
+		type: 'Loading',
+	});
 	const fetchInfos = useCallback(
 		async function () {
 			try {
@@ -19,15 +35,18 @@ export function useSuggesterInfo(storeName: string, version: string) {
 					storeName
 				)) as SuggesterType;
 				if (db && info) {
-					setState('Ready');
-					setInfos(info);
+					setState({ type: 'Ready', info: info });
 				}
 			} catch (e) {
-				setState('Error');
+				setState({ type: 'Error' });
 			}
 		},
 		[storeName, version]
 	);
 
-	return { infos, state, fetchInfos };
+	return {
+		state: state.type,
+		infos: 'info' in state ? state.info : null,
+		fetchInfos,
+	};
 }
