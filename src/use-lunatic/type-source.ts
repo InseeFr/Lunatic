@@ -248,7 +248,7 @@ export type SuggesterType = {
 		// Minimum length for a token to be indexed
 		min?: number;
 		// Regular expression to match words (ex: ["[\\w]+"])
-		rules?: string[];
+		rules?: 'soft' | string[];
 		// Language used for stemming (we only keep the root of a word).
 		language?: 'French' | 'English';
 		// Enable stemming
