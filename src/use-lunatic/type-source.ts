@@ -46,7 +46,7 @@ export type ControlType = {
 	typeOfControl: 'FORMAT' | 'CONSISTENCY';
 	control: LabelType;
 	errorMessage: LabelType;
-	bindingDependencies: string[];
+	bindingDependencies?: string[];
 	type?: 'roundabout' | 'ROW' | 'simple';
 	iterations?: number;
 };
@@ -66,6 +66,7 @@ export type Hierarchy = {
 
 export type ComponentTypeBase = {
 	label: LabelType;
+	description?: LabelType;
 	declarations?: DeclarationType[];
 	conditionFilter?: ConditionFilterType;
 	controls?: ControlType[];
@@ -88,7 +89,7 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentRadioType)
 	| (ComponentTypeBase & ComponentFilterDescriptionType)
 	| (ComponentTypeBase & ComponentDropdownType)
-	| (ComponentTypeBase & ComponentPairWiseLinksType)
+	| (Omit<ComponentTypeBase, 'label'> & ComponentPairWiseLinksType)
 	| (ComponentTypeBase & ComponentRoundaboutType)
 	| (ComponentTypeBase & ComponentSuggesterType)
 	| (ComponentTypeBase & ComponentInputOrTextareaType)
@@ -106,11 +107,11 @@ export type ComponentInputOrTextareaType = {
 
 export type ComponentSequenceType = {
 	componentType: 'Sequence';
+	gotoPage?: string;
 };
 
 export type ComponentSubSequenceType = {
 	componentType: 'Subsequence';
-	gotoPage: string;
 };
 
 export type ComponentRoundaboutType = {
@@ -125,17 +126,13 @@ export type ComponentRosterForLoopType = {
 	componentType: 'RosterForLoop';
 	components: ComponentType[];
 	lines: { min: LabelType; max: LabelType };
-	header: {
+	header?: {
 		value: string;
 		label: LabelType | string;
 		options: { value: string; label: LabelType }[];
 		colspan?: number;
 		rowspan?: number;
 	}[];
-	body: (
-		| { label: LabelType; colspan?: number; rowspan?: number }
-		| (ComponentType & { colspan?: number; rowspan?: number })
-	)[][];
 	positioning: 'HORIZONTAL';
 };
 
@@ -153,12 +150,15 @@ export type ComponentLoopType = {
 export type ComponentTableType = {
 	componentType: 'Table';
 	header: ComponentRosterForLoopType['header'];
-	body: ComponentRosterForLoopType['body'];
+	body: (
+		| { label: LabelType; colspan?: number; rowspan?: number }
+		| (ComponentType & { colspan?: number; rowspan?: number })
+	)[][];
 };
 
 export type ComponentNumberType = {
 	componentType: 'InputNumber';
-	unit: string;
+	unit?: string;
 	response: ResponseType;
 	min?: number;
 	max?: number;
@@ -221,7 +221,7 @@ export type ComponentPairWiseLinksType = {
 	xAxisIterations: LabelType;
 	yAxisIterations: LabelType;
 	symLinks: {
-		[variableName: string]: Record<string, string>;
+		[variableName: string]: Record<string, string | null>;
 	};
 	components: ComponentType[];
 };
