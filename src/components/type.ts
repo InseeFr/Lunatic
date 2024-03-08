@@ -216,6 +216,9 @@ type ComponentPropsByType = {
 		idbVersion?: string;
 		focused: boolean;
 		response: { name: string };
+		optionResponses?: { name: string; attribute: string }[];
+		executeExpression: LunaticState['executeExpression'];
+		iteration: LunaticState['pager']['iteration'];
 	};
 	Summary: LunaticBaseProps<string | null> & {
 		executeExpression: LunaticState['executeExpression'];

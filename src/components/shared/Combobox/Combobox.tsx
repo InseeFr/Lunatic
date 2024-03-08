@@ -31,6 +31,7 @@ type Props = ComboboxSelectionProps &
 		errors?: LunaticError[];
 		onChange?: (s: string | null) => void;
 		onSelect: (s: string | null) => void;
+		onBlur?: () => void;
 		options: ComboboxOptionType[];
 		readOnly?: boolean;
 	};
@@ -56,6 +57,7 @@ function LunaticComboBox({
 	label,
 	description,
 	errors,
+	onBlur,
 }: Props) {
 	const [expanded, setExpanded] = useState(false);
 	const [focused, setFocused] = useState(false);
@@ -76,6 +78,7 @@ function LunaticComboBox({
 		if (disabled || readOnly) {
 			return;
 		}
+		onBlur?.();
 		setExpanded(false);
 		setFocused(false);
 	};

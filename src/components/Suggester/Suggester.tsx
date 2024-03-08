@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { type ReactNode, useEffect, useMemo } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { CustomSuggester } from './CustomSuggester';
 import { createSearching } from './helpers';
@@ -23,10 +23,29 @@ export function Suggester({
 	readOnly,
 	workersBasePath,
 	response,
+	optionResponses = [],
+	executeExpression,
+	iteration,
 }: LunaticComponentProps<'Suggester'>) {
 	const { state, fetchInfos, infos } = useSuggesterInfo(storeName, idbVersion);
-	const onChange = (v: string | null) => {
-		handleChange(response, v);
+	const onChange = (
+		v: string | null | { id?: string; [key: string]: ReactNode }
+	) => {
+		if (v && typeof v === 'object' && optionResponses) {
+			if (v.id) {
+				handleChange(response, v.id);
+			}
+			for (const optionResponse of optionResponses) {
+				if (optionResponse.attribute in v) {
+					handleChange(
+						{ name: optionResponse.name },
+						v[optionResponse.attribute] as string | null
+					);
+				}
+			}
+		} else {
+			handleChange(response, v as string | null);
+		}
 	};
 
 	// Fetch suggester info when the suggester is mounted
@@ -43,6 +62,31 @@ export function Suggester({
 		},
 		[infos, storeName, idbVersion, workersBasePath]
 	);
+
+	// Default options should not change between render
+	// so we can break the rule of hooks here
+	const defaultOptions = useMemo(() => {
+		if (!value) {
+			return [];
+		}
+		const labelResponse = optionResponses?.find((o) => o.attribute === 'label');
+		if (!labelResponse) {
+			return [];
+		}
+		const label = executeExpression<ReactNode>(labelResponse.name, {
+			iteration,
+		});
+		if (!label) {
+			return [];
+		}
+		return [
+			{
+				id: value,
+				label: label,
+				value: value,
+			},
+		];
+	}, []);
 
 	return (
 		<SuggesterStatus
@@ -68,6 +112,7 @@ export function Suggester({
 					className={className}
 					optionRenderer={optionRenderer}
 					labelRenderer={labelRenderer}
+					defaultOptions={defaultOptions}
 					onSelect={onChange}
 					searching={searching}
 					disabled={disabled}
