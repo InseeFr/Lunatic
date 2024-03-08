@@ -208,11 +208,11 @@ describe('use-lunatic()', () => {
 			);
 			result.current.onChange({ name: 'NB' }, 3);
 			expect(
-				(result.current.getData(true).COLLECTED.PRENOMS as any).COLLECTED
+				(result.current.getData(true).COLLECTED?.PRENOMS as any).COLLECTED
 			).toEqual([null, null, null]);
 			result.current.onChange({ name: 'NB' }, 2);
 			expect(
-				(result.current.getData(true).COLLECTED.PRENOMS as any).COLLECTED
+				(result.current.getData(true).COLLECTED?.PRENOMS as any).COLLECTED
 			).toEqual([null, null]);
 		});
 	});
@@ -241,13 +241,13 @@ describe('use-lunatic()', () => {
 					},
 				},
 			});
-			expect(Object.keys(data.COLLECTED)).toHaveLength(109);
-			expect(Object.keys(data.CALCULATED)).toHaveLength(0);
+			expect(data.COLLECTED && Object.keys(data.COLLECTED)).toHaveLength(109);
+			expect(data.CALCULATED && Object.keys(data?.CALCULATED)).toHaveLength(0);
 		});
 		it('should return calculated values', () => {
 			const data = hookRef.current.getData(true);
-			expect(Object.keys(data.COLLECTED)).toHaveLength(109);
-			expect(Object.keys(data.CALCULATED)).toHaveLength(33);
+			expect(data.COLLECTED && Object.keys(data.COLLECTED)).toHaveLength(109);
+			expect(data.CALCULATED && Object.keys(data?.CALCULATED)).toHaveLength(33);
 		});
 		it('should only return requested variables', () => {
 			const data = hookRef.current.getData(false, ['COMMENT']);
@@ -258,7 +258,7 @@ describe('use-lunatic()', () => {
 					},
 				},
 			});
-			expect(Object.keys(data.COLLECTED)).toHaveLength(1);
+			expect(data.COLLECTED && Object.keys(data.COLLECTED)).toHaveLength(1);
 		});
 	});
 
