@@ -5,7 +5,6 @@ import { createSearching } from './helpers';
 import { SuggesterStatus } from './SuggesterStatus';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { useSuggesterInfo } from '../../hooks/useSuggesterInfo';
-import './Suggester.scss';
 
 export function Suggester({
 	storeName,

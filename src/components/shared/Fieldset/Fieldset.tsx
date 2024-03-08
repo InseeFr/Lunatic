@@ -2,7 +2,6 @@ import { type PropsWithChildren, type ReactNode } from 'react';
 import classnames from 'classnames';
 import { slottableComponent } from '../HOC/slottableComponent';
 import { LabelDescription } from '../LabelDescription';
-import './Fieldset.scss';
 import type { LunaticBaseProps } from '../../type';
 import { isElement } from '../../../utils/is-element';
 

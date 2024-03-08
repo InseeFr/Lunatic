@@ -5,7 +5,6 @@ import React, {
 	type MouseEvent as ReactMouseEvent,
 	type PropsWithChildren,
 } from 'react';
-import './dragger.scss';
 import { voidFunction } from '../../../../utils/function';
 import useDocumentEvent from '../../../../hooks/useDocumentEvent';
 

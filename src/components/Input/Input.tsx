@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import './Input.scss';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
 import { slottableComponent } from '../shared/HOC/slottableComponent';

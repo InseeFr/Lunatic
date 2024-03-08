@@ -1,0 +1,13 @@
+.lunatic-roundabout {
+	background-color: transparent;
+
+	.roundabout-it-button {
+		&.complete {
+			background-color: lightgreen;
+		}
+
+		&.partial {
+			background-color: cornflowerblue;
+		}
+	}
+}

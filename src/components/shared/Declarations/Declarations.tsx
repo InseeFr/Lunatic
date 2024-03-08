@@ -1,5 +1,4 @@
 import { slottableComponent } from '../HOC/slottableComponent';
-import './Declarations.scss';
 import { type PropsWithChildren, type ReactNode } from 'react';
 import classnames from 'classnames';
 

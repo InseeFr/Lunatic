@@ -1,4 +1,3 @@
-import './Textarea.scss';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
 import {

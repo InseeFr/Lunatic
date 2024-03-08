@@ -1,0 +1,42 @@
+.lunatic-component {
+	.lunatic-declarations {
+		margin-bottom: 0.4rem;
+	}
+
+	.declaration-instruction {
+		font-style: italic;
+		font-size: 80%;
+	}
+
+	.declaration-statement {
+		font-style: italic;
+		font-size: 80%;
+		color: blue;
+	}
+
+	.declaration-help {
+		font-style: italic;
+		font-size: 80%;
+		color: green;
+	}
+
+	.CODECARD {
+		font-style: bold;
+		font-size: 80%;
+		color: grey;
+		border: solid 1px grey;
+		width: fit-content;
+		padding: 1em;
+		&:before {
+			content: "→ "
+		}
+	}
+
+	.declaration-message_filter {
+		font-size: 100%;
+		color: rgb(73, 66, 66);
+		&:before {
+			content: '→ ';
+		}
+	}
+}

@@ -1,5 +1,4 @@
 import { RadioGroup } from '../shared/Radio/RadioGroup';
-import './CheckboxOne.scss';
 import type { LunaticComponentProps } from '../type';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 

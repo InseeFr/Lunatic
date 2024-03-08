@@ -1,4 +1,3 @@
-import './ComponentErrors.scss';
 import type { LunaticError } from '../../../use-lunatic/type';
 
 type Props =

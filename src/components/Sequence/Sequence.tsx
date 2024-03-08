@@ -1,4 +1,3 @@
-import './Sequence.scss';
 import type { LunaticComponentProps } from '../type';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { LabelDescription } from '../shared/LabelDescription';

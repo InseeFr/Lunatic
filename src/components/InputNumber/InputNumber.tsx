@@ -1,5 +1,4 @@
 import { InputNumberThousand } from './InputNumberThousand';
-import './InputNumber.scss';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
 import {

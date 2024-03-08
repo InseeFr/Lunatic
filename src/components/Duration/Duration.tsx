@@ -1,4 +1,3 @@
-import './Duration.scss';
 import type { LunaticComponentProps } from '../type';
 import { useState } from 'react';
 import { getDurationFromValue } from './getDurationFromValue';

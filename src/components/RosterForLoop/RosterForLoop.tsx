@@ -1,5 +1,4 @@
 import { Fragment, useCallback, useState } from 'react';
-import './RosterForLoop.scss';
 import type { LunaticComponentProps } from '../type';
 import { Table, Tbody, Td, Tr, TableHeader } from '../shared/Table';
 import { times } from '../../utils/array';

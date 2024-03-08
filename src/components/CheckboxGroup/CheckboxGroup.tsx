@@ -2,7 +2,6 @@ import { type ReactNode } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { CustomCheckboxGroup } from './CustomCheckboxGroup';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
-import './CheckboxGroup.scss';
 
 export type CheckboxGroupOption = {
 	label: ReactNode;

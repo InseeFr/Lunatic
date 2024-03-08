@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { DatepickerField } from './DatepickerField';
-import './Datepicker.scss';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';

@@ -2,7 +2,6 @@ import { type PropsWithChildren, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 import editedImg from './icons/edited.png';
 import forcedImg from './icons/forced.png';
-import './VariableStatus.scss';
 
 const img = { editedImg, forcedImg } as Record<string, string>;
 

@@ -6,7 +6,6 @@ import {
 import classnames from 'classnames';
 import { slottableComponent } from '../HOC/slottableComponent';
 import { LabelDescription } from '../LabelDescription';
-import './Label.scss';
 
 type Props = PropsWithChildren<{
 	id?: string;

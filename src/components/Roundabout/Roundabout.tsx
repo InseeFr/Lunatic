@@ -1,4 +1,3 @@
-import './Roundabout.scss';
 import { useCallback } from 'react';
 import { CustomRoundabout } from './CustomRoundabout';
 import type { LunaticComponentProps } from '../type';

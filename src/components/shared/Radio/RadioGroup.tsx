@@ -1,4 +1,3 @@
-import './RadioGroup.scss';
 import type { ReactNode } from 'react';
 import { Fieldset } from '../Fieldset/Fieldset';
 import { ComponentErrors } from '../ComponentErrors/ComponentErrors';

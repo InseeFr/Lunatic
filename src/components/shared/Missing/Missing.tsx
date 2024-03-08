@@ -1,4 +1,3 @@
-import './Missing.scss';
 import { useCallback } from 'react';
 import { DK, RF } from '../../../utils/constants';
 import KeyboardEventHandler from 'react-keyboard-event-handler';

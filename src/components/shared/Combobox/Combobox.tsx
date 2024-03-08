@@ -2,7 +2,6 @@ import classnames from 'classnames';
 import { type ReactNode, useState } from 'react';
 import { ComboboxContainer } from './ComboboxContainer';
 import { ComboboxContent } from './ComboboxContent';
-import './Combobox.scss';
 import type {
 	ComboboxOptionType,
 	ComboboxPanelProps,

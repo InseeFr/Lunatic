@@ -14,7 +14,6 @@ import { OnDragIcon } from '../Icons';
 import LoaderRow from './loader-row';
 import { ActionTool, Tools } from './tools';
 import WidgetContainer from './widget-container';
-import './widget.scss';
 
 type Props = {
 	absolute?: boolean;

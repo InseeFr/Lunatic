@@ -1,6 +1,5 @@
 import type { HTMLAttributes, PropsWithChildren } from 'react';
 import classnames from 'classnames';
-import './IconButton.scss';
 import { voidFunction } from '../../../utils/function';
 
 type Props = PropsWithChildren<{

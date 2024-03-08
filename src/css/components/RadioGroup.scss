@@ -1,0 +1,21 @@
+.lunatic-radio-group {
+	legend {
+		.label-description {
+			font-weight: lighter;
+		}
+	}
+	.lunatic-input-radio {
+		display: flex;
+
+		.label-description {
+			font-weight: lighter;
+		}
+
+		.lunatic-label {
+			font-weight: normal;
+			display: flex;
+			align-items: center;
+			gap: 0.5em;
+		}
+	}
+}

@@ -1,7 +1,6 @@
 import { type ReactNode, useCallback } from 'react';
 import classnames from 'classnames';
 import { CheckboxCheckedIcon, CheckboxUncheckedIcon } from '../Icons';
-import './CheckboxOption.scss';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import type { LunaticBaseProps } from '../../type';
 import { slottableComponent } from '../HOC/slottableComponent';

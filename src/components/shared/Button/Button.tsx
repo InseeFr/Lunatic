@@ -2,7 +2,6 @@ import classnames from 'classnames';
 import { type MouseEventHandler, type PropsWithChildren } from 'react';
 import { prevent } from '../../../utils/dom';
 import { isElement } from '../../../utils/is-element';
-import './Button.scss';
 import { slottableComponent } from '../HOC/slottableComponent';
 
 type Props = PropsWithChildren<{

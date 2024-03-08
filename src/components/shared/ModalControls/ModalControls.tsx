@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import { type MouseEventHandler } from 'react';
 import type { LunaticError } from '../../../use-lunatic/type';
-import './ModalControls.scss';
 import ReactDOM from 'react-dom';
 import { Button } from '../Button/Button';
 import D from '../../../i18n';
