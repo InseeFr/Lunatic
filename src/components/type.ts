@@ -38,7 +38,13 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	iteration?: number;
 	declarations?: {
 		id: string;
-		declarationType: string;
+		declarationType:
+			| 'INSTRUCTION'
+			| 'COMMENT'
+			| 'HELP'
+			| 'CODECARD'
+			| 'WARNING'
+			| 'STATEMENT';
 		position: string;
 		label: ReactNode;
 	}[];

@@ -3,13 +3,21 @@ import { type PropsWithChildren, type ReactNode } from 'react';
 import classnames from 'classnames';
 
 export const Declaration = slottableComponent<
-	PropsWithChildren<{ type: string }>
->('Declaration', ({ children, type }) => (
+	PropsWithChildren<{
+		declarationType:
+			| 'INSTRUCTION'
+			| 'COMMENT'
+			| 'HELP'
+			| 'CODECARD'
+			| 'WARNING'
+			| 'STATEMENT';
+	}>
+>('Declaration', ({ children, declarationType }) => (
 	<div
 		data-testid="declaration"
 		className={classnames(
 			'declaration-lunatic',
-			`declaration-${type.toLowerCase()}`
+			`declaration-${declarationType.toLowerCase()}`
 		)}
 	>
 		{children}
@@ -21,7 +29,13 @@ type Props = {
 	type?: 'AFTER_QUESTION_TEXT' | 'BEFORE_QUESTION_TEXT' | 'DETACHABLE';
 	declarations?: {
 		id: string;
-		declarationType: string;
+		declarationType:
+			| 'INSTRUCTION'
+			| 'COMMENT'
+			| 'HELP'
+			| 'CODECARD'
+			| 'WARNING'
+			| 'STATEMENT';
 		position: string;
 		label: ReactNode;
 	}[];
@@ -41,7 +55,7 @@ function LunaticDeclarations({
 	return (
 		<div id={`declarations-${id}-${type}`} className="declarations-lunatic">
 			{filtered.map(({ id, label, declarationType }) => (
-				<Declaration key={id} type={declarationType}>
+				<Declaration key={id} declarationType={declarationType}>
 					{label}
 				</Declaration>
 			))}
