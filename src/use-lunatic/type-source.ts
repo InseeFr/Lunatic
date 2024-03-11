@@ -129,23 +129,30 @@ export type ComponentRosterForLoopType = {
 	header?: {
 		value: string;
 		label: LabelType | string;
-		options: { value: string; label: LabelType }[];
+		options: Options;
 		colspan?: number;
 		rowspan?: number;
 	}[];
 	positioning: 'HORIZONTAL';
 };
 
+type PaginatedLoop = {
+	paginatedLoop: true;
+	maxPage: string;
+	iterations: LabelType;
+};
+
+type BlockLoop = {
+	paginatedLoop: false;
+	lines: { min: LabelType; max: LabelType };
+};
+
 export type ComponentLoopType = {
 	componentType: 'Loop';
 	loopDependencies: string[];
-	lines: { min: LabelType; max: LabelType };
 	components: ComponentType[];
-	iterations: LabelType;
-	maxPage: string;
 	depth: number;
-	paginatedLoop: boolean;
-};
+} & (PaginatedLoop | BlockLoop);
 
 export type ComponentTableType = {
 	componentType: 'Table';
@@ -190,23 +197,25 @@ export type ComponentCheckboxBooleanType = {
 	missingResponse?: ResponseType;
 };
 
+type Options = { value: string; label: LabelType; description?: LabelType }[];
+
 export type ComponentCheckboxOneType = {
 	componentType: 'CheckboxOne';
 	response: ResponseType;
 	missingResponse?: ResponseType;
-	options: { value: string; label: LabelType }[];
+	options: Options;
 };
 
 export type ComponentRadioType = {
 	componentType: 'Radio';
-	options: { value: string; label: LabelType }[];
+	options: Options;
 	response: ResponseType;
 	missingResponse?: ResponseType;
 };
 
 export type ComponentDropdownType = {
 	componentType: 'Dropdown';
-	options: { value: string; label: LabelType }[];
+	options: Options;
 	response: ResponseType;
 	missingResponse?: ResponseType;
 };

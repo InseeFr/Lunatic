@@ -5,18 +5,21 @@ import { CustomCheckboxGroup } from './CustomCheckboxGroup';
 describe('CheckboxGroupContent', () => {
 	const options = [
 		{
+			id: '1',
 			label: 'Option 1',
 			checked: false,
 			name: 'option1',
 			onClick: vi.fn(),
 		},
 		{
+			id: '2',
 			label: 'Option 2',
 			checked: true,
 			name: 'option2',
 			onClick: vi.fn(),
 		},
 		{
+			id: '3',
 			label: 'Option 3',
 			checked: false,
 			name: 'option3',

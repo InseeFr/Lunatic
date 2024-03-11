@@ -26,14 +26,13 @@ export const CustomCheckboxGroup = slottableComponent<Props>(
 				description={description}
 			>
 				{options.map((option, index) => {
-					const checkboxId = `lunatic-checkbox-${id}-${option.name}`;
 					return (
-						<div className="lunatic-checkbox-group-option" key={checkboxId}>
+						<div className="lunatic-checkbox-group-option" key={option.id}>
 							<CheckboxOption
 								{...option}
 								shortcut={shortcut}
 								invalid={!!errors}
-								id={checkboxId}
+								id={option.id}
 								codeModality={
 									shortcut ? getShortcutKey(index, options.length) : undefined
 								}

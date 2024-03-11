@@ -4,6 +4,7 @@ import { CustomCheckboxGroup } from './CustomCheckboxGroup';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 
 export type CheckboxGroupOption = {
+	id: string;
 	label: ReactNode;
 	name: string;
 	checked: boolean;
@@ -21,12 +22,13 @@ export function CheckboxGroup({
 	label,
 	description,
 }: LunaticComponentProps<'CheckboxGroup'>) {
-	const options = responses.map(({ label, response, description }) => {
+	const options = responses.map(({ label, response, description, id }) => {
 		const { name } = response;
 
 		return {
 			label,
 			name,
+			id,
 			checked: castValueToBoolean(value, name),
 			description,
 			onClick: function (checked: boolean) {
