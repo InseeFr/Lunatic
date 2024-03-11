@@ -1,5 +1,5 @@
 {
-	"name": "lunatic-prisme",
+	"name": "@inseefr/lunatic",
 	"version": "2.7.21",
 	"workersVersion": "0.3.0",
 	"description": "Library of questionnaire components",
