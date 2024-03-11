@@ -34,12 +34,8 @@ const sidebars = {
           collapsed: true,
           items: [
             'components/decorations/sequence',
-            'components/decorations/question-info',
-            'components/decorations/question-context',
-            'components/decorations/question-explication',
             'components/decorations/filter-description',
             'components/decorations/table',
-            'components/decorations/confirmationModal',
           ],
         },
         {
@@ -74,7 +70,6 @@ const sidebars = {
           items: [
               'components/aggregators/loop',
               'components/aggregators/rosterForLoop',
-              'components/aggregators/componentSet',
               'components/aggregators/roundabout',
               'components/aggregators/pairwise'
           ],
