@@ -71,13 +71,13 @@ export function Suggester({
 		}
 		const labelResponse = optionResponses?.find((o) => o.attribute === 'label');
 		if (!labelResponse) {
-			return [];
+			return [{ id: value, label: value, value: value }];
 		}
-		const label = executeExpression<ReactNode>(labelResponse.name, {
+		const label = executeExpression(labelResponse.name, {
 			iteration,
 		});
-		if (!label) {
-			return [];
+		if (typeof label !== 'string') {
+			return [{ id: value, label: value, value: value }];
 		}
 		return [
 			{

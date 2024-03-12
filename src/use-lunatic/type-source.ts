@@ -245,6 +245,7 @@ export type ComponentSuggesterType = {
 	componentType: 'Suggester';
 	storeName: string;
 	response: ResponseType;
+	optionResponses: { name: string; attribute: string };
 };
 
 export type SuggesterType = {

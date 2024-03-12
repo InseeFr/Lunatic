@@ -45,7 +45,7 @@ describe('Declarations component', () => {
 		const declarationElement = getByText('Declaration 1');
 		expect(declarationElement).toBeInTheDocument();
 		expect(declarationElement).toHaveClass('declaration-lunatic');
-		expect(declarationElement).toHaveClass('declaration-after');
+		expect(declarationElement).toHaveClass('declaration-comment');
 	});
 
 	it('renders nothing with unfiltered Declarations', () => {

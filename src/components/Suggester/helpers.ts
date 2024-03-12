@@ -4,7 +4,7 @@ import {
 	WorkerEnum,
 	getWorkerPath,
 } from '../../utils/suggester-workers/worker-path';
-import type { ComboboxOptionType } from '../shared/Combobox/ComboboxType';
+import type { SuggesterOptionType } from './SuggesterType';
 
 export function isWorkerCompatible(): boolean {
 	return !!window.Worker;
@@ -29,7 +29,7 @@ export function createSearching(
 	workersBasePath?: string
 ) {
 	return async function (search: string | null) {
-		return new Promise<{ results: ComboboxOptionType[]; search: string }>(
+		return new Promise<{ results: SuggesterOptionType[]; search: string }>(
 			function (resolve) {
 				const worker = getWorker(resolve, workersBasePath);
 				worker.postMessage({

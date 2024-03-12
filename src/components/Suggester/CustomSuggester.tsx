@@ -6,6 +6,7 @@ import D from '../../i18n';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import type { ComboboxOptionType } from '../shared/Combobox/ComboboxType';
 import { Combobox } from '../shared/Combobox/Combobox';
+import type { SuggesterOptionType } from './SuggesterType';
 
 type Props = {
 	className?: string;
@@ -22,11 +23,11 @@ type Props = {
 	id?: string;
 	searching?: (
 		s: string | null
-	) => Promise<{ results: ComboboxOptionType[]; search: string }>;
+	) => Promise<{ results: SuggesterOptionType[]; search: string }>;
 	label?: ReactNode;
 	description?: ReactNode;
 	errors?: LunaticError[];
-	defaultOptions?: ComboboxOptionType[];
+	defaultOptions?: SuggesterOptionType[];
 };
 
 export const CustomSuggester = slottableComponent<Props>(
