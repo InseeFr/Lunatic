@@ -2331,6 +2331,16 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@orama/orama@^2.0.0-beta.9":
+  version "2.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@orama/orama/-/orama-2.0.0-beta.9.tgz#3c7cadef97b3f85271bfc454de00fe42930d9e2f"
+  integrity sha512-jT9UfHEw1BVlkopY8+SPbriftEQdw/ika9u5qtRBxgGTYMDl/wNy9Oht/8FSpw7LnsiHG3NRwwJ6LrutWKw8Yw==
+
+"@orama/stemmers@^2.0.0-beta.9":
+  version "2.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@orama/stemmers/-/stemmers-2.0.0-beta.9.tgz#971142c155949b659862ae5e265eb25ff8e999b9"
+  integrity sha512-XD+OE84AZcA4MiQ7vXkDpiI++JhOAx8GVBx8PJoEvabbZwG6KHVo0WuXZlaHLwtDIEKlbZv8lDOt8IimppcNQg==
+
 "@playwright/test@^1.30.0":
   version "1.36.0"
   resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.36.0.tgz#df2c0b09bbd27016adf1892b0c3502c4ce88d307"
@@ -3701,6 +3711,11 @@
     "@types/express-serve-static-core" "^4.17.33"
     "@types/qs" "*"
     "@types/serve-static" "*"
+
+"@types/flexsearch@^0.7.6":
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/@types/flexsearch/-/flexsearch-0.7.6.tgz#240c11d16825c56833ec0c66eb1de3ea0e162a49"
+  integrity sha512-H5IXcRn96/gaDmo+rDl2aJuIJsob8dgOXDqf8K0t8rWZd1AFNaaspmRsElESiU+EWE33qfbFPgI0OC/B1g9FCA==
 
 "@types/glob@*":
   version "8.1.0"
@@ -7864,6 +7879,11 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
+flexsearch@^0.7.31:
+  version "0.7.31"
+  resolved "https://registry.yarnpkg.com/flexsearch/-/flexsearch-0.7.31.tgz#065d4110b95083110b9b6c762a71a77cc52e4702"
+  integrity sha512-XGozTsMPYkm+6b5QL3Z9wQcJjNYxp0CYn3U1gO7dwD6PAqU1SVWZxI9CCg3z+ml3YfqdPnrBehaBrnH2AGKbNA==
+
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -11247,6 +11267,11 @@ minipass@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/minipass/-/minipass-5.0.0.tgz#3e9788ffb90b694a5d0ec94479a45b5d8738133d"
   integrity sha512-3FnjYuehv9k6ovOEbyOswadCDPX1piCfhV8ncmYtHOjuPwylVWsghTLo7rabjC3Rx5xD4HDx8Wm1xnMF7S5qFQ==
+
+minisearch@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/minisearch/-/minisearch-6.3.0.tgz#985a2f1ca3c73c2d65af94f0616bfe57164b0b6b"
+  integrity sha512-ihFnidEeU8iXzcVHy74dhkxh/dn8Dc08ERl0xwoMMGqp4+LvRSCgicb+zGqWthVokQKvCSxITlh3P08OzdTYCQ==
 
 minizlib@^2.1.1:
   version "2.1.2"

@@ -12,6 +12,7 @@ module.exports = {
 		'@storybook/addon-a11y',
 	],
 	framework: '@storybook/react',
+	staticDirs: ['./static'],
 	core: {
 		builder: '@storybook/builder-webpack5',
 	},
