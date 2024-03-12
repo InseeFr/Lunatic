@@ -6,7 +6,7 @@ describe('Sequence', () => {
 		{
 			id: '1',
 			label: 'Declaration 1',
-			declarationType: 'TYPE_1',
+			declarationType: 'COMMENT' as const,
 			position: 'AFTER_QUESTION_TEXT',
 		},
 	];

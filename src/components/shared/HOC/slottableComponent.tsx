@@ -48,6 +48,7 @@ import type { CustomSuggester } from '../../Suggester/CustomSuggester';
 import type { CustomCheckboxGroup } from '../../CheckboxGroup/CustomCheckboxGroup';
 import type { RouterLink } from '../MDLabel/RouterLink';
 import type { SummaryResponses, SummaryTitle } from '../../Summary/Summary';
+import type { FilledLunaticComponentProps } from '../../../use-lunatic/commons/fill-components/fill-components';
 
 /**
  * Contains the type of every customizable component
@@ -115,6 +116,9 @@ export type LunaticSlotComponents = {
 	Fieldset: typeof Fieldset;
 	Notification: typeof Notification;
 	RouterLink: typeof RouterLink;
+	ComponentWrapper: ComponentType<
+		PropsWithChildren<FilledLunaticComponentProps & { index: number }>
+	>;
 };
 
 const empty = {} as Partial<LunaticSlotComponents> | undefined;

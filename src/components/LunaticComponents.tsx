@@ -16,6 +16,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import {
 	SlotsProvider,
 	type LunaticSlotComponents,
+	slottableComponent,
 } from './shared/HOC/slottableComponent';
 
 type Props<T extends FilledLunaticComponentProps, V = unknown> = {
@@ -43,6 +44,13 @@ type Props<T extends FilledLunaticComponentProps, V = unknown> = {
 	slots?: Partial<LunaticSlotComponents>;
 };
 
+const LunaticComponentWrapper = slottableComponent(
+	'ComponentWrapper',
+	({ children }: PropsWithChildren) => {
+		return <div className="lunatic lunatic-component">{children}</div>;
+	}
+);
+
 /**
  * Entry point for orchestrators, this component display the list of fields
  */
@@ -56,9 +64,7 @@ export function LunaticComponents<
 	blocklist,
 	memo,
 	slots,
-	wrapper = ({ children }) => (
-		<div className="lunatic lunatic-component">{children}</div>
-	),
+	wrapper = (args) => <LunaticComponentWrapper {...args} />,
 }: Props<T, V>) {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const hasComponents = components.length > 0;

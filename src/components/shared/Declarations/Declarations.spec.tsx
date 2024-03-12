@@ -7,19 +7,19 @@ const declarations = [
 	{
 		id: '1',
 		label: 'Declaration 1',
-		declarationType: 'AFTER',
+		declarationType: 'COMMENT',
 		position: 'AFTER_QUESTION_TEXT',
 	},
 	{
 		id: '2',
 		label: 'Declaration 2',
-		declarationType: 'BEFORE',
+		declarationType: 'COMMENT',
 		position: 'BEFORE_QUESTION_TEXT',
 	},
 	{
 		id: '3',
 		label: 'Declaration 3',
-		declarationType: 'DETACHABLE',
+		declarationType: 'COMMENT',
 		position: 'DETACHABLE',
 	},
 ] satisfies LunaticBaseProps['declarations'];
@@ -53,7 +53,7 @@ describe('Declarations component', () => {
 			{
 				id: '3',
 				label: 'Declaration 3',
-				declarationType: 'DETACHABLE',
+				declarationType: 'COMMENT' as const,
 				position: 'DETACHABLE',
 			},
 		];
