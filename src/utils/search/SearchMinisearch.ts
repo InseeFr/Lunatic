@@ -4,9 +4,16 @@ import type {
 	SearchInterface,
 } from './SearchInterface';
 // @ts-ignore
-import { tokenizer as defaultTokenizer } from '@orama/orama/components';
 import { applyMelauto } from './melauto';
 import MiniSearch from 'minisearch';
+
+const tokenizer = (str: string) =>
+	str
+		.normalize('NFD')
+		.replace(/[\u0300-\u036f]/g, '')
+		.toLowerCase()
+		.split(/[^a-z0-9]+/)
+		.filter((w) => w.length > 0);
 
 export class SearchMinisearch<T extends IndexEntry>
 	implements SearchInterface<T>
@@ -19,11 +26,11 @@ export class SearchMinisearch<T extends IndexEntry>
 	}
 
 	async index(data: Record<string, unknown>[]): Promise<void> {
-		const nameFields = this.info.fields.map(({name})=> name );
+		const nameFields = this.info.fields.map(({ name }) => name);
 		this.db = new MiniSearch({
 			fields: nameFields,
 			storeFields: nameFields,
-			
+			tokenize: tokenizer,
 		});
 		this.db.addAll(data);
 	}
@@ -33,15 +40,11 @@ export class SearchMinisearch<T extends IndexEntry>
 			return [];
 		}
 		let data = this.db.search(q, {
-			prefix: true,
-		});
+			prefix: (term) => term.length > 2,
+		}) as any as T[];
 
-		console.log(data);
-
-		// Apply meloto on top
-		if (this.info.meloto) {
-			data = applyMelauto(q, data);
-		}
+		// Apply melauto to classify results
+		data = applyMelauto(q, data);
 
 		data = data.slice(0, this.info.max);
 

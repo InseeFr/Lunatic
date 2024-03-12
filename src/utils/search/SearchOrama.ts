@@ -18,8 +18,10 @@ export class SearchOrama<T extends IndexEntry> implements SearchInterface<T> {
 
 	async index(data: Record<string, unknown>[]): Promise<void> {
 		this.db = await create({
-			schema: this.info.fields.reduce((acc, { name }) => ({...acc,[name]:"string"}), {})
-			,
+			schema: this.info.fields.reduce(
+				(acc, { name }) => ({ ...acc, [name]: 'string' }),
+				{}
+			),
 			components: {
 				tokenizer: await defaultTokenizer.createTokenizer({
 					language: 'french',
@@ -42,9 +44,7 @@ export class SearchOrama<T extends IndexEntry> implements SearchInterface<T> {
 		).hits.map((h) => h.document) as T[];
 
 		// Apply meloto on top
-		if (this.info.meloto) {
-			data = applyMelauto(q, data);
-		}
+		data = applyMelauto(q, data);
 
 		return data;
 	}

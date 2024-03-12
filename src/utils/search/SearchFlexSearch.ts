@@ -18,7 +18,7 @@ export class SearchFlexSearch<T extends IndexEntry>
 	async index(data: T[]): Promise<void> {
 		// @ts-ignore
 		this._index = new Flexsearch.Document({
-			index: this.info.fields.map(({name})=> name ),
+			index: this.info.fields.map(({ name }) => name),
 			// Enable partial matching
 			tokenize: 'forward',
 		});
@@ -39,9 +39,7 @@ export class SearchFlexSearch<T extends IndexEntry>
 		let data = results[0]?.result.map((k: number) => this.data[k]) ?? [];
 
 		// Apply meloto on top
-		if (this.info.meloto) {
-			data = applyMelauto(q, data);
-		}
+		data = applyMelauto(q, data);
 
 		return Promise.resolve(data);
 	}
