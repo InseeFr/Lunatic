@@ -1,438 +1,438 @@
 [
-  {
-    "id": "01",
-    "label": "AIN (01)"
-  },
-  {
-    "id": "02",
-    "label": "AISNE (02)"
-  },
-  {
-    "id": "03",
-    "label": "ALLIER (03)"
-  },
-  {
-    "id": "04",
-    "label": "ALPES-DE-HAUTE-PROVENCE (04)"
-  },
-  {
-    "id": "05",
-    "label": "HAUTES-ALPES (05)"
-  },
-  {
-    "id": "06",
-    "label": "ALPES-MARITIMES (06)"
-  },
-  {
-    "id": "07",
-    "label": "ARDECHE (07)"
-  },
-  {
-    "id": "08",
-    "label": "ARDENNES (08)"
-  },
-  {
-    "id": "09",
-    "label": "ARIEGE (09)"
-  },
-  {
-    "id": "10",
-    "label": "AUBE (10)"
-  },
-  {
-    "id": "11",
-    "label": "AUDE (11)"
-  },
-  {
-    "id": "12",
-    "label": "AVEYRON (12)"
-  },
-  {
-    "id": "13",
-    "label": "BOUCHES-DU-RHONE (13)"
-  },
-  {
-    "id": "14",
-    "label": "CALVADOS (14)"
-  },
-  {
-    "id": "15",
-    "label": "CANTAL (15)"
-  },
-  {
-    "id": "16",
-    "label": "CHARENTE (16)"
-  },
-  {
-    "id": "17",
-    "label": "CHARENTE-MARITIME (17)"
-  },
-  {
-    "id": "18",
-    "label": "CHER (18)"
-  },
-  {
-    "id": "19",
-    "label": "CORREZE (19)"
-  },
-  {
-    "id": "21",
-    "label": "COTE-D’OR (21)"
-  },
-  {
-    "id": "22",
-    "label": "COTES-D’ARMOR (22)"
-  },
-  {
-    "id": "23",
-    "label": "CREUSE (23)"
-  },
-  {
-    "id": "24",
-    "label": "DORDOGNE (24)"
-  },
-  {
-    "id": "25",
-    "label": "DOUBS (25)"
-  },
-  {
-    "id": "26",
-    "label": "DROME (26)"
-  },
-  {
-    "id": "27",
-    "label": "EURE (27)"
-  },
-  {
-    "id": "28",
-    "label": "EURE-ET-LOIR (28)"
-  },
-  {
-    "id": "29",
-    "label": "FINISTERE (29)"
-  },
-  {
-    "id": "2A",
-    "label": "CORSE-DU-SUD (2A)"
-  },
-  {
-    "id": "2B",
-    "label": "HAUTE-CORSE (2B)"
-  },
-  {
-    "id": "30",
-    "label": "GARD (30)"
-  },
-  {
-    "id": "31",
-    "label": "HAUTE-GARONNE (31)"
-  },
-  {
-    "id": "32",
-    "label": "GERS (32)"
-  },
-  {
-    "id": "33",
-    "label": "GIRONDE (33)"
-  },
-  {
-    "id": "34",
-    "label": "HERAULT (34)"
-  },
-  {
-    "id": "35",
-    "label": "ILLE-ET-VILAINE (35)"
-  },
-  {
-    "id": "36",
-    "label": "INDRE (36)"
-  },
-  {
-    "id": "37",
-    "label": "INDRE-ET-LOIRE (37)"
-  },
-  {
-    "id": "38",
-    "label": "ISERE (38)"
-  },
-  {
-    "id": "39",
-    "label": "JURA (39)"
-  },
-  {
-    "id": "40",
-    "label": "LANDES (40)"
-  },
-  {
-    "id": "41",
-    "label": "LOIR-ET-CHER (41)"
-  },
-  {
-    "id": "42",
-    "label": "LOIRE (42)"
-  },
-  {
-    "id": "43",
-    "label": "HAUTE-LOIRE (43)"
-  },
-  {
-    "id": "44",
-    "label": "LOIRE-ATLANTIQUE (44)"
-  },
-  {
-    "id": "45",
-    "label": "LOIRET (45)"
-  },
-  {
-    "id": "46",
-    "label": "LOT (46)"
-  },
-  {
-    "id": "47",
-    "label": "LOT-ET-GARONNE (47)"
-  },
-  {
-    "id": "48",
-    "label": "LOZERE (48)"
-  },
-  {
-    "id": "49",
-    "label": "MAINE-ET-LOIRE (49)"
-  },
-  {
-    "id": "50",
-    "label": "MANCHE (50)"
-  },
-  {
-    "id": "51",
-    "label": "MARNE (51)"
-  },
-  {
-    "id": "52",
-    "label": "HAUTE-MARNE (52)"
-  },
-  {
-    "id": "53",
-    "label": "MAYENNE (53)"
-  },
-  {
-    "id": "54",
-    "label": "MEURTHE-ET-MOSELLE (54)"
-  },
-  {
-    "id": "55",
-    "label": "MEUSE (55)"
-  },
-  {
-    "id": "56",
-    "label": "MORBIHAN (56)"
-  },
-  {
-    "id": "57",
-    "label": "MOSELLE (57)"
-  },
-  {
-    "id": "58",
-    "label": "NIEVRE (58)"
-  },
-  {
-    "id": "59",
-    "label": "NORD (59)"
-  },
-  {
-    "id": "60",
-    "label": "OISE (60)"
-  },
-  {
-    "id": "61",
-    "label": "ORNE (61)"
-  },
-  {
-    "id": "62",
-    "label": "PAS-DE-CALAIS (62)"
-  },
-  {
-    "id": "63",
-    "label": "PUY-DE-DOME (63)"
-  },
-  {
-    "id": "64",
-    "label": "PYRENEES-ATLANTIQUES (64)"
-  },
-  {
-    "id": "65",
-    "label": "HAUTES-PYRENEES (65)"
-  },
-  {
-    "id": "66",
-    "label": "PYRENEES-ORIENTALES (66)"
-  },
-  {
-    "id": "67",
-    "label": "BAS-RHIN (67)"
-  },
-  {
-    "id": "68",
-    "label": "HAUT-RHIN (68)"
-  },
-  {
-    "id": "69",
-    "label": "RHONE (69)"
-  },
-  {
-    "id": "70",
-    "label": "HAUTE-SAONE (70)"
-  },
-  {
-    "id": "71",
-    "label": "SAONE-ET-LOIRE (71)"
-  },
-  {
-    "id": "72",
-    "label": "SARTHE (72)"
-  },
-  {
-    "id": "73",
-    "label": "SAVOIE (73)"
-  },
-  {
-    "id": "74",
-    "label": "HAUTE-SAVOIE (74)"
-  },
-  {
-    "id": "75",
-    "label": "PARIS (75)"
-  },
-  {
-    "id": "76",
-    "label": "SEINE-MARITIME (76)"
-  },
-  {
-    "id": "77",
-    "label": "SEINE-ET-MARNE (77)"
-  },
-  {
-    "id": "78",
-    "label": "YVELINES (78)"
-  },
-  {
-    "id": "79",
-    "label": "DEUX-SEVRES (79)"
-  },
-  {
-    "id": "80",
-    "label": "SOMME (80)"
-  },
-  {
-    "id": "81",
-    "label": "TARN (81)"
-  },
-  {
-    "id": "82",
-    "label": "TARN-ET-GARONNE (82)"
-  },
-  {
-    "id": "83",
-    "label": "VAR (83)"
-  },
-  {
-    "id": "84",
-    "label": "VAUCLUSE (84)"
-  },
-  {
-    "id": "85",
-    "label": "VENDEE (85)"
-  },
-  {
-    "id": "86",
-    "label": "VIENNE (86)"
-  },
-  {
-    "id": "87",
-    "label": "HAUTE-VIENNE (87)"
-  },
-  {
-    "id": "88",
-    "label": "VOSGES (88)"
-  },
-  {
-    "id": "89",
-    "label": "YONNE (89)"
-  },
-  {
-    "id": "90",
-    "label": "TERRITOIRE-DE-BELFORT (90)"
-  },
-  {
-    "id": "91",
-    "label": "ESSONNE (91)"
-  },
-  {
-    "id": "92",
-    "label": "HAUTS-DE-SEINE (92)"
-  },
-  {
-    "id": "93",
-    "label": "SEINE-SAINT-DENIS (93)"
-  },
-  {
-    "id": "94",
-    "label": "VAL-DE-MARNE (94)"
-  },
-  {
-    "id": "95",
-    "label": "VAL-D’OISE (95)"
-  },
-  {
-    "id": "971",
-    "label": "GUADELOUPE (971)"
-  },
-  {
-    "id": "972",
-    "label": "MARTINIQUE (972)"
-  },
-  {
-    "id": "973",
-    "label": "GUYANE (973)"
-  },
-  {
-    "id": "974",
-    "label": "REUNION (974)"
-  },
-    {
-    "id": "975",
-    "label": "SAINT-PIERRE-ET-MIQUELON (975)"
-  },
-  {
-    "id": "976",
-    "label": "MAYOTTE (976)"
-  },
-    {
-    "id": "977",
-    "label": "SAINT-BARTHELEMY (977)"
-  },
-   {
-    "id": "978",
-    "label": "SAINT-MARTIN (978)"
-  },
-   {
-    "id": "984",
-    "label": "TERRES AUSTRALES ET ANTARCTIQUES FRANCAISES (984)"
-  },
-  {
-    "id": "986",
-    "label": "WALLIS-ET-FUTUNA (986)"
-  },
- {
-    "id": "987",
-    "label": "POLYNESIE FRANCAISE (987)"
-  },
-   {
-    "id": "988",
-    "label": "NOUVELLE-CALEDONIE (988)"
-  },
-  {
-    "id": "989",
-    "label": "CLIPPERTON (989)"
-  }
- ]
+	{
+		"id": "01",
+		"label": "AIN (01)"
+	},
+	{
+		"id": "02",
+		"label": "AISNE (02)"
+	},
+	{
+		"id": "03",
+		"label": "ALLIER (03)"
+	},
+	{
+		"id": "04",
+		"label": "ALPES-DE-HAUTE-PROVENCE (04)"
+	},
+	{
+		"id": "05",
+		"label": "HAUTES-ALPES (05)"
+	},
+	{
+		"id": "06",
+		"label": "ALPES-MARITIMES (06)"
+	},
+	{
+		"id": "07",
+		"label": "ARDECHE (07)"
+	},
+	{
+		"id": "08",
+		"label": "ARDENNES (08)"
+	},
+	{
+		"id": "09",
+		"label": "ARIEGE (09)"
+	},
+	{
+		"id": "10",
+		"label": "AUBE (10)"
+	},
+	{
+		"id": "11",
+		"label": "AUDE (11)"
+	},
+	{
+		"id": "12",
+		"label": "AVEYRON (12)"
+	},
+	{
+		"id": "13",
+		"label": "BOUCHES-DU-RHONE (13)"
+	},
+	{
+		"id": "14",
+		"label": "CALVADOS (14)"
+	},
+	{
+		"id": "15",
+		"label": "CANTAL (15)"
+	},
+	{
+		"id": "16",
+		"label": "CHARENTE (16)"
+	},
+	{
+		"id": "17",
+		"label": "CHARENTE-MARITIME (17)"
+	},
+	{
+		"id": "18",
+		"label": "CHER (18)"
+	},
+	{
+		"id": "19",
+		"label": "CORREZE (19)"
+	},
+	{
+		"id": "21",
+		"label": "COTE-D’OR (21)"
+	},
+	{
+		"id": "22",
+		"label": "COTES-D’ARMOR (22)"
+	},
+	{
+		"id": "23",
+		"label": "CREUSE (23)"
+	},
+	{
+		"id": "24",
+		"label": "DORDOGNE (24)"
+	},
+	{
+		"id": "25",
+		"label": "DOUBS (25)"
+	},
+	{
+		"id": "26",
+		"label": "DROME (26)"
+	},
+	{
+		"id": "27",
+		"label": "EURE (27)"
+	},
+	{
+		"id": "28",
+		"label": "EURE-ET-LOIR (28)"
+	},
+	{
+		"id": "29",
+		"label": "FINISTERE (29)"
+	},
+	{
+		"id": "2A",
+		"label": "CORSE-DU-SUD (2A)"
+	},
+	{
+		"id": "2B",
+		"label": "HAUTE-CORSE (2B)"
+	},
+	{
+		"id": "30",
+		"label": "GARD (30)"
+	},
+	{
+		"id": "31",
+		"label": "HAUTE-GARONNE (31)"
+	},
+	{
+		"id": "32",
+		"label": "GERS (32)"
+	},
+	{
+		"id": "33",
+		"label": "GIRONDE (33)"
+	},
+	{
+		"id": "34",
+		"label": "HERAULT (34)"
+	},
+	{
+		"id": "35",
+		"label": "ILLE-ET-VILAINE (35)"
+	},
+	{
+		"id": "36",
+		"label": "INDRE (36)"
+	},
+	{
+		"id": "37",
+		"label": "INDRE-ET-LOIRE (37)"
+	},
+	{
+		"id": "38",
+		"label": "ISERE (38)"
+	},
+	{
+		"id": "39",
+		"label": "JURA (39)"
+	},
+	{
+		"id": "40",
+		"label": "LANDES (40)"
+	},
+	{
+		"id": "41",
+		"label": "LOIR-ET-CHER (41)"
+	},
+	{
+		"id": "42",
+		"label": "LOIRE (42)"
+	},
+	{
+		"id": "43",
+		"label": "HAUTE-LOIRE (43)"
+	},
+	{
+		"id": "44",
+		"label": "LOIRE-ATLANTIQUE (44)"
+	},
+	{
+		"id": "45",
+		"label": "LOIRET (45)"
+	},
+	{
+		"id": "46",
+		"label": "LOT (46)"
+	},
+	{
+		"id": "47",
+		"label": "LOT-ET-GARONNE (47)"
+	},
+	{
+		"id": "48",
+		"label": "LOZERE (48)"
+	},
+	{
+		"id": "49",
+		"label": "MAINE-ET-LOIRE (49)"
+	},
+	{
+		"id": "50",
+		"label": "MANCHE (50)"
+	},
+	{
+		"id": "51",
+		"label": "MARNE (51)"
+	},
+	{
+		"id": "52",
+		"label": "HAUTE-MARNE (52)"
+	},
+	{
+		"id": "53",
+		"label": "MAYENNE (53)"
+	},
+	{
+		"id": "54",
+		"label": "MEURTHE-ET-MOSELLE (54)"
+	},
+	{
+		"id": "55",
+		"label": "MEUSE (55)"
+	},
+	{
+		"id": "56",
+		"label": "MORBIHAN (56)"
+	},
+	{
+		"id": "57",
+		"label": "MOSELLE (57)"
+	},
+	{
+		"id": "58",
+		"label": "NIEVRE (58)"
+	},
+	{
+		"id": "59",
+		"label": "NORD (59)"
+	},
+	{
+		"id": "60",
+		"label": "OISE (60)"
+	},
+	{
+		"id": "61",
+		"label": "ORNE (61)"
+	},
+	{
+		"id": "62",
+		"label": "PAS-DE-CALAIS (62)"
+	},
+	{
+		"id": "63",
+		"label": "PUY-DE-DOME (63)"
+	},
+	{
+		"id": "64",
+		"label": "PYRENEES-ATLANTIQUES (64)"
+	},
+	{
+		"id": "65",
+		"label": "HAUTES-PYRENEES (65)"
+	},
+	{
+		"id": "66",
+		"label": "PYRENEES-ORIENTALES (66)"
+	},
+	{
+		"id": "67",
+		"label": "BAS-RHIN (67)"
+	},
+	{
+		"id": "68",
+		"label": "HAUT-RHIN (68)"
+	},
+	{
+		"id": "69",
+		"label": "RHONE (69)"
+	},
+	{
+		"id": "70",
+		"label": "HAUTE-SAONE (70)"
+	},
+	{
+		"id": "71",
+		"label": "SAONE-ET-LOIRE (71)"
+	},
+	{
+		"id": "72",
+		"label": "SARTHE (72)"
+	},
+	{
+		"id": "73",
+		"label": "SAVOIE (73)"
+	},
+	{
+		"id": "74",
+		"label": "HAUTE-SAVOIE (74)"
+	},
+	{
+		"id": "75",
+		"label": "PARIS (75)"
+	},
+	{
+		"id": "76",
+		"label": "SEINE-MARITIME (76)"
+	},
+	{
+		"id": "77",
+		"label": "SEINE-ET-MARNE (77)"
+	},
+	{
+		"id": "78",
+		"label": "YVELINES (78)"
+	},
+	{
+		"id": "79",
+		"label": "DEUX-SEVRES (79)"
+	},
+	{
+		"id": "80",
+		"label": "SOMME (80)"
+	},
+	{
+		"id": "81",
+		"label": "TARN (81)"
+	},
+	{
+		"id": "82",
+		"label": "TARN-ET-GARONNE (82)"
+	},
+	{
+		"id": "83",
+		"label": "VAR (83)"
+	},
+	{
+		"id": "84",
+		"label": "VAUCLUSE (84)"
+	},
+	{
+		"id": "85",
+		"label": "VENDEE (85)"
+	},
+	{
+		"id": "86",
+		"label": "VIENNE (86)"
+	},
+	{
+		"id": "87",
+		"label": "HAUTE-VIENNE (87)"
+	},
+	{
+		"id": "88",
+		"label": "VOSGES (88)"
+	},
+	{
+		"id": "89",
+		"label": "YONNE (89)"
+	},
+	{
+		"id": "90",
+		"label": "TERRITOIRE-DE-BELFORT (90)"
+	},
+	{
+		"id": "91",
+		"label": "ESSONNE (91)"
+	},
+	{
+		"id": "92",
+		"label": "HAUTS-DE-SEINE (92)"
+	},
+	{
+		"id": "93",
+		"label": "SEINE-SAINT-DENIS (93)"
+	},
+	{
+		"id": "94",
+		"label": "VAL-DE-MARNE (94)"
+	},
+	{
+		"id": "95",
+		"label": "VAL-D’OISE (95)"
+	},
+	{
+		"id": "971",
+		"label": "GUADELOUPE (971)"
+	},
+	{
+		"id": "972",
+		"label": "MARTINIQUE (972)"
+	},
+	{
+		"id": "973",
+		"label": "GUYANE (973)"
+	},
+	{
+		"id": "974",
+		"label": "REUNION (974)"
+	},
+	{
+		"id": "975",
+		"label": "SAINT-PIERRE-ET-MIQUELON (975)"
+	},
+	{
+		"id": "976",
+		"label": "MAYOTTE (976)"
+	},
+	{
+		"id": "977",
+		"label": "SAINT-BARTHELEMY (977)"
+	},
+	{
+		"id": "978",
+		"label": "SAINT-MARTIN (978)"
+	},
+	{
+		"id": "984",
+		"label": "TERRES AUSTRALES ET ANTARCTIQUES FRANCAISES (984)"
+	},
+	{
+		"id": "986",
+		"label": "WALLIS-ET-FUTUNA (986)"
+	},
+	{
+		"id": "987",
+		"label": "POLYNESIE FRANCAISE (987)"
+	},
+	{
+		"id": "988",
+		"label": "NOUVELLE-CALEDONIE (988)"
+	},
+	{
+		"id": "989",
+		"label": "CLIPPERTON (989)"
+	}
+]
