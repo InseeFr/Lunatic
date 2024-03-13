@@ -1,7 +1,6 @@
 import { type PropsWithChildren } from 'react';
 import type { LunaticBaseProps } from '../type';
 import { Missing } from './Missing/Missing';
-import { VariableStatus } from './VariableStatus/VariableStatus';
 import classnames from 'classnames';
 import { Declarations } from './Declarations/Declarations';
 import { voidFunction } from '../../utils/function';
@@ -45,7 +44,7 @@ type Props = PropsWithChildren<{
  */
 export function ComponentWrapper(props: Props) {
 	const { id, declarations, children, management, handleChange } = props;
-	const content = (
+	return (
 		<>
 			<Declarations
 				type="BEFORE_QUESTION_TEXT"
@@ -67,5 +66,4 @@ export function ComponentWrapper(props: Props) {
 			<Missing {...props} handleChange={handleChange ?? voidFunction} />
 		</>
 	);
-	return management ? <VariableStatus>{content}</VariableStatus> : content;
 }

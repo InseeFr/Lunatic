@@ -2,8 +2,10 @@
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
 		"declaration": true,
-		"emitDeclarationOnly": true,
+		"emitDeclarationOnly": false,
+		"noEmitOnError": false,
 		"noEmit": false,
+		"sourceMap": true,
 		"outDir": "lib"
 	},
 	"include": ["src/**/*.ts", "src/**/*.tsx"]
