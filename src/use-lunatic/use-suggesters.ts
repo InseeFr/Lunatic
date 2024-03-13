@@ -95,12 +95,11 @@ export function useSuggesters({
 			) {
 				const suggesterWorkers = suggesters.map(async (store) => {
 					const { name } = store;
-					const { current } = status;
-					if (!current) {
+					if (!status.current) {
 						return;
 					}
 					try {
-						if (current[name] === SuggesterStatus.idle) {
+						if (status.current[name] === SuggesterStatus.idle) {
 							const isClean = await initStore(store);
 							if (!isClean) {
 								setStatus(status, name, SuggesterStatus.error);
@@ -110,7 +109,7 @@ export function useSuggesters({
 								setTimestamp(Date.now());
 							}
 						}
-						if (current[name] === SuggesterStatus.pending) {
+						if (status.current[name] === SuggesterStatus.pending) {
 							const data = await getReferentiel(name);
 							const [append, abort] = createAppendTask<any>(
 								store,
