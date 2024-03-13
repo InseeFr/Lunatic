@@ -53,6 +53,7 @@ export class LunaticVariablesStore {
 			if (name === 'yAxis') return 1;
 			return undefined;
 		};
+		store.set('1', 1); // Fake variable to use on the shapeFrom, we will use "variableDimension" in the future
 		for (const variable of source.variables) {
 			switch (variable.variableType) {
 				case 'CALCULATED':
@@ -193,6 +194,28 @@ export class LunaticVariablesStore {
 	get interpretCount() {
 		return interpretCount;
 	}
+
+	// Displays a table of the most calculated variable (useful for debug)
+	debug() {
+		console.table(
+			Array.from(this.dictionary.values())
+				.sort((a, b) => b.calculatedCount - a.calculatedCount)
+				.slice(0, 25)
+				.map((v) => ({
+					name: v.name,
+					calculations: v.calculatedCount,
+					expression: v.expression,
+				}))
+		);
+		console.log(
+			'Total calculations : ' +
+				Array.from(this.dictionary.values()).reduce(
+					(acc, v) => acc + v.calculatedCount,
+					0
+				)
+		);
+		Array.from(this.dictionary.values()).map((v) => (v.calculatedCount = 0));
+	}
 }
 
 class LunaticVariable {
@@ -205,7 +228,7 @@ class LunaticVariable {
 	// List of dependencies, ex: ['FIRSTNAME', 'LASTNAME']
 	private dependencies?: string[];
 	// Expression for calculated variable
-	private readonly expression?: string;
+	public readonly expression?: string;
 	// Dictionary holding all the available variables
 	private readonly dictionary?: Map<string, LunaticVariable>;
 	// Specific iteration depth to get value from dependencies (used for yAxis for instance)
@@ -213,7 +236,9 @@ class LunaticVariable {
 	// For calculated variable, shape is copied from another variable
 	private readonly shapeFrom?: string;
 	// Keep a record of variable name (optional, used for debug)
-	private readonly name?: string;
+	public readonly name?: string;
+	// Count the number of calculation
+	public calculatedCount = 0;
 
 	constructor(
 		args: {
@@ -274,6 +299,8 @@ class LunaticVariable {
 		if (isTestEnv()) {
 			interpretCount++;
 		}
+		// Uncomment this if you want to track the number of calculation
+		// this.calculatedCount++;
 		// Remember the value
 		try {
 			this.setValue(interpretVTL(this.expression, bindings), iteration);
