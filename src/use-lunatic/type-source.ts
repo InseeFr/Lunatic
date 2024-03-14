@@ -1,7 +1,10 @@
 /**
  * Types used for source data (lunatic models and data.json)
  */
-export type LabelType = { value: string; type: 'VTL' | 'VTL|MD' };
+export type LabelType<T extends 'VTL' | 'VTL|MD' = 'VTL' | 'VTL|MD'> = {
+	value: string;
+	type: T;
+};
 
 export type ValuesType<T = unknown> = {
 	PREVIOUS: T | null;
@@ -252,6 +255,12 @@ export type ComponentSuggesterType = {
 	componentType: 'Suggester';
 	storeName: string;
 	response: ResponseType;
+	// Allow arbitrary option to be selected
+	arbitrary?: {
+		response: { name: string };
+		label: LabelType<'VTL'>;
+		inputLabel: LabelType;
+	};
 	optionResponses: { name: string; attribute: string }[];
 };
 
