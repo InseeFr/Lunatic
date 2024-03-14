@@ -1,10 +1,13 @@
 {
 	"compilerOptions": {
+		/* 
+		* We published in ESM ony because antrl4 is an esm library
+		%	https://github.com/antlr/antlr4/blob/master/doc/javascript-target.md#what-about-modules 
+		* Take care if you need some assets to add them in dist
+		*/
 		"target": "ESNext",
 		"useDefineForClassFields": true,
-		"lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
-		"allowJs": false,
-		"checkJs": false,
+		"lib": ["DOM", "ESNext"],
 		"skipLibCheck": true,
 		"esModuleInterop": false,
 		"allowSyntheticDefaultImports": true,
