@@ -56,7 +56,7 @@ describe('page-navigation', () => {
 				maxPage: 3,
 				iteration: undefined,
 			};
-			expect(getNextPager(pager).page).toEqual('2');
+			expect(getNextPager(pager).page).toEqual(2);
 		});
 		it('should stop at the last page', () => {
 			const pager = {
@@ -64,7 +64,7 @@ describe('page-navigation', () => {
 				maxPage: 3,
 				iteration: undefined,
 			};
-			expect(getNextPager(pager).page).toEqual('3');
+			expect(getNextPager(pager).page).toEqual(3);
 		});
 	});
 
@@ -107,7 +107,7 @@ describe('page-navigation', () => {
 			expect(getPrevPager(pager)).toEqual({
 				...pager,
 				...reset,
-				page: '1',
+				page: 1,
 			});
 			expect(getPrevPager(pager, 'Roundabout')).toEqual({
 				...pager,
@@ -126,7 +126,7 @@ describe('page-navigation', () => {
 				maxPage: 3,
 				iteration: undefined,
 			};
-			expect(getPrevPager(pager).page).toEqual('1');
+			expect(getPrevPager(pager).page).toEqual(1);
 		});
 		it('should stop at the first page', () => {
 			const pager = {
@@ -134,7 +134,7 @@ describe('page-navigation', () => {
 				maxPage: 3,
 				iteration: undefined,
 			};
-			expect(getPrevPager(pager).page).toEqual('1');
+			expect(getPrevPager(pager).page).toEqual(1);
 		});
 	});
 });
