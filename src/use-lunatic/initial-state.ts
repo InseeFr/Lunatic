@@ -20,8 +20,8 @@ const INITIAL_STATE: LunaticState = {
 	resizing: {},
 	overview: [],
 	pager: {
-		page: '1',
-		maxPage: '1',
+		page: 1,
+		maxPage: 1,
 		subPage: undefined,
 		nbSubPages: undefined,
 		iteration: undefined,

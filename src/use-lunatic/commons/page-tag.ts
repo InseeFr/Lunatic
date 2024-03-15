@@ -1,9 +1,9 @@
-import type { LunaticState } from '../type';
+import type { LunaticState, PageTag } from '../type';
 
 /**
  * Generate page name from the pager
  */
-export function getPageTag(pager: LunaticState['pager']): string {
+export function getPageTag(pager: LunaticState['pager']): PageTag {
 	const { page, subPage, iteration } = pager;
 	if (subPage !== undefined && iteration !== undefined) {
 		return `${page}.${subPage + 1}#${iteration + 1}`;
@@ -12,10 +12,13 @@ export function getPageTag(pager: LunaticState['pager']): string {
 	return `${page}`;
 }
 
-export function getPagerFromPageTag(pageTag: string = '1') {
+export function getPagerFromPageTag(pageTag: string | number = 1) {
+	if (typeof pageTag === 'number') {
+		return { page: pageTag };
+	}
 	const pattern =
 		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?/g;
-	const match = [...(pageTag?.matchAll(pattern) as any)] as
+	const match = [...(pageTag?.toString().matchAll(pattern) as any)] as
 		| [
 				{
 					groups: {
@@ -34,8 +37,11 @@ export function getPagerFromPageTag(pageTag: string = '1') {
 			groups: { page, subPagePlusUn, iterationPlusUn },
 		},
 	] = match;
+	if (!subPagePlusUn) {
+		return { page: parseInt(page, 10) };
+	}
 	return {
-		page,
+		page: parseInt(page, 10),
 		subPage: parseInt(subPagePlusUn, 10) - 1,
 		iteration: parseInt(iterationPlusUn, 10) - 1,
 	};
@@ -49,19 +55,23 @@ export function isNewReachedPage(pager: LunaticState['pager']): boolean {
 		return false;
 	}
 
-	return (
-		Number.parseInt(page) > Number.parseInt(reachedPager.page.toString()) ||
-		(Number.parseInt(page) === Number.parseInt(reachedPager.page.toString()) &&
-			Number.parseInt(subPage?.toString() ?? '-1') >
-				Number.parseInt(reachedPager.subPage.toString()) &&
-			Number.parseInt(iteration?.toString() ?? '-1') ===
-				Number.parseInt(reachedPager.iteration.toString())) ||
-		(Number.parseInt(page) === Number.parseInt(reachedPager.page.toString()) &&
-			Number.parseInt(iteration?.toString() ?? '-1') >
-				Number.parseInt(reachedPager.iteration.toString()))
-	);
+	if (page > reachedPager.page) {
+		return true;
+	}
+
+	if ((subPage ?? 0) > (reachedPager.subPage ?? 0)) {
+		return true;
+	}
+
+	if ((iteration ?? 0) > (reachedPager.iteration ?? 0)) {
+		return true;
+	}
+
+	return false;
 }
 
-export function getNewReachedPage(pager: LunaticState['pager']) {
+export function getNewReachedPage(
+	pager: LunaticState['pager']
+): PageTag | undefined {
 	return isNewReachedPage(pager) ? getPageTag(pager) : pager.lastReachedPage;
 }

@@ -10,7 +10,7 @@ export default function clearPager(
 	return {
 		maxPage,
 		lastReachedPage,
-		page: '1',
+		page: 1,
 		subPage: undefined,
 		nbSubPages: undefined,
 		iteration: undefined,

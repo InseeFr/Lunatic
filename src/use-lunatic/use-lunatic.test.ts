@@ -7,7 +7,7 @@ import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
-import type { LunaticData } from './type';
+import type { LunaticData, PageTag } from './type';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {
@@ -38,18 +38,18 @@ describe('use-lunatic()', () => {
 
 	it('should initialize correctly', () => {
 		const { result } = renderHook(() => useLunatic(...defaultParams));
-		expect(result.current.pager.page).toBe('1');
+		expect(result.current.pager.page).toBe(1);
 		expect(result.current.pager.lastReachedPage).toBe('1');
-		expect(result.current.pager.maxPage).toBe('41');
+		expect(result.current.pager.maxPage).toBe(41);
 	});
 	it('should go to the next page correcly', () => {
 		const { result } = renderHook(() => useLunatic(...defaultParams));
-		expect(result.current.pager.page).toBe('1');
+		expect(result.current.pager.page).toBe(1);
 		expect(result.current.pager.lastReachedPage).toBe('1');
 		act(() => {
 			result.current.goNextPage();
 		});
-		expect(result.current.pager.page).toBe('2');
+		expect(result.current.pager.page).toBe(2);
 		expect(result.current.pager.lastReachedPage).toBe('2');
 	});
 	it('should jump to a specific page', () => {
@@ -69,7 +69,7 @@ describe('use-lunatic()', () => {
 		expect(result.current.pager.lastReachedPage).toBe('35.1#1');
 		expect(result.current.pager.iteration).toBe(0);
 		expect(result.current.pager.subPage).toBe(0);
-		expect(result.current.pager.page).toBe('35');
+		expect(result.current.pager.page).toBe(35);
 		expect(components[0].id).toBe('kiq5xw5p');
 	});
 
@@ -88,7 +88,7 @@ describe('use-lunatic()', () => {
 		const lunaticConfigurationWithoutOverview = {
 			management: false,
 			activeControls: false,
-			initialPage: '1',
+			initialPage: '1' as PageTag,
 			getStoreInfo: () => {},
 			missing: false,
 			shortcut: false,

@@ -5,8 +5,8 @@ import type { LunaticState } from '../type';
 describe('page-navigation', () => {
 	describe('getNextPager', () => {
 		const base = {
-			page: '2',
-			maxPage: '3',
+			page: 2,
+			maxPage: 3,
 			subPage: 0,
 			nbSubPages: 3,
 			iteration: 0,
@@ -42,36 +42,36 @@ describe('page-navigation', () => {
 			expect(getNextPager(pager)).toEqual({
 				...pager,
 				...reset,
-				page: '3',
+				page: 3,
 			});
 			expect(getNextPager(pager, 'Roundabout')).toEqual({
 				...pager,
 				...reset,
-				page: '2',
+				page: 2,
 			});
 		});
 		it('should navigate on simple page without iteration', () => {
 			const pager = {
-				page: '1',
-				maxPage: '3',
+				page: 1,
+				maxPage: 3,
 				iteration: undefined,
 			};
-			expect(getNextPager(pager).page).toEqual('2');
+			expect(getNextPager(pager).page).toEqual(2);
 		});
 		it('should stop at the last page', () => {
 			const pager = {
-				page: '3',
-				maxPage: '3',
+				page: 3,
+				maxPage: 3,
 				iteration: undefined,
 			};
-			expect(getNextPager(pager).page).toEqual('3');
+			expect(getNextPager(pager).page).toEqual(3);
 		});
 	});
 
 	describe('getPrevPager', () => {
 		const base = {
-			page: '2',
-			maxPage: '3',
+			page: 2,
+			maxPage: 3,
 			subPage: 2,
 			nbSubPages: 3,
 			iteration: 1,
@@ -107,34 +107,34 @@ describe('page-navigation', () => {
 			expect(getPrevPager(pager)).toEqual({
 				...pager,
 				...reset,
-				page: '1',
+				page: 1,
 			});
 			expect(getPrevPager(pager, 'Roundabout')).toEqual({
 				...pager,
 				...reset,
-				page: '2',
+				page: 2,
 			});
 			expect(getPrevPager({ ...pager, iteration: 1 }, 'Roundabout')).toEqual({
 				...pager,
 				...reset,
-				page: '2',
+				page: 2,
 			});
 		});
 		it('should navigate on simple page without iteration', () => {
 			const pager = {
-				page: '2',
-				maxPage: '3',
+				page: 2,
+				maxPage: 3,
 				iteration: undefined,
 			};
-			expect(getPrevPager(pager).page).toEqual('1');
+			expect(getPrevPager(pager).page).toEqual(1);
 		});
 		it('should stop at the first page', () => {
 			const pager = {
-				page: '1',
-				maxPage: '3',
+				page: 1,
+				maxPage: 3,
 				iteration: undefined,
 			};
-			expect(getPrevPager(pager).page).toEqual('1');
+			expect(getPrevPager(pager).page).toEqual(1);
 		});
 	});
 });

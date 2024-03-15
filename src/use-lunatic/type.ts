@@ -41,6 +41,8 @@ export type LunaticExpression = {
 };
 export type TODO = unknown; // Temporary type to mark types as unresolved
 
+export type PageTag = `${number}.${number}#${number}` | `${number}`;
+
 export type LunaticVariable = Variable;
 export type LunaticCollectedValue = Partial<{
 	COLLECTED: unknown;
@@ -120,10 +122,10 @@ export type LunaticState = {
 	};
 	overview: LunaticOverviewItem[];
 	pager: {
-		lastReachedPage?: string;
-		maxPage: string;
+		lastReachedPage?: PageTag;
+		maxPage: number;
 		nbSubPages?: number;
-		page: string;
+		page: number;
 		subPage?: number;
 		// Iteration index (starting at 0)
 		iteration?: number;
@@ -170,7 +172,7 @@ export type LunaticState = {
 	// TODO : Explain this
 	management?: boolean;
 	goToPage: (page: {
-		page: string;
+		page: PageTag | number;
 		iteration?: number;
 		nbIterations?: number;
 		subPage?: number;

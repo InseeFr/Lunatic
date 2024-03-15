@@ -15,7 +15,7 @@ import { forceInt } from '../../utils/number';
  */
 function fillLoopState(
 	state: LunaticState,
-	initialPager: { page: string; subPage: number; iteration: number } | null
+	initialPager: { page: number; subPage?: number; iteration?: number } | null
 ): LunaticState {
 	const { pager, pages } = state;
 	const { page } = pager;
@@ -71,8 +71,8 @@ function reduceOnInit(state: LunaticState, action: ActionInit) {
 	const initialPager = getPagerFromPageTag(initialPage);
 
 	const pager = {
-		page: initialPager?.page ?? '1',
-		maxPage: maxPage,
+		page: initialPager?.page ?? 1,
+		maxPage: parseInt(maxPage, 10),
 		subPage: undefined,
 		nbSubPages: undefined,
 		iteration: undefined,
