@@ -84,6 +84,7 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentTableType)
 	| (ComponentTypeBase & ComponentNumberType)
 	| (ComponentTypeBase & ComponentDatePickerType)
+	| (ComponentTypeBase & ComponentDurationType)
 	| (ComponentTypeBase & ComponentCheckboxGroupType)
 	| (ComponentTypeBase & ComponentCheckboxBooleanType)
 	| (ComponentTypeBase & ComponentRadioType)
@@ -178,6 +179,12 @@ export type ComponentDatePickerType = {
 	response: ResponseType;
 	min?: string;
 	max?: string;
+};
+
+export type ComponentDurationType = {
+	componentType: 'Duration';
+	format: 'PnYnM' | 'PTnHnM';
+	response: ResponseType;
 };
 
 export type ComponentCheckboxGroupType = {
