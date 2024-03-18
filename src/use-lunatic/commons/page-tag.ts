@@ -14,26 +14,20 @@ export function getPageTag(pager: LunaticState['pager']): string {
 
 export function getPagerFromPageTag(pageTag: string = '1') {
 	const pattern =
-		/(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?/g;
-	const match = [...(pageTag?.matchAll(pattern) as any)] as
-		| [
-				{
-					groups: {
-						page: string;
-						subPagePlusUn: string;
-						iterationPlusUn: string;
-					};
-				},
-		  ]
-		| [];
-	if (match.length === 0) {
+		/^(?<page>\d+)\.?(?<subPagePlusUn>\d+)?#?(?<iterationPlusUn>\d+)?$/;
+	const match = pageTag?.match(pattern) as {
+		groups: {
+			page: string;
+			subPagePlusUn: string;
+			iterationPlusUn: string;
+		};
+	} | null;
+	if (!match) {
 		return null;
 	}
-	const [
-		{
-			groups: { page, subPagePlusUn, iterationPlusUn },
-		},
-	] = match;
+	const {
+		groups: { page, subPagePlusUn, iterationPlusUn },
+	} = match;
 	return {
 		page,
 		subPage: parseInt(subPagePlusUn, 10) - 1,
