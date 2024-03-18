@@ -17,12 +17,14 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 		className = 'lunatic-radio-group',
 		disabled,
 		readOnly,
+		description,
 	} = props;
 	return (
 		<RadioGroup
 			id={id}
 			options={options}
 			value={value}
+			description={description}
 			onSelect={(v) => handleChange(response, v)}
 			checkboxStyle={checkboxStyle}
 			errors={getComponentErrors(errors, id)}
