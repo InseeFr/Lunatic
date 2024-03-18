@@ -8,7 +8,7 @@ export type DurationValue = {
 export type Formats = 'PTnHnM' | 'PnYnM';
 
 export const propsByUnit = {
-	hours: { min: 0, max: 23, size: 2, style: { width: '2.5em' } },
+	hours: { min: 0, max: 99, size: 2, style: { width: '2.5em' } },
 	minutes: { min: 0, max: 59, size: 2, style: { width: '2.5em' } },
 	months: { min: 0, max: 11, size: 2, style: { width: '2.5em' } },
 	years: { min: 0, size: 4, style: { width: '4em' } },
