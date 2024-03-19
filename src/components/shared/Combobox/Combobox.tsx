@@ -34,6 +34,7 @@ type Props = ComboboxSelectionProps &
 		onBlur?: () => void;
 		options: ComboboxOptionType[];
 		readOnly?: boolean;
+		isLoading?: boolean;
 	};
 
 function LunaticComboBox({
@@ -52,16 +53,16 @@ function LunaticComboBox({
 	value,
 	options,
 	messageError,
-	search: searchProps = EMPTY_SEARCH,
+	search = EMPTY_SEARCH,
 	getOptionValue = getDefaultOptionValue,
 	label,
 	description,
 	errors,
 	onBlur,
+	isLoading,
 }: Props) {
 	const [expanded, setExpanded] = useState(false);
 	const [focused, setFocused] = useState(false);
-	const [search, setSearch] = useState(searchProps ?? '');
 	const selectedIndex = getIndexFromOptions(options, value, getOptionValue);
 
 	const labelId = `label-${id}`;
@@ -93,12 +94,10 @@ function LunaticComboBox({
 	};
 
 	const handleChange = (s: string | null) => {
-		setSearch(s ?? '');
 		onChange?.(s);
 	};
 
 	const handleClear = () => {
-		setSearch('');
 		setExpanded(false);
 		onChange?.(EMPTY_SEARCH);
 		onSelect(null);
@@ -172,6 +171,7 @@ function LunaticComboBox({
 					invalid={!!errors}
 				/>
 				<ComboboxPanel
+					isLoading={isLoading}
 					optionRenderer={optionRenderer}
 					options={options}
 					focused={focused}

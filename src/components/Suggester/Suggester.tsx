@@ -1,15 +1,10 @@
-import { type ReactNode, useMemo, useRef } from 'react';
+import { type ReactNode, useMemo, useState } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { CustomSuggester } from './CustomSuggester';
-import { createSearching } from './helpers';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+import { OTHER_VALUE, useSuggestions } from './useSuggestions';
+import D from '../../i18n';
 import type { SuggesterOptionType } from './SuggesterType';
-import { SuggesterNotification } from './SuggesterNotification';
-import { SuggesterStatus } from '../../use-lunatic/use-suggesters';
-import { Input } from '../Input/Input';
-
-type SearchResult = { results: SuggesterOptionType[]; search: string };
-const OTHER_VALUE = 'OTHER';
 
 export function Suggester({
 	storeName,
@@ -33,28 +28,62 @@ export function Suggester({
 	iteration,
 	arbitrary,
 }: LunaticComponentProps<'Suggester'>) {
-	const { status: suggesterStatus } = getSuggesterStatus(storeName);
-	// Remember the last search done before the suggester is loaded
-	const lastSearch =
-		useRef<[search: string | null, (v: SearchResult) => void]>();
-	const isReady = suggesterStatus === SuggesterStatus.success;
-	const isError = suggesterStatus === SuggesterStatus.error;
 	const arbitraryValue = arbitrary?.response
-		? executeExpression(arbitrary.response.name, {
+		? executeExpression<string>(arbitrary.response.name, {
 				iteration,
 			})
 		: null;
-
-	const onChange = (
-		v: string | null | { id?: string; [key: string]: ReactNode }
-	) => {
-		if (v && typeof v === 'object' && optionResponses) {
-			if (v.id) {
-				handleChange(response, v.id);
+	// Default options should not change between render
+	// so we can break the rule of hooks here
+	const [selectedOptions, setSelectedOptions] = useState<SuggesterOptionType[]>(
+		() => {
+			if (!value) {
+				return [];
 			}
-			if (arbitrary && v.id !== OTHER_VALUE && arbitraryValue) {
+			if (arbitraryValue) {
+				return [{ id: 'OTHER', label: arbitraryValue, value: 'OTHER' }];
+			}
+			const labelResponse = optionResponses?.find(
+				(o) => o.attribute === 'label'
+			);
+			if (!labelResponse) {
+				return [{ id: value, label: value, value: value }];
+			}
+			const label = executeExpression(labelResponse.name, {
+				iteration,
+			});
+			if (typeof label !== 'string') {
+				return [{ id: value, label: value, value: value }];
+			}
+			return [
+				{
+					id: value,
+					label: label,
+					value: value,
+				},
+			];
+		}
+	);
+
+	const { state, options, search, setSearch, resetOptions } = useSuggestions({
+		indexStatus: getSuggesterStatus(storeName).status,
+		storeName: storeName,
+		idbVersion: idbVersion,
+		workersBasePath: workersBasePath,
+		allowArbitrary: !!arbitrary,
+		selectedOptions: selectedOptions,
+	});
+
+	const onChange = (v: SuggesterOptionType | null) => {
+		setSelectedOptions(v?.id ? [v] : []);
+		setSearch(v?.label ?? '');
+		// User has selected an option
+		if (v?.id && v.id !== OTHER_VALUE) {
+			handleChange(response, v.id);
+			if (arbitrary) {
 				handleChange(arbitrary.response, null);
 			}
+			// Update additional responses
 			for (const optionResponse of optionResponses) {
 				if (optionResponse.attribute in v) {
 					handleChange(
@@ -63,114 +92,51 @@ export function Suggester({
 					);
 				}
 			}
-		} else {
-			handleChange(response, v as string | null);
-			if (arbitrary && v !== OTHER_VALUE && arbitraryValue) {
-				handleChange(arbitrary.response, null);
-			}
+			return;
+		}
+		// User chose an arbitrary option or clear the value
+		handleChange(arbitrary.response, v?.id === OTHER_VALUE ? search : null);
+		handleChange(response, null);
+		for (const optionResponse of optionResponses) {
+			handleChange({ name: optionResponse.name }, null);
 		}
 	};
 
-	const searching = useMemo(
-		function () {
-			if (!isReady) {
-				// While waiting for the search to be ready, remember the last search done
-				return (name: string | null) => {
-					return new Promise<SearchResult>((resolve) => {
-						lastSearch.current = [name, resolve];
-					});
-				};
-			}
-			const searching = createSearching(storeName, idbVersion, workersBasePath);
-			// Solve the last pending search
-			const pendingSearch = lastSearch.current;
-			if (pendingSearch && pendingSearch[0]) {
-				searching(pendingSearch[0]).then((r) => pendingSearch[1](r));
-				lastSearch.current = undefined;
-			}
-			return (q: string | null) => {
-				return searching(q).then((r) => ({
-					...r,
-					results: [...r.results, ...arbitraryOptions],
-				}));
-			};
-		},
-		[isReady, storeName, idbVersion, workersBasePath]
-	);
-
-	const arbitraryOptions = arbitrary
-		? [
-				{
-					id: OTHER_VALUE,
-					label: arbitrary.label,
-					value: OTHER_VALUE,
-				},
-			]
-		: [];
-
-	// Default options should not change between render
-	// so we can break the rule of hooks here
-	const defaultOptions = useMemo(() => {
-		if (!value) {
-			return [...arbitraryOptions];
-		}
-		const labelResponse = optionResponses?.find((o) => o.attribute === 'label');
-		if (!labelResponse) {
-			return [{ id: value, label: value, value: value }, ...arbitraryOptions];
-		}
-		const label = executeExpression(labelResponse.name, {
-			iteration,
+	let componentErrors = getComponentErrors(errors, id) ?? [];
+	if (state === 'error') {
+		componentErrors.push({
+			id: 'suggester',
+			errorMessage: D.SUGGESTER_ERROR,
+			criticality: 'ERROR',
+			typeOfControl: 'FORMAT',
 		});
-		if (typeof label !== 'string') {
-			return [{ id: value, label: value, value: value }, ...arbitraryOptions];
-		}
-		return [
-			{
-				id: value,
-				label: label,
-				value: value,
-			},
-			...arbitraryOptions,
-		];
-	}, []);
-
-	if (isError) {
-		return (
-			<SuggesterNotification
-				status="Error"
-				storeName={storeName}
-				label={label}
-				description={description}
-			/>
-		);
 	}
 
+	const handleSearch = (query: string) => {
+		if (query === '' && selectedOptions.length > 0) {
+			onChange(null);
+		}
+		setSearch(query);
+	};
+
 	return (
-		<>
-			<CustomSuggester
-				id={id}
-				className={className}
-				optionRenderer={optionRenderer}
-				labelRenderer={labelRenderer}
-				defaultOptions={defaultOptions}
-				onSelect={onChange}
-				searching={searching}
-				disabled={disabled}
-				readOnly={readOnly}
-				value={value}
-				label={label}
-				description={description}
-				errors={getComponentErrors(errors, id)}
-			/>
-			{value === OTHER_VALUE && (
-				<Input
-					id={`arbitrary-${id}`}
-					handleChange={handleChange}
-					value={executeExpression(arbitrary.response.name)}
-					label={arbitrary.inputLabel}
-					response={arbitrary.response}
-				/>
-			)}
-		</>
+		<CustomSuggester
+			state={state}
+			id={id}
+			className={className}
+			optionRenderer={optionRenderer}
+			labelRenderer={labelRenderer}
+			options={options}
+			onSelect={onChange}
+			search={search}
+			onSearch={handleSearch}
+			disabled={disabled}
+			readOnly={readOnly}
+			value={selectedOptions}
+			label={label}
+			onBlur={resetOptions}
+			description={description}
+			errors={componentErrors}
+		/>
 	);
 }

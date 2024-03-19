@@ -5,6 +5,7 @@ import { getReferentiel } from '../utils/referentiel';
 import source from './source';
 import sourceOptionResponses from './source-option-responses';
 import sourceArbitraryResponse from './source-arbitrary-response.json';
+import sourceError from './source-error.json';
 
 const stories = {
 	title: 'Components/Suggester',
@@ -46,6 +47,15 @@ export const ArbitraryResponse = Template.bind({});
 ArbitraryResponse.args = {
 	id: 'suggester-with-option',
 	source: sourceArbitraryResponse,
+	getReferentiel: getFakeReferentiel,
+	autoSuggesterLoading: true,
+	pagination: true,
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+	id: 'suggester-error',
+	source: sourceError,
 	getReferentiel: getFakeReferentiel,
 	autoSuggesterLoading: true,
 	pagination: true,

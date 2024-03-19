@@ -6,6 +6,22 @@ const dictionary = {
 	DK: { fr: 'Ne sais pas', en: "Don't know" },
 	RF: { fr: 'Refus', en: 'Refused' },
 	PLACEHOLDER: { fr: 'Commencez votre saisie...', en: 'Start typing...' },
+	SUGGESTER_LOADING: {
+		fr: 'Liste en cours de chargement',
+		en: 'List is loading',
+	},
+	SUGGESTER_NO_RESULT: {
+		fr: 'Aucun résultat trouvé',
+		en: 'No results',
+	},
+	SUGGESTER_ERROR: {
+		fr: 'Erreur lors du chargement de la liste',
+		en: 'An error has occured while loading the list',
+	},
+	SUGGESTER_ARBITRARY: {
+		fr: 'Choisir',
+		en: 'Select',
+	},
 } as const;
 
 export default dictionary;
