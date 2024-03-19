@@ -258,8 +258,6 @@ export type ComponentSuggesterType = {
 	// Allow arbitrary option to be selected
 	arbitrary?: {
 		response: { name: string };
-		label: LabelType<'VTL'>;
-		inputLabel: LabelType;
 	};
 	optionResponses: { name: string; attribute: string }[];
 };
