@@ -46,7 +46,7 @@
 		"test:e2e:codegen": "playwright codegen http://localhost:9999/iframe.html?viewMode=story&id=",
 		"test:storybook": "test-storybook --url http://localhost:9999 --maxWorkers=4 --no-cache",
 		"test-watch": "vitest",
-		"check": "tsc",
+		"check": "tsc --noEmit",
 		"lint": "eslint ./src",
 		"lint:check": "eslint . --ext .ts,.tsx",
 		"_format": "prettier **/*.{ts,tsx,json}",
@@ -56,7 +56,7 @@
 		"build-workers": "node ./scripts/build/build-workers.js",
 		"prepare-workers": "npm run build-workers && node ./scripts/build/add-workers-to-public.js",
 		"postinstall": "node ./scripts/build/add-workers-to-public.js",
-		"build": "tsc --project tsconfig.prod.json && sass ./src/css/main.scss ./lib/main.css && cp -R ./src/css/icons ./lib/icons && npm run build-workers",
+		"build": "tsc && sass ./src/css/main.scss ./lib/main.css && cp -R ./src/css/icons ./lib/icons && npm run build-workers",
 		"storybook": "npm run prepare-workers && storybook dev -p 9999 --no-open",
 		"build-storybook": "npm run prepare-workers && storybook build"
 	},
