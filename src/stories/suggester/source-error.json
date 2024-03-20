@@ -39,7 +39,7 @@
 				}
 			],
 			"arbitrary": {
-				"response": {"name": "PRODUCT_OTHER"},
+				"response": { "name": "PRODUCT_OTHER" },
 				"label": {
 					"value": "\"Mon pays n'est pas dans la liste\"",
 					"type": "VTL"
