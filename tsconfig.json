@@ -17,9 +17,13 @@
 		"moduleResolution": "Node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"noEmit": true,
+		"declaration": true,
+		"sourceMap": true,
+		"noEmitOnError": true,
+		"outDir": "lib",
 		"jsx": "react-jsx",
 		"verbatimModuleSyntax": true
 	},
-	"include": ["src"]
+	"include": ["src"],
+	"exclude": ["src/storires"]
 }
