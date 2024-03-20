@@ -27,21 +27,17 @@ export function Suggester({
 	executeExpression,
 	iteration,
 	arbitrary,
+	arbitraryValue,
 }: LunaticComponentProps<'Suggester'>) {
-	const arbitraryValue = arbitrary?.response
-		? executeExpression<string>(arbitrary.response.name, {
-				iteration,
-			})
-		: null;
 	// Default options should not change between render
 	// so we can break the rule of hooks here
 	const [selectedOptions, setSelectedOptions] = useState<SuggesterOptionType[]>(
 		() => {
-			if (!value) {
-				return [];
-			}
 			if (arbitraryValue) {
 				return [{ id: 'OTHER', label: arbitraryValue, value: 'OTHER' }];
+			}
+			if (!value) {
+				return [];
 			}
 			const labelResponse = optionResponses?.find(
 				(o) => o.attribute === 'label'
@@ -65,18 +61,19 @@ export function Suggester({
 		}
 	);
 
-	const { state, options, search, setSearch, resetOptions } = useSuggestions({
-		indexStatus: getSuggesterStatus(storeName).status,
-		storeName: storeName,
-		idbVersion: idbVersion,
-		workersBasePath: workersBasePath,
-		allowArbitrary: !!arbitrary,
-		selectedOptions: selectedOptions,
-	});
+	const { state, options, search, setSearch, onFocus, onBlur } = useSuggestions(
+		{
+			indexStatus: getSuggesterStatus(storeName).status,
+			storeName: storeName,
+			idbVersion: idbVersion,
+			workersBasePath: workersBasePath,
+			allowArbitrary: !!arbitrary,
+			selectedOptions: selectedOptions,
+		}
+	);
 
 	const onChange = (v: SuggesterOptionType | null) => {
 		setSelectedOptions(v?.id ? [v] : []);
-		setSearch(v?.label ?? '');
 		// User has selected an option
 		if (v?.id && v.id !== OTHER_VALUE) {
 			handleChange(response, v.id);
@@ -128,13 +125,14 @@ export function Suggester({
 			labelRenderer={labelRenderer}
 			options={options}
 			onSelect={onChange}
+			onFocus={onFocus}
 			search={search}
 			onSearch={handleSearch}
 			disabled={disabled}
 			readOnly={readOnly}
 			value={selectedOptions}
 			label={label}
-			onBlur={resetOptions}
+			onBlur={onBlur}
 			description={description}
 			errors={componentErrors}
 		/>

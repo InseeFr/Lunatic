@@ -76,15 +76,18 @@ export function useSuggestions({
 		300
 	);
 
-	const arbitraryOption = {
-		id: OTHER_VALUE,
-		label: search,
-		value: OTHER_VALUE,
-	};
-
 	if (search && allowArbitrary && options.length === 0 && state === 'success') {
-		options = [arbitraryOption];
+		options = [
+			{
+				id: OTHER_VALUE,
+				label: search,
+				value: OTHER_VALUE,
+			},
+		];
 	}
+
+	// Since the underlying implementation of onFocus / onBlur can be wrong, ensure we don't call focus / blur handler multiple times
+	const [isFocused, setFocused] = useState(false);
 
 	return {
 		search,
@@ -92,13 +95,27 @@ export function useSuggestions({
 			if (state === 'error') {
 				return;
 			}
-			setSearch(s);
 			setState('loading');
+			setSearch(s);
 		},
 		state,
-		options: useMemo(() => options, [options]),
-		resetOptions: () => {
+		options: isFocused ? options : selectedOptions,
+		onBlur: () => {
+			// Prevent extra calls
+			if (!isFocused) {
+				return;
+			}
+			setFocused(false);
+			setSearch('');
 			setOptions(selectedOptions);
+		},
+		onFocus: () => {
+			// Prevent extra calls
+			if (isFocused) {
+				return;
+			}
+			setFocused(true);
+			setSearch(selectedOptions[0]?.label ?? '');
 		},
 	};
 }

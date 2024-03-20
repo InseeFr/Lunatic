@@ -13,6 +13,7 @@ type Props = {
 	placeholder?: string;
 	onSelect: (option: SuggesterOptionType | null) => void;
 	onBlur: () => void;
+	onFocus: () => void;
 	value: { id?: string; [key: string]: ReactNode }[];
 	labelRenderer: LunaticComponentProps<'Suggester'>['labelRenderer'];
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
@@ -49,6 +50,7 @@ export const CustomSuggester = slottableComponent<Props>(
 		onSearch,
 		onBlur,
 		state,
+		onFocus,
 	}) => {
 		const handleSelect = useCallback(
 			(id: string | null) => {
@@ -69,6 +71,7 @@ export const CustomSuggester = slottableComponent<Props>(
 				options={options}
 				editable={true}
 				onBlur={onBlur}
+				onFocus={onFocus}
 				onSelect={handleSelect}
 				value={value[0]?.id ?? ''}
 				search={search}

@@ -225,9 +225,9 @@ type ComponentPropsByType = {
 		optionResponses?: { name: string; attribute: string }[];
 		arbitrary: {
 			response: { name: string };
-			label: string;
-			inputLabel: ReactNode;
 		};
+		arbitraryValue?: string;
+		allowArbitrary?: boolean;
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};
