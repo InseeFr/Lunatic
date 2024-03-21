@@ -1,4 +1,4 @@
-import { type ReactNode, useMemo, useState } from 'react';
+import { useState } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { CustomSuggester } from './CustomSuggester';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
