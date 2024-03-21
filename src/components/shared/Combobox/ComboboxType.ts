@@ -49,5 +49,6 @@ export type ComboboxPanelProps = {
 	expanded?: boolean;
 	id?: string;
 	search?: string;
+	isLoading?: boolean;
 	onSelect: (value: string) => void;
 };

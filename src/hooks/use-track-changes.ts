@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { useRefSync } from './use-ref-sync';
+import { useRefSync } from './useRefSync';
 import type {
 	LunaticVariablesStore,
 	LunaticVariablesStoreEvent,

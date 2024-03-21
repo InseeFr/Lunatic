@@ -56,11 +56,22 @@
 					"declarationType": "INSTRUCTION",
 					"position": "BEFORE_QUESTION_TEXT",
 					"label": {
-						"value": "\"Démontre la capacité d'un suggester à extraire plusieurs réponse à partir des propriétés du référentiel\"",
+						"value": "\"Démontre la capacité d'un suggester à accepter une option arbitraire\"",
 						"type": "VTL|MD"
 					}
 				}
 			],
+			"arbitrary": {
+				"response": { "name": "PRODUCT_OTHER" },
+				"label": {
+					"value": "\"Mon pays n'est pas dans la liste\"",
+					"type": "VTL"
+				},
+				"inputLabel": {
+					"value": "\"Entrez votre pays de résidence\"",
+					"type": "VTL"
+				}
+			},
 			"mandatory": false,
 			"maxLength": 249
 		},
@@ -140,6 +151,17 @@
 				"PREVIOUS": null
 			},
 			"name": "PRODUCT_PRICE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "PRODUCT_OTHER"
 		},
 		{
 			"variableType": "COLLECTED",

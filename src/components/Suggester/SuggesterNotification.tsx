@@ -1,25 +1,22 @@
-import React, { type PropsWithChildren, type ReactNode } from 'react';
-import { STATUS } from './SuggesterStatus';
+import { type ReactNode } from 'react';
 import { Notification } from '../shared/Notification';
-import { SuggesterStatus } from '../../use-lunatic/use-suggesters';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Label } from '../shared/Label/Label';
 
-type Props = PropsWithChildren<{
-	status: SuggesterStatus;
+type Props = {
+	status: 'Error' | 'Idle';
 	storeName: string;
 	label?: ReactNode;
 	description?: ReactNode;
-}>;
+};
 
 function LunaticSuggesterNotification({
-	children,
 	status,
 	storeName,
 	label,
 	description,
 }: Props) {
-	if (status === STATUS.idle || status === STATUS.pending) {
+	if (status === 'Idle') {
 		return (
 			<>
 				<Label description={description}>{label}</Label>
@@ -31,7 +28,7 @@ function LunaticSuggesterNotification({
 			</>
 		);
 	}
-	if (status === STATUS.error) {
+	if (status === 'Error') {
 		return (
 			<>
 				<Label description={description}>{label}</Label>
@@ -43,20 +40,16 @@ function LunaticSuggesterNotification({
 			</>
 		);
 	}
-	if (status === STATUS.unknown) {
-		return (
-			<>
-				<Label description={description}>{label}</Label>
-				<Notification
-					className="warn"
-					title={`Référentiel inconnu`}
-					description={`Le référentiel ${storeName} n'est pas pris en compte par l'application.`}
-				/>
-			</>
-		);
-	}
-
-	return <>{children}</>;
+	return (
+		<>
+			<Label description={description}>{label}</Label>
+			<Notification
+				className="warn"
+				title={`Référentiel inconnu`}
+				description={`Le référentiel ${storeName} n'est pas pris en compte par l'application.`}
+			/>
+		</>
+	);
 }
 
 export const SuggesterNotification = slottableComponent(
