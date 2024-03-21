@@ -30,12 +30,6 @@ exports[`Dropdown > renders without crashing 1`] = `
             toto
           </span>
         </div>
-        <ul
-          aria-label="suggestions"
-          class="lunatic-combo-box-panel"
-          id="lunatic-combo-box-panel-dropdown-list"
-          role="listbox"
-        />
       </div>
     </div>
   </div>
@@ -72,12 +66,6 @@ exports[`Dropdown > should handle readOnly 1`] = `
             toto
           </span>
         </div>
-        <ul
-          aria-label="suggestions"
-          class="lunatic-combo-box-panel"
-          id="lunatic-combo-box-panel-dropdown-list"
-          role="listbox"
-        />
       </div>
     </div>
   </div>
