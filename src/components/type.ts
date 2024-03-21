@@ -87,7 +87,7 @@ type ComponentPropsByType = {
 	Sequence: Pick<
 		LunaticBaseProps<string>,
 		'id' | 'label' | 'style' | 'declarations' | 'description'
-	> & { componentType?: 'InputNumber' };
+	> & { componentType?: 'Sequence' };
 	Subsequence: Pick<
 		LunaticBaseProps<string>,
 		'id' | 'label' | 'declarations'
@@ -130,7 +130,7 @@ type ComponentPropsByType = {
 			rowspan?: number;
 			colspan?: number;
 		}>;
-		body: (FilledLunaticComponentProps & {
+		body: (LunaticComponentProps & {
 			colspan?: number;
 			rowspan?: number;
 		})[][];

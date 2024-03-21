@@ -8,6 +8,7 @@ import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { LunaticData, PageTag } from './type';
+import type { LunaticComponentProps } from '../components/type';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {
@@ -134,8 +135,9 @@ describe('use-lunatic()', () => {
 			expect(result.current.overview[0].children[0].visible).toBe(false);
 			// Simulate a change of value in the form
 			act(() => {
-				const c = result.current.getComponents();
-				c[0].handleChange({ name: 'CADR' }, '3', {});
+				const firstComponent =
+					result.current.getComponents()[0] as LunaticComponentProps<'Input'>;
+				firstComponent.handleChange({ name: 'CADR' }, '3', {});
 				result.current.goNextPage();
 			});
 			// Page '8' should now be visible

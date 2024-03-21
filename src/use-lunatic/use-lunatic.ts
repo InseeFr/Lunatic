@@ -149,8 +149,8 @@ function useLunatic(
 			only,
 			except,
 		}: {
-			only?: LunaticComponentType[];
-			except?: LunaticComponentType[];
+			only?: LunaticComponentProps['componentType'];
+			except?: LunaticComponentProps['componentType'];
 		} = {}) {
 			if (only && except) {
 				throw new Error(
@@ -158,16 +158,14 @@ function useLunatic(
 				);
 			}
 			if (only) {
-				return components.filter((c) =>
-					only.includes(c.componentType)
-				) as LunaticComponentProps[];
+				return components.filter((c) => only.includes(c.componentType ?? ''));
 			}
 			if (except) {
 				return components.filter(
-					(c) => !except.includes(c.componentType)
-				) as LunaticComponentProps[];
+					(c) => !except.includes(c.componentType ?? '')
+				);
 			}
-			return components as LunaticComponentProps[];
+			return components;
 		},
 		[components]
 	);

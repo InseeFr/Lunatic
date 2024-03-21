@@ -1,14 +1,13 @@
 import { useCallback } from 'react';
 import { isObject } from '../../utils/is-object';
-import type { FilledLunaticComponentProps } from '../commons/fill-components/fill-components';
-import type { LunaticComponentDefinition, LunaticState } from '../type';
-import type { ComponentType } from '../type-source';
+import type { LunaticState } from '../type';
+import type { LunaticComponentProps } from '../../components/type';
 
 /**
  * Check if a page has one response (value is filled for at least one field)
  */
 export function usePageHasResponse(
-	components: FilledLunaticComponentProps[],
+	components: LunaticComponentProps[],
 	executeExpression: LunaticState['executeExpression']
 ): () => boolean {
 	return useCallback(() => {
@@ -21,7 +20,7 @@ export function usePageHasResponse(
 			// We assume they are not in the same page has other components
 			if (
 				['PairwiseLinks', 'Roundabout', 'Sequence', 'Subsequence'].includes(
-					component.componentType
+					component.componentType ?? ''
 				)
 			) {
 				return true;
@@ -44,7 +43,7 @@ export function usePageHasResponse(
 						(cell) => isObject(cell) && 'componentType' in cell
 					);
 					return [..._, ...componentsInRow];
-				}, []) as ComponentType[];
+				}, [] as LunaticComponentProps[]);
 				return !isSubComponentsEmpty(childrenComponent, executeExpression);
 			}
 
@@ -90,19 +89,26 @@ function isEmpty(value: unknown): boolean {
  * For complex component we need to inspect child components, interpret the response value
  */
 function isSubComponentsEmpty(
-	components: LunaticComponentDefinition[],
+	components: (
+		| { responses: { response: { name: string } }[] }
+		| { response: { name: string } }
+		| { [key: string]: unknown }
+	)[],
 	executeExpression: LunaticState['executeExpression']
 ): boolean {
 	for (const component of components) {
-		if ('responses' in component) {
+		if ('responses' in component && Array.isArray(component.responses)) {
 			for (const response of component.responses) {
-				if (!isEmpty(executeExpression(response.response.name))) {
+				if (!isEmpty(executeExpression(response.response?.name))) {
 					return false;
 				}
 			}
 		}
 		if (
 			'response' in component &&
+			component.response &&
+			typeof component.response === 'object' &&
+			'name' in component.response &&
 			!isEmpty(executeExpression(component.response.name))
 		) {
 			return false;
