@@ -72,7 +72,7 @@ export function Loop({
 }
 
 type CustomProps = Omit<
-	LunaticComponentProps<'Loop'>,
+	LunaticComponentProps<'RosterForLoop' | 'Loop'>,
 	| 'response'
 	| 'handleChange'
 	| 'errors'

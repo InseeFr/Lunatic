@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { RosterForLoop } from './RosterForLoop';
-import type { FilledLunaticComponentProps } from '../../use-lunatic/commons/fill-components/fill-components';
+import type { LunaticComponentProps } from '../type';
 
 describe('RosterForLoop', () => {
 	const mockOnChange = vi.fn();
@@ -20,7 +20,7 @@ describe('RosterForLoop', () => {
 			},
 			iteration: iteration,
 			value: 'azeaze',
-		} as FilledLunaticComponentProps,
+		} as LunaticComponentProps<'Input'>,
 	];
 
 	it('renders the right number of columns', () => {

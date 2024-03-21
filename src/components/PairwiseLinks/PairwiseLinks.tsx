@@ -4,6 +4,7 @@ import React, { Fragment } from 'react';
 import { LunaticComponents } from '../LunaticComponents';
 import { Declarations } from '../shared/Declarations/Declarations';
 import { Label } from '../shared/Label/Label';
+import type { FilledLunaticComponentProps } from '../../use-lunatic/commons/fill-components/fill-components';
 
 export const PairwiseLinks = ({
 	declarations,
@@ -42,12 +43,18 @@ export const PairwiseLinks = ({
 			{combinations
 				.filter(([x, y]) => x > y)
 				.map(([x, y]) => {
-					let components = getComponents(y, x);
+					const components = getComponents(y, x);
+					const firstComponent = components[0];
+					if (firstComponent.componentType !== 'Dropdown') {
+						return (
+							<div>
+								First child component of a pairwise link must be a dropdown
+							</div>
+						);
+					}
 					return (
 						<Fragment key={`${x}-${y}`}>
-							<PairwiseMirror
-								{...(components[0] as any as LunaticComponentProps<'Dropdown'>)}
-							/>
+							<PairwiseMirror {...firstComponent} />
 							<LunaticComponents
 								components={components.slice(1)}
 								componentProps={(props) => ({

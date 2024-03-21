@@ -49,7 +49,6 @@ export type LunaticBaseProps<ValueType = unknown> = {
 		label: ReactNode;
 	}[];
 	features?: string[];
-	componentType?: string;
 	goNextPage?: () => void;
 	goPreviousPage?: () => void;
 };
@@ -72,31 +71,38 @@ type ComponentPropsByType = {
 		decimals?: number;
 		unit?: string;
 		response: { name: string };
+		componentType?: 'InputNumber';
 	};
 	Duration: LunaticBaseProps<string | null> & {
 		format: Formats;
 		response: { name: string };
+		componentType?: 'Duration';
 	};
 	Input: LunaticBaseProps<string> & {
 		maxLength?: number;
 		value: null | string;
 		response: { name: string };
+		componentType?: 'Input';
 	};
 	Sequence: Pick<
 		LunaticBaseProps<string>,
 		'id' | 'label' | 'style' | 'declarations' | 'description'
-	>;
-	Subsequence: Pick<LunaticBaseProps<string>, 'id' | 'label' | 'declarations'>;
+	> & { componentType?: 'InputNumber' };
+	Subsequence: Pick<
+		LunaticBaseProps<string>,
+		'id' | 'label' | 'declarations'
+	> & { componentType?: 'Subsequence' };
 	Question: Pick<
 		LunaticBaseProps<unknown>,
 		'label' | 'id' | 'description' | 'declarations'
 	> & {
-		components: FilledLunaticComponentProps[];
+		components: LunaticComponentProps[];
+		componentType?: 'Question';
 	};
 	RosterForLoop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations: number;
-		getComponents: (n: number) => FilledLunaticComponentProps[];
+		getComponents: (n: number) => LunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
 		header?: Array<{
@@ -105,15 +111,17 @@ type ComponentPropsByType = {
 			colspan?: number;
 		}>;
 		paginatedLoop?: boolean;
+		componentType?: 'RosterForLoop';
 	};
 	Loop: LunaticBaseProps<unknown> & {
 		lines: { min: number; max: number };
 		iterations: number;
-		getComponents: (n: number) => FilledLunaticComponentProps[];
+		getComponents: (n: number) => LunaticComponentProps[];
 		executeExpression: LunaticState['executeExpression'];
 		value: Record<string, unknown[]>;
 		header?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
+		componentType?: 'Loop';
 	};
 	Table: LunaticBaseProps<unknown> & {
 		value: Record<string, unknown>;
@@ -128,12 +136,14 @@ type ComponentPropsByType = {
 		})[][];
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
+		componentType?: 'Table';
 	};
 	Datepicker: LunaticBaseProps<string | null> & {
 		dateFormat: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY';
 		min?: string;
 		max?: string;
 		response: { name: string };
+		componentType?: 'Datepicker';
 	};
 	CheckboxGroup: LunaticBaseProps<Record<string, boolean | null>> & {
 		responses: Array<{
@@ -147,6 +157,7 @@ type ComponentPropsByType = {
 			value: boolean,
 			args?: Record<string, unknown>
 		) => void;
+		componentType?: 'CheckboxGroup';
 	};
 	CheckboxOne: LunaticBaseProps<string | null> & {
 		options: Array<{
@@ -155,18 +166,22 @@ type ComponentPropsByType = {
 			value: string;
 		}>;
 		response: { name: string };
+		componentType?: 'CheckboxOne';
 	};
 	Switch: LunaticBaseProps<boolean> & {
 		response: { name: string };
 		statusLabel?: { true: string; false: string };
+		componentType?: 'Switch';
 	};
 	CheckboxBoolean: LunaticBaseProps<boolean> & {
 		response: { name: string };
+		componentType?: 'CheckboxBoolean';
 	};
 	Radio: LunaticBaseProps<string | null> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		checkboxStyle?: boolean;
 		response: { name: string };
+		componentType?: 'Radio';
 	};
 	Roundabout: LunaticBaseProps<string> & {
 		iterations: number;
@@ -179,10 +194,12 @@ type ComponentPropsByType = {
 			partial?: Array<boolean>;
 			label?: Array<string>;
 		};
+		componentType?: 'Roundabout';
 	};
 	Dropdown: LunaticBaseProps<string | null> & {
 		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
+		componentType?: 'Dropdown';
 	};
 	Textarea: LunaticBaseProps<string> & {
 		cols?: number;
@@ -190,8 +207,11 @@ type ComponentPropsByType = {
 		maxLength?: number;
 		rows?: number;
 		response: { name: string };
+		componentType?: 'Textarea';
 	};
-	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'>;
+	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'> & {
+		componentType?: 'FilterDescription';
+	};
 	PairwiseLinks: Omit<LunaticBaseProps, 'value'> & {
 		components: LunaticComponentDefinition[];
 		features?: LunaticState['features'];
@@ -200,9 +220,11 @@ type ComponentPropsByType = {
 		yAxisIterations: number;
 		symLinks: Record<string, Record<string, string>>;
 		value: Record<string, unknown[]>;
-		getComponents: (x: number, y: number) => FilledLunaticComponentProps[];
+		getComponents: (x: number, y: number) => LunaticComponentProps[];
+		componentType?: 'PairwiseLinks';
 	};
 	Suggester: LunaticBaseProps<string | null> & {
+		componentType?: 'Suggester';
 		storeName: string;
 		workersBasePath?: string;
 		getSuggesterStatus: (name: string) => {
@@ -227,6 +249,7 @@ type ComponentPropsByType = {
 		iteration: LunaticState['pager']['iteration'];
 	};
 	Summary: LunaticBaseProps<string | null> & {
+		componentType?: 'Summary';
 		executeExpression: LunaticState['executeExpression'];
 		sections: Array<{
 			id: string;

@@ -18,11 +18,13 @@ import {
 	type LunaticSlotComponents,
 	slottableComponent,
 } from './shared/HOC/slottableComponent';
+import type { LunaticComponentProps } from './type';
 
-type Props<T extends FilledLunaticComponentProps, V = unknown> = {
+type Props<T extends LunaticComponentProps, V = unknown> = {
 	// List of components to display (coming from getComponents)
 	components: (
 		| FilledLunaticComponentProps
+		| LunaticComponentProps
 		| ReactElement
 		| { label: string; [key: string]: unknown }
 	)[];
@@ -37,7 +39,7 @@ type Props<T extends FilledLunaticComponentProps, V = unknown> = {
 	// Add additional wrapper around each component
 	wrapper?: (
 		props: PropsWithChildren<
-			FilledLunaticComponentProps & T & V & { index: number }
+			FilledLunaticComponentProps & V & { index: number }
 		>
 	) => ReactNode;
 	// Customized deep components
@@ -55,7 +57,7 @@ const LunaticComponentWrapper = slottableComponent(
  * Entry point for orchestrators, this component display the list of fields
  */
 export function LunaticComponents<
-	T extends FilledLunaticComponentProps,
+	T extends LunaticComponentProps,
 	V = undefined,
 >({
 	components,

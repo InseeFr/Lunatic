@@ -8,7 +8,10 @@ import { COLLECTED } from '../utils/constants';
 import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
 import type { LunaticSource } from './type-source';
-import type { LunaticComponentType } from '../components/type';
+import type {
+	LunaticComponentProps,
+	LunaticComponentType,
+} from '../components/type';
 import { compileControls as compileControlsLib } from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
@@ -155,12 +158,16 @@ function useLunatic(
 				);
 			}
 			if (only) {
-				return components.filter((c) => only.includes(c.componentType));
+				return components.filter((c) =>
+					only.includes(c.componentType)
+				) as LunaticComponentProps[];
 			}
 			if (except) {
-				return components.filter((c) => !except.includes(c.componentType));
+				return components.filter(
+					(c) => !except.includes(c.componentType)
+				) as LunaticComponentProps[];
 			}
-			return components;
+			return components as LunaticComponentProps[];
 		},
 		[components]
 	);
