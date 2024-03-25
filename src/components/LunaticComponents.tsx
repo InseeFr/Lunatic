@@ -20,7 +20,7 @@ import {
 } from './shared/HOC/slottableComponent';
 import type { LunaticComponentProps } from './type';
 
-type Props<T extends LunaticComponentProps, V = unknown> = {
+type Props<V = unknown> = {
 	// List of components to display (coming from getComponents)
 	components: (
 		| FilledLunaticComponentProps
@@ -56,10 +56,7 @@ const LunaticComponentWrapper = slottableComponent(
 /**
  * Entry point for orchestrators, this component display the list of fields
  */
-export function LunaticComponents<
-	T extends LunaticComponentProps,
-	V = undefined,
->({
+export function LunaticComponents<V = undefined>({
 	components,
 	autoFocusKey,
 	componentProps,
@@ -67,7 +64,7 @@ export function LunaticComponents<
 	memo,
 	slots,
 	wrapper = (args) => <LunaticComponentWrapper {...args} />,
-}: Props<T, V>) {
+}: Props<V>) {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const hasComponents = components.length > 0;
 	const WrapperComponent = autoFocusKey ? 'div' : Fragment;

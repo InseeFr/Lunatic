@@ -4,7 +4,6 @@ import React, { Fragment } from 'react';
 import { LunaticComponents } from '../LunaticComponents';
 import { Declarations } from '../shared/Declarations/Declarations';
 import { Label } from '../shared/Label/Label';
-import type { FilledLunaticComponentProps } from '../../use-lunatic/commons/fill-components/fill-components';
 
 export const PairwiseLinks = ({
 	declarations,

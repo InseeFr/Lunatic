@@ -2,16 +2,12 @@ import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
 import type { LunaticData, LunaticState, PageTag } from './type';
-
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
 import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
 import type { LunaticSource } from './type-source';
-import type {
-	LunaticComponentProps,
-	LunaticComponentType,
-} from '../components/type';
+import type { LunaticComponentProps } from '../components/type';
 import { compileControls as compileControlsLib } from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';

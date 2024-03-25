@@ -1,6 +1,5 @@
 import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import useLunatic from '../use-lunatic';
-import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 import type {
 	LunaticComponentDefinition,
 	LunaticError,
