@@ -2,13 +2,12 @@ import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
 import type { LunaticData, LunaticState, PageTag } from './type';
-
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
 import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
 import type { LunaticSource } from './type-source';
-import type { LunaticComponentType } from '../components/type';
+import type { LunaticComponentProps } from '../components/type';
 import { compileControls as compileControlsLib } from './commons/compile-controls';
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
@@ -146,8 +145,8 @@ function useLunatic(
 			only,
 			except,
 		}: {
-			only?: LunaticComponentType[];
-			except?: LunaticComponentType[];
+			only?: LunaticComponentProps['componentType'];
+			except?: LunaticComponentProps['componentType'];
 		} = {}) {
 			if (only && except) {
 				throw new Error(
@@ -155,10 +154,12 @@ function useLunatic(
 				);
 			}
 			if (only) {
-				return components.filter((c) => only.includes(c.componentType));
+				return components.filter((c) => only.includes(c.componentType ?? ''));
 			}
 			if (except) {
-				return components.filter((c) => !except.includes(c.componentType));
+				return components.filter(
+					(c) => !except.includes(c.componentType ?? '')
+				);
 			}
 			return components;
 		},

@@ -16,7 +16,13 @@ export default stories;
 
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
-Default.args = { id: 'links', source: source, pagination: true, data };
+Default.args = {
+	id: 'links',
+	source: source,
+	pagination: true,
+	data,
+	initialPage: '3',
+};
 
 export const Filled = Template.bind({});
 Filled.args = { ...Default.args, id: 'links-filled' };
