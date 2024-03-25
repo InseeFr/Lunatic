@@ -33,6 +33,18 @@ const LunaticComboBoxLabelSelection = ({
 	readOnly = false,
 }: Props) => {
 	const isPlaceholder = !option && (!search || search.length === 0);
+	if (option?.value === 'OTHER') {
+		return (
+			<div
+				className={classNames('lunatic-combo-box-selected', {
+					disabled,
+					readOnly,
+				})}
+			>
+				<span className="selection">{option.label}</span>
+			</div>
+		);
+	}
 	return (
 		<div
 			className={classNames('lunatic-combo-box-selected', {

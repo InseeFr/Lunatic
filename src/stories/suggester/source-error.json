@@ -1,28 +1,5 @@
 {
-	"suggesters": [
-		{
-			"name": "products",
-			"fields": [
-				{
-					"name": "label",
-					"rules": ["[\\w]+"],
-					"language": "French",
-					"min": 3,
-					"stemmer": false
-				}
-			],
-			"queryParser": {
-				"type": "tokenized",
-				"params": {
-					"language": "French",
-					"pattern": "[\\w.]+",
-					"min": 3,
-					"stemmer": false
-				}
-			},
-			"version": "1"
-		}
-	],
+	"suggesters": [],
 	"components": [
 		{
 			"componentType": "Suggester",
@@ -39,7 +16,7 @@
 					"attribute": "price"
 				}
 			],
-			"storeName": "products",
+			"storeName": "unknown",
 			"conditionFilter": {
 				"type": "VTL",
 				"value": "true"
@@ -48,7 +25,7 @@
 			"page": "1",
 			"label": {
 				"type": "VTL|MD",
-				"value": "\"➡ 1. \" || \"Quel est votre produit préféré (brosse ou balle) ?\""
+				"value": "\"➡ 1. \" || \"Quel est votre produit préféré ?\""
 			},
 			"declarations": [
 				{
@@ -56,11 +33,22 @@
 					"declarationType": "INSTRUCTION",
 					"position": "BEFORE_QUESTION_TEXT",
 					"label": {
-						"value": "\"Démontre la capacité d'un suggester à extraire plusieurs réponse à partir des propriétés du référentiel\"",
+						"value": "\"Démontre la capacité d'un suggester à accepter une option arbitraire\"",
 						"type": "VTL|MD"
 					}
 				}
 			],
+			"arbitrary": {
+				"response": { "name": "PRODUCT_OTHER" },
+				"label": {
+					"value": "\"Mon pays n'est pas dans la liste\"",
+					"type": "VTL"
+				},
+				"inputLabel": {
+					"value": "\"Entrez votre pays de résidence\"",
+					"type": "VTL"
+				}
+			},
 			"mandatory": false,
 			"maxLength": 249
 		},
@@ -140,6 +128,17 @@
 				"PREVIOUS": null
 			},
 			"name": "PRODUCT_PRICE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "PRODUCT_OTHER"
 		},
 		{
 			"variableType": "COLLECTED",

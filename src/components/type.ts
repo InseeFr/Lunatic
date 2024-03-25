@@ -244,6 +244,11 @@ export type ComponentPropsByType = {
 		focused: boolean;
 		response: { name: string };
 		optionResponses?: { name: string; attribute: string }[];
+		arbitrary: {
+			response: { name: string };
+		};
+		arbitraryValue?: string;
+		allowArbitrary?: boolean;
 		executeExpression: LunaticState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};

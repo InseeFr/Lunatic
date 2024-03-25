@@ -159,6 +159,24 @@ function fillTable(
 }
 
 /**
+ * For suggester, inject the arbitrary value if necessary
+ */
+function fillSuggester(
+	component: DeepTranslateExpression<LunaticComponentDefinition<'Suggester'>>,
+	state: LunaticState
+) {
+	if (!component.arbitrary) {
+		return component;
+	}
+	return {
+		...component,
+		arbitraryValue: state.executeExpression(component.arbitrary.response.name, {
+			iteration: state.pager.iteration,
+		}),
+	};
+}
+
+/**
  * Fill component specific props (RoundAbout for instance)
  */
 function fillSpecificExpressions(
@@ -177,6 +195,8 @@ function fillSpecificExpressions(
 			return fillPairwise(component, state);
 		case 'Table':
 			return fillTable(component, state);
+		case 'Suggester':
+			return fillSuggester(component, state);
 		default:
 			return component;
 	}

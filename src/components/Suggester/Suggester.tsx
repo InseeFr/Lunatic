@@ -1,10 +1,10 @@
-import { type ReactNode, useEffect, useMemo } from 'react';
+import { useState } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { CustomSuggester } from './CustomSuggester';
-import { createSearching } from './helpers';
-import { SuggesterStatus } from './SuggesterStatus';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
-import { useSuggesterInfo } from '../../hooks/useSuggesterInfo';
+import { OTHER_VALUE, useSuggestions } from './useSuggestions';
+import D from '../../i18n';
+import type { SuggesterOptionType } from './SuggesterType';
 
 export function Suggester({
 	storeName,
@@ -18,23 +18,69 @@ export function Suggester({
 	value,
 	label,
 	description,
-	getSuggesterStatus,
 	errors,
 	readOnly,
 	workersBasePath,
+	getSuggesterStatus,
 	response,
 	optionResponses = [],
 	executeExpression,
 	iteration,
+	arbitrary,
+	arbitraryValue,
 }: LunaticComponentProps<'Suggester'>) {
-	const { state, fetchInfos, infos } = useSuggesterInfo(storeName, idbVersion);
-	const onChange = (
-		v: string | null | { id?: string; [key: string]: ReactNode }
-	) => {
-		if (v && typeof v === 'object' && optionResponses) {
-			if (v.id) {
-				handleChange(response, v.id);
+	// Default options should not change between render
+	// so we can break the rule of hooks here
+	const [selectedOptions, setSelectedOptions] = useState<SuggesterOptionType[]>(
+		() => {
+			if (arbitraryValue) {
+				return [{ id: 'OTHER', label: arbitraryValue, value: 'OTHER' }];
 			}
+			if (!value) {
+				return [];
+			}
+			const labelResponse = optionResponses?.find(
+				(o) => o.attribute === 'label'
+			);
+			if (!labelResponse) {
+				return [{ id: value, label: value, value: value }];
+			}
+			const label = executeExpression(labelResponse.name, {
+				iteration,
+			});
+			if (typeof label !== 'string') {
+				return [{ id: value, label: value, value: value }];
+			}
+			return [
+				{
+					id: value,
+					label: label,
+					value: value,
+				},
+			];
+		}
+	);
+
+	const { state, options, search, setSearch, onFocus, onBlur } = useSuggestions(
+		{
+			indexStatus: getSuggesterStatus(storeName).status,
+			storeName: storeName,
+			idbVersion: idbVersion,
+			workersBasePath: workersBasePath,
+			allowArbitrary: !!arbitrary,
+			selectedOptions: selectedOptions,
+		}
+	);
+
+	const onChange = (v: SuggesterOptionType | null) => {
+		setSelectedOptions(v?.id ? [v] : []);
+		// User has selected an option
+		if (v?.id && v.id !== OTHER_VALUE) {
+			handleChange(response, v.id);
+			if (arbitrary) {
+				handleChange(arbitrary.response, null);
+			}
+			// Update additional responses
 			for (const optionResponse of optionResponses) {
 				if (optionResponse.attribute in v) {
 					handleChange(
@@ -43,86 +89,52 @@ export function Suggester({
 					);
 				}
 			}
-		} else {
-			handleChange(response, v as string | null);
+			return;
+		}
+		// User chose an arbitrary option or clear the value
+		handleChange(arbitrary.response, v?.id === OTHER_VALUE ? search : null);
+		handleChange(response, null);
+		for (const optionResponse of optionResponses) {
+			handleChange({ name: optionResponse.name }, null);
 		}
 	};
 
-	// Fetch suggester info when the suggester is mounted
-	useEffect(() => {
-		fetchInfos();
-	}, [fetchInfos]);
-
-	const searching = useMemo(
-		function () {
-			if (infos) {
-				return createSearching(storeName, idbVersion, workersBasePath);
-			}
-			return undefined;
-		},
-		[infos, storeName, idbVersion, workersBasePath]
-	);
-
-	// Default options should not change between render
-	// so we can break the rule of hooks here
-	const defaultOptions = useMemo(() => {
-		if (!value) {
-			return [];
-		}
-		const labelResponse = optionResponses?.find((o) => o.attribute === 'label');
-		if (!labelResponse) {
-			return [{ id: value, label: value, value: value }];
-		}
-		const label = executeExpression(labelResponse.name, {
-			iteration,
+	let componentErrors = getComponentErrors(errors, id) ?? [];
+	if (state === 'error') {
+		componentErrors.push({
+			id: 'suggester',
+			errorMessage: D.SUGGESTER_ERROR,
+			criticality: 'ERROR',
+			typeOfControl: 'FORMAT',
 		});
-		if (typeof label !== 'string') {
-			return [{ id: value, label: value, value: value }];
+	}
+
+	const handleSearch = (query: string) => {
+		if (query === '' && selectedOptions.length > 0) {
+			onChange(null);
 		}
-		return [
-			{
-				id: value,
-				label: label,
-				value: value,
-			},
-		];
-	}, []);
+		setSearch(query);
+	};
 
 	return (
-		<SuggesterStatus
-			storeName={storeName}
-			getSuggesterStatus={getSuggesterStatus}
+		<CustomSuggester
+			state={state}
+			id={id}
+			className={className}
+			optionRenderer={optionRenderer}
+			labelRenderer={labelRenderer}
+			options={options}
+			onSelect={onChange}
+			onFocus={onFocus}
+			search={search}
+			onSearch={handleSearch}
+			disabled={disabled}
+			readOnly={readOnly}
+			value={selectedOptions}
 			label={label}
+			onBlur={onBlur}
 			description={description}
-		>
-			{state === 'Loading' && (
-				<div className="lunatic-suggester-in-progress">
-					Le store {storeName} est en cours de chargement.
-				</div>
-			)}
-			{state === 'Error' && (
-				<div className="lunatic-suggester-unvailable">
-					La suggestion sur liste n'est pas possible sur votre navigateur, vous
-					pouvez passer la question en appuyant sur Enregistrer et Continuer
-				</div>
-			)}
-			{state === 'Ready' && searching && (
-				<CustomSuggester
-					id={id}
-					className={className}
-					optionRenderer={optionRenderer}
-					labelRenderer={labelRenderer}
-					defaultOptions={defaultOptions}
-					onSelect={onChange}
-					searching={searching}
-					disabled={disabled}
-					readOnly={readOnly}
-					value={value}
-					label={label}
-					description={description}
-					errors={getComponentErrors(errors, id)}
-				/>
-			)}
-		</SuggesterStatus>
+			errors={componentErrors}
+		/>
 	);
 }
