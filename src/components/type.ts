@@ -63,7 +63,7 @@ export type SuggesterOption = {
 	tokensMap?: Record<string, { count: number; fields: string[] }>;
 };
 
-type ComponentPropsByType = {
+export type ComponentPropsByType = {
 	InputNumber: LunaticBaseProps<number | null> & {
 		min?: number;
 		max?: number;
