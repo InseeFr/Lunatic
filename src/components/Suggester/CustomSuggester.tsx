@@ -25,6 +25,7 @@ type Props = {
 	errors?: LunaticError[];
 	options: SuggesterOptionType[];
 	onSearch: (s: string) => void;
+	onClear: () => void;
 	search: string;
 	state: 'loading' | 'error' | 'success';
 };
@@ -49,12 +50,17 @@ export const CustomSuggester = slottableComponent<Props>(
 		options,
 		onSearch,
 		onBlur,
+		onClear,
 		state,
 		onFocus,
 	}) => {
 		const handleSelect = useCallback(
 			(id: string | null) => {
-				onSelect(options.find((o) => o.id === id) ?? null);
+				if (id === null) {
+					onClear();
+				} else {
+					onSelect(options.find((o) => o.id === id) ?? null);
+				}
 			},
 			[onSelect]
 		);

@@ -97,6 +97,7 @@ export function Suggester({
 		for (const optionResponse of optionResponses) {
 			handleChange({ name: optionResponse.name }, null);
 		}
+		onBlur();
 	};
 
 	let componentErrors = getComponentErrors(errors, id) ?? [];
@@ -116,6 +117,11 @@ export function Suggester({
 		setSearch(query);
 	};
 
+	const handleClear = () => {
+		onChange(null);
+		setSearch('');
+	};
+
 	return (
 		<CustomSuggester
 			state={state}
@@ -128,6 +134,7 @@ export function Suggester({
 			onFocus={onFocus}
 			search={search}
 			onSearch={handleSearch}
+			onClear={handleClear}
 			disabled={disabled}
 			readOnly={readOnly}
 			value={selectedOptions}
