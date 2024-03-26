@@ -89,6 +89,7 @@ export function Suggester({
 					);
 				}
 			}
+			onBlur();
 			return;
 		}
 		// User chose an arbitrary option or clear the value
