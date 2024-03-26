@@ -101,19 +101,15 @@ export function useSuggestions({
 		state,
 		options: isFocused ? options : selectedOptions,
 		onBlur: () => {
+			setFocused(false);
+			setSearch('');
 			// Prevent extra calls
 			if (!isFocused) {
 				return;
 			}
-			setFocused(false);
-			setSearch('');
 			setOptions(selectedOptions);
 		},
 		onFocus: () => {
-			// Prevent extra calls
-			if (isFocused) {
-				return;
-			}
 			setFocused(true);
 			setSearch(selectedOptions[0]?.label ?? '');
 		},
