@@ -87,7 +87,9 @@ export function Suggester({
 			return;
 		}
 		// User chose an arbitrary option or clear the value
-		handleChange(arbitrary.response, v?.id === OTHER_VALUE ? search : null);
+		if (arbitrary && arbitrary.response) {
+			handleChange(arbitrary.response, v?.id === OTHER_VALUE ? search : null);
+		}
 		handleChange(response, null);
 		for (const optionResponse of optionResponses) {
 			handleChange({ name: optionResponse.name }, null);

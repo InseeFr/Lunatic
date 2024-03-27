@@ -34,5 +34,6 @@ export const useEffectDebounced = (
 	const debouncedCb = useDebounce(cb, ms);
 	useEffect(() => {
 		debouncedCb().catch(console.error);
-	}, [debouncedCb, deps]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [debouncedCb, ...deps]);
 };

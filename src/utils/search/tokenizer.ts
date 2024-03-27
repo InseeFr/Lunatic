@@ -27,12 +27,12 @@ export const tokenizeQuery = (str: string, info: SearchInfo['queryParser']) => {
 		info.params.pattern && info.params.pattern !== 'soft'
 			? /\w+/gi
 			: new RegExp(info.params.pattern, 'gi');
-	const minLength = info.params.min ?? 0;
+	const minLength = info.params.min ?? 1;
 
 	return (
 		normalizeStr(str)
 			.match(wordRegex)
-			?.filter((w) => w.length > minLength) ?? []
+			?.filter((w) => w.length >= minLength) ?? []
 	);
 };
 
@@ -47,7 +47,7 @@ export const tokenizeIndex = (
 		info.rules && info.rules !== 'soft'
 			? /\w+/gi
 			: new RegExp(info.rules![0], 'gi');
-	const minLength = info.min ?? 0;
+	const minLength = info.min ?? 1;
 
 	// For synonyms, add the synonyms to the string
 	if (info.synonyms) {
@@ -60,7 +60,7 @@ export const tokenizeIndex = (
 	return (
 		normalizeStr(str)
 			.match(wordRegex)
-			?.filter((w) => w.length > minLength) ?? []
+			?.filter((w) => w.length >= minLength) ?? []
 	);
 };
 

@@ -237,7 +237,7 @@ export type ComponentPropsByType = {
 		focused: boolean;
 		response: { name: string };
 		optionResponses?: { name: string; attribute: string }[];
-		arbitrary: {
+		arbitrary?: {
 			response: { name: string };
 		};
 		arbitraryValue?: string;
