@@ -12,10 +12,11 @@ import { compileControls as compileControlsLib } from './commons/compile-control
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
-import { useSuggesters } from './use-suggesters';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
 import { useTrackChanges } from '../hooks/use-track-changes';
 import { usePageHasResponse } from './hooks/use-page-has-response';
+import { registerSuggesters } from '../utils/search/SuggestersDatabase';
+import type { IndexEntry } from '../utils/search/SearchInterface';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -62,7 +63,7 @@ function useLunatic(
 		initialPage?: PageTag;
 		lastReachedPage?: PageTag;
 		autoSuggesterLoading?: boolean;
-		getReferentiel?: (name: string) => Promise<Array<unknown>>;
+		getReferentiel?: (name: string) => Promise<Array<IndexEntry>>;
 		activeControls?: boolean;
 		withOverview?: boolean;
 		missing?: boolean;
@@ -80,7 +81,13 @@ function useLunatic(
 	const { pager, waiting, overview, pages, executeExpression, isInLoop } =
 		state;
 	const components = useComponentsFromState(state);
-	const { suggesters } = source;
+
+	// Register the list of suggesters
+	useEffect(() => {
+		if (getReferentiel && source.suggesters) {
+			registerSuggesters(source.suggesters ?? [], getReferentiel);
+		}
+	}, [source.suggesters]);
 
 	// Required context provider: cleaner than prop drilling through every component
 	const Provider = useMemo(
@@ -104,13 +111,6 @@ function useLunatic(
 			refusedButton,
 		]
 	);
-
-	const getSuggesterStatus = useSuggesters({
-		auto: autoSuggesterLoading,
-		getReferentiel,
-		suggesters,
-		workersBasePath,
-	});
 
 	const compileControls = useCallback(
 		function () {
@@ -246,13 +246,6 @@ function useLunatic(
 			lastReachedPage,
 			workersBasePath,
 		]
-	);
-
-	useEffect(
-		function () {
-			dispatch(actions.updateState({ getSuggesterStatus }));
-		},
-		[getSuggesterStatus]
 	);
 
 	return {

@@ -8,7 +8,6 @@ import type { SuggesterOptionType } from './SuggesterType';
 
 export function Suggester({
 	storeName,
-	idbVersion = '1',
 	id,
 	className,
 	optionRenderer,
@@ -20,8 +19,6 @@ export function Suggester({
 	description,
 	errors,
 	readOnly,
-	workersBasePath,
-	getSuggesterStatus,
 	response,
 	optionResponses = [],
 	executeExpression,
@@ -63,10 +60,7 @@ export function Suggester({
 
 	const { state, options, search, setSearch, onFocus, onBlur } = useSuggestions(
 		{
-			indexStatus: getSuggesterStatus(storeName).status,
 			storeName: storeName,
-			idbVersion: idbVersion,
-			workersBasePath: workersBasePath,
 			allowArbitrary: !!arbitrary,
 			selectedOptions: selectedOptions,
 		}

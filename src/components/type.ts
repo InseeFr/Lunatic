@@ -5,7 +5,6 @@ import type {
 	LunaticError,
 	LunaticState,
 } from '../use-lunatic/type';
-import { SuggesterStatus } from '../use-lunatic/use-suggesters';
 
 type Formats = 'PTnHnM' | 'PnYnM';
 export type VtlExpression = {
@@ -225,11 +224,6 @@ export type ComponentPropsByType = {
 	Suggester: LunaticBaseProps<string | null> & {
 		componentType?: 'Suggester';
 		storeName: string;
-		workersBasePath?: string;
-		getSuggesterStatus: (name: string) => {
-			status: SuggesterStatus;
-			timestamp: number;
-		};
 		optionRenderer: FunctionComponent<{
 			option: SuggesterOption;
 			placeholder?: string;
@@ -240,7 +234,6 @@ export type ComponentPropsByType = {
 			selected?: boolean;
 			search?: string;
 		}>;
-		idbVersion?: string;
 		focused: boolean;
 		response: { name: string };
 		optionResponses?: { name: string; attribute: string }[];
