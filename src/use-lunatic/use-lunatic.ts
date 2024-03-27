@@ -17,6 +17,7 @@ import { useTrackChanges } from '../hooks/use-track-changes';
 import { usePageHasResponse } from './hooks/use-page-has-response';
 import { registerSuggesters } from '../utils/search/SuggestersDatabase';
 import type { IndexEntry } from '../utils/search/SearchInterface';
+import { useRefSync } from '../hooks/useRefSync';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -81,13 +82,14 @@ function useLunatic(
 	const { pager, waiting, overview, pages, executeExpression, isInLoop } =
 		state;
 	const components = useComponentsFromState(state);
+	const getReferentielRef = useRefSync(getReferentiel);
 
 	// Register the list of suggesters
 	useEffect(() => {
-		if (getReferentiel && source.suggesters) {
-			registerSuggesters(source.suggesters ?? [], getReferentiel);
+		if (source.suggesters && getReferentielRef.current) {
+			registerSuggesters(source.suggesters ?? [], getReferentielRef.current);
 		}
-	}, [source.suggesters]);
+	}, [source.suggesters, getReferentielRef]);
 
 	// Required context provider: cleaner than prop drilling through every component
 	const Provider = useMemo(

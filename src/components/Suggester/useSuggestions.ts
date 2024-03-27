@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { SuggesterOptionType } from './SuggesterType';
 import { useEffectDebounced } from '../../hooks/useDebounce';
 import { getSearchForStore } from '../../utils/search/SuggestersDatabase';
-import type { IndexEntry } from '../../utils/search/SearchInterface';
+import { useRefSync } from '../../hooks/useRefSync';
 
 type Props = {
 	storeName: string;
@@ -21,6 +21,7 @@ export function useSuggestions({
 }: Props) {
 	const [search, setSearch] = useState('');
 	const { search: db, index: dbIndex } = getSearchForStore(storeName);
+	const dbIndexRef = useRefSync(dbIndex);
 	let [options, setOptions] = useState(selectedOptions);
 	const [state, setState] = useState<State>(
 		db.isIndexed() ? 'success' : 'loading'
@@ -28,7 +29,8 @@ export function useSuggestions({
 
 	// Index the data when the component is loaded
 	useEffect(() => {
-		dbIndex()
+		dbIndexRef
+			.current()
 			.then(() => {
 				setState('success');
 			})
@@ -36,7 +38,7 @@ export function useSuggestions({
 				setState('error');
 				throw new Error(err);
 			});
-	}, []);
+	}, [dbIndexRef]);
 
 	useEffectDebounced(
 		() => {
