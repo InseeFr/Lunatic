@@ -1,4 +1,4 @@
-import { type ReactNode, useCallback } from 'react';
+import { type ReactNode } from 'react';
 import { voidFunction } from '../../utils/function';
 import type { LunaticError } from '../../use-lunatic/type';
 import type { LunaticComponentProps } from '../type';
@@ -54,16 +54,13 @@ export const CustomSuggester = slottableComponent<Props>(
 		state,
 		onFocus,
 	}) => {
-		const handleSelect = useCallback(
-			(id: string | null) => {
-				if (id === null) {
-					onClear();
-				} else {
-					onSelect(options.find((o) => o.id === id) ?? null);
-				}
-			},
-			[onSelect]
-		);
+		const handleSelect = (id: string | null) => {
+			if (id === null) {
+				onClear();
+			} else {
+				onSelect(options.find((o) => o.id === id) ?? null);
+			}
+		};
 
 		return (
 			<Combobox

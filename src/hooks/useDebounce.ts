@@ -10,9 +10,9 @@ export const useDebounce = <A extends unknown[], R = void>(
 	const fnRef = useRefSync(fn);
 	const [debouncedFun, teardown] = useMemo(() => {
 		return debounce<A, R>((...args) => fnRef.current(...args), ms);
-	}, []);
+	}, [fnRef, ms]);
 
-	useEffect(() => teardown, []);
+	useEffect(() => teardown, [teardown]);
 
 	return debouncedFun as (...args: A) => Promise<R>;
 };
@@ -34,5 +34,6 @@ export const useEffectDebounced = (
 	const debouncedCb = useDebounce(cb, ms);
 	useEffect(() => {
 		debouncedCb().catch(console.error);
-	}, deps);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [debouncedCb, ...deps]);
 };

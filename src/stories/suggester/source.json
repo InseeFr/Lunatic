@@ -91,11 +91,9 @@
 						"ascenseur": ["ASCENCEUR"],
 						"ascenseurs": ["ASCENCEURS"],
 						"assenseur": ["ASSENCEUR"],
-						"assenseurs": ["ASSENCEURS"],
 						"joaillerie": ["JOAILLIER"],
 						"agroalimentaire": ["AGGROALIMANTAIRE", "AGROALIMANTAIRE"],
 						"alimentaires": ["ALIMANTAIRE"],
-						"alimentaires": ["ALIMANTAIRES"],
 						"agroalimentaires": ["AGGROALIMANTAIRES", "AGROALIMENTAIRES"]
 					}
 				}

@@ -8,7 +8,6 @@ import type { SuggesterOptionType } from './SuggesterType';
 
 export function Suggester({
 	storeName,
-	idbVersion = '1',
 	id,
 	className,
 	optionRenderer,
@@ -20,8 +19,6 @@ export function Suggester({
 	description,
 	errors,
 	readOnly,
-	workersBasePath,
-	getSuggesterStatus,
 	response,
 	optionResponses = [],
 	executeExpression,
@@ -63,10 +60,7 @@ export function Suggester({
 
 	const { state, options, search, setSearch, onFocus, onBlur } = useSuggestions(
 		{
-			indexStatus: getSuggesterStatus(storeName).status,
 			storeName: storeName,
-			idbVersion: idbVersion,
-			workersBasePath: workersBasePath,
 			allowArbitrary: !!arbitrary,
 			selectedOptions: selectedOptions,
 		}
@@ -93,7 +87,9 @@ export function Suggester({
 			return;
 		}
 		// User chose an arbitrary option or clear the value
-		handleChange(arbitrary.response, v?.id === OTHER_VALUE ? search : null);
+		if (arbitrary && arbitrary.response) {
+			handleChange(arbitrary.response, v?.id === OTHER_VALUE ? search : null);
+		}
 		handleChange(response, null);
 		for (const optionResponse of optionResponses) {
 			handleChange({ name: optionResponse.name }, null);
