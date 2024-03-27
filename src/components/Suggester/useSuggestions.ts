@@ -70,7 +70,7 @@ export function useSuggestions({
 			if (state === 'error') {
 				return;
 			}
-			setState('loading');
+			// setState('loading'); // Current implementation being sync, we won't need to show a "loading" state
 			setSearch(s);
 		},
 		state,

@@ -3,22 +3,14 @@ import type {
 	SearchInfo,
 	SearchInterface,
 } from './SearchInterface';
-// @ts-ignore
 import { applyMelauto } from './melauto';
 import MiniSearch from 'minisearch';
-
-const tokenizer = (str: string) =>
-	str
-		.normalize('NFD')
-		.replace(/[\u0300-\u036f]/g, '')
-		.toLowerCase()
-		.split(/[^a-z0-9]+/)
-		.filter((w) => w.length > 0);
+import { tokenizer } from './tokenizer';
 
 export class SearchMinisearch<T extends IndexEntry>
 	implements SearchInterface<T>
 {
-	db: MiniSearch | null = null;
+	db: MiniSearch<T> | null = null;
 	info: SearchInfo;
 	indexed = false;
 
@@ -30,19 +22,22 @@ export class SearchMinisearch<T extends IndexEntry>
 		return this.indexed;
 	}
 
-	async index(data: Record<string, unknown>[]): Promise<void> {
+	async index(data: T[]): Promise<void> {
+		if (this.indexed) {
+			return Promise.resolve();
+		}
 		const nameFields = this.info.fields.map(({ name }) => name);
 		this.db = new MiniSearch({
 			fields: nameFields,
 			storeFields: nameFields,
-			tokenize: tokenizer,
+			tokenize: tokenizer(this.info),
 		});
 		this.db.addAll(data);
 		this.indexed = true;
 	}
 
 	async search(q: string): Promise<T[]> {
-		if (!this.db) {
+		if (!this.db || !this.info.queryParser) {
 			return [];
 		}
 		let data = this.db.search(q, {
