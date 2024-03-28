@@ -278,13 +278,13 @@ export type SuggesterType = {
 		// Enable stemming
 		stemmer?: boolean;
 		// Define synonyms
-		synonyms?: { source: string; target: string[] }[];
+		synonyms?: { [source: string]: string[] };
 	}[];
 	// Limit the number of results to return
 	max?: number;
-	// Ignored words
+	// Ignored words (deprecated)
 	stopWords?: string;
-	// Overwrite order on the result using alphabetical order
+	// Overwrite order on the result using alphabetical order (deprecated: melauto handle order now)
 	order?: { field: string; type: string };
 	// How the search query will be parsed
 	queryParser:
@@ -302,12 +302,13 @@ export type SuggesterType = {
 		  }
 		| {
 				type: 'soft';
+				params: undefined;
 		  };
-	// Create a worker from a remote API (not used currently)
+	// Create a worker from a remote API (deprecated: not used currently)
 	url?: string;
-	// IndexDB version (pas utilisé actuellement)
+	// version (pas utilisé actuellement)
 	version: number;
-	// Enable "melauto" ranking, words closer to the start of the string are ranked better
+	// Enable "melauto" ranking, words closer to the start of the string are ranked better (deprecated: enabled by default)
 	meloto?: boolean;
 };
 

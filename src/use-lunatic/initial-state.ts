@@ -1,6 +1,5 @@
 import { COLLECTED, VTL } from '../utils/constants';
 import type { LunaticState } from './type';
-import { SuggesterStatus } from './use-suggesters';
 import { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
 import { isTestEnv } from '../utils/env';
 
@@ -37,11 +36,6 @@ const INITIAL_STATE: LunaticState = {
 	goNextPage: () => {},
 	goPreviousPage: () => {},
 	activeControls: false,
-	getSuggesterStatus: (name: string) => ({
-		status: SuggesterStatus.unused,
-		timestamp: 0,
-	}),
-	workersBasePath: undefined,
 };
 
 export default INITIAL_STATE;

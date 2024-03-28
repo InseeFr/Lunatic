@@ -12,10 +12,12 @@ import { compileControls as compileControlsLib } from './commons/compile-control
 import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
-import { useSuggesters } from './use-suggesters';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
 import { useTrackChanges } from '../hooks/use-track-changes';
 import { usePageHasResponse } from './hooks/use-page-has-response';
+import { registerSuggesters } from '../utils/search/SuggestersDatabase';
+import type { IndexEntry } from '../utils/search/SearchInterface';
+import { useRefSync } from '../hooks/useRefSync';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -50,7 +52,6 @@ function useLunatic(
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
-		workersBasePath = undefined,
 		trackChanges = false,
 	}: {
 		features?: LunaticState['features'];
@@ -62,7 +63,7 @@ function useLunatic(
 		initialPage?: PageTag;
 		lastReachedPage?: PageTag;
 		autoSuggesterLoading?: boolean;
-		getReferentiel?: (name: string) => Promise<Array<unknown>>;
+		getReferentiel?: (name: string) => Promise<Array<IndexEntry>>;
 		activeControls?: boolean;
 		withOverview?: boolean;
 		missing?: boolean;
@@ -70,8 +71,6 @@ function useLunatic(
 		missingShortcut?: { dontKnow: string; refused: string };
 		dontKnowButton?: string;
 		refusedButton?: string;
-		// Enable workers on Micro frontend (worker deployed in another server than the current)
-		workersBasePath?: string;
 		// Enable change tracking to keep a track of what variable changed (allow using getChangedData())
 		trackChanges?: boolean;
 	}
@@ -80,7 +79,14 @@ function useLunatic(
 	const { pager, waiting, overview, pages, executeExpression, isInLoop } =
 		state;
 	const components = useComponentsFromState(state);
-	const { suggesters } = source;
+	const getReferentielRef = useRefSync(getReferentiel);
+
+	// Register the list of suggesters
+	useEffect(() => {
+		if (source.suggesters && getReferentielRef.current) {
+			registerSuggesters(source.suggesters ?? [], getReferentielRef.current);
+		}
+	}, [source.suggesters, getReferentielRef]);
 
 	// Required context provider: cleaner than prop drilling through every component
 	const Provider = useMemo(
@@ -104,13 +110,6 @@ function useLunatic(
 			refusedButton,
 		]
 	);
-
-	const getSuggesterStatus = useSuggesters({
-		auto: autoSuggesterLoading,
-		getReferentiel,
-		suggesters,
-		workersBasePath,
-	});
 
 	const compileControls = useCallback(
 		function () {
@@ -224,7 +223,6 @@ function useLunatic(
 					goNextPage,
 					goPreviousPage,
 					withOverview,
-					workersBasePath,
 				})
 			);
 		},
@@ -244,15 +242,7 @@ function useLunatic(
 			goNextPage,
 			goPreviousPage,
 			lastReachedPage,
-			workersBasePath,
 		]
-	);
-
-	useEffect(
-		function () {
-			dispatch(actions.updateState({ getSuggesterStatus }));
-		},
-		[getSuggesterStatus]
 	);
 
 	return {

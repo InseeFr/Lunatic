@@ -1,73 +1,50 @@
-import { useMemo, useRef, useState } from 'react';
-import { createSearching } from './helpers';
+import { useEffect, useState } from 'react';
 import type { SuggesterOptionType } from './SuggesterType';
 import { useEffectDebounced } from '../../hooks/useDebounce';
-import { SuggesterStatus } from '../../use-lunatic/use-suggesters';
+import { getSearchForStore } from '../../utils/search/SuggestersDatabase';
+import { useRefSync } from '../../hooks/useRefSync';
 
 type Props = {
-	indexStatus: SuggesterStatus;
 	storeName: string;
-	idbVersion: string;
-	workersBasePath?: string;
 	selectedOptions: SuggesterOptionType[];
 	allowArbitrary: boolean;
 };
 
 export const OTHER_VALUE = 'OTHER';
 
-type SearchResult = { results: SuggesterOptionType[]; search: string };
-
-const getStateFromSuggesterStatus = (
-	suggesterStatus: SuggesterStatus
-): 'success' | 'loading' | 'error' => {
-	if (
-		suggesterStatus === SuggesterStatus.error ||
-		suggesterStatus === SuggesterStatus.unknown
-	) {
-		return 'error';
-	}
-	return 'success';
-};
+type State = 'success' | 'loading' | 'error';
 
 export function useSuggestions({
-	indexStatus,
 	storeName,
-	idbVersion,
-	workersBasePath,
 	selectedOptions,
 	allowArbitrary,
 }: Props) {
 	const [search, setSearch] = useState('');
-	const isReady = indexStatus === SuggesterStatus.success;
-	const lastSearch =
-		useRef<[search: string | null, (v: SearchResult) => void]>();
-	const [state, setState] = useState(getStateFromSuggesterStatus(indexStatus));
+	const { search: db, index: dbIndex } = getSearchForStore(storeName);
+	const dbIndexRef = useRefSync(dbIndex);
 	let [options, setOptions] = useState(selectedOptions);
+	const [state, setState] = useState<State>(
+		db.isIndexed() ? 'success' : 'loading'
+	);
 
-	const searching = useMemo(() => {
-		if (!isReady) {
-			// While waiting for the search to be ready, remember the last search done
-			return (name: string | null) => {
-				return new Promise<SearchResult>((resolve) => {
-					lastSearch.current = [name, resolve];
-				});
-			};
-		}
-		const searching = createSearching(storeName, idbVersion, workersBasePath);
-		// Solve the last pending search
-		const pendingSearch = lastSearch.current;
-		if (pendingSearch && pendingSearch[0]) {
-			searching(pendingSearch[0]).then((r) => pendingSearch[1](r));
-			lastSearch.current = undefined;
-		}
-		return searching;
-	}, [isReady, storeName, idbVersion, workersBasePath]);
+	// Index the data when the component is loaded
+	useEffect(() => {
+		dbIndexRef
+			.current()
+			.then(() => {
+				setState('success');
+			})
+			.catch((err) => {
+				setState('error');
+				throw new Error(err);
+			});
+	}, [dbIndexRef]);
 
 	useEffectDebounced(
 		() => {
-			searching?.(search)
+			db.search(search)
 				.then((r) => {
-					setOptions(r.results);
+					setOptions(r);
 					setState('success');
 				})
 				.catch(() => setState('error'));
@@ -95,7 +72,7 @@ export function useSuggestions({
 			if (state === 'error') {
 				return;
 			}
-			setState('loading');
+			// setState('loading'); // Current implementation being sync, we won't need to show a "loading" state
 			setSearch(s);
 		},
 		state,

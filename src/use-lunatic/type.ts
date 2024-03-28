@@ -5,7 +5,6 @@ import type {
 	LunaticSource,
 	Variable,
 } from './type-source';
-import { SuggesterStatus } from './use-suggesters';
 import type { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
 
 export type LunaticComponentDefinition<
@@ -180,9 +179,4 @@ export type LunaticState = {
 	// Enable components to independently navigate next/previous
 	goNextPage: () => void;
 	goPreviousPage: () => void;
-	getSuggesterStatus: (name: string) => {
-		status: SuggesterStatus;
-		timestamp: number;
-	};
-	workersBasePath?: string;
 };

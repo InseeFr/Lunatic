@@ -1,6 +1,5 @@
 import type { LunaticData, LunaticState, PageTag } from './type';
 import type { LunaticSource } from './type-source';
-import { SuggesterStatus } from './use-suggesters';
 
 export enum ActionKind {
 	GO_PREVIOUS_PAGE = 'use-lunatic/go-previous',
@@ -9,7 +8,6 @@ export enum ActionKind {
 	ON_INIT = 'use-lunatic/on-init',
 	HANDLE_CHANGE = 'use-lunatic/handle-change',
 	ON_SET_WAITING = 'use-lunatic/on-set-waiting',
-	UPDATE_STATE = 'use-lunatic/update-state',
 }
 
 export type ActionHandleChange = {
@@ -44,7 +42,6 @@ export type ActionInit = {
 		goNextPage: () => void;
 		goPreviousPage: () => void;
 		withOverview: boolean;
-		workersBasePath?: string;
 	};
 };
 
@@ -52,16 +49,6 @@ export type ActionOnSetWaiting = {
 	type: ActionKind.ON_SET_WAITING;
 	payload: {
 		status: boolean;
-	};
-};
-
-export type ActionUpdateState = {
-	type: ActionKind.UPDATE_STATE;
-	payload: {
-		getSuggesterStatus: (name: string) => {
-			status: SuggesterStatus;
-			timestamp: number;
-		};
 	};
 };
 
@@ -81,8 +68,7 @@ export type Action =
 	| ActionGoToPage
 	| ActionInit
 	| ActionHandleChange
-	| ActionOnSetWaiting
-	| ActionUpdateState;
+	| ActionOnSetWaiting;
 
 export type PayloadForAction<T extends Action['type']> = (Action & {
 	type: T;
@@ -121,4 +107,3 @@ export const onSetWaiting = (status: boolean): Action =>
 		type: ActionKind.ON_SET_WAITING,
 		payload: { status },
 	}) as const;
-export const updateState = actionCreator(ActionKind.UPDATE_STATE);

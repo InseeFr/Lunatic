@@ -23,8 +23,6 @@ function fillFromState(
 		preferences,
 		goToPage,
 		shortcut,
-		getSuggesterStatus,
-		workersBasePath,
 		goNextPage,
 		goPreviousPage,
 	} = state;
@@ -35,8 +33,6 @@ function fillFromState(
 		preferences,
 		goToPage,
 		shortcut,
-		getSuggesterStatus,
-		workersBasePath,
 		goNextPage,
 		goPreviousPage,
 	};
