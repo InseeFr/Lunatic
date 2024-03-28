@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "3.0.0-rc.20",
+	"version": "3.0.0-rc.21",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -30,8 +30,8 @@
 		}
 	],
 	"license": "MIT",
-	"main": "lib/src/index.js",
-	"types": "lib/src/index.d.ts",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
 	"files": [
 		"lib"
 	],
