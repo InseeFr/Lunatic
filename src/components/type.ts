@@ -88,7 +88,7 @@ export type ComponentPropsByType = {
 	> & { componentType?: 'Sequence' };
 	Subsequence: Pick<
 		LunaticBaseProps<string>,
-		'id' | 'label' | 'declarations'
+		'id' | 'label' | 'declarations' | 'description'
 	> & { componentType?: 'Subsequence' };
 	Question: Pick<
 		LunaticBaseProps<unknown>,
