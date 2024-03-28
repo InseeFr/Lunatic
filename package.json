@@ -1,6 +1,7 @@
 {
 	"name": "@inseefr/lunatic",
 	"version": "3.0.0-rc.18",
+	"workersVersion": "0.3.0",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",

@@ -86,7 +86,9 @@ Filled.play = async ({ args, canvasElement }) => {
 	await page.getByRole('radio', { name: '3 Joe Quimby' }).click();
 	await page.getByRole('button', { name: 'Next' }).click();
 	await page
-		.getByRole('combobox', { name: '➡ In which state do The Simpsons reside?' })
+		.getByRole('combobox', {
+			name: '➡ In which state do The Simpsons reside?',
+		})
 		// .locator('div')
 		.click();
 	await page.getByText('Not in any state, you fool!').click();
