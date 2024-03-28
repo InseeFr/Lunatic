@@ -1,6 +1,4 @@
-import { userEvent, waitFor, within } from '@storybook/testing-library';
-
-import { expect } from '@storybook/jest';
+import { userEvent, waitFor, within, expect } from '@storybook/test';
 import { sleep } from './timer';
 
 /**
