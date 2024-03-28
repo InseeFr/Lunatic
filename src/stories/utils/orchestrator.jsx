@@ -146,7 +146,6 @@ function OrchestratorForStories({
 		onChange: onLogChange,
 		autoSuggesterLoading,
 		getReferentiel,
-		workersBasePath: './workers',
 		management,
 		missing,
 		missingStrategy,

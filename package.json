@@ -1,7 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
 	"version": "3.0.0-rc.18",
-	"workersVersion": "0.3.0",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -34,10 +33,7 @@
 	"main": "lib/src/index.js",
 	"types": "lib/src/index.d.ts",
 	"files": [
-		"lib",
-		"workers-release",
-		"scripts/build/workers-paths.js",
-		"scripts/build/add-workers-to-public.js"
+		"lib"
 	],
 	"scripts": {
 		"test": "vitest run",

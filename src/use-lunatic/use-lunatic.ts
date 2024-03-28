@@ -52,7 +52,6 @@ function useLunatic(
 		missingShortcut = DEFAULT_SHORTCUT,
 		dontKnowButton = DEFAULT_DONT_KNOW,
 		refusedButton = DEFAULT_REFUSED,
-		workersBasePath = undefined,
 		trackChanges = false,
 	}: {
 		features?: LunaticState['features'];
@@ -72,8 +71,6 @@ function useLunatic(
 		missingShortcut?: { dontKnow: string; refused: string };
 		dontKnowButton?: string;
 		refusedButton?: string;
-		// Enable workers on Micro frontend (worker deployed in another server than the current)
-		workersBasePath?: string;
 		// Enable change tracking to keep a track of what variable changed (allow using getChangedData())
 		trackChanges?: boolean;
 	}
@@ -226,7 +223,6 @@ function useLunatic(
 					goNextPage,
 					goPreviousPage,
 					withOverview,
-					workersBasePath,
 				})
 			);
 		},
@@ -246,7 +242,6 @@ function useLunatic(
 			goNextPage,
 			goPreviousPage,
 			lastReachedPage,
-			workersBasePath,
 		]
 	);
 

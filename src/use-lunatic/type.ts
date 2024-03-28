@@ -179,5 +179,4 @@ export type LunaticState = {
 	// Enable components to independently navigate next/previous
 	goNextPage: () => void;
 	goPreviousPage: () => void;
-	workersBasePath?: string;
 };

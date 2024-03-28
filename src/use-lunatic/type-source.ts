@@ -306,7 +306,7 @@ export type SuggesterType = {
 		  };
 	// Create a worker from a remote API (deprecated: not used currently)
 	url?: string;
-	// IndexDB version (pas utilisé actuellement)
+	// version (pas utilisé actuellement)
 	version: number;
 	// Enable "melauto" ranking, words closer to the start of the string are ranked better (deprecated: enabled by default)
 	meloto?: boolean;

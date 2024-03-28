@@ -36,7 +36,6 @@ const INITIAL_STATE: LunaticState = {
 	goNextPage: () => {},
 	goPreviousPage: () => {},
 	activeControls: false,
-	workersBasePath: undefined,
 };
 
 export default INITIAL_STATE;
