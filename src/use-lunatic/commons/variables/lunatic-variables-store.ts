@@ -299,6 +299,15 @@ class LunaticVariable {
 		if (isTestEnv()) {
 			interpretCount++;
 		}
+		// Scale down iteration if its dimension > shapeFrom dimension
+		const shapeDimension = arrayDimension(shapeFromValue);
+		if (
+			Array.isArray(iteration) &&
+			Array.isArray(shapeFromValue) &&
+			shapeDimension < iteration.length
+		) {
+			iteration = iteration.slice(0, shapeDimension);
+		}
 		// Uncomment this if you want to track the number of calculation
 		// this.calculatedCount++;
 		// Remember the value
@@ -445,4 +454,11 @@ class LunaticVariable {
 			(this.calculatedAt.get(iteration?.join('.')) ?? -1)
 		);
 	}
+}
+
+function arrayDimension(arr: unknown): number {
+	if (!Array.isArray(arr)) {
+		return 0;
+	}
+	return 1 + arrayDimension(arr[0]);
 }
