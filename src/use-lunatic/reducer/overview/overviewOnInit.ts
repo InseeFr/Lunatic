@@ -1,8 +1,4 @@
-import type {
-	LunaticExpression,
-	LunaticOverviewItem,
-	LunaticState,
-} from '../../type';
+import type { LunaticOverviewItem, LunaticState } from '../../type';
 import { type ActionInit } from '../../actions';
 import type {
 	ComponentLoopType,

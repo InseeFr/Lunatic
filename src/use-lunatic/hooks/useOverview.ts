@@ -25,6 +25,7 @@ export const useOverview = (
 ) => {
 	return useMemo(
 		() => interpretOverview(overview, executeExpression, lastReachedPage),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[...deps, overview]
 	);
 };
