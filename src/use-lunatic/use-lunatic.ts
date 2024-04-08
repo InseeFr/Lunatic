@@ -254,9 +254,14 @@ function useLunatic(
 		getData,
 		Provider,
 		onChange: handleChange,
-		overview: useOverview({ executeExpression, overview, lastReachedPage }, [
-			pageTag,
-		]),
+		overview: useOverview(
+			{
+				executeExpression,
+				overview,
+				lastReachedPage: lastReachedPage ?? pageTag,
+			},
+			[pageTag]
+		),
 		loopVariables: useLoopVariables(pager, state.pages),
 		getChangedData,
 		resetChangedData,

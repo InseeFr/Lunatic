@@ -52,6 +52,7 @@ function overviewFromComponent(
 			...extra,
 		});
 	}
+
 	return items;
 }
 
