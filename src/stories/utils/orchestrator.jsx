@@ -149,6 +149,7 @@ function OrchestratorForStories({
 		management,
 		missing,
 		missingStrategy,
+		lastReachedPage: rest.lastReachedPage,
 		missingShortcut,
 		shortcut,
 		activeControls,

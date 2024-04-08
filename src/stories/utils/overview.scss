@@ -18,13 +18,21 @@
 	--color-disabled: rgb(235, 235, 228);
 }
 
-.row {
-	display: flex;
-	gap: 0.5em;
-	
-	:hover {
-		cursor: pointer;
-		font-weight: bold;
+.orchestrator-overview {
+	margin: 0;
+	padding: 0;
+
+	div {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	ol {
+		margin-left: 2rem;
+	}
+
+	li {
+		list-style: none;
 	}
 }
 

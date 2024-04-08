@@ -3,7 +3,7 @@ import { checkLoops, createMapPages, isFirstLastPage } from '../commons';
 import compose from '../commons/compose';
 import { getPagerFromPageTag } from '../commons/page-tag';
 import type { LunaticState } from '../type';
-import { reduceOverviewOnInit } from './overview/overview-on-init';
+import { reduceOverviewOnInit } from './overview/overviewOnInit';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { MD, VTL } from '../../utils/constants';
 import { MDLabel } from '../../components/shared/MDLabel/MDLabel';

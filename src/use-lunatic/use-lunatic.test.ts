@@ -1,14 +1,15 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
+import sourceOverview from '../stories/overview/sourceLoop.json';
+import dataOverview from '../stories/overview/dataLoop.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { LunaticData, PageTag } from './type';
-import type { LunaticComponentProps } from '../components/type';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {
@@ -118,30 +119,15 @@ describe('use-lunatic()', () => {
 		});
 		it('should make the first sequence visible', function () {
 			const { result } = renderHook(() =>
-				useLunatic(sourceLogement as any, undefined, lunaticConfiguration)
+				useLunatic(sourceLogement as any, undefined, {
+					...lunaticConfiguration,
+					lastReachedPage: '1',
+				})
 			);
 			const overview = result.current.overview;
 			expect(overview).toHaveLength(11);
 			expect(overview[0].reached).toEqual(true);
-			expect(overview[0].visible).toEqual(true);
 			expect(overview[1].reached).toEqual(false);
-			expect(overview[1].visible).toEqual(true);
-		});
-		it('should update the breadcrumb on page change', function () {
-			const { result } = renderHook(() =>
-				useLunatic(sourceLogement as any, undefined, lunaticConfiguration)
-			);
-			// '8' page should not be visible
-			expect(result.current.overview[0].children[0].visible).toBe(false);
-			// Simulate a change of value in the form
-			act(() => {
-				const firstComponent =
-					result.current.getComponents()[0] as LunaticComponentProps<'Input'>;
-				firstComponent.handleChange({ name: 'CADR' }, '3', {});
-				result.current.goNextPage();
-			});
-			// Page '8' should now be visible
-			expect(result.current.overview[0].children[0].visible).toBe(true);
 		});
 		it('should be empty when no hierarchy', function () {
 			const { result } = renderHook(() =>
@@ -168,9 +154,29 @@ describe('use-lunatic()', () => {
 				const overview = result.current.overview;
 				expect(overview).toHaveLength(11);
 				expect(overview[0].reached).toEqual(true);
-				expect(overview[0].visible).toEqual(true);
 				expect(overview[1].reached).toEqual(true);
-				expect(overview[1].visible).toEqual(true);
+			});
+		});
+
+		describe('with loop', function () {
+			it('should work with loop', async () => {
+				const { result } = renderHook(() =>
+					useLunatic(
+						sourceOverview as any,
+						dataOverview.data,
+						lunaticConfiguration
+					)
+				);
+				expect(result.current.overview).toMatchSnapshot();
+			});
+			it('should handle lastReachedPage', async () => {
+				const { result } = renderHook(() =>
+					useLunatic(sourceOverview as any, dataOverview.data, {
+						...lunaticConfiguration,
+						lastReachedPage: '11.2#2',
+					})
+				);
+				expect(result.current.overview).toMatchSnapshot();
 			});
 		});
 	});

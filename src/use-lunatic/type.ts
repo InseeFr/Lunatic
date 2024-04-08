@@ -12,6 +12,16 @@ export type LunaticComponentDefinition<
 > = ComponentType & { componentType: T };
 export type LunaticControl = ControlType;
 
+export type LunaticOverviewItem = {
+	id: string;
+	pageTag: string;
+	page: number;
+	label: LunaticExpression;
+	type: string;
+	conditionFilter?: LunaticExpression;
+	iterations?: string;
+};
+
 export type VTLBindings = { [variableName: string]: unknown };
 
 export type LunaticData = Partial<
@@ -50,21 +60,6 @@ export type LunaticCollectedValue = Partial<{
 	INPUTED: unknown;
 	PREVIOUS: unknown;
 }>;
-
-export type LunaticOverviewItem = {
-	id: string;
-	page: string;
-	type: string;
-	evaluatedLabel: string;
-	visible: boolean;
-	reached: boolean;
-	parent?: unknown;
-	label: LunaticExpression;
-	conditionFilter?: {
-		bindingDependencies?: string[];
-	};
-	children: LunaticOverviewItem[];
-};
 
 // We need a mapped type to correlate type and variableType
 export type LunaticStateVariable = {

@@ -111,11 +111,12 @@ export type ComponentInputOrTextareaType = {
 
 export type ComponentSequenceType = {
 	componentType: 'Sequence';
-	gotoPage?: string;
+	goToPage?: string;
 };
 
 export type ComponentSubSequenceType = {
 	componentType: 'Subsequence';
+	goToPage?: string;
 };
 
 export type ComponentRoundaboutType = {
