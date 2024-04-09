@@ -1,0 +1,1423 @@
+{
+	"cleaning": {
+		"T_PRENOM": {
+			"REMARQUES": "(PRENOM <> PRENOMREF)",
+			"T_DATENAIS": "(PRENOM <> PRENOMREF)"
+		}
+	},
+	"componentType": "Questionnaire",
+	"variables": [
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["T_NHAB"],
+			"expression": {
+				"type": "VTL",
+				"value": "nvl(T_NHAB,1)"
+			},
+			"name": "T_NBHAB"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["T_PRENOM"],
+			"expression": {
+				"type": "VTL",
+				"value": "first_value(T_PRENOM over())"
+			},
+			"name": "PRENOMREFB"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["T_PRENOM", "T_NBHAB", "PRENOMREFB", "T_NHAB"],
+			"expression": {
+				"type": "VTL",
+				"value": "if (T_NBHAB = 1) then nvl(PRENOMREFB, \"PRENOM\") else nvl(PRENOMREFB, \"PRENOM1\")"
+			},
+			"name": "PRENOMREF"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["PRENOMB", "T_PRENOM"],
+			"expression": {
+				"type": "VTL",
+				"value": "nvl(PRENOMB, \"PRENOM\")"
+			},
+			"name": "PRENOM",
+			"shapeFrom": "T_PRENOM"
+		},
+		{
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["T_PRENOM"],
+			"expression": {
+				"type": "VTL",
+				"value": "T_PRENOM"
+			},
+			"name": "PRENOMB",
+			"shapeFrom": "T_PRENOM"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "ETAT"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "SATISFAIT"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "T_NHAB"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "T_PRENOM"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "COMMCOMPO"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "T_SEXE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "T_DATENAIS"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "REMARQUES"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "SUPERQUEST"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "AUTRESUPERQUEST"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "ENCOREUNEQ"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "COMMENT_QE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "ETAT_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "SATISFAIT_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "T_NHAB_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "T_PRENOM_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "COMMCOMPO_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "T_SEXE_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "T_DATENAIS_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "REMARQUES_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "SUPERQUEST_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "ENCOREUNEQ_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "AUTRESUPERQUEST_MISSING"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "COMMENT_QE_MISSING"
+		}
+	],
+	"components": [
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "lujqfpva",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"Séquence 1\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lujqfpva",
+			"page": "1",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"I - \" || \"Séquence 1\""
+			}
+		},
+		{
+			"componentType": "Subsequence",
+			"goToPage": "2",
+			"hierarchy": {
+				"sequence": {
+					"id": "lujqfpva",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"Séquence 1\""
+					}
+				},
+				"subSequence": {
+					"id": "lujqeci5",
+					"page": "2",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Votre santé\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lujqeci5",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"Votre santé\""
+			}
+		},
+		{
+			"componentType": "Radio",
+			"missingResponse": {
+				"name": "ETAT_MISSING"
+			},
+			"response": {
+				"name": "ETAT"
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "lujqfpva",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"Séquence 1\""
+					}
+				},
+				"subSequence": {
+					"id": "lujqeci5",
+					"page": "2",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Votre santé\""
+					}
+				}
+			},
+			"options": [
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Oui\""
+					},
+					"value": "1"
+				},
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Non\""
+					},
+					"value": "2"
+				}
+			],
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lujqp80o",
+			"page": "2",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 1. \" || \"Vous allez bien ?\""
+			},
+			"mandatory": false
+		},
+		{
+			"componentType": "Subsequence",
+			"goToPage": "3",
+			"hierarchy": {
+				"sequence": {
+					"id": "lujqfpva",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"Séquence 1\""
+					}
+				},
+				"subSequence": {
+					"id": "lujqbyzl",
+					"page": "3",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Votre logement\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lujqbyzl",
+			"page": "3",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"Votre logement\""
+			},
+			"declarations": [
+				{
+					"declarationType": "HELP",
+					"id": "lujqi58d",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Questions sur votre logement\""
+					},
+					"position": "AFTER_QUESTION_TEXT"
+				}
+			]
+		},
+		{
+			"componentType": "Radio",
+			"missingResponse": {
+				"name": "SATISFAIT_MISSING"
+			},
+			"response": {
+				"name": "SATISFAIT"
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "lujqfpva",
+					"page": "1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"I - \" || \"Séquence 1\""
+					}
+				},
+				"subSequence": {
+					"id": "lujqbyzl",
+					"page": "3",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Votre logement\""
+					}
+				}
+			},
+			"options": [
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Oui\""
+					},
+					"value": "1"
+				},
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Non\""
+					},
+					"value": "2"
+				}
+			],
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lujqu9v7",
+			"page": "4",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 2. \" || \"Êtes-vous satisfait de votre logement ?\""
+			},
+			"mandatory": false
+		},
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "lujqrqmp",
+					"page": "5",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"II - \" || \"Habitants du logement\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lujqrqmp",
+			"page": "5",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"II - \" || \"Habitants du logement\""
+			}
+		},
+		{
+			"componentType": "InputNumber",
+			"min": 0,
+			"missingResponse": {
+				"name": "T_NHAB_MISSING"
+			},
+			"max": 10,
+			"response": {
+				"name": "T_NHAB"
+			},
+			"decimals": 0,
+			"hierarchy": {
+				"sequence": {
+					"id": "lujqrqmp",
+					"page": "5",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"II - \" || \"Habitants du logement\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lujqwl1t",
+			"page": "6",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 3. \" || \"Combien d'habitants dans votre logement ?\""
+			},
+			"mandatory": false
+		},
+		{
+			"paginatedLoop": false,
+			"componentType": "Loop",
+			"loopDependencies": ["T_NHAB", "T_NBHAB"],
+			"components": [
+				{
+					"componentType": "Subsequence",
+					"goToPage": "7",
+					"hierarchy": {
+						"sequence": {
+							"id": "lujqrqmp",
+							"page": "5",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"II - \" || \"Habitants du logement\""
+							}
+						},
+						"subSequence": {
+							"id": "luk18oun",
+							"page": "7",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Composition du logement\""
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "luk18oun",
+					"page": "7",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Composition du logement\""
+					}
+				},
+				{
+					"componentType": "Input",
+					"missingResponse": {
+						"name": "T_PRENOM_MISSING"
+					},
+					"response": {
+						"name": "T_PRENOM"
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "lujqrqmp",
+							"page": "5",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"II - \" || \"Habitants du logement\""
+							}
+						},
+						"subSequence": {
+							"id": "luk18oun",
+							"page": "7",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Composition du logement\""
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "lujr5vll",
+					"page": "7",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"➡ 4. \" || \" \" || if (T_NBHAB = 1) then \"Votre prénom : \" else (if ( not(isnull(T_PRENOM)) and T_PRENOM=PRENOMREF ) then \"Votre prénom : \" else ( if (isnull(PRENOMREFB) and isnull(T_PRENOM)) then \"Prénom (commencez par votre prénom) : \" else \"Prénom : \")) "
+					},
+					"mandatory": false,
+					"maxLength": 40
+				}
+			],
+			"depth": 1,
+			"hierarchy": {
+				"sequence": {
+					"id": "lujqrqmp",
+					"page": "5",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"II - \" || \"Habitants du logement\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "luk13nnr",
+			"page": "7",
+			"lines": {
+				"min": {
+					"type": "VTL",
+					"value": "T_NBHAB"
+				},
+				"max": {
+					"type": "VTL",
+					"value": "T_NBHAB"
+				}
+			}
+		},
+		{
+			"componentType": "Subsequence",
+			"goToPage": "8",
+			"hierarchy": {
+				"sequence": {
+					"id": "lujqrqmp",
+					"page": "5",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"II - \" || \"Habitants du logement\""
+					}
+				},
+				"subSequence": {
+					"id": "lulbmyhr",
+					"page": "8",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Commentaire sur composition du logement\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lulbmyhr",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"Commentaire sur composition du logement\""
+			}
+		},
+		{
+			"componentType": "Input",
+			"missingResponse": {
+				"name": "COMMCOMPO_MISSING"
+			},
+			"response": {
+				"name": "COMMCOMPO"
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "lujqrqmp",
+					"page": "5",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"II - \" || \"Habitants du logement\""
+					}
+				},
+				"subSequence": {
+					"id": "lulbmyhr",
+					"page": "8",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Commentaire sur composition du logement\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lulbam4k",
+			"page": "8",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 5. \" || \"Un petit commentaire sur cette composition de logement ?\""
+			},
+			"mandatory": false,
+			"maxLength": 249
+		},
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "lujyi4pe",
+					"page": "9",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"III - \" || \"Détail des individus\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lujyi4pe",
+			"page": "9",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"III - \" || \"Détail des individus\""
+			}
+		},
+		{
+			"paginatedLoop": true,
+			"componentType": "Loop",
+			"loopDependencies": ["T_PRENOM"],
+			"components": [
+				{
+					"componentType": "Subsequence",
+					"goToPage": "10.1",
+					"hierarchy": {
+						"sequence": {
+							"id": "lujyi4pe",
+							"page": "9",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"III - \" || \"Détail des individus\""
+							}
+						},
+						"subSequence": {
+							"id": "lujykwaz",
+							"page": "10.1",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Caractéristiques de \" || PRENOM "
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "lujykwaz",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Caractéristiques de \" || PRENOM "
+					}
+				},
+				{
+					"componentType": "Radio",
+					"missingResponse": {
+						"name": "T_SEXE_MISSING"
+					},
+					"response": {
+						"name": "T_SEXE"
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "lujyi4pe",
+							"page": "9",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"III - \" || \"Détail des individus\""
+							}
+						},
+						"subSequence": {
+							"id": "lujykwaz",
+							"page": "10.1",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Caractéristiques de \" || PRENOM "
+							}
+						}
+					},
+					"options": [
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Homme\""
+							},
+							"value": "1"
+						},
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Femme\""
+							},
+							"value": "2"
+						}
+					],
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "lujyd8ap",
+					"page": "10.1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"➡ 6. \" || \"Quel est \" || if (PRENOM = PRENOMREF) then \"votre sexe ?\" else \"le sexe de \" || PRENOM || \" ?\" "
+					},
+					"mandatory": false
+				}
+			],
+			"depth": 1,
+			"hierarchy": {
+				"sequence": {
+					"id": "lujyi4pe",
+					"page": "9",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"III - \" || \"Détail des individus\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lujyp9vl",
+			"page": "10",
+			"maxPage": "1",
+			"iterations": {
+				"type": "VTL",
+				"value": "count(T_PRENOM)"
+			}
+		},
+		{
+			"paginatedLoop": true,
+			"componentType": "Loop",
+			"loopDependencies": ["T_PRENOM"],
+			"components": [
+				{
+					"componentType": "Subsequence",
+					"goToPage": "11.1",
+					"hierarchy": {
+						"sequence": {
+							"id": "lujyi4pe",
+							"page": "9",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"III - \" || \"Détail des individus\""
+							}
+						},
+						"subSequence": {
+							"id": "lujyik5q",
+							"page": "11.1",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Autres caractéristiques de \" || PRENOM || \" : filtrée pour le premier individu\" "
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "(PRENOM <> PRENOMREF)"
+					},
+					"id": "lujyik5q",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Autres caractéristiques de \" || PRENOM || \" : filtrée pour le premier individu\" "
+					}
+				},
+				{
+					"componentType": "Datepicker",
+					"min": "1900-01-01",
+					"missingResponse": {
+						"name": "T_DATENAIS_MISSING"
+					},
+					"max": "2025-12-31",
+					"dateFormat": "YYYY-MM-DD",
+					"response": {
+						"name": "T_DATENAIS"
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "lujyi4pe",
+							"page": "9",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"III - \" || \"Détail des individus\""
+							}
+						},
+						"subSequence": {
+							"id": "lujyik5q",
+							"page": "11.1",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Autres caractéristiques de \" || PRENOM || \" : filtrée pour le premier individu\" "
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "(PRENOM <> PRENOMREF)"
+					},
+					"id": "lujyq5qw",
+					"page": "11.1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"➡ 7. \" || \"Quelle est la date de naissance de \" || PRENOM || \" ?\" "
+					},
+					"mandatory": false
+				},
+				{
+					"componentType": "Subsequence",
+					"goToPage": "11.2",
+					"hierarchy": {
+						"sequence": {
+							"id": "lujyi4pe",
+							"page": "9",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"III - \" || \"Détail des individus\""
+							}
+						},
+						"subSequence": {
+							"id": "luk0swcz",
+							"page": "11.2",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Encore d'autres caractéristiques de \" || PRENOM || \" : filtrée pour le premier individu\" "
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "(PRENOM <> PRENOMREF)"
+					},
+					"id": "luk0swcz",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Encore d'autres caractéristiques de \" || PRENOM || \" : filtrée pour le premier individu\" "
+					}
+				},
+				{
+					"componentType": "Input",
+					"missingResponse": {
+						"name": "REMARQUES_MISSING"
+					},
+					"response": {
+						"name": "REMARQUES"
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "lujyi4pe",
+							"page": "9",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"III - \" || \"Détail des individus\""
+							}
+						},
+						"subSequence": {
+							"id": "luk0swcz",
+							"page": "11.2",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Encore d'autres caractéristiques de \" || PRENOM || \" : filtrée pour le premier individu\" "
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "(PRENOM <> PRENOMREF)"
+					},
+					"id": "luk0npgm",
+					"page": "11.2",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"➡ 8. \" || \"Des remarques pour \" || PRENOM "
+					},
+					"mandatory": false,
+					"maxLength": 249
+				}
+			],
+			"depth": 1,
+			"hierarchy": {
+				"sequence": {
+					"id": "lujyi4pe",
+					"page": "9",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"III - \" || \"Détail des individus\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "(PRENOM <> PRENOMREF)"
+			},
+			"id": "lujyo21b",
+			"page": "11",
+			"maxPage": "2",
+			"iterations": {
+				"type": "VTL",
+				"value": "count(T_PRENOM)"
+			}
+		},
+		{
+			"paginatedLoop": true,
+			"componentType": "Loop",
+			"loopDependencies": ["T_PRENOM"],
+			"components": [
+				{
+					"componentType": "Sequence",
+					"hierarchy": {
+						"sequence": {
+							"id": "luk1ojt5",
+							"page": "12.1",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"IV - \" || \"Belle séquence pour \" || PRENOM "
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "luk1ojt5",
+					"page": "12.1",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"IV - \" || \"Belle séquence pour \" || PRENOM "
+					}
+				},
+				{
+					"componentType": "Subsequence",
+					"goToPage": "12.2",
+					"hierarchy": {
+						"sequence": {
+							"id": "luk1ojt5",
+							"page": "12.1",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"IV - \" || \"Belle séquence pour \" || PRENOM "
+							}
+						},
+						"subSequence": {
+							"id": "lumfc98o",
+							"page": "12.2",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Belle sous-séquence pour \" || PRENOM "
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "lumfc98o",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Belle sous-séquence pour \" || PRENOM "
+					}
+				},
+				{
+					"componentType": "Input",
+					"missingResponse": {
+						"name": "SUPERQUEST_MISSING"
+					},
+					"response": {
+						"name": "SUPERQUEST"
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "luk1ojt5",
+							"page": "12.1",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"IV - \" || \"Belle séquence pour \" || PRENOM "
+							}
+						},
+						"subSequence": {
+							"id": "lumfc98o",
+							"page": "12.2",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Belle sous-séquence pour \" || PRENOM "
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "luk17g1l",
+					"page": "12.2",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"➡ 9. \" || \"Super question pour \" || PRENOM "
+					},
+					"mandatory": false,
+					"maxLength": 249
+				},
+				{
+					"componentType": "Subsequence",
+					"goToPage": "12.3",
+					"hierarchy": {
+						"sequence": {
+							"id": "luk1ojt5",
+							"page": "12.1",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"IV - \" || \"Belle séquence pour \" || PRENOM "
+							}
+						},
+						"subSequence": {
+							"id": "lumfe3bj",
+							"page": "12.3",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Autre belle sous-seq\""
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "lumfe3bj",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Autre belle sous-seq\""
+					}
+				},
+				{
+					"componentType": "Input",
+					"missingResponse": {
+						"name": "ENCOREUNEQ_MISSING"
+					},
+					"response": {
+						"name": "ENCOREUNEQ"
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "luk1ojt5",
+							"page": "12.1",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"IV - \" || \"Belle séquence pour \" || PRENOM "
+							}
+						},
+						"subSequence": {
+							"id": "lumfe3bj",
+							"page": "12.3",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Autre belle sous-seq\""
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "lumfai3t",
+					"page": "12.3",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"➡ 10. \" || \"Encore une question pour \" || PRENOM "
+					},
+					"mandatory": false,
+					"maxLength": 249
+				},
+				{
+					"componentType": "Sequence",
+					"hierarchy": {
+						"sequence": {
+							"id": "lulbelgr",
+							"page": "12.4",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"V - \" || \"Autre séquence pour \" || PRENOM "
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "lulbelgr",
+					"page": "12.4",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"V - \" || \"Autre séquence pour \" || PRENOM "
+					}
+				},
+				{
+					"componentType": "Input",
+					"missingResponse": {
+						"name": "AUTRESUPERQUEST_MISSING"
+					},
+					"response": {
+						"name": "AUTRESUPERQUEST"
+					},
+					"hierarchy": {
+						"sequence": {
+							"id": "lulbelgr",
+							"page": "12.4",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"V - \" || \"Autre séquence pour \" || PRENOM "
+							}
+						}
+					},
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					},
+					"id": "lulbqdzi",
+					"page": "12.5",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"➡ 11. \" || \"Autre super question pour \" || PRENOM "
+					},
+					"mandatory": false,
+					"maxLength": 249
+				}
+			],
+			"depth": 1,
+			"hierarchy": {
+				"sequence": {
+					"id": "lujyi4pe",
+					"page": "9",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"III - \" || \"Détail des individus\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "luk1sm54",
+			"page": "12",
+			"maxPage": "5",
+			"iterations": {
+				"type": "VTL",
+				"value": "count(T_PRENOM)"
+			}
+		},
+		{
+			"componentType": "Sequence",
+			"hierarchy": {
+				"sequence": {
+					"id": "COMMENT-SEQ",
+					"page": "13",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Commentaire\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "COMMENT-SEQ",
+			"page": "13",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"Commentaire\""
+			}
+		},
+		{
+			"componentType": "Textarea",
+			"missingResponse": {
+				"name": "COMMENT_QE_MISSING"
+			},
+			"response": {
+				"name": "COMMENT_QE"
+			},
+			"hierarchy": {
+				"sequence": {
+					"id": "COMMENT-SEQ",
+					"page": "13",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Commentaire\""
+					}
+				}
+			},
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "COMMENT-QUESTION",
+			"page": "14",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"➡ 12. \" || \"Avez-vous des remarques concernant l'enquête ou des commentaires ?\""
+			},
+			"mandatory": false,
+			"maxLength": 2000
+		}
+	],
+	"pagination": "question",
+	"resizing": {
+		"T_NHAB": {
+			"variables": ["T_PRENOM"],
+			"size": "T_NBHAB"
+		},
+		"T_PRENOM": {
+			"variables": [
+				"T_SEXE",
+				"REMARQUES",
+				"T_DATENAIS",
+				"SUPERQUEST",
+				"AUTRESUPERQUEST",
+				"ENCOREUNEQ"
+			],
+			"size": "count(T_PRENOM)"
+		}
+	},
+	"missingBlock": {
+		"ETAT": ["ETAT_MISSING"],
+		"T_PRENOM_MISSING": ["T_PRENOM"],
+		"COMMCOMPO_MISSING": ["COMMCOMPO"],
+		"SATISFAIT_MISSING": ["SATISFAIT"],
+		"COMMENT_QE_MISSING": ["COMMENT_QE"],
+		"SUPERQUEST_MISSING": ["SUPERQUEST"],
+		"ETAT_MISSING": ["ETAT"],
+		"REMARQUES": ["REMARQUES_MISSING"],
+		"ENCOREUNEQ": ["ENCOREUNEQ_MISSING"],
+		"T_PRENOM": ["T_PRENOM_MISSING"],
+		"T_NHAB": ["T_NHAB_MISSING"],
+		"T_NHAB_MISSING": ["T_NHAB"],
+		"T_SEXE": ["T_SEXE_MISSING"],
+		"COMMCOMPO": ["COMMCOMPO_MISSING"],
+		"COMMENT_QE": ["COMMENT_QE_MISSING"],
+		"SUPERQUEST": ["SUPERQUEST_MISSING"],
+		"AUTRESUPERQUEST": ["AUTRESUPERQUEST_MISSING"],
+		"SATISFAIT": ["SATISFAIT_MISSING"],
+		"AUTRESUPERQUEST_MISSING": ["AUTRESUPERQUEST"],
+		"ENCOREUNEQ_MISSING": ["ENCOREUNEQ"],
+		"T_DATENAIS": ["T_DATENAIS_MISSING"],
+		"T_SEXE_MISSING": ["T_SEXE"],
+		"T_DATENAIS_MISSING": ["T_DATENAIS"],
+		"REMARQUES_MISSING": ["REMARQUES"]
+	},
+	"label": {
+		"type": "VTL|MD",
+		"value": "Test boucle overview"
+	},
+	"lunaticModelVersion": "3.5.0",
+	"modele": "BOUCLEOVERVIEW",
+	"enoCoreVersion": "3.18.5-SNAPSHOT",
+	"generatingDate": "05-04-2024 08:47:05",
+	"missing": true,
+	"id": "lujqh1w6",
+	"maxPage": "14"
+}

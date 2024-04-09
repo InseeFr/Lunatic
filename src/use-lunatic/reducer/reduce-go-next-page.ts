@@ -3,9 +3,8 @@ import { getPageId, isPageEmpty } from '../commons/page';
 import { getNextPager } from '../commons/page-navigation';
 import type { LunaticState } from '../type';
 import { autoExploreLoop } from './commons/auto-explore-loop';
-import { overviewOnChange } from './overview/overview-on-change';
 
-function reduceGoNext(state: LunaticState): LunaticState {
+export function reduceGoNextPage(state: LunaticState): LunaticState {
 	const { pages, pager } = state;
 	const parentType = pages[pager.page]?.components[0].componentType;
 	const nextPager = getNextPager(pager, parentType);
@@ -19,7 +18,7 @@ function reduceGoNext(state: LunaticState): LunaticState {
 
 	// We reached an empty page, move forward
 	if (isPageEmpty(newState)) {
-		return reduceGoNext(newState);
+		return reduceGoNextPage(newState);
 	}
 
 	// If we reached a loop, go inside
@@ -27,7 +26,7 @@ function reduceGoNext(state: LunaticState): LunaticState {
 
 	// We explored a loop, check if we reached an empty page, move forward
 	if (newState.pager !== nextPager && isPageEmpty(newState)) {
-		return reduceGoNext(newState);
+		return reduceGoNextPage(newState);
 	}
 
 	return {
@@ -39,7 +38,3 @@ function reduceGoNext(state: LunaticState): LunaticState {
 		},
 	};
 }
-
-export const reduceGoNextPage = (state: LunaticState) => {
-	return overviewOnChange(reduceGoNext(state));
-};

@@ -1,0 +1,189 @@
+{
+	"id": "",
+	"questionnaireId": "",
+	"data": {
+		"EXTERNAL": {},
+		"CALCULATED": {
+			"T_NBHAB": 3,
+			"PRENOMREFB": "Quentin",
+			"PRENOMREF": "Quentin",
+			"PRENOM": ["Quentin", "Luna", "Paul"],
+			"PRENOMB": ["Quentin", "Luna", "Paul"]
+		},
+		"COLLECTED": {
+			"ETAT": {
+				"COLLECTED": "1",
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"SATISFAIT": {
+				"COLLECTED": "1",
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"T_NHAB": {
+				"COLLECTED": 3,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"T_PRENOM": {
+				"COLLECTED": ["Quentin", "Luna", "Paul"],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"COMMCOMPO": {
+				"COLLECTED": "super",
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"T_SEXE": {
+				"COLLECTED": ["1", "2", "1"],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"T_DATENAIS": {
+				"COLLECTED": [null, null, null],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"REMARQUES": {
+				"COLLECTED": [null, "a", "b"],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"SUPERQUEST": {
+				"COLLECTED": ["ok", "ok", null],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"AUTRESUPERQUEST": {
+				"COLLECTED": ["a", "c", "ras"],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"ENCOREUNEQ": {
+				"COLLECTED": ["wow", "b", null],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"COMMENT_QE": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"ETAT_MISSING": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"SATISFAIT_MISSING": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"T_NHAB_MISSING": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"T_PRENOM_MISSING": {
+				"COLLECTED": null,
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"COMMCOMPO_MISSING": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"T_SEXE_MISSING": {
+				"COLLECTED": null,
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"T_DATENAIS_MISSING": {
+				"COLLECTED": [null, "DK", "RF"],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"REMARQUES_MISSING": {
+				"COLLECTED": [null, null, null],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"SUPERQUEST_MISSING": {
+				"COLLECTED": [null, null, "DK"],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"ENCOREUNEQ_MISSING": {
+				"COLLECTED": [null, null, "RF"],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"AUTRESUPERQUEST_MISSING": {
+				"COLLECTED": null,
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"COMMENT_QE_MISSING": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			}
+		}
+	},
+	"stateData": {
+		"state": "INIT",
+		"date": 1712306743767,
+		"currentPage": "14"
+	}
+}

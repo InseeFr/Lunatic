@@ -9,7 +9,6 @@ import { createLunaticProvider } from './lunatic-context';
 import type { LunaticSource } from './type-source';
 import type { LunaticComponentProps } from '../components/type';
 import { compileControls as compileControlsLib } from './commons/compile-controls';
-import { overviewWithChildren } from './commons/getOverview';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import reducer from './reducer';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
@@ -18,6 +17,7 @@ import { usePageHasResponse } from './hooks/use-page-has-response';
 import { registerSuggesters } from '../utils/search/SuggestersDatabase';
 import type { IndexEntry } from '../utils/search/SearchInterface';
 import { useRefSync } from '../hooks/useRefSync';
+import { useOverview } from './hooks/useOverview';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const emptyFn = () => {};
@@ -196,11 +196,6 @@ function useLunatic(
 		(variableNames?: string[]) => getData(false, variableNames)
 	);
 
-	const buildedOverview = useMemo(
-		() => overviewWithChildren(overview),
-		[overview]
-	);
-
 	const pageTag = getPageTag(pager);
 	const { isFirstPage, isLastPage } = isFirstLastPage(pager);
 
@@ -259,7 +254,14 @@ function useLunatic(
 		getData,
 		Provider,
 		onChange: handleChange,
-		overview: buildedOverview,
+		overview: useOverview(
+			{
+				executeExpression,
+				overview,
+				pager,
+			},
+			[pageTag]
+		),
 		loopVariables: useLoopVariables(pager, state.pages),
 		getChangedData,
 		resetChangedData,
