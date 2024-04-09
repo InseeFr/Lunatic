@@ -6,6 +6,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lujqeci5",
         "label": <MDLabel
           expression="Votre santé"
@@ -16,6 +17,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lujqbyzl",
         "label": <MDLabel
           expression="Votre logement"
@@ -25,6 +27,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "lujqfpva",
     "label": <MDLabel
       expression="I - Séquence 1"
@@ -37,6 +40,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lulbmyhr",
         "label": <MDLabel
           expression="Commentaire sur composition du logement"
@@ -46,6 +50,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "lujqrqmp",
     "label": <MDLabel
       expression="II - Habitants du logement"
@@ -58,6 +63,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lujykwaz",
         "label": <MDLabel
           expression="Caractéristiques de Quentin"
@@ -68,6 +74,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lujykwaz",
         "label": <MDLabel
           expression="Caractéristiques de Luna"
@@ -78,6 +85,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lujykwaz",
         "label": <MDLabel
           expression="Caractéristiques de Paul"
@@ -88,6 +96,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lujyik5q",
         "label": <MDLabel
           expression="Autres caractéristiques de Luna : filtrée pour le premier individu"
@@ -98,6 +107,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
       },
       {
         "children": [],
+        "description": undefined,
         "id": "luk0swcz",
         "label": <MDLabel
           expression="Encore d'autres caractéristiques de Luna : filtrée pour le premier individu"
@@ -108,6 +118,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lujyik5q",
         "label": <MDLabel
           expression="Autres caractéristiques de Paul : filtrée pour le premier individu"
@@ -118,6 +129,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
       },
       {
         "children": [],
+        "description": undefined,
         "id": "luk0swcz",
         "label": <MDLabel
           expression="Encore d'autres caractéristiques de Paul : filtrée pour le premier individu"
@@ -127,6 +139,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "lujyi4pe",
     "label": <MDLabel
       expression="III - Détail des individus"
@@ -139,6 +152,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lumfc98o",
         "label": <MDLabel
           expression="Belle sous-séquence pour Quentin"
@@ -149,6 +163,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lumfe3bj",
         "label": <MDLabel
           expression="Autre belle sous-seq"
@@ -158,6 +173,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "luk1ojt5",
     "label": <MDLabel
       expression="IV - Belle séquence pour Quentin"
@@ -168,6 +184,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
   },
   {
     "children": [],
+    "description": undefined,
     "id": "lulbelgr",
     "label": <MDLabel
       expression="V - Autre séquence pour Quentin"
@@ -180,6 +197,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lumfc98o",
         "label": <MDLabel
           expression="Belle sous-séquence pour Luna"
@@ -190,6 +208,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lumfe3bj",
         "label": <MDLabel
           expression="Autre belle sous-seq"
@@ -199,6 +218,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "luk1ojt5",
     "label": <MDLabel
       expression="IV - Belle séquence pour Luna"
@@ -209,6 +229,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
   },
   {
     "children": [],
+    "description": undefined,
     "id": "lulbelgr",
     "label": <MDLabel
       expression="V - Autre séquence pour Luna"
@@ -221,6 +242,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lumfc98o",
         "label": <MDLabel
           expression="Belle sous-séquence pour Paul"
@@ -231,6 +253,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lumfe3bj",
         "label": <MDLabel
           expression="Autre belle sous-seq"
@@ -240,6 +263,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "luk1ojt5",
     "label": <MDLabel
       expression="IV - Belle séquence pour Paul"
@@ -250,6 +274,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
   },
   {
     "children": [],
+    "description": undefined,
     "id": "lulbelgr",
     "label": <MDLabel
       expression="V - Autre séquence pour Paul"
@@ -260,6 +285,7 @@ exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`
   },
   {
     "children": [],
+    "description": undefined,
     "id": "COMMENT-SEQ",
     "label": <MDLabel
       expression="Commentaire"
@@ -277,6 +303,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lujqeci5",
         "label": <MDLabel
           expression="Votre santé"
@@ -287,6 +314,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lujqbyzl",
         "label": <MDLabel
           expression="Votre logement"
@@ -296,6 +324,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "lujqfpva",
     "label": <MDLabel
       expression="I - Séquence 1"
@@ -308,6 +337,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lulbmyhr",
         "label": <MDLabel
           expression="Commentaire sur composition du logement"
@@ -317,6 +347,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "lujqrqmp",
     "label": <MDLabel
       expression="II - Habitants du logement"
@@ -329,6 +360,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lujykwaz",
         "label": <MDLabel
           expression="Caractéristiques de Quentin"
@@ -339,6 +371,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lujykwaz",
         "label": <MDLabel
           expression="Caractéristiques de Luna"
@@ -349,6 +382,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lujykwaz",
         "label": <MDLabel
           expression="Caractéristiques de Paul"
@@ -359,6 +393,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lujyik5q",
         "label": <MDLabel
           expression="Autres caractéristiques de Luna : filtrée pour le premier individu"
@@ -369,6 +404,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
       },
       {
         "children": [],
+        "description": undefined,
         "id": "luk0swcz",
         "label": <MDLabel
           expression="Encore d'autres caractéristiques de Luna : filtrée pour le premier individu"
@@ -379,6 +415,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lujyik5q",
         "label": <MDLabel
           expression="Autres caractéristiques de Paul : filtrée pour le premier individu"
@@ -389,6 +426,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
       },
       {
         "children": [],
+        "description": undefined,
         "id": "luk0swcz",
         "label": <MDLabel
           expression="Encore d'autres caractéristiques de Paul : filtrée pour le premier individu"
@@ -398,6 +436,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "lujyi4pe",
     "label": <MDLabel
       expression="III - Détail des individus"
@@ -410,6 +449,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lumfc98o",
         "label": <MDLabel
           expression="Belle sous-séquence pour Quentin"
@@ -420,6 +460,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lumfe3bj",
         "label": <MDLabel
           expression="Autre belle sous-seq"
@@ -429,6 +470,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "luk1ojt5",
     "label": <MDLabel
       expression="IV - Belle séquence pour Quentin"
@@ -439,6 +481,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
   },
   {
     "children": [],
+    "description": undefined,
     "id": "lulbelgr",
     "label": <MDLabel
       expression="V - Autre séquence pour Quentin"
@@ -451,6 +494,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lumfc98o",
         "label": <MDLabel
           expression="Belle sous-séquence pour Luna"
@@ -461,6 +505,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lumfe3bj",
         "label": <MDLabel
           expression="Autre belle sous-seq"
@@ -470,6 +515,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "luk1ojt5",
     "label": <MDLabel
       expression="IV - Belle séquence pour Luna"
@@ -480,6 +526,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
   },
   {
     "children": [],
+    "description": undefined,
     "id": "lulbelgr",
     "label": <MDLabel
       expression="V - Autre séquence pour Luna"
@@ -492,6 +539,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
     "children": [
       {
         "children": [],
+        "description": undefined,
         "id": "lumfc98o",
         "label": <MDLabel
           expression="Belle sous-séquence pour Paul"
@@ -502,6 +550,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
       },
       {
         "children": [],
+        "description": undefined,
         "id": "lumfe3bj",
         "label": <MDLabel
           expression="Autre belle sous-seq"
@@ -511,6 +560,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
         "type": "Subsequence",
       },
     ],
+    "description": undefined,
     "id": "luk1ojt5",
     "label": <MDLabel
       expression="IV - Belle séquence pour Paul"
@@ -521,6 +571,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
   },
   {
     "children": [],
+    "description": undefined,
     "id": "lulbelgr",
     "label": <MDLabel
       expression="V - Autre séquence pour Paul"
@@ -531,6 +582,7 @@ exports[`use-lunatic() > overview > with loop > should work with loop 1`] = `
   },
   {
     "children": [],
+    "description": undefined,
     "id": "COMMENT-SEQ",
     "label": <MDLabel
       expression="Commentaire"
