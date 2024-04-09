@@ -1,7 +1,7 @@
 import type { LunaticOverviewItem, LunaticState, PageTag } from '../type';
 import { type DependencyList, type ReactNode, useMemo } from 'react';
 
-type InterpretedLunaticOverviewItem = {
+export type InterpretedLunaticOverviewItem = {
 	id: string;
 	type: string;
 	page: PageTag;
