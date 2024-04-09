@@ -39,8 +39,7 @@ const interpretOverview = (
 ) => {
 	// Flat structure of the overview
 	let items = overviewItems.reduce(
-		(acc, item) =>
-			interpretOverviewItem(acc, item, executeExpression, pager),
+		(acc, item) => interpretOverviewItem(acc, item, executeExpression, pager),
 		[] as InterpretedLunaticOverviewItem[]
 	);
 	// Sort using the page logic
@@ -71,18 +70,11 @@ const interpretOverviewItem = (
 	pager?: LunaticState['pager'],
 	iteration?: number
 ): InterpretedLunaticOverviewItem[] => {
-
 	// We reached a loop item, we need to add it multiple time
 	if (item.iterations && iteration === undefined) {
 		const iterations = executeExpression<number>(item.iterations) ?? 0;
 		for (let i = 0; i < iterations; i++) {
-			items = interpretOverviewItem(
-				items,
-				item,
-				executeExpression,
-				pager,
-				i
-			);
+			items = interpretOverviewItem(items, item, executeExpression, pager, i);
 		}
 		return items;
 	}
@@ -102,7 +94,9 @@ const interpretOverviewItem = (
 		id: item.id,
 		type: item.type,
 		label: executeExpression(item.label, { iteration }),
-		description: item.description ? executeExpression(item.description, { iteration }) : undefined,
+		description: item.description
+			? executeExpression(item.description, { iteration })
+			: undefined,
 		children: [],
 		reached:
 			pageTagComparator({ page: pager?.lastReachedPage ?? '-1' }, { page }) >= 0
