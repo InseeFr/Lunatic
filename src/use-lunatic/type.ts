@@ -17,6 +17,7 @@ export type LunaticOverviewItem = {
 	pageTag: string;
 	page: number;
 	label: LunaticExpression;
+	description: LunaticExpression | undefined;
 	type: string;
 	conditionFilter?: LunaticExpression;
 	iterations?: string;

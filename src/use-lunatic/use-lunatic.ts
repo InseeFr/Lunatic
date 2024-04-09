@@ -258,7 +258,7 @@ function useLunatic(
 			{
 				executeExpression,
 				overview,
-				lastReachedPage: lastReachedPage ?? pageTag,
+				pager,
 			},
 			[pageTag]
 		),

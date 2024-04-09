@@ -44,6 +44,7 @@ function overviewFromComponent(
 			pageTag: page,
 			page: parseInt(parts[0], 10),
 			label: component.label,
+			description: component.description,
 			conditionFilter: component.conditionFilter,
 			...extra,
 		});

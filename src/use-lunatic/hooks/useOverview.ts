@@ -6,6 +6,7 @@ type InterpretedLunaticOverviewItem = {
 	type: string;
 	page: PageTag;
 	label: ReactNode;
+	description: ReactNode;
 	reached: boolean;
 	children: InterpretedLunaticOverviewItem[];
 };
@@ -17,14 +18,12 @@ export const useOverview = (
 	{
 		overview,
 		executeExpression,
-		lastReachedPage,
-	}: Pick<LunaticState, 'executeExpression' | 'overview'> & {
-		lastReachedPage?: PageTag;
-	},
+		pager,
+	}: Pick<LunaticState, 'executeExpression' | 'overview' | 'pager'>,
 	deps: DependencyList
 ) => {
 	return useMemo(
-		() => interpretOverview(overview, executeExpression, lastReachedPage),
+		() => interpretOverview(overview, executeExpression, pager),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[...deps, overview]
 	);
@@ -36,12 +35,12 @@ export const useOverview = (
 const interpretOverview = (
 	overviewItems: LunaticOverviewItem[],
 	executeExpression: LunaticState['executeExpression'],
-	lastReachedPage?: PageTag
+	pager?: LunaticState['pager']
 ) => {
 	// Flat structure of the overview
 	let items = overviewItems.reduce(
 		(acc, item) =>
-			interpretOverviewItem(acc, item, executeExpression, lastReachedPage),
+			interpretOverviewItem(acc, item, executeExpression, pager),
 		[] as InterpretedLunaticOverviewItem[]
 	);
 	// Sort using the page logic
@@ -69,16 +68,9 @@ const interpretOverviewItem = (
 	items: InterpretedLunaticOverviewItem[],
 	item: LunaticOverviewItem,
 	executeExpression: LunaticState['executeExpression'],
-	lastReachedPage?: PageTag,
+	pager?: LunaticState['pager'],
 	iteration?: number
 ): InterpretedLunaticOverviewItem[] => {
-	const isVisible = !!executeExpression(item.conditionFilter, {
-		iteration: iteration,
-	});
-
-	if (!isVisible) {
-		return items;
-	}
 
 	// We reached a loop item, we need to add it multiple time
 	if (item.iterations && iteration === undefined) {
@@ -88,10 +80,18 @@ const interpretOverviewItem = (
 				items,
 				item,
 				executeExpression,
-				lastReachedPage,
+				pager,
 				i
 			);
 		}
+		return items;
+	}
+
+	const isVisible = !!executeExpression(item.conditionFilter, {
+		iteration: iteration,
+	});
+
+	if (!isVisible) {
 		return items;
 	}
 
@@ -102,9 +102,10 @@ const interpretOverviewItem = (
 		id: item.id,
 		type: item.type,
 		label: executeExpression(item.label, { iteration }),
+		description: item.description ? executeExpression(item.description, { iteration }) : undefined,
 		children: [],
 		reached:
-			pageTagComparator({ page: lastReachedPage ?? '-1' }, { page }) >= 0
+			pageTagComparator({ page: pager?.lastReachedPage ?? '-1' }, { page }) >= 0
 				? true
 				: false,
 		page: page,
