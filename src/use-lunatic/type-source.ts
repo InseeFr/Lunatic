@@ -340,7 +340,7 @@ export type LunaticSource = {
 	lunaticModelVersion?: string;
 	generatingDate?: string;
 	missing?: boolean;
-	pagination?: 'question' | 'sequence' | 'subsequence';
+	pagination?: 'question' | 'sequence';
 	maxPage: string;
 	label: LabelType;
 	components: ComponentType[];
