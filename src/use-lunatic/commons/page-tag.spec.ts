@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { getPagerFromPageTag } from './page-tag';
+import { getPagerFromPageTag, pageTagComparator } from './page-tag';
+import type { PageTag } from '../type';
 
 describe('page-tag', () => {
 	describe('getPagerFromPageTag', () => {
@@ -16,4 +17,27 @@ describe('page-tag', () => {
 			});
 		});
 	});
+
+	it.each([
+		['4.1', '4.2', -1],
+		['4.2#1', '4.2#1', 0],
+		['4.2#2', '4.2#1', 1],
+		['4.1#2', '4.2#1', 1],
+		['4.3#1', '4.2#1', 1],
+		['4', '4.2#1', -1],
+	] satisfies [PageTag, PageTag, number][])(
+		'pageTagComparator("%s", "%s") -> %d',
+		(a, b, expected) => {
+			const expectation = expect(pageTagComparator(a, b));
+			if (expected === 0) {
+				expectation.toBe(0);
+			}
+			if (expected === 1) {
+				expectation.toBeGreaterThan(0);
+			}
+			if (expected === -1) {
+				expectation.toBeLessThan(0);
+			}
+		}
+	);
 });

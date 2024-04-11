@@ -1,5 +1,6 @@
 import type { LunaticOverviewItem, LunaticState, PageTag } from '../type';
 import { type DependencyList, type ReactNode, useMemo } from 'react';
+import { getPageTag, pageTagComparator } from '../commons/page-tag';
 
 export type InterpretedLunaticOverviewItem = {
 	id: string;
@@ -8,6 +9,7 @@ export type InterpretedLunaticOverviewItem = {
 	label: ReactNode;
 	description: ReactNode;
 	reached: boolean;
+	current: boolean;
 	children: InterpretedLunaticOverviewItem[];
 };
 
@@ -43,7 +45,7 @@ const interpretOverview = (
 		[] as InterpretedLunaticOverviewItem[]
 	);
 	// Sort using the page logic
-	items = items.sort(pageTagComparator);
+	items = items.sort((a, b) => pageTagComparator(a.page, b.page));
 	// Build a tree with nested item, a subsequence will be a child of the previous sequence
 	const rootItems = [] as typeof items;
 	let parent = null as null | InterpretedLunaticOverviewItem;
@@ -55,6 +57,10 @@ const interpretOverview = (
 		} else {
 			parent?.children.push(item);
 		}
+	}
+
+	if (pager) {
+		applyCurrentPage(rootItems, getPageTag(pager));
 	}
 
 	return rootItems;
@@ -99,31 +105,37 @@ const interpretOverviewItem = (
 			: undefined,
 		children: [],
 		reached:
-			pageTagComparator({ page: pager?.lastReachedPage ?? '-1' }, { page }) >= 0
+			pageTagComparator(pager?.lastReachedPage ?? '-1', page) >= 0
 				? true
 				: false,
 		page: page,
+		current: false,
 	});
 
 	return items;
 };
 
 /**
- * Organize page in the right order (positive if a > b)
- *
- * Page are organized by iteration, then subpage, then page
+ * Set the current property in the correct overview item
  */
-const pageTagComparator = (
-	a: Pick<InterpretedLunaticOverviewItem, 'page'>,
-	b: Pick<InterpretedLunaticOverviewItem, 'page'>
-) => {
-	const pageA = a.page.split(/\D/).map((v) => parseInt(v, 10));
-	const pageB = b.page.split(/\D/).map((v) => parseInt(v, 10));
-	// [0, 2, 1] is used to extract the significant part of the pageTag part (start with page, then iteration, then subpage)
-	for (const index of [0, 2, 1]) {
-		if (pageA[index] !== pageB[index]) {
-			return (pageA[index] ?? -1) - (pageB[index] ?? -1);
-		}
+const applyCurrentPage = (
+	items: InterpretedLunaticOverviewItem[],
+	currentPage: PageTag
+): InterpretedLunaticOverviewItem[] => {
+	// Look for the last item where page <= currentPage
+	const currentItem = items.findLast(
+		(item) => pageTagComparator(item.page, currentPage) <= 0
+	);
+
+	if (!currentItem) {
+		return items;
 	}
-	return 0;
+
+	// Make this page "current"
+	currentItem.current = true;
+	if (currentItem.children.length > 0) {
+		applyCurrentPage(currentItem.children, currentPage);
+	}
+
+	return items;
 };
