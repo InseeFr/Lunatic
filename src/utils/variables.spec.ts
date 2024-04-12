@@ -16,7 +16,7 @@ const data = {
 		PRENOMS: {
 			COLLECTED: ['Paul', 'Pierre'],
 			EDITED: [],
-			INPUTED: [],
+			INPUTTED: [],
 			FORCED: [],
 			PREVIOUS: [],
 		},

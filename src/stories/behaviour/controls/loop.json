@@ -109,7 +109,7 @@
 			"values": {
 				"COLLECTED": ["John", "Jane"],
 				"EDITED": null,
-				"INPUTED": null,
+				"INPUTTED": null,
 				"FORCED": null,
 				"PREVIOUS": null
 			},
@@ -120,7 +120,7 @@
 			"values": {
 				"COLLECTED": [10, 12],
 				"EDITED": null,
-				"INPUTED": null,
+				"INPUTTED": null,
 				"FORCED": null,
 				"PREVIOUS": null
 			},

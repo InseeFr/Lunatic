@@ -58,7 +58,7 @@ export function generateVariable({ type = 'COLLECTED', name = 'VARIABLE' }) {
 			COLLECTED: null,
 			FORCED: null,
 			EDITED: null,
-			INPUTED: null,
+			INPUTTED: null,
 		},
 	};
 }
