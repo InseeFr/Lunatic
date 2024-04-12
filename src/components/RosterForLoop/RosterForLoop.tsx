@@ -32,8 +32,8 @@ export const RosterForLoop = (
 		label,
 		...otherProps // These props will be passed down to the child components
 	} = props;
-	const min = lines?.min || DEFAULT_MIN_ROWS;
-	const max = lines?.max || DEFAULT_MAX_ROWS;
+	const min = lines?.min ?? DEFAULT_MIN_ROWS;
+	const max = lines?.max ?? DEFAULT_MAX_ROWS;
 	const [nbRows, setNbRows] = useState(Math.max(min, iterations));
 
 	const addRow = useCallback(() => {
@@ -43,16 +43,16 @@ export const RosterForLoop = (
 	}, [max, nbRows]);
 
 	const removeRow = useCallback(() => {
-		if (nbRows <= 1) {
+		if (nbRows <= min) {
 			return;
 		}
 		const newNbRows = nbRows - 1;
 		setNbRows(newNbRows);
 		Object.entries(valueMap).forEach(([k, v]) => {
-			const newValue = v.filter((_, i) => i < newNbRows);
+			const newValue = v?.filter((_, i) => i < newNbRows);
 			handleChange({ name: k }, newValue);
 		});
-	}, [nbRows, handleChange, valueMap]);
+	}, [nbRows, min, valueMap, handleChange]);
 
 	if (nbRows === 0) {
 		return null;
@@ -65,7 +65,7 @@ export const RosterForLoop = (
 			{...props}
 			errors={getComponentErrors(errors, props.id)}
 			addRow={nbRows === max ? undefined : addRow}
-			removeRow={nbRows === 1 ? undefined : removeRow}
+			removeRow={nbRows === min ? undefined : removeRow}
 			canControlRows={!!(min && max && min !== max)}
 		>
 			<Table id={id}>
