@@ -1,3 +1,5 @@
+import type { DistributiveOmit } from '../type.utils';
+
 /**
  * Types used for source data (lunatic models and data.json)
  */
@@ -129,7 +131,7 @@ export type ComponentRoundaboutType = {
 
 export type ComponentRosterForLoopType = {
 	componentType: 'RosterForLoop';
-	components: ComponentType[];
+	components: DistributiveOmit<ComponentType, 'page'>[];
 	lines: { min: LabelType; max: LabelType };
 	header?: {
 		value: string;
@@ -145,15 +147,16 @@ type PaginatedLoop = {
 	paginatedLoop: true;
 	maxPage: string;
 	iterations: LabelType;
+	components: ComponentType[];
 };
 
 type BlockLoop = {
 	paginatedLoop: false;
 	lines: { min: LabelType; max: LabelType };
+	components: DistributiveOmit<ComponentType, 'page'>[];
 };
 
 export type ComponentLoopType = {
-	componentType: 'Loop';
 	loopDependencies: string[];
 	components: ComponentType[];
 	depth: number;
@@ -164,7 +167,7 @@ export type ComponentTableType = {
 	header: ComponentRosterForLoopType['header'];
 	body: (
 		| { label: LabelType; colspan?: number; rowspan?: number }
-		| (ComponentType & { colspan?: number; rowspan?: number })
+		| (TableComponent & { colspan?: number; rowspan?: number })
 	)[][];
 };
 
@@ -243,12 +246,12 @@ export type ComponentPairWiseLinksType = {
 	symLinks: {
 		[variableName: string]: Record<string, string | null>;
 	};
-	components: ComponentType[];
+	components: DistributiveOmit<ComponentType, 'page'>[];
 };
 
 export type ComponentQuestionType = {
 	componentType: 'Question';
-	components: ComponentType[];
+	components: DistributiveOmit<ComponentType, 'page'>[];
 	description: LabelType;
 };
 
@@ -262,6 +265,18 @@ export type ComponentSuggesterType = {
 	};
 	optionResponses: { name: string; attribute: string }[];
 };
+
+export type TableComponent =
+	| ComponentCheckboxBooleanType
+	| ComponentCheckboxGroupType
+	| ComponentCheckboxOneType
+	| ComponentDatePickerType
+	| ComponentDropdownType
+	| ComponentDurationType
+	| ComponentInputOrTextareaType
+	| ComponentNumberType
+	| ComponentRadioType
+	| ComponentSuggesterType;
 
 export type SuggesterType = {
 	// Name of the list (will be used as storeName for suggester)
@@ -329,7 +344,6 @@ export type Variable =
 			name: string;
 			expression: LabelType;
 			bindingDependencies?: string[];
-			inFilter: string;
 			shapeFrom?: string;
 	  };
 
