@@ -101,11 +101,11 @@ export const RosterForLoop = (
 									/>
 								</Tr>
 								{hasLineErrors && (
-									<tr className="lunatic-errors">
-										<td colSpan={cols}>
+									<Tr className="lunatic-errors">
+										<Td colSpan={cols}>
 											<ComponentErrors errors={lineErrors} />
-										</td>
-									</tr>
+										</Td>
+									</Tr>
 								)}
 							</Fragment>
 						);
