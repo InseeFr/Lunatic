@@ -335,6 +335,7 @@ export type Variable =
 
 export type LunaticSource = {
 	id: string;
+	componentType?: 'Questionnaire';
 	modele?: string;
 	enoCoreVersion?: string;
 	lunaticModelVersion?: string;
