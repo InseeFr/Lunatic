@@ -90,8 +90,6 @@ function LunaticRadioOption({
 		hasKeyboardShortcut
 	);
 
-	console.log({ codeModality });
-
 	return (
 		<>
 			<div className="lunatic-radio-group-option">
