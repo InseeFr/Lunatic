@@ -16,7 +16,7 @@ export function getQuestionnaireData(
 			{
 				EDITED: unknown;
 				FORCED: unknown;
-				INPUTED: unknown;
+				INPUTTED: unknown;
 				PREVIOUS: unknown;
 				COLLECTED: unknown;
 			}
@@ -37,7 +37,7 @@ export function getQuestionnaireData(
 					{
 						EDITED: null,
 						FORCED: null,
-						INPUTED: null,
+						INPUTTED: null,
 						PREVIOUS: null,
 						COLLECTED: store.get(name),
 					},

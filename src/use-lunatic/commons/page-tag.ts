@@ -75,3 +75,21 @@ export function getNewReachedPage(
 ): PageTag | undefined {
 	return isNewReachedPage(pager) ? getPageTag(pager) : pager.lastReachedPage;
 }
+
+/**
+ * Comparison function for pageTag
+ * - negative if a comes before b
+ * - positive if a comes after b
+ * - 0 if a is the same as b
+ */
+export function pageTagComparator(a: PageTag, b: PageTag) {
+	const pageA = a.split(/\D/).map((v) => parseInt(v, 10));
+	const pageB = b.split(/\D/).map((v) => parseInt(v, 10));
+	// [0, 2, 1] is used to extract the significant part of the pageTag part (start with page, then iteration, then subpage)
+	for (const index of [0, 2, 1]) {
+		if (pageA[index] !== pageB[index]) {
+			return (pageA[index] ?? -1) - (pageB[index] ?? -1);
+		}
+	}
+	return 0;
+}

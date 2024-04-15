@@ -16,9 +16,12 @@ export const Overview = ({ overview: stateOverview, goToPage }) => {
 };
 
 const OverviewItem = ({ overviewEntry, goToPage }) => {
-	let color = 'green';
-	if (!overviewEntry.reached) {
-		color = 'grey';
+	let color = 'grey';
+	if (overviewEntry.reached) {
+		color = 'var(--color-primary-main)';
+	}
+	if (overviewEntry.current) {
+		color = 'green';
 	}
 	return (
 		<Fragment>
