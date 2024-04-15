@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/role-supports-aria-props */
 import classnames from 'classnames';
 import { useCallback, useEffect, useRef, type ReactNode } from 'react';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { voidFunction } from '../../../utils/function';
 import { Label } from '../Label/Label';
 import { slottableComponent } from '../HOC/slottableComponent';
@@ -11,6 +10,7 @@ import {
 	RadioCheckedIcon,
 	RadioUncheckedIcon,
 } from '../Icons';
+import { useKeyboardKey } from '../../../hooks/useKeyboardKey';
 
 export type Props = {
 	id: string;
@@ -80,6 +80,18 @@ function LunaticRadioOption({
 		[checked, spanEl, value]
 	);
 
+	const hasKeyboardShortcut = Boolean(shortcut && codeModality);
+	useKeyboardKey(
+		codeModality ? [codeModality] : [],
+		(e) => {
+			e.preventDefault();
+			onClickOption();
+		},
+		hasKeyboardShortcut
+	);
+
+	console.log({ codeModality });
+
 	return (
 		<>
 			<div className="lunatic-radio-group-option">
@@ -114,17 +126,6 @@ function LunaticRadioOption({
 					</span>
 				</div>
 			</div>
-
-			{shortcut && codeModality && (
-				<KeyboardEventHandler
-					handleKeys={[codeModality]}
-					onKeyEvent={(key, e) => {
-						e.preventDefault();
-						onClickOption();
-					}}
-					handleFocusableElements
-				/>
-			)}
 		</>
 	);
 }

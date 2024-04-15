@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { DK, RF } from '../../../utils/constants';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { useLunaticMissing } from '../../../use-lunatic/lunatic-context';
 import type { LunaticBaseProps } from '../../type';
 import { Button } from '../Button/Button';
+import { useKeyboardKey } from '../../../hooks/useKeyboardKey';
 
 type Props = {
 	handleChange: LunaticBaseProps<any>['handleChange'];
@@ -67,6 +67,23 @@ export const MissingPure = (
 		handleMissingStrategy();
 	};
 
+	const hasKeyboardShortcut = Boolean(
+		shortcut &&
+			missingShortcut &&
+			missingShortcut.dontKnow &&
+			missingShortcut.refused
+	);
+
+	useKeyboardKey(
+		Object.values(missingShortcut),
+		(e) => {
+			e.preventDefault();
+			if (e.key === missingShortcut.dontKnow) onClickDK();
+			if (e.key === missingShortcut.refused) onClickRF();
+		},
+		hasKeyboardShortcut
+	);
+
 	return (
 		<div className="missing-buttons">
 			<span
@@ -87,21 +104,6 @@ export const MissingPure = (
 			>
 				<Button disabled={disabled} label={refusedButton} onClick={onClickRF} />
 			</span>
-			{shortcut &&
-				missingShortcut &&
-				missingShortcut.dontKnow &&
-				missingShortcut.refused && (
-					<KeyboardEventHandler
-						handleKeys={Object.values(missingShortcut)}
-						handleEventType="keydown"
-						onKeyEvent={(key, e) => {
-							e.preventDefault();
-							if (key === missingShortcut.dontKnow) onClickDK();
-							if (key === missingShortcut.refused) onClickRF();
-						}}
-						handleFocusableElements
-					/>
-				)}
 		</div>
 	);
 };

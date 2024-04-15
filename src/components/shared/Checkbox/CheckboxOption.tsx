@@ -1,10 +1,10 @@
 import { type ReactNode, useCallback } from 'react';
 import classnames from 'classnames';
 import { CheckboxCheckedIcon, CheckboxUncheckedIcon } from '../Icons';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
 import type { LunaticBaseProps } from '../../type';
 import { slottableComponent } from '../HOC/slottableComponent';
 import { Label } from '../Label/Label';
+import { useKeyboardKey } from '../../../hooks/useKeyboardKey';
 
 export type CheckboxOptionProps = {
 	disabled?: boolean;
@@ -49,6 +49,16 @@ function LunaticCheckboxOption({
 	const Icon = checked ? CheckboxCheckedIcon : CheckboxUncheckedIcon;
 	const labelId = `label-${id}`;
 
+	const hasKeyboardShortcut = Boolean(shortcut && codeModality);
+	useKeyboardKey(
+		codeModality ? [codeModality] : [],
+		(e) => {
+			e.preventDefault();
+			onClickOption();
+		},
+		hasKeyboardShortcut
+	);
+
 	return (
 		<>
 			<div
@@ -79,16 +89,6 @@ function LunaticCheckboxOption({
 					</Label>
 				</span>
 			</div>
-			{shortcut && codeModality && (
-				<KeyboardEventHandler
-					handleKeys={[codeModality]}
-					onKeyEvent={(key, e) => {
-						e.preventDefault();
-						onClickOption();
-					}}
-					handleFocusableElements
-				/>
-			)}
 		</>
 	);
 }
