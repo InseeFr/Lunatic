@@ -20,6 +20,7 @@ export type {
 	LunaticCollectedValue,
 	LunaticStateVariable,
 	LunaticState,
+	LunaticPager,
 } from './use-lunatic/type';
 
 export type { LunaticComponentProps } from './components/type';
