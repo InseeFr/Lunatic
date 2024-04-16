@@ -16,7 +16,6 @@ describe('Td', () => {
 				<tbody>
 					<tr>
 						<Td
-							id={id}
 							row={row}
 							index={index}
 							className={className}
@@ -30,7 +29,6 @@ describe('Td', () => {
 			</table>
 		);
 		const td = getByRole('cell', { name: children });
-		expect(td).toHaveAttribute('id', `lunatic-table-td-${id}-${row}-${index}`);
 		expect(td).toHaveClass('lunatic-table-td');
 		expect(td).toHaveClass(className);
 		expect(td).toHaveAttribute('colspan', colSpan.toString());

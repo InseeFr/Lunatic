@@ -64,7 +64,12 @@ export function Loop({
 					blocklist={blockedInLoopComponents}
 					key={n}
 					components={getComponents(n)}
-					componentProps={(c) => ({ ...props, ...c, id: `${c.id}-${n}` })}
+					componentProps={(c) => ({
+						...props,
+						...c,
+						id: `${c.id}-${n}`,
+						errors,
+					})}
 				/>
 			))}
 		</CustomLoop>

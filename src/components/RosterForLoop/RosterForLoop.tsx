@@ -69,8 +69,8 @@ export const RosterForLoop = (
 			canControlRows={!!(min && max && min !== max)}
 		>
 			<Table id={id}>
-				{header && <TableHeader header={header} id={id} />}
-				<Tbody id={id}>
+				{header && <TableHeader header={header} />}
+				<Tbody>
 					{times(nbRows, (n) => {
 						const components = getComponents(n);
 						const lineErrors = getComponentErrors(props.errors, `${id}-${n}`);
@@ -79,7 +79,6 @@ export const RosterForLoop = (
 						return (
 							<Fragment key={n}>
 								<Tr
-									id={props.id}
 									row={n}
 									key={n}
 									className={
@@ -94,10 +93,9 @@ export const RosterForLoop = (
 											...otherProps,
 											...c,
 											id: `${c.id}-${n}`,
+											errors,
 										})}
-										wrapper={({ id, children }) => (
-											<Td id={`${id}-${n}`}>{children}</Td>
-										)}
+										wrapper={({ children }) => <Td>{children}</Td>}
 									/>
 								</Tr>
 								{hasLineErrors && (

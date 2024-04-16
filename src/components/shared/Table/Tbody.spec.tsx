@@ -8,12 +8,9 @@ describe('Tbody component', () => {
 		const testClass = 'test-class';
 		const testContent = 'Test content';
 		const { getByRole, getByText } = render(
-			<Tbody id={testId} className={testClass}>
-				{testContent}
-			</Tbody>
+			<Tbody className={testClass}>{testContent}</Tbody>
 		);
 		const tbodyElement = getByRole('rowgroup');
-		expect(tbodyElement).toHaveAttribute('id', `lunatic-table-tbody-${testId}`);
 		expect(tbodyElement).toHaveClass('lunatic-table-tbody');
 		expect(tbodyElement).toHaveClass(testClass);
 		expect(getByText(testContent)).toBeInTheDocument();

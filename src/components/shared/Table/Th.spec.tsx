@@ -4,7 +4,6 @@ import { expect, describe, it } from 'vitest';
 
 describe('<Th />', () => {
 	const props = {
-		id: 'test-id',
 		index: 1,
 		colSpan: 2,
 		rowSpan: 3,
@@ -32,10 +31,6 @@ describe('<Th />', () => {
 			</table>
 		);
 		const th = getByRole('columnheader');
-		expect(th).toHaveAttribute(
-			'id',
-			`lunatic-table-th-${props.id}-${props.index}`
-		);
 		expect(th).toHaveAttribute('colSpan', props.colSpan.toString());
 		expect(th).toHaveAttribute('rowSpan', props.rowSpan.toString());
 		expect(th).toHaveClass(props.className);

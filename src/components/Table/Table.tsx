@@ -26,15 +26,14 @@ export function Table(props: LunaticComponentProps<'Table'>) {
 				id={id}
 			/>
 			<BaseTable id={`table-${id}`}>
-				<TableHeader id={id} header={header} />
+				<TableHeader header={header} />
 				<Tbody>
 					{body.map((row, rowIndex) => (
-						<Tr id={id} row={rowIndex} key={rowIndex}>
+						<Tr row={rowIndex} key={rowIndex}>
 							<LunaticComponents
 								components={row}
 								wrapper={({ children, index, colspan, rowspan }) => (
 									<Td
-										id={id}
 										row={rowIndex}
 										index={index}
 										colSpan={colspan}

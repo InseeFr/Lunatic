@@ -4,18 +4,12 @@ import { slottableComponent } from '../HOC/slottableComponent';
 
 type Props = PropsWithChildren<{
 	className?: string;
-	id?: string;
 	row?: string | number;
 }>;
 
-function LunaticTr({ id, children, className, row }: Props) {
+function LunaticTr({ children, className, row }: Props) {
 	return (
-		<tr
-			id={`lunatic-table-tr-${id}-${row}`}
-			className={classnames('lunatic-table-tr', className)}
-		>
-			{children}
-		</tr>
+		<tr className={classnames('lunatic-table-tr', className)}>{children}</tr>
 	);
 }
 

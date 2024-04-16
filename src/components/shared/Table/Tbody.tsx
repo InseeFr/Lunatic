@@ -4,15 +4,11 @@ import { slottableComponent } from '../HOC/slottableComponent';
 
 type Props = PropsWithChildren<{
 	className?: string;
-	id?: string;
 }>;
 
-function LunaticTbody({ id, className, children }: Props) {
+function LunaticTbody({ className, children }: Props) {
 	return (
-		<tbody
-			id={id ? `lunatic-table-tbody-${id}` : undefined}
-			className={classnames('lunatic-table-tbody', className)}
-		>
+		<tbody className={classnames('lunatic-table-tbody', className)}>
 			{children}
 		</tbody>
 	);

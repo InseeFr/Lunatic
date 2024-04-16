@@ -7,7 +7,7 @@ type Props = PropsWithChildren<{
 	id?: string;
 }>;
 
-function LunaticTable({ className, id, children }: Props) {
+function LunaticTable({ id, className, children }: Props) {
 	return (
 		<table
 			id={`table-${id}`}
