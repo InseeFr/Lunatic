@@ -15,15 +15,12 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
   >
     <tbody
       class="lunatic-table-tbody"
-      id="lunatic-table-tbody-table"
     >
       <tr
         class="lunatic-table-tr"
-        id="lunatic-table-tr-table-0"
       >
         <td
           class="lunatic-table-td"
-          id="lunatic-table-td-jrc3ye5q-QOP-lo6tcvvx-0-0-undefined-undefined"
         >
           <div
             class="field-container"
@@ -50,11 +47,9 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
       </tr>
       <tr
         class="lunatic-table-tr"
-        id="lunatic-table-tr-table-1"
       >
         <td
           class="lunatic-table-td"
-          id="lunatic-table-td-jrc3ye5q-QOP-lo6tcvvx-1-1-undefined-undefined"
         >
           <div
             class="field-container"
