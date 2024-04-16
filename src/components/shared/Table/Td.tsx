@@ -4,7 +4,6 @@ import { slottableComponent } from '../HOC/slottableComponent';
 
 type Props = PropsWithChildren<{
 	className?: string;
-	id?: string;
 	row?: string | number;
 	index?: string | number;
 	colSpan?: number;
@@ -12,7 +11,6 @@ type Props = PropsWithChildren<{
 }>;
 
 function LunaticTd({
-	id,
 	children,
 	row,
 	index,
@@ -22,7 +20,6 @@ function LunaticTd({
 }: Props) {
 	return (
 		<td
-			id={`lunatic-table-td-${id}-${row}-${index}`}
 			className={classnames('lunatic-table-td', className)}
 			colSpan={colSpan}
 			rowSpan={rowSpan}

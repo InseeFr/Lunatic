@@ -7,18 +7,17 @@ describe('Tr', () => {
 		render(
 			<table>
 				<tbody>
-					<Tr id="1" row={1} className="highlighted-row" />
+					<Tr row={1} className="highlighted-row" />
 				</tbody>
 			</table>
 		);
 		const tr = screen.getByRole('row');
-		expect(tr).toHaveAttribute('id', 'lunatic-table-tr-1-1');
 		expect(tr).toHaveClass('lunatic-table-tr', 'highlighted-row');
 	});
 
 	it('renders the children components', () => {
 		render(
-			<Tr id="1" row={1}>
+			<Tr row={1}>
 				<td id="1">Cell 1,1</td>
 				<td id="1">Cell 1,2</td>
 			</Tr>
