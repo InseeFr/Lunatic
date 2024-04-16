@@ -1,10 +1,10 @@
-import type { LunaticState, LunaticComponentDefinition } from '../type';
+import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
 
 /**
  * Extract the list of components to display for the current page
  */
-function getComponentsFromState(
-	state: Pick<LunaticState, 'pager' | 'pages' | 'isInLoop'>
+export function getComponentsFromState(
+	state: Pick<LunaticReducerState, 'pager' | 'pages' | 'isInLoop'>
 ): LunaticComponentDefinition[] {
 	const { pager, pages, isInLoop } = state;
 	const { page, subPage } = pager;
@@ -39,5 +39,3 @@ function filterComponentsInPage(components: LunaticComponentDefinition[]) {
 		c.componentType === 'FilterDescription' ? c.filterDescription : true
 	);
 }
-
-export default getComponentsFromState;

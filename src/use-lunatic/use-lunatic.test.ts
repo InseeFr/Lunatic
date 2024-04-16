@@ -187,8 +187,12 @@ describe('use-lunatic()', () => {
 				useLunatic(sourceCleaningLoop as any, undefined, {})
 			);
 			act(() => {
-				result.current.onChange({ name: 'PRENOM' }, ['John', 'Doe', 'Marc']);
-				result.current.onChange({ name: 'AGE' }, [18, 18, 18]);
+				result.current.handleChange({ name: 'PRENOM' }, [
+					'John',
+					'Doe',
+					'Marc',
+				]);
+				result.current.handleChange({ name: 'AGE' }, [18, 18, 18]);
 				// Go in the first iteration
 				result.current.goNextPage();
 				result.current.goNextPage();
@@ -200,7 +204,9 @@ describe('use-lunatic()', () => {
 			};
 			expectCollectedAgeToEqual([18, 18, 18]);
 			act(() => {
-				result.current.onChange({ name: 'HIDE_AGE' }, true, { iteration: [0] });
+				result.current.handleChange({ name: 'HIDE_AGE' }, true, {
+					iteration: [0],
+				});
 			});
 			expectCollectedAgeToEqual([null, 18, 18]);
 		});
@@ -214,11 +220,11 @@ describe('use-lunatic()', () => {
 					onChange: spy,
 				})
 			);
-			result.current.onChange({ name: 'NB' }, 3);
+			result.current.handleChange({ name: 'NB' }, 3);
 			expect(
 				(result.current.getData(true).COLLECTED?.PRENOMS as any).COLLECTED
 			).toEqual([null, null, null]);
-			result.current.onChange({ name: 'NB' }, 2);
+			result.current.handleChange({ name: 'NB' }, 2);
 			expect(
 				(result.current.getData(true).COLLECTED?.PRENOMS as any).COLLECTED
 			).toEqual([null, null]);
@@ -232,8 +238,8 @@ describe('use-lunatic()', () => {
 				useLunatic(sourceSimpsons as any, undefined, {})
 			);
 			act(() => {
-				result.current.onChange({ name: 'COMMENT' }, 'Mon commentaire');
-				result.current.onChange({ name: 'READY' }, true);
+				result.current.handleChange({ name: 'COMMENT' }, 'Mon commentaire');
+				result.current.handleChange({ name: 'READY' }, true);
 			});
 			hookRef = result;
 		});
@@ -284,8 +290,8 @@ describe('use-lunatic()', () => {
 		});
 		it('should return changes since the last update', () => {
 			act(() => {
-				hookRef.current.onChange({ name: 'COMMENT' }, 'Mon commentaire');
-				hookRef.current.onChange({ name: 'READY' }, true);
+				hookRef.current.handleChange({ name: 'COMMENT' }, 'Mon commentaire');
+				hookRef.current.handleChange({ name: 'READY' }, true);
 			});
 			expect(hookRef.current.getChangedData()).toMatchObject({
 				COLLECTED: {
@@ -300,8 +306,8 @@ describe('use-lunatic()', () => {
 		});
 		it('should reset changes with true parameter', () => {
 			act(() => {
-				hookRef.current.onChange({ name: 'COMMENT' }, 'Mon commentaire');
-				hookRef.current.onChange({ name: 'READY' }, true);
+				hookRef.current.handleChange({ name: 'COMMENT' }, 'Mon commentaire');
+				hookRef.current.handleChange({ name: 'READY' }, true);
 			});
 			const data = hookRef.current.getChangedData(true);
 			expect(data).toMatchObject({
@@ -318,13 +324,13 @@ describe('use-lunatic()', () => {
 		});
 		it('should reset changes with resetChanges()', () => {
 			act(() => {
-				hookRef.current.onChange({ name: 'COMMENT' }, 'Mon commentaire');
-				hookRef.current.onChange({ name: 'READY' }, true);
+				hookRef.current.handleChange({ name: 'COMMENT' }, 'Mon commentaire');
+				hookRef.current.handleChange({ name: 'READY' }, true);
 			});
 			hookRef.current.resetChangedData();
 			expect(hookRef.current.getChangedData().COLLECTED).toEqual({});
 			act(() => {
-				hookRef.current.onChange({ name: 'READY' }, false);
+				hookRef.current.handleChange({ name: 'READY' }, false);
 			});
 			expect(hookRef.current.getChangedData().COLLECTED).toMatchObject({
 				READY: {

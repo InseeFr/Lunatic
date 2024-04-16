@@ -1,9 +1,11 @@
-import type { LunaticState } from '../type';
 import { getPrevPager } from '../commons/page-navigation';
 import { autoExploreLoop } from './commons/auto-explore-loop';
 import { getPageId, isPageEmpty } from '../commons/page';
+import type { LunaticReducerState } from '../type';
 
-function reduceGoPreviousPage(state: LunaticState): LunaticState {
+export function reduceGoPreviousPage(
+	state: LunaticReducerState
+): LunaticReducerState {
 	const { pages, pager } = state;
 	const parentType = pages[pager.page]?.components[0].componentType;
 	const prevPager = getPrevPager(pager, parentType);
@@ -34,5 +36,3 @@ function reduceGoPreviousPage(state: LunaticState): LunaticState {
 		isInLoop: newState.pager.iteration !== undefined,
 	};
 }
-
-export default reduceGoPreviousPage;

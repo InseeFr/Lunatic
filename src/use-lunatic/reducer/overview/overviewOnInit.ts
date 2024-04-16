@@ -1,22 +1,10 @@
-import type { LunaticOverviewItem, LunaticState } from '../../type';
-import { type ActionInit } from '../../actions';
+import type { LunaticOverviewItem } from '../../type';
 import type {
 	ComponentLoopType,
 	ComponentType,
 	ComponentTypeBase,
 	LunaticSource,
 } from '../../type-source';
-
-/**
- * Build a static overview that will be interpreted on page change.
- * This step extracts all the Sequence / Subsequence as a flat structure with the expressions required to build the overview later.
- */
-export function reduceOverviewOnInit(state: LunaticState, action: ActionInit) {
-	const overview = action.payload.withOverview
-		? buildOverview(action.payload.source)
-		: [];
-	return { ...state, overview };
-}
 
 /**
  * Resolve overview items from component definition
@@ -75,7 +63,7 @@ function overviewFromLoop(
 /**
  * Build a static overview from the state, this overview will be interpreted on page change
  */
-function buildOverview(source: LunaticSource): LunaticOverviewItem[] {
+export function buildOverview(source: LunaticSource): LunaticOverviewItem[] {
 	return source.components.reduce(
 		(acc, c) => overviewFromComponent(acc, c),
 		[] as LunaticOverviewItem[]

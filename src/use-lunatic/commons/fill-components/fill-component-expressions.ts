@@ -18,9 +18,6 @@ const VTL_ATTRIBUTES = [
 	'description',
 	'responses.description',
 	'options.description',
-	// Disable controls compilation
-	// 'controls.control',
-	// 'controls.errorMessage',
 	'controls.iterations',
 	'lines.min',
 	'lines.max',
@@ -141,7 +138,7 @@ function fillAttributes(
 /**
  * Fill props interpreting VTL expression
  */
-function fillComponentExpressions(
+export function fillComponentExpressions(
 	component: LunaticComponentDefinition,
 	state: {
 		executeExpression: LunaticState['executeExpression'];
@@ -154,7 +151,5 @@ function fillComponentExpressions(
 		executeExpression,
 		iteration,
 		linksIterations,
-	});
+	}) as any as DeepTranslateExpression<LunaticComponentDefinition>;
 }
-
-export default fillComponentExpressions;

@@ -1,13 +1,13 @@
 import { type ActionGoToPage } from '../actions';
 import { getPageId, isPageEmpty } from '../commons/page';
 import { getPagerFromPageTag } from '../commons/page-tag';
-import type { LunaticState } from '../type';
+import type { LunaticReducerState, LunaticState } from '../type';
 import { reduceGoNextPage } from './reduce-go-next-page';
 
-function reduceGoToPage(
-	state: LunaticState,
+export function reduceGoToPage(
+	state: LunaticReducerState,
 	action: ActionGoToPage
-): LunaticState {
+): LunaticReducerState {
 	// The page contains non digit, extract information from it
 	if (typeof action.payload.page === 'string') {
 		const pager = getPagerFromPageTag(action.payload.page);
@@ -66,5 +66,3 @@ function reduceGoToPage(
 
 	return newState;
 }
-
-export default reduceGoToPage;

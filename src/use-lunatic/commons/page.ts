@@ -1,5 +1,6 @@
-import type { LunaticState } from '../type';
-import { executeConditionFilter, getComponentsFromState } from './index';
+import type { LunaticState, LunaticReducerState } from '../type';
+import { getComponentsFromState } from './get-components-from-state';
+import executeConditionFilter from './execute-condition-filter';
 
 export function getPageId({
 	subPage,
@@ -23,7 +24,7 @@ export function pageStringToNumbers(page: string): number[] {
  * if no components can be displayed on this page (using filter)
  */
 export function isPageEmpty(
-	state: LunaticState,
+	state: LunaticReducerState,
 	isMovingBackward = false
 ): boolean {
 	const { executeExpression, pager } = state;

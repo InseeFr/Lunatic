@@ -1,31 +1,4 @@
-import type { LunaticSource } from '../../src/use-lunatic/type-source';
-import type { LunaticData, LunaticState } from '../../src/use-lunatic/type';
-import reduceOnInit from '../../src/use-lunatic/reducer/reduce-on-init';
-import INITIAL_STATE from '../../src/use-lunatic/initial-state';
-import { type ActionInit, onInit } from '../../src/use-lunatic/actions';
-
-/**
- * Generate a base state from a source / data for unit testing reducer
- */
-export function generateState(
-	source: LunaticSource,
-	data: Record<string, unknown> = {
-		CALCULATED: {},
-		EXTERNAL: {},
-		COLLECTED: {},
-	},
-	options: Partial<ActionInit['payload']> = {}
-): LunaticState {
-	return reduceOnInit(
-		INITIAL_STATE,
-		onInit({
-			features: ['VTL'],
-			source,
-			data: 'COLLECTED' in data ? (data as LunaticData) : generateData(data),
-			...options,
-		} as ActionInit['payload'])
-	);
-}
+import type { LunaticData } from '../../src/use-lunatic/type';
 
 /**
  * Generate LunaticData from a record of values

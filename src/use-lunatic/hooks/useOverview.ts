@@ -1,4 +1,9 @@
-import type { LunaticOverviewItem, LunaticState, PageTag } from '../type';
+import type {
+	LunaticOverviewItem,
+	LunaticReducerState,
+	LunaticState,
+	PageTag,
+} from '../type';
 import { type DependencyList, type ReactNode, useMemo } from 'react';
 import { getPageTag, pageTagComparator } from '../commons/page-tag';
 
@@ -21,7 +26,7 @@ export const useOverview = (
 		overview,
 		executeExpression,
 		pager,
-	}: Pick<LunaticState, 'executeExpression' | 'overview' | 'pager'>,
+	}: Pick<LunaticReducerState, 'executeExpression' | 'overview' | 'pager'>,
 	deps: DependencyList
 ) => {
 	return useMemo(

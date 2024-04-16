@@ -1,91 +1,63 @@
 import type { LunaticComponentDefinition, LunaticState } from '../../type';
-import fillComponentExpressions, {
-	type DeepTranslateExpression,
-} from './fill-component-expressions';
-import {
-	fillComponentValue,
-	type FilledProps as FilledValueProps,
-} from './fill-component-value';
-import fillFromState, {
-	type FilledProps as FilledHandlersProps,
-} from './fill-from-state';
-import fillManagement, {
-	type FilledProps as FilledManagementProps,
-} from './fill-management';
-import fillMissingResponse, {
-	type FilledProps as FilledMissingResponseProps,
-} from './fill-missing-response';
-import fillPagination, {
-	type FilledProps as FilledPaginationProps,
-} from './fill-pagination';
-import fillSpecificExpressions from './fill-specific-expression';
-import { fillComponentRequired } from './fill-component-required';
-import { fillIterations } from './fill-iterations';
+import { fillComponentExpressions } from './fill-component-expressions';
+import { getComponentTypeProps } from '../../props/propComponentType';
+import type { LunaticComponentProps } from '../../../components/type';
+import { getMissingResponseProp } from '../../props/propMissingResponse';
+import { getValueProp } from '../../props/propValue';
+import { getIterationsProp } from '../../props/propIterations';
 
-export type FilledLunaticComponentProps<
-	T = LunaticComponentDefinition['componentType'],
-> = DeepTranslateExpression<LunaticComponentDefinition & { componentType: T }> &
-	FilledManagementProps &
-	FilledValueProps &
-	FilledMissingResponseProps &
-	FilledHandlersProps &
-	FilledPaginationProps & {
-		conditionFilter?: boolean;
-	};
+type FillComponentArgs = Pick<
+	LunaticState,
+	| 'handleChange'
+	| 'executeExpression'
+	| 'preferences'
+	| 'goToPage'
+	| 'shortcut'
+	| 'goNextPage'
+	| 'goPreviousPage'
+	| 'pager'
+	| 'variables'
+	| 'management'
+>;
 
 /**
- * Compose multiple methods together to create a new method
- *
- * This function is too dynamic for typescript, allow any
+ * To make this work with TypeScript we need to call function in succession, we prefer expressiveness here over generalized approache
  */
-function compose(...fill: Function[]) {
-	return fill.reduce(
-		function (a: any, b: any) {
-			return (cmp: LunaticComponentDefinition, state: LunaticState) =>
-				b(a(cmp, state), state);
-		},
-		(c: any) => c
-	);
-}
-
-/**
- * Fill component with elements from the state
- *
- * Force typing for this function since it's doo dynamic
- */
-export const fillComponent = compose(
-	fillFromState,
-	fillComponentExpressions,
-	fillPagination,
-	fillComponentValue,
-	fillMissingResponse,
-	fillComponentRequired,
-	fillManagement,
-	fillIterations,
-	fillSpecificExpressions
-) as (
+export const fillComponent = (
 	component: LunaticComponentDefinition,
-	state: LunaticState
-) => FilledLunaticComponentProps;
+	state: FillComponentArgs
+): LunaticComponentProps & { conditionFilter?: boolean } => {
+	const interpretedProps = fillComponentExpressions(component, state);
+	return {
+		...interpretedProps,
+		handleChange: state.handleChange,
+		executeExpression: state.executeExpression,
+		preferences: state.preferences,
+		goToPage: state.goToPage,
+		shortcut: state.shortcut,
+		goNextPage: state.goNextPage,
+		goPreviousPage: state.goPreviousPage,
+		iteration: state.pager.iteration,
+		required: component.mandatory,
+		value: getValueProp(component, state),
+		missingResponse: getMissingResponseProp(component, state),
+		management: state.management,
+		iterations: getIterationsProp(component, state),
+		...getComponentTypeProps(interpretedProps, state),
+		// This is too dynamic to be typed correctly, so we allow any here
+	} as any;
+};
 
 /**
  * Fill components with values coming from the state, and interpret VTL expression
  */
-function fillComponents(
+export function fillComponents(
 	components: LunaticComponentDefinition[],
-	state: LunaticState
-): FilledLunaticComponentProps[] {
+	state: FillComponentArgs
+): LunaticComponentProps[] {
 	return components
 		.map((component) => fillComponent(component, state))
-		.filter(matchConditionFilter) as FilledLunaticComponentProps[];
+		.filter(({ conditionFilter }) =>
+			conditionFilter !== undefined ? conditionFilter : true
+		);
 }
-
-function matchConditionFilter({
-	conditionFilter,
-}: {
-	conditionFilter?: boolean;
-}): boolean {
-	return conditionFilter !== undefined ? conditionFilter : true;
-}
-
-export default fillComponents;

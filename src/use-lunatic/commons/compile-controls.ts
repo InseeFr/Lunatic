@@ -5,26 +5,30 @@ import type {
 	LunaticError,
 	LunaticState,
 } from '../type';
-import fillComponentExpressions from './fill-components/fill-component-expressions';
-import getComponentsFromState from './get-components-from-state';
+import {
+	fillComponentExpressions,
+	type DeepTranslateExpression,
+} from './fill-components/fill-component-expressions';
 import { checkRoundaboutControl } from '../reducer/controls/check-roundabout-control';
 import { checkBaseControl } from '../reducer/controls/check-base-control';
-import type { FilledLunaticComponentProps } from './fill-components/fill-components';
+import { getComponentsFromState } from './get-components-from-state';
 
 export type StateForControls = Pick<
 	LunaticState,
 	'pager' | 'pages' | 'isInLoop' | 'executeExpression'
 >;
 
-type ComponentDefinition =
-	| LunaticComponentDefinition
-	| FilledLunaticComponentProps;
+type ComponentDefinition = LunaticComponentDefinition;
+type InterpretedComponent = DeepTranslateExpression<LunaticComponentDefinition>;
+type InterpretedLoopComponent = DeepTranslateExpression<
+	ComponentDefinition & {
+		componentType: 'Loop' | 'RosterForLoop';
+	}
+>;
 
 const isLoopComponent = (
-	component: ComponentDefinition
-): component is ComponentDefinition & {
-	componentType: 'Loop' | 'RosterForLoop';
-} => {
+	component: InterpretedComponent
+): component is InterpretedLoopComponent => {
 	return ['Loop', 'RosterForLoop'].includes(component.componentType);
 };
 
@@ -33,7 +37,7 @@ const isLoopComponent = (
  */
 function checkComponents(
 	state: StateForControls,
-	components: ComponentDefinition[]
+	components: InterpretedComponent[]
 ): Record<string, LunaticError[]> {
 	let errors = {} as Record<string, LunaticError[]>;
 
@@ -92,7 +96,7 @@ function checkControls(
  * Figure out the number of iterations of a component
  */
 function computeIterations(
-	component: ComponentDefinition,
+	component: InterpretedComponent | ComponentDefinition,
 	executeExpression: LunaticState['executeExpression']
 ): number {
 	if (
@@ -122,7 +126,7 @@ function computeIterations(
  */
 function checkComponentInLoop(
 	state: StateForControls,
-	component: ComponentDefinition,
+	component: ComponentDefinition | InterpretedLoopComponent,
 	errors: Record<string, LunaticError[]>
 ): Record<string, LunaticError[]> {
 	// The component has no controls, skip it
@@ -142,7 +146,9 @@ function checkComponentInLoop(
 		// The component is filtered on this iteration, skip it
 		if (
 			// conditionFilter can be the interpreted expression, or the object representing the expression
-			(typeof component.conditionFilter == 'object' &&
+			(component.conditionFilter &&
+				typeof component.conditionFilter == 'object' &&
+				'value' in component.conditionFilter &&
 				!state.executeExpression(
 					component.conditionFilter.value,
 					iterationPager

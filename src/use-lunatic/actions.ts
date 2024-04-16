@@ -7,7 +7,6 @@ export enum ActionKind {
 	GO_TO_PAGE = 'use-lunatic/go-to-page',
 	ON_INIT = 'use-lunatic/on-init',
 	HANDLE_CHANGE = 'use-lunatic/handle-change',
-	ON_SET_WAITING = 'use-lunatic/on-set-waiting',
 }
 
 export type ActionHandleChange = {
@@ -45,13 +44,6 @@ export type ActionInit = {
 	};
 };
 
-export type ActionOnSetWaiting = {
-	type: ActionKind.ON_SET_WAITING;
-	payload: {
-		status: boolean;
-	};
-};
-
 export type ActionGoNextPage = {
 	type: ActionKind.GO_NEXT_PAGE;
 	payload: {};
@@ -67,8 +59,7 @@ export type Action =
 	| ActionGoPreviousPage
 	| ActionGoToPage
 	| ActionInit
-	| ActionHandleChange
-	| ActionOnSetWaiting;
+	| ActionHandleChange;
 
 export type PayloadForAction<T extends Action['type']> = (Action & {
 	type: T;
@@ -100,10 +91,4 @@ export const handleChange = (
 	({
 		type: ActionKind.HANDLE_CHANGE,
 		payload: { name, value, iteration },
-	}) as const;
-
-export const onSetWaiting = (status: boolean): Action =>
-	({
-		type: ActionKind.ON_SET_WAITING,
-		payload: { status },
 	}) as const;

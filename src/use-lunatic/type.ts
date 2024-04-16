@@ -1,11 +1,9 @@
-import type { ReactNode } from 'react';
-import type {
-	ComponentType,
-	ControlType,
-	LunaticSource,
-	Variable,
-} from './type-source';
+import type { FunctionComponent, PropsWithChildren, ReactNode } from 'react';
+import type { ComponentType, ControlType, Variable } from './type-source';
 import type { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
+import type { IndexEntry } from '../utils/search/SearchInterface';
+import type { InterpretedLunaticOverviewItem } from './hooks/useOverview';
+import type { LunaticComponentProps } from '../components/type';
 
 export type LunaticComponentDefinition<
 	T extends ComponentType['componentType'] = ComponentType['componentType'],
@@ -72,9 +70,23 @@ export type LunaticStateVariable = {
 	};
 }[LunaticVariable['variableType']];
 
-export type LunaticState = {
-	updatedAt: number;
+export type LunaticPager = {
+	lastReachedPage?: PageTag;
+	maxPage: number;
+	nbSubPages?: number;
+	page: number;
+	subPage?: number;
+	// Iteration index (starting at 0)
+	iteration?: number;
+	nbIterations?: number;
+	shallowIteration?: number;
+	linksIterations?: number[];
+};
+
+export type LunaticReducerState = {
 	variables: LunaticVariablesStore;
+	overview: LunaticOverviewItem[];
+	pager: LunaticPager;
 	pages: {
 		[key: number | string]:
 			| {
@@ -94,42 +106,62 @@ export type LunaticState = {
 					subPages: string[];
 			  };
 	};
+	// Run and expression using the value from the state
+	executeExpression: <T extends unknown = unknown>(
+		expression: unknown,
+		args?: {
+			iteration?: number | number[];
+			// @deprecated
+			bindingDependencies?: string[];
+			deps?: string[];
+		}
+	) => T;
+	isInLoop: boolean;
+	updatedAt: number;
+	// Update the value collected for the variable
+	updateBindings: (
+		variableName: string,
+		value: unknown,
+		options: { iteration?: number[] }
+	) => unknown;
+};
+
+export type LunaticOptions = {
+	features?: LunaticState['features'];
+	preferences?: LunaticState['preferences'];
+	savingType?: LunaticState['savingType'];
+	onChange?: LunaticState['handleChange'];
+	management?: boolean;
+	shortcut?: boolean;
+	initialPage?: PageTag;
+	lastReachedPage?: PageTag;
+	autoSuggesterLoading?: boolean;
+	getReferentiel?: (name: string) => Promise<Array<IndexEntry>>;
+	activeControls?: boolean;
+	withOverview?: boolean;
+	missing?: boolean;
+	missingStrategy?: () => void;
+	missingShortcut?: { dontKnow: string; refused: string };
+	dontKnowButton?: string;
+	refusedButton?: string;
+	// Enable change tracking to keep a track of what variable changed (allow using getChangedData())
+	trackChanges?: boolean;
+};
+
+// Type representing the return type of "useLunatic()"
+export type LunaticState = Omit<LunaticReducerState, 'overview'> & {
+	overview: InterpretedLunaticOverviewItem[];
+	pageTag: PageTag;
+	updatedAt: number;
+	Provider: FunctionComponent<PropsWithChildren>;
+	variables: LunaticVariablesStore;
+	pages: LunaticReducerState['pages'];
 	isInLoop: boolean;
 	isFirstPage: boolean;
 	isLastPage: boolean;
-	features: ['VTL'] | ['VTL', 'MD'];
+	features: string[];
 	preferences: ['COLLECTED'];
 	savingType: 'COLLECTED';
-	// Map of variable associated with the expression used to repopulate it
-	cleaning: LunaticSource['cleaning'];
-	// Map of variable with the missing variable names associated with it ex: {ADR_COLL: ['ADR_COLL_MISSING']}
-	missingBlock: { [variable: string]: string[] };
-	// Map of variable with the missing variable names associated with it ex: {ADR_COLL: ['ADR_COLL_MISSING']}
-	resizing: {
-		[variable: string]: {
-			// VTL expression
-			size: string;
-			// List of variables that will need resizing
-			variables: string[];
-			sizeForLinksVariables?: unknown;
-			linksVariables?: string[];
-		};
-	};
-	overview: LunaticOverviewItem[];
-	pager: {
-		lastReachedPage?: PageTag;
-		maxPage: number;
-		nbSubPages?: number;
-		page: number;
-		subPage?: number;
-		// Iteration index (starting at 0)
-		iteration?: number;
-		nbIterations?: number;
-		shallowIteration?: number;
-		linksIterations?: number[];
-	};
-	// TODO : Explain this
-	waiting: boolean;
 	// Errors for the form
 	errors?: { [page: string]: { [id: string]: LunaticError[] } };
 	// Contains the errors for the current page / iteration
@@ -144,22 +176,15 @@ export type LunaticState = {
 			iteration?: number[];
 		}
 	) => void;
-	// Run and expression using the value from the state
-	executeExpression: <T extends unknown = unknown>(
-		expression: unknown,
+	// @deprecated use handleChange instead
+	onChange?: (
+		response: { name: string },
+		value: any,
 		args?: {
-			iteration?: number | number[];
-			// @deprecated
-			bindingDependencies?: string[];
-			deps?: string[];
+			iteration?: number[];
 		}
-	) => T;
-	// Update the value collected for the variable
-	updateBindings: (
-		variableName: string,
-		value: unknown,
-		options: { iteration?: number[] }
-	) => unknown;
+	) => void;
+	loopVariables: string[];
 	// Enable controls for data (form validation)
 	activeControls: boolean;
 	// enable shortcut on radio/checkbox/missing buttons
@@ -175,4 +200,16 @@ export type LunaticState = {
 	// Enable components to independently navigate next/previous
 	goNextPage: () => void;
 	goPreviousPage: () => void;
+	compileControls: () => void;
+	getComponents: (params?: {
+		only?: LunaticComponentProps['componentType'];
+		except?: LunaticComponentProps['componentType'];
+	}) => LunaticComponentProps[];
+	getData: (
+		withRefreshedCalculated: boolean,
+		variableNames?: string[]
+	) => LunaticData;
+	getChangedData: (reset: boolean) => LunaticData;
+	resetChangedData: () => void;
+	hasPageResponse: () => boolean;
 };
