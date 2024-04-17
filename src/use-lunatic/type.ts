@@ -175,7 +175,10 @@ export type LunaticState = {
 	// Enable components to independently navigate next/previous
 	goNextPage: () => void;
 	goPreviousPage: () => void;
-	compileControls: () => void;
+	compileControls: () => {
+		currentErrors: Record<string, LunaticError[]> | undefined;
+		isCritical: boolean;
+	};
 	getComponents: (params?: {
 		only?: LunaticComponentProps['componentType'];
 		except?: LunaticComponentProps['componentType'];

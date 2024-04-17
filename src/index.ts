@@ -21,6 +21,8 @@ export type {
 	LunaticStateVariable,
 	LunaticState,
 	LunaticPager,
+	LunaticOptions,
+	LunaticChangeHandler,
 } from './use-lunatic/type';
 
 export type { LunaticComponentProps } from './components/type';
