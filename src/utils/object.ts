@@ -23,3 +23,13 @@ export function objectMap<T extends Record<string, any>, V extends unknown>(
 export function objectKeys<T extends Record<string, unknown>>(object: T) {
 	return Object.keys(object) as (keyof T)[];
 }
+
+export function mergeDefault<
+	T extends Record<string, unknown>,
+	D extends Record<string, unknown>,
+>(obj: T, defaults: D): T & D {
+	return objectMap({ ...obj, ...defaults }, (k) => {
+		// @ts-ignore Ignore this line since TS is not able to handle this case
+		return [k, obj[k] ?? defaults[k]] as const;
+	});
+}

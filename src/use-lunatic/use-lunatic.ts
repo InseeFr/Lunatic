@@ -24,6 +24,7 @@ import { reducerInitializer } from './reducer/reducerInitializer';
 import { getComponentsFromState } from './commons/get-components-from-state';
 import { fillComponents } from './commons/fill-components/fill-components';
 import { reducer } from './reducer/reducer';
+import { mergeDefault } from '../utils/object';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const DEFAULT_DATA = empty as LunaticData;
@@ -58,12 +59,9 @@ const defaultOptions = {
 function useLunatic(
 	source: LunaticSource,
 	data: LunaticData = DEFAULT_DATA,
-	argOptions: LunaticOptions
+	argOptions: LunaticOptions = empty
 ) {
-	const options = {
-		...defaultOptions,
-		...argOptions,
-	};
+	const options = mergeDefault(argOptions, defaultOptions);
 	const {
 		management,
 		missing,
