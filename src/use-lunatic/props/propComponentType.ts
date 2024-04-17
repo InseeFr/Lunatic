@@ -1,4 +1,8 @@
-import type { LunaticComponentDefinition, LunaticState } from '../type';
+import type {
+	LunaticChangeHandler,
+	LunaticComponentDefinition,
+	LunaticState,
+} from '../type';
 import { type DeepTranslateExpression } from '../commons/fill-components/fill-component-expressions';
 import { hasComponentType } from '../commons/component';
 import { getVTLCompatibleValue } from '../../utils/vtl';
@@ -73,10 +77,10 @@ function getChildComponentsWithIteration(
 }
 
 // Create change handler memoized for every iteration
-let changeHandler = null as null | LunaticState['handleChange'];
-const changeHandlerMap = new Map<number, LunaticState['handleChange']>();
+let changeHandler = null as null | LunaticChangeHandler;
+const changeHandlerMap = new Map<number, LunaticChangeHandler>();
 function createChangeHandlerForIteration(
-	handleChange: LunaticState['handleChange'],
+	handleChange: LunaticChangeHandler,
 	iteration: number
 ) {
 	if (handleChange !== changeHandler) {

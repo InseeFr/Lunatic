@@ -10,6 +10,7 @@ import {
 	Table as BaseTable,
 } from '../shared/Table';
 import { Declarations } from '../shared/Declarations/Declarations';
+import type { PropsWithChildren } from 'react';
 
 export function Table(props: LunaticComponentProps<'Table'>) {
 	const { id, body, header, errors, label, declarations } = props;
@@ -30,7 +31,12 @@ export function Table(props: LunaticComponentProps<'Table'>) {
 				<Tbody>
 					{body.map((row, rowIndex) => (
 						<Tr row={rowIndex} key={rowIndex}>
-							<LunaticComponents
+							<LunaticComponents<
+								PropsWithChildren<{
+									colspan?: number;
+									rowspan?: number;
+								}>
+							>
 								components={row}
 								wrapper={({ children, index, colspan, rowspan }) => (
 									<Td

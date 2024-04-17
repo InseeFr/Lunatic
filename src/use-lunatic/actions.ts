@@ -1,11 +1,15 @@
-import type { LunaticData, LunaticState, PageTag } from './type';
+import type {
+	LunaticData,
+	LunaticOptions,
+	LunaticState,
+	PageTag,
+} from './type';
 import type { LunaticSource } from './type-source';
 
 export enum ActionKind {
 	GO_PREVIOUS_PAGE = 'use-lunatic/go-previous',
 	GO_NEXT_PAGE = 'use-lunatic/go-next',
 	GO_TO_PAGE = 'use-lunatic/go-to-page',
-	ON_INIT = 'use-lunatic/on-init',
 	HANDLE_CHANGE = 'use-lunatic/handle-change',
 }
 
@@ -23,27 +27,6 @@ export type ActionGoToPage = {
 	payload: Parameters<LunaticState['goToPage']>[0];
 };
 
-export type ActionInit = {
-	type: ActionKind.ON_INIT;
-	payload: {
-		data: LunaticData;
-		source: LunaticSource;
-		initialPage: PageTag;
-		lastReachedPage?: PageTag;
-		features: LunaticState['features'];
-		preferences: LunaticState['preferences'];
-		savingType: LunaticState['savingType'];
-		shortcut: boolean;
-		management: boolean;
-		handleChange: LunaticState['handleChange'];
-		activeControls: boolean;
-		goToPage: (params: ActionGoToPage['payload']) => void;
-		goNextPage: () => void;
-		goPreviousPage: () => void;
-		withOverview: boolean;
-	};
-};
-
 export type ActionGoNextPage = {
 	type: ActionKind.GO_NEXT_PAGE;
 	payload: {};
@@ -58,7 +41,6 @@ export type Action =
 	| ActionGoNextPage
 	| ActionGoPreviousPage
 	| ActionGoToPage
-	| ActionInit
 	| ActionHandleChange;
 
 export type PayloadForAction<T extends Action['type']> = (Action & {
@@ -82,7 +64,6 @@ export const goPreviousPage = () =>
 
 export const goNextPage = actionCreator(ActionKind.GO_NEXT_PAGE);
 export const goToPage = actionCreator(ActionKind.GO_TO_PAGE);
-export const onInit = actionCreator(ActionKind.ON_INIT);
 export const handleChange = (
 	name: ActionHandleChange['payload']['name'],
 	value: ActionHandleChange['payload']['value'],

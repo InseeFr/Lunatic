@@ -2,7 +2,6 @@ import type {
 	LunaticComponentDefinition,
 	LunaticPager,
 	LunaticReducerState,
-	LunaticState,
 } from '../type';
 import { forceInt, isNumber } from '../../utils/number';
 import { hasResponse } from '../commons/component';
@@ -13,7 +12,7 @@ export function getIterationsProp(
 	state: {
 		pager: LunaticPager;
 		variables: LunaticVariablesStore;
-		executeExpression: LunaticState['executeExpression'];
+		executeExpression: LunaticReducerState['executeExpression'];
 	}
 ): number | undefined {
 	if ('iterations' in definition && definition.iterations) {

@@ -3,6 +3,8 @@ import useLunatic from '../use-lunatic';
 import type {
 	LunaticComponentDefinition,
 	LunaticError,
+	LunaticOptions,
+	LunaticReducerState,
 	LunaticState,
 } from '../use-lunatic/type';
 
@@ -20,12 +22,12 @@ export type LunaticBaseProps<ValueType = unknown> = {
 		args?: Record<string, unknown>
 	) => void;
 	errors?: { [id: string]: LunaticError[] };
-	preferences?: LunaticState['preferences'];
+	preferences?: LunaticOptions['preferences'];
 	label?: ReactNode;
 	disabled?: boolean;
 	missing?: unknown;
 	missingResponse?: { name: string; value?: unknown };
-	management?: LunaticState['management'];
+	management?: LunaticOptions['management'];
 	description?: ReactNode;
 	shortcut?: boolean;
 	required?: boolean;
@@ -101,7 +103,7 @@ export type ComponentPropsByType = {
 		lines: { min: number; max: number };
 		iterations: number;
 		getComponents: (n: number) => LunaticComponentProps[];
-		executeExpression: LunaticState['executeExpression'];
+		executeExpression: LunaticReducerState['executeExpression'];
 		value: Record<string, unknown[]>;
 		header?: Array<{
 			label: ReactNode;
@@ -115,7 +117,7 @@ export type ComponentPropsByType = {
 		lines: { min: number; max: number };
 		iterations: number;
 		getComponents: (n: number) => LunaticComponentProps[];
-		executeExpression: LunaticState['executeExpression'];
+		executeExpression: LunaticReducerState['executeExpression'];
 		value: Record<string, unknown[]>;
 		header?: Array<{ label: ReactNode }>;
 		paginatedLoop?: boolean;
@@ -132,7 +134,7 @@ export type ComponentPropsByType = {
 			colspan?: number;
 			rowspan?: number;
 		})[][];
-		executeExpression: LunaticState['executeExpression'];
+		executeExpression: LunaticReducerState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 		componentType?: 'Table';
 	};
@@ -212,8 +214,8 @@ export type ComponentPropsByType = {
 	};
 	PairwiseLinks: Omit<LunaticBaseProps, 'value'> & {
 		components: LunaticComponentDefinition[];
-		features?: LunaticState['features'];
-		executeExpression: LunaticState['executeExpression'];
+		features?: LunaticOptions['features'];
+		executeExpression: LunaticReducerState['executeExpression'];
 		xAxisIterations: number;
 		yAxisIterations: number;
 		symLinks: Record<string, Record<string, string>>;
@@ -242,12 +244,12 @@ export type ComponentPropsByType = {
 		};
 		arbitraryValue?: string;
 		allowArbitrary?: boolean;
-		executeExpression: LunaticState['executeExpression'];
+		executeExpression: LunaticReducerState['executeExpression'];
 		iteration: LunaticState['pager']['iteration'];
 	};
 	Summary: LunaticBaseProps<string | null> & {
 		componentType?: 'Summary';
-		executeExpression: LunaticState['executeExpression'];
+		executeExpression: LunaticReducerState['executeExpression'];
 		sections: Array<{
 			id: string;
 			responses?: Array<{

@@ -1,12 +1,12 @@
-import type { LunaticComponentDefinition, LunaticState } from '../type';
+import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
 import { useMemo } from 'react';
 
 /**
  * Extract the list of variables used for the current loop
  */
 export function useLoopVariables(
-	pager: LunaticState['pager'],
-	pages: LunaticState['pages']
+	pager: LunaticReducerState['pager'],
+	pages: LunaticReducerState['pages']
 ): string[] {
 	const { iteration, page } = pager;
 	const inIteration = iteration !== undefined;

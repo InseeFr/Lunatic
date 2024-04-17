@@ -4,6 +4,7 @@ import type {
 	LunaticExpression,
 	LunaticComponentDefinition,
 	LunaticState,
+	LunaticReducerState,
 } from '../type';
 
 /**
@@ -62,7 +63,7 @@ function extractLoop(components: LunaticComponentDefinition[] = []) {
 	);
 }
 
-function checkLoops(pages: LunaticState['pages']) {
+function checkLoops(pages: LunaticReducerState['pages']) {
 	return Object.entries(pages).reduce(function (map, current) {
 		const [number, content] = current;
 		if (number !== 'unpaged') {

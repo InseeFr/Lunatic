@@ -1,4 +1,10 @@
-import type { LunaticComponentDefinition, LunaticState } from '../../type';
+import type {
+	LunaticChangeHandler,
+	LunaticComponentDefinition,
+	LunaticOptions,
+	LunaticReducerState,
+	LunaticState,
+} from '../../type';
 import { fillComponentExpressions } from './fill-component-expressions';
 import { getComponentTypeProps } from '../../props/propComponentType';
 import type { LunaticComponentProps } from '../../../components/type';
@@ -6,19 +12,18 @@ import { getMissingResponseProp } from '../../props/propMissingResponse';
 import { getValueProp } from '../../props/propValue';
 import { getIterationsProp } from '../../props/propIterations';
 
-type FillComponentArgs = Pick<
-	LunaticState,
-	| 'handleChange'
-	| 'executeExpression'
-	| 'preferences'
-	| 'goToPage'
-	| 'shortcut'
-	| 'goNextPage'
-	| 'goPreviousPage'
-	| 'pager'
-	| 'variables'
-	| 'management'
->;
+type FillComponentArgs = {
+	handleChange: LunaticChangeHandler;
+	executeExpression: LunaticReducerState['executeExpression'];
+	goToPage: LunaticState['goToPage'];
+	goNextPage: LunaticState['goNextPage'];
+	goPreviousPage: LunaticState['goPreviousPage'];
+	shortcut: LunaticOptions['shortcut'];
+	management: LunaticOptions['management'];
+	preferences: LunaticOptions['preferences'];
+	pager: LunaticReducerState['pager'];
+	variables: LunaticReducerState['variables'];
+};
 
 /**
  * To make this work with TypeScript we need to call function in succession, we prefer expressiveness here over generalized approache
@@ -57,7 +62,5 @@ export function fillComponents(
 ): LunaticComponentProps[] {
 	return components
 		.map((component) => fillComponent(component, state))
-		.filter(({ conditionFilter }) =>
-			conditionFilter !== undefined ? conditionFilter : true
-		);
+		.filter(({ conditionFilter }) => conditionFilter ?? true);
 }

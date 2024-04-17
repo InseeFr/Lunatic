@@ -22,7 +22,7 @@ export function reduceGoToPage(
 
 	const newPager: LunaticState['pager'] = {
 		...state.pager,
-		page: action.payload.page as number,
+		page: action.payload.page,
 		subPage: action.payload.subPage,
 		iteration: action.payload.iteration,
 		nbIterations: undefined,

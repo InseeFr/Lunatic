@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage } from './commons';
 import type {
+	LunaticChangeHandler,
 	LunaticData,
 	LunaticOptions,
 	LunaticState,
@@ -11,7 +12,6 @@ import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
 import { createLunaticProvider } from './lunatic-context';
 import type { LunaticSource } from './type-source';
-import type { LunaticComponentProps } from '../components/type';
 import { compileControls as compileControlsLib } from './commons/compile-controls';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
@@ -137,7 +137,7 @@ function useLunatic(
 		},
 		[dispatch]
 	);
-	const handleChange = useCallback<LunaticState['handleChange']>(
+	const handleChange = useCallback<LunaticChangeHandler>(
 		(response, value, args) => {
 			dispatch(
 				actions.handleChange(
@@ -202,28 +202,29 @@ function useLunatic(
 	};
 
 	return {
-		...options,
-		...state,
+		pageTag,
+		isFirstPage,
+		isLastPage,
+		updatedAt: state.updatedAt,
+		pager: state.pager,
+		isInLoop: state.isInLoop,
+		overview: useOverview(state, [pageTag]),
+		loopVariables: useLoopVariables(state.pager, state.pages),
+		// Methods
 		getComponents,
 		goPreviousPage,
 		goNextPage,
 		goToPage,
 		compileControls,
-		pageTag,
-		isFirstPage,
-		isLastPage,
-		pager: state.pager,
 		getData,
-		Provider,
-		// @deprecated use handleChange instead
-		onChange: handleChange,
-		handleChange: handleChange,
-		overview: useOverview(state, [pageTag]),
-		loopVariables: useLoopVariables(state.pager, state.pages),
 		getChangedData,
 		resetChangedData,
-		preferences,
 		hasPageResponse: usePageHasResponse(components, state.executeExpression),
+		// Components
+		Provider,
+		testing: {
+			handleChange,
+		},
 	} satisfies LunaticState;
 }
 

@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { isObject } from '../../utils/is-object';
-import type { LunaticState } from '../type';
+import type { LunaticReducerState } from '../type';
 import type { LunaticComponentProps } from '../../components/type';
 
 /**
@@ -8,7 +8,7 @@ import type { LunaticComponentProps } from '../../components/type';
  */
 export function usePageHasResponse(
 	components: LunaticComponentProps[],
-	executeExpression: LunaticState['executeExpression']
+	executeExpression: LunaticReducerState['executeExpression']
 ): () => boolean {
 	return useCallback(() => {
 		if (!Array.isArray(components) || components.length === 0) {
@@ -94,7 +94,7 @@ function isSubComponentsEmpty(
 		| { response: { name: string } }
 		| { [key: string]: unknown }
 	)[],
-	executeExpression: LunaticState['executeExpression']
+	executeExpression: LunaticReducerState['executeExpression']
 ): boolean {
 	for (const component of components) {
 		if ('responses' in component && Array.isArray(component.responses)) {

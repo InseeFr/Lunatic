@@ -41,8 +41,8 @@ export const useOverview = (
  */
 const interpretOverview = (
 	overviewItems: LunaticOverviewItem[],
-	executeExpression: LunaticState['executeExpression'],
-	pager?: LunaticState['pager']
+	executeExpression: LunaticReducerState['executeExpression'],
+	pager?: LunaticReducerState['pager']
 ) => {
 	// Flat structure of the overview
 	let items = overviewItems.reduce(
@@ -77,7 +77,7 @@ const interpretOverview = (
 const interpretOverviewItem = (
 	items: InterpretedLunaticOverviewItem[],
 	item: LunaticOverviewItem,
-	executeExpression: LunaticState['executeExpression'],
+	executeExpression: LunaticReducerState['executeExpression'],
 	pager?: LunaticState['pager'],
 	iteration?: number
 ): InterpretedLunaticOverviewItem[] => {

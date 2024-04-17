@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import type { LunaticControl, LunaticError } from '../../type';
-import type { LunaticState } from '../../type';
+import type { LunaticReducerState } from '../../type';
 
 /**
  * Pour le Roundabout, le controle doit être validé pour chaque itération
@@ -11,7 +11,7 @@ import type { LunaticState } from '../../type';
  */
 export function checkRoundaboutControl(
 	control: LunaticControl,
-	executeExpression: LunaticState['executeExpression']
+	executeExpression: LunaticReducerState['executeExpression']
 ): LunaticError | undefined {
 	const { criticality, errorMessage, id, typeOfControl, iterations } = control;
 	const value = control?.control?.value ?? 'true';

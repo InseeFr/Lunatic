@@ -47,7 +47,6 @@ export type LunaticExpression = {
 	type: ExpressionType;
 	bindingDependencies?: string[];
 };
-export type TODO = unknown; // Temporary type to mark types as unresolved
 
 export type PageTag = `${number}.${number}#${number}` | `${number}`;
 
@@ -127,16 +126,18 @@ export type LunaticReducerState = {
 };
 
 export type LunaticOptions = {
-	features?: LunaticState['features'];
-	preferences?: LunaticState['preferences'];
-	savingType?: LunaticState['savingType'];
-	onChange?: LunaticState['handleChange'];
+	features?: ('MD' | 'VTL')[];
+	preferences?: ['COLLECTED'];
+	savingType?: 'COLLECTED';
+	onChange?: LunaticChangeHandler;
 	management?: boolean;
+	// enable shortcut on radio/checkbox/missing buttons
 	shortcut?: boolean;
 	initialPage?: PageTag;
 	lastReachedPage?: PageTag;
 	autoSuggesterLoading?: boolean;
 	getReferentiel?: (name: string) => Promise<Array<IndexEntry>>;
+	// Enable controls for data (form validation)
 	activeControls?: boolean;
 	withOverview?: boolean;
 	missing?: boolean;
@@ -149,48 +150,22 @@ export type LunaticOptions = {
 };
 
 // Type representing the return type of "useLunatic()"
-export type LunaticState = Omit<LunaticReducerState, 'overview'> & {
+export type LunaticState = {
+	pager: LunaticPager;
 	overview: InterpretedLunaticOverviewItem[];
 	pageTag: PageTag;
 	updatedAt: number;
 	Provider: FunctionComponent<PropsWithChildren>;
-	variables: LunaticVariablesStore;
-	pages: LunaticReducerState['pages'];
 	isInLoop: boolean;
+	loopVariables: string[];
 	isFirstPage: boolean;
 	isLastPage: boolean;
-	features: string[];
-	preferences: ['COLLECTED'];
-	savingType: 'COLLECTED';
 	// Errors for the form
 	errors?: { [page: string]: { [id: string]: LunaticError[] } };
 	// Contains the errors for the current page / iteration
 	currentErrors?: { [id: string]: LunaticError[] };
 	// Errors
 	modalErrors?: Record<string, LunaticError[]>;
-	// Handler to call when updating a value
-	handleChange: (
-		response: { name: string },
-		value: any,
-		args?: {
-			iteration?: number[];
-		}
-	) => void;
-	// @deprecated use handleChange instead
-	onChange?: (
-		response: { name: string },
-		value: any,
-		args?: {
-			iteration?: number[];
-		}
-	) => void;
-	loopVariables: string[];
-	// Enable controls for data (form validation)
-	activeControls: boolean;
-	// enable shortcut on radio/checkbox/missing buttons
-	shortcut?: boolean;
-	// TODO : Explain this
-	management?: boolean;
 	goToPage: (page: {
 		page: PageTag | number;
 		iteration?: number;
@@ -212,4 +187,16 @@ export type LunaticState = Omit<LunaticReducerState, 'overview'> & {
 	getChangedData: (reset: boolean) => LunaticData;
 	resetChangedData: () => void;
 	hasPageResponse: () => boolean;
+	// This is used for testing purpose only
+	testing: {
+		handleChange: LunaticChangeHandler;
+	};
 };
+
+export type LunaticChangeHandler = (
+	response: { name: string },
+	value: any,
+	args?: {
+		iteration?: number[];
+	}
+) => void;

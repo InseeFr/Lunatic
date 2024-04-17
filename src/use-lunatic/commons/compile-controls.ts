@@ -3,6 +3,7 @@ import type {
 	LunaticComponentDefinition,
 	LunaticControl,
 	LunaticError,
+	LunaticReducerState,
 	LunaticState,
 } from '../type';
 import {
@@ -14,7 +15,7 @@ import { checkBaseControl } from '../reducer/controls/check-base-control';
 import { getComponentsFromState } from './get-components-from-state';
 
 export type StateForControls = Pick<
-	LunaticState,
+	LunaticReducerState,
 	'pager' | 'pages' | 'isInLoop' | 'executeExpression'
 >;
 
@@ -77,8 +78,8 @@ function checkComponents(
 
 function checkControls(
 	controls: LunaticControl[],
-	executeExpression: LunaticState['executeExpression'],
-	pager: LunaticState['pager']
+	executeExpression: LunaticReducerState['executeExpression'],
+	pager: LunaticReducerState['pager']
 ): LunaticError[] {
 	return controls
 		.map((control) => {
@@ -97,7 +98,7 @@ function checkControls(
  */
 function computeIterations(
 	component: InterpretedComponent | ComponentDefinition,
-	executeExpression: LunaticState['executeExpression']
+	executeExpression: LunaticReducerState['executeExpression']
 ): number {
 	if (
 		'iterations' in component &&

@@ -3,7 +3,6 @@ import {
 	isValidElement,
 	memo,
 	type PropsWithChildren,
-	type ReactElement,
 	type ReactNode,
 	useRef,
 } from 'react';
@@ -48,7 +47,7 @@ const LunaticComponentWrapper = slottableComponent(
 /**
  * Entry point for orchestrators, this component display the list of fields
  */
-export function LunaticComponents<V = undefined>({
+export function LunaticComponents<V = unknown>({
 	components,
 	autoFocusKey,
 	componentProps,

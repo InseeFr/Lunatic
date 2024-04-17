@@ -3,6 +3,7 @@ import { isObject } from '../../../utils/is-object';
 import type {
 	LunaticComponentDefinition,
 	LunaticExpression,
+	LunaticReducerState,
 	LunaticState,
 } from '../../type';
 import { firstValueItem } from '../../../utils/array';
@@ -10,12 +11,9 @@ import { firstValueItem } from '../../../utils/array';
 const VTL_ATTRIBUTES = [
 	'label',
 	'options.label',
-	'responses.label',
-	'hierarchy.label',
-	'hierarchy.sequence.label',
-	'hierarchy.subSequence.label',
 	'declarations.label',
 	'description',
+	'responses.label',
 	'responses.description',
 	'options.description',
 	'controls.iterations',
@@ -32,8 +30,8 @@ const VTL_ATTRIBUTES = [
 	'arbitrary.inputLabel',
 ];
 
-type CrawlArgs = Pick<LunaticState, 'executeExpression'> &
-	Pick<LunaticState['pager'], 'iteration' | 'linksIterations'>;
+type CrawlArgs = Pick<LunaticReducerState, 'executeExpression'> &
+	Pick<LunaticReducerState['pager'], 'iteration' | 'linksIterations'>;
 
 // Utility type to replace all expression from an object into a translated version
 export type DeepTranslateExpression<T> = T extends LunaticExpression
@@ -119,20 +117,17 @@ function fillAttributes(
 		executeExpression,
 		iteration,
 		linksIterations,
-	}: Pick<LunaticState, 'executeExpression'> &
-		Pick<LunaticState['pager'], 'iteration' | 'linksIterations'>
-) {
+	}: Pick<LunaticReducerState, 'executeExpression'> &
+		Pick<LunaticReducerState['pager'], 'iteration' | 'linksIterations'>
+): DeepTranslateExpression<LunaticComponentDefinition> {
 	const crawl = createCrawl({ executeExpression, iteration, linksIterations });
-	return VTL_ATTRIBUTES.reduce(
-		function (step, fullStringPath: string) {
-			const path = fullStringPath.split('.');
-			return {
-				...step,
-				...crawl(path, step),
-			};
-		},
-		{ ...component } as typeof component
-	);
+	return VTL_ATTRIBUTES.reduce((acc, fullStringPath: string) => {
+		const path = fullStringPath.split('.');
+		return {
+			...acc,
+			...crawl(path, acc),
+		};
+	}, component) as any; // This is too dynamic to be typed correctly, in the future we would like to type each call to executeExpression
 }
 
 /**
@@ -141,8 +136,8 @@ function fillAttributes(
 export function fillComponentExpressions(
 	component: LunaticComponentDefinition,
 	state: {
-		executeExpression: LunaticState['executeExpression'];
-		pager: Pick<LunaticState['pager'], 'iteration' | 'linksIterations'>;
+		executeExpression: LunaticReducerState['executeExpression'];
+		pager: Pick<LunaticReducerState['pager'], 'iteration' | 'linksIterations'>;
 	}
 ) {
 	const { pager, executeExpression } = state;
@@ -151,5 +146,5 @@ export function fillComponentExpressions(
 		executeExpression,
 		iteration,
 		linksIterations,
-	}) as any as DeepTranslateExpression<LunaticComponentDefinition>;
+	});
 }
