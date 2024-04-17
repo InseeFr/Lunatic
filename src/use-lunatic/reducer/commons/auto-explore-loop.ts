@@ -1,4 +1,4 @@
-import type { LunaticReducerState, LunaticState } from '../../type';
+import type { LunaticReducerState } from '../../type';
 import { getPageId, pageStringToNumbers } from '../../commons/page';
 
 /**

@@ -1,4 +1,4 @@
-import type { LunaticState } from '../type';
+import type { LunaticReducerState } from '../type';
 import type { LunaticComponentType } from '../../components/type';
 
 const resetIteration = {
@@ -12,9 +12,9 @@ const resetIteration = {
  * Increment the pager to reach the next page or iteration
  */
 export function getNextPager(
-	pager: LunaticState['pager'],
+	pager: LunaticReducerState['pager'],
 	parent?: LunaticComponentType
-): LunaticState['pager'] {
+): LunaticReducerState['pager'] {
 	// Increment the page or subPage
 	let [page, subPage] =
 		pager.subPage !== undefined
@@ -70,9 +70,9 @@ export function getNextPager(
 }
 
 export function getPrevPager(
-	pager: LunaticState['pager'],
+	pager: LunaticReducerState['pager'],
 	parent?: LunaticComponentType
-): LunaticState['pager'] {
+): LunaticReducerState['pager'] {
 	// Decrement the page or subPage
 	let [page, subPage] =
 		pager.subPage !== undefined

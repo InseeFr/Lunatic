@@ -1,11 +1,11 @@
-import type { LunaticState } from '../type';
+import type { LunaticReducerState } from '../type';
 
 /**
  * Reset the pager at his initial state
  */
 export default function clearPager(
-	pager: LunaticState['pager']
-): LunaticState['pager'] {
+	pager: LunaticReducerState['pager']
+): LunaticReducerState['pager'] {
 	const { maxPage, lastReachedPage } = pager;
 	return {
 		maxPage,

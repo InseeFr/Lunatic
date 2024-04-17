@@ -4,7 +4,6 @@ import type {
 	LunaticControl,
 	LunaticError,
 	LunaticReducerState,
-	LunaticState,
 } from '../type';
 import {
 	fillComponentExpressions,

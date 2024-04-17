@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getNextPager, getPrevPager } from './page-navigation';
-import type { LunaticState } from '../type';
+import type { LunaticReducerState } from '../type';
 
 describe('page-navigation', () => {
 	describe('getNextPager', () => {
@@ -11,7 +11,7 @@ describe('page-navigation', () => {
 			nbSubPages: 3,
 			iteration: 0,
 			nbIterations: 2,
-		} satisfies LunaticState['pager'];
+		} satisfies LunaticReducerState['pager'];
 
 		it('should navigate inside a sequence', () => {
 			expect(getNextPager(base)).toEqual({
@@ -76,7 +76,7 @@ describe('page-navigation', () => {
 			nbSubPages: 3,
 			iteration: 1,
 			nbIterations: 2,
-		} satisfies LunaticState['pager'];
+		} satisfies LunaticReducerState['pager'];
 
 		it('should navigate inside a sequence', () => {
 			expect(getPrevPager(base)).toEqual({

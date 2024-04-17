@@ -5,7 +5,6 @@ import type {
 	LunaticError,
 	LunaticOptions,
 	LunaticReducerState,
-	LunaticState,
 } from '../use-lunatic/type';
 
 type Formats = 'PTnHnM' | 'PnYnM';
@@ -135,7 +134,7 @@ export type ComponentPropsByType = {
 			rowspan?: number;
 		})[][];
 		executeExpression: LunaticReducerState['executeExpression'];
-		iteration: LunaticState['pager']['iteration'];
+		iteration: LunaticReducerState['pager']['iteration'];
 		componentType?: 'Table';
 	};
 	Datepicker: LunaticBaseProps<string | null> & {
@@ -245,7 +244,7 @@ export type ComponentPropsByType = {
 		arbitraryValue?: string;
 		allowArbitrary?: boolean;
 		executeExpression: LunaticReducerState['executeExpression'];
-		iteration: LunaticState['pager']['iteration'];
+		iteration: LunaticReducerState['pager']['iteration'];
 	};
 	Summary: LunaticBaseProps<string | null> & {
 		componentType?: 'Summary';

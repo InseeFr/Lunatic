@@ -3,7 +3,6 @@ import isRoundabout from './is-roundabout';
 import type {
 	LunaticExpression,
 	LunaticComponentDefinition,
-	LunaticState,
 	LunaticReducerState,
 } from '../type';
 

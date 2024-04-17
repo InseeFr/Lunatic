@@ -4,7 +4,6 @@ import { expect, describe, it } from 'vitest';
 
 describe('Tbody component', () => {
 	it('renders the component with the correct props and children', () => {
-		const testId = 'test-id';
 		const testClass = 'test-class';
 		const testContent = 'Test content';
 		const { getByRole, getByText } = render(

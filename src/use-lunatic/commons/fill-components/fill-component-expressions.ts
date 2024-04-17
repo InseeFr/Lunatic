@@ -4,7 +4,6 @@ import type {
 	LunaticComponentDefinition,
 	LunaticExpression,
 	LunaticReducerState,
-	LunaticState,
 } from '../../type';
 import { firstValueItem } from '../../../utils/array';
 

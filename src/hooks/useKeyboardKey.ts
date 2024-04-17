@@ -24,5 +24,6 @@ export function useKeyboardKey(
 		return () => {
 			window.removeEventListener('keydown', listener);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [enabled]);
 }

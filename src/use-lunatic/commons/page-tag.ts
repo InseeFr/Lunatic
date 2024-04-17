@@ -1,9 +1,9 @@
-import type { LunaticState, PageTag } from '../type';
+import type { LunaticReducerState, PageTag } from '../type';
 
 /**
  * Generate page name from the pager
  */
-export function getPageTag(pager: LunaticState['pager']): PageTag {
+export function getPageTag(pager: LunaticReducerState['pager']): PageTag {
 	const { page, subPage, iteration } = pager;
 	if (subPage !== undefined && iteration !== undefined) {
 		return `${page}.${subPage + 1}#${iteration + 1}`;
@@ -47,7 +47,7 @@ export function getPagerFromPageTag(pageTag: string | number = 1) {
 	};
 }
 
-export function isNewReachedPage(pager: LunaticState['pager']): boolean {
+export function isNewReachedPage(pager: LunaticReducerState['pager']): boolean {
 	const { lastReachedPage, page, subPage, iteration } = pager;
 	const reachedPager = getPagerFromPageTag(lastReachedPage ?? '0');
 
@@ -71,7 +71,7 @@ export function isNewReachedPage(pager: LunaticState['pager']): boolean {
 }
 
 export function getNewReachedPage(
-	pager: LunaticState['pager']
+	pager: LunaticReducerState['pager']
 ): PageTag | undefined {
 	return isNewReachedPage(pager) ? getPageTag(pager) : pager.lastReachedPage;
 }

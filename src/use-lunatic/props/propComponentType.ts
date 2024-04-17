@@ -1,8 +1,4 @@
-import type {
-	LunaticChangeHandler,
-	LunaticComponentDefinition,
-	LunaticState,
-} from '../type';
+import type { LunaticChangeHandler, LunaticComponentDefinition } from '../type';
 import { type DeepTranslateExpression } from '../commons/fill-components/fill-component-expressions';
 import { hasComponentType } from '../commons/component';
 import { getVTLCompatibleValue } from '../../utils/vtl';

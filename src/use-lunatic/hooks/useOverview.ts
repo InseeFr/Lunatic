@@ -1,7 +1,6 @@
 import type {
 	LunaticOverviewItem,
 	LunaticReducerState,
-	LunaticState,
 	PageTag,
 } from '../type';
 import { type DependencyList, type ReactNode, useMemo } from 'react';
@@ -78,7 +77,7 @@ const interpretOverviewItem = (
 	items: InterpretedLunaticOverviewItem[],
 	item: LunaticOverviewItem,
 	executeExpression: LunaticReducerState['executeExpression'],
-	pager?: LunaticState['pager'],
+	pager?: LunaticReducerState['pager'],
 	iteration?: number
 ): InterpretedLunaticOverviewItem[] => {
 	// We reached a loop item, we need to add it multiple time

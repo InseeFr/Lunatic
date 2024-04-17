@@ -1,6 +1,6 @@
-import type { LunaticState } from '../type';
+import type { LunaticReducerState } from '../type';
 
-function isFirstLastPage(pager: LunaticState['pager']) {
+function isFirstLastPage(pager: LunaticReducerState['pager']) {
 	const { page, maxPage } = pager;
 	const isFirstPage = page === 1;
 	const isLastPage = page === maxPage;

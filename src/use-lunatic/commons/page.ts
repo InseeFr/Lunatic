@@ -1,11 +1,11 @@
-import type { LunaticState, LunaticReducerState } from '../type';
+import type { LunaticReducerState } from '../type';
 import { getComponentsFromState } from './get-components-from-state';
 import executeConditionFilter from './execute-condition-filter';
 
 export function getPageId({
 	subPage,
 	page,
-}: Pick<LunaticState['pager'], 'page' | 'subPage'>) {
+}: Pick<LunaticReducerState['pager'], 'page' | 'subPage'>) {
 	if (subPage === undefined) {
 		return page;
 	}

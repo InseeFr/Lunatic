@@ -4,7 +4,6 @@ import { describe, expect, it } from 'vitest';
 
 describe('Td', () => {
 	it('renders a td element with the correct props and children', () => {
-		const id = 'test-id';
 		const row = 1;
 		const index = 2;
 		const className = 'test-class';

@@ -1,7 +1,7 @@
 import { type ActionGoToPage } from '../actions';
 import { getPageId, isPageEmpty } from '../commons/page';
 import { getPagerFromPageTag } from '../commons/page-tag';
-import type { LunaticReducerState, LunaticState } from '../type';
+import type { LunaticReducerState } from '../type';
 import { reduceGoNextPage } from './reduce-go-next-page';
 
 export function reduceGoToPage(
@@ -20,7 +20,7 @@ export function reduceGoToPage(
 		action.payload.page = pager.page;
 	}
 
-	const newPager: LunaticState['pager'] = {
+	const newPager: LunaticReducerState['pager'] = {
 		...state.pager,
 		page: action.payload.page,
 		subPage: action.payload.subPage,

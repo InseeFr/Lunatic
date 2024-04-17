@@ -1,10 +1,4 @@
-import type {
-	LunaticData,
-	LunaticOptions,
-	LunaticState,
-	PageTag,
-} from './type';
-import type { LunaticSource } from './type-source';
+import type { LunaticState } from './type';
 
 export enum ActionKind {
 	GO_PREVIOUS_PAGE = 'use-lunatic/go-previous',
