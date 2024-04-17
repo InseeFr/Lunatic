@@ -79,14 +79,6 @@ function useLunatic(
 		{ ...options, source, data },
 		reducerInitializer
 	);
-	const getReferentielRef = useRefSync(options.getReferentiel);
-
-	// Register the list of suggesters
-	useEffect(() => {
-		if (source.suggesters && getReferentielRef.current) {
-			registerSuggesters(source.suggesters ?? [], getReferentielRef.current);
-		}
-	}, [source.suggesters, getReferentielRef]);
 
 	// Required context provider: cleaner than prop drilling through every component
 	const Provider = useMemo(

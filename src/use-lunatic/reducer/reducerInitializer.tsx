@@ -1,5 +1,5 @@
 import type { LunaticSource } from '../type-source';
-import type { LunaticOptions, LunaticData, LunaticReducerState } from '../type';
+import type { LunaticData, LunaticOptions, LunaticReducerState } from '../type';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { checkLoops, createMapPages } from '../commons';
 import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
@@ -8,6 +8,7 @@ import { MDLabel } from '../../components/shared/MDLabel/MDLabel';
 import { getPagerFromPageTag } from '../commons/page-tag';
 import { buildOverview } from './overview/overviewOnInit';
 import { forceInt } from '../../utils/number';
+import { registerSuggesters } from '../../utils/search/SuggestersDatabase';
 
 const baseState = {
 	variables: new LunaticVariablesStore(),
@@ -35,6 +36,7 @@ export function reducerInitializer({
 	initialPage = '1',
 	lastReachedPage = undefined,
 	withOverview = false,
+	getReferentiel,
 }: {
 	source: LunaticSource;
 	data: LunaticData;
@@ -42,12 +44,18 @@ export function reducerInitializer({
 	initialPage?: LunaticOptions['initialPage'];
 	lastReachedPage?: LunaticOptions['lastReachedPage'];
 	withOverview?: LunaticOptions['withOverview'];
+	getReferentiel?: LunaticOptions['getReferentiel'];
 }): LunaticReducerState {
 	const variables = LunaticVariablesStore.makeFromSource(source, data);
 	const pages = checkLoops(createMapPages(source));
 
 	if (!source || !data) {
 		return baseState;
+	}
+
+	// Register suggesters
+	if (getReferentiel && source.suggesters) {
+		registerSuggesters(source.suggesters, getReferentiel);
 	}
 
 	const executeExpression: LunaticReducerState['executeExpression'] = (
