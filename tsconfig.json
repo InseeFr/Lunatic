@@ -25,5 +25,5 @@
 		"verbatimModuleSyntax": true
 	},
 	"include": ["src"],
-	"exclude": ["src/storires"]
+	"exclude": ["src/stories/", "**/*.test.ts"]
 }
