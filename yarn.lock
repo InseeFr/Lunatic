@@ -8489,6 +8489,14 @@ mdast-util-gfm@^3.0.0:
     mdast-util-gfm-task-list-item "^2.0.0"
     mdast-util-to-markdown "^2.0.0"
 
+mdast-util-newline-to-break@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/mdast-util-newline-to-break/-/mdast-util-newline-to-break-2.0.0.tgz#4e73ef621b6b1a590240336cfe6c29915e198df0"
+  integrity sha512-MbgeFca0hLYIEx/2zGsszCSEJJ1JSCdiY5xQxRcLDDGa8EPvlLPupJ4DSajbMPAnC0je8jfb9TiUATnxxrHUog==
+  dependencies:
+    "@types/mdast" "^4.0.0"
+    mdast-util-find-and-replace "^3.0.0"
+
 mdast-util-phrasing@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/mdast-util-phrasing/-/mdast-util-phrasing-4.1.0.tgz#7cc0a8dec30eaf04b7b1a9661a92adb3382aa6e3"
@@ -10366,6 +10374,15 @@ release-zalgo@^1.0.0:
   integrity sha512-gUAyHVHPPC5wdqX/LG4LWtRYtgjxyX78oanFNTMMyFEfOqdC54s3eE82imuWKbOeqYht2CrNf64Qb8vgmmtZGA==
   dependencies:
     es6-error "^4.0.1"
+
+remark-breaks@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/remark-breaks/-/remark-breaks-4.0.0.tgz#dcc19a2891733906f3b97eaa8acb8621e8da8852"
+  integrity sha512-IjEjJOkH4FuJvHZVIW0QCDWxcG96kCq7An/KVH2NfJe6rKZU2AsHeB3OEjPNRxi4QC34Xdx7I2KGYn6IpT7gxQ==
+  dependencies:
+    "@types/mdast" "^4.0.0"
+    mdast-util-newline-to-break "^2.0.0"
+    unified "^11.0.0"
 
 remark-gfm@^4.0.0:
   version "4.0.0"

@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { MDLabelLink } from './MDLabelLink';
 import { voidFunction } from '../../../utils/function';
 import { Fragment } from 'react';
+import remarkBreaks from 'remark-breaks';
 
 const DEFAULT_LOG_FUNCTION = voidFunction;
 
@@ -11,11 +12,16 @@ type Props = { expression: string; logFunction?: typeof DEFAULT_LOG_FUNCTION };
 export const MDLabel = ({
 	expression,
 	logFunction = DEFAULT_LOG_FUNCTION,
-}: Props) => (
-	<ReactMarkdown components={renderComponentsFor(expression, { logFunction })}>
-		{expression}
-	</ReactMarkdown>
-);
+}: Props) => {
+	return (
+		<ReactMarkdown
+			components={renderComponentsFor(expression, { logFunction })}
+			remarkPlugins={[remarkBreaks]}
+		>
+			{expression}
+		</ReactMarkdown>
+	);
+};
 
 const renderComponentsFor = (
 	expression: string,
