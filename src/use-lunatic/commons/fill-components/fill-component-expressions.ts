@@ -12,6 +12,7 @@ const VTL_ATTRIBUTES = [
 	'options.label',
 	'declarations.label',
 	'description',
+	'iterations',
 	'responses.label',
 	'responses.description',
 	'options.description',

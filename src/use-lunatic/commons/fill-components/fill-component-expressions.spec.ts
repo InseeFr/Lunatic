@@ -6,6 +6,7 @@ describe('fillComponentExpressions', () => {
 	const component = {
 		label: exp('label'),
 		header: [{ label: exp('1') }, { label: exp('2') }],
+		iterations: exp('3'),
 	};
 
 	test('it should convert expression', () => {
@@ -19,6 +20,7 @@ describe('fillComponentExpressions', () => {
 		expect(translated).toEqual({
 			label: 'label',
 			header: [{ label: '1' }, { label: '2' }],
+			iterations: '3',
 		});
 	});
 });
