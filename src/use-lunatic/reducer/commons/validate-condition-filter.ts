@@ -1,8 +1,8 @@
 import { executeConditionFilter } from '../../commons';
-import type { LunaticState } from '../../type';
+import type { LunaticReducerState } from '../../type';
 
 function validateLoopConditionFilter(
-	state: LunaticState,
+	state: Pick<LunaticReducerState, 'pages' | 'executeExpression'>,
 	{ next, iteration }: { next: string; iteration?: number }
 ): boolean {
 	const { pages, executeExpression } = state;

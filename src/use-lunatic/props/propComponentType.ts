@@ -1,16 +1,25 @@
-import type { LunaticComponentDefinition, LunaticState } from '../../type';
-import { type DeepTranslateExpression } from './fill-component-expressions';
-import fillComponents, { fillComponent } from './fill-components';
-import { hasComponentType } from '../component';
-import { getVTLCompatibleValue } from '../../../utils/vtl';
+import type {
+	LunaticChangeHandler,
+	LunaticComponentDefinition,
+	LunaticState,
+} from '../type';
+import { type DeepTranslateExpression } from '../commons/fill-components/fill-component-expressions';
+import { hasComponentType } from '../commons/component';
+import { getVTLCompatibleValue } from '../../utils/vtl';
+import {
+	fillComponent,
+	fillComponents,
+} from '../commons/fill-components/fill-components';
+
+type State = Parameters<typeof fillComponent>[1];
 
 /**
  * Fill props for roundabout
  * - expressions, VTL that states the level of completion for each iteration
  */
-function fillRoundaboutProps(
+function getRoundaboutProps(
 	component: DeepTranslateExpression<LunaticComponentDefinition<'Roundabout'>>,
-	state: Pick<LunaticState, 'executeExpression'>
+	state: State
 ) {
 	const iterations = component.iterations as number; // iterations is the result of an expression but we know it's a number
 	const compiled = Object.entries(component.expressions).reduce(function (
@@ -24,18 +33,17 @@ function fillRoundaboutProps(
 		});
 		return { ...result, [name]: values };
 	}, {});
-	return { ...component, expressions: compiled };
+	return { expressions: compiled };
 }
 
 /**
  * Fill child components for nested component type
  */
-function fillChildComponents(
+function getChildComponents(
 	component: DeepTranslateExpression<LunaticComponentDefinition<'Question'>>,
-	state: LunaticState
+	state: State
 ) {
 	return {
-		...component,
 		components: fillComponents(component.components, state),
 	};
 }
@@ -43,16 +51,15 @@ function fillChildComponents(
 /**
  * For loops, inject a method to retrieve component at a specific iteration
  */
-function fillChildComponentsWithIteration(
+function getChildComponentsWithIteration(
 	component: DeepTranslateExpression<
 		LunaticComponentDefinition<'Loop' | 'RosterForLoop'>
 	> & {
 		value?: Record<string, unknown[]>;
 	},
-	state: LunaticState
+	state: State
 ) {
 	return {
-		...component,
 		getComponents: (iteration: number) =>
 			fillComponents(component.components, {
 				...state,
@@ -70,10 +77,10 @@ function fillChildComponentsWithIteration(
 }
 
 // Create change handler memoized for every iteration
-let changeHandler = null as null | LunaticState['handleChange'];
-const changeHandlerMap = new Map<number, LunaticState['handleChange']>();
+let changeHandler = null as null | LunaticChangeHandler;
+const changeHandlerMap = new Map<number, LunaticChangeHandler>();
 function createChangeHandlerForIteration(
-	handleChange: LunaticState['handleChange'],
+	handleChange: LunaticChangeHandler,
 	iteration: number
 ) {
 	if (handleChange !== changeHandler) {
@@ -94,14 +101,13 @@ function createChangeHandlerForIteration(
 /**
  * For pairwise, inject a method to retrieve component at a specific iteration combination
  */
-function fillPairwise(
+function getPairwiseProps(
 	component: DeepTranslateExpression<
 		LunaticComponentDefinition<'PairwiseLinks'>
 	>,
-	state: LunaticState
+	state: State
 ) {
 	return {
-		...component,
 		getComponents: (x: number, y: number) => {
 			if (x === y) {
 				return [];
@@ -135,12 +141,11 @@ function fillPairwise(
 /**
  * For pairwise, inject a method to retrieve component at a specific iteration combination
  */
-function fillTable(
+function getTableProps(
 	component: DeepTranslateExpression<LunaticComponentDefinition<'Table'>>,
-	state: LunaticState
+	state: State
 ) {
 	return {
-		...component,
 		body: component.body.map((row) =>
 			row.map((component) => {
 				if (hasComponentType(component)) {
@@ -161,15 +166,14 @@ function fillTable(
 /**
  * For suggester, inject the arbitrary value if necessary
  */
-function fillSuggester(
+function getSuggesterProps(
 	component: DeepTranslateExpression<LunaticComponentDefinition<'Suggester'>>,
-	state: LunaticState
+	state: State
 ) {
 	if (!component.arbitrary) {
 		return component;
 	}
 	return {
-		...component,
 		arbitraryValue: state.executeExpression(component.arbitrary.response.name, {
 			iteration: state.pager.iteration,
 		}),
@@ -177,29 +181,27 @@ function fillSuggester(
 }
 
 /**
- * Fill component specific props (RoundAbout for instance)
+ * Get component specific props (RoundAbout for instance)
  */
-function fillSpecificExpressions(
+export function getComponentTypeProps(
 	component: DeepTranslateExpression<LunaticComponentDefinition>,
-	state: LunaticState
+	state: State
 ) {
 	switch (component.componentType) {
 		case 'Roundabout':
-			return fillRoundaboutProps(component, state);
+			return getRoundaboutProps(component, state);
 		case 'Question':
-			return fillChildComponents(component, state);
+			return getChildComponents(component, state);
 		case 'Loop':
 		case 'RosterForLoop':
-			return fillChildComponentsWithIteration(component, state);
+			return getChildComponentsWithIteration(component, state);
 		case 'PairwiseLinks':
-			return fillPairwise(component, state);
+			return getPairwiseProps(component, state);
 		case 'Table':
-			return fillTable(component, state);
+			return getTableProps(component, state);
 		case 'Suggester':
-			return fillSuggester(component, state);
+			return getSuggesterProps(component, state);
 		default:
-			return component;
+			return {};
 	}
 }
-
-export default fillSpecificExpressions;

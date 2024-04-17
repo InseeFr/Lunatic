@@ -1,4 +1,9 @@
-import type { LunaticOverviewItem, LunaticState, PageTag } from '../type';
+import type {
+	LunaticOverviewItem,
+	LunaticReducerState,
+	LunaticState,
+	PageTag,
+} from '../type';
 import { type DependencyList, type ReactNode, useMemo } from 'react';
 import { getPageTag, pageTagComparator } from '../commons/page-tag';
 
@@ -21,7 +26,7 @@ export const useOverview = (
 		overview,
 		executeExpression,
 		pager,
-	}: Pick<LunaticState, 'executeExpression' | 'overview' | 'pager'>,
+	}: Pick<LunaticReducerState, 'executeExpression' | 'overview' | 'pager'>,
 	deps: DependencyList
 ) => {
 	return useMemo(
@@ -36,8 +41,8 @@ export const useOverview = (
  */
 const interpretOverview = (
 	overviewItems: LunaticOverviewItem[],
-	executeExpression: LunaticState['executeExpression'],
-	pager?: LunaticState['pager']
+	executeExpression: LunaticReducerState['executeExpression'],
+	pager?: LunaticReducerState['pager']
 ) => {
 	// Flat structure of the overview
 	let items = overviewItems.reduce(
@@ -72,7 +77,7 @@ const interpretOverview = (
 const interpretOverviewItem = (
 	items: InterpretedLunaticOverviewItem[],
 	item: LunaticOverviewItem,
-	executeExpression: LunaticState['executeExpression'],
+	executeExpression: LunaticReducerState['executeExpression'],
 	pager?: LunaticState['pager'],
 	iteration?: number
 ): InterpretedLunaticOverviewItem[] => {

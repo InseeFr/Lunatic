@@ -1,16 +1,15 @@
-import getCompatibleVTLExpression from './get-compatible-vtl-expression';
-import type { LunaticExpression, LunaticState } from '../type';
+import type { LunaticExpression, LunaticReducerState } from '../type';
 import { firstValueItem } from '../../utils/array';
+import { getExpressionAsString } from '../../utils/vtl';
 
 function executeConditionFilter(
 	filter: LunaticExpression,
-	execute: LunaticState['executeExpression'],
+	execute: LunaticReducerState['executeExpression'],
 	iteration?: number
 ) {
 	if (filter && typeof execute === 'function') {
-		const { value } = filter;
-		const result = execute(getCompatibleVTLExpression(value), { iteration });
-		// Todo : replace this with a casting system on execute
+		const result = execute(getExpressionAsString(filter.value), { iteration });
+		// Handle some edge cases where the value is not what we expect
 		return Array.isArray(result) ? firstValueItem(result) : result;
 	}
 	return undefined;

@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { fillComponentValue } from './fill-component-value';
-import { LunaticVariablesStore } from '../variables/lunatic-variables-store';
-import type { LunaticComponentDefinition } from '../../type';
-import { times } from '../../../utils/array';
+import { getValueProp } from './propValue';
+import type { LunaticComponentDefinition } from '../type';
+import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
+import { times } from '../../utils/array';
 
 describe('fillComponentValue', () => {
 	// Helper to avoid repetition
@@ -14,14 +14,14 @@ describe('fillComponentValue', () => {
 		iteration?: number
 	) => {
 		return expect(
-			fillComponentValue(component, {
+			getValueProp(component, {
 				variables: LunaticVariablesStore.makeFromObject(values),
 				pager: {
 					maxPage: 2,
 					page: 1,
 					iteration,
 				},
-			}).value
+			})
 		);
 	};
 

@@ -1,10 +1,14 @@
 import { type ReactNode } from 'react';
-import type { LunaticControl, LunaticError, LunaticState } from '../../type';
+import type {
+	LunaticControl,
+	LunaticError,
+	LunaticReducerState,
+} from '../../type';
 
 export function checkBaseControl(
 	control: LunaticControl,
-	executeExpression: LunaticState['executeExpression'],
-	pager: LunaticState['pager']
+	executeExpression: LunaticReducerState['executeExpression'],
+	pager: LunaticReducerState['pager']
 ): LunaticError | undefined {
 	const { iteration, linksIterations } = pager;
 	const { criticality, errorMessage, id, typeOfControl } = control;

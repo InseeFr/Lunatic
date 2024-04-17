@@ -1,13 +1,13 @@
-import type { LunaticState } from '../../type';
+import type { LunaticReducerState, LunaticState } from '../../type';
 import { getPageId, pageStringToNumbers } from '../../commons/page';
 
 /**
  * Update the pager to enter a loop if the pager is on a loop
  */
 export function autoExploreLoop(
-	state: LunaticState,
+	state: LunaticReducerState,
 	direction: 'forward' | 'backward' = 'forward'
-): LunaticState {
+): LunaticReducerState {
 	const newPager = {
 		...state.pager,
 	};

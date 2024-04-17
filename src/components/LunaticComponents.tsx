@@ -3,11 +3,9 @@ import {
 	isValidElement,
 	memo,
 	type PropsWithChildren,
-	type ReactElement,
 	type ReactNode,
 	useRef,
 } from 'react';
-import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 import { useAutoFocus } from '../hooks/use-auto-focus';
 import { hasComponentType } from '../use-lunatic/commons/component';
 import { ComponentWrapper } from './shared/ComponentWrapper';
@@ -22,25 +20,18 @@ import type { LunaticComponentProps } from './type';
 
 type Props<V = unknown> = {
 	// List of components to display (coming from getComponents)
-	components: (
-		| FilledLunaticComponentProps
-		| LunaticComponentProps
-		| ReactElement
-		| { label: string; [key: string]: unknown }
-	)[];
+	components: LunaticComponentProps[];
 	// Should we memoized children
 	memo?: boolean;
 	// Key that trigger autofocus when it changes (pageTag)
 	autoFocusKey?: string;
 	// Returns the list of extra props to add to components
-	componentProps?: (component: FilledLunaticComponentProps) => V;
+	componentProps?: (component: LunaticComponentProps) => V;
 	// Forbidden components
 	blocklist?: string[];
 	// Add additional wrapper around each component
 	wrapper?: (
-		props: PropsWithChildren<
-			FilledLunaticComponentProps & V & { index: number }
-		>
+		props: PropsWithChildren<LunaticComponentProps & V & { index: number }>
 	) => ReactNode;
 	// Customized deep components
 	slots?: Partial<LunaticSlotComponents>;
@@ -56,7 +47,7 @@ const LunaticComponentWrapper = slottableComponent(
 /**
  * Entry point for orchestrators, this component display the list of fields
  */
-export function LunaticComponents<V = undefined>({
+export function LunaticComponents<V = unknown>({
 	components,
 	autoFocusKey,
 	componentProps,
@@ -145,11 +136,9 @@ export function LunaticComponents<V = undefined>({
 	);
 }
 
-type ItemProps = FilledLunaticComponentProps;
-
-function LunaticComponent(props: ItemProps) {
+function LunaticComponent(props: LunaticComponentProps) {
 	// Component is too dynamic to be typed
-	const Component = (library as any)[props.componentType];
+	const Component = (library as any)[props.componentType!];
 	return (
 		<ErrorBoundary FallbackComponent={LunaticError}>
 			<ComponentWrapper {...(props as any)}>
@@ -171,18 +160,23 @@ function LunaticError({ error }: { error: { toString: () => string } }) {
 const LunaticComponentMemo = memo(LunaticComponent);
 
 function computeId(
-	component: Record<string, unknown>,
+	component: unknown,
 	fallback: number | string
 ): number | string {
-	if ('id' in component && typeof component.id === 'string') {
+	if (
+		component &&
+		typeof component === 'object' &&
+		'id' in component &&
+		typeof component.id === 'string'
+	) {
 		return component.id;
 	}
 	return fallback;
 }
 
-export function hasLabel(
-	component: unknown
-): component is { label: ReactNode } & FilledLunaticComponentProps {
+export function hasLabel<T>(
+	component: T
+): component is { label: ReactNode } & T {
 	return (
 		!!component &&
 		typeof component === 'object' &&

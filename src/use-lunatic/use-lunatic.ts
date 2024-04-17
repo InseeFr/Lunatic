@@ -1,26 +1,32 @@
 import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import * as actions from './actions';
-import { getPageTag, isFirstLastPage, useComponentsFromState } from './commons';
-import type { LunaticData, LunaticState, PageTag } from './type';
+import { getPageTag, isFirstLastPage } from './commons';
+import type {
+	LunaticChangeHandler,
+	LunaticData,
+	LunaticOptions,
+	LunaticState,
+	PageTag,
+} from './type';
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
-import INITIAL_STATE from './initial-state';
 import { createLunaticProvider } from './lunatic-context';
 import type { LunaticSource } from './type-source';
-import type { LunaticComponentProps } from '../components/type';
 import { compileControls as compileControlsLib } from './commons/compile-controls';
 import { useLoopVariables } from './hooks/use-loop-variables';
-import reducer from './reducer';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
 import { useTrackChanges } from '../hooks/use-track-changes';
 import { usePageHasResponse } from './hooks/use-page-has-response';
 import { registerSuggesters } from '../utils/search/SuggestersDatabase';
-import type { IndexEntry } from '../utils/search/SearchInterface';
 import { useRefSync } from '../hooks/useRefSync';
 import { useOverview } from './hooks/useOverview';
+import { reducerInitializer } from './reducer/reducerInitializer';
+import { getComponentsFromState } from './commons/get-components-from-state';
+import { fillComponents } from './commons/fill-components/fill-components';
+import { reducer } from './reducer/reducer';
+import { mergeDefault } from '../utils/object';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
-const emptyFn = () => {};
 const DEFAULT_DATA = empty as LunaticData;
 const DEFAULT_FEATURES = ['VTL', 'MD'] as ['VTL', 'MD'];
 const DEFAULT_PREFERENCES = [COLLECTED] as ['COLLECTED'];
@@ -28,58 +34,52 @@ const DEFAULT_SHORTCUT = { dontKnow: '', refused: '' };
 
 const DEFAULT_DONT_KNOW = D.DK;
 const DEFAULT_REFUSED = D.RF;
-const nothing = () => {};
+
+const defaultOptions = {
+	features: DEFAULT_FEATURES,
+	preferences: DEFAULT_PREFERENCES,
+	savingType: COLLECTED,
+	onChange: () => {},
+	management: false,
+	shortcut: false,
+	initialPage: '1' as PageTag,
+	lastReachedPage: undefined,
+	autoSuggesterLoading: false,
+	activeControls: false,
+	// Calculate an overview of every sequence (will be exposed as "overview")
+	withOverview: false,
+	missing: false,
+	missingStrategy: () => {},
+	missingShortcut: DEFAULT_SHORTCUT,
+	dontKnowButton: DEFAULT_DONT_KNOW,
+	refusedButton: DEFAULT_REFUSED,
+	trackChanges: false,
+} satisfies LunaticOptions;
 
 function useLunatic(
 	source: LunaticSource,
 	data: LunaticData = DEFAULT_DATA,
-	{
-		features = DEFAULT_FEATURES,
-		preferences = DEFAULT_PREFERENCES,
-		savingType = COLLECTED,
-		onChange = nothing,
-		management = false,
-		shortcut = false,
-		initialPage = '1',
-		lastReachedPage = undefined,
-		autoSuggesterLoading = false,
-		activeControls = false,
-		getReferentiel,
-		// Calculate an overview of every sequence (will be exposed as "overview")
-		withOverview = false,
-		missing = false,
-		missingStrategy = emptyFn,
-		missingShortcut = DEFAULT_SHORTCUT,
-		dontKnowButton = DEFAULT_DONT_KNOW,
-		refusedButton = DEFAULT_REFUSED,
-		trackChanges = false,
-	}: {
-		features?: LunaticState['features'];
-		preferences?: LunaticState['preferences'];
-		savingType?: LunaticState['savingType'];
-		onChange?: LunaticState['handleChange'];
-		management?: boolean;
-		shortcut?: boolean;
-		initialPage?: PageTag;
-		lastReachedPage?: PageTag;
-		autoSuggesterLoading?: boolean;
-		getReferentiel?: (name: string) => Promise<Array<IndexEntry>>;
-		activeControls?: boolean;
-		withOverview?: boolean;
-		missing?: boolean;
-		missingStrategy?: () => void;
-		missingShortcut?: { dontKnow: string; refused: string };
-		dontKnowButton?: string;
-		refusedButton?: string;
-		// Enable change tracking to keep a track of what variable changed (allow using getChangedData())
-		trackChanges?: boolean;
-	}
+	argOptions: LunaticOptions = empty
 ) {
-	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-	const { pager, waiting, overview, pages, executeExpression, isInLoop } =
-		state;
-	const components = useComponentsFromState(state);
-	const getReferentielRef = useRefSync(getReferentiel);
+	const options = mergeDefault(argOptions, defaultOptions);
+	const {
+		management,
+		missing,
+		missingStrategy,
+		shortcut,
+		missingShortcut,
+		dontKnowButton,
+		refusedButton,
+		onChange,
+		trackChanges,
+		preferences,
+	} = options;
+	const [state, dispatch] = useReducer(
+		reducer,
+		{ ...options, source, data },
+		reducerInitializer
+	);
+	const getReferentielRef = useRefSync(options.getReferentiel);
 
 	// Register the list of suggesters
 	useEffect(() => {
@@ -111,21 +111,18 @@ function useLunatic(
 		]
 	);
 
-	const compileControls = useCallback(
-		function () {
-			return compileControlsLib({ pager, pages, isInLoop, executeExpression });
-		},
-		[pager, pages, isInLoop, executeExpression]
-	);
+	const compileControls: LunaticState['compileControls'] = () => {
+		return compileControlsLib(state);
+	};
 
-	const goPreviousPage = useCallback(
+	const goPreviousPage: LunaticState['goPreviousPage'] = useCallback(
 		function () {
 			dispatch(actions.goPreviousPage());
 		},
 		[dispatch]
 	);
 
-	const goNextPage = useCallback(
+	const goNextPage: LunaticState['goNextPage'] = useCallback(
 		function (payload = {}) {
 			dispatch(actions.goNextPage(payload));
 		},
@@ -138,33 +135,7 @@ function useLunatic(
 		},
 		[dispatch]
 	);
-
-	const getComponents = useCallback(
-		function ({
-			only,
-			except,
-		}: {
-			only?: LunaticComponentProps['componentType'];
-			except?: LunaticComponentProps['componentType'];
-		} = {}) {
-			if (only && except) {
-				throw new Error(
-					'"only" and "except" cannot be used together in getComponents()'
-				);
-			}
-			if (only) {
-				return components.filter((c) => only.includes(c.componentType ?? ''));
-			}
-			if (except) {
-				return components.filter(
-					(c) => !except.includes(c.componentType ?? '')
-				);
-			}
-			return components;
-		},
-		[components]
-	);
-	const handleChange = useCallback<LunaticState['handleChange']>(
+	const handleChange = useCallback<LunaticChangeHandler>(
 		(response, value, args) => {
 			dispatch(
 				actions.handleChange(
@@ -178,9 +149,9 @@ function useLunatic(
 		[dispatch, onChange]
 	);
 
-	const getData = (
-		withRefreshedCalculated: boolean,
-		variableNames?: string[]
+	const getData: LunaticState['getData'] = (
+		withRefreshedCalculated,
+		variableNames
 	) => {
 		return getQuestionnaireData(
 			state.variables,
@@ -196,77 +167,63 @@ function useLunatic(
 		(variableNames?: string[]) => getData(false, variableNames)
 	);
 
-	const pageTag = getPageTag(pager);
-	const { isFirstPage, isLastPage } = isFirstLastPage(pager);
+	const pageTag = getPageTag(state.pager);
+	const { isFirstPage, isLastPage } = isFirstLastPage(state.pager);
 
-	useEffect(
-		function () {
-			dispatch(
-				actions.onInit({
-					source,
-					data,
-					initialPage,
-					lastReachedPage,
-					features,
-					preferences,
-					savingType,
-					management,
-					shortcut,
-					handleChange,
-					activeControls,
-					goToPage,
-					goNextPage,
-					goPreviousPage,
-					withOverview,
-				})
+	const components = fillComponents(getComponentsFromState(state), {
+		handleChange,
+		preferences,
+		goToPage,
+		shortcut,
+		goNextPage,
+		goPreviousPage,
+		management,
+		...state,
+	});
+
+	const getComponents: LunaticState['getComponents'] = ({
+		only,
+		except,
+	} = {}) => {
+		if (only && except) {
+			throw new Error(
+				'"only" and "except" cannot be used together in getComponents()'
 			);
-		},
-		[
-			source,
-			data,
-			initialPage,
-			features,
-			preferences,
-			savingType,
-			management,
-			shortcut,
-			handleChange,
-			activeControls,
-			withOverview,
-			goToPage,
-			goNextPage,
-			goPreviousPage,
-			lastReachedPage,
-		]
-	);
+		}
+		if (only) {
+			return components.filter((c) => only.includes(c.componentType ?? ''));
+		}
+		if (except) {
+			return components.filter((c) => !except.includes(c.componentType ?? ''));
+		}
+		return components;
+	};
 
 	return {
+		pageTag,
+		isFirstPage,
+		isLastPage,
+		updatedAt: state.updatedAt,
+		pager: state.pager,
+		isInLoop: state.isInLoop,
+		overview: useOverview(state, [pageTag]),
+		loopVariables: useLoopVariables(state.pager, state.pages),
+		// Methods
 		getComponents,
 		goPreviousPage,
 		goNextPage,
 		goToPage,
 		compileControls,
-		pageTag,
-		isFirstPage,
-		isLastPage,
-		pager,
-		waiting,
 		getData,
-		Provider,
-		onChange: handleChange,
-		overview: useOverview(
-			{
-				executeExpression,
-				overview,
-				pager,
-			},
-			[pageTag]
-		),
-		loopVariables: useLoopVariables(pager, state.pages),
 		getChangedData,
 		resetChangedData,
-		hasPageResponse: usePageHasResponse(components, executeExpression),
-	};
+		hasPageResponse: usePageHasResponse(components, state.executeExpression),
+		// Components
+		Provider,
+		testing: {
+			handleChange,
+		},
+	} satisfies LunaticState;
 }
 
 export default useLunatic;

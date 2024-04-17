@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import fillComponentExpressions from './fill-component-expressions';
+import { fillComponentExpressions } from './fill-component-expressions';
 
 describe('fillComponentExpressions', () => {
 	const exp = (s: string) => ({ value: s, type: 'VTL' });

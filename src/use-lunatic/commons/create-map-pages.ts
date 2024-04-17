@@ -1,6 +1,6 @@
 import isPaginatedLoop from './is-paginated-loop';
 import isRoundabout from './is-roundabout';
-import type { LunaticComponentDefinition, LunaticState } from '../type';
+import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
 import type { LunaticSource } from '../type-source';
 
 function isUnpaginated(questionnaire: { maxPage?: unknown }): boolean {
@@ -14,8 +14,8 @@ function isUnpaginated(questionnaire: { maxPage?: unknown }): boolean {
 function mergeComponent(
 	component: LunaticComponentDefinition,
 	page: string,
-	map: LunaticState['pages']
-) {
+	map: LunaticReducerState['pages']
+): LunaticReducerState['pages'] {
 	if (!page) {
 		page = 'unpaged';
 	}
@@ -30,7 +30,7 @@ function mergeComponent(
 	return {
 		...map,
 		[page]: { components: [component] },
-	} as LunaticState['pages'];
+	} as LunaticReducerState['pages'];
 }
 
 /**
@@ -38,8 +38,8 @@ function mergeComponent(
  */
 function mergeNestedComponents(
 	components: LunaticComponentDefinition[],
-	map: LunaticState['pages']
-): LunaticState['pages'] {
+	map: LunaticReducerState['pages']
+): LunaticReducerState['pages'] {
 	return components.reduce(function (current, component) {
 		const { page } = component;
 		if (page) {
@@ -53,7 +53,9 @@ function mergeNestedComponents(
 /**
  * Extract pages from questionnaire
  */
-function createPages(questionnaire: LunaticSource): LunaticState['pages'] {
+function createPages(
+	questionnaire: LunaticSource
+): LunaticReducerState['pages'] {
 	const { components } = questionnaire;
 	// If we have no page, create one with all the components
 	if (isUnpaginated(questionnaire)) {
@@ -71,7 +73,7 @@ function createPages(questionnaire: LunaticSource): LunaticState['pages'] {
 
 			return mergeComponent(component, component.page, current);
 		},
-		{} as LunaticState['pages']
+		{} as LunaticReducerState['pages']
 	);
 }
 
