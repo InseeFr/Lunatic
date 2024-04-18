@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useReducer } from 'react';
+import { useCallback, useMemo, useReducer } from 'react';
 import * as actions from './actions';
 import { getPageTag, isFirstLastPage } from './commons';
 import type {
@@ -17,8 +17,6 @@ import { useLoopVariables } from './hooks/use-loop-variables';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
 import { useTrackChanges } from '../hooks/use-track-changes';
 import { usePageHasResponse } from './hooks/use-page-has-response';
-import { registerSuggesters } from '../utils/search/SuggestersDatabase';
-import { useRefSync } from '../hooks/useRefSync';
 import { useOverview } from './hooks/useOverview';
 import { reducerInitializer } from './reducer/reducerInitializer';
 import { getComponentsFromState } from './commons/get-components-from-state';
