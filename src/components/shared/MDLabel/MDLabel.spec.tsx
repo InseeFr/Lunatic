@@ -61,6 +61,25 @@ describe('md-label', () => {
 			</div>
 		`);
 	});
+
+	it('should handle emoticon', () => {
+		const obj = render(<MDLabel expression={'**Demo** of a :dog:'} />);
+		return expect(obj.container).toMatchInlineSnapshot(`
+			<div>
+			  <strong>
+			    Demo
+			  </strong>
+			   of a 
+			  <span
+			    aria-label="dog emoji"
+			    role="img"
+			  >
+			    🐶
+			  </span>
+			</div>
+		`);
+	});
+
 	it('should render external link', () => {
 		const obj = render(
 			<MDLabel

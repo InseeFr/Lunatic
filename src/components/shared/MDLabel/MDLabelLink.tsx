@@ -1,6 +1,6 @@
-import { Fragment, useState, type PropsWithChildren } from 'react';
+import { useState, type PropsWithChildren } from 'react';
 import { Tooltip } from 'react-tooltip';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
 import { RouterLink } from './RouterLink';
 
 type Props = PropsWithChildren<{ href: string; title: string }>;
@@ -43,7 +43,9 @@ export const MDLabelLink = (props: Props) => {
 			<LinkComponent {...linkProps}>{children}</LinkComponent>
 			{title && (
 				<Tooltip className="tooltip-content" id={`tooltip-${id}`}>
-					<ReactMarkdown components={{ p: Fragment }}>{title}</ReactMarkdown>
+					<Markdown components={{ p: (props) => <>{props.children}</> }}>
+						{title}
+					</Markdown>
 				</Tooltip>
 			)}
 		</>

@@ -1,43 +1,32 @@
 import type { ComponentProps } from 'react';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
 import { MDLabelLink } from './MDLabelLink';
-import { voidFunction } from '../../../utils/function';
-import { Fragment } from 'react';
 import remarkBreaks from 'remark-breaks';
+import emoji from 'remark-emoji';
 
-const DEFAULT_LOG_FUNCTION = voidFunction;
+type Props = { expression: string };
 
-type Props = { expression: string; logFunction?: typeof DEFAULT_LOG_FUNCTION };
-
-export const MDLabel = ({
-	expression,
-	logFunction = DEFAULT_LOG_FUNCTION,
-}: Props) => {
+export const MDLabel = ({ expression }: Props) => {
 	return (
-		<ReactMarkdown
-			components={renderComponentsFor(expression, { logFunction })}
-			remarkPlugins={[remarkBreaks]}
+		<Markdown
+			components={renderComponentsFor(expression)}
+			remarkPlugins={[[emoji, { accessible: true }], remarkBreaks]}
 		>
 			{expression}
-		</ReactMarkdown>
+		</Markdown>
 	);
 };
 
 const renderComponentsFor = (
-	expression: string,
-	extraProps: {
-		logFunction: typeof DEFAULT_LOG_FUNCTION;
-	}
-): ComponentProps<typeof ReactMarkdown>['components'] => {
+	expression: string
+): ComponentProps<typeof Markdown>['components'] => {
 	const components = {
-		p: Fragment,
+		p: (props) => <>{props.children}</>,
 		br: 'br',
 		a: (props) => (
-			<MDLabelLink
-				{...({ ...extraProps, ...props } as ComponentProps<typeof MDLabelLink>)}
-			/>
+			<MDLabelLink {...({ ...props } as ComponentProps<typeof MDLabelLink>)} />
 		),
-	} satisfies ComponentProps<typeof ReactMarkdown>['components'];
+	} satisfies ComponentProps<typeof Markdown>['components'];
 
 	if (/\n\n/.test(expression)) {
 		return {
