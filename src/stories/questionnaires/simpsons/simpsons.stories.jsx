@@ -1,6 +1,6 @@
 import React from 'react';
-import { playwrightToUserEvent } from '../../../../tests/utils/e2e';
-import { sleep } from '../../../../tests/utils/timer';
+import { playwrightToUserEvent } from '../../../tests/utils/e2e';
+import { sleep } from '../../../tests/utils/timer';
 import { Logger } from '../../../utils/logger';
 import defaultArgTypes from '../../utils/default-arg-types';
 import Orchestrator from '../../utils/orchestrator';

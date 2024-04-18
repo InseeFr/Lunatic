@@ -2,8 +2,8 @@ import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import sourceRoster from './source-roster';
 import defaultArgTypes from '../utils/default-arg-types';
-import { playwrightToUserEvent } from '../../../tests/utils/e2e';
-import { sleep } from '../../../tests/utils/timer';
+import { playwrightToUserEvent } from '../../tests/utils/e2e';
+import { sleep } from '../../tests/utils/timer';
 import sourceWithHeader from './source-with-header.json';
 
 const stories = {

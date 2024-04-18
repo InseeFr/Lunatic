@@ -1,7 +1,7 @@
 import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
 import source from './source.json';
-import { generateData } from '../../../../tests/utils/lunatic';
+import { generateData } from '../../../tests/utils/lunatic';
 import { times } from '../../../utils/array';
 
 const stories = {

@@ -1,4 +1,4 @@
-import type { LunaticData } from '../../src/use-lunatic/type';
+import type { LunaticData } from '../../use-lunatic/type';
 
 /**
  * Generate LunaticData from a record of values

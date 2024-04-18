@@ -3,8 +3,8 @@ import Orchestrator from '../utils/orchestrator';
 import source from './source.json';
 import data from './data';
 import defaultArgTypes from '../utils/default-arg-types';
-import { playwrightToUserEvent } from '../../../tests/utils/e2e';
-import { sleep } from '../../../tests/utils/timer';
+import { playwrightToUserEvent } from '../../tests/utils/e2e';
+import { sleep } from '../../tests/utils/timer';
 
 const stories = {
 	title: 'Components/PairwiseLinks',

@@ -49,7 +49,7 @@
 		"format": "npm run _format -- --write",
 		"format:check": "npm run _format -- --list-different",
 		"test-coverage": "vitest run --coverage",
-		"build": "tsc && sass ./src/css/main.scss ./lib/main.css && cp -R ./src/css/icons ./lib/icons",
+		"build": "tsc -p tsconfig.build.json && sass ./src/css/main.scss ./lib/main.css && cp -R ./src/css/icons ./lib/icons",
 		"storybook": "storybook dev -p 9999 --no-open",
 		"build-storybook": "storybook build"
 	},
