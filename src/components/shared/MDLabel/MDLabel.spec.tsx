@@ -114,7 +114,9 @@ describe('md-label', () => {
 
 		expect(tooltip).toBeInTheDocument();
 
-		expect(getStringHtmlWithoutId(container)).toMatchInlineSnapshot(`"<div>This is a <a href="https://inseefr.github.io/Lunatic/docs" target="_blank" rel="noopener noreferrer"  data-tooltip- class="link-md">link</a><div  role="tooltip" class="react-tooltip core-styles-module_tooltip__3vRRp styles-module_tooltip__mnnfp styles-module_dark__xNqje tooltip-content react-tooltip__place-top core-styles-module_show__Nt9eE react-tooltip__show" style="left: 5px; top: -10px;">with a tooltip<div class="react-tooltip-arrow core-styles-module_arrow__cvMwQ styles-module_arrow__K0L3T" style="left: -1px; bottom: -4px;"></div></div></div>"`);
+		expect(getStringHtmlWithoutId(container)).toMatchInlineSnapshot(
+			`"<div>This is a <a href="https://inseefr.github.io/Lunatic/docs" target="_blank" rel="noopener noreferrer"  data-tooltip- class="link-md">link</a><div  role="tooltip" class="react-tooltip core-styles-module_tooltip__3vRRp styles-module_tooltip__mnnfp styles-module_dark__xNqje tooltip-content react-tooltip__place-top core-styles-module_show__Nt9eE react-tooltip__show" style="left: 5px; top: -10px;">with a tooltip<div class="react-tooltip-arrow core-styles-module_arrow__cvMwQ styles-module_arrow__K0L3T" style="left: -1px; bottom: -4px;"></div></div></div>"`
+		);
 	});
 
 	it('should render internal link', () => {
@@ -143,6 +145,8 @@ describe('md-label', () => {
 			tooltip = screen.getByRole('tooltip');
 		});
 		expect(tooltip).toBeInTheDocument();
-		expect(getStringHtmlWithoutId(container)).toMatchInlineSnapshot(`"<div>This is an <a href="/docs"  data-tooltip- class="link-md">internal link</a><div  role="tooltip" class="react-tooltip core-styles-module_tooltip__3vRRp styles-module_tooltip__mnnfp styles-module_dark__xNqje tooltip-content react-tooltip__place-top core-styles-module_show__Nt9eE react-tooltip__show" style="left: 5px; top: -10px;">with a tooltip<div class="react-tooltip-arrow core-styles-module_arrow__cvMwQ styles-module_arrow__K0L3T" style="left: -1px; bottom: -4px;"></div></div></div>"`);
+		expect(getStringHtmlWithoutId(container)).toMatchInlineSnapshot(
+			`"<div>This is an <a href="/docs"  data-tooltip- class="link-md">internal link</a><div  role="tooltip" class="react-tooltip core-styles-module_tooltip__3vRRp styles-module_tooltip__mnnfp styles-module_dark__xNqje tooltip-content react-tooltip__place-top core-styles-module_show__Nt9eE react-tooltip__show" style="left: 5px; top: -10px;">with a tooltip<div class="react-tooltip-arrow core-styles-module_arrow__cvMwQ styles-module_arrow__K0L3T" style="left: -1px; bottom: -4px;"></div></div></div>"`
+		);
 	});
 });
