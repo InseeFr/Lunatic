@@ -24,6 +24,6 @@
 		"jsx": "react-jsx",
 		"verbatimModuleSyntax": true
 	},
-	"include": ["src"],
+	"include": ["src", "tests/setup.ts"],
 	"exclude": ["src/stories/", "**/*.test.ts"]
 }
