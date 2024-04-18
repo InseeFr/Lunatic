@@ -94,7 +94,7 @@ describe('md-label', () => {
 	});
 
 	it('should render external link with tooltip', async () => {
-		const { container } = render(
+		render(
 			<MDLabel
 				expression={
 					"This is a [link](https://inseefr.github.io/Lunatic/docs 'with a tooltip')"
@@ -125,7 +125,7 @@ describe('md-label', () => {
 	});
 
 	it('should render internal link with tooltip', async () => {
-		const { container } = render(
+		render(
 			<MDLabel
 				expression={"This is an [internal link](/docs 'with a tooltip')"}
 			/>
