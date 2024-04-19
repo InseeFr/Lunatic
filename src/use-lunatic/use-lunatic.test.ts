@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import useLunatic from './use-lunatic';
 
@@ -220,11 +220,11 @@ describe('use-lunatic()', () => {
 					onChange: spy,
 				})
 			);
-			result.current.testing.handleChange({ name: 'NB' }, 3);
+			act(() => result.current.testing.handleChange({ name: 'NB' }, 3));
 			expect(
 				(result.current.getData(true).COLLECTED?.PRENOMS as any).COLLECTED
 			).toEqual([null, null, null]);
-			result.current.testing.handleChange({ name: 'NB' }, 2);
+			act(() => result.current.testing.handleChange({ name: 'NB' }, 2));
 			expect(
 				(result.current.getData(true).COLLECTED?.PRENOMS as any).COLLECTED
 			).toEqual([null, null]);
