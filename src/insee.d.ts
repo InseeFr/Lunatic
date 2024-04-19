@@ -10,6 +10,7 @@ declare module '@inseefr/vtl-2.0-antlr-tools' {
 	export class VtlLexer {
 		constructor(stream: Stream);
 		getAllTokens(): { start: number; stop: number; type: number }[];
+		static IDENTIFIER: number;
 	}
 }
 

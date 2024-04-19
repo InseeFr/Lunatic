@@ -33,7 +33,7 @@ export function parseVTLVariables(expression: string): string[] {
 			acc,
 			{ start, stop, type }
 		) {
-			if (type === 234) {
+			if (type === VtlLexer.IDENTIFIER) {
 				acc.add(expression.substring(start, stop + 1));
 			}
 			return acc;

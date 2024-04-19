@@ -61,7 +61,7 @@
 	],
 	"dependencies": {
 		"@inseefr/trevas": "^0.1.21",
-		"@inseefr/vtl-2.0-antlr-tools": "^0.1.0",
+		"@inseefr/vtl-2.0-antlr-tools": "^0.3.2",
 		"antlr4": "4.11.0",
 		"classnames": "^2.5.1",
 		"http-server": "^14.1.1",
