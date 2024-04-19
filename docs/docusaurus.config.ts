@@ -16,7 +16,6 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: 'Lunatic/docs',
   plugins: [
-    'docusaurus-plugin-sass',
       './src/plugins/lunaticFixesPlugin.ts',
     [require.resolve("@cmfcmf/docusaurus-search-local"), {
       indexBlog: false
@@ -50,9 +49,6 @@ const config: Config = {
           routeBasePath: '/',
         },
         blog: false,
-        theme: {
-          customCss: './src/css/custom.scss',
-        },
       } satisfies Preset.Options,
     ],
   ],
