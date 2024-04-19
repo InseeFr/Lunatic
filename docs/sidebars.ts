@@ -1,7 +1,16 @@
-// @ts-check
+import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
-/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
-const sidebars = {
+/**
+ * Creating a sidebar enables you to:
+ - create an ordered group of docs
+ - render a sidebar for each doc of that group
+ - provide next/previous navigation
+
+ The sidebars can be generated from the filesystem, or explicitly defined here.
+
+ Create as many sidebars as you want.
+ */
+const sidebars: SidebarsConfig = {
   docs: [
     'intro',
     {
@@ -28,7 +37,7 @@ const sidebars = {
           label: 'Balisage',
           link: {
             description:
-              "Ces composants offrent des indication visuels pour aider l'utilisateur à s'orienter dans le formulaire",
+                "Ces composants offrent des indication visuels pour aider l'utilisateur à s'orienter dans le formulaire",
             type: 'generated-index',
           },
           collapsed: true,
@@ -68,15 +77,15 @@ const sidebars = {
           },
           collapsed: true,
           items: [
-              'components/aggregators/loop',
-              'components/aggregators/rosterForLoop',
-              'components/aggregators/roundabout',
-              'components/aggregators/pairwise'
+            'components/aggregators/loop',
+            'components/aggregators/rosterForLoop',
+            'components/aggregators/roundabout',
+            'components/aggregators/pairwise'
           ],
         },
       ],
     },
-      "vtl",
+    "vtl",
     {
       type: 'category',
       label: 'Fonctionnement interne',

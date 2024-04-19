@@ -1,3 +1,4 @@
+import "@inseefr/lunatic/lib/main.css";
 import {type LunaticData, type LunaticSource, useLunatic} from '@inseefr/lunatic';
 import styles from './FormExample.module.css';
 import Tabs from '@theme/Tabs';
