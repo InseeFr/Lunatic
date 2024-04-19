@@ -1,16 +1,17 @@
 import {
   type LunaticData,
   type LunaticSource,
+  type LunaticState,
   useLunatic,
   LunaticComponents,
-  Modal,
+  ModalControls,
 } from '@inseefr/lunatic';
 import { useState } from 'react';
 
 type Props = {
   source: LunaticSource;
   data: LunaticData;
-  options?: {initialPage?: string},
+  options?: {initialPage?: LunaticState['pageTag']},
 };
 
 export function FormRendererWithNavigation({ source, data, options }: Props) {
@@ -23,9 +24,7 @@ export function FormRendererWithNavigation({ source, data, options }: Props) {
     Provider,
     compileControls,
   } = useLunatic(source, data, {
-    initialPage: '1',
-    autoSuggesterLoading: true,
-    workersBasePath: '/Lunatic/workers',
+    initialPage: '1' as LunaticState['pageTag'],
     ...options
   });
 
@@ -66,7 +65,7 @@ export function FormRendererWithNavigation({ source, data, options }: Props) {
         </button>
       </div>
       {errors && (
-        <Modal
+        <ModalControls
           errors={errors.currentErrors}
           goNext={forceNext}
           onClose={closeModal}

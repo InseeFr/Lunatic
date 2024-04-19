@@ -37,7 +37,9 @@ const config = {
         locales: ['fr'],
     },
 
-    plugins: ['./src/plugins/lunatic-css-loader.js', [
+    plugins: [
+      'docusaurus-plugin-sass',
+        './src/plugins/lunatic-fixes.js', [
         require.resolve("@cmfcmf/docusaurus-search-local"), {
             indexBlog: false
         }
@@ -57,7 +59,7 @@ const config = {
                 },
                 blog: false,
                 theme: {
-                    customCss: './src/css/custom.css',
+                    customCss: './src/css/custom.scss',
                 },
             }),
         ],

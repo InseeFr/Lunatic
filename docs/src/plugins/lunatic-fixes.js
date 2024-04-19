@@ -1,19 +1,11 @@
 /**
  * Custom plugin to handle Lunatic specificities
  */
-export default async function lunaticCssLoader() {
+export default async function lunaticFixes() {
 	return {
+		name: 'fix-lunatic-plugin',
 		configureWebpack(config, isServer, utils, content) {
 			return {
-				module: {
-					// Lunatic uses sass imports "./*.scss"
-					rules: [
-						{
-							test: /\.s[ac]ss$/i,
-							use: ['style-loader', 'css-loader', 'sass-loader'],
-						},
-					],
-				},
 				resolve: {
 					// antlr4 use node modules, this avoid errors
 					fallback: {
