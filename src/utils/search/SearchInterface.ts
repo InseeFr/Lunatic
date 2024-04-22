@@ -1,6 +1,6 @@
-import type { SuggesterType } from '../../use-lunatic/type-source';
+import type { LunaticSuggester } from '../../use-lunatic/type';
 
-export type SearchInfo = SuggesterType;
+export type SearchInfo = LunaticSuggester;
 
 export type IndexEntry = {
 	id: string;

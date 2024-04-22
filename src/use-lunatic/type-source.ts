@@ -1,27 +1,17 @@
 /**
  * Types used for source data (lunatic models and data.json)
  */
-export type LabelType<
-	T extends 'VTL' | 'VTL|MD' | 'TXT' = 'VTL' | 'VTL|MD' | 'TXT',
-> = {
+export type LabelType = {
 	value: string;
-	type: T;
+	type: 'VTL' | 'VTL|MD';
 };
 
-export type ValuesType<T = unknown> = {
-	PREVIOUS: T | null;
-	COLLECTED: T | null;
-	FORCED: T | null;
-	EDITED: T | null;
-	INPUTTED: T | null;
-};
-
-export type ValuesTypeArray<T = unknown> = {
-	PREVIOUS: T[] | [null];
-	COLLECTED: T[] | [null];
-	FORCED: T[] | [null];
-	EDITED: T[] | [null];
-	INPUTTED: T[] | [null];
+export type ValuesType = {
+	PREVIOUS: unknown;
+	COLLECTED: unknown;
+	FORCED: unknown;
+	EDITED: unknown;
+	INPUTTED: unknown;
 };
 
 export type DeclarationType = {
@@ -101,8 +91,6 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentInputOrTextareaType)
 	| (ComponentTypeBase & ComponentCheckboxOneType)
 	| (ComponentTypeBase & ComponentQuestionType);
-
-export type ComponentTypeEnum = ComponentType['componentType'];
 
 export type ComponentInputOrTextareaType = {
 	componentType: 'Input' | 'Textarea';
@@ -324,7 +312,7 @@ export type Variable =
 	| {
 			variableType: 'COLLECTED';
 			name: string;
-			values: ValuesType | ValuesTypeArray;
+			values: ValuesType;
 	  }
 	| {
 			variableType: 'CALCULATED';

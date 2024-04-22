@@ -49,6 +49,10 @@ const loopCollectedVariable = {
 	variableType: 'COLLECTED',
 	values: {
 		COLLECTED: [],
+		PREVIOUS: [],
+		FORCED: [],
+		EDITED: [],
+		INPUTTED: [],
 	},
 	name: 'PRENOMS',
 } as LunaticVariable;

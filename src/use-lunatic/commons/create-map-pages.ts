@@ -1,7 +1,7 @@
 import isPaginatedLoop from './is-paginated-loop';
 import isRoundabout from './is-roundabout';
 import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
-import type { LunaticSource } from '../type-source';
+import type { LunaticSource } from '../type';
 
 function isUnpaginated(questionnaire: { maxPage?: unknown }): boolean {
 	const { maxPage } = questionnaire;
@@ -37,7 +37,7 @@ function mergeComponent(
  * Merge child components in the map
  */
 function mergeNestedComponents(
-	components: LunaticComponentDefinition[],
+	components: LunaticSource['components'],
 	map: LunaticReducerState['pages']
 ): LunaticReducerState['pages'] {
 	return components.reduce(function (current, component) {

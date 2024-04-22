@@ -1,0 +1,1439 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://insee.fr/lunatic/survey.schema.json",
+  "title": "Lunatic Source",
+  "description": "A lunatic survey unit",
+  "type": "object",
+  "properties": {
+    "components": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "string"
+              }
+            },
+            "required": ["page"]
+          },
+          {
+            "$ref": "#/$defs/ComponentDefinition"
+          }
+        ]
+      }
+    },
+    "variables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Variable"
+      }
+    },
+    "suggesters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SuggesterDefinition"
+      }
+    },
+    "cleaning": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    },
+    "missingBlock": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "resizing": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "string",
+                "description": "VTL Expression for size."
+              },
+              "variables": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "size",
+              "variables"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "sizeForLinksVariables": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "tsType": "[string, string]",
+                    "prefixItems": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "xAxisSize": {
+                        "type": "string"
+                      },
+                      "yAxisSize": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "xAxisSize",
+                      "yAxisSize"
+                    ]
+                  }
+                ]
+              },
+              "linksVariables": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "sizeForLinksVariables",
+              "linksVariables"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "string",
+                "description": "VTL Expression for size."
+              },
+              "variables": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "sizeForLinksVariables": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "tsType": "[string, string]",
+                    "prefixItems": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "xAxisSize": {
+                        "type": "string"
+                      },
+                      "yAxisSize": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "xAxisSize",
+                      "yAxisSize"
+                    ]
+                  }
+                ]
+              },
+              "linksVariables": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "sizeForLinksVariables",
+              "linksVariables",
+              "size",
+              "variables"
+            ]
+          }
+        ]
+      }
+    },
+    "maxPage": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "components",
+    "variables"
+  ],
+  "$defs": {
+    "VTLExpression": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Valid VTL Expression",
+          "type": "string"
+        },
+        "bindingDependencies": {
+          "description": "Variables used in the expression",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "VTL",
+            "VTL|MD"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "VTLScalarExpression": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Valid VTL Expression",
+          "type": "string"
+        },
+        "bindingDependencies": {
+          "description": "Variables used in the expression",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "const": "VTL"
+        }
+      },
+      "required": [
+        "value",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Declaration": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "declarationType": {
+          "type": "string",
+          "enum": [
+            "INSTRUCTION",
+            "COMMENT",
+            "HELP",
+            "CODECARD",
+            "WARNING",
+            "STATEMENT"
+          ]
+        },
+        "position": {
+          "type": "string",
+          "enum": [
+            "AFTER_QUESTION_TEXT",
+            "AFTER_RESPONSE",
+            "BEFORE_QUESTION_TEXT",
+            "DETACHABLE"
+          ]
+        },
+        "label": {
+          "$ref": "#/$defs/VTLExpression"
+        }
+      },
+      "required": [
+        "id",
+        "declarationType",
+        "position",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "ControlDefinition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "criticality": {
+          "type": "string",
+          "enum": [
+            "INFO",
+            "WARN",
+            "ERROR"
+          ]
+        },
+        "typeOfControl": {
+          "type": "string",
+          "enum": [
+            "FORMAT",
+            "CONSISTENCY"
+          ]
+        },
+        "control": {
+          "$ref": "#/$defs/VTLExpression"
+        },
+        "errorMessage": {
+          "$ref": "#/$defs/VTLExpression"
+        },
+        "bindingDependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "roundabout",
+            "ROW",
+            "simple"
+          ]
+        },
+        "iterations": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "criticality",
+        "typeOfControl",
+        "control",
+        "errorMessage"
+      ],
+      "additionalProperties": false
+    },
+    "ResponseDefinition": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "ComponentDefinition": {
+      "discriminator": {
+        "propertyName": "componentType"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ComponentInputDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentSequenceDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentRoundaboutDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentLoopDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentRosterForLoopDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentTableDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentNumberDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentDurationDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentDatePickerDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentCheckboxGroupDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentCheckboxBooleanDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentRadioDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentDropdownDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentQuestionDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentCheckboxOneDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentSuggesterDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentPairWiseLinksDefinition"
+        }
+      ]
+    },
+    "ComponentDefinitionBase": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "$ref": "#/$defs/VTLExpression"
+        },
+        "description": {
+          "$ref": "#/$defs/VTLExpression"
+        },
+        "declarations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Declaration"
+          }
+        },
+        "conditionFilter": {
+          "$ref": "#/$defs/VTLScalarExpression"
+        },
+        "controls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ControlDefinition"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "page": {
+          "type": "string"
+        },
+        "missingResponse": {
+          "$ref": "#/$defs/ResponseDefinition"
+        }
+      },
+      "required": [
+        "label",
+        "id",
+        "page"
+      ]
+    },
+    "ComponentDefinitionBaseWithResponse": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        },
+        {
+          "type": "object",
+          "required": [
+            "response"
+          ],
+          "properties": {
+            "response": {
+              "$ref": "#/$defs/ResponseDefinition"
+            }
+          }
+        }
+      ]
+    },
+    "ComponentInputDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "enum": [
+            "Input",
+            "Textarea"
+          ]
+        },
+        "maxLength": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "componentType"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+        }
+      ]
+    },
+    "ComponentSequenceDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "enum": [
+            "Sequence",
+            "Subsequence"
+          ]
+        },
+        "goToPage": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "componentType"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        }
+      ]
+    },
+    "ComponentRoundaboutDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "Roundabout"
+        },
+        "iterations": {
+          "$ref": "#/$defs/VTLScalarExpression"
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "expressions": {
+          "type": "object",
+          "properties": {
+            "unnecessary": {
+              "$ref": "#/$defs/VTLScalarExpression"
+            },
+            "complete": {
+              "$ref": "#/$defs/VTLScalarExpression"
+            },
+            "partial": {
+              "$ref": "#/$defs/VTLScalarExpression"
+            },
+            "label": {
+              "$ref": "#/$defs/VTLScalarExpression"
+            }
+          },
+          "required": [
+            "label",
+            "partial",
+            "complete",
+            "unnecessary"
+          ]
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ComponentDefinition"
+          }
+        }
+      },
+      "required": [
+        "componentType",
+        "components",
+        "iterations",
+        "locked",
+        "expressions"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        }
+      ]
+    },
+    "ComponentRosterForLoopDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "RosterForLoop"
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ComponentDefinition"
+          }
+        },
+        "lines": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "$ref": "#/$defs/VTLScalarExpression"
+            },
+            "max": {
+              "$ref": "#/$defs/VTLScalarExpression"
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ]
+        },
+        "header": {
+          "$ref": "#/$defs/TableHeader"
+        }
+      },
+      "required": [
+        "componentType",
+        "components",
+        "lines"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        }
+      ]
+    },
+    "ComponentLoopDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "Loop"
+        },
+        "loopDependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ComponentDefinition"
+          }
+        }
+      },
+      "required": [
+        "componentType",
+        "components"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        },
+        {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/PaginatedLoop"
+            },
+            {
+              "$ref": "#/$defs/BlockLoop"
+            }
+          ]
+        }
+      ]
+    },
+    "ComponentTableDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "Table"
+        },
+        "header": {
+          "$ref": "#/$defs/TableHeader"
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "label"
+                  ],
+                  "properties": {
+                    "label": {
+                      "$ref": "#/$defs/VTLExpression"
+                    },
+                    "colspan": {
+                      "type": "number"
+                    },
+                    "rowspan": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                {
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/ComponentDefinition"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "colspan": {
+                          "type": "number"
+                        },
+                        "rowspan": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "required": [
+        "componentType",
+        "header",
+        "body"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        }
+      ]
+    },
+    "ComponentNumberDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "InputNumber"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "min": {
+          "type": "integer"
+        },
+        "max": {
+          "type": "integer"
+        },
+        "decimals": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "componentType"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+        }
+      ]
+    },
+    "ComponentDatePickerDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "Datepicker"
+        },
+        "dateFormat": {
+          "type": "string",
+          "enum": [
+            "YYYY-MM-DD",
+            "YYYY",
+            "YYYY-MM"
+          ]
+        },
+        "min": {
+          "type": "string"
+        },
+        "max": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "componentType",
+        "dateFormat"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+        }
+      ]
+    },
+    "ComponentDurationDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "Duration"
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "PnYnM",
+            "PTnHnM"
+          ]
+        }
+      },
+      "required": [
+        "componentType",
+        "format"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+        }
+      ]
+    },
+    "ComponentCheckboxGroupDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "CheckboxGroup"
+        },
+        "responses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "label",
+              "response",
+              "id"
+            ],
+            "properties": {
+              "label": {
+                "$ref": "#/$defs/VTLExpression"
+              },
+              "description": {
+                "$ref": "#/$defs/VTLExpression"
+              },
+              "response": {
+                "$ref": "#/$defs/ResponseDefinition"
+              },
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "componentType",
+        "responses"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        }
+      ]
+    },
+    "ComponentCheckboxBooleanDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "CheckboxBoolean"
+        }
+      },
+      "required": [
+        "componentType"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+        }
+      ]
+    },
+    "ComponentRadioDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "Radio"
+        },
+        "options": {
+          "$ref": "#/$defs/Options"
+        }
+      },
+      "required": [
+        "componentType",
+        "options"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+        }
+      ]
+    },
+    "ComponentDropdownDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "Dropdown"
+        },
+        "options": {
+          "$ref": "#/$defs/Options"
+        }
+      },
+      "required": [
+        "componentType",
+        "options"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+        }
+      ]
+    },
+    "ComponentQuestionDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "Question"
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ComponentDefinition"
+          }
+        }
+      },
+      "required": [
+        "componentType",
+        "components"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        }
+      ]
+    },
+    "ComponentCheckboxOneDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "CheckboxOne"
+        },
+        "options": {
+          "$ref": "#/$defs/Options"
+        }
+      },
+      "required": [
+        "componentType",
+        "options"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+        }
+      ]
+    },
+    "ComponentSuggesterDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "Suggester"
+        },
+        "storeName": {
+          "type": "string",
+          "description": "Nom / Index du référentiel à utiliser"
+        },
+        "arbitrary": {
+          "type": "object",
+          "description": "Permet l'entrée d'une valeur arbitraire (Autre)",
+          "properties": {
+            "response": {
+              "$ref": "#/$defs/ResponseDefinition"
+            }
+          },
+          "required": [
+            "response"
+          ]
+        },
+        "optionResponses": {
+          "type": "array",
+          "description": "Liste des attributs de la nomenclature à sauvegarder dans une variable",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Nom de la variable",
+                "type": "string"
+              },
+              "attribute": {
+                "description": "Nom de la propriété dans la nomenclature",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "attribute"
+            ]
+          }
+        }
+      },
+      "required": [
+        "componentType",
+        "storeName"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+        }
+      ]
+    },
+    "ComponentPairWiseLinksDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "PairwiseLinks"
+        },
+        "xAxisIterations": {
+          "$ref": "#/$defs/VTLScalarExpression"
+        },
+        "yAxisIterations": {
+          "$ref": "#/$defs/VTLScalarExpression"
+        },
+        "symLinks": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ComponentDefinition"
+          }
+        }
+      },
+      "required": [
+        "componentType",
+        "xAxisIterations",
+        "yAxisIterations",
+        "symLinks",
+        "components"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        }
+      ]
+    },
+    "Variable": {
+      "discriminator": {
+        "propertyName": "variableType"
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "variableType": {
+              "type": "string",
+              "const": "EXTERNAL"
+            },
+            "name": {
+              "type": "string"
+            },
+            "value": {
+              "$ref": "#/$defs/VariableValue"
+            }
+          },
+          "required": [
+            "variableType",
+            "name",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "variableType": {
+              "type": "string",
+              "const": "COLLECTED"
+            },
+            "name": {
+              "type": "string"
+            },
+            "values": {
+              "type": "object",
+              "properties": {
+                "PREVIOUS": {
+                  "$ref": "#/$defs/VariableValue"
+                },
+                "COLLECTED": {
+                  "$ref": "#/$defs/VariableValue"
+                },
+                "FORCED": {
+                  "$ref": "#/$defs/VariableValue"
+                },
+                "EDITED": {
+                  "$ref": "#/$defs/VariableValue"
+                },
+                "INPUTTED": {
+                  "$ref": "#/$defs/VariableValue"
+                }
+              },
+              "required": [
+                "PREVIOUS",
+                "COLLECTED",
+                "FORCED",
+                "EDITED",
+                "INPUTTED"
+              ]
+            }
+          },
+          "required": [
+            "variableType",
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "variableType": {
+              "type": "string",
+              "const": "CALCULATED"
+            },
+            "name": {
+              "type": "string"
+            },
+            "expression": {
+              "$ref": "#/$defs/VTLExpression"
+            },
+            "bindingDependencies": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "shapeFrom": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "variableType",
+            "name",
+            "expression"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "VariableValue": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/VariableScalarValue"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VariableScalarValue"
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/VariableScalarValue"
+            }
+          }
+        }
+      ]
+    },
+    "VariableScalarValue": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+        ]
+    },
+    "PaginatedLoop": {
+      "required": [
+        "paginatedLoop",
+        "maxPage",
+        "iterations"
+      ],
+      "properties": {
+        "iterations": {
+          "$ref": "#/$defs/VTLScalarExpression"
+        },
+        "maxPage": {
+          "type": "string"
+        },
+        "paginatedLoop": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "BlockLoop": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "lines",
+            "paginatedLoop"
+          ],
+          "properties": {
+            "paginatedLoop": {
+              "const": false,
+              "type": "boolean"
+            },
+            "lines": {
+              "type": "object",
+              "properties": {
+                "min": {
+                  "$ref": "#/$defs/VTLExpression"
+                },
+                "max": {
+                  "$ref": "#/$defs/VTLExpression"
+                }
+              },
+              "required": [
+                "min",
+                "max"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "iterations",
+            "paginatedLoop"
+          ],
+          "properties": {
+            "paginatedLoop": {
+              "const": false,
+              "type": "boolean"
+            },
+            "iterations": {
+              "$ref": "#/$defs/VTLExpression"
+            }
+          }
+        }
+      ],
+      "type": "object"
+    },
+    "Options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "$ref": "#/$defs/VTLExpression"
+          },
+          "description": {
+            "$ref": "#/$defs/VTLExpression"
+          }
+        },
+        "required": [
+          "value",
+          "label"
+        ]
+      }
+    },
+    "TableHeader": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "$ref": "#/$defs/VTLExpression"
+          },
+          "colspan": {
+            "type": "integer"
+          },
+          "rowspan": {
+            "type": "integer"
+          },
+          "options": {
+            "$ref": "#/$defs/Options"
+          }
+        },
+        "required": [
+          "value",
+          "label",
+          "options"
+        ]
+      }
+    },
+    "SuggesterDefinition": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the list (will be used as storeName for suggester)",
+          "type": "string"
+        },
+        "fields": {
+          "description": "Fields to use for indexing the data",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "Property name in the JSON",
+                "type": "string"
+              },
+              "min": {
+                "description": "Minimum length for a token to be indexed",
+                "type": "integer"
+              },
+              "rules": {
+                "description": "Regular expression to match words (ex: [\"[\\\\w]+\"])",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "const": "soft"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "synonyms": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "max": {
+          "description": "Limit the number of results to return",
+          "type": "integer"
+        },
+        "queryParser": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "tokenized",
+                  "description": "Search type: word by word search using OR operator."
+                },
+                "params": {
+                  "type": "object",
+                  "properties": {
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "French",
+                        "English"
+                      ],
+                      "description": "Language used for stemming (keeping the root of a word)."
+                    },
+                    "pattern": {
+                      "type": "string",
+                      "description": "Regular expression pattern to match words."
+                    },
+                    "min": {
+                      "type": "integer",
+                      "description": "Minimum length for a token to be used in the search."
+                    }
+                  },
+                  "required": [
+                    "language",
+                    "pattern"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Parameters for tokenized search."
+                }
+              },
+              "required": [
+                "type",
+                "params"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "soft"
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "fields",
+        "queryParser",
+        "version"
+      ]
+    }
+  }
+}

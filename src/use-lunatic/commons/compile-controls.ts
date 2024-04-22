@@ -156,6 +156,7 @@ function checkComponentInLoop(
 					{ value: component.conditionFilter.value, type: 'VTL' },
 					iterationPager
 				)) ||
+			// @ts-ignore
 			component.conditionFilter === false
 		) {
 			continue;

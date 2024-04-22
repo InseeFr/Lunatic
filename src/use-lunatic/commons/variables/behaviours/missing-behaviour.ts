@@ -1,5 +1,5 @@
 import type { LunaticVariablesStore } from '../lunatic-variables-store';
-import type { LunaticSource } from '../../../type-source';
+import type { LunaticSource } from '../../../type';
 
 /**
  * Add missing behaviour to the store

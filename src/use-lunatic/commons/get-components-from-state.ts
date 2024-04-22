@@ -14,28 +14,12 @@ export function getComponentsFromState(
 			const { subPages } = current;
 			const stepName = subPages[subPage ?? '0'];
 			if (stepName in pages) {
-				const currentSubPage = pages[stepName];
-				const { components } = currentSubPage;
-				return filterComponentsInPage(components);
+				return pages[stepName].components;
 			}
 		} else {
-			const { components } = current;
-			return filterComponentsInPage(components);
+			return current.components;
 		}
 	}
 
 	return [];
-}
-
-/**
- * Filter components to show from the list
- */
-function filterComponentsInPage(components: LunaticComponentDefinition[]) {
-	if (!Array.isArray(components)) {
-		console.warn('no components!');
-		return [];
-	}
-	return components.filter((c) =>
-		c.componentType === 'FilterDescription' ? c.filterDescription : true
-	);
 }

@@ -42,6 +42,7 @@
 		"test:e2e:codegen": "playwright codegen http://localhost:9999/iframe.html?viewMode=story&id=",
 		"test:storybook": "test-storybook --url http://localhost:9999 --maxWorkers=4 --no-cache",
 		"test-watch": "vitest",
+		"build:types": "node ./tools/schema-ts-generator.js",
 		"check": "tsc --noEmit",
 		"lint": "eslint ./src",
 		"lint:check": "eslint . --ext .ts,.tsx",
@@ -79,6 +80,8 @@
 		"strip-ansi": "6.0.1"
 	},
 	"devDependencies": {
+		"ajv": "^8.12.0",
+		"json-schema-to-typescript": "^13.1.2",
 		"@playwright/test": "^1.43.1",
 		"@storybook/addon-a11y": "^8.0.8",
 		"@storybook/addon-essentials": "^8.0.8",

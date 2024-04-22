@@ -166,7 +166,7 @@ function getTableProps(
 		body: component.body.map((row) =>
 			row.map((component) => {
 				if (hasComponentType(component)) {
-					return fillComponent(component, state);
+					return fillComponent(component as LunaticComponentDefinition, state);
 				}
 				// We can have a non typed component with extra attributes (colspan, rowspan)
 				return {
