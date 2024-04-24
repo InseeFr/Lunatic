@@ -177,6 +177,23 @@ function getSuggesterProps(
 }
 
 /**
+ *
+ * @param component For remoteComponent
+ * @param state
+ * @returns
+ */
+function getRemoteComponentProps(
+	component: DeepTranslateExpression<
+		LunaticComponentDefinition<'RemoteComponent'>
+	>,
+	state: State
+) {
+	return {
+		getComponents: () => fillComponents(component.components, { ...state }),
+	};
+}
+
+/**
  * Get component specific props (RoundAbout for instance)
  */
 export function getComponentTypeProps(
@@ -184,6 +201,8 @@ export function getComponentTypeProps(
 	state: State
 ) {
 	switch (component.componentType) {
+		case 'RemoteComponent':
+			return getRemoteComponentProps(component, state);
 		case 'Roundabout':
 			return getRoundaboutProps(component, state);
 		case 'Question':

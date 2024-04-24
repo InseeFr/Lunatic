@@ -260,6 +260,11 @@ export type ComponentPropsByType = {
 			iterations?: number;
 		}>;
 	};
+	RemoteComponent: LunaticBaseProps<string | null> & {
+		remote: string;
+		components: LunaticComponentProps[];
+		getComponents: () => LunaticComponentProps[];
+	};
 };
 
 export type LunaticComponentType = keyof ComponentPropsByType;

@@ -1,0 +1,78 @@
+{
+	"maxPage": "2",
+	"components": [
+		{
+			"id": "remote",
+			"componentType": "RemoteComponent",
+			"mandatory": false,
+			"page": "1",
+			"remote": "url-service",
+
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"components": [
+				{
+					"componentType": "Input",
+					"label": "NOM",
+					"maxLength": 30,
+					"id": "name",
+					"description": {
+						"value": "\"For example, Bob.\"",
+						"type": "VTL|MD"
+					},
+					"response": {
+						"name": "NOM"
+					}
+				},
+				{
+					"componentType": "Input",
+					"label": "PRENOM",
+					"maxLength": 30,
+					"id": "surname",
+					"description": {
+						"value": "\"For example, Bob.\"",
+						"type": "VTL|MD"
+					},
+					"response": {
+						"name": "PRENOM"
+					}
+				}
+			],
+			"responses": [{ "response": { "name": "Q2" } }]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "Q2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "TOTO",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NOM",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "TITI",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "TATA",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		}
+	]
+}

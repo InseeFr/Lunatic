@@ -98,7 +98,8 @@ export type ComponentType =
 	| (ComponentTypeBase & ComponentSuggesterType)
 	| (ComponentTypeBase & ComponentInputOrTextareaType)
 	| (ComponentTypeBase & ComponentCheckboxOneType)
-	| (ComponentTypeBase & ComponentQuestionType);
+	| (ComponentTypeBase & ComponentQuestionType)
+	| (ComponentTypeBase & ComponentRemoteComponent);
 
 export type ComponentTypeEnum = ComponentType['componentType'];
 
@@ -158,6 +159,12 @@ export type ComponentLoopType = {
 	components: ComponentType[];
 	depth: number;
 } & (PaginatedLoop | BlockLoop);
+
+export type ComponentRemoteComponent = {
+	componentType: 'RemoteComponent';
+	components: ComponentType[];
+	remote: string;
+};
 
 export type ComponentTableType = {
 	componentType: 'Table';
