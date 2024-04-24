@@ -14,7 +14,7 @@ import type { InterpretedLunaticOverviewItem } from './hooks/useOverview';
 import type { LunaticComponentProps } from '../components/type';
 
 export type LunaticComponentDefinition<T extends string = string> =
-	ComponentDefinition & { componentType: T };
+	ComponentDefinition & { componentType: T; page?: string };
 export type LunaticControl = ControlDefinition;
 
 export type LunaticOverviewItem = {

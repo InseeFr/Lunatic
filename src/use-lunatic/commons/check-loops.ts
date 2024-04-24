@@ -1,8 +1,8 @@
 import isPaginatedLoop from './is-paginated-loop';
 import isRoundabout from './is-roundabout';
 import type {
-	LunaticExpression,
 	LunaticComponentDefinition,
+	LunaticExpression,
 	LunaticReducerState,
 } from '../type';
 
@@ -17,14 +17,18 @@ function extractSubPages(
 		return [];
 	}
 	const { components } = component;
-	return components.reduce(function (pages, component) {
-		const { page } = component;
+	// We have to force the type here since TS doesn't handle union (A[] | B[]).reduce()
+	return (components as LunaticComponentDefinition[]).reduce(
+		(pages, component) => {
+			const { page } = component;
 
-		if (page && pages.indexOf(page) === -1) {
-			return [...pages, page];
-		}
-		return pages;
-	}, previous);
+			if (page && pages.indexOf(page) === -1) {
+				return [...pages, page];
+			}
+			return pages;
+		},
+		previous
+	);
 }
 
 function extractLoop(components: LunaticComponentDefinition[] = []) {
@@ -63,9 +67,12 @@ function extractLoop(components: LunaticComponentDefinition[] = []) {
 }
 
 function checkLoops(pages: LunaticReducerState['pages']) {
-	return Object.entries(pages).reduce(function (map, current) {
-		const [number, content] = current;
-		if (number !== 'unpaged') {
+	return Object.entries(pages).reduce(
+		(map, current) => {
+			const [number, content] = current;
+			if (number === 'unpaged') {
+				return map;
+			}
 			const { components } = content;
 			const { isLoop, subPages, iterations, loopDependencies } =
 				extractLoop(components);
@@ -79,10 +86,10 @@ function checkLoops(pages: LunaticReducerState['pages']) {
 					iterations,
 					loopDependencies,
 				},
-			};
-		}
-		return map;
-	}, {});
+			} as LunaticReducerState['pages'];
+		},
+		{} as LunaticReducerState['pages']
+	);
 }
 
 export default checkLoops;

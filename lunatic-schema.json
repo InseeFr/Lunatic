@@ -8,20 +8,7 @@
     "components": {
       "type": "array",
       "items": {
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "page": {
-                "type": "string"
-              }
-            },
-            "required": ["page"]
-          },
-          {
-            "$ref": "#/$defs/ComponentDefinition"
-          }
-        ]
+        "$ref": "#/$defs/ComponentDefinitionWithPage"
       }
     },
     "variables": {
@@ -408,6 +395,24 @@
         }
       ]
     },
+    "ComponentDefinitionWithPage": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinition"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "page": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "page"
+          ]
+        }
+      ]
+    },
     "ComponentDefinitionBase": {
       "type": "object",
       "properties": {
@@ -438,17 +443,13 @@
         "mandatory": {
           "type": "boolean"
         },
-        "page": {
-          "type": "string"
-        },
         "missingResponse": {
           "$ref": "#/$defs/ResponseDefinition"
         }
       },
       "required": [
         "label",
-        "id",
-        "page"
+        "id"
       ]
     },
     "ComponentDefinitionBaseWithResponse": {
@@ -554,7 +555,7 @@
         "components": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/ComponentDefinition"
+            "$ref": "#/$defs/ComponentDefinitionWithPage"
           }
         }
       },
@@ -626,31 +627,17 @@
           "items": {
             "type": "string"
           }
-        },
-        "components": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/ComponentDefinition"
-          }
         }
       },
       "required": [
-        "componentType",
-        "components"
+        "componentType"
       ],
-      "allOf": [
+      "oneOf": [
         {
-          "$ref": "#/$defs/ComponentDefinitionBase"
+          "$ref": "#/$defs/PaginatedLoop"
         },
         {
-          "oneOf": [
-            {
-              "$ref": "#/$defs/PaginatedLoop"
-            },
-            {
-              "$ref": "#/$defs/BlockLoop"
-            }
-          ]
+          "$ref": "#/$defs/BlockLoop"
         }
       ]
     },
@@ -1193,15 +1180,22 @@
         {
           "type": "null"
         }
-        ]
+      ]
     },
     "PaginatedLoop": {
       "required": [
         "paginatedLoop",
         "maxPage",
-        "iterations"
+        "iterations",
+        "components"
       ],
       "properties": {
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ComponentDefinitionWithPage"
+          }
+        },
         "iterations": {
           "$ref": "#/$defs/VTLScalarExpression"
         },
@@ -1213,21 +1207,42 @@
           "type": "boolean"
         }
       },
-      "type": "object"
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        }
+      ]
     },
     "BlockLoop": {
+      "required": [
+        "paginatedLoop",
+        "components"
+      ],
+      "properties": {
+        "paginatedLoop": {
+          "const": false,
+          "type": "boolean"
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ComponentDefinition"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
+        }
+      ],
       "oneOf": [
         {
           "type": "object",
           "required": [
-            "lines",
-            "paginatedLoop"
+            "lines"
           ],
           "properties": {
-            "paginatedLoop": {
-              "const": false,
-              "type": "boolean"
-            },
             "lines": {
               "type": "object",
               "properties": {
@@ -1248,14 +1263,9 @@
         {
           "type": "object",
           "required": [
-            "iterations",
-            "paginatedLoop"
+            "iterations"
           ],
           "properties": {
-            "paginatedLoop": {
-              "const": false,
-              "type": "boolean"
-            },
             "iterations": {
               "$ref": "#/$defs/VTLExpression"
             }

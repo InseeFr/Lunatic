@@ -1,7 +1,7 @@
 import isPaginatedLoop from './is-paginated-loop';
 import isRoundabout from './is-roundabout';
-import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
-import type { LunaticSource } from '../type';
+import type { LunaticReducerState, LunaticSource } from '../type';
+import type { ItemOf } from '../../type.utils';
 
 function isUnpaginated(questionnaire: { maxPage?: unknown }): boolean {
 	const { maxPage } = questionnaire;
@@ -12,7 +12,7 @@ function isUnpaginated(questionnaire: { maxPage?: unknown }): boolean {
  * Append component to the right page in the accumulator
  */
 function mergeComponent(
-	component: LunaticComponentDefinition,
+	component: ItemOf<LunaticSource['components']>,
 	page: string,
 	map: LunaticReducerState['pages']
 ): LunaticReducerState['pages'] {
@@ -62,7 +62,7 @@ function createPages(
 		return { '1': { components: components, isLoop: false } };
 	}
 	return components.reduce(
-		function (current, component) {
+		(current, component) => {
 			if (isPaginatedLoop(component) || isRoundabout(component)) {
 				return mergeComponent(
 					component,

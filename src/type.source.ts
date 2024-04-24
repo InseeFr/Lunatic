@@ -5,6 +5,9 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type ComponentDefinitionWithPage = ComponentDefinition & {
+	page: string;
+};
 export type ComponentDefinition =
 	| ComponentInputDefinition
 	| ComponentSequenceDefinition
@@ -46,25 +49,34 @@ export type ComponentRoundaboutDefinition = ComponentRoundaboutDefinition1 & {
 		partial: VTLScalarExpression;
 		label: VTLScalarExpression;
 	};
-	components: ComponentDefinition[];
+	components: ComponentDefinitionWithPage[];
 };
 export type ComponentRoundaboutDefinition1 = ComponentDefinitionBase;
-export type ComponentLoopDefinition = ComponentLoopDefinition1 & {
+export type ComponentLoopDefinition = {
 	componentType: 'Loop';
 	loopDependencies?: string[];
-	components: ComponentDefinition[];
+} & ComponentLoopDefinition1;
+export type ComponentLoopDefinition1 = PaginatedLoop | BlockLoop;
+export type PaginatedLoop = PaginatedLoop1 & {
+	components: ComponentDefinitionWithPage[];
+	iterations: VTLScalarExpression;
+	maxPage: string;
+	paginatedLoop: true;
 };
-export type ComponentLoopDefinition1 = ComponentDefinitionBase & (PaginatedLoop | BlockLoop);
-export type BlockLoop =
+export type PaginatedLoop1 = ComponentDefinitionBase;
+export type BlockLoop = BlockLoop1 & {
+	paginatedLoop: false;
+	components: ComponentDefinition[];
+} & BlockLoop2;
+export type BlockLoop1 = ComponentDefinitionBase;
+export type BlockLoop2 =
 	| {
-			paginatedLoop: false;
 			lines: {
 				min: VTLExpression;
 				max: VTLExpression;
 			};
 	  }
 	| {
-			paginatedLoop: false;
 			iterations: VTLExpression;
 	  };
 export type ComponentRosterForLoopDefinition = ComponentRosterForLoopDefinition1 & {
@@ -229,9 +241,7 @@ export type VariableScalarValue = string | number | null;
  * A lunatic survey unit
  */
 export interface LunaticSource {
-	components: ({
-		page: string;
-	} & ComponentDefinition)[];
+	components: ComponentDefinitionWithPage[];
 	variables: Variable[];
 	suggesters?: SuggesterDefinition[];
 	cleaning?: {
@@ -285,7 +295,6 @@ export interface ComponentDefinitionBase {
 	controls?: ControlDefinition[];
 	id: string;
 	mandatory?: boolean;
-	page: string;
 	missingResponse?: ResponseDefinition;
 }
 export interface VTLExpression {
@@ -328,11 +337,6 @@ export interface ControlDefinition {
 }
 export interface ResponseDefinition {
 	name: string;
-}
-export interface PaginatedLoop {
-	iterations: VTLScalarExpression;
-	maxPage: string;
-	paginatedLoop: true;
 }
 export interface SuggesterDefinition {
 	/**

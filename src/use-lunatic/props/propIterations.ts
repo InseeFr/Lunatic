@@ -32,17 +32,20 @@ export function getIterationsProp(
 
 	// Iterations expression is not present on the component definition
 	// infer it from the value of child components
-	return definition.components.reduce((acc, component) => {
-		if (!hasResponse(component)) {
+	return (definition.components as LunaticComponentDefinition[]).reduce(
+		(acc, component) => {
+			if (!hasResponse(component)) {
+				return acc;
+			}
+			const value = state.variables.get(
+				component.response.name,
+				isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
+			);
+			if (Array.isArray(value) && value.length > acc) {
+				return value.length;
+			}
 			return acc;
-		}
-		const value = state.variables.get(
-			component.response.name,
-			isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
-		);
-		if (Array.isArray(value) && value.length > acc) {
-			return value.length;
-		}
-		return acc;
-	}, 0);
+		},
+		0
+	);
 }

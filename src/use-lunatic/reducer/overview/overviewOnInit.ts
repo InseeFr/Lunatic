@@ -3,13 +3,14 @@ import type {
 	LunaticOverviewItem,
 } from '../../type';
 import type { LunaticSource } from '../../type';
+import type { ItemOf } from '../../../type.utils';
 
 /**
  * Resolve overview items from component definition
  */
 function overviewFromComponent(
 	items: LunaticOverviewItem[],
-	component: LunaticComponentDefinition,
+	component: ItemOf<LunaticSource['components']>,
 	extra: Partial<LunaticOverviewItem> = {}
 ): LunaticOverviewItem[] {
 	// For loop we need to explore Subsequence inside the loop
@@ -50,7 +51,7 @@ function overviewFromLoop(
 	if (!('iterations' in component)) {
 		return items;
 	}
-	for (const child of component.components) {
+	for (const child of component.components as LunaticSource['components']) {
 		items = overviewFromComponent(items, child, {
 			iterations: component.iterations,
 		});

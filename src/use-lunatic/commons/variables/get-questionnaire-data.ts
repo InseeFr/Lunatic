@@ -1,7 +1,5 @@
 import type { LunaticVariablesStore } from './lunatic-variables-store';
-import type { LunaticSource } from '../../type';
-import type { LunaticData } from '../../type';
-import type { VariableValue } from '../../../type.source';
+import type { LunaticData, LunaticSource } from '../../type';
 
 export function getQuestionnaireData(
 	store: LunaticVariablesStore,
