@@ -9,13 +9,13 @@ function fetchFromServer(
 	remote: string,
 	values: unknown
 ): Promise<Record<string, unknown>> {
-	/* ici on ne devra faire que du fetch sur remote, un post par ex */
-
-	return new Promise((r) => {
-		setTimeout(() => {
-			r({ NOM: 'XXXX' });
-		}, 1000);
-	});
+	return fetch(remote, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(values),
+	}).then((response) => response.json());
 }
 
 /**
@@ -43,7 +43,7 @@ export function RemoteComponent(
 					fetched.current = true;
 					if (response) {
 						Object.entries(response).forEach(([name, value]) => {
-							handleChange({ name }, value as string);
+							handleChange({ name }, value as string); // il y a probablement mieux à faire
 						});
 					}
 				}

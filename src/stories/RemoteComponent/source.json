@@ -6,47 +6,71 @@
 			"componentType": "RemoteComponent",
 			"mandatory": false,
 			"page": "1",
-			"remote": "url-service",
-
+			"remote": "http://localhost:4000/api/recensement/adresse",
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"components": [
 				{
 					"componentType": "Input",
-					"label": "NOM",
+					"label": {
+						"value": "\"Numéro de la voie.\"",
+						"type": "VTL|MD"
+					},
 					"maxLength": 30,
-					"id": "name",
+					"id": "numero-voie",
 					"description": {
-						"value": "\"For example, Bob.\"",
+						"value": "\"12, par exemple.\"",
 						"type": "VTL|MD"
 					},
 					"response": {
-						"name": "NOM"
+						"name": "NUMVOIE"
 					}
 				},
 				{
 					"componentType": "Input",
-					"label": "PRENOM",
+					"label": {
+						"value": "\"Type de la voie.\"",
+						"type": "VTL|MD"
+					},
 					"maxLength": 30,
-					"id": "surname",
+					"id": "type-voie",
 					"description": {
-						"value": "\"For example, Bob.\"",
+						"value": "\"Rue, avenue, ....\"",
 						"type": "VTL|MD"
 					},
 					"response": {
-						"name": "PRENOM"
+						"name": "TYPEVOIE"
+					}
+				},
+				{
+					"componentType": "Input",
+					"label": {
+						"value": "\"Libellé de la voie.\"",
+						"type": "VTL|MD"
+					},
+					"maxLength": 30,
+					"id": "libelle-voie",
+					"description": {
+						"value": "\"Par exemple, Victor Hugo.\"",
+						"type": "VTL|MD"
+					},
+					"response": {
+						"name": "LIBVOIE"
 					}
 				}
 			],
-			"responses": [{ "response": { "name": "Q2" } }]
+			"responses": [
+				{ "response": { "name": "RANG" } },
+				{ "response": { "name": "IRIS" } }
+			]
 		}
 	],
 	"variables": [
 		{
 			"variableType": "COLLECTED",
-			"name": "Q2",
+			"name": "RANG",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": "TOTO",
+				"COLLECTED": "003",
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
@@ -54,10 +78,10 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "NOM",
+			"name": "IRIS",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": "TITI",
+				"COLLECTED": "956",
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
@@ -65,7 +89,29 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "PRENOM",
+			"name": "TYPEVOIE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NOMVOIE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "TATA",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "LIBVOIE",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": "TATA",
