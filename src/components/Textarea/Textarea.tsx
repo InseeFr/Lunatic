@@ -9,7 +9,7 @@ import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
 
 export function Textarea({
-	handleChange,
+	handleChanges,
 	response,
 	errors,
 	...props
@@ -17,7 +17,7 @@ export function Textarea({
 	return (
 		<CustomTextarea
 			{...props}
-			onChange={(v) => handleChange(response, v)}
+			onChange={(value) => handleChanges([{ name: response.name, value }])}
 			errors={getComponentErrors(errors, props.id)}
 		/>
 	);
@@ -25,7 +25,7 @@ export function Textarea({
 
 type CustomProps = Omit<
 	LunaticComponentProps<'Textarea'>,
-	'response' | 'handleChange' | 'errors'
+	'response' | 'handleChanges' | 'errors'
 > & {
 	onChange: (v: string) => void;
 	errors?: LunaticError[];

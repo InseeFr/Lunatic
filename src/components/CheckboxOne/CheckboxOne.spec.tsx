@@ -16,7 +16,7 @@ describe('CheckboxOne component', () => {
 				options={options}
 				value="option-1"
 				id="checkbox-one"
-				handleChange={onSelect}
+				handleChanges={onSelect}
 			/>
 		);
 
@@ -34,13 +34,15 @@ describe('CheckboxOne component', () => {
 				id="checkbox-one"
 				label="Checkbox One"
 				description="Choose one option"
-				handleChange={onSelect}
+				handleChanges={onSelect}
 			/>
 		);
 
 		fireEvent.click(getByText('Option 2'));
 
 		expect(onSelect).toHaveBeenCalledTimes(1);
-		expect(onSelect).toHaveBeenCalledWith({ name: 'demo' }, 'option-2');
+		expect(onSelect).toHaveBeenCalledWith([
+			{ name: 'demo', value: 'option-2' },
+		]);
 	});
 });

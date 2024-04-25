@@ -4,15 +4,12 @@ import { Missing } from './Missing/Missing';
 import classnames from 'classnames';
 import { Declarations } from './Declarations/Declarations';
 import { voidFunction } from '../../utils/function';
+import type { LunaticChangesHandler } from '../../use-lunatic/type';
 
 type Props = PropsWithChildren<{
 	componentType?: string;
 	paginatedLoop?: boolean;
-	handleChange?: (
-		response: { name: string },
-		value: any,
-		args?: Record<string, unknown>
-	) => void;
+	handleChanges?: LunaticChangesHandler;
 }> &
 	Pick<
 		LunaticBaseProps,
@@ -43,7 +40,7 @@ type Props = PropsWithChildren<{
  * |__________________________|
  */
 export function ComponentWrapper(props: Props) {
-	const { id, declarations, children, management, handleChange } = props;
+	const { id, declarations, children, management, handleChanges } = props;
 	return (
 		<>
 			<Declarations
@@ -63,7 +60,7 @@ export function ComponentWrapper(props: Props) {
 				{management && <div className="tooltip" />}
 			</div>
 			<Declarations type="DETACHABLE" declarations={declarations} id={id} />
-			<Missing {...props} handleChange={handleChange ?? voidFunction} />
+			<Missing {...props} handleChanges={handleChanges ?? voidFunction} />
 		</>
 	);
 }

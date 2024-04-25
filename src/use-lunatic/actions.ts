@@ -1,18 +1,22 @@
 import type { LunaticState } from './type';
+import { objectKeys } from '../utils/object';
+import type { ItemOf } from '../type.utils';
 
 export enum ActionKind {
 	GO_PREVIOUS_PAGE = 'use-lunatic/go-previous',
 	GO_NEXT_PAGE = 'use-lunatic/go-next',
 	GO_TO_PAGE = 'use-lunatic/go-to-page',
-	HANDLE_CHANGE = 'use-lunatic/handle-change',
+	HANDLE_CHANGES = 'use-lunatic/handle-changes',
 }
 
-export type ActionHandleChange = {
-	type: ActionKind.HANDLE_CHANGE;
+export type ActionHandleChanges = {
+	type: ActionKind.HANDLE_CHANGES;
 	payload: {
-		name: string;
-		value: unknown;
-		iteration?: number[];
+		responses: {
+			name: string;
+			value: unknown;
+			iteration?: number[];
+		}[];
 	};
 };
 
@@ -35,7 +39,7 @@ export type Action =
 	| ActionGoNextPage
 	| ActionGoPreviousPage
 	| ActionGoToPage
-	| ActionHandleChange;
+	| ActionHandleChanges;
 
 export type PayloadForAction<T extends Action['type']> = (Action & {
 	type: T;
@@ -50,20 +54,20 @@ const actionCreator =
 		} as Action & { type: T };
 	};
 
-export const goPreviousPage = () =>
+export const goPreviousPageAction = () =>
 	({
 		type: ActionKind.GO_PREVIOUS_PAGE,
 		payload: {},
 	}) as const;
 
-export const goNextPage = actionCreator(ActionKind.GO_NEXT_PAGE);
-export const goToPage = actionCreator(ActionKind.GO_TO_PAGE);
-export const handleChange = (
-	name: ActionHandleChange['payload']['name'],
-	value: ActionHandleChange['payload']['value'],
-	iteration: ActionHandleChange['payload']['iteration']
-): Action =>
-	({
-		type: ActionKind.HANDLE_CHANGE,
-		payload: { name, value, iteration },
-	}) as const;
+export const goNextPageAction = actionCreator(ActionKind.GO_NEXT_PAGE);
+export const goToPageAction = actionCreator(ActionKind.GO_TO_PAGE);
+
+export const handleChangesAction = (
+	responses: ActionHandleChanges['payload']['responses']
+): Action => ({
+	type: ActionKind.HANDLE_CHANGES,
+	payload: {
+		responses,
+	},
+});

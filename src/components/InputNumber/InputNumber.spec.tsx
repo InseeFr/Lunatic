@@ -6,7 +6,7 @@ describe('InputNumber', () => {
 	const mockOnChange = vi.fn();
 
 	const baseProps = {
-		handleChange: mockOnChange,
+		handleChanges: mockOnChange,
 		response: { name: 'demo' },
 		value: 10,
 		id: 'number',
@@ -28,7 +28,7 @@ describe('InputNumber', () => {
 			<InputNumber
 				{...baseProps}
 				label={labelText}
-				handleChange={mockOnChange}
+				handleChanges={mockOnChange}
 			/>
 		);
 
@@ -64,7 +64,12 @@ describe('InputNumber', () => {
 		fireEvent.change(input, { target: { value: '12' } });
 
 		expect(mockOnChange).toHaveBeenCalledTimes(1);
-		expect(mockOnChange).toHaveBeenCalledWith(baseProps.response, 12);
+		expect(mockOnChange).toHaveBeenCalledWith([
+			{
+				...baseProps.response,
+				value: 12,
+			},
+		]);
 	});
 
 	it('renders unit element if provided', () => {

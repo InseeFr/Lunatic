@@ -13,7 +13,7 @@ import type { LunaticError } from '../../use-lunatic/type';
 const defaultLabel = { true: 'True', false: 'False' };
 
 function LunaticSwitch({
-	handleChange,
+	handleChanges,
 	response,
 	errors,
 	value,
@@ -26,7 +26,7 @@ function LunaticSwitch({
 			{...props}
 			statusLabel={statusLabel ?? defaultLabel}
 			checked={value ?? false}
-			onChange={() => handleChange(response, !checked)}
+			onChange={() => handleChanges([{ name: response.name, value: !checked }])}
 			errors={getComponentErrors(errors, props.id)}
 		/>
 	);
@@ -34,7 +34,7 @@ function LunaticSwitch({
 
 type CustomProps = Omit<
 	LunaticComponentProps<'Switch'>,
-	'response' | 'handleChange' | 'errors' | 'value'
+	'response' | 'handleChanges' | 'errors' | 'value'
 > & {
 	onChange: () => void;
 	errors?: LunaticError[];

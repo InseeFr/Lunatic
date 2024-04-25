@@ -6,7 +6,7 @@ import { Button } from '../Button/Button';
 import { useKeyboardKey } from '../../../hooks/useKeyboardKey';
 
 type Props = {
-	handleChange: LunaticBaseProps<any>['handleChange'];
+	handleChanges: LunaticBaseProps<any>['handleChanges'];
 	componentType?: string;
 	paginatedLoop?: boolean;
 	disabled?: boolean;
@@ -35,12 +35,12 @@ export const Missing = (props: Props) => {
 };
 
 export const MissingPure = (
-	props: Pick<Props, 'handleChange' | 'missingResponse' | 'disabled'> &
+	props: Pick<Props, 'handleChanges' | 'missingResponse' | 'disabled'> &
 		PropsFromContext
 ) => {
 	const {
 		missingResponse,
-		handleChange,
+		handleChanges,
 		missingStrategy,
 		shortcut,
 		missingShortcut,
@@ -50,7 +50,7 @@ export const MissingPure = (
 	} = props;
 	const value = missingResponse?.value;
 	const onClick = (value: 'DK' | 'RF') => {
-		handleChange(missingResponse ?? { name: 'UNKNOWN' }, value);
+		handleChanges([{ name: missingResponse?.name ?? 'UNKNOWN', value }]);
 	};
 
 	const handleMissingStrategy = useCallback(() => {

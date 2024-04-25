@@ -9,7 +9,7 @@ describe('Textarea', () => {
 		value: 'input',
 		id: 'input',
 		'aria-labelledby': 'input',
-		handleChange: mockOnChange,
+		handleChanges: mockOnChange,
 		response: { name: 'demo' },
 	};
 

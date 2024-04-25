@@ -9,6 +9,7 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import { CustomLoop } from '../Loop/Loop';
+import { objectMap } from '../../utils/object';
 
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
@@ -23,7 +24,7 @@ export const RosterForLoop = (
 		value: valueMap,
 		lines,
 		errors,
-		handleChange,
+		handleChanges,
 		declarations,
 		header,
 		iterations,
@@ -48,11 +49,15 @@ export const RosterForLoop = (
 		}
 		const newNbRows = nbRows - 1;
 		setNbRows(newNbRows);
-		Object.entries(valueMap).forEach(([k, v]) => {
-			const newValue = v?.filter((_, i) => i < newNbRows);
-			handleChange({ name: k }, newValue);
+		// Downsize all variables by 1
+		const newResponses = Object.entries(valueMap).map(([k, v]) => {
+			return {
+				name: k,
+				value: v?.filter((_, i) => i < newNbRows),
+			};
 		});
-	}, [nbRows, min, valueMap, handleChange]);
+		handleChanges(newResponses);
+	}, [nbRows, min, valueMap, handleChanges]);
 
 	if (nbRows === 0) {
 		return null;

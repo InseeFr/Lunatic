@@ -21,7 +21,7 @@ describe('Datepicker', () => {
 			const { container } = render(
 				<Datepicker
 					{...baseProps}
-					handleChange={mockOnChange}
+					handleChanges={mockOnChange}
 					dateFormat={format}
 				/>
 			);
@@ -34,23 +34,27 @@ describe('Datepicker', () => {
 			<Datepicker
 				{...baseProps}
 				dateFormat="YYYY-MM-DD"
-				handleChange={mockOnChange}
+				handleChanges={mockOnChange}
 			/>
 		);
 		fireEvent.change(screen.getByLabelText(/Année/), {
 			target: { valueAsNumber: 2023 },
 		});
-		expect(mockOnChange).toHaveBeenLastCalledWith(
-			baseProps.response,
-			'2023-01-01'
-		);
+		expect(mockOnChange).toHaveBeenLastCalledWith([
+			{
+				...baseProps.response,
+				value: '2023-01-01',
+			},
+		]);
 		fireEvent.change(screen.getByLabelText(/Mois/), {
 			target: { valueAsNumber: 2 },
 		});
 		fireEvent.change(screen.getByLabelText(/Jour/), {
 			target: { valueAsNumber: 30 },
 		});
-		expect(mockOnChange).toHaveBeenLastCalledWith(baseProps.response, null);
+		expect(mockOnChange).toHaveBeenLastCalledWith([
+			{ ...baseProps.response, value: null },
+		]);
 	});
 
 	it('handle change correctly for format YYYY-MM', () => {
@@ -59,23 +63,27 @@ describe('Datepicker', () => {
 				{...baseProps}
 				dateFormat="YYYY-MM"
 				value="1999-01"
-				handleChange={mockOnChange}
+				handleChanges={mockOnChange}
 			/>
 		);
 		fireEvent.change(screen.getByLabelText(/Année/), {
 			target: { valueAsNumber: 2023 },
 		});
-		expect(mockOnChange).toHaveBeenLastCalledWith(
-			baseProps.response,
-			'2023-01'
-		);
+		expect(mockOnChange).toHaveBeenLastCalledWith([
+			{
+				...baseProps.response,
+				value: '2023-01',
+			},
+		]);
 		fireEvent.change(screen.getByLabelText(/Mois/), {
 			target: { valueAsNumber: 10 },
 		});
-		expect(mockOnChange).toHaveBeenLastCalledWith(
-			baseProps.response,
-			'2023-10'
-		);
+		expect(mockOnChange).toHaveBeenLastCalledWith([
+			{
+				...baseProps.response,
+				value: '2023-10',
+			},
+		]);
 	});
 
 	it('handle change correctly for year YYYY', () => {
@@ -84,12 +92,14 @@ describe('Datepicker', () => {
 				{...baseProps}
 				dateFormat="YYYY"
 				value="1999"
-				handleChange={mockOnChange}
+				handleChanges={mockOnChange}
 			/>
 		);
 		fireEvent.change(screen.getByLabelText(/Année/), {
 			target: { valueAsNumber: 2023 },
 		});
-		expect(mockOnChange).toHaveBeenLastCalledWith(baseProps.response, '2023');
+		expect(mockOnChange).toHaveBeenLastCalledWith([
+			{ ...baseProps.response, value: '2023' },
+		]);
 	});
 });

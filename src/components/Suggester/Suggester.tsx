@@ -5,6 +5,7 @@ import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { OTHER_VALUE, useSuggestions } from './useSuggestions';
 import D from '../../i18n';
 import type { SuggesterOptionType } from './SuggesterType';
+import type { LunaticChangesHandler } from '../../use-lunatic/type';
 
 export function Suggester({
 	storeName,
@@ -12,7 +13,7 @@ export function Suggester({
 	className,
 	optionRenderer,
 	labelRenderer,
-	handleChange,
+	handleChanges,
 	disabled,
 	value,
 	label,
@@ -70,30 +71,44 @@ export function Suggester({
 		setSelectedOptions(v?.id ? [v] : []);
 		// User has selected an option
 		if (v?.id && v.id !== OTHER_VALUE) {
-			handleChange(response, v.id);
+			const newResponses: Parameters<typeof handleChanges>[0] = [
+				{ name: response.name, value: v.id },
+			];
 			if (arbitrary) {
-				handleChange(arbitrary.response, null);
+				newResponses.push({
+					name: arbitrary.response.name,
+					value: null,
+				});
 			}
 			// Update additional responses
 			for (const optionResponse of optionResponses) {
 				if (optionResponse.attribute in v) {
-					handleChange(
-						{ name: optionResponse.name },
-						v[optionResponse.attribute] as string | null
-					);
+					newResponses.push({
+						name: optionResponse.name,
+						value: v[optionResponse.attribute],
+					});
 				}
 			}
+			handleChanges(newResponses);
 			onBlur();
 			return;
 		}
+
+		// Use has selected the arbitrary value
+		const newResponses: Parameters<typeof handleChanges>[0] = [
+			{ name: response.name, value: null },
+		];
 		// User chose an arbitrary option or clear the value
 		if (arbitrary && arbitrary.response) {
-			handleChange(arbitrary.response, v?.id === OTHER_VALUE ? search : null);
+			newResponses.push({
+				name: arbitrary.response.name,
+				value: v?.id === OTHER_VALUE ? search : null,
+			});
 		}
-		handleChange(response, null);
 		for (const optionResponse of optionResponses) {
-			handleChange({ name: optionResponse.name }, null);
+			newResponses.push({ name: optionResponse.name, value: null });
 		}
+		handleChanges(newResponses);
 		onBlur();
 	};
 

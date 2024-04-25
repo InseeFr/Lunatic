@@ -13,7 +13,7 @@ import type { LunaticError } from '../../use-lunatic/type';
 export function Datepicker({
 	dateFormat = 'YYYY-MM-DD',
 	response,
-	handleChange,
+	handleChanges,
 	errors,
 	...props
 }: LunaticComponentProps<'Datepicker'>) {
@@ -21,7 +21,7 @@ export function Datepicker({
 		<CustomDatepicker
 			{...props}
 			dateFormat={dateFormat ?? 'YYYY-MM-DD'}
-			onChange={(v) => handleChange(response, v)}
+			onChange={(value) => handleChanges([{ name: response.name, value }])}
 			errors={getComponentErrors(errors, props.id)}
 		/>
 	);
@@ -29,7 +29,7 @@ export function Datepicker({
 
 type CustomProps = Omit<
 	LunaticComponentProps<'Datepicker'>,
-	'response' | 'handleChange' | 'errors'
+	'response' | 'handleChanges' | 'errors'
 > & {
 	onChange: (s: string | null) => void;
 	errors?: LunaticError[];

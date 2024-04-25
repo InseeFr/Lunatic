@@ -1,4 +1,7 @@
-import type { LunaticChangeHandler, LunaticComponentDefinition } from '../type';
+import type {
+	LunaticChangesHandler,
+	LunaticComponentDefinition,
+} from '../type';
 import { type DeepTranslateExpression } from '../commons/fill-components/fill-component-expressions';
 import { hasComponentType } from '../commons/component';
 import { getVTLCompatibleValue } from '../../utils/vtl';
@@ -59,8 +62,8 @@ function getChildComponentsWithIteration(
 		getComponents: (iteration: number) =>
 			fillComponents(component.components, {
 				...state,
-				handleChange: createChangeHandlerForIteration(
-					state.handleChange,
+				handleChanges: createChangeHandlerForIteration(
+					state.handleChanges,
 					iteration
 				),
 				pager: {
@@ -73,22 +76,24 @@ function getChildComponentsWithIteration(
 }
 
 // Create change handler memoized for every iteration
-let changeHandler = null as null | LunaticChangeHandler;
-const changeHandlerMap = new Map<number, LunaticChangeHandler>();
+let changeHandler = null as null | LunaticChangesHandler;
+const changeHandlerMap = new Map<number, LunaticChangesHandler>();
+
 function createChangeHandlerForIteration(
-	handleChange: LunaticChangeHandler,
+	handleChanges: LunaticChangesHandler,
 	iteration: number
 ) {
-	if (handleChange !== changeHandler) {
-		changeHandler = handleChange;
+	if (handleChanges !== changeHandler) {
+		changeHandler = handleChanges;
 		changeHandlerMap.clear();
 	}
 	let handler = changeHandlerMap.get(iteration);
 	if (handler) {
 		return handler;
 	}
-	handler = (response, value) => {
-		handleChange(response, value, { iteration: [iteration] });
+	// Inject iteration in the child components
+	handler = (responses) => {
+		handleChanges(responses.map((r) => ({ ...r, iteration: [iteration] })));
 	};
 	changeHandlerMap.set(iteration, handler);
 	return handler;
@@ -110,19 +115,26 @@ function getPairwiseProps(
 			}
 			return fillComponents(component.components, {
 				...state,
-				handleChange: (response, value) => {
-					state.handleChange(response, value, { iteration: [x, y] });
-					// Update linked value
-					if (
-						response.name in component.symLinks &&
-						value in component.symLinks[response.name]
-					) {
-						state.handleChange(
-							response,
-							component.symLinks[response.name][value],
-							{ iteration: [y, x] }
-						);
-					}
+				handleChanges: (responses) => {
+					// Add iteration on each responses
+					const newResponses = responses.map((r) => ({
+						...r,
+						iteration: [x, y],
+					}));
+					newResponses.forEach((r) => {
+						// Update linked value
+						if (
+							r.name in component.symLinks &&
+							r.value in component.symLinks[r.name]
+						) {
+							newResponses.push({
+								name: r.name,
+								value: component.symLinks[r.name][r.value],
+								iteration: [y, x],
+							});
+						}
+					});
+					state.handleChanges(newResponses);
 				},
 				pager: {
 					...state.pager,

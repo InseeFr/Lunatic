@@ -1,10 +1,12 @@
 import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
 import useLunatic from '../use-lunatic';
 import type {
+	LunaticChangesHandler,
 	LunaticComponentDefinition,
 	LunaticError,
 	LunaticOptions,
 	LunaticReducerState,
+	LunaticState,
 } from '../use-lunatic/type';
 
 type Formats = 'PTnHnM' | 'PnYnM';
@@ -15,11 +17,7 @@ export type VtlExpression = {
 
 export type LunaticBaseProps<ValueType = unknown> = {
 	id: string;
-	handleChange: (
-		response: { name: string },
-		value: ValueType,
-		args?: Record<string, unknown>
-	) => void;
+	handleChanges: LunaticChangesHandler;
 	errors?: { [id: string]: LunaticError[] };
 	preferences?: LunaticOptions['preferences'];
 	label?: ReactNode;

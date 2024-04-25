@@ -3,7 +3,7 @@ import { MissingPure } from './Missing';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
 describe('Missing', () => {
-	const handleChange = vi.fn();
+	const handleChanges = vi.fn();
 	const missingResponse = {
 		name: 'Demo',
 		value: '',
@@ -21,7 +21,7 @@ describe('Missing', () => {
 				dontKnowButton={dontKnowButton}
 				refusedButton={refusedButton}
 				missingResponse={missingResponse}
-				handleChange={handleChange}
+				handleChanges={handleChanges}
 				missingShortcut={{ dontKnow: '', refused: '' }}
 				missingStrategy={() => {}}
 				shortcut={false}
@@ -33,13 +33,13 @@ describe('Missing', () => {
 		expect(refused).toBeInTheDocument();
 	});
 
-	it('should call the handleChange function when a button is clicked', () => {
+	it('should call the handleChanges function when a button is clicked', () => {
 		const { getByText } = render(
 			<MissingPure
 				dontKnowButton={dontKnowButton}
 				refusedButton={refusedButton}
 				missingResponse={missingResponse}
-				handleChange={handleChange}
+				handleChanges={handleChanges}
 				missingShortcut={{ dontKnow: '', refused: '' }}
 				missingStrategy={() => {}}
 				shortcut={false}
@@ -49,9 +49,13 @@ describe('Missing', () => {
 		const refused = getByText(refusedButton);
 		fireEvent.click(dontKnow);
 		fireEvent.click(refused);
-		expect(handleChange).toHaveBeenCalledTimes(2);
-		expect(handleChange).toHaveBeenCalledWith(missingResponse, 'DK');
-		expect(handleChange).toHaveBeenCalledWith(missingResponse, 'RF');
+		expect(handleChanges).toHaveBeenCalledTimes(2);
+		expect(handleChanges).toHaveBeenCalledWith([
+			{ ...missingResponse, value: 'DK' },
+		]);
+		expect(handleChanges).toHaveBeenCalledWith([
+			{ ...missingResponse, value: 'RF' },
+		]);
 	});
 
 	it('should not handle keyboard shortcuts when a shortcut is not provided', () => {
@@ -60,7 +64,7 @@ describe('Missing', () => {
 				dontKnowButton={dontKnowButton}
 				refusedButton={refusedButton}
 				missingResponse={missingResponse}
-				handleChange={handleChange}
+				handleChanges={handleChanges}
 				missingShortcut={{ dontKnow: '', refused: '' }}
 				missingStrategy={() => {}}
 				shortcut={false}
@@ -69,6 +73,6 @@ describe('Missing', () => {
 		const body = document.body;
 		fireEvent.click(body, { key: 'd' });
 		fireEvent.click(body, { key: 'r' });
-		expect(handleChange).toHaveBeenCalledTimes(0);
+		expect(handleChanges).toHaveBeenCalledTimes(0);
 	});
 });

@@ -10,7 +10,7 @@ import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
 
 export function InputNumber({
-	handleChange,
+	handleChanges,
 	response,
 	errors,
 	decimals,
@@ -20,7 +20,7 @@ export function InputNumber({
 		<CustomInputNumber
 			{...props}
 			decimals={decimals ?? 0}
-			onChange={(v) => handleChange(response, v)}
+			onChange={(value) => handleChanges([{ name: response.name, value }])}
 			errors={getComponentErrors(errors, props.id)}
 		/>
 	);
@@ -28,7 +28,7 @@ export function InputNumber({
 
 type CustomProps = Omit<
 	LunaticComponentProps<'InputNumber'>,
-	'response' | 'handleChange' | 'errors'
+	'response' | 'handleChanges' | 'errors'
 > & {
 	onChange: (v: number | null) => void;
 	errors?: LunaticError[];

@@ -7,7 +7,7 @@ describe('Input', () => {
 		value: 'input',
 		id: 'input',
 		response: { name: 'demo' },
-		handleChange: mockOnChange,
+		handleChanges: mockOnChange,
 	};
 
 	beforeEach(() => {
@@ -41,7 +41,9 @@ describe('Input', () => {
 		fireEvent.change(input, { target: { value: 'Dupont' } });
 
 		expect(mockOnChange).toHaveBeenCalledTimes(1);
-		expect(mockOnChange).toHaveBeenCalledWith(baseProps.response, 'Dupont');
+		expect(mockOnChange).toHaveBeenCalledWith([
+			{ ...baseProps.response, value: 'Dupont' },
+		]);
 	});
 
 	it('disables input when disabled prop is true', () => {

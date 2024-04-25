@@ -1,5 +1,5 @@
 import type {
-	LunaticChangeHandler,
+	LunaticChangesHandler,
 	LunaticComponentDefinition,
 	LunaticOptions,
 	LunaticReducerState,
@@ -13,7 +13,7 @@ import { getValueProp } from '../../props/propValue';
 import { getIterationsProp } from '../../props/propIterations';
 
 type FillComponentArgs = {
-	handleChange: LunaticChangeHandler;
+	handleChanges: LunaticChangesHandler;
 	executeExpression: LunaticReducerState['executeExpression'];
 	goToPage: LunaticState['goToPage'];
 	goNextPage: LunaticState['goNextPage'];
@@ -35,7 +35,7 @@ export const fillComponent = (
 	const interpretedProps = fillComponentExpressions(component, state);
 	return {
 		...interpretedProps,
-		handleChange: state.handleChange,
+		handleChanges: state.handleChanges,
 		executeExpression: state.executeExpression,
 		preferences: state.preferences,
 		goToPage: state.goToPage,

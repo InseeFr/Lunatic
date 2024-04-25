@@ -21,7 +21,7 @@ export function Loop({
 	lines,
 	iterations,
 	value,
-	handleChange,
+	handleChanges,
 	getComponents,
 	errors,
 	...props
@@ -40,12 +40,16 @@ export function Loop({
 		if (nbRows > 1) {
 			const newNbRows = nbRows - 1;
 			setNbRows(newNbRows);
-			Object.entries(value).forEach(([k, v]) => {
-				const newValue = v.filter((_, i) => i < newNbRows);
-				handleChange({ name: k }, newValue);
+			// Downsize all variables by 1
+			const newResponses = Object.entries(value).map(([k, v]) => {
+				return {
+					name: k,
+					value: v?.filter((_, i) => i < newNbRows),
+				};
 			});
+			handleChanges(newResponses);
 		}
-	}, [nbRows, handleChange, value]);
+	}, [nbRows, handleChanges, value]);
 
 	if (nbRows <= 0) {
 		return null;
@@ -79,7 +83,7 @@ export function Loop({
 type CustomProps = Omit<
 	LunaticComponentProps<'RosterForLoop' | 'Loop'>,
 	| 'response'
-	| 'handleChange'
+	| 'handleChanges'
 	| 'errors'
 	| 'lines'
 	| 'iterations'

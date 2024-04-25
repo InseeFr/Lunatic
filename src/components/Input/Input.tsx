@@ -10,7 +10,7 @@ import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
 
 export function Input({
-	handleChange,
+	handleChanges,
 	response,
 	errors,
 	...props
@@ -18,7 +18,7 @@ export function Input({
 	return (
 		<CustomInput
 			{...props}
-			onChange={(v) => handleChange(response, v)}
+			onChange={(value) => handleChanges([{ name: response.name, value }])}
 			errors={getComponentErrors(errors, props.id)}
 		/>
 	);
@@ -26,7 +26,7 @@ export function Input({
 
 type CustomProps = Omit<
 	LunaticComponentProps<'Input'>,
-	'response' | 'handleChange' | 'errors'
+	'response' | 'handleChanges' | 'errors'
 > & {
 	onChange: (v: string) => void;
 	errors?: LunaticError[];

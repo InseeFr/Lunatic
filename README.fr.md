@@ -89,21 +89,21 @@ Pour afficher le questionnaire on commencera par récupérer la liste des compos
 Ensuite, on pourra utiliser le composant `<LunaticComponents />` pour gérer l'affichage des composants
 
 ```jsx
-import { LunaticComponents } from '@inseefr/lunatic';
+import {LunaticComponents} from '@inseefr/lunatic';
 
-function App({ source, data }) {
-	const { getComponents, getCurrentErrors, getModalErrors } =
-		lunatic.useLunatic(source, data, {});
-	const components = getComponents();
-	const currentErrors = getCurrentErrors();
-	const modalErrors = getModalErrors();
+function App({source, data}) {
+    const {getComponents, getCurrentErrors, getModalErrors} =
+        lunatic.useLunatic(source, data, {});
+    const components = getComponents();
+    const currentErrors = getCurrentErrors();
+    const modalErrors = getModalErrors();
 
-	return (
-		<div className="container">
-			<LunaticComponents components={components} />
-			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
-		</div>
-	);
+    return (
+        <div className="container">
+            <LunaticComponents components={components}/>
+            <lunatic.Modal errors={modalErrors} goNext={goNextPageAction}/>
+        </div>
+    );
 }
 ```
 
