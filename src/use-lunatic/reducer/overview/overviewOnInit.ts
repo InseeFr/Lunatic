@@ -20,10 +20,11 @@ function overviewFromComponent(
 
 	// Only consider Sequence / Subsequence as potential overview item
 	if (
-		component.componentType === 'Subsequence' ||
-		component.componentType === 'Sequence'
+		(component.componentType === 'Subsequence' ||
+			component.componentType === 'Sequence') &&
+		component.label
 	) {
-		const page = component.page ?? component.goToPage;
+		const page = 'page' in component ? component.page : component.goToPage;
 		const parts = page.split('.');
 		items.push({
 			id: component.id,

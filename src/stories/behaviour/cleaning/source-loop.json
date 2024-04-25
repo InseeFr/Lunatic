@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../../lunatic-schema.json",
 	"resizing": {
 		"PRENOM": {
 			"variables": ["AGE", "HIDE_AGE"],

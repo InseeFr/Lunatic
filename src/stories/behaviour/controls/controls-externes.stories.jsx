@@ -4,7 +4,7 @@ import defaultArgTypes from '../../utils/default-arg-types';
 import source from './controls-externes.json';
 
 const stories = {
-	title: 'Questionnaires-Tests/Controls-externes',
+	title: 'Questionnaires/Controls-externes',
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,

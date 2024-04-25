@@ -1,6 +1,7 @@
 {
 	"components": [
 		{
+			"page": "1",
 			"id": "name",
 			"componentType": "Textarea",
 			"label": {

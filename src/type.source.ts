@@ -5,9 +5,15 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type ComponentDefinitionWithPage = ComponentDefinition & {
-	page: string;
-};
+export type ComponentDefinitionWithPage = ComponentDefinition &
+	(
+		| {
+				page: string;
+		  }
+		| {
+				goToPage: string;
+		  }
+	);
 export type ComponentDefinition =
 	| ComponentInputDefinition
 	| ComponentSequenceDefinition
@@ -25,7 +31,8 @@ export type ComponentDefinition =
 	| ComponentQuestionDefinition
 	| ComponentCheckboxOneDefinition
 	| ComponentSuggesterDefinition
-	| ComponentPairWiseLinksDefinition;
+	| ComponentPairWiseLinksDefinition
+	| ComponentSummaryDefinition;
 export type ComponentInputDefinition = ComponentInputDefinition1 & {
 	componentType: 'Input' | 'Textarea';
 	maxLength?: number;
@@ -90,30 +97,25 @@ export type ComponentRosterForLoopDefinition = ComponentRosterForLoopDefinition1
 };
 export type ComponentRosterForLoopDefinition1 = ComponentDefinitionBase;
 export type Options = {
-	value: string;
+	value: string | boolean;
 	label: VTLExpression;
 	description?: VTLExpression;
 }[];
 export type TableHeader = {
-	value: string;
+	value?: string;
 	label: VTLExpression;
 	colspan?: number;
 	rowspan?: number;
-	options: Options;
+	options?: Options;
 }[];
 export type ComponentTableDefinition = ComponentTableDefinition1 & {
 	componentType: 'Table';
 	header: TableHeader;
 	body: (
+		| ComponentDefinition
 		| {
 				label: VTLExpression;
-				colspan?: number;
-				rowspan?: number;
 		  }
-		| (ComponentDefinition & {
-				colspan?: number;
-				rowspan?: number;
-		  })
 	)[][];
 };
 export type ComponentTableDefinition1 = ComponentDefinitionBase;
@@ -210,6 +212,20 @@ export type ComponentPairWiseLinksDefinition = ComponentPairWiseLinksDefinition1
 	components: ComponentDefinition[];
 };
 export type ComponentPairWiseLinksDefinition1 = ComponentDefinitionBase;
+export type ComponentSummaryDefinition = ComponentSummaryDefinition1 & {
+	componentType: 'Summary';
+	sections: {
+		id: string;
+		iterations?: VTLExpression;
+		title: VTLExpression;
+		responses: {
+			id: string;
+			label: VTLExpression;
+			value: VTLExpression;
+		}[];
+	}[];
+};
+export type ComponentSummaryDefinition1 = ComponentDefinitionBase;
 export type Variable =
 	| {
 			variableType: 'EXTERNAL';
@@ -288,7 +304,7 @@ export interface LunaticSource {
 	maxPage?: string;
 }
 export interface ComponentDefinitionBase {
-	label: VTLExpression;
+	label?: VTLExpression;
 	description?: VTLExpression;
 	declarations?: Declaration[];
 	conditionFilter?: VTLScalarExpression;
@@ -328,12 +344,12 @@ export interface VTLScalarExpression {
 export interface ControlDefinition {
 	id: string;
 	criticality: 'INFO' | 'WARN' | 'ERROR';
-	typeOfControl: 'FORMAT' | 'CONSISTENCY';
+	typeOfControl?: 'FORMAT' | 'CONSISTENCY';
 	control: VTLExpression;
 	errorMessage: VTLExpression;
 	bindingDependencies?: string[];
 	type?: 'roundabout' | 'ROW' | 'simple';
-	iterations?: number;
+	iterations?: VTLScalarExpression;
 }
 export interface ResponseDefinition {
 	name: string;

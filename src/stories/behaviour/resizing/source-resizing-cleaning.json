@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../../lunatic-schema.json",
 	"id": "lfrzny8b",
 	"modele": "RP",
 	"enoCoreVersion": "2.4.1",
@@ -88,6 +89,7 @@
 			},
 			"components": [
 				{
+					"page": "2.1",
 					"id": "lfwg2ny2-prenoms",
 					"label": {
 						"value": "\"Prénom \"",

@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"cleaning": {
 		"T_PRENOM": {
 			"REMARQUES": "(PRENOM <> PRENOMREF)",

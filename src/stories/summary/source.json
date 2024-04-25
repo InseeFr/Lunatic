@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"maxPage": "5",
 	"components": [
 		{
@@ -119,6 +120,7 @@
 						"value": "not(isnull(KNOWREC)) and not(isnull(SEXE)) and not(isnull(SOMETHING))",
 						"type": "VTL"
 					},
+					"typeOfControl": "CONSISTENCY",
 					"type": "roundabout",
 					"iterations": { "value": "NB_HAB", "type": "VTL" },
 					"errorMessage": {

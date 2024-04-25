@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../../lunatic-schema.json",
 	"maxPage": "3",
 	"components": [
 		{
@@ -15,17 +16,17 @@
 			"id": "loop-prenom",
 			"componentType": "RosterForLoop",
 			"header": [
-				{ "headerCell": true, "label": "Prénom" },
-				{ "headerCell": true, "label": "Nom" },
-				{ "headerCell": true, "label": "Date de naissance" },
-				{ "headerCell": true, "label": "Age" }
+				{ "headerCell": true, "label": {"value": "\"Prénom\"", "type": "VTL"} },
+				{ "headerCell": true, "label": {"value": "\"Nom\"", "type": "VTL"} },
+				{ "headerCell": true, "label": {"value": "\"Date de naissance\"", "type": "VTL"} },
+				{ "headerCell": true, "label": {"value": "\"Age\"", "type": "VTL"} }
 			],
 			"label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"bindingDependencies": ["PRENOM", "AGE"],
 			"lines": {
-				"min": { "value": 1, "type": "VTL" },
-				"max": { "value": 250, "type": "VTL" }
+				"min": { "value": "1", "type": "VTL" },
+				"max": { "value": "250", "type": "VTL" }
 			},
 			"page": "1",
 			"components": [

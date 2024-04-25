@@ -41,9 +41,8 @@ function mergeNestedComponents(
 	map: LunaticReducerState['pages']
 ): LunaticReducerState['pages'] {
 	return components.reduce(function (current, component) {
-		const { page } = component;
-		if (page) {
-			return mergeComponent(component, page, current);
+		if ('page' in component && component.page) {
+			return mergeComponent(component, component.page, current);
 		}
 
 		return current;
@@ -71,7 +70,11 @@ function createPages(
 				);
 			}
 
-			return mergeComponent(component, component.page, current);
+			if ('page' in component && component.page) {
+				return mergeComponent(component, component.page, current);
+			}
+
+			return current;
 		},
 		{} as LunaticReducerState['pages']
 	);

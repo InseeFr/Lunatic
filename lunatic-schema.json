@@ -313,13 +313,12 @@
           ]
         },
         "iterations": {
-          "type": "integer"
+          "$ref": "#/$defs/VTLScalarExpression"
         }
       },
       "required": [
         "id",
         "criticality",
-        "typeOfControl",
         "control",
         "errorMessage"
       ],
@@ -392,6 +391,9 @@
         },
         {
           "$ref": "#/$defs/ComponentPairWiseLinksDefinition"
+        },
+        {
+          "$ref": "#/$defs/ComponentSummaryDefinition"
         }
       ]
     },
@@ -402,14 +404,27 @@
         },
         {
           "type": "object",
-          "properties": {
-            "page": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "page"
-          ]
+          "oneOf": [
+            {
+              "properties": {
+                "page": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "page"
+              ]
+            },
+            {
+              "properties": {
+                "goToPage": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "goToPage"
+              ]
+            }]
         }
       ]
     },
@@ -448,7 +463,6 @@
         }
       },
       "required": [
-        "label",
         "id"
       ]
     },
@@ -490,6 +504,60 @@
       "allOf": [
         {
           "$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+        }
+      ]
+    },
+    "ComponentSummaryDefinition": {
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string",
+          "const": "Summary"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "title", "responses"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "iterations": {
+                "$ref": "#/$defs/VTLExpression"
+              },
+              "title": {
+                "$ref": "#/$defs/VTLExpression"
+              },
+              "responses": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "$ref": "#/$defs/VTLExpression"
+                    },
+                    "value": {
+                      "$ref": "#/$defs/VTLExpression"
+                    }
+                  },
+                  "required": ["id", "label", "value"]
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "componentType",
+        "sections"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ComponentDefinitionBase"
         }
       ]
     },
@@ -656,7 +724,19 @@
           "items": {
             "type": "array",
             "items": {
+              "type": "object",
+              "properties": {
+                "colspan": {
+                  "type": "number"
+                },
+                "rowspan": {
+                  "type": "integer"
+                }
+              },
               "oneOf": [
+                {
+                  "$ref": "#/$defs/ComponentDefinition"
+                },
                 {
                   "type": "object",
                   "required": [
@@ -665,32 +745,17 @@
                   "properties": {
                     "label": {
                       "$ref": "#/$defs/VTLExpression"
-                    },
-                    "colspan": {
-                      "type": "number"
-                    },
-                    "rowspan": {
-                      "type": "integer"
                     }
-                  }
-                },
-                {
-                  "allOf": [
-                    {
-                      "$ref": "#/$defs/ComponentDefinition"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "colspan": {
-                          "type": "number"
-                        },
-                        "rowspan": {
-                          "type": "integer"
-                        }
+                  },
+                  "not": {
+                    "type": "object",
+                    "required": ["componentType"],
+                    "properties": {
+                      "componentType": {
+                        "type": "string"
                       }
                     }
-                  ]
+                  }
                 }
               ]
             }
@@ -1279,8 +1344,15 @@
       "items": {
         "type": "object",
         "properties": {
-          "value": {
-            "type": "string"
+          "value":  {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
           },
           "label": {
             "$ref": "#/$defs/VTLExpression"
@@ -1317,9 +1389,7 @@
           }
         },
         "required": [
-          "value",
-          "label",
-          "options"
+          "label"
         ]
       }
     },

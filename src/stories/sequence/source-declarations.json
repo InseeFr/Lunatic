@@ -1,7 +1,10 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"maxPages": "1",
+	"variables": [],
 	"components": [
 		{
+			"id": "c1",
 			"componentType": "Sequence",
 			"page": "1",
 			"conditionFilter": { "value": "true", "type": "VTL" },
