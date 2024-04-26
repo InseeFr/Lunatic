@@ -1,4 +1,4 @@
-import { describe, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { fillComponentExpressions } from './fill-component-expressions';
 
 describe('fillComponentExpressions', () => {
