@@ -5,33 +5,71 @@ import type {
 	LunaticExpression,
 	LunaticReducerState,
 } from '../../type';
-import { firstValueItem } from '../../../utils/array';
 
 const VTL_ATTRIBUTES = [
-	'label',
-	'options.label',
-	'declarations.label',
-	'description',
-	'iterations',
-	'responses.label',
-	'responses.description',
-	'options.description',
-	'controls.iterations',
-	'lines.min',
-	'lines.max',
-	'xAxisIterations',
-	'yAxisIterations',
-	'conditionFilter',
-	'header.label',
-	'disabled',
-	'readOnly',
+	['label', null],
+	['options.label', null],
+	['declarations.label', null],
+	['description', null],
+	['iterations', castNumber],
+	['responses.label', null],
+	['responses.description', null],
+	['options.description', null],
+	['controls.iterations', castNumber],
+	['lines.min', castNumber],
+	['lines.max', castNumber],
+	['xAxisIterations', castNumber],
+	['yAxisIterations', castNumber],
+	['conditionFilter', castBool],
+	['header.label', null],
+	['disabled', castBool],
+	['readOnly', castBool],
 	// For suggesters
-	'arbitrary.label',
-	'arbitrary.inputLabel',
-];
+	['arbitrary.label', castString],
+	['arbitrary.inputLabel', castString],
+] as const;
 
-type CrawlArgs = Pick<LunaticReducerState, 'executeExpression'> &
-	Pick<LunaticReducerState['pager'], 'iteration' | 'linksIterations'>;
+function castNumber(v: unknown): number {
+	if (typeof v === 'number') {
+		return v;
+	}
+	if (typeof v === 'string') {
+		return parseInt(v, 10);
+	}
+	if (Array.isArray(v) && v.length > 0) {
+		return castNumber(v[0]);
+	}
+	throw new Error(`Cannot cast "${v}" to number`);
+}
+
+function castBool(v: unknown): boolean {
+	if (typeof v === 'boolean') {
+		return v;
+	}
+	if (Array.isArray(v) && v.length > 0) {
+		return castBool(v[0]);
+	}
+	if (Array.isArray(v)) {
+		return false;
+	}
+	return Boolean(v);
+}
+
+function castString(v: unknown): string {
+	if (typeof v === 'string') {
+		return v;
+	}
+	if (typeof v === 'number') {
+		return v.toString();
+	}
+	if (Array.isArray(v)) {
+		return v.map(castString).join(', ');
+	}
+	if (!v) {
+		return '';
+	}
+	return v.toString();
+}
 
 // Utility type to replace all expression from an object into a translated version
 export type DeepTranslateExpression<T> = T extends LunaticExpression
@@ -42,96 +80,26 @@ export type DeepTranslateExpression<T> = T extends LunaticExpression
 			}
 		: T;
 
-function createCrawl({
-	executeExpression,
-	iteration,
-	linksIterations,
-}: CrawlArgs) {
-	/**
-	 * Translate the expression for the property
-	 */
-	function executeAndFillObject(object: Record<string, unknown>, path: string) {
-		const candidate = object[path];
-		try {
-			const result = executeExpression(candidate, {
-				iteration: linksIterations ?? iteration,
-			});
-			return {
-				...object,
-				// Todo : replace this with a casting system on execute
-				[path]: Array.isArray(result) ? firstValueItem(result) : result,
-			};
-		} catch (e) {
-			return {
-				...object,
-				[path]: e instanceof Error ? e.toString() : e,
-			};
-		}
-	}
-
-	function buildCrawlEntry(entry: unknown, path: string[]) {
-		return Array.isArray(entry)
-			? entry.map((e) => crawl(path, e))
-			: crawl(path, entry);
-	}
-
-	/**
-	 * Translate expression in an array
-	 */
-	function crawlArray(items: unknown[], path: string[]) {
-		return items.reduce(function (stack: unknown[], entry) {
-			const flattedEntry = buildCrawlEntry(entry, path);
-			return [...stack, flattedEntry];
-		}, [] as unknown[]);
-	}
-
-	/**
-	 * Translate the expression found in the path
-	 */
-	function crawl(path: string[], object: unknown): Record<string, unknown> {
-		const [step, ...rest] = path;
-
-		if (!isObject(object)) {
-			throw new Error('Cannot crawl something that is not an object');
-		}
-
-		if (step in object && rest.length === 0) {
-			return executeAndFillObject(object, step);
-		} else if (step in object) {
-			const value = object[step];
-			if (Array.isArray(value)) {
-				return { ...object, [step]: crawlArray(value, rest) };
-			}
-			return { ...object, [step]: crawl(rest, value) };
-		}
-
-		return object;
-	}
-
-	return crawl;
-}
-
-function fillAttributes(
-	component: LunaticComponentDefinition,
-	{
-		executeExpression,
-		iteration,
-		linksIterations,
-	}: Pick<LunaticReducerState, 'executeExpression'> &
-		Pick<LunaticReducerState['pager'], 'iteration' | 'linksIterations'>
-): DeepTranslateExpression<LunaticComponentDefinition> {
-	const crawl = createCrawl({ executeExpression, iteration, linksIterations });
-	return VTL_ATTRIBUTES.reduce((acc, fullStringPath: string) => {
-		const path = fullStringPath.split('.');
-		return {
-			...acc,
-			...crawl(path, acc),
-		};
-	}, component) as any; // This is too dynamic to be typed correctly, in the future we would like to type each call to executeExpression
-}
-
 /**
- * Fill props interpreting VTL expression
+ * Interpret every VTL expression inside a component
+ *
+ * ## Example
+ *
+ * For instance a component like this :
+ *
+ * ```json
+ * {
+ * 	 "label": {"value": "\"Hello world\"", "type": "VTL"}
+ * }
+ * ```
+ *
+ * Would see its expression interpreted like this
+ *
+ * ```json
+ * {
+ *     "label": "Hello world"
+ * }
+ * ```
  */
 export function fillComponentExpressions(
 	component: LunaticComponentDefinition,
@@ -139,12 +107,54 @@ export function fillComponentExpressions(
 		executeExpression: LunaticReducerState['executeExpression'];
 		pager: Pick<LunaticReducerState['pager'], 'iteration' | 'linksIterations'>;
 	}
-) {
-	const { pager, executeExpression } = state;
-	const { iteration, linksIterations } = pager;
-	return fillAttributes(component, {
-		executeExpression,
-		iteration,
-		linksIterations,
-	});
+): DeepTranslateExpression<LunaticComponentDefinition> {
+	let filledComponent: any = component; // This is too dynamic to be typed correctly, allow any here
+
+	for (const attribute of VTL_ATTRIBUTES) {
+		const propertyPath = attribute[0].split('.');
+		const caster = attribute[1];
+		// Function that will convert expression into the desired type
+		const convert = (expression: unknown) => {
+			const result = state.executeExpression(expression, {
+				iteration: state.pager.linksIterations ?? state.pager.iteration,
+			});
+			return caster ? caster(result) : result;
+		};
+		filledComponent = interpretPropertyAtPath(
+			filledComponent,
+			propertyPath,
+			convert
+		);
+	}
+
+	return filledComponent;
+}
+
+/**
+ * Interpret a property at the specified path
+ * - if the value is an array, keep explorer for each item
+ * - if the property does not exist, the object is not modified
+ */
+function interpretPropertyAtPath(
+	obj: unknown,
+	path: string[],
+	interpreter: (s: unknown) => unknown
+): unknown {
+	// For arrays, we need to keep exploring for each item
+	if (Array.isArray(obj)) {
+		return obj.map((item) => interpretPropertyAtPath(item, path, interpreter));
+	}
+
+	// We reached the property we want to translate
+	if (path.length === 0) {
+		return interpreter(obj);
+	}
+	const [property, ...rest] = path;
+	if (!isObject(obj) || !(property in obj)) {
+		return obj;
+	}
+	return {
+		...obj,
+		[property]: interpretPropertyAtPath(obj[property], rest, interpreter),
+	};
 }

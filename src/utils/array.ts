@@ -72,7 +72,7 @@ export function resizeArray<T = unknown>(
 }
 
 /**
- * Return the first non null/undefined value of an array
+ * Return the first non-null/undefined value of an array
  */
 export function firstValueItem<T = unknown>(items: T | T[]): T | undefined {
 	if (!Array.isArray(items)) {
