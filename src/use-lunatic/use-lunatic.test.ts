@@ -6,6 +6,7 @@ import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
 import sourceOverview from '../stories/overview/sourceLoop.json';
+import sourceCheckboxGroup from '../stories/checkbox-group/source.json';
 import dataOverview from '../stories/overview/dataLoop.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
@@ -349,6 +350,27 @@ describe('use-lunatic()', () => {
 					COLLECTED: false,
 				},
 			});
+		});
+	});
+
+	describe('pageHasResponse', () => {
+		it('should detect change on a field', () => {
+			const { result } = renderHook(() =>
+				useLunatic(sourceCheckboxGroup as any, undefined, {})
+			);
+			act(() => {
+				result.current.testing.handleChange({ name: 'NATIO1N1' }, true);
+			});
+			expect(result.current.hasPageResponse()).toBeTruthy();
+		});
+		it('should not detect unchecked box has a response', () => {
+			const { result } = renderHook(() =>
+				useLunatic(sourceCheckboxGroup as any, undefined, {})
+			);
+			act(() => {
+				result.current.testing.handleChange({ name: 'NATIO1N1' }, false);
+			});
+			expect(result.current.hasPageResponse()).toBeFalsy();
 		});
 	});
 });
