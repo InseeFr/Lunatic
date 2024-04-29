@@ -18,7 +18,7 @@ export type LunaticOverviewItem = {
 	description: LunaticExpression | undefined;
 	type: string;
 	conditionFilter?: LunaticExpression;
-	iterations?: string;
+	iterations?: LunaticExpression;
 };
 
 export type VTLBindings = { [variableName: string]: unknown };
@@ -41,7 +41,7 @@ export type LunaticError = Pick<
 };
 
 export type VariableType = 'COLLECTED' | 'EXTERNAL' | 'CALCULATED';
-export type ExpressionType = 'VTL' | 'VTL|MD';
+export type ExpressionType = 'VTL' | 'VTL|MD' | 'TXT';
 export type LunaticExpression = {
 	value: string;
 	type: ExpressionType;

@@ -66,7 +66,7 @@ export function getVTLCompatibleValue(value: unknown) {
 
 export function getExpressionType(expression: unknown): string {
 	if (typeof expression === 'string') {
-		return 'VTL';
+		return 'TXT';
 	}
 	if (
 		expression &&

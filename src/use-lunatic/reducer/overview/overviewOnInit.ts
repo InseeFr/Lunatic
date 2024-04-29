@@ -54,7 +54,7 @@ function overviewFromLoop(
 	}
 	for (const child of component.components) {
 		items = overviewFromComponent(items, child, {
-			iterations: component.iterations.value,
+			iterations: component.iterations,
 		});
 	}
 	return items;

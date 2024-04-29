@@ -6,15 +6,19 @@ import type {
 } from '../../type';
 
 export function checkBaseControl(
-	control: LunaticControl,
+	controlItem: LunaticControl,
 	executeExpression: LunaticReducerState['executeExpression'],
 	pager: LunaticReducerState['pager']
 ): LunaticError | undefined {
 	const { iteration, linksIterations } = pager;
-	const { criticality, errorMessage, id, typeOfControl } = control;
-	const value = control?.control?.value ?? 'true';
+	const { criticality, errorMessage, id, typeOfControl, control } = controlItem;
 
-	const result = executeExpression(value, {
+	// There is no control expression for this control (this is unexpected)
+	if (!control) {
+		return undefined;
+	}
+
+	const result = executeExpression(control, {
 		iteration: linksIterations ?? iteration,
 	});
 
@@ -37,7 +41,7 @@ export function checkBaseControl(
 			typeOfControl,
 		};
 	} catch (e) {
-		console.warn(`Error on validating control ${value}`);
+		console.warn(`Error on validating control ${control.value}`);
 		return undefined;
 	}
 }
