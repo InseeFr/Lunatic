@@ -38,7 +38,7 @@ Les composants peuvent ensuite utiliser ces erreurs en tant que propriétés pou
 
 Par exemple, en utilisant `compileControls` à chaque changement de page :
 
-```tsx
+```jsx
 const [errorActive, setErrorActive] = useState<Record<string, LunaticError[]> | undefined>(undefined);
 
 const handleGoNext = () => {
@@ -55,7 +55,9 @@ return (
         <LunaticComponents
             components={components}
             componentProps={() => ({
+                // highlight-start
                 errors: errorActive,
+                // highlight-end
             })}
         />
         {/* ... */}
