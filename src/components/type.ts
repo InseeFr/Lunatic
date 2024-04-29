@@ -10,7 +10,7 @@ import type {
 type Formats = 'PTnHnM' | 'PnYnM';
 export type VtlExpression = {
 	value: string;
-	type: 'VTL' | 'VTL|MD';
+	type: 'VTL' | 'VTL|MD' | 'TXT';
 };
 
 export type LunaticBaseProps<ValueType = unknown> = {

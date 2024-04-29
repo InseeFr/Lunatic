@@ -83,10 +83,12 @@ const interpretOverviewItem = (
 	// We reached a loop item, we need to add it multiple time
 	if (item.iterations && iteration === undefined) {
 		const iterations = executeExpression<number>(item.iterations) ?? 0;
-		for (let i = 0; i < iterations; i++) {
-			items = interpretOverviewItem(items, item, executeExpression, pager, i);
-		}
-		return items;
+		return Array.from({ length: iterations }).reduce(
+			(acc: InterpretedLunaticOverviewItem[], _, k) => {
+				return interpretOverviewItem(acc, item, executeExpression, pager, k);
+			},
+			items
+		);
 	}
 
 	const isVisible = !!executeExpression(item.conditionFilter, {
@@ -100,23 +102,24 @@ const interpretOverviewItem = (
 	// Append the item to the list of items
 	const page =
 		`${item.pageTag}${iteration !== undefined ? `#${iteration + 1}` : ''}` as PageTag;
-	items.push({
-		id: item.id,
-		type: item.type,
-		label: executeExpression(item.label, { iteration }),
-		description: item.description
-			? executeExpression(item.description, { iteration })
-			: undefined,
-		children: [],
-		reached:
-			pageTagComparator(pager?.lastReachedPage ?? '-1', page) >= 0
-				? true
-				: false,
-		page: page,
-		current: false,
-	});
-
-	return items;
+	return [
+		...items,
+		{
+			id: item.id,
+			type: item.type,
+			label: executeExpression(item.label, { iteration }),
+			description: item.description
+				? executeExpression(item.description, { iteration })
+				: undefined,
+			children: [],
+			reached:
+				pageTagComparator(pager?.lastReachedPage ?? '-1', page) >= 0
+					? true
+					: false,
+			page: page,
+			current: false,
+		},
+	];
 };
 
 /**

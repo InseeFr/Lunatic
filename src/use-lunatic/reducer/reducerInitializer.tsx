@@ -68,10 +68,11 @@ export function reducerInitializer({
 		}
 		// Remove above code on next update
 		const expressionType = getExpressionType(expression);
-		if (!features?.includes(VTL) || !expressionType.includes(VTL)) {
-			return expression;
-		}
 		const expressionString = getExpressionAsString(expression);
+		// If VTL is not supported, or the expression does not use VTL, return the uninterpreted value
+		if (!features?.includes(VTL) || !expressionType.includes(VTL)) {
+			return expressionString;
+		}
 		try {
 			const result = variables.run(expressionString, {
 				...args,

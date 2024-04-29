@@ -1,7 +1,9 @@
 /**
  * Types used for source data (lunatic models and data.json)
  */
-export type LabelType<T extends 'VTL' | 'VTL|MD' = 'VTL' | 'VTL|MD'> = {
+export type LabelType<
+	T extends 'VTL' | 'VTL|MD' | 'TXT' = 'VTL' | 'VTL|MD' | 'TXT',
+> = {
 	value: string;
 	type: T;
 };
