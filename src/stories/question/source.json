@@ -1,7 +1,6 @@
 {
 	"pagination": "question",
 	"maxPage": "2",
-
 	"variables": [
 		{
 			"variableType": "COLLECTED",
@@ -87,7 +86,7 @@
 							"criticality": "WARN",
 							"errorMessage": {
 								"type": "VTL|MD",
-								"value": "\"a ne peut pas valoir BLABLA\""
+								"value": "\"L'input ne peut pas valoir BLABLA\""
 							},
 							"typeOfControl": "CONSISTENCY",
 							"control": {
@@ -112,16 +111,6 @@
 						}
 					],
 					"response": { "name": "TESTTEXTE" },
-					"hierarchy": {
-						"sequence": {
-							"id": "kfxmfvwj",
-							"page": "1",
-							"label": {
-								"type": "VTL|MD",
-								"value": "\"I - \" || \"TEST SUR BOOLEEN CODE DATE ET TEXTE\""
-							}
-						}
-					},
 					"conditionFilter": {
 						"type": "VTL",
 						"value": "true"
@@ -130,7 +119,7 @@
 					"page": "1",
 					"label": {
 						"type": "VTL|MD",
-						"value": "\"➡ 2. \" || \"Controle sur du texte < 255\""
+						"value": "\"Le label du champ input\""
 					},
 					"mandatory": false,
 					"maxLength": 15,

@@ -44,6 +44,7 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           items: [
             'components/decorations/sequence',
+            'components/decorations/question',
             'components/decorations/filter-description',
             'components/decorations/table',
           ],
