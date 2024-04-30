@@ -14,11 +14,22 @@ type Props = {
 	label?: ReactNode;
 	description?: ReactNode;
 	shortcut?: boolean;
+	readOnly?: boolean;
+	disabled?: boolean;
 };
 
 export const CustomCheckboxGroup = slottableComponent<Props>(
 	'CheckboxGroup',
-	({ options, id, label, description, errors, shortcut }: Props) => {
+	({
+		options,
+		label,
+		description,
+		errors,
+		shortcut,
+		disabled,
+		readOnly,
+	}: Props) => {
+		console.log({ shortcut });
 		return (
 			<Fieldset
 				className="lunatic-checkbox-group"
@@ -30,6 +41,8 @@ export const CustomCheckboxGroup = slottableComponent<Props>(
 						<div className="lunatic-checkbox-group-option" key={option.id}>
 							<CheckboxOption
 								{...option}
+								disabled={disabled}
+								readOnly={readOnly}
 								shortcut={shortcut}
 								invalid={!!errors}
 								id={option.id}

@@ -1,19 +1,45 @@
-.checkbox-modality {
-	.lunatic-input-checkbox {
-		display: flex;
-		.label-description {
-			font-weight: lighter;
-		}
+.lunatic-input-checkbox {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	gap: .5rem;
+	padding: .3rem 0;
 
-		.lunatic-label {
-			font-weight: normal;
-			display: flex;
-			gap: 0.5em;
-			align-items: center;
-		}
+	label {
+		cursor: inherit;
+		margin: 0;
+		font-weight: normal;
 	}
 }
-.lunatic-checkbox-label {
-	gap: 0.5em;
-	align-items: center;
+
+.lunatic-input-checkbox__icon {
+	display: grid;
+	place-items: center;
+	width: 18px;
+	height: 18px;
+	flex: none;
+	border-radius: 2px;
+	color: #FFF;
+	border: 2px solid var(--color-primary-dark);
+}
+
+.lunatic-input-checkbox__icon svg {
+	transform: scale(.9);
+}
+
+.lunatic-input-checkbox[aria-checked="true"] .lunatic-input-checkbox__icon {
+	background-color: var(--color-primary-dark);
+}
+
+.lunatic-input-checkbox[aria-disabled] .lunatic-input-checkbox__icon,
+.lunatic-input-checkbox[aria-readonly] .lunatic-input-checkbox__icon
+{
+	border-color: var(--color-primary-light);
+	background-color: var(--color-disabled);
+}
+
+.lunatic-input-checkbox[aria-disabled][aria-checked] .lunatic-input-checkbox__icon,
+.lunatic-input-checkbox[aria-readonly][aria-checked] .lunatic-input-checkbox__icon
+{
+	color: var(--color-primary-light);
 }

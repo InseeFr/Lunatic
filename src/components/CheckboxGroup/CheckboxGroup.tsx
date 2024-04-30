@@ -17,6 +17,8 @@ export function CheckboxGroup({
 	value,
 	responses,
 	shortcut,
+	readOnly,
+	disabled,
 	handleChange,
 	errors,
 	label,
@@ -45,6 +47,8 @@ export function CheckboxGroup({
 			label={label}
 			errors={getComponentErrors(errors, id)}
 			shortcut={shortcut}
+			disabled={disabled}
+			readOnly={readOnly}
 		/>
 	);
 }

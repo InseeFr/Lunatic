@@ -35,3 +35,14 @@ export async function expectLunaticData(
 		expected
 	);
 }
+
+/**
+ * Check the output of getData() from lunatic
+ */
+export async function expectCollectedData(
+	page: Page,
+	name: string,
+	expected: unknown
+) {
+	await expectLunaticData(page, `COLLECTED.${name}.COLLECTED`, expected);
+}

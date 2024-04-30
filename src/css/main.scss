@@ -152,6 +152,10 @@
   }
 }
 
+.lunatic-component + .lunatic-component {
+  margin-top: 1rem;
+}
+
 @import "./components/Button.scss";
 @import "./components/CheckboxGroup.scss";
 @import "./components/CheckboxOne.scss";

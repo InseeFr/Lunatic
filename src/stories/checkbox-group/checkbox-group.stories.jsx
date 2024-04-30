@@ -28,6 +28,14 @@ Default.args = {
 	shortcut: true,
 };
 
+export const ReadOnly = Template.bind({});
+
+ReadOnly.args = {
+	source,
+	readOnly: true,
+	shortcut: true,
+};
+
 export const Loop = Template.bind({});
 
 Loop.args = {
