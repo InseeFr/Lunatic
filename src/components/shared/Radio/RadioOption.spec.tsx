@@ -39,18 +39,18 @@ describe('RadioOption', () => {
 		expect(getByRole('radio')).toHaveAttribute('tabIndex', '0');
 	});
 
-	it('applies the disabled class when disabled prop is present', () => {
+	it('applies the disabled aria when disabled prop is present', () => {
 		const { getByRole } = render(
-			<RadioOption id="radio-option" label="Test Option" disabled={true} />
+			<RadioOption id="radio-option" label="Test Option" disabled />
 		);
-		expect(getByRole('radio').parentNode).toHaveClass('disabled');
+		expect(getByRole('radio')).toHaveAttribute('aria-disabled');
 	});
 
-	it('applies the checked class when checked prop is present', () => {
+	it('applies the checked aria when checked prop is present', () => {
 		const { getByRole } = render(
 			<RadioOption id="radio-option" label="Test Option" checked={true} />
 		);
-		expect(getByRole('radio').parentNode).toHaveClass('checked');
+		expect(getByRole('radio')).toHaveAttribute('aria-checked', 'true');
 	});
 
 	it('applies the code-modality class when codeModality prop is present', () => {

@@ -44,10 +44,13 @@
 	}
 }
 
-.lunatic-input-checkbox[aria-disabled][aria-checked] .lunatic-input-checkbox__icon,
-.lunatic-input-checkbox[aria-readonly][aria-checked] .lunatic-input-checkbox__icon
+.lunatic-input-checkbox[aria-disabled][aria-checked],
+.lunatic-input-checkbox[aria-readonly][aria-checked]
 {
-	color: var(--color-primary-light);
+
+	.lunatic-input-checkbox__icon {
+		color: var(--color-primary-light);
+	}
 }
 
 // Radio Variant
