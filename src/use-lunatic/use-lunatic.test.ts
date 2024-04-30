@@ -372,7 +372,9 @@ describe('use-lunatic()', () => {
 				useLunatic(sourceCheckboxGroup as any, undefined, {})
 			);
 			act(() => {
-				result.current.testing.handleChange({ name: 'NATIO1N1' }, true);
+				result.current.testing.handleChanges([
+					{ name: 'NATIO1N1', value: true },
+				]);
 			});
 			expect(result.current.hasPageResponse()).toBeTruthy();
 		});
@@ -381,7 +383,9 @@ describe('use-lunatic()', () => {
 				useLunatic(sourceCheckboxGroup as any, undefined, {})
 			);
 			act(() => {
-				result.current.testing.handleChange({ name: 'NATIO1N1' }, false);
+				result.current.testing.handleChanges([
+					{ name: 'NATIO1N1', value: false },
+				]);
 			});
 			expect(result.current.hasPageResponse()).toBeFalsy();
 		});
