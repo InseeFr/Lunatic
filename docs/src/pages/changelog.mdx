@@ -1,3 +1,41 @@
+### 3.0.0
+
+#### Nouvelles fonctionnalités
+
+- Pairwise : Les liens symétriques sont déduits et seulement affichés.
+- Overview : Réorganisation du système d'overview avec prise en charge des boucles et ajout d'une propriété current.
+- Suggester
+    - Changement du moteur d'indexation et de recherche en utilisant la librairie [minisearch](https://lucaong.github.io/minisearch/).
+    - Il est maintenant possible d'ajouter une option arbitraire.
+
+- Ajout du support du type TXT pour les labels (sans expression VTL).
+- La feuille de style CSS de la librairie n'est plus importée par défaut.
+
+#### Correction de bugs
+
+- RosterForLoop : Il était possible de supprimer plus de lignes que le minimum spécifié.
+
+#### Refactorisation
+
+- Nettoyage de tous les composants et simplification de la personnalisation.
+- Correction de la faute d'orthographe sur l'état INPUTTED (~~INPUTED~~) des variables.
+- Typage plus précis du numéro de page (pager & pageTag).
+- Refactorisation des différents reducers, changement de handleChange pour handleChange**s**.
+
+#### Build
+
+- Suppression de Babel et Webpack pour le build, publication en ESM seulement (le build en CJS posait des problèmes à cause de l'utilisation d'ANTLR4 publié en ESM seulement).
+- Mise à jour globale des dépendances.
+
+### 2.7.23
+
+- hasPageResponse retourne false lorsque toutes les réponses d'une checkbox sont décochées.
+
+### 2.7.22
+
+- duration: le nombre d'heure max est 99
+- Correction de la dimension de variable calculées
+
 ### 2.7.4
 
 - Capture les erreurs en cas d'expression VTL invalide
