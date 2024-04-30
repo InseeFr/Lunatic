@@ -11,6 +11,7 @@ type Props = PropsWithChildren<{
 	label?: string;
 	value?: string;
 	type?: 'button' | 'submit' | 'reset';
+	selected?: boolean;
 }>;
 
 function LunaticButton({
@@ -21,6 +22,7 @@ function LunaticButton({
 	className,
 	value,
 	type = 'button',
+	selected,
 }: Props) {
 	const handleClick = prevent(onClick);
 
@@ -32,6 +34,7 @@ function LunaticButton({
 				className={classnames('button-lunatic', className, { disabled })}
 				onClick={handleClick}
 				value={value}
+				aria-pressed={selected}
 			>
 				{children}
 			</button>
@@ -40,6 +43,7 @@ function LunaticButton({
 	return (
 		<>
 			<input
+				aria-pressed={selected}
 				disabled={disabled}
 				type="button"
 				className={classnames('button-lunatic', className, { disabled })}

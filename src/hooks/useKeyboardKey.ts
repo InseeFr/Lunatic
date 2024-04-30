@@ -16,7 +16,9 @@ export function useKeyboardKey(
 			return;
 		}
 		const listener = (e: KeyboardEvent) => {
-			if (keyRef.current.includes(e.key)) {
+			if (
+				keyRef.current.map((s) => s.toLowerCase()).includes(e.key.toLowerCase())
+			) {
 				cbRef.current(e);
 			}
 		};

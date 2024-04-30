@@ -49,12 +49,12 @@ Default.args = {
 	pagination: true,
 	missing: true,
 	source,
+	shortcut: true,
+	missingShortcut: { dontKnow: 'f2', refused: 'f4' },
 };
 
 export const ReadOnly = Template.bind({});
 ReadOnly.args = {
-	pagination: true,
-	missing: true,
+	...Default.args,
 	readOnly: true,
-	source,
 };
