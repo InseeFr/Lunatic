@@ -8,7 +8,7 @@ Le premier point d'entrée avec la librairie est le hook `useLunatic(source, dat
 2. Un objet contenant les données du formulaire (s'il a été prérempli par exemple) <GoToType type="LunaticData"/>
 3. Un [objet d'option](#options) pour définir des comportements spécifique <GoToType type="LunaticOptions"/>
 
-## Options <GoToType type="LunaticOptions"/>
+## Options <GoToType type="LunaticOptions"/> {#options}
 
 Toutes les options sont **optionnelles**.
 
@@ -23,7 +23,7 @@ Toutes les options sont **optionnelles**.
 - **autoSuggesterLoading**, active le préchargement des données du suggester à l'initialisation de Lunatic (défaut `false`).
 - **getReferentiel** promesse appelée pour récupérer les nomenclatures necessaire au fonctionnement des suggesters (`(name: string) => Promise<Array<unknown>>`)
 - **activeControls** active les controles (default `false`)
-- **withOverview**, active le système de [vue d'ensemble](#overview) (défaut `false`)
+- **withOverview**, active le système de [vue d'ensemble](#vue-densemble) (défaut `false`)
 - **missing**, active le système de [missing](#missing) (Ne sait pas / Refus) (défault `false`)
 - **missingStrategy** fonction exécutée au clique sur un button missing (défaut `emptyFn`) 
 - **missingShortcut** raccourcis clavier déclanchant les boutons missing (défaut `{ dontKnow: '', refused: '' }`) 
@@ -31,7 +31,7 @@ Toutes les options sont **optionnelles**.
 - **refusedButton** label du bouton "Refus" (défaut `{ fr: 'Refus', en: 'Refused' }`)
 - **trackChanges**, active le [suivi des changements](#trackChanges) (défaut `false`),
 
-### Vue d'ensemble {#overview}
+### Vue d'ensemble {#vue-densemble}
 
 - **withOverview**, active le système de vue d'ensemble (défaut `false`)
 
