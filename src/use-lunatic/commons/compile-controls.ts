@@ -170,8 +170,6 @@ function checkComponentInLoop(
 		}
 	}
 
-	console.log(errors);
-
 	return errors;
 }
 
