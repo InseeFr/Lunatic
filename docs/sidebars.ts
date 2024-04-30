@@ -46,7 +46,6 @@ const sidebars: SidebarsConfig = {
             'components/decorations/sequence',
             'components/decorations/question',
             'components/decorations/filter-description',
-            'components/decorations/table',
           ],
         },
         {
@@ -68,6 +67,8 @@ const sidebars: SidebarsConfig = {
             'components/fields/checkboxOne',
             'components/fields/checkboxBoolean',
             'components/fields/checkboxGroup',
+            'components/fields/table',
+
           ],
         },
         {
