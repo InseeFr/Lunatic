@@ -3,6 +3,7 @@ import type { LunaticBaseProps } from '../../type';
 import { slottableComponent } from '../HOC/slottableComponent';
 import { Label } from '../Label/Label';
 import { useKeyboardKey } from '../../../hooks/useKeyboardKey';
+import classnames from 'classnames';
 
 export type CheckboxOptionProps = {
 	disabled?: boolean;
@@ -10,14 +11,15 @@ export type CheckboxOptionProps = {
 	checked?: boolean;
 	id?: string;
 	onClick: (b: boolean) => void;
-	label: ReactNode;
+	label?: ReactNode;
 	description?: LunaticBaseProps['description'];
 	codeModality?: string;
 	shortcut?: boolean;
 	invalid?: boolean;
+	className?: string;
 };
 
-function LunaticCheckboxOption({
+export function LunaticCheckboxOption({
 	disabled,
 	readOnly,
 	checked,
@@ -28,13 +30,13 @@ function LunaticCheckboxOption({
 	codeModality,
 	shortcut,
 	invalid,
+	className,
 }: CheckboxOptionProps) {
-	const onClickOption = useCallback(
-		function () {
-			onClick(!checked);
-		},
-		[checked, onClick]
-	);
+	const isEnabled = !readOnly && !disabled;
+	const hasKeyboardShortcut = Boolean(shortcut && codeModality && isEnabled);
+	const onClickOption = () => {
+		onClick(!checked);
+	};
 
 	const handleKeyDown = useCallback(
 		function (e: { code: string }) {
@@ -48,9 +50,6 @@ function LunaticCheckboxOption({
 
 	const labelId = `label-${id}`;
 
-	const hasKeyboardShortcut = Boolean(
-		shortcut && codeModality && !readOnly && !disabled
-	);
 	useKeyboardKey(
 		codeModality ? [codeModality] : [],
 		(e) => {
@@ -67,10 +66,10 @@ function LunaticCheckboxOption({
 			aria-invalid={invalid}
 			aria-disabled={disabled}
 			aria-readonly={disabled}
-			className={`lunatic-input-checkbox`}
+			className={classnames(`lunatic-input-checkbox`, className)}
 			aria-checked={checked}
 			tabIndex={0}
-			onClick={onClickOption}
+			onClick={isEnabled ? onClickOption : undefined}
 			onKeyDown={handleKeyDown}
 			aria-labelledby={labelId}
 		>
