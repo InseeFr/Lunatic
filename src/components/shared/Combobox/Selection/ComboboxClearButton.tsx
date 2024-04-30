@@ -4,7 +4,7 @@ import { CrossIcon } from '../../Icons';
 import { slottableComponent } from '../../HOC/slottableComponent';
 import { IconButton } from '../../Button/IconButton';
 
-function isDisabled(search?: string) {
+function isDisabled(search?: string | null) {
 	return !search || search.trim().length === 0;
 }
 
@@ -21,7 +21,7 @@ function createOnKeyDown(onClick?: () => void) {
 
 type Props = {
 	className?: string;
-	search?: string;
+	search?: string | null;
 	onClick?: () => void;
 	editable?: boolean;
 };

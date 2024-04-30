@@ -189,7 +189,7 @@ function LunaticComboBox({
 			{showClearButton && (
 				<ComboboxClearButton
 					className={classnames({ focused })}
-					search={search}
+					search={value}
 					onClick={handleClear}
 					editable={editable}
 				/>
