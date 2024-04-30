@@ -116,12 +116,12 @@ function getPairwiseProps(
 			return fillComponents(component.components, {
 				...state,
 				handleChanges: (responses) => {
-					// Add iteration on each responses
+					// Add iteration on each response
 					const newResponses = responses.map((r) => ({
 						...r,
 						iteration: [x, y],
 					}));
-					newResponses.forEach((r) => {
+					for (const r of newResponses) {
 						// Update linked value
 						if (
 							r.name in component.symLinks &&
@@ -133,7 +133,7 @@ function getPairwiseProps(
 								iteration: [y, x],
 							});
 						}
-					});
+					}
 					state.handleChanges(newResponses);
 				},
 				pager: {
