@@ -72,6 +72,9 @@ export function useSuggestions({
 			if (state === 'error') {
 				return;
 			}
+			if (s.length > 0 && !isFocused) {
+				setFocused(true);
+			}
 			// setState('loading'); // Current implementation being sync, we won't need to show a "loading" state
 			setSearch(s);
 		},
@@ -87,8 +90,10 @@ export function useSuggestions({
 			setOptions(selectedOptions);
 		},
 		onFocus: () => {
-			setFocused(true);
-			setSearch(selectedOptions[0]?.label ?? '');
+			if (!isFocused) {
+				setFocused(true);
+				setSearch(selectedOptions[0]?.label ?? '');
+			}
 		},
 	};
 }
