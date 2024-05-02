@@ -118,7 +118,11 @@ export function fillComponentExpressions(
 			const result = state.executeExpression(expression, {
 				iteration: state.pager.linksIterations ?? state.pager.iteration,
 			});
-			return caster ? caster(result) : result;
+			try {
+				return caster ? caster(result) : result;
+			} catch (e) {
+				throw new Error(`Cannot fill property ${propertyPath.join('.')}, ${e}`);
+			}
 		};
 		filledComponent = interpretPropertyAtPath(
 			filledComponent,
