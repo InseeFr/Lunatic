@@ -14,7 +14,7 @@ import {
 import { Declarations } from '../shared/Declarations/Declarations';
 
 export function Duration({
-	handleChange,
+	handleChanges,
 	response,
 	errors,
 	...props
@@ -22,7 +22,7 @@ export function Duration({
 	return (
 		<CustomDuration
 			{...props}
-			onChange={(v) => handleChange(response, v)}
+			onChange={(value) => handleChanges([{ name: response.name, value }])}
 			errors={getComponentErrors(errors, props.id)}
 		/>
 	);
@@ -30,7 +30,7 @@ export function Duration({
 
 type CustomProps = Omit<
 	LunaticComponentProps<'Duration'>,
-	'response' | 'handleChange' | 'errors'
+	'response' | 'handleChanges' | 'errors'
 > & {
 	onChange: (v: string | null) => void;
 	errors?: LunaticError[];

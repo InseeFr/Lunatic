@@ -27,7 +27,7 @@ describe('RosterForLoop', () => {
 		const { container } = render(
 			<RosterForLoop
 				value={{ name: ['John Doe', 'Jane Doe'] }}
-				handleChange={mockOnChange}
+				handleChanges={mockOnChange}
 				label="Ceci est un test"
 				id="table"
 				lines={{ min: 1, max: 3 }}

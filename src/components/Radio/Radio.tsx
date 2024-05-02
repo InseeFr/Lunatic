@@ -10,7 +10,7 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 		value,
 		checkboxStyle,
 		errors,
-		handleChange,
+		handleChanges,
 		response,
 		label,
 		shortcut,
@@ -25,7 +25,7 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 			options={options}
 			value={value}
 			description={description}
-			onSelect={(v) => handleChange(response, v)}
+			onSelect={(value) => handleChanges([{ name: response.name, value }])}
 			checkboxStyle={checkboxStyle}
 			errors={getComponentErrors(errors, id)}
 			label={label}

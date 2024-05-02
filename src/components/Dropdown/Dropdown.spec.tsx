@@ -17,7 +17,7 @@ describe('Dropdown', () => {
 			},
 		],
 		response: { name: 'demo' },
-		handleChange: mockOnSelect,
+		handleChanges: mockOnSelect,
 	};
 
 	beforeEach(() => {

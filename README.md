@@ -93,19 +93,19 @@ Lunatic offers a library of pre-designed components to cover the different types
 ```jsx
 import * as lunatic from '@inseefr/lunatic';
 
-function App({ source, data }) {
-	const { getComponents, getCurrentErrors, getModalErrors } =
-		lunatic.useLunatic(source, data, {});
-	const components = getComponents();
-	const currentErrors = getCurrentErrors();
-	const modalErrors = getModalErrors();
+function App({source, data}) {
+    const {getComponents, getCurrentErrors, getModalErrors} =
+        lunatic.useLunatic(source, data, {});
+    const components = getComponents();
+    const currentErrors = getCurrentErrors();
+    const modalErrors = getModalErrors();
 
-	return (
-		<div className="container">
-			<LunaticComponents components={components} />
-			<lunatic.Modal errors={modalErrors} goNext={goNextPage} />
-		</div>
-	);
+    return (
+        <div className="container">
+            <LunaticComponents components={components}/>
+            <lunatic.Modal errors={modalErrors} goNext={goNextPageAction}/>
+        </div>
+    );
 }
 ```
 

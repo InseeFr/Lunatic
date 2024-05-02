@@ -9,7 +9,7 @@ import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
 
 export function CheckboxBoolean({
-	handleChange,
+	handleChanges,
 	response,
 	errors,
 	value,
@@ -20,7 +20,14 @@ export function CheckboxBoolean({
 		<CustomCheckboxBoolean
 			{...props}
 			checked={checked}
-			onChange={() => handleChange(response, !checked)}
+			onChange={() =>
+				handleChanges([
+					{
+						name: response.name,
+						value: !checked,
+					},
+				])
+			}
 			errors={getComponentErrors(errors, props.id)}
 		/>
 	);
@@ -28,7 +35,7 @@ export function CheckboxBoolean({
 
 type CustomProps = Omit<
 	LunaticComponentProps<'CheckboxBoolean'>,
-	'response' | 'handleChange' | 'errors' | 'value'
+	'response' | 'handleChanges' | 'errors' | 'value'
 > & {
 	onChange: () => void;
 	errors?: LunaticError[];

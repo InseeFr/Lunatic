@@ -1,8 +1,13 @@
 import { useCallback, useMemo, useReducer } from 'react';
-import * as actions from './actions';
+import {
+	goToPageAction,
+	goNextPageAction,
+	goPreviousPageAction,
+	handleChangesAction,
+} from './actions';
 import { getPageTag, isFirstLastPage } from './commons';
 import type {
-	LunaticChangeHandler,
+	LunaticChangesHandler,
 	LunaticData,
 	LunaticOptions,
 	LunaticState,
@@ -107,34 +112,28 @@ function useLunatic(
 
 	const goPreviousPage: LunaticState['goPreviousPage'] = useCallback(
 		function () {
-			dispatch(actions.goPreviousPage());
+			dispatch(goPreviousPageAction());
 		},
 		[dispatch]
 	);
 
 	const goNextPage: LunaticState['goNextPage'] = useCallback(
 		function (payload = {}) {
-			dispatch(actions.goNextPage(payload));
+			dispatch(goNextPageAction(payload));
 		},
 		[dispatch]
 	);
 
 	const goToPage: LunaticState['goToPage'] = useCallback(
 		function (payload) {
-			dispatch(actions.goToPage(payload));
+			dispatch(goToPageAction(payload));
 		},
 		[dispatch]
 	);
-	const handleChange = useCallback<LunaticChangeHandler>(
-		(response, value, args) => {
-			dispatch(
-				actions.handleChange(
-					typeof response === 'string' ? response : response.name,
-					value,
-					args?.iteration
-				)
-			);
-			onChange(response, value, args);
+	const handleChanges = useCallback<LunaticChangesHandler>(
+		(responses) => {
+			dispatch(handleChangesAction(responses));
+			onChange(responses);
 		},
 		[dispatch, onChange]
 	);
@@ -161,7 +160,7 @@ function useLunatic(
 	const { isFirstPage, isLastPage } = isFirstLastPage(state.pager);
 
 	const components = fillComponents(getComponentsFromState(state), {
-		handleChange,
+		handleChanges,
 		preferences,
 		goToPage,
 		shortcut,
@@ -211,7 +210,7 @@ function useLunatic(
 		// Components
 		Provider,
 		testing: {
-			handleChange,
+			handleChanges,
 		},
 	} satisfies LunaticState;
 }

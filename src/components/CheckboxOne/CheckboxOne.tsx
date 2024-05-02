@@ -11,7 +11,7 @@ export function CheckboxOne({
 	id,
 	label,
 	description,
-	handleChange,
+	handleChanges,
 	errors,
 	shortcut,
 	response,
@@ -25,7 +25,9 @@ export function CheckboxOne({
 			errors={getComponentErrors(errors, id)}
 			label={label}
 			description={description}
-			onSelect={(value: string | null) => handleChange(response, value)}
+			onSelect={(value: string | null) =>
+				handleChanges([{ name: response.name, value }])
+			}
 			checkboxStyle={true}
 			shortcut={shortcut}
 			clearable

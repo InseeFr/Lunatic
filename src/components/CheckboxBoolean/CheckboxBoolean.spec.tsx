@@ -5,7 +5,7 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 describe('CheckboxBoolean', () => {
 	const label = 'I accept the terms and conditions';
 	const description = 'You must accept the terms and conditions to continue.';
-	const handleChange = vi.fn();
+	const handleChanges = vi.fn();
 	const response = { name: 'demo' };
 
 	afterEach(() => {
@@ -18,7 +18,7 @@ describe('CheckboxBoolean', () => {
 				id="checkbox"
 				label={label}
 				value={true}
-				handleChange={handleChange}
+				handleChanges={handleChanges}
 				response={response}
 			/>
 		);
@@ -33,7 +33,7 @@ describe('CheckboxBoolean', () => {
 				label={label}
 				description={description}
 				value={false}
-				handleChange={handleChange}
+				handleChanges={handleChanges}
 				response={response}
 			/>
 		);
@@ -51,7 +51,7 @@ describe('CheckboxBoolean', () => {
 				label={label}
 				description={description}
 				value={true}
-				handleChange={handleChange}
+				handleChanges={handleChanges}
 				response={response}
 			/>
 		);
@@ -69,7 +69,7 @@ describe('CheckboxBoolean', () => {
 				label={label}
 				description={description}
 				value={false}
-				handleChange={handleChange}
+				handleChanges={handleChanges}
 				response={response}
 			/>
 		);
@@ -78,7 +78,7 @@ describe('CheckboxBoolean', () => {
 
 		fireEvent.click(checkbox);
 
-		expect(handleChange).toHaveBeenCalledTimes(1);
-		expect(handleChange).toHaveBeenCalledWith(response, true);
+		expect(handleChanges).toHaveBeenCalledTimes(1);
+		expect(handleChanges).toHaveBeenCalledWith([{ ...response, value: true }]);
 	});
 });

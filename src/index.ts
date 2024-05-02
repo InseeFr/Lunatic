@@ -22,7 +22,7 @@ export type {
 	LunaticState,
 	LunaticPager,
 	LunaticOptions,
-	LunaticChangeHandler,
+	LunaticChangesHandler,
 } from './use-lunatic/type';
 
 export type { LunaticComponentProps } from './components/type';

@@ -129,7 +129,7 @@ export type LunaticOptions = {
 	features?: ('MD' | 'VTL')[];
 	preferences?: ['COLLECTED'];
 	savingType?: 'COLLECTED';
-	onChange?: LunaticChangeHandler;
+	onChange?: LunaticChangesHandler;
 	management?: boolean;
 	// enable shortcut on radio/checkbox/missing buttons
 	shortcut?: boolean;
@@ -192,14 +192,14 @@ export type LunaticState = {
 	hasPageResponse: () => boolean;
 	// This is used for testing purpose only
 	testing: {
-		handleChange: LunaticChangeHandler;
+		handleChanges: LunaticChangesHandler;
 	};
 };
 
-export type LunaticChangeHandler = (
-	response: { name: string },
-	value: any,
-	args?: {
+export type LunaticChangesHandler = (
+	args: {
+		name: string;
+		value: any;
 		iteration?: number[];
-	}
+	}[]
 ) => void;
