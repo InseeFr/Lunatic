@@ -20,9 +20,10 @@ const sidebars: SidebarsConfig = {
         type: 'generated-index',
       },
       collapsed: false,
-      items: ['hook/options', 'hook/return', 'hook/navigation', 'hook/personnalisation'],
+      items: ['hook/parameters', 'hook/return', 'hook/navigation', "hook/controls"],
     },
     'components/lunatic-components',
+    "components/personnalisation",
     {
       type: 'category',
       label: 'Composants',
@@ -43,8 +44,8 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           items: [
             'components/decorations/sequence',
+            'components/decorations/question',
             'components/decorations/filter-description',
-            'components/decorations/table',
           ],
         },
         {
@@ -66,6 +67,8 @@ const sidebars: SidebarsConfig = {
             'components/fields/checkboxOne',
             'components/fields/checkboxBoolean',
             'components/fields/checkboxGroup',
+            'components/fields/table',
+
           ],
         },
         {

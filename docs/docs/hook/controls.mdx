@@ -1,0 +1,66 @@
+# Gestion des contrôles
+
+Les contrôles permettent de définir les règles de validation dans le questionnaire (sous forme d'expression VTL). Le hook `useLunatic` fournit une fonction `compileControls` permettant d'exécuter ces contrôles et de récupérer les erreurs.
+
+## Structure d'un contrôle
+
+Les contrôles sont définis au niveau des composants dans la source. Chaque contrôle possède les caractéristiques suivantes :
+
+- **Criticité :** Peut être définie comme information, avertissement ou erreur.
+- **Type de contrôle :** Peut être de format ou de cohérence.
+- **Expression :** Définit la condition d'affichage du contrôle.
+- **Message d'erreur :** Message affiché en cas de non-validation du contrôle.
+
+L'expression et le message d'erreur peuvent être dynamiques et personnalisées via le VTL. La structure TypeScript d'un contrôle est la suivante :
+
+```ts
+export type ControlType = {
+    id: string;
+    criticality: 'INFO' | 'WARN' | 'ERROR';
+    typeOfControl: 'FORMAT' | 'CONSISTENCY';
+    control: {value: string, type: 'VTL'};
+    errorMessage: {value: string, type: 'VTL' | 'VTL|MD' | 'TXT'};
+    bindingDependencies?: string[];
+    type?: 'roundabout' | 'ROW' | 'simple';
+    iterations?: number;
+};
+```
+
+Les types `'roundabout'` et `'ROW'` définissent des contrôles spécifiques. `'ROW'` est utilisé uniquement dans un tableau pour définir un contrôle de ligne, tandis que `'roundabout'` est utilisé dans le composant rond-point.
+
+## Utilisation des contrôles dans les orchestrateurs
+
+Le hook Lunatic fournit la fonction `compileControls`, qui permet de récupérer la liste des erreurs courantes ainsi qu'un booléen `isCritical`. Ce dernier vaut `true` lorsqu'il y a une erreur avec une criticité `ERROR` ou de type de contrôle `FORMAT`.
+
+Les composants peuvent ensuite utiliser ces erreurs en tant que propriétés pour les afficher.
+
+Par exemple, en utilisant `compileControls` à chaque changement de page :
+
+```jsx
+const [errors, setErrors] = useState();
+
+const handleGoNext = () => {
+    const { currentErrors } = compileControls();
+    setErrors(currentErrors);
+    if (!currentErrors) {
+        goNextPage();
+    }
+};
+
+return (
+    <>
+        {/* ... */}
+        <LunaticComponents
+            components={components}
+            componentProps={() => ({
+                // highlight-start
+                errors: errors,
+                // highlight-end
+            })}
+        />
+        {/* ... */}
+    </>
+);
+```
+
+Dans cet exemple, `currentErrors` contient les erreurs actuelles retournées par `compileControls`. Si aucune erreur n'est présente, la fonction `goNextPage()` est appelée pour passer à la page suivante.
