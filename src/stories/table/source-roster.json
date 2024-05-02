@@ -251,8 +251,8 @@
 				]
 			],
 			"lines": {
-				"min": { "value": "\"1\"", "type": "VTL|MD" },
-				"max": { "value": "\"10\"", "type": "VTL|MD" }
+				"min": { "value": "\"1\"", "type": "VTL" },
+				"max": { "value": "\"10\"", "type": "VTL" }
 			}
 		}
 	],
