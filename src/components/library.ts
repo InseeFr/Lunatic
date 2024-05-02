@@ -7,6 +7,7 @@ import { CheckboxGroup } from './CheckboxGroup/CheckboxGroup';
 import { CheckboxBoolean } from './CheckboxBoolean/CheckboxBoolean';
 import { Radio } from './Radio/Radio';
 import { Input } from './Input/Input';
+import { Text } from './Text/Text';
 import { Textarea } from './Textarea/Textarea';
 import type { LunaticComponentProps, LunaticComponentType } from './type';
 import type { ComponentType } from 'react';
@@ -36,6 +37,7 @@ export const library = {
 	CheckboxOne: CheckboxOne,
 	CheckboxBoolean: CheckboxBoolean,
 	Radio: Radio,
+	Text: Text,
 	Input: Input,
 	Duration: Duration,
 	Textarea: Textarea,

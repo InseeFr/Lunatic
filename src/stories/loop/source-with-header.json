@@ -15,6 +15,7 @@
 			"id": "loop-prenom",
 			"componentType": "RosterForLoop",
 			"header": [
+				{ "headerCell": true, "label": "Id" },
 				{ "headerCell": true, "label": "Prénom" },
 				{ "headerCell": true, "label": "Age" }
 			],
@@ -27,6 +28,15 @@
 			},
 			"page": "1",
 			"components": [
+				{
+					"componentType": "Text",
+					"label": {
+						"value": "cast(GLOBAL_ITERATION_INDEX, string)",
+						"type": "VTL"
+					},
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"id": "id"
+				},
 				{
 					"componentType": "Input",
 					"conditionFilter": { "value": "true", "type": "VTL" },
