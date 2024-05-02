@@ -117,24 +117,34 @@ function getPairwiseProps(
 				...state,
 				handleChanges: (responses) => {
 					// Add iteration on each response
-					const newResponses = responses.map((r) => ({
-						...r,
-						iteration: [x, y],
-					}));
-					for (const r of newResponses) {
-						// Update linked value
-						if (
-							r.name in component.symLinks &&
-							r.value in component.symLinks[r.name]
-						) {
-							newResponses.push({
-								name: r.name,
-								value: component.symLinks[r.name][r.value],
-								iteration: [y, x],
-							});
-						}
-					}
-					state.handleChanges(newResponses);
+					state.handleChanges(
+						responses.reduce(
+							(acc, r) => {
+								if (
+									r.name in component.symLinks &&
+									r.value in component.symLinks[r.name]
+								) {
+									return [
+										...acc,
+										// Add iteration to the response
+										{ ...r, iteration: [x, y] },
+										// Add linked response (symetrical iteration)
+										{
+											name: r.name,
+											value: component.symLinks[r.name][r.value],
+											iteration: [y, x],
+										},
+									];
+								}
+								return [
+									...acc,
+									// Add iteration to the response
+									{ ...r, iteration: [x, y] },
+								];
+							},
+							[] as { iteration: number[]; name: string; value: any }[]
+						)
+					);
 				},
 				pager: {
 					...state.pager,
