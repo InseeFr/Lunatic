@@ -105,10 +105,13 @@ function computeIterations(
 		typeof component.iterations === 'object' &&
 		'value' in component.iterations
 	) {
-		return executeExpression<number>(component.iterations.value);
+		return executeExpression<number>(component.iterations);
 	}
 	if ('response' in component) {
-		const value = executeExpression(component.response.name);
+		const value = executeExpression({
+			type: 'VTL',
+			value: component.response.name,
+		});
 		if (Array.isArray(value)) {
 			return value.length;
 		}

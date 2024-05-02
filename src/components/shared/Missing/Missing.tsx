@@ -69,6 +69,7 @@ export const MissingPure = (
 
 	const hasKeyboardShortcut = Boolean(
 		shortcut &&
+			!disabled &&
 			missingShortcut &&
 			missingShortcut.dontKnow &&
 			missingShortcut.refused
@@ -78,8 +79,10 @@ export const MissingPure = (
 		Object.values(missingShortcut),
 		(e) => {
 			e.preventDefault();
-			if (e.key === missingShortcut.dontKnow) onClickDK();
-			if (e.key === missingShortcut.refused) onClickRF();
+			if (e.key.toLowerCase() === missingShortcut.dontKnow.toLowerCase())
+				onClickDK();
+			if (e.key.toLowerCase() === missingShortcut.refused.toLowerCase())
+				onClickRF();
 		},
 		hasKeyboardShortcut
 	);
@@ -92,6 +95,7 @@ export const MissingPure = (
 				} missing-button-dk${value === DK ? '-active' : ''}`}
 			>
 				<Button
+					selected={value === DK}
 					disabled={disabled}
 					label={dontKnowButton}
 					onClick={onClickDK}
@@ -102,7 +106,12 @@ export const MissingPure = (
 					value === RF ? '-active' : ''
 				} missing-button-rf${value === RF ? '-active' : ''}`}
 			>
-				<Button disabled={disabled} label={refusedButton} onClick={onClickRF} />
+				<Button
+					selected={value === RF}
+					disabled={disabled}
+					label={refusedButton}
+					onClick={onClickRF}
+				/>
 			</span>
 		</div>
 	);
