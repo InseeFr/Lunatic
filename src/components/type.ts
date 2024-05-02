@@ -77,6 +77,9 @@ export type ComponentPropsByType = {
 		response: { name: string };
 		componentType?: 'Duration';
 	};
+	Text: LunaticBaseProps<string> & {
+		componentType?: 'Text';
+	};
 	Input: LunaticBaseProps<string> & {
 		maxLength?: number;
 		value: null | string;
