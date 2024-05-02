@@ -17,11 +17,11 @@ Cette action (`ActionKind.On_INIT`) est lancée lorsque le composant utilisant `
 
 ### Navigation
 
-Ces actions (`ActionKind.GO_PREVIOUS_PAGE`, `ActionKind.GO_NEXT_PAGE`, `ActionKind.GO_TO_PAGE`) sont déclenchées par les [méthodes de navigation](./hook/navigation). Lors de cette opération un nouveau `pager` va être calculé en fonction de la position dans le formulaire. Cette action est appelé avec les données suivantes :
+Ces actions (`ActionKind.GO_PREVIOUS_PAGE`, `ActionKind.GO_NEXT_PAGE`, `ActionKind.GO_TO_PAGE`) sont déclenchées par les [méthodes de navigation](../hook/navigation). Lors de cette opération un nouveau `pager` va être calculé en fonction de la position dans le formulaire. Cette action est appelé avec les données suivantes :
 
 - **name**, nom de la variable modifiée
 - **value**, nouvelle valeur
-- **iteration**, l'itération sur laquelle on se trouve (cette itération est représentée sous forme d'un tableau, car dans le cas du [PairWise](./components/aggregators/pairwise) il y a 2 niveaux de profondeur)
+- **iteration**, l'itération sur laquelle on se trouve (cette itération est représentée sous forme d'un tableau, car dans le cas du [PairWise](../components/aggregators/pairwise) il y a 2 niveaux de profondeur)
 
 ### Changement d'une valeur
 

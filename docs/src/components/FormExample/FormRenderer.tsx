@@ -4,6 +4,7 @@ import {
   useLunatic,
   LunaticComponents,
 } from '@inseefr/lunatic';
+import '@inseefr/lunatic/lib/main.css'
 
 type Props = {
   source: LunaticSource;

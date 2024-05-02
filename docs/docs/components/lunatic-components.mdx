@@ -2,6 +2,13 @@
 
 Le hook `useLunatic()` renvoie une méthode `getComponents()` qui permet de récupérer les composants à afficher dans l'application. Cette méthode renvoie un tableau contenant les propriétés des différents composants et c'est à l'orchestrateur de gérer leur affichage en utilisant la propriété `componentType` pour sélectionner le bon composant.
 
+:::warning 
+Depuis la V3, la feuille de style css de la librarie n'est plus importée par défaut. Pour l'utiliser il faut l'importer de cette façon 
+```jsx
+import '@inseefr/lunatic/lib/main.css'
+```
+::: 
+
 En plus du hook `useLunatic()`, `@inseefr/lunatic` offre une librairie de composant qui peut être utilisé pour le rendu. Pour ne pas avoir à boucler manuellement sur chaque élément un composant [LunaticComponents](https://github.com/InseeFr/Lunatic/pull/664) est fourni et permet de se charger de l'affichage.
 
 ```jsx
@@ -26,7 +33,7 @@ Ce composant peut aussi recevoir des propriétés supplémentaires afin d'ajoute
 <LunaticComponents
   autoFocusKey={pageTag}
   components={components}
-  componentProps={({ storeName }) => ({
+  componentProps={() => ({
 	  errors: currentErrors,
 	  disabled: true,
   })}

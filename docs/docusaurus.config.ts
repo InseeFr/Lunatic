@@ -40,15 +40,26 @@ const config: Config = {
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       {
+        theme: {
+          customCss: ['./src/css/custom.css'],
+        },
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
             'https://github.com/InseeFr/Lunatic/tree/3.0/docs',
           routeBasePath: '/',
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+          ],
         },
         blog: false,
+        pages: {
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+          ],
+        },
       } satisfies Preset.Options,
     ],
   ],
