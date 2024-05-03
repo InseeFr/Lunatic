@@ -1,0 +1,188 @@
+{
+	"variables": [
+		{
+			"variableType": "EXTERNAL",
+			"name": "VARIABLE_EXT"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "PREMIERTAB2"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "PREMIERTAB3"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": [],
+				"EDITED": [],
+				"FORCED": [],
+				"INPUTTED": [],
+				"PREVIOUS": []
+			},
+			"name": "PREMIERTAB4"
+		}
+	],
+	"components": [
+		{
+			"componentType": "RosterForLoop",
+			"components": [
+				{
+					"componentType": "Text",
+					"label": {
+						"type": "VTL",
+						"value": "VARIABLE_EXT"
+					},
+					"id": "lvp6l8rw-RDOP-lvp7mld9",
+					"maxLength": 249
+				},
+				{
+					"componentType": "Input",
+					"response": {
+						"name": "PREMIERTAB2"
+					},
+					"id": "lvp6l8rw-RDOP-lvp75ug8",
+					"maxLength": 5
+				},
+				{
+					"componentType": "InputNumber",
+					"min": 0.0,
+					"max": 10000.0,
+					"response": {
+						"name": "PREMIERTAB3"
+					},
+					"decimals": 0,
+					"id": "lvp6l8rw-RDOP-lvp7i2ub"
+				},
+				{
+					"componentType": "InputNumber",
+					"min": 0.0,
+					"max": 10000.0,
+					"response": {
+						"name": "PREMIERTAB4"
+					},
+					"decimals": 0,
+					"id": "lvp6l8rw-RDOP-lvp74mc4"
+				}
+			],
+			"controls": [
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 10000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(PREMIERTAB3)) and (0>PREMIERTAB3 or 10000<PREMIERTAB3))"
+					},
+					"id": "lvp6l8rw-RDOP-lvp7i2ub-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(PREMIERTAB3))  and round(PREMIERTAB3,0)<>PREMIERTAB3)"
+					},
+					"id": "lvp6l8rw-RDOP-lvp7i2ub-format-decimal"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\" La valeur doit être comprise entre 0 et 10000.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(PREMIERTAB4)) and (0>PREMIERTAB4 or 10000<PREMIERTAB4))"
+					},
+					"id": "lvp6l8rw-RDOP-lvp74mc4-format-borne-inf-sup"
+				},
+				{
+					"criticality": "ERROR",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+					},
+					"typeOfControl": "FORMAT",
+					"control": {
+						"type": "VTL",
+						"value": "not(not(isnull(PREMIERTAB4))  and round(PREMIERTAB4,0)<>PREMIERTAB4)"
+					},
+					"id": "lvp6l8rw-RDOP-lvp74mc4-format-decimal"
+				}
+			],
+			"positioning": "HORIZONTAL",
+			"header": [
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Nom (LS)\""
+					}
+				},
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Code postal (LS)\""
+					}
+				},
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Capacité 2023 (LS)\""
+					}
+				},
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Capacité 2024\""
+					}
+				}
+			],
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "lvp6l8rw",
+			"page": "1",
+			"lines": {
+				"min": {
+					"type": "VTL",
+					"value": "2"
+				},
+				"max": {
+					"type": "VTL",
+					"value": "5"
+				}
+			},
+			"mandatory": false
+		}
+	],
+	"pagination": "question",
+	"lunaticModelVersion": "3.8.0",
+	"enoCoreVersion": "3.21.0-SNAPSHOT",
+	"resizing": {},
+	"maxPage": "1"
+}

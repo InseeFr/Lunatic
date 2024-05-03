@@ -1,0 +1,294 @@
+{
+	"componentType": "Questionnaire",
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "TABLEAUCLA11"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "TABLEAUCLA21"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "TABLEAUCLA31"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "TABLEAUCLA12"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "TABLEAUCLA22"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "TABLEAUCLA32"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "TABLEAUCLA13"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "TABLEAUCLA23"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null
+			},
+			"name": "TABLEAUCLA33"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_LIBELLEDUT"
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"name": "FILTER_RESULT_TABLEAUCLA"
+		}
+	],
+	"components": [
+		{
+			"componentType": "Table",
+			"positioning": "HORIZONTAL",
+			"header": [
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": ""
+					}
+				},
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Domaines\""
+					}
+				},
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Activité\""
+					}
+				},
+				{
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Chiffre d'affaire\""
+					}
+				}
+			],
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"id": "luwhnbxk",
+			"page": "1",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"Tableau classique\""
+			},
+			"body": [
+				[
+					{
+						"componentType": "Text",
+						"conditionFilter": { "value": "true", "type": "VTL" },
+						"id": "id-text-1",
+						"label": {
+							"type": "TXT",
+							"value": "Libelle 1"
+						}
+					},
+					{
+						"componentType": "Input",
+						"response": {
+							"name": "TABLEAUCLA11"
+						},
+						"id": "luwhnbxk-RDOP-luwhcrpg",
+						"maxLength": 249,
+						"controls": [
+							{
+								"criticality": "ERROR",
+								"errorMessage": {
+									"type": "VTL",
+									"value": "\"Le domaine ne doit pas être vide\""
+								},
+								"typeOfControl": "",
+								"control": {
+									"type": "VTL",
+									"value": "not(isnull(TABLEAUCLA11))"
+								}
+							}
+						]
+					},
+					{
+						"componentType": "Input",
+						"response": {
+							"name": "TABLEAUCLA12"
+						},
+						"id": "luwhnbxk-RDOP-luwhnkls",
+						"maxLength": 249
+					},
+					{
+						"componentType": "InputNumber",
+						"unit": "€",
+						"min": 0.0,
+						"max": 9999.0,
+						"response": {
+							"name": "TABLEAUCLA13"
+						},
+						"decimals": 0,
+						"id": "luwhnbxk-RDOP-luwh7btb"
+					}
+				],
+				[
+					{
+						"componentType": "Text",
+						"conditionFilter": { "value": "true", "type": "VTL" },
+						"id": "id-text-2",
+						"label": {
+							"type": "TXT",
+							"value": "Libelle 2"
+						}
+					},
+					{
+						"componentType": "Input",
+						"response": {
+							"name": "TABLEAUCLA21"
+						},
+						"id": "luwhnbxk-RDOP-luwhmbp1",
+						"maxLength": 249
+					},
+					{
+						"componentType": "Input",
+						"response": {
+							"name": "TABLEAUCLA22"
+						},
+						"id": "luwhnbxk-RDOP-luwhlejc",
+						"maxLength": 249
+					},
+					{
+						"componentType": "InputNumber",
+						"unit": "€",
+						"min": 0.0,
+						"max": 9999.0,
+						"response": {
+							"name": "TABLEAUCLA23"
+						},
+						"decimals": 0,
+						"id": "luwhnbxk-RDOP-luwh4tva"
+					}
+				],
+				[
+					{
+						"componentType": "Text",
+						"conditionFilter": { "value": "true", "type": "VTL" },
+						"id": "id-text-3",
+						"label": {
+							"type": "TXT",
+							"value": "Libelle 3"
+						}
+					},
+					{
+						"componentType": "Input",
+						"response": {
+							"name": "TABLEAUCLA31"
+						},
+						"id": "luwhnbxk-RDOP-luwhalhn",
+						"maxLength": 249
+					},
+					{
+						"componentType": "Input",
+						"response": {
+							"name": "TABLEAUCLA32"
+						},
+						"id": "luwhnbxk-RDOP-luwhd3mk",
+						"maxLength": 249
+					},
+					{
+						"componentType": "InputNumber",
+						"unit": "€",
+						"min": 0.0,
+						"max": 9999.0,
+						"response": {
+							"name": "TABLEAUCLA33"
+						},
+						"decimals": 0,
+						"id": "luwhnbxk-RDOP-luwhcilc"
+					}
+				]
+			],
+			"mandatory": false
+		}
+	],
+	"maxPage": "1"
+}

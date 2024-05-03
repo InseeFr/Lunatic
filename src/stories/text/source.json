@@ -1,0 +1,14 @@
+{
+	"components": [
+		{
+			"componentType": "Text",
+			"label": {
+				"value": "Mon texte",
+				"type": "TXT"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"id": "id"
+		}
+	],
+	"variables": []
+}
