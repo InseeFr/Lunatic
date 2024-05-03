@@ -83,7 +83,7 @@ const config: Config = {
           label: 'Changelog'
         },
         {
-          href: 'https://inseefr.github.io/Lunatic/storybook-2.7',
+          href: 'https://inseefr.github.io/Lunatic/storybook-3.0',
           label: 'Storybook',
           position: 'right',
         },
