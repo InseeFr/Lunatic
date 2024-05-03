@@ -91,9 +91,13 @@ const interpretOverviewItem = (
 		);
 	}
 
-	const isVisible = !!executeExpression(item.conditionFilter, {
-		iteration: iteration,
-	});
+	const isVisible = item.conditionFilter
+		? Boolean(
+				executeExpression(item.conditionFilter, {
+					iteration: iteration,
+				})
+			)
+		: true;
 
 	if (!isVisible) {
 		return items;

@@ -14,20 +14,17 @@ export function checkRoundaboutControl(
 	executeExpression: LunaticReducerState['executeExpression']
 ): LunaticError | undefined {
 	const { criticality, errorMessage, id, typeOfControl, iterations } = control;
-	const value = control?.control?.value ?? 'true';
 
 	if (!iterations || iterations <= 0) {
 		return undefined;
 	}
 
 	const errors = Array.from({ length: iterations }, (_, k) => k)
-		/**
-		 * Currently, the controls are lifted when the condition is false.
-		 * An evolution is planned on the questionnaire generation side (Eno) to come back to a more coherent logic (i.e. lift the control when the condition is true)
-		 *
-		 * After this change, we have to change the next line to `.filter((iteration) => executeExpression(value, { iteration }))`
-		 */
-		.filter((iteration) => !executeExpression(value, { iteration }))
+		// There is an error if the control is evaluated to "true"
+		.filter(
+			(iteration) =>
+				control.control && !executeExpression(control.control, { iteration })
+		)
 		.map((iteration) =>
 			executeExpression<ReactNode>(errorMessage, { iteration })
 		);

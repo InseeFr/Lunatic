@@ -38,7 +38,7 @@ export function reduceGoToPage(
 
 	// Find the number of subPages and iteration
 	const parentPage = state.pages[action.payload.page];
-	if (action.payload.subPage !== undefined) {
+	if (action.payload.subPage !== undefined && parentPage.iterations) {
 		newPager.nbSubPages = parentPage.subPages?.length;
 		newPager.nbIterations = state.executeExpression<number>(
 			parentPage.iterations

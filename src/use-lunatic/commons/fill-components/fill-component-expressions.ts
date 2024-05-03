@@ -5,6 +5,7 @@ import type {
 	LunaticExpression,
 	LunaticReducerState,
 } from '../../type';
+import type { LabelType } from '../../type-source';
 
 const VTL_ATTRIBUTES = [
 	['label', null],
@@ -72,11 +73,14 @@ function castString(v: unknown): string {
 }
 
 // Utility type to replace all expression from an object into a translated version
+type UntranslatedProperties = 'expressions' | 'sections';
 export type DeepTranslateExpression<T> = T extends LunaticExpression
 	? ReactNode
 	: T extends { [k: string | number]: unknown }
 		? {
-				[key in keyof T]: DeepTranslateExpression<T[key]>;
+				[key in keyof T]: key extends UntranslatedProperties
+					? T[key]
+					: DeepTranslateExpression<T[key]>;
 			}
 		: T;
 
@@ -115,6 +119,11 @@ export function fillComponentExpressions(
 		const caster = attribute[1];
 		// Function that will convert expression into the desired type
 		const convert = (expression: unknown) => {
+			if (!isValidExpression(expression)) {
+				throw new Error(
+					`Expression expected at "${attribute[0]}", got ${expression}`
+				);
+			}
 			const result = state.executeExpression(expression, {
 				iteration: state.pager.linksIterations ?? state.pager.iteration,
 			});
@@ -132,6 +141,15 @@ export function fillComponentExpressions(
 	}
 
 	return filledComponent;
+}
+
+function isValidExpression(expression: unknown): expression is LabelType {
+	return Boolean(
+		expression &&
+			typeof expression === 'object' &&
+			'type' in expression &&
+			'value' in expression
+	);
 }
 
 /**

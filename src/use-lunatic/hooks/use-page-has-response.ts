@@ -109,7 +109,10 @@ function isSubComponentsEmpty(
 			component.response &&
 			typeof component.response === 'object' &&
 			'name' in component.response &&
-			!isEmpty(executeExpression(component.response.name))
+			typeof component.response.name === 'string' &&
+			!isEmpty(
+				executeExpression({ type: 'VTL', value: component.response.name })
+			)
 		) {
 			return false;
 		}

@@ -19,7 +19,7 @@
 			"bindingDependencies": ["PRENOM"],
 
 			"lines": {
-				"min": { "value": 1, "type": "VTL" },
+				"min": { "value": "1", "type": "VTL" },
 				"max": { "value": "10", "type": "VTL" }
 			},
 			"page": "1",
@@ -60,7 +60,7 @@
 		{
 			"id": "pairwise-links",
 			"componentType": "PairwiseLinks",
-			"conditionFilter": { "value": "true" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
 			"xAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
 			"yAxisIterations": { "value": "count(PRENOM)", "type": "VTL" },
 			"page": "3",
@@ -99,44 +99,113 @@
 						"name": "LINKS"
 					},
 					"options": [
-						{ "value": "1", "label": "\"Son conjoint, sa conjointe\"" },
-						{ "value": "2", "label": "\"Sa mère, son père\"" },
-						{ "value": "3", "label": "\"Sa fille, son fils\"" },
+						{
+							"value": "1",
+							"label": {
+								"value": "\"Son conjoint, sa conjointe\"",
+								"type": "VTL"
+							}
+						},
+						{
+							"value": "2",
+							"label": { "value": "\"Sa mère, son père\"", "type": "VTL" }
+						},
+						{
+							"value": "3",
+							"label": { "value": "\"Sa fille, son fils\"", "type": "VTL" }
+						},
 						{
 							"value": "4",
-							"label": "\"Sa soeur, son frère (y compris demi et quasi)\""
+							"label": {
+								"value": "\"Sa soeur, son frère (y compris demi et quasi)\"",
+								"type": "VTL"
+							}
 						},
 						{
 							"value": "5",
-							"label": "\"Sa belle-mère, son beau-père (conjoint.e d'un des parents)\""
+							"label": {
+								"value": "\"Sa belle-mère, son beau-père (conjoint.e d'un des parents)\"",
+								"type": "VTL"
+							}
 						},
 						{
 							"value": "6",
-							"label": "\"L'enfant du conjoint (belle-fille, beau-fils)\""
+							"label": {
+								"value": "\"L'enfant du conjoint (belle-fille, beau-fils)\"",
+								"type": "VTL"
+							}
 						},
 						{
 							"value": "7",
-							"label": "\"Sa belle-mère, son beau-père (parent du conjoint)\""
+							"label": {
+								"value": "\"Sa belle-mère, son beau-père (parent du conjoint)\"",
+								"type": "VTL"
+							}
 						},
 						{
 							"value": "8",
-							"label": "\"Sa belle-fille, son beau-fils (conjoint.e d'un enfant)\""
+							"label": {
+								"value": "\"Sa belle-fille, son beau-fils (conjoint.e d'un enfant)\"",
+								"type": "VTL"
+							}
 						},
-						{ "value": "9", "label": "\"Sa grand-mère, son grand-père\"" },
-						{ "value": "10", "label": "\"Sa petite-fille, petit-fils\"" },
-						{ "value": "11", "label": "\"Sa tante, son oncle\"" },
-						{ "value": "12", "label": "\"Sa cousine, son cousin\"" },
-						{ "value": "13", "label": "\"Sa nièce, son neveu\"" },
+						{
+							"value": "9",
+							"label": {
+								"value": "\"Sa grand-mère, son grand-père\"",
+								"type": "VTL"
+							}
+						},
+						{
+							"value": "10",
+							"label": {
+								"value": "\"Sa petite-fille, petit-fils\"",
+								"type": "VTL"
+							}
+						},
+						{
+							"value": "11",
+							"label": { "value": "\"Sa tante, son oncle\"", "type": "VTL" }
+						},
+						{
+							"value": "12",
+							"label": { "value": "\"Sa cousine, son cousin\"", "type": "VTL" }
+						},
+						{
+							"value": "13",
+							"label": { "value": "\"Sa nièce, son neveu\"", "type": "VTL" }
+						},
 						{
 							"value": "14",
-							"label": "\"Un enfant placé en famille d'accueil\""
+							"label": {
+								"value": "\"Un enfant placé en famille d'accueil\"",
+								"type": "VTL"
+							}
 						},
-						{ "value": "15", "label": "\"Sa belle-soeur, son beau-frère\"" },
-						{ "value": "16", "label": "\"Un autre lien familial\"" },
-						{ "value": "17", "label": "\"Un colocataire, sous-locataire\"" },
+						{
+							"value": "15",
+							"label": {
+								"value": "\"Sa belle-soeur, son beau-frère\"",
+								"type": "VTL"
+							}
+						},
+						{
+							"value": "16",
+							"label": { "value": "\"Un autre lien familial\"", "type": "VTL" }
+						},
+						{
+							"value": "17",
+							"label": {
+								"value": "\"Un colocataire, sous-locataire\"",
+								"type": "VTL"
+							}
+						},
 						{
 							"value": "18",
-							"label": "\"Autre lien (employé de maison, salarié logé, jeune au pair …)\""
+							"label": {
+								"value": "\"Autre lien (employé de maison, salarié logé, jeune au pair …)\"",
+								"type": "VTL"
+							}
 						}
 					]
 				},
@@ -186,7 +255,15 @@
 				}
 			]
 		},
-		{ "componentType": "Sequence", "label": "\"END\"", "page": 5 }
+		{
+			"componentType": "Sequence",
+			"label": {
+				"type": "VTL",
+				"value": "\"END\""
+			},
+			"page": "5",
+			"id": "end"
+		}
 	],
 	"variables": [
 		{

@@ -153,7 +153,7 @@ function checkComponentInLoop(
 				typeof component.conditionFilter == 'object' &&
 				'value' in component.conditionFilter &&
 				!state.executeExpression(
-					component.conditionFilter.value,
+					{ value: component.conditionFilter.value, type: 'VTL' },
 					iterationPager
 				)) ||
 			component.conditionFilter === false
