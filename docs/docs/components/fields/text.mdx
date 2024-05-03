@@ -1,0 +1,25 @@
+# Text
+
+Le composant **Text** permet d'afficher du texte. L'objectif de ce composant est d'être réutilisé en tant qu'enfant d'autres composants.
+
+Il a était créé pour être utilisé dans des tableaux, mais peut très bien s'utiliser seul ou comme enfant d'autre composants.
+
+## Composant seul  
+
+import source from '../../../../src/stories/text/source.json';
+import {FormExample} from '@site/src/components/FormExample/FormExample';
+
+<FormExample source={source} />
+
+## Dans un tableau 
+
+import sourceTable from '../../../../src/stories/text/source-table.json';
+
+<FormExample source={sourceTable} />
+
+## Dans une tableau dynamique
+
+import sourceRoster from '../../../../src/stories/text/source-roster.json';
+import dataRoster from '../../../../src/stories/text/data-roster.json';
+
+<FormExample source={sourceRoster} data={dataRoster} />
