@@ -29,7 +29,7 @@ export class SearchMinisearch<T extends IndexEntry>
 		const nameFields = this.info.fields.map(({ name }) => name);
 		this.db = new MiniSearch({
 			fields: nameFields,
-			storeFields: nameFields,
+			storeFields: data[0] ? Object.keys(data[0]) : nameFields,
 			tokenize: tokenizer(this.info),
 		});
 		this.db.addAll(data);

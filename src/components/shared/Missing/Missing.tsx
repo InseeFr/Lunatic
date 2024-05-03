@@ -10,6 +10,7 @@ type Props = {
 	componentType?: string;
 	paginatedLoop?: boolean;
 	disabled?: boolean;
+	readOnly?: boolean;
 	missingResponse?: LunaticBaseProps['missingResponse'];
 };
 
@@ -35,7 +36,10 @@ export const Missing = (props: Props) => {
 };
 
 export const MissingPure = (
-	props: Pick<Props, 'handleChanges' | 'missingResponse' | 'disabled'> &
+	props: Pick<
+		Props,
+		'handleChanges' | 'missingResponse' | 'disabled' | 'readOnly'
+	> &
 		PropsFromContext
 ) => {
 	const {
@@ -47,6 +51,7 @@ export const MissingPure = (
 		dontKnowButton,
 		refusedButton,
 		disabled,
+		readOnly,
 	} = props;
 	const value = missingResponse?.value;
 	const onClick = (value: 'DK' | 'RF') => {
@@ -70,6 +75,7 @@ export const MissingPure = (
 	const hasKeyboardShortcut = Boolean(
 		shortcut &&
 			!disabled &&
+			!readOnly &&
 			missingShortcut &&
 			missingShortcut.dontKnow &&
 			missingShortcut.refused

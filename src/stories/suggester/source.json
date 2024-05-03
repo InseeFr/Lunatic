@@ -172,6 +172,12 @@
 			"response": {
 				"name": "VARIABLECO"
 			},
+			"optionResponses": [
+				{
+					"name": "VARIABLECO_NAME",
+					"attribute": "label"
+				}
+			],
 			"storeName": "L_COMMUNEPASSEE-1-2-0",
 			"hierarchy": {
 				"sequence": {
@@ -313,6 +319,17 @@
 				"PREVIOUS": null
 			},
 			"name": "VARIABLECO"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "VARIABLECO_NAME"
 		},
 		{
 			"variableType": "COLLECTED",
