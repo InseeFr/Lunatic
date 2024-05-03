@@ -19,45 +19,57 @@ export function useSuggestions({
 	selectedOptions,
 	allowArbitrary,
 }: Props) {
-	const [search, setSearch] = useState('');
-	const { search: db, index: dbIndex } = getSearchForStore(storeName);
-	const dbIndexRef = useRefSync(dbIndex);
+	const [searchQuery, setSearchQuery] = useState('');
+	const store = getSearchForStore(storeName);
+	const searchIndexRef = useRefSync(store.index);
 	let [options, setOptions] = useState(selectedOptions);
 	const [state, setState] = useState<State>(
-		db.isIndexed() ? 'success' : 'loading'
+		store.error !== null
+			? 'error'
+			: store.search.isIndexed()
+				? 'success'
+				: 'loading'
 	);
 
 	// Index the data when the component is loaded
 	useEffect(() => {
-		dbIndexRef
+		if (!searchIndexRef.current) {
+			return;
+		}
+		searchIndexRef
 			.current()
 			.then(() => {
 				setState('success');
 			})
 			.catch((err) => {
 				setState('error');
-				throw new Error(err);
 			});
-	}, [dbIndexRef]);
+	}, [searchIndexRef]);
 
 	useEffectDebounced(
 		() => {
-			db.search(search)
+			store.search
+				?.search(searchQuery)
 				.then((r) => {
 					setOptions(r);
 					setState('success');
 				})
 				.catch(() => setState('error'));
 		},
-		[search],
+		[searchQuery],
 		300
 	);
 
-	if (search && allowArbitrary && options.length === 0 && state === 'success') {
+	if (
+		searchQuery &&
+		allowArbitrary &&
+		options.length === 0 &&
+		state !== 'loading'
+	) {
 		options = [
 			{
 				id: OTHER_VALUE,
-				label: search,
+				label: searchQuery,
 				value: OTHER_VALUE,
 			},
 		];
@@ -67,22 +79,19 @@ export function useSuggestions({
 	const [isFocused, setFocused] = useState(false);
 
 	return {
-		search,
+		search: searchQuery,
 		setSearch: (s: string) => {
-			if (state === 'error') {
-				return;
-			}
 			if (s.length > 0 && !isFocused) {
 				setFocused(true);
 			}
 			// setState('loading'); // Current implementation being sync, we won't need to show a "loading" state
-			setSearch(s);
+			setSearchQuery(s);
 		},
 		state,
 		options: isFocused ? options : selectedOptions,
 		onBlur: () => {
 			setFocused(false);
-			setSearch('');
+			setSearchQuery('');
 			// Prevent extra calls
 			if (!isFocused) {
 				return;
@@ -92,7 +101,7 @@ export function useSuggestions({
 		onFocus: () => {
 			if (!isFocused) {
 				setFocused(true);
-				setSearch(selectedOptions[0]?.label ?? '');
+				setSearchQuery(selectedOptions[0]?.label ?? '');
 			}
 		},
 	};
