@@ -152,11 +152,6 @@ export type ComponentPropsByType = {
 			description?: ReactNode;
 			response: { name: string };
 		}>;
-		handleChange: (
-			response: { name: string },
-			value: boolean,
-			args?: Record<string, unknown>
-		) => void;
 		componentType?: 'CheckboxGroup';
 	};
 	CheckboxOne: LunaticBaseProps<string | null> & {

@@ -13,6 +13,8 @@ export function CheckboxOne({
 	description,
 	handleChanges,
 	errors,
+	disabled,
+	readOnly,
 	shortcut,
 	response,
 }: LunaticComponentProps<'CheckboxOne'>) {
@@ -22,6 +24,8 @@ export function CheckboxOne({
 			className="lunatic-checkbox-one"
 			options={options}
 			value={value}
+			disabled={disabled}
+			readOnly={readOnly}
 			errors={getComponentErrors(errors, id)}
 			label={label}
 			description={description}

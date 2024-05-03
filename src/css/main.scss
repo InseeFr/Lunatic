@@ -152,6 +152,10 @@
   }
 }
 
+.lunatic-component + .lunatic-component {
+  margin-top: 1rem;
+}
+
 @import "./components/Button.scss";
 @import "./components/CheckboxGroup.scss";
 @import "./components/CheckboxOne.scss";
@@ -169,7 +173,6 @@
 @import "./components/Label.scss";
 @import "./components/Missing.scss";
 @import "./components/ModalControls.scss";
-@import "./components/RadioGroup.scss";
 @import "./components/RosterForLoop.scss";
 @import "./components/Roundabout.scss";
 @import "./components/Sequence.scss";

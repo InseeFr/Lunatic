@@ -22,3 +22,6 @@ const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
 Default.args = { id: 'radio', source, shortcut: true };
+export const ReadOnly = Template.bind({});
+
+ReadOnly.args = { id: 'radio', source, shortcut: true, readOnly: true };

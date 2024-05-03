@@ -53,42 +53,39 @@ function Pager({
 	getData,
 	pager,
 }) {
-	if (maxPage && maxPage > 1) {
-		return (
-			<>
-				<div className="pagination">
-					<Button onClick={goPrevious} disabled={isFirst}>
-						Previous
-					</Button>
-					<Button onClick={goNext} disabled={isLast}>
-						Next
-					</Button>
-					<div style={{ fontSize: '.8em', opacity: 0.7, marginTop: '.3em' }}>
-						You can use PgDown / PgUp shortcut
-					</div>
+	return (
+		<>
+			<div className="pagination">
+				<Button onClick={goPrevious} disabled={isFirst}>
+					Previous
+				</Button>
+				<Button onClick={goNext} disabled={isLast}>
+					Next
+				</Button>
+				<div style={{ fontSize: '.8em', opacity: 0.7, marginTop: '.3em' }}>
+					You can use PgDown / PgUp shortcut
 				</div>
-				<DevOptions
-					goToPage={goToPage}
-					getData={getData}
-					lastReachedPage={lastReachedPage}
-				/>
-				<div className="story-pager">
-					<h3>Pager</h3>
-					<ul>
-						<li>
-							<strong>PageTag:</strong> {JSON.stringify(pageTag)}
+			</div>
+			<DevOptions
+				goToPage={goToPage}
+				getData={getData}
+				lastReachedPage={lastReachedPage}
+			/>
+			<div className="story-pager">
+				<h3>Pager</h3>
+				<ul>
+					<li>
+						<strong>PageTag:</strong> {JSON.stringify(pageTag)}
+					</li>
+					{Object.keys(pager).map((key) => (
+						<li key={key}>
+							<strong>{key}:</strong> {JSON.stringify(pager[key])}
 						</li>
-						{Object.keys(pager).map((key) => (
-							<li key={key}>
-								<strong>{key}:</strong> {JSON.stringify(pager[key])}
-							</li>
-						))}
-					</ul>
-				</div>
-			</>
-		);
-	}
-	return null;
+					))}
+				</ul>
+			</div>
+		</>
+	);
 }
 
 function onLogChange(response, value, args) {

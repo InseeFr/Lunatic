@@ -1,16 +1,13 @@
-/* eslint-disable jsx-a11y/role-supports-aria-props */
-import classnames from 'classnames';
-import { useCallback, useEffect, useRef, type ReactNode } from 'react';
-import { voidFunction } from '../../../utils/function';
-import { Label } from '../Label/Label';
-import { slottableComponent } from '../HOC/slottableComponent';
 import {
-	CheckboxCheckedIcon,
-	CheckboxUncheckedIcon,
-	RadioCheckedIcon,
-	RadioUncheckedIcon,
-} from '../Icons';
+	type KeyboardEventHandler,
+	type ReactNode,
+	useEffect,
+	useRef,
+} from 'react';
+import { slottableComponent } from '../HOC/slottableComponent';
 import { useKeyboardKey } from '../../../hooks/useKeyboardKey';
+import { Label } from '../Label/Label';
+import classnames from 'classnames';
 
 export type Props = {
 	id: string;
@@ -32,55 +29,49 @@ export type Props = {
 
 function LunaticRadioOption({
 	checked,
-	onClick = voidFunction,
-	value = null,
-	id,
 	disabled,
-	onKeyDown = voidFunction,
-	index = -1,
-	labelledBy,
+	readOnly,
 	checkboxStyle,
-	label,
-	description,
+	onClick,
+	value,
+	onKeyDown,
+	index,
 	shortcut,
 	codeModality,
-	readOnly,
 	invalid,
+	id,
+	labelledBy,
+	description,
+	label,
 }: Props) {
-	const spanEl = useRef<HTMLSpanElement>(null);
-	const Icon = getIcon(checked, checkboxStyle);
+	const divEl = useRef<HTMLDivElement>(null);
 	const tabIndex = checked ? 0 : -1;
-	const onClickOption = useCallback(
-		function () {
-			if (disabled || readOnly) {
-				return;
-			}
-			// on checkboxStyle, clicking on checked value unchecks it, so it acts as if empty answer was clicked
-			checkboxStyle && checked ? onClick(null) : onClick(value);
-		},
-		[value, onClick, checked, checkboxStyle, disabled, readOnly]
-	);
+	const isEnabled = !disabled && !readOnly;
+	const isRadio = !checkboxStyle;
+	const onClickOption = () => {
+		if (!isEnabled || !onClick) {
+			return;
+		}
+		// on checkboxStyle, clicking on checked value unchecks it, so it acts as if empty answer was clicked
+		checkboxStyle && checked ? onClick(null) : onClick(value ?? null);
+	};
 
-	const handleKeyDown = useCallback(
-		function (e: { key: string }) {
-			const { key } = e;
-			onKeyDown({ key, index });
-			spanEl.current?.blur();
-		},
-		[onKeyDown, index, spanEl]
-	);
+	const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
+		onKeyDown?.({ key: e.key, index: index ?? -1 });
+		divEl.current?.blur();
+	};
 
 	useEffect(
 		function () {
-			const { current } = spanEl;
+			const { current } = divEl;
 			if (current && checked) {
 				current.focus();
 			}
 		},
-		[checked, spanEl, value]
+		[checked, divEl, value]
 	);
 
-	const hasKeyboardShortcut = Boolean(shortcut && codeModality);
+	const hasKeyboardShortcut = Boolean(shortcut && codeModality && isEnabled);
 	useKeyboardKey(
 		codeModality ? [codeModality] : [],
 		(e) => {
@@ -91,54 +82,45 @@ function LunaticRadioOption({
 	);
 
 	return (
-		<>
-			<div className="lunatic-radio-group-option">
-				<div
-					className={classnames('radio-modality', 'radio-modality-block', {
-						checked,
-						disabled,
-						readOnly,
-					})}
-					aria-invalid={invalid}
-				>
-					<span
-						id={id}
-						role="radio"
-						className="lunatic-input-radio"
-						aria-checked={checked}
-						tabIndex={tabIndex}
-						onClick={onClickOption}
-						onKeyDown={handleKeyDown}
-						aria-labelledby={labelledBy}
-						ref={spanEl}
+		<div
+			id={id}
+			role="radio"
+			aria-invalid={invalid}
+			aria-disabled={disabled}
+			aria-readonly={readOnly}
+			className={classnames(
+				'lunatic-input-checkbox',
+				isRadio && 'lunatic-input-radio'
+			)}
+			aria-checked={checked}
+			tabIndex={tabIndex}
+			onClick={onClickOption}
+			onKeyDown={handleKeyDown}
+			aria-labelledby={labelledBy}
+			ref={divEl}
+		>
+			<div className="lunatic-input-checkbox__icon">
+				{checked && checkboxStyle && (
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 14 11"
 					>
-						<Icon />
-						<Label id={labelledBy} htmlFor={id} description={description}>
-							{codeModality && (
-								<span className="code-modality">
-									{codeModality.toUpperCase()}
-								</span>
-							)}
-							{label}
-						</Label>
-					</span>
-				</div>
+						<path
+							d="M5 11 0 6l1.4-1.4L5 8.2 12.6.6 14 2l-9 9Z"
+							fill="currentColor"
+						/>
+					</svg>
+				)}
 			</div>
-		</>
+			<Label id={labelledBy} htmlFor={id} description={description}>
+				{codeModality && (
+					<span className="code-modality">{codeModality.toUpperCase()}</span>
+				)}
+				{label}
+			</Label>
+		</div>
 	);
-}
-
-function getIcon(checked?: boolean, checkboxStyle?: boolean) {
-	if (checked) {
-		if (checkboxStyle) {
-			return CheckboxCheckedIcon;
-		}
-		return RadioCheckedIcon;
-	}
-	if (checkboxStyle) {
-		return CheckboxUncheckedIcon;
-	}
-	return RadioUncheckedIcon;
 }
 
 export const RadioOption = slottableComponent(

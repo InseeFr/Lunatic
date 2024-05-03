@@ -6,7 +6,7 @@
 			"page": "1",
 			"label": {
 				"value": "Situation matrimoniale",
-				"type": "VTL|MD"
+				"type": "Text"
 			},
 
 			"hierarchy": {
@@ -15,7 +15,7 @@
 					"page": "1",
 					"label": {
 						"value": "Situation matrimoniale",
-						"type": "VTL|MD"
+						"type": "Text"
 					}
 				},
 				"subSequence": {
@@ -23,7 +23,7 @@
 					"page": "2",
 					"label": {
 						"value": "Mois préférés de l'année",
-						"type": "VTL|MD"
+						"type": "Text"
 					}
 				}
 			},
@@ -33,7 +33,7 @@
 					"id": "kmort6x9-QOP-kmosa98y",
 					"label": {
 						"value": "Française de naissance ou par réintégration",
-						"type": "VTL"
+						"type": "Text"
 					},
 					"response": { "name": "NATIO1N1" }
 				},
@@ -49,7 +49,7 @@
 
 				{
 					"id": "kmort6x9-QOP-kmos37e1",
-					"label": { "value": "Étrangère", "type": "VTL" },
+					"label": { "value": "Étrangère", "type": "Text" },
 					"response": { "name": "NATIO1N3" }
 				},
 
@@ -57,7 +57,7 @@
 					"id": "kmort6x9-QOP-kmorue9c",
 					"label": {
 						"value": "Apatride (pas de nationalité)",
-						"type": "VTL"
+						"type": "Text"
 					},
 					"response": { "name": "NATIO1N4" }
 				}
@@ -69,7 +69,7 @@
 			"page": "2",
 			"label": {
 				"value": "Mois préférés de l'année",
-				"type": "VTL|MD"
+				"type": "Text"
 			},
 
 			"hierarchy": {
@@ -78,7 +78,7 @@
 					"page": "1",
 					"label": {
 						"value": "Situation matrimoniale",
-						"type": "VTL|MD"
+						"type": "Text"
 					}
 				},
 				"subSequence": {
@@ -86,7 +86,7 @@
 					"page": "2",
 					"label": {
 						"value": "Mois préférés de l'année",
-						"type": "VTL|MD"
+						"type": "Text"
 					}
 				}
 			},
@@ -110,7 +110,7 @@
 					"id": "mois1",
 					"label": {
 						"value": "Janvier",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS1" }
 				},
@@ -119,7 +119,7 @@
 					"id": "mois2",
 					"label": {
 						"value": "Février",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS2" }
 				},
@@ -127,7 +127,7 @@
 					"id": "mois3",
 					"label": {
 						"value": "Mars",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS3" }
 				},
@@ -135,7 +135,7 @@
 					"id": "mois4",
 					"label": {
 						"value": "Avril",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS4" }
 				},
@@ -143,7 +143,7 @@
 					"id": "mois5",
 					"label": {
 						"value": "Mai",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS5" }
 				},
@@ -151,7 +151,7 @@
 					"id": "mois6",
 					"label": {
 						"value": "Juin",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS6" }
 				},
@@ -159,7 +159,7 @@
 					"id": "mois7",
 					"label": {
 						"value": "Juillet",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS7" }
 				},
@@ -167,7 +167,7 @@
 					"id": "mois8",
 					"label": {
 						"value": "Août",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS8" }
 				},
@@ -175,7 +175,7 @@
 					"id": "mois9",
 					"label": {
 						"value": "Septembre",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS9" }
 				},
@@ -183,7 +183,7 @@
 					"id": "mois10",
 					"label": {
 						"value": "Octobre",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS10" }
 				},
@@ -191,7 +191,7 @@
 					"id": "mois11",
 					"label": {
 						"value": "Novembre",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS11" }
 				},
@@ -199,7 +199,7 @@
 					"id": "mois12",
 					"label": {
 						"value": "Décembre",
-						"type": "VTL|MD"
+						"type": "Text"
 					},
 					"response": { "name": "MOIS12" }
 				}

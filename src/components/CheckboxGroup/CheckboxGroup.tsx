@@ -17,7 +17,9 @@ export function CheckboxGroup({
 	value,
 	responses,
 	shortcut,
-	handleChange,
+	readOnly,
+	disabled,
+	handleChanges,
 	errors,
 	label,
 	description,
@@ -32,7 +34,7 @@ export function CheckboxGroup({
 			checked: castValueToBoolean(value, name),
 			description,
 			onClick: function (checked: boolean) {
-				handleChange(response, checked);
+				handleChanges([{ name: response.name, value: checked }]);
 			},
 		};
 	}) satisfies CheckboxGroupOption[];
@@ -45,6 +47,8 @@ export function CheckboxGroup({
 			label={label}
 			errors={getComponentErrors(errors, id)}
 			shortcut={shortcut}
+			disabled={disabled}
+			readOnly={readOnly}
 		/>
 	);
 }
