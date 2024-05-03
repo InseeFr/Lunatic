@@ -5,7 +5,6 @@ import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { OTHER_VALUE, useSuggestions } from './useSuggestions';
 import D from '../../i18n';
 import type { SuggesterOptionType } from './SuggesterType';
-import type { LunaticChangesHandler } from '../../use-lunatic/type';
 
 export function Suggester({
 	storeName,
@@ -43,9 +42,12 @@ export function Suggester({
 			if (!labelResponse) {
 				return [{ id: value, label: value, value: value }];
 			}
-			const label = executeExpression(labelResponse.name, {
-				iteration,
-			});
+			const label = executeExpression(
+				{ value: labelResponse.name, type: 'VTL' },
+				{
+					iteration,
+				}
+			);
 			if (typeof label !== 'string') {
 				return [{ id: value, label: value, value: value }];
 			}

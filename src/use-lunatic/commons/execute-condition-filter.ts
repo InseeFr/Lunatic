@@ -1,6 +1,5 @@
 import type { LunaticExpression, LunaticReducerState } from '../type';
 import { firstValueItem } from '../../utils/array';
-import { getExpressionAsString } from '../../utils/vtl';
 
 function executeConditionFilter(
 	filter: LunaticExpression,
@@ -8,7 +7,7 @@ function executeConditionFilter(
 	iteration?: number
 ) {
 	if (filter && typeof execute === 'function') {
-		const result = execute(getExpressionAsString(filter.value), { iteration });
+		const result = execute(filter, { iteration });
 		// Handle some edge cases where the value is not what we expect
 		return Array.isArray(result) ? firstValueItem(result) : result;
 	}

@@ -25,7 +25,7 @@ function getRoundaboutProps(
 		result,
 		[name, expression]
 	) {
-		const values = new Array(iterations).fill(null).map((_, iteration) => {
+		const values = Array.from({ length: iterations }, (_, iteration) => {
 			return state.executeExpression(expression, {
 				iteration,
 			});
@@ -172,9 +172,9 @@ function getTableProps(
 				// We can have a non typed component with extra attributes (colspan, rowspan)
 				return {
 					...component,
-					label: state.executeExpression(
-						getVTLCompatibleValue(component.label)
-					),
+					label: state.executeExpression(component.label, {
+						iteration: state.pager.iteration,
+					}),
 				};
 			})
 		),
@@ -192,9 +192,12 @@ function getSuggesterProps(
 		return component;
 	}
 	return {
-		arbitraryValue: state.executeExpression(component.arbitrary.response.name, {
-			iteration: state.pager.iteration,
-		}),
+		arbitraryValue: state.executeExpression(
+			{ type: 'VTL', value: component.arbitrary.response.name },
+			{
+				iteration: state.pager.iteration,
+			}
+		),
 	};
 }
 

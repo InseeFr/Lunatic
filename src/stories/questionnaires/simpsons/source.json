@@ -3729,7 +3729,7 @@
 				"value": "\"Do you have any comment ?\"",
 				"type": "VTL"
 			},
-			"conditionFilter": { "value": "true" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
 			"hierarchy": {
 				"sequence": { "id": "COMMENT-SEQ", "page": "38", "label": {} }
 			}
@@ -3745,7 +3745,7 @@
 				"value": "\"Do you have any comment ?\"",
 				"type": "VTL"
 			},
-			"conditionFilter": { "value": "true" },
+			"conditionFilter": { "value": "true", "type": "VTL" },
 			"hierarchy": {
 				"sequence": { "id": "COMMENT-SEQ", "page": "38", "label": {} }
 			},

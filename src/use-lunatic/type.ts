@@ -1,5 +1,10 @@
 import type { FunctionComponent, PropsWithChildren, ReactNode } from 'react';
-import type { ComponentType, ControlType, Variable } from './type-source';
+import type {
+	ComponentType,
+	ControlType,
+	LabelType,
+	Variable,
+} from './type-source';
 import type { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
 import type { IndexEntry } from '../utils/search/SearchInterface';
 import type { InterpretedLunaticOverviewItem } from './hooks/useOverview';
@@ -98,7 +103,7 @@ export type LunaticReducerState = {
 			| {
 					components: ComponentType[];
 					isLoop: true;
-					iterations: ExpressionType;
+					iterations: LabelType<'VTL'>;
 					// Variables affecting this loop
 					loopDependencies: string[];
 					// List of child pages (ex: ['20.1', '20.2']
@@ -107,7 +112,7 @@ export type LunaticReducerState = {
 	};
 	// Run and expression using the value from the state
 	executeExpression: <T extends unknown = unknown>(
-		expression: unknown,
+		expression: LabelType,
 		args?: {
 			iteration?: number | number[];
 			// @deprecated

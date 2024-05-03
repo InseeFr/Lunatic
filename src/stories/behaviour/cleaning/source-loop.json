@@ -49,17 +49,24 @@
 		{
 			"componentType": "Loop",
 			"id": "loop",
-			"label": "Ajouter",
+			"label": {
+				"type": "VTL",
+				"value": "\"Ajouter\""
+			},
 			"bindingDependencies": ["PRENOM"],
 			"lines": {
-				"min": { "value": 1, "type": "VTL" },
-				"max": { "value": 10, "type": "VTL" }
+				"min": { "value": "1", "type": "VTL" },
+				"max": { "value": "10", "type": "VTL" }
 			},
 			"page": "1",
+			"paginatedLoop": false,
 			"components": [
 				{
 					"componentType": "Input",
-					"label": "Prénom",
+					"label": {
+						"type": "VTL",
+						"value": "\"Prénom\""
+					},
 					"bindingDependencies": ["PRENOM"],
 					"id": "prenom",
 					"response": {

@@ -258,7 +258,7 @@ export type ComponentPropsByType = {
 				value: VtlExpression;
 			}>;
 			title?: VtlExpression;
-			iterations?: number;
+			iterations?: VtlExpression;
 		}>;
 	};
 };

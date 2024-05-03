@@ -22,11 +22,17 @@ export function registerSuggesters(
 export function getSearchForStore(storeName: string) {
 	const search = suggesters.get(storeName);
 	if (!search) {
-		throw new Error('Cannot find search for store : ' + storeName);
+		return {
+			error: 'Cannot find search for store : ' + storeName,
+		};
 	}
 	return {
+		error: null,
 		search,
 		index: () => {
+			if (!search) {
+				return Promise.reject();
+			}
 			if (search.isIndexed()) {
 				return Promise.resolve();
 			}
