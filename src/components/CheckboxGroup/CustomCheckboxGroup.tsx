@@ -29,7 +29,6 @@ export const CustomCheckboxGroup = slottableComponent<Props>(
 		disabled,
 		readOnly,
 	}: Props) => {
-		console.log({ shortcut });
 		return (
 			<Fieldset
 				className="lunatic-checkbox-group"

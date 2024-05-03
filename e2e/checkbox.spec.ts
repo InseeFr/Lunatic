@@ -6,33 +6,33 @@ test.describe('Checkboxes', () => {
 		test(`Keyboard shortcut should check boxes`, async ({ page }) => {
 			await goToStory(page, 'components-checkboxgroup--default');
 			await expect(
-				page.getByRole('checkbox', { name: 'A Janvier' })
+				page.getByRole('checkbox', { name: 'Janvier' })
 			).toBeVisible();
 			await page.keyboard.type('ab');
 			await expect(
-				page.getByRole('checkbox', { name: 'A Janvier' })
+				page.getByRole('checkbox', { name: 'Janvier' })
 			).toHaveAttribute('aria-checked', 'true');
 			await expect(
-				page.getByRole('checkbox', { name: 'B Février' })
+				page.getByRole('checkbox', { name: 'Février' })
 			).toHaveAttribute('aria-checked', 'true');
 			await expect(
-				page.getByRole('checkbox', { name: 'C Mars' })
+				page.getByRole('checkbox', { name: 'Mars' })
 			).not.toHaveAttribute('aria-checked', 'true');
 			await expectCollectedData(page, 'MOIS1', true);
 			await expectCollectedData(page, 'MOIS2', true);
 			await expectCollectedData(page, 'MOIS3', null);
 		});
 
-		test.only(`Keyboard shortcut should be disabled in readonly`, async ({
+		test(`Keyboard shortcut should be disabled in readonly`, async ({
 			page,
 		}) => {
 			await goToStory(page, 'components-checkboxgroup--read-only');
 			await expect(
-				page.getByRole('checkbox', { name: 'A Janvier' })
+				page.getByRole('checkbox', { name: 'Janvier' })
 			).toBeVisible();
 			await page.keyboard.type('ab');
 			await expect(
-				page.getByRole('checkbox', { name: 'A Janvier' })
+				page.getByRole('checkbox', { name: 'Janvier' })
 			).not.toHaveAttribute('aria-checked', 'true');
 			await expectCollectedData(page, 'MOIS2', null);
 		});

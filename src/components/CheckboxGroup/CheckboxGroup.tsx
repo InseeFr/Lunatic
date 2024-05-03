@@ -19,7 +19,7 @@ export function CheckboxGroup({
 	shortcut,
 	readOnly,
 	disabled,
-	handleChange,
+	handleChanges,
 	errors,
 	label,
 	description,
@@ -34,7 +34,7 @@ export function CheckboxGroup({
 			checked: castValueToBoolean(value, name),
 			description,
 			onClick: function (checked: boolean) {
-				handleChange(response, checked);
+				handleChanges([{ name: response.name, value: checked }]);
 			},
 		};
 	}) satisfies CheckboxGroupOption[];
