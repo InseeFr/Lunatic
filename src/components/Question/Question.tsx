@@ -11,9 +11,17 @@ export const Question = ({
 	components,
 	...props
 }: LunaticComponentProps<'Question'>) => {
+	const { errors, disabled, readOnly } = props;
 	return (
 		<CustomQuestion {...props}>
-			<LunaticComponents components={components} />
+			<LunaticComponents
+				components={components}
+				componentProps={() => ({
+					errors,
+					disabled,
+					readOnly,
+				})}
+			/>
 		</CustomQuestion>
 	);
 };
