@@ -4,7 +4,7 @@ import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
-import sourceSimpsons from '../stories/questionnaires2023/simpsons/source.json';
+import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
 import sourceOverview from '../stories/overview/sourceLoop.json';
 import sourceCheckboxGroup from '../stories/checkbox-group/source.json';
 import dataOverview from '../stories/overview/dataLoop.json';

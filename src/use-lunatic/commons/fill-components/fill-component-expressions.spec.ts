@@ -32,7 +32,6 @@ describe('fillComponentExpressions', () => {
 		componentType: 'RosterForLoop',
 		components: [],
 		lines: { min: exp('1'), max: exp('10') },
-		positioning: 'HORIZONTAL',
 	} satisfies Parameters<typeof fillComponentExpressions>[0];
 
 	const fillComponent = (

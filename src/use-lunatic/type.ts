@@ -12,6 +12,7 @@ import type { LunaticVariablesStore } from './commons/variables/lunatic-variable
 import type { IndexEntry } from '../utils/search/SearchInterface';
 import type { InterpretedLunaticOverviewItem } from './hooks/useOverview';
 import type { LunaticComponentProps } from '../components/type';
+export type { LunaticSource } from '../type.source';
 
 export type LunaticComponentDefinition<T extends string = string> =
 	ComponentDefinition & { componentType: T; page?: string };
@@ -48,7 +49,6 @@ export type LunaticError = Pick<
 };
 
 export type VariableType = 'COLLECTED' | 'EXTERNAL' | 'CALCULATED';
-export type ExpressionType = 'VTL' | 'VTL|MD' | 'TXT';
 export type LunaticExpression = VTLExpression | VTLScalarExpression;
 
 export type PageTag = `${number}.${number}#${number}` | `${number}`;
@@ -110,7 +110,7 @@ export type LunaticReducerState = {
 	};
 	// Run and expression using the value from the state
 	executeExpression: <T extends unknown = unknown>(
-		expression: VTLScalarExpression,
+		expression: VTLExpression,
 		args?: {
 			iteration?: number | number[];
 			// @deprecated

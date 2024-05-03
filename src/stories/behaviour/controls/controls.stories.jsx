@@ -3,7 +3,6 @@ import Orchestrator from '../../utils/orchestrator';
 import simple from './simple.json';
 import simpleNum from './simple-numeric.json';
 import linkedLoop from './loop.json';
-import linkedLoop2 from './V2_Controles_BouclesLiees2_PasPageFin.json';
 import sourceLoop from './loop.json';
 import defaultArgTypes from '../../utils/default-arg-types';
 import boucleNTabDynamique from './boucles-n.json';
@@ -69,15 +68,6 @@ export const LinkedLoop = Template.bind({});
 LinkedLoop.args = {
 	id: 'controls-linked-loop',
 	source: linkedLoop,
-	pagination: true,
-	activeControls: true,
-};
-
-export const LinkedLoop2 = Template.bind({});
-
-LinkedLoop2.args = {
-	id: 'controls-linked-loop2',
-	source: linkedLoop2,
 	pagination: true,
 	activeControls: true,
 };

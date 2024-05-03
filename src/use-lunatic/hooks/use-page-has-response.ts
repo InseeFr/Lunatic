@@ -95,7 +95,11 @@ function isSubComponentsEmpty(
 	for (const component of components) {
 		if ('responses' in component && Array.isArray(component.responses)) {
 			for (const response of component.responses) {
-				if (!isEmpty(executeExpression(response.response?.name))) {
+				if (
+					!isEmpty(
+						executeExpression({ type: 'VTL', value: response.response?.name })
+					)
+				) {
 					return false;
 				}
 			}

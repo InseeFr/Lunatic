@@ -86,16 +86,15 @@ export type BlockLoop2 =
 	| {
 			iterations: VTLExpression;
 	  };
-export type ComponentRosterForLoopDefinition =
-	ComponentRosterForLoopDefinition1 & {
-		componentType: 'RosterForLoop';
-		components: ComponentDefinition[];
-		lines: {
-			min: VTLScalarExpression;
-			max: VTLScalarExpression;
-		};
-		header?: TableHeader;
+export type ComponentRosterForLoopDefinition = ComponentRosterForLoopDefinition1 & {
+	componentType: 'RosterForLoop';
+	components: ComponentDefinition[];
+	lines: {
+		min: VTLScalarExpression;
+		max: VTLScalarExpression;
 	};
+	header?: TableHeader;
+};
 export type ComponentRosterForLoopDefinition1 = ComponentDefinitionBase;
 export type Options = {
 	value: string | boolean;
@@ -111,7 +110,7 @@ export type TableHeader = {
 }[];
 export type ComponentTableDefinition = ComponentTableDefinition1 & {
 	componentType: 'Table';
-	header: TableHeader;
+	header?: TableHeader;
 	body: (
 		| ComponentDefinition
 		| {
@@ -139,25 +138,21 @@ export type ComponentDatePickerDefinition = ComponentDatePickerDefinition1 & {
 	min?: string;
 	max?: string;
 };
-export type ComponentDatePickerDefinition1 =
-	ComponentDefinitionBaseWithResponse;
-export type ComponentCheckboxGroupDefinition =
-	ComponentCheckboxGroupDefinition1 & {
-		componentType: 'CheckboxGroup';
-		responses: {
-			label: VTLExpression;
-			description?: VTLExpression;
-			response: ResponseDefinition;
-			id: string;
-		}[];
-	};
+export type ComponentDatePickerDefinition1 = ComponentDefinitionBaseWithResponse;
+export type ComponentCheckboxGroupDefinition = ComponentCheckboxGroupDefinition1 & {
+	componentType: 'CheckboxGroup';
+	responses: {
+		label: VTLExpression;
+		description?: VTLExpression;
+		response: ResponseDefinition;
+		id: string;
+	}[];
+};
 export type ComponentCheckboxGroupDefinition1 = ComponentDefinitionBase;
-export type ComponentCheckboxBooleanDefinition =
-	ComponentCheckboxBooleanDefinition1 & {
-		componentType: 'CheckboxBoolean';
-	};
-export type ComponentCheckboxBooleanDefinition1 =
-	ComponentDefinitionBaseWithResponse;
+export type ComponentCheckboxBooleanDefinition = ComponentCheckboxBooleanDefinition1 & {
+	componentType: 'CheckboxBoolean';
+};
+export type ComponentCheckboxBooleanDefinition1 = ComponentDefinitionBaseWithResponse;
 export type ComponentRadioDefinition = ComponentRadioDefinition1 & {
 	componentType: 'Radio';
 	options: Options;
@@ -177,8 +172,7 @@ export type ComponentCheckboxOneDefinition = ComponentCheckboxOneDefinition1 & {
 	componentType: 'CheckboxOne';
 	options: Options;
 };
-export type ComponentCheckboxOneDefinition1 =
-	ComponentDefinitionBaseWithResponse;
+export type ComponentCheckboxOneDefinition1 = ComponentDefinitionBaseWithResponse;
 export type ComponentSuggesterDefinition = ComponentSuggesterDefinition1 & {
 	componentType: 'Suggester';
 	/**
@@ -206,18 +200,17 @@ export type ComponentSuggesterDefinition = ComponentSuggesterDefinition1 & {
 	}[];
 };
 export type ComponentSuggesterDefinition1 = ComponentDefinitionBaseWithResponse;
-export type ComponentPairWiseLinksDefinition =
-	ComponentPairWiseLinksDefinition1 & {
-		componentType: 'PairwiseLinks';
-		xAxisIterations: VTLScalarExpression;
-		yAxisIterations: VTLScalarExpression;
-		symLinks: {
-			[k: string]: {
-				[k: string]: string | null;
-			};
+export type ComponentPairWiseLinksDefinition = ComponentPairWiseLinksDefinition1 & {
+	componentType: 'PairwiseLinks';
+	xAxisIterations: VTLScalarExpression;
+	yAxisIterations: VTLScalarExpression;
+	symLinks: {
+		[k: string]: {
+			[k: string]: string | null;
 		};
-		components: ComponentDefinition[];
 	};
+	components: ComponentDefinition[];
+};
 export type ComponentPairWiseLinksDefinition1 = ComponentDefinitionBase;
 export type ComponentSummaryDefinition = ComponentSummaryDefinition1 & {
 	componentType: 'Summary';
@@ -257,10 +250,7 @@ export type Variable =
 			bindingDependencies?: string[];
 			shapeFrom?: string;
 	  };
-export type VariableValue =
-	| VariableScalarValue
-	| VariableScalarValue[]
-	| VariableScalarValue[][];
+export type VariableValue = VariableScalarValue | unknown[];
 export type VariableScalarValue = string | number | null;
 
 /**
@@ -332,22 +322,12 @@ export interface VTLExpression {
 	 * Variables used in the expression
 	 */
 	bindingDependencies?: string[];
-	type: 'VTL' | 'VTL|MD';
+	type: 'VTL' | 'VTL|MD' | 'TXT';
 }
 export interface Declaration {
 	id: string;
-	declarationType:
-		| 'INSTRUCTION'
-		| 'COMMENT'
-		| 'HELP'
-		| 'CODECARD'
-		| 'WARNING'
-		| 'STATEMENT';
-	position:
-		| 'AFTER_QUESTION_TEXT'
-		| 'AFTER_RESPONSE'
-		| 'BEFORE_QUESTION_TEXT'
-		| 'DETACHABLE';
+	declarationType: 'INSTRUCTION' | 'COMMENT' | 'HELP' | 'CODECARD' | 'WARNING' | 'STATEMENT';
+	position: 'AFTER_QUESTION_TEXT' | 'AFTER_RESPONSE' | 'BEFORE_QUESTION_TEXT' | 'DETACHABLE';
 	label: VTLExpression;
 }
 export interface VTLScalarExpression {

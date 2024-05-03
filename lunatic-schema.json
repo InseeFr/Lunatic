@@ -198,7 +198,8 @@
           "type": "string",
           "enum": [
             "VTL",
-            "VTL|MD"
+            "VTL|MD",
+            "TXT"
           ]
         }
       },
@@ -764,7 +765,6 @@
       },
       "required": [
         "componentType",
-        "header",
         "body"
       ],
       "allOf": [
@@ -1218,19 +1218,7 @@
           "$ref": "#/$defs/VariableScalarValue"
         },
         {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/VariableScalarValue"
-          }
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/$defs/VariableScalarValue"
-            }
-          }
+          "type": "array"
         }
       ]
     },
