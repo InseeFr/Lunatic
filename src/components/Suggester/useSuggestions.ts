@@ -48,6 +48,10 @@ export function useSuggestions({
 
 	useEffectDebounced(
 		() => {
+			// Do not reset search for empty search
+			if (!searchQuery) {
+				return;
+			}
 			store.search
 				?.search(searchQuery)
 				.then((r) => {

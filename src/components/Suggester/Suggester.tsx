@@ -92,7 +92,6 @@ export function Suggester({
 				}
 			}
 			handleChanges(newResponses);
-			onBlur();
 			return;
 		}
 

@@ -50,7 +50,6 @@ function LunaticComboboxInput({
 			type="text"
 			onChange={onChange}
 			value={value}
-			aria-label="lunatic-combo-box"
 			aria-invalid={invalid}
 			title="combo-box"
 			autoComplete="off"
