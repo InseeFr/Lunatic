@@ -11,10 +11,6 @@ import { LunaticComponents } from '../..';
 
 const Input = components.Input;
 
-function getStoreInfoRequired() {
-	return {};
-}
-
 function DevOptions({ goToPage, getData }) {
 	const [toPage, setToPage] = useState(1);
 
@@ -104,7 +100,6 @@ function OrchestratorForStories({
 	activeControls = false,
 	features,
 	initialPage = '1',
-	getStoreInfo = getStoreInfoRequired,
 	missing = false,
 	missingStrategy = logMissingStrategy,
 	missingShortcut,
@@ -117,7 +112,8 @@ function OrchestratorForStories({
 	getReferentiel,
 	dontKnowButton,
 	refusedButton,
-	readOnly,
+	readOnly = false,
+	disabled = false,
 	...rest
 }) {
 	const { maxPage } = source;
@@ -210,11 +206,11 @@ function OrchestratorForStories({
 						slots={slots}
 						autoFocusKey={pageTag}
 						components={components}
-						componentProps={({ storeName }) => ({
+						componentProps={() => ({
 							errors: errorActive[pageTag],
 							filterDescription: filterDescription,
-							disabled: readOnly,
-							...(storeName ? getStoreInfo(storeName) : {}),
+							disabled: disabled,
+							readOnly: readOnly,
 						})}
 					/>
 				</div>
