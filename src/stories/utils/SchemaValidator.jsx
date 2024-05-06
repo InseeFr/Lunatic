@@ -11,7 +11,7 @@ export function SchemaValidator({ source }) {
 			discriminator: true,
 		});
 		const validator = ajv.compile(LunaticSchema);
-		const isSourceValid = validator(source);
+		const isSourceValid = validator(structuredClone(source)); // ajv mutate the object, send a clone
 		if (!isSourceValid) {
 			console.log(validator.errors, source);
 			return validator.errors;
@@ -29,8 +29,8 @@ export function SchemaValidator({ source }) {
 				<strong>{errors.length}</strong> erreurs
 			</p>
 			<ul>
-				{errors.map((err) => (
-					<li>
+				{errors.map((err, k) => (
+					<li key={k}>
 						<strong>{err.instancePath}</strong> : {err.message}{' '}
 						<small>({err.schemaPath})</small>
 					</li>
