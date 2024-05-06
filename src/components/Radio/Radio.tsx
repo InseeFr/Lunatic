@@ -18,6 +18,7 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 		disabled,
 		readOnly,
 		description,
+		declarations,
 	} = props;
 	return (
 		<RadioGroup
@@ -33,6 +34,7 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 			shortcut={shortcut}
 			disabled={disabled}
 			readOnly={readOnly}
+			declarations={declarations}
 		/>
 	);
 }

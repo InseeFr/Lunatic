@@ -178,7 +178,7 @@ export type ComponentPropsByType = {
 		componentType?: 'CheckboxBoolean';
 	};
 	Radio: LunaticBaseProps<string | null> & {
-		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
+		options: Array<{ description?: ReactNode; label: ReactNode; value: string }>;
 		checkboxStyle?: boolean;
 		response: { name: string };
 		componentType?: 'Radio';
@@ -197,7 +197,7 @@ export type ComponentPropsByType = {
 		componentType?: 'Roundabout';
 	};
 	Dropdown: LunaticBaseProps<string | null> & {
-		options: Array<{ description: ReactNode; label: ReactNode; value: string }>;
+		options: Array<{ description?: ReactNode; label: ReactNode; value: string }>;
 		response: { name: string };
 		componentType?: 'Dropdown';
 	};

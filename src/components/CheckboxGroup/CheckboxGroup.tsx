@@ -23,6 +23,7 @@ export function CheckboxGroup({
 	errors,
 	label,
 	description,
+	declarations,
 }: LunaticComponentProps<'CheckboxGroup'>) {
 	const options = responses.map(({ label, response, description, id }) => {
 		const { name } = response;
@@ -49,6 +50,7 @@ export function CheckboxGroup({
 			shortcut={shortcut}
 			disabled={disabled}
 			readOnly={readOnly}
+			declarations={declarations}
 		/>
 	);
 }
