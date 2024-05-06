@@ -82,7 +82,6 @@ describe('fillComponentExpressions', () => {
 			    "min": 1,
 			  },
 			  "page": "1",
-			  "positioning": "HORIZONTAL",
 			}
 		`);
 	});

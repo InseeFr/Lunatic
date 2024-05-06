@@ -43,7 +43,7 @@ describe('use-lunatic()', () => {
 		const { result } = renderHook(() => useLunatic(...defaultParams));
 		expect(result.current.pager.page).toBe(1);
 		expect(result.current.pager.lastReachedPage).toBe('1');
-		expect(result.current.pager.maxPage).toBe(41);
+		expect(result.current.pager.maxPage).toBe(40);
 	});
 	it('should go to the next page correcly', () => {
 		const { result } = renderHook(() => useLunatic(...defaultParams));
@@ -61,18 +61,19 @@ describe('use-lunatic()', () => {
 			dataFromObject({
 				COMMENT: 'Hello world',
 				READY: true,
+				NB_CHAR: 2,
 				NAME_CHAR: ['a', 'b'],
 			}),
 			{
-				initialPage: '35.1#1',
+				initialPage: '38.1#1',
 			},
 		] as const;
 		const { result } = renderHook(() => useLunatic(...params));
 		const components = result.current.getComponents();
-		expect(result.current.pager.lastReachedPage).toBe('35.1#1');
+		expect(result.current.pager.lastReachedPage).toBe('38.1#1');
 		expect(result.current.pager.iteration).toBe(0);
 		expect(result.current.pager.subPage).toBe(0);
-		expect(result.current.pager.page).toBe(35);
+		expect(result.current.pager.page).toBe(38);
 		expect(components[0].id).toBe('kiq5xw5p');
 	});
 
@@ -259,35 +260,13 @@ describe('use-lunatic()', () => {
 			hookRef = result;
 		});
 		it('should return every value', () => {
-			const data = hookRef.current.getData(false);
-			expect(data).toMatchObject({
-				COLLECTED: {
-					COMMENT: {
-						COLLECTED: 'Mon commentaire',
-					},
-					READY: {
-						COLLECTED: true,
-					},
-				},
-			});
-			expect(data.COLLECTED && Object.keys(data.COLLECTED)).toHaveLength(109);
-			expect(data.CALCULATED && Object.keys(data?.CALCULATED)).toHaveLength(0);
+			expect(hookRef.current.getData(false)).toMatchSnapshot();
 		});
 		it('should return calculated values', () => {
-			const data = hookRef.current.getData(true);
-			expect(data.COLLECTED && Object.keys(data.COLLECTED)).toHaveLength(109);
-			expect(data.CALCULATED && Object.keys(data?.CALCULATED)).toHaveLength(33);
+			expect(hookRef.current.getData(true)).toMatchSnapshot();
 		});
 		it('should only return requested variables', () => {
-			const data = hookRef.current.getData(false, ['COMMENT']);
-			expect(data).toMatchObject({
-				COLLECTED: {
-					COMMENT: {
-						COLLECTED: 'Mon commentaire',
-					},
-				},
-			});
-			expect(data.COLLECTED && Object.keys(data.COLLECTED)).toHaveLength(1);
+			expect(hookRef.current.getData(false, ['COMMENT'])).toMatchSnapshot();
 		});
 	});
 
