@@ -6,7 +6,6 @@ import type {
 	LunaticError,
 	LunaticOptions,
 	LunaticReducerState,
-	LunaticState,
 } from '../use-lunatic/type';
 
 type Formats = 'PTnHnM' | 'PnYnM';

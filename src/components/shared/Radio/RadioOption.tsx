@@ -85,9 +85,7 @@ function LunaticRadioOption({
 		<div
 			id={id}
 			role="radio"
-			aria-invalid={invalid}
 			aria-disabled={disabled}
-			aria-readonly={readOnly}
 			className={classnames(
 				'lunatic-input-checkbox',
 				isRadio && 'lunatic-input-radio'

@@ -4,7 +4,6 @@ import type {
 } from '../type';
 import { type DeepTranslateExpression } from '../commons/fill-components/fill-component-expressions';
 import { hasComponentType } from '../commons/component';
-import { getVTLCompatibleValue } from '../../utils/vtl';
 import {
 	fillComponent,
 	fillComponents,
