@@ -20,7 +20,7 @@
     "@docusaurus/preset-classic": "3.2.1",
     "@docusaurus/remark-plugin-npm2yarn": "^3.2.1",
     "@docusaurus/theme-mermaid": "^3.2.1",
-    "@inseefr/lunatic": "^3.0.0-rc.29",
+    "@inseefr/lunatic": "^3.0.0-rc.33",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",

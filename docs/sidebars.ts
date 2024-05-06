@@ -68,6 +68,7 @@ const sidebars: SidebarsConfig = {
             'components/fields/checkboxBoolean',
             'components/fields/checkboxGroup',
             'components/fields/table',
+            'components/fields/text',
 
           ],
         },
