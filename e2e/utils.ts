@@ -18,6 +18,11 @@ export async function gotoNextPage(page: Page, n = 1) {
 		await page.getByRole('button', { name: 'Next' }).click();
 	}
 }
+export async function gotoPreviousPage(page: Page, n = 1) {
+	for (let i = 0; i < n; i++) {
+		await page.getByRole('button', { name: 'Previous' }).click();
+	}
+}
 
 /**
  * Check the output of getData() from lunatic
@@ -45,4 +50,8 @@ export async function expectCollectedData(
 	expected: unknown
 ) {
 	await expectLunaticData(page, `COLLECTED.${name}.COLLECTED`, expected);
+}
+
+export async function expectPageToHaveText(page: Page, text: string) {
+	await expect(page.getByText(text).nth(0)).toBeVisible();
 }

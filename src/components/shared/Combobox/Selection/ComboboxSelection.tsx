@@ -69,6 +69,7 @@ export function ComboboxSelection({
 					disabled={disabled}
 					readOnly={readOnly}
 					focused={focused}
+					labelledBy={labelId}
 				/>
 			)}
 		</div>

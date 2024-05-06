@@ -33,8 +33,8 @@
 	background-color: var(--color-primary-dark);
 }
 
-.lunatic-input-checkbox[aria-disabled],
-.lunatic-input-checkbox[aria-readonly] {
+.lunatic-input-checkbox[aria-disabled="true"],
+.lunatic-input-checkbox[aria-readonly="true"] {
 	cursor: default;
 
 	.lunatic-input-checkbox__icon
@@ -44,8 +44,8 @@
 	}
 }
 
-.lunatic-input-checkbox[aria-disabled][aria-checked],
-.lunatic-input-checkbox[aria-readonly][aria-checked]
+.lunatic-input-checkbox[aria-disabled="true"][aria-checked="true"],
+.lunatic-input-checkbox[aria-readonly="true"][aria-checked="true"]
 {
 
 	.lunatic-input-checkbox__icon {
