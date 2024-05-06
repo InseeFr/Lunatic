@@ -1,36 +1,36 @@
 {
-  "$schema": "../../../../lunatic-schema.json",
-  "components": [
-    {
-      "componentType": "Input",
-      "label": {
-        "value": "\"Nom de l'occupant principal.\"",
-        "type": "VTL|MD"
-      },
-      "maxLength": 30,
-      "id": "surname",
-      "description": {
-        "value": "\"For example, Bob.\"",
-        "type": "VTL|MD"
-      },
-      "response": {
-        "name": "NOM"
-      },
-      "page": "1"
-    }
-  ],
-  "variables": [
-    {
-      "variableType": "COLLECTED",
-      "name": "NOM",
-      "componentRef": "name",
-      "values": {
-        "PREVIOUS": null,
-        "COLLECTED": null,
-        "FORCED": null,
-        "EDITED": null,
-        "INPUTTED": null
-      }
-    }
-  ]
+	"$schema": "../../../../lunatic-schema.json",
+	"components": [
+		{
+			"componentType": "Input",
+			"label": {
+				"value": "\"Nom de l'occupant principal.\"",
+				"type": "VTL|MD"
+			},
+			"maxLength": 30,
+			"id": "surname",
+			"description": {
+				"value": "\"For example, Bob.\"",
+				"type": "VTL|MD"
+			},
+			"response": {
+				"name": "NOM"
+			},
+			"page": "1"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NOM",
+			"componentRef": "name",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		}
+	]
 }

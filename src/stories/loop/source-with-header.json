@@ -16,8 +16,8 @@
 			"id": "loop-prenom",
 			"componentType": "RosterForLoop",
 			"header": [
-				{ "headerCell": true, "label": {"value": "Prénom", "type": "VTL"} },
-				{ "headerCell": true, "label": {"value": "Age", "type": "VTL"} }
+				{ "headerCell": true, "label": { "value": "Prénom", "type": "VTL" } },
+				{ "headerCell": true, "label": { "value": "Age", "type": "VTL" } }
 			],
 			"label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },

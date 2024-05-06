@@ -19,7 +19,7 @@ function getRoundaboutProps(
 	component: DeepTranslateExpression<LunaticComponentDefinition<'Roundabout'>>,
 	state: State
 ) {
-	const iterations = component.iterations as number; // iterations is the result of an expression but we know it's a number
+	const iterations = component.iterations as unknown as number; // iterations is the result of an expression but we know it's a number
 	const compiled = Object.entries(component.expressions).reduce(function (
 		result,
 		[name, expression]
