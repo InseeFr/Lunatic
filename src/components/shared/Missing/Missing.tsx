@@ -103,6 +103,7 @@ export const MissingPure = (
 				<Button
 					selected={value === DK}
 					disabled={disabled}
+					readOnly={readOnly}
 					label={dontKnowButton}
 					onClick={onClickDK}
 				/>
@@ -115,6 +116,7 @@ export const MissingPure = (
 				<Button
 					selected={value === RF}
 					disabled={disabled}
+					readOnly={readOnly}
 					label={refusedButton}
 					onClick={onClickRF}
 				/>
