@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"maxPage": "5",
 	"components": [
 		{

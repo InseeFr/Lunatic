@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../../lunatic-schema.json",
 	"cleaning": {
 		"IND_MAJEUR": {
 			"DIVERS": "(SUM_MAJEUR > 0)"
@@ -565,7 +566,6 @@
 		{
 			"componentType": "Subsequence",
 			"bindingDependencies": ["SUM_MAJEUR", "SUM_AGE", "MIN_AGE"],
-			"goToPage": "6",
 			"hierarchy": {
 				"sequence": {
 					"id": "ksyniqzx",

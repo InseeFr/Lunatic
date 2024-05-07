@@ -1,17 +1,16 @@
-import type { LunaticOverviewItem } from '../../type';
 import type {
-	ComponentLoopType,
-	ComponentType,
-	ComponentTypeBase,
-	LunaticSource,
-} from '../../type-source';
+	LunaticComponentDefinition,
+	LunaticOverviewItem,
+} from '../../type';
+import type { LunaticSource } from '../../type';
+import type { ItemOf } from '../../../type.utils';
 
 /**
  * Resolve overview items from component definition
  */
 function overviewFromComponent(
 	items: LunaticOverviewItem[],
-	component: ComponentType,
+	component: ItemOf<LunaticSource['components']>,
 	extra: Partial<LunaticOverviewItem> = {}
 ): LunaticOverviewItem[] {
 	// For loop we need to explore Subsequence inside the loop
@@ -21,10 +20,11 @@ function overviewFromComponent(
 
 	// Only consider Sequence / Subsequence as potential overview item
 	if (
-		component.componentType === 'Subsequence' ||
-		component.componentType === 'Sequence'
+		(component.componentType === 'Subsequence' ||
+			component.componentType === 'Sequence') &&
+		component.label
 	) {
-		const page = component.page ?? component.goToPage;
+		const page = 'page' in component ? component.page : component.goToPage;
 		const parts = page.split('.');
 		items.push({
 			id: component.id,
@@ -46,13 +46,13 @@ function overviewFromComponent(
  */
 function overviewFromLoop(
 	items: LunaticOverviewItem[],
-	component: ComponentTypeBase & ComponentLoopType
+	component: LunaticComponentDefinition<'Loop'>
 ): LunaticOverviewItem[] {
 	// Since we don't know how many iterations we have, skip this component
 	if (!('iterations' in component)) {
 		return items;
 	}
-	for (const child of component.components) {
+	for (const child of component.components as LunaticSource['components']) {
 		items = overviewFromComponent(items, child, {
 			iterations: component.iterations,
 		});

@@ -16,7 +16,7 @@ import type {
 import D from '../i18n';
 import { COLLECTED } from '../utils/constants';
 import { createLunaticProvider } from './lunatic-context';
-import type { LunaticSource } from './type-source';
+import type { LunaticSource } from './type';
 import { compileControls as compileControlsLib } from './commons/compile-controls';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';

@@ -1,19 +1,22 @@
 import type { FunctionComponent, PropsWithChildren, ReactNode } from 'react';
 import type {
-	ComponentType,
-	ControlType,
-	LabelType,
+	ComponentDefinition,
+	ControlDefinition,
+	LunaticSource,
+	SuggesterDefinition,
 	Variable,
-} from './type-source';
+	VTLExpression,
+	VTLScalarExpression,
+} from '../type.source';
 import type { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
 import type { IndexEntry } from '../utils/search/SearchInterface';
 import type { InterpretedLunaticOverviewItem } from './hooks/useOverview';
 import type { LunaticComponentProps } from '../components/type';
+export type { LunaticSource } from '../type.source';
 
-export type LunaticComponentDefinition<
-	T extends ComponentType['componentType'] = ComponentType['componentType'],
-> = ComponentType & { componentType: T };
-export type LunaticControl = ControlType;
+export type LunaticComponentDefinition<T extends string = string> =
+	ComponentDefinition & { componentType: T; page?: string };
+export type LunaticControl = ControlDefinition;
 
 export type LunaticOverviewItem = {
 	id: string;
@@ -26,7 +29,7 @@ export type LunaticOverviewItem = {
 	iterations?: LunaticExpression;
 };
 
-export type VTLBindings = { [variableName: string]: unknown };
+export type LunaticSuggester = SuggesterDefinition;
 
 export type LunaticData = Partial<
 	Record<Exclude<VariableType, 'COLLECTED'>, Record<string, unknown>> & {
@@ -39,19 +42,14 @@ export type LunaticValues = {
 };
 
 export type LunaticError = Pick<
-	ControlType,
+	ControlDefinition,
 	'id' | 'criticality' | 'typeOfControl'
 > & {
 	errorMessage: ReactNode;
 };
 
 export type VariableType = 'COLLECTED' | 'EXTERNAL' | 'CALCULATED';
-export type ExpressionType = 'VTL' | 'VTL|MD' | 'TXT';
-export type LunaticExpression = {
-	value: string;
-	type: ExpressionType;
-	bindingDependencies?: string[];
-};
+export type LunaticExpression = VTLExpression | VTLScalarExpression;
 
 export type PageTag = `${number}.${number}#${number}` | `${number}`;
 
@@ -94,16 +92,16 @@ export type LunaticReducerState = {
 	pages: {
 		[key: number | string]:
 			| {
-					components: ComponentType[];
+					components: LunaticSource['components'];
 					isLoop: false;
 					iterations?: undefined;
 					loopDependencies?: undefined;
 					subPages?: undefined;
 			  }
 			| {
-					components: ComponentType[];
+					components: LunaticSource['components'];
 					isLoop: true;
-					iterations: LabelType<'VTL'>;
+					iterations: VTLScalarExpression;
 					// Variables affecting this loop
 					loopDependencies: string[];
 					// List of child pages (ex: ['20.1', '20.2']
@@ -112,7 +110,7 @@ export type LunaticReducerState = {
 	};
 	// Run and expression using the value from the state
 	executeExpression: <T extends unknown = unknown>(
-		expression: LabelType,
+		expression: VTLExpression,
 		args?: {
 			iteration?: number | number[];
 			// @deprecated

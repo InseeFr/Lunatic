@@ -1,4 +1,4 @@
-import type { LunaticSource } from '../type-source';
+import type { LunaticSource } from '../type';
 import type { LunaticData, LunaticOptions, LunaticReducerState } from '../type';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { checkLoops, createMapPages } from '../commons';

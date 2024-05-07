@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { isObject } from '../../utils/is-object';
-import type { LunaticReducerState } from '../type';
+import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
 import type { LunaticComponentProps } from '../../components/type';
 
 /**
@@ -89,17 +89,17 @@ function isEmpty(value: unknown): boolean {
  * For complex component we need to inspect child components, interpret the response value
  */
 function isSubComponentsEmpty(
-	components: (
-		| { responses: { response: { name: string } }[] }
-		| { response: { name: string } }
-		| { [key: string]: unknown }
-	)[],
+	components: (LunaticComponentProps | LunaticComponentDefinition)[],
 	executeExpression: LunaticReducerState['executeExpression']
 ): boolean {
 	for (const component of components) {
 		if ('responses' in component && Array.isArray(component.responses)) {
 			for (const response of component.responses) {
-				if (!isEmpty(executeExpression(response.response?.name))) {
+				if (
+					!isEmpty(
+						executeExpression({ type: 'VTL', value: response.response?.name })
+					)
+				) {
 					return false;
 				}
 			}

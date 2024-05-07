@@ -10,6 +10,7 @@ import {
 test.describe('Suggester', () => {
 	test(`can select a value after a search`, async ({ page }) => {
 		await goToStory(page, 'components-suggester--default');
+		await expectPageToHaveText(page, 'Variable Commune');
 		await page.getByRole('textbox').nth(0).fill('perpi');
 		await page.getByText('Perpignan').click();
 		await expectCollectedData(page, 'VARIABLECO', '6613600001');
@@ -17,6 +18,7 @@ test.describe('Suggester', () => {
 
 	test(`can see the last selected value after navigation`, async ({ page }) => {
 		await goToStory(page, 'components-suggester--default');
+		await expectPageToHaveText(page, 'Variable Commune');
 		await page.getByRole('textbox').nth(0).fill('perpi');
 		await page.getByText('Perpignan').click();
 		await gotoNextPage(page);
@@ -27,6 +29,7 @@ test.describe('Suggester', () => {
 
 	test(`can clear the last selected value`, async ({ page }) => {
 		await goToStory(page, 'components-suggester--default');
+		await expectPageToHaveText(page, 'Variable Commune');
 		await page.getByRole('textbox').nth(0).fill('perpi');
 		await page.getByText('Perpignan').click();
 		await gotoNextPage(page);
@@ -38,6 +41,7 @@ test.describe('Suggester', () => {
 
 	test(`can do multiple searches`, async ({ page }) => {
 		await goToStory(page, 'components-suggester--default');
+		await expectPageToHaveText(page, 'Variable Commune');
 		await page.getByRole('textbox').nth(0).fill('Montpell');
 		await expectPageToHaveText(page, 'Montpellier');
 		await page.getByRole('textbox').nth(0).fill('perpi');
@@ -46,6 +50,7 @@ test.describe('Suggester', () => {
 
 	test(`can clear value using a button`, async ({ page }) => {
 		await goToStory(page, 'components-suggester--default');
+		await expectPageToHaveText(page, 'Variable Commune');
 		await page.getByRole('textbox').nth(0).fill('perpi');
 		await page.getByText('Perpignan').click();
 		await expectCollectedData(page, 'VARIABLECO', '6613600001');
@@ -57,6 +62,7 @@ test.describe('Suggester', () => {
 		page,
 	}) => {
 		await goToStory(page, 'components-suggester--option-responses');
+		await expectPageToHaveText(page, 'votre produit');
 		await page.getByRole('textbox').nth(0).fill('bross');
 		await page.getByText('Brosse à cheveux').click();
 		await expectCollectedData(page, 'PRODUCT', 'brosse');
@@ -66,6 +72,7 @@ test.describe('Suggester', () => {
 
 	test(`show the previous label on blur`, async ({ page }) => {
 		await goToStory(page, 'components-suggester--default');
+		await expectPageToHaveText(page, 'Variable Commune');
 		await page.getByRole('textbox').nth(0).fill('perpi');
 		await page.getByText('Perpignan').nth(0).click();
 		await page.getByText('Perpignan').click(); // Focus the field again
@@ -78,6 +85,7 @@ test.describe('Suggester', () => {
 	test.describe('arbitrary', () => {
 		test('can enter an arbitrary response', async ({ page }) => {
 			await goToStory(page, 'components-suggester--arbitrary-response');
+			await expectPageToHaveText(page, 'votre produit');
 			await page.getByRole('textbox').nth(0).fill('demo');
 			await page.getByText('demo').click();
 			await expectCollectedData(page, 'PRODUCT_OTHER', 'demo');
@@ -85,6 +93,7 @@ test.describe('Suggester', () => {
 		});
 		test('can see the arbitrary value on navigation', async ({ page }) => {
 			await goToStory(page, 'components-suggester--arbitrary-response');
+			await expectPageToHaveText(page, 'votre produit');
 			await page.getByRole('textbox').nth(0).fill('demo');
 			await page.getByText('demo').click();
 			await expectCollectedData(page, 'PRODUCT_OTHER', 'demo');
@@ -95,6 +104,7 @@ test.describe('Suggester', () => {
 		});
 		test('can select an option after an arbitrary', async ({ page }) => {
 			await goToStory(page, 'components-suggester--arbitrary-response');
+			await expectPageToHaveText(page, 'votre produit');
 			await page.getByRole('textbox').nth(0).fill('demo');
 			await page.getByText('demo').click();
 			await expectCollectedData(page, 'PRODUCT_OTHER', 'demo');
@@ -107,6 +117,7 @@ test.describe('Suggester', () => {
 	test.describe('a11y', () => {
 		test(`can select a value using keyboard`, async ({ page }) => {
 			await goToStory(page, 'components-suggester--default');
+			await expectPageToHaveText(page, 'Variable Commune');
 			await page.getByRole('textbox').nth(0).fill('Montpell');
 			await expectPageToHaveText(page, 'Montpellier');
 			await page.keyboard.press('ArrowDown');

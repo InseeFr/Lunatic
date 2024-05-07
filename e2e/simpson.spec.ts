@@ -1,55 +1,60 @@
 import { expect, test } from '@playwright/test';
+import { expectCollectedData, gotoNextPage, goToStory } from './utils';
 
 test('can complete simpson form', async ({ page }) => {
-	await page.goto(
-		'http://localhost:9999/iframe.html?viewMode=story&id=questionnaires-simpsons--default'
-	);
-	await page.getByRole('button', { name: 'Next' }).click();
+	await goToStory(page, 'questionnaires-simpsons--default');
+	await gotoNextPage(page);
 	await page
-		.getByLabel(
-			'➡ Before starting, do you have any comments about the Simpsons family?'
-		)
+		.getByRole('group', {
+			name: 'Before starting, do you have any comments about the Simpsons family?',
+		})
+		.getByRole('textbox')
 		.fill('They are yellow');
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page);
 	await page
-		.getByRole('checkbox', {
-			name: '➡ If you agree to answer this questionnaire, please check the box If not, this is unfortunately the end of this questionnaire.',
+		.getByRole('group', {
+			name: 'If you agree to answer this questionnaire, please check the box',
 		})
+		.getByRole('checkbox')
 		.click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByLabel('➡ Who is the producer?').fill('Matt Groening');
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByLabel('➡ What is the current season number?').fill('20');
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByLabel('➡ How long does an episode last?').fill('2');
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page);
 	await page
-		.getByLabel('➡ How long does it take to write a new episode?')
-		.fill('10');
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('radio', { name: 'Springfield' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('radio', { name: 'Joe Quimby' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
+		.getByRole('group', { name: 'Who is the producer?' })
+		.getByRole('textbox')
+		.fill('Matt Groening');
+	await gotoNextPage(page);
 	await page
-		.getByRole('combobox', {
-			name: '➡ In which state do The Simpsons reside?',
+		.getByRole('group', { name: 'What is the current season number?' })
+		.getByRole('textbox')
+		.fill('20');
+	await gotoNextPage(page, 4);
+	await page
+		.getByRole('group', { name: 'How long does an episode last?' })
+		.getByRole('textbox')
+		.fill('2');
+	await gotoNextPage(page);
+	await page
+		.getByRole('group', {
+			name: 'How long does it take to write a new episode?',
 		})
+		.getByRole('textbox')
+		.fill('10');
+	// Page : 10
+	await gotoNextPage(page, 8);
+	await page.getByRole('radio', { name: 'Springfield' }).click();
+	await gotoNextPage(page);
+	await page.getByRole('radio', { name: 'Joe Quimby' }).click();
+	await gotoNextPage(page);
+	await page
+		.getByRole('group', {
+			name: 'In which state do The Simpsons reside?',
+		})
+		.getByRole('combobox')
 		.click();
 	await page.getByText('Not in any state, you fool!').click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('checkbox', { name: 'Santa’s Little Helper' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page, 2);
+	await page.getByRole('checkbox', { name: 'Coltrane' }).click();
+	await gotoNextPage(page, 3);
 	await page
 		.getByRole('row', { name: 'Selma Bouvier' })
 		.getByRole('radio', { name: 'Springfield' })
@@ -70,9 +75,13 @@ test('can complete simpson form', async ({ page }) => {
 		.getByRole('row', { name: 'Crazy Cat Lady' })
 		.getByRole('radio', { name: 'Springfield' })
 		.click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page, 2);
+	for (let i = 0; i < 6; i++) {
+		await page.getByRole('textbox').nth(i).fill('10');
+	}
+	await page.getByRole('textbox').nth(6).fill('40');
+	await gotoNextPage(page);
+	// page 27
 	await page
 		.getByRole('row', { name: 'Frozen products Ice creams' })
 		.getByRole('radio', { name: 'Yes' })
@@ -93,7 +102,7 @@ test('can complete simpson form', async ({ page }) => {
 		.getByRole('row', { name: 'Total' })
 		.getByRole('radio', { name: 'Yes' })
 		.click();
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page);
 	await page
 		.getByRole('row', {
 			name: 'Break the windows of the whole city',
@@ -115,10 +124,7 @@ test('can complete simpson form', async ({ page }) => {
 	await page.getByText('Other').click();
 	await page.getByText('Commencez votre saisie...').click();
 	await page.getByRole('option', { name: 'Jay' }).getByText('Jay').click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page, 4);
 	await page
 		.getByRole('row', { name: 'Jay' })
 		.getByRole('radio', { name: 'Up' })
@@ -135,77 +141,72 @@ test('can complete simpson form', async ({ page }) => {
 		.getByRole('row', { name: 'Other' })
 		.getByRole('radio', { name: 'Down' })
 		.click();
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page);
 	await page
 		.getByRole('row', { name: 'Leave with pay' })
 		.getByText('Commencez votre saisie...')
 		.click();
 	await page.getByText('Calendar days').click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page, 2);
 	await page
-		.getByLabel(
-			'➡ How many characters from the Simpsons family could you precisely describe?'
-		)
+		.getByRole('group', {
+			name: 'How many characters from the Simpsons family could you precisely describe?',
+		})
+		.getByRole('textbox')
 		.click();
 	await page
-		.getByLabel(
-			'➡ How many characters from the Simpsons family could you precisely describe?'
-		)
+		.getByRole('group', {
+			name: 'How many characters from the Simpsons family could you precisely describe?',
+		})
+		.getByRole('textbox')
 		.fill('2');
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page);
 	await page
-		.getByLabel('➡ What is the first name of this character?')
+		.getByRole('group', { name: 'What is the first name of this character?' })
+		.getByRole('textbox')
 		.first()
 		.click();
 	await page
-		.getByLabel('➡ What is the first name of this character?')
+		.getByRole('group', { name: 'What is the first name of this character?' })
+		.getByRole('textbox')
 		.first()
 		.fill('Bart');
 	await page
-		.getByLabel(
-			'➡ How old is this character in the first episode of the Simpsons family?'
-		)
+		.getByRole('group', {
+			name: 'How old is this character in the first episode of the Simpsons family?',
+		})
+		.getByRole('textbox')
 		.first()
 		.click();
 	await page
-		.getByLabel(
-			'➡ How old is this character in the first episode of the Simpsons family?'
-		)
+		.getByRole('group', {
+			name: 'How old is this character in the first episode of the Simpsons family?',
+		})
+		.getByRole('textbox')
 		.first()
 		.fill('14');
 	await page
-		.getByLabel('➡ What is the first name of this character?')
+		.getByRole('group', { name: 'What is the first name of this character?' })
+		.getByRole('textbox')
 		.nth(1)
 		.click();
 	await page
-		.getByLabel('➡ What is the first name of this character?')
+		.getByRole('group', { name: 'What is the first name of this character?' })
+		.getByRole('textbox')
 		.nth(1)
 		.fill('Bart');
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page, 2);
 	await page.getByRole('radio', { name: 'Yes' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
+	await gotoNextPage(page, 3);
 	await page.getByRole('radio', { name: 'Yes' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByLabel('➡ Do you have any comment about the survey?').click();
+	await gotoNextPage(page, 3);
 	await page
-		.getByLabel('➡ Do you have any comment about the survey?')
+		.getByRole('group', { name: 'Do you have any comment about the survey?' })
+		.getByRole('textbox')
 		.fill('No');
-	await page.getByRole('button', { name: 'Next' }).click();
-	await page.getByRole('button', { name: 'Next' }).click();
 
 	// Assertion
-	await expect(page.getByText('PageTag: "39"')).toBeVisible();
-	const consoleOut = page.waitForEvent('console');
+	await expect(page.getByText('PageTag: "40"')).toBeVisible();
 	await page.getByRole('button', { name: 'Get Data' }).click();
-	const output = await consoleOut;
-	expect(await output.args()[0].jsonValue()).toHaveProperty(
-		'COLLECTED.COMMENT.COLLECTED',
-		'They are yellow'
-	);
+	await expectCollectedData(page, 'COMMENT', 'They are yellow');
 });
