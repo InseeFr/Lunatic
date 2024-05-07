@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react';
 import { Fieldset } from '../Fieldset/Fieldset';
 import { ComponentErrors } from '../ComponentErrors/ComponentErrors';
 import { slottableComponent } from '../HOC/slottableComponent';
@@ -6,20 +5,25 @@ import { getShortcutKey } from '../Checkbox/getShortcutKey';
 import { RadioOption } from './RadioOption';
 import { useListKeyboardHandler } from '../../../hooks/useListKeyboardHandler';
 import type { LunaticError } from '../../../use-lunatic/type';
+import { Declarations } from '../Declarations/Declarations';
+import type { LunaticComponentProps } from '../../type';
 
-export type RadioGroupProps = {
-	options: { description?: ReactNode; label: ReactNode; value: string }[];
-	id: string;
-	value?: string | null;
-	description?: ReactNode;
-	label?: ReactNode;
-	onSelect: (v: string | null) => void;
-	checkboxStyle?: boolean;
+export type RadioGroupProps = Pick<
+	LunaticComponentProps<'Radio'>,
+	| 'id'
+	| 'options'
+	| 'value'
+	| 'checkboxStyle'
+	| 'label'
+	| 'shortcut'
+	| 'className'
+	| 'disabled'
+	| 'readOnly'
+	| 'description'
+	| 'declarations'
+> & {
 	errors?: LunaticError[];
-	className?: string;
-	shortcut?: boolean;
-	disabled?: boolean;
-	readOnly?: boolean;
+	onSelect: (v: string | null) => void;
 	clearable?: boolean;
 };
 
@@ -40,11 +44,13 @@ function LunaticRadioGroup({
 	disabled,
 	readOnly,
 	clearable,
+	declarations,
 }: RadioGroupProps) {
 	const onKeyDown = useListKeyboardHandler(options, onSelect);
 	const maxIndex = options.length;
 	return (
 		<Fieldset className={className} legend={label} description={description}>
+			<Declarations type="AFTER_QUESTION_TEXT" declarations={declarations} />
 			{options.map(function (option, index) {
 				const radioId = `lunatic-radio-${id}-${option.value}`;
 				const codeModality = getShortcutKey(index, maxIndex);
