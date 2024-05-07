@@ -31,7 +31,10 @@ function getRoundaboutProps(
 		});
 		return { ...result, [name]: values };
 	}, {});
-	return { expressions: compiled };
+	return {
+		expressions: compiled,
+		page: parseInt(component.page ?? '1', 10),
+	};
 }
 
 /**
