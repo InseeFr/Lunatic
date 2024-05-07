@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"pagination": "question",
 	"maxPage": "2",
 	"variables": [
@@ -183,7 +184,8 @@
 								"type": "VTL"
 							},
 							"errorMessage": { "value": "\"sup à 5\"", "type": "VTL|MD" },
-							"bindingDependencies": ["QNUM"]
+							"bindingDependencies": ["QNUM"],
+							"typeOfControl": "CONSISTENCY"
 						},
 
 						{
@@ -197,7 +199,8 @@
 								"value": "\"superieur à 6.5\"",
 								"type": "VTL|MD"
 							},
-							"bindingDependencies": ["QNUM"]
+							"bindingDependencies": ["QNUM"],
+							"typeOfControl": "CONSISTENCY"
 						}
 					],
 					"bindingDependencies": ["QNUM"],

@@ -5,7 +5,6 @@ import type {
 	LunaticExpression,
 	LunaticReducerState,
 } from '../../type';
-import type { LabelType } from '../../type-source';
 
 const VTL_ATTRIBUTES = [
 	['label', null],
@@ -143,7 +142,9 @@ export function fillComponentExpressions(
 	return filledComponent;
 }
 
-function isValidExpression(expression: unknown): expression is LabelType {
+function isValidExpression(
+	expression: unknown
+): expression is LunaticExpression {
 	return Boolean(
 		expression &&
 			typeof expression === 'object' &&

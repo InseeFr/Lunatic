@@ -1,5 +1,5 @@
 import type { LunaticVariablesStore } from '../lunatic-variables-store';
-import type { LunaticSource } from '../../../type-source';
+import type { LunaticSource } from '../../../type';
 import { forceInt } from '../../../../utils/number';
 import { resizeArrayVariable } from '../../../reducer/commons';
 import { getExpressionAsString } from '../../../../utils/vtl';

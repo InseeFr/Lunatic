@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"suggesters": [
 		{
 			"responseNames": ["VARIABLE_COMMUNE"],

@@ -8,6 +8,7 @@ import { Logger } from '../../utils/logger';
 import { Overview } from './overview';
 import Waiting from './waiting';
 import { LunaticComponents } from '../..';
+import { SchemaValidator } from './SchemaValidator.jsx';
 
 const Input = components.Input;
 
@@ -213,6 +214,7 @@ function OrchestratorForStories({
 							readOnly: readOnly,
 						})}
 					/>
+					<SchemaValidator source={source} />
 				</div>
 				<aside>
 					<Pager

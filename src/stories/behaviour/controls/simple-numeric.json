@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../../lunatic-schema.json",
 	"id": "kzfezgxb",
 	"modele": "QTESTCONTR",
 	"enoCoreVersion": "2.3.7-dev-lunatic-v2",
@@ -32,7 +33,6 @@
 				}
 			}
 		},
-
 		{
 			"id": "kd0cbson",
 			"componentType": "Subsequence",
@@ -61,7 +61,6 @@
 				}
 			}
 		},
-
 		{
 			"id": "k0dzbfek",
 			"componentType": "InputNumber",
@@ -130,7 +129,6 @@
 			"bindingDependencies": ["QNUM"],
 			"response": { "name": "QNUM" }
 		},
-
 		{
 			"id": "kd0a6rn3",
 			"componentType": "InputNumber",
@@ -177,7 +175,6 @@
 			"bindingDependencies": ["QNUM2"],
 			"response": { "name": "QNUM2" }
 		},
-
 		{
 			"id": "kd0a8h62",
 			"componentType": "InputNumber",
@@ -238,7 +235,6 @@
 			"bindingDependencies": ["QNUM3"],
 			"response": { "name": "QNUM3" }
 		},
-
 		{
 			"id": "kd0a4t4f",
 			"componentType": "InputNumber",
@@ -299,7 +295,6 @@
 			"bindingDependencies": ["QNUM4"],
 			"response": { "name": "QNUM4" }
 		},
-
 		{
 			"id": "kd0ac92p",
 			"componentType": "InputNumber",
@@ -360,7 +355,6 @@
 			"bindingDependencies": ["QNUM5"],
 			"response": { "name": "QNUM5" }
 		},
-
 		{
 			"id": "k1cahy88",
 			"componentType": "InputNumber",
@@ -410,7 +404,6 @@
 			"bindingDependencies": ["QNUM6"],
 			"response": { "name": "QNUM6" }
 		},
-
 		{
 			"id": "kd0ch7pf",
 			"componentType": "InputNumber",
@@ -473,7 +466,6 @@
 			"bindingDependencies": ["QNUM7"],
 			"response": { "name": "QNUM7" }
 		},
-
 		{
 			"id": "kd0aamy0",
 			"componentType": "InputNumber",
@@ -608,7 +600,6 @@
 			"bindingDependencies": ["REL"],
 			"response": { "name": "REL" }
 		},
-
 		{
 			"id": "kd0cdj48",
 			"componentType": "Subsequence",
@@ -637,7 +628,6 @@
 				}
 			}
 		},
-
 		{
 			"id": "kd0aa5ah",
 			"componentType": "InputNumber",
@@ -715,7 +705,6 @@
 			"bindingDependencies": ["REEL"],
 			"response": { "name": "REEL" }
 		},
-
 		{
 			"id": "l5qvuk9e",
 			"componentType": "InputNumber",
@@ -773,7 +762,6 @@
 			"bindingDependencies": ["REEL2"],
 			"response": { "name": "REEL2" }
 		},
-
 		{
 			"id": "l5qvtc2l",
 			"componentType": "InputNumber",
@@ -831,14 +819,13 @@
 			"bindingDependencies": ["REEL3"],
 			"response": { "name": "REEL3" }
 		},
-
 		{
 			"id": "kd0c3h3b",
 			"componentType": "InputNumber",
 			"mandatory": false,
 			"page": "13",
 			"min": 0,
-			"max": 1.0e9,
+			"max": 1000000000,
 			"decimals": 2,
 			"label": {
 				"value": "\"➡ 12. \" || \"Test d’un grand réel par rapport à une constante (max = 1000000000) - test des positionnements par rapport à 1000 - Personnalisation du message d’erreur avec la valeur (précision = 2, max = 1000000000)\"",
@@ -892,12 +879,10 @@
 			"bindingDependencies": ["GRAND"],
 			"response": { "name": "GRAND" }
 		},
-
 		{
 			"id": "kd0a5rkr",
 			"componentType": "Subsequence",
 			"page": "14",
-			"goToPage": "14",
 			"label": {
 				"value": "Tests sur variables collectées, ordre relatif et variables calculées",
 				"type": "VTL|MD"
@@ -941,7 +926,6 @@
 				"CALC_RATIO"
 			]
 		},
-
 		{
 			"id": "kd0achk0",
 			"componentType": "InputNumber",
@@ -987,7 +971,6 @@
 			"bindingDependencies": ["QREL"],
 			"response": { "name": "QREL" }
 		},
-
 		{
 			"id": "kd0bl558",
 			"componentType": "InputNumber",
@@ -1106,7 +1089,6 @@
 			"bindingDependencies": ["QREL2"],
 			"response": { "name": "QREL2" }
 		},
-
 		{
 			"id": "l5qt3xu9",
 			"componentType": "InputNumber",
@@ -1164,7 +1146,6 @@
 			"bindingDependencies": ["QREL2", "QNUMBIS"],
 			"response": { "name": "QNUMBIS" }
 		},
-
 		{
 			"id": "kd0bu8xz",
 			"componentType": "InputNumber",
@@ -1253,7 +1234,6 @@
 			"bindingDependencies": ["QREL", "QREL2", "CALC_RATIO", "QRATIO"],
 			"response": { "name": "QRATIO" }
 		},
-
 		{
 			"id": "k0gj7g4v",
 			"componentType": "InputNumber",
@@ -1362,7 +1342,6 @@
 			"bindingDependencies": ["CALC_SOMME", "QREL", "QREL2", "QSOMME"],
 			"response": { "name": "QSOMME" }
 		},
-
 		{
 			"id": "kd0bx24r",
 			"componentType": "InputNumber",
@@ -1457,7 +1436,6 @@
 			"bindingDependencies": ["QREL", "QREL2", "CALC_PRODUIT", "QPRODUIT"],
 			"response": { "name": "QPRODUIT" }
 		},
-
 		{
 			"id": "kd0c2j4a",
 			"componentType": "InputNumber",

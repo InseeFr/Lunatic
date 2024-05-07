@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"id": "i6vwi2506qf2mms",
 	"modele": "SIMPSONS",
 	"enoCoreVersion": "2.3.7",

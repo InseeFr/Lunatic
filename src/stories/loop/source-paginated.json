@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"maxPage": "3",
 	"components": [
 		{
@@ -22,6 +23,7 @@
 				"max": { "value": "10", "type": "VTL" }
 			},
 			"page": "1",
+			"paginatedLoop": false,
 			"components": [
 				{
 					"componentType": "Input",

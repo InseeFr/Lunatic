@@ -1,6 +1,6 @@
-import type { SuggesterType } from '../../use-lunatic/type-source';
 import { SearchMinisearch } from './SearchMinisearch';
 import type { IndexEntry, SearchInterface } from './SearchInterface';
+import type { LunaticSource } from '../../use-lunatic/type';
 
 const suggesters = new Map<string, SearchInterface<IndexEntry>>();
 let dataFetcher = (_: string): Promise<Array<IndexEntry>> =>
@@ -10,9 +10,12 @@ let dataFetcher = (_: string): Promise<Array<IndexEntry>> =>
  * This file retains a dictionary of all the search indexed by storeName
  */
 export function registerSuggesters(
-	infos: SuggesterType[],
+	infos: LunaticSource['suggesters'],
 	fetcher: (name: string) => Promise<Array<IndexEntry>>
 ) {
+	if (!infos) {
+		return;
+	}
 	dataFetcher = fetcher;
 	for (const suggester of infos) {
 		suggesters.set(suggester.name, new SearchMinisearch<IndexEntry>(suggester));

@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"maxPage": "3",
 	"components": [
 		{
@@ -92,22 +93,22 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
 			"values": {
-				"PREVIOUS": [],
-				"COLLECTED": [],
-				"FORCED": [],
-				"EDITED": [],
-				"INPUTTED": []
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "AGE",
 			"values": {
-				"PREVIOUS": [],
-				"COLLECTED": [],
-				"FORCED": [],
-				"EDITED": [],
-				"INPUTTED": []
+				"PREVIOUS": [null],
+				"COLLECTED": [null],
+				"FORCED": [null],
+				"EDITED": [null],
+				"INPUTTED": [null]
 			}
 		}
 	]

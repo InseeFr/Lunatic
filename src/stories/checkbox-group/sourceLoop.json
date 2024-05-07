@@ -5,8 +5,9 @@
 			"id": "loop",
 			"componentType": "Loop",
 			"page": "1",
+			"maxPage": "1.1",
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"iterations": { "value": 2, "type": "VTL" },
+			"iterations": { "value": "2", "type": "VTL" },
 			"label": {
 				"value": "\"## Who are you?\"",
 				"type": "VTL|MD"
@@ -43,7 +44,8 @@
 						}
 					]
 				}
-			]
+			],
+			"paginatedLoop": false
 		},
 		{
 			"id": "seq",

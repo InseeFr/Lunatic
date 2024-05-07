@@ -27,4 +27,4 @@ export type {
 
 export type { LunaticComponentProps } from './components/type';
 export type { LunaticSlotComponents } from './components/shared/HOC/slottableComponent';
-export type { LunaticSource } from './use-lunatic/type-source';
+export type { LunaticSource } from './use-lunatic/type';

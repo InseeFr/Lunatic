@@ -1,6 +1,6 @@
 import { interpretVTL, parseVTLVariables } from '../../../utils/vtl';
 import { isTestEnv } from '../../../utils/env';
-import type { LunaticSource } from '../../type-source';
+import type { LunaticSource } from '../../type';
 import type { LunaticData } from '../../type';
 import { getInitialVariableValue } from '../../../utils/variables';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';

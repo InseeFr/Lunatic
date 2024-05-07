@@ -1,6 +1,8 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"components": [
 		{
+			"page": "1",
 			"id": "j4nwc63q",
 			"componentType": "Table",
 			"mandatory": false,

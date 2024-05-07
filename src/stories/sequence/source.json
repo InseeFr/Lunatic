@@ -1,17 +1,21 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"maxPage": "1",
 	"components": [
 		{
+			"id": "c1",
 			"componentType": "Sequence",
 			"page": "1",
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"label": { "value": "\"Sequence example\"", "type": "VTL|MD" }
 		},
 		{
+			"id": "c2",
 			"componentType": "Subsequence",
 			"page": "1",
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"label": { "value": "\"Subsequence example\"", "type": "VTL|MD" }
 		}
-	]
+	],
+	"variables": []
 }
