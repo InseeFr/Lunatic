@@ -6,7 +6,7 @@ import type {
 	LunaticState,
 } from '../../type';
 import { fillComponentExpressions } from './fill-component-expressions';
-import { getComponentTypeProps } from '../../props/propComponentType';
+import { getComponentTypeProps } from '../../props/getComponentTypeProps';
 import type { LunaticComponentProps } from '../../../components/type';
 import { getMissingResponseProp } from '../../props/propMissingResponse';
 import { getValueProp } from '../../props/propValue';
