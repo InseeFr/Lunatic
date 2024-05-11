@@ -35,6 +35,8 @@ jobs:
         run: yarn run check
       - name: Unit Tests
         run: yarn run test
+      - name: Build
+        run: yarn build
 
   test-e2e:
     runs-on: ubuntu-latest
