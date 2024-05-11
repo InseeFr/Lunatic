@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { type MouseEventHandler } from 'react';
+import { type MouseEventHandler, type ReactPortal } from 'react';
 import type { LunaticError } from '../../../use-lunatic/type';
 import ReactDOM from 'react-dom';
 import { Button } from '../Button/Button';
@@ -23,7 +23,7 @@ function ComponentErrors({ errors }: { errors: LunaticError[] }) {
 	return <ul className={classnames('errors')}>{content}</ul>;
 }
 
-export function ModalControls(props: Props) {
+export function ModalControls(props: Props): ReactPortal | null {
 	if (typeof props.errors !== 'object') {
 		return null;
 	}
