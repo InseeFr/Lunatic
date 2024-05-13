@@ -26,7 +26,7 @@ type FillComponentArgs = {
 };
 
 /**
- * To make this work with TypeScript we need to call function in succession, we prefer expressiveness here over generalized approache
+ * To make this work with TypeScript we need to call function in succession, we prefer expressiveness here over generalized approach
  */
 export const fillComponent = (
 	component: LunaticComponentDefinition,

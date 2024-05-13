@@ -191,7 +191,7 @@ function getSuggesterProps(
 	state: State
 ) {
 	if (!component.arbitrary) {
-		return component;
+		return {};
 	}
 	return {
 		arbitraryValue: state.executeExpression(
