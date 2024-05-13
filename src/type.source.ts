@@ -32,7 +32,8 @@ export type ComponentDefinition =
 	| ComponentCheckboxOneDefinition
 	| ComponentSuggesterDefinition
 	| ComponentPairWiseLinksDefinition
-	| ComponentSummaryDefinition;
+	| ComponentSummaryDefinition
+	| ComponentText;
 export type ComponentInputDefinition = ComponentInputDefinition1 & {
 	componentType: 'Input' | 'Textarea';
 	maxLength?: number;
@@ -377,6 +378,10 @@ export interface ControlDefinition {
 }
 export interface ResponseDefinition {
 	name: string;
+}
+export interface ComponentText {
+	componentType: 'Text';
+	label: VTLExpression;
 }
 export interface SuggesterDefinition {
 	/**
