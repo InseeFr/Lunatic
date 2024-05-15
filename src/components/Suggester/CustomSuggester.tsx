@@ -71,7 +71,7 @@ export const CustomSuggester = slottableComponent<Props>(
 				onChange={(v) => onSearch(v ?? '')}
 				disabled={disabled}
 				readOnly={readOnly}
-				options={options}
+				options={options.map((o) => ({ value: o.id, ...o }))}
 				editable={true}
 				onBlur={onBlur}
 				onFocus={onFocus}
