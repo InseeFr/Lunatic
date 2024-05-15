@@ -5,7 +5,6 @@ export type SearchInfo = LunaticSuggester;
 export type IndexEntry = {
 	id: string;
 	label: string;
-	value: string;
 	[k: string]: string;
 };
 
