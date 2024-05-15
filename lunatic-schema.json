@@ -5,6 +5,17 @@
 	"description": "A lunatic survey unit",
 	"type": "object",
 	"properties": {
+		"label": {
+			"$ref": "#/$defs/VTLExpression"
+		},
+		"pagination": {
+			"enum": ["question", "sequence"]
+		},
+		"enoCoreVersion": { "type": "string" },
+		"lunaticModelVersion": { "type": "string" },
+		"generatingDate": { "type": "string" },
+		"modele": { "type": "string" },
+		"id": { "type": "string" },
 		"components": {
 			"type": "array",
 			"items": {

@@ -264,6 +264,13 @@ export type VariableScalarValue = string | number | null;
  * A lunatic survey unit
  */
 export interface LunaticSource {
+	label?: VTLExpression;
+	pagination?: 'question' | 'sequence';
+	enoCoreVersion?: string;
+	lunaticModelVersion?: string;
+	generatingDate?: string;
+	modele?: string;
+	id?: string;
 	components: ComponentDefinitionWithPage[];
 	variables: Variable[];
 	suggesters?: SuggesterDefinition[];
@@ -310,16 +317,6 @@ export interface LunaticSource {
 	};
 	maxPage?: string;
 }
-export interface ComponentDefinitionBase {
-	label?: VTLExpression;
-	description?: VTLExpression;
-	declarations?: Declaration[];
-	conditionFilter?: VTLScalarExpression;
-	controls?: ControlDefinition[];
-	id: string;
-	mandatory?: boolean;
-	missingResponse?: ResponseDefinition;
-}
 export interface VTLExpression {
 	/**
 	 * Valid VTL Expression
@@ -330,6 +327,16 @@ export interface VTLExpression {
 	 */
 	bindingDependencies?: string[];
 	type: 'VTL' | 'VTL|MD' | 'TXT';
+}
+export interface ComponentDefinitionBase {
+	label?: VTLExpression;
+	description?: VTLExpression;
+	declarations?: Declaration[];
+	conditionFilter?: VTLScalarExpression;
+	controls?: ControlDefinition[];
+	id: string;
+	mandatory?: boolean;
+	missingResponse?: ResponseDefinition;
 }
 export interface Declaration {
 	id: string;
