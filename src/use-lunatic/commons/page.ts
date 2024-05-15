@@ -30,11 +30,10 @@ export function isPageEmpty(
 	const { executeExpression, pager } = state;
 	const { iteration } = pager;
 	const components = getComponentsFromState(state);
-	const visibleComponents = components.filter(function (component) {
-		const { conditionFilter } = component;
-		if (conditionFilter) {
+	const visibleComponents = components.filter((component) => {
+		if ('conditionFilter' in component && component.conditionFilter) {
 			return executeConditionFilter(
-				conditionFilter,
+				component.conditionFilter,
 				executeExpression,
 				iteration
 			);

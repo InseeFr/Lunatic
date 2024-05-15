@@ -358,6 +358,9 @@
 				},
 				{
 					"$ref": "#/$defs/ComponentSummaryDefinition"
+				},
+				{
+					"$ref": "#/$defs/ComponentText"
 				}
 			]
 		},
@@ -989,6 +992,19 @@
 					"$ref": "#/$defs/ComponentDefinitionBase"
 				}
 			]
+		},
+		"ComponentText": {
+			"type": "object",
+			"properties": {
+				"componentType": {
+					"type": "string",
+					"const": "Text"
+				},
+				"label": {
+					"$ref": "#/$defs/VTLExpression"
+				}
+			},
+			"required": ["componentType", "label"]
 		},
 		"Variable": {
 			"discriminator": {

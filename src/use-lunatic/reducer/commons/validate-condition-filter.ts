@@ -8,15 +8,12 @@ function validateLoopConditionFilter(
 	const { pages, executeExpression } = state;
 	const { components } = pages[next];
 	const [loop] = components;
-	if (loop) {
-		const { conditionFilter } = loop;
-		if (conditionFilter) {
-			return !!executeConditionFilter(
-				conditionFilter,
-				executeExpression,
-				iteration
-			);
-		}
+	if (loop && 'conditionFilter' in loop && loop.conditionFilter) {
+		return !!executeConditionFilter(
+			loop.conditionFilter,
+			executeExpression,
+			iteration
+		);
 	}
 	return true;
 }

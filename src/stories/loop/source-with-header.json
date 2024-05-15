@@ -16,8 +16,9 @@
 			"id": "loop-prenom",
 			"componentType": "RosterForLoop",
 			"header": [
-				{ "headerCell": true, "label": { "value": "Prénom", "type": "VTL" } },
-				{ "headerCell": true, "label": { "value": "Age", "type": "VTL" } }
+				{ "headerCell": true, "label": { "value": "", "type": "TXT" } },
+				{ "headerCell": true, "label": { "value": "Prénom", "type": "TXT" } },
+				{ "headerCell": true, "label": { "value": "Age", "type": "TXT" } }
 			],
 			"label": { "value": "\"Ajouter un individu\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
@@ -28,6 +29,13 @@
 			},
 			"page": "1",
 			"components": [
+				{
+					"componentType": "Text",
+					"label": {
+						"value": "\"Individu \" || cast(GLOBAL_ITERATION_INDEX, string)",
+						"type": "VTL"
+					}
+				},
 				{
 					"componentType": "Input",
 					"conditionFilter": { "value": "true", "type": "VTL" },

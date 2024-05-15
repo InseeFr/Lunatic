@@ -43,7 +43,7 @@ export const fillComponent = (
 		goNextPage: state.goNextPage,
 		goPreviousPage: state.goPreviousPage,
 		iteration: state.pager.iteration,
-		required: component.mandatory,
+		required: 'mandatory' in component ? component.mandatory : false,
 		value: getValueProp(component, state),
 		missingResponse: getMissingResponseProp(component, state),
 		management: state.management,
