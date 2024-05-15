@@ -1,13 +1,17 @@
 import './custom-lunatic.scss';
 import './orchestrator.scss';
 
-import { useLunatic, Button, components, ModalControls } from '../..';
-import React, { memo, useCallback, useState, useEffect } from 'react';
+import {
+	Button,
+	components,
+	LunaticComponents,
+	ModalControls,
+	useLunatic,
+} from '../..';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { Logger } from '../../utils/logger';
 import { Overview } from './overview';
-import Waiting from './waiting';
-import { LunaticComponents } from '../..';
 import { SchemaValidator } from './SchemaValidator.jsx';
 
 const Input = components.Input;
@@ -247,11 +251,6 @@ function OrchestratorForStories({
 							isCritical={errorsForModal.isCritical}
 						/>
 					)}
-					<Waiting status={waiting}>
-						<div className="waiting-orchestrator">
-							Initialisation des données de suggestion...
-						</div>
-					</Waiting>
 				</aside>
 			</div>
 		</Provider>

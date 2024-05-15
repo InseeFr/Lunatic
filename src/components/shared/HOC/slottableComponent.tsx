@@ -49,6 +49,7 @@ import type { CustomCheckboxGroup } from '../../CheckboxGroup/CustomCheckboxGrou
 import type { RouterLink } from '../MDLabel/RouterLink';
 import type { SummaryResponses, SummaryTitle } from '../../Summary/Summary';
 import type { LunaticComponentProps } from '../../type';
+import type { MarkdownLink } from '../MDLabel/MarkdownLink';
 
 /**
  * Contains the type of every customizable component
@@ -119,6 +120,7 @@ export type LunaticSlotComponents = {
 	ComponentWrapper: ComponentType<
 		PropsWithChildren<LunaticComponentProps & { index: number }>
 	>;
+	MarkdownLink: typeof MarkdownLink;
 };
 
 const empty = {} as Partial<LunaticSlotComponents> | undefined;
