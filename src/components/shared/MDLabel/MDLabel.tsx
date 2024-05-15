@@ -1,39 +1,41 @@
-import type { ComponentProps } from 'react';
-import Markdown from 'react-markdown';
-import { MDLabelLink } from './MDLabelLink';
+import {
+	type ComponentProps,
+	Fragment,
+	type PropsWithChildren,
+	type ReactNode,
+} from 'react';
+import Markdown, { type Components } from 'react-markdown';
+import { MarkdownLink } from './MarkdownLink';
 import remarkBreaks from 'remark-breaks';
 import emoji from 'remark-emoji';
 
 type Props = { expression: string };
 
-export const MDLabel = ({ expression }: Props) => {
+export function MDLabel({ expression }: Props) {
+	const hasParagraphs = /\n\n/.test(expression);
+	const components = {
+		p: hasParagraphs ? 'p' : Fragment,
+		br: 'br',
+		a: MarkdownA,
+	} as Partial<Components>;
 	return (
 		<Markdown
-			components={renderComponentsFor(expression)}
+			components={components}
 			remarkPlugins={[[emoji, { accessible: true }], remarkBreaks]}
 		>
 			{expression}
 		</Markdown>
 	);
-};
-
-const renderComponentsFor = (
-	expression: string
-): ComponentProps<typeof Markdown>['components'] => {
-	const components = {
-		p: (props) => <>{props.children}</>,
-		br: 'br',
-		a: (props) => (
-			<MDLabelLink {...({ ...props } as ComponentProps<typeof MDLabelLink>)} />
-		),
-	} satisfies ComponentProps<typeof Markdown>['components'];
-
-	if (/\n\n/.test(expression)) {
-		return {
-			...components,
-			p: 'p',
-		};
-	}
-
-	return components;
+}
+const MarkdownA = ({
+	title,
+	href,
+	children,
+}: PropsWithChildren<{ title?: string; href: string }>) => {
+	const tooltip = title ? <MDLabel expression={title} /> : null;
+	return (
+		<MarkdownLink href={href} tooltip={tooltip}>
+			{children}
+		</MarkdownLink>
+	);
 };
