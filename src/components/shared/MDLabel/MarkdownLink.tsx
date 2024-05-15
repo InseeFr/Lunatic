@@ -19,13 +19,19 @@ export const MarkdownLink = slottableComponent<Props>(
 		return (
 			<>
 				{isAbsoluteLink ? (
-					<a href={href} target="_blank" rel="noopener noreferrer" id={id}>
-						{children}
-					</a>
-				) : (
 					<RouterLink to={href} id={id} {...extraProps}>
 						{children}
 					</RouterLink>
+				) : (
+					<a
+						href={href}
+						target="_blank"
+						rel="noopener noreferrer"
+						id={id}
+						{...extraProps}
+					>
+						{children}
+					</a>
 				)}
 				{tooltip && (
 					<Tooltip className="tooltip-content" id={`tooltip-${id}`}>
