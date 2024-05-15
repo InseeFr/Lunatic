@@ -42,8 +42,10 @@ function checkComponents(
 	let errors = {} as Record<string, LunaticError[]>;
 
 	for (const component of components) {
+		if (!('controls' in component) || !('id' in component)) {
+			continue;
+		}
 		const { controls, id } = component;
-
 		// The component has global level controls
 		if (Array.isArray(controls)) {
 			const componentErrors = checkControls(
@@ -133,7 +135,7 @@ function checkComponentInLoop(
 	errors: Record<string, LunaticError[]>
 ): Record<string, LunaticError[]> {
 	// The component has no controls, skip it
-	if (!Array.isArray(component.controls)) {
+	if ('controls' in component && !Array.isArray(component.controls)) {
 		return errors;
 	}
 
@@ -146,10 +148,15 @@ function checkComponentInLoop(
 			iteration: i,
 			nbIterations: iterations,
 		};
+		// There is no controls on this component
+		if (!('controls' in component) || !component.controls) {
+			continue;
+		}
 		// The component is filtered on this iteration, skip it
 		if (
 			// conditionFilter can be the interpreted expression, or the object representing the expression
-			(component.conditionFilter &&
+			('conditionFilter' in component &&
+				component.conditionFilter &&
 				typeof component.conditionFilter == 'object' &&
 				'value' in component.conditionFilter &&
 				!state.executeExpression(
@@ -199,8 +206,11 @@ export function compileControls(state: StateForControls) {
 	const components = replaceComponentSequence(getComponentsFromState(state));
 	const componentFiltered = components
 		.map((component) => fillComponentExpressions(component, state))
-		.filter(({ conditionFilter }) => {
-			return conditionFilter ?? true;
+		.filter((component) => {
+			if ('conditionFilter' in component) {
+				return component.conditionFilter ?? true;
+			}
+			return true;
 		});
 	let errors = checkComponents(state, componentFiltered);
 	const currentErrors = Object.keys(errors).length > 0 ? errors : undefined;
