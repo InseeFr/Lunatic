@@ -31,7 +31,10 @@
 			"components": [
 				{
 					"componentType": "Text",
-					"label": { "value": "\"Individu \" || cast(GLOBAL_ITERATION_INDEX, string)", "type": "VTL" }
+					"label": {
+						"value": "\"Individu \" || cast(GLOBAL_ITERATION_INDEX, string)",
+						"type": "VTL"
+					}
 				},
 				{
 					"componentType": "Input",
