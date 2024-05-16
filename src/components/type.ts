@@ -304,6 +304,9 @@ export type ComponentPropsByType = {
 				iterations?: VtlExpression;
 			}>;
 		};
+    FillerLoader: {
+        componentType?: 'FillerLoader';
+    };
 };
 
 export type LunaticComponentType = keyof ComponentPropsByType;

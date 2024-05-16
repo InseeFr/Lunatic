@@ -157,6 +157,11 @@ export type LunaticOptions = {
 	// Enable change tracking to keep a track of what variable changed (allow using getChangedData())
 	trackChanges?: boolean;
 	logger?: LunaticLogger;
+	mocks?: {
+		filler:
+			| null
+			| ((data: Record<string, unknown>) => Promise<Record<string, unknown>>);
+	};
 };
 
 // Type representing the return type of "useLunatic()"

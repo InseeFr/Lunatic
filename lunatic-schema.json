@@ -172,6 +172,12 @@
 		},
 		"maxPage": {
 			"type": "string"
+		},
+		"fillers": {
+			"type": "array",
+			"items": {
+				"$ref": "#/$defs/FillerDefinition"
+			}
 		}
 	},
 	"required": ["components", "variables"],
@@ -1461,6 +1467,33 @@
 				}
 			},
 			"required": ["name", "fields", "queryParser", "version"]
+		},
+		"FillerDefinition": {
+			"type": "object",
+			"properties": {
+				"endpoint": {
+					"type": "object",
+					"properties": {
+						"url": {
+							"type": "string"
+						}
+					},
+					"required": ["url"]
+				},
+				"responses": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": ["name"]
+					}
+				}
+			},
+			"required": ["responses", "endpoint"]
 		}
 	}
 }
