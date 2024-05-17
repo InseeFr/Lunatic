@@ -1,6 +1,6 @@
 import type { LunaticComponentProps } from '../type';
 import { LunaticComponents } from '../LunaticComponents';
-import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+import { ComponentErrors, getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { Label } from '../shared/Label/Label';
 import {
 	Td,
@@ -26,7 +26,7 @@ export function Table(props: LunaticComponentProps<'Table'>) {
 				declarations={declarations}
 				id={id}
 			/>
-			<BaseTable id={`table-${id}`}>
+			<BaseTable id={id} errors={getComponentErrors(errors, id)}>
 				<TableHeader header={header} />
 				<Tbody>
 					{body.map((row, rowIndex) => (
@@ -53,7 +53,6 @@ export function Table(props: LunaticComponentProps<'Table'>) {
 					))}
 				</Tbody>
 			</BaseTable>
-			<ComponentErrors componentId={id} errors={errors} />
 		</>
 	);
 }
