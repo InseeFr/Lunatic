@@ -711,10 +711,10 @@
 					"type": "string"
 				},
 				"min": {
-					"type": "integer"
+					"type": "number"
 				},
 				"max": {
-					"type": "integer"
+					"type": "number"
 				},
 				"decimals": {
 					"type": "integer"
