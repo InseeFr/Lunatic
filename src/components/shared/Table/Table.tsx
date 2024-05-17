@@ -7,7 +7,7 @@ import { ComponentErrors } from '../ComponentErrors/ComponentErrors';
 type Props = PropsWithChildren<{
 	className?: string;
 	id?: string;
-	errors: LunaticError[] | undefined;
+	errors?: LunaticError[];
 }>;
 
 function LunaticTable({ id, className, children, errors }: Props) {

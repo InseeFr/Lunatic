@@ -1,6 +1,6 @@
 import type { LunaticComponentProps } from '../type';
 import { LunaticComponents } from '../LunaticComponents';
-import { ComponentErrors, getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { Label } from '../shared/Label/Label';
 import {
 	Td,
