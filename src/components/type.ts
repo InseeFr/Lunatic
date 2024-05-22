@@ -234,6 +234,13 @@ type ComponentPropsByType = {
 		goNextPage: () => void;
 		goPreviousPage: () => void;
 	};
+
+	RemoteComponent: LunaticBaseProps<string | null> & {
+		components: LunaticComponentDefinition[];
+		remote: string;
+		responses?: Array<{ responses: { name: string } }>;
+		value: Record<string, unknown>;
+	};
 };
 
 export type LunaticComponentType = keyof ComponentPropsByType;

@@ -1,0 +1,140 @@
+{
+	"maxPage": "2",
+	"components": [
+		{
+			"id": "component-set",
+			"componentType": "ComponentSet",
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"page": "1",
+			"label": {
+				"value": "\"## Votre adresse ?\"",
+				"type": "VTL|MD"
+			},
+			"description": {
+				"value": "\"This is your opportunity to tell me about yourself!\"",
+				"type": "VTL|MD"
+			},
+			"components": [
+				{
+					"id": "remote",
+					"componentType": "RemoteComponent",
+					"mandatory": false,
+					"page": "1",
+					"remote": "http://localhost:4000/api/recensement/adresse",
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"components": [
+						{
+							"componentType": "Input",
+							"label": {
+								"value": "\"Numéro de la voie.\"",
+								"type": "VTL|MD"
+							},
+							"maxLength": 30,
+							"id": "numero-voie",
+							"description": {
+								"value": "\"12, par exemple.\"",
+								"type": "VTL|MD"
+							},
+							"response": {
+								"name": "NUMVOIE"
+							}
+						},
+						{
+							"componentType": "Input",
+							"label": {
+								"value": "\"Type de la voie.\"",
+								"type": "VTL|MD"
+							},
+							"maxLength": 30,
+							"id": "type-voie",
+							"description": {
+								"value": "\"Rue, avenue, ....\"",
+								"type": "VTL|MD"
+							},
+							"response": {
+								"name": "TYPEVOIE"
+							}
+						},
+						{
+							"componentType": "Input",
+							"label": {
+								"value": "\"Libellé de la voie.\"",
+								"type": "VTL|MD"
+							},
+							"maxLength": 30,
+							"id": "libelle-voie",
+							"description": {
+								"value": "\"Par exemple, Victor Hugo.\"",
+								"type": "VTL|MD"
+							},
+							"response": {
+								"name": "LIBVOIE"
+							}
+						}
+					],
+					"responses": [
+						{ "response": { "name": "RANG" } },
+						{ "response": { "name": "IRIS" } }
+					]
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "RANG",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "003",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "IRIS",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "956",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "TYPEVOIE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NUMVOIE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "TATA",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "LIBVOIE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "TATA",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		}
+	]
+}

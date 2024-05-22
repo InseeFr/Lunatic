@@ -1,4 +1,8 @@
-import type { LunaticComponentDefinition, LunaticState } from '../../type';
+import type {
+	LunaticComponentDefinition,
+	LunaticState,
+	LunaticStateVariable,
+} from '../../type';
 import type { ResponseType } from '../../type-source';
 
 type AccumulatorMap = Record<string, unknown>;
@@ -104,6 +108,18 @@ function collecteComponentResponse({
 	if ('response' in component) {
 		return mergeResponse({ map, response: component.response, variables });
 	}
+	// En desespoir de cause, attention au effets de bord sur d'autres composants
+	if ('components' in component && 'responses' in component) {
+		return collecteArrayResponses({
+			components: [
+				...(component.responses as LunaticComponentDefinition[]),
+				...component.components,
+			],
+			variables,
+			map,
+		});
+	}
+
 	if ('components' in component) {
 		return collecteArrayResponses({
 			components: component.components,
