@@ -176,10 +176,21 @@ export type ComponentQuestionDefinition = ComponentQuestionDefinition1 & {
 export type ComponentQuestionDefinition1 = ComponentDefinitionBase;
 export type ComponentCheckboxOneDefinition = ComponentCheckboxOneDefinition1 & {
 	componentType: 'CheckboxOne';
-	options: Options;
+	options: OptionsWithDetail;
 };
 export type ComponentCheckboxOneDefinition1 =
 	ComponentDefinitionBaseWithResponse;
+export type OptionsWithDetail = {
+	value: string | boolean;
+	label: VTLExpression;
+	description?: VTLExpression;
+	detail?: {
+		label: VTLExpression;
+		response: {
+			name: string;
+		};
+	};
+}[];
 export type ComponentSuggesterDefinition = ComponentSuggesterDefinition1 & {
 	componentType: 'Suggester';
 	/**
@@ -248,7 +259,7 @@ export type Variable =
 				COLLECTED: VariableValue;
 				FORCED: VariableValue;
 				EDITED: VariableValue;
-				INPUTTED: VariableValue;
+				INPUTED: VariableValue;
 			};
 	  }
 	| {

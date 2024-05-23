@@ -37,4 +37,15 @@ test.describe('Checkboxes', () => {
 			await expectCollectedData(page, 'MOIS2', null);
 		});
 	});
+
+	test.describe('CheckboxOne', () => {
+		test(`Allow detail selection`, async ({ page }) => {
+			await goToStory(page, 'components-checkboxone--with-detail');
+			await expect(page.getByRole('radio', { name: 'Autre' })).toBeVisible();
+			await page.getByRole('radio', { name: 'Autre' }).click();
+			await page.getByRole('textbox', { name: 'Précisez' }).fill('Bonjour');
+			await expectCollectedData(page, 'Q2', '3');
+			await expectCollectedData(page, 'Q3', 'Bonjour');
+		});
+	});
 });
