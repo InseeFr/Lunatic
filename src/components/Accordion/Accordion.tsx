@@ -7,7 +7,7 @@ export const Accordion = slottableComponent<LunaticComponentProps<'Accordion'>>(
 		return (
 			<div className="lunatic-accordion">
 				{items.map((item, k) => (
-					<details>
+					<details key={k}>
 						<summary>{item.label}</summary>
 						{item.body}
 					</details>
