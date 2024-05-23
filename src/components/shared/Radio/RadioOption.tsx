@@ -1,9 +1,4 @@
-import {
-	type KeyboardEventHandler,
-	type ReactNode,
-	useEffect,
-	useRef,
-} from 'react';
+import { type KeyboardEventHandler, useEffect, useRef } from 'react';
 import { slottableComponent } from '../HOC/slottableComponent';
 import { useKeyboardKey } from '../../../hooks/useKeyboardKey';
 import { Label } from '../Label/Label';
@@ -48,7 +43,7 @@ function LunaticRadioOption({
 	const isEnabled = !disabled && !readOnly;
 	const isRadio = !checkboxStyle;
 	const hasDetail = !!onDetailChange;
-	const detailId = `${id}-detail`;
+
 	const onClickOption = () => {
 		if (!isEnabled || !onCheck) {
 			return;
