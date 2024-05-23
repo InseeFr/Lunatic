@@ -16,6 +16,8 @@ const VTL_ATTRIBUTES = [
 	['responses.description', null],
 	['options.description', null],
 	['controls.iterations', castNumber],
+	['items.label', null],
+	['items.body', null],
 	['lines.min', castNumber],
 	['lines.max', castNumber],
 	['xAxisIterations', castNumber],

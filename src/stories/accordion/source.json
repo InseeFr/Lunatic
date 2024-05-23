@@ -1,0 +1,47 @@
+{
+	"$schema": "../../../lunatic-schema.json",
+	"components": [
+		{
+			"componentType": "Input",
+			"label": {
+				"value": "Nom",
+				"type": "TXT"
+			},
+			"maxLength": 30,
+			"id": "surname",
+			"response": {
+				"name": "NOM"
+			},
+			"page": "1"
+		},
+		{
+			"componentType": "Accordion",
+			"items": [
+				{
+					"label": {
+						"value": "\"Pourquoi cette question ?\"",
+						"type": "VTL|MD"
+					},
+					"body": {
+						"value": "\"Pour en connaître plus sur **\" || nvl(NOM, \"Inconnu\") || \"**\"",
+						"type": "VTL|MD"
+					}
+				}],
+			"page": "1"
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "NOM",
+			"componentRef": "name",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		}
+	]
+}
