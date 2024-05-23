@@ -85,6 +85,7 @@ export type ComponentPropsByType = {
 		componentType?: 'Input';
 	};
 	Accordion: LunaticBaseProps<string> & {
+		componentType?: 'Accordion';
 		items: {
 			label: ReactNode;
 			body: ReactNode;
