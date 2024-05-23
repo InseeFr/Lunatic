@@ -2,12 +2,130 @@
 	"maxPage": "2",
 	"components": [
 		{
+			"id": "lfs5q1zj-questioninformation",
+			"componentType": "QuestionInformation",
+			"page": "1",
+			"label": {
+				"value": "\"Veuillez recopier ici les informations qui figurent dans le cadre rempli par l'agent recenseur sur la notice internet.\"",
+				"type": "VTL"
+			},
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			}
+		},
+		{
+			"componentType": "Input",
+			"label": {
+				"value": "\"IRIS, Îlot ou district\"",
+				"type": "VTL|MD"
+			},
+			"maxLength": 30,
+			"page": "1",
+			"id": "iris",
+			"description": {
+				"value": "\"4 chiffres.\"",
+				"type": "VTL|MD"
+			},
+			"controls": [
+				{
+					"id": "lfs5q1zj-iris-CI-0",
+					"typeOfControl": "CONSISTENCY",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(nvl(ZC, \"\") = \"\")",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "\"Veuillez reporter l'IRIS, l'îlot ou district renseigné par l’agent recenseur sur la notice internet.\"",
+						"type": "VTL"
+					}
+				}
+			],
+			"response": {
+				"name": "ZC"
+			}
+		},
+
+		{
+			"id": "lfs5q1zj-rang-a",
+			"componentType": "Input",
+			"maxLength": 3,
+			"page": "1",
+			"label": {
+				"value": "\"Rang A\"",
+				"type": "VTL"
+			},
+			"description": {
+				"value": "\"3 chiffres\"",
+				"type": "VTL"
+			},
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"controls": [
+				{
+					"id": "lfs5q1zj-rang-a-CI-1",
+					"typeOfControl": "CONSISTENCY",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(nvl(ADR_RANG, \"\") = \"\")",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "\"Veuillez reporter le rang A renseigné par l’agent recenseur sur la notice internet.\"",
+						"type": "VTL"
+					}
+				}
+			],
+			"response": {
+				"name": "ADR_RANG"
+			}
+		},
+		{
+			"id": "lfs5q1zj-rang-l",
+			"componentType": "Input",
+			"page": "1",
+			"maxLength": 3,
+			"label": {
+				"value": "\"Rang L\"",
+				"type": "VTL"
+			},
+			"description": {
+				"value": "\"3 chiffres\"",
+				"type": "VTL"
+			},
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			},
+			"controls": [
+				{
+					"id": "lfs5q1zj-rang-l-CI-2",
+					"typeOfControl": "CONSISTENCY",
+					"criticality": "WARN",
+					"control": {
+						"value": "not(nvl(LOG_RANG, \"\") = \"\")",
+						"type": "VTL"
+					},
+					"errorMessage": {
+						"value": "\"Veuillez reporter le rang L renseigné par l’agent recenseur sur la notice internet.\"",
+						"type": "VTL"
+					}
+				}
+			],
+			"response": {
+				"name": "LOG_RANG"
+			}
+		},
+		{
 			"id": "component-set",
 			"componentType": "ComponentSet",
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "1",
+			"page": "2",
 			"label": {
-				"value": "\"## Votre adresse ?\"",
+				"value": "\"## Quelle est l'adresse de votre logement ?\"",
 				"type": "VTL|MD"
 			},
 			"description": {
@@ -19,7 +137,7 @@
 					"id": "remote",
 					"componentType": "RemoteComponent",
 					"mandatory": false,
-					"page": "1",
+
 					"remote": "http://localhost:4000/api/recensement/adresse",
 					"conditionFilter": { "value": "true", "type": "VTL" },
 					"components": [
@@ -73,8 +191,9 @@
 						}
 					],
 					"responses": [
-						{ "response": { "name": "RANG" } },
-						{ "response": { "name": "IRIS" } }
+						{ "response": { "name": "ZC" } },
+						{ "response": { "name": "ADR_RANG" } },
+						{ "response": { "name": "LOG_RANG" } }
 					]
 				}
 			]
@@ -83,10 +202,10 @@
 	"variables": [
 		{
 			"variableType": "COLLECTED",
-			"name": "RANG",
+			"name": "ADR_RANG",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": "003",
+				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
@@ -94,10 +213,21 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "IRIS",
+			"name": "LOG_RANG",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": "956",
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ZC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
@@ -131,6 +261,17 @@
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": "TATA",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ISMODLOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": false,
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
