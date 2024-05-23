@@ -118,9 +118,13 @@ function computeIterations(
 			return value.length;
 		}
 	}
-	// Look at the first component
+	// Look for the component with the biggest size
 	if ('components' in component) {
-		return computeIterations(component.components[0], executeExpression);
+		return Math.max(
+			...component.components.map((c) =>
+				computeIterations(c, executeExpression)
+			)
+		);
 	}
 	return 0;
 }
