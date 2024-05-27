@@ -7,6 +7,7 @@ import { CheckboxGroup } from './CheckboxGroup/CheckboxGroup';
 import { CheckboxBoolean } from './CheckboxBoolean/CheckboxBoolean';
 import { Radio } from './Radio/Radio';
 import { Input } from './Input/Input';
+import { Accordion } from './Accordion/Accordion';
 import { Text } from './Text/Text';
 import { Textarea } from './Textarea/Textarea';
 import type { LunaticComponentProps, LunaticComponentType } from './type';
@@ -49,6 +50,7 @@ export const library = {
 	Roundabout: Roundabout,
 	Suggester: Suggester,
 	Summary: Summary,
+	Accordion: Accordion,
 } satisfies {
 	[Property in LunaticComponentType]: ComponentType<
 		LunaticComponentProps<Property>

@@ -50,6 +50,7 @@ import type { RouterLink } from '../MDLabel/RouterLink';
 import type { SummaryResponses, SummaryTitle } from '../../Summary/Summary';
 import type { LunaticComponentProps } from '../../type';
 import type { MarkdownLink } from '../MDLabel/MarkdownLink';
+import type { Accordion } from '../../Accordion/Accordion';
 
 /**
  * Contains the type of every customizable component
@@ -121,6 +122,7 @@ export type LunaticSlotComponents = {
 		PropsWithChildren<LunaticComponentProps & { index: number }>
 	>;
 	MarkdownLink: typeof MarkdownLink;
+	Accordion: typeof Accordion;
 };
 
 const empty = {} as Partial<LunaticSlotComponents> | undefined;

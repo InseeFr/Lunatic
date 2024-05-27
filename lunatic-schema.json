@@ -361,6 +361,9 @@
 				},
 				{
 					"$ref": "#/$defs/ComponentText"
+				},
+				{
+					"$ref": "#/$defs/ComponentAccordion"
 				}
 			]
 		},
@@ -1005,6 +1008,31 @@
 				}
 			},
 			"required": ["componentType", "label"]
+		},
+		"ComponentAccordion": {
+			"type": "object",
+			"properties": {
+				"componentType": {
+					"type": "string",
+					"const": "Accordion"
+				},
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"label": {
+								"$ref": "#/$defs/VTLExpression"
+							},
+							"body": {
+								"$ref": "#/$defs/VTLExpression"
+							}
+						},
+						"required": ["label", "body"]
+					}
+				}
+			},
+			"required": ["componentType", "items"]
 		},
 		"Variable": {
 			"discriminator": {

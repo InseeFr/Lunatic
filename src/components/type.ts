@@ -47,6 +47,7 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	features?: string[];
 	goNextPage?: () => void;
 	goPreviousPage?: () => void;
+	meta?: Record<string, unknown>;
 };
 
 export type SuggesterOption = {
@@ -82,6 +83,13 @@ export type ComponentPropsByType = {
 		value: null | string;
 		response: { name: string };
 		componentType?: 'Input';
+	};
+	Accordion: LunaticBaseProps<string> & {
+		componentType?: 'Accordion';
+		items: {
+			label: ReactNode;
+			body: ReactNode;
+		}[];
 	};
 	Sequence: Pick<
 		LunaticBaseProps<string>,
