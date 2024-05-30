@@ -358,7 +358,7 @@
 								"type": "VTL"
 							},
 							"description": {
-								"value": "Exemple : résidence de la forêt",
+								"value": "\"Exemple : résidence de la forêt\"",
 								"type": "VTL"
 							},
 							"maxLength": 80,
@@ -379,7 +379,7 @@
 								"type": "VTL"
 							},
 							"description": {
-								"value": "Exemple : Bâtiment Tilleuil",
+								"value": "\"Exemple : Bâtiment Tilleuil\"",
 								"type": "VTL"
 							},
 							"maxLength": 80,
@@ -421,7 +421,7 @@
 								"type": "VTL"
 							},
 							"description": {
-								"value": "Exemple : 4",
+								"value": "\"Exemple : 4\"",
 								"type": "VTL"
 							},
 							"maxLength": 80,

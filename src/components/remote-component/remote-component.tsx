@@ -3,20 +3,46 @@ import type { LunaticComponentProps } from '../type';
 import { OrchestratedComponent } from '../commons';
 import { collecteValue } from '../table/cell';
 
+const LATENCY = 2000;
+
 /**
- * A durcir. comment refetch si le réseau est incertain...
+ * logique d'appel au service (sans auth)
+ *
  */
 const fetchFromServer = (
 	remote: string,
-	values: unknown
+	values: unknown,
+	retry = [true, true, true, false] // on retente 3 fois à une LATENCY d'interval
 ): Promise<Record<string, unknown>> => {
-	return fetch(remote, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(values),
-	}).then((response) => response.json());
+	return new Promise((resolve) => {
+		fetch(remote, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(values),
+		})
+			.then((response) => {
+				if (response.ok) {
+					return response.json();
+				} else {
+					resolve({ SUGGESTED: false });
+				}
+			})
+			.then((r) => {
+				resolve(r);
+			})
+			.catch(() => {
+				const [is, ...rest] = retry;
+				if (is) {
+					window.setTimeout(() => {
+						resolve(fetchFromServer(remote, values, rest));
+					}, LATENCY);
+				} else {
+					resolve({ SUGGESTED: false });
+				}
+			});
+	});
 };
 
 /**
