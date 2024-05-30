@@ -1,5 +1,5 @@
 {
-	"maxPage": "2",
+	"maxPage": "3",
 	"components": [
 		{
 			"id": "lfs5q1zj-questioninformation",
@@ -129,7 +129,7 @@
 				"type": "VTL|MD"
 			},
 			"description": {
-				"value": "\"This is your opportunity to tell me about yourself!\"",
+				"value": "\"XXXX\"",
 				"type": "VTL|MD"
 			},
 			"components": [
@@ -139,54 +139,61 @@
 					"mandatory": false,
 
 					"remote": "http://localhost:4000/api/recensement/adresse",
-					"conditionFilter": { "value": "true", "type": "VTL" },
+					"conditionFilter": {
+						"value": "MODIFICATION_LOC = false",
+						"type": "VTL"
+					},
 					"components": [
 						{
-							"componentType": "Input",
+							"id": "Summary",
+							"componentType": "Summary",
 							"label": {
-								"value": "\"Numéro de la voie.\"",
-								"type": "VTL|MD"
+								"value": "  if(MODIFICATION_LOC = false) then \"Nous vous suggérons cette adresse :\" else \"Votre adresse :\"",
+								"type": "VTL"
 							},
-							"maxLength": 30,
-							"id": "numero-voie",
-							"description": {
-								"value": "\"12, par exemple.\"",
-								"type": "VTL|MD"
-							},
-							"response": {
-								"name": "NUMVOIE"
-							}
-						},
-						{
-							"componentType": "Input",
-							"label": {
-								"value": "\"Type de la voie.\"",
-								"type": "VTL|MD"
-							},
-							"maxLength": 30,
-							"id": "type-voie",
-							"description": {
-								"value": "\"Rue, avenue, ....\"",
-								"type": "VTL|MD"
-							},
-							"response": {
-								"name": "TYPEVOIE"
-							}
-						},
-						{
-							"componentType": "Input",
-							"label": {
-								"value": "\"Libellé de la voie.\"",
-								"type": "VTL|MD"
-							},
-							"maxLength": 30,
-							"id": "libelle-voie",
-							"description": {
-								"value": "\"Par exemple, Victor Hugo.\"",
-								"type": "VTL|MD"
-							},
-							"response": {
-								"name": "LIBVOIE"
+							"sections": [
+								{
+									"id": "section",
+									"title": {
+										"value": "\"Voie\"",
+										"type": "VTL"
+									},
+									"responses": [
+										{
+											"label": {
+												"value": "\"\"",
+												"type": "VTL"
+											},
+											"value": {
+												"value": "VOI_CONCAT",
+												"type": "VTL"
+											}
+										}
+									]
+								},
+								{
+									"id": "section",
+									"title": {
+										"value": "\"Commune\"",
+										"type": "VTL"
+									},
+									"responses": [
+										{
+											"label": {
+												"value": "\"\"",
+												"type": "VTL"
+											},
+											"value": {
+												"value": "COMMUNE_CONCAT",
+												"type": "VTL"
+											}
+										}
+									]
+								}
+							],
+							"conditionFilter": {
+								"value": "SUGGESTED and MODIFICATION_LOC = false",
+								"type": "VTL"
 							}
 						}
 					],
@@ -195,8 +202,277 @@
 						{ "response": { "name": "ADR_RANG" } },
 						{ "response": { "name": "LOG_RANG" } }
 					]
+				},
+				{
+					"id": "1",
+					"page": "2",
+					"componentType": "Switch",
+					"mandatory": false,
+					"label": {
+						"value": "\"Je souhaite modifier mon adresse.\"",
+						"type": "VTL|MD"
+					},
+					"conditionFilter": {
+						"value": "SUGGESTED or (SUGGESTED = false and MODIFICATION_LOC)",
+						"type": "VTL"
+					},
+					"statusLabel": { "true": "Oui", "false": "Non" },
+					"response": {
+						"name": "MODIFICATION_LOC"
+					}
+				},
+				{
+					"id": "num-voi-loc",
+					"componentType": "Input",
+					"label": {
+						"value": "\"Numéro de voie\"",
+						"type": "VTL"
+					},
+					"description": { "value": "\"Exemple : 56\"", "type": "VTL" },
+					"maxLength": 80,
+					"controls": [],
+					"conditionFilter": {
+						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"type": "VTL"
+					},
+					"response": {
+						"name": "NUMVOI_LOC"
+					}
+				},
+				{
+					"id": "indice-rep",
+					"componentType": "Input",
+					"label": {
+						"value": "\"Indice de répétition\"",
+						"type": "VTL"
+					},
+					"description": { "value": "\"Bis, ter, ...\"", "type": "VTL" },
+					"maxLength": 80,
+					"controls": [],
+					"conditionFilter": {
+						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"type": "VTL"
+					},
+					"response": {
+						"name": "BISTER_LOC"
+					}
+				},
+				{
+					"id": "type-voie",
+					"componentType": "Input",
+					"label": {
+						"value": "\"Type de voie\"",
+						"type": "VTL"
+					},
+					"description": { "value": "\"Rue, avenue,...\"", "type": "VTL" },
+					"maxLength": 80,
+					"controls": [],
+					"conditionFilter": {
+						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"type": "VTL"
+					},
+					"response": {
+						"name": "TYPEVOI_LOC"
+					}
+				},
+				{
+					"id": "libelle-voie",
+					"componentType": "Input",
+					"label": {
+						"value": "\"Libellé de la voie\"",
+						"type": "VTL"
+					},
+					"description": {
+						"value": "\"Exemple : du labradore\"",
+						"type": "VTL"
+					},
+					"maxLength": 80,
+					"controls": [],
+					"conditionFilter": {
+						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"type": "VTL"
+					},
+					"response": {
+						"name": "NOMVOI_LOC"
+					}
+				},
+				{
+					"id": "code-postal",
+					"componentType": "Input",
+					"label": {
+						"value": "\"Code postal\"",
+						"type": "VTL"
+					},
+					"description": { "value": "\"Exemple : 75012\"", "type": "VTL" },
+					"maxLength": 80,
+					"controls": [],
+					"conditionFilter": {
+						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"type": "VTL"
+					},
+					"response": {
+						"name": "CPOST_LOC"
+					}
+				},
+				{
+					"id": "libelle-commune",
+					"componentType": "Input",
+					"label": {
+						"value": "\"Commune (et arrondissement pour Paris, Lyon et Marseille)\"",
+						"type": "VTL"
+					},
+					"readOnly": "true",
+					"description": {
+						"value": "\"Si le nom de votre commune est incorrect, veuillez contacter votre mairie ou votre agent recenseur.\"",
+						"type": "VTL"
+					},
+					"maxLength": 80,
+					"controls": [],
+					"conditionFilter": {
+						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"type": "VTL"
+					},
+					"response": {
+						"name": "COM_LOC"
+					}
+				},
+				{
+					"id": "component-set-complements-adresse",
+					"componentType": "ComponentSet",
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"page": "2",
+					"label": {
+						"value": "\"## Compléments d'adresse\"",
+						"type": "VTL|MD"
+					},
+					"description": {
+						"value": "\"XXXX\"",
+						"type": "VTL|MD"
+					},
+					"components": [
+						{
+							"id": "hameau",
+							"componentType": "Input",
+							"label": {
+								"value": "\"Residence, lotissement, hameau, ...\"",
+								"type": "VTL"
+							},
+							"description": {
+								"value": "Exemple : résidence de la forêt",
+								"type": "VTL"
+							},
+							"maxLength": 80,
+							"controls": [],
+							"conditionFilter": {
+								"value": "true",
+								"type": "VTL"
+							},
+							"response": {
+								"name": "RES_LOC"
+							}
+						},
+						{
+							"id": "batiment",
+							"componentType": "Input",
+							"label": {
+								"value": "\"Bâtiment\"",
+								"type": "VTL"
+							},
+							"description": {
+								"value": "Exemple : Bâtiment Tilleuil",
+								"type": "VTL"
+							},
+							"maxLength": 80,
+							"controls": [],
+							"conditionFilter": {
+								"value": "true",
+								"type": "VTL"
+							},
+							"response": {
+								"name": "BAT_LOC"
+							}
+						},
+						{
+							"id": "escalier",
+							"componentType": "Input",
+							"label": {
+								"value": "\"Escalier\"",
+								"type": "VTL"
+							},
+							"description": {
+								"value": "Exemple : A",
+								"type": "VTL"
+							},
+							"maxLength": 80,
+							"controls": [],
+							"conditionFilter": {
+								"value": "true",
+								"type": "VTL"
+							},
+							"response": {
+								"name": "ESC_LOC"
+							}
+						},
+						{
+							"id": "etage",
+							"componentType": "Input",
+							"label": {
+								"value": "\"Etage\"",
+								"type": "VTL"
+							},
+							"description": {
+								"value": "Exemple : 4",
+								"type": "VTL"
+							},
+							"maxLength": 80,
+							"controls": [],
+							"conditionFilter": {
+								"value": "true",
+								"type": "VTL"
+							},
+							"response": {
+								"name": "ETAGE_LOC"
+							}
+						},
+						{
+							"id": "num-porte",
+							"componentType": "Input",
+							"label": {
+								"value": "\"Numéro de porte ou position par rapport à l'escalier\"",
+								"type": "VTL"
+							},
+							"description": {
+								"value": "\"Exemple : 1ère porte à gauche en sortant de l’ascenseur\"",
+								"type": "VTL"
+							},
+							"maxLength": 80,
+							"controls": [],
+							"conditionFilter": {
+								"value": "true",
+								"type": "VTL"
+							},
+							"response": {
+								"name": "N_PORTE_LOC"
+							}
+						}
+					]
 				}
 			]
+		},
+		{
+			"id": "kkxugktl-title",
+			"componentType": "Sequence",
+			"page": "3",
+			"title": "Bye",
+			"label": {
+				"value": "\"Merci pour vos réponses\"",
+				"type": "VTL"
+			},
+			"declarations": [],
+			"conditionFilter": {
+				"value": "true",
+				"type": "VTL"
+			}
 		}
 	],
 	"variables": [
@@ -235,7 +511,7 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "TYPEVOIE",
+			"name": "NUMVOI_LOC",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -246,10 +522,10 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "NUMVOIE",
+			"name": "BISTER_LOC",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": "TATA",
+				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
@@ -257,10 +533,10 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "LIBVOIE",
+			"name": "TYPEVOI_LOC",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": "TATA",
+				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
@@ -268,7 +544,106 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "ISMODLOC",
+			"name": "NOMVOI_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "RES_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "BAT_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CPOST_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "LIBELLE_COMMUNE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ESC_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "ETAGE_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "N_PORTE_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "SUGGESTED",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "MODIFICATION_LOC",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": false,
@@ -276,6 +651,42 @@
 				"EDITED": null,
 				"INPUTTED": null
 			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "COM_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": "Paris(12)",
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "VOI_CONCAT",
+			"expression": {
+				"value": "(if (isnull(NUMVOI_LOC)) then \"\" else (NUMVOI_LOC || \" \")) || (if (isnull(BISTER_LOC)) then \"\" else (BISTER_LOC || \" \")) || (if (isnull(TYPEVOI_LOC)) then \"\" else (TYPEVOI_LOC || \" \")) || (if (isnull(NOMVOI_LOC)) then \"\" else (NOMVOI_LOC || \" \"))",
+				"type": "VTL"
+			},
+			"bindingDependencies": [
+				"NUMVOI_LOC",
+				"BISTER_LOC",
+				"TYPEVOI_LOC",
+				"NOMVOI_LOC"
+			],
+			"inFilter": "false"
+		},
+		{
+			"variableType": "CALCULATED",
+			"name": "COMMUNE_CONCAT",
+			"expression": {
+				"value": "(if (isnull(CPOST_LOC)) then \"\" else (CPOST_LOC || \" \")) || (if (isnull(LIBELLE_COMMUNE)) then \"\" else (LIBELLE_COMMUNE || \" \")) ",
+				"type": "VTL"
+			},
+			"bindingDependencies": ["CPOST_LOC", "LIBELLE_COMMUNE"],
+			"inFilter": "false"
 		}
 	]
 }
