@@ -125,7 +125,7 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"page": "2",
 			"label": {
-				"value": "\"## Quelle est l'adresse de votre logement ?\"",
+				"value": "if RESPONSE = true then \"## Basé sur les rangs d'adresse que vous avez entré, nous avons identifié cette adresse pour votre logement : \" else \" Quelle est l'adresse de votre logement ? \"",
 				"type": "VTL|MD"
 			},
 			"description": {
@@ -141,59 +141,16 @@
 					"latency": 2000,
 					"remote": "http://localhost:4000/api/recensement/adresse",
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC = false",
+						"value": "true",
 						"type": "VTL"
 					},
 					"components": [
 						{
-							"id": "Summary",
-							"componentType": "Summary",
-							"label": {
-								"value": "  if(MODIFICATION_LOC = false) then \"Nous vous suggérons cette adresse :\" else \"Votre adresse :\"",
-								"type": "VTL"
-							},
-							"sections": [
-								{
-									"id": "section",
-									"title": {
-										"value": "\"Voie\"",
-										"type": "VTL"
-									},
-									"responses": [
-										{
-											"label": {
-												"value": "\"\"",
-												"type": "VTL"
-											},
-											"value": {
-												"value": "VOI_CONCAT",
-												"type": "VTL"
-											}
-										}
-									]
-								},
-								{
-									"id": "section",
-									"title": {
-										"value": "\"Commune\"",
-										"type": "VTL"
-									},
-									"responses": [
-										{
-											"label": {
-												"value": "\"\"",
-												"type": "VTL"
-											},
-											"value": {
-												"value": "COMMUNE_CONCAT",
-												"type": "VTL"
-											}
-										}
-									]
-								}
-							],
+							"id": "Subsequence",
+							"componentType": "Subsequence",
+							"label": { "type": "VTL|MD", "value": "\"## \" || VOI_CONCAT || COMMUNE_CONCAT \n\n" },
 							"conditionFilter": {
-								"value": "RESPONSE and MODIFICATION_LOC = false",
+								"value": "RESPONSE",
 								"type": "VTL"
 							}
 						}
@@ -205,23 +162,35 @@
 					]
 				},
 				{
-					"id": "1",
-					"page": "2",
-					"componentType": "Switch",
-					"mandatory": false,
-					"label": {
-						"value": "\"Je souhaite modifier mon adresse.\"",
+			"id": "radio",
+			"componentType": "Radio",
+			"mandatory": false,
+			"page": "2",
+			"label": {
+				"value": "\"### L'adresse de votre logement est-elle correcte ?\"",
+				"type": "VTL|MD"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"options": [
+				{
+					"value": "1",
+					"description": {
+						"value": "\" oui\"",
 						"type": "VTL|MD"
 					},
-					"conditionFilter": {
-						"value": "RESPONSE or (RESPONSE = false and MODIFICATION_LOC)",
-						"type": "VTL"
-					},
-					"statusLabel": { "true": "Oui", "false": "Non" },
-					"response": {
-						"name": "MODIFICATION_LOC"
-					}
+					"label": { "value": "\"oui\"", "type": "VTL|MD" }
 				},
+				{
+					"value": "2",
+					"description": {
+						"value": "\" non\"",
+						"type": "VTL|MD"
+					},
+					"label": { "value": "\"non\"", "type": "VTL|MD" }
+				}
+			],
+			"response": { "name": "MODIFICATION_LOC" }
+		},
 				{
 					"id": "num-voi-loc",
 					"componentType": "Input",
@@ -231,10 +200,9 @@
 					},
 					"description": { "value": "\"Exemple : 56\"", "type": "VTL" },
 					"maxLength": 80,
-					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or RESPONSE = false",
-						"type": "VTL"
+						"value": "if MODIFICATION_LOC = \"2\" then true else false",
+						"type": "VTL|MD"
 					},
 					"response": {
 						"name": "NUMVOI_LOC"
@@ -251,7 +219,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or RESPONSE = false",
+						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -269,7 +237,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or RESPONSE = false",
+						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -290,7 +258,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or RESPONSE = false",
+						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -308,7 +276,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or RESPONSE = false",
+						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -330,7 +298,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or RESPONSE = false",
+						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -340,10 +308,10 @@
 				{
 					"id": "component-set-complements-adresse",
 					"componentType": "ComponentSet",
-					"conditionFilter": { "value": "true", "type": "VTL" },
+					"conditionFilter": { "value": "MODIFICATION_LOC = \"1\" or MODIFICATION_LOC = \"2\"", "type": "VTL" },
 					"page": "2",
 					"label": {
-						"value": "\"## Compléments d'adresse\"",
+						"value": "\"### Compléter vos compléments d'adresse si vous en avez\"",
 						"type": "VTL|MD"
 					},
 					"description": {
@@ -443,7 +411,7 @@
 								"type": "VTL"
 							},
 							"description": {
-								"value": "\"Exemple : 1ère porte à gauche en sortant de l’ascenseur\"",
+								"value": "\"Exemple : 1ère porte à gauche en sortant de l'escalier\"",
 								"type": "VTL"
 							},
 							"maxLength": 80,
@@ -647,7 +615,7 @@
 			"name": "MODIFICATION_LOC",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": false,
+				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
