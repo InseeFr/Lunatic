@@ -192,7 +192,7 @@
 								}
 							],
 							"conditionFilter": {
-								"value": "SUGGESTED and MODIFICATION_LOC = false",
+								"value": "RESPONSE and MODIFICATION_LOC = false",
 								"type": "VTL"
 							}
 						}
@@ -213,7 +213,7 @@
 						"type": "VTL|MD"
 					},
 					"conditionFilter": {
-						"value": "SUGGESTED or (SUGGESTED = false and MODIFICATION_LOC)",
+						"value": "RESPONSE or (RESPONSE = false and MODIFICATION_LOC)",
 						"type": "VTL"
 					},
 					"statusLabel": { "true": "Oui", "false": "Non" },
@@ -232,7 +232,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"value": "MODIFICATION_LOC or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -250,7 +250,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"value": "MODIFICATION_LOC or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -268,7 +268,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"value": "MODIFICATION_LOC or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -289,7 +289,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"value": "MODIFICATION_LOC or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -307,7 +307,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"value": "MODIFICATION_LOC or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -329,7 +329,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC or SUGGESTED = false",
+						"value": "MODIFICATION_LOC or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -632,10 +632,10 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "SUGGESTED",
+			"name": "RESPONSE",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": null,
+				"COLLECTED": false,
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null

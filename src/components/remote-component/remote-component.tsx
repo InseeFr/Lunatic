@@ -12,7 +12,7 @@ const LATENCY = 2000;
 const fetchFromServer = (
 	remote: string,
 	values: unknown,
-	retry = [true, true, true, false] // on retente 3 fois à une LATENCY d'interval
+	retry = [true, true, true, false] // on retente 3 fois à une LATENCY mms d'interval
 ): Promise<Record<string, unknown>> => {
 	return new Promise((resolve) => {
 		fetch(remote, {
@@ -26,7 +26,7 @@ const fetchFromServer = (
 				if (response.ok) {
 					return response.json();
 				} else {
-					resolve({ SUGGESTED: false });
+					resolve({ RESPONSE: false });
 				}
 			})
 			.then((r) => {
@@ -39,7 +39,7 @@ const fetchFromServer = (
 						resolve(fetchFromServer(remote, values, rest));
 					}, LATENCY);
 				} else {
-					resolve({ SUGGESTED: false });
+					resolve({ RESPONSE: false });
 				}
 			});
 	});

@@ -18,10 +18,10 @@ app.post('/api/recensement/adresse', (request, response) => {
 			NOMVOI_LOC: 'de Picpus',
 			CPOST_LOC: '75012',
 			LIBELLE_COMMUNE: 'Paris',
-			SUGGESTED: true,
+			RESPONSE: true,
 		});
 	} else {
-		response.status(201).json({ SUGGESTED: false });
+		response.status(201).json({ RESPONSE: false });
 	}
 });
 
