@@ -4,6 +4,7 @@ import { OrchestratedComponent } from '../commons';
 import { collecteValue } from '../table/cell';
 
 const LATENCY = 2000;
+const RETRY = 3;
 
 /**
  * logique d'appel au service (sans auth)
@@ -12,7 +13,8 @@ const LATENCY = 2000;
 const fetchFromServer = (
 	remote: string,
 	values: unknown,
-	retry = [true, true, true, false] // on retente 3 fois à une LATENCY mms d'interval
+	retry = RETRY,
+	latency = LATENCY
 ): Promise<Record<string, unknown>> => {
 	return new Promise((resolve) => {
 		fetch(remote, {
@@ -33,11 +35,10 @@ const fetchFromServer = (
 				resolve(r);
 			})
 			.catch(() => {
-				const [is, ...rest] = retry;
-				if (is) {
+				if (retry > 0) {
 					window.setTimeout(() => {
-						resolve(fetchFromServer(remote, values, rest));
-					}, LATENCY);
+						resolve(fetchFromServer(remote, values, retry - 1));
+					}, latency);
 				} else {
 					resolve({ RESPONSE: false });
 				}
@@ -61,6 +62,8 @@ export function RemoteComponent(
 		handleChange,
 		executeExpression,
 		iteration,
+		retry = RETRY,
+		latency = LATENCY,
 	} = props;
 
 	const loading = useRef(false);
@@ -69,18 +72,18 @@ export function RemoteComponent(
 	useEffect(() => {
 		if (remote && !loading.current && !fetched.current) {
 			loading.current = true;
-			fetchFromServer(remote, value).then(
+			fetchFromServer(remote, value, retry, latency).then(
 				(response: Record<string, unknown>) => {
 					fetched.current = true;
 					if (response) {
 						Object.entries(response).forEach(([name, value]) => {
-							handleChange({ name }, value as string); // il y a probablement mieux à faire
+							handleChange({ name }, value as string);
 						});
 					}
 				}
 			);
 		}
-	}, [remote, value, handleChange]);
+	}, [remote, value, handleChange, retry, latency]);
 
 	/**
 	 * // TODO Gérer les component Set

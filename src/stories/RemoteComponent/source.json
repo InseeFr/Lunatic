@@ -137,7 +137,8 @@
 					"id": "remote",
 					"componentType": "RemoteComponent",
 					"mandatory": false,
-
+					"retry": 6,
+					"latency": 2000,
 					"remote": "http://localhost:4000/api/recensement/adresse",
 					"conditionFilter": {
 						"value": "MODIFICATION_LOC = false",

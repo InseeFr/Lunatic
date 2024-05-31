@@ -240,6 +240,8 @@ type ComponentPropsByType = {
 		remote: string;
 		responses?: Array<{ responses: { name: string } }>;
 		value: Record<string, unknown>;
+		latency?: number;
+		retry?: number;
 	};
 };
 
