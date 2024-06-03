@@ -401,7 +401,7 @@
 								"type": "VTL"
 							},
 							"description": {
-								"value": "Exemple : A",
+								"value": "\"Exemple : A\"",
 								"type": "VTL"
 							},
 							"maxLength": 80,
