@@ -84,7 +84,8 @@ export function reducerInitializer({
 			if (
 				features.includes(MD) &&
 				expressionType.includes(MD) &&
-				typeof result === 'string'
+				typeof result === 'string' &&
+				result !== ''
 			) {
 				return <MDLabel expression={result} />;
 			}
