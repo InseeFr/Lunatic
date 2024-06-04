@@ -46,7 +46,8 @@ function LunaticDeclarations({
 	type = 'AFTER_QUESTION_TEXT',
 	declarations,
 }: Props) {
-	const filtered = declarations?.filter((d) => d.position === type) ?? [];
+	const filtered =
+		declarations?.filter((d) => d.position === type && d.label) ?? [];
 
 	if (filtered.length === 0) {
 		return null;
