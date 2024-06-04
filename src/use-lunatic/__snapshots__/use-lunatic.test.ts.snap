@@ -19,7 +19,7 @@ exports[`use-lunatic() > getData() > should only return requested variables 1`] 
 exports[`use-lunatic() > getData() > should return calculated values 1`] = `
 {
   "CALCULATED": {
-    "FILTER_RESULT_AGE_CHAR": true,
+    "FILTER_RESULT_AGE_CHAR": [],
     "FILTER_RESULT_AUDIENCE_SHARE": true,
     "FILTER_RESULT_BIRTH_CHARACTER": true,
     "FILTER_RESULT_CITY": true,
@@ -35,15 +35,15 @@ exports[`use-lunatic() > getData() > should return calculated values 1`] = `
     "FILTER_RESULT_DURATIONM": true,
     "FILTER_RESULT_DURATIONY": true,
     "FILTER_RESULT_DURATIONYM": true,
-    "FILTER_RESULT_FAVCHAR": true,
+    "FILTER_RESULT_FAVCHAR": [],
     "FILTER_RESULT_FAVOURITE_CHAR": true,
     "FILTER_RESULT_FEELCHAREV": true,
     "FILTER_RESULT_ICE_FLAVOUR": true,
     "FILTER_RESULT_LAST_FOOD_SHOPPING": true,
     "FILTER_RESULT_LEAVDURATION": true,
     "FILTER_RESULT_MAYOR": true,
-    "FILTER_RESULT_MEMORY_CHAR": true,
-    "FILTER_RESULT_NAME_CHAR": true,
+    "FILTER_RESULT_MEMORY_CHAR": [],
+    "FILTER_RESULT_NAME_CHAR": [],
     "FILTER_RESULT_NB_CHAR": true,
     "FILTER_RESULT_NUCLEAR_CHARACTER": true,
     "FILTER_RESULT_PERCENTAGE_EXPENSES": true,
@@ -59,7 +59,7 @@ exports[`use-lunatic() > getData() > should return calculated values 1`] = `
   },
   "COLLECTED": {
     "AGE_CHAR": {
-      "COLLECTED": undefined,
+      "COLLECTED": [],
       "EDITED": [],
       "FORCED": [],
       "INPUTTED": [],
@@ -248,14 +248,14 @@ exports[`use-lunatic() > getData() > should return calculated values 1`] = `
       "PREVIOUS": null,
     },
     "FAVCHAR": {
-      "COLLECTED": undefined,
+      "COLLECTED": [],
       "EDITED": [],
       "FORCED": [],
       "INPUTTED": [],
       "PREVIOUS": [],
     },
     "FAVOURITE_CHAR1": {
-      "COLLECTED": undefined,
+      "COLLECTED": [],
       "EDITED": [],
       "FORCED": [],
       "INPUTTED": [],
@@ -451,14 +451,14 @@ exports[`use-lunatic() > getData() > should return calculated values 1`] = `
       "PREVIOUS": null,
     },
     "MEMORY_CHAR": {
-      "COLLECTED": undefined,
+      "COLLECTED": [],
       "EDITED": [],
       "FORCED": [],
       "INPUTTED": [],
       "PREVIOUS": [],
     },
     "NAME_CHAR": {
-      "COLLECTED": undefined,
+      "COLLECTED": [],
       "EDITED": [],
       "FORCED": [],
       "INPUTTED": [],
