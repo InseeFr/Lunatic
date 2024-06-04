@@ -547,7 +547,7 @@
 				"locked": {
 					"type": "boolean"
 				},
-				"progressVariable": {"type": "string"},
+				"progressVariable": { "type": "string" },
 				"item": {
 					"type": "object",
 					"properties": {
