@@ -13,7 +13,6 @@ export function SchemaValidator({ source }) {
 		const validator = ajv.compile(LunaticSchema);
 		const isSourceValid = validator(structuredClone(source)); // ajv mutate the object, send a clone
 		if (!isSourceValid) {
-			console.log(validator.errors, source);
 			return validator.errors;
 		}
 		return null;

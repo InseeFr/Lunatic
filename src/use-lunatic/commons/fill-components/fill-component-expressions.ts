@@ -15,6 +15,7 @@ const VTL_ATTRIBUTES = [
 	['responses.label', null],
 	['responses.description', null],
 	['options.description', null],
+	['options.detail.label', null],
 	['controls.iterations', castNumber],
 	['items.label', null],
 	['items.body', null],

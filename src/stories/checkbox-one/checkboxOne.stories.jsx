@@ -1,6 +1,7 @@
 import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
+import sourceWithDetail from './sourceDetail';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
@@ -22,3 +23,10 @@ const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
 Default.args = { id: 'checkboxOne', source, shortcut: false };
+
+export const WithDetail = Template.bind({});
+WithDetail.args = {
+	id: 'checkboxOne',
+	source: sourceWithDetail,
+	shortcut: false,
+};

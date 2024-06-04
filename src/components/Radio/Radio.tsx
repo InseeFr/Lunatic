@@ -10,8 +10,6 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 		value,
 		checkboxStyle,
 		errors,
-		handleChanges,
-		response,
 		label,
 		shortcut,
 		className = 'lunatic-radio-group',
@@ -26,7 +24,6 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 			options={options}
 			value={value}
 			description={description}
-			onSelect={(value) => handleChanges([{ name: response.name, value }])}
 			checkboxStyle={checkboxStyle}
 			errors={getComponentErrors(errors, id)}
 			label={label}

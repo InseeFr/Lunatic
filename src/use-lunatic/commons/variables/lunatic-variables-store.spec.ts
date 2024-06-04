@@ -237,6 +237,14 @@ describe('lunatic-variables-store', () => {
 			variables.set('LIENS', '12', { iteration: [0, 0] });
 			expect(variables.get('IS_12', [0])).toBe(1);
 		});
+		it('should handle empty array for calculated', () => {
+			variables.set('AGE', []);
+			variables.setCalculated('MAJEUR', 'AGE > 18', {
+				dependencies: ['AGE'],
+				shapeFrom: 'AGE',
+			});
+			expect(variables.get('MAJEUR')).toEqual([]);
+		});
 	});
 
 	describe('resizing', () => {
