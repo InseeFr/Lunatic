@@ -49,8 +49,8 @@ export function getPagerFromPageTag(pageTag: string | number = 1) {
 
 export function isNewReachedPage(pager: LunaticReducerState['pager']): boolean {
 	const { lastReachedPage } = pager;
-	const pageTag = getPageTag(pager)
-	return pageTagComparator(pageTag, lastReachedPage ?? '0') > 0
+	const pageTag = getPageTag(pager);
+	return pageTagComparator(pageTag, lastReachedPage ?? '0') > 0;
 }
 
 export function getNewReachedPage(
