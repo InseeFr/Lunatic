@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { CustomRoundabout } from './CustomRoundabout';
 import { describe, it, expect, vi, afterEach } from 'vitest';
@@ -10,23 +10,25 @@ describe('Roundabout', () => {
 		mockGoToIteration.mockClear();
 	});
 
-	const iterations = 3;
-	const expressions = {
-		complete: [true, false, false],
-		partial: [false, true, false],
-		label: ['Step 1', 'Step 2', 'Step 3'],
-		unnecessary: [false, false, false],
-	};
+	const items = [
+		{
+			label: 'Step 1',
+			progress: -1,
+		},
+		{
+			label: 'Step 2',
+			progress: 0,
+		},
+		{
+			label: 'Step 3',
+			progress: 1,
+		},
+	];
 	const label = 'My Roundabout';
-	const locked = false;
 
 	it('renders the roundabout correctly', () => {
 		const { getByText } = render(
-			<CustomRoundabout
-				iterations={iterations}
-				expressions={expressions}
-				goToIteration={mockGoToIteration}
-			/>
+			<CustomRoundabout items={items} goToIteration={mockGoToIteration} />
 		);
 
 		expect(getByText('Step 1')).toBeInTheDocument();
@@ -40,11 +42,9 @@ describe('Roundabout', () => {
 	it('calls the goToIteration function when a button is clicked', () => {
 		const { getByText } = render(
 			<CustomRoundabout
-				iterations={iterations}
-				expressions={expressions}
+				items={items}
 				goToIteration={mockGoToIteration}
 				label={label}
-				locked={locked}
 			/>
 		);
 
@@ -53,30 +53,5 @@ describe('Roundabout', () => {
 
 		expect(mockGoToIteration).toHaveBeenCalledTimes(1);
 		expect(mockGoToIteration).toHaveBeenCalledWith(1);
-	});
-
-	it('disables buttons correctly when necessary', () => {
-		const lockedExpressions = {
-			complete: [true, false, false],
-			partial: [false, true, false],
-			iterationLabels: ['Step 1', 'Step 2', 'Step 3'],
-			unnecessary: [false, false, false],
-		};
-
-		const { getByText } = render(
-			<CustomRoundabout
-				iterations={iterations}
-				expressions={lockedExpressions}
-				goToIteration={mockGoToIteration}
-				label={label}
-				locked={true}
-			/>
-		);
-
-		const completeButton = getByText('Complété');
-		const unstartedButton = getByText('Commencer');
-
-		expect(completeButton).toBeDisabled();
-		expect(unstartedButton).not.toBeDisabled();
 	});
 });

@@ -13,9 +13,11 @@ type Props = PropsWithChildren<{
 	type?: 'button' | 'submit' | 'reset';
 	selected?: boolean;
 	readOnly?: boolean;
+	id?: string;
 }>;
 
 function LunaticButton({
+	id,
 	children,
 	onClick,
 	disabled,
@@ -31,6 +33,7 @@ function LunaticButton({
 	if (isElement(children) || value)
 		return (
 			<button
+				id={id}
 				disabled={disabled || readOnly}
 				type={type}
 				className={classnames('button-lunatic', className, { disabled })}
@@ -43,16 +46,15 @@ function LunaticButton({
 		);
 
 	return (
-		<>
-			<input
-				aria-pressed={selected}
-				disabled={disabled || readOnly} //Readonly is not supported on input type button
-				type="button"
-				className={classnames('button-lunatic', className, { disabled })}
-				value={label ?? children?.toString()}
-				onClick={handleClick}
-			/>
-		</>
+		<input
+			id={id}
+			aria-pressed={selected}
+			disabled={disabled || readOnly} //Readonly is not supported on input type button
+			type="button"
+			className={classnames('button-lunatic', className, { disabled })}
+			value={label ?? children?.toString()}
+			onClick={handleClick}
+		/>
 	);
 }
 

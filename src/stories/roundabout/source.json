@@ -68,21 +68,18 @@
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
 			"label": { "value": "\"Libellé du rondpoint\"", "type": "VTL" },
 			"locked": true,
-			"expressions": {
-				"unnecessary": {
-					"value": "AGE < 13",
-					"type": "VTL"
-				},
-				"complete": {
-					"value": "COMPLETE",
-					"type": "VTL"
-				},
-				"partial": {
-					"value": "PARTIAL",
-					"type": "VTL"
-				},
+			"progressVariable": "PROGRESS",
+			"item": {
 				"label": {
-					"value": "\"Série de question pour \" || PRENOMS",
+					"value": "\"Questions de \" || PRENOMS",
+					"type": "VTL"
+				},
+				"description": {
+					"value": "if AGE > 18 then \"Aller aux question destinées à \" || PRENOMS else PRENOMS || \" n'est pas majeur, il/elle n'a pas à répondre aux questions\"",
+					"type": "VTL"
+				},
+				"disabled": {
+					"value": "AGE < 18",
 					"type": "VTL"
 				}
 			},
@@ -196,11 +193,11 @@
 			"variableType": "COLLECTED",
 			"name": "SOMETHING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"PREVIOUS": [],
+				"COLLECTED": [],
+				"FORCED": [],
+				"EDITED": [],
+				"INPUTTED": []
 			}
 		},
 		{
@@ -218,11 +215,11 @@
 			"variableType": "COLLECTED",
 			"name": "SEXE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"PREVIOUS": [],
+				"COLLECTED": [],
+				"FORCED": [],
+				"EDITED": [],
+				"INPUTTED": []
 			}
 		},
 		{
@@ -240,11 +237,22 @@
 			"variableType": "COLLECTED",
 			"name": "KNOWREC",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"PREVIOUS": [],
+				"COLLECTED": [],
+				"FORCED": [],
+				"EDITED": [],
+				"INPUTTED": []
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PROGRESS",
+			"values": {
+				"PREVIOUS": [],
+				"COLLECTED": [],
+				"FORCED": [],
+				"EDITED": [],
+				"INPUTTED": []
 			}
 		},
 		{

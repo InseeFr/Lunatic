@@ -13,14 +13,6 @@ import type { Table, Tbody, Td, Th, Thead, Tr } from '../Table';
 import type { CustomTextarea } from '../../Textarea/Textarea';
 import type { RadioGroup } from '../Radio/RadioGroup';
 import type { CustomRoundabout } from '../../Roundabout/CustomRoundabout';
-import type {
-	RoundaboutContainer,
-	RoundaboutItContainer,
-	RoundaboutItTitle,
-	RoundaboutLabel,
-	RoundaboutPending,
-} from '../../Roundabout/extra';
-import type { RoundaboutItButton } from '../../Roundabout/RoundaboutItButton';
 import type { Button } from '../Button/Button';
 import type { CustomCheckboxBoolean } from '../../CheckboxBoolean/CheckboxBoolean';
 import type { CheckboxOption } from '../Checkbox/CheckboxOption';
@@ -90,12 +82,6 @@ export type LunaticSlotComponents = {
 
 	// Roundabout
 	Roundabout: typeof CustomRoundabout;
-	RoundaboutContainer: typeof RoundaboutContainer;
-	RoundaboutLabel: typeof RoundaboutLabel;
-	RoundaboutItTitle: typeof RoundaboutItTitle;
-	RoundaboutItContainer: typeof RoundaboutItContainer;
-	RoundaboutItButton: typeof RoundaboutItButton;
-	RoundaboutPending: typeof RoundaboutPending;
 
 	// Suggester
 	SuggesterNotification: typeof SuggesterNotification;
