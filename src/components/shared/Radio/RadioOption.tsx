@@ -8,11 +8,11 @@ import type { InterpretedOption } from '../../../use-lunatic/props/propOptions';
 
 export type Props = {
 	id: string;
+	onKeyDown?: (v: { key: string; index: number }) => void;
 	checkboxStyle?: boolean;
 	shortcut?: boolean;
 	disabled?: boolean;
 	readOnly?: boolean;
-	onKeyDown?: (v: { key: string; index: number }) => void;
 	index?: number;
 	labelledBy?: string;
 	codeModality?: string;

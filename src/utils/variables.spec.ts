@@ -52,7 +52,7 @@ const loopCollectedVariable = {
 		PREVIOUS: [],
 		FORCED: [],
 		EDITED: [],
-		INPUTTED: [],
+		INPUTED: [],
 	},
 	name: 'PRENOMS',
 } as LunaticVariable;

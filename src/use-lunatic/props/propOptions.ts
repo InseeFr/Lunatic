@@ -6,13 +6,13 @@ import { isNumber } from '../../utils/number';
 
 export type InterpretedOption = {
 	label: ReactNode;
-	value: string;
-	checked: boolean;
+	value?: string;
+	checked?: boolean;
 	detailLabel?: ReactNode;
 	description?: ReactNode;
 	detailValue?: unknown;
 	onDetailChange?: (value: string) => void;
-	onCheck: () => void;
+	onCheck?: () => void;
 };
 
 /**
