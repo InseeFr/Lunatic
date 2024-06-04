@@ -83,4 +83,19 @@ describe('Declarations component', () => {
 		const declarationsElement = queryByTestId('declarations-1-DETACHABLE')!;
 		expect(declarationsElement.nextElementSibling).toBeNull();
 	});
+
+	it('renders null with empty Declaration', () => {
+		const declarationstest = [
+			{
+				id: '3',
+				label: '',
+				declarationType: 'COMMENT' as const,
+				position: 'DETACHABLE',
+			},
+		];
+		const { container } = render(
+			<Declarations id="1" type="DETACHABLE" declarations={declarationstest} />
+		);
+		expect(container).toMatchInlineSnapshot(`<div />`);
+	});
 });
