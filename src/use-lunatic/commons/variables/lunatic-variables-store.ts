@@ -359,10 +359,17 @@ class LunaticVariable {
 		this[key].set(undefined, performance.now());
 	}
 
-	private setValueForArray(value: unknown[]) {
+	private setValueForArray(value: unknown[]): boolean {
 		const savedValue = this.getSavedValue();
 		const oldSize = Array.isArray(savedValue) ? savedValue.length : -1;
 		const newSize = value.length;
+
+		// We received an empty array, update value directly
+		if (newSize === 0) {
+			this.value = [];
+			return oldSize !== newSize;
+		}
+
 		// Update every item of the array and look if we changed one item
 		const oneValueChanged =
 			times(Math.max(oldSize, newSize), (k) =>
