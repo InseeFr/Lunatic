@@ -890,7 +890,7 @@
 					"const": "CheckboxOne"
 				},
 				"options": {
-					"$ref": "#/$defs/Options"
+					"$ref": "#/$defs/OptionsWithDetail"
 				}
 			},
 			"required": ["componentType", "options"],
@@ -1081,7 +1081,7 @@
 								"EDITED": {
 									"$ref": "#/$defs/VariableValue"
 								},
-								"INPUTTED": {
+								"INPUTED": {
 									"$ref": "#/$defs/VariableValue"
 								}
 							},
@@ -1090,7 +1090,7 @@
 								"COLLECTED",
 								"FORCED",
 								"EDITED",
-								"INPUTTED"
+								"INPUTED"
 							]
 						}
 					},
@@ -1245,6 +1245,49 @@
 					},
 					"description": {
 						"$ref": "#/$defs/VTLExpression"
+					}
+				},
+				"required": ["value", "label"]
+			}
+		},
+		"OptionsWithDetail": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"oneOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "boolean"
+							}
+						]
+					},
+					"label": {
+						"$ref": "#/$defs/VTLExpression"
+					},
+					"description": {
+						"$ref": "#/$defs/VTLExpression"
+					},
+					"detail": {
+						"type": "object",
+						"properties": {
+							"label": {
+								"$ref": "#/$defs/VTLExpression"
+							},
+							"response": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									}
+								},
+								"required": ["name"]
+							}
+						},
+						"required": ["label", "response"]
 					}
 				},
 				"required": ["value", "label"]

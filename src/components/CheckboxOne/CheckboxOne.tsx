@@ -11,12 +11,10 @@ export function CheckboxOne({
 	id,
 	label,
 	description,
-	handleChanges,
 	errors,
 	disabled,
 	readOnly,
 	shortcut,
-	response,
 	declarations,
 }: LunaticComponentProps<'CheckboxOne'>) {
 	return (
@@ -30,9 +28,6 @@ export function CheckboxOne({
 			errors={getComponentErrors(errors, id)}
 			label={label}
 			description={description}
-			onSelect={(value: string | null) =>
-				handleChanges([{ name: response.name, value }])
-			}
 			checkboxStyle={true}
 			shortcut={shortcut}
 			declarations={declarations}

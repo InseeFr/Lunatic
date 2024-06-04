@@ -32,6 +32,20 @@
 						"type": "VTL|MD"
 					},
 					"label": { "value": "\"non\"", "type": "VTL|MD" }
+				},
+
+				{
+					"value": "3",
+					"label": { "value": "\"Autre\"", "type": "VTL|MD" },
+					"detail": {
+						"label": {
+							"value": "\"Préciser : \"",
+							"type": "VTL"
+						},
+						"response": {
+							"name": "Q3"
+						}
+					}
 				}
 			],
 			"response": { "name": "Q2" }
@@ -46,7 +60,18 @@
 				"COLLECTED": null,
 				"FORCED": null,
 				"EDITED": null,
-				"INPUTTED": null
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "Q3",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
 			}
 		}
 	]

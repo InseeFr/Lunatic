@@ -11,6 +11,7 @@ import type { LunaticComponentProps } from '../../../components/type';
 import { getMissingResponseProp } from '../../props/propMissingResponse';
 import { getValueProp } from '../../props/propValue';
 import { getIterationsProp } from '../../props/propIterations';
+import { getOptionsProp } from '../../props/propOptions';
 
 type FillComponentArgs = {
 	handleChanges: LunaticChangesHandler;
@@ -33,6 +34,7 @@ export const fillComponent = (
 	state: FillComponentArgs
 ): LunaticComponentProps & { conditionFilter?: boolean } => {
 	const interpretedProps = fillComponentExpressions(component, state);
+	const value = getValueProp(component, state);
 	return {
 		...interpretedProps,
 		handleChanges: state.handleChanges,
@@ -44,10 +46,11 @@ export const fillComponent = (
 		goPreviousPage: state.goPreviousPage,
 		iteration: state.pager.iteration,
 		required: 'mandatory' in component ? component.mandatory : false,
-		value: getValueProp(component, state),
+		value: value,
 		missingResponse: getMissingResponseProp(component, state),
 		management: state.management,
 		iterations: getIterationsProp(component, state),
+		options: getOptionsProp(interpretedProps, state, value),
 		...getComponentTypeProps(interpretedProps, state),
 		// This is too dynamic to be typed correctly, so we allow any here
 	} as any;

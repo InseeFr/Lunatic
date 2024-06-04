@@ -17,7 +17,7 @@ describe('RadioOption', () => {
 			<RadioOption
 				id="radio-option"
 				label="Test Option"
-				onClick={onClickMock}
+				onCheck={onClickMock}
 			/>
 		);
 		const option = screen.getByRole('radio');

@@ -7,6 +7,7 @@ import type {
 	LunaticOptions,
 	LunaticReducerState,
 } from '../use-lunatic/type';
+import type { InterpretedOption } from '../use-lunatic/props/propOptions';
 
 type Formats = 'PTnHnM' | 'PnYnM';
 export type VtlExpression = {
@@ -168,12 +169,7 @@ export type ComponentPropsByType = {
 		componentType?: 'CheckboxGroup';
 	};
 	CheckboxOne: LunaticBaseProps<string | null> & {
-		options: Array<{
-			description?: ReactNode;
-			label: ReactNode;
-			value: string;
-		}>;
-		response: { name: string };
+		options: Array<InterpretedOption>;
 		componentType?: 'CheckboxOne';
 	};
 	Switch: LunaticBaseProps<boolean> & {
@@ -186,11 +182,7 @@ export type ComponentPropsByType = {
 		componentType?: 'CheckboxBoolean';
 	};
 	Radio: LunaticBaseProps<string | null> & {
-		options: Array<{
-			description?: ReactNode;
-			label: ReactNode;
-			value: string;
-		}>;
+		options: Array<InterpretedOption>;
 		checkboxStyle?: boolean;
 		response: { name: string };
 		componentType?: 'Radio';

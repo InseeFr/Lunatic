@@ -23,7 +23,6 @@ export type RadioGroupProps = Pick<
 	| 'declarations'
 > & {
 	errors?: LunaticError[];
-	onSelect: (v: string | null) => void;
 	clearable?: boolean;
 };
 
@@ -36,17 +35,15 @@ function LunaticRadioGroup({
 	id,
 	label,
 	description,
-	onSelect,
 	checkboxStyle = false,
 	errors,
 	className,
 	shortcut,
 	disabled,
 	readOnly,
-	clearable,
 	declarations,
 }: RadioGroupProps) {
-	const onKeyDown = useListKeyboardHandler(options, onSelect);
+	const onKeyDown = useListKeyboardHandler(options);
 	const maxIndex = options.length;
 	return (
 		<Fieldset className={className} legend={label} description={description}>
@@ -61,7 +58,6 @@ function LunaticRadioGroup({
 						id={radioId}
 						index={index}
 						checked={value === option.value}
-						onClick={onSelect}
 						onKeyDown={onKeyDown}
 						checkboxStyle={checkboxStyle}
 						codeModality={shortcut ? codeModality : undefined}
