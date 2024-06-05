@@ -140,6 +140,10 @@
 					"retry": 6,
 					"latency": 2000,
 					"remote": "http://localhost:4000/api/recensement/adresse",
+					"waitingMessage": {
+						"value": "\"**Nous cherchons une adresse pour vous, veuillez-patienter svp.**\"",
+						"type": "VTL|MD"
+					},
 					"conditionFilter": {
 						"value": "true",
 						"type": "VTL"
@@ -148,7 +152,10 @@
 						{
 							"id": "Subsequence",
 							"componentType": "Subsequence",
-							"label": { "type": "VTL|MD", "value": "\"## \" || VOI_CONCAT || COMMUNE_CONCAT \n\n" },
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"## \" || VOI_CONCAT || COMMUNE_CONCAT \n\n"
+							},
 							"conditionFilter": {
 								"value": "RESPONSE",
 								"type": "VTL"
@@ -162,35 +169,35 @@
 					]
 				},
 				{
-			"id": "radio",
-			"componentType": "Radio",
-			"mandatory": false,
-			"page": "2",
-			"label": {
-				"value": "\"### L'adresse de votre logement est-elle correcte ?\"",
-				"type": "VTL|MD"
-			},
-			"conditionFilter": { "value": "true", "type": "VTL" },
-			"options": [
-				{
-					"value": "1",
-					"description": {
-						"value": "\" oui\"",
+					"id": "radio",
+					"componentType": "Radio",
+					"mandatory": false,
+					"page": "2",
+					"label": {
+						"value": "\"### L'adresse de votre logement est-elle correcte ?\"",
 						"type": "VTL|MD"
 					},
-					"label": { "value": "\"oui\"", "type": "VTL|MD" }
+					"conditionFilter": { "value": "RESPONSE", "type": "VTL" },
+					"options": [
+						{
+							"value": "1",
+							"description": {
+								"value": "\" oui\"",
+								"type": "VTL|MD"
+							},
+							"label": { "value": "\"oui\"", "type": "VTL|MD" }
+						},
+						{
+							"value": "2",
+							"description": {
+								"value": "\" non\"",
+								"type": "VTL|MD"
+							},
+							"label": { "value": "\"non\"", "type": "VTL|MD" }
+						}
+					],
+					"response": { "name": "MODIFICATION_LOC" }
 				},
-				{
-					"value": "2",
-					"description": {
-						"value": "\" non\"",
-						"type": "VTL|MD"
-					},
-					"label": { "value": "\"non\"", "type": "VTL|MD" }
-				}
-			],
-			"response": { "name": "MODIFICATION_LOC" }
-		},
 				{
 					"id": "num-voi-loc",
 					"componentType": "Input",
@@ -201,7 +208,7 @@
 					"description": { "value": "\"Exemple : 56\"", "type": "VTL" },
 					"maxLength": 80,
 					"conditionFilter": {
-						"value": "if MODIFICATION_LOC = \"2\" then true else false",
+						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
 						"type": "VTL|MD"
 					},
 					"response": {
@@ -308,7 +315,10 @@
 				{
 					"id": "component-set-complements-adresse",
 					"componentType": "ComponentSet",
-					"conditionFilter": { "value": "MODIFICATION_LOC = \"1\" or MODIFICATION_LOC = \"2\"", "type": "VTL" },
+					"conditionFilter": {
+						"value": "(MODIFICATION_LOC = \"1\" or MODIFICATION_LOC = \"2\")or RESPONSE = false",
+						"type": "VTL"
+					},
 					"page": "2",
 					"label": {
 						"value": "\"### Compléter vos compléments d'adresse si vous en avez\"",
@@ -450,7 +460,7 @@
 			"name": "ADR_RANG",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": null,
+				"COLLECTED": "AAA",
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
@@ -461,7 +471,7 @@
 			"name": "LOG_RANG",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": null,
+				"COLLECTED": "AAA",
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
@@ -472,7 +482,7 @@
 			"name": "ZC",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": null,
+				"COLLECTED": "AAAA",
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
@@ -481,6 +491,17 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "NUMVOI_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NUMVOI_LOC_SUGG",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -502,6 +523,17 @@
 		},
 		{
 			"variableType": "COLLECTED",
+			"name": "BISTER_LOC_SUGG",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
 			"name": "TYPEVOI_LOC",
 			"values": {
 				"PREVIOUS": null,
@@ -513,7 +545,73 @@
 		},
 		{
 			"variableType": "COLLECTED",
+			"name": "TYPEVOI_LOC_SUGG",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
 			"name": "NOMVOI_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NOMVOI_LOC_SUGG",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CPOST_LOC",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "CPOST_LOC_SUGG",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "LIBELLE_COMMUNE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "LIBELLE_COMMUNE_SUGG",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -536,28 +634,6 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "BAT_LOC",
-			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
-			}
-		},
-		{
-			"variableType": "COLLECTED",
-			"name": "CPOST_LOC",
-			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
-			}
-		},
-		{
-			"variableType": "COLLECTED",
-			"name": "LIBELLE_COMMUNE",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
@@ -636,14 +712,14 @@
 			"variableType": "CALCULATED",
 			"name": "VOI_CONCAT",
 			"expression": {
-				"value": "(if (isnull(NUMVOI_LOC)) then \"\" else (NUMVOI_LOC || \" \")) || (if (isnull(BISTER_LOC)) then \"\" else (BISTER_LOC || \" \")) || (if (isnull(TYPEVOI_LOC)) then \"\" else (TYPEVOI_LOC || \" \")) || (if (isnull(NOMVOI_LOC)) then \"\" else (NOMVOI_LOC || \" \"))",
+				"value": "(if (isnull(NUMVOI_LOC_SUGG)) then \"\" else (NUMVOI_LOC_SUGG || \" \")) || (if (isnull(BISTER_LOC_SUGG)) then \"\" else (BISTER_LOC_SUGG || \" \")) || (if (isnull(TYPEVOI_LOC_SUGG)) then \"\" else (TYPEVOI_LOC_SUGG || \" \")) || (if (isnull(NOMVOI_LOC_SUGG)) then \"\" else (NOMVOI_LOC_SUGG || \" \"))",
 				"type": "VTL"
 			},
 			"bindingDependencies": [
-				"NUMVOI_LOC",
-				"BISTER_LOC",
-				"TYPEVOI_LOC",
-				"NOMVOI_LOC"
+				"NUMVOI_LOC_SUGG",
+				"BISTER_LOC_SUGG",
+				"TYPEVOI_LOC_SUGG",
+				"NOMVOI_LOC_SUGG"
 			],
 			"inFilter": "false"
 		},
@@ -651,10 +727,10 @@
 			"variableType": "CALCULATED",
 			"name": "COMMUNE_CONCAT",
 			"expression": {
-				"value": "(if (isnull(CPOST_LOC)) then \"\" else (CPOST_LOC || \" \")) || (if (isnull(LIBELLE_COMMUNE)) then \"\" else (LIBELLE_COMMUNE || \" \")) ",
+				"value": "(if (isnull(CPOST_LOC_SUGG)) then \"\" else (CPOST_LOC_SUGG || \" \")) || (if (isnull(LIBELLE_COMMUNE_SUGG)) then \"\" else (LIBELLE_COMMUNE_SUGG || \" \")) ",
 				"type": "VTL"
 			},
-			"bindingDependencies": ["CPOST_LOC", "LIBELLE_COMMUNE"],
+			"bindingDependencies": ["CPOST_LOC_SUGG", "LIBELLE_COMMUNE_SUGG"],
 			"inFilter": "false"
 		}
 	]

@@ -12,16 +12,16 @@ app.post('/api/recensement/adresse', (request, response) => {
 	const { ZC, ADR_RANG, LOG_RANG } = request.body;
 	if (ZC && ADR_RANG && LOG_RANG) {
 		response.status(201).json({
-			NUMVOI_LOC: '14',
-			BISTER_LOC: null,
-			TYPEVOI_LOC: 'Rue',
-			NOMVOI_LOC: 'de Picpus',
-			CPOST_LOC: '75012',
-			LIBELLE_COMMUNE: 'Paris',
+			NUMVOI_LOC_SUGG: '14',
+			BISTER_LOC_SUGG: null,
+			TYPEVOI_LOC_SUGG: 'Rue',
+			NOMVOI_LOC_SUGG: 'de Picpus',
+			CPOST_LOC_SUGG: '75012',
+			LIBELLE_COMMUNE_SUGG: 'Paris',
 			RESPONSE: true,
 		});
 	} else {
-		response.status(201).json({ RESPONSE: false });
+		response.status(404).json({ RESPONSE: false });
 	}
 });
 

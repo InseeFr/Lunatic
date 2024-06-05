@@ -5,6 +5,7 @@ import { collecteValue } from '../table/cell';
 
 const LATENCY = 2000;
 const RETRY = 3;
+const WAITING = 'Waiting';
 
 /**
  * logique d'appel au service (sans auth)
@@ -64,6 +65,7 @@ export function RemoteComponent(
 		iteration,
 		retry = RETRY,
 		latency = LATENCY,
+		waitingMessage = WAITING,
 	} = props;
 
 	const loading = useRef(false);
@@ -85,9 +87,6 @@ export function RemoteComponent(
 		}
 	}, [remote, value, handleChange, retry, latency]);
 
-	/**
-	 * // TODO Gérer les component Set
-	 */
 	if (fetched.current) {
 		if (components && components.length) {
 			return components.map((c, i) => {
@@ -106,5 +105,5 @@ export function RemoteComponent(
 		return <>Nothing to display!</>;
 	}
 
-	return <div>waiting</div>;
+	return <div>{waitingMessage}</div>;
 }

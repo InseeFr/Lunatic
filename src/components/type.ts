@@ -242,6 +242,7 @@ type ComponentPropsByType = {
 		value: Record<string, unknown>;
 		latency?: number;
 		retry?: number;
+		waitingMessage?: ReactNode;
 	};
 };
 
