@@ -283,6 +283,28 @@
 				"EDITED": null,
 				"INPUTTED": null
 			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NATIO1N_OTHER",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NATIO1N_DETAIL",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
 		}
 	]
 }
