@@ -259,7 +259,7 @@ export type Variable =
 				COLLECTED: VariableValue;
 				FORCED: VariableValue;
 				EDITED: VariableValue;
-				INPUTED: VariableValue;
+				INPUTTED: VariableValue;
 			};
 	  }
 	| {

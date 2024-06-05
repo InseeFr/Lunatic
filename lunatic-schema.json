@@ -1081,7 +1081,7 @@
 								"EDITED": {
 									"$ref": "#/$defs/VariableValue"
 								},
-								"INPUTED": {
+								"INPUTTED": {
 									"$ref": "#/$defs/VariableValue"
 								}
 							},
@@ -1090,7 +1090,7 @@
 								"COLLECTED",
 								"FORCED",
 								"EDITED",
-								"INPUTED"
+								"INPUTTED"
 							]
 						}
 					},
