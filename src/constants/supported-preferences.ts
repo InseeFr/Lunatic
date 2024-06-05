@@ -6,5 +6,5 @@ export const supportedPreferences = [
 	C.COLLECTED,
 	C.FORCED,
 	C.EDITED,
-	C.INPUTED,
+	C.INPUTTED,
 ];
