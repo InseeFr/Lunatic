@@ -36,6 +36,19 @@ test.describe('Checkboxes', () => {
 			).not.toHaveAttribute('aria-checked', 'true');
 			await expectCollectedData(page, 'MOIS2', null);
 		});
+
+		test('Can select arbitrary value', async ({ page }) => {
+			await goToStory(page, 'components-checkboxgroup--arbitrary');
+			const selector = page.getByRole('checkbox', { name: 'Autre préciser' });
+			await expect(selector).toBeVisible();
+			await selector.click();
+			await expect(selector).toHaveAttribute('aria-checked', 'true');
+			await page
+				.getByRole('textbox', { name: 'Préciser' })
+				.fill('Demonstration');
+			await expectCollectedData(page, 'NATIO1N_OTHER', true);
+			await expectCollectedData(page, 'NATIO1N_DETAIL', 'Demonstration');
+		});
 	});
 
 	test.describe('CheckboxOne', () => {

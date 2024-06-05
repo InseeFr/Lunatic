@@ -61,7 +61,7 @@ export const CustomCheckboxBoolean = slottableComponent<CustomProps>(
 					disabled={disabled}
 					checked={checked}
 					id={id}
-					onClick={onChange}
+					onCheck={onChange}
 					label={
 						<>
 							{label}

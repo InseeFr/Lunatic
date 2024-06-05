@@ -798,6 +798,18 @@
 							},
 							"id": {
 								"type": "string"
+							},
+							"detail": {
+								"type": "object",
+								"properties": {
+									"label": {
+										"$ref": "#/$defs/VTLExpression"
+									},
+									"response": {
+										"$ref": "#/$defs/ResponseDefinition"
+									}
+								},
+								"required": ["response"]
 							}
 						}
 					}
