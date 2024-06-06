@@ -59,6 +59,7 @@ export function getOptionsProp(
 		description: option.description,
 		value: option.value,
 		checked: value === option.value,
+		detailLabel: 'detail' in option ? option.detail?.label : undefined,
 		onCheck: () => {
 			state.handleChanges([
 				{ name: definition.response.name, value: option.value },
