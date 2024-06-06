@@ -15,7 +15,9 @@ export type VtlExpression = {
 	type: 'VTL' | 'VTL|MD' | 'TXT';
 };
 
-export type LunaticBaseProps<ValueType = unknown> = {
+export interface LunaticExtraProps {}
+
+export type LunaticBaseProps<ValueType = unknown> = LunaticExtraProps & {
 	id: string;
 	handleChanges: LunaticChangesHandler;
 	errors?: { [id: string]: LunaticError[] };

@@ -182,10 +182,7 @@ export type LunaticState = {
 		currentErrors: Record<string, LunaticError[]> | undefined;
 		isCritical: boolean;
 	};
-	getComponents: (params?: {
-		only?: LunaticComponentProps['componentType'];
-		except?: LunaticComponentProps['componentType'];
-	}) => LunaticComponentProps[];
+	getComponents: () => LunaticComponentProps[];
 	getData: (
 		withRefreshedCalculated: boolean,
 		variableNames?: string[]
