@@ -148,7 +148,7 @@ export const SlotsProvider = ({
  *
  * The component can be replaced using the "slots" props on <LunaticComponents>
  */
-export function slottableComponent<T extends Record<string, unknown>>(
+export function slottableComponent<T>(
 	name: keyof LunaticSlotComponents,
 	OriginalComponent: FunctionComponent<T>
 ): ComponentType<T> {
@@ -157,9 +157,11 @@ export function slottableComponent<T extends Record<string, unknown>>(
 
 		if (custom && name in custom) {
 			const SlotComponent = custom[name] as ComponentType<T>;
+			// @ts-ignore-next-line
 			return <SlotComponent {...props} />;
 		}
 
+		// @ts-ignore-next-line
 		return <OriginalComponent {...props} />;
 	};
 	DecoratedComponent.displayName = name;

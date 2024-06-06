@@ -170,21 +170,7 @@ function useLunatic(
 		...state,
 	});
 
-	const getComponents: LunaticState['getComponents'] = ({
-		only,
-		except,
-	} = {}) => {
-		if (only && except) {
-			throw new Error(
-				'"only" and "except" cannot be used together in getComponents()'
-			);
-		}
-		if (only) {
-			return components.filter((c) => only.includes(c.componentType ?? ''));
-		}
-		if (except) {
-			return components.filter((c) => !except.includes(c.componentType ?? ''));
-		}
+	const getComponents: LunaticState['getComponents'] = () => {
 		return components;
 	};
 
