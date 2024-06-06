@@ -56,7 +56,7 @@ test.describe('Checkboxes', () => {
 			await goToStory(page, 'components-checkboxone--with-detail');
 			await expect(page.getByRole('radio', { name: 'Autre' })).toBeVisible();
 			await page.getByRole('radio', { name: 'Autre' }).click();
-			await page.getByRole('textbox', { name: 'Précisez' }).fill('Bonjour');
+			await page.getByRole('textbox', { name: 'Préciser' }).fill('Bonjour');
 			await expectCollectedData(page, 'Q2', '3');
 			await expectCollectedData(page, 'Q3', 'Bonjour');
 		});
