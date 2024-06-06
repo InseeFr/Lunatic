@@ -2,6 +2,7 @@ import React from 'react';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
 import sourceLoop from './sourceLoop';
+import sourceDetail from './sourceDetail';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
@@ -33,6 +34,12 @@ export const ReadOnly = Template.bind({});
 ReadOnly.args = {
 	source,
 	readOnly: true,
+	shortcut: true,
+};
+
+export const Arbitrary = Template.bind({});
+Arbitrary.args = {
+	source: sourceDetail,
 	shortcut: true,
 };
 

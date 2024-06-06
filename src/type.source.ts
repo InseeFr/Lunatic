@@ -151,6 +151,10 @@ export type ComponentCheckboxGroupDefinition =
 			description?: VTLExpression;
 			response: ResponseDefinition;
 			id: string;
+			detail?: {
+				label?: VTLExpression;
+				response: ResponseDefinition;
+			};
 		}[];
 	};
 export type ComponentCheckboxGroupDefinition1 = ComponentDefinitionBase;
