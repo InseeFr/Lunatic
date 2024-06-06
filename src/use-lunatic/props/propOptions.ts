@@ -10,7 +10,7 @@ export type InterpretedOption = {
 	checked?: boolean;
 	detailLabel?: ReactNode;
 	description?: ReactNode;
-	detailValue?: unknown;
+	detailValue?: string | null;
 	onDetailChange?: (value: string) => void;
 	onCheck?: () => void;
 };

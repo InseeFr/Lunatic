@@ -168,7 +168,7 @@ export type ComponentPropsByType = {
 			description?: ReactNode;
 			onCheck: (b: boolean) => void;
 			onDetailChange?: (v: string) => void;
-			detailValue?: string;
+			detailValue?: string | null;
 			detailLabel?: ReactNode;
 		}[];
 		componentType?: 'CheckboxGroup';
