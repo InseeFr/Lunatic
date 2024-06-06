@@ -166,9 +166,20 @@ export type ComponentCheckboxBooleanDefinition1 =
 	ComponentDefinitionBaseWithResponse;
 export type ComponentRadioDefinition = ComponentRadioDefinition1 & {
 	componentType: 'Radio';
-	options: Options;
+	options: OptionsWithDetail;
 };
 export type ComponentRadioDefinition1 = ComponentDefinitionBaseWithResponse;
+export type OptionsWithDetail = {
+	value: string | boolean;
+	label: VTLExpression;
+	description?: VTLExpression;
+	detail?: {
+		label: VTLExpression;
+		response: {
+			name: string;
+		};
+	};
+}[];
 export type ComponentDropdownDefinition = ComponentDropdownDefinition1 & {
 	componentType: 'Dropdown';
 	options: Options;
@@ -185,17 +196,6 @@ export type ComponentCheckboxOneDefinition = ComponentCheckboxOneDefinition1 & {
 };
 export type ComponentCheckboxOneDefinition1 =
 	ComponentDefinitionBaseWithResponse;
-export type OptionsWithDetail = {
-	value: string | boolean;
-	label: VTLExpression;
-	description?: VTLExpression;
-	detail?: {
-		label: VTLExpression;
-		response: {
-			name: string;
-		};
-	};
-}[];
 export type ComponentSuggesterDefinition = ComponentSuggesterDefinition1 & {
 	componentType: 'Suggester';
 	/**
