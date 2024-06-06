@@ -14,6 +14,7 @@ export type InputProps = {
 	labelledBy?: string;
 	focused?: boolean;
 	invalid?: boolean;
+	readOnly?: boolean;
 } & HTMLAttributes<HTMLInputElement>;
 
 function LunaticComboboxInput({
