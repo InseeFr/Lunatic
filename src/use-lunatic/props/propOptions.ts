@@ -10,7 +10,7 @@ export type InterpretedOption = {
 	checked?: boolean;
 	detailLabel?: ReactNode;
 	description?: ReactNode;
-	detailValue?: unknown;
+	detailValue?: string | null;
 	onDetailChange?: (value: string) => void;
 	onCheck?: () => void;
 };
@@ -23,14 +23,43 @@ export function getOptionsProp(
 	state: Parameters<typeof fillComponent>[1],
 	value: unknown
 ) {
+	if (definition.componentType === 'CheckboxGroup') {
+		const iteration = state.pager.iteration
+			? [state.pager.iteration]
+			: undefined;
+		return definition.responses.map((response) => ({
+			label: response.label,
+			name: response.response.name,
+			id: response.id,
+			checked: !!state.variables.get(response.response.name, iteration),
+			description: response.description,
+			detailLabel: response.detail?.label,
+			detailValue: response.detail?.response
+				? state.variables.get(response.detail.response.name, iteration)
+				: undefined,
+			onCheck: (checked: boolean) => {
+				state.handleChanges([{ name: response.response.name, value: checked }]);
+			},
+			onDetailChange: response.detail?.response
+				? (v: string) => {
+						state.handleChanges([
+							{ name: response.detail!.response.name, value: v },
+						]);
+					}
+				: undefined,
+		}));
+	}
+
 	if (!('options' in definition)) {
 		return [];
 	}
+
 	return definition.options.map((option) => ({
 		label: option.label,
 		description: option.description,
 		value: option.value,
 		checked: value === option.value,
+		detailLabel: 'detail' in option ? option.detail?.label : undefined,
 		onCheck: () => {
 			state.handleChanges([
 				{ name: definition.response.name, value: option.value },

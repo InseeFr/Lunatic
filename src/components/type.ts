@@ -160,12 +160,17 @@ export type ComponentPropsByType = {
 		componentType?: 'Datepicker';
 	};
 	CheckboxGroup: LunaticBaseProps<Record<string, boolean | null>> & {
-		responses: Array<{
+		options: {
 			id: string;
 			label: ReactNode;
+			name: string;
+			checked: boolean;
 			description?: ReactNode;
-			response: { name: string };
-		}>;
+			onCheck: (b: boolean) => void;
+			onDetailChange?: (v: string) => void;
+			detailValue?: string | null;
+			detailLabel?: ReactNode;
+		}[];
 		componentType?: 'CheckboxGroup';
 	};
 	CheckboxOne: LunaticBaseProps<string | null> & {

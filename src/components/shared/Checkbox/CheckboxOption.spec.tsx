@@ -5,7 +5,7 @@ import { describe, it, expect, vi } from 'vitest';
 describe('CheckboxOption', () => {
 	const props = {
 		id: 'checkbox',
-		onClick: vi.fn(),
+		onCheck: vi.fn(),
 		checked: false,
 		disabled: false,
 		label: 'Option 1',
@@ -15,7 +15,7 @@ describe('CheckboxOption', () => {
 	};
 	const defaultProps = {
 		id: 'test-checkbox',
-		onClick: vi.fn(),
+		onCheck: vi.fn(),
 		label: 'Test checkbox',
 	};
 
@@ -40,19 +40,19 @@ describe('CheckboxOption', () => {
 		expect(checkbox).toBeChecked();
 	});
 
-	it('calls the onClick function when clicked', () => {
+	it('calls the onCheck function when clicked', () => {
 		const { getByRole } = render(<CheckboxOption {...props} />);
 		const checkbox = getByRole('checkbox');
 
 		fireEvent.click(checkbox);
 
-		expect(props.onClick).toHaveBeenCalledTimes(1);
-		expect(props.onClick).toHaveBeenCalledWith(true);
+		expect(props.onCheck).toHaveBeenCalledTimes(1);
+		expect(props.onCheck).toHaveBeenCalledWith(true);
 	});
-	it('calls the onClick function when space key is pressed', () => {
+	it('calls the onCheck function when space key is pressed', () => {
 		const { getByRole } = render(<CheckboxOption {...defaultProps} />);
 		const checkbox = getByRole('checkbox');
 		fireEvent.keyDown(checkbox, { code: 'Space' });
-		expect(defaultProps.onClick).toHaveBeenCalledWith(true);
+		expect(defaultProps.onCheck).toHaveBeenCalledWith(true);
 	});
 });

@@ -798,6 +798,18 @@
 							},
 							"id": {
 								"type": "string"
+							},
+							"detail": {
+								"type": "object",
+								"properties": {
+									"label": {
+										"$ref": "#/$defs/VTLExpression"
+									},
+									"response": {
+										"$ref": "#/$defs/ResponseDefinition"
+									}
+								},
+								"required": ["response"]
 							}
 						}
 					}
@@ -833,7 +845,7 @@
 					"const": "Radio"
 				},
 				"options": {
-					"$ref": "#/$defs/Options"
+					"$ref": "#/$defs/OptionsWithDetail"
 				}
 			},
 			"required": ["componentType", "options"],

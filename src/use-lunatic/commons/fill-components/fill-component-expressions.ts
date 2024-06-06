@@ -14,6 +14,7 @@ const VTL_ATTRIBUTES = [
 	['iterations', castNumber],
 	['responses.label', null],
 	['responses.description', null],
+	['responses.detail.label', null],
 	['options.description', null],
 	['options.detail.label', null],
 	['controls.iterations', castNumber],
@@ -78,13 +79,15 @@ function castString(v: unknown): string {
 type UntranslatedProperties = 'expressions' | 'sections';
 export type DeepTranslateExpression<T> = T extends LunaticExpression
 	? ReactNode
-	: T extends { [k: string | number]: unknown }
-		? {
-				[key in keyof T]: key extends UntranslatedProperties
-					? T[key]
-					: DeepTranslateExpression<T[key]>;
-			}
-		: T;
+	: T extends (infer ElementType)[]
+		? DeepTranslateExpression<ElementType>[]
+		: T extends { [k: string | number]: unknown }
+			? {
+					[key in keyof T]: key extends UntranslatedProperties
+						? T[key]
+						: DeepTranslateExpression<T[key]>;
+				}
+			: T;
 
 /**
  * Interpret every VTL expression inside a component

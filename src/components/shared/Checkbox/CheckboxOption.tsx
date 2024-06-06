@@ -9,7 +9,7 @@ export type CheckboxOptionProps = {
 	readOnly?: boolean;
 	checked?: boolean;
 	id?: string;
-	onClick: (b: boolean) => void;
+	onCheck: (b: boolean) => void;
 	label?: ReactNode;
 	description?: LunaticBaseProps['description'];
 	codeModality?: string;
@@ -22,7 +22,7 @@ function LunaticCheckboxOption({
 	readOnly,
 	checked,
 	id,
-	onClick,
+	onCheck,
 	label,
 	description,
 	codeModality,
@@ -33,7 +33,7 @@ function LunaticCheckboxOption({
 	const hasKeyboardShortcut = Boolean(shortcut && codeModality && isEnabled);
 	const onClickOption = () => {
 		if (isEnabled) {
-			onClick(!checked);
+			onCheck(!checked);
 		}
 	};
 
