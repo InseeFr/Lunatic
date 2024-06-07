@@ -1,4 +1,29 @@
 {
-	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:recommended"]
+	"extends": ["config:base"],
+	"labels": ["dependencies"],
+	"assignees": ["ddecrulle"],
+	"packageRules": [
+		{
+			"description": "Documentation website dependencies",
+			"matchPaths": ["/docs/**"],
+			"groupName": "docs website dependencies",
+			"labels": ["docs"]
+		},
+		{
+			"description": "CI dependencies",
+			"matchPaths": [".github/workflows/**"],
+			"groupName": "CI dependencies",
+			"labels": ["ci"]
+		},
+		{
+			"matchUpdateTypes": ["patch"],
+			"automerge": true
+		},
+		{
+			"matchUpdateTypes": ["minor"],
+			"automerge": true
+		}
+	],
+	"prConcurrentLimit": 5,
+	"dependencyDashboard": true
 }
