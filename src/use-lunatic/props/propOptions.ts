@@ -24,7 +24,7 @@ export function getOptionsProp(
 	value: unknown
 ) {
 	if (definition.componentType === 'CheckboxGroup') {
-		const iteration = state.pager.iteration
+		const iteration = isNumber(state.pager.iteration)
 			? [state.pager.iteration]
 			: undefined;
 		return definition.responses.map((response) => ({
