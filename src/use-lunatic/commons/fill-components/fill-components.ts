@@ -50,7 +50,13 @@ export const fillComponent = (
 		missingResponse: getMissingResponseProp(component, state),
 		management: state.management,
 		iterations: getIterationsProp(component, state),
-		options: getOptionsProp(interpretedProps, state, value),
+		options: getOptionsProp(
+			interpretedProps,
+			state.variables,
+			state.handleChanges,
+			state.pager.iteration,
+			value
+		),
 		...getComponentTypeProps(interpretedProps, state),
 		// This is too dynamic to be typed correctly, so we allow any here
 	} as any;
