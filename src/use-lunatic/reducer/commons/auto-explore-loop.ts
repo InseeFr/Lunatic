@@ -17,6 +17,12 @@ export function autoExploreLoop(
 	const isForward = direction === 'forward';
 
 	const goInsideSubpage = (subPages: string[], nbIteration: number) => {
+		// For empty loop jump to the next page
+		if (nbIteration === 0) {
+			newPager.page += isForward ? 1 : -1;
+			hasExploredLoop = true;
+			return;
+		}
 		const maxSubPage = subPages.length;
 		const firstSubPage = pageStringToNumbers(
 			subPages[isForward ? 0 : maxSubPage - 1]
