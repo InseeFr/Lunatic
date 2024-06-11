@@ -14,4 +14,9 @@ compileFromFile('lunatic-schema.json', {
 		bracketSpacing: true,
 		trailingComma: 'es5',
 	},
-}).then((ts) => writeFileSync('src/type.source.ts', ts));
+})
+	// Replace interface with types
+	.then((ts) =>
+		ts.replaceAll(/export interface (\w+) {/gi, 'export type $1 = {')
+	)
+	.then((ts) => writeFileSync('src/type.source.ts', ts));
