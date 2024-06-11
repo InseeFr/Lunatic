@@ -10,6 +10,7 @@ import type {
 describe('getOptionsProp()', () => {
 	let variables: LunaticVariablesStore;
 	const checkboxGroupDefinition = {
+		id: 'CheckboxGroup',
 		componentType: 'CheckboxGroup',
 		responses: [
 			{

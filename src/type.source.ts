@@ -280,7 +280,7 @@ export type VariableScalarValue = string | number | null;
 /**
  * A lunatic survey unit
  */
-export interface LunaticSource {
+export type LunaticSource = {
 	label?: VTLExpression;
 	pagination?: 'question' | 'sequence';
 	enoCoreVersion?: string;
@@ -333,8 +333,8 @@ export interface LunaticSource {
 			  };
 	};
 	maxPage?: string;
-}
-export interface VTLExpression {
+};
+export type VTLExpression = {
 	/**
 	 * Valid VTL Expression
 	 */
@@ -344,8 +344,8 @@ export interface VTLExpression {
 	 */
 	bindingDependencies?: string[];
 	type: 'VTL' | 'VTL|MD' | 'TXT';
-}
-export interface ComponentDefinitionBase {
+};
+export type ComponentDefinitionBase = {
 	label?: VTLExpression;
 	description?: VTLExpression;
 	declarations?: Declaration[];
@@ -354,8 +354,8 @@ export interface ComponentDefinitionBase {
 	id: string;
 	mandatory?: boolean;
 	missingResponse?: ResponseDefinition;
-}
-export interface Declaration {
+};
+export type Declaration = {
 	id: string;
 	declarationType:
 		| 'INSTRUCTION'
@@ -370,8 +370,8 @@ export interface Declaration {
 		| 'BEFORE_QUESTION_TEXT'
 		| 'DETACHABLE';
 	label: VTLExpression;
-}
-export interface VTLScalarExpression {
+};
+export type VTLScalarExpression = {
 	/**
 	 * Valid VTL Expression
 	 */
@@ -381,8 +381,8 @@ export interface VTLScalarExpression {
 	 */
 	bindingDependencies?: string[];
 	type: 'VTL';
-}
-export interface ControlDefinition {
+};
+export type ControlDefinition = {
 	id: string;
 	criticality: 'INFO' | 'WARN' | 'ERROR';
 	typeOfControl?: 'FORMAT' | 'CONSISTENCY';
@@ -391,22 +391,22 @@ export interface ControlDefinition {
 	bindingDependencies?: string[];
 	type?: 'roundabout' | 'ROW' | 'simple';
 	iterations?: VTLScalarExpression;
-}
-export interface ResponseDefinition {
+};
+export type ResponseDefinition = {
 	name: string;
-}
-export interface ComponentText {
+};
+export type ComponentText = {
 	componentType: 'Text';
 	label: VTLExpression;
-}
-export interface ComponentAccordion {
+};
+export type ComponentAccordion = {
 	componentType: 'Accordion';
 	items: {
 		label: VTLExpression;
 		body: VTLExpression;
 	}[];
-}
-export interface SuggesterDefinition {
+};
+export type SuggesterDefinition = {
 	/**
 	 * Name of the list (will be used as storeName for suggester)
 	 */
@@ -462,4 +462,4 @@ export interface SuggesterDefinition {
 		| {
 				type: 'soft';
 		  };
-}
+};

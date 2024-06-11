@@ -76,7 +76,12 @@ function castString(v: unknown): string {
 }
 
 // Utility type to replace all expression from an object into a translated version
-type UntranslatedProperties = 'expressions' | 'sections';
+type UntranslatedProperties =
+	| 'expressions'
+	| 'sections'
+	| 'body'
+	| 'controls'
+	| 'components';
 export type DeepTranslateExpression<T> = T extends LunaticExpression
 	? ReactNode
 	: T extends (infer ElementType)[]
