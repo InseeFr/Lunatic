@@ -125,7 +125,7 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"page": "2",
 			"label": {
-				"value": "if RESPONSE = true then \"## Basé sur les rangs d'adresse que vous avez entré, nous avons identifié cette adresse pour votre logement : \" else \" Quelle est l'adresse de votre logement ? \"",
+				"value": "if RESPONSE = true then \"## Vous résidez dans la commune de \" || LIBELLE_COMMUNE|| \". Basé sur les rangs d'adresse que vous avez saisis, nous avons identifié cette adresse pour votre logement : \" else \" Quelle est l'adresse de votre logement ? \"",
 				"type": "VTL|MD"
 			},
 			"description": {
@@ -154,7 +154,7 @@
 							"componentType": "Subsequence",
 							"label": {
 								"type": "VTL|MD",
-								"value": "\"## \" || VOI_CONCAT || COMMUNE_CONCAT \n\n"
+								"value": "\"## \" || VOI_CONCAT\n\n"
 							},
 							"conditionFilter": {
 								"value": "RESPONSE",
@@ -165,7 +165,9 @@
 					"responses": [
 						{ "response": { "name": "ZC" } },
 						{ "response": { "name": "ADR_RANG" } },
-						{ "response": { "name": "LOG_RANG" } }
+						{ "response": { "name": "LOG_RANG" } },
+						{ "response": { "name": "CODE_COM" } },
+						{ "response": { "name": "CODE_DEP" } }
 					]
 				},
 				{
@@ -174,7 +176,7 @@
 					"mandatory": false,
 					"page": "2",
 					"label": {
-						"value": "\"### L'adresse de votre logement est-elle correcte ?\"",
+						"value": "\"### Cette adresse, pour votre logement, est-elle correcte ?\"",
 						"type": "VTL|MD"
 					},
 					"conditionFilter": { "value": "RESPONSE", "type": "VTL" },
@@ -455,6 +457,8 @@
 		}
 	],
 	"variables": [
+		{ "variableType": "EXTERNAL", "name": "CODE_DEP", "value": null },
+		{ "variableType": "EXTERNAL", "name": "CODE_COM", "value": null },
 		{
 			"variableType": "COLLECTED",
 			"name": "ADR_RANG",
@@ -589,21 +593,10 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "CPOST_LOC_SUGG",
-			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
-			}
-		},
-		{
-			"variableType": "COLLECTED",
 			"name": "LIBELLE_COMMUNE",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": null,
+				"COLLECTED": "Paris(12)",
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null
@@ -721,16 +714,6 @@
 				"TYPEVOI_LOC_SUGG",
 				"NOMVOI_LOC_SUGG"
 			],
-			"inFilter": "false"
-		},
-		{
-			"variableType": "CALCULATED",
-			"name": "COMMUNE_CONCAT",
-			"expression": {
-				"value": "(if (isnull(CPOST_LOC_SUGG)) then \"\" else (CPOST_LOC_SUGG || \" \")) || (if (isnull(LIBELLE_COMMUNE_SUGG)) then \"\" else (LIBELLE_COMMUNE_SUGG || \" \")) ",
-				"type": "VTL"
-			},
-			"bindingDependencies": ["CPOST_LOC_SUGG", "LIBELLE_COMMUNE_SUGG"],
 			"inFilter": "false"
 		}
 	]

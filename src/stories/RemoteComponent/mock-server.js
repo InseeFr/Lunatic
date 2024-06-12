@@ -16,8 +16,6 @@ app.post('/api/recensement/adresse', (request, response) => {
 			BISTER_LOC_SUGG: null,
 			TYPEVOI_LOC_SUGG: 'Rue',
 			NOMVOI_LOC_SUGG: 'de Picpus',
-			CPOST_LOC_SUGG: '75012',
-			LIBELLE_COMMUNE_SUGG: 'Paris',
 			RESPONSE: true,
 		});
 	} else {
