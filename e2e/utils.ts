@@ -55,3 +55,18 @@ export async function expectCollectedData(
 export async function expectPageToHaveText(page: Page, text: string) {
 	await expect(page.getByText(text).nth(0)).toBeVisible();
 }
+
+export async function expectChanges(
+	page: Page,
+	expectedCount = 0,
+	cb: () => Promise<void>
+) {
+	let count = 0;
+	page.on('console', (msg) => {
+		if (msg.text().includes('onChange')) {
+			count++;
+		}
+	});
+	await cb();
+	expect(count, 'onChange() calls').toBe(expectedCount);
+}
