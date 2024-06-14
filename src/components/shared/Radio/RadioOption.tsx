@@ -39,7 +39,6 @@ function LunaticRadioOption({
 	onCheck,
 }: Props) {
 	const divEl = useRef<HTMLDivElement>(null);
-	const tabIndex = checked ? 0 : -1;
 	const isEnabled = !disabled && !readOnly;
 	const isRadio = !checkboxStyle;
 	const hasDetail = !!onDetailChange;
@@ -87,7 +86,7 @@ function LunaticRadioOption({
 					isRadio && 'lunatic-input-radio'
 				)}
 				aria-checked={checked}
-				tabIndex={tabIndex}
+				tabIndex={checked ? -1 : 0}
 				onClick={onClickOption}
 				onKeyDown={handleKeyDown}
 				aria-labelledby={labelledBy}
