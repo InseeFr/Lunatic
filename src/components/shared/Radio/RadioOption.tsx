@@ -45,7 +45,7 @@ function LunaticRadioOption({
 	const hasDetail = !!onDetailChange;
 
 	const onClickOption = () => {
-		if (!isEnabled || !onCheck) {
+		if (!isEnabled || !onCheck || checked) {
 			return;
 		}
 		onCheck();

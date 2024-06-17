@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
-import { expectCollectedData, goToStory } from './utils';
+import { expect, test } from '@playwright/test';
+import { expectChanges, expectCollectedData, goToStory } from './utils';
 
 test.describe('Checkboxes', () => {
 	test.describe('CheckboxGroup', () => {
@@ -59,6 +59,35 @@ test.describe('Checkboxes', () => {
 			await page.getByRole('textbox', { name: 'Préciser' }).fill('Bonjour');
 			await expectCollectedData(page, 'Q2', '3');
 			await expectCollectedData(page, 'Q3', 'Bonjour');
+		});
+		test(`Clicking multiple time should not trigger onChange`, async ({
+			page,
+		}) => {
+			await goToStory(page, 'components-checkboxone--default');
+			await expect(page.getByRole('radio', { name: 'oui' })).toBeVisible();
+			await page.getByRole('radio', { name: 'oui' }).click();
+			await expectChanges(page, 0, () => {
+				return page.getByRole('radio', { name: 'oui' }).click();
+			});
+		});
+	});
+
+	test.describe('Radio', () => {
+		test(`Allow check a value`, async ({ page }) => {
+			await goToStory(page, 'components-radio--default');
+			await expect(page.getByRole('radio', { name: 'oui' })).toBeVisible();
+			await page.getByRole('radio', { name: 'oui' }).click();
+			await expectCollectedData(page, 'Q2', '1');
+		});
+		test(`Clicking multiple time should not trigger onChange`, async ({
+			page,
+		}) => {
+			await goToStory(page, 'components-radio--default');
+			await expect(page.getByRole('radio', { name: 'oui' })).toBeVisible();
+			await page.getByRole('radio', { name: 'oui' }).click();
+			await expectChanges(page, 0, () => {
+				return page.getByRole('radio', { name: 'oui' }).click();
+			});
 		});
 	});
 });
