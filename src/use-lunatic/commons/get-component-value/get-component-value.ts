@@ -104,6 +104,18 @@ function collecteComponentResponse({
 	if ('response' in component) {
 		return mergeResponse({ map, response: component.response, variables });
 	}
+	// En desespoir de cause, attention au effets de bord sur d'autres composants
+	if ('components' in component && 'responses' in component) {
+		return collecteArrayResponses({
+			components: [
+				...(component.responses as LunaticComponentDefinition[]),
+				...component.components,
+			],
+			variables,
+			map,
+		});
+	}
+
 	if ('components' in component) {
 		return collecteArrayResponses({
 			components: component.components,

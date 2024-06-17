@@ -92,7 +92,7 @@ function updateBindings(state: LunaticState, action: ActionHandleChange) {
 	const { name } = response;
 	const { updateBindings: ub } = state;
 	const { variables } = state;
-	const variable = variables[name];
+	const variable = variables[name] ?? {};
 	const { value } = variable;
 
 	ub(name, value);

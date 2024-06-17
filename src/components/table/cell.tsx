@@ -39,7 +39,7 @@ function collecteArrayResponseValue(
 	return [];
 }
 
-function collecteValue(
+export function collecteValue(
 	component: LunaticComponentDefinition,
 	value?: Record<string, unknown>
 ) {
