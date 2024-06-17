@@ -192,6 +192,7 @@ export type ComponentPropsByType = {
 		LunaticExtraProps & {
 			options: Array<InterpretedOption>;
 			componentType?: 'CheckboxOne';
+			orientation?: 'horizontal' | 'vertical';
 		};
 	Switch: LunaticBaseProps<boolean> &
 		LunaticExtraProps & {
@@ -210,6 +211,7 @@ export type ComponentPropsByType = {
 			checkboxStyle?: boolean;
 			response: { name: string };
 			componentType?: 'Radio';
+			orientation?: 'horizontal' | 'vertical';
 		};
 	Roundabout: LunaticBaseProps<string> &
 		LunaticExtraProps & {

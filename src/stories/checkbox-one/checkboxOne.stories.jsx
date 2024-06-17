@@ -22,11 +22,10 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
-Default.args = { id: 'checkboxOne', source, shortcut: false };
+Default.args = { source, shortcut: false };
 
 export const WithDetail = Template.bind({});
 WithDetail.args = {
-	id: 'checkboxOne',
 	source: sourceWithDetail,
 	shortcut: false,
 };
