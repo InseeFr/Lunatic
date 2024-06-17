@@ -1,8 +1,4 @@
-import type {
-	LunaticComponentDefinition,
-	LunaticState,
-	LunaticStateVariable,
-} from '../../type';
+import type { LunaticComponentDefinition, LunaticState } from '../../type';
 import type { ResponseType } from '../../type-source';
 
 type AccumulatorMap = Record<string, unknown>;
