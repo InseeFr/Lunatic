@@ -166,6 +166,7 @@ export type ComponentCheckboxBooleanDefinition1 =
 	ComponentDefinitionBaseWithResponse;
 export type ComponentRadioDefinition = ComponentRadioDefinition1 & {
 	componentType: 'Radio';
+	orientation?: 'horizontal' | 'vertical';
 	options: OptionsWithDetail;
 };
 export type ComponentRadioDefinition1 = ComponentDefinitionBaseWithResponse;

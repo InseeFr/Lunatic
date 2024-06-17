@@ -16,6 +16,7 @@ export function CheckboxOne({
 	readOnly,
 	shortcut,
 	declarations,
+	orientation,
 }: LunaticComponentProps<'CheckboxOne'>) {
 	return (
 		<RadioGroup
@@ -31,6 +32,7 @@ export function CheckboxOne({
 			checkboxStyle={true}
 			shortcut={shortcut}
 			declarations={declarations}
+			orientation={orientation ?? 'vertical'}
 			clearable
 		/>
 	);

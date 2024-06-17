@@ -3,35 +3,23 @@
 	"maxPage": "1",
 	"components": [
 		{
-			"id": "checkboxone",
-			"componentType": "CheckboxOne",
+			"id": "radio",
+			"componentType": "Radio",
 			"mandatory": false,
+			"orientation": "horizontal",
 			"page": "1",
 			"label": {
-				"value": "\"checkboxone ONE component\"",
-				"type": "VTL|MD"
-			},
-			"description": {
-				"value": "\"true or false\"",
+				"value": "\"Label for a Radio component\"",
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"options": [
 				{
 					"value": "1",
-					"description": {
-						"value": "\"Déclaration oui\"",
-						"type": "VTL|MD"
-					},
 					"label": { "value": "\"oui\"", "type": "VTL|MD" }
 				},
-
 				{
 					"value": "2",
-					"description": {
-						"value": "\"Déclaration non\"",
-						"type": "VTL|MD"
-					},
 					"label": { "value": "\"non\"", "type": "VTL|MD" }
 				}
 			],
