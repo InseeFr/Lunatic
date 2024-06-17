@@ -52,6 +52,18 @@ test.describe('Checkboxes', () => {
 	});
 
 	test.describe('CheckboxOne', () => {
+		test(`Allow keyboard a11y`, async ({ page }) => {
+			await goToStory(page, 'components-checkboxone--default');
+			await expect(page.getByRole('radio', { name: 'oui' })).toBeVisible();
+			await page.mouse.click(0, 0);
+			await page.keyboard.press('Tab');
+			await page.keyboard.press('Space');
+			await expectCollectedData(page, 'Q2', '1');
+			await page.mouse.click(0, 0);
+			await page.keyboard.press('Tab');
+			await page.keyboard.press('Space');
+			await expectCollectedData(page, 'Q2', '2');
+		});
 		test(`Allow detail selection`, async ({ page }) => {
 			await goToStory(page, 'components-checkboxone--with-detail');
 			await expect(page.getByRole('radio', { name: 'Autre' })).toBeVisible();
