@@ -844,6 +844,10 @@
 					"type": "string",
 					"const": "Radio"
 				},
+				"orientation": {
+					"type": "string",
+					"enum": ["horizontal", "vertical"]
+				},
 				"options": {
 					"$ref": "#/$defs/OptionsWithDetail"
 				}

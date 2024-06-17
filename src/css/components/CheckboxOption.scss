@@ -1,3 +1,13 @@
+.lunatic-checkboxes {
+	display: flex;
+	flex-direction: column;
+}
+
+.lunatic-checkboxes--horizontal {
+	flex-direction: row;
+	gap: 1rem;
+}
+
 .lunatic-input-checkbox {
 	display: flex;
 	align-items: center;

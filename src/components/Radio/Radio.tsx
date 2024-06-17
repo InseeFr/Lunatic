@@ -17,6 +17,7 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 		readOnly,
 		description,
 		declarations,
+		orientation,
 	} = props;
 	return (
 		<RadioGroup
@@ -32,6 +33,7 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 			disabled={disabled}
 			readOnly={readOnly}
 			declarations={declarations}
+			orientation={orientation ?? 'vertical'}
 		/>
 	);
 }

@@ -21,6 +21,7 @@ export type RadioGroupProps = Pick<
 	| 'readOnly'
 	| 'description'
 	| 'declarations'
+	| 'orientation'
 > & {
 	errors?: LunaticError[];
 	clearable?: boolean;
@@ -42,32 +43,35 @@ function LunaticRadioGroup({
 	disabled,
 	readOnly,
 	declarations,
+	orientation,
 }: RadioGroupProps) {
 	const onKeyDown = useListKeyboardHandler(options);
 	const maxIndex = options.length;
 	return (
 		<Fieldset className={className} legend={label} description={description}>
 			<Declarations type="AFTER_QUESTION_TEXT" declarations={declarations} />
-			{options.map(function (option, index) {
-				const radioId = `lunatic-radio-${id}-${option.value}`;
-				const codeModality = getShortcutKey(index, maxIndex);
-				return (
-					<RadioOption
-						{...option}
-						key={radioId}
-						id={radioId}
-						index={index}
-						checked={value === option.value}
-						onKeyDown={onKeyDown}
-						checkboxStyle={checkboxStyle}
-						codeModality={shortcut ? codeModality : undefined}
-						shortcut={shortcut}
-						disabled={disabled}
-						readOnly={readOnly}
-						invalid={!!errors}
-					/>
-				);
-			})}
+			<div className={`lunatic-checkboxes lunatic-checkboxes--${orientation}`}>
+				{options.map(function (option, index) {
+					const radioId = `lunatic-radio-${id}-${option.value}`;
+					const codeModality = getShortcutKey(index, maxIndex);
+					return (
+						<RadioOption
+							{...option}
+							key={radioId}
+							id={radioId}
+							index={index}
+							checked={value === option.value}
+							onKeyDown={onKeyDown}
+							checkboxStyle={checkboxStyle}
+							codeModality={shortcut ? codeModality : undefined}
+							shortcut={shortcut}
+							disabled={disabled}
+							readOnly={readOnly}
+							invalid={!!errors}
+						/>
+					);
+				})}
+			</div>
 			<ComponentErrors errors={errors} />
 		</Fieldset>
 	);
