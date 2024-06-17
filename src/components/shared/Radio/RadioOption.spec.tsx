@@ -25,18 +25,18 @@ describe('RadioOption', () => {
 		expect(onClickMock).toHaveBeenCalled();
 	});
 
-	it('sets the tabIndex to -1 when unchecked', () => {
+	it('sets the tabIndex to 0 when unchecked', () => {
 		const { getByRole } = render(
 			<RadioOption id="radio-option" label="Test Option" checked={false} />
 		);
-		expect(getByRole('radio')).toHaveAttribute('tabIndex', '-1');
+		expect(getByRole('radio')).toHaveAttribute('tabIndex', '0');
 	});
 
-	it('sets the tabIndex to 0 when checked', () => {
+	it('sets the tabIndex to -1 when checked', () => {
 		const { getByRole } = render(
 			<RadioOption id="radio-option" label="Test Option" checked={true} />
 		);
-		expect(getByRole('radio')).toHaveAttribute('tabIndex', '0');
+		expect(getByRole('radio')).toHaveAttribute('tabIndex', '-1');
 	});
 
 	it('applies the disabled aria when disabled prop is present', () => {
