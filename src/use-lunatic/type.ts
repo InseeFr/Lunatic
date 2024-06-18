@@ -88,6 +88,7 @@ export type LunaticPager = {
 export type LunaticReducerState = {
 	variables: LunaticVariablesStore;
 	overview: LunaticOverviewItem[];
+	previousPager: LunaticPager;
 	pager: LunaticPager;
 	pages: {
 		[key: number | string]:

@@ -10,17 +10,19 @@ import { buildOverview } from './overview/overviewOnInit';
 import { forceInt } from '../../utils/number';
 import { registerSuggesters } from '../../utils/search/SuggestersDatabase';
 
+const basePager = {
+	page: 1,
+	maxPage: 1,
+	subPage: undefined,
+	nbSubPages: undefined,
+	iteration: undefined,
+	shallowIteration: undefined,
+	nbIterations: undefined,
+};
 const baseState = {
 	variables: new LunaticVariablesStore(),
-	pager: {
-		page: 1,
-		maxPage: 1,
-		subPage: undefined,
-		nbSubPages: undefined,
-		iteration: undefined,
-		shallowIteration: undefined,
-		nbIterations: undefined,
-	},
+	pager: basePager,
+	previousPager: basePager,
 	pages: {},
 	isInLoop: false,
 	updatedAt: Date.now(),
@@ -119,6 +121,7 @@ export function reducerInitializer({
 	return fillPagerForLoop({
 		variables,
 		pager,
+		previousPager: pager,
 		pages,
 		isInLoop: false,
 		updatedAt: Date.now(),

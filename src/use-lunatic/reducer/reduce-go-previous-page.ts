@@ -33,6 +33,7 @@ export function reduceGoPreviousPage(
 
 	return {
 		...newState,
+		previousPager: state.pager,
 		isInLoop: newState.pager.iteration !== undefined,
 	};
 }

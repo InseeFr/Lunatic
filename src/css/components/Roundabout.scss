@@ -1,13 +1,25 @@
-.lunatic-roundabout {
-	background-color: transparent;
+.lunatic-roundabout__items {
+	margin-top: 1rem;
+	display: flex;
+	flex-direction: column;
+}
 
-	.roundabout-it-button {
-		&.complete {
-			background-color: lightgreen;
-		}
+.lunatic-roundabout__item {
+	display: flex;
+	justify-content: space-between;
+}
 
-		&.partial {
-			background-color: cornflowerblue;
-		}
-	}
+.lunatic-roundabout__item + .lunatic-roundabout__item {
+	border-top: 1px solid var(--color-secondary-dark);
+	padding-top: .5rem;
+	margin-top: 1rem;
+}
+
+.lunatic-roundabout__button-completed,
+.lunatic-roundabout__button-completed:focus {
+	background-color: var(--color-current-item);
+}
+.lunatic-roundabout__button-progress,
+.lunatic-roundabout__button-progress:focus {
+	background-color: var(--color-primary-main)
 }

@@ -1,94 +1,96 @@
-import { type ReactNode } from 'react';
-import { RoundaboutItButton } from './RoundaboutItButton';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
-import {
-	RoundaboutContainer,
-	RoundaboutItContainer,
-	RoundaboutItTitle,
-	RoundaboutLabel,
-	RoundaboutPending,
-} from './extra';
+import type { LunaticComponentProps } from '../type';
+import { Label } from '../shared/Label/Label';
+import type { ItemOf } from '../../type.utils';
+import { Button } from '../shared/Button/Button';
+import classnames from 'classnames';
+import React from 'react';
 
-type PropsIteration = {
-	label?: ReactNode;
-	index: number;
-	complete?: boolean;
-	partial?: boolean;
-	unnecessary?: boolean;
-	locked?: boolean;
-	goToIteration: (v: number) => void;
+type PropsItem = ItemOf<LunaticComponentProps<'Roundabout'>['items']> & {
+	onClick: () => void;
+	iteration: number;
 };
 
-function RoundaboutIteration({
+function RoundaboutItem({
 	label,
-	index,
-	complete,
-	partial,
-	unnecessary,
-	goToIteration,
-	locked,
-}: PropsIteration) {
+	progress,
+	description,
+	onClick,
+	disabled,
+	iteration,
+}: PropsItem) {
 	return (
-		<RoundaboutItContainer>
-			<RoundaboutItTitle label={label} />
-			<RoundaboutItButton
-				partial={partial}
-				complete={complete}
-				unnecessary={unnecessary}
-				goToIteration={goToIteration}
-				iteration={index}
-				locked={locked}
-			/>
-		</RoundaboutItContainer>
+		<section className="lunatic-roundabout__item">
+			<div>
+				{label && (
+					<label
+						className="lunatic-roundabout__label"
+						htmlFor={`action${iteration}`}
+					>
+						{label}
+					</label>
+				)}
+				{description && (
+					<div className="lunatic-roundabout__description">{description}</div>
+				)}
+			</div>
+			{!disabled && (
+				<Button
+					id={`action${iteration}`}
+					className={classnames(
+						'lunatic-roundabout__button',
+						getButtonClass(progress)
+					)}
+					onClick={onClick}
+				>
+					{getButtonLabel(progress)}
+				</Button>
+			)}
+		</section>
 	);
 }
 
-type Props = {
-	label?: ReactNode;
-	iterations?: unknown;
-	expressions: {
-		label?: Array<ReactNode | undefined>;
-		complete?: Array<boolean | undefined>;
-		partial?: Array<boolean | undefined>;
-		unnecessary?: Array<boolean | undefined>;
-	};
-	locked?: boolean;
+type Props = Pick<LunaticComponentProps<'Roundabout'>, 'items' | 'label'> & {
 	goToIteration: (v: number) => void;
 };
 
 export const CustomRoundabout = slottableComponent<Props>(
 	'Roundabout',
-	({ iterations, expressions, goToIteration, label, locked = true }) => {
-		const emptyArray = new Array(iterations) as undefined[];
-		const {
-			complete = emptyArray,
-			partial = emptyArray,
-			label: iterationLabels = emptyArray,
-			unnecessary = emptyArray,
-		} = expressions;
-
-		if (iterationLabels !== undefined && partial !== undefined) {
-			const subElements = new Array(iterations).fill(null).map(function (_, i) {
-				return (
-					<RoundaboutIteration
-						key={i}
-						index={i}
-						label={iterationLabels[i]}
-						complete={complete[i]}
-						partial={partial[i]}
-						unnecessary={unnecessary[i]}
-						goToIteration={goToIteration}
-						locked={locked}
-					/>
-				);
-			});
-			return (
-				<RoundaboutContainer>
-					<RoundaboutLabel value={label} />
-					{subElements}
-				</RoundaboutContainer>
-			);
-		}
-		return <RoundaboutPending />;
+	({ items, goToIteration, label }) => {
+		return (
+			<div className="lunatic-roundabout">
+				<Label>{label}</Label>
+				<div className="lunatic-roundabout__items">
+					{items.map((item, k) => (
+						<RoundaboutItem
+							key={k}
+							iteration={k}
+							{...item}
+							onClick={() => goToIteration(k)}
+						/>
+					))}
+				</div>
+			</div>
+		);
 	}
 );
+
+function getButtonLabel(progress: number) {
+	if (progress === 1) {
+		return 'Complété';
+	}
+	if (progress === 0) {
+		return 'Modifier';
+	}
+	return 'Commencer';
+}
+
+function getButtonClass(progress: number) {
+	if (progress === 1) {
+		return 'lunatic-roundabout__button-completed';
+	}
+	if (progress === 0) {
+		return 'lunatic-roundabout__button-progress';
+	}
+	return null;
+}

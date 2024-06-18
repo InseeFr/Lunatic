@@ -19,7 +19,14 @@
 			"FORCED": [null],
 			"INPUTTED": [null],
 			"PREVIOUS": [null],
-			"COLLECTED": [15, 15]
+			"COLLECTED": [24, 22]
+		},
+		"PROGRESS": {
+			"EDITED": [null],
+			"FORCED": [null],
+			"INPUTTED": [null],
+			"PREVIOUS": [null],
+			"COLLECTED": [-1, -1]
 		}
 	}
 }

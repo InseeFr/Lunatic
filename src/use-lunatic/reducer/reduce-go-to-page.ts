@@ -57,6 +57,7 @@ export function reduceGoToPage(
 	// Move forward if the page is empty
 	const newState = {
 		...state,
+		previousPager: state.pager,
 		isInLoop: newPager.nbIterations !== undefined,
 		pager: newPager,
 	};

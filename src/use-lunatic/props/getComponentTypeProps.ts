@@ -8,6 +8,7 @@ import {
 	fillComponent,
 	fillComponents,
 } from '../commons/fill-components/fill-components';
+import { times } from '../../utils/array';
 
 type State = Parameters<typeof fillComponent>[1];
 
@@ -20,19 +21,18 @@ function getRoundaboutProps(
 	state: State
 ) {
 	const iterations = component.iterations as unknown as number; // iterations is the result of an expression but we know it's a number
-	const compiled = Object.entries(component.expressions).reduce(function (
-		result,
-		[name, expression]
-	) {
-		const values = Array.from({ length: iterations }, (_, iteration) => {
-			return state.executeExpression(expression, {
-				iteration,
-			});
-		});
-		return { ...result, [name]: values };
-	}, {});
+	// Compute all items label, description, state
+	const items = times(iterations, (k) => ({
+		progress: state.variables.get(component.progressVariable, [k]),
+		...Object.fromEntries(
+			Object.entries(component.item).map(([key, expression]) => [
+				key,
+				state.executeExpression(expression, { iteration: k }),
+			])
+		),
+	}));
 	return {
-		expressions: compiled,
+		items: items,
 		page: parseInt(component.page ?? '1', 10),
 	};
 }

@@ -547,23 +547,21 @@
 				"locked": {
 					"type": "boolean"
 				},
-				"expressions": {
+				"progressVariable": { "type": "string" },
+				"item": {
 					"type": "object",
 					"properties": {
-						"unnecessary": {
-							"$ref": "#/$defs/VTLScalarExpression"
-						},
-						"complete": {
-							"$ref": "#/$defs/VTLScalarExpression"
-						},
-						"partial": {
-							"$ref": "#/$defs/VTLScalarExpression"
-						},
 						"label": {
+							"$ref": "#/$defs/VTLScalarExpression"
+						},
+						"description": {
+							"$ref": "#/$defs/VTLScalarExpression"
+						},
+						"disabled": {
 							"$ref": "#/$defs/VTLScalarExpression"
 						}
 					},
-					"required": ["label", "partial", "complete", "unnecessary"]
+					"required": ["label"]
 				},
 				"components": {
 					"type": "array",
@@ -577,7 +575,8 @@
 				"components",
 				"iterations",
 				"locked",
-				"expressions"
+				"item",
+				"progressVariable"
 			],
 			"allOf": [
 				{
