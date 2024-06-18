@@ -18,7 +18,6 @@ export const Default = Template.bind({});
 Default.args = {
 	id: 'roundabout',
 	source,
-	initialPage: '3',
 	pagination: true,
 	data: data2,
 };

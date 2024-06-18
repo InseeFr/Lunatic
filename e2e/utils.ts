@@ -52,7 +52,7 @@ export async function expectCollectedData(
 	await expectLunaticData(page, `COLLECTED.${name}.COLLECTED`, expected);
 }
 
-export async function expectPageToHaveText(page: Page, text: string) {
+export async function expectPageToHaveText(page: Page, text: string | RegExp) {
 	await expect(page.getByText(text).nth(0)).toBeVisible();
 }
 
