@@ -3,6 +3,7 @@ import {
 	expectCollectedData,
 	expectPageToHaveText,
 	gotoNextPage,
+	gotoPreviousPage,
 	goToStory,
 } from './utils';
 
@@ -69,5 +70,24 @@ test.describe('Roundabout', () => {
 		await gotoNextPage(page);
 		await expectPageToHaveText(page, 'Merci');
 		await expectCollectedData(page, 'SEXE', ['1']);
+	});
+
+	test.describe('progression', () => {
+		test(`update button label when progressing`, async ({ page }) => {
+			await goToStory(page, 'components-roundabout--default');
+			await gotoNextPage(page, 2);
+			await page.getByRole('button', { name: 'Commencer' }).nth(0).click();
+			await page.getByRole('radio', { name: 'oui' }).click();
+			await gotoPreviousPage(page);
+			await expectPageToHaveText(page, 'Modifier');
+
+			// Complete one iteration
+			await page.getByRole('button', { name: 'Modifier' }).nth(0).click();
+			await page.getByRole('radio', { name: 'oui' }).click();
+			await gotoNextPage(page);
+			await page.getByRole('radio', { name: 'Homme' }).click();
+			await gotoNextPage(page, 2);
+			await expectPageToHaveText(page, 'Complété');
+		});
 	});
 });
