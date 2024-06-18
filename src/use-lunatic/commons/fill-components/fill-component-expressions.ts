@@ -80,6 +80,7 @@ type UntranslatedProperties =
 	| 'expressions'
 	| 'sections'
 	| 'body'
+	| 'item'
 	| 'controls'
 	| 'components';
 export type DeepTranslateExpression<T> = T extends LunaticExpression

@@ -52,11 +52,11 @@ export type ComponentRoundaboutDefinition = ComponentRoundaboutDefinition1 & {
 	componentType: 'Roundabout';
 	iterations: VTLScalarExpression;
 	locked: boolean;
-	expressions: {
-		unnecessary: VTLScalarExpression;
-		complete: VTLScalarExpression;
-		partial: VTLScalarExpression;
+	progressVariable: string;
+	item: {
 		label: VTLScalarExpression;
+		description?: VTLScalarExpression;
+		disabled?: VTLScalarExpression;
 	};
 	components: ComponentDefinitionWithPage[];
 };

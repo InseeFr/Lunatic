@@ -218,13 +218,13 @@ export type ComponentPropsByType = {
 			iterations: number;
 			goToPage: ReturnType<typeof useLunatic>['goToPage'];
 			page: number;
-			locked?: boolean;
-			expressions: {
-				unnecessary?: Array<boolean>;
-				complete?: Array<boolean>;
-				partial?: Array<boolean>;
-				label?: Array<string>;
-			};
+			progressVariable: string;
+			items: {
+				label?: ReactNode;
+				progress: number; // -1: not completed, 0: started, 1: finished
+				description?: ReactNode;
+				disabled?: boolean;
+			}[];
 			componentType?: 'Roundabout';
 		};
 	Dropdown: LunaticBaseProps<string | null> &
