@@ -4,11 +4,11 @@ import { Label } from '../shared/Label/Label';
 import type { ItemOf } from '../../type.utils';
 import { Button } from '../shared/Button/Button';
 import classnames from 'classnames';
-import React from 'react';
 
 type PropsItem = ItemOf<LunaticComponentProps<'Roundabout'>['items']> & {
 	onClick: () => void;
 	iteration: number;
+	locked: boolean;
 };
 
 function RoundaboutItem({
@@ -18,6 +18,7 @@ function RoundaboutItem({
 	onClick,
 	disabled,
 	iteration,
+	locked,
 }: PropsItem) {
 	return (
 		<section className="lunatic-roundabout__item">
@@ -42,6 +43,7 @@ function RoundaboutItem({
 						getButtonClass(progress)
 					)}
 					onClick={onClick}
+					disabled={locked && progress === 1}
 				>
 					{getButtonLabel(progress)}
 				</Button>
@@ -50,13 +52,16 @@ function RoundaboutItem({
 	);
 }
 
-type Props = Pick<LunaticComponentProps<'Roundabout'>, 'items' | 'label'> & {
+type Props = Pick<
+	LunaticComponentProps<'Roundabout'>,
+	'items' | 'label' | 'locked'
+> & {
 	goToIteration: (v: number) => void;
 };
 
 export const CustomRoundabout = slottableComponent<Props>(
 	'Roundabout',
-	({ items, goToIteration, label }) => {
+	({ items, goToIteration, label, locked }) => {
 		return (
 			<div className="lunatic-roundabout">
 				<Label>{label}</Label>
@@ -67,6 +72,7 @@ export const CustomRoundabout = slottableComponent<Props>(
 							iteration={k}
 							{...item}
 							onClick={() => goToIteration(k)}
+							locked={locked}
 						/>
 					))}
 				</div>

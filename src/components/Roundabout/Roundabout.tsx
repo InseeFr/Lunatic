@@ -6,8 +6,6 @@ import type { LunaticComponentProps } from '../type';
  */
 export function Roundabout(props: LunaticComponentProps<'Roundabout'>) {
 	const goToIteration = (iteration: number) => {
-		// Update progress
-		console.log(props.items);
 		if (
 			props.items[iteration].progress !== 1 &&
 			props.items[iteration].progress !== 0
