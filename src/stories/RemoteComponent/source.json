@@ -198,7 +198,7 @@
 							"label": { "value": "\"non\"", "type": "VTL|MD" }
 						}
 					],
-					"response": { "name": "MODIFICATION_LOC" }
+					"response": { "name": "ADR_SUGG_OK" }
 				},
 				{
 					"id": "num-voi-loc",
@@ -210,7 +210,7 @@
 					"description": { "value": "\"Exemple : 56\"", "type": "VTL" },
 					"maxLength": 80,
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
+						"value": "ADR_SUGG_OK = \"2\" or RESPONSE = false",
 						"type": "VTL|MD"
 					},
 					"response": {
@@ -228,7 +228,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
+						"value": "ADR_SUGG_OK = \"2\" or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -246,7 +246,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
+						"value": "ADR_SUGG_OK = \"2\" or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -267,7 +267,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
+						"value": "ADR_SUGG_OK = \"2\" or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -285,7 +285,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
+						"value": "ADR_SUGG_OK = \"2\" or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -307,7 +307,7 @@
 					"maxLength": 80,
 					"controls": [],
 					"conditionFilter": {
-						"value": "MODIFICATION_LOC = \"2\" or RESPONSE = false",
+						"value": "ADR_SUGG_OK = \"2\" or RESPONSE = false",
 						"type": "VTL"
 					},
 					"response": {
@@ -318,7 +318,7 @@
 					"id": "component-set-complements-adresse",
 					"componentType": "ComponentSet",
 					"conditionFilter": {
-						"value": "(MODIFICATION_LOC = \"1\" or MODIFICATION_LOC = \"2\")or RESPONSE = false",
+						"value": "(ADR_SUGG_OK = \"1\" or ADR_SUGG_OK = \"2\")or RESPONSE = false",
 						"type": "VTL"
 					},
 					"page": "2",
@@ -681,7 +681,7 @@
 		},
 		{
 			"variableType": "COLLECTED",
-			"name": "MODIFICATION_LOC",
+			"name": "ADR_SUGG_OK",
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
