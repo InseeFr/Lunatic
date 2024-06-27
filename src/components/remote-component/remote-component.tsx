@@ -16,10 +16,9 @@ const fetchFromServer = (
 	retry = RETRY,
 	latency = LATENCY
 ): Promise<Record<string, unknown>> => {
-
 	return new Promise((resolve) => {
 		fetch(remote, {
-			method: "GET",
+			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -63,7 +62,8 @@ export function RemoteComponent(
 		executeExpression,
 		iteration,
 		retry = RETRY,
-		latency = LATENCY, pendingMessage = "En attente..."
+		latency = LATENCY,
+		pendingMessage = 'En attente...',
 	} = props;
 
 	const loading = useRef(false);

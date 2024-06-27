@@ -43,8 +43,8 @@ export type DeepTranslateExpression<T> = T extends LunaticExpression
 	? ReactNode
 	: T extends { [k: string | number]: unknown }
 	? {
-		[key in keyof T]: DeepTranslateExpression<T[key]>;
-	}
+			[key in keyof T]: DeepTranslateExpression<T[key]>;
+	  }
 	: T;
 
 function createCrawl({
