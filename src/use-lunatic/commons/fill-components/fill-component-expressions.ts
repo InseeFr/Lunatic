@@ -20,6 +20,8 @@ const VTL_ATTRIBUTES = [
 	// Disable controls compilation
 	// 'controls.control',
 	// 'controls.errorMessage',
+	'remote',
+	'pendingMessage',
 	'controls.iterations',
 	'lines.min',
 	'lines.max',
@@ -41,8 +43,8 @@ export type DeepTranslateExpression<T> = T extends LunaticExpression
 	? ReactNode
 	: T extends { [k: string | number]: unknown }
 	? {
-			[key in keyof T]: DeepTranslateExpression<T[key]>;
-	  }
+		[key in keyof T]: DeepTranslateExpression<T[key]>;
+	}
 	: T;
 
 function createCrawl({

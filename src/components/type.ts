@@ -238,7 +238,7 @@ type ComponentPropsByType = {
 	RemoteComponent: LunaticBaseProps<string | null> & {
 		components: LunaticComponentDefinition[];
 		remote: string;
-		responses?: Array<{ responses: { name: string } }>;
+		pendingMessage: ReactNode;
 		value: Record<string, unknown>;
 		latency?: number;
 		retry?: number;
