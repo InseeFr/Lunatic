@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const parse = require('url').parse;
 const parser = require('path-match')({
 	// path-to-regexp options
 	sensitive: false,
