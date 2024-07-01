@@ -20,6 +20,8 @@ const VTL_ATTRIBUTES = [
 	// Disable controls compilation
 	// 'controls.control',
 	// 'controls.errorMessage',
+	'remote',
+	'pendingMessage',
 	'controls.iterations',
 	'lines.min',
 	'lines.max',

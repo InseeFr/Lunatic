@@ -12,20 +12,19 @@ const RETRY = 3;
  */
 const fetchFromServer = (
 	remote: string,
-	values: unknown,
+
 	retry = RETRY,
 	latency = LATENCY
 ): Promise<Record<string, unknown>> => {
 	return new Promise((resolve) => {
 		fetch(remote, {
-			method: 'POST',
+			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(values),
 		})
 			.then((response) => {
-				if (response.ok) {
+				if (response.status === 200) {
 					return response.json();
 				} else {
 					resolve({ RESPONSE: false });
@@ -37,7 +36,7 @@ const fetchFromServer = (
 			.catch(() => {
 				if (retry > 0) {
 					window.setTimeout(() => {
-						resolve(fetchFromServer(remote, values, retry - 1));
+						resolve(fetchFromServer(remote, retry - 1, latency));
 					}, latency);
 				} else {
 					resolve({ RESPONSE: false });
@@ -64,6 +63,7 @@ export function RemoteComponent(
 		iteration,
 		retry = RETRY,
 		latency = LATENCY,
+		pendingMessage = 'En attente...',
 	} = props;
 
 	const loading = useRef(false);
@@ -72,7 +72,7 @@ export function RemoteComponent(
 	useEffect(() => {
 		if (remote && !loading.current && !fetched.current) {
 			loading.current = true;
-			fetchFromServer(remote, value, retry, latency).then(
+			fetchFromServer(remote, retry, latency).then(
 				(response: Record<string, unknown>) => {
 					fetched.current = true;
 					if (response) {
@@ -83,11 +83,8 @@ export function RemoteComponent(
 				}
 			);
 		}
-	}, [remote, value, handleChange, retry, latency]);
+	}, [remote, handleChange, retry, latency]);
 
-	/**
-	 * // TODO Gérer les component Set
-	 */
 	if (fetched.current) {
 		if (components && components.length) {
 			return components.map((c, i) => {
@@ -106,5 +103,5 @@ export function RemoteComponent(
 		return <>Nothing to display!</>;
 	}
 
-	return <div>waiting</div>;
+	return <>{pendingMessage}</>;
 }
