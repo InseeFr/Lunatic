@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { CustomRoundabout } from './CustomRoundabout';
 import { describe, it, expect, vi, afterEach } from 'vitest';
@@ -28,7 +28,11 @@ describe('Roundabout', () => {
 
 	it('renders the roundabout correctly', () => {
 		const { getByText } = render(
-			<CustomRoundabout items={items} goToIteration={mockGoToIteration} />
+			<CustomRoundabout
+				items={items}
+				goToIteration={mockGoToIteration}
+				locked={false}
+			/>
 		);
 
 		expect(getByText('Step 1')).toBeInTheDocument();
@@ -45,6 +49,7 @@ describe('Roundabout', () => {
 				items={items}
 				goToIteration={mockGoToIteration}
 				label={label}
+				locked={false}
 			/>
 		);
 
@@ -53,5 +58,18 @@ describe('Roundabout', () => {
 
 		expect(mockGoToIteration).toHaveBeenCalledTimes(1);
 		expect(mockGoToIteration).toHaveBeenCalledWith(1);
+	});
+
+	it('it lock an iteration when finished and locked property is true', () => {
+		const { getByText } = render(
+			<CustomRoundabout
+				items={items}
+				goToIteration={mockGoToIteration}
+				locked={true}
+			/>
+		);
+
+		const completeButton = getByText('Complété');
+		expect(completeButton).toBeDisabled();
 	});
 });

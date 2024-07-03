@@ -219,6 +219,7 @@ export type ComponentPropsByType = {
 			goToPage: ReturnType<typeof useLunatic>['goToPage'];
 			page: number;
 			progressVariable: string;
+			locked: boolean;
 			items: {
 				label?: ReactNode;
 				progress: number; // -1: not completed, 0: started, 1: finished
