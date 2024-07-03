@@ -1,0 +1,1 @@
+const a=["source","id","pagination","data","management","activeControls","features","initialPage","getStoreInfo","missing","shortcut","filterDescription"],s=a.reduce((e,t)=>({...e,[t]:{table:{disable:!0}}}),{}),i=s;export{i as d};
