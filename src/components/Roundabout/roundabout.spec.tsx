@@ -69,7 +69,6 @@ describe('Roundabout', () => {
 			/>
 		);
 
-
 		const completeButton = getByText('Complété');
 		expect(completeButton).toBeDisabled();
 	});
