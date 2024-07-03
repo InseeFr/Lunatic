@@ -1,17 +1,18 @@
-import React from 'react';
 import defaultArgTypes from '../utils/default-arg-types';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
+import sourceEuro from './source-euro.json';
 
-const stories = {
+export default {
 	title: 'Components/InputNumber',
 	component: Orchestrator,
 	argTypes: defaultArgTypes,
 };
 
-export default stories;
+export const Default = {
+	args: { source },
+};
 
-const Template = (args) => <Orchestrator {...args} />;
-export const Default = Template.bind({});
-
-Default.args = { id: 'input-number', source };
+export const DynamicUnit = {
+	args: { source: sourceEuro },
+};

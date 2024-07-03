@@ -710,7 +710,14 @@
 					"const": "InputNumber"
 				},
 				"unit": {
-					"type": "string"
+					"oneOf": [
+						{
+							"type": "string"
+						},
+						{
+							"$ref": "#/$defs/VTLExpression"
+						}
+					]
 				},
 				"min": {
 					"type": "number"
