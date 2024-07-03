@@ -8,6 +8,7 @@ import type {
 
 const VTL_ATTRIBUTES = [
 	['label', null],
+	['unit', null],
 	['options.label', null],
 	['declarations.label', null],
 	['description', null],
@@ -32,6 +33,9 @@ const VTL_ATTRIBUTES = [
 	['arbitrary.label', castString],
 	['arbitrary.inputLabel', castString],
 ] as const;
+
+// List of property that can be simple string instead of expressions
+const allowString = new Set(['unit']);
 
 function castNumber(v: unknown): number {
 	if (typeof v === 'number') {
@@ -128,8 +132,13 @@ export function fillComponentExpressions(
 	for (const attribute of VTL_ATTRIBUTES) {
 		const propertyPath = attribute[0].split('.');
 		const caster = attribute[1];
-		// Function that will convert expression into the desired type
+
+		// Interpret an expression
 		const convert = (expression: unknown) => {
+			// For backward compatibility, some properties can be both a string and an expression
+			if (typeof expression === 'string' && allowString.has(propertyPath[0])) {
+				return expression;
+			}
 			if (!isValidExpression(expression)) {
 				throw new Error(
 					`Expression expected at "${attribute[0]}", got ${expression}`
