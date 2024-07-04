@@ -43,6 +43,7 @@ const defaultOptions = {
 	preferences: DEFAULT_PREFERENCES,
 	savingType: COLLECTED,
 	onChange: () => {},
+	onVariableChange: () => {},
 	management: false,
 	shortcut: false,
 	initialPage: '1' as PageTag,

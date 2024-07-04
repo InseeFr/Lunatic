@@ -43,7 +43,9 @@ export function resizingBehaviour(
 		for (const variableName of resizingInfo.variables) {
 			const value = store.get(variableName);
 			if (!Array.isArray(value) || value.length !== newSize) {
-				store.set(variableName, resizeArrayVariable(value, newSize, null));
+				store.set(variableName, resizeArrayVariable(value, newSize, null), {
+					cause: 'resizing',
+				});
 			}
 		}
 	});

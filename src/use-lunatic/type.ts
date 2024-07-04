@@ -8,7 +8,10 @@ import type {
 	VTLExpression,
 	VTLScalarExpression,
 } from '../type.source';
-import type { LunaticVariablesStore } from './commons/variables/lunatic-variables-store';
+import type {
+	EventArgs as LunaticVariablesStoreEvents,
+	LunaticVariablesStore,
+} from './commons/variables/lunatic-variables-store';
 import type { IndexEntry } from '../utils/search/SearchInterface';
 import type { InterpretedLunaticOverviewItem } from './hooks/useOverview';
 import type { LunaticComponentProps } from '../components/type';
@@ -134,6 +137,7 @@ export type LunaticOptions = {
 	preferences?: ['COLLECTED'];
 	savingType?: 'COLLECTED';
 	onChange?: LunaticChangesHandler;
+	onVariableChange?: (event: LunaticVariablesStoreEvents['change']) => void;
 	management?: boolean;
 	// enable shortcut on radio/checkbox/missing buttons
 	shortcut?: boolean;

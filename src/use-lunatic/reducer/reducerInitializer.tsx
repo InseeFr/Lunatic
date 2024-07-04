@@ -39,6 +39,7 @@ export function reducerInitializer({
 	lastReachedPage = undefined,
 	withOverview = false,
 	getReferentiel,
+	onVariableChange,
 }: {
 	source: LunaticSource;
 	data: LunaticData;
@@ -47,8 +48,13 @@ export function reducerInitializer({
 	lastReachedPage?: LunaticOptions['lastReachedPage'];
 	withOverview?: LunaticOptions['withOverview'];
 	getReferentiel?: LunaticOptions['getReferentiel'];
+	onVariableChange?: LunaticOptions['onVariableChange'];
 }): LunaticReducerState {
-	const variables = LunaticVariablesStore.makeFromSource(source, data);
+	const variables = LunaticVariablesStore.makeFromSource(
+		source,
+		data,
+		onVariableChange
+	);
 	const pages = checkLoops(createMapPages(source));
 
 	if (!source || !data) {

@@ -15,7 +15,7 @@ let interpretCount = 0;
 const iterationVariableName = 'GLOBAL_ITERATION_INDEX';
 
 type IterationLevel = number[];
-type EventArgs = {
+export type EventArgs = {
 	change: {
 		// Name of the changed variable
 		name: string;
@@ -23,6 +23,8 @@ type EventArgs = {
 		value: unknown;
 		// Iteration changed (for array)
 		iteration?: IterationLevel | undefined;
+		// What triggered this change
+		cause?: 'resizing' | 'cleaning';
 	};
 };
 export type LunaticVariablesStoreEvent<T extends keyof EventArgs> = {
@@ -37,7 +39,11 @@ export class LunaticVariablesStore {
 		interpretCount = 0;
 	}
 
-	public static makeFromSource(source: LunaticSource, data: LunaticData) {
+	public static makeFromSource(
+		source: LunaticSource,
+		data: LunaticData,
+		changeHandler?: (args: EventArgs['change']) => void
+	) {
 		const store = new LunaticVariablesStore();
 		if (!source.variables) {
 			return store;
@@ -68,6 +74,9 @@ export class LunaticVariablesStore {
 					store.set(variable.name, initialValues[variable.name ?? null]);
 					break;
 			}
+		}
+		if (changeHandler) {
+			store.on('change', (e) => changeHandler(e.detail));
 		}
 		cleaningBehaviour(store, source.cleaning, initialValues);
 		resizingBehaviour(store, source.resizing);
@@ -102,13 +111,22 @@ export class LunaticVariablesStore {
 	public set(
 		name: string,
 		value: unknown,
-		args: Pick<EventArgs['change'], 'iteration'> = {}
+		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
 	): LunaticVariable {
 		if (!this.dictionary.has(name)) {
 			this.dictionary.set(
 				name,
 				new LunaticVariable({
 					name,
+				})
+			);
+			this.eventTarget.dispatchEvent(
+				new CustomEvent('change', {
+					detail: {
+						...args,
+						name: name,
+						value: value,
+					} satisfies EventArgs['change'],
 				})
 			);
 		}
