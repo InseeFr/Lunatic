@@ -141,7 +141,7 @@ function OrchestratorForStories({
 		initialPage,
 		features,
 		preferences,
-		onChange: onLogChange,
+		onVariableChange: (e) => console.log('eee', e),
 		autoSuggesterLoading,
 		getReferentiel,
 		management,

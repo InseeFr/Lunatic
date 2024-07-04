@@ -25,6 +25,8 @@ export type EventArgs = {
 		iteration?: IterationLevel | undefined;
 		// What triggered this change
 		cause?: 'resizing' | 'cleaning';
+		// Extra sent when setting the variable
+		[extra: string]: unknown;
 	};
 };
 export type LunaticVariablesStoreEvent<T extends keyof EventArgs> = {
