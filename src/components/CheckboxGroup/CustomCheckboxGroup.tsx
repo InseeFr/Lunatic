@@ -48,10 +48,7 @@ export const CustomCheckboxGroup = slottableComponent<Props>(
 				>
 					{options.map((option, index) => {
 						return (
-							<div
-								className={`lunatic-checkbox-group-option`}
-								key={option.id}
-							>
+							<div className={`lunatic-checkbox-group-option`} key={option.id}>
 								<CheckboxOption
 									{...option}
 									disabled={disabled}
