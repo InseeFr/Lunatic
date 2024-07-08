@@ -117,7 +117,7 @@ const interpretOverviewItem = (
 				: undefined,
 			children: [],
 			reached:
-				pageTagComparator(pager?.lastReachedPage ?? '-1', page) >= 0
+				pageTagComparator(pager ? getPageTag(pager) : '-1', page) >= 0
 					? true
 					: false,
 			page: page,
