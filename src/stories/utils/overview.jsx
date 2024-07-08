@@ -25,11 +25,8 @@ const OverviewItem = ({ overviewEntry, goToPage }) => {
 	}
 	return (
 		<Fragment>
-			<li
-				style={{ color: color }}
-				onClick={() => goToPage({ page: overviewEntry.page })}
-			>
-				<div>
+			<li style={{ color: color }}>
+				<div onClick={() => goToPage({ page: overviewEntry.page })}>
 					<span>{overviewEntry.label}</span>
 					<span>({overviewEntry.page})</span>
 				</div>

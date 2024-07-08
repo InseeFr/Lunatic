@@ -1532,6 +1532,329 @@ exports[`use-lunatic() > getData() > should return every value 1`] = `
 }
 `;
 
+exports[`use-lunatic() > overview > with loop > should handle initialPage 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lujqeci5",
+        "label": <MDLabel
+          expression="Votre santé"
+        />,
+        "page": "2",
+        "reached": true,
+        "type": "Subsequence",
+      },
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lujqbyzl",
+        "label": <MDLabel
+          expression="Votre logement"
+        />,
+        "page": "3",
+        "reached": true,
+        "type": "Subsequence",
+      },
+    ],
+    "current": false,
+    "description": undefined,
+    "id": "lujqfpva",
+    "label": <MDLabel
+      expression="I - Séquence 1"
+    />,
+    "page": "1",
+    "reached": true,
+    "type": "Sequence",
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lulbmyhr",
+        "label": <MDLabel
+          expression="Commentaire sur composition du logement"
+        />,
+        "page": "8",
+        "reached": true,
+        "type": "Subsequence",
+      },
+    ],
+    "current": false,
+    "description": undefined,
+    "id": "lujqrqmp",
+    "label": <MDLabel
+      expression="II - Habitants du logement"
+    />,
+    "page": "5",
+    "reached": true,
+    "type": "Sequence",
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "current": true,
+        "description": undefined,
+        "id": "lujykwaz",
+        "label": <MDLabel
+          expression="Caractéristiques de Quentin"
+        />,
+        "page": "10.1#1",
+        "reached": true,
+        "type": "Subsequence",
+      },
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lujykwaz",
+        "label": <MDLabel
+          expression="Caractéristiques de Luna"
+        />,
+        "page": "10.1#2",
+        "reached": false,
+        "type": "Subsequence",
+      },
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lujykwaz",
+        "label": <MDLabel
+          expression="Caractéristiques de Paul"
+        />,
+        "page": "10.1#3",
+        "reached": false,
+        "type": "Subsequence",
+      },
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lujyik5q",
+        "label": <MDLabel
+          expression="Autres caractéristiques de Luna : filtrée pour le premier individu"
+        />,
+        "page": "11.1#2",
+        "reached": false,
+        "type": "Subsequence",
+      },
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "luk0swcz",
+        "label": <MDLabel
+          expression="Encore d'autres caractéristiques de Luna : filtrée pour le premier individu"
+        />,
+        "page": "11.2#2",
+        "reached": false,
+        "type": "Subsequence",
+      },
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lujyik5q",
+        "label": <MDLabel
+          expression="Autres caractéristiques de Paul : filtrée pour le premier individu"
+        />,
+        "page": "11.1#3",
+        "reached": false,
+        "type": "Subsequence",
+      },
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "luk0swcz",
+        "label": <MDLabel
+          expression="Encore d'autres caractéristiques de Paul : filtrée pour le premier individu"
+        />,
+        "page": "11.2#3",
+        "reached": false,
+        "type": "Subsequence",
+      },
+    ],
+    "current": true,
+    "description": undefined,
+    "id": "lujyi4pe",
+    "label": <MDLabel
+      expression="III - Détail des individus"
+    />,
+    "page": "9",
+    "reached": true,
+    "type": "Sequence",
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lumfc98o",
+        "label": <MDLabel
+          expression="Belle sous-séquence pour Quentin"
+        />,
+        "page": "12.2#1",
+        "reached": false,
+        "type": "Subsequence",
+      },
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lumfe3bj",
+        "label": <MDLabel
+          expression="Autre belle sous-seq"
+        />,
+        "page": "12.3#1",
+        "reached": false,
+        "type": "Subsequence",
+      },
+    ],
+    "current": false,
+    "description": undefined,
+    "id": "luk1ojt5",
+    "label": <MDLabel
+      expression="IV - Belle séquence pour Quentin"
+    />,
+    "page": "12.1#1",
+    "reached": false,
+    "type": "Sequence",
+  },
+  {
+    "children": [],
+    "current": false,
+    "description": undefined,
+    "id": "lulbelgr",
+    "label": <MDLabel
+      expression="V - Autre séquence pour Quentin"
+    />,
+    "page": "12.4#1",
+    "reached": false,
+    "type": "Sequence",
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lumfc98o",
+        "label": <MDLabel
+          expression="Belle sous-séquence pour Luna"
+        />,
+        "page": "12.2#2",
+        "reached": false,
+        "type": "Subsequence",
+      },
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lumfe3bj",
+        "label": <MDLabel
+          expression="Autre belle sous-seq"
+        />,
+        "page": "12.3#2",
+        "reached": false,
+        "type": "Subsequence",
+      },
+    ],
+    "current": false,
+    "description": undefined,
+    "id": "luk1ojt5",
+    "label": <MDLabel
+      expression="IV - Belle séquence pour Luna"
+    />,
+    "page": "12.1#2",
+    "reached": false,
+    "type": "Sequence",
+  },
+  {
+    "children": [],
+    "current": false,
+    "description": undefined,
+    "id": "lulbelgr",
+    "label": <MDLabel
+      expression="V - Autre séquence pour Luna"
+    />,
+    "page": "12.4#2",
+    "reached": false,
+    "type": "Sequence",
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lumfc98o",
+        "label": <MDLabel
+          expression="Belle sous-séquence pour Paul"
+        />,
+        "page": "12.2#3",
+        "reached": false,
+        "type": "Subsequence",
+      },
+      {
+        "children": [],
+        "current": false,
+        "description": undefined,
+        "id": "lumfe3bj",
+        "label": <MDLabel
+          expression="Autre belle sous-seq"
+        />,
+        "page": "12.3#3",
+        "reached": false,
+        "type": "Subsequence",
+      },
+    ],
+    "current": false,
+    "description": undefined,
+    "id": "luk1ojt5",
+    "label": <MDLabel
+      expression="IV - Belle séquence pour Paul"
+    />,
+    "page": "12.1#3",
+    "reached": false,
+    "type": "Sequence",
+  },
+  {
+    "children": [],
+    "current": false,
+    "description": undefined,
+    "id": "lulbelgr",
+    "label": <MDLabel
+      expression="V - Autre séquence pour Paul"
+    />,
+    "page": "12.4#3",
+    "reached": false,
+    "type": "Sequence",
+  },
+  {
+    "children": [],
+    "current": false,
+    "description": undefined,
+    "id": "COMMENT-SEQ",
+    "label": <MDLabel
+      expression="Commentaire"
+    />,
+    "page": "13",
+    "reached": false,
+    "type": "Sequence",
+  },
+]
+`;
+
 exports[`use-lunatic() > overview > with loop > should handle lastReachedPage 1`] = `
 [
   {
