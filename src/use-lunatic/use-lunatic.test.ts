@@ -123,7 +123,6 @@ describe('use-lunatic()', () => {
 			const { result } = renderHook(() =>
 				useLunatic(sourceLogement as any, undefined, {
 					...lunaticConfiguration,
-					lastReachedPage: '1',
 				})
 			);
 			const overview = result.current.overview;
@@ -147,10 +146,7 @@ describe('use-lunatic()', () => {
 				const { result } = renderHook(() =>
 					useLunatic(sourceLogement as any, advancedQestionnaireData, {
 						...lunaticConfiguration,
-						// hack on initialPage : useLunatic SHOULD find lastReachedPage from COLLECTED data
-						initialPage: '1',
-						// use lastReachedPage saved by orchestrator
-						lastReachedPage: '16',
+						initialPage: '16',
 					})
 				);
 				const overview = result.current.overview;
@@ -171,11 +167,11 @@ describe('use-lunatic()', () => {
 				);
 				expect(result.current.overview).toMatchSnapshot();
 			});
-			it('should handle lastReachedPage', async () => {
+			it('should handle initialPage', async () => {
 				const { result } = renderHook(() =>
 					useLunatic(sourceOverview as any, dataOverview.data, {
 						...lunaticConfiguration,
-						lastReachedPage: '11.2#2',
+						initialPage: '10.1#1',
 					})
 				);
 				expect(result.current.overview).toMatchSnapshot();
