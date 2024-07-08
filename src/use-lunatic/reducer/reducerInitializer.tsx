@@ -1,5 +1,9 @@
-import type { LunaticSource } from '../type';
-import type { LunaticData, LunaticOptions, LunaticReducerState } from '../type';
+import type {
+	LunaticData,
+	LunaticOptions,
+	LunaticReducerState,
+	LunaticSource,
+} from '../type';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { checkLoops, createMapPages } from '../commons';
 import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
@@ -9,6 +13,7 @@ import { getPagerFromPageTag } from '../commons/page-tag';
 import { buildOverview } from './overview/overviewOnInit';
 import { forceInt } from '../../utils/number';
 import { registerSuggesters } from '../../utils/search/SuggestersDatabase';
+import type { RefObject } from 'react';
 
 const basePager = {
 	page: 1,
@@ -48,7 +53,7 @@ export function reducerInitializer({
 	lastReachedPage?: LunaticOptions['lastReachedPage'];
 	withOverview?: LunaticOptions['withOverview'];
 	getReferentiel?: LunaticOptions['getReferentiel'];
-	onVariableChange?: LunaticOptions['onVariableChange'];
+	onVariableChange: RefObject<LunaticOptions['onVariableChange']>;
 }): LunaticReducerState {
 	const variables = LunaticVariablesStore.makeFromSource(
 		source,

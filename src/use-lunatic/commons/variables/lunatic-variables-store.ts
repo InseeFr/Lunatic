@@ -1,13 +1,13 @@
 import { interpretVTL, parseVTLVariables } from '../../../utils/vtl';
 import { isTestEnv } from '../../../utils/env';
-import type { LunaticSource } from '../../type';
-import type { LunaticData } from '../../type';
+import type { LunaticData, LunaticOptions, LunaticSource } from '../../type';
 import { getInitialVariableValue } from '../../../utils/variables';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
 import { setAtIndex, subArrays, times } from '../../../utils/array';
 import { isNumber } from '../../../utils/number';
+import type { RefObject } from 'react';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
@@ -44,7 +44,7 @@ export class LunaticVariablesStore {
 	public static makeFromSource(
 		source: LunaticSource,
 		data: LunaticData,
-		changeHandler?: (args: EventArgs['change']) => void
+		changeHandler: RefObject<LunaticOptions['onVariableChange']>
 	) {
 		const store = new LunaticVariablesStore();
 		if (!source.variables) {
@@ -77,9 +77,7 @@ export class LunaticVariablesStore {
 					break;
 			}
 		}
-		if (changeHandler) {
-			store.on('change', (e) => changeHandler(e.detail));
-		}
+		store.on('change', (e) => changeHandler?.current?.(e.detail));
 		cleaningBehaviour(store, source.cleaning, initialValues);
 		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);

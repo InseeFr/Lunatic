@@ -99,11 +99,12 @@ export const RosterForLoop = (
 											id: `${c.id}-${n}`,
 											errors,
 										})}
-										wrapper={({ children }) => <Td>{children}</Td>}
+										wrapper={(props) => <Td {...props} />}
 									/>
 								</Tr>
 								{hasLineErrors && (
 									<Tr className="lunatic-errors">
+										{/* @ts-ignore-next-line */}
 										<Td colSpan={cols}>
 											<ComponentErrors errors={lineErrors} />
 										</Td>

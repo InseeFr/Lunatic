@@ -39,7 +39,7 @@ type Props<V = unknown> = {
 
 const LunaticComponentWrapper = slottableComponent(
 	'ComponentWrapper',
-	({ children }: PropsWithChildren) => {
+	({ children }: PropsWithChildren<LunaticComponentProps>) => {
 		return <div className="lunatic lunatic-component">{children}</div>;
 	}
 );
