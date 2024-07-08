@@ -38,15 +38,13 @@ export function Table(props: LunaticComponentProps<'Table'>) {
 								}>
 							>
 								components={row}
-								wrapper={({ children, index, colspan, rowspan }) => (
+								wrapper={({ colspan, rowspan, ...props }) => (
 									<Td
 										row={rowIndex}
-										index={index}
 										colSpan={colspan}
 										rowSpan={rowspan}
-									>
-										{children}
-									</Td>
+										{...props}
+									/>
 								)}
 							/>
 						</Tr>

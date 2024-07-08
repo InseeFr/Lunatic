@@ -14,6 +14,7 @@ export type ActionHandleChanges = {
 			name: string;
 			value: unknown;
 			iteration?: number[];
+			[extra: string]: unknown;
 		}[];
 	};
 };

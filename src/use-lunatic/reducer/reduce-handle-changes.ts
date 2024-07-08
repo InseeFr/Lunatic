@@ -19,8 +19,10 @@ export function reduceHandleChanges(
 
 	// Update all variables in the store
 	for (const response of action.payload.responses) {
-		state.updateBindings(response.name, response.value, {
-			iteration: getIteration(response.iteration),
+		const { name, value, iteration, ...extra } = response;
+		state.updateBindings(name, value, {
+			...extra,
+			iteration: getIteration(iteration),
 		});
 	}
 

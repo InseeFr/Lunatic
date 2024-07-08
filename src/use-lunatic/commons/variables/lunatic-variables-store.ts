@@ -1,13 +1,13 @@
 import { interpretVTL, parseVTLVariables } from '../../../utils/vtl';
 import { isTestEnv } from '../../../utils/env';
-import type { LunaticSource } from '../../type';
-import type { LunaticData } from '../../type';
+import type { LunaticData, LunaticOptions, LunaticSource } from '../../type';
 import { getInitialVariableValue } from '../../../utils/variables';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
 import { setAtIndex, subArrays, times } from '../../../utils/array';
 import { isNumber } from '../../../utils/number';
+import type { RefObject } from 'react';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
@@ -15,7 +15,7 @@ let interpretCount = 0;
 const iterationVariableName = 'GLOBAL_ITERATION_INDEX';
 
 type IterationLevel = number[];
-type EventArgs = {
+export type EventArgs = {
 	change: {
 		// Name of the changed variable
 		name: string;
@@ -23,6 +23,10 @@ type EventArgs = {
 		value: unknown;
 		// Iteration changed (for array)
 		iteration?: IterationLevel | undefined;
+		// What triggered this change
+		cause?: 'resizing' | 'cleaning';
+		// Extra sent when setting the variable
+		[extra: string]: unknown;
 	};
 };
 export type LunaticVariablesStoreEvent<T extends keyof EventArgs> = {
@@ -37,7 +41,11 @@ export class LunaticVariablesStore {
 		interpretCount = 0;
 	}
 
-	public static makeFromSource(source: LunaticSource, data: LunaticData) {
+	public static makeFromSource(
+		source: LunaticSource,
+		data: LunaticData,
+		changeHandler: RefObject<LunaticOptions['onVariableChange']>
+	) {
 		const store = new LunaticVariablesStore();
 		if (!source.variables) {
 			return store;
@@ -69,6 +77,7 @@ export class LunaticVariablesStore {
 					break;
 			}
 		}
+		store.on('change', (e) => changeHandler?.current?.(e.detail));
 		cleaningBehaviour(store, source.cleaning, initialValues);
 		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);
@@ -102,13 +111,22 @@ export class LunaticVariablesStore {
 	public set(
 		name: string,
 		value: unknown,
-		args: Pick<EventArgs['change'], 'iteration'> = {}
+		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
 	): LunaticVariable {
 		if (!this.dictionary.has(name)) {
 			this.dictionary.set(
 				name,
 				new LunaticVariable({
 					name,
+				})
+			);
+			this.eventTarget.dispatchEvent(
+				new CustomEvent('change', {
+					detail: {
+						...args,
+						name: name,
+						value: value,
+					} satisfies EventArgs['change'],
 				})
 			);
 		}

@@ -251,6 +251,8 @@ describe('lunatic-variables-store', () => {
 		it('should resize variables', () => {
 			variables.set('PRENOM', ['John', 'Jane']);
 			variables.set('NOM', ['Doe']);
+			const spy = vi.fn();
+			variables.on('change', (e) => spy(e.detail));
 			resizingBehaviour(variables, {
 				PRENOM: {
 					size: 'count(PRENOM)',
@@ -260,6 +262,11 @@ describe('lunatic-variables-store', () => {
 			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
 			expect((variables.get('PRENOM') as string[]).length).toEqual(3);
 			expect((variables.get('NOM') as string[]).length).toEqual(3);
+			expect(spy).toHaveBeenLastCalledWith({
+				name: 'NOM',
+				value: ['Doe', null, null],
+				cause: 'resizing',
+			});
 		});
 		it('should resize pairwise with the array syntax', () => {
 			variables.set('PRENOM', []);

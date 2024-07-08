@@ -28,6 +28,7 @@ import { getComponentsFromState } from './commons/get-components-from-state';
 import { fillComponents } from './commons/fill-components/fill-components';
 import { reducer } from './reducer/reducer';
 import { mergeDefault } from '../utils/object';
+import { useRefSync } from '../hooks/useRefSync';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const DEFAULT_DATA = empty as LunaticData;
@@ -43,6 +44,7 @@ const defaultOptions = {
 	preferences: DEFAULT_PREFERENCES,
 	savingType: COLLECTED,
 	onChange: () => {},
+	onVariableChange: () => {},
 	management: false,
 	shortcut: false,
 	initialPage: '1' as PageTag,
@@ -79,7 +81,12 @@ function useLunatic(
 	} = options;
 	const [state, dispatch] = useReducer(
 		reducer,
-		{ ...options, source, data },
+		{
+			...options,
+			source,
+			data,
+			onVariableChange: useRefSync(options.onVariableChange),
+		},
 		reducerInitializer
 	);
 

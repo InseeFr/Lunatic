@@ -48,6 +48,7 @@ export function cleaningBehaviour(
 					getValueAtIteration(initialValues[variableName], variableIteration),
 					{
 						iteration: variableIteration,
+						cause: 'cleaning',
 					}
 				);
 			} catch (e) {
