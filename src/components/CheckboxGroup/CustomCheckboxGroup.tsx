@@ -18,6 +18,7 @@ type Props = Pick<
 	| 'readOnly'
 	| 'disabled'
 	| 'options'
+	| 'orientation'
 > & {
 	errors?: LunaticError[];
 };
@@ -33,6 +34,7 @@ export const CustomCheckboxGroup = slottableComponent<Props>(
 		disabled,
 		readOnly,
 		declarations,
+		orientation,
 	}: Props) => {
 		return (
 			<Fieldset
@@ -41,36 +43,40 @@ export const CustomCheckboxGroup = slottableComponent<Props>(
 				description={description}
 			>
 				<Declarations type="AFTER_QUESTION_TEXT" declarations={declarations} />
-				{options.map((option, index) => {
-					return (
-						<div className="lunatic-checkbox-group-option" key={option.id}>
-							<CheckboxOption
-								{...option}
-								disabled={disabled}
-								readOnly={readOnly}
-								shortcut={shortcut}
-								invalid={!!errors}
-								id={option.id}
-								codeModality={
-									shortcut ? getShortcutKey(index, options.length) : undefined
-								}
-							/>
-							{option.onDetailChange && option.checked && (
-								<CustomInput
-									id="detailId"
-									label={option.detailLabel ?? 'Précisez :'}
-									value={
-										typeof option.detailValue === 'string'
-											? option.detailValue
-											: ''
-									}
-									onChange={option.onDetailChange}
+				<div
+					className={`lunatic-checkboxes lunatic-checkboxes--${orientation}`}
+				>
+					{options.map((option, index) => {
+						return (
+							<div className={`lunatic-checkbox-group-option`} key={option.id}>
+								<CheckboxOption
+									{...option}
 									disabled={disabled}
+									readOnly={readOnly}
+									shortcut={shortcut}
+									invalid={!!errors}
+									id={option.id}
+									codeModality={
+										shortcut ? getShortcutKey(index, options.length) : undefined
+									}
 								/>
-							)}
-						</div>
-					);
-				})}
+								{option.onDetailChange && option.checked && (
+									<CustomInput
+										id="detailId"
+										label={option.detailLabel ?? 'Précisez :'}
+										value={
+											typeof option.detailValue === 'string'
+												? option.detailValue
+												: ''
+										}
+										onChange={option.onDetailChange}
+										disabled={disabled}
+									/>
+								)}
+							</div>
+						);
+					})}
+				</div>
 				<ComponentErrors errors={errors} />
 			</Fieldset>
 		);

@@ -186,6 +186,7 @@ export type ComponentPropsByType = {
 				detailValue?: string | null;
 				detailLabel?: ReactNode;
 			}[];
+			orientation?: 'horizontal' | 'vertical';
 			componentType?: 'CheckboxGroup';
 		};
 	CheckboxOne: LunaticBaseProps<string | null> &

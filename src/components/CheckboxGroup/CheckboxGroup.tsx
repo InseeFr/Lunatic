@@ -12,6 +12,7 @@ export function CheckboxGroup({
 	label,
 	description,
 	declarations,
+	orientation,
 }: LunaticComponentProps<'CheckboxGroup'>) {
 	return (
 		<CustomCheckboxGroup
@@ -24,6 +25,7 @@ export function CheckboxGroup({
 			disabled={disabled}
 			readOnly={readOnly}
 			declarations={declarations}
+			orientation={orientation}
 		/>
 	);
 }

@@ -1,4 +1,5 @@
 {
+	"$schema": "../../../lunatic-schema.json",
 	"components": [
 		{
 			"id": "checkboxbooleanGroupNumeric",
@@ -6,9 +7,9 @@
 			"page": "1",
 			"label": {
 				"value": "Situation matrimoniale",
-				"type": "Text"
+				"type": "TXT"
 			},
-
+			"orientation": "horizontal",
 			"hierarchy": {
 				"sequence": {
 					"id": "kmnnjaf1",
@@ -69,9 +70,9 @@
 			"page": "2",
 			"label": {
 				"value": "Mois préférés de l'année",
-				"type": "Text"
+				"type": "TXT"
 			},
-
+			"orientation": "vertical",
 			"hierarchy": {
 				"sequence": {
 					"id": "kmnnjaf1",
