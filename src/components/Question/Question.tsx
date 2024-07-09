@@ -7,11 +7,8 @@ import type { PropsWithChildren } from 'react';
 /**
  * Surround a question giving additional context with label / description / declarations
  */
-export const Question = ({
-	components,
-	...props
-}: LunaticComponentProps<'Question'>) => {
-	const { errors, disabled, readOnly } = props;
+export const Question = (props: LunaticComponentProps<'Question'>) => {
+	const { errors, disabled, readOnly, components } = props;
 	return (
 		<CustomQuestion {...props}>
 			<LunaticComponents
@@ -26,9 +23,7 @@ export const Question = ({
 	);
 };
 
-type CustomProps = PropsWithChildren<
-	Omit<LunaticComponentProps<'Question'>, 'components'>
->;
+type CustomProps = PropsWithChildren<LunaticComponentProps<'Question'>>;
 
 export const CustomQuestion = slottableComponent<CustomProps>(
 	'Question',
