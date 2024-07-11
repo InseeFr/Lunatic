@@ -29,6 +29,8 @@ import { fillComponents } from './commons/fill-components/fill-components';
 import { reducer } from './reducer/reducer';
 import { mergeDefault } from '../utils/object';
 import { useRefSync } from '../hooks/useRefSync';
+import { ConsoleLogger } from './logger/ConsoleLogger';
+import { useWarnDepChange } from './hooks/useWarnDepChange';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const DEFAULT_DATA = empty as LunaticData;
@@ -59,9 +61,10 @@ const defaultOptions = {
 	dontKnowButton: DEFAULT_DONT_KNOW,
 	refusedButton: DEFAULT_REFUSED,
 	trackChanges: false,
+	logger: ConsoleLogger,
 } satisfies LunaticOptions;
 
-function useLunatic(
+export function useLunatic(
 	source: LunaticSource,
 	data: LunaticData = DEFAULT_DATA,
 	argOptions: LunaticOptions = empty
@@ -78,7 +81,16 @@ function useLunatic(
 		onChange,
 		trackChanges,
 		preferences,
+		logger,
 	} = options;
+
+	// Help debug with warnings for options expected to be memoized
+	useWarnDepChange(
+		logger,
+		"'logger' option should not change between render",
+		logger
+	);
+
 	const [state, dispatch] = useReducer(
 		reducer,
 		{
@@ -207,5 +219,3 @@ function useLunatic(
 		},
 	} satisfies LunaticState;
 }
-
-export default useLunatic;

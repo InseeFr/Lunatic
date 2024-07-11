@@ -1,5 +1,5 @@
 import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
-import useLunatic from '../use-lunatic';
+import { useLunatic } from '../use-lunatic/use-lunatic';
 import type {
 	LunaticChangesHandler,
 	LunaticComponentDefinition,

@@ -14,6 +14,7 @@ import { buildOverview } from './overview/overviewOnInit';
 import { forceInt } from '../../utils/number';
 import { registerSuggesters } from '../../utils/search/SuggestersDatabase';
 import type { RefObject } from 'react';
+import type { LunaticLogger } from '../logger/type';
 
 const basePager = {
 	page: 1,
@@ -45,6 +46,7 @@ export function reducerInitializer({
 	withOverview = false,
 	getReferentiel,
 	onVariableChange,
+	logger,
 }: {
 	source: LunaticSource;
 	data: LunaticData;
@@ -54,6 +56,7 @@ export function reducerInitializer({
 	withOverview?: LunaticOptions['withOverview'];
 	getReferentiel?: LunaticOptions['getReferentiel'];
 	onVariableChange: RefObject<LunaticOptions['onVariableChange']>;
+	logger: LunaticLogger;
 }): LunaticReducerState {
 	const variables = LunaticVariablesStore.makeFromSource(
 		source,
@@ -105,7 +108,10 @@ export function reducerInitializer({
 			return result as any;
 		} catch (e) {
 			// If there is an error interpreting a variable, return the raw expression
-			console.error(`Cannot interpret expression : ${expressionString}`, e);
+			logger({
+				type: 'ERROR',
+				error: e as Error,
+			});
 			return expressionString;
 		}
 	};

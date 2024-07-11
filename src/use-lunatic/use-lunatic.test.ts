@@ -1,6 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import useLunatic from './use-lunatic';
 
 import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
@@ -11,6 +10,7 @@ import dataOverview from '../stories/overview/dataLoop.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { LunaticData, PageTag } from './type';
+import { useLunatic } from './use-lunatic';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {
