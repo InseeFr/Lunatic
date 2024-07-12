@@ -1,5 +1,5 @@
-import isPaginatedLoop from './is-paginated-loop';
-import isRoundabout from './is-roundabout';
+import { isPaginatedLoop } from './is-paginated-loop';
+import { isRoundabout } from './is-roundabout';
 import type {
 	LunaticComponentDefinition,
 	LunaticExpression,
@@ -9,7 +9,7 @@ import type {
 /**
  * Extract the list of subpages linked to a component
  */
-function extractSubPages(
+function getSubPages(
 	component: LunaticComponentDefinition,
 	previous: string[] = []
 ): string[] {
@@ -31,7 +31,7 @@ function extractSubPages(
 	);
 }
 
-function extractLoop(components: LunaticComponentDefinition[] = []) {
+function getLoopInfos(components: LunaticComponentDefinition[] = []) {
 	return components.reduce(
 		function (
 			{ isLoop, subPages, iterations, loopDependencies, roundabout },
@@ -43,7 +43,7 @@ function extractLoop(components: LunaticComponentDefinition[] = []) {
 				return {
 					isLoop: isLoop || currentIsLoop,
 					roundabout: roundabout || currentIsRoundabout,
-					subPages: extractSubPages(component, subPages),
+					subPages: getSubPages(component, subPages),
 					iterations: iterations || component.iterations,
 					loopDependencies: loopDependencies || undefined,
 				};
@@ -66,7 +66,7 @@ function extractLoop(components: LunaticComponentDefinition[] = []) {
 	);
 }
 
-function checkLoops(pages: LunaticReducerState['pages']) {
+export function addLoopInfos(pages: LunaticReducerState['pages']) {
 	return Object.entries(pages).reduce(
 		(map, current) => {
 			const [number, content] = current;
@@ -75,7 +75,7 @@ function checkLoops(pages: LunaticReducerState['pages']) {
 			}
 			const { components } = content;
 			const { isLoop, subPages, iterations, loopDependencies } =
-				extractLoop(components);
+				getLoopInfos(components);
 
 			return {
 				...map,
@@ -91,5 +91,3 @@ function checkLoops(pages: LunaticReducerState['pages']) {
 		{} as LunaticReducerState['pages']
 	);
 }
-
-export default checkLoops;

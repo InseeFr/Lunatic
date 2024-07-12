@@ -1,6 +1,6 @@
 import type { LunaticComponentDefinition } from '../type';
 
-export default function isRoundabout(
+export function isRoundabout(
 	component: LunaticComponentDefinition
 ): component is LunaticComponentDefinition<'Roundabout'> {
 	const { componentType } = component;

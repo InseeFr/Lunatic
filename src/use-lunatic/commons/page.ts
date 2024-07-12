@@ -1,6 +1,6 @@
 import type { LunaticReducerState } from '../type';
 import { getComponentsFromState } from './get-components-from-state';
-import executeConditionFilter from './execute-condition-filter';
+import { executeConditionFilter } from './execute-condition-filter';
 
 export function getPageId({
 	subPage,

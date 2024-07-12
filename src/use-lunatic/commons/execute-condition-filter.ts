@@ -1,7 +1,7 @@
 import type { LunaticExpression, LunaticReducerState } from '../type';
 import { firstValueItem } from '../../utils/array';
 
-function executeConditionFilter(
+export function executeConditionFilter(
 	filter: LunaticExpression,
 	execute: LunaticReducerState['executeExpression'],
 	iteration?: number
@@ -13,5 +13,3 @@ function executeConditionFilter(
 	}
 	return undefined;
 }
-
-export default executeConditionFilter;

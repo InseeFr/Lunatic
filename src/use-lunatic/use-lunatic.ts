@@ -5,7 +5,6 @@ import {
 	goPreviousPageAction,
 	handleChangesAction,
 } from './actions';
-import { getPageTag, isFirstLastPage } from './commons';
 import type {
 	LunaticChangesHandler,
 	LunaticData,
@@ -31,6 +30,8 @@ import { mergeDefault } from '../utils/object';
 import { useRefSync } from '../hooks/useRefSync';
 import { ConsoleLogger } from './logger/ConsoleLogger';
 import { useWarnDepChange } from './hooks/useWarnDepChange';
+import { getPageTag } from './commons/page-tag';
+import { isFirstLastPage } from './commons/is-first-last-page';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const DEFAULT_DATA = empty as LunaticData;

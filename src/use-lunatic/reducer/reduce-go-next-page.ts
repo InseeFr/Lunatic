@@ -1,10 +1,10 @@
-import { getNewReachedPage } from '../commons';
 import { getPageId, isPageEmpty } from '../commons/page';
 import { getNextPager } from '../commons/page-navigation';
 import type { LunaticReducerState } from '../type';
 import { autoExploreLoop } from './commons/auto-explore-loop';
 import { reduceHandleChanges } from './reduce-handle-changes';
 import { ActionKind } from '../actions';
+import { getNewReachedPage } from '../commons/page-tag';
 
 export function reduceGoNextPage(
 	state: LunaticReducerState

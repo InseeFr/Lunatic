@@ -5,7 +5,6 @@ import type {
 	LunaticSource,
 } from '../type';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
-import { checkLoops, createMapPages } from '../commons';
 import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
 import { MD, VTL } from '../../utils/constants';
 import { MDLabel } from '../../components/shared/MDLabel/MDLabel';
@@ -15,6 +14,7 @@ import { forceInt } from '../../utils/number';
 import { registerSuggesters } from '../../utils/search/SuggestersDatabase';
 import type { RefObject } from 'react';
 import type { LunaticLogger } from '../logger/type';
+import { pagesFromSource } from '../commons/create-map-pages';
 
 const basePager = {
 	page: 1,
@@ -63,7 +63,7 @@ export function reducerInitializer({
 		data,
 		onVariableChange
 	);
-	const pages = checkLoops(createMapPages(source));
+	const pages = pagesFromSource(source);
 
 	if (!source || !data) {
 		return baseState;

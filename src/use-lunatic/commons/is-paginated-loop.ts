@@ -1,6 +1,6 @@
 import type { LunaticComponentDefinition } from '../type';
 
-function isPaginatedLoop(
+export function isPaginatedLoop(
 	component: LunaticComponentDefinition
 ): component is LunaticComponentDefinition & {
 	componentType: 'Loop';
@@ -8,5 +8,3 @@ function isPaginatedLoop(
 } {
 	return component.componentType === 'Loop' && component.paginatedLoop;
 }
-
-export default isPaginatedLoop;
