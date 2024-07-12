@@ -15,6 +15,7 @@ import type {
 import type { IndexEntry } from '../utils/search/SearchInterface';
 import type { InterpretedLunaticOverviewItem } from './hooks/useOverview';
 import type { LunaticComponentProps } from '../components/type';
+import type { LunaticLogger } from './logger/type';
 export type { LunaticSource } from '../type.source';
 
 export type LunaticComponentDefinition<T extends string = string> =
@@ -155,6 +156,7 @@ export type LunaticOptions = {
 	refusedButton?: string;
 	// Enable change tracking to keep a track of what variable changed (allow using getChangedData())
 	trackChanges?: boolean;
+	logger?: LunaticLogger;
 };
 
 // Type representing the return type of "useLunatic()"

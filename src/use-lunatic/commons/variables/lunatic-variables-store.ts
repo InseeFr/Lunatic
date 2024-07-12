@@ -8,6 +8,11 @@ import { missingBehaviour } from './behaviours/missing-behaviour';
 import { setAtIndex, subArrays, times } from '../../../utils/array';
 import { isNumber } from '../../../utils/number';
 import type { RefObject } from 'react';
+import {
+	VTLInterpretationError,
+	VTLMissingDependencies,
+	VTLMissingDependency,
+} from './errors';
 
 // Interpret counter, used for testing purpose
 let interpretCount = 0;
@@ -332,13 +337,7 @@ class LunaticVariable {
 		try {
 			this.setValue(interpretVTL(this.expression, bindings), iteration);
 		} catch (e) {
-			throw new Error(
-				`Cannot interpret expression "${
-					this.expression
-				}" with bindings ${JSON.stringify(bindings)}, error : ${(
-					e as Error
-				).toString()}`
-			);
+			throw new VTLInterpretationError(this.expression!, bindings);
 		}
 		this.updateTimestamps(iteration, 'calculatedAt');
 		return this.getSavedValue(iteration);
@@ -439,9 +438,7 @@ class LunaticVariable {
 					// The variable is not registered in the variable dictionary
 					// Happens when calculating unquoted VTL expression
 					if (!this.dictionary || !this.dictionary?.has(dep)) {
-						throw new Error(
-							`Unknown variable "${dep}" in expression ${this.expression}`
-						);
+						throw new VTLMissingDependency(this.expression!, dep);
 					}
 
 					return [dep, this.dictionary.get(dep)?.getValue(dependencyIteration)];
@@ -449,12 +446,9 @@ class LunaticVariable {
 			);
 		} catch (e) {
 			if (e instanceof RangeError) {
-				throw new Error(
-					`Cannot resolve dependencies for "${
-						this.expression
-					}" with dependencies ${JSON.stringify(
-						this.getDependencies()
-					)} \n ${e.toString()}`
+				throw new VTLMissingDependencies(
+					this.expression!,
+					this.getDependencies()
 				);
 			}
 			throw e;
