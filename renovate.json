@@ -25,5 +25,6 @@
 		}
 	],
 	"prConcurrentLimit": 5,
-	"dependencyDashboard": true
+	"dependencyDashboard": true,
+	"baseBranches" : ["$default", "2.6"]
 }
