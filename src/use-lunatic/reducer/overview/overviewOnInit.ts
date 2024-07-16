@@ -14,7 +14,10 @@ function overviewFromComponent(
 	extra: Partial<LunaticOverviewItem> = {}
 ): LunaticOverviewItem[] {
 	// For loop we need to explore Subsequence inside the loop
-	if (component.componentType === 'Loop') {
+	if (
+		component.componentType === 'Loop' ||
+		component.componentType === 'Roundabout'
+	) {
 		return overviewFromLoop(items, component);
 	}
 
@@ -46,7 +49,7 @@ function overviewFromComponent(
  */
 function overviewFromLoop(
 	items: LunaticOverviewItem[],
-	component: LunaticComponentDefinition<'Loop'>
+	component: LunaticComponentDefinition<'Loop' | 'Roundabout'>
 ): LunaticOverviewItem[] {
 	// Since we don't know how many iterations we have, skip this component
 	if (!('iterations' in component)) {
