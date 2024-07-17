@@ -787,6 +787,9 @@
 					"type": "string",
 					"const": "CheckboxGroup"
 				},
+				"orientation": {
+					"enum": ["horizontal", "vertical"]
+				},
 				"responses": {
 					"type": "array",
 					"items": {
@@ -1139,7 +1142,17 @@
 							}
 						},
 						"shapeFrom": {
-							"type": "string"
+							"oneOf": [
+								{
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								{
+									"type": "string"
+								}
+							]
 						}
 					},
 					"required": ["variableType", "name", "expression"],

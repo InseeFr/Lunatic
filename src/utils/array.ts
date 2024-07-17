@@ -110,3 +110,21 @@ export function depth(arr: unknown, base = 0) {
 	}
 	return depth(arr[0], base + 1);
 }
+
+/**
+ * Find the longest array from a list of arrays
+ */
+export function findLongest<T>(arr: T[]): T {
+	let longest = arr[0];
+	let max = -1;
+	for (const item of arr) {
+		if (Array.isArray(item) && item.length > max) {
+			max = item.length;
+			longest = item;
+		}
+		if (!Array.isArray(item) && max < 0) {
+			longest = item;
+		}
+	}
+	return longest;
+}
