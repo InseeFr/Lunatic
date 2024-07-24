@@ -55,12 +55,14 @@ export class LunaticVariablesStore {
 		if (!source.variables) {
 			return store;
 		}
-		const initialValues = Object.fromEntries(
-			source.variables.map((variable) => [
-				variable.name,
-				getInitialVariableValue(variable, data),
-			])
-		);
+		// Source data (picked from "variables" in the source.json)s
+		const sourceValues: Record<string, unknown> = {};
+		// Starting data for the form (merged with data.json or injected data)
+		const initialValues: Record<string, unknown> = {};
+		for (const variable of source.variables) {
+			sourceValues[variable.name] = getInitialVariableValue(variable);
+			initialValues[variable.name] = getInitialVariableValue(variable, data);
+		}
 		const getIterationDepth = (name: string) => {
 			if (name === 'xAxis') return 0;
 			if (name === 'yAxis') return 1;
@@ -83,7 +85,7 @@ export class LunaticVariablesStore {
 			}
 		}
 		store.on('change', (e) => changeHandler?.current?.(e.detail));
-		cleaningBehaviour(store, source.cleaning, initialValues);
+		cleaningBehaviour(store, source.cleaning, sourceValues);
 		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);
 		return store;
