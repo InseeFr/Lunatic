@@ -5,8 +5,14 @@
 }
 
 .lunatic-roundabout__item {
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr max-content;
 	justify-content: space-between;
+	gap: .5rem;
+}
+
+.lunatic-roundabout__item .lunatic-errors {
+	grid-column: 1 / -1;
 }
 
 .lunatic-roundabout__item + .lunatic-roundabout__item {

@@ -2,8 +2,8 @@ import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
 import simple from './simple.json';
 import simpleNum from './simple-numeric.json';
-import linkedLoop from './loop.json';
 import sourceLoop from './loop.json';
+import sourceRoundabout from './roundabout.json';
 import defaultArgTypes from '../../utils/default-arg-types';
 import boucleNTabDynamique from './boucles-n.json';
 
@@ -65,17 +65,17 @@ SimpleNum.args = {
 
 export const LinkedLoop = Template.bind({});
 
-LinkedLoop.args = {
-	id: 'controls-linked-loop',
-	source: linkedLoop,
-	pagination: true,
-	activeControls: true,
-};
-
 export const Loop = Template.bind({});
 Loop.args = {
 	id: 'controls-loop',
 	source: sourceLoop,
+	pagination: true,
+	activeControls: true,
+};
+
+export const Roundabout = Template.bind({});
+Roundabout.args = {
+	source: sourceRoundabout,
 	pagination: true,
 	activeControls: true,
 };
