@@ -124,7 +124,7 @@ export type ComponentTableDefinition = ComponentTableDefinition1 & {
 export type ComponentTableDefinition1 = ComponentDefinitionBase;
 export type ComponentNumberDefinition = ComponentNumberDefinition1 & {
 	componentType: 'InputNumber';
-	unit?: string;
+	unit?: string | VTLExpression;
 	min?: number;
 	max?: number;
 	decimals?: number;
@@ -274,7 +274,7 @@ export type Variable =
 			name: string;
 			expression: VTLExpression;
 			bindingDependencies?: string[];
-			shapeFrom?: string;
+			shapeFrom?: string[] | string;
 	  };
 export type VariableValue = VariableScalarValue | unknown[];
 export type VariableScalarValue = string | number | null;

@@ -172,6 +172,19 @@ describe('lunatic-variables-store', () => {
 			// Only the second iteration should be calculated
 			expect(variables.interpretCount).toBe(3);
 		});
+		it('should handle iteration with multiple shapeFrom', () => {
+			variables.set('FIRSTNAME', ['John']);
+			variables.set('LASTNAME', ['Doe', 'Dae']);
+			variables.setCalculated(
+				'FULLNAME',
+				'nvl(FIRSTNAME, "") || " " || nvl(LASTNAME, "")',
+				{
+					dependencies: ['FIRSTNAME', 'LASTNAME'],
+					shapeFrom: ['FIRSTNAME', 'LASTNAME'],
+				}
+			);
+			expect(variables.get('FULLNAME')).toEqual(['John Doe', ' Dae']);
+		});
 		it('should handle aggregation expression', () => {
 			variables.set('FIRSTNAME', ['John', 'Jane']);
 			expect(variables.run('count(FIRSTNAME)')).toEqual(2);

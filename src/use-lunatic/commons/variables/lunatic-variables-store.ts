@@ -5,7 +5,12 @@ import { getInitialVariableValue } from '../../../utils/variables';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
-import { setAtIndex, subArrays, times } from '../../../utils/array';
+import {
+	findLongest,
+	setAtIndex,
+	subArrays,
+	times,
+} from '../../../utils/array';
 import { isNumber } from '../../../utils/number';
 import type { RefObject } from 'react';
 import {
@@ -165,7 +170,7 @@ export class LunaticVariablesStore {
 		}: {
 			dependencies?: string[];
 			iterationDepth?: number;
-			shapeFrom?: string;
+			shapeFrom?: string | string[];
 		} = {}
 	): LunaticVariable {
 		if (this.dictionary.has(name)) {
@@ -259,7 +264,7 @@ class LunaticVariable {
 	// Specific iteration depth to get value from dependencies (used for yAxis for instance)
 	private readonly iterationDepth?: number;
 	// For calculated variable, shape is copied from another variable
-	private readonly shapeFrom?: string;
+	private readonly shapeFrom?: string[];
 	// Keep a record of variable name (optional, used for debug)
 	public readonly name?: string;
 	// Count the number of calculation
@@ -271,7 +276,7 @@ class LunaticVariable {
 			dependencies?: string[];
 			dictionary?: Map<string, LunaticVariable>;
 			iterationDepth?: number;
-			shapeFrom?: string;
+			shapeFrom?: string | string[];
 			name?: string;
 		} = {}
 	) {
@@ -284,7 +289,8 @@ class LunaticVariable {
 		this.dictionary = args.dictionary;
 		this.dependencies = args.dependencies;
 		this.iterationDepth = args.iterationDepth;
-		this.shapeFrom = args.shapeFrom;
+		this.shapeFrom =
+			typeof args.shapeFrom === 'string' ? [args.shapeFrom] : args.shapeFrom;
 		this.name = args.name ?? args.expression;
 	}
 
@@ -295,7 +301,9 @@ class LunaticVariable {
 		}
 
 		const shapeFromValue = this.shapeFrom
-			? this.dictionary?.get(this.shapeFrom)?.getValue()
+			? findLongest(
+					this.shapeFrom.map((v) => this.dictionary?.get(v)?.getValue())
+				)
 			: null;
 		// If we want the root value of a calculated array, loop using the shapeFrom value
 		if (!iteration && Array.isArray(shapeFromValue)) {
