@@ -6,6 +6,7 @@ import source from './source';
 import sourceOptionResponses from './source-option-responses';
 import sourceArbitraryResponse from './source-arbitrary-response.json';
 import sourceError from './source-error.json';
+import sourceMultiline from './source-multiline.json';
 
 const stories = {
 	title: 'Components/Suggester',
@@ -57,6 +58,14 @@ WithError.args = {
 	id: 'suggester-error',
 	source: sourceError,
 	getReferentiel: getFakeReferentiel,
+	autoSuggesterLoading: true,
+	pagination: true,
+};
+
+export const MultiLine = Template.bind({});
+MultiLine.args = {
+	source: sourceMultiline,
+	getReferentiel: getReferentiel,
 	autoSuggesterLoading: true,
 	pagination: true,
 };
