@@ -28,38 +28,36 @@ export function Suggester({
 }: LunaticComponentProps<'Suggester'>) {
 	// Default options should not change between render
 	// so we can break the rule of hooks here
-	const [selectedOptions, setSelectedOptions] = useState<SuggesterOptionType[]>(
-		() => {
-			if (arbitraryValue) {
-				return [{ id: 'OTHER', label: arbitraryValue, value: 'OTHER' }];
-			}
-			if (!value) {
-				return [];
-			}
-			const labelResponse = optionResponses?.find(
-				(o) => o.attribute === 'label'
-			);
-			if (!labelResponse) {
-				return [{ id: value, label: value, value: value }];
-			}
-			const label = executeExpression(
-				{ value: labelResponse.name, type: 'VTL' },
-				{
-					iteration,
-				}
-			);
-			if (typeof label !== 'string') {
-				return [{ id: value, label: value, value: value }];
-			}
-			return [
-				{
-					id: value,
-					label: label,
-					value: value,
-				},
-			];
+	const [selectedOptions, setSelectedOptions] = useState<
+		[SuggesterOptionType] | []
+	>(() => {
+		if (arbitraryValue) {
+			return [{ id: 'OTHER', label: arbitraryValue, value: 'OTHER' }];
 		}
-	);
+		if (!value) {
+			return [];
+		}
+		const labelResponse = optionResponses?.find((o) => o.attribute === 'label');
+		if (!labelResponse) {
+			return [{ id: value, label: value, value: value }];
+		}
+		const label = executeExpression(
+			{ value: labelResponse.name, type: 'VTL' },
+			{
+				iteration,
+			}
+		);
+		if (typeof label !== 'string') {
+			return [{ id: value, label: value, value: value }];
+		}
+		return [
+			{
+				id: value,
+				label: label,
+				value: value,
+			},
+		];
+	});
 
 	const { state, options, search, setSearch, onFocus, onBlur } = useSuggestions(
 		{

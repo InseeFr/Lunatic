@@ -9,6 +9,7 @@ import { depth } from '../../../../utils/array';
 export function cleaningBehaviour(
 	store: LunaticVariablesStore,
 	cleaning: LunaticSource['cleaning'],
+	// Value used as default when cleaning a variable
 	initialValues: Record<string, unknown> = {}
 ) {
 	if (!cleaning) {

@@ -439,4 +439,54 @@ describe('lunatic-variables-store', () => {
 			expect(variables.get('PRENOM_MISSING', [1])).toEqual('DK');
 		});
 	});
+
+	describe('makeFromSource', () => {
+		it('should handle initial data correctly', () => {
+			const store = LunaticVariablesStore.makeFromSource(
+				{
+					components: [],
+					variables: [
+						{
+							name: 'PRENOM',
+							values: {
+								EDITED: null,
+								FORCED: null,
+								INPUTTED: null,
+								PREVIOUS: null,
+								COLLECTED: 'John',
+							},
+							variableType: 'COLLECTED',
+						},
+						{
+							name: 'NOM',
+							values: {
+								EDITED: null,
+								FORCED: null,
+								INPUTTED: null,
+								PREVIOUS: null,
+								COLLECTED: '',
+							},
+							variableType: 'COLLECTED',
+						},
+					],
+					cleaning: {
+						NOM: {
+							PRENOM: 'false',
+						},
+					},
+				},
+				{
+					COLLECTED: {
+						PRENOM: {
+							COLLECTED: 'Jane',
+						},
+					},
+				},
+				{ current: () => {} }
+			);
+			expect(store.get('PRENOM')).toEqual('Jane');
+			store.set('NOM', 'Doe');
+			expect(store.get('PRENOM')).toEqual('John');
+		});
+	});
 });
