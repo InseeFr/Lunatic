@@ -14,7 +14,7 @@ type Props = {
 	onSelect: (option: SuggesterOptionType | null) => void;
 	onBlur: () => void;
 	onFocus: () => void;
-	value: { id?: string; [key: string]: ReactNode }[];
+	value: [SuggesterOptionType] | [];
 	labelRenderer: LunaticComponentProps<'Suggester'>['labelRenderer'];
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
 	disabled?: boolean;
