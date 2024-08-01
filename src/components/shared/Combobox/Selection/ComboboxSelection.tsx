@@ -62,7 +62,7 @@ export function ComboboxSelection({
 					id={`combobox-input-${id}`}
 					className="lunatic-combo-box-input"
 					onChange={(e: ChangeEvent<HTMLInputElement>) =>
-						onChange?.(e.target.value)
+						onChange?.(e.target.value ?? e.target.innerText)
 					}
 					value={search}
 					placeholder={placeholder}

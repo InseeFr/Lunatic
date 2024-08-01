@@ -1,0 +1,422 @@
+[
+  {
+    "id": "38111101H0",
+    "label": "Collecte sélective de déchets municipaux recyclables non dangereux, hors déchèteries",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38111102H0",
+    "label": "Collecte en déchetteries",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38111900H0",
+    "label": "Collecte sélective des autres déchets recyclables non dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38112100H0",
+    "label": "Collecte des déchets municipaux non recyclables non dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38112900H0",
+    "label": "Collecte des autres déchets non recyclables non dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38113000H0",
+    "label": "Vente de biens : déchets NON recyclables non dangereux collectés",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38114000H0",
+    "label": "Vente de biens : épaves à démanteler",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38115100H0",
+    "label": "Vente de biens : déchets de verre",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38115200H0",
+    "label": "Vente de biens : déchets de papiers et cartons",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38115800H0",
+    "label": "Vente de biens : déchets métalliques non dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38115R01H0",
+    "label": "Vente de biens : déchets de matières plastiques ou de pneus usagés et autres déchets en caoutchouc",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38115R02H0",
+    "label": "Vente de biens : autres déchets recyclables non dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38116000H0",
+    "label": "Services des installations de transit-transfert de déchets non dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38121101H0",
+    "label": "Collecte des déchets dangereux d'activités de soins et des autres déchets biologiques dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38121102H0",
+    "label": "Collecte des animaux morts (ATM) et des matières à risques spécifiés (MRS)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38121201H0",
+    "label": "Collecte de déchets industriels dangereux (hors déchets nucléaires)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38121202H0",
+    "label": "Collecte (et transport) des déchets nucléaires et radioactifs",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38121300H0",
+    "label": "Collecte des déchets municipaux dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38122100H0",
+    "label": "Vente de biens : combustibles nucléaires irradiés",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38122R00H0",
+    "label": "Vente de biens : autres déchets dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38123000H0",
+    "label": "Services des installations de transit de déchets dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38212101H0",
+    "label": "Enfouissement des déchets non dangereux en centres de stockage (CSDND) (ex-classe 2)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38212102H0",
+    "label": "Enfouissement des déchets inertes en centres de stockage de déchets inertes (CSDI) (ex-classe 3)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38212300H0",
+    "label": "Incinération des déchets non dangereux, avec ou sans valorisation énergétique",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38212900H0",
+    "label": "Elimination d'autres déchets non dangereux, traitement biologique (compostage, méthanisation, etc.)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38213000H0",
+    "label": "Vente de biens : déchets de solvants organiques",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38214000H0",
+    "label": "Vente de biens : cendres et mâchefers issus de l'incinération",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38221100H0",
+    "label": "Traitement et prétraitement des déchets nucléaires et radioactifs en vue de leur élimination",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38221900H0",
+    "label": "Traitement (et prétraitement) des autres déchets dangereux en vue de leur élimination finale (traitements physico-chimiques, biologiques, stabilisation, production de combustibles de substitution, etc.)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38222100H0",
+    "label": "Elimination et stockage des déchets nucléaires",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38222901H0",
+    "label": "Elimination et stockage des déchets issus des ATM et MRS",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38222902H0",
+    "label": "Enfouissement des autres déchets dangereux en centre de stockage de classe 1",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38222903H0",
+    "label": "Incinération des autres déchets dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38222909H0",
+    "label": "Autres activités d'élimination des autres déchets dangereux",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38311100H0",
+    "label": "Démolition navale",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38311201H0",
+    "label": "Démantèlement d'épaves automobiles",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38311202H0",
+    "label": "Démantèlement d'équipements électriques et électroniques (DEEE)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38311203H0",
+    "label": "Démantèlement d'épaves autres qu'automobiles, équipements électriques et électroniques, navires et structures flottantes",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38312100H0",
+    "label": "Vente de biens : déchets de métaux ferreux issus du démantèlement d'épaves",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38312200H0",
+    "label": "Vente de biens : déchets de métaux non ferreux issus du démantèlement d'épaves",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "Vente de biens : déchets de matières plastiques, pneus usagés et autres déchets en caoutchouc issus du démantèlement d'épaves",
+    "label": "Vente de biens : déchets de matières plastiques, pneus usagés et autres déchets en caoutchouc issus du démantèlement d'épaves",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "Vente de biens : autres déchets issus du démantèlement d'épaves",
+    "label": "Vente de biens : autres déchets issus du démantèlement d'épaves",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "Services de récupération : matériaux métalliques",
+    "label": "Services de récupération : matériaux métalliques",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "38321200H0",
+    "label": "Services de récupération : matériaux non métalliques",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "Prestations de services de tri de déchets solides recyclables non dangereux (ménagers et assimilés, industriels ou commerciaux)",
+    "label": "Prestations de services de tri de déchets solides recyclables non dangereux (ménagers et assimilés, industriels ou commerciaux)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "3832210000",
+    "label": "Matières premières secondaires des métaux du groupe du platine ",
+    "nc": "71129200",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832211000",
+    "label": "Matière première secondaire de l'argent",
+    "nc": "71129900",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832220000",
+    "label": "Matières premières secondaires des métaux ferreux : fer",
+    "nc": "72041000 72042110 72042190 72042900 72043000 72044110 72044191 72044199 72044910 72044930",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832230000",
+    "label": "Matières premières secondaires du cuivre",
+    "nc": "74040010 74040091 74040099",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832240000",
+    "label": "Matières premières secondaires du nickel",
+    "nc": "75030010 75030090",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832250000",
+    "label": "Matières premières secondaires de l'aluminium",
+    "nc": "76020011 76020019 76020090",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832290100",
+    "label": "Matières premières secondaires du cobalt",
+    "nc": "81053000",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832290200",
+    "label": "Matières premières secondaires du lithium",
+    "nc": " ",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832290300",
+    "label": "Matières premières secondaires des métaux des terres rares",
+    "nc": " ",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832291000",
+    "label": "Matières premières secondaires d'autres métaux",
+    "nc": "81019700 78020000 79020000 80020000 81029700 81033000 81042000 81061010 81069010 81083000 81093100 81093900 81102000 81121300 81122200 81123100 81124110 81125200 81126100 81129221 81130040",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832294000",
+    "label": "Sables de scories",
+    "nc": "26180000 26201100 26201900 26202900 26203000 26204000 26206000 26209100 26209910 26209920 26209940 26209960 26209995",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832300010",
+    "label": "Vente de matières premières secondaires : plastiques, caoutchouc",
+    "nc": " ",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832300020",
+    "label": "Vente de matières premières secondaires issues de la démolition : granulats, décombres, gravats, etc.",
+    "nc": " ",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832300030",
+    "label": "Vente d'autres matières premières secondaires non métalliques (y compris textiles, bois, etc.)",
+    "nc": " ",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832300040",
+    "label": "Vente de matières premières secondaires : verre",
+    "nc": " ",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "3832300050",
+    "label": "Vente de matières premières secondaires : papier et carton",
+    "nc": " ",
+    "Qte_fact": "kg"
+  },
+  {
+    "id": "38324000H0",
+    "label": "Autres prestations de services rattachés à la récupération de déchets triés",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "39001100H0",
+    "label": "Dépollution et nettoyage des sols et eaux souterraines (hors pollution radioactive)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "39001200H0",
+    "label": "Dépollution et nettoyage des eaux de surface (hors pollution radioactive)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "39001300H0",
+    "label": "Dépollution et nettoyage de l'air",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "39001410H0",
+    "label": "Dépollution des bâtiments, usines (hors usines et sites nucléaires)",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "39001420H0",
+    "label": "Dépollution des bâtiments, usines et sites nucléaires",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "39002100H0",
+    "label": "Confinement, contrôle et suivi de la dépollution de sites et autres services de dépollution de sites",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "39002200H0",
+    "label": "Autres services de dépollution",
+    "nc": " ",
+    "Qte_fact": " "
+  },
+  {
+    "id": "39002300H0",
+    "label": "Autres contrôles spécialisés de la dépollution",
+    "nc": " ",
+    "Qte_fact": " "
+  }
+]
