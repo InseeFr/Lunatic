@@ -805,6 +805,9 @@
 							"response": {
 								"$ref": "#/$defs/ResponseDefinition"
 							},
+							"conditionFilter": {
+								"$ref": "#/$defs/VTLExpression"
+							},
 							"id": {
 								"type": "string"
 							},

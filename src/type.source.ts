@@ -146,11 +146,11 @@ export type ComponentDatePickerDefinition1 =
 export type ComponentCheckboxGroupDefinition =
 	ComponentCheckboxGroupDefinition1 & {
 		componentType: 'CheckboxGroup';
-		orientation?: 'horizontal' | 'vertical';
 		responses: {
 			label: VTLExpression;
 			description?: VTLExpression;
 			response: ResponseDefinition;
+			conditionFilter?: VTLExpression;
 			id: string;
 			detail?: {
 				label?: VTLExpression;
