@@ -103,6 +103,7 @@ export type Options = {
 	value: string | boolean;
 	label: VTLExpression;
 	description?: VTLExpression;
+	conditionFilter?: VTLExpression;
 }[];
 export type TableHeader = {
 	value?: string;
@@ -146,6 +147,7 @@ export type ComponentDatePickerDefinition1 =
 export type ComponentCheckboxGroupDefinition =
 	ComponentCheckboxGroupDefinition1 & {
 		componentType: 'CheckboxGroup';
+		orientation?: 'horizontal' | 'vertical';
 		responses: {
 			label: VTLExpression;
 			description?: VTLExpression;

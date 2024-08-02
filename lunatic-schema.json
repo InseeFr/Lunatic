@@ -1283,6 +1283,9 @@
 					},
 					"description": {
 						"$ref": "#/$defs/VTLExpression"
+					},
+					"conditionFilter": {
+						"$ref": "#/$defs/VTLExpression"
 					}
 				},
 				"required": ["value", "label"]

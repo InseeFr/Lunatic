@@ -3,6 +3,7 @@ import Orchestrator from '../utils/orchestrator';
 import source from './source';
 import sourceHorizontal from './sourceHorizontal';
 import sourceDetail from './sourceDetail';
+import sourceCondition from './sourceCondition';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
@@ -23,6 +24,9 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 Default.args = { source, shortcut: true };
+
+export const Condition = Template.bind({});
+Condition.args = { source: sourceCondition };
 
 export const Horizontal = Template.bind({});
 Horizontal.args = { source: sourceHorizontal, shortcut: true };

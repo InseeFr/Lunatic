@@ -67,24 +67,33 @@ export function getOptionsProp(
 		return [];
 	}
 
-	return definition.options.map((option) => ({
-		label: option.label,
-		description: option.description,
-		value: option.value,
-		checked: value === option.value,
-		detailLabel: 'detail' in option ? option.detail?.label : undefined,
-		onCheck: () => {
-			handleChanges([{ name: definition.response.name, value: option.value }]);
-		},
-		detailValue:
-			'detail' in option && option.detail
-				? variables.get(option.detail.response.name, iteration)
-				: null,
-		onDetailChange:
-			'detail' in option && option.detail
-				? (value: string) => {
-						handleChanges([{ name: option.detail!.response.name, value }]);
-					}
-				: null,
-	}));
+	return definition.options
+		.filter((option) => {
+			if (!('conditionFilter' in option) || !option.conditionFilter) {
+				return true;
+			}
+			return variables.run(option.conditionFilter.value, { iteration });
+		})
+		.map((option) => ({
+			label: option.label,
+			description: option.description,
+			value: option.value,
+			checked: value === option.value,
+			detailLabel: 'detail' in option ? option.detail?.label : undefined,
+			onCheck: () => {
+				handleChanges([
+					{ name: definition.response.name, value: option.value },
+				]);
+			},
+			detailValue:
+				'detail' in option && option.detail
+					? variables.get(option.detail.response.name, iteration)
+					: null,
+			onDetailChange:
+				'detail' in option && option.detail
+					? (value: string) => {
+							handleChanges([{ name: option.detail!.response.name, value }]);
+						}
+					: null,
+		}));
 }
