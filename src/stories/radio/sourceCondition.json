@@ -1,5 +1,10 @@
 {
 	"$schema": "../../../lunatic-schema.json",
+	"cleaning": {
+		"AGE": {
+			"LIEU": "not(not(nvl(AGE, 0) > 18) and LIEU = \"bar\")"
+		}
+	},
 	"components": [
 		{
 			"id": "a",
