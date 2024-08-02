@@ -3,6 +3,7 @@ import Orchestrator from '../utils/orchestrator';
 import source from './source';
 import sourceLoop from './sourceLoop';
 import sourceDetail from './sourceDetail';
+import sourceCondition from './sourceCondition';
 import defaultArgTypes from '../utils/default-arg-types';
 
 const stories = {
@@ -27,6 +28,12 @@ Default.args = {
 	id: 'checkboxGroup',
 	source,
 	shortcut: true,
+};
+
+export const Condition = Template.bind({});
+
+Condition.args = {
+	source: sourceCondition,
 };
 
 export const ReadOnly = Template.bind({});

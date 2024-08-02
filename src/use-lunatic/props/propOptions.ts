@@ -33,49 +33,67 @@ export function getOptionsProp(
 	//const iteration = pagerIteration ? [pagerIteration] : undefined;
 
 	if (definition.componentType === 'CheckboxGroup') {
-		return definition.responses.map((response) => ({
-			label: response.label,
-			name: response.response.name,
-			id: response.id,
-			checked: !!variables.get(response.response.name, iteration),
-			description: response.description,
-			detailLabel: response.detail?.label,
-			detailValue: response.detail?.response
-				? variables.get(response.detail.response.name, iteration)
-				: undefined,
-			onCheck: (checked: boolean) => {
-				handleChanges([{ name: response.response.name, value: checked }]);
-			},
-			onDetailChange: response.detail?.response
-				? (v: string) => {
-						handleChanges([{ name: response.detail!.response.name, value: v }]);
-					}
-				: undefined,
-		}));
+		return definition.responses
+			.filter((response) => {
+				if (!response.conditionFilter) {
+					return true;
+				}
+				return variables.run(response.conditionFilter.value, { iteration });
+			})
+			.map((response) => ({
+				label: response.label,
+				name: response.response.name,
+				id: response.id,
+				checked: !!variables.get(response.response.name, iteration),
+				description: response.description,
+				detailLabel: response.detail?.label,
+				detailValue: response.detail?.response
+					? variables.get(response.detail.response.name, iteration)
+					: undefined,
+				onCheck: (checked: boolean) => {
+					handleChanges([{ name: response.response.name, value: checked }]);
+				},
+				onDetailChange: response.detail?.response
+					? (v: string) => {
+							handleChanges([
+								{ name: response.detail!.response.name, value: v },
+							]);
+						}
+					: undefined,
+			}));
 	}
 
 	if (!('options' in definition)) {
 		return [];
 	}
 
-	return definition.options.map((option) => ({
-		label: option.label,
-		description: option.description,
-		value: option.value,
-		checked: value === option.value,
-		detailLabel: 'detail' in option ? option.detail?.label : undefined,
-		onCheck: () => {
-			handleChanges([{ name: definition.response.name, value: option.value }]);
-		},
-		detailValue:
-			'detail' in option && option.detail
-				? variables.get(option.detail.response.name, iteration)
-				: null,
-		onDetailChange:
-			'detail' in option && option.detail
-				? (value: string) => {
-						handleChanges([{ name: option.detail!.response.name, value }]);
-					}
-				: null,
-	}));
+	return definition.options
+		.filter((option) => {
+			if (!('conditionFilter' in option) || !option.conditionFilter) {
+				return true;
+			}
+			return variables.run(option.conditionFilter.value, { iteration });
+		})
+		.map((option) => ({
+			label: option.label,
+			description: option.description,
+			value: option.value,
+			checked: value === option.value,
+			detailLabel: 'detail' in option ? option.detail?.label : undefined,
+			onCheck: () => {
+				handleChanges([
+					{ name: definition.response.name, value: option.value },
+				]);
+			},
+			detailValue:
+				'detail' in option && option.detail
+					? variables.get(option.detail.response.name, iteration)
+					: null,
+			onDetailChange:
+				'detail' in option && option.detail
+					? (value: string) => {
+							handleChanges([{ name: option.detail!.response.name, value }]);
+						}
+					: null,
+		}));
 }

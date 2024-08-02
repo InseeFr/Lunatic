@@ -103,6 +103,7 @@ export type Options = {
 	value: string | boolean;
 	label: VTLExpression;
 	description?: VTLExpression;
+	conditionFilter?: VTLExpression;
 }[];
 export type TableHeader = {
 	value?: string;
@@ -151,6 +152,7 @@ export type ComponentCheckboxGroupDefinition =
 			label: VTLExpression;
 			description?: VTLExpression;
 			response: ResponseDefinition;
+			conditionFilter?: VTLExpression;
 			id: string;
 			detail?: {
 				label?: VTLExpression;

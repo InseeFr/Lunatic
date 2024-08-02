@@ -1,0 +1,87 @@
+{
+	"$schema": "../../../lunatic-schema.json",
+	"components": [
+		{
+			"id": "a",
+			"componentType": "InputNumber",
+			"page": "1",
+			"label": {
+				"value": "Votre age",
+				"type": "TXT"
+			},
+			"response": {
+				"name": "AGE"
+			}
+		},
+		{
+			"id": "b",
+			"componentType": "CheckboxGroup",
+			"page": "1",
+			"label": {
+				"value": "Où sortez vous ?",
+				"type": "TXT"
+			},
+			"bindingDependencies": ["LIEU1", "LIEU2"],
+			"responses": [
+				{
+					"id": "bar",
+					"label": {
+						"value": "Bar",
+						"type": "TXT"
+					},
+					"conditionFilter": {
+						"value": "nvl(AGE, 0) > 18",
+						"type": "VTL"
+					},
+					"response": { "name": "LIEU1" }
+				},
+
+				{
+					"id": "parc",
+					"label": {
+						"value": "Parc",
+						"type": "TXT"
+					},
+					"response": { "name": "LIEU2" }
+				}
+			]
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"name": "AGE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "LIEU1",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+
+		{
+			"variableType": "COLLECTED",
+			"name": "LIEU2",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		}
+	]
+}

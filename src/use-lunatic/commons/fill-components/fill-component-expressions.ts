@@ -86,6 +86,7 @@ type UntranslatedProperties =
 	| 'body'
 	| 'item'
 	| 'controls'
+	| 'conditionFilter'
 	| 'components';
 export type DeepTranslateExpression<T> = T extends LunaticExpression
 	? ReactNode
