@@ -172,6 +172,7 @@ export function useLunatic(
 		fillers: source.fillers ?? [],
 		handleChanges,
 		fetchMock: mocks?.filler ?? null,
+		executeExpression: state.executeExpression,
 	});
 
 	const goNextPage: LunaticState['goNextPage'] = useCallback(
@@ -201,13 +202,13 @@ export function useLunatic(
 	});
 
 	const getComponents: LunaticState['getComponents'] = () => {
-        if (isFilling) {
-            return [
-                {
-                    componentType: 'FillerLoader',
-                },
-            ];
-        }
+		if (isFilling) {
+			return [
+				{
+					componentType: 'FillerLoader',
+				},
+			];
+		}
 		return components;
 	};
 

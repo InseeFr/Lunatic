@@ -158,9 +158,7 @@ export type LunaticOptions = {
 	trackChanges?: boolean;
 	logger?: LunaticLogger;
 	mocks?: {
-		filler:
-			| null
-			| ((data: Record<string, unknown>) => Promise<Record<string, unknown>>);
+		filler: null | ((url: string) => Promise<Record<string, unknown>>);
 	};
 };
 

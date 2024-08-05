@@ -1,15 +1,15 @@
 import type { FillerDefinition } from '../../type.source';
 import type { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { LunaticChangesHandler } from '../type';
+import type { LunaticChangesHandler, LunaticReducerState } from '../type';
+import { useRefSync } from '../../hooks/useRefSync';
 
 type Args = {
 	variables: LunaticVariablesStore;
 	fillers: FillerDefinition[];
 	handleChanges: LunaticChangesHandler;
-	fetchMock:
-		| null
-		| ((data: Record<string, unknown>) => Promise<Record<string, unknown>>);
+	fetchMock: null | ((url: string) => Promise<Record<string, unknown>>);
+	executeExpression: LunaticReducerState['executeExpression'];
 };
 
 /**
@@ -21,7 +21,9 @@ export function useFillers({
 	fillers,
 	handleChanges,
 	fetchMock,
+	executeExpression,
 }: Args) {
+	const executeExpressionRef = useRefSync(executeExpression);
 	const watchedVariables = useMemo(
 		() => buildWatchedVariableMap(fillers),
 		[fillers]
@@ -54,10 +56,11 @@ export function useFillers({
 		setFilling(true);
 		Promise.all(
 			Array.from(activeFillers.current).map((filler) => {
-				const values = Object.fromEntries(
-					filler.responses.map((r) => [r.name, variables.get(r.name)])
-				);
-				return fetchFillerData(filler, values, fetchMock).then((data) => {
+				return fetchFillerData(
+					filler,
+					executeExpressionRef.current,
+					fetchMock
+				).then((data) => {
 					handleChanges(
 						Object.entries(data).map((d) => ({
 							name: d[0],
@@ -103,20 +106,20 @@ function buildWatchedVariableMap(
  */
 function fetchFillerData(
 	filler: FillerDefinition,
-	data: Record<string, unknown>,
-	mock:
-		| null
-		| ((data: Record<string, unknown>) => Promise<Record<string, unknown>>)
+	executeExpression: LunaticReducerState['executeExpression'],
+	mock: null | ((url: string) => Promise<Record<string, unknown>>)
 ): Promise<Record<string, unknown>> {
+	const endpoint =
+		filler.endpoint.type === 'VTL'
+			? executeExpression<string>({ value: filler.endpoint.url, type: 'VTL' })
+			: filler.endpoint.url;
+
 	if (mock) {
-		return mock(data);
+		return mock(endpoint);
 	}
 
-	return fetch(filler.endpoint.url, {
-		method: 'POST',
-		body: JSON.stringify(data),
+	return fetch(endpoint, {
 		headers: {
-			'Content-Type': 'application/json',
 			Accept: 'application/json',
 		},
 	}).then((res) => res.json());

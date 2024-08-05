@@ -10,13 +10,14 @@ export const Default = {
 	args: {
 		source: source,
 		data: {},
-		mockFiller: (data) => {
+		mockFiller: (url) => {
 			return new Promise((resolve) => {
 				setTimeout(
 					() => {
-						if (data.CODE === '34000') {
+						const code = new URL(url).searchParams.get('code');
+						if (code === '34000') {
 							return resolve({ CITY: 'Montpellier' });
-						} else if (data.CODE === '31000') {
+						} else if (code === '31000') {
 							return resolve({ CITY: 'Toulouse' });
 						}
 						return resolve({});

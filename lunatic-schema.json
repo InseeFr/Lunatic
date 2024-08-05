@@ -1476,6 +1476,9 @@
 					"properties": {
 						"url": {
 							"type": "string"
+						},
+						"type": {
+							"enum": ["VTL", "TXT"]
 						}
 					},
 					"required": ["url"]

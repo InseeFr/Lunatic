@@ -1,77 +1,78 @@
 {
-  "$schema": "../../../../lunatic-schema.json",
-  "maxPage": "2",
-  "fillers": [
-    {
-      "endpoint": {
-        "url": "https://inseefr.github.io/Lunatic/"
-      },
-      "responses": [
-        {
-          "name": "CODE"
-        }
-      ]
-    }
-  ],
-  "components": [
-    {
-      "id": "a",
-      "page": "1",
-      "componentType": "Input",
-      "label": {
-        "type": "TXT",
-        "value": "Code postal"
-      },
-      "response": {
-        "name": "CODE"
-      },
-      "declarations": [
-        {
-          "declarationType": "COMMENT",
-          "position": "DETACHABLE",
-          "id": "d_a",
-          "label": {
-            "value": "Ce code permettra de remplir la ville (34000 ou 31000)",
-            "type": "TXT"
-          }
-        }
-      ]
-    },
-    {
-      "id": "a",
-      "page": "2",
-      "componentType": "Input",
-      "label": {
-        "type": "TXT",
-        "value": "Ville"
-      },
-      "response": {
-        "name": "CITY"
-      }
-    }
-  ],
-  "variables": [
-    {
-      "variableType": "COLLECTED",
-      "values": {
-        "COLLECTED": null,
-        "EDITED": null,
-        "INPUTTED": null,
-        "FORCED": null,
-        "PREVIOUS": null
-      },
-      "name": "CODE"
-    },
-    {
-      "variableType": "COLLECTED",
-      "values": {
-        "COLLECTED": null,
-        "EDITED": null,
-        "INPUTTED": null,
-        "FORCED": null,
-        "PREVIOUS": null
-      },
-      "name": "CITY"
-    }
-  ]
+	"$schema": "../../../../lunatic-schema.json",
+	"maxPage": "2",
+	"fillers": [
+		{
+			"endpoint": {
+				"url": "\"https://inseefr.github.io/Lunatic/?code=\" || CODE",
+				"type": "VTL"
+			},
+			"responses": [
+				{
+					"name": "CODE"
+				}
+			]
+		}
+	],
+	"components": [
+		{
+			"id": "a",
+			"page": "1",
+			"componentType": "Input",
+			"label": {
+				"type": "TXT",
+				"value": "Code postal"
+			},
+			"response": {
+				"name": "CODE"
+			},
+			"declarations": [
+				{
+					"declarationType": "COMMENT",
+					"position": "DETACHABLE",
+					"id": "d_a",
+					"label": {
+						"value": "Ce code permettra de remplir la ville (34000 ou 31000)",
+						"type": "TXT"
+					}
+				}
+			]
+		},
+		{
+			"id": "a",
+			"page": "2",
+			"componentType": "Input",
+			"label": {
+				"type": "TXT",
+				"value": "Ville"
+			},
+			"response": {
+				"name": "CITY"
+			}
+		}
+	],
+	"variables": [
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "CODE"
+		},
+		{
+			"variableType": "COLLECTED",
+			"values": {
+				"COLLECTED": null,
+				"EDITED": null,
+				"INPUTTED": null,
+				"FORCED": null,
+				"PREVIOUS": null
+			},
+			"name": "CITY"
+		}
+	]
 }
