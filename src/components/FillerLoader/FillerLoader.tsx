@@ -5,7 +5,7 @@ import { slottableComponent } from '../shared/HOC/slottableComponent';
  */
 export const FillerLoader = slottableComponent(
 	'FillerLoader',
-	function FillerLoader() {
+	function FillerLoader(props: { id: string }) {
 		return <p>Chargement des données...</p>;
 	}
 );

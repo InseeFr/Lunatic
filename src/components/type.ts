@@ -304,9 +304,10 @@ export type ComponentPropsByType = {
 				iterations?: VtlExpression;
 			}>;
 		};
-    FillerLoader: {
-        componentType?: 'FillerLoader';
-    };
+	FillerLoader: {
+		componentType?: 'FillerLoader';
+		id: string;
+	};
 };
 
 export type LunaticComponentType = keyof ComponentPropsByType;

@@ -206,6 +206,7 @@ export function useLunatic(
 			return [
 				{
 					componentType: 'FillerLoader',
+					id: 'lunatic-filler-loader',
 				},
 			];
 		}
