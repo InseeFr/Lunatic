@@ -1,30 +1,34 @@
 {
-	"extends": ["config:base"],
-	"baseBranches": ["$default", "/^(2\\.|3\\.).*/"],
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:recommended", ":semanticCommits", ":disableRateLimiting"],
+	"baseBranches": ["$default", "2.6", "2.7"],
 	"labels": ["dependencies"],
 	"assignees": ["ddecrulle"],
 	"packageRules": [
 		{
 			"description": "Documentation website dependencies",
-			"matchPaths": ["/docs/**"],
+			"matchPaths": ["docs/**"],
+			"matchDepTypes": ["dependencies", "devDependencies"],
+			"matchUpdateTypes": ["minor", "patch"],
 			"groupName": "docs website dependencies",
-			"labels": ["docs"]
+			"groupSlug": "docs-minor-patch",
+			"labels": ["docs", "dependencies"]
 		},
 		{
 			"description": "CI dependencies",
 			"matchPaths": [".github/workflows/**"],
 			"groupName": "CI dependencies",
-			"labels": ["ci"]
+			"labels": ["ci", "dependencies"]
 		},
 		{
-			"matchUpdateTypes": ["patch"],
-			"automerge": true
-		},
-		{
-			"matchUpdateTypes": ["minor"],
+			"matchPaths": ["package.json"],
+			"matchDepTypes": ["dependencies", "devDependencies"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"groupName": "all minor and patch updates",
+			"groupSlug": "minor-patch",
+			"labels": ["dependencies"],
 			"automerge": true
 		}
 	],
-	"prConcurrentLimit": 5,
 	"dependencyDashboard": true
 }
