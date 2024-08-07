@@ -168,7 +168,7 @@
 		"ts-loader": "^9.4.2",
 		"typescript": "^5.1.6",
 		"vite": "^4.0.0",
-		"vitest": "^0.27.2",
+		"vitest": "^2.0.0",
 		"vitest-dom": "^0.1.1",
 		"wait-on": "^7.0.1",
 		"webpack": "^5.75.0",
