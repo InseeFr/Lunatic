@@ -1,7 +1,7 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"extends": ["config:recommended", ":semanticCommits", ":disableRateLimiting"],
-	"baseBranches": ["$default", "2.6", "2.7"],
+	"baseBranches": ["$default", "2.6"],
 	"labels": ["dependencies"],
 	"assignees": ["ddecrulle"],
 	"packageRules": [
@@ -30,5 +30,6 @@
 			"automerge": true
 		}
 	],
+	"prConcurrentLimit": 10,
 	"dependencyDashboard": true
 }
