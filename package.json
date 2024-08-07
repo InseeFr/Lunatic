@@ -162,7 +162,7 @@
 		"regenerator-runtime": "^0.13.7",
 		"remove-accents": "^0.4.2",
 		"rxjs-marbles": "^6.0.1",
-		"sass-loader": "^13.2.0",
+		"sass-loader": "^16.0.0",
 		"source-map-explorer": "^2.4.2",
 		"storybook": "^7.4.6",
 		"ts-loader": "^9.4.2",
