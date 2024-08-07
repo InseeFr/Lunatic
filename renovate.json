@@ -1,5 +1,6 @@
 {
 	"extends": ["config:base"],
+	"baseBranches": ["$default", "/^(2\\.|3\\.).*/"],
 	"labels": ["dependencies"],
 	"assignees": ["ddecrulle"],
 	"packageRules": [
