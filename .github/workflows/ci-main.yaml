@@ -76,7 +76,7 @@ jobs:
       # Add json to fetch for suggester stories
       - run: cp -a ./public/. ./storybook-static
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
@@ -85,7 +85,7 @@ jobs:
         working-directory: ./docs/
         run: yarn install --frozen-lockfile && yarn build
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/build
@@ -144,7 +144,7 @@ jobs:
       - check_if_version_upgraded
       - check_if_tag_version_exists
     steps:
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         with:
           name: Release ${{ needs.check_if_version_upgraded.outputs.to_version }}
           tag_name: ${{ needs.check_if_version_upgraded.outputs.to_version }}
