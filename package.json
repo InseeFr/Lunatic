@@ -88,7 +88,7 @@
 	},
 	"resolutions": {
 		"@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0",
-		"jackspeak": "2.1.1"
+		"jackspeak": "4.0.1"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.18.6",
