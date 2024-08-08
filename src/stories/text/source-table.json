@@ -120,7 +120,6 @@
 	"components": [
 		{
 			"componentType": "Table",
-			"positioning": "HORIZONTAL",
 			"header": [
 				{
 					"label": {

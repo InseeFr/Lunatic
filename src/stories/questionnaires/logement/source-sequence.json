@@ -10609,7 +10609,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "5",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Combien avez-vous de W-C ?\"",
 				"type": "VTL|MD"
@@ -10768,7 +10767,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "5",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Combien avez-vous de salle d’eau ou salle de bain ?\"",
 				"type": "VTL|MD"
@@ -11181,7 +11179,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "6",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Votre logement présente-t-il les défauts suivants ?\"",
 				"type": "VTL|MD"
@@ -11330,7 +11327,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "6",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Votre logement présente-t-il les autres défauts suivants ?\"",
 				"type": "VTL|MD"
@@ -11470,7 +11466,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "6",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"L’environnement de votre logement présente-t-il les défauts suivants ?\"",
 				"type": "VTL|MD"
@@ -11858,7 +11853,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "6",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Auprès de qui \" || libOIH || \" déposé cette demande de HLM ?\"",
 				"type": "VTL|MD"

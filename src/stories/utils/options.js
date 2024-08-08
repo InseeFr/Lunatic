@@ -1,9 +1,3 @@
-export const positioningOptions = {
-	Default: 'DEFAULT',
-	Horizontal: 'HORIZONTAL',
-	Vertical: 'VERTICAL',
-};
-
 export const labelPositionOptions = {
 	Default: 'DEFAULT',
 	Top: 'TOP',
