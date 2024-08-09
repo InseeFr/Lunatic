@@ -121,7 +121,7 @@
 		"@types/react-keyboard-event-handler": "^1.5.2",
 		"@typescript-eslint/eslint-plugin": "^5.57.0",
 		"@typescript-eslint/parser": "^5.48.2",
-		"@vitejs/plugin-react": "^3.0.0",
+		"@vitejs/plugin-react": "^4.0.0",
 		"@vitest/coverage-c8": "^0.27.2",
 		"babel-eslint": "^10.0.3",
 		"babel-loader": "^8.0.6",
