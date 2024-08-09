@@ -144,7 +144,7 @@
 		"http-server": "^14.1.1",
 		"identity-obj-proxy": "^3.0.0",
 		"jest": "^29.4.3",
-		"jsdom": "^21.1.0",
+		"jsdom": "^24.0.0",
 		"jsdom-global": "^3.0.2",
 		"path-match": "^1.2.4",
 		"postcss": "^8.2.6",
