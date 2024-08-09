@@ -132,7 +132,7 @@
 		"css-loader": "^5.0.0",
 		"damerau-levenshtein": "^1.0.7",
 		"eslint": "7.30.0",
-		"eslint-config-prettier": "^7.2.0",
+		"eslint-config-prettier": "^9.0.0",
 		"eslint-config-react-app": "^6.0.0",
 		"eslint-plugin-flowtype": "^5.2.0",
 		"eslint-plugin-import": "^2.19.1",
