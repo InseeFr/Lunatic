@@ -12811,12 +12811,10 @@ postcss-modules-values@^4.0.0:
   dependencies:
     icss-utils "^5.0.0"
 
-postcss-scss@^3.0.4:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-3.0.5.tgz#bd484faf05890e48a6f5e097acb3d104cc7b9ac7"
-  integrity sha512-3e0qYk87eczfzg5P73ZVuuxEGCBfatRhPze6KrSaIbEKVtmnFI1RYp1Fv+AyZi+w8kcNRSPeNX6ap4b65zEkiA==
-  dependencies:
-    postcss "^8.2.7"
+postcss-scss@^4.0.0:
+  version "4.0.9"
+  resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-4.0.9.tgz#a03c773cd4c9623cb04ce142a52afcec74806685"
+  integrity sha512-AjKOeiwAitL/MXxQW2DliT28EKukvvbEWx3LBmJIRN8KfBGZbRTxNYW0kSqi1COiTZ57nZ9NW06S6ux//N1c9A==
 
 postcss-selector-parser@^6.0.0, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4:
   version "6.0.16"
@@ -12839,7 +12837,7 @@ postcss@^7.0.14, postcss@^7.0.26, postcss@^7.0.32, postcss@^7.0.36, postcss@^7.0
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.2.15, postcss@^8.2.6, postcss@^8.2.7, postcss@^8.4.27:
+postcss@^8.2.15, postcss@^8.2.6, postcss@^8.4.27:
   version "8.4.38"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.38.tgz#b387d533baf2054288e337066d81c6bee9db9e0e"
   integrity sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==
