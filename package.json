@@ -67,7 +67,7 @@
 		"antlr4": "4.11.0",
 		"classnames": "^2.5.1",
 		"http-server": "^14.1.1",
-		"minisearch": "^6.3.0",
+		"minisearch": "^7.0.0",
 		"react-error-boundary": "^4.0.13",
 		"react-markdown": "^9.0.1",
 		"react-number-format": "^5.3.4",
