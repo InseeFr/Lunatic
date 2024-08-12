@@ -2,8 +2,6 @@
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"extends": ["config:recommended", ":semanticCommits", ":disableRateLimiting"],
 	"baseBranches": ["$default", "2.6"],
-	"labels": ["dependencies"],
-	"assignees": ["ddecrulle"],
 	"packageRules": [
 		{
 			"description": "Documentation website dependencies",
@@ -22,11 +20,20 @@
 		},
 		{
 			"matchPaths": ["package.json"],
-			"matchDepTypes": ["dependencies", "devDependencies"],
+			"matchDepTypes": ["dependencies"],
 			"matchUpdateTypes": ["minor", "patch"],
 			"groupName": "all minor and patch updates",
 			"groupSlug": "minor-patch",
 			"labels": ["dependencies"],
+			"automerge": true
+		},
+		{
+			"matchPaths": ["package.json"],
+			"matchDepTypes": ["devDependencies"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"groupName": "all minor and patch devDependencies updates",
+			"groupSlug": "minor-patch",
+			"labels": ["devDependencies"],
 			"automerge": true
 		}
 	],
