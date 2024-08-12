@@ -29,7 +29,9 @@ type InterpretedLoopComponent = DeepTranslateExpression<
 const isLoopComponent = (
 	component: InterpretedComponent
 ): component is InterpretedLoopComponent => {
-	return ['Loop', 'RosterForLoop'].includes(component.componentType);
+	return ['Loop', 'RosterForLoop', 'Roundabout'].includes(
+		component.componentType
+	);
 };
 
 /**

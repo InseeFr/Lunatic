@@ -28,6 +28,7 @@ describe('Roundabout', () => {
 	it('renders the roundabout correctly', () => {
 		const { getByText } = render(
 			<CustomRoundabout
+				id="r1"
 				items={items}
 				goToIteration={mockGoToIteration}
 				locked={false}
@@ -45,6 +46,7 @@ describe('Roundabout', () => {
 	it('calls the goToIteration function when a button is clicked', () => {
 		const { getByText } = render(
 			<CustomRoundabout
+				id="r1"
 				items={items}
 				goToIteration={mockGoToIteration}
 				label={label}
@@ -62,6 +64,7 @@ describe('Roundabout', () => {
 	it('it lock an iteration when finished and locked property is true', () => {
 		const { getByText } = render(
 			<CustomRoundabout
+				id="r1"
 				items={items}
 				goToIteration={mockGoToIteration}
 				locked={true}
