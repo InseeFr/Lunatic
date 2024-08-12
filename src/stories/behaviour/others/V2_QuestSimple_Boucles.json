@@ -1063,7 +1063,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "23",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ 5. \" || \"Question à choix multiple - réponse oui/non case à cocher\"",
 				"type": "VTL|MD"
@@ -1206,7 +1205,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "24",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ 6. \" || \"Question à choix multiple - réponse oui/non radio\"",
 				"type": "VTL|MD"
@@ -1374,7 +1372,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "26",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ 1. \" || \"Tableau un axe simple, une mesure\"",
 				"type": "VTL|MD"
@@ -1505,7 +1502,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "27",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ 2. \" || \"Tableau un axe simple, plusieurs mesures\"",
 				"type": "VTL|MD"
@@ -1772,7 +1768,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "28",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ 3. \" || \"Tableau 2 axes\"",
 				"type": "VTL|MD"
@@ -2180,7 +2175,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "29",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ 4. \" || \"Tableau 1 axe avec hiérarchie , 1 mesure\"",
 				"type": "VTL|MD"
@@ -2244,7 +2238,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "30",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ 5. \" || \"Tableau dynamique\"",
 				"type": "VTL|MD"

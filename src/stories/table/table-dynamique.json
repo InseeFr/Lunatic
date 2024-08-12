@@ -17,7 +17,6 @@
 		{
 			"componentType": "Table",
 			"bindingDependencies": ["Q11"],
-			"positioning": "HORIZONTAL",
 			"hierarchy": {
 				"sequence": {
 					"id": "kanya0cm",
