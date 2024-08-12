@@ -19608,7 +19608,6 @@
 		{
 			"componentType": "Table",
 			"bindingDependencies": ["HUTDEF1", "HUTDEF2", "HUTDEF3", "HUTDEF4"],
-			"positioning": "HORIZONTAL",
 			"hierarchy": {
 				"sequence": {
 					"id": "jojuy3c4",
@@ -22943,7 +22942,6 @@
 					"id": "kmeu61l4-CI-0"
 				}
 			],
-			"positioning": "HORIZONTAL",
 			"hierarchy": {
 				"sequence": {
 					"id": "jojuy3c4",
@@ -23227,7 +23225,6 @@
 					"id": "kksgd6fv-CI-0"
 				}
 			],
-			"positioning": "HORIZONTAL",
 			"hierarchy": {
 				"sequence": {
 					"id": "jojuy3c4",
@@ -23757,7 +23754,6 @@
 		{
 			"componentType": "Table",
 			"bindingDependencies": ["OLAR11", "OLAR12", "OLAR13", "OLAR14", "OLAR15"],
-			"positioning": "HORIZONTAL",
 			"hierarchy": {
 				"sequence": {
 					"id": "joicksrx",
@@ -23951,7 +23947,6 @@
 		{
 			"componentType": "Table",
 			"bindingDependencies": ["OLAR21", "OLAR22", "OLAR23", "OLAR24", "OLAR25"],
-			"positioning": "HORIZONTAL",
 			"hierarchy": {
 				"sequence": {
 					"id": "joicksrx",
@@ -24145,7 +24140,6 @@
 		{
 			"componentType": "Table",
 			"bindingDependencies": ["OLAR31", "OLAR32", "OLAR33"],
-			"positioning": "HORIZONTAL",
 			"hierarchy": {
 				"sequence": {
 					"id": "joicksrx",

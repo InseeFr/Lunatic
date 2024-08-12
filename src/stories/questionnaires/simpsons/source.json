@@ -2550,7 +2550,6 @@
 			"components": [
 				{
 					"componentType": "Table",
-					"positioning": "HORIZONTAL",
 					"hierarchy": {
 						"sequence": {
 							"id": "j6qe0h9q",
@@ -2676,7 +2675,6 @@
 			"components": [
 				{
 					"componentType": "Table",
-					"positioning": "HORIZONTAL",
 					"hierarchy": {
 						"sequence": {
 							"id": "j6qe0h9q",
@@ -2794,7 +2792,6 @@
 			"components": [
 				{
 					"componentType": "Table",
-					"positioning": "HORIZONTAL",
 					"hierarchy": {
 						"sequence": {
 							"id": "j6qe0h9q",
@@ -3258,7 +3255,6 @@
 							"id": "j4nwc63q-CI-0"
 						}
 					],
-					"positioning": "HORIZONTAL",
 					"hierarchy": {
 						"sequence": {
 							"id": "j4nw88h2",
@@ -3445,7 +3441,6 @@
 			"components": [
 				{
 					"componentType": "Table",
-					"positioning": "HORIZONTAL",
 					"hierarchy": {
 						"sequence": {
 							"id": "j4nw88h2",
@@ -3728,7 +3723,6 @@
 			"components": [
 				{
 					"componentType": "Table",
-					"positioning": "HORIZONTAL",
 					"hierarchy": {
 						"sequence": {
 							"id": "j4nw88h2",
@@ -3955,7 +3949,6 @@
 			"components": [
 				{
 					"componentType": "Table",
-					"positioning": "HORIZONTAL",
 					"hierarchy": {
 						"sequence": {
 							"id": "j4nw88h2",
@@ -4188,7 +4181,6 @@
 							"maxLength": 249
 						}
 					],
-					"positioning": "HORIZONTAL",
 					"hierarchy": {
 						"sequence": {
 							"id": "j6qfx9qe",
@@ -4224,7 +4216,6 @@
 			"components": [
 				{
 					"componentType": "Table",
-					"positioning": "HORIZONTAL",
 					"hierarchy": {
 						"sequence": {
 							"id": "j6qfx9qe",
@@ -4487,7 +4478,6 @@
 							"id": "jvxwy68n-RDOP-kewv511d-format-decimal"
 						}
 					],
-					"positioning": "HORIZONTAL",
 					"hierarchy": {
 						"sequence": {
 							"id": "j6qfx9qe",

@@ -854,7 +854,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "20",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Does Jay like the following ice cream flavours?\"",
 				"type": "VTL|MD"
@@ -983,7 +982,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "21",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Which character works in the nuclear power plant?\"",
 				"type": "VTL|MD"
@@ -1107,7 +1105,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "22",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"In which city each character was born?\"",
 				"type": "VTL|MD"
@@ -1393,7 +1390,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "24",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
 				"type": "VTL|MD"
@@ -1596,7 +1592,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "25",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Please specify if Jay has bought each product in his last food shopping\"",
 				"type": "VTL|MD"
@@ -1937,7 +1932,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "26",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Who did these clownings and tell us what you remember?\"",
 				"type": "VTL|MD"
@@ -2197,7 +2191,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "27",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Which of the following means of transport were used by the hero and in which country?\"",
 				"type": "VTL|MD"
@@ -2496,7 +2489,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "29",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Please, complete the following grid with your favourite characters\"",
 				"type": "VTL|MD"
@@ -2987,7 +2979,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "30",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"How has your feeling about the following characters evolved over time?\"",
 				"type": "VTL|MD"
@@ -3134,7 +3125,6 @@
 			"componentType": "Table",
 			"mandatory": false,
 			"page": "31",
-			"positioning": "HORIZONTAL",
 			"label": {
 				"value": "\"➡ \" || \"Can you tell how long Bart Simpson has been on leave for each type and whether there has been another type?\"",
 				"type": "VTL|MD"
