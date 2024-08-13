@@ -24,10 +24,14 @@ export const RosterForLoop = (
 		lines,
 		errors,
 		handleChanges,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		declarations,
 		header,
 		iterations,
 		id,
 		getComponents,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		label,
 		...otherProps // These props will be passed down to the child components
 	} = props;
 	const min = lines?.min ?? DEFAULT_MIN_ROWS;
