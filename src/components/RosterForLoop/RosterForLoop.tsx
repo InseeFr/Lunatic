@@ -24,12 +24,10 @@ export const RosterForLoop = (
 		lines,
 		errors,
 		handleChanges,
-		declarations,
 		header,
 		iterations,
 		id,
 		getComponents,
-		label,
 		...otherProps // These props will be passed down to the child components
 	} = props;
 	const min = lines?.min ?? DEFAULT_MIN_ROWS;
@@ -104,7 +102,7 @@ export const RosterForLoop = (
 								</Tr>
 								{hasLineErrors && (
 									<Tr className="lunatic-errors">
-										{/* @ts-ignore-next-line */}
+										{/* @ts-expect-error colSpan is not resolved */}
 										<Td colSpan={cols}>
 											<ComponentErrors errors={lineErrors} />
 										</Td>

@@ -26,12 +26,12 @@ export type ActionGoToPage = {
 
 export type ActionGoNextPage = {
 	type: ActionKind.GO_NEXT_PAGE;
-	payload: {};
+	payload: object;
 };
 
 export type ActionGoPreviousPage = {
 	type: ActionKind.GO_PREVIOUS_PAGE;
-	payload: {};
+	payload: object;
 };
 
 export type Action =

@@ -12,7 +12,7 @@ export function autoExploreLoop(
 		...state.pager,
 	};
 	const pageId = getPageId(newPager);
-	let page = state.pages[pageId];
+	const page = state.pages[pageId];
 	let hasExploredLoop = false;
 	const isForward = direction === 'forward';
 

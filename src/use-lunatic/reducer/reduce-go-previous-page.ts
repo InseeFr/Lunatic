@@ -10,7 +10,7 @@ export function reduceGoPreviousPage(
 	const parentType = pages[pager.page]?.components[0].componentType;
 	const prevPager = getPrevPager(pager, parentType);
 	const pageId = getPageId(prevPager);
-	let prevPage = pages[pageId];
+	const prevPage = pages[pageId];
 
 	if (!prevPage) {
 		throw new Error(`Cannot reach previous page ${pageId}`);

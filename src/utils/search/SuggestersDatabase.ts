@@ -3,6 +3,7 @@ import type { IndexEntry, SearchInterface } from './SearchInterface';
 import type { LunaticSource } from '../../use-lunatic/type';
 
 const suggesters = new Map<string, SearchInterface<IndexEntry>>();
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let dataFetcher = (_: string): Promise<Array<IndexEntry>> =>
 	Promise.resolve([]);
 

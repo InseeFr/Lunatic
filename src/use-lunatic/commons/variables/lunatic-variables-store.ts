@@ -346,7 +346,7 @@ class LunaticVariable {
 		// Remember the value
 		try {
 			this.setValue(interpretVTL(this.expression, bindings), iteration);
-		} catch (e) {
+		} catch {
 			throw new VTLInterpretationError(this.expression!, bindings);
 		}
 		this.updateTimestamps(iteration, 'calculatedAt');

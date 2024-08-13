@@ -63,7 +63,7 @@ export function getQuestionnaireData(
 		} else {
 			try {
 				result[variable.variableType][variable.name] = store.get(variable.name);
-			} catch (e) {
+			} catch {
 				// Error can happen when calculating variable, send null to prevent crashing the mehod
 				result[variable.variableType][variable.name] = null;
 			}

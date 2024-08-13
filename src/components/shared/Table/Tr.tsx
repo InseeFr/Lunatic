@@ -7,7 +7,7 @@ type Props = PropsWithChildren<{
 	row?: string | number;
 }>;
 
-function LunaticTr({ children, className, row }: Props) {
+function LunaticTr({ children, className }: Props) {
 	return (
 		<tr className={classnames('lunatic-table-tr', className)}>{children}</tr>
 	);

@@ -10,7 +10,7 @@ type Props = PropsWithChildren<{
 	rowSpan?: number;
 }>;
 
-function LunaticTh({ index, children, className, colSpan, rowSpan }: Props) {
+function LunaticTh({ children, className, colSpan, rowSpan }: Props) {
 	return (
 		<th
 			className={classnames('lunatic-table-th', className)}

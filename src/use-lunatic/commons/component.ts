@@ -8,7 +8,7 @@ export function hasResponse(
 		!!component &&
 		typeof component === 'object' &&
 		'response' in component &&
-		'name' in (component.response as {})
+		'name' in (component.response as object)
 	);
 }
 
