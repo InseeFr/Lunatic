@@ -1,4 +1,4 @@
- {
+{
 	"name": "@inseefr/lunatic",
 	"version": "3.3.0",
 	"description": "Library of questionnaire components",
@@ -45,8 +45,8 @@
 		"test-watch": "vitest",
 		"build:types": "node ./tools/schema-ts-generator.js && prettier src/type.source.ts --write",
 		"check": "tsc --noEmit",
-		"lint": "eslint ./src",
-		"lint:check": "eslint . --ext .ts,.tsx",
+		"lint": "ESLINT_USE_FLAT_CONFIG=false eslint ./src",
+		"lint:check": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .ts,.tsx",
 		"_format": "prettier **/*.{ts,tsx,json}",
 		"format": "npm run _format -- --write",
 		"format:check": "npm run _format -- --list-different",
