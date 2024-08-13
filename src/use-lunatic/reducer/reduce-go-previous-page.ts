@@ -19,7 +19,7 @@ export function reduceGoPreviousPage(
 	let newState = { ...state, pager: prevPager };
 
 	// We reached an empty page, keep going backward
-	if (isPageEmpty(newState, true)) {
+	if (isPageEmpty(newState)) {
 		return reduceGoPreviousPage(newState);
 	}
 
@@ -27,7 +27,7 @@ export function reduceGoPreviousPage(
 	newState = autoExploreLoop(newState, 'backward');
 
 	// We explored a loop, check if we reached an empty page, move backward
-	if (newState.pager !== prevPager && isPageEmpty(newState, true)) {
+	if (newState.pager !== prevPager && isPageEmpty(newState)) {
 		return reduceGoPreviousPage(newState);
 	}
 
