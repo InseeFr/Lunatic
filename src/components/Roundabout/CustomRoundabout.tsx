@@ -4,11 +4,9 @@ import { Label } from '../shared/Label/Label';
 import type { ItemOf } from '../../type.utils';
 import { Button } from '../shared/Button/Button';
 import classnames from 'classnames';
-import {
-	ComponentErrors,
-	getComponentErrors,
-} from '../shared/ComponentErrors/ComponentErrors';
+import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import type { LunaticError } from '../../use-lunatic/type';
+import type { ReactNode } from 'react';
 
 type PropsItem = ItemOf<LunaticComponentProps<'Roundabout'>['items']> & {
 	onClick: () => void;
@@ -62,14 +60,22 @@ function RoundaboutItem({
 
 type Props = Pick<
 	LunaticComponentProps<'Roundabout'>,
-	'items' | 'label' | 'locked' | 'id' | 'errors'
+	'label' | 'locked' | 'id'
 > & {
 	goToIteration: (v: number) => void;
+	errors?: LunaticError[];
+	items: {
+		label?: ReactNode;
+		progress: number; // -1: not completed, 0: started, 1: finished
+		description?: ReactNode;
+		disabled?: boolean;
+		errors?: LunaticError[] | undefined;
+	}[];
 };
 
 export const CustomRoundabout = slottableComponent<Props>(
 	'Roundabout',
-	({ items, goToIteration, label, locked, errors, id }) => {
+	({ items, goToIteration, label, locked }) => {
 		return (
 			<div className="lunatic-roundabout">
 				<Label>{label}</Label>
@@ -79,7 +85,7 @@ export const CustomRoundabout = slottableComponent<Props>(
 							key={k}
 							iteration={k}
 							{...item}
-							errors={getComponentErrors(errors, `${id}-${k}`)}
+							errors={item.errors}
 							onClick={() => goToIteration(k)}
 							locked={locked}
 						/>
