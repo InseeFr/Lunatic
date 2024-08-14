@@ -40,7 +40,7 @@ export function checkBaseControl(
 			id,
 			typeOfControl,
 		};
-	} catch (e) {
+	} catch {
 		console.warn(`Error on validating control ${control.value}`);
 		return undefined;
 	}

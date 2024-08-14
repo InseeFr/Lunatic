@@ -11,12 +11,13 @@ export function getInitialVariableValue(
 		case 'EXTERNAL':
 		case 'CALCULATED':
 			return data[variable.variableType]?.[variable.name];
-		case 'COLLECTED':
+		case 'COLLECTED': {
 			const fromData = data.COLLECTED?.[variable.name]?.COLLECTED;
 			if ('values' in variable && variable.values) {
 				return fromData ?? variable.values.COLLECTED;
 			}
 			return fromData;
+		}
 		default:
 			return null;
 	}

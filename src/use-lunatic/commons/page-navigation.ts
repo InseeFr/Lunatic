@@ -16,6 +16,7 @@ export function getNextPager(
 	parent?: LunaticComponentType
 ): LunaticReducerState['pager'] {
 	// Increment the page or subPage
+	// eslint-disable-next-line prefer-const
 	let [page, subPage] =
 		pager.subPage !== undefined
 			? [pager.page, pager.subPage + 1]
@@ -74,6 +75,7 @@ export function getPrevPager(
 	parent?: LunaticComponentType
 ): LunaticReducerState['pager'] {
 	// Decrement the page or subPage
+	// eslint-disable-next-line prefer-const
 	let [page, subPage] =
 		pager.subPage !== undefined
 			? [pager.page, pager.subPage - 1]

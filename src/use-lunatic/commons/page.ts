@@ -23,10 +23,7 @@ export function pageStringToNumbers(page: string): number[] {
  * Check if we are on an empty page
  * if no components can be displayed on this page (using filter)
  */
-export function isPageEmpty(
-	state: LunaticReducerState,
-	isMovingBackward = false
-): boolean {
+export function isPageEmpty(state: LunaticReducerState): boolean {
 	const { executeExpression, pager } = state;
 	const { iteration } = pager;
 	const components = getComponentsFromState(state);

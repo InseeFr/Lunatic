@@ -13,14 +13,7 @@ type Props = PropsWithChildren<
 	} & LunaticComponentProps
 >;
 
-function LunaticTd({
-	children,
-	row,
-	index,
-	className,
-	colSpan,
-	rowSpan,
-}: Props) {
+function LunaticTd({ children, className, colSpan, rowSpan }: Props) {
 	return (
 		<td
 			className={classnames('lunatic-table-td', className)}

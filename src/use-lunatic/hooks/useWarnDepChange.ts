@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import type { LunaticLogger } from '../logger/type';
+import { useRefSync } from '../../hooks/useRefSync';
 
 /**
  * Log a warning when the variable change
@@ -11,10 +12,11 @@ export function useWarnDepChange(
 	logger: LunaticLogger
 ) {
 	const firstRender = useRef(true);
+	const loggerRef = useRefSync(logger);
 	useEffect(() => {
 		if (!firstRender.current) {
-			logger({ type: 'WARNING', message });
+			loggerRef.current({ type: 'WARNING', message });
 		}
 		firstRender.current = false;
-	}, [variable]);
+	}, [variable, loggerRef, message]);
 }

@@ -111,7 +111,7 @@ export function Suggester({
 		onBlur();
 	};
 
-	let componentErrors = getComponentErrors(errors, id) ?? [];
+	const componentErrors = getComponentErrors(errors, id) ?? [];
 	if (state === 'error') {
 		componentErrors.push({
 			id: 'suggester',

@@ -1,7 +1,7 @@
 /**
  * Array.map() but for objet
  */
-export function objectMap<T extends Record<string, any>, V extends unknown>(
+export function objectMap<T extends Record<string, any>, V>(
 	object: T,
 	callback: (k: keyof T, v: T[keyof T]) => [k: keyof T, v: V] | null
 ) {
@@ -29,7 +29,7 @@ export function mergeDefault<
 	D extends Record<string, unknown>,
 >(obj: T, defaults: D): T & D {
 	return objectMap({ ...obj, ...defaults }, (k) => {
-		// @ts-ignore Ignore this line since TS is not able to handle this case
+		// @ts-expect-error Ignore this line since TS is not able to handle this case
 		return [k, obj[k] ?? defaults[k]] as const;
 	});
 }

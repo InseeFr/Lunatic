@@ -22,6 +22,7 @@ export function useSuggestions({
 	const [searchQuery, setSearchQuery] = useState('');
 	const store = getSearchForStore(storeName);
 	const searchIndexRef = useRefSync(store.index);
+	// eslint-disable-next-line prefer-const
 	let [options, setOptions] = useState(selectedOptions);
 	const [state, setState] = useState<State>(
 		store.error !== null
@@ -41,7 +42,7 @@ export function useSuggestions({
 			.then(() => {
 				setState('success');
 			})
-			.catch((err) => {
+			.catch(() => {
 				setState('error');
 			});
 	}, [searchIndexRef]);

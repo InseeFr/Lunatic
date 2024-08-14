@@ -169,7 +169,7 @@ function checkComponentInLoop(
 					{ value: component.conditionFilter.value, type: 'VTL' },
 					iterationPager
 				)) ||
-			// @ts-ignore
+			// @ts-expect-error TS doesn't understand that conditionFilter is a boolean here
 			component.conditionFilter === false
 		) {
 			continue;
@@ -218,7 +218,7 @@ export function compileControls(state: StateForControls) {
 			}
 			return true;
 		});
-	let errors = checkComponents(state, componentFiltered);
+	const errors = checkComponents(state, componentFiltered);
 	const currentErrors = Object.keys(errors).length > 0 ? errors : undefined;
 	return {
 		currentErrors,

@@ -143,11 +143,11 @@ export function slottableComponent<T>(
 
 		if (custom && name in custom) {
 			const SlotComponent = custom[name] as ComponentType<T>;
-			// @ts-ignore-next-line
+			// @ts-expect-error This is too dynamic
 			return <SlotComponent {...props} />;
 		}
 
-		// @ts-ignore-next-line
+		// @ts-expect-error This is too dynamic
 		return <OriginalComponent {...props} />;
 	};
 	DecoratedComponent.displayName = name;

@@ -114,7 +114,7 @@ export type LunaticReducerState = {
 			  };
 	};
 	// Run and expression using the value from the state
-	executeExpression: <T extends unknown = unknown>(
+	executeExpression: <T = unknown>(
 		expression: VTLExpression,
 		args?: {
 			iteration?: number | number[];

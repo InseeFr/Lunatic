@@ -41,8 +41,8 @@ export function melautoScore(str: string, query: string) {
 		if (index < 0) {
 			return score;
 		}
-		let how = (cleanedStr.length - index) / cleanedStr.length;
-		let weight = (queryTerms.length - i) / queryTerms.length;
+		const how = (cleanedStr.length - index) / cleanedStr.length;
+		const weight = (queryTerms.length - i) / queryTerms.length;
 		return score + how * weight;
 	}, 0);
 }

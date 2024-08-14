@@ -82,7 +82,7 @@ describe('getOptionsProp()', () => {
 		it('should create handleChange correctly', () => {
 			variables.set('O1', [true, false]);
 			variables.set('O2', [false, true]);
-			let options = getOptionsProp(
+			const options = getOptionsProp(
 				checkboxGroupDefinition,
 				variables,
 				mockChange,

@@ -24,11 +24,13 @@ export const RosterForLoop = (
 		lines,
 		errors,
 		handleChanges,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		declarations,
 		header,
 		iterations,
 		id,
 		getComponents,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		label,
 		...otherProps // These props will be passed down to the child components
 	} = props;
@@ -104,7 +106,7 @@ export const RosterForLoop = (
 								</Tr>
 								{hasLineErrors && (
 									<Tr className="lunatic-errors">
-										{/* @ts-ignore-next-line */}
+										{/* @ts-expect-error colSpan is not resolved */}
 										<Td colSpan={cols}>
 											<ComponentErrors errors={lineErrors} />
 										</Td>
