@@ -121,7 +121,7 @@ test('can complete simpson form', async ({ page }) => {
 		.getByRole('row', { name: 'Kill Mr Burns' })
 		.getByText('Commencez votre saisie...')
 		.click();
-	await page.getByText('Other').click();
+	await page.getByText('Other').locator('visible=true').click();
 	await page.getByText('Commencez votre saisie...').click();
 	await page.getByRole('option', { name: 'Jay' }).getByText('Jay').click();
 	await gotoNextPage(page, 4);
