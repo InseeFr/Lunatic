@@ -1,5 +1,6 @@
 import { CustomRoundabout } from './CustomRoundabout';
 import type { LunaticComponentProps } from '../type';
+import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 
 /**
  * Roundabout is a special loop component where the user can select the iteration to go to
@@ -22,5 +23,17 @@ export function Roundabout(props: LunaticComponentProps<'Roundabout'>) {
 		});
 	};
 
-	return <CustomRoundabout {...props} goToIteration={goToIteration} />;
+	const itemsWithErrors = props.items.map((item, k) => ({
+		...item,
+		errors: getComponentErrors(props.errors, `${props.id}-${k}`),
+	}));
+
+	return (
+		<CustomRoundabout
+			{...props}
+			errors={getComponentErrors(props.errors, props.id)}
+			items={itemsWithErrors}
+			goToIteration={goToIteration}
+		/>
+	);
 }
