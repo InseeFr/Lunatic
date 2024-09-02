@@ -39,6 +39,7 @@ export const CustomDropdown = slottableComponent<CustomProps>(
 			options,
 			className,
 			value,
+			declarations,
 			description,
 			label,
 			errors,
@@ -61,6 +62,7 @@ export const CustomDropdown = slottableComponent<CustomProps>(
 				label={label}
 				errors={errors}
 				description={description}
+				declarations={declarations}
 			/>
 		);
 	}
