@@ -15,6 +15,8 @@ import { between, forceInt } from '../../../utils/number';
 import { Label } from '../Label/Label';
 import { slottableComponent } from '../HOC/slottableComponent';
 import type { LunaticError } from '../../../use-lunatic/type';
+import { Declarations } from '../Declarations/Declarations';
+import type { LunaticBaseProps } from '../../type';
 
 const EMPTY_SEARCH = '';
 
@@ -28,6 +30,7 @@ type Props = ComboboxSelectionProps &
 		getOptionValue?: (o: ComboboxOptionType) => string;
 		label?: ReactNode;
 		description?: ReactNode;
+		declarations?: LunaticBaseProps['declarations'];
 		errors?: LunaticError[];
 		onChange?: (s: string | null) => void;
 		onSelect: (s: string | null) => void;
@@ -58,6 +61,7 @@ function LunaticComboBox({
 	getOptionValue = getDefaultOptionValue,
 	label,
 	description,
+	declarations,
 	errors,
 	onBlur,
 	onFocus,
@@ -150,6 +154,7 @@ function LunaticComboBox({
 			<Label htmlFor={id} id={labelId} description={description}>
 				{label}
 			</Label>
+			<Declarations type="AFTER_QUESTION_TEXT" declarations={declarations} />
 			<ComboboxContent
 				focused={focused}
 				onFocus={handleFocus}
