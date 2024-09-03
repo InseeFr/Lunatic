@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { voidFunction } from '../../utils/function';
 import type { LunaticError } from '../../use-lunatic/type';
-import type { LunaticComponentProps } from '../type';
+import type { LunaticBaseProps, LunaticComponentProps } from '../type';
 import D from '../../i18n';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Combobox } from '../shared/Combobox/Combobox';
@@ -21,6 +21,7 @@ type Props = {
 	readOnly?: boolean;
 	id?: string;
 	label?: ReactNode;
+	declarations?: LunaticBaseProps['declarations'];
 	description?: ReactNode;
 	errors?: LunaticError[];
 	options: SuggesterOptionType[];
@@ -45,6 +46,7 @@ export const CustomSuggester = slottableComponent<Props>(
 		id,
 		search,
 		label,
+		declarations,
 		description,
 		errors,
 		options,
@@ -82,6 +84,7 @@ export const CustomSuggester = slottableComponent<Props>(
 				labelRenderer={labelRenderer}
 				placeholder={placeholder}
 				label={label}
+				declarations={declarations}
 				description={description}
 				errors={errors}
 			/>

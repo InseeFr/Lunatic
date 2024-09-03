@@ -16,6 +16,7 @@ export function Suggester({
 	disabled,
 	value,
 	label,
+	declarations,
 	description,
 	errors,
 	readOnly,
@@ -151,6 +152,7 @@ export function Suggester({
 			value={selectedOptions}
 			label={label}
 			onBlur={onBlur}
+			declarations={declarations}
 			description={description}
 			errors={componentErrors}
 		/>
