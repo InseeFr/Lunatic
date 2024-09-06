@@ -44,19 +44,15 @@ function checkComponents(
 	let errors = {} as Record<string, LunaticError[]>;
 
 	for (const component of components) {
-		if (!('controls' in component) || !('id' in component)) {
-			continue;
-		}
-		const { controls, id } = component;
 		// The component has global level controls
-		if (Array.isArray(controls)) {
+		if ('controls' in component && Array.isArray(component.controls)) {
 			const componentErrors = checkControls(
-				controls.filter((c) => c.type !== 'ROW'),
+				component.controls.filter((c) => c.type !== 'ROW'),
 				state.executeExpression,
 				state.pager
 			);
 			if (componentErrors.length > 0) {
-				errors[id] = componentErrors;
+				errors[component.id] = componentErrors;
 			}
 		}
 
@@ -140,6 +136,14 @@ function checkComponentInLoop(
 	component: ComponentDefinition | InterpretedLoopComponent,
 	errors: Record<string, LunaticError[]>
 ): Record<string, LunaticError[]> {
+	// For Question, loop over children
+	if (component.componentType === 'Question') {
+		for (const child of component.components) {
+			errors = checkComponentInLoop(state, child, errors);
+		}
+		return errors;
+	}
+
 	// The component has no controls, skip it
 	if ('controls' in component && !Array.isArray(component.controls)) {
 		return errors;
