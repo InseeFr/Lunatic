@@ -71,6 +71,7 @@ export function Loop({
 					componentProps={(c) => ({
 						...props,
 						...c,
+						iteration: n,
 						id: `${c.id}-${n}`,
 						errors,
 					})}

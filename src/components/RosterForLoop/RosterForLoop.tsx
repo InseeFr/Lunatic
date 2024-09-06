@@ -99,6 +99,7 @@ export const RosterForLoop = (
 											...otherProps,
 											...c,
 											id: `${c.id}-${n}`,
+											iteration: n,
 											errors,
 										})}
 										wrapper={(props) => <Td {...props} />}
