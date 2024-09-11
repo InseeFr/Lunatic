@@ -6,10 +6,14 @@ function resizeArrayVariable<T = unknown>(
 	length: number,
 	defaultValue?: T
 ): T[] {
+	if (length < 0) {
+		return [];
+	}
 	if (!Array.isArray(array)) {
 		// create the array
 		return new Array(length).fill(defaultValue);
-	} else if (array.length !== length) {
+	}
+	if (array.length !== length) {
 		// renew array end keep previous values
 		return new Array(length)
 			.fill(defaultValue)
