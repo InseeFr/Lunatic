@@ -51,6 +51,8 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	goNextPage?: () => void;
 	goPreviousPage?: () => void;
 	meta?: Record<string, unknown>;
+	// Function used by the wrapper to transform props, can be used to pass transformation through component (Loop, Question...)
+	propsTransformer?: (v: any) => any;
 };
 
 export type SuggesterOption = {
@@ -111,6 +113,7 @@ export type ComponentPropsByType = {
 		LunaticExtraProps & { componentType?: 'Subsequence' };
 	Question: Pick<
 		LunaticBaseProps<unknown>,
+		| 'propsTransformer'
 		| 'label'
 		| 'id'
 		| 'description'
