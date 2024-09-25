@@ -133,7 +133,7 @@
 		"damerau-levenshtein": "^1.0.7",
 		"eslint": "7.30.0",
 		"eslint-config-prettier": "^9.0.0",
-		"eslint-config-react-app": "^6.0.0",
+		"eslint-config-react-app": "^7.0.0",
 		"eslint-plugin-flowtype": "^8.0.0",
 		"eslint-plugin-import": "^2.19.1",
 		"eslint-plugin-jsx-a11y": "^6.1.1",
