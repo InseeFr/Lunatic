@@ -88,6 +88,7 @@ export function LunaticComponents<V = unknown>({
 						const props = {
 							...component,
 							...componentProps?.(component),
+							propsTransformer: componentProps,
 						};
 						return (
 							<Fragment key={computeId(component, k)}>

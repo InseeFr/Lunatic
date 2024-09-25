@@ -8,17 +8,12 @@ import type { PropsWithChildren } from 'react';
  * Surround a question giving additional context with label / description / declarations
  */
 export const Question = (props: LunaticComponentProps<'Question'>) => {
-	const { errors, disabled, readOnly, components, iteration } = props;
+	const { components, propsTransformer } = props;
 	return (
 		<CustomQuestion {...props}>
 			<LunaticComponents
 				components={components}
-				componentProps={(p) => ({
-					errors,
-					disabled,
-					readOnly,
-					id: iteration === undefined ? p.id : `${p.id}-${iteration}`,
-				})}
+				componentProps={propsTransformer}
 			/>
 		</CustomQuestion>
 	);
