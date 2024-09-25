@@ -17,6 +17,7 @@
 			"response": { "name": "NB" }
 		}
 	],
+	"resizing": { "NB": { "size": "NB", "variables": ["NAMES"] } },
 	"variables": [
 		{
 			"variableType": "COLLECTED",
@@ -24,6 +25,17 @@
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": null,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "NAMES",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": [null],
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTED": null
