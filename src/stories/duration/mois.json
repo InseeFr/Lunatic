@@ -22,7 +22,7 @@
 			"name": "DUREE",
 			"values": {
 				"PREVIOUS": null,
-				"COLLECTED": null,
+				"COLLECTED": "P4Y0M",
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null

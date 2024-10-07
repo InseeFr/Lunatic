@@ -61,6 +61,7 @@ const sidebars: SidebarsConfig = {
             'components/fields/input-number',
             'components/fields/textarea',
             'components/fields/datepicker',
+            'components/fields/duration',
             'components/fields/dropdown',
             'components/fields/suggester',
             'components/fields/radio',

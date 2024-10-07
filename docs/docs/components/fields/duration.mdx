@@ -1,0 +1,25 @@
+# Duration
+
+Le composant **Duration** permet à l'utilisateur de renseigner une durée. Elle peut être définie en :
+
+- années / mois (format : PnYnM)
+- heures / minutes (format : PTnHnM)
+
+Le composant présente deux champs de saisie, mais la donnée est enregistrée dans une variable commune.
+Par exemple en renseignant respectivement dans les champs 10 et 7, la valeur de la donnée sera :
+
+- année / mois : "PT10H7M"
+- heures / minutes : "P10Y7M"
+
+Si une seule des deux valeurs est renseignée, la seconde prend pour valeur 0 (ex : P0Y5M).
+
+Il est impossible de renseigner une valeur supérieure à 59 minutes (resp. 11 mois).
+
+import timeSource from '../../../../src/stories/duration/time.json';
+import { FormExample } from '@site/src/components/FormExample/FormExample';
+
+<FormExample source={timeSource} />
+
+import dateSource from '../../../../src/stories/duration/mois.json';
+
+<FormExample source={dateSource} />
