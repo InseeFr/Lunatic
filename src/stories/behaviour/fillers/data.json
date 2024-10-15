@@ -1,0 +1,13 @@
+{
+	"EXTERNAL": {
+		"DEP_CODE": "51",
+		"COM_CODE": "085",
+		"LIBELLE_COMMUNE": "TEST-COMMUNE",
+		"NUMVOI_LOC_SUGG": "1",
+		"BISTER_LOC_SUGG": null,
+		"TYPEVOI_LOC_SUGG": "Impasse",
+		"NOMVOI_LOC_SUGG": "DU PINSON",
+		"RESPONSE": true
+	},
+	"COLLECTED": {}
+}
