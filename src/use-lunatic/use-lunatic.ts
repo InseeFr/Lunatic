@@ -211,6 +211,7 @@ export function useLunatic(
 		getData,
 		getChangedData,
 		resetChangedData,
+		variables: state.variables, // L'orchestrateur de reprise pourra avoir besoin de voir une valeur dans le store
 		hasPageResponse: usePageHasResponse(components, state.executeExpression),
 		// Components
 		Provider,
