@@ -2,7 +2,7 @@
 name: Feature Request
 about: Suggest an idea or enhancement for the project
 title: ''
-labels: feature
+labels: ''
 assignees: ''
 
 ---
@@ -40,4 +40,3 @@ If applicable, include any mockups, diagrams, or additional files that help illu
 ## Related Issues
 
 Are there any existing issues related to this feature request? If yes, please reference them here.
-
