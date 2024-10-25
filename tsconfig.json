@@ -1,28 +1,29 @@
 {
 	"compilerOptions": {
-		/* 
-		* We published in ESM ony because antrl4 is an esm library
-		%	https://github.com/antlr/antlr4/blob/master/doc/javascript-target.md#what-about-modules 
-		* Take care if you need some assets to add them in dist
-		*/
+		"module": "CommonJS",
 		"target": "ESNext",
-		"useDefineForClassFields": true,
-		"lib": ["DOM", "ESNext"],
-		"skipLibCheck": true,
-		"esModuleInterop": false,
-		"allowSyntheticDefaultImports": true,
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"module": "ESNext",
-		"moduleResolution": "Node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
+		"moduleResolution": "node",
+		"lib": ["ESNext", "DOM"],
+		"esModuleInterop": true,
 		"declaration": true,
+		// Do not change or the linking script will stop working
+		"outDir": "./dist",
 		"sourceMap": true,
-		"noEmitOnError": true,
-		"outDir": "lib",
+		"newLine": "LF",
+		"noUnusedParameters": true,
+		"incremental": true,
+		"strict": true,
+		"downlevelIteration": true,
 		"jsx": "react-jsx",
-		"verbatimModuleSyntax": true
+		"noFallthroughCasesInSwitch": true,
+		"skipLibCheck": true
 	},
-	"include": ["src", "src/tests/setup.ts"]
+	"include": ["src", "src/tests/setup.ts"],
+	"exclude": [
+		"src/stories/",
+		"tests/",
+		"**/*.test.ts",
+		"src/**/*.deno.ts",
+		"src/**/*.deno.tsx"
+	]
 }
