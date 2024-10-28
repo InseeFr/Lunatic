@@ -15,7 +15,10 @@
 		"strict": true,
 		"downlevelIteration": true,
 		"jsx": "react-jsx",
+		"forceConsistentCasingInFileNames": true,
 		"noFallthroughCasesInSwitch": true,
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
 		"skipLibCheck": true
 	},
 	"include": ["src", "src/tests/setup.ts"],
