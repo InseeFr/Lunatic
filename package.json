@@ -43,7 +43,7 @@
 		"format": "npm run _format -- --write",
 		"format:check": "npm run _format -- --list-different",
 		"test-coverage": "vitest run --coverage",
-		"build": "tsc && tsc -p tsconfig-esm.json && sass ./src/css/main.scss ./dist/main.css && cp -R ./src/css/icons ./dist/icons",
+		"build": "tsc -p tsconfig.build.json && tsc -p tsconfig-esm.json && sass ./src/css/main.scss ./dist/main.css && cp -R ./src/css/icons ./dist/icons",
 		"storybook": "storybook dev -p 9999 --no-open",
 		"build-storybook": "storybook build",
 		"link-in-app": "tsx scripts/link-in-app.ts"
