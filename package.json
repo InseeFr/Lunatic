@@ -1,8 +1,7 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "3.4.5",
+	"version": "3.4.6-rc.0",
 	"description": "Library of questionnaire components",
-	"type": "module",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/InseeFr/Lunatic.git"
@@ -30,12 +29,6 @@
 			"email": "nicolas.laval@insee.fr"
 		}
 	],
-	"license": "MIT",
-	"main": "lib/index.js",
-	"types": "lib/index.d.ts",
-	"files": [
-		"lib"
-	],
 	"scripts": {
 		"test": "vitest run",
 		"test:e2e": "playwright test",
@@ -50,16 +43,33 @@
 		"format": "npm run _format -- --write",
 		"format:check": "npm run _format -- --list-different",
 		"test-coverage": "vitest run --coverage",
-		"build": "tsc -p tsconfig.build.json && sass ./src/css/main.scss ./lib/main.css && cp -R ./src/css/icons ./lib/icons",
+		"build": "tsc -p tsconfig.build.json && tsc -p tsconfig-esm.json && sass ./src/css/main.scss ./dist/main.css && cp -R ./src/css/icons ./dist/icons",
 		"storybook": "storybook dev -p 9999 --no-open",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"link-in-app": "tsx scripts/link-in-app.ts"
 	},
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"module": "dist/esm/index.js",
+	"license": "MIT",
+	"files": [
+		"src/",
+		"dist/",
+		"!dist/tsconfig.tsbuildinfo"
+	],
 	"keywords": [
 		"react",
 		"component",
 		"react-component",
 		"library"
 	],
+	"exports": {
+		".": {
+			"module": "./dist/esm/index.js",
+			"default": "./dist/index.js"
+		}
+	},
+	"homepage": "https://github.com/InseeFr/Lunatic",
 	"dependencies": {
 		"@inseefr/trevas": "^0.1.21",
 		"@inseefr/vtl-2.0-antlr-tools": "^0.3.2",
@@ -75,10 +85,6 @@
 		"remark-emoji": "^5.0.1",
 		"sass": "^1.77.8"
 	},
-	"resolutions": {
-		"jackspeak": "2.3.6",
-		"strip-ansi": "6.0.1"
-	},
 	"devDependencies": {
 		"@eslint/js": "^9.9.0",
 		"@playwright/test": "^1.46.0",
@@ -91,6 +97,7 @@
 		"@storybook/test-runner": "^0.19.1",
 		"@testing-library/jest-dom": "^6.4.8",
 		"@testing-library/react": "^16.0.0",
+		"@types/node": "^22.8.0",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react": "^4.3.1",
@@ -106,8 +113,9 @@
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"storybook": "^8.2.9",
-		"typescript": "^5.5.4",
-		"typescript-eslint": "^8.1.0",
+		"tsx": "^4.19.1",
+		"typescript": "^5.4.5",
+		"typescript-eslint": "^8.11.0",
 		"vite": "^5.4.0",
 		"vitest": "^2.0.5"
 	},
