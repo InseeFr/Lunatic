@@ -19,11 +19,5 @@
 		"skipLibCheck": true
 	},
 	"include": ["src", "src/tests/setup.ts"],
-	"exclude": [
-		"src/stories/",
-		"tests/",
-		"**/*.test.ts",
-		"src/**/*.deno.ts",
-		"src/**/*.deno.tsx"
-	]
+	"exclude": ["src/**/*.deno.ts", "src/**/*.deno.tsx"]
 }
