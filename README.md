@@ -10,6 +10,7 @@
 
 Lunatic is a front-end library in the form of a React hook and component libraries for generating a questionnaire from the [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model) data format.
 
+- [Storybook 3.0](https://inseefr.github.io/Lunatic/storybook-3.0), branch `3.0`
 - [Storybook 2.7](https://inseefr.github.io/Lunatic/storybook-2.7), branch `2.7`
 - [Storybook 2.6](https://inseefr.github.io/Lunatic/storybook-2.6), branch `2.6`
 - [Storybook v1](https://inseefr.github.io/Lunatic/storybook-0.3.9), branch `v1-main`
