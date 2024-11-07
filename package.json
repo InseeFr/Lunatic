@@ -43,7 +43,9 @@
 		"format": "npm run _format -- --write",
 		"format:check": "npm run _format -- --list-different",
 		"test-coverage": "vitest run --coverage",
-		"build": "tsc -p tsconfig.build.json && tsc -p tsconfig-esm.json && sass ./src/css/main.scss ./dist/main.css && cp -R ./src/css/icons ./dist/icons",
+		"build": "npm run build:cjs && npm run build:esm",
+		"build:cjs": "tsc -p tsconfig.build.json && sass ./src/css/main.scss ./dist/main.css && cp -R ./src/css/icons ./dist/icons",
+		"build:esm": "tsc -p tsconfig-esm.json && sass ./src/css/main.scss ./dist/esm/main.css && cp -R ./src/css/icons ./dist/esm/icons",
 		"storybook": "storybook dev -p 9999 --no-open",
 		"build-storybook": "storybook build",
 		"link-in-app": "tsx scripts/link-in-app.ts"
@@ -55,7 +57,8 @@
 	"files": [
 		"src/",
 		"dist/",
-		"!dist/tsconfig.tsbuildinfo"
+		"!dist/tsconfig.tsbuildinfo",
+		"!dist/esm/tsconfig-esm.tsbuildinfo"
 	],
 	"keywords": [
 		"react",
