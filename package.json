@@ -70,6 +70,10 @@
 		".": {
 			"module": "./dist/esm/index.js",
 			"default": "./dist/index.js"
+		},
+		"./main.css": {
+			"module": "./dist/esm/main.css",
+			"default": "./dist/main.css"
 		}
 	},
 	"homepage": "https://github.com/InseeFr/Lunatic",
