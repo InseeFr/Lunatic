@@ -60,7 +60,7 @@ export class LunaticVariablesStore {
 		if (!source.variables) {
 			return store;
 		}
-		// Source data (picked from "variables" in the source.json)s
+		// Source data (picked from "variables" in the source.json)
 		const sourceValues: Record<string, unknown> = {};
 		// Starting data for the form (merged with data.json or injected data)
 		const initialValues: Record<string, unknown> = {};

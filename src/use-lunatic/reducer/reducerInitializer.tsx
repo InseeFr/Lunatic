@@ -37,6 +37,8 @@ const baseState = {
 	executeExpression: <T,>() => null as T,
 } satisfies LunaticReducerState;
 
+const onChange = { current: () => {} };
+
 export function reducerInitializer({
 	source,
 	data,
@@ -45,8 +47,8 @@ export function reducerInitializer({
 	lastReachedPage = undefined,
 	withOverview = false,
 	getReferentiel,
-	onVariableChange,
-	logger,
+	onVariableChange = onChange,
+	logger = console.error,
 }: {
 	source: LunaticSource;
 	data: LunaticData;
@@ -55,8 +57,8 @@ export function reducerInitializer({
 	lastReachedPage?: LunaticOptions['lastReachedPage'];
 	withOverview?: LunaticOptions['withOverview'];
 	getReferentiel?: LunaticOptions['getReferentiel'];
-	onVariableChange: RefObject<LunaticOptions['onVariableChange']>;
-	logger: LunaticLogger;
+	onVariableChange?: RefObject<LunaticOptions['onVariableChange']>;
+	logger?: LunaticLogger;
 }): LunaticReducerState {
 	const variables = LunaticVariablesStore.makeFromSource(
 		source,
@@ -107,11 +109,13 @@ export function reducerInitializer({
 			}
 			return result as any;
 		} catch (e) {
-			// If there is an error interpreting a variable, return the raw expression
-			logger({
-				type: 'ERROR',
-				error: e as Error,
-			});
+			if (logger) {
+				// If there is an error interpreting a variable, return the raw expression
+				logger({
+					type: 'ERROR',
+					error: e as Error,
+				});
+			}
 			return expressionString;
 		}
 	};
@@ -128,9 +132,9 @@ export function reducerInitializer({
 	const pager = {
 		page: initialPager?.page ?? 1,
 		maxPage: source.maxPage ? parseInt(source.maxPage, 10) : 1,
-		subPage: undefined,
+		subPage: initialPager?.subPage,
 		nbSubPages: undefined,
-		iteration: undefined,
+		iteration: initialPager?.iteration,
 		nbIterations: undefined,
 		lastReachedPage: lastReachedPage ?? initialPage,
 	};
@@ -140,7 +144,7 @@ export function reducerInitializer({
 		pager,
 		previousPager: pager,
 		pages,
-		isInLoop: false,
+		isInLoop: pager.subPage !== undefined,
 		updatedAt: Date.now(),
 		overview: withOverview ? buildOverview(source) : [],
 		updateBindings,
@@ -157,22 +161,29 @@ function fillPagerForLoop(state: LunaticReducerState): LunaticReducerState {
 		return state;
 	}
 	const { isLoop, subPages, iterations, loopDependencies } = pages[pager.page];
-	if (!isLoop) {
-		return state;
+
+	if (
+		// For loop, jump at the first page
+		isLoop ||
+		// For roundabout, jump at the desired iteration / subpage (only if defined)
+		(pager?.iteration !== undefined && subPages)
+	) {
+		return {
+			...state,
+			isInLoop: true,
+			pager: {
+				...pager,
+				subPage: pager?.subPage ?? 1,
+				nbSubPages: (subPages ?? []).length,
+				iteration: pager?.iteration ?? 0,
+				nbIterations: forceInt(
+					state.executeExpression(iterations, {
+						deps: loopDependencies,
+					})
+				),
+			},
+		};
 	}
-	return {
-		...state,
-		isInLoop: true,
-		pager: {
-			...pager,
-			subPage: pager?.subPage ?? 0,
-			nbSubPages: (subPages ?? []).length,
-			iteration: pager?.iteration ?? 0,
-			nbIterations: forceInt(
-				state.executeExpression(iterations, {
-					deps: loopDependencies,
-				})
-			),
-		},
-	};
+
+	return state;
 }
