@@ -25,8 +25,8 @@ export const tokenizeQuery = (str: string, info: SearchInfo['queryParser']) => {
 
 	const wordRegex =
 		info.params.pattern && info.params.pattern !== 'soft'
-			? /\w+/gi
-			: new RegExp(info.params.pattern, 'gi');
+			? new RegExp(info.params.pattern, 'gi')
+			: /\w+/gi;
 	const minLength = info.params.min ?? 1;
 
 	return (
@@ -45,8 +45,8 @@ export const tokenizeIndex = (
 ) => {
 	const wordRegex =
 		info.rules && info.rules !== 'soft'
-			? /\w+/gi
-			: new RegExp(info.rules![0], 'gi');
+			? new RegExp(info.rules![0], 'gi')
+			: /\w+/gi;
 	const minLength = info.min ?? 1;
 
 	// For synonyms, add the synonyms to the string
