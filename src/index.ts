@@ -9,6 +9,8 @@ export { Button } from './components/shared/Button/Button';
 export { LunaticComponents } from './components/LunaticComponents';
 export { useLunatic } from './use-lunatic/use-lunatic';
 
+export { interpretVTL, getVTLCompatibleValue } from './utils/vtl';
+
 export type {
 	LunaticComponentDefinition,
 	LunaticControl,

@@ -189,6 +189,9 @@ jobs:
           if [ "$IS_PRE_RELEASE" = "true" ]; then
               EXTRA_ARGS="--tag beta"
           fi
+          if [[ "$VERSION" == *"-beta"* ]]; then
+              EXTRA_ARGS="--tag experimental"
+          fi
           npm publish $EXTRA_ARGS
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
