@@ -189,7 +189,7 @@ jobs:
           if [ "$IS_PRE_RELEASE" = "true" ]; then
               EXTRA_ARGS="--tag beta"
           fi
-          if [[ "$VERSION" == *"-beta"* ]]; then
+          if [[ "$GITHUB_REF_NAME" == "poc/"* ]]; then
               EXTRA_ARGS="--tag experimental"
           fi
           npm publish $EXTRA_ARGS
