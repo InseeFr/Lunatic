@@ -446,4 +446,8 @@ export type SuggesterDefinition = {
 		| {
 				type: 'soft';
 		  };
+	/**
+	 * list of words to exclude from the searching
+	 */
+	stopWords?: string[];
 };

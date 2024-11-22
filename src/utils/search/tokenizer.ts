@@ -7,18 +7,23 @@ import type { ItemOf } from '../../type.utils';
 export const tokenizer =
 	(info: SearchInfo) => (str: string, fieldName?: string) => {
 		const field = info.fields.find((f) => f.name === fieldName);
+		const stopWords = info.stopWords;
 
 		return field
-			? tokenizeIndex(str, field)
-			: tokenizeQuery(str, info.queryParser);
+			? tokenizeIndex(str, field, stopWords)
+			: tokenizeQuery(str, info.queryParser, stopWords);
 	};
 
 /**
  * Tokenizer used for the query entered by the user (based on "queryParser" info)
  */
-export const tokenizeQuery = (str: string, info: SearchInfo['queryParser']) => {
+export const tokenizeQuery = (
+	str: string,
+	info: SearchInfo['queryParser'],
+	stopWords?: string[]
+) => {
 	if (info.type === 'soft') {
-		return normalizeStr(str)
+		return filterStopWords(normalizeStr(str), stopWords)
 			.split(/[^a-z0-9]+/)
 			.filter((w) => w.length > 0);
 	}
@@ -30,7 +35,7 @@ export const tokenizeQuery = (str: string, info: SearchInfo['queryParser']) => {
 	const minLength = info.params.min ?? 1;
 
 	return (
-		normalizeStr(str)
+		filterStopWords(normalizeStr(str), stopWords)
 			.match(wordRegex)
 			?.filter((w) => w.length >= minLength) ?? []
 	);
@@ -41,7 +46,8 @@ export const tokenizeQuery = (str: string, info: SearchInfo['queryParser']) => {
  */
 export const tokenizeIndex = (
 	str: string,
-	info: ItemOf<SearchInfo['fields']>
+	info: ItemOf<SearchInfo['fields']>,
+	stopWords?: string[]
 ) => {
 	const wordRegex =
 		info.rules && info.rules !== 'soft'
@@ -58,7 +64,7 @@ export const tokenizeIndex = (
 	}
 
 	return (
-		normalizeStr(str)
+		filterStopWords(normalizeStr(str), stopWords)
 			.match(wordRegex)
 			?.filter((w) => w.length >= minLength) ?? []
 	);
@@ -75,3 +81,18 @@ const normalizeStr = (str: string) => {
 		.replace(/[\u0300-\u036f]/g, '')
 		.toLowerCase();
 };
+
+/**
+ * remove from a string all the words that are included in a stopwords list
+ */
+export function filterStopWords(input: string, stopWords?: string[]): string {
+	if (!stopWords) {
+		return input;
+	}
+	const lowerCaseStopWords = stopWords.map((word) => word.toLowerCase());
+	const words = input.split(/\s+/);
+	const filteredWords = words.filter(
+		(word) => !lowerCaseStopWords.includes(word.toLowerCase())
+	);
+	return filteredWords.join(' ');
+}

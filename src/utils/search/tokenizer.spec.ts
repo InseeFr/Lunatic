@@ -1,5 +1,10 @@
-import { describe, it, expect } from 'vitest';
-import { tokenizer, tokenizeQuery, tokenizeIndex } from './tokenizer';
+import { describe, it, expect, vi } from 'vitest';
+import {
+	tokenizer,
+	tokenizeQuery,
+	tokenizeIndex,
+	filterStopWords,
+} from './tokenizer';
 import type { SearchInfo } from './SearchInterface';
 
 const mockSearchInfo: SearchInfo = {
@@ -23,6 +28,70 @@ const mockSearchInfo: SearchInfo = {
 		},
 	},
 };
+
+describe('filterStopWords', () => {
+	it('should remove only stopwords from the input string', () => {
+		const input = 'This is a test.';
+		const stopWords = ['is', 'a'];
+		const result = filterStopWords(input, stopWords);
+		expect(result).toBe('This test.');
+	});
+
+	it('should not alter words that are substrings of stopwords', () => {
+		const input = 'this is a testing example';
+		const stopWords = ['test'];
+		const result = filterStopWords(input, stopWords);
+		expect(result).toBe('this is a testing example');
+	});
+
+	it('should be case-insensitive', () => {
+		const input = 'This Is A Test.';
+		const stopWords = ['is', 'a'];
+		const result = filterStopWords(input, stopWords);
+		expect(result).toBe('This Test.');
+	});
+
+	it('should return the input string unchanged if stopWords is undefined', () => {
+		const input = 'This is a test.';
+		const result = filterStopWords(input);
+		expect(result).toBe(input);
+	});
+
+	it('should return the input string unchanged if stopWords is a empty array', () => {
+		const input = 'This is a test.';
+		const stopWords: string[] = [];
+		const result = filterStopWords(input, stopWords);
+		expect(result).toBe(input);
+	});
+
+	it('should return an empty string if all words are stopwords', () => {
+		const input = 'this is a test';
+		const stopWords = ['this', 'is', 'a', 'test'];
+		const result = filterStopWords(input, stopWords);
+		expect(result).toBe('');
+	});
+
+	it('should handle strings with multiple spaces correctly', () => {
+		const input = 'This    is  a test.';
+		const stopWords = ['is', 'a'];
+		const result = filterStopWords(input, stopWords);
+		expect(result).toBe('This test.');
+	});
+
+	it('should handle empty input string', () => {
+		const input = '';
+		const stopWords = ['is', 'a'];
+		const result = filterStopWords(input, stopWords);
+		expect(result).toBe('');
+	});
+
+	it('should handle punctuation correctly', () => {
+		const input = 'Hello, world! This is a test.';
+		const stopWords = ['is', 'a'];
+		const result = filterStopWords(input, stopWords);
+		expect(result).toBe('Hello, world! This test.');
+	});
+});
 
 describe('tokenizeQuery', () => {
 	it('should tokenize based on soft type', () => {
@@ -50,6 +119,21 @@ describe('tokenizeQuery', () => {
 
 		const result = tokenizeQuery('Élève Étudiant!', queryParser);
 		expect(result).toEqual(['eleve', 'etudiant']);
+	});
+
+	it('should filter out stop>ords', () => {
+		const queryParser = {
+			type: 'tokenized',
+			params: { pattern: '\\w+', min: 1 },
+		} as SearchInfo['queryParser'];
+		const stopWords = ['is', 'the', 'of', 'this', 'a'];
+
+		const result = tokenizeQuery(
+			'This is a test of stopWords !',
+			queryParser,
+			stopWords
+		);
+		expect(result).toEqual(['test', 'stopwords']);
 	});
 
 	it('should return an empty array for unmatched patterns', () => {
@@ -85,8 +169,21 @@ describe('tokenizeIndex', () => {
 		expect(result).toEqual(['eleve', 'etudiant']);
 	});
 
+	it('should filter out stopWords', () => {
+		const fieldInfo = { ...mockSearchInfo.fields[0], min: 1 };
+		const stopWords = ['is', 'the', 'of', 'this', 'a'];
+
+		const result = tokenizeIndex(
+			'This is a test of stopWords !',
+			fieldInfo,
+			stopWords
+		);
+		expect(result).toEqual(['test', 'stopwords']);
+	});
+
 	it('should return an empty array for unmatched patterns', () => {
 		const fieldInfo = { ...mockSearchInfo.fields[0], rules: ['\\d+'] }; // Only numbers
+
 		const result = tokenizeIndex('No numbers here', fieldInfo);
 		expect(result).toEqual([]);
 	});
@@ -112,6 +209,17 @@ describe('tokenizer', () => {
 
 		const result = tokenize('Élève Étudiant!');
 		expect(result).toEqual(['eleve', 'etudiant']);
+	});
+
+	it('should filter out stopWords', () => {
+		const info = {
+			...mockSearchInfo,
+			stopWords: ['is', 'the', 'of', 'this', 'a'],
+		};
+		const tokenize = tokenizer(info);
+
+		const result = tokenize('This is a test of stopWords !');
+		expect(result).toEqual(['test', 'stopwords']);
 	});
 
 	it('should handle empty strings', () => {
