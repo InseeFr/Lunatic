@@ -1458,6 +1458,13 @@
 							"additionalProperties": false
 						}
 					]
+				},
+				"stopWords": {
+					"description": "list of words to exclude from the searching",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				}
 			},
 			"required": ["name", "fields", "queryParser", "version"]
