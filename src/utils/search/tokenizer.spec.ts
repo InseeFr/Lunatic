@@ -121,7 +121,7 @@ describe('tokenizeQuery', () => {
 		expect(result).toEqual(['eleve', 'etudiant']);
 	});
 
-	it('should filter out stop>ords', () => {
+	it('should filter out stopWords', () => {
 		const queryParser = {
 			type: 'tokenized',
 			params: { pattern: '\\w+', min: 1 },
@@ -148,7 +148,7 @@ describe('tokenizeQuery', () => {
 });
 
 describe('tokenizeIndex', () => {
-	it('should respect minimum token length', () => {
+	it('should filter out words shorter than the required minimum length', () => {
 		const fieldInfo = mockSearchInfo.fields[0];
 
 		const result = tokenizeIndex('The bus is so slow', fieldInfo);
