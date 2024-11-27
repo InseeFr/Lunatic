@@ -2,7 +2,8 @@ import type { SearchInfo } from './SearchInterface';
 import type { ItemOf } from '../../type.utils';
 
 /**
- * Generates a tokenize method
+ * Generates a tokenize method.
+ * When used for tokenizing a search query instead of the indexing, the fieldName is undefined.
  */
 export const tokenizer =
 	(info: SearchInfo) => (str: string, fieldName?: string) => {
@@ -59,6 +60,7 @@ export const tokenizeIndex = (
 		}
 	}
 
+	// We remove the stopWords from the string
 	return (
 		filterStopWords(normalizeStr(str), stopWords)
 			.match(wordRegex)
