@@ -30,8 +30,7 @@ export function getNextPager(
 	// We reached the end of the sequence
 	const isEndSequence =
 		subPage && pager.nbSubPages ? subPage >= pager.nbSubPages : false;
-	const moveUpOnEnd =
-		parent === 'Roundabout' && pager.nbIterations && pager.nbIterations > 1;
+	const moveUpOnEnd = parent === 'Roundabout' && pager.nbIterations;
 	// Move up at the end of a sequence (instead of going to the next Iteration)
 	if (isEndSequence && moveUpOnEnd) {
 		return {

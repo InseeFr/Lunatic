@@ -37,18 +37,6 @@ export function autoExploreLoop(
 		);
 	}
 
-	// The page contains a roundabout, go to the first iteration if it only has one iteration
-	if (
-		page.components[0].componentType === 'Roundabout' &&
-		page.subPages &&
-		page.subPages.length > 0
-	) {
-		const nbIterations = state.executeExpression<number>(page.iterations);
-		if (nbIterations === 1) {
-			goInsideSubpage(page.subPages, 1);
-		}
-	}
-
 	// No loop were explored, don't mutate the state
 	if (!hasExploredLoop) {
 		return state;
