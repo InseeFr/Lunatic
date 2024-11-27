@@ -121,21 +121,6 @@ describe('tokenizeQuery', () => {
 		expect(result).toEqual(['eleve', 'etudiant']);
 	});
 
-	it('should filter out stopWords', () => {
-		const queryParser = {
-			type: 'tokenized',
-			params: { pattern: '\\w+', min: 1 },
-		} as SearchInfo['queryParser'];
-		const stopWords = ['is', 'the', 'of', 'this', 'a'];
-
-		const result = tokenizeQuery(
-			'This is a test of stopWords !',
-			queryParser,
-			stopWords
-		);
-		expect(result).toEqual(['test', 'stopwords']);
-	});
-
 	it('should return an empty array for unmatched patterns', () => {
 		const queryParser = {
 			type: 'tokenized',
@@ -209,17 +194,6 @@ describe('tokenizer', () => {
 
 		const result = tokenize('Élève Étudiant!');
 		expect(result).toEqual(['eleve', 'etudiant']);
-	});
-
-	it('should filter out stopWords', () => {
-		const info = {
-			...mockSearchInfo,
-			stopWords: ['is', 'the', 'of', 'this', 'a'],
-		};
-		const tokenize = tokenizer(info);
-
-		const result = tokenize('This is a test of stopWords !');
-		expect(result).toEqual(['test', 'stopwords']);
 	});
 
 	it('should handle empty strings', () => {

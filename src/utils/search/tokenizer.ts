@@ -2,7 +2,8 @@ import type { SearchInfo } from './SearchInterface';
 import type { ItemOf } from '../../type.utils';
 
 /**
- * Generates a tokenize method
+ * Generates a tokenize method.
+ * When used for tokenizing a search query instead of the indexing, the fieldName is undefined.
  */
 export const tokenizer =
 	(info: SearchInfo) => (str: string, fieldName?: string) => {
@@ -11,19 +12,15 @@ export const tokenizer =
 
 		return field
 			? tokenizeIndex(str, field, stopWords)
-			: tokenizeQuery(str, info.queryParser, stopWords);
+			: tokenizeQuery(str, info.queryParser);
 	};
 
 /**
  * Tokenizer used for the query entered by the user (based on "queryParser" info)
  */
-export const tokenizeQuery = (
-	str: string,
-	info: SearchInfo['queryParser'],
-	stopWords?: string[]
-) => {
+export const tokenizeQuery = (str: string, info: SearchInfo['queryParser']) => {
 	if (info.type === 'soft') {
-		return filterStopWords(normalizeStr(str), stopWords)
+		return normalizeStr(str)
 			.split(/[^a-z0-9]+/)
 			.filter((w) => w.length > 0);
 	}
@@ -35,7 +32,7 @@ export const tokenizeQuery = (
 	const minLength = info.params.min ?? 1;
 
 	return (
-		filterStopWords(normalizeStr(str), stopWords)
+		normalizeStr(str)
 			.match(wordRegex)
 			?.filter((w) => w.length >= minLength) ?? []
 	);
@@ -63,6 +60,7 @@ export const tokenizeIndex = (
 		}
 	}
 
+	// We remove the stopWords from the string
 	return (
 		filterStopWords(normalizeStr(str), stopWords)
 			.match(wordRegex)
