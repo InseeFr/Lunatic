@@ -317,6 +317,7 @@ export type LunaticSource = {
 			  };
 	};
 	maxPage?: string;
+	fillers?: FillerDefinition[];
 };
 export type VTLExpression = {
 	/**
@@ -450,4 +451,13 @@ export type SuggesterDefinition = {
 	 * list of words to exclude from the searching
 	 */
 	stopWords?: string[];
+};
+export type FillerDefinition = {
+	endpoint: {
+		url: string;
+		type?: 'VTL' | 'TXT';
+	};
+	responses: {
+		name: string;
+	}[];
 };

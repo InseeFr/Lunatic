@@ -43,6 +43,7 @@ import type { SummaryResponses, SummaryTitle } from '../../Summary/Summary';
 import type { LunaticComponentProps } from '../../type';
 import type { MarkdownLink } from '../MDLabel/MarkdownLink';
 import type { Accordion } from '../../Accordion/Accordion';
+import type { FillerLoader } from '../../FillerLoader/FillerLoader';
 
 /**
  * Contains the type of every customizable component
@@ -109,6 +110,7 @@ export type LunaticSlotComponents = {
 	>;
 	MarkdownLink: typeof MarkdownLink;
 	Accordion: typeof Accordion;
+	FillerLoader: typeof FillerLoader;
 };
 
 const empty = {} as Partial<LunaticSlotComponents> | undefined;

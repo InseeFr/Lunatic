@@ -119,6 +119,7 @@ function OrchestratorForStories({
 	refusedButton,
 	readOnly = false,
 	disabled = false,
+	mockFiller = null,
 	...rest
 }) {
 	const { maxPage } = source;
@@ -154,6 +155,9 @@ function OrchestratorForStories({
 		withOverview: showOverview,
 		dontKnowButton,
 		refusedButton,
+		mocks: {
+			filler: mockFiller,
+		},
 	});
 
 	const components = getComponents();

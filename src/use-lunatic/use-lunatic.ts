@@ -31,6 +31,7 @@ import { mergeDefault } from '../utils/object';
 import { useRefSync } from '../hooks/useRefSync';
 import { ConsoleLogger } from './logger/ConsoleLogger';
 import { useWarnDepChange } from './hooks/useWarnDepChange';
+import { useFillers } from './hooks/useFillers';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const DEFAULT_DATA = empty as LunaticData;
@@ -82,6 +83,7 @@ export function useLunatic(
 		trackChanges,
 		preferences,
 		logger,
+		mocks,
 	} = options;
 
 	// Help debug with warnings for options expected to be memoized
@@ -136,19 +138,6 @@ export function useLunatic(
 		[dispatch]
 	);
 
-	const goNextPage: LunaticState['goNextPage'] = useCallback(
-		function (payload = {}) {
-			dispatch(goNextPageAction(payload));
-		},
-		[dispatch]
-	);
-
-	const goToPage: LunaticState['goToPage'] = useCallback(
-		function (payload) {
-			dispatch(goToPageAction(payload));
-		},
-		[dispatch]
-	);
 	const handleChanges = useCallback<LunaticChangesHandler>(
 		(responses) => {
 			dispatch(handleChangesAction(responses));
@@ -178,6 +167,29 @@ export function useLunatic(
 	const pageTag = getPageTag(state.pager);
 	const { isFirstPage, isLastPage } = isFirstLastPage(state.pager);
 
+	const { triggerFillers, isFilling } = useFillers({
+		variables: state.variables,
+		fillers: source.fillers ?? [],
+		handleChanges,
+		fetchMock: mocks?.filler ?? null,
+		executeExpression: state.executeExpression,
+	});
+
+	const goNextPage: LunaticState['goNextPage'] = useCallback(
+		function (payload = {}) {
+			dispatch(goNextPageAction(payload));
+			triggerFillers();
+		},
+		[dispatch]
+	);
+
+	const goToPage: LunaticState['goToPage'] = useCallback(
+		function (payload) {
+			dispatch(goToPageAction(payload));
+		},
+		[dispatch]
+	);
+
 	const components = fillComponents(getComponentsFromState(state), {
 		handleChanges,
 		preferences,
@@ -190,6 +202,14 @@ export function useLunatic(
 	});
 
 	const getComponents: LunaticState['getComponents'] = () => {
+		if (isFilling) {
+			return [
+				{
+					componentType: 'FillerLoader',
+					id: 'lunatic-filler-loader',
+				},
+			];
+		}
 		return components;
 	};
 

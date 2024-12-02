@@ -24,6 +24,7 @@ import { PairwiseLinks } from './PairwiseLinks/PairwiseLinks';
 import { CheckboxOne } from './CheckboxOne/CheckboxOne';
 import { Suggester } from './Suggester/Suggester';
 import { Summary } from './Summary/Summary';
+import { FillerLoader } from './FillerLoader/FillerLoader';
 
 // List of all the "componentType"
 export const library = {
@@ -51,6 +52,7 @@ export const library = {
 	Suggester: Suggester,
 	Summary: Summary,
 	Accordion: Accordion,
+	FillerLoader: FillerLoader,
 } satisfies {
 	[Property in LunaticComponentType]: ComponentType<
 		LunaticComponentProps<Property>
