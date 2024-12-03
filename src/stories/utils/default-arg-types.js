@@ -1,6 +1,7 @@
 const fields = [
 	'source',
 	'id',
+	'disableFilters',
 	'pagination',
 	'data',
 	'management',

@@ -100,6 +100,7 @@ function logMissingStrategy() {
 function OrchestratorForStories({
 	source,
 	data,
+	disableFilters = false,
 	management = false,
 	shortcut = false,
 	activeControls = false,
@@ -141,6 +142,7 @@ function OrchestratorForStories({
 		initialPage,
 		features,
 		preferences,
+		disableFilters,
 		onChange: onLogChange,
 		autoSuggesterLoading,
 		getReferentiel,
