@@ -131,9 +131,13 @@ export type LunaticReducerState = {
 		value: unknown,
 		options: { iteration?: number[] }
 	) => unknown;
+	options: {
+		disableFilters?: boolean;
+	};
 };
 
 export type LunaticOptions = {
+	disableFilters?: boolean;
 	features?: ('MD' | 'VTL')[];
 	preferences?: ['COLLECTED'];
 	savingType?: 'COLLECTED';
