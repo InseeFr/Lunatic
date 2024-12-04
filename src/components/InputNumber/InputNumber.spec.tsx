@@ -112,4 +112,19 @@ describe('InputNumber', () => {
 		const unit = container.querySelector('span');
 		expect(unit).toHaveTextContent('kg');
 	});
+
+	it('should call setSelectionRange with (0, 0) on blur', () => {
+		const setSelectionRangeMock = vi.fn();
+		const { container } = render(<InputNumber {...baseProps} value={100000000000000000000000000000000000} />);
+
+		const input = container.querySelector('input[type="text"]');
+
+		fireEvent.blur(input!, {
+			target: {
+				...input,
+				setSelectionRange: setSelectionRangeMock
+			}
+		});
+		expect(setSelectionRangeMock).toHaveBeenCalledWith(0, 0);
+	});
 });
