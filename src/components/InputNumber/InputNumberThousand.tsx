@@ -69,9 +69,8 @@ export const InputNumberThousand = ({
 			inputMode={decimals ? 'decimal' : 'numeric'}
 			aria-invalid={invalid}
 			onBlur={(e) => {
-				e.target.setSelectionRange(0, 0)
+				e.target.setSelectionRange(0, 0);
 			}}
-
 		/>
 	);
 };
