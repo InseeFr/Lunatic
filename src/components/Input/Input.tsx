@@ -65,11 +65,15 @@ export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
 				disabled={disabled}
 				readOnly={readOnly}
 				value={(value ?? '').toString()}
+				title={value ?? ''}
 				onChange={(e) => onChange(e.target.value)}
 				aria-required={required}
 				required={required}
 				maxLength={maxLength}
 				aria-invalid={!!errors}
+				onBlur={(e) => {
+					e.target.setSelectionRange(0, 0);
+				}}
 			/>
 			<ComponentErrors errors={errors} />
 		</div>

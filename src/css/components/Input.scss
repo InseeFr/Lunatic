@@ -22,8 +22,8 @@
 			box-sizing: content-box;
 			background: none;
 			overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 			&:focus {
 				outline: none;
 				border-bottom: 0.125rem solid var(--color-primary-main);

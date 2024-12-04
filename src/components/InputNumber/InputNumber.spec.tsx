@@ -113,7 +113,7 @@ describe('InputNumber', () => {
 		expect(unit).toHaveTextContent('kg');
 	});
 
-	it('should call setSelectionRange with (0, 0) on blur', () => {
+	it('should display the input value from the start', () => {
 		const setSelectionRangeMock = vi.fn();
 		const { container } = render(
 			<InputNumber

@@ -55,6 +55,7 @@ export const InputNumberThousand = ({
 			className={classNames({ disabled })}
 			onValueChange={handleChange}
 			value={value ?? ''}
+			title={value ? value.toString() : ''}
 			aria-labelledby={labelId}
 			disabled={disabled}
 			readOnly={readOnly}
