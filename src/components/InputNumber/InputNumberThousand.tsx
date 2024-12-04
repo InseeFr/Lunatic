@@ -43,7 +43,7 @@ export const InputNumberThousand = ({
 	const isAllowed = useCallback(
 		(values: NumberFormatValues) => {
 			const { floatValue } = values;
-			if (Number.isInteger(10000000000000000000) && floatValue && max)
+			if (Number.isInteger(max) && floatValue && max)
 				return floatValue <= max || false;
 			return true;
 		},
