@@ -43,7 +43,7 @@ export const InputNumberThousand = ({
 	const isAllowed = useCallback(
 		(values: NumberFormatValues) => {
 			const { floatValue } = values;
-			if (Number.isInteger(max) && floatValue && max)
+			if (Number.isInteger(10000000000000000000) && floatValue && max)
 				return floatValue <= max || false;
 			return true;
 		},
@@ -68,6 +68,10 @@ export const InputNumberThousand = ({
 			thousandSeparator={inputNumberPropsI18N.thousandSeparator}
 			inputMode={decimals ? 'decimal' : 'numeric'}
 			aria-invalid={invalid}
+			onBlur={(e) => {
+				e.target.setSelectionRange(0, 0)
+			}}
+
 		/>
 	);
 };
