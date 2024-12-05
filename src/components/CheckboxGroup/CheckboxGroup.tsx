@@ -1,6 +1,7 @@
 import type { LunaticComponentProps } from '../type';
 import { CustomCheckboxGroup } from './CustomCheckboxGroup';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+import { useLunaticComponentsOptions } from '../../use-lunatic/lunatic-context';
 
 export function CheckboxGroup({
 	id,
@@ -14,6 +15,7 @@ export function CheckboxGroup({
 	declarations,
 	orientation,
 }: LunaticComponentProps<'CheckboxGroup'>) {
+	const { detailAlwaysDisplayed } = useLunaticComponentsOptions();
 	return (
 		<CustomCheckboxGroup
 			id={id}
@@ -26,6 +28,7 @@ export function CheckboxGroup({
 			readOnly={readOnly}
 			declarations={declarations}
 			orientation={orientation}
+			detailAlwaysDisplayed={detailAlwaysDisplayed}
 		/>
 	);
 }

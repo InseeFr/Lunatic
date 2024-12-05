@@ -3,6 +3,7 @@ import type { LunaticBaseProps } from '../../type';
 import { slottableComponent } from '../HOC/slottableComponent';
 import { Label } from '../Label/Label';
 import { useKeyboardKey } from '../../../hooks/useKeyboardKey';
+import { CustomInput } from '../../Input/Input';
 
 export type CheckboxOptionProps = {
 	disabled?: boolean;
@@ -15,6 +16,10 @@ export type CheckboxOptionProps = {
 	codeModality?: string;
 	shortcut?: boolean;
 	invalid?: boolean;
+	detailAlwaysDisplayed?: boolean;
+	detailLabel?: ReactNode;
+	detailValue?: string | null;
+	onDetailChange?: (value: string) => void;
 };
 
 function LunaticCheckboxOption({
@@ -25,11 +30,16 @@ function LunaticCheckboxOption({
 	onCheck,
 	label,
 	description,
+	detailAlwaysDisplayed,
+	detailLabel,
+	detailValue,
+	onDetailChange,
 	codeModality,
 	shortcut,
 	invalid,
 }: CheckboxOptionProps) {
 	const isEnabled = !readOnly && !disabled;
+	const hasDetail = !!onDetailChange;
 	const hasKeyboardShortcut = Boolean(shortcut && codeModality && isEnabled);
 	const onClickOption = () => {
 		if (isEnabled) {
@@ -88,6 +98,15 @@ function LunaticCheckboxOption({
 				)}{' '}
 				{label}
 			</Label>
+			{hasDetail && (checked || detailAlwaysDisplayed) && (
+				<CustomInput
+					id="detailId"
+					label={detailLabel ?? 'Précisez :'}
+					value={typeof detailValue === 'string' ? detailValue : ''}
+					onChange={onDetailChange}
+					disabled={disabled}
+				/>
+			)}
 		</div>
 	);
 }

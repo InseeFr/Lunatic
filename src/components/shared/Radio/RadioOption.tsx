@@ -17,6 +17,7 @@ export type Props = {
 	labelledBy?: string;
 	codeModality?: string;
 	invalid?: boolean;
+	detailAlwaysDisplayed?: boolean;
 } & InterpretedOption;
 
 function LunaticRadioOption({
@@ -30,10 +31,12 @@ function LunaticRadioOption({
 	shortcut,
 	codeModality,
 	id,
+	invalid,
 	labelledBy,
 	description,
 	label,
 	onDetailChange,
+	detailAlwaysDisplayed,
 	detailLabel,
 	detailValue,
 	onCheck,
@@ -80,6 +83,7 @@ function LunaticRadioOption({
 			<div
 				id={id}
 				role="radio"
+				aria-invalid={invalid}
 				aria-disabled={disabled}
 				className={classnames(
 					'lunatic-input-checkbox',
@@ -113,7 +117,7 @@ function LunaticRadioOption({
 					{label}
 				</Label>
 			</div>
-			{hasDetail && checked && (
+			{hasDetail && (checked || detailAlwaysDisplayed) && (
 				<CustomInput
 					id="detailId"
 					label={detailLabel ?? 'Précisez :'}

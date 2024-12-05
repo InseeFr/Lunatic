@@ -2,6 +2,7 @@ import type { LunaticComponentProps } from '../type';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { RadioGroup } from '../shared/Radio/RadioGroup';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
+import { useLunaticComponentsOptions } from '../../use-lunatic/lunatic-context';
 
 function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 	const {
@@ -19,6 +20,7 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 		declarations,
 		orientation,
 	} = props;
+	const { detailAlwaysDisplayed } = useLunaticComponentsOptions();
 	return (
 		<RadioGroup
 			id={id}
@@ -34,6 +36,7 @@ function LunaticRadio(props: LunaticComponentProps<'Radio'>) {
 			readOnly={readOnly}
 			declarations={declarations}
 			orientation={orientation ?? 'vertical'}
+			detailAlwaysDisplayed={detailAlwaysDisplayed}
 		/>
 	);
 }

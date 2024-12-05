@@ -17,6 +17,8 @@ describe('CheckboxOption', () => {
 		id: 'test-checkbox',
 		onCheck: vi.fn(),
 		label: 'Test checkbox',
+		detailLabel: 'My detail',
+		onDetailChange: () => {},
 	};
 
 	it('renders the component correctly', () => {
@@ -54,5 +56,24 @@ describe('CheckboxOption', () => {
 		const checkbox = getByRole('checkbox');
 		fireEvent.keyDown(checkbox, { code: 'Space' });
 		expect(defaultProps.onCheck).toHaveBeenCalledWith(true);
+	});
+
+	it('renders the detail when checked', () => {
+		const { getByText } = render(
+			<CheckboxOption {...defaultProps} checked={true} />
+		);
+		expect(getByText(defaultProps.detailLabel)).toBeInTheDocument();
+	});
+	it('does not render the detail when unchecked', () => {
+		const { queryByText } = render(
+			<CheckboxOption {...defaultProps} checked={false} />
+		);
+		expect(queryByText(defaultProps.detailLabel)).toBeNull();
+	});
+	it('renders the details when unchecked with the detail always displayed attribute', () => {
+		const { getByText } = render(
+			<CheckboxOption {...defaultProps} checked={false} detailAlwaysDisplayed />
+		);
+		expect(getByText(defaultProps.detailLabel)).toBeInTheDocument();
 	});
 });

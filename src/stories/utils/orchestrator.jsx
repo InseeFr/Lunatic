@@ -120,9 +120,11 @@ function OrchestratorForStories({
 	refusedButton,
 	readOnly = false,
 	disabled = false,
+	detailAlwaysDisplayed = false,
 	...rest
 }) {
 	const { maxPage } = source;
+	const componentsOptions = { detailAlwaysDisplayed };
 	const {
 		getComponents,
 		goPreviousPage,
@@ -156,6 +158,7 @@ function OrchestratorForStories({
 		withOverview: showOverview,
 		dontKnowButton,
 		refusedButton,
+		componentsOptions,
 	});
 
 	const components = getComponents();

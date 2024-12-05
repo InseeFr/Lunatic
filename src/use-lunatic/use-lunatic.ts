@@ -63,6 +63,7 @@ const defaultOptions = {
 	refusedButton: DEFAULT_REFUSED,
 	trackChanges: false,
 	logger: ConsoleLogger,
+	componentsOptions: { detailAlwaysDisplayed: false },
 } satisfies LunaticOptions;
 
 export function useLunatic(
@@ -84,6 +85,7 @@ export function useLunatic(
 		trackChanges,
 		preferences,
 		logger,
+		componentsOptions,
 	} = options;
 
 	// Help debug with warnings for options expected to be memoized
@@ -115,6 +117,7 @@ export function useLunatic(
 				missingShortcut,
 				dontKnowButton,
 				refusedButton,
+				componentsOptions,
 			}),
 		[
 			management,
@@ -124,6 +127,7 @@ export function useLunatic(
 			missingShortcut,
 			dontKnowButton,
 			refusedButton,
+			componentsOptions,
 		]
 	);
 
