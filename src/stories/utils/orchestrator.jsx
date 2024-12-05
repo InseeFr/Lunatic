@@ -8,7 +8,7 @@ import {
 	ModalControls,
 	useLunatic,
 } from '../..';
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Logger } from '../../utils/logger';
 import { Overview } from './overview';
@@ -124,7 +124,12 @@ function OrchestratorForStories({
 	...rest
 }) {
 	const { maxPage } = source;
-	const componentsOptions = { detailAlwaysDisplayed };
+
+	const componentsOptions = useMemo(
+		() => ({ detailAlwaysDisplayed }),
+		[detailAlwaysDisplayed]
+	);
+
 	const {
 		getComponents,
 		goPreviousPage,
