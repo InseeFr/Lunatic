@@ -38,7 +38,7 @@ test.describe('Checkboxes', () => {
 		});
 
 		test('Can select arbitrary value', async ({ page }) => {
-			await goToStory(page, 'components-checkboxgroup--arbitrary');
+			await goToStory(page, 'components-checkboxgroup--with-detail');
 			const selector = page.getByRole('checkbox', { name: 'Autre préciser' });
 			await expect(selector).toBeVisible();
 			await selector.click();
