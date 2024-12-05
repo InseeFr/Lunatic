@@ -10,6 +10,7 @@ exports[`Input > renders without crashing 1`] = `
       aria-labelledby="label-input"
       autocomplete="off"
       id="input"
+      title="input"
       type="text"
       value="input"
     />
@@ -28,6 +29,7 @@ exports[`Input > should handle readOnly 1`] = `
       autocomplete="off"
       id="number"
       readonly=""
+      title="toto"
       type="text"
       value="toto"
     />

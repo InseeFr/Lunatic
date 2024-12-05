@@ -12,6 +12,7 @@ exports[`InputNumber > renders without crashing 1`] = `
       id="number"
       inputmode="numeric"
       lang="en"
+      title="10"
       type="text"
       value="10"
     />
@@ -32,6 +33,7 @@ exports[`InputNumber > should handle readOnly 1`] = `
       inputmode="numeric"
       lang="en"
       readonly=""
+      title="123"
       type="text"
       value="123"
     />

@@ -39,7 +39,7 @@
 		"build:types": "node ./tools/schema-ts-generator.js && prettier src/type.source.ts --write",
 		"check": "tsc --noEmit",
 		"lint:check": "eslint ./src",
-		"_format": "prettier **/*.{ts,tsx,json}",
+		"_format": "prettier **/*.{ts,tsx,json,scss}",
 		"format": "npm run _format -- --write",
 		"format:check": "npm run _format -- --list-different",
 		"test:coverage": "vitest run --coverage",

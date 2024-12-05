@@ -53,7 +53,6 @@
 				min-width: 260px;
 				width: 100%;
 				.lunatic-suggester-content {
-
 					&.focused {
 						.lunatic-suggester-selection {
 						}
@@ -107,7 +106,8 @@
 						height: 0;
 						opacity: 0;
 						background-color: white;
-						transition: opacity 267ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+						transition:
+							opacity 267ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
 							transform 178ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 						&.expended {
 							border: solid 1px var(--color-primary-light);
