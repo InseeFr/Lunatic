@@ -37,6 +37,7 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
                   autocomplete="off"
                   id="jrc3ye5q-QOP-lo6tcvvx-0"
                   maxlength="249"
+                  title="azeaze"
                   type="text"
                   value="azeaze"
                 />
@@ -66,6 +67,7 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
                   autocomplete="off"
                   id="jrc3ye5q-QOP-lo6tcvvx-1"
                   maxlength="249"
+                  title="azeaze"
                   type="text"
                   value="azeaze"
                 />
