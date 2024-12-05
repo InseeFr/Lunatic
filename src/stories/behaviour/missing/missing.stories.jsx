@@ -13,6 +13,10 @@ const stories = {
 			control: 'boolean',
 			defaultValue: true,
 		},
+		missingStrategy: {
+			table: { disable: false },
+			control: 'object',
+		},
 		activeGoNextForMissing: {
 			table: { disable: false },
 			control: 'boolean',
