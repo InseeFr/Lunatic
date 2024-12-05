@@ -179,6 +179,58 @@ describe('use-lunatic()', () => {
 		});
 	});
 
+	describe('disable filters', () => {
+		const lunaticConfigurationWithoutDisableFilters = {
+			management: false,
+			activeControls: false,
+			initialPage: '1' as PageTag,
+			getStoreInfo: () => {},
+			missing: false,
+			shortcut: false,
+			activeGoNextForMissing: false,
+			showOverview: false,
+			filterDescription: true,
+		};
+
+		it('should filter out some components by default', function () {
+			const { result } = renderHook(() =>
+				useLunatic(
+					sourceLogement as any,
+					undefined,
+					lunaticConfigurationWithoutDisableFilters
+				)
+			);
+			act(() => result.current.goToPage({ page: '3' }));
+			const currentPage = result.current.pageTag;
+			expect(currentPage).not.toBe('3');
+		});
+		it('should filter out some components when false', function () {
+			const { result } = renderHook(() =>
+				useLunatic(sourceLogement as any, undefined, {
+					...lunaticConfigurationWithoutDisableFilters,
+					disableFilters: false,
+				})
+			);
+			act(() => result.current.goToPage({ page: '3' }));
+			const currentPage = result.current.pageTag;
+			expect(currentPage).not.toBe('3');
+		});
+		it('should not filter any component when true', function () {
+			const { result } = renderHook(() =>
+				useLunatic(sourceLogement as any, undefined, {
+					...lunaticConfigurationWithoutDisableFilters,
+					disableFilters: true,
+				})
+			);
+			act(() => result.current.goToPage({ page: '3' }));
+			const currentPage = result.current.pageTag;
+			expect(currentPage).toBe('3');
+
+			const components = result.current.getComponents();
+			expect(components.length).toBe(1);
+		});
+	});
+
 	describe('cleaning', () => {
 		it('should handle cleaning in a loop', () => {
 			const { result } = renderHook(() =>

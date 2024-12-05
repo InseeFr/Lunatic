@@ -42,6 +42,7 @@ const DEFAULT_DONT_KNOW = D.DK;
 const DEFAULT_REFUSED = D.RF;
 
 const defaultOptions = {
+	disableFilters: false,
 	features: DEFAULT_FEATURES,
 	preferences: DEFAULT_PREFERENCES,
 	savingType: COLLECTED,
@@ -71,6 +72,7 @@ export function useLunatic(
 ) {
 	const options = mergeDefault(argOptions, defaultOptions);
 	const {
+		disableFilters,
 		management,
 		missing,
 		missingStrategy,
@@ -179,6 +181,7 @@ export function useLunatic(
 	const { isFirstPage, isLastPage } = isFirstLastPage(state.pager);
 
 	const components = fillComponents(getComponentsFromState(state), {
+		disableFilters,
 		handleChanges,
 		preferences,
 		goToPage,

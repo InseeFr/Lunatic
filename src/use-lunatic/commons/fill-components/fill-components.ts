@@ -14,6 +14,7 @@ import { getIterationsProp } from '../../props/propIterations';
 import { getOptionsProp } from '../../props/propOptions';
 
 type FillComponentArgs = {
+	disableFilters?: boolean;
 	handleChanges: LunaticChangesHandler;
 	executeExpression: LunaticReducerState['executeExpression'];
 	goToPage: LunaticState['goToPage'];
@@ -71,5 +72,7 @@ export function fillComponents(
 ): LunaticComponentProps[] {
 	return components
 		.map((component) => fillComponent(component, state))
-		.filter(({ conditionFilter }) => conditionFilter ?? true);
+		.filter(
+			({ conditionFilter }) => state.disableFilters || (conditionFilter ?? true)
+		);
 }

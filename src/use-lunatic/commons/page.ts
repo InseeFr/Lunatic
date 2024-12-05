@@ -24,10 +24,13 @@ export function pageStringToNumbers(page: string): number[] {
  * if no components can be displayed on this page (using filter)
  */
 export function isPageEmpty(state: LunaticReducerState): boolean {
-	const { executeExpression, pager } = state;
+	const { executeExpression, pager, options } = state;
 	const { iteration } = pager;
 	const components = getComponentsFromState(state);
 	const visibleComponents = components.filter((component) => {
+		if (options.disableFilters) {
+			return true;
+		}
 		if ('conditionFilter' in component && component.conditionFilter) {
 			return executeConditionFilter(
 				component.conditionFilter,
