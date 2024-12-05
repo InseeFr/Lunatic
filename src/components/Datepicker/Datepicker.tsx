@@ -153,9 +153,16 @@ function numbersFromDateString(s?: string): [number, number, number] {
 	];
 }
 
+/**
+ * Check if the date provided by the user is valid (e.g. not 2001/02/29)
+ */
 function isDateValid(dateArray: [number, number, number]) {
 	const [year, month, day] = dateArray;
-	const date = new Date(year, month - 1, day);
+
+	// do not set the date directly on new Date(), to avoid transformation on year between 0 and 99.
+	//See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date#year
+	const date = new Date();
+	date.setFullYear(year, month - 1, day);
 
 	return (
 		date.getFullYear() === year &&
