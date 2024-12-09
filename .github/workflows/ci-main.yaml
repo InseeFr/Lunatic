@@ -10,8 +10,8 @@ jobs:
   test_lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       - uses: bahmutov/npm-install@v1
       - name: If this step fails run 'yarn lint' and 'yarn format' then commit again.
         run: |
@@ -26,8 +26,8 @@ jobs:
         os: [ubuntu-latest]
     name: Test with Node v${{ matrix.node }} on ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - uses: bahmutov/npm-install@v1
@@ -41,7 +41,7 @@ jobs:
         run: yarn run build-storybook --quiet
       - name: E2E Tests
         run: npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" "npx http-server storybook-static --port 9999 --silent" "npx wait-on tcp:9999 && yarn run test:e2e"
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
@@ -55,16 +55,16 @@ jobs:
     steps:
       - name: Get branch name
         id: branch-name
-        uses: tj-actions/branch-names@v7
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+        uses: tj-actions/branch-names@v8
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       - uses: bahmutov/npm-install@v1
       # Build Storybook v2
       - run: yarn build-storybook
       # Add json to fetch for suggester stories
       - run: cp -a ./public/. ./storybook-static
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
@@ -123,7 +123,7 @@ jobs:
       - check_if_version_upgraded
       - check_if_tag_version_exists
     steps:
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         with:
           name: Release ${{ needs.check_if_version_upgraded.outputs.to_version }}
           tag_name: ${{ needs.check_if_version_upgraded.outputs.to_version }}
@@ -140,10 +140,10 @@ jobs:
       - create_github_release
       - check_if_version_upgraded
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           registry-url: https://registry.npmjs.org/
       - uses: bahmutov/npm-install@v1

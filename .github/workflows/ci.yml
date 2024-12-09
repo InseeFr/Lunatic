@@ -8,8 +8,8 @@ jobs:
   test_lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       - uses: bahmutov/npm-install@v1
       - name: If this step fails run 'yarn lint' and 'yarn format' then commit again.
         run: |
@@ -24,8 +24,8 @@ jobs:
         os: [ubuntu-latest]
     name: Test with Node v${{ matrix.node }} on ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - uses: bahmutov/npm-install@v1
@@ -39,7 +39,7 @@ jobs:
         run: yarn run build-storybook --quiet
       - name: E2E Tests
         run: npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" "npx http-server storybook-static --port 9999 --silent" "npx wait-on tcp:9999 && yarn run test:e2e"
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
