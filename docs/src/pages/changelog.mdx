@@ -1,3 +1,21 @@
+### 3.4.9
+
+#### Nouvelles fonctionnalités
+
+- Input, InputNumber : lorsque la saisie dépasse la taille du champ, ajout d'un '...' lorsque le champ n'est pas focus pour améliorer la lisibilité
+- ajout d'un paramètre `disableFilters` dans le useLunatic pour permettre de désactiver tous les filtres au sein du questionnaire
+- ajout d'un paramètre `detailAlwaysDisplayed` dans le useLunatic pour permettre de toujours afficher les modalités de réponse "detail" (ex : "autre : préciser")
+
+#### Correction de bugs
+
+- Datepicker : la saisie d'une date au format YYYY-MM-DD avec une année sur 1 ou 2 digits était considérée invalide, et n'était donc pas enregistrée
+
+### 3.4.8
+
+#### Correction de bugs
+
+- Suggester : les stopwords n'étaient plus pris en compte depuis la version 3.0.0
+
 ### 3.0.0
 
 #### Nouvelles fonctionnalités
