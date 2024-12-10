@@ -161,6 +161,7 @@ export type LunaticOptions = {
 	// Enable change tracking to keep a track of what variable changed (allow using getChangedData())
 	trackChanges?: boolean;
 	logger?: LunaticLogger;
+	componentsOptions?: { detailAlwaysDisplayed?: boolean };
 };
 
 // Type representing the return type of "useLunatic()"

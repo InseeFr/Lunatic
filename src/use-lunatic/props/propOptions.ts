@@ -8,12 +8,13 @@ import type { DeepTranslateExpression } from '../commons/fill-components/fill-co
 import { isNumber } from '../../utils/number';
 import type { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 
+/* Used for radio option and checkbox one option */
 export type InterpretedOption = {
 	label: ReactNode;
 	value?: string;
 	checked?: boolean;
-	detailLabel?: ReactNode;
 	description?: ReactNode;
+	detailLabel?: ReactNode;
 	detailValue?: string | null;
 	onDetailChange?: (value: string) => void;
 	onCheck?: () => void;

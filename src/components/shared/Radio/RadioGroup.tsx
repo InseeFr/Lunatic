@@ -22,6 +22,7 @@ export type RadioGroupProps = Pick<
 	| 'description'
 	| 'declarations'
 	| 'orientation'
+	| 'detailAlwaysDisplayed'
 > & {
 	errors?: LunaticError[];
 	clearable?: boolean;
@@ -44,6 +45,7 @@ function LunaticRadioGroup({
 	readOnly,
 	declarations,
 	orientation,
+	detailAlwaysDisplayed,
 }: RadioGroupProps) {
 	const onKeyDown = useListKeyboardHandler(options);
 	const maxIndex = options.length;
@@ -61,6 +63,7 @@ function LunaticRadioGroup({
 							id={radioId}
 							index={index}
 							checked={value === option.value}
+							detailAlwaysDisplayed={detailAlwaysDisplayed}
 							onKeyDown={onKeyDown}
 							checkboxStyle={checkboxStyle}
 							codeModality={shortcut ? codeModality : undefined}

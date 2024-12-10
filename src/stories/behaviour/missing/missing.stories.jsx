@@ -8,10 +8,19 @@ const stories = {
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
+		shortcut: {
+			table: { disable: false },
+			control: 'boolean',
+			defaultValue: true,
+		},
 		missing: {
 			table: { disable: false },
 			control: 'boolean',
 			defaultValue: true,
+		},
+		missingStrategy: {
+			table: { disable: false },
+			control: 'object',
 		},
 		activeGoNextForMissing: {
 			table: { disable: false },

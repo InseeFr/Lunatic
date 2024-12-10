@@ -1,6 +1,7 @@
 import { RadioGroup } from '../shared/Radio/RadioGroup';
 import type { LunaticComponentProps } from '../type';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+import { useLunaticComponentsOptions } from '../../use-lunatic/lunatic-context';
 
 /**
  * Checkbox acting as a radio (only one option can be checked at a time)
@@ -18,6 +19,7 @@ export function CheckboxOne({
 	declarations,
 	orientation,
 }: LunaticComponentProps<'CheckboxOne'>) {
+	const { detailAlwaysDisplayed } = useLunaticComponentsOptions();
 	return (
 		<RadioGroup
 			id={id}
@@ -33,6 +35,7 @@ export function CheckboxOne({
 			shortcut={shortcut}
 			declarations={declarations}
 			orientation={orientation ?? 'vertical'}
+			detailAlwaysDisplayed={detailAlwaysDisplayed}
 			clearable
 		/>
 	);
