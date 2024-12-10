@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.5.2">
 <title data-rh="true">Paramètres | @inseefr/lunatic</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://inseefr.github.io/Lunatic/docs/img/clipboard.png"><meta data-rh="true" name="twitter:image" content="https://inseefr.github.io/Lunatic/docs/img/clipboard.png"><meta data-rh="true" property="og:url" content="https://inseefr.github.io/Lunatic/docs/hook/parameters"><meta data-rh="true" property="og:locale" content="fr"><meta data-rh="true" name="docusaurus_locale" content="fr"><meta data-rh="true" name="docsearch:language" content="fr"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Paramètres | @inseefr/lunatic"><meta data-rh="true" name="description" content="Le premier point d&#x27;entrée avec la librairie est le hook useLunatic(source, data, options) qui prend 3 arguments :"><meta data-rh="true" property="og:description" content="Le premier point d&#x27;entrée avec la librairie est le hook useLunatic(source, data, options) qui prend 3 arguments :"><link data-rh="true" rel="icon" href="/Lunatic/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://inseefr.github.io/Lunatic/docs/hook/parameters"><link data-rh="true" rel="alternate" href="https://inseefr.github.io/Lunatic/docs/hook/parameters" hreflang="fr"><link data-rh="true" rel="alternate" href="https://inseefr.github.io/Lunatic/docs/hook/parameters" hreflang="x-default"><link rel="stylesheet" href="/Lunatic/docs/assets/css/styles.91849493.css">
-<script src="/Lunatic/docs/assets/js/runtime~main.b6d4142e.js" defer="defer"></script>
+<script src="/Lunatic/docs/assets/js/runtime~main.6ac8fe06.js" defer="defer"></script>
 <script src="/Lunatic/docs/assets/js/main.0e3ff03d.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard" data-theme="light">
@@ -37,7 +37,12 @@
 <li><strong>missingShortcut</strong> raccourcis clavier déclanchant les boutons missing (défaut <code>{ dontKnow: &#x27;&#x27;, refused: &#x27;&#x27; }</code>)</li>
 <li><strong>dontKnowButton</strong> label du bouton &quot;Ne sait pas&quot; (défaut <code>{ fr: &#x27;Ne sais pas&#x27;, en: &quot;Don&#x27;t know&quot; }</code>)</li>
 <li><strong>refusedButton</strong> label du bouton &quot;Refus&quot; (défaut <code>{ fr: &#x27;Refus&#x27;, en: &#x27;Refused&#x27; }</code>)</li>
-<li><strong>trackChanges</strong>, active le <a href="#trackChanges">suivi des changements</a> (défaut <code>false</code>)</li>
+<li><strong>trackChanges</strong>, active le <a href="#trackChanges">suivi des changements</a> (défaut <code>false</code>),</li>
+<li><strong>componentsOptions</strong> permet de définir des options sur le fonctionnement des composants. Toutes les options sont optionnelles (défaut objet contenant la valeur par défaut de chaque paramètre)<!-- -->
+<ul>
+<li><strong>detailAlwaysDisplayed</strong> permet d&#x27;afficher par défaut les modalités &#x27;detail&#x27; associées aux modalités de réponse</li>
+</ul>
+</li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="vue-densemble">Vue d&#x27;ensemble<a href="#vue-densemble" class="hash-link" aria-label="Lien direct vers Vue d&#x27;ensemble" title="Lien direct vers Vue d&#x27;ensemble">​</a></h3>
 <ul>
