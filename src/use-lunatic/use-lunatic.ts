@@ -119,15 +119,17 @@ export function useLunatic(
 				refusedButton,
 				componentsOptions,
 			}),
+		// for objects and arrays dependencies, not being handled by useMemo, we need to compare every value
 		[
 			management,
 			missing,
 			missingStrategy,
 			shortcut,
-			missingShortcut,
+			missingShortcut.dontKnow,
+			missingShortcut.refused,
 			dontKnowButton,
 			refusedButton,
-			componentsOptions,
+			componentsOptions.detailAlwaysDisplayed,
 		]
 	);
 
