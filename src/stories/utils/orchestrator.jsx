@@ -125,10 +125,7 @@ function OrchestratorForStories({
 }) {
 	const { maxPage } = source;
 
-	const componentsOptions = useMemo(
-		() => ({ detailAlwaysDisplayed }),
-		[detailAlwaysDisplayed]
-	);
+	const componentsOptions = { detailAlwaysDisplayed };
 
 	const {
 		getComponents,

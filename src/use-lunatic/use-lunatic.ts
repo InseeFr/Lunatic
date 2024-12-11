@@ -119,15 +119,17 @@ export function useLunatic(
 				refusedButton,
 				componentsOptions,
 			}),
+		/* eslint-disable-next-line react-hooks/exhaustive-deps -- object deps are not being handled very well by useMemo so we need to compare single values */
 		[
 			management,
 			missing,
 			missingStrategy,
 			shortcut,
-			missingShortcut,
+			missingShortcut.dontKnow,
+			missingShortcut.refused,
 			dontKnowButton,
 			refusedButton,
-			componentsOptions,
+			componentsOptions.detailAlwaysDisplayed,
 		]
 	);
 
