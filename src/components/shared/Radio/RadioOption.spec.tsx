@@ -25,6 +25,61 @@ describe('RadioOption', () => {
 		expect(onClickMock).toHaveBeenCalled();
 	});
 
+	it('does not allow to uncheck modality if checkboxStyle is not defined', () => {
+		const onClickMock = vi.fn();
+		render(
+			<RadioOption
+				id="radio-option"
+				label="Test Option"
+				onCheck={onClickMock}
+				onUncheck={onClickMock}
+				checked
+			/>
+		);
+
+		const option = screen.getByRole('radio');
+		fireEvent.click(option);
+		expect(onClickMock).not.toHaveBeenCalled();
+	});
+
+	it('does not allow to uncheck modality if checkboxStyle is false', () => {
+		const onClickMock = vi.fn();
+
+		render(
+			<RadioOption
+				id="radio-option"
+				label="Test Option"
+				onCheck={onClickMock}
+				onUncheck={onClickMock}
+				checkboxStyle={false}
+				checked
+			/>
+		);
+
+		const option = screen.getByRole('radio');
+		fireEvent.click(option);
+		expect(onClickMock).not.toHaveBeenCalled();
+	});
+
+	it('allows to uncheck modality if checkboxStyle = true and onUncheck', () => {
+		const onClickMock = vi.fn();
+
+		render(
+			<RadioOption
+				id="radio-option"
+				label="Test Option"
+				onCheck={onClickMock}
+				onUncheck={onClickMock}
+				checkboxStyle={true}
+				checked
+			/>
+		);
+
+		const option = screen.getByRole('radio');
+		fireEvent.click(option);
+		expect(onClickMock).toHaveBeenCalled();
+	});
+
 	it('sets the tabIndex to 0 when unchecked', () => {
 		const { getByRole } = render(
 			<RadioOption id="radio-option" label="Test Option" checked={false} />

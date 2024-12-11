@@ -72,13 +72,11 @@ test.describe('Checkboxes', () => {
 			await expectCollectedData(page, 'Q2', '3');
 			await expectCollectedData(page, 'Q3', 'Bonjour');
 		});
-		test(`Clicking multiple time should not trigger onChange`, async ({
-			page,
-		}) => {
+		test(`Allow to uncheck modality`, async ({ page }) => {
 			await goToStory(page, 'components-checkboxone--default');
 			await expect(page.getByRole('radio', { name: 'oui' })).toBeVisible();
 			await page.getByRole('radio', { name: 'oui' }).click();
-			await expectChanges(page, 0, () => {
+			await expectChanges(page, 1, () => {
 				return page.getByRole('radio', { name: 'oui' }).click();
 			});
 		});

@@ -40,6 +40,7 @@ function LunaticRadioOption({
 	detailLabel,
 	detailValue,
 	onCheck,
+	onUncheck,
 }: Props) {
 	const divEl = useRef<HTMLDivElement>(null);
 	const isEnabled = !disabled && !readOnly;
@@ -48,6 +49,10 @@ function LunaticRadioOption({
 
 	const onClickOption = () => {
 		if (!isEnabled || !onCheck || checked) {
+			// for checkboxStyle=true (only used by CheckboxOne) , we allow uncheck
+			if (checkboxStyle && onUncheck) {
+				onUncheck();
+			}
 			return;
 		}
 		onCheck();

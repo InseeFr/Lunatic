@@ -18,6 +18,7 @@ export type InterpretedOption = {
 	detailValue?: string | null;
 	onDetailChange?: (value: string) => void;
 	onCheck?: () => void;
+	onUncheck?: () => void;
 };
 
 /**
@@ -85,6 +86,10 @@ export function getOptionsProp(
 				handleChanges([
 					{ name: definition.response.name, value: option.value },
 				]);
+			},
+			// for CheckboxOne, we allow uncheck
+			onUncheck: () => {
+				handleChanges([{ name: definition.response.name, value: null }]);
 			},
 			detailValue:
 				'detail' in option && option.detail
