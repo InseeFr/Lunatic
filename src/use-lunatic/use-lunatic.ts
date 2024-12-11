@@ -119,7 +119,7 @@ export function useLunatic(
 				refusedButton,
 				componentsOptions,
 			}),
-		// for objects and arrays dependencies, not being handled by useMemo, we need to compare every value
+		/* eslint-disable-next-line react-hooks/exhaustive-deps -- object deps are not being handled very well by useMemo so we need to compare single values */
 		[
 			management,
 			missing,
