@@ -349,5 +349,6 @@ export type LunaticChangesHandler = (
 		name: string;
 		value: any;
 		iteration?: number[];
+		removedIndex?: number;
 	}[]
 ) => void;
