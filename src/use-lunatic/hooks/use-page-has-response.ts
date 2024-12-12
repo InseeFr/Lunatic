@@ -4,7 +4,7 @@ import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
 import type { LunaticComponentProps } from '../../components/type';
 
 /**
- * Check if a page has one response (value is filled for at least one field)
+ * Check if a page has one response (value is filled for at least one field).
  */
 export function usePageHasResponse(
 	components: LunaticComponentProps[],
@@ -67,10 +67,10 @@ export function usePageHasResponse(
 }
 
 /**
- * Check if a value is empty
- * - null ou undefined ou ''
- * - for arrays, every item must be empty
- * - for objects, every value must be empty
+ * Check if a value is empty.
+ * - `null`, `undefined` or `''`.
+ * - for arrays, every item must be empty.
+ * - for objects, every value must be empty.
  */
 function isEmpty(value: unknown): boolean {
 	// Array is empty if all items are empty
@@ -86,7 +86,7 @@ function isEmpty(value: unknown): boolean {
 }
 
 /**
- * For complex component we need to inspect child components, interpret the response value
+ * For complex component we need to inspect child components, interpret the response value.
  */
 function isSubComponentsEmpty(
 	components: (LunaticComponentProps | LunaticComponentDefinition)[],

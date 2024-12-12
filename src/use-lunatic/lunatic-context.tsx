@@ -17,8 +17,11 @@ const LunaticContext = createContext({
 	refusedButton: D.RF,
 	componentsOptions: { detailAlwaysDisplayed: false },
 });
-/** Provide `missing` `missingStrategy`, `shortcut` and `missingShortcut`, `dontKnowButton`, `refusedButton` to Missing component
- *  to manage non-response buttons and shortcut */
+/**
+ * Provide `missing`, `missingStrategy`, `shortcut` and `missingShortcut`,
+ * `dontKnowButton`, `refusedButton` to `Missing` component to manage
+ * non-response buttons and shortcut.
+ */
 export const useLunaticMissing = () => {
 	const {
 		missing,

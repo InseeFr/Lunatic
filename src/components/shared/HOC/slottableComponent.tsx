@@ -45,7 +45,7 @@ import type { MarkdownLink } from '../MDLabel/MarkdownLink';
 import type { Accordion } from '../../Accordion/Accordion';
 
 /**
- * Contains the type of every customizable component
+ * Contain the type of every customizable components.
  */
 export type LunaticSlotComponents = {
 	// Components
@@ -130,9 +130,9 @@ export const SlotsProvider = ({
 };
 
 /**
- * Create a replaceable version of a component
+ * Create a replaceable version of a component.
  *
- * The component can be replaced using the "slots" props on <LunaticComponents>
+ * The component can be replaced through the `slots` props on `LunaticComponents`.
  */
 export function slottableComponent<T>(
 	name: keyof LunaticSlotComponents,

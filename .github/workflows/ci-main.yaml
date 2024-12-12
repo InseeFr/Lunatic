@@ -82,14 +82,14 @@ jobs:
           publish_dir: ./storybook-static
           destination_dir: ./storybook-${{ steps.branch-name.outputs.current_branch }}
       - name: build docs website
-        working-directory: ./docs/
+        working-directory: ./website/
         run: yarn install --frozen-lockfile && yarn build
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/build
-          destination_dir: ./docs
+          publish_dir: ./website/build
+          destination_dir: ./website
 
   check_if_version_upgraded:
     name: Check if version upgrade

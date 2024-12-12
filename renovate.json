@@ -5,7 +5,7 @@
 	"packageRules": [
 		{
 			"description": "Documentation website dependencies",
-			"matchPaths": ["docs/**"],
+			"matchPaths": ["website/**"],
 			"matchDepTypes": ["dependencies", "devDependencies"],
 			"matchUpdateTypes": ["minor", "patch"],
 			"groupName": "docs website dependencies",

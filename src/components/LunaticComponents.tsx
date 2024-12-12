@@ -19,21 +19,21 @@ import {
 import type { LunaticComponentProps } from './type';
 
 type Props<V = unknown> = {
-	// List of components to display (coming from getComponents)
+	/** List of components to display (coming from getComponents). */
 	components: LunaticComponentProps[];
-	// Should we memoized children
+	/** Should we memoized children. */
 	memo?: boolean;
-	// Key that trigger autofocus when it changes (pageTag)
+	/** Key that trigger autofocus when it changes (pageTag). */
 	autoFocusKey?: string;
-	// Returns the list of extra props to add to components
+	/** Returns the list of extra props to add to components. */
 	componentProps?: (component: LunaticComponentProps) => V;
-	// Forbidden components
+	/** Forbidden components. */
 	blocklist?: string[];
-	// Add additional wrapper around each component
+	/** Add additional wrapper around each component. */
 	wrapper?: (
 		props: PropsWithChildren<LunaticComponentProps & V & { index: number }>
 	) => ReactNode;
-	// Customized deep components
+	/** Customized deep components. */
 	slots?: Partial<LunaticSlotComponents>;
 };
 
@@ -45,7 +45,9 @@ const LunaticComponentWrapper = slottableComponent(
 );
 
 /**
- * Entry point for orchestrators, this component display the list of fields
+ * Entry point for orchestrators, this component display the list of fields.
+ *
+ * Components offered by Lunatic can be seen at {@link https://github.com/InseeFr/Lunatic/tree/3.0/src/components}
  */
 export function LunaticComponents<V = unknown>({
 	components,

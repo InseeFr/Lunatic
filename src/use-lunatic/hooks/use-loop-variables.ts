@@ -2,7 +2,7 @@ import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
 import { useMemo } from 'react';
 
 /**
- * Extract the list of variables used for the current loop
+ * Extract the list of variables used for the current loop.
  */
 export function useLoopVariables(
 	pager: LunaticReducerState['pager'],
