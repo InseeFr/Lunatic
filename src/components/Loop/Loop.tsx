@@ -106,6 +106,7 @@ export function Loop({
 					</Button>
 				</>
 			))}
+			<br />
 		</CustomLoop>
 	);
 }
@@ -153,7 +154,6 @@ export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
 			<ComponentErrors errors={errors} />
 			{canControlRows && (
 				<>
-					<br />
 					<Button onClick={addRow} disabled={!addRow}>
 						{D.DEFAULT_BUTTON_ADD}
 					</Button>
