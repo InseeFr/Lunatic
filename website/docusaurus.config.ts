@@ -13,7 +13,7 @@ const config: Config = {
 	url: 'https://inseefr.github.io/',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
-	baseUrl: 'Lunatic/docs',
+	baseUrl: '/lunatic/',
 	plugins: [
 		'./src/plugins/lunaticFixesPlugin.ts',
 		[require.resolve('@cmfcmf/docusaurus-search-local'), { indexBlog: false }],
