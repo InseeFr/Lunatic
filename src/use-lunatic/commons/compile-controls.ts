@@ -35,7 +35,8 @@ const isLoopComponent = (
 };
 
 /**
- * Check if components of the current page have errors, and return a map of error (indexed by component ID)
+ * Check if components of the current page have errors, and return a map of
+ * errors (indexed by component ID).
  */
 function checkComponents(
 	state: StateForControls,
@@ -93,7 +94,7 @@ function checkControls(
 }
 
 /**
- * Figure out the number of iterations of a component
+ * Figure out the number of iterations of a component.
  */
 function computeIterations(
 	component: InterpretedComponent | ComponentDefinition,
@@ -210,7 +211,7 @@ function hasCriticalError(errors?: Record<string, LunaticError[]>): boolean {
 }
 
 /**
- * Check controls for currently visible components and output errors
+ * Check controls for currently visible components and output errors.
  */
 export function compileControls(state: StateForControls) {
 	const components = replaceComponentSequence(getComponentsFromState(state));

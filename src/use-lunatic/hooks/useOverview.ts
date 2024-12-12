@@ -18,7 +18,7 @@ export type InterpretedLunaticOverviewItem = {
 };
 
 /**
- * Hook to build a filled overview everytime the deps change
+ * Build a filled overview everytime the deps change.
  */
 export const useOverview = (
 	{
@@ -36,7 +36,7 @@ export const useOverview = (
 };
 
 /**
- * Use lunatic data to interpret the static overview (calculated on init) with the real data
+ * Use Lunatic data to interpret the static overview (calculated on init) with the real data.
  */
 const interpretOverview = (
 	overviewItems: LunaticOverviewItem[],
@@ -71,7 +71,7 @@ const interpretOverview = (
 };
 
 /**
- * Interpret expression inside an item (label & condition)
+ * Interpret expression inside an item (label & condition).
  */
 const interpretOverviewItem = (
 	items: InterpretedLunaticOverviewItem[],
@@ -127,7 +127,7 @@ const interpretOverviewItem = (
 };
 
 /**
- * Set the current property in the correct overview item
+ * Set the current property in the correct overview item.
  */
 const applyCurrentPage = (
 	items: InterpretedLunaticOverviewItem[],

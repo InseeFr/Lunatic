@@ -66,11 +66,19 @@ const defaultOptions = {
 	componentsOptions: { detailAlwaysDisplayed: false },
 } satisfies LunaticOptions;
 
+/** The first library entrypoint is the `useLunatic` hook. */
 export function useLunatic(
+	/**
+	 * JSON representation of our survey unit in the Lunatic Model.
+	 *
+	 * {@link https://github.com/InseeFr/Lunatic-Model}
+	 */
 	source: LunaticSource,
+	/** Initial survey data (i.e. if it has been partially filled). */
 	data: LunaticData = DEFAULT_DATA,
+	/** Specific behaviour options. */
 	argOptions: LunaticOptions = empty
-) {
+): LunaticState {
 	const options = mergeDefault(argOptions, defaultOptions);
 	const {
 		disableFilters,
@@ -106,7 +114,7 @@ export function useLunatic(
 		reducerInitializer
 	);
 
-	// Required context provider: cleaner than prop drilling through every component
+	/** Required context provider: cleaner than prop drilling through every component */
 	const Provider = useMemo(
 		() =>
 			createLunaticProvider({
@@ -157,6 +165,7 @@ export function useLunatic(
 		},
 		[dispatch]
 	);
+
 	const handleChanges = useCallback<LunaticChangesHandler>(
 		(responses) => {
 			dispatch(handleChangesAction(responses));
