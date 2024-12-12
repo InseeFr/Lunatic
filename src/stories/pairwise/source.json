@@ -341,7 +341,9 @@
 	"resizing": {
 		"PRENOM": {
 			"sizeForLinksVariables": ["count(PRENOM)", "count(PRENOM)"],
-			"linksVariables": ["LINKS"]
+			"linksVariables": ["LINKS"],
+			"size": "count(PRENOM)",
+			"variables": ["AGE"]
 		}
 	}
 }
