@@ -51,6 +51,30 @@ export function Loop({
 		}
 	}, [nbRows, handleChanges, value]);
 
+	const removeRowWithIndex = useCallback(
+		(indexToRemove: number) => {
+			if (nbRows <= min) {
+				return;
+			}
+			/**
+			 * Case 0: trying to delete
+			 */
+			if (indexToRemove >= nbRows || indexToRemove < 0) {
+				return;
+			}
+			const newResponses = Object.entries(value).map(([k, v]) => {
+				return {
+					name: k,
+					value: v?.filter((_, i) => i !== indexToRemove),
+					removedIndex: indexToRemove,
+				};
+			});
+			handleChanges(newResponses);
+			setNbRows((n) => n - 1);
+		},
+		[nbRows, min, value, handleChanges]
+	);
+
 	if (nbRows <= 0) {
 		return null;
 	}
@@ -64,18 +88,23 @@ export function Loop({
 			canControlRows={min !== max && Number.isFinite(max)}
 		>
 			{times(nbRows, (n) => (
-				<LunaticComponents
-					blocklist={blockedInLoopComponents}
-					key={n}
-					components={getComponents(n)}
-					componentProps={(c) => ({
-						...props,
-						...c,
-						iteration: n,
-						id: `${c.id}-${n}`,
-						errors,
-					})}
-				/>
+				<>
+					<LunaticComponents
+						blocklist={blockedInLoopComponents}
+						key={n}
+						components={getComponents(n)}
+						componentProps={(c) => ({
+							...props,
+							...c,
+							iteration: n,
+							id: `${c.id}-${n}`,
+							errors,
+						})}
+					/>
+					<Button onClick={() => removeRowWithIndex(n)} disabled={nbRows === 1}>
+						{D.DEFAULT_BUTTON_REMOVE_THAT_ROW}
+					</Button>
+				</>
 			))}
 		</CustomLoop>
 	);
@@ -124,6 +153,7 @@ export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
 			<ComponentErrors errors={errors} />
 			{canControlRows && (
 				<>
+					<br />
 					<Button onClick={addRow} disabled={!addRow}>
 						{D.DEFAULT_BUTTON_ADD}
 					</Button>
