@@ -21,7 +21,7 @@ Default.args = {
 	source: source,
 	pagination: true,
 	data,
-	initialPage: '1',
+	initialPage: '3',
 };
 
 export const Filled = Template.bind({});
