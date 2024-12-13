@@ -49,8 +49,7 @@ export function resizingBehaviour(
 						cause: 'resizing',
 					}
 				);
-			}
-			if (
+			} else if (
 				!e.detail.removedIndex &&
 				(!Array.isArray(value) || value.length !== newSize)
 			) {

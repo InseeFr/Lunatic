@@ -56,9 +56,7 @@ export function Loop({
 			if (nbRows <= min) {
 				return;
 			}
-			/**
-			 * Case 0: trying to delete
-			 */
+			// Case 0: trying to delete with wrong index
 			if (indexToRemove >= nbRows || indexToRemove < 0) {
 				return;
 			}
@@ -102,7 +100,7 @@ export function Loop({
 						})}
 					/>
 					<Button onClick={() => removeRowWithIndex(n)} disabled={nbRows === 1}>
-						{D.DEFAULT_BUTTON_REMOVE_THAT_ROW}
+						{D.DEFAULT_BUTTON_REMOVE_THIS_ROW}
 					</Button>
 				</>
 			))}

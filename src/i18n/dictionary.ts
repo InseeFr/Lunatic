@@ -1,9 +1,9 @@
 const dictionary = {
 	DEFAULT_BUTTON_ADD: { fr: 'Ajouter une ligne', en: 'Add row' },
 	DEFAULT_BUTTON_REMOVE: { fr: 'Supprimer une ligne', en: 'Remove row' },
-	DEFAULT_BUTTON_REMOVE_THAT_ROW: {
+	DEFAULT_BUTTON_REMOVE_THIS_ROW: {
 		fr: 'Supprimer cette ligne',
-		en: 'Remove that row',
+		en: 'Remove this row',
 	},
 	ACTION_HEADER: { fr: 'Action', en: 'Action' },
 	MODAL_IGNORE: { fr: 'Poursuivre', en: 'Ignore' },

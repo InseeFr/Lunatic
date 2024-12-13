@@ -33,7 +33,7 @@ export type EventArgs = {
 		value: unknown;
 		/** Iteration changed (for array). */
 		iteration?: IterationLevel | undefined;
-		/** removedIndex: when resize an array directly with only one handleChange (remove one line in tableLoop) */
+		/** When resize an array directly with only one handleChange (remove one line in tableLoop) */
 		removedIndex?: number;
 		/** What triggered this change. */
 		cause?: 'resizing' | 'cleaning';

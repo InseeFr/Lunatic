@@ -51,7 +51,7 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
           <input
             class="button-lunatic"
             type="button"
-            value="Remove that row"
+            value="Remove this row"
           />
         </td>
       </tr>
@@ -90,7 +90,7 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
           <input
             class="button-lunatic"
             type="button"
-            value="Remove that row"
+            value="Remove this row"
           />
         </td>
       </tr>

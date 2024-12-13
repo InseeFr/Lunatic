@@ -94,10 +94,6 @@ export const RosterForLoop = (
 
 	let cols = 0;
 
-	const headerWithActions = header
-		? [...header, { label: D.ACTION_HEADER }]
-		: undefined;
-
 	return (
 		<CustomLoop
 			{...props}
@@ -107,7 +103,9 @@ export const RosterForLoop = (
 			canControlRows={!!(min && max && min !== max)}
 		>
 			<Table id={id}>
-				{headerWithActions && <TableHeader header={headerWithActions} />}
+				{header && (
+					<TableHeader header={[...header, { label: D.ACTION_HEADER }]} />
+				)}
 				<Tbody>
 					{times(nbRows, (n) => {
 						const components = getComponents(n);
@@ -141,7 +139,7 @@ export const RosterForLoop = (
 											onClick={() => removeRowWithIndex(n)}
 											disabled={cantRemove}
 										>
-											{D.DEFAULT_BUTTON_REMOVE_THAT_ROW}
+											{D.DEFAULT_BUTTON_REMOVE_THIS_ROW}
 										</Button>
 									</Td>
 								</Tr>
