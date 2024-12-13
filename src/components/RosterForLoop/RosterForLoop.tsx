@@ -46,7 +46,7 @@ export const RosterForLoop = (
 		}
 	}, [max, nbRows]);
 
-	const canRemove = nbRows === min;
+	const cantRemove = nbRows === min;
 
 	const removeRow = useCallback(() => {
 		if (nbRows <= min) {
@@ -103,7 +103,7 @@ export const RosterForLoop = (
 			{...props}
 			errors={getComponentErrors(errors, props.id)}
 			addRow={nbRows === max ? undefined : addRow}
-			removeRow={canRemove ? undefined : removeRow}
+			removeRow={cantRemove ? undefined : removeRow}
 			canControlRows={!!(min && max && min !== max)}
 		>
 			<Table id={id}>
@@ -139,7 +139,7 @@ export const RosterForLoop = (
 									<Td id={`delete-action-${n}`}>
 										<Button
 											onClick={() => removeRowWithIndex(n)}
-											disabled={canRemove}
+											disabled={cantRemove}
 										>
 											{D.DEFAULT_BUTTON_REMOVE_THAT_ROW}
 										</Button>
