@@ -301,6 +301,14 @@ describe('lunatic-variables-store', () => {
 				value: [20, 40],
 				cause: 'resizing',
 			});
+			variables.set('PRENOM', ['Marc'], { removedIndex: 0 });
+			expect((variables.get('PRENOM') as string[]).length).toEqual(1);
+			expect((variables.get('AGE') as string[]).length).toEqual(1);
+			expect(spy).toHaveBeenLastCalledWith({
+				name: 'AGE',
+				value: [40],
+				cause: 'resizing',
+			});
 		});
 
 		it('should resize pairwise with the array syntax', () => {

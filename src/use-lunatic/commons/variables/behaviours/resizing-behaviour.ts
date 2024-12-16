@@ -41,7 +41,7 @@ export function resizingBehaviour(
 		const newSize = forceInt(store.run(resizingInfo.size));
 		for (const variableName of resizingInfo.variables) {
 			const value = store.get(variableName);
-			if (Array.isArray(value) && e.detail.removedIndex) {
+			if (Array.isArray(value) && e.detail.removedIndex !== undefined) {
 				store.set(
 					variableName,
 					resizeDownArrayWithIndex(value, e.detail.removedIndex),
@@ -50,7 +50,7 @@ export function resizingBehaviour(
 					}
 				);
 			} else if (
-				!e.detail.removedIndex &&
+				e.detail.removedIndex === undefined &&
 				(!Array.isArray(value) || value.length !== newSize)
 			) {
 				store.set(variableName, resizeArray(value, newSize, null), {
