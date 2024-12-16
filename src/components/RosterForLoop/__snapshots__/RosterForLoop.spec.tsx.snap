@@ -50,6 +50,7 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
         >
           <input
             class="button-lunatic"
+            id="delete-action-button-0"
             type="button"
             value="Remove this row"
           />
@@ -89,6 +90,7 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
         >
           <input
             class="button-lunatic"
+            id="delete-action-button-1"
             type="button"
             value="Remove this row"
           />

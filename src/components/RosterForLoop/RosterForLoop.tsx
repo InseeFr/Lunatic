@@ -69,9 +69,7 @@ export const RosterForLoop = (
 			if (nbRows <= min) {
 				return;
 			}
-			/**
-			 * Case 0: trying to delete
-			 */
+			// trying to delete with indexToRemove out of array index
 			if (indexToRemove >= nbRows || indexToRemove < 0) {
 				return;
 			}
@@ -137,10 +135,10 @@ export const RosterForLoop = (
 									<Td id={`delete-action-${n}`}>
 										<Button
 											onClick={() => removeRowWithIndex(n)}
+											id={`delete-action-button-${n}`}
+											label={D.DEFAULT_BUTTON_REMOVE_THIS_ROW}
 											disabled={cantRemove}
-										>
-											{D.DEFAULT_BUTTON_REMOVE_THIS_ROW}
-										</Button>
+										/>
 									</Td>
 								</Tr>
 								{hasLineErrors && (
