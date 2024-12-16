@@ -77,13 +77,15 @@ export function Loop({
 		return null;
 	}
 
+	const canControlRows = min !== max && Number.isFinite(max);
+
 	return (
 		<CustomLoop
 			{...props}
 			errors={getComponentErrors(errors, props.id)}
 			addRow={nbRows === max ? undefined : addRow}
 			removeRow={nbRows === 1 ? undefined : removeRow}
-			canControlRows={min !== max && Number.isFinite(max)}
+			canControlRows={canControlRows}
 		>
 			{times(nbRows, (n) => (
 				<>
@@ -99,9 +101,14 @@ export function Loop({
 							errors,
 						})}
 					/>
-					<Button onClick={() => removeRowWithIndex(n)} disabled={nbRows === 1}>
-						{D.DEFAULT_BUTTON_REMOVE_THIS_ROW}
-					</Button>
+					{canControlRows && (
+						<Button
+							onClick={() => removeRowWithIndex(n)}
+							id={`delete-action-button-${n}`}
+							label={D.DEFAULT_BUTTON_REMOVE_THIS_ROW}
+							disabled={nbRows === 1}
+						/>
+					)}
 				</>
 			))}
 			<br />
