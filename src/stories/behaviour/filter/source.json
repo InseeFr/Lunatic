@@ -1,0 +1,238 @@
+{
+	"$schema": "../../../../lunatic-schema.json",
+	"id": "m48nyxtp",
+	"label": {
+		"type": "VTL|MD",
+		"value": "Story disable filter"
+	},
+	"modele": "DISABLEFILTER",
+	"maxPage": "4",
+	"resizing": {},
+	"variables": [
+		{
+			"name": "NAME",
+			"values": {
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null,
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "AGE",
+			"values": {
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null,
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "APPLE",
+			"values": {
+				"EDITED": null,
+				"FORCED": null,
+				"INPUTTED": null,
+				"PREVIOUS": null,
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "FILTER_RESULT_NAME",
+			"dimension": 0,
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"variableType": "CALCULATED"
+		},
+		{
+			"name": "FILTER_RESULT_AGE",
+			"dimension": 0,
+			"expression": {
+				"type": "VTL",
+				"value": "(false)"
+			},
+			"variableType": "CALCULATED"
+		},
+		{
+			"name": "FILTER_RESULT_APPLE",
+			"dimension": 0,
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"variableType": "CALCULATED"
+		}
+	],
+	"components": [
+		{
+			"id": "m48o486x",
+			"page": "1",
+			"label": {
+				"type": "VTL",
+				"value": "\"I - \" || \"First sequence\""
+			},
+			"description": {
+				"type": "VTL|MD",
+				"value": "\"The 2nd question about your age will be automatically filtered\""
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "question-m48o3cux",
+			"page": "2",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"1\\. \" || \"What is your name ?\""
+			},
+			"components": [
+				{
+					"id": "m48o3cux",
+					"page": "2",
+					"response": {
+						"name": "NAME"
+					},
+					"mandatory": false,
+					"maxLength": 249,
+					"componentType": "Input"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "question-m48nnrxf",
+			"page": "3",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"2\\. \" || \"How old are you ?\""
+			},
+			"components": [
+				{
+					"id": "m48nnrxf",
+					"max": 200,
+					"min": 1,
+					"page": "3",
+					"controls": [
+						{
+							"id": "m48nnrxf-format-borne-inf-sup",
+							"type": "SIMPLE",
+							"control": {
+								"type": "VTL",
+								"value": "not(not(isnull(AGE)) and (1>AGE or 200<AGE))"
+							},
+							"criticality": "ERROR",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\" La valeur doit être comprise entre 1 et 200.\""
+							},
+							"typeOfControl": "FORMAT"
+						},
+						{
+							"id": "m48nnrxf-format-decimal",
+							"type": "SIMPLE",
+							"control": {
+								"type": "VTL",
+								"value": "not(not(isnull(AGE))  and round(AGE,0)<>AGE)"
+							},
+							"criticality": "ERROR",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule.\""
+							},
+							"typeOfControl": "FORMAT"
+						}
+					],
+					"decimals": 0,
+					"response": {
+						"name": "AGE"
+					},
+					"mandatory": false,
+					"description": {
+						"type": "TXT",
+						"value": "Format attendu : un nombre entre 1 et 200"
+					},
+					"componentType": "InputNumber"
+				}
+			],
+			"declarations": [
+				{
+					"id": "m48oduqe",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"This question is automatically filtered\""
+					},
+					"position": "AFTER_QUESTION_TEXT",
+					"declarationType": "HELP"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "(false)"
+			}
+		},
+		{
+			"id": "question-m48o1qml",
+			"page": "4",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"3\\. \" || \"Do you like apple ?\""
+			},
+			"components": [
+				{
+					"id": "m48o1qml",
+					"page": "4",
+					"options": [
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"yes\""
+							},
+							"value": "1"
+						},
+						{
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"no\""
+							},
+							"value": "2"
+						}
+					],
+					"response": {
+						"name": "APPLE"
+					},
+					"mandatory": false,
+					"orientation": "vertical",
+					"componentType": "Radio"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		}
+	],
+	"pagination": "question",
+	"componentType": "Questionnaire",
+	"enoCoreVersion": "3.29.3-SNAPSHOT",
+	"generatingDate": "03-12-2024 16:23:28",
+	"lunaticModelVersion": "3.15.1"
+}

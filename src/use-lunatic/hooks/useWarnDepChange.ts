@@ -3,8 +3,9 @@ import type { LunaticLogger } from '../logger/type';
 import { useRefSync } from '../../hooks/useRefSync';
 
 /**
- * Log a warning when the variable change
- * ensure that we received a memoized value and help debug
+ * Log a warning when the variable change.
+ *
+ * Ensure that we received a memoized value and help debug.
  */
 export function useWarnDepChange(
 	variable: unknown,

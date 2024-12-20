@@ -191,6 +191,7 @@ export type ComponentPropsByType = {
 				detailLabel?: ReactNode;
 			}[];
 			orientation?: 'horizontal' | 'vertical';
+			detailAlwaysDisplayed?: boolean;
 			componentType?: 'CheckboxGroup';
 		};
 	CheckboxOne: LunaticBaseProps<string | null> &
@@ -198,6 +199,7 @@ export type ComponentPropsByType = {
 			options: Array<InterpretedOption>;
 			componentType?: 'CheckboxOne';
 			orientation?: 'horizontal' | 'vertical';
+			detailAlwaysDisplayed?: boolean;
 		};
 	Switch: LunaticBaseProps<boolean> &
 		LunaticExtraProps & {
@@ -217,6 +219,7 @@ export type ComponentPropsByType = {
 			response: { name: string };
 			componentType?: 'Radio';
 			orientation?: 'horizontal' | 'vertical';
+			detailAlwaysDisplayed?: boolean;
 		};
 	Roundabout: LunaticBaseProps<string> &
 		LunaticExtraProps & {

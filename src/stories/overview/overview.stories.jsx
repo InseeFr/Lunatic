@@ -9,7 +9,14 @@ import dataLoop from './dataLoop.json';
 const stories = {
 	title: 'Behaviour/Overview',
 	component: Orchestrator,
-	argTypes: defaultArgTypes,
+	argTypes: {
+		...defaultArgTypes,
+		showOverview: {
+			table: { disable: false },
+			control: 'boolean',
+			defaultValue: true,
+		},
+	},
 };
 
 export default stories;

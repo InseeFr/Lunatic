@@ -55,6 +55,7 @@ export const InputNumberThousand = ({
 			className={classNames({ disabled })}
 			onValueChange={handleChange}
 			value={value ?? ''}
+			title={value ? value.toString() : ''}
 			aria-labelledby={labelId}
 			disabled={disabled}
 			readOnly={readOnly}
@@ -68,6 +69,9 @@ export const InputNumberThousand = ({
 			thousandSeparator={inputNumberPropsI18N.thousandSeparator}
 			inputMode={decimals ? 'decimal' : 'numeric'}
 			aria-invalid={invalid}
+			onBlur={(e) => {
+				e.target.setSelectionRange(0, 0);
+			}}
 		/>
 	);
 };

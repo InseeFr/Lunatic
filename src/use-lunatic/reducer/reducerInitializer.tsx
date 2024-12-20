@@ -35,6 +35,7 @@ const baseState = {
 	overview: [],
 	updateBindings: () => {},
 	executeExpression: <T,>() => null as T,
+	options: { disableFilters: false },
 } satisfies LunaticReducerState;
 
 const onChange = { current: () => {} };
@@ -46,6 +47,7 @@ export function reducerInitializer({
 	initialPage = '1',
 	lastReachedPage = undefined,
 	withOverview = false,
+	disableFilters = false,
 	getReferentiel,
 	onVariableChange = onChange,
 	logger = console.error,
@@ -56,6 +58,7 @@ export function reducerInitializer({
 	initialPage?: LunaticOptions['initialPage'];
 	lastReachedPage?: LunaticOptions['lastReachedPage'];
 	withOverview?: LunaticOptions['withOverview'];
+	disableFilters?: LunaticOptions['disableFilters'];
 	getReferentiel?: LunaticOptions['getReferentiel'];
 	onVariableChange?: RefObject<LunaticOptions['onVariableChange']>;
 	logger?: LunaticLogger;
@@ -149,6 +152,7 @@ export function reducerInitializer({
 		overview: withOverview ? buildOverview(source) : [],
 		updateBindings,
 		executeExpression,
+		options: { disableFilters },
 	});
 }
 

@@ -6,7 +6,6 @@ import { CheckboxOption } from '../shared/Checkbox/CheckboxOption';
 import { getShortcutKey } from '../shared/Checkbox/getShortcutKey';
 import type { LunaticComponentProps } from '../type';
 import { Declarations } from '../shared/Declarations/Declarations';
-import { CustomInput } from '../Input/Input';
 
 type Props = Pick<
 	LunaticComponentProps<'CheckboxGroup'>,
@@ -19,6 +18,7 @@ type Props = Pick<
 	| 'disabled'
 	| 'options'
 	| 'orientation'
+	| 'detailAlwaysDisplayed'
 > & {
 	errors?: LunaticError[];
 };
@@ -35,6 +35,7 @@ export const CustomCheckboxGroup = slottableComponent<Props>(
 		readOnly,
 		declarations,
 		orientation,
+		detailAlwaysDisplayed,
 	}: Props) => {
 		return (
 			<Fieldset
@@ -59,20 +60,8 @@ export const CustomCheckboxGroup = slottableComponent<Props>(
 									codeModality={
 										shortcut ? getShortcutKey(index, options.length) : undefined
 									}
+									detailAlwaysDisplayed={detailAlwaysDisplayed}
 								/>
-								{option.onDetailChange && option.checked && (
-									<CustomInput
-										id="detailId"
-										label={option.detailLabel ?? 'Précisez :'}
-										value={
-											typeof option.detailValue === 'string'
-												? option.detailValue
-												: ''
-										}
-										onChange={option.onDetailChange}
-										disabled={disabled}
-									/>
-								)}
 							</div>
 						);
 					})}

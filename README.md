@@ -1,14 +1,16 @@
-<img align="right" src="docs/img/lunatic-logo.png" alt="Lunatic logo"/>
+<p align="center">
+  <img alt="Lunatic" src="public/images/lunatic-logo.png" style="max-width: 100%;">
+</p>
 
-# Lunatic
+Lunatic is a front-end library in the form of a React hook and component libraries for generating a questionnaire from the [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model) data format.
 
 [![Lunatic CI](https://github.com/InseeFr/Lunatic/actions/workflows/ci-main.yaml/badge.svg)](https://github.com/InseeFr/Lunatic/actions/workflows/ci-main.yaml)
 [![npm version](https://badge.fury.io/js/%40inseefr%2Flunatic.svg)](https://badge.fury.io/js/%40inseefr%2Flunatic)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_Lunatic&metric=coverage)](https://sonarcloud.io/dashboard?id=InseeFr_Lunatic)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_Lunatic&metric=alert_status)](https://sonarcloud.io/dashboard?id=InseeFr_Lunatic)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_Lunatic&metric=coverage)](https://sonarcloud.io/dashboard?id=InseeFr_Lunatic)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Lunatic is a front-end library in the form of a React hook and component libraries for generating a questionnaire from the [Lunatic-Model](https://github.com/InseeFr/Lunatic-Model) data format.
+---
 
 - [Storybook 3.0](https://inseefr.github.io/Lunatic/storybook-3.0), branch `3.0`
 - [Storybook 2.7](https://inseefr.github.io/Lunatic/storybook-2.7), branch `2.7`
@@ -110,7 +112,7 @@ function App({ source, data }) {
 }
 ```
 
-All the components offered by Lunatic are available in the [src/components](https://github.com/InseeFr/Lunatic/tree/2.7/src/components) folder.
+All the components offered by Lunatic are available in the [src/components](https://github.com/InseeFr/Lunatic/tree/3.0/src/components) folder.
 
 To activate the **autofocus**, you need to pass a key in the `autoFocusKey` property of `LunaticComponents`. As soon as this value changes, the first field is focused (a good solution is to pass the `pageTag` provided by `useLunatic`).
 
@@ -242,3 +244,10 @@ For publishing a release candidate update your `package.json` with `1.3.4-rc.0` 
 It also work if you do it from a branch that have an open PR on main.
 
 > Make sure your have defined the `NPM_TOKEN` repository secret or NPM publishing will fail.
+
+## Build
+
+We build this library in ESM and CJS. ESM is the standard when you develop a front-end app.
+But if you need test which use `@inseefr/lunatic`, you need lunatic library as CJS lib (to allow to run in node environnement).
+So we have two build: one for ESM and one for CJS.
+You have nothing to change in your code base, it's simply working.

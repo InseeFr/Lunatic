@@ -1,6 +1,6 @@
 /node_modules/
 /.eslintrc.js
-/docs/
+/website/
 /lib/
 /storybook-static/
 /test-results/

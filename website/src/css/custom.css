@@ -1,0 +1,43 @@
+:root {
+  --docusaurus-highlighted-code-line-bg: rgba(0,0,0,.1);
+}
+
+/* If you have a different syntax highlighting theme for dark mode. */
+[data-theme='dark'] {
+  /* Color which works with dark mode syntax highlighting theme */
+  --docusaurus-highlighted-code-line-bg: rgb(100, 100, 100);
+}
+
+.container {
+  padding: 32px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  outline: none;
+  position: relative;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 40px;
+}
+h2 {
+  border-top: 1px solid #e2e2e2;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 48px 0 16px;
+  padding-top: 24px;
+}
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+  margin: 32px 0 0;
+}
+.card > h2 {
+  border-top: initial;
+  font-size: initial;
+  line-height: initial;
+  margin: initial;
+  padding-top: initial;
+}

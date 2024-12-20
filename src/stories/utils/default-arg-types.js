@@ -1,6 +1,7 @@
 const fields = [
 	'source',
 	'id',
+	'disableFilters',
 	'pagination',
 	'data',
 	'management',
@@ -11,6 +12,10 @@ const fields = [
 	'missing',
 	'shortcut',
 	'filterDescription',
+	'disabled',
+	'showOverview',
+	'missingStrategy',
+	'detailAlwaysDisplayed',
 ];
 
 const defaultArgTypes = fields.reduce(
@@ -22,7 +27,13 @@ const defaultArgTypes = fields.reduce(
 			},
 		},
 	}),
-	{}
+	{
+		readOnly: {
+			table: { disable: false },
+			control: 'boolean',
+			defaultValue: false,
+		},
+	}
 );
 
 export default defaultArgTypes;

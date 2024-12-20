@@ -19,23 +19,23 @@ import {
 	VTLMissingDependency,
 } from './errors';
 
-// Interpret counter, used for testing purpose
+/** Interpret counter. Used for testing purpose. */
 let interpretCount = 0;
-// Special variable that will take the current iteration value
+/** Special variable that will take the current iteration value. */
 const iterationVariableName = 'GLOBAL_ITERATION_INDEX';
 
 type IterationLevel = number[];
 export type EventArgs = {
 	change: {
-		// Name of the changed variable
+		/** Name of the changed variable. */
 		name: string;
-		// New value for the variable
+		/** New value for the variable. */
 		value: unknown;
-		// Iteration changed (for array)
+		/** Iteration changed (for array). */
 		iteration?: IterationLevel | undefined;
-		// What triggered this change
+		/** What triggered this change. */
 		cause?: 'resizing' | 'cleaning';
-		// Extra sent when setting the variable
+		/** Extra sent when setting the variable. */
 		[extra: string]: unknown;
 	};
 };
@@ -220,7 +220,7 @@ export class LunaticVariablesStore {
 		this.eventTarget.removeEventListener(eventName, cb as EventListener);
 	}
 
-	// Retrieve the number of interpret() run (used in testing only)
+	/** Retrieve the number of interpret() run (used in testing only). */
 	get interpretCount() {
 		return interpretCount;
 	}
@@ -249,25 +249,25 @@ export class LunaticVariablesStore {
 }
 
 class LunaticVariable {
-	// Last time the value was updated (changed)
+	/** Last time the value was updated (changed). */
 	public updatedAt = new Map<undefined | string, number>();
-	// Last time "calculation" was run (for calculated variable)
+	/** Last time "calculation" was run (for calculated variable). */
 	private calculatedAt = new Map<undefined | string, number>();
-	// Internal value for the variable
+	/** Internal value for the variable. */
 	private value: unknown;
-	// List of dependencies, ex: ['FIRSTNAME', 'LASTNAME']
+	/** List of dependencies, ex: ['FIRSTNAME', 'LASTNAME']. */
 	private dependencies?: string[];
-	// Expression for calculated variable
+	/** Expression for calculated variable. */
 	public readonly expression?: string;
-	// Dictionary holding all the available variables
+	/** Dictionary holding all the available variables. */
 	private readonly dictionary?: Map<string, LunaticVariable>;
-	// Specific iteration depth to get value from dependencies (used for yAxis for instance)
+	/** Specific iteration depth to get value from dependencies (used for yAxis for instance). */
 	private readonly iterationDepth?: number;
-	// For calculated variable, shape is copied from another variable
+	/** For calculated variable, shape is copied from another variable. */
 	private readonly shapeFrom?: string[];
-	// Keep a record of variable name (optional, used for debug)
+	/** Keep a record of variable name (optional, used for debug). */
 	public readonly name?: string;
-	// Count the number of calculation
+	/** Count the number of calculation. */
 	public calculatedCount = 0;
 
 	constructor(

@@ -42,6 +42,7 @@ const DEFAULT_DONT_KNOW = D.DK;
 const DEFAULT_REFUSED = D.RF;
 
 const defaultOptions = {
+	disableFilters: false,
 	features: DEFAULT_FEATURES,
 	preferences: DEFAULT_PREFERENCES,
 	savingType: COLLECTED,
@@ -62,15 +63,25 @@ const defaultOptions = {
 	refusedButton: DEFAULT_REFUSED,
 	trackChanges: false,
 	logger: ConsoleLogger,
+	componentsOptions: { detailAlwaysDisplayed: false },
 } satisfies LunaticOptions;
 
+/** The first library entrypoint is the `useLunatic` hook. */
 export function useLunatic(
+	/**
+	 * JSON representation of our survey unit in the Lunatic Model.
+	 *
+	 * {@link https://github.com/InseeFr/Lunatic-Model}
+	 */
 	source: LunaticSource,
+	/** Initial survey data (i.e. if it has been partially filled). */
 	data: LunaticData = DEFAULT_DATA,
+	/** Specific behaviour options. */
 	argOptions: LunaticOptions = empty
-) {
+): LunaticState {
 	const options = mergeDefault(argOptions, defaultOptions);
 	const {
+		disableFilters,
 		management,
 		missing,
 		missingStrategy,
@@ -82,6 +93,7 @@ export function useLunatic(
 		trackChanges,
 		preferences,
 		logger,
+		componentsOptions,
 	} = options;
 
 	// Help debug with warnings for options expected to be memoized
@@ -102,7 +114,7 @@ export function useLunatic(
 		reducerInitializer
 	);
 
-	// Required context provider: cleaner than prop drilling through every component
+	/** Required context provider: cleaner than prop drilling through every component */
 	const Provider = useMemo(
 		() =>
 			createLunaticProvider({
@@ -113,15 +125,19 @@ export function useLunatic(
 				missingShortcut,
 				dontKnowButton,
 				refusedButton,
+				componentsOptions,
 			}),
+		/* eslint-disable-next-line react-hooks/exhaustive-deps -- object deps are not being handled very well by useMemo so we need to compare single values */
 		[
 			management,
 			missing,
 			missingStrategy,
 			shortcut,
-			missingShortcut,
+			missingShortcut.dontKnow,
+			missingShortcut.refused,
 			dontKnowButton,
 			refusedButton,
+			componentsOptions.detailAlwaysDisplayed,
 		]
 	);
 
@@ -149,6 +165,7 @@ export function useLunatic(
 		},
 		[dispatch]
 	);
+
 	const handleChanges = useCallback<LunaticChangesHandler>(
 		(responses) => {
 			dispatch(handleChangesAction(responses));
@@ -179,6 +196,7 @@ export function useLunatic(
 	const { isFirstPage, isLastPage } = isFirstLastPage(state.pager);
 
 	const components = fillComponents(getComponentsFromState(state), {
+		disableFilters,
 		handleChanges,
 		preferences,
 		goToPage,

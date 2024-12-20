@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "https://insee.fr/lunatic/survey.schema.json",
 	"title": "Lunatic Source",
-	"description": "A lunatic survey unit",
+	"description": "Representation of a Lunatic survey unit in the Lunatic Model.",
 	"type": "object",
 	"properties": {
 		"label": {
@@ -1458,6 +1458,13 @@
 							"additionalProperties": false
 						}
 					]
+				},
+				"stopWords": {
+					"description": "list of words to exclude from the searching",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				}
 			},
 			"required": ["name", "fields", "queryParser", "version"]

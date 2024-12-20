@@ -8,7 +8,7 @@ import {
 	ModalControls,
 	useLunatic,
 } from '../..';
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Logger } from '../../utils/logger';
 import { Overview } from './overview';
@@ -100,6 +100,7 @@ function logMissingStrategy() {
 function OrchestratorForStories({
 	source,
 	data,
+	disableFilters = false,
 	management = false,
 	shortcut = false,
 	activeControls = false,
@@ -119,9 +120,13 @@ function OrchestratorForStories({
 	refusedButton,
 	readOnly = false,
 	disabled = false,
+	detailAlwaysDisplayed = false,
 	...rest
 }) {
 	const { maxPage } = source;
+
+	const componentsOptions = { detailAlwaysDisplayed };
+
 	const {
 		getComponents,
 		goPreviousPage,
@@ -141,6 +146,7 @@ function OrchestratorForStories({
 		initialPage,
 		features,
 		preferences,
+		disableFilters,
 		onChange: onLogChange,
 		autoSuggesterLoading,
 		getReferentiel,
@@ -154,6 +160,7 @@ function OrchestratorForStories({
 		withOverview: showOverview,
 		dontKnowButton,
 		refusedButton,
+		componentsOptions,
 	});
 
 	const components = getComponents();

@@ -11,6 +11,7 @@ import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { LunaticData, PageTag } from './type';
 import { useLunatic } from './use-lunatic';
+import { useCallback } from 'react';
 
 const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {
@@ -79,8 +80,22 @@ describe('use-lunatic()', () => {
 
 	describe('Provider', () => {
 		it('should not generate a new Provider every render', () => {
-			const { result } = renderHook(() => useLunatic(...defaultParams));
+			const { result } = renderHook(() => {
+				const missingStrategy = useCallback(() => {}, []);
+				return useLunatic(sourceSimpsons as any, undefined, {
+					management: false,
+					missing: false,
+					missingStrategy,
+					shortcut: false,
+					missingShortcut: { dontKnow: '1', refused: '2' },
+					dontKnowButton: 'DK',
+					refusedButton: 'RF',
+					componentsOptions: { detailAlwaysDisplayed: false },
+				});
+			});
+
 			const oldProvider = result.current.Provider;
+
 			act(() => {
 				result.current.goNextPage();
 			});
@@ -176,6 +191,58 @@ describe('use-lunatic()', () => {
 				);
 				expect(result.current.overview).toMatchSnapshot();
 			});
+		});
+	});
+
+	describe('disable filters', () => {
+		const lunaticConfigurationWithoutDisableFilters = {
+			management: false,
+			activeControls: false,
+			initialPage: '1' as PageTag,
+			getStoreInfo: () => {},
+			missing: false,
+			shortcut: false,
+			activeGoNextForMissing: false,
+			showOverview: false,
+			filterDescription: true,
+		};
+
+		it('should filter out some components by default', function () {
+			const { result } = renderHook(() =>
+				useLunatic(
+					sourceLogement as any,
+					undefined,
+					lunaticConfigurationWithoutDisableFilters
+				)
+			);
+			act(() => result.current.goToPage({ page: '3' }));
+			const currentPage = result.current.pageTag;
+			expect(currentPage).not.toBe('3');
+		});
+		it('should filter out some components when false', function () {
+			const { result } = renderHook(() =>
+				useLunatic(sourceLogement as any, undefined, {
+					...lunaticConfigurationWithoutDisableFilters,
+					disableFilters: false,
+				})
+			);
+			act(() => result.current.goToPage({ page: '3' }));
+			const currentPage = result.current.pageTag;
+			expect(currentPage).not.toBe('3');
+		});
+		it('should not filter any component when true', function () {
+			const { result } = renderHook(() =>
+				useLunatic(sourceLogement as any, undefined, {
+					...lunaticConfigurationWithoutDisableFilters,
+					disableFilters: true,
+				})
+			);
+			act(() => result.current.goToPage({ page: '3' }));
+			const currentPage = result.current.pageTag;
+			expect(currentPage).toBe('3');
+
+			const components = result.current.getComponents();
+			expect(components.length).toBe(1);
 		});
 	});
 

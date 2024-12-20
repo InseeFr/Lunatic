@@ -7,7 +7,7 @@ export function applyMelauto<T extends { id: string; label?: string }>(
 ): T[] {
 	return data.sort(
 		(a, b) =>
-			melautoScore(b.label ?? a.id, query) -
+			melautoScore(b.label ?? b.id, query) -
 			melautoScore(a.label ?? a.id, query)
 	);
 }

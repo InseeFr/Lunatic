@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "3.4.6",
+	"version": "3.4.10",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -39,11 +39,13 @@
 		"build:types": "node ./tools/schema-ts-generator.js && prettier src/type.source.ts --write",
 		"check": "tsc --noEmit",
 		"lint:check": "eslint ./src",
-		"_format": "prettier **/*.{ts,tsx,json}",
+		"_format": "prettier **/*.{ts,tsx,json,scss}",
 		"format": "npm run _format -- --write",
 		"format:check": "npm run _format -- --list-different",
-		"test-coverage": "vitest run --coverage",
-		"build": "tsc -p tsconfig.build.json && tsc -p tsconfig-esm.json && sass ./src/css/main.scss ./dist/main.css && cp -R ./src/css/icons ./dist/icons",
+		"test:coverage": "vitest run --coverage",
+		"build": "npm run build:cjs && npm run build:esm",
+		"build:cjs": "tsc -p tsconfig.build.json && sass ./src/css/main.scss ./dist/main.css && cp -R ./src/css/icons ./dist/icons",
+		"build:esm": "tsc -p tsconfig-esm.json && sass ./src/css/main.scss ./dist/esm/main.css && cp -R ./src/css/icons ./dist/esm/icons",
 		"storybook": "storybook dev -p 9999 --no-open",
 		"build-storybook": "storybook build",
 		"link-in-app": "tsx scripts/link-in-app.ts"
@@ -55,7 +57,8 @@
 	"files": [
 		"src/",
 		"dist/",
-		"!dist/tsconfig.tsbuildinfo"
+		"!dist/tsconfig.tsbuildinfo",
+		"!dist/esm/tsconfig-esm.tsbuildinfo"
 	],
 	"keywords": [
 		"react",
@@ -67,6 +70,10 @@
 		".": {
 			"module": "./dist/esm/index.js",
 			"default": "./dist/index.js"
+		},
+		"./main.css": {
+			"module": "./dist/esm/main.css",
+			"default": "./dist/main.css"
 		}
 	},
 	"homepage": "https://github.com/InseeFr/Lunatic",
@@ -101,6 +108,7 @@
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react": "^4.3.1",
+		"@vitest/coverage-v8": "2.1.2",
 		"ajv": "^8.17.1",
 		"concurrently": "^8.2.2",
 		"eslint": "^9.9.0",

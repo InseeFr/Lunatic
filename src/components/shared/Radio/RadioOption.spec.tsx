@@ -25,6 +25,61 @@ describe('RadioOption', () => {
 		expect(onClickMock).toHaveBeenCalled();
 	});
 
+	it('does not allow to uncheck modality if checkboxStyle is not defined', () => {
+		const onClickMock = vi.fn();
+		render(
+			<RadioOption
+				id="radio-option"
+				label="Test Option"
+				onCheck={onClickMock}
+				onUncheck={onClickMock}
+				checked
+			/>
+		);
+
+		const option = screen.getByRole('radio');
+		fireEvent.click(option);
+		expect(onClickMock).not.toHaveBeenCalled();
+	});
+
+	it('does not allow to uncheck modality if checkboxStyle is false', () => {
+		const onClickMock = vi.fn();
+
+		render(
+			<RadioOption
+				id="radio-option"
+				label="Test Option"
+				onCheck={onClickMock}
+				onUncheck={onClickMock}
+				checkboxStyle={false}
+				checked
+			/>
+		);
+
+		const option = screen.getByRole('radio');
+		fireEvent.click(option);
+		expect(onClickMock).not.toHaveBeenCalled();
+	});
+
+	it('allows to uncheck modality if checkboxStyle = true and onUncheck', () => {
+		const onClickMock = vi.fn();
+
+		render(
+			<RadioOption
+				id="radio-option"
+				label="Test Option"
+				onCheck={onClickMock}
+				onUncheck={onClickMock}
+				checkboxStyle={true}
+				checked
+			/>
+		);
+
+		const option = screen.getByRole('radio');
+		fireEvent.click(option);
+		expect(onClickMock).toHaveBeenCalled();
+	});
+
 	it('sets the tabIndex to 0 when unchecked', () => {
 		const { getByRole } = render(
 			<RadioOption id="radio-option" label="Test Option" checked={false} />
@@ -72,5 +127,41 @@ describe('RadioOption', () => {
 		const option = screen.getByRole('radio');
 		fireEvent.keyDown(option, { key: 'Enter', code: 'Enter' });
 		expect(onKeyDownMock).toHaveBeenCalled();
+	});
+
+	it('renders the detail when checked', () => {
+		const { getByText } = render(
+			<RadioOption
+				id="radio-option"
+				label="Test Option"
+				onDetailChange={() => {}}
+				detailLabel="My detail"
+				checked
+			/>
+		);
+		expect(getByText('My detail')).toBeInTheDocument();
+	});
+	it('does not render the detail when unchecked', () => {
+		const { queryByText } = render(
+			<RadioOption
+				id="radio-option"
+				label="Test Option"
+				onDetailChange={() => {}}
+				detailLabel="My detail"
+			/>
+		);
+		expect(queryByText('My detail')).toBeNull();
+	});
+	it('renders the details when unchecked with the detail always displayed attribute', () => {
+		const { getByText } = render(
+			<RadioOption
+				id="radio-option"
+				label="Test Option"
+				onDetailChange={() => {}}
+				detailLabel="My detail"
+				detailAlwaysDisplayed
+			/>
+		);
+		expect(getByText('My detail')).toBeInTheDocument();
 	});
 });
