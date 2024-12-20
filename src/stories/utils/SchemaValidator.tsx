@@ -2,7 +2,7 @@ import Ajv from 'ajv/dist/2020.js';
 import { useMemo } from 'react';
 import LunaticSchema from '../../../lunatic-schema.json';
 
-export function SchemaValidator({ source }) {
+export function SchemaValidator({ source }: { source: any }) {
 	const errors = useMemo(() => {
 		const ajv = new Ajv({
 			removeAdditional: true,

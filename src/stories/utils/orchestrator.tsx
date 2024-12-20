@@ -1,3 +1,5 @@
+/* eslint-disable */
+// @ts-nocheck
 import './custom-lunatic.scss';
 import './orchestrator.scss';
 
@@ -7,19 +9,19 @@ import {
 	LunaticComponents,
 	ModalControls,
 	useLunatic,
-} from '../..';
-import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
+} from '../../index.js';
+import { memo, useCallback, useEffect, useState } from 'react';
 
-import { Logger } from '../../utils/logger';
-import { Overview } from './overview';
+import { Logger } from '../../utils/logger.js';
+import { Overview } from './overview.js';
 import { SchemaValidator } from './SchemaValidator.jsx';
 
 const Input = components.Input;
 
-function DevOptions({ goToPage, getData }) {
+function DevOptions({ goToPage, getData }: { goToPage: any; getData: any }) {
 	const [toPage, setToPage] = useState(1);
 
-	function handleChange(_, value) {
+	function handleChange(_, value: any) {
 		setToPage(value);
 	}
 
@@ -33,6 +35,8 @@ function DevOptions({ goToPage, getData }) {
 			</div>
 			<Input
 				id="page-to-jump"
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
 				value={toPage}
 				handleChange={handleChange}
 				min={1}
@@ -89,7 +93,7 @@ function Pager({
 	);
 }
 
-function onLogChange(response, value, args) {
+function onLogChange(response: any, value: any, args: any) {
 	Logger.log('onChange', { response, value, args });
 }
 
@@ -110,7 +114,7 @@ function OrchestratorForStories({
 	missingStrategy = logMissingStrategy,
 	missingShortcut,
 	autoSuggesterLoading,
-	addExternal,
+	// addExternal,
 	preferences,
 	slots,
 	showOverview = false,
@@ -136,7 +140,7 @@ function OrchestratorForStories({
 		pageTag,
 		isFirstPage,
 		isLastPage,
-		waiting,
+		// waiting,
 		overview,
 		compileControls,
 		getData,

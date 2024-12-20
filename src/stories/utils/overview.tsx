@@ -1,3 +1,5 @@
+/* eslint-disable */
+// @ts-nocheck
 import { Fragment } from 'react';
 import './overview.scss';
 

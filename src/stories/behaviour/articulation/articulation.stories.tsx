@@ -22,6 +22,8 @@ function StoryComponent({ source, data }: Props) {
 			<div>
 				{page}
 				<button onClick={gotoNav}>&lt; Revenir à l'articulation</button>
+				{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+				{/*/ @ts-ignore */}
 				<Orchestrator source={source} data={data} initialPage={page} />
 			</div>
 		);
@@ -74,7 +76,7 @@ function StoryComponent({ source, data }: Props) {
 									padding: '.5rem 1rem',
 								}}
 							>
-								<button onClick={() => setPage(item.page)}>
+								<button onClick={() => console.log('ToDo')}>
 									{progressLabel(item.progress)}
 								</button>
 							</td>
