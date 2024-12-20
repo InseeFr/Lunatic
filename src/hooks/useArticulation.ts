@@ -23,7 +23,7 @@ type Item = {
 	cells: {
 		label: string;
 		value: ReactNode;
-		page: string;
+		page?: string;
 	}[];
 	progress: number; // -1: not completed, 0: started, 1: finished
 };
@@ -76,6 +76,7 @@ export function useArticulation(
 
 	const iterations = useMemo(
 		() => forceInt(variables.run(roundabout?.iterations.value ?? '0')),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[source, data]
 	);
 
@@ -86,6 +87,7 @@ export function useArticulation(
 				value: variables.run(item.value, { iteration: [k] }) as ReactNode,
 			}))
 		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [source, data, iterations, roundabout?.progressVariable]);
 
 	if (!roundabout) {
