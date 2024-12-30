@@ -3,11 +3,11 @@ import type {
 	ComponentRoundaboutDefinition,
 	LunaticSource,
 } from '../type.source';
-import type { LunaticData } from '../use-lunatic/type';
+import type { LunaticData, PageTag } from '../use-lunatic/type';
 import { reducerInitializer } from '../use-lunatic/reducer/reducerInitializer';
-import { type ReactNode, useMemo } from 'react';
-import { times } from '../utils/array';
-import { forceInt } from '../utils/number';
+import { type ReactNode } from 'react';
+import { times } from './array';
+import { forceInt } from './number';
 
 type ArticulationItem = {
 	label: string;
@@ -23,13 +23,13 @@ type Item = {
 	cells: {
 		label: string;
 		value: ReactNode;
-		page?: string;
 	}[];
 	progress: number; // -1: not completed, 0: started, 1: finished
+	page: PageTag;
 };
 
 /**
- * Hook to get articulation state
+ * Retrieve the articulation state
  *
  * ## Why this hook
  *
@@ -61,34 +61,25 @@ type Item = {
  * - source is the ID of the roundabout component
  * - items define the field to extract from the roundabout data
  */
-export function useArticulation(
+export function getArticulation(
 	source: LunaticSource & { articulation: Articulation },
 	data: LunaticData
 ): { items: Item[] } {
-	const roundabout = useMemo(
-		() => findComponentById(source.components, source.articulation.source),
-		[source]
+	const roundabout = findComponentById(
+		source.components,
+		source.articulation.source
 	);
-	const { variables } = useMemo(
-		() => reducerInitializer({ source, data }),
-		[source, data]
-	);
-
-	const iterations = useMemo(
-		() => forceInt(variables.run(roundabout?.iterations.value ?? '0')),
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[source, data]
+	const { variables } = reducerInitializer({ source, data });
+	const iterations = forceInt(
+		variables.run(roundabout?.iterations.value ?? '0')
 	);
 
-	const rows = useMemo(() => {
-		return times(iterations, (k) =>
-			source.articulation.items.map((item) => ({
-				label: item.label,
-				value: variables.run(item.value, { iteration: [k] }) as ReactNode,
-			}))
-		);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [source, data, iterations, roundabout?.progressVariable]);
+	const rows = times(iterations, (k) =>
+		source.articulation.items.map((item) => ({
+			label: item.label,
+			value: variables.run(item.value, { iteration: [k] }) as ReactNode,
+		}))
+	);
 
 	if (!roundabout) {
 		return {
@@ -100,7 +91,9 @@ export function useArticulation(
 		items: rows.map((row, k) => ({
 			cells: row,
 			progress: forceInt(variables.get(roundabout.progressVariable, [k]) ?? -1),
-			page: roundabout.page ? `${roundabout.page}.1#${k + 1}` : '1',
+			page: (roundabout.page
+				? `${roundabout.page}.1#${k + 1}`
+				: '1') as PageTag,
 		})),
 	};
 }
