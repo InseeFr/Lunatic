@@ -8,7 +8,7 @@ export { Button } from './components/shared/Button/Button';
 
 export { LunaticComponents } from './components/LunaticComponents';
 export { useLunatic } from './use-lunatic/use-lunatic';
-export { useArticulation } from './hooks/useArticulation';
+export { getArticulation } from './utils/getArticulation';
 
 export type {
 	LunaticComponentDefinition,

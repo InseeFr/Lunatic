@@ -1,11 +1,11 @@
 import Orchestrator from '../../utils/orchestrator';
 import source from './roundabout.json';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
-import { useArticulation } from '../../../hooks/useArticulation';
+import { useMemo, useState } from 'react';
+import { getArticulation } from '../../../utils/getArticulation';
 
-type Source = Parameters<typeof useArticulation>[0];
-type Data = Parameters<typeof useArticulation>[1];
+type Source = Parameters<typeof getArticulation>[0];
+type Data = Parameters<typeof getArticulation>[1];
 
 type Props = {
 	source: Source;
@@ -15,7 +15,10 @@ type Props = {
 function StoryComponent({ source, data }: Props) {
 	const [page, setPage] = useState(null as null | string);
 	const gotoNav = () => setPage(null);
-	const { items } = useArticulation(source, data);
+	const { items } = useMemo(
+		() => getArticulation(source, data),
+		[source, data]
+	);
 
 	if (page) {
 		return (
