@@ -67,6 +67,10 @@
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
 			"label": { "value": "\"Libellé du rondpoint\"", "type": "VTL" },
+			"description": {
+				"value": "\"Description du rond-point\"",
+				"type": "VTL|MD"
+			},
 			"locked": true,
 			"progressVariable": "PROGRESS",
 			"item": {
