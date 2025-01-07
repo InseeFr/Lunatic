@@ -24,6 +24,7 @@ describe('Roundabout', () => {
 		},
 	];
 	const label = 'My Roundabout';
+	const description = 'Roundabout description';
 
 	it('renders the roundabout correctly', () => {
 		const { getByText } = render(
@@ -32,6 +33,7 @@ describe('Roundabout', () => {
 				items={items}
 				goToIteration={mockGoToIteration}
 				locked={false}
+				description={description}
 			/>
 		);
 
@@ -41,6 +43,7 @@ describe('Roundabout', () => {
 		expect(getByText('Complété')).toBeInTheDocument();
 		expect(getByText('Modifier')).toBeInTheDocument();
 		expect(getByText('Commencer')).toBeInTheDocument();
+		expect(getByText('Roundabout description')).toBeInTheDocument();
 	});
 
 	it('calls the goToIteration function when a button is clicked', () => {

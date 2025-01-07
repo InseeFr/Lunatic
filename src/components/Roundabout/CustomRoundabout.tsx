@@ -1,12 +1,13 @@
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import type { LunaticComponentProps } from '../type';
-import { Label } from '../shared/Label/Label';
 import type { ItemOf } from '../../type.utils';
 import { Button } from '../shared/Button/Button';
 import classnames from 'classnames';
 import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import type { LunaticError } from '../../use-lunatic/type';
 import type { ReactNode } from 'react';
+import { Declarations } from '../shared/Declarations/Declarations';
+import { LabelDescription } from '../shared/LabelDescription';
 
 type PropsItem = ItemOf<LunaticComponentProps<'Roundabout'>['items']> & {
 	onClick: () => void;
@@ -60,7 +61,7 @@ function RoundaboutItem({
 
 type Props = Pick<
 	LunaticComponentProps<'Roundabout'>,
-	'label' | 'locked' | 'id'
+	'declarations' | 'description' | 'label' | 'locked' | 'id'
 > & {
 	goToIteration: (v: number) => void;
 	errors?: LunaticError[];
@@ -75,10 +76,18 @@ type Props = Pick<
 
 export const CustomRoundabout = slottableComponent<Props>(
 	'Roundabout',
-	({ items, goToIteration, label, locked }) => {
+	({ declarations, description, id, items, goToIteration, label, locked }) => {
 		return (
 			<div className="lunatic-roundabout">
-				<Label>{label}</Label>
+				<div id={`roundabout-${id}`} className="lunatic-roundabout__label">
+					{label}
+				</div>
+				<LabelDescription value={description} />
+				<Declarations
+					type="AFTER_QUESTION_TEXT"
+					declarations={declarations}
+					id={id}
+				/>
 				<div className="lunatic-roundabout__items">
 					{items.map((item, k) => (
 						<RoundaboutItem
