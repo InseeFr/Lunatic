@@ -56,10 +56,6 @@ export function Loop({
 			if (nbRows <= min) {
 				return;
 			}
-			// Case 0: trying to delete with wrong index
-			if (indexToRemove >= nbRows || indexToRemove < 0) {
-				return;
-			}
 			const newResponses = Object.entries(value).map(([k, v]) => {
 				return {
 					name: k,
@@ -111,7 +107,6 @@ export function Loop({
 					)}
 				</>
 			))}
-			<br />
 		</CustomLoop>
 	);
 }
@@ -158,14 +153,14 @@ export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
 			{children}
 			<ComponentErrors errors={errors} />
 			{canControlRows && (
-				<>
+				<div className="button-loop">
 					<Button onClick={addRow} disabled={!addRow}>
 						{D.DEFAULT_BUTTON_ADD}
 					</Button>
 					<Button onClick={removeRow} disabled={!removeRow}>
 						{D.DEFAULT_BUTTON_REMOVE}
 					</Button>
-				</>
+				</div>
 			)}
 		</>
 	);

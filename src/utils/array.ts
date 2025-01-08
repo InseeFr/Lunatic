@@ -86,7 +86,7 @@ export function resizeDownArrayWithIndex<T = unknown>(
 	if (0 > removedIndex || array.length <= removedIndex) {
 		return array;
 	}
-	return [...array].filter((_, i) => i !== removedIndex);
+	return array.filter((_, i) => i !== removedIndex);
 }
 
 /**
