@@ -90,7 +90,7 @@ function resizePairwise(
 	resizingInfo.linksVariables.forEach((variable) => {
 		const value = store.get(variable, args.iteration);
 		let resizedValue;
-		if (args.removedIndex) {
+		if (args.removedIndex !== undefined) {
 			const removedIndex = args.removedIndex;
 			resizedValue = resizeDownArrayWithIndex(
 				Array.isArray(value)
