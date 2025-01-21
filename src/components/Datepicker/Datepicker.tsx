@@ -118,7 +118,7 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 						<DatepickerField
 							id={id + 'month'}
 							label="Mois"
-							description="Exemple: 07"
+							description="Exemple: 7"
 							max={12}
 							value={numbers[1]}
 							onChange={setNumber(1)}
