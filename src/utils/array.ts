@@ -51,6 +51,9 @@ export function getAtIndex(arr: unknown, indexes: number[]): unknown {
 	return current;
 }
 
+/**
+ * Cast the variable into an array and adjust the length if necessary
+ */
 export function resizeArray<T = unknown>(
 	array: unknown,
 	newLength: number,
@@ -63,12 +66,27 @@ export function resizeArray<T = unknown>(
 	if (array.length === newLength) {
 		return array;
 	}
-	return new Array(newLength).fill(defaultValue ?? null).map(function (
-		value,
+	return new Array(newLength).fill(defaultValue ?? null).reduce(function (
+		step,
+		current,
 		index
 	) {
-		return index < array.length ? array[index] : value;
+		if (index < array.length) {
+			return [...step, array[index]];
+		}
+		return [...step, current];
 	}, []);
+}
+
+export function resizeDownArrayWithIndex<T = unknown>(
+	array: T[],
+	removedIndex: number
+): T[] {
+	// the removedIndex is not in array
+	if (0 > removedIndex || array.length <= removedIndex) {
+		return array;
+	}
+	return array.filter((_, i) => i !== removedIndex);
 }
 
 /**

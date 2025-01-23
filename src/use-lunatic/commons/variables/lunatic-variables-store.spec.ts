@@ -281,6 +281,36 @@ describe('lunatic-variables-store', () => {
 				cause: 'resizing',
 			});
 		});
+
+		it('should resize variables with Index', () => {
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('AGE', [20, 30, 40]);
+			const spy = vi.fn();
+			variables.on('change', (e) => spy(e.detail));
+			resizingBehaviour(variables, {
+				PRENOM: {
+					size: 'count(PRENOM)',
+					variables: ['AGE'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Marc'], { removedIndex: 1 });
+			expect((variables.get('PRENOM') as string[]).length).toEqual(2);
+			expect((variables.get('AGE') as string[]).length).toEqual(2);
+			expect(spy).toHaveBeenLastCalledWith({
+				name: 'AGE',
+				value: [20, 40],
+				cause: 'resizing',
+			});
+			variables.set('PRENOM', ['Marc'], { removedIndex: 0 });
+			expect((variables.get('PRENOM') as string[]).length).toEqual(1);
+			expect((variables.get('AGE') as string[]).length).toEqual(1);
+			expect(spy).toHaveBeenLastCalledWith({
+				name: 'AGE',
+				value: [40],
+				cause: 'resizing',
+			});
+		});
+
 		it('should resize pairwise with the array syntax', () => {
 			variables.set('PRENOM', []);
 			variables.set('LINKS', [[]]);
@@ -316,7 +346,29 @@ describe('lunatic-variables-store', () => {
 				[null, null, null],
 			]);
 		});
-		it('should handle both pairwise and normal resize', () => {
+		it('should resize pairwise with the object syntax with index', () => {
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('LINKS', [
+				[null, 2, 4],
+				[1, null, 2],
+				[3, 2, null],
+			]);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					sizeForLinksVariables: {
+						xAxisSize: 'count(PRENOM)',
+						yAxisSize: 'count(PRENOM)',
+					},
+					linksVariables: ['LINKS'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Marc'], { removedIndex: 1 });
+			expect(variables.get('LINKS') as string[][]).toEqual([
+				[null, 4],
+				[3, null],
+			]);
+		});
+		it('should handle both: pairwise and normal resize', () => {
 			variables.set('PRENOM', []);
 			variables.set('NOM', []);
 			variables.set('LINKS', [[]]);
@@ -335,6 +387,50 @@ describe('lunatic-variables-store', () => {
 				[null, null, null],
 			]);
 			expect(variables.get('NOM') as string[]).toEqual([null, null, null]);
+		});
+		it('should handle both: pairwise resize with index 0', () => {
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('LINKS', [
+				[null, 2, 4],
+				[1, null, 2],
+				[3, 2, null],
+			]);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					sizeForLinksVariables: ['count(PRENOM)', 'count(PRENOM)'],
+					linksVariables: ['LINKS'],
+					size: 'count(PRENOM)',
+				},
+			});
+			variables.set('PRENOM', ['John', 'Marc'], { removedIndex: 0 });
+			expect(variables.get('LINKS') as string[][]).toEqual([
+				[null, 2],
+				[2, null],
+			]);
+		});
+
+		it('should handle both: pairwise and normal resize with index', () => {
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('AGE', [40, 30, 20]);
+			variables.set('LINKS', [
+				[null, 2, 4],
+				[1, null, 2],
+				[3, 2, null],
+			]);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					sizeForLinksVariables: ['count(PRENOM)', 'count(PRENOM)'],
+					linksVariables: ['LINKS'],
+					size: 'count(PRENOM)',
+					variables: ['AGE'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Marc'], { removedIndex: 1 });
+			expect(variables.get('LINKS') as string[][]).toEqual([
+				[null, 4],
+				[3, null],
+			]);
+			expect(variables.get('AGE') as string[]).toEqual([40, 20]);
 		});
 	});
 

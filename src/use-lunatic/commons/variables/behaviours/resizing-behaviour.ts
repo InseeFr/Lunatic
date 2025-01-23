@@ -1,9 +1,8 @@
 import type { LunaticVariablesStore } from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type';
 import { forceInt } from '../../../../utils/number';
-import { resizeArrayVariable } from '../../../reducer/commons';
 import { getExpressionAsString } from '../../../../utils/vtl';
-import { resizeArray } from '../../../../utils/array';
+import { resizeArray, resizeDownArrayWithIndex } from '../../../../utils/array';
 
 /**
  * Resizing behaviour for the store
@@ -42,8 +41,19 @@ export function resizingBehaviour(
 		const newSize = forceInt(store.run(resizingInfo.size));
 		for (const variableName of resizingInfo.variables) {
 			const value = store.get(variableName);
-			if (!Array.isArray(value) || value.length !== newSize) {
-				store.set(variableName, resizeArrayVariable(value, newSize, null), {
+			if (Array.isArray(value) && e.detail.removedIndex !== undefined) {
+				store.set(
+					variableName,
+					resizeDownArrayWithIndex(value, e.detail.removedIndex),
+					{
+						cause: 'resizing',
+					}
+				);
+			} else if (
+				e.detail.removedIndex === undefined &&
+				(!Array.isArray(value) || value.length !== newSize)
+			) {
+				store.set(variableName, resizeArray(value, newSize, null), {
 					cause: 'resizing',
 				});
 			}
@@ -61,6 +71,7 @@ function resizePairwise(
 	},
 	args: {
 		iteration?: number[];
+		removedIndex?: number;
 	}
 ) {
 	// Handle expression being sent as an array or an object (ensure backward compatibility)
@@ -78,12 +89,25 @@ function resizePairwise(
 	});
 	resizingInfo.linksVariables.forEach((variable) => {
 		const value = store.get(variable, args.iteration);
-		const resizedValue = resizeArray(
-			// The value is not an array, force an array
-			Array.isArray(value) ? value.map((i) => resizeArray(i, ySize, null)) : [],
-			xSize,
-			new Array(ySize).fill(null)
-		);
+		let resizedValue;
+		if (args.removedIndex !== undefined) {
+			const removedIndex = args.removedIndex;
+			resizedValue = resizeDownArrayWithIndex(
+				Array.isArray(value)
+					? value.map((i) => resizeDownArrayWithIndex(i, removedIndex))
+					: [],
+				removedIndex
+			);
+		} else {
+			resizedValue = resizeArray(
+				// The value is not an array, force an array
+				Array.isArray(value)
+					? value.map((i) => resizeArray(i, ySize, null))
+					: [],
+				xSize,
+				new Array(ySize).fill(null)
+			);
+		}
 		store.set(variable, resizedValue);
 	});
 }

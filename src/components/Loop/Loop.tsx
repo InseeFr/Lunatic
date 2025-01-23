@@ -51,9 +51,29 @@ export function Loop({
 		}
 	}, [nbRows, handleChanges, value]);
 
+	const removeRowWithIndex = useCallback(
+		(indexToRemove: number) => {
+			if (nbRows <= min) {
+				return;
+			}
+			const newResponses = Object.entries(value).map(([k, v]) => {
+				return {
+					name: k,
+					value: v?.filter((_, i) => i !== indexToRemove),
+					removedIndex: indexToRemove,
+				};
+			});
+			handleChanges(newResponses);
+			setNbRows((n) => n - 1);
+		},
+		[nbRows, min, value, handleChanges]
+	);
+
 	if (nbRows <= 0) {
 		return null;
 	}
+
+	const canControlRows = min !== max && Number.isFinite(max);
 
 	return (
 		<CustomLoop
@@ -61,21 +81,31 @@ export function Loop({
 			errors={getComponentErrors(errors, props.id)}
 			addRow={nbRows === max ? undefined : addRow}
 			removeRow={nbRows === 1 ? undefined : removeRow}
-			canControlRows={min !== max && Number.isFinite(max)}
+			canControlRows={canControlRows}
 		>
 			{times(nbRows, (n) => (
-				<LunaticComponents
-					blocklist={blockedInLoopComponents}
-					key={n}
-					components={getComponents(n)}
-					componentProps={(c) => ({
-						...props,
-						...c,
-						iteration: n,
-						id: `${c.id}-${n}`,
-						errors,
-					})}
-				/>
+				<>
+					<LunaticComponents
+						blocklist={blockedInLoopComponents}
+						key={n}
+						components={getComponents(n)}
+						componentProps={(c) => ({
+							...props,
+							...c,
+							iteration: n,
+							id: `${c.id}-${n}`,
+							errors,
+						})}
+					/>
+					{canControlRows && (
+						<Button
+							onClick={() => removeRowWithIndex(n)}
+							id={`delete-action-button-${n}`}
+							label={D.DEFAULT_BUTTON_REMOVE_THIS_ROW}
+							disabled={nbRows === 1}
+						/>
+					)}
+				</>
 			))}
 		</CustomLoop>
 	);
@@ -123,14 +153,14 @@ export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
 			{children}
 			<ComponentErrors errors={errors} />
 			{canControlRows && (
-				<>
+				<div className="button-loop">
 					<Button onClick={addRow} disabled={!addRow}>
 						{D.DEFAULT_BUTTON_ADD}
 					</Button>
 					<Button onClick={removeRow} disabled={!removeRow}>
 						{D.DEFAULT_BUTTON_REMOVE}
 					</Button>
-				</>
+				</div>
 			)}
 		</>
 	);

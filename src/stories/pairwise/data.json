@@ -1,6 +1,6 @@
 {
 	"COLLECTED": {
-		"PRENOM": { "COLLECTED": ["Dad", "Mom", "Unknow"] },
+		"PRENOM": { "COLLECTED": ["Dad", "Mom", "Daughter"] },
 		"AGE": { "COLLECTED": [30, 29, 5] },
 		"LINKS": {
 			"COLLECTED": [[null]]

@@ -33,6 +33,8 @@ export type EventArgs = {
 		value: unknown;
 		/** Iteration changed (for array). */
 		iteration?: IterationLevel | undefined;
+		/** When resize an array directly with only one handleChange (remove one line in tableLoop) */
+		removedIndex?: number;
 		/** What triggered this change. */
 		cause?: 'resizing' | 'cleaning';
 		/** Extra sent when setting the variable. */
@@ -123,7 +125,7 @@ export class LunaticVariablesStore {
 	public set(
 		name: string,
 		value: unknown,
-		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
+		args: Pick<EventArgs['change'], 'iteration' | 'cause' | 'removedIndex'> = {}
 	): LunaticVariable {
 		if (!this.dictionary.has(name)) {
 			this.dictionary.set(

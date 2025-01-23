@@ -2,6 +2,7 @@ import { Fragment, useCallback, useState } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { Table, Tbody, Td, Tr, TableHeader } from '../shared/Table';
 import { times } from '../../utils/array';
+import D from '../../i18n';
 import { LunaticComponents } from '../LunaticComponents';
 import { blockedInLoopComponents } from '../Loop/constant';
 import {
@@ -9,6 +10,7 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import { CustomLoop } from '../Loop/Loop';
+import { Button } from '../shared/Button/Button';
 
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
@@ -44,6 +46,8 @@ export const RosterForLoop = (
 		}
 	}, [max, nbRows]);
 
+	const cantRemove = nbRows === min;
+
 	const removeRow = useCallback(() => {
 		if (nbRows <= min) {
 			return;
@@ -60,6 +64,28 @@ export const RosterForLoop = (
 		handleChanges(newResponses);
 	}, [nbRows, min, valueMap, handleChanges]);
 
+	const removeRowWithIndex = useCallback(
+		(indexToRemove: number) => {
+			if (nbRows <= min) {
+				return;
+			}
+			// trying to delete with indexToRemove out of array index
+			if (indexToRemove >= nbRows || indexToRemove < 0) {
+				return;
+			}
+			const newResponses = Object.entries(valueMap).map(([k, v]) => {
+				return {
+					name: k,
+					value: v?.filter((_, i) => i !== indexToRemove),
+					removedIndex: indexToRemove,
+				};
+			});
+			handleChanges(newResponses);
+			setNbRows((n) => n - 1);
+		},
+		[nbRows, min, valueMap, handleChanges]
+	);
+
 	if (nbRows === 0) {
 		return null;
 	}
@@ -71,11 +97,13 @@ export const RosterForLoop = (
 			{...props}
 			errors={getComponentErrors(errors, props.id)}
 			addRow={nbRows === max ? undefined : addRow}
-			removeRow={nbRows === min ? undefined : removeRow}
+			removeRow={cantRemove ? undefined : removeRow}
 			canControlRows={!!(min && max && min !== max)}
 		>
 			<Table id={id}>
-				{header && <TableHeader header={header} />}
+				{header && (
+					<TableHeader header={[...header, { label: D.ACTION_HEADER }]} />
+				)}
 				<Tbody>
 					{times(nbRows, (n) => {
 						const components = getComponents(n);
@@ -104,6 +132,14 @@ export const RosterForLoop = (
 										})}
 										wrapper={(props) => <Td {...props} />}
 									/>
+									<Td id={`delete-action-${n}`}>
+										<Button
+											onClick={() => removeRowWithIndex(n)}
+											id={`delete-action-button-${n}`}
+											label={D.DEFAULT_BUTTON_REMOVE_THIS_ROW}
+											disabled={cantRemove}
+										/>
+									</Td>
 								</Tr>
 								{hasLineErrors && (
 									<Tr className="lunatic-errors">

@@ -45,6 +45,16 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
             </div>
           </div>
         </td>
+        <td
+          class="lunatic-table-td"
+        >
+          <input
+            class="button-lunatic"
+            id="delete-action-button-0"
+            type="button"
+            value="Remove this row"
+          />
+        </td>
       </tr>
       <tr
         class="lunatic-table-tr"
@@ -75,18 +85,32 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
             </div>
           </div>
         </td>
+        <td
+          class="lunatic-table-td"
+        >
+          <input
+            class="button-lunatic"
+            id="delete-action-button-1"
+            type="button"
+            value="Remove this row"
+          />
+        </td>
       </tr>
     </tbody>
   </table>
-  <input
-    class="button-lunatic"
-    type="button"
-    value="Add row"
-  />
-  <input
-    class="button-lunatic"
-    type="button"
-    value="Remove row"
-  />
+  <div
+    class="button-loop"
+  >
+    <input
+      class="button-lunatic"
+      type="button"
+      value="Add row"
+    />
+    <input
+      class="button-lunatic"
+      type="button"
+      value="Remove row"
+    />
+  </div>
 </div>
 `;
