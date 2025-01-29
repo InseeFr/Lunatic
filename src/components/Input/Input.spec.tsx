@@ -73,4 +73,19 @@ describe('Input', () => {
 		expect(input).toHaveFocus();
 		expect(input).toHaveValue('toto');
 	});
+
+	it('should display input value from the start when user leave input', () => {
+		const setSelectionRangeMock = vi.fn();
+		const { container } = render(<Input {...baseProps} />);
+
+		const input = container.querySelector('input[type="text"]');
+
+		fireEvent.blur(input!, {
+			target: {
+				...input,
+				setSelectionRange: setSelectionRangeMock,
+			},
+		});
+		expect(setSelectionRangeMock).toHaveBeenCalledWith(0, 0);
+	});
 });

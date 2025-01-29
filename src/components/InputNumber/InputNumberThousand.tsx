@@ -18,6 +18,7 @@ type Props = {
 	max?: number;
 	decimals?: number;
 	invalid?: boolean;
+	unit?: string;
 };
 
 export const InputNumberThousand = ({
@@ -31,6 +32,7 @@ export const InputNumberThousand = ({
 	max,
 	decimals,
 	invalid,
+	unit,
 }: Props) => {
 	const handleChange = useCallback<OnValueChange>(
 		function (e) {
@@ -49,13 +51,21 @@ export const InputNumberThousand = ({
 		},
 		[max]
 	);
+
+	// we want to display the user input and its unit on hover
+	let title;
+	if (value !== undefined && value !== null) {
+		const unitTitle = unit ? ` ${unit}` : '';
+		title = `${value.toLocaleString()}${unitTitle}`;
+	}
+
 	return (
 		<NumericFormat
 			id={id}
 			className={classNames({ disabled })}
 			onValueChange={handleChange}
 			value={value ?? ''}
-			title={value ? value.toString() : ''}
+			title={title}
 			aria-labelledby={labelId}
 			disabled={disabled}
 			readOnly={readOnly}
