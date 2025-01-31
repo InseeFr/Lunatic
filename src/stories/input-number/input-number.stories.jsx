@@ -2,6 +2,7 @@ import defaultArgTypes from '../utils/default-arg-types';
 import Orchestrator from '../utils/orchestrator';
 import source from './source';
 import sourceEuro from './source-euro.json';
+import sourceBigNumber from './source-big-number.json';
 
 export default {
 	title: 'Components/InputNumber',
@@ -15,4 +16,8 @@ export const Default = {
 
 export const DynamicUnit = {
 	args: { source: sourceEuro },
+};
+
+export const BigNumber = {
+	args: { source: sourceBigNumber },
 };
