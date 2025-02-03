@@ -11,59 +11,76 @@ export function usePageHasResponse(
 	executeExpression: LunaticReducerState['executeExpression']
 ): () => boolean {
 	return useCallback(() => {
-		if (!Array.isArray(components) || components.length === 0) {
+		return hasOneResponse(components, executeExpression);
+	}, [components, executeExpression]);
+}
+
+function hasOneResponse(
+	components: LunaticComponentProps[],
+	executeExpression: LunaticReducerState['executeExpression']
+): boolean {
+	if (!Array.isArray(components) || components.length === 0) {
+		return true;
+	}
+
+	for (const component of components) {
+		// Some components are considered as "filled" by default
+		// We assume they are not in the same page has other components
+		if (
+			['PairwiseLinks', 'Roundabout', 'Sequence', 'Subsequence'].includes(
+				component.componentType ?? ''
+			)
+		) {
 			return true;
 		}
 
-		for (const component of components) {
-			// Some components are considered as "filled" by default
-			// We assume they are not in the same page has other components
-			if (
-				['PairwiseLinks', 'Roundabout', 'Sequence', 'Subsequence'].includes(
-					component.componentType ?? ''
-				)
-			) {
-				return true;
-			}
-
-			// We have a missing response for this component
-			if (
-				'missingResponse' in component &&
-				component.missingResponse &&
-				component.missingResponse.value
-			) {
-				return true;
-			}
-
-			// For Table, we have to extract components from its body and apply isSubComponentsEmpty function
-			if (component.componentType === 'Table') {
-				// Body is array for array (row), each "cell" could be an Label or Component, so we filter array.
-				const childrenComponent = component.body.reduce((_, row) => {
-					const componentsInRow = row.filter(
-						(cell) => isObject(cell) && 'componentType' in cell
-					);
-					return [..._, ...componentsInRow];
-				}, [] as LunaticComponentProps[]);
-				return !isSubComponentsEmpty(childrenComponent, executeExpression);
-			}
-
-			// We found a value in one of the root component
-			if ('value' in component && !isEmpty(component.value)) {
-				return true;
-			}
-
-			// For rosterForLoop we need to inspect child components
-			if (
-				'components' in component &&
-				Array.isArray(component.components) &&
-				!isSubComponentsEmpty(component.components, executeExpression)
-			) {
-				return true;
-			}
+		// We have a missing response for this component
+		if (
+			'missingResponse' in component &&
+			component.missingResponse &&
+			component.missingResponse.value
+		) {
+			return true;
 		}
 
-		return false;
-	}, [components, executeExpression]);
+		// For Table, we have to extract components from its body and apply isSubComponentsEmpty function
+		if (component.componentType === 'Table') {
+			// Body is array for array (row), each "cell" could be an Label or Component, so we filter array.
+			const childrenComponent = component.body.reduce((_, row) => {
+				const componentsInRow = row.filter(
+					(cell) => isObject(cell) && 'componentType' in cell
+				);
+				return [..._, ...componentsInRow];
+			}, [] as LunaticComponentProps[]);
+			return !isSubComponentsEmpty(childrenComponent, executeExpression);
+		}
+
+		// We found a value in one of the root component
+		if ('value' in component && !isEmpty(component.value)) {
+			return true;
+		}
+
+		// For Question, we need to check subcomponents
+		if (
+			component.componentType === 'Question' &&
+			'components' in component &&
+			Array.isArray(component.components) &&
+			hasOneResponse(component.components, executeExpression)
+		) {
+			return true;
+		}
+
+		// For rosterForLoop we need to inspect child components
+		if (
+			'components' in component &&
+			Array.isArray(component.components) &&
+			!isSubComponentsEmpty(component.components, executeExpression)
+		) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 /**

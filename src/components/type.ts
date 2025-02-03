@@ -126,6 +126,7 @@ export type ComponentPropsByType = {
 			components: LunaticComponentProps[];
 			componentType?: 'Question';
 			iteration?: number;
+			value: Record<string, unknown>;
 		};
 	RosterForLoop: LunaticBaseProps<unknown> &
 		LunaticExtraProps & {
