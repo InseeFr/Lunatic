@@ -31,6 +31,16 @@ export function isPageEmpty(state: LunaticReducerState): boolean {
 		if (options.disableFilters) {
 			return true;
 		}
+
+		// The component is a paginated loop, consider it invisible if iteration size is 0
+		if ('paginatedLoop' in component && component.paginatedLoop) {
+			const iterations = state.executeExpression<number>(component.iterations);
+			if (!iterations) {
+				return false;
+			}
+		}
+
+		// Use condition filter if present
 		if ('conditionFilter' in component && component.conditionFilter) {
 			return executeConditionFilter(
 				component.conditionFilter,
