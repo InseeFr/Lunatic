@@ -74,6 +74,7 @@ export const CustomInputNumber = slottableComponent<CustomProps>(
 					max={max}
 					decimals={decimals}
 					invalid={!!errors}
+					unit={unit}
 				/>
 				{unit && <span>{unit}</span>}
 				<ComponentErrors errors={errors} />

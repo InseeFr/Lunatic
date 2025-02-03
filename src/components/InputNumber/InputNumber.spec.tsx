@@ -113,7 +113,7 @@ describe('InputNumber', () => {
 		expect(unit).toHaveTextContent('kg');
 	});
 
-	it('should display the input value from the start', () => {
+	it('should display input value from the start when user leave input', () => {
 		const setSelectionRangeMock = vi.fn();
 		const { container } = render(
 			<InputNumber
@@ -131,5 +131,19 @@ describe('InputNumber', () => {
 			},
 		});
 		expect(setSelectionRangeMock).toHaveBeenCalledWith(0, 0);
+	});
+
+	it('should have the proper title', async () => {
+		const { getByTitle } = render(
+			<InputNumber {...baseProps} value={100000} unit="€" />
+		);
+		expect(getByTitle((content) => content.includes('€'))).toBeInTheDocument();
+	});
+
+	it('should have the proper title when equal to 0', async () => {
+		const { getByTitle } = render(
+			<InputNumber {...baseProps} value={0} unit="€" />
+		);
+		expect(getByTitle('0 €')).toBeInTheDocument();
 	});
 });
