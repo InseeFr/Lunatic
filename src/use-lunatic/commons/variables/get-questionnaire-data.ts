@@ -13,10 +13,6 @@ export function getQuestionnaireData(
 		COLLECTED: {} as Record<
 			string,
 			{
-				EDITED: unknown;
-				FORCED: unknown;
-				INPUTTED: unknown;
-				PREVIOUS: unknown;
 				COLLECTED: unknown;
 			}
 		>,
@@ -34,10 +30,6 @@ export function getQuestionnaireData(
 				variableNames.map((name) => [
 					name,
 					{
-						EDITED: null,
-						FORCED: null,
-						INPUTTED: null,
-						PREVIOUS: null,
 						COLLECTED: store.get(name),
 					},
 				])
@@ -53,10 +45,6 @@ export function getQuestionnaireData(
 
 		if (variable.variableType === 'COLLECTED') {
 			result.COLLECTED[variable.name] = {
-				PREVIOUS: null,
-				FORCED: null,
-				EDITED: null,
-				INPUTTED: null,
 				...variable.values,
 				COLLECTED: store.get(variable.name),
 			};

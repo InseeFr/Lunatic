@@ -300,11 +300,7 @@
 			"name": "NOM",
 			"componentRef": "name",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
@@ -312,11 +308,7 @@
 			"name": "DISABLED_NOM",
 			"componentRef": "name",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
@@ -324,11 +316,7 @@
 			"name": "SEXE",
 			"componentRef": "sexe",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
@@ -336,11 +324,7 @@
 			"name": "DISABLED_SEXE",
 			"componentRef": "sexe",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
@@ -348,11 +332,7 @@
 			"name": "NOM_COMPSET",
 			"componentRef": "nomcompset",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
@@ -360,11 +340,7 @@
 			"name": "DISABLED_NOM_COMPSET",
 			"componentRef": "nomcompset",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
@@ -372,11 +348,7 @@
 			"name": "DISABLED_PAIRWISE",
 			"componentRef": "nomcompset",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		}
 	]

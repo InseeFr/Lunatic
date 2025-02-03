@@ -12,10 +12,6 @@
 		{
 			"name": "NAME",
 			"values": {
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null,
 				"COLLECTED": null
 			},
 			"dimension": 0,
@@ -24,10 +20,6 @@
 		{
 			"name": "AGE",
 			"values": {
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null,
 				"COLLECTED": null
 			},
 			"dimension": 0,
@@ -36,10 +28,6 @@
 		{
 			"name": "APPLE",
 			"values": {
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null,
 				"COLLECTED": null
 			},
 			"dimension": 0,

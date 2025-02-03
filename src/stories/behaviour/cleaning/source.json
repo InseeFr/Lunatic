@@ -9,22 +9,14 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "ORIGIN"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "CITY"
 		}

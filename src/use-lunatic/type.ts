@@ -74,10 +74,6 @@ export type PageTag = `${number}.${number}#${number}` | `${number}`;
 export type LunaticVariable = Variable;
 export type LunaticCollectedValue = Partial<{
 	COLLECTED: unknown;
-	EDITED: unknown;
-	FORCED: unknown;
-	INPUTTED: unknown;
-	PREVIOUS: unknown;
 }>;
 
 // We need a mapped type to correlate type and variableType

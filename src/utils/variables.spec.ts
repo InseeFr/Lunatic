@@ -15,10 +15,6 @@ const data = {
 		},
 		PRENOMS: {
 			COLLECTED: ['Paul', 'Pierre'],
-			EDITED: [],
-			INPUTTED: [],
-			FORCED: [],
-			PREVIOUS: [],
 		},
 		AGE: {},
 	},
@@ -49,10 +45,6 @@ const loopCollectedVariable = {
 	variableType: 'COLLECTED',
 	values: {
 		COLLECTED: [],
-		PREVIOUS: [],
-		FORCED: [],
-		EDITED: [],
-		INPUTTED: [],
 	},
 	name: 'PRENOMS',
 } as LunaticVariable;

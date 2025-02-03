@@ -20,10 +20,6 @@ const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 			(acc, k) => ({
 				...acc,
 				[k]: {
-					EDITED: null,
-					FORCED: null,
-					INPUTTED: null,
-					PREVIOUS: null,
 					COLLECTED: o[k],
 				},
 			}),

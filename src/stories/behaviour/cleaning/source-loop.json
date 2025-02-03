@@ -15,33 +15,21 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": ["John", "Jane"],
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": ["John", "Jane"]
 			},
 			"name": "PRENOM"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": [null]
 			},
 			"name": "AGE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": [null]
 			},
 			"name": "HIDE_AGE"
 		}

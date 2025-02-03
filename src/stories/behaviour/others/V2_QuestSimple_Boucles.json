@@ -2720,11 +2720,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN1_1_1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2732,11 +2728,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN2_1_2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2744,11 +2736,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN1_2_1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2756,11 +2744,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN2_2_2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2768,11 +2752,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN1_3_1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2780,11 +2760,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN2_3_2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2792,11 +2768,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN1_4_1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2804,11 +2776,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN2_4_2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2816,11 +2784,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN1_5_1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2828,11 +2792,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN2_5_2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2840,11 +2800,7 @@
 			"variableType": "COLLECTED",
 			"name": "COCHECASE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2852,11 +2808,7 @@
 			"variableType": "COLLECTED",
 			"name": "TEXTE10",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2864,11 +2816,7 @@
 			"variableType": "COLLECTED",
 			"name": "TEXTELONG249",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2876,11 +2824,7 @@
 			"variableType": "COLLECTED",
 			"name": "TEXTELONG250",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2888,11 +2832,7 @@
 			"variableType": "COLLECTED",
 			"name": "SIREN",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2900,11 +2840,7 @@
 			"variableType": "COLLECTED",
 			"name": "INTEGER",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2912,11 +2848,7 @@
 			"variableType": "COLLECTED",
 			"name": "FLOAT",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2924,11 +2856,7 @@
 			"variableType": "COLLECTED",
 			"name": "FLOATNEG",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2936,11 +2864,7 @@
 			"variableType": "COLLECTED",
 			"name": "UNIT",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2948,11 +2872,7 @@
 			"variableType": "COLLECTED",
 			"name": "UNITD",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2960,11 +2880,7 @@
 			"variableType": "COLLECTED",
 			"name": "DATE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2972,11 +2888,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAAAA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2984,11 +2896,7 @@
 			"variableType": "COLLECTED",
 			"name": "BOOLEN",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2996,11 +2904,7 @@
 			"variableType": "COLLECTED",
 			"name": "CHECKBOXONERADIO",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3008,11 +2912,7 @@
 			"variableType": "COLLECTED",
 			"name": "CHECKBOXONECOCHER",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3020,11 +2920,7 @@
 			"variableType": "COLLECTED",
 			"name": "DROPDOWN",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3032,11 +2928,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_BOOLEEN1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3044,11 +2936,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_BOOLEEN2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3056,11 +2944,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_BOOLEEN3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3068,11 +2952,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_BOOLEEN4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3080,11 +2960,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_BOOLEEN5",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3092,11 +2968,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_BOOLEEN6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3104,11 +2976,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEON1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3116,11 +2984,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEON2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3128,11 +2992,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEON3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3140,11 +3000,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEON4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3152,11 +3008,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEON5",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3164,11 +3016,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEON6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3176,11 +3024,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEONRADIO1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3188,11 +3032,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEONRADIO2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3200,11 +3040,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEONRADIO3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3212,11 +3048,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEONRADIO4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3224,11 +3056,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEONRADIO5",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3236,11 +3064,7 @@
 			"variableType": "COLLECTED",
 			"name": "QCM_LISTEONRADIO6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3248,11 +3072,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A1M11",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3260,11 +3080,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A1M21",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3272,11 +3088,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A1M31",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3284,11 +3096,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A1M41",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3296,11 +3104,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A1M51",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3308,11 +3112,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A1M61",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3320,11 +3120,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M11",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3332,11 +3128,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M12",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3344,11 +3136,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M13",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3356,11 +3144,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M21",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3368,11 +3152,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M22",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3380,11 +3160,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M23",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3392,11 +3168,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M31",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3404,11 +3176,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M32",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3416,11 +3184,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M33",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3428,11 +3192,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M41",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3440,11 +3200,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M42",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3452,11 +3208,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M43",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3464,11 +3216,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M51",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3476,11 +3224,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M52",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3488,11 +3232,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M53",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3500,11 +3240,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M61",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3512,11 +3248,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M62",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3524,11 +3256,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1A3M63",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3536,11 +3264,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A11",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3548,11 +3272,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A12",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3560,11 +3280,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A13",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3572,11 +3288,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A14",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3584,11 +3296,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A15",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3596,11 +3304,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A21",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3608,11 +3312,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A22",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3620,11 +3320,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A23",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3632,11 +3328,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A24",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3644,11 +3336,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A25",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3656,11 +3344,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A31",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3668,11 +3352,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A32",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3680,11 +3360,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A33",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3692,11 +3368,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A34",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3704,11 +3376,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A35",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3716,11 +3384,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A41",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3728,11 +3392,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A42",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3740,11 +3400,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A43",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3752,11 +3408,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A44",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3764,11 +3416,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A45",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3776,11 +3424,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A51",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3788,11 +3432,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A52",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3800,11 +3440,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A53",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3812,11 +3448,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A54",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3824,11 +3456,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A55",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3836,11 +3464,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A61",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3848,11 +3472,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A62",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3860,11 +3480,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A63",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3872,11 +3488,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A64",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3884,11 +3496,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU2A65",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3896,11 +3504,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1AH1M11",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3908,11 +3512,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAU1AH1M21",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3920,11 +3520,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3932,11 +3528,7 @@
 			"variableType": "COLLECTED",
 			"name": "TABLEAUDYN2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3944,11 +3536,7 @@
 			"variableType": "COLLECTED",
 			"name": "NHAB",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3956,11 +3544,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOM1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -3968,11 +3552,7 @@
 			"variableType": "COLLECTED",
 			"name": "AGE1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -3980,11 +3560,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOM2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -3992,11 +3568,7 @@
 			"variableType": "COLLECTED",
 			"name": "AGE2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 

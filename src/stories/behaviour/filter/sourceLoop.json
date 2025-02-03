@@ -35,10 +35,6 @@
 		{
 			"name": "NBHAB",
 			"values": {
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null,
 				"COLLECTED": null
 			},
 			"dimension": 0,
@@ -47,10 +43,6 @@
 		{
 			"name": "NAME",
 			"values": {
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": [],
 				"COLLECTED": []
 			},
 			"dimension": 1,
@@ -60,10 +52,6 @@
 		{
 			"name": "AGE",
 			"values": {
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": [],
 				"COLLECTED": []
 			},
 			"dimension": 1,

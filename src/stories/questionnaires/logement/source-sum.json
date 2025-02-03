@@ -1492,11 +1492,7 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "COMMENT_QE"
 		},
@@ -1558,3069 +1554,1953 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "CADR"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "NUMTH_COLL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "ADR_COLL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "CADRTH_COLL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "CODEPOST1_COLL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "LIBCOM_COLL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "INDNVOCC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "NOMNVOCC1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "PRENOMNVOCC1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "NOMNVOCC2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "PRENOMNVOCC2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "TELNVOCC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MAILNVOCC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "NBHAB"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "G_PRENOM"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SEXE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "DATENAIS"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "TRAGE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "LNAIS"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "DEPNAIS"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "PAYSNAIS"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "NATIO1N1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "NATIO1N2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "NATIO1N3"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "NATIO1N4"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "NATIO2N"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "LIEN"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "COUPLE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SITUMATRI1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SITUMATRI2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SITUMATRI3"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SITUMATRI4"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SITUMATRI5"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SITUMATRI6"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "ENFDVH"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "NBENFDVH"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "DURENFDVH1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "DURENFDVH2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "DURENFDVH3"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "UNLOG"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "DURLOG"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "LOGENQ"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "LOGAUT"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "GARDE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "DORM"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "LOGCO"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "TYPLOGCO"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SITUA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "TRAVAIL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "GRDIPA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "GRDIPB"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "GRDIPC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "TELET"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "TELETNJ"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HTLC1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "FOYPAGEES"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "RESAUTO"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "INDCOLL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "IMI"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "ICOI"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "IAS"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "IEL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "IAATC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "IAATCD"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "STOC1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "STOC2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "STOCP"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "STOCA12"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "STOCA3"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "STOCA4"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "STOCB1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EPAS1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "ERETOUR"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EPASB"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EPASC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "ERET11"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "ERET12"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "ERET13"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "ERET14"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "ERET15"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "ERET16"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "ECOVID"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EPROJ"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EPROJB"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EPROJC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EPROJD"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMIA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMID11"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMID12"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMID13"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMID14"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMID15"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMID16"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMID17"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "ECOVID2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMIH"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMIK"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "EAMIL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MAA2A"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MAA2AT_Q"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MAA2M"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MARRIVC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MAA2AC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MAA2ATC_Q"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MAA2MC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MAA3"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MAA3A"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "MAA3M"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "SDEJA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KCU1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KCU2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HUTCOND"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HUTDEF1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HUTDEF2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HUTDEF3"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HUTDEF4"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HUP"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HPP"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HSP"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HUA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HPA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HULHUI1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HULHUI21"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HULHUI22"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HULHUI23"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HPI1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HPI2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HSI1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HSI2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HPH"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HCHA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HST"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HPEUP"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "HAUT"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KVE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSV"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSV1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KBA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSB"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KJA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSJPI"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSJPIT"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSMI"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSJPC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KJC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSJC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "GVOIT"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KGA1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KGA2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KGA3"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KGA4"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KGA11"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KGA12"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KGA13"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KGA14"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KCA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KVELO"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KGRA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSOA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KGRAA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KPISC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KAO1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KWC1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KWCI"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KWCD"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KBD"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSE1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KSE3"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KDLK1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "KDLK2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAD"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR11"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR12"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR13"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR14"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR15"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR21"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR22"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR23"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR24"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR25"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR31"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR32"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR33"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OLAR4"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OQA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "OQAD"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL11"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL12"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL13"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL14"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL15"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL16"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL17"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL18"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL4"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDN1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDT1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL_SIT1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDTAD"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDT2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDL_SIT2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDTAD_SIT2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "SDT2_SIT2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODM1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODM2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODM3"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODM4"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODM5"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODM6"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODM7"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODP11"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODP12"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODP13"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODP14"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODP21"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODP22"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VMODP23"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VVENDL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VFFH"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VFLA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VACHAL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VBILLOG"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VLR"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "COMMUNEPASSEE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "DEPART"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VCRCOM"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VPRA"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VLA1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VSO1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VSY"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VLOYER"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VAID"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VIN"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VTL1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VSURF"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VPI"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VANCIEN"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VOP"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VND"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VLRD"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VLAB1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VDD1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VDSY"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VTLD1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VSURFD"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VPID"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS1"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS21"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS22"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS23"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS24"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS25"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS26"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS31"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS32"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS33"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS34"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS35"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS36"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS41"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS42"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS43"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS44"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "VRAIS45"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "TELFIXE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "TELMOB"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "UWEB"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "CHGNC"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "CIVCOLL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "PRENOMCOLL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "NOMCOLL"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "CHGNC2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "CIVCOLL2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "PRENOMCOLL2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "NOMCOLL2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "NOTELCOLL"
 		},

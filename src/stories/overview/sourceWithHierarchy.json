@@ -3752,11 +3752,7 @@
 			"name": "FAVOURITE_CHAR1_1_1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3765,11 +3761,7 @@
 			"name": "FAVOURITE_CHAR2_1_2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3778,11 +3770,7 @@
 			"name": "FAVOURITE_CHAR3_1_3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3791,11 +3779,7 @@
 			"name": "FAVOURITE_CHAR1_2_1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3804,11 +3788,7 @@
 			"name": "FAVOURITE_CHAR2_2_2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3817,11 +3797,7 @@
 			"name": "FAVOURITE_CHAR3_2_3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3830,11 +3806,7 @@
 			"name": "FAVOURITE_CHAR1_3_1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3843,11 +3815,7 @@
 			"name": "FAVOURITE_CHAR2_3_2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3856,11 +3824,7 @@
 			"name": "FAVOURITE_CHAR3_3_3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3869,11 +3833,7 @@
 			"name": "FAVOURITE_CHAR1_4_1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3882,11 +3842,7 @@
 			"name": "FAVOURITE_CHAR2_4_2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3895,11 +3851,7 @@
 			"name": "FAVOURITE_CHAR3_4_3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3908,11 +3860,7 @@
 			"name": "FAVOURITE_CHAR1_5_1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3921,11 +3869,7 @@
 			"name": "FAVOURITE_CHAR2_5_2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3934,11 +3878,7 @@
 			"name": "FAVOURITE_CHAR3_5_3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3947,11 +3887,7 @@
 			"name": "FAVOURITE_CHAR1_6_1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3960,11 +3896,7 @@
 			"name": "FAVOURITE_CHAR2_6_2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3973,11 +3905,7 @@
 			"name": "FAVOURITE_CHAR3_6_3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3986,11 +3914,7 @@
 			"name": "FAVOURITE_CHAR1_7_1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -3999,11 +3923,7 @@
 			"name": "FAVOURITE_CHAR2_7_2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4012,11 +3932,7 @@
 			"name": "FAVOURITE_CHAR3_7_3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4025,11 +3941,7 @@
 			"name": "FAVOURITE_CHAR1_8_1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4038,11 +3950,7 @@
 			"name": "FAVOURITE_CHAR2_8_2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4051,11 +3959,7 @@
 			"name": "FAVOURITE_CHAR3_8_3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4064,11 +3968,7 @@
 			"name": "FAVOURITE_CHAR1_9_1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4077,11 +3977,7 @@
 			"name": "FAVOURITE_CHAR2_9_2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4090,11 +3986,7 @@
 			"name": "FAVOURITE_CHAR3_9_3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4103,11 +3995,7 @@
 			"name": "FAVOURITE_CHAR1_10_1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4116,11 +4004,7 @@
 			"name": "FAVOURITE_CHAR2_10_2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4129,11 +4013,7 @@
 			"name": "FAVOURITE_CHAR3_10_3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4142,11 +4022,7 @@
 			"name": "COMMENT_QE",
 			"componentRef": "COMMENT-QUESTION",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4157,11 +4033,7 @@
 			"name": "COMMENT",
 			"componentRef": "j6p3dkx6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4170,11 +4042,7 @@
 			"name": "COMMENT_MISSING",
 			"componentRef": "j6p3dkx6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4183,11 +4051,7 @@
 			"name": "READY",
 			"componentRef": "j6p0np9q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4196,11 +4060,7 @@
 			"name": "READY_MISSING",
 			"componentRef": "j6p0np9q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4209,11 +4069,7 @@
 			"name": "PRODUCER",
 			"componentRef": "j3343qhx",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4222,11 +4078,7 @@
 			"name": "PRODUCER_MISSING",
 			"componentRef": "j3343qhx",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4235,11 +4087,7 @@
 			"name": "SEASON_NUMBER",
 			"componentRef": "j6q9h8tj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4248,11 +4096,7 @@
 			"name": "SEASON_NUMBER_MISSING",
 			"componentRef": "j6q9h8tj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4261,11 +4105,7 @@
 			"name": "DATEFIRST",
 			"componentRef": "kiq71eoi",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4274,11 +4114,7 @@
 			"name": "DATEFIRST_MISSING",
 			"componentRef": "kiq71eoi",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4287,11 +4123,7 @@
 			"name": "DATEYYYYMM",
 			"componentRef": "k5nvty2o",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4300,11 +4132,7 @@
 			"name": "DATEYYYYMM_MISSING",
 			"componentRef": "k5nvty2o",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4313,11 +4141,7 @@
 			"name": "DATEYYYY",
 			"componentRef": "k5nw1fir",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4326,11 +4150,7 @@
 			"name": "DATEYYYY_MISSING",
 			"componentRef": "k5nw1fir",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4339,11 +4159,7 @@
 			"name": "DURATIONH",
 			"componentRef": "k5nw0w05",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4352,11 +4168,7 @@
 			"name": "DURATIONH_MISSING",
 			"componentRef": "k5nw0w05",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4365,11 +4177,7 @@
 			"name": "DURATIOND",
 			"componentRef": "k5nvu98z",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4378,11 +4186,7 @@
 			"name": "DURATIOND_MISSING",
 			"componentRef": "k5nvu98z",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4391,11 +4195,7 @@
 			"name": "DURATIONM",
 			"componentRef": "k5nw8ei1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4404,11 +4204,7 @@
 			"name": "DURATIONM_MISSING",
 			"componentRef": "k5nw8ei1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4417,11 +4213,7 @@
 			"name": "DURATIONY",
 			"componentRef": "k5nw9dk4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4430,11 +4222,7 @@
 			"name": "DURATIONY_MISSING",
 			"componentRef": "k5nw9dk4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4443,11 +4231,7 @@
 			"name": "AUDIENCE_SHARE",
 			"componentRef": "j6z06z1e",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4456,11 +4240,7 @@
 			"name": "AUDIENCE_SHARE_MISSING",
 			"componentRef": "j6z06z1e",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4469,11 +4249,7 @@
 			"name": "CITY",
 			"componentRef": "j3343clt",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4482,11 +4258,7 @@
 			"name": "CITY_MISSING",
 			"componentRef": "j3343clt",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4495,11 +4267,7 @@
 			"name": "MAYOR",
 			"componentRef": "j6qdfhvw",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4508,11 +4276,7 @@
 			"name": "MAYOR_MISSING",
 			"componentRef": "j6qdfhvw",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4521,11 +4285,7 @@
 			"name": "STATE",
 			"componentRef": "j4nw5cqz",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4534,11 +4294,7 @@
 			"name": "STATE_MISSING",
 			"componentRef": "j4nw5cqz",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4547,11 +4303,7 @@
 			"name": "PET1",
 			"componentRef": "j334akov",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4560,11 +4312,7 @@
 			"name": "PET2",
 			"componentRef": "j334akov",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4573,11 +4321,7 @@
 			"name": "PET3",
 			"componentRef": "j334akov",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4586,11 +4330,7 @@
 			"name": "PET4",
 			"componentRef": "j334akov",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4599,11 +4339,7 @@
 			"name": "PET_MISSING",
 			"componentRef": "j334akov",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4612,11 +4348,7 @@
 			"name": "ICE_FLAVOUR_MISSING",
 			"componentRef": "j6p29i81",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4625,11 +4357,7 @@
 			"name": "ICE_FLAVOUR1",
 			"componentRef": "j6p29i81",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4638,11 +4366,7 @@
 			"name": "ICE_FLAVOUR2",
 			"componentRef": "j6p29i81",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4651,11 +4375,7 @@
 			"name": "ICE_FLAVOUR3",
 			"componentRef": "j6p29i81",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4664,11 +4384,7 @@
 			"name": "ICE_FLAVOUR4",
 			"componentRef": "j6p29i81",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4677,11 +4393,7 @@
 			"name": "NUCLEAR_CHARACTER_MISSING",
 			"componentRef": "j6qefnga",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4690,11 +4402,7 @@
 			"name": "NUCLEAR_CHARACTER1",
 			"componentRef": "j6qefnga",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4703,11 +4411,7 @@
 			"name": "NUCLEAR_CHARACTER2",
 			"componentRef": "j6qefnga",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4716,11 +4420,7 @@
 			"name": "NUCLEAR_CHARACTER3",
 			"componentRef": "j6qefnga",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4729,11 +4429,7 @@
 			"name": "NUCLEAR_CHARACTER4",
 			"componentRef": "j6qefnga",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4742,11 +4438,7 @@
 			"name": "BIRTH_CHARACTER_MISSING",
 			"componentRef": "j6yzoc6g",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4755,11 +4447,7 @@
 			"name": "BIRTH_CHARACTER1",
 			"componentRef": "j6yzoc6g",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4768,11 +4456,7 @@
 			"name": "BIRTH_CHARACTER2",
 			"componentRef": "j6yzoc6g",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4781,11 +4465,7 @@
 			"name": "BIRTH_CHARACTER3",
 			"componentRef": "j6yzoc6g",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4794,11 +4474,7 @@
 			"name": "BIRTH_CHARACTER4",
 			"componentRef": "j6yzoc6g",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4807,11 +4483,7 @@
 			"name": "BIRTH_CHARACTER5",
 			"componentRef": "j6yzoc6g",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4820,11 +4492,7 @@
 			"name": "PERCENTAGE_EXPENSES_MISSING",
 			"componentRef": "j4nwc63q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4833,11 +4501,7 @@
 			"name": "PERCENTAGE_EXPENSES11",
 			"componentRef": "j4nwc63q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4846,11 +4510,7 @@
 			"name": "PERCENTAGE_EXPENSES21",
 			"componentRef": "j4nwc63q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4859,11 +4519,7 @@
 			"name": "PERCENTAGE_EXPENSES31",
 			"componentRef": "j4nwc63q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4872,11 +4528,7 @@
 			"name": "PERCENTAGE_EXPENSES41",
 			"componentRef": "j4nwc63q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4885,11 +4537,7 @@
 			"name": "PERCENTAGE_EXPENSES51",
 			"componentRef": "j4nwc63q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4898,11 +4546,7 @@
 			"name": "PERCENTAGE_EXPENSES61",
 			"componentRef": "j4nwc63q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4911,11 +4555,7 @@
 			"name": "PERCENTAGE_EXPENSES71",
 			"componentRef": "j4nwc63q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4924,11 +4564,7 @@
 			"name": "LAST_FOOD_SHOPPING_MISSING",
 			"componentRef": "k9cg2q5t",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4937,11 +4573,7 @@
 			"name": "LAST_FOOD_SHOPPING11",
 			"componentRef": "k9cg2q5t",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4950,11 +4582,7 @@
 			"name": "LAST_FOOD_SHOPPING21",
 			"componentRef": "k9cg2q5t",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4963,11 +4591,7 @@
 			"name": "LAST_FOOD_SHOPPING31",
 			"componentRef": "k9cg2q5t",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4976,11 +4600,7 @@
 			"name": "LAST_FOOD_SHOPPING41",
 			"componentRef": "k9cg2q5t",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -4989,11 +4609,7 @@
 			"name": "LAST_FOOD_SHOPPING51",
 			"componentRef": "k9cg2q5t",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5002,11 +4618,7 @@
 			"name": "LAST_FOOD_SHOPPING61",
 			"componentRef": "k9cg2q5t",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5015,11 +4627,7 @@
 			"name": "LAST_FOOD_SHOPPING71",
 			"componentRef": "k9cg2q5t",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5028,11 +4636,7 @@
 			"name": "LAST_FOOD_SHOPPING81",
 			"componentRef": "k9cg2q5t",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5041,11 +4645,7 @@
 			"name": "CLOWNING_MISSING",
 			"componentRef": "kbkjvgel",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5054,11 +4654,7 @@
 			"name": "CLOWNING11",
 			"componentRef": "kbkjvgel",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5067,11 +4663,7 @@
 			"name": "CLOWNING12",
 			"componentRef": "kbkjvgel",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5080,11 +4672,7 @@
 			"name": "CLOWNING21",
 			"componentRef": "kbkjvgel",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5093,11 +4681,7 @@
 			"name": "CLOWNING22",
 			"componentRef": "kbkjvgel",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5106,11 +4690,7 @@
 			"name": "CLOWNING31",
 			"componentRef": "kbkjvgel",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5119,11 +4699,7 @@
 			"name": "CLOWNING32",
 			"componentRef": "kbkjvgel",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5132,11 +4708,7 @@
 			"name": "CLOWNING41",
 			"componentRef": "kbkjvgel",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5145,11 +4717,7 @@
 			"name": "CLOWNING42",
 			"componentRef": "kbkjvgel",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5158,11 +4726,7 @@
 			"name": "TRAVEL_MISSING",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5171,11 +4735,7 @@
 			"name": "TRAVEL11",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5184,11 +4744,7 @@
 			"name": "TRAVEL12",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5197,11 +4753,7 @@
 			"name": "TRAVEL13",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5210,11 +4762,7 @@
 			"name": "TRAVEL14",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5223,11 +4771,7 @@
 			"name": "TRAVEL15",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5236,11 +4780,7 @@
 			"name": "TRAVEL16",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5249,11 +4789,7 @@
 			"name": "TRAVEL21",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5262,11 +4798,7 @@
 			"name": "TRAVEL22",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5275,11 +4807,7 @@
 			"name": "TRAVEL23",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5288,11 +4816,7 @@
 			"name": "TRAVEL24",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5301,11 +4825,7 @@
 			"name": "TRAVEL25",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5314,11 +4834,7 @@
 			"name": "TRAVEL26",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5327,11 +4843,7 @@
 			"name": "TRAVEL31",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5340,11 +4852,7 @@
 			"name": "TRAVEL32",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5353,11 +4861,7 @@
 			"name": "TRAVEL33",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5366,11 +4870,7 @@
 			"name": "TRAVEL34",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5379,11 +4879,7 @@
 			"name": "TRAVEL35",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5392,11 +4888,7 @@
 			"name": "TRAVEL36",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5405,11 +4897,7 @@
 			"name": "TRAVEL41",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5418,11 +4906,7 @@
 			"name": "TRAVEL42",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5431,11 +4915,7 @@
 			"name": "TRAVEL43",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5444,11 +4924,7 @@
 			"name": "TRAVEL44",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5457,11 +4933,7 @@
 			"name": "TRAVEL45",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5470,11 +4942,7 @@
 			"name": "TRAVEL46",
 			"componentRef": "j6p2lwuj",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5483,11 +4951,7 @@
 			"name": "FAVOURITE_CHAR_MISSING",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5496,11 +4960,7 @@
 			"name": "FAVOURITE_CHAR1",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5509,11 +4969,7 @@
 			"name": "FAVOURITE_CHAR2",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5522,11 +4978,7 @@
 			"name": "FAVOURITE_CHAR3",
 			"componentRef": "j6qg8rc6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5535,11 +4987,7 @@
 			"name": "FEELCHAREV_MISSING",
 			"componentRef": "jvxux0mi",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5548,11 +4996,7 @@
 			"name": "FEELCHAREV1",
 			"componentRef": "jvxux0mi",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5561,11 +5005,7 @@
 			"name": "FEELCHAREV2",
 			"componentRef": "jvxux0mi",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5574,11 +5014,7 @@
 			"name": "FEELCHAREV3",
 			"componentRef": "jvxux0mi",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5587,11 +5023,7 @@
 			"name": "FEELCHAREV4",
 			"componentRef": "jvxux0mi",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5600,11 +5032,7 @@
 			"name": "LEAVDURATION_MISSING",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5613,11 +5041,7 @@
 			"name": "LEAVDURATION11",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5626,11 +5050,7 @@
 			"name": "LEAVDURATION12",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5639,11 +5059,7 @@
 			"name": "LEAVDURATION21",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5652,11 +5068,7 @@
 			"name": "LEAVDURATION22",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5665,11 +5077,7 @@
 			"name": "LEAVDURATION31",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5678,11 +5086,7 @@
 			"name": "LEAVDURATION32",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5691,11 +5095,7 @@
 			"name": "LEAVDURATION41",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5704,11 +5104,7 @@
 			"name": "LEAVDURATION42",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5717,11 +5113,7 @@
 			"name": "LEAVDURATION51",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5730,11 +5122,7 @@
 			"name": "LEAVDURATION52",
 			"componentRef": "jvxwy68n",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5743,11 +5131,7 @@
 			"name": "NB_CHAR",
 			"componentRef": "kiq612ky",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5756,11 +5140,7 @@
 			"name": "NB_CHAR_MISSING",
 			"componentRef": "kiq612ky",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5769,11 +5149,7 @@
 			"name": "LOOP_kiq7bjam_MISSING",
 			"componentRef": "kiq7bjam",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -5782,11 +5158,7 @@
 			"name": "NAME_CHAR",
 			"componentRef": "kiq7bjam",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -5795,11 +5167,7 @@
 			"name": "AGE_CHAR",
 			"componentRef": "kiq7bjam",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -5808,11 +5176,7 @@
 			"name": "FAVCHAR",
 			"componentRef": "kiq7cbgo",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -5821,11 +5185,7 @@
 			"name": "FAVCHAR_MISSING",
 			"componentRef": "kiq7cbgo",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -5834,11 +5194,7 @@
 			"name": "MEMORY_CHAR",
 			"componentRef": "kiq7cbgo",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -5847,11 +5203,7 @@
 			"name": "MEMORY_CHAR_MISSING",
 			"componentRef": "kiq7cbgo",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -5860,11 +5212,7 @@
 			"name": "SURVEY_COMMENT",
 			"componentRef": "j6z0z3us",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -5873,11 +5221,7 @@
 			"name": "SURVEY_COMMENT_MISSING",
 			"componentRef": "j6z0z3us",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		}
 	],

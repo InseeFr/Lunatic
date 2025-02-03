@@ -174,88 +174,56 @@
 			"variableType": "COLLECTED",
 			"name": "COM_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": "SAINT_MARTIN_LE_TROU",
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": "SAINT_MARTIN_LE_TROU"
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "CODE_COM_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": "000",
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": "000"
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "CODE_DEP_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": "97",
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": "97"
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "ILOT_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "RANG_A_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "RANG_L_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "LOG_INDIV_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "LOG_ISOLE_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		}
 	]

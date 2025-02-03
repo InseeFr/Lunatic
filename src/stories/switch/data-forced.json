@@ -25,11 +25,7 @@
 			"name": "READY",
 			"componentRef": "1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": true,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": true
 			}
 		},
 		{
@@ -37,11 +33,7 @@
 			"name": "READY2",
 			"componentRef": "2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": true,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": true
 			}
 		}
 	]

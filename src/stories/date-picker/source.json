@@ -43,11 +43,7 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": "1974-03-15",
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": "1974-03-15"
 			},
 			"name": "Q1"
 		}

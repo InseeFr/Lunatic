@@ -7,33 +7,21 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "PREMIERTAB2"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "PREMIERTAB3"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "PREMIERTAB4"
 		}

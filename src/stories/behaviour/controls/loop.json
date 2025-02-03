@@ -118,22 +118,14 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": ["John", "Jane"],
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": ["John", "Jane"]
 			},
 			"name": "PRENOMS"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [10, 12],
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": [10, 12]
 			},
 			"name": "AGES"
 		}
