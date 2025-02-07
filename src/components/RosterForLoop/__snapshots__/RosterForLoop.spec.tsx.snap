@@ -4,6 +4,7 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
 <div>
   <label
     class="lunatic-label"
+    data-testid="label"
     for="table"
     id="label-table"
   >

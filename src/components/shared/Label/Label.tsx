@@ -27,7 +27,7 @@ function LunaticLabel({
 	style,
 	description,
 }: Props) {
-	if (!children) {
+	if (!children && !description) {
 		return null;
 	}
 	return (
@@ -36,6 +36,7 @@ function LunaticLabel({
 			id={id}
 			className={classnames('lunatic-label', className)}
 			style={style}
+			data-testid="label"
 		>
 			{children}
 			<LabelDescription value={description} />
