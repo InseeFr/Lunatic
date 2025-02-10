@@ -3,9 +3,9 @@ import { Label } from './Label';
 import { describe, it, expect } from 'vitest';
 
 describe('Label', () => {
-	it('renders null when children is falsy', () => {
+	it('renders null when children and description are falsy', () => {
 		const { container } = render(
-			<Label htmlFor="input" id="label" description="This is a label">
+			<Label htmlFor="input" id="label">
 				{null}
 			</Label>
 		);
@@ -34,8 +34,20 @@ describe('Label', () => {
 
 		const label = getByText('Name');
 		expect(label).toBeInTheDocument();
-		expect(label.parentNode).toHaveAttribute('for', 'kze792d8');
+		expect(label.closest('label')).toHaveAttribute('for', 'kze792d8');
 		const description = queryByText('This is a label');
 		expect(description).not.toBeInTheDocument();
+	});
+
+	it('renders a label with description and no label', () => {
+		const { container, queryByText } = render(
+			<Label htmlFor="kze792d8" id="label" description="This is a label" />
+		);
+
+		const label = container.querySelector('label');
+		expect(label).toBeInTheDocument();
+		expect(label).toHaveAttribute('for', 'kze792d8');
+		const description = queryByText('This is a label');
+		expect(description).toBeInTheDocument();
 	});
 });

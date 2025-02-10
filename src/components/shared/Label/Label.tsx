@@ -27,7 +27,7 @@ function LunaticLabel({
 	style,
 	description,
 }: Props) {
-	if (!children) {
+	if (!children && !description) {
 		return null;
 	}
 	return (

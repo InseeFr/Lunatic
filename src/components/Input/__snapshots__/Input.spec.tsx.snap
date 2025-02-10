@@ -5,6 +5,17 @@ exports[`Input > renders without crashing 1`] = `
   <div
     class="lunatic-input"
   >
+    <label
+      class="lunatic-label"
+      for="input"
+      id="label-input"
+    >
+      <span
+        class="label-description"
+      >
+        description
+      </span>
+    </label>
     <input
       aria-invalid="false"
       aria-labelledby="label-input"
