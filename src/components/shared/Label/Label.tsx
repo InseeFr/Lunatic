@@ -36,7 +36,6 @@ function LunaticLabel({
 			id={id}
 			className={classnames('lunatic-label', className)}
 			style={style}
-			data-testid="label"
 		>
 			{children}
 			<LabelDescription value={description} />

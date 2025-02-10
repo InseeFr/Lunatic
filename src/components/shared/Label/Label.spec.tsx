@@ -40,11 +40,11 @@ describe('Label', () => {
 	});
 
 	it('renders a label with description and no label', () => {
-		const { getByTestId, queryByText } = render(
+		const { container, queryByText } = render(
 			<Label htmlFor="kze792d8" id="label" description="This is a label" />
 		);
 
-		const label = getByTestId('label');
+		const label = container.querySelector('label');
 		expect(label).toBeInTheDocument();
 		expect(label).toHaveAttribute('for', 'kze792d8');
 		const description = queryByText('This is a label');

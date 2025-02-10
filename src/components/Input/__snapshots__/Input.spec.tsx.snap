@@ -7,7 +7,6 @@ exports[`Input > renders without crashing 1`] = `
   >
     <label
       class="lunatic-label"
-      data-testid="label"
       for="input"
       id="label-input"
     >
