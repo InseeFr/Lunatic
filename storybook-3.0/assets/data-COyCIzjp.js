@@ -1,0 +1,1 @@
+const e=[{componentType:"Input",label:{value:`"Nom de l'occupant principal."`,type:"VTL|MD"},maxLength:30,id:"surname",description:{value:'"For example, Bob."',type:"VTL|MD"},response:{name:"NOM"},page:"1"}],a=[{variableType:"COLLECTED",name:"NOM",componentRef:"name",values:{COLLECTED:null}}],n={components:e,variables:a},o={};export{o as d,n as s};
