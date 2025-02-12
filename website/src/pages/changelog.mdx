@@ -1,3 +1,29 @@
+### 3.4.15
+
+#### Correction de bugs
+
+- la description de certains composants n'était pas affichée si le composant n'a pas de label. Composants concernés : Datepicker, Input, InputNumber, Textarea, CheckboxGroup (pour les modalités), Radio (pour les modalités), Suggester, Dropdown
+
+#### Modifications mineures
+
+- retrait des états de variable `EDITED`, `FORCED`, `INPUTTED`, `PREVIOUS` qui n'étaient pas gérés mais uniquement présent dans les données avec des valeurs nulles
+
+### 3.4.14
+
+#### Correction de bugs
+
+- la méthode `hasPageResponse` fournie par le useLunatic rendait toujours `false` lorsque les composants sont englobés dans le composant Question
+
+### 3.4.13
+
+#### Nouvelles fonctionnalités
+
+- Input, InputNumber : rappel de la valeur saisie au survol du champ de réponse (avec l'unité dans le cas du champ nombre)
+
+#### Correction de bugs
+
+- certains cas menaient à une page vide dans une boucle. Cette page vide ne s'affiche plus
+
 ### 3.4.12
 
 #### Modifications mineures
