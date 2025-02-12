@@ -280,77 +280,49 @@
 			"variableType": "COLLECTED",
 			"name": "NB_HAB",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": 2,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": 2
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "ZERO",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "SOMETHING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "AGE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "SEXE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "PRENOMS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "KNOWREC",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{

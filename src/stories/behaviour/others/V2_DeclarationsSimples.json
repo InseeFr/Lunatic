@@ -697,11 +697,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -709,11 +705,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -721,11 +713,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -733,11 +721,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -745,11 +729,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q5",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -757,11 +737,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -769,11 +745,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q7",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -781,11 +753,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q8",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -793,11 +761,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q9",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -805,11 +769,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q10",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -817,11 +777,7 @@
 			"variableType": "COLLECTED",
 			"name": "MIX1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -829,11 +785,7 @@
 			"variableType": "COLLECTED",
 			"name": "MIX2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -841,11 +793,7 @@
 			"variableType": "COLLECTED",
 			"name": "MIX3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -853,11 +801,7 @@
 			"variableType": "COLLECTED",
 			"name": "MIX4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 

@@ -244,11 +244,7 @@ export type Variable =
 			variableType: 'COLLECTED';
 			name: string;
 			values?: {
-				PREVIOUS: VariableValue;
 				COLLECTED: VariableValue;
-				FORCED: VariableValue;
-				EDITED: VariableValue;
-				INPUTTED: VariableValue;
 			};
 	  }
 	| {
@@ -262,7 +258,7 @@ export type VariableValue = VariableScalarValue | unknown[];
 export type VariableScalarValue = string | number | null;
 
 /**
- * A lunatic survey unit
+ * Representation of a Lunatic questionnaire.
  */
 export type LunaticSource = {
 	label?: VTLExpression;

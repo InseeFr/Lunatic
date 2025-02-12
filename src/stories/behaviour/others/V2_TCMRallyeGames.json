@@ -2016,11 +2016,7 @@
 			"variableType": "COLLECTED",
 			"name": "NHAB",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -2028,11 +2024,7 @@
 			"variableType": "COLLECTED",
 			"name": "G_PRENOM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2040,11 +2032,7 @@
 			"variableType": "COLLECTED",
 			"name": "SEXE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2052,11 +2040,7 @@
 			"variableType": "COLLECTED",
 			"name": "DATENAIS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2064,11 +2048,7 @@
 			"variableType": "COLLECTED",
 			"name": "TRAGE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2076,11 +2056,7 @@
 			"variableType": "COLLECTED",
 			"name": "LNAIS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2088,11 +2064,7 @@
 			"variableType": "COLLECTED",
 			"name": "DEPNAIS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2100,11 +2072,7 @@
 			"variableType": "COLLECTED",
 			"name": "PAYSNAIS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2112,11 +2080,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATION1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2124,11 +2088,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATION2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2136,11 +2096,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATION3",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2148,11 +2104,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATION4",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2160,11 +2112,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIONETR",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2172,11 +2120,7 @@
 			"variableType": "COLLECTED",
 			"name": "VECUE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2184,11 +2128,7 @@
 			"variableType": "COLLECTED",
 			"name": "DATEDEPART",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2196,11 +2136,7 @@
 			"variableType": "COLLECTED",
 			"name": "DATERETOUR",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2208,11 +2144,7 @@
 			"variableType": "COLLECTED",
 			"name": "AGRETOUR",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2220,11 +2152,7 @@
 			"variableType": "COLLECTED",
 			"name": "ANNARIV",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2232,11 +2160,7 @@
 			"variableType": "COLLECTED",
 			"name": "AGARRIV",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2244,11 +2168,7 @@
 			"variableType": "COLLECTED",
 			"name": "UNLOG",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2256,11 +2176,7 @@
 			"variableType": "COLLECTED",
 			"name": "DURLOG",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2268,11 +2184,7 @@
 			"variableType": "COLLECTED",
 			"name": "MINLOGENQ1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2280,11 +2192,7 @@
 			"variableType": "COLLECTED",
 			"name": "MINLOGENQ2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2292,11 +2200,7 @@
 			"variableType": "COLLECTED",
 			"name": "MINLOGENQ3",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2304,11 +2208,7 @@
 			"variableType": "COLLECTED",
 			"name": "MINLOGENQ4",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2316,11 +2216,7 @@
 			"variableType": "COLLECTED",
 			"name": "MINLOGENQ5",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2328,11 +2224,7 @@
 			"variableType": "COLLECTED",
 			"name": "MINLOGAUT",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2340,11 +2232,7 @@
 			"variableType": "COLLECTED",
 			"name": "GARDE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2352,11 +2240,7 @@
 			"variableType": "COLLECTED",
 			"name": "DORM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2364,11 +2248,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAJLOGENQ",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2376,11 +2256,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAJLOGAUT",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2388,11 +2264,7 @@
 			"variableType": "COLLECTED",
 			"name": "LOGCO",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -2400,11 +2272,7 @@
 			"variableType": "COLLECTED",
 			"name": "TYPLOGCO",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 

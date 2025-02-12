@@ -88,66 +88,42 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "PRODUCT"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "PRODUCT_PRICE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "PRODUCT_NAME"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "PRODUCT_PRICE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "PRODUCT_OTHER"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "PRENOM"
 		}

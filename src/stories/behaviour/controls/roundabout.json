@@ -80,33 +80,21 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": ["John", "Jane"],
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": ["John", "Jane"]
 			},
 			"name": "PRENOMS"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "PROGRESS"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [17, 22],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [17, 22]
 			},
 			"name": "AGES"
 		}

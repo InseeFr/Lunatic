@@ -1097,29 +1097,11 @@
 						"values": {
 							"type": "object",
 							"properties": {
-								"PREVIOUS": {
-									"$ref": "#/$defs/VariableValue"
-								},
 								"COLLECTED": {
-									"$ref": "#/$defs/VariableValue"
-								},
-								"FORCED": {
-									"$ref": "#/$defs/VariableValue"
-								},
-								"EDITED": {
-									"$ref": "#/$defs/VariableValue"
-								},
-								"INPUTTED": {
 									"$ref": "#/$defs/VariableValue"
 								}
 							},
-							"required": [
-								"PREVIOUS",
-								"COLLECTED",
-								"FORCED",
-								"EDITED",
-								"INPUTTED"
-							]
+							"required": ["COLLECTED"]
 						}
 					},
 					"required": ["variableType", "name"],

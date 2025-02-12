@@ -7,22 +7,14 @@
 			"variableType": "COLLECTED",
 			"name": "TESTTEXTE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "QNUM",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		}
 	],

@@ -616,132 +616,84 @@
 			"variableType": "COLLECTED",
 			"name": "COMMENT_QE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "COMMENT_QE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "NB",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "NB_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "PRENOM_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "NOM_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "NOM",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "AGE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "AGE_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "DIVERS",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "DIVERS_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{

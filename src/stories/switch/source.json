@@ -33,11 +33,7 @@
 			"name": "READY",
 			"componentRef": "1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
@@ -45,11 +41,7 @@
 			"name": "READY_MISSING",
 			"componentRef": "1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 		{
@@ -57,11 +49,7 @@
 			"name": "READY2",
 			"componentRef": "2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": true,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": true
 			}
 		},
 		{
@@ -69,11 +57,7 @@
 			"name": "READY2_MISSING",
 			"componentRef": "2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		}
 	]

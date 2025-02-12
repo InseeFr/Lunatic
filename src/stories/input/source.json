@@ -24,11 +24,7 @@
 			"name": "NOM",
 			"componentRef": "name",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		}
 	]

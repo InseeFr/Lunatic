@@ -4,17 +4,9 @@
 		"CALCULATED": {},
 		"COLLECTED": {
 			"NBHAB": {
-				"PREVIOUS": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null,
 				"COLLECTED": 2
 			},
 			"NAME": {
-				"PREVIOUS": [],
-				"FORCED": [],
-				"EDITED": [],
-				"INPUTTED": [],
 				"COLLECTED": ["Jean", "Paul"]
 			}
 		}

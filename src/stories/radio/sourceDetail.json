@@ -74,11 +74,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -86,11 +82,7 @@
 			"variableType": "COLLECTED",
 			"name": "Q2_DETAIL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		}
 	]

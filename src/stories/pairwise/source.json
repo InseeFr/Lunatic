@@ -270,55 +270,35 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "AGE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "LINKS",
 			"values": {
-				"PREVIOUS": [[null]],
-				"COLLECTED": [[null]],
-				"FORCED": [[null]],
-				"EDITED": [[null]],
-				"INPUTTED": [[null]]
+				"COLLECTED": [[null]]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "OTHER",
 			"values": {
-				"PREVIOUS": [[null]],
-				"COLLECTED": [[null]],
-				"FORCED": [[null]],
-				"EDITED": [[null]],
-				"INPUTTED": [[null]]
+				"COLLECTED": [[null]]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "WHY",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{

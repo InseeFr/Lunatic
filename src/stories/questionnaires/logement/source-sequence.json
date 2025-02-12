@@ -20593,11 +20593,7 @@
 			"variableType": "COLLECTED",
 			"name": "CADR",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20605,11 +20601,7 @@
 			"variableType": "COLLECTED",
 			"name": "CADR_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20617,11 +20609,7 @@
 			"variableType": "COLLECTED",
 			"name": "NUMTH_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20629,11 +20617,7 @@
 			"variableType": "COLLECTED",
 			"name": "NUMTH_COLL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20641,11 +20625,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADR_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20653,11 +20633,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADR_COLL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20665,11 +20641,7 @@
 			"variableType": "COLLECTED",
 			"name": "CADRTH_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20677,11 +20649,7 @@
 			"variableType": "COLLECTED",
 			"name": "CADRTH_COLL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20689,11 +20657,7 @@
 			"variableType": "COLLECTED",
 			"name": "CODEPOST1_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20701,11 +20665,7 @@
 			"variableType": "COLLECTED",
 			"name": "CODEPOST1_COLL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20713,11 +20673,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIBCOM_COLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20725,11 +20681,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIBCOM_COLL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20737,11 +20689,7 @@
 			"variableType": "COLLECTED",
 			"name": "INDNVOCC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20749,11 +20697,7 @@
 			"variableType": "COLLECTED",
 			"name": "INDNVOCC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20761,11 +20705,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOMNVOCC1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20773,11 +20713,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOMNVOCC1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20785,11 +20721,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOMNVOCC1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20797,11 +20729,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOMNVOCC1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20809,11 +20737,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOMNVOCC2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20821,11 +20745,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOMNVOCC2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20833,11 +20753,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOMNVOCC2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20845,11 +20761,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOMNVOCC2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20857,11 +20769,7 @@
 			"variableType": "COLLECTED",
 			"name": "TELNVOCC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20869,11 +20777,7 @@
 			"variableType": "COLLECTED",
 			"name": "TELNVOCC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20881,11 +20785,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAILNVOCC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20893,11 +20793,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAILNVOCC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20905,11 +20801,7 @@
 			"variableType": "COLLECTED",
 			"name": "NBHAB",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20917,11 +20809,7 @@
 			"variableType": "COLLECTED",
 			"name": "NBHAB_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -20929,11 +20817,7 @@
 			"variableType": "COLLECTED",
 			"name": "LOOP_kmnolkxb_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -20941,11 +20825,7 @@
 			"variableType": "COLLECTED",
 			"name": "G_PRENOM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -20953,11 +20833,7 @@
 			"variableType": "COLLECTED",
 			"name": "SEXE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -20965,11 +20841,7 @@
 			"variableType": "COLLECTED",
 			"name": "SEXE_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -20977,11 +20849,7 @@
 			"variableType": "COLLECTED",
 			"name": "DATENAIS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -20989,11 +20857,7 @@
 			"variableType": "COLLECTED",
 			"name": "DATENAIS_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21001,11 +20865,7 @@
 			"variableType": "COLLECTED",
 			"name": "TRAGE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21013,11 +20873,7 @@
 			"variableType": "COLLECTED",
 			"name": "TRAGE_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21025,11 +20881,7 @@
 			"variableType": "COLLECTED",
 			"name": "LNAIS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21037,11 +20889,7 @@
 			"variableType": "COLLECTED",
 			"name": "LNAIS_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21049,11 +20897,7 @@
 			"variableType": "COLLECTED",
 			"name": "DEPNAIS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21061,11 +20905,7 @@
 			"variableType": "COLLECTED",
 			"name": "DEPNAIS_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21073,11 +20913,7 @@
 			"variableType": "COLLECTED",
 			"name": "PAYSNAIS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21085,11 +20921,7 @@
 			"variableType": "COLLECTED",
 			"name": "PAYSNAIS_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21097,11 +20929,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIO1N1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21109,11 +20937,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIO1N2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21121,11 +20945,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIO1N3",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21133,11 +20953,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIO1N4",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21145,11 +20961,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIO1N_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21157,11 +20969,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIO2N",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21169,11 +20977,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIO2N_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21181,11 +20985,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIEN",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21193,11 +20993,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIEN_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21205,11 +21001,7 @@
 			"variableType": "COLLECTED",
 			"name": "COUPLE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21217,11 +21009,7 @@
 			"variableType": "COLLECTED",
 			"name": "COUPLE_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21229,11 +21017,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITUMATRI1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21241,11 +21025,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITUMATRI2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21253,11 +21033,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITUMATRI3",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21265,11 +21041,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITUMATRI4",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21277,11 +21049,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITUMATRI5",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21289,11 +21057,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITUMATRI6",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21301,11 +21065,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITUMATRI_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21313,11 +21073,7 @@
 			"variableType": "COLLECTED",
 			"name": "ENFDVH",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21325,11 +21081,7 @@
 			"variableType": "COLLECTED",
 			"name": "ENFDVH_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21337,11 +21089,7 @@
 			"variableType": "COLLECTED",
 			"name": "NBENFDVH",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21349,11 +21097,7 @@
 			"variableType": "COLLECTED",
 			"name": "NBENFDVH_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21361,11 +21105,7 @@
 			"variableType": "COLLECTED",
 			"name": "DURENFDVH1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21373,11 +21113,7 @@
 			"variableType": "COLLECTED",
 			"name": "DURENFDVH2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21385,11 +21121,7 @@
 			"variableType": "COLLECTED",
 			"name": "DURENFDVH3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21397,11 +21129,7 @@
 			"variableType": "COLLECTED",
 			"name": "DURENFDVH_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21409,11 +21137,7 @@
 			"variableType": "COLLECTED",
 			"name": "UNLOG",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21421,11 +21145,7 @@
 			"variableType": "COLLECTED",
 			"name": "UNLOG_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21433,11 +21153,7 @@
 			"variableType": "COLLECTED",
 			"name": "DURLOG",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21445,11 +21161,7 @@
 			"variableType": "COLLECTED",
 			"name": "DURLOG_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21457,11 +21169,7 @@
 			"variableType": "COLLECTED",
 			"name": "LOGENQ",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21469,11 +21177,7 @@
 			"variableType": "COLLECTED",
 			"name": "LOGENQ_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21481,11 +21185,7 @@
 			"variableType": "COLLECTED",
 			"name": "LOGAUT",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21493,11 +21193,7 @@
 			"variableType": "COLLECTED",
 			"name": "LOGAUT_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21505,11 +21201,7 @@
 			"variableType": "COLLECTED",
 			"name": "GARDE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21517,11 +21209,7 @@
 			"variableType": "COLLECTED",
 			"name": "GARDE_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21529,11 +21217,7 @@
 			"variableType": "COLLECTED",
 			"name": "DORM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21541,11 +21225,7 @@
 			"variableType": "COLLECTED",
 			"name": "DORM_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21553,11 +21233,7 @@
 			"variableType": "COLLECTED",
 			"name": "LOGCO",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21565,11 +21241,7 @@
 			"variableType": "COLLECTED",
 			"name": "LOGCO_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21577,11 +21249,7 @@
 			"variableType": "COLLECTED",
 			"name": "TYPLOGCO",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21589,11 +21257,7 @@
 			"variableType": "COLLECTED",
 			"name": "TYPLOGCO_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21601,11 +21265,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITUA",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21613,11 +21273,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITUA_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21625,11 +21281,7 @@
 			"variableType": "COLLECTED",
 			"name": "TRAVAIL",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21637,11 +21289,7 @@
 			"variableType": "COLLECTED",
 			"name": "TRAVAIL_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21649,11 +21297,7 @@
 			"variableType": "COLLECTED",
 			"name": "GRDIPA",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21661,11 +21305,7 @@
 			"variableType": "COLLECTED",
 			"name": "GRDIPA_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21673,11 +21313,7 @@
 			"variableType": "COLLECTED",
 			"name": "GRDIPB",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21685,11 +21321,7 @@
 			"variableType": "COLLECTED",
 			"name": "GRDIPB_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21697,11 +21329,7 @@
 			"variableType": "COLLECTED",
 			"name": "GRDIPC",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21709,11 +21337,7 @@
 			"variableType": "COLLECTED",
 			"name": "GRDIPC_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21721,11 +21345,7 @@
 			"variableType": "COLLECTED",
 			"name": "TELET",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21733,11 +21353,7 @@
 			"variableType": "COLLECTED",
 			"name": "TELET_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21745,11 +21361,7 @@
 			"variableType": "COLLECTED",
 			"name": "TELETNJ",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21757,11 +21369,7 @@
 			"variableType": "COLLECTED",
 			"name": "TELETNJ_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -21769,11 +21377,7 @@
 			"variableType": "COLLECTED",
 			"name": "HTLC1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21781,11 +21385,7 @@
 			"variableType": "COLLECTED",
 			"name": "HTLC1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21793,11 +21393,7 @@
 			"variableType": "COLLECTED",
 			"name": "FOYPAGEES",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21805,11 +21401,7 @@
 			"variableType": "COLLECTED",
 			"name": "FOYPAGEES_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21817,11 +21409,7 @@
 			"variableType": "COLLECTED",
 			"name": "RESAUTO",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21829,11 +21417,7 @@
 			"variableType": "COLLECTED",
 			"name": "RESAUTO_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21841,11 +21425,7 @@
 			"variableType": "COLLECTED",
 			"name": "INDCOLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21853,11 +21433,7 @@
 			"variableType": "COLLECTED",
 			"name": "INDCOLL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21865,11 +21441,7 @@
 			"variableType": "COLLECTED",
 			"name": "IMI",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21877,11 +21449,7 @@
 			"variableType": "COLLECTED",
 			"name": "IMI_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21889,11 +21457,7 @@
 			"variableType": "COLLECTED",
 			"name": "ICOI",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21901,11 +21465,7 @@
 			"variableType": "COLLECTED",
 			"name": "ICOI_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21913,11 +21473,7 @@
 			"variableType": "COLLECTED",
 			"name": "IAS",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21925,11 +21481,7 @@
 			"variableType": "COLLECTED",
 			"name": "IAS_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21937,11 +21489,7 @@
 			"variableType": "COLLECTED",
 			"name": "IEL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21949,11 +21497,7 @@
 			"variableType": "COLLECTED",
 			"name": "IEL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21961,11 +21505,7 @@
 			"variableType": "COLLECTED",
 			"name": "IAATC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21973,11 +21513,7 @@
 			"variableType": "COLLECTED",
 			"name": "IAATC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21985,11 +21521,7 @@
 			"variableType": "COLLECTED",
 			"name": "IAATCD",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -21997,11 +21529,7 @@
 			"variableType": "COLLECTED",
 			"name": "IAATCD_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22009,11 +21537,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOC1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22021,11 +21545,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOC1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22033,11 +21553,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOC2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22045,11 +21561,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOC2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22057,11 +21569,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOCP",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22069,11 +21577,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOCP_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22081,11 +21585,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOCA12",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22093,11 +21593,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOCA12_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22105,11 +21601,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOCA3",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22117,11 +21609,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOCA3_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22129,11 +21617,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOCA4",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22141,11 +21625,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOCA4_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22153,11 +21633,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOCB1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22165,11 +21641,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOCB1_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22177,11 +21649,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPAS1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22189,11 +21657,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPAS1_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22201,11 +21665,7 @@
 			"variableType": "COLLECTED",
 			"name": "ERETOUR",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22213,11 +21673,7 @@
 			"variableType": "COLLECTED",
 			"name": "ERETOUR_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22225,11 +21681,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPASB",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22237,11 +21689,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPASB_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22249,11 +21697,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPASC",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22261,11 +21705,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPASC_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22273,11 +21713,7 @@
 			"variableType": "COLLECTED",
 			"name": "ERET11",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22285,11 +21721,7 @@
 			"variableType": "COLLECTED",
 			"name": "ERET12",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22297,11 +21729,7 @@
 			"variableType": "COLLECTED",
 			"name": "ERET13",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22309,11 +21737,7 @@
 			"variableType": "COLLECTED",
 			"name": "ERET14",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22321,11 +21745,7 @@
 			"variableType": "COLLECTED",
 			"name": "ERET15",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22333,11 +21753,7 @@
 			"variableType": "COLLECTED",
 			"name": "ERET16",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22345,11 +21761,7 @@
 			"variableType": "COLLECTED",
 			"name": "ERET1_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22357,11 +21769,7 @@
 			"variableType": "COLLECTED",
 			"name": "ECOVID",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22369,11 +21777,7 @@
 			"variableType": "COLLECTED",
 			"name": "ECOVID_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22381,11 +21785,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPROJ",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22393,11 +21793,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPROJ_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22405,11 +21801,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPROJB",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22417,11 +21809,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPROJB_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22429,11 +21817,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPROJC",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22441,11 +21825,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPROJC_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22453,11 +21833,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPROJD",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22465,11 +21841,7 @@
 			"variableType": "COLLECTED",
 			"name": "EPROJD_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22477,11 +21849,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMIA",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22489,11 +21857,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMIA_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22501,11 +21865,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMID11",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22513,11 +21873,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMID12",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22525,11 +21881,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMID13",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22537,11 +21889,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMID14",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22549,11 +21897,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMID15",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22561,11 +21905,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMID16",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22573,11 +21913,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMID1_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22585,11 +21921,7 @@
 			"variableType": "COLLECTED",
 			"name": "ECOVID2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22597,11 +21929,7 @@
 			"variableType": "COLLECTED",
 			"name": "ECOVID2_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22609,11 +21937,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMIH",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22621,11 +21945,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMIH_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22633,11 +21953,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMIK",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22645,11 +21961,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMIK_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22657,11 +21969,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMIL",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22669,11 +21977,7 @@
 			"variableType": "COLLECTED",
 			"name": "EAMIL_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -22681,11 +21985,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2A",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22693,11 +21993,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2A_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22705,11 +22001,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2AT_Q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22717,11 +22009,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2AT_Q_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22729,11 +22017,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2M",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22741,11 +22025,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2M_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22753,11 +22033,7 @@
 			"variableType": "COLLECTED",
 			"name": "MARRIVC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22765,11 +22041,7 @@
 			"variableType": "COLLECTED",
 			"name": "MARRIVC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22777,11 +22049,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2AC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22789,11 +22057,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2AC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22801,11 +22065,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2ATC_Q",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22813,11 +22073,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2ATC_Q_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22825,11 +22081,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2MC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22837,11 +22089,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA2MC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22849,11 +22097,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22861,11 +22105,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA3_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22873,11 +22113,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA3A",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22885,11 +22121,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA3A_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22897,11 +22129,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA3M",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22909,11 +22137,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAA3M_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22921,11 +22145,7 @@
 			"variableType": "COLLECTED",
 			"name": "KCU1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22933,11 +22153,7 @@
 			"variableType": "COLLECTED",
 			"name": "KCU1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22945,11 +22161,7 @@
 			"variableType": "COLLECTED",
 			"name": "KCU2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22957,11 +22169,7 @@
 			"variableType": "COLLECTED",
 			"name": "KCU2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22969,11 +22177,7 @@
 			"variableType": "COLLECTED",
 			"name": "HUT",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22981,11 +22185,7 @@
 			"variableType": "COLLECTED",
 			"name": "HUT_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -22993,11 +22193,7 @@
 			"variableType": "COLLECTED",
 			"name": "HUP",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23005,11 +22201,7 @@
 			"variableType": "COLLECTED",
 			"name": "HUP_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23017,11 +22209,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPP",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23029,11 +22217,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPP_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23041,11 +22225,7 @@
 			"variableType": "COLLECTED",
 			"name": "HSP",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23053,11 +22233,7 @@
 			"variableType": "COLLECTED",
 			"name": "HSP_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23065,11 +22241,7 @@
 			"variableType": "COLLECTED",
 			"name": "HUA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23077,11 +22249,7 @@
 			"variableType": "COLLECTED",
 			"name": "HUA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23089,11 +22257,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23101,11 +22265,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23113,11 +22273,7 @@
 			"variableType": "COLLECTED",
 			"name": "HULHUI1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23125,11 +22281,7 @@
 			"variableType": "COLLECTED",
 			"name": "HULHUI1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23137,11 +22289,7 @@
 			"variableType": "COLLECTED",
 			"name": "HULHUI21",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23149,11 +22297,7 @@
 			"variableType": "COLLECTED",
 			"name": "HULHUI22",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23161,11 +22305,7 @@
 			"variableType": "COLLECTED",
 			"name": "HULHUI23",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23173,11 +22313,7 @@
 			"variableType": "COLLECTED",
 			"name": "HULHUI2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23185,11 +22321,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPI1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23197,11 +22329,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPI1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23209,11 +22337,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPI2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23221,11 +22345,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPI2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23233,11 +22353,7 @@
 			"variableType": "COLLECTED",
 			"name": "HSI1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23245,11 +22361,7 @@
 			"variableType": "COLLECTED",
 			"name": "HSI1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23257,11 +22369,7 @@
 			"variableType": "COLLECTED",
 			"name": "HSI2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23269,11 +22377,7 @@
 			"variableType": "COLLECTED",
 			"name": "HSI2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23281,11 +22385,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPH",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23293,11 +22393,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPH_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23305,11 +22401,7 @@
 			"variableType": "COLLECTED",
 			"name": "HCHA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23317,11 +22409,7 @@
 			"variableType": "COLLECTED",
 			"name": "HCHA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23329,11 +22417,7 @@
 			"variableType": "COLLECTED",
 			"name": "HST",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23341,11 +22425,7 @@
 			"variableType": "COLLECTED",
 			"name": "HST_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23353,11 +22433,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPEUP",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23365,11 +22441,7 @@
 			"variableType": "COLLECTED",
 			"name": "HPEUP_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23377,11 +22449,7 @@
 			"variableType": "COLLECTED",
 			"name": "HAUT",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23389,11 +22457,7 @@
 			"variableType": "COLLECTED",
 			"name": "HAUT_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23401,11 +22465,7 @@
 			"variableType": "COLLECTED",
 			"name": "KVE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23413,11 +22473,7 @@
 			"variableType": "COLLECTED",
 			"name": "KVE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23425,11 +22481,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSV",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23437,11 +22489,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSV_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23449,11 +22497,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSV1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23461,11 +22505,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSV1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23473,11 +22513,7 @@
 			"variableType": "COLLECTED",
 			"name": "KBA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23485,11 +22521,7 @@
 			"variableType": "COLLECTED",
 			"name": "KBA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23497,11 +22529,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSB",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23509,11 +22537,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSB_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23521,11 +22545,7 @@
 			"variableType": "COLLECTED",
 			"name": "KJA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23533,11 +22553,7 @@
 			"variableType": "COLLECTED",
 			"name": "KJA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23545,11 +22561,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSJPI",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23557,11 +22569,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSJPI_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23569,11 +22577,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSJPIT",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23581,11 +22585,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSJPIT_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23593,11 +22593,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSMI",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23605,11 +22601,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSMI_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23617,11 +22609,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSJPC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23629,11 +22617,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSJPC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23641,11 +22625,7 @@
 			"variableType": "COLLECTED",
 			"name": "KJC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23653,11 +22633,7 @@
 			"variableType": "COLLECTED",
 			"name": "KJC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23665,11 +22641,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSJC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23677,11 +22649,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSJC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23689,11 +22657,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGA1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23701,11 +22665,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGA2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23713,11 +22673,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGA3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23725,11 +22681,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGA4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23737,11 +22689,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23749,11 +22697,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGA11",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23761,11 +22705,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGA12",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23773,11 +22713,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGA13",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23785,11 +22721,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGA14",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23797,11 +22729,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGAB_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23809,11 +22737,7 @@
 			"variableType": "COLLECTED",
 			"name": "KCA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23821,11 +22745,7 @@
 			"variableType": "COLLECTED",
 			"name": "KCA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23833,11 +22753,7 @@
 			"variableType": "COLLECTED",
 			"name": "KVELO",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23845,11 +22761,7 @@
 			"variableType": "COLLECTED",
 			"name": "KVELO_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23857,11 +22769,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGRA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23869,11 +22777,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGRA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23881,11 +22785,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSOA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23893,11 +22793,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSOA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23905,11 +22801,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGRAA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23917,11 +22809,7 @@
 			"variableType": "COLLECTED",
 			"name": "KGRAA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23929,11 +22817,7 @@
 			"variableType": "COLLECTED",
 			"name": "KPISC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23941,11 +22825,7 @@
 			"variableType": "COLLECTED",
 			"name": "KPISC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23953,11 +22833,7 @@
 			"variableType": "COLLECTED",
 			"name": "KAO1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23965,11 +22841,7 @@
 			"variableType": "COLLECTED",
 			"name": "KAO1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23977,11 +22849,7 @@
 			"variableType": "COLLECTED",
 			"name": "KWC1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -23989,11 +22857,7 @@
 			"variableType": "COLLECTED",
 			"name": "KWC1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24001,11 +22865,7 @@
 			"variableType": "COLLECTED",
 			"name": "KWCID_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24013,11 +22873,7 @@
 			"variableType": "COLLECTED",
 			"name": "KWCI",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24025,11 +22881,7 @@
 			"variableType": "COLLECTED",
 			"name": "KWCD",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24037,11 +22889,7 @@
 			"variableType": "COLLECTED",
 			"name": "KBD",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24049,11 +22897,7 @@
 			"variableType": "COLLECTED",
 			"name": "KBD_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24061,11 +22905,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24073,11 +22913,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSE1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24085,11 +22921,7 @@
 			"variableType": "COLLECTED",
 			"name": "KSE3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24097,11 +22929,7 @@
 			"variableType": "COLLECTED",
 			"name": "KDLK1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24109,11 +22937,7 @@
 			"variableType": "COLLECTED",
 			"name": "KDLK1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24121,11 +22945,7 @@
 			"variableType": "COLLECTED",
 			"name": "KDLK2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24133,11 +22953,7 @@
 			"variableType": "COLLECTED",
 			"name": "KDLK2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24145,11 +22961,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24157,11 +22969,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24169,11 +22977,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAD",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24181,11 +22985,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAD_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24193,11 +22993,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24205,11 +23001,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR11",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24217,11 +23009,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR12",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24229,11 +23017,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR13",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24241,11 +23025,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR14",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24253,11 +23033,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR15",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24265,11 +23041,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24277,11 +23049,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR21",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24289,11 +23057,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR22",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24301,11 +23065,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR23",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24313,11 +23073,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR24",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24325,11 +23081,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR25",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24337,11 +23089,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR3_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24349,11 +23097,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR31",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24361,11 +23105,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR32",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24373,11 +23113,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR33",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24385,11 +23121,7 @@
 			"variableType": "COLLECTED",
 			"name": "OLAR34",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24397,11 +23129,7 @@
 			"variableType": "COLLECTED",
 			"name": "OQA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24409,11 +23137,7 @@
 			"variableType": "COLLECTED",
 			"name": "OQA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24421,11 +23145,7 @@
 			"variableType": "COLLECTED",
 			"name": "OQAD",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24433,11 +23153,7 @@
 			"variableType": "COLLECTED",
 			"name": "OQAD_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24445,11 +23161,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIH",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24457,11 +23169,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIH_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24469,11 +23177,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHB1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24481,11 +23185,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHB2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24493,11 +23193,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHB3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24505,11 +23201,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHB_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24517,11 +23209,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24529,11 +23217,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHC1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24541,11 +23225,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHC2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24553,11 +23233,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHC3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24565,11 +23241,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHC4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24577,11 +23249,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHC5",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24589,11 +23257,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHC6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24601,11 +23265,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHD",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24613,11 +23273,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHD_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24625,11 +23281,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24637,11 +23289,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24649,11 +23297,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHF1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24661,11 +23305,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHF2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24673,11 +23313,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHF3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24685,11 +23321,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHF4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24697,11 +23329,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHF5",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24709,11 +23337,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHF6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24721,11 +23345,7 @@
 			"variableType": "COLLECTED",
 			"name": "OIHF_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24733,11 +23353,7 @@
 			"variableType": "COLLECTED",
 			"name": "ODL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24745,11 +23361,7 @@
 			"variableType": "COLLECTED",
 			"name": "ODL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24757,11 +23369,7 @@
 			"variableType": "COLLECTED",
 			"name": "ODF",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24769,11 +23377,7 @@
 			"variableType": "COLLECTED",
 			"name": "ODF_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24781,11 +23385,7 @@
 			"variableType": "COLLECTED",
 			"name": "ODFRA3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24793,11 +23393,7 @@
 			"variableType": "COLLECTED",
 			"name": "ODFRA3_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24805,11 +23401,7 @@
 			"variableType": "COLLECTED",
 			"name": "DALO",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24817,11 +23409,7 @@
 			"variableType": "COLLECTED",
 			"name": "DALO_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24829,11 +23417,7 @@
 			"variableType": "COLLECTED",
 			"name": "DALOBIS",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24841,11 +23425,7 @@
 			"variableType": "COLLECTED",
 			"name": "DALOBIS_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24853,11 +23433,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAG",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24865,11 +23441,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAG_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24877,11 +23449,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAGEO",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24889,11 +23457,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAGEO_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24901,11 +23465,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAGEO1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24913,11 +23473,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAGEO1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24925,11 +23481,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAGRL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24937,11 +23489,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAGRL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24949,11 +23497,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAGEO3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24961,11 +23505,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAGEO3_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24973,11 +23513,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAGEO2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24985,11 +23521,7 @@
 			"variableType": "COLLECTED",
 			"name": "DAGEO2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -24997,11 +23529,7 @@
 			"variableType": "COLLECTED",
 			"name": "DTL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25009,11 +23537,7 @@
 			"variableType": "COLLECTED",
 			"name": "DTL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25021,11 +23545,7 @@
 			"variableType": "COLLECTED",
 			"name": "DTA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25033,11 +23553,7 @@
 			"variableType": "COLLECTED",
 			"name": "DTA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25045,11 +23561,7 @@
 			"variableType": "COLLECTED",
 			"name": "DST",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25057,11 +23569,7 @@
 			"variableType": "COLLECTED",
 			"name": "DST_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25069,11 +23577,7 @@
 			"variableType": "COLLECTED",
 			"name": "DSTP",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25081,11 +23585,7 @@
 			"variableType": "COLLECTED",
 			"name": "DSTP_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25093,11 +23593,7 @@
 			"variableType": "COLLECTED",
 			"name": "DSTL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25105,11 +23601,7 @@
 			"variableType": "COLLECTED",
 			"name": "DSTL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25117,11 +23609,7 @@
 			"variableType": "COLLECTED",
 			"name": "DDEM",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25129,11 +23617,7 @@
 			"variableType": "COLLECTED",
 			"name": "DDEM_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25141,11 +23625,7 @@
 			"variableType": "COLLECTED",
 			"name": "DDAT",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25153,11 +23633,7 @@
 			"variableType": "COLLECTED",
 			"name": "DDAT_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25165,11 +23641,7 @@
 			"variableType": "COLLECTED",
 			"name": "DSTLOC2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25177,11 +23649,7 @@
 			"variableType": "COLLECTED",
 			"name": "DSTLOC2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25189,11 +23657,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL11",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25201,11 +23665,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL12",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25213,11 +23673,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL13",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25225,11 +23681,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL14",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25237,11 +23689,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL15",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25249,11 +23697,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL16",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25261,11 +23705,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL17",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25273,11 +23713,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL18",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25285,11 +23721,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL1_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25297,11 +23729,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25309,11 +23737,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL2_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25321,11 +23745,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL4",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25333,11 +23753,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL4_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25345,11 +23761,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDN1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25357,11 +23769,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDN1_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25369,11 +23777,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDT1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25381,11 +23785,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDT1_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25393,11 +23793,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL_SIT1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25405,11 +23801,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL_SIT1_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25417,11 +23809,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDTAD",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25429,11 +23817,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDTAD_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25441,11 +23825,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDT2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25453,11 +23833,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDT2_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25465,11 +23841,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL_SIT2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25477,11 +23849,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDL_SIT2_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25489,11 +23857,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDTAD_SIT2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25501,11 +23865,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDTAD_SIT2_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25513,11 +23873,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDT2_SIT2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25525,11 +23881,7 @@
 			"variableType": "COLLECTED",
 			"name": "SDT2_SIT2_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -25537,11 +23889,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODM1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25549,11 +23897,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODM2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25561,11 +23905,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODM3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25573,11 +23913,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODM4",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25585,11 +23921,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODM5",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25597,11 +23929,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODM6",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25609,11 +23937,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODM7",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25621,11 +23945,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODM_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25633,11 +23953,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODP11",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25645,11 +23961,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODP12",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25657,11 +23969,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODP13",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25669,11 +23977,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODP14",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25681,11 +23985,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODP1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25693,11 +23993,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODP21",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25705,11 +24001,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODP22",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25717,11 +24009,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODP23",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25729,11 +24017,7 @@
 			"variableType": "COLLECTED",
 			"name": "VMODP2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25741,11 +24025,7 @@
 			"variableType": "COLLECTED",
 			"name": "VVENDL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25753,11 +24033,7 @@
 			"variableType": "COLLECTED",
 			"name": "VVENDL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25765,11 +24041,7 @@
 			"variableType": "COLLECTED",
 			"name": "VFFH",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25777,11 +24049,7 @@
 			"variableType": "COLLECTED",
 			"name": "VFFH_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25789,11 +24057,7 @@
 			"variableType": "COLLECTED",
 			"name": "VFLA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25801,11 +24065,7 @@
 			"variableType": "COLLECTED",
 			"name": "VFLA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25813,11 +24073,7 @@
 			"variableType": "COLLECTED",
 			"name": "VACHAL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25825,11 +24081,7 @@
 			"variableType": "COLLECTED",
 			"name": "VACHAL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25837,11 +24089,7 @@
 			"variableType": "COLLECTED",
 			"name": "VBILLOG",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25849,11 +24097,7 @@
 			"variableType": "COLLECTED",
 			"name": "VBILLOG_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25861,11 +24105,7 @@
 			"variableType": "COLLECTED",
 			"name": "VLR",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25873,11 +24113,7 @@
 			"variableType": "COLLECTED",
 			"name": "VLR_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25885,11 +24121,7 @@
 			"variableType": "COLLECTED",
 			"name": "COMMUNEPASSEE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25897,11 +24129,7 @@
 			"variableType": "COLLECTED",
 			"name": "COMMUNEPASSEE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25909,11 +24137,7 @@
 			"variableType": "COLLECTED",
 			"name": "DEPART",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25921,11 +24145,7 @@
 			"variableType": "COLLECTED",
 			"name": "DEPART_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25933,11 +24153,7 @@
 			"variableType": "COLLECTED",
 			"name": "VCRCOM",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25945,11 +24161,7 @@
 			"variableType": "COLLECTED",
 			"name": "VCRCOM_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25957,11 +24169,7 @@
 			"variableType": "COLLECTED",
 			"name": "VPRA",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25969,11 +24177,7 @@
 			"variableType": "COLLECTED",
 			"name": "VPRA_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25981,11 +24185,7 @@
 			"variableType": "COLLECTED",
 			"name": "VLA1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -25993,11 +24193,7 @@
 			"variableType": "COLLECTED",
 			"name": "VLA1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26005,11 +24201,7 @@
 			"variableType": "COLLECTED",
 			"name": "VSO1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26017,11 +24209,7 @@
 			"variableType": "COLLECTED",
 			"name": "VSO1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26029,11 +24217,7 @@
 			"variableType": "COLLECTED",
 			"name": "VSY",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26041,11 +24225,7 @@
 			"variableType": "COLLECTED",
 			"name": "VSY_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26053,11 +24233,7 @@
 			"variableType": "COLLECTED",
 			"name": "VLOYER",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26065,11 +24241,7 @@
 			"variableType": "COLLECTED",
 			"name": "VLOYER_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26077,11 +24249,7 @@
 			"variableType": "COLLECTED",
 			"name": "VAID",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26089,11 +24257,7 @@
 			"variableType": "COLLECTED",
 			"name": "VAID_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26101,11 +24265,7 @@
 			"variableType": "COLLECTED",
 			"name": "VIN",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26113,11 +24273,7 @@
 			"variableType": "COLLECTED",
 			"name": "VIN_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26125,11 +24281,7 @@
 			"variableType": "COLLECTED",
 			"name": "VTL1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26137,11 +24289,7 @@
 			"variableType": "COLLECTED",
 			"name": "VTL1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26149,11 +24297,7 @@
 			"variableType": "COLLECTED",
 			"name": "VSURF",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26161,11 +24305,7 @@
 			"variableType": "COLLECTED",
 			"name": "VSURF_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26173,11 +24313,7 @@
 			"variableType": "COLLECTED",
 			"name": "VPI",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26185,11 +24321,7 @@
 			"variableType": "COLLECTED",
 			"name": "VPI_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26197,11 +24329,7 @@
 			"variableType": "COLLECTED",
 			"name": "VANCIEN",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26209,11 +24337,7 @@
 			"variableType": "COLLECTED",
 			"name": "VANCIEN_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26221,11 +24345,7 @@
 			"variableType": "COLLECTED",
 			"name": "VOP",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26233,11 +24353,7 @@
 			"variableType": "COLLECTED",
 			"name": "VOP_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26245,11 +24361,7 @@
 			"variableType": "COLLECTED",
 			"name": "VND",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26257,11 +24369,7 @@
 			"variableType": "COLLECTED",
 			"name": "VND_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26269,11 +24377,7 @@
 			"variableType": "COLLECTED",
 			"name": "VLRD",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26281,11 +24385,7 @@
 			"variableType": "COLLECTED",
 			"name": "VLRD_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26293,11 +24393,7 @@
 			"variableType": "COLLECTED",
 			"name": "VLAB1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26305,11 +24401,7 @@
 			"variableType": "COLLECTED",
 			"name": "VLAB1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26317,11 +24409,7 @@
 			"variableType": "COLLECTED",
 			"name": "VDD1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26329,11 +24417,7 @@
 			"variableType": "COLLECTED",
 			"name": "VDD1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26341,11 +24425,7 @@
 			"variableType": "COLLECTED",
 			"name": "VDSY",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26353,11 +24433,7 @@
 			"variableType": "COLLECTED",
 			"name": "VDSY_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26365,11 +24441,7 @@
 			"variableType": "COLLECTED",
 			"name": "VTLD1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26377,11 +24449,7 @@
 			"variableType": "COLLECTED",
 			"name": "VTLD1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26389,11 +24457,7 @@
 			"variableType": "COLLECTED",
 			"name": "VSURFD",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26401,11 +24465,7 @@
 			"variableType": "COLLECTED",
 			"name": "VSURFD_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26413,11 +24473,7 @@
 			"variableType": "COLLECTED",
 			"name": "VPID",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26425,11 +24481,7 @@
 			"variableType": "COLLECTED",
 			"name": "VPID_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26437,11 +24489,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS11",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26449,11 +24497,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS12",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26461,11 +24505,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS13",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26473,11 +24513,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS14",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26485,11 +24521,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26497,11 +24529,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS21",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26509,11 +24537,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS22",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26521,11 +24545,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS23",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26533,11 +24553,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS24",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26545,11 +24561,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS25",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26557,11 +24569,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS26",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26569,11 +24577,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26581,11 +24585,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS31",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26593,11 +24593,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS32",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26605,11 +24601,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS33",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26617,11 +24609,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS34",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26629,11 +24617,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS35",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26641,11 +24625,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS36",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26653,11 +24633,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS3_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26665,11 +24641,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS41",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26677,11 +24649,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS42",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26689,11 +24657,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS43",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26701,11 +24665,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS44",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26713,11 +24673,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS45",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26725,11 +24681,7 @@
 			"variableType": "COLLECTED",
 			"name": "VRAIS4_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26737,11 +24689,7 @@
 			"variableType": "COLLECTED",
 			"name": "SANTE1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26749,11 +24697,7 @@
 			"variableType": "COLLECTED",
 			"name": "SANTE1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26761,11 +24705,7 @@
 			"variableType": "COLLECTED",
 			"name": "MCHR1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26773,11 +24713,7 @@
 			"variableType": "COLLECTED",
 			"name": "MCHR1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26785,11 +24721,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIMT1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26797,11 +24729,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIMT1_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26809,11 +24737,7 @@
 			"variableType": "COLLECTED",
 			"name": "SANTE2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -26821,11 +24745,7 @@
 			"variableType": "COLLECTED",
 			"name": "SANTE2_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -26833,11 +24753,7 @@
 			"variableType": "COLLECTED",
 			"name": "MCHR2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -26845,11 +24761,7 @@
 			"variableType": "COLLECTED",
 			"name": "MCHR2_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -26857,11 +24769,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIMT2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -26869,11 +24777,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIMT2_MISSING",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -26881,11 +24785,7 @@
 			"variableType": "COLLECTED",
 			"name": "LNAISPERE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26893,11 +24793,7 @@
 			"variableType": "COLLECTED",
 			"name": "LNAISPERE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26905,11 +24801,7 @@
 			"variableType": "COLLECTED",
 			"name": "PAYSNAISPERE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26917,11 +24809,7 @@
 			"variableType": "COLLECTED",
 			"name": "PAYSNAISPERE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26929,11 +24817,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIONPERE1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26941,11 +24825,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIONPERE2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26953,11 +24833,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIONPERE3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26965,11 +24841,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIONPERE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26977,11 +24849,7 @@
 			"variableType": "COLLECTED",
 			"name": "LNAISMERE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -26989,11 +24857,7 @@
 			"variableType": "COLLECTED",
 			"name": "LNAISMERE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27001,11 +24865,7 @@
 			"variableType": "COLLECTED",
 			"name": "PAYSNAISMERE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27013,11 +24873,7 @@
 			"variableType": "COLLECTED",
 			"name": "PAYSNAISMERE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27025,11 +24881,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIONMERE1",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27037,11 +24889,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIONMERE2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27049,11 +24897,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIONMERE3",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27061,11 +24905,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATIONMERE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27073,11 +24913,7 @@
 			"variableType": "COLLECTED",
 			"name": "TELFIXE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27085,11 +24921,7 @@
 			"variableType": "COLLECTED",
 			"name": "TELFIXE_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27097,11 +24929,7 @@
 			"variableType": "COLLECTED",
 			"name": "TELMOB",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27109,11 +24937,7 @@
 			"variableType": "COLLECTED",
 			"name": "TELMOB_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27121,11 +24945,7 @@
 			"variableType": "COLLECTED",
 			"name": "UWEB",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27133,11 +24953,7 @@
 			"variableType": "COLLECTED",
 			"name": "UWEB_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27145,11 +24961,7 @@
 			"variableType": "COLLECTED",
 			"name": "CHGNC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27157,11 +24969,7 @@
 			"variableType": "COLLECTED",
 			"name": "CHGNC_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27169,11 +24977,7 @@
 			"variableType": "COLLECTED",
 			"name": "CIVCOLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27181,11 +24985,7 @@
 			"variableType": "COLLECTED",
 			"name": "CIVCOLL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27193,11 +24993,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOMCOLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27205,11 +25001,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOMCOLL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27217,11 +25009,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOMCOLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27229,11 +25017,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOMCOLL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27241,11 +25025,7 @@
 			"variableType": "COLLECTED",
 			"name": "CHGNC2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27253,11 +25033,7 @@
 			"variableType": "COLLECTED",
 			"name": "CHGNC2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27265,11 +25041,7 @@
 			"variableType": "COLLECTED",
 			"name": "CIVCOLL2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27277,11 +25049,7 @@
 			"variableType": "COLLECTED",
 			"name": "CIVCOLL2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27289,11 +25057,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOMCOLL2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27301,11 +25065,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOMCOLL2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27313,11 +25073,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOMCOLL2",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27325,11 +25081,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOMCOLL2_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27337,11 +25089,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOTELCOLL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -27349,11 +25097,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOTELCOLL_MISSING",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 

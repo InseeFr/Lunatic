@@ -356,11 +356,7 @@
 			"variableType": "COLLECTED",
 			"name": "NB",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -368,11 +364,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -380,11 +372,7 @@
 			"variableType": "COLLECTED",
 			"name": "AGE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -392,11 +380,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIVERS",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -404,11 +388,7 @@
 			"variableType": "COLLECTED",
 			"name": "TEXTE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 

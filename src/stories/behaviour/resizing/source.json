@@ -15,55 +15,35 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "COMMENT_QE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "NB"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "PRENOM"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null],
-				"FORCED": [null],
-				"PREVIOUS": [null]
+				"COLLECTED": [null]
 			},
 			"name": "AGE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"INPUTTED": null,
-				"FORCED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "DIVERS"
 		},

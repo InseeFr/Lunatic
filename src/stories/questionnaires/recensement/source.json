@@ -12767,33 +12767,21 @@
 			"variableType": "COLLECTED",
 			"name": "LINKS",
 			"values": {
-				"PREVIOUS": [[null]],
-				"COLLECTED": [[null]],
-				"FORCED": [[null]],
-				"EDITED": [[null]],
-				"INPUTTED": [[null]]
+				"COLLECTED": [[null]]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "OTHER",
 			"values": {
-				"PREVIOUS": [[null]],
-				"COLLECTED": [[null]],
-				"FORCED": [[null]],
-				"EDITED": [[null]],
-				"INPUTTED": [[null]]
+				"COLLECTED": [[null]]
 			}
 		},
 		{
 			"variableType": "COLLECTED",
 			"name": "COMMENT_QE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12801,11 +12789,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOMOCCPRINC",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12813,11 +12797,7 @@
 			"variableType": "COLLECTED",
 			"name": "MAIL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12825,11 +12805,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_NUMERO",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12837,11 +12813,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_BIS",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12849,11 +12821,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_RUE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12861,11 +12829,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_VOIE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12873,11 +12837,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_RESIDENCE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12885,11 +12845,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_BATIMENT",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12897,11 +12853,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_ESCALIER",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12909,11 +12861,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_ETAGE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12921,11 +12869,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_PORTE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12933,11 +12877,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_CODEPOSTAL",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12945,11 +12885,7 @@
 			"variableType": "COLLECTED",
 			"name": "ADRESSE_COMMUNE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12957,11 +12893,7 @@
 			"variableType": "COLLECTED",
 			"name": "TYPL_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12969,11 +12901,7 @@
 			"variableType": "COLLECTED",
 			"name": "ASCEN_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12981,11 +12909,7 @@
 			"variableType": "COLLECTED",
 			"name": "AACHL_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -12993,11 +12917,7 @@
 			"variableType": "COLLECTED",
 			"name": "DANSCECASP",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13005,11 +12925,7 @@
 			"variableType": "COLLECTED",
 			"name": "AEMM_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13017,11 +12933,7 @@
 			"variableType": "COLLECTED",
 			"name": "NBPI_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13029,11 +12941,7 @@
 			"variableType": "COLLECTED",
 			"name": "SURF_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13041,11 +12949,7 @@
 			"variableType": "COLLECTED",
 			"name": "STOC_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13053,11 +12957,7 @@
 			"variableType": "COLLECTED",
 			"name": "HLM_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13065,11 +12965,7 @@
 			"variableType": "COLLECTED",
 			"name": "SANI_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13077,11 +12973,7 @@
 			"variableType": "COLLECTED",
 			"name": "CHFL_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13089,11 +12981,7 @@
 			"variableType": "COLLECTED",
 			"name": "CMBL_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13101,11 +12989,7 @@
 			"variableType": "COLLECTED",
 			"name": "VOIT_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13113,11 +12997,7 @@
 			"variableType": "COLLECTED",
 			"name": "GARL_X",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13125,11 +13005,7 @@
 			"variableType": "COLLECTED",
 			"name": "NOM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13137,11 +13013,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13149,11 +13021,7 @@
 			"variableType": "COLLECTED",
 			"name": "SEXE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13161,11 +13029,7 @@
 			"variableType": "COLLECTED",
 			"name": "DATENAIS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13173,11 +13037,7 @@
 			"variableType": "COLLECTED",
 			"name": "BONJOURPEU",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": null,
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": null
 			}
 		},
 
@@ -13185,11 +13045,7 @@
 			"variableType": "COLLECTED",
 			"name": "VITICI",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13197,11 +13053,7 @@
 			"variableType": "COLLECTED",
 			"name": "VITAILLEURS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13209,11 +13061,7 @@
 			"variableType": "COLLECTED",
 			"name": "ESTCEQUEIF",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13221,11 +13069,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIEUXHABETUDES",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13233,11 +13077,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIEUXHABPROF",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13245,11 +13085,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIEUXHABSEP",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13257,11 +13093,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIEUXHABSEP2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13269,11 +13101,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIEUXHABAUTRE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13281,11 +13109,7 @@
 			"variableType": "COLLECTED",
 			"name": "BI_LIEUNAIS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13293,11 +13117,7 @@
 			"variableType": "COLLECTED",
 			"name": "CNAI_FRANCE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13305,11 +13125,7 @@
 			"variableType": "COLLECTED",
 			"name": "DPNAI_FRANCE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13317,11 +13133,7 @@
 			"variableType": "COLLECTED",
 			"name": "CNAI_ETRANGER",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13329,11 +13141,7 @@
 			"variableType": "COLLECTED",
 			"name": "PNAI_ETRANGER",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13341,11 +13149,7 @@
 			"variableType": "COLLECTED",
 			"name": "ARRIV",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13353,11 +13157,7 @@
 			"variableType": "COLLECTED",
 			"name": "INAT",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13365,11 +13165,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATN",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13377,11 +13173,7 @@
 			"variableType": "COLLECTED",
 			"name": "NATE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13389,11 +13181,7 @@
 			"variableType": "COLLECTED",
 			"name": "ETUD",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13401,11 +13189,7 @@
 			"variableType": "COLLECTED",
 			"name": "ILETU",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13413,11 +13197,7 @@
 			"variableType": "COLLECTED",
 			"name": "CETU",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13425,11 +13205,7 @@
 			"variableType": "COLLECTED",
 			"name": "DETU",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13437,11 +13213,7 @@
 			"variableType": "COLLECTED",
 			"name": "PNAI_CETU",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13449,11 +13221,7 @@
 			"variableType": "COLLECTED",
 			"name": "PNAI_TU",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13461,11 +13229,7 @@
 			"variableType": "COLLECTED",
 			"name": "IRAN",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13473,11 +13237,7 @@
 			"variableType": "COLLECTED",
 			"name": "COMMAVANTFRANCE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13485,11 +13245,7 @@
 			"variableType": "COLLECTED",
 			"name": "DRAN",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13497,11 +13253,7 @@
 			"variableType": "COLLECTED",
 			"name": "COMMAVANTETR",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13509,11 +13261,7 @@
 			"variableType": "COLLECTED",
 			"name": "PAYSAVANT",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13521,11 +13269,7 @@
 			"variableType": "COLLECTED",
 			"name": "COUPLE",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13533,11 +13277,7 @@
 			"variableType": "COLLECTED",
 			"name": "MATR1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13545,11 +13285,7 @@
 			"variableType": "COLLECTED",
 			"name": "MATR2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13557,11 +13293,7 @@
 			"variableType": "COLLECTED",
 			"name": "MATR3",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13569,11 +13301,7 @@
 			"variableType": "COLLECTED",
 			"name": "MATR4",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13581,11 +13309,7 @@
 			"variableType": "COLLECTED",
 			"name": "MATR5",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13593,11 +13317,7 @@
 			"variableType": "COLLECTED",
 			"name": "MATR6",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13605,11 +13325,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL1",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13617,11 +13333,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL2",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13629,11 +13341,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL3",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13641,11 +13349,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL4",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13653,11 +13357,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL5",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13665,11 +13365,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL6",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13677,11 +13373,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL7",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13689,11 +13381,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL8",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13701,11 +13389,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL9",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13713,11 +13397,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL10",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13725,11 +13405,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL11",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13737,11 +13413,7 @@
 			"variableType": "COLLECTED",
 			"name": "DIPL12",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13749,11 +13421,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITUAT",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13761,11 +13429,7 @@
 			"variableType": "COLLECTED",
 			"name": "SITRAV",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13773,11 +13437,7 @@
 			"variableType": "COLLECTED",
 			"name": "DEJAT",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13785,11 +13445,7 @@
 			"variableType": "COLLECTED",
 			"name": "STATAV",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13797,11 +13453,7 @@
 			"variableType": "COLLECTED",
 			"name": "PROFA",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13809,11 +13461,7 @@
 			"variableType": "COLLECTED",
 			"name": "RECH",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13821,11 +13469,7 @@
 			"variableType": "COLLECTED",
 			"name": "RS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13833,11 +13477,7 @@
 			"variableType": "COLLECTED",
 			"name": "ACTET",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13845,11 +13485,7 @@
 			"variableType": "COLLECTED",
 			"name": "LIEU",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13857,11 +13493,7 @@
 			"variableType": "COLLECTED",
 			"name": "ILT",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13869,11 +13501,7 @@
 			"variableType": "COLLECTED",
 			"name": "QUELLEESTL",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13881,11 +13509,7 @@
 			"variableType": "COLLECTED",
 			"name": "CLT",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13893,11 +13517,7 @@
 			"variableType": "COLLECTED",
 			"name": "STL_COFR",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13905,11 +13525,7 @@
 			"variableType": "COLLECTED",
 			"name": "STL_ETR",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13917,11 +13533,7 @@
 			"variableType": "COLLECTED",
 			"name": "TRANS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13929,11 +13541,7 @@
 			"variableType": "COLLECTED",
 			"name": "TP",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13941,11 +13549,7 @@
 			"variableType": "COLLECTED",
 			"name": "STAT",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13953,11 +13557,7 @@
 			"variableType": "COLLECTED",
 			"name": "NBSAL",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13965,11 +13565,7 @@
 			"variableType": "COLLECTED",
 			"name": "PROFI",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13977,11 +13573,7 @@
 			"variableType": "COLLECTED",
 			"name": "EMPL",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -13989,11 +13581,7 @@
 			"variableType": "COLLECTED",
 			"name": "POSP",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -14001,11 +13589,7 @@
 			"variableType": "COLLECTED",
 			"name": "PROFS",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -14013,11 +13597,7 @@
 			"variableType": "COLLECTED",
 			"name": "FONC",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 
@@ -14025,11 +13605,7 @@
 			"variableType": "COLLECTED",
 			"name": "VALIDATION",
 			"values": {
-				"PREVIOUS": [null],
-				"COLLECTED": [null],
-				"FORCED": [null],
-				"EDITED": [null],
-				"INPUTTED": [null]
+				"COLLECTED": [null]
 			}
 		},
 		{

@@ -21,11 +21,7 @@
 			"variableType": "COLLECTED",
 			"name": "DUREE",
 			"values": {
-				"PREVIOUS": null,
-				"COLLECTED": "P4Y0M",
-				"FORCED": null,
-				"EDITED": null,
-				"INPUTTED": null
+				"COLLECTED": "P4Y0M"
 			}
 		}
 	]

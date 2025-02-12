@@ -27,11 +27,7 @@ export function generateVariable({ type = 'COLLECTED', name = 'VARIABLE' }) {
 		variableType: type,
 		name: name,
 		values: {
-			PREVIOUS: null,
 			COLLECTED: null,
-			FORCED: null,
-			EDITED: null,
-			INPUTTED: null,
 		},
 	};
 }

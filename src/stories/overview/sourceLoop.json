@@ -58,264 +58,168 @@
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "ETAT"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "SATISFAIT"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "T_NHAB"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "T_PRENOM"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "COMMCOMPO"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "T_SEXE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "T_DATENAIS"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "REMARQUES"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "SUPERQUEST"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "AUTRESUPERQUEST"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "ENCOREUNEQ"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "COMMENT_QE"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "ETAT_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "SATISFAIT_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "T_NHAB_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "T_PRENOM_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "COMMCOMPO_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "T_SEXE_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "T_DATENAIS_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "REMARQUES_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "SUPERQUEST_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "ENCOREUNEQ_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": [],
-				"EDITED": [],
-				"FORCED": [],
-				"INPUTTED": [],
-				"PREVIOUS": []
+				"COLLECTED": []
 			},
 			"name": "AUTRESUPERQUEST_MISSING"
 		},
 		{
 			"variableType": "COLLECTED",
 			"values": {
-				"COLLECTED": null,
-				"EDITED": null,
-				"FORCED": null,
-				"INPUTTED": null,
-				"PREVIOUS": null
+				"COLLECTED": null
 			},
 			"name": "COMMENT_QE_MISSING"
 		}
