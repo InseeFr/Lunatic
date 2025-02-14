@@ -33,3 +33,12 @@ WithLoop.args = {
 	data: dataLoop.data,
 	lastReachedPage: '11.2#2',
 };
+
+export const DisableFilterOverview = Template.bind({});
+DisableFilterOverview.args = {
+	id: 'overview-disableFilter',
+	source,
+	showOverview: true,
+	disableFilters: true,
+	data,
+};

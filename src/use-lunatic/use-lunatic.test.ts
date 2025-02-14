@@ -9,25 +9,10 @@ import sourceCheckboxGroup from '../stories/checkbox-group/source.json';
 import dataOverview from '../stories/overview/dataLoop.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
-import type { LunaticData, PageTag } from './type';
+import type { PageTag } from './type';
 import { useLunatic } from './use-lunatic';
 import { useCallback } from 'react';
-
-const dataFromObject = (o: Record<string, unknown>): LunaticData => {
-	return {
-		EXTERNAL: {},
-		COLLECTED: Object.keys(o).reduce(
-			(acc, k) => ({
-				...acc,
-				[k]: {
-					COLLECTED: o[k],
-				},
-			}),
-			{}
-		),
-		CALCULATED: {},
-	};
-};
+import { dataFromObject } from './test.utils';
 
 describe('use-lunatic()', () => {
 	const defaultParams = [
