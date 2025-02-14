@@ -129,12 +129,8 @@ const interpretOverviewItem = (
 	const page =
 		`${item.pageTag}${iteration !== undefined ? `#${iteration + 1}` : ''}` as PageTag;
 
-	const reached = (() => {
-		if (state.disableFilters) return true;
-		return (
-			pageTagComparator(state.pager ? getPageTag(state.pager) : '-1', page) >= 0
-		);
-	})();
+	const reached =
+		pageTagComparator(state.pager ? getPageTag(state.pager) : '-1', page) >= 0;
 
 	return [
 		...items,

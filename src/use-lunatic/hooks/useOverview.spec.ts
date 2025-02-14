@@ -38,7 +38,5 @@ describe('use-overview test with useLunatic()', () => {
 		const { result } = renderHook(() => useLunatic(...params));
 		// All elements have to be presents
 		expect(result.current.overview.length).toBe(9);
-		// All elements have to be mark as reached
-		expect(result.current.overview.every(({ reached }) => reached));
 	});
 });
