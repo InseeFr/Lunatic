@@ -13,7 +13,7 @@ import type { LunaticData, PageTag } from './type';
 import { useLunatic } from './use-lunatic';
 import { useCallback } from 'react';
 
-const dataFromObject = (o: Record<string, unknown>): LunaticData => {
+export const dataFromObject = (o: Record<string, unknown>): LunaticData => {
 	return {
 		EXTERNAL: {},
 		COLLECTED: Object.keys(o).reduce(

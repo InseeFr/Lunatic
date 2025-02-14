@@ -1,0 +1,44 @@
+import { renderHook } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import source from '../../stories/overview/sourceWithHierarchy.json';
+import { dataFromObject } from '../use-lunatic.test';
+import { useLunatic } from '../use-lunatic';
+
+describe('use-overview test with useLunatic()', () => {
+	it('should initialize correctly with disableFilters: false (without data)', () => {
+		const params = [
+			source as any,
+			dataFromObject({}),
+			{ withOverview: true },
+		] as const;
+		const { result } = renderHook(() => useLunatic(...params));
+		expect(result.current.overview.length).toBe(3);
+	});
+
+	it('should initialize correctly with disableFilters: false (with data)', () => {
+		const params = [
+			source as any,
+			dataFromObject({
+				READY: true,
+			}),
+			{ withOverview: true },
+		] as const;
+
+		const { result } = renderHook(() => useLunatic(...params));
+		expect(result.current.overview.length).toBe(9);
+	});
+
+	it('should initialize correctly with disableFilters: true (without data)', () => {
+		const params = [
+			source as any,
+			dataFromObject({}),
+			{ withOverview: true, disableFilters: true },
+		] as const;
+
+		const { result } = renderHook(() => useLunatic(...params));
+		// All elements have to be presents
+		expect(result.current.overview.length).toBe(9);
+		// All elements have to be mark as reached
+		expect(result.current.overview.every(({ reached }) => reached));
+	});
+});
