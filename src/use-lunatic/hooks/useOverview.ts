@@ -131,12 +131,9 @@ const interpretOverviewItem = (
 
 	const reached = (() => {
 		if (state.disableFilters) return true;
-		return pageTagComparator(
-			state.pager ? getPageTag(state.pager) : '-1',
-			page
-		) >= 0
-			? true
-			: false;
+		return (
+			pageTagComparator(state.pager ? getPageTag(state.pager) : '-1', page) >= 0
+		);
 	})();
 
 	return [
