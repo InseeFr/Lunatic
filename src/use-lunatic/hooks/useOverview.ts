@@ -1,4 +1,5 @@
 import type {
+	LunaticOptions,
 	LunaticOverviewItem,
 	LunaticReducerState,
 	PageTag,
@@ -25,13 +26,23 @@ export const useOverview = (
 		overview,
 		executeExpression,
 		pager,
-	}: Pick<LunaticReducerState, 'executeExpression' | 'overview' | 'pager'>,
+		options,
+	}: Pick<
+		LunaticReducerState,
+		'executeExpression' | 'overview' | 'pager' | 'options'
+	>,
 	deps: DependencyList
 ) => {
 	return useMemo(
-		() => interpretOverview(overview, executeExpression, pager),
+		() =>
+			interpretOverview(
+				overview,
+				executeExpression,
+				pager,
+				options.disableFilters
+			),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[...deps, overview]
+		[...deps, overview, options.disableFilters]
 	);
 };
 
@@ -41,11 +52,16 @@ export const useOverview = (
 const interpretOverview = (
 	overviewItems: LunaticOverviewItem[],
 	executeExpression: LunaticReducerState['executeExpression'],
-	pager?: LunaticReducerState['pager']
+	pager?: LunaticReducerState['pager'],
+	disableFilters?: LunaticOptions['disableFilters']
 ) => {
 	// Flat structure of the overview
 	let items = overviewItems.reduce(
-		(acc, item) => interpretOverviewItem(acc, item, executeExpression, pager),
+		(acc, item) =>
+			interpretOverviewItem(acc, item, executeExpression, {
+				pager,
+				disableFilters,
+			}),
 		[] as InterpretedLunaticOverviewItem[]
 	);
 	// Sort using the page logic
@@ -77,7 +93,11 @@ const interpretOverviewItem = (
 	items: InterpretedLunaticOverviewItem[],
 	item: LunaticOverviewItem,
 	executeExpression: LunaticReducerState['executeExpression'],
-	pager?: LunaticReducerState['pager'],
+	state: {
+		pager?: LunaticReducerState['pager'];
+		disableFilters?: LunaticOptions['disableFilters'];
+	},
+
 	iteration?: number
 ): InterpretedLunaticOverviewItem[] => {
 	// We reached a loop item, we need to add it multiple time
@@ -85,19 +105,21 @@ const interpretOverviewItem = (
 		const iterations = executeExpression<number>(item.iterations) ?? 0;
 		return Array.from({ length: iterations }).reduce(
 			(acc: InterpretedLunaticOverviewItem[], _, k) => {
-				return interpretOverviewItem(acc, item, executeExpression, pager, k);
+				return interpretOverviewItem(acc, item, executeExpression, state, k);
 			},
 			items
 		);
 	}
 
-	const isVisible = item.conditionFilter
-		? Boolean(
-				executeExpression(item.conditionFilter, {
-					iteration: iteration,
-				})
-			)
-		: true;
+	// if disableFilters is set to true, item are visible and reached by default
+	const isVisible = (() => {
+		if (state.disableFilters || !item.conditionFilter) return true;
+		return Boolean(
+			executeExpression(item.conditionFilter, {
+				iteration: iteration,
+			})
+		);
+	})();
 
 	if (!isVisible) {
 		return items;
@@ -106,6 +128,17 @@ const interpretOverviewItem = (
 	// Append the item to the list of items
 	const page =
 		`${item.pageTag}${iteration !== undefined ? `#${iteration + 1}` : ''}` as PageTag;
+
+	const reached = (() => {
+		if (state.disableFilters) return true;
+		return pageTagComparator(
+			state.pager ? getPageTag(state.pager) : '-1',
+			page
+		) >= 0
+			? true
+			: false;
+	})();
+
 	return [
 		...items,
 		{
@@ -116,10 +149,7 @@ const interpretOverviewItem = (
 				? executeExpression(item.description, { iteration })
 				: undefined,
 			children: [],
-			reached:
-				pageTagComparator(pager ? getPageTag(pager) : '-1', page) >= 0
-					? true
-					: false,
+			reached: reached,
 			page: page,
 			current: false,
 		},
