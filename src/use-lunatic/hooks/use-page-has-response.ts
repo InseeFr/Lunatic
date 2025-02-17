@@ -43,6 +43,11 @@ function hasOneResponse(
 			return true;
 		}
 
+		// We have an arbitrary response for this component
+		if ('arbitraryValue' in component && component.arbitraryValue) {
+			return true;
+		}
+
 		// For Table, we have to extract components from its body and apply isSubComponentsEmpty function
 		if (component.componentType === 'Table') {
 			// Body is array for array (row), each "cell" could be an Label or Component, so we filter array.
