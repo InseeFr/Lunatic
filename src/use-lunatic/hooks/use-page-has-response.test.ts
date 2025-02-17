@@ -62,6 +62,21 @@ describe('usePageHasResponse', () => {
 		expect(result.current()).toBeTruthy();
 	});
 
+	it('should be true when there is an arbitrary response', () => {
+		const components: LunaticComponentProps[] = [
+			{
+				...defaultComponentValues,
+				componentType: 'Suggester',
+				allowArbitrary: true,
+				arbitraryValue: 'my arbitrary value',
+			} as any,
+		];
+		const { result } = renderHook(() =>
+			usePageHasResponse(components, vi.fn())
+		);
+		expect(result.current()).toBeTruthy();
+	});
+
 	it('should be true when there is a missing response', () => {
 		const components: LunaticComponentProps[] = [
 			{
