@@ -10,6 +10,7 @@ exports[`Textarea > renders without crashing 1`] = `
     >
       <textarea
         aria-invalid="false"
+        aria-labelledby="label-input"
         id="input"
       >
         input
@@ -29,6 +30,7 @@ exports[`Textarea > should handle readOnly 1`] = `
     >
       <textarea
         aria-invalid="false"
+        aria-labelledby="label-textarea"
         id="textarea"
         readonly=""
       >

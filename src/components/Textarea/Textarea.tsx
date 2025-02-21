@@ -73,6 +73,7 @@ export const CustomTextarea = slottableComponent<CustomProps>(
 						required={required}
 						disabled={disabled}
 						id={id}
+						aria-labelledby={labelId}
 						aria-describedby={maxLength ? charactersCountId : undefined}
 						rows={rows}
 						maxLength={maxLength}
