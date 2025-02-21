@@ -31,16 +31,27 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
               <div
                 class="lunatic-input"
               >
-                <input
-                  aria-invalid="false"
-                  aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-0"
-                  autocomplete="off"
-                  id="jrc3ye5q-QOP-lo6tcvvx-0"
-                  maxlength="249"
-                  title="azeaze"
-                  type="text"
-                  value="azeaze"
-                />
+                <div
+                  class="field-with-count"
+                >
+                  <input
+                    aria-describedby="characters-count-jrc3ye5q-QOP-lo6tcvvx-0"
+                    aria-invalid="false"
+                    aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-0"
+                    autocomplete="off"
+                    id="jrc3ye5q-QOP-lo6tcvvx-0"
+                    maxlength="249"
+                    title="azeaze"
+                    type="text"
+                    value="azeaze"
+                  />
+                  <span
+                    class="characters-count"
+                    id="characters-count-jrc3ye5q-QOP-lo6tcvvx-0"
+                  >
+                    6/249
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -61,16 +72,27 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
               <div
                 class="lunatic-input"
               >
-                <input
-                  aria-invalid="false"
-                  aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-1"
-                  autocomplete="off"
-                  id="jrc3ye5q-QOP-lo6tcvvx-1"
-                  maxlength="249"
-                  title="azeaze"
-                  type="text"
-                  value="azeaze"
-                />
+                <div
+                  class="field-with-count"
+                >
+                  <input
+                    aria-describedby="characters-count-jrc3ye5q-QOP-lo6tcvvx-1"
+                    aria-invalid="false"
+                    aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-1"
+                    autocomplete="off"
+                    id="jrc3ye5q-QOP-lo6tcvvx-1"
+                    maxlength="249"
+                    title="azeaze"
+                    type="text"
+                    value="azeaze"
+                  />
+                  <span
+                    class="characters-count"
+                    id="characters-count-jrc3ye5q-QOP-lo6tcvvx-1"
+                  >
+                    6/249
+                  </span>
+                </div>
               </div>
             </div>
           </div>

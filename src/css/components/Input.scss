@@ -43,3 +43,13 @@
 		}
 	}
 }
+
+.characters-count {
+	display: block;
+	font-size: 12px;
+	padding-top: 0.3rem;
+}
+
+.max-length-reached {
+	color: red;
+}

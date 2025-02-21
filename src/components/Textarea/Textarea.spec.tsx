@@ -22,6 +22,32 @@ describe('Textarea', () => {
 		expect(container).toMatchSnapshot();
 	});
 
+	it('renders characters count if there is a maximum length', () => {
+		const labelText = 'Enter a number';
+		const { container } = render(
+			<Textarea
+				{...baseProps}
+				label={labelText}
+				maxLength={30}
+				errors={undefined}
+			/>
+		);
+
+		const charactersCount = container.querySelector('#characters-count-input');
+		expect(charactersCount).toBeInTheDocument();
+		expect(charactersCount).toHaveTextContent('5/30');
+	});
+
+	it('does not render characters count if there is no maximum length', () => {
+		const labelText = 'Enter a number';
+		const { container } = render(
+			<Textarea {...baseProps} label={labelText} errors={undefined} />
+		);
+
+		const charactersCount = container.querySelector('#characters-count-input');
+		expect(charactersCount).not.toBeInTheDocument();
+	});
+
 	it('should handle readOnly', () => {
 		const { container } = render(
 			<Textarea

@@ -47,6 +47,12 @@ export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
 		declarations,
 	} = props;
 	const labelId = `label-${id}`;
+
+	const currentLength = value?.toString().length ?? 0;
+	const charactersCountId = `characters-count-${id}`;
+	const charactersCountDisplay = `${currentLength}/${maxLength}`;
+	const hasReachedMaxLength = currentLength === maxLength;
+
 	return (
 		<div className={classnames('lunatic-input')}>
 			<Label htmlFor={id} id={labelId} description={description}>
@@ -57,24 +63,37 @@ export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
 				declarations={declarations}
 				id={id}
 			/>
-			<input
-				id={id}
-				aria-labelledby={labelId}
-				autoComplete="off"
-				type="text"
-				disabled={disabled}
-				readOnly={readOnly}
-				value={(value ?? '').toString()}
-				title={value ?? ''}
-				onChange={(e) => onChange(e.target.value)}
-				aria-required={required}
-				required={required}
-				maxLength={maxLength}
-				aria-invalid={!!errors}
-				onBlur={(e) => {
-					e.target.setSelectionRange(0, 0);
-				}}
-			/>
+			<div className="field-with-count">
+				<input
+					id={id}
+					aria-labelledby={labelId}
+					aria-describedby={maxLength ? charactersCountId : undefined}
+					autoComplete="off"
+					type="text"
+					disabled={disabled}
+					readOnly={readOnly}
+					value={(value ?? '').toString()}
+					title={value ?? ''}
+					onChange={(e) => onChange(e.target.value)}
+					aria-required={required}
+					required={required}
+					maxLength={maxLength}
+					aria-invalid={!!errors}
+					onBlur={(e) => {
+						e.target.setSelectionRange(0, 0);
+					}}
+				/>
+				{maxLength && (
+					<span
+						id={charactersCountId}
+						className={classnames('characters-count', {
+							'max-length-reached': hasReachedMaxLength,
+						})}
+					>
+						{charactersCountDisplay}
+					</span>
+				)}
+			</div>
 			<ComponentErrors errors={errors} />
 		</div>
 	);
