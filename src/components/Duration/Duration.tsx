@@ -49,21 +49,21 @@ export const CustomDuration = slottableComponent<CustomProps>(
 		// Generate handler for a specific unit field (year, month...)
 		const changeHandler =
 			(unit: 'hours' | 'minutes' | 'months' | 'years') =>
-			(e: {
-				// CheckValidity function is used to apply constraints to a field Ex: (min, max)
-				target: { valueAsNumber: number; checkValidity: () => boolean };
-			}) => {
-				if (!e.target.checkValidity()) {
-					return;
-				}
-				const fieldValue = clampDuration(
-					Number.isNaN(e.target.valueAsNumber) ? null : e.target.valueAsNumber,
-					unit
-				);
-				const newDuration = { ...duration, [unit]: fieldValue };
-				onChange(formatDuration(newDuration));
-				setDuration(newDuration);
-			};
+				(e: {
+					// CheckValidity function is used to apply constraints to a field Ex: (min, max)
+					target: { valueAsNumber: number; checkValidity: () => boolean };
+				}) => {
+					if (!e.target.checkValidity()) {
+						return;
+					}
+					const fieldValue = clampDuration(
+						Number.isNaN(e.target.valueAsNumber) ? null : e.target.valueAsNumber,
+						unit
+					);
+					const newDuration = { ...duration, [unit]: fieldValue };
+					onChange(formatDuration(newDuration));
+					setDuration(newDuration);
+				};
 
 		return (
 			<fieldset className={classnames('lunatic-input')}>
@@ -87,6 +87,20 @@ export const CustomDuration = slottableComponent<CustomProps>(
 								onChange={changeHandler(unit)}
 								{...propsByUnit[unit]}
 							/>
+							<span className="input-hint" id={`${unit}Hint`}>
+								{(() => {
+									const minValue = propsByUnit[unit].min;
+									// @ts-expect-error - year unit does not have a max 
+									const maxValue = propsByUnit[unit].max;
+
+									if (maxValue !== undefined) {
+										return `Entre ${minValue} et ${maxValue}`;
+									} else {
+										return `Minimum ${minValue}`;
+									}
+								})()}
+							</span>
+
 						</div>
 					))}
 				</div>
