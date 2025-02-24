@@ -1,6 +1,11 @@
 import { render } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Textarea } from './Textarea';
+import { CharactersCount } from '../shared/CharactersCount/CharactersCount';
+
+vi.mock('../shared/CharactersCount/CharactersCount', () => ({
+	CharactersCount: vi.fn(),
+}));
 
 describe('Textarea', () => {
 	const mockOnChange = vi.fn();
@@ -20,6 +25,19 @@ describe('Textarea', () => {
 	it('renders without crashing', () => {
 		const { container } = render(<Textarea {...baseProps} />);
 		expect(container).toMatchSnapshot();
+	});
+
+	it('calls CharactersCount component with correct props', () => {
+		const props = { ...baseProps, maxLength: 30 };
+		render(<Textarea {...props} />);
+		expect(CharactersCount).toHaveBeenCalledWith(
+			{
+				id: props.id,
+				maxLength: props.maxLength,
+				value: props.value,
+			},
+			{}
+		);
 	});
 
 	it('should handle readOnly', () => {
