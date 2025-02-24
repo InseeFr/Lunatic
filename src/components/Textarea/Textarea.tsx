@@ -7,7 +7,8 @@ import {
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
-import classNames from 'classnames';
+import { CharactersCount } from '../shared/CharactersCount/CharactersCount';
+import { getCharactersCountId } from '../shared/utils/getCharactersCountId';
 
 export function Textarea({
 	handleChanges,
@@ -52,11 +53,7 @@ export const CustomTextarea = slottableComponent<CustomProps>(
 			placeHolder,
 		} = props;
 		const labelId = `label-${id}`;
-
-		const currentLength = value?.toString().length ?? 0;
-		const charactersCountId = `characters-count-${id}`;
-		const charactersCountDisplay = `${currentLength}/${maxLength}`;
-		const hasReachedMaxLength = currentLength === maxLength;
+		const charactersCountId = getCharactersCountId(id, maxLength);
 
 		return (
 			<div className="lunatic-textarea">
@@ -84,16 +81,7 @@ export const CustomTextarea = slottableComponent<CustomProps>(
 						readOnly={readOnly}
 						aria-invalid={!!errors}
 					/>
-					{maxLength && (
-						<span
-							id={charactersCountId}
-							className={classNames('characters-count', {
-								'max-length-reached': hasReachedMaxLength,
-							})}
-						>
-							{charactersCountDisplay}
-						</span>
-					)}
+					<CharactersCount id={id} maxLength={maxLength} value={value} />
 				</div>
 				<ComponentErrors errors={errors} />
 			</div>

@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Input } from './Input';
+
 describe('Input', () => {
 	const mockOnChange = vi.fn();
 	const baseProps = {
@@ -32,32 +33,6 @@ describe('Input', () => {
 
 		expect(label).toBeInTheDocument();
 		expect(input).toBeInTheDocument();
-	});
-
-	it('renders characters count if there is a maximum length', () => {
-		const labelText = 'Enter a number';
-		const { container } = render(
-			<Input
-				{...baseProps}
-				label={labelText}
-				maxLength={30}
-				errors={undefined}
-			/>
-		);
-
-		const charactersCount = container.querySelector('#characters-count-input');
-		expect(charactersCount).toBeInTheDocument();
-		expect(charactersCount).toHaveTextContent('5/30');
-	});
-
-	it('does not render characters count if there is no maximum length', () => {
-		const labelText = 'Enter a number';
-		const { container } = render(
-			<Input {...baseProps} label={labelText} errors={undefined} />
-		);
-
-		const charactersCount = container.querySelector('#characters-count-input');
-		expect(charactersCount).not.toBeInTheDocument();
 	});
 
 	it('calls onChange with parsed value', () => {

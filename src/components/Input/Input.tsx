@@ -8,6 +8,8 @@ import {
 } from '../shared/ComponentErrors/ComponentErrors';
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
+import { CharactersCount } from '../shared/CharactersCount/CharactersCount';
+import { getCharactersCountId } from '../shared/utils/getCharactersCountId';
 
 export function Input({
 	handleChanges,
@@ -47,11 +49,7 @@ export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
 		declarations,
 	} = props;
 	const labelId = `label-${id}`;
-
-	const currentLength = value?.toString().length ?? 0;
-	const charactersCountId = `characters-count-${id}`;
-	const charactersCountDisplay = `${currentLength}/${maxLength}`;
-	const hasReachedMaxLength = currentLength === maxLength;
+	const charactersCountId = getCharactersCountId(id, maxLength);
 
 	return (
 		<div className={classnames('lunatic-input')}>
@@ -83,16 +81,7 @@ export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
 						e.target.setSelectionRange(0, 0);
 					}}
 				/>
-				{maxLength && (
-					<span
-						id={charactersCountId}
-						className={classnames('characters-count', {
-							'max-length-reached': hasReachedMaxLength,
-						})}
-					>
-						{charactersCountDisplay}
-					</span>
-				)}
+				<CharactersCount id={id} maxLength={maxLength} value={value} />
 			</div>
 			<ComponentErrors errors={errors} />
 		</div>
