@@ -60,7 +60,7 @@ function hasOneResponse(
 			return !isSubComponentsEmpty(childrenComponent, executeExpression);
 		}
 
-		// We found a value in one of the root component
+		// We found a value in one of the root component. Used for Loop
 		if ('value' in component && !isEmpty(component.value)) {
 			return true;
 		}

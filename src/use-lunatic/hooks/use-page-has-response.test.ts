@@ -156,3 +156,45 @@ describe('usePageHasResponse', () => {
 		expect(result.current()).toBeTruthy();
 	});
 });
+
+it('should be true for a loop component with values', () => {
+	const mockExecuteExpression = vi.fn();
+	mockExecuteExpression.mockReturnValueOnce('my value');
+
+	const values = {
+		VOTREPRENO: ['Alice', 'Bob', 'Charlie'],
+		VOTREAGE: [22, 30, 40],
+	};
+
+	const components = [
+		{
+			...defaultComponentValues,
+			componentType: 'Loop',
+			components: [
+				{
+					...defaultComponentValues,
+					componentType: 'Question',
+					components: [
+						{
+							...defaultComponentValues,
+							componentType: 'Input',
+							response: { name: 'VOTREPRENO' },
+						},
+						{
+							...defaultComponentValues,
+							componentType: 'InputNumber',
+							response: { name: 'VOTREAGE' },
+						},
+					],
+				},
+			],
+			value: values,
+		},
+	] as any as LunaticComponentProps[];
+
+	const { result } = renderHook(() =>
+		usePageHasResponse(components, mockExecuteExpression)
+	);
+
+	expect(result.current()).toBeTruthy();
+});
