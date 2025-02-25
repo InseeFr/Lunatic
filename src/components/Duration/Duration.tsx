@@ -76,31 +76,36 @@ export const CustomDuration = slottableComponent<CustomProps>(
 				<div className="duration-fields">
 					{objectKeys(duration).map((unit) => (
 						<div className="duration-field" key={unit}>
-							<label htmlFor={`${unit}Input`} className="input-label">
-								{labelByUnit[unit]}
-							</label>
-							<input
-								id={`${unit}Input`}
-								type="number"
-								value={duration[unit] ?? ''}
-								className="input-field"
-								onChange={changeHandler(unit)}
-								{...propsByUnit[unit]}
-							/>
-							<span className="input-hint" id={`${unit}Hint`}>
-								{(() => {
-									const minValue = propsByUnit[unit].min;
-									// @ts-expect-error - year unit does not have a max 
-									const maxValue = propsByUnit[unit].max;
+							<div className="field-row">
+								<label htmlFor={`${unit}Input`} className="input-label">
+									{labelByUnit[unit]}
+								</label>
+								<div className="input-container">
+									<input
+										id={`${unit}Input`}
+										type="number"
+										value={duration[unit] ?? ''}
+										className="input-field"
+										onChange={changeHandler(unit)}
+										{...propsByUnit[unit]}
+									/>
+								</div>
+							</div>
+							<div className="hint-row">
+								<span className="input-hint" id={`${unit}Hint`}>
+									{(() => {
+										const minValue = propsByUnit[unit].min;
+										// @ts-expect-error - year unit does not have a max 
+										const maxValue = propsByUnit[unit].max;
 
-									if (maxValue !== undefined) {
-										return `Entre ${minValue} et ${maxValue}`;
-									} else {
-										return `Minimum ${minValue}`;
-									}
-								})()}
-							</span>
-
+										if (maxValue !== undefined) {
+											return `Entre ${minValue} et ${maxValue}`;
+										} else {
+											return `Minimum ${minValue}`;
+										}
+									})()}
+								</span>
+							</div>
 						</div>
 					))}
 				</div>

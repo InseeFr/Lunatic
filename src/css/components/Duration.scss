@@ -1,14 +1,25 @@
 .duration-fields,
 .duration-field {
 	display: flex;
-	align-items: center;
 	gap: 1rem;
 }
 .duration-field {
 	gap: 0.5rem;
+	display: flex;
+	flex-direction: column;
 }
+
+.field-row {
+	display: flex;
+	align-items: flex-end;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+}
+
 .input-hint {
-	display: block;
-	font-size: 12px;
-	padding-top: 0.3rem;
+	font-size: 0.8rem;
+	color: #666;
 }
