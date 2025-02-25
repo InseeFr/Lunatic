@@ -25,7 +25,7 @@ describe('fillComponentValue', () => {
 		);
 	};
 
-	describe('response', () => {
+	describe('single response', () => {
 		const component = {
 			response: { name: 'PRENOM' },
 		} as LunaticComponentDefinition<'Input'>;
@@ -44,7 +44,7 @@ describe('fillComponentValue', () => {
 			);
 		});
 	});
-	describe('responses', () => {
+	describe('multiple responses', () => {
 		const component = {
 			responses: times(3, (k) => ({
 				response: { name: `NAME${k}` },
@@ -61,6 +61,57 @@ describe('fillComponentValue', () => {
 				NAME0: null,
 				NAME1: true,
 				NAME2: null,
+			});
+		});
+	});
+
+	describe('Loop component with nested components', () => {
+		const loopComponent = {
+			id: 'm7j9kwro',
+			componentType: 'Loop',
+			components: [
+				{
+					id: 'm7j9iem8',
+					componentType: 'Sequence',
+				},
+				{
+					id: 'question-m7j9q1ep',
+					componentType: 'Question',
+					components: [
+						{
+							id: 'm7j9q1ep',
+							componentType: 'Input',
+							response: { name: 'VOTREPRENO' },
+						},
+					],
+				},
+				{
+					id: 'question-m7jb81xh',
+					componentType: 'Question',
+					components: [
+						{
+							id: 'm7jb81xh',
+							componentType: 'InputNumber',
+							response: { name: 'VOTREAGE' },
+						},
+					],
+				},
+			],
+		} as LunaticComponentDefinition;
+
+		it('should correctly extract values from nested responses as arrays', () => {
+			const values = {
+				VOTREPRENO: ['Alice', 'Bob', 'Charlie'],
+				VOTREAGE: [22, 30, 40],
+			};
+
+			expectFilledComponent(loopComponent, values).toEqual(values);
+		});
+
+		it('should return null for missing responses', () => {
+			expectFilledComponent(loopComponent).toEqual({
+				VOTREPRENO: null,
+				VOTREAGE: null,
 			});
 		});
 	});

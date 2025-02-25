@@ -29,12 +29,27 @@ export function getValueProp(
 	}
 	// For loop, value will be a map of child component values
 	if ('components' in component) {
-		return Object.fromEntries(
-			component.components
-				.map((c) => ('response' in c ? c.response.name : null))
-				.filter((name) => name !== null)
-				.map((name) => [name, args.variables.get(name!)])
-		);
+		return getChildResponseValues(component.components, args.variables);
 	}
 	return null;
+}
+
+/**
+ * Get the values of every child components recursively.
+ */
+function getChildResponseValues(
+	components: LunaticComponentDefinition[],
+	variables: LunaticVariablesStore
+): Record<string, unknown> {
+	return Object.fromEntries(
+		components.flatMap((c) => {
+			if ('response' in c) {
+				return [[c.response.name, variables.get(c.response.name)]];
+			}
+			if ('components' in c) {
+				return Object.entries(getChildResponseValues(c.components, variables));
+			}
+			return [];
+		})
+	);
 }
