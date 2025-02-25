@@ -16,15 +16,19 @@ exports[`Input > renders without crashing 1`] = `
         description
       </span>
     </label>
-    <input
-      aria-invalid="false"
-      aria-labelledby="label-input"
-      autocomplete="off"
-      id="input"
-      title="input"
-      type="text"
-      value="input"
-    />
+    <div
+      class="field-with-count"
+    >
+      <input
+        aria-invalid="false"
+        aria-labelledby="label-input"
+        autocomplete="off"
+        id="input"
+        title="input"
+        type="text"
+        value="input"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -34,16 +38,20 @@ exports[`Input > should handle readOnly 1`] = `
   <div
     class="lunatic-input"
   >
-    <input
-      aria-invalid="false"
-      aria-labelledby="label-number"
-      autocomplete="off"
-      id="number"
-      readonly=""
-      title="toto"
-      type="text"
-      value="toto"
-    />
+    <div
+      class="field-with-count"
+    >
+      <input
+        aria-invalid="false"
+        aria-labelledby="label-number"
+        autocomplete="off"
+        id="number"
+        readonly=""
+        title="toto"
+        type="text"
+        value="toto"
+      />
+    </div>
   </div>
 </div>
 `;

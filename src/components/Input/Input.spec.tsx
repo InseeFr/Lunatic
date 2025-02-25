@@ -1,6 +1,12 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Input } from './Input';
+import { CharactersCount } from '../shared/CharactersCount/CharactersCount';
+
+vi.mock('../shared/CharactersCount/CharactersCount', () => ({
+	CharactersCount: vi.fn(),
+}));
+
 describe('Input', () => {
 	const mockOnChange = vi.fn();
 	const baseProps = {
@@ -32,6 +38,19 @@ describe('Input', () => {
 
 		expect(label).toBeInTheDocument();
 		expect(input).toBeInTheDocument();
+	});
+
+	it('calls CharactersCount component with correct props', () => {
+		const props = { ...baseProps, maxLength: 30 };
+		render(<Input {...props} />);
+		expect(CharactersCount).toHaveBeenCalledWith(
+			{
+				id: props.id,
+				maxLength: props.maxLength,
+				value: props.value,
+			},
+			{}
+		);
 	});
 
 	it('calls onChange with parsed value', () => {

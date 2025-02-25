@@ -8,6 +8,8 @@ import {
 } from '../shared/ComponentErrors/ComponentErrors';
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
+import { CharactersCount } from '../shared/CharactersCount/CharactersCount';
+import { getCharactersCountId } from '../shared/utils/getCharactersCountId';
 
 export function Input({
 	handleChanges,
@@ -47,6 +49,8 @@ export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
 		declarations,
 	} = props;
 	const labelId = `label-${id}`;
+	const charactersCountId = getCharactersCountId(id, maxLength);
+
 	return (
 		<div className={classnames('lunatic-input')}>
 			<Label htmlFor={id} id={labelId} description={description}>
@@ -57,24 +61,28 @@ export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
 				declarations={declarations}
 				id={id}
 			/>
-			<input
-				id={id}
-				aria-labelledby={labelId}
-				autoComplete="off"
-				type="text"
-				disabled={disabled}
-				readOnly={readOnly}
-				value={(value ?? '').toString()}
-				title={value ?? ''}
-				onChange={(e) => onChange(e.target.value)}
-				aria-required={required}
-				required={required}
-				maxLength={maxLength}
-				aria-invalid={!!errors}
-				onBlur={(e) => {
-					e.target.setSelectionRange(0, 0);
-				}}
-			/>
+			<div className="field-with-count">
+				<input
+					id={id}
+					aria-labelledby={labelId}
+					aria-describedby={maxLength ? charactersCountId : undefined}
+					autoComplete="off"
+					type="text"
+					disabled={disabled}
+					readOnly={readOnly}
+					value={(value ?? '').toString()}
+					title={value ?? ''}
+					onChange={(e) => onChange(e.target.value)}
+					aria-required={required}
+					required={required}
+					maxLength={maxLength}
+					aria-invalid={!!errors}
+					onBlur={(e) => {
+						e.target.setSelectionRange(0, 0);
+					}}
+				/>
+				<CharactersCount id={id} maxLength={maxLength} value={value} />
+			</div>
 			<ComponentErrors errors={errors} />
 		</div>
 	);

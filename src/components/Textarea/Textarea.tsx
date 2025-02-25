@@ -7,6 +7,8 @@ import {
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
+import { CharactersCount } from '../shared/CharactersCount/CharactersCount';
+import { getCharactersCountId } from '../shared/utils/getCharactersCountId';
 
 export function Textarea({
 	handleChanges,
@@ -51,6 +53,7 @@ export const CustomTextarea = slottableComponent<CustomProps>(
 			placeHolder,
 		} = props;
 		const labelId = `label-${id}`;
+		const charactersCountId = getCharactersCountId(id, maxLength);
 
 		return (
 			<div className="lunatic-textarea">
@@ -62,19 +65,24 @@ export const CustomTextarea = slottableComponent<CustomProps>(
 					declarations={declarations}
 					id={id}
 				/>
-				<textarea
-					required={required}
-					disabled={disabled}
-					id={id}
-					rows={rows}
-					maxLength={maxLength}
-					cols={cols}
-					onChange={(e) => onChange(e.target.value)}
-					value={value ?? ''}
-					placeholder={placeHolder}
-					readOnly={readOnly}
-					aria-invalid={!!errors}
-				/>
+				<div className="field-with-count">
+					<textarea
+						required={required}
+						disabled={disabled}
+						id={id}
+						aria-labelledby={labelId}
+						aria-describedby={maxLength ? charactersCountId : undefined}
+						rows={rows}
+						maxLength={maxLength}
+						cols={cols}
+						onChange={(e) => onChange(e.target.value)}
+						value={value ?? ''}
+						placeholder={placeHolder}
+						readOnly={readOnly}
+						aria-invalid={!!errors}
+					/>
+					<CharactersCount id={id} maxLength={maxLength} value={value} />
+				</div>
 				<ComponentErrors errors={errors} />
 			</div>
 		);
