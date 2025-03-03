@@ -414,6 +414,21 @@ describe('lunatic-variables-store', () => {
 			variables.set('READY', false, { iteration: [1] });
 			expect(variables.get('PRENOM')).toEqual(null);
 		});
+		it('should handle the new array format', () => {
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('READY', [true, true, true]);
+			cleaningBehaviour(
+				variables,
+				{
+					READY: {
+						PRENOM: [['READY', 'READY']],
+					},
+				},
+				{ PRENOM: [null] }
+			);
+			variables.set('READY', false, { iteration: [1] });
+			expect(variables.get('PRENOM')).toEqual(['John', null, 'Marc']);
+		});
 	});
 
 	describe('missing', () => {

@@ -1,6 +1,7 @@
 import type { LunaticVariablesStore } from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type';
 import { depth } from '../../../../utils/array';
+import { castBool } from '../../../../utils/cast';
 
 /**
  * Cleaning behaviour for the store
@@ -14,6 +15,19 @@ export function cleaningBehaviour(
 ) {
 	if (!cleaning) {
 		return;
+	}
+
+	// Create calculated variables from cleaning expressions
+	for (const source in cleaning) {
+		for (const target in cleaning[source]) {
+			if (Array.isArray(cleaning[source][target])) {
+				for (const expression of cleaning[source][target]) {
+					store.setCalculated(expression[0], expression[0], {
+						shapeFrom: expression[1],
+					});
+				}
+			}
+		}
 	}
 
 	// Create a map to improve performance
@@ -30,10 +44,13 @@ export function cleaningBehaviour(
 
 		for (const variableName in cleaningInfo) {
 			try {
-				const skipCleaning = store.run(cleaningInfo[variableName], {
-					iteration,
-				});
-				if (skipCleaning) {
+				if (
+					!shouldClean(store, {
+						expressions: cleaningInfo[variableName],
+						iteration: iteration,
+						isResizing: e.detail.cause === 'resizing',
+					})
+				) {
 					continue;
 				}
 
@@ -58,6 +75,53 @@ export function cleaningBehaviour(
 			}
 		}
 	});
+}
+
+/**
+ * Check if a variable need to be cleaned
+ */
+function shouldClean(
+	store: LunaticVariablesStore,
+	{
+		// The expressions are a list of condition filter to display the variable, so we should clean if the filter is evaluated to false (false = variable is not visible)
+		expressions,
+		iteration,
+		isResizing,
+	}: {
+		expressions: string | [string, string][];
+		iteration?: number[];
+		isResizing: boolean;
+	}
+) {
+	// Legacy cleaning used a simple string
+	if (typeof expressions === 'string') {
+		return !castBool(
+			store.run(expressions, {
+				iteration,
+			})
+		);
+	}
+
+	// New format use tuples [expression, shapeFrom]
+	if (isResizing) {
+		// If we are resizing a variable, only run expression containing aggregators (count(), sum()...)
+		expressions = expressions.filter(
+			(expr) => !Array.isArray(store.get(expr[0], iteration))
+		);
+	}
+
+	for (const expression of expressions) {
+		if (
+			// Run the expression to check if cleaning should happen
+			!store.run(expression[0], {
+				iteration,
+			})
+		) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 function getValueAtIteration(value: unknown, iteration?: number[]) {
