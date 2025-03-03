@@ -272,7 +272,7 @@ export type LunaticSource = {
 	suggesters?: SuggesterDefinition[];
 	cleaning?: {
 		[k: string]: {
-			[k: string]: string;
+			[k: string]: string | [expression: string, shapeFrom: string][];
 		};
 	};
 	missingBlock?: {
