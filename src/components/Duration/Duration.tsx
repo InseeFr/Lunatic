@@ -12,6 +12,7 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import { Declarations } from '../shared/Declarations/Declarations';
+import { Fieldset } from '../shared/Fieldset/Fieldset';
 
 export function Duration({
 	handleChanges,
@@ -39,7 +40,16 @@ type CustomProps = Omit<
 export const CustomDuration = slottableComponent<CustomProps>(
 	'Duration',
 	(props) => {
-		const { errors, value, label, format, onChange, declarations, id } = props;
+		const {
+			errors,
+			value,
+			label,
+			format,
+			onChange,
+			declarations,
+			id,
+			description,
+		} = props;
 		// We need to keep an internal state since one field can be empty (null value in duration)
 		// but we still send "0" and we don't want the field to display "0"
 		const [duration, setDuration] = useState(
@@ -66,8 +76,11 @@ export const CustomDuration = slottableComponent<CustomProps>(
 			};
 
 		return (
-			<fieldset className={classnames('lunatic-input')}>
-				{label && <legend>{label}</legend>}
+			<Fieldset
+				className={classnames('lunatic-input')}
+				legend={label}
+				description={description}
+			>
 				<Declarations
 					type="AFTER_QUESTION_TEXT"
 					declarations={declarations}
@@ -91,7 +104,7 @@ export const CustomDuration = slottableComponent<CustomProps>(
 					))}
 				</div>
 				<ComponentErrors errors={errors} />
-			</fieldset>
+			</Fieldset>
 		);
 	}
 );
