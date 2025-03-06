@@ -1,0 +1,13 @@
+import{d as l}from"./default-arg-types-xBgHHzIG.js";import{O as d}from"./orchestrator-DTrJdtoN.js";import"./jsx-runtime-BlAj40OV.js";import"./index-Cs7sjTYM.js";import"./_commonjsHelpers-BosuxZz1.js";import"./Declarations-DrFh0QZm.js";import"./Combobox-DUMTieKf.js";import"./Datepicker-0DgJhKxt.js";import"./index-Cf-03bMR.js";const b="../../../lunatic-schema.json",T=[{id:"kze792d8",componentType:"InputNumber",page:"1",min:0,max:1e5,decimals:2,label:{value:'"➡ 1. " || "Input number (between 0 and 100 000)"',type:"VTL|MD"},description:{value:'"Description"',type:"VTL|MD"},response:{name:"NB"}}],y=[{variableType:"COLLECTED",name:"NB",values:{COLLECTED:null}}],N={$schema:b,components:T,variables:y},g="../../../lunatic-schema.json",v=[{id:"kze792d8",componentType:"InputNumber",mandatory:!1,page:"1",min:0,max:10,decimals:0,unit:{value:'"€"',type:"VTL"},label:{value:'"➡ 1. " || "NB "',type:"VTL|MD"},conditionFilter:{value:"true",type:"VTL"},bindingDependencies:["NB"],response:{name:"NB"}},{id:"kze792d8",componentType:"InputNumber",mandatory:!1,page:"1",min:0,max:10,decimals:0,unit:"$",label:{value:'"➡ 1. " || "NB "',type:"VTL|MD"},conditionFilter:{value:"true",type:"VTL"},bindingDependencies:["NB"],response:{name:"NB"}}],L=[{variableType:"COLLECTED",name:"NB",values:{COLLECTED:null}}],D={$schema:g,components:v,variables:L},B="../../../lunatic-schema.json",E=[{id:"kze792d8",componentType:"InputNumber",mandatory:!1,page:"1",min:0,decimals:0,unit:{value:'"€"',type:"VTL"},label:{value:'"➡ 1. " || "NB "',type:"VTL|MD"},conditionFilter:{value:"true",type:"VTL"},bindingDependencies:["NB"],response:{name:"NB"}}],C=[{variableType:"COLLECTED",name:"NB",values:{COLLECTED:null}}],$={$schema:B,components:E,variables:C},j={title:"Components/InputNumber",component:d,argTypes:l},e={args:{source:N}},n={args:{source:D}},a={args:{source:$}};var s,r,o;e.parameters={...e.parameters,docs:{...(s=e.parameters)==null?void 0:s.docs,source:{originalSource:`{
+  args: {
+    source
+  }
+}`,...(o=(r=e.parameters)==null?void 0:r.docs)==null?void 0:o.source}}};var t,c,m;n.parameters={...n.parameters,docs:{...(t=n.parameters)==null?void 0:t.docs,source:{originalSource:`{
+  args: {
+    source: sourceEuro
+  }
+}`,...(m=(c=n.parameters)==null?void 0:c.docs)==null?void 0:m.source}}};var i,p,u;a.parameters={...a.parameters,docs:{...(i=a.parameters)==null?void 0:i.docs,source:{originalSource:`{
+  args: {
+    source: sourceBigNumber
+  }
+}`,...(u=(p=a.parameters)==null?void 0:p.docs)==null?void 0:u.source}}};const F=["Default","DynamicUnit","BigNumber"];export{a as BigNumber,e as Default,n as DynamicUnit,F as __namedExportsOrder,j as default};
