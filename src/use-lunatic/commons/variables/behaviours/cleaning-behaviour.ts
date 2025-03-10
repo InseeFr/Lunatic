@@ -21,10 +21,14 @@ export function cleaningBehaviour(
 	for (const source in cleaning) {
 		for (const target in cleaning[source]) {
 			if (Array.isArray(cleaning[source][target])) {
-				for (const expression of cleaning[source][target]) {
-					store.setCalculated(expression[0], expression[0], {
-						shapeFrom: expression[1],
-					});
+				for (const cleaningInfo of cleaning[source][target]) {
+					store.setCalculated(
+						cleaningInfo.expression,
+						cleaningInfo.expression,
+						{
+							shapeFrom: cleaningInfo.shapeFrom,
+						}
+					);
 				}
 			}
 		}
@@ -88,7 +92,13 @@ function shouldClean(
 		iteration,
 		isResizing,
 	}: {
-		expressions: string | [string, string][];
+		expressions:
+			| string
+			| {
+					expression: string;
+					shapeFrom?: string;
+					isAggregatorUsed: boolean;
+			  }[];
 		iteration?: number[];
 		isResizing: boolean;
 	}
@@ -105,15 +115,13 @@ function shouldClean(
 	// New format use tuples [expression, shapeFrom]
 	if (isResizing) {
 		// If we are resizing a variable, only run expression containing aggregators (count(), sum()...)
-		expressions = expressions.filter(
-			(expr) => !Array.isArray(store.get(expr[0], iteration))
-		);
+		expressions = expressions.filter((expr) => expr.isAggregatorUsed);
 	}
 
 	for (const expression of expressions) {
 		if (
 			// Run the expression to check if cleaning should happen
-			!store.run(expression[0], {
+			!store.run(expression.expression, {
 				iteration,
 			})
 		) {
