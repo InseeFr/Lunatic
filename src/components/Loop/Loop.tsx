@@ -60,7 +60,7 @@ export function Loop({
 			{...props}
 			errors={getComponentErrors(errors, props.id)}
 			addRow={nbRows === max ? undefined : addRow}
-			removeRow={(nbRows === 1 || nbRows === min) ? undefined : removeRow}
+			removeRow={nbRows === 1 || nbRows === min ? undefined : removeRow}
 			canControlRows={min !== max && Number.isFinite(max)}
 		>
 			{times(nbRows, (n) => (
