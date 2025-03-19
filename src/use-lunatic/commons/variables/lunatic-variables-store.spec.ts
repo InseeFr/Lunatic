@@ -511,10 +511,6 @@ describe('lunatic-variables-store', () => {
 						{
 							name: 'PRENOM',
 							values: {
-								EDITED: null,
-								FORCED: null,
-								INPUTTED: null,
-								PREVIOUS: null,
 								COLLECTED: 'John',
 							},
 							variableType: 'COLLECTED',
@@ -522,10 +518,6 @@ describe('lunatic-variables-store', () => {
 						{
 							name: 'NOM',
 							values: {
-								EDITED: null,
-								FORCED: null,
-								INPUTTED: null,
-								PREVIOUS: null,
 								COLLECTED: '',
 							},
 							variableType: 'COLLECTED',
