@@ -77,6 +77,7 @@ function hasOneResponse(
 
 		// For rosterForLoop we need to inspect child components
 		if (
+			component.componentType === 'RosterForLoop' &&
 			'components' in component &&
 			Array.isArray(component.components) &&
 			!isSubComponentsEmpty(component.components, executeExpression)
