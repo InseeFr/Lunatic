@@ -48,6 +48,9 @@ export function cleaningBehaviour(
 
 		for (const variableName in cleaningInfo) {
 			try {
+				// First: check if variable is already cleaned i.e, value is `null`, empty or list of `null`
+				if (isAlreadyCleaned(store, variableName)) continue;
+				// Second: check if variable should be clean i.e one of expressions is true
 				if (
 					!shouldClean(store, {
 						expressions: cleaningInfo[variableName],
@@ -79,6 +82,12 @@ export function cleaningBehaviour(
 			}
 		}
 	});
+}
+
+function isAlreadyCleaned(store: LunaticVariablesStore, variableName: string) {
+	const value = store.get(variableName);
+	if (Array.isArray(value)) return value.every((v) => v === null);
+	if (value === null) return true;
 }
 
 /**
