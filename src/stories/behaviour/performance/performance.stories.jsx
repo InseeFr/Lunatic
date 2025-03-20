@@ -1,6 +1,7 @@
 import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
 import source from './source.json';
+import sourceSrcv from './srcv.json';
 import { generateData } from '../../../tests/utils/lunatic';
 import { times } from '../../../utils/array';
 
@@ -23,4 +24,11 @@ Default.args = {
 		AGE: times(200, (k) => k + 1),
 		BIRTHDAY: times(200, (k) => `2${k.toString().padStart(3, '0')}-01-01`),
 	}),
+};
+
+export const Srcv = Template.bind({});
+Srcv.args = {
+	id: 'performance-srcv',
+	pagination: true,
+	source: sourceSrcv,
 };
