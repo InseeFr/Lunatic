@@ -2,6 +2,7 @@ import React from 'react';
 import Orchestrator from '../../utils/orchestrator';
 import source from './source.json';
 import sourceLoop from './source-loop.json';
+import sourceLoop2 from './loop.json';
 import defaultArgTypes from '../../utils/default-arg-types';
 
 const stories = {
@@ -55,4 +56,14 @@ Loop.args = {
 	id: 'cleaning-loop',
 	pagination: true,
 	source: sourceLoop,
+};
+
+export const Loop2 = Template.bind({});
+Loop2.args = {
+	id: 'cleaning-loop-2',
+	pagination: true,
+	source: sourceLoop2,
+	data: {
+		COLLECTED: { PRENOM: { COLLECTED: ['Laurent', 'Alain', 'toto'] } },
+	},
 };
