@@ -27,8 +27,11 @@ export function getValueProp(
 	if (hasResponse(component)) {
 		return args.variables.get(component.response.name, iteration);
 	}
-	// For loop, value will be a map of child component values
-	if (component.componentType === 'Loop') {
+	// For Loop and RosterForLoop, value will be a map of child component values
+	if (
+		component.componentType === 'Loop' ||
+		component.componentType === 'RosterForLoop'
+	) {
 		return getChildResponseValues(component.components, args.variables);
 	}
 	return null;
