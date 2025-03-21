@@ -1,6 +1,9 @@
-import type { LunaticVariablesStore } from '../lunatic-variables-store';
+import type {
+	IterationLevel,
+	LunaticVariablesStore,
+} from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type';
-import { depth } from '../../../../utils/array';
+// import { depth } from '../../../../utils/array';
 import { castBool } from '../../../../utils/cast';
 
 /**
@@ -9,9 +12,7 @@ import { castBool } from '../../../../utils/cast';
  */
 export function cleaningBehaviour(
 	store: LunaticVariablesStore,
-	cleaning: LunaticSource['cleaning'],
-	// Value used as default when cleaning a variable
-	initialValues: Record<string, unknown> = {}
+	cleaning: LunaticSource['cleaning']
 ) {
 	if (!cleaning) {
 		return;
@@ -51,31 +52,28 @@ export function cleaningBehaviour(
 				// First: check if variable is already cleaned i.e, value is `null`, empty or list of `null`
 				if (isAlreadyCleaned(store, variableName)) continue;
 				// Second: check if variable should be clean i.e one of expressions is true
-				if (
-					!shouldClean(store, {
-						expressions: cleaningInfo[variableName],
-						iteration: iteration,
-						isResizing: e.detail.cause === 'resizing',
-					})
-				) {
+
+				// shouldClean is simple boolean or array of boolean
+				const shouldCleanResult = shouldClean(store, {
+					expressions: cleaningInfo[variableName],
+					iteration: iteration,
+					isResizing: e.detail.cause === 'resizing',
+				});
+
+				if (Array.isArray(shouldCleanResult)) {
+					for (const [
+						iterationIndex,
+						shouldCleanByIteration,
+					] of shouldCleanResult.entries()) {
+						if (shouldCleanByIteration)
+							cleanVariable(store, variableName, [iterationIndex]);
+					}
+					continue;
+				} else if (!shouldCleanResult) {
 					continue;
 				}
 
-				// Variable may be top level, so we need to deduce expected iteration
-				const variableDepth = depth(initialValues[variableName]);
-				const variableIteration =
-					variableDepth === 0
-						? undefined
-						: iteration?.slice(0, depth(initialValues[variableName]));
-
-				store.set(
-					variableName,
-					getValueAtIteration(initialValues[variableName], variableIteration),
-					{
-						iteration: variableIteration,
-						cause: 'cleaning',
-					}
-				);
+				cleanVariable(store, variableName, iteration);
 			} catch (e) {
 				// If we have an error, skip this cleaning
 				console.error(e);
@@ -121,34 +119,82 @@ function shouldClean(
 		);
 	}
 
-	// New format use tuples [expression, shapeFrom]
+	// New format use tuples { expression, shapeFrom,  isAggregatorUsed }
 	if (isResizing) {
 		// If we are resizing a variable, only run expression containing aggregators (count(), sum()...)
 		expressions = expressions.filter((expr) => expr.isAggregatorUsed);
 	}
 
-	for (const expression of expressions) {
-		if (
-			// Run the expression to check if cleaning should happen
-			!store.run(expression.expression, {
-				iteration,
-			})
-		) {
-			return true;
-		}
-	}
+	// here, value has change in root scope, but we have to to check for each iteration of variable
+	if (hasShapeFrom(expressions) && !iteration) {
+		const variable = store.get(
+			expressions[0].shapeFrom as string
+		) as Array<unknown>;
 
-	return false;
+		const shouldCleanArray = new Array(variable.length).fill(
+			false
+		) as Array<boolean>;
+
+		for (const [iterationIndex] of shouldCleanArray.entries()) {
+			shouldCleanArray[iterationIndex] = shouldClean(store, {
+				expressions,
+				iteration: [iterationIndex],
+				isResizing,
+			}) as boolean;
+		}
+		return shouldCleanArray;
+	} else {
+		// if only one expression is false, we have to clean (condition is display condition)
+		for (const expression of expressions) {
+			// Run the expression to check if cleaning should happen
+			if (
+				!store.run(expression.expression, {
+					iteration,
+				})
+			)
+				return true;
+		}
+
+		return false;
+	}
 }
 
-function getValueAtIteration(value: unknown, iteration?: number[]) {
-	if (!iteration || iteration.length === 0) {
-		return value ?? null;
-	}
+/**
+ * hasShapeFrom
+ * actually, in cleaning modelisation,
+ * all expressions have no shapeFrom or have the **same** shapeFrom
+ * @param expressions
+ * @returns boolean if all expression has shapeFrom
+ *
+ */
+function hasShapeFrom(
+	expressions: {
+		expression: string;
+		shapeFrom?: string;
+		isAggregatorUsed: boolean;
+	}[]
+) {
+	return expressions.every(
+		(expression) =>
+			expression.shapeFrom !== null && expression.shapeFrom !== undefined
+	);
+}
 
-	if (!Array.isArray(value)) {
-		return null;
-	}
+/**
+ * cleanVariable: this function set to null (and not initalValue) the variable at iteration
+ * @param store
+ * @param variableName
+ * @param iteration
+ */
+function cleanVariable(
+	store: LunaticVariablesStore,
+	variableName: string,
+	iteration: IterationLevel | undefined
+) {
+	// Variable may be top level, so we need to deduce expected iteration
 
-	return getValueAtIteration(value[iteration[0]], iteration.slice(1));
+	store.set(variableName, null, {
+		iteration: iteration,
+		cause: 'cleaning',
+	});
 }

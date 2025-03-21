@@ -24,7 +24,7 @@ let interpretCount = 0;
 /** Special variable that will take the current iteration value. */
 const iterationVariableName = 'GLOBAL_ITERATION_INDEX';
 
-type IterationLevel = number[];
+export type IterationLevel = number[];
 export type EventArgs = {
 	change: {
 		/** Name of the changed variable. */
@@ -92,7 +92,7 @@ export class LunaticVariablesStore {
 		}
 		store.on('change', (e) => changeHandler?.current?.(e.detail));
 		if (!disableCleaning) {
-			cleaningBehaviour(store, source.cleaning, sourceValues);
+			cleaningBehaviour(store, source.cleaning);
 		}
 		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);
