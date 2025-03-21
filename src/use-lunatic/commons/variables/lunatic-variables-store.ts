@@ -92,7 +92,7 @@ export class LunaticVariablesStore {
 		}
 		store.on('change', (e) => changeHandler?.current?.(e.detail));
 		if (!disableCleaning) {
-			cleaningBehaviour(store, source.cleaning);
+			cleaningBehaviour(store, source.cleaning, sourceValues);
 		}
 		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);

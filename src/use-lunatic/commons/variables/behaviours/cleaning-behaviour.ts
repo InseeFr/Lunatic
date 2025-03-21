@@ -3,7 +3,7 @@ import type {
 	LunaticVariablesStore,
 } from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type';
-// import { depth } from '../../../../utils/array';
+import { depth } from '../../../../utils/array';
 import { castBool } from '../../../../utils/cast';
 
 /**
@@ -12,7 +12,9 @@ import { castBool } from '../../../../utils/cast';
  */
 export function cleaningBehaviour(
 	store: LunaticVariablesStore,
-	cleaning: LunaticSource['cleaning']
+	cleaning: LunaticSource['cleaning'],
+	// Value used as default when cleaning a variable, correspoding to value of variable in source.json (not data)
+	sourceValues: Record<string, unknown> = {}
 ) {
 	if (!cleaning) {
 		return;
@@ -53,7 +55,7 @@ export function cleaningBehaviour(
 				if (isAlreadyCleaned(store, variableName)) continue;
 				// Second: check if variable should be clean i.e one of expressions is true
 
-				// shouldClean is simple boolean or array of boolean
+				// shouldClean is simple boolean or array of boolean if there have a shapeFrom
 				const shouldCleanResult = shouldClean(store, {
 					expressions: cleaningInfo[variableName],
 					iteration: iteration,
@@ -66,14 +68,16 @@ export function cleaningBehaviour(
 						shouldCleanByIteration,
 					] of shouldCleanResult.entries()) {
 						if (shouldCleanByIteration)
-							cleanVariable(store, variableName, [iterationIndex]);
+							cleanVariable(store, sourceValues, variableName, [
+								iterationIndex,
+							]);
 					}
 					continue;
 				} else if (!shouldCleanResult) {
 					continue;
 				}
 
-				cleanVariable(store, variableName, iteration);
+				cleanVariable(store, sourceValues, variableName, iteration);
 			} catch (e) {
 				// If we have an error, skip this cleaning
 				console.error(e);
@@ -159,6 +163,16 @@ function shouldClean(
 	}
 }
 
+function getValueAtIteration(value: unknown, iteration?: number[]) {
+	if (!iteration || iteration.length === 0) {
+		return value ?? null;
+	}
+	if (!Array.isArray(value)) {
+		return null;
+	}
+	return getValueAtIteration(value[iteration[0]], iteration.slice(1));
+}
+
 /**
  * hasShapeFrom
  * actually, in cleaning modelisation,
@@ -188,13 +202,23 @@ function hasShapeFrom(
  */
 function cleanVariable(
 	store: LunaticVariablesStore,
+	sourceValues: Record<string, unknown>,
 	variableName: string,
 	iteration: IterationLevel | undefined
 ) {
 	// Variable may be top level, so we need to deduce expected iteration
+	const variableDepth = depth(sourceValues[variableName]);
+	const variableIteration =
+		variableDepth === 0
+			? undefined
+			: iteration?.slice(0, depth(sourceValues[variableName]));
 
-	store.set(variableName, null, {
-		iteration: iteration,
-		cause: 'cleaning',
-	});
+	store.set(
+		variableName,
+		getValueAtIteration(sourceValues[variableName], variableIteration),
+		{
+			iteration: variableIteration,
+			cause: 'cleaning',
+		}
+	);
 }
