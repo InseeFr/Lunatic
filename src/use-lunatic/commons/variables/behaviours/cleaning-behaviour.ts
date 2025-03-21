@@ -61,21 +61,18 @@ export function cleaningBehaviour(
 					iteration: iteration,
 					isResizing: e.detail.cause === 'resizing',
 				});
-				if (!Array.isArray(shouldCleanResult) && !shouldCleanResult) continue;
+
 				if (Array.isArray(shouldCleanResult)) {
-					for (const [
-						iterationIndex,
-						shouldCleanByIteration,
-					] of shouldCleanResult.entries()) {
-						if (shouldCleanByIteration)
-							cleanVariable(store, sourceValues, variableName, [
-								iterationIndex,
-							]);
-					}
+					cleanArrayVariableAccordingCondition(
+						store,
+						sourceValues,
+						variableName,
+						shouldCleanResult
+					);
 					continue;
 				}
-
-				cleanVariable(store, sourceValues, variableName, iteration);
+				if (shouldCleanResult)
+					cleanVariable(store, sourceValues, variableName, iteration);
 			} catch (e) {
 				// If we have an error, skip this cleaning
 				console.error(e);
@@ -190,6 +187,18 @@ function hasShapeFrom(
 		(expression) =>
 			expression.shapeFrom !== null && expression.shapeFrom !== undefined
 	);
+}
+
+function cleanArrayVariableAccordingCondition(
+	store: LunaticVariablesStore,
+	sourceValues: Record<string, unknown>,
+	variableName: string,
+	shouldClean: boolean[]
+) {
+	for (const [iteration, shouldCleanByIteration] of shouldClean.entries()) {
+		if (shouldCleanByIteration)
+			cleanVariable(store, sourceValues, variableName, [iteration]);
+	}
 }
 
 /**
