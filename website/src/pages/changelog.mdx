@@ -1,8 +1,35 @@
+### 3.4.21
+
+#### Nouvelles fonctionnalités
+
+- cleaning : lorsque le paramètre `disableFilters` du useLunatic vaut `true`, le cleaning n'est plus effectué pour améliorer la cohérence
+
+#### Correction de bugs
+
+- RosterForLoop : la suppression de ligne ne fonctionnait plus depuis la version 3.4.18
+- Loop : la suppression de ligne était possible au-delà du nombre minimum de lignes définie dans la boucle
+
+### 3.4.20
+
+#### Nouvelles fonctionnalités
+
+- Duration : ajout de la description associée au composant
+
+#### Correction de bugs
+
+- la méthode `hasPageResponse` fournie par le useLunatic rendait toujours `true` dans les questions de boucles si une autre itération a déjà répondu à cette question
+
+### 3.4.19
+
+#### Nouvelles fonctionnalités
+
+- Input, Textarea: ajout d'un compteur de caractères saisis sur le maximum autorisé
+
 ### 3.4.18
 
 #### Correction de bugs
 
-la méthode `hasPageResponse` fournie par le useLunatic rendait toujours `false` lorsque les composants sont englobés dans le composant Question sur une page de boucle non paginée (composant Loop contenant un composant Question).
+- la méthode `hasPageResponse` fournie par le useLunatic rendait toujours `false` lorsque les composants sont englobés dans le composant Question sur une page de boucle non paginée (composant Loop contenant un composant Question).
 
 ### 3.4.17
 
