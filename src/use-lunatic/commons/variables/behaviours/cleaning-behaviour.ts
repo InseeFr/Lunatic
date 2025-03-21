@@ -126,11 +126,11 @@ function shouldClean(
 
 	// here, value has change in root scope, but we have to to check for each iteration of variable
 	if (hasShapeFrom(expressions) && !iteration) {
-		const variable = store.get(
+		const shapeFromVariable = store.get(
 			expressions[0].shapeFrom as string
 		) as Array<unknown>;
 
-		const shouldCleanArray = new Array(variable.length).fill(
+		const shouldCleanArray = new Array(shapeFromVariable.length).fill(
 			false
 		) as Array<boolean>;
 
