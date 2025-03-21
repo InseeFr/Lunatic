@@ -6,17 +6,18 @@ import {
 	handleChangesAction,
 } from './actions';
 import { getPageTag, isFirstLastPage } from './commons';
+
+import D from '../i18n';
+import { COLLECTED } from '../utils/constants';
+import { createLunaticProvider } from './lunatic-context';
 import type {
+	LunaticSource,
 	LunaticChangesHandler,
 	LunaticData,
 	LunaticOptions,
 	LunaticState,
 	PageTag,
 } from './type';
-import D from '../i18n';
-import { COLLECTED } from '../utils/constants';
-import { createLunaticProvider } from './lunatic-context';
-import type { LunaticSource } from './type';
 import { compileControls as compileControlsLib } from './commons/compile-controls';
 import { useLoopVariables } from './hooks/use-loop-variables';
 import { getQuestionnaireData } from './commons/variables/get-questionnaire-data';
