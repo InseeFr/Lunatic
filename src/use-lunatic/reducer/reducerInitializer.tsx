@@ -64,7 +64,8 @@ export function reducerInitializer({
 	const variables = LunaticVariablesStore.makeFromSource(
 		source,
 		data,
-		onVariableChange
+		onVariableChange,
+		disableFilters
 	);
 	const pages = checkLoops(createMapPages(source));
 
