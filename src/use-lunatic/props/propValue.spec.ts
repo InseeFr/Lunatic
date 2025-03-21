@@ -115,4 +115,56 @@ describe('fillComponentValue', () => {
 			});
 		});
 	});
+
+	describe('RosterForLoop', () => {
+		const rosterForLoopComponent = {
+			id: 'loop-prenom',
+			componentType: 'RosterForLoop',
+			bindingDependencies: ['PRENOM'],
+			lines: {
+				min: {
+					value: '1',
+					type: 'VTL',
+				},
+				max: {
+					value: '10',
+					type: 'VTL',
+				},
+			},
+			page: '1',
+			components: [
+				{
+					componentType: 'Input',
+					label: {
+						value: '"Prénom"',
+						type: 'VTL|MD',
+					},
+					conditionFilter: {
+						value: 'true',
+						type: 'VTL',
+					},
+					maxLength: 30,
+					bindingDependencies: ['PRENOM'],
+					id: 'prenom',
+					response: {
+						name: 'PRENOM',
+					},
+				},
+			],
+		} as any as LunaticComponentDefinition<'RosterForLoop'>;
+
+		it('should correctly extract values from nested responses as arrays', () => {
+			const values = {
+				PRENOM: ['Alice', 'Bob', 'Charlie'],
+			};
+
+			expectFilledComponent(rosterForLoopComponent, values).toEqual(values);
+		});
+
+		it('should return null for missing responses', () => {
+			expectFilledComponent(rosterForLoopComponent).toEqual({
+				PRENOM: null,
+			});
+		});
+	});
 });
