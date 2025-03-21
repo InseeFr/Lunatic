@@ -54,7 +54,8 @@ export class LunaticVariablesStore {
 	public static makeFromSource(
 		source: LunaticSource,
 		data: LunaticData,
-		changeHandler: RefObject<LunaticOptions['onVariableChange']>
+		changeHandler: RefObject<LunaticOptions['onVariableChange']>,
+		disableCleaning?: boolean
 	) {
 		const store = new LunaticVariablesStore();
 		if (!source.variables) {
@@ -90,7 +91,9 @@ export class LunaticVariablesStore {
 			}
 		}
 		store.on('change', (e) => changeHandler?.current?.(e.detail));
-		cleaningBehaviour(store, source.cleaning, sourceValues);
+		if (!disableCleaning) {
+			cleaningBehaviour(store, source.cleaning, sourceValues);
+		}
 		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);
 		return store;
