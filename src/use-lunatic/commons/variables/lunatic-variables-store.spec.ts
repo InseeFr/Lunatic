@@ -471,10 +471,60 @@ describe('lunatic-variables-store', () => {
 				{ PRENOM: [null] }
 			);
 			variables.set('READY', false, { iteration: [1], cause: 'resizing' });
-			expect(variables.get('PRENOM')).toEqual(['John', 'Jane', 'Marc']); // No iteration level cleaning when the cause of a change is a resizing
+			expect(variables.get('PRENOM')).toEqual(['John', 'Jane', 'Marc']);
 			variables.set('PRENOM', ['John'], { cause: 'resizing' });
 			variables.set('READY', [true], { cause: 'resizing' });
 			expect(variables.get('PRENOM')).toEqual([null]);
+		});
+
+		it('should evaluate cleaning for each iteration', () => {
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('READY', [true, true, true]);
+			cleaningBehaviour(
+				variables,
+				{
+					READY: {
+						PRENOM: [
+							{
+								expression: 'READY',
+								shapeFrom: 'READY',
+								isAggregatorUsed: false,
+							},
+						],
+					},
+				},
+				{ PRENOM: [null] }
+			);
+			variables.set('READY', [true, true, false]);
+			expect(variables.get('PRENOM')).toEqual(['John', 'Jane', null]);
+		});
+		it('should evaluate cleaning for each iteration at root levl', () => {
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('AGE', [18, 21, 23]);
+			variables.setCalculated('NB_HAB', 'count(PRENOM)');
+			resizingBehaviour(variables, {
+				PRENOM: {
+					size: 'count(PRENOM)',
+					variables: ['AGE'],
+				},
+			});
+			cleaningBehaviour(
+				variables,
+				{
+					PRENOM: {
+						AGE: [
+							{
+								expression: 'NB_HAB >= 3',
+								shapeFrom: 'PRENOM',
+								isAggregatorUsed: true,
+							},
+						],
+					},
+				},
+				{ PRENOM: [], AGE: [] }
+			);
+			variables.set('PRENOM', ['John', 'Jane']);
+			expect(variables.get('AGE')).toEqual([null, null]);
 		});
 	});
 
