@@ -61,7 +61,7 @@ export function cleaningBehaviour(
 					iteration: iteration,
 					isResizing: e.detail.cause === 'resizing',
 				});
-
+				if (!Array.isArray(shouldCleanResult) && !shouldCleanResult) continue;
 				if (Array.isArray(shouldCleanResult)) {
 					for (const [
 						iterationIndex,
@@ -72,8 +72,6 @@ export function cleaningBehaviour(
 								iterationIndex,
 							]);
 					}
-					continue;
-				} else if (!shouldCleanResult) {
 					continue;
 				}
 
