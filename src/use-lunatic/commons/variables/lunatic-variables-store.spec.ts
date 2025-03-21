@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { cleaningBehaviour } from './behaviours/cleaning-behaviour';
+import * as cleaningModule from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { LunaticVariablesStore } from './lunatic-variables-store';
@@ -540,6 +541,84 @@ describe('lunatic-variables-store', () => {
 			expect(store.get('PRENOM')).toEqual('Jane');
 			store.set('NOM', 'Doe');
 			expect(store.get('PRENOM')).toEqual('John');
+		});
+		it('should enable cleaning when disableCleaning = false', () => {
+			const cleaningSpy = vi.spyOn(cleaningModule, 'cleaningBehaviour');
+			LunaticVariablesStore.makeFromSource(
+				{
+					components: [],
+					variables: [
+						{
+							name: 'PRENOM',
+							values: {
+								COLLECTED: 'John',
+							},
+							variableType: 'COLLECTED',
+						},
+						{
+							name: 'NOM',
+							values: {
+								COLLECTED: '',
+							},
+							variableType: 'COLLECTED',
+						},
+					],
+					cleaning: {
+						NOM: {
+							PRENOM: 'false',
+						},
+					},
+				},
+				{
+					COLLECTED: {
+						PRENOM: {
+							COLLECTED: 'Jane',
+						},
+					},
+				},
+				{ current: () => {} },
+				false // enable cleaning
+			);
+			expect(cleaningSpy).toHaveBeenCalled();
+		});
+		it('should disable cleaning when disableCleaning = true', () => {
+			const cleaningSpy = vi.spyOn(cleaningModule, 'cleaningBehaviour');
+			LunaticVariablesStore.makeFromSource(
+				{
+					components: [],
+					variables: [
+						{
+							name: 'PRENOM',
+							values: {
+								COLLECTED: 'John',
+							},
+							variableType: 'COLLECTED',
+						},
+						{
+							name: 'NOM',
+							values: {
+								COLLECTED: '',
+							},
+							variableType: 'COLLECTED',
+						},
+					],
+					cleaning: {
+						NOM: {
+							PRENOM: 'false',
+						},
+					},
+				},
+				{
+					COLLECTED: {
+						PRENOM: {
+							COLLECTED: 'Jane',
+						},
+					},
+				},
+				{ current: () => {} },
+				true // disable cleaning
+			);
+			expect(cleaningSpy).not.toHaveBeenCalled();
 		});
 	});
 });
