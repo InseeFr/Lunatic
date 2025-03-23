@@ -46,6 +46,8 @@ export type LunaticVariablesStoreEvent<T extends keyof EventArgs> = {
 export class LunaticVariablesStore {
 	private dictionary = new Map<string, LunaticVariable>();
 	private eventTarget = new EventTarget();
+	private queue = new Map<string, () => void>();
+	public autoCommit = false; // Commit change instantly (used in tests)
 
 	constructor() {
 		interpretCount = 0;
@@ -55,11 +57,15 @@ export class LunaticVariablesStore {
 		source: LunaticSource,
 		data: LunaticData,
 		changeHandler: RefObject<LunaticOptions['onVariableChange']>,
-		disableCleaning?: boolean
+		disableCleaning?: boolean,
+		autoCommit?: boolean
 	) {
 		const store = new LunaticVariablesStore();
 		if (!source.variables) {
 			return store;
+		}
+		if (autoCommit) {
+			store.autoCommit = autoCommit;
 		}
 		// Source data (picked from "variables" in the source.json)s
 		const sourceValues: Record<string, unknown> = {};
@@ -118,6 +124,34 @@ export class LunaticVariablesStore {
 			return null;
 		}
 		return this.dictionary.get(name)!.getValue(iteration) as T;
+	}
+
+	/**
+	 * Transactional setter that will change data only when `commit()` is called
+	 */
+	public enqueueSet(
+		name: string,
+		value: unknown,
+		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
+	) {
+		if (this.autoCommit) {
+			this.set(name, value, args);
+			return;
+		}
+		this.queue.set(name, () => {
+			this.set(name, value, args);
+		});
+	}
+
+	/**
+	 * Commit all changes in the queue
+	 */
+	public commit() {
+		// Since we can have nested operation, we prevent delayed set while commiting
+		this.autoCommit = true;
+		Array.from(this.queue.values()).forEach((cb) => cb());
+		this.autoCommit = false;
+		this.queue.clear();
 	}
 
 	/**

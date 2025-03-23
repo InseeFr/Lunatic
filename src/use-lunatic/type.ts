@@ -235,6 +235,8 @@ export type LunaticOptions = {
 	trackChanges?: boolean;
 	logger?: LunaticLogger;
 	componentsOptions?: { detailAlwaysDisplayed?: boolean };
+	/** Commit variable change automatically for resizing / cleaning (used for testing) **/
+	autoCommit?: boolean;
 };
 
 /**

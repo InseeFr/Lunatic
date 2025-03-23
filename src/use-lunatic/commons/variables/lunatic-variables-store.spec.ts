@@ -115,6 +115,16 @@ describe('lunatic-variables-store', () => {
 		expect(variables.get('AGES_PLUS_NBHAB')).toEqual([4, 5, 6]);
 	});
 
+	it('should handle transaction mode correctly', () => {
+		variables.set('FIRSTNAME', 'John');
+		expect(variables.get('FIRSTNAME')).toEqual('John');
+		variables.enqueueSet('FIRSTNAME', 'Jane');
+		expect(variables.get('FIRSTNAME')).toEqual('John');
+		variables.commit();
+		expect(variables.get('FIRSTNAME')).toEqual('Jane');
+	});
+
+
 	describe('event listener', () => {
 		it('should trigger onChange', () => {
 			variables.set('FIRSTNAME', 'John');
@@ -273,6 +283,10 @@ describe('lunatic-variables-store', () => {
 	});
 
 	describe('resizing', () => {
+		beforeEach(() => {
+			variables.autoCommit = true;
+		});
+
 		it('should resize variables', () => {
 			variables.set('PRENOM', ['John', 'Jane']);
 			variables.set('NOM', ['Doe']);
@@ -367,6 +381,10 @@ describe('lunatic-variables-store', () => {
 	});
 
 	describe('cleaning', () => {
+		beforeEach(() => {
+			variables.autoCommit = true;
+		});
+
 		it('should clean variables', () => {
 			variables.set('PRENOM', 'John');
 			variables.set('NOM', 'Doe');
@@ -606,6 +624,7 @@ describe('lunatic-variables-store', () => {
 			);
 			expect(store.get('PRENOM')).toEqual('Jane');
 			store.set('NOM', 'Doe');
+			store.commit();
 			expect(store.get('PRENOM')).toEqual('John');
 		});
 		it('should enable cleaning when disableCleaning = false', () => {
