@@ -127,26 +127,35 @@ function computeDateFnsFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
 function computeDateMask(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
 	switch (format) {
 		case 'YYYY-MM':
-			return 'mm / aaaa';
+			return 'mm/aaaa';
 		case 'YYYY':
 			return 'aaaa';
 		case 'YYYY-MM-DD':
 		default:
-			return 'jj / mm / aaaa';
+			return 'jj/mm/aaaa';
 	}
 }
 
 const MaskedInput = forwardRef<HTMLInputElement, MaskedInputProps>(
-	({ value, onChange, format, ...otherProps }, ref) => {
+	({ onChange, format, ...otherProps }, ref) => {
 		const mask = computeDateMask(format);
+
+		const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+			if (onChange) {
+				onChange(event);
+			}
+
+			// move cursor for avoiding separator
+			moveCursorAfterSlash(event);
+		};
+
 		return (
 			<InputMask
 				ref={ref}
 				{...otherProps}
 				mask={mask}
 				replacement={{ j: /\d/, m: /\d/, a: /\d/ }}
-				value={value}
-				onChange={onChange}
+				onChange={handleChange}
 				placeholder={mask}
 				showMask
 				separate
@@ -155,3 +164,18 @@ const MaskedInput = forwardRef<HTMLInputElement, MaskedInputProps>(
 		);
 	}
 );
+
+const moveCursorAfterSlash = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const input = event.target;
+	const cursorPos = input.selectionStart;
+	const value = input.value;
+
+	// If the cursor is right after 'jj' or 'mm', move it to the next position
+	if (
+		cursorPos !== null &&
+		cursorPos < value.length &&
+		value[cursorPos] === '/'
+	) {
+		input.setSelectionRange(cursorPos + 1, cursorPos + 1);
+	}
+};
