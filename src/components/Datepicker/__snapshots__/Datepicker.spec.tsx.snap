@@ -14,7 +14,7 @@ exports[`Datepicker > should render properly with format YYYY 1`] = `
         <input
           class=""
           id="datepicker"
-          placeholder="format: aaaa"
+          placeholder="aaaa"
           type="text"
           value="1999"
         />
@@ -44,7 +44,7 @@ exports[`Datepicker > should render properly with format YYYY-MM 1`] = `
         <input
           class=""
           id="datepicker"
-          placeholder="format: mm / aaaa"
+          placeholder="mm / aaaa"
           type="text"
           value="01/1999"
         />
@@ -74,7 +74,7 @@ exports[`Datepicker > should render properly with format YYYY-MM-DD 1`] = `
         <input
           class=""
           id="datepicker"
-          placeholder="format: jj / mm / aaaa"
+          placeholder="jj / mm / aaaa"
           type="text"
           value="01/01/1999"
         />

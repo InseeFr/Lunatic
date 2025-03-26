@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
@@ -12,6 +12,11 @@ import {
 import type { LunaticError } from '../../use-lunatic/type';
 import { parseISO, format } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import { InputMask, InputMaskProps } from '@react-input/mask';
+
+interface MaskedInputProps extends InputMaskProps {
+	format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY';
+}
 
 export function Datepicker({
 	dateFormat = 'YYYY-MM-DD',
@@ -82,10 +87,10 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 					dateFormat={computeDisplayedFormat(dateFormat)}
 					isClearable
 					disabled={disabled || readOnly}
-					placeholderText={computePlaceholder(dateFormat)}
 					showMonthYearPicker={dateFormat === 'YYYY-MM'}
 					showYearPicker={dateFormat === 'YYYY'}
 					locale={fr}
+					customInput={<MaskedInput format={dateFormat} />}
 				/>
 				<ComponentErrors errors={errors} />
 			</div>
@@ -109,9 +114,17 @@ function computeDisplayedFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
 }
 
 /**
- * Computes the placeholder text (in french) for the input field from the source format
+ * Computes the date format understood by the 'date-fns' library from the source format
  */
-function computePlaceholder(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
+function computeDateFnsFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
+	// Replace 'YYYY' with 'yyyy' and 'DD' with 'dd', keeping 'MM', for compatibility with date-fns
+	return format.replace('YYYY', 'yyyy').replace('DD', 'dd');
+}
+
+/**
+ * Computes the mask (in french) for the datepicker input from the source format
+ */
+function computeDateMask(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
 	switch (format) {
 		case 'YYYY-MM':
 			return 'mm / aaaa';
@@ -123,10 +136,22 @@ function computePlaceholder(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
 	}
 }
 
-/**
- * Computes the date format understood by the 'date-fns' library from the source format
- */
-function computeDateFnsFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
-	// Replace 'YYYY' with 'yyyy' and 'DD' with 'dd', keeping 'MM', for compatibility with date-fns
-	return format.replace('YYYY', 'yyyy').replace('DD', 'dd');
-}
+const MaskedInput = forwardRef<HTMLInputElement, MaskedInputProps>(
+	({ value, onChange, format, ...otherProps }, ref) => {
+		const mask = computeDateMask(format);
+		return (
+			<InputMask
+				ref={ref}
+				{...otherProps}
+				mask={mask}
+				replacement={{ j: /\d/, m: /\d/, a: /\d/ }}
+				value={value}
+				onChange={onChange}
+				placeholder={mask}
+				showMask
+				separate
+				type="text"
+			/>
+		);
+	}
+);

@@ -80,6 +80,7 @@
 	"dependencies": {
 		"@inseefr/trevas": "^0.1.21",
 		"@inseefr/vtl-2.0-antlr-tools": "^0.3.2",
+		"@react-input/mask": "^2.0.4",
 		"antlr4": "^4.13.2",
 		"classnames": "^2.5.1",
 		"date-fns": "^4.1.0",
