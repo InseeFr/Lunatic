@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Datepicker } from './Datepicker';
 
@@ -17,7 +17,7 @@ describe('Datepicker', () => {
 	});
 
 	(['YYYY-MM-DD', 'YYYY-MM', 'YYYY'] as const).forEach((format) => {
-		it('should render properly with format ' + format, () => {
+		it(`should render properly with format ${format}`, () => {
 			const { container } = render(
 				<Datepicker
 					{...baseProps}
@@ -25,40 +25,37 @@ describe('Datepicker', () => {
 					dateFormat={format}
 				/>
 			);
+			const input = container.querySelector(`#${baseProps.id}`);
+			expect(input).not.toBeNull();
 			expect(container).toMatchSnapshot();
 		});
 	});
 
 	it('handle change correctly for format YYYY-MM-DD', () => {
-		render(
+		const { container } = render(
 			<Datepicker
 				{...baseProps}
 				dateFormat="YYYY-MM-DD"
 				handleChanges={mockOnChange}
 			/>
 		);
-		fireEvent.change(screen.getByLabelText(/Année/), {
-			target: { valueAsNumber: 2023 },
-		});
-		expect(mockOnChange).toHaveBeenLastCalledWith([
-			{
-				...baseProps.response,
-				value: '2023-01-01',
-			},
-		]);
-		fireEvent.change(screen.getByLabelText(/Mois/), {
-			target: { valueAsNumber: 2 },
-		});
-		fireEvent.change(screen.getByLabelText(/Jour/), {
-			target: { valueAsNumber: 30 },
-		});
-		expect(mockOnChange).toHaveBeenLastCalledWith([
-			{ ...baseProps.response, value: null },
-		]);
+
+		const input = container.querySelector(`#${baseProps.id}`);
+		expect(input).toBeInTheDocument();
+
+		if (input) {
+			fireEvent.change(input, { target: { value: '01/01/2023' } });
+			expect(mockOnChange).toHaveBeenLastCalledWith([
+				{
+					...baseProps.response,
+					value: '2023-01-01',
+				},
+			]);
+		}
 	});
 
 	it('handle change correctly for format YYYY-MM', () => {
-		render(
+		const { container } = render(
 			<Datepicker
 				{...baseProps}
 				dateFormat="YYYY-MM"
@@ -66,28 +63,25 @@ describe('Datepicker', () => {
 				handleChanges={mockOnChange}
 			/>
 		);
-		fireEvent.change(screen.getByLabelText(/Année/), {
-			target: { valueAsNumber: 2023 },
-		});
-		expect(mockOnChange).toHaveBeenLastCalledWith([
-			{
-				...baseProps.response,
-				value: '2023-01',
-			},
-		]);
-		fireEvent.change(screen.getByLabelText(/Mois/), {
-			target: { valueAsNumber: 10 },
-		});
-		expect(mockOnChange).toHaveBeenLastCalledWith([
-			{
-				...baseProps.response,
-				value: '2023-10',
-			},
-		]);
+
+		const input = container.querySelector(`#${baseProps.id}`);
+		expect(input).toBeInTheDocument();
+
+		if (input) {
+			fireEvent.change(input, {
+				target: { value: '01/2023' },
+			});
+			expect(mockOnChange).toHaveBeenLastCalledWith([
+				{
+					...baseProps.response,
+					value: '2023-01',
+				},
+			]);
+		}
 	});
 
 	it('handle change correctly for year YYYY', () => {
-		render(
+		const { container } = render(
 			<Datepicker
 				{...baseProps}
 				dateFormat="YYYY"
@@ -95,11 +89,17 @@ describe('Datepicker', () => {
 				handleChanges={mockOnChange}
 			/>
 		);
-		fireEvent.change(screen.getByLabelText(/Année/), {
-			target: { valueAsNumber: 2023 },
-		});
-		expect(mockOnChange).toHaveBeenLastCalledWith([
-			{ ...baseProps.response, value: '2023' },
-		]);
+
+		const input = container.querySelector(`#${baseProps.id}`);
+		expect(input).toBeInTheDocument();
+
+		if (input) {
+			fireEvent.change(input, {
+				target: { value: '2023' },
+			});
+			expect(mockOnChange).toHaveBeenLastCalledWith([
+				{ ...baseProps.response, value: '2023' },
+			]);
+		}
 	});
 });

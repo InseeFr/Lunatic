@@ -6,27 +6,23 @@ exports[`Datepicker > should render properly with format YYYY 1`] = `
     class="lunatic-input"
   >
     <div
-      class="lunaticDatepickerFields"
+      class="react-datepicker-wrapper"
     >
       <div
-        class="lunaticDatepickerField lunaticDatepickerFieldLarge"
+        class="react-datepicker__input-container"
       >
-        <label
-          for="datepickeryear"
-        >
-          Année
-          <span
-            class="lunaticDatepickerHint"
-          >
-            Exemple: 2023
-          </span>
-        </label>
         <input
-          id="datepickeryear"
-          max="9999"
-          min="1"
-          type="number"
+          class=""
+          id="datepicker"
+          placeholder="format: aaaa"
+          type="text"
           value="1999"
+        />
+        <button
+          aria-label="Close"
+          class="react-datepicker__close-icon"
+          tabindex="-1"
+          type="button"
         />
       </div>
     </div>
@@ -40,48 +36,23 @@ exports[`Datepicker > should render properly with format YYYY-MM 1`] = `
     class="lunatic-input"
   >
     <div
-      class="lunaticDatepickerFields"
+      class="react-datepicker-wrapper"
     >
       <div
-        class="lunaticDatepickerField"
+        class="react-datepicker__input-container"
       >
-        <label
-          for="datepickermonth"
-        >
-          Mois
-          <span
-            class="lunaticDatepickerHint"
-          >
-            Exemple: 7
-          </span>
-        </label>
         <input
-          id="datepickermonth"
-          max="12"
-          min="1"
-          type="number"
-          value="1"
+          class=""
+          id="datepicker"
+          placeholder="format: mm / aaaa"
+          type="text"
+          value="01/1999"
         />
-      </div>
-      <div
-        class="lunaticDatepickerField lunaticDatepickerFieldLarge"
-      >
-        <label
-          for="datepickeryear"
-        >
-          Année
-          <span
-            class="lunaticDatepickerHint"
-          >
-            Exemple: 2023
-          </span>
-        </label>
-        <input
-          id="datepickeryear"
-          max="9999"
-          min="1"
-          type="number"
-          value="1999"
+        <button
+          aria-label="Close"
+          class="react-datepicker__close-icon"
+          tabindex="-1"
+          type="button"
         />
       </div>
     </div>
@@ -95,69 +66,23 @@ exports[`Datepicker > should render properly with format YYYY-MM-DD 1`] = `
     class="lunatic-input"
   >
     <div
-      class="lunaticDatepickerFields"
+      class="react-datepicker-wrapper"
     >
       <div
-        class="lunaticDatepickerField"
+        class="react-datepicker__input-container"
       >
-        <label
-          for="datepickerday"
-        >
-          Jour
-          <span
-            class="lunaticDatepickerHint"
-          >
-            Exemple: 14
-          </span>
-        </label>
         <input
-          id="datepickerday"
-          max="31"
-          min="1"
-          type="number"
-          value="1"
+          class=""
+          id="datepicker"
+          placeholder="format: jj / mm / aaaa"
+          type="text"
+          value="01/01/1999"
         />
-      </div>
-      <div
-        class="lunaticDatepickerField"
-      >
-        <label
-          for="datepickermonth"
-        >
-          Mois
-          <span
-            class="lunaticDatepickerHint"
-          >
-            Exemple: 7
-          </span>
-        </label>
-        <input
-          id="datepickermonth"
-          max="12"
-          min="1"
-          type="number"
-          value="1"
-        />
-      </div>
-      <div
-        class="lunaticDatepickerField lunaticDatepickerFieldLarge"
-      >
-        <label
-          for="datepickeryear"
-        >
-          Année
-          <span
-            class="lunaticDatepickerHint"
-          >
-            Exemple: 2023
-          </span>
-        </label>
-        <input
-          id="datepickeryear"
-          max="9999"
-          min="1"
-          type="number"
-          value="1999"
+        <button
+          aria-label="Close"
+          class="react-datepicker__close-icon"
+          tabindex="-1"
+          type="button"
         />
       </div>
     </div>

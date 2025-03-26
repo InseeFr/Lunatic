@@ -1,14 +1,17 @@
 import { useState } from 'react';
-import { DatepickerField } from './DatepickerField';
+import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
+import { Declarations } from '../shared/Declarations/Declarations';
 import {
 	ComponentErrors,
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
-import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
+import { parseISO, format } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
 export function Datepicker({
 	dateFormat = 'YYYY-MM-DD',
@@ -20,7 +23,7 @@ export function Datepicker({
 	return (
 		<CustomDatepicker
 			{...props}
-			dateFormat={dateFormat ?? 'YYYY-MM-DD'}
+			dateFormat={dateFormat}
 			onChange={(value) => handleChanges([{ name: response.name, value }])}
 			errors={getComponentErrors(errors, props.id)}
 		/>
@@ -41,8 +44,8 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 		const {
 			disabled,
 			readOnly,
-			value = '',
-			dateFormat = 'YYYY-MM-DD',
+			value,
+			dateFormat,
 			id,
 			label,
 			errors,
@@ -51,45 +54,15 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 			onChange,
 		} = props;
 		const labelId = `lunatic-datepicker-${id}`;
-		const showDay = dateFormat.includes('DD');
-		const showMonth = dateFormat.includes('MM');
 
-		// Raw state, we allow invalid dates to be typed
-		const [numbers, setNumbers] = useState(() =>
-			numbersFromDateString(value ?? undefined)
-		);
-		const setNumber = (index: number) => (value: number) => {
-			const newNumbers = [...numbers] as typeof numbers;
-			newNumbers[index] = value;
-			setNumbers(newNumbers);
-			onNumbersChange(newNumbers);
-		};
+		// Convert value string ("YYYY-MM-DD") to Date object
+		const parsedDate = value ? parseISO(value) : null;
+		const [selectedDate, setSelectedDate] = useState<Date | null>(parsedDate);
 
-		const onNumbersChange = (numbers: [number, number, number]) => {
-			const formatParts = dateFormat.split('-');
-			const hasNaNIndex = numbers.findIndex((v) => Number.isNaN(v));
-
-			// Date has a missing part
-			if (hasNaNIndex > -1 && hasNaNIndex <= formatParts.length - 1) {
-				onChange(null);
-				return;
-			}
-
-			// Date is not valid
-			if (dateFormat === 'YYYY-MM-DD' && !isDateValid(numbers)) {
-				onChange(null);
-				return;
-			}
-
-			const result = formatParts
-				.map((v, k) => numbers[k].toString().padStart(v.length, '0'))
-				.join('-');
-			onChange(result);
-		};
-
-		const extraProps = {
-			readOnly,
-			disabled,
+		const handleDateChange = (date: Date | null) => {
+			setSelectedDate(date);
+			// Convert the date back to the string format expected by the component
+			onChange(date ? format(date, computeDateFnsFormat(dateFormat)) : null);
 		};
 
 		return (
@@ -102,71 +75,58 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 					declarations={declarations}
 					id={id}
 				/>
-				<div className="lunaticDatepickerFields">
-					{showDay && (
-						<DatepickerField
-							id={id + 'day'}
-							label="Jour"
-							description="Exemple: 14"
-							max={31}
-							value={numbers[2]}
-							onChange={setNumber(2)}
-							{...extraProps}
-						/>
-					)}
-					{showMonth && (
-						<DatepickerField
-							id={id + 'month'}
-							label="Mois"
-							description="Exemple: 7"
-							max={12}
-							value={numbers[1]}
-							onChange={setNumber(1)}
-							{...extraProps}
-						/>
-					)}
-					<DatepickerField
-						id={id + 'year'}
-						label="Année"
-						description="Exemple: 2023"
-						value={numbers[0]}
-						max={9999}
-						onChange={setNumber(0)}
-						{...extraProps}
-					/>
-				</div>
+				<ReactDatePicker
+					id={id}
+					selected={selectedDate}
+					onChange={handleDateChange}
+					dateFormat={computeDisplayedFormat(dateFormat)}
+					isClearable
+					disabled={disabled || readOnly}
+					placeholderText={computePlaceholder(dateFormat)}
+					showMonthYearPicker={dateFormat === 'YYYY-MM'}
+					showYearPicker={dateFormat === 'YYYY'}
+					locale={fr}
+				/>
 				<ComponentErrors errors={errors} />
 			</div>
 		);
 	}
 );
 
-function numbersFromDateString(s?: string): [number, number, number] {
-	if (!s) {
-		return [NaN, NaN, NaN];
+/**
+ * Computes the displayed date format for the datepicker from the source format
+ */
+function computeDisplayedFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
+	switch (format) {
+		case 'YYYY-MM':
+			return 'MM/yyyy';
+		case 'YYYY':
+			return 'yyyy';
+		case 'YYYY-MM-DD':
+		default:
+			return 'dd/MM/yyyy';
 	}
-	const parts = s.split('-');
-	return [
-		parseInt(parts[0], 10),
-		parseInt(parts[1], 10),
-		parseInt(parts[2], 10),
-	];
 }
 
 /**
- * Check if the date provided by the user is valid (e.g. not 2001/02/29)
+ * Computes the placeholder text (in french) for the input field from the source format
  */
-function isDateValid(dateArray: [number, number, number]) {
-	const [year, month, day] = dateArray;
+function computePlaceholder(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
+	switch (format) {
+		case 'YYYY-MM':
+			return 'mm / aaaa';
+		case 'YYYY':
+			return 'aaaa';
+		case 'YYYY-MM-DD':
+		default:
+			return 'jj / mm / aaaa';
+	}
+}
 
-	// do not set the date directly on new Date(), to avoid transformation on year between 0 and 99.
-	//See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date#year
-	const date = new Date();
-	date.setFullYear(year, month - 1, day);
-
-	return (
-		date.getFullYear() === year &&
-		date.getMonth() === month - 1 &&
-		date.getDate() === day
-	);
+/**
+ * Computes the date format understood by the 'date-fns' library from the source format
+ */
+function computeDateFnsFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
+	// Replace 'YYYY' with 'yyyy' and 'DD' with 'dd', keeping 'MM', for compatibility with date-fns
+	return format.replace('YYYY', 'yyyy').replace('DD', 'dd');
 }
