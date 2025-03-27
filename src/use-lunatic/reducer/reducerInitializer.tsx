@@ -63,7 +63,7 @@ export function reducerInitializer({
 	getReferentiel?: LunaticOptions['getReferentiel'];
 	onVariableChange: RefObject<LunaticOptions['onVariableChange']>;
 	logger: LunaticLogger;
-	autoCommit: boolean;
+	autoCommit?: boolean;
 }): LunaticReducerState {
 	const variables = LunaticVariablesStore.makeFromSource(
 		source,
