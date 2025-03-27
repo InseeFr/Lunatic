@@ -53,11 +53,15 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 			errors,
 			description,
 			declarations,
+			min,
+			max,
 			onChange,
 		} = props;
 		const labelId = `lunatic-datepicker-${id}`;
 
 		const parsedDate = value ? parseISO(value) : null;
+		const parsedMinDate = min ? parseISO(min) : undefined;
+		const parsedMaxDate = max ? parseISO(max) : undefined;
 		const [selectedDate, setSelectedDate] = useState<Date | null>(parsedDate);
 
 		const handleDateChange = (date: Date | null) => {
@@ -93,6 +97,8 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 						views={getDatePickerViews(dateFormat)}
 						disabled={disabled}
 						readOnly={readOnly}
+						minDate={parsedMinDate}
+						maxDate={parsedMaxDate}
 						slotProps={{
 							field: { clearable: true },
 							clearButton: { title: 'Effacer' },
