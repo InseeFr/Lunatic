@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { Duration } from './Duration';
 import { render } from '@testing-library/react';
-import { Formats } from './durationUtils';
+import { DurationFormat } from '../type';
 
 describe('Duration', () => {
 	const mockOnChange = vi.fn();
@@ -24,7 +24,7 @@ describe('Duration', () => {
 	const baseProps = {
 		handleChanges: mockOnChange,
 		response: { name: 'demo' },
-		format: 'PTnHnM' as Formats,
+		format: 'PTnHnM' as DurationFormat,
 		value: 'PT5H1M',
 		id: 'duration',
 		label: 'label',
