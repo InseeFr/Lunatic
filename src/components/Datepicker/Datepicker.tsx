@@ -14,6 +14,7 @@ import {
 } from '../shared/ComponentErrors/ComponentErrors';
 import type { LunaticError } from '../../use-lunatic/type';
 import { DateView } from '@mui/x-date-pickers';
+import { frFR } from '@mui/x-date-pickers/locales';
 
 export function Datepicker({
 	dateFormat = 'YYYY-MM-DD',
@@ -83,11 +84,9 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 				<LocalizationProvider
 					dateAdapter={AdapterDateFns}
 					adapterLocale={fr}
-					localeText={{
-						fieldDayPlaceholder: () => 'jj',
-						fieldMonthPlaceholder: () => 'mm',
-						fieldYearPlaceholder: () => 'aaaa',
-					}}
+					localeText={
+						frFR.components.MuiLocalizationProvider.defaultProps.localeText
+					}
 				>
 					<MuiDatePicker
 						className="datepicker"
@@ -101,12 +100,8 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 						maxDate={parsedMaxDate}
 						slotProps={{
 							field: { clearable: true },
-							clearButton: { title: 'Effacer' },
 							textField: {
 								id: id,
-								inputProps: {
-									'aria-labelledby': labelId,
-								},
 							},
 						}}
 					/>

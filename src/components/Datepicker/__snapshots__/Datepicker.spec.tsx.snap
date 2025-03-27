@@ -13,12 +13,11 @@ exports[`Datepicker > should render properly with format YYYY 1`] = `
       >
         <input
           aria-invalid="false"
-          aria-labelledby="lunatic-datepicker-datepicker"
           autocomplete="off"
           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-1dune0f-MuiInputBase-input-MuiOutlinedInput-input"
           id="datepicker"
           inputmode="text"
-          placeholder="aaaa"
+          placeholder="AAAA"
           type="text"
           value="1999"
         />
@@ -28,7 +27,7 @@ exports[`Datepicker > should render properly with format YYYY 1`] = `
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium clearButton css-53g0n7-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
-            title="Effacer"
+            title="Effacer la valeur"
             type="button"
           >
             <svg
@@ -48,7 +47,7 @@ exports[`Datepicker > should render properly with format YYYY 1`] = `
           class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-elo8k2-MuiInputAdornment-root"
         >
           <button
-            aria-label="Choose date, selected date is 1 janv. 1999"
+            aria-label="Choisir la date, la date sélectionnée est 1 janv. 1999"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1ysp02-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
@@ -100,12 +99,11 @@ exports[`Datepicker > should render properly with format YYYY-MM 1`] = `
       >
         <input
           aria-invalid="false"
-          aria-labelledby="lunatic-datepicker-datepicker"
           autocomplete="off"
           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-1dune0f-MuiInputBase-input-MuiOutlinedInput-input"
           id="datepicker"
           inputmode="text"
-          placeholder="mm/aaaa"
+          placeholder="MM/AAAA"
           type="text"
           value="01/1999"
         />
@@ -115,7 +113,7 @@ exports[`Datepicker > should render properly with format YYYY-MM 1`] = `
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium clearButton css-53g0n7-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
-            title="Effacer"
+            title="Effacer la valeur"
             type="button"
           >
             <svg
@@ -135,7 +133,7 @@ exports[`Datepicker > should render properly with format YYYY-MM 1`] = `
           class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-elo8k2-MuiInputAdornment-root"
         >
           <button
-            aria-label="Choose date, selected date is 1 janv. 1999"
+            aria-label="Choisir la date, la date sélectionnée est 1 janv. 1999"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1ysp02-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
@@ -187,12 +185,11 @@ exports[`Datepicker > should render properly with format YYYY-MM-DD 1`] = `
       >
         <input
           aria-invalid="false"
-          aria-labelledby="lunatic-datepicker-datepicker"
           autocomplete="off"
           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-1dune0f-MuiInputBase-input-MuiOutlinedInput-input"
           id="datepicker"
           inputmode="text"
-          placeholder="jj/mm/aaaa"
+          placeholder="JJ/MM/AAAA"
           type="text"
           value="01/01/1999"
         />
@@ -202,7 +199,7 @@ exports[`Datepicker > should render properly with format YYYY-MM-DD 1`] = `
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium clearButton css-53g0n7-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
-            title="Effacer"
+            title="Effacer la valeur"
             type="button"
           >
             <svg
@@ -222,7 +219,7 @@ exports[`Datepicker > should render properly with format YYYY-MM-DD 1`] = `
           class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-elo8k2-MuiInputAdornment-root"
         >
           <button
-            aria-label="Choose date, selected date is 1 janv. 1999"
+            aria-label="Choisir la date, la date sélectionnée est 1 janv. 1999"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1ysp02-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
