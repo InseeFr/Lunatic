@@ -41,16 +41,19 @@ export function resizingBehaviour(
 
 		const newSize = forceInt(store.run(resizingInfo.size));
 		for (const variableName of resizingInfo.variables) {
-			const value = store.get(variableName);
-			if (!Array.isArray(value) || value.length !== newSize) {
-				store.enqueueSet(
-					variableName,
-					resizeArrayVariable(value, newSize, null),
-					{
-						cause: 'resizing',
+			// Since data can change after the resize, we need to pass a callback that will use the last value of the variable for the resize
+			store.enqueueSet(
+				variableName,
+				() => {
+					const value = store.get(variableName);
+					if (!Array.isArray(value) || value.length !== newSize) {
+						return resizeArrayVariable(value, newSize, null);
 					}
-				);
-			}
+				},
+				{
+					cause: 'resizing',
+				}
+			);
 		}
 	});
 }

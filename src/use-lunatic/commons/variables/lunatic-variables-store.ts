@@ -135,10 +135,15 @@ export class LunaticVariablesStore {
 		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
 	) {
 		if (this.autoCommit) {
-			this.set(name, value, args);
+			this.set(name, typeof value === 'function' ? value() : value, args);
 			return;
 		}
 		this.queue.set(name, () => {
+			// A function can be enqueued, we need to evaluate it to retrieve the value to set
+			// This is used for the resizing, where we want to resize the last version of the variable
+			if (typeof value === 'function') {
+				value = value();
+			}
 			this.set(name, value, args);
 		});
 	}
@@ -147,10 +152,11 @@ export class LunaticVariablesStore {
 	 * Commit all changes in the queue
 	 */
 	public commit() {
+		const autoCommitValue = this.autoCommit;
 		// Since we can have nested operation, we prevent delayed set while commiting
 		this.autoCommit = true;
 		Array.from(this.queue.values()).forEach((cb) => cb());
-		this.autoCommit = false;
+		this.autoCommit = autoCommitValue;
 		this.queue.clear();
 	}
 

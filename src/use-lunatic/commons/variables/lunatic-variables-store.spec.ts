@@ -586,6 +586,25 @@ describe('lunatic-variables-store', () => {
 		});
 	});
 
+	describe('commit', () => {
+		it('should handle data change before commit', () => {
+			variables.set('PRENOM', []);
+			variables.set('NOM', []);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					size: 'count(PRENOM)',
+					variables: ['NOM'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('NOM', ['Doe', 'Doe2', 'Doe3']);
+			variables.set('PRENOM', ['John', 'Jane']); // Should trigger a delayed resize
+			variables.set('NOM', 'New', { iteration: [1] }); // But we change a value inside the resized variable
+			variables.commit();
+			expect(variables.get('NOM') as string[][]).toEqual(['Doe', 'New']);
+		});
+	});
+
 	describe('makeFromSource', () => {
 		it('should handle initial data correctly', () => {
 			const store = LunaticVariablesStore.makeFromSource(
