@@ -9,16 +9,15 @@ import { reduceGoToPage } from './reduce-go-to-page';
 const commitActions: ActionKind[] = [
 	ActionKind.GO_PREVIOUS_PAGE,
 	ActionKind.GO_NEXT_PAGE,
-	ActionKind.GO_TO_PAGE
-]
+	ActionKind.GO_TO_PAGE,
+];
 
 export function reducer(
 	state: LunaticReducerState,
 	action: Action
 ): LunaticReducerState {
-
 	if (commitActions.includes(action.type)) {
-		state.variables.commit()
+		state.variables.commit();
 	}
 
 	switch (action.type) {
