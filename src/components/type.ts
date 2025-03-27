@@ -10,6 +10,8 @@ import type {
 import type { InterpretedOption } from '../use-lunatic/props/propOptions';
 
 type Formats = 'PTnHnM' | 'PnYnM';
+export type DateFormat = 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY';
+
 export type VtlExpression = {
 	value: string;
 	type: 'VTL' | 'VTL|MD' | 'TXT';
@@ -172,7 +174,7 @@ export type ComponentPropsByType = {
 		};
 	Datepicker: LunaticBaseProps<string | null> &
 		LunaticExtraProps & {
-			dateFormat: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY';
+			dateFormat: DateFormat;
 			min?: string;
 			max?: string;
 			response: { name: string };

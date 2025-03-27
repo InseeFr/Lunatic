@@ -5,7 +5,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'; // see ht
 import { fr } from 'date-fns/locale/fr';
 import { parseISO, format } from 'date-fns';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
-import type { LunaticComponentProps } from '../type';
+import type { DateFormat, LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
 import { Declarations } from '../shared/Declarations/Declarations';
 import {
@@ -115,7 +115,7 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 /**
  * Computes the displayed date format for the datepicker from the source format
  */
-function computeDisplayedFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
+function computeDisplayedFormat(format: DateFormat) {
 	switch (format) {
 		case 'YYYY-MM':
 			return 'MM/yyyy';
@@ -130,7 +130,7 @@ function computeDisplayedFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
 /**
  * Computes the date format understood by the 'date-fns' library from the source format
  */
-function computeDateFnsFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
+function computeDateFnsFormat(format: DateFormat) {
 	// Replace 'YYYY' with 'yyyy' and 'DD' with 'dd', keeping 'MM', for compatibility with date-fns
 	return format.replace('YYYY', 'yyyy').replace('DD', 'dd');
 }
@@ -138,9 +138,7 @@ function computeDateFnsFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
 /**
  * Determines DatePicker views
  */
-function getDatePickerViews(
-	format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY'
-): DateView[] {
+function getDatePickerViews(format: DateFormat): DateView[] {
 	switch (format) {
 		case 'YYYY-MM':
 			return ['year', 'month'];

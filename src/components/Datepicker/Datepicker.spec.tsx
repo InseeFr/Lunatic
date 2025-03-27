@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Datepicker } from './Datepicker';
+import { DateFormat } from '../type';
 
 describe('Datepicker', () => {
 	const mockOnChange = vi.fn();
@@ -16,7 +17,9 @@ describe('Datepicker', () => {
 		mockOnChange.mockClear();
 	});
 
-	(['YYYY-MM-DD', 'YYYY-MM', 'YYYY'] as const).forEach((format) => {
+	const dateFormats: DateFormat[] = ['YYYY-MM-DD', 'YYYY-MM', 'YYYY'];
+
+	dateFormats.forEach((format) => {
 		it(`should render properly with format ${format}`, () => {
 			const { container } = render(
 				<Datepicker
