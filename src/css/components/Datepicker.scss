@@ -1,19 +1,15 @@
-.lunaticDatepickerFields {
-	display: flex;
-	align-items: flex-end;
-	gap: 1rem;
-}
-
-.lunaticDatepickerField input {
-	width: 3.5em;
-}
-
-.lunaticDatepickerFieldLarge input {
-	width: 4.5em;
-}
-
-.lunaticDatepickerHint {
-	display: block;
-	font-weight: 400;
-	font-size: 0.9em;
+.lunatic-component {
+	.lunatic-datepicker .datepicker {
+		width: 15rem;
+		input {
+			border-bottom: none;
+			&:hover,
+			&:focus {
+				border-bottom: none;
+			}
+		}
+		.clearButton {
+			opacity: 1;
+		}
+	}
 }

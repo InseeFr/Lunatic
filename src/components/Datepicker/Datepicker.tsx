@@ -1,6 +1,9 @@
-import { forwardRef, useState } from 'react';
-import ReactDatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import { useState } from 'react';
+import { DatePicker as MuiDatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'; // see https://github.com/mui/mui-x/issues/11470
+import { fr } from 'date-fns/locale/fr';
+import { parseISO, format } from 'date-fns';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
@@ -10,13 +13,7 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import type { LunaticError } from '../../use-lunatic/type';
-import { parseISO, format } from 'date-fns';
-import { fr } from 'date-fns/locale';
-import { InputMask, InputMaskProps } from '@react-input/mask';
-
-interface MaskedInputProps extends InputMaskProps {
-	format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY';
-}
+import { DateView } from '@mui/x-date-pickers';
 
 export function Datepicker({
 	dateFormat = 'YYYY-MM-DD',
@@ -60,7 +57,6 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 		} = props;
 		const labelId = `lunatic-datepicker-${id}`;
 
-		// Convert value string ("YYYY-MM-DD") to Date object
 		const parsedDate = value ? parseISO(value) : null;
 		const [selectedDate, setSelectedDate] = useState<Date | null>(parsedDate);
 
@@ -71,7 +67,7 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 		};
 
 		return (
-			<div className="lunatic-input">
+			<div className="lunatic-datepicker">
 				<Label htmlFor={id} id={labelId} description={description}>
 					{label}
 				</Label>
@@ -80,18 +76,35 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 					declarations={declarations}
 					id={id}
 				/>
-				<ReactDatePicker
-					id={id}
-					selected={selectedDate}
-					onChange={handleDateChange}
-					dateFormat={computeDisplayedFormat(dateFormat)}
-					isClearable
-					disabled={disabled || readOnly}
-					showMonthYearPicker={dateFormat === 'YYYY-MM'}
-					showYearPicker={dateFormat === 'YYYY'}
-					locale={fr}
-					customInput={<MaskedInput format={dateFormat} />}
-				/>
+				<LocalizationProvider
+					dateAdapter={AdapterDateFns}
+					adapterLocale={fr}
+					localeText={{
+						fieldDayPlaceholder: () => 'jj',
+						fieldMonthPlaceholder: () => 'mm',
+						fieldYearPlaceholder: () => 'aaaa',
+					}}
+				>
+					<MuiDatePicker
+						className="datepicker"
+						value={selectedDate}
+						onChange={handleDateChange}
+						format={computeDisplayedFormat(dateFormat)}
+						views={getDatePickerViews(dateFormat)}
+						disabled={disabled}
+						readOnly={readOnly}
+						slotProps={{
+							field: { clearable: true },
+							clearButton: { title: 'Effacer' },
+							textField: {
+								id: id,
+								inputProps: {
+									'aria-labelledby': labelId,
+								},
+							},
+						}}
+					/>
+				</LocalizationProvider>
 				<ComponentErrors errors={errors} />
 			</div>
 		);
@@ -122,60 +135,18 @@ function computeDateFnsFormat(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
 }
 
 /**
- * Computes the mask (in french) for the datepicker input from the source format
+ * Determines DatePicker views
  */
-function computeDateMask(format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY') {
+function getDatePickerViews(
+	format: 'YYYY-MM-DD' | 'YYYY-MM' | 'YYYY'
+): DateView[] {
 	switch (format) {
 		case 'YYYY-MM':
-			return 'mm/aaaa';
+			return ['year', 'month'];
 		case 'YYYY':
-			return 'aaaa';
+			return ['year'];
 		case 'YYYY-MM-DD':
 		default:
-			return 'jj/mm/aaaa';
+			return ['year', 'month', 'day'];
 	}
 }
-
-const MaskedInput = forwardRef<HTMLInputElement, MaskedInputProps>(
-	({ onChange, format, ...otherProps }, ref) => {
-		const mask = computeDateMask(format);
-
-		const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-			if (onChange) {
-				onChange(event);
-			}
-
-			// move cursor for avoiding separator
-			moveCursorAfterSlash(event);
-		};
-
-		return (
-			<InputMask
-				ref={ref}
-				{...otherProps}
-				mask={mask}
-				replacement={{ j: /\d/, m: /\d/, a: /\d/ }}
-				onChange={handleChange}
-				placeholder={mask}
-				showMask
-				separate
-				type="text"
-			/>
-		);
-	}
-);
-
-const moveCursorAfterSlash = (event: React.ChangeEvent<HTMLInputElement>) => {
-	const input = event.target;
-	const cursorPos = input.selectionStart;
-	const value = input.value;
-
-	// If the cursor is right after 'jj' or 'mm', move it to the next position
-	if (
-		cursorPos !== null &&
-		cursorPos < value.length &&
-		value[cursorPos] === '/'
-	) {
-		input.setSelectionRange(cursorPos + 1, cursorPos + 1);
-	}
-};

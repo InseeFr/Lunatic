@@ -44,11 +44,21 @@ describe('Datepicker', () => {
 		expect(input).toBeInTheDocument();
 
 		if (input) {
+			// valid date
 			fireEvent.change(input, { target: { value: '01/01/2023' } });
 			expect(mockOnChange).toHaveBeenLastCalledWith([
 				{
 					...baseProps.response,
 					value: '2023-01-01',
+				},
+			]);
+
+			// invalid date
+			fireEvent.change(input, { target: { value: '30/02/2023' } });
+			expect(mockOnChange).toHaveBeenLastCalledWith([
+				{
+					...baseProps.response,
+					value: null,
 				},
 			]);
 		}
