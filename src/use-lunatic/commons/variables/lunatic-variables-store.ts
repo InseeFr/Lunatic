@@ -24,7 +24,7 @@ let interpretCount = 0;
 /** Special variable that will take the current iteration value. */
 const iterationVariableName = 'GLOBAL_ITERATION_INDEX';
 
-type IterationLevel = number[];
+export type IterationLevel = number[];
 export type EventArgs = {
 	change: {
 		/** Name of the changed variable. */
