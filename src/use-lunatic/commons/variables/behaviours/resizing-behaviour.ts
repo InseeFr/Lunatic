@@ -29,7 +29,7 @@ export function resizingBehaviour(
 
 		// Pairwise resizing
 		if ('sizeForLinksVariables' in resizingInfo) {
-			resizePairwise(store, resizingInfo, e.detail);
+			resizePairwise(store, resizingInfo);
 			if (!('size' in resizingInfo)) {
 				return;
 			}
@@ -58,10 +58,6 @@ function resizePairwise(
 			| [string, string]
 			| { xAxisSize: string; yAxisSize: string };
 		linksVariables: string[];
-	},
-	// @ts-expect-error This will be used later (removing at a specific index)
-	args: {
-		iteration?: number[];
 	}
 ) {
 	// Handle expression being sent as an array or an object (ensure backward compatibility)
