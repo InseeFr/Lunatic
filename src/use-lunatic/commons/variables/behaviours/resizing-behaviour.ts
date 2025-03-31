@@ -59,6 +59,7 @@ function resizePairwise(
 			| { xAxisSize: string; yAxisSize: string };
 		linksVariables: string[];
 	},
+	// @ts-expect-error This will be used later (removing at a specific index)
 	args: {
 		iteration?: number[];
 	}
@@ -77,7 +78,7 @@ function resizePairwise(
 		return forceInt(store.run(getExpressionAsString(expression)));
 	});
 	resizingInfo.linksVariables.forEach((variable) => {
-		const value = store.get(variable, args.iteration);
+		const value = store.get(variable);
 		const resizedValue = resizeArray(
 			// The value is not an array, force an array
 			Array.isArray(value) ? value.map((i) => resizeArray(i, ySize, null)) : [],
