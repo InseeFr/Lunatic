@@ -42,14 +42,11 @@ export const CustomDatepickerFields = slottableComponent<CustomProps>(
 			const formatParts = dateFormat.split('-');
 			const hasNaNIndex = numbers.findIndex((v) => Number.isNaN(v));
 
-			// Date has a missing part
-			if (hasNaNIndex > -1 && hasNaNIndex <= formatParts.length - 1) {
-				onChange(null);
-				return;
-			}
-
-			// Date is not valid
-			if (dateFormat === 'YYYY-MM-DD' && !isDateValid(numbers)) {
+			// Date is not valid, or date has a missing part
+			if (
+				(dateFormat === 'YYYY-MM-DD' && !isDateValid(numbers)) ||
+				(hasNaNIndex > -1 && hasNaNIndex <= formatParts.length - 1)
+			) {
 				onChange(null);
 				return;
 			}
@@ -107,12 +104,8 @@ function numbersFromDateString(s?: string): [number, number, number] {
 	if (!s) {
 		return [NaN, NaN, NaN];
 	}
-	const parts = s.split('-');
-	return [
-		parseInt(parts[0], 10),
-		parseInt(parts[1], 10),
-		parseInt(parts[2], 10),
-	];
+	const [year, month, day] = s.split('-').map((part) => parseInt(part, 10));
+	return [year, month, day];
 }
 
 /**
