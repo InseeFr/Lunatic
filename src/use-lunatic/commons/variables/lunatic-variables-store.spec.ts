@@ -298,7 +298,10 @@ describe('lunatic-variables-store', () => {
 			variables.set('LINKS', [[]]);
 			resizingBehaviour(variables, {
 				PRENOM: {
-					sizeForLinksVariables: ['count(PRENOM)', 'count(PRENOM)'],
+					sizeForLinksVariables: {
+						xAxisSize: 'count(PRENOM)',
+						yAxisSize: 'count(PRENOM)',
+					},
 					linksVariables: ['LINKS'],
 				},
 			});
@@ -307,6 +310,19 @@ describe('lunatic-variables-store', () => {
 				[null, null, null],
 				[null, null, null],
 				[null, null, null],
+			]);
+			// Adding a person should not reset links
+			variables.set('LINKS', [
+				[null, '1', '3'],
+				['1', null, '3'],
+				['2', '2', null],
+			]);
+			variables.set('PRENOM', 'Marie', { iteration: [3] });
+			expect(variables.get('LINKS') as string[][]).toEqual([
+				[null, '1', '3', null],
+				['1', null, '3', null],
+				['2', '2', null, null],
+				[null, null, null, null],
 			]);
 		});
 		it('should resize pairwise with the object syntax', () => {

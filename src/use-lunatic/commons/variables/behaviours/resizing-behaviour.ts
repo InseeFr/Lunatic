@@ -29,7 +29,7 @@ export function resizingBehaviour(
 
 		// Pairwise resizing
 		if ('sizeForLinksVariables' in resizingInfo) {
-			resizePairwise(store, resizingInfo, e.detail);
+			resizePairwise(store, resizingInfo);
 			if (!('size' in resizingInfo)) {
 				return;
 			}
@@ -58,9 +58,6 @@ function resizePairwise(
 			| [string, string]
 			| { xAxisSize: string; yAxisSize: string };
 		linksVariables: string[];
-	},
-	args: {
-		iteration?: number[];
 	}
 ) {
 	// Handle expression being sent as an array or an object (ensure backward compatibility)
@@ -77,7 +74,7 @@ function resizePairwise(
 		return forceInt(store.run(getExpressionAsString(expression)));
 	});
 	resizingInfo.linksVariables.forEach((variable) => {
-		const value = store.get(variable, args.iteration);
+		const value = store.get(variable);
 		const resizedValue = resizeArray(
 			// The value is not an array, force an array
 			Array.isArray(value) ? value.map((i) => resizeArray(i, ySize, null)) : [],
