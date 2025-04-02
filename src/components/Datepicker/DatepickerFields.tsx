@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import type { LunaticComponentProps } from '../type';
 import { DatepickerField } from './DatepickerField';
+import { LunaticError } from '../../use-lunatic/type';
 
 type CustomProps = Omit<
 	LunaticComponentProps<'Datepicker'>,
 	'response' | 'handleChanges' | 'errors'
 > & {
 	onChange: (s: string | null) => void;
+	errors?: LunaticError[];
 };
 
 export const CustomDatepickerFields = slottableComponent<CustomProps>(
