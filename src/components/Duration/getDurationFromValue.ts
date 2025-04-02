@@ -1,4 +1,5 @@
-import { type Formats, type DurationValue } from './durationUtils';
+import { DurationFormat } from '../type';
+import { type DurationValue } from './durationUtils';
 
 /**
  * Convert a string into a duration
@@ -8,7 +9,7 @@ import { type Formats, type DurationValue } from './durationUtils';
  */
 export const getDurationFromValue = (
 	value: string | null,
-	format: Formats
+	format: DurationFormat
 ): DurationValue => {
 	// Handle nulls value
 	if (value === null && format === 'PTnHnM') {
@@ -30,7 +31,7 @@ export const getDurationFromValue = (
  * ## Example :
  * - "P12Y3M" => [12, 3]
  */
-const matchFromFormat = (value: string, format: Formats): number[] => {
+const matchFromFormat = (value: string, format: DurationFormat): number[] => {
 	const regex = new RegExp(format.replaceAll('n', '(\\d+)'));
 	const match = value.match(regex);
 	if (!match) {

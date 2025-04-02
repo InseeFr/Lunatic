@@ -5,8 +5,6 @@ export type DurationValue = {
 	months?: number | null;
 };
 
-export type Formats = 'PTnHnM' | 'PnYnM';
-
 export const propsByUnit = {
 	hours: { min: 0, max: 99, size: 2, style: { width: '2.5em' } },
 	minutes: { min: 0, max: 59, size: 2, style: { width: '2.5em' } },

@@ -9,7 +9,7 @@ import type {
 } from '../use-lunatic/type';
 import type { InterpretedOption } from '../use-lunatic/props/propOptions';
 
-type Formats = 'PTnHnM' | 'PnYnM';
+export type DurationFormat = 'PTnHnM' | 'PnYnM';
 export type VtlExpression = {
 	value: string;
 	type: 'VTL' | 'VTL|MD' | 'TXT';
@@ -78,7 +78,7 @@ export type ComponentPropsByType = {
 		};
 	Duration: LunaticBaseProps<string | null> &
 		LunaticExtraProps & {
-			format: Formats;
+			format: DurationFormat;
 			response: { name: string };
 			componentType?: 'Duration';
 		};
