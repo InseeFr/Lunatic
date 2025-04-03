@@ -333,10 +333,24 @@ export type LunaticState = {
 	resetChangedData: () => void;
 	/** Return `true` as soon as the current page has at least one answer. */
 	hasPageResponse: () => boolean;
-	/** Used for testing purpose only. */
-	testing: {
-		handleChanges: LunaticChangesHandler;
-	};
+	/**
+	 * Change several variable values.
+	 *
+	 * Be careful when using this function.
+	 *
+	 * In most cases, you don't need this function.
+	 * It's used directly by the components (and available as a props.)
+	 *
+	 * - With only one change or with serveral changes
+	 * @example
+	 * handleChanges([{name: "MY_VAR", value: "new value"}])
+	 *
+	 * handleChanges([
+	 * 	{name: "MY_VAR", value: "new value"},
+	 * 	{name: "MY_VAR_2", value: "new value 2"}
+	 * ])
+	 */
+	handleChanges: LunaticChangesHandler;
 };
 
 /** Function taking as arguments the various changes the user has made. */
