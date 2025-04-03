@@ -7,6 +7,7 @@ import type { ReactNode } from 'react';
 import type { DeepTranslateExpression } from '../commons/fill-components/fill-component-expressions';
 import { isNumber } from '../../utils/number';
 import type { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
+import { LunaticLogger } from '../logger/type';
 
 /* Used for radio option and checkbox one option */
 export type InterpretedOption = {
@@ -29,7 +30,8 @@ export function getOptionsProp(
 	variables: LunaticVariablesStore,
 	handleChanges: LunaticChangesHandler,
 	pagerIteration: LunaticState['pager']['iteration'],
-	value: unknown
+	value: unknown,
+	logger: LunaticLogger
 ) {
 	const iteration = isNumber(pagerIteration) ? [pagerIteration] : undefined;
 	//const iteration = pagerIteration ? [pagerIteration] : undefined;
@@ -40,7 +42,16 @@ export function getOptionsProp(
 				if (!response.conditionFilter) {
 					return true;
 				}
-				return variables.run(response.conditionFilter.value, { iteration });
+				try {
+					return variables.run(response.conditionFilter.value, { iteration });
+				} catch (e) {
+					// If there is an error interpreting a variable, we do not filter
+					logger({
+						type: 'ERROR',
+						error: e as Error,
+					});
+					return true;
+				}
 			})
 			.map((response) => ({
 				label: response.label,
@@ -74,7 +85,16 @@ export function getOptionsProp(
 			if (!('conditionFilter' in option) || !option.conditionFilter) {
 				return true;
 			}
-			return variables.run(option.conditionFilter.value, { iteration });
+			try {
+				return variables.run(option.conditionFilter.value, { iteration });
+			} catch (e) {
+				// If there is an error interpreting a variable, we do not filter
+				logger({
+					type: 'ERROR',
+					error: e as Error,
+				});
+				return true;
+			}
 		})
 		.map((option) => ({
 			label: option.label,

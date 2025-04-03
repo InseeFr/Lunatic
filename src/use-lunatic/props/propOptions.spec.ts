@@ -26,6 +26,7 @@ describe('getOptionsProp()', () => {
 		],
 	} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
 	let mockChange: LunaticChangesHandler;
+	const mockLogger = vi.fn();
 
 	beforeEach(() => {
 		mockChange = vi.fn();
@@ -40,7 +41,8 @@ describe('getOptionsProp()', () => {
 				variables,
 				mockChange,
 				undefined,
-				undefined
+				undefined,
+				mockLogger
 			);
 			expect(options[1].checked).toBe(false);
 			variables.set('O2', true);
@@ -49,7 +51,8 @@ describe('getOptionsProp()', () => {
 				variables,
 				mockChange,
 				undefined,
-				undefined
+				undefined,
+				mockLogger
 			);
 			expect(options[1].checked).toBe(true);
 		});
@@ -61,7 +64,8 @@ describe('getOptionsProp()', () => {
 				variables,
 				mockChange,
 				0,
-				undefined
+				undefined,
+				mockLogger
 			);
 			expect(
 				options.filter((o) => o.checked),
@@ -74,7 +78,8 @@ describe('getOptionsProp()', () => {
 				variables,
 				mockChange,
 				0,
-				undefined
+				undefined,
+				mockLogger
 			);
 			expect(options[0].checked).toBe(true);
 			expect(options[1].checked).toBe(false);
@@ -87,12 +92,73 @@ describe('getOptionsProp()', () => {
 				variables,
 				mockChange,
 				1,
-				undefined
+				undefined,
+				mockLogger
 			);
 			options[1].onCheck(false);
 			expect(mockChange).toHaveBeenLastCalledWith([
 				{ name: 'O2', value: false },
 			]);
+		});
+		it('should not filter response (checkboxGroup) when its conditionFilter evaluation fails', () => {
+			const definition = {
+				...checkboxGroupDefinition,
+				responses: [
+					{
+						label: 'Option 1',
+						response: { name: 'O1' },
+						id: 'id1',
+						conditionFilter: { type: 'VTL', value: 'invalid expression' },
+					},
+				],
+			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+			// mock variables.run for having an error interpreting a variable
+			vi.spyOn(variables, 'run').mockImplementation(() => {
+				throw new Error('Test error');
+			});
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger
+			);
+
+			// Ensure the option is not filtered
+			expect(options).toHaveLength(1);
+		});
+		it('should not filter option (radio) when its conditionFilter evaluation fails', () => {
+			const definition = {
+				id: 'RadioGroup',
+				componentType: 'Radio',
+				options: [
+					{
+						label: 'Option 1',
+						value: 'id1',
+						conditionFilter: { type: 'VTL', value: 'invalid expression' },
+					},
+				],
+			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
+
+			// Mock `variables.run` to throw an error
+			vi.spyOn(variables, 'run').mockImplementation(() => {
+				throw new Error('Test error');
+			});
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger
+			);
+
+			// Ensure the option is not filtered
+			expect(options).toHaveLength(1);
 		});
 	});
 });

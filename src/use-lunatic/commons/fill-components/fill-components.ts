@@ -12,6 +12,7 @@ import { getMissingResponseProp } from '../../props/propMissingResponse';
 import { getValueProp } from '../../props/propValue';
 import { getIterationsProp } from '../../props/propIterations';
 import { getOptionsProp } from '../../props/propOptions';
+import { LunaticLogger } from '../../logger/type';
 
 type FillComponentArgs = {
 	disableFilters?: boolean;
@@ -25,6 +26,7 @@ type FillComponentArgs = {
 	preferences: LunaticOptions['preferences'];
 	pager: LunaticReducerState['pager'];
 	variables: LunaticReducerState['variables'];
+	logger: LunaticLogger;
 };
 
 /**
@@ -56,7 +58,8 @@ export const fillComponent = (
 			state.variables,
 			state.handleChanges,
 			state.pager.iteration,
-			value
+			value,
+			state.logger
 		),
 		...getComponentTypeProps(interpretedProps, state),
 		// This is too dynamic to be typed correctly, so we allow any here

@@ -205,6 +205,7 @@ export function useLunatic(
 		goNextPage,
 		goPreviousPage,
 		management,
+		logger,
 		...state,
 	});
 
