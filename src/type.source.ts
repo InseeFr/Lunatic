@@ -33,7 +33,8 @@ export type ComponentDefinition =
 	| ComponentPairWiseLinksDefinition
 	| ComponentSummaryDefinition
 	| ComponentText
-	| ComponentAccordion;
+	| ComponentAccordion
+	| ComponentRecapDefinition;
 export type ComponentInputDefinition = ComponentDefinitionBaseWithResponse & {
 	componentType: 'Input' | 'Textarea';
 	maxLength?: number;
@@ -233,6 +234,14 @@ export type ComponentSummaryDefinition = ComponentDefinitionBase & {
 		}[];
 	}[];
 };
+export type ComponentRecapDefinition = ComponentDefinitionBase & {
+	componentType: 'Recap';
+	fields: {
+		label: string;
+		pairwise?: string;
+		value: VTLExpression;
+	}[];
+};
 export type Variable =
 	| {
 			variableType: 'EXTERNAL';
@@ -257,7 +266,7 @@ export type VariableValue = VariableScalarValue | unknown[];
 export type VariableScalarValue = string | number | null;
 
 /**
- * Representation of a Lunatic questionnaire.
+ * Representation of a Lunatic survey unit in the Lunatic Model.
  */
 export type LunaticSource = {
 	label?: VTLExpression;

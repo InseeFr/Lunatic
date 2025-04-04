@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { LunaticComponentDefinition } from '../type';
+import type { ComponentDefinition } from '../../type.source';
 
 export function hasResponse(
 	component: unknown
@@ -44,4 +45,25 @@ export function hasComponentType(
 		'componentType' in component &&
 		typeof component.componentType === 'string'
 	);
+}
+
+/**
+ * Find a component recursively using a specific condition
+ */
+export function findComponent(
+	components: ComponentDefinition[],
+	cb: (component: ComponentDefinition) => boolean
+): ComponentDefinition | null {
+	for (const component of components) {
+		if (cb(component)) {
+			return component;
+		}
+		if ('components' in component) {
+			const child = findComponent(component.components, cb);
+			if (child) {
+				return child;
+			}
+		}
+	}
+	return null;
 }

@@ -39,7 +39,29 @@
 			"additionalProperties": {
 				"type": "object",
 				"additionalProperties": {
-					"type": "string"
+					"oneOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"expression": {
+										"type": "string"
+									},
+									"shapeFrom": {
+										"type": "string"
+									},
+									"isAggregatorUsed": {
+										"type": "boolean"
+									}
+								},
+								"required": ["expression", "isAggregatorUsed"]
+							}
+						}
+					]
 				}
 			}
 		},
@@ -364,6 +386,9 @@
 				},
 				{
 					"$ref": "#/$defs/ComponentAccordion"
+				},
+				{
+					"$ref": "#/$defs/ComponentRecapDefinition"
 				}
 			]
 		},
@@ -1018,6 +1043,39 @@
 				"symLinks",
 				"components"
 			],
+			"allOf": [
+				{
+					"$ref": "#/$defs/ComponentDefinitionBase"
+				}
+			]
+		},
+		"ComponentRecapDefinition": {
+			"type": "object",
+			"properties": {
+				"componentType": {
+					"type": "string",
+					"const": "Recap"
+				},
+				"fields": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"pairwise": {
+								"type": "string"
+							},
+							"value": {
+								"$ref": "#/$defs/VTLExpression"
+							}
+						},
+						"required": ["label", "value"]
+					}
+				}
+			},
+			"required": ["componentType", "fields"],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBase"

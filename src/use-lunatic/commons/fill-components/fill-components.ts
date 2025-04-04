@@ -27,6 +27,7 @@ type FillComponentArgs = {
 	pager: LunaticReducerState['pager'];
 	variables: LunaticReducerState['variables'];
 	logger: LunaticLogger;
+	pages: LunaticReducerState['pages'];
 };
 
 /**
