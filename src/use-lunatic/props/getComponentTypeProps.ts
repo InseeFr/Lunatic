@@ -9,6 +9,7 @@ import {
 	fillComponents,
 } from '../commons/fill-components/fill-components';
 import { times } from '../../utils/array';
+import { getRecapProps } from './getPairwiseProps';
 
 type State = Parameters<typeof fillComponent>[1];
 
@@ -224,6 +225,8 @@ export function getComponentTypeProps(
 			return getTableProps(component, state);
 		case 'Suggester':
 			return getSuggesterProps(component, state);
+		case 'Recap':
+			return getRecapProps(component, state);
 		default:
 			return {};
 	}

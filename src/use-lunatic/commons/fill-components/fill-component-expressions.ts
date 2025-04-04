@@ -84,6 +84,7 @@ type UntranslatedProperties =
 	| 'expressions'
 	| 'sections'
 	| 'body'
+	| 'fields'
 	| 'item'
 	| 'controls'
 	| 'conditionFilter'

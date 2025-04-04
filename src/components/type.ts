@@ -312,6 +312,15 @@ export type ComponentPropsByType = {
 				iterations?: VtlExpression;
 			}>;
 		};
+	Recap: LunaticBaseProps<null> &
+		LunaticExtraProps & {
+			componentType?: 'Recap';
+			label: string;
+			fields: {
+				label: string;
+				value: string;
+			}[];
+		};
 };
 
 export type LunaticComponentType = keyof ComponentPropsByType;
