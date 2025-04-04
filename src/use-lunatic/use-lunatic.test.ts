@@ -233,7 +233,7 @@ describe('use-lunatic()', () => {
 				useLunatic(sourceCleaningLoop as any, undefined, {})
 			);
 			act(() => {
-				result.current.testing.handleChanges([
+				result.current.handleChanges([
 					{
 						name: 'PRENOM',
 						value: ['John', 'Doe', 'Marc'],
@@ -251,7 +251,7 @@ describe('use-lunatic()', () => {
 			};
 			expectCollectedAgeToEqual([18, 18, 18]);
 			act(() => {
-				result.current.testing.handleChanges([
+				result.current.handleChanges([
 					{
 						name: 'HIDE_AGE',
 						value: true,
@@ -271,15 +271,11 @@ describe('use-lunatic()', () => {
 					onChange: spy,
 				})
 			);
-			act(() =>
-				result.current.testing.handleChanges([{ name: 'NB', value: 3 }])
-			);
+			act(() => result.current.handleChanges([{ name: 'NB', value: 3 }]));
 			expect(
 				(result.current.getData(true).COLLECTED?.PRENOMS as any).COLLECTED
 			).toEqual([null, null, null]);
-			act(() =>
-				result.current.testing.handleChanges([{ name: 'NB', value: 2 }])
-			);
+			act(() => result.current.handleChanges([{ name: 'NB', value: 2 }]));
 			expect(
 				(result.current.getData(true).COLLECTED?.PRENOMS as any).COLLECTED
 			).toEqual([null, null]);
@@ -293,13 +289,13 @@ describe('use-lunatic()', () => {
 				useLunatic(sourceSimpsons as any, undefined, {})
 			);
 			act(() => {
-				result.current.testing.handleChanges([
+				result.current.handleChanges([
 					{
 						name: 'COMMENT',
 						value: 'Mon commentaire',
 					},
 				]);
-				result.current.testing.handleChanges([{ name: 'READY', value: true }]);
+				result.current.handleChanges([{ name: 'READY', value: true }]);
 			});
 			hookRef = result;
 		});
@@ -328,7 +324,7 @@ describe('use-lunatic()', () => {
 		});
 		it('should return changes since the last update', () => {
 			act(() => {
-				hookRef.current.testing.handleChanges([
+				hookRef.current.handleChanges([
 					{ name: 'COMMENT', value: 'Mon commentaire' },
 					{ name: 'READY', value: true },
 				]);
@@ -346,10 +342,10 @@ describe('use-lunatic()', () => {
 		});
 		it('should reset changes with true parameter', () => {
 			act(() => {
-				hookRef.current.testing.handleChanges([
+				hookRef.current.handleChanges([
 					{ name: 'COMMENT', value: 'Mon commentaire' },
 				]);
-				hookRef.current.testing.handleChanges([{ name: 'READY', value: true }]);
+				hookRef.current.handleChanges([{ name: 'READY', value: true }]);
 			});
 			const data = hookRef.current.getChangedData(true);
 			expect(data).toMatchObject({
@@ -366,7 +362,7 @@ describe('use-lunatic()', () => {
 		});
 		it('should reset changes with resetChanges()', () => {
 			act(() => {
-				hookRef.current.testing.handleChanges([
+				hookRef.current.handleChanges([
 					{
 						name: 'COMMENT',
 						value: 'Mon commentaire',
@@ -377,9 +373,7 @@ describe('use-lunatic()', () => {
 			hookRef.current.resetChangedData();
 			expect(hookRef.current.getChangedData().COLLECTED).toEqual({});
 			act(() => {
-				hookRef.current.testing.handleChanges([
-					{ name: 'READY', value: false },
-				]);
+				hookRef.current.handleChanges([{ name: 'READY', value: false }]);
 			});
 			expect(hookRef.current.getChangedData().COLLECTED).toMatchObject({
 				READY: {
@@ -395,9 +389,7 @@ describe('use-lunatic()', () => {
 				useLunatic(sourceCheckboxGroup as any, undefined, {})
 			);
 			act(() => {
-				result.current.testing.handleChanges([
-					{ name: 'NATIO1N1', value: true },
-				]);
+				result.current.handleChanges([{ name: 'NATIO1N1', value: true }]);
 			});
 			expect(result.current.hasPageResponse()).toBeTruthy();
 		});
@@ -406,9 +398,7 @@ describe('use-lunatic()', () => {
 				useLunatic(sourceCheckboxGroup as any, undefined, {})
 			);
 			act(() => {
-				result.current.testing.handleChanges([
-					{ name: 'NATIO1N1', value: false },
-				]);
+				result.current.handleChanges([{ name: 'NATIO1N1', value: false }]);
 			});
 			expect(result.current.hasPageResponse()).toBeFalsy();
 		});

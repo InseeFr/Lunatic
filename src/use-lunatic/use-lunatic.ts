@@ -234,8 +234,6 @@ export function useLunatic(
 		hasPageResponse: usePageHasResponse(components, state.executeExpression),
 		// Components
 		Provider,
-		testing: {
-			handleChanges,
-		},
+		handleChanges,
 	} satisfies LunaticState;
 }
