@@ -7,6 +7,7 @@ import { hasComponentType } from '../commons/component';
 import {
 	fillComponent,
 	fillComponents,
+	fillComponentsWithNulls,
 } from '../commons/fill-components/fill-components';
 import { times } from '../../utils/array';
 
@@ -62,7 +63,7 @@ function getChildComponentsWithIteration(
 ) {
 	return {
 		getComponents: (iteration: number) =>
-			fillComponents(component.components, {
+			fillComponentsWithNulls(component.components, {
 				...state,
 				handleChanges: createChangeHandlerForIteration(
 					state.handleChanges,

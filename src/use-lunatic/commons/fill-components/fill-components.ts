@@ -79,3 +79,20 @@ export function fillComponents(
 			({ conditionFilter }) => state.disableFilters || (conditionFilter ?? true)
 		);
 }
+
+/**
+ * Fill components like the `fillComponents` function,
+ * but keeps the original component array size and order by returning `null` for filtered components.
+ * Used for RosterForLoop
+ */
+export function fillComponentsWithNulls(
+	components: LunaticComponentDefinition[],
+	state: FillComponentArgs
+): (LunaticComponentProps | null)[] {
+	return components.map((component) => {
+		const filled = fillComponent(component, state);
+		const shouldInclude =
+			state.disableFilters || (filled.conditionFilter ?? true);
+		return shouldInclude ? filled : null;
+	});
+}
