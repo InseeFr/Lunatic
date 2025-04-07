@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { DatepickerField } from './DatepickerField';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
 import type { LunaticComponentProps } from '../type';
 import { Label } from '../shared/Label/Label';
@@ -9,6 +7,7 @@ import {
 } from '../shared/ComponentErrors/ComponentErrors';
 import { Declarations } from '../shared/Declarations/Declarations';
 import type { LunaticError } from '../../use-lunatic/type';
+import { CustomDatepickerFields } from './DatepickerFields';
 
 export function Datepicker({
 	dateFormat = 'YYYY-MM-DD',
@@ -38,59 +37,9 @@ type CustomProps = Omit<
 export const CustomDatepicker = slottableComponent<CustomProps>(
 	'Datepicker',
 	(props) => {
-		const {
-			disabled,
-			readOnly,
-			value = '',
-			dateFormat = 'YYYY-MM-DD',
-			id,
-			label,
-			errors,
-			description,
-			declarations,
-			onChange,
-		} = props;
+		const { id, label, errors, description, declarations } = props;
+
 		const labelId = `lunatic-datepicker-${id}`;
-		const showDay = dateFormat.includes('DD');
-		const showMonth = dateFormat.includes('MM');
-
-		// Raw state, we allow invalid dates to be typed
-		const [numbers, setNumbers] = useState(() =>
-			numbersFromDateString(value ?? undefined)
-		);
-		const setNumber = (index: number) => (value: number) => {
-			const newNumbers = [...numbers] as typeof numbers;
-			newNumbers[index] = value;
-			setNumbers(newNumbers);
-			onNumbersChange(newNumbers);
-		};
-
-		const onNumbersChange = (numbers: [number, number, number]) => {
-			const formatParts = dateFormat.split('-');
-			const hasNaNIndex = numbers.findIndex((v) => Number.isNaN(v));
-
-			// Date has a missing part
-			if (hasNaNIndex > -1 && hasNaNIndex <= formatParts.length - 1) {
-				onChange(null);
-				return;
-			}
-
-			// Date is not valid
-			if (dateFormat === 'YYYY-MM-DD' && !isDateValid(numbers)) {
-				onChange(null);
-				return;
-			}
-
-			const result = formatParts
-				.map((v, k) => numbers[k].toString().padStart(v.length, '0'))
-				.join('-');
-			onChange(result);
-		};
-
-		const extraProps = {
-			readOnly,
-			disabled,
-		};
 
 		return (
 			<div className="lunatic-input">
@@ -102,71 +51,9 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 					declarations={declarations}
 					id={id}
 				/>
-				<div className="lunaticDatepickerFields">
-					{showDay && (
-						<DatepickerField
-							id={id + 'day'}
-							label="Jour"
-							description="Exemple: 14"
-							max={31}
-							value={numbers[2]}
-							onChange={setNumber(2)}
-							{...extraProps}
-						/>
-					)}
-					{showMonth && (
-						<DatepickerField
-							id={id + 'month'}
-							label="Mois"
-							description="Exemple: 7"
-							max={12}
-							value={numbers[1]}
-							onChange={setNumber(1)}
-							{...extraProps}
-						/>
-					)}
-					<DatepickerField
-						id={id + 'year'}
-						label="Année"
-						description="Exemple: 2023"
-						value={numbers[0]}
-						max={9999}
-						onChange={setNumber(0)}
-						{...extraProps}
-					/>
-				</div>
+				<CustomDatepickerFields {...props} />
 				<ComponentErrors errors={errors} />
 			</div>
 		);
 	}
 );
-
-function numbersFromDateString(s?: string): [number, number, number] {
-	if (!s) {
-		return [NaN, NaN, NaN];
-	}
-	const parts = s.split('-');
-	return [
-		parseInt(parts[0], 10),
-		parseInt(parts[1], 10),
-		parseInt(parts[2], 10),
-	];
-}
-
-/**
- * Check if the date provided by the user is valid (e.g. not 2001/02/29)
- */
-function isDateValid(dateArray: [number, number, number]) {
-	const [year, month, day] = dateArray;
-
-	// do not set the date directly on new Date(), to avoid transformation on year between 0 and 99.
-	//See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date#year
-	const date = new Date();
-	date.setFullYear(year, month - 1, day);
-
-	return (
-		date.getFullYear() === year &&
-		date.getMonth() === month - 1 &&
-		date.getDate() === day
-	);
-}

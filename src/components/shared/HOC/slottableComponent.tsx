@@ -43,6 +43,7 @@ import type { SummaryResponses, SummaryTitle } from '../../Summary/Summary';
 import type { LunaticComponentProps } from '../../type';
 import type { MarkdownLink } from '../MDLabel/MarkdownLink';
 import type { Accordion } from '../../Accordion/Accordion';
+import type { CustomDatepickerFields } from '../../Datepicker/DatepickerFields';
 
 /**
  * Contain the type of every customizable components.
@@ -79,6 +80,9 @@ export type LunaticSlotComponents = {
 	ComboboxInput: typeof ComboboxInput; // option (inside the li)
 	ComboboxClearButton: typeof ComboboxClearButton;
 	ComboboxLabelSelection: typeof ComboboxLabelSelection;
+
+	// Datepicker
+	DatepickerFields: typeof CustomDatepickerFields;
 
 	// Roundabout
 	Roundabout: typeof CustomRoundabout;
