@@ -71,28 +71,33 @@ export const fillComponent = (
  */
 export function fillComponents(
 	components: LunaticComponentDefinition[],
-	state: FillComponentArgs
+	state: FillComponentArgs,
+	parentType?: string
 ): LunaticComponentProps[] {
-	return components
-		.map((component) => fillComponent(component, state))
-		.filter(
-			({ conditionFilter }) => state.disableFilters || (conditionFilter ?? true)
-		);
-}
+	const filledComponents = components.map((component) =>
+		fillComponent(component, state)
+	);
 
-/**
- * Fill components like the `fillComponents` function,
- * but keeps the original component array size and order by returning `null` for filtered components.
- * Used for RosterForLoop
- */
-export function fillComponentsWithNulls(
-	components: LunaticComponentDefinition[],
-	state: FillComponentArgs
-): (LunaticComponentProps | null)[] {
-	return components.map((component) => {
-		const filled = fillComponent(component, state);
-		const shouldInclude =
-			state.disableFilters || (filled.conditionFilter ?? true);
-		return shouldInclude ? filled : null;
-	});
+	if (state.disableFilters) {
+		return filledComponents;
+	}
+
+	// For rosterForLoop we want empty cell when the component is filtered
+	if (parentType === 'RosterForLoop') {
+		return filledComponents.map((filledComponent) =>
+			(filledComponent.conditionFilter ?? true)
+				? filledComponent
+				: // Replace the component by an empty text component
+					({
+						...filledComponent,
+						label: '',
+						componentType: 'Text',
+					} as LunaticComponentProps)
+		);
+	}
+
+	// Remove filtered component (conditionFilter must be true to keep a component)
+	return filledComponents.filter(
+		({ conditionFilter }) => conditionFilter ?? true
+	);
 }

@@ -62,25 +62,24 @@ function getChildComponentsWithIteration(
 	state: State
 ) {
 	// for RosterForLoop only we fill the components without filtering them
-	const fillComponentsMethod =
-		component.componentType === 'RosterForLoop'
-			? fillComponentsWithNulls
-			: fillComponents;
-
 	return {
 		getComponents: (iteration: number) =>
-			fillComponentsMethod(component.components, {
-				...state,
-				handleChanges: createChangeHandlerForIteration(
-					state.handleChanges,
-					iteration
-				),
-				pager: {
-					...state.pager,
-					iteration: iteration,
-					subPage: 0, // Fake a subpage to simulate an iteration
+			fillComponents(
+				component.components,
+				{
+					...state,
+					handleChanges: createChangeHandlerForIteration(
+						state.handleChanges,
+						iteration
+					),
+					pager: {
+						...state.pager,
+						iteration: iteration,
+						subPage: 0, // Fake a subpage to simulate an iteration
+					},
 				},
-			}),
+				component.componentType
+			),
 	};
 }
 
