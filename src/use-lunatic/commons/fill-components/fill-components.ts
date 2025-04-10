@@ -72,7 +72,7 @@ export const fillComponent = (
 export function fillComponents(
 	components: LunaticComponentDefinition[],
 	state: FillComponentArgs,
-	parentType?: string
+	parentType?: LunaticComponentDefinition['componentType']
 ): LunaticComponentProps[] {
 	const filledComponents = components.map((component) =>
 		fillComponent(component, state)
