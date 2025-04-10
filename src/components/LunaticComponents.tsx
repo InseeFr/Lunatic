@@ -132,17 +132,6 @@ export function LunaticComponents<V = unknown>({
 						);
 					}
 
-					// component is explicitly null, we just render the wrapper
-					if (component === null) {
-						return (
-							<Fragment key={k}>
-								{wrapper({
-									index: k,
-								} as any)}
-							</Fragment>
-						);
-					}
-
 					return null;
 				})}
 			</SlotsProvider>
