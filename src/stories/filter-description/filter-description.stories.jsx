@@ -9,7 +9,7 @@ const stories = {
 	component: Orchestrator,
 	argTypes: {
 		...defaultArgTypes,
-		filterDescription: {
+		disableFiltersDescription: {
 			table: { disable: false },
 			control: 'boolean',
 			defaultValue: true,
@@ -22,6 +22,7 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
+
 Default.args = { id: 'filter-description', source };
 
 export const Options = Template.bind({});
@@ -29,5 +30,5 @@ export const Options = Template.bind({});
 Options.args = {
 	id: 'filter-description-options',
 	source: sourceOptions,
-	filterDescription: true,
+	disableFiltersDescription: true,
 };

@@ -23,6 +23,11 @@ const stories = {
 			control: 'boolean',
 			defaultValue: false,
 		},
+		disableFiltersDescription: {
+			table: { disable: false },
+			control: 'boolean',
+			defaultValue: true,
+		},
 		management: {
 			table: { disable: false },
 			control: 'boolean',

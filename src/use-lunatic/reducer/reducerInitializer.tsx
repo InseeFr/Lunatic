@@ -33,9 +33,9 @@ const baseState = {
 	isInLoop: false,
 	updatedAt: Date.now(),
 	overview: [],
-	updateBindings: () => {},
+	updateBindings: () => { },
 	executeExpression: <T,>() => null as T,
-	options: { disableFilters: false },
+	options: { disableFilters: false, disableFiltersDescription: true },
 } satisfies LunaticReducerState;
 
 export function reducerInitializer({
@@ -46,6 +46,7 @@ export function reducerInitializer({
 	lastReachedPage = undefined,
 	withOverview = false,
 	disableFilters = false,
+	disableFiltersDescription = true,
 	getReferentiel,
 	onVariableChange,
 	logger,
@@ -57,6 +58,7 @@ export function reducerInitializer({
 	lastReachedPage?: LunaticOptions['lastReachedPage'];
 	withOverview?: LunaticOptions['withOverview'];
 	disableFilters?: LunaticOptions['disableFilters'];
+	disableFiltersDescription?: LunaticOptions['disableFiltersDescription'];
 	getReferentiel?: LunaticOptions['getReferentiel'];
 	onVariableChange: RefObject<LunaticOptions['onVariableChange']>;
 	logger: LunaticLogger;
@@ -65,7 +67,8 @@ export function reducerInitializer({
 		source,
 		data,
 		onVariableChange,
-		disableFilters
+		disableFilters,
+
 	);
 	const pages = checkLoops(createMapPages(source));
 
@@ -149,7 +152,7 @@ export function reducerInitializer({
 		overview: withOverview ? buildOverview(source) : [],
 		updateBindings,
 		executeExpression,
-		options: { disableFilters },
+		options: { disableFilters, disableFiltersDescription },
 	});
 }
 

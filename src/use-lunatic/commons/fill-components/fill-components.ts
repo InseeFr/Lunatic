@@ -16,6 +16,7 @@ import { LunaticLogger } from '../../logger/type';
 
 type FillComponentArgs = {
 	disableFilters?: boolean;
+	disableFiltersDescription?: true;
 	handleChanges: LunaticChangesHandler;
 	executeExpression: LunaticReducerState['executeExpression'];
 	goToPage: LunaticState['goToPage'];
@@ -74,9 +75,18 @@ export function fillComponents(
 	state: FillComponentArgs,
 	parentType?: LunaticComponentDefinition['componentType']
 ): LunaticComponentProps[] {
-	const filledComponents = components.map((component) =>
-		fillComponent(component, state)
-	);
+
+	// Flatmap to directly remove FilterDescription components if disableFiltersDescription is true
+	const filledComponents = components.flatMap((component) => {
+		if (
+			component.componentType === 'FilterDescription' &&
+			state.disableFiltersDescription
+		) {
+			return [];
+		}
+
+		return [fillComponent(component, state)];
+	});
 
 	if (state.disableFilters) {
 		return filledComponents;
@@ -88,16 +98,20 @@ export function fillComponents(
 			(filledComponent.conditionFilter ?? true)
 				? filledComponent
 				: // Replace the component by an empty text component
-					({
-						...filledComponent,
-						label: '',
-						componentType: 'Text',
-					} as LunaticComponentProps)
+				({
+					...filledComponent,
+					label: '',
+					componentType: 'Text',
+				} as LunaticComponentProps)
 		);
 	}
 
 	// Remove filtered component (conditionFilter must be true to keep a component)
+	// Remove filterDescription component if disableFiltersDescription is true
 	return filledComponents.filter(
-		({ conditionFilter }) => conditionFilter ?? true
+		({ conditionFilter, componentType }) =>
+			(state.disableFilters || (conditionFilter ?? true)) &&
+			(componentType !== 'FilterDescription' || !state.disableFiltersDescription)
 	);
 }
+

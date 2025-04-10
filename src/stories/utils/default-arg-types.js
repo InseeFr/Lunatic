@@ -11,7 +11,7 @@ const fields = [
 	'getStoreInfo',
 	'missing',
 	'shortcut',
-	'filterDescription',
+	'disableFiltersDescription',
 	'disabled',
 	'showOverview',
 	'missingStrategy',

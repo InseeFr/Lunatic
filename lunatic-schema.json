@@ -364,6 +364,9 @@
 				},
 				{
 					"$ref": "#/$defs/ComponentAccordion"
+				},
+				{
+					"$ref": "#/$defs/ComponentFilterDescriptionDefinition"
 				}
 			]
 		},
@@ -1030,6 +1033,19 @@
 				"componentType": {
 					"type": "string",
 					"const": "Text"
+				},
+				"label": {
+					"$ref": "#/$defs/VTLExpression"
+				}
+			},
+			"required": ["componentType", "label"]
+		},
+		"ComponentFilterDescriptionDefinition": {
+			"type": "object",
+			"properties": {
+				"componentType": {
+					"type": "string",
+					"const": "FilterDescription"
 				},
 				"label": {
 					"$ref": "#/$defs/VTLExpression"
