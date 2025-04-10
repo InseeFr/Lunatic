@@ -31,3 +31,21 @@ export function between(n: number, min: number, max: number): number {
 export function isNumber(n: unknown): n is number {
 	return typeof n === 'number' && Number.isFinite(n);
 }
+
+/** Check if a value is within an interval.
+ * Both minimum and maximum can be undefined, then we just compare with the defined bounds.
+ */
+export function isNumberInInterval(
+	value: number,
+	min?: number,
+	max?: number
+): boolean {
+	if (
+		(min !== undefined && value < min) ||
+		(max !== undefined && value > max)
+	) {
+		return false;
+	}
+
+	return true;
+}

@@ -43,6 +43,7 @@ export const CustomInputNumber = slottableComponent<CustomProps>(
 			onChange,
 			disabled,
 			readOnly,
+			min,
 			max,
 			decimals,
 			unit,
@@ -71,6 +72,7 @@ export const CustomInputNumber = slottableComponent<CustomProps>(
 					readOnly={!!readOnly}
 					required={!!required}
 					labelId={labelId}
+					min={min}
 					max={max}
 					decimals={decimals}
 					invalid={!!errors}

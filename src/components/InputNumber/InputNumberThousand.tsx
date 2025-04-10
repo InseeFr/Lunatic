@@ -6,6 +6,7 @@ import {
 	type OnValueChange,
 } from 'react-number-format';
 import { inputNumberPropsI18N } from '../../i18n';
+import { isNumberInInterval } from '../../utils/number';
 
 type Props = {
 	id?: string;
@@ -15,6 +16,7 @@ type Props = {
 	readOnly?: boolean;
 	required?: boolean;
 	labelId?: string;
+	min?: number;
 	max?: number;
 	decimals?: number;
 	invalid?: boolean;
@@ -29,6 +31,7 @@ export const InputNumberThousand = ({
 	readOnly,
 	required,
 	labelId,
+	min,
 	max,
 	decimals,
 	invalid,
@@ -45,11 +48,12 @@ export const InputNumberThousand = ({
 	const isAllowed = useCallback(
 		(values: NumberFormatValues) => {
 			const { floatValue } = values;
-			if (Number.isInteger(max) && floatValue && max)
-				return floatValue <= max || false;
-			return true;
+			// we accept empty value
+			if (floatValue === undefined) return true;
+			// check if value is in within the min-max range
+			return isNumberInInterval(floatValue, min, max);
 		},
-		[max]
+		[min, max]
 	);
 
 	// we want to display the user input and its unit on hover
@@ -72,6 +76,7 @@ export const InputNumberThousand = ({
 			required={required}
 			lang="en"
 			isAllowed={isAllowed}
+			allowNegative={min === undefined || min < 0}
 			allowedDecimalSeparators={inputNumberPropsI18N.allDecimalSeparators}
 			decimalSeparator={inputNumberPropsI18N.decimalSeparator}
 			decimalScale={decimals}
