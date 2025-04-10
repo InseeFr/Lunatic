@@ -7,7 +7,6 @@ import { hasComponentType } from '../commons/component';
 import {
 	fillComponent,
 	fillComponents,
-	fillComponentsWithNulls,
 } from '../commons/fill-components/fill-components';
 import { times } from '../../utils/array';
 
@@ -61,7 +60,6 @@ function getChildComponentsWithIteration(
 	},
 	state: State
 ) {
-	// for RosterForLoop only we fill the components without filtering them
 	return {
 		getComponents: (iteration: number) =>
 			fillComponents(
