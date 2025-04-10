@@ -6,6 +6,7 @@ import {
 	type OnValueChange,
 } from 'react-number-format';
 import { inputNumberPropsI18N } from '../../i18n';
+import { isNumberInInterval } from '../../utils/number';
 
 type Props = {
 	id?: string;
@@ -45,8 +46,13 @@ export const InputNumberThousand = ({
 	);
 
 	const isAllowed = useCallback(
-		(values: NumberFormatValues) =>
-			isNumberValueAllowed(values.floatValue, min, max),
+		(values: NumberFormatValues) => {
+			const { floatValue } = values;
+			// we accept empty value
+			if (floatValue === undefined) return true;
+			// check if value is in within the min-max range
+			return isNumberInInterval(floatValue, min, max);
+		},
 		[min, max]
 	);
 
@@ -84,23 +90,3 @@ export const InputNumberThousand = ({
 		/>
 	);
 };
-
-/** Check if the input value is allowed */
-export function isNumberValueAllowed(
-	value?: number,
-	min?: number,
-	max?: number
-): boolean {
-	// we accept undefined value
-	if (value === undefined) return true;
-
-	// check if value is in within the min-max range
-	if (
-		(min !== undefined && value < min) ||
-		(max !== undefined && value > max)
-	) {
-		return false;
-	}
-
-	return true;
-}
