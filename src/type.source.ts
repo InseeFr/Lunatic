@@ -7,11 +7,11 @@
 export type ComponentDefinitionWithPage = ComponentDefinition &
 	(
 		| {
-			page: string;
-		}
+				page: string;
+		  }
 		| {
-			goToPage: string;
-		}
+				goToPage: string;
+		  }
 	);
 export type ComponentDefinition =
 	| ComponentInputDefinition
@@ -75,14 +75,14 @@ export type BlockLoop = ComponentDefinitionBase & {
 } & BlockLoop1;
 export type BlockLoop1 =
 	| {
-		lines: {
-			min: VTLExpression;
-			max: VTLExpression;
-		};
-	}
+			lines: {
+				min: VTLExpression;
+				max: VTLExpression;
+			};
+	  }
 	| {
-		iterations: VTLExpression;
-	};
+			iterations: VTLExpression;
+	  };
 export type ComponentRosterForLoopDefinition = ComponentDefinitionBase & {
 	componentType: 'RosterForLoop';
 	components: ComponentDefinition[];
@@ -111,8 +111,8 @@ export type ComponentTableDefinition = ComponentDefinitionBase & {
 	body: (
 		| ComponentDefinition
 		| {
-			label: VTLExpression;
-		}
+				label: VTLExpression;
+		  }
 	)[][];
 };
 export type ComponentNumberDefinition = ComponentDefinitionBaseWithResponse & {
@@ -236,24 +236,24 @@ export type ComponentSummaryDefinition = ComponentDefinitionBase & {
 };
 export type Variable =
 	| {
-		variableType: 'EXTERNAL';
-		name: string;
-		value: VariableValue;
-	}
+			variableType: 'EXTERNAL';
+			name: string;
+			value: VariableValue;
+	  }
 	| {
-		variableType: 'COLLECTED';
-		name: string;
-		values?: {
-			COLLECTED: VariableValue;
-		};
-	}
+			variableType: 'COLLECTED';
+			name: string;
+			values?: {
+				COLLECTED: VariableValue;
+			};
+	  }
 	| {
-		variableType: 'CALCULATED';
-		name: string;
-		expression: VTLExpression;
-		bindingDependencies?: string[];
-		shapeFrom?: string[] | string;
-	};
+			variableType: 'CALCULATED';
+			name: string;
+			expression: VTLExpression;
+			bindingDependencies?: string[];
+			shapeFrom?: string[] | string;
+	  };
 export type VariableValue = VariableScalarValue | unknown[];
 export type VariableScalarValue = string | number | null;
 
@@ -274,12 +274,12 @@ export type LunaticSource = {
 	cleaning?: {
 		[k: string]: {
 			[k: string]:
-			| string
-			| {
-				expression: string;
-				shapeFrom?: string;
-				isAggregatorUsed: boolean;
-			}[];
+				| string
+				| {
+						expression: string;
+						shapeFrom?: string;
+						isAggregatorUsed: boolean;
+				  }[];
 		};
 	};
 	missingBlock?: {
@@ -287,36 +287,36 @@ export type LunaticSource = {
 	};
 	resizing?: {
 		[k: string]:
-		| {
-			/**
-			 * VTL Expression for size.
-			 */
-			size: string;
-			variables: string[];
-		}
-		| {
-			sizeForLinksVariables:
-			| [string, string]
 			| {
-				xAxisSize: string;
-				yAxisSize: string;
-			};
-			linksVariables: string[];
-		}
-		| {
-			/**
-			 * VTL Expression for size.
-			 */
-			size: string;
-			variables: string[];
-			sizeForLinksVariables:
-			| [string, string]
+					/**
+					 * VTL Expression for size.
+					 */
+					size: string;
+					variables: string[];
+			  }
 			| {
-				xAxisSize: string;
-				yAxisSize: string;
-			};
-			linksVariables: string[];
-		};
+					sizeForLinksVariables:
+						| [string, string]
+						| {
+								xAxisSize: string;
+								yAxisSize: string;
+						  };
+					linksVariables: string[];
+			  }
+			| {
+					/**
+					 * VTL Expression for size.
+					 */
+					size: string;
+					variables: string[];
+					sizeForLinksVariables:
+						| [string, string]
+						| {
+								xAxisSize: string;
+								yAxisSize: string;
+						  };
+					linksVariables: string[];
+			  };
 	};
 	maxPage?: string;
 };
@@ -344,17 +344,17 @@ export type ComponentDefinitionBase = {
 export type Declaration = {
 	id: string;
 	declarationType:
-	| 'INSTRUCTION'
-	| 'COMMENT'
-	| 'HELP'
-	| 'CODECARD'
-	| 'WARNING'
-	| 'STATEMENT';
+		| 'INSTRUCTION'
+		| 'COMMENT'
+		| 'HELP'
+		| 'CODECARD'
+		| 'WARNING'
+		| 'STATEMENT';
 	position:
-	| 'AFTER_QUESTION_TEXT'
-	| 'AFTER_RESPONSE'
-	| 'BEFORE_QUESTION_TEXT'
-	| 'DETACHABLE';
+		| 'AFTER_QUESTION_TEXT'
+		| 'AFTER_RESPONSE'
+		| 'BEFORE_QUESTION_TEXT'
+		| 'DETACHABLE';
 	label: VTLExpression;
 };
 export type VTLScalarExpression = {
@@ -428,32 +428,32 @@ export type SuggesterDefinition = {
 	 */
 	max?: number;
 	queryParser:
-	| {
-		/**
-		 * Search type: word by word search using OR operator.
-		 */
-		type: 'tokenized';
-		/**
-		 * Parameters for tokenized search.
-		 */
-		params: {
-			/**
-			 * Language used for stemming (keeping the root of a word).
-			 */
-			language: 'French' | 'English';
-			/**
-			 * Regular expression pattern to match words.
-			 */
-			pattern: string;
-			/**
-			 * Minimum length for a token to be used in the search.
-			 */
-			min?: number;
-		};
-	}
-	| {
-		type: 'soft';
-	};
+		| {
+				/**
+				 * Search type: word by word search using OR operator.
+				 */
+				type: 'tokenized';
+				/**
+				 * Parameters for tokenized search.
+				 */
+				params: {
+					/**
+					 * Language used for stemming (keeping the root of a word).
+					 */
+					language: 'French' | 'English';
+					/**
+					 * Regular expression pattern to match words.
+					 */
+					pattern: string;
+					/**
+					 * Minimum length for a token to be used in the search.
+					 */
+					min?: number;
+				};
+		  }
+		| {
+				type: 'soft';
+		  };
 	/**
 	 * list of words to exclude from the searching
 	 */

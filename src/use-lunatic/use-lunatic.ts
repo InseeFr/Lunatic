@@ -1,4 +1,3 @@
-
 import { useCallback, useMemo, useReducer } from 'react';
 import {
 	goToPageAction,
@@ -49,8 +48,8 @@ const defaultOptions = {
 	features: DEFAULT_FEATURES,
 	preferences: DEFAULT_PREFERENCES,
 	savingType: COLLECTED,
-	onChange: () => { },
-	onVariableChange: () => { },
+	onChange: () => {},
+	onVariableChange: () => {},
 	management: false,
 	shortcut: false,
 	initialPage: '1' as PageTag,
@@ -60,7 +59,7 @@ const defaultOptions = {
 	// Calculate an overview of every sequence (will be exposed as "overview")
 	withOverview: false,
 	missing: false,
-	missingStrategy: () => { },
+	missingStrategy: () => {},
 	missingShortcut: DEFAULT_SHORTCUT,
 	dontKnowButton: DEFAULT_DONT_KNOW,
 	refusedButton: DEFAULT_REFUSED,

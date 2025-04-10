@@ -33,7 +33,7 @@ const baseState = {
 	isInLoop: false,
 	updatedAt: Date.now(),
 	overview: [],
-	updateBindings: () => { },
+	updateBindings: () => {},
 	executeExpression: <T,>() => null as T,
 	options: { disableFilters: false, disableFiltersDescription: true },
 } satisfies LunaticReducerState;
@@ -67,8 +67,7 @@ export function reducerInitializer({
 		source,
 		data,
 		onVariableChange,
-		disableFilters,
-
+		disableFilters
 	);
 	const pages = checkLoops(createMapPages(source));
 

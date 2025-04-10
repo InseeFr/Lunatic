@@ -107,7 +107,6 @@ export function fillComponents(
 	}
 
 	// Remove filtered component (conditionFilter must be true to keep a component)
-	// Remove filterDescription component if disableFiltersDescription is true
 	return filledComponents.filter(
 		({ conditionFilter, componentType }) =>
 			(state.disableFilters || (conditionFilter ?? true)) &&
