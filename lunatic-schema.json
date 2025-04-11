@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "https://insee.fr/lunatic/survey.schema.json",
 	"title": "Lunatic Source",
-	"description": "Representation of a Lunatic survey unit in the Lunatic Model.",
+	"description": "Representation of a Lunatic questionnaire.",
 	"type": "object",
 	"properties": {
 		"label": {
@@ -39,7 +39,21 @@
 			"additionalProperties": {
 				"type": "object",
 				"additionalProperties": {
-					"type": "string"
+					"oneOf": [
+						{ "type": "string" },
+						{
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"expression": { "type": "string" },
+									"shapeFrom": { "type": "string" },
+									"isAggregatorUsed": { "type": "boolean" }
+								},
+								"required": ["expression", "isAggregatorUsed"]
+							}
+						}
+					]
 				}
 			}
 		},
