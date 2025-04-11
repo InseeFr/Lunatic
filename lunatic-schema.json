@@ -439,7 +439,7 @@
 				"id": {
 					"type": "string"
 				},
-				"mandatory": {
+				"isMandatory": {
 					"type": "boolean"
 				},
 				"missingResponse": {
