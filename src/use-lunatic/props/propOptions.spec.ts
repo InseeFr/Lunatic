@@ -160,5 +160,66 @@ describe('getOptionsProp()', () => {
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
 		});
+		it('should not filter any response (CheckboxGroup) when disableFilters is true', () => {
+			const definition = {
+				...checkboxGroupDefinition,
+				responses: [
+					{
+						label: 'Option 1',
+						response: { name: 'O1' },
+						id: 'id1',
+						conditionFilter: { type: 'VTL', value: 'expression' },
+					},
+				],
+			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+			// ensure interpreted expression is false
+			vi.spyOn(variables, 'run').mockImplementation(() => {
+				return false;
+			});
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger,
+				true // disableFilters = true
+			);
+
+			// Ensure the option is not filtered
+			expect(options).toHaveLength(1);
+		});
+		it('should not filter any option (Radio) when disableFilters is true', () => {
+			const radioDefinition = {
+				id: 'RadioGroup',
+				componentType: 'Radio',
+				options: [
+					{
+						label: 'Option 1',
+						value: 'id1',
+						conditionFilter: { type: 'VTL', value: 'expression' },
+					},
+				],
+			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
+
+			// ensure interpreted expression is false
+			vi.spyOn(variables, 'run').mockImplementation(() => {
+				return false;
+			});
+
+			const options = getOptionsProp(
+				radioDefinition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger,
+				true // disableFilters = true
+			);
+
+			expect(options).toHaveLength(1);
+		});
 	});
 });

@@ -31,7 +31,8 @@ export function getOptionsProp(
 	handleChanges: LunaticChangesHandler,
 	pagerIteration: LunaticState['pager']['iteration'],
 	value: unknown,
-	logger: LunaticLogger
+	logger: LunaticLogger,
+	disableFilters?: boolean
 ) {
 	const iteration = isNumber(pagerIteration) ? [pagerIteration] : undefined;
 	//const iteration = pagerIteration ? [pagerIteration] : undefined;
@@ -39,7 +40,7 @@ export function getOptionsProp(
 	if (definition.componentType === 'CheckboxGroup') {
 		return definition.responses
 			.filter((response) => {
-				if (!response.conditionFilter) {
+				if (disableFilters || !response.conditionFilter) {
 					return true;
 				}
 				try {
@@ -82,7 +83,11 @@ export function getOptionsProp(
 
 	return definition.options
 		.filter((option) => {
-			if (!('conditionFilter' in option) || !option.conditionFilter) {
+			if (
+				disableFilters ||
+				!('conditionFilter' in option) ||
+				!option.conditionFilter
+			) {
 				return true;
 			}
 			try {

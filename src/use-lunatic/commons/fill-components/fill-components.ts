@@ -60,7 +60,8 @@ export const fillComponent = (
 			state.handleChanges,
 			state.pager.iteration,
 			value,
-			state.logger
+			state.logger,
+			state.disableFilters
 		),
 		...getComponentTypeProps(interpretedProps, state),
 		// This is too dynamic to be typed correctly, so we allow any here
