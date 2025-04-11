@@ -4,10 +4,9 @@ import { LunaticComponentProps } from '../type';
 type Props = LunaticComponentProps<'FilterDescription'>;
 
 export function FilterDescription({
-	id,
-	label,
+	...props
 }: LunaticComponentProps<'FilterDescription'>) {
-	return <CustomFilterDescription id={id} label={label} />;
+	return <CustomFilterDescription {...props} />;
 }
 
 export const CustomFilterDescription = slottableComponent<Props>(

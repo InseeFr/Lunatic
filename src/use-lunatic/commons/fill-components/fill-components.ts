@@ -97,19 +97,16 @@ export function fillComponents(
 			(filledComponent.conditionFilter ?? true)
 				? filledComponent
 				: // Replace the component by an empty text component
-					({
-						...filledComponent,
-						label: '',
-						componentType: 'Text',
-					} as LunaticComponentProps)
+				({
+					...filledComponent,
+					label: '',
+					componentType: 'Text',
+				} as LunaticComponentProps)
 		);
 	}
 
 	// Remove filtered component (conditionFilter must be true to keep a component)
 	return filledComponents.filter(
-		({ conditionFilter, componentType }) =>
-			(state.disableFilters || (conditionFilter ?? true)) &&
-			(componentType !== 'FilterDescription' ||
-				!state.disableFiltersDescription)
+		({ conditionFilter }) => conditionFilter ?? true
 	);
 }

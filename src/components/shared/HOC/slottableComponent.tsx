@@ -44,7 +44,7 @@ import type { LunaticComponentProps } from '../../type';
 import type { MarkdownLink } from '../MDLabel/MarkdownLink';
 import type { Accordion } from '../../Accordion/Accordion';
 import type { CustomDatepickerFields } from '../../Datepicker/DatepickerFields';
-import { CustomFilterDescription } from '../../FilterDescription/FilterDescription';
+import type { CustomFilterDescription } from '../../FilterDescription/FilterDescription';
 
 /**
  * Contain the type of every customizable components.
