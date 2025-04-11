@@ -106,6 +106,15 @@ describe('InputNumber', () => {
 		expect(input).toHaveValue('123');
 	});
 
+	it('should handle required', () => {
+		const { container } = render(<InputNumber {...baseProps} required />);
+
+		const input = container.querySelector('input[type="text"]');
+
+		expect(input).toHaveAttribute('required');
+		expect(input).toHaveAttribute('aria-required', 'true');
+	});
+
 	it('renders with unit', () => {
 		const { container } = render(<InputNumber {...baseProps} unit="kg" />);
 
