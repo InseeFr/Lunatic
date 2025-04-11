@@ -71,11 +71,33 @@ export const fillComponent = (
  */
 export function fillComponents(
 	components: LunaticComponentDefinition[],
-	state: FillComponentArgs
+	state: FillComponentArgs,
+	parentType?: LunaticComponentDefinition['componentType']
 ): LunaticComponentProps[] {
-	return components
-		.map((component) => fillComponent(component, state))
-		.filter(
-			({ conditionFilter }) => state.disableFilters || (conditionFilter ?? true)
+	const filledComponents = components.map((component) =>
+		fillComponent(component, state)
+	);
+
+	if (state.disableFilters) {
+		return filledComponents;
+	}
+
+	// For rosterForLoop we want empty cell when the component is filtered
+	if (parentType === 'RosterForLoop') {
+		return filledComponents.map((filledComponent) =>
+			(filledComponent.conditionFilter ?? true)
+				? filledComponent
+				: // Replace the component by an empty text component
+					({
+						...filledComponent,
+						label: '',
+						componentType: 'Text',
+					} as LunaticComponentProps)
 		);
+	}
+
+	// Remove filtered component (conditionFilter must be true to keep a component)
+	return filledComponents.filter(
+		({ conditionFilter }) => conditionFilter ?? true
+	);
 }

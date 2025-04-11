@@ -62,18 +62,22 @@ function getChildComponentsWithIteration(
 ) {
 	return {
 		getComponents: (iteration: number) =>
-			fillComponents(component.components, {
-				...state,
-				handleChanges: createChangeHandlerForIteration(
-					state.handleChanges,
-					iteration
-				),
-				pager: {
-					...state.pager,
-					iteration: iteration,
-					subPage: 0, // Fake a subpage to simulate an iteration
+			fillComponents(
+				component.components,
+				{
+					...state,
+					handleChanges: createChangeHandlerForIteration(
+						state.handleChanges,
+						iteration
+					),
+					pager: {
+						...state.pager,
+						iteration: iteration,
+						subPage: 0, // Fake a subpage to simulate an iteration
+					},
 				},
-			}),
+				component.componentType
+			),
 	};
 }
 
