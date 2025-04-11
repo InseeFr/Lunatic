@@ -142,22 +142,22 @@ export type LunaticReducerState = {
 	pager: LunaticPager;
 	pages: {
 		[key: number | string]:
-		| {
-			components: LunaticSource['components'];
-			isLoop: false;
-			iterations?: undefined;
-			loopDependencies?: undefined;
-			subPages?: undefined;
-		}
-		| {
-			components: LunaticSource['components'];
-			isLoop: true;
-			iterations: VTLScalarExpression;
-			/** Variables affecting this loop. */
-			loopDependencies: string[];
-			/** List of child pages (ex: ['20.1', '20.2'] */
-			subPages: string[];
-		};
+			| {
+					components: LunaticSource['components'];
+					isLoop: false;
+					iterations?: undefined;
+					loopDependencies?: undefined;
+					subPages?: undefined;
+			  }
+			| {
+					components: LunaticSource['components'];
+					isLoop: true;
+					iterations: VTLScalarExpression;
+					/** Variables affecting this loop. */
+					loopDependencies: string[];
+					/** List of child pages (ex: ['20.1', '20.2'] */
+					subPages: string[];
+			  };
 	};
 	/** Run an expression using the value from the state. */
 	executeExpression: <T = unknown>(

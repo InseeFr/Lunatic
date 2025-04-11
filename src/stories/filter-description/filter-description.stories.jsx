@@ -22,8 +22,11 @@ export default stories;
 const Template = (args) => <Orchestrator {...args} />;
 export const Default = Template.bind({});
 
-
-Default.args = { id: 'filter-description',disableFiltersDescription: false, source };
+Default.args = {
+	id: 'filter-description',
+	disableFiltersDescription: false,
+	source,
+};
 
 export const Options = Template.bind({});
 

@@ -75,7 +75,6 @@ export function fillComponents(
 	state: FillComponentArgs,
 	parentType?: LunaticComponentDefinition['componentType']
 ): LunaticComponentProps[] {
-
 	// Flatmap to directly remove FilterDescription components if disableFiltersDescription is true
 	const filledComponents = components.flatMap((component) => {
 		if (
@@ -98,11 +97,11 @@ export function fillComponents(
 			(filledComponent.conditionFilter ?? true)
 				? filledComponent
 				: // Replace the component by an empty text component
-				({
-					...filledComponent,
-					label: '',
-					componentType: 'Text',
-				} as LunaticComponentProps)
+					({
+						...filledComponent,
+						label: '',
+						componentType: 'Text',
+					} as LunaticComponentProps)
 		);
 	}
 
@@ -110,7 +109,7 @@ export function fillComponents(
 	return filledComponents.filter(
 		({ conditionFilter, componentType }) =>
 			(state.disableFilters || (conditionFilter ?? true)) &&
-			(componentType !== 'FilterDescription' || !state.disableFiltersDescription)
+			(componentType !== 'FilterDescription' ||
+				!state.disableFiltersDescription)
 	);
 }
-
