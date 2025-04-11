@@ -97,11 +97,11 @@ export function fillComponents(
 			(filledComponent.conditionFilter ?? true)
 				? filledComponent
 				: // Replace the component by an empty text component
-				({
-					...filledComponent,
-					label: '',
-					componentType: 'Text',
-				} as LunaticComponentProps)
+					({
+						...filledComponent,
+						label: '',
+						componentType: 'Text',
+					} as LunaticComponentProps)
 		);
 	}
 
