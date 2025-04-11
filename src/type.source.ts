@@ -33,7 +33,8 @@ export type ComponentDefinition =
 	| ComponentPairWiseLinksDefinition
 	| ComponentSummaryDefinition
 	| ComponentText
-	| ComponentAccordion;
+	| ComponentAccordion
+	| ComponentFilterDescriptionDefinition;
 export type ComponentInputDefinition = ComponentDefinitionBaseWithResponse & {
 	componentType: 'Input' | 'Textarea';
 	maxLength?: number;
@@ -390,6 +391,10 @@ export type ComponentAccordion = {
 		label: VTLExpression;
 		body: VTLExpression;
 	}[];
+};
+export type ComponentFilterDescriptionDefinition = {
+	componentType: 'FilterDescription';
+	label: VTLExpression;
 };
 export type SuggesterDefinition = {
 	/**

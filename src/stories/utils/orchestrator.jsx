@@ -101,6 +101,7 @@ function OrchestratorForStories({
 	source,
 	data,
 	disableFilters = false,
+	disableFiltersDescription = true,
 	management = false,
 	shortcut = false,
 	activeControls = false,
@@ -114,7 +115,6 @@ function OrchestratorForStories({
 	preferences,
 	slots,
 	showOverview = false,
-	filterDescription = true,
 	getReferentiel,
 	dontKnowButton,
 	refusedButton,
@@ -146,7 +146,8 @@ function OrchestratorForStories({
 		initialPage,
 		features,
 		preferences,
-		disableFilters,
+		disableFilters, 
+		disableFiltersDescription,
 		onChange: onLogChange,
 		autoSuggesterLoading,
 		getReferentiel,
@@ -220,7 +221,6 @@ function OrchestratorForStories({
 						components={components}
 						componentProps={() => ({
 							errors: errorActive[pageTag],
-							filterDescription: filterDescription,
 							disabled: disabled,
 							readOnly: readOnly,
 						})}

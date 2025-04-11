@@ -179,6 +179,7 @@ export type LunaticReducerState = {
 	) => unknown;
 	options: {
 		disableFilters?: boolean;
+		disableFiltersDescription?: boolean;
 	};
 };
 
@@ -186,6 +187,10 @@ export type LunaticReducerState = {
 export type LunaticOptions = {
 	/** Ignore filters. (default: `false`) */
 	disableFilters?: boolean;
+
+	/** Disable filters description. (default: `true`) */
+	disableFiltersDescription?: boolean;
+
 	/** Enable VTL and Markdown support. */
 	features?: ('MD' | 'VTL')[];
 	preferences?: ['COLLECTED'];

@@ -44,6 +44,7 @@ const DEFAULT_REFUSED = D.RF;
 
 const defaultOptions = {
 	disableFilters: false,
+	disableFiltersDescription: true,
 	features: DEFAULT_FEATURES,
 	preferences: DEFAULT_PREFERENCES,
 	savingType: COLLECTED,
@@ -83,6 +84,7 @@ export function useLunatic(
 	const options = mergeDefault(argOptions, defaultOptions);
 	const {
 		disableFilters,
+		disableFiltersDescription,
 		management,
 		missing,
 		missingStrategy,
@@ -198,6 +200,7 @@ export function useLunatic(
 
 	const components = fillComponents(getComponentsFromState(state), {
 		disableFilters,
+		disableFiltersDescription,
 		handleChanges,
 		preferences,
 		goToPage,

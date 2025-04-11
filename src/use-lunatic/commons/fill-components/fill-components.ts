@@ -16,6 +16,7 @@ import { LunaticLogger } from '../../logger/type';
 
 type FillComponentArgs = {
 	disableFilters?: boolean;
+	disableFiltersDescription?: true;
 	handleChanges: LunaticChangesHandler;
 	executeExpression: LunaticReducerState['executeExpression'];
 	goToPage: LunaticState['goToPage'];
@@ -74,9 +75,17 @@ export function fillComponents(
 	state: FillComponentArgs,
 	parentType?: LunaticComponentDefinition['componentType']
 ): LunaticComponentProps[] {
-	const filledComponents = components.map((component) =>
-		fillComponent(component, state)
-	);
+	// Flatmap to directly remove FilterDescription components if disableFiltersDescription is true
+	const filledComponents = components.flatMap((component) => {
+		if (
+			component.componentType === 'FilterDescription' &&
+			state.disableFiltersDescription
+		) {
+			return [];
+		}
+
+		return [fillComponent(component, state)];
+	});
 
 	if (state.disableFilters) {
 		return filledComponents;
