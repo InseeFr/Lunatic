@@ -57,7 +57,9 @@ export class LunaticVariablesStore {
 		source: LunaticSource,
 		data: LunaticData,
 		changeHandler: RefObject<LunaticOptions['onVariableChange']>,
+		// Disable cleaning
 		disableCleaning?: boolean,
+		// Do not delay resizing / cleaning
 		autoCommit?: boolean
 	) {
 		const store = new LunaticVariablesStore();

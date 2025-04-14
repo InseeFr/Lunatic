@@ -49,6 +49,7 @@ export function resizingBehaviour(
 					if (!Array.isArray(value) || value.length !== newSize) {
 						return resizeArrayVariable(value, newSize, null);
 					}
+					return value;
 				},
 				{
 					cause: 'resizing',

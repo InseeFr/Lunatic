@@ -6,7 +6,7 @@
 	"lunaticModelVersion": "2.3.1",
 	"generatingDate": "28-03-2023 12:57:35",
 	"missing": false,
-	"pagination": "question",
+	"pagination": "sequence",
 	"maxPage": "2",
 	"label": {
 		"value": "\"Resizing with cleaning\"",

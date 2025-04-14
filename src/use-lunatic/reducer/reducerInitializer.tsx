@@ -50,7 +50,6 @@ export function reducerInitializer({
 	getReferentiel,
 	onVariableChange,
 	logger,
-	autoCommit = false,
 }: {
 	source: LunaticSource;
 	data: LunaticData;
@@ -63,14 +62,13 @@ export function reducerInitializer({
 	getReferentiel?: LunaticOptions['getReferentiel'];
 	onVariableChange: RefObject<LunaticOptions['onVariableChange']>;
 	logger: LunaticLogger;
-	autoCommit?: boolean;
 }): LunaticReducerState {
 	const variables = LunaticVariablesStore.makeFromSource(
 		source,
 		data,
 		onVariableChange,
 		disableFilters,
-		autoCommit
+		source.pagination !== 'question'
 	);
 	const pages = checkLoops(createMapPages(source));
 

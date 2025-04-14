@@ -124,7 +124,6 @@ describe('lunatic-variables-store', () => {
 		expect(variables.get('FIRSTNAME')).toEqual('Jane');
 	});
 
-
 	describe('event listener', () => {
 		it('should trigger onChange', () => {
 			variables.set('FIRSTNAME', 'John');

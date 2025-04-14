@@ -230,7 +230,7 @@ describe('use-lunatic()', () => {
 	describe('cleaning', () => {
 		it('should handle cleaning in a loop', () => {
 			const { result } = renderHook(() =>
-				useLunatic(sourceCleaningLoop as any, undefined, { autoCommit: true })
+				useLunatic(sourceCleaningLoop as any, undefined)
 			);
 			act(() => {
 				result.current.handleChanges([
@@ -269,7 +269,6 @@ describe('use-lunatic()', () => {
 			const { result } = renderHook(() =>
 				useLunatic(sourceCleaningResizing as any, undefined, {
 					onChange: spy,
-					autoCommit: true,
 				})
 			);
 			act(() => result.current.handleChanges([{ name: 'NB', value: 3 }]));
