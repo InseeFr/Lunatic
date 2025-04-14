@@ -14,7 +14,7 @@ import { getIterationsProp } from '../../props/propIterations';
 import { getOptionsProp } from '../../props/propOptions';
 import { LunaticLogger } from '../../logger/type';
 
-type FillComponentArgs = {
+export type FillComponentArgs = {
 	disableFilters?: boolean;
 	disableFiltersDescription?: true;
 	handleChanges: LunaticChangesHandler;
