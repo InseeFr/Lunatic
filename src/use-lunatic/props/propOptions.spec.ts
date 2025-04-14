@@ -25,6 +25,23 @@ describe('getOptionsProp()', () => {
 			},
 		],
 	} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+	const radioDefinition = {
+		id: 'RadioGroup',
+		componentType: 'Radio',
+		response: { name: 'RADIO' },
+		options: [
+			{
+				label: 'Option 1',
+				value: 'id1',
+			},
+			{
+				label: 'Option 2',
+				value: 'id2',
+			},
+		],
+	} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
 	let mockChange: LunaticChangesHandler;
 	const mockLogger = vi.fn();
 
@@ -100,6 +117,68 @@ describe('getOptionsProp()', () => {
 				{ name: 'O2', value: false },
 			]);
 		});
+		it('should filter responses (CheckboxGroup) with conditionFilter evaluated to false', () => {
+			const definition = {
+				...checkboxGroupDefinition,
+				responses: [
+					{
+						label: 'Option 1',
+						response: { name: 'O1' },
+						id: 'id1',
+						conditionFilter: { type: 'VTL', value: 'false' },
+					},
+					{
+						label: 'Option 2',
+						response: { name: 'O2' },
+						id: 'id2',
+						conditionFilter: { type: 'VTL', value: 'true' },
+					},
+				],
+			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger
+			);
+
+			// First option should be filtered out since its conditionFilter is evaluated to false
+			expect(options).toHaveLength(1);
+			expect(options[0].label).toBe('Option 2');
+		});
+		it('should filter options (Radio) with conditionFilter evaluated to false', () => {
+			const definition = {
+				...radioDefinition,
+				options: [
+					{
+						label: 'Option 1',
+						value: 'id1',
+						conditionFilter: { type: 'VTL', value: 'false' },
+					},
+					{
+						label: 'Option 2',
+						value: 'id2',
+						conditionFilter: { type: 'VTL', value: 'true' },
+					},
+				],
+			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger
+			);
+
+			// First option should be filtered out since its conditionFilter is evaluated to false
+			expect(options).toHaveLength(1);
+			expect(options[0].label).toBe('Option 2');
+		});
 		it('should not filter response (checkboxGroup) when its conditionFilter evaluation fails', () => {
 			const definition = {
 				...checkboxGroupDefinition,
@@ -132,8 +211,7 @@ describe('getOptionsProp()', () => {
 		});
 		it('should not filter option (radio) when its conditionFilter evaluation fails', () => {
 			const definition = {
-				id: 'RadioGroup',
-				componentType: 'Radio',
+				...radioDefinition,
 				options: [
 					{
 						label: 'Option 1',
@@ -158,6 +236,66 @@ describe('getOptionsProp()', () => {
 			);
 
 			// Ensure the option is not filtered
+			expect(options).toHaveLength(1);
+		});
+		it('should not filter any response (CheckboxGroup) when disableFilters is true', () => {
+			const definition = {
+				...checkboxGroupDefinition,
+				responses: [
+					{
+						label: 'Option 1',
+						response: { name: 'O1' },
+						id: 'id1',
+						conditionFilter: { type: 'VTL', value: 'expression' },
+					},
+				],
+			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+			// ensure interpreted expression is false
+			vi.spyOn(variables, 'run').mockImplementation(() => {
+				return false;
+			});
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger,
+				true // disableFilters = true
+			);
+
+			// Ensure the option is not filtered
+			expect(options).toHaveLength(1);
+		});
+		it('should not filter any option (Radio) when disableFilters is true', () => {
+			const definition = {
+				...radioDefinition,
+				options: [
+					{
+						label: 'Option 1',
+						value: 'id1',
+						conditionFilter: { type: 'VTL', value: 'expression' },
+					},
+				],
+			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
+
+			// ensure interpreted expression is false
+			vi.spyOn(variables, 'run').mockImplementation(() => {
+				return false;
+			});
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger,
+				true // disableFilters = true
+			);
+
 			expect(options).toHaveLength(1);
 		});
 	});
