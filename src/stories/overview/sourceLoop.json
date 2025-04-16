@@ -331,7 +331,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 1. \" || \"Vous allez bien ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Subsequence",
@@ -428,7 +428,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 2. \" || \"Êtes-vous satisfait de votre logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Sequence",
@@ -484,7 +484,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 3. \" || \"Combien d'habitants dans votre logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"paginatedLoop": false,
@@ -559,7 +559,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 4. \" || \" \" || if (T_NBHAB = 1) then \"Votre prénom : \" else (if ( not(isnull(T_PRENOM)) and T_PRENOM=PRENOMREF ) then \"Votre prénom : \" else ( if (isnull(PRENOMREFB) and isnull(T_PRENOM)) then \"Prénom (commencez par votre prénom) : \" else \"Prénom : \")) "
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 40
 				}
 			],
@@ -658,7 +658,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 5. \" || \"Un petit commentaire sur cette composition de logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 249
 		},
 		{
@@ -772,7 +772,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 6. \" || \"Quel est \" || if (PRENOM = PRENOMREF) then \"votre sexe ?\" else \"le sexe de \" || PRENOM || \" ?\" "
 					},
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"depth": 1,
@@ -873,7 +873,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 7. \" || \"Quelle est la date de naissance de \" || PRENOM || \" ?\" "
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Subsequence",
@@ -942,7 +942,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 8. \" || \"Des remarques pour \" || PRENOM "
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 249
 				}
 			],
@@ -1064,7 +1064,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 9. \" || \"Super question pour \" || PRENOM "
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 249
 				},
 				{
@@ -1134,7 +1134,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 10. \" || \"Encore une question pour \" || PRENOM "
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 249
 				},
 				{
@@ -1188,7 +1188,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 11. \" || \"Autre super question pour \" || PRENOM "
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 249
 				}
 			],
@@ -1266,7 +1266,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 12. \" || \"Avez-vous des remarques concernant l'enquête ou des commentaires ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 2000
 		}
 	],

@@ -41,7 +41,7 @@
 		{
 			"id": "l0v2t2lc",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"min": 1,
 			"max": 20,
@@ -128,7 +128,7 @@
 				{
 					"id": "l0v3g11i",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"maxLength": 40,
 					"label": {
@@ -276,7 +276,7 @@
 				{
 					"id": "l0v4b34m",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.2",
 					"label": {
 						"value": "\"➡ 3. \" || \"Quel est \" || if (PRENOM = PRENOMREF) then \"votre sexe ?\" else \"le sexe de \" || PRENOM || \" ?\"",
@@ -313,7 +313,7 @@
 				{
 					"id": "l0v4oi1v",
 					"componentType": "Datepicker",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.3",
 					"min": "1900-01-01",
 					"max": "2022-03-17",
@@ -353,7 +353,7 @@
 				{
 					"id": "l11z2too",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.4",
 					"label": {
 						"value": "\"➡ 5. \" || \"Vous n’avez pas indiqué de date de naissance, pouvez-vous indiquer \" || if (PRENOM = PRENOMREF) then \" votre âge ?\" else \"l’âge de \" || PRENOM || \" ?\"",
@@ -449,7 +449,7 @@
 				{
 					"id": "l11zznh4",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.5",
 					"label": {
 						"value": "\"➡ 6. \" || if (PRENOM = PRENOMREF) then \"Où êtes-vous né\"|| LIB_E || \" ?\" else \"Où est né\" || LIB_E || \" \" || PRENOM || \" ?\"",
@@ -512,7 +512,7 @@
 				{
 					"id": "l120kmks",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.6",
 					"label": {
 						"value": "\"➡ 7. \" || \"Dans quel département \" || if (PRENOM = PRENOMREF) then \"êtes-vous né\" || LIB_E || \" ?\" else \"est né\" || LIB_E || \" \" || PRENOM || \" ?\"",
@@ -574,7 +574,7 @@
 				{
 					"id": "l120lqns",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.7",
 					"label": {
 						"value": "\"➡ 8. \" || \"Dans quel pays \" || if(PRENOM = PRENOMREF) then \"êtes-vous né\" || LIB_E || \" ?\" else \"est né\"|| LIB_E || \" \" || PRENOM || \" ?\"",
@@ -719,7 +719,7 @@
 				{
 					"id": "l121ftlg",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.9",
 					"label": {
 						"value": "\"➡ 10. \" || \"Quelle est \" || if (PRENOM = PRENOMREF) then \"votre nationalité étrangère ?\" else \"la nationalité étrangère de \" || PRENOM || \" ?\"",
@@ -822,7 +822,7 @@
 				{
 					"id": "l1265ml0",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.11",
 					"label": {
 						"value": "\"➡ 11. \" || (if (PRENOM = PRENOMREF) then \"Depuis votre naissance, avez-vous\" else \"Depuis sa naissance, \" || PRENOM || \" a-t-\" || LIB_PR ) || \" vécu au moins un an sans interruption à l’étranger ?\"",
@@ -869,7 +869,7 @@
 				{
 					"id": "l12b8hbj",
 					"componentType": "Datepicker",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.12",
 					"min": "1900-01",
 					"max": "2022-03",
@@ -934,7 +934,7 @@
 				{
 					"id": "l126og4z",
 					"componentType": "Datepicker",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.13",
 					"min": "1900-01",
 					"max": "2022-03",
@@ -999,7 +999,7 @@
 				{
 					"id": "l1uxyne3",
 					"componentType": "InputNumber",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.14",
 					"min": 0,
 					"max": 120,
@@ -1045,7 +1045,7 @@
 				{
 					"id": "l127ghn9",
 					"componentType": "Datepicker",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.15",
 					"min": "1900",
 					"max": "2022",
@@ -1117,7 +1117,7 @@
 				{
 					"id": "l1283pqp",
 					"componentType": "InputNumber",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4.16",
 					"min": 0,
 					"max": 120,
@@ -1245,7 +1245,7 @@
 				{
 					"id": "l13nj6s2",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "5.2",
 					"label": {
 						"value": "\"➡ 17. \" || (if (PRENOM = PRENOMREF) then \"Vivez-vous\" else PRENOM || \" vit-\" || LIB_PR ) || \" aussi dans un autre logement ?\"",
@@ -1306,7 +1306,7 @@
 				{
 					"id": "l13nyqwe",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "5.3",
 					"label": {
 						"value": "\"➡ 18. \" || \"Combien de temps \" || if (PRENOM = PRENOMREF) then \"vivez vous dans le logement situé à l’adresse \" || ADR || \" ?\" else PRENOM || \" vit-\" || LIB_PR || \" dans le logement situé à l’adresse \" || ADR || \" ?\"",
@@ -1456,7 +1456,7 @@
 				{
 					"id": "l13on6tn",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "5.5",
 					"label": {
 						"value": "\"➡ 20. \" || if (PRENOM = PRENOMREF) then \"L’autre logement dans lequel vous vivez est-il ... ?\" else \"Pour \" || PRENOM || \", l’autre logement dans lequel \" || LIB_PR || \" vit, est-il ... ?\"",
@@ -1563,7 +1563,7 @@
 				{
 					"id": "l13oux5e",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "5.6",
 					"label": {
 						"value": "\"➡ 21. \" || (if (PRENOM = PRENOMREF) then \"Etes-vous\" else PRENOM || \" est-\" ||LIB_PR ) || \" en résidence alternée entre ses deux parents ?\"",
@@ -1607,7 +1607,7 @@
 				{
 					"id": "l13pabqu",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "5.7",
 					"label": {
 						"value": "\"➡ 22. \" || (if (PRENOM = PRENOMREF) then \"Où avez-vous\" else \"Où \" || PRENOM || \" a-t-\" || LIB_PR ) || \" dormi la nuit derière ?\"",
@@ -1676,7 +1676,7 @@
 				{
 					"id": "l13pbxr1",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "5.8",
 					"label": {
 						"value": "\"➡ 23. \" || (if (PRENOM = PRENOMREF) then \"Pour vous\" else \"Pour \" || PRENOM ) || \", le logement situé à l’adresse \" || ADR || \" est-il ... ?\"",
@@ -1773,7 +1773,7 @@
 				{
 					"id": "l13pyw1k",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "5.9",
 					"label": {
 						"value": "\"➡ 24. \" || if (PRENOM = PRENOMREF) then \"L’autre logement dans lequel vous vivez est-il ... ?\" else \"Pour \" || PRENOM || \", l’autre logement dans lequel \" || LIB_PR || \" vit, est-il ... ?\"",
@@ -1881,7 +1881,7 @@
 				{
 					"id": "l13q9a24",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "5.10",
 					"label": {
 						"value": "\"➡ 25. \" || \"L’autre logement \" || (if (PRENOM = PRENOMREF) then \"dans lequel vous vivez\" else \"où vit \" || PRENOM ) || \" est-il une chambre dans une structure collective (internat, résidence étudiante, foyer de l’enfance, foyer de jeunes travailleurs) ?\"",
@@ -1919,7 +1919,7 @@
 				{
 					"id": "l13qc9n8",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "5.11",
 					"label": {
 						"value": "\"➡ 26. \" || \"De quelle structure s’agit-il ?\"",

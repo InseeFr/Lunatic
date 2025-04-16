@@ -40,7 +40,7 @@
 		{
 			"id": "radio",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"label": {
 				"value": "\"Disabled or enabled!\"",
@@ -74,7 +74,7 @@
 		{
 			"id": "radio1",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"readOnly": { "value": "DISABLED_SEXE", "type": "VTL" },
 			"label": {
@@ -109,7 +109,7 @@
 		{
 			"id": "radio3",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"label": {
 				"value": "\"Disabled or enabled!\"",
@@ -193,7 +193,7 @@
 		{
 			"id": "radio",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"Disabled or enabled!\"",
@@ -262,7 +262,7 @@
 		{
 			"id": "radio",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"Disabled or enabled!\"",

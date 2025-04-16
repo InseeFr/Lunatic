@@ -87,7 +87,7 @@
 		{
 			"id": "kanyduey",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"maxLength": 255,
 			"label": {
@@ -120,7 +120,7 @@
 		{
 			"id": "kzfdehqy",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"maxLength": 255,
 			"label": {
@@ -145,7 +145,7 @@
 		{
 			"id": "kzfdsuhw",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"maxLength": 255,
 			"label": {
@@ -170,7 +170,7 @@
 		{
 			"id": "kanye45b",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"maxLength": 255,
 			"label": {
@@ -203,7 +203,7 @@
 		{
 			"id": "kzfds450",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "7",
 			"maxLength": 255,
 			"label": {
@@ -228,7 +228,7 @@
 		{
 			"id": "kzfdnpeb",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"maxLength": 255,
 			"label": {
@@ -253,7 +253,7 @@
 		{
 			"id": "kzwo41pm",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"maxLength": 255,
 			"label": {
@@ -278,7 +278,7 @@
 		{
 			"id": "kanywetv",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"maxLength": 255,
 			"label": {
@@ -360,7 +360,7 @@
 		{
 			"id": "kanyscwo",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "12",
 			"maxLength": 255,
 			"label": {
@@ -411,7 +411,7 @@
 		{
 			"id": "kanz8hgh",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "13",
 			"maxLength": 255,
 			"label": {
@@ -497,7 +497,7 @@
 		{
 			"id": "kao1aya7",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "15",
 			"maxLength": 255,
 			"label": {
@@ -551,7 +551,7 @@
 		{
 			"id": "kanyicbv",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "16",
 			"maxLength": 255,
 			"label": {
@@ -584,7 +584,7 @@
 		{
 			"id": "kanyu00b",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "17",
 			"maxLength": 255,
 			"label": {
@@ -638,7 +638,7 @@
 		{
 			"id": "kanz18h6",
 			"componentType": "CheckboxOne",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "18",
 			"label": {
 				"value": "\"➡ 14. \" || \"Q11 saut de lignes dans les modalités de réponses (ne marche pas je crois)\"",

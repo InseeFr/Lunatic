@@ -3,7 +3,7 @@
 		{
 			"id": "checkboxboolean",
 			"componentType": "CheckboxBoolean",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"label": {
 				"value": "\"checkboxBoolean component (checked: true, unchecked: false)\"",

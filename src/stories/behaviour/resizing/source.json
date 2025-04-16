@@ -201,7 +201,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 1. \" || \"NB\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"bindingDependencies": ["NB"],
 			"min": 0,
 			"response": {
@@ -313,7 +313,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 2. \" || \"prénom\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 249,
 					"declarations": [
 						{
@@ -488,7 +488,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 3. \" || \"Age de l’individu : \" || PRENOM"
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "HELP",
@@ -639,7 +639,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 4. \" || \"divers\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 249
 		},
 		{
@@ -744,7 +744,7 @@
 				"type": "VTL|MD",
 				"value": "\"Avez-vous des remarques concernant l'enquête ou des commentaires ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 2000
 		}
 	],

@@ -7464,7 +7464,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 1. \" || \"Confirmez-vous que vous habitez toujours à l’adresse suivante : \" || ADRESSE || \" ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Input",
@@ -7493,7 +7493,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 2. \" || \"Numéro de voie :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 10,
 			"declarations": [
 				{
@@ -7568,7 +7568,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 3. \" || \"Libellé de la voie :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 50,
 			"declarations": [
 				{
@@ -7609,7 +7609,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 4. \" || \"Complément d’adresse :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 50,
 			"declarations": [
 				{
@@ -7666,7 +7666,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 5. \" || \"Code postal :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 5,
 			"declarations": [
 				{
@@ -7723,7 +7723,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 6. \" || \"Commune :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 100
 		},
 		{
@@ -7809,7 +7809,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 7. \" || \"Connaissez-vous le nom de la ou des personnes qui vous ont succédé dans le logement situé à l’adresse suivante : \" || ADRESSE || \" ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Input",
@@ -7846,7 +7846,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 8. \" || \"Nom :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 40,
 			"declarations": [
 				{
@@ -7895,7 +7895,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 9. \" || \"Prénom :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 20
 		},
 		{
@@ -7933,7 +7933,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 10. \" || \"Nom d’un éventuel deuxième occupant :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 40
 		},
 		{
@@ -7971,7 +7971,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 11. \" || \"Prénom d’un éventuel deuxième occupant :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 20
 		},
 		{
@@ -8009,7 +8009,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 12. \" || \"Pouvez-vous indiquer un numéro de téléphone \" || if (isnull(NOMNVOCC2) and isnull(PRENOMNVOCC2)) then \"de l’occupant du logement ?\" else \"des occupants du logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 10,
 			"declarations": [
 				{
@@ -8058,7 +8058,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 13. \" || \"Pouvez-vous indiquer un mail \" || if (isnull(NOMNVOCC2) and isnull(PRENOMNVOCC2)) then \"de l’occupant du logement ?\" else \"des occupants du logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 249
 		},
 		{
@@ -8183,7 +8183,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 14. \" || \"Au total, en vous comptant, combien de personnes habitent dans ce logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -8371,7 +8371,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 15. \" || \" \" || if (isnull(NBHAB) or cast(NBHAB,integer)=1) then \"Votre prénom : \" else (if ( not(isnull(G_PRENOM)) and G_PRENOM=PRENOMREF ) then \"Votre prénom : \" else ( if (isnull(PRENOMREF) and isnull(G_PRENOM)) then \"Prénom (commencez par votre prénom) : \" else \"Prénom : \"))"
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 20
 				}
 			],
@@ -8494,7 +8494,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 16. \" || \"Quel est \" || if (PRENOM=PRENOMREF) then \"votre sexe ?\" else \"le sexe de \" || PRENOM || \" ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Datepicker",
@@ -8570,7 +8570,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 17. \" || \"Quelle est \" || if (PRENOM=PRENOMREF) then \"votre date de naissance ?\" else \"la date de naissance de \" || PRENOM ||\" ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"bindingDependencies": [
 						"PRENOM",
 						"PRENOMREF",
@@ -8642,7 +8642,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 18. \" || \"Vous n’avez pas indiqué de date de naissance, pouvez-vous indiquer la tranche d’âge dans laquelle \" || if (PRENOM=PRENOMREF) then \"vous vous situez ?\" else \"se situe\" || \" \" || PRENOM || \" ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -8706,7 +8706,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 19. \" || \"Où \"|| if (PRENOM=PRENOMREF) then \"êtes-vous né\" || LIB_FEM || \" ?\" else \"est né\" || LIB_FEM || \" \" || PRENOM || \" ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "HELP",
@@ -8822,7 +8822,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 20. \" || \"Dans quel département \"|| if (PRENOM=PRENOMREF) then \"êtes-vous né\" || LIB_FEM || \" ?\" else \"est né\" || LIB_FEM || \" \" || PRENOM || \" ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -8885,7 +8885,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 21. \" || \"Dans quel pays \"|| if (PRENOM=PRENOMREF) then \"êtes-vous né\" || LIB_FEM || \" ?\" else \"est né\" || LIB_FEM || \" \" || PRENOM || \" ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -9066,7 +9066,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 23. \" || \"Quelle est \"|| if (PRENOM=PRENOMREF) then \"votre nationalité étrangère ?\" else \"la nationalité étrangère de \" || PRENOM || \" ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -9263,7 +9263,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 24. \" || \"Qui est \"|| PRENOM || \" pour vous ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -9341,7 +9341,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 25. \" || if (PRENOM=PRENOMREF) then \"Vivez-vous en couple ?\" else PRENOM || \" vit-\" || LIB_SUJET || \" en couple ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "CheckboxGroup",
@@ -9589,7 +9589,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 27. \" || (if (INDENF=\"1\") then \"En dehors des enfants décrits précédemment, accueillez-vous \" else \"Accueillez-vous \") || \"un ou plusieurs enfants au titre du droit de visite et d’hébergement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -9663,7 +9663,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 28. \" || \"Combien d’enfants accueillez-vous au titre du droit de visite et d’hébergement  ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -9850,7 +9850,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 30. \" || if (PRENOM=PRENOMREF) then \"Vivez-vous uniquement dans ce logement ou aussi dans un autre logement ?\" else PRENOM || \" vit-\" || LIB_SUJET || \" uniquement dans ce logement ou aussi dans un autre logement ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "HELP",
@@ -9927,7 +9927,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 31. \" || if (PRENOM=PRENOMREF) then \"Vous vivez dans le logement situé à l’adresse : \" || ADRCOLLC || \" ... ?\" else PRENOM || \" vit dans ce logement situé à l’adresse : \" || ADRCOLLC || \" ... ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -10014,7 +10014,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 32. \" || if (PRENOM=PRENOMREF) then \"Pour vous, ce logement est... ?\" else \"Pour \" || PRENOM || \", ce logement est... ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -10113,7 +10113,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 33. \" || if (PRENOM=PRENOMREF) then \"Pour vous, l’autre logement où vous vivez est... ?\" else \"Pour \" || PRENOM || \", l’autre logement où \" || LIB_SUJET || \" vit est... ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -10198,7 +10198,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 34. \" || if (PRENOM=PRENOMREF) then \"Êtes-vous en garde alternée entre vos deux parents ?\" else PRENOM || \" est-\" || LIB_SUJET || \" en garde alternée entre ses deux parents ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -10265,7 +10265,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 35. \" || if (PRENOM=PRENOMREF) then \"Où avez-vous dormi la nuit dernière ?\" else \"Où \" || PRENOM || \" a-t-\" || LIB_SUJET || \" dormi la nuit dernière ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -10335,7 +10335,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 36. \" || if (PRENOM=PRENOMREF) then \"À propos de cet autre logement dans lequel vous vivez, s’agit-il d’une chambre dans une structure collective ?\" else \"À propos de cet autre logement dans lequel vit \" || PRENOM || \", s’agit-il d’une chambre dans une structure collective ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -10434,7 +10434,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 37. \" || \"De quelle structure s’agit-il ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "HELP",
@@ -10651,7 +10651,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 38. \" || if (PRENOM=PRENOMREF) then \"Actuellement, quelle est votre situation principale ?\" else \"Actuellement, quelle est la situation principale de \" || PRENOM || \" ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -10732,7 +10732,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 39. \" || if (PRENOM=PRENOMREF) then \"Avez-vous cependant un emploi ?\" else PRENOM || \" a-t-\" || LIB_SUJET || \" cependant un emploi ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -10856,7 +10856,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 40. \" || if (PRENOM=PRENOMREF) then \"À ce jour, quel est le plus haut diplôme ou titre que vous possédez ?\" else \"À ce jour, quel est le plus haut diplôme ou titre que \" || PRENOM || \" possède ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -10946,7 +10946,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 41. \" || if (PRENOM=PRENOMREF) then \"Plus précisément, quel est votre niveau d’études ?\" else \"Plus précisément, quel est le niveau d’études de \" || PRENOM ||\" ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -11022,7 +11022,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 42. \" || if (PRENOM=PRENOMREF) then \"Plus précisément, quel diplôme de niveau supérieur à bac+2 avez-vous obtenu ?\" else \"Plus précisément, quel diplôme de niveau supérieur à bac+2 \"|| PRENOM || \" a-t-\" || LIB_SUJET || \" obtenu ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -11093,7 +11093,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 43. \" || if (PRENOM=PRENOMREF) then \"Pratiquez-vous le télétravail ?\" else PRENOM || \" pratique-t-\" || LIB_SUJET || \" le télétravail ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "InputNumber",
@@ -11166,7 +11166,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 44. \" || if (PRENOM=PRENOMREF) then \"Combien de jours par semaine êtes-vous en télétravail, en moyenne ?\" else \"Combien de jours par semaine \" || PRENOM || \" est-\" || LIB_SUJET || \" en télétravail, en moyenne ? \""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"unit": "jours",
 					"bindingDependencies": [
 						"PRENOM",
@@ -11355,7 +11355,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 45. \" || \"À quoi correspond votre logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "STATEMENT",
@@ -11419,7 +11419,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 46. \" || \"Est-ce que votre logement se trouve en foyer (ou résidence) pour personnes âgées ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -11472,7 +11472,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 47. \" || \"Plus précisément, quel est le type de cette résidence ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -11541,7 +11541,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 48. \" || \"Le logement fait-il partie d’un immeuble collectif ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -11594,7 +11594,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 49. \" || \"Quel est le type de construction de la maison individuelle ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -11663,7 +11663,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 50. \" || \"La maison fait-elle partie d’une résidence ou d’un ’village’ en copropriété ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -11716,7 +11716,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 51. \" || \"Y a-t-il au moins un ascenseur dans l’immeuble collectif ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -11790,7 +11790,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 52. \" || \"À quel étage se trouve votre logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"bindingDependencies": ["IEL"],
 			"min": 0,
 			"response": {
@@ -11879,7 +11879,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 53. \" || \"À quelle période a été achevée la construction \"|| libIAATC || \" ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Dropdown",
@@ -12037,7 +12037,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 54. \" || \"En quelle année exactement la construction \" || libIAATC || \" a-t-elle été achevée ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -12233,7 +12233,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 55. \" || \"Comment votre ménage occupe-t-il ce logement ?\" || cast(nbpersmaj,string)"
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -12304,7 +12304,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 56. \" || \"Un des occupants actuels du logement est-il propriétaire de ce logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -12368,7 +12368,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 57. \" || \"Votre ménage occupe-t-il ce logement en pleine propriété ou en propriété partielle ?&#xd;​\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"paginatedLoop": true,
@@ -12501,7 +12501,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 58. \" || \"À titre personnel, \" || if (PRENOM=PRENOMREF) then \"votre nom figure-t-il sur l’acte de propriété ?\" else \"le nom de \" || PRENOM || \" figure-t-il sur l’acte de propriété ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -12602,7 +12602,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 59. \" || \"À titre personnel, \" || (if (PRENOM=PRENOMREF) then \"êtes-vous\" else (PRENOM || \" est-\" || LIB_SUJET)) || \" usufruitier\" || LIB_FEM2 || \" de ce logement ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -12685,7 +12685,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 60. \" || \"À titre personnel, \" || if (PRENOM=PRENOMREF) then \"votre nom figure-t-il sur le bail de location ?\" else \"le nom de \" || PRENOM || \" figure-t-il sur le bail de location ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -12764,7 +12764,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 61. \" || (if (PRENOM=PRENOMREF) then \"Êtes-vous\" else (PRENOM || \" est-\" || LIB_SUJET)) || \" \" || if (isnull(STOC)) then \"locataire, sous-locataire ou colocataire\" else (if (STOC=\"1\" or STOC=\"2\" or STOC=\"3\") then \"locataire ou colocataire\" else \"sous-locataire\") || \" d’une partie du logement ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"bindingDependencies": [
@@ -12956,7 +12956,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 62. \" || PRENOM || \" a-t-\" || LIB_SUJET || \" déjà quitté le logement familial pour vivre dans un logement indépendant pendant plus de trois mois ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -13045,7 +13045,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 63. \" || PRENOM || \" vit-\" || LIB_SUJET || \" chez vous uniquement pour les vacances, les week-ends ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -13145,7 +13145,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 64. \" || \"Au total, pendant combien de temps \" || PRENOM || \" a-t-\" || LIB_SUJET || \" vécu dans un logement indépendant ?\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"declarations": [
 						{
 							"declarationType": "INSTRUCTION",
@@ -13262,7 +13262,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 65. \" || \"Depuis quand \" || PRENOM || \" est-\" || LIB_SUJET || \" venu\" || LIB_FEM || \" ou revenu\" || LIB_FEM || \" vivre chez vous ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "CheckboxGroup",
@@ -13484,7 +13484,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 67. \" || \"Le fait que \" || PRENOM || \" vit chez vous est-il lié à la crise sanitaire due à l’épidémie de Covid19 ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -13569,7 +13569,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 68. \" || PRENOM || \" envisage-t-\" || LIB_SUJET || \" d’aller habiter dans un logement indépendant dans les six mois qui viennent ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -13662,7 +13662,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 69. \" || PRENOM || \" a-t-\" || LIB_SUJET || \" actuellement les moyens financiers lui permettant d’avoir un logement indépendant ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -13755,7 +13755,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 70. \" || PRENOM || \" aurait-\" || LIB_SUJET || \" les moyens financiers d’obtenir un logement indépendant ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -13849,7 +13849,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 71. \" || \"Si \" || PRENOM || \" en avait les moyens financiers, quitterait-\" || LIB_SUJET || \" le logement familial ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"bindingDependencies": [
@@ -14083,7 +14083,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 72. \" || \"Depuis quand \" || PRENOM || \" vit-\" || LIB_SUJET ||\" chez vous ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "CheckboxGroup",
@@ -14322,7 +14322,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 74. \" || \"Le fait que \" || PRENOM || \" vive chez vous est-il lié à la crise sanitaire due l’épidémie de Covid 19 ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -14412,7 +14412,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 75. \" || \"Selon vous, \" || PRENOM || \" a-t-\" || LIB_SUJET || \" actuellement les moyens financiers lui permettant d’avoir un logement indépendant ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -14502,7 +14502,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 76. \" || \"Est-ce compliqué pour vous d’héberger \" || PRENOM || \" ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -14585,7 +14585,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 77. \" || \"Est-ce que \" || PRENOM || \" a une chambre indépendante dans votre logement ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"bindingDependencies": [
@@ -15595,7 +15595,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 78. \" || \"En quelle année êtes-vous arrivé\" || (if (isnull(SEXEREF)) then \"\" else (if (cast(SEXEREF,string) = \"2\") then \"e\" else \"\")) || \" dans ce logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -15669,7 +15669,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 79. \" || \"Depuis environ combien d’années êtes-vous arrivé\" || (if (isnull(SEXEREF)) then \"\" else (if (cast(SEXEREF,string) = \"2\") then \"e\" else \"\")) || \" dans ce logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Dropdown",
@@ -15808,7 +15808,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 80. \" || \"Quel est le mois de votre arrivée en \" || MAA2A || \" ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -15861,7 +15861,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 81. \" || \"Votre conjoint\" || SEXECJ_E || \" est-\" || SEXECJ_IEL || \" arrivé\" || SEXECJ_E || \" dans ce logement en même temps que vous ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Dropdown",
@@ -16767,7 +16767,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 82. \" || \"En quelle année votre conjoint\" || SEXECJ_E || \" est-\" || SEXECJ_IEL || \" arrivé\" || SEXECJ_E || \" dans ce logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -16848,7 +16848,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 83. \" || \"Depuis environ combien d’années votre conjoint\" || SEXECJ_E || \" est-\" || SEXECJ_IEL || \" arrivé\" || SEXECJ_E || \" dans ce logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Dropdown",
@@ -16980,7 +16980,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 84. \" || \"Quel est le mois de son arrivée dans le logement en \" || MAA2AC || \" ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -17041,7 +17041,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 85. \" || \"Parmi les membres de votre ménage actuel, une personne habitait-elle déjà dans ce logement, au moment de \" || libMAA3 || \" ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Dropdown",
@@ -17974,7 +17974,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 86. \" || \"En quelle année cette personne est-elle arrivée dans ce logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Dropdown",
@@ -18109,7 +18109,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 87. \" || \"Quel est le mois de son arrivée dans le logement en \" || MAA3A || \" ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -18162,7 +18162,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 88. \" || \"Avez-vous\" || libSDEJA || \" déjà été propriétaire d’une résidence principale autre que celle-ci ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Sequence",
@@ -18305,7 +18305,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 89. \" || \"Votre logement dispose-t-il d’une cuisine ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -18372,7 +18372,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 90. \" || \"Quelle est la surface de la cuisine ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Subsequence",
@@ -18464,7 +18464,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 91. \" || \"Par rapport à l’exercice du télétravail, quelle note entre 0 et 10 donneriez-vous à vos conditions de logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -18651,7 +18651,7 @@
 					}
 				]
 			],
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Subsequence",
@@ -18736,7 +18736,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 93. \" || \"Y a-t-il, dans le logement, des [pièces réservées exclusivement à une activité professionnelle](. 'Ne rentrent pas dans cette catégorie les pièces à usage mixte, utilisées également par les membres de la famille.'), comme un cabinet de dentiste ou d’avocat par exemple ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "STATEMENT",
@@ -18830,7 +18830,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 94. \" || \"Combien avez-vous de pièces à usage exclusivement professionnel ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -18909,7 +18909,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 95. \" || \"Quelle est la surface totale de \" || libHSP || \" à usage exclusivement professionnel ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"unit": "mètres carrés",
 			"bindingDependencies": ["libHSP", "HSP"],
 			"min": 1,
@@ -19003,7 +19003,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 96. \" || \"Y a-t-il des pièces annexes à usage d’habitation rattachées au logement avec une entrée indépendante, telles que des chambres de bonne ou d’anciens garages réaménagés en studios par exemple ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -19088,7 +19088,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 97. \" || \"Combien avez-vous de [pièces annexes](. 'Pièces rattachées au logement avec une entrée indépendante telles que des chambres de bonne ou d’anciens garages réaménagés en studios par exemple') à usage d’habitation ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"bindingDependencies": ["HPA"],
 			"min": 1,
 			"response": {
@@ -19156,7 +19156,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 98. \" || \"Quel usage faites-vous de la pièce annexe ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "CheckboxGroup",
@@ -19313,7 +19313,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 100. \" || \"Parmi les \" || cast(HPA,string) || \" pièces annexes, combien sont-elles réservées à votre usage personnel ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"bindingDependencies": ["HPA", "HPI1"],
 			"min": 1,
 			"response": {
@@ -19402,7 +19402,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 101. \" || \"Parmi les \" || cast(HPA,string) || \" pièces annexes, combien sont-elles réservées au logement d’un salarié à votre service ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"bindingDependencies": ["HPA", "HPI2"],
 			"min": 1,
 			"response": {
@@ -19470,7 +19470,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 102. \" || \"Quelle est la surface totale de \" || libHSI1 || \" à votre usage personnel ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"unit": "mètres carrés",
 			"bindingDependencies": ["libHSI1", "HSI1"],
 			"min": 1,
@@ -19539,7 +19539,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 103. \" || \"Quelle est la surface totale de \" || libHSI2 || \" au logement d’un salarié à votre service ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"unit": "mètres carrés",
 			"bindingDependencies": ["libHSI2", "HSI2"],
 			"min": 1,
@@ -19682,7 +19682,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 104. \" || \"Combien avez-vous de pièces d’habitation (ou de pièces habitables) ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -19818,7 +19818,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 105. \" || \"Parmi ces \" || cast(HPH,string) || \" pièces, combien de chambres avez-vous ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -19939,7 +19939,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 106. \" || \"Quelle est la surface totale habitable de votre logement\" || libHST || \" ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -20051,7 +20051,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 107. \" || \"Compte tenu du nombre de personnes de votre ménage, comment estimez-vous le nombre de pièces dont vous disposez ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -20111,7 +20111,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 108. \" || \"Quelle est la [hauteur sous plafond](. 'Lorsque la pièce principale est située sous des combles, la hauteur sous plafond varie. Choisir la réponse correspondant à la partie la plus haute de la pièce.') de votre pièce principale ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Subsequence",
@@ -20196,7 +20196,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 109. \" || \"Avez-vous une véranda ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -20267,7 +20267,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 110. \" || \"Quelle est la surface de cette véranda ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"unit": "mètres carrés",
 			"bindingDependencies": ["KSV"],
 			"min": 1,
@@ -20329,7 +20329,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 111. \" || \"La surface de la véranda (\" || cast(KSV,string) || \" m²) a t-elle été prise en compte dans la surface totale du logement (\" || cast(HST,string) || \" m²) que vous avez indiquée précédemment ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -20382,7 +20382,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 112. \" || \"Avez-vous un balcon, une terrasse ou une loggia ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -20442,7 +20442,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 113. \" || \"Quelle est la surface totale des balcons\"|| libKBA || \" ou loggias ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"unit": "mètres carrés",
 			"bindingDependencies": ["libKBA", "KSB"],
 			"min": 1,
@@ -20504,7 +20504,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 114. \" || libKJA || \" un jardin, un terrain ou une cour réservés à votre usage personnel ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -20578,7 +20578,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 115. \" || \"Quelle est la surface totale de votre terrain ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -20688,7 +20688,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 116. \" || \"Pouvez-vous néanmoins indiquer dans quelle tranche se situe la surface du terrain ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -20762,7 +20762,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 117. \" || \"Quelle est la surface de terrain couverte par la maison (emprise au sol) ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -20851,7 +20851,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 118. \" || \"Quelle est la surface de ces espaces privatifs attenants au logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"unit": "mètres carrés",
 			"bindingDependencies": ["KSJPC"],
 			"min": 1,
@@ -20913,7 +20913,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 119. \" || \"Disposez-vous d’espaces extérieurs (jardin, terrain, cour...) en tant que parties communes de la résidence ou de la copropriété ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -20991,7 +20991,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 120. \" || \"Quelle est la surface de ces espaces partagés ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -21058,7 +21058,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 121. \" || \"De combien de voitures les habitants de ce logement disposent-ils ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -21344,7 +21344,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 124. \" || \"Disposez-vous d’une cave ou d’un sous-sol (même si vous ne l’utilisez pas) ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -21415,7 +21415,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 125. \" || \"Disposez-vous, dans les parties communes de \" || libKVELO || \", d’un local fermé où vous pouvez déposer un vélo ou une poussette ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -21479,7 +21479,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 126. \" || \"Disposez-vous d’un grenier ou de combles aménageables, mais non aménagés en pièces d’habitation ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -21532,7 +21532,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 127. \" || \"Disposez-vous d’un sous-sol non aménagé en pièces d’habitation ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -21585,7 +21585,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 128. \" || \"Disposez-vous d’une grange non aménagée en pièces d’habitation ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -21638,7 +21638,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 129. \" || \"Avez-vous une piscine fixe d’une profondeur de plus de 1 mètre ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -21741,7 +21741,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 130. \" || \"Comment votre logement est-il alimenté en eau ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -21801,7 +21801,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 131. \" || \"Disposez-vous de W-C à l’intérieur du logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Table",
@@ -22031,7 +22031,7 @@
 					}
 				]
 			],
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -22084,7 +22084,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 133. \" || \"Possédez-vous une salle d’eau ou une salle de bain (pièce contenant une douche ou une baignoire) ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Table",
@@ -22314,7 +22314,7 @@
 					}
 				]
 			],
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -22367,7 +22367,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 135. \" || \"Avez-vous une douche ou une baignoire installée dans une pièce destinée à un autre usage ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -22434,7 +22434,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 136. \" || \"Disposez-vous d’un ou plusieurs lavabos ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Sequence",
@@ -22544,7 +22544,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 137. \" || \"Comment estimez-vous vos conditions actuelles de logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -22610,7 +22610,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 138. \" || \"En tant qu’endroit pour vivre, quelle note globale de 1 à 10 donneriez-vous à votre logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -22822,7 +22822,7 @@
 					}
 				]
 			],
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Table",
@@ -23015,7 +23015,7 @@
 					}
 				]
 			],
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Table",
@@ -23142,7 +23142,7 @@
 					}
 				]
 			],
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -23187,7 +23187,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 142. \" || \"Est-il difficile de trouver un lieu d’éducation qui vous convienne à proximité de votre logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -23239,7 +23239,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 143. \" || \"Vous plaisez-vous dans votre quartier (ou village) ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -23305,7 +23305,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 144. \" || \"Quelle note globale de 1 à 10 donneriez-vous à votre quartier (ou village) ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -23683,7 +23683,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 146. \" || \"Comment la chambre d’hôtel était-elle payée ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -23746,7 +23746,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 147. \" || \"Était-ce un centre d’hébergement pour demandeurs d’asile ou réfugiés ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -23821,7 +23821,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 148. \" || \"Combien de situations de ce type \" || (if (PRENOM=PRENOMREF) then \"avez-vous\" else PRENOM || \" a-t-\" || LIB_SUJET) || \" connues ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -23919,7 +23919,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 149. \" || \"Combien de temps au total \" || (if (PRENOM=PRENOMREF) then \"avez-vous\" else PRENOM || \" a-t-\" || LIB_SUJET) || \" été dans \" || libSDT || \" ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -24030,7 +24030,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 150. \" || if (PRENOM=PRENOMREF) then \"Quelle est la première situation de ce type que vous avez connue ?\" else \"Quelle est la première situation de ce type que \" || PRENOM || \" a connue ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Dropdown",
@@ -24954,7 +24954,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 151. \" || \"En quelle année \" || if (isnull(SDN1)) then ( if (PRENOM=PRENOMREF) then \"avez-vous été pour la première fois dans une de ces situations ?\" else PRENOM || \" a-t-\" || LIB_SUJET || \" été pour la première fois dans une de ces situations ?\" ) else (if (SDN1=\"1\") then \"cette situation a-t-elle débuté ?\" else ( if (PRENOM=PRENOMREF) then \"avez-vous été dans cette première situation ?\" else PRENOM || \" a-t-\" || LIB_SUJET || \" été dans cette première situation ?\" ))"
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -25045,7 +25045,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 152. \" || \"La première fois que \" || (if (PRENOM=PRENOMREF) then \"vous avez été\" else PRENOM || \" a été\") || \" dans cette situation, combien de temps cela a-t-il duré ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -25156,7 +25156,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 153. \" || if (PRENOM=PRENOMREF) then \"Quelle est la dernière situation de ce type que vous avez connue ?\" else \"Quelle est la dernière situation de ce type que \" || PRENOM || \" a connue ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Dropdown",
@@ -26079,7 +26079,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 154. \" || \"En quelle année \" || ( if (PRENOM=PRENOMREF) then \"avez-vous été dans cette dernière situation ?\" else PRENOM || \" a-t-\" || LIB_SUJET || \" été dans cette dernière situation ?\" )"
 					},
-					"mandatory": false
+					"isMandatory": false
 				},
 				{
 					"componentType": "Radio",
@@ -26175,7 +26175,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 155. \" || \"La dernière fois que \" || (if (PRENOM=PRENOMREF) then \"vous avez été\" else PRENOM || \" a été\") || \" dans cette situation, combien de temps cela a-t-il duré ?\""
 					},
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"bindingDependencies": [
@@ -26723,7 +26723,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 159. \" || \"Depuis le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \", un des membres de votre ménage actuel, y compris vous-même, a-t-il vendu un ou plusieurs logements ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -26808,7 +26808,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 160. \" || \"Comment aviez-vous fait l’acquisition de ce logement maintenant vendu ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -26889,7 +26889,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 161. \" || libVFLA || \" était-il votre résidence principale ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -26949,7 +26949,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 162. \" || \"Depuis le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \", un des membres de votre ménage actuel, y compris vous-même, a-t-il acheté un ou plusieurs logements, comme une résidence principale, secondaire, un logement destiné à être loué, etc. ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -27009,7 +27009,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 163. \" || \"Par rapport au prix du \" || libVBILLOG1 || \", comment était le prix du \" || libVBILLOG2 || \" ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Subsequence",
@@ -27126,7 +27126,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 164. \" || \"Où habitiez-vous le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "STATEMENT",
@@ -27195,7 +27195,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 165. \" || \"Dans quelle commune habitiez-vous le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -27265,7 +27265,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 166. \" || \"Dans quel département habitiez-vous le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -27326,7 +27326,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 167. \" || \"Indiquer le nom complet de la commune :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 30
 		},
 		{
@@ -27376,7 +27376,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 168. \" || \"Dans quel pays résidiez-vous le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 30,
 			"declarations": [
 				{
@@ -27455,7 +27455,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 169. \" || \"Au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \", quelle était votre situation ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -27542,7 +27542,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 170. \" || \"Au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \", comment votre ménage occupait-il ce logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -27619,7 +27619,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 171. \" || \"Quel était le régime juridique du loyer ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -27724,7 +27724,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 172. \" || \"Quel était le montant du loyer mensuel au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -27814,7 +27814,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 173. \" || \"Bénéficiez-vous au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" de l’allocation logement ou de l’aide personnalisée au logement (APL) ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -27888,7 +27888,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 174. \" || \"Combien de personnes résidaient dans ce logement au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \", y compris vous-même ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"bindingDependencies": ["libMOISENQ", "ANNEENQmoins4", "VIN"],
 			"min": 1,
 			"response": {
@@ -28010,7 +28010,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 175. \" || \"À quoi correspondait le logement occupé au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -28070,7 +28070,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 176. \" || \"Quelle était la surface habitable de ce logement occupé au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -28173,7 +28173,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 177. \" || \"Quel était le nombre de pièces d’habitation de ce logement occupé au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -28261,7 +28261,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 178. \" || \"Combien d’années avez-vous vécu dans ce logement occupé au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"unit": "années",
 			"bindingDependencies": ["libMOISENQ", "ANNEENQmoins4", "VANCIEN"],
 			"min": 0,
@@ -28391,7 +28391,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 179. \" || \"Quelle était votre situation professionnelle au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Subsequence",
@@ -28520,7 +28520,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 180. \" || \"Combien de fois avez-vous déménagé depuis le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"bindingDependencies": ["libMOISENQ", "ANNEENQmoins4", "VND"],
 			"min": 0,
 			"response": {
@@ -28593,7 +28593,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 181. \" || \"Juste avant d’habiter dans votre logement actuel, où résidiez-vous ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "STATEMENT",
@@ -28684,7 +28684,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 182. \" || \"Avant d’occuper votre logement actuel, quelle était votre situation ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -28772,7 +28772,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 183. \" || \"Comment votre ménage occupait-il le précédent logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -28847,7 +28847,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 184. \" || \"Quel était le régime juridique du loyer ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Subsequence",
@@ -28960,7 +28960,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 185. \" || \"À quoi correspondait votre précédent logement ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "InputNumber",
@@ -29020,7 +29020,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 186. \" || \"Quelle était la surface de votre précédent logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -29123,7 +29123,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 187. \" || \"Quel était le nombre de pièces de votre précédent logement ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "HELP",
@@ -29243,7 +29243,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 188. \" || \"Avez-vous déménagé pour changer de statut d’occupation ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "CheckboxGroup",
@@ -29765,7 +29765,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 192. \" || \"Vous ou une autre personne de votre ménage, décrochez-vous lorsque votre téléphone fixe sonne ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -29847,7 +29847,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 193. \" || \"Décrochez-vous lorsque votre téléphone mobile sonne ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -29929,7 +29929,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 194. \" || \"Comment avez-vous utilisé Internet, au cours des trois derniers mois, en moyenne ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -30025,7 +30025,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 195. \" || \"Les courriers que nous vous envoyons dans le cadre de cette enquête sont adressés à : \" || libCHGNC || \". Cela vous convient-il ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -30078,7 +30078,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 196. \" || \"Civilité du \" || if (not(isnull(NOMVOUS_D2)) and NOMVOUS_D2<>\"\") then \"premier destinataire :\" else \" destinataire :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "STATEMENT",
@@ -30126,7 +30126,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 197. \" || \"Prénom du \" || if (not(isnull(NOMVOUS_D2)) and NOMVOUS_D2<>\"\") then \"premier destinataire :\" else \"destinataire :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 20
 		},
 		{
@@ -30164,7 +30164,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 198. \" || \"Nom du \" || if (not(isnull(NOMVOUS_D2)) and NOMVOUS_D2<>\"\") then \"premier destinataire :\" else \"destinataire :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 40
 		},
 		{
@@ -30218,7 +30218,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 199. \" || \"Souhaitez-vous ajouter un deuxième destinataire au courrier que nous vous envoyons ?\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Radio",
@@ -30277,7 +30277,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 200. \" || \"Civilité du deuxième destinataire :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "STATEMENT",
@@ -30331,7 +30331,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 201. \" || \"Prénom du deuxième destinataire :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 20
 		},
 		{
@@ -30375,7 +30375,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 202. \" || \"Nom du deuxième destinataire :\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 40
 		},
 		{
@@ -30445,7 +30445,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 203. \" || \"Pourriez-vous indiquer le numéro de téléphone à utiliser pour vous contacter ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 10,
 			"declarations": [
 				{
@@ -30570,7 +30570,7 @@
 				"type": "VTL|MD",
 				"value": "\"Avez-vous des remarques concernant l'enquête ou des commentaires ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 2000
 		}
 	],

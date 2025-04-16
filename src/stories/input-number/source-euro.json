@@ -4,7 +4,7 @@
 		{
 			"id": "kze792d8",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"min": 0,
 			"max": 10,
@@ -18,7 +18,7 @@
 		{
 			"id": "kze792d8",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"min": 0,
 			"max": 10,

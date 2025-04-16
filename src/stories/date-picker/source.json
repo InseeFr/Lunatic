@@ -6,7 +6,7 @@
 			"dateFormat": "YYYY-MM-DD",
 			"conditionFilter": { "type": "VTL", "value": "true" },
 			"label": { "type": "VTL|MD", "value": "\"➡ 1. \" || \"Birth day\"" },
-			"mandatory": false,
+			"isMandatory": false,
 			"min": "1900-01-01",
 			"response": { "name": "Q1" },
 			"id": "l7ovm2rv",

@@ -30,7 +30,7 @@
 		{
 			"id": "kze792d8",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"min": 0,
 			"max": 10,
@@ -94,7 +94,7 @@
 				{
 					"id": "ksyjvi40",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"maxLength": 249,
 					"label": { "value": "\"➡ 2. \" || \"prénom\"", "type": "VTL|MD" },
@@ -174,7 +174,7 @@
 				{
 					"id": "ksyke448",
 					"componentType": "InputNumber",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "5.1",
 					"min": 0,
 					"max": 100,
@@ -260,7 +260,7 @@
 		{
 			"id": "ku2pxugf",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "7",
 			"maxLength": 249,
 			"label": { "value": "\"➡ 2. \" || \"divers\"", "type": "VTL|MD" },
@@ -323,7 +323,7 @@
 		{
 			"id": "ktwvc5zc",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"maxLength": 249,
 			"label": { "value": "\"➡ 3. \" || \"Texte\"", "type": "VTL|MD" },

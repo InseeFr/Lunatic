@@ -3,7 +3,7 @@
 		{
 			"id": "1",
 			"componentType": "Switch",
-			"mandatory": false,
+			"isMandatory": false,
 			"label": { "value": "\"➡ 1. Are you ready?\"", "type": "VTL|MD" },
 			"statusLabel": { "true": "Yes", "false": "No" },
 			"response": {
@@ -16,7 +16,7 @@
 		{
 			"id": "2",
 			"componentType": "Switch",
-			"mandatory": false,
+			"isMandatory": false,
 			"label": { "value": "\"➡ 2. Are you always ready?\"", "type": "VTL|MD" },
 			"response": {
 				"name": "READY2"

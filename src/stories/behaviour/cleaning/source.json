@@ -83,7 +83,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 1. \" || \"Origine\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"bindingDependencies": ["ORIGIN"],
 			"response": {
 				"name": "ORIGIN"
@@ -112,7 +112,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 2. \" || \"Ville de france\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"bindingDependencies": ["CITY"],
 			"response": {
 				"name": "CITY"

@@ -6,7 +6,7 @@
 			"page": "1",
 			"id": "j6p29i81",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"header": [
 				{ "label": { "value": "\"<=>\"", "type": "VTL|MD" } },
 				{ "label": { "value": "\"Header 1\"", "type": "VTL|MD" } },

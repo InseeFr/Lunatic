@@ -204,7 +204,7 @@
 				"type": "VTL",
 				"value": "\"id || \" - \" || label\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 249
 		},
 		{
@@ -223,7 +223,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 2. \" || \"Variable Pays\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 249
 		},
 		{
@@ -242,7 +242,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 3. \" || \"Variable Nationalité\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 249
 		},
 		{
@@ -262,7 +262,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 4. \" || \"VARIABLE_PCS\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 249
 		},
 		{
@@ -281,7 +281,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 5. \" || \"VARIABLE_BAILLEURS_SOCIAUX\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 249
 		}
 	],

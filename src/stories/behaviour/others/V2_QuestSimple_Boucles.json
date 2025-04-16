@@ -105,7 +105,7 @@
 		{
 			"id": "jfazk91m",
 			"componentType": "CheckboxBoolean",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ 1. \" || \"Je suis un booleen qui filtre le reste\"",
@@ -181,7 +181,7 @@
 		{
 			"id": "jfazww20",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"maxLength": 10,
 			"label": {
@@ -218,7 +218,7 @@
 		{
 			"id": "jfazwjyv",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"maxLength": 249,
 			"label": {
@@ -255,7 +255,7 @@
 		{
 			"id": "kzwqst6c",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"maxLength": 250,
 			"label": {
@@ -292,7 +292,7 @@
 		{
 			"id": "kk2fu72i",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "7",
 			"maxLength": 9,
 			"label": {
@@ -379,7 +379,7 @@
 		{
 			"id": "jfjh1ndk",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 10,
 			"max": 100,
@@ -438,7 +438,7 @@
 		{
 			"id": "jfjhb2pz",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"min": 10,
 			"max": 100,
@@ -474,7 +474,7 @@
 		{
 			"id": "l1ujlrg4",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"min": -1000,
 			"max": 1000,
@@ -510,7 +510,7 @@
 		{
 			"id": "jfjtbqh1",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "11",
 			"min": 0,
 			"max": 10,
@@ -547,7 +547,7 @@
 		{
 			"id": "kyiseu7q",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "12",
 			"min": 0,
 			"max": 10,
@@ -634,7 +634,7 @@
 		{
 			"id": "jfjfckyw",
 			"componentType": "Datepicker",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "13",
 			"min": "1980-01-01",
 			"max": "2022-01-01",
@@ -670,7 +670,7 @@
 		{
 			"id": "kvl6bpxb",
 			"componentType": "Datepicker",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "14",
 			"min": "1900",
 			"max": "2022",
@@ -706,7 +706,7 @@
 		{
 			"id": "jfjeud07",
 			"componentType": "CheckboxBoolean",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "15",
 			"label": { "value": "\"➡ 13. \" || \"Booléen\"", "type": "VTL|MD" },
 			"conditionFilter": {
@@ -797,7 +797,7 @@
 		{
 			"id": "jfjepz6i",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "18",
 			"label": {
 				"value": "\"➡ 1. \" || \"Question à choix unique - présentation bouton radio\"",
@@ -847,7 +847,7 @@
 		{
 			"id": "jfjero7b",
 			"componentType": "CheckboxOne",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "19",
 			"label": {
 				"value": "\"➡ 2. \" || \"Question à choix unique - présentation case à cocher\"",
@@ -897,7 +897,7 @@
 		{
 			"id": "jfjfae9f",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "20",
 			"label": {
 				"value": "\"➡ 3. \" || \"Question à choix unique - présentation liste déroulante\"",
@@ -1061,7 +1061,7 @@
 		{
 			"id": "jfkxybfe",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "23",
 			"label": {
 				"value": "\"➡ 5. \" || \"Question à choix multiple - réponse oui/non case à cocher\"",
@@ -1203,7 +1203,7 @@
 		{
 			"id": "jfkyw9o1",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "24",
 			"label": {
 				"value": "\"➡ 6. \" || \"Question à choix multiple - réponse oui/non radio\"",
@@ -1370,7 +1370,7 @@
 		{
 			"id": "jfkzltkm",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "26",
 			"label": {
 				"value": "\"➡ 1. \" || \"Tableau un axe simple, une mesure\"",
@@ -1500,7 +1500,7 @@
 		{
 			"id": "jfkzpexn",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "27",
 			"label": {
 				"value": "\"➡ 2. \" || \"Tableau un axe simple, plusieurs mesures\"",
@@ -1766,7 +1766,7 @@
 		{
 			"id": "jfkzttm3",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "28",
 			"label": {
 				"value": "\"➡ 3. \" || \"Tableau 2 axes\"",
@@ -2173,7 +2173,7 @@
 		{
 			"id": "jfkzrwce",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "29",
 			"label": {
 				"value": "\"➡ 4. \" || \"Tableau 1 axe avec hiérarchie , 1 mesure\"",
@@ -2236,7 +2236,7 @@
 		{
 			"id": "kk47qwrd",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "30",
 			"label": {
 				"value": "\"➡ 5. \" || \"Tableau dynamique\"",
@@ -2412,7 +2412,7 @@
 		{
 			"id": "kmg10a27",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "32",
 			"min": 1,
 			"max": 20,
@@ -2513,7 +2513,7 @@
 				{
 					"id": "kmg0zlec",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "33",
 					"maxLength": 30,
 					"label": {
@@ -2546,7 +2546,7 @@
 				{
 					"id": "k3opea2m",
 					"componentType": "InputNumber",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "33",
 					"min": 0,
 					"max": 120,
@@ -2647,7 +2647,7 @@
 				{
 					"id": "l204183l",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "34",
 					"maxLength": 30,
 					"label": {
@@ -2680,7 +2680,7 @@
 				{
 					"id": "l20407qf",
 					"componentType": "InputNumber",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "34",
 					"min": 0,
 					"max": 120,

@@ -49,7 +49,7 @@
 		{
 			"id": "kb9hlpdc",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"label": {
 				"value": "\"➡ \" || \"Confirmez-vous que vous habitez toujours à l’adresse suivante : \" || ADRESSE || \" ?\"",
@@ -116,7 +116,7 @@
 		{
 			"id": "kbakywwy",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 10,
 			"label": { "value": "\"➡ \" || \"Numéro de voie :\"", "type": "VTL|MD" },
@@ -171,7 +171,7 @@
 		{
 			"id": "kbal4bzb",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 50,
 			"label": {
@@ -224,7 +224,7 @@
 		{
 			"id": "kbalhn4i",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 50,
 			"label": {
@@ -262,7 +262,7 @@
 		{
 			"id": "kbal8crw",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 5,
 			"label": { "value": "\"➡ \" || \"Code postal :\"", "type": "VTL|MD" },
@@ -312,7 +312,7 @@
 		{
 			"id": "kbal9dwk",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 100,
 			"label": { "value": "\"➡ \" || \"Commune :\"", "type": "VTL|MD" },
@@ -375,7 +375,7 @@
 		{
 			"id": "kqweh61i",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"label": {
 				"value": "\"➡ \" || \"Connaissez-vous le nom de la ou des personnes qui vous ont succédé dans le logement situé à l’adresse suivante : \" || ADRESSE || \" ?\"",
@@ -411,7 +411,7 @@
 		{
 			"id": "kqwga16w",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 40,
 			"label": { "value": "\"➡ \" || \"Nom :\"", "type": "VTL|MD" },
@@ -451,7 +451,7 @@
 		{
 			"id": "kqwfswjj",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 20,
 			"label": { "value": "\"➡ \" || \"Prénom :\"", "type": "VTL|MD" },
@@ -480,7 +480,7 @@
 		{
 			"id": "kqwfedoy",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 40,
 			"label": {
@@ -512,7 +512,7 @@
 		{
 			"id": "kqwg9azb",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 20,
 			"label": {
@@ -544,7 +544,7 @@
 		{
 			"id": "kr0e0pav",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 10,
 			"label": {
@@ -592,7 +592,7 @@
 		{
 			"id": "kr0ee3u2",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"maxLength": 249,
 			"label": {
@@ -675,7 +675,7 @@
 		{
 			"id": "kbc1b4k2",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"min": 1,
 			"max": 15,
@@ -873,7 +873,7 @@
 				{
 					"id": "kmno1n7m",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"maxLength": 20,
 					"label": {
@@ -1022,7 +1022,7 @@
 				{
 					"id": "kmoo2fiy",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || \"Quel est \" || if (PRENOM=PRENOMREF) then \"votre sexe ?\" else \"le sexe de \" || PRENOM || \" ?\"",
@@ -1073,7 +1073,7 @@
 				{
 					"id": "kmoouamz",
 					"componentType": "Datepicker",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"min": "1900-01-01",
 					"max": "2022-12-31",
@@ -1148,7 +1148,7 @@
 				{
 					"id": "kmx6w6n5",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || \"Vous n’avez pas indiqué de date de naissance, pouvez-vous indiquer la tranche d’âge dans laquelle \" || if (PRENOM=PRENOMREF) then \"vous vous situez ?\" else \"se situe\" || \" \" || PRENOM || \" ?\"",
@@ -1207,7 +1207,7 @@
 				{
 					"id": "kmookacu",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || \"Où \"|| if (PRENOM=PRENOMREF) then \"êtes-vous né\" || LIB_FEM || \" ?\" else \"est né\" || LIB_FEM || \" \" || PRENOM || \" ?\"",
@@ -1265,7 +1265,7 @@
 				{
 					"id": "kmor2z1x",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || \"Dans quel département \"|| if (PRENOM=PRENOMREF) then \"êtes-vous né\" || LIB_FEM || \" ?\" else \"est né\" || LIB_FEM || \" \" || PRENOM || \" ?\"",
@@ -1337,7 +1337,7 @@
 				{
 					"id": "kmorege9",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || \"Dans quel pays \"|| if (PRENOM=PRENOMREF) then \"êtes-vous né\" || LIB_FEM || \" ?\" else \"est né\" || LIB_FEM || \" \" || PRENOM || \" ?\"",
@@ -1520,7 +1520,7 @@
 				{
 					"id": "kmos2yo6",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || \"Quelle est \"|| if (PRENOM=PRENOMREF) then \"votre nationalité étrangère ?\" else \"la nationalité étrangère de \" || PRENOM || \" ?\"",
@@ -1665,7 +1665,7 @@
 				{
 					"id": "kmw4revw",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || \"Qui est \"|| PRENOM || \" pour vous ?\"",
@@ -1763,7 +1763,7 @@
 				{
 					"id": "kod271pp",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Vivez-vous en couple ?\" else PRENOM || \" vit-\" || LIB_SUJET || \" en couple ?\"",
@@ -1977,7 +1977,7 @@
 		{
 			"id": "kwp9ynon",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || (if (INDENF=\"1\") then \"En dehors des enfants décrits précédemment, accueillez-vous \" else \"Accueillez-vous \") || \"un ou plusieurs enfants au titre du droit de visite et d’hébergement ?\"",
@@ -2019,7 +2019,7 @@
 		{
 			"id": "kwpbyciz",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"min": 0,
 			"max": 15,
@@ -2227,7 +2227,7 @@
 				{
 					"id": "kmx8sgeu",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Vivez-vous uniquement dans ce logement ou aussi dans un autre logement ?\" else PRENOM || \" vit-\" || LIB_SUJET || \" uniquement dans ce logement ou aussi dans un autre logement ?\"",
@@ -2300,7 +2300,7 @@
 				{
 					"id": "kmx97ttc",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Vous vivez dans le logement situé à l’adresse : \" || ADRCOLLC || \" ... ?\" else PRENOM || \" vit dans ce logement situé à l’adresse : \" || ADRCOLLC || \" ... ?\"",
@@ -2366,7 +2366,7 @@
 				{
 					"id": "kmx97tz1",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Pour vous, ce logement est... ?\" else \"Pour \" || PRENOM || \", ce logement est... ?\"",
@@ -2470,7 +2470,7 @@
 				{
 					"id": "kmx93med",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Pour vous, l’autre logement où vous vivez est... ?\" else \"Pour \" || PRENOM || \", l’autre logement où \" || LIB_SUJET || \" vit est... ?\"",
@@ -2585,7 +2585,7 @@
 				{
 					"id": "kmx9punx",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Êtes-vous en garde alternée entre vos deux parents ?\" else PRENOM || \" est-\" || LIB_SUJET || \" en garde alternée entre ses deux parents ?\"",
@@ -2640,7 +2640,7 @@
 				{
 					"id": "kmx9im0b",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Où avez-vous dormi la nuit dernière ?\" else \"Où \" || PRENOM || \" a-t-\" || LIB_SUJET || \" dormi la nuit dernière ?\"",
@@ -2720,7 +2720,7 @@
 				{
 					"id": "kqi4zdkk",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"À propos de cet autre logement dans lequel vous vivez, s’agit-il d’une chambre dans une structure collective ?\" else \"À propos de cet autre logement dans lequel vit \" || PRENOM || \", s’agit-il d’une chambre dans une structure collective ?\"",
@@ -2780,7 +2780,7 @@
 				{
 					"id": "kmx9pvyn",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || \"De quelle structure s’agit-il ?\"",
@@ -2986,7 +2986,7 @@
 				{
 					"id": "kmxfqrb1",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Actuellement, quelle est votre situation principale ?\" else \"Actuellement, quelle est la situation principale de \" || PRENOM || \" ?\"",
@@ -3114,7 +3114,7 @@
 				{
 					"id": "kmxg8ci7",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Avez-vous cependant un emploi ?\" else PRENOM || \" a-t-\" || LIB_SUJET || \" cependant un emploi ?\"",
@@ -3192,7 +3192,7 @@
 				{
 					"id": "kmxgftfs",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"À ce jour, quel est le plus haut diplôme ou titre que vous possédez ?\" else \"À ce jour, quel est le plus haut diplôme ou titre que \" || PRENOM || \" possède ?\"",
@@ -3327,7 +3327,7 @@
 				{
 					"id": "kqi8s71l",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Plus précisément, quel est votre niveau d’études ?\" else \"Plus précisément, quel est le niveau d’études de \" || PRENOM ||\" ?\"",
@@ -3405,7 +3405,7 @@
 				{
 					"id": "kqi8mfos",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Plus précisément, quel diplôme de niveau supérieur à bac+2 avez-vous obtenu ?\" else \"Plus précisément, quel diplôme de niveau supérieur à bac+2 \"|| PRENOM || \" a-t-\" || LIB_SUJET || \" obtenu ?\"",
@@ -3484,7 +3484,7 @@
 				{
 					"id": "kp4dw3br",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Pratiquez-vous le télétravail ?\" else PRENOM || \" pratique-t-\" || LIB_SUJET || \" le télétravail ?\"",
@@ -3545,7 +3545,7 @@
 				{
 					"id": "kvjb8q33",
 					"componentType": "InputNumber",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3",
 					"min": 0,
 					"max": 7,
@@ -3636,7 +3636,7 @@
 		{
 			"id": "kd8qd4ou",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || \"À quoi correspond votre logement ?\"",
@@ -3727,7 +3727,7 @@
 		{
 			"id": "kp4b8f63",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || \"Est-ce que votre logement se trouve en foyer (ou résidence) pour personnes âgées ?\"",
@@ -3766,7 +3766,7 @@
 		{
 			"id": "kp4bwrb9",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || \"Plus précisément, quel est le type de cette résidence ?\"",
@@ -3817,7 +3817,7 @@
 		{
 			"id": "kbgi5n3g",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || \"Le logement fait-il partie d’un immeuble collectif ?\"",
@@ -3871,7 +3871,7 @@
 		{
 			"id": "kbgigljc",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || \"Quel est le type de construction de la maison individuelle ?\"",
@@ -3916,7 +3916,7 @@
 		{
 			"id": "kbgim4v3",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || \"La maison fait-elle partie d’une résidence ou d’un ’village’ en copropriété ?\"",
@@ -3967,7 +3967,7 @@
 		{
 			"id": "kbgidvnm",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || \"Y a-t-il au moins un ascenseur dans l’immeuble collectif ?\"",
@@ -4006,7 +4006,7 @@
 		{
 			"id": "kbgigafp",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"min": 0,
 			"max": 99,
@@ -4058,7 +4058,7 @@
 		{
 			"id": "kbghszh6",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || \"À quelle période a été achevée la construction \"|| libIAATC || \" ?\"",
@@ -4120,7 +4120,7 @@
 		{
 			"id": "kbghz7mp",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || \"En quelle année exactement la construction \" || libIAATC || \" a-t-elle été achevée ?\"",
@@ -4266,7 +4266,7 @@
 		{
 			"id": "jn0cttir",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"Comment votre ménage occupe-t-il ce logement ?\"",
@@ -4367,7 +4367,7 @@
 		{
 			"id": "klusnxnh",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"Un des occupants actuels du logement est-il propriétaire de ce logement ?\"",
@@ -4431,7 +4431,7 @@
 		{
 			"id": "jn0e3nhg",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"Votre ménage occupe-t-il ce logement en pleine propriété ou en propriété partielle ?&#xd;​\"",
@@ -4579,7 +4579,7 @@
 				{
 					"id": "ko9tiu0f",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"À titre personnel, \" || if (PRENOM=PRENOMREF) then \"votre nom figure-t-il sur l’acte de propriété ?\" else \"le nom de \" || PRENOM || \" figure-t-il sur l’acte de propriété ?\"",
@@ -4664,7 +4664,7 @@
 				{
 					"id": "ko9r0alc",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"À titre personnel, \" || (if (PRENOM=PRENOMREF) then \"êtes-vous\" else (PRENOM || \" est-\" || LIB_SUJET)) || \" usufruiti\" || LIB_FEM2 || \" de ce logement ?\"",
@@ -4743,7 +4743,7 @@
 				{
 					"id": "ko9t45t9",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"À titre personnel, \" || if (PRENOM=PRENOMREF) then \"votre nom figure-t-il sur le bail de location ?\" else \"le nom de \" || PRENOM || \" figure-t-il sur le bail de location ?\"",
@@ -4820,7 +4820,7 @@
 				{
 					"id": "knoqewds",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || (if (PRENOM=PRENOMREF) then \"Êtes-vous\" else (PRENOM || \" est-\" || LIB_SUJET)) || \" \" || if (isnull(STOC)) then \"locataire, sous-locataire ou colocataire\" else (if (STOC=\"1\" or STOC=\"2\" or STOC=\"3\") then \"locataire ou colocataire\" else \"sous-locataire\") || \" d’une partie du logement ?\"",
@@ -5025,7 +5025,7 @@
 				{
 					"id": "joh8lowu",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || PRENOM || \" a-t-\" || LIB_SUJET || \" déjà quitté le logement familial pour vivre dans un logement indépendant pendant plus de trois mois ?\"",
@@ -5122,7 +5122,7 @@
 				{
 					"id": "kppmespv",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || PRENOM || \" vit-\" || LIB_SUJET || \" chez vous uniquement pour les vacances, les week-ends ?\"",
@@ -5195,7 +5195,7 @@
 				{
 					"id": "joh8ixt2",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"Au total, pendant combien de temps \" || PRENOM || \" a-t-\" || LIB_SUJET || \" vécu dans un logement indépendant ?\"",
@@ -5307,7 +5307,7 @@
 				{
 					"id": "kcnccgjg",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"Depuis quand \" || PRENOM || \" est-\" || LIB_SUJET || \" venu\" || LIB_FEM || \" ou revenu\" || LIB_FEM || \" vivre chez vous ?\"",
@@ -5542,7 +5542,7 @@
 				{
 					"id": "kp5vtjh4",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"Le fait que \" || PRENOM || \" vit chez vous est-il lié à la crise sanitaire due à l’épidémie de Covid19 ?\"",
@@ -5615,7 +5615,7 @@
 				{
 					"id": "joirni0x",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || PRENOM || \" envisage-t-\" || LIB_SUJET || \" d’aller habiter dans un logement indépendant dans les six mois qui viennent ?\"",
@@ -5693,7 +5693,7 @@
 				{
 					"id": "joirve2f",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || PRENOM || \" a-t-\" || LIB_SUJET || \" actuellement les moyens financiers lui permettant d’avoir un logement indépendant ?\"",
@@ -5786,7 +5786,7 @@
 				{
 					"id": "joirtz3j",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || PRENOM || \" aurait-\" || LIB_SUJET || \" les moyens financiers d’obtenir un logement indépendant ?\"",
@@ -5879,7 +5879,7 @@
 				{
 					"id": "joisp3u9",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"Si \" || PRENOM || \" en avait les moyens financiers, quitterait-\" || LIB_SUJET || \" le logement familial ?\"",
@@ -6098,7 +6098,7 @@
 				{
 					"id": "joisq6l3",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"Depuis quand \" || PRENOM || \" vit-\" || LIB_SUJET ||\" chez vous ?\"",
@@ -6331,7 +6331,7 @@
 				{
 					"id": "kppptqlu",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"Le fait que \" || PRENOM || \" vive chez vous est-il lié à la crise sanitaire due l’épidémie de Covid 19 ?\"",
@@ -6405,7 +6405,7 @@
 				{
 					"id": "joismxwd",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"Selon vous, \" || PRENOM || \" a-t-\" || LIB_SUJET || \" actuellement les moyens financiers lui permettant d’avoir un logement indépendant ?\"",
@@ -6485,7 +6485,7 @@
 				{
 					"id": "kqv3atis",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"Est-ce compliqué pour vous d’héberger \" || PRENOM || \" ?\"",
@@ -6567,7 +6567,7 @@
 				{
 					"id": "kqv44b8j",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "4",
 					"label": {
 						"value": "\"➡ \" || \"Est-ce que \" || PRENOM || \" a une chambre indépendante dans votre logement ?\"",
@@ -6677,7 +6677,7 @@
 		{
 			"id": "jojtbo85",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"En quelle année êtes-vous arrivé\" || (if (isnull(SEXEREF)) then \"\" else (if (cast(SEXEREF,string) = \"2\") then \"e\" else \"\")) || \" dans ce logement ?\"",
@@ -6973,7 +6973,7 @@
 		{
 			"id": "kp6iwd90",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"Depuis environ combien d’années êtes-vous arrivé\" || (if (isnull(SEXEREF)) then \"\" else (if (cast(SEXEREF,string) = \"2\") then \"e\" else \"\")) || \" dans ce logement ?\"",
@@ -7036,7 +7036,7 @@
 		{
 			"id": "jojt16mt",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"Quel est le mois de votre arrivée en \" || MAA2A || \" ?\"",
@@ -7131,7 +7131,7 @@
 		{
 			"id": "jojt3qxp",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"Votre conjoint\" || SEXECJ_E || \" est-\" || SEXECJ_IEL || \" arrivé\" || SEXECJ_E || \" dans ce logement en même temps que vous ?\"",
@@ -7178,7 +7178,7 @@
 		{
 			"id": "jojtnq9z",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"En quelle année votre conjoint\" || SEXECJ_E || \" est-\" || SEXECJ_IEL || \" arrivé\" || SEXECJ_E || \" dans ce logement ?\"",
@@ -7473,7 +7473,7 @@
 		{
 			"id": "kp6ja40b",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"Depuis environ combien d’années votre conjoint\" || SEXECJ_E || \" est-\" || SEXECJ_IEL || \" arrivé\" || SEXECJ_E || \" dans ce logement ?\"",
@@ -7548,7 +7548,7 @@
 		{
 			"id": "jor73af6",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"Quel est le mois de son arrivée dans le logement en \" || MAA2AC || \" ?\"",
@@ -7640,7 +7640,7 @@
 		{
 			"id": "jojtsgsr",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"Parmi les membres de votre ménage actuel, une personne habitait-elle déjà dans ce logement, au moment de \" || libMAA3 || \" ?\"",
@@ -7690,7 +7690,7 @@
 		{
 			"id": "jojtutyy",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"En quelle année cette personne est-elle arrivée dans ce logement ?\"",
@@ -8006,7 +8006,7 @@
 		{
 			"id": "jojtizrx",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ \" || \"Quel est le mois de son arrivée dans le logement en \" || MAA3A || \" ?\"",
@@ -8171,7 +8171,7 @@
 		{
 			"id": "jojuueml",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Votre logement dispose-t-il d’une cuisine ?\"",
@@ -8235,7 +8235,7 @@
 		{
 			"id": "jojuno0d",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Quelle est la surface de la cuisine ?\"",
@@ -8320,7 +8320,7 @@
 		{
 			"id": "klv34du0",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Avez-vous une pièce dédiée spécifiquement au télétravail dans votre logement ?\"",
@@ -8389,7 +8389,7 @@
 		{
 			"id": "jojuwst2",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Y a-t-il, dans le logement, des [pièces réservées exclusivement à une activité professionnelle](. 'Ne rentrent pas dans cette catégorie les pièces à usage mixte, utilisées également par les membres de la famille.'), comme un cabinet de dentiste ou d’avocat par exemple ?\"",
@@ -8446,7 +8446,7 @@
 		{
 			"id": "jojv1e5e",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 9,
@@ -8506,7 +8506,7 @@
 		{
 			"id": "jojuz9k3",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 997,
@@ -8574,7 +8574,7 @@
 		{
 			"id": "jojv79ut",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Y a-t-il des pièces annexes à usage d’habitation rattachées au logement avec une entrée indépendante, telles que des chambres de bonne ou d’anciens garages réaménagés en studios par exemple ?\"",
@@ -8624,7 +8624,7 @@
 		{
 			"id": "jojv3ha7",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 9,
@@ -8676,7 +8676,7 @@
 		{
 			"id": "kmd6o006",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Quel usage faites-vous de la pièce annexe ?\"",
@@ -8808,7 +8808,7 @@
 		{
 			"id": "jojuzbus",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 9,
@@ -8867,7 +8867,7 @@
 		{
 			"id": "klv4iusu",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 9,
@@ -8926,7 +8926,7 @@
 		{
 			"id": "jojv5bnw",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 999,
@@ -8964,7 +8964,7 @@
 		{
 			"id": "klw36l7v",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 999,
@@ -9032,7 +9032,7 @@
 		{
 			"id": "jojvgfei",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 100,
@@ -9134,7 +9134,7 @@
 		{
 			"id": "jojv4yqe",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 0,
 			"max": 100,
@@ -9225,7 +9225,7 @@
 		{
 			"id": "jojvc0vt",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 1000,
@@ -9337,7 +9337,7 @@
 		{
 			"id": "jojv1ux1",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Compte tenu du nombre de personnes de votre ménage, comment estimez-vous le nombre de pièces dont vous disposez ?\"",
@@ -9391,7 +9391,7 @@
 		{
 			"id": "kv29cjdq",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Quelle est la [hauteur sous plafond](. 'Lorsque la pièce principale est située sous des combles, la hauteur sous plafond varie. Choisir la réponse correspondant à la partie la plus haute de la pièce.') de votre pièce principale ?\"",
@@ -9468,7 +9468,7 @@
 		{
 			"id": "jrupq1i5",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Avez-vous une véranda ?\"",
@@ -9515,7 +9515,7 @@
 		{
 			"id": "jrupsr80",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 999,
@@ -9550,7 +9550,7 @@
 		{
 			"id": "jrupy93h",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"La surface de la véranda (\" || cast(KSV,string) || \" m²) a t-elle été prise en compte dans la surface totale du logement (\" || cast(HST,string) || \" m²) que vous avez indiquée précédemment ?\"",
@@ -9586,7 +9586,7 @@
 		{
 			"id": "jrupzl7m",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Avez-vous un balcon\" || libKBA1 || \" ou une loggia ?\"",
@@ -9622,7 +9622,7 @@
 		{
 			"id": "jrupx7iz",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 999,
@@ -9657,7 +9657,7 @@
 		{
 			"id": "jruq98v2",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || libKJA || \" un jardin, un terrain ou une cour réservés à votre usage personnel ?\"",
@@ -9693,7 +9693,7 @@
 		{
 			"id": "jruq8x6e",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 100000,
@@ -9761,7 +9761,7 @@
 		{
 			"id": "jruq85av",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Pouvez-vous néanmoins indiquer dans quelle tranche se situe la surface du terrain ?\"",
@@ -9825,7 +9825,7 @@
 		{
 			"id": "jruq4was",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 99999,
@@ -9896,7 +9896,7 @@
 		{
 			"id": "jruq6fv0",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 1,
 			"max": 99999,
@@ -9931,7 +9931,7 @@
 		{
 			"id": "jruqlf39",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Disposez-vous d’espaces extérieurs (jardin, terrain, cour...) en tant que parties communes de la résidence ou de la copropriété ?\"",
@@ -9978,7 +9978,7 @@
 		{
 			"id": "jrusmgfq",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Quelle est la surface de ces espaces partagés ?\"",
@@ -10238,7 +10238,7 @@
 		{
 			"id": "jrut0i0j",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Disposez-vous d’une cave ou d’un sous-sol (même si vous ne l’utilisez pas) ?\"",
@@ -10285,7 +10285,7 @@
 		{
 			"id": "jrusu349",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Disposez-vous, dans les parties communes de \" || libKVELO || \", d’un local fermé où vous pouvez déposer un vélo ou une poussette ?\"",
@@ -10334,7 +10334,7 @@
 		{
 			"id": "jrutj5co",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Disposez-vous d’un grenier ou de combles aménageables, mais non aménagés en pièces d’habitation ?\"",
@@ -10370,7 +10370,7 @@
 		{
 			"id": "jruu4ry3",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Disposez-vous d’un sous-sol non aménagé en pièces d’habitation ?\"",
@@ -10406,7 +10406,7 @@
 		{
 			"id": "jruubukg",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Disposez-vous d’une grange non aménagée en pièces d’habitation ?\"",
@@ -10442,7 +10442,7 @@
 		{
 			"id": "jruue197",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Avez-vous une piscine fixe d’une profondeur de plus de 1 mètre ?\"",
@@ -10513,7 +10513,7 @@
 		{
 			"id": "jruuncm0",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Comment votre logement est-il alimenté en eau ?\"",
@@ -10560,7 +10560,7 @@
 		{
 			"id": "jruv1cla",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Disposez-vous de W-C à l’intérieur du logement ?\"",
@@ -10607,7 +10607,7 @@
 		{
 			"id": "kmeu61l4",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Combien avez-vous de W-C ?\"",
@@ -10729,7 +10729,7 @@
 		{
 			"id": "jruva8uu",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Possédez-vous une salle d’eau ou une salle de bain (pièce contenant une douche ou une baignoire) ?\"",
@@ -10765,7 +10765,7 @@
 		{
 			"id": "kksgd6fv",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Combien avez-vous de salle d’eau ou salle de bain ?\"",
@@ -10884,7 +10884,7 @@
 		{
 			"id": "kmf0xcox",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Avez-vous une douche ou une baignoire installée dans une pièce destinée à un autre usage ?\"",
@@ -10920,7 +10920,7 @@
 		{
 			"id": "jruv164k",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ \" || \"Disposez-vous d’un ou plusieurs lavabos ?\"",
@@ -11051,7 +11051,7 @@
 		{
 			"id": "joicolgp",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Comment estimez-vous vos conditions actuelles de logement ?\"",
@@ -11111,7 +11111,7 @@
 		{
 			"id": "joiccm1l",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"min": 1,
 			"max": 10,
@@ -11177,7 +11177,7 @@
 		{
 			"id": "knio1w9d",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Votre logement présente-t-il les défauts suivants ?\"",
@@ -11325,7 +11325,7 @@
 		{
 			"id": "kninrf3p",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Votre logement présente-t-il les autres défauts suivants ?\"",
@@ -11464,7 +11464,7 @@
 		{
 			"id": "knioggcs",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"L’environnement de votre logement présente-t-il les défauts suivants ?\"",
@@ -11592,7 +11592,7 @@
 		{
 			"id": "kniwyjy0",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Vous plaisez-vous dans votre quartier (ou village) ?\"",
@@ -11639,7 +11639,7 @@
 		{
 			"id": "joidpl4s",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"min": 1,
 			"max": 10,
@@ -11738,7 +11738,7 @@
 		{
 			"id": "kcvx4gaz",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Au cours des 12 derniers mois, l’un des membres du ménage, y compris vous-même, a-t-il déposé ou renouvelé une demande de HLM ?\"",
@@ -11851,7 +11851,7 @@
 		{
 			"id": "joieoqtu",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Auprès de qui \" || libOIH || \" déposé cette demande de HLM ?\"",
@@ -12016,7 +12016,7 @@
 		{
 			"id": "joieparb",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Depuis combien de temps \" || libOIH || \" déposé cette demande de HLM ?\"",
@@ -12109,7 +12109,7 @@
 		{
 			"id": "joiegq0p",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Depuis le dépôt de cette demande de HLM, \" || libOIH || \" refusé une ou plusieurs propositions de logements ?\"",
@@ -12285,7 +12285,7 @@
 		{
 			"id": "joifgmrr",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Souhaitez-vous changer de logement ?\"",
@@ -12327,7 +12327,7 @@
 		{
 			"id": "joifoap2",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Pensez-vous être contraint de quitter votre logement dans les trois ans à venir ?\"",
@@ -12374,7 +12374,7 @@
 		{
 			"id": "joifcbgf",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Pour quelle raison pensez-vous être contraint de quitter votre logement ?\"",
@@ -12452,7 +12452,7 @@
 		{
 			"id": "joifzvkd",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Avez-vous fait une demande de logement dans le cadre de la loi Dalo ([Droit au logement opposable](. 'La loi sur le droit au logement opposable (Dalo) du 5 mars 2007 a instauré un recours pour les personnes mal-logées. La loi désigne l’État comme le garant du droit au logement. La mise en œuvre de cette garantie s’appuie sur un recours amiable ou un recours contentieux.')) ?\"",
@@ -12494,7 +12494,7 @@
 		{
 			"id": "joifs2y7",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Suite à votre demande, avez-vous obtenu un logement dans le cadre de la loi Dalo ?\"",
@@ -12536,7 +12536,7 @@
 		{
 			"id": "joig627d",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Envisagez-vous de quitter votre commune ?\"",
@@ -12583,7 +12583,7 @@
 		{
 			"id": "joig7qe3",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Où envisagez-vous d’aller vous installer ?\"",
@@ -12649,7 +12649,7 @@
 		{
 			"id": "joigb7rg",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Plus précisément, où comptez-vous vivre ?\"",
@@ -12710,7 +12710,7 @@
 		{
 			"id": "joig56ii",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Dans quel département envisagez-vous de vous installer ou de rester ?\"",
@@ -12756,7 +12756,7 @@
 		{
 			"id": "joigkrjq",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Plus précisément, où comptez-vous vivre ?\"",
@@ -12806,7 +12806,7 @@
 		{
 			"id": "joigdh1o",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Plus précisément, où comptez-vous vivre ?\"",
@@ -12876,7 +12876,7 @@
 		{
 			"id": "joigr611",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Quel type de logement envisagez-vous d’occuper ?\"",
@@ -12939,7 +12939,7 @@
 		{
 			"id": "joigyk2a",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Par rapport à votre logement actuel, quelle serait la taille du logement que vous envisagez d’occuper ?\"",
@@ -12991,7 +12991,7 @@
 		{
 			"id": "joigwqiq",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Dans votre futur logement, quel statut d’occupation envisagez-vous ?\"",
@@ -13043,7 +13043,7 @@
 		{
 			"id": "joigrs80",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"min": 1,
 			"max": 1.0e7,
@@ -13121,7 +13121,7 @@
 		{
 			"id": "joigx4x8",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"min": 1,
 			"max": 1.0e7,
@@ -13188,7 +13188,7 @@
 		{
 			"id": "joih1sgy",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Où en êtes-vous de vos démarches ?\"",
@@ -13255,7 +13255,7 @@
 		{
 			"id": "joigwfan",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Quand envisagez-vous de quitter votre logement ?\"",
@@ -13318,7 +13318,7 @@
 		{
 			"id": "knk8j9xd",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"label": {
 				"value": "\"➡ \" || \"Pourquoi n’avez vous pas déposé de demande HLM ?\"",
@@ -13775,7 +13775,7 @@
 				{
 					"id": "kqr0kx1e",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "7",
 					"label": {
 						"value": "\"➡ \" || \"Comment la chambre d’hôtel était-elle payée ?\"",
@@ -13850,7 +13850,7 @@
 				{
 					"id": "kpb8b0vw",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "7",
 					"label": {
 						"value": "\"➡ \" || \"Était-ce un centre d’hébergement pour demandeurs d’asile ou réfugiés ?\"",
@@ -13902,7 +13902,7 @@
 				{
 					"id": "joio5w41",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "7",
 					"label": {
 						"value": "\"➡ \" || \"Combien de situations de ce type \" || (if (PRENOM=PRENOMREF) then \"avez-vous\" else PRENOM || \" a-t-\" || LIB_SUJET) || \" connues ?\"",
@@ -13970,7 +13970,7 @@
 				{
 					"id": "joioebt6",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "7",
 					"label": {
 						"value": "\"➡ \" || \"Combien de temps au total \" || (if (PRENOM=PRENOMREF) then \"avez-vous\" else PRENOM || \" a-t-\" || LIB_SUJET) || \" été dans \" || libSDT || \" ?\"",
@@ -14064,7 +14064,7 @@
 				{
 					"id": "kudultmi",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "7",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Quelle est la première situation de ce type que vous avez connue ?\" else \"Quelle est la première situation de ce type que \" || PRENOM || \" a connue ?\"",
@@ -14182,7 +14182,7 @@
 				{
 					"id": "joo0yx5k",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "7",
 					"label": {
 						"value": "\"➡ \" || \"En quelle année \" || if (isnull(SDN1)) then ( if (PRENOM=PRENOMREF) then \"avez-vous été pour la première fois dans une de ces situations ?\" else PRENOM || \" a-t-\" || LIB_SUJET || \" été pour la première fois dans une de ces situations ?\" ) else (if (SDN1=\"1\") then \"cette situation a-t-elle débuté ?\" else ( if (PRENOM=PRENOMREF) then \"avez-vous été dans cette première situation ?\" else PRENOM || \" a-t-\" || LIB_SUJET || \" été dans cette première situation ?\" ))",
@@ -14860,7 +14860,7 @@
 				{
 					"id": "joo1m3x2",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "7",
 					"label": {
 						"value": "\"➡ \" || \"La première fois que \" || (if (PRENOM=PRENOMREF) then \"vous avez été\" else PRENOM || \" a été\") || \" dans cette situation, combien de temps cela a-t-il duré ?\"",
@@ -14952,7 +14952,7 @@
 				{
 					"id": "kudvobyc",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "7",
 					"label": {
 						"value": "\"➡ \" || if (PRENOM=PRENOMREF) then \"Quelle est la dernière situation de ce type que vous avez connue ?\" else \"Quelle est la dernière situation de ce type que \" || PRENOM || \" a connue ?\"",
@@ -15070,7 +15070,7 @@
 				{
 					"id": "kudvxpft",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "7",
 					"label": {
 						"value": "\"➡ \" || \"En quelle année \" || ( if (PRENOM=PRENOMREF) then \"avez-vous été dans cette dernière situation ?\" else PRENOM || \" a-t-\" || LIB_SUJET || \" été dans cette dernière situation ?\" )",
@@ -15747,7 +15747,7 @@
 				{
 					"id": "kudwrcyp",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "7",
 					"label": {
 						"value": "\"➡ \" || \"La dernière fois que \" || (if (PRENOM=PRENOMREF) then \"vous avez été\" else PRENOM || \" a été\") || \" dans cette situation, combien de temps cela a-t-il duré ?\"",
@@ -16255,7 +16255,7 @@
 		{
 			"id": "jopgtrq1",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Depuis le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \", un des membres de votre ménage actuel, y compris vous-même, a-t-il vendu un ou plusieurs logements ?\"",
@@ -16321,7 +16321,7 @@
 		{
 			"id": "jopgvwb0",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Comment aviez-vous fait l’acquisition de ce logement maintenant vendu ?\"",
@@ -16395,7 +16395,7 @@
 		{
 			"id": "jopgzovi",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || libVFLA || \" était-il votre résidence principale ?\"",
@@ -16454,7 +16454,7 @@
 		{
 			"id": "koeabibm",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Depuis le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \", un des membres de votre ménage actuel, y compris vous-même, a-t-il acheté un ou plusieurs logements, comme une résidence principale, secondaire, un logement destiné à être loué, etc. ?\"",
@@ -16509,7 +16509,7 @@
 		{
 			"id": "joph9za3",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Par rapport au prix du \" || libVBILLOG1 || \", comment était le prix du \" || libVBILLOG2 || \" ?\"",
@@ -16588,7 +16588,7 @@
 		{
 			"id": "jopkquw3",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Où habitiez-vous le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\"",
@@ -16681,7 +16681,7 @@
 		{
 			"id": "jopl7p41",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Dans quelle commune habitiez-vous le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\"",
@@ -16749,7 +16749,7 @@
 		{
 			"id": "joplihpv",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Dans quel département habitiez-vous le 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\"",
@@ -16818,7 +16818,7 @@
 		{
 			"id": "joplkxrd",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"maxLength": 30,
 			"label": {
@@ -16866,7 +16866,7 @@
 		{
 			"id": "jopldlvn",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"maxLength": 30,
 			"label": {
@@ -16929,7 +16929,7 @@
 		{
 			"id": "joplorns",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \", quelle était votre situation ?\"",
@@ -17001,7 +17001,7 @@
 		{
 			"id": "joplzrmo",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \", comment votre ménage occupait-il ce logement ?\"",
@@ -17091,7 +17091,7 @@
 		{
 			"id": "jopri4xh",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Quel était le régime juridique du loyer ?\"",
@@ -17167,7 +17167,7 @@
 		{
 			"id": "joprsm9u",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 0,
 			"max": 1.0e6,
@@ -17261,7 +17261,7 @@
 		{
 			"id": "joprlyql",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Bénéficiez-vous au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" de l’allocation logement ou de l’aide personnalisée au logement (APL) ?\"",
@@ -17322,7 +17322,7 @@
 		{
 			"id": "joprp441",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 1,
 			"max": 24,
@@ -17413,7 +17413,7 @@
 		{
 			"id": "jopruzlo",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"À quoi correspondait le logement occupé au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\"",
@@ -17483,7 +17483,7 @@
 		{
 			"id": "jopsc29x",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 1,
 			"max": 999,
@@ -17550,7 +17550,7 @@
 		{
 			"id": "jops4c0x",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 1,
 			"max": 20,
@@ -17631,7 +17631,7 @@
 		{
 			"id": "jopsjl1n",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 0,
 			"max": 100,
@@ -17711,7 +17711,7 @@
 		{
 			"id": "jopsiigq",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Quelle était votre situation professionnelle au 1er \" || libMOISENQ || \" \" || cast(ANNEENQmoins4,string) || \" ?\"",
@@ -17834,7 +17834,7 @@
 		{
 			"id": "jopsrdb3",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 0,
 			"max": 9,
@@ -17905,7 +17905,7 @@
 		{
 			"id": "joptkb9d",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Juste avant d’habiter dans votre logement actuel, où résidiez-vous ?\"",
@@ -17973,7 +17973,7 @@
 		{
 			"id": "jopu7wfr",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Avant d’occuper votre logement actuel, quelle était votre situation ?\"",
@@ -18056,7 +18056,7 @@
 		{
 			"id": "jopua1hn",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Comment votre ménage occupait-il le précédent logement ?\"",
@@ -18145,7 +18145,7 @@
 		{
 			"id": "jopuofnr",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"Quel était le régime juridique du loyer ?\"",
@@ -18255,7 +18255,7 @@
 		{
 			"id": "jopuhzbr",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ \" || \"À quoi correspondait votre précédent logement ?\"",
@@ -18320,7 +18320,7 @@
 		{
 			"id": "jopukm75",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 1,
 			"max": 997,
@@ -18382,7 +18382,7 @@
 		{
 			"id": "joputbjc",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 1,
 			"max": 20,
@@ -19000,7 +19000,7 @@
 		{
 			"id": "kp55gaf4",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"label": {
 				"value": "\"➡ \" || \"Comment est votre état de santé en général ?\"",
@@ -19037,7 +19037,7 @@
 		{
 			"id": "kp56b045",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"label": {
 				"value": "\"➡ \" || \"Avez-vous une maladie ou un problème de santé qui soit chronique ou de caractère durable ?\"",
@@ -19079,7 +19079,7 @@
 		{
 			"id": "kp56ml0f",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"label": {
 				"value": "\"➡ \" || \"Êtes-vous limité\" || (if (isnull(SEXEREF)) then \"\" else (if (cast(SEXEREF,string) = \"2\") then \"e\" else \"\")) || \", depuis au moins 6 mois, à cause d’un problème de santé, dans les activités que les gens font habituellement ?\"",
@@ -19186,7 +19186,7 @@
 				{
 					"id": "kp56qgdl",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "9",
 					"label": {
 						"value": "\"➡ \" || \"Comment est l’état de santé de \" || PRENOM || \" en général ?\"",
@@ -19242,7 +19242,7 @@
 				{
 					"id": "kp56xi4v",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "9",
 					"label": {
 						"value": "\"➡ \" || PRENOM || \" a-t-\" || LIB_SUJET || \" une maladie ou un problème de santé qui soit chronique ou de caractère durable ?\"",
@@ -19295,7 +19295,7 @@
 				{
 					"id": "kp5712k1",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "9",
 					"label": {
 						"value": "\"➡ \" || PRENOM || \" est-\" || LIB_SUJET || \" limité\" || LIB_FEM || \", depuis au moins 6 mois, à cause d’un problème de santé, dans les activités que les gens font habituellement ?\"",
@@ -19391,7 +19391,7 @@
 		{
 			"id": "kp59rky6",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"label": {
 				"value": "\"➡ \" || \"Où est né votre père ?\"",
@@ -19455,7 +19455,7 @@
 		{
 			"id": "kp59rmtt",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"label": {
 				"value": "\"➡ \" || \"Dans quel pays est né votre père ?\"",
@@ -19604,7 +19604,7 @@
 		{
 			"id": "kp59tm8h",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"label": {
 				"value": "\"➡ \" || \"Où est née votre mère ?\"",
@@ -19657,7 +19657,7 @@
 		{
 			"id": "kp59nici",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"label": {
 				"value": "\"➡ \" || \"Dans quel pays est née votre mère ?\"",
@@ -19852,7 +19852,7 @@
 		{
 			"id": "kp5apvf3",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"label": {
 				"value": "\"➡ \" || \"Vous ou une autre personne de votre ménage, décrochez-vous lorsque votre téléphone fixe sonne ?\"",
@@ -19928,7 +19928,7 @@
 		{
 			"id": "kp5au0iu",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"label": {
 				"value": "\"➡ \" || \"Décrochez-vous lorsque votre téléphone mobile sonne ?\"",
@@ -20004,7 +20004,7 @@
 		{
 			"id": "kp5bjbzg",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"label": {
 				"value": "\"➡ \" || \"Comment avez-vous utilisé Internet, au cours des trois derniers mois, en moyenne ?\"",
@@ -20109,7 +20109,7 @@
 		{
 			"id": "kbamkrlv",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"label": {
 				"value": "\"➡ \" || \"Les courriers que nous vous envoyons dans le cadre de cette enquête sont adressés à : \" || libCHGNC || \". Cela vous convient-il ?\"",
@@ -20148,7 +20148,7 @@
 		{
 			"id": "kbaxq9l0",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"label": {
 				"value": "\"➡ \" || \"Civilité du \" || if (not(isnull(NOMVOUS_D2)) and NOMVOUS_D2<>\"\") then \"premier destinataire :\" else \" destinataire :\"",
@@ -20198,7 +20198,7 @@
 		{
 			"id": "kr0fw3n6",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"maxLength": 20,
 			"label": {
@@ -20233,7 +20233,7 @@
 		{
 			"id": "kr0fn06f",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"maxLength": 40,
 			"label": {
@@ -20268,7 +20268,7 @@
 		{
 			"id": "kwjivaa1",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"label": {
 				"value": "\"➡ \" || \"Souhaitez-vous ajouter un deuxième destinataire au courrier que nous vous envoyons ?\"",
@@ -20307,7 +20307,7 @@
 		{
 			"id": "kr0fr82y",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"label": {
 				"value": "\"➡ \" || \"Civilité du deuxième destinataire :\"",
@@ -20363,7 +20363,7 @@
 		{
 			"id": "kbbzjgn8",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"maxLength": 20,
 			"label": {
@@ -20404,7 +20404,7 @@
 		{
 			"id": "kbbzhtx3",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"maxLength": 40,
 			"label": {
@@ -20472,7 +20472,7 @@
 		{
 			"id": "kbay0xfi",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"maxLength": 10,
 			"label": {

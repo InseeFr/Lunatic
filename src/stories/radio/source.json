@@ -3,7 +3,7 @@
 		{
 			"id": "radio",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"Label for a Radio component\"",

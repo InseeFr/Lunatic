@@ -4,7 +4,7 @@
 		{
 			"id": "how",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "1",
 			"min": 1,
 			"max": 10,
@@ -32,7 +32,7 @@
 				{
 					"id": "prenom",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 20,
 					"label": {
 						"value": "\"Prénom\"))",
@@ -92,7 +92,7 @@
 				{
 					"id": "radio",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "3.1",
 					"label": {
 						"value": "\"Connaissez-vous le recensement de la population ?\"",
