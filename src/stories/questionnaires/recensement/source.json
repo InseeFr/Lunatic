@@ -36,7 +36,7 @@
 		{
 			"id": "kkxuu8ov",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 80,
 			"label": {
@@ -71,7 +71,7 @@
 		{
 			"id": "kkxv0qgj",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 249,
 			"label": {
@@ -106,7 +106,7 @@
 		{
 			"id": "l8twtrc9",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 4,
 			"label": { "value": "\"➡ 3. \" || \"N°\"", "type": "VTL|MD" },
@@ -146,7 +146,7 @@
 		{
 			"id": "l8twwcvn",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 4,
 			"label": { "value": "\"➡ 4. \" || \"Bis, ...\"", "type": "VTL|MD" },
@@ -175,7 +175,7 @@
 		{
 			"id": "l8twyzo4",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 27,
 			"label": { "value": "\"➡ 5. \" || \"Rue, Av, ...\"", "type": "VTL|MD" },
@@ -204,7 +204,7 @@
 		{
 			"id": "l8twy1k6",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 80,
 			"label": {
@@ -236,7 +236,7 @@
 		{
 			"id": "l8tx81u3",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 40,
 			"label": {
@@ -268,7 +268,7 @@
 		{
 			"id": "l8tx1vsp",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 20,
 			"label": { "value": "\"➡ 8. \" || \"Bâtiment\"", "type": "VTL|MD" },
@@ -297,7 +297,7 @@
 		{
 			"id": "l8txj55d",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 10,
 			"label": { "value": "\"➡ 9. \" || \"Escalier\"", "type": "VTL|MD" },
@@ -326,7 +326,7 @@
 		{
 			"id": "l8txiop1",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 3,
 			"label": { "value": "\"➡ 10. \" || \"Étage\"", "type": "VTL|MD" },
@@ -355,7 +355,7 @@
 		{
 			"id": "l8txsdqj",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 40,
 			"label": {
@@ -387,7 +387,7 @@
 		{
 			"id": "l8txcnai",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 5,
 			"label": { "value": "\"➡ 12. \" || \"Code postal\"", "type": "VTL|MD" },
@@ -416,7 +416,7 @@
 		{
 			"id": "l8txo3fk",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"maxLength": 80,
 			"label": {
@@ -469,7 +469,7 @@
 		{
 			"id": "klqmzxr4",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ 14. \" || \"Quel est le type de logement ?\"",
@@ -536,7 +536,7 @@
 		{
 			"id": "klqmu096",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"label": {
 				"value": "\"➡ 15. \" || \"Ce logement est-il desservi par un ascenseur ?\"",
@@ -578,7 +578,7 @@
 		{
 			"id": "klqn2o7t",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"label": {
 				"value": "\"➡ 16. \" || \"Quelle est l’année d’achèvement de la construction de la maison ou de l’immeuble ?\"",
@@ -655,7 +655,7 @@
 		{
 			"id": "klqn3zmk",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"min": 2006,
 			"max": 2023,
@@ -714,7 +714,7 @@
 		{
 			"id": "klqncpes",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "7",
 			"maxLength": 4,
 			"label": {
@@ -775,7 +775,7 @@
 		{
 			"id": "klqns4rj",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 0,
 			"max": 200,
@@ -872,7 +872,7 @@
 		{
 			"id": "klqnxdxp",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"label": {
 				"value": "\"➡ 20. \" || \"Quelle est la surface de ce logement ?\"",
@@ -964,7 +964,7 @@
 		{
 			"id": "klqns2qd",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"label": { "value": "\"➡ 21. \" || \"Êtes-vous :\"", "type": "VTL|MD" },
 			"conditionFilter": { "value": "true", "type": "VTL" },
@@ -1029,7 +1029,7 @@
 		{
 			"id": "klqnr6f5",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"label": {
 				"value": "\"➡ 22. \" || \"Ce logement appartient-il à un organisme d’HLM ?\"",
@@ -1068,7 +1068,7 @@
 		{
 			"id": "klqobgcg",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"label": {
 				"value": "\"➡ 23. \" || \"Quelles sont les installations sanitaires de ce logement ?\"",
@@ -1125,7 +1125,7 @@
 		{
 			"id": "klqnzaud",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "11",
 			"label": {
 				"value": "\"➡ 24. \" || \"Quel est le principal moyen de chauffage de ce logement ?\"",
@@ -1193,7 +1193,7 @@
 		{
 			"id": "klqo6tay",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "11",
 			"label": {
 				"value": "\"➡ 25. \" || \"Quel est le combustible principal de chauffage ?\"",
@@ -1267,7 +1267,7 @@
 		{
 			"id": "klqor7p0",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "12",
 			"label": {
 				"value": "\"➡ 26. \" || \"De combien de voitures les habitants de ce logement disposent-ils ?\"",
@@ -1333,7 +1333,7 @@
 		{
 			"id": "klqolz63",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "12",
 			"label": {
 				"value": "\"➡ 27. \" || \"Disposez-vous d’un emplacement de stationnement réservé à votre usage personnel ?\"",
@@ -1566,7 +1566,7 @@
 				{
 					"id": "klqpfz6h",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "14",
 					"maxLength": 50,
 					"label": { "value": "\"➡ 28. \" || \"Nom\"", "type": "VTL|MD" },
@@ -1595,7 +1595,7 @@
 				{
 					"id": "l4r3a6xc",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "14",
 					"maxLength": 50,
 					"label": { "value": "\"➡ 29. \" || \"Prénom\"", "type": "VTL|MD" },
@@ -1625,7 +1625,7 @@
 				{
 					"id": "l4r3hyyi",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "14",
 					"label": { "value": "\"➡ 30. \" || \"Sexe\"", "type": "VTL|MD" },
 					"conditionFilter": { "value": "true", "type": "VTL" },
@@ -1659,7 +1659,7 @@
 				{
 					"id": "l4r33zxd",
 					"componentType": "Datepicker",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "14",
 					"min": "1900-01-01",
 					"max": "2050-01-01",
@@ -1913,7 +1913,7 @@
 				{
 					"id": "l4si0s6m",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "35.1",
 					"label": {
 						"value": "\"➡ 33. \" || \"Est-ce que \" || (if (isnull(PRENOM)) then \"cet habitant\" else PRENOM) || \" \" || (if (isnull(NOM)) then \"\" else NOM) || \" vit dans ce logement de façon permanente la plus grande partie de l’année ?\"",
@@ -1949,7 +1949,7 @@
 				{
 					"id": "la1116gn",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "35.2",
 					"label": {
 						"value": "\"➡ 34. \" || \"Est-ce que \" || (if isnull(PRENOM) then \"cet habitant\" else PRENOM) || \" \" || (if isnull(NOM) then \"\" else NOM) || \" vit aussi dans un autre logement?\"",
@@ -1992,7 +1992,7 @@
 				{
 					"id": "la10e1vu",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "35.3",
 					"label": {
 						"value": "\"➡ 35. \" || \"Est-ce que \" || (if isnull(PRENOM) then \"cet habitant\" else PRENOM) || \" \" || (if isnull(NOM) then \"\" else NOM) || \" vit aussi dans un autre logement:\"",
@@ -2064,7 +2064,7 @@
 				{
 					"id": "l4shx8xq",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "35.4",
 					"label": {
 						"value": "\"➡ 36. \" || \"En raison de ses études, \" || (if isnull(PRENOM) then \"cet habitant\" else PRENOM) || \" \" || (if isnull(NOM) then \"\" else NOM)",
@@ -2124,7 +2124,7 @@
 				{
 					"id": "l4siaw4u",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "35.5",
 					"label": {
 						"value": "\"➡ 37. \" || \"Pour des raisons professionnelles, \" || (if isnull(PRENOM) then \"cet habitant\" else PRENOM) || \" \" || (if isnull(NOM) then \"\" else NOM)",
@@ -2183,7 +2183,7 @@
 				{
 					"id": "l4sif8zo",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "35.6",
 					"label": {
 						"value": "\"➡ 38. \" || \"Suite à une séparation ou un divorce, \" || (if (isnull(PRENOM)) then \"cet habitant\" else PRENOM) || \" \" || (if (isnull(NOM)) then \"\" else NOM) || \" [habite également chez son autre parent (père ou mère) et](. 'Il s’agit d’indiquer le temps moyen passé par l’enfant sur l’ensemble de l’année civile.'):\"",
@@ -2250,7 +2250,7 @@
 				{
 					"id": "l4sib0y2",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "35.7",
 					"label": {
 						"value": "\"➡ 39. \" || \"A-t-\" || LIB_ILELLE || \" dormi ici la nuit du début du recensement, [soit du dimanche 31 août au lundi 1 septembre](. 'En cas d’égalité de temps passé chez chacun de ses parents, l’enfant est recensé dans le logement où il a dormi la nuit du premier jour de la collecte, c’est-à-dire la nuit du dimanche 31 août au lundi 1 septembre. En effet, l’Insee utilise une règle pour définir chez lequel des deux parents un enfant doit être recensé pour éviter de compter deux fois le même enfant. Il n’y a dans cette règle, ni jugement de valeur, ni incidence sur la vie des parents ou celle des enfants puisque les questionnaires seront anonymisés dès la collecte terminée. La vocation de cette règle est purement statistique.') ?\"",
@@ -2298,7 +2298,7 @@
 				{
 					"id": "l4sijh95",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "35.8",
 					"label": {
 						"value": "\"➡ 40. \" || (if isnull(PRENOM) then \"cet habitant\" else PRENOM) || \" \" || (if isnull(NOM) then \"\" else NOM) || \" est dans une autre situation, car \" || LIB_ILELLE || \" :\"",
@@ -2519,7 +2519,7 @@
 				{
 					"id": "l4pt4wej",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.2",
 					"label": {
 						"value": "\"➡ 41. \" || \"[Quel est votre lieu de naissance ?](. 'Le lieu de naissance permet de savoir si les personnes vivent toujours dans le même département que celui de leur naissance. <br><br> Si vous êtes né dans une ancienne colonie ou un ancien département français, <br><br> veuillez cocher ’ né à l’étranger ’ et indiquer le nom actuel de l’ancienne colonie ou département. <br><br> Par exemple, si vous êtes né à Alger en 1948 alors ancien département français, <br><br> veuillez cocher « né à l’étranger » et indiquer dans les cases suivantes, Commune : Alger, Pays : Algérie. <br><br> Pour l’année d’arrivée en France, indiquez l’année d’arrivée en France métropolitaine, <br> <br> dans un DOM (La Réunion, Guadeloupe, Martinique, Guyane, Mayotte) ou dans une COM (Wallis et Futuna, Nouvelle-Calédonie, Polynésie Française, Saint-Martin, Saint-Barthélemy, Saint-Pierre-et-Miquelon.')\"",
@@ -2595,7 +2595,7 @@
 				{
 					"id": "l4siytrb",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.3",
 					"maxLength": 249,
 					"label": {
@@ -2651,7 +2651,7 @@
 				{
 					"id": "l4sivtf2",
 					"componentType": "Suggester",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.4",
 					"maxLength": 249,
 					"label": {
@@ -2711,7 +2711,7 @@
 				{
 					"id": "l4sjc30k",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.5",
 					"maxLength": 249,
 					"label": {
@@ -2770,7 +2770,7 @@
 				{
 					"id": "l4sjeuhw",
 					"componentType": "Suggester",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.6",
 					"label": {
 						"value": "\"➡ 45. \" || \"Indiquez le pays de naissance\"",
@@ -4048,7 +4048,7 @@
 				{
 					"id": "l4pt6jhk",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.7",
 					"maxLength": 4,
 					"label": {
@@ -4098,7 +4098,7 @@
 				{
 					"id": "l4qqmjj7",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.8",
 					"label": {
 						"value": "\"➡ 47. \" || \"[Quelle est votre nationalité ?](. 'Toutes les personnes habitant en France sont recensées, y compris les étrangers vivant en France, quelque soit leur situation légale. <br><br>Cette question permet d’établir des statistiques sur la composition de la population de la France et son évolution. <br><br> Elle permet également une meilleure connaissance des populations étrangères vivant en France : origine, structure par âge et par sexe, activité professionnelle...')\"",
@@ -4168,7 +4168,7 @@
 				{
 					"id": "l4qqb3h6",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.9",
 					"label": {
 						"value": "\"➡ 48. \" || \"Indiquez votre nationalité à la naissance\"",
@@ -5200,7 +5200,7 @@
 				{
 					"id": "l4qqnfp1",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.10",
 					"label": {
 						"value": "\"➡ 49. \" || \"Indiquez votre nationalité\"",
@@ -6224,7 +6224,7 @@
 				{
 					"id": "l4qqjvo0",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.11",
 					"label": {
 						"value": "\"➡ 50. \" || \"[Êtes-vous inscrit dans un établissement d’enseignement pour l’année scolaire en cours ?](. 'Si votre enfant est inscrit dans une crèche (municipale, associative...) cochez Non. <br><br> Pour les personnes inscrites dans un établissement d’enseignement à distance, <br><br> cochez oui et indiquez que votre établissement est situé dans votre commune de résidence. <br><br> Cette question a en effet pour objectif principal de mesurer les distances entre le domicile et le lieu d’études. <br><br> Le lieu d’études donne également des informations utilisées, par exemple, par les pouvoirs publics pour mettre en place des transports adaptés tels que les cars de ramassage scolaire.')\"",
@@ -6285,7 +6285,7 @@
 				{
 					"id": "l4qqhypl",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.12",
 					"label": {
 						"value": "\"➡ 51. \" || \"Où est situé cet établissement d’enseignement ?\"",
@@ -6343,7 +6343,7 @@
 				{
 					"id": "l4qqdyj7",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.13",
 					"maxLength": 249,
 					"label": {
@@ -6380,7 +6380,7 @@
 				{
 					"id": "l4sjftkz",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.14",
 					"maxLength": 249,
 					"label": {
@@ -6417,7 +6417,7 @@
 				{
 					"id": "la11kurt",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.15",
 					"maxLength": 249,
 					"label": {
@@ -6460,7 +6460,7 @@
 				{
 					"id": "l8ve1ppw",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.16",
 					"label": {
 						"value": "\"➡ 55. \" || \"Indiquez le pays\"",
@@ -7721,7 +7721,7 @@
 				{
 					"id": "l4qqjzhe",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.17",
 					"label": {
 						"value": "\"➡ 56. \" || \"Où habitiez-vous le 1er janvier 2022?\"",
@@ -7800,7 +7800,7 @@
 				{
 					"id": "l4qqsn31",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.18",
 					"maxLength": 249,
 					"label": {
@@ -7859,7 +7859,7 @@
 				{
 					"id": "l4sje88c",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.19",
 					"maxLength": 249,
 					"label": {
@@ -7909,7 +7909,7 @@
 				{
 					"id": "l4wupd9t",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.20",
 					"maxLength": 249,
 					"label": {
@@ -7968,7 +7968,7 @@
 				{
 					"id": "l4sje7o2",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.21",
 					"label": {
 						"value": "\"➡ 60. \" || \"Indiquez cet autre pays\"",
@@ -9263,7 +9263,7 @@
 				{
 					"id": "l4qqx4rt",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.22",
 					"label": {
 						"value": "\"➡ 61. \" || \"Vivez-vous en couple ?\"",
@@ -9610,7 +9610,7 @@
 				{
 					"id": "l4qsy1vz",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.25",
 					"label": {
 						"value": "\"➡ 64. \" || \"Quelle est votre situation principale ?\"",
@@ -9719,7 +9719,7 @@
 				{
 					"id": "l4qspm1d",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.26",
 					"label": {
 						"value": "\"➡ 65. \" || \"[Travaillez-vous actuellement ?](. 'Si vous êtes en congé parental cochez « Non ».')\"",
@@ -9779,7 +9779,7 @@
 				{
 					"id": "l4qsqmx0",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.27",
 					"label": {
 						"value": "\"➡ 66. \" || \"Avez-vous déjà travaillé ?\"",
@@ -9833,7 +9833,7 @@
 				{
 					"id": "l4qsubmh",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.28",
 					"label": {
 						"value": "\"➡ 67. \" || \"Etiez-vous\"",
@@ -9920,7 +9920,7 @@
 				{
 					"id": "l4qzqr81",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.29",
 					"maxLength": 249,
 					"label": {
@@ -9976,7 +9976,7 @@
 				{
 					"id": "l4r06i85",
 					"componentType": "CheckboxOne",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.30",
 					"label": {
 						"value": "\"➡ 69. \" || \"[Cherchez-vous un emploi ?](. 'Si vous cherchez un emploi, cochez « oui » que vous soyez inscrit ou non au Pôle Emploi. La recherche d’emploi s’entend par des contact avec le Pôle Emploi ou une agence d’intérim ou des contacts personnels, des envois de candidatures, la recherche sur petites annonces, par concours, etc.')\"",
@@ -10090,7 +10090,7 @@
 				{
 					"id": "l9cwedq8",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.32",
 					"maxLength": 249,
 					"label": {
@@ -10188,7 +10188,7 @@
 				{
 					"id": "l4r03u32",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.33",
 					"maxLength": 249,
 					"label": {
@@ -10259,7 +10259,7 @@
 				{
 					"id": "l4wtzdtq",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.34",
 					"label": {
 						"value": "\"➡ 72. \" || \"[Votre lieu de travail](. 'Les questions sur le lieu de travail permettent d’établir des statistiques sur la distance <br><br> et le temps de transport entre le domicile et le lieu de travail de la population afin de déterminer les moyens de transport à développer.<br><br> Si vous exercez plusieurs emplois, répondez uniquement pour votre emploi principal.<br><br> Si vous êtes employé par plusieurs particuliers vous rémunérant en chèques emploi-service, indiquez « Particuliers »<br><br> Si vous êtes assistante maternelle, cochez « à votre domicile » si vous accueillez les enfants chez vous <br><br> ou « chez un particulier » si vous gardez les enfants dans leur famille.')\"",
@@ -10356,7 +10356,7 @@
 				{
 					"id": "l4r0f6dh",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.35",
 					"label": {
 						"value": "\"➡ 73. \" || \"[Votre lieu de travail](. 'L’adresse du lieu de travail permet d’une part de déterminer l’activité économique de l’employeur <br><br> à partir du répertoire des entreprises (Sirene) géré par l’Insee. <br><br> Cette information permet d’autre part d’établir des statistiques sur la distance et le temps de transport entre le domicile et le lieu de travail de la population <br><br> afin de déterminer les moyens de transport à développer.<br><br> Si vous exercez plusieurs emplois, répondez uniquement pour votre emploi principal.') se situe-t-il principalement dans la commune où vous résidez?\"",
@@ -10414,7 +10414,7 @@
 				{
 					"id": "l4r0k3r8",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.36",
 					"label": {
 						"value": "\"➡ 74. \" || \"L’adresse de votre lieu de travail est-elle:\"",
@@ -10474,7 +10474,7 @@
 				{
 					"id": "l4r0g12m",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.37",
 					"maxLength": 249,
 					"label": {
@@ -10518,7 +10518,7 @@
 				{
 					"id": "l8voyq7i",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.38",
 					"maxLength": 249,
 					"label": {
@@ -10569,7 +10569,7 @@
 				{
 					"id": "l8vp7req",
 					"componentType": "Dropdown",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.39",
 					"label": {
 						"value": "\"➡ 77. \" || \"Indiquez le pays:\"",
@@ -11838,7 +11838,7 @@
 				{
 					"id": "l4r0vnk8",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.40",
 					"label": {
 						"value": "\"➡ 78. \" || \"[Quel mode de transport principal utilisez-vous le plus souvent pour aller travailler ?](. 'Si vous exercez plusieurs emplois, répondez uniquement pour votre emploi principal.<br><br> En cas de covoiturage cochez « Voiture, camion ou fourgonnette »')\"",
@@ -11927,7 +11927,7 @@
 				{
 					"id": "l4r0qt6t",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.41",
 					"label": {
 						"value": "\"➡ 79. \" || \"[Occupez-vous votre emploi :](. 'Si vous exercez plusieurs emplois, répondez uniquement pour votre emploi principal.')\"",
@@ -11987,7 +11987,7 @@
 				{
 					"id": "l4r0vfv4",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.42",
 					"label": {
 						"value": "\"➡ 80. \" || \"[Etes-vous](. 'Si vous exercez plusieurs emplois, répondez uniquement pour votre emploi principal.')\"",
@@ -12066,7 +12066,7 @@
 				{
 					"id": "l4r0r5tt",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.43",
 					"label": {
 						"value": "\"➡ 81. \" || \"[Combien de salariés employez-vous ?](. 'Ne comptez que les salariés : ne comptez pas les personnes qui vous aident sans être rémunérées. <br><br> Si vous exercez plusieurs emplois, répondez uniquement pour votre emploi principal.')\"",
@@ -12124,7 +12124,7 @@
 				{
 					"id": "l4r10bz9",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.44",
 					"maxLength": 249,
 					"label": {
@@ -12212,7 +12212,7 @@
 				{
 					"id": "l4r16kh4",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.45",
 					"label": {
 						"value": "\"➡ 83. \" || \"Quel est votre [type de contrat ou d'emploi](. 'CES : contrat d’emploi solidarité<br><br> Si vous êtes en Contrat initiative emploi (CIE) ou en contrat d’accompagnement à l’emploi (CAE) cochez « Emploi jeune, CES, contrat de qualification ou autre emploi »<br><br> Si vous exercez plusieurs emplois, répondez uniquement pour votre emploi principal.') ?\"",
@@ -12316,7 +12316,7 @@
 				{
 					"id": "l4r2lvm2",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.46",
 					"label": {
 						"value": "\"➡ 84. \" || \"[Dans votre emploi, êtes-vous](. 'Si vous êtes instituteur, cochez « agent de catégorie B ».<br> Si vous êtes professeur des écoles, cochez « agent de catégorie A ».<br><br> VRP : Voyageur, Représentant, Placier<br><br>Si vous exercez plusieurs emplois, répondez uniquement pour votre emploi principal.')\"",
@@ -12444,7 +12444,7 @@
 				{
 					"id": "l4r2pald",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.47",
 					"maxLength": 249,
 					"label": {
@@ -12511,7 +12511,7 @@
 				{
 					"id": "l4r2ho48",
 					"componentType": "Radio",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.48",
 					"label": {
 						"value": "\"➡ 86. \" || \"Dans votre emploi, quelle est votre [fonction principale](. 'Pour les emplois occasionnels ou de très courte durée,<br> précisez l’emploi saisonnier actuel.<br> Si vous exercez plusieurs emplois,<br> répondez uniquement pour votre emploi principal.') ?\"",
@@ -12638,7 +12638,7 @@
 				{
 					"id": "l4wve0rs",
 					"componentType": "CheckboxBoolean",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "37.49",
 					"label": {
 						"value": "\"➡ 87. \" || \"Le questionnaire de \" || (if (isnull(PRENOM)) then \"cet habitant\" else PRENOM) || \" \" || (if (isnull(NOM)) then \"\" else NOM) || \" est terminé. Pour valider le questionnaire, veuillez cocher la case puis cliquer sur le bouton \"Suivant\". \"",
@@ -12718,7 +12718,7 @@
 		{
 			"id": "COMMENT-QUESTION",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "22",
 			"maxLength": 2000,
 			"label": {

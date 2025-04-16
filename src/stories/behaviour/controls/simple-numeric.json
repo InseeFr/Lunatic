@@ -64,7 +64,7 @@
 		{
 			"id": "k0dzbfek",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "2",
 			"min": 0,
 			"max": 100,
@@ -132,7 +132,7 @@
 		{
 			"id": "kd0a6rn3",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"min": 0,
 			"max": 100,
@@ -178,7 +178,7 @@
 		{
 			"id": "kd0a8h62",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"min": 0,
 			"max": 100,
@@ -238,7 +238,7 @@
 		{
 			"id": "kd0a4t4f",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "5",
 			"min": 0,
 			"max": 100,
@@ -298,7 +298,7 @@
 		{
 			"id": "kd0ac92p",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"min": 0,
 			"max": 100,
@@ -358,7 +358,7 @@
 		{
 			"id": "k1cahy88",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "7",
 			"min": 0,
 			"max": 9,
@@ -407,7 +407,7 @@
 		{
 			"id": "kd0ch7pf",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": 0,
 			"max": 9,
@@ -469,7 +469,7 @@
 		{
 			"id": "kd0aamy0",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"min": -100,
 			"max": 100,
@@ -631,7 +631,7 @@
 		{
 			"id": "kd0aa5ah",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"min": -100,
 			"max": 100,
@@ -708,7 +708,7 @@
 		{
 			"id": "l5qvuk9e",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "11",
 			"min": -100,
 			"max": 100,
@@ -765,7 +765,7 @@
 		{
 			"id": "l5qvtc2l",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "12",
 			"min": -100,
 			"max": 100,
@@ -822,7 +822,7 @@
 		{
 			"id": "kd0c3h3b",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "13",
 			"min": 0,
 			"max": 1000000000,
@@ -929,7 +929,7 @@
 		{
 			"id": "kd0achk0",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "15",
 			"min": -100,
 			"max": 100,
@@ -974,7 +974,7 @@
 		{
 			"id": "kd0bl558",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "16",
 			"min": -100,
 			"max": 100,
@@ -1092,7 +1092,7 @@
 		{
 			"id": "l5qt3xu9",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "17",
 			"min": 0,
 			"max": 100,
@@ -1149,7 +1149,7 @@
 		{
 			"id": "kd0bu8xz",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "18",
 			"min": -400,
 			"max": 400,
@@ -1237,7 +1237,7 @@
 		{
 			"id": "k0gj7g4v",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "19",
 			"min": -200,
 			"max": 200,
@@ -1345,7 +1345,7 @@
 		{
 			"id": "kd0bx24r",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "20",
 			"min": -400,
 			"max": 400,
@@ -1439,7 +1439,7 @@
 		{
 			"id": "kd0c2j4a",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "21",
 			"min": -400,
 			"max": 400,

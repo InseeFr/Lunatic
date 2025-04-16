@@ -4,7 +4,7 @@
 		{
 			"id": "checkboxone",
 			"componentType": "CheckboxOne",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"checkboxone ONE component\"",

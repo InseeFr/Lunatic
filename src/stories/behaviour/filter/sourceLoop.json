@@ -152,7 +152,7 @@
 					"response": {
 						"name": "NBHAB"
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"description": {
 						"type": "TXT",
 						"value": "Format attendu : un nombre entre 1 et 10"
@@ -209,7 +209,7 @@
 							"response": {
 								"name": "NAME"
 							},
-							"mandatory": false,
+							"isMandatory": false,
 							"maxLength": 249,
 							"componentType": "Input"
 						}
@@ -311,7 +311,7 @@
 							"response": {
 								"name": "AGE"
 							},
-							"mandatory": false,
+							"isMandatory": false,
 							"description": {
 								"type": "TXT",
 								"value": "Format attendu : un nombre entre 1 et 200"

@@ -338,7 +338,7 @@ export type ComponentDefinitionBase = {
 	conditionFilter?: VTLScalarExpression;
 	controls?: ControlDefinition[];
 	id: string;
-	mandatory?: boolean;
+	isMandatory?: boolean;
 	missingResponse?: ResponseDefinition;
 };
 export type Declaration = {

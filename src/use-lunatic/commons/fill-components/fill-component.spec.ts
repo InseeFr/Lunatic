@@ -38,7 +38,7 @@ describe('fillComponents', () => {
 					type: 'VTL|MD',
 					value: '"Input label"',
 				},
-				mandatory: true,
+				isMandatory: true,
 				maxLength: 15,
 			},
 		];

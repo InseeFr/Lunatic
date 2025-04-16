@@ -68,6 +68,7 @@ export const CustomTextarea = slottableComponent<CustomProps>(
 				<div className="field-with-count">
 					<textarea
 						required={required}
+						aria-required={required}
 						disabled={disabled}
 						id={id}
 						aria-labelledby={labelId}

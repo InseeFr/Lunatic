@@ -77,6 +77,7 @@ export const InputNumberThousand = ({
 			disabled={disabled}
 			readOnly={readOnly}
 			required={required}
+			aria-required={required}
 			lang="en"
 			isAllowed={isAllowed}
 			allowNegative={min < 0}

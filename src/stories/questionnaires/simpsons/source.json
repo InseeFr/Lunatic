@@ -978,7 +978,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "j6p3dkx6",
 					"page": "2",
-					"mandatory": true,
+					"isMandatory": true,
 					"maxLength": 500
 				}
 			],
@@ -1008,7 +1008,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "j6p0np9q",
 					"page": "3",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-j6p0np9q",
@@ -1081,7 +1081,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "j3343qhx",
 					"page": "4",
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 30
 				}
 			],
@@ -1163,7 +1163,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "j6q9h8tj",
 					"page": "5",
-					"mandatory": true
+					"isMandatory": true
 				}
 			],
 			"id": "question-j6q9h8tj",
@@ -1218,7 +1218,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "kiq71eoi",
 					"page": "6",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-kiq71eoi",
@@ -1283,7 +1283,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "k5nvty2o",
 					"page": "7",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-k5nvty2o",
@@ -1349,7 +1349,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "k5nw1fir",
 					"page": "8",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-k5nw1fir",
@@ -1429,7 +1429,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "k5nw0w05",
 					"page": "9",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-k5nw0w05",
@@ -1498,7 +1498,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "k5nvu98z",
 					"page": "10",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-k5nvu98z",
@@ -1567,7 +1567,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "k5nw8ei1",
 					"page": "11",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-k5nw8ei1",
@@ -1636,7 +1636,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "k5nw9dk4",
 					"page": "12",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-k5nw9dk4",
@@ -1674,7 +1674,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "k5nw6hr0",
 					"page": "13",
-					"mandatory": true
+					"isMandatory": true
 				}
 			],
 			"id": "question-k5nw6hr0",
@@ -1712,7 +1712,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "k5nweurr",
 					"page": "14",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-k5nweurr",
@@ -1750,7 +1750,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "kiq51oqq",
 					"page": "15",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-kiq51oqq",
@@ -1819,7 +1819,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "j6z06z1e",
 					"page": "16",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-j6z06z1e",
@@ -1890,7 +1890,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "j3343clt",
 					"page": "18",
-					"mandatory": true
+					"isMandatory": true
 				}
 			],
 			"id": "question-j3343clt",
@@ -1945,7 +1945,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "j6qdfhvw",
 					"page": "19",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-j6qdfhvw",
@@ -2042,7 +2042,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "j4nw5cqz",
 					"page": "20",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-j4nw5cqz",
@@ -2233,7 +2233,7 @@
 							}
 						]
 					],
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-j6p29i81",
@@ -2361,7 +2361,7 @@
 							}
 						]
 					],
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-j6qefnga",
@@ -2559,7 +2559,7 @@
 							}
 						]
 					],
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-j6yzoc6g",
@@ -2999,7 +2999,7 @@
 							}
 						]
 					],
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-j4nwc63q",
@@ -3270,7 +3270,7 @@
 							}
 						]
 					],
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-k9cg2q5t",
@@ -3496,7 +3496,7 @@
 							}
 						]
 					],
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-kbkjvgel",
@@ -3711,7 +3711,7 @@
 							}
 						]
 					],
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-j6p2lwuj",
@@ -3785,7 +3785,7 @@
 						"min": { "type": "VTL", "value": "1" },
 						"max": { "type": "VTL", "value": "5" }
 					},
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-kvkvfojo",
@@ -3915,7 +3915,7 @@
 							}
 						]
 					],
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-jvxux0mi",
@@ -4230,7 +4230,7 @@
 							}
 						]
 					],
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-jvxwy68n",
@@ -4310,7 +4310,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "kiq612ky",
 					"page": "36",
-					"mandatory": false
+					"isMandatory": false
 				}
 			],
 			"id": "question-kiq612ky",
@@ -4381,7 +4381,7 @@
 							"conditionFilter": { "type": "VTL", "value": "true" },
 							"id": "kiq66gtw",
 							"page": "37",
-							"mandatory": false,
+							"isMandatory": false,
 							"maxLength": 30
 						}
 					],
@@ -4450,7 +4450,7 @@
 							"conditionFilter": { "type": "VTL", "value": "true" },
 							"id": "kiq5r8wu",
 							"page": "37",
-							"mandatory": false
+							"isMandatory": false
 						}
 					],
 					"id": "question-kiq5r8wu",
@@ -4535,7 +4535,7 @@
 							"conditionFilter": { "type": "VTL", "value": "true" },
 							"id": "kiq65x3c",
 							"page": "38.2",
-							"mandatory": false
+							"isMandatory": false
 						}
 					],
 					"id": "question-kiq65x3c",
@@ -4564,7 +4564,7 @@
 							"conditionFilter": { "type": "VTL", "value": "true" },
 							"id": "kiq651zv",
 							"page": "38.3",
-							"mandatory": false,
+							"isMandatory": false,
 							"maxLength": 255
 						}
 					],
@@ -4626,7 +4626,7 @@
 					"conditionFilter": { "type": "VTL", "value": "true" },
 					"id": "j6z0z3us",
 					"page": "40",
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 255
 				}
 			],

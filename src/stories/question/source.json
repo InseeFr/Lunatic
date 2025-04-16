@@ -114,7 +114,7 @@
 						"type": "VTL|MD",
 						"value": "\"Le label du champ input\""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 15,
 					"declarations": [
 						{
@@ -146,7 +146,7 @@
 				{
 					"id": "k0dzbfek",
 					"componentType": "InputNumber",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "2",
 					"min": 0,
 					"max": 100,

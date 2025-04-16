@@ -39,7 +39,7 @@
 		{
 			"id": "j6p3dkx6",
 			"componentType": "Textarea",
-			"mandatory": true,
+			"isMandatory": true,
 			"page": "2",
 			"maxLength": 500,
 			"label": {
@@ -62,7 +62,7 @@
 		{
 			"id": "j6p0np9q",
 			"componentType": "CheckboxBoolean",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "3",
 			"label": {
 				"value": "\"➡ \" || \"If you agree to answer this questionnaire, please check the box\"",
@@ -144,7 +144,7 @@
 		{
 			"id": "j3343qhx",
 			"componentType": "Input",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "4",
 			"maxLength": 30,
 			"label": {
@@ -179,7 +179,7 @@
 		{
 			"id": "j6q9h8tj",
 			"componentType": "InputNumber",
-			"mandatory": true,
+			"isMandatory": true,
 			"page": "5",
 			"min": 0,
 			"max": 99,
@@ -216,7 +216,7 @@
 		{
 			"id": "kiq71eoi",
 			"componentType": "Datepicker",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "6",
 			"min": "1900-01-01",
 			"max": "format-date(current-date(),'[Y0001]-[M01]-[D01]')",
@@ -264,7 +264,7 @@
 		{
 			"id": "k5nvty2o",
 			"componentType": "Datepicker",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "7",
 			"min": "1980-05",
 			"label": {
@@ -311,7 +311,7 @@
 		{
 			"id": "k5nw1fir",
 			"componentType": "Datepicker",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "8",
 			"min": "1900",
 			"max": "year-from-date(current-date())",
@@ -359,7 +359,7 @@
 		{
 			"id": "k5nw0w05",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "9",
 			"min": 0,
 			"max": 70,
@@ -397,7 +397,7 @@
 		{
 			"id": "k5nvu98z",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "10",
 			"min": 0,
 			"max": 366,
@@ -435,7 +435,7 @@
 		{
 			"id": "k5nw8ei1",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "11",
 			"min": 0,
 			"max": 12,
@@ -473,7 +473,7 @@
 		{
 			"id": "k5nw9dk4",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "12",
 			"min": 0,
 			"max": 100,
@@ -511,7 +511,7 @@
 		{
 			"id": "j6z06z1e",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "13",
 			"min": 0,
 			"max": 99,
@@ -582,7 +582,7 @@
 		{
 			"id": "j3343clt",
 			"componentType": "Radio",
-			"mandatory": true,
+			"isMandatory": true,
 			"page": "15",
 			"label": {
 				"value": "\"➡ \" || \"In which city do the Simpsons reside?\"",
@@ -635,7 +635,7 @@
 		{
 			"id": "j6qdfhvw",
 			"componentType": "CheckboxOne",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "16",
 			"label": {
 				"value": "\"➡ \" || \"Who is the Simpsons city mayor?\"",
@@ -693,7 +693,7 @@
 		{
 			"id": "j4nw5cqz",
 			"componentType": "Dropdown",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "17",
 			"label": {
 				"value": "\"➡ \" || \"In which state do The Simpsons reside?\"",
@@ -852,7 +852,7 @@
 		{
 			"id": "j6p29i81",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "20",
 			"label": {
 				"value": "\"➡ \" || \"Does Jay like the following ice cream flavours?\"",
@@ -980,7 +980,7 @@
 		{
 			"id": "j6qefnga",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "21",
 			"label": {
 				"value": "\"➡ \" || \"Which character works in the nuclear power plant?\"",
@@ -1103,7 +1103,7 @@
 		{
 			"id": "j6yzoc6g",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "22",
 			"label": {
 				"value": "\"➡ \" || \"In which city each character was born?\"",
@@ -1388,7 +1388,7 @@
 		{
 			"id": "j4nwc63q",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "24",
 			"label": {
 				"value": "\"➡ \" || \"Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
@@ -1590,7 +1590,7 @@
 		{
 			"id": "k9cg2q5t",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "25",
 			"label": {
 				"value": "\"➡ \" || \"Please specify if Jay has bought each product in his last food shopping\"",
@@ -1930,7 +1930,7 @@
 		{
 			"id": "kbkjvgel",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "26",
 			"label": {
 				"value": "\"➡ \" || \"Who did these clownings and tell us what you remember?\"",
@@ -2189,7 +2189,7 @@
 		{
 			"id": "j6p2lwuj",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "27",
 			"label": {
 				"value": "\"➡ \" || \"Which of the following means of transport were used by the hero and in which country?\"",
@@ -2487,7 +2487,7 @@
 		{
 			"id": "j6qg8rc6",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "29",
 			"label": {
 				"value": "\"➡ \" || \"Please, complete the following grid with your favourite characters\"",
@@ -2977,7 +2977,7 @@
 		{
 			"id": "jvxux0mi",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "30",
 			"label": {
 				"value": "\"➡ \" || \"How has your feeling about the following characters evolved over time?\"",
@@ -3123,7 +3123,7 @@
 		{
 			"id": "jvxwy68n",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "31",
 			"label": {
 				"value": "\"➡ \" || \"Can you tell how long Bart Simpson has been on leave for each type and whether there has been another type?\"",
@@ -3374,7 +3374,7 @@
 		{
 			"id": "kiq612ky",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "33",
 			"min": 0,
 			"max": 20,
@@ -3475,7 +3475,7 @@
 				{
 					"id": "kiq66gtw",
 					"componentType": "Input",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "34",
 					"maxLength": 30,
 					"label": {
@@ -3512,7 +3512,7 @@
 				{
 					"id": "kiq5r8wu",
 					"componentType": "InputNumber",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "34",
 					"min": 0,
 					"max": 120,
@@ -3600,7 +3600,7 @@
 				{
 					"id": "kiq65x3c",
 					"componentType": "CheckboxOne",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "35.2",
 					"label": {
 						"value": "\"➡ \" || \"Is character named \" || NAME_CHAR || \" your favourite one ? \"",
@@ -3639,7 +3639,7 @@
 				{
 					"id": "kiq651zv",
 					"componentType": "Textarea",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "35.3",
 					"maxLength": 255,
 					"label": {
@@ -3692,7 +3692,7 @@
 		{
 			"id": "j6z0z3us",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "37",
 			"maxLength": 255,
 			"label": {
@@ -3730,7 +3730,7 @@
 		{
 			"id": "COMMENT-QUESTION",
 			"componentType": "Textarea",
-			"mandatory": false,
+			"isMandatory": false,
 			"page": "39",
 			"maxLength": 2000,
 			"label": { "value": "\"VIII - \" || \"Comment\"", "type": "VTL|MD" },

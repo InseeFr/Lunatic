@@ -61,7 +61,7 @@
 					}
 				}
 			],
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 249
 		},
 		{
@@ -79,7 +79,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 2. Vous aimez \" || PRODUCT_NAME || \" à \" || cast(PRODUCT_PRICE, string) || \"€ mais quel est votre prénom ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 249
 		}
 	],

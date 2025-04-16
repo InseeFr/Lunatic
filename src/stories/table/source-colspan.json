@@ -5,7 +5,7 @@
 			"page": "1",
 			"id": "j4nwc63q",
 			"componentType": "Table",
-			"mandatory": false,
+			"isMandatory": false,
 			"label": {
 				"value": "\"➡ \" || \"Please, specify the percentage of Jay’s expenses in the Kwik-E-Mart for each product?\"",
 				"type": "VTL|MD"

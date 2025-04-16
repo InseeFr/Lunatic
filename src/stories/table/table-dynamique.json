@@ -46,7 +46,7 @@
 				"min": { "type": "VTL", "value": "1" },
 				"max": { "type": "VTL", "value": "4" }
 			},
-			"mandatory": false
+			"isMandatory": false
 		}
 	],
 	"pagination": "question",

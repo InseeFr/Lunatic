@@ -3,7 +3,7 @@
 		{
 			"id": "kxi788",
 			"componentType": "Duration",
-			"mandatory": false,
+			"isMandatory": false,
 			"format": "PTnHnM",
 			"page": "1",
 			"maxPage": "1",

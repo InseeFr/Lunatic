@@ -173,7 +173,7 @@
 							"typeOfControl": "FORMAT"
 						}
 					],
-					"mandatory": false,
+					"isMandatory": false,
 					"components": [
 						{
 							"id": "lsvppebo-RDOP-lyphsg13",
@@ -240,7 +240,7 @@
 					"response": {
 						"name": "QUELESTLEP"
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"storeName": "L_DECHETS",
 					"componentType": "Suggester"
 				}

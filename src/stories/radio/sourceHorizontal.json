@@ -5,7 +5,7 @@
 		{
 			"id": "radio",
 			"componentType": "Radio",
-			"mandatory": false,
+			"isMandatory": false,
 			"orientation": "horizontal",
 			"page": "1",
 			"label": {

@@ -93,6 +93,15 @@ describe('Input', () => {
 		expect(input).toHaveValue('toto');
 	});
 
+	it('should handle required', () => {
+		const { container } = render(<Input {...baseProps} required />);
+
+		const input = container.querySelector('input[type="text"]');
+
+		expect(input).toHaveAttribute('required');
+		expect(input).toHaveAttribute('aria-required', 'true');
+	});
+
 	it('should display input value from the start when user leave input', () => {
 		const setSelectionRangeMock = vi.fn();
 		const { container } = render(<Input {...baseProps} />);

@@ -183,7 +183,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 1. \" || \"Controle sur booleen\""
 			},
-			"mandatory": false
+			"isMandatory": false
 		},
 		{
 			"componentType": "Input",
@@ -239,7 +239,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 2. \" || \"Controle sur du texte < 255\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 15,
 			"declarations": [
 				{
@@ -344,7 +344,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 3. \" || \"Controle sur code\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -408,7 +408,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 4. \" || \"Controle sur date AAAA-MM-JJ (saisie entre 31/12/1990 et 31/12/2040)\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -486,7 +486,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 5. \" || \"Controle sur date AAAA-MM (manque lunatic)\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -555,7 +555,7 @@
 				"type": "VTL|MD",
 				"value": "\"➡ 6. \" || \"Controle sur date AAAA (si supérieur à 2020) manque lunatic\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"declarations": [
 				{
 					"declarationType": "INSTRUCTION",
@@ -620,7 +620,7 @@
 				"type": "VTL|MD",
 				"value": "\"Avez-vous des remarques concernant l'enquête ou des commentaires ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 2000
 		}
 	],

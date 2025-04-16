@@ -250,7 +250,7 @@
 					}
 				]
 			],
-			"mandatory": false
+			"isMandatory": false
 		}
 	],
 	"maxPage": "1"

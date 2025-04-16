@@ -164,7 +164,7 @@
 					"value": "5"
 				}
 			},
-			"mandatory": false
+			"isMandatory": false
 		}
 	],
 	"pagination": "question",

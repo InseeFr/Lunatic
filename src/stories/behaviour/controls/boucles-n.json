@@ -110,7 +110,7 @@
 						"type": "VTL|MD",
 						"value": "\"➡ 1. \" || \"\"question 1 : Q1\" \""
 					},
-					"mandatory": false,
+					"isMandatory": false,
 					"maxLength": 5,
 					"declarations": [
 						{
@@ -177,7 +177,7 @@
 				"type": "VTL|MD",
 				"value": "\"Avez-vous des remarques concernant l'enquête ou des commentaires ?\""
 			},
-			"mandatory": false,
+			"isMandatory": false,
 			"maxLength": 2000
 		}
 	],

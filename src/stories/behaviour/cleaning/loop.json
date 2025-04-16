@@ -24,7 +24,7 @@
 				{
 					"id": "m8ilsr46",
 					"componentType": "RosterForLoop",
-					"mandatory": false,
+					"isMandatory": false,
 					"page": "2",
 					"lines": {
 						"min": { "value": "1", "type": "VTL" },
@@ -78,7 +78,7 @@
 						{
 							"id": "m8ilvkbt",
 							"componentType": "Input",
-							"mandatory": false,
+							"isMandatory": false,
 							"page": "3.2",
 							"maxLength": 249,
 							"response": { "name": "CETTEQUEST" }
@@ -101,7 +101,7 @@
 						{
 							"id": "m8iljjiu",
 							"componentType": "Input",
-							"mandatory": false,
+							"isMandatory": false,
 							"page": "3.3",
 							"maxLength": 249,
 							"response": { "name": "ONLY_LAURENT" }
@@ -124,7 +124,7 @@
 						{
 							"id": "m8ili0k6",
 							"componentType": "Input",
-							"mandatory": false,
+							"isMandatory": false,
 							"page": "3.4",
 							"maxLength": 249,
 							"response": { "name": "ONLY_TROIS_LAURENT" }

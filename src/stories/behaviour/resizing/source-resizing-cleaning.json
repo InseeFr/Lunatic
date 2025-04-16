@@ -17,7 +17,7 @@
 			"page": "1",
 			"id": "lfwih8tj-habitants",
 			"componentType": "InputNumber",
-			"mandatory": false,
+			"isMandatory": false,
 			"min": 0,
 			"max": 25,
 			"label": {
