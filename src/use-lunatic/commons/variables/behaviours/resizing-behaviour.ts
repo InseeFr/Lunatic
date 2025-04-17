@@ -41,12 +41,20 @@ export function resizingBehaviour(
 
 		const newSize = forceInt(store.run(resizingInfo.size));
 		for (const variableName of resizingInfo.variables) {
-			const value = store.get(variableName);
-			if (!Array.isArray(value) || value.length !== newSize) {
-				store.set(variableName, resizeArrayVariable(value, newSize, null), {
+			// Since data can change after the resize, we need to pass a callback that will use the last value of the variable for the resize
+			store.enqueueSet(
+				variableName,
+				() => {
+					const value = store.get(variableName);
+					if (!Array.isArray(value) || value.length !== newSize) {
+						return resizeArrayVariable(value, newSize, null);
+					}
+					return value;
+				},
+				{
 					cause: 'resizing',
-				});
-			}
+				}
+			);
 		}
 	});
 }
@@ -81,6 +89,6 @@ function resizePairwise(
 			xSize,
 			new Array(ySize).fill(null)
 		);
-		store.set(variable, resizedValue);
+		store.enqueueSet(variable, resizedValue);
 	});
 }

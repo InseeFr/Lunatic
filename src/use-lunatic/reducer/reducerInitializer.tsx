@@ -67,7 +67,8 @@ export function reducerInitializer({
 		source,
 		data,
 		onVariableChange,
-		disableFilters
+		disableFilters,
+		source.pagination !== 'question'
 	);
 	const pages = checkLoops(createMapPages(source));
 

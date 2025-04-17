@@ -115,7 +115,7 @@
 			}
 		}
 	],
-	"pagination": "question",
+	"pagination": "sequence",
 	"lunaticModelVersion": "2.3.2-rc4",
 	"modele": "TESTSURSUM",
 	"enoCoreVersion": "2.4.1-pairwise",

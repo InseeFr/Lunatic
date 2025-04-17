@@ -46,6 +46,8 @@ export type LunaticVariablesStoreEvent<T extends keyof EventArgs> = {
 export class LunaticVariablesStore {
 	private dictionary = new Map<string, LunaticVariable>();
 	private eventTarget = new EventTarget();
+	private queue = new Map<string, () => void>();
+	public autoCommit = false; // Commit change instantly (used in tests)
 
 	constructor() {
 		interpretCount = 0;
@@ -55,11 +57,17 @@ export class LunaticVariablesStore {
 		source: LunaticSource,
 		data: LunaticData,
 		changeHandler: RefObject<LunaticOptions['onVariableChange']>,
-		disableCleaning?: boolean
+		// Disable cleaning
+		disableCleaning?: boolean,
+		// Do not delay resizing / cleaning
+		autoCommit?: boolean
 	) {
 		const store = new LunaticVariablesStore();
 		if (!source.variables) {
 			return store;
+		}
+		if (autoCommit) {
+			store.autoCommit = autoCommit;
 		}
 		// Source data (picked from "variables" in the source.json)s
 		const sourceValues: Record<string, unknown> = {};
@@ -118,6 +126,40 @@ export class LunaticVariablesStore {
 			return null;
 		}
 		return this.dictionary.get(name)!.getValue(iteration) as T;
+	}
+
+	/**
+	 * Transactional setter that will change data only when `commit()` is called
+	 */
+	public enqueueSet(
+		name: string,
+		value: unknown,
+		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
+	) {
+		if (this.autoCommit) {
+			this.set(name, typeof value === 'function' ? value() : value, args);
+			return;
+		}
+		this.queue.set(name, () => {
+			// A function can be enqueued, we need to evaluate it to retrieve the value to set
+			// This is used for the resizing, where we want to resize the last version of the variable
+			if (typeof value === 'function') {
+				value = value();
+			}
+			this.set(name, value, args);
+		});
+	}
+
+	/**
+	 * Commit all changes in the queue
+	 */
+	public commit() {
+		const autoCommitValue = this.autoCommit;
+		// Since we can have nested operation, we prevent delayed set while commiting
+		this.autoCommit = true;
+		Array.from(this.queue.values()).forEach((cb) => cb());
+		this.autoCommit = autoCommitValue;
+		this.queue.clear();
 	}
 
 	/**

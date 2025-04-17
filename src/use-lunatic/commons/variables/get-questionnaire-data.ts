@@ -7,6 +7,7 @@ export function getQuestionnaireData(
 	withCalculated: boolean = false,
 	variableNames?: string[]
 ): LunaticData {
+	store.commit();
 	const result = {
 		EXTERNAL: {} as Record<string, unknown>,
 		CALCULATED: {} as Record<string, unknown>,

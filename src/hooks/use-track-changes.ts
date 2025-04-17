@@ -43,13 +43,14 @@ export function useTrackChanges(
 					'getChangedData() cannot be used without enabling tracking mode, add "trackChanges: true" to useLunatic options'
 				);
 			}
+			store.commit();
 			const data = getDataRef.current(Array.from(changedVariables.current));
 			if (reset) {
 				resetChangedData();
 			}
 			return data;
 		},
-		[enabledRef, getDataRef, resetChangedData]
+		[enabledRef, getDataRef, resetChangedData, store]
 	);
 
 	return {

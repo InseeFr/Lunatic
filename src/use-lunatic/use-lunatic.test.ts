@@ -230,7 +230,7 @@ describe('use-lunatic()', () => {
 	describe('cleaning', () => {
 		it('should handle cleaning in a loop', () => {
 			const { result } = renderHook(() =>
-				useLunatic(sourceCleaningLoop as any, undefined, {})
+				useLunatic(sourceCleaningLoop as any, undefined)
 			);
 			act(() => {
 				result.current.handleChanges([

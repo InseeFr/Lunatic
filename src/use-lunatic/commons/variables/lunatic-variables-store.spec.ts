@@ -115,6 +115,15 @@ describe('lunatic-variables-store', () => {
 		expect(variables.get('AGES_PLUS_NBHAB')).toEqual([4, 5, 6]);
 	});
 
+	it('should handle transaction mode correctly', () => {
+		variables.set('FIRSTNAME', 'John');
+		expect(variables.get('FIRSTNAME')).toEqual('John');
+		variables.enqueueSet('FIRSTNAME', 'Jane');
+		expect(variables.get('FIRSTNAME')).toEqual('John');
+		variables.commit();
+		expect(variables.get('FIRSTNAME')).toEqual('Jane');
+	});
+
 	describe('event listener', () => {
 		it('should trigger onChange', () => {
 			variables.set('FIRSTNAME', 'John');
@@ -273,6 +282,10 @@ describe('lunatic-variables-store', () => {
 	});
 
 	describe('resizing', () => {
+		beforeEach(() => {
+			variables.autoCommit = true;
+		});
+
 		it('should resize variables', () => {
 			variables.set('PRENOM', ['John', 'Jane']);
 			variables.set('NOM', ['Doe']);
@@ -367,6 +380,10 @@ describe('lunatic-variables-store', () => {
 	});
 
 	describe('cleaning', () => {
+		beforeEach(() => {
+			variables.autoCommit = true;
+		});
+
 		it('should clean variables', () => {
 			variables.set('PRENOM', 'John');
 			variables.set('NOM', 'Doe');
@@ -568,6 +585,25 @@ describe('lunatic-variables-store', () => {
 		});
 	});
 
+	describe('commit', () => {
+		it('should handle data change before commit', () => {
+			variables.set('PRENOM', []);
+			variables.set('NOM', []);
+			resizingBehaviour(variables, {
+				PRENOM: {
+					size: 'count(PRENOM)',
+					variables: ['NOM'],
+				},
+			});
+			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
+			variables.set('NOM', ['Doe', 'Doe2', 'Doe3']);
+			variables.set('PRENOM', ['John', 'Jane']); // Should trigger a delayed resize
+			variables.set('NOM', 'New', { iteration: [1] }); // But we change a value inside the resized variable
+			variables.commit();
+			expect(variables.get('NOM') as string[][]).toEqual(['Doe', 'New']);
+		});
+	});
+
 	describe('makeFromSource', () => {
 		it('should handle initial data correctly', () => {
 			const store = LunaticVariablesStore.makeFromSource(
@@ -606,6 +642,7 @@ describe('lunatic-variables-store', () => {
 			);
 			expect(store.get('PRENOM')).toEqual('Jane');
 			store.set('NOM', 'Doe');
+			store.commit();
 			expect(store.get('PRENOM')).toEqual('John');
 		});
 		it('should enable cleaning when disableCleaning = false', () => {
