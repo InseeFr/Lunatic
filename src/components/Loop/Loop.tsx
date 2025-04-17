@@ -1,4 +1,4 @@
-import { type PropsWithChildren, useCallback, useState } from 'react';
+import { type PropsWithChildren, useCallback, useState, useEffect } from 'react';
 import D from '../../i18n';
 import { times } from '../../utils/array';
 import { LunaticComponents } from '../LunaticComponents';
@@ -28,9 +28,13 @@ export function Loop({
 }: LunaticComponentProps<'Loop'>) {
 	const min = lines?.min ?? 0;
 	const max = lines?.max ?? Infinity;
-	const [nbRows, setNbRows] = useState(() => {
-		return Math.max(iterations, min);
-	});
+	const [nbRows, setNbRows] = useState(() => Math.max(iterations, min));
+
+	// Set the number of rows to the number of iterations if the used previously added a row
+	useEffect(() => {
+		setNbRows(Math.max(iterations, min));
+	}, [iterations, min]);
+
 	const addRow = useCallback(() => {
 		if (nbRows < max) {
 			setNbRows(nbRows + 1);
