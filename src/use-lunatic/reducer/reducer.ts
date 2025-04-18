@@ -5,7 +5,7 @@ import { reduceHandleChanges } from './reduce-handle-changes';
 import { reduceGoPreviousPage } from './reduce-go-previous-page';
 import { reduceGoToPage } from './reduce-go-to-page';
 
-// Action that trigger a change in the store
+// Actions that trigger a change in the store
 const commitActions: ActionKind[] = [
 	ActionKind.GO_PREVIOUS_PAGE,
 	ActionKind.GO_NEXT_PAGE,
