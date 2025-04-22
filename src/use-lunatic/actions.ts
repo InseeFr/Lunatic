@@ -14,6 +14,8 @@ export type ActionHandleChanges = {
 			name: string;
 			value: unknown;
 			iteration?: number[];
+			/** Force a vector when an iteration is set and the value was a scalar **/
+			ignoreIterationOnScalar?: boolean;
 			[extra: string]: unknown;
 		}[];
 	};
