@@ -1,4 +1,4 @@
-import { type PropsWithChildren, useCallback, useState, useEffect } from 'react';
+import { type PropsWithChildren, useCallback, useState } from 'react';
 import D from '../../i18n';
 import { times } from '../../utils/array';
 import { LunaticComponents } from '../LunaticComponents';
