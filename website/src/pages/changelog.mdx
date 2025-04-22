@@ -1,3 +1,48 @@
+### 3.5.4
+
+#### Nouvelles fonctionnalités
+
+- en pagination "question", le resizing et cleaning sont délayés pour n'avoir lieu qu'en cas de changement de page ou d'appel aux fonctions `getData` et `getChangedData`. Cela permet notamment d'attendre une valeur "définitive" avant de potentiellement supprimer des données pour des variables filtrées ou de boucle
+
+#### Modifications mineures
+
+- le paramètre `mandatory` dans le modèle de questionnaire a été renommé `isMandatory`
+- Input, Textarea, InputNumber : amélioration de l'accessibilité lorsque le champ est obligatoire (composant avec paramètre `isMandatory`)
+
+### 3.5.3
+
+#### Nouvelles fonctionnalités
+
+- FilterDescription : un nouveau composant FilterDescription permettant d'afficher un libellé associé à un filtre a été ajouté. Le composant n'est pas affiché par défaut, sauf en renseignant le paramètre `disableFiltersDescription` du useLunatic
+
+#### Correction de bugs
+
+- Radio/CheckboxGroup : les modalités filtrées étaient filtrées à tord lorsque l'on désactive les filtres (`disableFilters = true` en paramètre du useLunatic)
+- InputNumber : prise en compte des valeurs minimum et maximum pour les valeurs autorisées
+
+### 3.5.2
+
+#### Nouvelles fonctionnalités
+
+- RosterForLoop : les composants filtrés (via une conditionFilter) dans un tableau dynamique sont désormais supportés. La cellule contenant le composant filtré est remplacée par une cellule vide
+
+### 3.5.1
+
+#### Correction de bugs
+
+- Pairwise : lorsque la taille de la boucle utilisée par le pairwise était modifiée (exemple : ajout d'un individu), toutes les valeurs du pairwise étaient supprimées
+- Radio/CheckboxGroup : lorsque l'expression de condition de filtre d'une modalité de radio/checkbox ne pouvait être évaluée (exemple : utilisation d'une variable inexistante), le questionnaire crashait. Désormais comme pour les autres filtres, on ne filtre pas par défaut
+
+#### Modifications mineures
+
+- Datepicker : il est désormais possible de surcharger uniquement les champs de saisie (DatepickerFields)
+
+### 3.5.0
+
+#### QOL
+
+- cleaning : amélioration notable des performances du cleaning
+
 ### 3.4.21
 
 #### Nouvelles fonctionnalités
