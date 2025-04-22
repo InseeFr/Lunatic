@@ -26,14 +26,9 @@ export function Loop({
 	errors,
 	...props
 }: LunaticComponentProps<'Loop'>) {
-	const min = lines?.min ?? 0;
+	const min = lines?.min ?? Infinity;
 	const max = lines?.max ?? Infinity;
 	const [nbRows, setNbRows] = useState(() => Math.max(iterations, min));
-
-	// Set the number of rows to the number of iterations if the used previously added a row
-	useEffect(() => {
-		setNbRows(Math.max(iterations, min));
-	}, [iterations, min]);
 
 	const addRow = useCallback(() => {
 		if (nbRows < max) {
