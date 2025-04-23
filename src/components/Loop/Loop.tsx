@@ -26,15 +26,17 @@ export function Loop({
 	errors,
 	...props
 }: LunaticComponentProps<'Loop'>) {
-	const min = lines?.min ?? Infinity;
+	const min = lines?.min ?? 0;
 	const max = lines?.max ?? Infinity;
 	const [nbRows, setNbRows] = useState(() => Math.max(iterations, min));
+
 
 	const addRow = useCallback(() => {
 		if (nbRows < max) {
 			setNbRows(nbRows + 1);
 		}
 	}, [max, nbRows]);
+
 	const removeRow = useCallback(() => {
 		if (nbRows > 1) {
 			const newNbRows = nbRows - 1;
@@ -66,6 +68,7 @@ export function Loop({
 				<LunaticComponents
 					blocklist={blockedInLoopComponents}
 					key={n}
+					memo
 					components={getComponents(n)}
 					componentProps={(c) => ({
 						...props,
