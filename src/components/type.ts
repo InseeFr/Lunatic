@@ -263,10 +263,7 @@ export type ComponentPropsByType = {
 			response: { name: string };
 			componentType?: 'Textarea';
 		};
-	FilterDescription: Pick<
-		LunaticBaseProps<string>,
-		'id' | 'label' | 'shouldBeFiltered'
-	> &
+	FilterDescription: Pick<LunaticBaseProps<string>, 'id' | 'label'> &
 		LunaticExtraProps & {
 			componentType?: 'FilterDescription';
 		};
