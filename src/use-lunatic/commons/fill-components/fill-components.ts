@@ -13,6 +13,7 @@ import { getValueProp } from '../../props/propValue';
 import { getIterationsProp } from '../../props/propIterations';
 import { getOptionsProp } from '../../props/propOptions';
 import { LunaticLogger } from '../../logger/type';
+import { VTLScalarExpression } from '../../../type.source';
 
 export type FillComponentArgs = {
 	disableFilters?: boolean;
@@ -35,9 +36,20 @@ export type FillComponentArgs = {
  */
 export const fillComponent = (
 	component: LunaticComponentDefinition,
-	state: FillComponentArgs
+	state: FillComponentArgs,
+	// the given parentConditionFilter is typed as VTLScalarExpression, but it's actually a boolean or undefined
+	parentConditionFilter?: any
 ): LunaticComponentProps & { conditionFilter?: boolean } => {
 	const interpretedProps = fillComponentExpressions(component, state);
+
+	const shouldParentBeFiltered = parentConditionFilter === false;
+
+	const shouldBeFiltered =
+		shouldParentBeFiltered ||
+		('conditionFilter' in interpretedProps
+			? !interpretedProps.conditionFilter
+			: false);
+
 	const value = getValueProp(component, state);
 	return {
 		...interpretedProps,
@@ -48,6 +60,7 @@ export const fillComponent = (
 		shortcut: state.shortcut,
 		goNextPage: state.goNextPage,
 		goPreviousPage: state.goPreviousPage,
+		shouldBeFiltered: shouldBeFiltered,
 		iteration: state.pager.iteration,
 		required: 'isMandatory' in component ? component.isMandatory : false,
 		value: value,
@@ -74,7 +87,8 @@ export const fillComponent = (
 export function fillComponents(
 	components: LunaticComponentDefinition[],
 	state: FillComponentArgs,
-	parentType?: LunaticComponentDefinition['componentType']
+	parentType?: LunaticComponentDefinition['componentType'],
+	parentConditionFilter?: VTLScalarExpression
 ): LunaticComponentProps[] {
 	// Flatmap to directly remove FilterDescription components if disableFiltersDescription is true
 	const filledComponents = components.flatMap((component) => {
@@ -85,7 +99,7 @@ export function fillComponents(
 			return [];
 		}
 
-		return [fillComponent(component, state)];
+		return [fillComponent(component, state, parentConditionFilter)];
 	});
 
 	if (state.disableFilters) {
