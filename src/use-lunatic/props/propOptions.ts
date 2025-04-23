@@ -8,6 +8,7 @@ import type { DeepTranslateExpression } from '../commons/fill-components/fill-co
 import { isNumber } from '../../utils/number';
 import type { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
 import { LunaticLogger } from '../logger/type';
+import { VtlExpression } from '../../components/type';
 
 /* Used for radio option and checkbox one option */
 export type InterpretedOption = {
@@ -35,7 +36,6 @@ export function getOptionsProp(
 	disableFilters?: boolean
 ) {
 	const iteration = isNumber(pagerIteration) ? [pagerIteration] : undefined;
-	//const iteration = pagerIteration ? [pagerIteration] : undefined;
 
 	if (definition.componentType === 'CheckboxGroup') {
 		return definition.responses
@@ -43,16 +43,12 @@ export function getOptionsProp(
 				if (disableFilters || !response.conditionFilter) {
 					return true;
 				}
-				try {
-					return variables.run(response.conditionFilter.value, { iteration });
-				} catch (e) {
-					// If there is an error interpreting a variable, we do not filter
-					logger({
-						type: 'ERROR',
-						error: e as Error,
-					});
-					return true;
-				}
+				return !shouldFilterOutOption(
+					variables,
+					iteration,
+					logger,
+					response.conditionFilter
+				);
 			})
 			.map((response) => ({
 				label: response.label,
@@ -74,6 +70,12 @@ export function getOptionsProp(
 							]);
 						}
 					: undefined,
+				shouldBeFiltered: shouldFilterOutOption(
+					variables,
+					iteration,
+					logger,
+					response.conditionFilter
+				),
 			}));
 	}
 
@@ -90,16 +92,12 @@ export function getOptionsProp(
 			) {
 				return true;
 			}
-			try {
-				return variables.run(option.conditionFilter.value, { iteration });
-			} catch (e) {
-				// If there is an error interpreting a variable, we do not filter
-				logger({
-					type: 'ERROR',
-					error: e as Error,
-				});
-				return true;
-			}
+			return !shouldFilterOutOption(
+				variables,
+				iteration,
+				logger,
+				option.conditionFilter
+			);
 		})
 		.map((option) => ({
 			label: option.label,
@@ -126,5 +124,31 @@ export function getOptionsProp(
 							handleChanges([{ name: option.detail!.response.name, value }]);
 						}
 					: null,
+			shouldBeFiltered:
+				'conditionFilter' in option &&
+				shouldFilterOutOption(
+					variables,
+					iteration,
+					logger,
+					option.conditionFilter
+				),
 		}));
+}
+
+/**
+ * Check if an option should be filtered, depending on its conditionFilter.
+ */
+function shouldFilterOutOption(
+	variables: LunaticVariablesStore,
+	iteration: number[] | undefined,
+	logger: LunaticLogger,
+	conditionFilter?: VtlExpression
+): boolean {
+	if (!conditionFilter) return false;
+	try {
+		return !variables.run(conditionFilter.value, { iteration });
+	} catch (e) {
+		logger({ type: 'ERROR', error: e as Error });
+		return false;
+	}
 }

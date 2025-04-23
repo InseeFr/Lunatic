@@ -208,6 +208,7 @@ describe('getOptionsProp()', () => {
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
+			expect(options[0].shouldBeFiltered).toBe(false);
 		});
 		it('should not filter option (radio) when its conditionFilter evaluation fails', () => {
 			const definition = {
@@ -237,6 +238,7 @@ describe('getOptionsProp()', () => {
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
+			expect(options[0].shouldBeFiltered).toBe(false);
 		});
 		it('should not filter any response (CheckboxGroup) when disableFilters is true', () => {
 			const definition = {
@@ -268,6 +270,8 @@ describe('getOptionsProp()', () => {
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
+			// the option should would have been filtered if we did not disable filters
+			expect(options[0].shouldBeFiltered).toBe(true);
 		});
 		it('should not filter any option (Radio) when disableFilters is true', () => {
 			const definition = {
@@ -296,7 +300,10 @@ describe('getOptionsProp()', () => {
 				true // disableFilters = true
 			);
 
+			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
+			// the option should would have been filtered if we did not disable filters
+			expect(options[0].shouldBeFiltered).toBe(true);
 		});
 	});
 });
