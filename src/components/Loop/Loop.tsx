@@ -30,7 +30,6 @@ export function Loop({
 	const max = lines?.max ?? Infinity;
 	const [nbRows, setNbRows] = useState(() => Math.max(iterations, min));
 
-
 	const addRow = useCallback(() => {
 		if (nbRows < max) {
 			setNbRows(nbRows + 1);
