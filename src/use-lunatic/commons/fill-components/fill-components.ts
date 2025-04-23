@@ -74,7 +74,8 @@ export const fillComponent = (
 			state.pager.iteration,
 			value,
 			state.logger,
-			state.disableFilters
+			state.disableFilters,
+			shouldBeFiltered
 		),
 		...getComponentTypeProps(interpretedProps, state),
 		// This is too dynamic to be typed correctly, so we allow any here

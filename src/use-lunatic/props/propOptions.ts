@@ -33,7 +33,8 @@ export function getOptionsProp(
 	pagerIteration: LunaticState['pager']['iteration'],
 	value: unknown,
 	logger: LunaticLogger,
-	disableFilters?: boolean
+	disableFilters?: boolean,
+	shouldParentBeFiltered?: boolean
 ) {
 	const iteration = isNumber(pagerIteration) ? [pagerIteration] : undefined;
 
@@ -43,7 +44,7 @@ export function getOptionsProp(
 				if (disableFilters || !response.conditionFilter) {
 					return true;
 				}
-				return !shouldFilterOutOption(
+				return !isFilteredOutOption(
 					variables,
 					iteration,
 					logger,
@@ -70,12 +71,14 @@ export function getOptionsProp(
 							]);
 						}
 					: undefined,
-				shouldBeFiltered: shouldFilterOutOption(
-					variables,
-					iteration,
-					logger,
-					response.conditionFilter
-				),
+				shouldBeFiltered:
+					shouldParentBeFiltered ||
+					isFilteredOutOption(
+						variables,
+						iteration,
+						logger,
+						response.conditionFilter
+					),
 			}));
 	}
 
@@ -92,7 +95,7 @@ export function getOptionsProp(
 			) {
 				return true;
 			}
-			return !shouldFilterOutOption(
+			return !isFilteredOutOption(
 				variables,
 				iteration,
 				logger,
@@ -125,20 +128,21 @@ export function getOptionsProp(
 						}
 					: null,
 			shouldBeFiltered:
-				'conditionFilter' in option &&
-				shouldFilterOutOption(
-					variables,
-					iteration,
-					logger,
-					option.conditionFilter
-				),
+				shouldParentBeFiltered ||
+				('conditionFilter' in option &&
+					isFilteredOutOption(
+						variables,
+						iteration,
+						logger,
+						option.conditionFilter
+					)),
 		}));
 }
 
 /**
  * Check if an option should be filtered, depending on its conditionFilter.
  */
-function shouldFilterOutOption(
+function isFilteredOutOption(
 	variables: LunaticVariablesStore,
 	iteration: number[] | undefined,
 	logger: LunaticLogger,

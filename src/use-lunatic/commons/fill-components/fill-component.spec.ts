@@ -647,4 +647,61 @@ describe('fillComponents', () => {
 		expect(input.conditionFilter).toBe(undefined);
 		expect(input.shouldBeFiltered).toBe(true);
 	});
+
+	it('should tag options with shouldBeFiltered=true if the component should be filtered', () => {
+		const components = [
+			{
+				id: 'radio1',
+				componentType: 'Radio',
+				page: '1',
+				label: {
+					type: 'VTL|MD',
+					value: '"Radio label"',
+				},
+				options: [
+					{ value: 'yes', label: { value: '"Yes"', type: 'VTL|MD' } },
+					{ value: 'no', label: { value: '"No"', type: 'VTL|MD' } },
+				],
+				response: {
+					name: 'TESTRADIO',
+				},
+				conditionFilter: {
+					type: 'VTL',
+					// value should be string, but did not find how to execute correctly with mocks
+					// for having a false conditionFilter at the end
+					value: false,
+				},
+			},
+		];
+
+		const mockVariables = LunaticVariablesStore.makeFromObject({
+			TESTINPUT: 'Filled input',
+			TESTRADIO: 'yes',
+		});
+
+		const mockState = {
+			...defaultMockState,
+			disableFilters: true,
+			variables: mockVariables,
+		};
+
+		const filledComponents = fillComponents(
+			components as LunaticComponentDefinition[],
+			mockState as unknown as FillComponentArgs
+		) as any;
+
+		const radio = filledComponents[0];
+
+		expect(radio.componentType).toBe('Radio');
+		expect(radio.conditionFilter).toBe(false);
+		expect(radio.shouldBeFiltered).toBe(true);
+
+		expect(radio.options[0].label).toBe('"Yes"');
+		expect(radio.options[0].conditionFilter).toBe(undefined);
+		expect(radio.options[0].shouldBeFiltered).toBe(true);
+
+		expect(radio.options[1].label).toBe('"No"');
+		expect(radio.options[1].conditionFilter).toBe(undefined);
+		expect(radio.options[1].shouldBeFiltered).toBe(true);
+	});
 });
