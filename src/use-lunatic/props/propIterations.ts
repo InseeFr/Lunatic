@@ -53,13 +53,13 @@ function computeMaxChildIterations(
 		if (component.componentType === 'Question') {
 			iterations = computeMaxChildIterations(component.components, state);
 		} else if (hasResponse(component)) {
+
 			const value = state.variables.get(
 				component.response.name,
 				isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
 			);
-
 			if (Array.isArray(value)) {
-				iterations = value.filter((val) => val != null).length;
+				iterations = value.length;
 			} else if (
 				value &&
 				typeof value === 'object' &&
@@ -70,7 +70,7 @@ function computeMaxChildIterations(
 				).length;
 			}
 		}
-
+		console.log('iterations', iterations);
 		return Math.max(acc, iterations);
 	}, 0);
 }
