@@ -35,6 +35,8 @@ export type EventArgs = {
 		iteration?: IterationLevel | undefined;
 		/** What triggered this change. */
 		cause?: 'resizing' | 'cleaning';
+		/** Force a vector when an iteration is set and the value was a scalar **/
+		ignoreIterationOnScalar?: boolean;
 		/** Extra sent when setting the variable. */
 		[extra: string]: unknown;
 	};
@@ -168,7 +170,10 @@ export class LunaticVariablesStore {
 	public set(
 		name: string,
 		value: unknown,
-		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
+		args: Pick<
+			EventArgs['change'],
+			'iteration' | 'cause' | 'ignoreIterationOnScalar'
+		> = {}
 	): LunaticVariable {
 		if (!this.dictionary.has(name)) {
 			this.dictionary.set(
@@ -188,7 +193,7 @@ export class LunaticVariablesStore {
 			);
 		}
 		const variable = this.dictionary.get(name)!;
-		if (variable.setValue(value, args.iteration)) {
+		if (variable.setValue(value, args)) {
 			this.eventTarget.dispatchEvent(
 				new CustomEvent('change', {
 					detail: {
@@ -390,7 +395,9 @@ class LunaticVariable {
 		// this.calculatedCount++;
 		// Remember the value
 		try {
-			this.setValue(interpretVTL(this.expression, bindings), iteration);
+			this.setValue(interpretVTL(this.expression, bindings), {
+				iteration: iteration,
+			});
 		} catch {
 			throw new VTLInterpretationError(this.expression!, bindings);
 		}
@@ -401,7 +408,11 @@ class LunaticVariable {
 	/**
 	 * Set the value and returns true if the variable is touched
 	 */
-	setValue(value: unknown, iteration?: IterationLevel): boolean {
+	setValue(
+		value: unknown,
+		opts: { iteration?: IterationLevel; ignoreIterationOnScalar?: boolean }
+	): boolean {
+		const { iteration, ignoreIterationOnScalar } = opts;
 		if (value === this.getSavedValue(iteration)) {
 			return false;
 		}
@@ -411,6 +422,10 @@ class LunaticVariable {
 		}
 		// We want to save a value at a specific iteration, but the value is not an array yet
 		if (iteration !== undefined && !Array.isArray(this.value)) {
+			// Ignore the iteration since the value is not an array
+			if (ignoreIterationOnScalar) {
+				return this.setValue(value, {});
+			}
 			this.value = [];
 		}
 		this.value = !Array.isArray(iteration)
@@ -445,7 +460,7 @@ class LunaticVariable {
 		// Update every item of the array and look if we changed one item
 		const oneValueChanged =
 			times(Math.max(oldSize, newSize), (k) =>
-				this.setValue(value[k], [k])
+				this.setValue(value[k], { iteration: [k] })
 			).find((v) => v) !== undefined;
 		// New array is smaller, shorten the array
 		if (oldSize > newSize && Array.isArray(this.value)) {

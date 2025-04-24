@@ -124,6 +124,18 @@ describe('lunatic-variables-store', () => {
 		expect(variables.get('FIRSTNAME')).toEqual('Jane');
 	});
 
+	it('should ignore iteration when updating a scalar value', () => {
+		variables.set('FIRSTNAME', 'John'); // Start with a scalar value
+		expect(variables.get('FIRSTNAME')).toEqual('John');
+		variables.set('FIRSTNAME', 'Jane', {
+			iteration: [1],
+			ignoreIterationOnScalar: true,
+		});
+		expect(variables.get('FIRSTNAME')).toEqual('Jane');
+		variables.set('FIRSTNAME', 'Marc', { iteration: [1] });
+		expect(variables.get('FIRSTNAME')).toEqual([null, 'Marc']);
+	});
+
 	describe('event listener', () => {
 		it('should trigger onChange', () => {
 			variables.set('FIRSTNAME', 'John');

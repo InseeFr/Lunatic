@@ -59,6 +59,45 @@ describe('use-lunatic()', () => {
 		expect(components[0].id).toBe('kiq5xw5p');
 	});
 
+	describe('handleChange()', () => {
+		it('should change variable value', () => {
+			const { result } = renderHook(() => useLunatic(...defaultParams));
+			act(() => {
+				result.current.handleChanges([
+					{
+						name: 'COMMENT',
+						value: 'Mon commentaire',
+					},
+				]);
+			});
+			act(() => {
+				expect(
+					result.current.getData(false, ['COMMENT']).COLLECTED!.COMMENT
+						.COLLECTED
+				).toBe('Mon commentaire');
+			});
+		});
+		it('should ignore iteration for scalar value', () => {
+			const { result } = renderHook(() => useLunatic(...defaultParams));
+			act(() => {
+				result.current.handleChanges([
+					{
+						name: 'COMMENT',
+						value: 'Mon commentaire 2',
+						iteration: [1],
+						ignoreIterationOnScalar: true,
+					},
+				]);
+			});
+			act(() => {
+				expect(
+					result.current.getData(false, ['COMMENT']).COLLECTED!.COMMENT
+						.COLLECTED
+				).toBe('Mon commentaire 2');
+			});
+		});
+	});
+
 	describe('Provider', () => {
 		it('should not generate a new Provider every render', () => {
 			const { result } = renderHook(() => {
