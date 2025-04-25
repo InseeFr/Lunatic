@@ -66,6 +66,7 @@ describe('fillComponents', () => {
 		expect(input.required).toBe(true);
 		expect(input.maxLength).toBe(15);
 		expect(input.conditionFilter).toBe(true);
+		expect(input.shouldBeFiltered).toBe(false);
 	});
 
 	it('should fill a Radio component correctly with options', () => {
@@ -136,6 +137,7 @@ describe('fillComponents', () => {
 		expect(radio.options[0].label).toBe('"oui"');
 		expect(radio.options[1].label).toBe('"non"');
 		expect(radio.conditionFilter).toBe(true);
+		expect(radio.shouldBeFiltered).toBe(false);
 		expect(radio.response.name).toBe('TESTRADIO');
 	});
 
@@ -187,6 +189,7 @@ describe('fillComponents', () => {
 		expect(question.id).toBe('question-m8ilvkbt');
 		expect(question.label).toBe('"Question label"');
 		expect(question.conditionFilter).toBe(true);
+		expect(question.shouldBeFiltered).toBe(false);
 		expect(question.components.length).toBe(1);
 
 		const input = question.components[0];
@@ -258,12 +261,16 @@ describe('fillComponents', () => {
 		expect(input.componentType).toBe('Input');
 		expect(input.response.name).toBe('TESTINPUT');
 		expect(input.maxLength).toBe(100);
+		expect(input.conditionFilter).toBe(true);
+		expect(input.shouldBeFiltered).toBe(false);
 
 		const radio = filledComponents[1];
 		expect(radio.componentType).toBe('Radio');
 		expect(radio.response.name).toBe('TESTRADIO');
 		expect(radio.options[0].label).toBe('"Yes"');
 		expect(radio.options[1].label).toBe('"No"');
+		expect(radio.conditionFilter).toBe(true);
+		expect(radio.shouldBeFiltered).toBe(false);
 	});
 
 	it('should filter out FilterDescription components if disableFiltersDescription is true', () => {
@@ -453,6 +460,7 @@ describe('fillComponents', () => {
 		const input = filledComponents[0];
 		expect(input.id).toBe('input1');
 		expect(input.conditionFilter).toBe(false);
+		expect(input.shouldBeFiltered).toBe(true);
 	});
 
 	it('should transform components into Text with empty label when conditionFilter is false and parentType is RosterForLoop', () => {
@@ -507,6 +515,8 @@ describe('fillComponents', () => {
 		expect(input.componentType).toBe('Text');
 		expect(input.label).toBe('');
 		expect(input.id).toBe('input1');
+		expect(input.conditionFilter).toBe(false);
+		expect(input.shouldBeFiltered).toBe(true);
 
 		// Check the second component that has conditionFilter: true
 		const radio = filledComponents[1];
@@ -569,6 +579,8 @@ describe('fillComponents', () => {
 		// The component should remain unchanged
 		expect(input.componentType).toBe('Input');
 		expect(input.label).toBe('"Input label"');
+		expect(input.conditionFilter).toBe(false);
+		expect(input.shouldBeFiltered).toBe(true);
 
 		// Check the second component that has conditionFilter: true
 		const radio = filledComponents[1];
@@ -577,5 +589,119 @@ describe('fillComponents', () => {
 		expect(radio.label).toBe('"Radio label"');
 		expect(radio.options[0].label).toBe('"Yes"');
 		expect(radio.options[1].label).toBe('"No"');
+	});
+
+	it('should tag children components with shouldBeFiltered=true if the parent component should be filtered', () => {
+		const components = [
+			{
+				id: 'question-m8ilvkbt',
+				componentType: 'Question',
+				page: '1',
+				label: {
+					value: '"Question label"',
+					type: 'VTL|MD',
+				},
+				conditionFilter: {
+					type: 'VTL',
+					// value should be string, but did not find how to execute correctly with mocks
+					// for having a false conditionFilter at the end
+					value: false,
+				},
+				components: [
+					{
+						id: 'm8ilvkbt',
+						componentType: 'Input',
+						page: '1',
+						maxLength: 249,
+						response: {
+							name: 'TESTTEXTE',
+						},
+					},
+				],
+			},
+		];
+
+		const mockVariables = LunaticVariablesStore.makeFromObject({
+			TESTTEXTE: 'some value',
+		});
+
+		const mockState = {
+			...defaultMockState,
+			disableFilters: true,
+			variables: mockVariables,
+		};
+
+		const filledComponents = fillComponents(
+			components as LunaticComponentDefinition[],
+			mockState as unknown as FillComponentArgs
+		) as any;
+
+		const question = filledComponents[0];
+
+		expect(question.componentType).toBe('Question');
+		expect(question.conditionFilter).toBe(false);
+		expect(question.shouldBeFiltered).toBe(true);
+
+		const input = question.components[0];
+		expect(input.componentType).toBe('Input');
+		expect(input.conditionFilter).toBe(undefined);
+		expect(input.shouldBeFiltered).toBe(true);
+	});
+
+	it('should tag options with shouldBeFiltered=true if the component should be filtered', () => {
+		const components = [
+			{
+				id: 'radio1',
+				componentType: 'Radio',
+				page: '1',
+				label: {
+					type: 'VTL|MD',
+					value: '"Radio label"',
+				},
+				options: [
+					{ value: 'yes', label: { value: '"Yes"', type: 'VTL|MD' } },
+					{ value: 'no', label: { value: '"No"', type: 'VTL|MD' } },
+				],
+				response: {
+					name: 'TESTRADIO',
+				},
+				conditionFilter: {
+					type: 'VTL',
+					// value should be string, but did not find how to execute correctly with mocks
+					// for having a false conditionFilter at the end
+					value: false,
+				},
+			},
+		];
+
+		const mockVariables = LunaticVariablesStore.makeFromObject({
+			TESTINPUT: 'Filled input',
+			TESTRADIO: 'yes',
+		});
+
+		const mockState = {
+			...defaultMockState,
+			disableFilters: true,
+			variables: mockVariables,
+		};
+
+		const filledComponents = fillComponents(
+			components as LunaticComponentDefinition[],
+			mockState as unknown as FillComponentArgs
+		) as any;
+
+		const radio = filledComponents[0];
+
+		expect(radio.componentType).toBe('Radio');
+		expect(radio.conditionFilter).toBe(false);
+		expect(radio.shouldBeFiltered).toBe(true);
+
+		expect(radio.options[0].label).toBe('"Yes"');
+		expect(radio.options[0].conditionFilter).toBe(undefined);
+		expect(radio.options[0].shouldBeFiltered).toBe(true);
+
+		expect(radio.options[1].label).toBe('"No"');
+		expect(radio.options[1].conditionFilter).toBe(undefined);
+		expect(radio.options[1].shouldBeFiltered).toBe(true);
 	});
 });

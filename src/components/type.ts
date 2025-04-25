@@ -35,6 +35,7 @@ export type LunaticBaseProps<ValueType = unknown> = {
 	className?: string;
 	style?: CSSProperties;
 	iteration?: number;
+	shouldBeFiltered?: boolean;
 	declarations?: {
 		id: string;
 		declarationType:
@@ -103,12 +104,17 @@ export type ComponentPropsByType = {
 		};
 	Sequence: Pick<
 		LunaticBaseProps<string>,
-		'id' | 'label' | 'style' | 'declarations' | 'description'
+		| 'id'
+		| 'label'
+		| 'style'
+		| 'declarations'
+		| 'description'
+		| 'shouldBeFiltered'
 	> &
 		LunaticExtraProps & { componentType?: 'Sequence' };
 	Subsequence: Pick<
 		LunaticBaseProps<string>,
-		'id' | 'label' | 'declarations' | 'description'
+		'id' | 'label' | 'declarations' | 'description' | 'shouldBeFiltered'
 	> &
 		LunaticExtraProps & { componentType?: 'Subsequence' };
 	Question: Pick<
@@ -121,6 +127,7 @@ export type ComponentPropsByType = {
 		| 'errors'
 		| 'disabled'
 		| 'readOnly'
+		| 'shouldBeFiltered'
 	> &
 		LunaticExtraProps & {
 			components: LunaticComponentProps[];

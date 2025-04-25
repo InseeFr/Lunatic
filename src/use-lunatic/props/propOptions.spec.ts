@@ -208,6 +208,7 @@ describe('getOptionsProp()', () => {
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
+			expect(options[0].shouldBeFiltered).toBe(false);
 		});
 		it('should not filter option (radio) when its conditionFilter evaluation fails', () => {
 			const definition = {
@@ -237,6 +238,7 @@ describe('getOptionsProp()', () => {
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
+			expect(options[0].shouldBeFiltered).toBe(false);
 		});
 		it('should not filter any response (CheckboxGroup) when disableFilters is true', () => {
 			const definition = {
@@ -268,6 +270,8 @@ describe('getOptionsProp()', () => {
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
+			// the option should would have been filtered if we did not disable filters
+			expect(options[0].shouldBeFiltered).toBe(true);
 		});
 		it('should not filter any option (Radio) when disableFilters is true', () => {
 			const definition = {
@@ -296,7 +300,67 @@ describe('getOptionsProp()', () => {
 				true // disableFilters = true
 			);
 
+			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
+			// the option should would have been filtered if we did not disable filters
+			expect(options[0].shouldBeFiltered).toBe(true);
+		});
+		it('should set the response (CheckboxGroup) shouldBeFiltered=true when the parent component should be filtered', () => {
+			const definition = {
+				...checkboxGroupDefinition,
+				responses: [
+					{
+						label: 'Option 1',
+						response: { name: 'O1' },
+						id: 'id1',
+						conditionFilter: { type: 'VTL', value: 'expression' },
+					},
+				],
+			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger,
+				true, // disableFilters = true
+				true // parent component should be filtered
+			);
+
+			// Ensure the option is not filtered
+			expect(options).toHaveLength(1);
+			// the option would have been filtered if we did not disable filters because its parent would
+			expect(options[0].shouldBeFiltered).toBe(true);
+		});
+		it('should set the option (Radio) shouldBeFiltered=true when the parent component should be filtered', () => {
+			const definition = {
+				...radioDefinition,
+				options: [
+					{
+						label: 'Option 1',
+						value: 'id1',
+						conditionFilter: { type: 'VTL', value: 'expression' },
+					},
+				],
+			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger,
+				true, // disableFilters = true
+				true // parent component should be filtered
+			);
+
+			// Ensure the option is not filtered
+			expect(options).toHaveLength(1);
+			// the option would have been filtered if we did not disable filters because its parent would
+			expect(options[0].shouldBeFiltered).toBe(true);
 		});
 	});
 });

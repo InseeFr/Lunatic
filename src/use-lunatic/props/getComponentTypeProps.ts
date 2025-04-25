@@ -45,7 +45,12 @@ function getChildComponents(
 	state: State
 ) {
 	return {
-		components: fillComponents(component.components, state),
+		components: fillComponents(
+			component.components,
+			state,
+			undefined,
+			component.conditionFilter
+		),
 	};
 }
 
