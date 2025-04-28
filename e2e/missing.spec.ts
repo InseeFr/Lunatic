@@ -4,7 +4,7 @@ import { expectLunaticData, gotoNextPage, goToStory } from './utils';
 test.describe('Missing behaviour', () => {
 	test(`Missing keyboard shortcut are supported`, async ({ page }) => {
 		await goToStory(page, 'behaviour-missing--default');
-		await gotoNextPage(page);
+		await expect(page.getByLabel('NB')).toBeVisible();
 		await page.keyboard.press('F2');
 		await expect(
 			page.getByRole('button', { name: "Don't know" })
@@ -14,7 +14,7 @@ test.describe('Missing behaviour', () => {
 
 	test(`Missing works in loop`, async ({ page }) => {
 		await goToStory(page, 'behaviour-missing--default');
-		await gotoNextPage(page);
+		await expect(page.getByLabel('NB')).toBeVisible();
 		await page.getByLabel('NB').fill('2');
 		await gotoNextPage(page);
 		// Fill "don't know" for both "prénoms"
@@ -27,7 +27,7 @@ test.describe('Missing behaviour', () => {
 	});
 	test(`Keyboard shortcut should trigger all missing`, async ({ page }) => {
 		await goToStory(page, 'behaviour-missing--default');
-		await gotoNextPage(page);
+		await expect(page.getByLabel('NB')).toBeVisible();
 		await page.getByLabel('NB').fill('2');
 		await gotoNextPage(page);
 		await page.keyboard.press('F2');
@@ -45,7 +45,7 @@ test.describe('Missing behaviour', () => {
 		page,
 	}) => {
 		await goToStory(page, 'behaviour-missing--read-only');
-		await gotoNextPage(page);
+		await expect(page.getByLabel('NB')).toBeVisible();
 		await page.keyboard.press('F2');
 		await expect(
 			page.getByRole('button', { name: "Don't know" })

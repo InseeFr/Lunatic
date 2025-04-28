@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { isObject } from '../../utils/is-object';
 import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
 import type { LunaticComponentProps } from '../../components/type';
+import { isObject } from '../../utils/object';
 
 /**
  * Check if a page has one response (value is filled for at least one field).

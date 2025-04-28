@@ -1,25 +1,19 @@
 import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import sourceWithoutHierarchy from '../stories/overview/source.json';
 import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
-import sourceOverview from '../stories/overview/sourceLoop.json';
-import sourceCheckboxGroup from '../stories/checkbox-group/source.json';
-import dataOverview from '../stories/overview/dataLoop.json';
+import sourceOverview from '../stories/behaviour/overview/sourceLoop.json';
+import sourceCheckboxGroup from '../stories/checkbox/sourceGroup.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { PageTag } from './type';
 import { useLunatic } from './use-lunatic';
 import { useCallback } from 'react';
-import { dataFromObject } from './test.utils';
+import { dataFromObject } from '../utils/object';
 
 describe('use-lunatic()', () => {
-	const defaultParams = [
-		sourceSimpsons as any,
-		dataFromObject({}),
-		{},
-	] as const;
+	const defaultParams = [sourceSimpsons, dataFromObject({}), {}] as const;
 
 	it('should initialize correctly', () => {
 		const { result } = renderHook(() => useLunatic(...defaultParams));
@@ -39,7 +33,7 @@ describe('use-lunatic()', () => {
 	});
 	it('should jump to a specific page', () => {
 		const params = [
-			sourceSimpsons as any,
+			sourceSimpsons,
 			dataFromObject({
 				COMMENT: 'Hello world',
 				READY: true,
@@ -102,7 +96,7 @@ describe('use-lunatic()', () => {
 		it('should not generate a new Provider every render', () => {
 			const { result } = renderHook(() => {
 				const missingStrategy = useCallback(() => {}, []);
-				return useLunatic(sourceSimpsons as any, undefined, {
+				return useLunatic(sourceSimpsons, undefined, {
 					management: false,
 					missing: false,
 					missingStrategy,
@@ -146,7 +140,7 @@ describe('use-lunatic()', () => {
 		it('should not calculate overview by default', function () {
 			const { result } = renderHook(() =>
 				useLunatic(
-					sourceLogement as any,
+					sourceLogement,
 					undefined,
 					lunaticConfigurationWithoutOverview
 				)
@@ -156,7 +150,7 @@ describe('use-lunatic()', () => {
 		});
 		it('should make the first sequence visible', function () {
 			const { result } = renderHook(() =>
-				useLunatic(sourceLogement as any, undefined, {
+				useLunatic(sourceLogement, undefined, {
 					...lunaticConfiguration,
 				})
 			);
@@ -167,11 +161,7 @@ describe('use-lunatic()', () => {
 		});
 		it('should be empty when no hierarchy', function () {
 			const { result } = renderHook(() =>
-				useLunatic(
-					sourceWithoutHierarchy as any,
-					undefined,
-					lunaticConfiguration
-				)
+				useLunatic(sourceCheckboxGroup, undefined, lunaticConfiguration)
 			);
 			expect(result.current.overview).toHaveLength(0);
 		});
@@ -179,7 +169,7 @@ describe('use-lunatic()', () => {
 		describe('with initial data', function () {
 			it('should make second sequence visible', function () {
 				const { result } = renderHook(() =>
-					useLunatic(sourceLogement as any, advancedQestionnaireData, {
+					useLunatic(sourceLogement, advancedQestionnaireData, {
 						...lunaticConfiguration,
 						initialPage: '16',
 					})
@@ -192,19 +182,42 @@ describe('use-lunatic()', () => {
 		});
 
 		describe('with loop', function () {
+			const data = dataFromObject({
+				ETAT: '1',
+				SATISFAIT: '1',
+				T_NHAB: 3,
+				T_PRENOM: ['Quentin', 'Luna', 'Paul'],
+				COMMCOMPO: 'super',
+				T_SEXE: ['1', '2', '1'],
+				T_DATENAIS: [null, null, null],
+				REMARQUES: [null, 'a', 'b'],
+				SUPERQUEST: ['ok', 'ok', null],
+				AUTRESUPERQUEST: ['a', 'c', 'ras'],
+				ENCOREUNEQ: ['wow', 'b', null],
+				COMMENT_QE: null,
+				ETAT_MISSING: null,
+				SATISFAIT_MISSING: null,
+				T_NHAB_MISSING: null,
+				T_PRENOM_MISSING: null,
+				COMMCOMPO_MISSING: null,
+				T_SEXE_MISSING: null,
+				T_DATENAIS_MISSING: [null, 'DK', 'RF'],
+				REMARQUES_MISSING: [null, null, null],
+				SUPERQUEST_MISSING: [null, null, 'DK'],
+				ENCOREUNEQ_MISSING: [null, null, 'RF'],
+				AUTRESUPERQUEST_MISSING: null,
+				COMMENT_QE_MISSING: null,
+			});
+
 			it('should work with loop', async () => {
 				const { result } = renderHook(() =>
-					useLunatic(
-						sourceOverview as any,
-						dataOverview.data,
-						lunaticConfiguration
-					)
+					useLunatic(sourceOverview, data, lunaticConfiguration)
 				);
 				expect(result.current.overview).toMatchSnapshot();
 			});
 			it('should handle initialPage', async () => {
 				const { result } = renderHook(() =>
-					useLunatic(sourceOverview as any, dataOverview.data, {
+					useLunatic(sourceOverview, data, {
 						...lunaticConfiguration,
 						initialPage: '10.1#1',
 					})
@@ -230,7 +243,7 @@ describe('use-lunatic()', () => {
 		it('should filter out some components by default', function () {
 			const { result } = renderHook(() =>
 				useLunatic(
-					sourceLogement as any,
+					sourceLogement,
 					undefined,
 					lunaticConfigurationWithoutDisableFilters
 				)
@@ -241,7 +254,7 @@ describe('use-lunatic()', () => {
 		});
 		it('should filter out some components when false', function () {
 			const { result } = renderHook(() =>
-				useLunatic(sourceLogement as any, undefined, {
+				useLunatic(sourceLogement, undefined, {
 					...lunaticConfigurationWithoutDisableFilters,
 					disableFilters: false,
 				})
@@ -252,7 +265,7 @@ describe('use-lunatic()', () => {
 		});
 		it('should not filter any component when true', function () {
 			const { result } = renderHook(() =>
-				useLunatic(sourceLogement as any, undefined, {
+				useLunatic(sourceLogement, undefined, {
 					...lunaticConfigurationWithoutDisableFilters,
 					disableFilters: true,
 				})
@@ -269,7 +282,7 @@ describe('use-lunatic()', () => {
 	describe('cleaning', () => {
 		it('should handle cleaning in a loop', () => {
 			const { result } = renderHook(() =>
-				useLunatic(sourceCleaningLoop as any, undefined)
+				useLunatic(sourceCleaningLoop, undefined)
 			);
 			act(() => {
 				result.current.handleChanges([
@@ -284,9 +297,9 @@ describe('use-lunatic()', () => {
 				result.current.goNextPage();
 			});
 			const expectCollectedAgeToEqual = (expectation: unknown[]) => {
-				expect(
-					(result.current.getData(false).COLLECTED as any).AGE.COLLECTED
-				).toEqual(expectation);
+				expect(result.current.getData(false).COLLECTED?.AGE.COLLECTED).toEqual(
+					expectation
+				);
 			};
 			expectCollectedAgeToEqual([18, 18, 18]);
 			act(() => {
@@ -306,17 +319,17 @@ describe('use-lunatic()', () => {
 		it('should resize after cleaning', () => {
 			const spy = vi.fn();
 			const { result } = renderHook(() =>
-				useLunatic(sourceCleaningResizing as any, undefined, {
+				useLunatic(sourceCleaningResizing, undefined, {
 					onChange: spy,
 				})
 			);
 			act(() => result.current.handleChanges([{ name: 'NB', value: 3 }]));
 			expect(
-				(result.current.getData(true).COLLECTED?.PRENOMS as any).COLLECTED
+				result.current.getData(true).COLLECTED?.PRENOMS?.COLLECTED
 			).toEqual([null, null, null]);
 			act(() => result.current.handleChanges([{ name: 'NB', value: 2 }]));
 			expect(
-				(result.current.getData(true).COLLECTED?.PRENOMS as any).COLLECTED
+				result.current.getData(true).COLLECTED?.PRENOMS?.COLLECTED
 			).toEqual([null, null]);
 		});
 	});
@@ -325,7 +338,7 @@ describe('use-lunatic()', () => {
 		let hookRef: { current: ReturnType<typeof useLunatic> };
 		beforeEach(() => {
 			const { result } = renderHook(() =>
-				useLunatic(sourceSimpsons as any, undefined, {})
+				useLunatic(sourceSimpsons, undefined, {})
 			);
 			act(() => {
 				result.current.handleChanges([
@@ -353,7 +366,7 @@ describe('use-lunatic()', () => {
 		let hookRef: { current: ReturnType<typeof useLunatic> };
 		beforeEach(() => {
 			const { result } = renderHook(() =>
-				useLunatic(sourceSimpsons as any, undefined, { trackChanges: true })
+				useLunatic(sourceSimpsons, undefined, { trackChanges: true })
 			);
 			hookRef = result;
 		});
@@ -425,7 +438,7 @@ describe('use-lunatic()', () => {
 	describe('pageHasResponse', () => {
 		it('should detect change on a field', () => {
 			const { result } = renderHook(() =>
-				useLunatic(sourceCheckboxGroup as any, undefined, {})
+				useLunatic(sourceCheckboxGroup, undefined, {})
 			);
 			act(() => {
 				result.current.handleChanges([{ name: 'NATIO1N1', value: true }]);
@@ -434,7 +447,7 @@ describe('use-lunatic()', () => {
 		});
 		it('should not detect unchecked box has a response', () => {
 			const { result } = renderHook(() =>
-				useLunatic(sourceCheckboxGroup as any, undefined, {})
+				useLunatic(sourceCheckboxGroup, undefined, {})
 			);
 			act(() => {
 				result.current.handleChanges([{ name: 'NATIO1N1', value: false }]);

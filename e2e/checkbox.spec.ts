@@ -4,10 +4,8 @@ import { expectChanges, expectCollectedData, goToStory } from './utils';
 test.describe('Checkboxes', () => {
 	test.describe('CheckboxGroup', () => {
 		test(`Keyboard shortcut should check boxes`, async ({ page }) => {
-			await goToStory(page, 'components-checkboxgroup--default');
-			await expect(
-				page.getByRole('checkbox', { name: 'Janvier' })
-			).toBeVisible();
+			await goToStory(page, 'components-checkbox--group');
+			await expect(page.getByText('Janvier')).toBeVisible();
 			await page.keyboard.type('ab');
 			await expect(
 				page.getByRole('checkbox', { name: 'Janvier' })
@@ -26,10 +24,8 @@ test.describe('Checkboxes', () => {
 		test(`Keyboard shortcut should be disabled in readonly`, async ({
 			page,
 		}) => {
-			await goToStory(page, 'components-checkboxgroup--read-only');
-			await expect(
-				page.getByRole('checkbox', { name: 'Janvier' })
-			).toBeVisible();
+			await goToStory(page, 'components-checkbox--group-read-only');
+			await expect(page.getByText('Janvier')).toBeVisible();
 			await page.keyboard.type('ab');
 			await expect(
 				page.getByRole('checkbox', { name: 'Janvier' })
@@ -38,7 +34,7 @@ test.describe('Checkboxes', () => {
 		});
 
 		test('Can select arbitrary value', async ({ page }) => {
-			await goToStory(page, 'components-checkboxgroup--with-detail');
+			await goToStory(page, 'components-checkbox--group-with-detail');
 			const selector = page.getByRole('checkbox', { name: 'Autre préciser' });
 			await expect(selector).toBeVisible();
 			await selector.click();
@@ -53,7 +49,7 @@ test.describe('Checkboxes', () => {
 
 	test.describe('CheckboxOne', () => {
 		test(`Allow keyboard a11y`, async ({ page }) => {
-			await goToStory(page, 'components-checkboxone--default');
+			await goToStory(page, 'components-checkbox--one');
 			await expect(page.getByRole('radio', { name: 'oui' })).toBeVisible();
 			await page.mouse.click(0, 0);
 			await page.keyboard.press('Tab');
@@ -65,7 +61,7 @@ test.describe('Checkboxes', () => {
 			await expectCollectedData(page, 'Q2', '2');
 		});
 		test(`Allow detail selection`, async ({ page }) => {
-			await goToStory(page, 'components-checkboxone--with-detail');
+			await goToStory(page, 'components-checkbox--one-with-detail');
 			await expect(page.getByRole('radio', { name: 'Autre' })).toBeVisible();
 			await page.getByRole('radio', { name: 'Autre' }).click();
 			await page.getByRole('textbox', { name: 'Préciser' }).fill('Bonjour');
@@ -73,7 +69,7 @@ test.describe('Checkboxes', () => {
 			await expectCollectedData(page, 'Q3', 'Bonjour');
 		});
 		test(`Allow to uncheck modality`, async ({ page }) => {
-			await goToStory(page, 'components-checkboxone--default');
+			await goToStory(page, 'components-checkbox--one');
 			await expect(page.getByRole('radio', { name: 'oui' })).toBeVisible();
 			await page.getByRole('radio', { name: 'oui' }).click();
 			await expectChanges(page, 1, () => {

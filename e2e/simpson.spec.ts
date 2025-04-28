@@ -206,7 +206,6 @@ test('can complete simpson form', async ({ page }) => {
 		.fill('No');
 
 	// Assertion
-	await expect(page.getByText('PageTag: "40"')).toBeVisible();
-	await page.getByRole('button', { name: 'Get Data' }).click();
+	await expect(page.getByText('PageTag"40"')).toBeVisible();
 	await expectCollectedData(page, 'COMMENT', 'They are yellow');
 });
