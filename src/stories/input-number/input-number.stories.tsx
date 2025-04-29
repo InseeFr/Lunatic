@@ -1,31 +1,34 @@
-import { Orchestrator } from '../utils/Orchestrator';
+import {
+	type Orchestrator,
+	OrchestratorMeta,
+	type OrchestratorStory,
+} from '../utils/Orchestrator';
 import source from './source.json';
 import sourceBigNumber from './source-big-number.json';
 import sourceEuro from './source-euro.json';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Orchestrator> = {
 	title: 'Components/InputNumber',
-	component: Orchestrator,
+	...OrchestratorMeta,
 };
 
 export default meta;
-type Story = StoryObj<typeof Orchestrator>;
 
-export const Default: Story = {
+export const Default: OrchestratorStory = {
 	args: {
 		source,
 	},
 };
 
-export const DynamicUnit: Story = {
+export const DynamicUnit: OrchestratorStory = {
 	args: {
 		source: sourceEuro,
 	},
 };
 
-export const BigNumber: Story = {
+export const BigNumber: OrchestratorStory = {
 	args: {
 		source: sourceBigNumber,
 	},

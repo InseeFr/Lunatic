@@ -1,30 +1,33 @@
-import { Orchestrator } from '../utils/Orchestrator';
+import {
+	type Orchestrator,
+	OrchestratorMeta,
+	type OrchestratorStory,
+} from '../utils/Orchestrator';
 import sourceBloc from './source-bloc.json';
 import sourcePaginated from './source-paginated.json';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Orchestrator> = {
 	title: 'Components/Loop',
-	component: Orchestrator,
+	...OrchestratorMeta,
 };
 
 export default meta;
-type Story = StoryObj<typeof Orchestrator>;
 
-export const Default: Story = {
+export const Default: OrchestratorStory = {
 	args: {
 		source: sourceBloc,
 	},
 };
 
-export const Paginated: Story = {
+export const Paginated: OrchestratorStory = {
 	args: {
 		source: sourcePaginated,
 	},
 };
 
-export const ReadOnly: Story = {
+export const ReadOnly: OrchestratorStory = {
 	args: {
 		source: sourceBloc,
 		readOnly: true,

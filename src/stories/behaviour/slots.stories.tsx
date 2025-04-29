@@ -1,17 +1,20 @@
-import { Orchestrator } from '../utils/Orchestrator';
+import {
+	type Orchestrator,
+	OrchestratorMeta,
+	type OrchestratorStory,
+} from '../utils/Orchestrator';
 import source from '../input/source.json';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Orchestrator> = {
 	title: 'Behaviour/Slots',
-	component: Orchestrator,
+	...OrchestratorMeta,
 };
 
 export default meta;
-type Story = StoryObj<typeof Orchestrator>;
 
-export const Default: Story = {
+export const Default: OrchestratorStory = {
 	args: {
 		source,
 		slots: {

@@ -1,47 +1,50 @@
-import { Orchestrator } from '../../utils/Orchestrator';
+import {
+	type Orchestrator,
+	OrchestratorMeta,
+	type OrchestratorStory,
+} from '../../utils/Orchestrator';
 import simple from './source-simple.json';
 import simpleNum from './source-simple-numeric.json';
 import sourceLoop from './source-loop.json';
 import sourceRoundabout from './source-roundabout.json';
 import boucleNTabDynamique from './source-boucles-n.json';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Orchestrator> = {
 	title: 'Behaviour/Controls',
-	component: Orchestrator,
+	...OrchestratorMeta,
 };
 
 export default meta;
-type Story = StoryObj<typeof Orchestrator>;
 
-export const BoucleN: Story = {
+export const BoucleN: OrchestratorStory = {
 	args: {
 		source: boucleNTabDynamique,
 	},
 };
 
-export const Simple: Story = {
+export const Simple: OrchestratorStory = {
 	args: {
 		source: simple,
 	},
 };
 
-export const SimpleNum: Story = {
+export const SimpleNum: OrchestratorStory = {
 	args: {
 		source: simpleNum,
 	},
 };
 
-export const LinkedLoop: Story = {};
+export const LinkedLoop: OrchestratorStory = {};
 
-export const Loop: Story = {
+export const Loop: OrchestratorStory = {
 	args: {
 		source: sourceLoop,
 	},
 };
 
-export const Roundabout: Story = {
+export const Roundabout: OrchestratorStory = {
 	args: {
 		source: sourceRoundabout,
 	},

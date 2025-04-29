@@ -28,13 +28,18 @@
     --color-error: oklch(73.092% 0.11 20.076);
     --color-error-content: oklch(14.618% 0.022 20.076);
     --radius-selector: 1rem;
-    --radius-field: 0rem;
-    --radius-box: 0rem;
-    --size-selector: 0.25rem;
-    --size-field: 0.25rem;
+    --radius-field: .25rem;
+    --radius-box: .25rem;
+    --size-selector: .25rem;
+    --size-field: .25rem;
     --border: 1px;
     --depth: 0;
     --noise: 0;
+}
+
+.btn-primary:hover {
+    --btn-bg: color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 20%);
+    --btn-fg: #FFF;
 }
 
 @utility container {

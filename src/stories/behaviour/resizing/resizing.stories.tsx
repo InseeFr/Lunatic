@@ -1,26 +1,29 @@
-import { Orchestrator } from '../../utils/Orchestrator';
+import {
+	type Orchestrator,
+	OrchestratorMeta,
+	type OrchestratorStory,
+} from '../../utils/Orchestrator';
 import source from './source.json';
 import sourceResizingCleaning from './source-resizing-cleaning.json';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
 import { dataFromObject } from '../../../utils/object';
 
 const meta: Meta<typeof Orchestrator> = {
 	title: 'Behaviour/Resizing',
-	component: Orchestrator,
+	...OrchestratorMeta,
 };
 
 export default meta;
-type Story = StoryObj<typeof Orchestrator>;
 
-export const Default: Story = {
+export const Default: OrchestratorStory = {
 	args: {
 		source,
 	},
 };
 
-export const ResizingWithCleaning: Story = {
+export const ResizingWithCleaning: OrchestratorStory = {
 	args: {
 		source: sourceResizingCleaning,
 		data: dataFromObject({

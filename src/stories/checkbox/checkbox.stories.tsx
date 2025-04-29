@@ -1,4 +1,8 @@
-import { Orchestrator } from '../utils/Orchestrator';
+import {
+	type Orchestrator,
+	OrchestratorMeta,
+	type OrchestratorStory,
+} from '../utils/Orchestrator';
 import source from './source.json';
 import sourceGroup from './sourceGroup.json';
 import sourceGroupCondition from './sourceGroupCondition.json';
@@ -7,37 +11,36 @@ import sourceGroupLoop from './sourceGroupLoop.json';
 import sourceOne from './sourceOne.json';
 import sourceOneDetail from './sourceOneDetail.json';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Orchestrator> = {
 	title: 'Components/Checkbox',
-	component: Orchestrator,
+	...OrchestratorMeta,
 };
 
 export default meta;
-type Story = StoryObj<typeof Orchestrator>;
 
-export const Boolean: Story = {
+export const Boolean: OrchestratorStory = {
 	args: {
 		source,
 	},
 };
 
-export const Group: Story = {
+export const Group: OrchestratorStory = {
 	args: {
 		source: sourceGroup,
 		shortcut: true,
 	},
 };
 
-export const GroupWithCondition: Story = {
+export const GroupWithCondition: OrchestratorStory = {
 	args: {
 		source: sourceGroupCondition,
 		shortcut: true,
 	},
 };
 
-export const GroupReadOnly: Story = {
+export const GroupReadOnly: OrchestratorStory = {
 	args: {
 		readOnly: true,
 		source: sourceGroup,
@@ -45,27 +48,27 @@ export const GroupReadOnly: Story = {
 	},
 };
 
-export const GroupWithDetail: Story = {
+export const GroupWithDetail: OrchestratorStory = {
 	args: {
 		source: sourceGroupDetail,
 		shortcut: true,
 	},
 };
 
-export const GroupInLoop: Story = {
+export const GroupInLoop: OrchestratorStory = {
 	args: {
 		source: sourceGroupLoop,
 		shortcut: true,
 	},
 };
 
-export const One: Story = {
+export const One: OrchestratorStory = {
 	args: {
 		source: sourceOne,
 	},
 };
 
-export const OneWithDetail: Story = {
+export const OneWithDetail: OrchestratorStory = {
 	args: {
 		source: sourceOneDetail,
 	},

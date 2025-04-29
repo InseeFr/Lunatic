@@ -37,16 +37,16 @@ export function OrchestratorSidebar({
 			<div className="space-y-4">
 				{/* Next / Prev button */}
 				<div>
-					<div className="flex mb-2">
+					<div className="join mb-2 w-full">
 						<button
-							className="btn btn-block shrink btn-primary"
+							className="btn join-item btn-block shrink btn-primary"
 							onClick={goPreviousPage}
 							disabled={isFirstPage}
 						>
 							Previous
 						</button>
 						<button
-							className="btn btn-block shrink btn-primary"
+							className="btn join-item btn-block shrink btn-primary"
 							onClick={goNextPage}
 							disabled={isLastPage}
 						>
@@ -60,7 +60,7 @@ export function OrchestratorSidebar({
 
 				{/* Reach a specific page */}
 				<form
-					className="flex"
+					className="join w-full"
 					onSubmit={(e) => {
 						e.preventDefault();
 						goToPage({
@@ -68,11 +68,11 @@ export function OrchestratorSidebar({
 						});
 					}}
 				>
-					<label className="input">
+					<label className="input join-item">
 						<span className="label">Page</span>
 						<input type="number" placeholder="1" />
 					</label>
-					<button type="submit" className="btn btn-neutral">
+					<button type="submit" className="join-item btn btn-neutral">
 						Reach
 					</button>
 				</form>

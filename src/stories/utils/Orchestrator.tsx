@@ -2,7 +2,6 @@ import {
 	LunaticComponents,
 	type LunaticData,
 	type LunaticError,
-	type LunaticPager,
 	type LunaticSlotComponents,
 	type LunaticSource,
 	ModalControls,
@@ -22,10 +21,10 @@ import { Logger } from '../../utils/logger';
 import { OrchestratorOverview } from './OrchestratorOverview';
 import { SchemaValidator } from './SchemaValidator';
 import { OrchestratorData } from './OrchestratorData';
-import { objectKeys } from '../../utils/object';
 import type { PageTag } from '../../use-lunatic/type';
 import type { IndexEntry } from '../../utils/search/SearchInterface';
 import { OrchestratorSidebar } from './OrchestratorSidebar';
+import type { Meta, StoryObj } from '@storybook/react';
 
 type Props = {
 	source: LunaticSource;
@@ -54,33 +53,31 @@ type Props = {
 	missingStrategy?: () => void;
 	showOverview?: boolean;
 	disabled?: boolean;
-	preferences: any;
-	dontKnowButton: any;
-	refusedButton: any;
+	extraTabs?: TabEntry[];
 };
+
+type TabEntry = { label: ReactNode; children: ReactNode };
 
 function OrchestratorForStories(props: Props) {
 	const {
 		source,
 		data,
-		disableFilters = false,
-		disableFiltersDescription = false,
-		management = false,
-		shortcut = false,
-		activeControls = true,
-		initialPage = '1',
-		missing = false,
-		missingStrategy = logMissingStrategy,
-		preferences,
+		disableFilters,
+		disableFiltersDescription,
+		management,
+		shortcut,
+		activeControls,
+		initialPage,
+		missing,
+		missingStrategy,
 		slots,
-		showOverview = false,
+		showOverview,
 		getReferentiel,
-		dontKnowButton,
-		refusedButton,
-		readOnly = false,
-		disabled = false,
-		detailAlwaysDisplayed = false,
-		autoSuggesterLoading = false,
+		readOnly,
+		disabled,
+		detailAlwaysDisplayed,
+		autoSuggesterLoading,
+		extraTabs = [],
 	} = props;
 
 	const componentsOptions = { detailAlwaysDisplayed };
@@ -101,7 +98,6 @@ function OrchestratorForStories(props: Props) {
 		hasPageResponse,
 	} = useLunatic(source, data, {
 		initialPage,
-		preferences,
 		disableFilters,
 		disableFiltersDescription,
 		onChange: onLogChange,
@@ -114,8 +110,6 @@ function OrchestratorForStories(props: Props) {
 		shortcut,
 		activeControls,
 		withOverview: showOverview,
-		dontKnowButton,
-		refusedButton,
 		autoSuggesterLoading,
 		componentsOptions,
 	});
@@ -207,7 +201,8 @@ function OrchestratorForStories(props: Props) {
 			label: 'Data',
 			children: <OrchestratorData getData={getData} source={source} />,
 		},
-	] as { label: ReactNode; children: ReactNode }[];
+		...extraTabs,
+	] as TabEntry[];
 
 	if (errors && errors.length > 0) {
 		tabs.push({
@@ -280,3 +275,36 @@ function logMissingStrategy() {
 }
 
 export const Orchestrator = memo(OrchestratorForStories);
+
+export const OrchestratorMeta: Meta<typeof Orchestrator> = {
+	component: Orchestrator,
+	argTypes: {
+		// Do not display controls for these args
+		source: { table: { disable: true } },
+		data: { table: { disable: true } },
+		getReferentiel: { table: { disable: true } },
+		initialPage: { table: { disable: true } },
+		slots: { table: { disable: true } },
+		lastReachedPage: { table: { disable: true } },
+		autoSuggesterLoading: { table: { disable: true } },
+		missingStrategy: { table: { disable: true } },
+		extraTabs: { table: { disable: true } },
+	},
+	args: {
+		disableFilters: false,
+		disableFiltersDescription: false,
+		management: false,
+		shortcut: false,
+		activeControls: true,
+		initialPage: '1',
+		missing: false,
+		missingStrategy: logMissingStrategy,
+		showOverview: false,
+		readOnly: false,
+		disabled: false,
+		detailAlwaysDisplayed: false,
+		autoSuggesterLoading: false,
+	},
+};
+
+export type OrchestratorStory = StoryObj<typeof Orchestrator>;

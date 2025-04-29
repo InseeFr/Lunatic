@@ -1,24 +1,27 @@
-import { Orchestrator } from '../utils/Orchestrator';
+import {
+	type Orchestrator,
+	OrchestratorMeta,
+	type OrchestratorStory,
+} from '../utils/Orchestrator';
 import source from './source.json';
 import sourceRoster from './source-roster.json';
 import sourceTable from './source-table.json';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Orchestrator> = {
 	title: 'Components/Text',
-	component: Orchestrator,
+	...OrchestratorMeta,
 };
 
 export default meta;
-type Story = StoryObj<typeof Orchestrator>;
 
-export const Default: Story = {
+export const Default: OrchestratorStory = {
 	args: {
 		source,
 	},
 };
-export const Roster: Story = {
+export const Roster: OrchestratorStory = {
 	args: {
 		source: sourceRoster,
 		data: {
@@ -28,7 +31,7 @@ export const Roster: Story = {
 		},
 	},
 };
-export const Table: Story = {
+export const Table: OrchestratorStory = {
 	args: {
 		source: sourceTable,
 	},

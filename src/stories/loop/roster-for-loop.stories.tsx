@@ -1,32 +1,35 @@
 import { sleep } from '../../tests/utils/timer';
-import { Orchestrator } from '../utils/Orchestrator';
+import {
+	type Orchestrator,
+	OrchestratorMeta,
+	type OrchestratorStory,
+} from '../utils/Orchestrator';
 import source from './source-roster.json';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 
 const meta: Meta<typeof Orchestrator> = {
 	title: 'Components/Loop/Roster',
-	component: Orchestrator,
+	...OrchestratorMeta,
 };
 
 export default meta;
-type Story = StoryObj<typeof Orchestrator>;
 
-export const Default: Story = {
+export const Default: OrchestratorStory = {
 	args: {
 		source,
 	},
 };
 
-export const ReadOnly: Story = {
+export const ReadOnly: OrchestratorStory = {
 	args: {
 		source,
 		readOnly: true,
 	},
 };
 
-export const Filled: Story = {
+export const Filled: OrchestratorStory = {
 	args: Default.args,
 	play: async ({ canvasElement }) => {
 		await sleep(1000);
