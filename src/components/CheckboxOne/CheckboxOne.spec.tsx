@@ -9,6 +9,7 @@ describe('CheckboxOne component', () => {
 		{ label: 'Option 2', value: 'option-2', onCheck: onCheck, checked: false },
 		{ label: 'Option 3', value: 'option-3', onCheck: onCheck, checked: false },
 	] satisfies InterpretedOption[];
+	const response = { name: 'demo' };
 
 	it('renders the component with correct props', () => {
 		const { getByText } = render(
@@ -17,6 +18,7 @@ describe('CheckboxOne component', () => {
 				value="option-1"
 				id="checkbox-one"
 				handleChanges={onCheck}
+				response={response}
 			/>
 		);
 
@@ -34,6 +36,7 @@ describe('CheckboxOne component', () => {
 				label="Checkbox One"
 				description="Choose one option"
 				handleChanges={onCheck}
+				response={response}
 			/>
 		);
 
