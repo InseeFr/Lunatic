@@ -23,7 +23,9 @@ export const Default: OrchestratorStory = {
 	},
 };
 
-function PasteOrchestrator(props: ComponentProps<typeof Orchestrator>) {
+function PasteOrchestrator(
+	props: Readonly<ComponentProps<typeof Orchestrator>>
+) {
 	const [source, setSource, sourceAsString] =
 		useLocalStorage<LunaticSource | null>('story-source');
 	const extraTabs = useMemo(() => {
@@ -46,10 +48,12 @@ function PasteOrchestrator(props: ComponentProps<typeof Orchestrator>) {
 	);
 }
 
-function FormForSource(props: {
-	source: string;
-	onChange: (source: string) => void;
-}) {
+function FormForSource(
+	props: Readonly<{
+		source: string;
+		onChange: (source: string) => void;
+	}>
+) {
 	const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
 		const data = new FormData(e.currentTarget);

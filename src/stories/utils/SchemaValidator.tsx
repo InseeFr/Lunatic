@@ -4,7 +4,7 @@ type Props = {
 	errors: ErrorObject<string, Record<string, any>, unknown>[];
 };
 
-export function SchemaValidator({ errors }: Props) {
+export function SchemaValidator({ errors }: Readonly<Props>) {
 	if (!errors) {
 		return null;
 	}

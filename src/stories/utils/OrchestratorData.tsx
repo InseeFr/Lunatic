@@ -7,7 +7,7 @@ type Props = {
 	source: LunaticSource;
 };
 
-export function OrchestratorData({ getData, source }: Props) {
+export function OrchestratorData({ getData, source }: Readonly<Props>) {
 	const data = useMemo(() => getData(true), [getData]);
 	const [search, setSearch] = useState('');
 	const [tab, setTab] = useState(0);
@@ -61,7 +61,7 @@ export function OrchestratorData({ getData, source }: Props) {
 						</tr>
 					</thead>
 					<tbody>
-						{Object.entries(variables!).map(([key, value]) => (
+						{Object.entries(variables).map(([key, value]) => (
 							<tr key={key}>
 								<td>{key}</td>
 								<td>

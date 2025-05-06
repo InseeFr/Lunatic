@@ -58,7 +58,7 @@ type Props = {
 
 type TabEntry = { label: ReactNode; children: ReactNode };
 
-function OrchestratorForStories(props: Props) {
+function OrchestratorForStories(props: Readonly<Props>) {
 	const {
 		source,
 		data,
@@ -208,7 +208,7 @@ function OrchestratorForStories(props: Props) {
 		tabs.push({
 			label: (
 				<>
-					Errors
+					Errors{' '}
 					<span className="badge badge-xs badge-error text-white">
 						{errors.length}
 					</span>
@@ -253,7 +253,7 @@ function OrchestratorForStories(props: Props) {
 						<OrchestratorOverview overview={overview} goToPage={goToPage} />
 					)}
 				</OrchestratorSidebar>
-				{errorsForModal && errorsForModal.currentErrors && (
+				{errorsForModal?.currentErrors && (
 					<ModalControls
 						errors={errorsForModal.currentErrors}
 						goNext={skip}

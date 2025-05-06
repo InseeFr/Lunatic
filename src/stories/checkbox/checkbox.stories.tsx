@@ -20,13 +20,13 @@ const meta: Meta<typeof Orchestrator> = {
 
 export default meta;
 
-export const Boolean: OrchestratorStory = {
+export const CheckboxBoolean: OrchestratorStory = {
 	args: {
 		source,
 	},
 };
 
-export const Group: OrchestratorStory = {
+export const CheckboxGroup: OrchestratorStory = {
 	args: {
 		source: sourceGroup,
 		shortcut: true,
@@ -40,7 +40,7 @@ export const GroupWithCondition: OrchestratorStory = {
 	},
 };
 
-export const GroupReadOnly: OrchestratorStory = {
+export const CheckboxGroupReadOnly: OrchestratorStory = {
 	args: {
 		readOnly: true,
 		source: sourceGroup,
@@ -48,27 +48,27 @@ export const GroupReadOnly: OrchestratorStory = {
 	},
 };
 
-export const GroupWithDetail: OrchestratorStory = {
+export const CheckboxGroupWithDetail: OrchestratorStory = {
 	args: {
 		source: sourceGroupDetail,
 		shortcut: true,
 	},
 };
 
-export const GroupInLoop: OrchestratorStory = {
+export const CheckboxGroupInLoop: OrchestratorStory = {
 	args: {
 		source: sourceGroupLoop,
 		shortcut: true,
 	},
 };
 
-export const One: OrchestratorStory = {
+export const CheckboxOne: OrchestratorStory = {
 	args: {
 		source: sourceOne,
 	},
 };
 
-export const OneWithDetail: OrchestratorStory = {
+export const CheckboxOneWithDetail: OrchestratorStory = {
 	args: {
 		source: sourceOneDetail,
 	},
