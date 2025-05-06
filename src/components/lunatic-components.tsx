@@ -1,4 +1,5 @@
 import {
+	forwardRef,
 	Fragment,
 	type PropsWithChildren,
 	type ReactNode,
@@ -7,6 +8,23 @@ import {
 import * as lunaticComponents from './index';
 import type { FilledLunaticComponentProps } from '../use-lunatic/commons/fill-components/fill-components';
 import { useAutoFocus } from '../hooks/use-auto-focus';
+
+type LunaticComponentsConatainerType = PropsWithChildren<{
+	autoFocusKey?: string;
+}>;
+
+const LunaticComponentsConatainer = forwardRef<
+	HTMLDivElement,
+	LunaticComponentsConatainerType
+>(function Container(
+	{ children, autoFocusKey }: LunaticComponentsConatainerType,
+	ref
+) {
+	if (autoFocusKey) {
+		return <div ref={ref}>{children}</div>;
+	}
+	return <>{children}</>;
+});
 
 type Props<T extends Record<string, unknown>> = {
 	// List of components to display (coming from getComponents)
@@ -34,14 +52,11 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 }: Props<T>) {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const hasComponents = components.length > 0;
-	const WrapperComponent = autoFocusKey ? 'div' : Fragment;
 
 	useAutoFocus(wrapperRef, hasComponents ? autoFocusKey : undefined);
 
 	return (
-		<WrapperComponent
-			ref={WrapperComponent === Fragment ? undefined : wrapperRef}
-		>
+		<LunaticComponentsConatainer ref={wrapperRef} autoFocusKey={autoFocusKey}>
 			{components.map((component, k) => {
 				const props = {
 					...component,
@@ -56,7 +71,7 @@ export function LunaticComponents<T extends Record<string, unknown>>({
 					</Fragment>
 				);
 			})}
-		</WrapperComponent>
+		</LunaticComponentsConatainer>
 	);
 }
 

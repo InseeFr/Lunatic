@@ -233,6 +233,7 @@ type ComponentPropsByType = {
 		page: string;
 		goNextPage: () => void;
 		goPreviousPage: () => void;
+		backPage?: string;
 	};
 
 	RemoteComponent: LunaticBaseProps<string | null> & {

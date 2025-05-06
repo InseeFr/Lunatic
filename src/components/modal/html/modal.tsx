@@ -7,7 +7,7 @@ import './modal.scss';
 
 type Props = Pick<
 	LunaticComponentProps<'ConfirmationModal'>,
-	'id' | 'label' | 'description'
+	'id' | 'label' | 'description' | 'backPage'
 > & {
 	onClose: ReactEventHandler<HTMLDialogElement>;
 	onCancel: ReactEventHandler<HTMLDialogElement>;

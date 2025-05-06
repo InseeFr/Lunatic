@@ -94,6 +94,11 @@ export function useSuggesters({
 								setTimestamp(Date.now());
 							}
 						}
+					} catch (e) {
+						console.warn(`Error during suggester's cleaning ${name}`, e);
+					}
+
+					try {
 						if (current[name] === SuggesterStatus.pending) {
 							const data = await getReferentiel(name);
 							const [append, abort] = createAppendTask<any>(
@@ -113,7 +118,7 @@ export function useSuggesters({
 							}
 						}
 					} catch (e: any) {
-						console.error(e);
+						console.error(`Error during suggester's loading ${name}`, e);
 						setStatus(status, name, SuggesterStatus.error);
 						setTimestamp(Date.now());
 					}
