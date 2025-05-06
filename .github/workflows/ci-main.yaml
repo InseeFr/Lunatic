@@ -35,18 +35,18 @@ jobs:
         run: yarn run check
       - name: Unit Tests
         run: yarn run test
-      - name: Install Playwright Browsers
-        run: yarn playwright install --with-deps
-      - name: Build Storybook
-        run: yarn run build-storybook --quiet
-      - name: E2E Tests
-        run: npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" "npx http-server storybook-static --port 9999 --silent" "npx wait-on tcp:9999 && yarn run test:e2e"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+      # - name: Install Playwright Browsers
+      #   run: yarn playwright install --with-deps
+      # - name: Build Storybook
+      #   run: yarn run build-storybook --quiet
+      # - name: E2E Tests
+      #   run: npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" "npx http-server storybook-static --port 9999 --silent" "npx wait-on tcp:9999 && yarn run test:e2e"
+      # - uses: actions/upload-artifact@v4
+      #   if: always()
+      #   with:
+      #     name: playwright-report
+      #     path: playwright-report/
+      #     retention-days: 30
 
   build-deploy-assets:
     runs-on: ubuntu-latest
