@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { expectLunaticData, goToStory } from './utils';
 
-const loopTypes = ['loop--paginated', 'rosterforloop--default'];
+const loopTypes = ['loop--paginated', 'loop-roster--default'];
 loopTypes.forEach((loopType) => {
 	test(`can complete a simple ${loopType.split('--')[0]}`, async ({ page }) => {
 		await goToStory(page, `components-${loopType}`);
@@ -13,7 +13,7 @@ loopTypes.forEach((loopType) => {
 		await page.getByRole('button', { name: 'Next' }).click();
 		await page.getByLabel('Jane, quel est vôtre âge ?').fill('20');
 		await page.getByRole('button', { name: 'Next' }).click();
-		await expect(page.getByText('PageTag: "3"')).toBeVisible();
+		await expect(page.getByText('PageTag"3"')).toBeVisible();
 		await expectLunaticData(page, 'COLLECTED.PRENOM.COLLECTED', [
 			'John',
 			'Jane',

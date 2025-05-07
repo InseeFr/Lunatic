@@ -56,7 +56,7 @@
 					"declarationType": "INSTRUCTION",
 					"position": "BEFORE_QUESTION_TEXT",
 					"label": {
-						"value": "\"Démontre la capacité d'un suggester à extraire plusieurs réponse à partir des propriétés du référentiel\"",
+						"value": "\"Démontre la capacité d'un suggester à extraire plusieurs réponse à partir des propriétés du référentiel (rechercher 'brosse' ou 'balle')\"",
 						"type": "VTL|MD"
 					}
 				}

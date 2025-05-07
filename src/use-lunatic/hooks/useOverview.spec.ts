@@ -1,8 +1,9 @@
 import { renderHook } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import source from '../../stories/overview/sourceWithHierarchy.json';
+import source from '../../stories/behaviour/overview/source.json';
 import { useLunatic } from '../use-lunatic';
-import { dataFromObject } from '../test.utils';
+
+import { dataFromObject } from '../../utils/object';
 
 describe('use-overview test with useLunatic()', () => {
 	it('should initialize correctly with disableFilters: false (without data)', () => {
