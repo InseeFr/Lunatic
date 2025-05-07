@@ -239,6 +239,8 @@ export type Variable =
 			variableType: 'EXTERNAL';
 			name: string;
 			value: VariableValue;
+			iterationReference?: string;
+			dimension?: number;
 	  }
 	| {
 			variableType: 'COLLECTED';
@@ -246,6 +248,8 @@ export type Variable =
 			values?: {
 				COLLECTED: VariableValue;
 			};
+			iterationReference?: string;
+			dimension?: number;
 	  }
 	| {
 			variableType: 'CALCULATED';
@@ -253,6 +257,8 @@ export type Variable =
 			expression: VTLExpression;
 			bindingDependencies?: string[];
 			shapeFrom?: string[] | string;
+			iterationReference?: string;
+			dimension?: number;
 	  };
 export type VariableValue = VariableScalarValue | unknown[];
 export type VariableScalarValue = string | number | null;
