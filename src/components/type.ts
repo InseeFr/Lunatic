@@ -205,6 +205,7 @@ export type ComponentPropsByType = {
 	CheckboxOne: LunaticBaseProps<string | null> &
 		LunaticExtraProps & {
 			options: Array<InterpretedOption>;
+			response: { name: string };
 			componentType?: 'CheckboxOne';
 			orientation?: 'horizontal' | 'vertical';
 			detailAlwaysDisplayed?: boolean;
