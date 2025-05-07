@@ -45,9 +45,10 @@ const isQuestionComponent = (
  */
 function checkComponents(
 	state: StateForControls,
-	components: (ComponentDefinition | InterpretedComponent)[]
+	components: (ComponentDefinition | InterpretedComponent)[],
+	currentErrors?: Record<string, LunaticError[]>
 ): Record<string, LunaticError[]> {
-	let errors = {} as Record<string, LunaticError[]>;
+	let errors = currentErrors ?? ({} as Record<string, LunaticError[]>);
 
 	for (const component of components) {
 		// The component has global level controls
@@ -63,11 +64,12 @@ function checkComponents(
 		}
 
 		// For loop, inspect children
-		if (isLoopComponent(component)) errors = checkLoop(state, component);
+		if (isLoopComponent(component))
+			errors = checkLoop(state, component, errors);
 
 		// For Question, loop over children
 		if (isQuestionComponent(component))
-			errors = checkComponents(state, component.components);
+			errors = checkComponents(state, component.components, errors);
 	}
 
 	return errors;
@@ -75,9 +77,9 @@ function checkComponents(
 
 function checkLoop(
 	state: StateForControls,
-	component: InterpretedLoopComponent
+	component: InterpretedLoopComponent,
+	errors: Record<string, LunaticError[]>
 ) {
-	let errors = {} as Record<string, LunaticError[]>;
 	const rowControls = component.controls?.filter((c) => c.type === 'ROW');
 	if (rowControls?.length) {
 		errors = checkComponentInLoop(
