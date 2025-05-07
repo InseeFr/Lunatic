@@ -34,7 +34,7 @@ export function OrchestratorData({ getData, source }: Readonly<Props>) {
 				<div role="tablist" className="tabs tabs-border mb-4">
 					{tabs.map((t, k) => (
 						<button
-							key={k}
+							key={`variables-${t.label}`}
 							role="tab"
 							onClick={() => setTab(k)}
 							className={`tab gap-2 ${tab === k ? 'tab-active' : ''}`}

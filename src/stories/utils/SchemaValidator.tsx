@@ -16,8 +16,8 @@ export function SchemaValidator({ errors }: Readonly<Props>) {
 					<strong>{errors.length}</strong> erreurs
 				</h4>
 				<ul>
-					{errors.map((err, k) => (
-						<li key={k}>
+					{errors.map((err) => (
+						<li key={err.instancePath}>
 							<strong>{err.instancePath}</strong> : {err.message}{' '}
 							<small>({err.schemaPath})</small>
 						</li>

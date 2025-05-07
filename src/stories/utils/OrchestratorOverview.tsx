@@ -49,13 +49,15 @@ const OverviewItem = ({
 	}
 	return (
 		<li className={`${color}`}>
-			<div
-				className="flex"
+			<button
+				style={{ display: 'contents' }}
 				onClick={() => goToPage({ page: overviewEntry.page })}
 			>
-				<span>{overviewEntry.label}</span>
-				<span className="dot-leader">{overviewEntry.page}</span>
-			</div>
+				<div className="flex">
+					<span>{overviewEntry.label}</span>
+					<span className="dot-leader">{overviewEntry.page}</span>
+				</div>
+			</button>
 			{overviewEntry.children.length > 0 && (
 				<OrchestratorOverview
 					overview={overviewEntry.children}

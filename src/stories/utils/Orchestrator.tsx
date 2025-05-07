@@ -226,7 +226,7 @@ function OrchestratorForStories(props: Readonly<Props>) {
 						{tabs.map((t, k) => (
 							<button
 								tabIndex={-1}
-								key={k}
+								key={JSON.stringify(t.label)}
 								role="tab"
 								onClick={() => setTab(k)}
 								className={`tab gap-2 ${tab === k ? 'tab-active' : ''}`}
