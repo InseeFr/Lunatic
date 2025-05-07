@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
-import { isObject } from '../../../utils/is-object';
 import type {
 	LunaticComponentDefinition,
 	LunaticExpression,
 	LunaticReducerState,
 } from '../../type';
+import { isObject } from '../../../utils/object';
 
 const VTL_ATTRIBUTES = [
 	['label', null],
@@ -46,6 +46,9 @@ function castNumber(v: unknown): number {
 	}
 	if (Array.isArray(v) && v.length > 0) {
 		return castNumber(v[0]);
+	}
+	if (v === null) {
+		return 0;
 	}
 	throw new Error(`Cannot cast "${v}" to number`);
 }

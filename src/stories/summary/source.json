@@ -94,6 +94,21 @@
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
 			"label": { "value": "\"Libellé du rondpoint\"", "type": "VTL" },
 			"locked": true,
+			"item": {
+				"label": {
+					"value": "\"Questions de \" || PRENOMS",
+					"type": "VTL"
+				},
+				"description": {
+					"value": "\"\"",
+					"type": "VTL"
+				},
+				"disabled": {
+					"value": "-1",
+					"type": "VTL"
+				}
+			},
+			"progressVariable": "PROGRESS",
 			"expressions": {
 				"unnecessary": {
 					"value": "AGE < 13",
@@ -210,7 +225,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "Summary",
 			"componentType": "Summary",
@@ -321,6 +335,13 @@
 		{
 			"variableType": "COLLECTED",
 			"name": "KNOWREC",
+			"values": {
+				"COLLECTED": [null]
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PROGRESS",
 			"values": {
 				"COLLECTED": [null]
 			}

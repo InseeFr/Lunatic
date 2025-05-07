@@ -17,7 +17,7 @@
 		"jsx": "react-jsx",
 		"forceConsistentCasingInFileNames": true,
 		"noFallthroughCasesInSwitch": true,
-		"resolveJsonModule": true,
+		"resolveJsonModule": false,
 		"allowSyntheticDefaultImports": true,
 		"skipLibCheck": true
 	},
