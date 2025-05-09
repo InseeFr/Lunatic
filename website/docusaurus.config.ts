@@ -6,7 +6,19 @@ const config: Config = {
 	markdown: {
 		mermaid: true,
 	},
-	themes: ['@docusaurus/theme-mermaid'],
+	themes: [
+		'@docusaurus/theme-mermaid',
+		[
+			require.resolve("@easyops-cn/docusaurus-search-local"),
+			/** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+			({
+				language: ['fr'],
+				docsRouteBasePath: '/',
+				hashed: true,
+				indexBlog: false,
+			}),
+		]
+	],
 	title: '@inseefr/lunatic',
 	favicon: 'img/favicon.ico',
 	// Set the production url of your site here
@@ -16,7 +28,6 @@ const config: Config = {
 	baseUrl: 'Lunatic/docs',
 	plugins: [
 		'./src/plugins/lunaticFixesPlugin.ts',
-		[require.resolve('@cmfcmf/docusaurus-search-local'), { indexBlog: false }],
 		[
 			'docusaurus-plugin-typedoc',
 			{
