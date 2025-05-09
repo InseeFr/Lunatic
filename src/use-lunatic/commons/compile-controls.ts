@@ -1,4 +1,3 @@
-import { replaceComponentSequence } from '../replace-component-sequence';
 import type {
 	LunaticComponentDefinition,
 	LunaticControl,
@@ -27,11 +26,17 @@ type InterpretedLoopComponent = DeepTranslateExpression<
 >;
 
 const isLoopComponent = (
-	component: InterpretedComponent
+	component: ComponentDefinition | InterpretedComponent
 ): component is InterpretedLoopComponent => {
 	return ['Loop', 'RosterForLoop', 'Roundabout'].includes(
 		component.componentType
 	);
+};
+
+const isQuestionComponent = (
+	component: ComponentDefinition | InterpretedComponent
+) => {
+	return 'Question' === component.componentType;
 };
 
 /**
@@ -40,9 +45,10 @@ const isLoopComponent = (
  */
 function checkComponents(
 	state: StateForControls,
-	components: InterpretedComponent[]
+	components: (ComponentDefinition | InterpretedComponent)[],
+	currentErrors?: Record<string, LunaticError[]>
 ): Record<string, LunaticError[]> {
-	let errors = {} as Record<string, LunaticError[]>;
+	let errors = currentErrors ?? ({} as Record<string, LunaticError[]>);
 
 	for (const component of components) {
 		// The component has global level controls
@@ -58,21 +64,33 @@ function checkComponents(
 		}
 
 		// For loop, inspect children
-		if (isLoopComponent(component)) {
-			const rowControls = component.controls?.filter((c) => c.type === 'ROW');
-			if (rowControls?.length) {
-				errors = checkComponentInLoop(
-					state,
-					{ ...component, controls: rowControls },
-					errors
-				);
-			}
-			for (const child of component.components) {
-				errors = checkComponentInLoop(state, child, errors);
-			}
-		}
+		if (isLoopComponent(component))
+			errors = checkLoop(state, component, errors);
+
+		// For Question, loop over children
+		if (isQuestionComponent(component))
+			errors = checkComponents(state, component.components, errors);
 	}
 
+	return errors;
+}
+
+function checkLoop(
+	state: StateForControls,
+	component: InterpretedLoopComponent,
+	errors: Record<string, LunaticError[]>
+) {
+	const rowControls = component.controls?.filter((c) => c.type === 'ROW');
+	if (rowControls?.length) {
+		errors = checkComponentInLoop(
+			state,
+			{ ...component, controls: rowControls },
+			errors
+		);
+	}
+	for (const child of component.components) {
+		errors = checkComponentInLoop(state, child, errors);
+	}
 	return errors;
 }
 
@@ -214,7 +232,7 @@ function hasCriticalError(errors?: Record<string, LunaticError[]>): boolean {
  * Check controls for currently visible components and output errors.
  */
 export function compileControls(state: StateForControls) {
-	const components = replaceComponentSequence(getComponentsFromState(state));
+	const components = getComponentsFromState(state);
 	const componentFiltered = components
 		.map((component) => fillComponentExpressions(component, state))
 		.filter((component) => {
