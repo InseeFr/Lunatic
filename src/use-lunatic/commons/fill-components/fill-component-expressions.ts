@@ -28,7 +28,7 @@ const VTL_ATTRIBUTES = [
 	['conditionFilter', castBool],
 	['header.label', null],
 	['disabled', castBool],
-	['readOnly', castBool],
+	['conditionReadOnly', castBool],
 	// For suggesters
 	['arbitrary.label', castString],
 	['arbitrary.inputLabel', castString],
@@ -90,6 +90,7 @@ type UntranslatedProperties =
 	| 'item'
 	| 'controls'
 	| 'conditionFilter'
+	| 'conditionReadOnly'
 	| 'components';
 export type DeepTranslateExpression<T> = T extends LunaticExpression
 	? ReactNode
