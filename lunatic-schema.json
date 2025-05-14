@@ -1109,6 +1109,12 @@
 						},
 						"value": {
 							"$ref": "#/$defs/VariableValue"
+						},
+						"iterationReference": {
+							"type": "string"
+						},
+						"dimension": {
+							"type": "number"
 						}
 					},
 					"required": ["variableType", "name", "value"],
@@ -1132,6 +1138,12 @@
 								}
 							},
 							"required": ["COLLECTED"]
+						},
+						"iterationReference": {
+							"type": "string"
+						},
+						"dimension": {
+							"type": "number"
 						}
 					},
 					"required": ["variableType", "name"],
@@ -1168,6 +1180,12 @@
 									"type": "string"
 								}
 							]
+						},
+						"iterationReference": {
+							"type": "string"
+						},
+						"dimension": {
+							"type": "number"
 						}
 					},
 					"required": ["variableType", "name", "expression"],
