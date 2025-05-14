@@ -3,7 +3,7 @@ import type {
 	LunaticVariablesStore,
 } from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type';
-import { depth } from '../../../../utils/array';
+import { depth, setAtIndex } from '../../../../utils/array';
 import { castBool } from '../../../../utils/cast';
 
 /**
@@ -220,6 +220,9 @@ function cleanVariable(
 			? undefined
 			: iteration?.slice(0, depth(sourceValues[variableName]));
 
+	if (cleanPairwise(store, variableName, variableIteration)) {
+		return;
+	}
 	store.set(
 		variableName,
 		getValueAtIteration(sourceValues[variableName], variableIteration),
@@ -228,4 +231,44 @@ function cleanVariable(
 			cause: 'cleaning',
 		}
 	);
+}
+
+/**
+ * Clean a pairwise value at a specific iteration in the two directions
+ * @returns boolean the variable was a pairwise and was cleaned
+ */
+function cleanPairwise(
+	store: LunaticVariablesStore,
+	variableName: string,
+	iteration?: IterationLevel
+): boolean {
+	// We are not trying to clean a pairwise at a specific index
+	if (!iteration || iteration.length !== 1) {
+		return false;
+	}
+	const variableValue = store.get(variableName);
+
+	// The variable is pairwise if it's a 2D array
+	if (!Array.isArray(variableValue)) {
+		return false;
+	}
+	const variableDepth = depth(variableValue);
+	if (variableDepth !== 2) {
+		return false;
+	}
+
+	// Clean the row and the column corresponding to the index
+	store.set(
+		variableName,
+		variableValue.map((value, k) => {
+			if (k === iteration[0]) {
+				return null;
+			}
+			if (!Array.isArray(value)) {
+				return value;
+			}
+			return setAtIndex(value, iteration, null);
+		})
+	);
+	return true;
 }
