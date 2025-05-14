@@ -7,13 +7,17 @@ import { depth, setAtIndex } from '../../../../utils/array';
 import { castBool } from '../../../../utils/cast';
 
 /**
- * Cleaning behaviour for the store
- * When a variable changes, other variables can be reset
+ * Implements the cleaning behavior for the variable store.
+ * When a variable changes, this function determines which other variables
+ * should be reset based on the cleaning rules defined in the source.
+ *
+ * @param store - The variables store that manages all variable values
+ * @param cleaning - Cleaning rules from the Lunatic source
+ * @param sourceValues - Default values from source.json to use when cleaning variables
  */
 export function cleaningBehaviour(
 	store: LunaticVariablesStore,
 	cleaning: LunaticSource['cleaning'],
-	// Value used as default when cleaning a variable, correspoding to value of variable in source.json (not data)
 	sourceValues: Record<string, unknown> = {}
 ) {
 	if (!cleaning) {
@@ -37,31 +41,31 @@ export function cleaningBehaviour(
 		}
 	}
 
-	// Create a map to improve performance
+	// Convert cleaning object to Map for faster lookups
 	const cleaningMap = new Map(Object.entries(cleaning));
 
 	store.on('change', (e) => {
 		const cleaningInfo = cleaningMap.get(e.detail.name);
 		const iteration = e.detail.iteration;
 
-		// The variable does not have cleaning
+		// Skip if the changed variable doesn't have any cleaning rules
 		if (!cleaningInfo) {
 			return;
 		}
 
 		for (const variableName in cleaningInfo) {
 			try {
-				// First: check if variable is already cleaned i.e, value is `null`, empty or list of `null`
+				// Skip if variable is already in a cleaned state
 				if (isAlreadyCleaned(store, variableName)) continue;
-				// Second: check if variable should be clean i.e one of expressions is true
 
-				// shouldClean is simple boolean or array of boolean if there have a shapeFrom
+				// Determine if the variable needs cleaning based on expressions
 				const shouldCleanResult = shouldClean(store, {
 					expressions: cleaningInfo[variableName],
 					iteration: iteration,
 					isResizing: e.detail.cause === 'resizing',
 				});
 
+				// Handle array variables (where we might need to clean specific indexes)
 				if (Array.isArray(shouldCleanResult)) {
 					cleanArrayVariableAccordingCondition(
 						store,
@@ -71,29 +75,51 @@ export function cleaningBehaviour(
 					);
 					continue;
 				}
+
+				// Clean regular variables if needed
 				if (shouldCleanResult)
 					cleanVariable(store, sourceValues, variableName, iteration);
 			} catch (e) {
-				// If we have an error, skip this cleaning
+				// Log error but continue processing other variables
 				console.error(e);
 			}
 		}
 	});
 }
 
-function isAlreadyCleaned(store: LunaticVariablesStore, variableName: string) {
+/**
+ * Checks if a variable is already in a cleaned state
+ *
+ * @param store - The variables store
+ * @param variableName - Name of the variable to check
+ * @returns true if the variable is null or an array of nulls
+ */
+function isAlreadyCleaned(
+	store: LunaticVariablesStore,
+	variableName: string
+): boolean {
 	const value = store.get(variableName);
 	if (Array.isArray(value)) return value.every((v) => v === null);
-	if (value === null) return true;
+	return value === null;
 }
 
 /**
- * Check if a variable need to be cleaned
+ * Determines if a variable needs to be cleaned based on expressions
+ *
+ * @param store - The variables store
+ * @param options - Configuration options
+ * @param options.expressions - Conditions that determine if cleaning should occur
+ *                             (string for legacy format or array of expression objects)
+ *                             /!\ Expressions comes from conditionFilter so it evaluates to "true"
+ *                             if the variable is visible, meaning we need to clean if the expression
+ *                             is evaluated to false.
+ * @param options.iteration - Current iteration level for the variable
+ * @param options.isResizing - Whether the cleaning is triggered by a resize operation
+ * @returns Boolean or array of booleans indicating if cleaning should occur
  */
 function shouldClean(
 	store: LunaticVariablesStore,
 	{
-		// The expressions are a list of condition filter to display the variable, so we should clean if the filter is evaluated to false (false = variable is not visible)
 		expressions,
 		iteration,
 		isResizing,
@@ -108,8 +134,8 @@ function shouldClean(
 		iteration?: number[];
 		isResizing: boolean;
 	}
-) {
-	// Legacy cleaning used a simple string
+): boolean | boolean[] {
+	// Handle legacy format where expressions is a single string
 	if (typeof expressions === 'string') {
 		return !castBool(
 			store.run(expressions, {
@@ -118,13 +144,13 @@ function shouldClean(
 		);
 	}
 
-	// New format use tuples { expression, shapeFrom,  isAggregatorUsed }
+	// Handle a new format with expression objects shaped like this { expression, shapeFrom, isAggregatorUsed }
 	if (isResizing) {
-		// If we are resizing a variable, only run expression containing aggregators (count(), sum()...)
+		// During resize operations, only consider expressions with aggregators (count, sum...)
 		expressions = expressions.filter((expr) => expr.isAggregatorUsed);
 	}
 
-	// here, value has change in root scope, but we have to to check for each iteration of variable
+	// If expressions have shapeFrom and we're at root level, we need to check each iteration individually
 	if (hasShapeFrom(expressions) && !iteration) {
 		const shapeFromVariable = store.get(
 			expressions[0].shapeFrom as string
@@ -143,9 +169,8 @@ function shouldClean(
 		}
 		return shouldCleanArray;
 	} else {
-		// if only one expression is false, we have to clean (condition is display condition)
+		// Clean the variable if any condition is false (variable is not visible),
 		for (const expression of expressions) {
-			// Run the expression to check if cleaning should happen
 			if (
 				!store.run(expression.expression, {
 					iteration,
@@ -154,10 +179,16 @@ function shouldClean(
 				return true;
 		}
 
+		// All conditions are true, no cleaning needed
 		return false;
 	}
 }
 
+/**
+ * Recursively retrieves a value at a specific iteration level in a nested structure
+ *
+ * @returns The value at the specified iteration path, or null if not found
+ */
 function getValueAtIteration(value: unknown, iteration?: number[]) {
 	if (!iteration || iteration.length === 0) {
 		return value ?? null;
@@ -169,12 +200,12 @@ function getValueAtIteration(value: unknown, iteration?: number[]) {
 }
 
 /**
- * hasShapeFrom
- * actually, in cleaning modelisation,
- * all expressions have no shapeFrom or have the **same** shapeFrom
- * @param expressions
- * @returns boolean if all expression has shapeFrom
+ * Checks if all expressions in the array have a shapeFrom property
  *
+ * In the cleaning model, all expressions either have no shapeFrom
+ * or they all have the same shapeFrom value.
+ *
+ * @returns true if all expressions have a non-null shapeFrom property
  */
 function hasShapeFrom(
 	expressions: {
@@ -189,6 +220,14 @@ function hasShapeFrom(
 	);
 }
 
+/**
+ * Cleans specific elements in an array variable based on a condition array
+ *
+ * @param store - The variables store
+ * @param sourceValues - Default values from source.json
+ * @param variableName - Name of the array variable to clean
+ * @param shouldClean - Array of booleans indicating which elements should be cleaned
+ */
 function cleanArrayVariableAccordingCondition(
 	store: LunaticVariablesStore,
 	sourceValues: Record<string, unknown>,
@@ -202,10 +241,11 @@ function cleanArrayVariableAccordingCondition(
 }
 
 /**
- * cleanVariable: this function set to null (and not initalValue) the variable at iteration
- * @param store
- * @param variableName
- * @param iteration
+ * Resets a variable to its initial value at a specific iteration level
+ *
+ * This function retrieves the initial value from sourceValues and sets
+ * the variable to that value at the specified iteration. If the variable
+ * is a pairwise variable, it uses a special cleaning method to maintain symmetry.
  */
 function cleanVariable(
 	store: LunaticVariablesStore,
@@ -234,8 +274,12 @@ function cleanVariable(
 }
 
 /**
- * Clean a pairwise value at a specific iteration in the two directions
- * @returns boolean the variable was a pairwise and was cleaned
+ * Cleans a pairwise variable (2D array) at a specific iteration
+ *
+ * For pairwise variables, cleaning involves setting both the row and column
+ * at the specified index to null, maintaining the symmetry of the matrix.
+ *
+ * @returns true if the variable was a pairwise and was cleaned, false otherwise
  */
 function cleanPairwise(
 	store: LunaticVariablesStore,
