@@ -32,6 +32,7 @@ import { mergeDefault } from '../utils/object';
 import { useRefSync } from '../hooks/useRefSync';
 import { ConsoleLogger } from './logger/ConsoleLogger';
 import { useWarnDepChange } from './hooks/useWarnDepChange';
+import { useCallbackOnNextRender } from './hooks/useCallbackOnNextRender';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const DEFAULT_DATA = empty as LunaticData;
@@ -169,12 +170,14 @@ export function useLunatic(
 		[dispatch]
 	);
 
+	const onChangeAfterRender = useCallbackOnNextRender(onChange);
+
 	const handleChanges = useCallback<LunaticChangesHandler>(
 		(responses) => {
 			dispatch(handleChangesAction(responses));
-			onChange(responses);
+			onChangeAfterRender(responses);
 		},
-		[dispatch, onChange]
+		[dispatch, onChangeAfterRender]
 	);
 
 	const getData: LunaticState['getData'] = (
