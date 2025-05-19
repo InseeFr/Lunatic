@@ -346,6 +346,7 @@ export type ComponentDefinitionBase = {
 	id: string;
 	isMandatory?: boolean;
 	missingResponse?: ResponseDefinition;
+	conditionReadOnly?: VTLScalarExpression;
 };
 export type Declaration = {
 	id: string;
@@ -377,7 +378,7 @@ export type VTLScalarExpression = {
 export type ControlDefinition = {
 	id: string;
 	criticality: 'INFO' | 'WARN' | 'ERROR';
-	typeOfControl?: 'FORMAT' | 'CONSISTENCY';
+	typeOfControl?: 'FORMAT' | 'CONSISTENCY' | 'MANDATORY';
 	control: VTLExpression;
 	errorMessage: VTLExpression;
 	bindingDependencies?: string[];

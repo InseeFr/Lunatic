@@ -704,4 +704,56 @@ describe('fillComponents', () => {
 		expect(radio.options[1].conditionFilter).toBe(undefined);
 		expect(radio.options[1].shouldBeFiltered).toBe(true);
 	});
+
+	it('should set component (and all its children) as readOnly if conditionReadOnly is evaluated to true', () => {
+		const components = [
+			{
+				id: 'question-m8ilvkbt',
+				componentType: 'Question',
+				page: '1',
+				label: {
+					value: '"Question label"',
+					type: 'VTL|MD',
+				},
+				conditionReadOnly: {
+					type: 'VTL',
+					value: 'true',
+				},
+				components: [
+					{
+						id: 'm8ilvkbt',
+						componentType: 'Input',
+						page: '1',
+						maxLength: 249,
+						response: {
+							name: 'TESTTEXTE',
+						},
+					},
+				],
+			},
+		];
+
+		const mockVariables = LunaticVariablesStore.makeFromObject({
+			TESTTEXTE: 'some value',
+		});
+
+		const mockState = {
+			...defaultMockState,
+			disableFilters: true,
+			variables: mockVariables,
+		};
+
+		const filledComponents = fillComponents(
+			components as LunaticComponentDefinition[],
+			mockState as unknown as FillComponentArgs
+		) as any;
+
+		const question = filledComponents[0];
+
+		expect(question.componentType).toBe('Question');
+		expect(question.readOnly).toBe(true);
+
+		const input = question.components[0];
+		expect(input.readOnly).toBe(true);
+	});
 });

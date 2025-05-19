@@ -49,7 +49,8 @@ function getChildComponents(
 			component.components,
 			state,
 			undefined,
-			component.conditionFilter
+			component.conditionFilter,
+			component.conditionReadOnly
 		),
 	};
 }

@@ -17,7 +17,7 @@ L'expression et le message d'erreur peuvent être dynamiques et personnalisées 
 export type ControlType = {
     id: string;
     criticality: 'INFO' | 'WARN' | 'ERROR';
-    typeOfControl: 'FORMAT' | 'CONSISTENCY';
+    typeOfControl: 'FORMAT' | 'CONSISTENCY' | 'MANDATORY';
     control: {value: string, type: 'VTL'};
     errorMessage: {value: string, type: 'VTL' | 'VTL|MD' | 'TXT'};
     bindingDependencies?: string[];
