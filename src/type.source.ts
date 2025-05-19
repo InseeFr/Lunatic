@@ -346,6 +346,7 @@ export type ComponentDefinitionBase = {
 	id: string;
 	isMandatory?: boolean;
 	missingResponse?: ResponseDefinition;
+	conditionReadOnly?: VTLScalarExpression;
 };
 export type Declaration = {
 	id: string;

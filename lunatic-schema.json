@@ -444,6 +444,9 @@
 				},
 				"missingResponse": {
 					"$ref": "#/$defs/ResponseDefinition"
+				},
+				"conditionReadOnly": {
+					"$ref": "#/$defs/VTLScalarExpression"
 				}
 			},
 			"required": ["id"]

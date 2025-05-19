@@ -38,12 +38,24 @@ export const fillComponent = (
 	component: LunaticComponentDefinition,
 	state: FillComponentArgs,
 	// the given parentConditionFilter is typed as VTLScalarExpression, but it's actually a boolean or undefined
-	parentConditionFilter?: any
+	parentConditionFilter?: any,
+	// the given parentReadonly is typed as VTLScalarExpression, but it's actually a boolean or undefined
+	parentReadOnly?: any
 ): LunaticComponentProps & { conditionFilter?: boolean } => {
 	const interpretedProps = fillComponentExpressions(component, state);
 
 	const shouldParentBeFiltered = parentConditionFilter === false;
 
+	const isParentReadOnly = parentReadOnly === true;
+
+	// if a parent component is readOnly, then the children also are
+	const readOnly =
+		isParentReadOnly ||
+		('conditionReadOnly' in interpretedProps
+			? interpretedProps.conditionReadOnly
+			: false);
+
+	// if a parent component is filtered, then the children also are
 	const shouldBeFiltered =
 		shouldParentBeFiltered ||
 		('conditionFilter' in interpretedProps
@@ -60,6 +72,7 @@ export const fillComponent = (
 		shortcut: state.shortcut,
 		goNextPage: state.goNextPage,
 		goPreviousPage: state.goPreviousPage,
+		readOnly: readOnly,
 		shouldBeFiltered: shouldBeFiltered,
 		iteration: state.pager.iteration,
 		required: 'isMandatory' in component ? component.isMandatory : false,
@@ -89,7 +102,8 @@ export function fillComponents(
 	components: LunaticComponentDefinition[],
 	state: FillComponentArgs,
 	parentType?: LunaticComponentDefinition['componentType'],
-	parentConditionFilter?: VTLScalarExpression
+	parentConditionFilter?: VTLScalarExpression,
+	parentReadOnly?: VTLScalarExpression
 ): LunaticComponentProps[] {
 	// Flatmap to directly remove FilterDescription components if disableFiltersDescription is true
 	const filledComponents = components.flatMap((component) => {
@@ -100,7 +114,9 @@ export function fillComponents(
 			return [];
 		}
 
-		return [fillComponent(component, state, parentConditionFilter)];
+		return [
+			fillComponent(component, state, parentConditionFilter, parentReadOnly),
+		];
 	});
 
 	if (state.disableFilters) {

@@ -189,10 +189,10 @@ function OrchestratorForStories(props: Readonly<Props>) {
 					slots={slots}
 					autoFocusKey={pageTag}
 					components={components}
-					componentProps={(p) => ({
+					componentProps={() => ({
 						errors: errorActive[pageTag],
 						disabled: disabled,
-						readOnly: 'readOnly' in p ? p.readOnly : readOnly,
+						...(readOnly ? { readOnly: true } : {}),
 					})}
 				/>
 			),
