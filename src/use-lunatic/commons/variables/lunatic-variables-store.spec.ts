@@ -600,11 +600,15 @@ describe('lunatic-variables-store', () => {
 			expect(variables.get('PRENOM')).toEqual(['Dad', '', 'Unknow']);
 			expect(variables.get('LINKS')).toEqual([
 				[null, null, '3'],
-				null,
+				[null, null, null],
 				['2', null, null],
 			]);
 			variables.set('PRENOM', '', { iteration: [0] });
-			expect(variables.get('LINKS')).toEqual([null, null, [null, null, null]]);
+			expect(variables.get('LINKS')).toEqual([
+				[null, null, null],
+				[null, null, null],
+				[null, null, null],
+			]);
 		});
 	});
 

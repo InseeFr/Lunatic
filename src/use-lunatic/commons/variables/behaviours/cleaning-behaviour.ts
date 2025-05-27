@@ -301,12 +301,15 @@ function cleanPairwise(
 		return false;
 	}
 
+	const pairwiseSize = variableValue.length;
+
 	// Clean the row and the column corresponding to the index
 	store.set(
 		variableName,
 		variableValue.map((value, k) => {
 			if (k === iteration[0]) {
-				return null;
+				// clean all row value (keeping 2D square dimension)
+				return new Array(pairwiseSize).fill(null);
 			}
 			if (!Array.isArray(value)) {
 				return value;
