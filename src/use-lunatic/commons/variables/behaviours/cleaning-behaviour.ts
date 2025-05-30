@@ -301,19 +301,19 @@ function cleanPairwise(
 		return false;
 	}
 
-	const pairwiseSize = variableValue.length;
-
 	// Clean the row and the column corresponding to the index
 	store.set(
 		variableName,
 		variableValue.map((value, k) => {
-			if (k === iteration[0]) {
-				// clean all row value (keeping 2D square dimension)
-				return new Array(pairwiseSize).fill(null);
-			}
+			// The value is not an array, this should not happen so we keep the original value
 			if (!Array.isArray(value)) {
 				return value;
 			}
+			// Empty the row corresponding to the index being deleted
+			if (k === iteration[0]) {
+				return value.fill(null);
+			}
+			// Nullify cells in the column corresponding to the index being deleted
 			return setAtIndex(value, iteration, null);
 		})
 	);
