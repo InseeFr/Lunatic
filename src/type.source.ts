@@ -255,6 +255,7 @@ export type Variable =
 			variableType: 'CALCULATED';
 			name: string;
 			expression: VTLExpression;
+			isIgnoredByLunatic?: boolean;
 			bindingDependencies?: string[];
 			shapeFrom?: string[] | string;
 			iterationReference?: string;
