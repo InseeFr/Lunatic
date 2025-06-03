@@ -279,7 +279,7 @@
 				},
 				"typeOfControl": {
 					"type": "string",
-					"enum": ["FORMAT", "CONSISTENCY"]
+					"enum": ["FORMAT", "CONSISTENCY", "MANDATORY"]
 				},
 				"control": {
 					"$ref": "#/$defs/VTLExpression"
