@@ -18,6 +18,7 @@ export type CheckboxOptionProps = {
 	invalid?: boolean;
 	detailAlwaysDisplayed?: boolean;
 	detailLabel?: ReactNode;
+	detailMaxLength?: number;
 	detailValue?: string | null;
 	onDetailChange?: (value: string) => void;
 };
@@ -32,6 +33,7 @@ function LunaticCheckboxOption({
 	description,
 	detailAlwaysDisplayed,
 	detailLabel,
+	detailMaxLength,
 	detailValue,
 	onDetailChange,
 	codeModality,
@@ -105,6 +107,7 @@ function LunaticCheckboxOption({
 					id="detailId"
 					label={detailLabel ?? 'Précisez :'}
 					value={typeof detailValue === 'string' ? detailValue : ''}
+					maxLength={detailMaxLength}
 					onChange={onDetailChange}
 					disabled={disabled}
 				/>

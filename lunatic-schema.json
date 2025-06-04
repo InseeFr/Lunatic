@@ -837,6 +837,9 @@
 									"label": {
 										"$ref": "#/$defs/VTLExpression"
 									},
+									"maxLength": {
+										"type": "integer"
+									},
 									"response": {
 										"$ref": "#/$defs/ResponseDefinition"
 									}
@@ -1353,6 +1356,9 @@
 						"properties": {
 							"label": {
 								"$ref": "#/$defs/VTLExpression"
+							},
+							"maxLength": {
+								"type": "integer"
 							},
 							"response": {
 								"type": "object",

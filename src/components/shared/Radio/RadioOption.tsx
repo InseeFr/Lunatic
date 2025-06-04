@@ -38,6 +38,7 @@ function LunaticRadioOption({
 	onDetailChange,
 	detailAlwaysDisplayed,
 	detailLabel,
+	detailMaxLength,
 	detailValue,
 	onCheck,
 	onUncheck,
@@ -127,6 +128,7 @@ function LunaticRadioOption({
 					id="detailId"
 					label={detailLabel ?? 'Précisez :'}
 					value={typeof detailValue === 'string' ? detailValue : ''}
+					maxLength={detailMaxLength}
 					onChange={onDetailChange}
 					disabled={disabled}
 				/>

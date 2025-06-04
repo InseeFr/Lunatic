@@ -117,6 +117,94 @@ describe('getOptionsProp()', () => {
 				{ name: 'O2', value: false },
 			]);
 		});
+		it('should create detail props correctly for checkboxGroup', () => {
+			const definition = {
+				...checkboxGroupDefinition,
+				responses: [
+					{
+						label: 'Option 1',
+						response: { name: 'O1' },
+						id: 'id1',
+						detail: {
+							label: 'Precize:',
+							response: { name: 'DETAIL' },
+							maxLength: 50,
+						},
+					},
+					{
+						label: 'Option 2',
+						response: { name: 'O2' },
+						id: 'id2',
+						detail: {
+							label: 'Precize:',
+							response: { name: 'DETAILBIS' },
+						},
+					},
+				],
+			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+			variables.set('DETAIL', true);
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger
+			);
+
+			expect(options).toHaveLength(2);
+			expect(options[0].detailLabel).toBe('Precize:');
+			expect(options[1].detailLabel).toBe('Precize:');
+			expect(options[0].detailValue).toBe(true);
+			expect(options[1].detailValue).toBeNull();
+			expect(options[0].detailMaxLength).toBe(50);
+			expect(options[1].detailMaxLength).toBeUndefined();
+		});
+		it('should create detail props correctly for Radiogroup', () => {
+			const definition = {
+				...radioDefinition,
+				options: [
+					{
+						label: 'Option 1',
+						value: 'id1',
+						detail: {
+							label: 'Precize:',
+							response: { name: 'DETAIL' },
+							maxLength: 50,
+						},
+					},
+					{
+						label: 'Option 2',
+						value: 'id2',
+						detail: {
+							label: 'Precize:',
+							response: { name: 'DETAILBIS' },
+						},
+					},
+				],
+			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+			variables.set('DETAIL', true);
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger
+			);
+
+			expect(options).toHaveLength(2);
+			expect(options[0].detailLabel).toBe('Precize:');
+			expect(options[1].detailLabel).toBe('Precize:');
+			expect(options[0].detailValue).toBe(true);
+			expect(options[1].detailValue).toBeNull();
+			expect(options[0].detailMaxLength).toBe(50);
+			expect(options[1].detailMaxLength).toBeUndefined();
+		});
 		it('should filter responses (CheckboxGroup) with conditionFilter evaluated to false', () => {
 			const definition = {
 				...checkboxGroupDefinition,
