@@ -657,6 +657,52 @@ describe('lunatic-variables-store', () => {
 			store.commit();
 			expect(store.get('PRENOM')).toEqual('John');
 		});
+
+		it('should handle calculated variables, ignoring them when `isIgnoredByLunatic` is true ', () => {
+			const store = LunaticVariablesStore.makeFromSource(
+				{
+					components: [],
+					variables: [
+						{
+							name: 'calc1',
+							dimension: 0,
+							expression: {
+								type: 'VTL',
+								value: '"calculated value"',
+							},
+							variableType: 'CALCULATED',
+							isIgnoredByLunatic: true,
+						},
+						{
+							name: 'calc2',
+							dimension: 0,
+							expression: {
+								type: 'VTL',
+								value: '"calculated value"',
+							},
+							variableType: 'CALCULATED',
+							isIgnoredByLunatic: false,
+						},
+						{
+							name: 'calc3',
+							dimension: 0,
+							expression: {
+								type: 'VTL',
+								value: '"calculated value"',
+							},
+							variableType: 'CALCULATED',
+						},
+					],
+				},
+				{},
+				{ current: () => {} }
+			);
+
+			expect(store.get('calc1')).toBeNull();
+			expect(store.get('calc2')).toBe('calculated value');
+			expect(store.get('calc3')).toBe('calculated value');
+		});
+
 		it('should enable cleaning when disableCleaning = false', () => {
 			const cleaningSpy = vi.spyOn(cleaningModule, 'cleaningBehaviour');
 			LunaticVariablesStore.makeFromSource(

@@ -1165,6 +1165,9 @@
 						"expression": {
 							"$ref": "#/$defs/VTLExpression"
 						},
+						"isIgnoredByLunatic": {
+							"type": "boolean"
+						},
 						"bindingDependencies": {
 							"type": "array",
 							"items": {

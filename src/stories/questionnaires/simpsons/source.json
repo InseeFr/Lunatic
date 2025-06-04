@@ -5,6 +5,12 @@
 		{
 			"variableType": "CALCULATED",
 			"expression": { "type": "VTL", "value": "\"2020\"" },
+			"name": "IGNOREDCALC",
+			"isIgnoredByLunatic": true
+		},
+		{
+			"variableType": "CALCULATED",
+			"expression": { "type": "VTL", "value": "\"2020\"" },
 			"name": "YEAR"
 		},
 		{
