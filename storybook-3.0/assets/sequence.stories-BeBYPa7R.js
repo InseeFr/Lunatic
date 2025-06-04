@@ -1,0 +1,9 @@
+import{O as i}from"./Orchestrator-DNzi8DNk.js";import"./jsx-runtime-BlAj40OV.js";import"./index-Cs7sjTYM.js";import"./_commonjsHelpers-BosuxZz1.js";import"./Combobox-CPxcyoe5.js";import"./index-Cf-03bMR.js";const l="../../../lunatic-schema.json",p="1",m=[],u=[{id:"c1",componentType:"Sequence",page:"1",conditionFilter:{value:"true",type:"VTL"},label:{value:'"Sequence example"',type:"VTL|MD"},declarations:[{id:"kb9hi4j0-krnoclfe",declarationType:"INSTRUCTION",position:"BEFORE_QUESTION_TEXT",label:{value:'"Déclaration Before"',type:"VTL|MD"}},{id:"kb9hi4j0-krnoclfe",declarationType:"INSTRUCTION",position:"AFTER_QUESTION_TEXT",label:{value:'"Déclaration AFTER"',type:"VTL|MD"}},{id:"kb9hi4j0-krnoclfe",declarationType:"HELP",position:"DETACHABLE",label:{value:'"Declaration Detachable"',type:"VTL|MD"}}]}],T={$schema:l,maxPages:p,variables:m,components:u},d="../../../lunatic-schema.json",D="1",b=[{id:"c1",componentType:"Sequence",page:"1",conditionFilter:{value:"true",type:"VTL"},label:{value:'"Sequence example"',type:"VTL|MD"}},{id:"c2",componentType:"Subsequence",page:"1",conditionFilter:{value:"true",type:"VTL"},label:{value:'"Subsequence example"',type:"VTL|MD"}}],y=[],g={$schema:d,maxPage:D,components:b,variables:y},V={title:"Components/Sequence",...i},e={args:{source:g}},a={args:{source:T}};var o,t,c;e.parameters={...e.parameters,docs:{...(o=e.parameters)==null?void 0:o.docs,source:{originalSource:`{
+  args: {
+    source
+  }
+}`,...(c=(t=e.parameters)==null?void 0:t.docs)==null?void 0:c.source}}};var n,s,r;a.parameters={...a.parameters,docs:{...(n=a.parameters)==null?void 0:n.docs,source:{originalSource:`{
+  args: {
+    source: sourceDeclarations
+  }
+}`,...(r=(s=a.parameters)==null?void 0:s.docs)==null?void 0:r.source}}};const f=["Default","WithDeclarations"];export{e as Default,a as WithDeclarations,f as __namedExportsOrder,V as default};
