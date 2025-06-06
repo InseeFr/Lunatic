@@ -19,13 +19,14 @@ export type InterpretedOption = {
 	detailLabel?: ReactNode;
 	detailValue?: string | null;
 	detailMaxLength?: number;
+	shouldBeFiltered?: boolean;
 	onDetailChange?: (value: string) => void;
 	onCheck?: () => void;
 	onUncheck?: () => void;
 };
 
 /**
- * Compute options for checkboxes / radios
+ * Compute options for checkboxes / radios / dropdown
  */
 export function getOptionsProp(
 	definition: DeepTranslateExpression<LunaticComponentDefinition>,
