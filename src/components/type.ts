@@ -198,6 +198,7 @@ export type ComponentPropsByType = {
 				detailLabel?: ReactNode;
 				detailMaxLength?: number;
 				detailValue?: string | null;
+				shouldBeFiltered?: boolean;
 			}[];
 			orientation?: 'horizontal' | 'vertical';
 			detailAlwaysDisplayed?: boolean;
@@ -252,6 +253,7 @@ export type ComponentPropsByType = {
 				description?: ReactNode;
 				label: ReactNode;
 				value: string;
+				shouldBeFiltered?: boolean;
 			}>;
 			response: { name: string };
 			componentType?: 'Dropdown';
