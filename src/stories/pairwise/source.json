@@ -90,7 +90,10 @@
 				{
 					"componentType": "Dropdown",
 					"id": "dropdown-1",
-					"conditionFilter": { "value": "xAxis <> yAxis", "type": "VTL" },
+					"conditionFilter": {
+						"value": "(nvl(xAxis, \"\") <> \"\") and (nvl(yAxis, \"\") <> \"\")",
+						"type": "VTL"
+					},
 					"label": {
 						"value": "\"Qui est \" || yAxis || \" pour \" || xAxis || \" ?\"",
 						"type": "VTL|MD"
