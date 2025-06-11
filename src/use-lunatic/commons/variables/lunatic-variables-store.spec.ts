@@ -268,7 +268,7 @@ describe('lunatic-variables-store', () => {
 			variables.run('"hello"', { iteration: [0] });
 			variables.run('"hello"', { iteration: [1] });
 			expect(variables.run('"hello"')).toEqual('hello');
-			expect(variables.interpretCount).toBe(3);
+			expect(variables.interpretCount).toBe(1); // only 1 interpretation by the engine since optimisation for primitive value
 		});
 		it('should handle deep refresh', () => {
 			variables.set('LIENS', [
