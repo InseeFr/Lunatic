@@ -1,5 +1,10 @@
 import { expect, test } from '@playwright/test';
-import { expectLunaticData, goToStory, gotoNextPage } from './utils';
+import {
+	expectLunaticData,
+	goToStory,
+	gotoNextPage,
+	gotoPreviousPage,
+} from './utils';
 
 test(`can complete pairwise form`, async ({ page }) => {
 	await goToStory(page, 'components-pairwise--default');
@@ -11,4 +16,22 @@ test(`can complete pairwise form`, async ({ page }) => {
 		[null, '2'],
 		['3'],
 	]);
+});
+
+test(`can complete pairwise form when pairwise is empty`, async ({ page }) => {
+	// Given 3 persons in the dynamic table
+	await goToStory(page, 'components-pairwise--default');
+
+	await expect(page.getByRole('combobox')).toHaveCount(3);
+
+	await gotoPreviousPage(page, 4);
+
+	// when I clear 'Mom' field (second field of prenom dynamic table)
+	await page.getByTitle('Mom').fill('');
+	// A return to pairwise page
+	await gotoNextPage(page, 4);
+
+	// Expect only one link to collect
+	await expect(page.getByRole('combobox')).toHaveCount(1);
+	await expect(page.getByText('Qui est Dad pour Unknow ?')).toBeVisible();
 });

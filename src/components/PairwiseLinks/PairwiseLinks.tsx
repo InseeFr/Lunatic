@@ -44,6 +44,7 @@ export const PairwiseLinks = ({
 				.map(([x, y]) => {
 					const components = getComponents(y, x);
 					const firstComponent = components[0];
+					if (firstComponent === undefined || firstComponent === null) return;
 					if (firstComponent.componentType !== 'Dropdown') {
 						return (
 							<div>
