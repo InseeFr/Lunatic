@@ -88,6 +88,7 @@ export class LunaticVariablesStore {
 		for (const variable of source.variables) {
 			switch (variable.variableType) {
 				case 'CALCULATED':
+					if (variable.isIgnoredByLunatic) break;
 					store.setCalculated(variable.name, variable.expression.value, {
 						dependencies: variable.bindingDependencies,
 						iterationDepth: getIterationDepth(variable.name),

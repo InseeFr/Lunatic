@@ -145,6 +145,7 @@ export type ComponentCheckboxGroupDefinition = ComponentDefinitionBase & {
 		id: string;
 		detail?: {
 			label?: VTLExpression;
+			maxLength?: number;
 			response: ResponseDefinition;
 		};
 	}[];
@@ -164,6 +165,7 @@ export type OptionsWithDetail = {
 	description?: VTLExpression;
 	detail?: {
 		label: VTLExpression;
+		maxLength?: number;
 		response: {
 			name: string;
 		};
@@ -255,6 +257,7 @@ export type Variable =
 			variableType: 'CALCULATED';
 			name: string;
 			expression: VTLExpression;
+			isIgnoredByLunatic?: boolean;
 			bindingDependencies?: string[];
 			shapeFrom?: string[] | string;
 			iterationReference?: string;

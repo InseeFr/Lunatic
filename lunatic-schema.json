@@ -279,7 +279,7 @@
 				},
 				"typeOfControl": {
 					"type": "string",
-					"enum": ["FORMAT", "CONSISTENCY"]
+					"enum": ["FORMAT", "CONSISTENCY", "MANDATORY"]
 				},
 				"control": {
 					"$ref": "#/$defs/VTLExpression"
@@ -837,6 +837,9 @@
 									"label": {
 										"$ref": "#/$defs/VTLExpression"
 									},
+									"maxLength": {
+										"type": "integer"
+									},
 									"response": {
 										"$ref": "#/$defs/ResponseDefinition"
 									}
@@ -1165,6 +1168,9 @@
 						"expression": {
 							"$ref": "#/$defs/VTLExpression"
 						},
+						"isIgnoredByLunatic": {
+							"type": "boolean"
+						},
 						"bindingDependencies": {
 							"type": "array",
 							"items": {
@@ -1350,6 +1356,9 @@
 						"properties": {
 							"label": {
 								"$ref": "#/$defs/VTLExpression"
+							},
+							"maxLength": {
+								"type": "integer"
 							},
 							"response": {
 								"type": "object",

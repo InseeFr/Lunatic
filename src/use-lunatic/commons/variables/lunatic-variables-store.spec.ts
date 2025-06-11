@@ -543,7 +543,7 @@ describe('lunatic-variables-store', () => {
 			variables.set('READY', [true, true, false]);
 			expect(variables.get('PRENOM')).toEqual(['John', 'Jane', null]);
 		});
-		it('should evaluate cleaning for each iteration at root levl', () => {
+		it('should evaluate cleaning for each iteration at root level', () => {
 			variables.set('PRENOM', ['John', 'Jane', 'Marc']);
 			variables.set('AGE', [18, 21, 23]);
 			variables.setCalculated('NB_HAB', 'count(PRENOM)');
@@ -570,6 +570,45 @@ describe('lunatic-variables-store', () => {
 			);
 			variables.set('PRENOM', ['John', 'Jane']);
 			expect(variables.get('AGE')).toEqual([null, null]);
+		});
+		it('should clean pairwise in two directions', () => {
+			variables.set('LINKS', [
+				[null, '1', '3'],
+				['1', null, '3'],
+				['2', '2', null],
+			]);
+			variables.set('PRENOM', ['Dad', 'Mom', 'Unknow']);
+			cleaningBehaviour(
+				variables,
+				{
+					PRENOM: {
+						LINKS: [
+							{
+								expression: 'PRENOM <> ""',
+								shapeFrom: 'PRENOM',
+								isAggregatorUsed: true,
+							},
+						],
+					},
+				},
+				{
+					PRENOM: [],
+					LINKS: [],
+				}
+			);
+			variables.set('PRENOM', '', { iteration: [1] });
+			expect(variables.get('PRENOM')).toEqual(['Dad', '', 'Unknow']);
+			expect(variables.get('LINKS')).toEqual([
+				[null, null, '3'],
+				[null, null, null],
+				['2', null, null],
+			]);
+			variables.set('PRENOM', '', { iteration: [0] });
+			expect(variables.get('LINKS')).toEqual([
+				[null, null, null],
+				[null, null, null],
+				[null, null, null],
+			]);
 		});
 	});
 
@@ -657,6 +696,52 @@ describe('lunatic-variables-store', () => {
 			store.commit();
 			expect(store.get('PRENOM')).toEqual('John');
 		});
+
+		it('should handle calculated variables, ignoring them when `isIgnoredByLunatic` is true ', () => {
+			const store = LunaticVariablesStore.makeFromSource(
+				{
+					components: [],
+					variables: [
+						{
+							name: 'calc1',
+							dimension: 0,
+							expression: {
+								type: 'VTL',
+								value: '"calculated value"',
+							},
+							variableType: 'CALCULATED',
+							isIgnoredByLunatic: true,
+						},
+						{
+							name: 'calc2',
+							dimension: 0,
+							expression: {
+								type: 'VTL',
+								value: '"calculated value"',
+							},
+							variableType: 'CALCULATED',
+							isIgnoredByLunatic: false,
+						},
+						{
+							name: 'calc3',
+							dimension: 0,
+							expression: {
+								type: 'VTL',
+								value: '"calculated value"',
+							},
+							variableType: 'CALCULATED',
+						},
+					],
+				},
+				{},
+				{ current: () => {} }
+			);
+
+			expect(store.get('calc1')).toBeNull();
+			expect(store.get('calc2')).toBe('calculated value');
+			expect(store.get('calc3')).toBe('calculated value');
+		});
+
 		it('should enable cleaning when disableCleaning = false', () => {
 			const cleaningSpy = vi.spyOn(cleaningModule, 'cleaningBehaviour');
 			LunaticVariablesStore.makeFromSource(

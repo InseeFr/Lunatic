@@ -18,13 +18,15 @@ export type InterpretedOption = {
 	description?: ReactNode;
 	detailLabel?: ReactNode;
 	detailValue?: string | null;
+	detailMaxLength?: number;
+	shouldBeFiltered?: boolean;
 	onDetailChange?: (value: string) => void;
 	onCheck?: () => void;
 	onUncheck?: () => void;
 };
 
 /**
- * Compute options for checkboxes / radios
+ * Compute options for checkboxes / radios / dropdown
  */
 export function getOptionsProp(
 	definition: DeepTranslateExpression<LunaticComponentDefinition>,
@@ -61,6 +63,7 @@ export function getOptionsProp(
 				detailValue: response.detail?.response
 					? variables.get(response.detail.response.name, iteration)
 					: undefined,
+				detailMaxLength: response.detail?.maxLength,
 				onCheck: (checked: boolean) => {
 					handleChanges([{ name: response.response.name, value: checked }]);
 				},
@@ -108,6 +111,12 @@ export function getOptionsProp(
 			value: option.value,
 			checked: value === option.value,
 			detailLabel: 'detail' in option ? option.detail?.label : undefined,
+			detailValue:
+				'detail' in option && option.detail
+					? variables.get(option.detail.response.name, iteration)
+					: null,
+			detailMaxLength:
+				'detail' in option ? option.detail?.maxLength : undefined,
 			onCheck: () => {
 				handleChanges([
 					{ name: definition.response.name, value: option.value },
@@ -117,10 +126,6 @@ export function getOptionsProp(
 			onUncheck: () => {
 				handleChanges([{ name: definition.response.name, value: null }]);
 			},
-			detailValue:
-				'detail' in option && option.detail
-					? variables.get(option.detail.response.name, iteration)
-					: null,
 			onDetailChange:
 				'detail' in option && option.detail
 					? (value: string) => {

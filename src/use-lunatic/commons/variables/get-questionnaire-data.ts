@@ -40,7 +40,10 @@ export function getQuestionnaireData(
 
 	for (const variable of variables) {
 		// Skip calculated value if necessary
-		if (variable.variableType === 'CALCULATED' && !withCalculated) {
+		if (
+			variable.variableType === 'CALCULATED' &&
+			(variable.isIgnoredByLunatic || !withCalculated)
+		) {
 			continue;
 		}
 
