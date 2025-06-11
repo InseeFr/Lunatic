@@ -372,9 +372,16 @@ class LunaticVariable {
 
 		// Calculate bindings first to refresh "updatedAt" on calculated dependencies
 		const bindings = this.getDependenciesValues(iteration);
+		const hasNoBinding = Object.keys(bindings).length === 0;
+
+		// A static expression should not be reevaluated
+		if (hasNoBinding && this.value) {
+			return this.value;
+		}
+
 		// A variable without binding is a primitive (string, boolean...)
 		// it yields the same results for every iteration, so we can ignore iteration
-		if (Object.keys(bindings).length === 0) {
+		if (hasNoBinding) {
 			iteration = undefined;
 		}
 		if (this.shapeFrom && !this.isOutdated(iteration)) {
