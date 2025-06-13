@@ -32,6 +32,7 @@ type CustomProps = Omit<
 > & {
 	onChange: (v: string) => void;
 	errors?: LunaticError[];
+	autoFocus?: boolean;
 };
 
 export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
@@ -47,6 +48,7 @@ export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
 		errors,
 		readOnly,
 		declarations,
+		autoFocus = false,
 	} = props;
 	const labelId = `label-${id}`;
 	const charactersCountId = getCharactersCountId(id, maxLength);
@@ -80,6 +82,7 @@ export const CustomInput = slottableComponent<CustomProps>('Input', (props) => {
 					onBlur={(e) => {
 						e.target.setSelectionRange(0, 0);
 					}}
+					autoFocus={autoFocus}
 				/>
 				<CharactersCount id={id} maxLength={maxLength} value={value} />
 			</div>
