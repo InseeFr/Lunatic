@@ -1,4 +1,4 @@
-import { type KeyboardEventHandler, useEffect, useRef } from 'react';
+import { type KeyboardEventHandler, useRef } from 'react';
 import { slottableComponent } from '../HOC/slottableComponent';
 import { useKeyboardKey } from '../../../hooks/useKeyboardKey';
 import { Label } from '../Label/Label';
@@ -25,7 +25,6 @@ function LunaticRadioOption({
 	disabled,
 	readOnly,
 	checkboxStyle,
-	value,
 	onKeyDown,
 	index,
 	shortcut,
@@ -63,16 +62,6 @@ function LunaticRadioOption({
 		onKeyDown?.({ key: e.key, index: index ?? -1 });
 		divEl.current?.blur();
 	};
-
-	useEffect(
-		function () {
-			const { current } = divEl;
-			if (current && checked) {
-				current.focus();
-			}
-		},
-		[checked, divEl, value]
-	);
 
 	const hasKeyboardShortcut = Boolean(shortcut && codeModality && isEnabled);
 	useKeyboardKey(
@@ -131,6 +120,7 @@ function LunaticRadioOption({
 					maxLength={detailMaxLength}
 					onChange={onDetailChange}
 					disabled={disabled}
+					autoFocus
 				/>
 			)}
 		</div>

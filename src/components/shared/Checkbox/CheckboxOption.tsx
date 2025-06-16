@@ -110,6 +110,7 @@ function LunaticCheckboxOption({
 					maxLength={detailMaxLength}
 					onChange={onDetailChange}
 					disabled={disabled}
+					autoFocus
 				/>
 			)}
 		</>
