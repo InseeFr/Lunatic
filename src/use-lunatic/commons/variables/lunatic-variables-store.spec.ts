@@ -95,7 +95,7 @@ describe('lunatic-variables-store', () => {
 		variables.set('LASTNAME', 'Doe');
 		expect(variables.run('FIRSTNAME || " " || LASTNAME')).toEqual('John Doe');
 		expect(variables.run('FIRSTNAME || " " || LASTNAME')).toEqual('John Doe');
-		expect(variables.interpretCount).toBe(2);
+		expect(variables.interpretCount).toBe(1); // only once computation since improvment of caching result
 		variables.set('FIRSTNAME', 'Jane');
 		expect(variables.run('FIRSTNAME || " " || LASTNAME')).toEqual('Jane Doe');
 	});
