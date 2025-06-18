@@ -229,6 +229,9 @@
 				"type": {
 					"type": "string",
 					"const": "VTL"
+				},
+				"shapeFrom": {
+					"type": "string"
 				}
 			},
 			"required": ["value", "type"],
