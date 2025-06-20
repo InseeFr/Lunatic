@@ -543,19 +543,26 @@ class LunaticVariable {
 	}
 
 	private isOutdated(iteration?: IterationLevel): boolean {
-		return this.getDependencies().some((dep) => {
-			const dependenciesUpdatedAt = // Check when a value at the same iteration was calculated
+		const lastCaculatedAt = this.calculatedAt.get(iteration?.join('.'));
+
+		// It has never been calculated
+		if (!lastCaculatedAt) return true;
+
+		// Check if we should retrigger a calculation since a related dependency has been updated
+		for (const dep of this.getDependencies()) {
+			const depLastUpdatedAt =
+				// Check when a value of the same iteration was calculated
 				this.dictionary?.get(dep)?.updatedAt.get(iteration?.join('.')) ??
 				// For aggregated value (max / min) look the global updatedAt time
 				this.dictionary?.get(dep)?.updatedAt.get(undefined) ??
 				// Otherwise this is a static value that never changes
 				0;
-			if (
-				dependenciesUpdatedAt >
-				(this.calculatedAt.get(iteration?.join('.')) ?? -1)
-			)
+			if (depLastUpdatedAt > lastCaculatedAt) {
 				return true;
-		});
+			}
+		}
+
+		return false;
 	}
 }
 
