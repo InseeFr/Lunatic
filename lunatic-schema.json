@@ -207,6 +207,9 @@
 				"type": {
 					"type": "string",
 					"enum": ["VTL", "VTL|MD", "TXT"]
+				},
+				"shapeFrom": {
+					"type": "string"
 				}
 			},
 			"required": ["value", "type"],

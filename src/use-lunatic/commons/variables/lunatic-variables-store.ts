@@ -357,6 +357,7 @@ class LunaticVariable {
 				)
 			: null;
 		// If we want the root value of a calculated array, loop using the shapeFrom value
+		// i.e. count(AGE) where AGE has shapeFrom=PRENOM
 		if (!iteration && Array.isArray(shapeFromValue)) {
 			return shapeFromValue.map((_, k) => this.getValue([k]));
 		}
@@ -375,6 +376,7 @@ class LunaticVariable {
 		const hasNoBinding = Object.keys(bindings).length === 0;
 
 		// A static expression should not be reevaluated
+		// i.e. expression : "\"le prénom\"", "1 + 2"
 		if (hasNoBinding && this.value) {
 			return this.value;
 		}

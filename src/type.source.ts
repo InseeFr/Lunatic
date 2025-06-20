@@ -340,6 +340,7 @@ export type VTLExpression = {
 	 */
 	bindingDependencies?: string[];
 	type: 'VTL' | 'VTL|MD' | 'TXT';
+	shapeFrom?: string;
 };
 export type ComponentDefinitionBase = {
 	label?: VTLExpression;

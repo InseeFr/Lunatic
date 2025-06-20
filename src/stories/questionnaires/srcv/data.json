@@ -1,0 +1,382 @@
+{
+	"id": "",
+	"questionnaireId": "",
+	"data": {
+		"CALCULATED": {},
+		"EXTERNAL": {
+			"VAGUE": "3",
+			"POLEGESTIONLOCALID": "93",
+			"V1TROPIQUE": "1",
+			"I_FUSPOS": "1",
+
+			"ADR_EXT": "9 AVENUE DE LA CARTONNERIE 13001 MARSEILLE",
+			"NBIP_EXT": "8",
+			"IP1": "Félicia",
+			"IP2": "Gaëtan",
+			"IP3": "Mathis",
+			"IP4": "Côme",
+			"IP5": "Naël",
+			"IP6": "Yanis",
+			"IP7": "Terrence",
+			"IP8": "Alexandre",
+
+			"T_NBHAB_V1": "12",
+			"LISTE_PRENOM_E": "Félicia, Gaëtan, Mathis, Côme, Naël, Yanis, Terrence, Alexandre, Maxence, Quentin, Islem, Augustin",
+			"PRENOM_E": [
+				"Félicia",
+				"Gaëtan",
+				"Mathis",
+				"Côme",
+				"Naël",
+				"Yanis",
+				"Terrence",
+				"Alexandre",
+				"Maxence",
+				"Quentin",
+				"Islem",
+				"Augustin"
+			],
+			"T_NBIP": "8",
+			"T_IP1": "Félicia",
+			"T_IP2": "Gaëtan",
+			"T_IP3": "Mathis",
+			"T_IP4": "Côme",
+			"T_IP5": "Naël",
+			"T_IP6": "Yanis",
+			"T_IP7": "Terrence",
+			"T_IP8": "Alexandre",
+
+			"I_MEN_PRINC_V1": [
+				"1",
+				"1",
+				"1",
+				"1",
+				"1",
+				"1",
+				"1",
+				"1",
+				"1",
+				"1",
+				"1",
+				"1"
+			],
+			"I_IP": ["1", "1", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0"],
+			"I_ORIGINES": [
+				"1",
+				"1",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0"
+			],
+			"I_ACTIVITE": [
+				"1",
+				"1",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0"
+			],
+			"I_PROF": ["1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+			"PROF_EXT": [
+				"Assistante maternelle agréée",
+				"CHEF D ECURIE",
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null
+			],
+			"I_ACTIV": ["0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+			"ACTIV_EXT": [
+				null,
+				"ECURIE",
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null
+			],
+			"I_PROFANTE": [
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0"
+			],
+			"PROFANTE_EXT": [
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null
+			],
+			"I_DIPL_DET": [
+				"1",
+				"1",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0",
+				"0"
+			],
+			"DIPL_DET_EXT": [
+				"BAC GENERAL",
+				"BAC GENERAL",
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+				null
+			],
+			"I_LDV": ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"],
+			"I_PASSEE": ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"],
+			"I_PASSEC": ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"],
+
+			"V1T_TYPE_MEN_LOG": "1",
+			"V1SITULOG": ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+			"V1T_NB_MEN_FINAL": "1",
+			"V1T_PRES_BS": "0",
+			"V1NBEMPR": "0"
+		},
+		"COLLECTED": {
+			"T_PRENOM": {
+				"COLLECTED": [
+					"Félicia",
+					"Gaëtan",
+					"Mathis",
+					"Côme",
+					"Naël",
+					"Yanis",
+					"Terrence",
+					"Alexandre",
+					"Maxence",
+					"Quentin",
+					"Islem",
+					"Augustin"
+				]
+			},
+			"T_SEXE": {
+				"COLLECTED": [
+					"2",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1"
+				]
+			},
+			"T_DATENAIS": {
+				"COLLECTED": [
+					"1974-09-24",
+					"1974-07-15",
+					"1995-01-03",
+					"1995-01-03",
+					"1998-03-22",
+					"2001-09-10",
+					"2003-12-03",
+					"2003-12-03",
+					"2008-01-24",
+					"2009-03-15",
+					"2010-10-03",
+					"2011-12-23"
+				]
+			},
+			"T_LNAIS": {
+				"COLLECTED": [
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1",
+					"1"
+				]
+			},
+			"T_DEPNAIS": {
+				"COLLECTED": [
+					"13",
+					"13",
+					"13",
+					"13",
+					"13",
+					"13",
+					"13",
+					"13",
+					"13",
+					"13",
+					"13",
+					"13"
+				]
+			},
+			"T_NATION1": {
+				"COLLECTED": [
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true
+				]
+			},
+			"LIENS": {
+				"COLLECTED": [
+					[null, "1", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3"],
+					["1", null, "3", "3", "3", "3", "3", "3", "3", "3", "3", "3"],
+					["2", "2", null, "4", "4", "4", "4", "4", "4", "4", "4", "4"],
+					["2", "2", "4", null, "4", "4", "4", "4", "4", "4", "4", "4"],
+					["2", "2", "4", "4", null, "4", "4", "4", "4", "4", "4", "4"],
+					["2", "2", "4", "4", "4", null, "4", "4", "4", "4", "4", "4"],
+					["2", "2", "4", "4", "4", "4", null, "4", "4", "4", "4", "4"],
+					["2", "2", "4", "4", "4", "4", "4", null, "4", "4", "4", "4"],
+					["2", "2", "4", "4", "4", "4", "4", "4", null, "4", "4", "4"],
+					["2", "2", "4", "4", "4", "4", "4", "4", "4", null, "4", "4"],
+					["2", "2", "4", "4", "4", "4", "4", "4", "4", "4", null, "4"],
+					["2", "2", "4", "4", "4", "4", "4", "4", "4", "4", "4"]
+				]
+			},
+			"T_SITUCONJ3": {
+				"COLLECTED": [true, true]
+			},
+			"T_SITUCONJ8": {
+				"COLLECTED": [
+					null,
+					null,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true
+				]
+			},
+			"T_TYPLOGP": {
+				"COLLECTED": "1"
+			},
+			"T_TYPMAISP": {
+				"COLLECTED": "1"
+			},
+			"T_NPIECESP": {
+				"COLLECTED": 12
+			},
+			"T_SURFACEP": {
+				"COLLECTED": 150
+			},
+			"T_UNLOG": {
+				"COLLECTED": [
+					"2",
+					"2",
+					"2",
+					"2",
+					"2",
+					"2",
+					"2",
+					"2",
+					"2",
+					"2",
+					"2",
+					"2"
+				]
+			},
+			"T_STOCP": {
+				"COLLECTED": "4"
+			},
+			"T_LOGPROPRIP": {
+				"COLLECTED": "5"
+			},
+			"T_EMMENAGEP": {
+				"COLLECTED": "1999"
+			},
+			"TYPRF2": {
+				"COLLECTED": true
+			},
+			"TYPRF6": {
+				"COLLECTED": true
+			},
+			"T_SITUAEU": {
+				"COLLECTED": ["1", "1"]
+			},
+			"T_NBEMP": {
+				"COLLECTED": ["1", "1"]
+			},
+			"T_STCPUB": {
+				"COLLECTED": ["4", "3"]
+			},
+			"T_QPRCR": {
+				"COLLECTED": [null, "5"]
+			}
+		}
+	},
+	"stateData": {
+		"state": "INIT",
+		"date": 1725468415527,
+		"currentPage": "1"
+	}
+}

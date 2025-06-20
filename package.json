@@ -31,6 +31,7 @@
 	],
 	"scripts": {
 		"test": "vitest run",
+		"test:benchmark": "vitest bench",
 		"test:e2e": "playwright test",
 		"test:e2e:visual": "playwright test --headed --debug e2e/pairwise.spec.ts",
 		"test:e2e:codegen": "playwright codegen http://localhost:9999/iframe.html?viewMode=story&id=",
