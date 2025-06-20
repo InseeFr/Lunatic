@@ -112,15 +112,7 @@ const interpretOverviewItem = (
 	}
 
 	// if disableFilters is set to true, item are visible and reached by default
-	const isVisible = (() => {
-		if (state.disableFilters || !item.conditionFilter) return true;
-		return Boolean(
-			executeExpression(item.conditionFilter, {
-				iteration: iteration,
-			})
-		);
-	})();
-
+	const isVisible = false;
 	if (!isVisible) {
 		return items;
 	}

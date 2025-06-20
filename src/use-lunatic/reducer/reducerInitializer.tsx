@@ -96,6 +96,7 @@ export function reducerInitializer({
 		if (!features?.includes(VTL) || !expressionType.includes(VTL)) {
 			return expressionString;
 		}
+
 		try {
 			const result = variables.run(expressionString, {
 				...args,
@@ -103,6 +104,7 @@ export function reducerInitializer({
 					typeof args.iteration === 'number'
 						? [args.iteration]
 						: args.iteration,
+				shapeFrom: expression.shapeFrom,
 			});
 			if (
 				features.includes(MD) &&
@@ -183,4 +185,31 @@ function fillPagerForLoop(state: LunaticReducerState): LunaticReducerState {
 			),
 		},
 	};
+}
+
+export function executeExpression(
+	expression,
+	args = {},
+	variables: LunaticVariablesStore
+): LunaticReducerState['executeExpression'] {
+	// This is kept to ensure backward compatibility
+	if (args?.bindingDependencies) {
+		args.deps = args.bindingDependencies;
+	}
+	// Remove above code on next update
+	const expressionType = getExpressionType(expression);
+	const expressionString = getExpressionAsString(expression);
+
+	try {
+		const result = variables.run(expressionString, {
+			...args,
+			iteration:
+				typeof args.iteration === 'number' ? [args.iteration] : args.iteration,
+			shapeFrom: expression.shapeFrom,
+		});
+		return result as any;
+	} catch (e) {
+		// If there is an error interpreting a variable, return the raw expression
+		return expressionString;
+	}
 }

@@ -244,10 +244,15 @@ export class LunaticVariablesStore {
 	 */
 	public run(
 		expression: string,
-		args: { iteration?: IterationLevel; deps?: string[] } = {}
+		args: {
+			iteration?: IterationLevel;
+			deps?: string[];
+			shapeFrom?: string;
+		} = {}
 	): unknown {
 		return this.setCalculated(expression, expression, {
 			dependencies: args.deps,
+			shapeFrom: args.shapeFrom,
 		}).getValue(args.iteration);
 	}
 
@@ -375,7 +380,7 @@ class LunaticVariable {
 		const bindings = this.getDependenciesValues(iteration);
 		const hasNoBinding = Object.keys(bindings).length === 0;
 
-		// A static expression should not be reevaluated
+		// A static expression should not be reevaluated if it already is saved
 		// i.e. expression : "\"le prénom\"", "1 + 2"
 		if (hasNoBinding && this.value) {
 			return this.value;
@@ -538,22 +543,19 @@ class LunaticVariable {
 	}
 
 	private isOutdated(iteration?: IterationLevel): boolean {
-		const dependenciesUpdatedAt = Math.max(
-			0,
-			...this.getDependencies().map(
-				(dep) =>
-					// Check when a value at the same iteration was calculated
-					this.dictionary?.get(dep)?.updatedAt.get(iteration?.join('.')) ??
-					// For aggregated value (max / min) look the global updatedAt time
-					this.dictionary?.get(dep)?.updatedAt.get(undefined) ??
-					// Otherwise this is a static value that never changes
-					0
+		return this.getDependencies().some((dep) => {
+			const dependenciesUpdatedAt = // Check when a value at the same iteration was calculated
+				this.dictionary?.get(dep)?.updatedAt.get(iteration?.join('.')) ??
+				// For aggregated value (max / min) look the global updatedAt time
+				this.dictionary?.get(dep)?.updatedAt.get(undefined) ??
+				// Otherwise this is a static value that never changes
+				0;
+			if (
+				dependenciesUpdatedAt >
+				(this.calculatedAt.get(iteration?.join('.')) ?? -1)
 			)
-		);
-		return (
-			dependenciesUpdatedAt >
-			(this.calculatedAt.get(iteration?.join('.')) ?? -1)
-		);
+				return true;
+		});
 	}
 }
 
