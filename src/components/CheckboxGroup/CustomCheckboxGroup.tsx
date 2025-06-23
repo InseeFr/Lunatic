@@ -19,6 +19,7 @@ type Props = Pick<
 	| 'options'
 	| 'orientation'
 	| 'detailAlwaysDisplayed'
+	| 'shouldBeFiltered'
 > & {
 	errors?: LunaticError[];
 };
