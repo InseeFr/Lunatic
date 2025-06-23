@@ -23,6 +23,7 @@ export type RadioGroupProps = Pick<
 	| 'declarations'
 	| 'orientation'
 	| 'detailAlwaysDisplayed'
+	| 'shouldBeFiltered'
 > & {
 	errors?: LunaticError[];
 	clearable?: boolean;

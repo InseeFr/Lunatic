@@ -5,7 +5,7 @@ import { Label } from '../Label/Label';
 import { useKeyboardKey } from '../../../hooks/useKeyboardKey';
 import { CustomInput } from '../../Input/Input';
 
-export type CheckboxOptionProps = {
+type CheckboxOptionProps = {
 	disabled?: boolean;
 	readOnly?: boolean;
 	checked?: boolean;
@@ -21,6 +21,7 @@ export type CheckboxOptionProps = {
 	detailMaxLength?: number;
 	detailValue?: string | null;
 	onDetailChange?: (value: string) => void;
+	shouldBeFiltered?: boolean;
 };
 
 function LunaticCheckboxOption({
@@ -39,7 +40,7 @@ function LunaticCheckboxOption({
 	codeModality,
 	shortcut,
 	invalid,
-}: CheckboxOptionProps) {
+}: Readonly<CheckboxOptionProps>) {
 	const isEnabled = !readOnly && !disabled;
 	const hasDetail = !!onDetailChange;
 	const hasKeyboardShortcut = Boolean(shortcut && codeModality && isEnabled);
