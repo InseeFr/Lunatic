@@ -4,6 +4,7 @@ import * as cleaningModule from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { LunaticVariablesStore } from './lunatic-variables-store';
+import { LunaticSource } from '../../type';
 
 describe('lunatic-variables-store', () => {
 	let variables: LunaticVariablesStore;
@@ -663,30 +664,22 @@ describe('lunatic-variables-store', () => {
 					variables: [
 						{
 							name: 'PRENOM',
-							values: {
-								COLLECTED: 'John',
-							},
+							values: { COLLECTED: 'John' },
 							variableType: 'COLLECTED',
 						},
 						{
 							name: 'NOM',
-							values: {
-								COLLECTED: '',
-							},
+							values: { COLLECTED: '' },
 							variableType: 'COLLECTED',
 						},
 					],
 					cleaning: {
-						NOM: {
-							PRENOM: 'false',
-						},
+						NOM: { PRENOM: 'false' },
 					},
 				},
 				{
 					COLLECTED: {
-						PRENOM: {
-							COLLECTED: 'Jane',
-						},
+						PRENOM: { COLLECTED: 'Jane' },
 					},
 				},
 				{ current: () => {} }
@@ -695,6 +688,48 @@ describe('lunatic-variables-store', () => {
 			store.set('NOM', 'Doe');
 			store.commit();
 			expect(store.get('PRENOM')).toEqual('John');
+		});
+
+		it('should handle initial loop data correctly w resizing', () => {
+			const variables = [
+				{
+					name: 'PRES_SAL',
+					values: { COLLECTED: [] },
+					dimension: 1,
+					variableType: 'COLLECTED',
+					iterationReference: 'm4shkd30',
+				},
+				{
+					name: 'NBSAL_INT',
+					value: null,
+					dimension: 0,
+					variableType: 'EXTERNAL',
+				},
+			];
+
+			const store = LunaticVariablesStore.makeFromSource(
+				{
+					resizing: {
+						NBSAL_INT: {
+							size: 'NBSAL_INT',
+							variables: ['PRES_SAL'],
+						},
+					},
+					components: [],
+					variables: variables as LunaticSource['variables'],
+				},
+				{ EXTERNAL: { NBSAL_INT: '6' } },
+				{ current: () => {} }
+			);
+			expect(store.get('PRES_SAL').length).toEqual(6);
+			expect(store.get('PRES_SAL')).toEqual([
+				null,
+				null,
+				null,
+				null,
+				null,
+				null,
+			]);
 		});
 
 		it('should handle calculated variables, ignoring them when `isIgnoredByLunatic` is true ', () => {

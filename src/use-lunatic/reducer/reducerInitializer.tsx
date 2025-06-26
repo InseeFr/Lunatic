@@ -97,6 +97,7 @@ export function reducerInitializer({
 			return expressionString;
 		}
 		try {
+			console.debug('[executeExpression PRES_SAL]', variables.get('PRES_SAL'));
 			const result = variables.run(expressionString, {
 				...args,
 				iteration:
@@ -160,6 +161,7 @@ export function reducerInitializer({
  * Check if there is a loop and populate the pager accordingly
  **/
 function fillPagerForLoop(state: LunaticReducerState): LunaticReducerState {
+	console.debug('fillPagerForLoop');
 	const { pager, pages } = state;
 	if (!(pager.page in pages)) {
 		return state;

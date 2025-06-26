@@ -64,6 +64,7 @@ export class LunaticVariablesStore {
 		// Do not delay resizing / cleaning
 		autoCommit?: boolean
 	) {
+		console.debug('[makeFromSource]', data);
 		const store = new LunaticVariablesStore();
 		if (!source.variables) {
 			return store;
@@ -85,6 +86,7 @@ export class LunaticVariablesStore {
 			return undefined;
 		};
 		store.set('1', 1); // Fake variable to use on the shapeFrom, we will use "variableDimension" in the future
+		resizingBehaviour(store, source.resizing);
 		for (const variable of source.variables) {
 			switch (variable.variableType) {
 				case 'CALCULATED':
@@ -103,10 +105,13 @@ export class LunaticVariablesStore {
 		}
 		store.on('change', (e) => changeHandler?.current?.(e.detail));
 		if (!disableCleaning) {
+			console.debug('CLEANIIIIIING');
 			cleaningBehaviour(store, source.cleaning, sourceValues);
 		}
-		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);
+		console.debug('[store.commit()]');
+		store.commit();
+		console.debug('[PRES_SAL]', store.get('PRES_SAL'));
 		return store;
 	}
 

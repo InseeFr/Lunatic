@@ -19,10 +19,15 @@ export function resizingBehaviour(
 
 	// Create a map to improve performance
 	const resizingMap = new Map(Object.entries(resizing));
+	console.debug(resizingMap);
 
 	store.on('change', (e) => {
+		if (e.detail.name === 'NBSAL_INT')
+			console.debug('[resizingBehaviour change]', e.detail.name);
 		// The variable does not have resizing
 		const resizingInfo = resizingMap.get(e.detail.name);
+		if (e.detail.name === 'NBSAL_INT')
+			console.log('[resizingInfo]', resizingInfo);
 		if (!resizingInfo) {
 			return;
 		}
@@ -40,12 +45,16 @@ export function resizingBehaviour(
 		}
 
 		const newSize = forceInt(store.run(resizingInfo.size));
+		if (e.detail.name === 'NBSAL_INT')
+			console.debug('[NBSAL_INT newSize]', newSize);
 		for (const variableName of resizingInfo.variables) {
 			// Since data can change after the resize, we need to pass a callback that will use the last value of the variable for the resize
 			store.enqueueSet(
 				variableName,
 				() => {
 					const value = store.get(variableName);
+					if (variableName === 'PRES_SAL')
+						console.debug('[enqueueSet]', variableName, value, newSize);
 					if (!Array.isArray(value) || value.length !== newSize) {
 						return resizeArrayVariable(value, newSize, null);
 					}
