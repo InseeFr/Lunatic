@@ -40,5 +40,11 @@ export const OneIteration: Story = {
 export const WithControl: Story = {
 	args: {
 		source: sourceWithControl,
+		data: dataFromObject({
+			NBHAB: 3,
+			PRENOM: ['Pierre', 'Paul', 'Patrick'],
+			AGE: [55, null, null],
+			BOUCLE1_PROGRESS: [1],
+		}),
 	},
 };
