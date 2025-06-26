@@ -1,5 +1,6 @@
 import { Orchestrator } from '../utils/Orchestrator';
 import source from './source.json';
+import sourceWithControl from './sourceWithControl.json';
 
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -33,5 +34,11 @@ export const OneIteration: Story = {
 			PRENOMS: ['Fanny'],
 			AGE: [15],
 		}),
+	},
+};
+
+export const WithControl: Story = {
+	args: {
+		source: sourceWithControl,
 	},
 };

@@ -25,12 +25,13 @@ type InterpretedLoopComponent = DeepTranslateExpression<
 	}
 >;
 
+/**
+ * Check if the component is a Loop or a RosterForLoop
+ */
 const isLoopComponent = (
 	component: ComponentDefinition | InterpretedComponent
 ): component is InterpretedLoopComponent => {
-	return ['Loop', 'RosterForLoop', 'Roundabout'].includes(
-		component.componentType
-	);
+	return ['Loop', 'RosterForLoop'].includes(component.componentType);
 };
 
 const isQuestionComponent = (
@@ -63,7 +64,7 @@ function checkComponents(
 			}
 		}
 
-		// For loop, inspect children
+		// For Loop and RosterForLoop, inspect children
 		if (isLoopComponent(component))
 			errors = checkLoop(state, component, errors);
 
