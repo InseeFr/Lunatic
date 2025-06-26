@@ -102,14 +102,12 @@ function checkControls(
 ): LunaticError[] {
 	return controls
 		.map((control) => {
-			switch (control.type) {
-				case 'roundabout':
-					return checkRoundaboutControl(control, executeExpression);
-				default:
-					return checkBaseControl(control, executeExpression, pager);
+			if (control.type === 'roundabout') {
+				return checkRoundaboutControl(control, executeExpression);
 			}
+			return checkBaseControl(control, executeExpression, pager);
 		})
-		.filter((error) => error !== undefined) as LunaticError[];
+		.filter((error) => error !== undefined);
 }
 
 /**
