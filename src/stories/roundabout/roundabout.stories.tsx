@@ -1,5 +1,6 @@
 import { Orchestrator } from '../utils/Orchestrator';
 import source from './source.json';
+import sourceWithControl from './sourceWithControl.json';
 
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -32,6 +33,18 @@ export const OneIteration: Story = {
 			NB_HAB: 1,
 			PRENOMS: ['Fanny'],
 			AGE: [15],
+		}),
+	},
+};
+
+export const WithControl: Story = {
+	args: {
+		source: sourceWithControl,
+		data: dataFromObject({
+			NBHAB: 3,
+			PRENOM: ['Pierre', 'Paul', 'Patrick'],
+			AGE: [55, null, null],
+			BOUCLE1_PROGRESS: [1],
 		}),
 	},
 };
