@@ -24,6 +24,11 @@ type InterpretedLoopComponent = DeepTranslateExpression<
 		componentType: 'Loop' | 'RosterForLoop';
 	}
 >;
+type InterpretedRoundaboutComponent = DeepTranslateExpression<
+	ComponentDefinition & {
+		componentType: 'Roundabout';
+	}
+>;
 
 /**
  * Check if the component is a Loop or a RosterForLoop
@@ -32,6 +37,15 @@ const isLoopComponent = (
 	component: ComponentDefinition | InterpretedComponent
 ): component is InterpretedLoopComponent => {
 	return ['Loop', 'RosterForLoop'].includes(component.componentType);
+};
+
+/**
+ * Check if the component is a Roundabout
+ */
+const isRoundaboutComponent = (
+	component: ComponentDefinition | InterpretedComponent
+): component is InterpretedRoundaboutComponent => {
+	return component.componentType === 'Roundabout';
 };
 
 const isQuestionComponent = (
@@ -64,6 +78,10 @@ function checkComponents(
 			}
 		}
 
+		// For Loop and RosterForLoop, inspect iterations for row controls
+		if (isRoundaboutComponent(component))
+			errors = checkRoundabout(state, component, errors);
+
 		// For Loop and RosterForLoop, inspect children
 		if (isLoopComponent(component))
 			errors = checkLoop(state, component, errors);
@@ -73,6 +91,22 @@ function checkComponents(
 			errors = checkComponents(state, component.components, errors);
 	}
 
+	return errors;
+}
+
+function checkRoundabout(
+	state: StateForControls,
+	component: InterpretedRoundaboutComponent,
+	errors: Record<string, LunaticError[]>
+) {
+	const rowControls = component.controls?.filter((c) => c.type === 'ROW');
+	if (rowControls?.length) {
+		errors = checkComponentInLoop(
+			state,
+			{ ...component, controls: rowControls },
+			errors
+		);
+	}
 	return errors;
 }
 
@@ -151,7 +185,10 @@ function computeIterations(
  */
 function checkComponentInLoop(
 	state: StateForControls,
-	component: ComponentDefinition | InterpretedLoopComponent,
+	component:
+		| ComponentDefinition
+		| InterpretedLoopComponent
+		| InterpretedRoundaboutComponent,
 	errors: Record<string, LunaticError[]>
 ): Record<string, LunaticError[]> {
 	// For Question, loop over children
