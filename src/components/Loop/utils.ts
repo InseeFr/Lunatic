@@ -15,7 +15,7 @@ export const useLoopUtils = (
 
 	useEffect(() => {
 		const initialResponses = Object.entries(valueMap)
-			.filter(([, v]) => v.length < nbRows)
+			.filter(([, v]) => (v?.length ?? 0) < nbRows)
 			.map(([k, v]) => {
 				return {
 					name: k,
