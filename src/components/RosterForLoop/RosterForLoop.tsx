@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { Table, Tbody, Td, Tr, TableHeader } from '../shared/Table';
 import { times } from '../../utils/array';
@@ -9,10 +9,7 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import { CustomLoop } from '../Loop/Loop';
-import { resizeArrayVariable } from '../../use-lunatic/reducer/commons';
-
-const DEFAULT_MIN_ROWS = 1;
-const DEFAULT_MAX_ROWS = 12;
+import { useLoopUtils } from '../Loop/utils';
 
 /**
  * Loop displayed as a table
@@ -20,67 +17,18 @@ const DEFAULT_MAX_ROWS = 12;
 export const RosterForLoop = (
 	props: LunaticComponentProps<'RosterForLoop'>
 ) => {
+	const { min, max, nbRows, addRow, removeRow } = useLoopUtils(props);
 	const {
-		value: valueMap,
-		lines,
 		errors,
-		handleChanges,
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		declarations,
 		header,
-		iterations,
 		id,
 		getComponents,
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		label,
 		...otherProps // These props will be passed down to the child components
 	} = props;
-	const min = lines?.min ?? DEFAULT_MIN_ROWS;
-	const max = lines?.max ?? DEFAULT_MAX_ROWS;
-	const [nbRows, setNbRows] = useState(Math.max(min, iterations));
-
-	useEffect(() => {
-		const initialResponses = Object.entries(valueMap)
-			.filter(([, v]) => v.length < nbRows)
-			.map(([k, v]) => {
-				return {
-					name: k,
-					value: resizeArrayVariable(v, nbRows, null),
-				};
-			});
-		if (initialResponses.length > 0) handleChanges(initialResponses);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [nbRows]);
-
-	const addRow = useCallback(() => {
-		if (nbRows < max) {
-			const newNbRows = nbRows + 1;
-			setNbRows(newNbRows);
-			const newResponses = Object.entries(valueMap).map(([k, v]) => {
-				return {
-					name: k,
-					value: [...v, null],
-				};
-			});
-			handleChanges(newResponses);
-		}
-	}, [max, nbRows, valueMap, handleChanges]);
-
-	const removeRow = useCallback(() => {
-		if (nbRows <= min) {
-			return;
-		}
-		const newNbRows = nbRows - 1;
-		setNbRows(newNbRows);
-		// Downsize all variables by 1
-		const newResponses = Object.entries(valueMap).map(([k, v]) => {
-			return {
-				name: k,
-				value: v?.filter((_, i) => i < newNbRows),
-			};
-		});
-		handleChanges(newResponses);
-	}, [nbRows, min, valueMap, handleChanges]);
 
 	if (nbRows === 0) {
 		return null;

@@ -1,9 +1,4 @@
-import {
-	type PropsWithChildren,
-	useCallback,
-	useEffect,
-	useState,
-} from 'react';
+import { type PropsWithChildren } from 'react';
 import D from '../../i18n';
 import { times } from '../../utils/array';
 import { LunaticComponents } from '../LunaticComponents';
@@ -18,67 +13,16 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import type { LunaticError } from '../../use-lunatic/type';
-import { resizeArrayVariable } from '../../use-lunatic/reducer/commons';
+import { useLoopUtils } from './utils';
 
 /**
  * Loop without specific markup (stack of subcomponents)
  */
-export function Loop({
-	lines,
-	iterations,
-	value: valueMap,
-	handleChanges,
-	getComponents,
-	errors,
-	...props
-}: LunaticComponentProps<'Loop'>) {
-	const min = lines?.min ?? 0;
-	const max = lines?.max ?? Infinity;
-	const [nbRows, setNbRows] = useState(Math.max(min, iterations));
+export function Loop(props: LunaticComponentProps<'Loop'>) {
+	const { min, max, nbRows, addRow, removeRow } = useLoopUtils(props);
+	const { getComponents, errors } = props;
 
-	useEffect(() => {
-		const initialResponses = Object.entries(valueMap)
-			.filter(([, v]) => v.length < nbRows)
-			.map(([k, v]) => {
-				return {
-					name: k,
-					value: resizeArrayVariable(v, nbRows, null),
-				};
-			});
-		if (initialResponses.length > 0) handleChanges(initialResponses);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [nbRows]);
-
-	const addRow = useCallback(() => {
-		if (nbRows < max) {
-			const newNbRows = nbRows + 1;
-			setNbRows(newNbRows);
-			const newResponses = Object.entries(valueMap).map(([k, v]) => {
-				return {
-					name: k,
-					value: [...v, null],
-				};
-			});
-			handleChanges(newResponses);
-		}
-	}, [max, nbRows, valueMap, handleChanges]);
-
-	const removeRow = useCallback(() => {
-		if (nbRows > 1) {
-			const newNbRows = nbRows - 1;
-			setNbRows(newNbRows);
-			// Downsize all variables by 1
-			const newResponses = Object.entries(valueMap).map(([k, v]) => {
-				return {
-					name: k,
-					value: v?.filter((_, i) => i < newNbRows),
-				};
-			});
-			handleChanges(newResponses);
-		}
-	}, [nbRows, handleChanges, valueMap]);
-
-	if (nbRows <= 0) {
+	if (nbRows === 0) {
 		return null;
 	}
 
