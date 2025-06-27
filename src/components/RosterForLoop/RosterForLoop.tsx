@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useState } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { Table, Tbody, Td, Tr, TableHeader } from '../shared/Table';
 import { times } from '../../utils/array';
@@ -9,6 +9,7 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import { CustomLoop } from '../Loop/Loop';
+import { resizeArrayVariable } from '../../use-lunatic/reducer/commons';
 
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
@@ -37,6 +38,19 @@ export const RosterForLoop = (
 	const min = lines?.min ?? DEFAULT_MIN_ROWS;
 	const max = lines?.max ?? DEFAULT_MAX_ROWS;
 	const [nbRows, setNbRows] = useState(Math.max(min, iterations));
+
+	useEffect(() => {
+		const initialResponses = Object.entries(valueMap)
+			.filter(([, v]) => v.length < nbRows)
+			.map(([k, v]) => {
+				return {
+					name: k,
+					value: resizeArrayVariable(v, nbRows, null),
+				};
+			});
+		if (initialResponses.length > 0) handleChanges(initialResponses);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [nbRows]);
 
 	const addRow = useCallback(() => {
 		if (nbRows < max) {

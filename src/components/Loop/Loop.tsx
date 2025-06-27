@@ -1,4 +1,9 @@
-import { type PropsWithChildren, useCallback, useState } from 'react';
+import {
+	type PropsWithChildren,
+	useCallback,
+	useEffect,
+	useState,
+} from 'react';
 import D from '../../i18n';
 import { times } from '../../utils/array';
 import { LunaticComponents } from '../LunaticComponents';
@@ -13,6 +18,7 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import type { LunaticError } from '../../use-lunatic/type';
+import { resizeArrayVariable } from '../../use-lunatic/reducer/commons';
 
 /**
  * Loop without specific markup (stack of subcomponents)
@@ -30,6 +36,19 @@ export function Loop({
 	const max = lines?.max ?? Infinity;
 	const [nbRows, setNbRows] = useState(Math.max(min, iterations));
 
+	useEffect(() => {
+		const initialResponses = Object.entries(valueMap)
+			.filter(([, v]) => v.length < nbRows)
+			.map(([k, v]) => {
+				return {
+					name: k,
+					value: resizeArrayVariable(v, nbRows, null),
+				};
+			});
+		if (initialResponses.length > 0) handleChanges(initialResponses);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [nbRows]);
+
 	const addRow = useCallback(() => {
 		if (nbRows < max) {
 			const newNbRows = nbRows + 1;
@@ -43,6 +62,7 @@ export function Loop({
 			handleChanges(newResponses);
 		}
 	}, [max, nbRows, valueMap, handleChanges]);
+
 	const removeRow = useCallback(() => {
 		if (nbRows > 1) {
 			const newNbRows = nbRows - 1;
