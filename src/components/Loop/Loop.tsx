@@ -20,7 +20,7 @@ import type { LunaticError } from '../../use-lunatic/type';
 export function Loop({
 	lines,
 	iterations,
-	value,
+	value: valueMap,
 	handleChanges,
 	getComponents,
 	errors,
@@ -28,20 +28,27 @@ export function Loop({
 }: LunaticComponentProps<'Loop'>) {
 	const min = lines?.min ?? 0;
 	const max = lines?.max ?? Infinity;
-	const [nbRows, setNbRows] = useState(() => {
-		return Math.max(iterations, min);
-	});
+	const [nbRows, setNbRows] = useState(Math.max(min, iterations));
+
 	const addRow = useCallback(() => {
 		if (nbRows < max) {
-			setNbRows(nbRows + 1);
+			const newNbRows = nbRows + 1;
+			setNbRows(newNbRows);
+			const newResponses = Object.entries(valueMap).map(([k, v]) => {
+				return {
+					name: k,
+					value: [...v, null],
+				};
+			});
+			handleChanges(newResponses);
 		}
-	}, [max, nbRows]);
+	}, [max, nbRows, valueMap, handleChanges]);
 	const removeRow = useCallback(() => {
 		if (nbRows > 1) {
 			const newNbRows = nbRows - 1;
 			setNbRows(newNbRows);
 			// Downsize all variables by 1
-			const newResponses = Object.entries(value).map(([k, v]) => {
+			const newResponses = Object.entries(valueMap).map(([k, v]) => {
 				return {
 					name: k,
 					value: v?.filter((_, i) => i < newNbRows),
@@ -49,7 +56,7 @@ export function Loop({
 			});
 			handleChanges(newResponses);
 		}
-	}, [nbRows, handleChanges, value]);
+	}, [nbRows, handleChanges, valueMap]);
 
 	if (nbRows <= 0) {
 		return null;

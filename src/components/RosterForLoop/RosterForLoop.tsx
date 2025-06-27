@@ -40,9 +40,17 @@ export const RosterForLoop = (
 
 	const addRow = useCallback(() => {
 		if (nbRows < max) {
-			setNbRows(nbRows + 1);
+			const newNbRows = nbRows + 1;
+			setNbRows(newNbRows);
+			const newResponses = Object.entries(valueMap).map(([k, v]) => {
+				return {
+					name: k,
+					value: [...v, null],
+				};
+			});
+			handleChanges(newResponses);
 		}
-	}, [max, nbRows]);
+	}, [max, nbRows, valueMap, handleChanges]);
 
 	const removeRow = useCallback(() => {
 		if (nbRows <= min) {
