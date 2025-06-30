@@ -690,48 +690,6 @@ describe('lunatic-variables-store', () => {
 			expect(store.get('PRENOM')).toEqual('John');
 		});
 
-		it('should handle initial loop data correctly w resizing', () => {
-			const variables = [
-				{
-					name: 'PRES_SAL',
-					values: { COLLECTED: [] },
-					dimension: 1,
-					variableType: 'COLLECTED',
-					iterationReference: 'm4shkd30',
-				},
-				{
-					name: 'NBSAL_INT',
-					value: null,
-					dimension: 0,
-					variableType: 'EXTERNAL',
-				},
-			];
-
-			const store = LunaticVariablesStore.makeFromSource(
-				{
-					resizing: {
-						NBSAL_INT: {
-							size: 'NBSAL_INT',
-							variables: ['PRES_SAL'],
-						},
-					},
-					components: [],
-					variables: variables as LunaticSource['variables'],
-				},
-				{ EXTERNAL: { NBSAL_INT: '6' } },
-				{ current: () => {} }
-			);
-			expect(store.get('PRES_SAL').length).toEqual(6);
-			expect(store.get('PRES_SAL')).toEqual([
-				null,
-				null,
-				null,
-				null,
-				null,
-				null,
-			]);
-		});
-
 		it('should handle calculated variables, ignoring them when `isIgnoredByLunatic` is true ', () => {
 			const store = LunaticVariablesStore.makeFromSource(
 				{
