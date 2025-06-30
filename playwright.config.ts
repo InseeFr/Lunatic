@@ -59,6 +59,7 @@ export default defineConfig({
 	// outputDir: 'test-results/',
 
 	webServer: {
+		reuseExistingServer: true,
 		command:
 			'yarn build-storybook --test && npx http-server storybook-static --port 9999 --silent',
 		url: 'http://localhost:9999',
