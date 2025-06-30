@@ -151,7 +151,6 @@ function computeIterations(
 	component: InterpretedComponent | ComponentDefinition,
 	executeExpression: LunaticReducerState['executeExpression']
 ): number {
-	console.debug('[computeIterations]', component);
 	if (
 		'iterations' in component &&
 		component.iterations &&
@@ -165,7 +164,6 @@ function computeIterations(
 			type: 'VTL',
 			value: component.response.name,
 		});
-		console.debug('response ->', value);
 		if (Array.isArray(value)) {
 			return value.length;
 		}
@@ -203,13 +201,11 @@ function checkComponentInLoop(
 
 	// The component has no controls, skip it
 	if ('controls' in component && !Array.isArray(component.controls)) {
-		console.debug('The component has no controls, skip it');
 		return errors;
 	}
 
 	// Execute control for each iteration
 	const iterations = computeIterations(component, state.executeExpression);
-	console.debug('iterations', iterations);
 	for (let i = 0; i < iterations; i++) {
 		// Create a pager representing the iteration we want to check
 		const iterationPager = {
@@ -219,7 +215,6 @@ function checkComponentInLoop(
 		};
 		// There is no controls on this component
 		if (!('controls' in component) || !component.controls) {
-			console.debug('There is no controls on this component');
 			continue;
 		}
 		// The component is filtered on this iteration, skip it
@@ -236,10 +231,8 @@ function checkComponentInLoop(
 			// @ts-expect-error TS doesn't understand that conditionFilter is a boolean here
 			component.conditionFilter === false
 		) {
-			console.debug('The component is filtered on this iteration, skip it');
 			continue;
 		}
-		console.debug('[checkControls]');
 		const componentErrors = checkControls(
 			component.controls,
 			state.executeExpression,
@@ -275,7 +268,6 @@ function hasCriticalError(errors?: Record<string, LunaticError[]>): boolean {
  * Check controls for currently visible components and output errors.
  */
 export function compileControls(state: StateForControls) {
-	console.debug('[compileControls]', state.variables?.get('PRES_SAL'));
 	const components = getComponentsFromState(state);
 	const componentFiltered = components
 		.map((component) => fillComponentExpressions(component, state))
