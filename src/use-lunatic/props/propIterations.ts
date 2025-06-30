@@ -32,20 +32,35 @@ export function getIterationsProp(
 
 	// Iterations expression is not present on the component definition
 	// infer it from the value of child components
-	return (definition.components as LunaticComponentDefinition[]).reduce(
-		(acc, component) => {
-			if (!hasResponse(component)) {
-				return acc;
-			}
-			const value = state.variables.get(
-				component.response.name,
-				isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
-			);
-			if (Array.isArray(value) && value.length > acc) {
-				return value.length;
-			}
+
+	return getFlatComponentsInLoop(definition).reduce((acc, component) => {
+		if (!hasResponse(component)) {
 			return acc;
-		},
-		0
-	);
+		}
+		const value = state.variables.get(
+			component.response.name,
+			isNumber(state.pager.iteration) ? [state.pager.iteration] : undefined
+		);
+		if (Array.isArray(value) && value.length > acc) {
+			return value.length;
+		}
+		return acc;
+	}, 0);
+}
+
+function getFlatComponentsInLoop(
+	definition: LunaticComponentDefinition
+): LunaticComponentDefinition[] {
+	if (
+		definition.componentType !== 'RosterForLoop' &&
+		definition.componentType !== 'Loop'
+	) {
+		return [definition];
+	}
+
+	return definition.components.reduce((acc, component) => {
+		if (component.componentType === 'Question')
+			return [...acc, ...component.components];
+		return [...acc, component];
+	}, [] as LunaticComponentDefinition[]);
 }
