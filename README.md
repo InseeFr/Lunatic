@@ -251,3 +251,28 @@ We build this library in ESM and CJS. ESM is the standard when you develop a fro
 But if you need test which use `@inseefr/lunatic`, you need lunatic library as CJS lib (to allow to run in node environnement).
 So we have two build: one for ESM and one for CJS.
 You have nothing to change in your code base, it's simply working.
+
+## Testing with playwright
+
+If this is the first time you've run tests with your computer, run the command :
+
+- `npx playwright install chromium`
+
+Then you can run directly:
+
+- `npx playwright test --reporter=html`
+
+or with UI (launched in your local browser):
+
+- `npx playwright test --ui-port=8888 --ui-host=localhost`
+
+> Tests are launched in built mode i.e the storybook is built before testing
+
+### Alternative
+
+To have real time test (refreshed when you're coding), you need to run storybook in a separate command prompt and launch test.
+
+- `yarn storbook`
+- `npx playwright test`
+
+The inconvenient is that “dev” mode can be too slow to display storybook pages and fails test. (timeout exceeded)..
