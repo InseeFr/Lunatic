@@ -48,11 +48,9 @@ jobs:
           node-version: 20
       - uses: bahmutov/npm-install@v1
       - name: Install Playwright Browsers
-        run: yarn playwright install --with-deps
-      - name: Build Storybook
-        run: yarn run build-storybook --quiet
+        run: npx playwright install --with-deps
       - name: E2E Tests
-        run: npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" "npx http-server storybook-static --port 9999 --silent" "npx wait-on tcp:9999 && yarn run test:e2e"
+        run: npx playwright test --reporter=html
       - uses: actions/upload-artifact@v4
         if: always()
         with:

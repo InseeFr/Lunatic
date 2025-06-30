@@ -1,0 +1,599 @@
+{
+	"$schema": "../../../lunatic-schema.json",
+	"maxPage": "6",
+	"cleaning": {
+		"PRENOM": {
+			"AGE": [
+				{
+					"shapeFrom": "PRENOM",
+					"expression": "not(not(PRENOM = \"Paul\"))",
+					"isAggregatorUsed": false
+				}
+			],
+			"QUESTIONAV": [
+				{
+					"shapeFrom": "PRENOM",
+					"expression": "not(not(PRENOM = \"Paul\"))",
+					"isAggregatorUsed": false
+				}
+			]
+		}
+	},
+	"resizing": {
+		"NBHAB": {
+			"size": "nvl(NBHAB,1)",
+			"variables": ["PRENOM"]
+		},
+		"PRENOM": {
+			"size": "count(PRENOM)",
+			"variables": ["AGE", "QUESTIONAV"]
+		}
+	},
+	"variables": [
+		{
+			"name": "SUM_AGE",
+			"dimension": 0,
+			"expression": {
+				"type": "VTL",
+				"value": "sum(AGE_N)"
+			},
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["AGE_N", "AGE"]
+		},
+		{
+			"name": "AGE_N",
+			"dimension": 1,
+			"shapeFrom": ["PRENOM"],
+			"expression": {
+				"type": "VTL",
+				"value": "nvl(AGE,0)"
+			},
+			"variableType": "CALCULATED",
+			"iterationReference": "lyoigdda",
+			"bindingDependencies": ["AGE"]
+		},
+		{
+			"name": "ADR",
+			"variableType": "EXTERNAL"
+		},
+		{
+			"name": "NBHAB",
+			"values": {
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "PRENOM",
+			"values": {
+				"COLLECTED": []
+			},
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "lyoigdda"
+		},
+		{
+			"name": "AGE",
+			"values": {
+				"COLLECTED": []
+			},
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "lyoigdda"
+		},
+		{
+			"name": "QUESTIONAV",
+			"values": {
+				"COLLECTED": []
+			},
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "lyoigdda"
+		},
+		{
+			"name": "TESTCONTRO",
+			"values": {
+				"COLLECTED": null
+			},
+			"dimension": 0,
+			"variableType": "COLLECTED"
+		},
+		{
+			"name": "FILTER_RESULT_NBHAB",
+			"dimension": 0,
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true
+		},
+		{
+			"name": "FILTER_RESULT_PRENOM",
+			"dimension": 1,
+			"shapeFrom": ["PRENOM"],
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "lyoigdda"
+		},
+		{
+			"name": "FILTER_RESULT_AGE",
+			"dimension": 1,
+			"shapeFrom": ["PRENOM"],
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "lyoigdda"
+		},
+		{
+			"name": "FILTER_RESULT_QUESTIONAV",
+			"dimension": 1,
+			"shapeFrom": ["PRENOM"],
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "lyoigdda"
+		},
+		{
+			"name": "FILTER_RESULT_TESTCONTRO",
+			"dimension": 0,
+			"expression": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true
+		},
+		{
+			"name": "BOUCLE1_PROGRESS",
+			"values": {
+				"COLLECTED": []
+			},
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "lyoigdda"
+		}
+	],
+	"components": [
+		{
+			"id": "lst6jn38",
+			"page": "1",
+			"label": {
+				"type": "VTL",
+				"value": "\"I - \" || \"S1\""
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "question-lst71avf",
+			"page": "2",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"Combien de personnes ?\""
+			},
+			"components": [
+				{
+					"id": "lst71avf",
+					"max": 10,
+					"min": 1,
+					"page": "2",
+					"controls": [
+						{
+							"id": "lst71avf-format-borne-inf-sup",
+							"type": "SIMPLE",
+							"control": {
+								"type": "VTL",
+								"value": "not(not(isnull(NBHAB)) and (1>NBHAB or 10<NBHAB))"
+							},
+							"criticality": "ERROR",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\" La valeur doit être comprise entre 1 et 10\""
+							},
+							"typeOfControl": "FORMAT"
+						},
+						{
+							"id": "lst71avf-format-decimal",
+							"type": "SIMPLE",
+							"control": {
+								"type": "VTL",
+								"value": "not(not(isnull(NBHAB))  and round(NBHAB,0)<>NBHAB)"
+							},
+							"criticality": "ERROR",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule\""
+							},
+							"typeOfControl": "FORMAT"
+						},
+						{
+							"id": "lst71avf-CI-0",
+							"type": "ROW",
+							"control": {
+								"type": "VTL",
+								"value": "not(nvl($TAB13$,0) > 0 and nvl($TAB12$,0) > 0 and nvl($TAB13$,0) > nvl($TAB12$,0))"
+							},
+							"criticality": "WARN",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\"Le CA export doit être inférieur au CA\""
+							},
+							"typeOfControl": "CONSISTENCY"
+						}
+					],
+					"decimals": 0,
+					"response": {
+						"name": "NBHAB"
+					},
+					"description": {
+						"type": "TXT",
+						"value": "Format attendu : un nombre entre 1 et 10"
+					},
+					"isMandatory": false,
+					"componentType": "InputNumber"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "lyoigdda",
+			"page": "3",
+			"depth": 1,
+			"lines": {
+				"max": {
+					"type": "VTL",
+					"value": "nvl(NBHAB,1)"
+				},
+				"min": {
+					"type": "VTL",
+					"value": "nvl(NBHAB,1)"
+				}
+			},
+			"components": [
+				{
+					"id": "lt72wmbk",
+					"page": "3",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Lister les prénoms\""
+					},
+					"description": {
+						"type": "VTL|MD",
+						"value": "\"On n'interrogera pas les prénoms AA\""
+					},
+					"componentType": "Subsequence",
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					}
+				},
+				{
+					"id": "question-lt72y80j",
+					"page": "3",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Prénom de l'individu \" || cast(GLOBAL_ITERATION_INDEX,string)  || \" qui habite à \" || ADR "
+					},
+					"components": [
+						{
+							"id": "lt72y80j",
+							"page": "3",
+							"response": {
+								"name": "PRENOM"
+							},
+							"maxLength": 249,
+							"isMandatory": false,
+							"componentType": "Input"
+						}
+					],
+					"componentType": "Question",
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					}
+				}
+			],
+			"iterations": {
+				"type": "VTL",
+				"value": "count(PRENOM)"
+			},
+			"componentType": "Loop",
+			"paginatedLoop": false,
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"loopDependencies": ["NBHAB", "PRENOM"]
+		},
+		{
+			"id": "lypxwut2",
+			"item": {
+				"label": {
+					"type": "VTL|MD",
+					"value": "PRENOM || \", qui est l'individu n°\" || cast(GLOBAL_ITERATION_INDEX,string) || \" \" "
+				},
+				"disabled": {
+					"type": "VTL",
+					"value": "not(not(PRENOM = \"Paul\"))"
+				},
+				"description": {
+					"type": "VTL|MD",
+					"value": "if PRENOM=\"Paul\" then \"Individu non interrogé car s'appelle Paul\" else \"\" "
+				}
+			},
+			"page": "4",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"Test de rond point\""
+			},
+			"locked": false,
+			"controls": [
+				{
+					"id": "lypxwut2-CI-1",
+					"type": "SIMPLE",
+					"control": {
+						"type": "VTL",
+						"value": "not(5 in AGE_N)"
+					},
+					"criticality": "WARN",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"quelqu'un a 5 ans !!!\""
+					},
+					"typeOfControl": "CONSISTENCY"
+				},
+				{
+					"id": "lypxwut2-CI-2",
+					"type": "SIMPLE",
+					"control": {
+						"type": "VTL",
+						"value": "not(SUM_AGE > 20)"
+					},
+					"criticality": "WARN",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"la somme des ages des individus est supérieure à 20 ans.\""
+					},
+					"typeOfControl": "CONSISTENCY"
+				},
+				{
+					"id": "lypxwut2-CI-0",
+					"type": "ROW",
+					"control": {
+						"type": "VTL",
+						"value": "not(AGE_N > 35)"
+					},
+					"criticality": "WARN",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"L'individu \" || PRENOM || \" a plus de 35 ans.\" "
+					},
+					"typeOfControl": "CONSISTENCY"
+				}
+			],
+			"components": [
+				{
+					"id": "lyoiu1hr",
+					"page": "4.1",
+					"label": {
+						"type": "VTL",
+						"value": "\"II - \" || \"S2 \" || PRENOM "
+					},
+					"componentType": "Sequence",
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					}
+				},
+				{
+					"id": "question-lyoir96l",
+					"page": "4.2",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Age de \" || nvl(PRENOM,\"cet individu sans prénom\") "
+					},
+					"components": [
+						{
+							"id": "lyoir96l",
+							"max": 99,
+							"min": 1,
+							"page": "4.2",
+							"controls": [
+								{
+									"id": "lyoir96l-mandatory-check",
+									"type": "SIMPLE",
+									"control": {
+										"type": "VTL",
+										"value": "not(isnull(AGE))"
+									},
+									"criticality": "ERROR",
+									"errorMessage": {
+										"type": "TXT",
+										"value": "La réponse à cette question est obligatoire."
+									},
+									"typeOfControl": "MANDATORY"
+								},
+								{
+									"id": "lyoir96l-format-borne-inf-sup",
+									"type": "SIMPLE",
+									"control": {
+										"type": "VTL",
+										"value": "not(not(isnull(AGE)) and (1>AGE or 99<AGE))"
+									},
+									"criticality": "ERROR",
+									"errorMessage": {
+										"type": "VTL|MD",
+										"value": "\" La valeur doit être comprise entre 1 et 99\""
+									},
+									"typeOfControl": "FORMAT"
+								},
+								{
+									"id": "lyoir96l-format-decimal",
+									"type": "SIMPLE",
+									"control": {
+										"type": "VTL",
+										"value": "not(not(isnull(AGE))  and round(AGE,0)<>AGE)"
+									},
+									"criticality": "ERROR",
+									"errorMessage": {
+										"type": "VTL|MD",
+										"value": "\"Le nombre doit comporter au maximum 0 chiffre(s) après la virgule\""
+									},
+									"typeOfControl": "FORMAT"
+								}
+							],
+							"decimals": 0,
+							"response": {
+								"name": "AGE"
+							},
+							"description": {
+								"type": "TXT",
+								"value": "Format attendu : un nombre entre 1 et 99"
+							},
+							"isMandatory": true,
+							"componentType": "InputNumber"
+						}
+					],
+					"componentType": "Question",
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					}
+				},
+				{
+					"id": "question-mcd3qlyd",
+					"page": "4.3",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"question avec contrôle non bloquant\""
+					},
+					"components": [
+						{
+							"id": "mcd3qlyd",
+							"page": "4.3",
+							"controls": [
+								{
+									"id": "mcd3qlyd-CI-0",
+									"type": "SIMPLE",
+									"control": {
+										"type": "VTL",
+										"value": "not(true)"
+									},
+									"criticality": "WARN",
+									"errorMessage": {
+										"type": "VTL|MD",
+										"value": "\"contrôle non bloquant\""
+									},
+									"typeOfControl": "CONSISTENCY"
+								}
+							],
+							"response": {
+								"name": "QUESTIONAV"
+							},
+							"maxLength": 249,
+							"isMandatory": false,
+							"componentType": "Input"
+						}
+					],
+					"componentType": "Question",
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true"
+					}
+				}
+			],
+			"iterations": {
+				"type": "VTL",
+				"value": "count(PRENOM)"
+			},
+			"description": {
+				"type": "VTL|MD",
+				"value": "\"On n'interroge pas les prénoms A\""
+			},
+			"componentType": "Roundabout",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			},
+			"progressVariable": "BOUCLE1_PROGRESS"
+		},
+		{
+			"id": "m4qtvjda",
+			"page": "5",
+			"label": {
+				"type": "VTL",
+				"value": "\"III - \" || \"FIN\""
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		},
+		{
+			"id": "question-m4qtkzve",
+			"page": "6",
+			"label": {
+				"type": "VTL|MD",
+				"value": "\"test Controle - \" || cast(SUM_AGE,string) "
+			},
+			"components": [
+				{
+					"id": "m4qtkzve",
+					"page": "6",
+					"controls": [
+						{
+							"id": "m4qtkzve-CI-0",
+							"type": "SIMPLE",
+							"control": {
+								"type": "VTL",
+								"value": "not(sum(AGE) > 10)"
+							},
+							"criticality": "WARN",
+							"errorMessage": {
+								"type": "VTL|MD",
+								"value": "\"la somme des ages des individus est supérieure à 10 ans.\""
+							},
+							"typeOfControl": "CONSISTENCY"
+						}
+					],
+					"response": {
+						"name": "TESTCONTRO"
+					},
+					"maxLength": 249,
+					"isMandatory": false,
+					"componentType": "Input"
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true"
+			}
+		}
+	],
+	"pagination": "question",
+	"componentType": "Questionnaire",
+	"enoCoreVersion": "3.52.1",
+	"generatingDate": "26-06-2025 08:45:40",
+	"lunaticModelVersion": "5.5.0"
+}
