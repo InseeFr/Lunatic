@@ -93,7 +93,7 @@
 			"variableType": "COLLECTED",
 			"name": "PRENOM",
 			"values": {
-				"COLLECTED": ["John", "Jane"]
+				"COLLECTED": []
 			}
 		},
 		{
