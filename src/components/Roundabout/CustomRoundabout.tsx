@@ -76,7 +76,16 @@ type Props = Pick<
 
 export const CustomRoundabout = slottableComponent<Props>(
 	'Roundabout',
-	({ declarations, description, id, items, goToIteration, label, locked }) => {
+	({
+		declarations,
+		description,
+		id,
+		items,
+		goToIteration,
+		label,
+		locked,
+		errors,
+	}) => {
 		return (
 			<div className="lunatic-roundabout">
 				<div id={`roundabout-${id}`} className="lunatic-roundabout__label">
@@ -88,6 +97,7 @@ export const CustomRoundabout = slottableComponent<Props>(
 					declarations={declarations}
 					id={id}
 				/>
+				<ComponentErrors errors={errors} />
 				<div className="lunatic-roundabout__items">
 					{items.map((item, k) => (
 						<RoundaboutItem
