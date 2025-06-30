@@ -8,15 +8,20 @@ loopTypes.forEach((loopType) => {
 		await page.locator('#prenom-0').fill('John');
 		await page.getByRole('button', { name: 'Add row' }).click();
 		await page.locator('#prenom-1').fill('Jane');
+		await page.getByRole('button', { name: 'Add row' }).click();
+		await page.locator('#prenom-2').fill('Janette');
 		await page.getByRole('button', { name: 'Next' }).click();
 		await page.getByLabel('John, quel est vôtre âge ?').fill('18');
 		await page.getByRole('button', { name: 'Next' }).click();
 		await page.getByLabel('Jane, quel est vôtre âge ?').fill('20');
 		await page.getByRole('button', { name: 'Next' }).click();
+		await page.getByLabel('Janette, quel est vôtre âge ?').fill('22');
+		await page.getByRole('button', { name: 'Next' }).click();
 		await expect(page.getByText('PageTag"3"')).toBeVisible();
 		await expectLunaticData(page, 'COLLECTED.PRENOM.COLLECTED', [
 			'John',
 			'Jane',
+			'Janette',
 		]);
 	});
 });

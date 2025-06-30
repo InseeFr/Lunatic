@@ -90,4 +90,21 @@ test.describe('Roundabout', () => {
 			await expectPageToHaveText(page, 'Complété');
 		});
 	});
+
+	test(`triggers roundabout simple and row controls`, async ({ page }) => {
+		await goToStory(page, 'components-roundabout--with-control');
+		// go to roundabout main page
+		await gotoNextPage(page, 3);
+		// go next for triggering controls
+		await gotoNextPage(page);
+
+		// simple control (specified on the roundabout scope)
+		await expectPageToHaveText(
+			page,
+			'la somme des ages des individus est supérieure à 20 ans.'
+		);
+
+		// row control (specified on iteration scope)
+		await expectPageToHaveText(page, "L'individu Pierre a plus de 35 ans.");
+	});
 });

@@ -1,6 +1,12 @@
 import { render, fireEvent } from '@testing-library/react';
 import { CustomRoundabout } from './CustomRoundabout';
 import { describe, it, expect, vi, afterEach } from 'vitest';
+import { LunaticError } from '../../use-lunatic/type';
+import { ComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+
+vi.mock('../shared/ComponentErrors/ComponentErrors', () => ({
+	ComponentErrors: vi.fn(),
+}));
 
 describe('Roundabout', () => {
 	const mockGoToIteration = vi.fn();
@@ -76,5 +82,37 @@ describe('Roundabout', () => {
 
 		const completeButton = getByText('Complété');
 		expect(completeButton).toBeDisabled();
+	});
+
+	it('displays roundabout errors', () => {
+		const errors: LunaticError[] = [
+			{
+				id: 'error1',
+				errorMessage: 'Error 1 message',
+				criticality: 'ERROR',
+				typeOfControl: 'CONSISTENCY',
+			},
+			{
+				id: 'error2',
+				errorMessage: 'Error 2 message',
+				criticality: 'WARN',
+				typeOfControl: 'CONSISTENCY',
+			},
+		];
+
+		render(
+			<CustomRoundabout
+				id="r1"
+				items={items}
+				goToIteration={mockGoToIteration}
+				locked={true}
+				errors={errors}
+			/>
+		);
+
+		expect(ComponentErrors).toHaveBeenCalledWith(
+			expect.objectContaining({ errors }),
+			expect.anything()
+		);
 	});
 });

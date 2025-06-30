@@ -1,4 +1,4 @@
-import { type PropsWithChildren, useCallback, useState } from 'react';
+import { type PropsWithChildren } from 'react';
 import D from '../../i18n';
 import { times } from '../../utils/array';
 import { LunaticComponents } from '../LunaticComponents';
@@ -13,45 +13,16 @@ import {
 	getComponentErrors,
 } from '../shared/ComponentErrors/ComponentErrors';
 import type { LunaticError } from '../../use-lunatic/type';
+import { useLoopUtils } from './utils';
 
 /**
  * Loop without specific markup (stack of subcomponents)
  */
-export function Loop({
-	lines,
-	iterations,
-	value,
-	handleChanges,
-	getComponents,
-	errors,
-	...props
-}: LunaticComponentProps<'Loop'>) {
-	const min = lines?.min ?? 0;
-	const max = lines?.max ?? Infinity;
-	const [nbRows, setNbRows] = useState(() => {
-		return Math.max(iterations, min);
-	});
-	const addRow = useCallback(() => {
-		if (nbRows < max) {
-			setNbRows(nbRows + 1);
-		}
-	}, [max, nbRows]);
-	const removeRow = useCallback(() => {
-		if (nbRows > 1) {
-			const newNbRows = nbRows - 1;
-			setNbRows(newNbRows);
-			// Downsize all variables by 1
-			const newResponses = Object.entries(value).map(([k, v]) => {
-				return {
-					name: k,
-					value: v?.filter((_, i) => i < newNbRows),
-				};
-			});
-			handleChanges(newResponses);
-		}
-	}, [nbRows, handleChanges, value]);
+export function Loop(props: LunaticComponentProps<'Loop'>) {
+	const { min, max, nbRows, addRow, removeRow } = useLoopUtils(props);
+	const { getComponents, errors } = props;
 
-	if (nbRows <= 0) {
+	if (nbRows === 0) {
 		return null;
 	}
 
