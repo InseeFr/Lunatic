@@ -5,7 +5,9 @@ import {
 } from '../../utils/Orchestrator';
 import simple from './source-simple.json';
 import simpleNum from './source-simple-numeric.json';
-import sourceLoop from './source-loop.json';
+import sourceRosterForLoop from './source-roster-for-loop.json';
+import sourceStandaloneLoop from './source-standalone-loop.json';
+import dataStandaloneLoop from './data-standalone-loop.json';
 import sourceRoundabout from './source-roundabout.json';
 import boucleNTabDynamique from './source-boucles-n.json';
 
@@ -38,9 +40,16 @@ export const SimpleNum: OrchestratorStory = {
 
 export const LinkedLoop: OrchestratorStory = {};
 
-export const Loop: OrchestratorStory = {
+export const RosterForLoop: OrchestratorStory = {
 	args: {
-		source: sourceLoop,
+		source: sourceRosterForLoop,
+	},
+};
+
+export const StandaloneLoop: OrchestratorStory = {
+	args: {
+		source: sourceStandaloneLoop,
+		data: dataStandaloneLoop.data,
 	},
 };
 

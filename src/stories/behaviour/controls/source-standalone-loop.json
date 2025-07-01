@@ -765,10 +765,6 @@
 				"S_FP",
 				"S_DIPL_SAL"
 			]
-		},
-		"NBSAL_INT": {
-			"size": "NBSAL_INT",
-			"variables": ["PRES_SAL"]
 		}
 	},
 	"variables": [
