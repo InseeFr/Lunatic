@@ -85,7 +85,6 @@ export class LunaticVariablesStore {
 			return undefined;
 		};
 		store.set('1', 1); // Fake variable to use on the shapeFrom, we will use "variableDimension" in the future
-
 		for (const variable of source.variables) {
 			switch (variable.variableType) {
 				case 'CALCULATED':

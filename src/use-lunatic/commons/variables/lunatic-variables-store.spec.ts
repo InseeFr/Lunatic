@@ -4,7 +4,6 @@ import * as cleaningModule from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { LunaticVariablesStore } from './lunatic-variables-store';
-import { LunaticSource } from '../../type';
 
 describe('lunatic-variables-store', () => {
 	let variables: LunaticVariablesStore;
@@ -664,22 +663,30 @@ describe('lunatic-variables-store', () => {
 					variables: [
 						{
 							name: 'PRENOM',
-							values: { COLLECTED: 'John' },
+							values: {
+								COLLECTED: 'John',
+							},
 							variableType: 'COLLECTED',
 						},
 						{
 							name: 'NOM',
-							values: { COLLECTED: '' },
+							values: {
+								COLLECTED: '',
+							},
 							variableType: 'COLLECTED',
 						},
 					],
 					cleaning: {
-						NOM: { PRENOM: 'false' },
+						NOM: {
+							PRENOM: 'false',
+						},
 					},
 				},
 				{
 					COLLECTED: {
-						PRENOM: { COLLECTED: 'Jane' },
+						PRENOM: {
+							COLLECTED: 'Jane',
+						},
 					},
 				},
 				{ current: () => {} }
