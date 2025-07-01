@@ -14,7 +14,10 @@ export const computeNbRows = (
 };
 
 export const useLoopUtils = (
-	props: LunaticComponentProps<'RosterForLoop'> | LunaticComponentProps<'Loop'>
+	props: Pick<
+		LunaticComponentProps<'RosterForLoop'> | LunaticComponentProps<'Loop'>,
+		'lines' | 'iterations' | 'value' | 'handleChanges'
+	>
 ) => {
 	const { lines, iterations, value: valueMap, handleChanges } = props;
 	const min = lines?.min ?? DEFAULT_MIN_ROWS;

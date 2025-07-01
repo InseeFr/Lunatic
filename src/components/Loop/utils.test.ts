@@ -1,0 +1,39 @@
+import { renderHook } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
+import { useLoopUtils } from './utils';
+
+describe('useLoopUtils()', () => {
+	it('should handleChange where values have not the right size', () => {
+		const mockHandleChange = vi.fn();
+
+		renderHook(() =>
+			useLoopUtils({
+				handleChanges: mockHandleChange,
+				iterations: 5,
+				lines: { min: 2, max: 10 },
+				value: { NAME: ['John', 'Doe'], AGE: [10, 20] },
+			})
+		);
+
+		expect(mockHandleChange).toHaveBeenCalledOnce();
+		expect(mockHandleChange).toHaveBeenCalledWith([
+			{ name: 'NAME', value: ['John', 'Doe', null, null, null] },
+			{ name: 'AGE', value: [10, 20, null, null, null] },
+		]);
+	});
+
+	it('should NOT handleChange where values have the right size', () => {
+		const mockHandleChange = vi.fn();
+
+		renderHook(() =>
+			useLoopUtils({
+				handleChanges: mockHandleChange,
+				iterations: 2,
+				lines: { min: 2, max: 10 },
+				value: { NAME: ['John', 'Doe'], AGE: [10, 20] },
+			})
+		);
+
+		expect(mockHandleChange).toHaveBeenCalledTimes(0);
+	});
+});
