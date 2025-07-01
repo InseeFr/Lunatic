@@ -5,14 +5,6 @@ import { resizeArrayVariable } from '../../use-lunatic/reducer/commons';
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
 
-export const computeNbRows = (
-	lines?: { min?: number },
-	iterations?: number
-) => {
-	const min = lines?.min ?? DEFAULT_MIN_ROWS;
-	return Math.max(min, iterations ?? DEFAULT_MIN_ROWS);
-};
-
 export const useLoopUtils = (
 	props: Pick<
 		LunaticComponentProps<'RosterForLoop'> | LunaticComponentProps<'Loop'>,
@@ -22,7 +14,9 @@ export const useLoopUtils = (
 	const { lines, iterations, value: valueMap, handleChanges } = props;
 	const min = lines?.min ?? DEFAULT_MIN_ROWS;
 	const max = lines?.max ?? DEFAULT_MAX_ROWS;
-	const [nbRows, setNbRows] = useState(computeNbRows(lines, iterations));
+	const [nbRows, setNbRows] = useState(
+		Math.max(min, iterations ?? DEFAULT_MIN_ROWS)
+	);
 
 	/**
 	 * For Loop & rosterForLoop,

@@ -49,7 +49,7 @@ export const RosterForLoop: OrchestratorStory = {
 export const StandaloneLoop: OrchestratorStory = {
 	args: {
 		source: sourceStandaloneLoop,
-		data: dataStandaloneLoop.data,
+		data: dataStandaloneLoop,
 	},
 };
 
