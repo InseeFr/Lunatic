@@ -97,6 +97,8 @@ test.describe('Roundabout', () => {
 		await gotoNextPage(page, 3);
 		// go next for triggering controls
 		await gotoNextPage(page);
+		// close control modal added by lunatic orchestrator
+		await page.getByRole('button', { name: 'Correct' }).click();
 
 		// simple control (specified on the roundabout scope)
 		await expectPageToHaveText(
@@ -106,5 +108,14 @@ test.describe('Roundabout', () => {
 
 		// row control (specified on iteration scope)
 		await expectPageToHaveText(page, "L'individu Pierre a plus de 35 ans.");
+		await expectPageToHaveText(
+			page,
+			"Vous n'avez pas renseigné l'âge de Patrick."
+		);
+
+		// check that row control are not triggered for disabled iterations
+		await expect(
+			page.getByText("Vous n'avez pas renseigné l'âge de Paul.")
+		).toHaveCount(0);
 	});
 });
