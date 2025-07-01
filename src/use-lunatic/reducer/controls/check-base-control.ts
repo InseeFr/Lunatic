@@ -10,7 +10,6 @@ export function checkBaseControl(
 	executeExpression: LunaticReducerState['executeExpression'],
 	pager: LunaticReducerState['pager']
 ): LunaticError | undefined {
-	console.debug('[checkControls]', controlItem, pager);
 	const { iteration, linksIterations } = pager;
 	const { criticality, errorMessage, id, typeOfControl, control } = controlItem;
 
@@ -19,12 +18,9 @@ export function checkBaseControl(
 		return undefined;
 	}
 
-	console.debug('[executeExpression]', control, linksIterations ?? iteration);
 	const result = executeExpression(control, {
 		iteration: linksIterations ?? iteration,
 	});
-	console.debug(result);
-
 	try {
 		/**
 		 * Currently, the controls are lifted when the condition is false.
