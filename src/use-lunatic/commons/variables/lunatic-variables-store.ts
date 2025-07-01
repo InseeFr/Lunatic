@@ -85,7 +85,7 @@ export class LunaticVariablesStore {
 			return undefined;
 		};
 		store.set('1', 1); // Fake variable to use on the shapeFrom, we will use "variableDimension" in the future
-		resizingBehaviour(store, source.resizing);
+
 		for (const variable of source.variables) {
 			switch (variable.variableType) {
 				case 'CALCULATED':
@@ -106,8 +106,8 @@ export class LunaticVariablesStore {
 		if (!disableCleaning) {
 			cleaningBehaviour(store, source.cleaning, sourceValues);
 		}
+		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);
-		store.commit();
 		return store;
 	}
 
