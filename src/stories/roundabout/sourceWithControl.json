@@ -348,6 +348,20 @@
 			"locked": false,
 			"controls": [
 				{
+					"id": "lypxwut2-CI-3",
+					"type": "ROW",
+					"control": {
+						"type": "VTL",
+						"value": "not(AGE = \"null\")"
+					},
+					"criticality": "WARN",
+					"errorMessage": {
+						"type": "VTL|MD",
+						"value": "\"Vous n'avez pas renseigné l'âge de \" || PRENOM || \".\" "
+					},
+					"typeOfControl": "CONSISTENCY"
+				},
+				{
 					"id": "lypxwut2-CI-1",
 					"type": "SIMPLE",
 					"control": {
