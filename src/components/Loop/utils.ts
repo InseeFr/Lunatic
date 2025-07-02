@@ -32,7 +32,7 @@ export const useLoopUtils = (
 	useEffect(() => {
 		const newInitialValues = [];
 		for (const name in valueMap) {
-			const initialLength = valueMap[name]?.length ?? DEFAULT_MIN_ROWS;
+			const initialLength = valueMap[name]?.length ?? 0; // default 0: i.e not value (in some case, we have null value instead if empty array)
 			// Add handleChange value for each additional iteration required
 			for (let i = initialLength; i < nbRows; i++) {
 				newInitialValues.push({
