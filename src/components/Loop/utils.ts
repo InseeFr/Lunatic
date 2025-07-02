@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
 import { LunaticComponentProps } from '../type';
-import { resizeArrayVariable } from '../../use-lunatic/reducer/commons';
 
 const DEFAULT_MIN_ROWS = 1;
 const DEFAULT_MAX_ROWS = 12;
@@ -31,13 +30,19 @@ export const useLoopUtils = (
 	 * Variables must be consistent in variable-store.
 	 */
 	useEffect(() => {
-		const initialResponses = Object.entries(valueMap)
-			.filter(([, v]) => (v?.length ?? 0) < nbRows)
-			.map(([k, v]) => ({
-				name: k,
-				value: resizeArrayVariable(v, nbRows, null),
-			}));
-		if (initialResponses.length > 0) handleChanges(initialResponses);
+		const newInitialValues = [];
+		for (const name in valueMap) {
+			const initialLength = valueMap[name]?.length ?? DEFAULT_MIN_ROWS;
+			// Add handleChange value for each additional iteration required
+			for (let i = initialLength; i < nbRows; i++) {
+				newInitialValues.push({
+					name: name,
+					value: null,
+					iteration: [i],
+				});
+			}
+		}
+		if (newInitialValues.length > 0) handleChanges(newInitialValues);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
