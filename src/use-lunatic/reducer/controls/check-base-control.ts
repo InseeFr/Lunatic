@@ -21,7 +21,6 @@ export function checkBaseControl(
 	const result = executeExpression(control, {
 		iteration: linksIterations ?? iteration,
 	});
-
 	try {
 		/**
 		 * Currently, the controls are lifted when the condition is false.

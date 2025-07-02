@@ -17,7 +17,7 @@ test.describe('Controls behaviour', () => {
 	});
 
 	test(`Controls are visible on rows`, async ({ page }) => {
-		await goToStory(page, `behaviour-controls--loop`);
+		await goToStory(page, `behaviour-controls--roster-for-loop`);
 		await gotoNextPage(page);
 		await page.getByRole('button', { name: 'Correct' }).click();
 		await expect(
@@ -29,5 +29,18 @@ test.describe('Controls behaviour', () => {
 		);
 		// We should have error in each cell
 		expect(await page.getByText('Age doit être > 18').count()).toBe(4);
+	});
+
+	test(`Controls on not paginated standalone Loop`, async ({ page }) => {
+		await goToStory(page, `behaviour-controls--standalone-loop`);
+		await gotoNextPage(page, 3);
+		await page.getByRole('button', { name: 'Correct' }).click();
+		expect(
+			await page
+				.getByText(
+					"Merci de bien vouloir préciser si le salarié est présent dans l'établissement au 1er janvier"
+				)
+				.count()
+		).toBe(6);
 	});
 });
