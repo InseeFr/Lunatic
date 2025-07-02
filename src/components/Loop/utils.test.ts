@@ -36,4 +36,26 @@ describe('useLoopUtils()', () => {
 
 		expect(mockHandleChange).toHaveBeenCalledTimes(0);
 	});
+
+	it('should handleChange with iteration when adding row', () => {
+		const mockHandleChange = vi.fn();
+
+		// Given
+		const { result } = renderHook(() =>
+			useLoopUtils({
+				handleChanges: mockHandleChange,
+				iterations: 2,
+				lines: { min: 2, max: 10 },
+				value: { NAME: ['John', 'Doe'], AGE: [10, 20] },
+			})
+		);
+		// When
+		result.current.addRow();
+
+		// Then
+		expect(mockHandleChange).toHaveBeenCalledWith([
+			{ name: 'NAME', value: null, iteration: [2] },
+			{ name: 'AGE', value: null, iteration: [2] },
+		]);
+	});
 });

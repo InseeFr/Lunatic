@@ -45,9 +45,10 @@ export const useLoopUtils = (
 		if (nbRows < max) {
 			const newNbRows = nbRows + 1;
 			setNbRows(newNbRows);
-			const newResponses = Object.entries(valueMap).map(([k, v]) => ({
+			const newResponses = Object.entries(valueMap).map(([k]) => ({
 				name: k,
-				value: resizeArrayVariable(v, newNbRows, null),
+				value: null,
+				iteration: [nbRows],
 			}));
 			handleChanges(newResponses);
 		}
