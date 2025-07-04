@@ -41,15 +41,30 @@ export type EventArgs = {
 		[extra: string]: unknown;
 	};
 };
+
 export type LunaticVariablesStoreEvent<T extends keyof EventArgs> = {
 	detail: EventArgs[T];
 };
+
+/**
+ * Represent a point in time (more precise than Date)
+ */
+class Timekey {
+	private time = performance.now();
+	getTime() {
+		return this.time;
+	}
+	touch() {
+		this.time = performance.now();
+	}
+}
 
 export class LunaticVariablesStore {
 	private dictionary = new Map<string, LunaticVariable>();
 	private eventTarget = new EventTarget();
 	private queue = new Map<string, () => void>();
 	public autoCommit = false; // Commit change instantly (used in tests)
+	public updatedAt = new Timekey();
 
 	constructor() {
 		interpretCount = 0;
@@ -65,6 +80,7 @@ export class LunaticVariablesStore {
 		autoCommit?: boolean
 	) {
 		const store = new LunaticVariablesStore();
+		(window as any).lunaticStore = store; // Allow access to the store from the console
 		if (!source.variables) {
 			return store;
 		}
@@ -107,6 +123,7 @@ export class LunaticVariablesStore {
 		}
 		resizingBehaviour(store, source.resizing);
 		missingBehaviour(store, source.missingBlock);
+		store.updatedAt.touch();
 		return store;
 	}
 
@@ -176,20 +193,14 @@ export class LunaticVariablesStore {
 			'iteration' | 'cause' | 'ignoreIterationOnScalar'
 		> = {}
 	): LunaticVariable {
+		this.updatedAt.touch();
 		if (!this.dictionary.has(name)) {
 			this.dictionary.set(
 				name,
 				new LunaticVariable({
 					name,
-				})
-			);
-			this.eventTarget.dispatchEvent(
-				new CustomEvent('change', {
-					detail: {
-						...args,
-						name: name,
-						value: value,
-					} satisfies EventArgs['change'],
+					dependencies: [],
+					storeUpdatedAt: this.updatedAt,
 				})
 			);
 		}
@@ -218,10 +229,12 @@ export class LunaticVariablesStore {
 			dependencies,
 			iterationDepth,
 			shapeFrom,
+			dimension,
 		}: {
 			dependencies?: string[];
 			iterationDepth?: number;
 			shapeFrom?: string | string[];
+			dimension?: number;
 		} = {}
 	): LunaticVariable {
 		if (this.dictionary.has(name)) {
@@ -234,8 +247,11 @@ export class LunaticVariablesStore {
 			dependencies,
 			iterationDepth,
 			name,
+			dimension,
+			storeUpdatedAt: this.updatedAt,
 		});
 		this.dictionary.set(name, variable);
+		this.updatedAt.touch();
 		return variable;
 	}
 
@@ -302,12 +318,16 @@ export class LunaticVariablesStore {
 class LunaticVariable {
 	/** Last time the value was updated (changed). */
 	public updatedAt = new Map<undefined | string, number>();
+	/** Last time the store was updated (changed). */
+	private storeUpdatedAt: Timekey;
 	/** Last time "calculation" was run (for calculated variable). */
 	private calculatedAt = new Map<undefined | string, number>();
 	/** Internal value for the variable. */
 	private value: unknown;
-	/** List of dependencies, ex: ['FIRSTNAME', 'LASTNAME']. */
+	/** List of direct dependencies, ex: ['FULLNAME', 'FIRSTNAME', 'LASTNAME']. */
 	private dependencies?: string[];
+	/** List of deep dependencies, exploring the variables used in calculated variables, ex: ['FIRSTNAME', 'LASTNAME']. */
+	private baseDependencies?: string[];
 	/** Expression for calculated variable. */
 	public readonly expression?: string;
 	/** Dictionary holding all the available variables. */
@@ -320,17 +340,19 @@ class LunaticVariable {
 	public readonly name?: string;
 	/** Count the number of calculation. */
 	public calculatedCount = 0;
+	/** Dimension **/
+	public dimension?: number;
 
-	constructor(
-		args: {
-			expression?: string;
-			dependencies?: string[];
-			dictionary?: Map<string, LunaticVariable>;
-			iterationDepth?: number;
-			shapeFrom?: string | string[];
-			name?: string;
-		} = {}
-	) {
+	constructor(args: {
+		expression?: string;
+		dependencies?: string[];
+		dictionary?: Map<string, LunaticVariable>;
+		iterationDepth?: number;
+		shapeFrom?: string | string[];
+		name?: string;
+		dimension?: number;
+		storeUpdatedAt: Timekey;
+	}) {
 		if (args.expression && !args.dictionary) {
 			throw new Error(
 				`A calculated variable needs a dictionary to retrieve his deps`
@@ -343,6 +365,8 @@ class LunaticVariable {
 		this.shapeFrom =
 			typeof args.shapeFrom === 'string' ? [args.shapeFrom] : args.shapeFrom;
 		this.name = args.name ?? args.expression;
+		this.dimension = args.dimension;
+		this.storeUpdatedAt = args.storeUpdatedAt;
 	}
 
 	getValue(iteration?: IterationLevel): unknown {
@@ -370,22 +394,29 @@ class LunaticVariable {
 			iteration = undefined;
 		}
 
-		// Calculate bindings first to refresh "updatedAt" on calculated dependencies
-		const bindings = this.getDependenciesValues(iteration);
-		const hasNoBinding = Object.keys(bindings).length === 0;
+		const deps = this.getDependencies();
+		const hasNoBindings = deps.length === 0;
 
 		// A static expression should not be reevaluated
-		if (hasNoBinding && this.value) {
+		if (hasNoBindings && this.value) {
 			return this.value;
 		}
 
 		// A variable without binding is a primitive (string, boolean...)
 		// it yields the same results for every iteration, so we can ignore iteration
-		if (hasNoBinding) {
+		if (hasNoBindings) {
 			iteration = undefined;
 		}
 
+		// The store did not change since the last calculation, skip further checks
+		if (this.getCalculatedAt(iteration) > this.storeUpdatedAt.getTime()) {
+			return this.getSavedValue(iteration);
+		}
+
+		// Calculate bindings first to refresh "updatedAt" on calculated dependencies
+		const bindings = this.getDependenciesValues(iteration);
 		if (this.shapeFrom && !this.isOutdated(iteration)) {
+			this.updateTimestamps(iteration, 'calculatedAt');
 			return this.getSavedValue(iteration);
 		}
 		if (isTestEnv()) {
@@ -492,6 +523,31 @@ class LunaticVariable {
 		return current;
 	}
 
+	/**
+	 * Get a list of transitive dependencies (leaf of the dependency tree)
+	 */
+	private getBaseDependencies(): string[] {
+		// Find the dependencies of the dependencies
+		const reducer = (acc: Set<string>, variableName: string) => {
+			if (acc.has(variableName)) {
+				return acc;
+			}
+			const deps = this.dictionary?.get(variableName)?.getDependencies();
+			if (!deps || deps.length === 0) {
+				acc.add(variableName);
+			} else {
+				deps?.reduce(reducer, acc);
+			}
+			return acc;
+		};
+		if (this.baseDependencies === undefined) {
+			this.baseDependencies = [
+				...this.getDependencies().reduce(reducer, new Set<string>()),
+			];
+		}
+		return this.baseDependencies;
+	}
+
 	private getDependencies(): string[] {
 		// Calculate dependencies from expression on the fly if necessary
 		if (this.dependencies === undefined) {
@@ -534,22 +590,55 @@ class LunaticVariable {
 		}
 	}
 
+	/**
+	 * Check if the variable should be updated (comparing calculatedAt to dependency updated time)
+	 */
 	private isOutdated(iteration?: IterationLevel): boolean {
-		const dependenciesUpdatedAt = Math.max(
-			0,
-			...this.getDependencies().map(
-				(dep) =>
-					// Check when a value at the same iteration was calculated
-					this.dictionary?.get(dep)?.updatedAt.get(iteration?.join('.')) ??
-					// For aggregated value (max / min) look the global updatedAt time
-					this.dictionary?.get(dep)?.updatedAt.get(undefined) ??
-					// Otherwise this is a static value that never changes
-					0
-			)
-		);
+		const deps = this.getDependencies();
+		const lastCalculatedAt = this.calculatedAt.get(iteration?.join('.'));
+		// Variable was never calculated
+		if (!lastCalculatedAt) {
+			return true;
+		}
+
+		// Look for an outdated dependency
+		for (const dep of deps) {
+			const depUpdatedAt =
+				this.dictionary?.get(dep)?.getUpdatedAt(iteration) ?? 0;
+			if (depUpdatedAt > lastCalculatedAt) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public getUpdatedAt(iteration?: IterationLevel): number {
+		if (this.dimension === 0) {
+			return this.updatedAt.get(undefined) ?? 0;
+		}
+		// The value is an array, do not look at the root updatedAt if an iteration is provided
+		if (Array.isArray(this.value)) {
+			return this.updatedAt.get(iteration?.join('.')) ?? 0;
+		}
 		return (
-			dependenciesUpdatedAt >
-			(this.calculatedAt.get(iteration?.join('.')) ?? -1)
+			this.updatedAt.get(iteration?.join('.')) ??
+			this.updatedAt.get(undefined) ??
+			0
+		);
+	}
+
+	public getCalculatedAt(iteration?: IterationLevel): number {
+		if (this.dimension === 0) {
+			return this.calculatedAt.get(undefined) ?? 0;
+		}
+		// The value is an array, do not look at the root updatedAt if an iteration is provided
+		if (Array.isArray(this.value)) {
+			return this.calculatedAt.get(iteration?.join('.')) ?? 0;
+		}
+		return (
+			this.calculatedAt.get(iteration?.join('.')) ??
+			this.calculatedAt.get(undefined) ??
+			0
 		);
 	}
 }
