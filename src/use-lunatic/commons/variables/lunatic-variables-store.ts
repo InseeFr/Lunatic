@@ -385,8 +385,7 @@ class LunaticVariable {
 			iteration = undefined;
 		}
 
-		const checkCache = this.shapeFrom || iteration === undefined;
-		if (checkCache && !this.isOutdated(iteration)) {
+		if (this.shapeFrom && !this.isOutdated(iteration)) {
 			return this.getSavedValue(iteration);
 		}
 		if (isTestEnv()) {
