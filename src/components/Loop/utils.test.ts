@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { useLoopUtils } from './utils';
 
 describe('useLoopUtils()', () => {
-	it('should handleChange where values have not the right size', () => {
+	it('should handleChange with iteration where values have not the right size', () => {
 		const mockHandleChange = vi.fn();
 
 		renderHook(() =>
@@ -17,8 +17,12 @@ describe('useLoopUtils()', () => {
 
 		expect(mockHandleChange).toHaveBeenCalledOnce();
 		expect(mockHandleChange).toHaveBeenCalledWith([
-			{ name: 'NAME', value: ['John', 'Doe', null, null, null] },
-			{ name: 'AGE', value: [10, 20, null, null, null] },
+			{ name: 'NAME', value: null, iteration: [2] },
+			{ name: 'NAME', value: null, iteration: [3] },
+			{ name: 'NAME', value: null, iteration: [4] },
+			{ name: 'AGE', value: null, iteration: [2] },
+			{ name: 'AGE', value: null, iteration: [3] },
+			{ name: 'AGE', value: null, iteration: [4] },
 		]);
 	});
 
@@ -35,5 +39,27 @@ describe('useLoopUtils()', () => {
 		);
 
 		expect(mockHandleChange).toHaveBeenCalledTimes(0);
+	});
+
+	it('should handleChange with iteration when adding row', () => {
+		const mockHandleChange = vi.fn();
+
+		// Given
+		const { result } = renderHook(() =>
+			useLoopUtils({
+				handleChanges: mockHandleChange,
+				iterations: 2,
+				lines: { min: 2, max: 10 },
+				value: { NAME: ['John', 'Doe'], AGE: [10, 20] },
+			})
+		);
+		// When
+		result.current.addRow();
+
+		// Then
+		expect(mockHandleChange).toHaveBeenCalledWith([
+			{ name: 'NAME', value: null, iteration: [2] },
+			{ name: 'AGE', value: null, iteration: [2] },
+		]);
 	});
 });
