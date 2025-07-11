@@ -32,7 +32,7 @@ export const OneIteration: Story = {
 		data: dataFromObject({
 			NB_HAB: 1,
 			PRENOMS: ['Fanny'],
-			AGE: [15],
+			AGE: [20],
 		}),
 	},
 };
