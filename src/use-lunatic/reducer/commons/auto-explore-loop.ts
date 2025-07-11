@@ -52,6 +52,7 @@ export function autoExploreLoop(
 		const nbIterations = state.executeExpression<number>(page.iterations);
 		if (nbIterations === 1) {
 			const roundaboutComponent = page.components[0];
+			let isFirstIterationDisabled = false;
 			// check if the roundabout has a condition for disabling iterations
 			if (roundaboutComponent.item.disabled) {
 				const firstIterationPager = {
@@ -60,21 +61,13 @@ export function autoExploreLoop(
 				};
 
 				// check if the first iteration should be disabled
-				const isFirstIterationDisabled = state.executeExpression(
+				isFirstIterationDisabled = state.executeExpression(
 					{ value: roundaboutComponent.item.disabled?.value, type: 'VTL' },
 					firstIterationPager
 				);
-
-				if (isFirstIterationDisabled) {
-					// we skip the iteration, loop is empty
-					goInsideSubpage(page.subPages, 0);
-				} else {
-					// go the first iteration
-					goInsideSubpage(page.subPages, 1);
-				}
-			} else {
-				goInsideSubpage(page.subPages, 1);
 			}
+			// if the only iteration is disabled, we skip it, loop is empty. Else go to first iteration
+			goInsideSubpage(page.subPages, isFirstIterationDisabled ? 0 : 1);
 		}
 	}
 
