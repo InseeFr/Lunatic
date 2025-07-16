@@ -5,11 +5,27 @@ test.describe('Missing behaviour', () => {
 	test(`Missing keyboard shortcut are supported`, async ({ page }) => {
 		await goToStory(page, 'behaviour-missing--default');
 		await expect(page.getByLabel('NB')).toBeVisible();
+
+		// NB input should be autofocus
+		const activeTag = await page.evaluate(
+			() => document.activeElement?.tagName
+		);
+		expect(activeTag).toBe('INPUT');
+
+		// check missing keyboard works even when typing (focus on input)
 		await page.keyboard.press('F2');
 		await expect(
 			page.getByRole('button', { name: "Don't know" })
 		).toHaveAttribute('aria-pressed', 'true');
 		await expectLunaticData(page, 'COLLECTED.NB_MISSING.COLLECTED', 'DK');
+
+		// check missing keyboard works when not typing : here focus on "don't know" button
+		await page.keyboard.press('F4');
+		await expect(page.getByRole('button', { name: 'Refused' })).toHaveAttribute(
+			'aria-pressed',
+			'true'
+		);
+		await expectLunaticData(page, 'COLLECTED.NB_MISSING.COLLECTED', 'RF');
 	});
 
 	test(`Missing works in loop`, async ({ page }) => {
