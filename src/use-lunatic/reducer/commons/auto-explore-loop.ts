@@ -51,7 +51,23 @@ export function autoExploreLoop(
 	) {
 		const nbIterations = state.executeExpression<number>(page.iterations);
 		if (nbIterations === 1) {
-			goInsideSubpage(page.subPages, 1);
+			const roundaboutComponent = page.components[0];
+			let isFirstIterationDisabled = false;
+			// check if the roundabout has a condition for disabling iterations
+			if (roundaboutComponent.item.disabled) {
+				const firstIterationPager = {
+					...state.pager,
+					iteration: 0,
+				};
+
+				// check if the first iteration should be disabled
+				isFirstIterationDisabled = state.executeExpression(
+					{ value: roundaboutComponent.item.disabled?.value, type: 'VTL' },
+					firstIterationPager
+				);
+			}
+			// if the only iteration is disabled, we skip it, loop is empty. Else go to first iteration
+			goInsideSubpage(page.subPages, isFirstIterationDisabled ? 0 : 1);
 		}
 	}
 
