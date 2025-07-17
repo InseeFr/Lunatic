@@ -7,7 +7,8 @@ import { useRefSync } from './useRefSync';
 export function useKeyboardKey(
 	key: string[],
 	cb: (e: KeyboardEvent) => void,
-	enabled: boolean = true
+	enabled: boolean = true,
+	allowWhileTyping: boolean = true
 ) {
 	const cbRef = useRefSync(cb);
 	const keyRef = useRefSync(key);
@@ -16,6 +17,18 @@ export function useKeyboardKey(
 			return;
 		}
 		const listener = (e: KeyboardEvent) => {
+			const activeEl = document.activeElement;
+			const tag = activeEl?.tagName?.toLowerCase();
+
+			if (!allowWhileTyping) {
+				const isTyping =
+					tag === 'input' ||
+					tag === 'textarea' ||
+					(activeEl as HTMLElement)?.isContentEditable;
+
+				if (isTyping) return;
+			}
+
 			if (
 				keyRef.current.map((s) => s.toLowerCase()).includes(e.key.toLowerCase())
 			) {

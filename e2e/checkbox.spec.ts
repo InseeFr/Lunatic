@@ -21,6 +21,41 @@ test.describe('Checkboxes', () => {
 			await expectCollectedData(page, 'MOIS3', null);
 		});
 
+		test(`Keyboard shortcut should be disabled when editing a field (focus on input/textarea)`, async ({
+			page,
+		}) => {
+			await goToStory(page, 'components-checkbox--checkbox-group-with-detail');
+			await expect(page.getByText('Autre préciser')).toBeVisible();
+
+			// no focus on a field, shorcut is enabled
+			await page.keyboard.type('5');
+			await expect(
+				page.getByRole('checkbox', { name: 'Autre préciser' })
+			).toHaveAttribute('aria-checked', 'true');
+
+			// detail field is autofocus, shortcut is disabled for every checkbox
+			await page.keyboard.type('345');
+			// modality 3
+			await expect(
+				page.getByRole('checkbox', {
+					name: 'Française de naissance ou par réintégration',
+				})
+			).not.toHaveAttribute('aria-checked', 'true');
+			// modality 4
+			await expect(
+				page.getByRole('checkbox', { name: 'Étrangère' })
+			).not.toHaveAttribute('aria-checked', 'true');
+			// modality 5
+			await expect(
+				page.getByRole('checkbox', { name: 'Autre préciser' })
+			).toHaveAttribute('aria-checked', 'true');
+
+			await expectCollectedData(page, 'NATIO1N3', null);
+			await expectCollectedData(page, 'NATIO1N4', null);
+			await expectCollectedData(page, 'NATIO1N_OTHER', true);
+			await expectCollectedData(page, 'NATIO1N_DETAIL', '345');
+		});
+
 		test(`Keyboard shortcut should be disabled in readonly`, async ({
 			page,
 		}) => {

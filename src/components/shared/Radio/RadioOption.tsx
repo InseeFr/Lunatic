@@ -70,7 +70,8 @@ function LunaticRadioOption({
 			e.preventDefault();
 			onClickOption();
 		},
-		hasKeyboardShortcut
+		hasKeyboardShortcut,
+		false // disable shortcut when editing a field
 	);
 
 	return (
