@@ -116,7 +116,7 @@ describe('fillComponentValue', () => {
 		});
 	});
 
-	describe('RosterForLoop', () => {
+	describe('RosterForLoop with suggester having optionResponses', () => {
 		const rosterForLoopComponent = {
 			id: 'loop-prenom',
 			componentType: 'RosterForLoop',
@@ -150,12 +150,28 @@ describe('fillComponentValue', () => {
 						name: 'PRENOM',
 					},
 				},
+				{
+					id: 'commune',
+					response: {
+						name: 'COMMUNE',
+					},
+					storeName: 'nomenclature-commune',
+					componentType: 'Suggester',
+					optionResponses: [
+						{
+							name: 'LABEL_COMMUNE',
+							attribute: 'label_attribute',
+						},
+					],
+				},
 			],
 		} as any as LunaticComponentDefinition<'RosterForLoop'>;
 
 		it('should correctly extract values from nested responses as arrays', () => {
 			const values = {
 				PRENOM: ['Alice', 'Bob', 'Charlie'],
+				COMMUNE: ['59000', '25000', '54000'],
+				LABEL_COMMUNE: ['Lille', 'Besançon', 'Nancy'],
 			};
 
 			expectFilledComponent(rosterForLoopComponent, values).toEqual(values);
@@ -164,6 +180,8 @@ describe('fillComponentValue', () => {
 		it('should return null for missing responses', () => {
 			expectFilledComponent(rosterForLoopComponent).toEqual({
 				PRENOM: null,
+				COMMUNE: null,
+				LABEL_COMMUNE: null,
 			});
 		});
 	});
