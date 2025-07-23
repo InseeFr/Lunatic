@@ -46,13 +46,33 @@ function getChildResponseValues(
 ): Record<string, unknown> {
 	return Object.fromEntries(
 		components.flatMap((c) => {
-			if ('response' in c) {
-				return [[c.response.name, variables.get(c.response.name)]];
+			const entries: [string, unknown][] = [];
+
+			// Handle main response
+			if ('response' in c && c.response?.name) {
+				entries.push([c.response.name, variables.get(c.response.name)]);
 			}
-			if ('components' in c) {
-				return Object.entries(getChildResponseValues(c.components, variables));
+
+			// Handle optionResponses safely
+			if (c.componentType === 'Suggester' && c.optionResponses) {
+				for (const optionResponse of c.optionResponses) {
+					if (optionResponse?.name) {
+						entries.push([
+							optionResponse.name,
+							variables.get(optionResponse.name),
+						]);
+					}
+				}
 			}
-			return [];
+
+			// Handle nested components
+			if ('components' in c && Array.isArray(c.components)) {
+				entries.push(
+					...Object.entries(getChildResponseValues(c.components, variables))
+				);
+			}
+
+			return entries;
 		})
 	);
 }
