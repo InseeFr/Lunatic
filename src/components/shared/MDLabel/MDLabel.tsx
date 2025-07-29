@@ -4,14 +4,22 @@ import { MarkdownLink } from './MarkdownLink';
 import remarkBreaks from 'remark-breaks';
 import emoji from 'remark-emoji';
 
-type Props = { expression: string };
+type Props = {
+	expression: string;
+	MarkdownLinkOverride?: typeof MarkdownLink;
+};
 
-export function MDLabel({ expression }: Props) {
+export function MDLabel({ expression, MarkdownLinkOverride }: Props) {
 	const hasParagraphs = /\n\n/.test(expression);
 	const components = {
 		p: hasParagraphs ? 'p' : Fragment,
 		br: 'br',
-		a: MarkdownA,
+		a: (props: MarkdownAProps) => (
+			<MarkdownA
+				{...props}
+				MarkdownLinkComponent={MarkdownLinkOverride ?? MarkdownLink}
+			/>
+		),
 	} as Partial<Components>;
 	return (
 		<Markdown
@@ -22,15 +30,27 @@ export function MDLabel({ expression }: Props) {
 		</Markdown>
 	);
 }
+
+type MarkdownAProps = PropsWithChildren<{
+	title?: string;
+	href: string;
+	MarkdownLinkComponent: typeof MarkdownLink;
+}>;
+
 const MarkdownA = ({
 	title,
 	href,
 	children,
-}: PropsWithChildren<{ title?: string; href: string }>) => {
+	MarkdownLinkComponent,
+}: PropsWithChildren<{
+	title?: string;
+	href: string;
+	MarkdownLinkComponent: typeof MarkdownLink;
+}>) => {
 	const tooltip = title ? <MDLabel expression={title} /> : null;
 	return (
-		<MarkdownLink href={href} tooltip={tooltip}>
+		<MarkdownLinkComponent href={href} tooltip={tooltip}>
 			{children}
-		</MarkdownLink>
+		</MarkdownLinkComponent>
 	);
 };
