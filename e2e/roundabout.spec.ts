@@ -58,7 +58,7 @@ test.describe('Roundabout', () => {
 	test(`navigation jump roundabout when only one iteration`, async ({
 		page,
 	}) => {
-		await goToStory(page, 'components-roundabout--default');
+		await goToStory(page, 'components-roundabout--one-iteration');
 		await page.getByLabel(/Combien/gi).fill('1');
 		await gotoNextPage(page, 2);
 		// Roundabout is skipped here
@@ -70,6 +70,20 @@ test.describe('Roundabout', () => {
 		await gotoNextPage(page);
 		await expectPageToHaveText(page, 'Merci');
 		await expectCollectedData(page, 'SEXE', ['1']);
+	});
+
+	test(`navigation jump roundabout and its loop when only one disabled iteration`, async ({
+		page,
+	}) => {
+		await goToStory(page, 'components-roundabout--one-iteration');
+		await page.getByLabel(/Combien/gi).fill('1');
+		await gotoNextPage(page);
+		// fill the iteration name and age
+		await page.getByLabel('Prénom').fill('Fanny');
+		await page.getByLabel(/^Age$/).fill('15');
+		await gotoNextPage(page);
+		// The only iteration is disabled (condition Age < 18), Roundabout and loop are skipped
+		await expectPageToHaveText(page, 'Merci');
 	});
 
 	test.describe('progression', () => {
