@@ -9,6 +9,8 @@ export { Button } from './components/shared/Button/Button';
 export { LunaticComponents } from './components/LunaticComponents';
 export { useLunatic } from './use-lunatic/use-lunatic';
 
+export { MDLabel } from './components/shared/MDLabel/MDLabel';
+
 export type {
 	LunaticComponentDefinition,
 	LunaticControl,
