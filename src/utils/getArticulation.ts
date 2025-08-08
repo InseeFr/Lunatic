@@ -98,7 +98,7 @@ export function getArticulation(
 	};
 }
 
-function findComponentById(
+export function findComponentById(
 	components: ComponentDefinition[],
 	id: string
 ): (ComponentRoundaboutDefinition & { page?: string }) | null {

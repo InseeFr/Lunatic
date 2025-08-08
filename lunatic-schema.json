@@ -186,6 +186,67 @@
 		},
 		"maxPage": {
 			"type": "string"
+		},
+		"articulation": {
+			"type": "object",
+			"properties": {
+				"source": {
+					"type": "string",
+					"description": "id du composant roundabout"
+				},
+				"items": {
+					"type": "array",
+					"description": "Ligne du tableau d'articulation",
+					"items": {
+						"type": "object",
+						"required": ["label", "value"],
+						"properties": {
+							"label": {
+								"type": "string",
+								"description": "Libellé du champs"
+							},
+							"value": {
+								"type": "string",
+								"description": "Expression VTL"
+							}
+						}
+					}
+				}
+			},
+			"required": ["source", "items"]
+		},
+		"multimode": {
+			"type": "object",
+			"properties": {
+				"questionnaire": {
+					"type": "object",
+					"properties": {
+						"rules": {
+							"type": "object",
+							"additionalProperties": {
+								"type": "object",
+								"$ref": "#/$defs/VTLExpression"
+							}
+						}
+					},
+					"required": ["rules"]
+				},
+				"leaf": {
+					"type": "object",
+					"properties": {
+						"source": { "type": "string" },
+						"rules": {
+							"type": "object",
+							"additionalProperties": {
+								"type": "object",
+								"$ref": "#/$defs/VTLExpression"
+							}
+						}
+					},
+					"required": ["source", "rules"]
+				}
+			},
+			"required": ["questionnaire", "leaf"]
 		}
 	},
 	"required": ["components", "variables"],
@@ -1225,6 +1286,9 @@
 				},
 				{
 					"type": "null"
+				},
+				{
+					"type": "boolean"
 				}
 			]
 		},

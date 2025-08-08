@@ -18,12 +18,43 @@
 			}
 		]
 	},
+	"multimode": {
+		"questionnaire": {
+			"rules": {
+				"IS_MOVED": {
+					"type": "VTL",
+					"value": "nvl(LIVE_HERE, false) = false"
+				}
+			}
+		},
+		"leaf": {
+			"source": "roundabout",
+			"rules": {
+				"IS_MOVED": {
+					"type": "VTL",
+					"value": "nvl(PRENOM_LIVE_HERE, false) = false"
+				}
+			}
+		}
+	},
 	"components": [
+		{
+			"id": "live",
+			"componentType": "CheckboxBoolean",
+			"mandatory": false,
+			"page": "1",
+			"label": {
+				"value": "Vous vivez encore dans ce logement ?",
+				"type": "TXT"
+			},
+			"conditionFilter": { "value": "true", "type": "VTL" },
+			"response": { "name": "LIVE_HERE" }
+		},
 		{
 			"id": "how",
 			"componentType": "InputNumber",
 			"mandatory": false,
-			"page": "1",
+			"page": "2",
 			"min": 1,
 			"max": 10,
 			"decimals": 0,
@@ -37,7 +68,7 @@
 		{
 			"id": "loop",
 			"componentType": "Loop",
-			"page": "2",
+			"page": "3",
 			"depth": 1,
 			"paginatedLoop": false,
 			"conditionFilter": { "value": "true", "type": "VTL" },
@@ -101,13 +132,25 @@
 						"type": "VTL"
 					},
 					"response": { "name": "AGE" }
+				},
+				{
+					"id": "live",
+					"componentType": "CheckboxBoolean",
+					"mandatory": false,
+					"page": "1",
+					"label": {
+						"value": "Vous vivez encore dans ce logement ?",
+						"type": "TXT"
+					},
+					"conditionFilter": { "value": "true", "type": "VTL" },
+					"response": { "name": "PRENOM_LIVE_HERE" }
 				}
 			]
 		},
 		{
 			"id": "roundabout",
 			"componentType": "Roundabout",
-			"page": "3",
+			"page": "4",
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
 			"label": { "value": "\"Libellé du rondpoint\"", "type": "VTL" },
@@ -133,7 +176,7 @@
 					"id": "radio",
 					"componentType": "Radio",
 					"mandatory": false,
-					"page": "3.1",
+					"page": "4.1",
 					"label": {
 						"value": "\"Connaissez-vous le recensement de la population ?\"",
 						"type": "VTL|MD"
@@ -151,7 +194,7 @@
 				{
 					"id": "jsygk7m7",
 					"componentType": "Subsequence",
-					"page": "3.2",
+					"page": "4.2",
 					"label": {
 						"value": "\"Deuxième page de questions pour \"|| PRENOMS",
 						"type": "VTL|MD"
@@ -161,7 +204,7 @@
 				{
 					"id": "sexe",
 					"componentType": "Radio",
-					"page": "3.2",
+					"page": "4.2",
 					"label": {
 						"value": "\"Sexe\"",
 						"type": "VTL"
@@ -185,7 +228,7 @@
 				{
 					"id": "jsygk7m7",
 					"componentType": "Subsequence",
-					"page": "3.3",
+					"page": "4.3",
 					"label": {
 						"value": "\"Troisième page de questions \" || PRENOMS",
 						"type": "VTL|MD"
@@ -196,7 +239,7 @@
 					"id": "kmno1n7m",
 					"componentType": "Input",
 					"maxLength": 30,
-					"page": "3.3",
+					"page": "4.3",
 					"label": {
 						"value": "\"Dites quelque chose.\"))",
 						"type": "VTL|MD"
@@ -217,7 +260,7 @@
 				"type": "VTL|MD"
 			},
 			"conditionFilter": { "value": "true", "type": "VTL" },
-			"page": "4"
+			"page": "5"
 		}
 	],
 	"variables": [
@@ -227,6 +270,28 @@
 			"values": {
 				"PREVIOUS": null,
 				"COLLECTED": 2,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "LIVE_HERE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": true,
+				"FORCED": null,
+				"EDITED": null,
+				"INPUTTED": null
+			}
+		},
+		{
+			"variableType": "COLLECTED",
+			"name": "PRENOM_LIVE_HERE",
+			"values": {
+				"PREVIOUS": null,
+				"COLLECTED": [true, true],
 				"FORCED": null,
 				"EDITED": null,
 				"INPUTTED": null

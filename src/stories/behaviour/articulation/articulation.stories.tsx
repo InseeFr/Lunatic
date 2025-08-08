@@ -1,8 +1,8 @@
-import Orchestrator from '../../utils/orchestrator';
 import source from './roundabout.json';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 import { getArticulation } from '../../../utils/getArticulation';
+import { Orchestrator } from '../../utils/Orchestrator';
 
 type Source = Parameters<typeof getArticulation>[0];
 type Data = Parameters<typeof getArticulation>[1];
@@ -43,18 +43,13 @@ function StoryComponent({ source, data }: Props) {
 	};
 
 	return (
-		<div>
-			<h2>Articulation</h2>
-			<table style={{ borderCollapse: 'collapse' }}>
+		<div className="space-y-4">
+			<h2 className="font-bold text-2xl">Articulation</h2>
+			<table className="table">
 				<thead>
 					<tr>
 						{items[0].cells.map((cell, k) => (
-							<th
-								style={{ border: 'solid 1px #00000024', padding: '.5rem 1rem' }}
-								key={k}
-							>
-								{cell.label}
-							</th>
+							<th key={k}>{cell.label}</th>
 						))}
 						<th>Actions</th>
 					</tr>
@@ -63,23 +58,10 @@ function StoryComponent({ source, data }: Props) {
 					{items.map((item, k) => (
 						<tr key={k}>
 							{item.cells.map((cell, kk) => (
-								<td
-									key={kk}
-									style={{
-										border: 'solid 1px #00000024',
-										padding: '.5rem 1rem',
-									}}
-								>
-									{cell.value}
-								</td>
+								<td key={kk}>{cell.value}</td>
 							))}
-							<td
-								style={{
-									border: 'solid 1px #00000024',
-									padding: '.5rem 1rem',
-								}}
-							>
-								<button onClick={() => console.log('ToDo')}>
+							<td>
+								<button onClick={() => console.log('ToDo')} className="btn">
 									{progressLabel(item.progress)}
 								</button>
 							</td>

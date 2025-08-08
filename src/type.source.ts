@@ -265,7 +265,7 @@ export type Variable =
 			dimension?: number;
 	  };
 export type VariableValue = VariableScalarValue | unknown[];
-export type VariableScalarValue = string | number | null;
+export type VariableScalarValue = string | number | null | boolean;
 
 /**
  * Representation of a Lunatic questionnaire.
@@ -329,6 +329,38 @@ export type LunaticSource = {
 			  };
 	};
 	maxPage?: string;
+	articulation?: {
+		/**
+		 * id du composant roundabout
+		 */
+		source: string;
+		/**
+		 * Ligne du tableau d'articulation
+		 */
+		items: {
+			/**
+			 * Libellé du champs
+			 */
+			label: string;
+			/**
+			 * Expression VTL
+			 */
+			value: string;
+		}[];
+	};
+	multimode?: {
+		questionnaire: {
+			rules: {
+				[k: string]: VTLExpression1;
+			};
+		};
+		leaf: {
+			source: string;
+			rules: {
+				[k: string]: VTLExpression2;
+			};
+		};
+	};
 };
 export type VTLExpression = {
 	/**
@@ -468,4 +500,26 @@ export type SuggesterDefinition = {
 	 * list of words to exclude from the searching
 	 */
 	stopWords?: string[];
+};
+export type VTLExpression1 = {
+	/**
+	 * Valid VTL Expression
+	 */
+	value: string;
+	/**
+	 * Variables used in the expression
+	 */
+	bindingDependencies?: string[];
+	type: 'VTL' | 'VTL|MD' | 'TXT';
+};
+export type VTLExpression2 = {
+	/**
+	 * Valid VTL Expression
+	 */
+	value: string;
+	/**
+	 * Variables used in the expression
+	 */
+	bindingDependencies?: string[];
+	type: 'VTL' | 'VTL|MD' | 'TXT';
 };

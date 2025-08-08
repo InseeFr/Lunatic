@@ -1,6 +1,7 @@
 import type { useLunatic } from '../../use-lunatic/use-lunatic';
 import { objectKeys } from '../../utils/object';
-import type { PropsWithChildren } from 'react';
+import { type PropsWithChildren, useState } from 'react';
+import type { LunaticState } from '../../use-lunatic/type';
 
 type Props = PropsWithChildren<
 	Pick<
@@ -16,6 +17,7 @@ type Props = PropsWithChildren<
 > & {
 	hasPageResponse: unknown;
 	onLogData: () => void;
+	getMultiMode: LunaticState['getMultiMode'] | null;
 	onLogComponents: () => void;
 };
 
@@ -28,6 +30,7 @@ export function OrchestratorSidebar({
 	pageTag,
 	pager,
 	children,
+	getMultiMode,
 	hasPageResponse,
 	onLogData,
 	onLogComponents,
@@ -113,7 +116,28 @@ export function OrchestratorSidebar({
 					</li>
 				</ul>
 			</div>
+			{getMultiMode && (
+				<div>
+					<MultiMode getMultiMode={getMultiMode} />
+				</div>
+			)}
 			{children}
 		</aside>
+	);
+}
+
+function MultiMode(props: Pick<LunaticState, 'getMultiMode'>) {
+	const [state, setState] = useState<ReturnType<typeof props.getMultiMode>>({});
+	const onClick = () => {
+		setState(props.getMultiMode);
+	};
+	return (
+		<div className="space-y-2">
+			<h3 className="text-lg font-bold mb-2">Multimode</h3>
+			<pre>{JSON.stringify(state, null, 2)}</pre>
+			<button className="btn" onClick={onClick}>
+				Voir multimode
+			</button>
+		</div>
 	);
 }

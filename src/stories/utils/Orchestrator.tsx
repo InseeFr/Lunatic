@@ -55,6 +55,7 @@ type Props = {
 	showOverview?: boolean;
 	disabled?: boolean;
 	extraTabs?: TabEntry[];
+	multiMode: boolean;
 };
 
 type TabEntry = { label: ReactNode; children: ReactNode };
@@ -97,6 +98,7 @@ function OrchestratorForStories(props: Readonly<Props>) {
 		getData,
 		Provider,
 		hasPageResponse,
+		getMultiMode,
 	} = useLunatic(source, data, {
 		initialPage,
 		disableFilters,
@@ -247,6 +249,7 @@ function OrchestratorForStories(props: Readonly<Props>) {
 					pageTag={pageTag}
 					pager={pager}
 					hasPageResponse={hasPageResponse()}
+					getMultiMode={props.multiMode ? getMultiMode : null}
 					onLogData={() => console.log('Data', getData(true))}
 					onLogComponents={() => console.log('Components', components)}
 				>
