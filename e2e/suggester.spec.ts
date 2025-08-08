@@ -139,7 +139,6 @@ test.describe('Suggester', () => {
 			await expectCollectedData(page, 'VARIABLECO', '3417200001');
 			await page.keyboard.press('Alt+Enter');
 			await expectPageToHaveText(page, '2. Variable Pays');
-
 		});
 	});
 });
