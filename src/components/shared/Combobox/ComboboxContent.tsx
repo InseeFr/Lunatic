@@ -1,5 +1,9 @@
-import type { KeyboardEvent } from 'react';
-import React, { type PropsWithChildren, useCallback, useRef } from 'react';
+import {
+	type KeyboardEvent,
+	type PropsWithChildren,
+	useCallback,
+	useRef,
+} from 'react';
 import classnames from 'classnames';
 import { KEYBOARD_KEY_CODES } from './constants';
 import { ComboboxContentBox } from './ComboboxContentBox';
