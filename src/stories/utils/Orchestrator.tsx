@@ -25,6 +25,7 @@ import type { PageTag } from '../../use-lunatic/type';
 import type { IndexEntry } from '../../utils/search/SearchInterface';
 import { OrchestratorSidebar } from './OrchestratorSidebar';
 import type { Meta, StoryObj } from '@storybook/react';
+import ReactHotkeys from 'react-hot-keys';
 
 type Props = {
 	source: LunaticSource;
@@ -253,6 +254,12 @@ function OrchestratorForStories(props: Readonly<Props>) {
 						<OrchestratorOverview overview={overview} goToPage={goToPage} />
 					)}
 				</OrchestratorSidebar>
+				<ReactHotkeys
+					key={'alt+enter'}
+					keyName={'alt+enter'}
+					onKeyDown={handleGoNext}
+					filter={() => true}
+				/>
 				{errorsForModal?.currentErrors && (
 					<ModalControls
 						errors={errorsForModal.currentErrors}
