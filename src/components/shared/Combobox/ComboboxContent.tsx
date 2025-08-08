@@ -1,5 +1,9 @@
-import type { KeyboardEvent } from 'react';
-import React, { type PropsWithChildren, useCallback, useRef } from 'react';
+import {
+	type KeyboardEvent,
+	type PropsWithChildren,
+	useCallback,
+	useRef,
+} from 'react';
 import classnames from 'classnames';
 import { KEYBOARD_KEY_CODES } from './constants';
 import { ComboboxContentBox } from './ComboboxContentBox';
@@ -37,15 +41,12 @@ export function ComboboxContent({
 	const handleKeyDown = useCallback(
 		function (e: KeyboardEvent) {
 			const { key } = e;
-			e.stopPropagation();
 			switch (key) {
 				case KEYBOARD_KEY_CODES.Escape:
 				case KEYBOARD_KEY_CODES.Enter:
 				case KEYBOARD_KEY_CODES.Tab:
 					ref.current?.focus();
 					break;
-				default:
-				// e.preventDefault();
 			}
 			onKeyDown(key);
 		},

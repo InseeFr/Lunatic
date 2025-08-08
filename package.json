@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/lunatic",
-	"version": "3.6.13",
+	"version": "3.6.13-rc.0",
 	"description": "Library of questionnaire components",
 	"repository": {
 		"type": "git",
@@ -124,6 +124,7 @@
 		"prettier": "^3.3.3",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
+		"react-hot-keys": "^2.7.3",
 		"storybook": "^8.2.9",
 		"tailwindcss": "^4.1.4",
 		"tsx": "^4.19.1",

@@ -126,4 +126,19 @@ test.describe('Suggester', () => {
 			await expectCollectedData(page, 'VARIABLECO', '3417200001');
 		});
 	});
+
+	test.describe('a11y', () => {
+		test(`can go next with shortcut alt+enter keyboard`, async ({ page }) => {
+			await goToStory(page, 'components-suggester--default');
+			await expectPageToHaveText(page, 'Variable Commune');
+			await page.getByRole('textbox').nth(0).fill('Montpell');
+			await expectPageToHaveText(page, 'Montpellier');
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Enter');
+			await expectCollectedData(page, 'VARIABLECO', '3417200001');
+			await page.keyboard.press('Alt+Enter');
+			await expectPageToHaveText(page, '2. Variable Pays');
+		});
+	});
 });
