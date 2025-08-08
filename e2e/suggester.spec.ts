@@ -128,7 +128,7 @@ test.describe('Suggester', () => {
 	});
 
 	test.describe('a11y', () => {
-		test(`can select go next with shortcut alt+enter keyboard`, async ({ page }) => {
+		test(`can go next with shortcut alt+enter keyboard`, async ({ page }) => {
 			await goToStory(page, 'components-suggester--default');
 			await expectPageToHaveText(page, 'Variable Commune');
 			await page.getByRole('textbox').nth(0).fill('Montpell');
