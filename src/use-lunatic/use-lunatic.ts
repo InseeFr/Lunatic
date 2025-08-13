@@ -33,7 +33,7 @@ import { useRefSync } from '../hooks/useRefSync';
 import { ConsoleLogger } from './logger/ConsoleLogger';
 import { useWarnDepChange } from './hooks/useWarnDepChange';
 import { useCallbackOnNextRender } from './hooks/useCallbackOnNextRender';
-import { useMultiMode } from '../hooks/useMultiMode';
+import { useMultimode } from '../hooks/useMultimode';
 
 const empty = {}; // Keep the same empty object (to avoid problem with useEffect dependencies)
 const DEFAULT_DATA = empty as LunaticData;
@@ -199,7 +199,7 @@ export function useLunatic(
 		(variableNames?: string[]) => getData(false, variableNames)
 	);
 
-	const { getMultiMode } = useMultiMode(source, state.variables);
+	const { getMultimode } = useMultimode(source, state.variables);
 
 	const pageTag = getPageTag(state.pager);
 	const { isFirstPage, isLastPage } = isFirstLastPage(state.pager);
@@ -244,6 +244,6 @@ export function useLunatic(
 		// Components
 		Provider,
 		handleChanges,
-		getMultiMode,
+		getMultimode,
 	} satisfies LunaticState;
 }

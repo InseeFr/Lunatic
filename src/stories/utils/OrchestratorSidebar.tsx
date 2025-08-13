@@ -17,7 +17,7 @@ type Props = PropsWithChildren<
 > & {
 	hasPageResponse: unknown;
 	onLogData: () => void;
-	getMultiMode: LunaticState['getMultiMode'] | null;
+	getMultimode: LunaticState['getMultimode'] | null;
 	onLogComponents: () => void;
 };
 
@@ -30,7 +30,7 @@ export function OrchestratorSidebar({
 	pageTag,
 	pager,
 	children,
-	getMultiMode,
+	getMultimode,
 	hasPageResponse,
 	onLogData,
 	onLogComponents,
@@ -116,9 +116,9 @@ export function OrchestratorSidebar({
 					</li>
 				</ul>
 			</div>
-			{getMultiMode && (
+			{getMultimode && (
 				<div>
-					<MultiMode getMultiMode={getMultiMode} />
+					<MultiMode getMultimode={getMultimode} />
 				</div>
 			)}
 			{children}
@@ -126,10 +126,10 @@ export function OrchestratorSidebar({
 	);
 }
 
-function MultiMode(props: Pick<LunaticState, 'getMultiMode'>) {
-	const [state, setState] = useState<ReturnType<typeof props.getMultiMode>>({});
+function MultiMode(props: Pick<LunaticState, 'getMultimode'>) {
+	const [state, setState] = useState<ReturnType<typeof props.getMultimode>>({});
 	const onClick = () => {
-		setState(props.getMultiMode);
+		setState(props.getMultimode);
 	};
 	return (
 		<div className="space-y-2">

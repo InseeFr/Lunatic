@@ -9,6 +9,12 @@ import { type ReactNode } from 'react';
 import { times } from './array';
 import { forceInt } from './number';
 
+export enum ArticulationState {
+	COMPLETED = 1,
+	STARTED = 0,
+	NOT_STARTED = -1,
+}
+
 type ArticulationItem = {
 	label: string;
 	value: string;
@@ -24,16 +30,14 @@ type Item = {
 		label: string;
 		value: ReactNode;
 	}[];
-	progress: number; // -1: not completed, 0: started, 1: finished
+	progress: ArticulationState; // -1: not completed, 0: started, 1: finished
 	page: PageTag;
 };
 
 /**
  * Retrieve the articulation state
  *
- * ## Why this hook
- *
- * The goal of this hook is to provide insights about a roundabout using extra information inserted in the JSON source
+ * The goal of this function is to provide insights about a roundabout using extra information inserted in the JSON source
  * provided to Lunatic.
  *
  * For instance
@@ -61,7 +65,7 @@ type Item = {
  * - source is the ID of the roundabout component
  * - items define the field to extract from the roundabout data
  */
-export function getArticulation(
+export function getArticulationState(
 	source: LunaticSource & { articulation: Articulation },
 	data: LunaticData
 ): { items: Item[] } {
@@ -90,7 +94,10 @@ export function getArticulation(
 	return {
 		items: rows.map((row, k) => ({
 			cells: row,
-			progress: forceInt(variables.get(roundabout.progressVariable, [k]) ?? -1),
+			progress: forceInt(
+				variables.get(roundabout.progressVariable, [k]) ??
+					ArticulationState.NOT_STARTED
+			),
 			page: (roundabout.page
 				? `${roundabout.page}.1#${k + 1}`
 				: '1') as PageTag,

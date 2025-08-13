@@ -1,7 +1,7 @@
 import type { LunaticVariablesStore } from '../use-lunatic/commons/variables/lunatic-variables-store';
 import type { LunaticSource } from '../type.source';
 import { useCallback } from 'react';
-import { findComponentById } from '../utils/getArticulation';
+import { findComponentById } from '../utils/getArticulationState';
 import { forceInt } from '../utils/number';
 
 /**
@@ -46,11 +46,11 @@ import { forceInt } from '../utils/number';
  * }
  * ```
  */
-export function useMultiMode(
+export function useMultimode(
 	source: LunaticSource,
 	store: LunaticVariablesStore
 ) {
-	const getMultiMode = useCallback(() => {
+	const getMultimode = useCallback(() => {
 		if (!source.multimode) {
 			return {};
 		}
@@ -97,6 +97,6 @@ export function useMultiMode(
 	}, [source, store]);
 
 	return {
-		getMultiMode,
+		getMultimode,
 	};
 }

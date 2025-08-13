@@ -1,6 +1,7 @@
 import { CustomRoundabout } from './CustomRoundabout';
 import type { LunaticComponentProps } from '../type';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
+import { ArticulationState } from '../../utils/getArticulationState';
 
 /**
  * Roundabout is a special loop component where the user can select the iteration to go to
@@ -8,11 +9,15 @@ import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 export function Roundabout(props: LunaticComponentProps<'Roundabout'>) {
 	const goToIteration = (iteration: number) => {
 		if (
-			props.items[iteration].progress !== 1 &&
-			props.items[iteration].progress !== 0
+			props.items[iteration].progress !== ArticulationState.COMPLETED &&
+			props.items[iteration].progress !== ArticulationState.STARTED
 		) {
 			props.handleChanges([
-				{ name: props.progressVariable, value: 0, iteration: [iteration] },
+				{
+					name: props.progressVariable,
+					value: ArticulationState.STARTED,
+					iteration: [iteration],
+				},
 			]);
 		}
 		props.goToPage({

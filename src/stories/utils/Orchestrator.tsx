@@ -98,7 +98,7 @@ function OrchestratorForStories(props: Readonly<Props>) {
 		getData,
 		Provider,
 		hasPageResponse,
-		getMultiMode,
+		getMultimode,
 	} = useLunatic(source, data, {
 		initialPage,
 		disableFilters,
@@ -249,7 +249,7 @@ function OrchestratorForStories(props: Readonly<Props>) {
 					pageTag={pageTag}
 					pager={pager}
 					hasPageResponse={hasPageResponse()}
-					getMultiMode={props.multiMode ? getMultiMode : null}
+					getMultimode={props.multiMode ? getMultimode : null}
 					onLogData={() => console.log('Data', getData(true))}
 					onLogComponents={() => console.log('Components', components)}
 				>
