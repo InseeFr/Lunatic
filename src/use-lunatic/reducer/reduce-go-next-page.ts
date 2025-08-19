@@ -5,6 +5,7 @@ import type { LunaticReducerState } from '../type';
 import { autoExploreLoop } from './commons/auto-explore-loop';
 import { reduceHandleChanges } from './reduce-handle-changes';
 import { ActionKind } from '../actions';
+import { ArticulationState } from '../../utils/getArticulationState';
 
 export function reduceGoNextPage(
 	state: LunaticReducerState
@@ -51,7 +52,7 @@ export function reduceGoNextPage(
 					responses: [
 						{
 							name: firstComponent.progressVariable,
-							value: 1,
+							value: ArticulationState.COMPLETED,
 							iteration: [newState.previousPager.iteration],
 						},
 					],

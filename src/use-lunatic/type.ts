@@ -358,6 +358,8 @@ export type LunaticState = {
 	 * ])
 	 */
 	handleChanges: LunaticChangesHandler;
+	/** Return the multimode state **/
+	getMultimode: () => Record<string, boolean>;
 };
 
 /** Function taking as arguments the various changes the user has made. */
