@@ -1,0 +1,71 @@
+diff --git a/lib/pdfkit.js b/lib/pdfkit.js
+index 24e339f429890bbe1eaf3b08fb18cd1e8e32bbf2..c21d70cec73e9dbc95423f2c2290b0d92af77c3b 100644
+--- a/lib/pdfkit.js
++++ b/lib/pdfkit.js
+@@ -37502,18 +37502,33 @@ var AnnotationsMixin = {
+   }
+ };
+ 
++const DEFAULT_OPTIONS = {
++  top: 0,
++  left: 0,
++  zoom: 0,
++  fit: false,
++  pageNumber: null,
++  expanded: false
++};
++
+ class PDFOutline {
+   constructor(document, parent, title, dest, options) {
+     if (options === void 0) {
+-      options = {
+-        expanded: false
+-      };
++	  options = DEFAULT_OPTIONS;
+     }
+     this.document = document;
+     this.options = options;
+     this.outlineData = {};
+     if (dest !== null) {
+-      this.outlineData['Dest'] = [dest.dictionary, 'Fit'];
++	  const destWidth = dest.data.MediaBox[2];
++	  const destHeight = dest.data.MediaBox[3];
++	  const top = destHeight - (options.top || 0);
++	  const left = destWidth - (options.left || 0);
++	  const zoom = options.zoom || 0;
++		
++	  this.outlineData['Dest'] = options.fit
++	    ? [dest, 'Fit']
++	    : [dest, 'XYZ', left, top, zoom];
+     }
+     if (parent !== null) {
+       this.outlineData['Parent'] = parent;
+@@ -37526,11 +37541,14 @@ class PDFOutline {
+   }
+   addItem(title, options) {
+     if (options === void 0) {
+-      options = {
+-        expanded: false
+-      };
+-    }
+-    const result = new PDFOutline(this.document, this.dictionary, title, this.document.page, options);
++	  options = DEFAULT_OPTIONS;
++    }
++	const pages = this.document._root.data.Pages.data.Kids;
++    const dest =
++      options.pageNumber !== null
++        ? pages[options.pageNumber]
++        : this.document.page.dictionary;
++    const result = new PDFOutline(this.document, this.dictionary, title, dest, options);
+     this.children.push(result);
+     return result;
+   }
+@@ -37566,7 +37584,7 @@ var OutlineMixin = {
+     this.outline.endOutline();
+     if (this.outline.children.length > 0) {
+       this._root.data.Outlines = this.outline.dictionary;
+-      return this._root.data.PageMode = 'UseOutlines';
++      return (this._root.data.PageMode = this._root.data.PageMode || 'UseOutlines');
+     }
+   }
+ };
