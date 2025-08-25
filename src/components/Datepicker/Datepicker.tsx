@@ -37,9 +37,12 @@ type CustomProps = Omit<
 export const CustomDatepicker = slottableComponent<CustomProps>(
 	'Datepicker',
 	(props) => {
-		const { id, label, errors, description, declarations } = props;
+		const { id, label, errors, description, declarations, iteration } = props;
 
 		const labelId = `lunatic-datepicker-${id}`;
+
+		// We can have the same id (same variable) for different iterations in successive pages, we need to have unique key for remount correctly
+		const datepickerFieldsKey = `${id}-${iteration}`;
 
 		return (
 			<div className="lunatic-input">
@@ -51,7 +54,7 @@ export const CustomDatepicker = slottableComponent<CustomProps>(
 					declarations={declarations}
 					id={id}
 				/>
-				<CustomDatepickerFields {...props} />
+				<CustomDatepickerFields {...props} key={datepickerFieldsKey} />
 				<ComponentErrors errors={errors} />
 			</div>
 		);

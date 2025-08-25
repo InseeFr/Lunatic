@@ -20,11 +20,16 @@ export function Duration({
 	errors,
 	...props
 }: LunaticComponentProps<'Duration'>) {
+	const { id, iteration } = props;
+	// We can have the same id (same variable) for different iterations in successive pages, we need to have unique key for remount correctly
+	const durationKey = `${id}-${iteration}`;
+
 	return (
 		<CustomDuration
 			{...props}
+			key={durationKey}
 			onChange={(value) => handleChanges([{ name: response.name, value }])}
-			errors={getComponentErrors(errors, props.id)}
+			errors={getComponentErrors(errors, id)}
 		/>
 	);
 }
