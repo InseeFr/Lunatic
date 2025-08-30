@@ -7,6 +7,7 @@ export { ModalControls } from './components/shared/ModalControls/ModalControls';
 export { Button } from './components/shared/Button/Button';
 
 export { LunaticComponents } from './components/LunaticComponents';
+export { LunaticVariablesStore } from './use-lunatic/commons/variables/lunatic-variables-store';
 export { useLunatic } from './use-lunatic/use-lunatic';
 export { getArticulationState } from './utils/getArticulationState';
 
