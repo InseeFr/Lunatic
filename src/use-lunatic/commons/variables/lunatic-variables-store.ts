@@ -73,14 +73,16 @@ export class LunaticVariablesStore {
 	public static makeFromSource(
 		source: LunaticSource,
 		data: LunaticData,
-		changeHandler: RefObject<LunaticOptions['onVariableChange']>,
+		changeHandler?: RefObject<LunaticOptions['onVariableChange']>,
 		// Disable cleaning
 		disableCleaning?: boolean,
 		// Do not delay resizing / cleaning
 		autoCommit?: boolean
 	) {
 		const store = new LunaticVariablesStore();
-		(window as any).lunaticStore = store; // Allow access to the store from the console
+		if (typeof window !== 'undefined') {
+			(window as any).lunaticStore = store; // Allow access to the store from the console
+		}
 		if (!source.variables) {
 			return store;
 		}

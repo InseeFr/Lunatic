@@ -44,6 +44,9 @@ export const supportedLanguages: DictionaryLang[] = ['en', 'fr'];
  * @returns {String}
  */
 export const getLang = (): DictionaryLang => {
+	if (typeof navigator === 'undefined' || !navigator.language) {
+		return 'fr';
+	}
 	const currentLanguage = navigator.language.split('-')[0];
 	const index = supportedLanguages
 		.map((lang) => lang.toString())
