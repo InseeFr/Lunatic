@@ -16,9 +16,14 @@ export function Datepicker({
 	errors,
 	...props
 }: LunaticComponentProps<'Datepicker'>) {
+	const { id, iteration } = props;
+	// We can have the same id (same variable) for different iterations in successive pages, we need to have unique key for remount correctly
+	const datepickerFieldsKey = `${id}-${iteration}`;
+
 	return (
 		<CustomDatepicker
 			{...props}
+			key={datepickerFieldsKey}
 			dateFormat={dateFormat ?? 'YYYY-MM-DD'}
 			onChange={(value) => handleChanges([{ name: response.name, value }])}
 			errors={getComponentErrors(errors, props.id)}

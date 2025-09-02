@@ -6,7 +6,16 @@ import { OTHER_VALUE, useSuggestions } from './useSuggestions';
 import D from '../../i18n';
 import type { SuggesterOptionType } from './SuggesterType';
 
-export function Suggester({
+export function Suggester(props: LunaticComponentProps<'Suggester'>) {
+	const { id, iteration } = props;
+
+	// We can have the same id (same variable) for different iterations in successive pages, we need to have unique key for remount correctly
+	const suggesterKey = `${id}-${iteration}`;
+
+	return <WrappedSuggester {...props} key={suggesterKey} />;
+}
+
+export function WrappedSuggester({
 	storeName,
 	id,
 	className,
