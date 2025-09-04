@@ -215,6 +215,7 @@ type ComponentPropsByType = {
 		idbVersion?: string;
 		focused: boolean;
 		response: { name: string };
+		arbitrary?: boolean;
 	};
 	Summary: LunaticBaseProps<string | null> & {
 		sections: Array<{
