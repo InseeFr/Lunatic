@@ -20,6 +20,8 @@ type Props = Pick<
 	| 'label'
 	| 'description'
 	| 'getSuggesterStatus'
+	| 'arbitrary'
+	| 'focused'
 > & {
 	errors?: LunaticError[];
 	onSelect: (v: string | null) => void;
@@ -42,6 +44,8 @@ export function IDBSuggester({
 	errors,
 	readOnly,
 	workersBasePath,
+	arbitrary,
+	focused,
 }: Props) {
 	const [store, setStore] = useState(undefined);
 
@@ -80,6 +84,8 @@ export function IDBSuggester({
 					label={label}
 					description={description}
 					errors={errors}
+					arbitrary={arbitrary}
+					focused={focused}
 				/>
 			</CheckStore>
 		</SuggesterStatus>

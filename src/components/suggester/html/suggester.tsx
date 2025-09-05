@@ -24,6 +24,8 @@ type Props = {
 	label?: ReactNode;
 	description?: ReactNode;
 	errors?: LunaticError[];
+	arbitrary?: boolean;
+	focused?: boolean;
 };
 
 function Suggester({
@@ -41,6 +43,8 @@ function Suggester({
 	label,
 	description,
 	errors,
+	arbitrary = true,
+	focused,
 }: Props) {
 	const [search, setSearch] = useState('');
 	const [options, setOptions] = useState<Array<ComboBoxOptionType>>([]);
@@ -62,7 +66,9 @@ function Suggester({
 					setOptions(results);
 					setSearch(search);
 					// if a user does not select an option in the list, their search term is saved
-					onSelect(search);
+					if (arbitrary) {
+						onSelect(search);
+					}
 				}
 			} else {
 				setOptions([]);
@@ -70,7 +76,7 @@ function Suggester({
 				setSearch('');
 			}
 		},
-		[searching, onSelect]
+		[searching, arbitrary, onSelect]
 	);
 
 	const defaultSearch = getSearch(search, value);
@@ -94,6 +100,7 @@ function Suggester({
 			label={label}
 			description={description}
 			errors={errors}
+			focused={focused}
 		/>
 	);
 }

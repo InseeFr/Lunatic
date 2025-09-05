@@ -10,7 +10,6 @@ function LunaticSuggester({
 	optionRenderer,
 	labelRenderer,
 	idbVersion,
-	focused,
 	value,
 	handleChange,
 	disabled,
@@ -27,6 +26,8 @@ function LunaticSuggester({
 	className,
 	getSuggesterStatus,
 	workersBasePath,
+	arbitrary,
+	focused,
 }: LunaticComponentProps<'Suggester'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
@@ -56,6 +57,8 @@ function LunaticSuggester({
 				className={className}
 				readOnly={readOnly}
 				workersBasePath={workersBasePath}
+				arbitrary={arbitrary}
+				focused={focused}
 			/>
 		</LunaticComponent>
 	);
