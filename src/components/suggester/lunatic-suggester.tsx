@@ -27,6 +27,7 @@ function LunaticSuggester({
 	getSuggesterStatus,
 	workersBasePath,
 	arbitrary,
+	focused,
 }: LunaticComponentProps<'Suggester'>) {
 	const onChange = useOnHandleChange({ handleChange, response, value });
 	return (
@@ -57,6 +58,7 @@ function LunaticSuggester({
 				readOnly={readOnly}
 				workersBasePath={workersBasePath}
 				arbitrary={arbitrary}
+				focused={focused}
 			/>
 		</LunaticComponent>
 	);
