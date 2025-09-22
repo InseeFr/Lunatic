@@ -26,7 +26,7 @@ export function pageStringToNumbers(page: string): number[] {
 export function isPageEmpty(state: LunaticReducerState): boolean {
 	const { executeExpression, pager, options } = state;
 	const { iteration } = pager;
-	const components = getComponentsFromState(state);
+	const components = getComponentsFromState(state, true);
 	const visibleComponents = components.filter((component) => {
 		if (options.disableFilters) {
 			return true;
