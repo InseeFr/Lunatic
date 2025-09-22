@@ -1,18 +1,18 @@
 import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
 
 /**
- * 
- * 
- * 
- * For pagination, during computation of next page, we check if there is component on a page 
- * 
+ *
+ *
+ *
+ * For pagination, during computation of next page, we check if there is component on a page
+ *
  * So: we have the computingPage
  */
 
 /**
- * 
- * @param state 
- * @param ignoreAutoSubPages : (default: `false`), For pagination, during computation of next page, we check if there is component on a page 
+ *
+ * @param state
+ * @param ignoreAutoSubPages : (default: `false`), For pagination, during computation of next page, we check if there is component on a page
  * before exploring inside Loop, so we have to return only the Loop component (and not it's child)
  * So if we are computing page (during next or previous action), we have to return only Loop component
  * During process of computing page, we reached Loop by the root (with subpage or iteration undefined)
@@ -29,7 +29,8 @@ export function getComponentsFromState(
 		const current = pages[page];
 		if (isInLoop && current.subPages) {
 			const { subPages } = current;
-			if (ignoreAutoSubPages && subPage === undefined) return current.components;
+			if (ignoreAutoSubPages && subPage === undefined)
+				return current.components;
 			const stepName = subPages[subPage ?? '0'];
 			if (stepName in pages) {
 				return pages[stepName].components;
