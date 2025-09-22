@@ -2,15 +2,6 @@ import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
 
 /**
  *
- *
- *
- * For pagination, during computation of next page, we check if there is component on a page
- *
- * So: we have the computingPage
- */
-
-/**
- *
  * @param state
  * @param ignoreAutoSubPages : (default: `false`), For pagination, during computation of next page, we check if there is component on a page
  * before exploring inside Loop, so we have to return only the Loop component (and not it's child)
