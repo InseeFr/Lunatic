@@ -5,6 +5,8 @@ import sourceLogement from '../stories/questionnaires/logement/source.json';
 import sourceSimpsons from '../stories/questionnaires/simpsons/source.json';
 import sourceOverview from '../stories/behaviour/overview/sourceLoop.json';
 import sourceCheckboxGroup from '../stories/checkbox/sourceGroup.json';
+import sourceRoundabout from '../stories/roundabout/source.json';
+import sourcePaginatedLoop from '../stories/loop/source-paginated.json';
 import sourceCleaningLoop from '../stories/behaviour/cleaning/source-loop.json';
 import sourceCleaningResizing from '../stories/behaviour/resizing/source-resizing-cleaning.json';
 import type { PageTag } from './type';
@@ -453,6 +455,123 @@ describe('use-lunatic()', () => {
 				result.current.handleChanges([{ name: 'NATIO1N1', value: false }]);
 			});
 			expect(result.current.hasPageResponse()).toBeFalsy();
+		});
+	});
+
+	describe('loopVariables', () => {
+		it('should return an empty list when being out of a loop', () => {
+			const data = {
+				COLLECTED: {
+					PRENOM: { COLLECTED: ['John', 'Doe', 'Marc'] },
+				},
+			};
+
+			const { result } = renderHook(() =>
+				useLunatic(sourcePaginatedLoop, data, {})
+			);
+
+			act(() => {
+				// go outside a loop
+				result.current.goToPage({ page: 3 });
+			});
+
+			expect(result.current.loopVariables).toMatchObject([]);
+		});
+
+		it('should return an empty list when being on a non paginated loop', () => {
+			const data = {
+				COLLECTED: {
+					PRENOM: { COLLECTED: ['John', 'Doe', 'Marc'] },
+				},
+			};
+
+			const { result } = renderHook(() =>
+				useLunatic(sourcePaginatedLoop, data, {})
+			);
+
+			// first page is a non paginated loop
+			expect(result.current.loopVariables).toMatchObject([]);
+		});
+
+		it('should return the loop dependency variables when being in the loop', () => {
+			const data = {
+				COLLECTED: {
+					PRENOM: { COLLECTED: ['John', 'Doe', 'Marc'] },
+				},
+			};
+
+			const { result } = renderHook(() =>
+				useLunatic(sourcePaginatedLoop, data, {})
+			);
+
+			act(() => {
+				// go inside the non paginated loop, no matter the subPage or iteration
+				result.current.goToPage({ page: 2, subPage: 0, iteration: 0 });
+			});
+
+			expect(result.current.loopVariables).toMatchObject(['PRENOM']);
+		});
+	});
+
+	describe('roundaboutLoopVariables', () => {
+		it('should return an empty list when being outside a roundabout', () => {
+			const data = {
+				COLLECTED: {
+					NBHAB: { COLLECTED: 2 },
+				},
+			};
+
+			const { result } = renderHook(() =>
+				useLunatic(sourceRoundabout, data, {})
+			);
+
+			act(() => {
+				result.current.goNextPage();
+			});
+
+			expect(result.current.roundaboutLoopVariables).toMatchObject([]);
+		});
+
+		it('should return an empty list when being on the roundabout page (not in its loop)', () => {
+			const data = {
+				COLLECTED: {
+					NBHAB: { COLLECTED: 2 },
+					PRENOMS: { COLLECTED: ['John', 'Doe', 'Marc'] },
+					AGE: { COLLECTED: [18, 18, 18] },
+				},
+			};
+
+			const { result } = renderHook(() =>
+				useLunatic(sourceRoundabout, data, {})
+			);
+
+			act(() => {
+				// go to roundabout page
+				result.current.goToPage({ page: 3 });
+			});
+
+			expect(result.current.roundaboutLoopVariables).toMatchObject([]);
+		});
+
+		it('should return the roundabout loop dependencies variables when being in the roundabout loop', () => {
+			const data = {
+				COLLECTED: {
+					NBHAB: { COLLECTED: 2 },
+					PRENOMS: { COLLECTED: ['John', 'Doe', 'Marc'] },
+					AGE: { COLLECTED: [18, 18, 18] },
+				},
+			};
+
+			const { result } = renderHook(() =>
+				useLunatic(sourceRoundabout, data, {})
+			);
+
+			act(() => {
+				// go inside roundabout loop, no matter the subPage or iteration
+				result.current.goToPage({ page: 3, subPage: 0, iteration: 0 });
+			});
+
+			expect(result.current.roundaboutLoopVariables).toMatchObject(['PRENOMS']);
 		});
 	});
 });

@@ -231,6 +231,11 @@ export function useLunatic(
 		isInLoop: state.isInLoop,
 		overview: useOverview(state, [pageTag]),
 		loopVariables: useLoopVariables(state.pager, state.pages),
+		roundaboutLoopVariables: useLoopVariables(
+			state.pager,
+			state.pages,
+			'Roundabout'
+		),
 		// Methods
 		getComponents,
 		goPreviousPage,

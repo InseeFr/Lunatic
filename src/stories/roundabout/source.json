@@ -67,6 +67,7 @@
 			"page": "3",
 			"conditionFilter": { "value": "true", "type": "VTL" },
 			"iterations": { "value": "NB_HAB", "type": "VTL" },
+			"loopDependencies": ["PRENOMS"],
 			"label": { "value": "\"Libellé du rondpoint\"", "type": "VTL" },
 			"description": {
 				"value": "\"Description du rond-point\"",

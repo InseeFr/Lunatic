@@ -625,6 +625,12 @@
 					"type": "string",
 					"const": "Roundabout"
 				},
+				"loopDependencies": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
 				"iterations": {
 					"$ref": "#/$defs/VTLScalarExpression"
 				},
