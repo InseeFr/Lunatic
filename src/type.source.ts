@@ -48,6 +48,7 @@ export type ComponentSequenceDefinition = ComponentDefinitionBase & {
 };
 export type ComponentRoundaboutDefinition = ComponentDefinitionBase & {
 	componentType: 'Roundabout';
+	loopDependencies?: string[];
 	iterations: VTLScalarExpression;
 	locked: boolean;
 	progressVariable: string;

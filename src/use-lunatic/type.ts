@@ -258,6 +258,8 @@ export type LunaticState = {
 	isInLoop: boolean;
 	/** Current loop's variables. */
 	loopVariables: string[];
+	/** Current roundabout loop's variables. */
+	roundaboutLoopVariables: string[];
 	/** Whether or not we're on the survey first page. */
 	isFirstPage: boolean;
 	/** Whether or not we're on the survey last page (we reached `maxPage`). */

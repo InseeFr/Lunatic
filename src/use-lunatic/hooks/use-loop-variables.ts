@@ -2,11 +2,12 @@ import type { LunaticComponentDefinition, LunaticReducerState } from '../type';
 import { useMemo } from 'react';
 
 /**
- * Extract the list of variables used for the current loop.
+ * Extract the list of variables used for the current loop or roundabout.
  */
 export function useLoopVariables(
 	pager: LunaticReducerState['pager'],
-	pages: LunaticReducerState['pages']
+	pages: LunaticReducerState['pages'],
+	loopType: 'Loop' | 'Roundabout' = 'Loop'
 ): string[] {
 	const { iteration, page } = pager;
 	const inIteration = iteration !== undefined;
@@ -16,8 +17,12 @@ export function useLoopVariables(
 		}
 		// Find the loop to extract the dependencies
 		const loop = pages[page]?.components.find(
-			(c) => c.componentType === 'Loop'
-		) as LunaticComponentDefinition<'Loop'> | undefined;
+			(c) => c.componentType === loopType
+		) as
+			| LunaticComponentDefinition<'Loop'>
+			| LunaticComponentDefinition<'Roundabout'>
+			| undefined;
+
 		return loop?.loopDependencies ?? [];
-	}, [page, pages, inIteration]);
+	}, [inIteration, pages, page, loopType]);
 }
