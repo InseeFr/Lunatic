@@ -5,6 +5,7 @@ import {
 } from '../../utils/Orchestrator';
 import source from './source.json';
 import sourceResizingCleaning from './source-resizing-cleaning.json';
+import sourceCalculating from './source-calculating.json';
 
 import { Meta } from '@storybook/react';
 
@@ -30,5 +31,11 @@ export const ResizingWithCleaning: OrchestratorStory = {
 			NBHAB: 2,
 			NAME: ['Jean', 'Paul'],
 		}),
+	},
+};
+
+export const Calculating: OrchestratorStory = {
+	args: {
+		source: sourceCalculating,
 	},
 };
