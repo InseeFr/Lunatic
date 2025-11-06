@@ -8,13 +8,19 @@ type Props = PropsWithChildren<{
 	'data-focus-key'?: string;
 }>;
 
-function LunaticTr({ children, className, 'data-focus-key': dataFocusKey }: Props) {
+function LunaticTr({
+	children,
+	className,
+	'data-focus-key': dataFocusKey,
+}: Props) {
 	return (
-		<tr className={classnames('lunatic-table-tr', className)} data-focus-key={dataFocusKey}>
+		<tr
+			className={classnames('lunatic-table-tr', className)}
+			data-focus-key={dataFocusKey}
+		>
 			{children}
 		</tr>
 	);
 }
-
 
 export const Tr = slottableComponent('Tr', LunaticTr);
