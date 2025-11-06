@@ -9,97 +9,101 @@ exports[`RosterForLoop > renders the right number of columns 1`] = `
   >
     Ceci est un test
   </label>
-  <table
-    class="lunatic-table"
-    id="table-table"
-  >
-    <tbody
-      class="lunatic-table-tbody"
+  <div>
+    <table
+      class="lunatic-table"
+      id="table-table"
     >
-      <tr
-        class="lunatic-table-tr"
+      <tbody
+        class="lunatic-table-tbody"
       >
-        <td
-          class="lunatic-table-td"
+        <tr
+          class="lunatic-table-tr"
+          data-focus-key="row-0"
         >
-          <div
-            class="field-container"
+          <td
+            class="lunatic-table-td"
           >
             <div
-              class="field"
+              class="field-container"
             >
               <div
-                class="lunatic-input"
+                class="field"
               >
                 <div
-                  class="field-with-count"
+                  class="lunatic-input"
                 >
-                  <input
-                    aria-describedby="characters-count-jrc3ye5q-QOP-lo6tcvvx-0"
-                    aria-invalid="false"
-                    aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-0"
-                    autocomplete="off"
-                    id="jrc3ye5q-QOP-lo6tcvvx-0"
-                    maxlength="249"
-                    title="azeaze"
-                    type="text"
-                    value="azeaze"
-                  />
-                  <span
-                    class="characters-count"
-                    id="characters-count-jrc3ye5q-QOP-lo6tcvvx-0"
+                  <div
+                    class="field-with-count"
                   >
-                    6/249
-                  </span>
+                    <input
+                      aria-describedby="characters-count-jrc3ye5q-QOP-lo6tcvvx-0"
+                      aria-invalid="false"
+                      aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-0"
+                      autocomplete="off"
+                      id="jrc3ye5q-QOP-lo6tcvvx-0"
+                      maxlength="249"
+                      title="azeaze"
+                      type="text"
+                      value="azeaze"
+                    />
+                    <span
+                      class="characters-count"
+                      id="characters-count-jrc3ye5q-QOP-lo6tcvvx-0"
+                    >
+                      6/249
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr
-        class="lunatic-table-tr"
-      >
-        <td
-          class="lunatic-table-td"
+          </td>
+        </tr>
+        <tr
+          class="lunatic-table-tr"
+          data-focus-key="row-1"
         >
-          <div
-            class="field-container"
+          <td
+            class="lunatic-table-td"
           >
             <div
-              class="field"
+              class="field-container"
             >
               <div
-                class="lunatic-input"
+                class="field"
               >
                 <div
-                  class="field-with-count"
+                  class="lunatic-input"
                 >
-                  <input
-                    aria-describedby="characters-count-jrc3ye5q-QOP-lo6tcvvx-1"
-                    aria-invalid="false"
-                    aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-1"
-                    autocomplete="off"
-                    id="jrc3ye5q-QOP-lo6tcvvx-1"
-                    maxlength="249"
-                    title="azeaze"
-                    type="text"
-                    value="azeaze"
-                  />
-                  <span
-                    class="characters-count"
-                    id="characters-count-jrc3ye5q-QOP-lo6tcvvx-1"
+                  <div
+                    class="field-with-count"
                   >
-                    6/249
-                  </span>
+                    <input
+                      aria-describedby="characters-count-jrc3ye5q-QOP-lo6tcvvx-1"
+                      aria-invalid="false"
+                      aria-labelledby="label-jrc3ye5q-QOP-lo6tcvvx-1"
+                      autocomplete="off"
+                      id="jrc3ye5q-QOP-lo6tcvvx-1"
+                      maxlength="249"
+                      title="azeaze"
+                      type="text"
+                      value="azeaze"
+                    />
+                    <span
+                      class="characters-count"
+                      id="characters-count-jrc3ye5q-QOP-lo6tcvvx-1"
+                    >
+                      6/249
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <input
     class="button-lunatic"
     type="button"

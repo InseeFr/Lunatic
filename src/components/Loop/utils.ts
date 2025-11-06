@@ -16,6 +16,8 @@ export const useLoopUtils = (
 	const [nbRows, setNbRows] = useState(
 		Math.max(min, iterations ?? DEFAULT_MIN_ROWS)
 	);
+	// Track which row should be focused
+	const [focusKey, setFocusKey] = useState<string>();
 
 	/**
 	 * For Loop & rosterForLoop,
@@ -56,6 +58,7 @@ export const useLoopUtils = (
 				iteration: [nbRows],
 			}));
 			handleChanges(newResponses);
+			setFocusKey(`row-${nbRows}`);
 		}
 	}, [max, nbRows, valueMap, handleChanges]);
 
@@ -73,7 +76,8 @@ export const useLoopUtils = (
 			};
 		});
 		handleChanges(newResponses);
+		setFocusKey(`row-${newNbRows - 1}`);
 	}, [nbRows, min, valueMap, handleChanges]);
 
-	return { min, max, nbRows, addRow, removeRow };
+	return { min, max, nbRows, addRow, removeRow, focusKey };
 };

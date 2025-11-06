@@ -12,12 +12,21 @@ export function useAutoFocus(
 			return;
 		}
 
+		// First find the element with the matching data-focus-key
+		const targetElement = wrapperRef.current.querySelector(
+			`[data-focus-key="${key}"]`
+		) as HTMLElement | null;
+
+		if (!targetElement) {
+			return;
+		}
+
 		// First look for invalid fields, then all fields
 		const firstFocusableElement =
-			(wrapperRef.current?.querySelector(
+			(targetElement.querySelector(
 				'button[aria-invalid="true"], [href][aria-invalid="true"], input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"], [tabindex][aria-invalid="true"]:not([tabindex="-1"])'
 			) as HTMLElement | undefined) ??
-			(wrapperRef.current?.querySelector(
+			(targetElement.querySelector(
 				'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 			) as HTMLElement | undefined);
 
