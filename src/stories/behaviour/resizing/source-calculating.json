@@ -1,0 +1,146 @@
+{
+	"$schema": "../../../../lunatic-schema.json",
+	"id": "mhm22n4i",
+	"label": {
+		"type": "VTL|MD",
+		"value": "BUG 19361 - Compute Calc var non déclanché pour Boucle principale min <> max défini par variable calculée"
+	},
+	"modele": "BUG19361CO",
+	"maxPage": "3",
+	"cleaning": {},
+	"resizing": {},
+	"variables": [
+		{
+			"name": "T_HNVX",
+			"dimension": 1,
+			"shapeFrom": ["T_PRENOM"],
+			"expression": {
+				"type": "VTL",
+				"value": "if nvl(PRENOM_E,\"\") = \"\" then 1 else 0"
+			},
+			"variableType": "CALCULATED",
+			"iterationReference": "mhm1tb16",
+			"bindingDependencies": ["PRENOM_E"]
+		},
+		{
+			"name": "T_NBHAB_NVX",
+			"dimension": 0,
+			"expression": { "type": "VTL", "value": "sum(T_HNVX)" },
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["T_HNVX", "PRENOM_E"]
+		},
+		{
+			"name": "T_NBHAB_V1",
+			"value": null,
+			"dimension": 0,
+			"variableType": "EXTERNAL"
+		},
+		{
+			"name": "PRENOM_E",
+			"value": [],
+			"dimension": 1,
+			"variableType": "EXTERNAL",
+			"iterationReference": "mhm1tb16"
+		},
+		{
+			"name": "T_PRENOM",
+			"values": { "COLLECTED": [] },
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "mhm1tb16"
+		},
+		{
+			"name": "FILTER_RESULT_T_PRENOM",
+			"dimension": 1,
+			"shapeFrom": ["T_PRENOM"],
+			"expression": { "type": "VTL", "value": "true" },
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "mhm1tb16"
+		}
+	],
+	"components": [
+		{
+			"id": "mhm1qask",
+			"page": "1",
+			"label": {
+				"type": "VTL",
+				"value": "\"I - \" || \"S1\"",
+				"shapeFrom": "T_PRENOM"
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true",
+				"shapeFrom": "T_PRENOM"
+			}
+		},
+		{
+			"id": "mhm1tb16",
+			"page": "2",
+			"depth": 1,
+			"lines": {
+				"max": { "type": "VTL", "value": "20" },
+				"min": { "type": "VTL", "value": "nvl(cast(T_NBHAB_V1,integer),1)" }
+			},
+			"components": [
+				{
+					"id": "mhm1wpza",
+					"page": "2",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\" \"",
+						"shapeFrom": "T_PRENOM"
+					},
+					"description": {
+						"type": "VTL|MD",
+						"value": "\"Valeur de T_NBHAB_NVX : \" || cast(T_NBHAB_NVX,string) ",
+						"shapeFrom": "T_PRENOM"
+					},
+					"componentType": "Subsequence",
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true",
+						"shapeFrom": "T_PRENOM"
+					}
+				},
+				{
+					"id": "question-mhm24c6g",
+					"page": "2",
+					"label": {
+						"type": "VTL|MD",
+						"value": "\"Prénom de l'habitant \" || cast(GLOBAL_ITERATION_INDEX,string) || \" :\"))\""
+					},
+					"components": [
+						{
+							"id": "mhm24c6g",
+							"page": "2",
+							"response": { "name": "T_PRENOM" },
+							"maxLength": 249,
+							"isMandatory": false,
+							"componentType": "Input"
+						}
+					],
+					"componentType": "Question",
+					"conditionFilter": { "type": "VTL", "value": "true" }
+				}
+			],
+			"componentType": "Loop",
+			"paginatedLoop": false,
+			"conditionFilter": { "type": "VTL", "value": "(true)" },
+			"loopDependencies": ["T_NBHAB_V1"]
+		},
+		{
+			"id": "mhm1rjuq",
+			"page": "3",
+			"label": { "type": "VTL", "value": "\"II - \" || \"S2\"" },
+			"componentType": "Sequence",
+			"conditionFilter": { "type": "VTL", "value": "true" }
+		}
+	],
+	"pagination": "question",
+	"componentType": "Questionnaire",
+	"enoCoreVersion": "3.58.0",
+	"generatingDate": "05-11-2025 15:04:53",
+	"lunaticModelVersion": "5.9.1"
+}

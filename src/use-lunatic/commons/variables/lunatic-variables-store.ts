@@ -603,11 +603,13 @@ class LunaticVariable {
 			return true;
 		}
 
-		// Look for an outdated dependency
+		// Look for an outdated dependency (look at updatedAt & calculatedAt date of deps)
 		for (const dep of deps) {
 			const depUpdatedAt =
 				this.dictionary?.get(dep)?.getUpdatedAt(iteration) ?? 0;
-			if (depUpdatedAt > lastCalculatedAt) {
+			const depCalculatedAt =
+				this.dictionary?.get(dep)?.getCalculatedAt(iteration) ?? 0;
+			if (Math.max(depUpdatedAt, depCalculatedAt) > lastCalculatedAt) {
 				return true;
 			}
 		}
