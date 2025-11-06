@@ -15,7 +15,7 @@ export function useAutoFocus(
 		// First find the element with the matching data-focus-key
 		const targetElement = wrapperRef.current.querySelector(
 			`[data-focus-key="${key}"]`
-		) as HTMLElement | null;
+		);
 
 		if (!targetElement) {
 			return;

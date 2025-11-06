@@ -19,6 +19,7 @@ export const RosterForLoop = (
 	props: LunaticComponentProps<'RosterForLoop'>
 ) => {
 	const { min, max, nbRows, addRow, removeRow, focusKey } = useLoopUtils(props);
+
 	const containerRef = useRef<HTMLDivElement>(null);
 	useAutoFocus(containerRef, focusKey);
 	const {
@@ -47,6 +48,7 @@ export const RosterForLoop = (
 			removeRow={nbRows === min ? undefined : removeRow}
 			canControlRows={!!(min && max && min !== max)}
 			containerRef={containerRef}
+			focusKey={focusKey}
 		>
 			<Table id={id}>
 				{header && <TableHeader header={header} />}
@@ -69,6 +71,7 @@ export const RosterForLoop = (
 									<LunaticComponents
 										blocklist={blockedInLoopComponents}
 										components={components}
+										autoFocusKey={focusKey}
 										memo
 										componentProps={(c) => ({
 											...otherProps,

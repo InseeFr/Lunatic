@@ -43,6 +43,7 @@ export function Loop(props: LunaticComponentProps<'Loop'>) {
 					<LunaticComponents
 						blocklist={blockedInLoopComponents}
 						components={getComponents(n)}
+						autoFocusKey={focusKey}
 						componentProps={(c) => ({
 							...props,
 							...c,
@@ -73,6 +74,7 @@ type CustomProps = Omit<
 		removeRow?: () => void;
 		canControlRows?: boolean;
 		containerRef?: React.RefObject<HTMLDivElement>;
+		focusKey?: string;
 	}>;
 
 export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
