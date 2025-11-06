@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { expectLunaticData, gotoNextPage, goToStory } from './utils';
 
 test.describe('"Resising" with Calculating', () => {
-	test(`Should handle correctyl calculated value`, async ({ page }) => {
+	test(`Should handle correctly calculated value`, async ({ page }) => {
 		await goToStory(page, 'behaviour-resizing--calculating');
 		await gotoNextPage(page);
 		// When adding 3 persons
