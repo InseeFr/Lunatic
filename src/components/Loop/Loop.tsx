@@ -1,4 +1,4 @@
-import { type PropsWithChildren } from 'react';
+import { type PropsWithChildren, useRef } from 'react';
 import D from '../../i18n';
 import { times } from '../../utils/array';
 import { LunaticComponents } from '../LunaticComponents';
@@ -14,13 +14,16 @@ import {
 } from '../shared/ComponentErrors/ComponentErrors';
 import type { LunaticError } from '../../use-lunatic/type';
 import { useLoopUtils } from './utils';
+import { useAutoFocusRow } from '../../hooks/use-auto-focus';
 
 /**
  * Loop without specific markup (stack of subcomponents)
  */
 export function Loop(props: LunaticComponentProps<'Loop'>) {
-	const { min, max, nbRows, addRow, removeRow } = useLoopUtils(props);
+	const { min, max, nbRows, addRow, removeRow, focusKey } = useLoopUtils(props);
 	const { getComponents, errors } = props;
+	const containerRef = useRef<HTMLDivElement>(null);
+	useAutoFocusRow(containerRef, focusKey);
 
 	if (nbRows === 0) {
 		return null;
@@ -33,20 +36,23 @@ export function Loop(props: LunaticComponentProps<'Loop'>) {
 			addRow={nbRows === max ? undefined : addRow}
 			removeRow={nbRows === 1 || nbRows === min ? undefined : removeRow}
 			canControlRows={min !== max && Number.isFinite(max)}
+			containerRef={containerRef}
 		>
 			{times(nbRows, (n) => (
-				<LunaticComponents
-					blocklist={blockedInLoopComponents}
-					key={n}
-					components={getComponents(n)}
-					componentProps={(c) => ({
-						...props,
-						...c,
-						iteration: n,
-						id: `${c.id}-${n}`,
-						errors,
-					})}
-				/>
+				<div key={n} data-focus-key={`row-${n}`}>
+					<LunaticComponents
+						blocklist={blockedInLoopComponents}
+						components={getComponents(n)}
+						//autoFocusKey={focusKey}
+						componentProps={(c) => ({
+							...props,
+							...c,
+							iteration: n,
+							id: `${c.id}-${n}`,
+							errors,
+						})}
+					/>
+				</div>
 			))}
 		</CustomLoop>
 	);
@@ -67,6 +73,8 @@ type CustomProps = Omit<
 		addRow?: () => void;
 		removeRow?: () => void;
 		canControlRows?: boolean;
+		containerRef?: React.RefObject<HTMLDivElement>;
+		focusKey?: string;
 	}>;
 
 export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
@@ -79,6 +87,7 @@ export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
 		errors,
 		addRow,
 		removeRow,
+		containerRef,
 	} = props;
 
 	return (
@@ -91,7 +100,7 @@ export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
 				declarations={declarations}
 				id={id}
 			/>
-			{children}
+			<div ref={containerRef}>{children}</div>
 			<ComponentErrors errors={errors} />
 			{canControlRows && (
 				<>

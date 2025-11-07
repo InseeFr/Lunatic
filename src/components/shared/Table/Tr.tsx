@@ -5,11 +5,21 @@ import { slottableComponent } from '../HOC/slottableComponent';
 type Props = PropsWithChildren<{
 	className?: string;
 	row?: string | number;
+	'data-focus-key'?: string;
 }>;
 
-function LunaticTr({ children, className }: Props) {
+function LunaticTr({
+	children,
+	className,
+	'data-focus-key': dataFocusKey,
+}: Props) {
 	return (
-		<tr className={classnames('lunatic-table-tr', className)}>{children}</tr>
+		<tr
+			className={classnames('lunatic-table-tr', className)}
+			data-focus-key={dataFocusKey}
+		>
+			{children}
+		</tr>
 	);
 }
 

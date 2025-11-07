@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useRef } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { Table, Tbody, Td, Tr, TableHeader } from '../shared/Table';
 import { times } from '../../utils/array';
@@ -10,6 +10,7 @@ import {
 } from '../shared/ComponentErrors/ComponentErrors';
 import { CustomLoop } from '../Loop/Loop';
 import { useLoopUtils } from '../Loop/utils';
+import { useAutoFocusRow } from '../../hooks/use-auto-focus';
 
 /**
  * Loop displayed as a table
@@ -17,7 +18,10 @@ import { useLoopUtils } from '../Loop/utils';
 export const RosterForLoop = (
 	props: LunaticComponentProps<'RosterForLoop'>
 ) => {
-	const { min, max, nbRows, addRow, removeRow } = useLoopUtils(props);
+	const { min, max, nbRows, addRow, removeRow, focusKey } = useLoopUtils(props);
+
+	const containerRef = useRef<HTMLDivElement>(null);
+	useAutoFocusRow(containerRef, focusKey);
 	const {
 		errors,
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -33,7 +37,6 @@ export const RosterForLoop = (
 	if (nbRows === 0) {
 		return null;
 	}
-
 	let cols = 0;
 
 	return (
@@ -43,6 +46,8 @@ export const RosterForLoop = (
 			addRow={nbRows === max ? undefined : addRow}
 			removeRow={nbRows === min ? undefined : removeRow}
 			canControlRows={!!(min && max && min !== max)}
+			containerRef={containerRef}
+			focusKey={focusKey}
 		>
 			<Table id={id}>
 				{header && <TableHeader header={header} />}
@@ -60,6 +65,7 @@ export const RosterForLoop = (
 									className={
 										hasLineErrors ? 'lunatic-row-has-error' : undefined
 									}
+									data-focus-key={`row-${n}`}
 								>
 									<LunaticComponents
 										blocklist={blockedInLoopComponents}

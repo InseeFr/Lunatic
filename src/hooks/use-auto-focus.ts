@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-
+import { findFirstFocusableElement } from '../utils/focus';
 /**
  * Focus the first focusable element in the wrapper when the "key" changes and is defined
  */
@@ -12,18 +12,35 @@ export function useAutoFocus(
 			return;
 		}
 
-		// First look for invalid fields, then all fields
-		const firstFocusableElement =
-			(wrapperRef.current?.querySelector(
-				'button[aria-invalid="true"], [href][aria-invalid="true"], input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"], [tabindex][aria-invalid="true"]:not([tabindex="-1"])'
-			) as HTMLElement | undefined) ??
-			(wrapperRef.current?.querySelector(
-				'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-			) as HTMLElement | undefined);
+		const firstFocusableElement = findFirstFocusableElement(wrapperRef.current);
 
-		// The first element can be focusable
 		if (firstFocusableElement) {
-			return firstFocusableElement.focus();
+			firstFocusableElement.focus();
+		}
+	}, [key, wrapperRef]);
+}
+
+/**
+ * Focus the first focusable element in the wrapper when the "key" changes and is defined (row only)
+ */
+export function useAutoFocusRow(
+	wrapperRef: { current: HTMLDivElement | null },
+	key?: string
+) {
+	useEffect(() => {
+		if (!key || !wrapperRef.current) {
+			return;
+		}
+
+		// Find the row on which to focus on
+		const targetElement =
+			wrapperRef.current.querySelector(`[data-focus-key="${key}"]`) ??
+			wrapperRef.current;
+
+		const firstFocusableElement = findFirstFocusableElement(targetElement);
+
+		if (firstFocusableElement) {
+			firstFocusableElement.focus();
 		}
 	}, [key, wrapperRef]);
 }

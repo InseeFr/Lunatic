@@ -62,4 +62,25 @@ describe('useLoopUtils()', () => {
 			{ name: 'AGE', value: null, iteration: [2] },
 		]);
 	});
+
+	it('should handleChange with iteration when removing row', () => {
+		const mockHandleChange = vi.fn();
+		// Given
+		const { result } = renderHook(() =>
+			useLoopUtils({
+				handleChanges: mockHandleChange,
+				iterations: 3,
+				lines: { min: 2, max: 10 },
+				value: { NAME: ['John', 'Doe', 'Smith'], AGE: [10, 20, 30] },
+			})
+		);
+		// When
+		result.current.removeRow();
+
+		// Then
+		expect(mockHandleChange).toHaveBeenCalledWith([
+			{ name: 'NAME', value: ['John', 'Doe'] },
+			{ name: 'AGE', value: [10, 20] },
+		]);
+	});
 });

@@ -16,6 +16,8 @@ export const useLoopUtils = (
 	const [nbRows, setNbRows] = useState(
 		Math.max(min, iterations ?? DEFAULT_MIN_ROWS)
 	);
+	// Track which row should be focused
+	const [focusKey, setFocusKey] = useState<string>();
 
 	/**
 	 * For Loop & rosterForLoop,
@@ -32,8 +34,8 @@ export const useLoopUtils = (
 	useEffect(() => {
 		const newInitialValues = [];
 		for (const name in valueMap) {
-			const initialLength = valueMap[name]?.length ?? 0; // default 0: i.e not value (in some case, we have null value instead if empty array)
-			// Add handleChange value for each additional iteration required
+			const initialLength = valueMap[name]?.length ?? 0;
+
 			for (let i = initialLength; i < nbRows; i++) {
 				newInitialValues.push({
 					name: name,
@@ -56,6 +58,7 @@ export const useLoopUtils = (
 				iteration: [nbRows],
 			}));
 			handleChanges(newResponses);
+			setFocusKey(`row-${nbRows}`);
 		}
 	}, [max, nbRows, valueMap, handleChanges]);
 
@@ -73,7 +76,8 @@ export const useLoopUtils = (
 			};
 		});
 		handleChanges(newResponses);
+		setFocusKey(`row-${newNbRows - 1}`);
 	}, [nbRows, min, valueMap, handleChanges]);
 
-	return { min, max, nbRows, addRow, removeRow };
+	return { min, max, nbRows, addRow, removeRow, focusKey };
 };
