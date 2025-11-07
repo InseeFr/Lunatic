@@ -32,10 +32,10 @@ export function useAutoFocusRow(
 			return;
 		}
 
-		// Find the row on which to focus on 
-		const targetElement = wrapperRef.current.querySelector(
-			`[data-focus-key="${key}"]`
-		) ?? wrapperRef.current;
+		// Find the row on which to focus on
+		const targetElement =
+			wrapperRef.current.querySelector(`[data-focus-key="${key}"]`) ??
+			wrapperRef.current;
 
 		const firstFocusableElement = findFirstFocusableElement(targetElement);
 
