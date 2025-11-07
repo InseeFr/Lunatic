@@ -12,27 +12,32 @@ export function useAutoFocus(
 			return;
 		}
 
-		// First find the element with the matching data-focus-key
-		const targetElement = wrapperRef.current.querySelector(
-			`[data-focus-key="${key}"]`
-		);
-
-		if (!targetElement) {
-			return;
-		}
+		const findFirstFocusableElement = (container: Element): HTMLElement | undefined => {
+			return (
+				(container.querySelector(
+					'button[aria-invalid="true"], [href][aria-invalid="true"], input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"], [tabindex][aria-invalid="true"]:not([tabindex="-1"])'
+				) as HTMLElement | undefined) ??
+				(container.querySelector(
+					'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+				) as HTMLElement | undefined)
+			);
+		};
 
 		// First look for invalid fields, then all fields
-		const firstFocusableElement =
-			(targetElement.querySelector(
-				'button[aria-invalid="true"], [href][aria-invalid="true"], input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"], [tabindex][aria-invalid="true"]:not([tabindex="-1"])'
-			) as HTMLElement | undefined) ??
-			(targetElement.querySelector(
-				'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-			) as HTMLElement | undefined);
+		let firstFocusableElement = findFirstFocusableElement(wrapperRef.current);
 
-		// The first element can be focusable
+		// If no focusable element found and we have a specific data-focus-key
+		if (!firstFocusableElement) {
+			const targetElement = wrapperRef.current.querySelector(
+				`[data-focus-key="${key}"]`
+			);
+			if (targetElement) {
+				firstFocusableElement = findFirstFocusableElement(targetElement);
+			}
+		}
+
 		if (firstFocusableElement) {
-			return firstFocusableElement.focus();
+			firstFocusableElement.focus();
 		}
 	}, [key, wrapperRef]);
 }

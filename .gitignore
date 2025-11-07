@@ -29,3 +29,7 @@ test-report.xml
 /playwright-report/
 /playwright/.cache/
 *.tgz
+
+# Playwright
+/blob-report/
+/playwright/.auth/
