@@ -14,7 +14,7 @@ import {
 } from '../shared/ComponentErrors/ComponentErrors';
 import type { LunaticError } from '../../use-lunatic/type';
 import { useLoopUtils } from './utils';
-import { useAutoFocus } from '../../hooks/use-auto-focus';
+import { useAutoFocusRow } from '../../hooks/use-auto-focus';
 
 /**
  * Loop without specific markup (stack of subcomponents)
@@ -23,7 +23,7 @@ export function Loop(props: LunaticComponentProps<'Loop'>) {
 	const { min, max, nbRows, addRow, removeRow, focusKey } = useLoopUtils(props);
 	const { getComponents, errors } = props;
 	const containerRef = useRef<HTMLDivElement>(null);
-	useAutoFocus(containerRef, focusKey);
+	useAutoFocusRow(containerRef, focusKey);
 
 	if (nbRows === 0) {
 		return null;
@@ -43,7 +43,7 @@ export function Loop(props: LunaticComponentProps<'Loop'>) {
 					<LunaticComponents
 						blocklist={blockedInLoopComponents}
 						components={getComponents(n)}
-						autoFocusKey={focusKey}
+						//autoFocusKey={focusKey}
 						componentProps={(c) => ({
 							...props,
 							...c,

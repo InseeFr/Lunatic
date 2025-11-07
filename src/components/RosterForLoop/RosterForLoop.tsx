@@ -10,7 +10,7 @@ import {
 } from '../shared/ComponentErrors/ComponentErrors';
 import { CustomLoop } from '../Loop/Loop';
 import { useLoopUtils } from '../Loop/utils';
-import { useAutoFocus } from '../../hooks/use-auto-focus';
+import { useAutoFocusRow } from '../../hooks/use-auto-focus';
 
 /**
  * Loop displayed as a table
@@ -21,7 +21,7 @@ export const RosterForLoop = (
 	const { min, max, nbRows, addRow, removeRow, focusKey } = useLoopUtils(props);
 
 	const containerRef = useRef<HTMLDivElement>(null);
-	useAutoFocus(containerRef, focusKey);
+	useAutoFocusRow(containerRef, focusKey);
 	const {
 		errors,
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -37,7 +37,6 @@ export const RosterForLoop = (
 	if (nbRows === 0) {
 		return null;
 	}
-
 	let cols = 0;
 
 	return (
@@ -71,7 +70,6 @@ export const RosterForLoop = (
 									<LunaticComponents
 										blocklist={blockedInLoopComponents}
 										components={components}
-										autoFocusKey={focusKey}
 										memo
 										componentProps={(c) => ({
 											...otherProps,
