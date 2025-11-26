@@ -610,6 +610,27 @@ describe('lunatic-variables-store', () => {
 				[null, null, null],
 			]);
 		});
+		it('should handle not clean itself', () => {
+			variables.set('PRENOM', ['Renoir', 'Alicia', 'Verso']);
+			cleaningBehaviour(
+				variables,
+				{
+					PRENOM: {
+						PRENOM: [
+							{
+								expression: 'PRENOM <> "Renoir"',
+								shapeFrom: 'PRENOM',
+								isAggregatorUsed: false,
+							},
+						],
+					},
+				},
+				{ PRENOM: [null] }
+			);
+
+			variables.set('PRENOM', 'Maëlle', { iteration: [1] });
+			expect(variables.get('PRENOM')).toEqual(['Renoir', 'Maëlle', 'Verso']);
+		});
 	});
 
 	describe('missing', () => {
