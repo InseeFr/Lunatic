@@ -55,6 +55,8 @@ export function cleaningBehaviour(
 
 		for (const variableName in cleaningInfo) {
 			try {
+				// Skip if variable to be cleaned (variableName) is the variable causing the change (case in questionnaire (fix later in generation))
+				if (variableName === e.detail.name) continue;
 				// Skip if variable is already in a cleaned state
 				if (isAlreadyCleaned(store, variableName)) continue;
 
