@@ -1191,6 +1191,9 @@
 						},
 						"dimension": {
 							"type": "number"
+						},
+						"isDeletedOnReset": {
+							"type": "boolean"
 						}
 					},
 					"required": ["variableType", "name", "value"],
