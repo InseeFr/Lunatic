@@ -244,6 +244,7 @@ export type Variable =
 			value: VariableValue;
 			iterationReference?: string;
 			dimension?: number;
+			isDeletedOnReset?: boolean;
 	  }
 	| {
 			variableType: 'COLLECTED';
