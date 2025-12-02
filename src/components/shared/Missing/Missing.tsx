@@ -82,12 +82,12 @@ export const MissingPure = (
 	);
 
 	useKeyboardKey(
-		Object.values(missingShortcut),
+		missingShortcut ? Object.values(missingShortcut) : [],
 		(e) => {
 			e.preventDefault();
-			if (e.key.toLowerCase() === missingShortcut.dontKnow.toLowerCase())
+			if (e.key.toLowerCase() === missingShortcut?.dontKnow.toLowerCase())
 				onClickDK();
-			if (e.key.toLowerCase() === missingShortcut.refused.toLowerCase())
+			if (e.key.toLowerCase() === missingShortcut?.refused.toLowerCase())
 				onClickRF();
 		},
 		hasKeyboardShortcut

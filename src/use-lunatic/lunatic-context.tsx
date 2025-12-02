@@ -6,8 +6,21 @@ import {
 } from 'react';
 
 import D from '../i18n/index';
+import type { LunaticOptions } from './type';
 
-const LunaticContext = createContext({
+type LunaticContextType = {
+	missingStrategy?: LunaticOptions['missingStrategy'];
+	management?: LunaticOptions['management'];
+	missing?: LunaticOptions['missing'];
+	shortcut?: LunaticOptions['shortcut'];
+	missingShortcut?: LunaticOptions['missingShortcut'];
+	dontKnowButton?: LunaticOptions['dontKnowButton'];
+	refusedButton?: LunaticOptions['refusedButton'];
+	componentsOptions?: LunaticOptions['componentsOptions'];
+};
+
+/** Mandatory values used as a context's last-resort fallback. */
+const defaultValues = {
 	missingStrategy: () => {},
 	management: false,
 	missing: false,
@@ -15,8 +28,15 @@ const LunaticContext = createContext({
 	missingShortcut: { dontKnow: '', refused: '' },
 	dontKnowButton: D.DK,
 	refusedButton: D.RF,
-	componentsOptions: { detailAlwaysDisplayed: false },
-});
+	componentsOptions: {
+		detailAlwaysDisplayed: false,
+		disableRosterForLoopDeleteRowButton: false,
+	},
+};
+
+/** Expose specific Lunatic options to handle some (e.g. missing, management, components options) */
+export const LunaticContext = createContext<LunaticContextType>(defaultValues);
+
 /**
  * Provide `missing`, `missingStrategy`, `shortcut` and `missingShortcut`,
  * `dontKnowButton`, `refusedButton` to `Missing` component to manage
@@ -41,9 +61,10 @@ export const useLunaticMissing = () => {
 	};
 };
 
+/** Expose the specified options to override default component behaviour. */
 export const useLunaticComponentsOptions = () => {
 	const { componentsOptions } = useContext(LunaticContext);
-	return componentsOptions;
+	return componentsOptions ?? {};
 };
 
 /** Provide `management` to display data states [COLLECTED,EDITED,FORCED] */
@@ -60,16 +81,7 @@ export function createLunaticProvider({
 	dontKnowButton,
 	refusedButton,
 	componentsOptions,
-}: {
-	management: boolean;
-	missing: boolean;
-	missingStrategy: () => void;
-	shortcut: boolean;
-	missingShortcut: { dontKnow: string; refused: string };
-	dontKnowButton: string;
-	refusedButton: string;
-	componentsOptions: { detailAlwaysDisplayed: boolean };
-}): FunctionComponent<PropsWithChildren> {
+}: LunaticContextType): FunctionComponent<PropsWithChildren> {
 	const value = {
 		management,
 		missing,

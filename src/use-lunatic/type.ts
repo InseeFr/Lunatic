@@ -185,16 +185,25 @@ export type LunaticReducerState = {
 
 /** Specific behaviour options defined in the {@link useLunatic} hook. */
 export type LunaticOptions = {
-	/** Ignore filters. (default: `false`) */
+	/**
+	 * Ignore filters.
+	 * @default false
+	 */
 	disableFilters?: boolean;
 
-	/** Disable filters description. (default: `true`) */
+	/**
+	 * Disable filters description.
+	 * @default true
+	 */
 	disableFiltersDescription?: boolean;
 
 	/** Enable VTL and Markdown support. */
 	features?: ('MD' | 'VTL')[];
 	preferences?: ['COLLECTED'];
-	/** Key in which the data is saved. (default: `"COLLECTED"`) */
+	/**
+	 * Key in which the data is saved.
+	 * @default "COLLECTED"
+	 */
 	savingType?: 'COLLECTED';
 	/** Function called when a variable is changed by a user input (must be memoized as it is used in dependency of a `useCallback` by the library). */
 	onChange?: LunaticChangesHandler;
@@ -204,24 +213,43 @@ export type LunaticOptions = {
 	 *
 	 * Enable management mode which allow to handle multiple states of the same variable (used by recovery positions).
 	 *
-	 * The administrator can switch between `COLLECTED`, `EDITED`, `INPUTTED` modes. (default: `false`)
+	 * The administrator can switch between `COLLECTED`, `EDITED`, `INPUTTED` modes.
+	 * @default false
 	 */
 	management?: boolean;
-	/** Enable keyboard shortcuts for checkboxes, radio buttons and missing buttons (default: `false`). */
+	/**
+	 * Enable keyboard shortcuts for checkboxes, radio buttons and missing buttons.
+	 * @default false
+	 */
 	shortcut?: boolean;
-	/** Starting page at launch. (default: `"1"`) */
+	/**
+	 * Starting page at launch.
+	 * @default '1'
+	 */
 	initialPage?: PageTag;
 	/** Furthest page the user ever reached. */
 	lastReachedPage?: PageTag;
-	/** Enable the preemptive loading of suggester data on Lunatic initialization. (default: `false`) */
+	/**
+	 * Enable the preemptive loading of suggester data on Lunatic initialization.
+	 * @default false
+	 */
 	autoSuggesterLoading?: boolean;
 	/** Function called to fetch nomenclatures used by the suggesters. */
 	getReferentiel?: (name: string) => Promise<Array<IndexEntry>>;
-	/** Enable data controls (form validation). (default: `false`) */
+	/**
+	 * Enable data controls (form validation).
+	 * @default false
+	 */
 	activeControls?: boolean;
-	/** Enable overview system. (default: `false`) */
+	/**
+	 * Enable overview system.
+	 * @default false
+	 */
 	withOverview?: boolean;
-	/** Enable missing system. (default: `false`) */
+	/**
+	 * Enable missing system.
+	 * @default false
+	 */
 	missing?: boolean;
 	/** Function triggered when a missing button is clicked. */
 	missingStrategy?: () => void;
@@ -231,10 +259,29 @@ export type LunaticOptions = {
 	dontKnowButton?: string;
 	/** "Refused" button label. */
 	refusedButton?: string;
-	/** Enable change tracking to keep a track of what variable changed (allow using getChangedData()). (default: `false`) */
+	/**
+	 * Enable change tracking to keep a track of what variable changed
+	 * (allow using getChangedData()).
+	 * @default false
+	 */
 	trackChanges?: boolean;
 	logger?: LunaticLogger;
-	componentsOptions?: { detailAlwaysDisplayed?: boolean };
+	/** Options that can be set to override default component behaviour. */
+	componentsOptions?: {
+		/**
+		 * Set the details ("autre précisez") as always displayed (even if the
+		 * related "other" modality is not currently selected).
+		 * @since 3.4.9
+		 * @default false
+		 */
+		detailAlwaysDisplayed?: boolean;
+		/**
+		 * Set the "remove row" button as disabled in roster for loop.
+		 * @since 3.7.5
+		 * @default false
+		 */
+		disableRosterForLoopDeleteRowButton?: boolean;
+	};
 	/** Commit variable change automatically for resizing / cleaning (used for testing) **/
 	autoCommit?: boolean;
 };
