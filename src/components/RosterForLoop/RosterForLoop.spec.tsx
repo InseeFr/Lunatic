@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { RosterForLoop } from './RosterForLoop';
 import type { LunaticComponentProps } from '../type';
+import { LunaticContext } from '../../use-lunatic/lunatic-context';
 
 describe('RosterForLoop', () => {
 	const mockOnChange = vi.fn();
@@ -38,5 +39,32 @@ describe('RosterForLoop', () => {
 		);
 		expect(container).toMatchSnapshot();
 		expect(screen.getAllByRole('row')).toHaveLength(2);
+		expect(screen.getByRole('button', { name: /add/i })).toBeEnabled();
+		expect(screen.getByRole('button', { name: /remove/i })).toBeEnabled();
+	});
+
+	it('disable the remove row button', () => {
+		const { container } = render(
+			<LunaticContext.Provider
+				value={{
+					componentsOptions: { disableRosterForLoopDeleteRowButton: true },
+				}}
+			>
+				<RosterForLoop
+					value={{ name: ['John Doe', 'Jane Doe'] }}
+					handleChanges={mockOnChange}
+					label="Ceci est un test"
+					id="table"
+					lines={{ min: 1, max: 3 }}
+					iterations={2}
+					getComponents={getComponents}
+					executeExpression={() => null as any}
+				/>
+			</LunaticContext.Provider>
+		);
+		expect(container).toMatchSnapshot();
+		expect(screen.getAllByRole('row')).toHaveLength(2);
+		expect(screen.getByRole('button', { name: /add/i })).toBeEnabled();
+		expect(screen.getByRole('button', { name: /remove/i })).toBeDisabled();
 	});
 });

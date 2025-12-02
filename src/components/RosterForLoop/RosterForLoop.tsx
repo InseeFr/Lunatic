@@ -10,6 +10,7 @@ import {
 } from '../shared/ComponentErrors/ComponentErrors';
 import { CustomLoop } from '../Loop/Loop';
 import { useLoopUtils } from '../Loop/utils';
+import { useLunaticComponentsOptions } from '../../use-lunatic/lunatic-context';
 
 /**
  * Loop displayed as a table
@@ -17,6 +18,7 @@ import { useLoopUtils } from '../Loop/utils';
 export const RosterForLoop = (
 	props: LunaticComponentProps<'RosterForLoop'>
 ) => {
+	const { disableRosterForLoopDeleteRowButton } = useLunaticComponentsOptions();
 	const { min, max, nbRows, addRow, removeRow } = useLoopUtils(props);
 	const {
 		errors,
@@ -43,6 +45,7 @@ export const RosterForLoop = (
 			addRow={nbRows === max ? undefined : addRow}
 			removeRow={nbRows === min ? undefined : removeRow}
 			canControlRows={!!(min && max && min !== max)}
+			disableDeleteRowButton={disableRosterForLoopDeleteRowButton}
 		>
 			<Table id={id}>
 				{header && <TableHeader header={header} />}

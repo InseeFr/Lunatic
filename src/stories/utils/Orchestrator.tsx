@@ -36,6 +36,8 @@ type Props = {
 	getReferentiel: (name: string) => Promise<IndexEntry[]>;
 	// Display detail input even if the corresponding checkbox is not checked
 	detailAlwaysDisplayed?: boolean;
+	// Set the "remove row" button as disabled in roster for loop.
+	disableRosterForLoopDeleteRowButton?: boolean;
 	// Enable missing buttons
 	missing?: boolean;
 	// Readonly mode
@@ -78,11 +80,15 @@ function OrchestratorForStories(props: Readonly<Props>) {
 		readOnly,
 		disabled,
 		detailAlwaysDisplayed,
+		disableRosterForLoopDeleteRowButton,
 		autoSuggesterLoading,
 		extraTabs = [],
 	} = props;
 
-	const componentsOptions = { detailAlwaysDisplayed };
+	const componentsOptions = {
+		detailAlwaysDisplayed,
+		disableRosterForLoopDeleteRowButton,
+	};
 
 	const {
 		getComponents,
@@ -313,6 +319,7 @@ export const OrchestratorMeta: Meta<typeof Orchestrator> = {
 		readOnly: false,
 		disabled: false,
 		detailAlwaysDisplayed: false,
+		disableRosterForLoopDeleteRowButton: false,
 		autoSuggesterLoading: false,
 	},
 };
