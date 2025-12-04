@@ -106,7 +106,10 @@ describe('use-lunatic()', () => {
 					missingShortcut: { dontKnow: '1', refused: '2' },
 					dontKnowButton: 'DK',
 					refusedButton: 'RF',
-					componentsOptions: { detailAlwaysDisplayed: false },
+					componentsOptions: {
+						detailAlwaysDisplayed: false,
+						disableRosterForLoopDeleteRowButton: false,
+					},
 				});
 			});
 

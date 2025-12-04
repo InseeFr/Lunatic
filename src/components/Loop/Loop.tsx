@@ -67,6 +67,7 @@ type CustomProps = Omit<
 		addRow?: () => void;
 		removeRow?: () => void;
 		canControlRows?: boolean;
+		disableDeleteRowButton?: boolean;
 	}>;
 
 export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
@@ -79,6 +80,7 @@ export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
 		errors,
 		addRow,
 		removeRow,
+		disableDeleteRowButton = false,
 	} = props;
 
 	return (
@@ -98,7 +100,10 @@ export const CustomLoop = slottableComponent<CustomProps>('Loop', (props) => {
 					<Button onClick={addRow} disabled={!addRow}>
 						{D.DEFAULT_BUTTON_ADD}
 					</Button>
-					<Button onClick={removeRow} disabled={!removeRow}>
+					<Button
+						onClick={removeRow}
+						disabled={disableDeleteRowButton || !removeRow}
+					>
 						{D.DEFAULT_BUTTON_REMOVE}
 					</Button>
 				</>

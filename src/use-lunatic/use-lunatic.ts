@@ -67,7 +67,10 @@ const defaultOptions = {
 	refusedButton: DEFAULT_REFUSED,
 	trackChanges: false,
 	logger: ConsoleLogger,
-	componentsOptions: { detailAlwaysDisplayed: false },
+	componentsOptions: {
+		detailAlwaysDisplayed: false,
+		disableRosterForLoopDeleteRowButton: false,
+	},
 } satisfies LunaticOptions;
 
 /** The first library entrypoint is the `useLunatic` hook. */
@@ -143,6 +146,7 @@ export function useLunatic(
 			dontKnowButton,
 			refusedButton,
 			componentsOptions.detailAlwaysDisplayed,
+			componentsOptions.disableRosterForLoopDeleteRowButton,
 		]
 	);
 
