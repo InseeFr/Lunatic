@@ -36,7 +36,7 @@ export const CustomSuggester = slottableComponent<Props>(
 	({
 		className,
 		classNamePrefix = 'lunatic',
-		placeholder = D.PLACEHOLDER,
+		placeholder = D.SUGGESTER_PLACEHOLDER,
 		onSelect = voidFunction,
 		labelRenderer,
 		optionRenderer,

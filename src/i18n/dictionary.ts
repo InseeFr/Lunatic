@@ -5,7 +5,8 @@ const dictionary = {
 	MODAL_CORRECT: { fr: 'Corriger ma réponse', en: 'Correct' },
 	DK: { fr: 'Ne sais pas', en: "Don't know" },
 	RF: { fr: 'Refus', en: 'Refused' },
-	PLACEHOLDER: { fr: 'Commencez votre saisie...', en: 'Start typing...' },
+	PLACEHOLDER: { fr: 'Sélectionnez une modalité', en: 'Select a modality' },
+	SUGGESTER_PLACEHOLDER: { fr: 'Commencez votre saisie...', en: 'Start typing...' },
 	SUGGESTER_LOADING: {
 		fr: 'Liste en cours de chargement',
 		en: 'List is loading',
