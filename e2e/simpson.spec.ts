@@ -114,15 +114,15 @@ test('can complete simpson form', async ({ page }) => {
 		.getByRole('row', {
 			name: 'Loose the violin of his daughter playing poker',
 		})
-		.getByText('Sélectionnez une modalité')
+		.getByText('Select a modality')
 		.click();
 	await page.getByText('Jay').click();
 	await page
 		.getByRole('row', { name: 'Kill Mr Burns' })
-		.getByText('Sélectionnez une modalité')
+		.getByText('Select a modality')
 		.click();
 	await page.getByText('Other').locator('visible=true').click();
-	await page.getByText('Sélectionnez une modalité').click();
+	await page.getByText('Select a modality').click();
 	await page.getByRole('option', { name: 'Jay' }).getByText('Jay').click();
 	await gotoNextPage(page, 4);
 	await page
@@ -144,7 +144,7 @@ test('can complete simpson form', async ({ page }) => {
 	await gotoNextPage(page);
 	await page
 		.getByRole('row', { name: 'Leave with pay' })
-		.getByText('Sélectionnez une modalité')
+		.getByText('Select a modality')
 		.click();
 	await page.getByText('Calendar days').click();
 	await gotoNextPage(page, 2);
