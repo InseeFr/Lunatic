@@ -70,11 +70,14 @@ export const tokenizeIndex = (
 
 /**
  * Normalize a string
- * - Remove accent (é => e, à => a
+ * - Remove accent (é => e, à => a)
+ * - remove ligatures (æ => ae, , Æ => ae, œ => oe, Œ => oe)
  * - Lowercase
  */
 const normalizeStr = (str: string) => {
 	return str
+		.replace(/œ/gi, 'oe')
+		.replace(/æ/gi, 'ae')
 		.normalize('NFD')
 		.replace(/[\u0300-\u036f]/g, '')
 		.toLowerCase();
