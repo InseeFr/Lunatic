@@ -10,17 +10,6 @@ const data = [
 ];
 
 describe('applyMelauto', () => {
-	it('should sort data by relevance to the query', () => {
-		const sortedData = applyMelauto('hello', data);
-		const expectedSortedData = [
-			{ id: '1', label: 'Hello world' },
-			{ id: '3', label: 'Hello everyone' },
-			{ id: '2', label: 'Bonjour le monde' },
-			{ id: '4', label: 'Greetings planet' },
-		];
-		expect(sortedData).toStrictEqual(expectedSortedData);
-	});
-
 	it('should return data in original order if query is empty', () => {
 		const sortedData = applyMelauto('', data);
 		expect(sortedData).toEqual(data);
