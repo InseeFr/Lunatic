@@ -1,15 +1,43 @@
 /**
  * Apply Melauto sorting algorithm on the data
+ * 
+ * 1. Sort by melauto score 
+ * 2. When scores are equal and query contains numbers, sort alphabetically with numeric awareness
+ *    This ensures consistent ordering for numeric queries
+ *    (e.g., "0111Z" will appear before "0115Z" when both match "011")
+ * 3. Otherwise, preserve original order when scores are equal
  */
 export function applyMelauto<T extends { id: string; label?: string }>(
 	query: string,
 	data: T[]
 ): T[] {
-	return data.sort(
-		(a, b) =>
-			melautoScore(b.label ?? b.id, query) -
-			melautoScore(a.label ?? a.id, query)
-	);
+	// Check if query contains any digits
+	const hasNumbers = /\d/.test(query);
+
+	// Map items with their original index 
+	const indexed = data.map((item, index) => ({ item, index }));
+
+	return indexed
+		.sort((a, b) => {
+			const sa = melautoScore(a.item.label ?? a.item.id, query);
+			const sb = melautoScore(b.item.label ?? b.item.id, query);
+			const diff = sb - sa;
+			if (diff !== 0) return diff;
+
+			// When scores are equal and query has numbers, use alphanumeric comparison
+			if (hasNumbers) {
+				const ta = (a.item.label ?? a.item.id).toString();
+				const tb = (b.item.label ?? b.item.id).toString();
+				return ta.localeCompare(tb, undefined, {
+					numeric: true,
+					sensitivity: 'base',
+				});
+			}
+
+			// Otherwise, preserve original sorting logic 
+			return a.index - b.index;
+		})
+		.map(({ item }) => item);
 }
 
 /**

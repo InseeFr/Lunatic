@@ -72,4 +72,21 @@ describe('melautoScore', () => {
 		const score2 = melautoScore('Hello world', 'héllo-wOrld');
 		expect(score1).toBeCloseTo(score2, 2);
 	});
+
+	it('should sort alphabetically with numeric awareness when scores are equal', () => {
+		const numericData = [
+			{ id: '0115Z', label: '0115Z' },
+			{ id: '0111Z', label: '0111Z' },
+			{ id: '0120A', label: '0120A' },
+			{ id: '0112B', label: '0112B' },
+		];
+		const sortedData = applyMelauto('011', numericData);
+		const expectedSortedData = [
+			{ id: '0111Z', label: '0111Z' },
+			{ id: '0112B', label: '0112B' },
+			{ id: '0115Z', label: '0115Z' },
+			{ id: '0120A', label: '0120A' },
+		];
+		expect(sortedData).toStrictEqual(expectedSortedData);
+	});
 });
