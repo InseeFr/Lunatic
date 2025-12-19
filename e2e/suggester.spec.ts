@@ -121,7 +121,6 @@ test.describe('Suggester', () => {
 			await page.getByRole('textbox').nth(0).fill('Montpell');
 			await expectPageToHaveText(page, 'Montpellier');
 			await page.keyboard.press('ArrowDown');
-			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 			await expectCollectedData(page, 'VARIABLECO', '3417200001');
 		});
@@ -133,7 +132,6 @@ test.describe('Suggester', () => {
 			await expectPageToHaveText(page, 'Variable Commune');
 			await page.getByRole('textbox').nth(0).fill('Montpell');
 			await expectPageToHaveText(page, 'Montpellier');
-			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 			await expectCollectedData(page, 'VARIABLECO', '3417200001');
