@@ -76,11 +76,11 @@ export const tokenizeIndex = (
  */
 const normalizeStr = (str: string) => {
 	return str
-		.replace(/œ/gi, 'oe')
-		.replace(/æ/gi, 'ae')
+		.toLowerCase()
+		.replaceAll('œ', 'oe')
+		.replaceAll('æ', 'ae')
 		.normalize('NFD')
-		.replace(/[\u0300-\u036f]/g, '')
-		.toLowerCase();
+		.replace(/[\u0300-\u036f]/g, '');
 };
 
 /**
