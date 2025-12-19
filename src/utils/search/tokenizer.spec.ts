@@ -121,6 +121,13 @@ describe('tokenizeQuery', () => {
 		expect(result).toEqual(['eleve', 'etudiant']);
 	});
 
+	it('should normalize ligatures like œ and æ', () => {
+		const queryParser = { type: 'soft' } as SearchInfo['queryParser'];
+
+		const result = tokenizeQuery('œuvre Œuvre æternam Æternam', queryParser);
+		expect(result).toEqual(['oeuvre', 'oeuvre', 'aeternam', 'aeternam']);
+	});
+
 	it('should return an empty array for unmatched patterns', () => {
 		const queryParser = {
 			type: 'tokenized',
@@ -152,6 +159,13 @@ describe('tokenizeIndex', () => {
 
 		const result = tokenizeIndex('Élève Étudiant!', fieldInfo);
 		expect(result).toEqual(['eleve', 'etudiant']);
+	});
+
+	it('should normalize ligatures like œ and æ', () => {
+		const fieldInfo = mockSearchInfo.fields[0];
+
+		const result = tokenizeIndex('œuvre Œuvre æternam Æternam', fieldInfo);
+		expect(result).toEqual(['oeuvre', 'oeuvre', 'aeternam', 'aeternam']);
 	});
 
 	it('should filter out stopWords', () => {
