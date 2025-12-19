@@ -88,7 +88,11 @@ describe('melautoScore', () => {
 
 		const sorted = applyMelauto('code', mixedData);
 		// Should sort numerically: code2, code10, code20
-		expect(sorted.map(d => d.id)).toStrictEqual(['code2', 'code10', 'code20']);
+		expect(sorted.map((d) => d.id)).toStrictEqual([
+			'code2',
+			'code10',
+			'code20',
+		]);
 	});
 
 	it('should handle mixed alphanumeric queries with numeric sorting', () => {
@@ -100,6 +104,11 @@ describe('melautoScore', () => {
 		];
 		const sortedData = applyMelauto('item2', data);
 		// "item2A" scores highest (exact match), others sorted alphanumerically
-		expect(sortedData.map(d => d.id)).toStrictEqual(['item2A', 'item20C', 'item3D', 'item10B',]);
+		expect(sortedData.map((d) => d.id)).toStrictEqual([
+			'item2A',
+			'item20C',
+			'item3D',
+			'item10B',
+		]);
 	});
 });
