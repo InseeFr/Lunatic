@@ -78,4 +78,43 @@ describe('melautoScore', () => {
 		];
 		expect(sortedData).toStrictEqual(expectedSortedData);
 	});
+
+	it('should preserve original order when scores are equal for text queries', () => {
+		const textData = [
+			{ id: '1', label: 'Hello world' },
+			{ id: '2', label: 'Hello everyone' },
+			{ id: '3', label: 'Hello friend' },
+		];
+		const sortedData = applyMelauto('hello', textData);
+		const expectedSortedData = [
+			{ id: '2', label: 'Hello everyone' },
+			{ id: '3', label: 'Hello friend' },
+			{ id: '1', label: 'Hello world' },
+		];
+		expect(sortedData).toStrictEqual(expectedSortedData);
+	});
+
+	it('should apply alphanumeric sort with numeric awareness', () => {
+		const mixedData = [
+			{ id: 'code10', label: 'code10' },
+			{ id: 'code2', label: 'code2' },
+			{ id: 'code20', label: 'code20' },
+		];
+
+		const sorted = applyMelauto('code', mixedData);
+		// Should sort numerically: code2, code10, code20
+		expect(sorted.map(d => d.id)).toStrictEqual(['code2', 'code10', 'code20']);
+	});
+
+	it('should handle mixed alphanumeric queries with numeric sorting', () => {
+		const data = [
+			{ id: 'item10B', label: 'item10B' },
+			{ id: 'item2A', label: 'item2A' },
+			{ id: 'item20C', label: 'item20C' },
+			{ id: 'item3D', label: 'item3D' },
+		];
+		const sortedData = applyMelauto('item2', data);
+		// "item2A" scores highest (exact match), others sorted alphanumerically
+		expect(sortedData.map(d => d.id)).toStrictEqual(['item2A', 'item20C', 'item3D', 'item10B',]);
+	});
 });
