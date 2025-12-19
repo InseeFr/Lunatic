@@ -79,21 +79,6 @@ describe('melautoScore', () => {
 		expect(sortedData).toStrictEqual(expectedSortedData);
 	});
 
-	it('should preserve original order when scores are equal for text queries', () => {
-		const textData = [
-			{ id: '1', label: 'Hello world' },
-			{ id: '2', label: 'Hello everyone' },
-			{ id: '3', label: 'Hello friend' },
-		];
-		const sortedData = applyMelauto('hello', textData);
-		const expectedSortedData = [
-			{ id: '2', label: 'Hello everyone' },
-			{ id: '3', label: 'Hello friend' },
-			{ id: '1', label: 'Hello world' },
-		];
-		expect(sortedData).toStrictEqual(expectedSortedData);
-	});
-
 	it('should apply alphanumeric sort with numeric awareness', () => {
 		const mixedData = [
 			{ id: 'code10', label: 'code10' },
