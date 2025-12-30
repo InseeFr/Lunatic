@@ -13,6 +13,7 @@ import { ComboboxClearButton } from './Selection/ComboboxClearButton';
 import { ComboboxSelection } from './Selection/ComboboxSelection';
 import { between, forceInt } from '../../../utils/number';
 import { Label } from '../Label/Label';
+import D from '../../../i18n';
 import { slottableComponent } from '../HOC/slottableComponent';
 import type { LunaticError } from '../../../use-lunatic/type';
 import { Declarations } from '../Declarations/Declarations';
@@ -45,7 +46,7 @@ function LunaticComboBox({
 	className,
 	classNamePrefix,
 	classStyle = 'default-style',
-	placeholder = 'Commencez votre saisie...',
+	placeholder = D.PLACEHOLDER,
 	editable = false,
 	disabled,
 	readOnly,
