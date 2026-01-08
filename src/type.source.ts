@@ -223,6 +223,16 @@ export type ComponentPairWiseLinksDefinition = ComponentDefinitionBase & {
 			[k: string]: string | null;
 		};
 	};
+	sourceVariables?: {
+		/**
+		 * Name of the variable containing the name of the respondent
+		 */
+		name?: string;
+		/**
+		 * Name of the variable containing the sex/gender of the respondent (value of variable -> 1:male, 2: female)
+		 */
+		gender?: string;
+	};
 	components: ComponentDefinition[];
 };
 export type ComponentSummaryDefinition = ComponentDefinitionBase & {
