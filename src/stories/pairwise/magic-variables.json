@@ -1,0 +1,369 @@
+{
+	"id": "mbuvc1zp",
+	"label": { "type": "VTL|MD", "value": "FEAT: MAGIC variable pairwise" },
+	"modele": "MAGIC_PAIRWISE",
+	"maxPage": "3",
+	"cleaning": {
+		"PRENOM": {
+			"PAIRWISE": [
+				{
+					"shapeFrom": "PRENOM",
+					"expression": "nvl(PRENOM, \"\") <> \"\"",
+					"isAggregatorUsed": false
+				}
+			]
+		}
+	},
+	"resizing": {
+		"PRENOM": {
+			"linksVariables": ["PAIRWISE"],
+			"sizeForLinksVariables": {
+				"xAxisSize": "count(PRENOM)",
+				"yAxisSize": "count(PRENOM)"
+			}
+		}
+	},
+	"variables": [
+		{
+			"name": "PRENOM",
+			"values": { "COLLECTED": [] },
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "m8ob7c76"
+		},
+		{
+			"name": "SEXE",
+			"values": { "COLLECTED": [] },
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "m8ob7c76"
+		},
+		{
+			"name": "PAIRWISE",
+			"values": { "COLLECTED": [[]] },
+			"dimension": 2,
+			"variableType": "COLLECTED",
+			"iterationReference": "m8ob7c76"
+		},
+		{
+			"name": "xAxis",
+			"shapeFrom": ["PRENOM"],
+			"expression": { "type": "VTL", "value": "PRENOM" },
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["PRENOM"]
+		},
+		{
+			"name": "yAxis",
+			"shapeFrom": ["PRENOM"],
+			"expression": { "type": "VTL", "value": "PRENOM" },
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["PRENOM"]
+		},
+		{
+			"name": "FILTER_RESULT_PRENOM",
+			"dimension": 1,
+			"shapeFrom": ["PRENOM", "SEXE"],
+			"expression": { "type": "VTL", "value": "true" },
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "m8ob7c76"
+		},
+		{
+			"name": "FILTER_RESULT_SEXE",
+			"dimension": 1,
+			"shapeFrom": ["PRENOM", "SEXE"],
+			"expression": { "type": "VTL", "value": "true" },
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "m8ob7c76"
+		},
+		{
+			"name": "FILTER_RESULT_PAIRWISE",
+			"dimension": 2,
+			"shapeFrom": ["PRENOM", "SEXE"],
+			"expression": {
+				"type": "VTL",
+				"value": "(nvl(xAxis, \"\") <> \"\") and (nvl(yAxis, \"\") <> \"\")"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "m8ob7c76"
+		}
+	],
+	"components": [
+		{
+			"id": "m8ob7c76",
+			"page": "1",
+			"depth": 1,
+			"lines": {
+				"max": { "type": "VTL", "value": "5" },
+				"min": { "type": "VTL", "value": "1" }
+			},
+			"components": [
+				{
+					"id": "m8ob2mc8",
+					"page": "1",
+					"label": {
+						"type": "VTL",
+						"value": "\"I - \" || \"S1\"",
+						"shapeFrom": "PRENOM"
+					},
+					"componentType": "Sequence",
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true",
+						"shapeFrom": "PRENOM"
+					}
+				},
+				{
+					"id": "question-m8ob76sn",
+					"page": "1",
+					"label": { "type": "VTL|MD", "value": "\"Prénom du lien 2 à 2\"" },
+					"components": [
+						{
+							"id": "m8ob76sn",
+							"page": "1",
+							"response": { "name": "PRENOM" },
+							"maxLength": 249,
+							"isMandatory": false,
+							"componentType": "Input"
+						}
+					],
+					"componentType": "Question",
+					"conditionFilter": { "type": "VTL", "value": "true" }
+				},
+				{
+					"id": "question-mk5iabdt",
+					"page": "1",
+					"label": { "type": "VTL|MD", "value": "\"Sexe du lien 2 à 2\"" },
+					"components": [
+						{
+							"id": "mk5iabdt",
+							"page": "1",
+							"options": [
+								{
+									"label": { "type": "VTL|MD", "value": "\"Homme\"" },
+									"value": "1"
+								},
+								{
+									"label": { "type": "VTL|MD", "value": "\"Femme\"" },
+									"value": "2"
+								}
+							],
+							"response": { "name": "SEXE" },
+							"isMandatory": false,
+							"orientation": "vertical",
+							"componentType": "Radio"
+						}
+					],
+					"componentType": "Question",
+					"conditionFilter": { "type": "VTL", "value": "true" }
+				}
+			],
+			"componentType": "Loop",
+			"paginatedLoop": false,
+			"conditionFilter": { "type": "VTL", "value": "(true)" }
+		},
+		{
+			"id": "m8obbjkd",
+			"page": "2",
+			"label": {
+				"type": "VTL",
+				"value": "\"II - \" || \"Liens entre les habitants du logement\"",
+				"shapeFrom": "PRENOM"
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true",
+				"shapeFrom": "PRENOM"
+			}
+		},
+		{
+			"id": "question-m8ob5u9l",
+			"page": "3",
+			"components": [
+				{
+					"id": "m8ob5u9l",
+					"page": "3",
+					"symLinks": {
+						"PAIRWISE": {
+							"1": "1",
+							"2": "3",
+							"3": "2",
+							"4": "4",
+							"5": "6",
+							"6": "5",
+							"7": "8",
+							"8": "7",
+							"9": "10",
+							"10": "9",
+							"11": "13",
+							"12": "12",
+							"13": "11",
+							"14": null,
+							"15": "15",
+							"16": "16",
+							"17": "17",
+							"18": "18"
+						}
+					},
+					"components": [
+						{
+							"id": "m8ob5u9l-pairwise-dropdown",
+							"page": "3",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Qui est \" || yAxis || \" pour \" || xAxis || \" ?\""
+							},
+							"options": [
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Son conjoint, sa conjointe\""
+									},
+									"value": "1"
+								},
+								{
+									"label": { "type": "VTL", "value": "\"Sa mère, son père\"" },
+									"value": "2"
+								},
+								{
+									"label": { "type": "VTL", "value": "\"Sa fille, son fils\"" },
+									"value": "3"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Sa soeur, son frère (y compris demi et quasi)\""
+									},
+									"value": "4"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Le ou la conjoint(e) d'un de ses parents (belle-mère, beau-père)\""
+									},
+									"value": "5"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"L'enfant de son ou sa conjoint(e) (belle-fille, beau-fils)\""
+									},
+									"value": "6"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Le parent de son ou sa conjoint(e) (belle-mère, beau-père)\""
+									},
+									"value": "7"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Le ou la conjoint(e) de son enfant (belle-fille, beau-fils)\""
+									},
+									"value": "8"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Sa grand-mère, son grand-père\""
+									},
+									"value": "9"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Sa petite-fille, petit-fils\""
+									},
+									"value": "10"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Sa tante, son oncle\""
+									},
+									"value": "11"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Sa cousine, son cousin\""
+									},
+									"value": "12"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Sa nièce, son neveu\""
+									},
+									"value": "13"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Un enfant placé en famille d'accueil\""
+									},
+									"value": "14"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Sa belle-soeur, son beau-frère\""
+									},
+									"value": "15"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Un autre lien familial\""
+									},
+									"value": "16"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Son ou sa colocataire, sous-locataire\""
+									},
+									"value": "17"
+								},
+								{
+									"label": {
+										"type": "VTL",
+										"value": "\"Autre lien (employé de maison, salarié logé, jeune au pair …)\""
+									},
+									"value": "18"
+								}
+							],
+							"response": { "name": "PAIRWISE" },
+							"isMandatory": false,
+							"componentType": "Dropdown",
+							"conditionFilter": {
+								"type": "VTL",
+								"value": "(nvl(xAxis, \"\") <> \"\") and (nvl(yAxis, \"\") <> \"\")"
+							}
+						}
+					],
+					"sourceVariables": {
+						"name": "PRENOM",
+						"gender": "SEXE"
+					},
+
+					"componentType": "PairwiseLinks",
+					"xAxisIterations": { "type": "VTL", "value": "count(PRENOM)" },
+					"yAxisIterations": { "type": "VTL", "value": "count(PRENOM)" }
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": { "type": "VTL", "value": "true" }
+		}
+	],
+	"pagination": "question",
+	"componentType": "Questionnaire",
+	"enoCoreVersion": "3.59.0",
+	"generatingDate": "08-01-2026 17:01:00",
+	"lunaticModelVersion": "5.11.0"
+}
