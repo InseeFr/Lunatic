@@ -19,18 +19,28 @@ export function pageStringToNumbers(page: string): number[] {
 	return page.split('.').map((v) => parseInt(v, 10));
 }
 
+// see useLoopUtils.ts
+function getIterationOfLoop(
+	component: LunaticComponentDefinition,
+	executeExpression: LunaticReducerState['executeExpression']
+) {
+	const min =
+		'lines' in component ? executeExpression<number>(component.lines.min) : 0;
+	const iterations =
+		'iterations' in component
+			? executeExpression<number>(component.iterations)
+			: 0;
+	return Math.max(min, iterations);
+}
+
 function isEmptyNotPaginatedLoop(
 	component: LunaticComponentDefinition,
 	state: LunaticReducerState
 ): boolean {
-	if (
-		component.componentType === 'Loop' &&
-		'lines' in component &&
-		!component.paginatedLoop
-	) {
-		const nbIteration = state.executeExpression<number>(component.lines.min);
-		// 0 iteration -> remove the Loop from visible components
-		if (nbIteration === 0) return false;
+	if (component.componentType === 'Loop' && !component.paginatedLoop) {
+		const nbIteration = getIterationOfLoop(component, state.executeExpression);
+		// 0 iteration -> it's an empty Loop
+		if (nbIteration === 0) return true;
 		let nbComponentInside = 0;
 		for (
 			let iterationOfLoop = 0;
@@ -49,9 +59,10 @@ function isEmptyNotPaginatedLoop(
 			});
 			nbComponentInside += componentsAtIteration.length;
 		}
-		// No components inside the not paginated Loop -> remove the Loop from visible components
+		// No components inside the not paginated Loop -> it's an empty Loop
 		if (nbComponentInside === 0) return true;
 	}
+	// otherwise -> false, not empty
 	return false;
 }
 
