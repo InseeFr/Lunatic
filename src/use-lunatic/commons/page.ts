@@ -16,7 +16,7 @@ export function getPageId({
  * Converts a page number (3.1.2) to an array of numbers [3, 1, 2]
  */
 export function pageStringToNumbers(page: string): number[] {
-	return page.split('.').map((v) => parseInt(v, 10));
+	return page.split('.').map((v) => Number.parseInt(v, 10));
 }
 
 // see useLoopUtils.ts
