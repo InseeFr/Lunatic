@@ -33,37 +33,48 @@ function getIterationOfLoop(
 	return Math.max(min, iterations);
 }
 
-function isEmptyNotPaginatedLoop(
+/**
+ * Check if a not paginated Loop has at least one component to display
+ * @param component
+ * @param state
+ * @returns boolean indicating if the not paginated Loop is empty
+ */
+function hasAtLeastOneComponentVisible(
 	component: LunaticComponentDefinition,
 	state: LunaticReducerState
 ): boolean {
 	if (component.componentType === 'Loop' && !component.paginatedLoop) {
 		const nbIteration = getIterationOfLoop(component, state.executeExpression);
-		// 0 iteration -> it's an empty Loop
-		if (nbIteration === 0) return true;
-		let nbComponentInside = 0;
+		// 0 iteration -> no component is visible
+		if (nbIteration === 0) return false;
 		for (
 			let iterationOfLoop = 0;
 			iterationOfLoop < nbIteration;
 			iterationOfLoop++
 		) {
-			const componentsAtIteration = component.components.filter((c) => {
+			for (const c of component.components) {
 				if ('conditionFilter' in c && c.conditionFilter) {
-					return executeConditionFilter(
-						c.conditionFilter,
-						state.executeExpression,
-						iterationOfLoop
-					);
+					if (
+						executeConditionFilter(
+							c.conditionFilter,
+							state.executeExpression,
+							iterationOfLoop
+						)
+					) {
+						return true;
+					}
 				}
-				return true;
-			});
-			nbComponentInside += componentsAtIteration.length;
+				// if no conditionFilter -> component is visible
+				else {
+					return true;
+				}
+			}
 		}
-		// No components inside the not paginated Loop -> it's an empty Loop
-		if (nbComponentInside === 0) return true;
+		// no component visible in all iterations
+		return false;
 	}
-	// otherwise -> false, not empty
-	return false;
+	// not a Loop
+	return true;
 }
 
 /**
@@ -99,9 +110,8 @@ export function isPageEmpty(state: LunaticReducerState): boolean {
 			if (!conditionFilterResult) return false;
 			// early return if the component is not a not Loop
 			if (component.componentType !== 'Loop') return conditionFilterResult;
-			return !isEmptyNotPaginatedLoop(component, state);
-
-			// if the conditionFilter of NOT paginated Loop is true (have to be visible), we check if all components inside, if all components
+			// if the conditionFilter of NOT paginated Loop is true (have to be visible), we have to check if at least one component is visible inside
+			return hasAtLeastOneComponentVisible(component, state);
 		}
 		return true;
 	});
