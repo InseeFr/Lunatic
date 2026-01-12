@@ -34,6 +34,15 @@ function getIterationOfLoop(
 }
 
 /**
+ * Check if component has a conditionFilter defined
+ * @param component
+ * @returns
+ */
+function hasConditionFilter(component: LunaticComponentDefinition): boolean {
+	return 'conditionFilter' in component && !!component.conditionFilter;
+}
+
+/**
  * Check if a not paginated Loop has at least one component to display
  * @param component
  * @param state
@@ -45,27 +54,22 @@ function hasAtLeastOneComponentVisible(
 ): boolean {
 	if (component.componentType === 'Loop' && !component.paginatedLoop) {
 		const nbIteration = getIterationOfLoop(component, state.executeExpression);
-		// 0 iteration -> no component is visible
-		if (nbIteration === 0) return false;
 		for (
 			let iterationOfLoop = 0;
 			iterationOfLoop < nbIteration;
 			iterationOfLoop++
 		) {
 			for (const c of component.components) {
-				if ('conditionFilter' in c && c.conditionFilter) {
-					if (
-						executeConditionFilter(
-							c.conditionFilter,
-							state.executeExpression,
-							iterationOfLoop
-						)
-					) {
-						return true;
-					}
-				}
 				// if no conditionFilter -> component is visible
-				else {
+				if (!hasConditionFilter(c)) return true;
+				if (
+					executeConditionFilter(
+						// @ts-expect-error Seem to be e typescript issue since we check type with hasConditionFilter, c.conditionFilter is defined
+						c.conditionFilter,
+						state.executeExpression,
+						iterationOfLoop
+					)
+				) {
 					return true;
 				}
 			}
