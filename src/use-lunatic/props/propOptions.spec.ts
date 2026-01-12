@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
-import { getOptionsProp } from './propOptions';
+import { getOptionsProp, InterpretedOption } from './propOptions';
 import type { DeepTranslateExpression } from '../commons/fill-components/fill-component-expressions';
 import type {
 	LunaticChangesHandler,
@@ -9,38 +9,6 @@ import type {
 
 describe('getOptionsProp()', () => {
 	let variables: LunaticVariablesStore;
-	const checkboxGroupDefinition = {
-		id: 'CheckboxGroup',
-		componentType: 'CheckboxGroup',
-		responses: [
-			{
-				label: 'Option 1',
-				response: { name: 'O1' },
-				id: 'id1',
-			},
-			{
-				label: 'Option 2',
-				response: { name: 'O2' },
-				id: 'id2',
-			},
-		],
-	} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
-
-	const radioDefinition = {
-		id: 'RadioGroup',
-		componentType: 'Radio',
-		response: { name: 'RADIO' },
-		options: [
-			{
-				label: 'Option 1',
-				value: 'id1',
-			},
-			{
-				label: 'Option 2',
-				value: 'id2',
-			},
-		],
-	} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
 
 	let mockChange: LunaticChangesHandler;
 	const mockLogger = vi.fn();
@@ -50,7 +18,40 @@ describe('getOptionsProp()', () => {
 		variables = new LunaticVariablesStore();
 	});
 
-	describe('CheckboxGroup', () => {
+	describe('Options based on a fixed list', () => {
+		const checkboxGroupDefinition = {
+			id: 'CheckboxGroup',
+			componentType: 'CheckboxGroup',
+			responses: [
+				{
+					label: 'Option 1',
+					response: { name: 'O1' },
+					id: 'id1',
+				},
+				{
+					label: 'Option 2',
+					response: { name: 'O2' },
+					id: 'id2',
+				},
+			],
+		} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+		const radioDefinition = {
+			id: 'RadioGroup',
+			componentType: 'Radio',
+			response: { name: 'RADIO' },
+			options: [
+				{
+					label: 'Option 1',
+					value: 'id1',
+				},
+				{
+					label: 'Option 2',
+					value: 'id2',
+				},
+			],
+		} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
 		it('should check boxes', () => {
 			variables.set('O2', false);
 			let options = getOptionsProp(
@@ -112,7 +113,7 @@ describe('getOptionsProp()', () => {
 				undefined,
 				mockLogger
 			);
-			options[1].onCheck(false);
+			options[1].onCheck?.(false);
 			expect(mockChange).toHaveBeenLastCalledWith([
 				{ name: 'O2', value: false },
 			]);
@@ -449,6 +450,73 @@ describe('getOptionsProp()', () => {
 			expect(options).toHaveLength(1);
 			// the option would have been filtered if we did not disable filters because its parent would
 			expect(options[0].shouldBeFiltered).toBe(true);
+		});
+	});
+
+	describe('Options based on a source variable', () => {
+		const radioOptionSourceDefinition = {
+			id: 'RadioGroupDynamic',
+			componentType: 'Radio',
+			response: { name: 'RADIO' },
+			optionSource: 'NAME',
+		} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+		it('should build options when the source variable is an array of strings', () => {
+			variables.set('NAME', ['Maëlle', 'Verso']);
+			const options = getOptionsProp(
+				radioOptionSourceDefinition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger
+			) as InterpretedOption[]; // force type but it should infer type correctly
+
+			expect(options).toHaveLength(2);
+			expect(options[0].value).toBe('Maëlle');
+			expect(options[0].label).toBe('Maëlle');
+			expect(options[1].value).toBe('Verso');
+			expect(options[1].label).toBe('Verso');
+		});
+
+		it('should build options when the source variable is an array of numbers', () => {
+			variables.set('NAME', [10, 20]);
+			const options = getOptionsProp(
+				radioOptionSourceDefinition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger
+			) as InterpretedOption[]; // force type but it should infer type correctly
+
+			expect(options).toHaveLength(2);
+			expect(options[0].value).toBe(10);
+			expect(options[0].label).toBe('10');
+			expect(options[1].value).toBe(20);
+			expect(options[1].label).toBe('20');
+		});
+
+		it('should set the response when selecting a dynamic option', () => {
+			variables.set('NAME', ['Maëlle', 'Verso']);
+			const options = getOptionsProp(
+				radioOptionSourceDefinition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger
+			) as InterpretedOption[]; // force type but it should infer type correctly
+
+			options[0].onCheck?.();
+			expect(mockChange).toHaveBeenLastCalledWith([
+				{ name: 'RADIO', value: 'Maëlle' },
+			]);
+
+			options[1].onCheck?.();
+			expect(mockChange).toHaveBeenLastCalledWith([
+				{ name: 'RADIO', value: 'Verso' },
+			]);
 		});
 	});
 });
