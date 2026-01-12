@@ -35,7 +35,7 @@ export function autoExploreLoop(
 		hasExploredLoop = true;
 	};
 
-	// The page is a loop
+	// The page is a paginated loop
 	if (page.isLoop && page.subPages && page.subPages.length > 0) {
 		goInsideSubpage(
 			page.subPages,
