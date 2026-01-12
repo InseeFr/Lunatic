@@ -18,11 +18,16 @@ import {
 	VTLMissingDependencies,
 	VTLMissingDependency,
 } from './errors';
+import {
+	computePairwiseGlobalVariables,
+	computePairwiseGlobalVariableValue,
+} from './pairwise-variables';
+
+/** Special variable that will take the current iteration value. */
+const GLOBAL_ITERATION_INDEX = 'GLOBAL_ITERATION_INDEX';
 
 /** Interpret counter. Used for testing purpose. */
 let interpretCount = 0;
-/** Special variable that will take the current iteration value. */
-const iterationVariableName = 'GLOBAL_ITERATION_INDEX';
 
 export type IterationLevel = number[];
 export type EventArgs = {
@@ -73,12 +78,16 @@ export class LunaticVariablesStore {
 	public static makeFromSource(
 		source: LunaticSource,
 		data: LunaticData,
-		changeHandler?: RefObject<LunaticOptions['onVariableChange']>,
-		// Disable cleaning
-		disableCleaning?: boolean,
-		// Do not delay resizing / cleaning
-		autoCommit?: boolean
+		options: {
+			changeHandler?: RefObject<LunaticOptions['onVariableChange']>;
+			// Disable cleaning
+			disableCleaning?: boolean;
+			// Do not delay resizing / cleaning
+			autoCommit?: boolean;
+		} = {}
 	) {
+		const { changeHandler, disableCleaning, autoCommit } = options;
+
 		const store = new LunaticVariablesStore();
 		if (typeof window !== 'undefined') {
 			(window as any).lunaticStore = store; // Allow access to the store from the console
@@ -89,6 +98,14 @@ export class LunaticVariablesStore {
 		if (autoCommit) {
 			store.autoCommit = autoCommit;
 		}
+
+		// Setup pairwise magic variables if there is a pairwise component
+		const pairwiseVariables = computePairwiseGlobalVariables(source);
+		for (const pairwiseVariable of pairwiseVariables) {
+			const { name, dependencies, globalDependencies } = pairwiseVariable;
+			store.setGlobal(name, { dependencies, globalDependencies });
+		}
+
 		// Source data (picked from "variables" in the source.json)s
 		const sourceValues: Record<string, unknown> = {};
 		// Starting data for the form (merged with data.json or injected data)
@@ -106,6 +123,9 @@ export class LunaticVariablesStore {
 		for (const variable of source.variables) {
 			switch (variable.variableType) {
 				case 'CALCULATED':
+					// In some cases, we have calculated variables in the source that are
+					// not used in the questionnaire (those variables are executed out of
+					// Lunatic.), so there is no need to add them to the dictionary.
 					if (variable.isIgnoredByLunatic) break;
 					store.setCalculated(variable.name, variable.expression.value, {
 						dependencies: variable.bindingDependencies,
@@ -258,6 +278,32 @@ export class LunaticVariablesStore {
 	}
 
 	/**
+	 * Register global variable
+	 */
+	public setGlobal(
+		name: string,
+		{
+			dependencies,
+			globalDependencies,
+		}: { dependencies?: string[]; globalDependencies?: Map<string, string> }
+	): LunaticVariable {
+		if (this.dictionary.has(name)) {
+			return this.dictionary.get(name)!;
+		}
+		const variable = new LunaticVariable({
+			dictionary: this.dictionary,
+			dependencies,
+			name,
+			storeUpdatedAt: this.updatedAt,
+			isGlobal: true,
+			globalDependencies,
+		});
+		this.dictionary.set(name, variable);
+		this.updatedAt.touch();
+		return variable;
+	}
+
+	/**
 	 * Run a VTL expression
 	 */
 	public run(
@@ -338,6 +384,10 @@ class LunaticVariable {
 	private readonly iterationDepth?: number;
 	/** For calculated variable, shape is copied from another variable. */
 	private readonly shapeFrom?: string[];
+	/** Whether this is a global variable with custom computation rules. */
+	private readonly isGlobal?: boolean;
+	/** Name of variables needed for global variables computation rules. */
+	private readonly globalDependencies?: Map<string, string>;
 	/** Keep a record of variable name (optional, used for debug). */
 	public readonly name?: string;
 	/** Count the number of calculation. */
@@ -354,6 +404,8 @@ class LunaticVariable {
 		name?: string;
 		dimension?: number;
 		storeUpdatedAt: Timekey;
+		isGlobal?: boolean;
+		globalDependencies?: Map<string, string>;
 	}) {
 		if (args.expression && !args.dictionary) {
 			throw new Error(
@@ -369,11 +421,13 @@ class LunaticVariable {
 		this.name = args.name ?? args.expression;
 		this.dimension = args.dimension;
 		this.storeUpdatedAt = args.storeUpdatedAt;
+		this.isGlobal = args.isGlobal || false;
+		this.globalDependencies = args.globalDependencies || undefined;
 	}
 
 	getValue(iteration?: IterationLevel): unknown {
-		// The variable is not calculated
-		if (!this.expression) {
+		// The variable is not calculated or a global variable
+		if (!this.expression && !this.isGlobal) {
 			return this.getSavedValue(iteration);
 		}
 
@@ -424,24 +478,52 @@ class LunaticVariable {
 		if (isTestEnv()) {
 			interpretCount++;
 		}
-		// Scale down iteration if its dimension > shapeFrom dimension
-		const shapeDimension = arrayDimension(shapeFromValue);
-		if (
-			Array.isArray(iteration) &&
-			Array.isArray(shapeFromValue) &&
-			shapeDimension < iteration.length
-		) {
-			iteration = iteration.slice(0, shapeDimension);
-		}
-		// Uncomment this if you want to track the number of calculation
-		// this.calculatedCount++;
-		// Remember the value
-		try {
-			this.setValue(interpretVTL(this.expression, bindings), {
-				iteration: iteration,
+
+		if (this.isGlobal) {
+			// compute global variable thanks to specific rule
+			const linksVariable = this.globalDependencies?.get('pairwiseVariable');
+			const links = linksVariable
+				? (this.dictionary?.get(linksVariable)?.getValue() as string[][])
+				: [[]];
+			const namesVariable = this.globalDependencies?.get(
+				'pairwiseNameVariable'
+			);
+			const names = namesVariable
+				? (this.dictionary?.get(namesVariable)?.getValue() as string[])
+				: [];
+			const gendersVariable = this.globalDependencies?.get(
+				'pairwiseGenderVariable'
+			);
+			const genders = gendersVariable
+				? (this.dictionary?.get(gendersVariable)?.getValue() as string[])
+				: [];
+			const value = computePairwiseGlobalVariableValue(this.name!, {
+				genders,
+				links,
+				names,
 			});
-		} catch {
-			throw new VTLInterpretationError(this.expression!, bindings);
+			this.setValue(value, {});
+		} else {
+			// compute thanks to VTL expression
+			// Scale down iteration if its dimension > shapeFrom dimension
+			const shapeDimension = arrayDimension(shapeFromValue);
+			if (
+				Array.isArray(iteration) &&
+				Array.isArray(shapeFromValue) &&
+				shapeDimension < iteration.length
+			) {
+				iteration = iteration.slice(0, shapeDimension);
+			}
+			// Uncomment this if you want to track the number of calculation
+			// this.calculatedCount++;
+			// Remember the value
+			try {
+				this.setValue(interpretVTL(this.expression!, bindings), {
+					iteration: iteration,
+				});
+			} catch {
+				throw new VTLInterpretationError(this.expression!, bindings);
+			}
 		}
 		this.updateTimestamps(iteration, 'calculatedAt');
 		return this.getSavedValue(iteration);
@@ -564,9 +646,11 @@ class LunaticVariable {
 		try {
 			return Object.fromEntries(
 				this.getDependencies().map((dep) => {
-					if (dep === iterationVariableName && iteration) {
+					// The variable is a global variable we manually compute.
+					if (dep === GLOBAL_ITERATION_INDEX && iteration) {
 						return [dep, iteration[0] + 1];
 					}
+
 					const dependencyIteration =
 						isNumber(this.iterationDepth) && Array.isArray(iteration)
 							? [iteration[this.iterationDepth]]

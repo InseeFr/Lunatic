@@ -4,6 +4,7 @@ import {
 	type OrchestratorStory,
 } from '../utils/Orchestrator';
 import source from './source.json';
+import sourceMagicVariables from './sourceMagicVariables.json';
 
 import { Meta } from '@storybook/react';
 
@@ -26,5 +27,11 @@ export const Default: OrchestratorStory = {
 			OTHER: [[null]],
 		}),
 		initialPage: '3',
+	},
+};
+
+export const MagicVariables: OrchestratorStory = {
+	args: {
+		source: sourceMagicVariables,
 	},
 };

@@ -4,6 +4,7 @@ import * as cleaningModule from './behaviours/cleaning-behaviour';
 import { missingBehaviour } from './behaviours/missing-behaviour';
 import { resizingBehaviour } from './behaviours/resizing-behaviour';
 import { LunaticVariablesStore } from './lunatic-variables-store';
+import { ComponentDefinitionWithPage } from '../../../type.source';
 
 describe('lunatic-variables-store', () => {
 	let variables: LunaticVariablesStore;
@@ -710,7 +711,9 @@ describe('lunatic-variables-store', () => {
 						},
 					},
 				},
-				{ current: () => {} }
+				{
+					changeHandler: { current: () => {} },
+				}
 			);
 			expect(store.get('PRENOM')).toEqual('Jane');
 			store.set('NOM', 'Doe');
@@ -755,7 +758,9 @@ describe('lunatic-variables-store', () => {
 					],
 				},
 				{},
-				{ current: () => {} }
+				{
+					changeHandler: { current: () => {} },
+				}
 			);
 
 			expect(store.get('calc1')).toBeNull();
@@ -797,8 +802,10 @@ describe('lunatic-variables-store', () => {
 						},
 					},
 				},
-				{ current: () => {} },
-				false // enable cleaning
+				{
+					changeHandler: { current: () => {} },
+					disableCleaning: false, // enable cleaning
+				}
 			);
 			expect(cleaningSpy).toHaveBeenCalled();
 		});
@@ -836,10 +843,129 @@ describe('lunatic-variables-store', () => {
 						},
 					},
 				},
-				{ current: () => {} },
-				true // disable cleaning
+				{
+					changeHandler: { current: () => {} },
+					disableCleaning: true, // disable cleaning
+				}
 			);
 			expect(cleaningSpy).not.toHaveBeenCalled();
+		});
+
+		it('should create global pairwise variables', () => {
+			// Given a source with a pairwise component
+			const pairwiseComponent = {
+				id: 'm8ob5u9l',
+				page: '3',
+				symLinks: {
+					LINKS: {
+						'1': '1',
+						'2': '3',
+						'3': '2',
+					},
+				},
+				components: [
+					{
+						id: 'm8ob5u9l-pairwise-dropdown',
+						label: {
+							type: 'VTL|MD',
+							value: '"Qui est " || yAxis || " pour " || xAxis || " ?"',
+						},
+						options: [
+							{
+								label: {
+									type: 'VTL',
+									value: '"Son conjoint, sa conjointe"',
+								},
+								value: '1',
+							},
+							{
+								label: { type: 'VTL', value: '"Sa mère, son père"' },
+								value: '2',
+							},
+							{
+								label: { type: 'VTL', value: '"Sa fille, son fils"' },
+								value: '3',
+							},
+						],
+						response: { name: 'LINKS' },
+						isMandatory: false,
+						componentType: 'Dropdown',
+						conditionFilter: {
+							type: 'VTL',
+							value: '(nvl(xAxis, "") <> "") and (nvl(yAxis, "") <> "")',
+						},
+					},
+				],
+				sourceVariables: {
+					name: 'PRENOM',
+					gender: 'SEXE',
+				},
+				componentType: 'PairwiseLinks',
+				xAxisIterations: { type: 'VTL', value: 'count(PRENOM)' },
+				yAxisIterations: { type: 'VTL', value: 'count(PRENOM)' },
+			} as ComponentDefinitionWithPage;
+
+			// When we create the store
+			const store = LunaticVariablesStore.makeFromSource(
+				{
+					components: [pairwiseComponent],
+					variables: [
+						{
+							name: 'PRENOM',
+							values: { COLLECTED: [] },
+							dimension: 1,
+							variableType: 'COLLECTED',
+							iterationReference: 'm8ob7c76',
+						},
+						{
+							name: 'SEXE',
+							values: { COLLECTED: [] },
+							dimension: 1,
+							variableType: 'COLLECTED',
+							iterationReference: 'm8ob7c76',
+						},
+						{
+							name: 'LINKS',
+							values: { COLLECTED: [[]] },
+							dimension: 2,
+							variableType: 'COLLECTED',
+							iterationReference: 'm8ob7c76',
+						},
+					],
+				},
+				{},
+				{ changeHandler: { current: () => {} } }
+			);
+
+			// Then pairwise global variables are initialized
+			expect(store.get('GLOBAL_PARENT1_PRENOM')).toBeUndefined();
+			expect(store.get('GLOBAL_PARENT2_PRENOM')).toBeUndefined();
+			expect(store.get('GLOBAL_PARENT1_SEXE')).toBeUndefined();
+			expect(store.get('GLOBAL_PARENT2_SEXE')).toBeUndefined();
+			expect(store.get('GLOBAL_CONJOINT_PRENOM')).toBeUndefined();
+			expect(store.get('GLOBAL_ENFANTS_PRENOMS')).toBeUndefined();
+
+			// When pairwise link is updated
+			store.set('PRENOM', [
+				'Verso',
+				'Renoir',
+				'Aline',
+				'Monoco',
+				'Noco',
+				'Alicia',
+				'Sciel',
+			]);
+			store.set('SEXE', ['1', '1', '2', '1', '1', '2', '2']);
+			store.set('LINKS', [[null, '2', '2', '3', '3', null, '1']]);
+			store.commit();
+
+			// Then the variables are set at the proper value
+			expect(store.get('GLOBAL_PARENT1_PRENOM')).toBe('Renoir');
+			expect(store.get('GLOBAL_PARENT2_PRENOM')).toBe('Aline');
+			expect(store.get('GLOBAL_PARENT1_SEXE')).toBe('1');
+			expect(store.get('GLOBAL_PARENT2_SEXE')).toBe('2');
+			expect(store.get('GLOBAL_CONJOINT_PRENOM')).toBe('Sciel');
+			expect(store.get('GLOBAL_ENFANTS_PRENOMS')).toBe('Monoco;Noco');
 		});
 	});
 });
