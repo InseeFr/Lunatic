@@ -64,7 +64,7 @@ function hasAtLeastOneComponentVisible(
 				if (!hasConditionFilter(c)) return true;
 				if (
 					executeConditionFilter(
-						// @ts-expect-error Seem to be e typescript issue since we check type with hasConditionFilter, c.conditionFilter is defined
+						// @ts-expect-error Seem to be a typescript issue since we check type with hasConditionFilter, c.conditionFilter is defined
 						c.conditionFilter,
 						state.executeExpression,
 						iterationOfLoop
