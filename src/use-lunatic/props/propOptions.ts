@@ -85,7 +85,23 @@ export function getOptionsProp(
 			}));
 	}
 
+	// options based on another variable
+	if ('optionSource' in definition && definition.optionSource) {
+		return getOptionsFromSource(
+			definition.optionSource,
+			variables,
+			value,
+			handleChanges,
+			definition.response.name,
+			shouldParentBeFiltered
+		);
+	}
+
 	if (!('options' in definition)) {
+		return [];
+	}
+
+	if (!definition.options) {
 		return [];
 	}
 
@@ -142,6 +158,45 @@ export function getOptionsProp(
 						option.conditionFilter
 					)),
 		}));
+}
+
+/**
+ * Get all options from a source variable.
+ */
+function getOptionsFromSource(
+	optionSource: string,
+	variables: LunaticVariablesStore,
+	value: unknown,
+	handleChanges: LunaticChangesHandler,
+	responseName: string,
+	shouldParentBeFiltered?: boolean
+): InterpretedOption[] {
+	// we don't know the type of the optionSource values (string, numbers, boolean)
+	const optionValues = variables.get<unknown>(optionSource);
+	if (!optionValues) {
+		return [];
+	}
+
+	const normalizedValues = Array.isArray(optionValues)
+		? optionValues
+		: [optionValues];
+
+	return normalizedValues
+		.filter((option) => option !== null && option !== undefined)
+		.map((option) => {
+			return {
+				label: String(option),
+				value: option,
+				checked: value === option,
+				onCheck: () => {
+					handleChanges([{ name: responseName, value: option }]);
+				},
+				onUncheck: () => {
+					handleChanges([{ name: responseName, value: null }]);
+				},
+				shouldBeFiltered: shouldParentBeFiltered,
+			};
+		});
 }
 
 /**
