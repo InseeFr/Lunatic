@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { CustomSuggester } from './CustomSuggester';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
@@ -38,9 +38,7 @@ export function WrappedSuggester({
 }: LunaticComponentProps<'Suggester'>) {
 	// Default options should not change between render
 	// so we can break the rule of hooks here
-	const [selectedOptions, setSelectedOptions] = useState<
-		[SuggesterOptionType] | []
-	>(() => {
+	const computeSelectedOptions = (): [SuggesterOptionType] | [] => {
 		if (arbitraryValue) {
 			return [{ id: 'OTHER', label: arbitraryValue, value: 'OTHER' }];
 		}
@@ -67,7 +65,11 @@ export function WrappedSuggester({
 				value: value,
 			},
 		];
-	});
+	};
+
+	const [selectedOptions, setSelectedOptions] = useState<
+		[SuggesterOptionType] | []
+	>(computeSelectedOptions);
 
 	const { state, options, search, setSearch, onFocus, onBlur } = useSuggestions(
 		{
@@ -142,6 +144,15 @@ export function WrappedSuggester({
 		onChange(null);
 		setSearch('');
 	};
+
+	// Fix display issue (when handleChanges is called outside this component (in management mode, return to FORCED value by example) )
+	// We have to re-compute actual selection
+	useEffect(() => {
+		if (value) {
+			setSelectedOptions(computeSelectedOptions());
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [value]);
 
 	return (
 		<CustomSuggester
