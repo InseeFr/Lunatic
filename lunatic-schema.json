@@ -943,6 +943,16 @@
 			]
 		},
 		"ComponentRadioDefinition": {
+			"oneOf": [
+				{
+					"$ref": "#/$defs/ComponentStaticRadioDefinition"
+				},
+				{
+					"$ref": "#/$defs/ComponentDynamicRadioDefinition"
+				}
+			]
+		},
+		"ComponentRadioDefinitionBase": {
 			"type": "object",
 			"properties": {
 				"componentType": {
@@ -952,33 +962,101 @@
 				"orientation": {
 					"type": "string",
 					"enum": ["horizontal", "vertical"]
-				},
-				"options": {
-					"$ref": "#/$defs/OptionsWithDetail"
 				}
 			},
-			"required": ["componentType", "options"],
+			"required": ["componentType"],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
 				}
 			]
 		},
+		"ComponentStaticRadioDefinition": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/ComponentRadioDefinitionBase"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"options": {
+							"$ref": "#/$defs/OptionsWithDetail"
+						}
+					},
+					"required": ["options"]
+				}
+			]
+		},
+		"ComponentDynamicRadioDefinition": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/ComponentRadioDefinitionBase"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"optionSource": {
+							"type": "string"
+						}
+					},
+					"required": ["optionSource"]
+				}
+			]
+		},
 		"ComponentDropdownDefinition": {
+			"oneOf": [
+				{
+					"$ref": "#/$defs/ComponentStaticDropdownDefinition"
+				},
+				{
+					"$ref": "#/$defs/ComponentDynamicDropdownDefinition"
+				}
+			]
+		},
+		"ComponentDropdownDefinitionBase": {
 			"type": "object",
 			"properties": {
 				"componentType": {
 					"type": "string",
 					"const": "Dropdown"
-				},
-				"options": {
-					"$ref": "#/$defs/Options"
 				}
 			},
-			"required": ["componentType", "options"],
+			"required": ["componentType"],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+				}
+			]
+		},
+		"ComponentStaticDropdownDefinition": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/ComponentDropdownDefinitionBase"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"options": {
+							"$ref": "#/$defs/Options"
+						}
+					},
+					"required": ["options"]
+				}
+			]
+		},
+		"ComponentDynamicDropdownDefinition": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/ComponentDropdownDefinitionBase"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"optionSource": {
+							"type": "string"
+						}
+					},
+					"required": ["optionSource"]
 				}
 			]
 		},
@@ -1004,20 +1082,59 @@
 			]
 		},
 		"ComponentCheckboxOneDefinition": {
+			"oneOf": [
+				{
+					"$ref": "#/$defs/ComponentStaticCheckboxOneDefinition"
+				},
+				{
+					"$ref": "#/$defs/ComponentDynamicCheckboxOneDefinition"
+				}
+			]
+		},
+		"ComponentCheckboxOneDefinitionBase": {
 			"type": "object",
 			"properties": {
 				"componentType": {
 					"type": "string",
 					"const": "CheckboxOne"
-				},
-				"options": {
-					"$ref": "#/$defs/OptionsWithDetail"
 				}
 			},
-			"required": ["componentType", "options"],
+			"required": ["componentType"],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+				}
+			]
+		},
+		"ComponentStaticCheckboxOneDefinition": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/ComponentCheckboxOneDefinitionBase"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"options": {
+							"$ref": "#/$defs/Options"
+						}
+					},
+					"required": ["options"]
+				}
+			]
+		},
+		"ComponentDynamicCheckboxOneDefinition": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/ComponentCheckboxOneDefinitionBase"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"optionSource": {
+							"type": "string"
+						}
+					},
+					"required": ["optionSource"]
 				}
 			]
 		},

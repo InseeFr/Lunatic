@@ -156,11 +156,17 @@ export type ComponentCheckboxBooleanDefinition =
 	ComponentDefinitionBaseWithResponse & {
 		componentType: 'CheckboxBoolean';
 	};
-export type ComponentRadioDefinition = ComponentDefinitionBaseWithResponse & {
-	componentType: 'Radio';
-	orientation?: 'horizontal' | 'vertical';
+export type ComponentRadioDefinition =
+	| ComponentStaticRadioDefinition
+	| ComponentDynamicRadioDefinition;
+export type ComponentStaticRadioDefinition = ComponentRadioDefinitionBase & {
 	options: OptionsWithDetail;
 };
+export type ComponentRadioDefinitionBase =
+	ComponentDefinitionBaseWithResponse & {
+		componentType: 'Radio';
+		orientation?: 'horizontal' | 'vertical';
+	};
 export type OptionsWithDetail = {
 	value: string | boolean;
 	label: VTLExpression;
@@ -173,19 +179,42 @@ export type OptionsWithDetail = {
 		};
 	};
 }[];
+export type ComponentDynamicRadioDefinition = ComponentRadioDefinitionBase & {
+	optionSource: string;
+};
 export type ComponentDropdownDefinition =
+	| ComponentStaticDropdownDefinition
+	| ComponentDynamicDropdownDefinition;
+export type ComponentStaticDropdownDefinition =
+	ComponentDropdownDefinitionBase & {
+		options: Options;
+	};
+export type ComponentDropdownDefinitionBase =
 	ComponentDefinitionBaseWithResponse & {
 		componentType: 'Dropdown';
-		options: Options;
+	};
+export type ComponentDynamicDropdownDefinition =
+	ComponentDropdownDefinitionBase & {
+		optionSource: string;
 	};
 export type ComponentQuestionDefinition = ComponentDefinitionBase & {
 	componentType: 'Question';
 	components: ComponentDefinition[];
 };
 export type ComponentCheckboxOneDefinition =
+	| ComponentStaticCheckboxOneDefinition
+	| ComponentDynamicCheckboxOneDefinition;
+export type ComponentStaticCheckboxOneDefinition =
+	ComponentCheckboxOneDefinitionBase & {
+		options: Options;
+	};
+export type ComponentCheckboxOneDefinitionBase =
 	ComponentDefinitionBaseWithResponse & {
 		componentType: 'CheckboxOne';
-		options: OptionsWithDetail;
+	};
+export type ComponentDynamicCheckboxOneDefinition =
+	ComponentCheckboxOneDefinitionBase & {
+		optionSource: string;
 	};
 export type ComponentSuggesterDefinition =
 	ComponentDefinitionBaseWithResponse & {
