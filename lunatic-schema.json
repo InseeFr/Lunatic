@@ -1106,7 +1106,7 @@
 						},
 						"gender": {
 							"type": "string",
-							"description": "Name of the variable containing the sex/gender of the respondent (value of variable -> 1:male, 2: female)"
+							"description": "Name of the variable containing the sex/gender of the respondent (value of variable -> 1: man, 2: woman)"
 						}
 					}
 				},

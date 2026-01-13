@@ -21,15 +21,17 @@ import {
 import {
 	computePairwiseGlobalVariables,
 	computePairwiseGlobalVariableValue,
+	PairwiseGlobalDependency,
 } from './pairwise-variables';
-
-/** Special variable that will take the current iteration value. */
-const GLOBAL_ITERATION_INDEX = 'GLOBAL_ITERATION_INDEX';
+import {
+	computeGlobalIterationIndexValue,
+	GLOBAL_ITERATION_INDEX,
+} from './global-variables';
+import { IterationLevel } from './models';
 
 /** Interpret counter. Used for testing purpose. */
 let interpretCount = 0;
 
-export type IterationLevel = number[];
 export type EventArgs = {
 	change: {
 		/** Name of the changed variable. */
@@ -99,11 +101,12 @@ export class LunaticVariablesStore {
 			store.autoCommit = autoCommit;
 		}
 
-		// Setup pairwise magic variables if there is a pairwise component
+		// Setup pairwise global variables if there is a pairwise component
 		const pairwiseVariables = computePairwiseGlobalVariables(source);
 		for (const pairwiseVariable of pairwiseVariables) {
-			const { name, dependencies, globalDependencies } = pairwiseVariable;
-			store.setGlobal(name, { dependencies, globalDependencies });
+			const { name, dependencies, globalDependencies, shapeFrom } =
+				pairwiseVariable;
+			store.setGlobal(name, { dependencies, globalDependencies, shapeFrom });
 		}
 
 		// Source data (picked from "variables" in the source.json)s
@@ -285,13 +288,19 @@ export class LunaticVariablesStore {
 		{
 			dependencies,
 			globalDependencies,
-		}: { dependencies?: string[]; globalDependencies?: Map<string, string> }
+			shapeFrom,
+		}: {
+			dependencies?: string[];
+			globalDependencies?: Map<unknown, string>;
+			shapeFrom?: string | string[];
+		}
 	): LunaticVariable {
 		if (this.dictionary.has(name)) {
 			return this.dictionary.get(name)!;
 		}
 		const variable = new LunaticVariable({
 			dictionary: this.dictionary,
+			shapeFrom,
 			dependencies,
 			name,
 			storeUpdatedAt: this.updatedAt,
@@ -363,7 +372,7 @@ export class LunaticVariablesStore {
 	}
 }
 
-class LunaticVariable {
+export class LunaticVariable {
 	/** Last time the value was updated (changed). */
 	public updatedAt = new Map<undefined | string, number>();
 	/** Last time the store was updated (changed). */
@@ -374,8 +383,6 @@ class LunaticVariable {
 	private value: unknown;
 	/** List of direct dependencies, ex: ['FULLNAME', 'FIRSTNAME', 'LASTNAME']. */
 	private dependencies?: string[];
-	/** List of deep dependencies, exploring the variables used in calculated variables, ex: ['FIRSTNAME', 'LASTNAME']. */
-	private baseDependencies?: string[];
 	/** Expression for calculated variable. */
 	public readonly expression?: string;
 	/** Dictionary holding all the available variables. */
@@ -387,7 +394,7 @@ class LunaticVariable {
 	/** Whether this is a global variable with custom computation rules. */
 	private readonly isGlobal?: boolean;
 	/** Name of variables needed for global variables computation rules. */
-	private readonly globalDependencies?: Map<string, string>;
+	private readonly globalDependencies?: Map<unknown, string>;
 	/** Keep a record of variable name (optional, used for debug). */
 	public readonly name?: string;
 	/** Count the number of calculation. */
@@ -405,12 +412,20 @@ class LunaticVariable {
 		dimension?: number;
 		storeUpdatedAt: Timekey;
 		isGlobal?: boolean;
-		globalDependencies?: Map<string, string>;
+		globalDependencies?: Map<unknown, string>;
 	}) {
 		if (args.expression && !args.dictionary) {
 			throw new Error(
-				`A calculated variable needs a dictionary to retrieve his deps`
+				'A calculated variable needs a dictionary to retrieve his deps'
 			);
+		}
+		if (args.isGlobal && args.dependencies && !args.dictionary) {
+			throw new Error(
+				'A global variable with dependencies needs a dictionary to retrieve its deps'
+			);
+		}
+		if (args.isGlobal && !args.name) {
+			throw new Error('A global variable needs a name to fetch its logic');
 		}
 		this.expression = args.expression;
 		this.dictionary = args.dictionary;
@@ -479,43 +494,31 @@ class LunaticVariable {
 			interpretCount++;
 		}
 
+		// Scale down iteration if its dimension > shapeFrom dimension
+		const shapeDimension = arrayDimension(shapeFromValue);
+		if (
+			Array.isArray(iteration) &&
+			Array.isArray(shapeFromValue) &&
+			shapeDimension < iteration.length
+		) {
+			iteration = iteration.slice(0, shapeDimension);
+		}
+
 		if (this.isGlobal) {
 			// compute global variable thanks to specific rule
-			const linksVariable = this.globalDependencies?.get('pairwiseVariable');
-			const links = linksVariable
-				? (this.dictionary?.get(linksVariable)?.getValue() as string[][])
-				: [[]];
-			const namesVariable = this.globalDependencies?.get(
-				'pairwiseNameVariable'
+			const value = computePairwiseGlobalVariableValue(
+				this.name!,
+				iteration!,
+				this.globalDependencies! as Map<PairwiseGlobalDependency, string>,
+				this.dictionary!
 			);
-			const names = namesVariable
-				? (this.dictionary?.get(namesVariable)?.getValue() as string[])
-				: [];
-			const gendersVariable = this.globalDependencies?.get(
-				'pairwiseGenderVariable'
-			);
-			const genders = gendersVariable
-				? (this.dictionary?.get(gendersVariable)?.getValue() as string[])
-				: [];
-			const value = computePairwiseGlobalVariableValue(this.name!, {
-				genders,
-				links,
-				names,
-			});
-			this.setValue(value, {});
+			this.setValue(value, { iteration });
 		} else {
 			// compute thanks to VTL expression
-			// Scale down iteration if its dimension > shapeFrom dimension
-			const shapeDimension = arrayDimension(shapeFromValue);
-			if (
-				Array.isArray(iteration) &&
-				Array.isArray(shapeFromValue) &&
-				shapeDimension < iteration.length
-			) {
-				iteration = iteration.slice(0, shapeDimension);
-			}
+
 			// Uncomment this if you want to track the number of calculation
 			// this.calculatedCount++;
+
 			// Remember the value
 			try {
 				this.setValue(interpretVTL(this.expression!, bindings), {
@@ -607,31 +610,6 @@ class LunaticVariable {
 		return current;
 	}
 
-	/**
-	 * Get a list of transitive dependencies (leaf of the dependency tree)
-	 */
-	private getBaseDependencies(): string[] {
-		// Find the dependencies of the dependencies
-		const reducer = (acc: Set<string>, variableName: string) => {
-			if (acc.has(variableName)) {
-				return acc;
-			}
-			const deps = this.dictionary?.get(variableName)?.getDependencies();
-			if (!deps || deps.length === 0) {
-				acc.add(variableName);
-			} else {
-				deps?.reduce(reducer, acc);
-			}
-			return acc;
-		};
-		if (this.baseDependencies === undefined) {
-			this.baseDependencies = [
-				...this.getDependencies().reduce(reducer, new Set<string>()),
-			];
-		}
-		return this.baseDependencies;
-	}
-
 	private getDependencies(): string[] {
 		// Calculate dependencies from expression on the fly if necessary
 		if (this.dependencies === undefined) {
@@ -646,9 +624,10 @@ class LunaticVariable {
 		try {
 			return Object.fromEntries(
 				this.getDependencies().map((dep) => {
-					// The variable is a global variable we manually compute.
+					// The variable is a global variable with no dependency that we can
+					// manually compute on the fly.
 					if (dep === GLOBAL_ITERATION_INDEX && iteration) {
-						return [dep, iteration[0] + 1];
+						return computeGlobalIterationIndexValue(iteration);
 					}
 
 					const dependencyIteration =

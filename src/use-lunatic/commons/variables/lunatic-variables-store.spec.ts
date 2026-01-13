@@ -938,12 +938,12 @@ describe('lunatic-variables-store', () => {
 			);
 
 			// Then pairwise global variables are initialized
-			expect(store.get('GLOBAL_PARENT1_PRENOM')).toBeUndefined();
-			expect(store.get('GLOBAL_PARENT2_PRENOM')).toBeUndefined();
-			expect(store.get('GLOBAL_PARENT1_SEXE')).toBeUndefined();
-			expect(store.get('GLOBAL_PARENT2_SEXE')).toBeUndefined();
-			expect(store.get('GLOBAL_CONJOINT_PRENOM')).toBeUndefined();
-			expect(store.get('GLOBAL_ENFANTS_PRENOMS')).toBeUndefined();
+			expect(store.get('GLOBAL_PARENT1_PRENOM', [0])).toBeUndefined();
+			expect(store.get('GLOBAL_PARENT2_PRENOM', [0])).toBeUndefined();
+			expect(store.get('GLOBAL_PARENT1_SEXE', [0])).toBeUndefined();
+			expect(store.get('GLOBAL_PARENT2_SEXE', [0])).toBeUndefined();
+			expect(store.get('GLOBAL_CONJOINT_PRENOM', [0])).toBeUndefined();
+			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [0])).toBeUndefined();
 
 			// When pairwise link is updated
 			store.set('PRENOM', [
@@ -956,16 +956,33 @@ describe('lunatic-variables-store', () => {
 				'Sciel',
 			]);
 			store.set('SEXE', ['1', '1', '2', '1', '1', '2', '2']);
-			store.set('LINKS', [[null, '2', '2', '3', '3', null, '1']]);
+			store.set('LINKS', [
+				[null, '2', '2', '3', '3', null, '1'],
+				['3', null, '1', null, null, '3', null],
+				['3', '1', null, null, null, '3', null],
+				['2', null, null, null, null, null, null],
+				['2', null, null, null, null, null, null],
+				[null, '2', '2', null, null, null, null],
+				['1', null, null, null, null, null, null],
+			]);
 			store.commit();
 
 			// Then the variables are set at the proper value
-			expect(store.get('GLOBAL_PARENT1_PRENOM')).toBe('Renoir');
-			expect(store.get('GLOBAL_PARENT2_PRENOM')).toBe('Aline');
-			expect(store.get('GLOBAL_PARENT1_SEXE')).toBe('1');
-			expect(store.get('GLOBAL_PARENT2_SEXE')).toBe('2');
-			expect(store.get('GLOBAL_CONJOINT_PRENOM')).toBe('Sciel');
-			expect(store.get('GLOBAL_ENFANTS_PRENOMS')).toBe('Monoco;Noco');
+			expect(store.get('GLOBAL_PARENT1_PRENOM', [0])).toBe('Renoir');
+			expect(store.get('GLOBAL_PARENT2_PRENOM', [0])).toBe('Aline');
+			expect(store.get('GLOBAL_PARENT1_SEXE', [0])).toBe('1');
+			expect(store.get('GLOBAL_PARENT2_SEXE', [0])).toBe('2');
+			expect(store.get('GLOBAL_CONJOINT_PRENOM', [0])).toBe('Sciel');
+			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [0])).toBe('Monoco;Noco');
+
+			expect(store.get('GLOBAL_PARENT1_PRENOM', [1])).toBeUndefined();
+			expect(store.get('GLOBAL_PARENT2_PRENOM', [1])).toBeUndefined();
+			expect(store.get('GLOBAL_PARENT1_SEXE', [1])).toBeUndefined();
+			expect(store.get('GLOBAL_PARENT2_SEXE', [1])).toBeUndefined();
+			expect(store.get('GLOBAL_CONJOINT_PRENOM', [1])).toBe('Aline');
+			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [1])).toBe('Verso;Alicia');
+
+			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [4])).toBe(undefined);
 		});
 	});
 });
