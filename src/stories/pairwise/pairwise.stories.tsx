@@ -4,7 +4,7 @@ import {
 	type OrchestratorStory,
 } from '../utils/Orchestrator';
 import source from './source.json';
-import sourceMagicVariables from './sourceMagicVariables.json';
+import sourceGlobalVariables from './sourceGlobalVariables.json';
 
 import { Meta } from '@storybook/react';
 
@@ -30,8 +30,8 @@ export const Default: OrchestratorStory = {
 	},
 };
 
-export const MagicVariables: OrchestratorStory = {
+export const GlobalVariables: OrchestratorStory = {
 	args: {
-		source: sourceMagicVariables,
+		source: sourceGlobalVariables,
 	},
 };
