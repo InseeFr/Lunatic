@@ -161,6 +161,7 @@ export type ComponentRadioDefinition = ComponentDefinitionBaseWithResponse & {
 	orientation?: 'horizontal' | 'vertical';
 	options?: OptionsWithDetail;
 	optionSource?: string;
+	optionFilter?: VTLExpression;
 };
 export type OptionsWithDetail = {
 	value: string | boolean;
@@ -179,6 +180,7 @@ export type ComponentDropdownDefinition =
 		componentType: 'Dropdown';
 		options?: Options;
 		optionSource?: string;
+		optionFilter?: VTLExpression;
 	};
 export type ComponentQuestionDefinition = ComponentDefinitionBase & {
 	componentType: 'Question';
@@ -189,6 +191,7 @@ export type ComponentCheckboxOneDefinition =
 		componentType: 'CheckboxOne';
 		options?: OptionsWithDetail;
 		optionSource?: string;
+		optionFilter?: VTLExpression;
 	};
 export type ComponentSuggesterDefinition =
 	ComponentDefinitionBaseWithResponse & {

@@ -518,5 +518,26 @@ describe('getOptionsProp()', () => {
 				{ name: 'RADIO', value: 'Verso' },
 			]);
 		});
+
+		it('should filter options based on the optionFilter expression', () => {
+			const definition = {
+				...radioOptionSourceDefinition,
+				optionFilter: { type: 'VTL', value: 'AGE >= 18' },
+			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
+
+			variables.set('NAME', ['Maëlle', 'Verso', 'Aline']);
+			variables.set('AGE', [16, 30, 50]);
+
+			const options = getOptionsProp(
+				definition,
+				variables,
+				mockChange,
+				undefined,
+				undefined,
+				mockLogger
+			) as InterpretedOption[]; // force type but it should infer type correctly
+
+			expect(options.map((option) => option.value)).toEqual(['Verso', 'Aline']);
+		});
 	});
 });
