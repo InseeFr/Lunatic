@@ -7,6 +7,7 @@ needing to make complex formula.
 
 import { ComponentDefinitionBaseWithResponse } from '../../../type.source';
 import { LunaticSource } from '../../type';
+import { getPairwiseComponent } from '../component';
 import { LunaticVariable } from './lunatic-variables-store';
 import { IterationLevel } from './models';
 
@@ -62,90 +63,79 @@ export function computePairwiseGlobalVariables(source: LunaticSource): {
 	globalDependencies: Map<PairwiseGlobalDependency, string>;
 	shapeFrom?: string;
 }[] {
-	for (const component of source.components) {
-		// There is only one pairwise component so we stop at the first one we find.
-		if (component.componentType === 'PairwiseLinks') {
-			const pairwiseVariable = (
-				component.components[0] as ComponentDefinitionBaseWithResponse
-			).response.name;
-			const nameSourceVariable = component.sourceVariables?.name;
-			const genderSourceVariable = component.sourceVariables?.gender;
+	const component = getPairwiseComponent(source.components);
 
-			const variables = [];
-			if (nameSourceVariable) {
-				// Setup variables associated to the name.
-				const globalDependencies = new Map();
-				globalDependencies.set(
-					PairwiseGlobalDependency.Links,
-					pairwiseVariable
-				);
-				globalDependencies.set(
-					PairwiseGlobalDependency.Name,
-					nameSourceVariable
-				);
-				const dependencies = [pairwiseVariable, nameSourceVariable];
-				variables.push(
-					{
-						name: GLOBAL_PARENT1_NAME,
-						dependencies,
-						globalDependencies,
-						shapeFrom: nameSourceVariable,
-					},
-					{
-						name: GLOBAL_PARENT2_NAME,
-						dependencies,
-						globalDependencies,
-						shapeFrom: nameSourceVariable,
-					},
-					{
-						name: GLOBAL_PARTNER_NAME,
-						dependencies,
-						globalDependencies,
-						shapeFrom: nameSourceVariable,
-					},
-					{
-						name: GLOBAL_CHILDREN_NAMES,
-						dependencies,
-						globalDependencies,
-						shapeFrom: nameSourceVariable,
-					}
-				);
+	// There is not pairwise component, no need to initialize the variables.
+	if (!component) return [];
+
+	const variables = [];
+
+	const pairwiseVariable = (
+		component.components[0] as ComponentDefinitionBaseWithResponse
+	).response.name;
+	const nameSourceVariable = component.sourceVariables?.name;
+	const genderSourceVariable = component.sourceVariables?.gender;
+
+	// Setup variables associated to the name.
+	if (nameSourceVariable) {
+		const globalDependencies = new Map();
+		globalDependencies.set(PairwiseGlobalDependency.Links, pairwiseVariable);
+		globalDependencies.set(PairwiseGlobalDependency.Name, nameSourceVariable);
+		const dependencies = [pairwiseVariable, nameSourceVariable];
+		variables.push(
+			{
+				name: GLOBAL_PARENT1_NAME,
+				dependencies,
+				globalDependencies,
+				shapeFrom: nameSourceVariable,
+			},
+			{
+				name: GLOBAL_PARENT2_NAME,
+				dependencies,
+				globalDependencies,
+				shapeFrom: nameSourceVariable,
+			},
+			{
+				name: GLOBAL_PARTNER_NAME,
+				dependencies,
+				globalDependencies,
+				shapeFrom: nameSourceVariable,
+			},
+			{
+				name: GLOBAL_CHILDREN_NAMES,
+				dependencies,
+				globalDependencies,
+				shapeFrom: nameSourceVariable,
 			}
-
-			if (genderSourceVariable) {
-				// Setup variables associated to the gender.
-				const globalDependencies = new Map();
-				globalDependencies.set(
-					PairwiseGlobalDependency.Links,
-					pairwiseVariable
-				);
-				globalDependencies.set(
-					PairwiseGlobalDependency.Gender,
-					genderSourceVariable
-				);
-				const dependencies = [pairwiseVariable, genderSourceVariable];
-				variables.push(
-					{
-						name: GLOBAL_PARENT1_GENDER,
-						dependencies,
-						globalDependencies,
-						shapeFrom: nameSourceVariable,
-					},
-					{
-						name: GLOBAL_PARENT2_GENDER,
-						dependencies,
-						globalDependencies,
-						shapeFrom: nameSourceVariable,
-					}
-				);
-			}
-
-			return variables;
-		}
+		);
 	}
 
-	// There is no pairwise component, no need to initialize the variables
-	return [];
+	// Setup variables associated to the gender.
+	if (genderSourceVariable) {
+		const globalDependencies = new Map();
+		globalDependencies.set(PairwiseGlobalDependency.Links, pairwiseVariable);
+		globalDependencies.set(
+			PairwiseGlobalDependency.Gender,
+			genderSourceVariable
+		);
+		const dependencies = [pairwiseVariable, genderSourceVariable];
+		variables.push(
+			{
+				name: GLOBAL_PARENT1_GENDER,
+				dependencies,
+				globalDependencies,
+				shapeFrom: nameSourceVariable,
+			},
+			{
+				name: GLOBAL_PARENT2_GENDER,
+				dependencies,
+				globalDependencies,
+				shapeFrom: nameSourceVariable,
+			}
+		);
+	}
+
+	return variables;
 }
 
 /**

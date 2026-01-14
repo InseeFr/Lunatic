@@ -1,58 +1,26 @@
 import type {
-	LunaticComponentDefinition,
 	LunaticControl,
 	LunaticError,
 	LunaticReducerState,
 } from '../type';
-import {
-	fillComponentExpressions,
-	type DeepTranslateExpression,
-} from './fill-components/fill-component-expressions';
+import { fillComponentExpressions } from './fill-components/fill-component-expressions';
 import { checkRoundaboutControl } from '../reducer/controls/check-roundabout-control';
 import { checkBaseControl } from '../reducer/controls/check-base-control';
 import { getComponentsFromState } from './get-components-from-state';
+import {
+	InterpretedLoopComponent,
+	InterpretedRoundaboutComponent,
+	isLoopComponent,
+	isQuestionComponent,
+	isRoundaboutComponent,
+	type ComponentDefinition,
+	type InterpretedComponent,
+} from './component';
 
 export type StateForControls = Pick<
 	LunaticReducerState,
 	'pager' | 'pages' | 'isInLoop' | 'executeExpression'
 >;
-
-type ComponentDefinition = LunaticComponentDefinition;
-type InterpretedComponent = DeepTranslateExpression<LunaticComponentDefinition>;
-type InterpretedLoopComponent = DeepTranslateExpression<
-	ComponentDefinition & {
-		componentType: 'Loop' | 'RosterForLoop';
-	}
->;
-type InterpretedRoundaboutComponent = DeepTranslateExpression<
-	ComponentDefinition & {
-		componentType: 'Roundabout';
-	}
->;
-
-/**
- * Check if the component is a Loop or a RosterForLoop
- */
-const isLoopComponent = (
-	component: ComponentDefinition | InterpretedComponent
-): component is InterpretedLoopComponent => {
-	return ['Loop', 'RosterForLoop'].includes(component.componentType);
-};
-
-/**
- * Check if the component is a Roundabout
- */
-const isRoundaboutComponent = (
-	component: ComponentDefinition | InterpretedComponent
-): component is InterpretedRoundaboutComponent => {
-	return component.componentType === 'Roundabout';
-};
-
-const isQuestionComponent = (
-	component: ComponentDefinition | InterpretedComponent
-) => {
-	return 'Question' === component.componentType;
-};
 
 /**
  * Check if components of the current page have errors, and return a map of
