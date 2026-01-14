@@ -344,6 +344,11 @@
 					"id": "mkb7ktxx",
 					"page": "5",
 					"optionSource": "PRENOM",
+					"optionFilter": {
+						"type": "VTL",
+						"value": "AGE >= 18",
+						"shapeFrom": "PRENOM"
+					},
 					"response": {
 						"name": "QCUHORSBOU"
 					},
@@ -357,7 +362,7 @@
 					"id": "mke55sef",
 					"label": {
 						"type": "VTL|MD",
-						"value": "\"Les modalités de réponse sont les prénoms des individus\""
+						"value": "\"Les modalités de réponse sont les prénoms des individus ayant 18 ans ou plus\""
 					},
 					"position": "AFTER_QUESTION_TEXT",
 					"declarationType": "HELP"
@@ -402,6 +407,11 @@
 							"id": "mkb73lyz",
 							"page": "6.2",
 							"optionSource": "PRENOM",
+							"optionFilter": {
+								"type": "VTL",
+								"value": "AGE >= 18",
+								"shapeFrom": "PRENOM"
+							},
 							"response": {
 								"name": "QCUDANSBOU"
 							},
@@ -415,7 +425,7 @@
 							"id": "mke5bdkv",
 							"label": {
 								"type": "VTL|MD",
-								"value": "\"Les modalités de réponse sont les prénoms des individus\""
+								"value": "\"Les modalités de réponse sont les prénoms des individus ayant 18 ans ou plus\""
 							},
 							"position": "AFTER_QUESTION_TEXT",
 							"declarationType": "HELP"
