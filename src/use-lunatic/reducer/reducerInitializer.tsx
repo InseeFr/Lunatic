@@ -65,13 +65,11 @@ export function reducerInitializer({
 	onVariableChange?: RefObject<LunaticOptions['onVariableChange']>;
 	logger?: LunaticLogger;
 }): LunaticReducerState {
-	const variables = LunaticVariablesStore.makeFromSource(
-		source,
-		data,
-		onVariableChange,
-		disableFilters,
-		source.pagination !== 'question'
-	);
+	const variables = LunaticVariablesStore.makeFromSource(source, data, {
+		autoCommit: source.pagination !== 'question',
+		changeHandler: onVariableChange,
+		disableCleaning: disableFilters,
+	});
 	const pages = checkLoops(createMapPages(source));
 
 	if (!source || !data) {

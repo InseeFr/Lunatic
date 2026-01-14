@@ -1,0 +1,337 @@
+{
+	"id": "mkdupypp",
+	"label": { "type": "VTL|MD", "value": "Pairwise global variables" },
+	"modele": "PAIRWISEGL",
+	"maxPage": "5",
+	"cleaning": {
+		"PRENOM": {
+			"LIENS_HABITANTS": [
+				{
+					"shapeFrom": "PRENOM",
+					"expression": "nvl(PRENOM, \"\") <> \"\"",
+					"isAggregatorUsed": false
+				}
+			]
+		}
+	},
+	"resizing": {
+		"PRENOM": {
+			"size": "count(PRENOM)",
+			"variables": ["VERIF"],
+			"linksVariables": ["LIENS_HABITANTS"],
+			"sizeForLinksVariables": {
+				"xAxisSize": "count(PRENOM)",
+				"yAxisSize": "count(PRENOM)"
+			}
+		}
+	},
+	"variables": [
+		{
+			"name": "PRENOM",
+			"values": { "COLLECTED": [] },
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "mkdulmx2"
+		},
+		{
+			"name": "SEXE",
+			"values": { "COLLECTED": [] },
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "mkdulmx2"
+		},
+		{
+			"name": "LIENS_HABITANTS",
+			"values": { "COLLECTED": [[]] },
+			"dimension": 2,
+			"variableType": "COLLECTED",
+			"iterationReference": "mkdulmx2"
+		},
+		{
+			"name": "VERIF",
+			"values": { "COLLECTED": [] },
+			"dimension": 1,
+			"variableType": "COLLECTED",
+			"iterationReference": "mkdulmx2"
+		},
+		{
+			"name": "xAxis",
+			"shapeFrom": ["PRENOM"],
+			"expression": { "type": "VTL", "value": "PRENOM" },
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["PRENOM"]
+		},
+		{
+			"name": "yAxis",
+			"shapeFrom": ["PRENOM"],
+			"expression": { "type": "VTL", "value": "PRENOM" },
+			"variableType": "CALCULATED",
+			"bindingDependencies": ["PRENOM"]
+		},
+		{
+			"name": "FILTER_RESULT_PRENOM",
+			"dimension": 1,
+			"shapeFrom": ["PRENOM", "SEXE"],
+			"expression": { "type": "VTL", "value": "true" },
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "mkdulmx2"
+		},
+		{
+			"name": "FILTER_RESULT_SEXE",
+			"dimension": 1,
+			"shapeFrom": ["PRENOM", "SEXE"],
+			"expression": { "type": "VTL", "value": "true" },
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "mkdulmx2"
+		},
+		{
+			"name": "FILTER_RESULT_LIENS_HABITANTS",
+			"dimension": 2,
+			"shapeFrom": ["PRENOM", "SEXE"],
+			"expression": {
+				"type": "VTL",
+				"value": "(nvl(xAxis, \"\") <> \"\") and (nvl(yAxis, \"\") <> \"\")"
+			},
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "mkdulmx2"
+		},
+		{
+			"name": "FILTER_RESULT_VERIF",
+			"dimension": 1,
+			"shapeFrom": ["PRENOM", "SEXE"],
+			"expression": { "type": "VTL", "value": "true" },
+			"variableType": "CALCULATED",
+			"isIgnoredByLunatic": true,
+			"iterationReference": "mkdulmx2"
+		}
+	],
+	"components": [
+		{
+			"id": "mkdulmx2",
+			"page": "1",
+			"depth": 1,
+			"label": { "type": "VTL|MD", "value": "Ajouter un habitant" },
+			"lines": {
+				"max": { "type": "VTL", "value": "10" },
+				"min": { "type": "VTL", "value": "1" }
+			},
+			"components": [
+				{
+					"id": "mkdumm9l",
+					"page": "1",
+					"label": {
+						"type": "VTL",
+						"value": "\"I - \" || \"Habitants du logement\"",
+						"shapeFrom": "PRENOM"
+					},
+					"componentType": "Sequence",
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true",
+						"shapeFrom": "PRENOM"
+					}
+				},
+				{
+					"id": "question-mkduvzxm",
+					"page": "1",
+					"label": { "type": "VTL|MD", "value": "\"Prénom:\"" },
+					"components": [
+						{
+							"id": "mkduvzxm",
+							"page": "1",
+							"response": { "name": "PRENOM" },
+							"maxLength": 249,
+							"isMandatory": false,
+							"componentType": "Input"
+						}
+					],
+					"componentType": "Question",
+					"conditionFilter": { "type": "VTL", "value": "true" }
+				},
+				{
+					"id": "question-mkdujzn9",
+					"page": "1",
+					"label": { "type": "VTL|MD", "value": "\"Sexe:\"" },
+					"components": [
+						{
+							"id": "mkdujzn9",
+							"page": "1",
+							"options": [
+								{
+									"label": { "type": "VTL|MD", "value": "\"Homme\"" },
+									"value": "1"
+								},
+								{
+									"label": { "type": "VTL|MD", "value": "\"Femme\"" },
+									"value": "2"
+								}
+							],
+							"response": { "name": "SEXE" },
+							"isMandatory": false,
+							"orientation": "vertical",
+							"componentType": "Radio"
+						}
+					],
+					"componentType": "Question",
+					"conditionFilter": { "type": "VTL", "value": "true" }
+				}
+			],
+			"componentType": "Loop",
+			"paginatedLoop": false,
+			"conditionFilter": { "type": "VTL", "value": "(true)" }
+		},
+		{
+			"id": "mkdus3wr",
+			"page": "2",
+			"label": {
+				"type": "VTL",
+				"value": "\"II - \" || \"Liens entre les habitants du logement\"",
+				"shapeFrom": "PRENOM"
+			},
+			"componentType": "Sequence",
+			"conditionFilter": {
+				"type": "VTL",
+				"value": "true",
+				"shapeFrom": "PRENOM"
+			}
+		},
+		{
+			"id": "question-mkdv8ihy",
+			"page": "3",
+			"components": [
+				{
+					"id": "mkdv8ihy",
+					"page": "3",
+					"symLinks": {
+						"LIENS_HABITANTS": {
+							"1": "1",
+							"2": "3",
+							"3": "2",
+							"4": "4",
+							"5": "6",
+							"6": "5",
+							"7": "8",
+							"8": "7",
+							"9": "10",
+							"10": "9",
+							"11": "13",
+							"12": "12",
+							"13": "11",
+							"14": null,
+							"15": "15",
+							"16": "16",
+							"17": "17",
+							"18": "18"
+						}
+					},
+					"components": [
+						{
+							"id": "mkdv8ihy-pairwise-dropdown",
+							"page": "3",
+							"label": {
+								"type": "VTL|MD",
+								"value": "\"Qui est \" || yAxis || \" pour \" || xAxis || \" ?\""
+							},
+							"options": [
+								{
+									"label": { "type": "VTL", "value": "\"Conjoint\"" },
+									"value": "1"
+								},
+								{
+									"label": { "type": "VTL", "value": "\"Parent\"" },
+									"value": "2"
+								},
+								{
+									"label": { "type": "VTL", "value": "\"Enfant\"" },
+									"value": "3"
+								},
+								{
+									"label": { "type": "VTL", "value": "\"Autre\"" },
+									"value": "4"
+								}
+							],
+							"response": { "name": "LIENS_HABITANTS" },
+							"isMandatory": false,
+							"componentType": "Dropdown",
+							"conditionFilter": {
+								"type": "VTL",
+								"value": "(nvl(xAxis, \"\") <> \"\") and (nvl(yAxis, \"\") <> \"\")"
+							}
+						}
+					],
+					"sourceVariables": {
+						"name": "PRENOM",
+						"gender": "SEXE"
+					},
+					"componentType": "PairwiseLinks",
+					"xAxisIterations": { "type": "VTL", "value": "count(PRENOM)" },
+					"yAxisIterations": { "type": "VTL", "value": "count(PRENOM)" }
+				}
+			],
+			"componentType": "Question",
+			"conditionFilter": { "type": "VTL", "value": "true" }
+		},
+		{
+			"id": "mkduz03e",
+			"page": "4",
+			"depth": 1,
+			"maxPage": "2",
+			"components": [
+				{
+					"id": "mkdusamd",
+					"page": "4.1",
+					"label": {
+						"type": "VTL",
+						"value": "\"III - \" || \"Variables globales\"",
+						"shapeFrom": "PRENOM"
+					},
+					"componentType": "Sequence",
+					"conditionFilter": {
+						"type": "VTL",
+						"value": "true",
+						"shapeFrom": "PRENOM"
+					}
+				},
+				{
+					"id": "question-mkdvcykn",
+					"page": "4.2",
+					"label": {
+						"type": "VTL|MD",
+						"value": "PRENOM || \": votre premier parent est \" || GLOBAL_PARENT1_PRENOM || \" (\" || GLOBAL_PARENT1_SEXE || \"), votre second parent est \" || GLOBAL_PARENT2_PRENOM || \" (\" || GLOBAL_PARENT2_SEXE || \"), votre partenaire est \" || GLOBAL_CONJOINT_PRENOM || \", vos enfants sont \" || GLOBAL_ENFANTS_PRENOMS"
+					},
+					"components": [
+						{
+							"id": "mkdvcykn",
+							"page": "4.2",
+							"response": { "name": "VERIF" },
+							"isMandatory": false,
+							"componentType": "CheckboxBoolean"
+						}
+					],
+					"componentType": "Question",
+					"conditionFilter": { "type": "VTL", "value": "true" }
+				}
+			],
+			"iterations": { "type": "VTL", "value": "count(PRENOM)" },
+			"componentType": "Loop",
+			"paginatedLoop": true,
+			"conditionFilter": { "type": "VTL", "value": "(true)" },
+			"loopDependencies": ["PRENOM"]
+		},
+		{
+			"id": "mkdvgmn0",
+			"page": "5",
+			"label": { "type": "VTL", "value": "\"IV - \" || \"Fin\"" },
+			"componentType": "Sequence",
+			"conditionFilter": { "type": "VTL", "value": "true" }
+		}
+	],
+	"pagination": "question",
+	"componentType": "Questionnaire",
+	"enoCoreVersion": "3.59.0",
+	"generatingDate": "14-01-2026 10:14:03",
+	"lunaticModelVersion": "5.11.0"
+}

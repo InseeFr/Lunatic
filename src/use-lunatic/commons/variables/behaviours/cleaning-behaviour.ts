@@ -1,10 +1,8 @@
-import type {
-	IterationLevel,
-	LunaticVariablesStore,
-} from '../lunatic-variables-store';
+import type { LunaticVariablesStore } from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type';
 import { depth, setAtIndex } from '../../../../utils/array';
 import { castBool } from '../../../../utils/cast';
+import { IterationLevel } from '../models';
 
 /**
  * Implements the cleaning behavior for the variable store.
