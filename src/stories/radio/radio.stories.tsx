@@ -7,8 +7,10 @@ import source from './source.json';
 import sourceHorizontal from './sourceHorizontal.json';
 import sourceDetail from './sourceDetail.json';
 import sourceCondition from './sourceCondition.json';
+import sourceDynamicOptions from './sourceDynamicOptions.json';
 
 import { Meta } from '@storybook/react';
+import { dataFromObject } from '../../utils/object';
 
 const meta: Meta<typeof Orchestrator> = {
 	title: 'Components/Radio',
@@ -49,5 +51,16 @@ export const ReadOnly: OrchestratorStory = {
 export const WithDetail: OrchestratorStory = {
 	args: {
 		source: sourceDetail,
+	},
+};
+
+export const DynamicOptions: OrchestratorStory = {
+	args: {
+		source: sourceDynamicOptions,
+		data: dataFromObject({
+			NBHAB: 3,
+			PRENOM: ['Verso', 'Maëlle', 'Aline'],
+			AGE: [30, 16, 50],
+		}),
 	},
 };
