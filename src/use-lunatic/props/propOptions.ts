@@ -129,7 +129,7 @@ export function computeOptionsFromComponent(
 				variables,
 				iteration,
 				logger,
-				option.conditionFilter
+				option.conditionFilter as VtlExpression | undefined
 			);
 		})
 		.map((option) => ({
@@ -166,7 +166,7 @@ export function computeOptionsFromComponent(
 						variables,
 						iteration,
 						logger,
-						option.conditionFilter
+						option.conditionFilter as VtlExpression | undefined
 					)),
 		}));
 }
