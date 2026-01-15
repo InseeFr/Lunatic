@@ -93,7 +93,9 @@ export function getOptionsProp(
 			value,
 			handleChanges,
 			definition.response.name,
-			shouldParentBeFiltered
+			logger,
+			shouldParentBeFiltered,
+			definition.optionFilter
 		);
 	}
 
@@ -169,7 +171,9 @@ function getOptionsFromSource(
 	value: unknown,
 	handleChanges: LunaticChangesHandler,
 	responseName: string,
-	shouldParentBeFiltered?: boolean
+	logger: LunaticLogger,
+	shouldParentBeFiltered?: boolean,
+	optionFilter?: VtlExpression
 ): InterpretedOption[] {
 	// we don't know the type of the optionSource values (string, numbers, boolean)
 	const optionValues = variables.get<unknown>(optionSource);
@@ -182,7 +186,18 @@ function getOptionsFromSource(
 		: [optionValues];
 
 	return normalizedValues
-		.filter((option) => option !== null && option !== undefined)
+		.filter((option, index) => {
+			// option is an empty value, we remove it from the options list
+			if (option === null || option === undefined) {
+				return false;
+			}
+			// no filter expression, we keep the option
+			if (!optionFilter) {
+				return true;
+			}
+			// apply filter expression on option (applied to its iteration)
+			return !isFilteredOutOption(variables, [index], logger, optionFilter);
+		})
 		.map((option) => {
 			return {
 				label: String(option),
