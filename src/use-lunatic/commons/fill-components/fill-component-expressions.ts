@@ -174,9 +174,9 @@ function isValidExpression(
 ): expression is LunaticExpression {
 	return Boolean(
 		expression &&
-		typeof expression === 'object' &&
-		'type' in expression &&
-		'value' in expression
+			typeof expression === 'object' &&
+			'type' in expression &&
+			'value' in expression
 	);
 }
 
