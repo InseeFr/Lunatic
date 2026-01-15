@@ -91,7 +91,8 @@ type UntranslatedProperties =
 	| 'controls'
 	| 'conditionFilter'
 	| 'conditionReadOnly'
-	| 'components';
+	| 'components'
+	| 'optionFilter';
 export type DeepTranslateExpression<T> = T extends LunaticExpression
 	? ReactNode
 	: T extends (infer ElementType)[]
@@ -173,9 +174,9 @@ function isValidExpression(
 ): expression is LunaticExpression {
 	return Boolean(
 		expression &&
-			typeof expression === 'object' &&
-			'type' in expression &&
-			'value' in expression
+		typeof expression === 'object' &&
+		'type' in expression &&
+		'value' in expression
 	);
 }
 

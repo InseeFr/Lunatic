@@ -958,6 +958,9 @@
 				},
 				"optionSource": {
 					"type": "string"
+				},
+				"optionFilter": {
+					"$ref": "#/$defs/VTLExpression"
 				}
 			},
 			"required": ["componentType"],
@@ -979,6 +982,9 @@
 				},
 				"optionSource": {
 					"type": "string"
+				},
+				"optionFilter": {
+					"$ref": "#/$defs/VTLExpression"
 				}
 			},
 			"required": ["componentType"],
@@ -1021,6 +1027,9 @@
 				},
 				"optionSource": {
 					"type": "string"
+				},
+				"optionFilter": {
+					"$ref": "#/$defs/VTLExpression"
 				}
 			},
 			"required": ["componentType"],
