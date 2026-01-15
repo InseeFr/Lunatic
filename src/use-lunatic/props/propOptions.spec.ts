@@ -1,13 +1,13 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { LunaticVariablesStore } from '../commons/variables/lunatic-variables-store';
-import { getOptionsProp, InterpretedOption } from './propOptions';
+import { computeOptionsFromComponent, InterpretedOption } from './propOptions';
 import type { DeepTranslateExpression } from '../commons/fill-components/fill-component-expressions';
 import type {
 	LunaticChangesHandler,
 	LunaticComponentDefinition,
 } from '../type';
 
-describe('getOptionsProp()', () => {
+describe('computeOptionsFromComponent', () => {
 	let variables: LunaticVariablesStore;
 
 	let mockChange: LunaticChangesHandler;
@@ -54,65 +54,60 @@ describe('getOptionsProp()', () => {
 
 		it('should check boxes', () => {
 			variables.set('O2', false);
-			let options = getOptionsProp(
-				checkboxGroupDefinition,
+			let options = computeOptionsFromComponent(checkboxGroupDefinition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			});
 			expect(options[1].checked).toBe(false);
 			variables.set('O2', true);
-			options = getOptionsProp(
-				checkboxGroupDefinition,
+			options = computeOptionsFromComponent(checkboxGroupDefinition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			});
 			expect(options[1].checked).toBe(true);
 		});
 		it('should check boxes correctly within iteration', () => {
 			variables.set('O1', []);
 			variables.set('O2', []);
-			let options = getOptionsProp(
-				checkboxGroupDefinition,
+			let options = computeOptionsFromComponent(checkboxGroupDefinition, {
 				variables,
-				mockChange,
-				0,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: 0,
+				value: undefined,
+				logger: mockLogger,
+			});
 			expect(
 				options.filter((o) => o.checked),
 				'Nothing checked when variable empty'
 			).toHaveLength(0);
 
 			variables.set('O1', [true, 0]);
-			options = getOptionsProp(
-				checkboxGroupDefinition,
+			options = computeOptionsFromComponent(checkboxGroupDefinition, {
 				variables,
-				mockChange,
-				0,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: 0,
+				value: undefined,
+				logger: mockLogger,
+			});
 			expect(options[0].checked).toBe(true);
 			expect(options[1].checked).toBe(false);
 		});
 		it('should create handleChange correctly', () => {
 			variables.set('O1', [true, false]);
 			variables.set('O2', [false, true]);
-			const options = getOptionsProp(
-				checkboxGroupDefinition,
+			const options = computeOptionsFromComponent(checkboxGroupDefinition, {
 				variables,
-				mockChange,
-				1,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: 1,
+				value: undefined,
+				logger: mockLogger,
+			});
 			options[1].onCheck?.(false);
 			expect(mockChange).toHaveBeenLastCalledWith([
 				{ name: 'O2', value: false },
@@ -146,14 +141,13 @@ describe('getOptionsProp()', () => {
 
 			variables.set('DETAIL', true);
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			});
 
 			expect(options).toHaveLength(2);
 			expect(options[0].detailLabel).toBe('Precize:');
@@ -189,14 +183,13 @@ describe('getOptionsProp()', () => {
 
 			variables.set('DETAIL', true);
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			});
 
 			expect(options).toHaveLength(2);
 			expect(options[0].detailLabel).toBe('Precize:');
@@ -225,14 +218,13 @@ describe('getOptionsProp()', () => {
 				],
 			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			});
 
 			// First option should be filtered out since its conditionFilter is evaluated to false
 			expect(options).toHaveLength(1);
@@ -255,14 +247,13 @@ describe('getOptionsProp()', () => {
 				],
 			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			});
 
 			// First option should be filtered out since its conditionFilter is evaluated to false
 			expect(options).toHaveLength(1);
@@ -286,14 +277,13 @@ describe('getOptionsProp()', () => {
 				throw new Error('Test error');
 			});
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			});
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
@@ -316,14 +306,13 @@ describe('getOptionsProp()', () => {
 				throw new Error('Test error');
 			});
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			});
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
@@ -347,15 +336,14 @@ describe('getOptionsProp()', () => {
 				return false;
 			});
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger,
-				true // disableFilters = true
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+				disableFilters: true,
+			});
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
@@ -379,15 +367,14 @@ describe('getOptionsProp()', () => {
 				return false;
 			});
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger,
-				true // disableFilters = true
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+				disableFilters: true,
+			});
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
@@ -407,16 +394,15 @@ describe('getOptionsProp()', () => {
 				],
 			} satisfies DeepTranslateExpression<LunaticComponentDefinition>;
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger,
-				true, // disableFilters = true
-				true // parent component should be filtered
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+				disableFilters: true,
+				shouldParentBeFiltered: true,
+			});
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
@@ -435,16 +421,15 @@ describe('getOptionsProp()', () => {
 				],
 			} as any as DeepTranslateExpression<LunaticComponentDefinition>;
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger,
-				true, // disableFilters = true
-				true // parent component should be filtered
-			);
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+				disableFilters: true,
+				shouldParentBeFiltered: true,
+			});
 
 			// Ensure the option is not filtered
 			expect(options).toHaveLength(1);
@@ -463,14 +448,13 @@ describe('getOptionsProp()', () => {
 
 		it('should build options when the source variable is an array of strings', () => {
 			variables.set('NAME', ['Maëlle', 'Verso']);
-			const options = getOptionsProp(
-				radioOptionSourceDefinition,
+			const options = computeOptionsFromComponent(radioOptionSourceDefinition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			) as InterpretedOption[]; // force type but it should infer type correctly
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			}) as InterpretedOption[]; // force type but it should infer type correctly
 
 			expect(options).toHaveLength(2);
 			expect(options[0].value).toBe('Maëlle');
@@ -481,14 +465,13 @@ describe('getOptionsProp()', () => {
 
 		it('should build options when the source variable is an array of numbers', () => {
 			variables.set('NAME', [10, 20]);
-			const options = getOptionsProp(
-				radioOptionSourceDefinition,
+			const options = computeOptionsFromComponent(radioOptionSourceDefinition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			) as InterpretedOption[]; // force type but it should infer type correctly
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			}) as InterpretedOption[]; // force type but it should infer type correctly
 
 			expect(options).toHaveLength(2);
 			expect(options[0].value).toBe(10);
@@ -499,14 +482,13 @@ describe('getOptionsProp()', () => {
 
 		it('should set the response when selecting a dynamic option', () => {
 			variables.set('NAME', ['Maëlle', 'Verso']);
-			const options = getOptionsProp(
-				radioOptionSourceDefinition,
+			const options = computeOptionsFromComponent(radioOptionSourceDefinition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			) as InterpretedOption[]; // force type but it should infer type correctly
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			}) as InterpretedOption[]; // force type but it should infer type correctly
 
 			options[0].onCheck?.();
 			expect(mockChange).toHaveBeenLastCalledWith([
@@ -528,14 +510,13 @@ describe('getOptionsProp()', () => {
 			variables.set('NAME', ['Maëlle', 'Verso', 'Aline']);
 			variables.set('AGE', [16, 30, 50]);
 
-			const options = getOptionsProp(
-				definition,
+			const options = computeOptionsFromComponent(definition, {
 				variables,
-				mockChange,
-				undefined,
-				undefined,
-				mockLogger
-			) as InterpretedOption[]; // force type but it should infer type correctly
+				handleChanges: mockChange,
+				pagerIteration: undefined,
+				value: undefined,
+				logger: mockLogger,
+			}) as InterpretedOption[]; // force type but it should infer type correctly
 
 			expect(options.map((option) => option.value)).toEqual(['Verso', 'Aline']);
 		});

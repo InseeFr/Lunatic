@@ -28,15 +28,25 @@ export type InterpretedOption = {
 /**
  * Compute options for checkboxes / radios / dropdown
  */
-export function getOptionsProp(
+export function computeOptionsFromComponent(
 	definition: DeepTranslateExpression<LunaticComponentDefinition>,
-	variables: LunaticVariablesStore,
-	handleChanges: LunaticChangesHandler,
-	pagerIteration: LunaticState['pager']['iteration'],
-	value: unknown,
-	logger: LunaticLogger,
-	disableFilters?: boolean,
-	shouldParentBeFiltered?: boolean
+	{
+		variables,
+		handleChanges,
+		pagerIteration,
+		value,
+		logger,
+		disableFilters,
+		shouldParentBeFiltered,
+	}: {
+		variables: LunaticVariablesStore;
+		handleChanges: LunaticChangesHandler;
+		pagerIteration: LunaticState['pager']['iteration'];
+		value: unknown;
+		logger: LunaticLogger;
+		disableFilters?: boolean;
+		shouldParentBeFiltered?: boolean;
+	}
 ) {
 	const iteration = isNumber(pagerIteration) ? [pagerIteration] : undefined;
 
@@ -87,16 +97,15 @@ export function getOptionsProp(
 
 	// options based on another variable
 	if ('optionSource' in definition && definition.optionSource) {
-		return getOptionsFromSource(
-			definition.optionSource,
+		return computeOptionsFromSource(definition.optionSource, {
 			variables,
 			value,
 			handleChanges,
-			definition.response.name,
+			responseName: definition.response.name,
 			logger,
 			shouldParentBeFiltered,
-			definition.optionFilter
-		);
+			optionFilter: definition.optionFilter,
+		});
 	}
 
 	if (!('options' in definition)) {
@@ -163,17 +172,27 @@ export function getOptionsProp(
 }
 
 /**
- * Get all options from a source variable.
+ * Get all options from a source variable, applying filters.
  */
-function getOptionsFromSource(
+function computeOptionsFromSource(
 	optionSource: string,
-	variables: LunaticVariablesStore,
-	value: unknown,
-	handleChanges: LunaticChangesHandler,
-	responseName: string,
-	logger: LunaticLogger,
-	shouldParentBeFiltered?: boolean,
-	optionFilter?: VtlExpression
+	{
+		variables,
+		value,
+		handleChanges,
+		responseName,
+		logger,
+		shouldParentBeFiltered,
+		optionFilter,
+	}: {
+		variables: LunaticVariablesStore;
+		value: unknown;
+		handleChanges: LunaticChangesHandler;
+		responseName: string;
+		logger: LunaticLogger;
+		shouldParentBeFiltered?: boolean;
+		optionFilter?: VtlExpression;
+	}
 ): InterpretedOption[] {
 	// we don't know the type of the optionSource values (string, numbers, boolean)
 	const optionValues = variables.get<unknown>(optionSource);
