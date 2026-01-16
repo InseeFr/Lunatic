@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.8.0](https://github.com/InseeFr/Lunatic/releases/tag/3.8.0) - 2026-01-16
+
 ### Added
 
 - Add global variables for pairwise component. `GLOBAL_PARENT1_PRENOM`, `GLOBAL_PARENT1_SEXE`, `GLOBAL_PARENT2_PRENOM`, `GLOBAL_PARENT2_SEXE`, `GLOBAL_CONJOINT_PRENOM` and `GLOBAL_ENFANTS_PRENOMS` are now available if the corresponding source variables of the pairwise component are filled in.
