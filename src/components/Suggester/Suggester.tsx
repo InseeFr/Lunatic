@@ -15,6 +15,8 @@ export function Suggester(props: LunaticComponentProps<'Suggester'>) {
 	return <WrappedSuggester {...props} key={suggesterKey} />;
 }
 
+const ARBITRARY_ID = 'OTHER';
+
 export function WrappedSuggester({
 	storeName,
 	id,
@@ -44,7 +46,7 @@ export function WrappedSuggester({
 	// so we can break the rule of hooks here
 	const computeSelectedOptions = (): [SuggesterOptionType] | [] => {
 		if (arbitraryValue) {
-			return [{ id: 'OTHER', label: arbitraryValue, value: 'OTHER' }];
+			return [{ id: ARBITRARY_ID, label: arbitraryValue, value: ARBITRARY_ID }];
 		}
 		if (!value) {
 			return [];
@@ -156,10 +158,13 @@ export function WrappedSuggester({
 		// "value" does'nt match selectedOption's "id"
 		if (selectedOptions[0]?.id !== value) {
 			const actualSelection = computeSelectedOptions();
-			const selectedOptionsWithLabel = actualSelection.map((selection) => ({
-				...selection,
-				label: getLabelById(selection.id),
-			})) as [SuggesterOptionType];
+			const selectedOptionsWithLabel = actualSelection.map((selection) => {
+				if (selection.id === ARBITRARY_ID) return selection;
+				return {
+					...selection,
+					label: getLabelById(selection.id),
+				};
+			}) as [SuggesterOptionType];
 			setSelectedOptions(selectedOptionsWithLabel);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps

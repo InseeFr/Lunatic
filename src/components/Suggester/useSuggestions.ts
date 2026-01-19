@@ -51,7 +51,7 @@ export function useStore({ storeName }: { storeName: string }) {
 		setStoreState: setState,
 		getLabelById: (id: any) => {
 			if (!id) return '';
-			return store.search?.getFieldsById(id).label ?? '';
+			return store.search?.getFieldsById(id)?.label ?? '';
 		},
 	};
 }
