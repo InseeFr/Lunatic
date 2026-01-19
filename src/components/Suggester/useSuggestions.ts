@@ -109,5 +109,9 @@ export function useSuggestions({
 				setSearchQuery(selectedOptions[0]?.label ?? '');
 			}
 		},
+		getSelectedLabelById: (id: any) => {
+			if (!id) return '';
+			return store.search?.getFieldsById(id).label ?? '';
+		},
 	};
 }

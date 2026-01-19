@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { WrappedSuggester } from './Suggester'; // Ajuste le chemin selon ton projet
+import { WrappedSuggester } from './Suggester';
 
 // Mock of useSuggestions
 vi.mock('./useSuggestions', () => ({
@@ -11,6 +11,7 @@ vi.mock('./useSuggestions', () => ({
 		setSearch: vi.fn(),
 		onFocus: vi.fn(),
 		onBlur: vi.fn(),
+		getSelectedLabelById: vi.fn(),
 	})),
 }));
 

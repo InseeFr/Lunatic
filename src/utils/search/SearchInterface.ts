@@ -14,4 +14,6 @@ export interface SearchInterface<T extends IndexEntry> {
 	index(data: T[]): Promise<void>;
 
 	search(q: string): Promise<T[]>;
+
+	getFieldsById(id: any): T;
 }
