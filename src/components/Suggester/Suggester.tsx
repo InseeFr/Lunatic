@@ -71,13 +71,19 @@ export function WrappedSuggester({
 		[SuggesterOptionType] | []
 	>(computeSelectedOptions);
 
-	const { state, options, search, setSearch, onFocus, onBlur } = useSuggestions(
-		{
-			storeName: storeName,
-			allowArbitrary: !!arbitrary,
-			selectedOptions: selectedOptions,
-		}
-	);
+	const {
+		state,
+		options,
+		search,
+		setSearch,
+		onFocus,
+		onBlur,
+		getSelectedLabelById,
+	} = useSuggestions({
+		storeName: storeName,
+		allowArbitrary: !!arbitrary,
+		selectedOptions: selectedOptions,
+	});
 
 	const onChange = (v: SuggesterOptionType | null) => {
 		setSelectedOptions(v?.id ? [v] : []);
@@ -110,7 +116,7 @@ export function WrappedSuggester({
 			{ name: response.name, value: null },
 		];
 		// User chose an arbitrary option or clear the value
-		if (arbitrary && arbitrary.response) {
+		if (arbitrary?.response) {
 			newResponses.push({
 				name: arbitrary.response.name,
 				value: v?.id === OTHER_VALUE ? search : null,
@@ -145,11 +151,18 @@ export function WrappedSuggester({
 		setSearch('');
 	};
 
-	// Fix display issue (when handleChanges is called outside this component (in management mode, return to FORCED value by example) )
-	// We have to re-compute actual selection
 	useEffect(() => {
-		if (value) {
-			setSelectedOptions(computeSelectedOptions());
+		// Fix display issue (when handleChanges is called outside this component (in management mode, return to FORCED value by example)
+		// "value" does'nt match selectedOption's "id"
+		if (value && selectedOptions[0]?.id !== value) {
+			const actualSelection = computeSelectedOptions();
+			const selectedOptionsWithLabel = [
+				{
+					...actualSelection[0],
+					label: getSelectedLabelById(actualSelection[0]?.id),
+				},
+			] as [SuggesterOptionType];
+			setSelectedOptions(selectedOptionsWithLabel);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [value]);
