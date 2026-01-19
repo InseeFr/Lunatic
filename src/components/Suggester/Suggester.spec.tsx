@@ -13,6 +13,13 @@ vi.mock('./useSuggestions', () => ({
 		onBlur: vi.fn(),
 		getSelectedLabelById: vi.fn(),
 	})),
+
+	useStore: vi.fn(() => ({
+		store: {},
+		storeState: 'success',
+		setStoreState: vi.fn(),
+		getLabelById: vi.fn(),
+	})),
 }));
 
 // Mock of CustomSuggester
