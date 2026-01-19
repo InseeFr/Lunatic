@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { CustomSuggester } from './CustomSuggester';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
-import { OTHER_VALUE, useSuggestions } from './useSuggestions';
+import { OTHER_VALUE, useStore, useSuggestions } from './useSuggestions';
 import D from '../../i18n';
 import type { SuggesterOptionType } from './SuggesterType';
 
@@ -36,6 +36,10 @@ export function WrappedSuggester({
 	arbitrary,
 	arbitraryValue,
 }: LunaticComponentProps<'Suggester'>) {
+	const { store, storeState, setStoreState, getLabelById } = useStore({
+		storeName,
+	});
+
 	// Default options should not change between render
 	// so we can break the rule of hooks here
 	const computeSelectedOptions = (): [SuggesterOptionType] | [] => {
@@ -47,7 +51,7 @@ export function WrappedSuggester({
 		}
 		const labelResponse = optionResponses?.find((o) => o.attribute === 'label');
 		if (!labelResponse) {
-			return [{ id: value, label: value, value: value }];
+			return [{ id: value, label: getLabelById(value), value: value }];
 		}
 		const label = executeExpression(
 			{ value: labelResponse.name, type: 'VTL' },
@@ -71,19 +75,15 @@ export function WrappedSuggester({
 		[SuggesterOptionType] | []
 	>(computeSelectedOptions);
 
-	const {
-		state,
-		options,
-		search,
-		setSearch,
-		onFocus,
-		onBlur,
-		getSelectedLabelById,
-	} = useSuggestions({
-		storeName: storeName,
-		allowArbitrary: !!arbitrary,
-		selectedOptions: selectedOptions,
-	});
+	const { state, options, search, setSearch, onFocus, onBlur } = useSuggestions(
+		{
+			store,
+			storeState,
+			setStoreState,
+			allowArbitrary: !!arbitrary,
+			selectedOptions: selectedOptions,
+		}
+	);
 
 	const onChange = (v: SuggesterOptionType | null) => {
 		setSelectedOptions(v?.id ? [v] : []);
@@ -159,7 +159,7 @@ export function WrappedSuggester({
 			const selectedOptionsWithLabel = [
 				{
 					...actualSelection[0],
-					label: getSelectedLabelById(actualSelection[0]?.id),
+					label: getLabelById(actualSelection[0]?.id),
 				},
 			] as [SuggesterOptionType];
 			setSelectedOptions(selectedOptionsWithLabel);

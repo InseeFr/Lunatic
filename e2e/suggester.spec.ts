@@ -27,6 +27,20 @@ test.describe('Suggester', () => {
 		await expectPageToHaveText(page, 'Perpignan');
 	});
 
+	test(`can see the last selected label (of value) after navigation (for no optionResponses label)`, async ({
+		page,
+	}) => {
+		await goToStory(page, 'components-suggester--default');
+		await gotoNextPage(page);
+		await expectPageToHaveText(page, 'Variable Pays');
+		await page.getByRole('textbox').nth(0).fill('fra');
+		await page.getByText('FRANCE').click();
+		await gotoNextPage(page);
+		await gotoPreviousPage(page);
+		await expectCollectedData(page, 'VARIABLEPA', 'FRA');
+		await expectPageToHaveText(page, 'FRANCE');
+	});
+
 	test(`can clear the last selected value`, async ({ page }) => {
 		await goToStory(page, 'components-suggester--default');
 		await expectPageToHaveText(page, 'Variable Commune');
