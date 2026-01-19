@@ -154,14 +154,12 @@ export function WrappedSuggester({
 	useEffect(() => {
 		// Fix display issue (when handleChanges is called outside this component (in management mode, return to FORCED value by example)
 		// "value" does'nt match selectedOption's "id"
-		if (value && selectedOptions[0]?.id !== value) {
+		if (selectedOptions[0]?.id !== value) {
 			const actualSelection = computeSelectedOptions();
-			const selectedOptionsWithLabel = [
-				{
-					...actualSelection[0],
-					label: getLabelById(actualSelection[0]?.id),
-				},
-			] as [SuggesterOptionType];
+			const selectedOptionsWithLabel = actualSelection.map((selection) => ({
+				...selection,
+				label: getLabelById(selection.id),
+			})) as [SuggesterOptionType];
 			setSelectedOptions(selectedOptionsWithLabel);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
