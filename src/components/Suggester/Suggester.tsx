@@ -15,8 +15,6 @@ export function Suggester(props: LunaticComponentProps<'Suggester'>) {
 	return <WrappedSuggester {...props} key={suggesterKey} />;
 }
 
-const ARBITRARY_ID = 'OTHER';
-
 export function WrappedSuggester({
 	storeName,
 	id,
@@ -46,7 +44,7 @@ export function WrappedSuggester({
 	// so we can break the rule of hooks here
 	const computeSelectedOptions = (): [SuggesterOptionType] | [] => {
 		if (arbitraryValue) {
-			return [{ id: ARBITRARY_ID, label: arbitraryValue, value: ARBITRARY_ID }];
+			return [{ id: OTHER_VALUE, label: arbitraryValue, value: OTHER_VALUE }];
 		}
 		if (!value) {
 			return [];
@@ -64,13 +62,7 @@ export function WrappedSuggester({
 		if (typeof label !== 'string') {
 			return [{ id: value, label: value, value: value }];
 		}
-		return [
-			{
-				id: value,
-				label: label,
-				value: value,
-			},
-		];
+		return [{ id: value, label: label, value: value }];
 	};
 
 	const [selectedOptions, setSelectedOptions] = useState<
@@ -155,11 +147,11 @@ export function WrappedSuggester({
 
 	useEffect(() => {
 		// Fix display issue (when handleChanges is called outside this component (in management mode, return to FORCED value by example)
-		// "value" does'nt match selectedOption's "id"
+		// "value" doesn't match selectedOption's "id"
 		if (selectedOptions[0]?.id !== value) {
 			const actualSelection = computeSelectedOptions();
 			const selectedOptionsWithLabel = actualSelection.map((selection) => {
-				if (selection.id === ARBITRARY_ID) return selection;
+				if (selection.id === OTHER_VALUE) return selection;
 				return {
 					...selection,
 					label: getLabelById(selection.id),
