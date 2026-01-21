@@ -20,6 +20,8 @@ vi.mock('./useSuggestions', () => ({
 		setStoreState: vi.fn(),
 		getLabelById: vi.fn(),
 	})),
+
+	OTHER_VALUE: 'OTHER',
 }));
 
 const FAKE_PLACE_HOLDER = 'place holder...';
