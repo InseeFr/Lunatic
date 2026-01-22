@@ -61,7 +61,7 @@ export default defineConfig({
 	webServer: {
 		reuseExistingServer: true,
 		command:
-			'yarn build-storybook --test && npx http-server storybook-static --port 9999 --silent',
+			'pnpm run build-storybook --test && npx http-server storybook-static --port 9999 --silent',
 		url: 'http://localhost:9999',
 		timeout: 80_000,
 		stdout: 'pipe',

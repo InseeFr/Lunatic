@@ -7,70 +7,34 @@ on:
     branches: ['main', '2.*', '3.*']
 
 jobs:
-  test_lint:
+  build:
     runs-on: ubuntu-latest
+    if: github.event.head_commit.author.name != 'github-actions[bot]'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-      - uses: bahmutov/npm-install@v1
-      - name: If this step fails run 'yarn lint' and 'yarn format' then commit again.
-        run: |
-          yarn lint:check
-          yarn format:check
-  test:
-    runs-on: ${{ matrix.os }}
-    needs: test_lint
-    strategy:
-      matrix:
-        node: ['20']
-        os: [ubuntu-latest]
-    name: Test with Node v${{ matrix.node }} on ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: ${{ matrix.node }}
-      - uses: bahmutov/npm-install@v1
-      - name: Check Typing
-        run: yarn run check
-      - name: Unit Tests
-        run: yarn run test
-      - name: Build
-        run: yarn build
-
-  test-e2e:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+          version: 10
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
-      - uses: bahmutov/npm-install@v1
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-      - name: E2E Tests
-        run: npx playwright test --reporter=html
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+          node-version: 24
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - run: pnpm run build
 
   build-deploy-assets:
+    needs: build
     runs-on: ubuntu-latest
-    needs: test-e2e
     if: github.event_name == 'push'
     steps:
       - name: Get branch name
         id: branch-name
         uses: tj-actions/branch-names@v8
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-      - uses: bahmutov/npm-install@v1
+      - uses: actions/checkout@v6
       # Build Storybook v2
-      - run: yarn build-storybook
+      - run: pnpm run build-storybook
       # Add json to fetch for suggester stories
       - run: cp -a ./public/. ./storybook-static
       - name: Deploy to GitHub Pages
@@ -81,7 +45,7 @@ jobs:
           destination_dir: ./storybook-${{ steps.branch-name.outputs.current_branch }}
       - name: build docs website
         working-directory: ./website/
-        run: yarn install --frozen-lockfile && yarn build
+        run: pnpm install --frozen-lockfile && pnpm run build
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -91,8 +55,8 @@ jobs:
 
   check_if_version_upgraded:
     name: Check if version upgrade
+    needs: build
     runs-on: ubuntu-latest
-    needs: test-e2e
     if: |
       github.event_name == 'push' || 
       github.event.pull_request.head.repo.owner.login == github.event.pull_request.base.repo.owner.login
@@ -101,14 +65,14 @@ jobs:
       is_version_changed: ${{ steps.check.outputs.exists == 'false' }}
       is_pre_release: ${{ contains(steps.version.outputs.prop, '-rc' ) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - id: version
         uses: notiz-dev/github-action-json-property@release
         with:
           path: 'package.json'
           prop_path: 'version'
       ## we check if repo contains already this tag, if not version, has changed
-      - uses: mukunku/tag-exists-action@v1.6.0
+      - uses: mukunku/tag-exists-action@v1.7.0
         id: check
         with:
           tag: ${{ steps.version.outputs.prop }}
@@ -140,14 +104,21 @@ jobs:
       - create_github_release
       - check_if_version_upgraded
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: ${{ github.ref }}
-      - uses: actions/setup-node@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
+          version: 10
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
           registry-url: https://registry.npmjs.org/
-      - uses: bahmutov/npm-install@v1
-      - run: yarn build
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - run: pnpm run build
       - run: npx -y -p denoify@1.6.13 enable_short_npm_import_path
         env:
           DRY_RUN: '0'

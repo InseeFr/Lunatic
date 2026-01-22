@@ -39,7 +39,7 @@ Lunatic is a front-end library in the form of a React hook and component librari
 To get started, you need to install Lunatic:
 
 ```bash
-yarn add @inseefr/lunatic
+pnpm add @inseefr/lunatic
 ```
 
 ### The useLunatic Hook
@@ -172,7 +172,6 @@ To facilitate expression execution, an `executeExpression()` method is exposed i
 - Files containing JSX should use the .jsx (or .tsx) extension.
 - Commits follow the specification [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 - Pull Requests should be prefixed in the same convention as commits:
-
   - `test(XXX?)`: XXX for adding tests.
   - `feat(XXX?)`: XXX for adding new features.
   - `fix(XXX?)`: XXX for bug fixes.
@@ -211,29 +210,24 @@ Assuming `you/my-app` have `@inseefr/lunatic` as a dependency.
 cd ~/github
 git clone https://github.com/you/my-app
 cd my-app
-yarn
+pnpm install
 
 cd ~/github
 git clone https://github.com/InseeFr/Lunatic
 cd Lunatic
-yarn
-yarn build
-yarn link-in-app my-app
+pnpm install
+pnpm run build
 npx tsc -w
 
 # Open another terminal
 
 cd ~/github/my-app
-rm -rf node_modules/.cache
-yarn start # Or whatever my-app is using for starting the project
+pnpm link ../lunatic # assuming both project are in the same folder
+pnpm run start # Or whatever my-app is using for starting the project
 ```
 
 You don't have to use `~/github` as reference path. Just make sure `my-app` and `@inseefr/lunatic`
 are in the same directory.
-
-> Note for the maintainer: You might run into issues if you do not list all your singleton dependencies in
-> `src/link-in-app.js -> singletonDependencies`. A singleton dependency is a dependency that can
-> only be present once in an App. Singleton dependencies are usually listed as peerDependencies example `react`, `@emotion/*`.
 
 ### Releasing
 
@@ -272,7 +266,7 @@ or with UI (launched in your local browser):
 
 To have real time test (refreshed when you're coding), you need to run storybook in a separate command prompt and launch test.
 
-- `yarn storbook`
+- `pnpm run storybook`
 - `npx playwright test`
 
 The inconvenient is that “dev” mode can be too slow to display storybook pages and fails test. (timeout exceeded)..
