@@ -11,7 +11,6 @@ vi.mock('./useSuggestions', () => ({
 		setSearch: vi.fn(),
 		onFocus: vi.fn(),
 		onBlur: vi.fn(),
-		getSelectedLabelById: vi.fn(),
 	})),
 
 	useStore: vi.fn(() => ({

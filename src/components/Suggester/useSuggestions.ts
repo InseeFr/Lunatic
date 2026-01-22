@@ -25,7 +25,7 @@ export function useStore({ storeName }: { storeName: string }) {
 	const [state, setState] = useState<State>(
 		store.error !== null
 			? 'error'
-			: store?.search.isIndexed()
+			: store.search.isIndexed()
 				? 'success'
 				: 'loading'
 	);
