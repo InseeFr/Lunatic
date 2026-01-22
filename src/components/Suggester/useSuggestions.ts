@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 import type { SuggesterOptionType } from './SuggesterType';
 import { useEffectDebounced } from '../../hooks/useDebounce';
-import { getSearchForStore } from '../../utils/search/SuggestersDatabase';
+import {
+	getSearchForStore,
+	SearchStore,
+} from '../../utils/search/SuggestersDatabase';
 import { useRefSync } from '../../hooks/useRefSync';
 
 type Props = {
-	storeName: string;
+	store: SearchStore;
+	storeState: State;
+	setStoreState: (s: State) => any;
 	selectedOptions: SuggesterOptionType[];
 	allowArbitrary: boolean;
 };
@@ -14,16 +19,9 @@ export const OTHER_VALUE = 'OTHER';
 
 type State = 'success' | 'loading' | 'error';
 
-export function useSuggestions({
-	storeName,
-	selectedOptions,
-	allowArbitrary,
-}: Props) {
-	const [searchQuery, setSearchQuery] = useState('');
+export function useStore({ storeName }: { storeName: string }) {
 	const store = getSearchForStore(storeName);
 	const searchIndexRef = useRefSync(store.index);
-	// eslint-disable-next-line prefer-const
-	let [options, setOptions] = useState(selectedOptions);
 	const [state, setState] = useState<State>(
 		store.error !== null
 			? 'error'
@@ -47,19 +45,42 @@ export function useSuggestions({
 			});
 	}, [searchIndexRef]);
 
+	return {
+		store,
+		storeState: state,
+		setStoreState: setState,
+		getLabelById: (id: any) => {
+			if (!id) return '';
+			return store.search?.getFieldsById(id)?.label ?? '';
+		},
+	};
+}
+
+export function useSuggestions({
+	store,
+	storeState: state,
+	setStoreState: setState,
+	selectedOptions,
+	allowArbitrary,
+}: Props) {
+	const [searchQuery, setSearchQuery] = useState('');
+	// eslint-disable-next-line prefer-const
+	let [options, setOptions] = useState(selectedOptions);
+
 	useEffectDebounced(
 		() => {
 			// Do not reset search for empty search
 			if (!searchQuery) {
 				return;
 			}
-			store.search
-				?.search(searchQuery)
-				.then((r) => {
-					setOptions(r);
-					setState('success');
-				})
-				.catch(() => setState('error'));
+			if (store.error === null)
+				store.search
+					?.search(searchQuery)
+					.then((r) => {
+						setOptions(r);
+						setState('success');
+					})
+					.catch(() => setState('error'));
 		},
 		[searchQuery],
 		300

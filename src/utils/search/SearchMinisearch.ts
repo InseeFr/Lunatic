@@ -51,4 +51,11 @@ export class SearchMinisearch<T extends IndexEntry>
 
 		return data;
 	}
+
+	getFieldsById(id: any) {
+		if (!this.db) {
+			return {} as T;
+		}
+		return this.db.getStoredFields(id) as T;
+	}
 }

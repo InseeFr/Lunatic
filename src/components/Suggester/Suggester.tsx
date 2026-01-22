@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { LunaticComponentProps } from '../type';
 import { CustomSuggester } from './CustomSuggester';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
-import { OTHER_VALUE, useSuggestions } from './useSuggestions';
+import { OTHER_VALUE, useStore, useSuggestions } from './useSuggestions';
 import D from '../../i18n';
 import type { SuggesterOptionType } from './SuggesterType';
 
@@ -36,18 +36,22 @@ export function WrappedSuggester({
 	arbitrary,
 	arbitraryValue,
 }: LunaticComponentProps<'Suggester'>) {
+	const { store, storeState, setStoreState, getLabelById } = useStore({
+		storeName,
+	});
+
 	// Default options should not change between render
 	// so we can break the rule of hooks here
 	const computeSelectedOptions = (): [SuggesterOptionType] | [] => {
 		if (arbitraryValue) {
-			return [{ id: 'OTHER', label: arbitraryValue, value: 'OTHER' }];
+			return [{ id: OTHER_VALUE, label: arbitraryValue, value: OTHER_VALUE }];
 		}
 		if (!value) {
 			return [];
 		}
 		const labelResponse = optionResponses?.find((o) => o.attribute === 'label');
 		if (!labelResponse) {
-			return [{ id: value, label: value, value: value }];
+			return [{ id: value, label: getLabelById(value), value: value }];
 		}
 		const label = executeExpression(
 			{ value: labelResponse.name, type: 'VTL' },
@@ -58,13 +62,7 @@ export function WrappedSuggester({
 		if (typeof label !== 'string') {
 			return [{ id: value, label: value, value: value }];
 		}
-		return [
-			{
-				id: value,
-				label: label,
-				value: value,
-			},
-		];
+		return [{ id: value, label: label, value: value }];
 	};
 
 	const [selectedOptions, setSelectedOptions] = useState<
@@ -73,7 +71,9 @@ export function WrappedSuggester({
 
 	const { state, options, search, setSearch, onFocus, onBlur } = useSuggestions(
 		{
-			storeName: storeName,
+			store,
+			storeState,
+			setStoreState,
 			allowArbitrary: !!arbitrary,
 			selectedOptions: selectedOptions,
 		}
@@ -110,7 +110,7 @@ export function WrappedSuggester({
 			{ name: response.name, value: null },
 		];
 		// User chose an arbitrary option or clear the value
-		if (arbitrary && arbitrary.response) {
+		if (arbitrary?.response) {
 			newResponses.push({
 				name: arbitrary.response.name,
 				value: v?.id === OTHER_VALUE ? search : null,
@@ -145,11 +145,19 @@ export function WrappedSuggester({
 		setSearch('');
 	};
 
-	// Fix display issue (when handleChanges is called outside this component (in management mode, return to FORCED value by example) )
-	// We have to re-compute actual selection
 	useEffect(() => {
-		if (value) {
-			setSelectedOptions(computeSelectedOptions());
+		// Fix display issue (when handleChanges is called outside this component (in management mode, return to FORCED value by example)
+		// "value" doesn't match selectedOption's "id"
+		if (selectedOptions[0]?.id !== value) {
+			const actualSelection = computeSelectedOptions();
+			const selectedOptionsWithLabel = actualSelection.map((selection) => {
+				if (selection.id === OTHER_VALUE) return selection;
+				return {
+					...selection,
+					label: getLabelById(selection.id),
+				};
+			}) as [SuggesterOptionType];
+			setSelectedOptions(selectedOptionsWithLabel);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [value]);
