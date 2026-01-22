@@ -2,9 +2,9 @@ name: Main CI
 on:
   push:
     # on branche like main or 2.6, 2.64
-    branches: ['main', '2.*', '3.*']
+    branches: ["main", "2.*", "3.*"]
   pull_request:
-    branches: ['main', '2.*', '3.*']
+    branches: ["main", "2.*", "3.*"]
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: 'pnpm'
+          cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
       - run: pnpm run build
@@ -33,8 +33,16 @@ jobs:
         id: branch-name
         uses: tj-actions/branch-names@v8
       - uses: actions/checkout@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
       # Build Storybook v2
-      - run: pnpm run build-storybook
+      - run: pnpm install --frozen-lockfile && pnpm run build-storybook
       # Add json to fetch for suggester stories
       - run: cp -a ./public/. ./storybook-static
       - name: Deploy to GitHub Pages
@@ -69,8 +77,8 @@ jobs:
       - id: version
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: 'package.json'
-          prop_path: 'version'
+          path: "package.json"
+          prop_path: "version"
       ## we check if repo contains already this tag, if not version, has changed
       - uses: mukunku/tag-exists-action@v1.7.0
         id: check
@@ -115,13 +123,13 @@ jobs:
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org/
-          cache: 'pnpm'
+          cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
       - run: pnpm run build
       - run: npx -y -p denoify@1.6.13 enable_short_npm_import_path
         env:
-          DRY_RUN: '0'
+          DRY_RUN: "0"
       - uses: garronej/ts-ci@v2.1.5
         with:
           action_name: remove_dark_mode_specific_images_from_readme
