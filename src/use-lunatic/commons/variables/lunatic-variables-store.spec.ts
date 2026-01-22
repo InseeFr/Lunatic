@@ -984,5 +984,111 @@ describe('lunatic-variables-store', () => {
 
 			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [4])).toBe(undefined);
 		});
+
+		it('should compute correctly GLOBAL array variable across calculated variables, even if not intialize', () => {
+			// Given a source with a pairwise component
+			const pairwiseComponent = {
+				id: 'm8ob5u9l',
+				page: '3',
+				symLinks: {
+					LINKS: {
+						'1': '1',
+						'2': '3',
+						'3': '2',
+					},
+				},
+				components: [
+					{
+						id: 'm8ob5u9l-pairwise-dropdown',
+						label: {
+							type: 'VTL|MD',
+							value: '"Qui est " || yAxis || " pour " || xAxis || " ?"',
+						},
+						options: [
+							{
+								label: {
+									type: 'VTL',
+									value: '"Son conjoint, sa conjointe"',
+								},
+								value: '1',
+							},
+							{
+								label: { type: 'VTL', value: '"Sa mère, son père"' },
+								value: '2',
+							},
+							{
+								label: { type: 'VTL', value: '"Sa fille, son fils"' },
+								value: '3',
+							},
+						],
+						response: { name: 'LINKS' },
+						isMandatory: false,
+						componentType: 'Dropdown',
+						conditionFilter: {
+							type: 'VTL',
+							value: '(nvl(xAxis, "") <> "") and (nvl(yAxis, "") <> "")',
+						},
+					},
+				],
+				sourceVariables: {
+					name: 'PRENOM',
+					gender: 'SEXE',
+				},
+				componentType: 'PairwiseLinks',
+				xAxisIterations: { type: 'VTL', value: 'count(PRENOM)' },
+				yAxisIterations: { type: 'VTL', value: 'count(PRENOM)' },
+			} as ComponentDefinitionWithPage;
+
+			// When we create the store
+			const store = LunaticVariablesStore.makeFromSource(
+				{
+					components: [pairwiseComponent],
+					variables: [
+						{
+							name: 'PRENOM',
+							values: { COLLECTED: [] },
+							dimension: 1,
+							variableType: 'COLLECTED',
+							iterationReference: 'm8ob7c76',
+						},
+						{
+							name: 'SEXE',
+							values: { COLLECTED: [] },
+							dimension: 1,
+							variableType: 'COLLECTED',
+							iterationReference: 'm8ob7c76',
+						},
+						{
+							name: 'LINKS',
+							values: { COLLECTED: [[]] },
+							dimension: 2,
+							variableType: 'COLLECTED',
+							iterationReference: 'm8ob7c76',
+						},
+					],
+				},
+				{},
+				{ changeHandler: { current: () => {} } }
+			);
+
+			// When pairwise link is updated
+			store.set('PRENOM', ['Child', 'Dad']);
+			store.set('SEXE', ['1', '1']);
+			store.set('LINKS', [
+				[null, '2'],
+				['3', null],
+			]);
+			store.commit();
+			expect(
+				store.run('"Your children are : " || GLOBAL_ENFANTS_PRENOMS', {
+					iteration: [0],
+				})
+			).toBe('Your children are : null');
+			expect(
+				store.run('"Your children are : " || GLOBAL_ENFANTS_PRENOMS', {
+					iteration: [1],
+				})
+			).toBe('Your children are : Child');
+		});
 	});
 });

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- **LunaticVariableStore**: enable init array with `undefined` value (for a given `iteration`)during  `setValue`  methode of `Variable`.
+
+
 ## [3.8.0](https://github.com/InseeFr/Lunatic/releases/tag/3.8.0) - 2026-01-16
 
 ### Added
@@ -18,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Not-paginated loops were wrongly displayed when none of their components were visible
-- Suggester displayed value was wrong after calling `handleChanges` in management mode.
+- Suggester displayed value was wrong after calling `handleChanges` in management mode. (⚠️ cause side-effect in collecte mode, please use `3.8.1`)
 
 ## [3.7.6](https://github.com/InseeFr/Lunatic/releases/tag/3.7.6) - 2025-12-30
 

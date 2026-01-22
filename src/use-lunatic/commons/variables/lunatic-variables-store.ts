@@ -540,6 +540,20 @@ export class LunaticVariable {
 		opts: { iteration?: IterationLevel; ignoreIterationOnScalar?: boolean }
 	): boolean {
 		const { iteration, ignoreIterationOnScalar } = opts;
+
+		// We want to save a value at a specific iteration
+		// but the value is not an array yet
+		// we have to initialize the array even if we want to set an `null` or `undefined` value
+		// (if no, issue with getCalculatedAt that check if this.value is an array, it return global updatedValue instead of the iteration one)
+		if (iteration !== undefined && !Array.isArray(this.value)) {
+			// Ignore the iteration since the value is not an array
+			if (ignoreIterationOnScalar) {
+				return this.setValue(value, {});
+			}
+			// we have to set empty array at first before compare the with the SavedValue
+			this.value = [];
+		}
+
 		if (value === this.getSavedValue(iteration)) {
 			return false;
 		}
@@ -547,14 +561,7 @@ export class LunaticVariable {
 		if (Array.isArray(value) && !Array.isArray(iteration)) {
 			return this.setValueForArray(value);
 		}
-		// We want to save a value at a specific iteration, but the value is not an array yet
-		if (iteration !== undefined && !Array.isArray(this.value)) {
-			// Ignore the iteration since the value is not an array
-			if (ignoreIterationOnScalar) {
-				return this.setValue(value, {});
-			}
-			this.value = [];
-		}
+
 		this.value = !Array.isArray(iteration)
 			? value
 			: setAtIndex(this.value, iteration, value);
@@ -680,33 +687,21 @@ export class LunaticVariable {
 	}
 
 	public getUpdatedAt(iteration?: IterationLevel): number {
-		if (this.dimension === 0) {
-			return this.updatedAt.get(undefined) ?? 0;
-		}
 		// The value is an array, do not look at the root updatedAt if an iteration is provided
-		if (Array.isArray(this.value)) {
-			return this.updatedAt.get(iteration?.join('.')) ?? 0;
+		if (iteration !== undefined && Array.isArray(this.value)) {
+			return this.updatedAt.get(iteration.join('.')) ?? 0;
 		}
-		return (
-			this.updatedAt.get(iteration?.join('.')) ??
-			this.updatedAt.get(undefined) ??
-			0
-		);
+		// undefined key is for root level
+		return this.updatedAt.get(undefined) ?? 0;
 	}
 
 	public getCalculatedAt(iteration?: IterationLevel): number {
-		if (this.dimension === 0) {
-			return this.calculatedAt.get(undefined) ?? 0;
+		// The value is an array, do not look at the root calculatedAt if an iteration is provided
+		if (iteration !== undefined && Array.isArray(this.value)) {
+			return this.calculatedAt.get(iteration.join('.')) ?? 0;
 		}
-		// The value is an array, do not look at the root updatedAt if an iteration is provided
-		if (Array.isArray(this.value)) {
-			return this.calculatedAt.get(iteration?.join('.')) ?? 0;
-		}
-		return (
-			this.calculatedAt.get(iteration?.join('.')) ??
-			this.calculatedAt.get(undefined) ??
-			0
-		);
+		// undefined key is for root level
+		return this.calculatedAt.get(undefined) ?? 0;
 	}
 }
 
