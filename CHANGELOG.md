@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Suggester**: display label after navigation even if label is not stored in COLLECTED variable
+
 ### Fixed
 
 - **LunaticVariableStore**: enable init array with `undefined` value (for a given `iteration`)during  `setValue`  methode of `Variable`.
+- **Suggester**: fix regression caused in `3.7.7`
 
 
 ## [3.8.0](https://github.com/InseeFr/Lunatic/releases/tag/3.8.0) - 2026-01-16

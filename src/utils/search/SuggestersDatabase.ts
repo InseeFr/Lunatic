@@ -23,6 +23,16 @@ export function registerSuggesters(
 	}
 }
 
+export type SearchStore =
+	| {
+			error: string;
+	  }
+	| {
+			error?: null;
+			search: SearchInterface<IndexEntry>;
+			index: () => Promise<void>;
+	  };
+
 export function getSearchForStore(storeName: string) {
 	const search = suggesters.get(storeName);
 	if (!search) {
