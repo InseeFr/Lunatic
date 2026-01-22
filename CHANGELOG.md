@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Build
+
+- switch packageManager `yarn` -> `pnpm`
+
 ### Added
 
 - **Suggester**: display label after navigation even if label is not stored in COLLECTED variable
