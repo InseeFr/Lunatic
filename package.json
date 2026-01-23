@@ -139,7 +139,7 @@
 		"access": "public"
 	},
 	"peerDependencies": {
-		"react": "^18.3.1 "
+		"react": "^19.2.3"
 	},
 	"volta": {
 		"node": "20.16.0",
