@@ -1,9 +1,9 @@
 import { objectMap } from './object';
 import { interpret } from '@inseefr/trevas';
-import antlr4 from 'antlr4';
-import { VtlLexer } from '@inseefr/vtl-2.0-antlr-tools';
+import { CharStream } from '@making-sense/antlr4ng';
+import { VtlLexer } from '@making-sense/vtl-2-1-antlr-tools-ts/lib/generated/VtlLexer';
 
-type DataSet = { dataPoints: { result: unknown } };
+type DataSet = { dataPoints: any[][] };
 
 /**
  * Simplified version of interpret (that converts binding and value)
@@ -12,13 +12,20 @@ export function interpretVTL<T>(
 	expression: string,
 	bindings: Record<string, unknown>
 ): T {
-	const result = interpret(
-		expression,
-		objectMap(bindings, (k, v) => [k, getVTLCompatibleValue(v)])
-	);
+	console.log('interpretVTL', expression, bindings);
+	const vtlBindings = objectMap(bindings, (k, v) => [
+		k,
+		getVTLCompatibleValue(k, v),
+	]);
+	console.log('vtlBindings', vtlBindings);
+	const result = interpret(expression, vtlBindings);
+	console.log('interpretVTL result', result);
 	if (isDataSet(result)) {
-		return extractDataSetResult(result) as T;
+		const resultExtracted = extractDataSetResult(result) as T;
+		console.log('extract from dataSet', resultExtracted);
+		return resultExtracted;
 	}
+
 	return result as T;
 }
 
@@ -27,7 +34,7 @@ export function interpretVTL<T>(
  */
 export function parseVTLVariables(expression: string): string[] {
 	try {
-		const chars = new antlr4.InputStream(expression);
+		const chars = CharStream.fromString(expression);
 		const lexer = new VtlLexer(chars);
 		const dependencySet = lexer.getAllTokens().reduce(function (
 			acc,
@@ -48,16 +55,28 @@ export function parseVTLVariables(expression: string): string[] {
 /**
  * Transform a value to make it compatible with VTL (for bindings)
  */
-export function getVTLCompatibleValue(value: unknown) {
+export function getVTLCompatibleValue(name: string, value: unknown) {
 	if (value === undefined) {
 		return null;
 	}
 	if (Array.isArray(value)) {
 		return {
-			dataStructure: { result: {} },
-			dataPoints: {
-				result: value,
-			},
+			dataStructure: [
+				{
+					name: 'Id_1',
+					type: 'STRING',
+					role: 'IDENTIFIER',
+				},
+				{
+					name: name,
+					type: 'STRING',
+					role: 'MEASURE',
+				},
+			],
+			dataPoints: value.map((valueOfIteration) => [
+				'scope_racine',
+				valueOfIteration,
+			]),
 		};
 	}
 
@@ -96,21 +115,27 @@ export function getExpressionAsString(expression: unknown): string {
 }
 
 function isDataSet(result: unknown): result is DataSet {
+	console.log('result', result);
 	return (
 		typeof result === 'object' &&
 		result !== null &&
 		'dataPoints' in result &&
 		result.dataPoints !== null &&
 		typeof result.dataPoints === 'object' &&
-		'result' in result.dataPoints
+		Array.isArray(result.dataPoints)
 	);
 }
 
 function extractDataSetResult(dataSet: DataSet) {
 	const { dataPoints } = dataSet;
-	if (dataPoints) {
-		const { result } = dataPoints;
-		return result;
+	if (
+		dataPoints &&
+		Array.isArray(dataPoints) &&
+		dataPoints.length > 0 &&
+		Array.isArray(dataPoints[0]) &&
+		dataPoints[0].length > 0
+	) {
+		return dataPoints[0][0];
 	}
 	return undefined;
 }

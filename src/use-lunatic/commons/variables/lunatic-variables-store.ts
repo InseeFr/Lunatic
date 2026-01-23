@@ -13,11 +13,7 @@ import {
 } from '../../../utils/array';
 import { isNumber } from '../../../utils/number';
 import type { RefObject } from 'react';
-import {
-	VTLInterpretationError,
-	VTLMissingDependencies,
-	VTLMissingDependency,
-} from './errors';
+import { VTLInterpretationError, VTLMissingDependencies } from './errors';
 import {
 	computePairwiseGlobalVariables,
 	computePairwiseGlobalVariableValue,
@@ -644,11 +640,14 @@ export class LunaticVariable {
 
 					// The variable is not registered in the variable dictionary
 					// Happens when calculating unquoted VTL expression
-					if (!this.dictionary || !this.dictionary?.has(dep)) {
-						throw new VTLMissingDependency(this.expression!, dep);
-					}
+					// if (!this.dictionary || !this.dictionary?.has(dep)) {
+					// 	throw new VTLMissingDependency(this.expression!, dep);
+					// }
 
-					return [dep, this.dictionary.get(dep)?.getValue(dependencyIteration)];
+					return [
+						dep,
+						this.dictionary?.get(dep)?.getValue(dependencyIteration),
+					];
 				})
 			);
 		} catch (e) {

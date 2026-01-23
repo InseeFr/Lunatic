@@ -42,7 +42,7 @@
 			"id": "loop",
 			"componentType": "Loop",
 			"loopDependencies": ["PRENOM"],
-			"iterations": { "value": "count(PRENOM)", "type": "VTL" },
+			"iterations": { "value": "count(PRENOM group by Id_1)", "type": "VTL" },
 			"page": "2",
 			"maxPage": "1",
 			"depth": 1,
@@ -84,7 +84,7 @@
 	],
 	"resizing": {
 		"PRENOM": {
-			"size": "count(PRENOM)",
+			"size": "count(PRENOM group by Id_1)",
 			"variables": ["AGE"]
 		}
 	},
