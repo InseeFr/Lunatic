@@ -49,7 +49,7 @@ describe('Input', () => {
 				maxLength: props.maxLength,
 				value: props.value,
 			},
-			{}
+			undefined
 		);
 	});
 

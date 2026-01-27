@@ -188,46 +188,54 @@ describe('use-lunatic()', () => {
 
 		describe('with loop', function () {
 			const data = dataFromObject({
-				ETAT: '1',
-				SATISFAIT: '1',
 				T_NHAB: 3,
 				T_PRENOM: ['Quentin', 'Luna', 'Paul'],
-				COMMCOMPO: 'super',
-				T_SEXE: ['1', '2', '1'],
-				T_DATENAIS: [null, null, null],
-				REMARQUES: [null, 'a', 'b'],
-				SUPERQUEST: ['ok', 'ok', null],
-				AUTRESUPERQUEST: ['a', 'c', 'ras'],
-				ENCOREUNEQ: ['wow', 'b', null],
-				COMMENT_QE: null,
-				ETAT_MISSING: null,
-				SATISFAIT_MISSING: null,
-				T_NHAB_MISSING: null,
-				T_PRENOM_MISSING: null,
-				COMMCOMPO_MISSING: null,
-				T_SEXE_MISSING: null,
-				T_DATENAIS_MISSING: [null, 'DK', 'RF'],
-				REMARQUES_MISSING: [null, null, null],
-				SUPERQUEST_MISSING: [null, null, 'DK'],
-				ENCOREUNEQ_MISSING: [null, null, 'RF'],
-				AUTRESUPERQUEST_MISSING: null,
-				COMMENT_QE_MISSING: null,
 			});
 
 			it('should work with loop', async () => {
 				const { result } = renderHook(() =>
 					useLunatic(sourceOverview, data, lunaticConfiguration)
 				);
-				expect(result.current.overview).toMatchSnapshot();
+
+				// 4 sequences, and we loop twice on the second one
+				expect(result.current.overview.length).toBe(5);
+				expect(result.current.overview[0].label).toBe(
+					'I - Habitants du logement'
+				);
+				expect(result.current.overview[0].page).toBe('1');
+				expect(result.current.overview[1].label).toBe(
+					'II - Boucle sur séquence pour  Luna (qui filtre la première itération)'
+				);
+				expect(result.current.overview[1].page).toBe('4.1#2');
+				expect(result.current.overview[2].label).toBe(
+					'II - Boucle sur séquence pour  Paul (qui filtre la première itération)'
+				);
+				expect(result.current.overview[2].page).toBe('4.1#3');
+
+				// 3rd sequence has only one subsequence, and we loop over it
+				expect(result.current.overview[3].children.length).toBe(2);
+				expect(result.current.overview[3].children[0].page).toBe('6.1#2');
+				expect(result.current.overview[3].children[1].page).toBe('6.1#3');
+
+				// It would be nice to test that each label is correct, currently we have issue about expression execution in subsequence in tests only.
 			});
 			it('should handle initialPage', async () => {
 				const { result } = renderHook(() =>
 					useLunatic(sourceOverview, data, {
 						...lunaticConfiguration,
-						initialPage: '10.1#1',
+						initialPage: '6.1#2',
 					})
 				);
-				expect(result.current.overview).toMatchSnapshot();
+
+				// 4 sequences, and we loop twice on the second one
+				expect(result.current.overview.length).toBe(5);
+				expect(result.current.overview[1].reached).toBe(true);
+				expect(result.current.overview[3].children[0].reached).toBe(true);
+				expect(result.current.overview[3].children[1].reached).toBe(false);
+				expect(result.current.overview[4].reached).toBe(false);
+
+				expect(result.current.overview[3].current).toBe(true);
+				expect(result.current.overview[3].children[0].current).toBe(true);
 			});
 		});
 	});
