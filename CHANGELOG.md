@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.10.0](https://github.com/InseeFr/Lunatic/releases/tag/3.10.0) - 2026-01-27
+
 ### Changed
 
 - Upgrade React to v19
