@@ -301,7 +301,7 @@ function cleanPairwise(
 	iteration?: IterationLevel
 ): boolean {
 	// We are not trying to clean a pairwise at a specific index
-	if (!iteration || iteration.length !== 1) {
+	if (iteration?.length !== 1) {
 		return false;
 	}
 	const variableValue = store.get(variableName);

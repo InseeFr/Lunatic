@@ -39,7 +39,7 @@ export type EventArgs = {
 		/** New value for the variable. */
 		value: unknown;
 		/** Iteration changed (for array). */
-		iteration?: IterationLevel | undefined;
+		iteration?: IterationLevel;
 		/** What triggered this change. */
 		cause?: 'resizing' | 'cleaning';
 		/** Force a vector when an iteration is set and the value was a scalar **/
@@ -67,9 +67,9 @@ class Timekey {
 }
 
 export class LunaticVariablesStore {
-	private dictionary = new Map<string, LunaticVariable>();
-	private eventTarget = new EventTarget();
-	private queue = {
+	private readonly dictionary = new Map<string, LunaticVariable>();
+	private readonly eventTarget = new EventTarget();
+	private readonly queue = {
 		default: new Map<string, () => void>(),
 		cleaning: new Map<string, () => void>(),
 		resizing: new Map<string, () => void>(),
@@ -95,8 +95,8 @@ export class LunaticVariablesStore {
 		const { changeHandler, disableCleaning, autoCommit } = options;
 
 		const store = new LunaticVariablesStore();
-		if (typeof window !== 'undefined') {
-			(window as any).lunaticStore = store; // Allow access to the store from the console
+		if (globalThis.window === undefined) {
+			(globalThis.window as any).lunaticStore = store; // Allow access to the store from the console
 		}
 		if (!source.variables) {
 			return store;
@@ -389,7 +389,9 @@ export class LunaticVariablesStore {
 					0
 				)
 		);
-		Array.from(this.dictionary.values()).map((v) => (v.calculatedCount = 0));
+		Array.from(this.dictionary.values()).forEach(
+			(v) => (v.calculatedCount = 0)
+		);
 	}
 }
 
@@ -397,9 +399,9 @@ export class LunaticVariable {
 	/** Last time the value was updated (changed). */
 	public updatedAt = new Map<undefined | string, number>();
 	/** Last time the store was updated (changed). */
-	private storeUpdatedAt: Timekey;
+	private readonly storeUpdatedAt: Timekey;
 	/** Last time "calculation" was run (for calculated variable). */
-	private calculatedAt = new Map<undefined | string, number>();
+	private readonly calculatedAt = new Map<undefined | string, number>();
 	/** Internal value for the variable. */
 	private value: unknown;
 	/** List of direct dependencies, ex: ['FULLNAME', 'FIRSTNAME', 'LASTNAME']. */
@@ -583,9 +585,9 @@ export class LunaticVariable {
 			return this.setValueForArray(value);
 		}
 
-		this.value = !Array.isArray(iteration)
-			? value
-			: setAtIndex(this.value, iteration, value);
+		this.value = Array.isArray(iteration)
+			? setAtIndex(this.value, iteration, value)
+			: value;
 		this.updateTimestamps(iteration, 'updatedAt');
 		return true;
 	}
@@ -640,9 +642,7 @@ export class LunaticVariable {
 
 	private getDependencies(): string[] {
 		// Calculate dependencies from expression on the fly if necessary
-		if (this.dependencies === undefined) {
-			this.dependencies = parseVTLVariables(this.expression!);
-		}
+		this.dependencies ??= parseVTLVariables(this.expression!);
 		return this.dependencies;
 	}
 
@@ -665,7 +665,7 @@ export class LunaticVariable {
 
 					// The variable is not registered in the variable dictionary
 					// Happens when calculating unquoted VTL expression
-					if (!this.dictionary || !this.dictionary?.has(dep)) {
+					if (!this.dictionary?.has(dep)) {
 						throw new VTLMissingDependency(this.expression!, dep);
 					}
 
