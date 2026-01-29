@@ -69,7 +69,11 @@ class Timekey {
 export class LunaticVariablesStore {
 	private dictionary = new Map<string, LunaticVariable>();
 	private eventTarget = new EventTarget();
-	private queue = new Map<string, () => void>();
+	private queue = {
+		default: new Map<string, () => void>(),
+		cleaning: new Map<string, () => void>(),
+		resizing: new Map<string, () => void>(),
+	};
 	public autoCommit = false; // Commit change instantly (used in tests)
 	public updatedAt = new Timekey();
 
@@ -185,14 +189,27 @@ export class LunaticVariablesStore {
 			this.set(name, typeof value === 'function' ? value() : value, args);
 			return;
 		}
-		this.queue.set(name, () => {
-			// A function can be enqueued, we need to evaluate it to retrieve the value to set
-			// This is used for the resizing, where we want to resize the last version of the variable
-			if (typeof value === 'function') {
-				value = value();
+		this.queue[args.cause ?? 'default'].set(
+			`${name} | ${args.iteration}`,
+			() => {
+				// A function can be enqueued, we need to evaluate it to retrieve the value to set
+				// This is used for the resizing, where we want to resize the last version of the variable
+				if (typeof value === 'function') {
+					value = value();
+				}
+				this.set(name, value, args);
 			}
-			this.set(name, value, args);
-		});
+		);
+	}
+
+	public unqueueSet(
+		name: string,
+		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
+	) {
+		if (this.autoCommit) {
+			return;
+		}
+		this.queue[args.cause ?? 'default'].delete(`${name} | ${args.iteration}`);
 	}
 
 	/**
@@ -202,9 +219,13 @@ export class LunaticVariablesStore {
 		const autoCommitValue = this.autoCommit;
 		// Since we can have nested operation, we prevent delayed set while commiting
 		this.autoCommit = true;
-		Array.from(this.queue.values()).forEach((cb) => cb());
+		Array.from(this.queue.default.values()).forEach((cb) => cb());
+		Array.from(this.queue.cleaning.values()).forEach((cb) => cb());
+		Array.from(this.queue.resizing.values()).forEach((cb) => cb());
 		this.autoCommit = autoCommitValue;
-		this.queue.clear();
+		this.queue.default.clear();
+		this.queue.cleaning.clear();
+		this.queue.resizing.clear();
 	}
 
 	/**
