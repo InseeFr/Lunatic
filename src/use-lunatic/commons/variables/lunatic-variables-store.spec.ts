@@ -677,6 +677,7 @@ describe('lunatic-variables-store', () => {
 			expect(variables.get('PRENOM')).toEqual('John');
 			variables.set('READY', false);
 			variables.set('READY', true);
+			variables.commit();
 			expect(variables.get('PRENOM')).toEqual('John');
 		});
 	});
