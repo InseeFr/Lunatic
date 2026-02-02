@@ -1021,14 +1021,24 @@ describe('lunatic-variables-store', () => {
 			expect(store.get('GLOBAL_PARENT1_SEXE', [0])).toBe('1');
 			expect(store.get('GLOBAL_PARENT2_SEXE', [0])).toBe('2');
 			expect(store.get('GLOBAL_CONJOINT_PRENOM', [0])).toBe('Sciel');
-			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [0])).toBe('Monoco;Noco');
+			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [0])).toBe('Monoco#Noco');
 
 			expect(store.get('GLOBAL_PARENT1_PRENOM', [1])).toBeUndefined();
 			expect(store.get('GLOBAL_PARENT2_PRENOM', [1])).toBeUndefined();
 			expect(store.get('GLOBAL_PARENT1_SEXE', [1])).toBeUndefined();
 			expect(store.get('GLOBAL_PARENT2_SEXE', [1])).toBeUndefined();
 			expect(store.get('GLOBAL_CONJOINT_PRENOM', [1])).toBe('Aline');
-			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [1])).toBe('Verso;Alicia');
+			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [1])).toBe('Verso#Alicia');
+
+			// Test with replace VTL function
+			expect(
+				store.run(
+					`"Your children are " || replace(GLOBAL_ENFANTS_PRENOMS, "#", ", ")`,
+					{
+						iteration: [1],
+					}
+				)
+			).toBe('Your children are Verso, Alicia');
 
 			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [4])).toBe(undefined);
 		});
