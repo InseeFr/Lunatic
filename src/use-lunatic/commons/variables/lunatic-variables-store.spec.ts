@@ -634,6 +634,54 @@ describe('lunatic-variables-store', () => {
 		});
 	});
 
+	describe('cleaning with queue', () => {
+		beforeEach(() => {
+			variables.autoCommit = false;
+		});
+
+		it('should not clean variables directly', () => {
+			variables.set('PRENOM', 'John');
+			variables.set('READY', true);
+			cleaningBehaviour(variables, {
+				READY: {
+					PRENOM: 'READY',
+				},
+			});
+			expect(variables.get('PRENOM')).toEqual('John');
+			variables.set('READY', false);
+			expect(variables.get('PRENOM')).toEqual('John');
+		});
+
+		it('should clean variables when commit', () => {
+			variables.set('PRENOM', 'John');
+			variables.set('READY', true);
+			cleaningBehaviour(variables, {
+				READY: {
+					PRENOM: 'READY',
+				},
+			});
+			expect(variables.get('PRENOM')).toEqual('John');
+			variables.set('READY', false);
+			variables.commit();
+			expect(variables.get('PRENOM')).toEqual(null);
+		});
+
+		it('should not clean variables when the variable has not really changed after commit', () => {
+			variables.set('PRENOM', 'John');
+			variables.set('READY', true);
+			cleaningBehaviour(variables, {
+				READY: {
+					PRENOM: 'READY',
+				},
+			});
+			expect(variables.get('PRENOM')).toEqual('John');
+			variables.set('READY', false);
+			variables.set('READY', true);
+			variables.commit();
+			expect(variables.get('PRENOM')).toEqual('John');
+		});
+	});
+
 	describe('missing', () => {
 		beforeEach(() => {
 			missingBehaviour(variables, {

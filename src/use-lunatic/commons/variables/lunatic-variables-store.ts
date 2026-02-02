@@ -39,7 +39,7 @@ export type EventArgs = {
 		/** New value for the variable. */
 		value: unknown;
 		/** Iteration changed (for array). */
-		iteration?: IterationLevel | undefined;
+		iteration?: IterationLevel;
 		/** What triggered this change. */
 		cause?: 'resizing' | 'cleaning';
 		/** Force a vector when an iteration is set and the value was a scalar **/
@@ -67,9 +67,13 @@ class Timekey {
 }
 
 export class LunaticVariablesStore {
-	private dictionary = new Map<string, LunaticVariable>();
-	private eventTarget = new EventTarget();
-	private queue = new Map<string, () => void>();
+	private readonly dictionary = new Map<string, LunaticVariable>();
+	private readonly eventTarget = new EventTarget();
+	private readonly queue = {
+		default: new Map<string, () => void>(),
+		cleaning: new Map<string, () => void>(),
+		resizing: new Map<string, () => void>(),
+	};
 	public autoCommit = false; // Commit change instantly (used in tests)
 	public updatedAt = new Timekey();
 
@@ -91,8 +95,8 @@ export class LunaticVariablesStore {
 		const { changeHandler, disableCleaning, autoCommit } = options;
 
 		const store = new LunaticVariablesStore();
-		if (typeof window !== 'undefined') {
-			(window as any).lunaticStore = store; // Allow access to the store from the console
+		if (globalThis.window === undefined) {
+			(globalThis.window as any).lunaticStore = store; // Allow access to the store from the console
 		}
 		if (!source.variables) {
 			return store;
@@ -185,14 +189,27 @@ export class LunaticVariablesStore {
 			this.set(name, typeof value === 'function' ? value() : value, args);
 			return;
 		}
-		this.queue.set(name, () => {
-			// A function can be enqueued, we need to evaluate it to retrieve the value to set
-			// This is used for the resizing, where we want to resize the last version of the variable
-			if (typeof value === 'function') {
-				value = value();
+		this.queue[args.cause ?? 'default'].set(
+			`${name} | ${args.iteration}`,
+			() => {
+				// A function can be enqueued, we need to evaluate it to retrieve the value to set
+				// This is used for the resizing, where we want to resize the last version of the variable
+				if (typeof value === 'function') {
+					value = value();
+				}
+				this.set(name, value, args);
 			}
-			this.set(name, value, args);
-		});
+		);
+	}
+
+	public unqueueSet(
+		name: string,
+		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
+	) {
+		if (this.autoCommit) {
+			return;
+		}
+		this.queue[args.cause ?? 'default'].delete(`${name} | ${args.iteration}`);
 	}
 
 	/**
@@ -202,9 +219,13 @@ export class LunaticVariablesStore {
 		const autoCommitValue = this.autoCommit;
 		// Since we can have nested operation, we prevent delayed set while commiting
 		this.autoCommit = true;
-		Array.from(this.queue.values()).forEach((cb) => cb());
+		Array.from(this.queue.default.values()).forEach((cb) => cb());
+		Array.from(this.queue.cleaning.values()).forEach((cb) => cb());
+		Array.from(this.queue.resizing.values()).forEach((cb) => cb());
 		this.autoCommit = autoCommitValue;
-		this.queue.clear();
+		this.queue.default.clear();
+		this.queue.cleaning.clear();
+		this.queue.resizing.clear();
 	}
 
 	/**
@@ -368,7 +389,9 @@ export class LunaticVariablesStore {
 					0
 				)
 		);
-		Array.from(this.dictionary.values()).map((v) => (v.calculatedCount = 0));
+		Array.from(this.dictionary.values()).forEach(
+			(v) => (v.calculatedCount = 0)
+		);
 	}
 }
 
@@ -376,9 +399,9 @@ export class LunaticVariable {
 	/** Last time the value was updated (changed). */
 	public updatedAt = new Map<undefined | string, number>();
 	/** Last time the store was updated (changed). */
-	private storeUpdatedAt: Timekey;
+	private readonly storeUpdatedAt: Timekey;
 	/** Last time "calculation" was run (for calculated variable). */
-	private calculatedAt = new Map<undefined | string, number>();
+	private readonly calculatedAt = new Map<undefined | string, number>();
 	/** Internal value for the variable. */
 	private value: unknown;
 	/** List of direct dependencies, ex: ['FULLNAME', 'FIRSTNAME', 'LASTNAME']. */
@@ -562,9 +585,9 @@ export class LunaticVariable {
 			return this.setValueForArray(value);
 		}
 
-		this.value = !Array.isArray(iteration)
-			? value
-			: setAtIndex(this.value, iteration, value);
+		this.value = Array.isArray(iteration)
+			? setAtIndex(this.value, iteration, value)
+			: value;
 		this.updateTimestamps(iteration, 'updatedAt');
 		return true;
 	}
@@ -619,9 +642,7 @@ export class LunaticVariable {
 
 	private getDependencies(): string[] {
 		// Calculate dependencies from expression on the fly if necessary
-		if (this.dependencies === undefined) {
-			this.dependencies = parseVTLVariables(this.expression!);
-		}
+		this.dependencies ??= parseVTLVariables(this.expression!);
 		return this.dependencies;
 	}
 
@@ -644,7 +665,7 @@ export class LunaticVariable {
 
 					// The variable is not registered in the variable dictionary
 					// Happens when calculating unquoted VTL expression
-					if (!this.dictionary || !this.dictionary?.has(dep)) {
+					if (!this.dictionary?.has(dep)) {
 						throw new VTLMissingDependency(this.expression!, dep);
 					}
 

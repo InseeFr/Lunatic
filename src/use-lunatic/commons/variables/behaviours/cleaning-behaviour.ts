@@ -77,8 +77,11 @@ export function cleaningBehaviour(
 				}
 
 				// Clean regular variables if needed
-				if (shouldCleanResult)
+				if (shouldCleanResult) {
 					cleanVariable(store, sourceValues, variableName, iteration);
+				} else {
+					cancelCleanVariable(store, variableName, iteration);
+				}
 			} catch (e) {
 				// Log error but continue processing other variables
 				console.error(e);
@@ -235,9 +238,20 @@ function cleanArrayVariableAccordingCondition(
 	shouldClean: boolean[]
 ) {
 	for (const [iteration, shouldCleanByIteration] of shouldClean.entries()) {
-		if (shouldCleanByIteration)
+		if (shouldCleanByIteration) {
 			cleanVariable(store, sourceValues, variableName, [iteration]);
+		} else {
+			cancelCleanVariable(store, variableName, [iteration]);
+		}
 	}
+}
+
+function cancelCleanVariable(
+	store: LunaticVariablesStore,
+	variableName: string,
+	iteration: IterationLevel | undefined
+) {
+	store.unqueueSet(variableName, { iteration: iteration, cause: 'cleaning' });
 }
 
 /**
@@ -263,7 +277,7 @@ function cleanVariable(
 	if (cleanPairwise(store, variableName, variableIteration)) {
 		return;
 	}
-	store.set(
+	store.enqueueSet(
 		variableName,
 		getValueAtIteration(sourceValues[variableName], variableIteration),
 		{
@@ -287,7 +301,7 @@ function cleanPairwise(
 	iteration?: IterationLevel
 ): boolean {
 	// We are not trying to clean a pairwise at a specific index
-	if (!iteration || iteration.length !== 1) {
+	if (iteration?.length !== 1) {
 		return false;
 	}
 	const variableValue = store.get(variableName);
@@ -302,7 +316,7 @@ function cleanPairwise(
 	}
 
 	// Clean the row and the column corresponding to the index
-	store.set(
+	store.enqueueSet(
 		variableName,
 		variableValue.map((value, k) => {
 			// The value is not an array, this should not happen so we keep the original value
@@ -315,7 +329,8 @@ function cleanPairwise(
 			}
 			// Nullify cells in the column corresponding to the index being deleted
 			return setAtIndex(value, iteration, null);
-		})
+		}),
+		{ cause: 'cleaning' }
 	);
 	return true;
 }
