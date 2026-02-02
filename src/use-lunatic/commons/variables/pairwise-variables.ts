@@ -247,5 +247,5 @@ function computeChildrenNamesValue(links: string[], names: string[]) {
 			res.push(names[i]);
 		}
 	}
-	return res.length > 0 ? res.join(';') : undefined;
+	return res.length > 0 ? res.join('#') : undefined;
 }
