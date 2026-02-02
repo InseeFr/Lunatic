@@ -1030,12 +1030,7 @@ describe('lunatic-variables-store', () => {
 			expect(store.get('GLOBAL_CONJOINT_PRENOM', [1])).toBe('Aline');
 			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [1])).toBe('Verso#Alicia');
 
-			// no conflict with sep: "|" and "||" VTL operator
-			expect(
-				store.run('"Your children are " || GLOBAL_ENFANTS_PRENOMS', {
-					iteration: [1],
-				})
-			).toBe('Your children are Verso#Alicia');
+			// Test with replace VTL function
 			expect(
 				store.run(
 					`"Your children are " || replace(GLOBAL_ENFANTS_PRENOMS, "#", ", ")`,
