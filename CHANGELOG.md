@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.11.0](https://github.com/InseeFr/Lunatic/releases/tag/3.11.1) - 2026-02-02
+
+### Changed
+
+- feat: add delay cleaning feature, based on queue. Cleaning is done when the page changes. (for pagination = `question`)
+- change separator of `GLOBAL_ENFANTS_PRENOMS` (`;` to `#`), exemple, if your children are `['Verso', 'Alicia']`, then `GLOBAL_ENFANTS_PRENOMS='Verso#Alicia'`
+
 ## [3.10.0](https://github.com/InseeFr/Lunatic/releases/tag/3.10.0) - 2026-01-27
 
 ### Changed
