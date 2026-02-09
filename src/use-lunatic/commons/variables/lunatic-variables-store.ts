@@ -66,13 +66,20 @@ class Timekey {
 	}
 }
 
+export function getChangedKey(
+	variableName: string,
+	iteration?: IterationLevel
+) {
+	return `${variableName} | ${JSON.stringify(iteration)}`;
+}
+
 export class LunaticVariablesStore {
 	private readonly dictionary = new Map<string, LunaticVariable>();
 	private readonly eventTarget = new EventTarget();
 	private readonly queue = {
-		default: new Map<string, () => void>(),
-		cleaning: new Map<string, () => void>(),
-		resizing: new Map<string, () => void>(),
+		default: new Map<string, (() => void)[]>(),
+		cleaning: new Map<string, (() => void)[]>(),
+		resizing: new Map<string, (() => void)[]>(),
 	};
 	public autoCommit = false; // Commit change instantly (used in tests)
 	public updatedAt = new Timekey();
@@ -183,14 +190,21 @@ export class LunaticVariablesStore {
 	public enqueueSet(
 		name: string,
 		value: unknown,
-		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
+		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {},
+		// usefull for pairwise, iteration is used but we need to change all variable even if we touch to only one iteration
+		forcedChangedKey?: string
 	) {
 		if (this.autoCommit) {
 			this.set(name, typeof value === 'function' ? value() : value, args);
 			return;
 		}
-		this.queue[args.cause ?? 'default'].set(
-			`${name} | ${args.iteration}`,
+
+		const changeKey = forcedChangedKey ?? getChangedKey(name, args.iteration);
+
+		const currentChanges =
+			this.queue[args.cause ?? 'default'].get(changeKey) ?? [];
+		const allChanges = [
+			...currentChanges,
 			() => {
 				// A function can be enqueued, we need to evaluate it to retrieve the value to set
 				// This is used for the resizing, where we want to resize the last version of the variable
@@ -198,8 +212,9 @@ export class LunaticVariablesStore {
 					value = value();
 				}
 				this.set(name, value, args);
-			}
-		);
+			},
+		];
+		this.queue[args.cause ?? 'default'].set(changeKey, allChanges);
 	}
 
 	public unqueueSet(
@@ -209,7 +224,9 @@ export class LunaticVariablesStore {
 		if (this.autoCommit) {
 			return;
 		}
-		this.queue[args.cause ?? 'default'].delete(`${name} | ${args.iteration}`);
+		this.queue[args.cause ?? 'default'].delete(
+			getChangedKey(name, args.iteration)
+		);
 	}
 
 	/**
@@ -219,9 +236,15 @@ export class LunaticVariablesStore {
 		const autoCommitValue = this.autoCommit;
 		// Since we can have nested operation, we prevent delayed set while commiting
 		this.autoCommit = true;
-		Array.from(this.queue.default.values()).forEach((cb) => cb());
-		Array.from(this.queue.cleaning.values()).forEach((cb) => cb());
-		Array.from(this.queue.resizing.values()).forEach((cb) => cb());
+		Array.from(this.queue.default.values()).forEach((cbList) =>
+			cbList.forEach((cb) => cb())
+		);
+		Array.from(this.queue.cleaning.values()).forEach((cbList) =>
+			cbList.forEach((cb) => cb())
+		);
+		Array.from(this.queue.resizing.values()).forEach((cbList) =>
+			cbList.forEach((cb) => cb())
+		);
 		this.autoCommit = autoCommitValue;
 		this.queue.default.clear();
 		this.queue.cleaning.clear();

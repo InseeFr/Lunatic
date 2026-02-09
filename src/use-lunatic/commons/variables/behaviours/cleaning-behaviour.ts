@@ -1,4 +1,7 @@
-import type { LunaticVariablesStore } from '../lunatic-variables-store';
+import {
+	getChangedKey,
+	type LunaticVariablesStore,
+} from '../lunatic-variables-store';
 import type { LunaticSource } from '../../../type';
 import { depth, setAtIndex } from '../../../../utils/array';
 import { castBool } from '../../../../utils/cast';
@@ -318,19 +321,25 @@ function cleanPairwise(
 	// Clean the row and the column corresponding to the index
 	store.enqueueSet(
 		variableName,
-		variableValue.map((value, k) => {
-			// The value is not an array, this should not happen so we keep the original value
-			if (!Array.isArray(value)) {
-				return value;
-			}
-			// Empty the row corresponding to the index being deleted
-			if (k === iteration[0]) {
-				return value.fill(null);
-			}
-			// Nullify cells in the column corresponding to the index being deleted
-			return setAtIndex(value, iteration, null);
-		}),
-		{ cause: 'cleaning' }
+		() => {
+			// we need last pairwise value, so we store.get function, instead `variableValue` variable
+			const pairwiseValue = store.get(variableName) as (string | null)[][];
+			return pairwiseValue.map((value, k) => {
+				// The value is not an array, this should not happen so we keep the original value
+				if (!Array.isArray(value)) {
+					return value;
+				}
+				// Empty the row corresponding to the index being deleted
+				if (k === iteration[0]) {
+					return value.fill(null);
+				}
+				// Nullify cells in the column corresponding to the index being deleted
+				return setAtIndex(value, iteration, null);
+			});
+		},
+		{ cause: 'cleaning' },
+		// needed for canceling cleaning pairwise
+		getChangedKey(variableName, iteration)
 	);
 	return true;
 }
