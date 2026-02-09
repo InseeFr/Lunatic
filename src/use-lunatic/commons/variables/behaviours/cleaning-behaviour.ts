@@ -344,7 +344,7 @@ function cleanPairwise(
 			});
 		},
 		{ cause: 'cleaning' },
-		// needed for canceling pairwise
+		// needed for canceling cleaning pairwise
 		getChangedKey(variableName, iteration)
 	);
 	return true;
