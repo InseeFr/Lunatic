@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.11.1](https://github.com/InseeFr/Lunatic/releases/tag/3.11.1) - 2026-02-09
+
+### Changed
+
+- fix: cleaning pairwise (queue issue), fixing (delay cleaning feature for pairwise)
+
+
 ## [3.11.0](https://github.com/InseeFr/Lunatic/releases/tag/3.11.1) - 2026-02-02
 
 ### Changed
