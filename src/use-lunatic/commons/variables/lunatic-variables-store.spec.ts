@@ -680,6 +680,89 @@ describe('lunatic-variables-store', () => {
 			variables.commit();
 			expect(variables.get('PRENOM')).toEqual('John');
 		});
+
+		it('should clean pairwise in two directions with a queue', () => {
+			variables.set('LINKS', [
+				[null, '1', '3'],
+				['1', null, '3'],
+				['2', '2', null],
+			]);
+			variables.set('PRENOM', ['Dad', 'Mom', 'Unknow']);
+			cleaningBehaviour(
+				variables,
+				{
+					PRENOM: {
+						LINKS: [
+							{
+								expression: 'PRENOM <> ""',
+								shapeFrom: 'PRENOM',
+								isAggregatorUsed: false,
+							},
+						],
+					},
+				},
+				{
+					PRENOM: [],
+					LINKS: [],
+				}
+			);
+
+			// when
+			variables.set('PRENOM', '', { iteration: [1] });
+			variables.set('PRENOM', '', { iteration: [2] });
+
+			expect(variables.get('PRENOM')).toEqual(['Dad', '', '']);
+			variables.commit();
+			// then
+			expect(variables.get('LINKS')).toEqual([
+				[null, null, null],
+				[null, null, null],
+				[null, null, null],
+			]);
+		});
+
+		it('should clean pairwise in two directions with a queue with canceling', () => {
+			variables.set('LINKS', [
+				[null, '1', '3'],
+				['1', null, '3'],
+				['2', '2', null],
+			]);
+			variables.set('PRENOM', ['Dad', 'Mom', 'Unknow']);
+			cleaningBehaviour(
+				variables,
+				{
+					PRENOM: {
+						LINKS: [
+							{
+								expression: 'PRENOM <> ""',
+								shapeFrom: 'PRENOM',
+								isAggregatorUsed: false,
+							},
+						],
+					},
+				},
+				{
+					PRENOM: [],
+					LINKS: [],
+				}
+			);
+
+			// when
+			variables.set('PRENOM', '', { iteration: [1] });
+			variables.set('PRENOM', '', { iteration: [2] });
+
+			expect(variables.get('PRENOM')).toEqual(['Dad', '', '']);
+
+			variables.set('PRENOM', 'Not Unknow', { iteration: [2] });
+			expect(variables.get('PRENOM')).toEqual(['Dad', '', 'Not Unknow']);
+			variables.commit();
+			// then
+			expect(variables.get('LINKS')).toEqual([
+				[null, null, '3'],
+				[null, null, null],
+				['2', null, null],
+			]);
+		});
 	});
 
 	describe('missing', () => {
