@@ -290,13 +290,6 @@ function cleanVariable(
 	);
 }
 
-function getLastPairwiseValue(
-	store: LunaticVariablesStore,
-	variableName: string
-) {
-	return store.get(variableName) as (string | null)[][];
-}
-
 /**
  * Cleans a pairwise variable (2D array) at a specific iteration
  *
@@ -329,8 +322,9 @@ function cleanPairwise(
 	store.enqueueSet(
 		variableName,
 		() => {
-			// we need last pairwise value, so we use function, instead `variableValue` variable
-			return getLastPairwiseValue(store, variableName).map((value, k) => {
+			// we need last pairwise value, so we store.get function, instead `variableValue` variable
+			const pairwiseValue = store.get(variableName) as (string | null)[][];
+			return pairwiseValue.map((value, k) => {
 				// The value is not an array, this should not happen so we keep the original value
 				if (!Array.isArray(value)) {
 					return value;
