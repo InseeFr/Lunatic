@@ -77,9 +77,9 @@ export class LunaticVariablesStore {
 	private readonly dictionary = new Map<string, LunaticVariable>();
 	private readonly eventTarget = new EventTarget();
 	private readonly queue = {
-		default: new Map<string, (() => void)[]>(),
-		cleaning: new Map<string, (() => void)[]>(),
-		resizing: new Map<string, (() => void)[]>(),
+		default: new Map<string, () => void>(),
+		cleaning: new Map<string, () => void>(),
+		resizing: new Map<string, () => void>(),
 	};
 	public autoCommit = false; // Commit change instantly (used in tests)
 	public updatedAt = new Timekey();
@@ -201,20 +201,14 @@ export class LunaticVariablesStore {
 
 		const changeKey = forcedChangedKey ?? getChangedKey(name, args.iteration);
 
-		const currentChanges =
-			this.queue[args.cause ?? 'default'].get(changeKey) ?? [];
-		const allChanges = [
-			...currentChanges,
-			() => {
-				// A function can be enqueued, we need to evaluate it to retrieve the value to set
-				// This is used for the resizing, where we want to resize the last version of the variable
-				if (typeof value === 'function') {
-					value = value();
-				}
-				this.set(name, value, args);
-			},
-		];
-		this.queue[args.cause ?? 'default'].set(changeKey, allChanges);
+		this.queue[args.cause ?? 'default'].set(changeKey, () => {
+			// A function can be enqueued, we need to evaluate it to retrieve the value to set
+			// This is used for the resizing & cleaning, where we want to resize the last version of the variable
+			if (typeof value === 'function') {
+				value = value();
+			}
+			this.set(name, value, args);
+		});
 	}
 
 	public unqueueSet(
@@ -236,15 +230,9 @@ export class LunaticVariablesStore {
 		const autoCommitValue = this.autoCommit;
 		// Since we can have nested operation, we prevent delayed set while commiting
 		this.autoCommit = true;
-		Array.from(this.queue.default.values()).forEach((cbList) =>
-			cbList.forEach((cb) => cb())
-		);
-		Array.from(this.queue.cleaning.values()).forEach((cbList) =>
-			cbList.forEach((cb) => cb())
-		);
-		Array.from(this.queue.resizing.values()).forEach((cbList) =>
-			cbList.forEach((cb) => cb())
-		);
+		Array.from(this.queue.default.values()).forEach((cb) => cb());
+		Array.from(this.queue.cleaning.values()).forEach((cb) => cb());
+		Array.from(this.queue.resizing.values()).forEach((cb) => cb());
 		this.autoCommit = autoCommitValue;
 		this.queue.default.clear();
 		this.queue.cleaning.clear();
