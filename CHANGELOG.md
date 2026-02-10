@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.11.2](https://github.com/InseeFr/Lunatic/releases/tag/3.11.2) - 2026-02-10
+
+- fix: lunaticStore when window is `undefined` (bug since **3.11.0**), only appears in Node env (LunaticPdfApi for example)
+
 ## [3.11.1](https://github.com/InseeFr/Lunatic/releases/tag/3.11.1) - 2026-02-09
 
 ### Changed
