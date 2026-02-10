@@ -102,7 +102,7 @@ export class LunaticVariablesStore {
 		const { changeHandler, disableCleaning, autoCommit } = options;
 
 		const store = new LunaticVariablesStore();
-		if (globalThis.window === undefined) {
+		if (globalThis.window !== undefined) {
 			(globalThis.window as any).lunaticStore = store; // Allow access to the store from the console
 		}
 		if (!source.variables) {
