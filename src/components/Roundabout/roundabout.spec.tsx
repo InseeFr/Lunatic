@@ -112,7 +112,7 @@ describe('Roundabout', () => {
 
 		expect(ComponentErrors).toHaveBeenCalledWith(
 			expect.objectContaining({ errors }),
-			expect.anything()
+			undefined
 		);
 	});
 });

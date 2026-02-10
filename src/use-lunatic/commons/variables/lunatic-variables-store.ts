@@ -39,7 +39,7 @@ export type EventArgs = {
 		/** New value for the variable. */
 		value: unknown;
 		/** Iteration changed (for array). */
-		iteration?: IterationLevel | undefined;
+		iteration?: IterationLevel;
 		/** What triggered this change. */
 		cause?: 'resizing' | 'cleaning';
 		/** Force a vector when an iteration is set and the value was a scalar **/
@@ -66,10 +66,21 @@ class Timekey {
 	}
 }
 
+export function getChangedKey(
+	variableName: string,
+	iteration?: IterationLevel
+) {
+	return `${variableName} | ${JSON.stringify(iteration)}`;
+}
+
 export class LunaticVariablesStore {
-	private dictionary = new Map<string, LunaticVariable>();
-	private eventTarget = new EventTarget();
-	private queue = new Map<string, () => void>();
+	private readonly dictionary = new Map<string, LunaticVariable>();
+	private readonly eventTarget = new EventTarget();
+	private readonly queue = {
+		default: new Map<string, () => void>(),
+		cleaning: new Map<string, () => void>(),
+		resizing: new Map<string, () => void>(),
+	};
 	public autoCommit = false; // Commit change instantly (used in tests)
 	public updatedAt = new Timekey();
 
@@ -91,8 +102,8 @@ export class LunaticVariablesStore {
 		const { changeHandler, disableCleaning, autoCommit } = options;
 
 		const store = new LunaticVariablesStore();
-		if (typeof window !== 'undefined') {
-			(window as any).lunaticStore = store; // Allow access to the store from the console
+		if (globalThis.window !== undefined) {
+			(globalThis.window as any).lunaticStore = store; // Allow access to the store from the console
 		}
 		if (!source.variables) {
 			return store;
@@ -179,20 +190,37 @@ export class LunaticVariablesStore {
 	public enqueueSet(
 		name: string,
 		value: unknown,
-		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
+		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {},
+		// usefull for pairwise, iteration is used but we need to change all variable even if we touch to only one iteration
+		forcedChangedKey?: string
 	) {
 		if (this.autoCommit) {
 			this.set(name, typeof value === 'function' ? value() : value, args);
 			return;
 		}
-		this.queue.set(name, () => {
+
+		const changeKey = forcedChangedKey ?? getChangedKey(name, args.iteration);
+
+		this.queue[args.cause ?? 'default'].set(changeKey, () => {
 			// A function can be enqueued, we need to evaluate it to retrieve the value to set
-			// This is used for the resizing, where we want to resize the last version of the variable
+			// This is used for the resizing & cleaning, where we want to resize the last version of the variable
 			if (typeof value === 'function') {
 				value = value();
 			}
 			this.set(name, value, args);
 		});
+	}
+
+	public unqueueSet(
+		name: string,
+		args: Pick<EventArgs['change'], 'iteration' | 'cause'> = {}
+	) {
+		if (this.autoCommit) {
+			return;
+		}
+		this.queue[args.cause ?? 'default'].delete(
+			getChangedKey(name, args.iteration)
+		);
 	}
 
 	/**
@@ -202,9 +230,13 @@ export class LunaticVariablesStore {
 		const autoCommitValue = this.autoCommit;
 		// Since we can have nested operation, we prevent delayed set while commiting
 		this.autoCommit = true;
-		Array.from(this.queue.values()).forEach((cb) => cb());
+		Array.from(this.queue.default.values()).forEach((cb) => cb());
+		Array.from(this.queue.cleaning.values()).forEach((cb) => cb());
+		Array.from(this.queue.resizing.values()).forEach((cb) => cb());
 		this.autoCommit = autoCommitValue;
-		this.queue.clear();
+		this.queue.default.clear();
+		this.queue.cleaning.clear();
+		this.queue.resizing.clear();
 	}
 
 	/**
@@ -368,7 +400,9 @@ export class LunaticVariablesStore {
 					0
 				)
 		);
-		Array.from(this.dictionary.values()).map((v) => (v.calculatedCount = 0));
+		Array.from(this.dictionary.values()).forEach(
+			(v) => (v.calculatedCount = 0)
+		);
 	}
 }
 
@@ -376,9 +410,9 @@ export class LunaticVariable {
 	/** Last time the value was updated (changed). */
 	public updatedAt = new Map<undefined | string, number>();
 	/** Last time the store was updated (changed). */
-	private storeUpdatedAt: Timekey;
+	private readonly storeUpdatedAt: Timekey;
 	/** Last time "calculation" was run (for calculated variable). */
-	private calculatedAt = new Map<undefined | string, number>();
+	private readonly calculatedAt = new Map<undefined | string, number>();
 	/** Internal value for the variable. */
 	private value: unknown;
 	/** List of direct dependencies, ex: ['FULLNAME', 'FIRSTNAME', 'LASTNAME']. */
@@ -540,6 +574,20 @@ export class LunaticVariable {
 		opts: { iteration?: IterationLevel; ignoreIterationOnScalar?: boolean }
 	): boolean {
 		const { iteration, ignoreIterationOnScalar } = opts;
+
+		// We want to save a value at a specific iteration
+		// but the value is not an array yet
+		// we have to initialize the array even if we want to set an `null` or `undefined` value
+		// (if no, issue with getCalculatedAt that check if this.value is an array, it return global updatedValue instead of the iteration one)
+		if (iteration !== undefined && !Array.isArray(this.value)) {
+			// Ignore the iteration since the value is not an array
+			if (ignoreIterationOnScalar) {
+				return this.setValue(value, {});
+			}
+			// we have to set empty array at first before compare the with the SavedValue
+			this.value = [];
+		}
+
 		if (value === this.getSavedValue(iteration)) {
 			return false;
 		}
@@ -547,17 +595,10 @@ export class LunaticVariable {
 		if (Array.isArray(value) && !Array.isArray(iteration)) {
 			return this.setValueForArray(value);
 		}
-		// We want to save a value at a specific iteration, but the value is not an array yet
-		if (iteration !== undefined && !Array.isArray(this.value)) {
-			// Ignore the iteration since the value is not an array
-			if (ignoreIterationOnScalar) {
-				return this.setValue(value, {});
-			}
-			this.value = [];
-		}
-		this.value = !Array.isArray(iteration)
-			? value
-			: setAtIndex(this.value, iteration, value);
+
+		this.value = Array.isArray(iteration)
+			? setAtIndex(this.value, iteration, value)
+			: value;
 		this.updateTimestamps(iteration, 'updatedAt');
 		return true;
 	}
@@ -612,9 +653,7 @@ export class LunaticVariable {
 
 	private getDependencies(): string[] {
 		// Calculate dependencies from expression on the fly if necessary
-		if (this.dependencies === undefined) {
-			this.dependencies = parseVTLVariables(this.expression!);
-		}
+		this.dependencies ??= parseVTLVariables(this.expression!);
 		return this.dependencies;
 	}
 
@@ -637,7 +676,7 @@ export class LunaticVariable {
 
 					// The variable is not registered in the variable dictionary
 					// Happens when calculating unquoted VTL expression
-					if (!this.dictionary || !this.dictionary?.has(dep)) {
+					if (!this.dictionary?.has(dep)) {
 						throw new VTLMissingDependency(this.expression!, dep);
 					}
 
@@ -680,33 +719,21 @@ export class LunaticVariable {
 	}
 
 	public getUpdatedAt(iteration?: IterationLevel): number {
-		if (this.dimension === 0) {
-			return this.updatedAt.get(undefined) ?? 0;
-		}
 		// The value is an array, do not look at the root updatedAt if an iteration is provided
-		if (Array.isArray(this.value)) {
-			return this.updatedAt.get(iteration?.join('.')) ?? 0;
+		if (iteration !== undefined && Array.isArray(this.value)) {
+			return this.updatedAt.get(iteration.join('.')) ?? 0;
 		}
-		return (
-			this.updatedAt.get(iteration?.join('.')) ??
-			this.updatedAt.get(undefined) ??
-			0
-		);
+		// undefined key is for root level
+		return this.updatedAt.get(undefined) ?? 0;
 	}
 
 	public getCalculatedAt(iteration?: IterationLevel): number {
-		if (this.dimension === 0) {
-			return this.calculatedAt.get(undefined) ?? 0;
+		// The value is an array, do not look at the root calculatedAt if an iteration is provided
+		if (iteration !== undefined && Array.isArray(this.value)) {
+			return this.calculatedAt.get(iteration.join('.')) ?? 0;
 		}
-		// The value is an array, do not look at the root updatedAt if an iteration is provided
-		if (Array.isArray(this.value)) {
-			return this.calculatedAt.get(iteration?.join('.')) ?? 0;
-		}
-		return (
-			this.calculatedAt.get(iteration?.join('.')) ??
-			this.calculatedAt.get(undefined) ??
-			0
-		);
+		// undefined key is for root level
+		return this.calculatedAt.get(undefined) ?? 0;
 	}
 }
 

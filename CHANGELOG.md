@@ -7,6 +7,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.11.2](https://github.com/InseeFr/Lunatic/releases/tag/3.11.2) - 2026-02-10
+
+- fix: lunaticStore when window is `undefined` (bug since **3.11.0**), only appears in Node env (LunaticPdfApi for example)
+
+## [3.11.1](https://github.com/InseeFr/Lunatic/releases/tag/3.11.1) - 2026-02-09
+
+### Changed
+
+- fix: cleaning pairwise (queue issue), fixing (delay cleaning feature for pairwise)
+
+
+## [3.11.0](https://github.com/InseeFr/Lunatic/releases/tag/3.11.1) - 2026-02-02
+
+### Changed
+
+- feat: add delay cleaning feature, based on queue. Cleaning is done when the page changes. (for pagination = `question`)
+- change separator of `GLOBAL_ENFANTS_PRENOMS` (`;` to `#`), exemple, if your children are `['Verso', 'Alicia']`, then `GLOBAL_ENFANTS_PRENOMS='Verso#Alicia'`
+
+## [3.10.0](https://github.com/InseeFr/Lunatic/releases/tag/3.10.0) - 2026-01-27
+
+### Changed
+
+- Upgrade React to v19
+
+## [3.9.0](https://github.com/InseeFr/Lunatic/releases/tag/3.9.0) - 2026-01-22
+
+### Build
+
+- switch packageManager `yarn` -> `pnpm`
+
+### Added
+
+- **Suggester**: display label after navigation even if label is not stored in COLLECTED variable
+
+### Fixed
+
+- **LunaticVariableStore**: enable init array with `undefined` value (for a given `iteration`)during  `setValue`  methode of `Variable`.
+- **Suggester**: fix regression caused in `3.7.7`
+
+
+## [3.8.0](https://github.com/InseeFr/Lunatic/releases/tag/3.8.0) - 2026-01-16
+
 ### Added
 
 - Add global variables for pairwise component. `GLOBAL_PARENT1_PRENOM`, `GLOBAL_PARENT1_SEXE`, `GLOBAL_PARENT2_PRENOM`, `GLOBAL_PARENT2_SEXE`, `GLOBAL_CONJOINT_PRENOM` and `GLOBAL_ENFANTS_PRENOMS` are now available if the corresponding source variables of the pairwise component are filled in.
@@ -17,7 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Not-paginated loops were wrongly displayed when none of their components were visible
-- Suggester displayed value was wrong after calling `handleChanges` in management mode.
+- Suggester displayed value was wrong after calling `handleChanges` in management mode. (⚠️ cause side-effect in collecte mode, please use `3.8.1`)
 
 ## [3.7.6](https://github.com/InseeFr/Lunatic/releases/tag/3.7.6) - 2025-12-30
 

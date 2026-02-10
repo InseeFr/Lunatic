@@ -634,6 +634,137 @@ describe('lunatic-variables-store', () => {
 		});
 	});
 
+	describe('cleaning with queue', () => {
+		beforeEach(() => {
+			variables.autoCommit = false;
+		});
+
+		it('should not clean variables directly', () => {
+			variables.set('PRENOM', 'John');
+			variables.set('READY', true);
+			cleaningBehaviour(variables, {
+				READY: {
+					PRENOM: 'READY',
+				},
+			});
+			expect(variables.get('PRENOM')).toEqual('John');
+			variables.set('READY', false);
+			expect(variables.get('PRENOM')).toEqual('John');
+		});
+
+		it('should clean variables when commit', () => {
+			variables.set('PRENOM', 'John');
+			variables.set('READY', true);
+			cleaningBehaviour(variables, {
+				READY: {
+					PRENOM: 'READY',
+				},
+			});
+			expect(variables.get('PRENOM')).toEqual('John');
+			variables.set('READY', false);
+			variables.commit();
+			expect(variables.get('PRENOM')).toEqual(null);
+		});
+
+		it('should not clean variables when the variable has not really changed after commit', () => {
+			variables.set('PRENOM', 'John');
+			variables.set('READY', true);
+			cleaningBehaviour(variables, {
+				READY: {
+					PRENOM: 'READY',
+				},
+			});
+			expect(variables.get('PRENOM')).toEqual('John');
+			variables.set('READY', false);
+			variables.set('READY', true);
+			variables.commit();
+			expect(variables.get('PRENOM')).toEqual('John');
+		});
+
+		it('should clean pairwise in two directions with a queue', () => {
+			variables.set('LINKS', [
+				[null, '1', '3'],
+				['1', null, '3'],
+				['2', '2', null],
+			]);
+			variables.set('PRENOM', ['Dad', 'Mom', 'Unknow']);
+			cleaningBehaviour(
+				variables,
+				{
+					PRENOM: {
+						LINKS: [
+							{
+								expression: 'PRENOM <> ""',
+								shapeFrom: 'PRENOM',
+								isAggregatorUsed: false,
+							},
+						],
+					},
+				},
+				{
+					PRENOM: [],
+					LINKS: [],
+				}
+			);
+
+			// when
+			variables.set('PRENOM', '', { iteration: [1] });
+			variables.set('PRENOM', '', { iteration: [2] });
+
+			expect(variables.get('PRENOM')).toEqual(['Dad', '', '']);
+			variables.commit();
+			// then
+			expect(variables.get('LINKS')).toEqual([
+				[null, null, null],
+				[null, null, null],
+				[null, null, null],
+			]);
+		});
+
+		it('should clean pairwise in two directions with a queue with canceling', () => {
+			variables.set('LINKS', [
+				[null, '1', '3'],
+				['1', null, '3'],
+				['2', '2', null],
+			]);
+			variables.set('PRENOM', ['Dad', 'Mom', 'Unknow']);
+			cleaningBehaviour(
+				variables,
+				{
+					PRENOM: {
+						LINKS: [
+							{
+								expression: 'PRENOM <> ""',
+								shapeFrom: 'PRENOM',
+								isAggregatorUsed: false,
+							},
+						],
+					},
+				},
+				{
+					PRENOM: [],
+					LINKS: [],
+				}
+			);
+
+			// when
+			variables.set('PRENOM', '', { iteration: [1] });
+			variables.set('PRENOM', '', { iteration: [2] });
+
+			expect(variables.get('PRENOM')).toEqual(['Dad', '', '']);
+
+			variables.set('PRENOM', 'Not Unknow', { iteration: [2] });
+			expect(variables.get('PRENOM')).toEqual(['Dad', '', 'Not Unknow']);
+			variables.commit();
+			// then
+			expect(variables.get('LINKS')).toEqual([
+				[null, null, '3'],
+				[null, null, null],
+				['2', null, null],
+			]);
+		});
+	});
+
 	describe('missing', () => {
 		beforeEach(() => {
 			missingBehaviour(variables, {
@@ -973,16 +1104,132 @@ describe('lunatic-variables-store', () => {
 			expect(store.get('GLOBAL_PARENT1_SEXE', [0])).toBe('1');
 			expect(store.get('GLOBAL_PARENT2_SEXE', [0])).toBe('2');
 			expect(store.get('GLOBAL_CONJOINT_PRENOM', [0])).toBe('Sciel');
-			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [0])).toBe('Monoco;Noco');
+			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [0])).toBe('Monoco#Noco');
 
 			expect(store.get('GLOBAL_PARENT1_PRENOM', [1])).toBeUndefined();
 			expect(store.get('GLOBAL_PARENT2_PRENOM', [1])).toBeUndefined();
 			expect(store.get('GLOBAL_PARENT1_SEXE', [1])).toBeUndefined();
 			expect(store.get('GLOBAL_PARENT2_SEXE', [1])).toBeUndefined();
 			expect(store.get('GLOBAL_CONJOINT_PRENOM', [1])).toBe('Aline');
-			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [1])).toBe('Verso;Alicia');
+			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [1])).toBe('Verso#Alicia');
+
+			// Test with replace VTL function
+			expect(
+				store.run(
+					`"Your children are " || replace(GLOBAL_ENFANTS_PRENOMS, "#", ", ")`,
+					{
+						iteration: [1],
+					}
+				)
+			).toBe('Your children are Verso, Alicia');
 
 			expect(store.get('GLOBAL_ENFANTS_PRENOMS', [4])).toBe(undefined);
+		});
+
+		it('should compute correctly GLOBAL array variable across calculated variables, even if not intialize', () => {
+			// Given a source with a pairwise component
+			const pairwiseComponent = {
+				id: 'm8ob5u9l',
+				page: '3',
+				symLinks: {
+					LINKS: {
+						'1': '1',
+						'2': '3',
+						'3': '2',
+					},
+				},
+				components: [
+					{
+						id: 'm8ob5u9l-pairwise-dropdown',
+						label: {
+							type: 'VTL|MD',
+							value: '"Qui est " || yAxis || " pour " || xAxis || " ?"',
+						},
+						options: [
+							{
+								label: {
+									type: 'VTL',
+									value: '"Son conjoint, sa conjointe"',
+								},
+								value: '1',
+							},
+							{
+								label: { type: 'VTL', value: '"Sa mère, son père"' },
+								value: '2',
+							},
+							{
+								label: { type: 'VTL', value: '"Sa fille, son fils"' },
+								value: '3',
+							},
+						],
+						response: { name: 'LINKS' },
+						isMandatory: false,
+						componentType: 'Dropdown',
+						conditionFilter: {
+							type: 'VTL',
+							value: '(nvl(xAxis, "") <> "") and (nvl(yAxis, "") <> "")',
+						},
+					},
+				],
+				sourceVariables: {
+					name: 'PRENOM',
+					gender: 'SEXE',
+				},
+				componentType: 'PairwiseLinks',
+				xAxisIterations: { type: 'VTL', value: 'count(PRENOM)' },
+				yAxisIterations: { type: 'VTL', value: 'count(PRENOM)' },
+			} as ComponentDefinitionWithPage;
+
+			// When we create the store
+			const store = LunaticVariablesStore.makeFromSource(
+				{
+					components: [pairwiseComponent],
+					variables: [
+						{
+							name: 'PRENOM',
+							values: { COLLECTED: [] },
+							dimension: 1,
+							variableType: 'COLLECTED',
+							iterationReference: 'm8ob7c76',
+						},
+						{
+							name: 'SEXE',
+							values: { COLLECTED: [] },
+							dimension: 1,
+							variableType: 'COLLECTED',
+							iterationReference: 'm8ob7c76',
+						},
+						{
+							name: 'LINKS',
+							values: { COLLECTED: [[]] },
+							dimension: 2,
+							variableType: 'COLLECTED',
+							iterationReference: 'm8ob7c76',
+						},
+					],
+				},
+				{},
+				{ changeHandler: { current: () => {} } }
+			);
+
+			// When pairwise link is updated
+			store.set('PRENOM', ['Child', 'Dad']);
+			store.set('SEXE', ['1', '1']);
+			store.set('LINKS', [
+				[null, '2'],
+				['3', null],
+			]);
+			store.commit();
+			expect(
+				store.run('"Your children are : " || GLOBAL_ENFANTS_PRENOMS', {
+					iteration: [0],
+				})
+			).toBe('Your children are : null');
+			expect(
+				store.run('"Your children are : " || GLOBAL_ENFANTS_PRENOMS', {
+					iteration: [1],
+				})
+			).toBe('Your children are : Child');
 		});
 	});
 });

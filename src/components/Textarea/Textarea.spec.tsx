@@ -36,7 +36,7 @@ describe('Textarea', () => {
 				maxLength: props.maxLength,
 				value: props.value,
 			},
-			{}
+			undefined
 		);
 	});
 
