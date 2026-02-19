@@ -32,8 +32,8 @@ export const getDurationFromValue = (
  * - "P12Y3M" => [12, 3]
  */
 const matchFromFormat = (value: string, format: DurationFormat): number[] => {
-	const regex = new RegExp(format.replaceAll('n', '(\\d+)'));
-	const match = value.match(regex);
+	const regex = new RegExp(format.replaceAll('n', String.raw`(\d+)`));
+	const match = regex.exec(value);
 	if (!match) {
 		throw new Error(
 			`Invalid duration value "${value}" does not match the format "${format}"`

@@ -102,7 +102,7 @@ export const CustomDatepickerFields = slottableComponent<CustomProps>(
 
 function numbersFromDateString(s?: string): [number, number, number] {
 	if (!s) {
-		return [NaN, NaN, NaN];
+		return [Number.NaN, Number.NaN, Number.NaN];
 	}
 	const [year, month, day] = s
 		.split('-')
