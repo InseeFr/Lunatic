@@ -2,29 +2,14 @@ import type { LunaticComponentProps } from '../type';
 import { Fragment } from 'react';
 import { LunaticComponents } from '../LunaticComponents';
 import { PairwiseMirror } from './PairwiseMirror';
-import { times } from '../../utils/array';
-
-const filterCombination = ({
-	combination,
-	iteration,
-	readonly = false,
-}: {
-	combination: readonly [number, number];
-	iteration: number | undefined;
-	readonly?: boolean;
-}): boolean => {
-	const [x, y] = combination;
-	const base = readonly ? y > x : y < x;
-	if (iteration === undefined) return base;
-	return y === iteration && base;
-};
+import { filterCombinations, getCombinations } from './combinations';
 
 export const PairwiseLinks = (
 	props: LunaticComponentProps<'PairwiseLinks'>
 ) => {
 	const { iteration, size, getComponents } = props;
 
-	const combinations = getCombinations(size, size);
+	const combinations = getCombinations(size);
 
 	if (combinations.length <= 1) {
 		return;
@@ -33,7 +18,7 @@ export const PairwiseLinks = (
 	return (
 		<>
 			{combinations
-				.filter((combination) => filterCombination({ combination, iteration }))
+				.filter((combination) => filterCombinations({ combination, iteration }))
 				.map(([x, y]) => (
 					<LunaticComponents
 						key={`${x}-${y}`}
@@ -46,7 +31,7 @@ export const PairwiseLinks = (
 				))}
 			{combinations
 				.filter((combination) =>
-					filterCombination({ combination, iteration, readonly: true })
+					filterCombinations({ combination, iteration, readonly: true })
 				)
 				.map(([x, y]) => {
 					const components = getComponents(x, y);
@@ -66,11 +51,4 @@ export const PairwiseLinks = (
 				})}
 		</>
 	);
-};
-
-const getCombinations = (
-	sizeX: number,
-	sizeY: number
-): (readonly [number, number])[] => {
-	return times(sizeY, (y) => times(sizeX, (x) => [x, y] as const)).flat(1);
 };
