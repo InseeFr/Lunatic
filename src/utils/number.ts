@@ -2,7 +2,7 @@ export function forceInt(n: unknown): number {
 	if (typeof n === 'string') {
 		const casted = Number.parseInt(n, 10);
 		if (Number.isNaN(casted)) {
-			throw new Error(`Cannot cast ${n} to int`);
+			throw new TypeError(`Cannot cast ${n} to int`);
 		}
 		return casted;
 	}
