@@ -38,12 +38,12 @@ export function getPagerFromPageTag(pageTag: string | number = 1) {
 		},
 	] = match;
 	if (!subPagePlusUn) {
-		return { page: parseInt(page, 10) };
+		return { page: Number.parseInt(page, 10) };
 	}
 	return {
-		page: parseInt(page, 10),
-		subPage: parseInt(subPagePlusUn, 10) - 1,
-		iteration: parseInt(iterationPlusUn, 10) - 1,
+		page: Number.parseInt(page, 10),
+		subPage: Number.parseInt(subPagePlusUn, 10) - 1,
+		iteration: Number.parseInt(iterationPlusUn, 10) - 1,
 	};
 }
 
@@ -66,8 +66,8 @@ export function getNewReachedPage(
  * - 0 if a is the same as b
  */
 export function pageTagComparator(a: PageTag, b: PageTag) {
-	const pageA = a.split(/\D/).map((v) => parseInt(v, 10));
-	const pageB = b.split(/\D/).map((v) => parseInt(v, 10));
+	const pageA = a.split(/\D/).map((v) => Number.parseInt(v, 10));
+	const pageB = b.split(/\D/).map((v) => Number.parseInt(v, 10));
 	// [0, 2, 1] is used to extract the significant part of the pageTag part (start with page, then iteration, then subpage)
 	for (const index of [0, 2, 1]) {
 		if (pageA[index] !== pageB[index]) {

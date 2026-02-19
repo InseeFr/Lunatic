@@ -136,7 +136,7 @@ export function reducerInitializer({
 	const initialPager = getPagerFromPageTag(initialPage);
 	const pager = {
 		page: initialPager?.page ?? 1,
-		maxPage: source.maxPage ? parseInt(source.maxPage, 10) : 1,
+		maxPage: source.maxPage ? Number.parseInt(source.maxPage, 10) : 1,
 		subPage: initialPager?.subPage,
 		nbSubPages: undefined,
 		iteration: initialPager?.iteration,

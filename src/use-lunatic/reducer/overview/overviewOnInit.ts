@@ -33,7 +33,7 @@ function overviewFromComponent(
 			id: component.id,
 			type: component.componentType,
 			pageTag: page,
-			page: parseInt(parts[0], 10),
+			page: Number.parseInt(parts[0], 10),
 			label: component.label,
 			description: component.description,
 			conditionFilter: component.conditionFilter,

@@ -104,7 +104,9 @@ function numbersFromDateString(s?: string): [number, number, number] {
 	if (!s) {
 		return [NaN, NaN, NaN];
 	}
-	const [year, month, day] = s.split('-').map((part) => parseInt(part, 10));
+	const [year, month, day] = s
+		.split('-')
+		.map((part) => Number.parseInt(part, 10));
 	return [year, month, day];
 }
 

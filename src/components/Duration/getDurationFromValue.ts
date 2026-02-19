@@ -40,5 +40,5 @@ const matchFromFormat = (value: string, format: DurationFormat): number[] => {
 		);
 	}
 	const [, ...matches] = match;
-	return matches.map((v) => parseInt(v, 10));
+	return matches.map((v) => Number.parseInt(v, 10));
 };

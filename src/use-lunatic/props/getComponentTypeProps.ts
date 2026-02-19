@@ -33,7 +33,7 @@ function getRoundaboutProps(
 	}));
 	return {
 		items: items,
-		page: parseInt(component.page ?? '1', 10),
+		page: Number.parseInt(component.page ?? '1', 10),
 	};
 }
 
