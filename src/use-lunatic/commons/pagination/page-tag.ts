@@ -1,4 +1,4 @@
-import type { LunaticReducerState, PageTag } from '../type';
+import type { LunaticReducerState, PageTag } from '../../type';
 
 /**
  * Generate page name from the pager

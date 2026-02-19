@@ -5,7 +5,7 @@ import type {
 	PageTag,
 } from '../type';
 import { type DependencyList, type ReactNode, useMemo } from 'react';
-import { getPageTag, pageTagComparator } from '../commons/page-tag';
+import { getPageTag, pageTagComparator } from '../commons/pagination/page-tag';
 
 export type InterpretedLunaticOverviewItem = {
 	id: string;

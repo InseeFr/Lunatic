@@ -1,4 +1,4 @@
-import type { LunaticReducerState } from '../type';
+import type { LunaticReducerState } from '../../type';
 
 function isFirstLastPage(pager: LunaticReducerState['pager']) {
 	const { page, maxPage } = pager;

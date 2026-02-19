@@ -1,5 +1,5 @@
 import type { LunaticReducerState } from '../../type';
-import { getPageId, pageStringToNumbers } from '../../commons/page';
+import { getPageId, pageStringToNumbers } from '../../commons/pagination/page';
 
 /**
  * Update the pager to enter a loop if the pager is on a loop

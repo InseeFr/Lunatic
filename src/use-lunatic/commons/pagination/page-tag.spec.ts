@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getPagerFromPageTag, pageTagComparator } from './page-tag';
-import type { PageTag } from '../type';
+import type { PageTag } from '../../type';
 
 describe('page-tag', () => {
 	describe('getPagerFromPageTag', () => {

@@ -9,7 +9,7 @@ import { checkLoops, createMapPages } from '../commons';
 import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
 import { MD, VTL } from '../../utils/constants';
 import { MDLabel } from '../../components/shared/MDLabel/MDLabel';
-import { getPagerFromPageTag } from '../commons/page-tag';
+import { getPagerFromPageTag } from '../commons/pagination/page-tag';
 import { buildOverview } from './overview/overviewOnInit';
 import { forceInt } from '../../utils/number';
 import { registerSuggesters } from '../../utils/search/SuggestersDatabase';

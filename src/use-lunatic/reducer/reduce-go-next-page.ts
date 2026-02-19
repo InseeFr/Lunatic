@@ -1,6 +1,6 @@
 import { getNewReachedPage } from '../commons';
-import { getPageId, isPageEmpty } from '../commons/page';
-import { getNextPager } from '../commons/page-navigation';
+import { getPageId, isPageEmpty } from '../commons/pagination/page';
+import { getNextPager } from '../commons/pagination/page-navigation';
 import type { LunaticReducerState } from '../type';
 import { autoExploreLoop } from './commons/auto-explore-loop';
 import { reduceHandleChanges } from './reduce-handle-changes';

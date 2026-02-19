@@ -1,5 +1,5 @@
-import type { LunaticReducerState } from '../type';
-import type { LunaticComponentType } from '../../components/type';
+import type { LunaticReducerState } from '../../type';
+import type { LunaticComponentType } from '../../../components/type';
 
 const resetIteration = {
 	subPage: undefined,
