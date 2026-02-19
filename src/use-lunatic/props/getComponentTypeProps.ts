@@ -121,6 +121,7 @@ function getPairwiseProps(
 	state: State
 ) {
 	return {
+		size: state.pager.nbIterations ?? component.xAxisIterations,
 		getComponents: (x: number, y: number) => {
 			if (x === y) {
 				return [];

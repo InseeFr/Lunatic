@@ -276,8 +276,7 @@ export type ComponentPropsByType = {
 			components: LunaticComponentDefinition[];
 			features?: LunaticOptions['features'];
 			executeExpression: LunaticReducerState['executeExpression'];
-			xAxisIterations: number;
-			yAxisIterations: number;
+			size: number;
 			symLinks: Record<string, Record<string, string>>;
 			value: Record<string, unknown[]>;
 			getComponents: (x: number, y: number) => LunaticComponentProps[];

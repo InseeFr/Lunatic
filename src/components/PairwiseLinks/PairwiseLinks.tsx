@@ -1,34 +1,39 @@
 import type { LunaticComponentProps } from '../type';
-import { times } from '../../utils/array';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { LunaticComponents } from '../LunaticComponents';
-import { Declarations } from '../shared/Declarations/Declarations';
-import { Label } from '../shared/Label/Label';
+import { PairwiseMirror } from './PairwiseMirror';
+import { times } from '../../utils/array';
 
-export const PairwiseLinks = ({
-	declarations,
-	xAxisIterations,
-	yAxisIterations,
-	id,
-	getComponents,
-}: LunaticComponentProps<'PairwiseLinks'>) => {
-	const nbRows = xAxisIterations * yAxisIterations;
+const filterCombination = ({
+	combination,
+	iteration,
+	readonly = false,
+}: {
+	combination: readonly [number, number];
+	iteration: number | undefined;
+	readonly?: boolean;
+}): boolean => {
+	const [x, y] = combination;
+	const base = readonly ? y > x : y < x;
+	if (iteration === undefined) return base;
+	return y === iteration && base;
+};
 
-	if (nbRows <= 1) {
-		return <div>Nothing to display!</div>;
+export const PairwiseLinks = (
+	props: LunaticComponentProps<'PairwiseLinks'>
+) => {
+	const { iteration, size, getComponents } = props;
+
+	const combinations = getCombinations(size, size);
+
+	if (combinations.length <= 1) {
+		return;
 	}
-
-	const combinations = getCombinations(xAxisIterations, yAxisIterations);
 
 	return (
 		<>
-			<Declarations
-				type="AFTER_QUESTION_TEXT"
-				declarations={declarations}
-				id={id}
-			/>
 			{combinations
-				.filter(([x, y]) => y < x)
+				.filter((combination) => filterCombination({ combination, iteration }))
 				.map(([x, y]) => (
 					<LunaticComponents
 						key={`${x}-${y}`}
@@ -40,14 +45,15 @@ export const PairwiseLinks = ({
 					/>
 				))}
 			{combinations
-				.filter(([x, y]) => x > y)
+				.filter((combination) =>
+					filterCombination({ combination, iteration, readonly: true })
+				)
 				.map(([x, y]) => {
-					const components = getComponents(y, x);
+					const components = getComponents(x, y);
 					const firstComponent = components[0];
-					if (firstComponent === undefined || firstComponent === null) return;
-					if (firstComponent.componentType !== 'Dropdown') {
+					if (firstComponent?.componentType !== 'Dropdown') {
 						return (
-							<div>
+							<div key={'PairwiseLinksLoop-error'}>
 								First child component of a pairwise link must be a dropdown
 							</div>
 						);
@@ -55,34 +61,10 @@ export const PairwiseLinks = ({
 					return (
 						<Fragment key={`${x}-${y}`}>
 							<PairwiseMirror {...firstComponent} />
-							<LunaticComponents
-								components={components.slice(1)}
-								componentProps={(props) => ({
-									...props,
-									id: `${props.id}-${x + 1}-${y + 1} `,
-								})}
-							/>
 						</Fragment>
 					);
 				})}
 		</>
-	);
-};
-
-const PairwiseMirror = ({
-	value,
-	options,
-	label,
-}: LunaticComponentProps<'Dropdown'>) => {
-	const selectedOption = options?.find((o) => o.value === value);
-	if (!selectedOption) {
-		return null;
-	}
-	return (
-		<div className="lunatic lunatic-component lunatic-dropdown lunatic-combo-box-container default-style">
-			<Label>{label}</Label>
-			<div>{selectedOption?.label}</div>
-		</div>
 	);
 };
 
