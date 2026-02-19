@@ -1,6 +1,17 @@
 import type { LunaticReducerState, PageTag } from '../../type';
 
 /**
+ * Add iteration to existing pageTag (with subpage, use for overview)
+ * @param pageTag
+ * @param iteration
+ * @returns
+ */
+export function addIterationToPage(page: string, iteration?: number): PageTag {
+	if (iteration === undefined) return page as PageTag;
+	return `${page}#${iteration + 1}` as PageTag;
+}
+
+/**
  * Generate page name from the pager
  */
 export function getPageTag(pager: LunaticReducerState['pager']): PageTag {
