@@ -115,7 +115,7 @@ export function LunaticComponents<V = unknown>({
 					// In some case (table for instance) we have static component that only have a label (no componentType)
 					if (hasLabel(component)) {
 						return (
-							<Fragment key={k}>
+							<Fragment key={computeId(component, k)}>
 								{wrapper({
 									...component,
 									children: component.label,
@@ -128,7 +128,7 @@ export function LunaticComponents<V = unknown>({
 					// Component is a ReactNode
 					if (isValidElement(component)) {
 						return (
-							<Fragment key={k}>
+							<Fragment key={computeId(component, k)}>
 								{wrapper({
 									children: component,
 									index: k,
