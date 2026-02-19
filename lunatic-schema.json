@@ -1117,13 +1117,7 @@
 					}
 				}
 			},
-			"required": [
-				"componentType",
-				"xAxisIterations",
-				"yAxisIterations",
-				"symLinks",
-				"components"
-			],
+			"required": ["componentType", "symLinks", "components"],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBase"

@@ -216,19 +216,20 @@ export type ComponentSuggesterDefinition =
 	};
 export type ComponentPairWiseLinksDefinition = ComponentDefinitionBase & {
 	componentType: 'PairwiseLinks';
-	xAxisIterations: VTLScalarExpression;
-	yAxisIterations: VTLScalarExpression;
+	xAxisIterations?: VTLScalarExpression;
+	yAxisIterations?: VTLScalarExpression;
 	symLinks: {
 		[k: string]: {
 			[k: string]: string | null;
 		};
 	};
 	sourceVariables?: {
-		/** Name of the variable containing the name of the respondent */
+		/**
+		 * Name of the variable containing the name of the respondent
+		 */
 		name?: string;
 		/**
-		 * Name of the variable containing the gender of the respondent
-		 * (value of variable -> 1:male, 2: female)
+		 * Name of the variable containing the sex/gender of the respondent (value of variable -> 1: man, 2: woman)
 		 */
 		gender?: string;
 	};
