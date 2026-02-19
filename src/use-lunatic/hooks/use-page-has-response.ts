@@ -16,16 +16,15 @@ export function usePageHasResponse(
 }
 
 const hasMissingResponse = (component: LunaticComponentProps): boolean => {
-	return (
-		'missingResponse' in component &&
-		component.missingResponse?.value !== undefined
-	);
+	if ('missingResponse' in component && component.missingResponse?.value)
+		return true;
+	return false;
 };
 
 const hasArbitraryValue = (component: LunaticComponentProps): boolean => {
-	return (
-		'arbitraryValue' in component && component.arbitraryValue !== undefined
-	);
+	if ('arbitraryValue' in component && component.arbitraryValue !== undefined)
+		return true;
+	return false;
 };
 
 const hasOneResponseInQuestion = (
