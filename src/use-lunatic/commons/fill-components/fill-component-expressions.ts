@@ -5,6 +5,7 @@ import type {
 	LunaticReducerState,
 } from '../../type';
 import { isObject } from '../../../utils/object';
+import { castBool, castNumber, castString } from '../../../utils/cast';
 
 const VTL_ATTRIBUTES = [
 	['label', null],
@@ -36,51 +37,6 @@ const VTL_ATTRIBUTES = [
 
 // List of property that can be simple string instead of expressions
 const allowString = new Set(['unit']);
-
-function castNumber(v: unknown): number {
-	if (typeof v === 'number') {
-		return v;
-	}
-	if (typeof v === 'string') {
-		return Number.parseInt(v, 10);
-	}
-	if (Array.isArray(v) && v.length > 0) {
-		return castNumber(v[0]);
-	}
-	if (v === null) {
-		return 0;
-	}
-	throw new Error(`Cannot cast "${v}" to number`);
-}
-
-function castBool(v: unknown): boolean {
-	if (typeof v === 'boolean') {
-		return v;
-	}
-	if (Array.isArray(v) && v.length > 0) {
-		return castBool(v[0]);
-	}
-	if (Array.isArray(v)) {
-		return false;
-	}
-	return Boolean(v);
-}
-
-function castString(v: unknown): string {
-	if (typeof v === 'string') {
-		return v;
-	}
-	if (typeof v === 'number') {
-		return v.toString();
-	}
-	if (Array.isArray(v)) {
-		return v.map(castString).join(', ');
-	}
-	if (!v) {
-		return '';
-	}
-	return v.toString();
-}
 
 // Utility type to replace all expression from an object into a translated version
 type UntranslatedProperties =

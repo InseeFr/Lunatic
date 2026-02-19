@@ -15,7 +15,10 @@ export function castNumber(v: unknown): number {
 	if (Array.isArray(v) && v.length > 0) {
 		return castNumber(v[0]);
 	}
-	throw new Error(`Cannot cast "${v}" to number`);
+	if (v === null) {
+		return 0;
+	}
+	throw new TypeError(`Cannot cast "${v}" to number`);
 }
 
 /**
