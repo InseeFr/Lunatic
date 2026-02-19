@@ -1,8 +1,8 @@
 import type {
 	LunaticComponentDefinition,
 	LunaticOverviewItem,
+	LunaticSource,
 } from '../../type';
-import type { LunaticSource } from '../../type';
 import type { ItemOf } from '../../../type.utils';
 
 /**

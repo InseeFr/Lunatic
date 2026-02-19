@@ -9,7 +9,7 @@ export function forceInt(n: unknown): number {
 	if (typeof n === 'number') {
 		return n;
 	}
-	throw new Error(`Cannot cast ${typeof n} to int`);
+	throw new TypeError(`Cannot cast ${typeof n} to int`);
 }
 
 /**

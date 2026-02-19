@@ -22,7 +22,7 @@ function extractSubPages(
 		(pages, component) => {
 			const { page } = component;
 
-			if (page && pages.indexOf(page) === -1) {
+			if (page && !pages.includes(page)) {
 				return [...pages, page];
 			}
 			return pages;

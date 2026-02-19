@@ -18,9 +18,9 @@ export function getNextPager(
 	// Increment the page or subPage
 	// eslint-disable-next-line prefer-const
 	let [page, subPage] =
-		pager.subPage !== undefined
-			? [pager.page, pager.subPage + 1]
-			: [pager.page + 1, undefined];
+		pager.subPage === undefined
+			? [pager.page + 1, undefined]
+			: [pager.page, pager.subPage + 1];
 	let iteration = pager.iteration;
 
 	// We reached the end of the questionnaire
@@ -77,9 +77,9 @@ export function getPrevPager(
 	// Decrement the page or subPage
 	// eslint-disable-next-line prefer-const
 	let [page, subPage] =
-		pager.subPage !== undefined
-			? [pager.page, pager.subPage - 1]
-			: [pager.page - 1, undefined];
+		pager.subPage === undefined
+			? [pager.page - 1, undefined]
+			: [pager.page, pager.subPage - 1];
 	let iteration = pager.iteration;
 	const moveUpOnStart =
 		parent === 'Roundabout' && pager.nbIterations && pager.nbIterations > 1;
