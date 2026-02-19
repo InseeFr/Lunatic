@@ -6,6 +6,7 @@ import { autoExploreLoop } from './commons/auto-explore-loop';
 import { reduceHandleChanges } from './reduce-handle-changes';
 import { ActionKind } from '../actions';
 import { ArticulationState } from '../../utils/getArticulationState';
+import { isRoundaboutComponent } from '../commons/component';
 
 export function reduceGoNextPage(
 	state: LunaticReducerState
@@ -45,7 +46,7 @@ export function reduceGoNextPage(
 	) {
 		// Split the condition to infer variable type
 		const firstComponent = newState.pages[newState.pager.page].components[0];
-		if (firstComponent.componentType === 'Roundabout') {
+		if (isRoundaboutComponent(firstComponent)) {
 			newState = reduceHandleChanges(newState, {
 				type: ActionKind.HANDLE_CHANGES,
 				payload: {

@@ -35,11 +35,7 @@ function hasOneResponse(
 		}
 
 		// We have a missing response for this component
-		if (
-			'missingResponse' in component &&
-			component.missingResponse &&
-			component.missingResponse.value
-		) {
+		if ('missingResponse' in component && component.missingResponse?.value) {
 			return true;
 		}
 

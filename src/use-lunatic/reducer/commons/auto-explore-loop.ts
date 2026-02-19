@@ -1,5 +1,6 @@
 import type { LunaticReducerState } from '../../type';
 import { getPageId, pageStringToNumbers } from '../../commons/pagination/page';
+import isRoundabout from '../../commons/pagination/is-roundabout';
 
 /**
  * Update the pager to enter a loop if the pager is on a loop
@@ -45,7 +46,7 @@ export function autoExploreLoop(
 
 	// The page contains a roundabout, go to the first iteration if it only has one iteration
 	if (
-		page.components[0].componentType === 'Roundabout' &&
+		isRoundabout(page.components[0]) &&
 		page.subPages &&
 		page.subPages.length > 0
 	) {
