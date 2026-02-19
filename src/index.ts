@@ -29,10 +29,7 @@ export type {
 	LunaticChangesHandler,
 } from './use-lunatic/type';
 
-export type {
-	LunaticComponentProps,
-	LunaticExtraProps,
-} from './components/type';
+export type { LunaticComponentProps } from './components/type';
 export type { LunaticSlotComponents } from './components/shared/HOC/slottableComponent';
 export type { LunaticSource } from './use-lunatic/type';
 
