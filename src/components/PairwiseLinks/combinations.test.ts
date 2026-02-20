@@ -28,7 +28,7 @@ describe('combinations utils', () => {
 
 		expect(
 			combinations.filter((combination) =>
-				filterCombinations({ combination, iteration: 0, readonly: false })
+				filterCombinations({ combination, iteration: 0, isSymLink: false })
 			)
 		).toStrictEqual([
 			[1, 0],
@@ -37,7 +37,7 @@ describe('combinations utils', () => {
 
 		expect(
 			combinations.filter((combination) =>
-				filterCombinations({ combination, iteration: 1, readonly: false })
+				filterCombinations({ combination, iteration: 1, isSymLink: false })
 			)
 		).toStrictEqual([[2, 1]]);
 	});
@@ -49,7 +49,7 @@ describe('combinations utils', () => {
 				filterCombinations({
 					combination,
 					iteration: undefined,
-					readonly: false,
+					isSymLink: false,
 				})
 			)
 		).toStrictEqual([
@@ -64,19 +64,19 @@ describe('combinations utils', () => {
 
 		expect(
 			combinations.filter((combination) =>
-				filterCombinations({ combination, iteration: 0, readonly: true })
+				filterCombinations({ combination, iteration: 0, isSymLink: true })
 			)
 		).toStrictEqual([]);
 
 		expect(
 			combinations.filter((combination) =>
-				filterCombinations({ combination, iteration: 1, readonly: true })
+				filterCombinations({ combination, iteration: 1, isSymLink: true })
 			)
 		).toStrictEqual([[0, 1]]);
 
 		expect(
 			combinations.filter((combination) =>
-				filterCombinations({ combination, iteration: 2, readonly: true })
+				filterCombinations({ combination, iteration: 2, isSymLink: true })
 			)
 		).toStrictEqual([
 			[0, 2],
@@ -91,7 +91,7 @@ describe('combinations utils', () => {
 				filterCombinations({
 					combination,
 					iteration: undefined,
-					readonly: true,
+					isSymLink: true,
 				})
 			)
 		).toStrictEqual([
