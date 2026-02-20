@@ -130,7 +130,7 @@ function isEmpty(value: unknown): boolean {
 	// Array is empty if all items are empty
 	if (Array.isArray(value)) {
 		// We find one value that is not empty
-		return value.find((v) => !isEmpty(v)) === undefined;
+		return !value.some((v) => !isEmpty(v));
 	}
 	// For object inspect each values
 	if (typeof value === 'object' && value !== null) {
