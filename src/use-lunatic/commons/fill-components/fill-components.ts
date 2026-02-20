@@ -11,7 +11,7 @@ import type { LunaticComponentProps } from '../../../components/type';
 import { getMissingResponseProp } from '../../props/propMissingResponse';
 import { getValueProp } from '../../props/propValue';
 import { getIterationsProp } from '../../props/propIterations';
-import { getOptionsProp } from '../../props/propOptions';
+import { computeOptionsFromComponent } from '../../props/propOptions';
 import { LunaticLogger } from '../../logger/type';
 import { VTLScalarExpression } from '../../../type.source';
 
@@ -80,16 +80,15 @@ export const fillComponent = (
 		missingResponse: getMissingResponseProp(component, state),
 		management: state.management,
 		iterations: getIterationsProp(component, state),
-		options: getOptionsProp(
-			interpretedProps,
-			state.variables,
-			state.handleChanges,
-			state.pager.iteration,
+		options: computeOptionsFromComponent(interpretedProps, {
+			variables: state.variables,
+			handleChanges: state.handleChanges,
+			pagerIteration: state.pager.iteration,
 			value,
-			state.logger,
-			state.disableFilters,
-			shouldBeFiltered
-		),
+			logger: state.logger,
+			disableFilters: state.disableFilters,
+			shouldParentBeFiltered: shouldBeFiltered,
+		}),
 		...getComponentTypeProps(interpretedProps, state),
 		// This is too dynamic to be typed correctly, so we allow any here
 	} as any;

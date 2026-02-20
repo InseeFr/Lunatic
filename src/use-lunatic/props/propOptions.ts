@@ -28,15 +28,25 @@ export type InterpretedOption = {
 /**
  * Compute options for checkboxes / radios / dropdown
  */
-export function getOptionsProp(
+export function computeOptionsFromComponent(
 	definition: DeepTranslateExpression<LunaticComponentDefinition>,
-	variables: LunaticVariablesStore,
-	handleChanges: LunaticChangesHandler,
-	pagerIteration: LunaticState['pager']['iteration'],
-	value: unknown,
-	logger: LunaticLogger,
-	disableFilters?: boolean,
-	shouldParentBeFiltered?: boolean
+	{
+		variables,
+		handleChanges,
+		pagerIteration,
+		value,
+		logger,
+		disableFilters,
+		shouldParentBeFiltered,
+	}: {
+		variables: LunaticVariablesStore;
+		handleChanges: LunaticChangesHandler;
+		pagerIteration: LunaticState['pager']['iteration'];
+		value: unknown;
+		logger: LunaticLogger;
+		disableFilters?: boolean;
+		shouldParentBeFiltered?: boolean;
+	}
 ) {
 	const iteration = isNumber(pagerIteration) ? [pagerIteration] : undefined;
 
@@ -85,7 +95,24 @@ export function getOptionsProp(
 			}));
 	}
 
+	// options based on another variable
+	if ('optionSource' in definition && definition.optionSource) {
+		return computeOptionsFromSource(definition.optionSource, {
+			variables,
+			value,
+			handleChanges,
+			responseName: definition.response.name,
+			logger,
+			shouldParentBeFiltered,
+			optionFilter: definition.optionFilter,
+		});
+	}
+
 	if (!('options' in definition)) {
+		return [];
+	}
+
+	if (!definition.options) {
 		return [];
 	}
 
@@ -102,7 +129,7 @@ export function getOptionsProp(
 				variables,
 				iteration,
 				logger,
-				option.conditionFilter
+				option.conditionFilter as VtlExpression | undefined
 			);
 		})
 		.map((option) => ({
@@ -139,9 +166,71 @@ export function getOptionsProp(
 						variables,
 						iteration,
 						logger,
-						option.conditionFilter
+						option.conditionFilter as VtlExpression | undefined
 					)),
 		}));
+}
+
+/**
+ * Get all options from a source variable, applying filters.
+ */
+function computeOptionsFromSource(
+	optionSource: string,
+	{
+		variables,
+		value,
+		handleChanges,
+		responseName,
+		logger,
+		shouldParentBeFiltered,
+		optionFilter,
+	}: {
+		variables: LunaticVariablesStore;
+		value: unknown;
+		handleChanges: LunaticChangesHandler;
+		responseName: string;
+		logger: LunaticLogger;
+		shouldParentBeFiltered?: boolean;
+		optionFilter?: VtlExpression;
+	}
+): InterpretedOption[] {
+	// we don't know the type of the optionSource values (string, numbers, boolean)
+	const optionValues = variables.get<unknown>(optionSource);
+	if (!optionValues) {
+		return [];
+	}
+
+	const normalizedValues = Array.isArray(optionValues)
+		? optionValues
+		: [optionValues];
+
+	return normalizedValues
+		.filter((option, index) => {
+			// option is an empty value, we remove it from the options list
+			if (option === null || option === undefined) {
+				return false;
+			}
+			// no filter expression, we keep the option
+			if (!optionFilter) {
+				return true;
+			}
+			// apply filter expression on option (applied to its iteration)
+			return !isFilteredOutOption(variables, [index], logger, optionFilter);
+		})
+		.map((option) => {
+			return {
+				label: String(option),
+				value: option,
+				checked: value === option,
+				onCheck: () => {
+					handleChanges([{ name: responseName, value: option }]);
+				},
+				onUncheck: () => {
+					handleChanges([{ name: responseName, value: null }]);
+				},
+				shouldBeFiltered: shouldParentBeFiltered,
+			};
+		});
 }
 
 /**

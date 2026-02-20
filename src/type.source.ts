@@ -158,8 +158,8 @@ export type ComponentCheckboxBooleanDefinition =
 export type ComponentRadioDefinition = ComponentDefinitionBaseWithResponse & {
 	componentType: 'Radio';
 	orientation?: 'horizontal' | 'vertical';
-	options: OptionsWithDetail;
-};
+} & ComponentRadioDefinition1;
+export type ComponentRadioDefinition1 = StaticOptions | OptionsFromVariable;
 export type OptionsWithDetail = {
 	value: string | boolean;
 	label: VTLExpression;
@@ -175,8 +175,8 @@ export type OptionsWithDetail = {
 export type ComponentDropdownDefinition =
 	ComponentDefinitionBaseWithResponse & {
 		componentType: 'Dropdown';
-		options: Options;
-	};
+	} & ComponentDropdownDefinition1;
+export type ComponentDropdownDefinition1 = StaticOptions | OptionsFromVariable;
 export type ComponentQuestionDefinition = ComponentDefinitionBase & {
 	componentType: 'Question';
 	components: ComponentDefinition[];
@@ -184,8 +184,10 @@ export type ComponentQuestionDefinition = ComponentDefinitionBase & {
 export type ComponentCheckboxOneDefinition =
 	ComponentDefinitionBaseWithResponse & {
 		componentType: 'CheckboxOne';
-		options: OptionsWithDetail;
-	};
+	} & ComponentCheckboxOneDefinition1;
+export type ComponentCheckboxOneDefinition1 =
+	| StaticOptions
+	| OptionsFromVariable;
 export type ComponentSuggesterDefinition =
 	ComponentDefinitionBaseWithResponse & {
 		componentType: 'Suggester';
@@ -435,6 +437,13 @@ export type ControlDefinition = {
 };
 export type ResponseDefinition = {
 	name: string;
+};
+export type StaticOptions = {
+	options: OptionsWithDetail;
+};
+export type OptionsFromVariable = {
+	optionSource: string;
+	optionFilter?: VTLExpression;
 };
 export type ComponentText = {
 	componentType: 'Text';

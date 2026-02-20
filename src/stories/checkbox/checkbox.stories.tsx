@@ -1,3 +1,4 @@
+import { dataFromObject } from '../../utils/object';
 import {
 	type Orchestrator,
 	OrchestratorMeta,
@@ -10,6 +11,7 @@ import sourceGroupDetail from './sourceGroupDetail.json';
 import sourceGroupLoop from './sourceGroupLoop.json';
 import sourceOne from './sourceOne.json';
 import sourceOneDetail from './sourceOneDetail.json';
+import sourceOneDynamicOptions from './sourceOneDynamicOptions.json';
 
 import { Meta } from '@storybook/react';
 
@@ -71,5 +73,16 @@ export const CheckboxOne: OrchestratorStory = {
 export const CheckboxOneWithDetail: OrchestratorStory = {
 	args: {
 		source: sourceOneDetail,
+	},
+};
+
+export const CheckboxOneDynamicOptions: OrchestratorStory = {
+	args: {
+		source: sourceOneDynamicOptions,
+		data: dataFromObject({
+			NBHAB: 3,
+			PRENOM: ['Verso', 'Maëlle', 'Aline'],
+			AGE: [30, 16, 50],
+		}),
 	},
 };

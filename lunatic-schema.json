@@ -224,7 +224,6 @@
 						"rules": {
 							"type": "object",
 							"additionalProperties": {
-								"type": "object",
 								"$ref": "#/$defs/VTLExpression"
 							}
 						}
@@ -238,7 +237,6 @@
 						"rules": {
 							"type": "object",
 							"additionalProperties": {
-								"type": "object",
 								"$ref": "#/$defs/VTLExpression"
 							}
 						}
@@ -952,15 +950,20 @@
 				"orientation": {
 					"type": "string",
 					"enum": ["horizontal", "vertical"]
-				},
-				"options": {
-					"$ref": "#/$defs/OptionsWithDetail"
 				}
 			},
-			"required": ["componentType", "options"],
+			"required": ["componentType"],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+				}
+			],
+			"oneOf": [
+				{
+					"$ref": "#/$defs/StaticOptions"
+				},
+				{
+					"$ref": "#/$defs/OptionsFromVariable"
 				}
 			]
 		},
@@ -970,15 +973,20 @@
 				"componentType": {
 					"type": "string",
 					"const": "Dropdown"
-				},
-				"options": {
-					"$ref": "#/$defs/Options"
 				}
 			},
-			"required": ["componentType", "options"],
+			"required": ["componentType"],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+				}
+			],
+			"oneOf": [
+				{
+					"$ref": "#/$defs/StaticOptions"
+				},
+				{
+					"$ref": "#/$defs/OptionsFromVariable"
 				}
 			]
 		},
@@ -1009,15 +1017,20 @@
 				"componentType": {
 					"type": "string",
 					"const": "CheckboxOne"
-				},
-				"options": {
-					"$ref": "#/$defs/OptionsWithDetail"
 				}
 			},
-			"required": ["componentType", "options"],
+			"required": ["componentType"],
 			"allOf": [
 				{
 					"$ref": "#/$defs/ComponentDefinitionBaseWithResponse"
+				}
+			],
+			"oneOf": [
+				{
+					"$ref": "#/$defs/StaticOptions"
+				},
+				{
+					"$ref": "#/$defs/OptionsFromVariable"
 				}
 			]
 		},
@@ -1384,6 +1397,27 @@
 				}
 			],
 			"type": "object"
+		},
+		"StaticOptions": {
+			"type": "object",
+			"properties": {
+				"options": {
+					"$ref": "#/$defs/OptionsWithDetail"
+				}
+			},
+			"required": ["options"]
+		},
+		"OptionsFromVariable": {
+			"type": "object",
+			"properties": {
+				"optionSource": {
+					"type": "string"
+				},
+				"optionFilter": {
+					"$ref": "#/$defs/VTLExpression"
+				}
+			},
+			"required": ["optionSource"]
 		},
 		"Options": {
 			"type": "array",
