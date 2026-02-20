@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Radio, Dropdown and CheckboxOne can now have options based on a variable by specifying `optionSource` and filtered through `optionFilter`.
+- Enable PairwiseLinks component to be in Loop
+
 ## [3.11.2](https://github.com/InseeFr/Lunatic/releases/tag/3.11.2) - 2026-02-10
 
 - fix: lunaticStore when window is `undefined` (bug since **3.11.0**), only appears in Node env (LunaticPdfApi for example)
@@ -52,7 +55,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add global variables for pairwise component. `GLOBAL_PARENT1_PRENOM`, `GLOBAL_PARENT1_SEXE`, `GLOBAL_PARENT2_PRENOM`, `GLOBAL_PARENT2_SEXE`, `GLOBAL_CONJOINT_PRENOM` and `GLOBAL_ENFANTS_PRENOMS` are now available if the corresponding source variables of the pairwise component are filled in.
-- Radio, Dropdown and CheckboxOne can now have options based on a variable by specifying `optionSource` and filtered through `optionFilter`.
 
 ## [3.7.7](https://github.com/InseeFr/Lunatic/releases/tag/3.7.7) - 2026-01-14
 
