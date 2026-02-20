@@ -9,11 +9,12 @@ export const PairwiseLinks = (
 ) => {
 	const { iteration, size, getComponents } = props;
 
-	const combinations = getCombinations(size);
-
-	if (combinations.length <= 1) {
+	// We only need to display a pairwise if there are at least 2 guys
+	if (size < 2) {
 		return;
 	}
+
+	const combinations = getCombinations(size);
 
 	return (
 		<>
@@ -31,7 +32,7 @@ export const PairwiseLinks = (
 				))}
 			{combinations
 				.filter((combination) =>
-					filterCombinations({ combination, iteration, readonly: true })
+					filterCombinations({ combination, iteration, isSymLink: true })
 				)
 				.map(([x, y]) => {
 					const components = getComponents(x, y);

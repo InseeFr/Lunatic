@@ -13,20 +13,22 @@ export const getCombinations = (
 
 /**
  * Filter combination of pairwise for display only necessary ones
- * @param param: combination, current iteration (if in loop), readonly: indicate if combination should be readonly (for pairwise miror -> "lien symétriques")
+ * depending on whether we want to only display symlinks,
+ * or if we display only selected iterations (because we display pairwise in a loop).
+ * @param param: combination, current iteration (if in loop), isSymLink: indicate if we want to display symLink (for pairwise miror -> "lien symétriques")
  * @returns
  */
 export const filterCombinations = ({
 	combination,
 	iteration,
-	readonly = false,
+	isSymLink = false,
 }: {
 	combination: readonly [number, number];
-	iteration: number | undefined;
-	readonly?: boolean;
+	iteration?: number;
+	isSymLink?: boolean;
 }): boolean => {
 	const [x, y] = combination;
-	const base = readonly ? y > x : y < x;
+	const base = isSymLink ? y > x : y < x;
 	if (iteration === undefined) return base;
 	return y === iteration && base;
 };
