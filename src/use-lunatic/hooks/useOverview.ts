@@ -5,7 +5,11 @@ import type {
 	PageTag,
 } from '../type';
 import { type DependencyList, type ReactNode, useMemo } from 'react';
-import { getPageTag, pageTagComparator } from '../commons/page-tag';
+import {
+	addIterationToPage,
+	getPageTag,
+	pageTagComparator,
+} from '../commons/pagination/page-tag';
 
 export type InterpretedLunaticOverviewItem = {
 	id: string;
@@ -126,8 +130,7 @@ const interpretOverviewItem = (
 	}
 
 	// Append the item to the list of items
-	const page =
-		`${item.pageTag}${iteration !== undefined ? `#${iteration + 1}` : ''}` as PageTag;
+	const page = addIterationToPage(item.pageTag, iteration);
 
 	const reached =
 		pageTagComparator(state.pager ? getPageTag(state.pager) : '-1', page) >= 0;

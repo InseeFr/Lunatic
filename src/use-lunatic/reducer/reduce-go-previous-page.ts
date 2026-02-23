@@ -1,6 +1,6 @@
-import { getPrevPager } from '../commons/page-navigation';
+import { getPrevPager } from '../commons/pagination/page-navigation';
 import { autoExploreLoop } from './commons/auto-explore-loop';
-import { getPageId, isPageEmpty } from '../commons/page';
+import { getPageId, isPageEmpty } from '../commons/pagination/page';
 import type { LunaticReducerState } from '../type';
 
 export function reduceGoPreviousPage(

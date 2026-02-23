@@ -15,6 +15,54 @@ export function usePageHasResponse(
 	}, [components, executeExpression]);
 }
 
+const hasMissingResponse = (component: LunaticComponentProps): boolean => {
+	if ('missingResponse' in component && component.missingResponse?.value)
+		return true;
+	return false;
+};
+
+const hasArbitraryValue = (component: LunaticComponentProps): boolean => {
+	if ('arbitraryValue' in component && component.arbitraryValue !== undefined)
+		return true;
+	return false;
+};
+
+const hasOneResponseInQuestion = (
+	component: LunaticComponentProps<'Question'>,
+	executeExpression: LunaticReducerState['executeExpression']
+): boolean => {
+	return (
+		'components' in component &&
+		Array.isArray(component.components) &&
+		hasOneResponse(component.components, executeExpression)
+	);
+};
+
+// For Table, we have to extract components from its body and apply isSubComponentsEmpty function
+const hasOneResponseInTable = (
+	component: LunaticComponentProps<'Table'>,
+	executeExpression: LunaticReducerState['executeExpression']
+): boolean => {
+	const childrenComponent = component.body.reduce((_, row) => {
+		const componentsInRow = row.filter(
+			(cell) => isObject(cell) && 'componentType' in cell
+		);
+		return [..._, ...componentsInRow];
+	}, [] as LunaticComponentProps[]);
+	return !isSubComponentsEmpty(childrenComponent, executeExpression);
+};
+
+const hasOneResponseInRosterForLoop = (
+	component: LunaticComponentProps<'RosterForLoop'>,
+	executeExpression: LunaticReducerState['executeExpression']
+): boolean => {
+	return (
+		'components' in component &&
+		Array.isArray(component.components) &&
+		!isSubComponentsEmpty(component.components, executeExpression)
+	);
+};
+
 function hasOneResponse(
 	components: LunaticComponentProps[],
 	executeExpression: LunaticReducerState['executeExpression']
@@ -35,29 +83,17 @@ function hasOneResponse(
 		}
 
 		// We have a missing response for this component
-		if (
-			'missingResponse' in component &&
-			component.missingResponse &&
-			component.missingResponse.value
-		) {
-			return true;
-		}
+		if (hasMissingResponse(component)) return true;
 
 		// We have an arbitrary response for this component
-		if ('arbitraryValue' in component && component.arbitraryValue) {
-			return true;
-		}
+		if (hasArbitraryValue(component)) return true;
 
 		// For Table, we have to extract components from its body and apply isSubComponentsEmpty function
-		if (component.componentType === 'Table') {
-			// Body is array for array (row), each "cell" could be an Label or Component, so we filter array.
-			const childrenComponent = component.body.reduce((_, row) => {
-				const componentsInRow = row.filter(
-					(cell) => isObject(cell) && 'componentType' in cell
-				);
-				return [..._, ...componentsInRow];
-			}, [] as LunaticComponentProps[]);
-			return !isSubComponentsEmpty(childrenComponent, executeExpression);
+		if (
+			component.componentType === 'Table' &&
+			hasOneResponseInTable(component, executeExpression)
+		) {
+			return true;
 		}
 
 		// We found a value in one of the root component. Used for Loop
@@ -68,19 +104,14 @@ function hasOneResponse(
 		// For Question, we need to check subcomponents
 		if (
 			component.componentType === 'Question' &&
-			'components' in component &&
-			Array.isArray(component.components) &&
-			hasOneResponse(component.components, executeExpression)
-		) {
+			hasOneResponseInQuestion(component, executeExpression)
+		)
 			return true;
-		}
 
 		// For rosterForLoop we need to inspect child components
 		if (
 			component.componentType === 'RosterForLoop' &&
-			'components' in component &&
-			Array.isArray(component.components) &&
-			!isSubComponentsEmpty(component.components, executeExpression)
+			hasOneResponseInRosterForLoop(component, executeExpression)
 		) {
 			return true;
 		}
@@ -99,7 +130,7 @@ function isEmpty(value: unknown): boolean {
 	// Array is empty if all items are empty
 	if (Array.isArray(value)) {
 		// We find one value that is not empty
-		return value.find((v) => !isEmpty(v)) === undefined;
+		return !value.some((v) => !isEmpty(v));
 	}
 	// For object inspect each values
 	if (typeof value === 'object' && value !== null) {

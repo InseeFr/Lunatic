@@ -1,6 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { getPagerFromPageTag, pageTagComparator } from './page-tag';
-import type { PageTag } from '../type';
+import {
+	addIterationToPage,
+	getPagerFromPageTag,
+	pageTagComparator,
+} from './page-tag';
+import type { PageTag } from '../../type';
 
 describe('page-tag', () => {
 	describe('getPagerFromPageTag', () => {
@@ -15,6 +19,15 @@ describe('page-tag', () => {
 				subPage: 0,
 				iteration: 2,
 			});
+		});
+	});
+
+	describe('addIterationToPage', () => {
+		it('should add itereation to simple page', () => {
+			expect(addIterationToPage('2', 0)).toEqual('2#1');
+			expect(addIterationToPage('2.1', 0)).toEqual('2.1#1');
+			expect(addIterationToPage('2', 1)).toEqual('2#2');
+			expect(addIterationToPage('2.1', 1)).toEqual('2.1#2');
 		});
 	});
 

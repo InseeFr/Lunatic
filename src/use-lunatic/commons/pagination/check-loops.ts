@@ -4,7 +4,7 @@ import type {
 	LunaticComponentDefinition,
 	LunaticExpression,
 	LunaticReducerState,
-} from '../type';
+} from '../../type';
 
 /**
  * Extract the list of subpages linked to a component
@@ -22,7 +22,7 @@ function extractSubPages(
 		(pages, component) => {
 			const { page } = component;
 
-			if (page && pages.indexOf(page) === -1) {
+			if (page && !pages.includes(page)) {
 				return [...pages, page];
 			}
 			return pages;
@@ -33,35 +33,29 @@ function extractSubPages(
 
 function extractLoop(components: LunaticComponentDefinition[] = []) {
 	return components.reduce(
-		function (
-			{ isLoop, subPages, iterations, loopDependencies, roundabout },
-			component
-		) {
+		function ({ isLoop, subPages, iterations, loopDependencies }, component) {
 			const currentIsLoop = isPaginatedLoop(component);
 			const currentIsRoundabout = isRoundabout(component);
 			if (currentIsLoop || currentIsRoundabout) {
 				return {
 					isLoop: isLoop || currentIsLoop,
-					roundabout: roundabout || currentIsRoundabout,
 					subPages: extractSubPages(component, subPages),
 					iterations: iterations || component.iterations,
 					loopDependencies: loopDependencies || undefined,
 				};
 			}
-			return { isLoop, subPages, iterations, roundabout };
+			return { isLoop, subPages, iterations };
 		},
 		{
 			isLoop: false,
 			subPages: undefined,
 			iterations: undefined,
 			loopDependencies: undefined,
-			roundabout: undefined,
 		} as {
 			isLoop: boolean;
 			iterations?: LunaticExpression;
 			loopDependencies?: string[];
 			subPages?: string[];
-			roundabout?: boolean;
 		}
 	);
 }

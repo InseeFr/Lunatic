@@ -1,8 +1,8 @@
 import type {
 	LunaticComponentDefinition,
 	LunaticOverviewItem,
+	LunaticSource,
 } from '../../type';
-import type { LunaticSource } from '../../type';
 import type { ItemOf } from '../../../type.utils';
 
 /**
@@ -33,7 +33,7 @@ function overviewFromComponent(
 			id: component.id,
 			type: component.componentType,
 			pageTag: page,
-			page: parseInt(parts[0], 10),
+			page: Number.parseInt(parts[0], 10),
 			label: component.label,
 			description: component.description,
 			conditionFilter: component.conditionFilter,

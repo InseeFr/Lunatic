@@ -10,12 +10,15 @@ export function castNumber(v: unknown): number {
 		return v;
 	}
 	if (typeof v === 'string') {
-		return parseInt(v, 10);
+		return Number.parseInt(v, 10);
 	}
 	if (Array.isArray(v) && v.length > 0) {
 		return castNumber(v[0]);
 	}
-	throw new Error(`Cannot cast "${v}" to number`);
+	if (v === null) {
+		return 0;
+	}
+	throw new TypeError(`Cannot cast "${v}" to number`);
 }
 
 /**

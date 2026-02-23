@@ -4,6 +4,7 @@ Various utils function about what a component is or is not.
 import type { ReactNode } from 'react';
 import type { LunaticComponentDefinition } from '../type';
 import { type DeepTranslateExpression } from './fill-components/fill-component-expressions';
+import { ComponentPairWiseLinksDefinition } from '../../type.source';
 
 export type ComponentDefinition = LunaticComponentDefinition;
 export type InterpretedComponent =
@@ -102,7 +103,7 @@ export function isQuestionComponent(
 /** Whether the component is a PairwiseLinks. */
 export function isPairwiseLinksComponent(
 	component: ComponentDefinition | InterpretedComponent
-): component is InterpretedPairwiseLinksComponent {
+): component is ComponentPairWiseLinksDefinition {
 	return component.componentType === 'PairwiseLinks';
 }
 
@@ -113,12 +114,16 @@ export function isPairwiseLinksComponent(
  */
 export function getPairwiseComponent(
 	components: ComponentDefinition[]
-): InterpretedPairwiseLinksComponent | undefined {
+): ComponentPairWiseLinksDefinition | undefined {
 	for (const component of components) {
 		if (isPairwiseLinksComponent(component)) return component;
 		if (isQuestionComponent(component)) {
 			const childComponent = getPairwiseComponent(component.components);
 			if (childComponent) return childComponent;
+		}
+		if (isLoopComponent(component)) {
+			const foundComponent = getPairwiseComponent(component.components);
+			if (foundComponent !== undefined) return foundComponent;
 		}
 	}
 

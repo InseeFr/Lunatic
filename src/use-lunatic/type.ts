@@ -130,7 +130,7 @@ export type LunaticPager = {
 	 */
 	shallowIteration?: number;
 	/**
-	 * Only in a loop.
+	 * Only in a Pairwise.
 	 */
 	linksIterations?: number[];
 };

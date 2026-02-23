@@ -9,7 +9,7 @@ import { checkLoops, createMapPages } from '../commons';
 import { getExpressionAsString, getExpressionType } from '../../utils/vtl';
 import { MD, VTL } from '../../utils/constants';
 import { MDLabel } from '../../components/shared/MDLabel/MDLabel';
-import { getPagerFromPageTag } from '../commons/page-tag';
+import { getPagerFromPageTag } from '../commons/pagination/page-tag';
 import { buildOverview } from './overview/overviewOnInit';
 import { forceInt } from '../../utils/number';
 import { registerSuggesters } from '../../utils/search/SuggestersDatabase';
@@ -136,7 +136,7 @@ export function reducerInitializer({
 	const initialPager = getPagerFromPageTag(initialPage);
 	const pager = {
 		page: initialPager?.page ?? 1,
-		maxPage: source.maxPage ? parseInt(source.maxPage, 10) : 1,
+		maxPage: source.maxPage ? Number.parseInt(source.maxPage, 10) : 1,
 		subPage: initialPager?.subPage,
 		nbSubPages: undefined,
 		iteration: initialPager?.iteration,

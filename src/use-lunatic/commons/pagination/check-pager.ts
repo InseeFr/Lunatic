@@ -1,4 +1,4 @@
-import type { LunaticReducerState } from '../type';
+import type { LunaticReducerState } from '../../type';
 
 /**
  * Reset the pager at his initial state

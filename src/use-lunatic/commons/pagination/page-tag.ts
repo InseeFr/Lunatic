@@ -1,4 +1,15 @@
-import type { LunaticReducerState, PageTag } from '../type';
+import type { LunaticReducerState, PageTag } from '../../type';
+
+/**
+ * Add iteration to existing pageTag (with subpage, use for overview)
+ * @param pageTag
+ * @param iteration
+ * @returns
+ */
+export function addIterationToPage(page: string, iteration?: number): PageTag {
+	if (iteration === undefined) return page as PageTag;
+	return `${page}#${iteration + 1}` as PageTag;
+}
 
 /**
  * Generate page name from the pager
@@ -38,12 +49,12 @@ export function getPagerFromPageTag(pageTag: string | number = 1) {
 		},
 	] = match;
 	if (!subPagePlusUn) {
-		return { page: parseInt(page, 10) };
+		return { page: Number.parseInt(page, 10) };
 	}
 	return {
-		page: parseInt(page, 10),
-		subPage: parseInt(subPagePlusUn, 10) - 1,
-		iteration: parseInt(iterationPlusUn, 10) - 1,
+		page: Number.parseInt(page, 10),
+		subPage: Number.parseInt(subPagePlusUn, 10) - 1,
+		iteration: Number.parseInt(iterationPlusUn, 10) - 1,
 	};
 }
 
@@ -66,8 +77,8 @@ export function getNewReachedPage(
  * - 0 if a is the same as b
  */
 export function pageTagComparator(a: PageTag, b: PageTag) {
-	const pageA = a.split(/\D/).map((v) => parseInt(v, 10));
-	const pageB = b.split(/\D/).map((v) => parseInt(v, 10));
+	const pageA = a.split(/\D/).map((v) => Number.parseInt(v, 10));
+	const pageB = b.split(/\D/).map((v) => Number.parseInt(v, 10));
 	// [0, 2, 1] is used to extract the significant part of the pageTag part (start with page, then iteration, then subpage)
 	for (const index of [0, 2, 1]) {
 		if (pageA[index] !== pageB[index]) {

@@ -57,7 +57,7 @@ export function LunaticComponents<V = unknown>({
 	memo,
 	slots,
 	wrapper = (args) => <LunaticComponentWrapper {...args} />,
-}: Props<V>) {
+}: Readonly<Props<V>>) {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const hasComponents = components.length > 0;
 	const WrapperComponent = autoFocusKey ? 'div' : Fragment;
@@ -66,24 +66,27 @@ export function LunaticComponents<V = unknown>({
 
 	return (
 		<WrapperComponent
-			ref={WrapperComponent === Fragment ? undefined : wrapperRef}
+			// ref is not allowed on React.Fragment
+			{...(WrapperComponent == Fragment ? {} : { ref: wrapperRef })}
 		>
 			<SlotsProvider slots={slots}>
 				{components.map((component, k) => {
 					if (hasComponentType(component)) {
-						if (blocklist && blocklist.includes(component.componentType)) {
+						if (blocklist?.includes(component.componentType)) {
 							return (
 								<Fragment key={computeId(component, k)}>
-									{wrapper({
-										children: (
-											<div style={{ color: 'red' }}>
-												Component "{component.componentType}" is not allowed
-												here
-											</div>
-										),
-										index: k,
-										...component,
-									})}
+									{wrapper(
+										{
+											children: (
+												<div style={{ color: 'red' }}>
+													Component "{component.componentType}" is not allowed
+													here
+												</div>
+											),
+											index: k,
+											...component,
+										} as any /* this is too dynamic */
+									)}
 								</Fragment>
 							);
 						}
@@ -94,15 +97,17 @@ export function LunaticComponents<V = unknown>({
 						};
 						return (
 							<Fragment key={computeId(component, k)}>
-								{wrapper({
-									children: memo ? (
-										<LunaticComponentMemo {...props} />
-									) : (
-										<LunaticComponent {...props} />
-									),
-									index: k,
-									...props,
-								})}
+								{wrapper(
+									{
+										children: memo ? (
+											<LunaticComponentMemo {...props} />
+										) : (
+											<LunaticComponent {...props} />
+										),
+										index: k,
+										...props,
+									} as any /* this is too dynamic */
+								)}
 							</Fragment>
 						);
 					}
@@ -110,7 +115,7 @@ export function LunaticComponents<V = unknown>({
 					// In some case (table for instance) we have static component that only have a label (no componentType)
 					if (hasLabel(component)) {
 						return (
-							<Fragment key={k}>
+							<Fragment key={computeId(component, k)}>
 								{wrapper({
 									...component,
 									children: component.label,
@@ -123,7 +128,7 @@ export function LunaticComponents<V = unknown>({
 					// Component is a ReactNode
 					if (isValidElement(component)) {
 						return (
-							<Fragment key={k}>
+							<Fragment key={computeId(component, k)}>
 								{wrapper({
 									children: component,
 									index: k,
@@ -151,7 +156,9 @@ function LunaticComponent(props: LunaticComponentProps) {
 	);
 }
 
-function LunaticError({ error }: { error: { toString: () => string } }) {
+function LunaticError({
+	error,
+}: Readonly<{ error: { toString: () => string } }>) {
 	console.error(error);
 	return (
 		<p style={{ color: 'red' }}>

@@ -8,6 +8,7 @@ import { reducerInitializer } from '../use-lunatic/reducer/reducerInitializer';
 import { type ReactNode } from 'react';
 import { times } from './array';
 import { forceInt } from './number';
+import { isRoundaboutComponent } from '../use-lunatic/commons/component';
 
 export enum ArticulationState {
 	COMPLETED = 1,
@@ -110,7 +111,7 @@ export function findComponentById(
 	id: string
 ): (ComponentRoundaboutDefinition & { page?: string }) | null {
 	for (const c of components) {
-		if ('id' in c && c.id === id && c.componentType === 'Roundabout') {
+		if ('id' in c && c.id === id && isRoundaboutComponent(c)) {
 			return c;
 		}
 		if ('components' in c) {

@@ -4,6 +4,7 @@ import {
 	type OrchestratorStory,
 } from '../utils/Orchestrator';
 import source from './source.json';
+import pairwiseLoop from './sourcePairwiseLoop.json';
 import sourceGlobalVariables from './sourceGlobalVariables.json';
 
 import { Meta } from '@storybook/react';
@@ -11,7 +12,7 @@ import { Meta } from '@storybook/react';
 import { dataFromObject } from '../../utils/object';
 
 const meta: Meta<typeof Orchestrator> = {
-	title: 'Components/Pairwise',
+	title: 'Components/PairwiseLinks',
 	...OrchestratorMeta,
 };
 
@@ -33,5 +34,20 @@ export const Default: OrchestratorStory = {
 export const GlobalVariables: OrchestratorStory = {
 	args: {
 		source: sourceGlobalVariables,
+		data: dataFromObject({
+			PRENOM: ['Dad', 'Mom', 'Son', 'Daughter'],
+			SEXE: ['1', '2', '1', '2'],
+		}),
+	},
+};
+
+export const PairwiseLoop: OrchestratorStory = {
+	args: {
+		source: pairwiseLoop,
+		data: dataFromObject({
+			PRENOM: ['Dad', 'Mom', 'Son', 'Daughter'],
+			SEXE: ['1', '2', '1', '2'],
+		}),
+		initialPage: '2',
 	},
 };

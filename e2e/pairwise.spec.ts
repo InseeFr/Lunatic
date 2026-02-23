@@ -7,7 +7,7 @@ import {
 } from './utils';
 
 test(`can complete pairwise form`, async ({ page }) => {
-	await goToStory(page, 'components-pairwise--default');
+	await goToStory(page, 'components-pairwiselinks--default');
 	await page.getByText('Select a modality').nth(0).click();
 	await page.getByText('Sa fille, son fils').click();
 	await expect(page.getByText('Sa mère, son père')).toBeVisible();
@@ -20,7 +20,7 @@ test(`can complete pairwise form`, async ({ page }) => {
 
 test(`can complete pairwise form when pairwise is empty`, async ({ page }) => {
 	// Given 3 persons in the dynamic table
-	await goToStory(page, 'components-pairwise--default');
+	await goToStory(page, 'components-pairwiselinks--default');
 
 	await expect(page.getByRole('combobox')).toHaveCount(3);
 

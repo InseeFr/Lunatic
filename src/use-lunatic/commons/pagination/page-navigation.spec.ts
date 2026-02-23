@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getNextPager, getPrevPager } from './page-navigation';
-import type { LunaticReducerState } from '../type';
+import type { LunaticReducerState } from '../../type';
 
 describe('page-navigation', () => {
 	describe('getNextPager', () => {
