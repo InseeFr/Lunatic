@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Suggester synonyms now handle uppercase.
+
 ## [3.12.0](https://github.com/InseeFr/Lunatic/releases/tag/3.12.0) - 2026-02-23
 
 - Radio, Dropdown and CheckboxOne can now have options based on a variable by specifying `optionSource` and filtered through `optionFilter`.
