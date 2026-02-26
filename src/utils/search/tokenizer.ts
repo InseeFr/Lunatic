@@ -46,6 +46,7 @@ export const tokenizeIndex = (
 	info: ItemOf<SearchInfo['fields']>,
 	stopWords?: string[]
 ) => {
+	let normalizedStr = normalizeStr(str);
 	const wordRegex =
 		info.rules && info.rules !== 'soft'
 			? new RegExp(info.rules![0], 'gi')
@@ -55,14 +56,21 @@ export const tokenizeIndex = (
 	// For synonyms, add the synonyms to the string
 	if (info.synonyms) {
 		for (const source in info.synonyms) {
-			const synonyms = info.synonyms[source].join(' ');
-			str = str.replaceAll(source, `${source} ${synonyms}`);
+			const normalizedSource = normalizeStr(source);
+			const synonyms = info.synonyms[source]
+				.map((synonym) => normalizeStr(synonym))
+				.join(' ');
+
+			normalizedStr = normalizedStr.replaceAll(
+				normalizedSource,
+				`${normalizedSource} ${synonyms}`
+			);
 		}
 	}
 
 	// We remove the stopWords from the string
 	return (
-		filterStopWords(normalizeStr(str), stopWords)
+		filterStopWords(normalizedStr, stopWords)
 			.match(wordRegex)
 			?.filter((w) => w.length >= minLength) ?? []
 	);

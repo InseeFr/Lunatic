@@ -154,6 +154,13 @@ describe('tokenizeIndex', () => {
 		expect(result).toEqual(['the', 'car', 'vehicle', 'automobile', 'fast']);
 	});
 
+	it('should tokenize and apply synonyms regardless of case', () => {
+		const fieldInfo = mockSearchInfo.fields[0];
+
+		const result = tokenizeIndex('The Car is fast', fieldInfo);
+		expect(result).toEqual(['the', 'car', 'vehicle', 'automobile', 'fast']);
+	});
+
 	it('should normalize the input', () => {
 		const fieldInfo = mockSearchInfo.fields[0];
 
