@@ -6,6 +6,39 @@ import type {
 import { applyMelauto } from './melauto';
 import MiniSearch from 'minisearch';
 import { tokenizer } from './tokenizer';
+import { normalizeStr } from './utils';
+
+function getMelautoQuery(query: string, info: SearchInfo) {
+	const tokens = tokenizer(info)(query);
+
+	// existing query tokens (already tokenized/normalized by tokenizer).
+	const expandedTokens = new Set(tokens);
+
+	// add synonyms to keep melauto ranking.
+	for (const field of info.fields) {
+		if (!field.synonyms) {
+			continue;
+		}
+		for (const source in field.synonyms) {
+			const normalizedSource = normalizeStr(source);
+			const normalizedSynonyms = field.synonyms[source].map((synonym) =>
+				normalizeStr(synonym)
+			);
+
+			// source -> synonyms
+			if (expandedTokens.has(normalizedSource)) {
+				normalizedSynonyms.forEach((synonym) => expandedTokens.add(synonym));
+			}
+
+			// synonym -> source
+			if (normalizedSynonyms.some((synonym) => expandedTokens.has(synonym))) {
+				expandedTokens.add(normalizedSource);
+			}
+		}
+	}
+
+	return Array.from(expandedTokens).join(' ');
+}
 
 export class SearchMinisearch<T extends IndexEntry>
 	implements SearchInterface<T>
@@ -45,7 +78,7 @@ export class SearchMinisearch<T extends IndexEntry>
 		}) as any as T[];
 
 		// Apply melauto to classify results
-		data = applyMelauto(q, data);
+		data = applyMelauto(getMelautoQuery(q, this.info), data);
 
 		data = data.slice(0, this.info.max);
 

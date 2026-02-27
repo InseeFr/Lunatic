@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeAll, afterEach } from 'vitest';
 import { SearchMinisearch } from './SearchMinisearch';
+import { applyMelauto } from './melauto';
 
 vi.mock('minisearch', () => {
 	return {
@@ -24,7 +25,13 @@ describe('SearchMinisearch', () => {
 	beforeAll(() => {
 		searchInstance = new SearchMinisearch({
 			name: 'test-suggester',
-			fields: [{ name: 'id' }, { name: 'label' }],
+			fields: [
+				{ name: 'id' },
+				{
+					name: 'label',
+					synonyms: { accueil: ['ACCEUIL', 'ACUEIL'] },
+				},
+			],
 			queryParser: {
 				type: 'tokenized',
 				params: { language: 'English', pattern: '\\w+', min: 1 },
@@ -54,5 +61,18 @@ describe('SearchMinisearch', () => {
 		await searchInstance.index(mockData);
 
 		expect(searchInstance.db?.addAll).not.toHaveBeenCalled();
+	});
+
+	it('should expand query synonyms before melauto sorting', async () => {
+		await searchInstance.index(mockData);
+		(searchInstance.db?.search as any).mockReturnValue(mockData);
+		vi.mocked(applyMelauto).mockReturnValue(mockData as any);
+
+		await searchInstance.search('agent acceuil');
+
+		expect(applyMelauto).toHaveBeenCalledWith(
+			'agent acceuil accueil',
+			mockData
+		);
 	});
 });

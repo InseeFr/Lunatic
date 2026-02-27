@@ -1,5 +1,6 @@
 import type { SearchInfo } from './SearchInterface';
 import type { ItemOf } from '../../type.utils';
+import { normalizeStr } from './utils';
 
 /**
  * Generates a tokenize method.
@@ -74,21 +75,6 @@ export const tokenizeIndex = (
 			.match(wordRegex)
 			?.filter((w) => w.length >= minLength) ?? []
 	);
-};
-
-/**
- * Normalize a string
- * - Remove accent (é => e, à => a)
- * - remove ligatures (æ => ae, , Æ => ae, œ => oe, Œ => oe)
- * - Lowercase
- */
-const normalizeStr = (str: string) => {
-	return str
-		.toLowerCase()
-		.replaceAll('œ', 'oe')
-		.replaceAll('æ', 'ae')
-		.normalize('NFD')
-		.replace(/[\u0300-\u036f]/g, '');
 };
 
 /**
