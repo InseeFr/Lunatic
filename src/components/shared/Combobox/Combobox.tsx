@@ -57,6 +57,7 @@ function LunaticComboBox({
 	onSelect,
 	value,
 	options,
+	displayOptionsId = true,
 	messageError,
 	search = EMPTY_SEARCH,
 	getOptionValue = getDefaultOptionValue,
@@ -184,6 +185,7 @@ function LunaticComboBox({
 					isLoading={isLoading}
 					optionRenderer={optionRenderer}
 					options={options}
+					displayOptionsId={displayOptionsId}
 					focused={focused}
 					selectedIndex={selectedIndex}
 					expanded={expanded}

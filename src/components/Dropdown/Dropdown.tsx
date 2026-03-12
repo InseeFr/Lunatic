@@ -1,7 +1,6 @@
 import type { LunaticComponentProps } from '../type';
 import { getComponentErrors } from '../shared/ComponentErrors/ComponentErrors';
 import { slottableComponent } from '../shared/HOC/slottableComponent';
-import { SimpleOptionRenderer } from './renderer/SimpleOptionRenderer';
 import { SimpleLabelRenderer } from './renderer/SimpleLabelRenderer';
 import { Combobox } from '../shared/Combobox/Combobox';
 import classNames from 'classnames';
@@ -54,9 +53,9 @@ export const CustomDropdown = slottableComponent<CustomProps>(
 				disabled={disabled}
 				readOnly={readOnly}
 				options={options}
+				displayOptionsId={false}
 				editable={false}
 				onSelect={onChange}
-				optionRenderer={SimpleOptionRenderer}
 				labelRenderer={SimpleLabelRenderer}
 				value={value}
 				label={label}

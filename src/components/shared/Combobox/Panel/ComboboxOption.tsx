@@ -5,12 +5,13 @@ import D from '../../../../i18n';
 
 type Props = {
 	option: ComboboxOptionType;
+	displayOptionId?: boolean;
 	selected?: boolean;
 };
 
 export const ComboboxOption = slottableComponent(
 	'ComboboxOption',
-	({ option, selected }: Props) => {
+	({ option, displayOptionId = true, selected }: Props) => {
 		const { id, value, label } = option;
 
 		if (value === 'OTHER') {
@@ -26,15 +27,19 @@ export const ComboboxOption = slottableComponent(
 		if (label && typeof label === 'string' && label.length) {
 			return (
 				<div className={classnames('lunatic-combo-box-option', { selected })}>
-					<span className="id">{id || value}</span>
-					<span> - </span>
+					{displayOptionId && (
+						<>
+							<span className="id">{id || value}</span>
+							<span> - </span>
+						</>
+					)}
 					<span className="label">{label}</span>
 				</div>
 			);
 		}
 		return (
 			<div className={classnames('lunatic-combo-box-option', { selected })}>
-				<span className="id">{id}</span>
+				<span className="id">{id || value}</span>
 			</div>
 		);
 	}

@@ -261,11 +261,17 @@ export type ComponentPropsByType = {
 	Suggester: LunaticBaseProps<string | null> & {
 		componentType?: 'Suggester';
 		storeName: string;
+		/**
+		 * @deprecated use createCustomizableField with ComboboxOptionRenderer as name.
+		 */
 		optionRenderer: FunctionComponent<{
 			option: SuggesterOption;
 			placeholder?: string;
 			search?: string;
 		}>;
+		/**
+		 * @deprecated use createCustomizableField with ComboboxLabelRenderer as name.
+		 */
 		labelRenderer: FunctionComponent<{
 			option?: SuggesterOption;
 			selected?: boolean;
