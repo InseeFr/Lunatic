@@ -18,7 +18,7 @@ export function ComboboxPanel({
 	search,
 	onSelect,
 	isLoading,
-}: ComboboxPanelProps) {
+}: Readonly<ComboboxPanelProps>) {
 	const visibleOptions = expanded ? options : [];
 
 	const ComboBoxOptionComponent = OptionRender ?? ComboboxOption;

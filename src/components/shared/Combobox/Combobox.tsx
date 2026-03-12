@@ -214,15 +214,14 @@ function getIndexFromOptions(
 	if (!Array.isArray(options)) {
 		return undefined;
 	}
-	return options.map(getOptionValue).findIndex((v) => v === value);
+	return options.map(getOptionValue).indexOf(value ?? '');
 }
 
 /**
  * Extract value from an option item
  */
-function getDefaultOptionValue(option: ComboboxOptionType = { value: '' }) {
-	const { id, value } = option;
-	return id || value;
+function getDefaultOptionValue(option?: ComboboxOptionType) {
+	return option?.id || option?.value || '';
 }
 
 export const Combobox = slottableComponent('Combobox', LunaticComboBox);
