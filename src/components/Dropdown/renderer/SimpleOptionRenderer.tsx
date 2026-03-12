@@ -9,18 +9,11 @@ type Props = {
 export function SimpleOptionRenderer({ option, selected }: Props) {
 	const { value, label } = option;
 
-	if (label && typeof label === 'string' && label.length) {
-		return (
-			<div className={classnames('lunatic-dropdown-option', { selected })}>
-				<span className="id">{value}</span>
-				<span>&nbsp;&#x2014;&nbsp;</span>
-				<span className="label">{label}</span>
-			</div>
-		);
-	}
+	const content = label && typeof label === 'string' && label.length ? label : value;
+
 	return (
 		<div className={classnames('lunatic-dropdown-option', { selected })}>
-			<span className="id">{label}</span>
+			<span className="label">{content}</span>
 		</div>
 	);
 }
