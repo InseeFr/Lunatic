@@ -23,8 +23,7 @@ export const ComboboxOption = slottableComponent(
 				</div>
 			);
 		}
-
-		if (label && typeof label === 'string' && label.length) {
+		if (label) {
 			return (
 				<div className={classnames('lunatic-combo-box-option', { selected })}>
 					{displayOptionId && (
