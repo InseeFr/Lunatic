@@ -23,10 +23,10 @@ describe('DefaultOptionRenderer', () => {
 		expect(getByText(option.label)).toBeInTheDocument();
 	});
 
-	it('renders with label and displays id when displayOptionId is true', () => {
+	it('renders with label and displays id when prop is true', () => {
 		const option = { id: '1', value: 'Value', label: 'Label' };
 		const { getByText } = render(
-			<ComboboxOption option={option} displayOptionId={true} />
+			<ComboboxOption option={option} shouldDisplayOptionId={true} />
 		);
 
 		expect(getByText(option.id)).toBeInTheDocument();
@@ -34,10 +34,10 @@ describe('DefaultOptionRenderer', () => {
 		expect(getByText(option.label)).toBeInTheDocument();
 	});
 
-	it('renders with label and does not display id when displayOptionId is false', () => {
+	it('renders with label and does not display id when prop is false', () => {
 		const option = { id: '1', value: 'Value', label: 'Label' };
 		const { getByText, queryByText } = render(
-			<ComboboxOption option={option} displayOptionId={false} />
+			<ComboboxOption option={option} shouldDisplayOptionId={false} />
 		);
 
 		expect(queryByText(option.id)).not.toBeInTheDocument();

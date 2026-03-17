@@ -10,7 +10,7 @@ import D from '../../../../i18n';
 export function ComboboxPanel({
 	optionRenderer: OptionRender,
 	options = [],
-	displayOptionsId,
+	shouldDisplayOptionsId,
 	focused,
 	selectedIndex,
 	expanded,
@@ -85,7 +85,7 @@ export function ComboboxPanel({
 				>
 					<ComboBoxOptionComponent
 						option={option}
-						displayOptionId={displayOptionsId}
+						shouldDisplayOptionId={shouldDisplayOptionsId}
 						selected={selectedIndex === index}
 						search={search}
 					/>

@@ -5,13 +5,13 @@ import D from '../../../../i18n';
 
 type Props = {
 	option: ComboboxOptionType;
-	displayOptionId?: boolean;
+	shouldDisplayOptionId?: boolean;
 	selected?: boolean;
 };
 
 export const ComboboxOption = slottableComponent(
 	'ComboboxOption',
-	({ option, displayOptionId = true, selected }: Props) => {
+	({ option, shouldDisplayOptionId = true, selected }: Props) => {
 		const { id, value, label } = option;
 
 		if (value === 'OTHER') {
@@ -26,7 +26,7 @@ export const ComboboxOption = slottableComponent(
 		if (label) {
 			return (
 				<div className={classnames('lunatic-combo-box-option', { selected })}>
-					{displayOptionId && (
+					{shouldDisplayOptionId && (
 						<>
 							<span className="id">{id || value}</span>
 							<span> - </span>

@@ -80,7 +80,7 @@ export const CustomSuggester = slottableComponent<Props>(
 				disabled={disabled}
 				readOnly={readOnly}
 				options={options.map((o) => ({ value: o.id, ...o }))}
-				displayOptionsId={true}
+				shouldDisplayOptionsId={true}
 				editable={true}
 				onBlur={onBlur}
 				onFocus={onFocus}
