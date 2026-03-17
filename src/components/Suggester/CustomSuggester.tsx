@@ -15,7 +15,13 @@ type Props = {
 	onBlur: () => void;
 	onFocus: () => void;
 	value: [SuggesterOptionType] | [];
+	/**
+	 * @deprecated use createCustomizableField with ComboboxLabelRenderer as name.
+	 */
 	labelRenderer: LunaticComponentProps<'Suggester'>['labelRenderer'];
+	/**
+	 * @deprecated use createCustomizableField with ComboboxOptionRenderer as name.
+	 */
 	optionRenderer: LunaticComponentProps<'Suggester'>['optionRenderer'];
 	disabled?: boolean;
 	readOnly?: boolean;
@@ -74,6 +80,7 @@ export const CustomSuggester = slottableComponent<Props>(
 				disabled={disabled}
 				readOnly={readOnly}
 				options={options.map((o) => ({ value: o.id, ...o }))}
+				shouldDisplayOptionsId={true}
 				editable={true}
 				onBlur={onBlur}
 				onFocus={onFocus}

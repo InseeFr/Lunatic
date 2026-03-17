@@ -44,6 +44,7 @@ export type ComboboxPanelProps = {
 		search?: string;
 	}>;
 	options: Array<ComboboxOptionType>;
+	shouldDisplayOptionsId?: boolean;
 	focused?: boolean;
 	selectedIndex?: number | string | null;
 	expanded?: boolean;
