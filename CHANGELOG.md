@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.12.3](https://github.com/InseeFr/Lunatic/releases/tag/3.12.3) - 2026-03-17
+
 ### Changed
 
 - In dropdown selection, the options id is not longer displayed. Only the label is now displayed.
