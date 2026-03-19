@@ -207,7 +207,7 @@ function shouldClean(
 			shouldCleanArray[iterationIndex] = shouldCleanAtIteration(store, {
 				expressions,
 				iteration: [iterationIndex],
-			}) as boolean;
+			});
 		}
 		return shouldCleanArray;
 	} else {
