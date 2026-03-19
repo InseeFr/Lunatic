@@ -572,6 +572,65 @@ describe('lunatic-variables-store', () => {
 			variables.set('PRENOM', ['John', 'Jane']);
 			expect(variables.get('AGE')).toEqual([null, null]);
 		});
+		it('should check every iteration when configured from an iterated source change', () => {
+			// Given
+			variables.set('PRENOM', ['Marc', 'Marc', 'Marc']);
+			variables.set('QCU', ['A', 'B', 'B']);
+			cleaningBehaviour(
+				variables,
+				{
+					PRENOM: {
+						QCU: [
+							{
+								expression: 'PRENOM <> "Marc"',
+								shapeFrom: 'PRENOM',
+								isAggregatorUsed: false,
+								shouldCheckAllIterations: true,
+							},
+						],
+					},
+				},
+				{ PRENOM: [], QCU: [null] }
+			);
+
+			// When
+			variables.set('PRENOM', 'Patrick', { iteration: [0] });
+
+			// Then
+			expect(variables.get('QCU')).toEqual(['A', null, null]);
+		});
+		it('should handle simultaneously expressions that should check every iteration and expression that should not ', () => {
+			// Given
+			variables.set('PRENOM', ['Marc', 'Marc', 'Marc']);
+			variables.set('QCU', ['A', 'B', 'B']);
+			cleaningBehaviour(
+				variables,
+				{
+					PRENOM: {
+						QCU: [
+							{
+								expression: 'PRENOM <> ""',
+								shapeFrom: 'PRENOM',
+								isAggregatorUsed: false,
+							},
+							{
+								expression: 'PRENOM <> "Marc"',
+								shapeFrom: 'PRENOM',
+								isAggregatorUsed: false,
+								shouldCheckAllIterations: true,
+							},
+						],
+					},
+				},
+				{ PRENOM: [], QCU: [null] }
+			);
+
+			// When
+			variables.set('PRENOM', '', { iteration: [0] });
+
+			// Then
+			expect(variables.get('QCU')).toEqual([null, null, null]);
+		});
 		it('should clean pairwise in two directions', () => {
 			variables.set('LINKS', [
 				[null, '1', '3'],

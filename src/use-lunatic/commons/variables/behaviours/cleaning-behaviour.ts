@@ -7,6 +7,13 @@ import { depth, setAtIndex } from '../../../../utils/array';
 import { castBool } from '../../../../utils/cast';
 import { IterationLevel } from '../models';
 
+type CleaningExpression = {
+	expression: string;
+	shapeFrom?: string;
+	isAggregatorUsed: boolean;
+	shouldCheckAllIterations?: boolean;
+};
+
 /**
  * Implements the cleaning behavior for the variable store.
  * When a variable changes, this function determines which other variables
@@ -130,13 +137,7 @@ function shouldClean(
 		iteration,
 		isResizing,
 	}: {
-		expressions:
-			| string
-			| {
-					expression: string;
-					shapeFrom?: string;
-					isAggregatorUsed: boolean;
-			  }[];
+		expressions: string | CleaningExpression[];
 		iteration?: number[];
 		isResizing: boolean;
 	}
@@ -156,6 +157,42 @@ function shouldClean(
 		expressions = expressions.filter((expr) => expr.isAggregatorUsed);
 	}
 
+	// At least one expression requires to compute on each iteration
+	if (shouldCheckAtAllIterations(expressions)) {
+		const shapeFromVariable = store.get(
+			expressions[0].shapeFrom as string
+		) as Array<unknown>;
+
+		const shouldCleanArray = new Array(shapeFromVariable.length).fill(
+			false
+		) as Array<boolean>;
+
+		const expressionsToCheckAtAllIterations: CleaningExpression[] = [];
+		const expressionsNotToCheckAtAllIterations: CleaningExpression[] = [];
+
+		for (const expression of expressions) {
+			if (expression.shouldCheckAllIterations) {
+				expressionsToCheckAtAllIterations.push(expression);
+			} else {
+				expressionsNotToCheckAtAllIterations.push(expression);
+			}
+		}
+
+		for (const [iterationIndex] of shouldCleanArray.entries()) {
+			shouldCleanArray[iterationIndex] =
+				// check if we need to clean each iteration according to expression
+				shouldCleanAtIteration(store, {
+					expressions: expressionsToCheckAtAllIterations,
+					iteration: [iterationIndex],
+				}) ||
+				shouldCleanAtIteration(store, {
+					expressions: expressionsNotToCheckAtAllIterations,
+					iteration,
+				});
+		}
+		return shouldCleanArray;
+	}
+
 	// If expressions have shapeFrom and we're at root level, we need to check each iteration individually
 	if (hasShapeFrom(expressions) && !iteration) {
 		const shapeFromVariable = store.get(
@@ -167,27 +204,43 @@ function shouldClean(
 		) as Array<boolean>;
 
 		for (const [iterationIndex] of shouldCleanArray.entries()) {
-			shouldCleanArray[iterationIndex] = shouldClean(store, {
+			shouldCleanArray[iterationIndex] = shouldCleanAtIteration(store, {
 				expressions,
 				iteration: [iterationIndex],
-				isResizing,
 			}) as boolean;
 		}
 		return shouldCleanArray;
 	} else {
-		// Clean the variable if any condition is false (variable is not visible),
-		for (const expression of expressions) {
-			if (
-				!store.run(expression.expression, {
-					iteration,
-				})
-			)
-				return true;
-		}
-
-		// All conditions are true, no cleaning needed
-		return false;
+		return shouldCleanAtIteration(store, { expressions, iteration });
 	}
+}
+
+function shouldCheckAtAllIterations(expressions: CleaningExpression[]) {
+	return expressions.some((expression) => expression.shouldCheckAllIterations);
+}
+
+function shouldCleanAtIteration(
+	store: LunaticVariablesStore,
+	{
+		expressions,
+		iteration,
+	}: {
+		expressions: CleaningExpression[];
+		iteration?: number[];
+	}
+) {
+	// Clean the variable if any condition is false (variable is not visible),
+	for (const expression of expressions) {
+		if (
+			!store.run(expression.expression, {
+				iteration,
+			})
+		)
+			return true;
+	}
+
+	// All conditions are true, no cleaning needed
+	return false;
 }
 
 /**
