@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.13.0](https://github.com/InseeFr/Lunatic/releases/tag/3.13.0) - 2026-03-19
+
+### Added
+
+- Cleaning : It's now possible to force an expression to be checked on every iteration when being in a loop, by specifying `shouldCheckAllIterations` in cleaning expression.
+
 ## [3.12.3](https://github.com/InseeFr/Lunatic/releases/tag/3.12.3) - 2026-03-17
 
 ### Changed
