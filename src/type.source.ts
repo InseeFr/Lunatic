@@ -302,6 +302,7 @@ export type LunaticSource = {
 						expression: string;
 						shapeFrom?: string;
 						isAggregatorUsed: boolean;
+						shouldCheckAllIterations?: boolean;
 				  }[];
 		};
 	};

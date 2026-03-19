@@ -6,7 +6,22 @@
 	},
 	"modele": "FEATQCUBAS",
 	"maxPage": "7",
-	"cleaning": {},
+	"cleaning": {
+		"PRENOM": {
+			"QCUHORSBOU": [
+				{
+					"expression": false
+				}
+			],
+			"QCUDANSBOU": [
+				{
+					"expression": false,
+					"shapeFrom": "PRENOM",
+					"shouldCheckAllIterations": true
+				}
+			]
+		}
+	},
 	"resizing": {
 		"NBHAB": {
 			"size": "NBHAB",

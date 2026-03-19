@@ -48,7 +48,8 @@
 								"properties": {
 									"expression": { "type": "string" },
 									"shapeFrom": { "type": "string" },
-									"isAggregatorUsed": { "type": "boolean" }
+									"isAggregatorUsed": { "type": "boolean" },
+									"shouldCheckAllIterations": { "type": "boolean" }
 								},
 								"required": ["expression", "isAggregatorUsed"]
 							}
