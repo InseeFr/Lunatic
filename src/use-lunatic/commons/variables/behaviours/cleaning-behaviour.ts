@@ -159,14 +159,6 @@ function shouldClean(
 
 	// At least one expression requires to compute on each iteration
 	if (shouldCheckAtAllIterations(expressions)) {
-		const shapeFromVariable = store.get(
-			expressions[0].shapeFrom as string
-		) as Array<unknown>;
-
-		const shouldCleanArray = new Array(shapeFromVariable.length).fill(
-			false
-		) as Array<boolean>;
-
 		const expressionsToCheckAtAllIterations: CleaningExpression[] = [];
 		const expressionsNotToCheckAtAllIterations: CleaningExpression[] = [];
 
@@ -177,6 +169,14 @@ function shouldClean(
 				expressionsNotToCheckAtAllIterations.push(expression);
 			}
 		}
+
+		const shapeFromVariable = store.get(
+			expressionsToCheckAtAllIterations[0].shapeFrom as string
+		) as Array<unknown>;
+
+		const shouldCleanArray = new Array(shapeFromVariable.length).fill(
+			false
+		) as Array<boolean>;
 
 		for (const [iterationIndex] of shouldCleanArray.entries()) {
 			shouldCleanArray[iterationIndex] =
@@ -194,10 +194,9 @@ function shouldClean(
 	}
 
 	// If expressions have shapeFrom and we're at root level, we need to check each iteration individually
-	if (hasShapeFrom(expressions) && !iteration) {
-		const shapeFromVariable = store.get(
-			expressions[0].shapeFrom as string
-		) as Array<unknown>;
+	if (expressionsHaveShapeFrom(expressions) && !iteration) {
+		const shapeFrom = findFirstExpressionWithShapeFrom(expressions)?.shapeFrom;
+		const shapeFromVariable = store.get(shapeFrom as string) as Array<unknown>;
 
 		const shouldCleanArray = new Array(shapeFromVariable.length).fill(
 			false
@@ -210,13 +209,15 @@ function shouldClean(
 			});
 		}
 		return shouldCleanArray;
-	} else {
-		return shouldCleanAtIteration(store, { expressions, iteration });
 	}
+
+	return shouldCleanAtIteration(store, { expressions, iteration });
 }
 
 function shouldCheckAtAllIterations(expressions: CleaningExpression[]) {
-	return expressions.some((expression) => expression.shouldCheckAllIterations);
+	return expressions.some(
+		(expression) => expression.shouldCheckAllIterations && expression.shapeFrom
+	);
 }
 
 function shouldCleanAtIteration(
@@ -258,6 +259,10 @@ function getValueAtIteration(value: unknown, iteration?: number[]) {
 	return getValueAtIteration(value[iteration[0]], iteration.slice(1));
 }
 
+function hasShapeFrom(expression: CleaningExpression) {
+	return expression.shapeFrom !== null && expression.shapeFrom !== undefined;
+}
+
 /**
  * Checks if all expressions in the array have a shapeFrom property
  *
@@ -266,17 +271,18 @@ function getValueAtIteration(value: unknown, iteration?: number[]) {
  *
  * @returns true if all expressions have a non-null shapeFrom property
  */
-function hasShapeFrom(
+function expressionsHaveShapeFrom(
 	expressions: {
 		expression: string;
 		shapeFrom?: string;
 		isAggregatorUsed: boolean;
 	}[]
 ) {
-	return expressions.every(
-		(expression) =>
-			expression.shapeFrom !== null && expression.shapeFrom !== undefined
-	);
+	return expressions.every((expression) => hasShapeFrom(expression));
+}
+
+function findFirstExpressionWithShapeFrom(expressions: CleaningExpression[]) {
+	return expressions.find((expression) => hasShapeFrom(expression));
 }
 
 /**

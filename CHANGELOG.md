@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- fixing the cleaning process when no `shapeFrom` is provided and `shouldCheckAllIterations` is set to `true`
+
 ## [3.13.0](https://github.com/InseeFr/Lunatic/releases/tag/3.13.0) - 2026-03-19
 
 ### Added
