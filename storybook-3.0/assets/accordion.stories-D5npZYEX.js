@@ -1,5 +1,0 @@
-import{a as n}from"./Orchestrator-D76tdOyh.js";import"./jsx-runtime-BjG_zV1W.js";import"./Combobox-BMViUnsY.js";import"./_commonjsHelpers-BosuxZz1.js";import"./index-xW6owYLq.js";import"./index-BL20XVM2.js";import"./index-Dk74W0Oi.js";const r="../../../lunatic-schema.json",s=[{componentType:"Input",label:{value:"Nom",type:"TXT"},maxLength:30,id:"surname",response:{name:"NOM"},page:"1"},{componentType:"Accordion",items:[{label:{value:'"Pourquoi cette question ?"',type:"VTL|MD"},body:{value:'"Pour en connaître plus sur **" || nvl(NOM, "Inconnu") || "**"',type:"VTL|MD"}}],page:"1"}],c=[{variableType:"COLLECTED",name:"NOM",componentRef:"name",values:{COLLECTED:null}}],m={$schema:r,components:s,variables:c},y={title:"Components/Accordion",...n},e={args:{source:m}};var o,t,a;e.parameters={...e.parameters,docs:{...(o=e.parameters)==null?void 0:o.docs,source:{originalSource:`{
-  args: {
-    source
-  }
-}`,...(a=(t=e.parameters)==null?void 0:t.docs)==null?void 0:a.source}}};const L=["Default"];export{e as Default,L as __namedExportsOrder,y as default};
