@@ -159,13 +159,6 @@ function shouldClean(
 
 	// At least one expression requires to compute on each iteration
 	if (shouldCheckAtAllIterations(expressions)) {
-		const shapeFrom = findFirstExpressionWithShapeFrom(expressions)?.shapeFrom;
-		const shapeFromVariable = store.get(shapeFrom as string) as Array<unknown>;
-
-		const shouldCleanArray = new Array(shapeFromVariable.length).fill(
-			false
-		) as Array<boolean>;
-
 		const expressionsToCheckAtAllIterations: CleaningExpression[] = [];
 		const expressionsNotToCheckAtAllIterations: CleaningExpression[] = [];
 
@@ -176,6 +169,14 @@ function shouldClean(
 				expressionsNotToCheckAtAllIterations.push(expression);
 			}
 		}
+
+		const shapeFromVariable = store.get(
+			expressionsToCheckAtAllIterations[0].shapeFrom as string
+		) as Array<unknown>;
+
+		const shouldCleanArray = new Array(shapeFromVariable.length).fill(
+			false
+		) as Array<boolean>;
 
 		for (const [iterationIndex] of shouldCleanArray.entries()) {
 			shouldCleanArray[iterationIndex] =
