@@ -209,9 +209,9 @@ function shouldClean(
 			});
 		}
 		return shouldCleanArray;
-	} else {
-		return shouldCleanAtIteration(store, { expressions, iteration });
 	}
+
+	return shouldCleanAtIteration(store, { expressions, iteration });
 }
 
 function shouldCheckAtAllIterations(expressions: CleaningExpression[]) {
