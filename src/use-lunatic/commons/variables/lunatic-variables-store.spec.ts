@@ -572,6 +572,32 @@ describe('lunatic-variables-store', () => {
 			variables.set('PRENOM', ['John', 'Jane']);
 			expect(variables.get('AGE')).toEqual([null, null]);
 		});
+		it('should clean but not at every iteration when configured from an iterated source change if there is no shapeFrom provided', () => {
+			// Given
+			variables.set('PRENOM', ['Marc', 'Marc', 'Marc']);
+			variables.set('QCU', 'A');
+			cleaningBehaviour(
+				variables,
+				{
+					PRENOM: {
+						QCU: [
+							{
+								expression: 'false',
+								isAggregatorUsed: false,
+								shouldCheckAllIterations: true,
+							},
+						],
+					},
+				},
+				{ PRENOM: [], QCU: null }
+			);
+
+			// When
+			variables.set('PRENOM', 'Patrick', { iteration: [0] });
+
+			// Then
+			expect(variables.get('QCU')).toEqual(null);
+		});
 		it('should check every iteration when configured from an iterated source change', () => {
 			// Given
 			variables.set('PRENOM', ['Marc', 'Marc', 'Marc']);
