@@ -193,7 +193,7 @@ function shouldClean(
 	}
 
 	// If expressions have shapeFrom and we're at root level, we need to check each iteration individually
-	if (hasShapeFrom(expressions) && !iteration) {
+	if (expressionsHaveShapeFrom(expressions) && !iteration) {
 		const shapeFrom = findFirstExpressionWithShapeFrom(expressions)?.shapeFrom;
 		const shapeFromVariable = store.get(shapeFrom as string) as Array<unknown>;
 
@@ -258,6 +258,10 @@ function getValueAtIteration(value: unknown, iteration?: number[]) {
 	return getValueAtIteration(value[iteration[0]], iteration.slice(1));
 }
 
+function hasShapeFrom(expression: CleaningExpression) {
+	return expression.shapeFrom !== null && expression.shapeFrom !== undefined;
+}
+
 /**
  * Checks if all expressions in the array have a shapeFrom property
  *
@@ -266,18 +270,18 @@ function getValueAtIteration(value: unknown, iteration?: number[]) {
  *
  * @returns true if all expressions have a non-null shapeFrom property
  */
-function hasShapeFrom(
+function expressionsHaveShapeFrom(
 	expressions: {
 		expression: string;
 		shapeFrom?: string;
 		isAggregatorUsed: boolean;
 	}[]
 ) {
-	return expressions.every((expression) => expression.shapeFrom !== null);
+	return expressions.every((expression) => hasShapeFrom(expression));
 }
 
 function findFirstExpressionWithShapeFrom(expressions: CleaningExpression[]) {
-	return expressions.find(({ shapeFrom }) => shapeFrom !== undefined);
+	return expressions.find((expression) => hasShapeFrom(expression));
 }
 
 /**
