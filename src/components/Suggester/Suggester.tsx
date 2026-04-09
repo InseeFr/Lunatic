@@ -159,8 +159,13 @@ export function WrappedSuggester({
 			}) as [SuggesterOptionType];
 			setSelectedOptions(selectedOptionsWithLabel);
 		}
+		// Refresh label when store is indexed, only if empty label
+		// fix issue, when computeSelectedOptions return empty label because store is not ready
+		if (storeState === 'success' && selectedOptions[0]?.label.length === 0) {
+			setSelectedOptions(computeSelectedOptions());
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [value]);
+	}, [value, storeState]);
 
 	return (
 		<CustomSuggester
