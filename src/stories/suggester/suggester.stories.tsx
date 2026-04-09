@@ -39,6 +39,20 @@ export const Default: OrchestratorStory = {
 	},
 };
 
+export const WithData: OrchestratorStory = {
+	args: {
+		initialPage: '2',
+		source,
+		data: {
+			COLLECTED: {
+				VARIABLEPA: {
+					COLLECTED: 'FRA',
+				},
+			},
+		},
+	},
+};
+
 export const OptionResponses: OrchestratorStory = {
 	args: {
 		source: sourceOptionResponses,

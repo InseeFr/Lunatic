@@ -41,6 +41,12 @@ test.describe('Suggester', () => {
 		await expectPageToHaveText(page, 'FRANCE');
 	});
 
+	test(`can see the selected label with COLLECTED data`, async ({ page }) => {
+		await goToStory(page, 'components-suggester--with-data');
+		await expectCollectedData(page, 'VARIABLEPA', 'FRA');
+		await expectPageToHaveText(page, 'FRANCE');
+	});
+
 	test(`can clear the last selected value`, async ({ page }) => {
 		await goToStory(page, 'components-suggester--default');
 		await expectPageToHaveText(page, 'Variable Commune');
